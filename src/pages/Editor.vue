@@ -10,6 +10,8 @@
 import { LayoutEditor } from '@/layouts/index';
 import Vditor from 'vditor';
 import { defaultOptions } from '@/settings/editor';
+import 'vditor/src/assets/scss/index.scss';
+
 export default {
   components: {
     LayoutEditor
@@ -40,7 +42,7 @@ export default {
         ...defaultOptions,
         ...options
       });
-      this.vditor.focus();
+      // this.vditor.focus();
     }
   }
 };
