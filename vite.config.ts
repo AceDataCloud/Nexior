@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue';
 import * as path from 'path';
 import replace from '@rollup/plugin-replace';
 import pkg from './package.json';
+import { string } from 'rollup-plugin-string';
 
 export default defineConfig({
   server: {
@@ -15,6 +16,9 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    string({
+      include: ['**/*.md', '**/*.theme', 'highlight.js/styles/*.css']
+    }),
     replace({
       preventAssignment: true,
       VDITOR_VERSION: JSON.stringify(pkg.dependencies.vditor.replace(/^[\^\~]/g, '')),
