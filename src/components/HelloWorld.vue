@@ -1,7 +1,18 @@
-<script setup lang="ts">
+<template>
+  <div>ddd</div>
+</template>
 
+<script lang="ts">
+export default {
+  components: {
+    // LayoutHome
+  },
+  data() {
+    return {};
+  },
+  computed: {},
+  methods: {}
+};
 </script>
 
-<template>
-  <h1>{{ msg }}</h1>
-</template>
+<style lang="scss"></style>
