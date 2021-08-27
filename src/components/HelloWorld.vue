@@ -1,12 +1,10 @@
 <template>
-  <div>ddd</div>
+  <div>Hello World</div>
 </template>
 
 <script lang="ts">
 export default {
-  components: {
-    // LayoutHome
-  },
+  components: {},
   data() {
     return {};
   },
