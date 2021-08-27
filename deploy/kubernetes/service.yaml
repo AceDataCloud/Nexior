@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: zhishuyun-frontend
+  name: zhishuyun-frontend
+  namespace: zhishuyun
+spec:
+  ports:
+    - name: '8083'
+      port: 8083
+      targetPort: 80
+  selector:
+    app: zhishuyun-frontend
