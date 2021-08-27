@@ -1,0 +1,75 @@
+{
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.autoClosingBrackets": "beforeWhitespace",
+  "files.exclude": {
+    "**/.git": true,
+    "**/CVS": true,
+    "**/*.scss.ts": true,
+    "**/*.resx.ts": true,
+    "**/*.resx.$culture.ts": true
+  },
+  "files.trimTrailingWhitespace": true,
+  "files.watcherExclude": {
+    "**/*.log": true,
+    "**/*.resx.$culture.ts": true,
+    "**/*.resx.lcl": true,
+    "**/*.resx.ts": true,
+    "**/*.scss.ts": true,
+    "**/app-min": true,
+    "**/coverage": true,
+    "**/dist": true,
+    "**/lib-amd": true,
+    "**/lib-commonjs": true,
+    "**/lib-esm": true,
+    "**/lib-IGNORE": true,
+    "**/lib": true,
+    "**/localization": true,
+    "**/localization/*.json": true,
+    "**/node_modules": true,
+    "**/package-deps.json": true,
+    "**/temp": true
+  },
+  "prettier.configPath": ".prettierrc.js",
+  "search.exclude": {
+    "**/*.log": true,
+    "**/*.resx.$culture.ts": true,
+    "**/*.resx.lcl": true,
+    "**/*.resx.ts": true,
+    "**/*.scss.ts": true,
+    "**/app-min": true,
+    "**/coverage": true,
+    "**/dist": true,
+    "**/lib-amd": true,
+    "**/lib-commonjs": true,
+    "**/lib-esm": true,
+    "**/lib-IGNORE": true,
+    "**/lib": true,
+    "**/localization": true,
+    "**/localization/*.json": true,
+    "**/node_modules": true,
+    "**/package-deps.json": true,
+    "**/temp": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
