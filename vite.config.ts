@@ -11,12 +11,13 @@ export default defineConfig({
       }
     }
   },
-  plugins: [
-    vue()
-  ],
+  plugins: [vue()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
     }
+  },
+  build: {
+    sourcemap: true
   }
 });
