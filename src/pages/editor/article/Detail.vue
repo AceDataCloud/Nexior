@@ -100,11 +100,11 @@ export default defineComponent({
   top: 60px;
 }
 
-.vditor-ir pre.vditor-reset {
+.vditor-reset {
   padding-top: 80px !important;
   padding-bottom: 80px !important;
   &:focus {
-    background-color: #fff;
+    background-color: #fff !important;
   }
 }
 </style>
