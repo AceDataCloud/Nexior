@@ -1,32 +1,32 @@
 import httpClient from '../instance';
-import { IArticle } from './types';
+import { IPlatform } from './types';
 
-class ArticleService {
+class PlatformService {
   key = 'articles';
 
-  getAll(): Promise<IArticle> {
+  getAll(): Promise<IPlatform> {
     return httpClient.get(`/${this.key}`);
   }
 
-  get(id: number): Promise<IArticle> {
+  get(id: number): Promise<IPlatform> {
     return httpClient.get(`/${this.key}/${id}`);
   }
 
-  create(data: IArticle): Promise<IArticle> {
+  create(data: IPlatform): Promise<IPlatform> {
     return httpClient.post(`/${this.key}`, data);
   }
 
-  update(id: number, data: IArticle): Promise<IArticle> {
+  update(id: number, data: IPlatform): Promise<IPlatform> {
     return httpClient.put(`/${this.key}/${id}`, data);
   }
 
-  delete(id: number): Promise<IArticle> {
+  delete(id: number): Promise<IPlatform> {
     return httpClient.delete(`/${this.key}/${id}`);
   }
 
-  deleteAll(): Promise<IArticle> {
+  deleteAll(): Promise<IPlatform> {
     return httpClient.delete(`/${this.key}`);
   }
 }
 
-export default new ArticleService();
+export default new PlatformService();
