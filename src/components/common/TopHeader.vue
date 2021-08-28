@@ -1,6 +1,6 @@
 <template>
   <el-container id="header" class="header">
-    <el-aside width="200px">
+    <el-aside width="250px">
       <img src="@/assets/images/logo.png" class="logo" />
     </el-aside>
     <el-main>
@@ -48,7 +48,6 @@ export default {
   width: 100%;
   height: 60px;
   background: #fff;
-  border-bottom: 1px solid #e8e8e8;
   .logo {
     width: 130px;
     margin-left: 30px;

@@ -1,12 +1,12 @@
 <template>
-  <el-menu class="h-full" router>
-    <el-menu-item index="/content/article">
+  <el-menu class="h-full" router :default-active="$route.name">
+    <el-menu-item index="article" @select="onSelect">
       <el-icon class="mr-2">
         <document />
       </el-icon>
       <template #title>{{ $t('content.nav.article') }}</template>
     </el-menu-item>
-    <el-menu-item index="/content/platform">
+    <el-menu-item index="platform">
       <el-icon class="mr-2">
         <box />
       </el-icon>
@@ -30,7 +30,14 @@ export default {
     };
   },
   mounted() {
-    console.log(routes);
+    console.log(this.$route);
+  },
+  methods: {
+    onSelect(val) {
+      this.$router.push({
+        name: val
+      });
+    }
   }
 };
 </script>
