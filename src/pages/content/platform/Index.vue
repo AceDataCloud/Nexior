@@ -8,12 +8,15 @@
 
 <script lang="ts">
 import PlatformService from '@/services/platform/service';
-import { IPlatformListResponse } from '@/services/platform/types';
+import { IPlatform, IPlatformListResponse } from '@/services/platform/types';
+import { defineComponent, PropType } from 'vue';
 
-console.log('PlatformService', PlatformService);
+interface IData {
+  items: IPlatform[];
+}
 
-export default {
-  data() {
+export default defineComponent({
+  data(): IData {
     return {
       items: []
     };
@@ -25,5 +28,5 @@ export default {
     });
   },
   methods: {}
-};
+});
 </script>
