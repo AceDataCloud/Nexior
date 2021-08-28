@@ -9,7 +9,7 @@ class ArticleService {
     return await httpClient.get(`/${this.key}`);
   }
 
-  async get(id: number): Promise<AxiosResponse<IArticleDetailResponse>> {
+  async get(id: string | string[]): Promise<AxiosResponse<IArticleDetailResponse>> {
     return httpClient.get(`/${this.key}/${id}`);
   }
 
@@ -17,11 +17,11 @@ class ArticleService {
     return httpClient.post(`/${this.key}`, data);
   }
 
-  async update(id: number, data: IArticle): Promise<AxiosResponse<IArticleDetailResponse>> {
+  async update(id: string | string[], data: IArticle): Promise<AxiosResponse<IArticleDetailResponse>> {
     return httpClient.put(`/${this.key}/${id}`, data);
   }
 
-  async delete(id: number): Promise<AxiosResponse<null>> {
+  async delete(id: string | string[]): Promise<AxiosResponse<null>> {
     return httpClient.delete(`/${this.key}/${id}`);
   }
 }
