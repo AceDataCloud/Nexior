@@ -1,6 +1,6 @@
 <template>
-  <el-menu class="h-full" router :default-active="$route.name">
-    <el-menu-item index="article-index" @select="onSelect">
+  <el-menu class="h-full" :default-active="$route.name" @select="onSelect">
+    <el-menu-item index="article-index">
       <el-icon class="mr-2">
         <document />
       </el-icon>
@@ -35,6 +35,7 @@ export default defineComponent({
   },
   methods: {
     onSelect(val: string) {
+      console.log('val', val);
       this.$router.push({
         name: val
       });
