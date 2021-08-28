@@ -1,12 +1,12 @@
 <template>
   <el-menu class="h-full" router :default-active="$route.name">
-    <el-menu-item index="article" @select="onSelect">
+    <el-menu-item index="article-index" @select="onSelect">
       <el-icon class="mr-2">
         <document />
       </el-icon>
       <template #title>{{ $t('content.nav.article') }}</template>
     </el-menu-item>
-    <el-menu-item index="platform">
+    <el-menu-item index="platform-index">
       <el-icon class="mr-2">
         <box />
       </el-icon>
@@ -18,8 +18,9 @@
 <script lang="ts">
 import { Document, Box } from '@element-plus/icons';
 import routes from '@/router/content';
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent({
   components: {
     Document,
     Box
@@ -33,11 +34,11 @@ export default {
     console.log(this.$route);
   },
   methods: {
-    onSelect(val) {
+    onSelect(val: string) {
       this.$router.push({
         name: val
       });
     }
   }
-};
+});
 </script>

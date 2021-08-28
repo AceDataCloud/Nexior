@@ -18,15 +18,23 @@ export default {
     },
     {
       path: 'article',
-      name: 'article',
+      name: 'article-index',
       meta: {
         title: t('common.nav.article')
       },
-      component: () => import('@/pages/content/Article.vue')
+      component: () => import('@/pages/content/article/Index.vue')
+    },
+    {
+      path: 'article/:id',
+      name: 'article-edit',
+      meta: {
+        title: t('common.nav.article')
+      },
+      component: () => import('@/pages/content/article/Detail.vue')
     },
     {
       path: 'platform',
-      name: 'platform',
+      name: 'platform-index',
       meta: {
         title: t('common.nav.platform')
       },

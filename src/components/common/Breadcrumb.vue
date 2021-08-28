@@ -6,7 +6,9 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   data() {
     return {
       items: this.$route.matched
@@ -15,7 +17,7 @@ export default {
   mounted() {
     console.log('this', this.$route);
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

@@ -7,18 +7,12 @@
             <breadcrumb />
           </div>
           <el-table :data="items" v-loading="loading">
-            <el-table-column prop="icon" :label="$t('common.entity.icon')">
-              <template #default="scope">
-                <img :src="scope.row.icon" class="w-10" />
-              </template>
-            </el-table-column>
-            <el-table-column prop="name" :label="$t('common.entity.platform')"> </el-table-column>
-            <el-table-column prop="description" :label="$t('common.entity.description')"> </el-table-column>
-            <el-table-column :label="$t('common.entity.status')"> </el-table-column>
+            <el-table-column prop="title" :label="$t('common.entity.title')"> </el-table-column>
+            <el-table-column prop="updated_at" :label="$t('common.entity.updatedAt')"> </el-table-column>
             <el-table-column :label="$t('common.entity.operation')">
               <template #default="scope">
-                <el-button @click="onSetup(scope.row)" round type="primary" size="small">
-                  {{ $t('common.button.setup') }}
+                <el-button @click="onEdit(scope.row)" round type="primary" size="small">
+                  {{ $t('common.button.edit') }}
                 </el-button>
               </template>
             </el-table-column>
@@ -31,12 +25,12 @@
 
 <script lang="ts">
 import { Breadcrumb } from '@/components/common/index';
-import PlatformService from '@/services/platform/service';
-import { IPlatform, IPlatformListResponse } from '@/services/platform/types';
+import ArticleService from '@/services/article/service';
+import { IArticle, IArticleListResponse } from '@/services/article/types';
 import { defineComponent } from 'vue';
 
 interface IData {
-  items: IPlatform[];
+  items: IArticle[];
   loading: boolean;
 }
 
@@ -52,15 +46,20 @@ export default defineComponent({
   },
   async mounted() {
     this.loading = true;
-    PlatformService.getAll().then(({ data: data }: { data: IPlatformListResponse }): void => {
+    ArticleService.getAll().then(({ data: data }: { data: IArticleListResponse }): void => {
       console.log('data', data);
       this.items = data.results;
       this.loading = false;
     });
   },
   methods: {
-    onSetup(row) {
-      console.log('333');
+    onEdit(row: IArticle) {
+      this.$router.push({
+        name: 'article-edit',
+        params: {
+          id: row.id
+        }
+      });
     }
   }
 });
