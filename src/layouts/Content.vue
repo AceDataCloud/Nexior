@@ -4,7 +4,9 @@
       <top-header />
     </el-header>
     <el-container>
-      <el-aside width="200px"> side</el-aside>
+      <el-aside width="200px">
+        <sidebar />
+      </el-aside>
       <el-main>
         <router-view />
       </el-main>
@@ -13,10 +15,12 @@
 </template>
 
 <script lang="ts">
+import Sidebar from '@/components/content/Sidebar.vue';
 import { TopHeader } from '@/components/common/index';
 export default {
   components: {
-    TopHeader
+    TopHeader,
+    Sidebar
   },
   name: 'LayoutEditor'
 };

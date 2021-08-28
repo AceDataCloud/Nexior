@@ -7,8 +7,8 @@
       <el-row>
         <el-col>
           <el-menu :default-active="active" class="el-menu-demo" mode="horizontal" @select="onSelect">
-            <el-menu-item index="home" v-t="'menu.home'" v-if="false"></el-menu-item>
-            <el-menu-item index="editor" v-t="'menu.editor'"></el-menu-item>
+            <el-menu-item index="home" v-t="'common.home'" v-if="false"></el-menu-item>
+            <el-menu-item index="editor" v-t="'common.editor'"></el-menu-item>
           </el-menu>
         </el-col>
       </el-row>
