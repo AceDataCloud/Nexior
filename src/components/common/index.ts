@@ -1,3 +1,4 @@
-import TopHeader from '@/components/common/TopHeader.vue';
+import TopHeader from './TopHeader.vue';
+import Breadcrumb from './Breadcrumb.vue';
 
-export { TopHeader };
+export { TopHeader, Breadcrumb };
