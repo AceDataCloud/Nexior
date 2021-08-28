@@ -5,9 +5,7 @@
     </el-header>
     <el-container>
       <el-aside width="200px"> side</el-aside>
-      <el-main>
-        <slot name="main"></slot>
-      </el-main>
+      <el-main> <router-view/ > </el-main>
     </el-container>
   </el-container>
 </template>

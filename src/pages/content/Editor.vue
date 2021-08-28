@@ -1,21 +1,14 @@
 <template>
-  <layout-editor>
-    <template v-slot:main>
-      <div id="vditor" class="vditor" />
-    </template>
-  </layout-editor>
+  <div id="vditor" class="vditor" />
 </template>
 
 <script lang="ts">
-import { LayoutEditor } from '@/layouts/index';
 import Vditor from 'vditor';
 import { defaultOptions } from '@/settings/editor';
 import 'vditor/src/assets/scss/index.scss';
 
 export default {
-  components: {
-    LayoutEditor
-  },
+  components: {},
   data() {
     return {
       vditor: null

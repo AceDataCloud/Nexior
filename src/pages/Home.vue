@@ -1,7 +1,5 @@
 <template>
-  <layout-home>
-    <template v-slot:main>555</template>
-  </layout-home>
+  <div>Home</div>
 </template>
 
 <script lang="ts">
