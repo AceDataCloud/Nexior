@@ -1,7 +1,5 @@
 import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
-import i18n from '../i18n';
-
-const t = i18n.global.t;
+import content from './content';
 
 const routes = [
   {
@@ -9,24 +7,7 @@ const routes = [
     name: 'home',
     component: () => import('@/pages/Home.vue')
   },
-  {
-    path: '/content',
-    name: 'content',
-    meta: {
-      title: t('common.nav.content')
-    },
-    component: () => import('@/layouts/Content.vue'),
-    children: [
-      {
-        path: 'editor',
-        name: 'editor',
-        meta: {
-          title: t('common.nav.editor')
-        },
-        component: () => import('@/pages/content/Editor.vue')
-      }
-    ]
-  }
+  content
 ];
 
 const router = createRouter({
