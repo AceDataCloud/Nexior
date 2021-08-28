@@ -1,31 +1,28 @@
+import { AxiosResponse } from 'axios';
 import httpClient from '../instance';
-import { IPlatform } from './types';
+import { IPlatform, IPlatformDetailResponse, IPlatformListResponse } from './types';
 
 class PlatformService {
-  key = 'articles';
+  key = 'platforms';
 
-  getAll(): Promise<IPlatform> {
-    return httpClient.get(`/${this.key}`);
+  async getAll(): Promise<AxiosResponse<IPlatformListResponse>> {
+    return await httpClient.get(`/${this.key}`);
   }
 
-  get(id: number): Promise<IPlatform> {
-    return httpClient.get(`/${this.key}/${id}`);
+  async get(id: number): Promise<AxiosResponse<IPlatformDetailResponse>> {
+    return await httpClient.get(`/${this.key}/${id}`);
   }
 
-  create(data: IPlatform): Promise<IPlatform> {
-    return httpClient.post(`/${this.key}`, data);
+  async create(data: IPlatform): Promise<AxiosResponse<IPlatformDetailResponse>> {
+    return await httpClient.post(`/${this.key}`, data);
   }
 
-  update(id: number, data: IPlatform): Promise<IPlatform> {
-    return httpClient.put(`/${this.key}/${id}`, data);
+  async update(id: number, data: IPlatform): Promise<AxiosResponse<IPlatformDetailResponse>> {
+    return await httpClient.put(`/${this.key}/${id}`, data);
   }
 
-  delete(id: number): Promise<IPlatform> {
-    return httpClient.delete(`/${this.key}/${id}`);
-  }
-
-  deleteAll(): Promise<IPlatform> {
-    return httpClient.delete(`/${this.key}`);
+  async delete(id: number): Promise<AxiosResponse<null>> {
+    return await httpClient.delete(`/${this.key}/${id}`);
   }
 }
 

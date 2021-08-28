@@ -1,31 +1,28 @@
+import { AxiosResponse } from 'axios';
 import httpClient from '../instance';
-import { IArticle } from './types';
+import { IArticle, IArticleDetailResponse, IArticleListResponse } from './types';
 
 class ArticleService {
   key = 'articles';
 
-  getAll(): Promise<IArticle> {
-    return httpClient.get(`/${this.key}`);
+  async getAll(): Promise<AxiosResponse<IArticleListResponse>> {
+    return await httpClient.get(`/${this.key}`);
   }
 
-  get(id: number): Promise<IArticle> {
+  async get(id: number): Promise<AxiosResponse<IArticleDetailResponse>> {
     return httpClient.get(`/${this.key}/${id}`);
   }
 
-  create(data: IArticle): Promise<IArticle> {
+  async create(data: IArticle): Promise<AxiosResponse<IArticleDetailResponse>> {
     return httpClient.post(`/${this.key}`, data);
   }
 
-  update(id: number, data: IArticle): Promise<IArticle> {
+  async update(id: number, data: IArticle): Promise<AxiosResponse<IArticleDetailResponse>> {
     return httpClient.put(`/${this.key}/${id}`, data);
   }
 
-  delete(id: number): Promise<IArticle> {
+  async delete(id: number): Promise<AxiosResponse<null>> {
     return httpClient.delete(`/${this.key}/${id}`);
-  }
-
-  deleteAll(): Promise<IArticle> {
-    return httpClient.delete(`/${this.key}`);
   }
 }
 
