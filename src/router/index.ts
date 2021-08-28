@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
 
 const routes = [
   {
@@ -7,14 +7,22 @@ const routes = [
     component: () => import('@/pages/Home.vue')
   },
   {
-    path: '/editor',
-    name: 'editor',
-    component: () => import('@/pages/Editor.vue')
+    path: '/content',
+    name: 'content',
+    component: () => import('@/layouts/Content.vue'),
+    children: [
+      {
+        path: 'editor',
+        name: 'editor',
+        component: () => import('@/pages/content/Editor.vue')
+      }
+    ]
   }
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  // history: createWebHistory(),
+  history: createWebHashHistory(),
   routes
 });
 export default router;

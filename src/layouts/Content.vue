@@ -4,8 +4,9 @@
       <top-header />
     </el-header>
     <el-container>
+      <el-aside width="200px"> side</el-aside>
       <el-main>
-        <slot name="main"></slot>
+        <router-view />
       </el-main>
     </el-container>
   </el-container>
