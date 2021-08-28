@@ -1,23 +1,23 @@
-import { Constants } from 'vditor/src/ts/constants'
+import { Constants } from 'vditor/src/ts/constants';
 export const defaultOptions = {
   after: undefined,
   cache: {
-    enable: true,
+    enable: true
   },
   cdn: Constants.CDN,
   classes: {
-    preview: '',
+    preview: ''
   },
   comment: {
-    enable: false,
+    enable: false
   },
   counter: {
     enable: true,
-    type: 'markdown',
+    type: 'markdown'
   },
   debugger: false,
   fullscreen: {
-    index: 90,
+    index: 90
   },
   height: 'auto',
   hint: {
@@ -30,18 +30,18 @@ export const defaultOptions = {
       heart: '❤️',
       rocket: '🚀️',
       smile: '😄',
-      tada: '🎉️',
+      tada: '🎉️'
     },
     emojiPath: `${Constants.CDN}/dist/images/emoji`,
     extend: [],
-    parse: true,
+    parse: true
   },
   icon: 'ant',
   lang: 'zh_CN',
   mode: 'ir',
   outline: {
     enable: false,
-    position: 'left',
+    position: 'left'
   },
   placeholder: '',
   preview: {
@@ -52,11 +52,11 @@ export const defaultOptions = {
     math: Constants.MATH_OPTIONS,
     maxWidth: 800,
     mode: 'both',
-    theme: Constants.THEME_OPTIONS,
+    theme: Constants.THEME_OPTIONS
   },
   resize: {
     enable: false,
-    position: 'bottom',
+    position: 'bottom'
   },
   theme: 'classic',
   toolbar: [
@@ -91,12 +91,12 @@ export const defaultOptions = {
     'content-theme',
     {
       name: 'more',
-      toolbar: ['both', 'outline', 'export', 'preview'],
-    },
+      toolbar: ['both', 'outline', 'export', 'preview']
+    }
   ],
   toolbarConfig: {
     hide: false,
-    pin: true,
+    pin: false
   },
   typewriterMode: false,
   undoDelay: 800,
@@ -108,8 +108,8 @@ export const defaultOptions = {
     max: 10 * 1024 * 1024,
     multiple: true,
     url: '',
-    withCredentials: false,
+    withCredentials: false
   },
   value: '',
-  width: 'auto',
-}
+  width: 'auto'
+};

@@ -1,12 +1,9 @@
 <template>
-  <el-container class="h-screen">
+  <el-container>
     <el-header>
       <top-header />
     </el-header>
     <el-container>
-      <el-aside width="250px">
-        <sidebar />
-      </el-aside>
       <el-main>
         <router-view />
       </el-main>
@@ -22,10 +19,15 @@ export default {
     TopHeader,
     Sidebar
   },
-  name: 'LayoutContent'
+  name: 'LayoutEditor'
 };
 </script>
 
+<style lang="scss">
+#app {
+  height: initial;
+}
+</style>
 <style lang="scss" scoped>
 .el-main {
   display: initial;
