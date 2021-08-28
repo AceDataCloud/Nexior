@@ -55,7 +55,7 @@ export default defineComponent({
         height: '0',
         tab: '\t',
         mode: 'ir',
-        icon: 'material',
+        icon: 'ant',
         debugger: false,
         after: () => {
           if (this.vditor?.getValue) {
@@ -103,5 +103,8 @@ export default defineComponent({
 .vditor-ir pre.vditor-reset {
   padding-top: 80px !important;
   padding-bottom: 80px !important;
+  &:focus {
+    background-color: #fff;
+  }
 }
 </style>

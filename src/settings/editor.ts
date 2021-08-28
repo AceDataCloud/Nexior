@@ -36,7 +36,7 @@ export const defaultOptions = {
     extend: [],
     parse: true
   },
-  icon: 'ant',
+  icon: 'material',
   lang: 'zh_CN',
   mode: 'ir',
   outline: {
