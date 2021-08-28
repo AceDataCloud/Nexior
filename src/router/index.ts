@@ -1,4 +1,7 @@
 import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
+import i18n from '../i18n';
+
+const t = i18n.global.t;
 
 const routes = [
   {
@@ -9,11 +12,17 @@ const routes = [
   {
     path: '/content',
     name: 'content',
+    meta: {
+      title: t('common.nav.content')
+    },
     component: () => import('@/layouts/Content.vue'),
     children: [
       {
         path: 'editor',
         name: 'editor',
+        meta: {
+          title: t('common.nav.editor')
+        },
         component: () => import('@/pages/content/Editor.vue')
       }
     ]

@@ -1,14 +1,18 @@
 <template>
+  <breadcrumb />
   <div id="vditor" class="vditor" />
 </template>
 
 <script lang="ts">
 import Vditor from 'vditor';
+import { Breadcrumb } from '@/components/common/index';
 import { defaultOptions } from '@/settings/editor';
 import 'vditor/src/assets/scss/index.scss';
 
 export default {
-  components: {},
+  components: {
+    Breadcrumb
+  },
   data() {
     return {
       vditor: null

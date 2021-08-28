@@ -1,7 +1,7 @@
-import sidebar from './sidebar';
+import nav from './nav';
 import editor from './editor';
 
 export default {
-  sidebar,
+  nav,
   editor
 };
