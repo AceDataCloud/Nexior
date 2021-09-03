@@ -20,9 +20,9 @@ export default defineConfig({
       include: ['**/*.md', '**/*.theme', 'highlight.js/styles/*.css']
     }),
     replace({
-      preventAssignment: true,
-      VDITOR_VERSION: JSON.stringify(pkg.dependencies.vditor.replace(/^[\^\~]/g, '')),
-      '_VDITOR_VERSION as VDITOR_VERSION': ''
+      preventAssignment: true
+      // VDITOR_VERSION: JSON.stringify(pkg.dependencies.vditor.replace(/^[\^\~]/g, '')),
+      // '_VDITOR_VERSION as VDITOR_VERSION': ''
     })
   ],
   resolve: {

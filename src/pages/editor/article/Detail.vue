@@ -9,10 +9,10 @@
 </template>
 
 <script lang="ts">
-import Vditor from 'vditor';
+import Vditor from '@/libs/vditor/src/index';
 import { Breadcrumb } from '@/components/common/index';
 import { defaultOptions } from '@/settings/editor';
-import 'vditor/src/assets/scss/index.scss';
+import '@/libs/vditor/src/assets/scss/index.scss';
 import { defineComponent } from 'vue';
 import { ArticleService } from '@/services';
 import { IArticle, IArticleDetailResponse } from '@/services/article/types';
@@ -81,18 +81,29 @@ export default defineComponent({
   box-shadow: 0 1px 7px #ddd;
   border: none;
   margin-bottom: 100px;
-  margin-top: 30px;
+  margin-top: 20px;
+}
+
+.vditor-toolbar-wrapper {
+  background-color: #f5f5f5;
+  width: 100%;
+  height: 35px;
+  position: fixed;
+  padding-left: 0 !important;
+  top: 60px;
+  z-index: 1000;
+  left: 0;
 }
 
 .vditor-toolbar {
   background-color: #f5f5f5;
   border-bottom: none;
-  position: fixed;
-  padding-left: 0 !important;
-  top: 65px;
-  z-index: 1000;
   left: 50%;
+  height: 35px;
+  position: absolute;
   transform: translateX(-50%);
+  width: 700px;
+  margin: auto;
 }
 
 .vditor-toolbar--pin {
