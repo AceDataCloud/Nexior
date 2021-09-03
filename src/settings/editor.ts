@@ -1,4 +1,4 @@
-import { Constants } from '@/libs/vditor/src/ts/constants';
+import { Constants } from '@/libs/vditor/ts/constants';
 export const defaultOptions = {
   after: undefined,
   cache: {
