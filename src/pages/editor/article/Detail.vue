@@ -9,10 +9,10 @@
 </template>
 
 <script lang="ts">
-import Vditor from '@/libs/vditor/src/index';
+import Vditor from '@/libs/vditor/index';
 import { Breadcrumb } from '@/components/common/index';
 import { defaultOptions } from '@/settings/editor';
-import '@/libs/vditor/src/assets/scss/index.scss';
+import '@/libs/vditor/assets/scss/index.scss';
 import { defineComponent } from 'vue';
 import { ArticleService } from '@/services';
 import { IArticle, IArticleDetailResponse } from '@/services/article/types';
