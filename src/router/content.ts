@@ -9,6 +9,12 @@ export default {
   component: () => import('@/layouts/Content.vue'),
   children: [
     {
+      path: '',
+      redirect: {
+        name: 'article-index'
+      }
+    },
+    {
       path: 'article',
       name: 'article-index',
       meta: {
