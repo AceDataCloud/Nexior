@@ -22,7 +22,7 @@ export default {
       meta: {
         title: t('common.nav.article')
       },
-      component: () => import('@/pages/editor/article/Detail.vue')
+      component: () => import('@/pages/content/article/Detail.vue')
     },
     {
       path: 'platform',

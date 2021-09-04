@@ -1,7 +1,7 @@
 <template>
   <el-container id="header" class="header">
     <el-aside width="250px">
-      <img src="@/assets/images/logo.png" class="logo" />
+      <img src="@/assets/images/logo.png" class="logo" @click="onHome" />
     </el-aside>
     <el-main>
       <el-row>
@@ -17,7 +17,9 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   name: 'TopHeader',
   data() {
     return {};
@@ -28,13 +30,18 @@ export default {
     }
   },
   methods: {
-    onSelect(val) {
+    onSelect(val: string) {
       this.$router.push({
         name: val
       });
+    },
+    onHome() {
+      this.$router.push({
+        name: 'home'
+      });
     }
   }
-};
+});
 </script>
 
 <style lang="scss">
@@ -52,6 +59,7 @@ export default {
     width: 130px;
     margin-left: 30px;
     margin-top: 15px;
+    cursor: pointer;
   }
   .el-main {
     padding: 0;
