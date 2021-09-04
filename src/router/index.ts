@@ -5,7 +5,9 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import('@/pages/Home.vue')
+    redirect: {
+      name: 'article-index'
+    }
   },
   content
 ];
