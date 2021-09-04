@@ -9,20 +9,20 @@ export default {
   component: () => import('@/layouts/Content.vue'),
   children: [
     {
-      path: 'editor',
-      name: 'editor',
-      meta: {
-        title: t('common.nav.editor')
-      },
-      component: () => import('@/pages/content/Editor.vue')
-    },
-    {
       path: 'article',
       name: 'article-index',
       meta: {
         title: t('common.nav.article')
       },
       component: () => import('@/pages/content/article/Index.vue')
+    },
+    {
+      path: 'article/:id',
+      name: 'article-detail',
+      meta: {
+        title: t('common.nav.article')
+      },
+      component: () => import('@/pages/editor/article/Detail.vue')
     },
     {
       path: 'platform',
