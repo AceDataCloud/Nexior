@@ -7,8 +7,7 @@
       <el-row>
         <el-col>
           <el-menu :default-active="active" class="el-menu-demo" mode="horizontal" @select="onSelect">
-            <el-menu-item index="home" v-t="'common.nav.home'" v-if="false"></el-menu-item>
-            <el-menu-item index="editor" v-t="'common.nav.editor'"></el-menu-item>
+            <el-menu-item index="/content" v-t="'common.nav.content'"></el-menu-item>
           </el-menu>
         </el-col>
       </el-row>
@@ -26,14 +25,13 @@ export default defineComponent({
   },
   computed: {
     active() {
-      return this.$route.name;
+      console.log('this.$route', this.$route);
+      return this.$route.matched[0].path;
     }
   },
   methods: {
     onSelect(val: string) {
-      this.$router.push({
-        name: val
-      });
+      this.$router.push(val);
     },
     onHome() {
       this.$router.push({

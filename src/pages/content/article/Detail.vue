@@ -1,6 +1,7 @@
 <template>
   <el-row :gutter="20">
     <el-col :span="16" :offset="4">
+      <loading :loading="loading" />
       <div class="px-4 pt-4">
         <div id="vditor" class="vditor" />
       </div>
@@ -10,7 +11,7 @@
 
 <script lang="ts">
 import Vditor from '@/libs/vditor/index';
-import { Breadcrumb } from '@/components/common/index';
+import { Breadcrumb, Loading } from '@/components/common/index';
 import { defaultOptions } from '@/settings/editor';
 import '@/libs/vditor/assets/scss/index.scss';
 import { defineComponent } from 'vue';
@@ -26,7 +27,8 @@ interface IData {
 
 export default defineComponent({
   components: {
-    Breadcrumb
+    Breadcrumb,
+    Loading
   },
   data(): IData {
     return {
@@ -37,6 +39,7 @@ export default defineComponent({
     };
   },
   async mounted() {
+    this.loading = true;
     ArticleService.get(this.id).then(({ data: data }: { data: IArticleDetailResponse }): void => {
       console.log('data', data);
       this.item = data;
