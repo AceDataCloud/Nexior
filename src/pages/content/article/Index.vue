@@ -55,7 +55,7 @@ export default defineComponent({
   methods: {
     onEdit(row: IArticle) {
       this.$router.push({
-        name: 'article-edit',
+        name: 'article-detail',
         params: {
           id: row.id
         }
