@@ -25,7 +25,6 @@ export default defineComponent({
   },
   computed: {
     active() {
-      console.log('this.$route', this.$route);
       return this.$route.matched[0].path;
     }
   },

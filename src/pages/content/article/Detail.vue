@@ -3,6 +3,7 @@
     <el-col :span="16" :offset="4">
       <loading :loading="loading" />
       <div class="px-4 pt-4">
+        <success-info v-model:show="succeed" :content="$t('content.message.saved')"></success-info>
         <div id="vditor" class="vditor" />
       </div>
     </el-col>
@@ -11,7 +12,7 @@
 
 <script lang="ts">
 import Vditor from '@/libs/vditor/index';
-import { Breadcrumb, Loading } from '@/components/common/index';
+import { Breadcrumb, Loading, SuccessInfo } from '@/components/common/index';
 import { defaultOptions } from '@/settings/editor';
 import '@/libs/vditor/assets/scss/index.scss';
 import { defineComponent } from 'vue';
@@ -23,35 +24,50 @@ interface IData {
   vditor: null | Vditor;
   item: null | IArticle;
   loading: boolean;
+  succeed: boolean;
 }
 
 export default defineComponent({
   components: {
     Breadcrumb,
-    Loading
+    Loading,
+    SuccessInfo
   },
   data(): IData {
     return {
       id: this.$route.params.id,
       vditor: null,
       item: null,
-      loading: false
+      loading: false,
+      succeed: false
     };
   },
   async mounted() {
     this.loading = true;
     ArticleService.get(this.id).then(({ data: data }: { data: IArticleDetailResponse }): void => {
-      console.log('data', data);
       this.item = data;
       this.loading = false;
-      if (this.vditor && this.item) {
-        this.vditor.setValue(this.item.content);
+      if (this.vditor?.initialized && this.item) {
+        this.vditor.setValue(this.item);
       }
     });
     this.initVditor();
+    this.listenKeyboard();
   },
   computed: {},
   methods: {
+    listenKeyboard() {
+      document.addEventListener(
+        'keydown',
+        (e) => {
+          if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+            e.preventDefault();
+            this.onSave();
+          }
+        },
+        false
+      );
+    },
     initVditor() {
       const options = {
         width: '100%',
@@ -61,11 +77,14 @@ export default defineComponent({
         icon: 'ant',
         debugger: false,
         after: () => {
-          if (this.vditor?.getValue) {
+          if (this.vditor?.getValue()) {
             return;
           }
           if (this.item?.content) {
-            this.vditor?.setValue(this.item.content);
+            if (!this.item.title) {
+              this.item.title = this.$t('content.text.notitle');
+            }
+            this.vditor?.setValue(this.item);
           }
         }
       };
@@ -73,7 +92,23 @@ export default defineComponent({
         ...defaultOptions,
         ...options
       });
-      // this.vditor.focus();
+    },
+    onSave() {
+      const title = this.vditor?.getTitle(this.$t('content.text.notitle'));
+      const content = this.vditor?.getContent();
+      ArticleService.update(this.id, {
+        title: title,
+        content: content
+      }).then(({ data: data }: { data: IArticleDetailResponse }): void => {
+        this.item = data;
+        if (this.vditor && this.item) {
+          if (!this.item.title) {
+            this.item.title = this.$t('content.text.notitle');
+          }
+          this.vditor.setValue(this.item);
+        }
+        this.succeed = true;
+      });
     }
   }
 });

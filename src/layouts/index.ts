@@ -1,4 +1,4 @@
 import LayoutHome from '@/layouts/Home.vue';
-import LayoutEditor from '@/layouts/Content.vue';
+import LayoutContent from '@/layouts/Content.vue';
 
-export { LayoutHome, LayoutEditor };
+export { LayoutHome, LayoutContent };

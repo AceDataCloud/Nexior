@@ -1,10 +1,10 @@
 export interface IArticle {
-  id: number;
-  title: string;
-  cover: string;
-  summary: string;
-  content: string;
-  updated_at: string;
+  id?: number;
+  title?: string | undefined;
+  cover?: string | undefined;
+  summary?: string | undefined;
+  content?: string | undefined;
+  updated_at?: string | undefined;
 }
 
 export interface IArticleListResponse {
