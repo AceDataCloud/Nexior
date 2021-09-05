@@ -38,6 +38,7 @@ import { renderDomByMd } from './ts/wysiwyg/renderDomByMd';
 
 class Vditor extends VditorMethod {
   public readonly version: string;
+  public initialized = false;
   public vditor: IVditor;
 
   /**
@@ -93,6 +94,24 @@ class Vditor extends VditorMethod {
       this.vditor.options.preview.hljs.style = codeTheme;
       setCodeTheme(codeTheme, this.vditor.options.cdn);
     }
+  }
+
+  public getTitle(defaultValue: string = '') {
+    const markdown = getMarkdown(this.vditor);
+    const result = /^\s?#\s{0,1}([^\n]*)\n/g.exec(markdown);
+    if (result && result.length > 1) {
+      return result[1] || defaultValue;
+    }
+    return defaultValue;
+  }
+
+  public getContent(defaultValue: string = '') {
+    const markdown = getMarkdown(this.vditor);
+    const result = /^(?:\s?#\s{0,1}[^\n]*\n?)?([\s\S]*)$/g.exec(markdown);
+    if (result && result.length > 1) {
+      return result[1] || defaultValue;
+    }
+    return defaultValue;
   }
 
   /** 获取 Markdown 内容 */
@@ -255,7 +274,9 @@ class Vditor extends VditorMethod {
   }
 
   /** 设置编辑器内容 */
-  public setValue(markdown: string, clearStack = false) {
+  public setValue({ title, content }: { title?: string; content?: string }, clearStack = false) {
+    const markdown = `# ${title || ''}\n${content || ''}`;
+
     if (this.vditor.currentMode === 'sv') {
       this.vditor.sv.element.innerHTML = this.vditor.lute.SpinVditorSVDOM(markdown);
       processSVAfterRender(this.vditor, {
@@ -456,9 +477,12 @@ class Vditor extends VditorMethod {
 
         initUI(this.vditor);
 
+        this.initialized = true;
+
         if (mergedOptions.after) {
           mergedOptions.after();
         }
+
         if (mergedOptions.icon) {
           // 防止初始化 2 个编辑器时加载 2 次
           addScriptSync(`${mergedOptions.cdn}/dist/js/icons/${mergedOptions.icon}.js`, 'vditorIconScript');

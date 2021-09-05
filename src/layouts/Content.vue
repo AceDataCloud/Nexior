@@ -40,7 +40,6 @@ export default defineComponent({
   name: 'LayoutContent',
   computed: {
     showSidebar(): boolean {
-      console.log('router', this.$route.name);
       return !this.isDetailRoute();
     },
     showFullHeight(): boolean {
