@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
 import content from './content';
+import auth from './auth';
 
 const routes = [
   {
@@ -9,7 +10,8 @@ const routes = [
       name: 'article-index'
     }
   },
-  content
+  content,
+  auth
 ];
 
 const router = createRouter({

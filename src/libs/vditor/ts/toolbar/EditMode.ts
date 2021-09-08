@@ -160,9 +160,10 @@ export class EditMode extends MenuItem {
     const panelElement = document.createElement('div');
     this.panelElement = panelElement;
     panelElement.className = `vditor-hint${menuItem.level === 2 ? '' : ' vditor-panel--arrow'}`;
-    panelElement.innerHTML = `<button data-mode="wysiwyg">${window.VditorI18n.wysiwyg} &lt;${updateHotkeyTip(
-      '⌥⌘7'
-    )}></button>
+    // panelElement.innerHTML = `<button data-mode="wysiwyg">${window.VditorI18n.wysiwyg} &lt;${updateHotkeyTip(
+    //   '⌥⌘7'
+    // )}></button>
+    panelElement.innerHTML = `
 <button data-mode="ir">${window.VditorI18n.instantRendering} &lt;${updateHotkeyTip('⌥⌘8')}></button>
 <button data-mode="sv">${window.VditorI18n.splitView} &lt;${updateHotkeyTip('⌥⌘9')}></button>`;
 
@@ -175,21 +176,21 @@ export class EditMode extends MenuItem {
     const actionBtn = this.element.children[0] as HTMLElement;
     toggleSubMenu(vditor, panelElement, actionBtn, menuItem.level);
 
-    this.panelElement.children.item(0).addEventListener(getEventName(), (event: Event) => {
-      // wysiwyg
-      setEditMode(vditor, 'wysiwyg', event);
-      event.preventDefault();
-      event.stopPropagation();
-    });
+    // this.panelElement.children.item(0).addEventListener(getEventName(), (event: Event) => {
+    //   // wysiwyg
+    //   setEditMode(vditor, 'wysiwyg', event);
+    //   event.preventDefault();
+    //   event.stopPropagation();
+    // });
 
-    this.panelElement.children.item(1).addEventListener(getEventName(), (event: Event) => {
+    this.panelElement.children.item(0).addEventListener(getEventName(), (event: Event) => {
       // ir
       setEditMode(vditor, 'ir', event);
       event.preventDefault();
       event.stopPropagation();
     });
 
-    this.panelElement.children.item(2).addEventListener(getEventName(), (event: Event) => {
+    this.panelElement.children.item(1).addEventListener(getEventName(), (event: Event) => {
       // markdown
       setEditMode(vditor, 'sv', event);
       event.preventDefault();
