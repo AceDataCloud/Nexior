@@ -31,8 +31,8 @@
 
 <script lang="ts">
 import { Breadcrumb } from '@/components/common/index';
-import PlatformService from '@/services/platform/service';
-import { IPlatform, IPlatformListResponse } from '@/services/platform/types';
+import PlatformService from '@/services/content/platform/service';
+import { IPlatform, IPlatformListResponse } from '@/services/content/platform/types';
 import { defineComponent } from 'vue';
 
 interface IData {

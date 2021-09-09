@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import httpClient from '../instance';
+import httpClient from '../../instance';
 import { IPlatform, IPlatformDetailResponse, IPlatformListResponse } from './types';
 
 class PlatformService {

@@ -1,3 +1,4 @@
-import ArticleService from './article/service';
+import ArticleService from './content/article/service';
+import PlatformService from './content/platform/service';
 
-export { ArticleService };
+export { ArticleService, PlatformService };
