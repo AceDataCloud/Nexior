@@ -1,13 +1,18 @@
 <template>
-  <el-main>
-    <router-view />
-  </el-main>
+  <el-container>
+    <el-main> <router-view /> </el-main>
+  </el-container>
 </template>
 
 <script lang="ts">
+import { TopHeader } from '@/components/common/index';
+
 import { defineComponent } from 'vue';
 
 export default defineComponent({
+  components: {
+    TopHeader
+  },
   data() {
     return {};
   },
@@ -19,8 +24,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .el-main {
-  // background-color: #283443;
-  height: 100%;
-  width: 100%;
+  height: calc(100vh);
 }
 </style>

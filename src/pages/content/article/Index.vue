@@ -25,8 +25,8 @@
 
 <script lang="ts">
 import { Breadcrumb } from '@/components/common/index';
-import ArticleService from '@/services/article/service';
-import { IArticle, IArticleListResponse } from '@/services/article/types';
+import ArticleService from '@/services/content/article/service';
+import { IArticle, IArticleListResponse } from '@/services/content/article/types';
 import { defineComponent } from 'vue';
 
 interface IData {

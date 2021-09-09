@@ -16,8 +16,8 @@ import { Breadcrumb, Loading, SuccessInfo } from '@/components/common/index';
 import { defaultOptions } from '@/settings/editor';
 import '@/libs/vditor/assets/scss/index.scss';
 import { defineComponent } from 'vue';
-import { ArticleService } from '@/services';
-import { IArticle, IArticleDetailResponse } from '@/services/article/types';
+import ArticleService from '@/services/content/article/service';
+import { IArticle, IArticleDetailResponse } from '@/services/content/article/types';
 
 interface IData {
   id: string | string[];

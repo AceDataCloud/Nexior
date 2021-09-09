@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import httpClient from '../instance';
+import httpClient from '../../instance';
 import { IArticle, IArticleDetailResponse, IArticleListResponse } from './types';
 
 class ArticleService {
