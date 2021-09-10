@@ -64,3 +64,9 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.el-card {
+  height: calc(100vh - 100px);
+}
+</style>

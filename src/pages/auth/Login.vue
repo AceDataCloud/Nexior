@@ -55,7 +55,7 @@ export default defineComponent({
       UserService.get(id).then(async ({ data }: { data: IUserDetailResponse }) => {
         await this.$store.dispatch('setUser', data as IUser);
         this.$router.push({
-          name: 'home'
+          path: this.$route.query.redirect ? this.$route.query.redirect.toString() : '/'
         });
       });
     },
