@@ -43,6 +43,9 @@ const store = createStore({
     },
     setAccessToken({ commit }: ActionContext<IState, IState>, payload: string) {
       commit('setAccessToken', payload);
+    },
+    setUser({ commit }: ActionContext<IState, IState>, payload: IUser) {
+      commit('setUser', payload);
     }
   }
 });
