@@ -1,10 +1,7 @@
 import { createStore, ActionContext } from 'vuex';
+import { IUser } from '@/services/common/user/types';
 
-interface IUser {
-  id: string;
-}
-
-interface IState {
+export interface IState {
   count: number;
   accessToken: string | undefined;
   refreshToken: string | undefined;
@@ -46,6 +43,17 @@ const store = createStore({
     },
     setUser({ commit }: ActionContext<IState, IState>, payload: IUser) {
       commit('setUser', payload);
+    }
+  },
+  getters: {
+    authenticated(state) {
+      return !!state.accessToken;
+    },
+    accessToken(state) {
+      return state.accessToken;
+    },
+    refreshToken(state) {
+      return state.refreshToken;
     }
   }
 });

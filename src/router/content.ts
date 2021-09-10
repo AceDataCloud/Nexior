@@ -4,7 +4,8 @@ export default {
   path: '/content',
   name: 'content',
   meta: {
-    title: t('common.nav.content')
+    title: t('common.nav.content'),
+    auth: true
   },
   component: () => import('@/layouts/Content.vue'),
   children: [

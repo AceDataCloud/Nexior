@@ -10,7 +10,7 @@ export default {
   children: [
     {
       path: 'login',
-      name: 'auth-login',
+      name: 'login',
       meta: {
         title: t('common.nav.article')
       },
