@@ -1,5 +1,6 @@
 import { createStore, ActionContext } from 'vuex';
 import { IUser } from '@/services/common/user/types';
+import createPersistedState from 'vuex-persistedstate';
 
 export interface IState {
   count: number;
@@ -18,16 +19,16 @@ const store = createStore({
     };
   },
   mutations: {
-    increment(state: IState) {
+    increment(state: IState): void {
       state.count++;
     },
-    setAccessToken(state: IState, payload: string) {
+    setAccessToken(state: IState, payload: string): void {
       state.accessToken = payload;
     },
-    setRefreshToken(state: IState, payload: string) {
+    setRefreshToken(state: IState, payload: string): void {
       state.refreshToken = payload;
     },
-    setUser(state: IState, payload: IUser) {
+    setUser(state: IState, payload: IUser): void {
       state.user = {
         ...state.user,
         ...payload
@@ -46,16 +47,20 @@ const store = createStore({
     }
   },
   getters: {
-    authenticated(state) {
+    authenticated(state): boolean {
       return !!state.accessToken;
     },
-    accessToken(state) {
+    accessToken(state): string | undefined {
       return state.accessToken;
     },
-    refreshToken(state) {
+    refreshToken(state): string | undefined {
       return state.refreshToken;
+    },
+    user(state): IUser | undefined {
+      return state.user;
     }
-  }
+  },
+  plugins: [createPersistedState()]
 });
 
 export default store;

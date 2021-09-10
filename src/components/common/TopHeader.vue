@@ -11,10 +11,13 @@
           </el-menu>
         </el-col>
         <el-col :span="4">
-          <div class="mt-4 pr-10">
+          <div class="mt-4 pr-10" v-if="!$store.getters.authenticated">
             <el-button type="primary" class="float-right" size="small" round @click="onLogin">{{
               $t('common.button.login')
             }}</el-button>
+          </div>
+          <div class="mt-3 pr-10 float-right" v-else>
+            <img :src="$store.getters.user?.avatar" class="avatar" />
           </div>
         </el-col>
       </el-row>
@@ -72,6 +75,11 @@ export default defineComponent({
   }
   .el-main {
     padding: 0;
+  }
+  .avatar {
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
   }
 }
 </style>
