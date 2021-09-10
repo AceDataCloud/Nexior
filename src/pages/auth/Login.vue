@@ -55,19 +55,11 @@ export default defineComponent({
       }
       // return;
       WechatService.getLoginStatus(this.ticket)
-        .then(
-          ({
-            data: {
-              access_token,
-              refresh_token,
-              user: { id }
-            }
-          }: {
-            data: IWechatLoginStatusResponse;
-          }) => {
-            this.$store.dispatch('setRefreshToken', refresh_token);
-          }
-        )
+        .then(({ data: { access_token, refresh_token, user } }: { data: IWechatLoginStatusResponse }) => {
+          this.$store.dispatch('setRefreshToken', refresh_token);
+          this.$store.dispatch('setAccessToken', access_token);
+          this.$store.dispatch('setUser', user);
+        })
         .catch((error) => {
           setTimeout(() => {
             this.detectLoginStatus();
