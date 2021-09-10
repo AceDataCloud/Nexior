@@ -14,7 +14,9 @@
 import { defineComponent } from 'vue';
 import QrCode from 'qrcode.vue';
 import WechatService from '@/services/common/wechat/service';
+import UserService from '@/services/common/user/service';
 import { IWechatQRCode, IWechatQRCodeResponse, IWechatLoginStatusResponse } from '@/services/common/wechat/types';
+import { IUserDetailResponse, IUser } from '@/services/common/user/types';
 
 interface IData {
   qrLink: string | undefined;
@@ -49,17 +51,35 @@ export default defineComponent({
         this.ticket = data.ticket;
       });
     },
+    getUserInfo(id: string) {
+      UserService.get(id).then(async ({ data }: { data: IUserDetailResponse }) => {
+        await this.$store.dispatch('setUser', data as IUser);
+        this.$router.push({
+          name: 'home'
+        });
+      });
+    },
     detectLoginStatus() {
       if (!this.ticket) {
         return;
       }
       // return;
       WechatService.getLoginStatus(this.ticket)
-        .then(({ data: { access_token, refresh_token, user } }: { data: IWechatLoginStatusResponse }) => {
-          this.$store.dispatch('setRefreshToken', refresh_token);
-          this.$store.dispatch('setAccessToken', access_token);
-          this.$store.dispatch('setUser', user);
-        })
+        .then(
+          async ({
+            data: {
+              access_token,
+              refresh_token,
+              user: { id }
+            }
+          }: {
+            data: IWechatLoginStatusResponse;
+          }) => {
+            await this.$store.dispatch('setRefreshToken', refresh_token);
+            await this.$store.dispatch('setAccessToken', access_token);
+            this.getUserInfo(id);
+          }
+        )
         .catch((error) => {
           setTimeout(() => {
             this.detectLoginStatus();
