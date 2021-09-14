@@ -17,7 +17,14 @@
             }}</el-button>
           </div>
           <div class="mt-3 pr-10 float-right" v-else>
-            <img :src="$store.getters.user?.avatar" class="avatar" />
+            <el-dropdown trigger="click">
+              <img :src="$store.getters.user?.avatar" class="avatar" />
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item @click="onLogout">{{ $t('common.button.logout') }}</el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
           </div>
         </el-col>
       </el-row>
@@ -51,6 +58,10 @@ export default defineComponent({
       this.$router.push({
         name: 'login'
       });
+    },
+    onLogout() {
+      this.$store.dispatch('resetAuth');
+      this.$router.push('/');
     }
   }
 });
@@ -75,6 +86,14 @@ export default defineComponent({
   }
   .el-main {
     padding: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    .el-menu {
+      .el-menu-item {
+        &.is-active {
+          border-bottom: 3px solid var(--el-color-primary);
+        }
+      }
+    }
   }
   .avatar {
     height: 40px;

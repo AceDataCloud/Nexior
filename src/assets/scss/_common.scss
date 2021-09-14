@@ -9,18 +9,17 @@ body {
 }
 
 #app {
-  background-color: #f5f5f5;
-  .el-menu {
-    border-right: none;
-  }
+  background-color: #f8f9fe;
 
   .el-card {
-    border: none;
-    border-radius: 12px;
+    word-wrap: break-word;
+    border-radius: 0.375rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15) !important;
   }
 
   .el-menu-item.is-active {
-    background-color: var(--el-menu-item-hover-fill);
+    // background-color: var(--el-menu-item-hover-fill);
   }
 
   .el-breadcrumb__inner a,

@@ -43,3 +43,14 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.el-menu {
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  .el-menu-item {
+    &.is-active {
+      border-left: 3px solid var(--el-color-primary);
+    }
+  }
+}
+</style>
