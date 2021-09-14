@@ -36,6 +36,11 @@ const store = createStore({
     }
   },
   actions: {
+    resetAuth({ commit }) {
+      commit('setRefreshToken', undefined);
+      commit('setAccessToken', undefined);
+      commit('setUser', undefined);
+    },
     setRefreshToken({ commit }: ActionContext<IState, IState>, payload: string) {
       commit('setRefreshToken', payload);
     },

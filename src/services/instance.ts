@@ -1,3 +1,4 @@
+import router from '@/router';
 import store from '@/store';
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
@@ -16,6 +17,20 @@ httpClient.interceptors.request.use((config) => {
   }
   return config;
 });
+
+httpClient.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    console.log('error', error);
+    if (error.response.status === 401) {
+      store.dispatch('resetAuth');
+      router.push('/');
+    }
+    return error;
+  }
+);
 
 // const httpClient = (options: AxiosRequestConfig): Promise<AxiosResponse> => instance.request(options);
 
