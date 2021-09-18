@@ -17,6 +17,7 @@
               </template>
             </el-table-column>
           </el-table>
+          <el-button @click="onCreate"> {{ $t('common.button.new') }}</el-button>
         </el-card>
       </div>
     </el-col>
@@ -26,7 +27,7 @@
 <script lang="ts">
 import { Breadcrumb } from '@/components/common/index';
 import ArticleService from '@/services/content/article/service';
-import { IArticle, IArticleListResponse } from '@/services/content/article/types';
+import { IArticle, IArticleListResponse, IArticleDetailResponse } from '@/services/content/article/types';
 import { defineComponent } from 'vue';
 
 interface IData {
@@ -59,6 +60,11 @@ export default defineComponent({
         params: {
           id: row.id
         }
+      });
+    },
+    onCreate() {
+      ArticleService.create({}).then(({ data: data }: { data: IArticleDetailResponse }): void => {
+        console.log('data', data);
       });
     }
   }

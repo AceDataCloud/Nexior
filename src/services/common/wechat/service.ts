@@ -6,13 +6,13 @@ class WechatService {
   key = 'wechat';
 
   async createQRCode4Login(): Promise<AxiosResponse<IWechatQRCodeResponse>> {
-    return await httpClient.post(`/${this.key}/qrcode`, {
+    return await httpClient.post(`/${this.key}/qrcode/`, {
       scene: 'login'
     });
   }
 
   async getLoginStatus(ticket: string): Promise<AxiosResponse<IWechatLoginStatusResponse>> {
-    return httpClient.post(`/${this.key}/auth`, {
+    return httpClient.post(`/${this.key}/auth/`, {
       ticket: ticket
     });
   }
