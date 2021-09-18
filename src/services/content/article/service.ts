@@ -6,7 +6,7 @@ class ArticleService {
   key = 'articles';
 
   async getAll(): Promise<AxiosResponse<IArticleListResponse>> {
-    return await httpClient.get(`/${this.key}`);
+    return await httpClient.get(`/${this.key}/`);
   }
 
   async get(id: string | string[]): Promise<AxiosResponse<IArticleDetailResponse>> {
@@ -14,7 +14,7 @@ class ArticleService {
   }
 
   async create(data: IArticle): Promise<AxiosResponse<IArticleDetailResponse>> {
-    return httpClient.post(`/${this.key}`, data);
+    return httpClient.post(`/${this.key}/`, data);
   }
 
   async update(id: string | string[], data: IArticle): Promise<AxiosResponse<IArticleDetailResponse>> {
