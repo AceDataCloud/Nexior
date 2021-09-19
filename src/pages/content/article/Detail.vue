@@ -150,6 +150,7 @@ export default defineComponent({
 }
 
 .vditor-reset {
+  min-height: 100vh;
   padding-top: 80px !important;
   padding-bottom: 80px !important;
   &:focus {

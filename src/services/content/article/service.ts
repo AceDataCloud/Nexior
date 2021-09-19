@@ -5,8 +5,8 @@ import { IArticle, IArticleDetailResponse, IArticleListResponse } from './types'
 class ArticleService {
   key = 'articles';
 
-  async getAll(): Promise<AxiosResponse<IArticleListResponse>> {
-    return await httpClient.get(`/${this.key}/`);
+  async getAll(offset: number = 0, limit: number = 10): Promise<AxiosResponse<IArticleListResponse>> {
+    return await httpClient.get(`/${this.key}/?limit=${limit}&offset=${offset}`);
   }
 
   async get(id: string | string[]): Promise<AxiosResponse<IArticleDetailResponse>> {
