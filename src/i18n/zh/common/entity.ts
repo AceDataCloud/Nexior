@@ -5,5 +5,6 @@ export default {
   status: '状态',
   operation: '操作',
   description: '描述',
+  createdAt: '创建时间',
   updatedAt: '更新时间'
 };

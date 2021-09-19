@@ -1,5 +1,5 @@
 export interface IArticle {
-  id?: number;
+  id?: string;
   title?: string | undefined;
   cover?: string | undefined;
   summary?: string | undefined;

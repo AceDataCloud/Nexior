@@ -11,6 +11,11 @@
           >
           <el-table :data="items" v-loading="loading">
             <el-table-column prop="title" :label="$t('common.entity.title')"> </el-table-column>
+            <el-table-column prop="created_at" :label="$t('common.entity.createdAt')">
+              <template #default="scope">
+                {{ $dayjs.format(scope.row.created_at) }}
+              </template>
+            </el-table-column>
             <el-table-column prop="updated_at" :label="$t('common.entity.updatedAt')">
               <template #default="scope">
                 {{ $dayjs.format(scope.row.updated_at) }}
@@ -20,6 +25,9 @@
               <template #default="scope">
                 <el-button @click="onEdit(scope.row)" round type="primary" size="mini">
                   {{ $t('common.button.edit') }}
+                </el-button>
+                <el-button @click="onDelete(scope.row)" round type="danger" size="mini">
+                  {{ $t('common.button.delete') }}
                 </el-button>
               </template>
             </el-table-column>
@@ -88,6 +96,20 @@ export default defineComponent({
         params: {
           id: row.id
         }
+      });
+    },
+    onDelete(row: IArticle) {
+      this.$confirm(this.$t('common.message.confirmDelete'), this.$t('common.button.info'), {
+        confirmButtonText: this.$t('common.button.confirm'),
+        cancelButtonText: this.$t('common.button.cancel'),
+        type: 'warning'
+      }).then(() => {
+        if (!row.id) {
+          return;
+        }
+        ArticleService.delete(row.id).then((): void => {
+          this.items = this.items.filter((item) => item.id !== row.id);
+        });
       });
     },
     onCreate() {
