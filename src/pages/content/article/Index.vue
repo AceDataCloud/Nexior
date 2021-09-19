@@ -11,7 +11,11 @@
           >
           <el-table :data="items" v-loading="loading">
             <el-table-column prop="title" :label="$t('common.entity.title')"> </el-table-column>
-            <el-table-column prop="updated_at" :label="$t('common.entity.updatedAt')"> </el-table-column>
+            <el-table-column prop="updated_at" :label="$t('common.entity.updatedAt')">
+              <template #default="scope">
+                {{ $dayjs.format(scope.row.updated_at) }}
+              </template>
+            </el-table-column>
             <el-table-column :label="$t('common.entity.operation')">
               <template #default="scope">
                 <el-button @click="onEdit(scope.row)" round type="primary" size="mini">
