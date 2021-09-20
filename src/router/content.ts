@@ -32,6 +32,14 @@ export default {
       component: () => import('@/pages/content/article/Detail.vue')
     },
     {
+      path: 'article/:id/publish',
+      name: 'article-publish',
+      meta: {
+        title: t('common.nav.article')
+      },
+      component: () => import('@/pages/content/article/Publish.vue')
+    },
+    {
       path: 'platform',
       name: 'platform-index',
       meta: {

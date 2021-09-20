@@ -8,5 +8,6 @@ export default {
   confirm: '确定',
   cancel: '取消',
   alert: '警告',
-  info: '提示'
+  info: '提示',
+  publish: '发布'
 };
