@@ -12,17 +12,23 @@ interface IData {
   socket: WebSocket | undefined;
   inputValue: string;
   chatValue: string;
+  id: string;
 }
 export default defineComponent({
   data(): IData {
     return {
+      id: this.$route.params.id.toString(),
       socket: undefined,
       inputValue: '',
       chatValue: ''
     };
   },
   mounted() {
-    this.socket = new WebSocket('ws://localhost:8000/ws/chat/1');
+    this.socket = new WebSocket(
+      `${window.location.protocol === 'https:' ? 'wss://' : 'ws://'}/${window.location.host}/ws/publish/${
+        this.id
+      }?access_token=${this.$store.getters.accessToken}`
+    );
     this.socket.onmessage = this.onMessage;
   },
   methods: {
