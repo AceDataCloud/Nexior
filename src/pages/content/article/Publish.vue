@@ -4,6 +4,9 @@
   </p>
   <el-input v-model="inputValue"> </el-input>
   <el-button @click="onSend"> Send </el-button>
+  <el-button @click="onLaunch()"> Launch </el-button>
+  <el-button @click="onOpen('https://www.baidu.com')"> Open </el-button>
+  <el-button @click="onClose"> Close </el-button>
 </template>
 
 <script lang="ts">
@@ -36,6 +39,39 @@ export default defineComponent({
       console.log('e');
       const data = JSON.parse(e.data);
       this.chatValue += data.message;
+    },
+    onLaunch() {
+      if (!this.socket) {
+        return;
+      }
+      this.socket.send(
+        JSON.stringify({
+          command: 'launch'
+        })
+      );
+    },
+    onOpen(url: string) {
+      if (!this.socket) {
+        return;
+      }
+      this.socket.send(
+        JSON.stringify({
+          command: 'open',
+          payload: {
+            url: url
+          }
+        })
+      );
+    },
+    onClose() {
+      if (!this.socket) {
+        return;
+      }
+      this.socket.send(
+        JSON.stringify({
+          command: 'close'
+        })
+      );
     },
     onSend() {
       if (!this.socket) {
