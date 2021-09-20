@@ -26,6 +26,9 @@
                 <el-button @click="onEdit(scope.row)" round type="primary" size="mini">
                   {{ $t('common.button.edit') }}
                 </el-button>
+                <el-button @click="onPublish(scope.row)" round type="success" size="mini">
+                  {{ $t('common.button.publish') }}
+                </el-button>
                 <el-button @click="onDelete(scope.row)" round type="danger" size="mini">
                   {{ $t('common.button.delete') }}
                 </el-button>
@@ -88,6 +91,14 @@ export default defineComponent({
         this.total = data.count;
         this.items = data.results;
         this.loading = false;
+      });
+    },
+    onPublish(row: IArticle) {
+      this.$router.push({
+        name: 'article-publish',
+        params: {
+          id: row.id
+        }
       });
     },
     onEdit(row: IArticle) {
