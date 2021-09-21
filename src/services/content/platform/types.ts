@@ -1,6 +1,7 @@
 export interface IPlatform {
   id: number;
   name: string;
+  alias: string;
   description?: string;
 }
 

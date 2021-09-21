@@ -6,6 +6,15 @@
           <div class="mb-5">
             <breadcrumb />
           </div>
+          <div class="mb-4">
+            <el-alert
+              :title="$t('content.message.extensionNotInstalled')"
+              type="warning"
+              show-icon
+              v-if="extensionInstalled"
+            >
+            </el-alert>
+          </div>
           <el-table :data="items" v-loading="loading">
             <el-table-column prop="icon" :label="$t('common.entity.icon')">
               <template #default="scope">
@@ -14,10 +23,9 @@
             </el-table-column>
             <el-table-column prop="name" :label="$t('common.entity.platform')"> </el-table-column>
             <el-table-column prop="description" :label="$t('common.entity.description')"> </el-table-column>
-            <el-table-column :label="$t('common.entity.status')"> </el-table-column>
             <el-table-column :label="$t('common.entity.operation')">
               <template #default="scope">
-                <el-button @click="onSetup(scope.row)" round type="primary" size="small">
+                <el-button @click="onSetup(scope.row.alias)" round type="primary" size="small">
                   {{ $t('common.button.setup') }}
                 </el-button>
               </template>
@@ -34,6 +42,7 @@ import { Breadcrumb } from '@/components/common/index';
 import PlatformService from '@/services/content/platform/service';
 import { IPlatform, IPlatformListResponse } from '@/services/content/platform/types';
 import { defineComponent } from 'vue';
+import { getDomainByAlias, IAlias } from '@/settings/platform';
 
 interface IData {
   items: IPlatform[];
@@ -50,6 +59,17 @@ export default defineComponent({
       loading: false
     };
   },
+  computed: {
+    extensionInstalled() {
+      return document.getElementById('extension-id');
+    },
+    extensionId() {
+      return document.getElementById('extension-id')?.getAttribute('value');
+    },
+    extensionVersion() {
+      return document.getElementById('extension-version')?.getAttribute('value');
+    }
+  },
   async mounted() {
     this.loading = true;
     PlatformService.getAll().then(({ data: data }: { data: IPlatformListResponse }): void => {
@@ -59,8 +79,17 @@ export default defineComponent({
     });
   },
   methods: {
-    onSetup(row) {
-      console.log('333');
+    onSetup(alias: string) {
+      const domain = getDomainByAlias(alias as IAlias);
+      if (window.hasOwnProperty('chrome') && this.extensionId) {
+        chrome.runtime.sendMessage(this.extensionId?.toString(), { command: 'getCookies', domain }, (cookies) => {
+          console.log(cookies);
+          this.$store.dispatch('setCookies', {
+            alias,
+            value: cookies
+          });
+        });
+      }
     }
   }
 });
