@@ -2,15 +2,14 @@ import { createStore, ActionContext } from 'vuex';
 import { IUser } from '@/services/common/user/types';
 import createPersistedState from 'vuex-persistedstate';
 import { IAlias as IPlatformAlias, PLATFORM_ALIAS_JUEJIN } from '@/settings/platform';
+import { ICookie, ICookieStore } from '@/types/cookie';
 
 export interface IState {
   count: number;
   accessToken: string | undefined;
   refreshToken: string | undefined;
   user: IUser | undefined;
-  cookies: {
-    [PLATFORM_ALIAS_JUEJIN]: string;
-  };
+  cookies: ICookieStore;
 }
 
 const store = createStore({
@@ -20,9 +19,7 @@ const store = createStore({
       accessToken: undefined,
       refreshToken: undefined,
       user: undefined,
-      cookies: {
-        [PLATFORM_ALIAS_JUEJIN]: ''
-      }
+      cookies: {}
     };
   },
   mutations: {
@@ -45,12 +42,12 @@ const store = createStore({
       state: IState,
       payload: {
         alias: IPlatformAlias;
-        value: Array<any>;
+        value: ICookie[];
       }
     ): void {
       console.log('cookies', payload);
       console.log('cookies', JSON.stringify(payload.value));
-      state.cookies[payload.alias] = JSON.stringify(payload.value);
+      state.cookies[payload.alias] = payload.value;
     }
   },
   actions: {
@@ -72,7 +69,7 @@ const store = createStore({
       { commit }: ActionContext<IState, IState>,
       payload: {
         alias: IPlatformAlias;
-        value: Array<any>;
+        value: ICookie[];
       }
     ) {
       console.log('setCookies', payload);
@@ -92,9 +89,9 @@ const store = createStore({
     user(state): IUser | undefined {
       return state.user;
     },
-    cookies(state) {
-      return (alias: string) => {
-        return JSON.parse(state.cookies[alias]);
+    cookies(state): (alias: string) => ICookie[] | undefined {
+      return (alias: string): ICookie[] | undefined => {
+        return state.cookies[alias];
       };
     }
   },
