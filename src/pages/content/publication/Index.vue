@@ -1,5 +1,7 @@
 <template>
-  <el-row :gutter="20"> </el-row>
+  <el-row :gutter="20">
+
+  </el-row>
 </template>
 
 <script lang="ts">
