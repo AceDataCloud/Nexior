@@ -12,18 +12,25 @@
       </el-icon>
       <template #title>{{ $t('content.nav.platform') }}</template>
     </el-menu-item>
+    <el-menu-item index="publication-index">
+      <el-icon class="mr-2">
+        <magic-stick />
+      </el-icon>
+      <template #title>{{ $t('content.nav.publication') }}</template>
+    </el-menu-item>
   </el-menu>
 </template>
 
 <script lang="ts">
-import { Document, Box } from '@element-plus/icons';
+import { Document, Box, MagicStick } from '@element-plus/icons';
 import routes from '@/router/content';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
   components: {
     Document,
-    Box
+    Box,
+    MagicStick
   },
   data() {
     return {

@@ -46,6 +46,14 @@ export default {
         title: t('common.nav.platform')
       },
       component: () => import('@/pages/content/platform/Index.vue')
+    },
+    {
+      path: 'publication',
+      name: 'publication-index',
+      meta: {
+        title: t('common.nav.publication')
+      },
+      component: () => import('@/pages/content/publication/Index.vue')
     }
   ]
 };
