@@ -1,5 +1,5 @@
 <template>
-  <el-menu class="h-full" :default-active="$route.name" @select="onSelect">
+  <el-menu class="h-full" :default-active="$route.name?.toString()" @select="onSelect">
     <el-menu-item index="article-index">
       <el-icon class="mr-2">
         <document />

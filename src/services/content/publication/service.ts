@@ -1,3 +1,4 @@
+import { DEFAULT_LIMIT } from '@/settings/article';
 import { AxiosResponse } from 'axios';
 import httpClient from '../../instance';
 import { IPublication, IPublicationDetailResponse, IPublicationListResponse, IPublicationCreateRequest } from './types';
@@ -5,8 +6,8 @@ import { IPublication, IPublicationDetailResponse, IPublicationListResponse, IPu
 class PublicationService {
   key = 'publications';
 
-  async getAll(): Promise<AxiosResponse<IPublicationListResponse>> {
-    return await httpClient.get(`/${this.key}/`);
+  async getAll(offset: number = 0, limit: number = DEFAULT_LIMIT): Promise<AxiosResponse<IPublicationListResponse>> {
+    return await httpClient.get(`/${this.key}/?limit=${limit}&offset=${offset}`);
   }
 
   async get(id: number): Promise<AxiosResponse<IPublicationDetailResponse>> {
