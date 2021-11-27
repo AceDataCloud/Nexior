@@ -44,7 +44,7 @@ export default defineComponent({
     }, 1000);
   },
   methods: {
-    onPageChange(val: number, oldVal: number) {
+    onPageChange(val: number, oldVal: number): void {
       // if not finshed loading, ignore the wrong emit event
       if (!this.loaded) {
         return;

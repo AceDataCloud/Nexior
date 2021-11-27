@@ -1,3 +1,4 @@
+import { DEFAULT_LIMIT } from '@/settings/article';
 import { AxiosResponse } from 'axios';
 import httpClient from '../../instance';
 import { IArticle, IArticleDetailResponse, IArticleListResponse } from './types';
@@ -5,7 +6,7 @@ import { IArticle, IArticleDetailResponse, IArticleListResponse } from './types'
 class ArticleService {
   key = 'articles';
 
-  async getAll(offset: number = 0, limit: number = 10): Promise<AxiosResponse<IArticleListResponse>> {
+  async getAll(offset: number = 0, limit: number = DEFAULT_LIMIT): Promise<AxiosResponse<IArticleListResponse>> {
     return await httpClient.get(`/${this.key}/?limit=${limit}&offset=${offset}`);
   }
 

@@ -6,5 +6,8 @@ export default {
   operation: '操作',
   description: '描述',
   createdAt: '创建时间',
-  updatedAt: '更新时间'
+  publishedAt: '发布时间',
+  publishAt: '开始发布时间',
+  updatedAt: '更新时间',
+  article: '文章'
 };
