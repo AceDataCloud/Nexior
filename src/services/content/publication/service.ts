@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import httpClient from '../../instance';
-import { IPublication, IPublicationDetailResponse, IPublicationListResponse } from './types';
+import { IPublication, IPublicationDetailResponse, IPublicationListResponse, IPublicationCreateRequest } from './types';
 
 class PublicationService {
   key = 'publications';
@@ -13,7 +13,7 @@ class PublicationService {
     return await httpClient.get(`/${this.key}/${id}`);
   }
 
-  async create(data: IPublication): Promise<AxiosResponse<IPublicationDetailResponse>> {
+  async create(data: IPublicationCreateRequest): Promise<AxiosResponse<IPublicationDetailResponse>> {
     return await httpClient.post(`/${this.key}/`, data);
   }
 

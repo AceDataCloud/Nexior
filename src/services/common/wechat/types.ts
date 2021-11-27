@@ -8,7 +8,7 @@ export interface IWechatQRCode {
 export interface IWechatQRCodeResponse extends IWechatQRCode {}
 
 export interface IWechatLoginStatusResponse {
-  refresh_token: string;
-  access_token: string;
+  refreshToken: string;
+  accessToken: string;
   user: IUser;
 }

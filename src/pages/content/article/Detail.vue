@@ -6,6 +6,12 @@
         <success-info v-model:show="succeed" :content="$t('content.message.saved')"></success-info>
         <div id="vditor" class="vditor" />
       </div>
+      <el-button type="primary" size="medium" round class="btn btn-publish" @click="publishing = true">
+        {{ $t('common.button.publish') }}
+      </el-button>
+      <el-dialog v-model="publishing">
+        <publication :article-id="id" />
+      </el-dialog>
     </el-col>
   </el-row>
 </template>
@@ -13,6 +19,7 @@
 <script lang="ts">
 import Vditor from '@/libs/vditor/index';
 import { Breadcrumb, Loading, SuccessInfo } from '@/components/common/index';
+import { Publication } from '@/components/content/index';
 import { defaultOptions } from '@/settings/editor';
 import '@/libs/vditor/assets/scss/index.scss';
 import { defineComponent } from 'vue';
@@ -20,26 +27,29 @@ import ArticleService from '@/services/content/article/service';
 import { IArticle, IArticleDetailResponse } from '@/services/content/article/types';
 
 interface IData {
-  id: string | string[];
+  id: string;
   vditor: null | Vditor;
   item: null | IArticle;
   loading: boolean;
   succeed: boolean;
+  publishing: boolean;
 }
 
 export default defineComponent({
   components: {
     Breadcrumb,
     Loading,
-    SuccessInfo
+    SuccessInfo,
+    Publication
   },
   data(): IData {
     return {
-      id: this.$route.params.id,
+      id: this.$route.params.id.toString(),
       vditor: null,
       item: null,
       loading: false,
-      succeed: false
+      succeed: false,
+      publishing: false
     };
   },
   async mounted() {
@@ -155,6 +165,14 @@ export default defineComponent({
   padding-bottom: 80px !important;
   &:focus {
     background-color: #fff !important;
+  }
+}
+
+.btn {
+  &.btn-publish {
+    position: fixed;
+    right: 100px;
+    bottom: 100px;
   }
 }
 </style>
