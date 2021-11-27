@@ -68,15 +68,15 @@ export default defineComponent({
         .then(
           async ({
             data: {
-              access_token,
-              refresh_token,
+              accessToken,
+              refreshToken,
               user: { id }
             }
           }: {
             data: IWechatLoginStatusResponse;
           }) => {
-            await this.$store.dispatch('setRefreshToken', refresh_token);
-            await this.$store.dispatch('setAccessToken', access_token);
+            await this.$store.dispatch('setRefreshToken', refreshToken);
+            await this.$store.dispatch('setAccessToken', accessToken);
             this.getUserInfo(id);
           }
         )

@@ -1,6 +1,7 @@
 import router from '@/router';
 import store from '@/store';
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { camelizeKeys, decamelizeKeys } from 'humps';
 
 const httpClient: AxiosInstance = axios.create({
   baseURL: '/api/v1',
@@ -12,14 +13,21 @@ const httpClient: AxiosInstance = axios.create({
 
 httpClient.interceptors.request.use((config) => {
   const accessToken = store.getters.accessToken;
+  console.log('accesstoken', accessToken);
   if (accessToken) {
     config.headers['Authorization'] = `Bearer ${accessToken}`;
+  }
+  if (config.data) {
+    config.data = decamelizeKeys(config.data);
   }
   return config;
 });
 
 httpClient.interceptors.response.use(
   (response) => {
+    if (response.data && response.headers['content-type'] === 'application/json') {
+      response.data = camelizeKeys(response.data);
+    }
     return response;
   },
   (error) => {

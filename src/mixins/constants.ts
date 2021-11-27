@@ -1,0 +1,22 @@
+import {
+  PUBLICATION_STATE_PENDING,
+  PUBLICATION_STATE_FINISHED,
+  PUBLICATION_STATE_RUNNING
+} from '@/services/content/publication/constants';
+
+interface IData {
+  PUBLICATION_STATE_PENDING: string;
+  PUBLICATION_STATE_RUNNING: string;
+  PUBLICATION_STATE_FINISHED: string;
+}
+
+export default {
+  name: 'Constants',
+  data(): IData {
+    return {
+      PUBLICATION_STATE_PENDING: PUBLICATION_STATE_PENDING,
+      PUBLICATION_STATE_RUNNING: PUBLICATION_STATE_RUNNING,
+      PUBLICATION_STATE_FINISHED: PUBLICATION_STATE_FINISHED
+    };
+  }
+};
