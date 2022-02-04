@@ -17,7 +17,7 @@ spec:
         app: zhishuyun-auth-frontend
     spec:
       containers:
-        - image: zhishuyun/auth-frontend:${TAG}
+        - image: ghcr.io/zhishuyun/zhishuyun-auth-frontend:${TAG}
           name: zhishuyun-auth-frontend
           ports:
             - containerPort: 80

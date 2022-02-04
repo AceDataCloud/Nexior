@@ -5,4 +5,4 @@ services:
     build: ./
     image: 'ghcr.io/zhishuyun/zhishuyun-auth-frontend:${BUILD_NUMBER}'
     ports:
-      - '8083:80'
+      - '8086:80'
