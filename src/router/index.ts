@@ -2,18 +2,11 @@ import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router
 import auth from './auth';
 import store from '@/store';
 
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    redirect: '/auth/login'
-  },
-  auth
-];
+const routes = [auth];
 
 const router = createRouter({
-  // history: createWebHistory(),
-  history: createWebHashHistory(),
+  history: createWebHistory(),
+  // history: createWebHashHistory(),
   routes
 });
 
