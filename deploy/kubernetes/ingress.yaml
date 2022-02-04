@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: ingress-zhishuyun-frontend
+  name: ingress-zhishuyun-auth-frontend
   namespace: zhishuyun
   annotations:
     kubernetes.io/ingress.class: 'nginx'
@@ -10,13 +10,13 @@ metadata:
 spec:
   tls:
     - hosts:
-        - www.zhishuyun.com
-      secretName: tls-www-zhishuyun-com
+        - auth.zhishuyun.com
+      secretName: tls-auth-zhishuyun-com
   rules:
-    - host: www.zhishuyun.com
+    - host: auth.zhishuyun.com
       http:
         paths:
           - backend:
-              serviceName: zhishuyun-frontend
+              serviceName: zhishuyun-auth-frontend
               servicePort: 8083
             path: /
