@@ -2,23 +2,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: zhishuyun-frontend
-  name: zhishuyun-frontend
+    app: zhishuyun-auth-frontend
+  name: zhishuyun-auth-frontend
   namespace: zhishuyun
 spec:
   replicas: 2
-  revisionHistoryLimit: 1
+  revisionHistoryLimit: 5
   selector:
     matchLabels:
-      app: zhishuyun-frontend
+      app: zhishuyun-auth-frontend
   template:
     metadata:
       labels:
-        app: zhishuyun-frontend
+        app: zhishuyun-auth-frontend
     spec:
       containers:
-        - image: zhishuyun/frontend:${TAG}
-          name: zhishuyun-frontend
+        - image: zhishuyun/auth-frontend:${TAG}
+          name: zhishuyun-auth-frontend
           ports:
             - containerPort: 80
           resources:
@@ -28,4 +28,6 @@ spec:
             limits:
               memory: '512Mi'
               cpu: '200m'
+      imagePullSecrets:
+        - name: docker-registry
       restartPolicy: Always

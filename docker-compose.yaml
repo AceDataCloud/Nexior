@@ -1,0 +1,8 @@
+version: '3'
+services:
+  zhishuyun-auth-frontend:
+    container_name: 'zhishuyun-auth-frontend'
+    build: ./
+    image: 'ghcr.io/zhishuyun/zhishuyun-auth-frontend:${BUILD_NUMBER}'
+    ports:
+      - '8083:80'
