@@ -15,13 +15,34 @@ import { defineComponent } from 'vue';
 import QrCode from 'qrcode.vue';
 import WechatService from '@/services/common/wechat/service';
 import UserService from '@/services/common/user/service';
-import { IWechatQRCode, IWechatQRCodeResponse, IWechatLoginStatusResponse } from '@/services/common/wechat/types';
+import { IWechatQRCodeResponse, IWechatLoginStatusResponse } from '@/services/common/wechat/types';
 import { IUserDetailResponse, IUser } from '@/services/common/user/types';
 
 interface IData {
   qrLink: string | undefined;
   ticket: string | undefined;
 }
+
+const openPostPage = (
+  url: string,
+  data: {
+    [key: string]: string;
+  }
+) => {
+  const form = document.createElement('form');
+  document.body.appendChild(form);
+  form.method = 'post';
+  form.action = url;
+  for (var name in data) {
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = name;
+    input.value = data[name];
+    form.appendChild(input);
+  }
+  form.submit();
+  document.body.removeChild(form);
+};
 
 export default defineComponent({
   name: 'Login',
@@ -54,8 +75,9 @@ export default defineComponent({
     getUserInfo(id: string) {
       UserService.get(id).then(async ({ data }: { data: IUserDetailResponse }) => {
         await this.$store.dispatch('setUser', data as IUser);
-        this.$router.push({
-          path: this.$route.query.redirect ? this.$route.query.redirect.toString() : '/'
+        const redirectTarget = this.$route.query.redirect ? this.$route.query.redirect.toString() : '/';
+        openPostPage(redirectTarget, {
+          accessToken: this.$store.getters.accessToken
         });
       });
     },
@@ -63,7 +85,6 @@ export default defineComponent({
       if (!this.ticket) {
         return;
       }
-      // return;
       WechatService.getLoginStatus(this.ticket)
         .then(
           async ({

@@ -13,10 +13,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { DEFAULT_LIMIT } from '@/settings/article';
 
 interface IData {
-  pageSize: number;
   loaded: boolean;
 }
 
@@ -28,11 +26,13 @@ export default defineComponent({
     },
     currentPage: {
       type: Number
+    },
+    pageSize: {
+      type: Number
     }
   },
   data(): IData {
     return {
-      pageSize: DEFAULT_LIMIT,
       loaded: false
     };
   },
