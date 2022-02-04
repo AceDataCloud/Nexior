@@ -1,31 +1,22 @@
 import { createStore, ActionContext } from 'vuex';
 import { IUser } from '@/services/common/user/types';
 import createPersistedState from 'vuex-persistedstate';
-import { IAlias as IPlatformAlias, PLATFORM_ALIAS_JUEJIN } from '@/settings/platform';
-import { ICookie, ICookieStore } from '@/types/cookie';
 
 export interface IState {
-  count: number;
   accessToken: string | undefined;
   refreshToken: string | undefined;
   user: IUser | undefined;
-  cookies: ICookieStore;
 }
 
 const store = createStore({
   state(): IState {
     return {
-      count: 0,
       accessToken: undefined,
       refreshToken: undefined,
-      user: undefined,
-      cookies: {}
+      user: undefined
     };
   },
   mutations: {
-    increment(state: IState): void {
-      state.count++;
-    },
     setAccessToken(state: IState, payload: string): void {
       state.accessToken = payload;
     },
@@ -37,17 +28,6 @@ const store = createStore({
         ...state.user,
         ...payload
       };
-    },
-    setCookies(
-      state: IState,
-      payload: {
-        alias: IPlatformAlias;
-        value: ICookie[];
-      }
-    ): void {
-      console.log('cookies', payload);
-      console.log('cookies', JSON.stringify(payload.value));
-      state.cookies[payload.alias] = payload.value;
     }
   },
   actions: {
@@ -64,16 +44,6 @@ const store = createStore({
     },
     setUser({ commit }: ActionContext<IState, IState>, payload: IUser) {
       commit('setUser', payload);
-    },
-    setCookies(
-      { commit }: ActionContext<IState, IState>,
-      payload: {
-        alias: IPlatformAlias;
-        value: ICookie[];
-      }
-    ) {
-      console.log('setCookies', payload);
-      commit('setCookies', payload);
     }
   },
   getters: {
@@ -88,11 +58,6 @@ const store = createStore({
     },
     user(state): IUser | undefined {
       return state.user;
-    },
-    cookies(state): (alias: string) => ICookie[] | undefined {
-      return (alias: string): ICookie[] | undefined => {
-        return state.cookies[alias];
-      };
     }
   },
   plugins: [createPersistedState()]

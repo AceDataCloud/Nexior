@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
-import content from './content';
 import auth from './auth';
 import store from '@/store';
 
@@ -7,11 +6,8 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    redirect: {
-      name: 'article-index'
-    }
+    redirect: '/auth/login'
   },
-  content,
   auth
 ];
 
