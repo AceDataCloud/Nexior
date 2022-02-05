@@ -1,8 +1,8 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: ingress-zhishuyun-auth-frontend
-  namespace: zhishuyun
+  name: ingress-zhishuyun-academy-frontend
+  namespace: zhishuyun-test
   annotations:
     kubernetes.io/ingress.class: 'nginx'
     nginx.ingress.kubernetes.io/ssl-redirect: 'true'
@@ -10,13 +10,13 @@ metadata:
 spec:
   tls:
     - hosts:
-        - auth.zhishuyun.com
-      secretName: tls-auth-zhishuyun-com
+        - academy.test.zhishuyun.com
+      secretName: tls-wildcard-test-zhishuyun-com
   rules:
-    - host: auth.zhishuyun.com
+    - host: academy.test.zhishuyun.com
       http:
         paths:
           - backend:
-              serviceName: zhishuyun-auth-frontend
+              serviceName: zhishuyun-academy-frontend
               servicePort: 8083
             path: /
