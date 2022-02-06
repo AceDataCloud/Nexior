@@ -9,13 +9,16 @@ body {
 }
 
 #app {
-  background-color: #f8f9fe;
+  background-color: #f7f8fc;
+
+  .el-main {
+    padding: 0 !important;
+  }
 
   .el-card {
     word-wrap: break-word;
     border-radius: 0.375rem;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15) !important;
+    border: none;
   }
 
   .el-menu-item.is-active {
@@ -25,5 +28,9 @@ body {
   .el-breadcrumb__inner a,
   .el-breadcrumb__inner.is-link {
     color: var(--el-text-color-regular);
+  }
+
+  .el-button {
+    border-radius: 9999px;
   }
 }
