@@ -3,7 +3,15 @@ import auth from './auth';
 import course from './course';
 import store from '@/store';
 
-const routes = [auth, course];
+const routes = [
+  {
+    path: '/',
+    name: 'index',
+    redirect: '/courses'
+  },
+  auth,
+  course
+];
 
 const router = createRouter({
   history: createWebHistory(),
