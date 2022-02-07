@@ -15,6 +15,6 @@ export default {
   components: {
     TopHeader
   },
-  name: 'LayoutCourse'
+  name: 'LayoutEpisode'
 };
 </script>

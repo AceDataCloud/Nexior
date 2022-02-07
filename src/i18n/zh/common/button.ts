@@ -9,5 +9,6 @@ export default {
   cancel: '取消',
   alert: '警告',
   info: '提示',
-  publish: '发布'
+  publish: '发布',
+  watch: '观看'
 };
