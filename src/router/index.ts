@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
 import auth from './auth';
 import course from './course';
+import episode from './episode';
 import store from '@/store';
 
 const routes = [
@@ -10,7 +11,8 @@ const routes = [
     redirect: '/courses'
   },
   auth,
-  course
+  course,
+  episode
 ];
 
 const router = createRouter({

@@ -13,7 +13,6 @@ const httpClient: AxiosInstance = axios.create({
 
 httpClient.interceptors.request.use((config) => {
   const accessToken = store.getters.accessToken;
-  console.log('accesstoken', accessToken);
   if (accessToken) {
     config.headers['Authorization'] = `Bearer ${accessToken}`;
   }
@@ -31,7 +30,6 @@ httpClient.interceptors.response.use(
     return response;
   },
   (error) => {
-    console.log('error', error);
     if (error.response.status === 401) {
       store.dispatch('resetAuth');
       router.push('/');

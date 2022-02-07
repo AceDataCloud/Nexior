@@ -3,18 +3,18 @@
     <el-col :span="24">
       <div class="wrapper">
         <div class="container">
-          <el-row v-if="course">
+          <el-row v-if="episode">
             <el-col :span="6"
               ><div class="thumbnail">
-                <img :src="course.thumbnail" />
+                <img :src="episode.thumbnail" />
               </div>
             </el-col>
             <el-col :span="18">
               <div class="title mb-5">
-                <p>{{ course.title }}</p>
+                <p>{{ episode.title }}</p>
               </div>
               <div class="introduction mb-5">
-                <p>{{ course.introduction }}</p>
+                <p>{{ episode.introduction }}</p>
               </div>
             </el-col>
           </el-row>
@@ -42,9 +42,9 @@
             <div class="introduction">
               <router-link
                 :to="{
-                  name: 'episode-detail',
+                  name: 'eposide-detail',
                   params: {
-                    courseId: course?.id,
+                    episodeId: episode?.id,
                     id: episode.id
                   }
                 }"
@@ -60,37 +60,30 @@
 </template>
 
 <script lang="ts">
-import { courseService } from '@/services/course/service';
-import { ICourse, ICourseDetailResponse } from '@/services/course/types';
 import { episodeService } from '@/services/episode/service';
-import { IEpisode, IEpisodeListResponse } from '@/services/episode/types';
+import { IEpisode, IEpisodeDetailResponse } from '@/services/episode/types';
 import { defineComponent } from 'vue';
 
 interface IData {
-  course: ICourse | undefined;
-  episodes: IEpisode[] | undefined;
+  episode: IEpisode | undefined;
   loading: boolean;
   id: number;
 }
 
 export default defineComponent({
-  name: 'CourseDetail',
+  name: 'EpisodeDetail',
   data(): IData {
     return {
       id: parseInt(this.$route.params.id.toString()),
-      course: undefined,
-      episodes: [],
+      episode: undefined,
       loading: false
     };
   },
   async mounted() {
     this.loading = true;
-    courseService.get(this.id).then(({ data: data }: { data: ICourseDetailResponse }) => {
+    episodeService.get(this.id).then(({ data: data }: { data: IEpisodeDetailResponse }) => {
       this.loading = false;
-      this.course = data;
-    });
-    episodeService.getAllForCourse(this.id).then(({ data: data }: { data: IEpisodeListResponse }) => {
-      this.episodes = data.items;
+      this.episode = data;
     });
   }
 });

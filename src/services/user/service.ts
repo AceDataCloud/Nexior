@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import httpClient from '../../instance';
+import httpClient from '../instance';
 import { IUserDetailResponse, IUser } from './types';
 
 class UserService {

@@ -1,5 +1,5 @@
 import { createStore, ActionContext } from 'vuex';
-import { IUser } from '@/services/common/user/types';
+import { IUser } from '@/services/user/types';
 import createPersistedState from 'vuex-persistedstate';
 
 export interface IState {
@@ -12,7 +12,7 @@ const store = createStore({
   state(): IState {
     return {
       accessToken:
-        'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ0MTk0ODIwLCJqdGkiOiIwMmVjMjRkMDQ0ZDU0NGI0OTcwNzdiMTM3MWNjYTM2OCIsInVzZXJfaWQiOjMsInBlcm1pc3Npb25zIjpbInZpZXdfYWNhZGVteV9jb3Vyc2UiXSwiaXNfc3VwZXJ1c2VyIjpmYWxzZX0.4dqI9QGplnPn2LqPDpJcKzlDlX6wzUibA1GHi8rNXts',
+        'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ0MjczMTExLCJqdGkiOiJiZDZjZWFlYTAwMDA0NDU2YmIwMWQ1MmYzYTI0YTA2NiIsInVzZXJfaWQiOjMsInBlcm1pc3Npb25zIjpbInZpZXdfYWNhZGVteV9jb3Vyc2UiXSwiaXNfc3VwZXJ1c2VyIjpmYWxzZX0.Eq_tlW9y4fJp_zNfBaCPUlUfEY96pvMHYVrcfSDPsk8',
       refreshToken: undefined,
       user: undefined
     };
