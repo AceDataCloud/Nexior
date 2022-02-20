@@ -1,13 +1,15 @@
 <template>
   <el-row>
-    <el-col :span="6">
-      <el-row class="side">
+    <el-col :span="6" class="side">
+      <el-row>
         <el-col :span="24">
           <episode-side-list :episodes="episodes"></episode-side-list>
         </el-col>
       </el-row>
     </el-col>
-    <el-col :span="18"> </el-col>
+    <el-col :span="18" class="main">
+      <episode-player :resource="episode?.resourceUrl" v-if="episode?.resourceUrl" :preview="episode?.thumbnail" />
+    </el-col>
   </el-row>
 </template>
 
@@ -16,6 +18,7 @@ import { episodeService } from '@/services/episode/service';
 import { IEpisode, IEpisodeDetailResponse, IEpisodeListResponse } from '@/services/episode/types';
 import { defineComponent } from 'vue';
 import EpisodeSideList from '@/components/episode/SideList.vue';
+import EpisodePlayer from '@/components/episode/Player.vue';
 
 interface IData {
   episode: IEpisode | undefined;
@@ -28,7 +31,8 @@ interface IData {
 export default defineComponent({
   name: 'EpisodeDetail',
   components: {
-    EpisodeSideList
+    EpisodeSideList,
+    EpisodePlayer
   },
   data(): IData {
     return {
@@ -53,10 +57,15 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+$width: 300px;
+
 .side {
   background-color: #0d131d;
   height: 100vh;
   overflow-y: scroll;
-  width: 300px;
+  width: $width;
+}
+.main {
+  width: calc(100% - $width);
 }
 </style>
