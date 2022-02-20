@@ -12,7 +12,7 @@ const store = createStore({
   state(): IState {
     return {
       accessToken:
-        'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ0MjczMTExLCJqdGkiOiJiZDZjZWFlYTAwMDA0NDU2YmIwMWQ1MmYzYTI0YTA2NiIsInVzZXJfaWQiOjMsInBlcm1pc3Npb25zIjpbInZpZXdfYWNhZGVteV9jb3Vyc2UiXSwiaXNfc3VwZXJ1c2VyIjpmYWxzZX0.Eq_tlW9y4fJp_zNfBaCPUlUfEY96pvMHYVrcfSDPsk8',
+        'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1MzcyNDgzLCJqdGkiOiIyYWFiNDRiOTdjMGE0NDg3OWZiYzI3MTZiYWM2YWY2YyIsInVzZXJfaWQiOjMsInBlcm1pc3Npb25zIjpbInZpZXdfYWNhZGVteV9jb3Vyc2UiXSwiaXNfc3VwZXJ1c2VyIjpmYWxzZX0.LWCZPAHB7Ask-FU_aZUTpCazN08KxBsbTLOsHakhpAY',
       refreshToken: undefined,
       user: undefined
     };
