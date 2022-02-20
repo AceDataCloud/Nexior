@@ -1,8 +1,5 @@
 <template>
   <el-container>
-    <el-header>
-      <top-header />
-    </el-header>
     <el-container>
       <el-main> <router-view /> </el-main>
     </el-container>
