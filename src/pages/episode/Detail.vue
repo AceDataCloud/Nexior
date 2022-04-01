@@ -3,7 +3,8 @@
     <el-col :span="6" class="side">
       <el-row>
         <el-col :span="24">
-          <episode-side-list :episodes="episodes"></episode-side-list>
+          <course-preview-card :course="course" v-if="course" />
+          <episode-side-list :episodes="episodes" :active="id" @choose="onChoose($event)" />
         </el-col>
       </el-row>
     </el-col>
@@ -19,29 +20,41 @@ import { IEpisode, IEpisodeDetailResponse, IEpisodeListResponse } from '@/servic
 import { defineComponent } from 'vue';
 import EpisodeSideList from '@/components/episode/SideList.vue';
 import EpisodePlayer from '@/components/episode/Player.vue';
+import CoursePreviewCard from '@/components/course/PreviewCard.vue';
+import { courseService } from '@/services/course/service';
+import { ICourse, ICourseDetailResponse } from '@/services/course/types';
 
 interface IData {
+  course: ICourse | undefined;
   episode: IEpisode | undefined;
   episodes: IEpisode[];
   loading: boolean;
-  id: number;
-  courseId: number;
+  // id: number;
+  // courseId: number;
 }
 
 export default defineComponent({
   name: 'EpisodeDetail',
   components: {
     EpisodeSideList,
-    EpisodePlayer
+    EpisodePlayer,
+    CoursePreviewCard
   },
   data(): IData {
     return {
-      id: parseInt(this.$route.params.id.toString()),
-      courseId: parseInt(this.$route.params.courseId.toString()),
+      course: undefined,
       episode: undefined,
       loading: false,
       episodes: []
     };
+  },
+  computed: {
+    id() {
+      return parseInt(this.$route.params.id.toString());
+    },
+    courseId() {
+      return parseInt(this.$route.params.courseId.toString());
+    }
   },
   async mounted() {
     this.loading = true;
@@ -52,6 +65,24 @@ export default defineComponent({
     episodeService.getAllForCourse(this.courseId).then(({ data: data }: { data: IEpisodeListResponse }) => {
       this.episodes = data.items;
     });
+    courseService.get(this.courseId).then(({ data: data }: { data: ICourseDetailResponse }) => {
+      this.course = data;
+    });
+  },
+  methods: {
+    onChoose(episode: IEpisode) {
+      console.log('e', episode);
+      this.$router.push({
+        ...this.$route,
+        params: {
+          id: episode.id,
+          courseId: this.courseId
+        }
+      });
+      episodeService.get(this.id).then(({ data: data }: { data: IEpisodeDetailResponse }) => {
+        this.episode = data;
+      });
+    }
   }
 });
 </script>

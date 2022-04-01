@@ -41,6 +41,7 @@
 import { courseService } from '@/services/course/service';
 import { ICourse, ICourseListResponse } from '@/services/course/types';
 import { defineComponent } from 'vue';
+
 interface IData {
   courses: ICourse[];
   loading: boolean;
@@ -55,6 +56,7 @@ export default defineComponent({
   },
   async mounted() {
     this.loading = true;
+    console.debug('start to load all courses');
     courseService.getAll().then(({ data: data }: { data: ICourseListResponse }) => {
       this.courses = data.items;
       this.loading = false;

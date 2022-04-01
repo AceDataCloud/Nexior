@@ -16,12 +16,13 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
-  // history: createWebHashHistory(),
+  // history: createWebHistory(),
+  history: createWebHashHistory(),
   routes
 });
 
 router.beforeEach((to, from, next) => {
+  console.log(to);
   if (to.matched.some((record) => record.meta.auth)) {
     if (!store.getters.authenticated) {
       next({
