@@ -1,24 +1,30 @@
 <template>
-  <el-row v-for="(episode, episodeIndex) in episodes" class="item">
-    <el-col :span="6" class="left">
-      <span class="index">
-        {{ episodeIndex }}
-      </span>
-    </el-col>
-    <el-col :span="18" class="right">
-      <p class="title">
-        {{ episode?.title }}
-      </p>
-      <p class="info">
-        <span class="duration">
-          <el-icon class="icon">
-            <clock />
-          </el-icon>
-          {{ episode.duration }}
+  <div class="wrapper">
+    <el-row
+      v-for="(episode, episodeIndex) in episodes"
+      @click="onClick(episode)"
+      :class="{ item: true, active: episode.id === active }"
+    >
+      <el-col :span="6" class="left">
+        <span class="index">
+          {{ episodeIndex + 1 }}
         </span>
-      </p>
-    </el-col>
-  </el-row>
+      </el-col>
+      <el-col :span="18" class="right">
+        <p class="title">
+          {{ episode?.title }}
+        </p>
+        <p class="info">
+          <span class="duration">
+            <el-icon class="icon">
+              <clock />
+            </el-icon>
+            {{ episode.duration }}
+          </span>
+        </p>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script lang="ts">
@@ -37,45 +43,67 @@ export default defineComponent({
       default() {
         return [];
       }
+    },
+    active: {
+      type: Number,
+      required: true
     }
   },
   mounted() {},
-  methods: {}
+  methods: {
+    onClick(episode: IEpisode) {
+      this.$emit('choose', episode);
+    }
+  }
 });
 </script>
 
 <style lang="scss">
-.item {
-  height: 60px;
-  padding-top: 10px;
-  color: white;
-  .left {
-    width: 30px;
-    color: inherit;
-    .index {
-      display: block;
+.wrapper {
+  padding: 0 10px;
+  .item {
+    cursor: pointer;
+    border-radius: 0.934rem;
+    width: 100%;
+    height: 60px;
+    padding-top: 10px;
+    color: white;
+    margin: 10px 0;
+    border: 1px solid #0d131d;
+    &.active,
+    &:hover {
+      background-color: rgba(50, 138, 241, 0.05);
+      border: 1px solid rgba(50, 138, 241, 0.25);
+    }
+    .left {
       width: 30px;
-      height: 30px;
-      text-align: center;
-      margin: auto;
-      border-radius: 50%;
-      font-size: 0.6em;
-      line-height: 30px;
-      background-image: linear-gradient(rgb(244, 72, 129), rgb(236, 69, 79));
-    }
-  }
-  .right {
-    width: calc(100% - 30px);
-    .title {
-      color: white;
-      font-size: 0.8em;
-      text-align: left;
-    }
-    .info {
-      .duration {
+      color: inherit;
+      .index {
+        display: block;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        margin: auto;
+        border-radius: 50%;
         font-size: 0.6em;
-        .icon {
-          display: inline-block;
+        margin-top: 5px;
+        line-height: 30px;
+        background-image: linear-gradient(rgb(244, 72, 129), rgb(236, 69, 79));
+      }
+    }
+    .right {
+      width: calc(100% - 30px);
+      .title {
+        color: white;
+        font-size: 0.8em;
+        text-align: left;
+      }
+      .info {
+        .duration {
+          font-size: 0.6em;
+          .icon {
+            display: inline-block;
+          }
         }
       }
     }

@@ -70,18 +70,21 @@ interface IData {
   course: ICourse | undefined;
   episodes: IEpisode[] | undefined;
   loading: boolean;
-  id: number;
 }
 
 export default defineComponent({
   name: 'CourseDetail',
   data(): IData {
     return {
-      id: parseInt(this.$route.params.id.toString()),
       course: undefined,
       episodes: [],
       loading: false
     };
+  },
+  computed: {
+    id() {
+      return parseInt(this.$route.params.id.toString());
+    }
   },
   async mounted() {
     this.loading = true;
