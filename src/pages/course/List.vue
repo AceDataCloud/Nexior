@@ -67,6 +67,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .courses {
+  padding: 50px;
   .course {
     width: 1200px;
     height: 360px;
