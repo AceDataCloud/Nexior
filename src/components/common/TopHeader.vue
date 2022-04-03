@@ -75,7 +75,7 @@ $height: 60px;
   width: 100%;
   background: radial-gradient(circle at 0 2%, #283e63, #172337 99%);
   .logo {
-    height: $height - 3px;
+    height: $height - 5px;
     width: 250px;
     cursor: pointer;
   }

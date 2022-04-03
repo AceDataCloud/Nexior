@@ -9,5 +9,6 @@ export default {
   publishedAt: '发布时间',
   publishAt: '开始发布时间',
   updatedAt: '更新时间',
-  article: '文章'
+  article: '文章',
+  minute: '分钟'
 };
