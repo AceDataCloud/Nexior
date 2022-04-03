@@ -4,9 +4,17 @@ import replace from '@rollup/plugin-replace';
 import pkg from './package.json';
 import { string } from 'rollup-plugin-string';
 import path from 'path';
+import fs from 'fs';
 
 export default defineConfig({
   server: {
+    open: true,
+    host: 'academy.local.zhishuyun.com',
+    port: 443,
+    https: {
+      key: fs.readFileSync('certs/academy.local.zhishuyun.com.cert.key'),
+      cert: fs.readFileSync('certs/academy.local.zhishuyun.com.cert.crt')
+    },
     proxy: {
       '/api': {
         target: 'http://localhost:8000',

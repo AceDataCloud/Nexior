@@ -30,8 +30,11 @@ export default defineComponent({
         this.$router.push(this.redirect);
       }
     } else {
-      const currentUrl = window.location.href;
-      const targetUrl = `https://auth.zhishuyun.com?redirect=${currentUrl}`;
+      const host = window.location.host;
+      const subDomain = import.meta.env.DEV ? 'test.zhishuyun.com' : host.substring(host.indexOf('.') + 1);
+      // callback url used to init access token and then redirect back of `redirect`
+      const callbackUrl = `https://${host}/auth/callback?redirect=${this.redirect}`;
+      const targetUrl = `https://auth.${subDomain}?redirect=${callbackUrl}`;
       window.location.href = targetUrl;
     }
   },
