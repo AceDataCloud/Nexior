@@ -29,7 +29,20 @@
   </el-row>
   <el-row class="episodes">
     <el-col :span="14" :offset="5">
-      <el-card shadow="hover" v-for="(episode, episodeIndex) in episodes" class="episode">
+      <el-card
+        shadow="hover"
+        v-for="(episode, episodeIndex) in episodes"
+        class="episode"
+        @click="
+          $router.push({
+            name: 'episode-detail',
+            params: {
+              courseId: course?.id,
+              id: episode.id
+            }
+          })
+        "
+      >
         <el-row>
           <el-col :span="3" class="left">
             <span class="index">
@@ -39,16 +52,7 @@
           <el-col :span="21" class="right">
             <div class="title">
               <p>
-                <router-link
-                  :to="{
-                    name: 'episode-detail',
-                    params: {
-                      courseId: course?.id,
-                      id: episode.id
-                    }
-                  }"
-                  >{{ episode.title }}
-                </router-link>
+                {{ episode.title }}
               </p>
             </div>
             <div class="introduction">
@@ -160,6 +164,7 @@ export default defineComponent({
 
 .episodes {
   .episode {
+    cursor: pointer;
     margin-top: 2rem;
     height: 100px;
     border-radius: 0.934rem !important;
