@@ -9,7 +9,12 @@
       </el-row>
     </el-col>
     <el-col :span="18" class="main">
-      <episode-player :resource="episode?.resourceUrl" v-if="episode?.resourceUrl" :preview="episode?.thumbnail" />
+      <!-- <episode-player :resource="episode?.resourceUrl" v-if="episode?.resourceUrl" :preview="episode?.thumbnail" /> -->
+      <episode-player
+        resource="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+        v-if="episode?.resourceUrl"
+        :preview="episode?.thumbnail"
+      />
     </el-col>
   </el-row>
 </template>
