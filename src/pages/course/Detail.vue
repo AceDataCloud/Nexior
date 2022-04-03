@@ -31,26 +31,34 @@
     <el-col :span="14" :offset="5">
       <el-card shadow="hover" v-for="(episode, episodeIndex) in episodes" class="episode">
         <el-row>
-          <el-col :span="3"> {{ episodeIndex + 1 }}</el-col>
-          <el-col :span="21">
+          <el-col :span="3" class="left">
+            <span class="index">
+              {{ episodeIndex + 1 }}
+            </span>
+          </el-col>
+          <el-col :span="21" class="right">
             <div class="title">
-              <p>{{ episode.title }}</p>
+              <p>
+                <router-link
+                  :to="{
+                    name: 'episode-detail',
+                    params: {
+                      courseId: course?.id,
+                      id: episode.id
+                    }
+                  }"
+                  >{{ episode.title }}
+                </router-link>
+              </p>
             </div>
             <div class="introduction">
               <p>{{ episode.introduction }}</p>
             </div>
-            <div class="introduction">
-              <router-link
-                :to="{
-                  name: 'episode-detail',
-                  params: {
-                    courseId: course?.id,
-                    id: episode.id
-                  }
-                }"
-              >
-                <el-button>{{ $t('common.button.watch') }}</el-button>
-              </router-link>
+            <div class="info">
+              <span class="duration">
+                <el-icon class="icon"> <clock /> </el-icon>
+                {{ episode.duration }} {{ $t('common.entity.minute') }}
+              </span>
             </div>
           </el-col>
         </el-row>
@@ -65,6 +73,7 @@ import { ICourse, ICourseDetailResponse } from '@/services/course/types';
 import { episodeService } from '@/services/episode/service';
 import { IEpisode, IEpisodeListResponse } from '@/services/episode/types';
 import { defineComponent } from 'vue';
+import { Clock } from '@element-plus/icons-vue';
 
 interface IData {
   course: ICourse | undefined;
@@ -80,6 +89,9 @@ export default defineComponent({
       episodes: [],
       loading: false
     };
+  },
+  components: {
+    Clock
   },
   computed: {
     id() {
@@ -149,18 +161,43 @@ export default defineComponent({
 .episodes {
   .episode {
     margin-top: 2rem;
-    height: 160px;
+    height: 100px;
     border-radius: 0.934rem !important;
+    .left {
+      .index {
+        width: 50px;
+        height: 50px;
+        background: #f8fafe;
+        display: block;
+        border-radius: 50%;
+        line-height: 50px;
+        text-align: center;
+        font-size: 20px;
+        border: 2px solid #e5e5e5;
+        position: absolute;
+        top: 5px;
+        left: 35px;
+      }
+    }
     .title {
       p {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         font-weight: bold;
+        margin-bottom: 10px;
       }
     }
     .introduction {
       p {
         font-size: 0.8rem;
         color: rgb(161, 161, 161);
+      }
+    }
+    .info {
+      font-size: 12px;
+      color: #666;
+      .icon {
+        position: relative;
+        top: 1px;
       }
     }
   }
