@@ -163,9 +163,10 @@ export default defineComponent({
 }
 
 .episodes {
+  padding: 50px;
   .episode {
     cursor: pointer;
-    margin-top: 2rem;
+    margin-bottom: 2rem;
     height: 100px;
     border-radius: 0.934rem !important;
     .left {

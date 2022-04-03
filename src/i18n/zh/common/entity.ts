@@ -1,4 +1,6 @@
 export default {
+  website: '知数云',
+  copyright: '版权所有',
   platform: '平台',
   title: '标题',
   icon: '图标',
