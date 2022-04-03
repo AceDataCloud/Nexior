@@ -17,7 +17,7 @@ export default defineComponent({
   },
   async mounted() {
     const host = window.location.host;
-    const subDomain = host.substring(host.indexOf('.') + 1);
+    const subDomain = import.meta.env.DEV ? 'test.zhishuyun.com' : host.substring(host.indexOf('.') + 1);
     // callback url used to init access token and then redirect back of `redirect`
     const callbackUrl = `https://${host}/auth/callback?redirect=${this.redirect}`;
     // redirect to auth service to get access token then redirect back

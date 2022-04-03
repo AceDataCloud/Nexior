@@ -2,9 +2,12 @@
   "name": "zhishuyun-auth",
   "version": "0.1.0",
   "scripts": {
-    "start": "vite --host",
+    "start": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "init:https": "yarn run init:ca && yarn run init:cert",
+    "init:ca": "npx mkcert create-ca --validity 36500 --key certs/academy.local.zhishuyun.com.ca.key --cert certs/academy.local.zhishuyun.com.ca.crt",
+    "init:cert": "npx mkcert create-cert --ca-key certs/academy.local.zhishuyun.com.ca.key --ca-cert certs/academy.local.zhishuyun.com.ca.crt --validity 36500 --key certs/academy.local.zhishuyun.com.cert.key --cert certs/academy.local.zhishuyun.com.cert.crt  --domains academy.local.zhishuyun.com"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^0.2.7",
@@ -33,6 +36,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-vue": "^7.17.0",
     "husky": "^7.0.2",
+    "mkcert": "^1.5.0",
     "postcss": "^8.3.6",
     "prettier": "^2.3.2",
     "rollup-plugin-string": "^3.0.0",

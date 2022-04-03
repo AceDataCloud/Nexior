@@ -1,6 +1,16 @@
 <template>
   <div class="card">
-    <div class="left">
+    <div
+      class="left"
+      @click="
+        $router.push({
+          name: 'course-detail',
+          params: {
+            id: $route.params.courseId
+          }
+        })
+      "
+    >
       <img :src="course.thumbnail" class="thumbnail" />
     </div>
     <div class="right">
@@ -37,6 +47,7 @@ export default defineComponent({
       text-align: center;
       width: 64px;
       height: 64px;
+      cursor: pointer;
     }
   }
   .right {
