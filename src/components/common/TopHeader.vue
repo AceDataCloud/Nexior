@@ -1,13 +1,13 @@
 <template>
   <el-container id="header" class="header">
     <el-aside width="250px">
-      <img src="@/assets/images/logo.png" class="logo" @click="onHome" />
+      <img src="@/assets/images/logo.svg" class="logo" @click="onHome" />
     </el-aside>
     <el-main>
       <el-row>
         <el-col :span="20">
           <el-menu :default-active="active" class="el-menu-demo" mode="horizontal" @select="onSelect">
-            <el-menu-item index="/content" v-t="'common.nav.content'"></el-menu-item>
+            <el-menu-item index="/courses" v-t="'common.nav.course'"></el-menu-item>
           </el-menu>
         </el-col>
         <el-col :span="4">
@@ -68,28 +68,31 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+$height: 60px;
 .header {
-  height: 60px;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
+  height: $height;
   z-index: 999;
   width: 100%;
-  height: 60px;
-  background: #fff;
+  background: radial-gradient(circle at 0 2%, #283e63, #172337 99%);
   .logo {
-    width: 130px;
-    margin-left: 30px;
-    margin-top: 15px;
+    height: $height - 3px;
+    width: 250px;
     cursor: pointer;
   }
   .el-main {
     padding: 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     .el-menu {
+      --el-menu-hover-bg-color: rgba(255, 255, 255, 0);
+      --el-menu-active-color: white;
+      background: none;
+      border: none;
       .el-menu-item {
+        height: $height;
+        color: white;
         &.is-active {
+          border-bottom: 3px solid var(--el-menu-active-color);
+        }
+        &:hover {
           border-bottom: 3px solid var(--el-color-primary);
         }
       }
