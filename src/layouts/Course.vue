@@ -18,3 +18,9 @@ export default {
   name: 'LayoutCourse'
 };
 </script>
+
+<style lang="scss">
+.el-header {
+  padding: 0;
+}
+</style>

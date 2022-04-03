@@ -7,7 +7,7 @@ import store from '@/store';
 const routes = [
   {
     path: '/',
-    name: 'index',
+    name: 'home',
     redirect: '/courses'
   },
   auth,
