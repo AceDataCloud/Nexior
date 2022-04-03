@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import replace from '@rollup/plugin-replace';
-import pkg from './package.json';
 import { string } from 'rollup-plugin-string';
 import path from 'path';
 import fs from 'fs';
@@ -20,6 +19,10 @@ export default defineConfig({
         target: 'http://localhost:8000',
         changeOrigin: true
       },
+      '/static': {
+        target: 'http://localhost:8000',
+        changeOrigin: true
+      },
       '/ws': {
         target: 'ws://localhost:8000',
         changeOrigin: true,
@@ -34,8 +37,6 @@ export default defineConfig({
     }),
     replace({
       preventAssignment: true
-      // VDITOR_VERSION: JSON.stringify(pkg.dependencies.vditor.replace(/^[\^\~]/g, '')),
-      // '_VDITOR_VERSION as VDITOR_VERSION': ''
     })
   ],
   resolve: {
