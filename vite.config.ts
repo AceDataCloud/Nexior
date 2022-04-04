@@ -2,8 +2,8 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import replace from '@rollup/plugin-replace';
 import { string } from 'rollup-plugin-string';
-import path from 'path';
-import fs from 'fs';
+import * as path from 'path';
+import * as fs from 'fs';
 
 export default defineConfig({
   server: {
