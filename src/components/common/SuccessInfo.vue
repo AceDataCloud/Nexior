@@ -1,5 +1,5 @@
 <template>
-  <el-alert :title="content" v-if="show" type="success" center :closable="false" show-icon class="alert-succcess-info">
+  <el-alert v-if="show" :title="content" type="success" center :closable="false" show-icon class="alert-succcess-info">
   </el-alert>
 </template>
 

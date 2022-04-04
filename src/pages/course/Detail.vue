@@ -30,8 +30,9 @@
   <el-row class="episodes">
     <el-col :span="14" :offset="5">
       <el-card
-        shadow="hover"
         v-for="(episode, episodeIndex) in episodes"
+        :key="episodeIndex"
+        shadow="hover"
         class="episode"
         @click="
           $router.push({
@@ -87,15 +88,15 @@ interface IData {
 
 export default defineComponent({
   name: 'CourseDetail',
+  components: {
+    Clock
+  },
   data(): IData {
     return {
       course: undefined,
       episodes: [],
       loading: false
     };
-  },
-  components: {
-    Clock
   },
   computed: {
     id() {

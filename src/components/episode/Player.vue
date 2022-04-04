@@ -1,6 +1,6 @@
 <template>
-  <vue-plyr :options="options" ref="plyr">
-    <video controls playsinline :data-poster="preview" ref="video"></video>
+  <vue-plyr ref="plyr" :options="options">
+    <video ref="video" controls playsinline :data-poster="preview"></video>
   </vue-plyr>
 </template>
 
@@ -27,16 +27,16 @@ export default defineComponent({
       type: String
     }
   },
+  data(): IData {
+    return {
+      options: {}
+    };
+  },
   mounted() {
     const video = this.$refs.video as HTMLMediaElement;
     const hls = new Hls();
     hls.loadSource(this.resource);
     hls.attachMedia(video);
-  },
-  data(): IData {
-    return {
-      options: {}
-    };
   }
 });
 </script>

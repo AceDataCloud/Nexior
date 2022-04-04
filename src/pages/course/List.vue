@@ -2,10 +2,17 @@
   <el-row>
     <el-col :span="20" :offset="2">
       <div class="courses">
-        <el-card shadow="hover" class="course" v-for="course in courses">
+        <el-card v-for="(course, courseIndex) in courses" :key="courseIndex" shadow="hover" class="course">
           <div class="content">
             <div class="tags mb-5">
-              <el-button size="small" type="danger" class="tag" v-for="tag in course.tags">{{ tag }}</el-button>
+              <el-button
+                v-for="(tag, tagIndex) in course.tags"
+                :key="tagIndex"
+                size="small"
+                type="danger"
+                class="tag"
+                >{{ tag }}</el-button
+              >
             </div>
             <div class="title mb-5">
               <p>{{ course.title }}</p>

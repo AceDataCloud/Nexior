@@ -7,16 +7,16 @@
       <el-row>
         <el-col :span="20">
           <el-menu :default-active="active" class="el-menu-demo" mode="horizontal" @select="onSelect">
-            <el-menu-item index="/courses" v-t="'common.nav.course'"></el-menu-item>
+            <el-menu-item v-t="'common.nav.course'" index="/courses"></el-menu-item>
           </el-menu>
         </el-col>
         <el-col :span="4">
-          <div class="mt-4 pr-10" v-if="!$store.getters.authenticated">
+          <div v-if="!$store.getters.authenticated" class="mt-4 pr-10">
             <el-button type="primary" class="float-right" size="small" round @click="onLogin">{{
               $t('common.button.login')
             }}</el-button>
           </div>
-          <div class="mt-3 pr-10 float-right" v-else>
+          <div v-else class="mt-3 pr-10 float-right">
             <el-dropdown trigger="click">
               <img :src="$store.getters.user?.avatar" class="avatar" />
               <template #dropdown>
