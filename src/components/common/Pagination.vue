@@ -2,11 +2,11 @@
   <el-pagination
     class="mt-3 mb-3"
     background
-    @currentChange="onPageChange"
     layout="prev, pager, next"
     :current-page="currentPage"
     :total="total"
     :page-size="pageSize"
+    @currentChange="onPageChange"
   >
   </el-pagination>
 </template>

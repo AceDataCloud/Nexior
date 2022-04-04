@@ -2,8 +2,9 @@
   <div class="wrapper">
     <el-row
       v-for="(episode, episodeIndex) in episodes"
-      @click="onClick(episode)"
+      :key="episodeIndex"
       :class="{ item: true, active: episode.id === active }"
+      @click="onClick(episode)"
     >
       <el-col :span="6" class="left">
         <span class="index">

@@ -5,18 +5,14 @@
 </template>
 
 <script lang="ts">
-import { TopHeader } from '@/components/common/index';
-
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  components: {
-    TopHeader
-  },
+  name: 'LayoutAuth',
+  components: {},
   data() {
     return {};
   },
-  name: 'LayoutAuth',
   computed: {},
   methods: {}
 });

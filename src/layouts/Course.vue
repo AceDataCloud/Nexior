@@ -14,11 +14,11 @@
 import { TopHeader } from '@/components/common/index';
 import BottomFooter from '@/components/common/BottomFooter.vue';
 export default {
+  name: 'LayoutCourse',
   components: {
     TopHeader,
     BottomFooter
-  },
-  name: 'LayoutCourse'
+  }
 };
 </script>
 

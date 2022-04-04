@@ -7,11 +7,8 @@
 </template>
 
 <script lang="ts">
-import { TopHeader } from '@/components/common/index';
 export default {
-  components: {
-    TopHeader
-  },
-  name: 'LayoutEpisode'
+  name: 'LayoutEpisode',
+  components: {}
 };
 </script>

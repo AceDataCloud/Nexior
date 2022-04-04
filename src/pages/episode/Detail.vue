@@ -3,13 +3,13 @@
     <el-col :span="6" class="side">
       <el-row>
         <el-col :span="24">
-          <course-preview-card :course="course" v-if="course" />
+          <course-preview-card v-if="course" :course="course" />
           <episode-side-list :episodes="episodes" :active="id" @choose="onChoose($event)" />
         </el-col>
       </el-row>
     </el-col>
     <el-col :span="18" class="main">
-      <episode-player :resource="episode?.resourceUrl" v-if="episode?.resourceUrl" :preview="episode?.thumbnail" />
+      <episode-player v-if="episode?.resourceUrl" :resource="episode?.resourceUrl" :preview="episode?.thumbnail" />
     </el-col>
   </el-row>
 </template>

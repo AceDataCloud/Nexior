@@ -7,7 +7,7 @@ import fs from 'fs';
 
 export default defineConfig({
   server: {
-    open: true,
+    // open: true,
     host: 'academy.local.zhishuyun.com',
     port: 443,
     https: {
@@ -45,6 +45,6 @@ export default defineConfig({
     }
   },
   build: {
-    sourcemap: true
+    sourcemap: process.env.NODE_ENV !== 'production'
   }
 });
