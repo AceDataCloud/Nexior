@@ -10,5 +10,6 @@ export default {
   alert: '警告',
   info: '提示',
   publish: '发布',
-  watch: '观看'
+  watch: '观看',
+  verify: '去实名认证'
 };

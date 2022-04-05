@@ -1,4 +1,5 @@
 <template>
+  <verification-alert v-if="!verified" />
   <el-row>
     <el-col :span="24">
       <div class="wrapper">
@@ -27,7 +28,7 @@
       <div class="banner"></div>
     </el-col>
   </el-row>
-  <el-row class="episodes">
+  <el-row :class="{ episodes: true, disabled: !verified }">
     <el-col :span="14" :offset="5">
       <el-card
         v-for="(episode, episodeIndex) in episodes"
@@ -79,6 +80,7 @@ import { episodeService } from '@/services/episode/service';
 import { IEpisode, IEpisodeListResponse } from '@/services/episode/types';
 import { defineComponent } from 'vue';
 import { Clock } from '@element-plus/icons-vue';
+import VerificationAlert from '@/components/common/VerificationAlert.vue';
 
 interface IData {
   course: ICourse | undefined;
@@ -89,7 +91,8 @@ interface IData {
 export default defineComponent({
   name: 'CourseDetail',
   components: {
-    Clock
+    Clock,
+    VerificationAlert
   },
   data(): IData {
     return {
@@ -99,12 +102,16 @@ export default defineComponent({
     };
   },
   computed: {
+    verified() {
+      return this.$store.getters.user.isVerified;
+    },
     id() {
       return parseInt(this.$route.params.id.toString());
     }
   },
   async mounted() {
     this.loading = true;
+
     courseService.get(this.id).then(({ data: data }: { data: ICourseDetailResponse }) => {
       this.loading = false;
       this.course = data;
@@ -163,8 +170,19 @@ export default defineComponent({
   height: 55px;
 }
 
+.verification-alert {
+  padding-top: 50px;
+  .go {
+    font-weight: bold;
+  }
+}
+
 .episodes {
-  padding: 50px;
+  padding: 50px 0;
+  &.disabled {
+    opacity: 0.2;
+    pointer-events: none;
+  }
   .episode {
     cursor: pointer;
     margin-bottom: 2rem;
