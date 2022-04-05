@@ -19,6 +19,10 @@ export default defineConfig({
         target: 'https://auth.test.zhishuyun.com',
         changeOrigin: true
       },
+      '/api/v1/token': {
+        target: 'https://auth.test.zhishuyun.com',
+        changeOrigin: true
+      },
       '/api': {
         target: 'http://localhost:8000',
         changeOrigin: true

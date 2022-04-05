@@ -48,6 +48,7 @@ export default defineComponent({
       episodes: []
     };
   },
+  
   computed: {
     id() {
       return parseInt(this.$route.params.id.toString());

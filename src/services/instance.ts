@@ -2,6 +2,7 @@ import router from '@/router';
 import store from '@/store';
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { camelizeKeys, decamelizeKeys } from 'humps';
+import { getCookie } from 'typescript-cookie';
 
 const httpClient: AxiosInstance = axios.create({
   baseURL: '/api/v1',
@@ -12,7 +13,7 @@ const httpClient: AxiosInstance = axios.create({
 });
 
 httpClient.interceptors.request.use((config) => {
-  const accessToken = store.getters.accessToken;
+  const accessToken = store.getters.accessToken || getCookie('ACCESS_TOKEN');
   if (accessToken) {
     config.headers['Authorization'] = `Bearer ${accessToken}`;
   }
