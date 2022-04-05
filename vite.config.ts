@@ -15,6 +15,10 @@ export default defineConfig({
       cert: fs.readFileSync('certs/academy.local.zhishuyun.com.cert.crt')
     },
     proxy: {
+      '/api/v1/me': {
+        target: 'https://auth.test.zhishuyun.com',
+        changeOrigin: true
+      },
       '/api': {
         target: 'http://localhost:8000',
         changeOrigin: true
