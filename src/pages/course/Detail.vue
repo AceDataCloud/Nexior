@@ -1,5 +1,5 @@
 <template>
-  <verification-alert v-if="!verified" />
+  <verification-alert />
   <el-row>
     <el-col :span="24">
       <div class="wrapper">
@@ -111,7 +111,6 @@ export default defineComponent({
   },
   async mounted() {
     this.loading = true;
-
     courseService.get(this.id).then(({ data: data }: { data: ICourseDetailResponse }) => {
       this.loading = false;
       this.course = data;
