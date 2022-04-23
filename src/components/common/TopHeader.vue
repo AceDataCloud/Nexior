@@ -18,7 +18,7 @@
           </div>
           <div v-else class="mt-3 pr-10 float-right">
             <el-dropdown trigger="click">
-              <img :src="$store.getters.user?.avatar" class="avatar" />
+              <img :src="avatar" class="avatar" />
               <template #dropdown>
                 <el-dropdown-menu>
                   <el-dropdown-item @click="onLogout">{{ $t('common.button.logout') }}</el-dropdown-item>
@@ -43,6 +43,15 @@ export default defineComponent({
   computed: {
     active() {
       return this.$route.matched[0].path;
+    },
+    user() {
+      return this.$store.getters.user;
+    },
+    avatar() {
+      if (this.user && this.user.avatar) {
+        return this.user.avatar;
+      }
+      return require('@/assets/images/avatar.png');
     }
   },
   methods: {
