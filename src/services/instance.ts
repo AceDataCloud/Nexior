@@ -35,7 +35,7 @@ httpClient.interceptors.response.use(
       store.dispatch('resetAuth');
       router.push('/');
     }
-    return error;
+    return Promise.reject(error);
   }
 );
 
