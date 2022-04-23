@@ -9,7 +9,7 @@ import { defineComponent } from 'vue';
 import VuePlyr from 'vue-plyr';
 import 'vue-plyr/dist/vue-plyr.css';
 import Hls from 'hls.js';
-import Plyr from 'plyr';
+// import Plyr from 'plyr';
 
 interface IData {
   options: {};
@@ -47,7 +47,7 @@ export default defineComponent({
   mounted() {
     this.mounted = true;
     const video = this.$refs.video as HTMLMediaElement;
-    this.player = (this.$refs.plyr as typeof VuePlyr).player as Plyr;
+    this.player = (this.$refs.plyr as typeof VuePlyr).player;
     this.hls = new Hls() as Hls;
     this.hls?.loadSource(this.resource);
     this.hls?.attachMedia(video);

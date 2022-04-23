@@ -18,7 +18,7 @@
           </div>
           <div v-else class="mt-3 pr-10 float-right">
             <el-dropdown trigger="click">
-              <img :src="avatar" class="avatar" />
+              <img :src="user.avatar || defaultAvatar" class="avatar" />
               <template #dropdown>
                 <el-dropdown-menu>
                   <el-dropdown-item @click="onLogout">{{ $t('common.button.logout') }}</el-dropdown-item>
@@ -34,11 +34,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-
+import defaultAvatar from '@/assets/images/avatar.png';
 export default defineComponent({
   name: 'TopHeader',
   data() {
-    return {};
+    return {
+      defaultAvatar
+      // defaultAvatar: new URL('@/assets/images/avatar.png', import.meta.url).href
+    };
   },
   computed: {
     active() {
@@ -46,12 +49,6 @@ export default defineComponent({
     },
     user() {
       return this.$store.getters.user;
-    },
-    avatar() {
-      if (this.user && this.user.avatar) {
-        return this.user.avatar;
-      }
-      return require('@/assets/images/avatar.png');
     }
   },
   methods: {
