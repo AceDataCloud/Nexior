@@ -5,5 +5,6 @@ export default {
   platform: '平台',
   article: '文章',
   publication: '发布',
-  course: '课程'
+  course: '课程',
+  category: '分类'
 };
