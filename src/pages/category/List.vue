@@ -62,7 +62,9 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .categories {
-  background-color: #0f1725;
+  // background-color: #0f1725;
+  background-image: radial-gradient(circle at 0 0, #223c6a, rgba(15, 23, 37, 0) 56%),
+    linear-gradient(180deg, #0f1725, #0f1725);
   padding: 40px 0;
   .category {
     width: 100%;
