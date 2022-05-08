@@ -17,6 +17,11 @@
               <div class="introduction mb-5">
                 <p>{{ course.introduction }}</p>
               </div>
+              <div class="operation">
+                <p>
+                  <el-button @click="onBuy">Buy</el-button>
+                </p>
+              </div>
             </el-col>
           </el-row>
         </div>
@@ -118,6 +123,11 @@ export default defineComponent({
     episodeService.getAllForCourse(this.id).then(({ data: data }: { data: IEpisodeListResponse }) => {
       this.episodes = data.items;
     });
+  },
+  methods: {
+    onBuy() {
+      // courseService.buy(this.id)
+    }
   }
 });
 </script>
