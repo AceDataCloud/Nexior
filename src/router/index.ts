@@ -3,6 +3,7 @@ import auth from './auth';
 import course from './course';
 import category from './category';
 import episode from './episode';
+import order from './order';
 import store from '@/store';
 
 const routes = [
@@ -14,7 +15,8 @@ const routes = [
   auth,
   course,
   episode,
-  category
+  category,
+  order
 ];
 
 const router = createRouter({

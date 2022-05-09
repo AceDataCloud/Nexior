@@ -83,12 +83,16 @@ import { courseService } from '@/services/course/service';
 import { ICourse, ICourseDetailResponse } from '@/services/course/types';
 import { episodeService } from '@/services/episode/service';
 import { IEpisode, IEpisodeListResponse } from '@/services/episode/types';
+import { orderService } from '@/services/order/service';
 import { defineComponent } from 'vue';
 import { Clock } from '@element-plus/icons-vue';
 import VerificationAlert from '@/components/common/VerificationAlert.vue';
+import { IOrder, IOrderDetailResponse } from '@/services/order/types';
+import { v4 as uuidv4 } from 'uuid';
 
 interface IData {
   course: ICourse | undefined;
+  order: IOrder | undefined;
   episodes: IEpisode[] | undefined;
   loading: boolean;
 }
@@ -102,6 +106,7 @@ export default defineComponent({
   data(): IData {
     return {
       course: undefined,
+      order: undefined,
       episodes: [],
       loading: false
     };
@@ -126,7 +131,21 @@ export default defineComponent({
   },
   methods: {
     onBuy() {
-      // courseService.buy(this.id)
+      orderService
+        .create({
+          id: uuidv4(),
+          courses: [this.id]
+        })
+        .then(({ data: data }: { data: IOrderDetailResponse }) => {
+          this.loading = false;
+          this.order = data;
+          this.$router.push({
+            name: 'order-detail',
+            params: {
+              id: this.order.id
+            }
+          });
+        });
     }
   }
 });
