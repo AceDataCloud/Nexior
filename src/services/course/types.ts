@@ -4,6 +4,8 @@ export interface ICourse {
   title?: string;
   cover?: string;
   thumbnail?: string;
+  discount?: number;
+  price?: number;
   duration?: number;
   introduction?: string;
   createdAt?: string;
