@@ -14,5 +14,7 @@ export default {
   article: '文章',
   course: '课程',
   minute: '分钟',
-  order: '订单'
+  order: '订单',
+  episode: '小节',
+  episodes: '小节'
 };

@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <el-col :span="6" class="side">
+    <el-col :span="5" class="side">
       <el-row>
         <el-col :span="24">
           <course-preview-card v-if="course" :course="course" />
@@ -8,7 +8,7 @@
         </el-col>
       </el-row>
     </el-col>
-    <el-col :span="18" class="main">
+    <el-col :span="19" class="main">
       <div v-if="paid === true || episode?.isFree">
         <episode-player v-if="episode?.resourceUrl" :resource="episode?.resourceUrl" :preview="episode?.thumbnail" />
       </div>
