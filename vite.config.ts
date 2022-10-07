@@ -5,6 +5,31 @@ import { string } from 'rollup-plugin-string';
 import * as path from 'path';
 import * as fs from 'fs';
 
+const getAuthEndpoint = () => {
+  console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+  switch (process.env.NODE_ENV) {
+    case 'local':
+      return 'http://localhost:8001';
+    case 'test':
+      return 'https://auth.test.zhishuyun.com';
+    case 'production':
+    default:
+      return 'https://auth.zhishuyun.com';
+  }
+};
+
+const getAcademyEndpoint = () => {
+  switch (process.env.NODE_ENV) {
+    case 'local':
+      return 'http://localhost:8002';
+    case 'test':
+      return 'https://auth.test.zhishuyun.com';
+    case 'production':
+    default:
+      return 'https://auth.zhishuyun.com';
+  }
+};
+
 export default defineConfig({
   server: {
     // open: true,
@@ -16,26 +41,26 @@ export default defineConfig({
     },
     proxy: {
       '/api/v1/me': {
-        target: 'https://auth.test.zhishuyun.com',
+        target: getAuthEndpoint(),
         changeOrigin: true
       },
       '/api/v1/token': {
-        target: 'https://auth.test.zhishuyun.com',
+        target: getAuthEndpoint(),
         changeOrigin: true
       },
       '/api': {
-        target: 'http://localhost:8000',
+        target: getAcademyEndpoint(),
         changeOrigin: true
       },
       '/static': {
-        target: 'http://localhost:8000',
+        target: getAcademyEndpoint(),
         changeOrigin: true
-      },
-      '/ws': {
-        target: 'ws://localhost:8000',
-        changeOrigin: true,
-        ws: true
       }
+      // '/ws': {
+      //   target: 'ws://localhost:8000',
+      //   changeOrigin: true,
+      //   ws: true
+      // }
     }
   },
   plugins: [
