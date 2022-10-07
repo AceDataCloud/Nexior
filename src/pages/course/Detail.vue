@@ -18,8 +18,11 @@
                 <p>{{ course.introduction }}</p>
               </div>
               <div class="operation">
-                <p>
+                <p v-if="paid === false">
                   <el-button @click="onBuy">Buy</el-button>
+                </p>
+                <p v-if="paid === true">
+                  {{ $t('course.message.paid') }}
                 </p>
               </div>
             </el-col>
@@ -80,7 +83,7 @@
 
 <script lang="ts">
 import { courseService } from '@/services/course/service';
-import { ICourse, ICourseDetailResponse } from '@/services/course/types';
+import { ICourse, ICourseDetailResponse, ICoursePaidStatusResponse } from '@/services/course/types';
 import { episodeService } from '@/services/episode/service';
 import { IEpisode, IEpisodeListResponse } from '@/services/episode/types';
 import { orderService } from '@/services/order/service';
@@ -95,6 +98,7 @@ interface IData {
   order: IOrder | undefined;
   episodes: IEpisode[] | undefined;
   loading: boolean;
+  paid: boolean | undefined;
 }
 
 export default defineComponent({
@@ -108,7 +112,8 @@ export default defineComponent({
       course: undefined,
       order: undefined,
       episodes: [],
-      loading: false
+      loading: false,
+      paid: undefined
     };
   },
   computed: {
@@ -125,6 +130,9 @@ export default defineComponent({
       this.loading = false;
       this.course = data;
     });
+    courseService.paid(this.id).then(({ data: { paid } }: { data: ICoursePaidStatusResponse }) => {
+      this.paid = paid;
+    });
     episodeService.getAllForCourse(this.id).then(({ data: data }: { data: IEpisodeListResponse }) => {
       this.episodes = data.items;
     });
@@ -135,7 +143,7 @@ export default defineComponent({
         .create({
           id: uuidv4().replaceAll(/-/g, ''),
           courses: [this.id],
-          description: `知数云课程${this.id}`
+          description: `${this.$t('common.title.orderDescription')} - ${this.id}`
         })
         .then(({ data: data }: { data: IOrderDetailResponse }) => {
           this.loading = false;

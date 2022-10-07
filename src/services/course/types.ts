@@ -19,3 +19,7 @@ export interface ICourseListResponse {
 }
 
 export type ICourseDetailResponse = ICourse;
+
+export interface ICoursePaidStatusResponse {
+  paid: boolean;
+}
