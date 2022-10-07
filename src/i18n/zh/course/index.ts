@@ -1,5 +1,7 @@
 import button from './button';
+import message from './message';
 
 export default {
-  button
+  button,
+  message
 };
