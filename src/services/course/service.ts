@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import httpClient from '../instance';
-import { ICourse, ICourseDetailResponse, ICourseListResponse } from './types';
+import { ICourse, ICourseDetailResponse, ICourseListResponse, ICoursePaidStatusResponse } from './types';
 
 class CourseService {
   key = 'courses';
@@ -31,6 +31,10 @@ class CourseService {
 
   async getAllForTeacher(teacherId: number): Promise<AxiosResponse<ICourseListResponse>> {
     return await httpClient.get(`/teachers/${teacherId}/${this.key}/`);
+  }
+
+  async paid(id: number): Promise<AxiosResponse<ICoursePaidStatusResponse>> {
+    return await httpClient.get(`/courses/${id}/paid/`);
   }
 }
 

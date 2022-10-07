@@ -9,7 +9,12 @@
       </el-row>
     </el-col>
     <el-col :span="18" class="main">
-      <episode-player v-if="episode?.resourceUrl" :resource="episode?.resourceUrl" :preview="episode?.thumbnail" />
+      <div v-if="paid === true || episode?.isFree">
+        <episode-player v-if="episode?.resourceUrl" :resource="episode?.resourceUrl" :preview="episode?.thumbnail" />
+      </div>
+      <div v-else>
+        {{ $t('course.message.needPay') }}
+      </div>
     </el-col>
   </el-row>
 </template>
@@ -22,13 +27,14 @@ import EpisodeSideList from '@/components/episode/SideList.vue';
 import EpisodePlayer from '@/components/episode/Player.vue';
 import CoursePreviewCard from '@/components/course/PreviewCard.vue';
 import { courseService } from '@/services/course/service';
-import { ICourse, ICourseDetailResponse } from '@/services/course/types';
+import { ICourse, ICourseDetailResponse, ICoursePaidStatusResponse } from '@/services/course/types';
 
 interface IData {
   course: ICourse | undefined;
   episode: IEpisode | undefined;
   episodes: IEpisode[];
   loading: boolean;
+  paid: boolean | undefined;
   // id: number;
   // courseId: number;
 }
@@ -45,7 +51,8 @@ export default defineComponent({
       course: undefined,
       episode: undefined,
       loading: false,
-      episodes: []
+      episodes: [],
+      paid: undefined
     };
   },
   computed: {
@@ -61,6 +68,9 @@ export default defineComponent({
     episodeService.get(this.id).then(({ data: data }: { data: IEpisodeDetailResponse }) => {
       this.loading = false;
       this.episode = data;
+    });
+    courseService.paid(this.courseId).then(({ data: { paid } }: { data: ICoursePaidStatusResponse }) => {
+      this.paid = paid;
     });
     episodeService.getAllForCourse(this.courseId).then(({ data: data }: { data: IEpisodeListResponse }) => {
       this.episodes = data.items;

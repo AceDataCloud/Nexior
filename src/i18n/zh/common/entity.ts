@@ -13,5 +13,6 @@ export default {
   updatedAt: '更新时间',
   article: '文章',
   course: '课程',
-  minute: '分钟'
+  minute: '分钟',
+  order: '订单'
 };
