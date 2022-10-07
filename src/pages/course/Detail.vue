@@ -14,15 +14,24 @@
               <div class="title mb-5">
                 <p>{{ course.title }}</p>
               </div>
+              <div class="category">
+                <!-- <el-button>{{ course.category }}</el-button> -->
+              </div>
               <div class="introduction mb-5">
                 <p>{{ course.introduction }}</p>
               </div>
               <div class="operation">
                 <p v-if="paid === false">
-                  <el-button @click="onBuy">Buy</el-button>
+                  <el-button @click="onBuy">
+                    <el-icon class="icon"> <arrow-right /> </el-icon>
+                    {{ $t('course.button.startStudy') }}
+                  </el-button>
                 </p>
                 <p v-if="paid === true">
-                  {{ $t('course.message.paid') }}
+                  <el-button>
+                    <el-icon class="icon"> <arrow-right /> </el-icon>
+                    {{ $t('course.button.startStudy') }}
+                  </el-button>
                 </p>
               </div>
             </el-col>
@@ -33,7 +42,20 @@
   </el-row>
   <el-row>
     <el-col :span="24">
-      <div class="banner"></div>
+      <div class="banner">
+        <div class="duration">
+          <el-icon class="icon"> <clock /> </el-icon>
+          <span class="value">{{ course?.duration }}{{ $t('common.entity.minute') }}</span>
+        </div>
+        <div class="level">
+          <el-icon class="icon"> <magic-stick /> </el-icon>
+          <span class="value">{{ course?.level }}</span>
+        </div>
+        <div class="number">
+          <el-icon class="icon"> <collection /> </el-icon>
+          <span class="value">{{ episodes?.length }}{{ $t('common.entity.episodes') }}</span>
+        </div>
+      </div>
     </el-col>
   </el-row>
   <el-row :class="{ episodes: true, disabled: !verified }">
@@ -54,12 +76,12 @@
         "
       >
         <el-row>
-          <el-col :span="3" class="left">
+          <el-col :span="4" class="left">
             <span class="index">
               {{ episodeIndex + 1 }}
             </span>
           </el-col>
-          <el-col :span="21" class="right">
+          <el-col :span="20" class="right">
             <div class="title">
               <p>
                 {{ episode.title }}
@@ -88,7 +110,7 @@ import { episodeService } from '@/services/episode/service';
 import { IEpisode, IEpisodeListResponse } from '@/services/episode/types';
 import { orderService } from '@/services/order/service';
 import { defineComponent } from 'vue';
-import { Clock } from '@element-plus/icons-vue';
+import { Clock, MagicStick, Collection, ArrowRight } from '@element-plus/icons-vue';
 import VerificationAlert from '@/components/common/VerificationAlert.vue';
 import { IOrder, IOrderDetailResponse } from '@/services/order/types';
 import { v4 as uuidv4 } from 'uuid';
@@ -105,7 +127,10 @@ export default defineComponent({
   name: 'CourseDetail',
   components: {
     Clock,
-    VerificationAlert
+    Collection,
+    MagicStick,
+    VerificationAlert,
+    ArrowRight
   },
   data(): IData {
     return {
@@ -205,6 +230,26 @@ export default defineComponent({
   margin-right: auto;
   width: 100%;
   height: 55px;
+  padding: 12px 50px;
+  .duration,
+  .level,
+  .number {
+    font-size: 13px;
+    color: white;
+    display: inline-block;
+    margin-right: 10px;
+    color: 10px;
+    .icon {
+      position: relative;
+      top: 1px;
+      // margin-right: 5px;
+    }
+    .value {
+      margin-left: 5px;
+      // font-weight: bold;
+      display: inline-block;
+    }
+  }
 }
 
 .verification-alert {
@@ -223,9 +268,10 @@ export default defineComponent({
   .episode {
     cursor: pointer;
     margin-bottom: 2rem;
-    height: 100px;
+    height: 140px;
     border-radius: 0.934rem !important;
     .left {
+      position: relative;
       .index {
         width: 50px;
         height: 50px;
@@ -237,8 +283,9 @@ export default defineComponent({
         font-size: 20px;
         border: 2px solid #e5e5e5;
         position: absolute;
-        top: 5px;
-        left: 35px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
     }
     .title {
@@ -246,17 +293,22 @@ export default defineComponent({
         font-size: 1.2rem;
         font-weight: bold;
         margin-bottom: 10px;
+        margin-top: 10px;
       }
     }
     .introduction {
       p {
+        height: 28px;
+        overflow: hidden;
+        white-space: nowrap;
         font-size: 0.8rem;
         color: rgb(161, 161, 161);
+        text-overflow: ellipsis;
       }
     }
     .info {
       font-size: 12px;
-      color: #666;
+      color: rgb(161, 161, 161);
       .icon {
         position: relative;
         top: 1px;

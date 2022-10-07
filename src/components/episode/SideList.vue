@@ -6,12 +6,12 @@
       :class="{ item: true, active: episode.id === active }"
       @click="onClick(episode)"
     >
-      <el-col :span="6" class="left">
+      <el-col :span="5" class="left">
         <span class="index">
           {{ episodeIndex + 1 }}
         </span>
       </el-col>
-      <el-col :span="18" class="right">
+      <el-col :span="19" class="right">
         <p class="title">
           {{ episode?.title }}
         </p>
@@ -21,6 +21,7 @@
               <clock />
             </el-icon>
             {{ episode.duration }}
+            {{ $t('common.entity.minute') }}
           </span>
         </p>
       </el-col>
@@ -77,8 +78,9 @@ export default defineComponent({
       border: 1px solid rgba(50, 138, 241, 0.25);
     }
     .left {
-      width: 30px;
+      width: 60px;
       color: inherit;
+      flex: inherit;
       .index {
         display: block;
         width: 30px;
@@ -93,7 +95,7 @@ export default defineComponent({
       }
     }
     .right {
-      width: calc(100% - 30px);
+      width: calc(100% - 60px);
       .title {
         color: white;
         font-size: 0.8em;
@@ -104,6 +106,8 @@ export default defineComponent({
           font-size: 0.6em;
           .icon {
             display: inline-block;
+            position: relative;
+            top: -1px;
           }
         }
       }

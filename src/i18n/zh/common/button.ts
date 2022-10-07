@@ -11,5 +11,7 @@ export default {
   info: '提示',
   publish: '发布',
   watch: '观看',
-  verify: '去实名认证'
+  verify: '去实名认证',
+  learn: '学习',
+  buy: '购买'
 };
