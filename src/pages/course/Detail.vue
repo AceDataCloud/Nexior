@@ -133,8 +133,9 @@ export default defineComponent({
     onBuy() {
       orderService
         .create({
-          id: uuidv4(),
-          courses: [this.id]
+          id: uuidv4().replaceAll(/-/g, ''),
+          courses: [this.id],
+          description: `知数云课程${this.id}`
         })
         .then(({ data: data }: { data: IOrderDetailResponse }) => {
           this.loading = false;

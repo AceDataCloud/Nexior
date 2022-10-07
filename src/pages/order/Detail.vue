@@ -5,16 +5,21 @@
         <div class="container">
           <el-row v-if="order">
             <el-col :span="24">
-              <div class="courses">
-                <div v-for="(course, courseIndex) in courses" :key="courseIndex">
-                  <div class="title">
-                    {{ course.title }}
-                  </div>
-                  <div class="price">
-                    {{ course.price }}
+              <el-card>
+                <div class="courses">
+                  <div v-for="(course, courseIndex) in courses" :key="courseIndex">
+                    <div class="title">
+                      {{ course.title }}
+                    </div>
+                    <div class="price">
+                      {{ course.price }}
+                    </div>
                   </div>
                 </div>
-              </div>
+                <div class="paycode">
+                  <qr-code v-if="order.wechatpayUrl" :value="order.wechatpayUrl" :size="200" class="m-auto" />
+                </div>
+              </el-card>
             </el-col>
           </el-row>
         </div>
@@ -27,8 +32,10 @@
 import { ICourse, ICourseDetailResponse } from '@/services/course/types';
 import { orderService } from '@/services/order/service';
 import { courseService } from '@/services/course/service';
-import { IOrder, IOrderDetailResponse } from '@/services/order/types';
+import { IOrder, IOrderDetailResponse, ORDER_STATE_PAID } from '@/services/order/types';
 import { defineComponent } from 'vue';
+import QrCode from 'qrcode.vue';
+import { ElMessage } from 'element-plus';
 
 interface IData {
   order: IOrder | undefined;
@@ -38,7 +45,9 @@ interface IData {
 
 export default defineComponent({
   name: 'OrderDetail',
-  components: {},
+  components: {
+    QrCode
+  },
   data(): IData {
     return {
       order: undefined,
@@ -66,8 +75,29 @@ export default defineComponent({
         });
       });
     });
+    this.onCheck();
   },
-  methods: {}
+  methods: {
+    onCheck() {
+      orderService
+        .get(this.id)
+        .then(({ data: data }: { data: IOrderDetailResponse }) => {
+          this.order = data;
+          if (this.order.state === ORDER_STATE_PAID) {
+            ElMessage.success(this.$t('course.message.paidSuccessfully'));
+            return;
+          }
+          setTimeout(() => {
+            this.onCheck();
+          }, 2000);
+        })
+        .catch(() => {
+          setTimeout(() => {
+            this.onCheck();
+          }, 2000);
+        });
+    }
+  }
 });
 </script>
 
