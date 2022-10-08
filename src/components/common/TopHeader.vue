@@ -22,6 +22,8 @@
               <img :src="user.avatar || defaultAvatar" class="avatar" />
               <template #dropdown>
                 <el-dropdown-menu>
+                  <el-dropdown-item @click="onProfile">{{ $t('common.button.profile') }}</el-dropdown-item>
+                  <el-dropdown-item @click="onVerify">{{ $t('common.button.verify') }}</el-dropdown-item>
                   <el-dropdown-item @click="onLogout">{{ $t('common.button.logout') }}</el-dropdown-item>
                 </el-dropdown-menu>
               </template>
@@ -65,6 +67,12 @@ export default defineComponent({
       this.$router.push({
         name: 'login'
       });
+    },
+    onProfile() {
+      window.location.href = 'https://auth.test.zhishuyun.com/user/profile';
+    },
+    onVerify() {
+      window.location.href = 'https://auth.test.zhishuyun.com/user/verify';
     },
     onLogout() {
       this.$store.dispatch('resetAuth');
