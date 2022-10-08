@@ -22,14 +22,14 @@
               </div>
               <div class="operation">
                 <p v-if="paid === false">
-                  <el-button @click="onBuy">
-                    <el-icon class="icon"> <arrow-right /> </el-icon>
-                    {{ $t('course.button.startStudy') }}
+                  <el-button @click="onBuy" type="danger">
+                    <el-icon class="icon"> <goods /> </el-icon>
+                    {{ $t('course.button.buy') }}
                   </el-button>
                 </p>
                 <p v-if="paid === true">
                   <el-button>
-                    <el-icon class="icon"> <arrow-right /> </el-icon>
+                    <el-icon class="icon"> <video-play /> </el-icon>
                     {{ $t('course.button.startStudy') }}
                   </el-button>
                 </p>
@@ -110,7 +110,7 @@ import { episodeService } from '@/services/episode/service';
 import { IEpisode, IEpisodeListResponse } from '@/services/episode/types';
 import { orderService } from '@/services/order/service';
 import { defineComponent } from 'vue';
-import { Clock, MagicStick, Collection, ArrowRight } from '@element-plus/icons-vue';
+import { Clock, MagicStick, Collection, VideoPlay, Goods } from '@element-plus/icons-vue';
 import VerificationAlert from '@/components/common/VerificationAlert.vue';
 import { IOrder, IOrderDetailResponse } from '@/services/order/types';
 import { v4 as uuidv4 } from 'uuid';
@@ -130,7 +130,8 @@ export default defineComponent({
     Collection,
     MagicStick,
     VerificationAlert,
-    ArrowRight
+    VideoPlay,
+    Goods
   },
   data(): IData {
     return {

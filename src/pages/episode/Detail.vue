@@ -12,7 +12,7 @@
       <div v-if="paid === true || episode?.isFree">
         <episode-player v-if="episode?.resourceUrl" :resource="episode?.resourceUrl" :preview="episode?.thumbnail" />
       </div>
-      <div v-else>
+      <div v-if="paid === false && !episode?.isFree">
         {{ $t('course.message.needPay') }}
       </div>
     </el-col>
@@ -101,7 +101,7 @@ $width: 300px;
 
 .side {
   background-color: #0d131d;
-  height: 100vh;
+  min-height: 100vh;
   overflow-y: scroll;
   width: $width;
 }
