@@ -4,9 +4,21 @@
     <el-col :span="24">
       <div class="wrapper">
         <div class="container">
+          <el-row v-if="loading">
+            <el-col :span="6">
+              <el-skeleton style="width: 150px; margin: auto; margin-top: 50px" animated>
+                <template #template>
+                  <el-skeleton-item variant="image" style="width: 150px; height: 150px" />
+                </template>
+              </el-skeleton>
+            </el-col>
+            <el-col :span="18">
+              <el-skeleton :rows="5" animated />
+            </el-col>
+          </el-row>
           <el-row v-if="course">
-            <el-col :span="6"
-              ><div class="thumbnail">
+            <el-col :span="6">
+              <div class="thumbnail">
                 <img :src="course.thumbnail" />
               </div>
             </el-col>
@@ -22,13 +34,15 @@
               </div>
               <div class="operation">
                 <p v-if="paid === false">
-                  <el-button @click="onBuy" type="danger">
-                    <el-icon class="icon"> <goods /> </el-icon>
+                  <el-button @click="onBuy" type="danger" :loading="buying">
+                    <el-icon class="icon" v-if="!buying">
+                      <goods />
+                    </el-icon>
                     {{ $t('course.button.buy') }}
                   </el-button>
                 </p>
                 <p v-if="paid === true">
-                  <el-button>
+                  <el-button @click="onStudy" type="danger">
                     <el-icon class="icon"> <video-play /> </el-icon>
                     {{ $t('course.button.startStudy') }}
                   </el-button>
@@ -40,7 +54,7 @@
       </div>
     </el-col>
   </el-row>
-  <el-row>
+  <el-row v-if="course">
     <el-col :span="24">
       <div class="banner">
         <div class="duration">
@@ -51,7 +65,7 @@
           <el-icon class="icon"> <magic-stick /> </el-icon>
           <span class="value">{{ course?.level }}</span>
         </div>
-        <div class="number">
+        <div class="number" v-if="episodes && episodes.length > 0">
           <el-icon class="icon"> <collection /> </el-icon>
           <span class="value">{{ episodes?.length }}{{ $t('common.entity.episodes') }}</span>
         </div>
@@ -60,6 +74,9 @@
   </el-row>
   <el-row :class="{ episodes: true, disabled: !verified }">
     <el-col :span="14" :offset="5">
+      <el-card v-if="loading" shadow="hover" class="episode">
+        <el-skeleton :rows="5" animated />
+      </el-card>
       <el-card
         v-for="(episode, episodeIndex) in episodes"
         :key="episodeIndex"
@@ -110,16 +127,18 @@ import { episodeService } from '@/services/episode/service';
 import { IEpisode, IEpisodeListResponse } from '@/services/episode/types';
 import { orderService } from '@/services/order/service';
 import { defineComponent } from 'vue';
-import { Clock, MagicStick, Collection, VideoPlay, Goods } from '@element-plus/icons-vue';
+import { Clock, MagicStick, Collection, VideoPlay, Goods, Loading } from '@element-plus/icons-vue';
 import VerificationAlert from '@/components/common/VerificationAlert.vue';
 import { IOrder, IOrderDetailResponse } from '@/services/order/types';
 import { v4 as uuidv4 } from 'uuid';
+import { ElMessage } from 'element-plus';
 
 interface IData {
   course: ICourse | undefined;
   order: IOrder | undefined;
   episodes: IEpisode[] | undefined;
   loading: boolean;
+  buying: boolean;
   paid: boolean | undefined;
 }
 
@@ -131,7 +150,8 @@ export default defineComponent({
     MagicStick,
     VerificationAlert,
     VideoPlay,
-    Goods
+    Goods,
+    Loading
   },
   data(): IData {
     return {
@@ -139,6 +159,7 @@ export default defineComponent({
       order: undefined,
       episodes: [],
       loading: false,
+      buying: false,
       paid: undefined
     };
   },
@@ -164,7 +185,21 @@ export default defineComponent({
     });
   },
   methods: {
+    onStudy() {
+      if (this.episodes && this.episodes.length > 0) {
+        const episode = this.episodes[0];
+        this.$router.push({
+          name: 'episode-detail',
+          params: {
+            courseId: this.course?.id,
+            id: episode.id
+          }
+        });
+      }
+    },
     onBuy() {
+      this.buying = true;
+      ElMessage.info(this.$t('course.message.creatingOrder'));
       orderService
         .create({
           id: uuidv4().replaceAll(/-/g, ''),
@@ -172,7 +207,7 @@ export default defineComponent({
           description: `${this.$t('common.title.orderDescription')} - ${this.id}`
         })
         .then(({ data: data }: { data: IOrderDetailResponse }) => {
-          this.loading = false;
+          this.buying = false;
           this.order = data;
           this.$router.push({
             name: 'order-detail',
@@ -180,6 +215,10 @@ export default defineComponent({
               id: this.order.id
             }
           });
+        })
+        .catch(() => {
+          ElMessage.error(this.$t('course.message.createOrderFailed'));
+          this.buying = false;
         });
     }
   }
@@ -218,6 +257,14 @@ export default defineComponent({
         margin-top: 50px;
         margin-left: auto;
         margin-right: auto;
+      }
+    }
+
+    .operation {
+      .el-button {
+        .icon {
+          margin-right: 2px;
+        }
       }
     }
   }

@@ -2,19 +2,32 @@
   <el-row>
     <el-col :span="20" :offset="2">
       <div class="courses">
+        <el-card v-if="loading" class="course">
+          <el-skeleton :rows="5" animated />
+        </el-card>
         <el-card v-for="(course, courseIndex) in courses" :key="courseIndex" shadow="hover" class="course">
           <div class="content">
-            <div class="tags mb-5">
+            <!-- <div class="tags mb-5">
               <el-button
                 v-for="(tag, tagIndex) in course.tags"
                 :key="tagIndex"
                 size="small"
-                type="danger"
+                type="success"
                 class="tag"
                 >{{ tag }}</el-button
               >
-            </div>
-            <div class="title mb-5">
+            </div> -->
+            <div
+              class="title mb-5"
+              @click="
+                $router.push({
+                  name: 'course-detail',
+                  params: {
+                    id: course.id
+                  }
+                })
+              "
+            >
               <p>{{ course.title }}</p>
             </div>
             <div class="introduction mb-5">
@@ -29,7 +42,8 @@
                   }
                 }"
               >
-                <el-button>
+                <el-button type="danger">
+                  <el-icon class="icon"> <video-play /> </el-icon>
                   {{ $t('course.button.startStudy') }}
                 </el-button>
               </router-link>
@@ -48,6 +62,7 @@
 import { courseService } from '@/services/course/service';
 import { ICourse, ICourseListResponse } from '@/services/course/types';
 import { defineComponent } from 'vue';
+import { VideoPlay } from '@element-plus/icons-vue';
 
 interface IData {
   courses: ICourse[];
@@ -55,6 +70,9 @@ interface IData {
 }
 export default defineComponent({
   name: 'CourseList',
+  components: {
+    VideoPlay
+  },
   data(): IData {
     return {
       courses: [],
@@ -94,6 +112,7 @@ export default defineComponent({
     }
 
     .title {
+      cursor: pointer;
       p {
         font-size: 1.7rem;
       }
@@ -120,6 +139,10 @@ export default defineComponent({
       .el-button {
         padding-left: 30px;
         padding-right: 30px;
+        .icon {
+          margin-right: 4px;
+          transform: scale(1.2);
+        }
       }
     }
   }
