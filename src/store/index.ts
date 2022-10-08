@@ -12,8 +12,7 @@ export interface IState {
 const store = createStore({
   state(): IState {
     return {
-      accessToken:
-        'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY1MTc5MTE2LCJqdGkiOiJlYjEzNGMzMjZlMTc0YzViODFhNGZlZDgxMjJlYzFhNiIsInVzZXJfaWQiOjQsInBlcm1pc3Npb25zIjpbInZpZXdfYWNhZGVteV9jb3Vyc2UiXSwiaXNfc3VwZXJ1c2VyIjpmYWxzZSwiaXNfdmVyaWZpZWQiOnRydWUsInJlYWxuYW1lIjoiXHU1ZDE0XHU1ZTg2XHU2MjRkIiwicGhvbmUiOiIxNzYwMDE1NTU2NyIsImlkY2FyZCI6IjM3MDc4MTE5OTQwNjI5MzI3MSJ9.Xc4B9GhgJ5i2I9R_6j7bD38yX3bPC_FI7kUVQzCDaq4',
+      accessToken: undefined,
       refreshToken: undefined,
       user: undefined
     };

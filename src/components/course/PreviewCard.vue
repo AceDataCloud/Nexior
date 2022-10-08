@@ -68,7 +68,7 @@ export default defineComponent({
   height: 84px;
   overflow: hidden;
   .left {
-    width: 100px;
+    width: 80px;
     float: left;
     .thumbnail {
       text-align: center;
@@ -81,10 +81,12 @@ export default defineComponent({
     padding: 10px 0;
     color: white;
     float: left;
-
-    width: calc(100% - 100px);
+    width: calc(100% - 80px);
     .title {
       cursor: pointer;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
     .info {
       color: rgb(120, 144, 156);
