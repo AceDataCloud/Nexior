@@ -14,8 +14,8 @@
                         <el-descriptions-item :label="$t('course.title.orderDescription')">
                           {{ order?.description }}
                         </el-descriptions-item>
-                        <el-descriptions-item :label="$t('course.title.orderPrice')">
-                          <span class="price">¥{{ order?.price }}</span>
+                        <el-descriptions-item v-if="order?.price" :label="$t('course.title.orderPrice')">
+                          <span class="price">¥{{ (order?.price / 100).toFixed(2) }}</span>
                         </el-descriptions-item>
                         <el-descriptions-item
                           v-for="(course, courseIndex) in courses"
