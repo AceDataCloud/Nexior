@@ -65,7 +65,7 @@
           <el-icon class="icon"> <magic-stick /> </el-icon>
           <span class="value">{{ course?.level }}</span>
         </div>
-        <div class="number" v-if="episodes && episodes.length > 0">
+        <div v-if="episodes && episodes.length > 0" class="number">
           <el-icon class="icon"> <collection /> </el-icon>
           <span class="value">{{ episodes?.length }}{{ $t('common.entity.episodes') }}</span>
         </div>
