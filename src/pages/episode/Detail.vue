@@ -10,7 +10,7 @@
     </el-col>
     <el-col :span="19" class="main">
       <div v-if="paid === true || episode?.isFree">
-        <episode-player v-if="episode?.resourceUrl" :resource="episode?.resourceUrl" :preview="episode?.thumbnail" />
+        <episode-player v-if="resource?.url" :resource="resource?.url" :preview="episode?.thumbnail" />
       </div>
       <div v-if="paid === false && !episode?.isFree">
         {{ $t('course.message.needPay') }}
@@ -28,10 +28,12 @@ import EpisodePlayer from '@/components/episode/Player.vue';
 import CoursePreviewCard from '@/components/course/PreviewCard.vue';
 import { courseService } from '@/services/course/service';
 import { ICourse, ICourseDetailResponse, ICoursePaidStatusResponse } from '@/services/course/types';
+import { IResource, IResourceDetailResponse } from '@/services/resource/types';
 
 interface IData {
   course: ICourse | undefined;
   episode: IEpisode | undefined;
+  resource: IResource | undefined;
   episodes: IEpisode[];
   loading: boolean;
   paid: boolean | undefined;
@@ -52,6 +54,7 @@ export default defineComponent({
       episode: undefined,
       loading: false,
       episodes: [],
+      resource: undefined,
       paid: undefined
     };
   },
@@ -68,6 +71,11 @@ export default defineComponent({
     episodeService.get(this.id).then(({ data: data }: { data: IEpisodeDetailResponse }) => {
       this.loading = false;
       this.episode = data;
+    });
+    episodeService.resource(this.id).then(({ data: data }: { data: IResourceDetailResponse }) => {
+      // this.loading = false;
+      // this.episode = data;
+      this.resource = data;
     });
     courseService.paid(this.courseId).then(({ data: { paid } }: { data: ICoursePaidStatusResponse }) => {
       this.paid = paid;
