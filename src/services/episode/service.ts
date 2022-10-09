@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
 import httpClient from '../instance';
+import { IResourceDetailResponse } from '../resource/types';
 import { IEpisode, IEpisodeDetailResponse, IEpisodeListResponse } from './types';
 
 class EpisodeService {
@@ -11,6 +12,10 @@ class EpisodeService {
 
   async get(id: number): Promise<AxiosResponse<IEpisodeDetailResponse>> {
     return await httpClient.get(`/${this.key}/${id}`);
+  }
+
+  async resource(id: number): Promise<AxiosResponse<IResourceDetailResponse>> {
+    return await httpClient.get(`/${this.key}/${id}/resource/`);
   }
 
   async create(data: IEpisode): Promise<AxiosResponse<IEpisodeDetailResponse>> {

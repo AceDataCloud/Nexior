@@ -1,6 +1,6 @@
 <template>
   <vue-plyr ref="plyr" :options="options">
-    <video ref="video" controls playsinline :data-poster="preview"></video>
+    <video ref="video" controls playsinline :data-poster="preview" :src="resource"></video>
   </vue-plyr>
 </template>
 
@@ -8,14 +8,12 @@
 import { defineComponent } from 'vue';
 import VuePlyr from 'vue-plyr';
 import 'vue-plyr/dist/vue-plyr.css';
-import Hls from 'hls.js';
+// import Hls from 'hls.js';
 // import Plyr from 'plyr';
 
 interface IData {
   options: {};
   player?: typeof VuePlyr;
-  mounted: boolean;
-  hls?: any;
 }
 
 export default defineComponent({
@@ -28,29 +26,21 @@ export default defineComponent({
       required: true
     },
     preview: {
-      type: String
+      type: String,
+      default: undefined
     }
   },
   data(): IData {
     return {
       player: undefined,
-      options: {},
-      mounted: false,
-      hls: undefined
+      options: {}
     };
   },
   async unmounted() {
-    console.log('un');
     this.player?.stop();
-    this.hls?.stopLoad();
   },
   mounted() {
-    this.mounted = true;
-    const video = this.$refs.video as HTMLMediaElement;
     this.player = (this.$refs.plyr as typeof VuePlyr).player;
-    this.hls = new Hls() as Hls;
-    this.hls?.loadSource(this.resource);
-    this.hls?.attachMedia(video);
   }
 });
 </script>
