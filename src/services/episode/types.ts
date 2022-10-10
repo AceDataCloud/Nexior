@@ -22,4 +22,8 @@ export interface IEpisodeListResponse {
   items: IEpisode[];
 }
 
+export interface IEpisodeSignResponse {
+  sign: string;
+}
+
 export type IEpisodeDetailResponse = IEpisode;

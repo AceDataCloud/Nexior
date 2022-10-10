@@ -10,7 +10,23 @@
     </el-col>
     <el-col :span="19" class="main">
       <div v-if="paid === true || episode?.isFree">
-        <episode-player v-if="resource?.url" :resource="resource?.url" :preview="episode?.thumbnail" />
+        <episode-player
+          v-if="prepared && resource?.fileId && resource.sign"
+          :file-id="resource?.fileId"
+          :preview="episode?.thumbnail"
+          :sign="resource.sign"
+        />
+        <div v-else class="transcode">
+          <el-alert
+            :title="$t('course.message.transcoding')"
+            type="info"
+            center
+            show-icon
+            :closable="false"
+            class="info"
+          />
+          <el-progress :percentage="50" status="exception" :indeterminate="true" :show-text="false" class="progress" />
+        </div>
       </div>
       <div v-if="paid === false && !episode?.isFree">
         {{ $t('course.message.needPay') }}
@@ -21,7 +37,7 @@
 
 <script lang="ts">
 import { episodeService } from '@/services/episode/service';
-import { IEpisode, IEpisodeDetailResponse, IEpisodeListResponse } from '@/services/episode/types';
+import { IEpisode, IEpisodeDetailResponse, IEpisodeListResponse, IEpisodeSignResponse } from '@/services/episode/types';
 import { defineComponent } from 'vue';
 import EpisodeSideList from '@/components/episode/SideList.vue';
 import EpisodePlayer from '@/components/episode/Player.vue';
@@ -36,7 +52,9 @@ interface IData {
   resource: IResource | undefined;
   episodes: IEpisode[];
   loading: boolean;
+  prepared: boolean;
   paid: boolean | undefined;
+  sign: string | undefined;
   // id: number;
   // courseId: number;
 }
@@ -55,7 +73,9 @@ export default defineComponent({
       loading: false,
       episodes: [],
       resource: undefined,
-      paid: undefined
+      paid: undefined,
+      sign: undefined,
+      prepared: false
     };
   },
   computed: {
@@ -72,11 +92,6 @@ export default defineComponent({
       this.loading = false;
       this.episode = data;
     });
-    episodeService.resource(this.id).then(({ data: data }: { data: IResourceDetailResponse }) => {
-      // this.loading = false;
-      // this.episode = data;
-      this.resource = data;
-    });
     courseService.paid(this.courseId).then(({ data: { paid } }: { data: ICoursePaidStatusResponse }) => {
       this.paid = paid;
     });
@@ -86,8 +101,22 @@ export default defineComponent({
     courseService.get(this.courseId).then(({ data: data }: { data: ICourseDetailResponse }) => {
       this.course = data;
     });
+    this.onPrepareResouce();
   },
   methods: {
+    onPrepareResouce() {
+      episodeService.resource(this.id).then(({ data: data }: { data: IResourceDetailResponse }) => {
+        this.resource = data;
+        if (data.sign) {
+          this.prepared = true;
+        }
+      });
+      if (!this.prepared) {
+        setTimeout(() => {
+          this.onPrepareResouce();
+        }, 3000);
+      }
+    },
     onChoose(episode: IEpisode) {
       this.$router.push({
         ...this.$route,
@@ -115,5 +144,22 @@ $width: 300px;
 }
 .main {
   width: calc(100% - $width);
+  background-image: radial-gradient(circle at 0 2%, #283e63, #172337 99%);
+}
+
+.transcode {
+  width: 300px;
+  height: 200px;
+  margin: auto;
+  top: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translate(0, -50%);
+  .progress {
+    margin: auto;
+  }
+  .info {
+    margin-bottom: 10px;
+  }
 }
 </style>
