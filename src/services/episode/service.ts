@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
 import httpClient from '../instance';
 import { IResourceDetailResponse } from '../resource/types';
-import { IEpisode, IEpisodeDetailResponse, IEpisodeListResponse } from './types';
+import { IEpisode, IEpisodeDetailResponse, IEpisodeListResponse, IEpisodeSignResponse } from './types';
 
 class EpisodeService {
   key = 'episodes';
@@ -15,7 +15,11 @@ class EpisodeService {
   }
 
   async resource(id: number): Promise<AxiosResponse<IResourceDetailResponse>> {
-    return await httpClient.get(`/${this.key}/${id}/resource/`);
+    return await httpClient.post(`/${this.key}/${id}/resource/`);
+  }
+
+  async sign(id: number): Promise<AxiosResponse<IEpisodeSignResponse>> {
+    return await httpClient.get(`/${this.key}/${id}/sign/`);
   }
 
   async create(data: IEpisode): Promise<AxiosResponse<IEpisodeDetailResponse>> {
