@@ -7,7 +7,6 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   mounted() {
-    console.log('9999');
     this.$store.dispatch('getMe');
   }
 });
