@@ -31,7 +31,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IEpisode, IEpisodeDetailResponse, IEpisodeListResponse } from '@/services/episode/types';
+import { IEpisode } from '@/services/episode/types';
 import { Clock } from '@element-plus/icons-vue';
 
 export default defineComponent({
@@ -51,6 +51,7 @@ export default defineComponent({
       required: true
     }
   },
+  emits: ['choose'],
   mounted() {},
   methods: {
     onClick(episode: IEpisode) {

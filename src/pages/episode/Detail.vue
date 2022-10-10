@@ -55,8 +55,6 @@ interface IData {
   prepared: boolean;
   paid: boolean | undefined;
   sign: string | undefined;
-  // id: number;
-  // courseId: number;
 }
 
 export default defineComponent({
@@ -125,9 +123,9 @@ export default defineComponent({
           courseId: this.courseId
         }
       });
-      episodeService.get(this.id).then(({ data: data }: { data: IEpisodeDetailResponse }) => {
-        this.episode = data;
-      });
+      setTimeout(() => {
+        window.location.reload();
+      }, 0);
     }
   }
 });
@@ -135,7 +133,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 $width: 300px;
-
 .side {
   background-color: #0d131d;
   min-height: 100vh;
