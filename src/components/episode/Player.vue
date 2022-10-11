@@ -8,8 +8,7 @@
 import { defineComponent } from 'vue';
 import VuePlyr from 'vue-plyr';
 import 'vue-plyr/dist/vue-plyr.css';
-// import Hls from 'hls.js';
-// import Plyr from 'plyr';
+// @ts-ignore
 import TcAdapter from 'tcadapter';
 
 interface IData {
