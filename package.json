@@ -14,8 +14,8 @@
     "lint": "npx eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
     "prettier": "npx prettier --write .",
     "init:https": "npm run init:ca && npm run init:cert",
-    "init:ca": "npx mkcert create-ca --validity 36500 --key certs/auth.local.zhishuyun.com.ca.key --cert certs/auth.local.zhishuyun.com.ca.crt",
-    "init:cert": "npx mkcert create-cert --ca-key certs/auth.local.zhishuyun.com.ca.key --ca-cert certs/auth.local.zhishuyun.com.ca.crt --validity 36500 --key certs/auth.local.zhishuyun.com.cert.key --cert certs/auth.local.zhishuyun.com.cert.crt  --domains auth.local.zhishuyun.com"
+    "init:ca": "npx mkcert create-ca --validity 36500 --key certs/academy.local.zhishuyun.com.ca.key --cert certs/academy.local.zhishuyun.com.ca.crt",
+    "init:cert": "npx mkcert create-cert --ca-key certs/academy.local.zhishuyun.com.ca.key --ca-cert certs/academy.local.zhishuyun.com.ca.crt --validity 36500 --key certs/academy.local.zhishuyun.com.cert.key --cert certs/academy.local.zhishuyun.com.cert.crt  --domains academy.local.zhishuyun.com"
   },
   "dependencies": {
     "@types/uuid": "^8.3.4",
