@@ -4,6 +4,7 @@ WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn
 COPY . .
+RUN yarn run init:https
 RUN yarn build
 
 # production stage
