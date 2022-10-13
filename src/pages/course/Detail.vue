@@ -34,7 +34,7 @@
               </div>
               <div class="operation">
                 <p v-if="paid === false">
-                  <span v-if="course.price" class="price">¥{{ (course?.price / 100).toFixed(2) }}</span>
+                  <span v-if="course.price" class="price">¥ {{ (course?.price / 100).toFixed(2) }}</span>
                   <el-button type="danger" :loading="buying" @click="onBuy">
                     <el-icon v-if="!buying" class="icon">
                       <goods />
@@ -95,8 +95,11 @@
       >
         <el-row>
           <el-col :span="4" class="left">
-            <span class="index">
+            <span v-if="paid || episode?.isFree" class="index">
               {{ episodeIndex + 1 }}
+            </span>
+            <span v-else class="lock">
+              <el-icon class="icon"> <lock /> </el-icon>
             </span>
           </el-col>
           <el-col :span="20" class="right">
@@ -128,7 +131,7 @@ import { episodeService } from '@/services/episode/service';
 import { IEpisode, IEpisodeListResponse } from '@/services/episode/types';
 import { orderService } from '@/services/order/service';
 import { defineComponent } from 'vue';
-import { Clock, MagicStick, Collection, VideoPlay, Goods, Loading } from '@element-plus/icons-vue';
+import { Clock, MagicStick, Collection, VideoPlay, Goods, Lock } from '@element-plus/icons-vue';
 import VerificationAlert from '@/components/common/VerificationAlert.vue';
 import { IOrder, IOrderDetailResponse } from '@/services/order/types';
 import { v4 as uuidv4 } from 'uuid';
@@ -151,7 +154,8 @@ export default defineComponent({
     MagicStick,
     VerificationAlert,
     VideoPlay,
-    Goods
+    Goods,
+    Lock
   },
   data(): IData {
     return {
@@ -345,6 +349,24 @@ export default defineComponent({
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+      }
+      .lock {
+        width: 50px;
+        height: 50px;
+        background: #f8fafe;
+        display: block;
+        border-radius: 50%;
+        line-height: 50px;
+        text-align: center;
+        font-size: 20px;
+        border: 2px solid #e5e5e5;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        .icon {
+          opacity: 0.6;
+        }
       }
     }
     .title {
