@@ -29,7 +29,18 @@
         </div>
       </div>
       <div v-if="paid === false && !episode?.isFree">
-        {{ $t('course.message.needPay') }}
+        <el-card class="unpaid">
+          <el-result icon="info" :title="undefined" :sub-title="$t('course.message.needPay')">
+            <template #extra>
+              <el-button type="danger" :loading="buying" class="buy" @click="onBuy">
+                <el-icon v-if="!buying" class="icon">
+                  <goods />
+                </el-icon>
+                {{ $t('course.button.buy') }}
+              </el-button>
+            </template>
+          </el-result>
+        </el-card>
       </div>
     </el-col>
   </el-row>
@@ -45,12 +56,19 @@ import CoursePreviewCard from '@/components/course/PreviewCard.vue';
 import { courseService } from '@/services/course/service';
 import { ICourse, ICourseDetailResponse, ICoursePaidStatusResponse } from '@/services/course/types';
 import { IResource, IResourceDetailResponse } from '@/services/resource/types';
+import { ElMessage } from 'element-plus';
+import { orderService } from '@/services/order/service';
+import { v4 as uuidv4 } from 'uuid';
+import { IOrder, IOrderDetailResponse } from '@/services/order/types';
+import { Goods } from '@element-plus/icons-vue';
 
 interface IData {
   course: ICourse | undefined;
   episode: IEpisode | undefined;
   resource: IResource | undefined;
   episodes: IEpisode[];
+  order: IOrder | undefined;
+  buying: boolean;
   loading: boolean;
   prepared: boolean;
   paid: boolean | undefined;
@@ -62,13 +80,16 @@ export default defineComponent({
   components: {
     EpisodeSideList,
     EpisodePlayer,
-    CoursePreviewCard
+    CoursePreviewCard,
+    Goods
   },
   data(): IData {
     return {
       course: undefined,
       episode: undefined,
+      buying: false,
       loading: false,
+      order: undefined,
       episodes: [],
       resource: undefined,
       paid: undefined,
@@ -126,6 +147,33 @@ export default defineComponent({
       setTimeout(() => {
         window.location.reload();
       }, 0);
+    },
+    onBuy() {
+      this.buying = true;
+      ElMessage.info(this.$t('course.message.creatingOrder'));
+      orderService
+        .create({
+          id: uuidv4().replaceAll(/-/g, ''),
+          courses: [this.courseId],
+          description: `${this.$t('common.title.orderDescription')} - ${this.courseId}`
+        })
+        .then(({ data: data }: { data: IOrderDetailResponse }) => {
+          this.buying = false;
+          this.order = data;
+          this.$router.push({
+            name: 'order-detail',
+            params: {
+              id: this.order.id
+            },
+            query: {
+              redirect: window.location.href
+            }
+          });
+        })
+        .catch(() => {
+          ElMessage.error(this.$t('course.message.createOrderFailed'));
+          this.buying = false;
+        });
     }
   }
 });
@@ -140,6 +188,7 @@ $width: 300px;
   width: $width;
 }
 .main {
+  position: relative;
   width: calc(100% - $width);
   background-image: radial-gradient(circle at 0 2%, #283e63, #172337 99%);
 }
@@ -157,6 +206,20 @@ $width: 300px;
   }
   .info {
     margin-bottom: 10px;
+  }
+}
+
+.unpaid {
+  width: 400px;
+  // height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  .buy {
+    .icon {
+      margin-right: 2px;
+    }
   }
 }
 </style>

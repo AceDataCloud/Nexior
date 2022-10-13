@@ -108,6 +108,9 @@ export default defineComponent({
     },
     id() {
       return this.$route.params.id.toString();
+    },
+    redirect() {
+      return this.$route.query.redirect;
     }
   },
   async mounted() {
@@ -132,6 +135,11 @@ export default defineComponent({
           this.order = data;
           if (this.order.state === ORDER_STATE_PAID) {
             ElMessage.success(this.$t('course.message.paidSuccessfully'));
+            setTimeout(() => {
+              if (this.redirect) {
+                window.location.replace(this.redirect?.toString());
+              }
+            }, 2000);
             return;
           }
           setTimeout(() => {

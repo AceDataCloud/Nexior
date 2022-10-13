@@ -34,15 +34,16 @@
               </div>
               <div class="operation">
                 <p v-if="paid === false">
-                  <el-button @click="onBuy" type="danger" :loading="buying">
-                    <el-icon class="icon" v-if="!buying">
+                  <span v-if="course.price" class="price">¥{{ (course?.price / 100).toFixed(2) }}</span>
+                  <el-button type="danger" :loading="buying" @click="onBuy">
+                    <el-icon v-if="!buying" class="icon">
                       <goods />
                     </el-icon>
                     {{ $t('course.button.buy') }}
                   </el-button>
                 </p>
                 <p v-if="paid === true">
-                  <el-button @click="onStudy" type="danger">
+                  <el-button type="danger" @click="onStudy">
                     <el-icon class="icon"> <video-play /> </el-icon>
                     {{ $t('course.button.startStudy') }}
                   </el-button>
@@ -150,8 +151,7 @@ export default defineComponent({
     MagicStick,
     VerificationAlert,
     VideoPlay,
-    Goods,
-    Loading
+    Goods
   },
   data(): IData {
     return {
@@ -213,6 +213,9 @@ export default defineComponent({
             name: 'order-detail',
             params: {
               id: this.order.id
+            },
+            query: {
+              redirect: window.location.href
             }
           });
         })
@@ -247,6 +250,14 @@ export default defineComponent({
         color: white;
         font-size: 1rem;
       }
+    }
+
+    .price {
+      display: block;
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: var(--el-color-danger);
     }
     .thumbnail {
       text-align: center;
