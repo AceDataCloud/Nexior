@@ -23,10 +23,10 @@ const getAcademyEndpoint = () => {
     case 'local':
       return 'http://localhost:8002';
     case 'test':
-      return 'https://auth.test.zhishuyun.com';
+      return 'https://academy.test.zhishuyun.com';
     case 'production':
     default:
-      return 'https://auth.zhishuyun.com';
+      return 'https://academy.zhishuyun.com';
   }
 };
 

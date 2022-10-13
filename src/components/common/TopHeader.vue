@@ -19,7 +19,7 @@
           </div>
           <div v-else class="mt-3 pr-10 float-right">
             <el-dropdown trigger="click">
-              <img :src="user.avatar || defaultAvatar" class="avatar" />
+              <img :src="user?.avatar || defaultAvatar" class="avatar" />
               <template #dropdown>
                 <el-dropdown-menu>
                   <el-dropdown-item @click="onProfile">{{ $t('common.button.profile') }}</el-dropdown-item>
