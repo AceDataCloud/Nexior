@@ -7,8 +7,11 @@
       @click="onClick(episode)"
     >
       <el-col :span="5" class="left">
-        <span class="index">
+        <span v-if="paid || episode.isFree" class="index">
           {{ episodeIndex + 1 }}
+        </span>
+        <span v-else class="lock">
+          <el-icon class="icon"> <lock /> </el-icon>
         </span>
       </el-col>
       <el-col :span="19" class="right">
@@ -32,12 +35,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { IEpisode } from '@/services/episode/types';
-import { Clock } from '@element-plus/icons-vue';
+import { Clock, Lock } from '@element-plus/icons-vue';
 
 export default defineComponent({
   name: 'EpisodeSideList',
   components: {
-    Clock
+    Clock,
+    Lock
   },
   props: {
     episodes: {
@@ -49,6 +53,10 @@ export default defineComponent({
     active: {
       type: Number,
       required: true
+    },
+    paid: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['choose'],
@@ -83,6 +91,18 @@ export default defineComponent({
       color: inherit;
       flex: inherit;
       .index {
+        display: block;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        margin: auto;
+        border-radius: 50%;
+        font-size: 0.6em;
+        margin-top: 5px;
+        line-height: 30px;
+        background-image: linear-gradient(rgb(244, 72, 129), rgb(236, 69, 79));
+      }
+      .lock {
         display: block;
         width: 30px;
         height: 30px;

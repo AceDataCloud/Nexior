@@ -4,28 +4,41 @@
       <el-row>
         <el-col :span="24">
           <course-preview-card v-if="course" :course="course" />
-          <episode-side-list :episodes="episodes" :active="id" @choose="onChoose($event)" />
+          <episode-side-list :paid="paid" :episodes="episodes" :active="id" @choose="onChoose($event)" />
         </el-col>
       </el-row>
     </el-col>
     <el-col :span="19" class="main">
       <div v-if="paid === true || episode?.isFree">
-        <episode-player
-          v-if="prepared && resource?.fileId && resource.sign"
-          :file-id="resource?.fileId"
-          :preview="episode?.thumbnail"
-          :sign="resource.sign"
-        />
-        <div v-else class="transcode">
-          <el-alert
-            :title="$t('course.message.transcoding')"
-            type="info"
-            center
-            show-icon
-            :closable="false"
-            class="info"
+        <div v-if="episode?.type === 'Video'">
+          <episode-player
+            v-if="prepared && resource?.fileId && resource.sign"
+            :file-id="resource?.fileId"
+            :preview="episode?.thumbnail"
+            :sign="resource.sign"
           />
-          <el-progress :percentage="50" status="exception" :indeterminate="true" :show-text="false" class="progress" />
+          <div v-else class="transcode">
+            <el-alert
+              :title="$t('course.message.transcoding')"
+              type="info"
+              center
+              show-icon
+              :closable="false"
+              class="info"
+            />
+            <el-progress
+              :percentage="50"
+              status="exception"
+              :indeterminate="true"
+              :show-text="false"
+              class="progress"
+            />
+          </div>
+        </div>
+        <div v-if="episode?.type === 'Document'">
+          <div class="pdf-wrapper">
+            <pdf v-if="episode?.resourceUrl" :source="episode?.resourceUrl"></pdf>
+          </div>
         </div>
       </div>
       <div v-if="paid === false && !episode?.isFree">
@@ -61,6 +74,8 @@ import { orderService } from '@/services/order/service';
 import { v4 as uuidv4 } from 'uuid';
 import { IOrder, IOrderDetailResponse } from '@/services/order/types';
 import { Goods } from '@element-plus/icons-vue';
+import episode from '@/router/episode';
+import Pdf from 'vue-pdf-embed';
 
 interface IData {
   course: ICourse | undefined;
@@ -81,7 +96,8 @@ export default defineComponent({
     EpisodeSideList,
     EpisodePlayer,
     CoursePreviewCard,
-    Goods
+    Goods,
+    Pdf
   },
   data(): IData {
     return {
@@ -110,6 +126,9 @@ export default defineComponent({
     episodeService.get(this.id).then(({ data: data }: { data: IEpisodeDetailResponse }) => {
       this.loading = false;
       this.episode = data;
+      if (this.episode.type === 'Video') {
+        this.onPrepareResouce();
+      }
     });
     courseService.paid(this.courseId).then(({ data: { paid } }: { data: ICoursePaidStatusResponse }) => {
       this.paid = paid;
@@ -120,7 +139,6 @@ export default defineComponent({
     courseService.get(this.courseId).then(({ data: data }: { data: ICourseDetailResponse }) => {
       this.course = data;
     });
-    this.onPrepareResouce();
   },
   methods: {
     onPrepareResouce() {
@@ -221,5 +239,10 @@ $width: 300px;
       margin-right: 2px;
     }
   }
+}
+
+.pdf-wrapper {
+  overflow-y: scroll;
+  height: 100vh;
 }
 </style>
