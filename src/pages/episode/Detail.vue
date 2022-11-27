@@ -36,9 +36,7 @@
           </div>
         </div>
         <div v-if="episode?.type === 'Document'">
-          <div class="pdf-wrapper">
-            <pdf v-if="episode?.resourceUrl" :source="episode?.resourceUrl"></pdf>
-          </div>
+          <episode-document :resource-url="episode.resourceUrl" />
         </div>
       </div>
       <div v-if="paid === false && !episode?.isFree">
@@ -65,6 +63,7 @@ import { IEpisode, IEpisodeDetailResponse, IEpisodeListResponse, IEpisodeSignRes
 import { defineComponent } from 'vue';
 import EpisodeSideList from '@/components/episode/SideList.vue';
 import EpisodePlayer from '@/components/episode/Player.vue';
+import EpisodeDocument from '@/components/episode/Document.vue';
 import CoursePreviewCard from '@/components/course/PreviewCard.vue';
 import { courseService } from '@/services/course/service';
 import { ICourse, ICourseDetailResponse, ICoursePaidStatusResponse } from '@/services/course/types';
@@ -75,7 +74,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { IOrder, IOrderDetailResponse } from '@/services/order/types';
 import { Goods } from '@element-plus/icons-vue';
 import episode from '@/router/episode';
-import Pdf from 'vue-pdf-embed';
 
 interface IData {
   course: ICourse | undefined;
@@ -97,7 +95,7 @@ export default defineComponent({
     EpisodePlayer,
     CoursePreviewCard,
     Goods,
-    Pdf
+    EpisodeDocument
   },
   data(): IData {
     return {
@@ -241,8 +239,9 @@ $width: 300px;
   }
 }
 
-.pdf-wrapper {
+.document-wrapper {
   overflow-y: scroll;
-  height: 100vh;
+  height: 80vh;
+  padding: 15px;
 }
 </style>
