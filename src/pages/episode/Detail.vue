@@ -36,7 +36,7 @@
           </div>
         </div>
         <div v-if="episode?.type === 'Document'">
-          <episode-document :resource-url="episode.resourceUrl" />
+          <episode-document v-if="episode.resourceUrl" :resource-url="episode.resourceUrl" />
         </div>
       </div>
       <div v-if="paid === false && !episode?.isFree">
