@@ -1,7 +1,9 @@
 <template>
-  <vue-plyr ref="plyr" :options="options">
-    <video ref="video" controls playsinline :data-poster="preview"></video>
-  </vue-plyr>
+  <div class="player">
+    <vue-plyr ref="plyr" :options="options">
+      <video ref="video" controls playsinline :data-poster="preview"></video>
+    </vue-plyr>
+  </div>
 </template>
 
 <script lang="ts">
@@ -65,3 +67,14 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss">
+.player {
+  width: calc(100% - 30px);
+  position: relative;
+  top: 15px;
+  left: 15px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+</style>
