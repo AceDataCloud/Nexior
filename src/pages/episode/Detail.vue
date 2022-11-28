@@ -53,6 +53,9 @@
           </el-result>
         </el-card>
       </div>
+      <div>
+        <create-comment v-if="episode?.id" :episode-id="episode?.id" />
+      </div>
     </el-col>
   </el-row>
 </template>
@@ -65,6 +68,7 @@ import EpisodeSideList from '@/components/episode/SideList.vue';
 import EpisodePlayer from '@/components/episode/Player.vue';
 import EpisodeDocument from '@/components/episode/Document.vue';
 import CoursePreviewCard from '@/components/course/PreviewCard.vue';
+import CreateComment from '@/components/comment/Create.vue';
 import { courseService } from '@/services/course/service';
 import { ICourse, ICourseDetailResponse, ICoursePaidStatusResponse } from '@/services/course/types';
 import { IResource, IResourceDetailResponse } from '@/services/resource/types';
@@ -95,7 +99,8 @@ export default defineComponent({
     EpisodePlayer,
     CoursePreviewCard,
     Goods,
-    EpisodeDocument
+    EpisodeDocument,
+    CreateComment
   },
   data(): IData {
     return {
