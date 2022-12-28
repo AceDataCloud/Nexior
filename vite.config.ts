@@ -9,7 +9,7 @@ const getAuthEndpoint = () => {
   console.log('process.env.NODE_ENV', process.env.NODE_ENV);
   switch (process.env.NODE_ENV) {
     case 'local':
-      return 'http://localhost:8001';
+      return 'http://127.0.0.1:8001';
     case 'test':
       return 'https://auth.test.zhishuyun.com';
     case 'production':
@@ -18,26 +18,26 @@ const getAuthEndpoint = () => {
   }
 };
 
-const getAcademyEndpoint = () => {
+const getDataEndpoint = () => {
   switch (process.env.NODE_ENV) {
     case 'local':
-      return 'http://localhost:8002';
+      return 'http://127.0.0.1:8007';
     case 'test':
-      return 'https://academy.test.zhishuyun.com';
+      return 'https://data.test.zhishuyun.com';
     case 'production':
     default:
-      return 'https://academy.zhishuyun.com';
+      return 'https://data.zhishuyun.com';
   }
 };
 
 export default defineConfig({
   server: {
     // open: true,
-    host: 'academy.local.zhishuyun.com',
+    host: 'data.local.zhishuyun.com',
     port: 443,
     https: {
-      key: fs.readFileSync('certs/academy.local.zhishuyun.com.cert.key'),
-      cert: fs.readFileSync('certs/academy.local.zhishuyun.com.cert.crt')
+      key: fs.readFileSync('certs/data.local.zhishuyun.com.cert.key'),
+      cert: fs.readFileSync('certs/data.local.zhishuyun.com.cert.crt')
     },
     proxy: {
       '/api/v1/me': {
@@ -49,11 +49,11 @@ export default defineConfig({
         changeOrigin: true
       },
       '/api': {
-        target: getAcademyEndpoint(),
+        target: getDataEndpoint(),
         changeOrigin: true
       },
       '/static': {
-        target: getAcademyEndpoint(),
+        target: getDataEndpoint(),
         changeOrigin: true
       }
       // '/ws': {

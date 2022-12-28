@@ -1,11 +1,11 @@
-# Adademy
+# Data
 
 ## Setup domain
 
 Modify the host file, like `/etc/hosts`, add this line:
 
 ```
-127.0.0.1 academy.local.zhishuyun.com
+127.0.0.1 data.local.zhishuyun.com
 ```
 
 Then save it.
@@ -28,4 +28,4 @@ Run below command to start local server:
 sudo yarn start
 ```
 
-Then open `https://academy.local.zhishuyun.com` to view the content.
+Then open `https://data.local.zhishuyun.com` to view the content.
