@@ -1,22 +1,14 @@
 import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
-import auth from './auth';
-import course from './course';
-import category from './category';
-import episode from './episode';
-import order from './order';
+import service from './service';
 import store from '@/store';
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    redirect: '/courses'
+    redirect: '/services'
   },
-  auth,
-  course,
-  episode,
-  category,
-  order
+  service
 ];
 
 const router = createRouter({

@@ -1,15 +1,15 @@
 <template>
   <el-row>
     <el-col :span="20" :offset="2">
-      <div class="courses">
-        <el-card v-if="loading" class="course">
+      <div class="services">
+        <el-card v-if="loading" class="service">
           <el-skeleton :rows="5" animated />
         </el-card>
-        <el-card v-for="(course, courseIndex) in courses" :key="courseIndex" shadow="hover" class="course">
+        <el-card v-for="(service, serviceIndex) in services" :key="serviceIndex" shadow="hover" class="service">
           <div class="content">
             <!-- <div class="tags mb-5">
               <el-button
-                v-for="(tag, tagIndex) in course.tags"
+                v-for="(tag, tagIndex) in service.tags"
                 :key="tagIndex"
                 size="small"
                 type="success"
@@ -21,36 +21,36 @@
               class="title mb-5"
               @click="
                 $router.push({
-                  name: 'course-detail',
+                  name: 'service-detail',
                   params: {
-                    id: course.id
+                    id: service.id
                   }
                 })
               "
             >
-              <p>{{ course.title }}</p>
+              <p>{{ service.title }}</p>
             </div>
             <div class="introduction mb-5">
-              <p>{{ course.introduction }}</p>
+              <p>{{ service.introduction }}</p>
             </div>
             <div class="study">
               <router-link
                 :to="{
-                  name: 'course-detail',
+                  name: 'service-detail',
                   params: {
-                    id: course.id
+                    id: service.id
                   }
                 }"
               >
                 <el-button type="danger">
                   <el-icon class="icon"> <video-play /> </el-icon>
-                  {{ $t('course.button.startStudy') }}
+                  {{ $t('service.button.startStudy') }}
                 </el-button>
               </router-link>
             </div>
           </div>
           <div class="thumbnail">
-            <img :src="course.thumbnail" />
+            <img :src="service.thumbnail" />
           </div>
         </el-card>
       </div>
@@ -59,31 +59,31 @@
 </template>
 
 <script lang="ts">
-import { courseService } from '@/services/course/service';
-import { ICourse, ICourseListResponse } from '@/services/course/types';
+import { serviceService } from '@/services/service/service';
+import { IService, IServiceListResponse } from '@/services/service/types';
 import { defineComponent } from 'vue';
 import { VideoPlay } from '@element-plus/icons-vue';
 
 interface IData {
-  courses: ICourse[];
+  services: IService[];
   loading: boolean;
 }
 export default defineComponent({
-  name: 'CourseList',
+  name: 'ServiceList',
   components: {
     VideoPlay
   },
   data(): IData {
     return {
-      courses: [],
+      services: [],
       loading: false
     };
   },
   async mounted() {
     this.loading = true;
-    console.debug('start to load all courses');
-    courseService.getAll().then(({ data: data }: { data: ICourseListResponse }) => {
-      this.courses = data.items;
+    console.debug('start to load all services');
+    serviceService.getAll().then(({ data: data }: { data: IServiceListResponse }) => {
+      this.services = data.items;
       this.loading = false;
     });
   }
@@ -91,9 +91,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.courses {
+.services {
   padding: 50px;
-  .course {
+  .service {
     width: 1200px;
     height: 360px;
     border-radius: 0.9rem !important;

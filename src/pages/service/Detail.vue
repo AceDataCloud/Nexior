@@ -16,36 +16,36 @@
               <el-skeleton :rows="5" animated />
             </el-col>
           </el-row>
-          <el-row v-if="course">
+          <el-row v-if="service">
             <el-col :span="6">
               <div class="thumbnail">
-                <img :src="course.thumbnail" />
+                <img :src="service.thumbnail" />
               </div>
             </el-col>
             <el-col :span="18">
               <div class="title mb-5">
-                <p>{{ course.title }}</p>
+                <p>{{ service.title }}</p>
               </div>
               <div class="category">
-                <!-- <el-button>{{ course.category }}</el-button> -->
+                <!-- <el-button>{{ service.category }}</el-button> -->
               </div>
               <div class="introduction mb-5">
-                <p>{{ course.introduction }}</p>
+                <p>{{ service.introduction }}</p>
               </div>
               <div class="operation">
                 <p v-if="paid === false">
-                  <span v-if="course.price" class="price">¥ {{ (course?.price / 100).toFixed(2) }}</span>
+                  <span v-if="service.price" class="price">¥ {{ (service?.price / 100).toFixed(2) }}</span>
                   <el-button type="danger" :loading="buying" @click="onBuy">
                     <el-icon v-if="!buying" class="icon">
                       <goods />
                     </el-icon>
-                    {{ $t('course.button.buy') }}
+                    {{ $t('service.button.buy') }}
                   </el-button>
                 </p>
                 <p v-if="paid === true">
                   <el-button type="danger" @click="onStudy">
                     <el-icon class="icon"> <video-play /> </el-icon>
-                    {{ $t('course.button.startStudy') }}
+                    {{ $t('service.button.startStudy') }}
                   </el-button>
                 </p>
               </div>
@@ -55,16 +55,16 @@
       </div>
     </el-col>
   </el-row>
-  <el-row v-if="course">
+  <el-row v-if="service">
     <el-col :span="24">
       <div class="banner">
         <div class="duration">
           <el-icon class="icon"> <clock /> </el-icon>
-          <span class="value">{{ course?.duration }}{{ $t('common.entity.minute') }}</span>
+          <span class="value">{{ service?.duration }}{{ $t('common.entity.minute') }}</span>
         </div>
         <div class="level">
           <el-icon class="icon"> <magic-stick /> </el-icon>
-          <span class="value">{{ course?.level }}</span>
+          <span class="value">{{ service?.level }}</span>
         </div>
         <div v-if="episodes && episodes.length > 0" class="number">
           <el-icon class="icon"> <collection /> </el-icon>
@@ -87,7 +87,7 @@
           $router.push({
             name: 'episode-detail',
             params: {
-              courseId: course?.id,
+              serviceId: service?.id,
               id: episode.id
             }
           })
@@ -125,8 +125,8 @@
 </template>
 
 <script lang="ts">
-import { courseService } from '@/services/course/service';
-import { ICourse, ICourseDetailResponse, ICoursePaidStatusResponse } from '@/services/course/types';
+import { serviceService } from '@/services/service/service';
+import { IService, IServiceDetailResponse, IServicePaidStatusResponse } from '@/services/service/types';
 import { episodeService } from '@/services/episode/service';
 import { IEpisode, IEpisodeListResponse } from '@/services/episode/types';
 import { orderService } from '@/services/order/service';
@@ -138,7 +138,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { ElMessage } from 'element-plus';
 
 interface IData {
-  course: ICourse | undefined;
+  service: IService | undefined;
   order: IOrder | undefined;
   episodes: IEpisode[] | undefined;
   loading: boolean;
@@ -147,7 +147,7 @@ interface IData {
 }
 
 export default defineComponent({
-  name: 'CourseDetail',
+  name: 'ServiceDetail',
   components: {
     Clock,
     Collection,
@@ -159,7 +159,7 @@ export default defineComponent({
   },
   data(): IData {
     return {
-      course: undefined,
+      service: undefined,
       order: undefined,
       episodes: [],
       loading: false,
@@ -177,14 +177,14 @@ export default defineComponent({
   },
   async mounted() {
     this.loading = true;
-    courseService.get(this.id).then(({ data: data }: { data: ICourseDetailResponse }) => {
+    serviceService.get(this.id).then(({ data: data }: { data: IServiceDetailResponse }) => {
       this.loading = false;
-      this.course = data;
+      this.service = data;
     });
-    courseService.paid(this.id).then(({ data: { paid } }: { data: ICoursePaidStatusResponse }) => {
+    serviceService.paid(this.id).then(({ data: { paid } }: { data: IServicePaidStatusResponse }) => {
       this.paid = paid;
     });
-    episodeService.getAllForCourse(this.id).then(({ data: data }: { data: IEpisodeListResponse }) => {
+    episodeService.getAllForService(this.id).then(({ data: data }: { data: IEpisodeListResponse }) => {
       this.episodes = data.items;
     });
   },
@@ -195,7 +195,7 @@ export default defineComponent({
         this.$router.push({
           name: 'episode-detail',
           params: {
-            courseId: this.course?.id,
+            serviceId: this.service?.id,
             id: episode.id
           }
         });
@@ -203,11 +203,11 @@ export default defineComponent({
     },
     onBuy() {
       this.buying = true;
-      ElMessage.info(this.$t('course.message.creatingOrder'));
+      ElMessage.info(this.$t('service.message.creatingOrder'));
       orderService
         .create({
           id: uuidv4().replaceAll(/-/g, ''),
-          courses: [this.id],
+          services: [this.id],
           description: `${this.$t('common.title.orderDescription')} - ${this.id}`
         })
         .then(({ data: data }: { data: IOrderDetailResponse }) => {
@@ -224,7 +224,7 @@ export default defineComponent({
           });
         })
         .catch(() => {
-          ElMessage.error(this.$t('course.message.createOrderFailed'));
+          ElMessage.error(this.$t('service.message.createOrderFailed'));
           this.buying = false;
         });
     }
