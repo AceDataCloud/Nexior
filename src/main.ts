@@ -7,6 +7,8 @@ import i18n from './i18n/index';
 import './assets/css/tailwind.css';
 import './assets/scss/style.scss';
 import dayjs from './plugins/dayjs';
+import './plugins/font-awesome';
+
 const app = createApp(App);
 
 app.use(router);

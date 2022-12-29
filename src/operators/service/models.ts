@@ -4,8 +4,9 @@ export interface IService {
   description?: string;
   tags?: string[];
   thumbnail?: string;
+  icon?: string;
   price?: number;
-  applied_count: number;
+  appliedCount: number;
   introduction: string;
   createdAt?: string;
   updatedAt?: string;
