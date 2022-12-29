@@ -5,7 +5,7 @@
         <el-col v-for="(service, serviceIndex) in services" :key="serviceIndex" :md="6" :xs="24">
           <el-card shadow="hover" class="service">
             <div class="icon">
-              <el-icon> <user /> </el-icon>
+              <font-awesome-icon :icon="'fa-regular fa-' + service.icon" />
             </div>
             <div class="title">{{ service.title }}</div>
             <div class="price">
@@ -38,7 +38,6 @@
           </el-card>
         </el-col>
       </el-row>
-      <div class="services"></div>
     </el-col>
   </el-row>
 </template>
@@ -46,7 +45,7 @@
 <script lang="ts">
 import { serviceOperator, IService, IServiceListResponse } from '@/operators';
 import { defineComponent } from 'vue';
-import { User, Picture } from '@element-plus/icons-vue';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 interface IData {
   services: IService[];
@@ -55,8 +54,7 @@ interface IData {
 export default defineComponent({
   name: 'ServiceList',
   components: {
-    User,
-    Picture
+    FontAwesomeIcon
   },
   data(): IData {
     return {

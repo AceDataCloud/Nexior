@@ -18,6 +18,11 @@
     "init:cert": "npx mkcert create-cert --ca-key certs/data.local.zhishuyun.com.ca.key --ca-cert certs/data.local.zhishuyun.com.ca.crt --validity 36500 --key certs/data.local.zhishuyun.com.cert.key --cert certs/data.local.zhishuyun.com.cert.crt  --domains data.local.zhishuyun.com"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-brands-svg-icons": "^6.2.1",
+    "@fortawesome/free-regular-svg-icons": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/vue-fontawesome": "^3.0.2",
     "@types/uuid": "^8.3.4",
     "axios": "^0.21.1",
     "dayjs": "^1.10.7",
