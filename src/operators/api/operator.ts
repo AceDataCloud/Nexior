@@ -1,8 +1,8 @@
 import { AxiosResponse } from 'axios';
-import httpClient from '../instance';
-import { IApi, IApiDetailResponse, IApiListResponse } from './types';
+import { httpClient } from '../instance';
+import { IApi, IApiDetailResponse, IApiListResponse } from './models';
 
-class ApiService {
+class ApiOperator {
   key = 'apis';
 
   async getAll(): Promise<AxiosResponse<IApiListResponse>> {
@@ -26,4 +26,4 @@ class ApiService {
   }
 }
 
-export const serviceService = new ApiService();
+export const apiOperator = new ApiOperator();

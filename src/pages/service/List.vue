@@ -1,39 +1,27 @@
 <template>
   <el-row>
     <el-col :span="20" :offset="2">
-      <div class="services">
-        <el-card v-if="loading" class="service">
-          <el-skeleton :rows="5" animated />
-        </el-card>
-        <el-card v-for="(service, serviceIndex) in services" :key="serviceIndex" shadow="hover" class="service">
-          <div class="content">
-            <!-- <div class="tags mb-5">
-              <el-button
-                v-for="(tag, tagIndex) in service.tags"
-                :key="tagIndex"
-                size="small"
-                type="success"
-                class="tag"
-                >{{ tag }}</el-button
-              >
-            </div> -->
-            <div
-              class="title mb-5"
-              @click="
-                $router.push({
-                  name: 'service-detail',
-                  params: {
-                    id: service.id
-                  }
-                })
-              "
-            >
-              <p>{{ service.title }}</p>
+      <el-row :gutter="15" class="services">
+        <el-col v-for="(service, serviceIndex) in services" :key="serviceIndex" :md="6" :xs="24">
+          <el-card shadow="hover" class="service">
+            <div class="icon">
+              <el-icon> <user /> </el-icon>
             </div>
-            <div class="introduction mb-5">
-              <p>{{ service.introduction }}</p>
+            <div class="title">{{ service.title }}</div>
+            <div class="price">
+              <p v-if="service && service.price && service.price > 0" class="nonfree">
+                ￥{{ service.price }} / {{ $t('service.unit.usage') }}
+              </p>
+              <p v-else class="free">
+                {{ $t('service.message.free') }}
+              </p>
             </div>
-            <div class="study">
+            <div class="introduction">
+              <p>
+                {{ service.introduction }}
+              </p>
+            </div>
+            <div class="operations">
               <router-link
                 :to="{
                   name: 'service-detail',
@@ -43,26 +31,22 @@
                 }"
               >
                 <el-button type="danger">
-                  <el-icon class="icon"> <video-play /> </el-icon>
-                  {{ $t('service.button.startStudy') }}
+                  {{ $t('service.button.learnMore') }}
                 </el-button>
               </router-link>
             </div>
-          </div>
-          <div class="thumbnail">
-            <img :src="service.thumbnail" />
-          </div>
-        </el-card>
-      </div>
+          </el-card>
+        </el-col>
+      </el-row>
+      <div class="services"></div>
     </el-col>
   </el-row>
 </template>
 
 <script lang="ts">
-import { serviceService } from '@/services/service/service';
-import { IService, IServiceListResponse } from '@/services/service/types';
+import { serviceOperator, IService, IServiceListResponse } from '@/operators';
 import { defineComponent } from 'vue';
-import { VideoPlay } from '@element-plus/icons-vue';
+import { User, Picture } from '@element-plus/icons-vue';
 
 interface IData {
   services: IService[];
@@ -71,7 +55,8 @@ interface IData {
 export default defineComponent({
   name: 'ServiceList',
   components: {
-    VideoPlay
+    User,
+    Picture
   },
   data(): IData {
     return {
@@ -82,7 +67,7 @@ export default defineComponent({
   async mounted() {
     this.loading = true;
     console.debug('start to load all services');
-    serviceService.getAll().then(({ data: data }: { data: IServiceListResponse }) => {
+    serviceOperator.getAll().then(({ data: data }: { data: IServiceListResponse }) => {
       this.services = data.items;
       this.loading = false;
     });
@@ -91,58 +76,81 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+$transition-duration: 0.5s;
 .services {
   padding: 50px;
   .service {
-    width: 1200px;
-    height: 360px;
-    border-radius: 0.9rem !important;
-    margin: 2rem auto;
-    padding: 2rem 3rem;
+    width: 100%;
+    height: 280px;
+    border-radius: 10px !important;
+    margin: 10px auto;
+    padding: 30px 0;
     position: relative;
-    .content {
-      max-width: 650px;
-    }
+    transition: all $transition-duration;
 
-    .tags {
-      .tag {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
+    .icon {
+      font-size: 60px;
+      text-align: center;
     }
 
     .title {
-      cursor: pointer;
-      p {
-        font-size: 1.7rem;
+      color: #666;
+      font-size: 14px;
+      text-align: center;
+      margin: 0;
+      margin-bottom: 8px;
+      padding: 0 20px;
+      font-weight: bold;
+    }
+
+    .price {
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      margin: 0;
+      .nonfree {
+        color: #ff5441;
+      }
+      .free {
+        color: #29c287;
       }
     }
+
     .introduction {
-      p {
-        font-size: 1rem;
-        color: rgb(96 111 123);
-      }
+      padding: 5px 0;
+      text-align: center;
+      margin: 0 auto;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      text-overflow: ellipsis;
+      color: #9f9f9f;
+      font-size: 12px;
+      opacity: 0;
+      word-break: break-all;
+      transition: all $transition-duration;
+      text-overflow: ellipsis;
+      height: 42px;
     }
-    .thumbnail {
-      img {
-        position: absolute;
-        right: -165px;
-        margin-top: -50px;
-        max-width: 80%;
-        pointer-events: none;
-        top: 0;
-        width: 500px;
-        height: 500px;
-      }
+
+    .operations {
+      opacity: 0;
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      transition: all $transition-duration;
     }
-    .study {
-      .el-button {
-        padding-left: 30px;
-        padding-right: 30px;
-        .icon {
-          margin-right: 4px;
-          transform: scale(1.2);
-        }
+
+    &:hover {
+      padding-top: 0;
+      .introduction {
+        opacity: 1;
+      }
+      .operations {
+        opacity: 1;
       }
     }
   }
