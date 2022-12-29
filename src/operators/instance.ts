@@ -41,4 +41,4 @@ httpClient.interceptors.response.use(
 
 // const httpClient = (options: AxiosRequestConfig): Promise<AxiosResponse> => instance.request(options);
 
-export default httpClient;
+export { httpClient };

@@ -1,8 +1,8 @@
 import { AxiosResponse } from 'axios';
-import httpClient from '../instance';
-import { IService, IServiceDetailResponse, IServiceListResponse } from './types';
+import { httpClient } from '../instance';
+import { IService, IServiceDetailResponse, IServiceListResponse } from './models';
 
-class ServiceService {
+class ServiceOperator {
   key = 'services';
 
   async getAll(): Promise<AxiosResponse<IServiceListResponse>> {
@@ -26,4 +26,4 @@ class ServiceService {
   }
 }
 
-export const serviceService = new ServiceService();
+export const serviceOperator = new ServiceOperator();

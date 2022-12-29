@@ -1,7 +1,7 @@
 import { createStore, ActionContext } from 'vuex';
-import { IUser } from '@/services/user/types';
+import { IUser } from '@/operators/user/models';
 import createPersistedState from 'vuex-persistedstate';
-import UserService from '@/services/user/service';
+import { userOperator } from '@/operators';
 
 export interface IState {
   accessToken: string | undefined;
@@ -47,7 +47,7 @@ const store = createStore({
       commit('setUser', payload);
     },
     async getMe({ commit }: ActionContext<IState, IState>) {
-      const { data: data } = await UserService.getMe();
+      const { data: data } = await userOperator.getMe();
       commit('setUser', data);
     }
   },

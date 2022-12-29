@@ -1,8 +1,8 @@
 import { AxiosResponse } from 'axios';
-import httpClient from '../instance';
-import { IUserDetailResponse, IUser } from './types';
+import { httpClient } from '../instance';
+import { IUserDetailResponse, IUser } from './models';
 
-class UserService {
+class UserOperator {
   async getMe(): Promise<AxiosResponse<IUserDetailResponse>> {
     return httpClient.get('/me');
   }
@@ -20,4 +20,4 @@ class UserService {
   }
 }
 
-export default new UserService();
+export const userOperator = new UserOperator();
