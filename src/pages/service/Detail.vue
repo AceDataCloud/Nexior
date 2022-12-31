@@ -30,7 +30,7 @@
                   </p>
                 </div>
                 <div class="operations">
-                  <el-button type="danger">
+                  <el-button type="danger" @click="onApply">
                     {{ $t('service.button.apply') }}
                   </el-button>
                 </div>
@@ -61,12 +61,22 @@
 </template>
 
 <script lang="ts">
-import { IService, IServiceDetailResponse, serviceOperator } from '@/operators';
+import {
+  applicationOperator,
+  IApplication,
+  IApplicationDetailResponse,
+  IService,
+  IServiceDetailResponse,
+  serviceOperator
+} from '@/operators';
 import { defineComponent } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { ERROR_CODE_DUPLICATION } from '@/constants';
+import { ElForm, ElMessage } from 'element-plus';
 
 interface IData {
   service: IService | undefined;
+  application: IApplication | undefined;
   loading: boolean;
   activeTab: string;
 }
@@ -78,30 +88,46 @@ export default defineComponent({
   },
   data(): IData {
     return {
-      // service: undefined,
-      // order: undefined,
-      // episodes: [],
       service: undefined,
+      application: undefined,
       loading: false,
       activeTab: 'introduction'
-      // buying: false,
-      // paid: undefined
     };
   },
   computed: {
     id() {
-      return this.$route.params.id;
+      return this.$route.params.id.toString();
     }
   },
   async mounted() {
     this.loading = true;
     serviceOperator.get(this.id).then(({ data: data }: { data: IServiceDetailResponse }) => {
       this.service = data;
-      console.log('this.service', this.service);
       this.loading = false;
     });
   },
-  methods: {}
+  methods: {
+    onApply() {
+      applicationOperator
+        .create({
+          service: this.id
+        })
+        .then(({ data: data }: { data: IApplicationDetailResponse }) => {
+          this.application = data;
+          ElMessage.success(this.$t('application.message.applySuccessfully'));
+          setTimeout(() => {
+            this.$router.push({
+              name: 'console-application-list'
+            });
+          }, 2000);
+        })
+        .catch((error) => {
+          if (error?.response?.data?.code === ERROR_CODE_DUPLICATION) {
+            ElMessage.error(this.$t('application.message.alreadyApplied'));
+          }
+        });
+    }
+  }
 });
 </script>
 

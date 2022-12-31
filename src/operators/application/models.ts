@@ -1,10 +1,10 @@
 export interface IApplication {
-  id: string;
+  id?: string;
   service: string;
-  apiKey: string;
-  userId: string;
-  remainingCount: number;
-  usedCount: number;
+  apiKey?: string;
+  userId?: string;
+  remainingCount?: number;
+  usedCount?: number;
   createdAt?: string;
   updatedAt?: string;
 }
