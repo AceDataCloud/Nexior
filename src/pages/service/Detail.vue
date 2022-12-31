@@ -90,7 +90,7 @@ export default defineComponent({
   },
   computed: {
     id() {
-      return parseInt(this.$route.params.id.toString());
+      return this.$route.params.id;
     }
   },
   async mounted() {

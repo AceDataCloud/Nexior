@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
 import service from './service';
 import auth from './auth';
+import console from './console';
 import store from '@/store';
 
 const routes = [
@@ -10,7 +11,8 @@ const routes = [
     redirect: '/services'
   },
   service,
-  auth
+  auth,
+  console
 ];
 
 const router = createRouter({
