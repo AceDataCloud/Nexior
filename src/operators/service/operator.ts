@@ -9,7 +9,7 @@ class ServiceOperator {
     return await httpClient.get(`/${this.key}/`);
   }
 
-  async get(id: number): Promise<AxiosResponse<IServiceDetailResponse>> {
+  async get(id: string): Promise<AxiosResponse<IServiceDetailResponse>> {
     return await httpClient.get(`/${this.key}/${id}`);
   }
 
@@ -17,11 +17,11 @@ class ServiceOperator {
     return await httpClient.post(`/${this.key}/`, data);
   }
 
-  async update(id: number, data: IService): Promise<AxiosResponse<IServiceDetailResponse>> {
+  async update(id: string, data: IService): Promise<AxiosResponse<IServiceDetailResponse>> {
     return await httpClient.put(`/${this.key}/${id}`, data);
   }
 
-  async delete(id: number): Promise<AxiosResponse<null>> {
+  async delete(id: string): Promise<AxiosResponse<null>> {
     return await httpClient.delete(`/${this.key}/${id}`);
   }
 }
