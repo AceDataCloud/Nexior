@@ -124,6 +124,11 @@ export default defineComponent({
         .catch((error) => {
           if (error?.response?.data?.code === ERROR_CODE_DUPLICATION) {
             ElMessage.error(this.$t('application.message.alreadyApplied'));
+            setTimeout(() => {
+              this.$router.push({
+                name: 'console-application-list'
+              });
+            }, 2000);
           }
         });
     }

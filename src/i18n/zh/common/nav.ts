@@ -6,5 +6,6 @@ export default {
   article: '文章',
   publication: '发布',
   course: '课程',
-  category: '分类'
+  category: '分类',
+  service: '服务'
 };

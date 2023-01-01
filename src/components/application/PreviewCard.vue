@@ -2,7 +2,7 @@
   <el-card v-if="application && service" shadow="hover" class="card">
     <div class="item">
       <div class="icon">
-        <font-awesome-icon :icon="'fa-regular fa-' + service.icon" />
+        <font-awesome-icon v-if="service.icon" :icon="service.icon" />
       </div>
       <div class="main">
         <div class="title">

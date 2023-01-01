@@ -1,11 +1,24 @@
 <template>
   <el-row>
     <el-col :span="20" :offset="2">
-      <el-row :gutter="15" class="services">
-        <el-col v-for="(service, serviceIndex) in services" :key="serviceIndex" :md="6" :xs="24">
+      <el-row v-if="loading" :gutter="15" class="services">
+        <el-col v-for="_ in 8" :key="_" :lg="6" :md="8" :sm="12" :xs="24">
+          <el-card shadow="hover" class="service">
+            <el-skeleton>
+              <template #template>
+                <el-skeleton-item variant="image" class="icon-placeholder" />
+                <el-skeleton-item variant="p" class="title-placeholder" />
+                <el-skeleton-item variant="p" class="price-placeholder" />
+              </template>
+            </el-skeleton>
+          </el-card>
+        </el-col>
+      </el-row>
+      <el-row v-else :gutter="15" class="services">
+        <el-col v-for="(service, serviceIndex) in services" :key="serviceIndex" :lg="6" :md="8" :sm="12" :xs="24">
           <el-card shadow="hover" class="service">
             <div class="icon">
-              <font-awesome-icon :icon="'fa-regular fa-' + service.icon" />
+              <font-awesome-icon v-if="service.icon" :icon="service.icon" />
             </div>
             <div class="title">{{ service.title }}</div>
             <div class="price">
@@ -38,6 +51,21 @@
           </el-card>
         </el-col>
       </el-row>
+      <el-row>
+        <el-col :span="10" :offset="14">
+          <div class="pagination m-v-lg">
+            <el-pagination
+              v-model:current-page="page"
+              background
+              :page-size="limit"
+              layout="total, prev, pager, next"
+              :total="total"
+              @current-change="onPageChange"
+            >
+            </el-pagination>
+          </div>
+        </el-col>
+      </el-row>
     </el-col>
   </el-row>
 </template>
@@ -46,11 +74,13 @@
 import { serviceOperator, IService, IServiceListResponse } from '@/operators';
 import { defineComponent } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ElForm, ElMessage } from 'element-plus';
 
 interface IData {
   services: IService[];
   loading: boolean;
+  total: number | undefined;
+  limit: number;
+  page: number;
 }
 export default defineComponent({
   name: 'ServiceList',
@@ -60,16 +90,39 @@ export default defineComponent({
   data(): IData {
     return {
       services: [],
-      loading: false
+      loading: true,
+      total: undefined,
+      limit: 8,
+      page: parseInt(this.$route.query.page?.toString() || '1')
     };
   },
   async mounted() {
-    this.loading = true;
-    console.debug('start to load all services');
-    serviceOperator.getAll().then(({ data: data }: { data: IServiceListResponse }) => {
-      this.services = data.items;
-      this.loading = false;
-    });
+    this.onFetchData();
+  },
+  methods: {
+    onPageChange(page: number) {
+      this.$router.push({
+        name: this.$route.name?.toString(),
+        query: {
+          page: page
+        }
+      });
+      this.onFetchData();
+    },
+    onFetchData() {
+      this.loading = true;
+      console.debug('start to load all services');
+      serviceOperator
+        .getAll({
+          limit: this.limit,
+          offset: (this.page - 1) * this.limit
+        })
+        .then(({ data: data }: { data: IServiceListResponse }) => {
+          this.services = data.items;
+          this.total = data.count;
+          this.loading = false;
+        });
+    }
   }
 });
 </script>
@@ -77,7 +130,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 $transition-duration: 0.5s;
 .services {
-  padding: 50px;
+  padding: 50px 0;
   .service {
     width: 100%;
     height: 280px;
@@ -86,6 +139,28 @@ $transition-duration: 0.5s;
     padding: 30px 0;
     position: relative;
     transition: all $transition-duration;
+
+    .icon-placeholder {
+      display: flex;
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 15px auto;
+      text-align: center;
+    }
+
+    .title-placeholder {
+      display: block;
+      width: 80px;
+      height: 20px;
+      margin: 0 auto 10px auto;
+    }
+
+    .price-placeholder {
+      display: block;
+      width: 100px;
+      height: 16px;
+      margin: 0 auto 10px auto;
+    }
 
     .icon {
       font-size: 60px;
@@ -153,5 +228,9 @@ $transition-duration: 0.5s;
       }
     }
   }
+}
+.pagination {
+  padding-bottom: 50px;
+  float: right;
 }
 </style>

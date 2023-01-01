@@ -13,6 +13,7 @@ export default {
   watch: '观看',
   verify: '实名认证',
   profile: '个人信息',
+  console: '控制台',
   learn: '学习',
   buy: '购买'
 };
