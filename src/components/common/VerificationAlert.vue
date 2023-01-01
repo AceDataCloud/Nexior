@@ -1,10 +1,11 @@
-<template></template>
+<template>
+  <div></div>
+</template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElMessageBox } from 'element-plus';
-import AuthService from '@/services/auth/service';
-import { ITokenResponse } from '@/services/auth/types';
+import { authOperator, ITokenResponse } from '@/operators';
 
 export default defineComponent({
   name: 'VerificationAlert',
@@ -14,6 +15,25 @@ export default defineComponent({
     },
     refresh() {
       return this.$route.query.refresh;
+    }
+  },
+  async mounted() {
+    if (this.refresh) {
+      authOperator
+        .refreshToken({
+          refresh: this.$store.getters.refreshToken
+        })
+        .then(async ({ data: data }: { data: ITokenResponse }) => {
+          await this.$store.dispatch('setAccessToken', data.access);
+          await this.$store.dispatch('getMe');
+          this.$router.push({
+            ...this.$route,
+            query: {}
+          });
+          this.checkAndShowVerificationAlert();
+        });
+    } else {
+      this.checkAndShowVerificationAlert();
     }
   },
   methods: {
@@ -36,23 +56,6 @@ export default defineComponent({
           window.open('https://auth.test.zhishuyun.com/user/verify?redirect=' + window.location.href + '?refresh=1');
         })
         .catch(() => {});
-    }
-  },
-  async mounted() {
-    if (this.refresh) {
-      AuthService.refreshToken({
-        refresh: this.$store.getters.refreshToken
-      }).then(async ({ data: data }: { data: ITokenResponse }) => {
-        await this.$store.dispatch('setAccessToken', data.access);
-        await this.$store.dispatch('getMe');
-        this.$router.push({
-          ...this.$route,
-          query: {}
-        });
-        this.checkAndShowVerificationAlert();
-      });
-    } else {
-      this.checkAndShowVerificationAlert();
     }
   }
 });

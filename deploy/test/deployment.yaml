@@ -2,23 +2,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: zhishuyun-academy-frontend
-  name: zhishuyun-academy-frontend
+    app: zhishuyun-data-frontend
+  name: zhishuyun-data-frontend
   namespace: zhishuyun-test
 spec:
   replicas: 1
   revisionHistoryLimit: 5
   selector:
     matchLabels:
-      app: zhishuyun-academy-frontend
+      app: zhishuyun-data-frontend
   template:
     metadata:
       labels:
-        app: zhishuyun-academy-frontend
+        app: zhishuyun-data-frontend
     spec:
       containers:
-        - image: ghcr.io/zhishuyun/zhishuyun-academy-frontend:${TAG}
-          name: zhishuyun-academy-frontend
+        - image: ghcr.io/zhishuyun/zhishuyun-data-frontend:${TAG}
+          name: zhishuyun-data-frontend
           ports:
             - containerPort: 80
           resources:
