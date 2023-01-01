@@ -6,8 +6,8 @@
           <el-col :span="12" :offset="6" class="p-t text-center">
             <p>
               <span
-                ><a href="https://academy.zhishuyun.com">{{ $t('common.entity.website') }}</a> ©
-                {{ new Date().getFullYear() }} {{ $t('common.entity.copyright') }}
+                ><a href="https://zhishuyun.com">{{ $t('common.entity.website') }}</a> © {{ new Date().getFullYear() }}
+                {{ $t('common.entity.copyright') }}
               </span>
               <span class="ml-2">
                 <a href="https://beian.miit.gov.cn/">京ICP备18021371号-2 </a>

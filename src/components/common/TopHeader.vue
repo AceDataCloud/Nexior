@@ -7,7 +7,7 @@
       <el-row>
         <el-col :span="20">
           <el-menu :default-active="active" class="el-menu-demo" mode="horizontal" @select="onSelect">
-            <el-menu-item v-t="'common.nav.course'" index="/courses"></el-menu-item>
+            <el-menu-item v-t="'common.nav.service'" index="/services"></el-menu-item>
             <!-- <el-menu-item v-t="'common.nav.category'" index="/categories"></el-menu-item> -->
           </el-menu>
         </el-col>
@@ -22,6 +22,7 @@
               <img :src="user?.avatar || defaultAvatar" class="avatar" />
               <template #dropdown>
                 <el-dropdown-menu>
+                  <el-dropdown-item @click="onConsole">{{ $t('common.button.console') }}</el-dropdown-item>
                   <el-dropdown-item @click="onProfile">{{ $t('common.button.profile') }}</el-dropdown-item>
                   <el-dropdown-item @click="onVerify">{{ $t('common.button.verify') }}</el-dropdown-item>
                   <el-dropdown-item @click="onLogout">{{ $t('common.button.logout') }}</el-dropdown-item>
@@ -73,6 +74,11 @@ export default defineComponent({
     },
     onVerify() {
       window.location.href = 'https://auth.test.zhishuyun.com/user/verify';
+    },
+    onConsole() {
+      this.$router.push({
+        name: 'console-application-list'
+      });
     },
     onLogout() {
       this.$store.dispatch('resetAuth');

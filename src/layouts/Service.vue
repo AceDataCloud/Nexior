@@ -1,10 +1,10 @@
 <template>
-  <el-container>
-    <el-header>
+  <el-container class="wrapper">
+    <el-header class="header">
       <top-header />
     </el-header>
-    <el-main> <router-view /> </el-main>
-    <el-footer>
+    <el-main class="main"> <router-view /> </el-main>
+    <el-footer class="footer">
       <bottom-footer />
     </el-footer>
   </el-container>
@@ -22,9 +22,12 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.el-header,
-.el-footer {
+<style lang="scss" scoped>
+.wrapper {
+  min-height: 100vh;
+}
+
+.header {
   padding: 0;
 }
 </style>
