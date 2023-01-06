@@ -1,7 +1,34 @@
 <template>
-  <el-row v-if="service" class="preview">
+  <el-row class="preview">
     <el-col :span="20" :offset="2">
-      <el-row>
+      <el-row v-if="loading">
+        <el-col :span="24">
+          <el-card shadow="hover">
+            <div class="body">
+              <div class="left">
+                <el-skeleton>
+                  <template #template>
+                    <el-skeleton-item variant="image" class="icon-placeholder" />
+                  </template>
+                </el-skeleton>
+              </div>
+              <div class="right">
+                <el-skeleton>
+                  <template #template>
+                    <el-skeleton-item variant="p" class="title-placeholder" />
+                    <el-skeleton-item variant="p" class="description-placeholder" />
+                    <el-skeleton-item variant="p" class="price-placeholder" />
+                    <div class="operations">
+                      <el-skeleton-item variant="button" class="button-placeholder" />
+                    </div>
+                  </template>
+                </el-skeleton>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+      </el-row>
+      <el-row v-else-if="service">
         <el-col :span="24">
           <el-card shadow="hover">
             <div class="body">
@@ -162,6 +189,13 @@ export default defineComponent({
         margin: 0 auto;
         font-size: 80px;
       }
+      .icon-placeholder {
+        display: flex;
+        width: 80px;
+        height: 80px;
+        text-align: center;
+        margin: 30px auto 10px auto;
+      }
 
       .count {
         color: #999;
@@ -179,11 +213,23 @@ export default defineComponent({
         line-height: 26px;
         padding-right: 8px;
       }
+      .title-placeholder {
+        width: 100px;
+        height: 30px;
+        display: block;
+        margin-bottom: 10px;
+      }
       .description {
         line-height: 22px;
         color: #303030;
         padding: 15px 0;
         font-size: 14px;
+      }
+      .description-placeholder {
+        width: 300px;
+        height: 20px;
+        display: block;
+        margin-bottom: 10px;
       }
       .price {
         margin: 0;
@@ -201,6 +247,10 @@ export default defineComponent({
         .free {
           color: #29c287;
         }
+      }
+      .price-placeholder {
+        width: 100px;
+        height: 30px;
       }
       .operations {
         position: absolute;
