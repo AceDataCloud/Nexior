@@ -100,9 +100,12 @@ import { defineComponent } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ERROR_CODE_DUPLICATION } from '@/constants';
 import { ElForm, ElMessage } from 'element-plus';
+import { apiOperator } from '@/operators/api/operator';
+import { IApi, IApiListResponse } from '@/operators/api/models';
 
 interface IData {
   service: IService | undefined;
+  apis: IApi[];
   application: IApplication | undefined;
   loading: boolean;
   activeTab: string;
@@ -116,6 +119,7 @@ export default defineComponent({
   data(): IData {
     return {
       service: undefined,
+      apis: [],
       application: undefined,
       loading: false,
       activeTab: 'introduction'
@@ -127,13 +131,23 @@ export default defineComponent({
     }
   },
   async mounted() {
-    this.loading = true;
-    serviceOperator.get(this.id).then(({ data: data }: { data: IServiceDetailResponse }) => {
-      this.service = data;
-      this.loading = false;
-    });
+    this.onFetchService();
+    this.onFetchApis();
   },
   methods: {
+    onFetchService() {
+      this.loading = true;
+      serviceOperator.get(this.id).then(({ data: data }: { data: IServiceDetailResponse }) => {
+        this.service = data;
+        this.loading = false;
+      });
+    },
+    onFetchApis() {
+      this.loading = true;
+      apiOperator.getAllForService(this.id).then(({ data: data }: { data: IApiListResponse }) => {
+        this.apis = data.items;
+      });
+    },
     onApply() {
       applicationOperator
         .create({
