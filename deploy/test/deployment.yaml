@@ -2,32 +2,32 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: zhishuyun-data-frontend
-  name: zhishuyun-data-frontend
+    app: data-frontend
+  name: data-frontend
   namespace: zhishuyun-test
 spec:
   replicas: 1
   revisionHistoryLimit: 5
   selector:
     matchLabels:
-      app: zhishuyun-data-frontend
+      app: data-frontend
   template:
     metadata:
       labels:
-        app: zhishuyun-data-frontend
+        app: data-frontend
     spec:
       containers:
-        - image: ghcr.io/zhishuyun/zhishuyun-data-frontend:${TAG}
-          name: zhishuyun-data-frontend
+        - image: ghcr.io/zhishuyun/data-frontend:${TAG}
+          name: data-frontend
           ports:
             - containerPort: 80
           resources:
             requests:
-              memory: '200Mi'
-              cpu: '100m'
+              memory: '50Mi'
+              cpu: '20m'
             limits:
-              memory: '512Mi'
-              cpu: '200m'
+              memory: '100Mi'
+              cpu: '30m'
       imagePullSecrets:
         - name: docker-registry
       restartPolicy: Always

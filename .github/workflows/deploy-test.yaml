@@ -43,4 +43,4 @@ jobs:
         run: |
           docker-compose build
           docker-compose push
-          sh ./deploy/test/deploy.sh
+          sh ./deploy/test/scripts/deploy.sh

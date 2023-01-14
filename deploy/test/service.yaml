@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: zhishuyun-data-frontend
-  name: zhishuyun-data-frontend
+    app: data-frontend
+  name: data-frontend
   namespace: zhishuyun-test
 spec:
   ports:
@@ -11,4 +11,4 @@ spec:
       port: 8083
       targetPort: 80
   selector:
-    app: zhishuyun-data-frontend
+    app: data-frontend
