@@ -3,6 +3,6 @@ services:
   zhishuyun-data-frontend:
     container_name: 'zhishuyun-data-frontend'
     build: ./
-    image: 'ghcr.io/zhishuyun/zhishuyun-data-frontend:${BUILD_NUMBER}'
+    image: 'ghcr.io/zhishuyun/data-frontend:${BUILD_NUMBER}'
     ports:
       - '8086:80'
