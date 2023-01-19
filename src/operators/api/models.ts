@@ -6,6 +6,7 @@ export interface IApi {
   tags?: string[];
   endpoint?: string;
   isFree?: boolean;
+  requestMethod?: boolean;
   swaggerConfiguration?: string;
   service?: string;
   createdAt?: string;
