@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router
 import service from './service';
 import auth from './auth';
 import console from './console';
+import document from './document';
 import store from '@/store';
 
 const routes = [
@@ -12,7 +13,8 @@ const routes = [
   },
   service,
   auth,
-  console
+  console,
+  document
 ];
 
 const router = createRouter({
