@@ -6,8 +6,11 @@
           <el-tag v-if="response.isSuccess" class="ml-2" type="success">{{ $t('api.entity.success') }}</el-tag>
           <el-tag v-else class="ml-2" type="danger">{{ $t('api.entity.failure') }}</el-tag>
         </span>
-        <span class="code">
+        <span class="status-code">
           {{ response.statusCode }}
+        </span>
+        <span class="error-code">
+          {{ response.errorCode }}
         </span>
       </template>
       <div class="item-body">
@@ -90,6 +93,11 @@ export default defineComponent({
     background-color: #f8f8f8;
     border-right: 1px solid rgba(0, 0, 0, 0.1);
     border-left: 1px solid rgba(0, 0, 0, 0.1);
+    .status-code,
+    .error-code {
+      display: inline-block;
+      padding-left: 5px;
+    }
 
     &.el-collapse-item:last-child {
       margin-bottom: 0;

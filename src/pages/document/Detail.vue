@@ -16,8 +16,6 @@
 import { defineComponent } from 'vue';
 import ApiList from '@/components/document/ApiList.vue';
 import ApiUsage from '@/components/document/ApiUsage.vue';
-import { apiOperator } from '@/operators/api/operator';
-import { IApi, IApiDetailResponse } from '@/operators/api/models';
 
 export default defineComponent({
   components: {
