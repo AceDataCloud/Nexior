@@ -4,6 +4,7 @@ import course from './course/index';
 import service from './service/index';
 import console from './console/index';
 import application from './application';
+import api from './api';
 
 export default {
   common,
@@ -11,5 +12,6 @@ export default {
   course,
   service,
   console,
-  application
+  application,
+  api
 };

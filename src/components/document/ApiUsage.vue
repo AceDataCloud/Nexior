@@ -4,26 +4,27 @@
       {{ api?.title }}
     </div>
     <div class="url">
-      <el-button size="mini">{{ api?.request?.method }}</el-button>
-      <span>{{ api?.endpoint }}{{ api?.path }}</span>
+      <el-tag class="method" size="mini" type="primary" effect="dark">{{ api?.request?.method }}</el-tag>
+      <span v-if="api?.endpoint && api?.path" class="endpoint">{{ urlJoin(api?.endpoint, api?.path) }}</span>
     </div>
-    <div class="description">
-      <p>{{ api?.description }}</p>
+    <div class="introduction">
+      <p>{{ api?.introduction }}</p>
     </div>
+    <el-divider />
     <div class="queries">
-      <h2>Queries</h2>
+      <h2 class="title">{{ $t('api.entity.requestQueries') }}</h2>
       <api-form :schema="api?.request.queries" />
     </div>
     <div class="headers">
-      <h2>Headers</h2>
+      <h2 class="title">{{ $t('api.entity.requestHeaders') }}</h2>
       <api-form :schema="api?.request.headers" />
     </div>
     <div class="body">
-      <h2>Body</h2>
+      <h2 class="title">{{ $t('api.entity.requestBody') }}</h2>
       <api-form :schema="api?.request.body" />
     </div>
-    <div class="responses">
-      <h2>Responses</h2>
+    <div v-if="api?.responses" class="responses">
+      <h2 class="title">{{ $t('api.entity.response') }}</h2>
       <api-result :responses="api?.responses" />
     </div>
   </div>
@@ -35,6 +36,7 @@ import { IApi, IApiDetailResponse } from '@/operators/api/models';
 import { apiOperator } from '@/operators/api/operator';
 import ApiForm from './ApiForm.vue';
 import ApiResult from './ApiResult.vue';
+import urlJoin from 'url-join';
 
 export interface IData {
   api: IApi | undefined;
@@ -70,6 +72,7 @@ export default defineComponent({
     this.getApi(this.id);
   },
   methods: {
+    urlJoin,
     getApi(id: string) {
       this.loading = true;
       apiOperator
@@ -91,9 +94,59 @@ export default defineComponent({
 <style lang="scss">
 .item {
   .title {
-    font-size: 1.9em;
-    font-weight: var(--markdown-title-weight);
+    font-size: 26px;
+    font-weight: 500;
     line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .url {
+    margin-bottom: 10px;
+    .method {
+      border-radius: 10px;
+      padding: 1px 8px;
+      font-size: 10px;
+      transform: scale(0.8);
+    }
+    .endpoint {
+      font-size: 12px;
+    }
+  }
+  .introduction {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .queries {
+    margin-bottom: 10px;
+    .title {
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .headers {
+    margin-bottom: 10px;
+    .title {
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .body {
+    margin-bottom: 10px;
+    .title {
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .responses {
+    margin-bottom: 10px;
+    .title {
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
   }
 }
 </style>

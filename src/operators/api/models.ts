@@ -23,6 +23,7 @@ export interface IResponse {
   example?: string;
   isSuccess: boolean;
   errorCode?: string;
+  statusCode: number;
   body: ISchema;
   headers: ISchema;
 }
@@ -33,7 +34,7 @@ export interface IApi {
   endpoint: string;
   alias: string;
   title?: string;
-  description?: string;
+  introduction?: string;
   tags?: string[];
   request: IRequest;
   responses: IResponse[];
