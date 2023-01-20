@@ -3,9 +3,12 @@ export default {
   requestBody: '请求体',
   responseBody: '响应体',
   requestHeaders: '请求头',
+  requestHeader: '请求头',
   responseHeaders: '响应头',
   response: '响应',
   success: '成功',
   failure: '失败',
-  responseExample: '样例'
+  responseExample: '样例',
+  authentication: '认证',
+  apiKey: 'API Key'
 };

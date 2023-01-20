@@ -7,7 +7,9 @@
       <div class="main">
         <api-usage :id="id" />
       </div>
-      <div class="right"></div>
+      <div class="right">
+        <api-try v-model:api-key="apiKey" />
+      </div>
     </el-col>
   </el-row>
 </template>
@@ -16,11 +18,18 @@
 import { defineComponent } from 'vue';
 import ApiList from '@/components/document/ApiList.vue';
 import ApiUsage from '@/components/document/ApiUsage.vue';
+import ApiTry from '@/components/document/ApiTry.vue';
 
 export default defineComponent({
   components: {
     ApiList,
-    ApiUsage
+    ApiUsage,
+    ApiTry
+  },
+  data() {
+    return {
+      apiKey: ''
+    };
   },
   computed: {
     id() {
