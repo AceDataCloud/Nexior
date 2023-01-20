@@ -1,8 +1,8 @@
 <template>
   <div class="item">
     <el-link type="primary" class="link" @click="onClick">
-      <span class="name">{{ api.title }}</span>
-      <span class="request-method">{{ api.requestMethod }}</span>
+      <span class="name">{{ api?.title }}</span>
+      <span class="request-method">{{ api?.request?.method }}</span>
     </el-link>
   </div>
 </template>

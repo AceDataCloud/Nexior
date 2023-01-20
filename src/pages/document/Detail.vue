@@ -5,7 +5,7 @@
         <api-list />
       </div>
       <div class="main">
-        <api-usage v-if="api" :api="api" />
+        <api-usage :id="id" />
       </div>
       <div class="right"></div>
     </el-col>
@@ -19,33 +19,17 @@ import ApiUsage from '@/components/document/ApiUsage.vue';
 import { apiOperator } from '@/operators/api/operator';
 import { IApi, IApiDetailResponse } from '@/operators/api/models';
 
-export interface IData {
-  api: IApi | undefined;
-}
-
 export default defineComponent({
   components: {
     ApiList,
     ApiUsage
   },
-  data(): IData {
-    return {
-      api: undefined
-    };
-  },
-  methods: {
-    getApi(id: string) {
-      apiOperator
-        .get(id)
-        .then(({ data: data }: { data: IApiDetailResponse }) => {
-          this.api = data;
-          console.log('api', this.api);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+  computed: {
+    id() {
+      return this.$route.params.id.toString();
     }
-  }
+  },
+  methods: {}
 });
 </script>
 
@@ -59,18 +43,21 @@ export default defineComponent({
     float: left;
     width: 280px;
     height: 100%;
+    box-shadow: 1px 0 0 #eee;
   }
 
   .main {
     float: left;
     width: calc(100% - 760px);
     height: 100%;
+    padding: 30px;
   }
 
   .right {
     float: left;
     width: 480px;
     height: 100%;
+    box-shadow: -1px 0 0 #eee;
   }
 }
 </style>
