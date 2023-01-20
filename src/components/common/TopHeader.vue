@@ -8,7 +8,7 @@
         <el-col :span="20">
           <el-menu :default-active="active" class="el-menu-demo" mode="horizontal" @select="onSelect">
             <el-menu-item v-t="'common.nav.service'" index="/services"></el-menu-item>
-            <!-- <el-menu-item v-t="'common.nav.category'" index="/categories"></el-menu-item> -->
+            <el-menu-item v-t="'common.nav.document'" index="/documents"></el-menu-item>
           </el-menu>
         </el-col>
         <el-col :span="4">
