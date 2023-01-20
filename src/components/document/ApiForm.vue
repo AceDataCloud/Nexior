@@ -1,20 +1,18 @@
 <template>
   <div v-if="schema" class="wrapper">
-    <div v-for="(item, itemKey) in schema.properties" :key="itemKey">
-      <div class="item">
-        <div class="left">
-          <div class="info">
-            <span class="key">{{ itemKey }}</span>
-            <span class="type">{{ item.type }}</span>
-            <span v-if="!item.optional" class="required">required</span>
-          </div>
-          <div class="description">
-            {{ item.title }}
-          </div>
+    <div v-for="(item, itemKey) in schema.properties" :key="itemKey" class="item">
+      <div class="left">
+        <div class="info">
+          <span class="key">{{ itemKey }}</span>
+          <span class="type">{{ item.type }}</span>
+          <span v-if="!item.optional" class="required">required</span>
         </div>
-        <div class="right">
-          <el-input v-model="value[itemKey.toString()]" />
+        <div class="description">
+          {{ item.title }}
         </div>
+      </div>
+      <div class="right">
+        <el-input v-model="value[itemKey.toString()]" />
       </div>
     </div>
   </div>
@@ -67,8 +65,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .wrapper {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
   overflow: hidden;
 
   .item {
@@ -76,6 +72,25 @@ export default defineComponent({
     overflow: hidden;
     background-color: rgb(248, 248, 248);
     padding: 10px;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+
+    &:first-child {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    &:not(:first-child):not(:last-child) {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    &:last-child {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
 
     .left {
       width: 70%;
@@ -85,18 +100,19 @@ export default defineComponent({
           font-size: 14px;
           font-weight: bold;
           display: inline-block;
-          padding: 6px;
+          padding: 3px;
+          padding-left: 0;
         }
         .type {
           font-size: 14px;
           display: inline-block;
-          padding: 6px;
+          padding: 3px;
         }
         .required {
           font-size: 12px;
           color: #dd1e2e;
           display: inline-block;
-          padding: 6px;
+          padding: 3px;
         }
       }
       .description {
@@ -107,6 +123,7 @@ export default defineComponent({
     .right {
       width: 30%;
       float: left;
+      padding-top: 6px;
     }
   }
 }

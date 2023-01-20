@@ -1,8 +1,6 @@
 <template>
-  <div class="wrapper">
-    <div v-if="apis">
-      <api-list-item v-for="(api, apiIndex) in apis" :key="apiIndex" :api="api"></api-list-item>
-    </div>
+  <div v-if="apis" class="wrapper">
+    <api-list-item v-for="(api, apiIndex) in apis" :key="apiIndex" :api="api"></api-list-item>
   </div>
 </template>
 
@@ -51,4 +49,8 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.wrapper {
+  padding: 20px 0;
+}
+</style>

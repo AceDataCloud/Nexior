@@ -1,15 +1,18 @@
 <template>
-  <div class="item">
-    <el-link type="primary" class="link" @click="onClick">
+  <div class="item" @click="onClick">
+    <el-link type="primary" class="link" :underline="false">
       <span class="name">{{ api?.title }}</span>
-      <span class="request-method">{{ api?.request?.method }}</span>
     </el-link>
+    <el-tag v-if="api?.request?.method" type="primary" class="request-method" effect="dark">
+      {{ api?.request?.method }}
+    </el-tag>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { IApi } from '@/operators/api/models';
+
 export default defineComponent({
   name: 'ApiListItem',
   props: {
@@ -31,19 +34,31 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
-.link {
-  .name {
-    display: flex;
+<style lang="scss" scoped>
+$height: 35px;
+.item {
+  height: $height;
+  line-height: $height;
+  padding-left: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .link {
+    color: #333;
+    .name {
+      display: flex;
+    }
   }
   .request-method {
-    display: flex;
-    padding-left: 0;
-    padding-right: 0;
-    width: 40px;
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: auto;
+    position: absolute;
+    right: 10px;
+    top: 5px;
   }
 }
 </style>

@@ -32,6 +32,15 @@ body {
   }
 
   .el-input {
-    border-radius: 10px;
+    input {
+      border-radius: 10px;
+    }
+  }
+  
+  .v-codemirror {
+    .cm-editor {
+      border-radius: 10px;
+      overflow: hidden;
+    }
   }
 }
