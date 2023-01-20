@@ -1,5 +1,10 @@
 <template>
-  <div class="item">
+  <div v-if="loading">
+    <el-skeleton />
+    <el-divider />
+    <el-skeleton />
+  </div>
+  <div v-else class="item">
     <div class="title">
       {{ api?.title }}
     </div>
