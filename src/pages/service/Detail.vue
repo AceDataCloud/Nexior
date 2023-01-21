@@ -1,76 +1,40 @@
 <template>
-  <el-row class="preview">
-    <el-col :span="20" :offset="2">
-      <el-row v-if="loading">
-        <el-col :span="24">
-          <el-card shadow="hover">
-            <div class="body">
-              <div class="left">
-                <el-skeleton>
-                  <template #template>
-                    <el-skeleton-item variant="image" class="icon-placeholder" />
-                  </template>
-                </el-skeleton>
-              </div>
-              <div class="right">
-                <el-skeleton>
-                  <template #template>
-                    <el-skeleton-item variant="p" class="title-placeholder" />
-                    <el-skeleton-item variant="p" class="description-placeholder" />
-                    <el-skeleton-item variant="p" class="price-placeholder" />
-                    <div class="operations">
-                      <el-skeleton-item variant="button" class="button-placeholder" />
-                    </div>
-                  </template>
-                </el-skeleton>
-              </div>
-            </div>
-          </el-card>
-        </el-col>
-      </el-row>
-      <el-row v-else-if="service">
-        <el-col :span="24">
-          <el-card shadow="hover">
-            <div class="body">
-              <div class="left">
-                <div class="icon">
-                  <font-awesome-icon :icon="'fa-regular fa-' + service.icon" />
-                </div>
-                <div class="count">
-                  <p>{{ $t('service.message.appliedCount') }}: {{ service.applied_count }}</p>
-                </div>
-              </div>
-              <div class="right">
-                <div class="title">
-                  {{ service.title }}
-                </div>
-                <div class="description">
-                  {{ service.description }}
-                </div>
-                <div class="price">
-                  <p v-if="service && service.price && service.price > 0" class="nonfree">
-                    <span class="value">￥{{ service.price }}</span>
-                    <span class="unit"> / {{ $t('service.unit.usage') }}</span>
-                  </p>
-                  <p v-else class="free">
-                    {{ $t('service.message.free') }}
-                  </p>
-                </div>
-                <div class="operations">
-                  <el-button type="danger" @click="onApply">
-                    {{ $t('service.button.apply') }}
-                  </el-button>
-                </div>
-              </div>
-            </div>
-          </el-card>
-        </el-col>
-      </el-row>
+  <el-row v-if="service" class="introduction">
+    <el-col :span="24">
       <el-row>
-        <el-col></el-col>
+        <el-col :span="10" :offset="2" class="left">
+          <div class="info">
+            <h1>
+              {{ service.title }}
+            </h1>
+            <p>
+              {{ service.description }}
+            </p>
+            <div class="price">
+              <p v-if="service && service.price && service.price > 0" class="nonfree">
+                <span class="value">￥{{ service.price }}</span>
+                <span class="unit"> / {{ $t('service.unit.usage') }}</span>
+              </p>
+              <p v-else class="free">
+                {{ $t('service.message.free') }}
+              </p>
+            </div>
+            <div class="operations">
+              <el-button type="danger" class="btn-apply" @click="onApply">
+                {{ $t('service.button.apply') }}
+              </el-button>
+            </div>
+          </div>
+        </el-col>
+        <el-col :span="10" class="right">
+          <div class="demo">
+            <img src="@/assets/images/illustration.png" />
+          </div>
+        </el-col>
       </el-row>
     </el-col>
   </el-row>
+
   <el-row v-if="service" class="detail">
     <el-col :span="20" :offset="2">
       <el-card shadow="hover">
@@ -104,7 +68,6 @@ import { ERROR_CODE_DUPLICATION } from '@/constants';
 import { ElForm, ElMessage } from 'element-plus';
 import { apiOperator } from '@/operators/api/operator';
 import { IApi, IApiListResponse } from '@/operators/api/models';
-import SwaggerUI from 'swagger-ui';
 
 interface IData {
   service: IService | undefined;
@@ -149,10 +112,6 @@ export default defineComponent({
       this.loading = true;
       apiOperator.getAllForService(this.id).then(({ data: data }: { data: IApiListResponse }) => {
         this.apis = data.items;
-        SwaggerUI({
-          url: 'https://petstore.swagger.io/v2/swagger.json',
-          dom_id: '#document'
-        });
       });
     },
     onApply() {
@@ -184,11 +143,89 @@ export default defineComponent({
 });
 </script>
 
-<style lang="css">
-@import 'swagger-ui/dist/swagger-ui.css';
-</style>
-
 <style lang="scss" scoped>
+.introduction {
+  $height: calc(100vh - 60px);
+
+  background-color: #111827;
+  background-image: url('@/assets/images/bg.png');
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+  height: $height;
+
+  .left {
+    position: relative;
+    height: $height;
+    .info {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      h1 {
+        max-width: 1064px;
+        margin-bottom: 24px;
+        color: #fff;
+        font-size: 56px;
+        line-height: 64px;
+      }
+
+      p {
+        max-width: 650px;
+        margin-bottom: 56px;
+        color: #d1d5db;
+        font-size: 24px;
+        line-height: 32px;
+        font-weight: 500;
+      }
+
+      .price {
+        margin: 0;
+        .nonfree {
+          .value {
+            font-weight: bold;
+            color: #ff5441;
+            font-size: 40px;
+          }
+
+          .unit {
+            color: white;
+          }
+        }
+        .free {
+          color: #29c287;
+        }
+      }
+
+      .operations {
+        .btn-apply {
+          margin: 0 auto 40px;
+          padding: 25px 62px;
+          color: #fff;
+          font-size: 20px;
+          line-height: 20px;
+          font-weight: 700;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .right {
+    position: relative;
+    height: $height;
+    .demo {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+  }
+}
+
 .preview {
   overflow: hidden;
   $left-width: 320px;

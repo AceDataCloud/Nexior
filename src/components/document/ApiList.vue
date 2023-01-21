@@ -39,7 +39,6 @@ export default defineComponent({
         })
         .then(({ data: data }: { data: IApiListResponse }) => {
           this.apis = data.items;
-          console.log('apis', this.apis);
         })
         .catch((error) => {
           console.error(error);

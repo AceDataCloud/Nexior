@@ -75,7 +75,6 @@ export default defineComponent({
   watch: {
     formValue: {
       handler(val) {
-        console.log('formValue changeddd');
         this.$emit('update:form', { ...val });
       },
       deep: true

@@ -94,7 +94,7 @@ $height: 60px;
   height: $height;
   z-index: 999;
   width: 100%;
-  background: radial-gradient(circle at 0 2%, #283e63, #172337 99%);
+  background: radial-gradient(circle at 0 2%, #111827, #1a125d 99%);
   .logo {
     height: $height - 5px;
     width: 250px;

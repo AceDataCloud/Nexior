@@ -14,6 +14,7 @@ export interface ISchema {
   properties: {
     [key: string]: ISchema;
   };
+  enum: (string | number)[];
   type: 'object' | 'array' | 'string' | 'number';
   title: string;
   optional: boolean;

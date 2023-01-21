@@ -1,5 +1,8 @@
 <template>
   <el-container class="container">
+    <el-header class="header">
+      <top-header />
+    </el-header>
     <el-aside class="aside">
       <navigator />
     </el-aside>
@@ -10,11 +13,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Navigator from '@/components/console/Navigator.vue';
+import TopHeader from '@/components/common/TopHeader.vue';
 
 export default defineComponent({
   name: 'LayoutConsole',
   components: {
-    Navigator
+    Navigator,
+    TopHeader
   },
   data() {
     return {};
