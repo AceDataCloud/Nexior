@@ -12,7 +12,15 @@
         </div>
       </div>
       <div class="right">
-        <el-input v-model="value[itemKey.toString()]" />
+        <el-select
+          v-if="item.enum"
+          v-model="value[itemKey.toString()]"
+          clearable
+          :placeholder="$t('common.title.select')"
+        >
+          <el-option v-for="e in item.enum" :key="e" :label="e" :value="e" />
+        </el-select>
+        <el-input v-else v-model="value[itemKey.toString()]" />
       </div>
     </div>
   </div>
@@ -45,7 +53,6 @@ export default defineComponent({
   watch: {
     value: {
       handler() {
-        console.log('change', this.value);
         this.$emit('update:form', { ...this.value });
       },
       deep: true

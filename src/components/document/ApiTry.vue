@@ -3,8 +3,9 @@
     <div class="operation">
       <el-button class="btn-try" type="primary" @click="onTry">{{ $t('common.button.try') }}</el-button>
     </div>
-    <div class="result">
+    <div v-if="responseData" class="result">
       <div class="title">{{ $t('api.entity.response') }}</div>
+      <code-snippet :code="responseData" />
     </div>
   </div>
 </template>
@@ -14,9 +15,13 @@ import { IApi, IForm, IRequest } from '@/operators/api/models';
 import { defineComponent } from 'vue';
 import axios, { Method } from 'axios';
 import urlJoin from 'url-join';
+import CodeSnippet from '../common/CodeSnippet.vue';
 
 export default defineComponent({
   name: 'ApiTry',
+  components: {
+    CodeSnippet
+  },
   props: {
     api: {
       type: Object as () => IApi,
@@ -29,7 +34,8 @@ export default defineComponent({
   },
   data() {
     return {
-      apiKeyValue: this.apiKey
+      apiKeyValue: this.apiKey,
+      responseData: ''
     };
   },
   methods: {
@@ -42,10 +48,17 @@ export default defineComponent({
         data: { ...this.form.body }
       };
       console.debug('config', config);
-      axios(config).then((response) => {
-        console.log('response', response);
-        // response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'));
-      });
+      axios(config)
+        .then((response) => {
+          this.responseData = JSON.stringify(response?.data, null, '  ');
+        })
+        .catch((error) => {
+          console.log('error', error);
+          console.log(error);
+          console.log('error');
+          console.log(error.response);
+          this.responseData = JSON.stringify(error?.response?.data, null, '  ');
+        });
     }
   }
 });
@@ -54,8 +67,19 @@ export default defineComponent({
 <style lang="scss" scoped>
 .wrapper {
   padding: 15px;
-  .btn-try {
-    width: 100%;
+  .operation {
+    margin-bottom: 10px;
+    .btn-try {
+      width: 100%;
+    }
+  }
+
+  .result {
+    margin-bottom: 10px;
+    .title {
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
   }
 }
 </style>

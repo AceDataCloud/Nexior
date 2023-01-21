@@ -7,7 +7,7 @@
       <div v-if="api" class="main">
         <api-usage v-model:form="form" :api="api" :loading="loading" />
       </div>
-      <div class="right">
+      <div v-if="api" class="right">
         <api-try :form="form" :api="api" />
       </div>
     </el-col>
@@ -43,13 +43,13 @@ export default defineComponent({
   },
   computed: {
     id() {
-      return this.$route.params.id.toString();
+      return this.$route.params?.id?.toString();
     }
   },
   watch: {
     id: {
-      handler() {
-        this.getApi(this.id);
+      handler(val) {
+        if (val) this.getApi(val);
       }
     }
   },
@@ -64,7 +64,6 @@ export default defineComponent({
         .then(({ data: data }: { data: IApiDetailResponse }) => {
           this.loading = false;
           this.api = data;
-          console.log('api', this.api);
         })
         .catch((error) => {
           this.loading = false;
