@@ -19,14 +19,14 @@
         </div>
         <div class="key">
           <span class="label">{{ $t('application.field.apiKey') }}</span>
-          <span class="value">{{ application.apiKey }}</span>
+          <span class="value">{{ application.api_key }}</span>
           <span class="copy">
             <font-awesome-icon icon="fa-regular fa-copy" />
           </span>
         </div>
         <div class="remaining-count">
           <span class="label">{{ $t('application.field.remainingCount') }}</span>
-          <span class="value">{{ application.remainingCount }}</span>
+          <span class="value">{{ application.remaining_count }}</span>
         </div>
         <div class="links">
           <div class="link">

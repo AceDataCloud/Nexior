@@ -1,12 +1,12 @@
 export interface IApplication {
   id?: string;
   service: string;
-  apiKey?: string;
-  userId?: string;
-  remainingCount?: number;
-  usedCount?: number;
-  createdAt?: string;
-  updatedAt?: string;
+  api_key?: string;
+  user_id?: string;
+  remaining_count?: number;
+  used_count?: number;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface IApplicationListResponse {

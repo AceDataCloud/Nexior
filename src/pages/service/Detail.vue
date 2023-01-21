@@ -37,7 +37,7 @@
                   <font-awesome-icon :icon="'fa-regular fa-' + service.icon" />
                 </div>
                 <div class="count">
-                  <p>{{ $t('service.message.appliedCount') }}: {{ service.appliedCount }}</p>
+                  <p>{{ $t('service.message.appliedCount') }}: {{ service.applied_count }}</p>
                 </div>
               </div>
               <div class="right">

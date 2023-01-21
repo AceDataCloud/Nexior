@@ -6,10 +6,10 @@ export interface IService {
   thumbnail?: string;
   icon?: string;
   price?: number;
-  appliedCount: number;
+  applied_count: number;
   introduction: string;
-  createdAt?: string;
-  updatedAt?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface IServiceListResponse {
