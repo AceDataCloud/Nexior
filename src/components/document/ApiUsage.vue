@@ -18,15 +18,15 @@
     <el-divider />
     <div class="queries">
       <h2 class="title">{{ $t('api.entity.requestQueries') }}</h2>
-      <api-form v-model:form="formValue.queries" :schema="api?.request.queries" />
+      <api-form v-model:form="formValue.queries" :schema="api?.request?.queries" />
     </div>
     <div class="headers">
       <h2 class="title">{{ $t('api.entity.requestHeaders') }}</h2>
-      <api-form v-model:form="formValue.headers" :schema="api?.request.headers" />
+      <api-form v-model:form="formValue.headers" :schema="api?.request?.headers" />
     </div>
     <div class="body">
       <h2 class="title">{{ $t('api.entity.requestBody') }}</h2>
-      <api-form v-model:form="formValue.body" :schema="api?.request.body" />
+      <api-form v-model:form="formValue.body" :schema="api?.request?.body" />
     </div>
     <div v-if="api?.responses" class="responses">
       <h2 class="title">{{ $t('api.entity.response') }}</h2>

@@ -1,5 +1,5 @@
 <template>
-  <el-row v-if="service" class="introduction">
+  <el-row v-if="service" class="banner">
     <el-col :span="24">
       <el-row>
         <el-col :span="10" :offset="2" class="left">
@@ -144,9 +144,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.introduction {
+.banner {
   $height: calc(100vh - 60px);
-
   background-color: #111827;
   background-image: url('@/assets/images/bg.png');
   background-position: 50% 50%;

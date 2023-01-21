@@ -11,7 +11,6 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElForm, ElMessage } from 'element-plus';
 import { applicationOperator, IApplication, IApplicationListResponse } from '@/operators';
 import ApplicationPreviewCard from '@/components/application/PreviewCard.vue';
 

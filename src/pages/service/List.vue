@@ -1,4 +1,21 @@
 <template>
+  <el-row class="banner">
+    <el-col :span="24" class="main">
+      <div class="info">
+        <h1 class="title">
+          {{ $t('service.message.indexTitle') }}
+        </h1>
+        <h3 class="subtitle">
+          {{ $t('service.message.indexSubtitle') }}
+        </h3>
+        <div class="operations">
+          <el-button type="danger" class="btn-apply">
+            {{ $t('common.button.startForFree') }}
+          </el-button>
+        </div>
+      </div>
+    </el-col>
+  </el-row>
   <el-row>
     <el-col :span="20" :offset="2">
       <el-row v-if="loading" :gutter="15" class="services">
@@ -128,6 +145,75 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.banner {
+  height: calc(100vh - 60px);
+  background-color: #111827;
+  width: 100%;
+  background-image: url('@/assets/images/bg.png');
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+
+  .main {
+    position: relative;
+    .info {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      h1.title {
+        display: inline-block;
+        color: #fff;
+        font-size: 80px;
+        line-height: 84px;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        margin-bottom: 50px;
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        background-image: linear-gradient(
+          90deg,
+          #fb60d7,
+          #eb69dc 15%,
+          #dc5cff 30%,
+          #c555fe 45%,
+          #a02fff 60%,
+          #7752ff 75%,
+          #5f98fa 90%,
+          #44beff
+        );
+      }
+      h3.subtitle {
+        color: hsla(0, 0%, 100%, 0.7);
+        font-size: 24px;
+        line-height: 32px;
+        text-align: center;
+        margin-bottom: 70px;
+      }
+      .operations {
+        width: 100%;
+        text-align: center;
+        .btn-apply {
+          margin: 0 auto 40px auto;
+          padding: 25px 62px;
+          color: #fff;
+          font-size: 20px;
+          line-height: 20px;
+          font-weight: 700;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
 $transition-duration: 0.5s;
 .services {
   padding: 50px 0;

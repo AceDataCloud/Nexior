@@ -2,11 +2,12 @@
   <el-pagination
     class="mt-3 mb-3"
     background
+    :hide-on-single-page="true"
     layout="prev, pager, next"
     :current-page="currentPage"
     :total="total"
     :page-size="pageSize"
-    @currentChange="onPageChange"
+    @current-change="onPageChange"
   >
   </el-pagination>
 </template>
@@ -22,15 +23,19 @@ export default defineComponent({
   name: 'Pagination',
   props: {
     total: {
-      type: Number
+      type: Number,
+      required: true
     },
     currentPage: {
-      type: Number
+      type: Number,
+      required: true
     },
     pageSize: {
-      type: Number
+      type: Number,
+      required: true
     }
   },
+  emits: ['change'],
   data(): IData {
     return {
       loaded: false
@@ -38,14 +43,14 @@ export default defineComponent({
   },
   mounted() {
     setTimeout(() => {
-      // use this flag to fix the bug of el-paginition,
+      // use this flag to fix the bug of el-pagination,
       // always emit page 1 when load first time.
       this.loaded = true;
     }, 1000);
   },
   methods: {
     onPageChange(val: number, oldVal: number): void {
-      // if not finshed loading, ignore the wrong emit event
+      // if not finished loading, ignore the wrong emit event
       if (!this.loaded) {
         return;
       }
