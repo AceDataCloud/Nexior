@@ -36,7 +36,7 @@ export default defineComponent({
       required: true
     }
   },
-  emits: ['change'],
+  emits: ['update:form'],
   data(): IData {
     return {
       value: {}
@@ -46,7 +46,7 @@ export default defineComponent({
     value: {
       handler() {
         console.log('change', this.value);
-        this.$emit('change', { ...this.value });
+        this.$emit('update:form', { ...this.value });
       },
       deep: true
     }
@@ -55,9 +55,6 @@ export default defineComponent({
     onChange(key: string, val: string) {
       console.log('key', key, val);
       this.value[key] = val;
-      this.$emit('change', {
-        ...this.value
-      });
     }
   }
 });
