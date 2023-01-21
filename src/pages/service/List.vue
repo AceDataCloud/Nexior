@@ -220,7 +220,7 @@ $transition-duration: 0.5s;
   .service {
     width: 100%;
     height: 280px;
-    border-radius: 10px !important;
+    border-radius: 30px !important;
     margin: 10px auto;
     padding: 30px 0;
     position: relative;
