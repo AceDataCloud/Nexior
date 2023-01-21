@@ -15,5 +15,6 @@ export default {
   profile: '个人信息',
   console: '控制台',
   learn: '学习',
-  buy: '购买'
+  buy: '购买',
+  try: '测试'
 };

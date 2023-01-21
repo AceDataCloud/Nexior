@@ -18,15 +18,15 @@
     <el-divider />
     <div class="queries">
       <h2 class="title">{{ $t('api.entity.requestQueries') }}</h2>
-      <api-form :schema="api?.request.queries" />
+      <api-form v-model:form="formValue.queries" :schema="api?.request.queries" />
     </div>
     <div class="headers">
       <h2 class="title">{{ $t('api.entity.requestHeaders') }}</h2>
-      <api-form :schema="api?.request.headers" />
+      <api-form v-model:form="formValue.headers" :schema="api?.request.headers" />
     </div>
     <div class="body">
       <h2 class="title">{{ $t('api.entity.requestBody') }}</h2>
-      <api-form :schema="api?.request.body" />
+      <api-form v-model:form="formValue.body" :schema="api?.request.body" />
     </div>
     <div v-if="api?.responses" class="responses">
       <h2 class="title">{{ $t('api.entity.response') }}</h2>
@@ -37,15 +37,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IApi, IApiDetailResponse } from '@/operators/api/models';
-import { apiOperator } from '@/operators/api/operator';
+import { IApi, IApiDetailResponse, IForm } from '@/operators/api/models';
 import ApiForm from './ApiForm.vue';
 import ApiResult from './ApiResult.vue';
 import urlJoin from 'url-join';
 
 export interface IData {
-  api: IApi | undefined;
-  loading: boolean;
+  formValue: IForm | undefined;
 }
 
 export default defineComponent({
@@ -55,43 +53,36 @@ export default defineComponent({
     ApiResult
   },
   props: {
-    id: {
-      type: String,
+    api: {
+      type: Object as () => IApi,
+      required: true
+    },
+    loading: {
+      type: Boolean,
+      required: true
+    },
+    form: {
+      type: Object as () => IForm,
       required: true
     }
   },
-  data(): IData {
+  emits: ['update:form'],
+  data() {
     return {
-      api: undefined,
-      loading: false
+      formValue: this.form
     };
   },
   watch: {
-    id: {
-      handler() {
-        this.getApi(this.id);
-      }
+    formValue: {
+      handler(val) {
+        console.log('formValue changeddd');
+        this.$emit('update:form', { ...val });
+      },
+      deep: true
     }
-  },
-  mounted() {
-    this.getApi(this.id);
   },
   methods: {
-    urlJoin,
-    getApi(id: string) {
-      this.loading = true;
-      apiOperator
-        .get(id)
-        .then(({ data: data }: { data: IApiDetailResponse }) => {
-          this.loading = false;
-          this.api = data;
-          console.log('api', this.api);
-        })
-        .catch((error) => {
-          this.loading = false;
-          console.error(error);
-        });
-    }
+    urlJoin
   }
 });
 </script>

@@ -4,11 +4,11 @@
       <div class="left">
         <api-list />
       </div>
-      <div class="main">
-        <api-usage :id="id" />
+      <div v-if="api" class="main">
+        <api-usage v-model:form="form" :api="api" :loading="loading" />
       </div>
       <div class="right">
-        <api-try v-model:api-key="apiKey" />
+        <api-try :form="form" :api="api" />
       </div>
     </el-col>
   </el-row>
@@ -19,6 +19,14 @@ import { defineComponent } from 'vue';
 import ApiList from '@/components/document/ApiList.vue';
 import ApiUsage from '@/components/document/ApiUsage.vue';
 import ApiTry from '@/components/document/ApiTry.vue';
+import { apiOperator } from '@/operators/api/operator';
+import { IApi, IApiDetailResponse, IForm } from '@/operators/api/models';
+
+export interface IData {
+  api: IApi | undefined;
+  loading: boolean;
+  form: IForm;
+}
 
 export default defineComponent({
   components: {
@@ -26,9 +34,11 @@ export default defineComponent({
     ApiUsage,
     ApiTry
   },
-  data() {
+  data(): IData {
     return {
-      apiKey: ''
+      api: undefined,
+      loading: false,
+      form: {}
     };
   },
   computed: {
@@ -36,7 +46,32 @@ export default defineComponent({
       return this.$route.params.id.toString();
     }
   },
-  methods: {}
+  watch: {
+    id: {
+      handler() {
+        this.getApi(this.id);
+      }
+    }
+  },
+  mounted() {
+    this.getApi(this.id);
+  },
+  methods: {
+    getApi(id: string) {
+      this.loading = true;
+      apiOperator
+        .get(id)
+        .then(({ data: data }: { data: IApiDetailResponse }) => {
+          this.loading = false;
+          this.api = data;
+          console.log('api', this.api);
+        })
+        .catch((error) => {
+          this.loading = false;
+          console.error(error);
+        });
+    }
+  }
 });
 </script>
 

@@ -1,3 +1,15 @@
+export interface IForm {
+  queries?: {
+    [key: string]: string;
+  };
+  headers?: {
+    [key: string]: string;
+  };
+  body?: {
+    [key: string]: string | object | number | object[];
+  };
+}
+
 export interface ISchema {
   properties: {
     [key: string]: ISchema;
