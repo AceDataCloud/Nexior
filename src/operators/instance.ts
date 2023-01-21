@@ -1,7 +1,6 @@
 import router from '@/router';
 import store from '@/store';
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { camelizeKeys, decamelizeKeys } from 'humps';
+import axios, { AxiosInstance } from 'axios';
 import { getCookie } from 'typescript-cookie';
 
 const httpClient: AxiosInstance = axios.create({
@@ -17,17 +16,11 @@ httpClient.interceptors.request.use((config) => {
   if (accessToken) {
     config.headers['Authorization'] = `Bearer ${accessToken}`;
   }
-  if (config.data) {
-    config.data = decamelizeKeys(config.data);
-  }
   return config;
 });
 
 httpClient.interceptors.response.use(
   (response) => {
-    if (response.data && response.headers['content-type'] === 'application/json') {
-      response.data = camelizeKeys(response.data);
-    }
     return response;
   },
   (error) => {
@@ -38,7 +31,5 @@ httpClient.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-// const httpClient = (options: AxiosRequestConfig): Promise<AxiosResponse> => instance.request(options);
 
 export { httpClient };

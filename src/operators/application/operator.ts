@@ -1,10 +1,9 @@
 import { AxiosResponse } from 'axios';
 import { httpClient } from '../instance';
 import { IApplication, IApplicationDetailResponse, IApplicationListResponse } from './models';
-import { camelizeKeys, decamelizeKeys } from 'humps';
 
 export interface IApplicationQuery {
-  userId: string;
+  user_id: string;
 }
 
 class ApplicationOperator {
@@ -12,7 +11,7 @@ class ApplicationOperator {
 
   async getAll(query: IApplicationQuery): Promise<AxiosResponse<IApplicationListResponse>> {
     return await httpClient.get(`/${this.key}/`, {
-      params: decamelizeKeys(query)
+      params: query
     });
   }
 

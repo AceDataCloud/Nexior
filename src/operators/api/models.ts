@@ -33,9 +33,9 @@ export interface IResponse {
   title: string;
   description?: string;
   example?: string;
-  isSuccess: boolean;
-  errorCode?: string;
-  statusCode: number;
+  is_success: boolean;
+  error_code?: string;
+  status_code: number;
   body: ISchema;
   headers: ISchema;
 }
@@ -50,10 +50,10 @@ export interface IApi {
   tags?: string[];
   request: IRequest;
   responses: IResponse[];
-  isFree?: boolean;
+  is_free?: boolean;
   service?: string;
-  createdAt?: string;
-  updatedAt?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface IApiListResponse {

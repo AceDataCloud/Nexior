@@ -13,7 +13,7 @@ class ServiceOperator {
 
   async getAll(query: IServiceQuery): Promise<AxiosResponse<IServiceListResponse>> {
     return await httpClient.get(`/${this.key}/`, {
-      params: decamelizeKeys(query)
+      params: query
     });
   }
 

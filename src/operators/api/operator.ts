@@ -1,5 +1,4 @@
 import { AxiosResponse } from 'axios';
-import { decamelizeKeys } from 'humps';
 import { httpClient } from '../instance';
 import { IApi, IApiDetailResponse, IApiListResponse } from '../api/models';
 
@@ -13,7 +12,7 @@ class ApiOperator {
 
   async getAll(query: IApiQuery): Promise<AxiosResponse<IApiListResponse>> {
     return await httpClient.get(`/${this.key}/`, {
-      params: decamelizeKeys(query)
+      params: query
     });
   }
 
