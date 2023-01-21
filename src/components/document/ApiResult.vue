@@ -3,14 +3,14 @@
     <el-collapse-item v-for="(response, responseKey) in responses" :key="responseKey" class="item" :name="responseKey">
       <template #title>
         <span class="badge">
-          <el-tag v-if="response.is_success" class="ml-2" type="success">{{ $t('api.entity.success') }}</el-tag>
+          <el-tag v-if="response?.is_success" class="ml-2" type="success">{{ $t('api.entity.success') }}</el-tag>
           <el-tag v-else class="ml-2" type="danger">{{ $t('api.entity.failure') }}</el-tag>
         </span>
         <span class="status-code">
-          {{ response.status_code }}
+          {{ response?.status_code }}
         </span>
         <span class="error-code">
-          {{ response.error_code }}
+          {{ response?.error_code }}
         </span>
       </template>
       <div class="item-body">
@@ -20,10 +20,10 @@
             <div class="property">
               <div class="info">
                 <span class="key">{{ itemKey }}</span>
-                <span class="type">{{ item.type }}</span>
+                <span class="type">{{ item?.type }}</span>
               </div>
               <div class="description">
-                {{ item.title }}
+                {{ item?.title }}
               </div>
             </div>
           </div>
@@ -33,10 +33,10 @@
           <div v-for="(item, itemKey) in response?.body?.properties" :key="itemKey" class="property">
             <div class="info">
               <span class="key">{{ itemKey }}</span>
-              <span class="type">{{ item.type }}</span>
+              <span class="type">{{ item?.type }}</span>
             </div>
             <div class="description">
-              {{ item.title }}
+              {{ item?.title }}
             </div>
           </div>
         </div>

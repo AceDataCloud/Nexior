@@ -1,8 +1,8 @@
 <template>
+  <el-header class="header">
+    <top-header />
+  </el-header>
   <el-container class="container">
-    <el-header class="header">
-      <top-header />
-    </el-header>
     <el-aside class="aside">
       <navigator />
     </el-aside>

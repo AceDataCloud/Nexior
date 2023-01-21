@@ -1,26 +1,26 @@
 <template>
   <div v-if="schema" class="wrapper">
-    <div v-for="(item, itemKey) in schema.properties" :key="itemKey" class="item">
+    <div v-for="(item, itemKey) in schema?.properties" :key="itemKey" class="item">
       <div class="left">
         <div class="info">
           <span class="key">{{ itemKey }}</span>
-          <span class="type">{{ item.type }}</span>
-          <span v-if="!item.optional" class="required">required</span>
+          <span class="type">{{ item?.type }}</span>
+          <span v-if="!item?.optional" class="required">required</span>
         </div>
         <div class="description">
-          {{ item.title }}
+          {{ item?.title }}
         </div>
       </div>
       <div class="right">
         <el-select
-          v-if="item.enum"
-          v-model="value[itemKey.toString()]"
+          v-if="item?.enum"
+          v-model="value[itemKey?.toString()]"
           clearable
           :placeholder="$t('common.title.select')"
         >
-          <el-option v-for="e in item.enum" :key="e" :label="e" :value="e" />
+          <el-option v-for="e in item?.enum" :key="e" :label="e" :value="e" />
         </el-select>
-        <el-input v-else v-model="value[itemKey.toString()]" />
+        <el-input v-else v-model="value[itemKey?.toString()]" />
       </div>
     </div>
   </div>

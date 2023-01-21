@@ -37,7 +37,7 @@ export default defineComponent({
 $height: 80px;
 .footer {
   height: $height;
-  background-image: radial-gradient(circle at 15% -3%, #365280, #080e17 116%);
+  background: radial-gradient(circle at 0 2%, #111827, #1a125d 99%);
   color: white;
 }
 </style>

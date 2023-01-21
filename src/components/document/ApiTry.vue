@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { IApi, IForm, IRequest } from '@/operators/api/models';
+import { IApi, IForm } from '@/operators/api/models';
 import { defineComponent } from 'vue';
 import axios, { Method } from 'axios';
 import urlJoin from 'url-join';
@@ -40,23 +40,18 @@ export default defineComponent({
   },
   methods: {
     onTry() {
-      console.log('try', this.api, this.form);
       const config = {
         method: this.api?.request?.method as Method,
         url: urlJoin(this.api?.endpoint, this.api?.path),
         params: { ...this.form.queries },
         data: { ...this.form.body }
       };
-      console.debug('config', config);
+      console.debug('config of testing', config);
       axios(config)
         .then((response) => {
           this.responseData = JSON.stringify(response?.data, null, '  ');
         })
         .catch((error) => {
-          console.log('error', error);
-          console.log(error);
-          console.log('error');
-          console.log(error.response);
           this.responseData = JSON.stringify(error?.response?.data, null, '  ');
         });
     }

@@ -16,5 +16,6 @@ export default {
   console: '控制台',
   learn: '学习',
   buy: '购买',
-  try: '测试'
+  try: '测试',
+  startForFree: '免费体验'
 };
