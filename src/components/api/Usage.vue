@@ -37,7 +37,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IApi, IApiDetailResponse, IForm } from '@/operators/api/models';
+import { IApi, IForm } from '@/operators/api/models';
 import ApiForm from './Form.vue';
 import ApiResult from './Result.vue';
 import urlJoin from 'url-join';

@@ -1,3 +1,5 @@
+import { IApi } from '../api/models';
+
 export interface IService {
   id: string;
   title: string;
@@ -6,8 +8,10 @@ export interface IService {
   thumbnail?: string;
   icon?: string;
   price?: number;
-  applied_count: number;
-  introduction: string;
+  applied_count?: number;
+  introduction?: string;
+  api_ids?: string[];
+  apis?: IApi[];
   created_at?: string;
   updated_at?: string;
 }

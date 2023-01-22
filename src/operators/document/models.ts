@@ -8,6 +8,7 @@ export interface IDocument {
   content?: string;
   rank?: number;
   api?: IApi;
+  api_id?: string;
   created_at?: string;
   updated_at?: string;
 }
