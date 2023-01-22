@@ -1,7 +1,7 @@
 <template>
   <div v-if="document" class="center">
     <div v-if="document.type === 'TEXT'">
-      <markdown-renderer :content="document?.content" />
+      <markdown-renderer :content="document?.content" :loading="loading" />
     </div>
     <div v-else-if="document.type === 'API'">
       <api-usage v-if="document.api" v-model:form="form" :loading="loading" :api="document.api" />
@@ -18,6 +18,7 @@ import ApiUsage from '@/components/api/Usage.vue';
 import ApiTry from '@/components/api/Try.vue';
 import { documentOperator, IDocument, IDocumentDetailResponse } from '@/operators';
 import { IForm } from '@/operators/api/models';
+import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 
 export interface IData {
   document: IDocument | undefined;
@@ -28,7 +29,8 @@ export interface IData {
 export default defineComponent({
   components: {
     ApiUsage,
-    ApiTry
+    ApiTry,
+    MarkdownRenderer
   },
   data(): IData {
     return {
@@ -76,6 +78,9 @@ export default defineComponent({
   width: calc(100% - 760px);
   height: 100%;
   padding: 30px;
+  .markdown-body {
+    background: none;
+  }
 }
 
 .right {

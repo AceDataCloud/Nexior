@@ -1,5 +1,10 @@
 <template>
-  <vue-markdown :source="content" class="markdown-body" />
+  <div v-if="loading">
+    <el-skeleton />
+    <el-divider />
+    <el-skeleton />
+  </div>
+  <vue-markdown v-else :source="content" class="markdown-body" />
 </template>
 
 <script lang="ts">
@@ -15,6 +20,11 @@ export default defineComponent({
     content: {
       type: String,
       required: true
+    },
+    loading: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   data() {},

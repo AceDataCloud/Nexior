@@ -5,6 +5,7 @@ import { IDocument, IDocumentDetailResponse, IDocumentListResponse } from './mod
 export interface IDocumentQuery {
   limit: number;
   offset: number;
+  ordering: string;
 }
 
 class DocumentOperator {
