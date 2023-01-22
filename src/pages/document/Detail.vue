@@ -1,42 +1,38 @@
 <template>
-  <el-row class="wrapper">
-    <el-col :span="22" :offset="1">
-      <div class="left">
-        <api-list />
-      </div>
-      <div v-if="api" class="main">
-        <api-usage v-model:form="form" :api="api" :loading="loading" />
-      </div>
-      <div v-if="api" class="right">
-        <api-try :form="form" :api="api" />
-      </div>
-    </el-col>
-  </el-row>
+  <div v-if="document" class="center">
+    <div v-if="document.type === 'TEXT'">
+      <markdown-renderer :content="document?.content" />
+    </div>
+    <div v-else-if="document.type === 'API'">
+      <api-usage v-if="document.api" v-model:form="form" :loading="loading" :api="document.api" />
+    </div>
+  </div>
+  <div v-if="document?.type === 'API' && document?.api" class="right">
+    <api-try :form="form" :api="document?.api" />
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import ApiList from '@/components/document/ApiList.vue';
-import ApiUsage from '@/components/document/ApiUsage.vue';
-import ApiTry from '@/components/document/ApiTry.vue';
-import { apiOperator } from '@/operators/api/operator';
-import { IApi, IApiDetailResponse, IForm } from '@/operators/api/models';
+import ApiUsage from '@/components/api/Usage.vue';
+import ApiTry from '@/components/api/Try.vue';
+import { documentOperator, IDocument, IDocumentDetailResponse } from '@/operators';
+import { IForm } from '@/operators/api/models';
 
 export interface IData {
-  api: IApi | undefined;
+  document: IDocument | undefined;
   loading: boolean;
   form: IForm;
 }
 
 export default defineComponent({
   components: {
-    ApiList,
     ApiUsage,
     ApiTry
   },
   data(): IData {
     return {
-      api: undefined,
+      document: undefined,
       loading: false,
       form: {}
     };
@@ -49,21 +45,21 @@ export default defineComponent({
   watch: {
     id: {
       handler(val) {
-        if (val) this.getApi(val);
+        if (val) this.getDocument(val);
       }
     }
   },
   mounted() {
-    this.getApi(this.id);
+    this.getDocument(this.id);
   },
   methods: {
-    getApi(id: string) {
+    getDocument(id: string) {
       this.loading = true;
-      apiOperator
+      documentOperator
         .get(id)
-        .then(({ data: data }: { data: IApiDetailResponse }) => {
+        .then(({ data: data }: { data: IDocumentDetailResponse }) => {
           this.loading = false;
-          this.api = data;
+          this.document = data;
         })
         .catch((error) => {
           this.loading = false;
@@ -75,29 +71,17 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.wrapper {
-  width: 100%;
-  overflow: hidden;
+.center {
+  float: left;
+  width: calc(100% - 760px);
+  height: 100%;
+  padding: 30px;
+}
 
-  .left {
-    float: left;
-    width: 280px;
-    height: 100%;
-    box-shadow: 1px 0 0 #eee;
-  }
-
-  .main {
-    float: left;
-    width: calc(100% - 760px);
-    height: 100%;
-    padding: 30px;
-  }
-
-  .right {
-    float: left;
-    width: 480px;
-    height: 100%;
-    box-shadow: -1px 0 0 #eee;
-  }
+.right {
+  float: left;
+  width: 480px;
+  height: 100%;
+  box-shadow: -1px 0 0 #eee;
 }
 </style>
