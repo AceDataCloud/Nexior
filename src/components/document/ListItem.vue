@@ -16,7 +16,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IApi } from '@/operators/api/models';
 import { IDocument } from '@/operators/document/models';
 
 export default defineComponent({

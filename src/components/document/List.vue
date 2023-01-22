@@ -41,7 +41,8 @@ export default defineComponent({
       documentOperator
         .getAll({
           offset,
-          limit
+          limit,
+          ordering: 'rank'
         })
         .then(({ data: data }: { data: IDocumentListResponse }) => {
           this.documents = data.items;

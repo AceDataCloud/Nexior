@@ -7,6 +7,9 @@
       <div class="title">{{ $t('api.entity.response') }}</div>
       <code-snippet :code="responseData" />
     </div>
+    <div v-if="loading">
+      <el-skeleton />
+    </div>
   </div>
 </template>
 
@@ -35,11 +38,14 @@ export default defineComponent({
   data() {
     return {
       apiKeyValue: this.apiKey,
-      responseData: ''
+      responseData: '',
+      loading: false
     };
   },
   methods: {
     onTry() {
+      this.loading = true;
+      this.responseData = '';
       const config = {
         method: this.api?.request?.method as Method,
         url: urlJoin(this.api?.endpoint, this.api?.path),
@@ -49,9 +55,11 @@ export default defineComponent({
       console.debug('config of testing', config);
       axios(config)
         .then((response) => {
+          this.loading = false;
           this.responseData = JSON.stringify(response?.data, null, '  ');
         })
         .catch((error) => {
+          this.loading = false;
           this.responseData = JSON.stringify(error?.response?.data, null, '  ');
         });
     }
