@@ -38,16 +38,7 @@
   <el-row v-if="service" class="detail">
     <el-col :span="20" :offset="2">
       <el-card shadow="hover">
-        <el-tabs v-model="activeTab" class="demo-tabs">
-          <el-tab-pane :label="$t('service.button.introduction')" name="introduction">
-            <div class="introduction">
-              {{ service?.introduction }}
-            </div>
-          </el-tab-pane>
-          <el-tab-pane :label="$t('service.button.apis')" name="apis">
-            <div id="document"></div>
-          </el-tab-pane>
-        </el-tabs>
+        <markdown-renderer :content="service?.introduction" />
       </el-card>
     </el-col>
   </el-row>
@@ -63,12 +54,11 @@ import {
   serviceOperator
 } from '@/operators';
 import { defineComponent } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ERROR_CODE_DUPLICATION } from '@/constants';
-import { ElForm, ElMessage } from 'element-plus';
+import { ElMessage } from 'element-plus';
 import { apiOperator } from '@/operators/api/operator';
 import { IApi, IApiListResponse } from '@/operators/api/models';
-
+import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 interface IData {
   service: IService | undefined;
   apis: IApi[];
@@ -80,7 +70,7 @@ interface IData {
 export default defineComponent({
   name: 'ServiceDetail',
   components: {
-    FontAwesomeIcon
+    MarkdownRenderer
   },
   data(): IData {
     return {
@@ -146,6 +136,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .banner {
   $height: calc(100vh - 60px);
+  $min-height: 600px;
   background-color: #111827;
   background-image: url('@/assets/images/bg.png');
   background-position: 50% 50%;
@@ -154,10 +145,13 @@ export default defineComponent({
   position: relative;
   z-index: 1;
   height: $height;
+  min-height: $min-height;
+  margin-bottom: 30px;
 
   .left {
     position: relative;
     height: $height;
+    min-height: $min-height;
     .info {
       position: absolute;
       left: 0;
@@ -216,6 +210,7 @@ export default defineComponent({
   .right {
     position: relative;
     height: $height;
+    min-height: $min-height;
     .demo {
       position: absolute;
       top: 50%;
@@ -323,8 +318,8 @@ export default defineComponent({
 }
 
 .detail {
-  margin-bottom: 15px;
   font-size: 14px;
+  margin-bottom: 30px;
   .introduction {
     padding: 10px 0;
     color: #999;
