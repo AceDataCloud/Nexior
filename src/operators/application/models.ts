@@ -2,8 +2,8 @@ import { IService } from '../service';
 
 export interface IApplication {
   id?: string;
-  service: IService;
-  service_id: string;
+  service?: IService;
+  service_id?: string;
   api_key?: string;
   user_id?: string;
   remaining_count?: number;

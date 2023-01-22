@@ -107,7 +107,7 @@ export default defineComponent({
     onApply() {
       applicationOperator
         .create({
-          service: this.id
+          service_id: this.id
         })
         .then(({ data: data }: { data: IApplicationDetailResponse }) => {
           this.application = data;
