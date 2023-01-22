@@ -12,15 +12,30 @@
         </div>
       </div>
       <div class="right">
-        <el-select
-          v-if="item?.enum"
-          v-model="value[itemKey?.toString()]"
-          clearable
-          :placeholder="$t('common.title.select')"
-        >
-          <el-option v-for="e in item?.enum" :key="e" :label="e" :value="e" />
-        </el-select>
-        <el-input v-else v-model="value[itemKey?.toString()]" />
+        <div v-if="itemKey === 'api_key'">
+          <el-popover
+            placement="bottom"
+            title="Title"
+            :width="200"
+            trigger="click"
+            content="this is content, this is content, this is content"
+          >
+            <template #reference>
+              <el-button class="m-2">Click to activate</el-button>
+            </template>
+          </el-popover>
+        </div>
+        <div v-else>
+          <el-select
+            v-if="item?.enum"
+            v-model="value[itemKey?.toString()]"
+            clearable
+            :placeholder="$t('common.title.select')"
+          >
+            <el-option v-for="e in item?.enum" :key="e" :label="e" :value="e" />
+          </el-select>
+          <el-input v-else v-model="value[itemKey?.toString()]" />
+        </div>
       </div>
     </div>
   </div>

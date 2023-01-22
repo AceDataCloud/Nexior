@@ -50,7 +50,9 @@ export interface IApi {
   introduction?: string;
   tags?: string[];
   request: IRequest;
+  request_id: string;
   responses: IResponse[];
+  response_ids: string[];
   is_free?: boolean;
   service?: string;
   created_at?: string;
