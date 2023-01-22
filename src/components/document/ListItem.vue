@@ -1,10 +1,15 @@
 <template>
-  <div class="item" @click="onClick">
+  <div v-if="document.type === 'TEXT'" class="item" @click="onClick">
     <el-link type="primary" class="link" :underline="false">
-      <span class="name">{{ api?.title }}</span>
+      <span class="name">{{ document?.title }}</span>
     </el-link>
-    <el-tag v-if="api?.request?.method" type="primary" class="request-method" effect="dark">
-      {{ api?.request?.method }}
+  </div>
+  <div v-else-if="document.type === 'API'" class="item" @click="onClick">
+    <el-link type="primary" class="link" :underline="false">
+      <span class="name">{{ document?.api?.title }}</span>
+    </el-link>
+    <el-tag v-if="document?.api?.request?.method" type="primary" class="request-method" effect="dark">
+      {{ document?.api?.request?.method }}
     </el-tag>
   </div>
 </template>
@@ -12,12 +17,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { IApi } from '@/operators/api/models';
+import { IDocument } from '@/operators/document/models';
 
 export default defineComponent({
   name: 'ApiListItem',
   props: {
-    api: {
-      type: Object as () => IApi,
+    document: {
+      type: Object as () => IDocument,
       required: true
     }
   },
@@ -26,7 +32,7 @@ export default defineComponent({
       this.$router.push({
         name: 'document-detail',
         params: {
-          id: this.api.id
+          id: this.document.id
         }
       });
     }

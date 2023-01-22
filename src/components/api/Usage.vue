@@ -38,8 +38,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { IApi, IApiDetailResponse, IForm } from '@/operators/api/models';
-import ApiForm from './ApiForm.vue';
-import ApiResult from './ApiResult.vue';
+import ApiForm from './Form.vue';
+import ApiResult from './Result.vue';
 import urlJoin from 'url-join';
 
 export interface IData {
