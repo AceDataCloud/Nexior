@@ -4,12 +4,12 @@
     <el-divider />
     <el-skeleton />
   </div>
-  <vue-markdown v-else :source="content" class="markdown-body" />
+  <vue-markdown :source="content" class="markdown-body" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import VueMarkdown from 'vue-markdown-render';
+import VueMarkdown from './VueMarkdown.vue';
 
 export default defineComponent({
   name: 'ApiCode',
@@ -19,7 +19,8 @@ export default defineComponent({
   props: {
     content: {
       type: String,
-      required: true
+      required: false,
+      default: ''
     },
     loading: {
       type: Boolean,
