@@ -53,7 +53,9 @@
           <el-select
             v-else
             v-model="value[itemKey?.toString()]"
-            clearable
+            :clearable="true"
+            :filterable="true"
+            :allow-create="true"
             :placeholder="$t('common.title.placeholderOfSelect')"
           >
             <el-option :label="appliedApplication?.api_key" :value="appliedApplication?.api_key" class="select-option">
