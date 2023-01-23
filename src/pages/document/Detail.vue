@@ -60,6 +60,7 @@ export default defineComponent({
   methods: {
     getDocument(id: string) {
       this.loading = true;
+      this.form = {};
       documentOperator
         .get(id)
         .then(({ data: data }: { data: IDocumentDetailResponse }) => {
