@@ -1,6 +1,6 @@
 import requests
 
-url = "{{{url}}}"
+url = '{{{url}}}'
 
 headers = {
 {{#headers}}

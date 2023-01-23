@@ -4,7 +4,7 @@
     <el-divider />
     <el-skeleton />
   </div>
-  <vue-markdown :source="content" class="markdown-body" />
+  <vue-markdown v-else :source="content" class="markdown-body" />
 </template>
 
 <script lang="ts">
