@@ -32,7 +32,7 @@
                 <template #default="scope">
                   <span class="key">{{ scope.row.api_key }}</span>
                   <span class="copy">
-                    <font-awesome-icon icon="fa-regular fa-copy" />
+                    <copy-to-clipboard :content="scope.row.api_key" />
                   </span>
                 </template>
               </el-table-column>
@@ -67,6 +67,7 @@ import { defineComponent } from 'vue';
 import { applicationOperator, IApplication, IApplicationListResponse, IService } from '@/operators';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Pagination from '@/components/common/Pagination.vue';
+import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 
 interface IData {
   applications: IApplication[];
@@ -80,7 +81,8 @@ export default defineComponent({
   name: 'ApplicationList',
   components: {
     FontAwesomeIcon,
-    Pagination
+    Pagination,
+    CopyToClipboard
   },
   data(): IData {
     return {
