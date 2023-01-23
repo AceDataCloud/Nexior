@@ -2,6 +2,10 @@
 
 declare module 'element-ui/*';
 declare module '*.mjs';
+declare module '*.tpl' {
+  const value: string;
+  export default value;
+}
 
 declare module '*.vue' {
   import { DefineComponent } from 'vue';

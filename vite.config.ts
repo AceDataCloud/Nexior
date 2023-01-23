@@ -64,7 +64,7 @@ export default defineConfig({
   plugins: [
     vue(),
     string({
-      include: ['**/*.md', '**/*.theme', 'highlight.js/styles/*.css']
+      include: ['**/*.md', '**/*.tpl', '**/*.theme', 'highlight.js/styles/*.css']
     }),
     replace({
       preventAssignment: true
