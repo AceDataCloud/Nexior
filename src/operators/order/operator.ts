@@ -2,11 +2,19 @@ import { AxiosResponse } from 'axios';
 import { httpClient } from '../instance';
 import { IOrder, IOrderDetailResponse, IOrderListResponse } from './models';
 
+export interface IOrderQuery {
+  user_id?: string;
+  offset?: number;
+  limit?: number;
+}
+
 class OrderService {
   key = 'orders';
 
-  async getAll(): Promise<AxiosResponse<IOrderListResponse>> {
-    return await httpClient.get(`/${this.key}/`);
+  async getAll(query: IOrderQuery): Promise<AxiosResponse<IOrderListResponse>> {
+    return await httpClient.get(`/${this.key}/`, {
+      params: query
+    });
   }
 
   async get(id: string): Promise<AxiosResponse<IOrderDetailResponse>> {
