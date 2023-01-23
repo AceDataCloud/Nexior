@@ -1,5 +1,8 @@
 <template>
-  <div v-if="documents" class="wrapper">
+  <div v-if="loading">
+    <el-skeleton />
+  </div>
+  <div v-else-if="documents" class="wrapper">
     <document-list-item
       v-for="(document, documentIndex) in documents"
       :key="documentIndex"
@@ -18,6 +21,7 @@ interface IData {
   documents: IDocument[];
   limit: number;
   offset: number;
+  loading: boolean;
 }
 
 export default defineComponent({
@@ -29,7 +33,8 @@ export default defineComponent({
     return {
       documents: [],
       limit: 20,
-      offset: 0
+      offset: 0,
+      loading: false
     };
   },
   computed: {},
@@ -38,6 +43,7 @@ export default defineComponent({
   },
   methods: {
     getDocuments(offset: number, limit: number) {
+      this.loading = true;
       documentOperator
         .getAll({
           offset,
@@ -45,9 +51,11 @@ export default defineComponent({
           ordering: 'rank'
         })
         .then(({ data: data }: { data: IDocumentListResponse }) => {
+          this.loading = false;
           this.documents = data.items;
         })
         .catch((error) => {
+          this.loading = false;
           console.error(error);
         });
     }
