@@ -3,9 +3,9 @@ import { httpClient } from '../instance';
 import { IApplication, IApplicationDetailResponse, IApplicationListResponse } from './models';
 
 export interface IApplicationQuery {
-  user_id: string;
-  offset: number;
-  limit: number;
+  user_id?: string;
+  offset?: number;
+  limit?: number;
 }
 
 class ApplicationOperator {
