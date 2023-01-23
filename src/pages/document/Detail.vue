@@ -9,6 +9,7 @@
   </div>
   <div v-if="document?.type === 'API' && document?.api" class="right">
     <api-try :form="form" :api="document?.api" />
+    <api-code :form="form" :api="document?.api" />
   </div>
 </template>
 
@@ -16,6 +17,7 @@
 import { defineComponent } from 'vue';
 import ApiUsage from '@/components/api/Usage.vue';
 import ApiTry from '@/components/api/Try.vue';
+import ApiCode from '@/components/api/Code.vue';
 import { documentOperator, IDocument, IDocumentDetailResponse } from '@/operators';
 import { IForm } from '@/operators/api/models';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
@@ -30,6 +32,7 @@ export default defineComponent({
   components: {
     ApiUsage,
     ApiTry,
+    ApiCode,
     MarkdownRenderer
   },
   data(): IData {

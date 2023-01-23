@@ -36,3 +36,9 @@ export default defineComponent({
 <style lang="scss">
 @import 'github-markdown-css/github-markdown.css';
 </style>
+
+<style lang="scss" scoped>
+.markdown-body {
+  background: none;
+}
+</style>
