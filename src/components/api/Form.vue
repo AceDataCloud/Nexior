@@ -13,42 +13,43 @@
       </div>
       <div class="right">
         <div v-if="itemKey === 'api_key'">
-          <el-popover v-if="!isApplied" placement="bottom" :width="200" trigger="click">
-            <p class="text-center mb-2">
-              <small>{{ $t('application.message.notApplied') }}</small>
-            </p>
-            <p class="text-center">
-              <router-link
-                :to="{
-                  name: 'service-detail',
-                  params: {
-                    id: service?.id
-                  }
-                }"
-                class="inline-block"
-                target="_blank"
-              >
-                <el-button size="small" type="primary">{{ $t('common.button.apply') }}</el-button>
-              </router-link>
-              <el-button v-if="false" size="small" class="inline-block ml-2" @click="onRefreshApplications()">{{
-                $t('common.button.refresh')
-              }}</el-button>
-            </p>
-            <template #reference>
-              <div>
+          <div v-if="!isApplied">
+            <el-popover placement="bottom" :width="200" trigger="click">
+              <p class="text-center mb-2">
+                <small>{{ $t('application.message.notApplied') }}</small>
+              </p>
+              <p class="text-center">
+                <router-link
+                  :to="{
+                    name: 'service-detail',
+                    params: {
+                      id: service?.id
+                    }
+                  }"
+                  class="inline-block"
+                  target="_blank"
+                >
+                  <el-button size="small" type="primary">{{ $t('common.button.apply') }}</el-button>
+                </router-link>
+              </p>
+              <template #reference>
                 <el-input
                   v-model="value[itemKey?.toString()]"
-                  :placeholder="$t('common.title.placeholderOfSelect')"
+                  :placeholder="$t('common.title.placeholderOfInput')"
                   class="inline-block w-4/5"
                 />
+              </template>
+            </el-popover>
+            <el-tooltip effect="dark" :content="$t('common.button.refresh')" placement="right">
+              <span class="inline-block">
                 <font-awesome-icon
                   icon="fa-solid fa-rotate-right"
-                  class="inline-block text-sm cursor-pointer ml-1 color-primary"
+                  class="text-sm cursor-pointer ml-1 color-primary"
                   @click="$emit('refresh-applications')"
                 />
-              </div>
-            </template>
-          </el-popover>
+              </span>
+            </el-tooltip>
+          </div>
           <el-select
             v-else
             v-model="value[itemKey?.toString()]"
