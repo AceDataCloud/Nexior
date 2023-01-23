@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="operation">
+    <div class="operation mb-2">
       <el-button class="btn-try" type="primary" :loading="loading" @click="onTry">{{
         $t('common.button.try')
       }}</el-button>
@@ -72,6 +72,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .wrapper {
   padding: 15px;
+  padding-bottom: 0;
   .operation {
     margin-bottom: 10px;
     .btn-try {

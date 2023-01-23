@@ -8,8 +8,8 @@
     </div>
   </div>
   <div v-if="document?.type === 'API' && document?.api" class="right">
-    <api-try :form="form" :api="document?.api" />
     <api-code :form="form" :api="document?.api" />
+    <api-try :form="form" :api="document?.api" />
   </div>
 </template>
 

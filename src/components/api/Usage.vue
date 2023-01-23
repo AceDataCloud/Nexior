@@ -119,7 +119,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .item {
   .title {
     font-size: 26px;
