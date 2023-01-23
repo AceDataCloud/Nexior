@@ -9,7 +9,7 @@
       <el-row>
         <el-col :span="24">
           <el-card shadow="hover">
-            <el-table :data="applications" stripe>
+            <el-table v-loading="loading" :data="applications" stripe>
               <el-table-column :label="$t('application.field.service')" width="200px">
                 <template #default="scope">
                   <font-awesome-icon v-if="scope.row?.service?.icon" :icon="scope.row?.service?.icon" />
