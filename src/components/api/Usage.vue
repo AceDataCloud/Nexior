@@ -18,15 +18,30 @@
     <el-divider />
     <div class="queries">
       <h2 class="title">{{ $t('api.entity.requestQueries') }}</h2>
-      <api-form v-model:form="formValue.queries" :schema="api?.request?.queries" />
+      <api-form
+        v-model:form="formValue.queries"
+        :schema="api?.request?.queries"
+        :service="api?.service"
+        :applications="applications"
+      />
     </div>
     <div class="headers">
       <h2 class="title">{{ $t('api.entity.requestHeaders') }}</h2>
-      <api-form v-model:form="formValue.headers" :schema="api?.request?.headers" />
+      <api-form
+        v-model:form="formValue.headers"
+        :schema="api?.request?.headers"
+        :service="api?.service"
+        :applications="applications"
+      />
     </div>
     <div class="body">
       <h2 class="title">{{ $t('api.entity.requestBody') }}</h2>
-      <api-form v-model:form="formValue.body" :schema="api?.request?.body" />
+      <api-form
+        v-model:form="formValue.body"
+        :schema="api?.request?.body"
+        :service="api?.service"
+        :applications="applications"
+      />
     </div>
     <div v-if="api?.responses" class="responses">
       <h2 class="title">{{ $t('api.entity.response') }}</h2>
@@ -41,9 +56,12 @@ import { IApi, IForm } from '@/operators/api/models';
 import ApiForm from './Form.vue';
 import ApiResult from './Result.vue';
 import urlJoin from 'url-join';
+import { applicationOperator } from '@/operators/application/operator';
+import { IApplication, IApplicationListResponse } from '@/operators/application/models';
 
 export interface IData {
-  formValue: IForm | undefined;
+  formValue: IForm;
+  applications: IApplication[];
 }
 
 export default defineComponent({
@@ -67,9 +85,10 @@ export default defineComponent({
     }
   },
   emits: ['update:form'],
-  data() {
+  data(): IData {
     return {
-      formValue: this.form
+      formValue: this.form || {},
+      applications: []
     };
   },
   watch: {
@@ -80,8 +99,20 @@ export default defineComponent({
       deep: true
     }
   },
+  mounted() {
+    this.getApplications();
+  },
   methods: {
-    urlJoin
+    urlJoin,
+    getApplications() {
+      applicationOperator
+        .getAll({
+          user_id: this.$store.getters.user.id
+        })
+        .then(({ data: data }: { data: IApplicationListResponse }) => {
+          this.applications = data.items;
+        });
+    }
   }
 });
 </script>

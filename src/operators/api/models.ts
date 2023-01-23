@@ -1,3 +1,5 @@
+import { IService } from '../service';
+
 export interface IForm {
   queries?: {
     [key: string]: string;
@@ -54,7 +56,8 @@ export interface IApi {
   responses: IResponse[];
   response_ids: string[];
   is_free?: boolean;
-  service?: string;
+  service?: IService;
+  service_id?: string;
   created_at?: string;
   updated_at?: string;
 }

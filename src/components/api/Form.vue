@@ -13,17 +13,31 @@
       </div>
       <div class="right">
         <div v-if="itemKey === 'api_key'">
-          <el-popover
-            placement="bottom"
-            title="Title"
-            :width="200"
-            trigger="click"
-            content="this is content, this is content, this is content"
-          >
+          <el-popover v-if="!isApplied" placement="bottom" :width="200" trigger="focus">
+            <p>{{ $t('application.message.notApplied') }}</p>
+            <el-button
+              size="small"
+              type="primary"
+              @click="
+                $router.push({
+                  name: 'service-detail',
+                  params: {
+                    id: service?.id
+                  }
+                })
+              "
+              >{{ $t('common.button.apply') }}</el-button
+            >
             <template #reference>
-              <el-button class="m-2">Click to activate</el-button>
+              <el-input v-model="value[itemKey?.toString()]" />
             </template>
           </el-popover>
+          <el-select v-else v-model="value[itemKey?.toString()]" clearable :placeholder="$t('common.title.select')">
+            <el-option :label="appliedApplication?.api_key" :value="appliedApplication?.api_key" class="select-option">
+              <span class="select-option-main">{{ appliedApplication?.api_key }}</span>
+              <span class="select-option-description">{{ $t('application.message.yourApplication') }}</span>
+            </el-option>
+          </el-select>
         </div>
         <div v-else>
           <el-select
@@ -44,6 +58,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ISchema } from '@/operators/api/models';
+import { IService } from '@/operators/service/models';
+import { applicationOperator, IApplication, IApplicationListResponse } from '@/operators';
+import application from '@/i18n/zh/application';
 
 interface IData {
   value: {
@@ -57,6 +74,14 @@ export default defineComponent({
     schema: {
       type: Object as () => ISchema | undefined,
       required: true
+    },
+    service: {
+      type: Object as () => IService | undefined,
+      required: true
+    },
+    applications: {
+      type: Array as () => IApplication[],
+      required: true
     }
   },
   emits: ['update:form'],
@@ -64,6 +89,18 @@ export default defineComponent({
     return {
       value: {}
     };
+  },
+  computed: {
+    isApplied() {
+      return this.applications.filter((application) => application.service?.id === this.service?.id).length > 0;
+    },
+    appliedApplication(): IApplication | undefined {
+      const applications = this.applications.filter((application) => application.service?.id === this.service?.id);
+      if (applications.length > 0) {
+        return applications[0];
+      }
+      return undefined;
+    }
   },
   watch: {
     value: {
@@ -143,6 +180,20 @@ export default defineComponent({
       width: 30%;
       float: left;
       padding-top: 6px;
+    }
+  }
+}
+.el-select-dropdown {
+  .select-option {
+    .select-option-main {
+      display: inline-block;
+      font-size: 14px;
+    }
+    .select-option-description {
+      display: inline-block;
+      font-size: 12px;
+      color: #999;
+      margin-left: 20px;
     }
   }
 }
