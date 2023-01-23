@@ -1,5 +1,4 @@
 import { AxiosResponse } from 'axios';
-import { decamelizeKeys } from 'humps';
 import { httpClient } from '../instance';
 import { IService, IServiceDetailResponse, IServiceListResponse } from './models';
 

@@ -6,7 +6,6 @@ import * as path from 'path';
 import * as fs from 'fs';
 
 const getAuthEndpoint = () => {
-  console.log('process.env.NODE_ENV', process.env.NODE_ENV);
   switch (process.env.NODE_ENV) {
     case 'local':
       return 'http://127.0.0.1:8001';
@@ -32,7 +31,6 @@ const getDataEndpoint = () => {
 
 export default defineConfig({
   server: {
-    // open: true,
     host: 'data.local.zhishuyun.com',
     port: 443,
     https: {
