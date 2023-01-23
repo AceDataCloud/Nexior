@@ -1,4 +1,9 @@
 <template>
+  <el-row class="mb-10">
+    <el-col :span="24">
+      <img src="@/assets/images/logo2.svg" class="logo" @click="onHome" />
+    </el-col>
+  </el-row>
   <el-row>
     <el-col :span="24">
       <div class="links">
@@ -77,12 +82,23 @@ export default defineComponent({
   methods: {
     onClick(link: string) {
       window.location.href = link;
+    },
+    onHome() {
+      this.$router.push({
+        name: 'home'
+      });
     }
   }
 });
 </script>
 
 <style lang="scss" scoped>
+.logo {
+  width: 300px;
+  height: 60px;
+  cursor: pointer;
+}
+
 .avatar {
   display: block;
   margin: 30px auto 20px auto;

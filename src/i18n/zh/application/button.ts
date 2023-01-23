@@ -1,4 +1,4 @@
 export default {
-  document: '文档',
+  goDocument: '查看文档',
   buyMore: '购买更多'
 };

@@ -4,6 +4,8 @@ import { IApplication, IApplicationDetailResponse, IApplicationListResponse } fr
 
 export interface IApplicationQuery {
   user_id: string;
+  offset: number;
+  limit: number;
 }
 
 class ApplicationOperator {

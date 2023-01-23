@@ -2,7 +2,7 @@
   <el-pagination
     class="mt-3 mb-3"
     background
-    :hide-on-single-page="true"
+    :hide-on-single-page="false"
     layout="prev, pager, next"
     :current-page="currentPage"
     :total="total"
@@ -24,7 +24,8 @@ export default defineComponent({
   props: {
     total: {
       type: Number,
-      required: true
+      required: false,
+      default: undefined
     },
     currentPage: {
       type: Number,
