@@ -13,26 +13,48 @@
       </div>
       <div class="right">
         <div v-if="itemKey === 'api_key'">
-          <el-popover v-if="!isApplied" placement="bottom" :width="200" trigger="focus">
-            <p>{{ $t('application.message.notApplied') }}</p>
-            <el-button
-              size="small"
-              type="primary"
-              @click="
-                $router.push({
+          <el-popover v-if="!isApplied" placement="bottom" :width="200" trigger="click">
+            <p class="text-center mb-2">
+              <small>{{ $t('application.message.notApplied') }}</small>
+            </p>
+            <p class="text-center">
+              <router-link
+                :to="{
                   name: 'service-detail',
                   params: {
                     id: service?.id
                   }
-                })
-              "
-              >{{ $t('common.button.apply') }}</el-button
-            >
+                }"
+                class="inline-block"
+                target="_blank"
+              >
+                <el-button size="small" type="primary">{{ $t('common.button.apply') }}</el-button>
+              </router-link>
+              <el-button v-if="false" size="small" class="inline-block ml-2" @click="onRefreshApplications()">{{
+                $t('common.button.refresh')
+              }}</el-button>
+            </p>
             <template #reference>
-              <el-input v-model="value[itemKey?.toString()]" />
+              <div>
+                <el-input
+                  v-model="value[itemKey?.toString()]"
+                  :placeholder="$t('common.title.placeholderOfSelect')"
+                  class="inline-block w-4/5"
+                />
+                <font-awesome-icon
+                  icon="fa-solid fa-rotate-right"
+                  class="inline-block text-sm cursor-pointer ml-1 color-primary"
+                  @click="$emit('refresh-applications')"
+                />
+              </div>
             </template>
           </el-popover>
-          <el-select v-else v-model="value[itemKey?.toString()]" clearable :placeholder="$t('common.title.select')">
+          <el-select
+            v-else
+            v-model="value[itemKey?.toString()]"
+            clearable
+            :placeholder="$t('common.title.placeholderOfSelect')"
+          >
             <el-option :label="appliedApplication?.api_key" :value="appliedApplication?.api_key" class="select-option">
               <span class="select-option-main">{{ appliedApplication?.api_key }}</span>
               <span class="select-option-description">{{ $t('application.message.yourApplication') }}</span>
@@ -44,7 +66,7 @@
             v-if="item?.enum"
             v-model="value[itemKey?.toString()]"
             clearable
-            :placeholder="$t('common.title.select')"
+            :placeholder="$t('common.title.placeholderOfSelect')"
           >
             <el-option v-for="e in item?.enum" :key="e" :label="e" :value="e" />
           </el-select>
@@ -60,7 +82,7 @@ import { defineComponent } from 'vue';
 import { ISchema } from '@/operators/api/models';
 import { IService } from '@/operators/service/models';
 import { applicationOperator, IApplication, IApplicationListResponse } from '@/operators';
-import application from '@/i18n/zh/application';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 interface IData {
   value: {
@@ -70,6 +92,9 @@ interface IData {
 
 export default defineComponent({
   name: 'ApiForm',
+  components: {
+    FontAwesomeIcon
+  },
   props: {
     schema: {
       type: Object as () => ISchema | undefined,
@@ -84,7 +109,7 @@ export default defineComponent({
       required: true
     }
   },
-  emits: ['update:form'],
+  emits: ['update:form', 'refresh-applications'],
   data(): IData {
     return {
       value: {}
@@ -114,6 +139,9 @@ export default defineComponent({
     onChange(key: string, val: string) {
       console.log('key', key, val);
       this.value[key] = val;
+    },
+    onRefreshApplications() {
+      this.$emit('refresh-applications');
     }
   }
 });
