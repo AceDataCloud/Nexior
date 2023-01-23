@@ -61,10 +61,26 @@
       </el-row>
     </el-col>
   </el-row>
+  <el-dialog v-model="buying" title="Warning" width="30%" center>
+    <span> It should be noted that the content will not be aligned in center by default </span>
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="buying = false">Cancel</el-button>
+        <el-button type="primary" @click="onCreateOrder()"> Confirm </el-button>
+      </span>
+    </template>
+  </el-dialog>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { applicationOperator, IApplication, IApplicationListResponse, IService } from '@/operators';
+import {
+  applicationOperator,
+  IApplication,
+  IApplicationListResponse,
+  IOrderDetailResponse,
+  IService,
+  orderOperator
+} from '@/operators';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
@@ -75,6 +91,11 @@ interface IData {
   total: number | undefined;
   limit: number;
   page: number;
+  buying: boolean;
+  active: {
+    service: IService | undefined;
+    application: IApplication | undefined;
+  };
 }
 
 export default defineComponent({
@@ -89,7 +110,12 @@ export default defineComponent({
       applications: [],
       loading: false,
       total: undefined,
+      buying: false,
       limit: 8,
+      active: {
+        service: undefined,
+        application: undefined
+      },
       page: parseInt(this.$route.query.page?.toString() || '1')
     };
   },
@@ -103,8 +129,24 @@ export default defineComponent({
     this.onFetchData();
   },
   methods: {
-    onBuyMore(service: IService) {},
+    onBuyMore(service: IService) {
+      this.active.service = service;
+      this.buying = true;
+    },
     onGoDocument(service: IService) {},
+    onCreateOrder() {
+      if (!this.active?.service?.id) {
+        return;
+      }
+      orderOperator
+        .create({
+          service_id: this.active?.service?.id,
+          amount: 10
+        })
+        .then(({ data: data }: { data: IOrderDetailResponse }) => {
+          console.log('data', data);
+        });
+    },
     onPageChange(page: number) {
       this.$router.push({
         name: this.$route.name?.toString(),
@@ -126,6 +168,9 @@ export default defineComponent({
           this.applications = data.items;
           this.loading = false;
           this.total = data.count;
+        })
+        .catch(() => {
+          this.loading = false;
         });
     }
   }
