@@ -71,15 +71,7 @@
       <el-row>
         <el-col :span="10" :offset="14">
           <div class="pagination m-v-lg">
-            <el-pagination
-              v-model:current-page="page"
-              background
-              :page-size="limit"
-              layout="total, prev, pager, next"
-              :total="total"
-              @current-change="onPageChange"
-            >
-            </el-pagination>
+            <pagination :current-page="page" :page-size="limit" :total="total" @change="onPageChange" />
           </div>
         </el-col>
       </el-row>
@@ -91,6 +83,7 @@
 import { serviceOperator, IService, IServiceListResponse } from '@/operators';
 import { defineComponent } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import Pagination from '@/components/common/Pagination.vue';
 
 interface IData {
   services: IService[];
@@ -102,7 +95,8 @@ interface IData {
 export default defineComponent({
   name: 'ServiceList',
   components: {
-    FontAwesomeIcon
+    FontAwesomeIcon,
+    Pagination
   },
   data(): IData {
     return {
