@@ -17,5 +17,7 @@ export default {
   learn: '学习',
   buy: '购买',
   try: '测试',
-  startForFree: '免费体验'
+  startForFree: '免费体验',
+  apply: '申请',
+  refresh: '刷新'
 };

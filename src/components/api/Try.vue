@@ -1,7 +1,9 @@
 <template>
   <div class="wrapper">
     <div class="operation">
-      <el-button class="btn-try" type="primary" @click="onTry">{{ $t('common.button.try') }}</el-button>
+      <el-button class="btn-try" type="primary" :loading="loading" @click="onTry">{{
+        $t('common.button.try')
+      }}</el-button>
     </div>
     <div v-if="responseData" class="result">
       <div class="title">{{ $t('api.entity.response') }}</div>

@@ -90,10 +90,11 @@ export default defineComponent({
     };
   },
   mounted() {
-    serviceOperator.get(this.application.service_id).then(({ data: data }: { data: IServiceDetailResponse }) => {
-      this.service = data;
-      this.loading = false;
-    });
+    if (this.application?.service_id)
+      serviceOperator.get(this.application.service_id).then(({ data: data }: { data: IServiceDetailResponse }) => {
+        this.service = data;
+        this.loading = false;
+      });
   },
   methods: {}
 });
