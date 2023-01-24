@@ -3,7 +3,7 @@
     <el-col :span="24">
       <el-row>
         <el-col :span="24">
-          <h2 class="title">{{ $t('common.title.allOrders') }}</h2>
+          <h2 class="title">{{ $t('common.title.orderInfo') }}</h2>
         </el-col>
       </el-row>
       <el-row class="panel">
@@ -11,20 +11,38 @@
           <el-card shadow="hover">
             <el-row>
               <el-col :span="12" :offset="6">
-                <div class="order">
-                  <el-descriptions :title="$t('course.title.orderInfo')" :column="1">
-                    <el-descriptions-item :label="$t('course.title.orderId')">{{ order?.id }}</el-descriptions-item>
-                    <el-descriptions-item :label="$t('course.title.orderDescription')">
+                <div v-if="loading">
+                  <el-skeleton />
+                </div>
+                <div v-else class="order">
+                  <el-descriptions :title="$t('order.title.info')" :column="1">
+                    <el-descriptions-item :label="$t('order.field.id')">{{ order?.id }}</el-descriptions-item>
+                    <el-descriptions-item :label="$t('order.field.description')">
                       {{ order?.description }}
                     </el-descriptions-item>
-                    <el-descriptions-item v-if="order?.price" :label="$t('course.title.orderPrice')">
-                      <span class="price">¥{{ (order?.price / 100).toFixed(2) }}</span>
+                    <el-descriptions-item :label="$t('order.field.service')">
+                      {{ order?.application?.service?.title }}
+                    </el-descriptions-item>
+                    <el-descriptions-item :label="$t('order.field.amount')">
+                      {{ order?.amount }}
+                    </el-descriptions-item>
+                    <el-descriptions-item :label="$t('order.field.createdAt')">
+                      {{ order?.created_at }}
+                    </el-descriptions-item>
+                    <el-descriptions-item v-if="order?.price" :label="$t('order.field.price')">
+                      <span class="price">¥{{ order?.price?.toFixed(2) }}</span>
                     </el-descriptions-item>
                   </el-descriptions>
                 </div>
               </el-col>
             </el-row>
-            <el-row>
+            <el-row v-if="order?.state === OrderState.PAID" class="mb-5">
+              <el-col :span="12" :offset="6">
+                <el-divider border-style="dashed" />
+                <el-alert :title="$t('order.message.paidSuccessfully')" type="success" show-icon :closable="false" />
+              </el-col>
+            </el-row>
+            <el-row v-if="order?.state === OrderState.PENDING || order?.state === OrderState.FAILED">
               <el-col :span="12" :offset="6">
                 <el-divider border-style="dashed" />
                 <div class="payways">
@@ -41,7 +59,7 @@
                 </div>
               </el-col>
             </el-row>
-            <el-row>
+            <el-row v-if="order?.state === OrderState.PENDING || order?.state === OrderState.FAILED">
               <el-col :span="12" :offset="6">
                 <el-row class="paycodes">
                   <el-col :span="12">
@@ -69,7 +87,6 @@
 import { defineComponent } from 'vue';
 import { IOrder, IOrderDetailResponse, orderOperator, OrderState } from '@/operators/order';
 import QrCode from 'qrcode.vue';
-import { ElMessage } from 'element-plus';
 
 enum PayWay {
   WechatPay = 'WechatPay',
@@ -78,6 +95,7 @@ enum PayWay {
 
 interface IData {
   PayWay: typeof PayWay;
+  OrderState: typeof OrderState;
   payWay: PayWay | undefined;
   order: IOrder | undefined;
   loading: boolean;
@@ -92,16 +110,17 @@ export default defineComponent({
     return {
       PayWay: PayWay,
       payWay: PayWay.WechatPay,
+      OrderState: OrderState,
       order: undefined,
       loading: false
     };
   },
   computed: {
     id() {
-      return this.$route.params.id.toString();
+      return this.$route.params?.id?.toString();
     },
     redirect() {
-      return this.$route.query.redirect;
+      return this.$route.query?.redirect;
     }
   },
   watch: {},
@@ -124,11 +143,10 @@ export default defineComponent({
     },
     onCheck() {
       orderOperator
-        .get(this.id)
+        .refresh(this.id)
         .then(({ data: data }: { data: IOrderDetailResponse }) => {
           this.order = data;
           if (this.order.state === OrderState.PAID) {
-            ElMessage.success(this.$t('order.message.paidSuccessfully'));
             setTimeout(() => {
               if (this.redirect) {
                 window.location.replace(this.redirect?.toString());
@@ -162,6 +180,9 @@ export default defineComponent({
   padding: 30px;
 
   .panel {
+    .el-card {
+      min-height: 500px;
+    }
     .order {
       .price {
         font-size: 20px;

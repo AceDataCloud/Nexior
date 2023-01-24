@@ -113,7 +113,7 @@ export default defineComponent({
   },
   computed: {
     redirect() {
-      return this.$route.query.redirect;
+      return this.$route.query?.redirect;
     },
     page() {
       return parseInt(this.$route.query.page?.toString() || '1');

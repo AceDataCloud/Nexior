@@ -18,12 +18,12 @@
                   </span>
                 </template>
               </el-table-column>
-              <el-table-column :label="$t('order.field.price')">
+              <el-table-column :label="$t('order.field.price')" width="100px">
                 <template #default="scope">
-                  <span class="price">¥{{ (scope.row?.price / 100).toFixed(2) }}</span>
+                  <span class="price">¥{{ scope.row?.price?.toFixed(2) }}</span>
                 </template>
               </el-table-column>
-              <el-table-column :label="$t('order.field.createdAt')">
+              <el-table-column :label="$t('order.field.createdAt')" width="250px">
                 <template #default="scope">
                   <span class="created-at">{{ scope.row.created_at }}</span>
                 </template>
@@ -33,7 +33,7 @@
                   <span class="description">{{ scope.row.description }}</span>
                 </template>
               </el-table-column>
-              <el-table-column prop="state" :label="$t('order.field.state')" class-name="text-center">
+              <el-table-column prop="state" :label="$t('order.field.state')" class-name="text-center" width="100px">
                 <template #default="scope">
                   <span v-if="scope.row.state === OrderState?.PENDING">
                     <el-tag type="info" class="mx-1" effect="dark">{{ $t('order.state.pending') }}</el-tag>
@@ -65,6 +65,19 @@
                       "
                     >
                       {{ $t('order.button.continuePay') }}
+                    </el-button>
+                    <el-button
+                      v-else
+                      @click="
+                        $router.push({
+                          name: 'console-order-detail',
+                          params: {
+                            id: scope.row.id
+                          }
+                        })
+                      "
+                    >
+                      {{ $t('order.button.checkDetail') }}
                     </el-button>
                   </div>
                 </template>

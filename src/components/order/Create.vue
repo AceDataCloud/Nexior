@@ -9,7 +9,7 @@
       </el-form-item>
       <el-divider />
       <el-form-item :label="$t('application.field.shouldPayPrice')">
-        <span class="price">¥{{ (getPrice() / 100).toFixed(2) }}</span>
+        <span class="price">¥{{ getPrice().toFixed(2) }}</span>
       </el-form-item>
     </el-form>
     <template #footer>
@@ -60,7 +60,7 @@ export default defineComponent({
       orderOperator
         .create({
           application_id: this.application?.id,
-          amount: 10
+          amount: this.form.amount
         })
         .then(({ data: data }: { data: IOrderDetailResponse }) => {
           this.creating = false;
@@ -72,9 +72,8 @@ export default defineComponent({
             }
           });
         })
-        .catch((error) => {
-          ElMessage.success(this.$t('order.message.createFailed'));
-
+        .catch(() => {
+          ElMessage.error(this.$t('order.message.createFailed'));
           this.creating = false;
         });
     },
@@ -87,7 +86,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .price {
   font-size: 20px;
   font-weight: bold;

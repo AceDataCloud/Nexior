@@ -4,5 +4,6 @@ export default {
   placeholderOfSelect: '请选择',
   placeholderOfInput: '请填写',
   allApplications: '所有申请',
-  allOrders: '所有申请'
+  allOrders: '所有订单',
+  orderInfo: '订单信息'
 };
