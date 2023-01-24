@@ -3,7 +3,7 @@
     <el-col :span="24">
       <el-row>
         <el-col :span="24">
-          <h2 class="title">{{ $t('common.title.orderInfo') }}</h2>
+          <h2 class="title">{{ $t('order.title.info') }}</h2>
         </el-col>
       </el-row>
       <el-row class="panel">
@@ -54,7 +54,7 @@
                     }"
                   >
                     <span class="payicon wechat"></span>
-                    {{ $t('course.title.payWayWechat') }}
+                    {{ $t('order.title.payWayWechat') }}
                   </div>
                 </div>
               </el-col>
@@ -65,7 +65,7 @@
                   <el-col :span="12">
                     <div class="paycode wechat">
                       <qr-code v-if="order?.wechatpay_url" :value="order?.wechatpay_url" :size="200" class="m-auto" />
-                      <p class="help-text">{{ $t('course.message.wechatPayHelp') }}</p>
+                      <p class="help-text">{{ $t('order.message.wechatPayHelp') }}</p>
                     </div>
                   </el-col>
                   <el-col :span="12">
