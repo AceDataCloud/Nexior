@@ -1,8 +1,7 @@
-import common from './common/index';
-import auth from './auth/index';
-import course from './course/index';
-import service from './service/index';
-import console from './console/index';
+import common from './common';
+import auth from './auth';
+import service from './service';
+import console from './console';
 import application from './application';
 import api from './api';
 import order from './order';
@@ -10,7 +9,6 @@ import order from './order';
 export default {
   common,
   auth,
-  course,
   service,
   console,
   application,

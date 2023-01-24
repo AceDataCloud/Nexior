@@ -1,4 +1,5 @@
 export default {
   pay: '支付',
-  continuePay: '继续支付'
+  continuePay: '继续支付',
+  checkDetail: '查看详情'
 };
