@@ -6,6 +6,7 @@ export interface IOrderQuery {
   user_id?: string;
   offset?: number;
   limit?: number;
+  ordering: string;
 }
 
 class OrderService {

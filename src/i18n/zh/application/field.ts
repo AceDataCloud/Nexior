@@ -3,5 +3,7 @@ export default {
   usedCount: '已使用次数',
   apiKey: 'API Key',
   service: '服务',
-  operation: '操作'
+  operation: '操作',
+  amount: '数量',
+  shouldPayPrice: '应付金额',
 };

@@ -90,7 +90,6 @@ interface IData {
   loading: boolean;
   total: number | undefined;
   limit: number;
-  page: number;
 }
 export default defineComponent({
   name: 'ServiceList',
@@ -103,9 +102,20 @@ export default defineComponent({
       services: [],
       loading: true,
       total: undefined,
-      limit: 8,
-      page: parseInt(this.$route.query.page?.toString() || '1')
+      limit: 8
     };
+  },
+  computed: {
+    page() {
+      return parseInt(this.$route.query.page?.toString() || '1');
+    }
+  },
+  watch: {
+    page: {
+      handler() {
+        this.onFetchData();
+      }
+    }
   },
   async mounted() {
     this.onFetchData();
@@ -118,7 +128,6 @@ export default defineComponent({
           page: page
         }
       });
-      this.onFetchData();
     },
     onFetchData() {
       this.loading = true;
