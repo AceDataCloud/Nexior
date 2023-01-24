@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import { App } from 'vue';
 
 export interface IDayJS {
-  format: (v: string, formatString?: string) => string;
+  format: (v: string | undefined, formatString?: string) => string;
 }
 
 interface IOptions {

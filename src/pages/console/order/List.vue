@@ -25,7 +25,7 @@
               </el-table-column>
               <el-table-column :label="$t('order.field.createdAt')" width="250px">
                 <template #default="scope">
-                  <span class="created-at">{{ scope.row.created_at }}</span>
+                  <span class="created-at">{{ $dayjs.format(scope.row.created_at) }}</span>
                 </template>
               </el-table-column>
               <el-table-column :label="$t('order.field.description')">

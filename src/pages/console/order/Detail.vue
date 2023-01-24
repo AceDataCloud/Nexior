@@ -27,7 +27,7 @@
                       {{ order?.amount }}
                     </el-descriptions-item>
                     <el-descriptions-item :label="$t('order.field.createdAt')">
-                      {{ order?.created_at }}
+                      {{ $dayjs.format(order?.created_at) }}
                     </el-descriptions-item>
                     <el-descriptions-item v-if="order?.price" :label="$t('order.field.price')">
                       <span class="price">¥{{ order?.price?.toFixed(2) }}</span>
