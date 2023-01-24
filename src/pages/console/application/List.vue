@@ -39,10 +39,10 @@
               <el-table-column>
                 <template #default="scope">
                   <div class="float-right">
-                    <el-button @click="onGoDocument(scope.row.service)">
+                    <el-button v-if="false" @click="onGoDocument(scope.row)">
                       {{ $t('application.button.goDocument') }}
                     </el-button>
-                    <el-button type="primary" @click="onBuyMore(scope.row.service)">
+                    <el-button type="primary" @click="onBuyMore(scope.row)">
                       {{ $t('application.button.buyMore') }}
                     </el-button>
                   </div>
@@ -61,37 +61,26 @@
       </el-row>
     </el-col>
   </el-row>
-  <el-dialog v-model="buying" title="Warning" width="30%" center>
-    <span> It should be noted that the content will not be aligned in center by default </span>
-    <template #footer>
-      <span class="dialog-footer">
-        <el-button @click="buying = false">Cancel</el-button>
-        <el-button type="primary" @click="onCreateOrder()"> Confirm </el-button>
-      </span>
-    </template>
-  </el-dialog>
+  <create-order v-if="active.application" :visible="buying" :application="active.application" @hide="buying = false" />
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
-import {
-  applicationOperator,
-  IApplication,
-  IApplicationListResponse,
-  IOrderDetailResponse,
-  IService,
-  orderOperator
-} from '@/operators';
+import { applicationOperator, IApplication, IApplicationListResponse, IService } from '@/operators';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
+import CreateOrder from '@/components/order/Create.vue';
 
 interface IData {
   applications: IApplication[];
   loading: boolean;
   total: number | undefined;
   limit: number;
-  page: number;
   buying: boolean;
+  form: {
+    amount: number | undefined;
+  };
   active: {
     service: IService | undefined;
     application: IApplication | undefined;
@@ -103,7 +92,8 @@ export default defineComponent({
   components: {
     FontAwesomeIcon,
     Pagination,
-    CopyToClipboard
+    CopyToClipboard,
+    CreateOrder
   },
   data(): IData {
     return {
@@ -112,40 +102,38 @@ export default defineComponent({
       total: undefined,
       buying: false,
       limit: 8,
+      form: {
+        amount: 1
+      },
       active: {
         service: undefined,
         application: undefined
-      },
-      page: parseInt(this.$route.query.page?.toString() || '1')
+      }
     };
   },
   computed: {
     redirect() {
       return this.$route.query.redirect;
+    },
+    page() {
+      return parseInt(this.$route.query.page?.toString() || '1');
     }
   },
-  watch: {},
+  watch: {
+    page: {
+      handler() {
+        this.onFetchData();
+      }
+    }
+  },
   mounted() {
     this.onFetchData();
   },
   methods: {
-    onBuyMore(service: IService) {
-      this.active.service = service;
+    onGoDocument(application: IApplication) {},
+    onBuyMore(application: IApplication) {
+      this.active.application = application;
       this.buying = true;
-    },
-    onGoDocument(service: IService) {},
-    onCreateOrder() {
-      if (!this.active?.service?.id) {
-        return;
-      }
-      orderOperator
-        .create({
-          service_id: this.active?.service?.id,
-          amount: 10
-        })
-        .then(({ data: data }: { data: IOrderDetailResponse }) => {
-          console.log('data', data);
-        });
     },
     onPageChange(page: number) {
       this.$router.push({
@@ -154,7 +142,6 @@ export default defineComponent({
           page: page
         }
       });
-      this.onFetchData();
     },
     onFetchData() {
       this.loading = true;

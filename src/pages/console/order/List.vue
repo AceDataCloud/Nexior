@@ -1,16 +1,16 @@
 <template>
-  <el-row class="panel">
+  <el-row class="wrapper">
     <el-col :span="24">
       <el-row>
         <el-col :span="24">
           <h2 class="title">{{ $t('common.title.allOrders') }}</h2>
         </el-col>
       </el-row>
-      <el-row>
+      <el-row class="panel">
         <el-col :span="24">
           <el-card shadow="hover">
             <el-table v-loading="loading" :data="orders" stripe>
-              <el-table-column prop="id" :label="$t('order.field.id')" class-name="text-center">
+              <el-table-column prop="id" :label="$t('order.field.id')" class-name="text-center" width="350px">
                 <template #default="scope">
                   <span class="key">{{ scope.row.id }}</span>
                   <span class="copy">
@@ -18,17 +18,53 @@
                   </span>
                 </template>
               </el-table-column>
-              <el-table-column prop="price" :label="$t('order.field.price')">
+              <el-table-column :label="$t('order.field.price')">
                 <template #default="scope">
-                  <span class="key">{{ scope.row.price }}</span>
+                  <span class="price">¥{{ (scope.row?.price / 100).toFixed(2) }}</span>
                 </template>
               </el-table-column>
-              <el-table-column prop="state" :label="$t('order.field.state')" class-name="text-center" />
+              <el-table-column :label="$t('order.field.createdAt')">
+                <template #default="scope">
+                  <span class="created-at">{{ scope.row.created_at }}</span>
+                </template>
+              </el-table-column>
+              <el-table-column :label="$t('order.field.description')">
+                <template #default="scope">
+                  <span class="description">{{ scope.row.description }}</span>
+                </template>
+              </el-table-column>
+              <el-table-column prop="state" :label="$t('order.field.state')" class-name="text-center">
+                <template #default="scope">
+                  <span v-if="scope.row.state === OrderState?.PENDING">
+                    <el-tag type="info" class="mx-1" effect="dark">{{ $t('order.state.pending') }}</el-tag>
+                  </span>
+                  <span v-else-if="scope.row.state === OrderState?.PAID" class="state state-paid">
+                    <el-tag type="success" class="mx-1" effect="dark">{{ $t('order.state.paid') }}</el-tag>
+                  </span>
+                  <span v-else-if="scope.row.state === OrderState?.EXPIRED" class="state state-expired">
+                    <el-tag type="warning" class="mx-1" effect="dark">{{ $t('order.state.expired') }}</el-tag>
+                  </span>
+                  <span v-else-if="scope.row.state === OrderState?.FAILED" class="state state-failed">
+                    <el-tag type="danger" class="mx-1" effect="dark"> {{ $t('order.state.failed') }}</el-tag>
+                  </span>
+                </template>
+              </el-table-column>
               <el-table-column>
                 <template #default="scope">
                   <div class="float-right">
-                    <el-button type="primary" @click="onContinuePay(scope.row)">
-                      {{ $t('application.button.continuePay') }}
+                    <el-button
+                      v-if="scope.row.state !== OrderState.PAID"
+                      type="primary"
+                      @click="
+                        $router.push({
+                          name: 'console-order-detail',
+                          params: {
+                            id: scope.row.id
+                          }
+                        })
+                      "
+                    >
+                      {{ $t('order.button.continuePay') }}
                     </el-button>
                   </div>
                 </template>
@@ -46,69 +82,56 @@
       </el-row>
     </el-col>
   </el-row>
-  <el-dialog v-model="paying" title="Warning" width="30%" center>
-    <span> It should be noted that the content will not be aligned in center by default </span>
-    <template #footer>
-      {{ active.order?.wechatpay_url }}
-    </template>
-  </el-dialog>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IOrder, IOrderListResponse, IOrderDetailResponse, orderOperator } from '@/operators/order';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { IOrder, IOrderListResponse, IOrderDetailResponse, orderOperator, OrderState } from '@/operators/order';
 import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { IService } from '@/operators/service/models';
 
 interface IData {
   orders: IOrder[];
   loading: boolean;
   total: number | undefined;
   limit: number;
-  page: number;
-  paying: boolean;
-  active: {
-    service: IService | undefined;
-    order: IOrder | undefined;
-  };
+  OrderState: typeof OrderState;
 }
 
 export default defineComponent({
-  name: 'OrderList',
+  name: 'ConsoleOrderList',
   components: {
-    FontAwesomeIcon,
     Pagination,
     CopyToClipboard
   },
   data(): IData {
     return {
+      OrderState: OrderState,
       orders: [],
       loading: false,
       total: undefined,
-      paying: false,
-      limit: 8,
-      active: {
-        service: undefined,
-        order: undefined
-      },
-      page: parseInt(this.$route.query.page?.toString() || '1')
+      limit: 8
     };
   },
   computed: {
     redirect() {
       return this.$route.query.redirect;
+    },
+    page() {
+      return parseInt(this.$route.query.page?.toString() || '1');
     }
   },
-  watch: {},
+  watch: {
+    page: {
+      handler() {
+        this.onFetchData();
+      }
+    }
+  },
   mounted() {
     this.onFetchData();
   },
   methods: {
-    onContinuePay(order: IOrder) {
-      this.active.order = order;
-      this.paying = true;
-    },
     onPageChange(page: number) {
       this.$router.push({
         name: this.$route.name?.toString(),
@@ -116,12 +139,12 @@ export default defineComponent({
           page: page
         }
       });
-      this.onFetchData();
     },
     onFetchData() {
       this.loading = true;
       orderOperator
         .getAll({
+          ordering: '-created_at',
           limit: this.limit,
           offset: (this.page - 1) * this.limit,
           user_id: this.$store.getters.user.id
@@ -151,7 +174,7 @@ export default defineComponent({
   margin-bottom: 50px;
 }
 
-.panel {
+.wrapper {
   padding: 30px;
   .api-key {
     .copy {

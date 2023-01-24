@@ -1,7 +1,7 @@
 <template>
-  <font-awesome-icon v-if="!copied" icon="fa-regular fa-copy" @click="onCopy" />
+  <font-awesome-icon v-if="!copied" icon="fa-regular fa-copy" class="icon-copy" @click="onCopy" />
   <el-tooltip v-else :visible="copied" effect="dark" :content="$t('common.message.copied')" placement="top-start">
-    <font-awesome-icon icon="fa-solid fa-check" />
+    <font-awesome-icon icon="fa-solid fa-check" class="icon-check" />
   </el-tooltip>
 </template>
 
@@ -39,3 +39,10 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.icon-check,
+.icon-copy {
+  margin-left: 5px;
+}
+</style>

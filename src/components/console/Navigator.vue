@@ -7,11 +7,13 @@
   <el-row>
     <el-col :span="24">
       <div class="links">
-        <a
-          v-for="link in links"
-          :key="link.key"
-          :class="{ link: true, active: $route.path == link.href }"
-          @click="onClick(link.href)"
+        <router-link
+          v-for="(link, linkIndex) in links"
+          :key="linkIndex"
+          :to="{
+            name: link.name
+          }"
+          :class="{ link: true, active: $route.name === link.name }"
         >
           <span class="icon">
             <el-icon class="icon">
@@ -22,7 +24,7 @@
           </span>
           <span class="text">{{ link.text }}</span>
           <span class="suffix"></span>
-        </a>
+        </router-link>
       </div>
     </el-col>
   </el-row>
@@ -30,12 +32,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Clock, MagicStick, Collection, VideoPlay, Goods, Loading, User, Postcard } from '@element-plus/icons-vue';
+import { Clock, User, Postcard } from '@element-plus/icons-vue';
 
 interface ILink {
   key: string;
   text: string;
-  href: string;
+  name: string;
   icon: string;
 }
 
@@ -47,11 +49,6 @@ export default defineComponent({
   name: 'Navigator',
   components: {
     Clock,
-    Collection,
-    MagicStick,
-    VideoPlay,
-    Goods,
-    Loading,
     Postcard,
     User
   },
@@ -61,13 +58,13 @@ export default defineComponent({
         {
           key: 'profile',
           text: this.$t('console.menu.orderList'),
-          href: '/console/orders',
+          name: 'console-order-list',
           icon: 'user'
         },
         {
           key: 'verify',
           text: this.$t('console.menu.applicationList'),
-          href: '/console/applications',
+          name: 'console-application-list',
           icon: 'postcard'
         }
       ]
@@ -80,9 +77,6 @@ export default defineComponent({
   },
   mounted() {},
   methods: {
-    onClick(link: string) {
-      window.location.href = link;
-    },
     onHome() {
       this.$router.push({
         name: 'home'
