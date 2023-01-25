@@ -17,6 +17,9 @@ export default defineComponent({
     return {
       locale: zhCn
     };
+  },
+  mounted() {
+    this.$store.dispatch('getMe');
   }
 });
 </script>
