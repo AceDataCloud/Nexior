@@ -1,4 +1,4 @@
-import { ROUTE_SERVICE_DETAIL, ROUTE_SERVICE_LIST, ROUTE_SERVICE_ROOT } from './constants';
+import { ROUTE_SERVICE_DETAIL, ROUTE_SERVICE_LIST } from './constants';
 
 export default {
   path: '/services',
