@@ -8,7 +8,7 @@ import * as fs from 'fs';
 const getAuthEndpoint = () => {
   switch (process.env.NODE_ENV) {
     case 'local':
-      return 'http://127.0.0.1:8001';
+      return 'https://auth.test.zhishuyun.com';
     case 'test':
       return 'https://auth.test.zhishuyun.com';
     case 'production':
@@ -20,7 +20,7 @@ const getAuthEndpoint = () => {
 const getDataEndpoint = () => {
   switch (process.env.NODE_ENV) {
     case 'local':
-      return 'http://127.0.0.1:8007';
+      return 'https://auth.test.zhishuyun.com';
     case 'test':
       return 'https://data.test.zhishuyun.com';
     case 'production':
