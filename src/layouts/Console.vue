@@ -15,18 +15,15 @@ export default defineComponent({
   name: 'LayoutConsole',
   components: {
     Navigator
-  },
-  data() {
-    return {};
-  },
-  computed: {},
-  methods: {}
+  }
 });
 </script>
 
 <style lang="scss" scoped>
 .container {
   height: 100vh;
+  width: 100%;
+  max-width: initial;
 }
 
 .header {

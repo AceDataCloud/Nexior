@@ -54,7 +54,6 @@ export default defineComponent({
         params: { ...this.form.queries },
         data: { ...this.form.body }
       };
-      console.debug('config of testing', config);
       axios(config)
         .then((response) => {
           this.loading = false;

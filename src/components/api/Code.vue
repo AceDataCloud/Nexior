@@ -36,8 +36,6 @@ import javaTemplate from '@/assets/templates/java.tpl';
 import CodeSnippet from '../common/CodeSnippet.vue';
 import queryString from 'query-string';
 
-console.log('pythonTemplate', pythonTemplate);
-
 interface IOption {
   name: ILang;
   icon: string;

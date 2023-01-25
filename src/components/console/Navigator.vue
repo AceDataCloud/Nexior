@@ -33,6 +33,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { Clock, User, Postcard } from '@element-plus/icons-vue';
+import { ROUTE_CONSOLE_APPLICATION_LIST, ROUTE_CONSOLE_ORDER_LIST, ROUTE_INDEX } from '@/router';
 
 interface ILink {
   key: string;
@@ -58,13 +59,13 @@ export default defineComponent({
         {
           key: 'profile',
           text: this.$t('console.menu.orderList'),
-          name: 'console-order-list',
+          name: ROUTE_CONSOLE_ORDER_LIST,
           icon: 'user'
         },
         {
           key: 'verify',
           text: this.$t('console.menu.applicationList'),
-          name: 'console-application-list',
+          name: ROUTE_CONSOLE_APPLICATION_LIST,
           icon: 'postcard'
         }
       ]
@@ -79,7 +80,7 @@ export default defineComponent({
   methods: {
     onHome() {
       this.$router.push({
-        name: 'home'
+        name: ROUTE_INDEX
       });
     }
   }

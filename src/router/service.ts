@@ -1,19 +1,17 @@
+import { ROUTE_SERVICE_DETAIL, ROUTE_SERVICE_LIST, ROUTE_SERVICE_ROOT } from './constants';
+
 export default {
   path: '/services',
-  name: 'services',
-  meta: {
-    auth: true
-  },
   component: () => import('@/layouts/Service.vue'),
   children: [
     {
       path: '',
-      name: 'service-list',
+      name: ROUTE_SERVICE_LIST,
       component: () => import('@/pages/service/List.vue')
     },
     {
       path: ':id',
-      name: 'service-detail',
+      name: ROUTE_SERVICE_DETAIL,
       component: () => import('@/pages/service/Detail.vue')
     }
   ]

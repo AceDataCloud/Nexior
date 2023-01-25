@@ -8,7 +8,7 @@
     <el-link type="primary" class="link" :underline="false">
       <span class="name">{{ document?.api?.title }}</span>
     </el-link>
-    <el-tag v-if="document?.api?.request?.method" type="primary" class="request-method" effect="dark">
+    <el-tag v-if="document?.api?.request?.method" type="primary" class="method" effect="dark">
       {{ document?.api?.request?.method }}
     </el-tag>
   </div>
@@ -17,6 +17,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { IDocument } from '@/operators/document/models';
+import { ROUTE_DOCUMENT_DETAIL } from '@/router';
 
 export default defineComponent({
   name: 'ApiListItem',
@@ -29,7 +30,7 @@ export default defineComponent({
   methods: {
     onClick() {
       this.$router.push({
-        name: 'document-detail',
+        name: ROUTE_DOCUMENT_DETAIL,
         params: {
           id: this.document.id
         }
@@ -60,7 +61,7 @@ $height: 35px;
       display: flex;
     }
   }
-  .request-method {
+  .method {
     position: absolute;
     right: 10px;
     top: 5px;

@@ -15,7 +15,7 @@
                   <el-skeleton />
                 </div>
                 <div v-else class="order">
-                  <el-descriptions :title="$t('order.title.info')" :column="1">
+                  <el-descriptions :column="1">
                     <el-descriptions-item :label="$t('order.field.id')">{{ order?.id }}</el-descriptions-item>
                     <el-descriptions-item :label="$t('order.field.description')">
                       {{ order?.description }}
@@ -184,6 +184,7 @@ export default defineComponent({
       min-height: 500px;
     }
     .order {
+      padding-top: 50px;
       .price {
         font-size: 20px;
         font-weight: bold;

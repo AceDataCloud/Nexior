@@ -27,6 +27,7 @@
 import { IApplication, IOrderDetailResponse, orderOperator } from '@/operators';
 import { defineComponent } from 'vue';
 import { ElMessage } from 'element-plus';
+import { ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
 
 export default defineComponent({
   name: 'CreateOrderDialog',
@@ -66,7 +67,7 @@ export default defineComponent({
           this.creating = false;
           const order = data;
           this.$router.push({
-            name: 'console-order-detail',
+            name: ROUTE_CONSOLE_ORDER_DETAIL,
             params: {
               id: order.id
             }

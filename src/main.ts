@@ -11,6 +11,8 @@ import './plugins/font-awesome';
 
 const app = createApp(App);
 
+const env = import.meta.env.VITE_APP_ENV;
+console.log('env', env);
 app.use(router);
 app.use(store);
 app.use(ElementPlus);
@@ -18,5 +20,4 @@ app.use(i18n);
 app.use(dayjs, {
   formatString: 'YYYY-MM-DD HH:mm:ss'
 });
-// app.mixin(constants);
 app.mount('#app');

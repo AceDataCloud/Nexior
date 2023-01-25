@@ -11,10 +11,11 @@
 </template>
 
 <script lang="ts">
-import { TopHeader } from '@/components/common/index';
+import TopHeader from '@/components/common/TopHeader.vue';
 import BottomFooter from '@/components/common/BottomFooter.vue';
+
 export default {
-  name: 'LayoutCourse',
+  name: 'LayoutService',
   components: {
     TopHeader,
     BottomFooter

@@ -9,19 +9,19 @@
 <script lang="ts">
 import { IDocument, IDocumentListResponse } from '@/operators/document/models';
 import { documentOperator } from '@/operators/document/operator';
+import { ROUTE_DOCUMENT_DETAIL } from '@/router';
 import { defineComponent } from 'vue';
 
 interface IData {
   documents: IDocument[];
 }
 export default defineComponent({
-  components: {},
+  name: 'DocumentIndex',
   data(): IData {
     return {
       documents: []
     };
   },
-  computed: {},
   mounted() {
     this.getDocuments(0, 1);
   },
@@ -38,7 +38,7 @@ export default defineComponent({
           if (this.documents.length > 0) {
             const firstDocument = this.documents[0];
             this.$router.push({
-              name: 'document-detail',
+              name: ROUTE_DOCUMENT_DETAIL,
               params: {
                 id: firstDocument.id
               }

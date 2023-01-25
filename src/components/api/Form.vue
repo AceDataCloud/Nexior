@@ -84,7 +84,7 @@
 import { defineComponent } from 'vue';
 import { ISchema } from '@/operators/api/models';
 import { IService } from '@/operators/service/models';
-import { applicationOperator, IApplication, IApplicationListResponse } from '@/operators';
+import { IApplication } from '@/operators';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 interface IData {
@@ -140,7 +140,6 @@ export default defineComponent({
   },
   methods: {
     onChange(key: string, val: string) {
-      console.log('key', key, val);
       this.value[key] = val;
     },
     onRefreshApplications() {

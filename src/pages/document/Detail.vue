@@ -29,6 +29,7 @@ export interface IData {
 }
 
 export default defineComponent({
+  name: 'DocumentDetail',
   components: {
     ApiUsage,
     ApiTry,

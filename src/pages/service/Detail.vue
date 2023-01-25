@@ -59,6 +59,7 @@ import { ElMessage } from 'element-plus';
 import { apiOperator } from '@/operators/api/operator';
 import { IApi, IApiListResponse } from '@/operators/api/models';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
+import { ROUTE_CONSOLE_APPLICATION_LIST } from '@/router';
 
 interface IData {
   service: IService | undefined;
@@ -115,7 +116,7 @@ export default defineComponent({
           ElMessage.success(this.$t('application.message.applySuccessfully'));
           setTimeout(() => {
             this.$router.push({
-              name: 'console-application-list'
+              name: ROUTE_CONSOLE_APPLICATION_LIST
             });
           }, 2000);
         })

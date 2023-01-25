@@ -1,19 +1,17 @@
+import { ROUTE_DOCUMENT_DETAIL, ROUTE_DOCUMENT_LIST } from './constants';
+
 export default {
   path: '/documents',
-  name: 'documents',
-  meta: {
-    auth: true
-  },
   component: () => import('@/layouts/Document.vue'),
   children: [
     {
       path: '',
-      name: 'document-index',
-      component: () => import('@/pages/document/Index.vue')
+      name: ROUTE_DOCUMENT_LIST,
+      component: () => import('@/pages/document/List.vue')
     },
     {
       path: ':id',
-      name: 'document-detail',
+      name: ROUTE_DOCUMENT_DETAIL,
       component: () => import('@/pages/document/Detail.vue')
     }
   ]

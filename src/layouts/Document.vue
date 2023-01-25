@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { TopHeader } from '@/components/common/index';
+import TopHeader from '@/components/common/TopHeader.vue';
 import BottomFooter from '@/components/common/BottomFooter.vue';
 import DocumentList from '@/components/document/List.vue';
 

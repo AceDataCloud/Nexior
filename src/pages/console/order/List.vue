@@ -99,7 +99,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IOrder, IOrderListResponse, IOrderDetailResponse, orderOperator, OrderState } from '@/operators/order';
+import { IOrder, IOrderListResponse, orderOperator, OrderState } from '@/operators/order';
 import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 
