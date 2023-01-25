@@ -10,7 +10,7 @@ export default defineComponent({
   name: 'AuthLogin',
   data(): IData {
     return {
-      redirect: this.$route.query.redirect?.toString()
+      redirect: this.$route.query.redirect?.toString() || '/'
     };
   },
   async mounted() {
