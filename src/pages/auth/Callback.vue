@@ -24,8 +24,14 @@ export default defineComponent({
     if (this.accessToken && this.refreshToken) {
       await this.$store.dispatch('setAccessToken', this.accessToken);
       await this.$store.dispatch('setRefreshToken', this.refreshToken);
-      removeCookie('ACCESS_TOKEN');
-      removeCookie('REFRESH_TOKEN');
+      const host = window.location.host;
+      // process test env and prod env, for example:
+      // auth.zhishuyun.com -> .zhishuyun.com
+      // auth.test.zhishuyun.com -> .zhishuyun.com
+      const domain = host.replace(/^\S+?\.(test\.)?/, '.');
+      const path = '/';
+      removeCookie('ACCESS_TOKEN', { domain, path });
+      removeCookie('REFRESH_TOKEN', { domain, path });
       if (this.redirect) {
         this.$router.push(this.redirect);
       }
