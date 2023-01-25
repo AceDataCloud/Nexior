@@ -45,9 +45,15 @@ const store = createStore({
     setUser({ commit }: ActionContext<IState, IState>, payload: IUser) {
       commit('setUser', payload);
     },
-    async getMe({ commit }: ActionContext<IState, IState>) {
-      const { data: data } = await userOperator.getMe();
-      commit('setUser', data);
+    getMe({ commit }: ActionContext<IState, IState>) {
+      userOperator
+        .getMe()
+        .then(({ data: data }) => {
+          commit('setUser', data);
+        })
+        .catch(() => {
+          console.error('failed to get user info');
+        });
     }
   },
   getters: {
