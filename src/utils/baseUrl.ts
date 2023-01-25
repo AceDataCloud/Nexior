@@ -1,3 +1,4 @@
+import { ENV_LOCAL, ENV_TEST } from '@/constants';
 import { getEnv } from './env';
 
 /**
@@ -6,9 +7,9 @@ import { getEnv } from './env';
  */
 export const getDataBaseUrl = () => {
   const env = getEnv();
-  if (env === 'local') {
+  if (env === ENV_LOCAL) {
     return 'https://data.local.zhishuyun.com';
-  } else if (env === 'test') {
+  } else if (env === ENV_TEST) {
     return 'https://data.test.zhishuyun.com';
   } else {
     return 'https://data.zhishuyun.com';
@@ -17,9 +18,9 @@ export const getDataBaseUrl = () => {
 
 export const getAuthBaseUrl = () => {
   const env = getEnv();
-  if (env === 'local') {
+  if (env === ENV_LOCAL) {
     return 'https://auth.test.zhishuyun.com';
-  } else if (env === 'test') {
+  } else if (env === ENV_TEST) {
     return 'https://auth.test.zhishuyun.com';
   } else {
     return 'https://auth.zhishuyun.com';

@@ -11,8 +11,6 @@ import './plugins/font-awesome';
 
 const app = createApp(App);
 
-const env = import.meta.env.VITE_APP_ENV;
-console.log('env', env);
 app.use(router);
 app.use(store);
 app.use(ElementPlus);
