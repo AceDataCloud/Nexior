@@ -17,6 +17,13 @@ export default defineComponent({
     return {
       locale: zhCn
     };
+  },
+  mounted() {
+    // if access token is already set, try to get user info
+    const accessToken = this.$store.getters.accessToken;
+    if (accessToken) {
+      this.$store.dispatch('getMe');
+    }
   }
 });
 </script>
