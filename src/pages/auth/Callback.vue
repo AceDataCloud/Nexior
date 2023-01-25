@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { getCookie } from 'typescript-cookie';
+import { getCookie, removeCookie } from 'typescript-cookie';
 import { getAuthBaseUrl, getDataBaseUrl } from '@/utils';
 
 interface IData {
@@ -24,6 +24,8 @@ export default defineComponent({
     if (this.accessToken && this.refreshToken) {
       await this.$store.dispatch('setAccessToken', this.accessToken);
       await this.$store.dispatch('setRefreshToken', this.refreshToken);
+      removeCookie('ACCESS_TOKEN');
+      removeCookie('REFRESH_TOKEN');
       if (this.redirect) {
         this.$router.push(this.redirect);
       }
