@@ -71,14 +71,11 @@ export default defineComponent({
       required: true
     }
   },
-  // emits: ['change'],
   data(): IData {
     return {
       value: {}
     };
-  },
-  watch: {},
-  methods: {}
+  }
 });
 </script>
 

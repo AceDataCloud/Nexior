@@ -1,7 +1,6 @@
 import { createStore, ActionContext } from 'vuex';
-import { IUser } from '@/operators/user/models';
 import createPersistedState from 'vuex-persistedstate';
-import { userOperator } from '@/operators';
+import { userOperator, IUser } from '@/operators';
 
 export interface IState {
   accessToken: string | undefined;

@@ -54,17 +54,12 @@ export default defineConfig({
         target: getDataEndpoint(),
         changeOrigin: true
       }
-      // '/ws': {
-      //   target: 'ws://localhost:8000',
-      //   changeOrigin: true,
-      //   ws: true
-      // }
     }
   },
   plugins: [
     vue(),
     string({
-      include: ['**/*.md', '**/*.tpl', '**/*.theme', 'highlight.js/styles/*.css']
+      include: ['**/*.md', '**/*.tpl', '**/*.theme']
     }),
     replace({
       preventAssignment: true

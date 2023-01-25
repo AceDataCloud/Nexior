@@ -6,6 +6,7 @@
 import { defineComponent } from 'vue';
 import { ElMessageBox } from 'element-plus';
 import { authOperator, ITokenResponse } from '@/operators';
+import { getAuthBaseUrl } from '@/utils';
 
 export default defineComponent({
   name: 'VerificationAlert',
@@ -53,7 +54,8 @@ export default defineComponent({
         closeOnHashChange: false
       })
         .then(() => {
-          window.open('https://auth.test.zhishuyun.com/user/verify?redirect=' + window.location.href + '?refresh=1');
+          const authBaseUrl = getAuthBaseUrl();
+          window.open(`${authBaseUrl}/user/verify?redirect=` + window.location.href + '?refresh=1');
         })
         .catch(() => {});
     }

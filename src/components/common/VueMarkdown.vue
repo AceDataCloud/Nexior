@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { PropType } from 'vue';
 import { defineComponent, computed, h } from 'vue';
-
 import MarkdownIt, { Options as MarkdownItOptions } from 'markdown-it';
 
 export default defineComponent({
@@ -19,7 +18,6 @@ export default defineComponent({
   },
   setup(props, { attrs }) {
     const md = new MarkdownIt(props.options);
-
     const content = computed(() => {
       const src = props.source;
       return md?.render(src);

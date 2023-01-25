@@ -2,11 +2,11 @@
   "name": "zhishuyun-data",
   "version": "0.1.0",
   "scripts": {
-    "start": "cross-env NODE_ENV=$npm_config_env vite --host",
+    "start": "cross-env VITE_APP_ENV=$npm_config_env NODE_ENV=$npm_config_env vite --host",
     "start:local": "npm run start --env=local",
     "start:test": "npm run start --env=test",
     "start:production": "npm run start --env=production",
-    "build": "cross-env NODE_ENV=$npm_config_env vue-tsc --noEmit --skipLibCheck && vite build",
+    "build": "cross-env VITE_APP_ENV=$npm_config_env NODE_ENV=$npm_config_env vue-tsc --noEmit --skipLibCheck && vite build",
     "build:local": "npm run build --env=local",
     "build:test": "npm run build --env=test",
     "build:production": "npm run build --env=production",

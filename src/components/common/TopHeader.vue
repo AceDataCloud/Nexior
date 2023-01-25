@@ -17,12 +17,14 @@
               $t('common.button.login')
             }}</el-button>
           </div>
-          <div v-else class="mt-3 pr-10 float-right">
+          <div v-else class="float-right">
+            <div class="console" @click="onConsole">
+              {{ $t('common.button.console') }}
+            </div>
             <el-dropdown trigger="click">
               <img :src="user?.avatar || defaultAvatar" class="avatar" />
               <template #dropdown>
                 <el-dropdown-menu>
-                  <el-dropdown-item @click="onConsole">{{ $t('common.button.console') }}</el-dropdown-item>
                   <el-dropdown-item @click="onProfile">{{ $t('common.button.profile') }}</el-dropdown-item>
                   <el-dropdown-item @click="onVerify">{{ $t('common.button.verify') }}</el-dropdown-item>
                   <el-dropdown-item @click="onLogout">{{ $t('common.button.logout') }}</el-dropdown-item>
@@ -39,6 +41,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import defaultAvatar from '@/assets/images/avatar.png';
+import { getAuthBaseUrl } from '@/utils';
+import { ROUTE_AUTH_LOGIN, ROUTE_CONSOLE_ROOT, ROUTE_INDEX } from '@/router';
+
 export default defineComponent({
   name: 'TopHeader',
   data() {
@@ -61,28 +66,32 @@ export default defineComponent({
     },
     onHome() {
       this.$router.push({
-        name: 'home'
+        name: ROUTE_INDEX
       });
     },
     onLogin() {
       this.$router.push({
-        name: 'login'
+        name: ROUTE_AUTH_LOGIN
       });
     },
     onProfile() {
-      window.location.href = 'https://auth.test.zhishuyun.com/user/profile';
+      const authBaseUrl = getAuthBaseUrl();
+      window.open(`${authBaseUrl}/user/profile`, '_blank');
     },
     onVerify() {
-      window.location.href = 'https://auth.test.zhishuyun.com/user/verify';
+      const authBaseUrl = getAuthBaseUrl();
+      window.open(`${authBaseUrl}/user/verify`, '_blank');
     },
     onConsole() {
       this.$router.push({
-        name: 'console-application-list'
+        name: ROUTE_CONSOLE_ROOT
       });
     },
     onLogout() {
       this.$store.dispatch('resetAuth');
-      this.$router.push('/');
+      this.$router.push({
+        name: ROUTE_INDEX
+      });
     }
   }
 });
@@ -122,6 +131,18 @@ $height: 60px;
   .avatar {
     height: 40px;
     border-radius: 50%;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-left: 10px;
+  }
+  .console {
+    color: white;
+    height: 60px;
+    line-height: 60px;
+    margin: 0 10px;
+    font-size: 14px;
+    display: inline-block;
     cursor: pointer;
   }
 }

@@ -1,15 +1,18 @@
-import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import service from './service';
 import auth from './auth';
 import console from './console';
 import document from './document';
 import store from '@/store';
+import { ROUTE_AUTH_LOGIN, ROUTE_INDEX, ROUTE_SERVICE_LIST } from './constants';
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    redirect: '/services'
+    name: ROUTE_INDEX,
+    redirect: {
+      name: ROUTE_SERVICE_LIST
+    }
   },
   service,
   auth,
@@ -19,7 +22,6 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  // history: createWebHashHistory(),
   routes
 });
 
@@ -27,7 +29,7 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.auth)) {
     if (!store.getters.authenticated) {
       next({
-        name: 'auth-login',
+        name: ROUTE_AUTH_LOGIN,
         query: { redirect: to.fullPath }
       });
     } else {
@@ -39,3 +41,5 @@ router.beforeEach((to, from, next) => {
 });
 
 export default router;
+
+export * from './constants';

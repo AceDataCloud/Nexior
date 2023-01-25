@@ -28,7 +28,7 @@
                 width="100px"
                 class-name="text-center"
               />
-              <el-table-column :label="$t('application.field.apiKey')" class-name="api-key">
+              <el-table-column :label="$t('application.field.apiKey')" class-name="api-key" width="320px">
                 <template #default="scope">
                   <span class="key">{{ scope.row.api_key }}</span>
                   <span class="copy">
@@ -88,7 +88,7 @@ interface IData {
 }
 
 export default defineComponent({
-  name: 'ApplicationList',
+  name: 'ConsoleApplicationList',
   components: {
     FontAwesomeIcon,
     Pagination,

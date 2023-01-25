@@ -8,5 +8,6 @@ export default {
   course: '课程',
   category: '分类',
   service: '服务',
-  document: '文档'
+  document: '文档',
+  console: '控制台'
 };

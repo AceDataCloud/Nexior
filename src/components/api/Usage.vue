@@ -59,7 +59,6 @@ import ApiResult from './Result.vue';
 import urlJoin from 'url-join';
 import { applicationOperator } from '@/operators/application/operator';
 import { IApplication, IApplicationListResponse } from '@/operators/application/models';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export interface IData {
   formValue: IForm;

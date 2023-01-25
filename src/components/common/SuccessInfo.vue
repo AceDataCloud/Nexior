@@ -18,6 +18,7 @@ export default defineComponent({
       default: ''
     }
   },
+  emits: ['update:show'],
   watch: {
     show(val, oldVal) {
       if (val) {

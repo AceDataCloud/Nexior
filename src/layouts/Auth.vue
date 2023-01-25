@@ -8,13 +8,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'LayoutAuth',
-  components: {},
-  data() {
-    return {};
-  },
-  computed: {},
-  methods: {}
+  name: 'LayoutAuth'
 });
 </script>
 

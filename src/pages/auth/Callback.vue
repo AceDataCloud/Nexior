@@ -1,9 +1,7 @@
-<template>
-  <div></div>
-</template>
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { getCookie } from 'typescript-cookie';
+import { getAuthBaseUrl, getDataBaseUrl } from '@/utils';
 
 interface IData {
   accessToken: string | undefined;
@@ -12,7 +10,7 @@ interface IData {
 }
 
 export default defineComponent({
-  name: 'Login',
+  name: 'AuthCallback',
   data(): IData {
     return {
       accessToken: undefined,
@@ -30,15 +28,16 @@ export default defineComponent({
         this.$router.push(this.redirect);
       }
     } else {
-      const host = window.location.host;
-      const subDomain = import.meta.env.DEV ? 'test.zhishuyun.com' : host.substring(host.indexOf('.') + 1);
+      console.debug('access token and refresh token not found, try to re-auth again');
+      const dataBaseUrl = getDataBaseUrl();
+      const authBaseUrl = getAuthBaseUrl();
       // callback url used to init access token and then redirect back of `redirect`
-      const callbackUrl = `https://${host}/auth/callback?redirect=${this.redirect}`;
-      const targetUrl = `https://auth.${subDomain}?redirect=${callbackUrl}`;
+      const callbackUrl = `${dataBaseUrl}/auth/callback?redirect=${this.redirect}`;
+      // redirect to auth service to get access token then redirect back
+      const targetUrl = `${authBaseUrl}?redirect=${callbackUrl}`;
       window.location.href = targetUrl;
     }
-  },
-  methods: {}
+  }
 });
 </script>
 

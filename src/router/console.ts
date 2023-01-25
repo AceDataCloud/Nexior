@@ -1,24 +1,37 @@
+import {
+  ROUTE_CONSOLE_APPLICATION_LIST,
+  ROUTE_CONSOLE_ORDER_DETAIL,
+  ROUTE_CONSOLE_ORDER_LIST,
+  ROUTE_CONSOLE_ROOT
+} from './constants';
+
 export default {
   path: '/console',
-  name: 'console',
   meta: {
     auth: true
   },
   component: () => import('@/layouts/Console.vue'),
   children: [
     {
+      path: '',
+      name: ROUTE_CONSOLE_ROOT,
+      redirect: {
+        name: ROUTE_CONSOLE_APPLICATION_LIST
+      }
+    },
+    {
       path: 'orders',
-      name: 'console-order-list',
+      name: ROUTE_CONSOLE_ORDER_LIST,
       component: () => import('@/pages/console/order/List.vue')
     },
     {
       path: 'orders/:id',
-      name: 'console-order-detail',
+      name: ROUTE_CONSOLE_ORDER_DETAIL,
       component: () => import('@/pages/console/order/Detail.vue')
     },
     {
       path: 'applications',
-      name: 'console-application-list',
+      name: ROUTE_CONSOLE_APPLICATION_LIST,
       component: () => import('@/pages/console/application/List.vue')
     }
   ]
