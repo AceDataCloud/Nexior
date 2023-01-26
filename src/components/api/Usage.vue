@@ -100,9 +100,7 @@ export default defineComponent({
       deep: true
     }
   },
-  mounted() {
-    this.getApplications();
-  },
+  mounted() {},
   methods: {
     urlJoin,
     getApplications() {
@@ -112,7 +110,8 @@ export default defineComponent({
         })
         .then(({ data: data }: { data: IApplicationListResponse }) => {
           this.applications = data.items;
-        });
+        })
+        .catch((error) => {});
     }
   }
 });

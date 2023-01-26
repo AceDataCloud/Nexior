@@ -1,4 +1,4 @@
-import router, { ROUTE_INDEX } from '@/router';
+import router, { ROUTE_AUTH_LOGIN, ROUTE_INDEX } from '@/router';
 import store from '@/store';
 import axios, { AxiosInstance } from 'axios';
 import { getCookie } from 'typescript-cookie';
@@ -26,11 +26,12 @@ httpClient.interceptors.response.use(
   (error) => {
     if (error?.response?.status === 401) {
       store.dispatch('resetAuth');
-      setTimeout(() => {
-        router.push({
-          name: ROUTE_INDEX
-        });
-      }, 1000);
+      router.push({
+        name: ROUTE_AUTH_LOGIN,
+        query: {
+          redirect: router?.currentRoute?.value?.path
+        }
+      });
     }
     return Promise.reject(error);
   }
