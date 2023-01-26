@@ -99,6 +99,7 @@ interface IData {
   payWay: PayWay | undefined;
   order: IOrder | undefined;
   loading: boolean;
+  refreshTimer: number | undefined;
 }
 
 export default defineComponent({
@@ -112,7 +113,8 @@ export default defineComponent({
       payWay: PayWay.WechatPay,
       OrderState: OrderState,
       order: undefined,
-      loading: false
+      loading: false,
+      refreshTimer: undefined
     };
   },
   computed: {
@@ -127,6 +129,11 @@ export default defineComponent({
   mounted() {
     this.onFetchData();
     this.onCheck();
+  },
+  unmounted() {
+    if (this.refreshTimer) {
+      clearTimeout(this.refreshTimer);
+    }
   },
   methods: {
     onFetchData() {
@@ -147,7 +154,7 @@ export default defineComponent({
         .then(({ data: data }: { data: IOrderDetailResponse }) => {
           this.order = data;
           if (this.order.state === OrderState.PAID) {
-            setTimeout(() => {
+            this.refreshTimer = setTimeout(() => {
               if (this.redirect) {
                 window.location.replace(this.redirect?.toString());
               }

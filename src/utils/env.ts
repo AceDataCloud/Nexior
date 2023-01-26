@@ -1,7 +1,7 @@
 import { ENV_LOCAL, ENV_PRODUCTION, ENV_TEST } from '@/constants';
 
 const PATTERN_TEST_ENV = '.test.zhishuyun.com';
-const PATTERN_LOCAL_ENV = '.lcoal.zhishuyun.com';
+const PATTERN_LOCAL_ENV = '.local.zhishuyun.com';
 
 /**
  * Get env of App, return local, test, production
