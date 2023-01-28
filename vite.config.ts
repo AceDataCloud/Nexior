@@ -71,6 +71,20 @@ export default defineConfig({
     }
   },
   build: {
-    sourcemap: process.env.NODE_ENV !== 'production'
+    sourcemap: process.env.NODE_ENV !== 'production',
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('@fortawesome')) {
+              const part = id.toString().split('node_modules/')[1];
+              const parts = part.split('/');
+              return `${parts[0]}.${parts[1]}`;
+            }
+            return id.toString().split('node_modules/')[1].split('/')[0].toString();
+          }
+        }
+      }
+    }
   }
 });
