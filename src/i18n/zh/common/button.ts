@@ -19,5 +19,7 @@ export default {
   try: '测试',
   startForFree: '免费体验',
   apply: '申请',
-  refresh: '刷新'
+  refresh: '刷新',
+  pay: '支付',
+  repay: '继续支付'
 };
