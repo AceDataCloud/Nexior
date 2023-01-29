@@ -6,7 +6,7 @@
   </div>
   <div v-else-if="document.type === 'API'" class="item" @click="onClick">
     <el-link type="primary" class="link" :underline="false">
-      <span class="name">{{ document?.api?.title }}</span>
+      <span class="name">{{ document?.title || document?.api?.title }}</span>
     </el-link>
     <el-tag v-if="document?.api?.request?.method" type="" class="method" effect="dark">
       {{ document?.api?.request?.method }}
