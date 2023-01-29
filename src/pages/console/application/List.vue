@@ -12,8 +12,7 @@
             <el-table v-loading="loading" :data="applications" stripe>
               <el-table-column :label="$t('application.field.service')" width="200px">
                 <template #default="scope">
-                  <font-awesome-icon v-if="scope.row?.service?.icon" :icon="scope.row?.service?.icon" />
-                  <span style="margin-left: 10px">{{ scope.row.service?.title }}</span>
+                  <span>{{ scope.row.service?.title }}</span>
                 </template>
               </el-table-column>
               <el-table-column
@@ -28,7 +27,7 @@
                 width="100px"
                 class-name="text-center"
               />
-              <el-table-column :label="$t('application.field.apiKey')" class-name="api-key" width="320px">
+              <el-table-column :label="$t('application.field.apiKey')" class-name="api-key" width="330px">
                 <template #default="scope">
                   <span class="key">{{ scope.row.api_key }}</span>
                   <span class="copy">

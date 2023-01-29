@@ -26,7 +26,7 @@ import javascript from 'programming-languages-logos/src/javascript/javascript.sv
 import python from 'programming-languages-logos/src/python/python.svg';
 import java from 'programming-languages-logos/src/java/java.svg';
 import php from 'programming-languages-logos/src/php/php.svg';
-import { IApi, IForm } from '@/operators/api/models';
+import { IApi, IForm, IRequest } from '@/operators/api/models';
 import urlJoin from 'url-join';
 import Mustache from 'mustache';
 import pythonTemplate from '@/assets/templates/python.tpl';
@@ -51,6 +51,19 @@ type ILang = typeof LANG_PYTHON | typeof LANG_JAVA | typeof LANG_JAVASCRIPT | ty
 interface IData {
   lang: ILang | undefined;
   options: IOption[];
+}
+
+interface IRenderData {
+  headers: {
+    key: string;
+    value: string;
+  }[];
+  body: {
+    key: string;
+    value: string | object | number | object[];
+  }[];
+  method: IRequest['method'] | Lowercase<IRequest['method']> | Uppercase<IRequest['method']>;
+  url: string;
 }
 
 export default defineComponent({
@@ -140,8 +153,18 @@ export default defineComponent({
     },
     code(): string | undefined {
       let template = undefined;
+      let renderData: IRenderData = {
+        headers: this.headers,
+        body: this.body,
+        url: this.url,
+        method: this.method
+      };
       if (this.lang === LANG_PYTHON) {
         template = pythonTemplate;
+        renderData = {
+          ...renderData,
+          method: renderData.method.toLowerCase() as Lowercase<IRenderData['method']>
+        };
       } else if (this.lang === LANG_JAVASCRIPT) {
         template = javascriptTemplate;
       } else if (this.lang === LANG_PHP) {
@@ -149,13 +172,7 @@ export default defineComponent({
       } else if (this.lang === LANG_JAVA) {
         template = javaTemplate;
       }
-      if (template)
-        return Mustache.render(template, {
-          headers: this.headers,
-          body: this.body,
-          url: this.url,
-          method: this.method
-        });
+      if (template) return Mustache.render(template, renderData);
       return undefined;
     }
   },
