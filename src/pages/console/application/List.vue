@@ -105,7 +105,7 @@ export default defineComponent({
       loading: false,
       total: undefined,
       buying: false,
-      limit: 8,
+      limit: 10,
       form: {
         amount: 1
       },
@@ -176,7 +176,7 @@ export default defineComponent({
   color: #333;
 }
 .el-table {
-  min-height: calc(100vh - 270px);
+  min-height: calc(100vh - 300px);
   margin-bottom: 50px;
 }
 

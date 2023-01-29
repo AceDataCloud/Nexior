@@ -131,7 +131,7 @@ export default defineComponent({
       orders: [],
       loading: false,
       total: undefined,
-      limit: 8
+      limit: 10
     };
   },
   computed: {
@@ -191,7 +191,7 @@ export default defineComponent({
   color: #333;
 }
 .el-table {
-  min-height: calc(100vh - 270px);
+  min-height: calc(100vh - 300px);
   margin-bottom: 50px;
 }
 
