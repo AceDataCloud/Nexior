@@ -7,8 +7,9 @@ import i18n from './i18n/index';
 import './assets/scss/style.scss';
 import './assets/css/tailwind.css';
 import dayjs from './plugins/dayjs';
-import './plugins/font-awesome';
+// import './plugins/font-awesome';
 
+console.debug('start to create app');
 const app = createApp(App);
 
 app.use(router);
@@ -19,3 +20,4 @@ app.use(dayjs, {
   formatString: 'YYYY-MM-DD HH:mm:ss'
 });
 app.mount('#app');
+console.debug('app mounted');

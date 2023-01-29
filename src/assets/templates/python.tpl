@@ -14,5 +14,5 @@ payload = {
 {{/body}}
 }
 
-response = requests.{{{method}}}}(url, json=payload, headers=headers)
+response = requests.{{{method}}}(url, json=payload, headers=headers)
 print(response.text)

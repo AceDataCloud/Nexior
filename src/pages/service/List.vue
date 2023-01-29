@@ -33,39 +33,32 @@
       </el-row>
       <el-row v-else :gutter="15" class="services">
         <el-col v-for="(service, serviceIndex) in services" :key="serviceIndex" :lg="6" :md="8" :sm="12" :xs="24">
-          <el-card shadow="hover" class="service">
-            <div class="icon">
-              <font-awesome-icon v-if="service.icon" :icon="service.icon" />
-            </div>
-            <div class="title">{{ service.title }}</div>
-            <div class="price">
-              <p v-if="service && service.price && service.price > 0" class="nonfree">
-                ￥{{ service.price }} / {{ $t('service.unit.usage') }}
-              </p>
-              <p v-else class="free">
-                {{ $t('service.message.free') }}
-              </p>
-            </div>
-            <div class="introduction">
-              <p>
-                {{ service.introduction }}
-              </p>
-            </div>
-            <div class="operations">
-              <router-link
-                :to="{
-                  name: 'service-detail',
-                  params: {
-                    id: service.id
-                  }
-                }"
-              >
-                <el-button type="danger">
-                  {{ $t('service.button.learnMore') }}
-                </el-button>
-              </router-link>
-            </div>
-          </el-card>
+          <router-link
+            :to="{
+              name: 'service-detail',
+              params: {
+                id: service.id
+              }
+            }"
+          >
+            <el-card shadow="hover" class="service" :body-style="{ padding: 0 }">
+              <el-image class="thumb" :src="service?.thumbnail" />
+              <div class="title">{{ service.title }}</div>
+              <div class="price">
+                <p v-if="service && service.price && service.price > 0" class="nonfree">
+                  ￥{{ service.price }} / {{ $t('service.unit.usage') }}
+                </p>
+                <p v-else class="free">
+                  {{ $t('service.message.free') }}
+                </p>
+              </div>
+              <div class="description">
+                <p>
+                  {{ service.description }}
+                </p>
+              </div>
+            </el-card>
+          </router-link>
         </el-col>
       </el-row>
       <el-row>
@@ -149,6 +142,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .banner {
+  // display: none;
   height: calc(100vh - 60px);
   background-color: #111827;
   width: 100%;
@@ -221,11 +215,11 @@ $transition-duration: 0.5s;
 .services {
   padding: 50px 0;
   .service {
+    $hover-offset: 50px;
     width: 100%;
-    height: 280px;
+    height: 250px;
+    margin-bottom: 15px;
     border-radius: 30px !important;
-    margin: 10px auto;
-    padding: 30px 0;
     position: relative;
     transition: all $transition-duration;
 
@@ -256,17 +250,32 @@ $transition-duration: 0.5s;
       text-align: center;
     }
 
+    .thumb {
+      position: relative;
+      text-align: center;
+      width: 100%;
+      height: 150px;
+      top: 0px;
+      opacity: 1;
+      transition: all $transition-duration;
+    }
+
     .title {
       color: #666;
-      font-size: 14px;
+      font-size: 16px;
       text-align: center;
-      margin: 0;
+      margin-top: 10px;
       margin-bottom: 8px;
       padding: 0 20px;
       font-weight: bold;
+      transition: all $transition-duration;
+      position: relative;
+      top: 0;
     }
 
     .price {
+      position: relative;
+      top: 0;
       font-size: 16px;
       font-weight: bold;
       text-align: center;
@@ -277,10 +286,11 @@ $transition-duration: 0.5s;
       .free {
         color: #29c287;
       }
+      transition: all $transition-duration;
     }
 
-    .introduction {
-      padding: 5px 0;
+    .description {
+      padding: 5px 15px;
       text-align: center;
       margin: 0 auto;
       overflow: hidden;
@@ -291,25 +301,26 @@ $transition-duration: 0.5s;
       color: #9f9f9f;
       font-size: 12px;
       opacity: 0;
+      position: absolute;
+      bottom: 30px;
       word-break: break-all;
       transition: all $transition-duration;
       text-overflow: ellipsis;
       height: 42px;
     }
 
-    .operations {
-      opacity: 0;
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      transition: all $transition-duration;
-    }
-
     &:hover {
-      padding-top: 0;
-      .introduction {
+      .thumb {
+        top: -$hover-offset;
+        opacity: 0.5;
+      }
+      .title {
+        top: -$hover-offset;
+      }
+      .price {
+        top: -$hover-offset;
+      }
+      .description {
         opacity: 1;
       }
       .operations {
