@@ -69,6 +69,7 @@
                     {{ $t('order.title.wechatPay') }}
                   </div>
                   <div
+                    v-if="false"
                     :class="{
                       payway: true,
                       alipay: true,
