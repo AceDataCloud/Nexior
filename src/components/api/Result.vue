@@ -16,8 +16,8 @@
       <div class="item-body">
         <div v-if="response?.headers?.properties" class="headers">
           <h2 class="title">{{ $t('api.entity.responseHeaders') }}</h2>
-          <div v-for="(item, itemKey) in response?.headers?.properties" :key="itemKey">
-            <div class="property">
+          <div class="properties">
+            <div v-for="(item, itemKey) in response?.headers?.properties" :key="itemKey" class="property">
               <div class="info">
                 <span class="key">{{ itemKey }}</span>
                 <span class="type">{{ item?.type }}</span>
@@ -30,13 +30,15 @@
         </div>
         <div v-if="response?.body?.properties" class="body">
           <h2 class="title">{{ $t('api.entity.responseBody') }}</h2>
-          <div v-for="(item, itemKey) in response?.body?.properties" :key="itemKey" class="property">
-            <div class="info">
-              <span class="key">{{ itemKey }}</span>
-              <span class="type">{{ item?.type }}</span>
-            </div>
-            <div class="description">
-              {{ item?.title }}
+          <div class="properties">
+            <div v-for="(item, itemKey) in response?.body?.properties" :key="itemKey" class="property">
+              <div class="info">
+                <span class="key">{{ itemKey }}</span>
+                <span class="type">{{ item?.type }}</span>
+              </div>
+              <div class="description">
+                {{ item?.title }}
+              </div>
             </div>
           </div>
         </div>
@@ -124,40 +126,49 @@ export default defineComponent({
     .item-body {
       padding: 15px;
       .body,
-      .headers {
-        .property {
-          padding: 10px;
-          border-right: 1px solid rgba(0, 0, 0, 0.1);
-          border-left: 1px solid rgba(0, 0, 0, 0.1);
+      .headers,
+      .example {
+        .title {
+          font-size: 12px;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+        .properties {
+          margin-bottom: 10px;
+          .property {
+            padding: 10px;
+            border-right: 1px solid rgba(0, 0, 0, 0.1);
+            border-left: 1px solid rgba(0, 0, 0, 0.1);
 
-          &:first-of-type {
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-          }
-
-          &:not(:first-of-type):not(:last-of-type) {
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-          }
-
-          &:last-of-type {
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-          }
-          .info {
-            .key {
-              font-size: 14px;
-              font-weight: bold;
-              display: inline-block;
-              padding: 3px;
-              padding-left: 0;
+            &:first-of-type {
+              border-top: 1px solid rgba(0, 0, 0, 0.1);
+              border-top-left-radius: 10px;
+              border-top-right-radius: 10px;
             }
-            .type {
-              font-size: 14px;
-              display: inline-block;
-              padding: 3px;
+
+            &:not(:first-of-type):not(:last-of-type) {
+              border-top: 1px solid rgba(0, 0, 0, 0.1);
+            }
+
+            &:last-of-type {
+              border-top: 1px solid rgba(0, 0, 0, 0.1);
+              border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+              border-bottom-left-radius: 10px;
+              border-bottom-right-radius: 10px;
+            }
+            .info {
+              .key {
+                font-size: 14px;
+                font-weight: bold;
+                display: inline-block;
+                padding: 3px;
+                padding-left: 0;
+              }
+              .type {
+                font-size: 14px;
+                display: inline-block;
+                padding: 3px;
+              }
             }
           }
         }
