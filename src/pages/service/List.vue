@@ -138,7 +138,8 @@ export default defineComponent({
       serviceOperator
         .getAll({
           limit: this.limit,
-          offset: (this.page - 1) * this.limit
+          offset: (this.page - 1) * this.limit,
+          ordering: 'rank'
         })
         .then(({ data: data }: { data: IServiceListResponse }) => {
           this.services = data.items;

@@ -5,6 +5,7 @@ import { IService, IServiceDetailResponse, IServiceListResponse } from './models
 export interface IServiceQuery {
   limit: number;
   offset: number;
+  ordering: string;
 }
 
 class ServiceOperator {
