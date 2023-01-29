@@ -20,6 +20,7 @@ export interface IOrder {
   application_id?: string;
   wechatpay_url?: string;
   alipay_url?: string;
+  pay_way?: string;
 }
 
 export interface IOrderListResponse {

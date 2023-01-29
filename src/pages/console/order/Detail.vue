@@ -11,7 +11,7 @@
           <el-card shadow="hover">
             <el-row>
               <el-col :span="12" :offset="6">
-                <div v-if="loading">
+                <div v-if="loading" class="pt-5">
                   <el-skeleton />
                 </div>
                 <div v-else class="order">
@@ -29,8 +29,19 @@
                     <el-descriptions-item :label="$t('order.field.createdAt')">
                       {{ $dayjs.format(order?.created_at) }}
                     </el-descriptions-item>
-                    <el-descriptions-item v-if="order?.price" :label="$t('order.field.price')">
-                      <span class="price">¥{{ order?.price?.toFixed(2) }}</span>
+                    <el-descriptions-item :label="$t('order.field.price')">
+                      <span v-if="order?.price && order?.price > 0" class="price unfree">
+                        ¥{{ order?.price?.toFixed(2) }}
+                      </span>
+                      <span v-else class="price free"> {{ $t('order.message.free') }} </span>
+                    </el-descriptions-item>
+                    <el-descriptions-item v-if="order?.pay_way" :label="$t('order.field.payWay')">
+                      <span v-if="order?.pay_way === PayWay.WechatPay">
+                        {{ $t('order.title.wechatPay') }}
+                      </span>
+                      <span v-if="order?.pay_way === PayWay.AliPay">
+                        {{ $t('order.title.aliPay') }}
+                      </span>
                     </el-descriptions-item>
                   </el-descriptions>
                 </div>
@@ -45,35 +56,40 @@
             <el-row v-if="order?.state === OrderState.PENDING || order?.state === OrderState.FAILED">
               <el-col :span="12" :offset="6">
                 <el-divider border-style="dashed" />
-                <div class="payways">
+                <div v-if="order.price && order.price > 0 && order.pay_way !== undefined" class="payways mb-4">
                   <div
                     :class="{
                       payway: true,
-                      wechat: true,
+                      wechatpay: true,
                       active: payWay === PayWay.WechatPay
                     }"
+                    @click="payWay = PayWay.WechatPay"
                   >
-                    <span class="payicon wechat"></span>
-                    {{ $t('order.title.payWayWechat') }}
+                    <span class="payicon wechatpay"></span>
+                    {{ $t('order.title.wechatPay') }}
+                  </div>
+                  <div
+                    :class="{
+                      payway: true,
+                      alipay: true,
+                      active: payWay === PayWay.AliPay
+                    }"
+                    @click="payWay = PayWay.AliPay"
+                  >
+                    <span class="payicon alipay"></span>
+                    {{ $t('order.title.aliPay') }}
                   </div>
                 </div>
-              </el-col>
-            </el-row>
-            <el-row v-if="order?.state === OrderState.PENDING || order?.state === OrderState.FAILED">
-              <el-col :span="12" :offset="6">
-                <el-row class="paycodes">
-                  <el-col :span="12">
-                    <div class="paycode wechat">
-                      <qr-code v-if="order?.wechatpay_url" :value="order?.wechatpay_url" :size="200" class="m-auto" />
-                      <p class="help-text">{{ $t('order.message.wechatPayHelp') }}</p>
-                    </div>
-                  </el-col>
-                  <el-col :span="12">
-                    <div class="help-img">
-                      <img src="https://midas.gtimg.cn/enterprise/images/ep_sys_wx_tip.jpg" />
-                    </div>
-                  </el-col>
-                </el-row>
+                <div v-if="!order?.pay_way">
+                  <el-button :loading="prepaying" type="primary" size="large" class="btn-pay" @click="onPay">{{
+                    $t('common.button.pay')
+                  }}</el-button>
+                </div>
+                <div v-else>
+                  <el-button type="primary" size="large" class="btn-repay" @click="onRepay">{{
+                    $t('common.button.repay')
+                  }}</el-button>
+                </div>
               </el-col>
             </el-row>
           </el-card>
@@ -81,13 +97,24 @@
       </el-row>
     </el-col>
   </el-row>
+  <pay-order v-if="order" v-model="order" :visible="paying" @hide="paying = false" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { IOrder, IOrderDetailResponse, orderOperator, OrderState } from '@/operators/order';
-import QrCode from 'qrcode.vue';
-import { ElRow, ElCol, ElCard, ElSkeleton, ElDivider, ElAlert, ElDescriptions, ElDescriptionsItem } from 'element-plus';
+import {
+  ElRow,
+  ElCol,
+  ElCard,
+  ElSkeleton,
+  ElDivider,
+  ElAlert,
+  ElDescriptions,
+  ElDescriptionsItem,
+  ElButton
+} from 'element-plus';
+import PayOrder from '@/components/order/Pay.vue';
 
 enum PayWay {
   WechatPay = 'WechatPay',
@@ -100,13 +127,14 @@ interface IData {
   payWay: PayWay | undefined;
   order: IOrder | undefined;
   loading: boolean;
-  refreshTimer: number | undefined;
+  paying: boolean;
+  prepaying: boolean;
 }
 
 export default defineComponent({
   name: 'ConsoleOrderDetail',
   components: {
-    QrCode,
+    ElButton,
     ElRow,
     ElCol,
     ElCard,
@@ -114,7 +142,8 @@ export default defineComponent({
     ElDivider,
     ElAlert,
     ElDescriptions,
-    ElDescriptionsItem
+    ElDescriptionsItem,
+    PayOrder
   },
   data(): IData {
     return {
@@ -123,7 +152,8 @@ export default defineComponent({
       OrderState: OrderState,
       order: undefined,
       loading: false,
-      refreshTimer: undefined
+      paying: false,
+      prepaying: false
     };
   },
   computed: {
@@ -134,21 +164,29 @@ export default defineComponent({
       return this.$route.query?.redirect;
     }
   },
-  watch: {},
+  watch: {
+    order: {
+      handler(val) {
+        if (val?.state === OrderState.PAID) {
+          setTimeout(() => {
+            if (this.redirect) {
+              window.location.replace(this.redirect?.toString());
+            }
+          }, 2000);
+          return;
+        }
+      },
+      deep: true
+    }
+  },
   mounted() {
     this.onFetchData();
-    this.onCheck();
-  },
-  unmounted() {
-    if (this.refreshTimer) {
-      clearTimeout(this.refreshTimer);
-    }
   },
   methods: {
     onFetchData() {
       this.loading = true;
       orderOperator
-        .get(this.id)
+        .refresh(this.id)
         .then(({ data: data }: { data: IOrderDetailResponse }) => {
           this.order = data;
           this.loading = false;
@@ -157,27 +195,24 @@ export default defineComponent({
           this.loading = false;
         });
     },
-    onCheck() {
+    onRepay() {
+      this.paying = true;
+    },
+    onPay() {
+      this.prepaying = true;
       orderOperator
-        .refresh(this.id)
+        .pay(this.id, {
+          pay_way: this.payWay
+        })
         .then(({ data: data }: { data: IOrderDetailResponse }) => {
+          this.prepaying = false;
           this.order = data;
-          if (this.order.state === OrderState.PAID) {
-            this.refreshTimer = setTimeout(() => {
-              if (this.redirect) {
-                window.location.replace(this.redirect?.toString());
-              }
-            }, 2000);
-            return;
+          if (this.order.price && this.order.price > 0) {
+            this.paying = true;
           }
-          setTimeout(() => {
-            this.onCheck();
-          }, 2000);
         })
         .catch(() => {
-          setTimeout(() => {
-            this.onCheck();
-          }, 2000);
+          this.prepaying = false;
         });
     }
   }
@@ -204,6 +239,12 @@ export default defineComponent({
       .price {
         font-size: 20px;
         font-weight: bold;
+        &.unfree {
+          color: #ff5441;
+        }
+        &.free {
+          color: #29c287;
+        }
       }
     }
     .payways {
@@ -227,7 +268,7 @@ export default defineComponent({
         height: 20px;
         margin-top: 2px;
         display: inline-block;
-        &.wechat {
+        &.wechatpay {
           position: relative;
           top: 3px;
           width: 22px;
@@ -240,21 +281,8 @@ export default defineComponent({
       }
     }
 
-    .paycodes {
-      padding: 30px 0;
-      .wechat {
-        .help-text {
-          display: block;
-          background-color: #00c800;
-          color: white;
-          font-size: 14px;
-          height: 35px;
-          width: 240px;
-          text-align: center;
-          line-height: 35px;
-          margin: 10px auto 0 auto;
-        }
-      }
+    .btn-pay {
+      width: 150px;
     }
   }
 }

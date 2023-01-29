@@ -34,6 +34,10 @@ class OrderService {
     return await httpClient.post(`/${this.key}/${id}/refresh/`);
   }
 
+  async pay(id: string, data: IOrder): Promise<AxiosResponse<IOrderDetailResponse>> {
+    return await httpClient.post(`/${this.key}/${id}/pay/`, data);
+  }
+
   async delete(id: string): Promise<AxiosResponse<null>> {
     return await httpClient.delete(`/${this.key}/${id}`);
   }
