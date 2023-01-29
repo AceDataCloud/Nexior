@@ -87,6 +87,7 @@
 import { defineComponent } from 'vue';
 import { IOrder, IOrderDetailResponse, orderOperator, OrderState } from '@/operators/order';
 import QrCode from 'qrcode.vue';
+import { ElRow, ElCol, ElCard, ElSkeleton, ElDivider, ElAlert, ElDescriptions, ElDescriptionsItem } from 'element-plus';
 
 enum PayWay {
   WechatPay = 'WechatPay',
@@ -105,7 +106,15 @@ interface IData {
 export default defineComponent({
   name: 'ConsoleOrderDetail',
   components: {
-    QrCode
+    QrCode,
+    ElRow,
+    ElCol,
+    ElCard,
+    ElSkeleton,
+    ElDivider,
+    ElAlert,
+    ElDescriptions,
+    ElDescriptionsItem
   },
   data(): IData {
     return {

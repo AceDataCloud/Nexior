@@ -13,12 +13,17 @@
 <script lang="ts">
 import TopHeader from '@/components/common/TopHeader.vue';
 import BottomFooter from '@/components/common/BottomFooter.vue';
+import { ElContainer, ElMain, ElFooter, ElHeader } from 'element-plus';
 
 export default {
   name: 'LayoutService',
   components: {
     TopHeader,
-    BottomFooter
+    BottomFooter,
+    ElContainer,
+    ElMain,
+    ElFooter,
+    ElHeader
   }
 };
 </script>

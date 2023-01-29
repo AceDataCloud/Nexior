@@ -58,7 +58,12 @@
             :allow-create="true"
             :placeholder="$t('common.title.placeholderOfSelect')"
           >
-            <el-option :label="appliedApplication?.api_key" :value="appliedApplication?.api_key" class="select-option">
+            <el-option
+              v-if="appliedApplication?.api_key"
+              :label="appliedApplication?.api_key"
+              :value="appliedApplication.api_key"
+              class="select-option"
+            >
               <span class="select-option-main">{{ appliedApplication?.api_key }}</span>
               <span class="select-option-description">{{ $t('application.message.yourApplication') }}</span>
             </el-option>
@@ -86,6 +91,7 @@ import { ISchema } from '@/operators/api/models';
 import { IService } from '@/operators/service/models';
 import { IApplication } from '@/operators';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { ElPopover, ElInput, ElSelect, ElButton, ElTooltip, ElOption } from 'element-plus';
 
 interface IData {
   value: {
@@ -96,7 +102,13 @@ interface IData {
 export default defineComponent({
   name: 'ApiForm',
   components: {
-    FontAwesomeIcon
+    FontAwesomeIcon,
+    ElPopover,
+    ElInput,
+    ElSelect,
+    ElButton,
+    ElTooltip,
+    ElOption
   },
   props: {
     schema: {

@@ -53,6 +53,7 @@
 import { defineComponent } from 'vue';
 import { IResponse } from '@/operators/api/models';
 import CodeSnippet from '../common/CodeSnippet.vue';
+import { ElCollapse, ElCollapseItem, ElTag } from 'element-plus';
 
 interface IData {
   value: {
@@ -63,7 +64,10 @@ interface IData {
 export default defineComponent({
   name: 'ApiResult',
   components: {
-    CodeSnippet
+    CodeSnippet,
+    ElCollapse,
+    ElCollapseItem,
+    ElTag
   },
   props: {
     responses: {

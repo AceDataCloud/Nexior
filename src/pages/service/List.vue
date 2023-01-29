@@ -9,14 +9,14 @@
           {{ $t('service.message.indexSubtitle') }}
         </h3>
         <div class="operations">
-          <el-button type="danger" class="btn-apply">
+          <el-button type="danger" class="btn-apply" @click="onApply">
             {{ $t('common.button.startForFree') }}
           </el-button>
         </div>
       </div>
     </el-col>
   </el-row>
-  <el-row>
+  <el-row id="services">
     <el-col :span="20" :offset="2">
       <el-row v-if="loading" :gutter="15" class="services">
         <el-col v-for="_ in 8" :key="_" :lg="6" :md="8" :sm="12" :xs="24">
@@ -45,12 +45,7 @@
               <el-image class="thumb" :src="service?.thumbnail" />
               <div class="title">{{ service.title }}</div>
               <div class="price">
-                <p v-if="service && service.price && service.price > 0" class="nonfree">
-                  ￥{{ service.price }} / {{ $t('service.unit.usage') }}
-                </p>
-                <p v-else class="free">
-                  {{ $t('service.message.free') }}
-                </p>
+                <service-price :price="service?.price" />
               </div>
               <div class="description">
                 <p>
@@ -75,8 +70,9 @@
 <script lang="ts">
 import { serviceOperator, IService, IServiceListResponse } from '@/operators';
 import { defineComponent } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Pagination from '@/components/common/Pagination.vue';
+import { ElRow, ElCol, ElButton, ElCard, ElSkeleton, ElImage, ElSkeletonItem } from 'element-plus';
+import ServicePrice from '@/components/service/Price.vue';
 
 interface IData {
   services: IService[];
@@ -87,8 +83,15 @@ interface IData {
 export default defineComponent({
   name: 'ServiceList',
   components: {
-    FontAwesomeIcon,
-    Pagination
+    Pagination,
+    ElRow,
+    ElCol,
+    ElButton,
+    ElCard,
+    ElSkeleton,
+    ElImage,
+    ElSkeletonItem,
+    ServicePrice
   },
   data(): IData {
     return {
@@ -114,6 +117,13 @@ export default defineComponent({
     this.onFetchData();
   },
   methods: {
+    onApply() {
+      window.scrollTo({
+        top: document.getElementById('services')?.offsetTop,
+        left: 0,
+        behavior: 'smooth'
+      });
+    },
     onPageChange(page: number) {
       this.$router.push({
         name: this.$route.name?.toString(),
@@ -280,7 +290,7 @@ $transition-duration: 0.5s;
       font-weight: bold;
       text-align: center;
       margin: 0;
-      .nonfree {
+      .unfree {
         color: #ff5441;
       }
       .free {

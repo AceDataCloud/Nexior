@@ -23,13 +23,20 @@
 import TopHeader from '@/components/common/TopHeader.vue';
 import BottomFooter from '@/components/common/BottomFooter.vue';
 import DocumentList from '@/components/document/List.vue';
+import { ElContainer, ElMain, ElFooter, ElHeader, ElRow, ElCol } from 'element-plus';
 
 export default {
   name: 'LayoutCourse',
   components: {
     TopHeader,
     BottomFooter,
-    DocumentList
+    DocumentList,
+    ElContainer,
+    ElMain,
+    ElFooter,
+    ElHeader,
+    ElRow,
+    ElCol
   }
 };
 </script>

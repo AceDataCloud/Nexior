@@ -22,9 +22,15 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { ElContainer, ElRow, ElCol } from 'element-plus';
 
 export default defineComponent({
   name: 'BottomFooter',
+  components: {
+    ElContainer,
+    ElRow,
+    ElCol
+  },
   data() {
     return {};
   },

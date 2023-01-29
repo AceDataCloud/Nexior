@@ -5,9 +5,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { ElAlert } from 'element-plus';
 
 export default defineComponent({
   name: 'SuccessInfo',
+  components: {
+    ElAlert
+  },
   props: {
     show: {
       type: Boolean,

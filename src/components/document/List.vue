@@ -16,6 +16,7 @@ import { defineComponent } from 'vue';
 import { IDocument, IDocumentListResponse } from '@/operators/document/models';
 import DocumentListItem from './ListItem.vue';
 import { documentOperator } from '@/operators/document';
+import { ElSkeleton } from 'element-plus';
 
 interface IData {
   documents: IDocument[];
@@ -27,7 +28,8 @@ interface IData {
 export default defineComponent({
   name: 'DocumentList',
   components: {
-    DocumentListItem
+    DocumentListItem,
+    ElSkeleton
   },
   data(): IData {
     return {

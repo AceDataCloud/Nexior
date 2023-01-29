@@ -8,7 +8,7 @@
     <el-link type="primary" class="link" :underline="false">
       <span class="name">{{ document?.api?.title }}</span>
     </el-link>
-    <el-tag v-if="document?.api?.request?.method" type="primary" class="method" effect="dark">
+    <el-tag v-if="document?.api?.request?.method" type="" class="method" effect="dark">
       {{ document?.api?.request?.method }}
     </el-tag>
   </div>
@@ -18,9 +18,14 @@
 import { defineComponent } from 'vue';
 import { IDocument } from '@/operators/document/models';
 import { ROUTE_DOCUMENT_DETAIL } from '@/router';
+import { ElLink, ElTag } from 'element-plus';
 
 export default defineComponent({
   name: 'ApiListItem',
+  components: {
+    ElLink,
+    ElTag
+  },
   props: {
     document: {
       type: Object as () => IDocument,

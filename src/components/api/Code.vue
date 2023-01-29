@@ -35,6 +35,7 @@ import phpTemplate from '@/assets/templates/php.tpl';
 import javaTemplate from '@/assets/templates/java.tpl';
 import CodeSnippet from '../common/CodeSnippet.vue';
 import queryString from 'query-string';
+import { ElImage } from 'element-plus';
 
 interface IOption {
   name: ILang;
@@ -69,7 +70,8 @@ interface IRenderData {
 export default defineComponent({
   name: 'ApiCode',
   components: {
-    CodeSnippet
+    CodeSnippet,
+    ElImage
   },
   props: {
     api: {

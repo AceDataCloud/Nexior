@@ -43,9 +43,32 @@ import { defineComponent } from 'vue';
 import defaultAvatar from '@/assets/images/avatar.png';
 import { getAuthBaseUrl } from '@/utils';
 import { ROUTE_AUTH_LOGIN, ROUTE_CONSOLE_ROOT, ROUTE_INDEX } from '@/router';
-
+import {
+  ElContainer,
+  ElAside,
+  ElMain,
+  ElCol,
+  ElRow,
+  ElDropdown,
+  ElMenu,
+  ElMenuItem,
+  ElDropdownItem,
+  ElButton
+} from 'element-plus';
 export default defineComponent({
   name: 'TopHeader',
+  components: {
+    ElContainer,
+    ElAside,
+    ElMain,
+    ElCol,
+    ElRow,
+    ElDropdown,
+    ElMenu,
+    ElMenuItem,
+    ElDropdownItem,
+    ElButton
+  },
   data() {
     return {
       defaultAvatar

@@ -34,6 +34,7 @@
 import { defineComponent } from 'vue';
 import { Clock, User, Postcard } from '@element-plus/icons-vue';
 import { ROUTE_CONSOLE_APPLICATION_LIST, ROUTE_CONSOLE_ORDER_LIST, ROUTE_INDEX } from '@/router';
+import { ElRow, ElCol, ElIcon } from 'element-plus';
 
 interface ILink {
   key: string;
@@ -51,7 +52,10 @@ export default defineComponent({
   components: {
     Clock,
     Postcard,
-    User
+    User,
+    ElRow,
+    ElCol,
+    ElIcon
   },
   data(): IData {
     return {
