@@ -37,6 +37,7 @@
                   v-model="value[itemKey?.toString()]"
                   :placeholder="$t('common.title.placeholderOfInput')"
                   class="inline-block w-4/5"
+                  @focus="$emit('refresh-applications')"
                 />
               </template>
             </el-popover>
