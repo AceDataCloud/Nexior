@@ -12,7 +12,7 @@
             <el-table v-loading="loading" :data="applications" stripe>
               <el-table-column :label="$t('application.field.service')" width="200px">
                 <template #default="scope">
-                  <span>{{ scope.row.service?.title }}</span>
+                  <span>{{ scope.row?.service?.title }}</span>
                 </template>
               </el-table-column>
               <el-table-column
@@ -29,19 +29,19 @@
               />
               <el-table-column :label="$t('application.field.apiKey')" class-name="api-key" width="330px">
                 <template #default="scope">
-                  <span class="key">{{ scope.row.api_key }}</span>
+                  <span class="key">{{ scope?.row?.api_key }}</span>
                   <span class="copy">
-                    <copy-to-clipboard :content="scope.row.api_key" />
+                    <copy-to-clipboard :content="scope?.row?.api_key" />
                   </span>
                 </template>
               </el-table-column>
               <el-table-column>
                 <template #default="scope">
                   <div class="float-right">
-                    <el-button v-if="false" @click="onGoDocument(scope.row)">
+                    <el-button v-if="false" @click="onGoDocument(scope?.row)">
                       {{ $t('application.button.goDocument') }}
                     </el-button>
-                    <el-button type="primary" @click="onBuyMore(scope.row)">
+                    <el-button type="primary" @click="onBuyMore(scope?.row)">
                       {{ $t('application.button.buyMore') }}
                     </el-button>
                   </div>
@@ -66,10 +66,10 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { applicationOperator, IApplication, IApplicationListResponse, IService } from '@/operators';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import CreateOrder from '@/components/order/Create.vue';
+import { ElTable, ElRow, ElCol, ElTableColumn, ElButton, ElCard } from 'element-plus';
 
 interface IData {
   applications: IApplication[];
@@ -89,10 +89,15 @@ interface IData {
 export default defineComponent({
   name: 'ConsoleApplicationList',
   components: {
-    FontAwesomeIcon,
     Pagination,
     CopyToClipboard,
-    CreateOrder
+    CreateOrder,
+    ElTable,
+    ElRow,
+    ElCol,
+    ElTableColumn,
+    ElButton,
+    ElCard
   },
   data(): IData {
     return {
@@ -180,7 +185,6 @@ export default defineComponent({
   .api-key {
     .copy {
       cursor: pointer;
-      margin: 0 10px;
     }
   }
 }

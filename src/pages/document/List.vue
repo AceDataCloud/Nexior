@@ -11,12 +11,17 @@ import { IDocument, IDocumentListResponse } from '@/operators/document/models';
 import { documentOperator } from '@/operators/document/operator';
 import { ROUTE_DOCUMENT_DETAIL } from '@/router';
 import { defineComponent } from 'vue';
+import { ElSkeleton, ElDivider } from 'element-plus';
 
 interface IData {
   documents: IDocument[];
 }
 export default defineComponent({
   name: 'DocumentIndex',
+  components: {
+    ElSkeleton,
+    ElDivider
+  },
   data(): IData {
     return {
       documents: []

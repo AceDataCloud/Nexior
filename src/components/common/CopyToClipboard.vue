@@ -9,11 +9,13 @@
 import { defineComponent } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import copy from 'copy-to-clipboard';
+import { ElTooltip } from 'element-plus';
 
 export default defineComponent({
   name: 'CopyToClipboard',
   components: {
-    FontAwesomeIcon
+    FontAwesomeIcon,
+    ElTooltip
   },
   props: {
     content: {

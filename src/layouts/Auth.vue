@@ -6,9 +6,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { ElContainer, ElMain } from 'element-plus';
 
 export default defineComponent({
-  name: 'LayoutAuth'
+  name: 'LayoutAuth',
+  components: {
+    ElContainer,
+    ElMain
+  }
 });
 </script>
 

@@ -10,11 +10,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import VueMarkdown from './VueMarkdown.vue';
+import { ElDivider, ElSkeleton } from 'element-plus';
 
 export default defineComponent({
   name: 'ApiCode',
   components: {
-    VueMarkdown
+    VueMarkdown,
+    ElDivider,
+    ElSkeleton
   },
   props: {
     content: {

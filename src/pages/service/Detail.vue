@@ -11,7 +11,7 @@
               {{ service.description }}
             </p>
             <div class="price">
-              <p v-if="service && service.price && service.price > 0" class="nonfree">
+              <p v-if="service && service.price && service.price > 0" class="unfree">
                 <span class="value">￥{{ service.price }}</span>
                 <span class="unit"> / {{ $t('service.unit.usage') }}</span>
               </p>
@@ -60,6 +60,7 @@ import { apiOperator } from '@/operators/api/operator';
 import { IApi, IApiListResponse } from '@/operators/api/models';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { ROUTE_CONSOLE_APPLICATION_LIST } from '@/router';
+import { ElCol, ElRow, ElButton, ElCard } from 'element-plus';
 
 interface IData {
   service: IService | undefined;
@@ -72,7 +73,11 @@ interface IData {
 export default defineComponent({
   name: 'ServiceDetail',
   components: {
-    MarkdownRenderer
+    MarkdownRenderer,
+    ElCol,
+    ElRow,
+    ElButton,
+    ElCard
   },
   data(): IData {
     return {
@@ -179,7 +184,7 @@ export default defineComponent({
 
       .price {
         margin: 0;
-        .nonfree {
+        .unfree {
           .value {
             font-weight: bold;
             color: #ff5441;
@@ -291,7 +296,7 @@ export default defineComponent({
       }
       .price {
         margin: 0;
-        .nonfree {
+        .unfree {
           .value {
             font-weight: bold;
             color: #ff5441;

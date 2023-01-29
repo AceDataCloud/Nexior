@@ -10,11 +10,15 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Navigator from '@/components/console/Navigator.vue';
+import { ElContainer, ElMain, ElAside } from 'element-plus';
 
 export default defineComponent({
   name: 'LayoutConsole',
   components: {
-    Navigator
+    Navigator,
+    ElContainer,
+    ElMain,
+    ElAside
   }
 });
 </script>

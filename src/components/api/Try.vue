@@ -21,11 +21,14 @@ import { defineComponent } from 'vue';
 import axios, { Method } from 'axios';
 import urlJoin from 'url-join';
 import CodeSnippet from '../common/CodeSnippet.vue';
+import { ElButton, ElSkeleton } from 'element-plus';
 
 export default defineComponent({
   name: 'ApiTry',
   components: {
-    CodeSnippet
+    CodeSnippet,
+    ElButton,
+    ElSkeleton
   },
   props: {
     api: {

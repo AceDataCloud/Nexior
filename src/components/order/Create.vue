@@ -5,11 +5,14 @@
         {{ application?.service?.title }}
       </el-form-item>
       <el-form-item :label="$t('application.field.amount')">
-        <el-input-number v-model="form.amount" :min="1" :max="10" controls-position="right" />
+        <el-input-number v-model="form.amount" :min="1" :max="10000" controls-position="right" />
+      </el-form-item>
+      <el-form-item :label="$t('service.field.price')">
+        <service-price :price="application?.service?.price" />
       </el-form-item>
       <el-divider />
       <el-form-item :label="$t('application.field.shouldPayPrice')">
-        <span class="price">¥{{ getPrice().toFixed(2) }}</span>
+        <span :class="{ price: true, unfree: price > 0 }">¥{{ price.toFixed(2) }}</span>
       </el-form-item>
     </el-form>
     <template #footer>
@@ -28,9 +31,20 @@ import { IApplication, IOrderDetailResponse, orderOperator } from '@/operators';
 import { defineComponent } from 'vue';
 import { ElMessage } from 'element-plus';
 import { ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
+import { ElDialog, ElForm, ElFormItem, ElButton, ElInputNumber, ElDivider } from 'element-plus';
+import ServicePrice from '@/components/service/Price.vue';
 
 export default defineComponent({
   name: 'CreateOrderDialog',
+  components: {
+    ElDialog,
+    ElForm,
+    ElFormItem,
+    ElButton,
+    ElInputNumber,
+    ElDivider,
+    ServicePrice
+  },
   props: {
     application: {
       type: Object as () => IApplication,
@@ -46,12 +60,18 @@ export default defineComponent({
   data() {
     return {
       form: {
-        amount: 1
+        amount: 1000
       },
       creating: false
     };
   },
-  mounted() {},
+  computed: {
+    price() {
+      if (this.application.service?.price && this.form.amount)
+        return this.form.amount * this.application.service?.price;
+      return 0;
+    }
+  },
   methods: {
     onCreateOrder() {
       if (!this.application?.id) {
@@ -77,11 +97,6 @@ export default defineComponent({
           ElMessage.error(this.$t('order.message.createFailed'));
           this.creating = false;
         });
-    },
-    getPrice() {
-      if (this.application.service?.price && this.form.amount)
-        return this.form.amount * this.application.service?.price;
-      return 0;
     }
   }
 });
@@ -91,5 +106,8 @@ export default defineComponent({
 .price {
   font-size: 20px;
   font-weight: bold;
+  .unfree {
+    color: #ff5441;
+  }
 }
 </style>

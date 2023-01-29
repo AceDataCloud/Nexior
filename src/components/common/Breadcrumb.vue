@@ -8,9 +8,14 @@
 </template>
 
 <script lang="ts">
+import { ElBreadcrumb, ElBreadcrumbItem } from 'element-plus';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
+  components: {
+    ElBreadcrumb,
+    ElBreadcrumbItem
+  },
   data() {
     return {
       items: this.$route.matched

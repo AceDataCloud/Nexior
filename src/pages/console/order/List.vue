@@ -102,6 +102,7 @@ import { defineComponent } from 'vue';
 import { IOrder, IOrderListResponse, orderOperator, OrderState } from '@/operators/order';
 import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
+import { ElRow, ElCol, ElTable, ElTableColumn, ElButton, ElTag, ElCard } from 'element-plus';
 
 interface IData {
   orders: IOrder[];
@@ -115,7 +116,14 @@ export default defineComponent({
   name: 'ConsoleOrderList',
   components: {
     Pagination,
-    CopyToClipboard
+    CopyToClipboard,
+    ElRow,
+    ElCol,
+    ElTable,
+    ElTableColumn,
+    ElButton,
+    ElTag,
+    ElCard
   },
   data(): IData {
     return {

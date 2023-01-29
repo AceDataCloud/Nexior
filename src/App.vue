@@ -8,7 +8,6 @@
 import { defineComponent } from 'vue';
 import { ElConfigProvider } from 'element-plus';
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs';
-import { registerIcons } from './plugins/font-awesome';
 
 export default defineComponent({
   components: {

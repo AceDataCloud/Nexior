@@ -14,6 +14,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { ElPagination } from 'element-plus';
 
 interface IData {
   loaded: boolean;
@@ -21,6 +22,9 @@ interface IData {
 
 export default defineComponent({
   name: 'Pagination',
+  components: {
+    ElPagination
+  },
   props: {
     total: {
       type: Number,
@@ -50,7 +54,7 @@ export default defineComponent({
     }, 1000);
   },
   methods: {
-    onPageChange(val: number, oldVal: number): void {
+    onPageChange(val: number): void {
       // if not finished loading, ignore the wrong emit event
       if (!this.loaded) {
         return;

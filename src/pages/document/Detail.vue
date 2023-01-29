@@ -8,8 +8,13 @@
     </div>
   </div>
   <div v-if="document?.type === 'API' && document?.api" class="right">
-    <api-code :form="form" :api="document?.api" />
-    <api-try :form="form" :api="document?.api" />
+    <div v-if="loading" class="p-5">
+      <el-skeleton />
+    </div>
+    <div v-else>
+      <api-code :form="form" :api="document?.api" />
+      <api-try :form="form" :api="document?.api" />
+    </div>
   </div>
 </template>
 
@@ -21,6 +26,7 @@ import ApiCode from '@/components/api/Code.vue';
 import { documentOperator, IDocument, IDocumentDetailResponse } from '@/operators';
 import { IForm } from '@/operators/api/models';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
+import { ElSkeleton } from 'element-plus';
 
 export interface IData {
   document: IDocument | undefined;
@@ -34,6 +40,7 @@ export default defineComponent({
     ApiUsage,
     ApiTry,
     ApiCode,
+    ElSkeleton,
     MarkdownRenderer
   },
   data(): IData {

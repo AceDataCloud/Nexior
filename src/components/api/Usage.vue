@@ -9,7 +9,7 @@
       {{ api?.title }}
     </div>
     <div class="url">
-      <el-tag class="method" size="mini" type="primary" effect="dark">{{ api?.request?.method }}</el-tag>
+      <el-tag class="method" effect="dark">{{ api?.request?.method }}</el-tag>
       <span v-if="api?.endpoint && api?.path" class="endpoint">{{ urlJoin(api?.endpoint, api?.path) }}</span>
     </div>
     <div class="introduction">
@@ -59,6 +59,7 @@ import ApiResult from './Result.vue';
 import urlJoin from 'url-join';
 import { applicationOperator } from '@/operators/application/operator';
 import { IApplication, IApplicationListResponse } from '@/operators/application/models';
+import { ElSkeleton, ElDivider, ElTag } from 'element-plus';
 
 export interface IData {
   formValue: IForm;
@@ -69,7 +70,10 @@ export default defineComponent({
   name: 'ApiUsage',
   components: {
     ApiForm,
-    ApiResult
+    ApiResult,
+    ElSkeleton,
+    ElDivider,
+    ElTag
   },
   props: {
     api: {
