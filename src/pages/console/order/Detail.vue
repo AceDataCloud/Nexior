@@ -56,7 +56,7 @@
             <el-row v-if="order?.state === OrderState.PENDING || order?.state === OrderState.FAILED">
               <el-col :span="12" :offset="6">
                 <el-divider border-style="dashed" />
-                <div v-if="order.price && order.price > 0 && order.pay_way !== undefined" class="payways mb-4">
+                <div v-if="order.price && order.price > 0 && order.pay_way === undefined" class="payways mb-4">
                   <div
                     :class="{
                       payway: true,
