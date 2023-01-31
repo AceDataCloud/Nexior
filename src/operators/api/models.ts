@@ -1,3 +1,4 @@
+import { IDocument } from '../document';
 import { IService } from '../service';
 
 export interface IForm {
@@ -47,15 +48,18 @@ export interface IApi {
   id: string;
   path: string;
   endpoint: string;
-  alias: string;
+  price?: number;
   title?: string;
   introduction?: string;
+  apply_count?: number;
+  free_count?: number;
   tags?: string[];
   request: IRequest;
   request_id: string;
   responses: IResponse[];
   response_ids: string[];
-  is_free?: boolean;
+  document?: IDocument;
+  document_id?: string;
   service?: IService;
   service_id?: string;
   created_at?: string;

@@ -1,10 +1,10 @@
 <template>
-  <div v-if="document.type === 'TEXT'" class="item" @click="onClick">
+  <div v-if="document.type === documentType.TEXT" class="item" @click="onClick">
     <el-link type="primary" class="link" :underline="false">
       <span class="name">{{ document?.title }}</span>
     </el-link>
   </div>
-  <div v-else-if="document.type === 'API'" class="item" @click="onClick">
+  <div v-else-if="document.type === documentType.API" class="item" @click="onClick">
     <el-link type="primary" class="link" :underline="false">
       <span class="name">{{ document?.title || document?.api?.title }}</span>
     </el-link>
@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IDocument } from '@/operators/document/models';
+import { IDocument, IDocumentType } from '@/operators/document/models';
 import { ROUTE_DOCUMENT_DETAIL } from '@/router';
 import { ElLink, ElTag } from 'element-plus';
 
@@ -31,6 +31,11 @@ export default defineComponent({
       type: Object as () => IDocument,
       required: true
     }
+  },
+  data() {
+    return {
+      documentType: IDocumentType
+    };
   },
   methods: {
     onClick() {

@@ -223,6 +223,14 @@ export default defineComponent({
 }
 
 $transition-duration: 0.5s;
+
+@media (min-width: 1400px) {
+  .services {
+    width: 1300px;
+    margin: auto !important;
+  }
+}
+
 .services {
   padding: 50px 0;
   .service {

@@ -5,5 +5,6 @@ export default {
   service: '服务',
   operation: '操作',
   amount: '数量',
-  shouldPayPrice: '应付金额'
+  shouldPayPrice: '应付金额',
+  api: 'API'
 };

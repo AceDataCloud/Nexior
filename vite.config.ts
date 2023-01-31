@@ -20,7 +20,7 @@ const getAuthEndpoint = () => {
 const getDataEndpoint = () => {
   switch (process.env.NODE_ENV) {
     case 'local':
-      return 'http://localhost:8007';
+      return 'http://127.0.0.1:8007';
     case 'test':
       return 'https://data.test.zhishuyun.com';
     case 'production':

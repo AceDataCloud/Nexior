@@ -20,8 +20,8 @@
                     <el-descriptions-item :label="$t('order.field.description')">
                       {{ order?.description }}
                     </el-descriptions-item>
-                    <el-descriptions-item :label="$t('order.field.service')">
-                      {{ order?.application?.service?.title }}
+                    <el-descriptions-item :label="$t('order.field.api')">
+                      {{ order?.application?.api?.title }}
                     </el-descriptions-item>
                     <el-descriptions-item :label="$t('order.field.amount')">
                       {{ order?.amount }}
@@ -56,7 +56,7 @@
             <el-row v-if="order?.state === OrderState.PENDING || order?.state === OrderState.FAILED">
               <el-col :span="12" :offset="6">
                 <el-divider border-style="dashed" />
-                <div v-if="order.price && order.price > 0 && order.pay_way === undefined" class="payways mb-4">
+                <div v-if="order.price && order.price > 0 && !order.pay_way" class="payways mb-4">
                   <div
                     :class="{
                       payway: true,
