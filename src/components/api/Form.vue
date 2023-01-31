@@ -19,18 +19,7 @@
                 <small>{{ $t('application.message.notApplied') }}</small>
               </p>
               <p class="text-center">
-                <router-link
-                  :to="{
-                    name: 'service-detail',
-                    params: {
-                      id: service?.id
-                    }
-                  }"
-                  class="inline-block"
-                  target="_blank"
-                >
-                  <el-button size="small" type="primary">{{ $t('common.button.apply') }}</el-button>
-                </router-link>
+                <el-button size="small" type="primary" @click="onApply">{{ $t('common.button.apply') }}</el-button>
               </p>
               <template #reference>
                 <el-input
@@ -89,10 +78,10 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ISchema } from '@/operators/api/models';
-import { IService } from '@/operators/service/models';
-import { IApplication } from '@/operators';
+import { applicationOperator, IApi, IApplication, IApplicationType } from '@/operators';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ElPopover, ElInput, ElSelect, ElButton, ElTooltip, ElOption } from 'element-plus';
+import { ElPopover, ElInput, ElSelect, ElButton, ElTooltip, ElOption, ElMessage } from 'element-plus';
+import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
 
 interface IData {
   value: {
@@ -116,8 +105,8 @@ export default defineComponent({
       type: Object as () => ISchema | undefined,
       required: true
     },
-    service: {
-      type: Object as () => IService | undefined,
+    api: {
+      type: Object as () => IApi | undefined,
       required: true
     },
     applications: {
@@ -133,10 +122,10 @@ export default defineComponent({
   },
   computed: {
     isApplied() {
-      return this.applications.filter((application) => application.service?.id === this.service?.id).length > 0;
+      return this.applications.filter((application) => application.api?.id === this.api?.id).length > 0;
     },
     appliedApplication(): IApplication | undefined {
-      const applications = this.applications.filter((application) => application.service?.id === this.service?.id);
+      const applications = this.applications.filter((application) => application.api?.id === this.api?.id);
       if (applications.length > 0) {
         return applications[0];
       }
@@ -157,6 +146,21 @@ export default defineComponent({
     },
     onRefreshApplications() {
       this.$emit('refresh-applications');
+    },
+    onApply() {
+      applicationOperator
+        .create({
+          type: IApplicationType.API,
+          api_id: this.api?.id
+        })
+        .then(() => {
+          this.$emit('refresh-applications');
+        })
+        .catch((error) => {
+          if (error?.response?.data?.code === ERROR_CODE_DUPLICATION) {
+            ElMessage.error(this.$t('application.message.alreadyApplied'));
+          }
+        });
     }
   }
 });

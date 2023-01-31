@@ -12,7 +12,7 @@
       <api-form
         v-model:form="formValue.queries"
         :schema="api?.request?.queries"
-        :service="api?.service"
+        :api="api"
         :applications="applications"
         @refresh-applications="getApplications"
       />
@@ -22,18 +22,13 @@
       <api-form
         v-model:form="formValue.headers"
         :schema="api?.request?.headers"
-        :service="api?.service"
+        :api="api"
         :applications="applications"
       />
     </div>
     <div class="body">
       <h2 class="title">{{ $t('api.entity.requestBody') }}</h2>
-      <api-form
-        v-model:form="formValue.body"
-        :schema="api?.request?.body"
-        :service="api?.service"
-        :applications="applications"
-      />
+      <api-form v-model:form="formValue.body" :schema="api?.request?.body" :api="api" :applications="applications" />
     </div>
     <div v-if="api?.responses" class="responses">
       <h2 class="title">{{ $t('api.entity.response') }}</h2>
