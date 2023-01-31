@@ -73,7 +73,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .wrapper {
-  padding: 15px;
+  // padding: 15px;
   padding-bottom: 0;
   .operation {
     margin-bottom: 10px;
