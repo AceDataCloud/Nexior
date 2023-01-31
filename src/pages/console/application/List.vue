@@ -10,9 +10,9 @@
         <el-col :span="24">
           <el-card shadow="hover">
             <el-table v-loading="loading" :data="applications" stripe>
-              <el-table-column :label="$t('application.field.service')" width="200px">
+              <el-table-column :label="$t('application.field.api')" width="200px">
                 <template #default="scope">
-                  <span>{{ scope.row?.service?.title }}</span>
+                  <span>{{ scope.row?.api?.title }}</span>
                 </template>
               </el-table-column>
               <el-table-column
@@ -38,7 +38,7 @@
               <el-table-column>
                 <template #default="scope">
                   <div class="float-right">
-                    <el-button v-if="false" @click="onGoDocument(scope?.row)">
+                    <el-button v-if="scope.row?.api?.document_id" @click="onGoDocument(scope?.row)">
                       {{ $t('application.button.goDocument') }}
                     </el-button>
                     <el-button type="primary" @click="onBuyMore(scope?.row)">
@@ -70,6 +70,7 @@ import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import CreateOrder from '@/components/order/Create.vue';
 import { ElTable, ElRow, ElCol, ElTableColumn, ElButton, ElCard } from 'element-plus';
+import { ROUTE_DOCUMENT_DETAIL } from '@/router/constants';
 
 interface IData {
   applications: IApplication[];
@@ -134,7 +135,15 @@ export default defineComponent({
     this.onFetchData();
   },
   methods: {
-    onGoDocument(application: IApplication) {},
+    onGoDocument(application: IApplication) {
+      const documentId = application?.api?.document_id;
+      this.$router.push({
+        name: ROUTE_DOCUMENT_DETAIL,
+        params: {
+          id: documentId
+        }
+      });
+    },
     onBuyMore(application: IApplication) {
       this.active.application = application;
       this.buying = true;

@@ -20,7 +20,7 @@
               </p>
             </div>
             <div class="operations">
-              <el-button type="danger" class="btn-apply" @click="onApply">
+              <el-button type="danger" class="btn-apply" @click="onToApis">
                 {{ $t('service.button.apply') }}
               </el-button>
             </div>
@@ -34,11 +34,29 @@
       </el-row>
     </el-col>
   </el-row>
-
-  <el-row v-if="service" class="detail">
+  <el-row v-if="service && service.introduction" class="introduction">
     <el-col :span="20" :offset="2">
-      <el-card shadow="hover">
+      <el-card shadow="hover" :body-style="{ padding: '50px' }">
         <markdown-renderer :content="service?.introduction" />
+      </el-card>
+    </el-col>
+  </el-row>
+  <el-row v-if="service" id="apis" class="apis">
+    <el-col :span="20" :offset="2">
+      <el-card shadow="hover" :body-style="{ padding: '50px' }">
+        <div v-for="(api, apiIndex) in apis" :key="apiIndex">
+          <el-row>
+            <el-col :span="20">
+              <api-info :api="api" />
+            </el-col>
+            <el-col :span="4" class="operations">
+              <el-button type="primary" @click="onApply(api.id, applicationType.API)">
+                {{ $t('common.button.apply') }}
+              </el-button>
+            </el-col>
+          </el-row>
+          <el-divider v-if="apiIndex < apis.length - 1" />
+        </div>
       </el-card>
     </el-col>
   </el-row>
@@ -58,9 +76,11 @@ import { ERROR_CODE_DUPLICATION } from '@/constants';
 import { ElMessage } from 'element-plus';
 import { apiOperator } from '@/operators/api/operator';
 import { IApi, IApiListResponse } from '@/operators/api/models';
+import { IApplicationType } from '@/operators/application/models';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { ROUTE_CONSOLE_APPLICATION_LIST } from '@/router';
-import { ElCol, ElRow, ElButton, ElCard } from 'element-plus';
+import { ElCol, ElRow, ElButton, ElCard, ElDivider } from 'element-plus';
+import ApiInfo from '@/components/api/Info.vue';
 
 interface IData {
   service: IService | undefined;
@@ -68,6 +88,7 @@ interface IData {
   application: IApplication | undefined;
   loading: boolean;
   activeTab: string;
+  applicationType: typeof IApplicationType;
 }
 
 export default defineComponent({
@@ -77,7 +98,9 @@ export default defineComponent({
     ElCol,
     ElRow,
     ElButton,
-    ElCard
+    ElCard,
+    ElDivider,
+    ApiInfo
   },
   data(): IData {
     return {
@@ -85,7 +108,8 @@ export default defineComponent({
       apis: [],
       application: undefined,
       loading: false,
-      activeTab: 'introduction'
+      activeTab: 'introduction',
+      applicationType: IApplicationType
     };
   },
   computed: {
@@ -111,10 +135,27 @@ export default defineComponent({
         this.apis = data.items;
       });
     },
-    onApply() {
+    onToApis() {
+      window.scrollTo({
+        top: document.getElementById('apis')?.offsetTop,
+        left: 0,
+        behavior: 'smooth'
+      });
+    },
+    onApply(id: string, type: IApplicationType) {
       applicationOperator
         .create({
-          service_id: this.id
+          type,
+          ...(type === IApplicationType.API
+            ? {
+                api_id: id
+              }
+            : {}),
+          ...(type === IApplicationType.PROXY
+            ? {
+                proxy_id: id
+              }
+            : {})
         })
         .then(({ data: data }: { data: IApplicationDetailResponse }) => {
           this.application = data;
@@ -324,13 +365,16 @@ export default defineComponent({
   }
 }
 
-.detail {
-  font-size: 14px;
-  margin-bottom: 30px;
-  .introduction {
-    padding: 10px 0;
-    color: #999;
-    font-weight: 400;
+.introduction {
+  margin-bottom: 20px;
+}
+
+.apis {
+  margin-bottom: 40px;
+  .operations {
+    align-items: center;
+    justify-items: center;
+    display: flex;
   }
 }
 </style>

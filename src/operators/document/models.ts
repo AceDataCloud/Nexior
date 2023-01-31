@@ -1,9 +1,14 @@
 import { IApi } from '../api/models';
 
+export enum IDocumentType {
+  API = 'Api',
+  TEXT = 'Text'
+}
+
 export interface IDocument {
   id?: string;
   name?: string;
-  type: 'API' | 'TEXT';
+  type: IDocumentType;
   title?: string;
   content?: string;
   rank?: number;

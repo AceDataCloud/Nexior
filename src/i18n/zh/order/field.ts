@@ -6,5 +6,6 @@ export default {
   state: '状态',
   createdAt: '创建时间',
   service: '服务名称',
-  payWay: '支付方式'
+  payWay: '支付方式',
+  api: 'API'
 };

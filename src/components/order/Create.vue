@@ -1,14 +1,14 @@
 <template>
   <el-dialog :model-value="visible" :title="$t('application.title.buyService')" width="60%" center>
     <el-form label-width="120px">
-      <el-form-item v-if="application?.service?.title" :label="$t('application.field.service')">
-        {{ application?.service?.title }}
+      <el-form-item v-if="application?.api?.title" :label="$t('application.field.service')">
+        {{ application?.api?.title }}
       </el-form-item>
       <el-form-item :label="$t('application.field.amount')">
         <el-input-number v-model="form.amount" :min="1" :max="10000" controls-position="right" />
       </el-form-item>
       <el-form-item :label="$t('service.field.price')">
-        <service-price :price="application?.service?.price" />
+        <service-price :price="application?.api?.price" />
       </el-form-item>
       <el-divider />
       <el-form-item :label="$t('application.field.shouldPayPrice')">
@@ -67,8 +67,9 @@ export default defineComponent({
   },
   computed: {
     price() {
-      if (this.application.service?.price && this.form.amount)
-        return this.form.amount * this.application.service?.price;
+      if (this.application.api?.price && this.form.amount) {
+        return this.form.amount * this.application.api?.price;
+      }
       return 0;
     }
   },
