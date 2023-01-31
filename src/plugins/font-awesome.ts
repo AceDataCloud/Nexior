@@ -1,7 +1,22 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCopy } from '@fortawesome/free-regular-svg-icons';
-import { faRotateRight, faCheck } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCopy as faRegularCopy,
+  faUser as faRegularUser,
+  faIdCard as faRegularIdCard
+} from '@fortawesome/free-regular-svg-icons';
+import {
+  faRotateRight as faSolidRotateRight,
+  faCheck as faSolidCheck,
+  faCube as faSolidCube,
+  faStore as faSolidStore,
+  faUpRightFromSquare as faSolidUpRightFromSquare
+} from '@fortawesome/free-solid-svg-icons';
 
-library.add(faCopy);
-library.add(faRotateRight);
-library.add(faCheck);
+library.add(faRegularCopy);
+library.add(faSolidRotateRight);
+library.add(faSolidCheck);
+library.add(faRegularUser);
+library.add(faRegularIdCard);
+library.add(faSolidCube);
+library.add(faSolidStore);
+library.add(faSolidUpRightFromSquare);
