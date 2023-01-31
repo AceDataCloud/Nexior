@@ -7,24 +7,25 @@
   <el-row>
     <el-col :span="24">
       <div class="links">
-        <router-link
+        <a
           v-for="(link, linkIndex) in links"
           :key="linkIndex"
-          :to="{
-            name: link.name
-          }"
           :class="{ link: true, active: $route.name === link.name }"
+          @click="onNavigate(link)"
         >
           <span class="icon">
-            <el-icon class="icon">
-              <clock v-if="link.icon === 'clock'" />
-              <user v-if="link.icon === 'user'" />
-              <postcard v-if="link.icon === 'postcard'" />
-            </el-icon>
+            <font-awesome-icon :icon="link.icon" class="text-sm" />
           </span>
           <span class="text">{{ link.text }}</span>
-          <span class="suffix"></span>
-        </router-link>
+          <span class="outer">
+            <font-awesome-icon
+              v-if="!link.name && link.href"
+              icon="fa-solid fa-up-right-from-square"
+              class="text-sm ml-2"
+            />
+          </span>
+          <span class="suffix"> </span>
+        </a>
       </div>
     </el-col>
   </el-row>
@@ -32,14 +33,16 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Clock, User, Postcard } from '@element-plus/icons-vue';
 import { ROUTE_CONSOLE_APPLICATION_LIST, ROUTE_CONSOLE_ORDER_LIST, ROUTE_INDEX } from '@/router';
-import { ElRow, ElCol, ElIcon } from 'element-plus';
+import { ElRow, ElCol } from 'element-plus';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { getAuthBaseUrl, getEnv } from '@/utils';
 
 interface ILink {
   key: string;
   text: string;
-  name: string;
+  name?: string;
+  href?: string;
   icon: string;
 }
 
@@ -50,27 +53,36 @@ interface IData {
 export default defineComponent({
   name: 'Navigator',
   components: {
-    Clock,
-    Postcard,
-    User,
     ElRow,
     ElCol,
-    ElIcon
+    FontAwesomeIcon
   },
   data(): IData {
     return {
       links: [
         {
           key: 'profile',
-          text: this.$t('console.menu.orderList'),
-          name: ROUTE_CONSOLE_ORDER_LIST,
-          icon: 'user'
+          text: this.$t('console.menu.userProfile'),
+          href: `${getAuthBaseUrl()}/user/profile`,
+          icon: 'fa-regular fa-user'
         },
         {
           key: 'verify',
+          text: this.$t('console.menu.idVerify'),
+          href: `${getAuthBaseUrl()}/user/verify`,
+          icon: 'fa-regular fa-id-card'
+        },
+        {
+          key: 'application-list',
           text: this.$t('console.menu.applicationList'),
           name: ROUTE_CONSOLE_APPLICATION_LIST,
-          icon: 'postcard'
+          icon: 'fa-solid fa-cube'
+        },
+        {
+          key: 'order-list',
+          text: this.$t('console.menu.orderList'),
+          name: ROUTE_CONSOLE_ORDER_LIST,
+          icon: 'fa-solid fa-store'
         }
       ]
     };
@@ -86,6 +98,15 @@ export default defineComponent({
       this.$router.push({
         name: ROUTE_INDEX
       });
+    },
+    onNavigate(link: ILink) {
+      if (link.name) {
+        this.$router.push({
+          name: link.name
+        });
+      } else if (link.href) {
+        window.location.href = link.href;
+      }
     }
   }
 });
