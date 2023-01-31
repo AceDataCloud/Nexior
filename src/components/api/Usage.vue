@@ -1,10 +1,5 @@
 <template>
-  <div v-if="loading">
-    <el-skeleton />
-    <el-divider />
-    <el-skeleton />
-  </div>
-  <div v-else class="item">
+  <div class="item">
     <api-info v-if="api" :api="api" />
     <el-divider />
     <div class="queries">
@@ -44,7 +39,7 @@ import ApiForm from './Form.vue';
 import ApiResult from './Result.vue';
 import { applicationOperator } from '@/operators/application/operator';
 import { IApplication, IApplicationListResponse } from '@/operators/application/models';
-import { ElSkeleton, ElDivider, ElTag } from 'element-plus';
+import { ElDivider } from 'element-plus';
 import ApiInfo from './Info.vue';
 
 export interface IData {
@@ -57,17 +52,12 @@ export default defineComponent({
   components: {
     ApiForm,
     ApiResult,
-    ElSkeleton,
     ElDivider,
     ApiInfo
   },
   props: {
     api: {
       type: Object as () => IApi,
-      required: true
-    },
-    loading: {
-      type: Boolean,
       required: true
     },
     form: {

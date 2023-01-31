@@ -1,9 +1,19 @@
 <template>
-  <el-row v-if="service" class="banner">
+  <el-row class="banner">
     <el-col :span="24">
       <el-row>
         <el-col :span="10" :offset="2" class="left">
-          <div class="info">
+          <div v-if="loading" class="info">
+            <el-skeleton animated>
+              <template #template>
+                <el-skeleton-item variant="p" class="title-placeholder" />
+                <el-skeleton-item variant="p" class="description-placeholder" />
+                <el-skeleton-item variant="p" class="price-placeholder" />
+                <el-skeleton-item variant="p" class="operations-placeholder" />
+              </template>
+            </el-skeleton>
+          </div>
+          <div v-if="service" class="info">
             <h1>
               {{ service.title }}
             </h1>
@@ -50,8 +60,11 @@
               <api-info :api="api" />
             </el-col>
             <el-col :span="4" class="operations">
-              <el-button type="primary" @click="onApply(api.id, applicationType.API)">
+              <el-button v-if="!api.applied" type="primary" @click="onApply(api, applicationType.API)">
                 {{ $t('common.button.apply') }}
+              </el-button>
+              <el-button v-else disabled type="primary">
+                {{ $t('common.button.applied') }}
               </el-button>
             </el-col>
           </el-row>
@@ -79,7 +92,7 @@ import { IApi, IApiListResponse } from '@/operators/api/models';
 import { IApplicationType } from '@/operators/application/models';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { ROUTE_CONSOLE_APPLICATION_LIST } from '@/router';
-import { ElCol, ElRow, ElButton, ElCard, ElDivider } from 'element-plus';
+import { ElCol, ElRow, ElButton, ElCard, ElDivider, ElSkeleton, ElSkeletonItem } from 'element-plus';
 import ApiInfo from '@/components/api/Info.vue';
 
 interface IData {
@@ -100,7 +113,9 @@ export default defineComponent({
     ElButton,
     ElCard,
     ElDivider,
-    ApiInfo
+    ApiInfo,
+    ElSkeleton,
+    ElSkeletonItem
   },
   data(): IData {
     return {
@@ -142,23 +157,24 @@ export default defineComponent({
         behavior: 'smooth'
       });
     },
-    onApply(id: string, type: IApplicationType) {
+    onApply(obj: IApi, type: IApplicationType) {
       applicationOperator
         .create({
           type,
           ...(type === IApplicationType.API
             ? {
-                api_id: id
+                api_id: obj.id
               }
             : {}),
           ...(type === IApplicationType.PROXY
             ? {
-                proxy_id: id
+                proxy_id: obj.id
               }
             : {})
         })
         .then(({ data: data }: { data: IApplicationDetailResponse }) => {
           this.application = data;
+          obj.applied = true;
           ElMessage.success(this.$t('application.message.applySuccessfully'));
           setTimeout(() => {
             this.$router.push({
@@ -200,12 +216,35 @@ export default defineComponent({
     position: relative;
     height: $height;
     min-height: $min-height;
+
     .info {
       position: absolute;
       left: 0;
       width: 100%;
       top: 50%;
       transform: translateY(-50%);
+      .title-placeholder {
+        height: 64px;
+        width: 200px;
+        margin-bottom: 24px;
+      }
+
+      .description-placeholder {
+        height: 50px;
+        margin-bottom: 56px;
+      }
+
+      .price-placeholder {
+        height: 32px;
+        margin-bottom: 56px;
+      }
+
+      .operations-placeholder {
+        height: 52px;
+        margin-bottom: 40px;
+        visibility: hidden;
+      }
+
       h1 {
         max-width: 1064px;
         margin-bottom: 24px;

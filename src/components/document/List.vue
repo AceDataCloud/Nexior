@@ -1,6 +1,6 @@
 <template>
   <div v-if="loading">
-    <el-skeleton />
+    <el-skeleton animated />
   </div>
   <div v-else-if="documents" class="wrapper">
     <document-list-item
@@ -64,9 +64,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.wrapper {
-  padding: 20px 0;
-}
-</style>

@@ -1,8 +1,8 @@
 <template>
   <div class="center">
-    <el-skeleton />
+    <el-skeleton animated />
     <el-divider />
-    <el-skeleton />
+    <el-skeleton animated />
   </div>
 </template>
 

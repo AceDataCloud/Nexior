@@ -10,7 +10,7 @@
       <code-snippet :code="responseData" />
     </div>
     <div v-if="loading">
-      <el-skeleton />
+      <el-skeleton animated />
     </div>
   </div>
 </template>

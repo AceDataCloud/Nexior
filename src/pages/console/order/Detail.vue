@@ -12,7 +12,7 @@
             <el-row>
               <el-col :span="12" :offset="6">
                 <div v-if="loading" class="pt-5">
-                  <el-skeleton />
+                  <el-skeleton animated />
                 </div>
                 <div v-else class="order">
                   <el-descriptions :column="1">

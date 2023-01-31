@@ -187,7 +187,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .wrapper {
   width: 100%;
-  padding: 15px;
+  // padding: 15px;
   padding-bottom: 0;
   overflow-x: scroll;
   .options {
