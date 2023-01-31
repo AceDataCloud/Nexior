@@ -1,10 +1,14 @@
 <template>
-  <div v-if="document.type === documentType.TEXT" class="item" @click="onClick">
+  <div v-if="document.type === documentType.TEXT" :class="{ item: true, active: id === document?.id }" @click="onClick">
     <el-link type="primary" class="link" :underline="false">
       <span class="name">{{ document?.title }}</span>
     </el-link>
   </div>
-  <div v-else-if="document.type === documentType.API" class="item" @click="onClick">
+  <div
+    v-else-if="document.type === documentType.API"
+    :class="{ item: true, active: id === document?.id }"
+    @click="onClick"
+  >
     <el-link type="primary" class="link" :underline="false">
       <span class="name">{{ document?.title || document?.api?.title }}</span>
     </el-link>
@@ -37,6 +41,11 @@ export default defineComponent({
       documentType: IDocumentType
     };
   },
+  computed: {
+    id() {
+      return this.$route.params?.id?.toString();
+    }
+  },
   methods: {
     onClick() {
       this.$router.push({
@@ -55,14 +64,21 @@ $height: 35px;
 .item {
   height: $height;
   line-height: $height;
-  padding-left: 5px;
+  padding-left: 10px;
   cursor: pointer;
   border-radius: 5px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
   overflow: hidden;
   position: relative;
+  border-left: 3px solid transparent;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  &.active {
+    border-left: 3px solid var(--el-color-primary);
   }
 
   .link {

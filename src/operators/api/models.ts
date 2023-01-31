@@ -53,6 +53,7 @@ export interface IApi {
   introduction?: string;
   apply_count?: number;
   free_count?: number;
+  applied?: boolean;
   tags?: string[];
   request: IRequest;
   request_id: string;

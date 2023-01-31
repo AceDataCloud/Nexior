@@ -1,21 +1,33 @@
 <template>
-  <div v-if="document" class="center">
-    <div v-if="document.type === documentType.TEXT">
-      <markdown-renderer :content="document?.content" :loading="loading" />
+  <!-- center part -->
+  <div class="center">
+    <div v-if="loading">
+      <el-skeleton animated />
     </div>
-    <div v-else-if="document.type === documentType.API">
-      <api-usage v-if="document.api" v-model:form="form" :loading="loading" :api="document.api" />
+    <div v-else-if="document">
+      <div v-if="document.type === documentType.TEXT">
+        <markdown-renderer :content="document?.content" />
+      </div>
+      <div v-else-if="document.type === documentType.API">
+        <api-usage v-if="document.api" v-model:form="form" :api="document.api" />
+      </div>
     </div>
   </div>
-  <div v-if="document?.type === documentType.API && document?.api" class="right">
-    <div v-if="loading" class="p-5">
+  <!-- end center part -->
+  <!-- right part -->
+  <div class="right">
+    <div v-if="loading">
       <el-skeleton />
     </div>
-    <div v-else>
-      <api-code :form="form" :api="document?.api" />
-      <api-try :form="form" :api="document?.api" />
+    <div v-else-if="document">
+      <div v-if="document?.type === documentType.API && document?.api">
+        <api-code :form="form" :api="document?.api" />
+        <api-try :form="form" :api="document?.api" />
+      </div>
     </div>
   </div>
+
+  <!-- end right part -->
 </template>
 
 <script lang="ts">
@@ -101,6 +113,7 @@ export default defineComponent({
   float: left;
   width: 480px;
   height: 100%;
+  padding: 30px;
   box-shadow: -1px 0 0 #eee;
 }
 </style>

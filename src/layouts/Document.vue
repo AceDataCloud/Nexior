@@ -55,6 +55,7 @@ export default {
     float: left;
     width: 280px;
     height: 100%;
+    padding: 30px;
     box-shadow: 1px 0 0 #eee;
   }
 }

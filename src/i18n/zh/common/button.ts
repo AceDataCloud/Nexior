@@ -21,5 +21,6 @@ export default {
   apply: '申请',
   refresh: '刷新',
   pay: '支付',
-  repay: '继续支付'
+  repay: '继续支付',
+  applied: '已申请'
 };

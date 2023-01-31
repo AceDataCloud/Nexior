@@ -21,7 +21,7 @@
       <el-row v-if="loading" :gutter="15" class="services">
         <el-col v-for="_ in 8" :key="_" :lg="6" :md="8" :sm="12" :xs="24">
           <el-card shadow="hover" class="service">
-            <el-skeleton>
+            <el-skeleton animated>
               <template #template>
                 <el-skeleton-item variant="image" class="icon-placeholder" />
                 <el-skeleton-item variant="p" class="title-placeholder" />
