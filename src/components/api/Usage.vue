@@ -8,6 +8,7 @@
         v-model:form="formValue.queries"
         :schema="api?.request?.queries"
         :api="api"
+        :applied="applied"
         :applications="applications"
         @refresh-applications="getApplications"
       />
@@ -45,6 +46,7 @@ import ApiInfo from './Info.vue';
 export interface IData {
   formValue: IForm;
   applications: IApplication[];
+  applied: boolean | undefined;
 }
 
 export default defineComponent({
@@ -69,7 +71,8 @@ export default defineComponent({
   data(): IData {
     return {
       formValue: this.form || {},
-      applications: []
+      applications: [],
+      applied: undefined
     };
   },
   watch: {
@@ -89,6 +92,7 @@ export default defineComponent({
         })
         .then(({ data: data }: { data: IApplicationListResponse }) => {
           this.applications = data.items;
+          this.applied = this.applications.filter((item) => item?.api?.id === this.api.id).length > 0;
         })
         .catch((error) => {});
     }

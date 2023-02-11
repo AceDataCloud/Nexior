@@ -13,8 +13,8 @@
       </div>
       <div class="right">
         <div v-if="itemKey === 'api_key'">
-          <div v-if="!isApplied">
-            <el-popover placement="bottom" :width="200" trigger="click">
+          <div v-if="!applied === true">
+            <el-popover placement="bottom" :width="200" :visible="applied === false">
               <p class="text-center mb-2">
                 <small>{{ $t('application.message.notApplied') }}</small>
               </p>
@@ -26,7 +26,6 @@
                   v-model="value[itemKey?.toString()]"
                   :placeholder="$t('common.title.placeholderOfInput')"
                   class="inline-block w-4/5"
-                  @focus="$emit('refresh-applications')"
                 />
               </template>
             </el-popover>
@@ -81,7 +80,8 @@ import { ISchema } from '@/operators/api/models';
 import { applicationOperator, IApi, IApplication, IApplicationType } from '@/operators';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ElPopover, ElInput, ElSelect, ElButton, ElTooltip, ElOption, ElMessage } from 'element-plus';
-import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
+import { ERROR_CODE_DUPLICATION, ERROR_CODE_UNVERIFIED } from '@/constants/errorCode';
+import { getVerificationUrl } from '@/utils';
 
 interface IData {
   value: {
@@ -112,6 +112,10 @@ export default defineComponent({
     applications: {
       type: Array as () => IApplication[],
       required: true
+    },
+    applied: {
+      type: Boolean,
+      required: false
     }
   },
   emits: ['update:form', 'refresh-applications'],
@@ -121,9 +125,6 @@ export default defineComponent({
     };
   },
   computed: {
-    isApplied() {
-      return this.applications.filter((application) => application.api?.id === this.api?.id).length > 0;
-    },
     appliedApplication(): IApplication | undefined {
       const applications = this.applications.filter((application) => application.api?.id === this.api?.id);
       if (applications.length > 0) {
@@ -159,6 +160,17 @@ export default defineComponent({
         .catch((error) => {
           if (error?.response?.data?.code === ERROR_CODE_DUPLICATION) {
             ElMessage.error(this.$t('application.message.alreadyApplied'));
+          }
+          if (error?.response?.data?.code === ERROR_CODE_UNVERIFIED) {
+            ElMessage({
+              dangerouslyUseHTMLString: true,
+              duration: 0,
+              showClose: true,
+              message: `${this.$t(
+                'application.message.unverified'
+              )} <a class="underline" href="${getVerificationUrl()}">${this.$t('application.message.goVerify')}</a>`,
+              type: 'warning'
+            });
           }
         });
     }

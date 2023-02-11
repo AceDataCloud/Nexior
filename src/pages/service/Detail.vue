@@ -85,7 +85,7 @@ import {
   serviceOperator
 } from '@/operators';
 import { defineComponent } from 'vue';
-import { ERROR_CODE_DUPLICATION } from '@/constants';
+import { ERROR_CODE_DUPLICATION, ERROR_CODE_UNVERIFIED } from '@/constants';
 import { ElMessage } from 'element-plus';
 import { apiOperator } from '@/operators/api/operator';
 import { IApi, IApiListResponse } from '@/operators/api/models';
@@ -94,6 +94,7 @@ import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { ROUTE_CONSOLE_APPLICATION_LIST } from '@/router';
 import { ElCol, ElRow, ElButton, ElCard, ElDivider, ElSkeleton, ElSkeletonItem } from 'element-plus';
 import ApiInfo from '@/components/api/Info.vue';
+import { getVerificationUrl } from '@/utils';
 
 interface IData {
   service: IService | undefined;
@@ -190,6 +191,17 @@ export default defineComponent({
                 name: 'console-application-list'
               });
             }, 2000);
+          }
+          if (error?.response?.data?.code === ERROR_CODE_UNVERIFIED) {
+            ElMessage({
+              dangerouslyUseHTMLString: true,
+              duration: 0,
+              showClose: true,
+              message: `${this.$t(
+                'application.message.unverified'
+              )} <a class="underline" href="${getVerificationUrl()}">${this.$t('application.message.goVerify')}</a>`,
+              type: 'warning'
+            });
           }
         });
     }
