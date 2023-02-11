@@ -20,8 +20,17 @@
                     <el-descriptions-item :label="$t('order.field.description')">
                       {{ order?.description }}
                     </el-descriptions-item>
-                    <el-descriptions-item :label="$t('order.field.api')">
+                    <el-descriptions-item
+                      v-if="order?.application?.type === applicationType.API"
+                      :label="$t('order.field.api')"
+                    >
                       {{ order?.application?.api?.title }}
+                    </el-descriptions-item>
+                    <el-descriptions-item
+                      v-if="order?.application?.type === applicationType.PROXY"
+                      :label="$t('order.field.proxy')"
+                    >
+                      {{ order?.application?.proxy?.title }}
                     </el-descriptions-item>
                     <el-descriptions-item :label="$t('order.field.amount')">
                       {{ order?.amount }}
@@ -116,6 +125,7 @@ import {
   ElButton
 } from 'element-plus';
 import PayOrder from '@/components/order/Pay.vue';
+import { IApplicationType } from '@/operators';
 
 enum PayWay {
   WechatPay = 'WechatPay',
@@ -130,6 +140,7 @@ interface IData {
   loading: boolean;
   paying: boolean;
   prepaying: boolean;
+  applicationType: typeof IApplicationType;
 }
 
 export default defineComponent({
@@ -154,7 +165,8 @@ export default defineComponent({
       order: undefined,
       loading: false,
       paying: false,
-      prepaying: false
+      prepaying: false,
+      applicationType: IApplicationType
     };
   },
   computed: {

@@ -1,4 +1,5 @@
 import { IApi } from '../api';
+import { IProxy } from '../proxy';
 
 export enum IApplicationType {
   API = 'Api',
@@ -23,6 +24,7 @@ export interface ICredential {
 export interface IApplication {
   id?: string;
   api?: IApi;
+  proxy?: IProxy;
   type?: IApplicationType;
   api_id?: string;
   proxy_id?: string;
