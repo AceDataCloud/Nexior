@@ -6,6 +6,7 @@ export interface IDocumentQuery {
   limit: number;
   offset: number;
   ordering: string;
+  private: boolean;
 }
 
 class DocumentOperator {
