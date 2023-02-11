@@ -5,14 +5,14 @@
         <div class="info">
           <span class="key">{{ itemKey }}</span>
           <span class="type">{{ item?.type }}</span>
-          <span v-if="!item?.optional" class="required">required</span>
+          <span v-if="!item?.optional" class="required">{{ $t('application.message.requiredParameter') }}</span>
         </div>
         <div class="description">
           {{ item?.title }}
         </div>
       </div>
       <div class="right">
-        <div v-if="itemKey === 'api_key'">
+        <div v-if="itemKey === 'token'">
           <div v-if="!applied === true">
             <el-popover placement="bottom" :width="200" :visible="applied === false">
               <p class="text-center mb-2">
@@ -48,12 +48,12 @@
             :placeholder="$t('common.title.placeholderOfSelect')"
           >
             <el-option
-              v-if="appliedApplication?.api_key"
-              :label="appliedApplication?.api_key"
-              :value="appliedApplication.api_key"
+              v-if="appliedApplication?.credential?.token"
+              :label="appliedApplication?.credential?.token"
+              :value="appliedApplication?.credential?.token"
               class="select-option"
             >
-              <span class="select-option-main">{{ appliedApplication?.api_key }}</span>
+              <span class="select-option-main">{{ appliedApplication?.credential?.token }}</span>
               <span class="select-option-description">{{ $t('application.message.yourApplication') }}</span>
             </el-option>
           </el-select>

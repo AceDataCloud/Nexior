@@ -4,5 +4,6 @@ export default {
   notApplied: '你尚未申请过该服务，请先申请该服务之后使用',
   yourApplication: '你的申请',
   unverified: '您需要完成实名认证之后方可申请该服务',
-  goVerify: '去实名认证'
+  goVerify: '去实名认证',
+  requiredParameter: '必填参数'
 };
