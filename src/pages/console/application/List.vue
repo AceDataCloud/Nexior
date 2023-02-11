@@ -27,12 +27,24 @@
                 width="100px"
                 class-name="text-center"
               />
-              <el-table-column :label="$t('application.field.apiKey')" class-name="api-key" width="330px">
+              <el-table-column :label="$t('application.field.credential')" class-name="api-key" width="330px">
                 <template #default="scope">
-                  <span class="key">{{ scope?.row?.api_key }}</span>
-                  <span class="copy">
-                    <copy-to-clipboard :content="scope?.row?.api_key" />
-                  </span>
+                  <div v-if="scope?.row?.credential?.type === credentialType.TOKEN">
+                    <span class="key">{{ scope?.row?.credential?.token }}</span>
+                    <span class="copy">
+                      <copy-to-clipboard :content="scope?.row?.credential?.token" />
+                    </span>
+                  </div>
+                  <div v-if="scope?.row?.credential?.type === credentialType.IDENTITY">
+                    <span class="key"
+                      >{{ scope?.row?.credential?.username }}:{{ scope?.row?.credential?.password }}</span
+                    >
+                    <span class="copy">
+                      <copy-to-clipboard
+                        :content="`${scope?.row?.credential?.username}:${scope?.row?.credential?.password}`"
+                      />
+                    </span>
+                  </div>
                 </template>
               </el-table-column>
               <el-table-column>
@@ -65,7 +77,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { applicationOperator, IApplication, IApplicationListResponse, IService } from '@/operators';
+import {
+  applicationOperator,
+  IApplication,
+  IApplicationListResponse,
+  IApplicationType,
+  ICredentialType,
+  IService
+} from '@/operators';
 import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import CreateOrder from '@/components/order/Create.vue';
@@ -85,6 +104,8 @@ interface IData {
     service: IService | undefined;
     application: IApplication | undefined;
   };
+  applicationType: typeof IApplicationType;
+  credentialType: typeof ICredentialType;
 }
 
 export default defineComponent({
@@ -102,6 +123,8 @@ export default defineComponent({
   },
   data(): IData {
     return {
+      credentialType: ICredentialType,
+      applicationType: IApplicationType,
       applications: [],
       loading: false,
       total: undefined,
