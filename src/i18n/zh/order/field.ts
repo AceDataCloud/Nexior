@@ -7,5 +7,6 @@ export default {
   createdAt: '创建时间',
   service: '服务名称',
   payWay: '支付方式',
-  api: 'API'
+  api: 'API',
+  proxy: '代理'
 };

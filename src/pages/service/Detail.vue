@@ -51,7 +51,7 @@
       </el-card>
     </el-col>
   </el-row>
-  <el-row v-if="service" id="apis" class="apis">
+  <el-row v-if="service && apis?.length > 0" id="apis" class="apis">
     <el-col :span="20" :offset="2">
       <el-card shadow="hover" :body-style="{ padding: '50px' }">
         <div v-for="(api, apiIndex) in apis" :key="apiIndex">
@@ -73,6 +73,28 @@
       </el-card>
     </el-col>
   </el-row>
+  <el-row v-if="service && proxies?.length > 0" id="proxies" class="proxies">
+    <el-col :span="20" :offset="2">
+      <el-card shadow="hover" :body-style="{ padding: '50px' }">
+        <div v-for="(proxy, proxyIndex) in proxies" :key="proxyIndex">
+          <el-row>
+            <el-col :span="20">
+              <proxy-info :proxy="proxy" />
+            </el-col>
+            <el-col :span="4" class="operations">
+              <el-button v-if="!proxy.applied" type="primary" @click="onApply(proxy, applicationType.PROXY)">
+                {{ $t('common.button.apply') }}
+              </el-button>
+              <el-button v-else disabled type="primary">
+                {{ $t('common.button.applied') }}
+              </el-button>
+            </el-col>
+          </el-row>
+          <el-divider v-if="proxyIndex < apis.length - 1" />
+        </div>
+      </el-card>
+    </el-col>
+  </el-row>
 </template>
 
 <script lang="ts">
@@ -80,8 +102,11 @@ import {
   applicationOperator,
   IApplication,
   IApplicationDetailResponse,
+  IProxy,
+  IProxyListResponse,
   IService,
   IServiceDetailResponse,
+  proxyOperator,
   serviceOperator
 } from '@/operators';
 import { defineComponent } from 'vue';
@@ -94,13 +119,17 @@ import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { ROUTE_CONSOLE_APPLICATION_LIST } from '@/router';
 import { ElCol, ElRow, ElButton, ElCard, ElDivider, ElSkeleton, ElSkeletonItem } from 'element-plus';
 import ApiInfo from '@/components/api/Info.vue';
+import ProxyInfo from '@/components/proxy/Info.vue';
 import { getVerificationUrl } from '@/utils';
 
 interface IData {
   service: IService | undefined;
   apis: IApi[];
+  proxies: IProxy[];
   application: IApplication | undefined;
   loading: boolean;
+  loadingApis: boolean;
+  loadingProxies: boolean;
   activeTab: string;
   applicationType: typeof IApplicationType;
 }
@@ -115,6 +144,7 @@ export default defineComponent({
     ElCard,
     ElDivider,
     ApiInfo,
+    ProxyInfo,
     ElSkeleton,
     ElSkeletonItem
   },
@@ -122,8 +152,11 @@ export default defineComponent({
     return {
       service: undefined,
       apis: [],
+      proxies: [],
       application: undefined,
       loading: false,
+      loadingApis: false,
+      loadingProxies: false,
       activeTab: 'introduction',
       applicationType: IApplicationType
     };
@@ -136,6 +169,7 @@ export default defineComponent({
   async mounted() {
     this.onFetchService();
     this.onFetchApis();
+    this.onFetchProxies();
   },
   methods: {
     onFetchService() {
@@ -146,10 +180,27 @@ export default defineComponent({
       });
     },
     onFetchApis() {
-      this.loading = true;
-      apiOperator.getAllForService(this.id).then(({ data: data }: { data: IApiListResponse }) => {
-        this.apis = data.items;
-      });
+      this.loadingApis = true;
+      apiOperator
+        .getAllForService(this.id)
+        .then(({ data: data }: { data: IApiListResponse }) => {
+          this.apis = data.items;
+          this.loadingApis = false;
+        })
+        .catch(() => {
+          this.loadingApis = false;
+        });
+    },
+    onFetchProxies() {
+      this.loadingProxies = true;
+      proxyOperator
+        .getAllForService(this.id)
+        .then(({ data: data }: { data: IProxyListResponse }) => {
+          this.proxies = data.items;
+        })
+        .catch(() => {
+          this.loadingProxies = false;
+        });
     },
     onToApis() {
       window.scrollTo({
@@ -158,7 +209,7 @@ export default defineComponent({
         behavior: 'smooth'
       });
     },
-    onApply(obj: IApi, type: IApplicationType) {
+    onApply(obj: IApi | IProxy, type: IApplicationType) {
       applicationOperator
         .create({
           type,
