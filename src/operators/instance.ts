@@ -12,7 +12,7 @@ const httpClient: AxiosInstance = axios.create({
 });
 
 httpClient.interceptors.request.use((config) => {
-  const accessToken = store.getters.accessToken || getCookie('ACCESS_TOKEN');
+  const accessToken = store.getters.accessToken;
   if (accessToken) {
     config.headers['Authorization'] = `Bearer ${accessToken}`;
   }
