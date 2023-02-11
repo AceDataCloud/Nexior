@@ -1,4 +1,4 @@
-export const ROUTE_INDEX = 'ROUTE_INDEX';
+export const ROUTE_INDEX = 'index';
 
 export const ROUTE_AUTH_LOGIN = 'auth-login';
 export const ROUTE_AUTH_CALLBACK = 'auth-callback';
