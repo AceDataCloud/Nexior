@@ -6,6 +6,7 @@ export interface IServiceQuery {
   limit: number;
   offset: number;
   ordering: string;
+  private: boolean;
 }
 
 class ServiceOperator {

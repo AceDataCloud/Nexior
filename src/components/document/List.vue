@@ -50,7 +50,8 @@ export default defineComponent({
         .getAll({
           offset,
           limit,
-          ordering: 'rank'
+          ordering: 'rank',
+          private: false
         })
         .then(({ data: data }: { data: IDocumentListResponse }) => {
           this.loading = false;

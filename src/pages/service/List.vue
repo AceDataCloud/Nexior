@@ -139,7 +139,8 @@ export default defineComponent({
         .getAll({
           limit: this.limit,
           offset: (this.page - 1) * this.limit,
-          ordering: 'rank'
+          ordering: 'rank',
+          private: false
         })
         .then(({ data: data }: { data: IServiceListResponse }) => {
           this.services = data.items;
