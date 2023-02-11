@@ -6,5 +6,6 @@ export default {
   operation: '操作',
   amount: '数量',
   shouldPayPrice: '应付金额',
-  api: 'API'
+  api: 'API',
+  credential: '密钥'
 };
