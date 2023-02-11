@@ -1,6 +1,7 @@
 import { createStore, ActionContext } from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 import { userOperator, IUser } from '@/operators';
+import { removeCookies } from '@/utils/cookie';
 
 export interface IState {
   accessToken: string | undefined;
@@ -24,10 +25,7 @@ const store = createStore({
       state.refreshToken = payload;
     },
     setUser(state: IState, payload: IUser): void {
-      state.user = {
-        ...state.user,
-        ...payload
-      };
+      state.user = payload;
     }
   },
   actions: {
@@ -35,6 +33,7 @@ const store = createStore({
       commit('setRefreshToken', undefined);
       commit('setAccessToken', undefined);
       commit('setUser', undefined);
+      removeCookies();
     },
     setRefreshToken({ commit }: ActionContext<IState, IState>, payload: string) {
       commit('setRefreshToken', payload);

@@ -2,6 +2,7 @@
 import { defineComponent } from 'vue';
 import { getCookie, removeCookie } from 'typescript-cookie';
 import { getAuthBaseUrl, getDataBaseUrl } from '@/utils';
+import { removeCookies } from '@/utils/cookie';
 
 interface IData {
   accessToken: string | undefined;
@@ -27,15 +28,7 @@ export default defineComponent({
       this.$store.dispatch('setAccessToken', this.accessToken);
       this.$store.dispatch('setRefreshToken', this.refreshToken);
       console.debug('set token successfully');
-      const host = window.location.host;
-      // process test env and prod env, for example:
-      // auth.zhishuyun.com -> .zhishuyun.com
-      // auth.test.zhishuyun.com -> .zhishuyun.com
-      const domain = host.replace(/^\S+?\.(test\.)?/, '.');
-      const path = '/';
-      // remove tokens from cookies
-      removeCookie('ACCESS_TOKEN', { domain, path });
-      removeCookie('REFRESH_TOKEN', { domain, path });
+      removeCookies();
       console.debug('remove cookie for tokens successfully');
       // get user info after get access token
       this.$store.dispatch('getMe');
