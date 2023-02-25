@@ -1,7 +1,6 @@
-import router, { ROUTE_AUTH_LOGIN, ROUTE_INDEX } from '@/router';
+import router, { ROUTE_AUTH_LOGIN } from '@/router';
 import store from '@/store';
 import axios, { AxiosInstance } from 'axios';
-import { getCookie } from 'typescript-cookie';
 
 const httpClient: AxiosInstance = axios.create({
   baseURL: '/api/v1',
@@ -13,6 +12,9 @@ const httpClient: AxiosInstance = axios.create({
 
 httpClient.interceptors.request.use((config) => {
   const accessToken = store.getters.accessToken;
+  if (!config.headers) {
+    config.headers = {};
+  }
   if (accessToken) {
     config.headers['Authorization'] = `Bearer ${accessToken}`;
   }
