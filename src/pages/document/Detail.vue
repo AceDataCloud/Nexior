@@ -98,7 +98,6 @@ export default defineComponent({
       this.form = {};
       // cancel existing pending request
       if (this.canceler) {
-        console.log('abort');
         this.canceler.abort();
       }
       this.canceler = new AbortController();
