@@ -53,6 +53,7 @@ export interface IData {
   loading: boolean;
   form: IForm;
   documentType: typeof IDocumentType;
+  canceler: AbortController | undefined;
 }
 
 export default defineComponent({
@@ -72,7 +73,8 @@ export default defineComponent({
       document: undefined,
       loading: false,
       form: {},
-      documentType: IDocumentType
+      documentType: IDocumentType,
+      canceler: undefined
     };
   },
   computed: {
@@ -94,8 +96,16 @@ export default defineComponent({
     getDocument(id: string) {
       this.loading = true;
       this.form = {};
+      // cancel existing pending request
+      if (this.canceler) {
+        console.log('abort');
+        this.canceler.abort();
+      }
+      this.canceler = new AbortController();
       documentOperator
-        .get(id)
+        .get(id, {
+          signal: this.canceler.signal
+        })
         .then(({ data: data }: { data: IDocumentDetailResponse }) => {
           this.loading = false;
           this.document = data;
