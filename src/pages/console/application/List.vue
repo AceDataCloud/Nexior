@@ -25,14 +25,18 @@
                 :label="$t('application.field.remainingCount')"
                 width="100px"
                 class-name="text-center"
-              />
+              >
+                <template #default="scope">
+                  <span>{{ getRemainingCount(scope.row) }}</span>
+                </template>
+              </el-table-column>
               <el-table-column
                 prop="used_count"
                 :label="$t('application.field.usedCount')"
                 width="100px"
                 class-name="text-center"
               />
-              <el-table-column :label="$t('application.field.credential')" class-name="api-key" width="330px">
+              <el-table-column :label="$t('application.field.credential')" class-name="credential" width="380px">
                 <template #default="scope">
                   <div v-if="scope?.row?.credential?.type === credentialType.TOKEN">
                     <span class="key">{{ scope?.row?.credential?.token }}</span>
@@ -225,6 +229,14 @@ export default defineComponent({
         .catch(() => {
           this.loading = false;
         });
+    },
+    getRemainingCount(application: IApplication) {
+      if (application.type === IApplicationType.API) {
+        return application.remaining_count;
+      }
+      if (application.type === IApplicationType.PROXY) {
+        return `${((application.remaining_count || 0) / 1024 / 1024).toFixed(2)}MB`;
+      }
     }
   }
 });
@@ -244,7 +256,7 @@ export default defineComponent({
 
 .panel {
   padding: 30px;
-  .api-key {
+  .credential {
     .copy {
       cursor: pointer;
     }

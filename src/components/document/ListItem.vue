@@ -12,8 +12,8 @@
     <el-link type="primary" class="link" :underline="false">
       <span class="name">{{ document?.title || document?.api?.title }}</span>
     </el-link>
-    <el-tag v-if="document?.api?.request?.method" type="" class="method" effect="dark">
-      {{ document?.api?.request?.method }}
+    <el-tag class="type" effect="dark">
+      {{ documentType.API.toUpperCase() }}
     </el-tag>
   </div>
   <div
@@ -24,8 +24,8 @@
     <el-link type="primary" class="link" :underline="false">
       <span class="name">{{ document?.title || document?.proxy?.title }}</span>
     </el-link>
-    <el-tag v-if="document?.api?.request?.method" type="" class="method" effect="dark">
-      {{ document?.api?.request?.method }}
+    <el-tag class="type" effect="dark">
+      {{ documentType.PROXY.toUpperCase() }}
     </el-tag>
   </div>
 </template>
@@ -99,10 +99,12 @@ $height: 35px;
       display: flex;
     }
   }
-  .method {
+  .type {
+    display: none;
     position: absolute;
-    right: 10px;
+    right: 5px;
     top: 5px;
+    border-radius: 10px;
   }
 }
 </style>
