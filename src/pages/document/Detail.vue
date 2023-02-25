@@ -9,7 +9,14 @@
         <markdown-renderer :content="document?.content" />
       </div>
       <div v-else-if="document.type === documentType.API">
+        <api-info v-if="document.api" :api="document.api" />
+        <el-divider />
         <api-usage v-if="document.api" v-model:form="form" :api="document.api" />
+      </div>
+      <div v-else-if="document.type === documentType.PROXY">
+        <proxy-info v-if="document.proxy" :proxy="document.proxy" />
+        <el-divider />
+        <markdown-renderer :content="document?.content" />
       </div>
     </div>
   </div>
@@ -26,7 +33,6 @@
       </div>
     </div>
   </div>
-
   <!-- end right part -->
 </template>
 
@@ -34,11 +40,13 @@
 import { defineComponent } from 'vue';
 import ApiUsage from '@/components/api/Usage.vue';
 import ApiTry from '@/components/api/Try.vue';
+import ApiInfo from '@/components/api/Info.vue';
+import ProxyInfo from '@/components/proxy/Info.vue';
 import ApiCode from '@/components/api/Code.vue';
 import { documentOperator, IDocument, IDocumentDetailResponse, IDocumentType } from '@/operators';
 import { IForm } from '@/operators/api/models';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
-import { ElSkeleton } from 'element-plus';
+import { ElSkeleton, ElDivider } from 'element-plus';
 
 export interface IData {
   document: IDocument | undefined;
@@ -53,7 +61,10 @@ export default defineComponent({
     ApiUsage,
     ApiTry,
     ApiCode,
+    ApiInfo,
+    ProxyInfo,
     ElSkeleton,
+    ElDivider,
     MarkdownRenderer
   },
   data(): IData {

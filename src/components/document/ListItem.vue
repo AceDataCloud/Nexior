@@ -16,6 +16,18 @@
       {{ document?.api?.request?.method }}
     </el-tag>
   </div>
+  <div
+    v-else-if="document.type === documentType.PROXY"
+    :class="{ item: true, active: id === document?.id }"
+    @click="onClick"
+  >
+    <el-link type="primary" class="link" :underline="false">
+      <span class="name">{{ document?.title || document?.proxy?.title }}</span>
+    </el-link>
+    <el-tag v-if="document?.api?.request?.method" type="" class="method" effect="dark">
+      {{ document?.api?.request?.method }}
+    </el-tag>
+  </div>
 </template>
 
 <script lang="ts">

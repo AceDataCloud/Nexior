@@ -1,7 +1,5 @@
 <template>
   <div class="item">
-    <api-info v-if="api" :api="api" />
-    <el-divider />
     <div class="queries">
       <h2 class="title">{{ $t('api.entity.requestQueries') }}</h2>
       <api-form
@@ -40,8 +38,6 @@ import ApiForm from './Form.vue';
 import ApiResult from './Result.vue';
 import { applicationOperator } from '@/operators/application/operator';
 import { IApplication, IApplicationListResponse } from '@/operators/application/models';
-import { ElDivider } from 'element-plus';
-import ApiInfo from './Info.vue';
 
 export interface IData {
   formValue: IForm;
@@ -53,9 +49,7 @@ export default defineComponent({
   name: 'ApiUsage',
   components: {
     ApiForm,
-    ApiResult,
-    ElDivider,
-    ApiInfo
+    ApiResult
   },
   props: {
     api: {

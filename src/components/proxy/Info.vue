@@ -3,8 +3,7 @@
     {{ proxy?.title }}
   </div>
   <div class="url">
-    <!-- <el-tag class="method" effect="dark">{{ proxy? }}</el-tag> -->
-    <span v-if="proxy?.endpoint && proxy?.path" class="endpoint">{{ urlJoin(proxy?.endpoint, proxy?.path) }}</span>
+    <span v-if="proxy?.endpoint" class="endpoint">{{ proxy?.endpoint }}</span>
   </div>
   <div class="introduction">
     <p>{{ proxy?.introduction }}</p>
@@ -15,12 +14,10 @@
 import { IProxy } from '@/operators';
 import { defineComponent } from 'vue';
 import urlJoin from 'url-join';
-import { ElTag } from 'element-plus';
+
 export default defineComponent({
   name: 'ProxyInfo',
-  components: {
-    // ElTag
-  },
+  components: {},
   props: {
     proxy: {
       type: Object as () => IProxy,
@@ -44,7 +41,7 @@ export default defineComponent({
   margin-bottom: 10px;
   .method {
     border-radius: 10px;
-    padding: 1px 8px;
+    padding: 1px 0px;
     font-size: 10px;
     transform: scale(0.8);
     transform-origin: left;
