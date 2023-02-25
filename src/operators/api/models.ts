@@ -44,6 +44,12 @@ export interface IResponse {
   headers: ISchema;
 }
 
+export interface IPackage {
+  id: string;
+  amount: number;
+  price: number;
+}
+
 export interface IApi {
   id: string;
   path: string;
@@ -62,6 +68,7 @@ export interface IApi {
   document?: IDocument;
   document_id?: string;
   service?: IService;
+  packages?: IPackage[];
   service_id?: string;
   created_at?: string;
   updated_at?: string;

@@ -20,7 +20,6 @@ class DocumentOperator {
   }
 
   async get(id: string, config?: AxiosRequestConfig): Promise<AxiosResponse<IDocumentDetailResponse>> {
-    console.log('sss', config);
     return await httpClient.get(`/${this.key}/${id}`, config);
   }
 

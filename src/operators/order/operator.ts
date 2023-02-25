@@ -4,6 +4,7 @@ import { IOrder, IOrderDetailResponse, IOrderListResponse } from './models';
 
 export interface IOrderQuery {
   user_id?: string;
+  package_id?: string;
   offset?: number;
   limit?: number;
   ordering: string;
