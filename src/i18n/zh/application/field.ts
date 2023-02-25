@@ -9,5 +9,6 @@ export default {
   api: 'API',
   proxy: '代理',
   credential: '密钥',
-  name: '名称'
+  name: '名称',
+  package: '套餐'
 };

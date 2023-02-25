@@ -4,15 +4,41 @@
       <el-form-item v-if="application?.api?.title" :label="$t('application.field.service')">
         {{ application?.api?.title }}
       </el-form-item>
-      <el-form-item :label="$t('application.field.amount')">
+      <el-form-item :label="$t('application.field.package')">
+        <el-radio-group v-if="application.type === applicationType.API" v-model="form.packageId">
+          <el-radio-button v-for="(pkg, pkgIndex) in application?.api?.packages" :key="pkgIndex" :label="pkg.id">
+            {{ pkg.amount }}{{ $t('api.unit.usage') }}
+          </el-radio-button>
+          <el-radio-button label="custom">
+            {{ $t('application.button.custom') }}
+          </el-radio-button>
+        </el-radio-group>
+        <el-radio-group v-else-if="application.type === applicationType.PROXY" v-model="form.packageId">
+          <el-radio-button v-for="(pkg, pkgIndex) in application?.proxy?.packages" :key="pkgIndex" :label="pkg.id">
+            {{ pkg.amount }}{{ $t('proxy.unit.usage') }}
+          </el-radio-button>
+        </el-radio-group>
+      </el-form-item>
+      <el-form-item v-if="form.packageId === 'custom'" :label="$t('application.field.amount')">
         <el-input-number v-model="form.amount" :min="1" :max="10000" controls-position="right" />
       </el-form-item>
       <el-form-item :label="$t('service.field.price')">
-        <service-price :price="application?.api?.price" />
+        <div v-if="application.type === applicationType.API">
+          <api-price v-if="form.packageId === 'custom'" :price="application?.api?.price" :unit="$t('api.unit.usage')" />
+          <api-price v-else :price="package?.price" />
+        </div>
+        <div v-if="application.type === applicationType.PROXY">
+          <proxy-price :price="package?.price" />
+        </div>
       </el-form-item>
       <el-divider />
       <el-form-item :label="$t('application.field.shouldPayPrice')">
-        <span :class="{ price: true, unfree: price > 0 }">¥{{ price.toFixed(2) }}</span>
+        <span v-if="form.packageId === 'custom'" :class="{ price: true, unfree: price > 0, free: price === 0 }">
+          ¥{{ price.toFixed(2) }}
+        </span>
+        <span v-else-if="package" :class="{ price: true, unfree: package?.price > 0, free: package?.price === 0 }">
+          ¥{{ package?.price?.toFixed(2) }}
+        </span>
       </el-form-item>
     </el-form>
     <template #footer>
@@ -27,12 +53,31 @@
 </template>
 
 <script lang="ts">
-import { IApplication, IOrderDetailResponse, orderOperator } from '@/operators';
+import { IApplication, IApplicationType, IOrderDetailResponse, IPackage, orderOperator } from '@/operators';
 import { defineComponent } from 'vue';
 import { ElMessage } from 'element-plus';
 import { ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
-import { ElDialog, ElForm, ElFormItem, ElButton, ElInputNumber, ElDivider } from 'element-plus';
-import ServicePrice from '@/components/service/Price.vue';
+import {
+  ElDialog,
+  ElForm,
+  ElFormItem,
+  ElButton,
+  ElInputNumber,
+  ElDivider,
+  ElRadioGroup,
+  ElRadioButton
+} from 'element-plus';
+import ApiPrice from '@/components/api/Price.vue';
+import ProxyPrice from '@/components/proxy/Price.vue';
+
+interface IData {
+  form: {
+    amount: number;
+    packageId: string | undefined;
+  };
+  creating: boolean;
+  applicationType: typeof IApplicationType;
+}
 
 export default defineComponent({
   name: 'CreateOrderDialog',
@@ -43,7 +88,10 @@ export default defineComponent({
     ElButton,
     ElInputNumber,
     ElDivider,
-    ServicePrice
+    ElRadioGroup,
+    ElRadioButton,
+    ApiPrice,
+    ProxyPrice
   },
   props: {
     application: {
@@ -57,23 +105,68 @@ export default defineComponent({
     }
   },
   emits: ['hide'],
-  data() {
+  data(): IData {
     return {
       form: {
-        amount: 1000
+        amount: 1000,
+        packageId: undefined
       },
-      creating: false
+      creating: false,
+      applicationType: IApplicationType
     };
   },
   computed: {
     price() {
-      if (this.application.api?.price && this.form.amount) {
-        return this.form.amount * this.application.api?.price;
+      if (this.application?.type === IApplicationType.API) {
+        if (this.application.api?.price && this.form.amount) {
+          return this.form.amount * this.application.api?.price;
+        }
+      }
+      if (this.application?.type === IApplicationType.PROXY) {
+        if (this.application.proxy?.price && this.form.amount) {
+          return this.form.amount * this.application.proxy?.price;
+        }
       }
       return 0;
+    },
+    package() {
+      if (this.application?.type === IApplicationType.API) {
+        if (this.application.api?.packages && this.form.packageId) {
+          const filterPackages = this.application.api?.packages.filter((item) => item.id === this.form.packageId);
+          if (filterPackages.length > 0) {
+            return filterPackages[0];
+          }
+        }
+      }
+      if (this.application?.type === IApplicationType.PROXY) {
+        if (this.application.proxy?.packages && this.form.packageId) {
+          const filterPackages = this.application.proxy?.packages.filter((item) => item.id === this.form.packageId);
+          if (filterPackages.length > 0) {
+            return filterPackages[0];
+          }
+        }
+      }
+      return undefined;
+    }
+  },
+  mounted() {
+    if (this.application.type === IApplicationType.API) {
+      if (this.application?.api?.packages && this.application?.api?.packages.length > 0) {
+        this.form.packageId = this.application?.api?.packages[0].id;
+      } else {
+        this.form.packageId = 'custom';
+      }
+    }
+    if (this.application.type === IApplicationType.PROXY) {
+      if (this.application?.proxy?.packages && this.application?.proxy?.packages.length > 0) {
+        this.form.packageId = this.application?.proxy?.packages[0].id;
+      }
     }
   },
   methods: {
+    onChangePackage(pkg: IPackage) {
+      console.log('pkg', pkg);
+    },
     onCreateOrder() {
       if (!this.application?.id) {
         return;
@@ -82,7 +175,12 @@ export default defineComponent({
       orderOperator
         .create({
           application_id: this.application?.id,
-          amount: this.form.amount
+          amount: this.form.amount,
+          ...(this.form.packageId !== 'custom' && this.package
+            ? {
+                package_id: this.package.id
+              }
+            : {})
         })
         .then(({ data: data }: { data: IOrderDetailResponse }) => {
           this.creating = false;
@@ -107,8 +205,11 @@ export default defineComponent({
 .price {
   font-size: 20px;
   font-weight: bold;
-  .unfree {
+  &.unfree {
     color: #ff5441;
+  }
+  &.free {
+    color: #29c287;
   }
 }
 </style>

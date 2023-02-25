@@ -1,3 +1,4 @@
+import { IPackage } from '../api';
 import { IDocument } from '../document';
 import { IService } from '../service';
 
@@ -15,6 +16,7 @@ export interface IProxy {
   document?: IDocument;
   document_id?: string;
   service?: IService;
+  packages?: IPackage[];
   service_id?: string;
   created_at?: string;
   updated_at?: string;

@@ -5,6 +5,7 @@ import console from './console';
 import application from './application';
 import api from './api';
 import order from './order';
+import proxy from './proxy';
 
 export default {
   common,
@@ -13,5 +14,6 @@ export default {
   console,
   application,
   api,
-  order
+  order,
+  proxy
 };

@@ -47,6 +47,7 @@ import { documentOperator, IDocument, IDocumentDetailResponse, IDocumentType } f
 import { IForm } from '@/operators/api/models';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { ElSkeleton, ElDivider } from 'element-plus';
+import axios from 'axios';
 
 export interface IData {
   document: IDocument | undefined;
@@ -110,6 +111,9 @@ export default defineComponent({
           this.document = data;
         })
         .catch((error) => {
+          if (axios.isCancel(error)) {
+            return;
+          }
           this.loading = false;
           console.error(error);
         });
