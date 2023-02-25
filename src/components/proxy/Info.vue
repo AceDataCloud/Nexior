@@ -3,7 +3,7 @@
     {{ proxy?.title }}
   </div>
   <div class="url">
-    <el-tag class="method" effect="dark">{{ proxy?.request?.method }}</el-tag>
+    <!-- <el-tag class="method" effect="dark">{{ proxy? }}</el-tag> -->
     <span v-if="proxy?.endpoint && proxy?.path" class="endpoint">{{ urlJoin(proxy?.endpoint, proxy?.path) }}</span>
   </div>
   <div class="introduction">
@@ -19,7 +19,7 @@ import { ElTag } from 'element-plus';
 export default defineComponent({
   name: 'ProxyInfo',
   components: {
-    ElTag
+    // ElTag
   },
   props: {
     proxy: {

@@ -1,11 +1,12 @@
 import { AxiosResponse } from 'axios';
 import { httpClient } from '../instance';
-import { IApplication, IApplicationDetailResponse, IApplicationListResponse } from './models';
+import { IApplication, IApplicationDetailResponse, IApplicationListResponse, IApplicationType } from './models';
 
 export interface IApplicationQuery {
   user_id?: string;
   offset?: number;
   limit?: number;
+  type?: IApplicationType;
 }
 
 class ApplicationOperator {

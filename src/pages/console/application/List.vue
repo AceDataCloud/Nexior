@@ -9,8 +9,12 @@
       <el-row>
         <el-col :span="24">
           <el-card shadow="hover">
+            <el-menu :default-active="type" class="mb-4" mode="horizontal" @select="onFilterType">
+              <el-menu-item :index="applicationType.API">{{ $t('application.field.api') }}</el-menu-item>
+              <el-menu-item :index="applicationType.PROXY">{{ $t('application.field.proxy') }}</el-menu-item>
+            </el-menu>
             <el-table v-loading="loading" :data="applications" stripe>
-              <el-table-column :label="$t('application.field.api')" width="200px">
+              <el-table-column :label="$t('application.field.name')" width="200px">
                 <template #default="scope">
                   <span v-if="scope.row.type === applicationType.API">{{ scope.row?.api?.title }}</span>
                   <span v-if="scope.row.type === applicationType.PROXY">{{ scope.row?.proxy?.title }}</span>
@@ -89,7 +93,7 @@ import {
 import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import CreateOrder from '@/components/order/Create.vue';
-import { ElTable, ElRow, ElCol, ElTableColumn, ElButton, ElCard } from 'element-plus';
+import { ElTable, ElRow, ElCol, ElTableColumn, ElButton, ElCard, ElMenu, ElMenuItem } from 'element-plus';
 import { ROUTE_DOCUMENT_DETAIL } from '@/router/constants';
 
 interface IData {
@@ -120,7 +124,9 @@ export default defineComponent({
     ElCol,
     ElTableColumn,
     ElButton,
-    ElCard
+    ElCard,
+    ElMenu,
+    ElMenuItem
   },
   data(): IData {
     return {
@@ -146,10 +152,18 @@ export default defineComponent({
     },
     page() {
       return parseInt(this.$route.query.page?.toString() || '1');
+    },
+    type() {
+      return (this.$route.query.type?.toString() || IApplicationType.API) as IApplicationType;
     }
   },
   watch: {
     page: {
+      handler() {
+        this.onFetchData();
+      }
+    },
+    type: {
       handler() {
         this.onFetchData();
       }
@@ -159,6 +173,19 @@ export default defineComponent({
     this.onFetchData();
   },
   methods: {
+    onFilterType(type: string) {
+      if (type === this.type) {
+        return;
+      }
+      this.$router.push({
+        ...this.$route,
+        query: {
+          ...this.$route.query,
+          page: 1,
+          type
+        }
+      });
+    },
     onGoDocument(application: IApplication) {
       const documentId = application?.api?.document_id;
       this.$router.push({
@@ -176,6 +203,7 @@ export default defineComponent({
       this.$router.push({
         name: this.$route.name?.toString(),
         query: {
+          ...this.$route.query,
           page: page
         }
       });
@@ -186,7 +214,8 @@ export default defineComponent({
         .getAll({
           limit: this.limit,
           offset: (this.page - 1) * this.limit,
-          user_id: this.$store.getters.user.id
+          user_id: this.$store.getters.user.id,
+          type: this.type
         })
         .then(({ data: data }: { data: IApplicationListResponse }) => {
           this.applications = data.items;
@@ -209,7 +238,7 @@ export default defineComponent({
   color: #333;
 }
 .el-table {
-  min-height: calc(100vh - 300px);
+  min-height: calc(100vh - 350px);
   margin-bottom: 50px;
 }
 
