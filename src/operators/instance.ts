@@ -4,9 +4,9 @@ import axios, { AxiosInstance } from 'axios';
 
 const httpClient: AxiosInstance = axios.create({
   baseURL: '/api/v1',
-  timeout: 30000,
   headers: {
-    'Content-type': 'application/json'
+    'Content-type': 'application/json',
+    Accept: 'application/json'
   }
 });
 
