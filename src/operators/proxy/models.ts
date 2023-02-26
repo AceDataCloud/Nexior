@@ -2,10 +2,15 @@ import { IPackage } from '../api';
 import { IDocument } from '../document';
 import { IService } from '../service';
 
+export enum IProxyUnit {
+  MB = 'MB'
+}
+
 export interface IProxy {
   id: string;
   path: string;
   endpoint: string;
+  unit?: IProxyUnit;
   price?: number;
   title?: string;
   introduction?: string;

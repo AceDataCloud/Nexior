@@ -50,11 +50,16 @@ export interface IPackage {
   price: number;
 }
 
+export enum IApiUnit {
+  COUNT = 'Count'
+}
+
 export interface IApi {
   id: string;
   path: string;
   endpoint: string;
   price?: number;
+  unit?: IApiUnit;
   title?: string;
   introduction?: string;
   apply_count?: number;

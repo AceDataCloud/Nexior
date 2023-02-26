@@ -7,7 +7,7 @@
       <el-form-item :label="$t('application.field.package')">
         <el-radio-group v-if="application.type === applicationType.API" v-model="form.packageId">
           <el-radio-button v-for="(pkg, pkgIndex) in application?.api?.packages" :key="pkgIndex" :label="pkg.id">
-            {{ pkg.amount }}{{ $t('api.unit.usage') }}
+            {{ pkg.amount }}{{ $t(`api.unit.${application?.api?.unit}`) }}
           </el-radio-button>
           <el-radio-button label="custom">
             {{ $t('application.button.custom') }}
@@ -15,7 +15,7 @@
         </el-radio-group>
         <el-radio-group v-else-if="application.type === applicationType.PROXY" v-model="form.packageId">
           <el-radio-button v-for="(pkg, pkgIndex) in application?.proxy?.packages" :key="pkgIndex" :label="pkg.id">
-            {{ pkg.amount }}{{ $t('proxy.unit.usage') }}
+            {{ pkg.amount }}{{ $t(`proxy.unit.${application?.proxy?.unit}`) }}
           </el-radio-button>
         </el-radio-group>
       </el-form-item>
@@ -24,11 +24,15 @@
       </el-form-item>
       <el-form-item :label="$t('service.field.price')">
         <div v-if="application.type === applicationType.API">
-          <api-price v-if="form.packageId === 'custom'" :price="application?.api?.price" :unit="$t('api.unit.usage')" />
-          <api-price v-else :price="package?.price" />
+          <price
+            v-if="form.packageId === 'custom'"
+            :price="application?.api?.price"
+            :unit="$t(`api.unit.${application?.api?.unit}`)"
+          />
+          <price v-else :price="package?.price" />
         </div>
         <div v-if="application.type === applicationType.PROXY">
-          <proxy-price :price="package?.price" />
+          <price :price="package?.price" />
         </div>
       </el-form-item>
       <el-divider />
@@ -67,8 +71,7 @@ import {
   ElRadioGroup,
   ElRadioButton
 } from 'element-plus';
-import ApiPrice from '@/components/api/Price.vue';
-import ProxyPrice from '@/components/proxy/Price.vue';
+import Price from '@/components/common/Price.vue';
 
 interface IData {
   form: {
@@ -90,8 +93,7 @@ export default defineComponent({
     ElDivider,
     ElRadioGroup,
     ElRadioButton,
-    ApiPrice,
-    ProxyPrice
+    Price
   },
   props: {
     application: {
@@ -149,21 +151,33 @@ export default defineComponent({
       return undefined;
     }
   },
-  mounted() {
-    if (this.application.type === IApplicationType.API) {
-      if (this.application?.api?.packages && this.application?.api?.packages.length > 0) {
-        this.form.packageId = this.application?.api?.packages[0].id;
-      } else {
-        this.form.packageId = 'custom';
-      }
-    }
-    if (this.application.type === IApplicationType.PROXY) {
-      if (this.application?.proxy?.packages && this.application?.proxy?.packages.length > 0) {
-        this.form.packageId = this.application?.proxy?.packages[0].id;
+  watch: {
+    visible: {
+      handler(val) {
+        if (val) {
+          this.onInit();
+        }
       }
     }
   },
+  mounted() {
+    this.onInit();
+  },
   methods: {
+    onInit() {
+      if (this.application.type === IApplicationType.API) {
+        if (this.application?.api?.packages && this.application?.api?.packages.length > 0) {
+          this.form.packageId = this.application?.api?.packages[0].id;
+        } else {
+          this.form.packageId = 'custom';
+        }
+      }
+      if (this.application.type === IApplicationType.PROXY) {
+        if (this.application?.proxy?.packages && this.application?.proxy?.packages.length > 0) {
+          this.form.packageId = this.application?.proxy?.packages[0].id;
+        }
+      }
+    },
     onChangePackage(pkg: IPackage) {
       console.log('pkg', pkg);
     },

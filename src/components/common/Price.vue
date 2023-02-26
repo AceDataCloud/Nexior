@@ -1,8 +1,10 @@
 <template>
   <div class="price-text">
-    <span v-if="price > 0" class="unfree">￥{{ price }} {{ unit ? `/${unit}` : '' }}</span>
+    <span v-if="price > 0" class="unfree"
+      >￥{{ price }} {{ unit ? `/ ${unit}` : '' }}{{ start ? $t('common.message.startPrice') : '' }}</span
+    >
     <span v-else class="free">
-      {{ $t('api.message.free') }}
+      {{ $t('common.message.free') }}
     </span>
   </div>
 </template>
@@ -21,6 +23,11 @@ export default defineComponent({
       type: String,
       required: false,
       default: undefined
+    },
+    start: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   }
 });
