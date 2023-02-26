@@ -1,6 +1,6 @@
 export default {
-  remainingCount: '剩余量',
-  usedCount: '使用量',
+  remainingAmount: '剩余量',
+  usedAmount: '使用量',
   apiKey: 'API Key',
   service: '服务',
   operation: '操作',
