@@ -30,8 +30,8 @@ export interface IApplication {
   proxy_id?: string;
   api_key?: string;
   user_id?: string;
-  remaining_count?: number;
-  used_count?: number;
+  remaining_amount?: number;
+  used_amount?: number;
   credential?: ICredential;
   created_at?: string;
   updated_at?: string;

@@ -21,8 +21,8 @@
                 </template>
               </el-table-column>
               <el-table-column
-                prop="remaining_count"
-                :label="$t('application.field.remainingCount')"
+                prop="remaining_amount"
+                :label="$t('application.field.remainingAmount')"
                 width="100px"
                 class-name="text-center"
               >
@@ -31,8 +31,8 @@
                 </template>
               </el-table-column>
               <el-table-column
-                prop="used_count"
-                :label="$t('application.field.usedCount')"
+                prop="used_amount"
+                :label="$t('application.field.usedAmount')"
                 width="100px"
                 class-name="text-center"
               >
@@ -237,12 +237,12 @@ export default defineComponent({
     getCount(application: IApplication) {
       if (application.type === IApplicationType.API) {
         const unit = this.$t(`api.unit.${application?.api?.unit}`);
-        return `${application.remaining_count}${unit}`;
+        return `${application.remaining_amount}${unit}`;
       }
       if (application.type === IApplicationType.PROXY) {
         const unit = this.$t(`proxy.unit.${application?.proxy?.unit}`);
         if (unit === 'MB') {
-          return `${((application.remaining_count || 0) / 1024 / 1024).toFixed(2)}${unit}`;
+          return `${((application.remaining_amount || 0) / 1024 / 1024).toFixed(2)}${unit}`;
         }
       }
     }
