@@ -1,3 +1,3 @@
 export default {
-  usage: '次'
+  Count: '次'
 };

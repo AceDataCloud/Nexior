@@ -33,7 +33,12 @@
                       {{ order?.application?.proxy?.title }}
                     </el-descriptions-item>
                     <el-descriptions-item :label="$t('order.field.amount')">
-                      {{ order?.amount }}
+                      <span v-if="order?.application?.type === applicationType.API">
+                        {{ order?.amount }}{{ $t(`api.unit.${order?.application?.api?.unit}`) }}
+                      </span>
+                      <span v-if="order?.application?.type === applicationType.PROXY">
+                        {{ order?.amount }}{{ $t(`proxy.unit.${order?.application?.proxy?.unit}`) }}
+                      </span>
                     </el-descriptions-item>
                     <el-descriptions-item :label="$t('order.field.createdAt')">
                       {{ $dayjs.format(order?.created_at) }}

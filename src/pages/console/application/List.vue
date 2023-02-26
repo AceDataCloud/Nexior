@@ -27,7 +27,7 @@
                 class-name="text-center"
               >
                 <template #default="scope">
-                  <span>{{ getRemainingCount(scope.row) }}</span>
+                  <span>{{ getCount(scope.row) }}</span>
                 </template>
               </el-table-column>
               <el-table-column
@@ -35,7 +35,11 @@
                 :label="$t('application.field.usedCount')"
                 width="100px"
                 class-name="text-center"
-              />
+              >
+                <template #default="scope">
+                  <span>{{ getCount(scope.row) }}</span>
+                </template>
+              </el-table-column>
               <el-table-column :label="$t('application.field.credential')" class-name="credential" width="380px">
                 <template #default="scope">
                   <div v-if="scope?.row?.credential?.type === credentialType.TOKEN">
@@ -230,12 +234,16 @@ export default defineComponent({
           this.loading = false;
         });
     },
-    getRemainingCount(application: IApplication) {
+    getCount(application: IApplication) {
       if (application.type === IApplicationType.API) {
-        return application.remaining_count;
+        const unit = this.$t(`api.unit.${application?.api?.unit}`);
+        return `${application.remaining_count}${unit}`;
       }
       if (application.type === IApplicationType.PROXY) {
-        return `${((application.remaining_count || 0) / 1024 / 1024).toFixed(2)}MB`;
+        const unit = this.$t(`proxy.unit.${application?.proxy?.unit}`);
+        if (unit === 'MB') {
+          return `${((application.remaining_count || 0) / 1024 / 1024).toFixed(2)}${unit}`;
+        }
       }
     }
   }

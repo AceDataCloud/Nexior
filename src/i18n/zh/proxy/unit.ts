@@ -1,3 +1,5 @@
 export default {
-  usage: 'MB'
+  MB: 'MB',
+  KB: 'KB',
+  B: 'B'
 };
