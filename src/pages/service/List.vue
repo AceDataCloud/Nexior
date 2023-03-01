@@ -72,7 +72,7 @@ import { serviceOperator, IService, IServiceListResponse } from '@/operators';
 import { defineComponent } from 'vue';
 import Pagination from '@/components/common/Pagination.vue';
 import { ElRow, ElCol, ElButton, ElCard, ElSkeleton, ElImage, ElSkeletonItem } from 'element-plus';
-import ServicePrice from '@/components/api/Price.vue';
+import ServicePrice from '@/components/common/Price.vue';
 
 interface IData {
   services: IService[];
