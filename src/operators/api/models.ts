@@ -18,7 +18,7 @@ export interface ISchema {
     [key: string]: ISchema;
   };
   enum: (string | number)[];
-  type: 'object' | 'array' | 'string' | 'number';
+  type: 'object' | 'array' | 'string' | 'number' | 'boolean';
   title: string;
   optional: boolean;
 }

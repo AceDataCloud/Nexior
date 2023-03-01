@@ -67,6 +67,15 @@
           >
             <el-option v-for="e in item?.enum" :key="e" :label="e" :value="e" />
           </el-select>
+          <el-select
+            v-else-if="item?.type === 'boolean'"
+            v-model="value[itemKey?.toString()]"
+            clearable
+            :placeholder="$t('common.title.placeholderOfSelect')"
+          >
+            <el-option key="true" :label="'true'" :value="true" />
+            <el-option key="false" :label="'false'" :value="false" />
+          </el-select>
           <el-input v-else v-model="value[itemKey?.toString()]" />
         </div>
       </div>
