@@ -21,6 +21,7 @@ export interface ISchema {
   type: 'object' | 'array' | 'string' | 'number' | 'boolean';
   title: string;
   optional: boolean;
+  example: string | number;
 }
 
 export interface IRequest {

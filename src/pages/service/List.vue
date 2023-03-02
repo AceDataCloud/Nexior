@@ -45,7 +45,7 @@
               <el-image class="thumb" :src="service?.thumbnail" />
               <div class="title">{{ service.title }}</div>
               <div class="price">
-                <service-price :price="service?.price" />
+                <service-price :price="service?.price" :unit="$t(`service.unit.${service.unit}`)" />
               </div>
               <div class="description">
                 <p>

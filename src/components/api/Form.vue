@@ -76,6 +76,19 @@
             <el-option key="true" :label="'true'" :value="true" />
             <el-option key="false" :label="'false'" :value="false" />
           </el-select>
+          <el-select
+            v-else-if="item?.example"
+            v-model="value[itemKey?.toString()]"
+            :clearable="true"
+            :filterable="true"
+            :allow-create="true"
+            :placeholder="$t('common.title.placeholderOfSelect')"
+          >
+            <el-option :label="item.example" :value="item.example" class="select-option">
+              <span class="select-option-main">{{ item.example }}</span>
+              <span class="select-option-description">{{ $t('application.message.example') }}</span>
+            </el-option>
+          </el-select>
           <el-input v-else v-model="value[itemKey?.toString()]" />
         </div>
       </div>

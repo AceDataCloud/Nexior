@@ -5,5 +5,6 @@ export default {
   yourApplication: '你的申请',
   unverified: '您需要完成实名认证之后方可申请该服务',
   goVerify: '去实名认证',
-  requiredParameter: '必填参数'
+  requiredParameter: '必填参数',
+  example: '样例'
 };
