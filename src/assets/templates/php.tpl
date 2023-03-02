@@ -6,12 +6,12 @@ $client = new \GuzzleHttp\Client();
 $response = $client->request('{{{method}}}', '{{{url}}}', [
   'body' => '{
 {{#body}}
-    "{{{key}}}": "{{{value}}}"{{^last}},{{/last}}
+    "{{{key}}}": {{{value}}}{{^last}},{{/last}}
 {{/body}}
   }',
   'headers' => [
 {{#headers}}
-    '{{{key}}}': '{{{value}}}'{{^last}},{{/last}}
+    '{{{key}}}': {{{value}}}{{^last}},{{/last}}
 {{/headers}}
   ],
 ]);

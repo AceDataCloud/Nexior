@@ -61,7 +61,7 @@ interface IRenderData {
   }[];
   body: {
     key: string;
-    value: string | object | number | object[];
+    value: string | object | number | object[] | boolean;
   }[];
   method: IRequest['method'] | Lowercase<IRequest['method']> | Uppercase<IRequest['method']>;
   url: string;
@@ -139,9 +139,10 @@ export default defineComponent({
     body() {
       let result = [];
       for (const key in this.form.body) {
+        const value = this.form.body[key];
         result.push({
           key,
-          value: this.form.body[key]
+          value
         });
       }
       if (result.length > 0) {
@@ -155,24 +156,68 @@ export default defineComponent({
     },
     code(): string | undefined {
       let template = undefined;
-      let renderData: IRenderData = {
-        headers: this.headers,
-        body: this.body,
-        url: this.url,
-        method: this.method
-      };
+      let renderData: IRenderData = JSON.parse(
+        JSON.stringify({
+          headers: this.headers,
+          body: this.body,
+          url: this.url,
+          method: this.method
+        })
+      );
       if (this.lang === LANG_PYTHON) {
         template = pythonTemplate;
+        for (const item of renderData.headers) {
+          let value = item.value;
+          item.value = `'${value}'`;
+        }
+        for (const item of renderData.body) {
+          let value = item.value;
+          if (value === true || value === false) {
+            item.value = `${value.toString()[0].toUpperCase() + value.toString().substring(1)}`;
+          } else if (typeof value === 'string') {
+            item.value = `'${value}'`;
+          }
+        }
         renderData = {
           ...renderData,
           method: renderData.method.toLowerCase() as Lowercase<IRenderData['method']>
         };
       } else if (this.lang === LANG_JAVASCRIPT) {
         template = javascriptTemplate;
+        for (const item of renderData.headers) {
+          let value = item.value;
+          item.value = `'${value}'`;
+        }
+        for (const item of renderData.body) {
+          let value = item.value;
+          if (typeof value === 'string') {
+            item.value = `'${value}'`;
+          }
+        }
       } else if (this.lang === LANG_PHP) {
         template = phpTemplate;
+        for (const item of renderData.headers) {
+          let value = item.value;
+          item.value = `'${value}'`;
+        }
+        for (const item of renderData.body) {
+          let value = item.value;
+          if (typeof value === 'string') {
+            item.value = `"${value}"`;
+          }
+        }
       } else if (this.lang === LANG_JAVA) {
         template = javaTemplate;
+        for (const item of renderData.headers) {
+          let value = item.value;
+          item.value = `"${value}"`;
+        }
+        for (const item of renderData.body) {
+          let value = item.value;
+          if (typeof value === 'string') {
+            item.value = `"${value}"`;
+          }
+        }
       }
       if (template) return Mustache.render(template, renderData);
       return undefined;

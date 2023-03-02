@@ -9,7 +9,7 @@ export interface IForm {
     [key: string]: string;
   };
   body?: {
-    [key: string]: string | object | number | object[];
+    [key: string]: string | object | boolean | number | object[];
   };
 }
 
