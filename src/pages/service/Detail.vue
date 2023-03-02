@@ -23,7 +23,10 @@
             <div class="price">
               <p v-if="service && service.price && service.price > 0" class="unfree">
                 <span class="value">￥{{ service.price }}</span>
-                <span class="unit"> / {{ $t('service.unit.usage') }}</span>
+                <span class="unit"> / {{ $t(`service.unit.${service.unit}`) }}</span>
+                <span class="from">
+                  {{ $t('service.message.fromPrice') }}
+                </span>
               </p>
               <p v-else class="free">
                 {{ $t('service.message.free') }}
@@ -337,6 +340,10 @@ export default defineComponent({
           .unit {
             color: white;
           }
+
+          .from {
+            color: white;
+          }
         }
         .free {
           color: #29c287;
@@ -472,6 +479,15 @@ export default defineComponent({
 }
 
 .apis {
+  margin-bottom: 40px;
+  .operations {
+    align-items: center;
+    justify-items: center;
+    display: flex;
+  }
+}
+
+.proxies {
   margin-bottom: 40px;
   .operations {
     align-items: center;
