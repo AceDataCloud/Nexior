@@ -27,7 +27,7 @@
                 class-name="text-center"
               >
                 <template #default="scope">
-                  <span>{{ getCount(scope.row) }}</span>
+                  <span>{{ getRemainingAmount(scope.row) }}</span>
                 </template>
               </el-table-column>
               <el-table-column
@@ -37,7 +37,7 @@
                 class-name="text-center"
               >
                 <template #default="scope">
-                  <span>{{ getCount(scope.row) }}</span>
+                  <span>{{ getUsedAmount(scope.row) }}</span>
                 </template>
               </el-table-column>
               <el-table-column :label="$t('application.field.credential')" class-name="credential" width="380px">
@@ -234,7 +234,7 @@ export default defineComponent({
           this.loading = false;
         });
     },
-    getCount(application: IApplication) {
+    getRemainingAmount(application: IApplication) {
       if (application.type === IApplicationType.API) {
         const unit = this.$t(`api.unit.${application?.api?.unit}`);
         return `${application.remaining_amount}${unit}`;
@@ -243,6 +243,18 @@ export default defineComponent({
         const unit = this.$t(`proxy.unit.${application?.proxy?.unit}`);
         if (unit === 'MB') {
           return `${((application.remaining_amount || 0) / 1024 / 1024).toFixed(2)}${unit}`;
+        }
+      }
+    },
+    getUsedAmount(application: IApplication) {
+      if (application.type === IApplicationType.API) {
+        const unit = this.$t(`api.unit.${application?.api?.unit}`);
+        return `${application.used_amount}${unit}`;
+      }
+      if (application.type === IApplicationType.PROXY) {
+        const unit = this.$t(`proxy.unit.${application?.proxy?.unit}`);
+        if (unit === 'MB') {
+          return `${((application.used_amount || 0) / 1024 / 1024).toFixed(2)}${unit}`;
         }
       }
     }

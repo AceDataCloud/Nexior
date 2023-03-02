@@ -4,13 +4,13 @@ url = '{{{url}}}'
 
 headers = {
 {{#headers}}
-    '{{{key}}}': '{{{value}}}'{{^last}},{{/last}}
+    '{{{key}}}': {{{value}}}{{^last}},{{/last}}
 {{/headers}}
 }
 
 payload = {
 {{#body}}
-    '{{{key}}}': '{{{value}}}'{{^last}},{{/last}}
+    '{{{key}}}': {{{value}}}{{^last}},{{/last}}
 {{/body}}
 }
 

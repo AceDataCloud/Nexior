@@ -36,7 +36,7 @@ import { defineComponent } from 'vue';
 import { ROUTE_CONSOLE_APPLICATION_LIST, ROUTE_CONSOLE_ORDER_LIST, ROUTE_INDEX } from '@/router';
 import { ElRow, ElCol } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { getAuthBaseUrl, getEnv } from '@/utils';
+import { getAuthBaseUrl } from '@/utils';
 
 interface ILink {
   key: string;
