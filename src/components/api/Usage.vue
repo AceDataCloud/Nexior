@@ -82,7 +82,8 @@ export default defineComponent({
     getApplications() {
       applicationOperator
         .getAll({
-          user_id: this.$store.getters.user?.id
+          user_id: this.$store.getters.user?.id,
+          api_id: this.api.id
         })
         .then(({ data: data }: { data: IApplicationListResponse }) => {
           this.applications = data.items;
