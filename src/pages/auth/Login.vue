@@ -19,7 +19,7 @@ export default defineComponent({
     // callback url used to init access token and then redirect back of `redirect`
     const callbackUrl = `${dataBaseUrl}/auth/callback?redirect=${this.redirect}`;
     // redirect to auth service to get access token then redirect back
-    const targetUrl = `${authBaseUrl}?redirect=${callbackUrl}`;
+    const targetUrl = `${authBaseUrl}/auth/login?redirect=${callbackUrl}`;
     window.location.href = targetUrl;
   },
   methods: {}
