@@ -23,7 +23,7 @@
               <el-table-column
                 prop="remaining_amount"
                 :label="$t('application.field.remainingAmount')"
-                width="100px"
+                width="120px"
                 class-name="text-center"
               >
                 <template #default="scope">
@@ -33,7 +33,7 @@
               <el-table-column
                 prop="used_amount"
                 :label="$t('application.field.usedAmount')"
-                width="100px"
+                width="120px"
                 class-name="text-center"
               >
                 <template #default="scope">
@@ -242,7 +242,7 @@ export default defineComponent({
       if (application.type === IApplicationType.PROXY) {
         const unit = this.$t(`proxy.unit.${application?.proxy?.unit}`);
         if (unit === 'MB') {
-          return `${((application.remaining_amount || 0) / 1024 / 1024).toFixed(2)}${unit}`;
+          return `${(application.remaining_amount || 0).toFixed(2)}${unit}`;
         }
       }
     },
