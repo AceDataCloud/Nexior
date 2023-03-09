@@ -63,7 +63,7 @@
               <api-info :api="api" />
             </el-col>
             <el-col :span="4" class="operations">
-              <el-button v-if="!api.applied" type="primary" @click="onApply(api, applicationType.API)">
+              <el-button v-if="!api.applied" type="primary" @click="onConfirm(api, applicationType.API)">
                 {{ $t('common.button.apply') }}
               </el-button>
               <el-button v-else disabled type="primary">
@@ -85,7 +85,7 @@
               <proxy-info :proxy="proxy" />
             </el-col>
             <el-col :span="4" class="operations">
-              <el-button v-if="!proxy.applied" type="primary" @click="onApply(proxy, applicationType.PROXY)">
+              <el-button v-if="!proxy.applied" type="primary" @click="onConfirm(proxy, applicationType.PROXY)">
                 {{ $t('common.button.apply') }}
               </el-button>
               <el-button v-else disabled type="primary">
@@ -98,6 +98,13 @@
       </el-card>
     </el-col>
   </el-row>
+  <application-confirm
+    v-if="confirm.object && confirm.type"
+    v-model.visible="confirming"
+    :object="confirm.object"
+    :type="confirm.type"
+    @apply="onApply(confirm.object!, confirm.type!)"
+  />
 </template>
 
 <script lang="ts">
@@ -120,9 +127,22 @@ import { IApi, IApiListResponse } from '@/operators/api/models';
 import { IApplicationType } from '@/operators/application/models';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { ROUTE_CONSOLE_APPLICATION_LIST } from '@/router';
-import { ElCol, ElRow, ElButton, ElCard, ElDivider, ElSkeleton, ElSkeletonItem } from 'element-plus';
+import {
+  ElCol,
+  ElRow,
+  ElButton,
+  ElCard,
+  ElDivider,
+  ElSkeleton,
+  ElSkeletonItem,
+  ElDialog,
+  ElDescriptions,
+  ElDescriptionsItem,
+  ElCheckbox
+} from 'element-plus';
 import ApiInfo from '@/components/api/Info.vue';
 import ProxyInfo from '@/components/proxy/Info.vue';
+import ApplicationConfirm from '@/components/application/Confirm.vue';
 import { getVerificationUrl } from '@/utils';
 
 interface IData {
@@ -135,6 +155,11 @@ interface IData {
   loadingProxies: boolean;
   activeTab: string;
   applicationType: typeof IApplicationType;
+  confirming: boolean;
+  confirm: {
+    type: IApplicationType | undefined;
+    object: IApi | IProxy | undefined;
+  };
 }
 
 export default defineComponent({
@@ -147,6 +172,7 @@ export default defineComponent({
     ElCard,
     ElDivider,
     ApiInfo,
+    ApplicationConfirm,
     ProxyInfo,
     ElSkeleton,
     ElSkeletonItem
@@ -161,7 +187,12 @@ export default defineComponent({
       loadingApis: false,
       loadingProxies: false,
       activeTab: 'introduction',
-      applicationType: IApplicationType
+      applicationType: IApplicationType,
+      confirming: false,
+      confirm: {
+        object: undefined,
+        type: undefined
+      }
     };
   },
   computed: {
@@ -175,6 +206,7 @@ export default defineComponent({
     this.onFetchProxies();
   },
   methods: {
+    onShowApiPolicy() {},
     onFetchService() {
       this.loading = true;
       serviceOperator.get(this.id).then(({ data: data }: { data: IServiceDetailResponse }) => {
@@ -211,6 +243,11 @@ export default defineComponent({
         left: 0,
         behavior: 'smooth'
       });
+    },
+    onConfirm(obj: IApi | IProxy, type: IApplicationType) {
+      this.confirming = true;
+      this.confirm.object = obj;
+      this.confirm.type = type;
     },
     onApply(obj: IApi | IProxy, type: IApplicationType) {
       applicationOperator
@@ -493,6 +530,13 @@ export default defineComponent({
     align-items: center;
     justify-items: center;
     display: flex;
+  }
+}
+
+.dialog-confirm {
+  .title {
+    font-size: 14px;
+    font-weight: bold;
   }
 }
 </style>

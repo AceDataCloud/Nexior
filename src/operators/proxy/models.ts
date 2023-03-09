@@ -14,8 +14,8 @@ export interface IProxy {
   price?: number;
   title?: string;
   introduction?: string;
-  apply_count?: number;
-  free_count?: number;
+  applied_count?: number;
+  free_amount?: number;
   applied?: boolean;
   tags?: string[];
   document?: IDocument;
