@@ -6,5 +6,9 @@ export default {
   unverified: '您需要完成实名认证之后方可申请该服务',
   goVerify: '去实名认证',
   requiredParameter: '必填参数',
-  example: '样例'
+  example: '样例',
+  readPolicy: '我已阅读并同意',
+  policy: '《数据技术服务使用协议》',
+  notAgreePolicy: '您尚未同意《数据技术服务使用协议》',
+  confirmApplying: '申请服务确认'
 };

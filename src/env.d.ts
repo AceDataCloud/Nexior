@@ -2,6 +2,7 @@
 
 declare module 'element-ui/*';
 declare module '*.mjs';
+declare module '*.md';
 declare module '*.tpl' {
   const value: string;
   export default value;
