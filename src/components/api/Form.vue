@@ -14,7 +14,13 @@
       <div class="right">
         <div v-if="itemKey === 'token'">
           <div v-if="!applied === true">
-            <application-confirm v-model.visible="confirming" :object="api" type="API" @apply="onApply" />
+            <application-confirm
+              v-if="api"
+              v-model.visible="confirming"
+              :object="api"
+              :type="applicationType.API"
+              @apply="onApply"
+            />
             <el-popover placement="bottom" :width="200" :visible="applied === false">
               <p class="text-center mb-2">
                 <small>{{ $t('application.message.notApplied') }}</small>
@@ -65,6 +71,7 @@
           <el-select
             v-if="item?.enum"
             v-model="value[itemKey?.toString()]"
+            :default-first-option="item?.enum?.length === 1"
             clearable
             :placeholder="$t('common.title.placeholderOfSelect')"
           >
@@ -85,7 +92,7 @@
             :clearable="true"
             :filterable="true"
             :allow-create="true"
-            :placeholder="$t('common.title.placeholderOfSelect')"
+            :placeholder="$t('common.title.placeholderOfInput')"
           >
             <el-option :label="item.example" :value="item.example" class="select-option">
               <span class="select-option-main">{{ item.example }}</span>
@@ -114,6 +121,7 @@ interface IData {
     [key: string]: string | number;
   };
   confirming: boolean;
+  applicationType: typeof IApplicationType;
 }
 
 export default defineComponent({
@@ -150,7 +158,8 @@ export default defineComponent({
   data(): IData {
     return {
       value: {},
-      confirming: false
+      confirming: false,
+      applicationType: IApplicationType
     };
   },
   computed: {
