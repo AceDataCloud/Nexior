@@ -127,19 +127,7 @@ import { IApi, IApiListResponse } from '@/operators/api/models';
 import { IApplicationType } from '@/operators/application/models';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { ROUTE_CONSOLE_APPLICATION_LIST } from '@/router';
-import {
-  ElCol,
-  ElRow,
-  ElButton,
-  ElCard,
-  ElDivider,
-  ElSkeleton,
-  ElSkeletonItem,
-  ElDialog,
-  ElDescriptions,
-  ElDescriptionsItem,
-  ElCheckbox
-} from 'element-plus';
+import { ElCol, ElRow, ElButton, ElCard, ElDivider, ElSkeleton, ElSkeletonItem } from 'element-plus';
 import ApiInfo from '@/components/api/Info.vue';
 import ProxyInfo from '@/components/proxy/Info.vue';
 import ApplicationConfirm from '@/components/application/Confirm.vue';

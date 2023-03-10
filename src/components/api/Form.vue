@@ -14,12 +14,15 @@
       <div class="right">
         <div v-if="itemKey === 'token'">
           <div v-if="!applied === true">
+            <application-confirm v-model.visible="confirming" :object="api" type="API" @apply="onApply" />
             <el-popover placement="bottom" :width="200" :visible="applied === false">
               <p class="text-center mb-2">
                 <small>{{ $t('application.message.notApplied') }}</small>
               </p>
               <p class="text-center">
-                <el-button size="small" type="primary" @click="onApply">{{ $t('common.button.apply') }}</el-button>
+                <el-button size="small" type="primary" @click="confirming = true">{{
+                  $t('common.button.apply')
+                }}</el-button>
               </p>
               <template #reference>
                 <el-input
@@ -104,11 +107,13 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ElPopover, ElInput, ElSelect, ElButton, ElTooltip, ElOption, ElMessage } from 'element-plus';
 import { ERROR_CODE_DUPLICATION, ERROR_CODE_UNVERIFIED } from '@/constants/errorCode';
 import { getVerificationUrl } from '@/utils';
+import ApplicationConfirm from '@/components/application/Confirm.vue';
 
 interface IData {
   value: {
     [key: string]: string | number;
   };
+  confirming: boolean;
 }
 
 export default defineComponent({
@@ -120,7 +125,8 @@ export default defineComponent({
     ElSelect,
     ElButton,
     ElTooltip,
-    ElOption
+    ElOption,
+    ApplicationConfirm
   },
   props: {
     schema: {
@@ -143,7 +149,8 @@ export default defineComponent({
   emits: ['update:form', 'refresh-applications'],
   data(): IData {
     return {
-      value: {}
+      value: {},
+      confirming: false
     };
   },
   computed: {
@@ -171,12 +178,14 @@ export default defineComponent({
       this.$emit('refresh-applications');
     },
     onApply() {
+      this.confirming = false;
       applicationOperator
         .create({
           type: IApplicationType.API,
           api_id: this.api?.id
         })
         .then(() => {
+          ElMessage.success(this.$t('application.message.applySuccessfully'));
           this.$emit('refresh-applications');
         })
         .catch((error) => {
