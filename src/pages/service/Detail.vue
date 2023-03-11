@@ -82,7 +82,7 @@
         <div v-for="(proxy, proxyIndex) in proxies" :key="proxyIndex">
           <el-row>
             <el-col :span="20">
-              <proxy-info :proxy="proxy" />
+              <proxy-preview :proxy="proxy" />
             </el-col>
             <el-col :span="4" class="operations">
               <el-button v-if="!proxy.applied" type="primary" @click="onConfirm(proxy, applicationType.PROXY)">
@@ -129,7 +129,7 @@ import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { ROUTE_CONSOLE_APPLICATION_LIST } from '@/router';
 import { ElCol, ElRow, ElButton, ElCard, ElDivider, ElSkeleton, ElSkeletonItem } from 'element-plus';
 import ApiPreview from '@/components/api/Preview.vue';
-import ProxyInfo from '@/components/proxy/Info.vue';
+import ProxyPreview from '@/components/proxy/Preview.vue';
 import ApplicationConfirm from '@/components/application/Confirm.vue';
 import { getVerificationUrl } from '@/utils';
 
@@ -161,7 +161,7 @@ export default defineComponent({
     ElDivider,
     ApiPreview,
     ApplicationConfirm,
-    ProxyInfo,
+    ProxyPreview,
     ElSkeleton,
     ElSkeletonItem
   },
