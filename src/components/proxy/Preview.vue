@@ -71,7 +71,7 @@ interface IData {
 }
 
 export default defineComponent({
-  name: 'ProxyInfo',
+  name: 'ProxyPreview',
   components: {
     ElButton
   },

@@ -71,7 +71,7 @@ interface IData {
 }
 
 export default defineComponent({
-  name: 'ApiInfo',
+  name: 'ApiPreview',
   components: {
     ElButton
   },
