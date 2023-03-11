@@ -60,7 +60,7 @@
         <div v-for="(api, apiIndex) in apis" :key="apiIndex">
           <el-row>
             <el-col :span="20">
-              <api-info :api="api" />
+              <api-preview :api="api" />
             </el-col>
             <el-col :span="4" class="operations">
               <el-button v-if="!api.applied" type="primary" @click="onConfirm(api, applicationType.API)">
@@ -71,7 +71,7 @@
               </el-button>
             </el-col>
           </el-row>
-          <el-divider v-if="apiIndex < apis.length - 1" />
+          <el-divider v-if="apiIndex < apis.length - 1" border-style="dashed" />
         </div>
       </el-card>
     </el-col>
@@ -128,7 +128,7 @@ import { IApplicationType } from '@/operators/application/models';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { ROUTE_CONSOLE_APPLICATION_LIST } from '@/router';
 import { ElCol, ElRow, ElButton, ElCard, ElDivider, ElSkeleton, ElSkeletonItem } from 'element-plus';
-import ApiInfo from '@/components/api/Info.vue';
+import ApiPreview from '@/components/api/Preview.vue';
 import ProxyInfo from '@/components/proxy/Info.vue';
 import ApplicationConfirm from '@/components/application/Confirm.vue';
 import { getVerificationUrl } from '@/utils';
@@ -159,7 +159,7 @@ export default defineComponent({
     ElButton,
     ElCard,
     ElDivider,
-    ApiInfo,
+    ApiPreview,
     ApplicationConfirm,
     ProxyInfo,
     ElSkeleton,

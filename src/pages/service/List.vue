@@ -158,7 +158,7 @@ export default defineComponent({
   height: calc(100vh - 60px);
   background-color: #111827;
   width: 100%;
-  background-image: url('@/assets/images/bg.png');
+  background-image: url('https://zhishuyun-1256437459.cos.ap-beijing.myqcloud.com/background-lines.png');
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
