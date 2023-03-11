@@ -126,7 +126,7 @@ import { apiOperator } from '@/operators/api/operator';
 import { IApi, IApiListResponse } from '@/operators/api/models';
 import { IApplicationType } from '@/operators/application/models';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
-import { ROUTE_CONSOLE_APPLICATION_LIST } from '@/router';
+import { ROUTE_AUTH_LOGIN, ROUTE_CONSOLE_APPLICATION_LIST } from '@/router';
 import { ElCol, ElRow, ElButton, ElCard, ElDivider, ElSkeleton, ElSkeletonItem } from 'element-plus';
 import ApiPreview from '@/components/api/Preview.vue';
 import ProxyPreview from '@/components/proxy/Preview.vue';
@@ -233,6 +233,12 @@ export default defineComponent({
       });
     },
     onConfirm(obj: IApi | IProxy, type: IApplicationType) {
+      if (!this.$store.getters.authenticated) {
+        this.$router.push({
+          name: ROUTE_AUTH_LOGIN,
+          query: { redirect: this.$route.fullPath }
+        });
+      }
       this.confirming = true;
       this.confirm.object = obj;
       this.confirm.type = type;

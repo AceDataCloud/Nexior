@@ -51,8 +51,8 @@ export default {
 }
 
 .main {
-  max-width: 2000px;
-  margin: auto;
+  // max-width: 2000px;
+  // margin: auto;
   .left {
     float: left;
     width: 280px;
