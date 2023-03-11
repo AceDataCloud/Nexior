@@ -51,12 +51,19 @@ export default {
 }
 
 .main {
+  max-width: 2000px;
+  margin: auto;
   .left {
     float: left;
     width: 280px;
     height: 100%;
     padding: 30px;
     box-shadow: 1px 0 0 #eee;
+  }
+  @media (max-width: 999px) {
+    .left {
+      display: none;
+    }
   }
 }
 </style>

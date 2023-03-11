@@ -140,4 +140,32 @@ export default defineComponent({
   padding: 30px;
   box-shadow: -1px 0 0 #eee;
 }
+
+@media (max-width: 1400px) {
+  .center {
+    width: calc(100% - 620px);
+  }
+  .right {
+    width: 340px;
+  }
+}
+
+@media (max-width: 1399px) and (min-width: 1000px) {
+  .center {
+    width: calc(100% - 280px);
+  }
+  .right {
+    display: none;
+  }
+}
+
+@media (max-width: 999px) {
+  .center {
+    width: 100%;
+  }
+
+  .right {
+    display: none;
+  }
+}
 </style>

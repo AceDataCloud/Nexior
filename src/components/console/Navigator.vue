@@ -105,7 +105,7 @@ export default defineComponent({
           name: link.name
         });
       } else if (link.href) {
-        window.location.href = link.href;
+        window.open(link.href, '_blank');
       }
     }
   }
