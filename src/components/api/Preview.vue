@@ -20,7 +20,7 @@
       ref="option"
       :key="pkgIndex"
       type="primary"
-      :plain="activePackage?.id !== pkg.id"
+      :plain="!(activeOption == 'package' && activePackage?.id === pkg.id)"
       class="option"
       @click="
         activeOption = 'package';
