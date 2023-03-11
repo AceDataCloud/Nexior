@@ -54,6 +54,7 @@
             :clearable="true"
             :filterable="true"
             :allow-create="true"
+            class="w-full"
             :placeholder="$t('common.title.placeholderOfSelect')"
           >
             <el-option
@@ -73,6 +74,7 @@
             v-model="value[itemKey?.toString()]"
             :default-first-option="item?.enum?.length === 1"
             clearable
+            class="w-full"
             :placeholder="$t('common.title.placeholderOfSelect')"
           >
             <el-option v-for="e in item?.enum" :key="e" :label="e" :value="e" />
@@ -81,6 +83,7 @@
             v-else-if="item?.type === 'boolean'"
             v-model="value[itemKey?.toString()]"
             clearable
+            class="w-full"
             :placeholder="$t('common.title.placeholderOfSelect')"
           >
             <el-option key="true" :label="'true'" :value="true" />
@@ -92,6 +95,7 @@
             :clearable="true"
             :filterable="true"
             :allow-create="true"
+            class="w-full"
             :placeholder="$t('common.title.placeholderOfInput')"
           >
             <el-option :label="item.example" :value="item.example" class="select-option">
