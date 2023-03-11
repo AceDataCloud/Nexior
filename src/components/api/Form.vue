@@ -119,6 +119,7 @@ import { ElPopover, ElInput, ElSelect, ElButton, ElTooltip, ElOption, ElMessage 
 import { ERROR_CODE_DUPLICATION, ERROR_CODE_UNVERIFIED } from '@/constants/errorCode';
 import { getVerificationUrl } from '@/utils';
 import ApplicationConfirm from '@/components/application/Confirm.vue';
+import { ROUTE_AUTH_LOGIN } from '@/router/constants';
 
 interface IData {
   value: {
