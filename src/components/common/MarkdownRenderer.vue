@@ -30,5 +30,8 @@ export default defineComponent({
 <style lang="scss" scoped>
 .markdown-body {
   background: none;
+  ol {
+    list-style: initial;
+  }
 }
 </style>

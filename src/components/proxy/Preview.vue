@@ -1,5 +1,6 @@
 <template>
   <div class="title">
+    <el-button type="primary" size="small">{{ $t('application.field.proxy') }}</el-button>
     {{ proxy?.title }}
   </div>
   <div class="introduction">
