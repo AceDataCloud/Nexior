@@ -1,5 +1,6 @@
 <template>
   <el-dialog
+    class="dialog-policy"
     :model-value="visible"
     :title="$t('application.message.policy')"
     width="700px"
@@ -38,4 +39,9 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.dialog-policy {
+  height: 400px;
+  overflow-y: scroll;
+}
+</style>
