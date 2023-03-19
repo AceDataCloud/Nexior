@@ -30,6 +30,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .markdown-body {
   background: none;
+  color: var(--el-text-color-primary);
   ol {
     list-style: initial;
   }
