@@ -48,6 +48,7 @@ export default {
 
 .header {
   padding: 0;
+  height: initial;
 }
 
 .main {
@@ -60,7 +61,7 @@ export default {
     padding: 30px;
     box-shadow: 1px 0 0 #eee;
   }
-  @media (max-width: 999px) {
+  @media (max-width: 1200px) {
     .left {
       display: none;
     }

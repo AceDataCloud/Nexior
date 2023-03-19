@@ -141,31 +141,27 @@ export default defineComponent({
   box-shadow: -1px 0 0 #eee;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1199px) and (min-width: 900px) {
   .center {
-    width: calc(100% - 620px);
+    width: calc(100% - 400px);
+    height: fit-content;
   }
   .right {
-    width: 340px;
+    width: 400px;
+    height: fit-content;
   }
 }
 
-@media (max-width: 1399px) and (min-width: 1000px) {
-  .center {
-    width: calc(100% - 280px);
-  }
-  .right {
-    display: none;
-  }
-}
-
-@media (max-width: 999px) {
+@media (max-width: 899px) {
   .center {
     width: 100%;
+    height: fit-content;
   }
 
   .right {
-    display: none;
+    width: 100%;
+    display: block;
+    height: fit-content;
   }
 }
 </style>

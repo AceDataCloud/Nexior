@@ -38,15 +38,9 @@
                 />
               </template>
             </el-popover>
-            <el-tooltip effect="dark" :content="$t('common.button.refresh')" placement="right">
-              <span class="inline-block">
-                <font-awesome-icon
-                  icon="fa-solid fa-rotate-right"
-                  class="text-sm cursor-pointer ml-1 color-primary"
-                  @click="$emit('refresh-applications')"
-                />
-              </span>
-            </el-tooltip>
+            <el-button type="primary" class="ml-1" size="small" @click="$emit('refresh-applications')">
+              {{ $t('common.button.acquire') }}
+            </el-button>
           </div>
           <el-select
             v-else
