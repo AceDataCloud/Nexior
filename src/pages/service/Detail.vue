@@ -2,7 +2,7 @@
   <el-row class="banner">
     <el-col :span="24">
       <el-row>
-        <el-col :span="10" :offset="2" class="left">
+        <el-col :md="10" :offset="2" :xs="24" class="left">
           <div v-if="loading" class="info">
             <el-skeleton animated>
               <template #template>
@@ -39,7 +39,7 @@
             </div>
           </div>
         </el-col>
-        <el-col :span="10" class="right">
+        <el-col :md="10" :xs="0" class="right">
           <div class="demo">
             <img src="@/assets/images/illustration.png" />
           </div>
@@ -403,11 +403,19 @@ export default defineComponent({
     position: relative;
     height: $height;
     min-height: $min-height;
+    padding: 50px;
+    overflow: hidden;
     .demo {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
+      width: 100%;
+      height: 100%;
+      position: relative;
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
     }
   }
 }

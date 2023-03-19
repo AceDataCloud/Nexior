@@ -65,7 +65,7 @@ $width: 300px;
   }
   .header {
     display: block;
-    background-color: white;
+    background: white;
     padding: 15px;
     padding-top: 50px;
     height: fit-content;
