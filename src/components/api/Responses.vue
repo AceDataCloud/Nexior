@@ -28,19 +28,9 @@
             </div>
           </div>
         </div>
-        <div v-if="response?.body?.properties" class="body">
+        <div v-if="response?.body" class="body">
           <h2 class="title">{{ $t('api.entity.responseBody') }}</h2>
-          <div class="properties">
-            <div v-for="(item, itemKey) in response?.body?.properties" :key="itemKey" class="property">
-              <div class="info">
-                <span class="key">{{ itemKey }}</span>
-                <span class="type">{{ item?.type }}</span>
-              </div>
-              <div class="description">
-                {{ item?.title }}
-              </div>
-            </div>
-          </div>
+          <response-body :schema="response?.body" />
         </div>
         <div v-if="response?.example" class="example">
           <h2 class="title">{{ $t('api.entity.responseExample') }}</h2>
@@ -56,6 +46,7 @@ import { defineComponent } from 'vue';
 import { IResponse } from '@/operators/api/models';
 import CodeSnippet from '../common/CodeSnippet.vue';
 import { ElCollapse, ElCollapseItem, ElTag } from 'element-plus';
+import ResponseBody from './ResponseBody.vue';
 
 interface IData {
   value: {
@@ -69,7 +60,8 @@ export default defineComponent({
     CodeSnippet,
     ElCollapse,
     ElCollapseItem,
-    ElTag
+    ElTag,
+    ResponseBody
   },
   props: {
     responses: {

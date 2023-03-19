@@ -10,5 +10,6 @@ export default {
   failure: '失败',
   responseExample: '样例',
   authentication: '认证',
+  arrayOf: '列表',
   apiKey: 'API Key'
 };
