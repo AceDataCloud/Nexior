@@ -3,8 +3,9 @@ import { httpClient } from '../instance';
 import { IApi, IApiDetailResponse, IApiListResponse } from '../api/models';
 
 export interface IApiQuery {
-  limit: number;
-  offset: number;
+  limit?: number;
+  offset?: number;
+  ordering?: string;
 }
 
 class ApiOperator {
@@ -32,8 +33,10 @@ class ApiOperator {
     return await httpClient.delete(`/${this.key}/${id}`);
   }
 
-  async getAllForService(serviceId: string): Promise<AxiosResponse<IApiListResponse>> {
-    return await httpClient.get(`/services/${serviceId}/${this.key}/`);
+  async getAllForService(serviceId: string, query?: IApiQuery): Promise<AxiosResponse<IApiListResponse>> {
+    return await httpClient.get(`/services/${serviceId}/${this.key}/`, {
+      params: query
+    });
   }
 }
 

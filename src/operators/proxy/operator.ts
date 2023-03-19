@@ -3,8 +3,9 @@ import { httpClient } from '../instance';
 import { IProxy, IProxyDetailResponse, IProxyListResponse } from '../proxy/models';
 
 export interface IProxyQuery {
-  limit: number;
-  offset: number;
+  limit?: number;
+  offset?: number;
+  ordering?: string;
 }
 
 class ProxyOperator {
@@ -32,8 +33,10 @@ class ProxyOperator {
     return await httpClient.delete(`/${this.key}/${id}`);
   }
 
-  async getAllForService(serviceId: string): Promise<AxiosResponse<IProxyListResponse>> {
-    return await httpClient.get(`/services/${serviceId}/${this.key}/`);
+  async getAllForService(serviceId: string, query: IProxyQuery): Promise<AxiosResponse<IProxyListResponse>> {
+    return await httpClient.get(`/services/${serviceId}/${this.key}/`, {
+      params: query
+    });
   }
 }
 
