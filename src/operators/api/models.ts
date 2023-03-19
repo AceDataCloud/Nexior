@@ -14,14 +14,15 @@ export interface IForm {
 }
 
 export interface ISchema {
-  properties: {
+  properties?: {
     [key: string]: ISchema;
   };
-  enum: (string | number)[];
+  items?: ISchema[];
+  enum?: (string | number)[];
   type: 'object' | 'array' | 'string' | 'number' | 'boolean';
   title: string;
-  optional: boolean;
-  example: string | number;
+  optional?: boolean;
+  example?: string | number;
 }
 
 export interface IRequest {

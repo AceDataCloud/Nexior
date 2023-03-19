@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <div class="queries">
+    <div v-if="api?.request?.queries" class="queries">
       <h2 class="title">{{ $t('api.entity.requestQueries') }}</h2>
       <api-form
         v-model:form="formValue.queries"
@@ -11,7 +11,7 @@
         @refresh-applications="getApplications"
       />
     </div>
-    <div class="headers">
+    <div v-if="api?.request?.headers" class="headers">
       <h2 class="title">{{ $t('api.entity.requestHeaders') }}</h2>
       <api-form
         v-model:form="formValue.headers"
@@ -20,13 +20,13 @@
         :applications="applications"
       />
     </div>
-    <div class="body">
+    <div v-if="api?.request?.body" class="body">
       <h2 class="title">{{ $t('api.entity.requestBody') }}</h2>
       <api-form v-model:form="formValue.body" :schema="api?.request?.body" :api="api" :applications="applications" />
     </div>
     <div v-if="api?.responses" class="responses">
       <h2 class="title">{{ $t('api.entity.response') }}</h2>
-      <api-result :responses="api?.responses" />
+      <api-responses :responses="api?.responses" />
     </div>
   </div>
 </template>
@@ -35,7 +35,7 @@
 import { defineComponent } from 'vue';
 import { IApi, IForm } from '@/operators/api/models';
 import ApiForm from './Form.vue';
-import ApiResult from './Result.vue';
+import ApiResponses from './Responses.vue';
 import { applicationOperator } from '@/operators/application/operator';
 import { IApplication, IApplicationListResponse } from '@/operators/application/models';
 
@@ -49,7 +49,7 @@ export default defineComponent({
   name: 'ApiUsage',
   components: {
     ApiForm,
-    ApiResult
+    ApiResponses
   },
   props: {
     api: {
