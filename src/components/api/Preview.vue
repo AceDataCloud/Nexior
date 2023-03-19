@@ -52,7 +52,7 @@
       ({{
         $t('api.message.around') +
         '￥' +
-        (activePackage?.price / activePackage?.amount).toFixed(2) +
+        (activePackage?.price / activePackage?.amount).toFixed(4) +
         '/' +
         $t(`api.unit.${api.unit}`)
       }})
