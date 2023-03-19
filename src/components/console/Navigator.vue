@@ -114,7 +114,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .logo {
-  width: 300px;
+  width: 100%;
   height: 60px;
   cursor: pointer;
 }

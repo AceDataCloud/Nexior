@@ -1,41 +1,37 @@
 <template>
-  <el-container id="header" class="header">
-    <el-aside width="250px">
+  <el-row class="header">
+    <el-col :md="4" :xs="24">
       <img src="@/assets/images/logo.svg" class="logo" @click="onHome" />
-    </el-aside>
-    <el-main>
-      <el-row>
-        <el-col :span="20">
-          <el-menu :default-active="active" class="el-menu-demo" mode="horizontal" @select="onSelect">
-            <el-menu-item v-t="'common.nav.service'" index="/services"></el-menu-item>
-            <el-menu-item v-t="'common.nav.document'" index="/documents"></el-menu-item>
-          </el-menu>
-        </el-col>
-        <el-col :span="4">
-          <div v-if="!$store.getters.authenticated" class="mt-4 pr-10">
-            <el-button type="primary" class="float-right" size="small" round @click="onLogin">{{
-              $t('common.button.login')
-            }}</el-button>
-          </div>
-          <div v-else class="float-right">
-            <div class="console" @click="onConsole">
-              {{ $t('common.button.console') }}
-            </div>
-            <el-dropdown trigger="click">
-              <img :src="user?.avatar || defaultAvatar" class="avatar" />
-              <template #dropdown>
-                <el-dropdown-menu>
-                  <el-dropdown-item @click="onProfile">{{ $t('common.button.profile') }}</el-dropdown-item>
-                  <el-dropdown-item @click="onVerify">{{ $t('common.button.verify') }}</el-dropdown-item>
-                  <el-dropdown-item @click="onLogout">{{ $t('common.button.logout') }}</el-dropdown-item>
-                </el-dropdown-menu>
-              </template>
-            </el-dropdown>
-          </div>
-        </el-col>
-      </el-row>
-    </el-main>
-  </el-container>
+    </el-col>
+    <el-col :md="16" :xs="12">
+      <el-menu :default-active="active" class="el-menu-demo" mode="horizontal" @select="onSelect">
+        <el-menu-item v-t="'common.nav.service'" index="/services"></el-menu-item>
+        <el-menu-item v-t="'common.nav.document'" index="/documents"></el-menu-item>
+      </el-menu>
+    </el-col>
+    <el-col :md="4" :xs="12">
+      <div v-if="!$store.getters.authenticated" class="mt-4 pr-10">
+        <el-button type="primary" class="float-right" size="small" round @click="onLogin">{{
+          $t('common.button.login')
+        }}</el-button>
+      </div>
+      <div v-else class="float-right">
+        <div class="console" @click="onConsole">
+          {{ $t('common.button.console') }}
+        </div>
+        <el-dropdown trigger="click">
+          <img :src="user?.avatar || defaultAvatar" class="avatar" />
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item @click="onProfile">{{ $t('common.button.profile') }}</el-dropdown-item>
+              <el-dropdown-item @click="onVerify">{{ $t('common.button.verify') }}</el-dropdown-item>
+              <el-dropdown-item @click="onLogout">{{ $t('common.button.logout') }}</el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+      </div>
+    </el-col>
+  </el-row>
 </template>
 
 <script lang="ts">
@@ -58,9 +54,6 @@ import {
 export default defineComponent({
   name: 'TopHeader',
   components: {
-    ElContainer,
-    ElAside,
-    ElMain,
     ElCol,
     ElRow,
     ElDropdown,
@@ -123,34 +116,32 @@ export default defineComponent({
 <style lang="scss">
 $height: 60px;
 .header {
-  height: $height;
   z-index: 999;
   width: 100%;
   background: radial-gradient(circle at 0 2%, #111827, #1a125d 99%);
   .logo {
     height: $height - 5px;
-    width: 250px;
+    width: 100%;
     cursor: pointer;
   }
-  .el-main {
-    padding: 0;
-    .el-menu {
-      --el-menu-hover-bg-color: rgba(255, 255, 255, 0);
-      --el-menu-active-color: white;
-      background: none;
-      border: none;
-      .el-menu-item {
-        height: $height;
-        color: white;
-        &.is-active {
-          border-bottom: 3px solid var(--el-menu-active-color);
-        }
-        &:hover {
-          border-bottom: 3px solid var(--el-color-primary);
-        }
+
+  .el-menu {
+    --el-menu-hover-bg-color: rgba(255, 255, 255, 0);
+    --el-menu-active-color: white;
+    background: none;
+    border: none;
+    .el-menu-item {
+      height: $height;
+      color: white;
+      &.is-active {
+        border-bottom: 3px solid var(--el-menu-active-color);
+      }
+      &:hover {
+        border-bottom: 3px solid var(--el-color-primary);
       }
     }
   }
+
   .avatar {
     height: 40px;
     border-radius: 50%;
