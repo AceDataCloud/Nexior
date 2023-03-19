@@ -35,5 +35,6 @@ export default {
 
 .header {
   padding: 0;
+  height: initial;
 }
 </style>
