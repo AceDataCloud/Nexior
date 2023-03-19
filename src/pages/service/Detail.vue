@@ -205,7 +205,9 @@ export default defineComponent({
     onFetchApis() {
       this.loadingApis = true;
       apiOperator
-        .getAllForService(this.id)
+        .getAllForService(this.id, {
+          ordering: 'rank'
+        })
         .then(({ data: data }: { data: IApiListResponse }) => {
           this.apis = data.items;
           this.loadingApis = false;
@@ -217,7 +219,9 @@ export default defineComponent({
     onFetchProxies() {
       this.loadingProxies = true;
       proxyOperator
-        .getAllForService(this.id)
+        .getAllForService(this.id, {
+          ordering: 'rank'
+        })
         .then(({ data: data }: { data: IProxyListResponse }) => {
           this.proxies = data.items;
         })

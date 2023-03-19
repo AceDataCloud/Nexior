@@ -8,6 +8,7 @@ export interface IApplicationQuery {
   limit?: number;
   type?: IApplicationType;
   api_id?: string;
+  ordering?: string;
 }
 
 class ApplicationOperator {

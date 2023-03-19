@@ -223,7 +223,8 @@ export default defineComponent({
           limit: this.limit,
           offset: (this.page - 1) * this.limit,
           user_id: this.$store.getters.user.id,
-          type: this.type
+          type: this.type,
+          ordering: '-created_at'
         })
         .then(({ data: data }: { data: IApplicationListResponse }) => {
           this.applications = data.items;
