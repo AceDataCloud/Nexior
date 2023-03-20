@@ -14,7 +14,15 @@
               <el-menu-item :index="applicationType.PROXY">{{ $t('application.field.proxy') }}</el-menu-item>
             </el-menu>
             <el-table v-loading="loading" :data="applications" stripe>
-              <el-table-column :label="$t('application.field.name')" width="200px">
+              <el-table-column prop="id" :label="$t('application.field.id')" width="350px" class-name="text-center">
+                <template #default="scope">
+                  <span>{{ scope.row.id }}</span>
+                  <span class="copy">
+                    <copy-to-clipboard :content="scope?.row?.id" />
+                  </span>
+                </template>
+              </el-table-column>
+              <el-table-column :label="$t('application.field.name')" width="220px">
                 <template #default="scope">
                   <span v-if="scope.row.type === applicationType.API">{{ scope.row?.api?.title }}</span>
                   <span v-if="scope.row.type === applicationType.PROXY">{{ scope.row?.proxy?.title }}</span>

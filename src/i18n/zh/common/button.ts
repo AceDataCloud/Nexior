@@ -23,5 +23,7 @@ export default {
   pay: '支付',
   repay: '继续支付',
   applied: '已申请',
-  acquire: '获取'
+  acquire: '获取',
+  fillExample: '填写样例',
+  buyMore: '购买更多'
 };
