@@ -55,6 +55,9 @@
                     <span class="copy">
                       <copy-to-clipboard :content="scope?.row?.credential?.token" />
                     </span>
+                    <span class="rotate">
+                      <rotate-credential @rotate="onRotateCredential(scope.row)" />
+                    </span>
                   </div>
                   <div v-if="scope?.row?.credential?.type === credentialType.IDENTITY">
                     <span class="key"
@@ -68,7 +71,7 @@
                   </div>
                 </template>
               </el-table-column>
-              <el-table-column>
+              <el-table-column min-width="300px">
                 <template #default="scope">
                   <div class="float-right">
                     <el-button v-if="scope.row?.api?.document_id" @click="onGoDocument(scope?.row)">
@@ -101,6 +104,7 @@ import { defineComponent } from 'vue';
 import {
   applicationOperator,
   IApplication,
+  IApplicationDetailResponse,
   IApplicationListResponse,
   IApplicationType,
   ICredentialType,
@@ -108,8 +112,9 @@ import {
 } from '@/operators';
 import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
+import RotateCredential from '@/components/application/RotateCredential.vue';
 import CreateOrder from '@/components/order/Create.vue';
-import { ElTable, ElRow, ElCol, ElTableColumn, ElButton, ElCard, ElMenu, ElMenuItem } from 'element-plus';
+import { ElTable, ElRow, ElCol, ElTableColumn, ElButton, ElCard, ElMenu, ElMenuItem, ElMessage } from 'element-plus';
 import { ROUTE_DOCUMENT_DETAIL } from '@/router/constants';
 
 interface IData {
@@ -134,6 +139,7 @@ export default defineComponent({
   components: {
     Pagination,
     CopyToClipboard,
+    RotateCredential,
     CreateOrder,
     ElTable,
     ElRow,
@@ -201,6 +207,23 @@ export default defineComponent({
           type
         }
       });
+    },
+    onRotateCredential(application: IApplication) {
+      const id = application.id;
+      if (!id) {
+        ElMessage.error(this.$t('application.message.idDoesNotExist'));
+        return;
+      }
+      applicationOperator
+        .rotateCredential(id)
+        .then(({ data: data }: { data: IApplicationDetailResponse }) => {
+          console.log('rotate successfully');
+          ElMessage.success(this.$t('application.message.rotateCredentialSuccessfully'));
+          application.credential = data.credential;
+        })
+        .catch(() => {
+          ElMessage.error(this.$t('application.message.rotateCredentialFailed'));
+        });
     },
     onGoDocument(application: IApplication) {
       const documentId = application?.api?.document_id;
