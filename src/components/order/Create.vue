@@ -1,5 +1,5 @@
 <template>
-  <el-dialog :model-value="visible" :title="$t('application.title.buyService')" width="60%" center>
+  <el-dialog :model-value="visible" :title="$t('application.title.buyService')" width="500px" center>
     <el-form label-width="120px">
       <el-form-item v-if="application?.api?.title" :label="$t('application.field.service')">
         {{ application?.api?.title }}

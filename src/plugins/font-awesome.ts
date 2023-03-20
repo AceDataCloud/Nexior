@@ -9,6 +9,7 @@ import {
   faCheck as faSolidCheck,
   faCube as faSolidCube,
   faStore as faSolidStore,
+  faArrowsRotate as faSolidArrowsRotate,
   faUpRightFromSquare as faSolidUpRightFromSquare
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -20,3 +21,4 @@ library.add(faRegularIdCard);
 library.add(faSolidCube);
 library.add(faSolidStore);
 library.add(faSolidUpRightFromSquare);
+library.add(faSolidArrowsRotate);

@@ -1,5 +1,5 @@
 <template>
-  <el-dialog :model-value="visible" :title="$t('application.title.buyService')" width="60%" center>
+  <el-dialog :model-value="visible" :title="$t('application.title.buyService')" width="500px" center>
     <el-row class="paycodes">
       <el-col :span="12">
         <div class="paycode wechat">

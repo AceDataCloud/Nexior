@@ -10,5 +10,10 @@ export default {
   readPolicy: '我已阅读并同意',
   policy: '《数据技术服务使用协议》',
   notAgreePolicy: '您尚未同意《数据技术服务使用协议》',
-  confirmApplying: '申请服务确认'
+  confirmApplying: '申请服务确认',
+  rotateCredential: '重置密钥',
+  rotateCredentialConfirm: '你确定要重置密钥吗？重置后不可恢复',
+  idDoesNotExist: '申请不存在',
+  rotateCredentialSuccessfully: '密钥重置成功',
+  rotateCredentialFailed: '密钥重置失败，请联系处理'
 };

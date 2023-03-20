@@ -46,5 +46,6 @@ export default defineComponent({
 .icon-check,
 .icon-copy {
   margin-left: 5px;
+  cursor: pointer;
 }
 </style>

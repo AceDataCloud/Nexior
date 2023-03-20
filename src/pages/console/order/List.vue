@@ -49,7 +49,7 @@
                   </span>
                 </template>
               </el-table-column>
-              <el-table-column>
+              <el-table-column min-width="300px">
                 <template #default="scope">
                   <div class="float-right">
                     <el-button
