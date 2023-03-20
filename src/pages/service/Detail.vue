@@ -72,7 +72,7 @@
                 <el-button disabled>
                   {{ $t('common.button.applied') }}
                 </el-button>
-                <el-button type="primary" @click="$router.push('console-application-list')">
+                <el-button type="primary" @click="onBuyMore">
                   {{ $t('common.button.buyMore') }}
                 </el-button>
               </div>
@@ -243,6 +243,9 @@ export default defineComponent({
         behavior: 'smooth'
       });
     },
+    onBuyMore() {
+      this.$router.push({ name: ROUTE_CONSOLE_APPLICATION_LIST });
+    },
     onConfirm(obj: IApi | IProxy, type: IApplicationType) {
       if (!this.$store.getters.authenticated) {
         this.$router.push({
@@ -284,7 +287,7 @@ export default defineComponent({
             ElMessage.error(this.$t('application.message.alreadyApplied'));
             setTimeout(() => {
               this.$router.push({
-                name: 'console-application-list'
+                name: ROUTE_CONSOLE_APPLICATION_LIST
               });
             }, 2000);
           }
