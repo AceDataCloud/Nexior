@@ -2,7 +2,7 @@
   <el-row class="banner">
     <el-col :span="24">
       <el-row>
-        <el-col :md="10" :offset="2" :xs="24" class="left">
+        <el-col :md="10" :offset="2" :sm="24" :xs="24" class="left">
           <div v-if="loading" class="info">
             <el-skeleton animated>
               <template #template>
@@ -39,7 +39,7 @@
             </div>
           </div>
         </el-col>
-        <el-col :md="10" :xs="0" class="right">
+        <el-col :md="10" :sm="0" :xs="0" class="right">
           <div class="demo">
             <img src="@/assets/images/illustration.png" />
           </div>
@@ -63,12 +63,19 @@
               <api-preview :api="api" />
             </el-col>
             <el-col :span="4" class="operations">
-              <el-button v-if="!api.applied" type="primary" @click="onConfirm(api, applicationType.API)">
-                {{ $t('common.button.apply') }}
-              </el-button>
-              <el-button v-else disabled type="primary">
-                {{ $t('common.button.applied') }}
-              </el-button>
+              <div v-if="!api.applied">
+                <el-button type="primary" @click="onConfirm(api, applicationType.API)">
+                  {{ $t('common.button.apply') }}
+                </el-button>
+              </div>
+              <div v-else>
+                <el-button disabled>
+                  {{ $t('common.button.applied') }}
+                </el-button>
+                <el-button type="primary" @click="$router.push('console-application-list')">
+                  {{ $t('common.button.buyMore') }}
+                </el-button>
+              </div>
             </el-col>
           </el-row>
           <el-divider v-if="apiIndex < apis.length - 1" border-style="dashed" />

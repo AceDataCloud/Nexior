@@ -34,11 +34,11 @@
                 <el-input
                   v-model="value[itemKey?.toString()]"
                   :placeholder="$t('common.title.placeholderOfInput')"
-                  class="inline-block w-4/5"
+                  class="inline-block w-2/3"
                 />
               </template>
             </el-popover>
-            <el-button type="primary" class="ml-1" size="small" @click="$emit('refresh-applications')">
+            <el-button type="primary" class="inline-block ml-2" size="small" @click="$emit('refresh-applications')">
               {{ $t('common.button.acquire') }}
             </el-button>
           </div>
@@ -83,20 +83,21 @@
             <el-option key="true" :label="'true'" :value="true" />
             <el-option key="false" :label="'false'" :value="false" />
           </el-select>
-          <el-select
-            v-else-if="item?.example"
-            v-model="value[itemKey?.toString()]"
-            :clearable="true"
-            :filterable="true"
-            :allow-create="true"
-            class="w-full"
-            :placeholder="$t('common.title.placeholderOfInput')"
-          >
-            <el-option :label="item.example" :value="item.example" class="select-option">
-              <span class="select-option-main">{{ item.example }}</span>
-              <span class="select-option-description">{{ $t('application.message.example') }}</span>
-            </el-option>
-          </el-select>
+          <div v-else-if="item?.example">
+            <el-input
+              v-model="value[itemKey?.toString()]"
+              class="inline-block w-2/3"
+              :placeholder="$t('common.title.placeholderOfInput')"
+            />
+            <el-button
+              type="primary"
+              class="inline-block ml-2"
+              size="small"
+              @click="value[itemKey?.toString()] = item.example!"
+            >
+              {{ $t('common.button.fillExample') }}
+            </el-button>
+          </div>
           <el-input v-else v-model="value[itemKey?.toString()]" />
         </div>
       </div>

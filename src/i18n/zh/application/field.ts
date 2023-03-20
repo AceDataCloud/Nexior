@@ -1,4 +1,5 @@
 export default {
+  id: '申请ID',
   remainingAmount: '剩余量',
   usedAmount: '使用量',
   apiKey: 'API Key',
