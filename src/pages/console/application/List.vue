@@ -115,7 +115,7 @@ import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import RotateCredential from '@/components/application/RotateCredential.vue';
 import CreateOrder from '@/components/order/Create.vue';
 import { ElTable, ElRow, ElCol, ElTableColumn, ElButton, ElCard, ElMenu, ElMenuItem, ElMessage } from 'element-plus';
-import { ROUTE_DOCUMENT_DETAIL } from '@/router/constants';
+import { ROUTE_CONSOLE_APPLICATION_BUY, ROUTE_DOCUMENT_DETAIL } from '@/router/constants';
 
 interface IData {
   applications: IApplication[];
@@ -235,8 +235,14 @@ export default defineComponent({
       });
     },
     onBuyMore(application: IApplication) {
-      this.active.application = application;
-      this.buying = true;
+      // this.active.application = application;
+      // this.buying = true;
+      this.$router.push({
+        name: ROUTE_CONSOLE_APPLICATION_BUY,
+        params: {
+          id: application.id
+        }
+      });
     },
     onPageChange(page: number) {
       this.$router.push({

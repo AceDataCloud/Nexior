@@ -14,6 +14,10 @@
         </span>
       </template>
       <div class="item-body">
+        <div>
+          {{ response.description }}
+        </div>
+        <el-divider class="my-3" />
         <div v-if="response?.headers?.properties" class="headers">
           <h2 class="title">{{ $t('api.entity.responseHeaders') }}</h2>
           <div class="properties">
@@ -45,7 +49,7 @@
 import { defineComponent } from 'vue';
 import { IResponse } from '@/operators/api/models';
 import CodeSnippet from '../common/CodeSnippet.vue';
-import { ElCollapse, ElCollapseItem, ElTag } from 'element-plus';
+import { ElCollapse, ElCollapseItem, ElTag, ElDivider } from 'element-plus';
 import ResponseBody from './ResponseBody.vue';
 
 interface IData {
@@ -61,7 +65,8 @@ export default defineComponent({
     ElCollapse,
     ElCollapseItem,
     ElTag,
-    ResponseBody
+    ResponseBody,
+    ElDivider
   },
   props: {
     responses: {

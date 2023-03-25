@@ -65,6 +65,7 @@ export interface IApi {
   title?: string;
   introduction?: string;
   applied_count?: number;
+  application_id?: string;
   free_amount?: number;
   applied?: boolean;
   tags?: string[];

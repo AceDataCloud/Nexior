@@ -5,5 +5,6 @@ export default {
   placeholderOfInput: '请填写',
   allApplications: '所有申请',
   allOrders: '所有订单',
-  orderInfo: '订单信息'
+  orderInfo: '订单信息',
+  buyMore: '购买更多'
 };
