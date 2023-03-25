@@ -12,6 +12,7 @@
         <api-info v-if="document.api" :api="document.api" />
         <el-divider />
         <api-usage v-if="document.api" v-model:form="form" :api="document.api" />
+        <markdown-renderer :content="document?.content" />
       </div>
       <div v-else-if="document.type === documentType.PROXY">
         <proxy-info v-if="document.proxy" :proxy="document.proxy" />

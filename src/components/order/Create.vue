@@ -1,59 +1,54 @@
 <template>
-  <el-dialog :model-value="visible" :title="$t('application.title.buyService')" width="500px" center>
-    <el-form label-width="120px">
-      <el-form-item v-if="application?.api?.title" :label="$t('application.field.service')">
-        {{ application?.api?.title }}
-      </el-form-item>
-      <el-form-item :label="$t('application.field.package')">
-        <el-radio-group v-if="application.type === applicationType.API" v-model="form.packageId">
-          <el-radio-button v-for="(pkg, pkgIndex) in application?.api?.packages" :key="pkgIndex" :label="pkg.id">
-            {{ pkg.amount }}{{ $t(`api.unit.${application?.api?.unit}`) }}
-          </el-radio-button>
-          <el-radio-button label="custom">
-            {{ $t('application.button.custom') }}
-          </el-radio-button>
-        </el-radio-group>
-        <el-radio-group v-else-if="application.type === applicationType.PROXY" v-model="form.packageId">
-          <el-radio-button v-for="(pkg, pkgIndex) in application?.proxy?.packages" :key="pkgIndex" :label="pkg.id">
-            {{ pkg.amount }}{{ $t(`proxy.unit.${application?.proxy?.unit}`) }}
-          </el-radio-button>
-        </el-radio-group>
-      </el-form-item>
-      <el-form-item v-if="form.packageId === 'custom'" :label="$t('application.field.amount')">
-        <el-input-number v-model="form.amount" :min="1" :max="10000" controls-position="right" />
-      </el-form-item>
-      <el-form-item :label="$t('service.field.price')">
-        <div v-if="application.type === applicationType.API">
-          <price
-            v-if="form.packageId === 'custom'"
-            :price="application?.api?.price"
-            :unit="$t(`api.unit.${application?.api?.unit}`)"
-          />
-          <price v-else :price="package?.price" />
-        </div>
-        <div v-if="application.type === applicationType.PROXY">
-          <price :price="package?.price" />
-        </div>
-      </el-form-item>
-      <el-divider />
-      <el-form-item :label="$t('application.field.shouldPayPrice')">
-        <span v-if="form.packageId === 'custom'" :class="{ price: true, unfree: price > 0, free: price === 0 }">
-          ¥{{ price.toFixed(2) }}
-        </span>
-        <span v-else-if="package" :class="{ price: true, unfree: package?.price > 0, free: package?.price === 0 }">
-          ¥{{ package?.price?.toFixed(2) }}
-        </span>
-      </el-form-item>
-    </el-form>
-    <template #footer>
-      <span class="dialog-footer">
-        <el-button @click="$emit('hide')">{{ $t('common.button.cancel') }}</el-button>
-        <el-button type="primary" :loading="creating" @click="onCreateOrder">
-          {{ $t('application.button.createOrder') }}
-        </el-button>
+  <el-form label-width="100px">
+    <el-form-item v-if="application?.api?.title" :label="$t('application.field.service')">
+      {{ application?.api?.title }}
+    </el-form-item>
+    <el-form-item :label="$t('application.field.package')">
+      <el-radio-group v-if="application.type === applicationType.API" v-model="form.packageId">
+        <el-radio-button v-for="(pkg, pkgIndex) in application?.api?.packages" :key="pkgIndex" :label="pkg.id">
+          {{ pkg.amount }}{{ $t(`api.unit.${application?.api?.unit}`) }}
+        </el-radio-button>
+        <el-radio-button label="custom">
+          {{ $t('application.button.custom') }}
+        </el-radio-button>
+      </el-radio-group>
+      <el-radio-group v-else-if="application.type === applicationType.PROXY" v-model="form.packageId">
+        <el-radio-button v-for="(pkg, pkgIndex) in application?.proxy?.packages" :key="pkgIndex" :label="pkg.id">
+          {{ pkg.amount }}{{ $t(`proxy.unit.${application?.proxy?.unit}`) }}
+        </el-radio-button>
+      </el-radio-group>
+    </el-form-item>
+    <el-form-item v-if="form.packageId === 'custom'" :label="$t('application.field.amount')">
+      <el-input-number v-model="form.amount" :min="1" :max="10000" controls-position="right" />
+    </el-form-item>
+    <el-form-item :label="$t('service.field.price')">
+      <div v-if="application.type === applicationType.API">
+        <price
+          v-if="form.packageId === 'custom'"
+          :price="application?.api?.price"
+          :unit="$t(`api.unit.${application?.api?.unit}`)"
+        />
+        <price v-else :price="package?.price" />
+      </div>
+      <div v-if="application.type === applicationType.PROXY">
+        <price :price="package?.price" />
+      </div>
+    </el-form-item>
+    <el-divider border-style="dashed" />
+    <el-form-item :label="$t('application.field.shouldPayPrice')">
+      <span v-if="form.packageId === 'custom'" :class="{ price: true, unfree: price > 0, free: price === 0 }">
+        ¥{{ price.toFixed(2) }}
       </span>
-    </template>
-  </el-dialog>
+      <span v-else-if="package" :class="{ price: true, unfree: package?.price > 0, free: package?.price === 0 }">
+        ¥{{ package?.price?.toFixed(2) }}
+      </span>
+    </el-form-item>
+    <el-form-item>
+      <el-button type="primary" size="large" class="btn-create" :loading="creating" @click="onCreateOrder">
+        {{ $t('application.button.createOrder') }}
+      </el-button>
+    </el-form-item>
+  </el-form>
 </template>
 
 <script lang="ts">
@@ -85,11 +80,10 @@ interface IData {
 export default defineComponent({
   name: 'CreateOrderDialog',
   components: {
-    ElDialog,
     ElForm,
     ElFormItem,
-    ElButton,
     ElInputNumber,
+    ElButton,
     ElDivider,
     ElRadioGroup,
     ElRadioButton,
@@ -99,14 +93,8 @@ export default defineComponent({
     application: {
       type: Object as () => IApplication,
       required: true
-    },
-    visible: {
-      type: Boolean,
-      required: false,
-      default: false
     }
   },
-  emits: ['hide'],
   data(): IData {
     return {
       form: {
@@ -149,15 +137,6 @@ export default defineComponent({
         }
       }
       return undefined;
-    }
-  },
-  watch: {
-    visible: {
-      handler(val) {
-        if (val) {
-          this.onInit();
-        }
-      }
     }
   },
   mounted() {
@@ -225,5 +204,9 @@ export default defineComponent({
   &.free {
     color: #29c287;
   }
+}
+
+.btn-create {
+  width: 150px;
 }
 </style>
