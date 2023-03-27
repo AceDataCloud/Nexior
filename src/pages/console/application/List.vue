@@ -13,7 +13,7 @@
               <el-menu-item :index="applicationType.API">{{ $t('application.field.api') }}</el-menu-item>
               <el-menu-item :index="applicationType.PROXY">{{ $t('application.field.proxy') }}</el-menu-item>
             </el-menu>
-            <el-table v-loading="loading" :data="applications" stripe>
+            <el-table v-loading="loading" :data="applications" stripe table-layout="fixed">
               <el-table-column prop="id" :label="$t('application.field.id')" width="350px" class-name="text-center">
                 <template #default="scope">
                   <span>{{ scope.row.id }}</span>
@@ -71,7 +71,7 @@
                   </div>
                 </template>
               </el-table-column>
-              <el-table-column min-width="300px">
+              <el-table-column fixed="right" width="220px">
                 <template #default="scope">
                   <div class="float-right">
                     <el-button v-if="scope.row?.api?.document_id" @click="onGoDocument(scope?.row)">

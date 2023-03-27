@@ -1,7 +1,12 @@
 <template>
   <el-form label-width="100px">
-    <el-form-item v-if="application?.api?.title" :label="$t('application.field.service')">
-      {{ application?.api?.title }}
+    <el-form-item :label="$t('application.field.service')">
+      <span v-if="application.type === applicationType.API">
+        {{ application?.api?.title }}
+      </span>
+      <span v-if="application.type === applicationType.PROXY">
+        {{ application?.proxy?.title }}
+      </span>
     </el-form-item>
     <el-form-item :label="$t('application.field.package')">
       <el-radio-group v-if="application.type === applicationType.API" v-model="form.packageId">
@@ -56,16 +61,7 @@ import { IApplication, IApplicationType, IOrderDetailResponse, IPackage, orderOp
 import { defineComponent } from 'vue';
 import { ElMessage } from 'element-plus';
 import { ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
-import {
-  ElDialog,
-  ElForm,
-  ElFormItem,
-  ElButton,
-  ElInputNumber,
-  ElDivider,
-  ElRadioGroup,
-  ElRadioButton
-} from 'element-plus';
+import { ElForm, ElFormItem, ElButton, ElInputNumber, ElDivider, ElRadioGroup, ElRadioButton } from 'element-plus';
 import Price from '@/components/common/Price.vue';
 
 interface IData {

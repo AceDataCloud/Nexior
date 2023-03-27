@@ -69,11 +69,11 @@
                 </el-button>
               </div>
               <div v-else>
-                <el-button disabled>
-                  {{ $t('common.button.applied') }}
+                <el-button v-if="api?.document_id" @click="onGoDocument(api?.document_id!)">
+                  {{ $t('application.button.goDocument') }}
                 </el-button>
                 <el-button v-if="api?.application_id" type="primary" @click="onBuyMore(api?.application_id!)">
-                  {{ $t('common.button.buyMore') }}
+                  {{ $t('application.button.buyMore') }}
                 </el-button>
               </div>
             </el-col>
@@ -92,12 +92,19 @@
               <proxy-preview :proxy="proxy" />
             </el-col>
             <el-col :span="4" class="operations">
-              <el-button v-if="!proxy.applied" type="primary" @click="onConfirm(proxy, applicationType.PROXY)">
-                {{ $t('common.button.apply') }}
-              </el-button>
-              <el-button v-else disabled type="primary">
-                {{ $t('common.button.applied') }}
-              </el-button>
+              <div v-if="!proxy.applied">
+                <el-button type="primary" @click="onConfirm(proxy, applicationType.PROXY)">
+                  {{ $t('common.button.apply') }}
+                </el-button>
+              </div>
+              <div v-else>
+                <el-button v-if="proxy?.document_id" @click="onGoDocument(proxy?.document_id!)">
+                  {{ $t('application.button.goDocument') }}
+                </el-button>
+                <el-button v-if="proxy?.application_id" type="primary" @click="onBuyMore(proxy?.application_id!)">
+                  {{ $t('application.button.buyMore') }}
+                </el-button>
+              </div>
             </el-col>
           </el-row>
           <el-divider v-if="proxyIndex < apis.length - 1" />
@@ -133,7 +140,12 @@ import { apiOperator } from '@/operators/api/operator';
 import { IApi, IApiListResponse } from '@/operators/api/models';
 import { IApplicationType } from '@/operators/application/models';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
-import { ROUTE_AUTH_LOGIN, ROUTE_CONSOLE_APPLICATION_BUY, ROUTE_CONSOLE_APPLICATION_LIST } from '@/router';
+import {
+  ROUTE_AUTH_LOGIN,
+  ROUTE_CONSOLE_APPLICATION_BUY,
+  ROUTE_CONSOLE_APPLICATION_LIST,
+  ROUTE_DOCUMENT_DETAIL
+} from '@/router';
 import { ElCol, ElRow, ElButton, ElCard, ElDivider, ElSkeleton, ElSkeletonItem } from 'element-plus';
 import ApiPreview from '@/components/api/Preview.vue';
 import ProxyPreview from '@/components/proxy/Preview.vue';
@@ -261,6 +273,14 @@ export default defineComponent({
       this.confirming = true;
       this.confirm.object = obj;
       this.confirm.type = type;
+    },
+    onGoDocument(documentId: string) {
+      this.$router.push({
+        name: ROUTE_DOCUMENT_DETAIL,
+        params: {
+          id: documentId
+        }
+      });
     },
     onApply(obj: IApi | IProxy, type: IApplicationType) {
       applicationOperator

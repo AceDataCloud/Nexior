@@ -17,6 +17,7 @@ export interface IProxy {
   applied_count?: number;
   free_amount?: number;
   applied?: boolean;
+  application_id?: string;
   tags?: string[];
   document?: IDocument;
   document_id?: string;
