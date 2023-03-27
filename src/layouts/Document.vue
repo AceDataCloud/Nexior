@@ -13,6 +13,7 @@
         </el-col>
       </el-row>
     </el-main>
+    <help-entry class="help" />
     <el-footer class="footer">
       <bottom-footer />
     </el-footer>
@@ -24,6 +25,7 @@ import TopHeader from '@/components/common/TopHeader.vue';
 import BottomFooter from '@/components/common/BottomFooter.vue';
 import DocumentList from '@/components/document/List.vue';
 import { ElContainer, ElMain, ElFooter, ElHeader, ElRow, ElCol } from 'element-plus';
+import HelpEntry from '@/components/common/HelpEntry.vue';
 
 export default {
   name: 'LayoutCourse',
@@ -36,7 +38,8 @@ export default {
     ElFooter,
     ElHeader,
     ElRow,
-    ElCol
+    ElCol,
+    HelpEntry
   }
 };
 </script>
@@ -66,5 +69,11 @@ export default {
       display: none;
     }
   }
+}
+
+.help {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
 }
 </style>

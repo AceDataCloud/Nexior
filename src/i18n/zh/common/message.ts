@@ -4,5 +4,6 @@ export default {
   alert: '警告',
   info: '温馨提示',
   free: '免费',
-  startPrice: '起'
+  startPrice: '起',
+  helpWechat: '客服微信'
 };
