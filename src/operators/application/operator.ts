@@ -39,6 +39,10 @@ class ApplicationOperator {
   async rotateCredential(id: string): Promise<AxiosResponse<IApplicationDetailResponse>> {
     return await httpClient.post(`/${this.key}/${id}/rotate-credential/`);
   }
+
+  async updateRemainingAmount(id: string, data: IApplication): Promise<AxiosResponse<IApplicationDetailResponse>> {
+    return await httpClient.post(`/${this.key}/${id}/update-remaining-amount/`, data);
+  }
 }
 
 export const applicationOperator = new ApplicationOperator();

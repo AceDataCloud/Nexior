@@ -1,4 +1,5 @@
 import {
+  ROUTE_CONSOLE_ADMIN_APPLICATION,
   ROUTE_CONSOLE_APPLICATION_BUY,
   ROUTE_CONSOLE_APPLICATION_LIST,
   ROUTE_CONSOLE_ORDER_DETAIL,
@@ -39,6 +40,11 @@ export default {
       path: 'applications/:id/buy',
       name: ROUTE_CONSOLE_APPLICATION_BUY,
       component: () => import('@/pages/console/application/Buy.vue')
+    },
+    {
+      path: 'admin/application',
+      name: ROUTE_CONSOLE_ADMIN_APPLICATION,
+      component: () => import('@/pages/console/admin/Application.vue')
     }
   ]
 };

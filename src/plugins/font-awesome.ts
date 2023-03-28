@@ -8,6 +8,7 @@ import {
   faRotateRight as faSolidRotateRight,
   faCheck as faSolidCheck,
   faCube as faSolidCube,
+  faCubes as faSolidCubes,
   faStore as faSolidStore,
   faQuestion as faSolidQuestion,
   faArrowsRotate as faSolidArrowsRotate,
@@ -20,6 +21,7 @@ library.add(faSolidCheck);
 library.add(faRegularUser);
 library.add(faRegularIdCard);
 library.add(faSolidCube);
+library.add(faSolidCubes);
 library.add(faSolidStore);
 library.add(faSolidQuestion);
 library.add(faSolidUpRightFromSquare);

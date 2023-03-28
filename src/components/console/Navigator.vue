@@ -33,7 +33,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ROUTE_CONSOLE_APPLICATION_LIST, ROUTE_CONSOLE_ORDER_LIST, ROUTE_INDEX } from '@/router';
+import {
+  ROUTE_CONSOLE_ADMIN_APPLICATION,
+  ROUTE_CONSOLE_APPLICATION_LIST,
+  ROUTE_CONSOLE_ORDER_LIST,
+  ROUTE_INDEX
+} from '@/router';
 import { ElRow, ElCol } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getAuthBaseUrl } from '@/utils';
@@ -44,10 +49,7 @@ interface ILink {
   name?: string;
   href?: string;
   icon: string;
-}
-
-interface IData {
-  links: ILink[];
+  admin?: boolean;
 }
 
 export default defineComponent({
@@ -57,9 +59,15 @@ export default defineComponent({
     ElCol,
     FontAwesomeIcon
   },
-  data(): IData {
-    return {
-      links: [
+  computed: {
+    active() {
+      return this.$route.matched[0].path;
+    },
+    user() {
+      return this.$store.getters.user;
+    },
+    links(): ILink[] {
+      let commonLinks: ILink[] = [
         {
           key: 'profile',
           text: this.$t('console.menu.userProfile'),
@@ -84,12 +92,19 @@ export default defineComponent({
           name: ROUTE_CONSOLE_ORDER_LIST,
           icon: 'fa-solid fa-store'
         }
-      ]
-    };
-  },
-  computed: {
-    active() {
-      return this.$route.matched[0].path;
+      ];
+      let adminLinks: ILink[] = [
+        {
+          key: 'admin-application',
+          text: this.$t('console.menu.manageApplication'),
+          name: ROUTE_CONSOLE_ADMIN_APPLICATION,
+          icon: 'fa-solid fa-cubes'
+        }
+      ];
+      if (this.user.is_superuser) {
+        return [...commonLinks, ...adminLinks];
+      }
+      return commonLinks;
     }
   },
   mounted() {},
