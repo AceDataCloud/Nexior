@@ -25,5 +25,6 @@ export default {
   applied: '已申请',
   acquire: '获取',
   fillExample: '填写样例',
-  buyMore: '购买更多'
+  buyMore: '购买更多',
+  update: '更新'
 };

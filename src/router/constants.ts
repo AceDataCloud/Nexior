@@ -8,6 +8,7 @@ export const ROUTE_CONSOLE_ORDER_LIST = 'console-order-list';
 export const ROUTE_CONSOLE_ORDER_DETAIL = 'console-order-detail';
 export const ROUTE_CONSOLE_APPLICATION_LIST = 'console-application-list';
 export const ROUTE_CONSOLE_APPLICATION_BUY = 'console-application-buy';
+export const ROUTE_CONSOLE_ADMIN_APPLICATION = 'console-application-admin-application';
 
 export const ROUTE_DOCUMENT_LIST = 'document-list';
 export const ROUTE_DOCUMENT_DETAIL = 'document-detail';

@@ -15,5 +15,7 @@ export default {
   rotateCredentialConfirm: '你确定要重置密钥吗？重置后不可恢复',
   idDoesNotExist: '申请不存在',
   rotateCredentialSuccessfully: '密钥重置成功',
-  rotateCredentialFailed: '密钥重置失败，请联系处理'
+  rotateCredentialFailed: '密钥重置失败，请联系处理',
+  updateFailed: '修改失败',
+  updateSuccessfully: '修改成功'
 };
