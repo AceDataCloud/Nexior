@@ -8,7 +8,7 @@ import { getEnv } from './env';
 export const getDataBaseUrl = () => {
   const env = getEnv();
   if (env === ENV_LOCAL) {
-    return 'https://data.local.zhishuyun.com';
+    return 'https://chat.local.zhishuyun.com';
   } else if (env === ENV_TEST) {
     return 'https://data.test.zhishuyun.com';
   } else {

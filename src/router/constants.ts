@@ -12,6 +12,8 @@ export const ROUTE_CONSOLE_ADMIN_APPLICATION = 'console-application-admin-applic
 
 export const ROUTE_DOCUMENT_LIST = 'document-list';
 export const ROUTE_DOCUMENT_DETAIL = 'document-detail';
+export const ROUTE_CONVERSATION_NEW = 'conversation-new';
+export const ROUTE_CONVERSATION_DETAIL = 'conversation-detail';
 
 export const ROUTE_SERVICE_LIST = 'service-list';
 export const ROUTE_SERVICE_DETAIL = 'service-detail';

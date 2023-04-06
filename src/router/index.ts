@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import service from './service';
 import auth from './auth';
 import console from './console';
+import conversation from './conversation';
 import document from './document';
 import store from '@/store';
 import { ROUTE_AUTH_LOGIN, ROUTE_INDEX, ROUTE_SERVICE_LIST } from './constants';
@@ -17,7 +18,8 @@ const routes = [
   service,
   auth,
   console,
-  document
+  document,
+  conversation
 ];
 
 const router = createRouter({
