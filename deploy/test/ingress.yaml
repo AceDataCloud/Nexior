@@ -10,10 +10,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - data.test.zhishuyun.com
+        - chat.test.zhishuyun.com
       secretName: tls-wildcard-test-zhishuyun-com
   rules:
-    - host: data.test.zhishuyun.com
+    - host: chat.test.zhishuyun.com
       http:
         paths:
           - backend:
