@@ -1,23 +1,17 @@
 <template>
   <div class="container">
-    <el-aside class="aside">
-      <navigator />
-    </el-aside>
     <el-main class="main"> <router-view /> </el-main>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Navigator from '@/components/console/Navigator.vue';
 import { ElMain, ElAside } from 'element-plus';
 
 export default defineComponent({
-  name: 'LayoutConsole',
+  name: 'LayoutConversation',
   components: {
-    Navigator,
-    ElMain,
-    ElAside
+    ElMain
   }
 });
 </script>

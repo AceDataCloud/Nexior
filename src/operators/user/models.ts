@@ -10,6 +10,15 @@ export interface IUser {
   province?: string;
   country?: string;
   avatar?: string;
+  type: 'user';
+}
+
+export interface IBot {
+  id?: string;
+  username?: string;
+  nickname?: string;
+  avatar?: string;
+  type: 'bot';
 }
 
 export interface IUserDetailResponse extends IUser {}

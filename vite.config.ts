@@ -31,11 +31,11 @@ const getDataEndpoint = () => {
 
 export default defineConfig({
   server: {
-    host: 'data.local.zhishuyun.com',
+    host: 'chat.local.zhishuyun.com',
     port: 443,
     https: {
-      key: fs.readFileSync('certs/data.local.zhishuyun.com.cert.key'),
-      cert: fs.readFileSync('certs/data.local.zhishuyun.com.cert.crt')
+      key: fs.readFileSync('certs/chat.local.zhishuyun.com.cert.key'),
+      cert: fs.readFileSync('certs/chat.local.zhishuyun.com.cert.crt')
     },
     proxy: {
       '/api/v1/me': {
