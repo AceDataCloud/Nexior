@@ -1,7 +1,11 @@
 <template>
-  <el-input v-model="value" placeholder="Type something">
+  <el-input
+    v-model="value"
+    :placeholder="$t('conversation.message.newMessagePlaceholder')"
+    @keyup.enter="$emit('send')"
+  >
     <template #suffix>
-      <el-icon class="el-input__icon" @click="$emit('send')">send</el-icon>
+      <font-awesome-icon icon="fa-regular fa-paper-plane" class="icon-send" @click="$emit('send')" />
     </template>
   </el-input>
 </template>
@@ -9,11 +13,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElInput, ElButton, ElIcon } from 'element-plus';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
 export default defineComponent({
   name: 'NewMessageBox',
   components: {
     ElInput,
-    ElIcon
+    ElIcon,
+    FontAwesomeIcon
   },
   props: {
     modelValue: {
@@ -34,9 +41,19 @@ export default defineComponent({
   },
   watch: {
     value(val) {
-      console.log('ccc', this.value);
       this.$emit('update:modelValue', this.value);
+    },
+    modelValue(val) {
+      if (val !== this.value) {
+        this.value = val;
+      }
     }
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.icon-send {
+  cursor: pointer;
+}
+</style>

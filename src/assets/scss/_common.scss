@@ -34,6 +34,13 @@ body {
     .el-input__wrapper {
       border-radius: 10px;
       width: 100%;
+      &.is-focus {
+        box-shadow: 0 0 0 1px var(--el-input-border-color, var(--el-border-color)) inset;
+      }
+      textarea:focus,
+      input:focus {
+        outline: none;
+      }
     }
   }
 

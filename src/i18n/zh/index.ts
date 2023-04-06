@@ -6,9 +6,11 @@ import application from './application';
 import api from './api';
 import order from './order';
 import proxy from './proxy';
+import conversation from './conversation';
 
 export default {
   common,
+  conversation,
   auth,
   service,
   console,

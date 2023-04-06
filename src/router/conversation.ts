@@ -1,4 +1,4 @@
-import { ROUTE_CONVERSATION_DETAIL, ROUTE_CONVERSATION_NEW, ROUTE_DOCUMENT_LIST } from './constants';
+import { ROUTE_CONVERSATION_DETAIL, ROUTE_CONVERSATION_NEW } from './constants';
 
 export default {
   path: '/conversations',
@@ -7,12 +7,12 @@ export default {
     {
       path: '',
       name: ROUTE_CONVERSATION_NEW,
-      component: () => import('@/pages/conversation/New.vue')
+      component: () => import('@/pages/conversation/Main.vue')
     },
     {
       path: ':id',
       name: ROUTE_CONVERSATION_DETAIL,
-      component: () => import('@/pages/conversation/Detail.vue')
+      component: () => import('@/pages/conversation/Main.vue')
     }
   ]
 };

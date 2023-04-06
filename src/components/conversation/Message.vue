@@ -1,20 +1,22 @@
 <template>
   <div class="message">
     <el-image :src="author.avatar" class="icon" />
-    <message-content :content="content" class="content" />
+    <message-content :content="content" class="content" :error="error" />
   </div>
 </template>
 
 <script lang="ts">
 import { IBot, IUser } from '@/operators';
-import { IContent } from '@/operators/message/models';
+import { IContent, IError } from '@/operators/message/models';
 import { defineComponent } from 'vue';
 import MessageContent from './MessageContent.vue';
+import { ElImage } from 'element-plus';
 
 export default defineComponent({
   name: 'Message',
   components: {
-    MessageContent
+    MessageContent,
+    ElImage
   },
   props: {
     content: {
@@ -24,6 +26,13 @@ export default defineComponent({
     author: {
       type: Object as () => IUser | IBot,
       required: true
+    },
+    error: {
+      type: Object as () => IError | undefined,
+      required: false,
+      default() {
+        return undefined;
+      }
     }
   },
   data() {
@@ -42,7 +51,11 @@ export default defineComponent({
   display: flex;
   flex-direction: row;
   .icon {
-    width: 100px;
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    border-radius: 3px;
+    min-width: 30px;
   }
   .content {
     flex: 1;

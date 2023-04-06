@@ -1,5 +1,4 @@
-import { AxiosResponse } from 'axios';
-import { httpClient } from '../../instance';
+import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 import { IRequest, IResponse } from './models';
 
 export interface IQuery {
@@ -9,8 +8,9 @@ export interface IQuery {
 const baseUrl = 'https://api.zhishuyun.com';
 
 class ChatGPTOperator {
-  async post(data: IRequest, query: IQuery): Promise<AxiosResponse<IResponse>> {
-    return await httpClient.post(`/chatgpt`, data, {
+  async post(data: IRequest, query: IQuery, config?: AxiosRequestConfig): Promise<AxiosResponse<IResponse>> {
+    return await axios.post(`/chatgpt`, data, {
+      ...config,
       params: query,
       baseURL: baseUrl
     });
