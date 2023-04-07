@@ -20,7 +20,15 @@
     <div class="footer">
       <el-row>
         <el-col :span="12" :offset="6">
-          <new-message-box v-model="input" class="new-message" @send="onSend" />
+          <new-message-box
+            v-model="input"
+            :initializing="loading"
+            class="new-message"
+            :api="api"
+            :application="application"
+            @send="onSend"
+            @apply="onApply"
+          />
         </el-col>
       </el-row>
     </div>
@@ -35,14 +43,28 @@ import Message from '@/components/conversation/Message.vue';
 import { chatgptOperator } from '@/operators/api/chatgpt/operator';
 import NewMessageBox from '@/components/conversation/NewMessageBox.vue';
 import { chatgptAvatar, userAvatar } from '@/constants/image';
-import { applicationOperator, IApplicationListResponse } from '@/operators';
+import {
+  apiOperator,
+  applicationOperator,
+  IApi,
+  IApiDetailResponse,
+  IApplication,
+  IApplicationDetailResponse,
+  IApplicationListResponse,
+  IApplicationType
+} from '@/operators';
 import { ROUTE_AUTH_LOGIN, ROUTE_CONVERSATION_DETAIL } from '@/router/constants';
+import { ERROR_CODE_DUPLICATION, ERROR_CODE_UNVERIFIED } from '@/constants';
+import { getVerificationUrl } from '@/utils';
 
 export interface IData {
   input: string;
   messages: IMessage[];
   loading: boolean;
+  answering: boolean;
   token: string | undefined;
+  api: IApi | undefined;
+  application: IApplication | undefined;
 }
 
 export default defineComponent({
@@ -57,8 +79,11 @@ export default defineComponent({
     return {
       input: '',
       loading: false,
+      answering: false,
       messages: [],
-      token: undefined
+      token: undefined,
+      api: undefined,
+      application: undefined
     };
   },
   computed: {
@@ -69,33 +94,76 @@ export default defineComponent({
       return this.$store.getters.user;
     }
   },
-  mounted() {
+  async mounted() {
     if (!this.$store.getters.authenticated) {
       this.$router.push({
         name: ROUTE_AUTH_LOGIN,
         query: { redirect: this.$route.fullPath }
       });
     } else {
-      this.onCheckApplication();
+      await this.onGetApiInfo();
+      await this.onCheckApplication();
     }
   },
   methods: {
-    onCheckApplication() {
+    async onGetApiInfo() {
+      return new Promise((resolve, reject) => {
+        const id = '1d58971c-e3cd-4713-a3ce-854a731adb14';
+        apiOperator
+          .get(id)
+          .then(({ data: data }: { data: IApiDetailResponse }) => {
+            this.api = data;
+            resolve(data);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    },
+    async onCheckApplication() {
       if (!this.user) {
         return;
       }
       applicationOperator
         .getAll({
           user_id: this.user.id,
-          api_id: '1d58971c-e3cd-4713-a3ce-854a731adb14'
+          api_id: this.api?.id
         })
         .then(({ data: data }: { data: IApplicationListResponse }) => {
           if (data.items?.length > 0) {
             const application = data.items[0];
+            this.application = application;
             const token = application.credential?.token;
             if (token) {
               this.token = token;
             }
+          }
+        });
+    },
+    onApply() {
+      applicationOperator
+        .create({
+          type: IApplicationType.API,
+          api_id: this.api?.id
+        })
+        .then(({ data: data }: { data: IApplicationDetailResponse }) => {
+          this.application = data;
+          ElMessage.success(this.$t('application.message.applySuccessfully'));
+        })
+        .catch((error) => {
+          if (error?.response?.data?.code === ERROR_CODE_DUPLICATION) {
+            ElMessage.error(this.$t('application.message.alreadyApplied'));
+          }
+          if (error?.response?.data?.code === ERROR_CODE_UNVERIFIED) {
+            ElMessage({
+              dangerouslyUseHTMLString: true,
+              duration: 0,
+              showClose: true,
+              message: `${this.$t(
+                'application.message.unverified'
+              )} <a class="underline" href="${getVerificationUrl()}">${this.$t('application.message.goVerify')}</a>`,
+              type: 'warning'
+            });
           }
         });
     },
@@ -129,7 +197,7 @@ export default defineComponent({
           avatar: chatgptAvatar
         }
       });
-      this.loading = true;
+      this.answering = true;
       this.input = '';
       chatgptOperator
         .post(
@@ -172,7 +240,11 @@ export default defineComponent({
             }
           }
         )
+        .then(() => {
+          this.answering = false;
+        })
         .catch((error) => {
+          this.answering = false;
           if (error?.response?.data) {
             const data = error?.response?.data;
             if (this.messages && this.messages.length > 0) {
