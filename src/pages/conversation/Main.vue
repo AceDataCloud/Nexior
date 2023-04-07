@@ -56,6 +56,7 @@ import {
 import { ROUTE_AUTH_LOGIN, ROUTE_CONVERSATION_DETAIL } from '@/router/constants';
 import { ERROR_CODE_DUPLICATION, ERROR_CODE_UNVERIFIED } from '@/constants';
 import { getVerificationUrl } from '@/utils';
+import { IConversation } from '@/operators/conversation/models';
 
 export interface IData {
   input: string;
@@ -94,6 +95,13 @@ export default defineComponent({
       return this.$store.getters.user;
     }
   },
+  watch: {
+    conversationId: {
+      handler() {
+        this.restoreMessages();
+      }
+    }
+  },
   async mounted() {
     if (!this.$store.getters.authenticated) {
       this.$router.push({
@@ -101,11 +109,24 @@ export default defineComponent({
         query: { redirect: this.$route.fullPath }
       });
     } else {
+      this.restoreMessages();
       await this.onGetApiInfo();
       await this.onCheckApplication();
     }
   },
   methods: {
+    restoreMessages() {
+      if (this.conversationId) {
+        const conversations = this.$store.getters.conversations;
+        const hitConversations = conversations.filter((c: IConversation) => c.id === this.conversationId);
+        if (hitConversations && hitConversations.length > 0) {
+          const hitConversation = hitConversations[0];
+          this.messages = hitConversation.messages;
+        }
+      } else {
+        this.messages = [];
+      }
+    },
     async onGetApiInfo() {
       return new Promise((resolve, reject) => {
         const id = '1d58971c-e3cd-4713-a3ce-854a731adb14';
@@ -242,6 +263,26 @@ export default defineComponent({
         )
         .then(() => {
           this.answering = false;
+          const conversations: IConversation[] = this.$store.getters.conversations;
+          const hitConversations = conversations.filter((c: IConversation) => c.id === this.conversationId);
+          if (!hitConversations || hitConversations.length === 0) {
+            // append a new conversation to conversations
+            const newConversations = [
+              ...conversations,
+              {
+                id: this.conversationId,
+                messages: this.messages,
+                title: this.conversationId
+              }
+            ];
+            this.$store.dispatch('setConversations', newConversations);
+          } else {
+            // update one of existing conversations
+            conversations.forEach((conversation: IConversation) => {
+              conversation.messages = this.messages;
+            });
+            this.$store.dispatch('setConversations', conversations);
+          }
         })
         .catch((error) => {
           this.answering = false;

@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <el-aside class="aside">
+      <left-navigator />
+    </el-aside>
     <el-main class="main"> <router-view /> </el-main>
   </div>
 </template>
@@ -7,11 +10,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElMain, ElAside } from 'element-plus';
+import LeftNavigator from '@/components/common/LeftNavigator.vue';
 
 export default defineComponent({
   name: 'LayoutConversation',
   components: {
-    ElMain
+    ElMain,
+    LeftNavigator
   }
 });
 </script>
@@ -33,8 +38,6 @@ $width: 300px;
   width: $width;
   height: 100%;
   background-color: white;
-  padding: 15px;
-  padding-top: 50px;
 }
 
 .header {
