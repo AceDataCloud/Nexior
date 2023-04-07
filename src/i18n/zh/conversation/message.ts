@@ -13,5 +13,8 @@ export default {
   rejectInvalidPrompt: '可以拒绝回答不恰当的提问',
   generateInCorrect: '可能偶尔产生不正确的信息',
   generateHarmfulInfo: '可能偶尔产生有害的指令或有偏见的内容',
-  onlyKnowBefore2021: '对2021年之后的世界和事件了解有限'
+  onlyKnowBefore2021: '对2021年之后的世界和事件了解有限',
+  errorBusy: 'Worker正在忙碌中，请稍后重试',
+  errorApiError: '回答失败，请稍后重试',
+  errorBadRequest: '请求内容不规范，请重新提问'
 };

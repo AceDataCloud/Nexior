@@ -1,13 +1,13 @@
 <template>
   <div class="message">
     <el-image :src="author.avatar" class="icon" />
-    <message-content :content="content" class="content" :error="error" />
+    <message-content :content="content" class="content" :error="error" :state="state" />
   </div>
 </template>
 
 <script lang="ts">
 import { IBot, IUser } from '@/operators';
-import { IContent, IError } from '@/operators/message/models';
+import { IContent, IError, IMessageState } from '@/operators/message/models';
 import { defineComponent } from 'vue';
 import MessageContent from './MessageContent.vue';
 import { ElImage } from 'element-plus';
@@ -32,6 +32,13 @@ export default defineComponent({
       required: false,
       default() {
         return undefined;
+      }
+    },
+    state: {
+      type: Object as () => IMessageState,
+      required: false,
+      default() {
+        return IMessageState.FINISHED;
       }
     }
   },
