@@ -35,9 +35,6 @@ export default defineComponent({
       }
     }
   },
-  data() {
-    return {};
-  },
   computed: {
     conversationId() {
       return this.$route.params?.id?.toString();

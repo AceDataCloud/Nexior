@@ -1,6 +1,11 @@
 <template>
   <div class="conversation">
-    <div class="messages">
+    <el-row v-if="!messages || messages.length === 0" class="introduction-wrapper">
+      <el-col :span="12" :offset="6">
+        <introduction @draft="onDraft" />
+      </el-col>
+    </el-row>
+    <div v-else class="messages-wrapper">
       <div
         v-for="(message, messageIndex) in messages"
         :key="messageIndex"
@@ -57,6 +62,7 @@ import { ROUTE_AUTH_LOGIN, ROUTE_CONVERSATION_DETAIL } from '@/router/constants'
 import { ERROR_CODE_DUPLICATION, ERROR_CODE_UNVERIFIED } from '@/constants';
 import { getVerificationUrl } from '@/utils';
 import { IConversation } from '@/operators/conversation/models';
+import Introduction from '@/components/conversation/Introduction.vue';
 
 export interface IData {
   input: string;
@@ -71,6 +77,7 @@ export interface IData {
 export default defineComponent({
   name: 'ChatDetail',
   components: {
+    Introduction,
     Message,
     ElRow,
     ElCol,
@@ -188,6 +195,9 @@ export default defineComponent({
           }
         });
     },
+    onDraft(content: string) {
+      this.input = content;
+    },
     onSend() {
       if (!this.input) {
         ElMessage.error(this.$t('conversation.message.noInput'));
@@ -303,9 +313,11 @@ export default defineComponent({
   min-height: 100vh;
   flex-direction: column;
   display: flex;
-  .messages {
+  .messages-wrapper,
+  .introduction-wrapper {
     flex: 1;
   }
+
   .message-wrapper {
     border-color: rgba(0, 0, 0, 0.1);
     border-bottom-width: 1px;
