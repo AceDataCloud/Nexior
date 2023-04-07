@@ -1,6 +1,3 @@
-import { IDocument } from '../document';
-import { IService } from '../service';
-
 export interface IForm {
   queries?: {
     [key: string]: string;
@@ -73,9 +70,7 @@ export interface IApi {
   request_id: string;
   responses: IResponse[];
   response_ids: string[];
-  document?: IDocument;
   document_id?: string;
-  service?: IService;
   packages?: IPackage[];
   service_id?: string;
   created_at?: string;

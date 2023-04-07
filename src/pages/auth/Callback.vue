@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { getCookie, removeCookie } from 'typescript-cookie';
-import { getAuthBaseUrl, getDataBaseUrl } from '@/utils';
+import { getCookie } from 'typescript-cookie';
+import { getAuthBaseUrl, getChatBaseUrl } from '@/utils';
 import { removeCookies } from '@/utils/cookie';
 
 interface IData {
@@ -37,10 +37,10 @@ export default defineComponent({
       }
     } else {
       console.debug('access token and refresh token not found, try to re-auth again');
-      const dataBaseUrl = getDataBaseUrl();
+      const chatBaseUrl = getChatBaseUrl();
       const authBaseUrl = getAuthBaseUrl();
       // callback url used to init access token and then redirect back of `redirect`
-      const callbackUrl = `${dataBaseUrl}/auth/callback?redirect=${this.redirect}`;
+      const callbackUrl = `${chatBaseUrl}/auth/callback?redirect=${this.redirect}`;
       // redirect to auth service to get access token then redirect back
       const targetUrl = `${authBaseUrl}/auth/login?redirect=${callbackUrl}`;
       window.location.href = targetUrl;
