@@ -16,5 +16,6 @@ export default {
   onlyKnowBefore2021: '对2021年之后的世界和事件了解有限',
   errorBusy: 'Worker正在忙碌中，请稍后重试',
   errorApiError: '回答失败，请稍后重试',
-  errorBadRequest: '请求内容不规范，请重新提问'
+  errorBadRequest: '请求内容不规范，请重新提问',
+  errorNoConversation: '对话内容不存在或者已经过期，请发起新的会话'
 };
