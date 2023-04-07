@@ -33,6 +33,7 @@
           <new-message-box
             v-model="input"
             :initializing="loading"
+            :answering="answering"
             class="new-message"
             :api="api"
             :application="application"
@@ -209,6 +210,9 @@ export default defineComponent({
       this.input = content;
     },
     onSend() {
+      if (this.answering) {
+        return;
+      }
       if (!this.input) {
         ElMessage.error(this.$t('conversation.message.noInput'));
         return;

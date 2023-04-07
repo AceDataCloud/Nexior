@@ -2,7 +2,7 @@
   <div class="new-message-box">
     <el-input
       v-model="value"
-      :disabled="!application"
+      :disabled="!application || answering"
       class="new-message-input"
       :placeholder="$t('conversation.message.newMessagePlaceholder')"
       @keyup.enter="$emit('send')"
@@ -59,6 +59,11 @@ export default defineComponent({
   },
   props: {
     initializing: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    answering: {
       type: Boolean,
       required: false,
       default: false
