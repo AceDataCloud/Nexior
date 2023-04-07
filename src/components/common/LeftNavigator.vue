@@ -1,11 +1,11 @@
 <template>
   <div class="navigator">
     <div class="conversations">
-      <navigator-item icon="fa-regular fa-user" :title="$t('common.nav.newChat')" @click="onNewConversation" />
+      <navigator-item icon="fa-solid fa-plus" :title="$t('common.nav.newChat')" @click="onNewConversation" />
       <navigator-item
         v-for="(conversation, conversationIndex) in conversations"
         :key="conversationIndex"
-        icon="fa-regular fa-user"
+        icon="fa-regular fa-comment"
         :title="conversation.title"
         @click="onSelectConversation(conversation.id)"
       />
@@ -13,17 +13,17 @@
     <div class="operators">
       <navigator-item
         v-show="!confirming"
-        icon="fa-regular fa-user"
+        icon="fa-solid fa-trash"
         :title="$t('common.nav.clearConversations')"
         @click="confirming = true"
       />
       <navigator-item
         v-show="confirming"
-        icon="fa-regular fa-user"
+        icon="fa-solid fa-check"
         :title="$t('common.nav.confirmClearConversations')"
         @click="onClearConversations"
       />
-      <navigator-item icon="fa-regular fa-user" :title="$t('common.nav.logOut')" @click="onLogout" />
+      <navigator-item icon="fa-solid fa-arrow-right-from-bracket" :title="$t('common.nav.logOut')" @click="onLogout" />
     </div>
   </div>
 </template>
