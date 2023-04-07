@@ -1,24 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import service from './service';
 import auth from './auth';
-import console from './console';
 import conversation from './conversation';
-import document from './document';
 import store from '@/store';
-import { ROUTE_AUTH_LOGIN, ROUTE_INDEX, ROUTE_SERVICE_LIST } from './constants';
+import { ROUTE_AUTH_LOGIN, ROUTE_CONVERSATION_NEW, ROUTE_INDEX } from './constants';
 
 const routes = [
   {
     path: '/',
     name: ROUTE_INDEX,
     redirect: {
-      name: ROUTE_SERVICE_LIST
+      name: ROUTE_CONVERSATION_NEW
     }
   },
-  service,
   auth,
-  console,
-  document,
   conversation
 ];
 

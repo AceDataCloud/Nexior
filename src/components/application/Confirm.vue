@@ -12,9 +12,6 @@
           <span>
             {{ $t('application.field.api') }}
           </span>
-          <span v-if="type === applicationType.PROXY">
-            {{ $t('application.field.proxy') }}
-          </span>
         </el-descriptions-item>
         <el-descriptions-item :label="$t('application.field.name')">
           {{ object?.title }}
@@ -22,9 +19,6 @@
         <el-descriptions-item :label="$t('application.field.freeAmount')">
           <span v-if="type === applicationType.API">
             {{ object?.free_amount }}{{ $t(`api.unit.${object?.unit}`) }}
-          </span>
-          <span v-if="type === applicationType.PROXY">
-            {{ object?.free_amount }}{{ $t(`proxy.unit.${object?.unit}`) }}
           </span>
         </el-descriptions-item>
       </el-descriptions>
@@ -43,7 +37,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElDialog, ElDescriptions, ElDescriptionsItem, ElDivider, ElCheckbox, ElButton, ElMessage } from 'element-plus';
-import { IApi, IApplicationType, IProxy } from '@/operators';
+import { IApi, IApplicationType } from '@/operators';
 import ApplicationPolicy from './Policy.vue';
 
 interface IData {
@@ -65,7 +59,7 @@ export default defineComponent({
   },
   props: {
     object: {
-      type: Object as () => IApi | IProxy,
+      type: Object as () => IApi,
       required: true
     },
     type: {

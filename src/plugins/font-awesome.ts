@@ -2,7 +2,6 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faCopy as faRegularCopy,
   faUser as faRegularUser,
-  faIdCard as faRegularIdCard,
   faPaperPlane as faRegularPaperPlane,
   faComment as faRegularComment,
   faSun as faRegularSun
@@ -11,9 +10,6 @@ import {
   faRotateRight as faSolidRotateRight,
   faCheck as faSolidCheck,
   faPlus as faSolidPlus,
-  faCube as faSolidCube,
-  faCubes as faSolidCubes,
-  faStore as faSolidStore,
   faBolt as faSolidBolt,
   faQuestion as faSolidQuestion,
   faTrash as faSolidTrash,
@@ -26,12 +22,8 @@ library.add(faRegularCopy);
 library.add(faSolidRotateRight);
 library.add(faSolidCheck);
 library.add(faRegularUser);
-library.add(faRegularIdCard);
 library.add(faRegularSun);
 library.add(faSolidBolt);
-library.add(faSolidCube);
-library.add(faSolidCubes);
-library.add(faSolidStore);
 library.add(faSolidPlus);
 library.add(faSolidQuestion);
 library.add(faSolidTriangleExclamation);
