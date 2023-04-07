@@ -2,11 +2,13 @@ import { createStore, ActionContext } from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 import { userOperator, IUser } from '@/operators';
 import { removeCookies } from '@/utils/cookie';
+import { IConversation } from '@/operators/conversation/models';
 
 export interface IState {
   accessToken: string | undefined;
   refreshToken: string | undefined;
   user: IUser | undefined;
+  conversations: IConversation[];
 }
 
 const store = createStore({
@@ -14,7 +16,8 @@ const store = createStore({
     return {
       accessToken: undefined,
       refreshToken: undefined,
-      user: undefined
+      user: undefined,
+      conversations: []
     };
   },
   mutations: {
@@ -26,6 +29,9 @@ const store = createStore({
     },
     setUser(state: IState, payload: IUser): void {
       state.user = payload;
+    },
+    setConversations(state: IState, payload: IConversation[]): void {
+      state.conversations = payload;
     }
   },
   actions: {
@@ -43,6 +49,9 @@ const store = createStore({
     },
     setUser({ commit }: ActionContext<IState, IState>, payload: IUser) {
       commit('setUser', payload);
+    },
+    setConversations({ commit }: ActionContext<IState, IState>, payload: IConversation[]) {
+      commit('setConversations', payload);
     },
     getMe({ commit }: ActionContext<IState, IState>) {
       userOperator
@@ -67,6 +76,9 @@ const store = createStore({
     },
     user(state): IUser | undefined {
       return state.user;
+    },
+    conversations(state): IConversation[] {
+      return state.conversations || [];
     }
   },
   plugins: [createPersistedState()]
