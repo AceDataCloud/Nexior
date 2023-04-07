@@ -9,7 +9,7 @@ import { IContent, IError, IMessageState } from '@/operators/message/models';
 import { defineComponent } from 'vue';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { ElAlert } from 'element-plus';
-import { ERROR_CODE_API_ERROR, ERROR_CODE_BUSY, ERROR_CODE_BAD_REQUEST } from '@/constants';
+import { ERROR_CODE_API_ERROR, ERROR_CODE_BUSY, ERROR_CODE_BAD_REQUEST, ERROR_CODE_NO_CONVERSATION } from '@/constants';
 import AnsweringMark from './AnsweringMark.vue';
 
 export default defineComponent({
@@ -56,6 +56,9 @@ export default defineComponent({
       }
       if (this.error?.code === ERROR_CODE_BAD_REQUEST) {
         return this.$t('conversation.message.errorBadRequest');
+      }
+      if (this.error?.code === ERROR_CODE_NO_CONVERSATION) {
+        return this.$t('conversation.message.errorNoConversation');
       }
       return undefined;
     }
