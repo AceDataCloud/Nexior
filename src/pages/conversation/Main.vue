@@ -17,7 +17,12 @@
       >
         <el-row>
           <el-col :span="12" :offset="6">
-            <message :content="message.content" :author="message.author" :error="message.error"> </message>
+            <message
+              :content="message.content"
+              :author="message.author"
+              :error="message.error"
+              :state="message.state"
+            />
           </el-col>
         </el-row>
       </div>
@@ -41,7 +46,7 @@
 </template>
 
 <script lang="ts">
-import { IMessage } from '@/operators/message/models';
+import { IMessage, IMessageState } from '@/operators/message/models';
 import { defineComponent } from 'vue';
 import { ElRow, ElCol, ElMessage } from 'element-plus';
 import Message from '@/components/conversation/Message.vue';
@@ -152,6 +157,7 @@ export default defineComponent({
       if (!this.user) {
         return;
       }
+      this.loading = true;
       applicationOperator
         .getAll({
           user_id: this.user.id,
@@ -166,6 +172,10 @@ export default defineComponent({
               this.token = token;
             }
           }
+          this.loading = false;
+        })
+        .catch(() => {
+          this.loading = false;
         });
     },
     onApply() {
@@ -216,7 +226,8 @@ export default defineComponent({
           ...this.user,
           avatar: this.user?.avatar || userAvatar,
           type: 'user'
-        }
+        },
+        state: IMessageState.FINISHED
       });
       this.messages.push({
         content: {
@@ -226,7 +237,8 @@ export default defineComponent({
           type: 'bot',
           nickname: 'ChatGPT',
           avatar: chatgptAvatar
-        }
+        },
+        state: IMessageState.PENDING
       });
       this.answering = true;
       this.input = '';
@@ -259,6 +271,7 @@ export default defineComponent({
                 const answer = jsonData.answer;
                 const conversationId = jsonData.conversation_id;
                 this.messages[this.messages.length - 1].content.value = answer;
+                this.messages[this.messages.length - 1].state = IMessageState.ANSWERING;
                 if (conversationId && this.$route.name !== ROUTE_CONVERSATION_DETAIL) {
                   this.$router.push({
                     name: ROUTE_CONVERSATION_DETAIL,
@@ -273,6 +286,9 @@ export default defineComponent({
         )
         .then(() => {
           this.answering = false;
+          if (this.messages && this.messages.length > 0) {
+            this.messages[this.messages.length - 1].state = IMessageState.FINISHED;
+          }
           const conversations: IConversation[] = this.$store.getters.conversations;
           const hitConversations = conversations.filter((c: IConversation) => c.id === this.conversationId);
           if (!hitConversations || hitConversations.length === 0) {
@@ -296,6 +312,9 @@ export default defineComponent({
         })
         .catch((error) => {
           this.answering = false;
+          if (this.messages && this.messages.length > 0) {
+            this.messages[this.messages.length - 1].state = IMessageState.FAILED;
+          }
           if (error?.response?.data) {
             const data = error?.response?.data;
             if (this.messages && this.messages.length > 0) {
@@ -311,9 +330,12 @@ export default defineComponent({
 <style lang="scss" scoped>
 .conversation {
   min-height: 100vh;
+  position: relative;
   flex-direction: column;
   display: flex;
-  .messages-wrapper,
+  .messages-wrapper {
+    margin-bottom: 200px;
+  }
   .introduction-wrapper {
     flex: 1;
   }
@@ -330,9 +352,12 @@ export default defineComponent({
       background-color: #ffffff;
     }
   }
-  .new-message {
-    height: 50px;
-    margin-bottom: 30px;
+  .footer {
+    background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0) 13.94%, #fff 54.73%);
+    position: fixed;
+    left: 300px;
+    bottom: 0;
+    width: calc(100% - 300px);
   }
 }
 </style>
