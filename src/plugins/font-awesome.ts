@@ -7,6 +7,7 @@ import {
   faSun as faRegularSun
 } from '@fortawesome/free-regular-svg-icons';
 import {
+  faMicrophone as faSolidMicrophone,
   faRotateRight as faSolidRotateRight,
   faCheck as faSolidCheck,
   faPlus as faSolidPlus,
@@ -28,6 +29,7 @@ library.add(faSolidCheck);
 library.add(faRegularUser);
 library.add(faRegularSun);
 library.add(faSolidBolt);
+library.add(faSolidMicrophone);
 library.add(faSolidPlus);
 library.add(faSolidQuestion);
 library.add(faSolidTriangleExclamation);
