@@ -8,6 +8,7 @@
       @keyup.enter="$emit('send')"
     >
       <template #suffix>
+        <voice-recognition v-if="false" class="mr-1" @finished="value = $event" />
         <font-awesome-icon icon="fa-regular fa-paper-plane" class="icon-send" @click="$emit('send')" />
       </template>
     </el-input>
@@ -42,6 +43,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IApi, IApplication } from '@/operators';
 import { IApplicationType } from '@/operators';
 import ApplicationConfirm from '@/components/application/Confirm.vue';
+import VoiceRecognition from './VoiceRecognition.vue';
 
 interface IData {
   applicationType: typeof IApplicationType;
@@ -55,7 +57,8 @@ export default defineComponent({
     ElInput,
     ElButton,
     FontAwesomeIcon,
-    ApplicationConfirm
+    ApplicationConfirm,
+    VoiceRecognition
   },
   props: {
     initializing: {
