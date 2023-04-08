@@ -1,8 +1,8 @@
 <template>
   <div class="introduction">
     <h2 class="title">ChatGPT</h2>
-    <el-row class="introduction-items" :gutter="15">
-      <el-col :span="8">
+    <el-row class="introduction-items" justify="center" :gutter="15">
+      <el-col :md="8" :sm="24" :xs="24">
         <div class="text-center">
           <font-awesome-icon icon="fa-regular fa-sun" class="icon icon-rotate" />
         </div>
@@ -23,7 +23,7 @@
           @click="$emit('draft', $t('conversation.message.explainDefinition'))"
         />
       </el-col>
-      <el-col :span="8">
+      <el-col :md="8" :sm="24" :xs="24">
         <div class="text-center">
           <font-awesome-icon icon="fa-solid fa-bolt" class="icon icon-rotate" />
         </div>
@@ -32,7 +32,7 @@
         <introduction-item :content="$t('conversation.message.supportStream')" />
         <introduction-item :content="$t('conversation.message.rejectInvalidPrompt')" />
       </el-col>
-      <el-col :span="8">
+      <el-col :md="8" :sm="24" :xs="24">
         <div class="text-center">
           <font-awesome-icon icon="fa-solid fa-triangle-exclamation" class="icon icon-rotate" />
         </div>
@@ -70,7 +70,8 @@ export default defineComponent({
 .introduction {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   .title {
     height: 70px;
@@ -96,6 +97,14 @@ export default defineComponent({
     .introduction-item {
       margin-bottom: 15px;
     }
+  }
+}
+
+@media (max-width: 767px) {
+  .introduction {
+    width: 90%;
+    left: 5%;
+    transform: translateY(-50%);
   }
 }
 </style>

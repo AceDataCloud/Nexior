@@ -50,7 +50,7 @@ $width: 300px;
   height: 100%;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 767px) {
   .container {
     display: block;
   }
