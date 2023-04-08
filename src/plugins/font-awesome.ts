@@ -16,10 +16,14 @@ import {
   faArrowsRotate as faSolidArrowsRotate,
   faUpRightFromSquare as faSolidUpRightFromSquare,
   faArrowRightFromBracket as faSolidArrowRightFromBracket,
-  faTriangleExclamation as faSolidTriangleExclamation
+  faTriangleExclamation as faSolidTriangleExclamation,
+  faPenToSquare as faSolidPenToSquare,
+  faXmark as faSolidXmark
 } from '@fortawesome/free-solid-svg-icons';
 library.add(faRegularCopy);
+library.add(faSolidXmark);
 library.add(faSolidRotateRight);
+library.add(faSolidPenToSquare);
 library.add(faSolidCheck);
 library.add(faRegularUser);
 library.add(faRegularSun);

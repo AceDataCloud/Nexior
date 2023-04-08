@@ -2,11 +2,13 @@
   <div class="navigator">
     <div class="conversations">
       <navigator-item icon="fa-solid fa-plus" :title="$t('common.nav.newChat')" @click="onNewConversation" />
-      <navigator-item
+      <conversation-navigator-item
         v-for="(conversation, conversationIndex) in conversations"
         :key="conversationIndex"
-        icon="fa-regular fa-comment"
         :title="conversation.title"
+        icon="fa-regular fa-comment"
+        @update:title="onUpdateTitle(conversation, $event)"
+        @delete="onDeleteConversation(conversation.id)"
         @click="onSelectConversation(conversation.id)"
       />
     </div>
@@ -32,11 +34,14 @@
 import { ROUTE_CONVERSATION_DETAIL, ROUTE_CONVERSATION_NEW } from '@/router';
 import { defineComponent } from 'vue';
 import NavigatorItem from './NavigatorItem.vue';
+import ConversationNavigatorItem from '../conversation/ConversationNavigatorItem.vue';
+import { IConversation } from '@/operators/conversation/models';
 
 export default defineComponent({
   name: 'LeftNavigator',
   components: {
-    NavigatorItem
+    NavigatorItem,
+    ConversationNavigatorItem
   },
   data() {
     return {
@@ -72,6 +77,14 @@ export default defineComponent({
       setTimeout(() => {
         window.location.reload();
       }, 1000);
+    },
+    onUpdateTitle(conversation: IConversation, val: string) {
+      conversation.title = val;
+      this.$store.dispatch('setConversations', this.conversations);
+    },
+    onDeleteConversation(id: string) {
+      const newConversations = this.conversations.filter((i: IConversation) => i.id !== id);
+      this.$store.dispatch('setConversations', newConversations);
     }
   }
 });

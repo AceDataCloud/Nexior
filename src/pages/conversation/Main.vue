@@ -128,6 +128,10 @@ export default defineComponent({
     }
   },
   methods: {
+    scrollDown() {
+      const container = document.querySelector('.main') as HTMLDivElement;
+      container.scrollTop = container.scrollHeight;
+    },
     restoreMessages() {
       if (this.conversationId) {
         const conversations = this.$store.getters.conversations;
@@ -209,6 +213,7 @@ export default defineComponent({
     onDraft(content: string) {
       this.input = content;
     },
+
     onSend() {
       if (this.answering) {
         return;
@@ -246,6 +251,9 @@ export default defineComponent({
       });
       this.answering = true;
       this.input = '';
+      setTimeout(() => {
+        this.scrollDown();
+      }, 100);
       chatgptOperator
         .post(
           {
@@ -271,6 +279,7 @@ export default defineComponent({
               const lines = response.split('\r\n').filter((line: string) => !!line);
               const lastLine = lines[lines.length - 1];
               if (lastLine) {
+                this.scrollDown();
                 const jsonData = JSON.parse(lastLine);
                 const answer = jsonData.answer;
                 const conversationId = jsonData.conversation_id;
@@ -309,7 +318,9 @@ export default defineComponent({
           } else {
             // update one of existing conversations
             conversations.forEach((conversation: IConversation) => {
-              conversation.messages = this.messages;
+              if (conversation.id === this.conversationId) {
+                conversation.messages = this.messages;
+              }
             });
             this.$store.dispatch('setConversations', conversations);
           }
