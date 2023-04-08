@@ -1,5 +1,5 @@
 <template>
-  <markdown-renderer :content="content?.value" />
+  <markdown-renderer :content="content?.value" class="content" />
   <answering-mark v-if="shouldShowAnsweringMark" />
   <el-alert v-if="errorText" :title="errorText" type="error" :closable="false" />
 </template>
@@ -65,3 +65,9 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss">
+.content {
+  overflow-x: hidden;
+}
+</style>
