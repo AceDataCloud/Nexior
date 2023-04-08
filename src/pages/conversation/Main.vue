@@ -1,7 +1,7 @@
 <template>
   <div class="conversation">
-    <el-row v-if="!messages || messages.length === 0" class="introduction-wrapper">
-      <el-col :span="12" :offset="6">
+    <el-row v-if="!messages || messages.length === 0" class="introduction-wrapper" justify="center">
+      <el-col :md="14" :sm="22" :xs="22">
         <introduction @draft="onDraft" />
       </el-col>
     </el-row>
@@ -15,8 +15,8 @@
           bot: message.author.type === 'bot'
         }"
       >
-        <el-row>
-          <el-col :span="12" :offset="6">
+        <el-row justify="center">
+          <el-col :md="14" :sm="22" :xs="22">
             <message
               :content="message.content"
               :author="message.author"
@@ -28,8 +28,8 @@
       </div>
     </div>
     <div class="footer">
-      <el-row>
-        <el-col :span="12" :offset="6">
+      <el-row justify="center">
+        <el-col :md="14" :sm="22" :xs="22">
           <new-message-box
             v-model="input"
             :initializing="loading"
@@ -338,7 +338,7 @@ export default defineComponent({
   flex-direction: column;
   display: flex;
   .messages-wrapper {
-    margin-bottom: 200px;
+    margin-bottom: 100px;
   }
   .introduction-wrapper {
     flex: 1;
@@ -362,6 +362,13 @@ export default defineComponent({
     left: 300px;
     bottom: 0;
     width: calc(100% - 300px);
+  }
+
+  @media (max-width: 767px) {
+    .footer {
+      left: 0px;
+      width: calc(100%);
+    }
   }
 }
 </style>
