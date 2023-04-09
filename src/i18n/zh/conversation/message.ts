@@ -18,5 +18,6 @@ export default {
   errorApiError: '回答失败，请稍后重试',
   errorBadRequest: '请求内容不规范，请重新提问',
   errorNoConversation: '对话内容不存在或者已经过期，请发起新的会话',
-  confirmDelete: '确定删除'
+  confirmDelete: '确定删除',
+  errorUsedUp: '您的套餐次数已经用完，请购买更多次数继续使用'
 };

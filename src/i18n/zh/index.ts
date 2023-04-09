@@ -1,9 +1,13 @@
 import common from './common';
 import auth from './auth';
 import conversation from './conversation';
+import application from './application';
+import api from './api';
 
 export default {
   common,
   conversation,
-  auth
+  auth,
+  application,
+  api
 };
