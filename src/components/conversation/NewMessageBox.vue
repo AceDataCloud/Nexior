@@ -13,7 +13,7 @@
       </template>
     </el-input>
     <div v-if="!application" class="new-message-apply">
-      <div v-if="initializing">
+      <div v-if="!initializing">
         <span class="mr-2">{{ $t('conversation.message.apiInfo') }}</span>
         <span>
           <el-button type="primary" size="small" @click="confirming = true">

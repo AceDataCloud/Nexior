@@ -213,7 +213,6 @@ export default defineComponent({
     onDraft(content: string) {
       this.input = content;
     },
-
     onSend() {
       if (this.answering) {
         return;
