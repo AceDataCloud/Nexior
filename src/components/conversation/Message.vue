@@ -3,6 +3,12 @@
     <el-image :src="author.avatar" class="icon" />
     <message-content :content="content" class="content" :error="error" :state="state" />
   </div>
+  <div class="operations">
+    <el-button v-if="author.type === 'bot' && content.value" class="operation" size="small" @click="onCopy">
+      <font-awesome-icon icon="fa-regular fa-copy" class="icon-copy" />
+      {{ $t('common.button.copy') }}
+    </el-button>
+  </div>
 </template>
 
 <script lang="ts">
@@ -10,13 +16,21 @@ import { IBot, IUser } from '@/operators';
 import { IContent, IError, IMessageState } from '@/operators/message/models';
 import { defineComponent } from 'vue';
 import MessageContent from './MessageContent.vue';
-import { ElImage } from 'element-plus';
+import { ElImage, ElButton } from 'element-plus';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import copy from 'copy-to-clipboard';
+
+interface IData {
+  copied: boolean;
+}
 
 export default defineComponent({
   name: 'Message',
   components: {
     MessageContent,
-    ElImage
+    ElImage,
+    ElButton,
+    FontAwesomeIcon
   },
   props: {
     content: {
@@ -42,9 +56,25 @@ export default defineComponent({
       }
     }
   },
+  data(): IData {
+    return {
+      copied: false
+    };
+  },
   computed: {
     conversationId() {
       return this.$route.params?.id?.toString();
+    }
+  },
+  methods: {
+    onCopy() {
+      copy(this.content.value, {
+        debug: true
+      });
+      this.copied = true;
+      setTimeout(() => {
+        this.copied = false;
+      }, 3000);
     }
   }
 });
@@ -63,6 +93,14 @@ export default defineComponent({
   }
   .content {
     flex: 1;
+  }
+}
+
+.operations {
+  width: fit-content;
+  margin: auto;
+  .fa-copy {
+    margin-right: 5px;
   }
 }
 </style>

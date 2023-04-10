@@ -21,7 +21,9 @@ import {
   ERROR_CODE_BUSY,
   ERROR_CODE_BAD_REQUEST,
   ERROR_CODE_NO_CONVERSATION,
-  ERROR_CODE_USED_UP
+  ERROR_CODE_USED_UP,
+  ERROR_CODE_UNKNOWN,
+  ERROR_CODE_TIMEOUT
 } from '@/constants';
 import AnsweringMark from './AnsweringMark.vue';
 
@@ -80,6 +82,12 @@ export default defineComponent({
       }
       if (this.error?.code === ERROR_CODE_NO_CONVERSATION) {
         return this.$t('conversation.message.errorNoConversation');
+      }
+      if (this.error?.code === ERROR_CODE_UNKNOWN) {
+        return this.$t('conversation.message.errorUnknown');
+      }
+      if (this.error?.code === ERROR_CODE_TIMEOUT) {
+        return this.$t('conversation.message.errorTimeout');
       }
       return undefined;
     }

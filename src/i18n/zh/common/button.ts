@@ -26,5 +26,6 @@ export default {
   acquire: '获取',
   fillExample: '填写样例',
   buyMore: '购买更多',
-  update: '更新'
+  update: '更新',
+  copy: '复制'
 };
