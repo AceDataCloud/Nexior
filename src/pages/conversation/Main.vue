@@ -65,7 +65,7 @@ import {
   IApplicationType
 } from '@/operators';
 import { ROUTE_AUTH_LOGIN, ROUTE_CONVERSATION_DETAIL } from '@/router/constants';
-import { ERROR_CODE_DUPLICATION, ERROR_CODE_UNVERIFIED } from '@/constants';
+import { ERROR_CODE_DUPLICATION, ERROR_CODE_UNKNOWN, ERROR_CODE_UNVERIFIED } from '@/constants';
 import { getVerificationUrl } from '@/utils';
 import { IConversation } from '@/operators/conversation/models';
 import Introduction from '@/components/conversation/Introduction.vue';
@@ -333,6 +333,12 @@ export default defineComponent({
             const data = error?.response?.data;
             if (this.messages && this.messages.length > 0) {
               this.messages[this.messages.length - 1].error = data;
+            }
+          } else {
+            if (this.messages && this.messages.length > 0) {
+              this.messages[this.messages.length - 1].error = {
+                code: ERROR_CODE_UNKNOWN
+              };
             }
           }
         });

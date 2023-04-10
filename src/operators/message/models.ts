@@ -7,7 +7,7 @@ export interface IContent {
 
 export interface IError {
   code: string;
-  detail: string;
+  detail?: string;
 }
 
 export enum IMessageState {

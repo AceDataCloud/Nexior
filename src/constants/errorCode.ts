@@ -5,3 +5,5 @@ export const ERROR_CODE_API_ERROR = 'api_error';
 export const ERROR_CODE_BAD_REQUEST = 'bad_request';
 export const ERROR_CODE_NO_CONVERSATION = 'no_conversation';
 export const ERROR_CODE_USED_UP = 'used_up';
+export const ERROR_CODE_UNKNOWN = 'unknown';
+export const ERROR_CODE_TIMEOUT = 'timeout';
