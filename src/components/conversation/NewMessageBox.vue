@@ -2,16 +2,19 @@
   <div class="new-message-box">
     <el-input
       v-model="value"
+      type="textarea"
+      resize="none"
       :disabled="!application || answering"
       class="new-message-input"
       :placeholder="$t('conversation.message.newMessagePlaceholder')"
-      @keyup.enter="$emit('send')"
+      @keydown.enter.exact.prevent="$emit('send')"
     >
-      <template #suffix>
-        <voice-recognition v-if="false" class="mr-1" @finished="value = $event" />
-        <font-awesome-icon icon="fa-regular fa-paper-plane" class="icon-send" @click="$emit('send')" />
-      </template>
     </el-input>
+    <span class="new-message-info-input">{{ $t('conversation.message.howToBreakLine') }}</span>
+    <div class="new-message-operations">
+      <voice-recognition v-if="false" class="mr-1" @finished="value = $event" />
+      <font-awesome-icon icon="fa-regular fa-paper-plane" class="icon-send" @click="$emit('send')" />
+    </div>
     <div v-if="!application" class="new-message-apply">
       <div v-if="!initializing">
         <span class="mr-2">{{ $t('conversation.message.apiInfo') }}</span>
@@ -38,7 +41,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElInput, ElButton } from 'element-plus';
+import { ElInput, ElButton, ElText } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IApi, IApplication } from '@/operators';
 import { IApplicationType } from '@/operators';
@@ -114,12 +117,26 @@ export default defineComponent({
 <style lang="scss" scoped>
 .new-message-box {
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   .new-message-input {
     height: 50px;
   }
-  .icon-send {
-    cursor: pointer;
+  .new-message-operations {
+    position: absolute;
+    bottom: 12px;
+    right: 10px;
+    color: var(--el-text-color-regular);
+    .icon-send {
+      cursor: pointer;
+    }
+  }
+
+  .new-message-info-input {
+    position: absolute;
+    bottom: -25px;
+    left: 5px;
+    font-size: 12px;
+    color: var(--el-text-color-regular);
   }
 
   .new-message-apply {

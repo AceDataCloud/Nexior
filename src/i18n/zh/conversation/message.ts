@@ -21,5 +21,6 @@ export default {
   confirmDelete: '确定删除',
   errorUsedUp: '您的套餐次数已经用完，请购买更多次数继续使用',
   errorUnknown: '服务器出现未知错误，请稍后重试或联系客服',
-  errorTimeout: '回答问题超时，请稍后重试'
+  errorTimeout: '回答问题超时，请稍后重试',
+  howToBreakLine: '按 Shift+Enter 键可以换行输入'
 };

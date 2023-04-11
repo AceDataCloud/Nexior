@@ -8,6 +8,10 @@
       <font-awesome-icon icon="fa-regular fa-copy" class="icon-copy" />
       {{ $t('common.button.copy') }}
     </el-button>
+    <el-button v-if="author.type === 'bot' && content.value" class="operation" size="small" @click="onStop">
+      <font-awesome-icon icon="fa-regular fa-copy" class="icon-stop" />
+      {{ $t('common.button.stop') }}
+    </el-button>
   </div>
 </template>
 
@@ -56,6 +60,7 @@ export default defineComponent({
       }
     }
   },
+emits: ['stop'],
   data(): IData {
     return {
       copied: false
@@ -75,6 +80,9 @@ export default defineComponent({
       setTimeout(() => {
         this.copied = false;
       }, 3000);
+    },
+    onStop() {
+      this.$emit('stop');
     }
   }
 });
@@ -99,6 +107,7 @@ export default defineComponent({
 .operations {
   width: fit-content;
   margin: auto;
+  padding-top: 15px;
   .fa-copy {
     margin-right: 5px;
   }

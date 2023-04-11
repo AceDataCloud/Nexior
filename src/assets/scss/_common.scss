@@ -30,6 +30,13 @@ body {
     border-radius: 9999px;
   }
 
+  .el-textarea {
+    border-radius: 10px;
+    textarea {
+      border-radius: 10px;
+    }
+  }
+
   .el-input {
     .el-input__wrapper {
       border-radius: 10px;
@@ -62,8 +69,4 @@ body {
   .el-table__body {
     width: 100% !important;
   }
-}
-
-.color-primary {
-  color: var(--el-color-primary);
 }

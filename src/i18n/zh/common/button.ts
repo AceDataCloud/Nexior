@@ -27,5 +27,6 @@ export default {
   fillExample: '填写样例',
   buyMore: '购买更多',
   update: '更新',
-  copy: '复制'
+  copy: '复制',
+  stop: '停止'
 };
