@@ -8,8 +8,13 @@
       <font-awesome-icon icon="fa-regular fa-copy" class="icon-copy" />
       {{ $t('common.button.copy') }}
     </el-button>
-    <el-button v-if="author.type === 'bot'" class="operation" size="small" @click="onStop">
-      <font-awesome-icon icon="fa-regular fa-copy" class="icon-stop" />
+    <el-button
+      v-if="author.type === 'bot' && (state === messageState.ANSWERING || state === messageState.PENDING)"
+      class="operation"
+      size="small"
+      @click="onStop"
+    >
+      <font-awesome-icon icon="fa-solid fa-stop" class="icon-stop" />
       {{ $t('common.button.stop') }}
     </el-button>
   </div>
@@ -26,6 +31,7 @@ import copy from 'copy-to-clipboard';
 
 interface IData {
   copied: boolean;
+  messageState: typeof IMessageState;
 }
 
 export default defineComponent({
@@ -63,7 +69,8 @@ export default defineComponent({
   emits: ['stop'],
   data(): IData {
     return {
-      copied: false
+      copied: false,
+      messageState: IMessageState
     };
   },
   computed: {
@@ -108,7 +115,8 @@ export default defineComponent({
   width: fit-content;
   margin: auto;
   padding-top: 15px;
-  .fa-copy {
+  .fa-copy,
+  .fa-stop {
     margin-right: 5px;
   }
 }
