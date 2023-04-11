@@ -5,7 +5,7 @@ export default {
   apiInfo: '本服务由「知数云」提供技术支持',
   tryForFree: '免费使用',
   initializing: '初始化中，请稍后...',
-  writeCode: '写一段 JavaScript 代码，发送HTTP请求',
+  writeCode: '写一段 JavaScript 代码，输出 Hello World',
   writeEmail: '写一封邮件给 Bob，告诉他我刚刚搬家了',
   explainDefinition: '用简单的术语解释量子计算',
   rememberHistory: '可以记住用户说过的话',

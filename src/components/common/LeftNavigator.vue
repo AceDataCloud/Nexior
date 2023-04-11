@@ -13,6 +13,8 @@
       />
     </div>
     <div class="operators">
+      <navigator-item icon="fa-solid fa-gear" :title="$t('common.nav.setting')" @click="setting = true" />
+      <setting-panel :visible="setting" @close="setting = false" />
       <navigator-item
         v-show="!confirming"
         icon="fa-solid fa-trash"
@@ -36,16 +38,19 @@ import { defineComponent } from 'vue';
 import NavigatorItem from './NavigatorItem.vue';
 import ConversationNavigatorItem from '../conversation/ConversationNavigatorItem.vue';
 import { IConversation } from '@/operators/conversation/models';
+import SettingPanel from './SettingPanel.vue';
 
 export default defineComponent({
   name: 'LeftNavigator',
   components: {
     NavigatorItem,
-    ConversationNavigatorItem
+    ConversationNavigatorItem,
+    SettingPanel
   },
   data() {
     return {
-      confirming: false
+      confirming: false,
+      setting: false
     };
   },
   computed: {
