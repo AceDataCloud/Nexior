@@ -4,7 +4,7 @@
       v-model="value"
       type="textarea"
       resize="none"
-      :disabled="!application || answering"
+      :disabled="initializing || !application || answering"
       class="new-message-input"
       :placeholder="$t('conversation.message.newMessagePlaceholder')"
       @keydown.enter.exact.prevent="$emit('send')"
@@ -15,19 +15,17 @@
       <voice-recognition v-if="false" class="mr-1" @finished="value = $event" />
       <font-awesome-icon icon="fa-regular fa-paper-plane" class="icon-send" @click="$emit('send')" />
     </div>
-    <div v-if="!application" class="new-message-apply">
-      <div v-if="!initializing">
-        <span class="mr-2">{{ $t('conversation.message.apiInfo') }}</span>
-        <span>
-          <el-button type="primary" size="small" @click="confirming = true">
-            {{ $t('common.button.apply') }}
-          </el-button>
-        </span>
-        <span class="ml-1">{{ $t('conversation.message.tryForFree') }}</span>
-      </div>
-      <div v-else>
-        <span class="ml-1">{{ $t('conversation.message.initializing') }}</span>
-      </div>
+    <div v-if="initializing" class="new-message-apply">
+      <span class="ml-1">{{ $t('conversation.message.initializing') }}</span>
+    </div>
+    <div v-else-if="!application" class="new-message-apply">
+      <span class="mr-2">{{ $t('conversation.message.apiInfo') }}</span>
+      <span>
+        <el-button type="primary" size="small" @click="confirming = true">
+          {{ $t('common.button.apply') }}
+        </el-button>
+      </span>
+      <span class="ml-1">{{ $t('conversation.message.tryForFree') }}</span>
     </div>
   </div>
   <application-confirm
@@ -41,7 +39,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElInput, ElButton, ElText } from 'element-plus';
+import { ElInput, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IApi, IApplication } from '@/operators';
 import { IApplicationType } from '@/operators';

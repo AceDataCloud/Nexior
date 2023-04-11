@@ -17,5 +17,5 @@ export default {
   rotateCredentialSuccessfully: '密钥重置成功',
   rotateCredentialFailed: '密钥重置失败，请联系客服处理',
   updateFailed: '修改失败',
-  updateSuccessfully: '修改成功',
+  updateSuccessfully: '修改成功'
 };

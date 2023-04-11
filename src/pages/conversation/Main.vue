@@ -63,14 +63,22 @@ import {
   IApplication,
   IApplicationDetailResponse,
   IApplicationListResponse,
-  IApplicationType
+  IApplicationType,
+  userOperator
 } from '@/operators';
 import { ROUTE_AUTH_LOGIN, ROUTE_CONVERSATION_DETAIL } from '@/router/constants';
-import { ERROR_CODE_CANCELED, ERROR_CODE_DUPLICATION, ERROR_CODE_UNKNOWN, ERROR_CODE_UNVERIFIED } from '@/constants';
+import {
+  ENDPOINT,
+  ERROR_CODE_CANCELED,
+  ERROR_CODE_DUPLICATION,
+  ERROR_CODE_UNKNOWN,
+  ERROR_CODE_UNVERIFIED
+} from '@/constants';
 import { getVerificationUrl } from '@/utils';
 import { IConversation } from '@/operators/conversation/models';
 import Introduction from '@/components/conversation/Introduction.vue';
 import axios from 'axios';
+import { IResponse } from '@/operators/api/chatgpt/models';
 
 export interface IData {
   input: string;
@@ -81,6 +89,7 @@ export interface IData {
   api: IApi | undefined;
   application: IApplication | undefined;
   canceler: AbortController | undefined;
+  api_id: string;
 }
 
 export default defineComponent({
@@ -101,7 +110,8 @@ export default defineComponent({
       token: undefined,
       api: undefined,
       application: undefined,
-      canceler: undefined
+      canceler: undefined,
+      api_id: '1d58971c-e3cd-4713-a3ce-854a731adb14'
     };
   },
   computed: {
@@ -110,6 +120,9 @@ export default defineComponent({
     },
     user() {
       return this.$store.getters.user;
+    },
+    setting() {
+      return this.$store.getters.setting;
     }
   },
   watch: {
@@ -127,8 +140,14 @@ export default defineComponent({
       });
     } else {
       this.restoreMessages();
-      await this.onGetApiInfo();
-      await this.onCheckApplication();
+      this.loading = true;
+      Promise.all([this.onGetApiInfo(), this.onCheckApplication()])
+        .then(() => {
+          this.loading = false;
+        })
+        .catch(() => {
+          this.loading = false;
+        });
     }
   },
   methods: {
@@ -148,47 +167,30 @@ export default defineComponent({
         this.messages = [];
       }
     },
-    async onGetApiInfo() {
-      return new Promise((resolve, reject) => {
-        const id = '1d58971c-e3cd-4713-a3ce-854a731adb14';
-        apiOperator
-          .get(id)
-          .then(({ data: data }: { data: IApiDetailResponse }) => {
-            this.api = data;
-            resolve(data);
-          })
-          .catch((error) => {
-            reject(error);
-          });
-      });
+    async onGetApiInfo(): Promise<void> {
+      const { data } = await apiOperator.get(this.api_id);
+      this.api = data;
     },
     async onStop() {
       this.canceler?.abort();
     },
-    async onCheckApplication() {
+    async onCheckApplication(): Promise<void> {
       if (!this.user) {
-        return;
+        const user = await userOperator.getMe();
+        await this.$store.dispatch('setUser', user);
       }
-      this.loading = true;
-      applicationOperator
-        .getAll({
-          user_id: this.user.id,
-          api_id: this.api?.id
-        })
-        .then(({ data: data }: { data: IApplicationListResponse }) => {
-          if (data.items?.length > 0) {
-            const application = data.items[0];
-            this.application = application;
-            const token = application.credential?.token;
-            if (token) {
-              this.token = token;
-            }
-          }
-          this.loading = false;
-        })
-        .catch(() => {
-          this.loading = false;
-        });
+      const { data } = await applicationOperator.getAll({
+        user_id: this.user.id,
+        api_id: this.api_id
+      });
+      if (data.items?.length > 0) {
+        const application = data.items[0];
+        this.application = application;
+        const token = application.credential?.token;
+        if (token) {
+          this.token = token;
+        }
+      }
     },
     onApply() {
       applicationOperator
@@ -219,6 +221,48 @@ export default defineComponent({
     },
     onDraft(content: string) {
       this.input = content;
+    },
+    async onProcessConversation() {
+      const conversations: IConversation[] = this.$store.getters.conversations;
+      const hitConversations = conversations.filter((c: IConversation) => c.id === this.conversationId);
+      if (!hitConversations || hitConversations.length === 0) {
+        // append a new conversation to conversations
+        const newConversations = [
+          ...conversations,
+          {
+            id: this.conversationId,
+            messages: this.messages,
+            title: this.conversationId
+          }
+        ];
+        this.$store.dispatch('setConversations', newConversations);
+      } else {
+        // update one of existing conversations
+        conversations.forEach((conversation: IConversation) => {
+          if (conversation.id === this.conversationId) {
+            conversation.messages = this.messages;
+          }
+        });
+        this.$store.dispatch('setConversations', conversations);
+      }
+    },
+    async onProcessResponse(jsonData: IResponse) {
+      const answer = jsonData.answer;
+      const conversationId = jsonData.conversation_id;
+      // if this new conversation, just switch to a single conversation
+      if (conversationId && this.$route.name !== ROUTE_CONVERSATION_DETAIL) {
+        await this.$router.push({
+          name: ROUTE_CONVERSATION_DETAIL,
+          params: {
+            id: conversationId
+          }
+        });
+      }
+      if (this.conversationId === conversationId) {
+        this.scrollDown();
+        this.messages[this.messages.length - 1].content.value = answer;
+        this.messages[this.messages.length - 1].state = IMessageState.ANSWERING;
+      }
     },
     onSend() {
       if (this.answering) {
@@ -277,63 +321,37 @@ export default defineComponent({
           },
           {
             headers: {
-              accept: 'application/x-ndjson',
+              accept: this.setting?.stream ? 'application/x-ndjson' : 'application/json',
               'content-type': 'application/json'
             },
+            baseURL: this.$store.getters.endpoint || ENDPOINT,
             signal: this.canceler.signal,
-            responseType: 'stream',
-            onDownloadProgress: (event) => {
-              const response = event.target.response;
-              const lines = response.split('\r\n').filter((line: string) => !!line);
-              const lastLine = lines[lines.length - 1];
-              if (lastLine) {
-                const jsonData = JSON.parse(lastLine);
-                const answer = jsonData.answer;
-                const conversationId = jsonData.conversation_id;
-                if (conversationId && this.$route.name !== ROUTE_CONVERSATION_DETAIL) {
-                  this.$router.push({
-                    name: ROUTE_CONVERSATION_DETAIL,
-                    params: {
-                      id: conversationId
+            // only enable for stream mode
+            ...(this.setting?.stream
+              ? {
+                  responseType: 'stream',
+                  onDownloadProgress: (event) => {
+                    const response = event.target.response;
+                    const lines = response.split('\r\n').filter((line: string) => !!line);
+                    const lastLine = lines[lines.length - 1];
+                    if (lastLine) {
+                      const jsonData = JSON.parse(lastLine);
+                      this.onProcessResponse(jsonData);
                     }
-                  });
+                  }
                 }
-                if (this.conversationId === conversationId) {
-                  this.scrollDown();
-                  this.messages[this.messages.length - 1].content.value = answer;
-                  this.messages[this.messages.length - 1].state = IMessageState.ANSWERING;
-                }
-              }
-            }
+              : {})
           }
         )
-        .then(() => {
+        .then(async ({ data }: { data: IResponse }) => {
+          if (!this.setting.stream) {
+            await this.onProcessResponse(data);
+          }
           this.answering = false;
           if (this.messages && this.messages.length > 0) {
             this.messages[this.messages.length - 1].state = IMessageState.FINISHED;
           }
-          const conversations: IConversation[] = this.$store.getters.conversations;
-          const hitConversations = conversations.filter((c: IConversation) => c.id === this.conversationId);
-          if (!hitConversations || hitConversations.length === 0) {
-            // append a new conversation to conversations
-            const newConversations = [
-              ...conversations,
-              {
-                id: this.conversationId,
-                messages: this.messages,
-                title: this.conversationId
-              }
-            ];
-            this.$store.dispatch('setConversations', newConversations);
-          } else {
-            // update one of existing conversations
-            conversations.forEach((conversation: IConversation) => {
-              if (conversation.id === this.conversationId) {
-                conversation.messages = this.messages;
-              }
-            });
-            this.$store.dispatch('setConversations', conversations);
-          }
+          this.onProcessConversation();
         })
         .catch((error) => {
           this.answering = false;
@@ -344,7 +362,7 @@ export default defineComponent({
             this.messages[this.messages.length - 1].error = {
               code: ERROR_CODE_CANCELED
             };
-          } else if (error?.response?.data) {
+          } else if (error?.response?.data && error?.response?.data.code) {
             const data = error?.response?.data;
             if (this.messages && this.messages.length > 0) {
               this.messages[this.messages.length - 1].error = data;

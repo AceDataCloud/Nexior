@@ -60,7 +60,7 @@ export default defineComponent({
       }
     }
   },
-emits: ['stop'],
+  emits: ['stop'],
   data(): IData {
     return {
       copied: false

@@ -9,6 +9,7 @@ import {
 import {
   faMicrophone as faSolidMicrophone,
   faStop as faSolidStop,
+  faGear as faSolidGear,
   faRotateRight as faSolidRotateRight,
   faCheck as faSolidCheck,
   faPlus as faSolidPlus,
@@ -30,6 +31,7 @@ library.add(faSolidCheck);
 library.add(faRegularUser);
 library.add(faRegularSun);
 library.add(faSolidBolt);
+library.add(faSolidGear);
 library.add(faSolidMicrophone);
 library.add(faSolidPlus);
 library.add(faSolidQuestion);
