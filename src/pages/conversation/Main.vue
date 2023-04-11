@@ -22,6 +22,7 @@
               :author="message.author"
               :error="message.error"
               :state="message.state"
+              @stop="onStop"
             />
           </el-col>
         </el-row>
@@ -65,10 +66,11 @@ import {
   IApplicationType
 } from '@/operators';
 import { ROUTE_AUTH_LOGIN, ROUTE_CONVERSATION_DETAIL } from '@/router/constants';
-import { ERROR_CODE_DUPLICATION, ERROR_CODE_UNKNOWN, ERROR_CODE_UNVERIFIED } from '@/constants';
+import { ERROR_CODE_CANCELED, ERROR_CODE_DUPLICATION, ERROR_CODE_UNKNOWN, ERROR_CODE_UNVERIFIED } from '@/constants';
 import { getVerificationUrl } from '@/utils';
 import { IConversation } from '@/operators/conversation/models';
 import Introduction from '@/components/conversation/Introduction.vue';
+import axios from 'axios';
 
 export interface IData {
   input: string;
@@ -78,6 +80,7 @@ export interface IData {
   token: string | undefined;
   api: IApi | undefined;
   application: IApplication | undefined;
+  canceler: AbortController | undefined;
 }
 
 export default defineComponent({
@@ -97,7 +100,8 @@ export default defineComponent({
       messages: [],
       token: undefined,
       api: undefined,
-      application: undefined
+      application: undefined,
+      canceler: undefined
     };
   },
   computed: {
@@ -158,6 +162,9 @@ export default defineComponent({
           });
       });
     },
+    async onStop() {
+      this.canceler?.abort();
+    },
     async onCheckApplication() {
       if (!this.user) {
         return;
@@ -217,7 +224,7 @@ export default defineComponent({
       if (this.answering) {
         return;
       }
-      if (!this.input) {
+      if (!this.input.trim()) {
         ElMessage.error(this.$t('conversation.message.noInput'));
         return;
       }
@@ -253,6 +260,7 @@ export default defineComponent({
       setTimeout(() => {
         this.scrollDown();
       }, 100);
+      this.canceler = new AbortController();
       chatgptOperator
         .post(
           {
@@ -272,18 +280,16 @@ export default defineComponent({
               accept: 'application/x-ndjson',
               'content-type': 'application/json'
             },
+            signal: this.canceler.signal,
             responseType: 'stream',
             onDownloadProgress: (event) => {
               const response = event.target.response;
               const lines = response.split('\r\n').filter((line: string) => !!line);
               const lastLine = lines[lines.length - 1];
               if (lastLine) {
-                this.scrollDown();
                 const jsonData = JSON.parse(lastLine);
                 const answer = jsonData.answer;
                 const conversationId = jsonData.conversation_id;
-                this.messages[this.messages.length - 1].content.value = answer;
-                this.messages[this.messages.length - 1].state = IMessageState.ANSWERING;
                 if (conversationId && this.$route.name !== ROUTE_CONVERSATION_DETAIL) {
                   this.$router.push({
                     name: ROUTE_CONVERSATION_DETAIL,
@@ -291,6 +297,11 @@ export default defineComponent({
                       id: conversationId
                     }
                   });
+                }
+                if (this.conversationId === conversationId) {
+                  this.scrollDown();
+                  this.messages[this.messages.length - 1].content.value = answer;
+                  this.messages[this.messages.length - 1].state = IMessageState.ANSWERING;
                 }
               }
             }
@@ -329,7 +340,11 @@ export default defineComponent({
           if (this.messages && this.messages.length > 0) {
             this.messages[this.messages.length - 1].state = IMessageState.FAILED;
           }
-          if (error?.response?.data) {
+          if (axios.isCancel(error)) {
+            this.messages[this.messages.length - 1].error = {
+              code: ERROR_CODE_CANCELED
+            };
+          } else if (error?.response?.data) {
             const data = error?.response?.data;
             if (this.messages && this.messages.length > 0) {
               this.messages[this.messages.length - 1].error = data;

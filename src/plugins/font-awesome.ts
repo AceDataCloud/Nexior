@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 import {
   faMicrophone as faSolidMicrophone,
+  faStop as faSolidStop,
   faRotateRight as faSolidRotateRight,
   faCheck as faSolidCheck,
   faPlus as faSolidPlus,
@@ -32,6 +33,7 @@ library.add(faSolidBolt);
 library.add(faSolidMicrophone);
 library.add(faSolidPlus);
 library.add(faSolidQuestion);
+library.add(faSolidStop);
 library.add(faSolidTriangleExclamation);
 library.add(faSolidUpRightFromSquare);
 library.add(faSolidArrowsRotate);
