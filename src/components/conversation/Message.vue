@@ -8,7 +8,7 @@
       <font-awesome-icon icon="fa-regular fa-copy" class="icon-copy" />
       {{ $t('common.button.copy') }}
     </el-button>
-    <el-button v-if="author.type === 'bot' && content.value" class="operation" size="small" @click="onStop">
+    <el-button v-if="author.type === 'bot'" class="operation" size="small" @click="onStop">
       <font-awesome-icon icon="fa-regular fa-copy" class="icon-stop" />
       {{ $t('common.button.stop') }}
     </el-button>
