@@ -176,7 +176,7 @@ export default defineComponent({
     },
     async onCheckApplication(): Promise<void> {
       if (!this.user) {
-        const user = await userOperator.getMe();
+        const { data: user } = await userOperator.getMe();
         await this.$store.dispatch('setUser', user);
       }
       const { data } = await applicationOperator.getAll({
