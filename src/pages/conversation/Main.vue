@@ -324,7 +324,7 @@ export default defineComponent({
               accept: this.setting?.stream ? 'application/x-ndjson' : 'application/json',
               'content-type': 'application/json'
             },
-            baseURL: this.$store.getters.endpoint || ENDPOINT,
+            baseURL: this.setting.endpoint || ENDPOINT,
             signal: this.canceler.signal,
             // only enable for stream mode
             ...(this.setting?.stream
