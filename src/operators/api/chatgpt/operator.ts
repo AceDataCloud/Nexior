@@ -15,3 +15,14 @@ class ChatGPTOperator {
 }
 
 export const chatgptOperator = new ChatGPTOperator();
+
+class ChatGPT4Operator {
+  async post(data: IRequest, query: IQuery, config?: AxiosRequestConfig): Promise<AxiosResponse<IResponse>> {
+    return await axios.post(`/chatgpt4`, data, {
+      ...config,
+      params: query
+    });
+  }
+}
+
+export const chatgpt4Operator = new ChatGPT4Operator();

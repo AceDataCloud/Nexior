@@ -4,32 +4,36 @@
       {{ $t('conversation.message.usedCount') }}: {{ application?.used_amount }}
       {{ $t('conversation.message.remainingCount') }}: {{ application?.remaining_amount }}
     </span>
-    <el-input
-      v-model="value"
-      type="textarea"
-      resize="none"
-      :disabled="initializing || !application || answering"
-      class="new-message-input"
-      :placeholder="$t('conversation.message.newMessagePlaceholder')"
-      @keydown.enter.exact.prevent="$emit('send')"
-    >
-    </el-input>
-    <span class="new-message-info-input">{{ $t('conversation.message.howToBreakLine') }}</span>
-    <div class="new-message-operations">
-      <voice-recognition v-if="false" class="mr-1" @finished="value = $event" />
-      <font-awesome-icon icon="fa-regular fa-paper-plane" class="icon-send" @click="$emit('send')" />
-    </div>
-    <div v-if="initializing" class="new-message-apply">
-      <span class="ml-1">{{ $t('conversation.message.initializing') }}</span>
-    </div>
-    <div v-else-if="!application" class="new-message-apply">
-      <span class="mr-2">{{ $t('conversation.message.apiInfo') }}</span>
-      <span>
-        <el-button type="primary" size="small" @click="confirming = true">
-          {{ $t('common.button.apply') }}
-        </el-button>
-      </span>
-      <span class="ml-1">{{ $t('conversation.message.tryForFree') }}</span>
+    <div class="flex">
+      <div class="new-message-input-box">
+        <el-input
+          v-model="value"
+          type="textarea"
+          resize="none"
+          :disabled="initializing || !application || answering"
+          class="new-message-input"
+          :placeholder="$t('conversation.message.newMessagePlaceholder')"
+          @keydown.enter.exact.prevent="$emit('send')"
+        >
+        </el-input>
+        <span class="new-message-info-input">{{ $t('conversation.message.howToBreakLine') }}</span>
+        <div class="new-message-operations">
+          <voice-recognition v-if="false" class="mr-1" @finished="value = $event" />
+          <font-awesome-icon icon="fa-regular fa-paper-plane" class="icon-send" @click="$emit('send')" />
+        </div>
+        <div v-if="initializing" class="new-message-apply">
+          <span class="ml-1">{{ $t('conversation.message.initializing') }}</span>
+        </div>
+        <div v-else-if="!application" class="new-message-apply">
+          <span class="mr-2">{{ $t('conversation.message.apiInfo') }}</span>
+          <span>
+            <el-button type="primary" size="small" @click="confirming = true">
+              {{ $t('common.button.apply') }}
+            </el-button>
+          </span>
+          <span class="ml-1">{{ $t('conversation.message.tryForFree') }}</span>
+        </div>
+      </div>
     </div>
   </div>
   <application-confirm
@@ -43,12 +47,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElInput, ElButton } from 'element-plus';
+import { ElInput, ElButton, ElSelect, ElOption } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IApi, IApplication } from '@/operators';
 import { IApplicationType } from '@/operators';
 import ApplicationConfirm from '@/components/application/Confirm.vue';
 import VoiceRecognition from './VoiceRecognition.vue';
+import { APIS } from '@/constants/api';
 
 interface IData {
   applicationType: typeof IApplicationType;
@@ -100,6 +105,9 @@ export default defineComponent({
   computed: {
     conversationId() {
       return this.$route.params?.id?.toString();
+    },
+    activeApiId() {
+      return this.$store.getters.activeApiId;
     }
   },
   watch: {
@@ -120,38 +128,43 @@ export default defineComponent({
 .new-message-box {
   position: relative;
   margin-bottom: 40px;
-  .new-message-input {
-    height: 50px;
-  }
-  .new-message-operations {
-    position: absolute;
-    bottom: 12px;
-    right: 10px;
-    color: var(--el-text-color-regular);
-    .icon-send {
-      cursor: pointer;
+
+  .new-message-input-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .new-message-input {
+      height: 50px;
+    }
+
+    .new-message-info-input {
+      position: absolute;
+      bottom: -25px;
+      left: 5px;
+      font-size: 12px;
+      color: var(--el-text-color-regular);
+    }
+    .new-message-operations {
+      position: absolute;
+      bottom: 12px;
+      right: 10px;
+      color: var(--el-text-color-regular);
+      .icon-send {
+        cursor: pointer;
+      }
+    }
+
+    .new-message-apply {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      text-align: center;
+      transform: translate(-50%, -50%);
+      font-size: 12px;
+      color: #666;
     }
   }
-
-  .new-message-info-input {
-    position: absolute;
-    bottom: -25px;
-    left: 5px;
-    font-size: 12px;
-    color: var(--el-text-color-regular);
-  }
-
-  .new-message-apply {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    text-align: center;
-    transform: translate(-50%, -50%);
-    font-size: 12px;
-    color: #666;
-  }
-
   .new-message-box-usage-info {
     color: #999;
     font-size: 12px;
