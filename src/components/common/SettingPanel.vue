@@ -1,5 +1,5 @@
 <template>
-  <el-dialog :model-value="visible" @close="$emit('close')">
+  <el-dialog :model-value="visible" width="400px" @close="$emit('close')">
     <h2 class="title">{{ $t('common.nav.setting') }}</h2>
     <el-form label-width="120px">
       <el-form-item :label="$t('setting.field.stream')">

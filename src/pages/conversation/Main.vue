@@ -352,6 +352,7 @@ export default defineComponent({
             this.messages[this.messages.length - 1].state = IMessageState.FINISHED;
           }
           this.onProcessConversation();
+          this.onCheckApplication();
         })
         .catch((error) => {
           this.answering = false;

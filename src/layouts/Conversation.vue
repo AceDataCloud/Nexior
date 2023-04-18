@@ -4,22 +4,46 @@
       <left-navigator />
     </el-aside>
     <el-main class="main"> <router-view /> </el-main>
+    <el-button round class="menu" @click="drawer = true">
+      <font-awesome-icon icon="fa-solid fa-bars" class="icon-menu" />
+    </el-button>
+    <el-drawer v-model="drawer" :with-header="false" size="50%" class="drawer">
+      <left-navigator />
+    </el-drawer>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElMain, ElAside } from 'element-plus';
+import { ElMain, ElAside, ElButton, ElDrawer } from 'element-plus';
 import LeftNavigator from '@/components/common/LeftNavigator.vue';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default defineComponent({
   name: 'LayoutConversation',
   components: {
     ElMain,
-    LeftNavigator
+    ElAside,
+    ElDrawer,
+    ElButton,
+    LeftNavigator,
+    FontAwesomeIcon
+  },
+  data() {
+    return {
+      drawer: false
+    };
   }
 });
 </script>
+
+<style lang="scss">
+.drawer {
+  .el-drawer__body {
+    padding: 0;
+  }
+}
+</style>
 
 <style lang="scss" scoped>
 .container {
@@ -31,6 +55,10 @@ export default defineComponent({
 
 .header {
   padding: 0;
+}
+
+.menu {
+  display: none;
 }
 
 $width: 300px;
@@ -70,6 +98,13 @@ $width: 300px;
   }
   .main {
     width: 100%;
+  }
+
+  .menu {
+    display: block;
+    position: fixed;
+    right: 20px;
+    top: 20px;
   }
 }
 </style>
