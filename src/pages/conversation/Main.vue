@@ -1,5 +1,10 @@
 <template>
   <div class="conversation">
+    <div class="selection">
+      <el-select :model-value="activeApiId" @change="onSwitchApi">
+        <el-option v-for="item in apis" :key="item.id" :label="item.name" :value="item.id" />
+      </el-select>
+    </div>
     <el-row v-if="!messages || messages.length === 0" class="introduction-wrapper" justify="center">
       <el-col :md="14" :sm="22" :xs="22">
         <introduction @draft="onDraft" />
@@ -40,6 +45,7 @@
             :application="application"
             @send="onSend"
             @apply="onApply"
+            @switch-api="onSwitchApi"
           />
         </el-col>
       </el-row>
@@ -50,24 +56,25 @@
 <script lang="ts">
 import { IMessage, IMessageState } from '@/operators/message/models';
 import { defineComponent } from 'vue';
-import { ElRow, ElCol, ElMessage } from 'element-plus';
+import { ElRow, ElCol, ElMessage, ElSelect, ElOption } from 'element-plus';
 import Message from '@/components/conversation/Message.vue';
-import { chatgptOperator } from '@/operators/api/chatgpt/operator';
+import { chatgpt4Operator, chatgptOperator } from '@/operators/api/chatgpt/operator';
 import NewMessageBox from '@/components/conversation/NewMessageBox.vue';
 import { chatgptAvatar, userAvatar } from '@/constants/image';
 import {
   apiOperator,
   applicationOperator,
   IApi,
-  IApiDetailResponse,
   IApplication,
   IApplicationDetailResponse,
-  IApplicationListResponse,
   IApplicationType,
   userOperator
 } from '@/operators';
-import { ROUTE_AUTH_LOGIN, ROUTE_CONVERSATION_DETAIL } from '@/router/constants';
+import { ROUTE_AUTH_LOGIN, ROUTE_CONVERSATION_DETAIL, ROUTE_CONVERSATION_NEW } from '@/router/constants';
 import {
+  APIS,
+  API_ID_CHATGPT,
+  DEFAULT_API,
   ENDPOINT,
   ERROR_CODE_CANCELED,
   ERROR_CODE_DUPLICATION,
@@ -89,7 +96,7 @@ export interface IData {
   api: IApi | undefined;
   application: IApplication | undefined;
   canceler: AbortController | undefined;
-  api_id: string;
+  apis: { id: string; name: string }[];
 }
 
 export default defineComponent({
@@ -99,6 +106,8 @@ export default defineComponent({
     Message,
     ElRow,
     ElCol,
+    ElSelect,
+    ElOption,
     NewMessageBox
   },
   data(): IData {
@@ -111,7 +120,7 @@ export default defineComponent({
       api: undefined,
       application: undefined,
       canceler: undefined,
-      api_id: '1d58971c-e3cd-4713-a3ce-854a731adb14'
+      apis: APIS
     };
   },
   computed: {
@@ -123,6 +132,9 @@ export default defineComponent({
     },
     setting() {
       return this.$store.getters.setting;
+    },
+    activeApiId() {
+      return this.$store.getters.activeApiId;
     }
   },
   watch: {
@@ -140,6 +152,11 @@ export default defineComponent({
       });
     } else {
       this.restoreMessages();
+      this.onInitialize();
+    }
+  },
+  methods: {
+    onInitialize() {
       this.loading = true;
       Promise.all([this.onGetApiInfo(), this.onCheckApplication()])
         .then(() => {
@@ -148,9 +165,7 @@ export default defineComponent({
         .catch(() => {
           this.loading = false;
         });
-    }
-  },
-  methods: {
+    },
     scrollDown() {
       const container = document.querySelector('.main') as HTMLDivElement;
       container.scrollTop = container.scrollHeight;
@@ -168,7 +183,7 @@ export default defineComponent({
       }
     },
     async onGetApiInfo(): Promise<void> {
-      const { data } = await apiOperator.get(this.api_id);
+      const { data } = await apiOperator.get(this.activeApiId);
       this.api = data;
     },
     async onStop() {
@@ -181,7 +196,7 @@ export default defineComponent({
       }
       const { data } = await applicationOperator.getAll({
         user_id: this.user.id,
-        api_id: this.api_id
+        api_id: this.activeApiId
       });
       if (data.items?.length > 0) {
         const application = data.items[0];
@@ -191,6 +206,15 @@ export default defineComponent({
           this.token = token;
         }
       }
+    },
+    async onSwitchApi(id: string) {
+      await this.$store.dispatch('setActiveApiId', id);
+      this.api = undefined;
+      this.application = undefined;
+      this.onInitialize();
+      this.$router.push({
+        name: ROUTE_CONVERSATION_NEW
+      });
     },
     onApply() {
       applicationOperator
@@ -305,7 +329,8 @@ export default defineComponent({
         this.scrollDown();
       }, 100);
       this.canceler = new AbortController();
-      chatgptOperator
+      const operator = this.activeApiId === API_ID_CHATGPT ? chatgptOperator : chatgpt4Operator;
+      operator
         .post(
           {
             question: input,
@@ -387,8 +412,24 @@ export default defineComponent({
   position: relative;
   flex-direction: column;
   display: flex;
+
+  .selection {
+    position: fixed;
+    top: 10px;
+    text-align: center;
+    left: 300px;
+    width: calc(100% - 300px);
+    z-index: 1000;
+  }
+  @media (max-width: 767px) {
+    .selection {
+      left: 0px;
+      width: calc(100%);
+    }
+  }
   .messages-wrapper {
     margin-bottom: 100px;
+    padding-top: 50px;
   }
   .introduction-wrapper {
     flex: 1;
@@ -399,6 +440,9 @@ export default defineComponent({
     border-bottom-width: 1px;
     padding-bottom: 1.5rem;
     padding-top: 1.5rem;
+    &:first-child {
+      border-top-width: 1px;
+    }
     &.bot {
       background-color: #f7f7f8;
     }

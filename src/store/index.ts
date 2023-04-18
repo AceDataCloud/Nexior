@@ -3,7 +3,7 @@ import createPersistedState from 'vuex-persistedstate';
 import { userOperator, IUser } from '@/operators';
 import { removeCookies } from '@/utils/cookie';
 import { IConversation } from '@/operators/conversation/models';
-import { ENDPOINT } from '@/constants';
+import { DEFAULT_API, ENDPOINT } from '@/constants';
 
 export interface ISetting {
   stream?: boolean;
@@ -14,6 +14,7 @@ export interface IState {
   accessToken: string | undefined;
   refreshToken: string | undefined;
   user: IUser | undefined;
+  activeApiId: string | undefined;
   conversations: IConversation[];
   setting: ISetting;
 }
@@ -24,6 +25,7 @@ const store = createStore({
       accessToken: undefined,
       refreshToken: undefined,
       user: undefined,
+      activeApiId: DEFAULT_API.id,
       conversations: [],
       setting: {
         endpoint: ENDPOINT,
@@ -49,6 +51,9 @@ const store = createStore({
     },
     setConversations(state: IState, payload: IConversation[]): void {
       state.conversations = payload;
+    },
+    setActiveApiId(state: IState, payload: string): void {
+      state.activeApiId = payload;
     }
   },
   actions: {
@@ -70,6 +75,9 @@ const store = createStore({
     setSetting({ commit }: ActionContext<IState, IState>, payload: ISetting) {
       commit('setSetting', payload);
     },
+    setActiveApiId({ commit }: ActionContext<IState, IState>, payload: string) {
+      commit('setActiveApiId', payload);
+    },
     setConversations({ commit }: ActionContext<IState, IState>, payload: IConversation[]) {
       commit('setConversations', payload);
     },
@@ -90,6 +98,9 @@ const store = createStore({
     },
     accessToken(state): string | undefined {
       return state.accessToken;
+    },
+    activeApiId(state): string | undefined {
+      return state.activeApiId;
     },
     refreshToken(state): string | undefined {
       return state.refreshToken;
