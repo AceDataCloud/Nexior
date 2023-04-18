@@ -1,5 +1,9 @@
 <template>
   <div class="new-message-box">
+    <span v-if="application" class="new-message-box-usage-info">
+      {{ $t('conversation.message.usedCount') }}: {{ application?.used_amount }}
+      {{ $t('conversation.message.remainingCount') }}: {{ application?.remaining_amount }}
+    </span>
     <el-input
       v-model="value"
       type="textarea"
@@ -146,6 +150,14 @@ export default defineComponent({
     transform: translate(-50%, -50%);
     font-size: 12px;
     color: #666;
+  }
+
+  .new-message-box-usage-info {
+    color: #999;
+    font-size: 12px;
+    text-align: center;
+    display: block;
+    margin-bottom: 3px;
   }
 }
 </style>

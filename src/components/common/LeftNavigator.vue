@@ -90,6 +90,7 @@ export default defineComponent({
     onDeleteConversation(id: string) {
       const newConversations = this.conversations.filter((i: IConversation) => i.id !== id);
       this.$store.dispatch('setConversations', newConversations);
+      this.onNewConversation();
     }
   }
 });
