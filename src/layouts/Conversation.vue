@@ -104,7 +104,7 @@ $width: 300px;
     display: block;
     position: fixed;
     right: 20px;
-    top: 20px;
+    top: 10px;
   }
 }
 </style>

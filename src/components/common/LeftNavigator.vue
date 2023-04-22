@@ -102,11 +102,12 @@ export default defineComponent({
   flex-direction: column;
   background-color: #202123;
   color: white;
-  height: 100vh;
+  height: 100%;
   padding: 15px 5px;
   font-size: 14px;
   .conversations {
     flex: 1;
+    overflow-y: scroll;
   }
   .operators {
     height: fit-content;
