@@ -428,7 +428,7 @@ export default defineComponent({
     }
   }
   .messages-wrapper {
-    margin-bottom: 100px;
+    margin-bottom: 120px;
     padding-top: 50px;
   }
   .introduction-wrapper {

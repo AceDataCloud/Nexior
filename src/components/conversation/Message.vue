@@ -114,7 +114,9 @@ export default defineComponent({
 .operations {
   width: fit-content;
   margin: auto;
-  padding-top: 15px;
+  .operation {
+    margin-top: 15px;
+  }
   .fa-copy,
   .fa-stop {
     margin-right: 5px;
