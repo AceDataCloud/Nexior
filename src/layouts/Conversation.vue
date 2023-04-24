@@ -105,6 +105,7 @@ $width: 300px;
     position: fixed;
     right: 20px;
     top: 10px;
+    z-index: 2000;
   }
 }
 </style>
