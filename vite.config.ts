@@ -3,55 +3,14 @@ import vue from '@vitejs/plugin-vue';
 import replace from '@rollup/plugin-replace';
 import { string } from 'rollup-plugin-string';
 import * as path from 'path';
-import * as fs from 'fs';
-
-const getAuthEndpoint = () => {
-  switch (process.env.NODE_ENV) {
-    case 'local':
-      return 'https://auth.test.zhishuyun.com';
-    case 'test':
-      return 'https://auth.test.zhishuyun.com';
-    case 'production':
-    default:
-      return 'https://auth.zhishuyun.com';
-  }
-};
-
-const getDataEndpoint = () => {
-  switch (process.env.NODE_ENV) {
-    case 'local':
-      return 'http://127.0.0.1:8007';
-    case 'test':
-      return 'https://data.test.zhishuyun.com';
-    case 'production':
-    default:
-      return 'https://data.zhishuyun.com';
-  }
-};
 
 export default defineConfig({
   server: {
-    host: 'chat.local.zhishuyun.com',
-    port: 443,
-    https: {
-      key: fs.readFileSync('certs/chat.local.zhishuyun.com.cert.key'),
-      cert: fs.readFileSync('certs/chat.local.zhishuyun.com.cert.crt')
-    },
+    host: 'localhost',
+    port: 8080,
     proxy: {
-      '/api/v1/me': {
-        target: getAuthEndpoint(),
-        changeOrigin: true
-      },
-      '/api/v1/token': {
-        target: getAuthEndpoint(),
-        changeOrigin: true
-      },
       '/api': {
-        target: getDataEndpoint(),
-        changeOrigin: true
-      },
-      '/static': {
-        target: getDataEndpoint(),
+        target: 'https://data.zhishuyun.com',
         changeOrigin: true
       }
     }

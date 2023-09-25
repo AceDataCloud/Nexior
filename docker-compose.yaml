@@ -1,8 +1,8 @@
 version: '3'
 services:
-  zhishuyun-chat-frontend:
-    container_name: 'zhishuyun-chat-frontend'
+  zhishuyun-ai-frontend:
+    container_name: 'zhishuyun-ai-frontend'
     build: ./
-    image: 'ghcr.io/zhishuyun/chat-frontend:${BUILD_NUMBER}'
+    image: 'ghcr.io/zhishuyun/ai-frontend:${BUILD_NUMBER}'
     ports:
-      - '8086:80'
+      - '8000:80'
