@@ -2,6 +2,8 @@ html,
 body {
   padding: 0;
   margin: 0;
+  height: 100%;
+  width: 100%;
 }
 
 * {
@@ -9,7 +11,8 @@ body {
 }
 
 #app {
-  background-color: #f7f8fc;
+  width: 100%;
+  height: 100%;
 
   .el-main {
     padding: 0 !important;
@@ -24,10 +27,6 @@ body {
   .el-breadcrumb__inner a,
   .el-breadcrumb__inner.is-link {
     color: var(--el-text-color-regular);
-  }
-
-  .el-button {
-    border-radius: 9999px;
   }
 
   .el-textarea {

@@ -1,6 +1,8 @@
 <template>
   <div class="wrapper">
-    <div class="sidebar"></div>
+    <div class="left">
+      <navigator />
+    </div>
     <div class="main">
       <router-view />
     </div>
@@ -10,10 +12,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElContainer, ElMain } from 'element-plus';
+import Navigator from '@/components/common/Navigator.vue';
 
 export default defineComponent({
   name: 'LayoutMain',
-  components: {}
+  components: {
+    Navigator
+  }
 });
 </script>
 
@@ -22,11 +27,14 @@ export default defineComponent({
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
-  .sidebar {
+  flex-direction: row;
+  .left {
     width: 50px;
+    height: 100%;
+    background-color: aqua;
   }
   .main {
+    height: 100%;
     flex: 1;
   }
 }
