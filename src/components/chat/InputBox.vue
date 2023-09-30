@@ -1,38 +1,43 @@
 <template>
-  <div class="input">
-
+  <div class="input-box">
+    <el-input v-model="value" :rows="2" type="textarea" placeholder="Please input" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElTooltip, ElButton } from 'element-plus';
+import { ElInput, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CHAT_INDEX } from '@/router/constants';
 
 export default defineComponent({
-  name: 'Sidebar',
+  name: 'InputBox',
   components: {
+    ElInput,
     ElButton,
     FontAwesomeIcon
   },
+  props: {
+    modelValue: {
+      type: String,
+      required: true
+    }
+  },
+  emits: ['update:modelValue'],
   data() {
     return {
-      links: [
-        {
-          route: {
-            name: ROUTE_CHAT_INDEX
-          },
-          icon: 'fa-question'
-        },
-        {
-          route: {
-            name: 'midjourney-index'
-          },
-          icon: 'fa-question'
-        }
-      ]
+      value: this.modelValue
     };
+  },
+  watch: {
+    value(val) {
+      this.$emit('update:modelValue', val);
+    },
+    modelValue(val) {
+      if (val !== this.value) {
+        this.value = val;
+      }
+    }
   }
 });
 </script>
