@@ -29,9 +29,10 @@ export default defineComponent({
   display: flex;
   flex-direction: row;
   .left {
-    width: 50px;
+    width: 60px;
     height: 100%;
-    background-color: aqua;
+    // background-color: aqua;
+    border-right: 1px solid var(--el-border-color);
   }
   .main {
     height: 100%;

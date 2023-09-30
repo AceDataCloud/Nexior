@@ -2,8 +2,8 @@
   <div class="sidebar">
     <div class="top">
       <div v-for="(link, linkIndex) in links" :key="linkIndex" class="link">
-        <el-button @click="$router.push(link.route)">
-          <font-awesome-icon icon="fa-solid fa-question" />
+        <el-button class="button" @click="$router.push(link.route)">
+          <font-awesome-icon :icon="link.icon" />
         </el-button>
       </div>
     </div>
@@ -30,13 +30,13 @@ export default defineComponent({
           route: {
             name: ROUTE_CHAT_INDEX
           },
-          icon: 'fa-question'
+          icon: 'fa-regular fa-comment'
         },
         {
           route: {
             name: 'midjourney-index'
           },
-          icon: 'fa-question'
+          icon: 'fa-solid fa-palette'
         }
       ]
     };
@@ -48,10 +48,28 @@ export default defineComponent({
 .sidebar {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   .top {
     display: flex;
     flex-direction: column;
+    padding-top: 10px;
+    .link {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 10px;
+      // border-radius: 5px;
+      .button {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        border: none;
+        background-color: var(--el-bg-color-page);
+        &:hover,
+        &:focus {
+          background-color: var(--el-button-hover-bg-color);
+        }
+      }
+    }
   }
   .bottom {
     display: flex;

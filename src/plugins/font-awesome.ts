@@ -9,6 +9,7 @@ import {
 import {
   faMicrophone as faSolidMicrophone,
   faStop as faSolidStop,
+  faPalette as faSolidPalette,
   faBars as faSolidBars,
   faGear as faSolidGear,
   faRotateRight as faSolidRotateRight,
@@ -45,3 +46,4 @@ library.add(faRegularPaperPlane);
 library.add(faRegularComment);
 library.add(faSolidArrowRightFromBracket);
 library.add(faSolidTrash);
+library.add(faSolidPalette);
