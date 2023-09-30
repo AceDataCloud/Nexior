@@ -31,7 +31,8 @@ export default defineComponent({
 .markdown-body {
   background: none;
   padding-top: 3px;
-  color: var(--el-text-color-primary);
+  color: inherit;
+  // color: var(--el-text-color-primary);
   ol {
     list-style: initial;
   }
