@@ -17,9 +17,14 @@ export enum IMessageState {
   FAILED = 'failed'
 }
 
+export const ROLE_SYSTEM = 'system';
+export const ROLE_ASSISTANT = 'assistant';
+export const ROLE_USER = 'user';
+
 export interface IMessage {
   state?: IMessageState;
-  content: IContent;
-  author: IUser | IBot;
+  content: string;
+  author?: IUser | IBot;
+  role?: typeof ROLE_SYSTEM | typeof ROLE_ASSISTANT | typeof ROLE_USER;
   error?: IError;
 }
