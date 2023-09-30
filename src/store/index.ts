@@ -2,45 +2,47 @@ import { createStore, ActionContext } from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 import { removeCookies } from '@/utils/cookie';
 import { ENDPOINT } from '@/constants';
-
-export interface ISetting {
-  stream?: boolean;
-  endpoint?: string;
-}
-
-export interface IState {
-  accessToken: string | undefined;
-  setting: ISetting;
-}
+import { IApplication } from '@/operators';
+import { ISetting, IState, IToken } from './models';
 
 const store = createStore({
   state(): IState {
     return {
-      accessToken: undefined,
+      token: {
+        access: undefined,
+        refresh: undefined
+      },
       setting: {
         endpoint: ENDPOINT,
         stream: false
-      }
+      },
+      applications: []
     };
   },
   mutations: {
-    setAccessToken(state: IState, payload: string): void {
-      state.accessToken = payload;
+    setToken(state: IState, payload: IToken): void {
+      state.token = {
+        ...state.token,
+        ...payload
+      };
     },
     setSetting(state: IState, payload: ISetting): void {
       state.setting = {
         ...state.setting,
         ...payload
       };
+    },
+    setApplications(state: IState, payload: IApplication[]): void {
+      state.applications = payload;
     }
   },
   actions: {
-    resetAuth({ commit }) {
-      commit('setAccessToken', undefined);
+    resetToken({ commit }) {
+      commit('setToken', {});
       removeCookies();
     },
-    setAccessToken({ commit }: ActionContext<IState, IState>, payload: string) {
-      commit('setAccessToken', payload);
+    setToken({ commit }: ActionContext<IState, IState>, payload: IToken) {
+      commit('setToken', payload);
     },
     setSetting({ commit }: ActionContext<IState, IState>, payload: ISetting) {
       commit('setSetting', payload);
@@ -48,13 +50,16 @@ const store = createStore({
   },
   getters: {
     authenticated(state): boolean {
-      return !!state.accessToken;
+      return !!state.token.access;
     },
-    accessToken(state): string | undefined {
-      return state.accessToken;
+    token(state): IToken {
+      return state.token;
     },
     setting(state): ISetting | undefined {
       return state.setting;
+    },
+    applications(state): IApplication[] | undefined {
+      return state.applications;
     }
   },
   plugins: [createPersistedState()]

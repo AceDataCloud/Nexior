@@ -14,6 +14,7 @@ import { ElImage, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import copy from 'copy-to-clipboard';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
+import { IChatMessage } from '@/operators';
 
 interface IData {
   copied: boolean;
@@ -31,7 +32,7 @@ export default defineComponent({
   },
   props: {
     message: {
-      type: Object as () => IMessage,
+      type: Object as () => IChatMessage,
       required: true
     }
   },

@@ -1,6 +1,12 @@
 <template>
   <div class="input-box">
-    <el-input v-model="value" :rows="2" type="textarea" placeholder="Please input" />
+    <el-input
+      v-model="value"
+      :rows="2"
+      type="textarea"
+      placeholder="Please input"
+      @keydown.enter.exact.prevent="onSubmit"
+    />
   </div>
 </template>
 
@@ -23,7 +29,7 @@ export default defineComponent({
       required: true
     }
   },
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'submit'],
   data() {
     return {
       value: this.modelValue
@@ -37,6 +43,11 @@ export default defineComponent({
       if (val !== this.value) {
         this.value = val;
       }
+    }
+  },
+  methods: {
+    onSubmit() {
+      this.$emit('submit', this.value);
     }
   }
 });
