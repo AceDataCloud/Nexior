@@ -21,12 +21,17 @@ import { defineComponent } from 'vue';
 import { ElSelect, ElOption, ElDropdown, ElButton, ElDropdownItem } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CHAT_INDEX } from '@/router/constants';
+import {
+  API_ID_CHATGPT,
+  API_ID_CHATGPT4,
+  API_ID_CHATGPT4_BROWSING,
+  API_ID_CHATGPT_16K,
+  API_ID_CHATGPT_BROWSING
+} from '@/operators/chat/constants';
 
 export default defineComponent({
   name: 'ModelSelector',
   components: {
-    ElSelect,
-    ElOption,
     ElDropdown,
     ElButton,
     ElDropdownItem,
@@ -38,7 +43,7 @@ export default defineComponent({
       required: true
     }
   },
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'select'],
   data() {
     return {
       value: this.modelValue,
@@ -49,15 +54,15 @@ export default defineComponent({
           options: [
             {
               label: 'AI 问答',
-              value: 'chatgpt'
+              value: API_ID_CHATGPT
             },
             {
               label: 'AI 问答 3.5 - 16K',
-              value: 'chatgpt-16k'
+              value: API_ID_CHATGPT_16K
             },
             {
               label: 'AI 问答 3.5 - 联网版',
-              value: 'chatgpt-browsing'
+              value: API_ID_CHATGPT_BROWSING
             }
           ]
         },
@@ -67,11 +72,11 @@ export default defineComponent({
           options: [
             {
               label: 'AI 问答 4.0',
-              value: 'chatgpt4'
+              value: API_ID_CHATGPT4
             },
             {
               label: 'AI 问答 4.0 - 联网版',
-              value: 'chatgpt4-browsing'
+              value: API_ID_CHATGPT4_BROWSING
             }
           ]
         }
@@ -79,9 +84,6 @@ export default defineComponent({
     };
   },
   watch: {
-    value(val) {
-      this.$emit('update:modelValue', val);
-    },
     modelValue(val) {
       if (val !== this.value) {
         this.value = val;
@@ -92,6 +94,9 @@ export default defineComponent({
     onCommandChange(command: string) {
       console.log('val', command);
       this.value = command;
+      // this.$emit('update:modelValue', command);
+      this.$emit('select', command);
+      console.log('ss', command);
     }
   }
 });

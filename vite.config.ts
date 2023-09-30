@@ -12,6 +12,10 @@ export default defineConfig({
       '/api': {
         target: 'https://data.zhishuyun.com',
         changeOrigin: true
+      },
+      '/api/v1/me': {
+        target: 'https://auth.zhishuyun.com',
+        changeOrigin: true
       }
     }
   },

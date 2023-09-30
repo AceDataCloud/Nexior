@@ -48,5 +48,6 @@ export interface IChatResponse {
 
 export interface IChatOptions {
   stream?: (response: IChatResponse) => void;
-  api_id: string;
+  token: string;
+  endpoint?: string;
 }
