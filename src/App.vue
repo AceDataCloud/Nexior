@@ -8,6 +8,7 @@
 import { defineComponent } from 'vue';
 import { ElConfigProvider } from 'element-plus';
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs';
+import { applicationOperator, userOperator } from './operators';
 
 export default defineComponent({
   components: {
@@ -18,6 +19,15 @@ export default defineComponent({
       locale: zhCn
     };
   },
-  async mounted() {}
+  async mounted() {
+    const { data: user } = await userOperator.getMe();
+    console.log('suer', user);
+    this.$store.dispatch('setUser', user);
+    const { data: applications } = await applicationOperator.getAll({
+      user_id: user.id
+    });
+    console.log('applicatioins', applications);
+    this.$store.dispatch('setApplications', applications);
+  }
 });
 </script>

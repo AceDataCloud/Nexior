@@ -1,6 +1,9 @@
 <template>
   <div class="page">
-    <model-selector v-model="model" class="model-selector" />
+    <model-selector v-model="apiId" class="model-selector" @select="onSelectModel" />
+    <div>
+      {{ application?.remaining_amount }}
+    </div>
     <div class="main">
       <introduction v-if="messages && messages.length === 0" />
       <div v-else class="messages">
@@ -16,18 +19,30 @@
 </template>
 
 <script lang="ts">
-import { IMessage, ROLE_ASSISTANT, ROLE_USER } from '@/operators/message/models';
+import { IMessage, IMessageState, ROLE_ASSISTANT, ROLE_USER } from '@/operators/message/models';
 import { defineComponent } from 'vue';
 import Message from '@/components/chat/Message.vue';
-import { IChatModel, IChatMessage, CHAT_MODEL_CHATGPT, IChatResponse } from '@/operators';
+import {
+  IChatModel,
+  IChatMessage,
+  CHAT_MODEL_CHATGPT,
+  IChatResponse,
+  API_ID_CHATGPT,
+  applicationOperator,
+  IApplication,
+  ChatMessageState
+} from '@/operators';
 import InputBox from '@/components/chat/InputBox.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import { chatOperator } from '@/operators';
-
+import { ERROR_CODE_CANCELED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
+import axios from 'axios';
 export interface IData {
   messages: IChatMessage[];
-  model: IChatModel;
+  application: IApplication | undefined;
+  apiId: string;
   question: '';
+  needApply: boolean;
 }
 
 export default defineComponent({
@@ -41,7 +56,9 @@ export default defineComponent({
   data(): IData {
     return {
       question: '',
-      model: CHAT_MODEL_CHATGPT,
+      needApply: false,
+      apiId: API_ID_CHATGPT,
+      application: undefined,
       messages: [
         {
           role: ROLE_USER,
@@ -92,29 +109,74 @@ export default defineComponent({
     }
   },
   methods: {
-    onSubmitQuestion() {
+    async onSelectModel() {
+      console.log('this.apiId', this.apiId);
+      const { data: applications } = await applicationOperator.getAll({
+        user_id: this.$store.state.user.id,
+        api_id: this.apiId
+      });
+      if (!applications || applications?.items?.length === 0) {
+        this.needApply = true;
+        return;
+      }
+      this.application = applications.items[0];
+      console.log('applications', applications);
+    },
+    async onSubmitQuestion() {
       this.messages.push({
         content: this.question,
         role: ROLE_USER
       });
       this.question = '';
+      await this.onFetchAnswer();
     },
     async onFetchAnswer() {
-      const apiId = this.model;
-      const { data: response }: IChatResponse = await chatOperator.request(
-        {
-          question: this.question,
-          conversation_id: this.conversationId,
-          stateful: true
-        },
-        {
-          api_id: apiId,
-          stream: (response: IChatResponse) => {
-            console.log('response', response);
+      const token = this.application?.credential?.token;
+      const endpoint = this.application?.api?.endpoint;
+      const question = this.messages[this.messages.length - 1].content;
+      console.log('q', question);
+      if (!token || !endpoint || !question) {
+        console.error('no token or endpoint or question');
+        return;
+      }
+      console.log('token', token);
+      chatOperator
+        .request(
+          {
+            question,
+            conversation_id: this.conversationId,
+            stateful: true
+          },
+          {
+            token,
+            endpoint,
+            stream: (response: IChatResponse) => {
+              console.log('response', response);
+            }
           }
-        }
-      );
-      console.log('this.response', response);
+        )
+        .catch((error) => {
+          if (this.messages && this.messages.length > 0) {
+            this.messages[this.messages.length - 1].state = ChatMessageState.FAILED;
+          }
+          if (axios.isCancel(error)) {
+            this.messages[this.messages.length - 1].error = {
+              code: ERROR_CODE_CANCELED
+            };
+          } else if (error?.response?.data && error?.response?.data.code) {
+            const data = error?.response?.data;
+            if (this.messages && this.messages.length > 0) {
+              this.messages[this.messages.length - 1].error = data;
+            }
+          } else {
+            if (this.messages && this.messages.length > 0) {
+              this.messages[this.messages.length - 1].error = {
+                code: ERROR_CODE_UNKNOWN
+              };
+            }
+          }
+        });
+      // console.log('this.response', response);
     }
   }
 });
