@@ -15,7 +15,7 @@
 import { defineComponent } from 'vue';
 import { ElTooltip, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_CHAT_INDEX } from '@/router/constants';
+import { ROUTE_CHAT_INDEX, ROUTE_PAINT_INDEX } from '@/router/constants';
 
 export default defineComponent({
   name: 'Navigator',
@@ -34,7 +34,7 @@ export default defineComponent({
         },
         {
           route: {
-            name: 'midjourney-index'
+            name: ROUTE_PAINT_INDEX
           },
           icon: 'fa-solid fa-palette'
         }
@@ -57,7 +57,6 @@ export default defineComponent({
       width: 40px;
       height: 40px;
       margin-bottom: 10px;
-      // border-radius: 5px;
       .button {
         width: 40px;
         height: 40px;
