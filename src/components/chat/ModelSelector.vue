@@ -1,14 +1,26 @@
 <template>
   <div class="model-selector">
-    <el-dropdown v-for="(group, groupIndex) in groups" :key="groupIndex" @command="onCommandChange">
-      <el-button type="primary">
-        {{ group.label }}
-        <el-icon class="el-icon--right"><arrow-down /></el-icon>
+    <el-dropdown v-for="(group, groupIndex) in groups" :key="groupIndex" trigger="click" @command="onCommandChange">
+      <el-button :class="{ group: true, active: group.value === activeGroup }" @click="onSwitchGroup(group)">
+        <font-awesome-icon :icon="group.icon" :class="'icon ' + group.value" />
+        <span v-if="group.value === activeGroup">
+          {{ value.displayName }}
+        </span>
+        <span v-else>
+          {{ group.label }}
+        </span>
+        <font-awesome-icon icon="fa-solid fa-chevron-down" />
       </el-button>
       <template #dropdown>
-        <el-dropdown-menu>
-          <el-dropdown-item v-for="(option, optionIndex) in group.options" :key="optionIndex" :command="option.value">
-            {{ option.label }}
+        <el-dropdown-menu class="menu">
+          <el-dropdown-item
+            v-for="(model, modelIndex) in group.options"
+            :key="modelIndex"
+            :command="model"
+            class="option"
+          >
+            <font-awesome-icon :icon="group.icon" :class="'icon ' + group.value" />
+            {{ model.displayName }}
           </el-dropdown-item>
         </el-dropdown-menu>
       </template>
@@ -18,16 +30,16 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElSelect, ElOption, ElDropdown, ElButton, ElDropdownItem } from 'element-plus';
+import { ElDropdown, ElButton, ElDropdownItem } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_CHAT_INDEX } from '@/router/constants';
 import {
-  API_ID_CHATGPT,
-  API_ID_CHATGPT4,
-  API_ID_CHATGPT4_BROWSING,
-  API_ID_CHATGPT_16K,
-  API_ID_CHATGPT_BROWSING
+  CHAT_MODEL_CHATGPT,
+  CHAT_MODEL_CHATGPT4,
+  CHAT_MODEL_CHATGPT4_BROWSING,
+  CHAT_MODEL_CHATGPT_16K,
+  CHAT_MODEL_CHATGPT_BROWSING
 } from '@/operators/chat/constants';
+import { IChatModel } from '@/operators';
 
 export default defineComponent({
   name: 'ModelSelector',
@@ -39,7 +51,7 @@ export default defineComponent({
   },
   props: {
     modelValue: {
-      type: String,
+      type: Object as () => IChatModel,
       required: true
     }
   },
@@ -47,38 +59,19 @@ export default defineComponent({
   data() {
     return {
       value: this.modelValue,
+      activeGroup: 'base',
       groups: [
         {
           label: '基础',
           value: 'base',
-          options: [
-            {
-              label: 'AI 问答',
-              value: API_ID_CHATGPT
-            },
-            {
-              label: 'AI 问答 3.5 - 16K',
-              value: API_ID_CHATGPT_16K
-            },
-            {
-              label: 'AI 问答 3.5 - 联网版',
-              value: API_ID_CHATGPT_BROWSING
-            }
-          ]
+          icon: 'fa-solid fa-bolt',
+          options: [CHAT_MODEL_CHATGPT, CHAT_MODEL_CHATGPT_16K, CHAT_MODEL_CHATGPT_BROWSING]
         },
         {
           label: 'Plus',
           value: 'plus',
-          options: [
-            {
-              label: 'AI 问答 4.0',
-              value: API_ID_CHATGPT4
-            },
-            {
-              label: 'AI 问答 4.0 - 联网版',
-              value: API_ID_CHATGPT4_BROWSING
-            }
-          ]
+          icon: 'fa-solid fa-wand-magic-sparkles',
+          options: [CHAT_MODEL_CHATGPT4, CHAT_MODEL_CHATGPT4_BROWSING]
         }
       ]
     };
@@ -91,29 +84,73 @@ export default defineComponent({
     }
   },
   methods: {
-    onCommandChange(command: string) {
-      console.log('val', command);
+    onSwitchGroup(group: any) {
+      this.activeGroup = group.value;
+      const options = group.options;
+      if (options && options.length > 0) {
+        this.value = options[0];
+        this.$emit('select', options[0]);
+        this.$emit('update:modelValue', options[0]);
+      }
+    },
+    onCommandChange(command: IChatModel) {
       this.value = command;
-      // this.$emit('update:modelValue', command);
       this.$emit('select', command);
-      console.log('ss', command);
+      this.$emit('update:modelValue', command);
     }
   }
 });
 </script>
 
 <style lang="scss" scoped>
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  .top {
-    display: flex;
-    flex-direction: column;
+.model-selector {
+  background-color: #ececf1;
+  padding: 7px;
+  border-radius: 15px;
+  .group {
+    padding: 20px 30px;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    margin: 0 3px;
+    background-color: inherit;
+    &:hover,
+    &:focus {
+      background-color: inherit;
+    }
+    &.active {
+      background-color: white;
+    }
+    .icon {
+      display: inline-block;
+      margin-right: 5px;
+      &.base {
+        color: #ff9900;
+      }
+      &.plus {
+        color: #ce65e6;
+      }
+    }
+    .fa-chevron-down {
+      margin-left: 5px;
+      font-weight: 100;
+      color: #999;
+      transform: scale(0.8);
+    }
   }
-  .bottom {
-    display: flex;
-    flex-direction: column;
+}
+.menu {
+  .option {
+    .icon {
+      display: inline-block;
+      margin-right: 5px;
+      &.base {
+        color: #ff9900;
+      }
+      &.plus {
+        color: #ce65e6;
+      }
+    }
   }
 }
 </style>

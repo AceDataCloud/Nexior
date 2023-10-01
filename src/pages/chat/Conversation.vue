@@ -1,9 +1,7 @@
 <template>
   <div class="page">
-    <model-selector v-model="apiId" class="model-selector" @select="onSelectModel" />
-    <div>
-      {{ application?.remaining_amount }}
-    </div>
+    <model-selector v-model="model" class="model-selector" @select="onLoadModel" />
+    <api-status v-if="application" :application="application" />
     <div class="main">
       <introduction v-if="messages && messages.length === 0" />
       <div v-else class="messages">
@@ -29,20 +27,21 @@ import {
   IChatResponse,
   API_ID_CHATGPT,
   applicationOperator,
-  IApplication,
-  ChatMessageState
+  IApplication
 } from '@/operators';
 import InputBox from '@/components/chat/InputBox.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import { chatOperator } from '@/operators';
 import { ERROR_CODE_CANCELED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import axios from 'axios';
+import ApiStatus from '@/components/common/ApiStatus.vue';
+
 export interface IData {
   messages: IChatMessage[];
+  model: IChatModel;
   application: IApplication | undefined;
-  apiId: string;
   question: '';
-  needApply: boolean;
+  applied: boolean | undefined;
 }
 
 export default defineComponent({
@@ -51,13 +50,14 @@ export default defineComponent({
     // Introduction,
     InputBox,
     ModelSelector,
-    Message
+    Message,
+    ApiStatus
   },
   data(): IData {
     return {
+      model: CHAT_MODEL_CHATGPT,
       question: '',
-      needApply: false,
-      apiId: API_ID_CHATGPT,
+      applied: undefined,
       application: undefined,
       messages: [
         {
@@ -108,19 +108,20 @@ export default defineComponent({
       return this.$route.params.id?.toString();
     }
   },
+  mounted() {
+    this.onLoadModel();
+  },
   methods: {
-    async onSelectModel() {
-      console.log('this.apiId', this.apiId);
+    async onLoadModel() {
       const { data: applications } = await applicationOperator.getAll({
         user_id: this.$store.state.user.id,
-        api_id: this.apiId
+        api_id: this.model.apiId
       });
       if (!applications || applications?.items?.length === 0) {
-        this.needApply = true;
+        this.applied = false;
         return;
       }
       this.application = applications.items[0];
-      console.log('applications', applications);
     },
     async onSubmitQuestion() {
       this.messages.push({
