@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <model-selector v-model="model" class="model-selector" @select="onLoadModel" />
-    <api-status v-if="application" :application="application" />
+    <api-status v-if="application" :application="application" :initializing="initializing" />
     <div class="main">
       <introduction v-if="messages && messages.length === 0" />
       <div v-else class="messages">
@@ -41,6 +41,7 @@ export interface IData {
   model: IChatModel;
   application: IApplication | undefined;
   question: '';
+  initializing: boolean;
   applied: boolean | undefined;
 }
 
@@ -57,6 +58,7 @@ export default defineComponent({
     return {
       model: CHAT_MODEL_CHATGPT,
       question: '',
+      initializing: false,
       applied: undefined,
       application: undefined,
       messages: [
@@ -113,10 +115,12 @@ export default defineComponent({
   },
   methods: {
     async onLoadModel() {
+      this.initializing = true;
       const { data: applications } = await applicationOperator.getAll({
         user_id: this.$store.state.user.id,
         api_id: this.model.apiId
       });
+      this.initializing = false;
       if (!applications || applications?.items?.length === 0) {
         this.applied = false;
         return;
