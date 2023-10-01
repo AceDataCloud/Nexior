@@ -85,6 +85,9 @@ export default defineComponent({
   },
   methods: {
     onSwitchGroup(group: any) {
+      if (this.activeGroup === group.value) {
+        return;
+      }
       this.activeGroup = group.value;
       const options = group.options;
       if (options && options.length > 0) {
@@ -105,8 +108,9 @@ export default defineComponent({
 <style lang="scss" scoped>
 .model-selector {
   background-color: #ececf1;
-  padding: 7px;
+  padding: 7px 6px;
   border-radius: 15px;
+  margin-bottom: 5px;
   .group {
     padding: 20px 30px;
     color: black;
