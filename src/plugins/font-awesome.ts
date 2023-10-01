@@ -9,6 +9,7 @@ import {
 import {
   faMicrophone as faSolidMicrophone,
   faStop as faSolidStop,
+  faWandMagicSparkles as faSolidWandMagicSparkles,
   faPalette as faSolidPalette,
   faBars as faSolidBars,
   faGear as faSolidGear,
@@ -18,6 +19,7 @@ import {
   faBolt as faSolidBolt,
   faQuestion as faSolidQuestion,
   faTrash as faSolidTrash,
+  faChevronDown as faSolidChevronDown,
   faArrowsRotate as faSolidArrowsRotate,
   faUpRightFromSquare as faSolidUpRightFromSquare,
   faArrowRightFromBracket as faSolidArrowRightFromBracket,
@@ -46,4 +48,6 @@ library.add(faRegularPaperPlane);
 library.add(faRegularComment);
 library.add(faSolidArrowRightFromBracket);
 library.add(faSolidTrash);
+library.add(faSolidChevronDown);
 library.add(faSolidPalette);
+library.add(faSolidWandMagicSparkles);
