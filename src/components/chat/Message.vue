@@ -88,6 +88,7 @@ export default defineComponent({
   .content {
     border-radius: 10px;
     padding: 8px 15px;
+    max-width: 800px;
     // background-color: aqua;
   }
 }

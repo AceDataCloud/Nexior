@@ -27,7 +27,8 @@ import {
   IChatResponse,
   API_ID_CHATGPT,
   applicationOperator,
-  IApplication
+  IApplication,
+  IChatMessageState
 } from '@/operators';
 import InputBox from '@/components/chat/InputBox.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
@@ -35,6 +36,7 @@ import { chatOperator } from '@/operators';
 import { ERROR_CODE_CANCELED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import axios from 'axios';
 import ApiStatus from '@/components/common/ApiStatus.vue';
+import { ROUTE_CHAT_CONVERSATION } from '@/router';
 
 export interface IData {
   messages: IChatMessage[];
@@ -61,48 +63,7 @@ export default defineComponent({
       initializing: false,
       applied: undefined,
       application: undefined,
-      messages: [
-        {
-          role: ROLE_USER,
-          content: 'hello'
-        },
-        {
-          role: ROLE_ASSISTANT,
-          content: '## ok \n\n hello, how can I assist you? \n ```python\nprint("hello")\n```'
-        },
-        {
-          role: ROLE_USER,
-          content: 'hello'
-        },
-        {
-          role: ROLE_ASSISTANT,
-          content: '## ok \n\n hello, how can I assist you? \n ```python\nprint("hello")\n```'
-        },
-        {
-          role: ROLE_USER,
-          content: 'hello'
-        },
-        {
-          role: ROLE_ASSISTANT,
-          content: '## ok \n\n hello, how can I assist you? \n ```python\nprint("hello")\n```'
-        },
-        {
-          role: ROLE_USER,
-          content: 'hello'
-        },
-        {
-          role: ROLE_ASSISTANT,
-          content: '## ok \n\n hello, how can I assist you? \n ```python\nprint("hello")\n```'
-        },
-        {
-          role: ROLE_USER,
-          content: 'hello'
-        },
-        {
-          role: ROLE_ASSISTANT,
-          content: '## ok \n\n hello, how can I assist you? \n ```python\nprint("hello")\n```'
-        }
-      ]
+      messages: []
     };
   },
   computed: {
@@ -111,6 +72,7 @@ export default defineComponent({
     }
   },
   mounted() {
+    console.log('mounted');
     this.onLoadModel();
   },
   methods: {
@@ -133,18 +95,23 @@ export default defineComponent({
         role: ROLE_USER
       });
       this.question = '';
+
       await this.onFetchAnswer();
     },
     async onFetchAnswer() {
       const token = this.application?.credential?.token;
       const endpoint = this.application?.api?.endpoint;
       const question = this.messages[this.messages.length - 1].content;
-      console.log('q', question);
       if (!token || !endpoint || !question) {
         console.error('no token or endpoint or question');
         return;
       }
-      console.log('token', token);
+      this.messages.push({
+        content: '',
+        role: ROLE_ASSISTANT,
+        state: IChatMessageState.PENDING
+      });
+      // request server to get answer
       chatOperator
         .request(
           {
@@ -156,13 +123,24 @@ export default defineComponent({
             token,
             endpoint,
             stream: (response: IChatResponse) => {
-              console.log('response', response);
+              this.messages[this.messages.length - 1].content = response.answer;
+              if (!this.conversationId) {
+                this.$router.push({
+                  name: ROUTE_CHAT_CONVERSATION,
+                  params: {
+                    id: response.conversation_id
+                  }
+                });
+              }
             }
           }
         )
+        .then(() => {
+          this.messages[this.messages.length - 1].state = IChatMessageState.FINISHED;
+        })
         .catch((error) => {
           if (this.messages && this.messages.length > 0) {
-            this.messages[this.messages.length - 1].state = ChatMessageState.FAILED;
+            this.messages[this.messages.length - 1].state = IChatMessageState.FAILED;
           }
           if (axios.isCancel(error)) {
             this.messages[this.messages.length - 1].error = {
@@ -181,7 +159,6 @@ export default defineComponent({
             }
           }
         });
-      // console.log('this.response', response);
     }
   }
 });
@@ -200,6 +177,11 @@ export default defineComponent({
     width: 100%;
     overflow-y: scroll;
     padding: 15px 0;
+    .messages {
+      .message {
+        margin-bottom: 15px;
+      }
+    }
   }
   .bottom {
     width: 100%;
