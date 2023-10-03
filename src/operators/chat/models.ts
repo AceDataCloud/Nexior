@@ -41,20 +41,38 @@ export interface IChatMessage {
   error?: IError;
 }
 
-export interface IChatOptions {
-  stream?: (response: IChatResponse) => void;
-  token: string;
-  endpoint?: string;
+export interface IChatHistory {
+  conversation_id: string;
+  messages: IChatMessage[];
 }
 
-export interface IChatRequest {
+export interface IChatAskOptions {
+  stream?: (response: IChatAskResponse) => void;
+  token: string;
+  endpoint: string;
+  path: string;
+}
+
+export interface IChatHistoryOptions {
+  endpoint: string;
+  path: string;
+}
+
+export interface IChatAskRequest {
   question: string;
   stateful?: boolean;
   conversation_id?: string;
 }
 
-export interface IChatResponse {
+export interface IChatAskResponse {
   answer: string;
   delta_answer: string;
   conversation_id?: string;
 }
+
+export interface IChatHistoryRequest {
+  action: string;
+  conversation_id: string;
+}
+
+export type IChatHistoryResponse = IChatHistory;

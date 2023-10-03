@@ -31,10 +31,10 @@ export default defineComponent({
   }
 }
 .box {
-  width: 5px;
-  height: 20px;
+  width: 2px;
+  height: 16px;
   margin-top: 3px;
-  background-color: black;
+  background-color: var(--el-color-black);
   animation: blink 1s infinite;
 }
 </style>
