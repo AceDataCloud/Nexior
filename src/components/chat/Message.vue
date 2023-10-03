@@ -2,23 +2,25 @@
   <div :class="'message ' + message.role">
     <div class="content">
       <markdown-renderer :content="message?.content" />
+      <answering-mark v-if="message.state === messageState.PENDING" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { IContent, IError, IMessage, IMessageState } from '@/operators/message/models';
+import { IContent, IError, IMessage } from '@/operators/message/models';
 import { defineComponent } from 'vue';
+import AnsweringMark from './AnsweringMark.vue';
 // import MessageContent from './MessageContent.vue';
 import { ElImage, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import copy from 'copy-to-clipboard';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
-import { IChatMessage } from '@/operators';
+import { IChatMessage, IChatMessageState } from '@/operators';
 
 interface IData {
   copied: boolean;
-  messageState: typeof IMessageState;
+  messageState: typeof IChatMessageState;
 }
 
 export default defineComponent({
@@ -28,6 +30,7 @@ export default defineComponent({
     // ElImage,
     // ElButton,
     // FontAwesomeIcon
+    AnsweringMark,
     MarkdownRenderer
   },
   props: {
@@ -40,7 +43,7 @@ export default defineComponent({
   data(): IData {
     return {
       copied: false,
-      messageState: IMessageState
+      messageState: IChatMessageState
     };
   },
   computed: {

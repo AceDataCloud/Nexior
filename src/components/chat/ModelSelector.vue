@@ -92,14 +92,14 @@ export default defineComponent({
       const options = group.options;
       if (options && options.length > 0) {
         this.value = options[0];
-        this.$emit('select', options[0]);
         this.$emit('update:modelValue', options[0]);
+        this.$emit('select', options[0]);
       }
     },
     onCommandChange(command: IChatModel) {
       this.value = command;
-      this.$emit('select', command);
       this.$emit('update:modelValue', command);
+      this.$emit('select', command);
     }
   }
 });

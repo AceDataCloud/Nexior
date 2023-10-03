@@ -1,7 +1,7 @@
 <template>
   <div class="page">
-    <model-selector v-model="model" class="model-selector" @select="onLoadModel" />
-    <api-status v-if="application" :application="application" :initializing="initializing" />
+    <model-selector v-model="model" class="model-selector" @select="onSelectModel" />
+    <api-status :application="application" />
     <div class="main">
       <introduction v-if="messages && messages.length === 0" />
       <div v-else class="messages">
@@ -17,18 +17,18 @@
 </template>
 
 <script lang="ts">
-import { IMessage, IMessageState, ROLE_ASSISTANT, ROLE_USER } from '@/operators/message/models';
+import { ROLE_ASSISTANT, ROLE_USER } from '@/operators/message/models';
 import { defineComponent } from 'vue';
 import Message from '@/components/chat/Message.vue';
 import {
   IChatModel,
   IChatMessage,
   CHAT_MODEL_CHATGPT,
-  IChatResponse,
   API_ID_CHATGPT,
   applicationOperator,
   IApplication,
-  IChatMessageState
+  IChatMessageState,
+  IChatAskResponse
 } from '@/operators';
 import InputBox from '@/components/chat/InputBox.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
@@ -36,7 +36,7 @@ import { chatOperator } from '@/operators';
 import { ERROR_CODE_CANCELED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import axios from 'axios';
 import ApiStatus from '@/components/common/ApiStatus.vue';
-import { ROUTE_CHAT_CONVERSATION } from '@/router';
+import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router';
 
 export interface IData {
   messages: IChatMessage[];
@@ -71,11 +71,45 @@ export default defineComponent({
       return this.$route.params.id?.toString();
     }
   },
-  mounted() {
+  async mounted() {
     console.log('mounted');
-    this.onLoadModel();
+    await this.onLoadModel();
+    await this.onLoadHistory();
   },
   methods: {
+    async onCreateNewConversation() {
+      this.messages = [];
+      await this.$router.push({
+        name: ROUTE_CHAT_CONVERSATION_NEW
+      });
+    },
+    async onLoadHistory() {
+      if (!this.conversationId) {
+        return;
+      }
+      const endpoint = this.application?.api?.endpoint;
+      const path = this.application?.api?.path;
+      console.log(endpoint, path);
+      if (!endpoint || !path) {
+        console.error('no endpoint or path');
+        return;
+      }
+      const { data: data } = await chatOperator.history(
+        {
+          action: 'retrieve',
+          conversation_id: this.conversationId
+        },
+        {
+          endpoint,
+          path: `${path}/history`
+        }
+      );
+      this.messages = data.messages || [];
+    },
+    async onSelectModel() {
+      await this.onCreateNewConversation();
+      await this.onLoadModel();
+    },
     async onLoadModel() {
       this.initializing = true;
       const { data: applications } = await applicationOperator.getAll({
@@ -95,14 +129,14 @@ export default defineComponent({
         role: ROLE_USER
       });
       this.question = '';
-
       await this.onFetchAnswer();
     },
     async onFetchAnswer() {
       const token = this.application?.credential?.token;
       const endpoint = this.application?.api?.endpoint;
+      const path = this.application?.api?.path;
       const question = this.messages[this.messages.length - 1].content;
-      if (!token || !endpoint || !question) {
+      if (!token || !endpoint || !question || !path) {
         console.error('no token or endpoint or question');
         return;
       }
@@ -113,7 +147,7 @@ export default defineComponent({
       });
       // request server to get answer
       chatOperator
-        .request(
+        .ask(
           {
             question,
             conversation_id: this.conversationId,
@@ -122,8 +156,13 @@ export default defineComponent({
           {
             token,
             endpoint,
-            stream: (response: IChatResponse) => {
-              this.messages[this.messages.length - 1].content = response.answer;
+            path,
+            stream: (response: IChatAskResponse) => {
+              this.messages[this.messages.length - 1] = {
+                role: ROLE_ASSISTANT,
+                content: response.answer,
+                state: IChatMessageState.ANSWERING
+              };
               if (!this.conversationId) {
                 this.$router.push({
                   name: ROUTE_CHAT_CONVERSATION,
@@ -137,6 +176,7 @@ export default defineComponent({
         )
         .then(() => {
           this.messages[this.messages.length - 1].state = IChatMessageState.FINISHED;
+          this.onLoadModel();
         })
         .catch((error) => {
           if (this.messages && this.messages.length > 0) {
@@ -176,7 +216,7 @@ export default defineComponent({
     flex: 1;
     width: 100%;
     overflow-y: scroll;
-    padding: 15px 0;
+    padding: 15px;
     .messages {
       .message {
         margin-bottom: 15px;
