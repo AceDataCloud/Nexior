@@ -47,5 +47,6 @@ export default defineComponent({
 .icon-copy {
   margin-left: 5px;
   cursor: pointer;
+  color: inherit;
 }
 </style>
