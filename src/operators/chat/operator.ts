@@ -5,7 +5,10 @@ import {
   IChatAskOptions,
   IChatAskRequest,
   IChatAskResponse,
-  IChatHistoryOptions
+  IChatHistoryOptions,
+  IChatConversationRequest,
+  IChatConversationOptions,
+  IChatConversationResponse
 } from './models';
 
 class ChatOperator {
@@ -32,7 +35,10 @@ class ChatOperator {
     });
   }
 
-  async history(data: IChatHistoryRequest, options: IChatHistoryOptions): Promise<AxiosResponse<IChatHistoryResponse>> {
+  async conversations(
+    data: IChatConversationRequest,
+    options: IChatConversationOptions
+  ): Promise<AxiosResponse<IChatConversationResponse>> {
     return await axios.post(options.path, data, {
       headers: {
         'content-type': 'application/json'

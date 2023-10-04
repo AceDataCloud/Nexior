@@ -41,8 +41,8 @@ export interface IChatMessage {
   error?: IError;
 }
 
-export interface IChatHistory {
-  conversation_id: string;
+export interface IChatConversation {
+  id: string;
   messages: IChatMessage[];
 }
 
@@ -53,7 +53,7 @@ export interface IChatAskOptions {
   path: string;
 }
 
-export interface IChatHistoryOptions {
+export interface IChatConversationOptions {
   endpoint: string;
   path: string;
 }
@@ -70,9 +70,15 @@ export interface IChatAskResponse {
   conversation_id?: string;
 }
 
-export interface IChatHistoryRequest {
-  action: string;
-  conversation_id: string;
+export enum IChatConversationAction {
+  RETRIEVE = 'retrieve',
+  UPDATE = 'update'
 }
 
-export type IChatHistoryResponse = IChatHistory;
+export interface IChatConversationRequest {
+  action: IChatConversationAction;
+  id: string;
+  messages?: IChatMessage[];
+}
+
+export type IChatConversationResponse = IChatConversation;

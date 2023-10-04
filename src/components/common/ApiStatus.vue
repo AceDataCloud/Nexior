@@ -14,7 +14,7 @@ export default defineComponent({
   components: {},
   props: {
     application: {
-      type: Object as () => IApplication,
+      type: Object as () => IApplication | undefined,
       required: true
     }
   },
