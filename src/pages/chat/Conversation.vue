@@ -28,7 +28,8 @@ import {
   applicationOperator,
   IApplication,
   IChatMessageState,
-  IChatAskResponse
+  IChatAskResponse,
+  IChatConversationAction
 } from '@/operators';
 import InputBox from '@/components/chat/InputBox.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
@@ -73,8 +74,8 @@ export default defineComponent({
   },
   async mounted() {
     console.log('mounted');
-    await this.onLoadModel();
-    await this.onLoadHistory();
+    await this.onFetchModel();
+    await this.onFetchHistory();
   },
   methods: {
     async onCreateNewConversation() {
@@ -83,34 +84,12 @@ export default defineComponent({
         name: ROUTE_CHAT_CONVERSATION_NEW
       });
     },
-    async onLoadHistory() {
-      if (!this.conversationId) {
-        return;
-      }
-      const endpoint = this.application?.api?.endpoint;
-      const path = this.application?.api?.path;
-      console.log(endpoint, path);
-      if (!endpoint || !path) {
-        console.error('no endpoint or path');
-        return;
-      }
-      const { data: data } = await chatOperator.history(
-        {
-          action: 'retrieve',
-          conversation_id: this.conversationId
-        },
-        {
-          endpoint,
-          path: `${path}/history`
-        }
-      );
-      this.messages = data.messages || [];
-    },
+
     async onSelectModel() {
       await this.onCreateNewConversation();
-      await this.onLoadModel();
+      await this.onFetchModel();
     },
-    async onLoadModel() {
+    async onFetchModel() {
       this.initializing = true;
       const { data: applications } = await applicationOperator.getAll({
         user_id: this.$store.state.user.id,
@@ -130,6 +109,29 @@ export default defineComponent({
       });
       this.question = '';
       await this.onFetchAnswer();
+    },
+    async onFetchHistory() {
+      if (!this.conversationId) {
+        return;
+      }
+      const endpoint = this.application?.api?.endpoint;
+      const path = this.application?.api?.path;
+      console.log(endpoint, path);
+      if (!endpoint || !path) {
+        console.error('no endpoint or path');
+        return;
+      }
+      const { data: data } = await chatOperator.conversations(
+        {
+          action: IChatConversationAction.RETRIEVE,
+          id: this.conversationId
+        },
+        {
+          endpoint,
+          path: `${path}/conversations`
+        }
+      );
+      this.messages = data.messages || [];
     },
     async onFetchAnswer() {
       const token = this.application?.credential?.token;
@@ -176,7 +178,7 @@ export default defineComponent({
         )
         .then(() => {
           this.messages[this.messages.length - 1].state = IChatMessageState.FINISHED;
-          this.onLoadModel();
+          this.onFetchModel();
         })
         .catch((error) => {
           if (this.messages && this.messages.length > 0) {
