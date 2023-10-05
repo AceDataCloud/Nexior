@@ -1,10 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import auth from './auth';
-import conversation from './conversation';
-import store from '@/store';
 import chat from './chat';
-import paint from './paint';
-import { ROUTE_AUTH_LOGIN, ROUTE_CONVERSATION_NEW, ROUTE_INDEX } from './constants';
+import midjourney from './midjourney';
+import { ROUTE_CONVERSATION_NEW, ROUTE_INDEX } from './constants';
 
 const routes = [
   {
@@ -15,7 +12,7 @@ const routes = [
     }
   },
   chat,
-  paint
+  midjourney
 ];
 
 const router = createRouter({

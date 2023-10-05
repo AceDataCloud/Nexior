@@ -1,11 +1,8 @@
-import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import {
-  IChatHistoryRequest,
-  IChatHistoryResponse,
   IChatAskOptions,
   IChatAskRequest,
   IChatAskResponse,
-  IChatHistoryOptions,
   IChatConversationRequest,
   IChatConversationOptions,
   IChatConversationResponse

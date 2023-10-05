@@ -19,7 +19,7 @@ export const API_ID_CHATGPT4_BROWSING = 'a61de51b-d0d0-48a2-9a17-1d4986d5d497';
 export const CHAT_MODEL_CHATGPT: IChatModel = {
   apiId: API_ID_CHATGPT,
   name: CHAT_MODEL_NAME_CHATGPT,
-  displayName: '基础 - 3.5'
+  displayName: '基础 - 4k'
 };
 
 export const CHAT_MODEL_CHATGPT_16K: IChatModel = {
