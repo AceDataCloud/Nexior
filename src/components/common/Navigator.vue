@@ -15,7 +15,7 @@
 import { defineComponent } from 'vue';
 import { ElTooltip, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_CHAT_INDEX, ROUTE_PAINT_INDEX } from '@/router/constants';
+import { ROUTE_CHAT_INDEX, ROUTE_MIDJOURNEY_INDEX } from '@/router/constants';
 
 export default defineComponent({
   name: 'Navigator',
@@ -34,7 +34,7 @@ export default defineComponent({
         },
         {
           route: {
-            name: ROUTE_PAINT_INDEX
+            name: ROUTE_MIDJOURNEY_INDEX
           },
           icon: 'fa-solid fa-palette'
         }
