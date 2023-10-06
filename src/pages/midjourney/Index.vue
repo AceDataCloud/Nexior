@@ -26,7 +26,7 @@ export default defineComponent({
   display: flex;
   flex-direction: row;
   .presets {
-    width: 300px;
+    width: 260px;
     height: 100%;
     background-color: var(--el-bg-color-page);
   }
