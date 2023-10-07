@@ -1,10 +1,11 @@
 <template>
   <div class="page">
     <div class="presets">
-      <channel-selector v-model="channel" />
       <preset-panel v-model="preset" />
     </div>
     <div class="main">
+      <channel-selector v-model="channel" class="mb-4" @select="onSelectChannel" />
+      <api-status :application="application" class="mb-4" />
       <prompt-input v-model="prompt" class="mb-4" />
       <elements-selector v-model="elements" class="mb-4" />
       <ignore-selector v-model="ignore" class="mb-4" />
@@ -34,6 +35,7 @@ import {
   midjourneyOperator,
   MidjourneyImagineState
 } from '@/operators';
+import ApiStatus from '@/components/common/ApiStatus.vue';
 
 interface IData {
   channel: IMidjourneyChannel;
@@ -57,7 +59,8 @@ export default defineComponent({
     ElementsSelector,
     IgnoreSelector,
     ElButton,
-    ImaginePreview
+    ImaginePreview,
+    ApiStatus
   },
   data(): IData {
     return {
@@ -77,6 +80,9 @@ export default defineComponent({
     this.onFetchChannel();
   },
   methods: {
+    async onSelectChannel() {
+      await this.onFetchChannel();
+    },
     async onFetchChannel() {
       this.initializing = true;
       const { data: applications } = await applicationOperator.getAll({

@@ -30,5 +30,7 @@ export default defineComponent({
 .info {
   font-size: 14px;
   color: var(--el-text-color-regular);
+  display: block;
+  text-align: center;
 }
 </style>

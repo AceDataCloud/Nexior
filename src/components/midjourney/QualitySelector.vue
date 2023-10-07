@@ -1,22 +1,25 @@
 <template>
   <div class="field">
-    <h2 class="title">版本</h2>
-    <el-select v-model="value" class="value" placeholder="Select">
-      <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
-    </el-select>
+    <h2 class="title">画质</h2>
+    <el-radio-group v-model="value">
+      <el-radio-button v-for="item in options" :key="item.value" :label="item.value">
+        {{ item.label }}
+      </el-radio-button>
+    </el-radio-group>
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-import { ElSelect, ElOption } from 'element-plus';
-const DEFAULT_VERSION = '5.2';
+import { ElRadioButton, ElRadioGroup } from 'element-plus';
+
+export const DEFAULT_QUALITY = '.5';
 
 export default defineComponent({
-  name: 'VersionSelector',
+  name: 'QualitySelector',
   components: {
-    ElSelect,
-    ElOption
+    ElRadioButton,
+    ElRadioGroup
   },
   props: {
     modelValue: {
@@ -31,32 +34,16 @@ export default defineComponent({
       active: 0,
       options: [
         {
-          value: '5.2',
-          label: '5.2'
+          label: '低',
+          value: '.25'
         },
         {
-          value: '5.1',
-          label: '5.1'
+          label: '中',
+          value: '.5'
         },
         {
-          value: '5.0',
-          label: '5'
-        },
-        {
-          value: '4',
-          label: '4'
-        },
-        {
-          value: '3',
-          label: '3'
-        },
-        {
-          value: '2',
-          label: '2'
-        },
-        {
-          value: '1',
-          label: '1'
+          label: '高',
+          value: '1'
         }
       ]
     };
@@ -73,7 +60,7 @@ export default defineComponent({
   },
   mounted() {
     if (!this.value) {
-      this.value = DEFAULT_VERSION;
+      this.value = DEFAULT_QUALITY;
     }
     this.$emit('update:modelValue', this.value);
   }

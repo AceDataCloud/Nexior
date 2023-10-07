@@ -1,27 +1,16 @@
 <template>
-  <div class="model-selector">
-    <el-dropdown trigger="click" @command="onCommandChange">
-      <el-button>
-        <font-awesome-icon class="icon" icon="fa-regular fa-" />
-        <span>
-          {{ value.displayName }}
-        </span>
-        <font-awesome-icon icon="fa-solid fa-chevron-down" />
-      </el-button>
-      <template #dropdown>
-        <el-dropdown-menu class="menu">
-          <el-dropdown-item
-            v-for="(channel, channelIndex) in options"
-            :key="channelIndex"
-            :command="channel"
-            class="option"
-          >
-            <font-awesome-icon :icon="channel.icon" />
-            {{ channel.displayName }}
-          </el-dropdown-item>
-        </el-dropdown-menu>
-      </template>
-    </el-dropdown>
+  <div class="channel-selector">
+    <el-button
+      v-for="(option, optionKey) in options"
+      :key="optionKey"
+      :class="{ button: true, active: option.name === value.name }"
+      @click="onSelect(option)"
+    >
+      <font-awesome-icon :class="{ icon: true, [option.name]: true }" :icon="option.icon" />
+      <span>
+        {{ option.displayName }}
+      </span>
+    </el-button>
   </div>
 </template>
 
@@ -39,9 +28,7 @@ import {
 export default defineComponent({
   name: 'ModelSelector',
   components: {
-    ElDropdown,
     ElButton,
-    ElDropdownItem,
     FontAwesomeIcon
   },
   props: {
@@ -50,7 +37,7 @@ export default defineComponent({
       required: true
     }
   },
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'select'],
   data() {
     return {
       value: this.modelValue,
@@ -64,22 +51,30 @@ export default defineComponent({
       }
     }
   },
+  mounted() {
+    this.$emit('update:modelValue', this.value);
+    this.$emit('select', this.value);
+  },
   methods: {
-    onCommandChange(command: IMidjourneyChannel) {
-      this.value = command;
-      this.$emit('update:modelValue', command);
+    onSelect(option: IMidjourneyChannel) {
+      this.value = option;
+      this.$emit('update:modelValue', option);
+      this.$emit('select', option);
     }
   }
 });
 </script>
 
 <style lang="scss" scoped>
-.model-selector {
+.channel-selector {
   background-color: #ececf1;
   padding: 7px 6px;
   border-radius: 15px;
   margin-bottom: 5px;
-  .group {
+  width: 372px;
+  margin-left: auto;
+  margin-right: auto;
+  .button {
     padding: 20px 30px;
     color: black;
     border: none;
@@ -96,10 +91,13 @@ export default defineComponent({
     .icon {
       display: inline-block;
       margin-right: 5px;
-      &.base {
+      &.turbo {
         color: #ff9900;
       }
-      &.plus {
+      &.fast {
+        color: #2dc49c;
+      }
+      &.relax {
         color: #ce65e6;
       }
     }
