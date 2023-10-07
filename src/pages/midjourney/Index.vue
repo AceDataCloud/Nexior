@@ -9,9 +9,7 @@
       <elements-selector v-model="elements" class="mb-4" />
       <ignore-selector v-model="ignore" class="mb-4" />
       <el-button type="primary" @click="onGenerate"> 生成 </el-button>
-      <p>
-        <imagine-preview v-model="response" :state="state" />
-      </p>
+      <imagine-preview v-model="response" :state="state" />
     </div>
   </div>
 </template>
