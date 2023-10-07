@@ -7,6 +7,7 @@
       fit="fill"
       class="image"
     />
+    <p v-if="modelValue?.progress !== undefined">{{ modelValue?.progress }}%</p>
   </div>
 </template>
 
@@ -43,8 +44,8 @@ export default defineComponent({
   width: 100%;
   text-align: center;
   .image {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
   }
 }
 </style>
