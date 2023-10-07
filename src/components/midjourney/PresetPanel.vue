@@ -3,7 +3,6 @@
     <model-selector v-model="preset.model" class="block" />
     <ratio-selector v-model="preset.ratio" class="block" />
     <version-selector v-model="preset.version" class="block" />
-
     <stylize-selector v-model="preset.stylize" class="block" />
     <chaos-selector v-model="preset.chaos" class="block" />
   </div>
@@ -25,15 +24,28 @@ export default defineComponent({
     StylizeSelector,
     ChaosSelector
   },
+  props: {
+    modelValue: {
+      type: Object,
+      default: () => ({})
+    }
+  },
+  emits: ['update:modelValue'],
   data() {
     return {
-      preset: {
-        ratio: undefined,
-        version: undefined,
-        stylize: undefined,
-        chaos: undefined
-      }
+      preset: this.modelValue
     };
+  },
+  watch: {
+    modelValue(val) {
+      this.preset = val;
+    },
+    preset: {
+      handler(val) {
+        this.$emit('update:modelValue', val);
+      },
+      deep: true
+    }
   }
 });
 </script>
