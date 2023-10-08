@@ -12,7 +12,7 @@
       <el-button type="primary" @click="onGenerate"> 生成 </el-button>
     </div>
     <div class="tasks">
-      <task-brief-list :active-task="task" :application="application" @custom="onCustom" />
+      <task-brief-list v-model:active-task="task" :application="application" @custom="onCustom" />
     </div>
   </div>
 </template>

@@ -8,9 +8,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElSlider } from 'element-plus';
 import TaskPreview from './TaskPreview.vue';
-import { IApplication, IMidjourneyImagineTask, apiUsageOperator, midjourneyOperator } from '@/operators';
+import {
+  IApplication,
+  IMidjourneyImagineTask,
+  MidjourneyImagineState,
+  apiUsageOperator,
+  midjourneyOperator
+} from '@/operators';
 
 interface IData {
   historyTasks: IMidjourneyImagineTask[];
@@ -31,7 +36,7 @@ export default defineComponent({
       required: true
     }
   },
-  emits: ['update:modelValue', 'custom'],
+  emits: ['update:modelValue', 'custom', 'update:activeTask'],
   data(): IData {
     return {
       historyTasks: []
@@ -46,6 +51,16 @@ export default defineComponent({
     application(val) {
       if (val) {
         this.getHistoryTasks();
+      }
+    },
+    activeTask(val: IMidjourneyImagineTask | undefined, oldVal: IMidjourneyImagineTask | undefined) {
+      if (
+        (val?.state === MidjourneyImagineState.FINISHED && oldVal?.state !== MidjourneyImagineState.FINISHED) ||
+        (val?.state === MidjourneyImagineState.FAILED && oldVal?.state !== MidjourneyImagineState.FAILED)
+      ) {
+        console.log('need to refresh history tasks');
+        this.getHistoryTasks();
+        this.$emit('update:activeTask', undefined);
       }
     }
   },
@@ -64,6 +79,9 @@ export default defineComponent({
         apiUsages.map(async (apiUsage) => {
           const taskId = apiUsage.metadata?.task_id;
           const { data: task } = await midjourneyOperator.task(taskId);
+          if (task.response?.success === false) {
+            task.state = MidjourneyImagineState.FAILED;
+          }
           return task;
         })
       );
