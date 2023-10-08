@@ -8,12 +8,24 @@
       <div class="right"></div>
     </div>
     <div v-if="modelValue?.state === midjourneyImagineState.PENDING" class="content">
-      <p>图像生成中...</p>
+      <el-image class="image">
+        <template #error>
+          <div class="image-slot">Loading...</div>
+        </template>
+      </el-image>
+    </div>
+    <div v-else-if="modelValue?.state === midjourneyImagineState.FAILED" class="content">
+      <el-image class="image">
+        <template #error>
+          <div class="image-slot">{{ modelValue?.response?.detail }}</div>
+        </template>
+      </el-image>
     </div>
     <div v-else class="content">
       <el-image
         v-if="modelValue?.response?.image_url"
         :src="modelValue?.response?.image_url"
+        :preview-src-list="[modelValue?.response?.image_url as string]"
         fit="fill"
         class="image"
       />
@@ -120,6 +132,17 @@ export default defineComponent({
     margin-bottom: 10px;
     .image {
       width: 100%;
+      min-height: 200px;
+      .image-slot {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        background: var(--el-fill-color-light);
+        color: var(--el-text-color-secondary);
+        // font-size: 30px;
+      }
     }
     .progress {
       position: absolute;
