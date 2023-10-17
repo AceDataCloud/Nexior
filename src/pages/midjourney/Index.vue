@@ -1,15 +1,18 @@
 <template>
   <div class="page">
     <div class="presets">
-      <channel-selector v-model="channel" />
       <preset-panel v-model="preset" />
     </div>
     <div class="main">
+      <channel-selector v-model="channel" class="mb-4" @select="onSelectChannel" />
+      <api-status :application="application" class="mb-4" />
       <prompt-input v-model="prompt" class="mb-4" />
       <elements-selector v-model="elements" class="mb-4" />
       <ignore-selector v-model="ignore" class="mb-4" />
       <el-button type="primary" @click="onGenerate"> 生成 </el-button>
-      <imagine-preview v-model="response" :state="state" />
+    </div>
+    <div class="tasks">
+      <task-brief-list v-model:active-task="task" :application="application" @custom="onCustom" />
     </div>
   </div>
 </template>
@@ -22,7 +25,6 @@ import ElementsSelector from '@/components/midjourney/ElementsSelector.vue';
 import IgnoreSelector from '@/components/midjourney/IgnoreSelector.vue';
 import { ElButton, ElImage } from 'element-plus';
 import ChannelSelector from '@/components/midjourney/ChannelSelector.vue';
-import ImaginePreview from '@/components/midjourney/ImaginePreview.vue';
 import {
   IApplication,
   IMidjourneyChannel,
@@ -32,8 +34,12 @@ import {
   MIDJOURNEY_CHANNEL_FAST,
   applicationOperator,
   midjourneyOperator,
-  MidjourneyImagineState
+  MidjourneyImagineState,
+  IMidjourneyImagineTask,
+  IMidjourneyImagineRequest
 } from '@/operators';
+import ApiStatus from '@/components/common/ApiStatus.vue';
+import TaskBriefList from '@/components/midjourney/TaskBriefList.vue';
 
 interface IData {
   channel: IMidjourneyChannel;
@@ -44,8 +50,7 @@ interface IData {
   initializing: boolean;
   applied: boolean | undefined;
   application: IApplication | undefined;
-  response: IMidjourneyImagineResponse | undefined;
-  state: MidjourneyImagineState | undefined;
+  task: IMidjourneyImagineTask | undefined;
 }
 
 export default defineComponent({
@@ -57,7 +62,8 @@ export default defineComponent({
     ElementsSelector,
     IgnoreSelector,
     ElButton,
-    ImaginePreview
+    ApiStatus,
+    TaskBriefList
   },
   data(): IData {
     return {
@@ -69,15 +75,17 @@ export default defineComponent({
       ignore: '',
       initializing: false,
       applied: undefined,
-      response: undefined,
-      state: undefined
+      task: undefined
     };
   },
   mounted() {
-    this.onFetchChannel();
+    this.onFetchApplication();
   },
   methods: {
-    async onFetchChannel() {
+    async onSelectChannel() {
+      await this.onFetchApplication();
+    },
+    async onFetchApplication() {
       this.initializing = true;
       const { data: applications } = await applicationOperator.getAll({
         user_id: this.$store.state.user.id,
@@ -90,39 +98,60 @@ export default defineComponent({
       }
       this.application = applications.items[0];
     },
-    async onGenerate() {
-      this.state = MidjourneyImagineState.PENDING;
+    async onStartTask(request: IMidjourneyImagineRequest) {
       const token = this.application?.credential?.token;
       const endpoint = this.application?.api?.endpoint;
       const path = this.application?.api?.path;
-      if (!token || !endpoint || !this.prompt || !path) {
+      if (!token || !endpoint || !path) {
         console.error('no token or endpoint or question');
         return;
       }
+      this.task = {
+        ...this.task,
+        request,
+        state: MidjourneyImagineState.PENDING
+      };
       midjourneyOperator
-        .imagine(
-          {
-            prompt: this.prompt,
-            action: MidjourneyImagineAction.GENERATE
-          },
-          {
-            token,
-            endpoint,
-            path,
-            stream: (response: IMidjourneyImagineResponse) => {
-              console.log(response);
-              this.state = MidjourneyImagineState.GENERATING;
-              this.response = response;
-            }
+        .imagine(request, {
+          token,
+          endpoint,
+          path,
+          stream: (response: IMidjourneyImagineResponse) => {
+            console.log(response);
+            this.task = {
+              ...this.task,
+              state: MidjourneyImagineState.GENERATING,
+              response
+            };
           }
-        )
-        .then((res) => {
-          this.state = MidjourneyImagineState.FINISHED;
-          console.log(res);
         })
-        .catch(() => {
-          this.state = MidjourneyImagineState.FAILED;
+        .then(() => {
+          this.task = {
+            ...this.task,
+            state: MidjourneyImagineState.FINISHED
+          };
+        })
+        .catch((error) => {
+          this.task = {
+            ...this.task,
+            state: MidjourneyImagineState.FAILED,
+            response: error?.response as IMidjourneyImagineResponse
+          };
         });
+    },
+    async onCustom(payload: { image_id: string; action: MidjourneyImagineAction }) {
+      const request = {
+        image_id: payload.image_id,
+        action: payload.action
+      };
+      this.onStartTask(request);
+    },
+    async onGenerate() {
+      const request = {
+        prompt: this.prompt,
+        action: MidjourneyImagineAction.GENERATE
+      };
+      this.onStartTask(request);
     }
   }
 });
@@ -137,7 +166,7 @@ export default defineComponent({
   .presets {
     width: 260px;
     height: 100%;
-    background-color: var(--el-bg-color-page);
+    // background-color: var(--el-bg-color-page);
   }
   .main {
     flex: 1;
@@ -146,6 +175,11 @@ export default defineComponent({
       font-size: 14px;
       margin-bottom: 10px;
     }
+  }
+  .tasks {
+    width: 400px;
+    height: 100%;
+    // background-color: var(--el-bg-color-page);
   }
 }
 </style>

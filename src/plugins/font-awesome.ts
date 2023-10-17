@@ -13,11 +13,13 @@ import {
   faPalette as faSolidPalette,
   faBars as faSolidBars,
   faGear as faSolidGear,
+  faMugSaucer as faSolidMugSaucer,
   faRotateRight as faSolidRotateRight,
   faCheck as faSolidCheck,
   faPlus as faSolidPlus,
   faBolt as faSolidBolt,
   faQuestion as faSolidQuestion,
+  faWind as faSolidWind,
   faTrash as faSolidTrash,
   faChevronDown as faSolidChevronDown,
   faArrowsRotate as faSolidArrowsRotate,
@@ -45,9 +47,11 @@ library.add(faSolidTriangleExclamation);
 library.add(faSolidUpRightFromSquare);
 library.add(faSolidArrowsRotate);
 library.add(faRegularPaperPlane);
+library.add(faSolidWind);
 library.add(faRegularComment);
 library.add(faSolidArrowRightFromBracket);
 library.add(faSolidTrash);
 library.add(faSolidChevronDown);
 library.add(faSolidPalette);
 library.add(faSolidWandMagicSparkles);
+library.add(faSolidMugSaucer);
