@@ -1,31 +1,21 @@
 # Data Frontend
 
-## Setup domain
+### Installation
 
-Modify the host file, like `/etc/hosts`, add this line:
+Install `yarn`
 
-```
-127.0.0.1 chat.local.zhishuyun.com
-```
-
-Then save it.
-
-### Generate certs
-
-Run below command to generate certs:
+### Build
 
 ```
-yarn run init:https
+yarn
 ```
-
-Then install the `.crt` file and trust it.
 
 ### Start server
 
 Run below command to start local server:
 
 ```
-sudo yarn start
+yarn start
 ```
 
-Then open `https://chat.local.zhishuyun.com` to view the content.
+Then open `http://localhost:8080/chat/conversation` to view the content.
