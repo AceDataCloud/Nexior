@@ -1,10 +1,33 @@
 import axios, { AxiosResponse } from 'axios';
-import { IMidjourneyImagineOptions, IMidjourneyImagineRequest, IMidjourneyImagineResponse } from './models';
+import { IMidjourneyImagineRequest, IMidjourneyImagineResponse, IMidjourneyImagineTask } from './models';
+import { ENDPOINT_API } from '../common/contants';
 
 class MidjourneyOperator {
+  async task(id: string): Promise<AxiosResponse<IMidjourneyImagineTask>> {
+    return await axios.post(
+      `/midjourney/tasks`,
+      {
+        action: 'retrieve',
+        id: id
+      },
+      {
+        headers: {
+          accept: 'application/json',
+          'content-type': 'application/json'
+        },
+        baseURL: ENDPOINT_API
+      }
+    );
+  }
+
   async imagine(
     data: IMidjourneyImagineRequest,
-    options: IMidjourneyImagineOptions
+    options: {
+      stream: (response: IMidjourneyImagineResponse) => void;
+      token: string;
+      endpoint: string;
+      path: string;
+    }
   ): Promise<AxiosResponse<IMidjourneyImagineResponse>> {
     return await axios.post(options.path, data, {
       headers: {

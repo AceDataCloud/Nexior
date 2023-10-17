@@ -16,7 +16,7 @@
             item: true,
             active: value.includes(item.value)
           }"
-          @click="onChoose(item.value)"
+          @click="onToggle(item.value)"
         >
           <el-image :src="item.image" fit="fill" class="preview" />
           <span class="name">{{ item.label }}</span>
@@ -125,9 +125,15 @@ export default defineComponent({
     this.$emit('update:modelValue', this.value);
   },
   methods: {
-    onChoose(value: string) {
-      this.value.push(value);
-      this.$emit('update:modelValue', this.value);
+    onToggle(value: string) {
+      if (this.value.includes(value)) {
+        this.value.splice(this.value.indexOf(value), 1);
+        this.$emit('update:modelValue', this.value);
+        return;
+      } else {
+        this.value.push(value);
+        this.$emit('update:modelValue', this.value);
+      }
     }
   }
 });
