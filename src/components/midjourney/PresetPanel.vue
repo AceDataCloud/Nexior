@@ -8,6 +8,7 @@
     <stylize-selector v-if="preset.advanced" v-model="preset.stylize" class="mb-4" />
     <wired-selector v-if="preset.advanced" v-model="preset.wired" class="mb-4" />
     <chaos-selector v-if="preset.advanced" v-model="preset.chaos" class="mb-4" />
+    <image-weight-selector v-if="preset.advanced" v-model="preset.iw" class="mb-4" />
     <raw-selector v-if="preset.advanced" v-model="preset.raw" class="mb-4" />
   </div>
 </template>
@@ -20,6 +21,7 @@ import StylizeSelector from './StylizeSelector.vue';
 import ChaosSelector from './ChaosSelector.vue';
 import ModelSelector from './ModelSelector.vue';
 import QualitySelector from './QualitySelector.vue';
+import ImageWeightSelector from './ImageWeightSelector.vue';
 import WiredSelector from './WiredSelector.vue';
 import RawSelector from './RawSelector.vue';
 import AdvancedSelector from './AdvancedSelector.vue';
@@ -35,7 +37,8 @@ export default defineComponent({
     ChaosSelector,
     WiredSelector,
     RawSelector,
-    AdvancedSelector
+    AdvancedSelector,
+    ImageWeightSelector
   },
   props: {
     modelValue: {
