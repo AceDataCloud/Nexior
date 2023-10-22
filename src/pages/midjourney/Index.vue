@@ -8,7 +8,10 @@
       <api-status :application="application" class="mb-4" />
       <prompt-input v-model="prompt" class="mb-4" />
       <elements-selector v-model="elements" class="mb-4" />
-      <ignore-selector v-model="ignore" class="mb-4" />
+      <ignore-selector v-if="preset.advanced" v-model="ignore" class="mb-4" />
+      <p>
+        {{ finalPrompt }}
+      </p>
       <el-button type="primary" @click="onGenerate"> 生成 </el-button>
     </div>
     <div class="tasks">
@@ -23,7 +26,7 @@ import PresetPanel from '@/components/midjourney/PresetPanel.vue';
 import PromptInput from '@/components/midjourney/PromptInput.vue';
 import ElementsSelector from '@/components/midjourney/ElementsSelector.vue';
 import IgnoreSelector from '@/components/midjourney/IgnoreSelector.vue';
-import { ElButton, ElImage } from 'element-plus';
+import { ElButton } from 'element-plus';
 import ChannelSelector from '@/components/midjourney/ChannelSelector.vue';
 import {
   IApplication,
@@ -77,6 +80,45 @@ export default defineComponent({
       applied: undefined,
       task: undefined
     };
+  },
+  computed: {
+    finalPrompt(): string {
+      let content = '';
+      if (this.prompt) {
+        content += this.prompt;
+      }
+      if (this.elements.length > 0) {
+        content += ',' + this.elements.join(',');
+      }
+      if (this.preset.version) {
+        content += ` --version ${this.preset.version}`;
+      }
+      if (this.preset.chaos) {
+        content += ` --chaos ${this.preset.chaos}`;
+      }
+      if (this.preset.quality) {
+        content += ` --quality ${this.preset.quality}`;
+      }
+      if (this.preset.ratio) {
+        content += ` --ar ${this.preset.ratio}`;
+      }
+      if (this.preset.stylize) {
+        content += ` --stylize ${this.preset.stylize}`;
+      }
+      if (this.preset.wired) {
+        content += ` --wired ${this.preset.wired}`;
+      }
+      if (this.ignore) {
+        content += ` --no ${this.ignore}`;
+      }
+      if (this.preset.iw) {
+        content += ` --iw ${this.preset.iw}`;
+      }
+      if (this.preset.raw) {
+        content += ` --raw`;
+      }
+      return this.prompt ? content : '';
+    }
   },
   mounted() {
     this.onFetchApplication();

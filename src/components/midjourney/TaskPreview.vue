@@ -25,7 +25,7 @@
       <el-image
         v-if="modelValue?.response?.image_url"
         :src="modelValue?.response?.image_url"
-        :preview-src-list="[modelValue?.response?.image_url as string]"
+        :preview-src-list="[modelValue?.response?.raw_image_url as string]"
         fit="fill"
         class="image"
       />

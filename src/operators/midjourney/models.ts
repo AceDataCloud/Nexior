@@ -9,8 +9,13 @@ export interface IMidjourneyPreset {
   model?: string;
   ratio?: string;
   version?: string;
-  stylize?: string;
-  chaos?: string;
+  stylize?: number;
+  chaos?: number;
+  advanced?: boolean;
+  quality?: string;
+  wired?: number;
+  raw?: boolean;
+  iw: number;
 }
 
 export enum MidjourneyImagineAction {
@@ -32,7 +37,11 @@ export enum MidjourneyImagineAction {
   PAN_UP = 'pan_up',
   PAN_DOWN = 'pan_down',
   PAN_RIGHT = 'pan_right',
-  REROLL = 'reroll'
+  REROLL = 'reroll',
+  UPSAMPLE_2X = 'upsample_2x',
+  UPSAMPLE_4X = 'upsample_4x',
+  REDO_UPSAMPLE_2X = 'redo_upsample_2x',
+  REDO_UPSAMPLE_4X = 'redo_upsample_4x'
 }
 
 export enum MidjourneyImagineState {
@@ -53,6 +62,7 @@ export interface IMidjourneyImagineResponse {
   progress: number;
   image_id: string;
   image_url: string;
+  raw_image_url: string;
   actions: MidjourneyImagineAction[];
   code?: string;
   detail?: string;
