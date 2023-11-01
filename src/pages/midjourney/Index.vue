@@ -9,9 +9,7 @@
       <prompt-input v-model="prompt" class="mb-4" />
       <elements-selector v-model="elements" class="mb-4" />
       <ignore-selector v-if="preset.advanced" v-model="ignore" class="mb-4" />
-      <p>
-        {{ finalPrompt }}
-      </p>
+      <final-prompt :model-value="finalPrompt" />
       <el-button type="primary" @click="onGenerate"> 生成 </el-button>
     </div>
     <div class="tasks">
@@ -43,6 +41,7 @@ import {
 } from '@/operators';
 import ApiStatus from '@/components/common/ApiStatus.vue';
 import TaskBriefList from '@/components/midjourney/TaskBriefList.vue';
+import FinalPrompt from '@/components/midjourney/FinalPrompt.vue';
 
 interface IData {
   channel: IMidjourneyChannel;
@@ -66,7 +65,8 @@ export default defineComponent({
     IgnoreSelector,
     ElButton,
     ApiStatus,
-    TaskBriefList
+    TaskBriefList,
+    FinalPrompt
   },
   data(): IData {
     return {
