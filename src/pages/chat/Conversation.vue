@@ -1,17 +1,20 @@
 <template>
   <div class="page">
-    <model-selector v-model="model" class="model-selector" @select="onSelectModel" />
-    <api-status :application="application" />
+    <sidebar class="left" :application="application" @click="onFetchHistory" />
     <div class="main">
-      <introduction v-if="messages && messages.length === 0" />
-      <div v-else class="messages">
-        <div v-for="(message, messageIndex) in messages" :key="messageIndex">
-          <message :message="message" class="message" />
+      <model-selector v-model="model" class="model-selector" @select="onSelectModel" />
+      <api-status :application="application" />
+      <div class="dialogue">
+        <introduction v-if="messages && messages.length === 0" />
+        <div v-else class="messages">
+          <div v-for="(message, messageIndex) in messages" :key="messageIndex">
+            <message :message="message" class="message" />
+          </div>
         </div>
       </div>
-    </div>
-    <div class="bottom">
-      <input-box v-model="question" @submit="onSubmitQuestion" />
+      <div class="bottom">
+        <input-box v-model="question" @submit="onSubmitQuestion" />
+      </div>
     </div>
   </div>
 </template>
@@ -38,6 +41,7 @@ import { ERROR_CODE_CANCELED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import axios from 'axios';
 import ApiStatus from '@/components/common/ApiStatus.vue';
 import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router';
+import Sidebar from '@/components/chat/Sidebar.vue';
 
 export interface IData {
   messages: IChatMessage[];
@@ -55,7 +59,8 @@ export default defineComponent({
     InputBox,
     ModelSelector,
     Message,
-    ApiStatus
+    ApiStatus,
+    Sidebar
   },
   data(): IData {
     return {
@@ -110,10 +115,7 @@ export default defineComponent({
       this.question = '';
       await this.onFetchAnswer();
     },
-    async onFetchHistory() {
-      if (!this.conversationId) {
-        return;
-      }
+    async onFetchHistory(id?: string) {
       const endpoint = this.application?.api?.endpoint;
       const path = this.application?.api?.path;
       console.log(endpoint, path);
@@ -124,7 +126,7 @@ export default defineComponent({
       const { data: data } = await chatOperator.conversations(
         {
           action: IChatConversationAction.RETRIEVE,
-          id: this.conversationId
+          id: id || this.conversationId
         },
         {
           endpoint,
@@ -208,20 +210,40 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .page {
-  padding: 15px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   width: 100%;
   height: 100%;
+
+  .left {
+    display: block;
+    width: 300px;
+    height: 100%;
+    border-right: 1px solid #eee;
+    overflow-y: scroll;
+  }
+
   .main {
     flex: 1;
     width: 100%;
     overflow-y: scroll;
     padding: 15px;
-    .messages {
-      .message {
-        margin-bottom: 15px;
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+
+    .model-selector {
+      width: max-content;
+      margin: auto;
+    }
+
+    .dialogue {
+      flex: 1;
+      .messages {
+        .message {
+          margin-bottom: 15px;
+        }
       }
     }
   }
