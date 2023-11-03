@@ -1,17 +1,22 @@
 <template>
-  <span v-if="application" class="info">
-    {{ $t('conversation.message.usedCount') }}: {{ application?.used_amount }}
-    {{ $t('conversation.message.remainingCount') }}: {{ application?.remaining_amount }}
-  </span>
+  <div v-if="application" class="status">
+    <span class="info">
+      {{ $t('conversation.message.usedCount') }}: {{ application?.used_amount }}
+      {{ $t('conversation.message.remainingCount') }}: {{ application?.remaining_amount }}
+    </span>
+    <span class="actions">
+      <el-button size="small" type="primary" @click="onBuy">Buy</el-button>
+    </span>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { IApplication } from '@/operators';
-
+import { ElButton } from 'element-plus';
 export default defineComponent({
   name: 'ApiStatus',
-  components: {},
+  components: { ElButton },
   props: {
     application: {
       type: Object as () => IApplication | undefined,
@@ -22,15 +27,32 @@ export default defineComponent({
     return {};
   },
   computed: {},
-  methods: {}
+  methods: {
+    onBuy() {
+      const url = `https://data.zhishuyun.com/console/applications/${this.application?.id}/buy`;
+      window.open(url, '_blank');
+    }
+  }
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.status {
+  display: block;
+  width: fit-content;
+  margin: auto;
+}
 .info {
   font-size: 14px;
   color: var(--el-text-color-regular);
-  display: block;
+  display: inline-block;
   text-align: center;
+}
+.actions {
+  margin: 0 5px;
+  display: inline-block;
+  .el-button {
+    border-radius: 20px;
+  }
 }
 </style>
