@@ -96,7 +96,7 @@ export default defineComponent({
           // console.log('taskid', taskId);
           return {
             id: apiUsage.metadata?.conversation_id,
-            title: 'dsdsd'
+            title: apiUsage.metadata?.conversation_id
           } as IConversation;
         })
       );
@@ -153,6 +153,7 @@ export default defineComponent({
       .title {
         flex: 1;
         font-size: 14px;
+        overflow: hidden;
       }
       .operations {
         width: 45px;

@@ -16,6 +16,7 @@ export interface IMidjourneyPreset {
   wired?: number;
   raw?: boolean;
   iw: number;
+  translation?: boolean;
 }
 
 export enum MidjourneyImagineAction {

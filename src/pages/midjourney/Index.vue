@@ -9,7 +9,7 @@
       <prompt-input v-model="prompt" class="mb-4" />
       <elements-selector v-model="elements" class="mb-4" />
       <ignore-selector v-if="preset.advanced" v-model="ignore" class="mb-4" />
-      <final-prompt :model-value="finalPrompt" />
+      <final-prompt v-if="finalPrompt" :model-value="finalPrompt" />
       <el-button type="primary" @click="onGenerate"> 生成 </el-button>
     </div>
     <div class="tasks">

@@ -4,6 +4,7 @@
     <ratio-selector v-model="preset.ratio" class="mb-4" />
     <quality-selector v-model="preset.quality" class="mb-4" />
     <version-selector v-model="preset.version" class="mb-4" />
+    <translation-selector v-model="preset.translation" class="mb-4" />
     <advanced-selector v-model="preset.advanced" class="mb-4" />
     <stylize-selector v-if="preset.advanced" v-model="preset.stylize" class="mb-4" />
     <wired-selector v-if="preset.advanced" v-model="preset.wired" class="mb-4" />
@@ -15,16 +16,17 @@
 
 <script>
 import { defineComponent } from 'vue';
-import RatioSelector from './RatioSelector.vue';
-import VersionSelector from './VersionSelector.vue';
-import StylizeSelector from './StylizeSelector.vue';
-import ChaosSelector from './ChaosSelector.vue';
-import ModelSelector from './ModelSelector.vue';
-import QualitySelector from './QualitySelector.vue';
-import ImageWeightSelector from './ImageWeightSelector.vue';
-import WiredSelector from './WiredSelector.vue';
-import RawSelector from './RawSelector.vue';
-import AdvancedSelector from './AdvancedSelector.vue';
+import RatioSelector from './preset/RatioSelector.vue';
+import VersionSelector from './preset/VersionSelector.vue';
+import StylizeSelector from './preset/StylizeSelector.vue';
+import ChaosSelector from './preset/ChaosSelector.vue';
+import ModelSelector from './preset/ModelSelector.vue';
+import QualitySelector from './preset/QualitySelector.vue';
+import ImageWeightSelector from './preset/ImageWeightSelector.vue';
+import WiredSelector from './preset/WiredSelector.vue';
+import RawSelector from './preset/RawSelector.vue';
+import AdvancedSelector from './preset/AdvancedSelector.vue';
+import TranslationSelector from './preset/TranslationSelector.vue';
 
 export default defineComponent({
   name: 'PresetPanel',
@@ -38,7 +40,8 @@ export default defineComponent({
     WiredSelector,
     RawSelector,
     AdvancedSelector,
-    ImageWeightSelector
+    ImageWeightSelector,
+    TranslationSelector
   },
   props: {
     modelValue: {
