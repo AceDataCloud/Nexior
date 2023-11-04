@@ -20,6 +20,23 @@ class MidjourneyOperator {
     );
   }
 
+  async tasks(ids: string[]): Promise<AxiosResponse<IMidjourneyImagineTask[]>> {
+    return await axios.post(
+      `/midjourney/tasks`,
+      {
+        action: 'retrieve_batch',
+        ids: ids
+      },
+      {
+        headers: {
+          accept: 'application/json',
+          'content-type': 'application/json'
+        },
+        baseURL: ENDPOINT_API
+      }
+    );
+  }
+
   async imagine(
     data: IMidjourneyImagineRequest,
     options: {

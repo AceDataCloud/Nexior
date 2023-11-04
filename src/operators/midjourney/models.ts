@@ -15,7 +15,7 @@ export interface IMidjourneyPreset {
   quality?: string;
   wired?: number;
   raw?: boolean;
-  iw: number;
+  iw?: number;
   translation?: boolean;
 }
 
@@ -56,6 +56,7 @@ export interface IMidjourneyImagineRequest {
   action?: MidjourneyImagineAction;
   prompt?: string;
   image_id?: string;
+  translation?: boolean;
 }
 
 export interface IMidjourneyImagineResponse {
