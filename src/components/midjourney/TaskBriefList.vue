@@ -31,8 +31,8 @@ export default defineComponent({
       type: Object as () => IMidjourneyImagineTask | undefined,
       required: true
     },
-    application: {
-      type: Object as () => IApplication | undefined,
+    applications: {
+      type: Object as () => IApplication[],
       required: true
     }
   },
@@ -70,7 +70,7 @@ export default defineComponent({
         data: { items: apiUsages }
       } = await apiUsageOperator.getAll({
         user_id: this.$store.state.user.id,
-        application_id: this.application?.id,
+        application_id: this.applications?.map((application) => application.id),
         offset: 0,
         limit: 5,
         ordering: '-created_at'

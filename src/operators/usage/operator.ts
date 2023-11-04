@@ -6,7 +6,7 @@ export interface IApiUsageQuery {
   user_id?: string;
   offset?: number;
   limit?: number;
-  application_id?: string;
+  application_id?: string | string[];
   ordering?: string;
 }
 

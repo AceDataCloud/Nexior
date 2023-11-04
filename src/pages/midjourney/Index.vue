@@ -13,7 +13,7 @@
       <el-button type="primary" @click="onGenerate"> 生成 </el-button>
     </div>
     <div class="tasks">
-      <task-brief-list v-model:active-task="task" :application="application" @custom="onCustom" />
+      <task-brief-list v-model:active-task="task" :applications="applications" @custom="onCustom" />
     </div>
   </div>
 </template>
@@ -33,6 +33,8 @@ import {
   IMidjourneyImagineResponse,
   IMidjourneyPreset,
   MIDJOURNEY_CHANNEL_FAST,
+  MIDJOURNEY_CHANNEL_TURBO,
+  MIDJOURNEY_CHANNEL_RELAX,
   applicationOperator,
   midjourneyOperator,
   MidjourneyImagineState,
@@ -52,6 +54,7 @@ interface IData {
   initializing: boolean;
   applied: boolean | undefined;
   application: IApplication | undefined;
+  applications: IApplication[];
   task: IMidjourneyImagineTask | undefined;
 }
 
@@ -71,6 +74,7 @@ export default defineComponent({
   data(): IData {
     return {
       application: undefined,
+      applications: [],
       channel: MIDJOURNEY_CHANNEL_FAST,
       preset: {},
       prompt: '',
@@ -131,9 +135,10 @@ export default defineComponent({
       this.initializing = true;
       const { data: applications } = await applicationOperator.getAll({
         user_id: this.$store.state.user.id,
-        api_id: this.channel.apiId
+        api_id: [MIDJOURNEY_CHANNEL_FAST.apiId, MIDJOURNEY_CHANNEL_RELAX.apiId, MIDJOURNEY_CHANNEL_TURBO.apiId]
       });
       this.initializing = false;
+      this.applications = applications?.items;
       if (!applications || applications?.items?.length === 0) {
         this.applied = false;
         return;
@@ -191,7 +196,8 @@ export default defineComponent({
     async onGenerate() {
       const request = {
         prompt: this.prompt,
-        action: MidjourneyImagineAction.GENERATE
+        action: MidjourneyImagineAction.GENERATE,
+        translation: this.preset?.translation
       };
       this.onStartTask(request);
     }
