@@ -13,7 +13,7 @@ export interface IMidjourneyPreset {
   chaos?: number;
   advanced?: boolean;
   quality?: string;
-  wired?: number;
+  weird?: number;
   raw?: boolean;
   iw?: number;
   translation?: boolean;

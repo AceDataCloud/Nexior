@@ -1,19 +1,23 @@
 <template>
   <div class="field">
-    <h2 class="title">艺术化</h2>
+    <h2 class="title">{{ $t('midjourney.name.stylize') }}</h2>
     <el-slider v-model="value" :min="0" :max="1000" :step="1" class="value" />
+    <info-icon :content="$t('midjourney.description.stylize')" class="info" />
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
 import { ElSlider } from 'element-plus';
+import InfoIcon from '@/components/common/InfoIcon.vue';
+
 const DEFAULT_STYLIZE = 100;
 
 export default defineComponent({
   name: 'StylizeSelector',
   components: {
-    ElSlider
+    ElSlider,
+    InfoIcon
   },
   props: {
     modelValue: {

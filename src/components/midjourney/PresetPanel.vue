@@ -7,9 +7,10 @@
     <translation-selector v-model="preset.translation" class="mb-4" />
     <advanced-selector v-model="preset.advanced" class="mb-4" />
     <stylize-selector v-if="preset.advanced" v-model="preset.stylize" class="mb-4" />
-    <wired-selector v-if="preset.advanced" v-model="preset.wired" class="mb-4" />
+    <weird-selector v-if="preset.advanced" v-model="preset.wired" class="mb-4" />
     <chaos-selector v-if="preset.advanced" v-model="preset.chaos" class="mb-4" />
     <image-weight-selector v-if="preset.advanced" v-model="preset.iw" class="mb-4" />
+    <niji-selector v-if="preset.advanced" v-model="preset.niji" class="mb-4" />
     <raw-selector v-if="preset.advanced" v-model="preset.raw" class="mb-4" />
   </div>
 </template>
@@ -23,11 +24,11 @@ import ChaosSelector from './preset/ChaosSelector.vue';
 import ModelSelector from './preset/ModelSelector.vue';
 import QualitySelector from './preset/QualitySelector.vue';
 import ImageWeightSelector from './preset/ImageWeightSelector.vue';
-import WiredSelector from './preset/WiredSelector.vue';
+import WeirdSelector from './preset/WeirdSelector.vue';
 import RawSelector from './preset/RawSelector.vue';
 import AdvancedSelector from './preset/AdvancedSelector.vue';
 import TranslationSelector from './preset/TranslationSelector.vue';
-
+import NijiSelector from './preset/NijiSelector.vue';
 export default defineComponent({
   name: 'PresetPanel',
   components: {
@@ -37,11 +38,12 @@ export default defineComponent({
     VersionSelector,
     StylizeSelector,
     ChaosSelector,
-    WiredSelector,
+    WeirdSelector,
     RawSelector,
     AdvancedSelector,
     ImageWeightSelector,
-    TranslationSelector
+    TranslationSelector,
+    NijiSelector
   },
   props: {
     modelValue: {

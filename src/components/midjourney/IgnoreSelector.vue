@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2 class="title">忽略元素</h2>
-    <el-input v-model="value" :rows="1" type="textarea" placeholder="Please input" />
+    <h2 class="title">{{ $t('midjourney.name.ignore') }}</h2>
+    <el-input v-model="value" :rows="1" type="textarea" :placeholder="$t('midjourney.placeholder.ignore')" />
   </div>
 </template>
 

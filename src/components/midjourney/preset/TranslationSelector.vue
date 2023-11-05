@@ -1,25 +1,28 @@
 <template>
   <div class="field">
-    <h2 class="title">自动翻译</h2>
-    <el-switch v-model="value" class="ml-2" />
+    <h2 class="title">{{ $t('midjourney.name.translation') }}</h2>
+    <el-switch v-model="value" class="value" />
+    <info-icon :content="$t('midjourney.description.translation')" class="info" />
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
 import { ElSwitch } from 'element-plus';
+import InfoIcon from '@/components/common/InfoIcon.vue';
 
-const DEFAULT_ADVANCED = false;
+const DEFAULT_TRANSLATION = true;
 
 export default defineComponent({
   name: 'TranslationSelector',
   components: {
-    ElSwitch
+    ElSwitch,
+    InfoIcon
   },
   props: {
     modelValue: {
       type: Boolean,
-      default: false
+      default: DEFAULT_TRANSLATION
     }
   },
   emits: ['update:modelValue'],
@@ -40,7 +43,7 @@ export default defineComponent({
   },
   mounted() {
     if (this.value === undefined) {
-      this.value = DEFAULT_ADVANCED;
+      this.value = DEFAULT_TRANSLATION;
     }
     this.$emit('update:modelValue', this.value);
   }

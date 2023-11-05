@@ -113,8 +113,8 @@ export default defineComponent({
       if (this.preset.stylize) {
         content += ` --stylize ${this.preset.stylize}`;
       }
-      if (this.preset.wired) {
-        content += ` --wired ${this.preset.wired}`;
+      if (this.preset.weird) {
+        content += ` --weird ${this.preset.weird}`;
       }
       if (this.ignore) {
         content += ` --no ${this.ignore}`;

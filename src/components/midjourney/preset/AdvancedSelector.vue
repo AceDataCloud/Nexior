@@ -1,20 +1,22 @@
 <template>
   <div class="field">
-    <h2 class="title">高级模式</h2>
-    <el-switch v-model="value" class="ml-2" />
+    <h2 class="title">{{ $t('midjourney.name.advanced') }}</h2>
+    <el-switch v-model="value" class="value" />
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
 import { ElSwitch } from 'element-plus';
+import InfoIcon from '@/components/common/InfoIcon.vue';
 
 const DEFAULT_ADVANCED = false;
 
 export default defineComponent({
   name: 'AdvancedSelector',
   components: {
-    ElSwitch
+    ElSwitch,
+    InfoIcon
   },
   props: {
     modelValue: {
@@ -60,6 +62,9 @@ export default defineComponent({
   }
   .value {
     flex: 1;
+  }
+  .info {
+    width: 20px;
   }
 }
 </style>
