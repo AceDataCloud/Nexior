@@ -48,7 +48,7 @@ export default defineComponent({
     }
   },
   watch: {
-    application(val) {
+    applications(val) {
       if (val) {
         this.getHistoryTasks();
       }
@@ -75,16 +75,8 @@ export default defineComponent({
         limit: 5,
         ordering: '-created_at'
       });
-      const tasks = await Promise.all(
-        apiUsages.map(async (apiUsage) => {
-          const taskId = apiUsage.metadata?.task_id;
-          const { data: task } = await midjourneyOperator.task(taskId);
-          if (task.response?.success === false) {
-            task.state = MidjourneyImagineState.FAILED;
-          }
-          return task;
-        })
-      );
+      const tasks = (await midjourneyOperator.tasks(apiUsages.map((apiUsage) => apiUsage.metadata?.task_id as string)))
+        .data;
       this.historyTasks = tasks.filter((task) => task && task?.response);
     }
   }

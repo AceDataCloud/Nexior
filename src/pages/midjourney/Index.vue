@@ -42,7 +42,7 @@ import {
   IMidjourneyImagineRequest
 } from '@/operators';
 import ApiStatus from '@/components/common/ApiStatus.vue';
-import TaskBriefList from '@/components/midjourney/TaskBriefList.vue';
+import TaskBriefList from '@/components/midjourney/tasks/TaskBriefList.vue';
 import FinalPrompt from '@/components/midjourney/FinalPrompt.vue';
 
 interface IData {
@@ -53,7 +53,6 @@ interface IData {
   ignore: string;
   initializing: boolean;
   applied: boolean | undefined;
-  application: IApplication | undefined;
   applications: IApplication[];
   task: IMidjourneyImagineTask | undefined;
 }
@@ -73,7 +72,6 @@ export default defineComponent({
   },
   data(): IData {
     return {
-      application: undefined,
       applications: [],
       channel: MIDJOURNEY_CHANNEL_FAST,
       preset: {},
@@ -86,6 +84,12 @@ export default defineComponent({
     };
   },
   computed: {
+    application() {
+      if (this.applications && this.applications.length > 0) {
+        return this.applications.filter((item) => item.api_id === this.channel.apiId)[0];
+      }
+      return undefined;
+    },
     finalPrompt(): string {
       let content = '';
       if (this.prompt) {
@@ -125,13 +129,13 @@ export default defineComponent({
     }
   },
   mounted() {
-    this.onFetchApplication();
+    this.onFetchApplications();
   },
   methods: {
     async onSelectChannel() {
-      await this.onFetchApplication();
+      await this.onFetchApplications();
     },
-    async onFetchApplication() {
+    async onFetchApplications() {
       this.initializing = true;
       const { data: applications } = await applicationOperator.getAll({
         user_id: this.$store.state.user.id,

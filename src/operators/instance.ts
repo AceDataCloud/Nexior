@@ -1,12 +1,16 @@
 import router, { ROUTE_AUTH_LOGIN } from '@/router';
 import store from '@/store';
 import axios, { AxiosInstance } from 'axios';
+import qs from 'qs';
 
 const httpClient: AxiosInstance = axios.create({
   baseURL: '/api/v1',
   headers: {
     'Content-type': 'application/json',
     Accept: 'application/json'
+  },
+  paramsSerializer: function (params) {
+    return qs.stringify(params, { arrayFormat: 'repeat' });
   }
 });
 
