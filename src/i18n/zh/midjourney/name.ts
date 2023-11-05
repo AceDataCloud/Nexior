@@ -1,0 +1,23 @@
+export default {
+  aspect: '分辨率',
+  chaos: '混乱度',
+  fast: '快速模式',
+  imageWeight: '图像权重',
+  no: '否定提示',
+  quality: '渲染质量',
+  random: '随机风格',
+  relax: '放松模式',
+  repeat: '重复生成',
+  seed: '种子数',
+  stop: '提前停止',
+  style: '风格切换',
+  stylize: '风格化度',
+  tile: '平铺模式',
+  turbo: '涡轮模式',
+  weird: '怪异度',
+  translation: '自动翻译',
+  advanced: '专业模式',
+  niji: '动漫风格',
+  ignore: '忽略内容',
+  prompt: '绘图描述'
+};

@@ -1,19 +1,23 @@
 <template>
   <div class="field">
-    <h2 class="title">怪异度</h2>
+    <h2 class="title">{{ $t('midjourney.name.weird') }}</h2>
     <el-slider v-model="value" :min="0" :max="1000" :step="1" class="value" />
+    <info-icon :content="$t('midjourney.description.weird')" class="info" />
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
 import { ElSlider } from 'element-plus';
-const DEFAULT_WIRED = 0;
+import InfoIcon from '@/components/common/InfoIcon.vue';
+
+const DEFAULT_WEIRD = 0;
 
 export default defineComponent({
-  name: 'WiredSelector',
+  name: 'WeirdSelector',
   components: {
-    ElSlider
+    ElSlider,
+    InfoIcon
   },
   props: {
     modelValue: {
@@ -39,7 +43,7 @@ export default defineComponent({
   },
   mounted() {
     if (!this.value) {
-      this.value = DEFAULT_WIRED;
+      this.value = DEFAULT_WEIRD;
     }
     this.$emit('update:modelValue', this.value);
   }

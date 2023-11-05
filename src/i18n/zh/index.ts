@@ -4,6 +4,7 @@ import conversation from './conversation';
 import application from './application';
 import api from './api';
 import setting from './setting';
+import midjourney from './midjourney';
 
 export default {
   common,
@@ -11,5 +12,6 @@ export default {
   auth,
   application,
   api,
-  setting
+  setting,
+  midjourney
 };
