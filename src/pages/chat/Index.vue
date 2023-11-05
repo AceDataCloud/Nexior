@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <sidebar class="left" :application="application" />
+    <sidebar class="left" :applications="applications" />
     <div class="main">
       <div class="card">
         <h2 class="title">Chat</h2>
@@ -14,14 +14,22 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElMain, ElAside, ElButton, ElDrawer } from 'element-plus';
-import LeftNavigator from '@/components/common/LeftNavigator.vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import Introduction from '@/components/conversation/Introduction.vue';
-import InputBox from '@/components/chat/InputBox.vue';
-import ModelSelector from '@/components/chat/ModelSelector.vue';
 import Sidebar from '@/components/chat/Sidebar.vue';
 import { ROUTE_CHAT_CONVERSATION_NEW } from '@/router/constants';
-import application from '@/i18n/zh/application';
+import { IApplication } from '@/operators/application/models';
+import { applicationOperator } from '@/operators/application/operator';
+import {
+  CHAT_MODEL_CHATGPT,
+  CHAT_MODEL_CHATGPT4,
+  CHAT_MODEL_CHATGPT4_BROWSING,
+  CHAT_MODEL_CHATGPT_16K,
+  CHAT_MODEL_CHATGPT_BROWSING
+} from '@/operators/chat/constants';
+
+interface IData {
+  initializing: boolean;
+  applications: IApplication[];
+}
 
 export default defineComponent({
   name: 'ChatIndex',
@@ -29,16 +37,35 @@ export default defineComponent({
     Sidebar,
     ElButton
   },
-  data() {
+  data(): IData {
     return {
       model: 'chatgpt',
+      initializing: false,
       drawer: false,
-      question: ''
+      question: '',
+      applications: []
     };
   },
+  mounted() {
+    this.onFetchApplications();
+  },
   methods: {
+    async onFetchApplications() {
+      this.initializing = true;
+      const { data: applications } = await applicationOperator.getAll({
+        user_id: this.$store.state.user.id,
+        api_id: [
+          CHAT_MODEL_CHATGPT.apiId,
+          CHAT_MODEL_CHATGPT_16K.apiId,
+          CHAT_MODEL_CHATGPT_BROWSING.apiId,
+          CHAT_MODEL_CHATGPT4.apiId,
+          CHAT_MODEL_CHATGPT4_BROWSING.apiId
+        ]
+      });
+      this.initializing = false;
+      this.applications = applications?.items;
+    },
     onStart() {
-      console.log('onStart');
       this.$router.push({
         name: ROUTE_CHAT_CONVERSATION_NEW
       });

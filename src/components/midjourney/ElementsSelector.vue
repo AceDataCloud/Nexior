@@ -770,12 +770,14 @@ export default defineComponent({
             {
               image: 'https://cdn.zhishuyun.com/7fd2cd5c-7671-4b40-85a0-230de9c37234.png',
               label: '黑光',
-              value: 'Blacklight'
+              value: 'Blacklight',
+              advanced: true
             },
             {
               image: 'https://cdn.zhishuyun.com/a08bff6e-8a0f-4d56-aa91-576f0a9921f2.png',
               label: '黄金时段光线',
-              value: 'Golden hour light'
+              value: 'Golden hour light',
+              advanced: true
             },
             {
               image: 'https://cdn.zhishuyun.com/3cd28696-493f-4b3e-9187-9d1a4c17e95b.png',
@@ -785,7 +787,8 @@ export default defineComponent({
             {
               image: 'https://cdn.zhishuyun.com/58c9a17e-f7d5-4481-abc8-9e9b66609a4d.png',
               label: '音乐会照明',
-              value: 'Concert Lighting'
+              value: 'Concert Lighting',
+              advanced: true
             },
             {
               image: 'https://cdn.zhishuyun.com/efb8893c-8bd6-4c7d-8e45-6e0626f69479.png',
@@ -795,7 +798,7 @@ export default defineComponent({
             },
             {
               image: 'https://cdn.zhishuyun.com/27b90e83-09b0-4339-9b2c-48fe6fe45bdd.png',
-              label: '阳光直接照射',
+              label: '阳光直射',
               value: 'Direct Sunlight'
             },
             {
@@ -807,7 +810,8 @@ export default defineComponent({
             {
               image: 'https://cdn.zhishuyun.com/3af133d0-5a86-45a9-a16e-f23e6cc68b24.png',
               label: '工作室照明',
-              value: 'Studio lighting'
+              value: 'Studio lighting',
+              advanced: true
             },
             {
               image: 'https://cdn.zhishuyun.com/6bc889b1-a563-4890-9117-7d3ded276caa.png',
@@ -835,7 +839,8 @@ export default defineComponent({
             {
               image: 'https://cdn.zhishuyun.com/63bc0645-ab94-4327-84b8-e226020c6c0f.png',
               label: '荧光棒',
-              value: 'Glow-stick'
+              value: 'Glow-stick',
+              advanced: true
             },
             {
               image: 'https://cdn.zhishuyun.com/824111e9-7ebf-47ec-80ef-a6ad0a1d949b.png',
@@ -867,7 +872,8 @@ export default defineComponent({
             {
               image: 'https://cdn.zhishuyun.com/ac3fe310-3639-4fc0-b56e-4d69278bc2ca.png',
               label: '夜总会照明',
-              value: 'Nightclub Lighting'
+              value: 'Nightclub Lighting',
+              advanced: true
             },
             {
               image: 'https://cdn.zhishuyun.com/c9331a92-87d2-43b5-9319-24c8629bffd1.png',
@@ -889,7 +895,8 @@ export default defineComponent({
             {
               image: 'https://cdn.zhishuyun.com/b1f16a4b-fb3d-4783-9c66-c3567e79baeb.png',
               label: '边缘光',
-              value: 'Edge light'
+              value: 'Edge light',
+              advanced: true
             },
             {
               image: 'https://cdn.zhishuyun.com/97fecbc1-a164-48e2-bdf0-c69975c16d63.png',
@@ -905,17 +912,20 @@ export default defineComponent({
             {
               image: 'https://cdn.zhishuyun.com/5ab92c7e-bca1-4fbc-8975-6d9fb3f15626.png',
               label: '环境光',
-              value: 'Ambient Light'
+              value: 'Ambient Light',
+              advanced: true
             },
             {
               image: 'https://cdn.zhishuyun.com/ac80d283-5532-4664-bbe5-42fbb9582a63.png',
               label: '高调照明',
-              value: 'High key lighting'
+              value: 'High key lighting',
+              advanced: true
             },
             {
               image: 'https://cdn.zhishuyun.com/add3524d-fc90-45a8-9edc-348bb1f79075.png',
               label: '低调照明',
-              value: 'Low key lighting'
+              value: 'Low key lighting',
+              advanced: true
             },
             {
               image: 'https://cdn.zhishuyun.com/42174ff8-3080-4004-9ae2-c2ff919e1145.png',
@@ -943,7 +953,8 @@ export default defineComponent({
             {
               image: 'https://cdn.zhishuyun.com/4360a40b-2126-43c2-be8e-e482978e1ea6.png',
               label: '紫外线',
-              value: 'Ultraviolet'
+              value: 'Ultraviolet',
+              advanced: true
             },
             {
               image: 'https://cdn.zhishuyun.com/8b6bea86-9ed1-4fc8-9040-8fc2b64abbff.png',
