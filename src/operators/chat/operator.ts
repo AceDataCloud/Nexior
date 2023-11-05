@@ -5,8 +5,13 @@ import {
   IChatAskResponse,
   IChatConversationRequest,
   IChatConversationOptions,
-  IChatConversationResponse
+  IChatConversationResponse,
+  IChatConversation,
+  IChatConversationAction
 } from './models';
+import { IApplication } from '../application';
+import { IApi } from '../api';
+import { ENDPOINT_API } from '../common/contants';
 
 class ChatOperator {
   async ask(data: IChatAskRequest, options: IChatAskOptions): Promise<AxiosResponse<IChatAskResponse>> {
@@ -32,16 +37,36 @@ class ChatOperator {
     });
   }
 
-  async conversations(
-    data: IChatConversationRequest,
-    options: IChatConversationOptions
-  ): Promise<AxiosResponse<IChatConversationResponse>> {
-    return await axios.post(options.path, data, {
-      headers: {
-        'content-type': 'application/json'
+  async conversation(id: string | undefined): Promise<AxiosResponse<IChatConversation>> {
+    return await axios.post(
+      `/chatgpt/conversations`,
+      {
+        action: IChatConversationAction.RETRIEVE,
+        id: id
       },
-      baseURL: options.endpoint
-    });
+      {
+        headers: {
+          'content-type': 'application/json'
+        },
+        baseURL: ENDPOINT_API
+      }
+    );
+  }
+
+  async conversations(ids: string[]): Promise<AxiosResponse<IChatConversation[]>> {
+    return await axios.post(
+      `/chatgpt/conversations`,
+      {
+        action: IChatConversationAction.RETRIEVE_BATCH,
+        ids: ids
+      },
+      {
+        headers: {
+          'content-type': 'application/json'
+        },
+        baseURL: ENDPOINT_API
+      }
+    );
   }
 }
 

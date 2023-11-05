@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <sidebar class="left" :application="application" @click="onFetchHistory" />
+    <sidebar class="left" :applications="applications" @click="onFetchHistory" />
     <div class="main">
       <model-selector v-model="model" class="model-selector" @select="onSelectModel" />
       <api-status :application="application" />
@@ -27,12 +27,14 @@ import {
   IChatModel,
   IChatMessage,
   CHAT_MODEL_CHATGPT,
-  API_ID_CHATGPT,
   applicationOperator,
   IApplication,
   IChatMessageState,
   IChatAskResponse,
-  IChatConversationAction
+  CHAT_MODEL_CHATGPT_16K,
+  CHAT_MODEL_CHATGPT_BROWSING,
+  CHAT_MODEL_CHATGPT4,
+  CHAT_MODEL_CHATGPT4_BROWSING
 } from '@/operators';
 import InputBox from '@/components/chat/InputBox.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
@@ -46,7 +48,7 @@ import Sidebar from '@/components/chat/Sidebar.vue';
 export interface IData {
   messages: IChatMessage[];
   model: IChatModel;
-  application: IApplication | undefined;
+  applications: IApplication[];
   question: '';
   initializing: boolean;
   applied: boolean | undefined;
@@ -55,7 +57,6 @@ export interface IData {
 export default defineComponent({
   name: 'ChatConversation',
   components: {
-    // Introduction,
     InputBox,
     ModelSelector,
     Message,
@@ -68,18 +69,21 @@ export default defineComponent({
       question: '',
       initializing: false,
       applied: undefined,
-      application: undefined,
+      applications: [],
       messages: []
     };
   },
   computed: {
     conversationId(): string | undefined {
       return this.$route.params.id?.toString();
+    },
+    application() {
+      return this.applications.find((application) => application.api?.id === this.model.apiId);
     }
   },
   async mounted() {
     console.log('mounted');
-    await this.onFetchModel();
+    await this.onFetchApplications();
     await this.onFetchHistory();
   },
   methods: {
@@ -89,23 +93,24 @@ export default defineComponent({
         name: ROUTE_CHAT_CONVERSATION_NEW
       });
     },
-
     async onSelectModel() {
       await this.onCreateNewConversation();
-      await this.onFetchModel();
+      await this.onFetchApplications();
     },
-    async onFetchModel() {
+    async onFetchApplications() {
       this.initializing = true;
       const { data: applications } = await applicationOperator.getAll({
         user_id: this.$store.state.user.id,
-        api_id: this.model.apiId
+        api_id: [
+          CHAT_MODEL_CHATGPT.apiId,
+          CHAT_MODEL_CHATGPT_16K.apiId,
+          CHAT_MODEL_CHATGPT_BROWSING.apiId,
+          CHAT_MODEL_CHATGPT4.apiId,
+          CHAT_MODEL_CHATGPT4_BROWSING.apiId
+        ]
       });
       this.initializing = false;
-      if (!applications || applications?.items?.length === 0) {
-        this.applied = false;
-        return;
-      }
-      this.application = applications.items[0];
+      this.applications = applications?.items;
     },
     async onSubmitQuestion() {
       this.messages.push({
@@ -116,23 +121,7 @@ export default defineComponent({
       await this.onFetchAnswer();
     },
     async onFetchHistory(id?: string) {
-      const endpoint = this.application?.api?.endpoint;
-      const path = this.application?.api?.path;
-      console.log(endpoint, path);
-      if (!endpoint || !path) {
-        console.error('no endpoint or path');
-        return;
-      }
-      const { data: data } = await chatOperator.conversations(
-        {
-          action: IChatConversationAction.RETRIEVE,
-          id: id || this.conversationId
-        },
-        {
-          endpoint,
-          path: `${path}/conversations`
-        }
-      );
+      const { data: data } = await chatOperator.conversation(id || this.conversationId);
       this.messages = data.messages || [];
     },
     async onFetchAnswer() {
@@ -180,7 +169,7 @@ export default defineComponent({
         )
         .then(() => {
           this.messages[this.messages.length - 1].state = IChatMessageState.FINISHED;
-          this.onFetchModel();
+          this.onFetchApplications();
         })
         .catch((error) => {
           if (this.messages && this.messages.length > 0) {
@@ -236,11 +225,13 @@ export default defineComponent({
     .model-selector {
       width: max-content;
       margin: auto;
+      margin-bottom: 10px;
     }
 
     .dialogue {
       flex: 1;
       .messages {
+        padding-top: 30px;
         .message {
           margin-bottom: 15px;
         }

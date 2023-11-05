@@ -72,7 +72,8 @@ export interface IChatAskResponse {
 
 export enum IChatConversationAction {
   RETRIEVE = 'retrieve',
-  UPDATE = 'update'
+  UPDATE = 'update',
+  RETRIEVE_BATCH = 'retrieve_batch'
 }
 
 export interface IChatConversationRequest {

@@ -143,11 +143,6 @@ export default defineComponent({
       });
       this.initializing = false;
       this.applications = applications?.items;
-      if (!applications || applications?.items?.length === 0) {
-        this.applied = false;
-        return;
-      }
-      this.application = applications.items[0];
     },
     async onStartTask(request: IMidjourneyImagineRequest) {
       const token = this.application?.credential?.token;

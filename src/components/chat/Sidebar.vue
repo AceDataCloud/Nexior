@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar">
-    <el-skeleton v-if="loading" />
+    <el-skeleton v-if="loading && conversations.length === 0" />
     <div v-else class="conversations">
       <div
         v-for="(conversation, conversationIndex) in conversations"
@@ -12,7 +12,9 @@
           <font-awesome-icon icon="fa-regular fa-comment" class="icon" />
         </div>
         <div class="title">
-          <span>{{ conversation.title }}</span>
+          <span v-if="conversation?.messages">{{
+            conversation?.messages[conversation?.messages.length - 1]?.content
+          }}</span>
         </div>
         <div class="operations">
           <font-awesome-icon icon="fa-solid fa-edit" class="icon icon-edit" />
@@ -28,13 +30,13 @@ import { defineComponent } from 'vue';
 import { ElTooltip, ElButton, ElSkeleton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_INDEX } from '@/router/constants';
-import { apiUsageOperator, midjourneyOperator, MidjourneyImagineState, IApplication } from '@/operators';
+import { apiUsageOperator, midjourneyOperator, MidjourneyImagineState, IApplication, chatOperator } from '@/operators';
 import { chatgptOperator } from '@/operators/api/chatgpt/operator';
-import { IConversation } from '@/operators/conversation/models';
+import { IChatConversation } from '@/operators/chat/models';
 
 interface IData {
   loading: boolean;
-  conversations: IConversation[];
+  conversations: IChatConversation[];
 }
 
 export default defineComponent({
@@ -45,8 +47,8 @@ export default defineComponent({
     ElSkeleton
   },
   props: {
-    application: {
-      type: Object as () => IApplication | undefined,
+    applications: {
+      type: Object as () => IApplication[],
       required: true
     }
   },
@@ -57,51 +59,34 @@ export default defineComponent({
       conversations: []
     };
   },
-  mounted() {
-    this.onFetchAllConversations();
+  watch: {
+    applications(val) {
+      if (val) {
+        this.onFetchAllConversations();
+      }
+    }
   },
+  mounted() {},
   methods: {
     async onFetchAllConversations() {
-      // applicationOperator.getAll()
-      console.log('srtart to load');
       this.loading = true;
       const {
         data: { items: apiUsages }
       } = await apiUsageOperator.getAll({
         user_id: this.$store.state.user.id,
-        application_id: this.application?.id,
+        application_id: this.applications?.map((application) => application.id),
         offset: 0,
-        limit: 20,
+        limit: 30,
         ordering: '-created_at'
       });
       this.loading = false;
-
       // de duplicate conversations using id
-      const conversationIds: string[] = [];
-      const uniqueApiUsages = apiUsages.filter((apiUsage) => {
-        const conversationId = apiUsage.metadata?.conversation_id;
-        if (!conversationId) {
-          return false;
-        }
-        if (conversationIds.includes(conversationId)) {
-          return false;
-        }
-        conversationIds.push(conversationId);
-        return true;
-      });
-
-      const conversations = await Promise.all(
-        uniqueApiUsages.map(async (apiUsage) => {
-          // const taskId = apiUsage.metadata?.task_id;
-          // console.log('taskid', taskId);
-          return {
-            id: apiUsage.metadata?.conversation_id,
-            title: apiUsage.metadata?.conversation_id
-          } as IConversation;
-        })
-      );
+      const conversationIds: string[] = apiUsages
+        .map((apiUsage) => apiUsage.metadata?.conversation_id)
+        .filter((id) => id);
+      const uniqueConversationIds = [...new Set(conversationIds)];
+      const conversations = (await chatOperator.conversations(uniqueConversationIds)).data;
       this.conversations = conversations;
-      // this.historyTasks = tasks.filter((task) => task && task?.response);
     },
     onClick(id: string) {
       if (!id) {
