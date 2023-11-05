@@ -7,10 +7,10 @@
       <channel-selector v-model="channel" class="mb-4" @select="onSelectChannel" />
       <api-status :application="application" class="mb-4" />
       <prompt-input v-model="prompt" class="mb-4" />
-      <elements-selector v-model="elements" class="mb-4" />
+      <elements-selector v-model="elements" :advanced="preset.advanced" class="mb-4" />
       <ignore-selector v-if="preset.advanced" v-model="ignore" class="mb-4" />
       <final-prompt v-if="finalPrompt" :model-value="finalPrompt" />
-      <el-button type="primary" @click="onGenerate"> 生成 </el-button>
+      <el-button type="primary" :disabled="!finalPrompt" @click="onGenerate"> 生成 </el-button>
     </div>
     <div class="tasks">
       <task-brief-list v-model:active-task="task" :applications="applications" @custom="onCustom" />
@@ -199,7 +199,7 @@ export default defineComponent({
     },
     async onGenerate() {
       const request = {
-        prompt: this.prompt,
+        prompt: this.finalPrompt,
         action: MidjourneyImagineAction.GENERATE,
         translation: this.preset?.translation
       };

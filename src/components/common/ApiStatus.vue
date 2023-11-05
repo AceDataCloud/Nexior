@@ -5,7 +5,7 @@
       {{ $t('conversation.message.remainingCount') }}: {{ application?.remaining_amount }}
     </span>
     <span class="actions">
-      <el-button size="small" type="primary" @click="onBuy">Buy</el-button>
+      <el-button size="small" type="primary" @click="onBuy">{{ $t('common.button.buyMore') }}</el-button>
     </span>
   </div>
 </template>
