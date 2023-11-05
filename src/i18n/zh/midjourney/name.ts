@@ -19,5 +19,5 @@ export default {
   advanced: '专业模式',
   niji: '动漫风格',
   ignore: '忽略内容',
-  prompt: '绘图描述'
+  prompt: '绘图指令'
 };
