@@ -3,9 +3,9 @@
     <sidebar class="left" :applications="applications" />
     <div class="main">
       <div class="card">
-        <h2 class="title">Chat</h2>
-        <p class="description">Click to start a new chat</p>
-        <el-button type="primary" @click="onStart">New</el-button>
+        <h2 class="title">{{ $t('chat.title.chat') }}</h2>
+        <p class="description">{{ $t('chat.message.startNewChat') }}</p>
+        <el-button type="primary" @click="onStart">{{ $t('common.button.new') }}</el-button>
       </div>
     </div>
   </div>
@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElMain, ElAside, ElButton, ElDrawer } from 'element-plus';
+import { ElButton } from 'element-plus';
 import Sidebar from '@/components/chat/Sidebar.vue';
 import { ROUTE_CHAT_CONVERSATION_NEW } from '@/router/constants';
 import { IApplication } from '@/operators/application/models';

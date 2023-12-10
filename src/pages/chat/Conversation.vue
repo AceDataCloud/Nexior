@@ -20,10 +20,11 @@
 </template>
 
 <script lang="ts">
-import { ROLE_ASSISTANT, ROLE_USER } from '@/operators/message/models';
 import { defineComponent } from 'vue';
 import Message from '@/components/chat/Message.vue';
 import {
+  ROLE_ASSISTANT,
+  ROLE_USER,
   IChatModel,
   IChatMessage,
   CHAT_MODEL_CHATGPT,
@@ -34,11 +35,11 @@ import {
   CHAT_MODEL_CHATGPT_16K,
   CHAT_MODEL_CHATGPT_BROWSING,
   CHAT_MODEL_CHATGPT4,
-  CHAT_MODEL_CHATGPT4_BROWSING
+  CHAT_MODEL_CHATGPT4_BROWSING,
+  chatOperator
 } from '@/operators';
 import InputBox from '@/components/chat/InputBox.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
-import { chatOperator } from '@/operators';
 import { ERROR_CODE_CANCELED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import axios from 'axios';
 import ApiStatus from '@/components/common/ApiStatus.vue';

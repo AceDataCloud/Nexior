@@ -29,9 +29,8 @@
 import { defineComponent } from 'vue';
 import { ElTooltip, ElButton, ElSkeleton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_INDEX } from '@/router/constants';
-import { apiUsageOperator, midjourneyOperator, MidjourneyImagineState, IApplication, chatOperator } from '@/operators';
-import { chatgptOperator } from '@/operators/api/chatgpt/operator';
+import { ROUTE_CHAT_CONVERSATION } from '@/router/constants';
+import { apiUsageOperator, IApplication, chatOperator } from '@/operators';
 import { IChatConversation } from '@/operators/chat/models';
 
 interface IData {

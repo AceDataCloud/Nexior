@@ -1,8 +1,8 @@
 <template>
   <div v-if="application" class="status">
     <span class="info">
-      {{ $t('conversation.message.usedCount') }}: {{ application?.used_amount }}
-      {{ $t('conversation.message.remainingCount') }}: {{ application?.remaining_amount }}
+      {{ $t('common.message.usedCount') }}: {{ application?.used_amount }} {{ $t('common.message.remainingCount') }}:
+      {{ application?.remaining_amount }}
     </span>
     <span class="actions">
       <el-button size="small" type="primary" @click="onBuy">{{ $t('common.button.buyMore') }}</el-button>

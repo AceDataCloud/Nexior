@@ -3,14 +3,9 @@ import {
   IChatAskOptions,
   IChatAskRequest,
   IChatAskResponse,
-  IChatConversationRequest,
-  IChatConversationOptions,
-  IChatConversationResponse,
   IChatConversation,
   IChatConversationAction
 } from './models';
-import { IApplication } from '../application';
-import { IApi } from '../api';
 import { ENDPOINT_API } from '../common/contants';
 
 class ChatOperator {
