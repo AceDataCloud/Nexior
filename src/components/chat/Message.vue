@@ -11,10 +11,8 @@
 </template>
 
 <script lang="ts">
-import { IContent, IError, IMessage } from '@/operators/message/models';
 import { defineComponent } from 'vue';
 import AnsweringMark from './AnsweringMark.vue';
-// import MessageContent from './MessageContent.vue';
 import { ElImage, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import copy from 'copy-to-clipboard';
@@ -29,11 +27,7 @@ interface IData {
 export default defineComponent({
   name: 'Message',
   components: {
-    // MessageContent,
-    // ElImage,
-    ElButton,
     CopyToClipboard,
-    // FontAwesomeIcon,
     AnsweringMark,
     MarkdownRenderer
   },

@@ -44,6 +44,9 @@ export interface IChatMessage {
 export interface IChatConversation {
   id: string;
   messages: IChatMessage[];
+  title?: string;
+  deleting?: boolean;
+  editing?: boolean;
 }
 
 export interface IChatAskOptions {
