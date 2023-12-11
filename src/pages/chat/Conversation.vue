@@ -122,7 +122,7 @@ export default defineComponent({
       await this.onFetchAnswer();
     },
     async onFetchHistory(id?: string) {
-      const { data: data } = await chatOperator.conversation(id || this.conversationId);
+      const { data: data } = await chatOperator.getConversation(id || this.conversationId);
       this.messages = data.messages || [];
     },
     async onFetchAnswer() {
@@ -141,7 +141,7 @@ export default defineComponent({
       });
       // request server to get answer
       chatOperator
-        .ask(
+        .askQuestion(
           {
             question,
             conversation_id: this.conversationId,
@@ -231,6 +231,8 @@ export default defineComponent({
 
     .dialogue {
       flex: 1;
+      overflow-y: scroll;
+      margin: 20px 0;
       .messages {
         padding-top: 30px;
         .message {

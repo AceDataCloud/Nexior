@@ -9,7 +9,7 @@ import {
 import { ENDPOINT_API } from '../common/contants';
 
 class ChatOperator {
-  async ask(data: IChatAskRequest, options: IChatAskOptions): Promise<AxiosResponse<IChatAskResponse>> {
+  async askQuestion(data: IChatAskRequest, options: IChatAskOptions): Promise<AxiosResponse<IChatAskResponse>> {
     return await axios.post(options.path, data, {
       headers: {
         authorization: `Bearer ${options.token}`,
@@ -32,7 +32,7 @@ class ChatOperator {
     });
   }
 
-  async conversation(id: string | undefined): Promise<AxiosResponse<IChatConversation>> {
+  async getConversation(id: string | undefined): Promise<AxiosResponse<IChatConversation>> {
     return await axios.post(
       `/chatgpt/conversations`,
       {
@@ -48,12 +48,44 @@ class ChatOperator {
     );
   }
 
-  async conversations(ids: string[]): Promise<AxiosResponse<IChatConversation[]>> {
+  async getConversations(ids: string[]): Promise<AxiosResponse<IChatConversation[]>> {
     return await axios.post(
       `/chatgpt/conversations`,
       {
         action: IChatConversationAction.RETRIEVE_BATCH,
         ids: ids
+      },
+      {
+        headers: {
+          'content-type': 'application/json'
+        },
+        baseURL: ENDPOINT_API
+      }
+    );
+  }
+
+  async deleteConversation(id: string): Promise<AxiosResponse<IChatConversation>> {
+    return await axios.post(
+      `/chatgpt/conversations`,
+      {
+        action: IChatConversationAction.DELETE,
+        id: id
+      },
+      {
+        headers: {
+          'content-type': 'application/json'
+        },
+        baseURL: ENDPOINT_API
+      }
+    );
+  }
+
+  async updateConversation(payload: IChatConversation): Promise<AxiosResponse<IChatConversation>> {
+    return await axios.post(
+      `/chatgpt/conversations`,
+      {
+        action: IChatConversationAction.UPDATE,
+        ...payload
       },
       {
         headers: {

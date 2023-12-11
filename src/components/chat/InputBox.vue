@@ -4,7 +4,7 @@
       v-model="value"
       :rows="2"
       type="textarea"
-      placeholder="Please input"
+      :placeholder="$t('chat.message.newMessagePlaceholder')"
       @keydown.enter.exact.prevent="onSubmit"
     />
   </div>
@@ -12,16 +12,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElInput, ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_CHAT_INDEX } from '@/router/constants';
+import { ElInput } from 'element-plus';
 
 export default defineComponent({
   name: 'InputBox',
   components: {
-    ElInput,
-    ElButton,
-    FontAwesomeIcon
+    ElInput
   },
   props: {
     modelValue: {

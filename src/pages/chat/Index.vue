@@ -27,6 +27,9 @@ import {
 } from '@/operators/chat/constants';
 
 interface IData {
+  model: string;
+  drawer: boolean;
+  question: string;
   initializing: boolean;
   applications: IApplication[];
 }
@@ -107,6 +110,10 @@ export default defineComponent({
       .description {
         font-size: 14px;
         margin-bottom: 15px;
+      }
+
+      .el-button {
+        border-radius: 20px;
       }
     }
   }

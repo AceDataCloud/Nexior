@@ -12,13 +12,44 @@
           <font-awesome-icon icon="fa-regular fa-comment" class="icon" />
         </div>
         <div class="title">
-          <span v-if="conversation?.messages">{{
-            conversation?.messages[conversation?.messages.length - 1]?.content
+          <span v-if="conversation?.deleting">
+            {{ `${$t('chat.message.confirmDelete')}?` }}
+          </span>
+          <span v-else-if="conversation?.editing">
+            <el-input v-model="conversation.title" @keydown.enter="onConfirm(conversation)" />
+          </span>
+          <span v-else-if="conversation?.title || conversation?.messages">{{
+            conversation?.title || conversation?.messages[conversation?.messages.length - 1]?.content
           }}</span>
         </div>
         <div class="operations">
-          <font-awesome-icon icon="fa-solid fa-edit" class="icon icon-edit" />
-          <font-awesome-icon icon="fa-solid fa-trash" class="icon icon-delete" />
+          <font-awesome-icon
+            v-if="!conversation?.editing && !conversation.deleting"
+            icon="fa-solid fa-edit"
+            class="icon icon-edit"
+            @click.stop="conversation.editing = true"
+          />
+          <font-awesome-icon
+            v-if="!conversation?.editing && !conversation.deleting"
+            icon="fa-solid fa-trash"
+            class="icon icon-delete"
+            @click.stop="conversation.deleting = true"
+          />
+          <font-awesome-icon
+            v-if="conversation?.editing || conversation.deleting"
+            icon="fa-solid fa-check"
+            class="icon icon-confirm"
+            @click.stop="onConfirm(conversation)"
+          />
+          <font-awesome-icon
+            v-if="conversation?.editing || conversation.deleting"
+            icon="fa-solid fa-xmark"
+            class="icon icon-cancel"
+            @click.stop="
+              conversation.editing = false;
+              conversation.deleting = false;
+            "
+          />
         </div>
       </div>
     </div>
@@ -27,7 +58,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElTooltip, ElButton, ElSkeleton } from 'element-plus';
+import { ElTooltip, ElButton, ElSkeleton, ElInput } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CHAT_CONVERSATION } from '@/router/constants';
 import { apiUsageOperator, IApplication, chatOperator } from '@/operators';
@@ -42,6 +73,7 @@ export default defineComponent({
   name: 'Sidebar',
   components: {
     ElButton,
+    ElInput,
     FontAwesomeIcon,
     ElSkeleton
   },
@@ -67,6 +99,17 @@ export default defineComponent({
   },
   mounted() {},
   methods: {
+    async onConfirm(conversation: IChatConversation) {
+      if (conversation?.deleting) {
+        await chatOperator.deleteConversation(conversation.id);
+        await this.onFetchAllConversations();
+      } else if (conversation?.editing) {
+        await chatOperator.updateConversation(conversation);
+        this.onFetchAllConversations();
+      } else {
+        conversation.editing = true;
+      }
+    },
     async onFetchAllConversations() {
       this.loading = true;
       const {
@@ -84,7 +127,7 @@ export default defineComponent({
         .map((apiUsage) => apiUsage.metadata?.conversation_id)
         .filter((id) => id);
       const uniqueConversationIds = [...new Set(conversationIds)];
-      const conversations = (await chatOperator.conversations(uniqueConversationIds)).data;
+      const conversations = (await chatOperator.getConversations(uniqueConversationIds)).data;
       this.conversations = conversations;
     },
     onClick(id: string) {
@@ -116,7 +159,7 @@ export default defineComponent({
     align-items: center;
     .conversation {
       width: 100%;
-      height: 50px;
+      height: 55px;
       display: flex;
       flex-direction: row;
       padding: 10px;
@@ -138,13 +181,16 @@ export default defineComponent({
         flex: 1;
         font-size: 14px;
         overflow: hidden;
+        text-overflow: ellipsis;
+        padding-right: 8px;
+        color: #666;
       }
       .operations {
-        width: 45px;
+        width: 40px;
         .icon {
           cursor: pointer;
           font-size: 14px;
-          margin-right: 8px;
+          margin-right: 6px;
         }
       }
     }
