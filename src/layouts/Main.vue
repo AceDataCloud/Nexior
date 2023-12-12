@@ -11,7 +11,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElContainer, ElMain } from 'element-plus';
 import Navigator from '@/components/common/Navigator.vue';
 
 export default defineComponent({

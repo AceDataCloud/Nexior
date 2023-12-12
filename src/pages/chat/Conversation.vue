@@ -7,9 +7,7 @@
       <div class="dialogue">
         <introduction v-if="messages && messages.length === 0" />
         <div v-else class="messages">
-          <div v-for="(message, messageIndex) in messages" :key="messageIndex">
-            <message :message="message" class="message" />
-          </div>
+          <message v-for="(message, messageIndex) in messages" :key="messageIndex" :message="message" class="message" />
         </div>
       </div>
       <div class="bottom">
@@ -20,6 +18,7 @@
 </template>
 
 <script lang="ts">
+import axios from 'axios';
 import { defineComponent } from 'vue';
 import Message from '@/components/chat/Message.vue';
 import {
@@ -41,7 +40,6 @@ import {
 import InputBox from '@/components/chat/InputBox.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
-import axios from 'axios';
 import ApiStatus from '@/components/common/ApiStatus.vue';
 import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router';
 import Sidebar from '@/components/chat/Sidebar.vue';
@@ -129,7 +127,7 @@ export default defineComponent({
       const token = this.application?.credential?.token;
       const endpoint = this.application?.api?.endpoint;
       const path = this.application?.api?.path;
-      const question = this.messages[this.messages.length - 1].content;
+      const question = this.messages[this.messages.length - 1].content?.trim();
       if (!token || !endpoint || !question || !path) {
         console.error('no token or endpoint or question');
         return;
