@@ -4,6 +4,7 @@
       <preset-panel v-model="preset" />
     </div>
     <div class="main">
+      <reference-image class="mb-4" />
       <channel-selector v-model="channel" class="mb-4" @select="onSelectChannel" />
       <api-status :application="application" class="mb-4" />
       <prompt-input v-model="prompt" class="mb-4" />
@@ -26,6 +27,7 @@ import ElementsSelector from '@/components/midjourney/ElementsSelector.vue';
 import IgnoreSelector from '@/components/midjourney/IgnoreSelector.vue';
 import { ElButton } from 'element-plus';
 import ChannelSelector from '@/components/midjourney/ChannelSelector.vue';
+import ReferenceImage from '@/components/midjourney/ReferenceImage.vue';
 import {
   IApplication,
   IMidjourneyChannel,
@@ -61,6 +63,7 @@ export default defineComponent({
   name: 'MidjourneyIndex',
   components: {
     ChannelSelector,
+    ReferenceImage,
     PresetPanel,
     PromptInput,
     ElementsSelector,
