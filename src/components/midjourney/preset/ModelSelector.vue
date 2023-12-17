@@ -42,12 +42,12 @@ export default defineComponent({
       options: [
         {
           value: '',
-          label: '通用',
+          label: this.$t('midjourney.model.general'),
           image: 'https://cdn.zhishuyun.com/2023-10-06-174633.png'
         },
         {
           value: 'niji',
-          label: '动漫',
+          label: this.$t('midjourney.model.niji'),
           image: 'https://cdn.zhishuyun.com/2023-10-06-174008.png'
         }
       ]

@@ -26,21 +26,21 @@
       </p>
     </div>
     <p v-show="false" class="description">{{ $t('midjourney.field.taskId') }}: {{ modelValue?.id }}</p>
-    <div v-if="!modelValue?.response" class="content">
+    <div v-if="!modelValue?.response" :class="{ content: true, full: !!full }">
       <el-image class="image">
         <template #error>
           <div class="image-slot">{{ $t('midjourney.message.generating') }}</div>
         </template>
       </el-image>
     </div>
-    <div v-else-if="modelValue?.response.success === false" class="content failed">
+    <div v-else-if="modelValue?.response.success === false" :class="{ content: true, full: full, failed: true }">
       <el-image class="image">
         <template #error>
           <div class="image-slot">{{ modelValue?.response?.detail }}</div>
         </template>
       </el-image>
     </div>
-    <div v-else class="content">
+    <div v-else :class="{ content: true, full: full }">
       <el-image
         v-if="modelValue?.response?.image_url"
         :src="modelValue?.response?.image_url"
@@ -277,12 +277,18 @@ export default defineComponent({
   }
   .content {
     width: 100%;
-    height: 318px;
     position: relative;
     margin-bottom: 10px;
+    &.full {
+      height: 318px;
+      .image {
+        min-height: 200px;
+      }
+    }
     &.failed {
       .image {
         .image-slot {
+          font-size: 16px;
           padding: 20px;
         }
       }
@@ -290,7 +296,7 @@ export default defineComponent({
     .image {
       width: 100%;
       height: 100%;
-      min-height: 200px;
+      min-height: 100px;
       .image-slot {
         display: flex;
         justify-content: center;

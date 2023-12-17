@@ -2118,6 +2118,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.title {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
 .pane {
   display: flex;
   flex-direction: row;

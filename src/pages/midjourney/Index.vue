@@ -140,7 +140,7 @@ export default defineComponent({
         content += ` --iw ${this.preset.iw}`;
       }
       if (this.preset.raw) {
-        content += ` --raw`;
+        content += ` --style raw`;
       }
       return this.prompt || this.references?.length > 0 ? content : '';
     }
@@ -176,10 +176,10 @@ export default defineComponent({
           path
         })
         .then(() => {
-          ElMessage.info(this.$t('midjourney.message.startTaskSuccess'));
+          ElMessage.success(this.$t('midjourney.message.startTaskSuccess'));
         })
         .catch(() => {
-          ElMessage.info(this.$t('midjourney.message.startTaskFailed'));
+          ElMessage.error(this.$t('midjourney.message.startTaskFailed'));
         });
     },
     async onCustom(payload: { image_id: string; action: MidjourneyImagineAction }) {
