@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 import {
   faMicrophone as faSolidMicrophone,
+  faUpload as faSolidUpload,
   faInfo as faSolidInfo,
   faStop as faSolidStop,
   faWandMagicSparkles as faSolidWandMagicSparkles,
@@ -42,6 +43,7 @@ library.add(faSolidGear);
 library.add(faSolidMicrophone);
 library.add(faSolidBars);
 library.add(faSolidPlus);
+library.add(faSolidUpload);
 library.add(faSolidQuestion);
 library.add(faSolidStop);
 library.add(faSolidTriangleExclamation);

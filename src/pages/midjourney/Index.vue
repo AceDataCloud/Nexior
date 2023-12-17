@@ -4,9 +4,9 @@
       <preset-panel v-model="preset" />
     </div>
     <div class="main">
-      <reference-image class="mb-4" />
       <channel-selector v-model="channel" class="mb-4" @select="onSelectChannel" />
       <api-status :application="application" class="mb-4" />
+      <reference-image class="mb-4" @change="references = $event" />
       <prompt-input v-model="prompt" class="mb-4" />
       <elements-selector v-model="elements" :advanced="preset.advanced" class="mb-4" />
       <ignore-selector v-if="preset.advanced" v-model="ignore" class="mb-4" />
@@ -56,6 +56,7 @@ interface IData {
   initializing: boolean;
   applied: boolean | undefined;
   applications: IApplication[];
+  references: string[];
   task: IMidjourneyImagineTask | undefined;
 }
 
@@ -83,7 +84,8 @@ export default defineComponent({
       ignore: '',
       initializing: false,
       applied: undefined,
-      task: undefined
+      task: undefined,
+      references: []
     };
   },
   computed: {
