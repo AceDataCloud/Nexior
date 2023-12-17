@@ -25,13 +25,13 @@ export default defineComponent({
     this.refreshToken = getCookie('REFRESH_TOKEN');
     if (this.accessToken && this.refreshToken) {
       // store token to global store
-      this.$store.dispatch('setAccessToken', this.accessToken);
-      this.$store.dispatch('setRefreshToken', this.refreshToken);
+      await this.$store.dispatch('setToken', {
+        refresh: this.refreshToken,
+        access: this.accessToken
+      });
       console.debug('set token successfully');
       removeCookies();
       console.debug('remove cookie for tokens successfully');
-      // get user info after get access token
-      this.$store.dispatch('getMe');
       if (this.redirect) {
         this.$router.push(this.redirect);
       }
