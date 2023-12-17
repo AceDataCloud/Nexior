@@ -15,4 +15,8 @@ export interface IState {
   user: IUser;
   setting: ISetting;
   applications: IApplication[];
+  apps: {
+    chat: {};
+    midjourney: {};
+  };
 }

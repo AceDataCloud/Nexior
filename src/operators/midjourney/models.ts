@@ -57,6 +57,8 @@ export interface IMidjourneyImagineRequest {
   prompt?: string;
   image_id?: string;
   translation?: boolean;
+  callback_url?: string;
+  application_id?: string;
 }
 
 export interface IMidjourneyImagineResponse {
@@ -72,6 +74,8 @@ export interface IMidjourneyImagineResponse {
 }
 
 export interface IMidjourneyImagineTask {
+  id: string;
+  created_at?: string;
   request?: IMidjourneyImagineRequest;
   response?: IMidjourneyImagineResponse;
   state?: MidjourneyImagineState;

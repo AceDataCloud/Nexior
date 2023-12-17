@@ -4,11 +4,13 @@ import {
   faUser as faRegularUser,
   faPaperPlane as faRegularPaperPlane,
   faComment as faRegularComment,
-  faSun as faRegularSun
+  faSun as faRegularSun,
+  faClock as faRegularClock
 } from '@fortawesome/free-regular-svg-icons';
 import {
   faMicrophone as faSolidMicrophone,
   faUpload as faSolidUpload,
+  faMagic as faSolidMagic,
   faInfo as faSolidInfo,
   faStop as faSolidStop,
   faWandMagicSparkles as faSolidWandMagicSparkles,
@@ -48,6 +50,7 @@ library.add(faSolidQuestion);
 library.add(faSolidStop);
 library.add(faSolidTriangleExclamation);
 library.add(faSolidUpRightFromSquare);
+library.add(faRegularClock);
 library.add(faSolidArrowsRotate);
 library.add(faRegularPaperPlane);
 library.add(faSolidWind);
@@ -59,3 +62,4 @@ library.add(faSolidPalette);
 library.add(faSolidWandMagicSparkles);
 library.add(faSolidMugSaucer);
 library.add(faSolidInfo);
+library.add(faSolidMagic);

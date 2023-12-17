@@ -6,17 +6,7 @@
     <div class="main">
       <channel-selector v-model="channel" class="mb-4" @select="onSelectChannel" />
       <api-status :application="application" class="mb-4" />
-      <div class="pt-4">
-        <reference-image class="mb-4" @change="references = $event" />
-        <prompt-input v-model="prompt" class="mb-4" />
-        <elements-selector v-model="elements" :advanced="preset.advanced" class="mb-4" />
-        <ignore-selector v-if="preset.advanced" v-model="ignore" class="mb-4" />
-        <final-prompt v-if="finalPrompt" :model-value="finalPrompt" />
-        <el-button type="primary" :disabled="!finalPrompt" @click="onGenerate"> 生成 </el-button>
-      </div>
-    </div>
-    <div class="result">
-      <task-brief-list :applications="applications" @custom="onCustom" />
+      <task-full-list :applications="applications" @custom="onCustom" />
     </div>
   </div>
 </template>
@@ -24,30 +14,23 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import PresetPanel from '@/components/midjourney/PresetPanel.vue';
-import PromptInput from '@/components/midjourney/PromptInput.vue';
-import ElementsSelector from '@/components/midjourney/ElementsSelector.vue';
-import IgnoreSelector from '@/components/midjourney/IgnoreSelector.vue';
-import { ElButton, ElMessage } from 'element-plus';
+import { ElMessage } from 'element-plus';
 import ChannelSelector from '@/components/midjourney/ChannelSelector.vue';
-import ReferenceImage from '@/components/midjourney/ReferenceImage.vue';
+import ApiStatus from '@/components/common/ApiStatus.vue';
 import {
   IApplication,
   IMidjourneyChannel,
   MidjourneyImagineAction,
-  IMidjourneyImagineResponse,
   IMidjourneyPreset,
   MIDJOURNEY_CHANNEL_FAST,
   MIDJOURNEY_CHANNEL_TURBO,
   MIDJOURNEY_CHANNEL_RELAX,
   applicationOperator,
   midjourneyOperator,
-  MidjourneyImagineState,
   IMidjourneyImagineTask,
   IMidjourneyImagineRequest
 } from '@/operators';
-import ApiStatus from '@/components/common/ApiStatus.vue';
-import TaskBriefList from '@/components/midjourney/tasks/TaskBriefList.vue';
-import FinalPrompt from '@/components/midjourney/FinalPrompt.vue';
+import TaskFullList from '@/components/midjourney/tasks/TaskFullList.vue';
 
 interface IData {
   channel: IMidjourneyChannel;
@@ -67,16 +50,10 @@ const CALLBACK_URL = 'https://webhook.zhishuyun.com/midjourney';
 export default defineComponent({
   name: 'MidjourneyIndex',
   components: {
-    ChannelSelector,
-    ReferenceImage,
     PresetPanel,
-    PromptInput,
-    ElementsSelector,
-    IgnoreSelector,
-    ElButton,
-    ApiStatus,
-    TaskBriefList,
-    FinalPrompt
+    TaskFullList,
+    ChannelSelector,
+    ApiStatus
   },
   data(): IData {
     return {
@@ -98,55 +75,12 @@ export default defineComponent({
         return this.applications.filter((item) => item.api_id === this.channel.apiId)[0];
       }
       return undefined;
-    },
-    finalPrompt(): string {
-      let content = '';
-      if (this.references.length > 0) {
-        content += `${this.references.join(' ')} `;
-      }
-      if (this.prompt) {
-        content += this.prompt;
-      }
-      if (this.elements.length > 0) {
-        content += ',' + this.elements.join(',');
-      }
-      if (this.preset.version) {
-        content += ` --version ${this.preset.version}`;
-      }
-      if (this.preset.chaos) {
-        content += ` --chaos ${this.preset.chaos}`;
-      }
-      if (this.preset.quality) {
-        content += ` --quality ${this.preset.quality}`;
-      }
-      if (this.preset.ratio) {
-        content += ` --ar ${this.preset.ratio}`;
-      }
-      if (this.preset.stylize) {
-        content += ` --stylize ${this.preset.stylize}`;
-      }
-      if (this.preset.weird) {
-        content += ` --weird ${this.preset.weird}`;
-      }
-      if (this.ignore) {
-        content += ` --no ${this.ignore}`;
-      }
-      if (this.preset.iw) {
-        content += ` --iw ${this.preset.iw}`;
-      }
-      if (this.preset.raw) {
-        content += ` --raw`;
-      }
-      return this.prompt || this.references?.length > 0 ? content : '';
     }
   },
   mounted() {
     this.onFetchApplications();
   },
   methods: {
-    async onSelectChannel() {
-      await this.onFetchApplications();
-    },
     async onFetchApplications() {
       this.initializing = true;
       const { data: applications } = await applicationOperator.getAll({
@@ -155,6 +89,9 @@ export default defineComponent({
       });
       this.initializing = false;
       this.applications = applications?.items;
+    },
+    async onSelectChannel() {
+      await this.onFetchApplications();
     },
     async onStartTask(request: IMidjourneyImagineRequest) {
       const token = this.application?.credential?.token;
@@ -184,21 +121,12 @@ export default defineComponent({
         callback_url: CALLBACK_URL
       };
       this.onStartTask(request);
-    },
-    async onGenerate() {
-      const request = {
-        prompt: this.finalPrompt,
-        action: MidjourneyImagineAction.GENERATE,
-        translation: this.preset?.translation,
-        callback_url: CALLBACK_URL
-      };
-      this.onStartTask(request);
     }
   }
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .page {
   width: 100%;
   height: 100%;
@@ -212,16 +140,14 @@ export default defineComponent({
   .main {
     flex: 1;
     padding: 15px;
+    width: calc(100% - 260px);
+    display: flex;
+    flex-direction: column;
+
     .title {
       font-size: 14px;
       margin-bottom: 10px;
     }
-  }
-  .result {
-    overflow-y: scroll;
-    width: 400px;
-    height: 100%;
-    // background-color: var(--el-bg-color-page);
   }
 }
 </style>

@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-use-v-if-with-v-for -->
 <template>
   <div class="field">
-    <h2 class="title">绘制风格</h2>
+    <h2 class="title">{{ $t('midjourney.field.elements') }}</h2>
     <el-tabs v-model="tab">
       <el-tab-pane
         v-for="(element, elementKey) in elements"
@@ -2140,6 +2140,7 @@ export default defineComponent({
     border-color: #eee;
     border-radius: 5px;
     overflow: hidden;
+    cursor: pointer;
 
     &.hidden {
       display: none;
