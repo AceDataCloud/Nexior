@@ -71,7 +71,7 @@ export default defineComponent({
   padding: 7px 6px;
   border-radius: 15px;
   margin-bottom: 5px;
-  width: 372px;
+  width: fit-content;
   margin-left: auto;
   margin-right: auto;
   .button {

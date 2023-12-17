@@ -40,7 +40,7 @@ class MidjourneyOperator {
   async imagine(
     data: IMidjourneyImagineRequest,
     options: {
-      stream: (response: IMidjourneyImagineResponse) => void;
+      stream?: (response: IMidjourneyImagineResponse) => void;
       token: string;
       endpoint: string;
       path: string;

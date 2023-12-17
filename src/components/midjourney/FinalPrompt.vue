@@ -1,6 +1,6 @@
 <template>
   <div class="mb-4">
-    <h2 class="title">最终绘图指令</h2>
+    <h2 class="title">{{ $t('midjourney.field.finalPrompt') }}</h2>
     <el-alert :title="modelValue" :closable="false" />
   </div>
 </template>

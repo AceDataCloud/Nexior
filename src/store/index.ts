@@ -17,7 +17,11 @@ const store = createStore({
         endpoint: ENDPOINT,
         stream: false
       },
-      applications: []
+      applications: [],
+      apps: {
+        chat: {},
+        midjourney: {}
+      }
     };
   },
   mutations: {

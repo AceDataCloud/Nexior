@@ -1,3 +1,4 @@
+import i18n from '@/i18n';
 import { IMidjourneyChannel } from './models';
 
 export const MIDJOURNEY_CHANNEL_NAME_FAST = 'fast';
@@ -12,19 +13,19 @@ export const MIDJOURNEY_CHANNEL_FAST: IMidjourneyChannel = {
   icon: 'fa-solid fa-wind',
   apiId: API_ID_MIDJOURNEY_FAST,
   name: MIDJOURNEY_CHANNEL_NAME_FAST,
-  displayName: 'Fast'
+  displayName: i18n.global.t('midjourney.button.fast')
 };
 
 export const MIDJOURNEY_CHANNEL_RELAX: IMidjourneyChannel = {
   icon: 'fa-solid fa-mug-saucer',
   apiId: API_ID_MIDJOURNEY_RELAX,
   name: MIDJOURNEY_CHANNEL_NAME_RELAX,
-  displayName: 'Relax'
+  displayName: i18n.global.t('midjourney.button.relax')
 };
 
 export const MIDJOURNEY_CHANNEL_TURBO: IMidjourneyChannel = {
   icon: 'fa-solid fa-bolt',
   apiId: API_ID_MIDJOURNEY_TURBO,
   name: MIDJOURNEY_CHANNEL_NAME_TURBO,
-  displayName: 'Turbo'
+  displayName: i18n.global.t('midjourney.button.turbo')
 };
