@@ -6,12 +6,14 @@
     <div class="main">
       <channel-selector v-model="channel" class="mb-4" @select="onSelectChannel" />
       <api-status :application="application" class="mb-4" />
-      <reference-image class="mb-4" @change="references = $event" />
-      <prompt-input v-model="prompt" class="mb-4" />
-      <elements-selector v-model="elements" :advanced="preset.advanced" class="mb-4" />
-      <ignore-selector v-if="preset.advanced" v-model="ignore" class="mb-4" />
-      <final-prompt v-if="finalPrompt" :model-value="finalPrompt" />
-      <el-button type="primary" :disabled="!finalPrompt" @click="onGenerate"> 生成 </el-button>
+      <div class="pt-4">
+        <reference-image class="mb-4" @change="references = $event" />
+        <prompt-input v-model="prompt" class="mb-4" />
+        <elements-selector v-model="elements" :advanced="preset.advanced" class="mb-4" />
+        <ignore-selector v-if="preset.advanced" v-model="ignore" class="mb-4" />
+        <final-prompt v-if="finalPrompt" :model-value="finalPrompt" />
+        <el-button type="primary" :disabled="!finalPrompt" @click="onGenerate"> 生成 </el-button>
+      </div>
     </div>
     <div class="tasks">
       <task-brief-list v-model:active-task="task" :applications="applications" @custom="onCustom" />
@@ -25,7 +27,7 @@ import PresetPanel from '@/components/midjourney/PresetPanel.vue';
 import PromptInput from '@/components/midjourney/PromptInput.vue';
 import ElementsSelector from '@/components/midjourney/ElementsSelector.vue';
 import IgnoreSelector from '@/components/midjourney/IgnoreSelector.vue';
-import { ElButton } from 'element-plus';
+import { ElButton, ElMessage } from 'element-plus';
 import ChannelSelector from '@/components/midjourney/ChannelSelector.vue';
 import ReferenceImage from '@/components/midjourney/ReferenceImage.vue';
 import {
@@ -97,6 +99,9 @@ export default defineComponent({
     },
     finalPrompt(): string {
       let content = '';
+      if (this.references.length > 0) {
+        content += `${this.references.join(' ')} `;
+      }
       if (this.prompt) {
         content += this.prompt;
       }
@@ -130,7 +135,7 @@ export default defineComponent({
       if (this.preset.raw) {
         content += ` --raw`;
       }
-      return this.prompt ? content : '';
+      return this.prompt || this.references?.length > 0 ? content : '';
     }
   },
   mounted() {
@@ -162,6 +167,7 @@ export default defineComponent({
         request,
         state: MidjourneyImagineState.PENDING
       };
+      ElMessage.info(this.$t('midjourney.message.startTaskSuccess'));
       midjourneyOperator
         .imagine(request, {
           token,

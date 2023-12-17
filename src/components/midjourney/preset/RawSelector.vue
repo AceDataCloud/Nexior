@@ -1,20 +1,23 @@
 <template>
   <div class="field">
-    <h2 class="title">原生</h2>
-    <el-switch v-model="value" class="ml-2" />
+    <h2 class="title">{{ $t('midjourney.name.raw') }}</h2>
+    <el-switch v-model="value" class="value" />
+    <info-icon :content="$t('midjourney.description.raw')" class="info" />
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
 import { ElSwitch } from 'element-plus';
+import InfoIcon from '@/components/common/InfoIcon.vue';
 
 const DEFAULT_RAW = false;
 
 export default defineComponent({
   name: 'RawSelector',
   components: {
-    ElSwitch
+    ElSwitch,
+    InfoIcon
   },
   props: {
     modelValue: {
