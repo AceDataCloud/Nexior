@@ -3,46 +3,74 @@
     <el-upload
       v-model:file-list="fileList"
       class="upload-demo"
-      action="https://data.zhishuyun.com/api/v1/images/"
-      :on-success="handleSuccess"
+      name="image"
+      :limit="5"
+      :multiple="true"
+      action="/api/v1/images/"
       list-type="picture"
+      :on-exceed="onExceed"
+      :on-error="onError"
       :headers="headers"
     >
-      <el-button type="primary">Click to upload</el-button>
+      <el-button type="primary">
+        <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-2" />
+        {{ $t('midjourney.button.uploadReferences') }}
+      </el-button>
       <template #tip>
-        <div class="el-upload__tip">jpg/png files with a size less than 500kb</div>
+        <div class="el-upload__tip">
+          {{ $t('midjourney.description.uploadReferences') }}
+        </div>
       </template>
     </el-upload>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
-import { ElUpload, ElButton } from 'element-plus';
+import { ElUpload, ElButton, UploadFiles, UploadFile, ElMessage } from 'element-plus';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
+interface IData {
+  fileList: UploadFiles;
+}
+
 export default defineComponent({
   name: 'ReferenceImage',
   components: {
     ElUpload,
-    ElButton
+    ElButton,
+    FontAwesomeIcon
   },
-  props: {
-    modelValue: {
-      type: String,
-      default: undefined
-    }
+  emits: ['change'],
+  data(): IData {
+    return {
+      fileList: []
+    };
   },
-  data() {},
   computed: {
     headers() {
       return {
         Authorization: `Bearer ${this.$store.state.token.access}`
       };
+    },
+    urls() {
+      // @ts-ignore
+      return this.fileList.map((file: UploadFile) => file?.response?.image_url);
     }
   },
-  mounted() {},
+  watch: {
+    urls: {
+      handler(val) {
+        this.$emit('change', val);
+      }
+    }
+  },
   methods: {
-    handleSuccess(response) {
-      console.log('response', response);
+    onExceed() {
+      ElMessage.warning(this.$t('midjourney.message.uploadReferencesExceed'));
+    },
+    onError() {
+      ElMessage.error(this.$t('midjourney.message.uploadReferencesError'));
     }
   }
 });
