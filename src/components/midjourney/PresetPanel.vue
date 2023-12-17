@@ -1,6 +1,6 @@
 <template>
   <div class="panel">
-    <model-selector v-if="false" v-model="preset.model" class="mb-4" />
+    <model-selector v-model="preset.model" class="mb-4" />
     <ratio-selector v-model="preset.ratio" class="mb-4" />
     <quality-selector v-model="preset.quality" class="mb-4" />
     <version-selector v-model="preset.version" class="mb-4" />
@@ -10,8 +10,8 @@
     <weird-selector v-if="preset.advanced" v-model="preset.wired" class="mb-4" />
     <chaos-selector v-if="preset.advanced" v-model="preset.chaos" class="mb-4" />
     <image-weight-selector v-if="preset.advanced" v-model="preset.iw" class="mb-4" />
-    <niji-selector v-if="preset.advanced" v-model="preset.niji" class="mb-4" />
-    <raw-selector v-if="preset.advanced" v-model="preset.raw" class="mb-4" />
+    <niji-selector v-if="false" v-model="preset.niji" class="mb-4" />
+    <raw-selector v-if="preset.model == 'MJ' && preset.advanced" v-model="preset.raw" class="mb-4" />
   </div>
 </template>
 
