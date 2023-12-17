@@ -9,5 +9,7 @@ export default {
   relax: '慢速',
   turbo: '极速',
   more: '更多',
-  history: '历史记录'
+  generate: '生成',
+  history: '历史记录',
+  generateNew: '绘制新图'
 };

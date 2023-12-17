@@ -12,7 +12,9 @@
         <elements-selector v-model="elements" :advanced="preset.advanced" class="mb-4" />
         <ignore-selector v-if="preset.advanced" v-model="ignore" class="mb-4" />
         <final-prompt v-if="finalPrompt" :model-value="finalPrompt" />
-        <el-button type="primary" :disabled="!finalPrompt" @click="onGenerate"> 生成 </el-button>
+        <el-button type="primary" :disabled="!finalPrompt" @click="onGenerate">
+          {{ $t('midjourney.button.generate') }}
+        </el-button>
       </div>
     </div>
     <div class="result">

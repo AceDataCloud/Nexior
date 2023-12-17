@@ -7,6 +7,9 @@
       <channel-selector v-model="channel" class="mb-4" @select="onSelectChannel" />
       <api-status :application="application" class="mb-4" />
       <task-full-list :applications="applications" @custom="onCustom" />
+      <el-button type="primary" class="btn btn-generate" @click="onGenerateNew">
+        {{ $t('midjourney.button.generateNew') }}
+      </el-button>
     </div>
   </div>
 </template>
@@ -14,7 +17,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import PresetPanel from '@/components/midjourney/PresetPanel.vue';
-import { ElMessage } from 'element-plus';
+import { ElMessage, ElButton } from 'element-plus';
 import ChannelSelector from '@/components/midjourney/ChannelSelector.vue';
 import ApiStatus from '@/components/common/ApiStatus.vue';
 import {
@@ -31,6 +34,7 @@ import {
   IMidjourneyImagineRequest
 } from '@/operators';
 import TaskFullList from '@/components/midjourney/tasks/TaskFullList.vue';
+import { ROUTE_MIDJOURNEY_INDEX } from '@/router';
 
 interface IData {
   channel: IMidjourneyChannel;
@@ -81,6 +85,11 @@ export default defineComponent({
     this.onFetchApplications();
   },
   methods: {
+    async onGenerateNew() {
+      this.$router.push({
+        name: ROUTE_MIDJOURNEY_INDEX
+      });
+    },
     async onFetchApplications() {
       this.initializing = true;
       const { data: applications } = await applicationOperator.getAll({
@@ -143,10 +152,17 @@ export default defineComponent({
     width: calc(100% - 260px);
     display: flex;
     flex-direction: column;
+    position: relative;
 
     .title {
       font-size: 14px;
       margin-bottom: 10px;
+    }
+
+    .btn.btn-generate {
+      position: absolute;
+      left: 0;
+      right: 0;
     }
   }
 }
