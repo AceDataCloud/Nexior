@@ -19,7 +19,7 @@
         </el-tag>
       </div>
     </div>
-    <div v-if="false" class="extra">
+    <div v-if="!full" class="extra">
       <p v-if="modelValue?.request?.prompt" class="prompt">
         <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
         {{ modelValue?.request?.prompt }}
@@ -33,7 +33,7 @@
         </template>
       </el-image>
     </div>
-    <div v-else-if="modelValue?.response.success === false" class="content">
+    <div v-else-if="modelValue?.response.success === false" class="content failed">
       <el-image class="image">
         <template #error>
           <div class="image-slot">{{ modelValue?.response?.detail }}</div>
@@ -69,7 +69,7 @@
     <div v-else-if="!modelValue?.response" :class="{ operations: true, full }">
       <el-skeleton :rows="1" />
     </div>
-    <div v-else :class="{ operations: true, full }">
+    <div v-else v-show="full" :class="{ operations: true, full }">
       <p>
         {{ $t('midjourney.message.noOperations') }}
       </p>
@@ -280,6 +280,13 @@ export default defineComponent({
     height: 318px;
     position: relative;
     margin-bottom: 10px;
+    &.failed {
+      .image {
+        .image-slot {
+          padding: 20px;
+        }
+      }
+    }
     .image {
       width: 100%;
       height: 100%;

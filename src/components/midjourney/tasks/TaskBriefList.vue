@@ -84,7 +84,6 @@ export default defineComponent({
       });
       const tasks = (await midjourneyOperator.tasks(apiUsages.map((apiUsage) => apiUsage.metadata?.task_id as string)))
         .data;
-
       this.tasks = tasks.map((task) => {
         const apiUsage = apiUsages.filter((apiUsage) => apiUsage.metadata?.task_id === task.id)[0];
         return {
