@@ -8,6 +8,7 @@
       <api-status :application="application" class="mb-4" />
       <task-full-list :applications="applications" @custom="onCustom" />
       <el-button type="primary" class="btn btn-generate" @click="onGenerateNew">
+        <font-awesome-icon icon="fa-solid fa-chevron-left" class="icon icon-rotate mr-1" />
         {{ $t('midjourney.button.generateNew') }}
       </el-button>
     </div>
@@ -35,6 +36,7 @@ import {
 } from '@/operators';
 import TaskFullList from '@/components/midjourney/tasks/TaskFullList.vue';
 import { ROUTE_MIDJOURNEY_INDEX } from '@/router';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 interface IData {
   channel: IMidjourneyChannel;
@@ -57,13 +59,15 @@ export default defineComponent({
     PresetPanel,
     TaskFullList,
     ChannelSelector,
-    ApiStatus
+    ApiStatus,
+    ElButton,
+    FontAwesomeIcon
   },
   data(): IData {
     return {
       applications: [],
       channel: MIDJOURNEY_CHANNEL_FAST,
-      preset: {},
+      preset: this.$store.getters.midjourney.preset,
       prompt: '',
       elements: [],
       ignore: '',
@@ -144,7 +148,7 @@ export default defineComponent({
   .presets {
     width: 260px;
     height: 100%;
-    // background-color: var(--el-bg-color-page);
+    overflow-y: scroll;
   }
   .main {
     flex: 1;
@@ -161,8 +165,9 @@ export default defineComponent({
 
     .btn.btn-generate {
       position: absolute;
-      left: 0;
-      right: 0;
+      left: 30px;
+      top: 30px;
+      border-radius: 20px;
     }
   }
 }

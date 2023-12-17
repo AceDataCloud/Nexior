@@ -1,7 +1,10 @@
 export default {
+  model: '模型',
   aspect: '分辨率',
+  ratio: '宽高比',
   chaos: '混乱度',
   fast: '快速模式',
+  version: '版本',
   imageWeight: '图像权重',
   no: '否定提示',
   quality: '渲染质量',

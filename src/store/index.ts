@@ -45,6 +45,18 @@ const store = createStore({
     },
     setApplications(state: IState, payload: IApplication[]): void {
       state.applications = payload;
+    },
+    setMidjourney(state: IState, payload: any): void {
+      state.apps.midjourney = {
+        ...state.apps.midjourney,
+        ...payload
+      };
+    },
+    setChat(state: IState, payload: any): void {
+      state.apps.chat = {
+        ...state.apps.chat,
+        ...payload
+      };
     }
   },
   actions: {
@@ -63,6 +75,12 @@ const store = createStore({
     },
     setApplications({ commit }: ActionContext<IState, IState>, payload: IApplication[]) {
       commit('setApplications', payload);
+    },
+    setMidjourney({ commit }: ActionContext<IState, IState>, payload: any) {
+      commit('setMidjourney', payload);
+    },
+    setChat({ commit }: ActionContext<IState, IState>, payload: any) {
+      commit('setChat', payload);
     }
   },
   getters: {
@@ -80,6 +98,12 @@ const store = createStore({
     },
     applications(state): IApplication[] | undefined {
       return state.applications;
+    },
+    midjourney(state): any {
+      return state.apps.midjourney;
+    },
+    chat(state): any {
+      return state.apps.chat;
     }
   },
   plugins: [createPersistedState()]

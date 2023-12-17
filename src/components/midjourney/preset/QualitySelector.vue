@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <h2 class="title">画质</h2>
+    <h2 class="title">{{ $t('midjourney.name.quality') }}</h2>
     <el-radio-group v-model="value">
       <el-radio-button v-for="item in options" :key="item.value" :label="item.value">
         {{ item.label }}

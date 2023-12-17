@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="title">模型</h2>
+    <h2 class="title">{{ $t('midjourney.name.model') }}</h2>
     <div class="items">
       <div
         v-for="(option, optionKey) in options"
@@ -41,12 +41,12 @@ export default defineComponent({
       active: 0,
       options: [
         {
-          value: 'MJ',
+          value: '',
           label: '通用',
           image: 'https://cdn.zhishuyun.com/2023-10-06-174633.png'
         },
         {
-          value: 'NIJI',
+          value: 'niji',
           label: '动漫',
           image: 'https://cdn.zhishuyun.com/2023-10-06-174008.png'
         }

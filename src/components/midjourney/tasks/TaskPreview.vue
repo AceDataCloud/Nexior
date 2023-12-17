@@ -66,7 +66,7 @@
         </el-button>
       </el-tooltip>
     </div>
-    <div v-else-if="!modelValue?.response" :class="{ operations: true, full }">
+    <div v-else-if="!modelValue?.response" v-show="full" :class="{ operations: true, full }">
       <el-skeleton :rows="1" />
     </div>
     <div v-else v-show="full" :class="{ operations: true, full }">

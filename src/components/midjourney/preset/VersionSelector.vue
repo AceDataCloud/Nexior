@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <h2 class="title">版本</h2>
+    <h2 class="title">{{ $t('midjourney.name.version') }}</h2>
     <el-select v-model="value" class="value" placeholder="Select">
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </el-select>
