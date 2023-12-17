@@ -11,7 +11,7 @@ import { defineComponent } from 'vue';
 import { ElSlider } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 
-const DEFAULT_IW = 1;
+const DEFAULT_IW = 1.0;
 
 export default defineComponent({
   name: 'ImageWeightSelector',

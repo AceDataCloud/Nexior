@@ -41,16 +41,15 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.title {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
 .field {
   display: flex;
   flex-direction: row;
   align-items: center;
 
-  .title {
-    font-size: 14px;
-    margin-bottom: 0;
-    width: 30%;
-  }
   .value {
     flex: 1;
   }
