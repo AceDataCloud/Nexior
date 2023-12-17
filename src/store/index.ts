@@ -10,7 +10,7 @@ const store = createStore({
     return {
       user: {},
       token: {
-        access: import.meta.env.VITE_ACCESS_TOKEN?.toString(),
+        access: undefined,
         refresh: undefined
       },
       setting: {

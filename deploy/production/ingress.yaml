@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: chat-frontend
+  name: hub-frontend
   namespace: zhishuyun
   annotations:
     kubernetes.io/ingress.class: 'nginx'
@@ -10,13 +10,13 @@ metadata:
 spec:
   tls:
     - hosts:
-        - chat.zhishuyun.com
+        - hub.zhishuyun.com
       secretName: tls-wildcard-zhishuyun-com
   rules:
-    - host: chat.zhishuyun.com
+    - host: hub.zhishuyun.com
       http:
         paths:
           - backend:
-              serviceName: chat-frontend
+              serviceName: hub-frontend
               servicePort: 8083
             path: /

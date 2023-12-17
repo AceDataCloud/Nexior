@@ -2,23 +2,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: chat-frontend
-  name: chat-frontend
+    app: hub-frontend
+  name: hub-frontend
   namespace: zhishuyun
 spec:
   replicas: 2
   revisionHistoryLimit: 5
   selector:
     matchLabels:
-      app: chat-frontend
+      app: hub-frontend
   template:
     metadata:
       labels:
-        app: chat-frontend
+        app: hub-frontend
     spec:
       containers:
-        - image: ghcr.io/zhishuyun/chat-frontend:${TAG}
-          name: chat-frontend
+        - image: ghcr.io/zhishuyun/hub-frontend:${TAG}
+          name: hub-frontend
           ports:
             - containerPort: 80
           livenessProbe:

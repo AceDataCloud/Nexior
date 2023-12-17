@@ -20,14 +20,14 @@ export const getDataBaseUrl = () => {
  * Get base url of app
  * @returns
  */
-export const getChatBaseUrl = () => {
+export const getHubBaseUrl = () => {
   const env = getEnv();
   if (env === ENV_LOCAL) {
-    return 'https://chat.local.zhishuyun.com';
+    return 'https://hub.local.zhishuyun.com';
   } else if (env === ENV_TEST) {
-    return 'https://chat.test.zhishuyun.com';
+    return 'https://hub.test.zhishuyun.com';
   } else {
-    return 'https://chat.zhishuyun.com';
+    return 'https://hub.zhishuyun.com';
   }
 };
 
