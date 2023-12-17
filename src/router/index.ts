@@ -2,14 +2,14 @@ import { createRouter, createWebHistory } from 'vue-router';
 import auth from './auth';
 import chat from './chat';
 import midjourney from './midjourney';
-import { ROUTE_CONVERSATION_NEW, ROUTE_INDEX } from './constants';
+import { ROUTE_CHAT_INDEX, ROUTE_INDEX } from './constants';
 
 const routes = [
   {
     path: '/',
     name: ROUTE_INDEX,
     redirect: {
-      name: ROUTE_CONVERSATION_NEW
+      name: ROUTE_CHAT_INDEX
     }
   },
   auth,

@@ -1,10 +1,4 @@
-import {
-  ROUTE_AUTH_CALLBACK,
-  ROUTE_AUTH_LOGIN,
-  ROUTE_CHAT_CONVERSATION,
-  ROUTE_CHAT_CONVERSATION_NEW,
-  ROUTE_CHAT_INDEX
-} from './constants';
+import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW, ROUTE_CHAT_INDEX } from './constants';
 
 export default {
   path: '/chat',

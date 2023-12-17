@@ -36,14 +36,12 @@ import {
   IApplication,
   IMidjourneyChannel,
   MidjourneyImagineAction,
-  IMidjourneyImagineResponse,
   IMidjourneyPreset,
   MIDJOURNEY_CHANNEL_FAST,
   MIDJOURNEY_CHANNEL_TURBO,
   MIDJOURNEY_CHANNEL_RELAX,
   applicationOperator,
   midjourneyOperator,
-  MidjourneyImagineState,
   IMidjourneyImagineTask,
   IMidjourneyImagineRequest
 } from '@/operators';
