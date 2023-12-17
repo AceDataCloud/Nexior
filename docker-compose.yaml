@@ -1,8 +1,8 @@
 version: '3'
 services:
-  zhishuyun-ai-frontend:
-    container_name: 'zhishuyun-ai-frontend'
+  zhishuyun-hub-frontend:
+    container_name: 'zhishuyun-hub-frontend'
     build: ./
-    image: 'ghcr.io/zhishuyun/ai-frontend:${BUILD_NUMBER}'
+    image: 'ghcr.io/zhishuyun/hub-frontend:${BUILD_NUMBER}'
     ports:
       - '8000:80'
