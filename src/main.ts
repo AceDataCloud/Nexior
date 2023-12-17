@@ -5,6 +5,7 @@ import store from './store/index';
 import i18n from './i18n/index';
 import './assets/scss/style.scss';
 import './assets/css/tailwind.css';
+import 'mac-scrollbar/dist/mac-scrollbar.css';
 import dayjs from './plugins/dayjs';
 import './plugins/font-awesome';
 import { vLoading } from 'element-plus';

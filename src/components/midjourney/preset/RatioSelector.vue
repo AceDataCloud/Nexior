@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="title">图片比例</h2>
+    <h2 class="title">{{ $t('midjourney.name.ratio') }}</h2>
     <div class="items">
       <div
         v-for="(option, optionKey) in options"
@@ -39,7 +39,6 @@ export default defineComponent({
   data() {
     return {
       value: this.modelValue,
-      active: 0,
       options: [
         {
           value: '1:1',
@@ -74,6 +73,11 @@ export default defineComponent({
       ]
     };
   },
+  computed: {
+    active() {
+      return this.options.findIndex((option) => option.value === this.value);
+    }
+  },
   watch: {
     modelValue(val) {
       if (val !== this.value) {
@@ -85,8 +89,10 @@ export default defineComponent({
     }
   },
   mounted() {
-    if (!this.value) {
+    if (!this.modelValue) {
       this.value = DEFAULT_RATIO;
+    } else {
+      this.value = this.modelValue;
     }
     this.$emit('update:modelValue', this.value);
   }

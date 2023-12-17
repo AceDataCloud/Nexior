@@ -12,7 +12,7 @@
       :on-error="onError"
       :headers="headers"
     >
-      <el-button type="primary">
+      <el-button type="primary" class="btn btn-upload">
         <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-2" />
         {{ $t('midjourney.button.uploadReferences') }}
       </el-button>
@@ -86,5 +86,9 @@ export default defineComponent({
   color: #333;
   font-size: 16px;
   flex: 1;
+}
+
+.btn.btn-upload {
+  border-radius: 20px;
 }
 </style>

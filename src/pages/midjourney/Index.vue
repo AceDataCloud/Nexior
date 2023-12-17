@@ -12,7 +12,7 @@
         <elements-selector v-model="elements" :advanced="preset.advanced" class="mb-4" />
         <ignore-selector v-if="preset.advanced" v-model="ignore" class="mb-4" />
         <final-prompt v-if="finalPrompt" :model-value="finalPrompt" />
-        <el-button type="primary" :disabled="!finalPrompt" @click="onGenerate">
+        <el-button type="primary" class="btn btn-generate" :disabled="!finalPrompt" @click="onGenerate">
           {{ $t('midjourney.button.generate') }}
         </el-button>
       </div>
@@ -84,7 +84,7 @@ export default defineComponent({
     return {
       applications: [],
       channel: MIDJOURNEY_CHANNEL_FAST,
-      preset: {},
+      preset: this.$store.getters.midjourney.preset,
       prompt: '',
       elements: [],
       ignore: '',
@@ -111,6 +111,9 @@ export default defineComponent({
       }
       if (this.elements.length > 0) {
         content += ',' + this.elements.join(',');
+      }
+      if (this.preset.model) {
+        content += ` --${this.preset.model}`;
       }
       if (this.preset.version) {
         content += ` --version ${this.preset.version}`;
@@ -200,7 +203,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .page {
   width: 100%;
   height: 100%;
@@ -209,21 +212,26 @@ export default defineComponent({
   .presets {
     width: 260px;
     height: 100%;
-    // background-color: var(--el-bg-color-page);
+    overflow-y: scroll;
   }
   .main {
     flex: 1;
     padding: 15px;
+    height: 100%;
+    overflow-x: scroll;
     .title {
       font-size: 14px;
       margin-bottom: 10px;
+    }
+    .btn.btn-generate {
+      width: 80px;
+      border-radius: 20px;
     }
   }
   .result {
     overflow-y: scroll;
     width: 400px;
     height: 100%;
-    // background-color: var(--el-bg-color-page);
   }
 }
 </style>

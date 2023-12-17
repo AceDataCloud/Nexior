@@ -11,7 +11,7 @@
     <chaos-selector v-if="preset.advanced" v-model="preset.chaos" class="mb-4" />
     <image-weight-selector v-if="preset.advanced" v-model="preset.iw" class="mb-4" />
     <niji-selector v-if="false" v-model="preset.niji" class="mb-4" />
-    <raw-selector v-if="preset.model == 'MJ' && preset.advanced" v-model="preset.raw" class="mb-4" />
+    <raw-selector v-if="!preset.model && preset.advanced" v-model="preset.raw" class="mb-4" />
   </div>
 </template>
 
@@ -64,8 +64,13 @@ export default defineComponent({
     preset: {
       handler(val) {
         this.$emit('update:modelValue', val);
+        console.debug('preset changed', val);
+        this.$store.dispatch('setMidjourney', {
+          preset: val
+        });
       },
-      deep: true
+      deep: true,
+      immediate: true
     }
   }
 });

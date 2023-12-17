@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 class="title">{{ $t('midjourney.name.prompt') }}</h2>
-    <el-input v-model="value" :rows="5" type="textarea" :placeholder="$t('midjourney.placeholder.prompt')" />
+    <el-input v-model="value" :rows="3" type="textarea" :placeholder="$t('midjourney.placeholder.prompt')" />
   </div>
 </template>
 
