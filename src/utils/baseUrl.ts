@@ -21,14 +21,7 @@ export const getDataBaseUrl = () => {
  * @returns
  */
 export const getHubBaseUrl = () => {
-  const env = getEnv();
-  if (env === ENV_LOCAL) {
-    return 'https://hub.local.zhishuyun.com';
-  } else if (env === ENV_TEST) {
-    return 'https://hub.test.zhishuyun.com';
-  } else {
-    return 'https://hub.zhishuyun.com';
-  }
+  return window.location.origin;
 };
 
 export const getAuthBaseUrl = () => {

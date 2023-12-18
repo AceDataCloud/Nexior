@@ -1,13 +1,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { getCookie } from 'typescript-cookie';
 import { getAuthBaseUrl, getHubBaseUrl } from '@/utils';
-import { removeCookies } from '@/utils/cookie';
+import { oauthOperator } from '@/operators/auth/operator';
+import { applicationOperator, userOperator } from '@/operators';
 
 interface IData {
   accessToken: string | undefined;
   refreshToken: string | undefined;
   redirect: string | undefined;
+  code: string | undefined;
 }
 
 export default defineComponent({
@@ -16,13 +17,20 @@ export default defineComponent({
     return {
       accessToken: undefined,
       refreshToken: undefined,
-      redirect: this.$route.query.redirect?.toString()
+      redirect: this.$route.query.redirect?.toString(),
+      code: this.$route.query.code?.toString()
     };
   },
   async mounted() {
-    // get tokens from cookies
-    this.accessToken = getCookie('ACCESS_TOKEN');
-    this.refreshToken = getCookie('REFRESH_TOKEN');
+    if (this.code) {
+      console.debug('code found, try to get tokens');
+      const { data } = await oauthOperator.token({
+        code: this.code
+      });
+      this.accessToken = data.access_token;
+      this.refreshToken = data.refresh_token;
+      console.debug('get tokens successfully');
+    }
     if (this.accessToken && this.refreshToken) {
       // store token to global store
       await this.$store.dispatch('setToken', {
@@ -30,8 +38,14 @@ export default defineComponent({
         access: this.accessToken
       });
       console.debug('set token successfully');
-      removeCookies();
-      console.debug('remove cookie for tokens successfully');
+      const { data: user } = await userOperator.getMe();
+      await this.$store.dispatch('setUser', user);
+      console.debug('set user successfully');
+      const { data: applications } = await applicationOperator.getAll({
+        user_id: user.id
+      });
+      await this.$store.dispatch('setApplications', applications);
+      console.debug('set applications successfully');
       if (this.redirect) {
         this.$router.push(this.redirect);
       }

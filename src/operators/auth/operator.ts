@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { httpClient } from '../instance';
-import { ITokenResponse, IToken } from './models';
+import { ITokenResponse, IToken, IOAuthTokenRequest, IOAuthTokenResponse } from './models';
 
 class AuthOperator {
   async refreshToken(payload: IToken): Promise<AxiosResponse<ITokenResponse>> {
@@ -8,4 +8,13 @@ class AuthOperator {
   }
 }
 
+class OAuthOperator {
+  async token(payload: IOAuthTokenRequest): Promise<AxiosResponse<IOAuthTokenResponse>> {
+    return httpClient.post('/token', payload, {
+      baseURL: '/oauth2/v1'
+    });
+  }
+}
+
 export const authOperator = new AuthOperator();
+export const oauthOperator = new OAuthOperator();

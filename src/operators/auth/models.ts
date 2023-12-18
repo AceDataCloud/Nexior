@@ -4,3 +4,13 @@ export interface IToken {
 }
 
 export interface ITokenResponse extends IToken {}
+
+export interface IOAuthTokenRequest {
+  code: string;
+}
+
+export interface IOAuthTokenResponse {
+  access_token: string;
+  expires_in: number;
+  refresh_token: string;
+}

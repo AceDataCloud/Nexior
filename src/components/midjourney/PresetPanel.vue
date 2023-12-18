@@ -64,7 +64,6 @@ export default defineComponent({
     preset: {
       handler(val) {
         this.$emit('update:modelValue', val);
-        console.debug('preset changed', val);
         this.$store.dispatch('setMidjourney', {
           preset: val
         });
