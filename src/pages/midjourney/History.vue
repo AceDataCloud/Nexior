@@ -5,7 +5,7 @@
     </div>
     <div class="main">
       <channel-selector v-model="channel" class="mb-4" @select="onSelectChannel" />
-      <api-status :application="application" class="mb-4" />
+      <api-status :application="application" class="mb-4" :api-id="channel.apiId" @refresh="onFetchApplications" />
       <task-full-list :applications="applications" @custom="onCustom" />
       <el-button type="primary" class="btn btn-generate" @click="onGenerateNew">
         <font-awesome-icon icon="fa-solid fa-chevron-left" class="icon icon-rotate mr-1" />

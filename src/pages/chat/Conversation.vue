@@ -3,7 +3,7 @@
     <sidebar class="left" :applications="applications" @click="onFetchHistory" />
     <div class="main">
       <model-selector v-model="model" class="model-selector" @select="onSelectModel" />
-      <api-status :application="application" />
+      <api-status :application="application" :api-id="model.apiId" />
       <div class="dialogue">
         <introduction v-if="messages && messages.length === 0" />
         <div v-else class="messages">

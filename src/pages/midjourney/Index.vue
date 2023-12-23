@@ -5,7 +5,7 @@
     </div>
     <div class="main">
       <channel-selector v-model="channel" class="mb-4" @select="onSelectChannel" />
-      <api-status :application="application" class="mb-4" />
+      <api-status :application="application" :api-id="channel.apiId" class="mb-4" @apply="onFetchApplications" />
       <div class="pt-4">
         <reference-image class="mb-4" @change="references = $event" />
         <prompt-input v-model="prompt" class="mb-4" />
@@ -43,11 +43,13 @@ import {
   applicationOperator,
   midjourneyOperator,
   IMidjourneyImagineTask,
-  IMidjourneyImagineRequest
+  IMidjourneyImagineRequest,
+  IApplicationDetailResponse
 } from '@/operators';
 import ApiStatus from '@/components/common/ApiStatus.vue';
 import TaskBriefList from '@/components/midjourney/tasks/TaskBriefList.vue';
 import FinalPrompt from '@/components/midjourney/FinalPrompt.vue';
+import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
 
 interface IData {
   channel: IMidjourneyChannel;
@@ -147,6 +149,22 @@ export default defineComponent({
     this.onFetchApplications();
   },
   methods: {
+    onApply() {
+      applicationOperator
+        .create({
+          // @ts-ignore
+          application: this.application
+        })
+        .then(({ data: data }: { data: IApplicationDetailResponse }) => {
+          this.application = data;
+          ElMessage.success(this.$t('application.message.applySuccessfully'));
+        })
+        .catch((error) => {
+          if (error?.response?.data?.code === ERROR_CODE_DUPLICATION) {
+            ElMessage.error(this.$t('application.message.alreadyApplied'));
+          }
+        });
+    },
     async onSelectChannel() {
       await this.onFetchApplications();
     },

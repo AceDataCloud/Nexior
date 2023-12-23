@@ -3,7 +3,7 @@ export default {
   noToken: '请先申请对应服务',
   newMessagePlaceholder: '请输入你的问题...',
   noInput: '问题不能为空',
-  apiInfo: '本服务由「知数云」提供技术支持',
+  notApplied: '您尚未申请该服务，请先申请',
   tryForFree: '免费使用',
   initializing: '初始化中，请稍后...',
   writeCode: '写一段 JavaScript 代码，输出 Hello World',

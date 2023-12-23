@@ -7,15 +7,22 @@
         </el-button>
       </div>
     </div>
-    <div class="bottom"></div>
+    <div class="middle"></div>
+    <div class="bottom">
+      <div class="link">
+        <el-button class="button" @click="onLogout">
+          <font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket" />
+        </el-button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElTooltip, ElButton } from 'element-plus';
+import { ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_CHAT_INDEX, ROUTE_MIDJOURNEY_INDEX } from '@/router/constants';
+import { ROUTE_AUTH_LOGIN, ROUTE_CHAT_INDEX, ROUTE_MIDJOURNEY_INDEX } from '@/router/constants';
 
 export default defineComponent({
   name: 'Navigator',
@@ -40,6 +47,13 @@ export default defineComponent({
         }
       ]
     };
+  },
+  methods: {
+    onLogout() {
+      console.debug('logout');
+      this.$store.dispatch('resetToken');
+      this.$router.push({ name: ROUTE_AUTH_LOGIN });
+    }
   }
 });
 </script>
@@ -49,7 +63,9 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: center;
-  .top {
+
+  .top,
+  .bottom {
     display: flex;
     flex-direction: column;
     padding-top: 10px;
@@ -71,8 +87,9 @@ export default defineComponent({
     }
   }
   .bottom {
-    display: flex;
-    flex-direction: column;
+    display: block;
+    position: absolute;
+    bottom: 0;
   }
 }
 </style>
