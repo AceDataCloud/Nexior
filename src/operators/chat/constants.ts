@@ -19,29 +19,29 @@ export const API_ID_CHATGPT4_BROWSING = 'a61de51b-d0d0-48a2-9a17-1d4986d5d497';
 export const CHAT_MODEL_CHATGPT: IChatModel = {
   apiId: API_ID_CHATGPT,
   name: CHAT_MODEL_NAME_CHATGPT,
-  displayName: '基础 - 4k'
+  displayName: '3.5 - 标准'
 };
 
 export const CHAT_MODEL_CHATGPT_16K: IChatModel = {
   apiId: API_ID_CHATGPT_16K,
   name: CHAT_MODEL_NAME_CHATGPT_16K,
-  displayName: '基础 - 16k'
+  displayName: '3.5 - 16k'
 };
 
 export const CHAT_MODEL_CHATGPT_BROWSING: IChatModel = {
   apiId: API_ID_CHATGPT_BROWSING,
   name: CHAT_MODEL_NAME_CHATGPT_BROWSING,
-  displayName: '基础 - 联网版'
+  displayName: '3.5 - 联网版'
 };
 
 export const CHAT_MODEL_CHATGPT4: IChatModel = {
   apiId: API_ID_CHATGPT4,
   name: CHAT_MODEL_NAME_CHATGPT4,
-  displayName: 'Plus - 4.0'
+  displayName: '4.0 - 标准'
 };
 
 export const CHAT_MODEL_CHATGPT4_BROWSING: IChatModel = {
   apiId: API_ID_CHATGPT4_BROWSING,
   name: CHAT_MODEL_NAME_CHATGPT4_BROWSING,
-  displayName: 'Plus - 4.0 联网版'
+  displayName: '4.0 - 联网版'
 };

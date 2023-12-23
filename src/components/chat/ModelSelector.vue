@@ -62,13 +62,13 @@ export default defineComponent({
       activeGroup: 'base',
       groups: [
         {
-          label: '基础',
+          label: '3.5',
           value: 'base',
           icon: 'fa-solid fa-bolt',
           options: [CHAT_MODEL_CHATGPT, CHAT_MODEL_CHATGPT_16K, CHAT_MODEL_CHATGPT_BROWSING]
         },
         {
-          label: 'Plus',
+          label: '4.0',
           value: 'plus',
           icon: 'fa-solid fa-wand-magic-sparkles',
           options: [CHAT_MODEL_CHATGPT4, CHAT_MODEL_CHATGPT4_BROWSING]

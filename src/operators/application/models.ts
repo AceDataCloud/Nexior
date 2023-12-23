@@ -20,7 +20,7 @@ export interface ICredential {
 }
 
 export interface IApplication {
-  id: string;
+  id?: string;
   api?: IApi;
   type?: IApplicationType;
   api_id?: string;

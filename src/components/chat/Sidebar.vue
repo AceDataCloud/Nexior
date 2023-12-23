@@ -72,7 +72,6 @@ interface IData {
 export default defineComponent({
   name: 'Sidebar',
   components: {
-    ElButton,
     ElInput,
     FontAwesomeIcon,
     ElSkeleton

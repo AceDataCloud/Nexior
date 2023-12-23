@@ -29,7 +29,7 @@
         <span class="policy-title highlight" @click="showPolicy = true"> {{ $t('application.message.policy') }} </span>
         <application-policy v-model.visible="showPolicy" />
       </div>
-      <el-button type="primary" @click="onApply">{{ $t('common.button.apply') }}</el-button>
+      <el-button type="primary" class="btn btn-apply" @click="onApply">{{ $t('common.button.apply') }}</el-button>
     </div>
   </el-dialog>
 </template>
@@ -59,7 +59,7 @@ export default defineComponent({
   },
   props: {
     object: {
-      type: Object as () => IApi,
+      type: Object as () => IApi | undefined,
       required: true
     },
     type: {
@@ -96,8 +96,12 @@ export default defineComponent({
 <style lang="scss" scoped>
 .content {
   padding: 10px 40px;
+
   .policy {
     margin-bottom: 10px;
+    .btn-apply {
+      border-radius: 20px;
+    }
     .policy-checkbox {
       margin-right: 10px !important;
     }
