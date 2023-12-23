@@ -97,11 +97,13 @@ export default defineComponent({
 .content {
   padding: 10px 40px;
 
+  .btn-apply {
+    border-radius: 20px;
+  }
+
   .policy {
     margin-bottom: 10px;
-    .btn-apply {
-      border-radius: 20px;
-    }
+
     .policy-checkbox {
       margin-right: 10px !important;
     }

@@ -1,6 +1,9 @@
 <template>
   <div class="sidebar">
-    <el-skeleton v-if="loading && conversations.length === 0" />
+    <el-skeleton v-if="loading && conversations === undefined" />
+    <div v-else-if="conversations?.length === 0">
+      <p class="p-5 description">{{ $t('chat.message.noConversations') }}</p>
+    </div>
     <div v-else class="conversations">
       <div
         v-for="(conversation, conversationIndex) in conversations"
@@ -58,7 +61,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElTooltip, ElButton, ElSkeleton, ElInput } from 'element-plus';
+import { ElSkeleton, ElInput } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CHAT_CONVERSATION } from '@/router/constants';
 import { apiUsageOperator, IApplication, chatOperator } from '@/operators';
@@ -66,7 +69,7 @@ import { IChatConversation } from '@/operators/chat/models';
 
 interface IData {
   loading: boolean;
-  conversations: IChatConversation[];
+  conversations: IChatConversation[] | undefined;
 }
 
 export default defineComponent({
@@ -86,7 +89,7 @@ export default defineComponent({
   data(): IData {
     return {
       loading: false,
-      conversations: []
+      conversations: undefined
     };
   },
   watch: {

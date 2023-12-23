@@ -1,5 +1,5 @@
 <template>
-  <div v-if="tasks.length > 0" class="tasks">
+  <div v-if="tasks" class="tasks">
     <div v-for="(task, taskKey) in tasks" :key="taskKey" class="task">
       <task-preview :full="true" :model-value="task" :applications="applications" @custom="onCustom($event)" />
     </div>

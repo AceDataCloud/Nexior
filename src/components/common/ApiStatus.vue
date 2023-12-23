@@ -1,5 +1,12 @@
 <template>
-  <div v-if="application" class="status">
+  <div v-if="initializing && application === undefined">
+    <el-skeleton :rows="1" class="text-center">
+      <template #template>
+        <el-skeleton-item variant="p" class="shimmer" />
+      </template>
+    </el-skeleton>
+  </div>
+  <div v-else-if="application" class="status">
     <span class="info">
       {{ $t('common.message.usedCount') }}: {{ application?.used_amount }} {{ $t('common.message.remainingCount') }}:
       {{ application?.remaining_amount }}
@@ -23,7 +30,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { IApplication, IApplicationDetailResponse, applicationOperator } from '@/operators';
-import { ElButton, ElMessage } from 'element-plus';
+import { ElButton, ElMessage, ElSkeleton, ElSkeletonItem } from 'element-plus';
 import ApplicationConfirm from '@/components/application/Confirm.vue';
 import { IApplicationType } from '@/operators';
 import { apiOperator } from '@/operators/api/operator';
@@ -38,7 +45,7 @@ export interface IData {
 
 export default defineComponent({
   name: 'ApiStatus',
-  components: { ElButton, ApplicationConfirm },
+  components: { ElButton, ApplicationConfirm, ElSkeleton, ElSkeletonItem },
   props: {
     application: {
       type: Object as () => IApplication | undefined,
@@ -47,6 +54,10 @@ export default defineComponent({
     apiId: {
       type: String,
       required: true
+    },
+    initializing: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['apply', 'refresh'],
@@ -58,12 +69,20 @@ export default defineComponent({
     };
   },
   computed: {},
+  watch: {
+    apiId() {
+      this.onFetchApi();
+    }
+  },
   mounted() {
-    apiOperator.get(this.apiId).then(({ data: data }: { data: IApiDetailResponse }) => {
-      this.api = data;
-    });
+    this.onFetchApi();
   },
   methods: {
+    onFetchApi() {
+      apiOperator.get(this.apiId).then(({ data: data }: { data: IApiDetailResponse }) => {
+        this.api = data;
+      });
+    },
     onBuy() {
       const url = `https://data.zhishuyun.com/console/applications/${this.application?.id}/buy`;
       window.open(url, '_blank');
@@ -75,7 +94,6 @@ export default defineComponent({
           api_id: this.apiId
         })
         .then(({ data: data }: { data: IApplicationDetailResponse }) => {
-          // this.application = data;
           ElMessage.success(this.$t('application.message.applySuccessfully'));
           setTimeout(() => {
             this.$emit('refresh');
@@ -94,6 +112,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.shimmer {
+  width: 300px;
+  margin: auto;
+}
 .status {
   display: block;
   width: fit-content;
