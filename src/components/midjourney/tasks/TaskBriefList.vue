@@ -82,13 +82,15 @@ export default defineComponent({
         limit: 5,
         ordering: '-created_at'
       });
-      const tasks = (await midjourneyOperator.tasks(apiUsages.map((apiUsage) => apiUsage.metadata?.task_id as string)))
+      let tasks = (await midjourneyOperator.tasks(apiUsages.map((apiUsage) => apiUsage?.metadata?.task_id as string)))
         .data;
+      // filter out null tasks
+      tasks = tasks.filter((task) => task);
       this.tasks = tasks.map((task) => {
-        const apiUsage = apiUsages.filter((apiUsage) => apiUsage.metadata?.task_id === task.id)[0];
+        const apiUsage = apiUsages.filter((apiUsage) => apiUsage?.metadata?.task_id === task?.id)[0];
         return {
           ...task,
-          created_at: apiUsage.created_at
+          created_at: apiUsage?.created_at
         };
       });
       this.loading = false;

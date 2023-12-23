@@ -8,6 +8,8 @@ import {
   faClock as faRegularClock
 } from '@fortawesome/free-regular-svg-icons';
 import {
+  faHashtag as faSolidHashtag,
+  faCircleInfo as faSolidCircleInfo,
   faChevronLeft as faSolidChevronLeft,
   faMicrophone as faSolidMicrophone,
   faArrowLeft as faSolidArrowLeft,
@@ -67,3 +69,5 @@ library.add(faSolidInfo);
 library.add(faSolidMagic);
 library.add(faSolidArrowLeft);
 library.add(faSolidChevronLeft);
+library.add(faSolidCircleInfo);
+library.add(faSolidHashtag);

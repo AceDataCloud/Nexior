@@ -66,6 +66,7 @@ export interface IMidjourneyImagineResponse {
   progress: number;
   image_id: string;
   image_url: string;
+  trace_id: string;
   raw_image_url: string;
   actions: MidjourneyImagineAction[];
   code?: string;

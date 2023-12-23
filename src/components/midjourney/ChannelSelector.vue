@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElDropdown, ElButton, ElDropdownItem } from 'element-plus';
+import { ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
   IMidjourneyChannel,
