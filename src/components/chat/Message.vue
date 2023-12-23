@@ -13,8 +13,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import AnsweringMark from './AnsweringMark.vue';
-import { ElImage, ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import copy from 'copy-to-clipboard';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { IChatMessage, IChatMessageState } from '@/operators';

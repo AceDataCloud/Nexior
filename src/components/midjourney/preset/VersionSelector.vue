@@ -31,6 +31,10 @@ export default defineComponent({
       active: 0,
       options: [
         {
+          value: '6.0',
+          label: '6.0'
+        },
+        {
           value: '5.2',
           label: '5.2'
         },

@@ -33,13 +33,30 @@
         </template>
       </el-image>
     </div>
-    <div v-else-if="modelValue?.response.success === false" :class="{ content: true, full: full, failed: true }">
-      <el-image class="image">
-        <template #error>
-          <div class="image-slot">{{ modelValue?.response?.detail }}</div>
+    <div
+      v-else-if="modelValue?.response.success === false"
+      :class="{ content: true, full: full, failed: true, 'p-2': true }"
+    >
+      <el-alert :closable="false">
+        <template #template>
+          <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
+          {{ $t('midjourney.field.failure') }}
         </template>
-      </el-image>
+        <p class="description">
+          <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
+          {{ $t('midjourney.field.failureReason') }}:
+          {{ modelValue?.response?.detail }}
+          <copy-to-clipboard :content="modelValue?.response?.detail" class="btn-copy" />
+        </p>
+        <p class="description">
+          <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+          {{ $t('midjourney.field.traceId') }}:
+          {{ modelValue?.response?.trace_id }}
+          <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy" />
+        </p>
+      </el-alert>
     </div>
+
     <div v-else :class="{ content: true, full: full }">
       <el-image
         v-if="modelValue?.response?.image_url"
@@ -85,7 +102,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElTag, ElButton, ElTooltip, ElSkeleton } from 'element-plus';
+import { ElImage, ElTag, ElButton, ElTooltip, ElSkeleton, ElAlert } from 'element-plus';
 import { IApplication, IMidjourneyImagineTask, MidjourneyImagineAction, MidjourneyImagineState } from '@/operators';
 import {
   API_ID_MIDJOURNEY_FAST,
@@ -96,6 +113,7 @@ import {
   MIDJOURNEY_CHANNEL_TURBO
 } from '@/operators/midjourney/constants';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 
 interface IData {
   midjourneyImagineState: typeof MidjourneyImagineState;
@@ -111,7 +129,9 @@ export default defineComponent({
     ElButton,
     FontAwesomeIcon,
     ElTooltip,
-    ElSkeleton
+    ElSkeleton,
+    ElAlert,
+    CopyToClipboard
   },
   props: {
     modelValue: {
@@ -280,7 +300,9 @@ export default defineComponent({
     position: relative;
     margin-bottom: 10px;
     &.full {
-      height: 318px;
+      height: 220px;
+      display: flex;
+      align-items: center;
       .image {
         min-height: 200px;
       }
