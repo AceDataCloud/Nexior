@@ -1,11 +1,5 @@
 <template>
-  <div v-if="tasks?.length > 0" class="tasks">
-    <div v-for="(task, taskKey) in tasks" :key="taskKey" class="task">
-      <task-preview :full="false" :model-value="task" :applications="applications" @custom="$emit('custom', $event)" />
-    </div>
-    <el-button type="primary" class="btn mb-4" @click="onLoadHistory">{{ $t('midjourney.button.history') }}</el-button>
-  </div>
-  <div v-else class="tasks">
+  <div v-if="tasks === undefined" class="tasks">
     <el-card v-for="_ in 3" :key="_" class="task">
       <el-skeleton animated>
         <template #template>
@@ -14,6 +8,15 @@
         </template>
       </el-skeleton>
     </el-card>
+  </div>
+  <div v-else-if="tasks && tasks?.length === 0">
+    <p class="p-5 description">{{ $t('midjourney.message.noTasks') }}</p>
+  </div>
+  <div v-else-if="tasks.length > 0" class="tasks">
+    <div v-for="(task, taskKey) in tasks" :key="taskKey" class="task">
+      <task-preview :full="false" :model-value="task" :applications="applications" @custom="$emit('custom', $event)" />
+    </div>
+    <el-button type="primary" class="btn mb-4" @click="onLoadHistory">{{ $t('midjourney.button.history') }}</el-button>
   </div>
 </template>
 
@@ -25,7 +28,7 @@ import { ROUTE_MIDJOURNEY_HISTORY } from '@/router';
 import { ElButton, ElCard, ElSkeleton, ElSkeletonItem } from 'element-plus';
 
 interface IData {
-  tasks: IMidjourneyImagineTask[];
+  tasks: IMidjourneyImagineTask[] | undefined;
   mounted: boolean;
   loading: boolean;
 }
@@ -48,7 +51,7 @@ export default defineComponent({
   emits: ['update:modelValue', 'custom'],
   data(): IData {
     return {
-      tasks: [],
+      tasks: undefined,
       mounted: false,
       loading: false
     };
@@ -105,13 +108,18 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.description {
+  font-size: 14px;
+  color: #333;
+}
+
 .tasks {
   padding-top: 20px;
   overflow-y: scroll;
-  border-left: 1px solid var(--el-border-color);
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .task {
     margin-bottom: 15px;
     width: 350px;

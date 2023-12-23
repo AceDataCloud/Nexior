@@ -5,7 +5,13 @@
     </div>
     <div class="main">
       <channel-selector v-model="channel" class="mb-4" @select="onSelectChannel" />
-      <api-status :application="application" :api-id="channel.apiId" class="mb-4" @apply="onFetchApplications" />
+      <api-status
+        :initializing="initializing"
+        :application="application"
+        :api-id="channel.apiId"
+        class="mb-4"
+        @apply="onFetchApplications"
+      />
       <div class="pt-4">
         <reference-image class="mb-4" @change="references = $event" />
         <prompt-input v-model="prompt" class="mb-4" />
@@ -248,6 +254,7 @@ export default defineComponent({
     overflow-y: scroll;
     width: 400px;
     height: 100%;
+    border-left: 1px solid var(--el-border-color);
   }
 }
 </style>
