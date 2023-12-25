@@ -64,12 +64,21 @@ import { defineComponent } from 'vue';
 import { ElSkeleton, ElInput } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CHAT_CONVERSATION } from '@/router/constants';
-import { apiUsageOperator, IApplication, chatOperator } from '@/operators';
+import { apiUsageOperator, IApplication, chatOperator, applicationOperator } from '@/operators';
 import { IChatConversation } from '@/operators/chat/models';
+import {
+  CHAT_MODEL_CHATGPT,
+  CHAT_MODEL_CHATGPT4,
+  CHAT_MODEL_CHATGPT4_BROWSING,
+  CHAT_MODEL_CHATGPT_16K,
+  CHAT_MODEL_CHATGPT_BROWSING
+} from '@/operators';
 
 interface IData {
+  initializing: boolean;
   loading: boolean;
   conversations: IChatConversation[] | undefined;
+  applications: IApplication[] | undefined;
 }
 
 export default defineComponent({
@@ -79,45 +88,61 @@ export default defineComponent({
     FontAwesomeIcon,
     ElSkeleton
   },
-  props: {
-    applications: {
-      type: Object as () => IApplication[],
-      required: true
-    }
-  },
+  props: {},
   emits: ['click'],
   data(): IData {
     return {
+      initializing: false,
       loading: false,
-      conversations: undefined
+      conversations: undefined,
+      applications: undefined
     };
   },
   watch: {
     applications(val) {
       if (val) {
-        this.onFetchAllConversations();
+        this.onFetchConversations();
       }
     }
   },
-  mounted() {},
+  async mounted() {
+    await this.onFetchApplications();
+    await this.onFetchConversations();
+  },
   methods: {
+    async onFetchApplications() {
+      this.initializing = true;
+      const { data: applications } = await applicationOperator.getAll({
+        user_id: this.$store.state.user.id,
+        api_id: [
+          CHAT_MODEL_CHATGPT.apiId,
+          CHAT_MODEL_CHATGPT_16K.apiId,
+          CHAT_MODEL_CHATGPT_BROWSING.apiId,
+          CHAT_MODEL_CHATGPT4.apiId,
+          CHAT_MODEL_CHATGPT4_BROWSING.apiId
+        ]
+      });
+      this.initializing = false;
+      this.applications = applications?.items;
+    },
     async onConfirm(conversation: IChatConversation) {
       if (conversation?.deleting) {
         await chatOperator.deleteConversation(conversation.id);
-        await this.onFetchAllConversations();
+        await this.onFetchConversations();
       } else if (conversation?.editing) {
         await chatOperator.updateConversation(conversation);
-        this.onFetchAllConversations();
+        this.onFetchConversations();
       } else {
         conversation.editing = true;
       }
     },
-    async onFetchAllConversations() {
+    async onFetchConversations() {
       this.loading = true;
       const {
         data: { items: apiUsages }
       } = await apiUsageOperator.getAll({
         user_id: this.$store.state.user.id,
+        // @ts-ignore
         application_id: this.applications?.map((application) => application.id),
         offset: 0,
         limit: 30,

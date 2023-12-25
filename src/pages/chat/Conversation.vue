@@ -1,23 +1,20 @@
 <template>
   <div class="page">
-    <sidebar class="left" :applications="applications" @click="onFetchHistory" />
-    <div class="main">
-      <model-selector v-model="model" class="model-selector" @select="onSelectModel" />
-      <api-status
-        :initializing="initializing"
-        :application="application"
-        :api-id="model.apiId"
-        @refresh="onFetchApplications"
-      />
-      <div class="dialogue">
-        <introduction v-if="messages && messages.length === 0" />
-        <div v-else class="messages">
-          <message v-for="(message, messageIndex) in messages" :key="messageIndex" :message="message" class="message" />
-        </div>
+    <model-selector v-model="model" class="model-selector" @select="onSelectModel" />
+    <api-status
+      :initializing="initializing"
+      :application="application"
+      :api-id="model.apiId"
+      @refresh="onFetchApplications"
+    />
+    <div class="dialogue">
+      <introduction v-if="messages && messages.length === 0" />
+      <div v-else class="messages">
+        <message v-for="(message, messageIndex) in messages" :key="messageIndex" :message="message" class="message" />
       </div>
-      <div class="bottom">
-        <input-box v-model="question" @submit="onSubmitQuestion" />
-      </div>
+    </div>
+    <div class="bottom">
+      <input-box v-model="question" @submit="onSubmitQuestion" />
     </div>
   </div>
 </template>
@@ -47,12 +44,11 @@ import ModelSelector from '@/components/chat/ModelSelector.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import ApiStatus from '@/components/common/ApiStatus.vue';
 import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router';
-import Sidebar from '@/components/chat/Sidebar.vue';
 
 export interface IData {
   messages: IChatMessage[];
   model: IChatModel;
-  applications: IApplication[];
+  applications: IApplication[] | undefined;
   question: '';
   initializing: boolean;
   applied: boolean | undefined;
@@ -64,8 +60,7 @@ export default defineComponent({
     InputBox,
     ModelSelector,
     Message,
-    ApiStatus,
-    Sidebar
+    ApiStatus
   },
   data(): IData {
     return {
@@ -73,7 +68,7 @@ export default defineComponent({
       question: '',
       initializing: false,
       applied: undefined,
-      applications: [],
+      applications: undefined,
       messages: []
     };
   },
@@ -82,11 +77,17 @@ export default defineComponent({
       return this.$route.params.id?.toString();
     },
     application() {
-      return this.applications.find((application) => application.api?.id === this.model.apiId);
+      return this.applications?.find((application) => application.api?.id === this.model.apiId);
+    }
+  },
+  watch: {
+    conversationId(val) {
+      if (val) {
+        this.onFetchHistory(val);
+      }
     }
   },
   async mounted() {
-    console.log('mounted');
     await this.onFetchApplications();
     await this.onFetchHistory();
   },
@@ -203,44 +204,28 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .page {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex: 1;
   width: 100%;
+  overflow-y: scroll;
+  padding: 15px;
   height: 100%;
+  flex-direction: column;
+  display: flex;
 
-  .left {
-    display: block;
-    width: 300px;
-    height: 100%;
-    border-right: 1px solid #eee;
-    overflow-y: scroll;
+  .model-selector {
+    width: max-content;
+    margin: auto;
+    margin-bottom: 10px;
   }
 
-  .main {
+  .dialogue {
     flex: 1;
-    width: 100%;
     overflow-y: scroll;
-    padding: 15px;
-    height: 100%;
-    flex-direction: column;
-    display: flex;
-
-    .model-selector {
-      width: max-content;
-      margin: auto;
-      margin-bottom: 10px;
-    }
-
-    .dialogue {
-      flex: 1;
-      overflow-y: scroll;
-      margin: 20px 0;
-      .messages {
-        padding-top: 30px;
-        .message {
-          margin-bottom: 15px;
-        }
+    margin: 20px 0;
+    .messages {
+      padding-top: 30px;
+      .message {
+        margin-bottom: 15px;
       }
     }
   }

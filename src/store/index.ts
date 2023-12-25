@@ -37,6 +37,9 @@ const store = createStore({
         ...payload
       };
     },
+    resetToken(state: IState): void {
+      state.token = {};
+    },
     setSetting(state: IState, payload: ISetting): void {
       state.setting = {
         ...state.setting,
@@ -61,8 +64,7 @@ const store = createStore({
   },
   actions: {
     resetToken({ commit }) {
-      commit('setToken', {});
-      removeCookies();
+      commit('resetToken');
     },
     setUser({ commit }: ActionContext<IState, IState>, payload: IUser) {
       commit('setUser', payload);
