@@ -2,7 +2,7 @@ import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW, ROUTE_CHAT_INDEX 
 
 export default {
   path: '/chat',
-  component: () => import('@/layouts/Main.vue'),
+  component: () => import('@/layouts/Chat.vue'),
   children: [
     {
       path: '',
