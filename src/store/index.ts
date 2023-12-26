@@ -1,6 +1,5 @@
 import { createStore, ActionContext } from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
-import { removeCookies } from '@/utils/cookie';
 import { ENDPOINT } from '@/constants';
 import { IApplication, IUser } from '@/operators';
 import { ISetting, IState, IToken } from './models';
