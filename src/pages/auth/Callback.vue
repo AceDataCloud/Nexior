@@ -33,18 +33,18 @@ export default defineComponent({
     }
     if (this.accessToken && this.refreshToken) {
       // store token to global store
-      await this.$store.dispatch('setToken', {
+      await this.$store.dispatch('common/setToken', {
         refresh: this.refreshToken,
         access: this.accessToken
       });
       console.debug('set token successfully');
       const { data: user } = await userOperator.getMe();
-      await this.$store.dispatch('setUser', user);
+      await this.$store.dispatch('common/setUser', user);
       console.debug('set user successfully');
       const { data: applications } = await applicationOperator.getAll({
         user_id: user.id
       });
-      await this.$store.dispatch('setApplications', applications);
+      await this.$store.dispatch('common/setApplications', applications);
       console.debug('set applications successfully');
       if (this.redirect) {
         this.$router.push(this.redirect);

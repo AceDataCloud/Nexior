@@ -1,4 +1,4 @@
-import { IApplication, IUser } from '@/operators';
+import { IApplication, IMidjourneyPreset, IUser } from '@/operators';
 
 export interface IToken {
   access?: string;
@@ -10,13 +10,24 @@ export interface ISetting {
   endpoint?: string;
 }
 
-export interface IState {
+export interface ICommonState {
   token: IToken;
   user: IUser;
   setting: ISetting;
-  applications: IApplication[];
-  apps: {
-    chat: {};
-    midjourney: {};
-  };
+  applications: IApplication[] | undefined;
+}
+
+export interface IMidjourneyState {
+  applications: IApplication[] | undefined;
+  preset: IMidjourneyPreset;
+}
+
+export interface IChatState {
+  applications: IApplication[] | undefined;
+}
+
+export interface IRootState {
+  common: ICommonState;
+  midjourney: IMidjourneyState;
+  chat: IChatState;
 }

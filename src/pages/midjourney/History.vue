@@ -73,7 +73,7 @@ export default defineComponent({
     return {
       applications: [],
       channel: MIDJOURNEY_CHANNEL_FAST,
-      preset: this.$store.getters.midjourney.preset,
+      preset: this.$store.state.midjourney.preset,
       prompt: '',
       elements: [],
       ignore: '',
@@ -103,7 +103,7 @@ export default defineComponent({
     async onFetchApplications() {
       this.initializing = true;
       const { data: applications } = await applicationOperator.getAll({
-        user_id: this.$store.state.user.id,
+        user_id: this.$store.state.common.user.id,
         api_id: [MIDJOURNEY_CHANNEL_FAST.apiId, MIDJOURNEY_CHANNEL_RELAX.apiId, MIDJOURNEY_CHANNEL_TURBO.apiId]
       });
       this.initializing = false;

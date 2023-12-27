@@ -51,7 +51,7 @@ export default defineComponent({
   methods: {
     onLogout() {
       console.debug('logout');
-      this.$store.dispatch('resetToken');
+      this.$store.dispatch('common/resetToken');
       this.$router.push({ name: ROUTE_AUTH_LOGIN });
     }
   }
