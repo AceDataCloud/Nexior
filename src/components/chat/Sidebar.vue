@@ -113,7 +113,7 @@ export default defineComponent({
     async onFetchApplications() {
       this.initializing = true;
       const { data: applications } = await applicationOperator.getAll({
-        user_id: this.$store.state.user.id,
+        user_id: this.$store.state.common.user.id,
         api_id: [
           CHAT_MODEL_CHATGPT.apiId,
           CHAT_MODEL_CHATGPT_16K.apiId,
@@ -141,7 +141,7 @@ export default defineComponent({
       const {
         data: { items: apiUsages }
       } = await apiUsageOperator.getAll({
-        user_id: this.$store.state.user.id,
+        user_id: this.$store.state.common.user.id,
         // @ts-ignore
         application_id: this.applications?.map((application) => application.id),
         offset: 0,

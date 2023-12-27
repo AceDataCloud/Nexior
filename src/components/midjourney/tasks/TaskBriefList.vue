@@ -79,7 +79,7 @@ export default defineComponent({
       const {
         data: { items: apiUsages }
       } = await apiUsageOperator.getAll({
-        user_id: this.$store.state.user.id,
+        user_id: this.$store.state.common.user.id,
         application_id: this.applications?.map((application) => application.id),
         offset: 0,
         limit: 5,

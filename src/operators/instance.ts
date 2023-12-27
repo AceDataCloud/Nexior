@@ -15,7 +15,7 @@ const httpClient: AxiosInstance = axios.create({
 });
 
 httpClient.interceptors.request.use((config) => {
-  const accessToken = store.getters.token.access;
+  const accessToken = store.state.common.token?.access;
   if (!config.headers) {
     config.headers = {};
   }
@@ -31,7 +31,7 @@ httpClient.interceptors.response.use(
   },
   (error) => {
     if (error?.response?.status === 401) {
-      store.dispatch('resetAuth');
+      store.dispatch('common/resetAuth');
       router.push({
         name: ROUTE_AUTH_LOGIN,
         query: {

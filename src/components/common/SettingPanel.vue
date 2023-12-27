@@ -43,20 +43,20 @@ export default defineComponent({
   computed: {
     stream: {
       get() {
-        return this.$store.getters.setting.stream;
+        return this.$store.getters['common/setting'].stream;
       },
       set(value: boolean) {
-        this.$store.dispatch('setSetting', {
+        this.$store.dispatch('common/setSetting', {
           stream: value
         });
       }
     },
     endpoint: {
       get() {
-        return this.$store.getters.setting.endpoint;
+        return this.$store.getters['common/setting'].endpoint;
       },
       set(value: string) {
-        this.$store.dispatch('setSetting', {
+        this.$store.dispatch('common/setSetting', {
           endpoint: value
         });
       }
