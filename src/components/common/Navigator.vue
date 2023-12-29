@@ -2,7 +2,13 @@
   <div class="sidebar">
     <div class="top">
       <div v-for="(link, linkIndex) in links" :key="linkIndex" class="link">
-        <el-button class="button" @click="$router.push(link.route)">
+        <el-button
+          :class="{
+            button: true,
+            active: $route.name === link.route.name
+          }"
+          @click="$router.push(link.route)"
+        >
           <font-awesome-icon :icon="link.icon" />
         </el-button>
       </div>
@@ -79,9 +85,11 @@ export default defineComponent({
         border-radius: 10px;
         border: none;
         background-color: var(--el-bg-color-page);
+        &.active,
         &:hover,
         &:focus {
           background-color: var(--el-button-hover-bg-color);
+          color: var(--el-button-active-text-color);
         }
       }
     }

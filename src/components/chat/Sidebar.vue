@@ -1,8 +1,15 @@
 <template>
   <div class="sidebar">
     <el-skeleton v-if="loading && conversations === undefined" />
-    <div v-else-if="conversations?.length === 0">
-      <p class="p-5 description">{{ $t('chat.message.noConversations') }}</p>
+    <div v-else-if="conversations?.length === 0" class="conversations">
+      <div class="conversation" @click="onNewConversation">
+        <div class="icons">
+          <font-awesome-icon icon="fa-solid fa-plus" class="icon" />
+        </div>
+        <div class="title">
+          {{ $t('chat.message.startNewChat') }}
+        </div>
+      </div>
     </div>
     <div v-else class="conversations">
       <div
@@ -63,7 +70,7 @@
 import { defineComponent } from 'vue';
 import { ElSkeleton, ElInput } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_CHAT_CONVERSATION } from '@/router/constants';
+import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router/constants';
 import { apiUsageOperator, IApplication, chatOperator, applicationOperator } from '@/operators';
 import { IChatConversation } from '@/operators/chat/models';
 import {
@@ -110,6 +117,11 @@ export default defineComponent({
     await this.onFetchConversations();
   },
   methods: {
+    async onNewConversation() {
+      this.$router.push({
+        name: ROUTE_CHAT_CONVERSATION_NEW
+      });
+    },
     async onFetchApplications() {
       this.initializing = true;
       const { data: applications } = await applicationOperator.getAll({
@@ -207,6 +219,7 @@ export default defineComponent({
       .title {
         flex: 1;
         font-size: 14px;
+        line-height: 32px;
         overflow: hidden;
         text-overflow: ellipsis;
         padding-right: 8px;

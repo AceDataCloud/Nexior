@@ -48,6 +48,7 @@ export default defineComponent({
       width: 300px;
       height: 100%;
       border-right: 1px solid #eee;
+      overflow-y: scroll;
     }
   }
 }
