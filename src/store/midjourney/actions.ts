@@ -1,5 +1,6 @@
 import {
   IApplication,
+  IMidjourneyChannel,
   IMidjourneyImagineTask,
   IMidjourneyPreset,
   MIDJOURNEY_CHANNEL_FAST,
@@ -16,6 +17,10 @@ import { IRootState, Status } from '../common/models';
 
 export const setPreset = ({ commit }: any, payload: IMidjourneyPreset) => {
   commit('setPreset', payload);
+};
+
+export const setChannel = ({ commit }: any, payload: IMidjourneyChannel) => {
+  commit('setChannel', payload);
 };
 
 export const setApplications = ({ commit }: any, payload: IApplication[]) => {
@@ -75,6 +80,7 @@ export const getImagineTasks = async (
 
 export default {
   setPreset,
+  setChannel,
   setApplications,
   getApplications,
   setImagineTasks,

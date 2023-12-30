@@ -17,6 +17,8 @@ const store = createStore({
         'user',
         'chat.applications',
         'chat.conversations',
+        'midjourney.preset',
+        'midjourney.channel',
         'midjourney.applications',
         'midjourney.imagineTasks'
       ]

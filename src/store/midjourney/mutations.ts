@@ -1,4 +1,4 @@
-import { IApplication } from '@/operators';
+import { IApplication, IMidjourneyChannel, IMidjourneyPreset } from '@/operators';
 import { IMidjourneyState } from './models';
 import { Status } from '../common/models';
 
@@ -6,8 +6,12 @@ export const setApplications = (state: IMidjourneyState, payload: IApplication[]
   state.applications = payload;
 };
 
-export const setPreset = (state: IMidjourneyState, payload: any): void => {
+export const setPreset = (state: IMidjourneyState, payload: IMidjourneyPreset): void => {
   state.preset = payload;
+};
+
+export const setChannel = (state: IMidjourneyState, payload: IMidjourneyChannel): void => {
+  state.channel = payload;
 };
 
 export const setGetApplicationsStatus = (state: IMidjourneyState, payload: Status): void => {
@@ -29,6 +33,7 @@ export const setImagineTasksTotal = (state: IMidjourneyState, payload: number): 
 export default {
   setApplications,
   setPreset,
+  setChannel,
   setGetApplicationsStatus,
   setImagineTasks,
   setGetImagineTasksStatus,

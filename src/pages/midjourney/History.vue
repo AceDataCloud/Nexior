@@ -4,7 +4,7 @@
       <preset-panel />
     </div>
     <div class="main">
-      <channel-selector v-model="channel" class="mb-4" @select="onSelectChannel" />
+      <channel-selector class="mb-4" @select="onSelectChannel" />
       <api-status
         :initializing="initializing"
         :application="application"
@@ -43,7 +43,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Status } from '@/store/common/models';
 
 interface IData {
-  channel: IMidjourneyChannel;
   prompt: string;
   elements: string[];
   ignore: string;
@@ -63,13 +62,15 @@ export default defineComponent({
   },
   data(): IData {
     return {
-      channel: MIDJOURNEY_CHANNEL_FAST,
       prompt: '',
       elements: [],
       ignore: ''
     };
   },
   computed: {
+    channel() {
+      return this.$store.state.midjourney.channel;
+    },
     applications() {
       return this.$store.state.midjourney.applications;
     },
@@ -94,9 +95,6 @@ export default defineComponent({
     },
     async onGetApplications() {
       await this.$store.dispatch('midjourney/getApplications');
-    },
-    async onSelectChannel() {
-      await this.onGetApplications();
     },
     async onStartTask(request: IMidjourneyImagineRequest) {
       const token = this.application?.credential?.token;
