@@ -4,7 +4,7 @@
       <preset-panel />
     </div>
     <div class="main">
-      <channel-selector v-model="channel" class="mb-4" @select="onSelectChannel" />
+      <channel-selector class="mb-4" />
       <api-status
         :initializing="initializing"
         :application="application"
@@ -56,7 +56,6 @@ import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
 import { Status } from '@/store/common/models';
 
 interface IData {
-  channel: IMidjourneyChannel;
   prompt: string;
   elements: string[];
   ignore: string;
@@ -81,7 +80,6 @@ export default defineComponent({
   },
   data(): IData {
     return {
-      channel: MIDJOURNEY_CHANNEL_FAST,
       prompt: '',
       elements: [],
       ignore: '',
@@ -89,6 +87,9 @@ export default defineComponent({
     };
   },
   computed: {
+    channel() {
+      return this.$store.state.midjourney.channel;
+    },
     preset() {
       return this.$store.state.midjourney.preset;
     },
@@ -167,9 +168,6 @@ export default defineComponent({
             ElMessage.error(this.$t('application.message.alreadyApplied'));
           }
         });
-    },
-    async onSelectChannel() {
-      await this.onGetApplications();
     },
     async onGetApplications() {
       await this.$store.dispatch('midjourney/getApplications');

@@ -1,3 +1,4 @@
+import { MIDJOURNEY_CHANNEL_FAST } from '@/operators';
 import { IMidjourneyState } from './models';
 
 export default (): IMidjourneyState => {
@@ -7,6 +8,7 @@ export default (): IMidjourneyState => {
     imagineTasks: undefined,
     getImagineTasksStatus: undefined,
     imagineTasksTotal: undefined,
-    preset: {}
+    preset: {},
+    channel: MIDJOURNEY_CHANNEL_FAST
   };
 };

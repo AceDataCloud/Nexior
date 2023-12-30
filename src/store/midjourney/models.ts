@@ -1,4 +1,4 @@
-import { IApplication, IMidjourneyImagineTask, IMidjourneyPreset } from '@/operators';
+import { IApplication, IMidjourneyChannel, IMidjourneyImagineTask, IMidjourneyPreset } from '@/operators';
 import { Status } from '../common/models';
 
 export interface IMidjourneyState {
@@ -8,4 +8,5 @@ export interface IMidjourneyState {
   getImagineTasksStatus: Status | undefined;
   imagineTasksTotal: number | undefined;
   preset: IMidjourneyPreset;
+  channel: IMidjourneyChannel;
 }

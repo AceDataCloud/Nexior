@@ -3,7 +3,7 @@
     <el-button
       v-for="(option, optionKey) in options"
       :key="optionKey"
-      :class="{ button: true, active: option.name === value.name }"
+      :class="{ button: true, active: option.name === channel.name }"
       @click="onSelect(option)"
     >
       <font-awesome-icon :class="{ icon: true, [option.name]: true }" :icon="option.icon" />
@@ -31,35 +31,20 @@ export default defineComponent({
     ElButton,
     FontAwesomeIcon
   },
-  props: {
-    modelValue: {
-      type: Object as () => IMidjourneyChannel,
-      required: true
-    }
-  },
   emits: ['update:modelValue', 'select'],
   data() {
     return {
-      value: this.modelValue,
       options: [MIDJOURNEY_CHANNEL_FAST, MIDJOURNEY_CHANNEL_RELAX, MIDJOURNEY_CHANNEL_TURBO]
     };
   },
-  watch: {
-    modelValue(val) {
-      if (val !== this.value) {
-        this.value = val;
-      }
+  computed: {
+    channel() {
+      return this.$store.state.midjourney.channel;
     }
-  },
-  mounted() {
-    this.$emit('update:modelValue', this.value);
-    this.$emit('select', this.value);
   },
   methods: {
     onSelect(option: IMidjourneyChannel) {
-      this.value = option;
-      this.$emit('update:modelValue', option);
-      this.$emit('select', option);
+      this.$store.dispatch('midjourney/setChannel', option);
     }
   }
 });
