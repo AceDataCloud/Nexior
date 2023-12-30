@@ -1,4 +1,6 @@
 export default {
+  chat: '问答',
+  midjourney: 'Midjourney',
   editor: '编辑器',
   setting: '设置',
   home: '首页',
