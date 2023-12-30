@@ -68,7 +68,7 @@
 import { defineComponent } from 'vue';
 import { ElSkeleton, ElInput } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_CHAT_CONVERSATION } from '@/router/constants';
+import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router/constants';
 import { chatOperator } from '@/operators';
 import { IChatConversation } from '@/operators/chat/models';
 import { Status } from '@/store/common/models';
@@ -97,10 +97,7 @@ export default defineComponent({
   methods: {
     async onNewConversation() {
       this.$router.push({
-        name: ROUTE_CHAT_CONVERSATION,
-        params: {
-          id: uuid()
-        }
+        name: ROUTE_CHAT_CONVERSATION_NEW
       });
     },
     async onConfirm(conversation: IChatConversation) {

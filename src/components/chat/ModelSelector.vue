@@ -4,7 +4,7 @@
       <el-button :class="{ group: true, active: group.value === activeGroup }" @click="onSwitchGroup(group)">
         <font-awesome-icon :icon="group.icon" :class="'icon ' + group.value" />
         <span v-if="group.value === activeGroup">
-          {{ value.displayName }}
+          {{ model.displayName }}
         </span>
         <span v-else>
           {{ group.label }}
@@ -14,13 +14,13 @@
       <template #dropdown>
         <el-dropdown-menu class="menu">
           <el-dropdown-item
-            v-for="(model, modelIndex) in group.options"
-            :key="modelIndex"
-            :command="model"
+            v-for="(groupModel, groupModelIndex) in group.options"
+            :key="groupModelIndex"
+            :command="groupModel"
             class="option"
           >
             <font-awesome-icon :icon="group.icon" :class="'icon ' + group.value" />
-            {{ model.displayName }}
+            {{ groupModel.displayName }}
           </el-dropdown-item>
         </el-dropdown-menu>
       </template>
@@ -41,6 +41,21 @@ import {
 } from '@/operators/chat/constants';
 import { IChatModel } from '@/operators';
 
+const GROUPS = [
+  {
+    label: '3.5',
+    value: 'base',
+    icon: 'fa-solid fa-bolt',
+    options: [CHAT_MODEL_CHATGPT, CHAT_MODEL_CHATGPT_16K, CHAT_MODEL_CHATGPT_BROWSING]
+  },
+  {
+    label: '4.0',
+    value: 'plus',
+    icon: 'fa-solid fa-wand-magic-sparkles',
+    options: [CHAT_MODEL_CHATGPT4, CHAT_MODEL_CHATGPT4_BROWSING]
+  }
+];
+
 export default defineComponent({
   name: 'ModelSelector',
   components: {
@@ -49,38 +64,23 @@ export default defineComponent({
     ElDropdownItem,
     FontAwesomeIcon
   },
-  props: {
-    modelValue: {
-      type: Object as () => IChatModel,
-      required: true
-    }
-  },
   emits: ['update:modelValue', 'select'],
   data() {
+    // find active group according to model
+    const model = this.$store.state.chat.model;
+    const activeGroup = GROUPS.find((group) => {
+      return group.options.find((option: IChatModel) => {
+        return option.name === model.name;
+      });
+    })?.value;
     return {
-      value: this.modelValue,
-      activeGroup: 'base',
-      groups: [
-        {
-          label: '3.5',
-          value: 'base',
-          icon: 'fa-solid fa-bolt',
-          options: [CHAT_MODEL_CHATGPT, CHAT_MODEL_CHATGPT_16K, CHAT_MODEL_CHATGPT_BROWSING]
-        },
-        {
-          label: '4.0',
-          value: 'plus',
-          icon: 'fa-solid fa-wand-magic-sparkles',
-          options: [CHAT_MODEL_CHATGPT4, CHAT_MODEL_CHATGPT4_BROWSING]
-        }
-      ]
+      activeGroup,
+      groups: GROUPS
     };
   },
-  watch: {
-    modelValue(val) {
-      if (val !== this.value) {
-        this.value = val;
-      }
+  computed: {
+    model() {
+      return this.$store.state.chat.model;
     }
   },
   methods: {
@@ -90,16 +90,15 @@ export default defineComponent({
       }
       this.activeGroup = group.value;
       const options = group.options;
+      // by default select first option
       if (options && options.length > 0) {
-        this.value = options[0];
-        this.$emit('update:modelValue', options[0]);
         this.$emit('select', options[0]);
+        this.$store.dispatch('chat/setModel', options[0]);
       }
     },
     onCommandChange(command: IChatModel) {
-      this.value = command;
-      this.$emit('update:modelValue', command);
       this.$emit('select', command);
+      this.$store.dispatch('chat/setModel', command);
     }
   }
 });

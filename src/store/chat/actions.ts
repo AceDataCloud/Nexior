@@ -6,6 +6,7 @@ import {
   CHAT_MODEL_CHATGPT_BROWSING,
   IApplication,
   IChatConversation,
+  IChatModel,
   apiUsageOperator,
   applicationOperator,
   chatOperator
@@ -15,6 +16,10 @@ import { ActionContext } from 'vuex';
 import { log } from '@/utils/log';
 import { IChatState } from './models';
 
+export const setModel = async ({ commit }: any, payload: IChatModel): Promise<void> => {
+  commit('setModel', payload);
+};
+
 export const setApplications = async ({ commit }: any, payload: IApplication[]): Promise<void> => {
   commit('setApplications', payload);
 };
@@ -22,6 +27,19 @@ export const setApplications = async ({ commit }: any, payload: IApplication[]):
 export const setConversations = async ({ commit }: any, payload: IChatConversation[]): Promise<void> => {
   log(setConversations, 'set conversations', payload);
   commit('setConversations', payload);
+};
+
+export const setConversation = async ({ commit, state }: any, payload: IChatConversation): Promise<void> => {
+  log(setConversation, 'set conversation', payload);
+  const conversations = state.conversations;
+  const index = conversations.findIndex((conversation: IChatConversation) => conversation.id === payload.id);
+  if (index > -1) {
+    conversations[index] = payload;
+  } else {
+    conversations.push(payload);
+  }
+  commit('setConversations', conversations);
+  log(setConversation, 'set conversation success', conversations);
 };
 
 export const getApplications = async ({
@@ -76,7 +94,9 @@ export const getConversations = async ({
 };
 
 export default {
+  setModel,
   setApplications,
+  setConversation,
   setConversations,
   getApplications,
   getConversations

@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <model-selector v-model="model" class="model-selector" @select="onSelectModel" />
+    <model-selector class="model-selector" />
     <api-status
       :initializing="initializing"
       :application="application"
@@ -27,24 +27,24 @@ import {
   ROLE_ASSISTANT,
   ROLE_USER,
   IChatModel,
-  CHAT_MODEL_CHATGPT,
   IApplication,
   IChatMessageState,
   IChatAskResponse,
   chatOperator,
-  IChatConversation
+  IChatConversation,
+  IChatMessage
 } from '@/operators';
 import InputBox from '@/components/chat/InputBox.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import ApiStatus from '@/components/common/ApiStatus.vue';
-import { ROUTE_CHAT_CONVERSATION } from '@/router';
+import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router';
 import { Status } from '@/store/common/models';
-import { v4 as uuid } from 'uuid';
+import { log } from '@/utils/log';
 
 export interface IData {
-  model: IChatModel;
   question: '';
+  messages: IChatMessage[];
 }
 
 export default defineComponent({
@@ -57,15 +57,16 @@ export default defineComponent({
   },
   data(): IData {
     return {
-      model: CHAT_MODEL_CHATGPT,
-      question: ''
+      question: '',
+      messages:
+        this.$store.state.chat.conversations?.find(
+          (conversation: IChatConversation) => conversation.id === this.$route.params.id?.toString()
+        )?.messages || []
     };
   },
   computed: {
-    messages() {
-      return this.$store.state.chat.conversations?.find(
-        (conversation: IChatConversation) => conversation.id === this.$route.params.id?.toString()
-      )?.messages;
+    model() {
+      return this.$store.state.chat.model;
     },
     conversationId(): string | undefined {
       return this.$route.params.id?.toString();
@@ -89,38 +90,31 @@ export default defineComponent({
     }
   },
   watch: {
-    conversationId() {
-      if (!this.conversation) {
-        this.onCreateNewConversation(this.conversationId);
+    model(val: IChatModel) {
+      if (val) {
+        this.onModelChanged();
+      }
+    },
+    conversationId(val: string) {
+      if (!val) {
+        this.messages = [];
+      } else {
+        this.messages =
+          this.conversations?.find((conversation: IChatConversation) => conversation.id === val)?.messages || [];
+        this.onScrollDown();
       }
     }
   },
   mounted() {
-    if (!this.conversation) {
-      this.onCreateNewConversation(this.conversationId);
-    }
+    this.onScrollDown();
   },
   methods: {
-    async onCreateNewConversation(id?: string) {
-      const newConversationId = id || uuid();
+    async onCreateNewConversation() {
       await this.$router.push({
-        name: ROUTE_CHAT_CONVERSATION,
-        params: {
-          id: newConversationId
-        }
+        name: ROUTE_CHAT_CONVERSATION_NEW
       });
-      const conversations = this.conversations;
-      console.log('this.store', this.$store);
-      await this.$store.dispatch('chat/setConversations', [
-        {
-          id: newConversationId,
-          messages: [],
-          new: true
-        },
-        ...conversations
-      ]);
     },
-    async onSelectModel() {
+    async onModelChanged() {
       await this.onCreateNewConversation();
       await this.$store.dispatch('chat/getApplications');
     },
@@ -132,6 +126,12 @@ export default defineComponent({
       this.question = '';
       await this.onFetchAnswer();
     },
+    async onScrollDown() {
+      setTimeout(() => {
+        const container = document.querySelector('.dialogue') as HTMLDivElement;
+        container.scrollTop = container.scrollHeight;
+      }, 0);
+    },
     async onFetchAnswer() {
       const token = this.application?.credential?.token;
       const endpoint = this.application?.api?.endpoint;
@@ -141,11 +141,13 @@ export default defineComponent({
         console.error('no token or endpoint or question');
         return;
       }
+      let conversationId = this.conversationId;
       this.messages.push({
         content: '',
         role: ROLE_ASSISTANT,
         state: IChatMessageState.PENDING
       });
+      this.onScrollDown();
       // request server to get answer
       chatOperator
         .askQuestion(
@@ -164,12 +166,28 @@ export default defineComponent({
                 content: response.answer,
                 state: IChatMessageState.ANSWERING
               };
+              conversationId = response.conversation_id;
+              this.onScrollDown();
             }
           }
         )
-        .then(() => {
+        .then(async () => {
+          log(this.onFetchAnswer, 'finished fetch answer');
           this.messages[this.messages.length - 1].state = IChatMessageState.FINISHED;
-          this.$store.dispatch('chat/getConversations');
+          await this.$store.dispatch('chat/setConversation', {
+            id: conversationId,
+            messages: this.messages
+          });
+          if (!this.conversationId) {
+            await this.$router.push({
+              name: ROUTE_CHAT_CONVERSATION,
+              params: {
+                id: conversationId
+              }
+            });
+          }
+          this.onScrollDown();
+          await this.$store.dispatch('chat/getConversations');
         })
         .catch((error) => {
           if (this.messages && this.messages.length > 0) {

@@ -31,6 +31,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
   ROUTE_AUTH_LOGIN,
   ROUTE_CHAT_CONVERSATION,
+  ROUTE_CHAT_CONVERSATION_NEW,
   ROUTE_CHAT_INDEX,
   ROUTE_MIDJOURNEY_HISTORY,
   ROUTE_MIDJOURNEY_INDEX
@@ -50,7 +51,7 @@ export default defineComponent({
             name: ROUTE_CHAT_INDEX
           },
           icon: 'fa-regular fa-comment',
-          routes: [ROUTE_CHAT_INDEX, ROUTE_CHAT_CONVERSATION]
+          routes: [ROUTE_CHAT_INDEX, ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW]
         },
         {
           route: {
