@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <div class="presets">
-      <preset-panel v-model="preset" />
+      <preset-panel />
     </div>
     <div class="main">
       <channel-selector v-model="channel" class="mb-4" @select="onSelectChannel" />
@@ -10,9 +10,9 @@
         :application="application"
         class="mb-4"
         :api-id="channel.apiId"
-        @refresh="onFetchApplications"
+        @refresh="onGetApplications"
       />
-      <task-full-list :applications="applications" @custom="onCustom" />
+      <task-full-list @custom="onCustom" />
       <el-button type="primary" class="btn btn-generate" @click="onGenerateNew">
         <font-awesome-icon icon="fa-solid fa-chevron-left" class="icon icon-rotate mr-1" />
         {{ $t('midjourney.button.generateNew') }}
@@ -28,33 +28,25 @@ import { ElMessage, ElButton } from 'element-plus';
 import ChannelSelector from '@/components/midjourney/ChannelSelector.vue';
 import ApiStatus from '@/components/common/ApiStatus.vue';
 import {
-  IApplication,
   IMidjourneyChannel,
   MidjourneyImagineAction,
   IMidjourneyPreset,
   MIDJOURNEY_CHANNEL_FAST,
-  MIDJOURNEY_CHANNEL_TURBO,
-  MIDJOURNEY_CHANNEL_RELAX,
-  applicationOperator,
   midjourneyOperator,
   IMidjourneyImagineTask,
-  IMidjourneyImagineRequest
+  IMidjourneyImagineRequest,
+  IApplication
 } from '@/operators';
 import TaskFullList from '@/components/midjourney/tasks/TaskFullList.vue';
 import { ROUTE_MIDJOURNEY_INDEX } from '@/router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { Status } from '@/store/common/models';
 
 interface IData {
   channel: IMidjourneyChannel;
-  preset: IMidjourneyPreset;
   prompt: string;
   elements: string[];
   ignore: string;
-  initializing: boolean;
-  applied: boolean | undefined;
-  applications: IApplication[];
-  references: string[];
-  task: IMidjourneyImagineTask | undefined;
 }
 
 const CALLBACK_URL = 'https://webhook.zhishuyun.com/midjourney';
@@ -71,28 +63,28 @@ export default defineComponent({
   },
   data(): IData {
     return {
-      applications: [],
       channel: MIDJOURNEY_CHANNEL_FAST,
-      preset: this.$store.state.midjourney.preset,
       prompt: '',
       elements: [],
-      ignore: '',
-      initializing: false,
-      applied: undefined,
-      task: undefined,
-      references: []
+      ignore: ''
     };
   },
   computed: {
+    applications() {
+      return this.$store.state.midjourney.applications;
+    },
+    initializing() {
+      return this.$store.state.midjourney.getApplicationsStatus === Status.Request;
+    },
     application() {
       if (this.applications && this.applications.length > 0) {
-        return this.applications.filter((item) => item.api_id === this.channel.apiId)[0];
+        return this.applications.filter((item: IApplication) => item.api_id === this.channel.apiId)[0];
       }
       return undefined;
     }
   },
-  mounted() {
-    this.onFetchApplications();
+  async mounted() {
+    await this.onGetApplications();
   },
   methods: {
     async onGenerateNew() {
@@ -100,17 +92,11 @@ export default defineComponent({
         name: ROUTE_MIDJOURNEY_INDEX
       });
     },
-    async onFetchApplications() {
-      this.initializing = true;
-      const { data: applications } = await applicationOperator.getAll({
-        user_id: this.$store.state.user.id,
-        api_id: [MIDJOURNEY_CHANNEL_FAST.apiId, MIDJOURNEY_CHANNEL_RELAX.apiId, MIDJOURNEY_CHANNEL_TURBO.apiId]
-      });
-      this.initializing = false;
-      this.applications = applications?.items;
+    async onGetApplications() {
+      await this.$store.dispatch('midjourney/getApplications');
     },
     async onSelectChannel() {
-      await this.onFetchApplications();
+      await this.onGetApplications();
     },
     async onStartTask(request: IMidjourneyImagineRequest) {
       const token = this.application?.credential?.token;

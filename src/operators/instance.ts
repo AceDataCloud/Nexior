@@ -15,7 +15,6 @@ const httpClient: AxiosInstance = axios.create({
 });
 
 httpClient.interceptors.request.use((config) => {
-  console.log('store', store.state);
   const accessToken = store.state.token?.access;
   if (!config.headers) {
     config.headers = {};

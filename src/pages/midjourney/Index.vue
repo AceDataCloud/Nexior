@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <div class="presets">
-      <preset-panel v-model="preset" />
+      <preset-panel />
     </div>
     <div class="main">
       <channel-selector v-model="channel" class="mb-4" @select="onSelectChannel" />
@@ -10,7 +10,7 @@
         :application="application"
         :api-id="channel.apiId"
         class="mb-4"
-        @apply="onFetchApplications"
+        @apply="onGetApplications"
       />
       <div class="pt-4">
         <reference-image class="mb-4" @change="references = $event" />
@@ -42,10 +42,7 @@ import {
   IApplication,
   IMidjourneyChannel,
   MidjourneyImagineAction,
-  IMidjourneyPreset,
   MIDJOURNEY_CHANNEL_FAST,
-  MIDJOURNEY_CHANNEL_TURBO,
-  MIDJOURNEY_CHANNEL_RELAX,
   applicationOperator,
   midjourneyOperator,
   IMidjourneyImagineTask,
@@ -56,18 +53,14 @@ import ApiStatus from '@/components/common/ApiStatus.vue';
 import TaskBriefList from '@/components/midjourney/tasks/TaskBriefList.vue';
 import FinalPrompt from '@/components/midjourney/FinalPrompt.vue';
 import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
+import { Status } from '@/store/common/models';
 
 interface IData {
   channel: IMidjourneyChannel;
-  preset: IMidjourneyPreset;
   prompt: string;
   elements: string[];
   ignore: string;
-  initializing: boolean;
-  applied: boolean | undefined;
-  applications: IApplication[];
   references: string[];
-  task: IMidjourneyImagineTask | undefined;
 }
 
 const CALLBACK_URL = 'https://webhook.zhishuyun.com/midjourney';
@@ -88,22 +81,26 @@ export default defineComponent({
   },
   data(): IData {
     return {
-      applications: [],
       channel: MIDJOURNEY_CHANNEL_FAST,
-      preset: this.$store.state.midjourney.preset || {},
       prompt: '',
       elements: [],
       ignore: '',
-      initializing: false,
-      applied: undefined,
-      task: undefined,
       references: []
     };
   },
   computed: {
+    preset() {
+      return this.$store.state.midjourney.preset;
+    },
+    initializing() {
+      return this.$store.state.midjourney.getApplicationsStatus === Status.Request;
+    },
+    applications() {
+      return this.$store.state.midjourney.applications;
+    },
     application() {
       if (this.applications && this.applications.length > 0) {
-        return this.applications.filter((item) => item.api_id === this.channel.apiId)[0];
+        return this.applications.filter((item: IApplication) => item.api_id === this.channel.apiId)[0];
       }
       return undefined;
     },
@@ -151,8 +148,8 @@ export default defineComponent({
       return this.prompt || this.references?.length > 0 ? content : '';
     }
   },
-  mounted() {
-    this.onFetchApplications();
+  async mounted() {
+    await this.onGetApplications();
   },
   methods: {
     onApply() {
@@ -172,16 +169,10 @@ export default defineComponent({
         });
     },
     async onSelectChannel() {
-      await this.onFetchApplications();
+      await this.onGetApplications();
     },
-    async onFetchApplications() {
-      this.initializing = true;
-      const { data: applications } = await applicationOperator.getAll({
-        user_id: this.$store.state.user.id,
-        api_id: [MIDJOURNEY_CHANNEL_FAST.apiId, MIDJOURNEY_CHANNEL_RELAX.apiId, MIDJOURNEY_CHANNEL_TURBO.apiId]
-      });
-      this.initializing = false;
-      this.applications = applications?.items;
+    async onGetApplications() {
+      await this.$store.dispatch('midjourney/getApplications');
     },
     async onStartTask(request: IMidjourneyImagineRequest) {
       const token = this.application?.credential?.token;

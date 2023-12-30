@@ -45,25 +45,14 @@ export default defineComponent({
     TranslationSelector,
     NijiSelector
   },
-  props: {
-    modelValue: {
-      type: Object,
-      default: () => ({})
-    }
-  },
-  emits: ['update:modelValue'],
   data() {
     return {
-      preset: this.modelValue
+      preset: this.$store.state.midjourney.preset
     };
   },
   watch: {
-    modelValue(val) {
-      this.preset = val;
-    },
     preset: {
       handler(val) {
-        this.$emit('update:modelValue', val);
         this.$store.dispatch('midjourney/setPreset', {
           ...val
         });

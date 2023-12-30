@@ -22,8 +22,16 @@ export default defineComponent({
     Navigator
   },
   async mounted() {
-    await this.$store.dispatch('chat/getApplications');
-    await this.$store.dispatch('chat/getConversations');
+    await this.onGetApplications();
+    await this.onGetConversations();
+  },
+  methods: {
+    async onGetApplications() {
+      await this.$store.dispatch('chat/getApplications');
+    },
+    async onGetConversations() {
+      await this.$store.dispatch('chat/getConversations');
+    }
   }
 });
 </script>

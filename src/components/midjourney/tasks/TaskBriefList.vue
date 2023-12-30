@@ -23,15 +23,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import TaskPreview from './TaskPreview.vue';
-import { IApplication, IMidjourneyImagineTask, apiUsageOperator, midjourneyOperator } from '@/operators';
 import { ROUTE_MIDJOURNEY_HISTORY } from '@/router';
 import { ElButton, ElCard, ElSkeleton, ElSkeletonItem } from 'element-plus';
-
-interface IData {
-  tasks: IMidjourneyImagineTask[] | undefined;
-  mounted: boolean;
-  loading: boolean;
-}
+import { Status } from '@/store/common/models';
 
 export default defineComponent({
   name: 'TaskBriefList',
@@ -42,66 +36,45 @@ export default defineComponent({
     ElSkeleton,
     ElSkeletonItem
   },
-  props: {
-    applications: {
-      type: Object as () => IApplication[],
-      required: true
-    }
-  },
   emits: ['update:modelValue', 'custom'],
-  data(): IData {
+  data() {
     return {
-      tasks: undefined,
-      mounted: false,
-      loading: false
+      job: 0
     };
   },
-  watch: {
-    applications(val) {
-      if (val) {
-        this.getTasks();
-      }
+  computed: {
+    loading() {
+      return this.$store.state.midjourney.getImagineTasksStatus === Status.Request;
+    },
+    tasks() {
+      return this.$store.state.midjourney.imagineTasks;
+    },
+    applications() {
+      return this.$store.state.midjourney.applications;
     }
   },
-  mounted() {
-    this.mounted = true;
+  async mounted() {
+    await this.$store.dispatch('midjourney/setImagineTasks', undefined);
+    this.job = setInterval(() => {
+      this.getImagineTasks();
+    }, 5000);
+  },
+  unmounted() {
+    clearInterval(this.job);
   },
   methods: {
     async onLoadHistory() {
       this.$router.push({ name: ROUTE_MIDJOURNEY_HISTORY });
     },
-    async getTasks() {
+    async getImagineTasks() {
       // ensure that the previous request has been completed
       if (this.loading) {
         return;
       }
-      this.loading = true;
-      const {
-        data: { items: apiUsages }
-      } = await apiUsageOperator.getAll({
-        user_id: this.$store.state.user.id,
-        application_id: this.applications?.map((application) => application.id),
-        offset: 0,
-        limit: 5,
-        ordering: '-created_at'
+      await this.$store.dispatch('midjourney/getImagineTasks', {
+        limit: 12,
+        offset: 0
       });
-      let tasks = (await midjourneyOperator.tasks(apiUsages.map((apiUsage) => apiUsage?.metadata?.task_id as string)))
-        .data;
-      // filter out null tasks
-      tasks = tasks.filter((task) => task);
-      this.tasks = tasks.map((task) => {
-        const apiUsage = apiUsages.filter((apiUsage) => apiUsage?.metadata?.task_id === task?.id)[0];
-        return {
-          ...task,
-          created_at: apiUsage?.created_at
-        };
-      });
-      this.loading = false;
-      if (this.mounted) {
-        setTimeout(() => {
-          this.getTasks();
-        }, 5000);
-      }
     }
   }
 });
