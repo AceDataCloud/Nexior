@@ -1,4 +1,4 @@
-import { IApplication } from '@/operators';
+import { IApplication, IChatConversation } from '@/operators';
 import { IChatState } from './models';
 import { Status } from '../common/models';
 
@@ -10,7 +10,7 @@ export const setGetApplicationsStatus = (state: IChatState, payload: Status): vo
   state.getApplicationsStatus = payload;
 };
 
-export const setConversations = (state: IChatState, payload: any): void => {
+export const setConversations = (state: IChatState, payload: IChatConversation[]): void => {
   state.conversations = payload;
 };
 

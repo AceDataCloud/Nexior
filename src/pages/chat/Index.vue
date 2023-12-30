@@ -11,7 +11,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
-import { ROUTE_CHAT_CONVERSATION_NEW } from '@/router/constants';
+import { v4 as uuid } from 'uuid';
+import { ROUTE_CHAT_CONVERSATION } from '@/router/constants';
 
 interface IData {
   model: string;
@@ -32,7 +33,10 @@ export default defineComponent({
   methods: {
     onStart() {
       this.$router.push({
-        name: ROUTE_CHAT_CONVERSATION_NEW
+        name: ROUTE_CHAT_CONVERSATION,
+        params: {
+          id: uuid()
+        }
       });
     }
   }
