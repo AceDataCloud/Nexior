@@ -188,6 +188,7 @@ export default defineComponent({
           }
           this.onScrollDown();
           await this.$store.dispatch('chat/getConversations');
+          await this.$store.dispatch('chat/getApplications');
         })
         .catch((error) => {
           if (this.messages && this.messages.length > 0) {
