@@ -2,6 +2,7 @@ import {
   CHAT_MODEL_CHATGPT,
   CHAT_MODEL_CHATGPT4,
   CHAT_MODEL_CHATGPT4_BROWSING,
+  CHAT_MODEL_CHATGPT4_VISION,
   CHAT_MODEL_CHATGPT_16K,
   CHAT_MODEL_CHATGPT_BROWSING,
   IApplication,
@@ -36,7 +37,7 @@ export const setConversation = async ({ commit, state }: any, payload: IChatConv
   if (index > -1) {
     conversations[index] = payload;
   } else {
-    conversations.push(payload);
+    conversations.unshift(payload);
   }
   commit('setConversations', conversations);
   log(setConversation, 'set conversation success', conversations);
@@ -55,7 +56,8 @@ export const getApplications = async ({
       CHAT_MODEL_CHATGPT_16K.apiId,
       CHAT_MODEL_CHATGPT_BROWSING.apiId,
       CHAT_MODEL_CHATGPT4.apiId,
-      CHAT_MODEL_CHATGPT4_BROWSING.apiId
+      CHAT_MODEL_CHATGPT4_BROWSING.apiId,
+      CHAT_MODEL_CHATGPT4_VISION.apiId
     ]
   });
   log(getApplications, 'get application for chat success', applications);
@@ -78,7 +80,7 @@ export const getConversations = async ({
     // @ts-ignore
     application_id: state.applications?.map((application) => application.id),
     offset: 0,
-    limit: 30,
+    limit: 50,
     ordering: '-created_at'
   });
   log(getConversations, 'get api usages success', apiUsages);
