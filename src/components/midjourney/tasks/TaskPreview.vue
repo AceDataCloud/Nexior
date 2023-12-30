@@ -46,7 +46,7 @@
           <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
           {{ $t('midjourney.field.failureReason') }}:
           {{ modelValue?.response?.detail }}
-          <copy-to-clipboard :content="modelValue?.response?.detail" class="btn-copy" />
+          <copy-to-clipboard :content="modelValue?.response?.detail!" class="btn-copy" />
         </p>
         <p class="description">
           <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />

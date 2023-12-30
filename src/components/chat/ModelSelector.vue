@@ -36,6 +36,7 @@ import {
   CHAT_MODEL_CHATGPT,
   CHAT_MODEL_CHATGPT4,
   CHAT_MODEL_CHATGPT4_BROWSING,
+  CHAT_MODEL_CHATGPT4_VISION,
   CHAT_MODEL_CHATGPT_16K,
   CHAT_MODEL_CHATGPT_BROWSING
 } from '@/operators/chat/constants';
@@ -52,7 +53,7 @@ const GROUPS = [
     label: '4.0',
     value: 'plus',
     icon: 'fa-solid fa-wand-magic-sparkles',
-    options: [CHAT_MODEL_CHATGPT4, CHAT_MODEL_CHATGPT4_BROWSING]
+    options: [CHAT_MODEL_CHATGPT4, CHAT_MODEL_CHATGPT4_BROWSING, CHAT_MODEL_CHATGPT4_VISION]
   }
 ];
 

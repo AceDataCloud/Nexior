@@ -8,6 +8,8 @@ import {
   faClock as faRegularClock
 } from '@fortawesome/free-regular-svg-icons';
 import {
+  faLocationArrow as faSolidLocationArrow,
+  faPaperclip as faSolidPaperclip,
   faHashtag as faSolidHashtag,
   faCircleInfo as faSolidCircleInfo,
   faChevronLeft as faSolidChevronLeft,
@@ -38,10 +40,12 @@ import {
   faXmark as faSolidXmark
 } from '@fortawesome/free-solid-svg-icons';
 library.add(faRegularCopy);
+library.add(faSolidPaperclip);
 library.add(faSolidXmark);
 library.add(faSolidRotateRight);
 library.add(faSolidPenToSquare);
 library.add(faSolidCheck);
+library.add(faSolidLocationArrow);
 library.add(faRegularUser);
 library.add(faRegularSun);
 library.add(faSolidBolt);

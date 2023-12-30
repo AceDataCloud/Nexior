@@ -1,8 +1,11 @@
 export default {
   startNewChat: '开始新的会话',
+  uploadFile: '上传文件',
   noToken: '请先申请对应服务',
   newMessagePlaceholder: '请输入你的问题...',
   noInput: '问题不能为空',
+  uploadReferencesExceed: '最多只能上传 1 个文件',
+  uploadReferencesError: '上传文件失败，请稍后重试',
   notApplied: '您尚未申请该服务，请先申请',
   tryForFree: '免费使用',
   initializing: '初始化中，请稍后...',
@@ -23,6 +26,6 @@ export default {
   errorUsedUp: '您的套餐次数已经用完，请购买更多次数继续使用',
   errorUnknown: '服务器出现未知错误，请稍后重试或联系客服',
   errorTimeout: '回答问题超时，请稍后重试',
-  howToBreakLine: '按 Shift+Enter 键可以换行',
+  howToUse: '按 Shift+Enter 键可以换行',
   noConversations: '没有历史会话，请先发起一个新的会话'
 };
