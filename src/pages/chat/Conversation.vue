@@ -63,14 +63,17 @@ export default defineComponent({
   },
   computed: {
     messages() {
-      return (
-        this.$store.state.chat.conversations?.find(
-          (conversation: IChatConversation) => conversation.id === this.$route.params.id?.toString()
-        )?.messages || []
-      );
+      return this.$store.state.chat.conversations?.find(
+        (conversation: IChatConversation) => conversation.id === this.$route.params.id?.toString()
+      )?.messages;
     },
     conversationId(): string | undefined {
       return this.$route.params.id?.toString();
+    },
+    conversation() {
+      return this.$store.state.chat.conversations?.find(
+        (conversation: IChatConversation) => conversation.id === this.conversationId
+      );
     },
     application() {
       return this.applications?.find((application: IApplication) => application.api?.id === this.model.apiId);
@@ -85,9 +88,21 @@ export default defineComponent({
       return this.$store.state.chat.getApplicationsStatus === Status.Request;
     }
   },
+  watch: {
+    conversationId() {
+      if (!this.conversation) {
+        this.onCreateNewConversation(this.conversationId);
+      }
+    }
+  },
+  mounted() {
+    if (!this.conversation) {
+      this.onCreateNewConversation(this.conversationId);
+    }
+  },
   methods: {
-    async onCreateNewConversation() {
-      const newConversationId = uuid();
+    async onCreateNewConversation(id?: string) {
+      const newConversationId = id || uuid();
       await this.$router.push({
         name: ROUTE_CHAT_CONVERSATION,
         params: {
@@ -116,10 +131,6 @@ export default defineComponent({
       });
       this.question = '';
       await this.onFetchAnswer();
-    },
-    async onFetchHistory(id?: string) {
-      const { data: data } = await chatOperator.getConversation(id || this.conversationId);
-      this.messages = data.messages || [];
     },
     async onFetchAnswer() {
       const token = this.application?.credential?.token;
@@ -153,14 +164,6 @@ export default defineComponent({
                 content: response.answer,
                 state: IChatMessageState.ANSWERING
               };
-              if (!this.conversationId) {
-                this.$router.push({
-                  name: ROUTE_CHAT_CONVERSATION,
-                  params: {
-                    id: response.conversation_id
-                  }
-                });
-              }
             }
           }
         )
