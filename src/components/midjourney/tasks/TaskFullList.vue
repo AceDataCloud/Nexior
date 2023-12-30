@@ -116,7 +116,7 @@ export default defineComponent({
       const {
         data: { items: apiUsages, count }
       } = await apiUsageOperator.getAll({
-        user_id: this.$store.state.common.user.id,
+        user_id: this.$store.state.user.id,
         application_id: this.applications?.map((application) => application.id),
         offset: (this.page - 1) * this.limit,
         limit: this.limit,

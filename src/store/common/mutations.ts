@@ -26,14 +26,9 @@ export const setSetting = (state: IRootState, payload: any): void => {
   };
 };
 
-export const setApplications = (state: IRootState, payload: any): void => {
-  state.applications = payload;
-};
-
 export default {
   setUser,
   setToken,
   resetToken,
-  setSetting,
-  setApplications
+  setSetting
 };

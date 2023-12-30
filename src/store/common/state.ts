@@ -6,12 +6,12 @@ export default (): IRootState => {
     user: {},
     token: {
       access: undefined,
-      refresh: undefined
+      refresh: undefined,
+      expiration: undefined
     },
     setting: {
       endpoint: ENDPOINT,
       stream: false
-    },
-    applications: undefined
+    }
   };
 };

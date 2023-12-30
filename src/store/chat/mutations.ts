@@ -6,11 +6,21 @@ export const setApplications = (state: IChatState, payload: IApplication[]): voi
   state.applications = payload;
 };
 
-export const setApplicationsStatus = (state: IChatState, payload: Status): void => {
-  state.applicationsStatus = payload;
+export const setGetApplicationsStatus = (state: IChatState, payload: Status): void => {
+  state.getApplicationsStatus = payload;
+};
+
+export const setConversations = (state: IChatState, payload: any): void => {
+  state.conversations = payload;
+};
+
+export const setGetConversationsStatus = (state: IChatState, payload: Status): void => {
+  state.getConversationsStatus = payload;
 };
 
 export default {
   setApplications,
-  setApplicationsStatus
+  setGetApplicationsStatus,
+  setConversations,
+  setGetConversationsStatus
 };

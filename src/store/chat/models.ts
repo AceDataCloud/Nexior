@@ -1,7 +1,9 @@
-import { IApplication } from '@/operators';
+import { IApplication, IChatConversation } from '@/operators';
 import { Status } from '../common/models';
 
 export interface IChatState {
   applications: IApplication[] | undefined;
-  applicationsStatus: Status | undefined;
+  getApplicationsStatus: Status | undefined;
+  conversations: IChatConversation[] | undefined;
+  getConversationsStatus: Status | undefined;
 }

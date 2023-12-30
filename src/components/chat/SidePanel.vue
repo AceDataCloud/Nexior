@@ -71,25 +71,12 @@ import { defineComponent } from 'vue';
 import { ElSkeleton, ElInput } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router/constants';
-import { apiUsageOperator, IApplication, chatOperator, applicationOperator } from '@/operators';
+import { IApplication, chatOperator } from '@/operators';
 import { IChatConversation } from '@/operators/chat/models';
-import {
-  CHAT_MODEL_CHATGPT,
-  CHAT_MODEL_CHATGPT4,
-  CHAT_MODEL_CHATGPT4_BROWSING,
-  CHAT_MODEL_CHATGPT_16K,
-  CHAT_MODEL_CHATGPT_BROWSING
-} from '@/operators';
-
-interface IData {
-  initializing: boolean;
-  loading: boolean;
-  conversations: IChatConversation[] | undefined;
-  applications: IApplication[] | undefined;
-}
+import { Status } from '@/store/common/models';
 
 export default defineComponent({
-  name: 'Sidebar',
+  name: 'SidePanel',
   components: {
     ElInput,
     FontAwesomeIcon,
@@ -97,24 +84,26 @@ export default defineComponent({
   },
   props: {},
   emits: ['click'],
-  data(): IData {
-    return {
-      initializing: false,
-      loading: false,
-      conversations: undefined,
-      applications: undefined
-    };
-  },
-  watch: {
-    applications(val) {
-      if (val) {
-        this.onFetchConversations();
-      }
+  computed: {
+    conversations() {
+      return this.$store.state.chat.conversations;
+    },
+    applications() {
+      return this.$store.state.chat.applications;
+    },
+    loading() {
+      return this.$store.state.chat.getConversationsStatus === Status.Request;
     }
   },
-  async mounted() {
-    await this.onFetchApplications();
-    await this.onFetchConversations();
+  watch: {
+    applications: {
+      async handler(val: IApplication[]) {
+        if (!val) {
+          return;
+        }
+        await this.$store.dispatch('chat/getConversations');
+      }
+    }
   },
   methods: {
     async onNewConversation() {
@@ -122,52 +111,16 @@ export default defineComponent({
         name: ROUTE_CHAT_CONVERSATION_NEW
       });
     },
-    async onFetchApplications() {
-      this.initializing = true;
-      const { data: applications } = await applicationOperator.getAll({
-        user_id: this.$store.state.common.user.id,
-        api_id: [
-          CHAT_MODEL_CHATGPT.apiId,
-          CHAT_MODEL_CHATGPT_16K.apiId,
-          CHAT_MODEL_CHATGPT_BROWSING.apiId,
-          CHAT_MODEL_CHATGPT4.apiId,
-          CHAT_MODEL_CHATGPT4_BROWSING.apiId
-        ]
-      });
-      this.initializing = false;
-      this.applications = applications?.items;
-    },
     async onConfirm(conversation: IChatConversation) {
       if (conversation?.deleting) {
         await chatOperator.deleteConversation(conversation.id);
-        await this.onFetchConversations();
+        await this.$store.dispatch('chat/getConversations');
       } else if (conversation?.editing) {
         await chatOperator.updateConversation(conversation);
-        this.onFetchConversations();
+        await this.$store.dispatch('chat/getConversations');
       } else {
         conversation.editing = true;
       }
-    },
-    async onFetchConversations() {
-      this.loading = true;
-      const {
-        data: { items: apiUsages }
-      } = await apiUsageOperator.getAll({
-        user_id: this.$store.state.common.user.id,
-        // @ts-ignore
-        application_id: this.applications?.map((application) => application.id),
-        offset: 0,
-        limit: 30,
-        ordering: '-created_at'
-      });
-      this.loading = false;
-      // de duplicate conversations using id
-      const conversationIds: string[] = apiUsages
-        .map((apiUsage) => apiUsage.metadata?.conversation_id)
-        .filter((id) => id);
-      const uniqueConversationIds = [...new Set(conversationIds)];
-      const conversations = (await chatOperator.getConversations(uniqueConversationIds)).data;
-      this.conversations = conversations;
     },
     onClick(id: string) {
       if (!id) {
@@ -191,8 +144,13 @@ export default defineComponent({
   flex-direction: column;
   align-items: flex-end;
   padding: 15px;
+  width: 300px;
+  height: 100%;
+  border-right: 1px solid #eee;
+  overflow-y: scroll;
+
   .conversations {
-    flex: 1;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;

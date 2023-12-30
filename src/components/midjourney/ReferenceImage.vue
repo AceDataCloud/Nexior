@@ -50,7 +50,7 @@ export default defineComponent({
   computed: {
     headers() {
       return {
-        Authorization: `Bearer ${this.$store.state.common.token.access}`
+        Authorization: `Bearer ${this.$store.state.token.access}`
       };
     },
     urls() {
