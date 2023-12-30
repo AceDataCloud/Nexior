@@ -38,14 +38,13 @@ import InputBox from '@/components/chat/InputBox.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import ApiStatus from '@/components/common/ApiStatus.vue';
-import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router';
+import { ROUTE_CHAT_CONVERSATION } from '@/router';
 import { Status } from '@/store/common/models';
 import { v4 as uuid } from 'uuid';
 
 export interface IData {
   model: IChatModel;
   question: '';
-  // messages: IChatMessage[];
 }
 
 export default defineComponent({

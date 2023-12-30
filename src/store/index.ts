@@ -10,7 +10,18 @@ const store = createStore({
     midjourney,
     chat
   },
-  plugins: [createPersistedState()]
+  plugins: [
+    createPersistedState({
+      paths: [
+        'token',
+        'user',
+        'chat.applications',
+        'chat.conversations',
+        'midjourney.applications',
+        'midjourney.imagineTasks'
+      ]
+    })
+  ]
 });
 
 export default store;

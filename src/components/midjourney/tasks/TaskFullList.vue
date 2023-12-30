@@ -26,18 +26,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import TaskPreview from './TaskPreview.vue';
-import { IApplication, IMidjourneyImagineTask, apiUsageOperator, midjourneyOperator } from '@/operators';
 import Pagination from '@/components/common/Pagination.vue';
 import { ElRow, ElCol, ElCard, ElSkeleton, ElSkeletonItem } from 'element-plus';
-
-interface IData {
-  tasks: IMidjourneyImagineTask[];
-  mounted: boolean;
-  total: number | undefined;
-  limit: number;
-  offset: number;
-  loading: boolean;
-}
+import { Status } from '@/store/common/models';
 
 export default defineComponent({
   name: 'TaskFullList',
@@ -50,42 +41,51 @@ export default defineComponent({
     ElSkeletonItem,
     ElCard
   },
-  props: {
-    applications: {
-      type: Object as () => IApplication[],
-      required: true
-    }
-  },
   emits: ['update:modelValue', 'custom'],
-  data(): IData {
+  data() {
     return {
-      tasks: [],
-      mounted: false,
-      limit: 12,
-      offset: 0,
-      total: undefined,
-      loading: false
+      job: 0
     };
   },
   computed: {
     page() {
       return parseInt(this.$route.query.page?.toString() || '1');
+    },
+    total() {
+      return this.$store.state.midjourney.imagineTasksTotal;
+    },
+    offset() {
+      return (this.page - 1) * this.limit;
+    },
+    limit() {
+      return 12;
+    },
+    loading() {
+      return this.$store.state.midjourney.getImagineTasksStatus === Status.Request;
+    },
+    tasks() {
+      return this.$store.state.midjourney.imagineTasks;
+    },
+    applications() {
+      return this.$store.state.midjourney.applications;
     }
   },
   watch: {
-    applications(val) {
-      if (val) {
-        this.getTasks();
-      }
-    },
     page: {
-      handler() {
-        this.getTasks();
+      async handler() {
+        await this.$store.dispatch('midjourney/setImagineTasks', undefined);
+        this.getImagineTasks();
       }
     }
   },
-  mounted() {
-    this.mounted = true;
+  async mounted() {
+    await this.$store.dispatch('midjourney/setImagineTasks', undefined);
+    this.job = setInterval(() => {
+      this.getImagineTasks();
+    }, 5000);
+  },
+  unmounted() {
+    clearInterval(this.job);
   },
   methods: {
     onPageChange(page: number) {
@@ -107,37 +107,15 @@ export default defineComponent({
         });
       }, 3000);
     },
-    async getTasks() {
+    async getImagineTasks() {
       // ensure that the previous request has been completed
       if (this.loading) {
         return;
       }
-      this.loading = true;
-      const {
-        data: { items: apiUsages, count }
-      } = await apiUsageOperator.getAll({
-        user_id: this.$store.state.user.id,
-        application_id: this.applications?.map((application) => application.id),
-        offset: (this.page - 1) * this.limit,
+      await this.$store.dispatch('midjourney/getImagineTasks', {
         limit: this.limit,
-        ordering: '-created_at'
+        offset: this.offset
       });
-      this.total = count;
-      const tasks = (await midjourneyOperator.tasks(apiUsages.map((apiUsage) => apiUsage.metadata?.task_id as string)))
-        .data;
-      this.tasks = tasks.map((task) => {
-        const apiUsage = apiUsages.filter((apiUsage) => apiUsage.metadata?.task_id === task?.id)[0];
-        return {
-          ...task,
-          created_at: apiUsage.created_at
-        };
-      });
-      this.loading = false;
-      if (this.mounted) {
-        setTimeout(() => {
-          this.getTasks();
-        }, 5000);
-      }
     }
   }
 });
