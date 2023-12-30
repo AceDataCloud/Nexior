@@ -1,5 +1,11 @@
 import { IApplication, IMidjourneyPreset, IUser } from '@/operators';
 
+export enum Status {
+  Request = 'Request',
+  Success = 'Success',
+  Error = 'Error'
+}
+
 export interface IToken {
   access?: string;
   refresh?: string;
@@ -24,6 +30,7 @@ export interface IMidjourneyState {
 
 export interface IChatState {
   applications: IApplication[] | undefined;
+  applicationsStatus: Status | undefined;
 }
 
 export interface IRootState {
