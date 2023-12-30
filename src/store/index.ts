@@ -1,12 +1,12 @@
 import { createStore, ActionContext } from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
-import { common } from './common';
-import { midjourney } from './midjourney';
-import { chat } from './chat';
+import midjourney from './midjourney';
+import chat from './chat';
+import root from './common';
 
 const store = createStore({
+  ...root,
   modules: {
-    common,
     midjourney,
     chat
   },
