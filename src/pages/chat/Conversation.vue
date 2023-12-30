@@ -5,7 +5,7 @@
       :initializing="initializing"
       :application="application"
       :api-id="model.apiId"
-      @refresh="onFetchApplications"
+      @refresh="$store.dispatch('chat/getApplications')"
     />
     <div class="dialogue">
       <introduction v-if="messages && messages.length === 0" />
@@ -33,10 +33,6 @@ import {
   IApplication,
   IChatMessageState,
   IChatAskResponse,
-  CHAT_MODEL_CHATGPT_16K,
-  CHAT_MODEL_CHATGPT_BROWSING,
-  CHAT_MODEL_CHATGPT4,
-  CHAT_MODEL_CHATGPT4_BROWSING,
   chatOperator
 } from '@/operators';
 import InputBox from '@/components/chat/InputBox.vue';
@@ -48,7 +44,6 @@ import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router';
 export interface IData {
   messages: IChatMessage[];
   model: IChatModel;
-  applications: IApplication[] | undefined;
   question: '';
   initializing: boolean;
   applied: boolean | undefined;
@@ -68,7 +63,6 @@ export default defineComponent({
       question: '',
       initializing: false,
       applied: undefined,
-      applications: undefined,
       messages: []
     };
   },
@@ -77,7 +71,10 @@ export default defineComponent({
       return this.$route.params.id?.toString();
     },
     application() {
-      return this.applications?.find((application) => application.api?.id === this.model.apiId);
+      return this.applications?.find((application: IApplication) => application.api?.id === this.model.apiId);
+    },
+    applications() {
+      return this.$store.state.chat.applications;
     }
   },
   watch: {
@@ -88,7 +85,6 @@ export default defineComponent({
     }
   },
   async mounted() {
-    await this.onFetchApplications();
     await this.onFetchHistory();
   },
   methods: {
@@ -100,22 +96,7 @@ export default defineComponent({
     },
     async onSelectModel() {
       await this.onCreateNewConversation();
-      await this.onFetchApplications();
-    },
-    async onFetchApplications() {
-      this.initializing = true;
-      const { data: applications } = await applicationOperator.getAll({
-        user_id: this.$store.state.common.user.id,
-        api_id: [
-          CHAT_MODEL_CHATGPT.apiId,
-          CHAT_MODEL_CHATGPT_16K.apiId,
-          CHAT_MODEL_CHATGPT_BROWSING.apiId,
-          CHAT_MODEL_CHATGPT4.apiId,
-          CHAT_MODEL_CHATGPT4_BROWSING.apiId
-        ]
-      });
-      this.initializing = false;
-      this.applications = applications?.items;
+      await this.$store.dispatch('chat/getApplications');
     },
     async onSubmitQuestion() {
       this.messages.push({
@@ -174,7 +155,7 @@ export default defineComponent({
         )
         .then(() => {
           this.messages[this.messages.length - 1].state = IChatMessageState.FINISHED;
-          this.onFetchApplications();
+          this.$store.dispatch('chat/getConversations');
         })
         .catch((error) => {
           if (this.messages && this.messages.length > 0) {

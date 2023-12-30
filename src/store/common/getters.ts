@@ -16,14 +16,9 @@ export const setting = (state: IRootState): any => {
   return state.setting;
 };
 
-export const applications = (state: IRootState): any => {
-  return state.applications;
-};
-
 export default {
   authenticated,
   user,
   token,
-  setting,
-  applications
+  setting
 };
