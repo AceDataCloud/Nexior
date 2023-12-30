@@ -5,7 +5,7 @@
         <el-button
           :class="{
             button: true,
-            active: $route.name === link.route.name
+            active: link.routes.includes($route.name as string)
           }"
           @click="$router.push(link.route)"
         >
@@ -28,7 +28,13 @@
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_AUTH_LOGIN, ROUTE_CHAT_INDEX, ROUTE_MIDJOURNEY_INDEX } from '@/router/constants';
+import {
+  ROUTE_AUTH_LOGIN,
+  ROUTE_CHAT_CONVERSATION,
+  ROUTE_CHAT_INDEX,
+  ROUTE_MIDJOURNEY_HISTORY,
+  ROUTE_MIDJOURNEY_INDEX
+} from '@/router/constants';
 
 export default defineComponent({
   name: 'Navigator',
@@ -43,13 +49,15 @@ export default defineComponent({
           route: {
             name: ROUTE_CHAT_INDEX
           },
-          icon: 'fa-regular fa-comment'
+          icon: 'fa-regular fa-comment',
+          routes: [ROUTE_CHAT_INDEX, ROUTE_CHAT_CONVERSATION]
         },
         {
           route: {
             name: ROUTE_MIDJOURNEY_INDEX
           },
-          icon: 'fa-solid fa-palette'
+          icon: 'fa-solid fa-palette',
+          routes: [ROUTE_MIDJOURNEY_INDEX, ROUTE_MIDJOURNEY_HISTORY]
         }
       ]
     };

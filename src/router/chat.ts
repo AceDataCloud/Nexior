@@ -1,4 +1,4 @@
-import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW, ROUTE_CHAT_INDEX } from './constants';
+import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_INDEX } from './constants';
 
 export default {
   path: '/chat',
@@ -8,11 +8,6 @@ export default {
       path: '',
       name: ROUTE_CHAT_INDEX,
       component: () => import('@/pages/chat/Index.vue')
-    },
-    {
-      path: 'conversation',
-      name: ROUTE_CHAT_CONVERSATION_NEW,
-      component: () => import('@/pages/chat/Conversation.vue')
     },
     {
       path: 'conversation/:id',

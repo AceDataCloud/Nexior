@@ -19,12 +19,17 @@ export const setApplications = async ({ commit }: any, payload: IApplication[]):
   commit('setApplications', payload);
 };
 
+export const setConversations = async ({ commit }: any, payload: IChatConversation[]): Promise<void> => {
+  log(setConversations, 'set conversations', payload);
+  commit('setConversations', payload);
+};
+
 export const getApplications = async ({
   commit,
   rootState
 }: ActionContext<IChatState, IRootState>): Promise<IApplication[]> => {
   log(getApplications, 'start to get application for chat');
-  commit('getApplicationsStatus', Status.Request);
+  commit('setGetApplicationsStatus', Status.Request);
   const { data: applications } = await applicationOperator.getAll({
     user_id: rootState.user.id,
     api_id: [
@@ -36,7 +41,7 @@ export const getApplications = async ({
     ]
   });
   log(getApplications, 'get application for chat success', applications);
-  commit('getApplicationsStatus', Status.Success);
+  commit('setGetApplicationsStatus', Status.Success);
   commit('setApplications', applications?.items);
   return applications.items;
 };
@@ -47,7 +52,7 @@ export const getConversations = async ({
   rootState
 }: ActionContext<IChatState, IRootState>): Promise<IChatConversation[]> => {
   log(getConversations, 'start to get conversations');
-  commit('setGetConversationStatus', Status.Success);
+  commit('setGetConversationsStatus', Status.Success);
   const {
     data: { items: apiUsages }
   } = await apiUsageOperator.getAll({
@@ -59,7 +64,7 @@ export const getConversations = async ({
     ordering: '-created_at'
   });
   log(getConversations, 'get api usages success', apiUsages);
-  commit('setGetConversationStatus', Status.Success);
+  commit('setGetConversationsStatus', Status.Success);
   // de duplicate conversations using id
   const conversationIds: string[] = apiUsages.map((apiUsage) => apiUsage.metadata?.conversation_id).filter((id) => id);
   const uniqueConversationIds = [...new Set(conversationIds)];
@@ -72,6 +77,7 @@ export const getConversations = async ({
 
 export default {
   setApplications,
+  setConversations,
   getApplications,
   getConversations
 };

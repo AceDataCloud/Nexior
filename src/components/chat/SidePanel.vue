@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
     <el-skeleton v-if="loading && conversations === undefined" />
-    <div v-else-if="conversations?.length === 0" class="conversations">
+    <div v-else class="conversations">
       <div class="conversation" @click="onNewConversation">
         <div class="icons">
           <font-awesome-icon icon="fa-solid fa-plus" class="icon" />
@@ -10,8 +10,6 @@
           {{ $t('chat.message.startNewChat') }}
         </div>
       </div>
-    </div>
-    <div v-else class="conversations">
       <div
         v-for="(conversation, conversationIndex) in conversations"
         :key="conversationIndex"
@@ -71,9 +69,10 @@ import { defineComponent } from 'vue';
 import { ElSkeleton, ElInput } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router/constants';
-import { IApplication, chatOperator } from '@/operators';
+import { chatOperator } from '@/operators';
 import { IChatConversation } from '@/operators/chat/models';
 import { Status } from '@/store/common/models';
+import { v4 as uuid } from 'uuid';
 
 export default defineComponent({
   name: 'SidePanel',
@@ -95,20 +94,13 @@ export default defineComponent({
       return this.$store.state.chat.getConversationsStatus === Status.Request;
     }
   },
-  watch: {
-    applications: {
-      async handler(val: IApplication[]) {
-        if (!val) {
-          return;
-        }
-        await this.$store.dispatch('chat/getConversations');
-      }
-    }
-  },
   methods: {
     async onNewConversation() {
       this.$router.push({
-        name: ROUTE_CHAT_CONVERSATION_NEW
+        name: ROUTE_CHAT_CONVERSATION,
+        params: {
+          id: uuid()
+        }
       });
     },
     async onConfirm(conversation: IChatConversation) {

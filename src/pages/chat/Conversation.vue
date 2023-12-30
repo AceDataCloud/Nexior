@@ -27,26 +27,25 @@ import {
   ROLE_ASSISTANT,
   ROLE_USER,
   IChatModel,
-  IChatMessage,
   CHAT_MODEL_CHATGPT,
-  applicationOperator,
   IApplication,
   IChatMessageState,
   IChatAskResponse,
-  chatOperator
+  chatOperator,
+  IChatConversation
 } from '@/operators';
 import InputBox from '@/components/chat/InputBox.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import ApiStatus from '@/components/common/ApiStatus.vue';
 import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router';
+import { Status } from '@/store/common/models';
+import { v4 as uuid } from 'uuid';
 
 export interface IData {
-  messages: IChatMessage[];
   model: IChatModel;
   question: '';
-  initializing: boolean;
-  applied: boolean | undefined;
+  // messages: IChatMessage[];
 }
 
 export default defineComponent({
@@ -60,13 +59,17 @@ export default defineComponent({
   data(): IData {
     return {
       model: CHAT_MODEL_CHATGPT,
-      question: '',
-      initializing: false,
-      applied: undefined,
-      messages: []
+      question: ''
     };
   },
   computed: {
+    messages() {
+      return (
+        this.$store.state.chat.conversations?.find(
+          (conversation: IChatConversation) => conversation.id === this.$route.params.id?.toString()
+        )?.messages || []
+      );
+    },
     conversationId(): string | undefined {
       return this.$route.params.id?.toString();
     },
@@ -75,24 +78,33 @@ export default defineComponent({
     },
     applications() {
       return this.$store.state.chat.applications;
+    },
+    conversations() {
+      return this.$store.state.chat.conversations;
+    },
+    initializing() {
+      return this.$store.state.chat.getApplicationsStatus === Status.Request;
     }
-  },
-  watch: {
-    conversationId(val) {
-      if (val) {
-        this.onFetchHistory(val);
-      }
-    }
-  },
-  async mounted() {
-    await this.onFetchHistory();
   },
   methods: {
     async onCreateNewConversation() {
-      this.messages = [];
+      const newConversationId = uuid();
       await this.$router.push({
-        name: ROUTE_CHAT_CONVERSATION_NEW
+        name: ROUTE_CHAT_CONVERSATION,
+        params: {
+          id: newConversationId
+        }
       });
+      const conversations = this.conversations;
+      console.log('this.store', this.$store);
+      await this.$store.dispatch('chat/setConversations', [
+        {
+          id: newConversationId,
+          messages: [],
+          new: true
+        },
+        ...conversations
+      ]);
     },
     async onSelectModel() {
       await this.onCreateNewConversation();
