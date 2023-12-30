@@ -4,7 +4,7 @@
       <preset-panel />
     </div>
     <div class="main">
-      <channel-selector class="mb-4" @select="onSelectChannel" />
+      <channel-selector class="mb-4" />
       <api-status
         :initializing="initializing"
         :application="application"
@@ -27,16 +27,7 @@ import PresetPanel from '@/components/midjourney/PresetPanel.vue';
 import { ElMessage, ElButton } from 'element-plus';
 import ChannelSelector from '@/components/midjourney/ChannelSelector.vue';
 import ApiStatus from '@/components/common/ApiStatus.vue';
-import {
-  IMidjourneyChannel,
-  MidjourneyImagineAction,
-  IMidjourneyPreset,
-  MIDJOURNEY_CHANNEL_FAST,
-  midjourneyOperator,
-  IMidjourneyImagineTask,
-  IMidjourneyImagineRequest,
-  IApplication
-} from '@/operators';
+import { MidjourneyImagineAction, midjourneyOperator, IMidjourneyImagineRequest, IApplication } from '@/operators';
 import TaskFullList from '@/components/midjourney/tasks/TaskFullList.vue';
 import { ROUTE_MIDJOURNEY_INDEX } from '@/router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
