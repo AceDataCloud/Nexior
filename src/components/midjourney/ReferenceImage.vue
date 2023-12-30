@@ -3,10 +3,10 @@
     <el-upload
       v-model:file-list="fileList"
       class="upload-demo"
-      name="image"
+      name="file"
       :limit="5"
       :multiple="true"
-      action="/api/v1/images/"
+      action="/api/v1/files/"
       list-type="picture"
       :on-exceed="onExceed"
       :on-error="onError"
@@ -55,7 +55,7 @@ export default defineComponent({
     },
     urls() {
       // @ts-ignore
-      return this.fileList.map((file: UploadFile) => file?.response?.image_url);
+      return this.fileList.map((file: UploadFile) => file?.response?.file_url);
     }
   },
   watch: {
