@@ -1,8 +1,11 @@
-import { createStore, ActionContext } from 'vuex';
+import { createStore } from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 import midjourney from './midjourney';
 import chat from './chat';
 import root from './common';
+import persistChat from './chat/persist';
+import persistMidjourney from './midjourney/persist';
+import persistRoot from './common/persist';
 
 const store = createStore({
   ...root,
@@ -12,16 +15,7 @@ const store = createStore({
   },
   plugins: [
     createPersistedState({
-      paths: [
-        'token',
-        'user',
-        'chat.applications',
-        'chat.conversations',
-        'midjourney.preset',
-        'midjourney.channel',
-        'midjourney.applications',
-        'midjourney.imagineTasks'
-      ]
+      paths: [...persistRoot, ...persistChat, ...persistMidjourney]
     })
   ]
 });
