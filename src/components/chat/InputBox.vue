@@ -100,6 +100,14 @@ export default defineComponent({
     },
     questionValue(val: string) {
       this.$emit('update:question', val);
+    },
+    question(val: string) {
+      this.questionValue = val;
+    },
+    references(val: string[]) {
+      if (val.length === 0) {
+        this.fileList = [];
+      }
     }
   },
   methods: {
@@ -127,7 +135,8 @@ export default defineComponent({
       background: none;
       box-shadow: none;
       resize: none;
-      line-height: 25px;
+      line-height: 30px;
+      height: 40px;
     }
   }
   .el-upload-list {
@@ -176,7 +185,7 @@ export default defineComponent({
     z-index: 10000;
     cursor: pointer;
     position: absolute;
-    top: 4px;
+    top: 7px;
     &.btn-upload {
       left: 10px;
       .icon-attachment {

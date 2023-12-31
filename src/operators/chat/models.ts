@@ -36,9 +36,15 @@ export enum IChatMessageState {
   FAILED = 'failed'
 }
 
+export interface IChatMessageContentItem {
+  type: string;
+  text?: string;
+  image_url?: string;
+}
+
 export interface IChatMessage {
   state?: IChatMessageState;
-  content: string;
+  content: string | IChatMessageContentItem[];
   role?: typeof ROLE_SYSTEM | typeof ROLE_ASSISTANT | typeof ROLE_USER;
   error?: IError;
 }
