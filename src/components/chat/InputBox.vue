@@ -155,7 +155,7 @@ export default defineComponent({
   border-radius: 10px;
   background: none;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
-  top: 40px;
+  top: 50px;
   .upload {
     display: inline-block;
     &.disabled {

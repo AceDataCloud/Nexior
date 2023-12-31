@@ -13,7 +13,7 @@
       <div
         v-for="(conversation, conversationIndex) in conversations"
         :key="conversationIndex"
-        class="conversation"
+        :class="{ conversation: true, active: conversation.id === conversationId }"
         @click="onClick(conversation.id)"
       >
         <div class="icons">
@@ -84,6 +84,9 @@ export default defineComponent({
   props: {},
   emits: ['click'],
   computed: {
+    conversationId() {
+      return this.$route.params?.id?.toString();
+    },
     conversations() {
       return this.$store.state.chat.conversations;
     },
@@ -155,6 +158,11 @@ export default defineComponent({
       border-radius: 10px;
       color: #666;
       cursor: pointer;
+
+      &.active,
+      &:hover {
+        background-color: #eee;
+      }
 
       .icons {
         width: 30px;

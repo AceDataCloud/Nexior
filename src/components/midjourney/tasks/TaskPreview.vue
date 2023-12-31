@@ -19,7 +19,7 @@
         </el-tag>
       </div>
     </div>
-    <div v-if="!full" class="extra">
+    <div class="extra">
       <p v-if="modelValue?.request?.prompt" class="prompt">
         <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
         {{ modelValue?.request?.prompt }}

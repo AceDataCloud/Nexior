@@ -275,7 +275,7 @@ export default defineComponent({
   }
   .bottom {
     width: 100%;
-    height: 100px;
+    height: 110px;
   }
 }
 </style>

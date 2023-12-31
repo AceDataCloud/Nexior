@@ -9,6 +9,7 @@
         </div>
       </div>
       <answering-mark v-if="message.state === messageState.PENDING" />
+      <el-alert v-if="errorText && message.role === 'assistant'" :title="errorText" type="error" :closable="false" />
     </div>
     <div class="operations">
       <copy-to-clipboard v-if="!Array.isArray(message.content)" :content="message.content" class="btn-copy" />
@@ -20,10 +21,19 @@
 import { defineComponent } from 'vue';
 import AnsweringMark from './AnsweringMark.vue';
 import copy from 'copy-to-clipboard';
-import { ElImage } from 'element-plus';
+import { ElAlert } from 'element-plus';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { IChatMessage, IChatMessageState } from '@/operators';
 import CopyToClipboard from '../common/CopyToClipboard.vue';
+import {
+  ERROR_CODE_API_ERROR,
+  ERROR_CODE_BAD_REQUEST,
+  ERROR_CODE_CONTENT_TOO_LARGE,
+  ERROR_CODE_TIMEOUT,
+  ERROR_CODE_TOO_MANY_REQUESTS,
+  ERROR_CODE_UNKNOWN,
+  ERROR_CODE_USED_UP
+} from '@/constants';
 interface IData {
   copied: boolean;
   messageState: typeof IChatMessageState;
@@ -35,7 +45,7 @@ export default defineComponent({
     CopyToClipboard,
     AnsweringMark,
     MarkdownRenderer,
-    ElImage
+    ElAlert
   },
   props: {
     message: {
@@ -51,9 +61,28 @@ export default defineComponent({
     };
   },
   computed: {
-    // conversationId() {
-    //   return this.$route.params?.id?.toString();
-    // }
+    errorText() {
+      if (!this.message.error || !this.message.error?.code) {
+        return undefined;
+      }
+      switch (this.message.error?.code) {
+        case ERROR_CODE_USED_UP:
+          return this.$t('chat.message.errorUsedUp');
+        case ERROR_CODE_API_ERROR:
+          return this.$t('chat.message.errorApiError');
+        case ERROR_CODE_BAD_REQUEST:
+          return this.$t('chat.message.errorBadRequest');
+        case ERROR_CODE_TIMEOUT:
+          return this.$t('chat.message.errorTimeout');
+        case ERROR_CODE_TOO_MANY_REQUESTS:
+          return this.$t('chat.message.errorTooManyRequests');
+        case ERROR_CODE_CONTENT_TOO_LARGE:
+          return this.$t('chat.message.errorContentTooLarge');
+        case ERROR_CODE_UNKNOWN:
+        default:
+          return this.$t('chat.message.errorUnknown');
+      }
+    }
   },
   methods: {
     onCopy() {
