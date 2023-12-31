@@ -8,8 +8,7 @@
       @refresh="$store.dispatch('chat/getApplications')"
     />
     <div class="dialogue">
-      <introduction v-if="messages && messages.length === 0" />
-      <div v-else class="messages">
+      <div class="messages">
         <message v-for="(message, messageIndex) in messages" :key="messageIndex" :message="message" class="message" />
       </div>
     </div>
@@ -47,6 +46,7 @@ import ApiStatus from '@/components/common/ApiStatus.vue';
 import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router';
 import { Status } from '@/store/common/models';
 import { log } from '@/utils/log';
+import { ComponentCommonHelpEntry as HelpEntry } from '@zhishuyun/data';
 
 export interface IData {
   question: string;
@@ -60,7 +60,8 @@ export default defineComponent({
     InputBox,
     ModelSelector,
     Message,
-    ApiStatus
+    ApiStatus,
+    HelpEntry
   },
   data(): IData {
     return {

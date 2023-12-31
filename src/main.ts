@@ -12,6 +12,7 @@ import { vLoading } from 'element-plus';
 import hl from 'highlight.js';
 import 'highlight.js/styles/night-owl.css';
 import copyToClipboard from 'copy-to-clipboard';
+import ElementPlus from 'element-plus';
 
 console.debug('start to create app');
 const app = createApp(App);
@@ -19,6 +20,7 @@ const app = createApp(App);
 app.use(router);
 app.use(store);
 app.use(i18n);
+app.use(ElementPlus);
 app.use(dayjs, {
   formatString: 'YYYY-MM-DD HH:mm:ss'
 });
