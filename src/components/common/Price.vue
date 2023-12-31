@@ -2,7 +2,7 @@
   <div class="price-text">
     <span v-if="price > 0" class="unfree"
       >￥{{ price }} {{ unit ? ` / ${unit}` : '' }}{{ start ? $t('common.message.startPrice') : ''
-      }}{{ $t('service.message.fromPrice') }}
+      }}{{ $t('common.message.startPrice') }}
     </span>
     <span v-else class="free">
       {{ $t('common.message.free') }}

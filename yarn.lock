@@ -338,11 +338,6 @@
   resolved "https://registry.yarnpkg.com/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.15.tgz#d7c6e6755c78567a951e04ab52ef0fd26de59f32"
   integrity sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==
 
-"@kurkle/color@^0.3.0":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@kurkle/color/-/color-0.3.2.tgz#5acd38242e8bde4f9986e7913c8fdf49d3aa199f"
-  integrity sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw==
-
 "@lezer/common@^1.0.0":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@lezer/common/-/common-1.0.2.tgz#8fb9b86bdaa2ece57e7d59e5ffbcb37d71815087"
@@ -533,21 +528,6 @@
     "@sentry/types" "7.34.0"
     "@sentry/utils" "7.34.0"
     tslib "^1.9.3"
-
-"@sindresorhus/slugify@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@sindresorhus/slugify/-/slugify-2.2.1.tgz#fa2e2e25d6e1e74a2eeb5e2c37f5ccc516ed2c4b"
-  integrity sha512-MkngSCRZ8JdSOCHRaYd+D01XhvU3Hjy6MGl06zhOk614hp9EOAp5gIkBeQg7wtmxpitU6eAL4kdiRMcJa2dlrw==
-  dependencies:
-    "@sindresorhus/transliterate" "^1.0.0"
-    escape-string-regexp "^5.0.0"
-
-"@sindresorhus/transliterate@^1.0.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@sindresorhus/transliterate/-/transliterate-1.6.0.tgz#2309fff65a868047e6d2dd70dec747c5b36a8327"
-  integrity sha512-doH1gimEu3A46VX6aVxpHTeHrytJAG6HgdxntYnCFiIFHEM/ZGpG8KiZGBChchjQmG0XFIBL552kBTjVcMZXwQ==
-  dependencies:
-    escape-string-regexp "^5.0.0"
 
 "@types/estree@0.0.39":
   version "0.0.39"
@@ -945,53 +925,6 @@
   dependencies:
     vue-demi "*"
 
-"@zhishuyun/data@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@zhishuyun/data/-/data-0.1.0.tgz#07d92b3f448aa0ae465e5b4840fa303681b54cdc"
-  integrity sha512-hB1GP7lv+OIitm5jvTpLfzkdPSQVBl+XHOHTrargdKAH3AZBJx8at0rCGshRkGfw4Jq8tCrVTZSSCZ/l/AdJGw==
-  dependencies:
-    "@codemirror/lang-java" "^6.0.1"
-    "@codemirror/lang-javascript" "^6.1.2"
-    "@codemirror/lang-json" "^6.0.1"
-    "@codemirror/lang-php" "^6.0.1"
-    "@codemirror/lang-python" "^6.1.1"
-    "@codemirror/theme-one-dark" "^6.1.0"
-    "@fortawesome/fontawesome-svg-core" "^6.2.1"
-    "@fortawesome/free-brands-svg-icons" "^6.2.1"
-    "@fortawesome/free-regular-svg-icons" "^6.2.1"
-    "@fortawesome/free-solid-svg-icons" "^6.2.1"
-    "@fortawesome/vue-fontawesome" "^3.0.2"
-    "@sentry/tracing" "^7.34.0"
-    "@sentry/vue" "^7.34.0"
-    "@sindresorhus/slugify" "^2.2.1"
-    "@types/mustache" "^4.2.2"
-    "@types/uuid" "^8.3.4"
-    axios "^0.22.0"
-    chart.js "^4.3.0"
-    codemirror "^6.0.1"
-    copy-to-clipboard "^3.3.3"
-    dayjs "^1.10.7"
-    element-plus "^2.2.28"
-    github-markdown-css "^5.1.0"
-    highlight.js "^11.7.0"
-    jwt-decode "^3.1.2"
-    markdown-it "^13.0.1"
-    markdown-it-anchor "^8.6.7"
-    mustache "^4.2.0"
-    programming-languages-logos "^0.0.3"
-    qrcode.vue "^3.3.3"
-    query-string "^8.1.0"
-    typescript-cookie "^1.0.3"
-    url-join "^5.0.0"
-    uuid "^8.3.2"
-    vue "^3.2.6"
-    vue-chartjs "^5.2.0"
-    vue-codemirror "^6.1.1"
-    vue-i18n "^9.1.7"
-    vue-router "^4.0.11"
-    vuex "^4.0.2"
-    vuex-persistedstate "^4.0.0"
-
 acorn-jsx@^5.3.1:
   version "5.3.2"
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-5.3.2.tgz#7ed5bb55908b3b2f1bc55c6af1653bada7f07937"
@@ -1216,9 +1149,9 @@ camelcase-css@^2.0.1:
   integrity sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==
 
 caniuse-lite@^1.0.30001286, caniuse-lite@^1.0.30001297:
-  version "1.0.30001307"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001307.tgz#27a67f13ebc4aa9c977e6b8256a11d5eafb30f27"
-  integrity sha512-+MXEMczJ4FuxJAUp0jvAl6Df0NI/OfW1RWEE61eSmzS7hw6lz4IKutbhbXendwq8BljfFuHtu26VWsg4afQ7Ng==
+  version "1.0.30001572"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001572.tgz"
+  integrity sha512-1Pbh5FLmn5y4+QhNyJE9j3/7dK44dGB83/ZMjv/qJk86TvDbjk0LosiZo0i0WB0Vx607qMX9jYrn1VLHCkN4rw==
 
 chalk@^2.0.0:
   version "2.4.2"
@@ -1236,13 +1169,6 @@ chalk@^4.0.0, chalk@^4.1.2:
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
-
-chart.js@^4.3.0:
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-4.4.1.tgz#ac5dc0e69a7758909158a96fe80ce43b3bb96a9f"
-  integrity sha512-C74QN1bxwV1v2PEujhmKjOZ7iUM4w6BWs23Md/6aOZZSlwMzeCIDGuZay++rBgChYru7/+QFeoQW0fQoP534Dg==
-  dependencies:
-    "@kurkle/color" "^0.3.0"
 
 "chokidar@>=3.0.0 <4.0.0", chokidar@^3.5.2, chokidar@^3.5.3:
   version "3.5.3"
@@ -1768,11 +1694,6 @@ escape-string-regexp@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz#14ba83a5d373e3d311e5afca29cf5bfad965bf34"
   integrity sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==
-
-escape-string-regexp@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-5.0.0.tgz#4683126b500b61762f2dbebace1806e8be31b1c8"
-  integrity sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==
 
 eslint-config-prettier@^8.5.0:
   version "8.5.0"
@@ -2570,11 +2491,6 @@ jsonfile@^6.0.1:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
-jwt-decode@^3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/jwt-decode/-/jwt-decode-3.1.2.tgz#3fb319f3675a2df0c2895c8f5e9fa4b67b04ed59"
-  integrity sha512-UfpWE/VZn0iP50d8cz9NrZLM9lSWhcJ+0Gt/nm4by88UL+J1SiKN8/5dkjMmbEzwL2CAe+67GsegCbIKtbp75A==
-
 levn@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/levn/-/levn-0.4.1.tgz#ae4562c007473b932a6200d403268dd2fffc6ade"
@@ -2668,11 +2584,6 @@ magic-string@^0.30.3:
   integrity sha512-7xlpfBaQaP/T6Vh8MO/EqXSW5En6INHEvEXQiuff7Gku0PWjU3uf6w/j9o7O+SpB5fOAkrI5HeoNgwjEO0pFsA==
   dependencies:
     "@jridgewell/sourcemap-codec" "^1.4.15"
-
-markdown-it-anchor@^8.6.7:
-  version "8.6.7"
-  resolved "https://registry.yarnpkg.com/markdown-it-anchor/-/markdown-it-anchor-8.6.7.tgz#ee6926daf3ad1ed5e4e3968b1740eef1c6399634"
-  integrity sha512-FlCHFwNnutLgVTflOYHPW2pPcl2AACqVzExlkGQNsi4CJgqOHN7YTgDd4LuhgN1BFO3TS0vLAruV1Td6dwWPJA==
 
 markdown-it@^13.0.1:
   version "13.0.1"
@@ -3544,11 +3455,6 @@ vite@^2.9.0:
     rollup "^2.59.0"
   optionalDependencies:
     fsevents "~2.3.2"
-
-vue-chartjs@^5.2.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/vue-chartjs/-/vue-chartjs-5.3.0.tgz#59920a07d72f37a2375d495256e486b92813bf6e"
-  integrity sha512-8XqX0JU8vFZ+WA2/knz4z3ThClduni2Nm0BMe2u0mXgTfd9pXrmJ07QBI+WAij5P/aPmPMX54HCE1seWL37ZdQ==
 
 vue-codemirror@^6.1.1:
   version "6.1.1"

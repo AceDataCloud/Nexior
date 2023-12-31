@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import auth from './auth';
+import console from './console';
 import chat from './chat';
 import midjourney from './midjourney';
 import { ROUTE_CHAT_INDEX, ROUTE_INDEX } from './constants';
@@ -12,6 +13,7 @@ const routes = [
       name: ROUTE_CHAT_INDEX
     }
   },
+  console,
   auth,
   chat,
   midjourney
