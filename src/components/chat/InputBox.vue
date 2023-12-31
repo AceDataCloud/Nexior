@@ -101,9 +101,6 @@ export default defineComponent({
     questionValue(val: string) {
       this.$emit('update:question', val);
     }
-    // question(val: string) {
-    //   this.questionValue = val;
-    // }
   },
   methods: {
     onSubmit() {
