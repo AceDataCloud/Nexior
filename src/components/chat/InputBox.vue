@@ -2,7 +2,11 @@
   <div class="input-box">
     <el-upload
       v-model:file-list="fileList"
-      class="upload"
+      :class="{
+        upload: true,
+        disabled: !canUpload
+      }"
+      :disabled="!canUpload"
       name="file"
       :show-file-list="true"
       :limit="1"
@@ -22,14 +26,14 @@
       :class="{
         btn: true,
         'btn-send': true,
-        disabled: !value
+        disabled: !question
       }"
       @click="onSubmit"
     >
       <font-awesome-icon icon="fa-solid fa-location-arrow" class="icon icon-send" />
     </span>
     <el-input
-      v-model="value"
+      v-model="questionValue"
       :rows="1"
       class="input"
       type="textarea"
@@ -45,6 +49,7 @@
 import { defineComponent } from 'vue';
 import { ElInput, ElMessage, ElTooltip, ElUpload } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { CHAT_MODEL_CHATGPT4_VISION, IChatModel } from '@/operators';
 
 export default defineComponent({
   name: 'InputBox',
@@ -55,15 +60,20 @@ export default defineComponent({
     ElUpload
   },
   props: {
-    modelValue: {
+    references: {
+      type: Array,
+      required: false,
+      default: () => []
+    },
+    question: {
       type: String,
       required: true
     }
   },
-  emits: ['update:modelValue', 'submit'],
+  emits: ['update:question', 'update:references', 'submit'],
   data() {
     return {
-      value: this.modelValue,
+      questionValue: this.question,
       fileList: []
     };
   },
@@ -73,27 +83,34 @@ export default defineComponent({
         Authorization: `Bearer ${this.$store.state.token.access}`
       };
     },
-    urls() {
+    urls(): string[] {
       // @ts-ignore
       return this.fileList.map((file: UploadFile) => file?.response?.file_url);
+    },
+    canUpload() {
+      return [CHAT_MODEL_CHATGPT4_VISION.name].includes(this.model.name);
+    },
+    model(): IChatModel {
+      return this.$store.state.chat.model;
     }
   },
   watch: {
-    value(val) {
-      this.$emit('update:modelValue', val);
+    urls(val) {
+      this.$emit('update:references', val);
     },
-    modelValue(val) {
-      if (val !== this.value) {
-        this.value = val;
-      }
+    questionValue(val: string) {
+      this.$emit('update:question', val);
     }
+    // question(val: string) {
+    //   this.questionValue = val;
+    // }
   },
   methods: {
     onSubmit() {
-      if (!this.value) {
+      if (!this.question) {
         return;
       }
-      this.$emit('submit', this.value);
+      this.$emit('submit');
     },
     onExceed() {
       ElMessage.warning(this.$t('chat.message.uploadReferencesExceed'));
@@ -118,7 +135,7 @@ export default defineComponent({
   }
   .el-upload-list {
     position: absolute;
-    width: 200px;
+    width: 400px;
     bottom: 40px;
   }
 }
@@ -135,6 +152,14 @@ export default defineComponent({
   top: 40px;
   .upload {
     display: inline-block;
+    &.disabled {
+      .btn-upload {
+        cursor: not-allowed;
+        .icon-attachment {
+          color: #eee;
+        }
+      }
+    }
   }
   .input {
     border: none;
