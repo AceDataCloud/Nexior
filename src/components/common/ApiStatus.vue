@@ -12,7 +12,9 @@
       {{ application?.remaining_amount }}
     </span>
     <span class="actions">
-      <el-button size="small" type="primary" @click="onBuy">{{ $t('common.button.buyMore') }}</el-button>
+      <el-button size="small" type="primary" @click="onBuyMore(application)">{{
+        $t('common.button.buyMore')
+      }}</el-button>
     </span>
   </div>
   <div v-else class="text-center info">
@@ -36,6 +38,7 @@ import { IApplicationType } from '@/operators';
 import { apiOperator } from '@/operators/api/operator';
 import { IApiDetailResponse, IApi } from '@/operators/api';
 import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
+import { ROUTE_CONSOLE_APPLICATION_BUY } from '@/router';
 
 export interface IData {
   confirming: boolean;
@@ -83,9 +86,13 @@ export default defineComponent({
         this.api = data;
       });
     },
-    onBuy() {
-      const url = `https://data.zhishuyun.com/console/applications/${this.application?.id}/buy`;
-      window.open(url, '_blank');
+    onBuyMore(application: IApplication) {
+      this.$router.push({
+        name: ROUTE_CONSOLE_APPLICATION_BUY,
+        params: {
+          id: application.id
+        }
+      });
     },
     onApply() {
       applicationOperator

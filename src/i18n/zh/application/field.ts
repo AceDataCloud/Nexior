@@ -12,6 +12,7 @@ export default {
   credential: '密钥',
   name: '名称',
   package: '套餐',
+  price: '价格',
   type: '类型',
   freeAmount: '免费赠送',
   extraPrice: '价格'

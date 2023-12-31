@@ -11,13 +11,19 @@
             @click="$router.push(link.route)"
           >
             <font-awesome-icon :icon="link.icon" />
-            <!-- <img :src="link.image" class="image" :alt="link.icon" /> -->
           </el-button>
         </el-tooltip>
       </div>
     </div>
     <div class="middle"></div>
     <div class="bottom">
+      <div class="link">
+        <el-tooltip effect="dark" :content="$t('common.nav.console')" placement="right">
+          <el-button class="button" @click="onConsole">
+            <font-awesome-icon icon="fa-solid fa-compass" />
+          </el-button>
+        </el-tooltip>
+      </div>
       <div class="link">
         <el-tooltip effect="dark" :content="$t('common.nav.logOut')" placement="right">
           <el-button class="button" @click="onLogout">
@@ -38,6 +44,7 @@ import {
   ROUTE_CHAT_CONVERSATION,
   ROUTE_CHAT_CONVERSATION_NEW,
   ROUTE_CHAT_INDEX,
+  ROUTE_CONSOLE_ROOT,
   ROUTE_MIDJOURNEY_HISTORY,
   ROUTE_MIDJOURNEY_INDEX
 } from '@/router/constants';
@@ -78,6 +85,9 @@ export default defineComponent({
       console.debug('logout');
       this.$store.dispatch('common/resetToken');
       this.$router.push({ name: ROUTE_AUTH_LOGIN });
+    },
+    onConsole() {
+      this.$router.push({ name: ROUTE_CONSOLE_ROOT });
     }
   }
 });
