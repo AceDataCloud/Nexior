@@ -14,7 +14,13 @@
       </div>
     </div>
     <div class="bottom">
-      <input-box v-model="question" @submit="onSubmitQuestion" />
+      <input-box
+        :question="question"
+        :references="references"
+        @update:question="question = $event"
+        @update:references="references = $event"
+        @submit="onSubmitQuestion"
+      />
     </div>
   </div>
 </template>
@@ -43,7 +49,8 @@ import { Status } from '@/store/common/models';
 import { log } from '@/utils/log';
 
 export interface IData {
-  question: '';
+  question: string;
+  references: string[];
   messages: IChatMessage[];
 }
 
@@ -58,6 +65,7 @@ export default defineComponent({
   data(): IData {
     return {
       question: '',
+      references: [],
       messages:
         this.$store.state.chat.conversations?.find(
           (conversation: IChatConversation) => conversation.id === this.$route.params.id?.toString()
@@ -153,6 +161,7 @@ export default defineComponent({
         .askQuestion(
           {
             question,
+            references: this.references,
             conversation_id: this.conversationId,
             stateful: true
           },

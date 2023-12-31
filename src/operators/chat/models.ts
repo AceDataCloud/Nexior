@@ -66,6 +66,7 @@ export interface IChatConversationOptions {
 
 export interface IChatAskRequest {
   question: string;
+  references?: string[];
   stateful?: boolean;
   conversation_id?: string;
 }
