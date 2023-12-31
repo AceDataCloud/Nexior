@@ -1,11 +1,17 @@
 <template>
   <div :class="'message ' + message.role" :role="message.role">
     <div class="content">
-      <markdown-renderer :content="message?.content" />
+      <markdown-renderer v-if="!Array.isArray(message.content)" :content="message?.content" />
+      <div v-else>
+        <div v-for="(item, index) in message.content" :key="index">
+          <img v-if="item.type === 'image_url'" :src="item.image_url" fit="cover" class="image" />
+          <markdown-renderer v-if="item.type === 'text'" :key="index" :content="item.text" />
+        </div>
+      </div>
       <answering-mark v-if="message.state === messageState.PENDING" />
     </div>
     <div class="operations">
-      <copy-to-clipboard :content="message.content" class="btn-copy" />
+      <copy-to-clipboard v-if="!Array.isArray(message.content)" :content="message.content" class="btn-copy" />
     </div>
   </div>
 </template>
@@ -14,6 +20,7 @@
 import { defineComponent } from 'vue';
 import AnsweringMark from './AnsweringMark.vue';
 import copy from 'copy-to-clipboard';
+import { ElImage } from 'element-plus';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { IChatMessage, IChatMessageState } from '@/operators';
 import CopyToClipboard from '../common/CopyToClipboard.vue';
@@ -27,7 +34,8 @@ export default defineComponent({
   components: {
     CopyToClipboard,
     AnsweringMark,
-    MarkdownRenderer
+    MarkdownRenderer,
+    ElImage
   },
   props: {
     message: {
@@ -49,7 +57,7 @@ export default defineComponent({
   },
   methods: {
     onCopy() {
-      copy(this.message.content, {
+      copy(this.message.content.toString(), {
         debug: true
       });
       this.copied = true;
@@ -91,7 +99,12 @@ export default defineComponent({
     border-radius: 10px;
     padding: 8px 15px;
     max-width: 800px;
-    // background-color: aqua;
+    .image {
+      max-width: 100%;
+      max-height: 300px;
+      margin: 5px 0;
+      border-radius: 10px;
+    }
   }
 
   .operations {

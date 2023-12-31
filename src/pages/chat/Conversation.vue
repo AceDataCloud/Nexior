@@ -19,7 +19,7 @@
         :references="references"
         @update:question="question = $event"
         @update:references="references = $event"
-        @submit="onSubmitQuestion"
+        @submit="onSubmit"
       />
     </div>
   </div>
@@ -126,12 +126,29 @@ export default defineComponent({
       await this.onCreateNewConversation();
       await this.$store.dispatch('chat/getApplications');
     },
-    async onSubmitQuestion() {
-      this.messages.push({
-        content: this.question,
-        role: ROLE_USER
-      });
-      this.question = '';
+    async onSubmit() {
+      if (this.references.length > 0) {
+        let content = [];
+        content.push({
+          type: 'text',
+          text: this.question
+        });
+        for (let i = 0; i < this.references.length; i++) {
+          content.push({
+            type: 'image_url',
+            image_url: this.references[i]
+          });
+        }
+        this.messages.push({
+          content: content,
+          role: ROLE_USER
+        });
+      } else {
+        this.messages.push({
+          content: this.question,
+          role: ROLE_USER
+        });
+      }
       await this.onFetchAnswer();
     },
     async onScrollDown() {
@@ -144,11 +161,15 @@ export default defineComponent({
       const token = this.application?.credential?.token;
       const endpoint = this.application?.api?.endpoint;
       const path = this.application?.api?.path;
-      const question = this.messages[this.messages.length - 1].content?.trim();
+      const question = this.question;
+      const references = this.references;
       if (!token || !endpoint || !question || !path) {
         console.error('no token or endpoint or question');
         return;
       }
+      // reset question and references
+      this.question = '';
+      this.references = [];
       let conversationId = this.conversationId;
       this.messages.push({
         content: '',
@@ -161,7 +182,7 @@ export default defineComponent({
         .askQuestion(
           {
             question,
-            references: this.references,
+            references,
             conversation_id: this.conversationId,
             stateful: true
           },
