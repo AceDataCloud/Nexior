@@ -61,7 +61,7 @@ export default defineComponent({
       links: [
         {
           route: {
-            name: ROUTE_CHAT_INDEX
+            name: ROUTE_CHAT_CONVERSATION_NEW
           },
           displayName: this.$t('common.nav.chat'),
           icon: 'fa-regular fa-comment',
@@ -82,7 +82,6 @@ export default defineComponent({
   },
   methods: {
     onLogout() {
-      console.debug('logout');
       this.$store.dispatch('common/resetToken');
       this.$router.push({ name: ROUTE_AUTH_LOGIN });
     },

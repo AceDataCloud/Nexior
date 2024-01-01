@@ -219,7 +219,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .panel {
   padding: 30px;
-  width: calc(100% - 250px);
+  width: calc(100% - 300px);
   .title {
     font-size: 26px;
     font-weight: bold;

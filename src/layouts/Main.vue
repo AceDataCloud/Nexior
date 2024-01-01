@@ -30,11 +30,11 @@ export default defineComponent({
   .left {
     width: 60px;
     height: 100%;
-    // background-color: aqua;
     border-right: 1px solid var(--el-border-color);
   }
   .main {
     height: 100%;
+    width: calc(100% - 60px);
     flex: 1;
   }
 }

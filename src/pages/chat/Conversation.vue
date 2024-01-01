@@ -120,7 +120,6 @@ export default defineComponent({
   },
   methods: {
     async onDraft(question: string) {
-      console.log('onDraft', question);
       this.question = question;
       this.onSubmit();
     },
