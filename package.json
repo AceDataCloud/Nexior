@@ -6,6 +6,9 @@
     "type": "git",
     "url": "git+https://github.com/ZhiShuYun/HubFrontend.git"
   },
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "start": "cross-env NODE_ENV=$npm_config_env vite --host",
     "start:local": "npm run start --env=local",
