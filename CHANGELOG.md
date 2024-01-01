@@ -1,8 +1,16 @@
 # Change Log - @zhishuyun/hub
 
-This log was last generated on Mon, 01 Jan 2024 14:11:29 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jan 2024 16:20:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.3.0
+
+Mon, 01 Jan 2024 16:20:13 GMT
+
+### Minor changes
+
+- add vercel deployment support (cqc@cuiqingcai.com)
 
 ## 0.2.4
 
