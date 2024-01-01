@@ -1,8 +1,16 @@
 # Change Log - @zhishuyun/hub
 
-This log was last generated on Mon, 01 Jan 2024 17:58:26 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jan 2024 18:11:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.5.1
+
+Mon, 01 Jan 2024 18:11:56 GMT
+
+### Patches
+
+- fix stream event and netlify build (cqc@cuiqingcai.com)
 
 ## 0.5.0
 
