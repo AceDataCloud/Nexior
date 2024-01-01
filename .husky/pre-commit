@@ -2,4 +2,12 @@
 . "$(dirname "$0")/_/husky.sh"
 . "$(dirname "$0")/common.sh"
 
+
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+if [ "$branch" = "main" ]; then
+  echo "You can't commit directly to main branch, please checkout a new branch to commit"
+  exit 1
+fi
+
 yarn lint
