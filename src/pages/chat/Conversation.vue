@@ -8,7 +8,8 @@
       @refresh="$store.dispatch('chat/getApplications')"
     />
     <div class="dialogue">
-      <div class="messages">
+      <introduction v-if="messages.length === 0" @draft="onDraft" />
+      <div v-else class="messages">
         <message v-for="(message, messageIndex) in messages" :key="messageIndex" :message="message" class="message" />
       </div>
     </div>
@@ -46,6 +47,7 @@ import ApiStatus from '@/components/common/ApiStatus.vue';
 import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router';
 import { Status } from '@/store/common/models';
 import { log } from '@/utils/log';
+import Introduction from '@/components/chat/Introduction.vue';
 
 export interface IData {
   question: string;
@@ -57,6 +59,7 @@ export default defineComponent({
   name: 'ChatConversation',
   components: {
     InputBox,
+    Introduction,
     ModelSelector,
     Message,
     ApiStatus
@@ -116,6 +119,11 @@ export default defineComponent({
     this.onScrollDown();
   },
   methods: {
+    async onDraft(question: string) {
+      console.log('onDraft', question);
+      this.question = question;
+      this.onSubmit();
+    },
     async onCreateNewConversation() {
       await this.$router.push({
         name: ROUTE_CHAT_CONVERSATION_NEW
@@ -265,6 +273,7 @@ export default defineComponent({
     flex: 1;
     overflow-y: scroll;
     margin: 20px 0;
+    position: relative;
     .messages {
       padding-top: 30px;
       .message {

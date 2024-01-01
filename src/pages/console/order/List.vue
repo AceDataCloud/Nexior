@@ -120,8 +120,7 @@ export default defineComponent({
     ElTable,
     ElTableColumn,
     ElButton,
-    ElTag,
-    ElCard
+    ElTag
   },
   data(): IData {
     return {

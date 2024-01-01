@@ -8,6 +8,8 @@ import {
   faClock as faRegularClock
 } from '@fortawesome/free-regular-svg-icons';
 import {
+  faFire as faSolidFire,
+  faBook as faSolidBook,
   faCompass as faSolidCompass,
   faLocationArrow as faSolidLocationArrow,
   faPaperclip as faSolidPaperclip,
@@ -48,6 +50,7 @@ library.add(faSolidCube);
 library.add(faSolidCompass);
 library.add(faSolidPaperclip);
 library.add(faSolidXmark);
+library.add(faSolidFire);
 library.add(faSolidRotateRight);
 library.add(faSolidPenToSquare);
 library.add(faSolidCheck);
@@ -55,6 +58,7 @@ library.add(faSolidLocationArrow);
 library.add(faRegularUser);
 library.add(faRegularSun);
 library.add(faSolidBolt);
+library.add(faSolidBook);
 library.add(faSolidGear);
 library.add(faSolidMicrophone);
 library.add(faSolidBars);

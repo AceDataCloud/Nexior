@@ -1,45 +1,68 @@
 <template>
   <div class="introduction">
-    <h2 class="title">ChatGPT</h2>
     <el-row class="introduction-items" justify="center" :gutter="15">
       <el-col :md="8" :sm="24" :xs="24">
         <div class="text-center">
           <font-awesome-icon icon="fa-regular fa-sun" class="icon icon-rotate" />
         </div>
-        <h3 class="subtitle">{{ $t('conversation.title.example') }}</h3>
+        <h3 class="subtitle">{{ $t('chat.title.complexQuestion') }}</h3>
         <introduction-item
-          :content="$t('conversation.message.writeCode')"
+          :content="$t('chat.message.question1')"
           class="cursor-pointer"
-          @click="$emit('draft', $t('conversation.message.writeCode'))"
+          @click="$emit('draft', $t('chat.message.question1'))"
         />
         <introduction-item
-          :content="$t('conversation.message.writeEmail')"
+          :content="$t('chat.message.question2')"
           class="cursor-pointer"
-          @click="$emit('draft', $t('conversation.message.writeEmail'))"
+          @click="$emit('draft', $t('chat.message.question2'))"
         />
         <introduction-item
-          :content="$t('conversation.message.explainDefinition')"
+          :content="$t('chat.message.question3')"
           class="cursor-pointer"
-          @click="$emit('draft', $t('conversation.message.explainDefinition'))"
+          @click="$emit('draft', $t('chat.message.question3'))"
         />
       </el-col>
       <el-col :md="8" :sm="24" :xs="24">
         <div class="text-center">
-          <font-awesome-icon icon="fa-solid fa-bolt" class="icon icon-rotate" />
+          <font-awesome-icon icon="fa-solid fa-book" class="icon icon-rotate" />
         </div>
-        <h3 class="subtitle">{{ $t('conversation.title.capabilities') }}</h3>
-        <introduction-item :content="$t('conversation.message.rememberHistory')" />
-        <introduction-item :content="$t('conversation.message.supportStream')" />
-        <introduction-item :content="$t('conversation.message.rejectInvalidPrompt')" />
+        <h3 class="subtitle">{{ $t('chat.title.professionalQuestion') }}</h3>
+        <introduction-item
+          :content="$t('chat.message.question4')"
+          class="cursor-pointer"
+          @click="$emit('draft', $t('chat.message.question4'))"
+        />
+        <introduction-item
+          :content="$t('chat.message.question5')"
+          class="cursor-pointer"
+          @click="$emit('draft', $t('chat.message.question5'))"
+        />
+        <introduction-item
+          :content="$t('chat.message.question6')"
+          class="cursor-pointer"
+          @click="$emit('draft', $t('chat.message.question6'))"
+        />
       </el-col>
       <el-col :md="8" :sm="24" :xs="24">
         <div class="text-center">
-          <font-awesome-icon icon="fa-solid fa-triangle-exclamation" class="icon icon-rotate" />
+          <font-awesome-icon icon="fa-solid fa-fire" class="icon icon-rotate" />
         </div>
-        <h3 class="subtitle">{{ $t('conversation.title.limitations') }}</h3>
-        <introduction-item :content="$t('conversation.message.generateInCorrect')" />
-        <introduction-item :content="$t('conversation.message.generateHarmfulInfo')" />
-        <introduction-item :content="$t('conversation.message.onlyKnowBefore2021')" />
+        <h3 class="subtitle">{{ $t('chat.title.getTips') }}</h3>
+        <introduction-item
+          :content="$t('chat.message.question7')"
+          class="cursor-pointer"
+          @click="$emit('draft', $t('chat.message.question7'))"
+        />
+        <introduction-item
+          :content="$t('chat.message.question8')"
+          class="cursor-pointer"
+          @click="$emit('draft', $t('chat.message.question8'))"
+        />
+        <introduction-item
+          :content="$t('chat.message.question9')"
+          class="cursor-pointer"
+          @click="$emit('draft', $t('chat.message.question9'))"
+        />
       </el-col>
     </el-row>
   </div>

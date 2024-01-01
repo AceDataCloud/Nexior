@@ -72,7 +72,6 @@ import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router/c
 import { chatOperator } from '@/operators';
 import { IChatConversation } from '@/operators/chat/models';
 import { Status } from '@/store/common/models';
-import { v4 as uuid } from 'uuid';
 
 export default defineComponent({
   name: 'SidePanel',

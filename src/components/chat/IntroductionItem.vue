@@ -28,5 +28,6 @@ export default defineComponent({
   background-color: #eee;
   color: #333;
   padding: 10px 20px;
+  border-radius: 20px;
 }
 </style>
