@@ -29,8 +29,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ROUTE_CONSOLE_APPLICATION_LIST, ROUTE_CONSOLE_ORDER_LIST, ROUTE_INDEX } from '@/router';
-import { ElRow, ElCol } from 'element-plus';
+import {
+  ROUTE_CONSOLE_APPLICATION_LIST,
+  ROUTE_CONSOLE_ORDER_LIST,
+  ROUTE_INDEX,
+  ROUTE_CONSOLE_DISTRIBUTION_INDEX
+} from '@/router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 interface ILink {
@@ -67,6 +71,12 @@ export default defineComponent({
           text: this.$t('console.menu.orderList'),
           name: ROUTE_CONSOLE_ORDER_LIST,
           icon: 'fa-solid fa-store'
+        },
+        {
+          key: 'distribution-index',
+          text: this.$t('console.menu.distributionIndex'),
+          name: ROUTE_CONSOLE_DISTRIBUTION_INDEX,
+          icon: 'fa-solid fa-coins'
         }
       ];
       return links;
@@ -99,7 +109,7 @@ $padding-left: 10px;
   padding-left: $padding-left;
   width: $width;
   padding-top: 50px;
-  border-right: 1px solid var(--el-border-color);
+  // border-right: 1px solid var(--el-border-color);
   height: 100%;
 }
 

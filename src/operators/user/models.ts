@@ -1,5 +1,5 @@
 export interface IUser {
-  id?: string;
+  id: string;
   username?: string;
   first_name?: string;
   last_name?: string;
@@ -10,6 +10,11 @@ export interface IUser {
   province?: string;
   country?: string;
   avatar?: string;
+}
+
+export interface IUserListResponse {
+  count: number;
+  items: IUser[];
 }
 
 export interface IUserDetailResponse extends IUser {}

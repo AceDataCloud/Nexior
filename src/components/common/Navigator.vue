@@ -25,6 +25,9 @@
         </el-tooltip>
       </div>
       <div class="link">
+        <help-entry />
+      </div>
+      <div class="link">
         <el-tooltip effect="dark" :content="$t('common.nav.logOut')" placement="right">
           <el-button class="button" @click="onLogout">
             <font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket" />
@@ -48,11 +51,13 @@ import {
   ROUTE_MIDJOURNEY_HISTORY,
   ROUTE_MIDJOURNEY_INDEX
 } from '@/router/constants';
+import HelpEntry from './HelpEntry2.vue';
 
 export default defineComponent({
   name: 'Navigator',
   components: {
     ElButton,
+    HelpEntry,
     ElTooltip,
     FontAwesomeIcon
   },

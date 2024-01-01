@@ -8,80 +8,82 @@
       </el-row>
       <el-row>
         <el-col :span="24">
-          <el-table v-loading="loading" :data="orders" stripe>
-            <el-table-column prop="id" :label="$t('order.field.id')" class-name="text-center" width="350px">
-              <template #default="scope">
-                <span class="key">{{ scope.row.id }}</span>
-                <span class="copy">
-                  <copy-to-clipboard :content="scope.row.id" />
-                </span>
-              </template>
-            </el-table-column>
-            <el-table-column :label="$t('order.field.price')" width="100px">
-              <template #default="scope">
-                <span class="price">¥{{ scope.row?.price?.toFixed(2) }}</span>
-              </template>
-            </el-table-column>
-            <el-table-column :label="$t('order.field.createdAt')" width="180px">
-              <template #default="scope">
-                <span class="created-at">{{ $dayjs.format(scope.row.created_at) }}</span>
-              </template>
-            </el-table-column>
-            <el-table-column :label="$t('order.field.description')" width="300px">
-              <template #default="scope">
-                <span class="description">{{ scope.row.description }}</span>
-              </template>
-            </el-table-column>
-            <el-table-column prop="state" :label="$t('order.field.state')" class-name="text-center">
-              <template #default="scope">
-                <span v-if="scope.row.state === OrderState?.PENDING">
-                  <el-tag type="info" class="mx-1" effect="dark">{{ $t('order.state.pending') }}</el-tag>
-                </span>
-                <span v-else-if="scope.row.state === OrderState?.PAID" class="state state-paid">
-                  <el-tag type="success" class="mx-1" effect="dark">{{ $t('order.state.paid') }}</el-tag>
-                </span>
-                <span v-else-if="scope.row.state === OrderState?.EXPIRED" class="state state-expired">
-                  <el-tag type="warning" class="mx-1" effect="dark">{{ $t('order.state.expired') }}</el-tag>
-                </span>
-                <span v-else-if="scope.row.state === OrderState?.FAILED" class="state state-failed">
-                  <el-tag type="danger" class="mx-1" effect="dark"> {{ $t('order.state.failed') }}</el-tag>
-                </span>
-              </template>
-            </el-table-column>
-            <el-table-column min-width="120px">
-              <template #default="scope">
-                <div class="float-right">
-                  <el-button
-                    v-if="scope.row.state !== OrderState.PAID"
-                    type="primary"
-                    @click="
-                      $router.push({
-                        name: 'console-order-detail',
-                        params: {
-                          id: scope.row.id
-                        }
-                      })
-                    "
-                  >
-                    {{ $t('order.button.continuePay') }}
-                  </el-button>
-                  <el-button
-                    v-else
-                    @click="
-                      $router.push({
-                        name: 'console-order-detail',
-                        params: {
-                          id: scope.row.id
-                        }
-                      })
-                    "
-                  >
-                    {{ $t('order.button.checkDetail') }}
-                  </el-button>
-                </div>
-              </template>
-            </el-table-column>
-          </el-table>
+          <el-card shadow="hover">
+            <el-table v-loading="loading" :data="orders" stripe>
+              <el-table-column prop="id" :label="$t('order.field.id')" class-name="text-center" width="350px">
+                <template #default="scope">
+                  <span class="key">{{ scope.row.id }}</span>
+                  <span class="copy">
+                    <copy-to-clipboard :content="scope.row.id" />
+                  </span>
+                </template>
+              </el-table-column>
+              <el-table-column :label="$t('order.field.price')" width="100px">
+                <template #default="scope">
+                  <span class="price">¥{{ scope.row?.price?.toFixed(2) }}</span>
+                </template>
+              </el-table-column>
+              <el-table-column :label="$t('order.field.createdAt')" width="180px">
+                <template #default="scope">
+                  <span class="created-at">{{ $dayjs.format(scope.row.created_at) }}</span>
+                </template>
+              </el-table-column>
+              <el-table-column :label="$t('order.field.description')" width="300px">
+                <template #default="scope">
+                  <span class="description">{{ scope.row.description }}</span>
+                </template>
+              </el-table-column>
+              <el-table-column prop="state" :label="$t('order.field.state')" class-name="text-center">
+                <template #default="scope">
+                  <span v-if="scope.row.state === OrderState?.PENDING">
+                    <el-tag type="info" class="mx-1" effect="dark">{{ $t('order.state.pending') }}</el-tag>
+                  </span>
+                  <span v-else-if="scope.row.state === OrderState?.PAID" class="state state-paid">
+                    <el-tag type="success" class="mx-1" effect="dark">{{ $t('order.state.paid') }}</el-tag>
+                  </span>
+                  <span v-else-if="scope.row.state === OrderState?.EXPIRED" class="state state-expired">
+                    <el-tag type="warning" class="mx-1" effect="dark">{{ $t('order.state.expired') }}</el-tag>
+                  </span>
+                  <span v-else-if="scope.row.state === OrderState?.FAILED" class="state state-failed">
+                    <el-tag type="danger" class="mx-1" effect="dark"> {{ $t('order.state.failed') }}</el-tag>
+                  </span>
+                </template>
+              </el-table-column>
+              <el-table-column min-width="120px">
+                <template #default="scope">
+                  <div class="float-right">
+                    <el-button
+                      v-if="scope.row.state !== OrderState.PAID"
+                      type="primary"
+                      @click="
+                        $router.push({
+                          name: 'console-order-detail',
+                          params: {
+                            id: scope.row.id
+                          }
+                        })
+                      "
+                    >
+                      {{ $t('order.button.continuePay') }}
+                    </el-button>
+                    <el-button
+                      v-else
+                      @click="
+                        $router.push({
+                          name: 'console-order-detail',
+                          params: {
+                            id: scope.row.id
+                          }
+                        })
+                      "
+                    >
+                      {{ $t('order.button.checkDetail') }}
+                    </el-button>
+                  </div>
+                </template>
+              </el-table-column>
+            </el-table>
+          </el-card>
         </el-col>
       </el-row>
       <el-row>
@@ -120,7 +122,8 @@ export default defineComponent({
     ElTable,
     ElTableColumn,
     ElButton,
-    ElTag
+    ElTag,
+    ElCard
   },
   data(): IData {
     return {
@@ -185,6 +188,8 @@ export default defineComponent({
 .panel {
   padding: 30px;
   width: calc(100% - 300px);
+  background-color: #f3f5f6;
+
   .title {
     font-size: 26px;
     font-weight: bold;
