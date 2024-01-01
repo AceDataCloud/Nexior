@@ -30,7 +30,13 @@ AI 问答：
 
 ## 部署
 
+一键部署到 Vercel：
+
 [![Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/ZhiShuYun/HubFrontend)
+
+一键部署到 Netlify：
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ZhiShuYun/HubFrontend)
 
 ## 开发配置
 
