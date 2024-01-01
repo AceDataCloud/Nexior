@@ -16,12 +16,12 @@
     "start:production": "npm run start --env=production",
     "build": "vite build --mode=development",
     "serve": "vite preview",
-    "lint": "npx eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
-    "prettier": "npx prettier --write .",
-    "change": "npx beachball change --no-commit",
-    "verify": "npx beachball check",
-    "bump": "npx beachball bump",
-    "publish": "npx beachball publish --access public",
+    "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
+    "prettier": "prettier --write .",
+    "change": "beachball change --no-commit",
+    "verify": "beachball check",
+    "bump": "beachball bump",
+    "release": "beachball publish --access public",
     "prepare": "husky install"
   },
   "dependencies": {
