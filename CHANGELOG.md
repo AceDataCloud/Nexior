@@ -1,8 +1,16 @@
 # Change Log - @zhishuyun/hub
 
-This log was last generated on Mon, 01 Jan 2024 11:28:17 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jan 2024 11:44:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.1.2
+
+Mon, 01 Jan 2024 11:44:05 GMT
+
+### Patches
+
+- change commit info (cqc@germey.cn)
 
 ## 0.1.1
 
