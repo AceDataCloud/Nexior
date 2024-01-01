@@ -155,12 +155,16 @@ export default defineComponent({
           role: ROLE_USER
         });
       }
+      console.debug('onSubmit', this.question, this.references);
       await this.onFetchAnswer();
     },
     async onScrollDown() {
       setTimeout(() => {
         const container = document.querySelector('.dialogue') as HTMLDivElement;
-        container.scrollTop = container.scrollHeight;
+        if (!container) {
+          return;
+        }
+        container.scrollTop = container?.scrollHeight;
       }, 0);
     },
     async onFetchAnswer() {
@@ -173,6 +177,7 @@ export default defineComponent({
         console.error('no token or endpoint or question');
         return;
       }
+      log(this.onFetchAnswer, 'validated', question, references);
       // reset question and references
       this.question = '';
       this.references = [];
@@ -182,6 +187,7 @@ export default defineComponent({
         role: ROLE_ASSISTANT,
         state: IChatMessageState.PENDING
       });
+      log(this.onFetchAnswer, 'start to get answer', this.messages);
       this.onScrollDown();
       // request server to get answer
       chatOperator
