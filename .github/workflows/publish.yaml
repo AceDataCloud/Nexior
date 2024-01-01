@@ -12,9 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          persist-credentials: false
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -23,13 +24,18 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Run yarn bump and generate changelog
-        run: yarn bump
+      - name: Build
+        run: yarn build
 
-      - name: Commit and Push changes
+      - name: Set git credentials
         run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
-          git add -A
-          git commit -m "Bump version and update changelog"
-          git push
+          git remote set-url origin "https://$REPO_PAT@github.com/ZhiShuYun/HubFrontend"
+        env:
+          REPO_PAT: ${{ secrets.REPO_PAT }}
+
+      - name: Publish
+        run: yarn publish -- --token "$NPM_TOKEN"
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
