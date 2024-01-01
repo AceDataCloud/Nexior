@@ -1,8 +1,16 @@
 # Change Log - @zhishuyun/hub
 
-This log was last generated on Mon, 01 Jan 2024 12:26:12 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jan 2024 12:38:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.2.1
+
+Mon, 01 Jan 2024 12:38:54 GMT
+
+### Patches
+
+- update yarn lock (cqc@germey.cn)
 
 ## 0.2.0
 
