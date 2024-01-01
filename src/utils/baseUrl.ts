@@ -19,7 +19,7 @@ export const getBaseUrlHub = () => {
   if (import.meta.env.VITE_BASE_URL_HUB) {
     return import.meta.env.VITE_BASE_URL_HUB;
   }
-  return BASE_URL_HUB;
+  return window.location.origin || BASE_URL_HUB;
 };
 
 /**
