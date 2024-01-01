@@ -15,7 +15,10 @@
     "serve": "vite preview",
     "lint": "npx eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
     "prettier": "npx prettier --write .",
-    "change": "npx beachball change"
+    "change": "npx beachball change --no-commit",
+    "check": "npx beachball check",
+    "bump": "npx beachball bump",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@codemirror/lang-java": "^6.0.1",
