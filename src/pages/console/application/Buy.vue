@@ -74,14 +74,9 @@ export default defineComponent({
   color: #333;
 }
 
-.el-card {
-  min-height: 500px;
-  padding-top: 50px;
-}
-
 .panel {
   padding: 30px;
-  width: calc(100% - 250px);
+  width: calc(100% - 300px);
   .credential {
     .copy {
       cursor: pointer;

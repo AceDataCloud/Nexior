@@ -129,7 +129,7 @@ export default defineComponent({
       loading: false,
       total: undefined,
       // dynamic calculate the limit according to window height
-      limit: Math.floor((window.innerHeight - 200) / 50)
+      limit: Math.floor((window.innerHeight - 300) / 50)
     };
   },
   computed: {
@@ -184,7 +184,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .panel {
   padding: 30px;
-  width: calc(100% - 250px);
+  width: calc(100% - 300px);
   .title {
     font-size: 26px;
     font-weight: bold;

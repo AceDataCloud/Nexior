@@ -93,7 +93,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-$width: 250px;
+$width: 300px;
 $padding-left: 10px;
 .side-panel {
   padding-left: $padding-left;
