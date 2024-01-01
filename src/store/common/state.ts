@@ -1,5 +1,6 @@
-import { ENDPOINT } from '@/constants';
 import { IRootState } from './models';
+import chatState from '../chat/state';
+import midjourneyState from '../midjourney/state';
 
 export default (): IRootState => {
   return {
@@ -9,9 +10,7 @@ export default (): IRootState => {
       refresh: undefined,
       expiration: undefined
     },
-    setting: {
-      endpoint: ENDPOINT,
-      stream: false
-    }
+    chat: chatState(),
+    midjourney: midjourneyState()
   };
 };

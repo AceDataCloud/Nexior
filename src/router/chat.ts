@@ -5,6 +5,12 @@ export default {
   component: () => import('@/layouts/Chat.vue'),
   children: [
     {
+      path: '',
+      redirect: {
+        name: ROUTE_CHAT_CONVERSATION_NEW
+      }
+    },
+    {
       path: 'conversation',
       name: ROUTE_CHAT_CONVERSATION_NEW,
       component: () => import('@/pages/chat/Conversation.vue')

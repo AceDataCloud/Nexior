@@ -38,10 +38,10 @@ export default defineComponent({
       const user = await this.$store.dispatch('getUser');
       this.user = user;
       if (this.redirect) {
-        this.$router.push(this.redirect);
+        await this.$router.push(this.redirect);
       }
     } else {
-      this.$router.push({ name: ROUTE_AUTH_LOGIN });
+      await this.$router.push({ name: ROUTE_AUTH_LOGIN });
     }
   }
 });

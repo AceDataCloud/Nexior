@@ -1,12 +1,4 @@
 {
-  "rewrites": [
-    {
-      "source": "/api/v1/(.*)",
-      "destination": "https://https://data.zhishuyun.com/api/v1/$1"
-    },
-    {
-      "source": "/oauth2/v1/(.*)",
-      "destination": "https://auth.zhishuyun.com/oauth2/v1/$1"
-    }
-  ]
+  "version": 2,
+  "routes": [{ "handle": "filesystem" }, { "src": "/(.*)", "dest": "/index.html" }]
 }

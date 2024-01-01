@@ -5,6 +5,5 @@ export default {
   free: '免费',
   buyInExternalUrl: '请在外部链接完成付款',
   updateFailed: '修改失败',
-  updateSuccessfully: '修改成功',
-  confirmFinish: '此操作将手动将订单设置为支付状态且完成分销处理，无法撤销，请确认客户已经完成付款，是否继续？'
+  updateSuccessfully: '修改成功'
 };

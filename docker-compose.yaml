@@ -5,4 +5,4 @@ services:
     build: ./
     image: 'ghcr.io/zhishuyun/hub-frontend:${BUILD_NUMBER}'
     ports:
-      - '8000:80'
+      - '8080:80'

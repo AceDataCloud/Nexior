@@ -13,7 +13,6 @@ import hl from 'highlight.js';
 import 'highlight.js/styles/night-owl.css';
 import copyToClipboard from 'copy-to-clipboard';
 
-console.debug('start to create app');
 const app = createApp(App);
 
 app.use(router);
