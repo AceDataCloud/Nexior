@@ -28,6 +28,10 @@ AI 问答：
 
 体验网址：[https://hub.zhishuyun.com/](https://hub.zhishuyun.com/)，微信或邮箱登录即可立即使用。
 
+## 部署
+
+[![Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/ZhiShuYun/HubFrontend)
+
 ## 开发配置
 
 如果您想将源码部署为您自己的系统并进行赚钱，或者基于本系统进行二次开发，可参考下文。
