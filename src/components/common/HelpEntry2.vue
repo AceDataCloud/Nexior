@@ -7,7 +7,7 @@
     placement="top-start"
     raw-content
   >
-    <el-button type="primary" circle size="large">
+    <el-button class="button">
       <font-awesome-icon icon="fa-solid fa-question" />
     </el-button>
   </el-tooltip>
@@ -27,3 +27,19 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.button {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--el-bg-color-page);
+  &.active,
+  &:hover,
+  &:focus {
+    background-color: var(--el-button-hover-bg-color);
+    color: var(--el-button-active-text-color);
+  }
+}
+</style>

@@ -1,10 +1,21 @@
 import { AxiosResponse } from 'axios';
 import { httpClient } from '../instance';
-import { IUserDetailResponse, IUser } from './models';
+import { IUserDetailResponse, IUser, IUserListResponse } from './models';
+
+export interface IInviteesQuery {
+  offset?: number;
+  limit?: number;
+}
 
 class UserOperator {
   async getMe(): Promise<AxiosResponse<IUserDetailResponse>> {
     return httpClient.get('/me');
+  }
+
+  async getInvitees(query: IInviteesQuery): Promise<AxiosResponse<IUserListResponse>> {
+    return httpClient.get('/me/invitees', {
+      params: query
+    });
   }
 
   async updateMe(data: IUser): Promise<AxiosResponse<IUserDetailResponse>> {

@@ -7,107 +7,113 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :span="12" :offset="6">
-          <div v-if="loading" class="pt-5">
-            <el-skeleton animated />
-          </div>
-          <div v-else class="order">
-            <el-descriptions :column="1">
-              <el-descriptions-item :label="$t('order.field.id')">{{ order?.id }}</el-descriptions-item>
-              <el-descriptions-item :label="$t('order.field.description')">
-                {{ order?.description }}
-              </el-descriptions-item>
-              <el-descriptions-item
-                v-if="order?.application?.type === applicationType.API"
-                :label="$t('order.field.api')"
-              >
-                {{ order?.application?.api?.title }}
-              </el-descriptions-item>
-              <el-descriptions-item :label="$t('order.field.amount')">
-                <span v-if="order?.application?.type === applicationType.API">
-                  {{ order?.amount }}{{ $t(`api.unit.${order?.application?.api?.unit}`) }}
-                </span>
-              </el-descriptions-item>
-              <el-descriptions-item :label="$t('order.field.createdAt')">
-                {{ $dayjs.format(order?.created_at) }}
-              </el-descriptions-item>
-              <el-descriptions-item :label="$t('order.field.price')">
-                <span v-if="order?.price && order?.price > 0" class="price unfree">
-                  ¥{{ order?.price?.toFixed(2) }}
-                </span>
-                <span v-else class="price free"> {{ $t('order.message.free') }} </span>
-              </el-descriptions-item>
-              <el-descriptions-item v-if="order?.pay_way" :label="$t('order.field.payWay')">
-                <span v-if="order?.pay_way === PayWay.WechatPay">
-                  {{ $t('order.title.wechatPay') }}
-                </span>
-                <span v-if="order?.pay_way === PayWay.AliPay">
-                  {{ $t('order.title.aliPay') }}
-                </span>
-                <span v-if="order?.pay_way === PayWay.Stripe">
-                  {{ $t('order.title.stripe') }}
-                </span>
-              </el-descriptions-item>
-            </el-descriptions>
-          </div>
-        </el-col>
-      </el-row>
-      <el-row v-if="order?.state === OrderState.PAID" class="mb-5">
-        <el-col :span="12" :offset="6">
-          <el-divider border-style="dashed" />
-          <el-alert :title="$t('order.message.paidSuccessfully')" type="success" show-icon :closable="false" />
-        </el-col>
-      </el-row>
-      <el-row v-if="order?.state === OrderState.PENDING || order?.state === OrderState.FAILED">
-        <el-col :span="12" :offset="6">
-          <el-divider border-style="dashed" />
-          <div v-if="order.price && order.price > 0 && !order.pay_way" class="payways mb-4">
-            <div
-              :class="{
-                payway: true,
-                wechatpay: true,
-                active: payWay === PayWay.WechatPay
-              }"
-              @click="payWay = PayWay.WechatPay"
-            >
-              <span class="payicon wechatpay"></span>
-              {{ $t('order.title.wechatPay') }}
-            </div>
-            <div
-              v-if="false"
-              :class="{
-                payway: true,
-                alipay: true,
-                active: payWay === PayWay.AliPay
-              }"
-              @click="payWay = PayWay.AliPay"
-            >
-              <span class="payicon alipay"></span>
-              {{ $t('order.title.aliPay') }}
-            </div>
-            <div
-              v-if="false"
-              :class="{
-                payway: true,
-                stripe: true,
-                active: payWay === PayWay.Stripe
-              }"
-              @click="payWay = PayWay.Stripe"
-            >
-              <span class="payicon stripe"></span>
-              {{ $t('order.title.stripe') }}
-            </div>
-          </div>
-          <div v-if="!order?.pay_way">
-            <el-button :loading="prepaying" type="primary" size="large" class="btn-pay" @click="onPay">{{
-              $t('common.button.pay')
-            }}</el-button>
-          </div>
-          <div v-else>
-            <el-button type="primary" size="large" class="btn-repay" @click="onRepay">{{
-              $t('common.button.repay')
-            }}</el-button>
-          </div>
+        <el-col :span="24">
+          <el-card shadow="hover">
+            <el-row>
+              <el-col :span="12" :offset="6">
+                <div v-if="loading" class="pt-5">
+                  <el-skeleton animated />
+                </div>
+                <div v-else class="order">
+                  <el-descriptions :column="1">
+                    <el-descriptions-item :label="$t('order.field.id')">{{ order?.id }}</el-descriptions-item>
+                    <el-descriptions-item :label="$t('order.field.description')">
+                      {{ order?.description }}
+                    </el-descriptions-item>
+                    <el-descriptions-item
+                      v-if="order?.application?.type === applicationType.API"
+                      :label="$t('order.field.api')"
+                    >
+                      {{ order?.application?.api?.title }}
+                    </el-descriptions-item>
+                    <el-descriptions-item :label="$t('order.field.amount')">
+                      <span v-if="order?.application?.type === applicationType.API">
+                        {{ order?.amount }}{{ $t(`api.unit.${order?.application?.api?.unit}`) }}
+                      </span>
+                    </el-descriptions-item>
+                    <el-descriptions-item :label="$t('order.field.createdAt')">
+                      {{ $dayjs.format(order?.created_at) }}
+                    </el-descriptions-item>
+                    <el-descriptions-item :label="$t('order.field.price')">
+                      <span v-if="order?.price && order?.price > 0" class="price unfree">
+                        ¥{{ order?.price?.toFixed(2) }}
+                      </span>
+                      <span v-else class="price free"> {{ $t('order.message.free') }} </span>
+                    </el-descriptions-item>
+                    <el-descriptions-item v-if="order?.pay_way" :label="$t('order.field.payWay')">
+                      <span v-if="order?.pay_way === PayWay.WechatPay">
+                        {{ $t('order.title.wechatPay') }}
+                      </span>
+                      <span v-if="order?.pay_way === PayWay.AliPay">
+                        {{ $t('order.title.aliPay') }}
+                      </span>
+                      <span v-if="order?.pay_way === PayWay.Stripe">
+                        {{ $t('order.title.stripe') }}
+                      </span>
+                    </el-descriptions-item>
+                  </el-descriptions>
+                </div>
+              </el-col>
+            </el-row>
+            <el-row v-if="order?.state === OrderState.PAID" class="mb-5">
+              <el-col :span="12" :offset="6">
+                <el-divider border-style="dashed" />
+                <el-alert :title="$t('order.message.paidSuccessfully')" type="success" show-icon :closable="false" />
+              </el-col>
+            </el-row>
+            <el-row v-if="order?.state === OrderState.PENDING || order?.state === OrderState.FAILED">
+              <el-col :span="12" :offset="6">
+                <el-divider border-style="dashed" />
+                <div v-if="order.price && order.price > 0 && !order.pay_way" class="payways mb-4">
+                  <div
+                    :class="{
+                      payway: true,
+                      wechatpay: true,
+                      active: payWay === PayWay.WechatPay
+                    }"
+                    @click="payWay = PayWay.WechatPay"
+                  >
+                    <span class="payicon wechatpay"></span>
+                    {{ $t('order.title.wechatPay') }}
+                  </div>
+                  <div
+                    v-if="false"
+                    :class="{
+                      payway: true,
+                      alipay: true,
+                      active: payWay === PayWay.AliPay
+                    }"
+                    @click="payWay = PayWay.AliPay"
+                  >
+                    <span class="payicon alipay"></span>
+                    {{ $t('order.title.aliPay') }}
+                  </div>
+                  <div
+                    v-if="false"
+                    :class="{
+                      payway: true,
+                      stripe: true,
+                      active: payWay === PayWay.Stripe
+                    }"
+                    @click="payWay = PayWay.Stripe"
+                  >
+                    <span class="payicon stripe"></span>
+                    {{ $t('order.title.stripe') }}
+                  </div>
+                </div>
+                <div v-if="!order?.pay_way">
+                  <el-button :loading="prepaying" type="primary" size="large" class="btn-pay" @click="onPay">{{
+                    $t('common.button.pay')
+                  }}</el-button>
+                </div>
+                <div v-else>
+                  <el-button type="primary" size="large" class="btn-repay" @click="onRepay">{{
+                    $t('common.button.repay')
+                  }}</el-button>
+                </div>
+              </el-col>
+            </el-row>
+          </el-card>
         </el-col>
       </el-row>
     </el-col>
@@ -132,7 +138,8 @@ import {
   ElAlert,
   ElDescriptions,
   ElDescriptionsItem,
-  ElButton
+  ElButton,
+  ElCard
 } from 'element-plus';
 import WechatPayOrder from '@/components/order/WechatPay.vue';
 import StripePayOrder from '@/components/order/StripePay.vue';
@@ -160,6 +167,7 @@ export default defineComponent({
   components: {
     ElButton,
     ElRow,
+    ElCard,
     ElCol,
     ElSkeleton,
     ElDivider,
@@ -252,6 +260,7 @@ export default defineComponent({
 .panel {
   padding: 30px;
   width: calc(100% - 300px);
+  background-color: #f3f5f6;
 
   .title {
     font-size: 26px;

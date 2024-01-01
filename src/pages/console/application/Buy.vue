@@ -7,9 +7,15 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :span="12" :offset="6">
-          <el-skeleton v-if="loading" />
-          <create-order v-else-if="application" :application="application" />
+        <el-col :span="24">
+          <el-card shadow="hover">
+            <el-row>
+              <el-col :span="12" :offset="6">
+                <el-skeleton v-if="loading" />
+                <create-order v-else-if="application" :application="application" />
+              </el-col>
+            </el-row>
+          </el-card>
         </el-col>
       </el-row>
     </el-col>
@@ -33,7 +39,8 @@ export default defineComponent({
     CreateOrder,
     ElSkeleton,
     ElRow,
-    ElCol
+    ElCol,
+    ElCard
   },
   data(): IData {
     return {
@@ -77,10 +84,10 @@ export default defineComponent({
 .panel {
   padding: 30px;
   width: calc(100% - 300px);
-  .credential {
-    .copy {
-      cursor: pointer;
-    }
+  background-color: #f3f5f6;
+
+  .el-card {
+    padding: 50px 0;
   }
 }
 

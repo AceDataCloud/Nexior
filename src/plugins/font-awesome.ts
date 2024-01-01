@@ -42,7 +42,16 @@ import {
   faTriangleExclamation as faSolidTriangleExclamation,
   faPenToSquare as faSolidPenToSquare,
   faXmark as faSolidXmark,
-  faCube as faSolidCube
+  faCoins as faSolidCoins,
+  faRotateLeft as faSolidRotateLeft,
+  faWallet as faSolidWallet,
+  faCartShopping as faSolidCartShopping,
+  faPercent as faSolidPercent,
+  faCube as faSolidCube,
+  faShieldHalved as faSolidShieldHalved,
+  faCubes as faSolidCubes,
+  faLink as faSolidLink,
+  faWandMagic as faSolidWandMagic
 } from '@fortawesome/free-solid-svg-icons';
 library.add(faRegularCopy);
 library.add(faSolidStore);
@@ -85,3 +94,12 @@ library.add(faSolidArrowLeft);
 library.add(faSolidChevronLeft);
 library.add(faSolidCircleInfo);
 library.add(faSolidHashtag);
+library.add(faSolidCoins);
+library.add(faSolidRotateLeft);
+library.add(faSolidWallet);
+library.add(faSolidCartShopping);
+library.add(faSolidPercent);
+library.add(faSolidShieldHalved);
+library.add(faSolidCubes);
+library.add(faSolidLink);
+library.add(faSolidWandMagic);

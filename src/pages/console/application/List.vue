@@ -8,50 +8,52 @@
       </el-row>
       <el-row>
         <el-col :span="24">
-          <el-table v-loading="loading" :data="applications" stripe table-layout="fixed">
-            <el-table-column prop="id" :label="$t('application.field.id')" width="300px" class-name="text-center">
-              <template #default="scope">
-                <span>{{ scope.row.id }}</span>
-                <span class="copy">
-                  <copy-to-clipboard :content="scope?.row?.id" />
-                </span>
-              </template>
-            </el-table-column>
-            <el-table-column :label="$t('application.field.name')" width="220px">
-              <template #default="scope">
-                <span v-if="scope.row.type === applicationType.API">{{ scope.row?.api?.title }}</span>
-              </template>
-            </el-table-column>
-            <el-table-column
-              prop="remaining_amount"
-              :label="$t('application.field.remainingAmount')"
-              width="120px"
-              class-name="text-center"
-            >
-              <template #default="scope">
-                <span>{{ getRemainingAmount(scope.row) }}</span>
-              </template>
-            </el-table-column>
-            <el-table-column
-              prop="used_amount"
-              :label="$t('application.field.usedAmount')"
-              width="120px"
-              class-name="text-center"
-            >
-              <template #default="scope">
-                <span>{{ getUsedAmount(scope.row) }}</span>
-              </template>
-            </el-table-column>
-            <el-table-column fixed="right" width="100px">
-              <template #default="scope">
-                <div class="float-right">
-                  <el-button type="primary" @click="onBuyMore(scope?.row)">
-                    {{ $t('application.button.buyMore') }}
-                  </el-button>
-                </div>
-              </template>
-            </el-table-column>
-          </el-table>
+          <el-card shadow="hover">
+            <el-table v-loading="loading" :data="applications" stripe table-layout="fixed">
+              <el-table-column prop="id" :label="$t('application.field.id')" width="300px" class-name="text-center">
+                <template #default="scope">
+                  <span>{{ scope.row.id }}</span>
+                  <span class="copy">
+                    <copy-to-clipboard :content="scope?.row?.id" />
+                  </span>
+                </template>
+              </el-table-column>
+              <el-table-column :label="$t('application.field.name')" width="220px">
+                <template #default="scope">
+                  <span v-if="scope.row.type === applicationType.API">{{ scope.row?.api?.title }}</span>
+                </template>
+              </el-table-column>
+              <el-table-column
+                prop="remaining_amount"
+                :label="$t('application.field.remainingAmount')"
+                width="120px"
+                class-name="text-center"
+              >
+                <template #default="scope">
+                  <span>{{ getRemainingAmount(scope.row) }}</span>
+                </template>
+              </el-table-column>
+              <el-table-column
+                prop="used_amount"
+                :label="$t('application.field.usedAmount')"
+                width="120px"
+                class-name="text-center"
+              >
+                <template #default="scope">
+                  <span>{{ getUsedAmount(scope.row) }}</span>
+                </template>
+              </el-table-column>
+              <el-table-column fixed="right" width="100px">
+                <template #default="scope">
+                  <div class="float-right">
+                    <el-button type="primary" @click="onBuyMore(scope?.row)">
+                      {{ $t('application.button.buyMore') }}
+                    </el-button>
+                  </div>
+                </template>
+              </el-table-column>
+            </el-table>
+          </el-card>
         </el-col>
       </el-row>
       <el-row>
@@ -76,7 +78,7 @@ import {
 } from '@/operators';
 import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { ElTable, ElRow, ElCol, ElTableColumn, ElButton } from 'element-plus';
+import { ElTable, ElRow, ElCol, ElTableColumn, ElButton, ElCard } from 'element-plus';
 import { ROUTE_CONSOLE_APPLICATION_BUY } from '@/router/constants';
 
 interface IData {
@@ -104,7 +106,8 @@ export default defineComponent({
     ElRow,
     ElCol,
     ElTableColumn,
-    ElButton
+    ElButton,
+    ElCard
   },
   data(): IData {
     return {
@@ -115,7 +118,7 @@ export default defineComponent({
       total: undefined,
       buying: false,
       // dynamic calculate the limit according to window height
-      limit: Math.floor((window.innerHeight - 200) / 50),
+      limit: Math.floor((window.innerHeight - 300) / 50),
       form: {
         amount: 1
       },
@@ -220,6 +223,8 @@ export default defineComponent({
 .panel {
   padding: 30px;
   width: calc(100% - 300px);
+  background-color: #f3f5f6;
+
   .title {
     font-size: 26px;
     font-weight: bold;
