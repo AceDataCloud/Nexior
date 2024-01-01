@@ -46,7 +46,6 @@ import {
   ROUTE_AUTH_LOGIN,
   ROUTE_CHAT_CONVERSATION,
   ROUTE_CHAT_CONVERSATION_NEW,
-  ROUTE_CHAT_INDEX,
   ROUTE_CONSOLE_ROOT,
   ROUTE_MIDJOURNEY_HISTORY,
   ROUTE_MIDJOURNEY_INDEX
@@ -71,7 +70,7 @@ export default defineComponent({
           displayName: this.$t('common.nav.chat'),
           icon: 'fa-regular fa-comment',
           image: 'https://cdn.zhishuyun.com/9ad12c99b2.png/thumb_100x100',
-          routes: [ROUTE_CHAT_INDEX, ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW]
+          routes: [ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW]
         },
         {
           route: {

@@ -3,14 +3,14 @@ import auth from './auth';
 import console from './console';
 import chat from './chat';
 import midjourney from './midjourney';
-import { ROUTE_CHAT_INDEX, ROUTE_INDEX } from './constants';
+import { ROUTE_CHAT_CONVERSATION_NEW, ROUTE_INDEX } from './constants';
 
 const routes = [
   {
     path: '/',
     name: ROUTE_INDEX,
     redirect: {
-      name: ROUTE_CHAT_INDEX
+      name: ROUTE_CHAT_CONVERSATION_NEW
     }
   },
   console,
