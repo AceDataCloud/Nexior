@@ -1,5 +1,5 @@
 /**
- * Get mode of App, return development or production
+ * Get mode of app, return development or production
  * @returns
  */
 export const getMode = () => {

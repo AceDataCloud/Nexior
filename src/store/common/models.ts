@@ -1,4 +1,4 @@
-import { IApplication, IUser } from '@/operators';
+import { IUser } from '@/operators';
 import { IMidjourneyState } from '../midjourney/models';
 import { IChatState } from '../chat/models';
 
@@ -14,18 +14,15 @@ export interface IToken {
   expiration?: number;
 }
 
-export interface ISetting {
-  stream?: boolean;
-  endpoint?: string;
-}
+export interface ISetting {}
 
 export interface ICommonState {
   token: IToken;
   user: IUser;
-  setting: ISetting;
+  setting?: ISetting;
 }
 
 export interface IRootState extends ICommonState {
-  midjourney?: IMidjourneyState;
-  chat?: IChatState;
+  midjourney: IMidjourneyState;
+  chat: IChatState;
 }

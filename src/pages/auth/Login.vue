@@ -1,5 +1,5 @@
 <script lang="ts">
-import { getAuthBaseUrl, getHubBaseUrl } from '@/utils';
+import { getBaseUrlAuth, getBaseUrlHub } from '@/utils';
 import { defineComponent } from 'vue';
 
 interface IData {
@@ -14,8 +14,8 @@ export default defineComponent({
     };
   },
   async mounted() {
-    const hubBaseUrl = getHubBaseUrl();
-    const authBaseUrl = getAuthBaseUrl();
+    const hubBaseUrl = getBaseUrlHub();
+    const authBaseUrl = getBaseUrlAuth();
     // callback url used to init access token and then redirect back of `redirect`
     const callbackUrl = `${hubBaseUrl}/auth/callback?redirect=${this.redirect}`;
     // redirect to auth service to get access token then redirect back

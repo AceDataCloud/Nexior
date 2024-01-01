@@ -1,8 +1,8 @@
 import { Store } from 'vuex';
-import { IState } from './store/models';
+import { IRootState } from './store/common/models';
 
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
-    $store: Store<IState>;
+    $store: Store<IRootState>;
   }
 }

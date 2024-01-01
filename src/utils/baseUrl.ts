@@ -1,36 +1,34 @@
-import { ENV_LOCAL, ENV_TEST } from '@/constants';
-import { getEnv } from './env';
+import { BASE_URL_AUTH, BASE_URL_DATA, BASE_URL_HUB } from '@/constants';
 
 /**
- * Get base url of app
+ * Get base url of data app
  * @returns
  */
-export const getDataBaseUrl = () => {
-  const env = getEnv();
-  if (env === ENV_LOCAL) {
-    return 'https://data.local.zhishuyun.com';
-  } else if (env === ENV_TEST) {
-    return 'https://data.test.zhishuyun.com';
-  } else {
-    return 'https://data.zhishuyun.com';
+export const getBaseUrlData = () => {
+  if (import.meta.env.VITE_BASE_URL_DATA) {
+    return import.meta.env.VITE_BASE_URL_DATA;
   }
+  return BASE_URL_DATA;
 };
 
 /**
- * Get base url of app
+ * Get base url of hub app
  * @returns
  */
-export const getHubBaseUrl = () => {
-  return window.location.origin;
+export const getBaseUrlHub = () => {
+  if (import.meta.env.VITE_BASE_URL_HUB) {
+    return import.meta.env.VITE_BASE_URL_HUB;
+  }
+  return BASE_URL_HUB;
 };
 
-export const getAuthBaseUrl = () => {
-  const env = getEnv();
-  if (env === ENV_LOCAL) {
-    return 'https://auth.test.zhishuyun.com';
-  } else if (env === ENV_TEST) {
-    return 'https://auth.test.zhishuyun.com';
-  } else {
-    return 'https://auth.zhishuyun.com';
+/**
+ * Get base url of auth app
+ * @returns
+ */
+export const getBaseUrlAuth = () => {
+  if (import.meta.env.VITE_BASE_URL_AUTH) {
+    return import.meta.env.VITE_BASE_URL_AUTH;
   }
+  return BASE_URL_AUTH;
 };

@@ -1,7 +1,7 @@
 <template>
   <div class="side-panel">
     <div>
-      <img src="@/assets/images/logo2.svg" class="logo" @click="onHome" />
+      <img src="@/assets/images/logo.svg" class="logo" @click="onHome" />
     </div>
     <div class="links">
       <a
@@ -109,7 +109,6 @@ $padding-left: 10px;
   padding-left: $padding-left;
   width: $width;
   padding-top: 50px;
-  // border-right: 1px solid var(--el-border-color);
   height: 100%;
 }
 

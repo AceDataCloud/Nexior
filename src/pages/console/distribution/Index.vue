@@ -184,7 +184,6 @@ import {
   ElButton,
   ElCard,
   ElDivider,
-  ElInput,
   ElTooltip,
   ElSkeleton
 } from 'element-plus';
@@ -193,7 +192,7 @@ import {
   distributionStatusOperator,
   IDistributionLevel,
   IDistributionStatus
-} from '@/operators/distribution';
+} from '@/operators';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CONSOLE_DISTRIBUTION_HISTORY, ROUTE_CONSOLE_DISTRIBUTION_INVITEES } from '@/router';
 import { IUser, userOperator } from '@/operators';

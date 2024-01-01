@@ -1,10 +1,11 @@
 import router, { ROUTE_AUTH_LOGIN } from '@/router';
 import store from '@/store';
+import { getBaseUrlData } from '@/utils';
 import axios, { AxiosInstance } from 'axios';
 import qs from 'qs';
 
 const httpClient: AxiosInstance = axios.create({
-  baseURL: '/api/v1',
+  baseURL: `${getBaseUrlData()}/api/v1`,
   headers: {
     'Content-type': 'application/json',
     Accept: 'application/json'
@@ -31,7 +32,7 @@ httpClient.interceptors.response.use(
   },
   (error) => {
     if (error?.response?.status === 401) {
-      store.dispatch('common/resetAuth');
+      store.dispatch('resetToken');
       router.push({
         name: ROUTE_AUTH_LOGIN,
         query: {
