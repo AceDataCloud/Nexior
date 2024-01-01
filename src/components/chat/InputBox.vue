@@ -102,7 +102,9 @@ export default defineComponent({
       this.$emit('update:question', val);
     },
     question(val: string) {
-      this.questionValue = val;
+      if (val !== this.questionValue) {
+        this.questionValue = val;
+      }
     },
     references(val: string[]) {
       if (val.length === 0) {

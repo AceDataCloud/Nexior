@@ -40,12 +40,9 @@ import ChannelSelector from '@/components/midjourney/ChannelSelector.vue';
 import ReferenceImage from '@/components/midjourney/ReferenceImage.vue';
 import {
   IApplication,
-  IMidjourneyChannel,
   MidjourneyImagineAction,
-  MIDJOURNEY_CHANNEL_FAST,
   applicationOperator,
   midjourneyOperator,
-  IMidjourneyImagineTask,
   IMidjourneyImagineRequest,
   IApplicationDetailResponse
 } from '@/operators';
