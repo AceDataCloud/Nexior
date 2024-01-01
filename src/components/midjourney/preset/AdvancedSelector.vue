@@ -15,8 +15,7 @@ const DEFAULT_ADVANCED = false;
 export default defineComponent({
   name: 'AdvancedSelector',
   components: {
-    ElSwitch,
-    InfoIcon
+    ElSwitch
   },
   props: {
     modelValue: {
