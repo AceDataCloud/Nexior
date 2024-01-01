@@ -6,7 +6,7 @@
     "start:local": "npm run start --env=local",
     "start:test": "npm run start --env=test",
     "start:production": "npm run start --env=production",
-    "build": "vite build",
+    "build": "vite build --mode=development",
     "serve": "vite preview",
     "lint": "npx eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
     "prettier": "npx prettier --write ."

@@ -45,7 +45,7 @@ export default defineComponent({
   .left {
     width: 60px;
     height: 100%;
-    // border-right: 1px solid var(--el-border-color);
+    border-right: 1px solid var(--el-border-color);
   }
   .main {
     height: 100%;
