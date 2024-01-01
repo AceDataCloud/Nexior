@@ -251,7 +251,7 @@ export default defineComponent({
     },
     distributionLink() {
       const origin = window.location.origin;
-      const newOrigin = origin.replace('data.', 'auth.');
+      const newOrigin = origin.replace('hub.', 'auth.');
       return `${newOrigin}/auth/login?inviter_id=${this.$store.getters.user.id}&redirect=${origin}`;
     }
   },
