@@ -35,11 +35,8 @@ jobs:
           kubectl get nodes
           kubectl get svc -n zhishuyun-test
 
-      - name: Generate build number
-        run: |
-          DATE=$(date +'%Y%m%d')
-          echo "BUILD_NUMBER=$DATE.$(cat .build_number)" >> $GITHUB_ENV
-          echo $(($(cat .build_number)+1)) > .build_number
+      - name: Set Build Number
+        run: echo "BUILD_NUMBER=${GITHUB_RUN_NUMBER}" >> $GITHUB_ENV
 
       - name: Get Build Number
         run: |
