@@ -13,32 +13,38 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
+
       - name: Docker Login
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Test IP Address
         run: |
           wget -qO- https://ipecho.net/plain ; echo
+
       - name: Set Kubectl
         uses: Azure/k8s-set-context@v1
         with:
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
+
       - name: Test Kubectl
         run: |
           kubectl get nodes
           kubectl get svc -n zhishuyun-test
-      - name: Generate Build Number
-        uses: einaregilsson/build-number@v2
-        with:
-          token: ${{ secrets.github_token }}
-        env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+
+      - name: Generate build number
+        run: |
+          DATE=$(date +'%Y%m%d')
+          echo "BUILD_NUMBER=$DATE.$(cat .build_number)" >> $GITHUB_ENV
+          echo $(($(cat .build_number)+1)) > .build_number
+
       - name: Get Build Number
         run: |
           echo $BUILD_NUMBER
+
       - name: Build Push Deploy
         run: |
           docker-compose build
