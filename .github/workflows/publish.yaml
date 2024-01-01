@@ -36,6 +36,6 @@ jobs:
           REPO_PAT: ${{ secrets.REPO_PAT }}
 
       - name: Publish
-        run: yarn publish -- --token "$NPM_TOKEN"
+        run: yarn release -- --token "$NPM_TOKEN"
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
