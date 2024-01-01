@@ -1,8 +1,16 @@
 # Change Log - @zhishuyun/hub
 
-This log was last generated on Mon, 01 Jan 2024 17:34:33 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jan 2024 17:58:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.5.0
+
+Mon, 01 Jan 2024 17:58:26 GMT
+
+### Minor changes
+
+- add support for deployment of netlify (cqc@cuiqingcai.com)
 
 ## 0.4.1
 
