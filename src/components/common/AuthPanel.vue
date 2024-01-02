@@ -15,18 +15,22 @@
 import { defineComponent } from 'vue';
 import { ElDialog } from 'element-plus';
 import { getBaseUrlAuth } from '@/utils';
+import { getCookie } from 'typescript-cookie';
 
 export default defineComponent({
   name: 'AuthPanel',
   components: {
     ElDialog
   },
-  data() {
-    return {
-      iframeUrl: `${getBaseUrlAuth()}/auth/login`
-    };
-  },
   computed: {
+    iframeUrl() {
+      return `${getBaseUrlAuth()}/auth/login?inviter_id=${this.inviterId}`;
+    },
+    inviterId() {
+      const result = getCookie('INVITER_ID') || this.$route.query.inviter_id?.toString();
+      console.debug('inviterId', result);
+      return result;
+    },
     authenticated() {
       return !!this.$store.state.token.access;
     }
