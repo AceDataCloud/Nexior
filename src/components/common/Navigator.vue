@@ -27,7 +27,7 @@
       <div class="link">
         <help-entry />
       </div>
-      <div class="link">
+      <div v-if="authenticated" class="link">
         <el-tooltip effect="dark" :content="$t('common.nav.logOut')" placement="right">
           <el-button class="button" @click="onLogout">
             <font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket" />
@@ -43,7 +43,6 @@ import { defineComponent } from 'vue';
 import { ElButton, ElTooltip } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
-  ROUTE_AUTH_LOGIN,
   ROUTE_CHAT_CONVERSATION,
   ROUTE_CHAT_CONVERSATION_NEW,
   ROUTE_CONSOLE_ROOT,
@@ -84,10 +83,14 @@ export default defineComponent({
       ]
     };
   },
+  computed: {
+    authenticated() {
+      return !!this.$store.state.token.access;
+    }
+  },
   methods: {
     onLogout() {
       this.$store.dispatch('resetToken');
-      this.$router.push({ name: ROUTE_AUTH_LOGIN });
     },
     onConsole() {
       this.$router.push({ name: ROUTE_CONSOLE_ROOT });

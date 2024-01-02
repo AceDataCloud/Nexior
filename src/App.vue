@@ -1,6 +1,7 @@
 <template>
   <el-config-provider :locale="locale">
     <router-view />
+    <auth-panel />
   </el-config-provider>
 </template>
 
@@ -9,10 +10,12 @@ import { defineComponent } from 'vue';
 import { ElConfigProvider } from 'element-plus';
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs';
 import { getDomain, getPath, setCookie } from './utils';
+import AuthPanel from './components/common/AuthPanel.vue';
 
 export default defineComponent({
   components: {
-    ElConfigProvider
+    ElConfigProvider,
+    AuthPanel
   },
   data() {
     return {

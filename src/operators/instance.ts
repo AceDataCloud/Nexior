@@ -33,12 +33,12 @@ httpClient.interceptors.response.use(
   (error) => {
     if (error?.response?.status === 401) {
       store.dispatch('resetToken');
-      router.push({
-        name: ROUTE_AUTH_LOGIN,
-        query: {
-          redirect: router?.currentRoute?.value?.path
-        }
-      });
+      // router.push({
+      //   name: ROUTE_AUTH_LOGIN,
+      //   query: {
+      //     redirect: router?.currentRoute?.value?.path
+      //   }
+      // });
     }
     return Promise.reject(error);
   }
