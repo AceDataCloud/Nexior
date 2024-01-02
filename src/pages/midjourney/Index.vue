@@ -1,9 +1,9 @@
 <template>
-  <div class="page">
-    <div class="presets">
+  <layout>
+    <template #presets>
       <preset-panel />
-    </div>
-    <div class="main">
+    </template>
+    <template #operation>
       <channel-selector class="mb-4" />
       <api-status
         :initializing="initializing"
@@ -22,15 +22,16 @@
           {{ $t('midjourney.button.generate') }}
         </el-button>
       </div>
-    </div>
-    <div class="result">
+    </template>
+    <template #results>
       <task-brief-list :applications="applications" @custom="onCustom" />
-    </div>
-  </div>
+    </template>
+  </layout>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import Layout from '@/layouts/Midjourney.vue';
 import PresetPanel from '@/components/midjourney/PresetPanel.vue';
 import PromptInput from '@/components/midjourney/PromptInput.vue';
 import ElementsSelector from '@/components/midjourney/ElementsSelector.vue';
@@ -73,7 +74,8 @@ export default defineComponent({
     ElButton,
     ApiStatus,
     TaskBriefList,
-    FinalPrompt
+    FinalPrompt,
+    Layout
   },
   data(): IData {
     return {

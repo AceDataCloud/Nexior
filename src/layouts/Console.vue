@@ -4,9 +4,15 @@
       <navigator />
     </div>
     <div class="main">
-      <side-panel />
-      <router-view />
+      <side-panel class="side" />
+      <router-view class="operation" />
     </div>
+    <el-button round class="menu" @click="drawer = true">
+      <font-awesome-icon icon="fa-solid fa-bars" class="icon-menu" />
+    </el-button>
+    <el-drawer v-model="drawer" :with-header="false" size="340px" class="drawer">
+      <side-panel />
+    </el-drawer>
   </div>
 </template>
 
@@ -14,12 +20,22 @@
 import { defineComponent } from 'vue';
 import Navigator from '@/components/common/Navigator.vue';
 import SidePanel from '@/components/console/SidePanel.vue';
+import { ElDrawer, ElButton } from 'element-plus';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default defineComponent({
   name: 'LayoutConsole',
   components: {
     SidePanel,
-    Navigator
+    Navigator,
+    ElDrawer,
+    ElButton,
+    FontAwesomeIcon
+  },
+  data() {
+    return {
+      drawer: false
+    };
   }
 });
 </script>
@@ -41,6 +57,26 @@ export default defineComponent({
     flex: 1;
     display: flex;
     flex-direction: row;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main {
+    .side {
+      display: none;
+    }
+    .panel {
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+    }
+  }
+  .menu {
+    display: block;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 1000;
   }
 }
 </style>

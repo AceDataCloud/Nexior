@@ -14,13 +14,9 @@
       </el-skeleton>
     </el-card>
   </div>
-  <el-row>
-    <el-col :span="10" :offset="14">
-      <div class="pagination">
-        <pagination :current-page="page" :page-size="limit" :total="total" @change="onPageChange" />
-      </div>
-    </el-col>
-  </el-row>
+  <div class="pagination">
+    <pagination :current-page="page" :page-size="limit" :total="total" @change="onPageChange" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -35,8 +31,6 @@ export default defineComponent({
   components: {
     TaskPreview,
     Pagination,
-    ElRow,
-    ElCol,
     ElSkeleton,
     ElSkeletonItem,
     ElCard
@@ -156,5 +150,7 @@ export default defineComponent({
 .pagination {
   height: 60px;
   padding-top: 10px;
+  width: fit-content;
+  margin: auto;
 }
 </style>

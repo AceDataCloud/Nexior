@@ -2,7 +2,7 @@ import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from './constant
 
 export default {
   path: '/chat',
-  component: () => import('@/layouts/Chat.vue'),
+  component: () => import('@/layouts/Main.vue'),
   children: [
     {
       path: '',

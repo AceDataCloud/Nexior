@@ -108,4 +108,12 @@ export default defineComponent({
     }
   }
 }
+
+@media (max-width: 767px) {
+  .channel-selector {
+    .button {
+      padding: 20px 10px;
+    }
+  }
+}
 </style>

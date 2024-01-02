@@ -1,28 +1,30 @@
 <template>
-  <div class="page">
-    <model-selector class="model-selector" />
-    <api-status
-      :initializing="initializing"
-      :application="application"
-      :api-id="model.apiId"
-      @refresh="$store.dispatch('chat/getApplications')"
-    />
-    <div class="dialogue">
-      <introduction v-if="messages.length === 0" @draft="onDraft" />
-      <div v-else class="messages">
-        <message v-for="(message, messageIndex) in messages" :key="messageIndex" :message="message" class="message" />
-      </div>
-    </div>
-    <div class="bottom">
-      <input-box
-        :question="question"
-        :references="references"
-        @update:question="question = $event"
-        @update:references="references = $event"
-        @submit="onSubmit"
+  <layout>
+    <template #chat>
+      <model-selector class="model-selector" />
+      <api-status
+        :initializing="initializing"
+        :application="application"
+        :api-id="model.apiId"
+        @refresh="$store.dispatch('chat/getApplications')"
       />
-    </div>
-  </div>
+      <div class="dialogue">
+        <introduction v-if="messages.length === 0" @draft="onDraft" />
+        <div v-else class="messages">
+          <message v-for="(message, messageIndex) in messages" :key="messageIndex" :message="message" class="message" />
+        </div>
+      </div>
+      <div class="bottom">
+        <input-box
+          :question="question"
+          :references="references"
+          @update:question="question = $event"
+          @update:references="references = $event"
+          @submit="onSubmit"
+        />
+      </div>
+    </template>
+  </layout>
 </template>
 
 <script lang="ts">
@@ -48,6 +50,7 @@ import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router';
 import { Status } from '@/store/common/models';
 import { log } from '@/utils/log';
 import Introduction from '@/components/chat/Introduction.vue';
+import Layout from '@/layouts/Chat.vue';
 
 export interface IData {
   question: string;
@@ -62,7 +65,8 @@ export default defineComponent({
     Introduction,
     ModelSelector,
     Message,
-    ApiStatus
+    ApiStatus,
+    Layout
   },
   data(): IData {
     return {
@@ -161,7 +165,7 @@ export default defineComponent({
     async onScrollDown() {
       setTimeout(() => {
         const container = document.querySelector('.dialogue') as HTMLDivElement;
-        if (!container) {
+        if (!container || !this.messages || this.messages.length === 0) {
           return;
         }
         container.scrollTop = container?.scrollHeight;
@@ -259,36 +263,26 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.page {
+.model-selector {
+  width: max-content;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.dialogue {
   flex: 1;
-  width: 100%;
   overflow-y: scroll;
-  padding: 15px;
-  height: 100%;
-  flex-direction: column;
-  display: flex;
-
-  .model-selector {
-    width: max-content;
-    margin: auto;
-    margin-bottom: 10px;
-  }
-
-  .dialogue {
-    flex: 1;
-    overflow-y: scroll;
-    margin: 20px 0;
-    position: relative;
-    .messages {
-      padding-top: 30px;
-      .message {
-        margin-bottom: 15px;
-      }
+  margin: 20px 0;
+  position: relative;
+  .messages {
+    padding-top: 30px;
+    .message {
+      margin-bottom: 15px;
     }
   }
-  .bottom {
-    width: 100%;
-    height: 90px;
-  }
+}
+.bottom {
+  width: 100%;
+  height: 90px;
 }
 </style>
