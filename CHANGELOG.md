@@ -1,8 +1,16 @@
 # Change Log - @zhishuyun/hub
 
-This log was last generated on Tue, 02 Jan 2024 18:23:41 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Jan 2024 19:18:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.7.2
+
+Tue, 02 Jan 2024 19:18:59 GMT
+
+### Patches
+
+- fix bug of setting cookie of inviter id (cqc@germey.cn)
 
 ## 0.7.1
 
