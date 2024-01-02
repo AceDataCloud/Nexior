@@ -12,6 +12,9 @@ import { vLoading } from 'element-plus';
 import hl from 'highlight.js';
 import 'highlight.js/styles/night-owl.css';
 import copyToClipboard from 'copy-to-clipboard';
+import { initializeCookies } from './utils/initializer';
+
+initializeCookies();
 
 const app = createApp(App);
 

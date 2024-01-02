@@ -27,8 +27,7 @@ export default defineComponent({
       return `${getBaseUrlAuth()}/auth/login?inviter_id=${this.inviterId}`;
     },
     inviterId() {
-      const result = getCookie('INVITER_ID') || this.$route.query.inviter_id?.toString();
-      console.debug('inviterId', result);
+      const result = this.$route.query.inviter_id?.toString() || getCookie('INVITER_ID');
       return result;
     },
     authenticated() {
