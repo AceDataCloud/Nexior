@@ -1,8 +1,16 @@
 # Change Log - @zhishuyun/hub
 
-This log was last generated on Mon, 01 Jan 2024 18:11:56 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Jan 2024 05:44:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.6.0
+
+Tue, 02 Jan 2024 05:44:29 GMT
+
+### Minor changes
+
+- adapt for mobile screen (cqc@cuiqingcai.com)
 
 ## 0.5.1
 
