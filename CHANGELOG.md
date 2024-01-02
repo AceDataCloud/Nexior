@@ -1,8 +1,16 @@
 # Change Log - @zhishuyun/hub
 
-This log was last generated on Tue, 02 Jan 2024 06:56:37 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Jan 2024 17:13:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.7.0
+
+Tue, 02 Jan 2024 17:13:47 GMT
+
+### Minor changes
+
+- add auth modal (cqc@cuiqingcai.com)
 
 ## 0.6.1
 
