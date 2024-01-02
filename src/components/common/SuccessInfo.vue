@@ -1,5 +1,5 @@
 <template>
-  <el-alert v-if="show" :title="content" type="success" center :closable="false" show-icon class="alert-succcess-info">
+  <el-alert v-if="show" :title="content" type="success" center :closable="false" show-icon class="alert-success-info">
   </el-alert>
 </template>
 
@@ -36,12 +36,12 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.alert-succcess-info {
+.alert-success-info {
   position: fixed;
   top: 110px;
   left: 50%;
   transform: translate(-50%, 0);
-  z-index: 1000;
+  z-index: 100;
   width: 10%;
 }
 </style>

@@ -1,6 +1,6 @@
 export default {
   deltaPriceForNextLevel: '距离下一级别还差',
-  howToWithdrawal: '请添加客服处理提现，提现需扣除 5% 的所得税，提供发票可进行抵扣',
+  howToWithdrawal: '请添加客服处理提现，提现需扣除 6% 的所得税，提供发票可进行抵扣',
   technicalDetail: '技术细节',
   distributionQrDescription: '分销二维码（内容同链接）',
   distributionDescription:

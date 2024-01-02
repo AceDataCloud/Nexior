@@ -30,7 +30,7 @@ export default defineComponent({
       this.accessToken = data.access;
       this.refreshToken = data.refresh;
     } else {
-      this.$router.push({ name: ROUTE_AUTH_LOGIN });
+      this.$store.dispatch('resetToken');
       return;
     }
     // if token acquired, get user info
@@ -41,7 +41,7 @@ export default defineComponent({
         await this.$router.push(this.redirect);
       }
     } else {
-      await this.$router.push({ name: ROUTE_AUTH_LOGIN });
+      this.$store.dispatch('resetToken');
     }
   }
 });

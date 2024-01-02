@@ -184,7 +184,7 @@ export default defineComponent({
   }
   .btn {
     display: block;
-    z-index: 10000;
+    z-index: 100;
     cursor: pointer;
     position: absolute;
     top: 7px;

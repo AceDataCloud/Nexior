@@ -58,6 +58,9 @@ export default defineComponent({
     display: flex;
     flex-direction: row;
   }
+  .menu {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -76,7 +79,7 @@ export default defineComponent({
     position: fixed;
     right: 20px;
     top: 20px;
-    z-index: 1000;
+    z-index: 100;
   }
 }
 </style>
