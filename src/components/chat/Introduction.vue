@@ -125,9 +125,15 @@ export default defineComponent({
 
 @media (max-width: 767px) {
   .introduction {
+    position: relative;
+    top: initial;
+    left: initial;
+    transform: initial;
     width: 90%;
-    left: 5%;
-    transform: translateY(-50%);
+    margin: auto;
+    .introduction-items {
+      margin-bottom: 0;
+    }
   }
 }
 </style>

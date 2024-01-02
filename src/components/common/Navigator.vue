@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar">
+  <div class="navigator">
     <div class="top">
       <div v-for="(link, linkIndex) in links" :key="linkIndex" class="link">
         <el-tooltip effect="dark" :content="link.displayName" placement="right">
@@ -97,7 +97,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.sidebar {
+.navigator {
   display: flex;
   flex-direction: column;
   align-items: center;

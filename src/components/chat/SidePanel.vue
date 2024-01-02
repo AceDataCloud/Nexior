@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar">
+  <div class="panel">
     <el-skeleton v-if="loading && conversations === undefined" />
     <div v-else class="conversations">
       <div class="conversation" @click="onNewConversation">
@@ -130,7 +130,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.sidebar {
+.panel {
   display: flex;
   flex-direction: column;
   align-items: flex-end;

@@ -139,7 +139,7 @@ export default defineComponent({
       required: true
     },
     applications: {
-      type: Object as () => IApplication[],
+      type: Object as () => IApplication[] | undefined,
       required: true
     },
     full: {

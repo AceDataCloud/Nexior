@@ -1,11 +1,7 @@
 <template>
   <div class="wrapper">
-    <div class="left">
-      <navigator />
-    </div>
-    <div class="main">
-      <router-view />
-    </div>
+    <navigator class="navigator" />
+    <router-view class="main" />
   </div>
 </template>
 
@@ -27,7 +23,8 @@ export default defineComponent({
   height: 100%;
   display: flex;
   flex-direction: row;
-  .left {
+  overflow: hidden;
+  .navigator {
     width: 60px;
     height: 100%;
     border-right: 1px solid var(--el-border-color);

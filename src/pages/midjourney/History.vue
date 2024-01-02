@@ -1,23 +1,18 @@
 <template>
-  <div class="page">
-    <div class="presets">
-      <preset-panel />
-    </div>
-    <div class="main">
-      <channel-selector class="mb-4" />
-      <api-status
-        :initializing="initializing"
-        :application="application"
-        class="mb-4"
-        :api-id="channel.apiId"
-        @refresh="onGetApplications"
-      />
-      <task-full-list @custom="onCustom" />
-      <el-button type="primary" class="btn btn-generate" @click="onGenerateNew">
-        <font-awesome-icon icon="fa-solid fa-chevron-left" class="icon icon-rotate mr-1" />
-        {{ $t('midjourney.button.generateNew') }}
-      </el-button>
-    </div>
+  <div class="history">
+    <channel-selector class="mb-4" />
+    <api-status
+      :initializing="initializing"
+      :application="application"
+      class="mb-4"
+      :api-id="channel.apiId"
+      @refresh="onGetApplications"
+    />
+    <task-full-list @custom="onCustom" />
+    <el-button type="primary" class="btn btn-generate" @click="onGenerateNew">
+      <font-awesome-icon icon="fa-solid fa-chevron-left" class="icon icon-rotate mr-1" />
+      {{ $t('midjourney.button.generateNew') }}
+    </el-button>
   </div>
 </template>
 
@@ -44,7 +39,6 @@ const CALLBACK_URL = 'https://webhook.zhishuyun.com/midjourney';
 export default defineComponent({
   name: 'MidjourneyIndex',
   components: {
-    PresetPanel,
     TaskFullList,
     ChannelSelector,
     ApiStatus,
@@ -121,35 +115,24 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.page {
-  width: 100%;
-  height: 100%;
+.history {
+  flex: 1;
+  padding: 15px;
+  width: calc(100% - 260px);
   display: flex;
-  flex-direction: row;
-  .presets {
-    width: 260px;
-    height: 100%;
-    overflow-y: scroll;
+  flex-direction: column;
+  position: relative;
+
+  .title {
+    font-size: 14px;
+    margin-bottom: 10px;
   }
-  .main {
-    flex: 1;
-    padding: 15px;
-    width: calc(100% - 260px);
-    display: flex;
-    flex-direction: column;
-    position: relative;
 
-    .title {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-
-    .btn.btn-generate {
-      position: absolute;
-      left: 30px;
-      top: 30px;
-      border-radius: 20px;
-    }
+  .btn.btn-generate {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    border-radius: 20px;
   }
 }
 </style>
