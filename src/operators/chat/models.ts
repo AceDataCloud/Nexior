@@ -22,6 +22,7 @@ export interface IChatModel {
   apiId: string;
   name: IChatModelName;
   displayName: string;
+  description: string;
 }
 
 export interface IError {

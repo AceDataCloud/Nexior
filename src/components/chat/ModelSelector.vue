@@ -1,6 +1,12 @@
 <template>
   <div class="model-selector">
-    <el-dropdown v-for="(group, groupIndex) in groups" :key="groupIndex" trigger="click" @command="onCommandChange">
+    <el-dropdown
+      v-for="(group, groupIndex) in groups"
+      :key="groupIndex"
+      trigger="click"
+      popper-class="popper"
+      @command="onCommandChange"
+    >
       <el-button :class="{ group: true, active: group.value === activeGroup }" @click="onSwitchGroup(group)">
         <font-awesome-icon :icon="group.icon" :class="'icon ' + group.value" />
         <span v-if="group.value === activeGroup">
@@ -19,8 +25,19 @@
             :command="groupModel"
             class="option"
           >
-            <font-awesome-icon :icon="group.icon" :class="'icon ' + group.value" />
-            {{ groupModel.displayName }}
+            <div class="item">
+              <div class="icon">
+                <font-awesome-icon :icon="group.icon" :class="'icon ' + group.value" />
+              </div>
+              <div class="info">
+                <p class="name">
+                  {{ groupModel.displayName }}
+                </p>
+                <p class="description">
+                  {{ groupModel.description }}
+                </p>
+              </div>
+            </div>
           </el-dropdown-item>
         </el-dropdown-menu>
       </template>
@@ -105,6 +122,13 @@ export default defineComponent({
 });
 </script>
 
+<style lang="scss">
+.popper {
+  border-radius: 10px;
+  overflow: hidden;
+}
+</style>
+
 <style lang="scss" scoped>
 .model-selector {
   background-color: #ececf1;
@@ -145,14 +169,36 @@ export default defineComponent({
 }
 .menu {
   .option {
-    .icon {
-      display: inline-block;
-      margin-right: 5px;
-      &.base {
-        color: #ff9900;
+    .item {
+      display: flex;
+      flex-direction: row;
+      .icon {
+        width: 15px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        margin-right: 5px;
+        margin-top: 3px;
+        &.base {
+          color: #ff9900;
+        }
+        &.plus {
+          color: #ce65e6;
+        }
       }
-      &.plus {
-        color: #ce65e6;
+      .info {
+        width: calc(100% - 15px);
+        .name {
+          font-size: 14px;
+          font-weight: bold;
+          color: #333;
+          margin: 0;
+        }
+        .description {
+          font-size: 12px;
+          color: #999;
+          margin: 0;
+        }
       }
     }
   }

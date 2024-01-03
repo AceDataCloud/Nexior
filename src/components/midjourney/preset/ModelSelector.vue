@@ -101,7 +101,6 @@ export default defineComponent({
       font-size: 18px;
       color: white;
       position: absolute;
-      top: 12px;
       text-align: center;
     }
 

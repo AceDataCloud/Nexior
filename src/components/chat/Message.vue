@@ -148,6 +148,7 @@ export default defineComponent({
 .message {
   display: flex;
   flex-direction: column;
+  margin-bottom: 15px;
   &[role='system'] {
     display: none;
   }
