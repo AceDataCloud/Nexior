@@ -218,35 +218,18 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.page {
-  width: 100%;
+.operation {
+  flex: 1;
+  padding: 15px;
   height: 100%;
-  display: flex;
-  flex-direction: row;
-  .presets {
-    width: 260px;
-    height: 100%;
-    overflow-y: scroll;
+  overflow-x: scroll;
+  .title {
+    font-size: 14px;
+    margin-bottom: 10px;
   }
-  .main {
-    flex: 1;
-    padding: 15px;
-    height: 100%;
-    overflow-x: scroll;
-    .title {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-    .btn.btn-generate {
-      width: 80px;
-      border-radius: 20px;
-    }
-  }
-  .result {
-    overflow-y: scroll;
-    width: 400px;
-    height: 100%;
-    border-left: 1px solid var(--el-border-color);
+  .btn.btn-generate {
+    width: 80px;
+    border-radius: 20px;
   }
 }
 </style>

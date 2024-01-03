@@ -128,15 +128,19 @@
               <el-divider class="mt-4 mb-4" />
               <div class="clear-both overflow-hidden">
                 <div class="float-left description">
-                  <p>{{ $t('distribution.title.currentLevel') }}: L{{ distributionStatus?.level?.level }}</p>
-                  <p>
+                  <p class="mt-0">
+                    {{ $t('distribution.title.currentLevel') }}: L{{ distributionStatus?.level?.level }}
+                  </p>
+                  <p class="mt-0">
                     {{ $t('distribution.title.currentPercentage') }}:
                     {{ distributionLevelMap[distributionStatus?.level?.level!]?.percentage }}%
                   </p>
                 </div>
                 <div class="float-right description">
-                  <p>{{ $t('distribution.title.nextLevel') }}: L{{ distributionStatus?.level?.level! + 1 }}</p>
-                  <p>
+                  <p class="mt-0">
+                    {{ $t('distribution.title.nextLevel') }}: L{{ distributionStatus?.level?.level! + 1 }}
+                  </p>
+                  <p class="mt-0">
                     {{ $t('distribution.title.nextPercentage') }}:
                     {{ distributionLevelMap[distributionStatus?.level?.level! + 1]?.percentage }}%
                   </p>

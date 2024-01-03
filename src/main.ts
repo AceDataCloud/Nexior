@@ -28,7 +28,7 @@ app.directive('loading', vLoading);
 app.mount('#app');
 console.debug('app mounted');
 
-app.directive('highlight', (el) => {
+app.directive('highlight', async (el) => {
   const blocks = el.querySelectorAll('pre code');
   blocks.forEach((block: HTMLPreElement) => {
     // create the copy button

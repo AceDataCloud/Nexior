@@ -6,7 +6,7 @@ import {
   IChatConversation,
   IChatConversationAction
 } from './models';
-import { ENDPOINT_API } from '../common/contants';
+import { BASE_URL_API } from '@/constants';
 
 class ChatOperator {
   async askQuestion(data: IChatAskRequest, options: IChatAskOptions): Promise<AxiosResponse<IChatAskResponse>> {
@@ -43,7 +43,7 @@ class ChatOperator {
         headers: {
           'content-type': 'application/json'
         },
-        baseURL: ENDPOINT_API
+        baseURL: BASE_URL_API
       }
     );
   }
@@ -59,7 +59,7 @@ class ChatOperator {
         headers: {
           'content-type': 'application/json'
         },
-        baseURL: ENDPOINT_API
+        baseURL: BASE_URL_API
       }
     );
   }
@@ -75,7 +75,7 @@ class ChatOperator {
         headers: {
           'content-type': 'application/json'
         },
-        baseURL: ENDPOINT_API
+        baseURL: BASE_URL_API
       }
     );
   }
@@ -91,7 +91,7 @@ class ChatOperator {
         headers: {
           'content-type': 'application/json'
         },
-        baseURL: ENDPOINT_API
+        baseURL: BASE_URL_API
       }
     );
   }

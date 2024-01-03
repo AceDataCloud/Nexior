@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { IMidjourneyImagineRequest, IMidjourneyImagineResponse, IMidjourneyImagineTask } from './models';
-import { ENDPOINT_API } from '../common/contants';
+import { BASE_URL_API } from '@/constants';
 
 class MidjourneyOperator {
   async task(id: string): Promise<AxiosResponse<IMidjourneyImagineTask>> {
@@ -15,7 +15,7 @@ class MidjourneyOperator {
           accept: 'application/json',
           'content-type': 'application/json'
         },
-        baseURL: ENDPOINT_API
+        baseURL: BASE_URL_API
       }
     );
   }
@@ -32,7 +32,7 @@ class MidjourneyOperator {
           accept: 'application/json',
           'content-type': 'application/json'
         },
-        baseURL: ENDPOINT_API
+        baseURL: BASE_URL_API
       }
     );
   }

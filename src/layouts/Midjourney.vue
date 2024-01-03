@@ -80,14 +80,6 @@ export default defineComponent({
     padding: 15px;
     height: 100%;
     overflow-x: scroll;
-    .title {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-    .btn.btn-generate {
-      width: 80px;
-      border-radius: 20px;
-    }
   }
   .results {
     overflow-y: scroll;

@@ -1,7 +1,7 @@
 <template>
   <div class="side-panel">
     <div>
-      <img src="@/assets/images/logo.svg" class="logo" @click="onHome" />
+      <img v-if="isOfficial" src="@/assets/images/logo.svg" class="logo" @click="onHome" />
     </div>
     <div class="links">
       <a
@@ -36,6 +36,7 @@ import {
   ROUTE_CONSOLE_DISTRIBUTION_INDEX
 } from '@/router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { BASE_URL_HUB } from '@/constants';
 
 interface ILink {
   key: string;
@@ -52,6 +53,9 @@ export default defineComponent({
     FontAwesomeIcon
   },
   computed: {
+    isOfficial() {
+      return window.location.origin === BASE_URL_HUB;
+    },
     active() {
       return this.$route.matched[0].path;
     },

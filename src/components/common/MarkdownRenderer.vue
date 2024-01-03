@@ -32,9 +32,12 @@ export default defineComponent({
   background: none;
   padding-top: 3px;
   color: inherit;
-  // color: var(--el-text-color-primary);
   ol {
     list-style: initial;
+  }
+
+  pre code {
+    color: white;
   }
 }
 </style>
