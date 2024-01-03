@@ -1,8 +1,16 @@
 # Change Log - @zhishuyun/hub
 
-This log was last generated on Wed, 03 Jan 2024 03:33:35 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Jan 2024 04:14:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.8.0
+
+Wed, 03 Jan 2024 04:14:55 GMT
+
+### Minor changes
+
+- upgrade tailwind and add css optimization (cqc@cuiqingcai.com)
 
 ## 0.7.3
 
