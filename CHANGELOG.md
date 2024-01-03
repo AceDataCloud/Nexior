@@ -1,8 +1,16 @@
 # Change Log - @zhishuyun/hub
 
-This log was last generated on Tue, 02 Jan 2024 19:18:59 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Jan 2024 03:33:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.7.3
+
+Wed, 03 Jan 2024 03:33:35 GMT
+
+### Patches
+
+- fix bug of perist cookie (cqc@cuiqingcai.com)
 
 ## 0.7.2
 
