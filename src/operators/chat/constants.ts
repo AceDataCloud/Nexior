@@ -21,35 +21,41 @@ export const API_ID_CHATGPT4_VISION = '098c6e4a-14ae-4ff1-8d2f-0968532a4638';
 export const CHAT_MODEL_CHATGPT: IChatModel = {
   apiId: API_ID_CHATGPT,
   name: CHAT_MODEL_NAME_CHATGPT,
-  displayName: '3.5 - 标准'
+  displayName: '3.5 - 标准',
+  description: '3.5 标准模型，输入约 2 千汉字'
 };
 
 export const CHAT_MODEL_CHATGPT_16K: IChatModel = {
   apiId: API_ID_CHATGPT_16K,
   name: CHAT_MODEL_NAME_CHATGPT_16K,
-  displayName: '3.5 - 16K'
+  displayName: '3.5 - 16K',
+  description: '3.5 16K 模型，输入约 8 千汉字'
 };
 
 export const CHAT_MODEL_CHATGPT_BROWSING: IChatModel = {
   apiId: API_ID_CHATGPT_BROWSING,
   name: CHAT_MODEL_NAME_CHATGPT_BROWSING,
-  displayName: '3.5 - 联网'
+  displayName: '3.5 - 联网',
+  description: '3.5 联网模型，额外支持实时联网搜索问答'
 };
 
 export const CHAT_MODEL_CHATGPT4: IChatModel = {
   apiId: API_ID_CHATGPT4,
   name: CHAT_MODEL_NAME_CHATGPT4,
-  displayName: '4.0 - 标准'
+  displayName: '4.0 - 标准',
+  description: '4.0 标准模型，输入约 4 千汉字'
 };
 
 export const CHAT_MODEL_CHATGPT4_BROWSING: IChatModel = {
   apiId: API_ID_CHATGPT4_BROWSING,
   name: CHAT_MODEL_NAME_CHATGPT4_BROWSING,
-  displayName: '4.0 - 联网'
+  displayName: '4.0 - 联网',
+  description: '4.0 联网模型，支持实时联网搜索问答'
 };
 
 export const CHAT_MODEL_CHATGPT4_VISION: IChatModel = {
   apiId: API_ID_CHATGPT4_VISION,
   name: CHAT_MODEL_NAME_CHATGPT4_VISION,
-  displayName: '4.0 - 视觉'
+  displayName: '4.0 - 视觉',
+  description: '4.0 视觉模型，支持图片输入和识别'
 };
