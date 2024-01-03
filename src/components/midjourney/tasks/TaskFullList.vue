@@ -5,7 +5,7 @@
     </div>
   </div>
   <div v-else class="tasks">
-    <el-card v-for="_ in 8" :key="_" class="task">
+    <el-card v-for="_ in 12" :key="_" class="task">
       <el-skeleton animated>
         <template #template>
           <el-skeleton-item variant="image" class="icon-placeholder" />
@@ -120,12 +120,14 @@ export default defineComponent({
   flex: 1;
   width: 100%;
   overflow-y: scroll;
-  margin-top: 15px;
   flex-wrap: wrap;
   display: flex;
   justify-content: space-around;
   flex-direction: row;
   align-items: center;
+  max-width: 1700px;
+  margin: 15px auto;
+  padding-top: 10px;
   .task {
     width: 350px;
     margin-bottom: 30px;

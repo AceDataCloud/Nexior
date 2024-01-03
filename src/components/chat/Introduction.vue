@@ -110,7 +110,6 @@ export default defineComponent({
     margin-bottom: 100px;
     .icon {
       font-size: 20px;
-      margin-bottom: 10px;
     }
     .subtitle {
       text-align: center;

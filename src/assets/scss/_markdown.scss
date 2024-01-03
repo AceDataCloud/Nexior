@@ -13,6 +13,18 @@
   background-color: #253238 !important;
 }
 
+.markdown-body pre code {
+  color: white;
+}
+
+.markdown-body pre code .hljs-title,
+.hljs-keyword,
+.hljs-built_in,
+.hljs-number,
+.hljs-comment {
+  font-style: normal !important;
+}
+
 .markdown-body img {
   border-radius: 10px;
   box-shadow: 0px 0px 3px 0px var(--color-border-muted);
