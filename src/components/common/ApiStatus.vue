@@ -17,7 +17,7 @@
       }}</el-button>
     </span>
   </div>
-  <div v-else class="text-center info">
+  <div v-if="needApply && api" class="text-center info">
     <span class="mr-2">{{ $t('chat.message.notApplied') }}</span>
     <span>
       <el-button type="primary" class="btn btn-apply" size="small" @click="confirming = true">
@@ -61,18 +61,34 @@ export default defineComponent({
     initializing: {
       type: Boolean,
       default: false
+    },
+    needApply: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['apply', 'refresh'],
   data(): IData {
     return {
-      confirming: false,
+      confirming: this.needApply,
       applicationType: IApplicationType,
       api: undefined
     };
   },
-  computed: {},
+  computed: {
+    authenticated() {
+      return !!this.$store.state.token.access;
+    },
+    user() {
+      return this.$store.state.user;
+    }
+  },
   watch: {
+    needApply(val) {
+      if (val) {
+        this.confirming = val;
+      }
+    },
     apiId() {
       this.onFetchApi();
     }

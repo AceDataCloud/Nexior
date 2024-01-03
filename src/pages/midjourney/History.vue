@@ -4,6 +4,7 @@
     <api-status
       :initializing="initializing"
       :application="application"
+      :need-apply="needApply"
       class="mb-4"
       :api-id="channel.apiId"
       @refresh="onGetApplications"
@@ -61,6 +62,9 @@ export default defineComponent({
     },
     initializing() {
       return this.$store.state.midjourney.getApplicationsStatus === Status.Request;
+    },
+    needApply() {
+      return this.$store.state.midjourney.getApplicationsStatus === Status.Success && !this.application;
     },
     application() {
       if (this.applications && this.applications.length > 0) {

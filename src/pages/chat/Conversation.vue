@@ -5,17 +5,25 @@
       <api-status
         :initializing="initializing"
         :application="application"
+        :need-apply="needApply"
         :api-id="model.apiId"
         @refresh="$store.dispatch('chat/getApplications')"
       />
       <div class="dialogue">
         <introduction v-if="messages.length === 0" @draft="onDraft" />
         <div v-else class="messages">
-          <message v-for="(message, messageIndex) in messages" :key="messageIndex" :message="message" class="message" />
+          <message
+            v-for="(message, messageIndex) in messages"
+            :key="messageIndex"
+            :message="message"
+            :application="application"
+            class="message"
+          />
         </div>
       </div>
       <div class="bottom">
         <input-box
+          :disabled="answering"
           :question="question"
           :references="references"
           @update:question="question = $event"
@@ -44,17 +52,19 @@ import {
 } from '@/operators';
 import InputBox from '@/components/chat/InputBox.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
-import { ERROR_CODE_CANCELED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
+import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import ApiStatus from '@/components/common/ApiStatus.vue';
 import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router';
 import { Status } from '@/store/common/models';
 import { log } from '@/utils/log';
 import Introduction from '@/components/chat/Introduction.vue';
 import Layout from '@/layouts/Chat.vue';
+import { isJSONString } from '@/utils/is';
 
 export interface IData {
   question: string;
   references: string[];
+  answering: boolean;
   messages: IChatMessage[];
 }
 
@@ -72,6 +82,7 @@ export default defineComponent({
     return {
       question: '',
       references: [],
+      answering: false,
       messages:
         this.$store.state.chat.conversations?.find(
           (conversation: IChatConversation) => conversation.id === this.$route.params.id?.toString()
@@ -92,6 +103,9 @@ export default defineComponent({
     },
     application() {
       return this.applications?.find((application: IApplication) => application.api?.id === this.model.apiId);
+    },
+    needApply() {
+      return this.$store.state.chat.getApplicationsStatus === Status.Success && !this.application;
     },
     applications() {
       return this.$store.state.chat.applications;
@@ -177,14 +191,21 @@ export default defineComponent({
       const path = this.application?.api?.path;
       const question = this.question;
       const references = this.references;
-      if (!token || !endpoint || !question || !path) {
-        console.error('no token or endpoint or question');
-        return;
-      }
       log(this.onFetchAnswer, 'validated', question, references);
       // reset question and references
       this.question = '';
       this.references = [];
+      if (!token || !endpoint || !question || !path) {
+        console.error('no token or endpoint or question');
+        this.messages.push({
+          error: {
+            code: ERROR_CODE_NOT_APPLIED
+          },
+          role: ROLE_ASSISTANT,
+          state: IChatMessageState.FAILED
+        });
+        return;
+      }
       let conversationId = this.conversationId;
       this.messages.push({
         content: '',
@@ -194,6 +215,7 @@ export default defineComponent({
       log(this.onFetchAnswer, 'start to get answer', this.messages);
       this.onScrollDown();
       // request server to get answer
+      this.answering = true;
       chatOperator
         .askQuestion(
           {
@@ -224,6 +246,7 @@ export default defineComponent({
             id: conversationId,
             messages: this.messages
           });
+          this.answering = false;
           if (!this.conversationId) {
             await this.$router.push({
               name: ROUTE_CHAT_CONVERSATION,
@@ -240,12 +263,16 @@ export default defineComponent({
           if (this.messages && this.messages.length > 0) {
             this.messages[this.messages.length - 1].state = IChatMessageState.FAILED;
           }
+          console.error(error);
           if (axios.isCancel(error)) {
             this.messages[this.messages.length - 1].error = {
               code: ERROR_CODE_CANCELED
             };
-          } else if (error?.response?.data && error?.response?.data.code) {
-            const data = error?.response?.data;
+          } else if (error?.response?.data) {
+            let data = error?.response?.data;
+            if (isJSONString(data)) {
+              data = JSON.parse(data);
+            }
             if (this.messages && this.messages.length > 0) {
               this.messages[this.messages.length - 1].error = data;
             }
@@ -256,6 +283,7 @@ export default defineComponent({
               };
             }
           }
+          this.answering = false;
         });
     }
   }

@@ -1,18 +1,7 @@
 <template>
-  <el-dialog
-    :model-value="visible"
-    width="500px"
-    :title="$t('application.message.confirmApplying')"
-    center
-    @close="$emit('update:visible', false)"
-  >
+  <el-dialog :model-value="visible" width="500px" center @close="$emit('update:visible', false)">
     <div class="content">
       <el-descriptions :column="1">
-        <el-descriptions-item :label="$t('application.field.type')">
-          <span>
-            {{ $t('application.field.api') }}
-          </span>
-        </el-descriptions-item>
         <el-descriptions-item :label="$t('application.field.name')">
           {{ object?.title }}
         </el-descriptions-item>
@@ -22,6 +11,9 @@
           </span>
         </el-descriptions-item>
       </el-descriptions>
+      <p class="description">
+        {{ $t('application.message.applyDescription') }}
+      </p>
       <el-divider class="my-2" />
       <div class="policy">
         <el-checkbox v-model="checked" size="large" class="policy-checkbox" />
@@ -29,7 +21,9 @@
         <span class="policy-title highlight" @click="showPolicy = true"> {{ $t('application.message.policy') }} </span>
         <application-policy v-model.visible="showPolicy" />
       </div>
-      <el-button type="primary" class="btn btn-apply" @click="onApply">{{ $t('common.button.apply') }}</el-button>
+      <el-button type="primary" class="btn btn-apply" @click="onApply">
+        {{ $t('common.button.applyForFree') }}
+      </el-button>
     </div>
   </el-dialog>
 </template>
@@ -76,7 +70,7 @@ export default defineComponent({
   data(): IData {
     return {
       applicationType: IApplicationType,
-      checked: false,
+      checked: true,
       showPolicy: false
     };
   },
@@ -96,6 +90,10 @@ export default defineComponent({
 <style lang="scss" scoped>
 .content {
   padding: 10px 40px;
+
+  .description {
+    font-size: 12px;
+  }
 
   .btn-apply {
     border-radius: 20px;

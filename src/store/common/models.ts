@@ -5,7 +5,8 @@ import { IChatState } from '../chat/models';
 export enum Status {
   Request = 'Request',
   Success = 'Success',
-  Error = 'Error'
+  Error = 'Error',
+  None = 'None'
 }
 
 export interface IToken {

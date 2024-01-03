@@ -2,6 +2,13 @@ import { IApplication, IChatConversation, IChatModel } from '@/operators';
 import { IChatState } from './models';
 import { Status } from '../common/models';
 
+export const resetAll = (state: IChatState): void => {
+  state.applications = [];
+  state.getApplicationsStatus = Status.None;
+  state.conversations = [];
+  state.getConversationsStatus = Status.None;
+};
+
 export const setModel = (state: IChatState, payload: IChatModel): void => {
   state.model = payload;
 };
@@ -27,5 +34,6 @@ export default {
   setApplications,
   setGetApplicationsStatus,
   setConversations,
-  setGetConversationsStatus
+  setGetConversationsStatus,
+  resetAll
 };

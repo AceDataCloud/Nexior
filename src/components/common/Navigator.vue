@@ -89,8 +89,10 @@ export default defineComponent({
     }
   },
   methods: {
-    onLogout() {
-      this.$store.dispatch('resetToken');
+    async onLogout() {
+      await this.$store.dispatch('resetAll');
+      await this.$store.dispatch('chat/resetAll');
+      await this.$store.dispatch('midjourney/resetAll');
     },
     onConsole() {
       this.$router.push({ name: ROUTE_CONSOLE_ROOT });

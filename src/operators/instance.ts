@@ -15,7 +15,7 @@ const httpClient: AxiosInstance = axios.create({
 });
 
 httpClient.interceptors.request.use((config) => {
-  const accessToken = store.state.token?.access;
+  const accessToken = store.getters.token?.access;
   if (accessToken) {
     config.headers['Authorization'] = `Bearer ${accessToken}`;
   }

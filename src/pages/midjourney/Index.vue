@@ -9,8 +9,9 @@
         :initializing="initializing"
         :application="application"
         :api-id="channel.apiId"
+        :need-apply="needApply"
         class="mb-4"
-        @apply="onGetApplications"
+        @refresh="onGetApplications"
       />
       <div class="pt-4">
         <reference-image class="mb-4" @change="references = $event" />
@@ -97,6 +98,9 @@ export default defineComponent({
     },
     applications() {
       return this.$store.state.midjourney.applications;
+    },
+    needApply() {
+      return this.$store.state.midjourney.getApplicationsStatus === Status.Success && !this.application;
     },
     application() {
       if (this.applications && this.applications.length > 0) {

@@ -19,6 +19,14 @@ export const resetToken = (state: IRootState): void => {
   state.token = {};
 };
 
+export const resetSetting = (state: IRootState): void => {
+  state.setting = {};
+};
+
+export const resetUser = (state: IRootState): void => {
+  state.user = {};
+};
+
 export const setSetting = (state: IRootState, payload: any): void => {
   state.setting = {
     ...state.setting,
@@ -28,7 +36,9 @@ export const setSetting = (state: IRootState, payload: any): void => {
 
 export default {
   setUser,
+  resetUser,
   setToken,
   resetToken,
-  setSetting
+  setSetting,
+  resetSetting
 };

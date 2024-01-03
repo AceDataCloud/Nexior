@@ -35,6 +35,7 @@
     <el-input
       v-model="questionValue"
       :rows="1"
+      :disabled="disabled"
       class="input"
       type="textarea"
       :placeholder="$t('chat.message.newMessagePlaceholder')"
@@ -60,6 +61,11 @@ export default defineComponent({
     ElUpload
   },
   props: {
+    disabled: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
     references: {
       type: Array,
       required: false,
@@ -145,6 +151,10 @@ export default defineComponent({
     position: absolute;
     width: 400px;
     bottom: 45px;
+  }
+
+  .el-textarea.is-disabled .el-textarea__inner {
+    background-color: initial;
   }
 }
 </style>

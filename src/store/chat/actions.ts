@@ -17,6 +17,10 @@ import { ActionContext } from 'vuex';
 import { log } from '@/utils/log';
 import { IChatState } from './models';
 
+export const resetAll = ({ commit }: ActionContext<IChatState, IRootState>): void => {
+  commit('resetAll');
+};
+
 export const setModel = async ({ commit }: any, payload: IChatModel): Promise<void> => {
   commit('setModel', payload);
 };
@@ -96,6 +100,7 @@ export const getConversations = async ({
 };
 
 export default {
+  resetAll,
   setModel,
   setApplications,
   setConversation,

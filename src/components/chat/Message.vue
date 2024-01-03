@@ -1,5 +1,12 @@
 <template>
-  <div :class="'message ' + message.role" :role="message.role">
+  <div
+    :class="{
+      message: true,
+      [message.role as string]: true,
+      hidden: errorText && message.role === 'assistant'
+    }"
+    :role="message.role"
+  >
     <div class="content">
       <markdown-renderer v-if="!Array.isArray(message.content)" :content="message?.content" />
       <div v-else>
@@ -9,31 +16,37 @@
         </div>
       </div>
       <answering-mark v-if="message.state === messageState.PENDING" />
-      <el-alert v-if="errorText && message.role === 'assistant'" :title="errorText" type="error" :closable="false" />
     </div>
     <div class="operations">
-      <copy-to-clipboard v-if="!Array.isArray(message.content)" :content="message.content" class="btn-copy" />
+      <copy-to-clipboard v-if="!Array.isArray(message.content)" :content="message.content!" class="btn-copy" />
     </div>
   </div>
+  <el-alert v-if="errorText" class="error" :title="errorText" type="error" :closable="false" />
+  <el-button v-if="showBuyMore" type="primary" class="btn btn-buy" size="small" @click="onBuyMore">
+    {{ $t('common.button.buyMore') }}
+  </el-button>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import AnsweringMark from './AnsweringMark.vue';
 import copy from 'copy-to-clipboard';
-import { ElAlert } from 'element-plus';
+import { ElAlert, ElButton } from 'element-plus';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
-import { IChatMessage, IChatMessageState } from '@/operators';
+import { IApplication, IChatMessage, IChatMessageState, ROLE_ASSISTANT } from '@/operators';
 import CopyToClipboard from '../common/CopyToClipboard.vue';
 import {
   ERROR_CODE_API_ERROR,
   ERROR_CODE_BAD_REQUEST,
   ERROR_CODE_CONTENT_TOO_LARGE,
+  ERROR_CODE_NOT_APPLIED,
   ERROR_CODE_TIMEOUT,
   ERROR_CODE_TOO_MANY_REQUESTS,
   ERROR_CODE_UNKNOWN,
   ERROR_CODE_USED_UP
 } from '@/constants';
+import message from '@/i18n/zh/common/message';
+import { ROUTE_CONSOLE_APPLICATION_BUY } from '@/router';
 interface IData {
   copied: boolean;
   messageState: typeof IChatMessageState;
@@ -45,11 +58,16 @@ export default defineComponent({
     CopyToClipboard,
     AnsweringMark,
     MarkdownRenderer,
-    ElAlert
+    ElAlert,
+    ElButton
   },
   props: {
     message: {
       type: Object as () => IChatMessage,
+      required: true
+    },
+    application: {
+      type: Object as () => IApplication | undefined,
       required: true
     }
   },
@@ -78,21 +96,34 @@ export default defineComponent({
           return this.$t('chat.message.errorTooManyRequests');
         case ERROR_CODE_CONTENT_TOO_LARGE:
           return this.$t('chat.message.errorContentTooLarge');
+        case ERROR_CODE_NOT_APPLIED:
+          return this.$t('chat.message.errorNotApplied');
         case ERROR_CODE_UNKNOWN:
         default:
           return this.$t('chat.message.errorUnknown');
       }
+    },
+    showBuyMore() {
+      return this.message.role === ROLE_ASSISTANT && this.message.error?.code === ERROR_CODE_USED_UP;
     }
   },
   methods: {
     onCopy() {
-      copy(this.message.content.toString(), {
+      copy(this.message.content!.toString(), {
         debug: true
       });
       this.copied = true;
       setTimeout(() => {
         this.copied = false;
       }, 3000);
+    },
+    onBuyMore() {
+      this.$router.push({
+        name: ROUTE_CONSOLE_APPLICATION_BUY,
+        params: {
+          id: this.application?.id
+        }
+      });
     }
     // onStop() {
     //   this.$emit('stop');
@@ -102,10 +133,25 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.error {
+  width: fit-content;
+  padding: 10px 5px 8px 5px;
+  height: 45px;
+  border-radius: 10px;
+  border-bottom-left-radius: 0;
+}
+
+.btn-buy {
+  margin: 10px auto;
+  border-radius: 20px;
+}
 .message {
   display: flex;
   flex-direction: column;
   &[role='system'] {
+    display: none;
+  }
+  &.hidden {
     display: none;
   }
   &.assistant {
