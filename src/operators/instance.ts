@@ -1,4 +1,3 @@
-import router, { ROUTE_AUTH_LOGIN } from '@/router';
 import store from '@/store';
 import { getBaseUrlData } from '@/utils';
 import axios, { AxiosInstance } from 'axios';
@@ -10,16 +9,13 @@ const httpClient: AxiosInstance = axios.create({
     'Content-type': 'application/json',
     Accept: 'application/json'
   },
-  paramsSerializer: function (params) {
+  paramsSerializer(params) {
     return qs.stringify(params, { arrayFormat: 'repeat' });
   }
 });
 
 httpClient.interceptors.request.use((config) => {
   const accessToken = store.state.token?.access;
-  if (!config.headers) {
-    config.headers = {};
-  }
   if (accessToken) {
     config.headers['Authorization'] = `Bearer ${accessToken}`;
   }
@@ -33,12 +29,6 @@ httpClient.interceptors.response.use(
   (error) => {
     if (error?.response?.status === 401) {
       store.dispatch('resetToken');
-      // router.push({
-      //   name: ROUTE_AUTH_LOGIN,
-      //   query: {
-      //     redirect: router?.currentRoute?.value?.path
-      //   }
-      // });
     }
     return Promise.reject(error);
   }

@@ -2,7 +2,6 @@
 import { defineComponent } from 'vue';
 import { IUser } from '@/operators';
 import { IToken } from '@/operators/auth/models';
-import { ROUTE_AUTH_LOGIN } from '@/router';
 
 interface IData {
   accessToken: string | undefined;
@@ -41,6 +40,7 @@ export default defineComponent({
         await this.$router.push(this.redirect);
       }
     } else {
+      // reset token and trigger popup login window
       this.$store.dispatch('resetToken');
     }
   }
