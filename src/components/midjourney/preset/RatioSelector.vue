@@ -121,6 +121,7 @@ export default defineComponent({
     border-radius: 5px;
 
     .preview {
+      margin-top: 8px;
       width: 30px;
       height: 30px;
       display: flex;

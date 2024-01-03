@@ -15,7 +15,7 @@
         </el-tooltip>
       </div>
     </div>
-    <div class="middle"></div>
+    <div class="middle" />
     <div class="bottom">
       <div class="link">
         <el-tooltip effect="dark" :content="$t('common.nav.console')" placement="right">

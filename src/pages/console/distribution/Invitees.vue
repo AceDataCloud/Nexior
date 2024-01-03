@@ -140,16 +140,6 @@ export default defineComponent({
   color: #333;
 }
 
-.item-mini {
-  .value {
-    font-weight: 600;
-    font-size: 40px;
-  }
-  .description {
-    color: #999;
-    font-size: 14px;
-  }
-}
 .el-table {
   min-height: calc(100vh - 300px);
   margin-bottom: 50px;
