@@ -1,8 +1,16 @@
 # Change Log - @zhishuyun/hub
 
-This log was last generated on Wed, 03 Jan 2024 08:41:15 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Jan 2024 10:14:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.9.1
+
+Wed, 03 Jan 2024 10:14:47 GMT
+
+### Patches
+
+- update style of model selector (cqc@germey.cn)
 
 ## 0.9.0
 
