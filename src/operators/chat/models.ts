@@ -44,7 +44,7 @@ export interface IChatMessageContentItem {
 
 export interface IChatMessage {
   state?: IChatMessageState;
-  content: string | IChatMessageContentItem[];
+  content?: string | IChatMessageContentItem[];
   role?: typeof ROLE_SYSTEM | typeof ROLE_ASSISTANT | typeof ROLE_USER;
   error?: IError;
 }

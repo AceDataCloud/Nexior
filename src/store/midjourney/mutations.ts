@@ -2,6 +2,13 @@ import { IApplication, IMidjourneyChannel, IMidjourneyPreset } from '@/operators
 import { IMidjourneyState } from './models';
 import { Status } from '../common/models';
 
+export const resetAll = (state: IMidjourneyState): void => {
+  state.applications = [];
+  state.preset = {};
+  state.getApplicationsStatus = Status.None;
+  state.imagineTasks = [];
+};
+
 export const setApplications = (state: IMidjourneyState, payload: IApplication[]): void => {
   state.applications = payload;
 };
@@ -37,5 +44,6 @@ export default {
   setGetApplicationsStatus,
   setImagineTasks,
   setGetImagineTasksStatus,
-  setImagineTasksTotal
+  setImagineTasksTotal,
+  resetAll
 };

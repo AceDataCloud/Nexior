@@ -15,6 +15,10 @@ import { ActionContext } from 'vuex';
 import { log } from '@/utils/log';
 import { IRootState, Status } from '../common/models';
 
+export const resetAll = ({ commit }: ActionContext<IMidjourneyState, IRootState>): void => {
+  commit('resetAll');
+};
+
 export const setPreset = ({ commit }: any, payload: IMidjourneyPreset) => {
   commit('setPreset', payload);
 };
@@ -79,6 +83,7 @@ export const getImagineTasks = async (
 };
 
 export default {
+  resetAll,
   setPreset,
   setChannel,
   setApplications,

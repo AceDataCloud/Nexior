@@ -18,6 +18,7 @@ export default {
   buy: '购买',
   try: '测试',
   startForFree: '免费体验',
+  applyForFree: '免费申请',
   apply: '申请',
   refresh: '刷新',
   pay: '支付',

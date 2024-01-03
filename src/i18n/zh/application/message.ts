@@ -17,5 +17,7 @@ export default {
   rotateCredentialSuccessfully: '密钥重置成功',
   rotateCredentialFailed: '密钥重置失败，请联系客服处理',
   updateFailed: '修改失败',
-  updateSuccessfully: '修改成功'
+  updateSuccessfully: '修改成功',
+  applyDescription: '申请之后即可立即使用，同时您会获赠一定的免费次数。',
+  applyDescription2: '本次申请不会产生任何费用，请放心使用。'
 };

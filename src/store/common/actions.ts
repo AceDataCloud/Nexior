@@ -1,8 +1,21 @@
 import { ActionContext } from 'vuex';
 import { IRootState, IToken } from '../common/models';
-import { IApplication, IUser, userOperator } from '@/operators';
+import { IUser, userOperator } from '@/operators';
 import { log } from '@/utils/log';
 import { oauthOperator } from '@/operators/auth/operator';
+
+export const resetAll = ({ commit }: ActionContext<IRootState, IRootState>) => {
+  commit('resetToken');
+  commit('resetUser');
+};
+
+export const resetUser = ({ commit }: ActionContext<IRootState, IRootState>) => {
+  commit('resetUser');
+};
+
+export const resetSetting = ({ commit }: ActionContext<IRootState, IRootState>) => {
+  commit('resetSetting');
+};
 
 export const resetToken = ({ commit }: ActionContext<IRootState, IRootState>) => {
   commit('resetToken');
@@ -41,6 +54,9 @@ export const getToken = async ({ commit }: ActionContext<IRootState, IRootState>
 
 export default {
   resetToken,
+  resetAll,
+  resetUser,
+  resetSetting,
   setToken,
   setUser,
   getToken,
