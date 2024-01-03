@@ -34,6 +34,17 @@ export default defineConfig({
     }
   },
   build: {
-    sourcemap: false
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            const modules = ['@vue', 'highlight.js', 'element-plus', 'axios'];
+            const chunk = modules.find((module) => id.includes(module));
+            return chunk ? `vendor-${chunk}` : 'vendor-others';
+          }
+        }
+      }
+    }
   }
 });

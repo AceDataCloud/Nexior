@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "start": "vite --host",
-    "build": "cross-env NODE_ENV=production vite build --mode=development",
+    "build": "vite build --mode=development",
     "serve": "vite preview",
     "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
     "prettier": "prettier --write .",
@@ -19,7 +19,8 @@
     "verify": "beachball check",
     "bump": "beachball bump",
     "release": "beachball publish --access public",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "analyze": "vite-bundle-visualizer"
   },
   "dependencies": {
     "@codemirror/lang-java": "^6.0.1",
@@ -88,6 +89,7 @@
     "typescript": "^4.9.5",
     "unplugin-element-plus": "^0.8.0",
     "vite": "^2.9.16",
+    "vite-bundle-visualizer": "^1.0.0",
     "vue-tsc": "^1.2.0"
   },
   "bugs": {
