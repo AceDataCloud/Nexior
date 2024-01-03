@@ -84,7 +84,7 @@
               <h4 class="title">
                 {{ $t('distribution.title.distributionLink') }}
               </h4>
-              <el-divider />
+              <el-divider class="mt-4 mb-4" />
               <div class="link-wrapper">
                 <font-awesome-icon v-if="false" icon="fa-solid fa-link" class="icon" />
                 <a :href="distributionLink" class="link">
@@ -93,7 +93,12 @@
                 <copy-to-clipboard :content="distributionLink" />
               </div>
               <div class="qr-wrapper">
-                <qr-code v-if="distributionLink" :value="distributionLink" :size="150" class="mb-2 ml-auto mr-auto" />
+                <qr-code
+                  v-if="distributionLink"
+                  :value="distributionLink"
+                  :size="150"
+                  class="block mb-2 ml-auto mr-auto"
+                />
                 <p>
                   {{ $t('distribution.message.distributionQrDescription') }}
                 </p>
@@ -120,6 +125,7 @@
               <h4 class="title">
                 {{ $t('distribution.title.levelInfo') }}
               </h4>
+              <el-divider class="mt-4 mb-4" />
               <div class="clear-both overflow-hidden">
                 <div class="float-left description">
                   <p>{{ $t('distribution.title.currentLevel') }}: L{{ distributionStatus?.level?.level }}</p>
@@ -356,10 +362,12 @@ export default defineComponent({
   .value {
     font-weight: 600;
     font-size: 30px;
+    margin: 0;
   }
   .description {
     color: #999;
     font-size: 14px;
+    margin-bottom: 5px;
   }
 }
 
