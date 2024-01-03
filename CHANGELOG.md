@@ -1,8 +1,16 @@
 # Change Log - @zhishuyun/hub
 
-This log was last generated on Wed, 03 Jan 2024 05:56:48 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Jan 2024 06:02:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.8.4
+
+Wed, 03 Jan 2024 06:02:27 GMT
+
+### Patches
+
+- add pr pipeline check (cqc@germey.cn)
 
 ## 0.8.3
 
