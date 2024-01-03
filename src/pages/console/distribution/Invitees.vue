@@ -159,6 +159,8 @@ export default defineComponent({
   padding: 30px;
   width: calc(100% - 300px);
   background-color: #f3f5f6;
+  height: 100%;
+  overflow-y: scroll;
 }
 
 .pagination {
