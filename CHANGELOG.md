@@ -1,8 +1,16 @@
 # Change Log - @zhishuyun/hub
 
-This log was last generated on Wed, 03 Jan 2024 12:21:58 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Jan 2024 18:09:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.9.3
+
+Fri, 05 Jan 2024 18:09:16 GMT
+
+### Patches
+
+- fix error message for chat (cqc@germey.cn)
 
 ## 0.9.2
 
