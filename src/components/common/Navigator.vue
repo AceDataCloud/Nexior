@@ -35,6 +35,10 @@
           <font-awesome-icon icon="fa-solid fa-compass" class="mr-2" />
           <template #title>{{ $t('common.nav.console') }}</template>
         </el-menu-item>
+        <el-menu-item @click="onDistribution">
+          <font-awesome-icon icon="fa-solid fa-coins" class="mr-2" />
+          <template #title>{{ $t('common.nav.distribution') }}</template>
+        </el-menu-item>
         <el-menu-item @click="onLogout">
           <font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket" class="mr-2" />
           <template #title>{{ $t('common.nav.logOut') }}</template>
@@ -49,8 +53,12 @@
           </el-button>
         </el-tooltip>
       </div>
-      <div v-if="$config.navigation?.help" class="link">
-        <help-entry />
+      <div v-if="showDistribution" class="link">
+        <el-tooltip effect="dark" :content="$t('common.nav.distribution')" placement="right">
+          <el-button class="button" @click="onDistribution">
+            <font-awesome-icon icon="fa-solid fa-coins" />
+          </el-button>
+        </el-tooltip>
       </div>
       <div v-if="authenticated" class="link">
         <el-tooltip effect="dark" :content="$t('common.nav.logOut')" placement="right">
@@ -71,6 +79,7 @@ import {
   ROUTE_CHAT_CONVERSATION,
   ROUTE_CHAT_CONVERSATION_NEW,
   ROUTE_CONSOLE_ROOT,
+  ROUTE_DISTRIBUTION_INDEX,
   ROUTE_INDEX,
   ROUTE_MIDJOURNEY_HISTORY,
   ROUTE_MIDJOURNEY_INDEX
@@ -82,7 +91,6 @@ export default defineComponent({
   name: 'Navigator',
   components: {
     ElButton,
-    HelpEntry,
     ElTooltip,
     FontAwesomeIcon,
     ElMenu,
@@ -123,6 +131,16 @@ export default defineComponent({
     authenticated() {
       return !!this.$store.state.token.access;
     },
+    showDistribution() {
+      return (
+        // config is enabled
+        this.$config.navigation.distribution &&
+        // if forcedInviterId is set, only the forced inviter can see the distribution menu
+        // if forcedInviterId is not set, everyone can see the distribution menu
+        (!this.$config.distribution?.forceInviterId ||
+          this.$store.getters.user?.id === this.$config.distribution?.forceInviterId)
+      );
+    },
     collapsed: {
       get() {
         return this.$store.state.setting?.navigationCollapsed;
@@ -138,6 +156,11 @@ export default defineComponent({
     onHome() {
       this.$router.push({
         name: ROUTE_INDEX
+      });
+    },
+    onDistribution() {
+      this.$router.push({
+        name: ROUTE_DISTRIBUTION_INDEX
       });
     },
     async onOpenMenu() {

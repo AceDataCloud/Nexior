@@ -1,8 +1,5 @@
 <template>
   <div class="side-panel">
-    <div>
-      <img src="@/assets/images/logo.svg" class="logo" @click="onHome" />
-    </div>
     <div class="links">
       <a
         v-for="(link, linkIndex) in links"
@@ -29,12 +26,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import {
-  ROUTE_CONSOLE_APPLICATION_LIST,
-  ROUTE_CONSOLE_ORDER_LIST,
-  ROUTE_INDEX,
-  ROUTE_CONSOLE_DISTRIBUTION_INDEX
-} from '@/router';
+import { ROUTE_CONSOLE_APPLICATION_LIST, ROUTE_CONSOLE_ORDER_LIST, ROUTE_INDEX } from '@/router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { BASE_URL_HUB } from '@/constants';
 
@@ -77,17 +69,6 @@ export default defineComponent({
           icon: 'fa-solid fa-store'
         }
       ];
-
-      // if forcedInviterId is set, only the forced inviter can see the distribution menu
-      // if forcedInviterId is not set, everyone can see the distribution menu
-      if (!this.$config.distribution?.forceInviterId || this.user?.id === this.$config.distribution?.forceInviterId) {
-        links.push({
-          key: 'distribution-index',
-          text: this.$t('console.menu.distributionIndex'),
-          name: ROUTE_CONSOLE_DISTRIBUTION_INDEX,
-          icon: 'fa-solid fa-coins'
-        });
-      }
 
       return links;
     }

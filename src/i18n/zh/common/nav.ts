@@ -13,8 +13,7 @@ export default {
   service: '服务',
   document: '文档',
   console: '控制台',
-  clearConversations: '清除对话',
   newChat: '新建对话',
   logOut: '退出登录',
-  confirmClearConversations: '确认清除'
+  distribution: '分销赚钱'
 };

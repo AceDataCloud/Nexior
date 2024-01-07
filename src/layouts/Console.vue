@@ -63,22 +63,27 @@ export default defineComponent({
 }
 
 @media screen and (max-width: 767px) {
-  .main {
-    .side {
-      display: none;
+  .wrapper {
+    .navigator {
+      border-right: none;
     }
-    .panel {
-      width: 100%;
-      height: 100%;
-      overflow-y: scroll;
+    .main {
+      .side {
+        display: none;
+      }
+      .panel {
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+      }
     }
-  }
-  .menu {
-    display: block;
-    position: fixed;
-    right: 20px;
-    top: 20px;
-    z-index: 100;
+    .menu {
+      display: block;
+      position: fixed;
+      right: 20px;
+      top: 20px;
+      z-index: 100;
+    }
   }
 }
 </style>
