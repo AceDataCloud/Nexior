@@ -91,21 +91,23 @@ export default defineComponent({
 
 @media screen and (min-width: 768px) and (max-width: 1060px) {
   .main {
+    position: relative;
     .presets {
       display: none;
     }
     .menu {
       display: block;
-      position: fixed;
-      left: 80px;
+      position: absolute;
+      left: 20px;
       top: 20px;
-      z-index: 2000;
+      z-index: 1000;
     }
   }
 }
 
 @media (max-width: 767px) {
   .main {
+    position: relative;
     .presets {
       display: none;
     }
@@ -114,17 +116,17 @@ export default defineComponent({
     }
     .menu {
       display: block;
-      position: fixed;
-      left: 80px;
+      position: absolute;
+      left: 20px;
       top: 20px;
-      z-index: 2000;
+      z-index: 1000;
     }
     .menu2 {
       display: block;
       position: fixed;
       right: 20px;
       top: 20px;
-      z-index: 2000;
+      z-index: 1000;
     }
   }
 }

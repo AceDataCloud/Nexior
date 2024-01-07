@@ -204,9 +204,9 @@ import {
   IDistributionStatus
 } from '@/operators';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_CONSOLE_DISTRIBUTION_HISTORY, ROUTE_CONSOLE_DISTRIBUTION_INVITEES } from '@/router';
 import { IUser, userOperator } from '@/operators';
 import QrCode from 'qrcode.vue';
+import { ROUTE_DISTRIBUTION_HISTORY, ROUTE_DISTRIBUTION_INVITEES } from '@/router';
 
 interface IData {
   invitees: IUser[];
@@ -279,12 +279,12 @@ export default defineComponent({
   methods: {
     goHistory() {
       this.$router.push({
-        name: ROUTE_CONSOLE_DISTRIBUTION_HISTORY
+        name: ROUTE_DISTRIBUTION_HISTORY
       });
     },
     goInvitees() {
       this.$router.push({
-        name: ROUTE_CONSOLE_DISTRIBUTION_INVITEES
+        name: ROUTE_DISTRIBUTION_INVITEES
       });
     },
     onPageChange(page: number) {

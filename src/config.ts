@@ -24,9 +24,9 @@ export default {
     console: true,
 
     /**
-     * Show help entry in left navigation.
+     * Show distribution entry in left navigation.
      */
-    help: true
+    distribution: true
   },
 
   /**

@@ -3,6 +3,8 @@ import auth from './auth';
 import console from './console';
 import chat from './chat';
 import midjourney from './midjourney';
+import distribution from './distribution';
+
 import { ROUTE_CHAT_CONVERSATION_NEW, ROUTE_INDEX } from './constants';
 
 const routes = [
@@ -16,7 +18,8 @@ const routes = [
   console,
   auth,
   chat,
-  midjourney
+  midjourney,
+  distribution
 ];
 
 const router = createRouter({
