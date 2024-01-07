@@ -324,7 +324,9 @@ export default defineComponent({
       }
     },
     async onFetchDistributionLevels() {
-      const { data } = await distributionLevelOperator.getAll();
+      const { data } = await distributionLevelOperator.getAll({
+        limit: 20
+      });
       this.distributionLevels = data.items;
     },
     async onFetchInvitees() {

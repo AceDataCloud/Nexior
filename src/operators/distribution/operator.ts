@@ -46,11 +46,17 @@ class DistributionStatusService {
 
 export const distributionStatusOperator = new DistributionStatusService();
 
+export interface IDistributionLevelQuery {
+  limit?: number;
+}
+
 class DistributionLevelService {
   key = 'distribution-levels';
 
-  async getAll(): Promise<AxiosResponse<IDistributionLevelListResponse>> {
-    return await httpClient.get(`/${this.key}/`);
+  async getAll(query: IDistributionLevelQuery): Promise<AxiosResponse<IDistributionLevelListResponse>> {
+    return await httpClient.get(`/${this.key}/`, {
+      params: query
+    });
   }
 }
 
