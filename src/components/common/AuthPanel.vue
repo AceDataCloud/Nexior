@@ -8,6 +8,15 @@
     :close-on-click-modal="false"
   >
     <iframe width="360" height="560" :src="iframeUrl" frameborder="0" />
+    <qr-code
+      v-if="qrLink"
+      :value="qrLink"
+      :width="230"
+      :height="230"
+      class="qrcode"
+      :type="'image/jpeg'"
+      :color="{ dark: '#000000ff', light: '#ffffffff' }"
+    />
   </el-dialog>
 </template>
 
@@ -16,11 +25,18 @@ import { defineComponent } from 'vue';
 import { ElDialog } from 'element-plus';
 import { getBaseUrlAuth } from '@/utils';
 import { getCookie } from 'typescript-cookie';
+import QrCode from 'vue-qrcode';
 
 export default defineComponent({
   name: 'AuthPanel',
   components: {
-    ElDialog
+    ElDialog,
+    QrCode
+  },
+  data() {
+    return {
+      qrLink: ''
+    };
   },
   computed: {
     iframeUrl() {
@@ -47,6 +63,7 @@ export default defineComponent({
       if (event.origin !== getBaseUrlAuth()) {
         return;
       }
+      console.debug('received from child page', event);
       if (event.data.name === 'login') {
         const data = event.data.data;
         const token = {
@@ -58,6 +75,13 @@ export default defineComponent({
         await this.$store.dispatch('getUser');
         window.location.reload();
       }
+      if (event.data.name === 'show_qr') {
+        const data = event.data.data;
+        this.qrLink = data.qrLink;
+      }
+      if (event.data.name === 'hide_qr') {
+        this.qrLink = '';
+      }
     });
   }
 });
@@ -67,5 +91,15 @@ export default defineComponent({
 .dialog {
   width: 400px;
   height: 600px;
+}
+
+.qrcode {
+  width: 320px;
+  height: 320px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.001;
 }
 </style>
