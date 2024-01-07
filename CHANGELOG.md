@@ -1,8 +1,16 @@
 # Change Log - @zhishuyun/hub
 
-This log was last generated on Sun, 07 Jan 2024 11:06:07 GMT and should not be manually modified.
+This log was last generated on Sun, 07 Jan 2024 12:22:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.11.0
+
+Sun, 07 Jan 2024 12:22:21 GMT
+
+### Minor changes
+
+- move distribution pages (cqc@germey.cn)
 
 ## 0.10.0
 
