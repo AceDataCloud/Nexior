@@ -8,6 +8,8 @@
     :close-on-click-modal="false"
   >
     <iframe width="360" height="560" :src="iframeUrl" frameborder="0" />
+  </el-dialog>
+  <el-dialog :model-value="!!qrLink" width="400px" :show-close="false">
     <qr-code
       v-if="qrLink"
       :value="qrLink"
@@ -96,10 +98,7 @@ export default defineComponent({
 .qrcode {
   width: 320px;
   height: 320px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0.001;
+  display: block;
+  margin: 0 auto 20px auto;
 }
 </style>
