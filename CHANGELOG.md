@@ -1,8 +1,16 @@
 # Change Log - @zhishuyun/hub
 
-This log was last generated on Sun, 07 Jan 2024 13:30:23 GMT and should not be manually modified.
+This log was last generated on Sun, 07 Jan 2024 13:54:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.11.4
+
+Sun, 07 Jan 2024 13:54:47 GMT
+
+### Patches
+
+- fix invitee page (cqc@germey.cn)
 
 ## 0.11.3
 
