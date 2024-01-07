@@ -20,7 +20,7 @@ export default {
     {
       path: 'invitees',
       name: ROUTE_DISTRIBUTION_INVITEES,
-      component: () => import('@/pages/distribution/History.vue')
+      component: () => import('@/pages/distribution/Invitees.vue')
     }
   ]
 };

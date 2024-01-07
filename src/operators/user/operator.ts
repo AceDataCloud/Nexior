@@ -5,6 +5,7 @@ import { IUserDetailResponse, IUser, IUserListResponse } from './models';
 export interface IInviteesQuery {
   offset?: number;
   limit?: number;
+  ordering?: string;
 }
 
 class UserOperator {

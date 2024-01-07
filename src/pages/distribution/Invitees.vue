@@ -28,7 +28,7 @@
                   <span class="description">{{ scope.row.nickname }}</span>
                 </template>
               </el-table-column>
-              <el-table-column :label="$t('user.field.isVerified')" width="100px">
+              <el-table-column :label="$t('user.field.isVerified')">
                 <template #default="scope">
                   <el-switch :model-value="scope.row?.is_verified" />
                 </template>
@@ -123,7 +123,8 @@ export default defineComponent({
     async onFetchInvitees() {
       const { data } = await userOperator.getInvitees({
         limit: this.limit,
-        offset: (this.page - 1) * this.limit
+        offset: (this.page - 1) * this.limit,
+        ordering: '-created_at'
       });
       this.invitees = data.items;
       this.total = data.count;
