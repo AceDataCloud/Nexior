@@ -27,7 +27,15 @@ export default defineComponent({
       return `${getBaseUrlAuth()}/auth/login?inviter_id=${this.inviterId}`;
     },
     inviterId() {
-      const result = this.$route.query.inviter_id?.toString() || getCookie('INVITER_ID');
+      // if forceInviterId is set, then use forceInviterId
+      if (this.$config?.distribution?.forceInviterId) {
+        return this.$config?.distribution?.defaultInviterId;
+      }
+      // Otherwise, use the inviter_id in the url, then use the inviter_id in the cookie, and finally use the default inviter_id
+      const result =
+        this.$route.query.inviter_id?.toString() ||
+        getCookie('INVITER_ID') ||
+        this.$config?.distribution?.defaultInviterId;
       return result;
     },
     authenticated() {

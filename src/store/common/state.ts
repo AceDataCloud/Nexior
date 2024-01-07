@@ -10,6 +10,10 @@ export default (): IRootState => {
       refresh: undefined,
       expiration: undefined
     },
+    setting: {
+      // if PC, set default to true, else false
+      navigationCollapsed: window.innerWidth < 768
+    },
     chat: chatState(),
     midjourney: midjourneyState()
   };

@@ -13,6 +13,7 @@ import hl from 'highlight.js';
 import 'highlight.js/styles/night-owl.css';
 import copyToClipboard from 'copy-to-clipboard';
 import { initializeCookies } from './utils/initializer';
+import config from './plugins/config';
 
 initializeCookies();
 
@@ -24,6 +25,7 @@ app.use(i18n);
 app.use(dayjs, {
   formatString: 'YYYY-MM-DD HH:mm:ss'
 });
+app.use(config);
 app.directive('loading', vLoading);
 app.mount('#app');
 console.debug('app mounted');
@@ -43,3 +45,7 @@ app.directive('highlight', async (el) => {
     hl.highlightBlock(block);
   });
 });
+
+// make app available globally
+// @ts-ignore
+window.app = app;

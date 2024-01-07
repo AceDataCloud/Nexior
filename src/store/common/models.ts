@@ -15,7 +15,9 @@ export interface IToken {
   expiration?: number;
 }
 
-export interface ISetting {}
+export interface ISetting {
+  navigationCollapsed?: boolean;
+}
 
 export interface ICommonState {
   token: IToken;

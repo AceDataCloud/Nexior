@@ -1,6 +1,6 @@
 export default {
   chat: 'AI 问答',
-  midjourney: 'AI 绘画 - Midjourney',
+  midjourney: 'AI 绘画',
   editor: '编辑器',
   setting: '设置',
   home: '首页',

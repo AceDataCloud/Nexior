@@ -1,7 +1,7 @@
 <template>
   <div class="side-panel">
     <div>
-      <img v-if="isOfficial" src="@/assets/images/logo.svg" class="logo" @click="onHome" />
+      <img src="@/assets/images/logo.svg" class="logo" @click="onHome" />
     </div>
     <div class="links">
       <a
@@ -75,14 +75,20 @@ export default defineComponent({
           text: this.$t('console.menu.orderList'),
           name: ROUTE_CONSOLE_ORDER_LIST,
           icon: 'fa-solid fa-store'
-        },
-        {
+        }
+      ];
+
+      // if forcedInviterId is set, only the forced inviter can see the distribution menu
+      // if forcedInviterId is not set, everyone can see the distribution menu
+      if (!this.$config.distribution?.forceInviterId || this.user?.id === this.$config.distribution?.forceInviterId) {
+        links.push({
           key: 'distribution-index',
           text: this.$t('console.menu.distributionIndex'),
           name: ROUTE_CONSOLE_DISTRIBUTION_INDEX,
           icon: 'fa-solid fa-coins'
-        }
-      ];
+        });
+      }
+
       return links;
     }
   },
