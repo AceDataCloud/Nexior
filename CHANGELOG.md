@@ -1,8 +1,16 @@
 # Change Log - @zhishuyun/hub
 
-This log was last generated on Sun, 07 Jan 2024 12:22:21 GMT and should not be manually modified.
+This log was last generated on Sun, 07 Jan 2024 12:48:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.11.1
+
+Sun, 07 Jan 2024 12:48:15 GMT
+
+### Patches
+
+- fix ios scan qr issue (cqc@germey.cn)
 
 ## 0.11.0
 
