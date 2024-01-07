@@ -9,7 +9,7 @@
   >
     <iframe width="360" height="560" :src="iframeUrl" frameborder="0" />
   </el-dialog>
-  <el-dialog :model-value="!!qrLink" width="400px" :show-close="false">
+  <el-dialog v-model="showQR" width="400px" :show-close="true">
     <qr-code
       v-if="qrLink"
       :value="qrLink"
@@ -37,6 +37,7 @@ export default defineComponent({
   },
   data() {
     return {
+      showQR: false,
       qrLink: ''
     };
   },
@@ -80,9 +81,7 @@ export default defineComponent({
       if (event.data.name === 'show_qr') {
         const data = event.data.data;
         this.qrLink = data.qrLink;
-      }
-      if (event.data.name === 'hide_qr') {
-        this.qrLink = '';
+        this.showQR = true;
       }
     });
   }
