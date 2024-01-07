@@ -1,8 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="left">
-      <navigator />
-    </div>
+    <navigator class="navigator" />
     <div class="main">
       <side-panel class="side" />
       <router-view class="operation" />
@@ -46,11 +44,12 @@ export default defineComponent({
   height: 100%;
   display: flex;
   flex-direction: row;
-  .left {
-    width: 60px;
+
+  .navigator {
     height: 100%;
     border-right: 1px solid var(--el-border-color);
   }
+
   .main {
     height: 100%;
     width: calc(100% - 60px);

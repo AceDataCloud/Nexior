@@ -25,7 +25,6 @@ export default defineComponent({
   flex-direction: row;
   overflow: hidden;
   .navigator {
-    width: 60px;
     height: 100%;
     border-right: 1px solid var(--el-border-color);
   }

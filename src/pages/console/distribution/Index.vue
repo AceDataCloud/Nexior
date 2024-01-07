@@ -260,6 +260,9 @@ export default defineComponent({
     },
     distributionLink() {
       const origin = window.location.origin;
+      if (!this.$store.getters.user?.id) {
+        return origin;
+      }
       return `${origin}?inviter_id=${this.$store.getters.user.id}`;
     }
   },

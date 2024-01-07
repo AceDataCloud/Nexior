@@ -53,7 +53,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .main {
-  width: calc(100% - 60px);
+  flex: 1;
   display: flex;
   flex-direction: row;
   .side {

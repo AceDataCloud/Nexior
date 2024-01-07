@@ -60,8 +60,8 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .main {
+  flex: 1;
   height: 100%;
-  width: calc(100% - 60px);
   display: flex;
   flex-direction: row;
   .menu {
