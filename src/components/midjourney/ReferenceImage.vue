@@ -6,7 +6,7 @@
       name="file"
       :limit="5"
       :multiple="true"
-      action="/api/v1/files/"
+      :action="uploadUrl"
       list-type="picture"
       :on-exceed="onExceed"
       :on-error="onError"
@@ -29,9 +29,11 @@
 import { defineComponent } from 'vue';
 import { ElUpload, ElButton, UploadFiles, UploadFile, ElMessage } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { getBaseUrlData } from '@/utils';
 
 interface IData {
   fileList: UploadFiles;
+  uploadUrl: string;
 }
 
 export default defineComponent({
@@ -44,7 +46,8 @@ export default defineComponent({
   emits: ['change'],
   data(): IData {
     return {
-      fileList: []
+      fileList: [],
+      uploadUrl: getBaseUrlData() + '/api/v1/files/'
     };
   },
   computed: {
