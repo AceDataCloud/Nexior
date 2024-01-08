@@ -1,8 +1,16 @@
 # Change Log - @zhishuyun/hub
 
-This log was last generated on Mon, 08 Jan 2024 14:35:52 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Jan 2024 15:49:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.12.0
+
+Mon, 08 Jan 2024 15:49:20 GMT
+
+### Minor changes
+
+- add support for config title and favicon (cqc@germey.cn)
 
 ## 0.11.7
 
