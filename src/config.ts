@@ -58,5 +58,45 @@ export default {
      * Note: if the forceInviterId is set, there will be no distribution page in console except for the forced inviter.
      */
     forceInviterId: undefined
+  },
+
+  /**
+   * The auth configuration.
+   */
+  auth: {
+    /**
+     * The auth provider configuration.
+     */
+    providers: {
+      /**
+       * The auth provider configuration for wechat.
+       */
+      wechat: {
+        /**
+         * Enable wechat auth provider.
+         */
+        enabled: true
+      },
+
+      /**
+       * The auth provider configuration for email.
+       */
+      email: {
+        /**
+         * Enable email auth provider.
+         */
+        enabled: true
+      },
+
+      /**
+       * The auth provider configuration for phone.
+       */
+      phone: {
+        /**
+         * Enable phone auth provider.
+         */
+        enabled: true
+      }
+    }
   }
 };

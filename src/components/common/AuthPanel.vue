@@ -43,7 +43,7 @@ export default defineComponent({
   },
   computed: {
     iframeUrl() {
-      return `${getBaseUrlAuth()}/auth/login?inviter_id=${this.inviterId}`;
+      return `${getBaseUrlAuth()}/auth/login?config=${JSON.stringify(this.$config.auth)}&inviter_id=${this.inviterId}`;
     },
     inviterId() {
       // if forceInviterId is set, then use forceInviterId
