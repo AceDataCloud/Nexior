@@ -6,10 +6,7 @@
         v-for="(option, optionKey) in options"
         :key="optionKey"
         :class="{ active: active === optionKey, item: true }"
-        @click="
-          active = optionKey;
-          value = option.value;
-        "
+        @click="value = option.value"
       >
         <el-image :src="option.image" fit="cover" class="image" />
         <p class="name">
@@ -23,22 +20,14 @@
 <script>
 import { defineComponent } from 'vue';
 import { ElImage } from 'element-plus';
+
 export default defineComponent({
   name: 'ModelSelector',
   components: {
     ElImage
   },
-  props: {
-    modelValue: {
-      type: String,
-      default: undefined
-    }
-  },
-  emits: ['update:modelValue'],
   data() {
     return {
-      value: this.modelValue,
-      active: 0,
       options: [
         {
           value: '',
@@ -53,18 +42,27 @@ export default defineComponent({
       ]
     };
   },
-  watch: {
-    modelValue(val) {
-      if (val !== this.value) {
-        this.value = val;
-      }
+  computed: {
+    active() {
+      return this.options.findIndex((option) => option.value === this.value);
     },
-    value(val) {
-      this.$emit('update:modelValue', val);
+    value: {
+      get() {
+        return this.$store.state.midjourney.preset?.model;
+      },
+      set(val) {
+        console.debug('set model', val);
+        this.$store.commit('midjourney/setPreset', {
+          ...this.$store.state.midjourney.preset,
+          model: val
+        });
+      }
     }
   },
   mounted() {
-    this.$emit('update:modelValue', this.value);
+    if (this.value === undefined) {
+      this.value = '';
+    }
   }
 });
 </script>

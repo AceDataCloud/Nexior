@@ -6,10 +6,7 @@
         v-for="(option, optionKey) in options"
         :key="optionKey"
         :class="{ active: active === optionKey, item: true }"
-        @click="
-          active = optionKey;
-          value = option.value;
-        "
+        @click="value = option.value"
       >
         <div class="preview" :class="option.label">
           <div class="rect" :style="{ width: option.width + 'px', height: option.height + 'px' }"></div>
@@ -29,16 +26,8 @@ const DEFAULT_RATIO = '1:1';
 
 export default defineComponent({
   name: 'RatioSelector',
-  props: {
-    modelValue: {
-      type: String,
-      default: undefined
-    }
-  },
-  emits: ['update:modelValue'],
   data() {
     return {
-      value: this.modelValue,
       options: [
         {
           value: '1:1',
@@ -75,26 +64,25 @@ export default defineComponent({
   },
   computed: {
     active() {
-      return this.options.findIndex((option) => option.value === this.value);
-    }
-  },
-  watch: {
-    modelValue(val) {
-      if (val !== this.value) {
-        this.value = val;
-      }
+      return this.options.findIndex((option) => option.value === this.value) || 0;
     },
-    value(val) {
-      this.$emit('update:modelValue', val);
+    value: {
+      get() {
+        return this.$store.state.midjourney.preset?.ratio;
+      },
+      set(val) {
+        console.debug('set ratio', val);
+        this.$store.commit('midjourney/setPreset', {
+          ...this.$store.state.midjourney.preset,
+          ratio: val
+        });
+      }
     }
   },
   mounted() {
-    if (!this.modelValue) {
+    if (!this.value) {
       this.value = DEFAULT_RATIO;
-    } else {
-      this.value = this.modelValue;
     }
-    this.$emit('update:modelValue', this.value);
   }
 });
 </script>

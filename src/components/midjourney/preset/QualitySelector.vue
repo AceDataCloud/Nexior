@@ -21,17 +21,8 @@ export default defineComponent({
     ElRadioButton,
     ElRadioGroup
   },
-  props: {
-    modelValue: {
-      type: String,
-      default: undefined
-    }
-  },
-  emits: ['update:modelValue'],
   data() {
     return {
-      value: this.modelValue,
-      active: 0,
       options: [
         {
           label: '低',
@@ -48,21 +39,24 @@ export default defineComponent({
       ]
     };
   },
-  watch: {
-    modelValue(val) {
-      if (val !== this.value) {
-        this.value = val;
+  computed: {
+    value: {
+      get() {
+        return this.$store.state.midjourney.preset?.quality;
+      },
+      set(val) {
+        console.debug('set quality', val);
+        this.$store.commit('midjourney/setPreset', {
+          ...this.$store.state.midjourney.preset,
+          quality: val
+        });
       }
-    },
-    value(val) {
-      this.$emit('update:modelValue', val);
     }
   },
   mounted() {
     if (!this.value) {
       this.value = DEFAULT_QUALITY;
     }
-    this.$emit('update:modelValue', this.value);
   }
 });
 </script>
@@ -75,7 +69,7 @@ export default defineComponent({
 
   .title {
     font-size: 14px;
-    margin-bottom: 0;
+    margin: 0;
     width: 30%;
   }
   .value {

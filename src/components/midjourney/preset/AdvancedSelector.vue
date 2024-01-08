@@ -8,7 +8,6 @@
 <script>
 import { defineComponent } from 'vue';
 import { ElSwitch } from 'element-plus';
-import InfoIcon from '@/components/common/InfoIcon.vue';
 
 const DEFAULT_ADVANCED = false;
 
@@ -17,33 +16,24 @@ export default defineComponent({
   components: {
     ElSwitch
   },
-  props: {
-    modelValue: {
-      type: Boolean,
-      default: false
-    }
-  },
-  emits: ['update:modelValue'],
-  data() {
-    return {
-      value: this.modelValue
-    };
-  },
-  watch: {
-    modelValue(val) {
-      if (val !== this.value) {
-        this.value = val;
+  computed: {
+    value: {
+      get() {
+        return this.$store.state.midjourney.preset?.advanced;
+      },
+      set(val) {
+        console.debug('set advanced', val);
+        this.$store.commit('midjourney/setPreset', {
+          ...this.$store.state.midjourney.preset,
+          advanced: val
+        });
       }
-    },
-    value(val) {
-      this.$emit('update:modelValue', val);
     }
   },
   mounted() {
     if (this.value === undefined) {
       this.value = DEFAULT_ADVANCED;
     }
-    this.$emit('update:modelValue', this.value);
   }
 });
 </script>
@@ -56,7 +46,7 @@ export default defineComponent({
 
   .title {
     font-size: 14px;
-    margin-bottom: 0;
+    margin: 0;
     width: 30%;
   }
   .value {
