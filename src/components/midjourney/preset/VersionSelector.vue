@@ -1,7 +1,7 @@
 <template>
   <div class="field">
     <h2 class="title">{{ $t('midjourney.name.version') }}</h2>
-    <el-select v-model="value" class="value" placeholder="Select">
+    <el-select v-model="value" class="value" :placeholder="$t('midjourney.placeholder.select')">
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </el-select>
   </div>
@@ -10,6 +10,7 @@
 <script>
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
+
 const DEFAULT_VERSION = '5.2';
 
 export default defineComponent({
@@ -27,8 +28,6 @@ export default defineComponent({
   emits: ['update:modelValue'],
   data() {
     return {
-      value: this.modelValue,
-      active: 0,
       options: [
         {
           value: '6.0',
@@ -65,21 +64,24 @@ export default defineComponent({
       ]
     };
   },
-  watch: {
-    modelValue(val) {
-      if (val !== this.value) {
-        this.value = val;
+  computed: {
+    value: {
+      get() {
+        return this.$store.state.midjourney.preset?.version;
+      },
+      set(val) {
+        console.debug('set version', val);
+        this.$store.commit('midjourney/setPreset', {
+          ...this.$store.state.midjourney.preset,
+          version: val
+        });
       }
-    },
-    value(val) {
-      this.$emit('update:modelValue', val);
     }
   },
   mounted() {
     if (!this.value) {
       this.value = DEFAULT_VERSION;
     }
-    this.$emit('update:modelValue', this.value);
   }
 });
 </script>
@@ -92,7 +94,7 @@ export default defineComponent({
 
   .title {
     font-size: 14px;
-    margin-bottom: 0;
+    margin: 0;
     width: 30%;
   }
   .value {

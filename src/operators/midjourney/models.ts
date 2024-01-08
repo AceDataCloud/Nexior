@@ -14,8 +14,8 @@ export interface IMidjourneyPreset {
   advanced?: boolean;
   quality?: string;
   weird?: number;
-  raw?: boolean;
   iw?: number;
+  style?: string;
   translation?: boolean;
 }
 

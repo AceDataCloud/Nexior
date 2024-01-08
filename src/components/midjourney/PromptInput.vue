@@ -2,6 +2,9 @@
   <div>
     <h2 class="title">{{ $t('midjourney.name.prompt') }}</h2>
     <el-input v-model="value" :rows="3" type="textarea" :placeholder="$t('midjourney.placeholder.prompt')" />
+    <p class="description">
+      {{ $t('midjourney.description.prompt') }}
+    </p>
   </div>
 </template>
 
@@ -53,5 +56,10 @@ export default defineComponent({
   .value {
     flex: 1;
   }
+}
+.description {
+  font-size: 12px;
+  margin-top: 10px;
+  color: var(--el-text-color-regular);
 }
 </style>

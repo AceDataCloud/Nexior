@@ -19,33 +19,24 @@ export default defineComponent({
     ElSwitch,
     InfoIcon
   },
-  props: {
-    modelValue: {
-      type: Boolean,
-      default: DEFAULT_TRANSLATION
-    }
-  },
-  emits: ['update:modelValue'],
-  data() {
-    return {
-      value: this.modelValue
-    };
-  },
-  watch: {
-    modelValue(val) {
-      if (val !== this.value) {
-        this.value = val;
+  computed: {
+    value: {
+      get() {
+        return this.$store.state.midjourney.preset?.translation;
+      },
+      set(val) {
+        console.debug('set translation', val);
+        this.$store.commit('midjourney/setPreset', {
+          ...this.$store.state.midjourney.preset,
+          translation: val
+        });
       }
-    },
-    value(val) {
-      this.$emit('update:modelValue', val);
     }
   },
   mounted() {
     if (this.value === undefined) {
       this.value = DEFAULT_TRANSLATION;
     }
-    this.$emit('update:modelValue', this.value);
   }
 });
 </script>
@@ -58,7 +49,7 @@ export default defineComponent({
 
   .title {
     font-size: 14px;
-    margin-bottom: 0;
+    margin: 0;
     width: 30%;
   }
   .value {

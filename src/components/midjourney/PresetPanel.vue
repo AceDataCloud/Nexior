@@ -1,17 +1,16 @@
 <template>
   <div class="panel">
-    <model-selector v-model="preset.model" class="mb-4" />
-    <ratio-selector v-model="preset.ratio" class="mb-4" />
-    <quality-selector v-model="preset.quality" class="mb-4" />
-    <version-selector v-model="preset.version" class="mb-4" />
-    <translation-selector v-model="preset.translation" class="mb-4" />
-    <advanced-selector v-model="preset.advanced" class="mb-4" />
-    <stylize-selector v-if="preset.advanced" v-model="preset.stylize" class="mb-4" />
-    <weird-selector v-if="preset.advanced" v-model="preset.wired" class="mb-4" />
-    <chaos-selector v-if="preset.advanced" v-model="preset.chaos" class="mb-4" />
-    <image-weight-selector v-if="preset.advanced" v-model="preset.iw" class="mb-4" />
-    <niji-selector v-if="false" v-model="preset.niji" class="mb-4" />
-    <raw-selector v-if="!preset.model && preset.advanced" v-model="preset.raw" class="mb-4" />
+    <model-selector class="mb-4" />
+    <ratio-selector class="mb-4" />
+    <quality-selector class="mb-4" />
+    <version-selector class="mb-4" />
+    <translation-selector class="mb-4" />
+    <advanced-selector class="mb-4" />
+    <stylize-selector v-if="preset.advanced" class="mb-4" />
+    <weird-selector v-if="preset.advanced" class="mb-4" />
+    <chaos-selector v-if="preset.advanced" class="mb-4" />
+    <image-weight-selector v-if="preset.advanced" class="mb-4" />
+    <style-selector v-if="preset.advanced" class="mb-4" />
   </div>
 </template>
 
@@ -25,40 +24,28 @@ import ModelSelector from './preset/ModelSelector.vue';
 import QualitySelector from './preset/QualitySelector.vue';
 import ImageWeightSelector from './preset/ImageWeightSelector.vue';
 import WeirdSelector from './preset/WeirdSelector.vue';
-import RawSelector from './preset/RawSelector.vue';
 import AdvancedSelector from './preset/AdvancedSelector.vue';
 import TranslationSelector from './preset/TranslationSelector.vue';
-import NijiSelector from './preset/NijiSelector.vue';
+import StyleSelector from './preset/StyleSelector.vue';
+
 export default defineComponent({
   name: 'PresetPanel',
   components: {
     ModelSelector,
+    StyleSelector,
     QualitySelector,
     RatioSelector,
     VersionSelector,
     StylizeSelector,
     ChaosSelector,
     WeirdSelector,
-    RawSelector,
     AdvancedSelector,
     ImageWeightSelector,
-    TranslationSelector,
-    NijiSelector
+    TranslationSelector
   },
-  data() {
-    return {
-      preset: this.$store.state.midjourney.preset
-    };
-  },
-  watch: {
-    preset: {
-      handler(val) {
-        this.$store.dispatch('midjourney/setPreset', {
-          ...val
-        });
-      },
-      deep: true,
-      immediate: true
+  computed: {
+    preset() {
+      return this.$store.state.midjourney.preset;
     }
   }
 });

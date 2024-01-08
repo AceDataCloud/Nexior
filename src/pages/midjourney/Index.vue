@@ -119,35 +119,35 @@ export default defineComponent({
       if (this.elements.length > 0) {
         content += ',' + this.elements.join(',');
       }
-      if (this.preset.model) {
+      if (this.preset.model && !content.includes(`--${this.preset.model}`)) {
         content += ` --${this.preset.model}`;
       }
-      if (this.preset.version) {
+      if (this.preset.version && !content.includes(`--version `) && !content.includes(`--v `)) {
         content += ` --version ${this.preset.version}`;
       }
-      if (this.preset.chaos) {
+      if (this.preset.chaos && !content.includes(`--chaos `)) {
         content += ` --chaos ${this.preset.chaos}`;
       }
-      if (this.preset.quality) {
+      if (this.preset.quality && !content.includes(`--quality `) && !content.includes(`--q `)) {
         content += ` --quality ${this.preset.quality}`;
       }
-      if (this.preset.ratio) {
-        content += ` --ar ${this.preset.ratio}`;
+      if (this.preset.ratio && !content.includes(`--aspect `) && !content.includes(`--ar `)) {
+        content += ` --aspect ${this.preset.ratio}`;
       }
-      if (this.preset.stylize) {
+      if (this.preset.stylize && !content.includes(`--stylize `) && !content.includes(`--s `)) {
         content += ` --stylize ${this.preset.stylize}`;
       }
-      if (this.preset.weird) {
+      if (this.preset.weird && !content.includes(`--weird `) && !content.includes(`--w `)) {
         content += ` --weird ${this.preset.weird}`;
       }
-      if (this.ignore) {
+      if (this.ignore && !content.includes(`--no `)) {
         content += ` --no ${this.ignore}`;
       }
-      if (this.preset.iw) {
+      if (this.preset.iw && !content.includes(`--iw `)) {
         content += ` --iw ${this.preset.iw}`;
       }
-      if (this.preset.raw) {
-        content += ` --style raw`;
+      if (this.preset.style && !content.includes(`--style`)) {
+        content += ` --style ${this.preset.style}`;
       }
       return this.prompt || this.references?.length > 0 ? content : '';
     }
