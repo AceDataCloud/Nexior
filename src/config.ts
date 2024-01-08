@@ -2,7 +2,32 @@ export default {
   /**
    * The global configuration.
    */
-  global: {},
+  global: {
+    /**
+     * Title of the app.
+     * You can change it by your own.
+     */
+    title: '知数云 - 数字化服务的智慧之选',
+
+    /**
+     * Logo url of the app.
+     * If provided which starts with http/https prefix, will be used.
+     * If not provided, will by default use @/assets/images/logo.svg as instead, you can replace it.
+     */
+    logoUrl: undefined,
+
+    /**
+     * Favicon url of the app.
+     * If provided which starts with http/https prefix, will be used.
+     * If not provided, will by default use @/assets/images/favicon.ico as instead, you can replace it.
+     */
+    faviconUrl: undefined,
+
+    /**
+     * The default language of the app, enum as 'zh-cn', 'en'.
+     */
+    language: 'zh-cn'
+  },
 
   /**
    * The left navigation configuration.
@@ -64,6 +89,11 @@ export default {
    * The auth configuration.
    */
   auth: {
+    /**
+     * The default auth provider, enum as 'wechat', 'email', 'phone'.
+     */
+    defaultProvider: 'wechat',
+
     /**
      * The auth provider configuration.
      */
