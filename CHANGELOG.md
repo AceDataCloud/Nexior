@@ -1,8 +1,16 @@
 # Change Log - @zhishuyun/hub
 
-This log was last generated on Sun, 07 Jan 2024 14:37:32 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Jan 2024 14:09:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.11.6
+
+Mon, 08 Jan 2024 14:09:32 GMT
+
+### Patches
+
+- fix upload image issue (cqc@germey.cn)
 
 ## 0.11.5
 
