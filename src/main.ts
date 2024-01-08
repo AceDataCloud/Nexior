@@ -12,10 +12,12 @@ import { vLoading } from 'element-plus';
 import hl from 'highlight.js';
 import 'highlight.js/styles/night-owl.css';
 import copyToClipboard from 'copy-to-clipboard';
-import { initializeCookies } from './utils/initializer';
+import { initializeCookies, initializeFavicon, initializeTitle } from './utils/initializer';
 import config from './plugins/config';
 
 initializeCookies();
+initializeTitle();
+initializeFavicon();
 
 const app = createApp(App);
 
