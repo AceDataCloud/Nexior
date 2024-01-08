@@ -31,15 +31,15 @@
     <div class="middle" />
     <div v-if="!collapsed" class="bottom">
       <el-menu :default-active="activeIndex">
-        <el-menu-item @click="onConsole">
+        <el-menu-item v-if="$config.navigation?.console" @click="onConsole">
           <font-awesome-icon icon="fa-solid fa-compass" class="mr-2" />
           <template #title>{{ $t('common.nav.console') }}</template>
         </el-menu-item>
-        <el-menu-item @click="onDistribution">
+        <el-menu-item v-if="showDistribution" @click="onDistribution">
           <font-awesome-icon icon="fa-solid fa-coins" class="mr-2" />
           <template #title>{{ $t('common.nav.distribution') }}</template>
         </el-menu-item>
-        <el-menu-item @click="onLogout">
+        <el-menu-item v-if="authenticated" @click="onLogout">
           <font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket" class="mr-2" />
           <template #title>{{ $t('common.nav.logOut') }}</template>
         </el-menu-item>

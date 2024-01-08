@@ -48,7 +48,7 @@ export default defineComponent({
     inviterId() {
       // if forceInviterId is set, then use forceInviterId
       if (this.$config?.distribution?.forceInviterId) {
-        return this.$config?.distribution?.defaultInviterId;
+        return this.$config?.distribution?.forceInviterId;
       }
       // Otherwise, use the inviter_id in the url, then use the inviter_id in the cookie, and finally use the default inviter_id
       const result =

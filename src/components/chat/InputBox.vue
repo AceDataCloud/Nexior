@@ -11,7 +11,7 @@
       :show-file-list="true"
       :limit="1"
       :multiple="false"
-      action="/api/v1/files/"
+      :action="uploadUrl"
       :on-exceed="onExceed"
       :on-error="onError"
       :headers="headers"
@@ -51,6 +51,7 @@ import { defineComponent } from 'vue';
 import { ElInput, ElMessage, ElTooltip, ElUpload } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { CHAT_MODEL_CHATGPT4_VISION, IChatModel } from '@/operators';
+import { getBaseUrlData } from '@/utils';
 
 export default defineComponent({
   name: 'InputBox',
@@ -80,7 +81,8 @@ export default defineComponent({
   data() {
     return {
       questionValue: this.question,
-      fileList: []
+      fileList: [],
+      uploadUrl: getBaseUrlData() + '/api/v1/files/'
     };
   },
   computed: {
