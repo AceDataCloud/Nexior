@@ -6,7 +6,7 @@
           <el-col :span="12" :offset="6" class="p-t text-center">
             <p>
               <span
-                ><a href="https://zhishuyun.com">{{ $t('common.entity.website') }}</a> © {{ new Date().getFullYear() }}
+                ><a href="https://acedata.cloud">{{ $t('common.entity.website') }}</a> © {{ new Date().getFullYear() }}
                 {{ $t('common.entity.copyright') }}
               </span>
               <span class="ml-2">

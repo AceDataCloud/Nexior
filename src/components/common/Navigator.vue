@@ -106,7 +106,7 @@ export default defineComponent({
         },
         displayName: this.$t('common.nav.chat'),
         icon: 'fa-regular fa-comment',
-        image: 'https://cdn.zhishuyun.com/9ad12c99b2.png/thumb_100x100',
+        image: 'https://cdn.acedata.cloud/9ad12c99b2.png/thumb_100x100',
         routes: [ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW]
       });
     }
@@ -117,7 +117,7 @@ export default defineComponent({
         },
         displayName: this.$t('common.nav.midjourney'),
         icon: 'fa-solid fa-palette',
-        image: 'https://cdn.zhishuyun.com/83ee211091.png/thumb_100x100',
+        image: 'https://cdn.acedata.cloud/83ee211091.png/thumb_100x100',
         routes: [ROUTE_MIDJOURNEY_INDEX, ROUTE_MIDJOURNEY_HISTORY]
       });
     }
