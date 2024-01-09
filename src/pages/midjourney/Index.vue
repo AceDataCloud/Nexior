@@ -61,7 +61,7 @@ interface IData {
   references: string[];
 }
 
-const CALLBACK_URL = 'https://webhook.zhishuyun.com/midjourney';
+const CALLBACK_URL = 'https://webhook.acedata.cloud/midjourney';
 
 export default defineComponent({
   name: 'MidjourneyIndex',

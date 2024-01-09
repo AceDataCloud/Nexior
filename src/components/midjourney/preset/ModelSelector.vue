@@ -32,12 +32,12 @@ export default defineComponent({
         {
           value: '',
           label: this.$t('midjourney.model.general'),
-          image: 'https://cdn.zhishuyun.com/2023-10-06-174633.png'
+          image: 'https://cdn.acedata.cloud/2023-10-06-174633.png'
         },
         {
           value: 'niji',
           label: this.$t('midjourney.model.niji'),
-          image: 'https://cdn.zhishuyun.com/2023-10-06-174008.png'
+          image: 'https://cdn.acedata.cloud/2023-10-06-174008.png'
         }
       ]
     };

@@ -1,4 +1,4 @@
-# ZhiShuYun Hub
+# acedatacloud Hub
 
 集成 GPT 问答、Midjourney 绘画等一站式服务的系统，主要特点包括：
 
@@ -10,33 +10,33 @@
 - 完全开源免费，配置简单，可直接部署为您自己的系统。
 - 基于 Vue3 开发，采用 MIT 协议，可进行任意二次开发。
 
-以上功能由[知数云](https://data.zhishuyun.com/)提供技术支持。
+以上功能由[知数云](https://platform.acedata.cloud/)提供技术支持。
 
 ## 预览
 
 AI 绘画：
 
-![](https://cdn.zhishuyun.com/20240101-214257.png)
+![](https://cdn.acedata.cloud/20240101-214257.png)
 
 AI 问答：
 
-![](https://cdn.zhishuyun.com/20240101-214017.png)
+![](https://cdn.acedata.cloud/20240101-214017.png)
 
 分销系统：
 
-![](https://cdn.zhishuyun.com/20240101-214316.png)
+![](https://cdn.acedata.cloud/20240101-214316.png)
 
-体验网址：[https://hub.zhishuyun.com/](https://hub.zhishuyun.com/)，微信或邮箱登录即可立即使用。
+体验网址：[https://hub.acedata.cloud/](https://hub.acedata.cloud/)，微信或邮箱登录即可立即使用。
 
 ## 部署
 
 一键部署到 Vercel：
 
-[![Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/ZhiShuYun/HubFrontend)
+[![Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/acedatacloud/HubFrontend)
 
 一键部署到 Netlify：
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ZhiShuYun/HubFrontend)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/acedatacloud/HubFrontend)
 
 ## 开发配置
 
@@ -49,7 +49,7 @@ AI 问答：
 ### 2. 下载源码
 
 ```
-git clone https://github.com/ZhiShuYun/HubFrontend.git
+git clone https://github.com/acedatacloud/HubFrontend.git
 ```
 
 ### 3. 配置
