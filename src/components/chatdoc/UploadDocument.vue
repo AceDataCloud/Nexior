@@ -1,0 +1,105 @@
+<template>
+  <el-dialog v-model="dialogVisible">
+    <el-upload
+      v-model:file-list="fileList"
+      accept=".docx,.doc,.pdf,.txt"
+      drag
+      :class="{
+        upload: true
+      }"
+      name="file"
+      :show-file-list="true"
+      :limit="1"
+      :multiple="false"
+      action="/api/v1/files/"
+      :on-exceed="onExceed"
+      :on-error="onError"
+      :on-success="onSuccess"
+      :headers="headers"
+    >
+      <el-icon v-if="!learning" class="el-icon--upload"><upload-filled /></el-icon>
+      <div v-if="!learning" class="el-upload__text">{{ $t('chatdoc.message.dragOrClickToUpload') }}</div>
+      <div v-if="learning">{{ $t('chatdoc.message.learningDocument') }}</div>
+    </el-upload>
+  </el-dialog>
+  <el-button type="primary" @click="dialogVisible = true">{{ $t('chatdoc.button.uploadDocuments') }}</el-button>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { ElButton, ElDialog, ElUpload, ElIcon, ElMessage, UploadFiles } from 'element-plus';
+import { UploadFilled } from '@element-plus/icons-vue';
+
+interface IData {
+  dialogVisible: boolean;
+  fileList: UploadFiles;
+  learning: boolean;
+}
+
+export default defineComponent({
+  name: 'UploadDocument',
+  components: {
+    ElButton,
+    ElDialog,
+    ElUpload,
+    ElIcon,
+    UploadFilled
+  },
+  data(): IData {
+    return {
+      dialogVisible: false,
+      fileList: [],
+      learning: false
+    };
+  },
+  computed: {
+    headers() {
+      return {
+        Authorization: `Bearer ${this.$store.state.token.access}`
+      };
+    },
+    urls(): string[] {
+      // @ts-ignore
+      return this.fileList.map((file: UploadFile) => file?.response?.file_url);
+    }
+  },
+  async mounted() {},
+  methods: {
+    onExceed() {
+      ElMessage.warning(this.$t('chatdoc.message.uploadDocumentsExceed'));
+    },
+    onError() {
+      ElMessage.error(this.$t('chatdoc.message.uploadDocumentsError'));
+    },
+    async onSuccess() {
+      ElMessage.success(this.$t('chatdoc.message.uploadDocumentsSuccess'));
+      ElMessage.info(this.$t('chatdoc.message.startCreateDocument'));
+      this.learning = true;
+      this.$store
+        .dispatch('chatdoc/createDocument', {
+          repositoryId: this.$route.params.repositoryId,
+          fileUrl: this.urls[0],
+          fileName: this.fileList[0].name
+        })
+        .then(() => {
+          ElMessage.success(this.$t('chatdoc.message.createDocumentSuccess'));
+          this.dialogVisible = false;
+          this.$store.dispatch('chatdoc/getDocuments', { repositoryId: this.$route.params.repositoryId });
+        })
+        .catch(() => {
+          ElMessage.error(this.$t('chatdoc.message.createDocumentError'));
+        })
+        .finally(() => {
+          this.fileList = [];
+          this.learning = false;
+        });
+    }
+  }
+});
+</script>
+
+<style scoped lang="scss">
+.el-button {
+  border-radius: 20px;
+}
+</style>
