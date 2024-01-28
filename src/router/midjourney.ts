@@ -2,6 +2,9 @@ import { ROUTE_MIDJOURNEY_HISTORY, ROUTE_MIDJOURNEY_INDEX } from './constants';
 
 export default {
   path: '/midjourney',
+  meta: {
+    auth: true
+  },
   component: () => import('@/layouts/Main.vue'),
   children: [
     {

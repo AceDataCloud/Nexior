@@ -15,5 +15,6 @@ export default {
   console: '控制台',
   newChat: '新建对话',
   logOut: '退出登录',
-  distribution: '分销赚钱'
+  distribution: '分销赚钱',
+  chatdoc: 'AI 知识库'
 };

@@ -1,13 +1,11 @@
+import { ROLE_ASSISTANT, ROLE_SYSTEM, ROLE_USER } from '@/constants';
 import {
   CHAT_MODEL_NAME_CHATGPT,
   CHAT_MODEL_NAME_CHATGPT4,
   CHAT_MODEL_NAME_CHATGPT4_BROWSING,
   CHAT_MODEL_NAME_CHATGPT4_VISION,
   CHAT_MODEL_NAME_CHATGPT_16K,
-  CHAT_MODEL_NAME_CHATGPT_BROWSING,
-  ROLE_ASSISTANT,
-  ROLE_SYSTEM,
-  ROLE_USER
+  CHAT_MODEL_NAME_CHATGPT_BROWSING
 } from './constants';
 
 export type IChatModelName =
@@ -25,7 +23,7 @@ export interface IChatModel {
   description: string;
 }
 
-export interface IError {
+interface IError {
   code: string;
   detail?: string;
 }

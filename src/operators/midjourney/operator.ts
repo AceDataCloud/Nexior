@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosProgressEvent, AxiosResponse } from 'axios';
 import { IMidjourneyImagineRequest, IMidjourneyImagineResponse, IMidjourneyImagineTask } from './models';
 import { BASE_URL_API } from '@/constants';
 
@@ -54,7 +54,7 @@ class MidjourneyOperator {
       },
       baseURL: options.endpoint,
       responseType: 'stream',
-      onDownloadProgress: (event) => {
+      onDownloadProgress: ({ event }: AxiosProgressEvent) => {
         const response = event.target.response;
         const lines = response.split('\r\n').filter((line: string) => !!line);
         const lastLine = lines[lines.length - 1];

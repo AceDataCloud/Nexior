@@ -1,9 +1,5 @@
 import { IChatModel } from './models';
 
-export const ROLE_SYSTEM = 'system';
-export const ROLE_ASSISTANT = 'assistant';
-export const ROLE_USER = 'user';
-
 export const CHAT_MODEL_NAME_CHATGPT = 'chatgpt';
 export const CHAT_MODEL_NAME_CHATGPT4 = 'chatgpt4';
 export const CHAT_MODEL_NAME_CHATGPT_16K = 'chatgpt-16k';
