@@ -1,8 +1,16 @@
 # Change Log - @zhishuyun/hub
 
-This log was last generated on Sun, 28 Jan 2024 07:24:49 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jan 2024 16:17:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.0.1
+
+Mon, 29 Jan 2024 16:17:58 GMT
+
+### Patches
+
+- fix chatdoc upload issue (cqc@germey.cn)
 
 ## 1.0.0
 
