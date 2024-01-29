@@ -2,7 +2,7 @@
   <el-dialog v-model="dialogVisible">
     <el-upload
       v-model:file-list="fileList"
-      accept=".docx,.doc,.pdf,.txt"
+      accept=".docx,.doc,.pdf,.txt,.csv,.enex,.epub,.eml,.html,.htm,.shtml,.md,.odt,.ppt,.pptx,.txt"
       drag
       :class="{
         upload: true
@@ -11,7 +11,7 @@
       :show-file-list="true"
       :limit="1"
       :multiple="false"
-      action="/api/v1/files/"
+      :action="uploadUrl"
       :on-exceed="onExceed"
       :on-error="onError"
       :on-success="onSuccess"
@@ -29,11 +29,13 @@
 import { defineComponent } from 'vue';
 import { ElButton, ElDialog, ElUpload, ElIcon, ElMessage, UploadFiles } from 'element-plus';
 import { UploadFilled } from '@element-plus/icons-vue';
+import { getBaseUrlData } from '@/utils';
 
 interface IData {
   dialogVisible: boolean;
   fileList: UploadFiles;
   learning: boolean;
+  uploadUrl: string;
 }
 
 export default defineComponent({
@@ -49,7 +51,8 @@ export default defineComponent({
     return {
       dialogVisible: false,
       fileList: [],
-      learning: false
+      learning: false,
+      uploadUrl: getBaseUrlData() + '/api/v1/files/'
     };
   },
   computed: {
