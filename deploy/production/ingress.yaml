@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hub-frontend
-  namespace: zhishuyun
+  namespace: acedatacloud
   annotations:
     kubernetes.io/ingress.class: 'nginx'
     nginx.ingress.kubernetes.io/ssl-redirect: 'true'
@@ -10,10 +10,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - hub.zhishuyun.com
-      secretName: tls-wildcard-zhishuyun-com
+        - hub.acedata.cloud
+      secretName: tls-wildcard-acedata-cloud
   rules:
-    - host: hub.zhishuyun.com
+    - host: hub.acedata.cloud
       http:
         paths:
           - backend:

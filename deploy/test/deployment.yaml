@@ -4,7 +4,7 @@ metadata:
   labels:
     app: hub-frontend
   name: hub-frontend
-  namespace: zhishuyun-test
+  namespace: acedatacloud-test
 spec:
   replicas: 1
   revisionHistoryLimit: 5
@@ -17,7 +17,7 @@ spec:
         app: hub-frontend
     spec:
       containers:
-        - image: ghcr.io/zhishuyun/hub-frontend:${TAG}
+        - image: ghcr.io/acedatacloud/hub-frontend:${TAG}
           name: hub-frontend
           ports:
             - containerPort: 80

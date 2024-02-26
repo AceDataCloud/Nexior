@@ -319,7 +319,7 @@ export default defineComponent({
       top: 3px;
       width: 22px;
       height: 18px;
-      background-image: url(https://zhishuyun-1256437459.cos.ap-beijing.myqcloud.com/2023-08-27-164440.png);
+      background-image: url(https://acedatacloud-1256437459.cos.ap-beijing.myqcloud.com/2023-08-27-164440.png);
       background-size: contain;
       background-repeat: no-repeat;
     }
