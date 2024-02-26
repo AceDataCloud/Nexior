@@ -7,7 +7,7 @@ export interface IApplicationQuery {
   offset?: number;
   limit?: number;
   type?: IApplicationType;
-  api_id?: string | string[];
+  service_id?: string;
   ordering?: string;
 }
 

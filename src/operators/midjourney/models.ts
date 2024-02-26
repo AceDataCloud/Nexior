@@ -1,6 +1,5 @@
-export interface IMidjourneyChannel {
+export interface IMidjourneyMode {
   icon: string;
-  apiId: string;
   name: string;
   displayName: string;
 }
@@ -21,16 +20,18 @@ export interface IMidjourneyPreset {
 
 export enum MidjourneyImagineAction {
   GENERATE = 'generate',
-  UPSAMPLE1 = 'upsample1',
-  UPSAMPLE2 = 'upsample2',
-  UPSAMPLE3 = 'upsample3',
-  UPSAMPLE4 = 'upsample4',
+  UPSCALE1 = 'upscale1',
+  UPSCALE2 = 'upscale2',
+  UPSCALE3 = 'upscale3',
+  UPSCALE4 = 'upscale4',
   VARIATION1 = 'variation1',
   VARIATION2 = 'variation2',
   VARIATION3 = 'variation3',
   VARIATION4 = 'variation4',
-  HIGH_VARIATION = 'high_variation',
-  LOW_VARIATION = 'low_variation',
+  VARIATION_STRONG = 'variation_strong',
+  VARIATION_SUBTLE = 'variation_subtle',
+  UPSCALE_SUBTLE = 'upscale_subtle',
+  UPSCALE_CREATIVE = 'upscale_creative',
   ZOOM_OUT_2X = 'zoom_out_2x',
   ZOOM_OUT_1_5X = 'zoom_out_1_5x',
   SQUARE = 'square',
@@ -39,10 +40,10 @@ export enum MidjourneyImagineAction {
   PAN_DOWN = 'pan_down',
   PAN_RIGHT = 'pan_right',
   REROLL = 'reroll',
-  UPSAMPLE_2X = 'upsample_2x',
-  UPSAMPLE_4X = 'upsample_4x',
-  REDO_UPSAMPLE_2X = 'redo_upsample_2x',
-  REDO_UPSAMPLE_4X = 'redo_upsample_4x'
+  UPSCALE_2X = 'upscale_2x',
+  UPSCALE_4X = 'upscale_4x',
+  REDO_UPSCALE_2X = 'redo_upscale_2x',
+  REDO_UPSCALE_4X = 'redo_upscale_4x'
 }
 
 export enum MidjourneyImagineState {

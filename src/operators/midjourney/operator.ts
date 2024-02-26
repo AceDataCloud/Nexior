@@ -20,12 +20,21 @@ class MidjourneyOperator {
     );
   }
 
-  async tasks(ids: string[]): Promise<AxiosResponse<IMidjourneyImagineTask[]>> {
+  async tasks(filter: { ids?: string[]; applicationId?: string }): Promise<AxiosResponse<IMidjourneyImagineTask[]>> {
     return await axios.post(
       `/midjourney/tasks`,
       {
         action: 'retrieve_batch',
-        ids: ids
+        ...(filter.ids
+          ? {
+              ids: filter.ids
+            }
+          : {}),
+        ...(filter.applicationId
+          ? {
+              application_id: filter.applicationId
+            }
+          : {})
       },
       {
         headers: {

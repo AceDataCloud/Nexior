@@ -48,12 +48,24 @@ class ChatOperator {
     );
   }
 
-  async getConversations(ids: string[]): Promise<AxiosResponse<IChatConversation[]>> {
+  async getConversations(filter: {
+    ids?: string[];
+    applicationId?: string;
+  }): Promise<AxiosResponse<IChatConversation[]>> {
     return await axios.post(
-      `/chatgpt/conversations`,
+      `/aichat/conversations`,
       {
         action: IChatConversationAction.RETRIEVE_BATCH,
-        ids: ids
+        ...(filter.ids
+          ? {
+              ids: filter.ids
+            }
+          : {}),
+        ...(filter.applicationId
+          ? {
+              application_id: filter.applicationId
+            }
+          : {})
       },
       {
         headers: {

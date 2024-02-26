@@ -1,14 +1,12 @@
-import { MIDJOURNEY_CHANNEL_FAST } from '@/operators';
+import { MIDJOURNEY_MODE_FAST } from '@/operators';
 import { IMidjourneyState } from './models';
 
 export default (): IMidjourneyState => {
   return {
-    applications: undefined,
-    getApplicationsStatus: undefined,
+    application: undefined,
     imagineTasks: undefined,
-    getImagineTasksStatus: undefined,
     imagineTasksTotal: undefined,
     preset: {},
-    channel: MIDJOURNEY_CHANNEL_FAST
+    mode: MIDJOURNEY_MODE_FAST
   };
 };

@@ -1,14 +1,11 @@
 import {
   IApplication,
-  IMidjourneyChannel,
+  IMidjourneyMode,
   IMidjourneyImagineTask,
   IMidjourneyPreset,
-  MIDJOURNEY_CHANNEL_FAST,
-  MIDJOURNEY_CHANNEL_RELAX,
-  MIDJOURNEY_CHANNEL_TURBO,
-  apiUsageOperator,
   applicationOperator,
-  midjourneyOperator
+  midjourneyOperator,
+  MIDJOURNEY_SERVICE_ID
 } from '@/operators';
 import { IMidjourneyState } from './models';
 import { ActionContext } from 'vuex';
@@ -23,28 +20,27 @@ export const setPreset = ({ commit }: any, payload: IMidjourneyPreset) => {
   commit('setPreset', payload);
 };
 
-export const setChannel = ({ commit }: any, payload: IMidjourneyChannel) => {
-  commit('setChannel', payload);
+export const setMode = ({ commit }: any, payload: IMidjourneyMode) => {
+  commit('setMode', payload);
 };
 
 export const setApplications = ({ commit }: any, payload: IApplication[]) => {
   commit('setApplications', payload);
 };
 
-export const getApplications = async ({
+export const getApplication = async ({
   commit,
   rootState
-}: ActionContext<IMidjourneyState, IRootState>): Promise<IApplication[]> => {
-  log(getApplications, 'start to get application for midjourney');
+}: ActionContext<IMidjourneyState, IRootState>): Promise<IApplication> => {
+  log(getApplication, 'start to get application for midjourney');
   commit('setGetApplicationsStatus', Status.Request);
   const { data: applications } = await applicationOperator.getAll({
     user_id: rootState.user.id,
-    api_id: [MIDJOURNEY_CHANNEL_FAST.apiId, MIDJOURNEY_CHANNEL_RELAX.apiId, MIDJOURNEY_CHANNEL_TURBO.apiId]
+    service_id: MIDJOURNEY_SERVICE_ID
   });
-  log(getApplications, 'get application for midjourney success', applications);
-  commit('setGetApplicationsStatus', Status.Success);
-  commit('setApplications', applications?.items);
-  return applications.items;
+  log(getApplication, 'get application for midjourney success', applications);
+  commit('setApplication', applications?.items?.[0]);
+  return applications.items?.[0];
 };
 
 export const setImagineTasks = ({ commit }: any, payload: IMidjourneyImagineTask[]) => {
@@ -57,27 +53,12 @@ export const getImagineTasks = async (
 ): Promise<IMidjourneyImagineTask[]> => {
   log(getImagineTasks, 'start to get imagine tasks', offset, limit);
   commit('setGetImagineTasksStatus', Status.Request);
-  const {
-    data: { items: apiUsages, count }
-  } = await apiUsageOperator.getAll({
-    user_id: rootState.user.id,
-    // @ts-ignore
-    application_id: state.applications?.map((application: IApplication) => application.id),
-    offset,
-    limit,
-    ordering: '-created_at'
-  });
-  log(getImagineTasks, 'get imagine api usage success', apiUsages);
-  let tasks = (await midjourneyOperator.tasks(apiUsages.map((apiUsage) => apiUsage.metadata?.task_id as string))).data;
-  tasks = tasks.map((task: IMidjourneyImagineTask) => {
-    const apiUsage = apiUsages.filter((apiUsage) => apiUsage.metadata?.task_id === task?.id)[0];
-    return {
-      ...task,
-      created_at: apiUsage.created_at
-    };
-  });
-  commit('setImagineTasksTotal', count);
-  commit('setGetImagineTasksStatus', Status.Success);
+  const { data: tasks } = (
+    await midjourneyOperator.tasks({
+      applicationId: state.application?.id
+    })
+  ).data;
+  // commit('setImagineTasksTotal', count);
   commit('setImagineTasks', tasks);
   return tasks;
 };
@@ -85,9 +66,8 @@ export const getImagineTasks = async (
 export default {
   resetAll,
   setPreset,
-  setChannel,
+  setMode,
   setApplications,
-  getApplications,
   setImagineTasks,
   getImagineTasks
 };

@@ -1,1 +1,1 @@
-export default ['chat.applications', 'chat.conversations', 'chat.model'];
+export default ['chat.application', 'chat.conversations', 'chat.model'];

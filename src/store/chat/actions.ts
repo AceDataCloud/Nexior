@@ -1,18 +1,12 @@
 import {
-  CHAT_MODEL_CHATGPT,
-  CHAT_MODEL_CHATGPT4,
-  CHAT_MODEL_CHATGPT4_BROWSING,
-  CHAT_MODEL_CHATGPT4_VISION,
-  CHAT_MODEL_CHATGPT_16K,
-  CHAT_MODEL_CHATGPT_BROWSING,
+  CHAT_SERVICE_ID,
   IApplication,
   IChatConversation,
   IChatModel,
-  apiUsageOperator,
   applicationOperator,
   chatOperator
 } from '@/operators';
-import { IRootState, Status } from '../common/models';
+import { IRootState } from '../common/models';
 import { ActionContext } from 'vuex';
 import { log } from '@/utils/log';
 import { IChatState } from './models';
@@ -25,8 +19,8 @@ export const setModel = async ({ commit }: any, payload: IChatModel): Promise<vo
   commit('setModel', payload);
 };
 
-export const setApplications = async ({ commit }: any, payload: IApplication[]): Promise<void> => {
-  commit('setApplications', payload);
+export const setApplication = async ({ commit }: any, payload: IApplication): Promise<void> => {
+  commit('setApplication', payload);
 };
 
 export const setConversations = async ({ commit }: any, payload: IChatConversation[]): Promise<void> => {
@@ -47,27 +41,18 @@ export const setConversation = async ({ commit, state }: any, payload: IChatConv
   log(setConversation, 'set conversation success', conversations);
 };
 
-export const getApplications = async ({
+export const getApplication = async ({
   commit,
   rootState
-}: ActionContext<IChatState, IRootState>): Promise<IApplication[]> => {
-  log(getApplications, 'start to get application for chat');
-  commit('setGetApplicationsStatus', Status.Request);
+}: ActionContext<IChatState, IRootState>): Promise<IApplication> => {
+  log(getApplication, 'start to get application for chat');
   const { data: applications } = await applicationOperator.getAll({
     user_id: rootState.user.id,
-    api_id: [
-      CHAT_MODEL_CHATGPT.apiId,
-      CHAT_MODEL_CHATGPT_16K.apiId,
-      CHAT_MODEL_CHATGPT_BROWSING.apiId,
-      CHAT_MODEL_CHATGPT4.apiId,
-      CHAT_MODEL_CHATGPT4_BROWSING.apiId,
-      CHAT_MODEL_CHATGPT4_VISION.apiId
-    ]
+    service_id: CHAT_SERVICE_ID
   });
-  log(getApplications, 'get application for chat success', applications);
-  commit('setGetApplicationsStatus', Status.Success);
-  commit('setApplications', applications?.items);
-  return applications.items;
+  log(getApplication, 'get application for chat success', applications);
+  commit('setApplication', applications?.items?.[0]);
+  return applications?.items?.[0];
 };
 
 export const getConversations = async ({
@@ -76,24 +61,9 @@ export const getConversations = async ({
   rootState
 }: ActionContext<IChatState, IRootState>): Promise<IChatConversation[]> => {
   log(getConversations, 'start to get conversations');
-  commit('setGetConversationsStatus', Status.Success);
-  const {
-    data: { items: apiUsages }
-  } = await apiUsageOperator.getAll({
-    user_id: rootState.user.id,
-    // @ts-ignore
-    application_id: state.applications?.map((application) => application.id),
-    offset: 0,
-    limit: 50,
-    ordering: '-created_at'
+  const { data: conversations } = await chatOperator.getConversations({
+    applicationId: state.application?.id
   });
-  log(getConversations, 'get api usages success', apiUsages);
-  commit('setGetConversationsStatus', Status.Success);
-  // de duplicate conversations using id
-  const conversationIds: string[] = apiUsages.map((apiUsage) => apiUsage.metadata?.conversation_id).filter((id) => id);
-  const uniqueConversationIds = [...new Set(conversationIds)];
-  log(getConversations, 'get unique conversation ids', uniqueConversationIds);
-  const conversations = (await chatOperator.getConversations(uniqueConversationIds)).data;
   log(getConversations, 'get conversations success', conversations);
   commit('setConversations', conversations);
   return conversations;
@@ -102,9 +72,8 @@ export const getConversations = async ({
 export default {
   resetAll,
   setModel,
-  setApplications,
+  setApplication,
   setConversation,
   setConversations,
-  getApplications,
   getConversations
 };

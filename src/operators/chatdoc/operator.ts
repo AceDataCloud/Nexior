@@ -128,12 +128,24 @@ class ChatdocOperator {
     );
   }
 
-  async getRepositories(ids: string[]): Promise<AxiosResponse<IChatdocRepositoriesResponse>> {
+  async getRepositories(filter: {
+    ids?: string[];
+    applicationId?: string;
+  }): Promise<AxiosResponse<IChatdocRepositoriesResponse>> {
     return await axios.post(
       `/chatdoc/repositories`,
       {
         action: ACTION_RETRIEVE_BATCH,
-        ids
+        ...(filter.ids
+          ? {
+              ids: filter.ids
+            }
+          : {}),
+        ...(filter.applicationId
+          ? {
+              application_id: filter.applicationId
+            }
+          : {})
       },
       {
         headers: {
