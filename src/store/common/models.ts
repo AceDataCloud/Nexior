@@ -1,6 +1,7 @@
 import { IUser } from '@/operators';
 import { IMidjourneyState } from '../midjourney/models';
 import { IChatState } from '../chat/models';
+import { IChatdocState } from '../chatdoc/models';
 
 export enum Status {
   Request = 'Request',
@@ -28,4 +29,5 @@ export interface ICommonState {
 export interface IRootState extends ICommonState {
   midjourney: IMidjourneyState;
   chat: IChatState;
+  chatdoc: IChatdocState;
 }

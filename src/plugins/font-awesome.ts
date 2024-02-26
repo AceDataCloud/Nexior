@@ -51,13 +51,16 @@ import {
   faCube as faSolidCube,
   faShieldHalved as faSolidShieldHalved,
   faCubes as faSolidCubes,
+  faFileLines as faSolidFileLines,
   faLink as faSolidLink,
   faWandMagic as faSolidWandMagic
 } from '@fortawesome/free-solid-svg-icons';
+
 library.add(faRegularCopy);
 library.add(faSolidStore);
 library.add(faSolidChevronRight);
 library.add(faSolidCube);
+library.add(faSolidFileLines);
 library.add(faSolidCompass);
 library.add(faSolidPaperclip);
 library.add(faSolidXmark);

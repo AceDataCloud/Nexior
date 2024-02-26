@@ -44,6 +44,11 @@ export default {
     midjourney: true,
 
     /**
+     * Show chatdoc entry in left navigation.
+     */
+    chatdoc: true,
+
+    /**
      * Show console entry in left navigation.
      */
     console: true,

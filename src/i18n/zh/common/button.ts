@@ -29,5 +29,6 @@ export default {
   buyMore: '购买更多',
   update: '更新',
   copy: '复制',
-  stop: '停止'
+  stop: '停止',
+  create: '创建'
 };
