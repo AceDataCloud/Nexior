@@ -8,17 +8,11 @@
     :role="message.role"
   >
     <div class="content">
-      <markdown-renderer v-if="!Array.isArray(message.content)" :content="message?.content" />
-      <div v-else>
-        <div v-for="(item, index) in message.content" :key="index">
-          <img v-if="item.type === 'image_url'" :src="item.image_url" fit="cover" class="image" />
-          <markdown-renderer v-if="item.type === 'text'" :key="index" :content="item.text" />
-        </div>
-      </div>
+      <markdown-renderer :content="message?.content" />
       <answering-mark v-if="message.state === messageState.PENDING" />
     </div>
     <div class="operations">
-      <copy-to-clipboard v-if="!Array.isArray(message.content)" :content="message.content!" class="btn-copy" />
+      <copy-to-clipboard :content="message.content!" class="btn-copy" />
     </div>
   </div>
   <el-alert v-if="errorText" class="error" :title="errorText" type="error" :closable="false" />
@@ -33,7 +27,7 @@ import AnsweringMark from './AnsweringMark.vue';
 import copy from 'copy-to-clipboard';
 import { ElAlert, ElButton } from 'element-plus';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
-import { IApplication, IChatMessage, IChatMessageState } from '@/operators';
+import { IChatdocMessage, IChatdocMessageState } from '@/operators';
 import CopyToClipboard from '../common/CopyToClipboard.vue';
 import {
   ERROR_CODE_API_ERROR,
@@ -47,10 +41,10 @@ import {
   ROLE_ASSISTANT
 } from '@/constants';
 import message from '@/i18n/zh/common/message';
-import { ROUTE_CONSOLE_APPLICATION_BUY } from '@/router';
+
 interface IData {
   copied: boolean;
-  messageState: typeof IChatMessageState;
+  messageState: typeof IChatdocMessageState;
 }
 
 export default defineComponent({
@@ -64,11 +58,7 @@ export default defineComponent({
   },
   props: {
     message: {
-      type: Object as () => IChatMessage,
-      required: true
-    },
-    application: {
-      type: Object as () => IApplication | undefined,
+      type: Object as () => IChatdocMessage,
       required: true
     }
   },
@@ -76,7 +66,7 @@ export default defineComponent({
   data(): IData {
     return {
       copied: false,
-      messageState: IChatMessageState
+      messageState: IChatdocMessageState
     };
   },
   computed: {
@@ -86,22 +76,22 @@ export default defineComponent({
       }
       switch (this.message.error?.code) {
         case ERROR_CODE_USED_UP:
-          return this.$t('chat.message.errorUsedUp');
+          return this.$t('chatdoc.message.errorUsedUp');
         case ERROR_CODE_API_ERROR:
-          return this.$t('chat.message.errorApiError');
+          return this.$t('chatdoc.message.errorApiError');
         case ERROR_CODE_BAD_REQUEST:
-          return this.$t('chat.message.errorBadRequest');
+          return this.$t('chatdoc.message.errorBadRequest');
         case ERROR_CODE_TIMEOUT:
-          return this.$t('chat.message.errorTimeout');
+          return this.$t('chatdoc.message.errorTimeout');
         case ERROR_CODE_TOO_MANY_REQUESTS:
-          return this.$t('chat.message.errorTooManyRequests');
+          return this.$t('chatdoc.message.errorTooManyRequests');
         case ERROR_CODE_CONTENT_TOO_LARGE:
-          return this.$t('chat.message.errorContentTooLarge');
+          return this.$t('chatdoc.message.errorContentTooLarge');
         case ERROR_CODE_NOT_APPLIED:
-          return this.$t('chat.message.errorNotApplied');
+          return this.$t('chatdoc.message.errorNotApplied');
         case ERROR_CODE_UNKNOWN:
         default:
-          return this.$t('chat.message.errorUnknown');
+          return this.$t('chatdoc.message.errorUnknown');
       }
     },
     showBuyMore() {
@@ -118,14 +108,7 @@ export default defineComponent({
         this.copied = false;
       }, 3000);
     },
-    onBuyMore() {
-      this.$router.push({
-        name: ROUTE_CONSOLE_APPLICATION_BUY,
-        params: {
-          id: this.application?.id
-        }
-      });
-    }
+    onBuyMore() {}
   }
 });
 </script>

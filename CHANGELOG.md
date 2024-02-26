@@ -1,16 +1,32 @@
 # Change Log - @acedatacloud/hub
 
-This log was last generated on Tue, 09 Jan 2024 19:15:08 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jan 2024 16:17:58 GMT and should not be manually modified.
 
 <!-- Start content -->
 
-## 0.12.2
+## 1.0.1
 
-Tue, 09 Jan 2024 19:15:08 GMT
+Mon, 29 Jan 2024 16:17:58 GMT
 
 ### Patches
 
-- migrate to acedata (germey@acedata.cloud)
+- fix chatdoc upload issue (cqc@germey.cn)
+
+## 1.0.0
+
+Sun, 28 Jan 2024 07:24:49 GMT
+
+### Major changes
+
+- add chatdoc feature (cqc@germey.cn)
+
+## 0.12.2
+
+Sun, 21 Jan 2024 03:37:14 GMT
+
+### Patches
+
+- add docs for docker deploy (cqc@cuiqingcai.com)
 
 ## 0.12.1
 

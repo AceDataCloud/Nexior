@@ -39,9 +39,8 @@
 import axios from 'axios';
 import { defineComponent } from 'vue';
 import Message from '@/components/chat/Message.vue';
+import { ROLE_ASSISTANT, ROLE_USER } from '@/constants';
 import {
-  ROLE_ASSISTANT,
-  ROLE_USER,
   IChatModel,
   IApplication,
   IChatMessageState,

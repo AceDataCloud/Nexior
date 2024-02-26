@@ -8,9 +8,11 @@ import console from './console';
 import order from './order';
 import distribution from './distribution';
 import user from './user';
+import chatdoc from './chatdoc';
 
 export default {
   chat,
+  chatdoc,
   user,
   order,
   console,
