@@ -1,8 +1,8 @@
 version: '3'
 services:
-  zhishuyun-hub-frontend:
-    container_name: 'zhishuyun-hub-frontend'
+  acedatacloud-hub-frontend:
+    container_name: 'acedatacloud-hub-frontend'
     build: ./
-    image: 'ghcr.io/zhishuyun/hub-frontend:${BUILD_NUMBER}'
+    image: 'ghcr.io/acedatacloud/hub-frontend:${BUILD_NUMBER}'
     ports:
       - '8080:80'

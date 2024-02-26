@@ -7,7 +7,7 @@ export default {
      * Title of the app.
      * You can change it by your own.
      */
-    title: '知数云 - 数字化服务的智慧之选',
+    title: 'Ace Data Cloud',
 
     /**
      * Logo url of the app.
@@ -26,7 +26,7 @@ export default {
     /**
      * The default language of the app, enum as 'zh-cn', 'en'.
      */
-    language: 'zh-cn'
+    language: 'en'
   },
 
   /**
@@ -97,7 +97,7 @@ export default {
     /**
      * The default auth provider, enum as 'wechat', 'email', 'phone'.
      */
-    defaultProvider: 'wechat',
+    defaultProvider: 'email',
 
     /**
      * The auth provider configuration.

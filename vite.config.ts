@@ -10,11 +10,11 @@ export default defineConfig({
     port: 8080,
     proxy: {
       '/api': {
-        target: 'https://data.zhishuyun.com',
+        target: 'https://platform.acedata.cloud',
         changeOrigin: true
       },
       '/oauth2': {
-        target: 'https://auth.zhishuyun.com',
+        target: 'https://auth.acedata.cloud',
         changeOrigin: true
       }
     }

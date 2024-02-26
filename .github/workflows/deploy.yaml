@@ -33,7 +33,7 @@ jobs:
       - name: Test Kubectl
         run: |
           kubectl get nodes
-          kubectl get svc -n zhishuyun-test
+          kubectl get svc -n acedatacloud-test
 
       - name: Set Build Number
         run: echo "BUILD_NUMBER=${GITHUB_RUN_NUMBER}" >> $GITHUB_ENV
