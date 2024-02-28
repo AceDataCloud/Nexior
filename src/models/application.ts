@@ -1,4 +1,4 @@
-import { IApi } from './api';
+import { IService } from './service';
 
 export enum IApplicationType {
   API = 'Api'
@@ -21,15 +21,13 @@ export interface ICredential {
 
 export interface IApplication {
   id?: string;
-  api?: IApi;
   type?: IApplicationType;
-  api_id?: string;
-  proxy_id?: string;
-  api_key?: string;
+  service_id?: string;
+  service?: IService;
   user_id?: string;
   remaining_amount?: number;
   used_amount?: number;
-  credential?: ICredential;
+  credentials?: ICredential[];
   created_at?: string;
   updated_at?: string;
 }

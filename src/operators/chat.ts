@@ -1,22 +1,25 @@
 import axios, { AxiosProgressEvent, AxiosResponse } from 'axios';
 import {
-  IChatAskOptions,
-  IChatAskRequest,
-  IChatAskResponse,
   IChatConversation,
-  IChatConversationAction
+  IChatConversationAction,
+  IChatConversationOptions,
+  IChatConversationRequest,
+  IChatConversationResponse
 } from '@/models';
 import { BASE_URL_API } from '@/constants';
 
 class ChatOperator {
-  async askQuestion(data: IChatAskRequest, options: IChatAskOptions): Promise<AxiosResponse<IChatAskResponse>> {
-    return await axios.post(options.path, data, {
+  async chatConversation(
+    data: IChatConversationRequest,
+    options: IChatConversationOptions
+  ): Promise<AxiosResponse<IChatConversationResponse>> {
+    return await axios.post('/aichat/conversations', data, {
       headers: {
         authorization: `Bearer ${options.token}`,
         accept: 'application/x-ndjson',
         'content-type': 'application/json'
       },
-      baseURL: options.endpoint,
+      baseURL: BASE_URL_API,
       responseType: 'stream',
       onDownloadProgress: ({ event }: AxiosProgressEvent) => {
         const response = event.target.response;
@@ -25,7 +28,7 @@ class ChatOperator {
         if (lastLine) {
           const jsonData = JSON.parse(lastLine);
           if (options?.stream) {
-            options?.stream(jsonData as IChatAskResponse);
+            options?.stream(jsonData as IChatConversationResponse);
           }
         }
       }
@@ -48,10 +51,15 @@ class ChatOperator {
     );
   }
 
-  async getConversations(filter: {
-    ids?: string[];
-    applicationId?: string;
-  }): Promise<AxiosResponse<IChatConversation[]>> {
+  async getConversations(
+    filter: {
+      ids?: string[];
+      applicationId?: string;
+    },
+    options: {
+      token: string;
+    }
+  ): Promise<AxiosResponse<IChatConversation[]>> {
     return await axios.post(
       `/aichat/conversations`,
       {
@@ -69,7 +77,8 @@ class ChatOperator {
       },
       {
         headers: {
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          authorization: `Bearer ${options.token}`
         },
         baseURL: BASE_URL_API
       }

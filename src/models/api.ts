@@ -1,3 +1,5 @@
+import { IService } from './service';
+
 export interface IForm {
   queries?: {
     [key: string]: string;
@@ -53,28 +55,28 @@ export enum IApiUnit {
   COUNT = 'Count'
 }
 
+export interface IApiPrice {
+  data: any[];
+  spans: [number, number, number, number][];
+  columns: {
+    key: string;
+    label: string;
+  }[];
+}
+
 export interface IApi {
   id: string;
-  path: string;
-  endpoint: string;
-  price?: number;
-  unit?: IApiUnit;
+  name?: string;
   title?: string;
+  definition?: any;
   introduction?: string;
-  applied_count?: number;
-  application_id?: string;
-  free_amount?: number;
-  applied?: boolean;
+  price?: IApiPrice;
   tags?: string[];
-  request: IRequest;
-  request_id: string;
-  responses: IResponse[];
-  response_ids: string[];
-  document_id?: string;
-  packages?: IPackage[];
+  service?: IService;
   service_id?: string;
   created_at?: string;
   updated_at?: string;
+  stage?: string;
 }
 
 export interface IApiListResponse {

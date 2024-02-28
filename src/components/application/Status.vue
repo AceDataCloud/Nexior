@@ -17,7 +17,7 @@
       }}</el-button>
     </span>
   </div>
-  <div v-if="needApply && api" class="text-center info">
+  <div v-if="needApply && service" class="text-center info">
     <span class="mr-2">{{ $t('chat.message.notApplied') }}</span>
     <span>
       <el-button type="primary" class="btn btn-apply" size="small" @click="confirming = true">
@@ -25,7 +25,7 @@
       </el-button>
     </span>
     <span class="ml-1">{{ $t('chat.message.tryForFree') }}</span>
-    <application-confirm v-model.visible="confirming" :object="api" :type="applicationType.API" @apply="onApply" />
+    <application-confirm v-if="service" v-model.visible="confirming" :service="service" @apply="onApply" />
   </div>
 </template>
 
@@ -34,7 +34,7 @@ import { defineComponent } from 'vue';
 import { applicationOperator } from '@/operators';
 import { ElButton, ElMessage, ElSkeleton, ElSkeletonItem } from 'element-plus';
 import ApplicationConfirm from '@/components/application/Confirm.vue';
-import { IApplicationType, IApplication, IApplicationDetailResponse } from '@/models';
+import { IApplicationType, IApplication, IApplicationDetailResponse, IService } from '@/models';
 import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
 import { ROUTE_CONSOLE_APPLICATION_BUY } from '@/router';
 
@@ -44,7 +44,7 @@ export interface IData {
 }
 
 export default defineComponent({
-  name: 'ApiStatus',
+  name: 'ApplicationStatus',
   components: { ElButton, ApplicationConfirm, ElSkeleton, ElSkeletonItem },
   props: {
     application: {
@@ -54,6 +54,10 @@ export default defineComponent({
     initializing: {
       type: Boolean,
       default: false
+    },
+    service: {
+      type: Object as () => IService | undefined,
+      required: true
     },
     needApply: {
       type: Boolean,

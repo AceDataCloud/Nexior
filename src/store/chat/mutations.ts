@@ -21,5 +21,6 @@ export const setConversations = (state: IChatState, payload: IChatConversation[]
 export default {
   setModel,
   setConversations,
+  setApplication,
   resetAll
 };

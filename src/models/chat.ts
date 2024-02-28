@@ -54,42 +54,30 @@ export interface IChatConversation {
   new?: boolean;
 }
 
-export interface IChatAskOptions {
-  stream?: (response: IChatAskResponse) => void;
-  token: string;
-  endpoint: string;
-  path: string;
-}
-
 export interface IChatConversationOptions {
-  endpoint: string;
-  path: string;
+  stream?: (response: IChatConversationResponse) => void;
+  token: string;
 }
 
-export interface IChatAskRequest {
-  question: string;
+export interface IChatConversationRequest {
+  id?: string;
+  question?: string;
   references?: string[];
   stateful?: boolean;
-  conversation_id?: string;
+  messages?: IChatMessage[];
+  action?: IChatConversationAction;
 }
 
-export interface IChatAskResponse {
+export interface IChatConversationResponse {
   answer: string;
   delta_answer: string;
-  conversation_id?: string;
+  id?: string;
 }
 
 export enum IChatConversationAction {
+  CHAT = 'chat',
   RETRIEVE = 'retrieve',
   UPDATE = 'update',
   DELETE = 'delete',
   RETRIEVE_BATCH = 'retrieve_batch'
 }
-
-export interface IChatConversationRequest {
-  action: IChatConversationAction;
-  id: string;
-  messages?: IChatMessage[];
-}
-
-export type IChatConversationResponse = IChatConversation;
