@@ -13,7 +13,6 @@
 <script>
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
-import model from '@/i18n/zh/midjourney/model';
 
 const DEFAULT_STYLE = '';
 

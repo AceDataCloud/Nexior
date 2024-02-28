@@ -3,7 +3,7 @@
     <el-button
       v-for="(option, optionKey) in options"
       :key="optionKey"
-      :class="{ button: true, active: option.name === channel.name }"
+      :class="{ button: true, active: option.name === mode.name }"
       @click="onSelect(option)"
     >
       <font-awesome-icon :class="{ icon: true, [option.name]: true }" :icon="option.icon" />
@@ -18,12 +18,8 @@
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import {
-  IMidjourneyChannel,
-  MIDJOURNEY_CHANNEL_FAST,
-  MIDJOURNEY_CHANNEL_RELAX,
-  MIDJOURNEY_CHANNEL_TURBO
-} from '@/operators';
+import { MIDJOURNEY_MODE_FAST, MIDJOURNEY_MODE_RELAX, MIDJOURNEY_MODE_TURBO } from '@/constants';
+import { IMidjourneyMode } from '@/models';
 
 export default defineComponent({
   name: 'ModelSelector',
@@ -34,17 +30,17 @@ export default defineComponent({
   emits: ['update:modelValue', 'select'],
   data() {
     return {
-      options: [MIDJOURNEY_CHANNEL_FAST, MIDJOURNEY_CHANNEL_RELAX, MIDJOURNEY_CHANNEL_TURBO]
+      options: [MIDJOURNEY_MODE_FAST, MIDJOURNEY_MODE_RELAX, MIDJOURNEY_MODE_TURBO]
     };
   },
   computed: {
-    channel() {
-      return this.$store.state.midjourney.channel;
+    mode() {
+      return this.$store.state.midjourney.mode;
     }
   },
   methods: {
-    onSelect(option: IMidjourneyChannel) {
-      this.$store.dispatch('midjourney/setChannel', option);
+    onSelect(option: IMidjourneyMode) {
+      this.$store.dispatch('midjourney/setMode', option);
     }
   }
 });

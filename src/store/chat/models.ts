@@ -1,4 +1,4 @@
-import { IApplication, IChatConversation, IChatModel } from '@/operators';
+import { IApplication, IChatConversation, IChatModel } from '@/models';
 
 export interface IChatState {
   model: IChatModel;

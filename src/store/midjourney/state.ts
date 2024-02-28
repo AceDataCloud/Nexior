@@ -1,4 +1,4 @@
-import { MIDJOURNEY_MODE_FAST } from '@/operators';
+import { MIDJOURNEY_MODE_FAST } from '@/constants';
 import { IMidjourneyState } from './models';
 
 export default (): IMidjourneyState => {

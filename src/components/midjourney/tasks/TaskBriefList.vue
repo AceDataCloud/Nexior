@@ -25,7 +25,7 @@ import { defineComponent } from 'vue';
 import TaskPreview from './TaskPreview.vue';
 import { ROUTE_MIDJOURNEY_HISTORY } from '@/router';
 import { ElButton, ElCard, ElSkeleton, ElSkeletonItem } from 'element-plus';
-import { Status } from '@/store/common/models';
+import { Status } from '@/models';
 
 export default defineComponent({
   name: 'TaskBriefList',

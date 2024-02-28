@@ -49,28 +49,27 @@
 import { defineComponent } from 'vue';
 import { ElDropdown, ElButton, ElDropdownItem } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { IChatModel } from '@/models';
 import {
-  CHAT_MODEL_CHATGPT,
-  CHAT_MODEL_CHATGPT4,
-  CHAT_MODEL_CHATGPT4_BROWSING,
-  CHAT_MODEL_CHATGPT4_VISION,
-  CHAT_MODEL_CHATGPT_16K,
-  CHAT_MODEL_CHATGPT_BROWSING
-} from '@/operators/chat/constants';
-import { IChatModel } from '@/operators';
+  CHAT_MODEL_GPT_3_5,
+  CHAT_MODEL_GPT_3_5_BROWSING,
+  CHAT_MODEL_GPT_4,
+  CHAT_MODEL_GPT_4_BROWSING,
+  CHAT_MODEL_GPT_4_VISION
+} from '@/constants';
 
 const GROUPS = [
   {
     label: '3.5',
     value: 'base',
     icon: 'fa-solid fa-bolt',
-    options: [CHAT_MODEL_CHATGPT, CHAT_MODEL_CHATGPT_16K, CHAT_MODEL_CHATGPT_BROWSING]
+    options: [CHAT_MODEL_GPT_3_5, CHAT_MODEL_GPT_3_5_BROWSING]
   },
   {
     label: '4.0',
     value: 'plus',
     icon: 'fa-solid fa-wand-magic-sparkles',
-    options: [CHAT_MODEL_CHATGPT4, CHAT_MODEL_CHATGPT4_BROWSING, CHAT_MODEL_CHATGPT4_VISION]
+    options: [CHAT_MODEL_GPT_4, CHAT_MODEL_GPT_4_BROWSING, CHAT_MODEL_GPT_4_VISION]
   }
 ];
 

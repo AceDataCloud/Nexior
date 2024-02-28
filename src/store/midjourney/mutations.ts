@@ -1,4 +1,4 @@
-import { IApplication, IMidjourneyMode, IMidjourneyPreset } from '@/operators';
+import { IApplication, IMidjourneyMode, IMidjourneyPreset } from '@/models';
 import { IMidjourneyState } from './models';
 
 export const resetAll = (state: IMidjourneyState): void => {

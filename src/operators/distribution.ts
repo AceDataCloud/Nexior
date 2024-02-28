@@ -1,11 +1,11 @@
 import { AxiosResponse } from 'axios';
-import { httpClient } from '../instance';
+import { httpClient } from './common';
 import {
   IDistributionHistoryListResponse,
   IDistributionLevelListResponse,
   IDistributionStatusDetailResponse,
   IDistributionStatusListResponse
-} from './models';
+} from '@/models';
 
 export interface IDistributionHistoryQuery {
   user_id?: string;

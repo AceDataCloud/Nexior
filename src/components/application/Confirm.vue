@@ -31,7 +31,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElDialog, ElDescriptions, ElDescriptionsItem, ElDivider, ElCheckbox, ElButton, ElMessage } from 'element-plus';
-import { IApi, IApplicationType } from '@/operators';
+import { IApi, IApplicationType } from '@/models';
 import ApplicationPolicy from './Policy.vue';
 
 interface IData {

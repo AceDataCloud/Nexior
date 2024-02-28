@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
-import { httpClient } from '../instance';
-import { ITokenResponse, IToken, IOAuthTokenRequest, IOAuthTokenResponse } from './models';
+import { httpClient } from './common';
+import { ITokenResponse, IToken, IOAuthTokenRequest, IOAuthTokenResponse } from '@/models';
 import { getBaseUrlAuth } from '@/utils';
 
 class AuthOperator {

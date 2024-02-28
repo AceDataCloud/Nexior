@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
-import { httpClient } from '../instance';
-import { IApi, IApiDetailResponse, IApiListResponse } from '../api/models';
+import { httpClient } from './common';
+import { IApi, IApiDetailResponse, IApiListResponse } from '@/models';
 
 export interface IApiQuery {
   limit?: number;

@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
-import { httpClient } from '../instance';
-import { IUserDetailResponse, IUser, IUserListResponse } from './models';
+import { httpClient } from './common';
+import { IUserDetailResponse, IUser, IUserListResponse } from '@/models';
 
 export interface IInviteesQuery {
   offset?: number;

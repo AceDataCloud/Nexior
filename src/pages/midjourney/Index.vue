@@ -4,7 +4,7 @@
       <preset-panel />
     </template>
     <template #operation>
-      <channel-selector class="mb-4" />
+      <mode-selector class="mb-4" />
       <api-status
         :initializing="initializing"
         :application="application"
@@ -38,21 +38,15 @@ import PromptInput from '@/components/midjourney/PromptInput.vue';
 import ElementsSelector from '@/components/midjourney/ElementsSelector.vue';
 import IgnoreSelector from '@/components/midjourney/IgnoreSelector.vue';
 import { ElButton, ElMessage } from 'element-plus';
-import ChannelSelector from '@/components/midjourney/ChannelSelector.vue';
+import ModeSelector from '@/components/midjourney/ModeSelector.vue';
 import ReferenceImage from '@/components/midjourney/ReferenceImage.vue';
-import {
-  IApplication,
-  MidjourneyImagineAction,
-  applicationOperator,
-  midjourneyOperator,
-  IMidjourneyImagineRequest,
-  IApplicationDetailResponse
-} from '@/operators';
+import { applicationOperator, midjourneyOperator } from '@/operators';
 import ApiStatus from '@/components/common/ApiStatus.vue';
 import TaskBriefList from '@/components/midjourney/tasks/TaskBriefList.vue';
 import FinalPrompt from '@/components/midjourney/FinalPrompt.vue';
 import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
-import { Status } from '@/store/common/models';
+import { Status } from '@/models';
+import { IMidjourneyImagineRequest, IApplicationDetailResponse, IApplication, MidjourneyImagineAction } from '@/models';
 
 interface IData {
   prompt: string;
@@ -66,7 +60,7 @@ const CALLBACK_URL = 'https://webhook.acedata.cloud/midjourney';
 export default defineComponent({
   name: 'MidjourneyIndex',
   components: {
-    ChannelSelector,
+    ModeSelector,
     ReferenceImage,
     PresetPanel,
     PromptInput,
@@ -87,20 +81,20 @@ export default defineComponent({
     };
   },
   computed: {
-    channel() {
-      return this.$store.state.midjourney.channel;
+    mode() {
+      return this.$store.state.midjourney.mode;
     },
     preset() {
       return this.$store.state.midjourney.preset;
     },
     initializing() {
-      return this.$store.state.midjourney.getApplicationsStatus === Status.Request;
+      return this.$store.state.midjourney.getApplicationStatus === Status.Request;
     },
     applications() {
       return this.$store.state.midjourney.applications;
     },
     needApply() {
-      return this.$store.state.midjourney.getApplicationsStatus === Status.Success && !this.application;
+      return this.$store.state.midjourney.getApplicationStatus === Status.Success && !this.application;
     },
     application() {
       if (this.applications && this.applications.length > 0) {
@@ -173,7 +167,7 @@ export default defineComponent({
         });
     },
     async onGetApplications() {
-      await this.$store.dispatch('midjourney/getApplications');
+      await this.$store.dispatch('midjourney/getApplication');
     },
     async onStartTask(request: IMidjourneyImagineRequest) {
       const token = this.application?.credential?.token;

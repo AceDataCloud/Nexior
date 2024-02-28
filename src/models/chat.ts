@@ -5,7 +5,7 @@ import {
   CHAT_MODEL_NAME_GPT_4,
   CHAT_MODEL_NAME_GPT_4_BROWSING,
   CHAT_MODEL_NAME_GPT_4_VISION
-} from './constants';
+} from '@/constants';
 
 export type IChatModelName =
   | typeof CHAT_MODEL_NAME_GPT_3_5

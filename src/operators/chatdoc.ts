@@ -7,7 +7,7 @@ import {
   IChatdocDocumentsResponse,
   IChatdocRepositoriesResponse,
   IChatdocRepositoryResponse
-} from './models';
+} from '@/models';
 import { ACTION_RETRIEVE_ALL, ACTION_UPDATE, BASE_URL_API } from '@/constants';
 import { ACTION_CREATE, ACTION_DELETE, ACTION_RETRIEVE, ACTION_RETRIEVE_BATCH } from '@/constants';
 

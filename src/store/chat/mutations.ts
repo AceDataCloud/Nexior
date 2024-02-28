@@ -1,4 +1,4 @@
-import { IApplication, IChatConversation, IChatModel } from '@/operators';
+import { IApplication, IChatConversation, IChatModel } from '@/models';
 import { IChatState } from './models';
 
 export const resetAll = (state: IChatState): void => {

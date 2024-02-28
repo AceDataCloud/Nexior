@@ -1,5 +1,5 @@
 import axios, { AxiosProgressEvent, AxiosResponse } from 'axios';
-import { IMidjourneyImagineRequest, IMidjourneyImagineResponse, IMidjourneyImagineTask } from './models';
+import { IMidjourneyImagineRequest, IMidjourneyImagineResponse, IMidjourneyImagineTask } from '@/models';
 import { BASE_URL_API } from '@/constants';
 
 class MidjourneyOperator {

@@ -1,6 +1,5 @@
-import { IApplication } from '@/operators';
+import { IApplication, IChatdocRepository } from '@/models';
 import { IChatdocState } from './models';
-import { IChatdocRepository } from '@/operators/chatdoc/models';
 import { log } from '@/utils';
 
 export const resetAll = (state: IChatdocState): void => {

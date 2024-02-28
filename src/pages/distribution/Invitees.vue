@@ -58,7 +58,8 @@ import { defineComponent } from 'vue';
 import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { ElRow, ElCol, ElTable, ElTableColumn, ElCard, ElSwitch } from 'element-plus';
-import { IUser, userOperator } from '@/operators';
+import { userOperator } from '@/operators';
+import { IUser } from '@/models';
 
 interface IData {
   invitees: IUser[];

@@ -1,4 +1,4 @@
-import { IApplication } from '../application';
+import { IApplication } from './application';
 
 export enum OrderState {
   PENDING = 'Pending',

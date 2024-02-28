@@ -10,7 +10,7 @@
               :application="application"
               :need-apply="needApply"
               :api-id="apiId"
-              @refresh="$store.dispatch('chatdoc/getApplications')"
+              @refresh="$store.dispatch('chatdoc/getApplication')"
             />
           </div>
           <div class="dialogue">
@@ -40,14 +40,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Chatdoc.vue';
-import {
-  IApplication,
-  IChatdocChatResponse,
-  IChatdocConversation,
-  IChatdocMessageState,
-  IChatdocRepository,
-  chatdocOperator
-} from '@/operators';
+import { chatdocOperator } from '@/operators';
 import Conversations from '@/components/chatdoc/Conversations.vue';
 import Message from '@/components/chatdoc/Message.vue';
 import InputBox from '@/components/chatdoc/InputBox.vue';
@@ -58,13 +51,19 @@ import {
   ROLE_ASSISTANT,
   ROLE_USER
 } from '@/constants';
-import { API_ID_CHATDOC_CHAT } from '@/operators/chatdoc/constants';
 import { log } from '@/utils';
 import { ROUTE_CHATDOC_CONVERSATION } from '@/router';
 import axios from 'axios';
 import { isJSONString } from '@/utils/is';
-import { Status } from '@/store/common/models';
+import { Status } from '@/models';
 import ApiStatus from '@/components/common/ApiStatus.vue';
+import {
+  IApplication,
+  IChatdocChatResponse,
+  IChatdocConversation,
+  IChatdocMessageState,
+  IChatdocRepository
+} from '@/models';
 
 export default defineComponent({
   name: 'ChatdocChat',
@@ -113,10 +112,10 @@ export default defineComponent({
       return this.$store.state.chatdoc.applications;
     },
     needApply() {
-      return this.$store.state.chatdoc.getApplicationsStatus === Status.Success && !this.application;
+      return this.$store.state.chatdoc.getApplicationStatus === Status.Success && !this.application;
     },
     initializing() {
-      return this.$store.state.chatdoc.getApplicationsStatus === Status.Request;
+      return this.$store.state.chatdoc.getApplicationStatus === Status.Request;
     },
     apiId() {
       return API_ID_CHATDOC_CHAT;

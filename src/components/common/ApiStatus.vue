@@ -31,12 +31,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IApplication, IApplicationDetailResponse, applicationOperator } from '@/operators';
+import { applicationOperator } from '@/operators';
 import { ElButton, ElMessage, ElSkeleton, ElSkeletonItem } from 'element-plus';
 import ApplicationConfirm from '@/components/application/Confirm.vue';
-import { IApplicationType } from '@/operators';
-import { apiOperator } from '@/operators/api/operator';
-import { IApiDetailResponse, IApi } from '@/operators/api';
+import { IApplicationType, IApplication, IApplicationDetailResponse } from '@/models';
 import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
 import { ROUTE_CONSOLE_APPLICATION_BUY } from '@/router';
 

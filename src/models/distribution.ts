@@ -1,4 +1,4 @@
-import { IOrder } from '../order';
+import { IOrder } from './order';
 
 export interface IDistributionHistory {
   id: string;

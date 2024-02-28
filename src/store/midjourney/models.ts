@@ -1,4 +1,4 @@
-import { IApplication, IMidjourneyImagineTask, IMidjourneyMode, IMidjourneyPreset } from '@/operators';
+import { IApplication, IMidjourneyImagineTask, IMidjourneyMode, IMidjourneyPreset } from '@/models';
 
 export interface IMidjourneyState {
   application: IApplication | undefined;

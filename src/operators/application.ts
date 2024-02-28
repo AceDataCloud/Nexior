@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
-import { httpClient } from '../instance';
-import { IApplication, IApplicationDetailResponse, IApplicationListResponse, IApplicationType } from './models';
+import { httpClient } from './common';
+import { IApplication, IApplicationDetailResponse, IApplicationListResponse, IApplicationType } from '@/models';
 
 export interface IApplicationQuery {
   user_id?: string;

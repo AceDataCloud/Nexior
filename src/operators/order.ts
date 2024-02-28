@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
-import { httpClient } from '../instance';
-import { IOrder, IOrderDetailResponse, IOrderListResponse } from './models';
+import { httpClient } from './common';
+import { IOrder, IOrderDetailResponse, IOrderListResponse } from '@/models';
 
 export interface IOrderQuery {
   user_id?: string;

@@ -42,7 +42,7 @@ export default defineComponent({
   },
   methods: {
     async onGetApplications() {
-      await this.$store.dispatch('chat/getApplications');
+      await this.$store.dispatch('chat/getApplication');
     },
     async onGetConversations() {
       await this.$store.dispatch('chat/getConversations');

@@ -1,11 +1,10 @@
-import { IApplication, applicationOperator } from '@/operators';
 import { IRootState } from '../common/models';
 import { ActionContext } from 'vuex';
 import { log } from '@/utils/log';
 import { IChatdocState } from './models';
-import { IChatdocConversation, IChatdocDocument, IChatdocRepository } from '@/operators/chatdoc/models';
-import { chatdocOperator } from '@/operators/chatdoc/operator';
-import { CHATDOC_SERVICE_ID } from '@/operators/chatdoc/constants';
+import { IApplication, IChatdocConversation, IChatdocDocument, IChatdocRepository } from '@/models';
+import { chatdocOperator, applicationOperator } from '@/operators';
+import { CHATDOC_SERVICE_ID } from '@/constants';
 
 export const setApplication = async ({ commit }: any, payload: IApplication): Promise<void> => {
   commit('setApplication', payload);

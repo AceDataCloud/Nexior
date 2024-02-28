@@ -1,6 +1,6 @@
 <template>
   <div class="history">
-    <channel-selector class="mb-4" />
+    <mode-selector class="mb-4" />
     <api-status
       :initializing="initializing"
       :application="application"
@@ -19,15 +19,15 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import PresetPanel from '@/components/midjourney/PresetPanel.vue';
 import { ElMessage, ElButton } from 'element-plus';
-import ChannelSelector from '@/components/midjourney/ChannelSelector.vue';
+import ModeSelector from '@/components/midjourney/ModeSelector.vue';
 import ApiStatus from '@/components/common/ApiStatus.vue';
-import { MidjourneyImagineAction, midjourneyOperator, IMidjourneyImagineRequest, IApplication } from '@/operators';
+import { midjourneyOperator } from '@/operators';
 import TaskFullList from '@/components/midjourney/tasks/TaskFullList.vue';
 import { ROUTE_MIDJOURNEY_INDEX } from '@/router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { Status } from '@/store/common/models';
+import { Status } from '@/models';
+import { MidjourneyImagineAction, IMidjourneyImagineRequest, IApplication } from '@/models';
 
 interface IData {
   prompt: string;
@@ -41,7 +41,7 @@ export default defineComponent({
   name: 'MidjourneyIndex',
   components: {
     TaskFullList,
-    ChannelSelector,
+    ModeSelector,
     ApiStatus,
     ElButton,
     FontAwesomeIcon
@@ -61,10 +61,10 @@ export default defineComponent({
       return this.$store.state.midjourney.applications;
     },
     initializing() {
-      return this.$store.state.midjourney.getApplicationsStatus === Status.Request;
+      return this.$store.state.midjourney.getApplicationStatus === Status.Request;
     },
     needApply() {
-      return this.$store.state.midjourney.getApplicationsStatus === Status.Success && !this.application;
+      return this.$store.state.midjourney.getApplicationStatus === Status.Success && !this.application;
     },
     application() {
       if (this.applications && this.applications.length > 0) {
@@ -83,7 +83,7 @@ export default defineComponent({
       });
     },
     async onGetApplications() {
-      await this.$store.dispatch('midjourney/getApplications');
+      await this.$store.dispatch('midjourney/getApplication');
     },
     async onStartTask(request: IMidjourneyImagineRequest) {
       const token = this.application?.credential?.token;

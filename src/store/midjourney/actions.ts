@@ -1,16 +1,11 @@
-import {
-  IApplication,
-  IMidjourneyMode,
-  IMidjourneyImagineTask,
-  IMidjourneyPreset,
-  applicationOperator,
-  midjourneyOperator,
-  MIDJOURNEY_SERVICE_ID
-} from '@/operators';
+import { applicationOperator, midjourneyOperator } from '@/operators';
 import { IMidjourneyState } from './models';
 import { ActionContext } from 'vuex';
 import { log } from '@/utils/log';
-import { IRootState, Status } from '../common/models';
+import { IRootState } from '../common/models';
+import { IApplication, IMidjourneyImagineTask, IMidjourneyMode, IMidjourneyPreset } from '@/models';
+import { Status } from '@/models/common';
+import { MIDJOURNEY_SERVICE_ID } from '@/constants';
 
 export const resetAll = ({ commit }: ActionContext<IMidjourneyState, IRootState>): void => {
   commit('resetAll');

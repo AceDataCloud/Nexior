@@ -1,15 +1,10 @@
-import {
-  CHAT_SERVICE_ID,
-  IApplication,
-  IChatConversation,
-  IChatModel,
-  applicationOperator,
-  chatOperator
-} from '@/operators';
+import { applicationOperator, chatOperator } from '@/operators';
 import { IRootState } from '../common/models';
 import { ActionContext } from 'vuex';
 import { log } from '@/utils/log';
 import { IChatState } from './models';
+import { IApplication, IChatConversation, IChatModel } from '@/models';
+import { CHAT_SERVICE_ID } from '@/constants';
 
 export const resetAll = ({ commit }: ActionContext<IChatState, IRootState>): void => {
   commit('resetAll');

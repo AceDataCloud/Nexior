@@ -7,7 +7,7 @@
         :application="application"
         :need-apply="needApply"
         :api-id="model.apiId"
-        @refresh="$store.dispatch('chat/getApplications')"
+        @refresh="$store.dispatch('chat/getApplication')"
       />
       <div class="dialogue">
         <introduction v-if="messages.length === 0" @draft="onDraft" />
@@ -45,20 +45,20 @@ import {
   IApplication,
   IChatMessageState,
   IChatAskResponse,
-  chatOperator,
   IChatConversation,
   IChatMessage
-} from '@/operators';
+} from '@/models';
 import InputBox from '@/components/chat/InputBox.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import ApiStatus from '@/components/common/ApiStatus.vue';
 import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router';
-import { Status } from '@/store/common/models';
+import { Status } from '@/models';
 import { log } from '@/utils/log';
 import Introduction from '@/components/chat/Introduction.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isJSONString } from '@/utils/is';
+import { chatOperator } from '@/operators';
 
 export interface IData {
   question: string;
@@ -104,7 +104,7 @@ export default defineComponent({
       return this.applications?.find((application: IApplication) => application.api?.id === this.model.apiId);
     },
     needApply() {
-      return this.$store.state.chat.getApplicationsStatus === Status.Success && !this.application;
+      return this.$store.state.chat.getApplicationStatus === Status.Success && !this.application;
     },
     applications() {
       return this.$store.state.chat.applications;
@@ -113,7 +113,7 @@ export default defineComponent({
       return this.$store.state.chat.conversations;
     },
     initializing() {
-      return this.$store.state.chat.getApplicationsStatus === Status.Request;
+      return this.$store.state.chat.getApplicationStatus === Status.Request;
     }
   },
   watch: {
@@ -147,7 +147,7 @@ export default defineComponent({
     },
     async onModelChanged() {
       await this.onCreateNewConversation();
-      await this.$store.dispatch('chat/getApplications');
+      await this.$store.dispatch('chat/getApplication');
     },
     async onSubmit() {
       if (this.references.length > 0) {
@@ -256,7 +256,7 @@ export default defineComponent({
           }
           this.onScrollDown();
           await this.$store.dispatch('chat/getConversations');
-          await this.$store.dispatch('chat/getApplications');
+          await this.$store.dispatch('chat/getApplication');
         })
         .catch((error) => {
           if (this.messages && this.messages.length > 0) {

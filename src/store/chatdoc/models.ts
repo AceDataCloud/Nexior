@@ -1,6 +1,4 @@
-import { IApplication } from '@/operators';
-import { Status } from '../common/models';
-import { IChatdocRepository } from '@/operators/chatdoc/models';
+import { IApplication, IChatdocRepository } from '@/models';
 
 export interface IChatdocState {
   application: IApplication | undefined;

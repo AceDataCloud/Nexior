@@ -88,7 +88,6 @@ import {
   ROUTE_MIDJOURNEY_HISTORY,
   ROUTE_MIDJOURNEY_INDEX
 } from '@/router/constants';
-import HelpEntry from './HelpEntry2.vue';
 import Chevron from './Chevron.vue';
 
 export default defineComponent({

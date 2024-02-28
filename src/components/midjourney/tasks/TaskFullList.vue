@@ -23,8 +23,8 @@
 import { defineComponent } from 'vue';
 import TaskPreview from './TaskPreview.vue';
 import Pagination from '@/components/common/Pagination.vue';
-import { ElRow, ElCol, ElCard, ElSkeleton, ElSkeletonItem } from 'element-plus';
-import { Status } from '@/store/common/models';
+import { ElCard, ElSkeleton, ElSkeletonItem } from 'element-plus';
+import { Status } from '@/models';
 
 export default defineComponent({
   name: 'TaskFullList',

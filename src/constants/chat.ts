@@ -1,4 +1,8 @@
-import { IChatModel } from './models';
+import { IChatModel } from '@/models';
+
+export const ROLE_SYSTEM = 'system';
+export const ROLE_ASSISTANT = 'assistant';
+export const ROLE_USER = 'user';
 
 export const CHAT_MODEL_NAME_GPT_3_5 = 'gpt-3.5';
 export const CHAT_MODEL_NAME_GPT_3_5_BROWSING = 'gpt-3.5-browsing';
@@ -26,7 +30,7 @@ export const CHAT_MODEL_GPT_4: IChatModel = {
   description: '4.0 标准模型，输入约 4 千汉字'
 };
 
-export const CHAT_MODEL_GPT4_BROWSING: IChatModel = {
+export const CHAT_MODEL_GPT_4_BROWSING: IChatModel = {
   name: CHAT_MODEL_NAME_GPT_4_BROWSING,
   displayName: '4.0 - 联网',
   description: '4.0 联网模型，支持实时联网搜索问答'

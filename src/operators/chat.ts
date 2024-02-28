@@ -5,7 +5,7 @@ import {
   IChatAskResponse,
   IChatConversation,
   IChatConversationAction
-} from './models';
+} from '@/models';
 import { BASE_URL_API } from '@/constants';
 
 class ChatOperator {

@@ -103,15 +103,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElImage, ElTag, ElButton, ElTooltip, ElSkeleton, ElAlert } from 'element-plus';
-import { IApplication, IMidjourneyImagineTask, MidjourneyImagineAction, MidjourneyImagineState } from '@/operators';
-import {
-  API_ID_MIDJOURNEY_FAST,
-  API_ID_MIDJOURNEY_RELAX,
-  API_ID_MIDJOURNEY_TURBO,
-  MIDJOURNEY_CHANNEL_FAST,
-  MIDJOURNEY_CHANNEL_RELAX,
-  MIDJOURNEY_CHANNEL_TURBO
-} from '@/operators/midjourney/constants';
+import { IApplication, IMidjourneyImagineTask, MidjourneyImagineAction, MidjourneyImagineState } from '@/models';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 
@@ -186,12 +178,12 @@ export default defineComponent({
         [MidjourneyImagineAction.VARIATION2]: this.$t('midjourney.description.variation2'),
         [MidjourneyImagineAction.VARIATION3]: this.$t('midjourney.description.variation3'),
         [MidjourneyImagineAction.VARIATION4]: this.$t('midjourney.description.variation4'),
-        [MidjourneyImagineAction.HIGH_VARIATION]: this.$t('midjourney.description.high_variation'),
-        [MidjourneyImagineAction.LOW_VARIATION]: this.$t('midjourney.description.low_variation'),
+        [MidjourneyImagineAction.VARIATION_STRONG]: this.$t('midjourney.description.variation_strong'),
+        [MidjourneyImagineAction.VARIATION_SUBTLE]: this.$t('midjourney.description.variation_subtle'),
         [MidjourneyImagineAction.ZOOM_OUT_2X]: this.$t('midjourney.description.zoom_out_2x'),
         [MidjourneyImagineAction.ZOOM_OUT_1_5X]: this.$t('midjourney.description.zoom_out_1_5x'),
-        [MidjourneyImagineAction.UPSCALE4_2x]: this.$t('midjourney.description.upscale_2x'),
-        [MidjourneyImagineAction.UPSAMPLE_4X]: this.$t('midjourney.description.upscale_4x'),
+        [MidjourneyImagineAction.UPSCALE_2x]: this.$t('midjourney.description.upscale_2x'),
+        [MidjourneyImagineAction.UPSCALE_4X]: this.$t('midjourney.description.upscale_4x'),
         [MidjourneyImagineAction.REDO_UPSCALE_2X]: this.$t('midjourney.description.redo_upscale_2x'),
         [MidjourneyImagineAction.REDO_UPSAMPLE_4X]: this.$t('midjourney.description.redo_upscale_4x'),
         [MidjourneyImagineAction.SQUARE]: this.$t('midjourney.description.square'),
@@ -210,13 +202,13 @@ export default defineComponent({
       });
     },
     channel() {
-      if (this.application?.api_id === API_ID_MIDJOURNEY_FAST) {
-        return MIDJOURNEY_CHANNEL_FAST;
-      } else if (this.application?.api_id === API_ID_MIDJOURNEY_RELAX) {
-        return MIDJOURNEY_CHANNEL_RELAX;
-      } else if (this.application?.api_id === API_ID_MIDJOURNEY_TURBO) {
-        return MIDJOURNEY_CHANNEL_TURBO;
-      }
+      // if (this.application?.api_id === API_ID_MIDJOURNEY_FAST) {
+      //   return MIDJOURNEY_CHANNEL_FAST;
+      // } else if (this.application?.api_id === API_ID_MIDJOURNEY_RELAX) {
+      //   return MIDJOURNEY_CHANNEL_RELAX;
+      // } else if (this.application?.api_id === API_ID_MIDJOURNEY_TURBO) {
+      //   return MIDJOURNEY_CHANNEL_TURBO;
+      // }
       return undefined;
     }
   },

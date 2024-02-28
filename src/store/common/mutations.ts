@@ -1,4 +1,4 @@
-import { IUser } from '@/operators';
+import { IUser } from '@/models';
 import { IRootState } from './models';
 
 export const setUser = (state: IRootState, payload: IUser): void => {

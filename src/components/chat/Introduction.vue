@@ -73,6 +73,7 @@ import { defineComponent } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import IntroductionItem from './IntroductionItem.vue';
 import { ElRow, ElCol } from 'element-plus';
+
 export default defineComponent({
   name: 'ConversationIntroduction',
   components: {

@@ -26,9 +26,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElInput, ElMessage, ElTooltip, ElUpload } from 'element-plus';
+import { ElInput } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { CHAT_MODEL_CHATGPT4_VISION, IChatModel } from '@/operators';
+import { IChatModel } from '@/models';
 
 export default defineComponent({
   name: 'InputBox',

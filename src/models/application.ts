@@ -1,4 +1,4 @@
-import { IApi } from '../api';
+import { IApi } from './api';
 
 export enum IApplicationType {
   API = 'Api'

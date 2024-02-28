@@ -1,4 +1,4 @@
-import { IApi } from '../api';
+import { IApi } from './api';
 
 export interface IApiUsage {
   id?: string;

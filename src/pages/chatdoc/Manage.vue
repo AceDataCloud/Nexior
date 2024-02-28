@@ -14,7 +14,7 @@
             :application="application"
             :need-apply="needApply"
             :api-id="apiId"
-            @refresh="$store.dispatch('chatdoc/getApplications')"
+            @refresh="$store.dispatch('chatdoc/getApplication')"
           />
         </div>
         <div class="operations">
@@ -64,11 +64,10 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Chatdoc.vue';
-import { IApplication, IChatdocRepository } from '@/operators';
+import { IApplication, IChatdocRepository } from '@/models';
 import { ElButton, ElTag, ElTable, ElTableColumn, ElMessage } from 'element-plus';
 import UploadDocument from '@/components/chatdoc/UploadDocument.vue';
-import { Status } from '@/store/common/models';
-import { API_ID_CHATDOC_DOCUMENTS } from '@/operators/chatdoc/constants';
+import { Status } from '@/models';
 import ApiStatus from '@/components/common/ApiStatus.vue';
 
 export default defineComponent({
@@ -96,7 +95,7 @@ export default defineComponent({
       return this.repository?.documents;
     },
     needApply() {
-      return this.$store.state.chatdoc.getApplicationsStatus === Status.Success && !this.application;
+      return this.$store.state.chatdoc.getApplicationStatus === Status.Success && !this.application;
     },
     applications() {
       return this.$store.state.chatdoc.applications;
@@ -105,7 +104,7 @@ export default defineComponent({
       return this.applications?.find((application: IApplication) => application.api?.id === API_ID_CHATDOC_DOCUMENTS);
     },
     initializing() {
-      return this.$store.state.chatdoc.getApplicationsStatus === Status.Request;
+      return this.$store.state.chatdoc.getApplicationStatus === Status.Request;
     },
     apiId() {
       return API_ID_CHATDOC_DOCUMENTS;

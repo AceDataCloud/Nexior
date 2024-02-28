@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
-import { httpClient } from '../instance';
-import { IApiUsageDetailResponse, IApiUsageListResponse } from './models';
+import { httpClient } from './common';
+import { IApiUsageDetailResponse, IApiUsageListResponse } from '@/models';
 
 export interface IApiUsageQuery {
   user_id?: string;

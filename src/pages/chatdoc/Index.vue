@@ -14,7 +14,7 @@
             :application="application"
             :need-apply="needApply"
             :api-id="apiId"
-            @refresh="$store.dispatch('chatdoc/getApplications')"
+            @refresh="$store.dispatch('chatdoc/getApplication')"
           />
         </div>
         <el-row class="repositories" :gutter="15">
@@ -63,12 +63,12 @@
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Chatdoc.vue';
 import { ElCard, ElRow, ElCol, ElDropdown, ElDropdownItem, ElDropdownMenu, ElMessage } from 'element-plus';
-import { IApplication, IChatdocRepository } from '@/operators';
+import { IChatdocRepository } from '@/models';
 import { ROUTE_CHATDOC_MANAGE } from '@/router';
 import CreateRepository from '@/components/chatdoc/CreateRepository.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ApiStatus from '@/components/common/ApiStatus.vue';
-import { Status } from '@/store/common/models';
+import { Status } from '@/models';
 
 export default defineComponent({
   name: 'ChatdocKnowledge',
@@ -92,13 +92,13 @@ export default defineComponent({
       return this.$store.state.chatdoc.repositories;
     },
     needApply() {
-      return this.$store.state.chatdoc.getApplicationsStatus === Status.Success && !this.application;
+      return this.$store.state.chatdoc.getApplicationStatus === Status.Success && !this.application;
     },
     application() {
       return this.$store.state.chatdoc.application;
     },
     initializing() {
-      return this.$store.state.chatdoc.getApplicationsStatus === Status.Request;
+      return this.$store.state.chatdoc.getApplicationStatus === Status.Request;
     }
   },
   async mounted() {},

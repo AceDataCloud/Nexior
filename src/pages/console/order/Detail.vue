@@ -129,7 +129,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IOrder, IOrderDetailResponse, orderOperator, OrderState } from '@/operators/order';
+import { orderOperator } from '@/operators/order';
 import {
   ElRow,
   ElCol,
@@ -143,7 +143,7 @@ import {
 } from 'element-plus';
 import WechatPayOrder from '@/components/order/WechatPay.vue';
 import StripePayOrder from '@/components/order/StripePay.vue';
-import { IApplicationType } from '@/operators';
+import { IApplicationType, IOrder, IOrderDetailResponse, OrderState } from '@/models';
 
 enum PayWay {
   WechatPay = 'WechatPay',

@@ -1,8 +1,7 @@
 import { ActionContext } from 'vuex';
-import { IRootState, IToken } from '../common/models';
-import { IUser, userOperator } from '@/operators';
+import { IRootState } from '../common/models';
+import { userOperator, oauthOperator } from '@/operators';
 import { log } from '@/utils/log';
-import { oauthOperator } from '@/operators/auth/operator';
 
 export const resetAll = ({ commit }: ActionContext<IRootState, IRootState>) => {
   commit('resetToken');
