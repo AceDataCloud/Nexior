@@ -1,21 +1,15 @@
-import { IApplication, IChatConversation, IChatModel } from '@/operators';
+import { IApplication } from '@/operators';
 import { IChatdocState } from './models';
-import { Status } from '../common/models';
 import { IChatdocRepository } from '@/operators/chatdoc/models';
 import { log } from '@/utils';
 
 export const resetAll = (state: IChatdocState): void => {
-  state.applications = [];
-  state.getApplicationsStatus = Status.None;
+  state.application = undefined;
   state.repositories = [];
 };
 
-export const setApplications = (state: IChatdocState, payload: IApplication[]): void => {
-  state.applications = payload;
-};
-
-export const setGetApplicationsStatus = (state: IChatdocState, payload: Status): void => {
-  state.getApplicationsStatus = payload;
+export const setApplication = (state: IChatdocState, payload: IApplication): void => {
+  state.application = payload;
 };
 
 export const setRepositories = (state: IChatdocState, payload: IChatdocRepository[]): void => {
@@ -60,15 +54,9 @@ export const setRepository = (state: IChatdocState, payload: IChatdocRepository)
   };
 };
 
-export const setGetRepositoriesStatus = (state: IChatdocState, payload: Status): void => {
-  state.getRepositoriesStatus = payload;
-};
-
 export default {
-  setApplications,
-  setGetApplicationsStatus,
+  setApplication,
   setRepositories,
   setRepository,
-  setGetRepositoriesStatus,
   resetAll
 };

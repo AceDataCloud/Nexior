@@ -69,7 +69,6 @@ import CreateRepository from '@/components/chatdoc/CreateRepository.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ApiStatus from '@/components/common/ApiStatus.vue';
 import { Status } from '@/store/common/models';
-import { API_ID_CHATDOC_REPOSITORIES } from '@/operators/chatdoc/constants';
 
 export default defineComponent({
   name: 'ChatdocKnowledge',
@@ -89,22 +88,14 @@ export default defineComponent({
     return {};
   },
   computed: {
-    apiId() {
-      return API_ID_CHATDOC_REPOSITORIES;
-    },
     repositories() {
       return this.$store.state.chatdoc.repositories;
     },
     needApply() {
       return this.$store.state.chatdoc.getApplicationsStatus === Status.Success && !this.application;
     },
-    applications() {
-      return this.$store.state.chatdoc.applications;
-    },
     application() {
-      return this.applications?.find(
-        (application: IApplication) => application.api?.id === API_ID_CHATDOC_REPOSITORIES
-      );
+      return this.$store.state.chatdoc.application;
     },
     initializing() {
       return this.$store.state.chatdoc.getApplicationsStatus === Status.Request;

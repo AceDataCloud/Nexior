@@ -43,7 +43,6 @@ import { ROUTE_CONSOLE_APPLICATION_BUY } from '@/router';
 export interface IData {
   confirming: boolean;
   applicationType: typeof IApplicationType;
-  api: IApi | undefined;
 }
 
 export default defineComponent({
@@ -52,10 +51,6 @@ export default defineComponent({
   props: {
     application: {
       type: Object as () => IApplication | undefined,
-      required: true
-    },
-    apiId: {
-      type: String,
       required: true
     },
     initializing: {
@@ -71,8 +66,7 @@ export default defineComponent({
   data(): IData {
     return {
       confirming: this.needApply,
-      applicationType: IApplicationType,
-      api: undefined
+      applicationType: IApplicationType
     };
   },
   computed: {
@@ -88,20 +82,9 @@ export default defineComponent({
       if (val) {
         this.confirming = val;
       }
-    },
-    apiId() {
-      this.onFetchApi();
     }
   },
-  mounted() {
-    this.onFetchApi();
-  },
   methods: {
-    onFetchApi() {
-      apiOperator.get(this.apiId).then(({ data: data }: { data: IApiDetailResponse }) => {
-        this.api = data;
-      });
-    },
     onBuyMore(application: IApplication) {
       this.$router.push({
         name: ROUTE_CONSOLE_APPLICATION_BUY,
@@ -114,7 +97,7 @@ export default defineComponent({
       applicationOperator
         .create({
           type: IApplicationType.API,
-          api_id: this.apiId
+          service_id: this.service?.id
         })
         .then(({ data: data }: { data: IApplicationDetailResponse }) => {
           ElMessage.success(this.$t('application.message.applySuccessfully'));

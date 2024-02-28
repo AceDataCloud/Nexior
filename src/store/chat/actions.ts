@@ -73,6 +73,7 @@ export default {
   resetAll,
   setModel,
   setApplication,
+  getApplication,
   setConversation,
   setConversations,
   getConversations
