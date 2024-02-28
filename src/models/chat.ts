@@ -66,6 +66,7 @@ export interface IChatConversationRequest {
   stateful?: boolean;
   messages?: IChatMessage[];
   action?: IChatConversationAction;
+  model: IChatModelName;
 }
 
 export interface IChatConversationResponse {

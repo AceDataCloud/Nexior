@@ -8,8 +8,9 @@
   </div>
   <div v-else-if="application" class="status">
     <span class="info">
-      {{ $t('common.message.usedCount') }}: {{ application?.used_amount }} {{ $t('common.message.remainingCount') }}:
-      {{ application?.remaining_amount }}
+      {{ $t('common.message.usedAmount') }}: {{ application?.used_amount?.toFixed(6) }}
+      {{ $t('common.message.remainingAmount') }}:
+      {{ application?.remaining_amount?.toFixed(6) }}
     </span>
     <span class="actions">
       <el-button size="small" type="primary" @click="onBuyMore(application)">{{

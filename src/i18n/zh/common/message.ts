@@ -7,6 +7,6 @@ export default {
   startPrice: '起',
   helpWechat: '技术客服微信',
   helpWechat2: '业务客服微信',
-  remainingCount: '剩余次数',
-  usedCount: '使用次数'
+  remainingAmount: '剩余积分',
+  usedAmount: '使用积分'
 };

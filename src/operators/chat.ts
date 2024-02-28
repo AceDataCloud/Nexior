@@ -35,16 +35,20 @@ class ChatOperator {
     });
   }
 
-  async getConversation(id: string | undefined): Promise<AxiosResponse<IChatConversation>> {
+  async getConversation(
+    id: string | undefined,
+    options: IChatConversationOptions
+  ): Promise<AxiosResponse<IChatConversation>> {
     return await axios.post(
-      `/chatgpt/conversations`,
+      `/aichat/conversations`,
       {
         action: IChatConversationAction.RETRIEVE,
         id: id
       },
       {
         headers: {
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          authorization: `Bearer ${options.token}`
         },
         baseURL: BASE_URL_API
       }
@@ -56,9 +60,7 @@ class ChatOperator {
       ids?: string[];
       applicationId?: string;
     },
-    options: {
-      token: string;
-    }
+    options: IChatConversationOptions
   ): Promise<AxiosResponse<IChatConversation[]>> {
     return await axios.post(
       `/aichat/conversations`,
@@ -85,32 +87,37 @@ class ChatOperator {
     );
   }
 
-  async deleteConversation(id: string): Promise<AxiosResponse<IChatConversation>> {
+  async deleteConversation(id: string, options: IChatConversationOptions): Promise<AxiosResponse<IChatConversation>> {
     return await axios.post(
-      `/chatgpt/conversations`,
+      `/aichat/conversations`,
       {
         action: IChatConversationAction.DELETE,
         id: id
       },
       {
         headers: {
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          authorization: `Bearer ${options.token}`
         },
         baseURL: BASE_URL_API
       }
     );
   }
 
-  async updateConversation(payload: IChatConversation): Promise<AxiosResponse<IChatConversation>> {
+  async updateConversation(
+    payload: IChatConversation,
+    options: IChatConversationOptions
+  ): Promise<AxiosResponse<IChatConversation>> {
     return await axios.post(
-      `/chatgpt/conversations`,
+      `/aichat/conversations`,
       {
         action: IChatConversationAction.UPDATE,
         ...payload
       },
       {
         headers: {
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          authorization: `Bearer ${options.token}`
         },
         baseURL: BASE_URL_API
       }

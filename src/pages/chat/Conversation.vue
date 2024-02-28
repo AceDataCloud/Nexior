@@ -186,8 +186,6 @@ export default defineComponent({
     },
     async onFetchAnswer() {
       const token = this.application?.credentials?.[0]?.token;
-      // const endpoint = this.application?.api?.endpoint;
-      // const path = this.application?.api?.path;
       const question = this.question;
       const references = this.references;
       log(this.onFetchAnswer, 'validated', question, references);
@@ -219,6 +217,7 @@ export default defineComponent({
         .chatConversation(
           {
             question,
+            model: this.model.name,
             references,
             id: this.conversationId,
             stateful: true
