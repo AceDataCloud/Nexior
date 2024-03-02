@@ -1,9 +1,9 @@
-import { applicationOperator, chatOperator } from '@/operators';
+import { applicationOperator, chatOperator, serviceOperator } from '@/operators';
 import { IRootState } from '../common/models';
 import { ActionContext } from 'vuex';
 import { log } from '@/utils/log';
 import { IChatState } from './models';
-import { IApplication, IChatConversation, IChatModel, Status } from '@/models';
+import { IApplication, IChatConversation, IChatModel, IService, Status } from '@/models';
 import { CHAT_SERVICE_ID } from '@/constants';
 
 export const resetAll = ({ commit }: ActionContext<IChatState, IRootState>): void => {
@@ -17,6 +17,11 @@ export const setModel = async ({ commit }: any, payload: IChatModel): Promise<vo
 export const setApplication = async ({ commit }: any, payload: IApplication): Promise<void> => {
   log(setApplication, 'set application', payload);
   commit('setApplication', payload);
+};
+
+export const setService = async ({ commit }: any, payload: IService): Promise<void> => {
+  log(setService, 'set service', payload);
+  commit('setService', payload);
 };
 
 export const setConversations = async ({ commit }: any, payload: IChatConversation[]): Promise<void> => {
@@ -35,6 +40,24 @@ export const setConversation = async ({ commit, state }: any, payload: IChatConv
   }
   commit('setConversations', conversations);
   log(setConversation, 'set conversation success', conversations);
+};
+
+export const getService = async ({ commit, state }: ActionContext<IChatState, IRootState>): Promise<IService> => {
+  return new Promise(async (resolve, reject) => {
+    log(getService, 'start to get service for chat');
+    state.status.getService = Status.Request;
+    serviceOperator
+      .get(CHAT_SERVICE_ID)
+      .then((response) => {
+        state.status.getService = Status.Success;
+        commit('setService', response.data);
+        resolve(response.data);
+      })
+      .catch((error) => {
+        state.status.getService = Status.Error;
+        reject(error);
+      });
+  });
 };
 
 export const getApplication = async ({
@@ -98,6 +121,8 @@ export const getConversations = async ({
 export default {
   resetAll,
   setModel,
+  getService,
+  setService,
   setApplication,
   getApplication,
   setConversation,

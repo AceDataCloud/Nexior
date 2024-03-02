@@ -9,11 +9,11 @@
           {{ $t('chatdoc.message.introductionForKnowledge') }}
         </div>
         <div class="status">
-          <api-status
+          <application-status
             :initializing="initializing"
             :application="application"
             :need-apply="needApply"
-            :api-id="apiId"
+            :service="service"
             @refresh="$store.dispatch('chatdoc/getApplication')"
           />
         </div>
@@ -68,7 +68,7 @@ import { IApplication, IChatdocRepository } from '@/models';
 import { ElButton, ElTag, ElTable, ElTableColumn, ElMessage } from 'element-plus';
 import UploadDocument from '@/components/chatdoc/UploadDocument.vue';
 import { Status } from '@/models';
-import ApiStatus from '@/components/common/ApiStatus.vue';
+import ApplicationStatus from '@/components/application/Status.vue';
 
 export default defineComponent({
   name: 'ChatdocKnowledge',
@@ -77,7 +77,7 @@ export default defineComponent({
     ElButton,
     ElTable,
     ElTag,
-    ApiStatus,
+    ApplicationStatus,
     ElTableColumn,
     UploadDocument
   },
@@ -96,6 +96,9 @@ export default defineComponent({
     },
     needApply() {
       return this.$store.state.chatdoc.getApplicationStatus === Status.Success && !this.application;
+    },
+    service() {
+      return this.$store.state.chatdoc.service;
     },
     applications() {
       return this.$store.state.chatdoc.applications;

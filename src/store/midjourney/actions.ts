@@ -1,9 +1,9 @@
-import { applicationOperator, midjourneyOperator } from '@/operators';
+import { applicationOperator, midjourneyOperator, serviceOperator } from '@/operators';
 import { IMidjourneyState } from './models';
 import { ActionContext } from 'vuex';
 import { log } from '@/utils/log';
 import { IRootState } from '../common/models';
-import { IApplication, IMidjourneyImagineTask, IMidjourneyMode, IMidjourneyPreset } from '@/models';
+import { IApplication, IMidjourneyImagineTask, IMidjourneyMode, IMidjourneyPreset, IService } from '@/models';
 import { Status } from '@/models/common';
 import { MIDJOURNEY_SERVICE_ID } from '@/constants';
 
@@ -19,8 +19,13 @@ export const setMode = ({ commit }: any, payload: IMidjourneyMode) => {
   commit('setMode', payload);
 };
 
-export const setApplications = ({ commit }: any, payload: IApplication[]) => {
-  commit('setApplications', payload);
+export const setService = async ({ commit }: any, payload: IService): Promise<void> => {
+  log(setService, 'set service', payload);
+  commit('setService', payload);
+};
+
+export const setApplication = ({ commit }: any, payload: IApplication[]) => {
+  commit('setApplication', payload);
 };
 
 export const getApplication = async ({
@@ -42,6 +47,24 @@ export const setImagineTasks = ({ commit }: any, payload: IMidjourneyImagineTask
   commit('setImagineTasks', payload);
 };
 
+export const getService = async ({ commit, state }: ActionContext<IMidjourneyState, IRootState>): Promise<IService> => {
+  return new Promise(async (resolve, reject) => {
+    log(getService, 'start to get service for midjourney');
+    state.status.getService = Status.Request;
+    serviceOperator
+      .get(MIDJOURNEY_SERVICE_ID)
+      .then((response) => {
+        state.status.getService = Status.Success;
+        commit('setService', response.data);
+        resolve(response.data);
+      })
+      .catch((error) => {
+        state.status.getService = Status.Error;
+        reject(error);
+      });
+  });
+};
+
 export const getImagineTasks = async (
   { commit, state, rootState }: ActionContext<IMidjourneyState, IRootState>,
   { offset, limit }: { offset?: number; limit?: number }
@@ -59,10 +82,13 @@ export const getImagineTasks = async (
 };
 
 export default {
+  setService,
+  getService,
   resetAll,
   setPreset,
   setMode,
-  setApplications,
+  setApplication,
+  getApplication,
   setImagineTasks,
   getImagineTasks
 };

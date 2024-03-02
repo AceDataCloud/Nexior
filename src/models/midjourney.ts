@@ -53,8 +53,15 @@ export enum MidjourneyImagineState {
   FAILED = 'failed'
 }
 
+export enum MidjourneyImagineMode {
+  FAST = 'fast',
+  RELAX = 'relax',
+  TURBO = 'turbo'
+}
+
 export interface IMidjourneyImagineRequest {
   action?: MidjourneyImagineAction;
+  mode?: MidjourneyImagineMode;
   prompt?: string;
   image_id?: string;
   translation?: boolean;

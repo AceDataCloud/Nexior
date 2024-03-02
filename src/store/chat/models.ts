@@ -6,6 +6,7 @@ export interface IChatState {
   service: IService | undefined;
   conversations: IChatConversation[] | undefined;
   status: {
+    getService: Status;
     getApplication: Status;
     getConversations: Status;
   };

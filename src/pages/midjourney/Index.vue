@@ -81,6 +81,9 @@ export default defineComponent({
     };
   },
   computed: {
+    service() {
+      return this.$store.state.midjourney.service;
+    },
     mode() {
       return this.$store.state.midjourney.mode;
     },
@@ -88,19 +91,13 @@ export default defineComponent({
       return this.$store.state.midjourney.preset;
     },
     initializing() {
-      return this.$store.state.midjourney.getApplicationStatus === Status.Request;
-    },
-    applications() {
-      return this.$store.state.midjourney.applications;
+      return this.$store.state.midjourney.status.getApplication === Status.Request;
     },
     needApply() {
-      return this.$store.state.midjourney.getApplicationStatus === Status.Success && !this.application;
+      return this.$store.state.midjourney.status.getApplication === Status.Success && !this.application;
     },
     application() {
-      if (this.applications && this.applications.length > 0) {
-        return this.applications.filter((item: IApplication) => item.api_id === this.channel.apiId)[0];
-      }
-      return undefined;
+      return this.$store.state.midjourney.application;
     },
     finalPrompt(): string {
       let content = '';
@@ -170,10 +167,8 @@ export default defineComponent({
       await this.$store.dispatch('midjourney/getApplication');
     },
     async onStartTask(request: IMidjourneyImagineRequest) {
-      const token = this.application?.credential?.token;
-      const endpoint = this.application?.api?.endpoint;
-      const path = this.application?.api?.path;
-      if (!token || !endpoint || !path) {
+      const token = this.application?.credentials?.[0]?.token;
+      if (!token) {
         console.error('no token or endpoint or question');
         return;
       }

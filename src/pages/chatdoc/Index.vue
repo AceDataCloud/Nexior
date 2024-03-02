@@ -9,11 +9,11 @@
           {{ $t('chatdoc.message.introductionForRepository') }}
         </div>
         <div class="status">
-          <api-status
+          <application-status
             :initializing="initializing"
             :application="application"
             :need-apply="needApply"
-            :api-id="apiId"
+            :service="service"
             @refresh="$store.dispatch('chatdoc/getApplication')"
           />
         </div>
@@ -67,7 +67,7 @@ import { IChatdocRepository } from '@/models';
 import { ROUTE_CHATDOC_MANAGE } from '@/router';
 import CreateRepository from '@/components/chatdoc/CreateRepository.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import ApiStatus from '@/components/common/ApiStatus.vue';
+import ApplicationStatus from '@/components/application/Status.vue';
 import { Status } from '@/models';
 
 export default defineComponent({
@@ -82,7 +82,7 @@ export default defineComponent({
     ElDropdown,
     ElDropdownItem,
     ElDropdownMenu,
-    ApiStatus
+    ApplicationStatus
   },
   data() {
     return {};
@@ -96,6 +96,9 @@ export default defineComponent({
     },
     application() {
       return this.$store.state.chatdoc.application;
+    },
+    service() {
+      return this.$store.state.chatdoc.service;
     },
     initializing() {
       return this.$store.state.chatdoc.getApplicationStatus === Status.Request;

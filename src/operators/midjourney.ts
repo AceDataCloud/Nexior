@@ -1,9 +1,9 @@
-import axios, { AxiosProgressEvent, AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { IMidjourneyImagineRequest, IMidjourneyImagineResponse, IMidjourneyImagineTask } from '@/models';
 import { BASE_URL_API } from '@/constants';
 
 class MidjourneyOperator {
-  async task(id: string): Promise<AxiosResponse<IMidjourneyImagineTask>> {
+  async task(id: string, options: { token: string }): Promise<AxiosResponse<IMidjourneyImagineTask>> {
     return await axios.post(
       `/midjourney/tasks`,
       {
@@ -13,14 +13,18 @@ class MidjourneyOperator {
       {
         headers: {
           accept: 'application/json',
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          authorization: `Bearer ${options.token}`
         },
         baseURL: BASE_URL_API
       }
     );
   }
 
-  async tasks(filter: { ids?: string[]; applicationId?: string }): Promise<AxiosResponse<IMidjourneyImagineTask[]>> {
+  async tasks(
+    filter: { ids?: string[]; applicationId?: string; limit?: number; offset?: number },
+    options: { token: string }
+  ): Promise<AxiosResponse<IMidjourneyImagineTask[]>> {
     return await axios.post(
       `/midjourney/tasks`,
       {
@@ -34,12 +38,23 @@ class MidjourneyOperator {
           ? {
               application_id: filter.applicationId
             }
+          : {}),
+        ...(filter.limit !== undefined
+          ? {
+              limit: filter.limit
+            }
+          : {}),
+        ...(filter.offset !== undefined
+          ? {
+              offset: filter.offset
+            }
           : {})
       },
       {
         headers: {
           accept: 'application/json',
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          authorization: `Bearer ${options.token}`
         },
         baseURL: BASE_URL_API
       }
@@ -49,31 +64,15 @@ class MidjourneyOperator {
   async imagine(
     data: IMidjourneyImagineRequest,
     options: {
-      stream?: (response: IMidjourneyImagineResponse) => void;
       token: string;
-      endpoint: string;
-      path: string;
     }
   ): Promise<AxiosResponse<IMidjourneyImagineResponse>> {
-    return await axios.post(options.path, data, {
+    return await axios.post('/midjourney/imagine', data, {
       headers: {
         authorization: `Bearer ${options.token}`,
-        accept: 'application/x-ndjson',
         'content-type': 'application/json'
       },
-      baseURL: options.endpoint,
-      responseType: 'stream',
-      onDownloadProgress: ({ event }: AxiosProgressEvent) => {
-        const response = event.target.response;
-        const lines = response.split('\r\n').filter((line: string) => !!line);
-        const lastLine = lines[lines.length - 1];
-        if (lastLine) {
-          const jsonData = JSON.parse(lastLine);
-          if (options?.stream) {
-            options?.stream(jsonData as IMidjourneyImagineResponse);
-          }
-        }
-      }
+      baseURL: BASE_URL_API
     });
   }
 }

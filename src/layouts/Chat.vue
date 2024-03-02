@@ -37,10 +37,14 @@ export default defineComponent({
     };
   },
   async mounted() {
+    await this.onGetService();
     await this.onGetApplication();
     await this.onGetConversations();
   },
   methods: {
+    async onGetService() {
+      await this.$store.dispatch('chat/getService');
+    },
     async onGetApplication() {
       await this.$store.dispatch('chat/getApplication');
     },
