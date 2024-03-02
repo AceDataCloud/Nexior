@@ -5,11 +5,11 @@
         <conversations class="side" />
         <div class="chat">
           <div class="status">
-            <api-status
+            <application-status
               :initializing="initializing"
               :application="application"
               :need-apply="needApply"
-              :api-id="apiId"
+              :service="service"
               @refresh="$store.dispatch('chatdoc/getApplication')"
             />
           </div>
@@ -56,7 +56,7 @@ import { ROUTE_CHATDOC_CONVERSATION } from '@/router';
 import axios from 'axios';
 import { isJSONString } from '@/utils/is';
 import { Status } from '@/models';
-import ApiStatus from '@/components/common/ApiStatus.vue';
+import ApplicationStatus from '@/components/application/Status.vue';
 import {
   IApplication,
   IChatdocChatResponse,
@@ -72,7 +72,7 @@ export default defineComponent({
     Conversations,
     Message,
     InputBox,
-    ApiStatus
+    ApplicationStatus
   },
   data() {
     return {
@@ -106,19 +106,16 @@ export default defineComponent({
       return this.$route.params.conversationId?.toString();
     },
     application() {
-      return this.applications?.find((application: IApplication) => application.api?.id === API_ID_CHATDOC_CHAT);
-    },
-    applications() {
-      return this.$store.state.chatdoc.applications;
+      return this.$store.state.chatdoc.application;
     },
     needApply() {
-      return this.$store.state.chatdoc.getApplicationStatus === Status.Success && !this.application;
+      return this.$store.state.chatdoc.status.getApplication === Status.Success && !this.application;
     },
     initializing() {
-      return this.$store.state.chatdoc.getApplicationStatus === Status.Request;
+      return this.$store.state.chatdoc.status.getApplication === Status.Request;
     },
-    apiId() {
-      return API_ID_CHATDOC_CHAT;
+    service() {
+      return this.$store.state.chatdoc.service;
     }
   },
   async mounted() {

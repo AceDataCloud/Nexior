@@ -1,12 +1,12 @@
 <template>
   <div class="history">
     <mode-selector class="mb-4" />
-    <api-status
+    <application-status
       :initializing="initializing"
       :application="application"
       :need-apply="needApply"
       class="mb-4"
-      :api-id="channel.apiId"
+      :service="service"
       @refresh="onGetApplications"
     />
     <task-full-list @custom="onCustom" />
@@ -21,7 +21,7 @@
 import { defineComponent } from 'vue';
 import { ElMessage, ElButton } from 'element-plus';
 import ModeSelector from '@/components/midjourney/ModeSelector.vue';
-import ApiStatus from '@/components/common/ApiStatus.vue';
+import ApplicationStatus from '@/components/application/Status.vue';
 import { midjourneyOperator } from '@/operators';
 import TaskFullList from '@/components/midjourney/tasks/TaskFullList.vue';
 import { ROUTE_MIDJOURNEY_INDEX } from '@/router';
@@ -42,7 +42,7 @@ export default defineComponent({
   components: {
     TaskFullList,
     ModeSelector,
-    ApiStatus,
+    ApplicationStatus,
     ElButton,
     FontAwesomeIcon
   },
@@ -54,23 +54,20 @@ export default defineComponent({
     };
   },
   computed: {
-    channel() {
-      return this.$store.state.midjourney.channel;
+    mode() {
+      return this.$store.state.midjourney.mode;
     },
-    applications() {
-      return this.$store.state.midjourney.applications;
-    },
-    initializing() {
-      return this.$store.state.midjourney.getApplicationStatus === Status.Request;
-    },
-    needApply() {
-      return this.$store.state.midjourney.getApplicationStatus === Status.Success && !this.application;
+    service() {
+      return this.$store.state.midjourney.service;
     },
     application() {
-      if (this.applications && this.applications.length > 0) {
-        return this.applications.filter((item: IApplication) => item.api_id === this.channel.apiId)[0];
-      }
-      return undefined;
+      return this.$store.state.midjourney.application;
+    },
+    initializing() {
+      return this.$store.state.midjourney.status.getApplication === Status.Request;
+    },
+    needApply() {
+      return this.$store.state.midjourney.status.getApplication === Status.Success && !this.application;
     }
   },
   async mounted() {
