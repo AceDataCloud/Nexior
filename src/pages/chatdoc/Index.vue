@@ -92,7 +92,7 @@ export default defineComponent({
       return this.$store.state.chatdoc.repositories;
     },
     needApply() {
-      return this.$store.state.chatdoc.getApplicationStatus === Status.Success && !this.application;
+      return this.$store.state.chatdoc.status.getApplication === Status.Success && !this.application;
     },
     application() {
       return this.$store.state.chatdoc.application;
@@ -101,7 +101,7 @@ export default defineComponent({
       return this.$store.state.chatdoc.service;
     },
     initializing() {
-      return this.$store.state.chatdoc.getApplicationStatus === Status.Request;
+      return this.$store.state.chatdoc.status.getApplication === Status.Request;
     }
   },
   async mounted() {},

@@ -7,6 +7,6 @@ export interface IChatdocState {
   status: {
     getService: Status;
     getApplication: Status;
-    getConversations: Status;
+    getRepositories: Status;
   };
 }

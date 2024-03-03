@@ -5,10 +5,10 @@
     </template>
     <template #operation>
       <mode-selector class="mb-4" />
-      <api-status
+      <application-status
         :initializing="initializing"
         :application="application"
-        :api-id="channel.apiId"
+        :service="service"
         :need-apply="needApply"
         class="mb-4"
         @refresh="onGetApplications"
@@ -41,7 +41,7 @@ import { ElButton, ElMessage } from 'element-plus';
 import ModeSelector from '@/components/midjourney/ModeSelector.vue';
 import ReferenceImage from '@/components/midjourney/ReferenceImage.vue';
 import { applicationOperator, midjourneyOperator } from '@/operators';
-import ApiStatus from '@/components/common/ApiStatus.vue';
+import ApplicationStatus from '@/components/application/Status.vue';
 import TaskBriefList from '@/components/midjourney/tasks/TaskBriefList.vue';
 import FinalPrompt from '@/components/midjourney/FinalPrompt.vue';
 import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
@@ -67,7 +67,7 @@ export default defineComponent({
     ElementsSelector,
     IgnoreSelector,
     ElButton,
-    ApiStatus,
+    ApplicationStatus,
     TaskBriefList,
     FinalPrompt,
     Layout
@@ -174,9 +174,7 @@ export default defineComponent({
       }
       midjourneyOperator
         .imagine(request, {
-          token,
-          endpoint,
-          path
+          token
         })
         .then(() => {
           ElMessage.success(this.$t('midjourney.message.startTaskSuccess'));

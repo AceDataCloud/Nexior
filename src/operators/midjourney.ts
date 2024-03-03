@@ -70,7 +70,8 @@ class MidjourneyOperator {
     return await axios.post('/midjourney/imagine', data, {
       headers: {
         authorization: `Bearer ${options.token}`,
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        accept: 'application/json'
       },
       baseURL: BASE_URL_API
     });

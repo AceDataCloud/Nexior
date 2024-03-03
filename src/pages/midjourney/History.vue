@@ -83,18 +83,14 @@ export default defineComponent({
       await this.$store.dispatch('midjourney/getApplication');
     },
     async onStartTask(request: IMidjourneyImagineRequest) {
-      const token = this.application?.credential?.token;
-      const endpoint = this.application?.api?.endpoint;
-      const path = this.application?.api?.path;
-      if (!token || !endpoint || !path) {
-        console.error('no token or endpoint or question');
+      const token = this.application?.credentials?.[0]?.token;
+      if (!token) {
+        console.error('no token found');
         return;
       }
       midjourneyOperator
         .imagine(request, {
-          token,
-          endpoint,
-          path
+          token
         })
         .then(() => {
           ElMessage.success(this.$t('midjourney.message.startTaskSuccess'));

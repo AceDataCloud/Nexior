@@ -1,10 +1,14 @@
-import { IApplication, IChatdocRepository } from '@/models';
+import { IApplication, IChatdocRepository, IService } from '@/models';
 import { IChatdocState } from './models';
 import { log } from '@/utils';
 
 export const resetAll = (state: IChatdocState): void => {
   state.application = undefined;
   state.repositories = [];
+};
+
+export const setService = (state: IChatdocState, payload: IService): void => {
+  state.service = payload;
 };
 
 export const setApplication = (state: IChatdocState, payload: IApplication): void => {
@@ -54,6 +58,7 @@ export const setRepository = (state: IChatdocState, payload: IChatdocRepository)
 };
 
 export default {
+  setService,
   setApplication,
   setRepositories,
   setRepository,

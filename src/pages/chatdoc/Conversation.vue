@@ -57,13 +57,7 @@ import axios from 'axios';
 import { isJSONString } from '@/utils/is';
 import { Status } from '@/models';
 import ApplicationStatus from '@/components/application/Status.vue';
-import {
-  IApplication,
-  IChatdocChatResponse,
-  IChatdocConversation,
-  IChatdocMessageState,
-  IChatdocRepository
-} from '@/models';
+import { IChatdocChatResponse, IChatdocConversation, IChatdocMessageState, IChatdocRepository } from '@/models';
 
 export default defineComponent({
   name: 'ChatdocChat',
@@ -80,7 +74,6 @@ export default defineComponent({
       repositoryId: this.$route.params.repositoryId.toString(),
       answering: false,
       question: ''
-      // references: []
     };
   },
   computed: {
@@ -149,14 +142,12 @@ export default defineComponent({
       }, 0);
     },
     async onFetchAnswer() {
-      const token = this.application?.credential?.token;
-      const endpoint = this.application?.api?.endpoint;
-      const path = this.application?.api?.path;
+      const token = this.application?.credentials?.[0]?.token;
       const question = this.question;
       log(this.onFetchAnswer, 'validated', question);
       // reset question and references
       this.question = '';
-      if (!token || !endpoint || !question || !path) {
+      if (!token || !question) {
         console.error('no token or endpoint or question');
         this.messages.push({
           error: {

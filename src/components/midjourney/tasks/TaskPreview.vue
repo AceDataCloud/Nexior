@@ -13,9 +13,9 @@
         </el-tag>
       </div>
       <div class="right">
-        <el-tag v-if="channel" type="info" class="channel">
-          <font-awesome-icon :class="{ icon: true, [channel.name]: true }" :icon="channel?.icon" />
-          {{ channel?.displayName }}
+        <el-tag v-if="mode" type="info" class="channel">
+          <font-awesome-icon :class="{ icon: true, [mode.name]: true }" :icon="mode?.icon" />
+          {{ mode?.displayName }}
         </el-tag>
       </div>
     </div>
@@ -103,7 +103,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElImage, ElTag, ElButton, ElTooltip, ElSkeleton, ElAlert } from 'element-plus';
-import { IApplication, IMidjourneyImagineTask, MidjourneyImagineAction, MidjourneyImagineState } from '@/models';
+import { IMidjourneyImagineTask, MidjourneyImagineAction, MidjourneyImagineState } from '@/models';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 
@@ -130,10 +130,6 @@ export default defineComponent({
       type: Object as () => IMidjourneyImagineTask | undefined,
       required: true
     },
-    applications: {
-      type: Object as () => IApplication[] | undefined,
-      required: true
-    },
     full: {
       type: Boolean,
       default: false
@@ -153,14 +149,16 @@ export default defineComponent({
         [MidjourneyImagineAction.VARIATION2]: 'V2',
         [MidjourneyImagineAction.VARIATION3]: 'V3',
         [MidjourneyImagineAction.VARIATION4]: 'V4',
-        [MidjourneyImagineAction.HIGH_VARIATION]: 'Vary (Strong)',
-        [MidjourneyImagineAction.LOW_VARIATION]: 'Vary (Subtle)',
+        [MidjourneyImagineAction.VARIATION_STRONG]: 'Vary (Strong)',
+        [MidjourneyImagineAction.VARIATION_SUBTLE]: 'Vary (Subtle)',
+        [MidjourneyImagineAction.UPSCALE_CREATIVE]: 'Upscale (Creative)',
+        [MidjourneyImagineAction.UPSCALE_SUBTLE]: 'Upscale (Subtle)',
         [MidjourneyImagineAction.ZOOM_OUT_2X]: 'Zoom Out 2x',
         [MidjourneyImagineAction.ZOOM_OUT_1_5X]: 'Zoom Out 1.5x',
-        [MidjourneyImagineAction.UPSCALE4_2x]: 'Upsample 2x',
-        [MidjourneyImagineAction.UPSAMPLE_4X]: 'Upsample 4x',
-        [MidjourneyImagineAction.REDO_UPSCALE_2X]: 'Redo Upsample 2x',
-        [MidjourneyImagineAction.REDO_UPSAMPLE_4X]: 'Redo Upsample 4x',
+        [MidjourneyImagineAction.UPSCALE_2X]: 'Upscale 2x',
+        [MidjourneyImagineAction.UPSCALE_4X]: 'Upscale 4x',
+        [MidjourneyImagineAction.REDO_UPSCALE_2X]: 'Redo Upscale 2x',
+        [MidjourneyImagineAction.REDO_UPSCALE_4X]: 'Redo Upscale 4x',
         [MidjourneyImagineAction.SQUARE]: 'Make Square',
         [MidjourneyImagineAction.PAN_LEFT]: '⬅️',
         [MidjourneyImagineAction.PAN_UP]: '⬆️',
@@ -182,10 +180,12 @@ export default defineComponent({
         [MidjourneyImagineAction.VARIATION_SUBTLE]: this.$t('midjourney.description.variation_subtle'),
         [MidjourneyImagineAction.ZOOM_OUT_2X]: this.$t('midjourney.description.zoom_out_2x'),
         [MidjourneyImagineAction.ZOOM_OUT_1_5X]: this.$t('midjourney.description.zoom_out_1_5x'),
-        [MidjourneyImagineAction.UPSCALE_2x]: this.$t('midjourney.description.upscale_2x'),
+        [MidjourneyImagineAction.UPSCALE_2X]: this.$t('midjourney.description.upscale_2x'),
         [MidjourneyImagineAction.UPSCALE_4X]: this.$t('midjourney.description.upscale_4x'),
+        [MidjourneyImagineAction.UPSCALE_SUBTLE]: this.$t('midjourney.description.upscale_subtle'),
+        [MidjourneyImagineAction.UPSCALE_CREATIVE]: this.$t('midjourney.description.upscale_creative'),
         [MidjourneyImagineAction.REDO_UPSCALE_2X]: this.$t('midjourney.description.redo_upscale_2x'),
-        [MidjourneyImagineAction.REDO_UPSAMPLE_4X]: this.$t('midjourney.description.redo_upscale_4x'),
+        [MidjourneyImagineAction.REDO_UPSCALE_4X]: this.$t('midjourney.description.redo_upscale_4x'),
         [MidjourneyImagineAction.SQUARE]: this.$t('midjourney.description.square'),
         [MidjourneyImagineAction.PAN_LEFT]: this.$t('midjourney.description.pan_left'),
         [MidjourneyImagineAction.PAN_UP]: this.$t('midjourney.description.pan_up'),
@@ -197,19 +197,10 @@ export default defineComponent({
   },
   computed: {
     application() {
-      return this.applications?.find((application) => {
-        return application.id === this.modelValue?.request?.application_id;
-      });
+      return this.$store.state.midjourney.application;
     },
-    channel() {
-      // if (this.application?.api_id === API_ID_MIDJOURNEY_FAST) {
-      //   return MIDJOURNEY_CHANNEL_FAST;
-      // } else if (this.application?.api_id === API_ID_MIDJOURNEY_RELAX) {
-      //   return MIDJOURNEY_CHANNEL_RELAX;
-      // } else if (this.application?.api_id === API_ID_MIDJOURNEY_TURBO) {
-      //   return MIDJOURNEY_CHANNEL_TURBO;
-      // }
-      return undefined;
+    mode() {
+      return this.$store.state.midjourney.mode;
     }
   },
   methods: {

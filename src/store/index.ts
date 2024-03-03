@@ -12,9 +12,9 @@ import persistRoot from './common/persist';
 const store = createStore({
   ...root,
   modules: {
-    midjourney,
-    chat,
-    chatdoc
+    midjourney: midjourney,
+    chat: chat,
+    chatdoc: chatdoc
   },
   plugins: [
     createPersistedState({

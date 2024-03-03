@@ -30,17 +30,27 @@ export const setApplication = ({ commit }: any, payload: IApplication[]) => {
 
 export const getApplication = async ({
   commit,
+  state,
   rootState
 }: ActionContext<IMidjourneyState, IRootState>): Promise<IApplication> => {
   log(getApplication, 'start to get application for midjourney');
-  commit('setGetApplicationsStatus', Status.Request);
-  const { data: applications } = await applicationOperator.getAll({
-    user_id: rootState.user.id,
-    service_id: MIDJOURNEY_SERVICE_ID
+  return new Promise(async (resolve, reject) => {
+    state.status.getApplication = Status.Request;
+    applicationOperator
+      .getAll({
+        user_id: rootState.user.id,
+        service_id: MIDJOURNEY_SERVICE_ID
+      })
+      .then((response) => {
+        state.status.getApplication = Status.Success;
+        commit('setApplication', response.data.items[0]);
+        resolve(response.data.items[0]);
+      })
+      .catch((error) => {
+        state.status.getApplication = Status.Error;
+        reject(error);
+      });
   });
-  log(getApplication, 'get application for midjourney success', applications);
-  commit('setApplication', applications?.items?.[0]);
-  return applications.items?.[0];
 };
 
 export const setImagineTasks = ({ commit }: any, payload: IMidjourneyImagineTask[]) => {
@@ -66,19 +76,33 @@ export const getService = async ({ commit, state }: ActionContext<IMidjourneySta
 };
 
 export const getImagineTasks = async (
-  { commit, state, rootState }: ActionContext<IMidjourneyState, IRootState>,
+  { commit, state }: ActionContext<IMidjourneyState, IRootState>,
   { offset, limit }: { offset?: number; limit?: number }
 ): Promise<IMidjourneyImagineTask[]> => {
-  log(getImagineTasks, 'start to get imagine tasks', offset, limit);
-  commit('setGetImagineTasksStatus', Status.Request);
-  const { data: tasks } = (
-    await midjourneyOperator.tasks({
-      applicationId: state.application?.id
-    })
-  ).data;
-  // commit('setImagineTasksTotal', count);
-  commit('setImagineTasks', tasks);
-  return tasks;
+  return new Promise(async (resolve, reject) => {
+    log(getImagineTasks, 'start to get imagine tasks', offset, limit);
+    const application = state.application;
+    const token = application?.credentials?.[0]?.token;
+    if (!token) {
+      return reject('no token');
+    }
+    midjourneyOperator
+      .tasks(
+        {
+          applicationId: state.application?.id
+        },
+        {
+          token
+        }
+      )
+      .then((response) => {
+        commit('setImagineTasks', response.data);
+        resolve(response.data);
+      })
+      .catch((error) => {
+        return reject(error);
+      });
+  });
 };
 
 export default {
