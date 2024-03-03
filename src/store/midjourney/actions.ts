@@ -96,8 +96,8 @@ export const getImagineTasks = async (
         }
       )
       .then((response) => {
-        commit('setImagineTasks', response.data);
-        resolve(response.data);
+        commit('setImagineTasks', response.data.items);
+        resolve(response.data.items);
       })
       .catch((error) => {
         return reject(error);

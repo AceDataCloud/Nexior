@@ -10,5 +10,6 @@ export interface IMidjourneyState {
   status: {
     getService: Status;
     getApplication: Status;
+    getImagineTasks: Status;
   };
 }

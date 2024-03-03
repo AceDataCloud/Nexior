@@ -108,9 +108,9 @@ export const getConversations = async ({
         }
       )
       .then((response) => {
-        log(getConversations, 'get conversations success', response.data);
-        commit('setConversations', response.data);
-        resolve(response.data);
+        log(getConversations, 'get conversations success', response.data?.items);
+        commit('setConversations', response.data.items);
+        resolve(response.data.items);
       })
       .catch((error) => {
         reject(error);

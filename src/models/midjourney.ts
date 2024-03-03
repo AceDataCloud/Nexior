@@ -90,6 +90,13 @@ export interface IMidjourneyImagineTask {
   state?: MidjourneyImagineState;
 }
 
+export type IMidjourneyImagineTaskResponse = IMidjourneyImagineTask;
+
+export interface IMidjourneyImagineTasksResponse {
+  items: IMidjourneyImagineTask[];
+  count: number;
+}
+
 export interface IMidjourneyImagineOptions {
   stream?: (response: IMidjourneyImagineResponse) => void;
   token?: string;

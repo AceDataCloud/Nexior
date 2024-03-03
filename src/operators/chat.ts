@@ -4,7 +4,8 @@ import {
   IChatConversationAction,
   IChatConversationOptions,
   IChatConversationRequest,
-  IChatConversationResponse
+  IChatConversationResponse,
+  IChatConversationsResponse
 } from '@/models';
 import { BASE_URL_API } from '@/constants';
 
@@ -61,7 +62,7 @@ class ChatOperator {
       applicationId?: string;
     },
     options: IChatConversationOptions
-  ): Promise<AxiosResponse<IChatConversation[]>> {
+  ): Promise<AxiosResponse<IChatConversationsResponse>> {
     return await axios.post(
       `/aichat/conversations`,
       {

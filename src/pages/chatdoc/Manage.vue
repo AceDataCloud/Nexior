@@ -95,22 +95,16 @@ export default defineComponent({
       return this.repository?.documents;
     },
     needApply() {
-      return this.$store.state.chatdoc.getApplicationStatus === Status.Success && !this.application;
+      return this.$store.state.chatdoc.status.getApplication === Status.Success && !this.application;
     },
     service() {
       return this.$store.state.chatdoc.service;
     },
-    applications() {
-      return this.$store.state.chatdoc.applications;
-    },
     application() {
-      return this.applications?.find((application: IApplication) => application.api?.id === API_ID_CHATDOC_DOCUMENTS);
+      return this.$store.state.chatdoc.application;
     },
     initializing() {
-      return this.$store.state.chatdoc.getApplicationStatus === Status.Request;
-    },
-    apiId() {
-      return API_ID_CHATDOC_DOCUMENTS;
+      return this.$store.state.chatdoc.status.getApplication === Status.Request;
     }
   },
   async mounted() {

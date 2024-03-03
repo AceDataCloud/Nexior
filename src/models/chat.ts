@@ -75,6 +75,11 @@ export interface IChatConversationResponse {
   id?: string;
 }
 
+export interface IChatConversationsResponse {
+  items: IChatConversation[];
+  count: number;
+}
+
 export enum IChatConversationAction {
   CHAT = 'chat',
   RETRIEVE = 'retrieve',
