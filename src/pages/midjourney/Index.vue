@@ -25,7 +25,7 @@
       </div>
     </template>
     <template #results>
-      <task-brief-list :applications="applications" @custom="onCustom" />
+      <task-brief-list @custom="onCustom" />
     </template>
   </layout>
 </template>
@@ -169,7 +169,7 @@ export default defineComponent({
     async onStartTask(request: IMidjourneyImagineRequest) {
       const token = this.application?.credentials?.[0]?.token;
       if (!token) {
-        console.error('no token or endpoint or question');
+        console.error('no token specified');
         return;
       }
       midjourneyOperator

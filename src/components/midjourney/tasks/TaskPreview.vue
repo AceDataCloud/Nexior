@@ -14,7 +14,7 @@
       </div>
       <div class="right">
         <el-tag v-if="mode" type="info" class="channel">
-          <font-awesome-icon :class="{ icon: true, [mode.name]: true }" :icon="mode?.icon" />
+          <font-awesome-icon :class="{ icon: true, [mode.name]: true }" :icon="mode.icon" />
           {{ mode?.displayName }}
         </el-tag>
       </div>
@@ -56,7 +56,6 @@
         </p>
       </el-alert>
     </div>
-
     <div v-else :class="{ content: true, full: full }">
       <el-image
         v-if="modelValue?.response?.image_url"
@@ -103,9 +102,15 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElImage, ElTag, ElButton, ElTooltip, ElSkeleton, ElAlert } from 'element-plus';
-import { IMidjourneyImagineTask, MidjourneyImagineAction, MidjourneyImagineState } from '@/models';
+import {
+  IMidjourneyImagineTask,
+  MidjourneyImagineAction,
+  MidjourneyImagineMode,
+  MidjourneyImagineState
+} from '@/models';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
+import { MIDJOURNEY_MODE_FAST, MIDJOURNEY_MODE_RELAX, MIDJOURNEY_MODE_TURBO } from '@/constants';
 
 interface IData {
   midjourneyImagineState: typeof MidjourneyImagineState;
@@ -200,7 +205,16 @@ export default defineComponent({
       return this.$store.state.midjourney.application;
     },
     mode() {
-      return this.$store.state.midjourney.mode;
+      switch (this.modelValue?.mode) {
+        case MidjourneyImagineMode.FAST:
+          return MIDJOURNEY_MODE_FAST;
+        case MidjourneyImagineMode.TURBO:
+          return MIDJOURNEY_MODE_TURBO;
+        case MidjourneyImagineMode.RELAX:
+          return MIDJOURNEY_MODE_RELAX;
+        default:
+          return undefined;
+      }
     }
   },
   methods: {
@@ -216,6 +230,16 @@ export default defineComponent({
       link.href = url;
       link.download = url.split('/').pop() as string;
       link.click();
+    },
+    getModeIcon(mode: MidjourneyImagineMode): string | undefined {
+      switch (mode) {
+        case MidjourneyImagineMode.FAST:
+          return MIDJOURNEY_MODE_FAST.icon;
+        case MidjourneyImagineMode.TURBO:
+          return MIDJOURNEY_MODE_TURBO.icon;
+        case MidjourneyImagineMode.RELAX:
+          return MIDJOURNEY_MODE_RELAX.icon;
+      }
     }
   }
 });

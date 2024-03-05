@@ -85,6 +85,7 @@ export interface IMidjourneyImagineResponse {
 export interface IMidjourneyImagineTask {
   id: string;
   created_at?: string;
+  mode: MidjourneyImagineMode;
   request?: IMidjourneyImagineRequest;
   response?: IMidjourneyImagineResponse;
   state?: MidjourneyImagineState;

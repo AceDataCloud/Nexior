@@ -2,7 +2,15 @@ import { IRootState } from '../common/models';
 import { ActionContext } from 'vuex';
 import { log } from '@/utils/log';
 import { IChatdocState } from './models';
-import { IApplication, IChatdocConversation, IChatdocDocument, IChatdocRepository, IService, Status } from '@/models';
+import {
+  IApplication,
+  IChatdocConversation,
+  IChatdocDocument,
+  IChatdocRepositoriesResponse,
+  IChatdocRepository,
+  IService,
+  Status
+} from '@/models';
 import { chatdocOperator, applicationOperator, serviceOperator } from '@/operators';
 import { CHATDOC_SERVICE_ID } from '@/constants';
 
@@ -47,13 +55,13 @@ export const getRepositories = async ({
   const token = application?.credentials?.[0]?.token;
   if (!token) {
     commit('setRepositories', undefined);
-    return [];
+    return Promise.reject('no token');
   }
   const repositories = (
     await chatdocOperator.getAllRepositories({
       token
     })
-  ).data;
+  ).data.items;
   log(getRepositories, 'get repositories success', repositories);
   commit('setRepositories', repositories);
   return repositories;

@@ -25,7 +25,7 @@ import { defineComponent } from 'vue';
 import { ElMenu, ElMenuItem } from 'element-plus';
 import { ROUTE_CHATDOC_CONVERSATION_NEW, ROUTE_CHATDOC_MANAGE } from '@/router';
 import { RouteLocationRaw } from 'vue-router';
-import { IChatdocRepository } from '@/operators';
+import { IChatdocRepository } from '@/models';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 interface IMenuItem {
@@ -92,10 +92,14 @@ export default defineComponent({
     }
   },
   async mounted() {
+    await this.getService();
     await this.onGetApplications();
     await this.onGetRepositories();
   },
   methods: {
+    async getService() {
+      await this.$store.dispatch('chatdoc/getService');
+    },
     async onGetApplications() {
       await this.$store.dispatch('chatdoc/getApplication');
     },
