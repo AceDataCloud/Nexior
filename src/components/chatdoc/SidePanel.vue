@@ -69,8 +69,8 @@ import { defineComponent } from 'vue';
 import { ElSkeleton, ElInput } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router/constants';
-import { chatdocOperator, IChatdocRepository } from '@/operators';
 import { Status } from '@/store/common/models';
+import { IChatdocRepository } from '@/models';
 
 export default defineComponent({
   name: 'SidePanel',

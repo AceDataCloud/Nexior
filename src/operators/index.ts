@@ -1,4 +1,4 @@
-export * from './instance';
+export * from './common';
 export * from './application';
 export * from './user';
 export * from './chat';
@@ -8,3 +8,5 @@ export * from './api';
 export * from './order';
 export * from './distribution';
 export * from './chatdoc';
+export * from './auth';
+export * from './service';

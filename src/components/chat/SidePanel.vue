@@ -70,8 +70,8 @@ import { ElSkeleton, ElInput } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router/constants';
 import { chatOperator } from '@/operators';
-import { IChatConversation } from '@/operators/chat/models';
-import { Status } from '@/store/common/models';
+import { IChatConversation } from '@/models';
+import { Status } from '@/models';
 
 export default defineComponent({
   name: 'SidePanel',
@@ -89,11 +89,14 @@ export default defineComponent({
     conversations() {
       return this.$store.state.chat.conversations;
     },
-    applications() {
-      return this.$store.state.chat.applications;
+    application() {
+      return this.$store.state.chat.application;
     },
     loading() {
-      return this.$store.state.chat.getConversationsStatus === Status.Request;
+      return this.$store.state.chat.status.getConversations === Status.Request;
+    },
+    token() {
+      return this.application?.credentials?.[0].token;
     }
   },
   methods: {
@@ -103,11 +106,20 @@ export default defineComponent({
       });
     },
     async onConfirm(conversation: IChatConversation) {
+      const token = this.token;
+      if (!token) {
+        console.error('Token is not found');
+        return;
+      }
       if (conversation?.deleting) {
-        await chatOperator.deleteConversation(conversation.id);
+        await chatOperator.deleteConversation(conversation.id, {
+          token
+        });
         await this.$store.dispatch('chat/getConversations');
       } else if (conversation?.editing) {
-        await chatOperator.updateConversation(conversation);
+        await chatOperator.updateConversation(conversation, {
+          token
+        });
         await this.$store.dispatch('chat/getConversations');
       } else {
         conversation.editing = true;

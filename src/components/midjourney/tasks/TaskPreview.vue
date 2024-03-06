@@ -13,9 +13,9 @@
         </el-tag>
       </div>
       <div class="right">
-        <el-tag v-if="channel" type="info" class="channel">
-          <font-awesome-icon :class="{ icon: true, [channel.name]: true }" :icon="channel?.icon" />
-          {{ channel?.displayName }}
+        <el-tag v-if="mode" type="info" class="channel">
+          <font-awesome-icon :class="{ icon: true, [mode.name]: true }" :icon="mode.icon" />
+          {{ mode?.displayName }}
         </el-tag>
       </div>
     </div>
@@ -45,8 +45,8 @@
         <p class="description">
           <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
           {{ $t('midjourney.field.failureReason') }}:
-          {{ modelValue?.response?.detail }}
-          <copy-to-clipboard :content="modelValue?.response?.detail!" class="btn-copy" />
+          {{ modelValue?.response?.error?.message }}
+          <copy-to-clipboard :content="modelValue?.response?.error?.message!" class="btn-copy" />
         </p>
         <p class="description">
           <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
@@ -56,7 +56,6 @@
         </p>
       </el-alert>
     </div>
-
     <div v-else :class="{ content: true, full: full }">
       <el-image
         v-if="modelValue?.response?.image_url"
@@ -92,9 +91,9 @@
       </p>
     </div>
     <div class="extra">
-      <p class="datetime">
+      <p v-if="modelValue?.created_at" class="datetime">
         <font-awesome-icon icon="fa-regular fa-clock" class="mr-1" />
-        {{ $dayjs.format(modelValue?.created_at) }}
+        {{ $dayjs.format(new Date(parseFloat(modelValue?.created_at) * 1000)) }}
       </p>
     </div>
   </div>
@@ -103,17 +102,15 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElImage, ElTag, ElButton, ElTooltip, ElSkeleton, ElAlert } from 'element-plus';
-import { IApplication, IMidjourneyImagineTask, MidjourneyImagineAction, MidjourneyImagineState } from '@/operators';
 import {
-  API_ID_MIDJOURNEY_FAST,
-  API_ID_MIDJOURNEY_RELAX,
-  API_ID_MIDJOURNEY_TURBO,
-  MIDJOURNEY_CHANNEL_FAST,
-  MIDJOURNEY_CHANNEL_RELAX,
-  MIDJOURNEY_CHANNEL_TURBO
-} from '@/operators/midjourney/constants';
+  IMidjourneyImagineTask,
+  MidjourneyImagineAction,
+  MidjourneyImagineMode,
+  MidjourneyImagineState
+} from '@/models';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
+import { MIDJOURNEY_MODE_FAST, MIDJOURNEY_MODE_RELAX, MIDJOURNEY_MODE_TURBO } from '@/constants';
 
 interface IData {
   midjourneyImagineState: typeof MidjourneyImagineState;
@@ -138,10 +135,6 @@ export default defineComponent({
       type: Object as () => IMidjourneyImagineTask | undefined,
       required: true
     },
-    applications: {
-      type: Object as () => IApplication[] | undefined,
-      required: true
-    },
     full: {
       type: Boolean,
       default: false
@@ -153,22 +146,26 @@ export default defineComponent({
       midjourneyImagineState: MidjourneyImagineState,
       actionMapping: {
         [MidjourneyImagineAction.GENERATE]: 'Generate',
-        [MidjourneyImagineAction.UPSAMPLE1]: 'U1',
-        [MidjourneyImagineAction.UPSAMPLE2]: 'U2',
-        [MidjourneyImagineAction.UPSAMPLE3]: 'U3',
-        [MidjourneyImagineAction.UPSAMPLE4]: 'U4',
+        [MidjourneyImagineAction.UPSCALE1]: 'U1',
+        [MidjourneyImagineAction.UPSCALE2]: 'U2',
+        [MidjourneyImagineAction.UPSCALE3]: 'U3',
+        [MidjourneyImagineAction.UPSCALE4]: 'U4',
         [MidjourneyImagineAction.VARIATION1]: 'V1',
         [MidjourneyImagineAction.VARIATION2]: 'V2',
         [MidjourneyImagineAction.VARIATION3]: 'V3',
         [MidjourneyImagineAction.VARIATION4]: 'V4',
-        [MidjourneyImagineAction.HIGH_VARIATION]: 'Vary (Strong)',
-        [MidjourneyImagineAction.LOW_VARIATION]: 'Vary (Subtle)',
+        [MidjourneyImagineAction.VARIATION_STRONG]: 'Vary (Strong)',
+        [MidjourneyImagineAction.VARIATION_SUBTLE]: 'Vary (Subtle)',
+        [MidjourneyImagineAction.UPSCALE_CREATIVE]: 'Upscale (Creative)',
+        [MidjourneyImagineAction.UPSCALE_SUBTLE]: 'Upscale (Subtle)',
         [MidjourneyImagineAction.ZOOM_OUT_2X]: 'Zoom Out 2x',
         [MidjourneyImagineAction.ZOOM_OUT_1_5X]: 'Zoom Out 1.5x',
-        [MidjourneyImagineAction.UPSAMPLE_2X]: 'Upsample 2x',
-        [MidjourneyImagineAction.UPSAMPLE_4X]: 'Upsample 4x',
-        [MidjourneyImagineAction.REDO_UPSAMPLE_2X]: 'Redo Upsample 2x',
-        [MidjourneyImagineAction.REDO_UPSAMPLE_4X]: 'Redo Upsample 4x',
+        [MidjourneyImagineAction.UPSCALE_2X]: 'Upscale 2x',
+        [MidjourneyImagineAction.UPSCALE_4X]: 'Upscale 4x',
+        [MidjourneyImagineAction.REDO_UPSCALE_2X]: 'Redo Upscale 2x',
+        [MidjourneyImagineAction.REDO_UPSCALE_4X]: 'Redo Upscale 4x',
+        [MidjourneyImagineAction.REDO_UPSCALE_SUBTLE]: 'Redo Upscale (Subtle)',
+        [MidjourneyImagineAction.REDO_UPSCALE_CREATIVE]: 'Redo Upscale (Creative)',
         [MidjourneyImagineAction.SQUARE]: 'Make Square',
         [MidjourneyImagineAction.PAN_LEFT]: '⬅️',
         [MidjourneyImagineAction.PAN_UP]: '⬆️',
@@ -178,22 +175,26 @@ export default defineComponent({
       },
       descriptionMapping: {
         [MidjourneyImagineAction.GENERATE]: this.$t('midjourney.description.generate'),
-        [MidjourneyImagineAction.UPSAMPLE1]: this.$t('midjourney.description.upsample1'),
-        [MidjourneyImagineAction.UPSAMPLE2]: this.$t('midjourney.description.upsample2'),
-        [MidjourneyImagineAction.UPSAMPLE3]: this.$t('midjourney.description.upsample3'),
-        [MidjourneyImagineAction.UPSAMPLE4]: this.$t('midjourney.description.upsample4'),
+        [MidjourneyImagineAction.UPSCALE1]: this.$t('midjourney.description.upscale1'),
+        [MidjourneyImagineAction.UPSCALE2]: this.$t('midjourney.description.upscale2'),
+        [MidjourneyImagineAction.UPSCALE3]: this.$t('midjourney.description.upscale3'),
+        [MidjourneyImagineAction.UPSCALE4]: this.$t('midjourney.description.upscale4'),
         [MidjourneyImagineAction.VARIATION1]: this.$t('midjourney.description.variation1'),
         [MidjourneyImagineAction.VARIATION2]: this.$t('midjourney.description.variation2'),
         [MidjourneyImagineAction.VARIATION3]: this.$t('midjourney.description.variation3'),
         [MidjourneyImagineAction.VARIATION4]: this.$t('midjourney.description.variation4'),
-        [MidjourneyImagineAction.HIGH_VARIATION]: this.$t('midjourney.description.high_variation'),
-        [MidjourneyImagineAction.LOW_VARIATION]: this.$t('midjourney.description.low_variation'),
+        [MidjourneyImagineAction.VARIATION_STRONG]: this.$t('midjourney.description.variation_strong'),
+        [MidjourneyImagineAction.VARIATION_SUBTLE]: this.$t('midjourney.description.variation_subtle'),
         [MidjourneyImagineAction.ZOOM_OUT_2X]: this.$t('midjourney.description.zoom_out_2x'),
         [MidjourneyImagineAction.ZOOM_OUT_1_5X]: this.$t('midjourney.description.zoom_out_1_5x'),
-        [MidjourneyImagineAction.UPSAMPLE_2X]: this.$t('midjourney.description.upsample_2x'),
-        [MidjourneyImagineAction.UPSAMPLE_4X]: this.$t('midjourney.description.upsample_4x'),
-        [MidjourneyImagineAction.REDO_UPSAMPLE_2X]: this.$t('midjourney.description.redo_upsample_2x'),
-        [MidjourneyImagineAction.REDO_UPSAMPLE_4X]: this.$t('midjourney.description.redo_upsample_4x'),
+        [MidjourneyImagineAction.UPSCALE_2X]: this.$t('midjourney.description.upscale_2x'),
+        [MidjourneyImagineAction.UPSCALE_4X]: this.$t('midjourney.description.upscale_4x'),
+        [MidjourneyImagineAction.UPSCALE_SUBTLE]: this.$t('midjourney.description.upscale_subtle'),
+        [MidjourneyImagineAction.UPSCALE_CREATIVE]: this.$t('midjourney.description.upscale_creative'),
+        [MidjourneyImagineAction.REDO_UPSCALE_2X]: this.$t('midjourney.description.redo_upscale_2x'),
+        [MidjourneyImagineAction.REDO_UPSCALE_4X]: this.$t('midjourney.description.redo_upscale_4x'),
+        [MidjourneyImagineAction.REDO_UPSCALE_SUBTLE]: this.$t('midjourney.description.redo_upscale_subtle'),
+        [MidjourneyImagineAction.REDO_UPSCALE_CREATIVE]: this.$t('midjourney.description.redo_upscale_creative'),
         [MidjourneyImagineAction.SQUARE]: this.$t('midjourney.description.square'),
         [MidjourneyImagineAction.PAN_LEFT]: this.$t('midjourney.description.pan_left'),
         [MidjourneyImagineAction.PAN_UP]: this.$t('midjourney.description.pan_up'),
@@ -205,19 +206,19 @@ export default defineComponent({
   },
   computed: {
     application() {
-      return this.applications?.find((application) => {
-        return application.id === this.modelValue?.request?.application_id;
-      });
+      return this.$store.state.midjourney.application;
     },
-    channel() {
-      if (this.application?.api_id === API_ID_MIDJOURNEY_FAST) {
-        return MIDJOURNEY_CHANNEL_FAST;
-      } else if (this.application?.api_id === API_ID_MIDJOURNEY_RELAX) {
-        return MIDJOURNEY_CHANNEL_RELAX;
-      } else if (this.application?.api_id === API_ID_MIDJOURNEY_TURBO) {
-        return MIDJOURNEY_CHANNEL_TURBO;
+    mode() {
+      switch (this.modelValue?.mode) {
+        case MidjourneyImagineMode.FAST:
+          return MIDJOURNEY_MODE_FAST;
+        case MidjourneyImagineMode.TURBO:
+          return MIDJOURNEY_MODE_TURBO;
+        case MidjourneyImagineMode.RELAX:
+          return MIDJOURNEY_MODE_RELAX;
+        default:
+          return undefined;
       }
-      return undefined;
     }
   },
   methods: {
@@ -233,6 +234,16 @@ export default defineComponent({
       link.href = url;
       link.download = url.split('/').pop() as string;
       link.click();
+    },
+    getModeIcon(mode: MidjourneyImagineMode): string | undefined {
+      switch (mode) {
+        case MidjourneyImagineMode.FAST:
+          return MIDJOURNEY_MODE_FAST.icon;
+        case MidjourneyImagineMode.TURBO:
+          return MIDJOURNEY_MODE_TURBO.icon;
+        case MidjourneyImagineMode.RELAX:
+          return MIDJOURNEY_MODE_RELAX.icon;
+      }
     }
   }
 });

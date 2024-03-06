@@ -14,7 +14,7 @@
   </div>
   <div v-else-if="tasks.length > 0" class="tasks">
     <div v-for="(task, taskKey) in tasks" :key="taskKey" class="task">
-      <task-preview :full="false" :model-value="task" :applications="applications" @custom="$emit('custom', $event)" />
+      <task-preview :full="false" :model-value="task" @custom="$emit('custom', $event)" />
     </div>
     <el-button type="primary" class="btn mb-4" @click="onLoadHistory">{{ $t('midjourney.button.history') }}</el-button>
   </div>
@@ -25,7 +25,7 @@ import { defineComponent } from 'vue';
 import TaskPreview from './TaskPreview.vue';
 import { ROUTE_MIDJOURNEY_HISTORY } from '@/router';
 import { ElButton, ElCard, ElSkeleton, ElSkeletonItem } from 'element-plus';
-import { Status } from '@/store/common/models';
+import { Status } from '@/models';
 
 export default defineComponent({
   name: 'TaskBriefList',
@@ -44,17 +44,18 @@ export default defineComponent({
   },
   computed: {
     loading() {
-      return this.$store.state.midjourney.getImagineTasksStatus === Status.Request;
+      return this.$store.state.midjourney.status.getApplication === Status.Request;
     },
     tasks() {
       return this.$store.state.midjourney.imagineTasks;
     },
-    applications() {
-      return this.$store.state.midjourney.applications;
+    application() {
+      return this.$store.state.midjourney.application;
     }
   },
   async mounted() {
     await this.$store.dispatch('midjourney/setImagineTasks', undefined);
+    // @ts-ignore
     this.job = setInterval(() => {
       this.getImagineTasks();
     }, 5000);

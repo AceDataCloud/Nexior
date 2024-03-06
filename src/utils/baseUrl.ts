@@ -1,14 +1,14 @@
-import { BASE_URL_AUTH, BASE_URL_DATA, BASE_URL_HUB } from '@/constants';
+import { BASE_URL_AUTH, BASE_URL_PLATFORM, BASE_URL_HUB } from '@/constants';
 
 /**
  * Get base url of data app
  * @returns
  */
 export const getBaseUrlData = () => {
-  if (import.meta.env.VITE_BASE_URL_DATA) {
-    return import.meta.env.VITE_BASE_URL_DATA;
+  if (import.meta.env.VITE_BASE_URL_PLATFORM) {
+    return import.meta.env.VITE_BASE_URL_PLATFORM;
   }
-  return BASE_URL_DATA;
+  return BASE_URL_PLATFORM;
 };
 
 /**

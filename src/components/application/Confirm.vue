@@ -1,29 +1,30 @@
 <template>
-  <el-dialog :model-value="visible" width="500px" center @close="$emit('update:visible', false)">
+  <el-dialog
+    :model-value="visible"
+    width="500px"
+    :title="$t('application.message.confirmApplying')"
+    center
+    @close="$emit('update:visible', false)"
+  >
     <div class="content">
       <el-descriptions :column="1">
         <el-descriptions-item :label="$t('application.field.name')">
-          {{ object?.title }}
+          {{ service?.title }}
         </el-descriptions-item>
         <el-descriptions-item :label="$t('application.field.freeAmount')">
-          <span v-if="type === applicationType.API">
-            {{ object?.free_amount }}{{ $t(`api.unit.${object?.unit}`) }}
-          </span>
+          <span> {{ service?.free_amount }} {{ $t(`service.unit.${service?.unit}`) }} </span>
         </el-descriptions-item>
       </el-descriptions>
-      <p class="description">
-        {{ $t('application.message.applyDescription') }}
-      </p>
       <el-divider class="my-2" />
       <div class="policy">
         <el-checkbox v-model="checked" size="large" class="policy-checkbox" />
         <span class="policy-title"> {{ $t('application.message.readPolicy') }} </span>
-        <span class="policy-title highlight" @click="showPolicy = true"> {{ $t('application.message.policy') }} </span>
+        <span class="policy-title highlight" @click="showPolicy = true">
+          &nbsp;{{ $t('application.message.policy') }}</span
+        >
         <application-policy v-model.visible="showPolicy" />
       </div>
-      <el-button type="primary" class="btn btn-apply" @click="onApply">
-        {{ $t('common.button.applyForFree') }}
-      </el-button>
+      <el-button type="primary" @click="onApply">{{ $t('common.button.apply') }}</el-button>
     </div>
   </el-dialog>
 </template>
@@ -31,11 +32,10 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElDialog, ElDescriptions, ElDescriptionsItem, ElDivider, ElCheckbox, ElButton, ElMessage } from 'element-plus';
-import { IApi, IApplicationType } from '@/operators';
+import { IService } from '@/models';
 import ApplicationPolicy from './Policy.vue';
 
 interface IData {
-  applicationType: typeof IApplicationType;
   checked: boolean;
   showPolicy: boolean;
 }
@@ -52,12 +52,8 @@ export default defineComponent({
     ApplicationPolicy
   },
   props: {
-    object: {
-      type: Object as () => IApi | undefined,
-      required: true
-    },
-    type: {
-      type: Object as () => IApplicationType,
+    service: {
+      type: Object as () => IService,
       required: true
     },
     visible: {
@@ -69,8 +65,7 @@ export default defineComponent({
   emits: ['update:visible', 'apply'],
   data(): IData {
     return {
-      applicationType: IApplicationType,
-      checked: true,
+      checked: false,
       showPolicy: false
     };
   },
@@ -90,18 +85,8 @@ export default defineComponent({
 <style lang="scss" scoped>
 .content {
   padding: 10px 40px;
-
-  .description {
-    font-size: 12px;
-  }
-
-  .btn-apply {
-    border-radius: 20px;
-  }
-
   .policy {
     margin-bottom: 10px;
-
     .policy-checkbox {
       margin-right: 10px !important;
     }

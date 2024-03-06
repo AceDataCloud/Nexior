@@ -1,7 +1,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IUser } from '@/operators';
-import { IToken } from '@/operators/auth/models';
+import { IUser, IToken } from '@/models';
 
 interface IData {
   accessToken: string | undefined;

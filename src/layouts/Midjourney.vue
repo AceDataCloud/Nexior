@@ -41,6 +41,18 @@ export default defineComponent({
       drawer: false,
       drawer2: false
     };
+  },
+  async mounted() {
+    await this.onGetService();
+    await this.onGetApplication();
+  },
+  methods: {
+    async onGetService() {
+      await this.$store.dispatch('midjourney/getService');
+    },
+    async onGetApplication() {
+      await this.$store.dispatch('midjourney/getApplication');
+    }
   }
 });
 </script>

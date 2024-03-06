@@ -1,10 +1,15 @@
+import { Status } from '@/models';
 import { IChatdocState } from './models';
 
 export default (): IChatdocState => {
   return {
-    applications: undefined,
-    getApplicationsStatus: undefined,
+    service: undefined,
+    application: undefined,
     repositories: undefined,
-    getRepositoriesStatus: undefined
+    status: {
+      getService: Status.None,
+      getApplication: Status.None,
+      getRepositories: Status.None
+    }
   };
 };

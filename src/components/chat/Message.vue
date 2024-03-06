@@ -33,7 +33,7 @@ import AnsweringMark from './AnsweringMark.vue';
 import copy from 'copy-to-clipboard';
 import { ElAlert, ElButton } from 'element-plus';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
-import { IApplication, IChatMessage, IChatMessageState } from '@/operators';
+import { IApplication, IChatMessage, IChatMessageState } from '@/models';
 import CopyToClipboard from '../common/CopyToClipboard.vue';
 import {
   ERROR_CODE_API_ERROR,
@@ -48,6 +48,7 @@ import {
 } from '@/constants';
 import message from '@/i18n/zh/common/message';
 import { ROUTE_CONSOLE_APPLICATION_BUY } from '@/router';
+
 interface IData {
   copied: boolean;
   messageState: typeof IChatMessageState;

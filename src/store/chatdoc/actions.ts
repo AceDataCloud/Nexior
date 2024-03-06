@@ -1,38 +1,44 @@
-import { IApplication, apiUsageOperator, applicationOperator } from '@/operators';
-import { IRootState, Status } from '../common/models';
+import { IRootState } from '../common/models';
 import { ActionContext } from 'vuex';
 import { log } from '@/utils/log';
 import { IChatdocState } from './models';
-import { IChatdocConversation, IChatdocDocument, IChatdocRepository } from '@/operators/chatdoc/models';
-import { chatdocOperator } from '@/operators/chatdoc/operator';
 import {
-  API_ID_CHATDOC_CHAT,
-  API_ID_CHATDOC_DOCUMENTS,
-  API_ID_CHATDOC_REPOSITORIES
-} from '@/operators/chatdoc/constants';
+  IApplication,
+  IChatdocConversation,
+  IChatdocDocument,
+  IChatdocRepositoriesResponse,
+  IChatdocRepository,
+  IService,
+  Status
+} from '@/models';
+import { chatdocOperator, applicationOperator, serviceOperator } from '@/operators';
+import { CHATDOC_SERVICE_ID } from '@/constants';
 
-export const setApplications = async ({ commit }: any, payload: IApplication[]): Promise<void> => {
-  commit('setApplications', payload);
+export const setApplication = async ({ commit }: any, payload: IApplication): Promise<void> => {
+  commit('setApplication', payload);
+};
+
+export const setService = async ({ commit }: any, payload: IService): Promise<void> => {
+  log(setService, 'set service', payload);
+  commit('setService', payload);
 };
 
 export const setRepository = async ({ commit }: any, payload: { repository: IChatdocRepository }): Promise<void> => {
   commit('setRepository', payload);
 };
 
-export const getApplications = async ({
+export const getApplication = async ({
   commit,
   rootState
-}: ActionContext<IChatdocState, IRootState>): Promise<IApplication[]> => {
-  log(getApplications, 'start to get application for chat');
-  commit('setGetApplicationsStatus', Status.Request);
+}: ActionContext<IChatdocState, IRootState>): Promise<IApplication> => {
+  log(getApplication, 'start to get application for chat');
   const { data: applications } = await applicationOperator.getAll({
     user_id: rootState.user.id,
-    api_id: [API_ID_CHATDOC_REPOSITORIES, API_ID_CHATDOC_CHAT, API_ID_CHATDOC_DOCUMENTS]
+    service_id: CHATDOC_SERVICE_ID
   });
-  log(getApplications, 'get application for chat success', applications);
-  commit('setGetApplicationsStatus', Status.Success);
-  commit('setApplications', applications?.items);
-  return applications.items;
+  log(getApplication, 'get application for chat success', applications);
+  commit('setApplication', applications?.items?.[0]);
+  return applications.items?.[0];
 };
 
 export const resetAll = ({ commit }: ActionContext<IChatdocState, IRootState>): void => {
@@ -44,24 +50,18 @@ export const getRepositories = async ({
   state
 }: ActionContext<IChatdocState, IRootState>): Promise<IChatdocRepository[]> => {
   log(getRepositories, 'start to get repositories');
-  commit('setGetRepositoriesStatus', Status.Request);
-  const applications = state.applications;
-  console.log('applications', applications);
-  const application = applications?.find(
-    (application: IApplication) => application.api?.id === API_ID_CHATDOC_REPOSITORIES
-  );
+  const application = state.application;
   console.log('application', application);
-  const token = application?.credential?.token;
+  const token = application?.credentials?.[0]?.token;
   if (!token) {
     commit('setRepositories', undefined);
-    return [];
+    return Promise.reject('no token');
   }
   const repositories = (
     await chatdocOperator.getAllRepositories({
       token
     })
-  ).data;
-  commit('setGetRepositoriesStatus', Status.Success);
+  ).data.items;
   log(getRepositories, 'get repositories success', repositories);
   commit('setRepositories', repositories);
   return repositories;
@@ -74,13 +74,9 @@ export const deleteRepository = async (
   }
 ): Promise<IChatdocRepository> => {
   log(deleteRepository, 'start to delete repository');
-  const applications = state.applications;
-  console.log('applications', applications);
-  const application = applications?.find(
-    (application: IApplication) => application.api?.id === API_ID_CHATDOC_REPOSITORIES
-  );
+  const application = state.application;
   console.log('application', application);
-  const token = application?.credential?.token;
+  const token = application?.credentials?.[0]?.token;
   if (!token) {
     return Promise.reject('no token');
   }
@@ -100,13 +96,9 @@ export const deleteDocument = async (
   }
 ): Promise<IChatdocDocument> => {
   log(deleteDocument, 'start to delete document');
-  const applications = state.applications;
-  console.log('applications', applications);
-  const application = applications?.find(
-    (application: IApplication) => application.api?.id === API_ID_CHATDOC_DOCUMENTS
-  );
+  const application = state.application;
   console.log('application', application);
-  const token = application?.credential?.token;
+  const token = application?.credentials?.[0]?.token;
   if (!token) {
     return Promise.reject('no token');
   }
@@ -119,6 +111,24 @@ export const deleteDocument = async (
   return document;
 };
 
+export const getService = async ({ commit, state }: ActionContext<IChatdocState, IRootState>): Promise<IService> => {
+  return new Promise(async (resolve, reject) => {
+    log(getService, 'start to get service for chatdoc');
+    state.status.getService = Status.Request;
+    serviceOperator
+      .get(CHATDOC_SERVICE_ID)
+      .then((response) => {
+        state.status.getService = Status.Success;
+        commit('setService', response.data);
+        resolve(response.data);
+      })
+      .catch((error) => {
+        state.status.getService = Status.Error;
+        reject(error);
+      });
+  });
+};
+
 export const createRepository = async (
   { state }: ActionContext<IChatdocState, IRootState>,
   payload: {
@@ -127,13 +137,9 @@ export const createRepository = async (
   }
 ): Promise<IChatdocRepository> => {
   log(createRepository, 'start to create repository');
-  const applications = state.applications;
-  console.log('applications', applications);
-  const application = applications?.find(
-    (application: IApplication) => application.api?.id === API_ID_CHATDOC_REPOSITORIES
-  );
+  const application = state.application;
   console.log('application', application);
-  const token = application?.credential?.token;
+  const token = application?.credentials?.[0]?.token;
   if (!token) {
     return Promise.reject('no token');
   }
@@ -155,13 +161,9 @@ export const createDocument = async (
   }
 ): Promise<IChatdocDocument> => {
   log(createDocument, 'start to create document');
-  const applications = state.applications;
-  console.log('applications', applications);
-  const application = applications?.find(
-    (application: IApplication) => application.api?.id === API_ID_CHATDOC_DOCUMENTS
-  );
+  const application = state.application;
   console.log('application', application);
-  const token = application?.credential?.token;
+  const token = application?.credentials?.[0]?.token;
   if (!token) {
     return Promise.reject('no token');
   }
@@ -179,13 +181,9 @@ export const getDocuments = async (
   payload: { repositoryId: string }
 ): Promise<IChatdocDocument[]> => {
   log(getRepositories, 'start to get documents');
-  const applications = state.applications;
-  console.log('applications', applications);
-  const application = applications?.find(
-    (application: IApplication) => application.api?.id === API_ID_CHATDOC_DOCUMENTS
-  );
+  const application = state.application;
   console.log('application for getDocuments', application);
-  const token = application?.credential?.token;
+  const token = application?.credentials?.[0]?.token;
   if (!token) {
     commit('setRepository', {
       id: payload.repositoryId,
@@ -211,11 +209,9 @@ export const getConversations = async (
   payload: { repositoryId: string }
 ): Promise<IChatdocConversation[]> => {
   log(getConversations, 'start to get conversations');
-  const applications = state.applications;
-  console.log('applications', applications);
-  const application = applications?.find((application: IApplication) => application.api?.id === API_ID_CHATDOC_CHAT);
+  const application = state.application;
   console.log('application for getConversations', application);
-  const token = application?.credential?.token;
+  const token = application?.credentials?.[0]?.token;
   if (!token) {
     commit('setRepository', {
       id: payload.repositoryId,
@@ -237,12 +233,8 @@ export const getRepository = async (
   payload: { id: string }
 ): Promise<IChatdocRepository> => {
   log(getRepository, 'start to get repository');
-  // commit('setGetRepositoryStatus', Status.Request);
-  const applications = state.applications;
-  const application = applications?.find(
-    (application: IApplication) => application.api?.id === API_ID_CHATDOC_REPOSITORIES
-  );
-  const token = application?.credential?.token;
+  const application = state.application;
+  const token = application?.credentials?.[0]?.token;
   if (!token) {
     commit('setRepository', { id: payload.id });
     return Promise.reject('no token');
@@ -252,16 +244,17 @@ export const getRepository = async (
       token
     })
   ).data;
-  // commit('setGetRepositoryStatus', Status.Success);
   log(getRepository, 'get repository success', repository);
   commit('setRepository', repository);
   return repository;
 };
 
 export default {
+  setService,
+  getService,
   createRepository,
-  setApplications,
-  getApplications,
+  setApplication,
+  getApplication,
   getRepositories,
   deleteRepository,
   getRepository,

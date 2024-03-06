@@ -1,12 +1,12 @@
 <template>
   <div class="history">
-    <channel-selector class="mb-4" />
-    <api-status
+    <mode-selector class="mb-4" />
+    <application-status
       :initializing="initializing"
       :application="application"
       :need-apply="needApply"
       class="mb-4"
-      :api-id="channel.apiId"
+      :service="service"
       @refresh="onGetApplications"
     />
     <task-full-list @custom="onCustom" />
@@ -19,15 +19,15 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import PresetPanel from '@/components/midjourney/PresetPanel.vue';
 import { ElMessage, ElButton } from 'element-plus';
-import ChannelSelector from '@/components/midjourney/ChannelSelector.vue';
-import ApiStatus from '@/components/common/ApiStatus.vue';
-import { MidjourneyImagineAction, midjourneyOperator, IMidjourneyImagineRequest, IApplication } from '@/operators';
+import ModeSelector from '@/components/midjourney/ModeSelector.vue';
+import ApplicationStatus from '@/components/application/Status.vue';
+import { midjourneyOperator } from '@/operators';
 import TaskFullList from '@/components/midjourney/tasks/TaskFullList.vue';
 import { ROUTE_MIDJOURNEY_INDEX } from '@/router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { Status } from '@/store/common/models';
+import { Status } from '@/models';
+import { MidjourneyImagineAction, IMidjourneyImagineRequest, IApplication } from '@/models';
 
 interface IData {
   prompt: string;
@@ -41,8 +41,8 @@ export default defineComponent({
   name: 'MidjourneyIndex',
   components: {
     TaskFullList,
-    ChannelSelector,
-    ApiStatus,
+    ModeSelector,
+    ApplicationStatus,
     ElButton,
     FontAwesomeIcon
   },
@@ -54,23 +54,20 @@ export default defineComponent({
     };
   },
   computed: {
-    channel() {
-      return this.$store.state.midjourney.channel;
+    mode() {
+      return this.$store.state.midjourney.mode;
     },
-    applications() {
-      return this.$store.state.midjourney.applications;
-    },
-    initializing() {
-      return this.$store.state.midjourney.getApplicationsStatus === Status.Request;
-    },
-    needApply() {
-      return this.$store.state.midjourney.getApplicationsStatus === Status.Success && !this.application;
+    service() {
+      return this.$store.state.midjourney.service;
     },
     application() {
-      if (this.applications && this.applications.length > 0) {
-        return this.applications.filter((item: IApplication) => item.api_id === this.channel.apiId)[0];
-      }
-      return undefined;
+      return this.$store.state.midjourney.application;
+    },
+    initializing() {
+      return this.$store.state.midjourney.status.getApplication === Status.Request;
+    },
+    needApply() {
+      return this.$store.state.midjourney.status.getApplication === Status.Success && !this.application;
     }
   },
   async mounted() {
@@ -83,21 +80,17 @@ export default defineComponent({
       });
     },
     async onGetApplications() {
-      await this.$store.dispatch('midjourney/getApplications');
+      await this.$store.dispatch('midjourney/getApplication');
     },
     async onStartTask(request: IMidjourneyImagineRequest) {
-      const token = this.application?.credential?.token;
-      const endpoint = this.application?.api?.endpoint;
-      const path = this.application?.api?.path;
-      if (!token || !endpoint || !path) {
-        console.error('no token or endpoint or question');
+      const token = this.application?.credentials?.[0]?.token;
+      if (!token) {
+        console.error('no token found');
         return;
       }
       midjourneyOperator
         .imagine(request, {
-          token,
-          endpoint,
-          path
+          token
         })
         .then(() => {
           ElMessage.success(this.$t('midjourney.message.startTaskSuccess'));

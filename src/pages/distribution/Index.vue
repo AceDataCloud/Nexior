@@ -197,16 +197,12 @@ import {
   ElTooltip,
   ElSkeleton
 } from 'element-plus';
-import {
-  distributionLevelOperator,
-  distributionStatusOperator,
-  IDistributionLevel,
-  IDistributionStatus
-} from '@/operators';
+import { distributionLevelOperator, distributionStatusOperator } from '@/operators';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { IUser, userOperator } from '@/operators';
+import { userOperator } from '@/operators';
 import QrCode from 'vue-qrcode';
 import { ROUTE_DISTRIBUTION_HISTORY, ROUTE_DISTRIBUTION_INVITEES } from '@/router';
+import { IDistributionLevel, IDistributionStatus, IUser } from '@/models';
 
 interface IData {
   invitees: IUser[];

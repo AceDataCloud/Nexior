@@ -24,9 +24,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { applicationOperator, IApplication, IApplicationDetailResponse } from '@/operators';
+import { applicationOperator } from '@/operators';
 import CreateOrder from '@/components/order/Create.vue';
 import { ElRow, ElCol, ElCard, ElSkeleton } from 'element-plus';
+import { IApplication, IApplicationDetailResponse } from '@/models';
 
 interface IData {
   application: IApplication | undefined;

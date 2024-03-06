@@ -1,20 +1,7 @@
-import { IUser } from '@/operators';
 import { IMidjourneyState } from '../midjourney/models';
 import { IChatState } from '../chat/models';
 import { IChatdocState } from '../chatdoc/models';
-
-export enum Status {
-  Request = 'Request',
-  Success = 'Success',
-  Error = 'Error',
-  None = 'None'
-}
-
-export interface IToken {
-  access?: string;
-  refresh?: string;
-  expiration?: number;
-}
+import { IToken, IUser } from '@/models';
 
 export interface ISetting {
   navigationCollapsed?: boolean;

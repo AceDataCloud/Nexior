@@ -1,10 +1,13 @@
-import { IApplication, IChatConversation, IChatModel } from '@/operators';
-import { Status } from '../common/models';
+import { IApplication, IChatConversation, IChatModel, IService, Status } from '@/models';
 
 export interface IChatState {
   model: IChatModel;
-  applications: IApplication[] | undefined;
-  getApplicationsStatus: Status | undefined;
+  application: IApplication | undefined;
+  service: IService | undefined;
   conversations: IChatConversation[] | undefined;
-  getConversationsStatus: Status | undefined;
+  status: {
+    getService: Status;
+    getApplication: Status;
+    getConversations: Status;
+  };
 }

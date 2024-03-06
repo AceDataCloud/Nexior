@@ -1,12 +1,15 @@
-import { IApplication, IMidjourneyChannel, IMidjourneyImagineTask, IMidjourneyPreset } from '@/operators';
-import { Status } from '../common/models';
+import { IApplication, IMidjourneyImagineTask, IMidjourneyMode, IMidjourneyPreset, IService, Status } from '@/models';
 
 export interface IMidjourneyState {
-  applications: IApplication[] | undefined;
-  getApplicationsStatus: Status | undefined;
+  service: IService | undefined;
+  application: IApplication | undefined;
   imagineTasks: IMidjourneyImagineTask[] | undefined;
-  getImagineTasksStatus: Status | undefined;
   imagineTasksTotal: number | undefined;
   preset: IMidjourneyPreset;
-  channel: IMidjourneyChannel;
+  mode: IMidjourneyMode;
+  status: {
+    getService: Status;
+    getApplication: Status;
+    getImagineTasks: Status;
+  };
 }

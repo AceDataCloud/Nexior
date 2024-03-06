@@ -4,11 +4,11 @@
       <preset-panel />
     </template>
     <template #operation>
-      <channel-selector class="mb-4" />
-      <api-status
+      <mode-selector class="mb-4" />
+      <application-status
         :initializing="initializing"
         :application="application"
-        :api-id="channel.apiId"
+        :service="service"
         :need-apply="needApply"
         class="mb-4"
         @refresh="onGetApplications"
@@ -25,7 +25,7 @@
       </div>
     </template>
     <template #results>
-      <task-brief-list :applications="applications" @custom="onCustom" />
+      <task-brief-list @custom="onCustom" />
     </template>
   </layout>
 </template>
@@ -38,21 +38,15 @@ import PromptInput from '@/components/midjourney/PromptInput.vue';
 import ElementsSelector from '@/components/midjourney/ElementsSelector.vue';
 import IgnoreSelector from '@/components/midjourney/IgnoreSelector.vue';
 import { ElButton, ElMessage } from 'element-plus';
-import ChannelSelector from '@/components/midjourney/ChannelSelector.vue';
+import ModeSelector from '@/components/midjourney/ModeSelector.vue';
 import ReferenceImage from '@/components/midjourney/ReferenceImage.vue';
-import {
-  IApplication,
-  MidjourneyImagineAction,
-  applicationOperator,
-  midjourneyOperator,
-  IMidjourneyImagineRequest,
-  IApplicationDetailResponse
-} from '@/operators';
-import ApiStatus from '@/components/common/ApiStatus.vue';
+import { applicationOperator, midjourneyOperator } from '@/operators';
+import ApplicationStatus from '@/components/application/Status.vue';
 import TaskBriefList from '@/components/midjourney/tasks/TaskBriefList.vue';
 import FinalPrompt from '@/components/midjourney/FinalPrompt.vue';
 import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
-import { Status } from '@/store/common/models';
+import { MidjourneyImagineMode, Status } from '@/models';
+import { IMidjourneyImagineRequest, IApplicationDetailResponse, IApplication, MidjourneyImagineAction } from '@/models';
 
 interface IData {
   prompt: string;
@@ -66,14 +60,14 @@ const CALLBACK_URL = 'https://webhook.acedata.cloud/midjourney';
 export default defineComponent({
   name: 'MidjourneyIndex',
   components: {
-    ChannelSelector,
+    ModeSelector,
     ReferenceImage,
     PresetPanel,
     PromptInput,
     ElementsSelector,
     IgnoreSelector,
     ElButton,
-    ApiStatus,
+    ApplicationStatus,
     TaskBriefList,
     FinalPrompt,
     Layout
@@ -87,26 +81,23 @@ export default defineComponent({
     };
   },
   computed: {
-    channel() {
-      return this.$store.state.midjourney.channel;
+    service() {
+      return this.$store.state.midjourney.service;
+    },
+    mode() {
+      return this.$store.state.midjourney.mode;
     },
     preset() {
       return this.$store.state.midjourney.preset;
     },
     initializing() {
-      return this.$store.state.midjourney.getApplicationsStatus === Status.Request;
-    },
-    applications() {
-      return this.$store.state.midjourney.applications;
+      return this.$store.state.midjourney.status.getApplication === Status.Request;
     },
     needApply() {
-      return this.$store.state.midjourney.getApplicationsStatus === Status.Success && !this.application;
+      return this.$store.state.midjourney.status.getApplication === Status.Success && !this.application;
     },
     application() {
-      if (this.applications && this.applications.length > 0) {
-        return this.applications.filter((item: IApplication) => item.api_id === this.channel.apiId)[0];
-      }
-      return undefined;
+      return this.$store.state.midjourney.application;
     },
     finalPrompt(): string {
       let content = '';
@@ -173,21 +164,17 @@ export default defineComponent({
         });
     },
     async onGetApplications() {
-      await this.$store.dispatch('midjourney/getApplications');
+      await this.$store.dispatch('midjourney/getApplication');
     },
     async onStartTask(request: IMidjourneyImagineRequest) {
-      const token = this.application?.credential?.token;
-      const endpoint = this.application?.api?.endpoint;
-      const path = this.application?.api?.path;
-      if (!token || !endpoint || !path) {
-        console.error('no token or endpoint or question');
+      const token = this.application?.credentials?.[0]?.token;
+      if (!token) {
+        console.error('no token specified');
         return;
       }
       midjourneyOperator
         .imagine(request, {
-          token,
-          endpoint,
-          path
+          token
         })
         .then(() => {
           ElMessage.success(this.$t('midjourney.message.startTaskSuccess'));
@@ -206,6 +193,7 @@ export default defineComponent({
     },
     async onGenerate() {
       const request = {
+        mode: this.mode.name as MidjourneyImagineMode,
         prompt: this.finalPrompt,
         action: MidjourneyImagineAction.GENERATE,
         translation: this.preset?.translation,

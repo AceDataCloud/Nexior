@@ -9,12 +9,12 @@
           {{ $t('chatdoc.message.introductionForKnowledge') }}
         </div>
         <div class="status">
-          <api-status
+          <application-status
             :initializing="initializing"
             :application="application"
             :need-apply="needApply"
-            :api-id="apiId"
-            @refresh="$store.dispatch('chatdoc/getApplications')"
+            :service="service"
+            @refresh="$store.dispatch('chatdoc/getApplication')"
           />
         </div>
         <div class="operations">
@@ -64,12 +64,11 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Chatdoc.vue';
-import { IApplication, IChatdocRepository } from '@/operators';
+import { IApplication, IChatdocRepository } from '@/models';
 import { ElButton, ElTag, ElTable, ElTableColumn, ElMessage } from 'element-plus';
 import UploadDocument from '@/components/chatdoc/UploadDocument.vue';
-import { Status } from '@/store/common/models';
-import { API_ID_CHATDOC_DOCUMENTS } from '@/operators/chatdoc/constants';
-import ApiStatus from '@/components/common/ApiStatus.vue';
+import { Status } from '@/models';
+import ApplicationStatus from '@/components/application/Status.vue';
 
 export default defineComponent({
   name: 'ChatdocKnowledge',
@@ -78,7 +77,7 @@ export default defineComponent({
     ElButton,
     ElTable,
     ElTag,
-    ApiStatus,
+    ApplicationStatus,
     ElTableColumn,
     UploadDocument
   },
@@ -96,19 +95,16 @@ export default defineComponent({
       return this.repository?.documents;
     },
     needApply() {
-      return this.$store.state.chatdoc.getApplicationsStatus === Status.Success && !this.application;
+      return this.$store.state.chatdoc.status.getApplication === Status.Success && !this.application;
     },
-    applications() {
-      return this.$store.state.chatdoc.applications;
+    service() {
+      return this.$store.state.chatdoc.service;
     },
     application() {
-      return this.applications?.find((application: IApplication) => application.api?.id === API_ID_CHATDOC_DOCUMENTS);
+      return this.$store.state.chatdoc.application;
     },
     initializing() {
-      return this.$store.state.chatdoc.getApplicationsStatus === Status.Request;
-    },
-    apiId() {
-      return API_ID_CHATDOC_DOCUMENTS;
+      return this.$store.state.chatdoc.status.getApplication === Status.Request;
     }
   },
   async mounted() {
