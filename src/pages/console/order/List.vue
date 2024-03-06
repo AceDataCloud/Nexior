@@ -99,10 +99,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IOrder, IOrderListResponse, orderOperator, OrderState } from '@/operators/order';
+import { orderOperator } from '@/operators/order';
 import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { ElRow, ElCol, ElTable, ElTableColumn, ElButton, ElTag, ElCard } from 'element-plus';
+import { IOrder, IOrderListResponse, OrderState } from '@/models';
 
 interface IData {
   orders: IOrder[];

@@ -5,12 +5,12 @@
         <conversations class="side" />
         <div class="chat">
           <div class="status">
-            <api-status
+            <application-status
               :initializing="initializing"
               :application="application"
               :need-apply="needApply"
-              :api-id="apiId"
-              @refresh="$store.dispatch('chatdoc/getApplications')"
+              :service="service"
+              @refresh="$store.dispatch('chatdoc/getApplication')"
             />
           </div>
           <div class="dialogue">
@@ -40,14 +40,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Chatdoc.vue';
-import {
-  IApplication,
-  IChatdocChatResponse,
-  IChatdocConversation,
-  IChatdocMessageState,
-  IChatdocRepository,
-  chatdocOperator
-} from '@/operators';
+import { chatdocOperator } from '@/operators';
 import Conversations from '@/components/chatdoc/Conversations.vue';
 import Message from '@/components/chatdoc/Message.vue';
 import InputBox from '@/components/chatdoc/InputBox.vue';
@@ -58,13 +51,13 @@ import {
   ROLE_ASSISTANT,
   ROLE_USER
 } from '@/constants';
-import { API_ID_CHATDOC_CHAT } from '@/operators/chatdoc/constants';
 import { log } from '@/utils';
 import { ROUTE_CHATDOC_CONVERSATION } from '@/router';
 import axios from 'axios';
 import { isJSONString } from '@/utils/is';
-import { Status } from '@/store/common/models';
-import ApiStatus from '@/components/common/ApiStatus.vue';
+import { Status } from '@/models';
+import ApplicationStatus from '@/components/application/Status.vue';
+import { IChatdocChatResponse, IChatdocConversation, IChatdocMessageState, IChatdocRepository } from '@/models';
 
 export default defineComponent({
   name: 'ChatdocChat',
@@ -73,7 +66,7 @@ export default defineComponent({
     Conversations,
     Message,
     InputBox,
-    ApiStatus
+    ApplicationStatus
   },
   data() {
     return {
@@ -81,7 +74,6 @@ export default defineComponent({
       repositoryId: this.$route.params.repositoryId.toString(),
       answering: false,
       question: ''
-      // references: []
     };
   },
   computed: {
@@ -107,19 +99,16 @@ export default defineComponent({
       return this.$route.params.conversationId?.toString();
     },
     application() {
-      return this.applications?.find((application: IApplication) => application.api?.id === API_ID_CHATDOC_CHAT);
-    },
-    applications() {
-      return this.$store.state.chatdoc.applications;
+      return this.$store.state.chatdoc.application;
     },
     needApply() {
-      return this.$store.state.chatdoc.getApplicationsStatus === Status.Success && !this.application;
+      return this.$store.state.chatdoc.status.getApplication === Status.Success && !this.application;
     },
     initializing() {
-      return this.$store.state.chatdoc.getApplicationsStatus === Status.Request;
+      return this.$store.state.chatdoc.status.getApplication === Status.Request;
     },
-    apiId() {
-      return API_ID_CHATDOC_CHAT;
+    service() {
+      return this.$store.state.chatdoc.service;
     }
   },
   async mounted() {
@@ -153,14 +142,12 @@ export default defineComponent({
       }, 0);
     },
     async onFetchAnswer() {
-      const token = this.application?.credential?.token;
-      const endpoint = this.application?.api?.endpoint;
-      const path = this.application?.api?.path;
+      const token = this.application?.credentials?.[0]?.token;
       const question = this.question;
       log(this.onFetchAnswer, 'validated', question);
       // reset question and references
       this.question = '';
-      if (!token || !endpoint || !question || !path) {
+      if (!token || !question) {
         console.error('no token or endpoint or question');
         this.messages.push({
           error: {

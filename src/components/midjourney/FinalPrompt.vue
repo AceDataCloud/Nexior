@@ -8,6 +8,7 @@
 <script>
 import { defineComponent } from 'vue';
 import { ElAlert } from 'element-plus';
+
 export default defineComponent({
   name: 'FinalPrompt',
   components: {

@@ -1,10 +1,12 @@
-import { IApplication } from '@/operators';
-import { Status } from '../common/models';
-import { IChatdocRepository } from '@/operators/chatdoc/models';
+import { IApplication, IChatdocRepository, IService, Status } from '@/models';
 
 export interface IChatdocState {
-  applications: IApplication[] | undefined;
-  getApplicationsStatus: Status | undefined;
+  service: IService | undefined;
+  application: IApplication | undefined;
   repositories: IChatdocRepository[] | undefined;
-  getRepositoriesStatus: Status | undefined;
+  status: {
+    getService: Status;
+    getApplication: Status;
+    getRepositories: Status;
+  };
 }

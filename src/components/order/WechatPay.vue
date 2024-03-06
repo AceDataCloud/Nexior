@@ -17,10 +17,11 @@
 </template>
 
 <script lang="ts">
-import { IOrder, IOrderDetailResponse, orderOperator, OrderState } from '@/operators';
+import { orderOperator } from '@/operators';
 import { defineComponent } from 'vue';
 import { ElDialog, ElRow, ElCol } from 'element-plus';
 import QrCode from 'vue-qrcode';
+import { IOrder, IOrderDetailResponse, OrderState } from '@/models';
 
 interface IData {
   refreshTimer: number | undefined;

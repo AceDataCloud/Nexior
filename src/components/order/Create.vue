@@ -46,7 +46,7 @@
 </template>
 
 <script lang="ts">
-import { IApplication, IApplicationType, IOrderDetailResponse, IPackage, orderOperator } from '@/operators';
+import { IApplication, IApplicationType, IOrderDetailResponse, IPackage } from '@/models';
 import { defineComponent } from 'vue';
 import { ElMessage } from 'element-plus';
 import { ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
@@ -92,17 +92,12 @@ export default defineComponent({
   },
   computed: {
     price() {
-      if (this.application?.type === IApplicationType.API) {
-        if (this.application.api?.price && this.form.amount) {
-          return this.form.amount * this.application.api?.price;
-        }
-      }
       return 0;
     },
     package() {
       if (this.application?.type === IApplicationType.API) {
-        if (this.application.api?.packages && this.form.packageId) {
-          const filterPackages = this.application.api?.packages.filter((item) => item.id === this.form.packageId);
+        if (this.application.service?.packages && this.form.packageId) {
+          const filterPackages = this.application.service?.packages.filter((item) => item.id === this.form.packageId);
           if (filterPackages.length > 0) {
             return filterPackages[0];
           }

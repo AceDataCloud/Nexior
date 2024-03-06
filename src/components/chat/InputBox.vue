@@ -50,8 +50,9 @@
 import { defineComponent } from 'vue';
 import { ElInput, ElMessage, ElTooltip, ElUpload } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { CHAT_MODEL_CHATGPT4_VISION, IChatModel } from '@/operators';
+import { IChatModel } from '@/models';
 import { getBaseUrlData } from '@/utils';
+import { CHAT_MODEL_GPT_4_VISION } from '@/constants';
 
 export default defineComponent({
   name: 'InputBox',
@@ -96,7 +97,7 @@ export default defineComponent({
       return this.fileList.map((file: UploadFile) => file?.response?.file_url);
     },
     canUpload() {
-      return [CHAT_MODEL_CHATGPT4_VISION.name].includes(this.model.name);
+      return [CHAT_MODEL_GPT_4_VISION.name].includes(this.model.name);
     },
     model(): IChatModel {
       return this.$store.state.chat.model;

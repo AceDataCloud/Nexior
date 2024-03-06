@@ -1,19 +1,11 @@
-import {
-  IApplication,
-  IMidjourneyChannel,
-  IMidjourneyImagineTask,
-  IMidjourneyPreset,
-  MIDJOURNEY_CHANNEL_FAST,
-  MIDJOURNEY_CHANNEL_RELAX,
-  MIDJOURNEY_CHANNEL_TURBO,
-  apiUsageOperator,
-  applicationOperator,
-  midjourneyOperator
-} from '@/operators';
+import { applicationOperator, midjourneyOperator, serviceOperator } from '@/operators';
 import { IMidjourneyState } from './models';
 import { ActionContext } from 'vuex';
 import { log } from '@/utils/log';
-import { IRootState, Status } from '../common/models';
+import { IRootState } from '../common/models';
+import { IApplication, IMidjourneyImagineTask, IMidjourneyMode, IMidjourneyPreset, IService } from '@/models';
+import { Status } from '@/models/common';
+import { MIDJOURNEY_SERVICE_ID } from '@/constants';
 
 export const resetAll = ({ commit }: ActionContext<IMidjourneyState, IRootState>): void => {
   commit('resetAll');
@@ -23,71 +15,106 @@ export const setPreset = ({ commit }: any, payload: IMidjourneyPreset) => {
   commit('setPreset', payload);
 };
 
-export const setChannel = ({ commit }: any, payload: IMidjourneyChannel) => {
-  commit('setChannel', payload);
+export const setMode = ({ commit }: any, payload: IMidjourneyMode) => {
+  commit('setMode', payload);
 };
 
-export const setApplications = ({ commit }: any, payload: IApplication[]) => {
-  commit('setApplications', payload);
+export const setService = async ({ commit }: any, payload: IService): Promise<void> => {
+  log(setService, 'set service', payload);
+  commit('setService', payload);
 };
 
-export const getApplications = async ({
+export const setApplication = ({ commit }: any, payload: IApplication[]) => {
+  commit('setApplication', payload);
+};
+
+export const getApplication = async ({
   commit,
+  state,
   rootState
-}: ActionContext<IMidjourneyState, IRootState>): Promise<IApplication[]> => {
-  log(getApplications, 'start to get application for midjourney');
-  commit('setGetApplicationsStatus', Status.Request);
-  const { data: applications } = await applicationOperator.getAll({
-    user_id: rootState.user.id,
-    api_id: [MIDJOURNEY_CHANNEL_FAST.apiId, MIDJOURNEY_CHANNEL_RELAX.apiId, MIDJOURNEY_CHANNEL_TURBO.apiId]
+}: ActionContext<IMidjourneyState, IRootState>): Promise<IApplication> => {
+  log(getApplication, 'start to get application for midjourney');
+  return new Promise(async (resolve, reject) => {
+    state.status.getApplication = Status.Request;
+    applicationOperator
+      .getAll({
+        user_id: rootState.user.id,
+        service_id: MIDJOURNEY_SERVICE_ID
+      })
+      .then((response) => {
+        state.status.getApplication = Status.Success;
+        commit('setApplication', response.data.items[0]);
+        resolve(response.data.items[0]);
+      })
+      .catch((error) => {
+        state.status.getApplication = Status.Error;
+        reject(error);
+      });
   });
-  log(getApplications, 'get application for midjourney success', applications);
-  commit('setGetApplicationsStatus', Status.Success);
-  commit('setApplications', applications?.items);
-  return applications.items;
 };
 
 export const setImagineTasks = ({ commit }: any, payload: IMidjourneyImagineTask[]) => {
   commit('setImagineTasks', payload);
 };
 
+export const getService = async ({ commit, state }: ActionContext<IMidjourneyState, IRootState>): Promise<IService> => {
+  return new Promise(async (resolve, reject) => {
+    log(getService, 'start to get service for midjourney');
+    state.status.getService = Status.Request;
+    serviceOperator
+      .get(MIDJOURNEY_SERVICE_ID)
+      .then((response) => {
+        state.status.getService = Status.Success;
+        commit('setService', response.data);
+        resolve(response.data);
+      })
+      .catch((error) => {
+        state.status.getService = Status.Error;
+        reject(error);
+      });
+  });
+};
+
 export const getImagineTasks = async (
-  { commit, state, rootState }: ActionContext<IMidjourneyState, IRootState>,
+  { commit, state }: ActionContext<IMidjourneyState, IRootState>,
   { offset, limit }: { offset?: number; limit?: number }
 ): Promise<IMidjourneyImagineTask[]> => {
-  log(getImagineTasks, 'start to get imagine tasks', offset, limit);
-  commit('setGetImagineTasksStatus', Status.Request);
-  const {
-    data: { items: apiUsages, count }
-  } = await apiUsageOperator.getAll({
-    user_id: rootState.user.id,
-    // @ts-ignore
-    application_id: state.applications?.map((application: IApplication) => application.id),
-    offset,
-    limit,
-    ordering: '-created_at'
+  return new Promise(async (resolve, reject) => {
+    log(getImagineTasks, 'start to get imagine tasks', offset, limit);
+    const application = state.application;
+    const token = application?.credentials?.[0]?.token;
+    if (!token) {
+      return reject('no token');
+    }
+    midjourneyOperator
+      .tasks(
+        {
+          applicationId: state.application?.id
+        },
+        {
+          token
+        }
+      )
+      .then((response) => {
+        log(getImagineTasks, 'get imagine tasks success', response.data.items);
+        commit('setImagineTasks', response.data.items);
+        commit('setImagineTasksTotal', response.data.count);
+        resolve(response.data.items);
+      })
+      .catch((error) => {
+        return reject(error);
+      });
   });
-  log(getImagineTasks, 'get imagine api usage success', apiUsages);
-  let tasks = (await midjourneyOperator.tasks(apiUsages.map((apiUsage) => apiUsage.metadata?.task_id as string))).data;
-  tasks = tasks.map((task: IMidjourneyImagineTask) => {
-    const apiUsage = apiUsages.filter((apiUsage) => apiUsage.metadata?.task_id === task?.id)[0];
-    return {
-      ...task,
-      created_at: apiUsage.created_at
-    };
-  });
-  commit('setImagineTasksTotal', count);
-  commit('setGetImagineTasksStatus', Status.Success);
-  commit('setImagineTasks', tasks);
-  return tasks;
 };
 
 export default {
+  setService,
+  getService,
   resetAll,
   setPreset,
-  setChannel,
-  setApplications,
-  getApplications,
+  setMode,
+  setApplication,
+  getApplication,
   setImagineTasks,
   getImagineTasks
 };

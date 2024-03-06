@@ -9,12 +9,12 @@
           {{ $t('chatdoc.message.introductionForRepository') }}
         </div>
         <div class="status">
-          <api-status
+          <application-status
             :initializing="initializing"
             :application="application"
             :need-apply="needApply"
-            :api-id="apiId"
-            @refresh="$store.dispatch('chatdoc/getApplications')"
+            :service="service"
+            @refresh="$store.dispatch('chatdoc/getApplication')"
           />
         </div>
         <el-row class="repositories" :gutter="15">
@@ -63,13 +63,12 @@
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Chatdoc.vue';
 import { ElCard, ElRow, ElCol, ElDropdown, ElDropdownItem, ElDropdownMenu, ElMessage } from 'element-plus';
-import { IApplication, IChatdocRepository } from '@/operators';
+import { IChatdocRepository } from '@/models';
 import { ROUTE_CHATDOC_MANAGE } from '@/router';
 import CreateRepository from '@/components/chatdoc/CreateRepository.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import ApiStatus from '@/components/common/ApiStatus.vue';
-import { Status } from '@/store/common/models';
-import { API_ID_CHATDOC_REPOSITORIES } from '@/operators/chatdoc/constants';
+import ApplicationStatus from '@/components/application/Status.vue';
+import { Status } from '@/models';
 
 export default defineComponent({
   name: 'ChatdocKnowledge',
@@ -83,31 +82,26 @@ export default defineComponent({
     ElDropdown,
     ElDropdownItem,
     ElDropdownMenu,
-    ApiStatus
+    ApplicationStatus
   },
   data() {
     return {};
   },
   computed: {
-    apiId() {
-      return API_ID_CHATDOC_REPOSITORIES;
-    },
     repositories() {
       return this.$store.state.chatdoc.repositories;
     },
     needApply() {
-      return this.$store.state.chatdoc.getApplicationsStatus === Status.Success && !this.application;
-    },
-    applications() {
-      return this.$store.state.chatdoc.applications;
+      return this.$store.state.chatdoc.status.getApplication === Status.Success && !this.application;
     },
     application() {
-      return this.applications?.find(
-        (application: IApplication) => application.api?.id === API_ID_CHATDOC_REPOSITORIES
-      );
+      return this.$store.state.chatdoc.application;
+    },
+    service() {
+      return this.$store.state.chatdoc.service;
     },
     initializing() {
-      return this.$store.state.chatdoc.getApplicationsStatus === Status.Request;
+      return this.$store.state.chatdoc.status.getApplication === Status.Request;
     }
   },
   async mounted() {},

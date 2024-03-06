@@ -1,39 +1,31 @@
-import { IApplication, IChatConversation, IChatModel } from '@/operators';
+import { IApplication, IChatConversation, IChatModel, IService } from '@/models';
 import { IChatState } from './models';
-import { Status } from '../common/models';
 
 export const resetAll = (state: IChatState): void => {
-  state.applications = [];
-  state.getApplicationsStatus = Status.None;
-  state.conversations = [];
-  state.getConversationsStatus = Status.None;
+  state.application = undefined;
+  state.conversations = undefined;
 };
 
 export const setModel = (state: IChatState, payload: IChatModel): void => {
   state.model = payload;
 };
 
-export const setApplications = (state: IChatState, payload: IApplication[]): void => {
-  state.applications = payload;
+export const setApplication = (state: IChatState, payload: IApplication): void => {
+  state.application = payload;
 };
 
-export const setGetApplicationsStatus = (state: IChatState, payload: Status): void => {
-  state.getApplicationsStatus = payload;
+export const setService = (state: IChatState, payload: IService): void => {
+  state.service = payload;
 };
 
 export const setConversations = (state: IChatState, payload: IChatConversation[]): void => {
   state.conversations = payload;
 };
 
-export const setGetConversationsStatus = (state: IChatState, payload: Status): void => {
-  state.getConversationsStatus = payload;
-};
-
 export default {
   setModel,
-  setApplications,
-  setGetApplicationsStatus,
+  setService,
   setConversations,
-  setGetConversationsStatus,
+  setApplication,
   resetAll
 };

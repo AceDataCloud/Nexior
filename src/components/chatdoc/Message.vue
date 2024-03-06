@@ -27,7 +27,7 @@ import AnsweringMark from './AnsweringMark.vue';
 import copy from 'copy-to-clipboard';
 import { ElAlert, ElButton } from 'element-plus';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
-import { IChatdocMessage, IChatdocMessageState } from '@/operators';
+import { IChatdocMessage, IChatdocMessageState } from '@/models';
 import CopyToClipboard from '../common/CopyToClipboard.vue';
 import {
   ERROR_CODE_API_ERROR,

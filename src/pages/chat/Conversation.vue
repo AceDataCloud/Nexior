@@ -2,12 +2,12 @@
   <layout>
     <template #chat>
       <model-selector class="model-selector" />
-      <api-status
+      <application-status
         :initializing="initializing"
         :application="application"
         :need-apply="needApply"
-        :api-id="model.apiId"
-        @refresh="$store.dispatch('chat/getApplications')"
+        :service="service"
+        @refresh="$store.dispatch('chat/getApplication')"
       />
       <div class="dialogue">
         <introduction v-if="messages.length === 0" @draft="onDraft" />
@@ -44,21 +44,21 @@ import {
   IChatModel,
   IApplication,
   IChatMessageState,
-  IChatAskResponse,
-  chatOperator,
+  IChatConversationResponse,
   IChatConversation,
   IChatMessage
-} from '@/operators';
+} from '@/models';
 import InputBox from '@/components/chat/InputBox.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
-import ApiStatus from '@/components/common/ApiStatus.vue';
 import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router';
-import { Status } from '@/store/common/models';
+import { Status } from '@/models';
 import { log } from '@/utils/log';
 import Introduction from '@/components/chat/Introduction.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isJSONString } from '@/utils/is';
+import { chatOperator } from '@/operators';
+import ApplicationStatus from '@/components/application/Status.vue';
 
 export interface IData {
   question: string;
@@ -74,7 +74,7 @@ export default defineComponent({
     Introduction,
     ModelSelector,
     Message,
-    ApiStatus,
+    ApplicationStatus,
     Layout
   },
   data(): IData {
@@ -100,20 +100,20 @@ export default defineComponent({
         (conversation: IChatConversation) => conversation.id === this.conversationId
       );
     },
+    service() {
+      return this.$store.state.chat.service;
+    },
     application() {
-      return this.applications?.find((application: IApplication) => application.api?.id === this.model.apiId);
+      return this.$store.state.chat.application;
     },
     needApply() {
-      return this.$store.state.chat.getApplicationsStatus === Status.Success && !this.application;
-    },
-    applications() {
-      return this.$store.state.chat.applications;
+      return this.$store.state.chat.status.getApplication === Status.Success && !this.application;
     },
     conversations() {
       return this.$store.state.chat.conversations;
     },
     initializing() {
-      return this.$store.state.chat.getApplicationsStatus === Status.Request;
+      return this.$store.state.chat.status.getApplication === Status.Request;
     }
   },
   watch: {
@@ -147,7 +147,7 @@ export default defineComponent({
     },
     async onModelChanged() {
       await this.onCreateNewConversation();
-      await this.$store.dispatch('chat/getApplications');
+      await this.$store.dispatch('chat/getApplication');
     },
     async onSubmit() {
       if (this.references.length > 0) {
@@ -185,16 +185,14 @@ export default defineComponent({
       }, 0);
     },
     async onFetchAnswer() {
-      const token = this.application?.credential?.token;
-      const endpoint = this.application?.api?.endpoint;
-      const path = this.application?.api?.path;
+      const token = this.application?.credentials?.[0]?.token;
       const question = this.question;
       const references = this.references;
       log(this.onFetchAnswer, 'validated', question, references);
       // reset question and references
       this.question = '';
       this.references = [];
-      if (!token || !endpoint || !question || !path) {
+      if (!token || !question) {
         console.error('no token or endpoint or question');
         this.messages.push({
           error: {
@@ -216,24 +214,23 @@ export default defineComponent({
       // request server to get answer
       this.answering = true;
       chatOperator
-        .askQuestion(
+        .chatConversation(
           {
             question,
+            model: this.model.name,
             references,
-            conversation_id: this.conversationId,
+            id: this.conversationId,
             stateful: true
           },
           {
             token,
-            endpoint,
-            path,
-            stream: (response: IChatAskResponse) => {
+            stream: (response: IChatConversationResponse) => {
               this.messages[this.messages.length - 1] = {
                 role: ROLE_ASSISTANT,
                 content: response.answer,
                 state: IChatMessageState.ANSWERING
               };
-              conversationId = response.conversation_id;
+              conversationId = response?.id;
               this.onScrollDown();
             }
           }
@@ -256,7 +253,7 @@ export default defineComponent({
           }
           this.onScrollDown();
           await this.$store.dispatch('chat/getConversations');
-          await this.$store.dispatch('chat/getApplications');
+          await this.$store.dispatch('chat/getApplication');
         })
         .catch((error) => {
           if (this.messages && this.messages.length > 0) {
@@ -268,7 +265,7 @@ export default defineComponent({
               code: ERROR_CODE_CANCELED
             };
           } else if (error?.response?.data) {
-            let data = error?.response?.data;
+            let data = error?.response?.data?.error;
             if (isJSONString(data)) {
               data = JSON.parse(data);
             }

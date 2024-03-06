@@ -1,1 +1,1 @@
-export default ['chatdoc.repositories', 'chatdoc.applications'];
+export default ['chatdoc.repositories', 'chatdoc.service', 'chatdoc.application'];

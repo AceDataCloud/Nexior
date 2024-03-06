@@ -7,9 +7,10 @@
 </template>
 
 <script lang="ts">
-import { IOrder, IOrderDetailResponse, orderOperator, OrderState } from '@/operators';
+import { orderOperator } from '@/operators';
 import { defineComponent } from 'vue';
 import { ElDialog } from 'element-plus';
+import { IOrder, IOrderDetailResponse, OrderState } from '@/models';
 
 interface IData {
   refreshTimer: number | undefined;
