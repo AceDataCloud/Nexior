@@ -265,7 +265,7 @@ export default defineComponent({
               code: ERROR_CODE_CANCELED
             };
           } else if (error?.response?.data) {
-            let data = error?.response?.data;
+            let data = error?.response?.data?.error;
             if (isJSONString(data)) {
               data = JSON.parse(data);
             }

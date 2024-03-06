@@ -45,8 +45,8 @@
         <p class="description">
           <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
           {{ $t('midjourney.field.failureReason') }}:
-          {{ modelValue?.response?.detail }}
-          <copy-to-clipboard :content="modelValue?.response?.detail!" class="btn-copy" />
+          {{ modelValue?.response?.error?.message }}
+          <copy-to-clipboard :content="modelValue?.response?.error?.message!" class="btn-copy" />
         </p>
         <p class="description">
           <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
@@ -91,9 +91,9 @@
       </p>
     </div>
     <div class="extra">
-      <p class="datetime">
+      <p v-if="modelValue?.created_at" class="datetime">
         <font-awesome-icon icon="fa-regular fa-clock" class="mr-1" />
-        {{ $dayjs.format(modelValue?.created_at) }}
+        {{ $dayjs.format(new Date(parseFloat(modelValue?.created_at) * 1000)) }}
       </p>
     </div>
   </div>
@@ -164,6 +164,8 @@ export default defineComponent({
         [MidjourneyImagineAction.UPSCALE_4X]: 'Upscale 4x',
         [MidjourneyImagineAction.REDO_UPSCALE_2X]: 'Redo Upscale 2x',
         [MidjourneyImagineAction.REDO_UPSCALE_4X]: 'Redo Upscale 4x',
+        [MidjourneyImagineAction.REDO_UPSCALE_SUBTLE]: 'Redo Upscale (Subtle)',
+        [MidjourneyImagineAction.REDO_UPSCALE_CREATIVE]: 'Redo Upscale (Creative)',
         [MidjourneyImagineAction.SQUARE]: 'Make Square',
         [MidjourneyImagineAction.PAN_LEFT]: '⬅️',
         [MidjourneyImagineAction.PAN_UP]: '⬆️',
@@ -191,6 +193,8 @@ export default defineComponent({
         [MidjourneyImagineAction.UPSCALE_CREATIVE]: this.$t('midjourney.description.upscale_creative'),
         [MidjourneyImagineAction.REDO_UPSCALE_2X]: this.$t('midjourney.description.redo_upscale_2x'),
         [MidjourneyImagineAction.REDO_UPSCALE_4X]: this.$t('midjourney.description.redo_upscale_4x'),
+        [MidjourneyImagineAction.REDO_UPSCALE_SUBTLE]: this.$t('midjourney.description.redo_upscale_subtle'),
+        [MidjourneyImagineAction.REDO_UPSCALE_CREATIVE]: this.$t('midjourney.description.redo_upscale_creative'),
         [MidjourneyImagineAction.SQUARE]: this.$t('midjourney.description.square'),
         [MidjourneyImagineAction.PAN_LEFT]: this.$t('midjourney.description.pan_left'),
         [MidjourneyImagineAction.PAN_UP]: this.$t('midjourney.description.pan_up'),

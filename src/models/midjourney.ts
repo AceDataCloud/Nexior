@@ -43,7 +43,9 @@ export enum MidjourneyImagineAction {
   UPSCALE_2X = 'upscale_2x',
   UPSCALE_4X = 'upscale_4x',
   REDO_UPSCALE_2X = 'redo_upscale_2x',
-  REDO_UPSCALE_4X = 'redo_upscale_4x'
+  REDO_UPSCALE_4X = 'redo_upscale_4x',
+  REDO_UPSCALE_SUBTLE = 'redo_upscale_subtle',
+  REDO_UPSCALE_CREATIVE = 'redo_upscale_creative'
 }
 
 export enum MidjourneyImagineState {

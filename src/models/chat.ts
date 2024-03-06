@@ -22,7 +22,7 @@ export interface IChatModel {
 
 interface IError {
   code: string;
-  detail?: string;
+  message?: string;
 }
 
 export enum IChatMessageState {

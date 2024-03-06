@@ -45,7 +45,7 @@ import ApplicationStatus from '@/components/application/Status.vue';
 import TaskBriefList from '@/components/midjourney/tasks/TaskBriefList.vue';
 import FinalPrompt from '@/components/midjourney/FinalPrompt.vue';
 import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
-import { Status } from '@/models';
+import { MidjourneyImagineMode, Status } from '@/models';
 import { IMidjourneyImagineRequest, IApplicationDetailResponse, IApplication, MidjourneyImagineAction } from '@/models';
 
 interface IData {
@@ -193,6 +193,7 @@ export default defineComponent({
     },
     async onGenerate() {
       const request = {
+        mode: this.mode.name as MidjourneyImagineMode,
         prompt: this.finalPrompt,
         action: MidjourneyImagineAction.GENERATE,
         translation: this.preset?.translation,

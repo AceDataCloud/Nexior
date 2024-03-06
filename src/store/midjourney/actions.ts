@@ -96,7 +96,9 @@ export const getImagineTasks = async (
         }
       )
       .then((response) => {
+        log(getImagineTasks, 'get imagine tasks success', response.data.items);
         commit('setImagineTasks', response.data.items);
+        commit('setImagineTasksTotal', response.data.count);
         resolve(response.data.items);
       })
       .catch((error) => {
