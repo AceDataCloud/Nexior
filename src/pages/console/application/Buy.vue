@@ -79,7 +79,6 @@ import {
   ElForm,
   ElFormItem,
   ElButton,
-  ElInputNumber,
   ElDivider,
   ElRadioGroup,
   ElRadioButton
@@ -106,7 +105,6 @@ export default defineComponent({
     ElCard,
     ElForm,
     ElFormItem,
-    ElInputNumber,
     ElButton,
     ElDivider,
     ElRadioGroup,
