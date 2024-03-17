@@ -9,24 +9,30 @@
       <el-row>
         <el-col :span="24">
           <el-card shadow="hover">
-            <el-table v-loading="loading" :data="applications" stripe table-layout="fixed">
-              <el-table-column prop="id" :label="$t('application.field.id')" width="300px" class-name="text-center">
+            <el-table
+              v-loading="loading"
+              :data="applications"
+              stripe
+              table-layout="fixed"
+              :empty-text="$t('common.message.noData')"
+            >
+              <el-table-column prop="id" :label="$t('application.field.id')" width="220px" class-name="text-center">
                 <template #default="scope">
                   <span>{{ scope.row.id }}</span>
                   <span class="copy">
-                    <copy-to-clipboard :content="scope?.row?.id" />
+                    <copy-to-clipboard :content="scope?.row?.id" class="inline-block" />
                   </span>
                 </template>
               </el-table-column>
-              <el-table-column :label="$t('application.field.name')" width="220px">
+              <el-table-column :label="$t('application.field.name')" width="180px">
                 <template #default="scope">
-                  <span v-if="scope.row.type === applicationType.API">{{ scope.row?.api?.title }}</span>
+                  <span>{{ scope.row?.service?.title }}</span>
                 </template>
               </el-table-column>
               <el-table-column
                 prop="remaining_amount"
                 :label="$t('application.field.remainingAmount')"
-                width="120px"
+                width="160px"
                 class-name="text-center"
               >
                 <template #default="scope">
@@ -36,20 +42,11 @@
               <el-table-column
                 prop="used_amount"
                 :label="$t('application.field.usedAmount')"
-                width="120px"
+                width="160px"
                 class-name="text-center"
               >
                 <template #default="scope">
                   <span>{{ getUsedAmount(scope.row) }}</span>
-                </template>
-              </el-table-column>
-              <el-table-column fixed="right" width="100px">
-                <template #default="scope">
-                  <div class="float-right">
-                    <el-button type="primary" @click="onBuyMore(scope?.row)">
-                      {{ $t('application.button.buyMore') }}
-                    </el-button>
-                  </div>
                 </template>
               </el-table-column>
             </el-table>
@@ -74,7 +71,7 @@ import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { ElTable, ElRow, ElCol, ElTableColumn, ElButton, ElCard } from 'element-plus';
 import { ROUTE_CONSOLE_APPLICATION_BUY } from '@/router/constants';
-import { IApplication, IApplicationListResponse, IApplicationType, ICredentialType } from '@/models';
+import { IApplication, IApplicationListResponse, IApplicationType, ICredentialType, IService } from '@/models';
 
 interface IData {
   applications: IApplication[];
@@ -86,9 +83,9 @@ interface IData {
     amount: number | undefined;
   };
   active: {
+    service: IService | undefined;
     application: IApplication | undefined;
   };
-  applicationType: typeof IApplicationType;
   credentialType: typeof ICredentialType;
 }
 
@@ -107,17 +104,16 @@ export default defineComponent({
   data(): IData {
     return {
       credentialType: ICredentialType,
-      applicationType: IApplicationType,
       applications: [],
       loading: false,
       total: undefined,
       buying: false,
-      // dynamic calculate the limit according to window height
-      limit: Math.floor((window.innerHeight - 300) / 50),
+      limit: 10,
       form: {
         amount: 1
       },
       active: {
+        service: undefined,
         application: undefined
       }
     };
@@ -128,9 +124,6 @@ export default defineComponent({
     },
     page() {
       return parseInt(this.$route.query.page?.toString() || '1');
-    },
-    type() {
-      return (this.$route.query.type?.toString() || IApplicationType.API) as IApplicationType;
     }
   },
   watch: {
@@ -149,19 +142,6 @@ export default defineComponent({
     this.onFetchData();
   },
   methods: {
-    onFilterType(type: string) {
-      if (type === this.type) {
-        return;
-      }
-      this.$router.push({
-        ...this.$route,
-        query: {
-          ...this.$route.query,
-          page: 1,
-          type
-        }
-      });
-    },
     onBuyMore(application: IApplication) {
       this.$router.push({
         name: ROUTE_CONSOLE_APPLICATION_BUY,
@@ -186,7 +166,6 @@ export default defineComponent({
           limit: this.limit,
           offset: (this.page - 1) * this.limit,
           user_id: this.$store.getters.user.id,
-          type: this.type,
           ordering: '-created_at'
         })
         .then(({ data: data }: { data: IApplicationListResponse }) => {
@@ -199,16 +178,18 @@ export default defineComponent({
         });
     },
     getRemainingAmount(application: IApplication) {
-      if (application.type === IApplicationType.API) {
-        const unit = this.$t(`api.unit.${application?.api?.unit}`);
-        return `${application.remaining_amount}${unit}`;
+      if (application.remaining_amount === undefined || application.remaining_amount === null) {
+        return '';
       }
+      const unit = this.$t(`service.unit.${application?.service?.unit}s`);
+      return `${application.remaining_amount?.toFixed(6)} ${unit}`;
     },
     getUsedAmount(application: IApplication) {
-      if (application.type === IApplicationType.API) {
-        const unit = this.$t(`api.unit.${application?.api?.unit}`);
-        return `${application.used_amount}${unit}`;
+      if (application.used_amount === undefined || application.used_amount === null) {
+        return '';
       }
+      const unit = this.$t(`service.unit.${application?.service?.unit}s`);
+      return `${application.used_amount?.toFixed(6)} ${unit}`;
     }
   }
 });

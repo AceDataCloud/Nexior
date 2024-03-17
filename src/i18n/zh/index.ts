@@ -9,9 +9,11 @@ import order from './order';
 import distribution from './distribution';
 import user from './user';
 import chatdoc from './chatdoc';
+import service from './service';
 
 export default {
   chat,
+  service,
   chatdoc,
   user,
   order,
