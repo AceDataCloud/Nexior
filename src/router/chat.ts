@@ -11,12 +11,12 @@ export default {
       }
     },
     {
-      path: 'conversation',
+      path: 'conversations',
       name: ROUTE_CHAT_CONVERSATION_NEW,
       component: () => import('@/pages/chat/Conversation.vue')
     },
     {
-      path: 'conversation/:id',
+      path: 'conversations/:id',
       name: ROUTE_CHAT_CONVERSATION,
       component: () => import('@/pages/chat/Conversation.vue')
     }
