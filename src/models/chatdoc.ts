@@ -15,6 +15,16 @@ export interface IChatdocRepository {
   conversations?: IChatdocConversation[];
 }
 
+export interface IChatdocRepositoryRequest extends IChatdocRepository {
+  action: typeof ACTION_CREATE | typeof ACTION_UPDATE | typeof ACTION_DELETE;
+}
+
+export interface IChatdocRepositoryResponse extends IChatdocRepository {}
+export type IChatdocRepositoriesResponse = {
+  items: IChatdocRepository[];
+  count: number;
+};
+
 export interface IChatdocDocument {
   id: string;
   repository_id: string;
@@ -22,10 +32,23 @@ export interface IChatdocDocument {
   file_name: string;
 }
 
+export interface IChatdocDocumentRequest extends IChatdocDocument {
+  action: typeof ACTION_CREATE | typeof ACTION_UPDATE | typeof ACTION_DELETE;
+  callback_url?: string;
+}
+
+export interface IChatdocDocumentResponse extends IChatdocDocument {}
+
+export type IChatdocDocumentsResponse = {
+  items: IChatdocDocument[];
+  count: number;
+};
+
 export interface IChatdocConversation {
   id: string;
   repository_id: string;
   messages: IChatdocMessage[];
+  question: string;
   editing?: boolean;
   deleting?: boolean;
 }
@@ -44,36 +67,21 @@ export enum IChatdocMessageState {
   FAILED = 'failed'
 }
 
-export interface IChatdocChatRequest {
+export interface IChatdocConversationRequest {
+  id: string;
   repository_id: string;
-  messages: IChatdocMessage[];
+  question: string;
   temperature?: number;
   knowledge_fallback?: boolean;
 }
 
-export interface IChatdocDocumentRequest extends IChatdocDocument {
-  action: typeof ACTION_CREATE | typeof ACTION_UPDATE | typeof ACTION_DELETE;
-  callback_url?: string;
-}
-
-export interface IChatdocDocumentResponse extends IChatdocDocument {}
-
-export type IChatdocConversationsResponse = IChatdocConversation[];
-
-export interface IChatdocRepositoryRequest extends IChatdocRepository {
-  action: typeof ACTION_CREATE | typeof ACTION_UPDATE | typeof ACTION_DELETE;
-}
-
-export interface IChatdocRepositoryResponse extends IChatdocRepository {}
-export type IChatdocRepositoriesResponse = {
-  items: IChatdocRepository[];
+export type IChatdocConversationsResponse = {
+  items: IChatdocConversation[];
   count: number;
 };
-export type IChatdocDocumentsResponse = IChatdocDocument[];
 
-export interface IChatdocChatResponse {
+export interface IChatdocConversationResponse {
+  id: string;
   answer: string;
-  delta_answer: string;
-  repository_id?: string;
-  conversation_id?: string;
+  delta_answer?: string;
 }

@@ -5,7 +5,7 @@ import { getBaseUrlAuth } from '@/utils';
 
 class AuthOperator {
   async refreshToken(payload: IToken): Promise<AxiosResponse<ITokenResponse>> {
-    return httpClient.post('/token/refresh/', payload);
+    return httpClient.post('/auth/refresh/', payload);
   }
 }
 

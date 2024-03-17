@@ -8,7 +8,7 @@ import {
   IChatdocRepositoriesResponse,
   IChatdocRepositoryResponse
 } from '@/models';
-import { ACTION_RETRIEVE_ALL, ACTION_UPDATE, BASE_URL_API } from '@/constants';
+import { ACTION_UPDATE, BASE_URL_API } from '@/constants';
 import { ACTION_CREATE, ACTION_DELETE, ACTION_RETRIEVE, ACTION_RETRIEVE_BATCH } from '@/constants';
 
 class ChatdocOperator {
@@ -77,7 +77,7 @@ class ChatdocOperator {
     return await axios.post(
       `/chatdoc/repositories`,
       {
-        action: ACTION_RETRIEVE_ALL
+        action: ACTION_RETRIEVE_BATCH
       },
       {
         headers: {
@@ -97,7 +97,7 @@ class ChatdocOperator {
     return await axios.post(
       `/chatdoc/documents`,
       {
-        action: ACTION_RETRIEVE_ALL,
+        action: ACTION_RETRIEVE_BATCH,
         repository_id: repositoryId
       },
       {
@@ -111,15 +111,19 @@ class ChatdocOperator {
     );
   }
 
-  async getAllConversations(repositoryId: string): Promise<AxiosResponse<IChatdocConversationsResponse>> {
+  async getAllConversations(
+    repositoryId: string,
+    options: { token: string }
+  ): Promise<AxiosResponse<IChatdocConversationsResponse>> {
     return await axios.post(
       `/chatdoc/conversations`,
       {
-        action: ACTION_RETRIEVE_ALL,
+        action: ACTION_RETRIEVE_BATCH,
         repository_id: repositoryId
       },
       {
         headers: {
+          authorization: `Bearer ${options.token}`,
           accept: 'application/json',
           'content-type': 'application/json'
         },
@@ -273,16 +277,16 @@ class ChatdocOperator {
     );
   }
 
-  async chat(
-    payload: { repositoryId: string; question: string; conversationId?: string; knowledgeFallback?: boolean },
+  async chatConversation(
+    payload: { repositoryId: string; question: string; id?: string; knowledgeFallback?: boolean },
     options: { token: string; stream: (response: IChatdocChatResponse) => void }
   ): Promise<AxiosResponse<IChatdocChatResponse>> {
     return await axios.post(
-      `/chatdoc/chat`,
+      `/chatdoc/conversations`,
       {
         repository_id: payload.repositoryId,
         question: payload.question,
-        conversation_id: payload.conversationId,
+        id: payload.id,
         stateful: true
       },
       {
