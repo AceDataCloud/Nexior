@@ -19,22 +19,22 @@ export default {
       component: () => import('@/pages/chatdoc/Index.vue')
     },
     {
-      path: 'repository/:repositoryId/conversation',
+      path: 'repositories/:repositoryId/conversations',
       name: ROUTE_CHATDOC_CONVERSATION_NEW,
       component: () => import('@/pages/chatdoc/Conversation.vue')
     },
     {
-      path: 'repository/:repositoryId/conversation/:conversationId',
+      path: 'repositories/:repositoryId/conversations/:conversationId',
       name: ROUTE_CHATDOC_CONVERSATION,
       component: () => import('@/pages/chatdoc/Conversation.vue')
     },
     {
-      path: 'repository/:repositoryId/manage',
+      path: 'repositories/:repositoryId/manage',
       name: ROUTE_CHATDOC_MANAGE,
       component: () => import('@/pages/chatdoc/Manage.vue')
     },
     {
-      path: 'repository/:repositoryId',
+      path: 'repositories/:repositoryId',
       name: ROUTE_CHATDOC_SETTING,
       component: () => import('@/pages/chatdoc/Setting.vue')
     }

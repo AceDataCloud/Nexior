@@ -55,12 +55,12 @@ import { log } from '@/utils';
 import { ROUTE_CHATDOC_CONVERSATION } from '@/router';
 import axios from 'axios';
 import { isJSONString } from '@/utils/is';
-import { Status } from '@/models';
+import { IService, Status } from '@/models';
 import ApplicationStatus from '@/components/application/Status.vue';
-import { IChatdocChatResponse, IChatdocConversation, IChatdocMessageState, IChatdocRepository } from '@/models';
+import { IChatdocConversationResponse, IChatdocConversation, IChatdocMessageState, IChatdocRepository } from '@/models';
 
 export default defineComponent({
-  name: 'ChatdocChat',
+  name: 'ChatdocConversation',
   components: {
     Layout,
     Conversations,
@@ -92,7 +92,7 @@ export default defineComponent({
     repository(): IChatdocRepository | undefined {
       return this.$store.state?.chatdoc?.repositories?.find((repository) => repository.id === this.repositoryId);
     },
-    conversations() {
+    conversations(): IChatdocConversation[] | undefined {
       return this.repository?.conversations;
     },
     conversationId(): string | undefined {
@@ -107,21 +107,16 @@ export default defineComponent({
     initializing() {
       return this.$store.state.chatdoc.status.getApplication === Status.Request;
     },
-    service() {
+    service(): IService | undefined {
       return this.$store.state.chatdoc.service;
     }
   },
   async mounted() {
     console.log('start get conversations');
     this.loading = true;
-    this.$store
-      .dispatch('chatdoc/getConversations', { repositoryId: this.repositoryId })
-      .then(() => {
-        this.loading = false;
-      })
-      .catch(() => {
-        this.loading = false;
-      });
+    this.$store.dispatch('chatdoc/getConversations', { repositoryId: this.repositoryId }).finally(() => {
+      this.loading = false;
+    });
   },
   methods: {
     async onSubmit() {
@@ -129,7 +124,6 @@ export default defineComponent({
         content: this.question,
         role: ROLE_USER
       });
-      console.debug('onSubmit', this.question);
       await this.onFetchAnswer();
     },
     async onScrollDown() {
@@ -169,21 +163,21 @@ export default defineComponent({
       // request server to get answer
       this.answering = true;
       chatdocOperator
-        .chat(
+        .chatConversation(
           {
             repositoryId: this.repositoryId,
             question,
-            conversationId: this.conversationId
+            id: this.conversationId
           },
           {
             token,
-            stream: (response: IChatdocChatResponse) => {
+            stream: (response: IChatdocConversationResponse) => {
               this.messages[this.messages.length - 1] = {
                 role: ROLE_ASSISTANT,
                 content: response.answer,
                 state: IChatdocMessageState.ANSWERING
               };
-              conversationId = response.conversation_id;
+              conversationId = response.id;
               this.onScrollDown();
             }
           }

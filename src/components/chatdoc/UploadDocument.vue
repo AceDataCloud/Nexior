@@ -88,6 +88,7 @@ export default defineComponent({
           ElMessage.success(this.$t('chatdoc.message.createDocumentSuccess'));
           this.dialogVisible = false;
           this.$store.dispatch('chatdoc/getDocuments', { repositoryId: this.$route.params.repositoryId });
+          this.$store.dispatch('chatdoc/getApplication');
         })
         .catch(() => {
           ElMessage.error(this.$t('chatdoc.message.createDocumentError'));

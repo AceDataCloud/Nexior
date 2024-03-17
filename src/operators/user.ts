@@ -10,25 +10,25 @@ export interface IInviteesQuery {
 
 class UserOperator {
   async getMe(): Promise<AxiosResponse<IUserDetailResponse>> {
-    return httpClient.get('/me');
+    return httpClient.get('/users/me');
   }
 
   async getInvitees(query: IInviteesQuery): Promise<AxiosResponse<IUserListResponse>> {
-    return httpClient.get('/me/invitees', {
+    return httpClient.get('/users/me/invitees', {
       params: query
     });
   }
 
   async updateMe(data: IUser): Promise<AxiosResponse<IUserDetailResponse>> {
-    return httpClient.put('/me', data);
+    return httpClient.put('/users/me', data);
   }
 
   async getVerify(): Promise<AxiosResponse<IUserDetailResponse>> {
-    return httpClient.get('/verify');
+    return httpClient.get('/users/verify');
   }
 
   async updateVerify(data: IUser): Promise<AxiosResponse<IUserDetailResponse>> {
-    return httpClient.put('/verify', data);
+    return httpClient.put('/users/verify', data);
   }
 }
 
