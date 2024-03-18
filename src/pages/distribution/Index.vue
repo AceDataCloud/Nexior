@@ -4,9 +4,6 @@
       <el-row>
         <el-col :span="24">
           <h2 class="title">{{ $t('common.title.distribution') }}</h2>
-          <p class="message mb-4">
-            {{ $t('distribution.message.distributionDescription') }}
-          </p>
         </el-col>
       </el-row>
       <el-row :gutter="15">
@@ -19,9 +16,9 @@
               </div>
               <div class="text-left">
                 <p class="description">{{ $t('distribution.title.price') }}</p>
-                <p class="value">￥{{ distributionStatus?.price?.toFixed(2) }}</p>
+                <p class="value">${{ distributionStatus?.price?.toFixed(2) }}</p>
               </div>
-              <el-button type="primary" class="btn" @click="goHistory"
+              <el-button type="primary" size="small" class="btn" @click="goHistory"
                 >{{ $t('distribution.button.detail') }}
               </el-button>
             </div>
@@ -36,10 +33,12 @@
               </div>
               <div class="text-left">
                 <p class="description">{{ $t('distribution.title.reward') }}</p>
-                <p class="value">￥{{ distributionStatus?.reward?.toFixed(2) }}</p>
+                <p class="value">${{ distributionStatus?.reward?.toFixed(2) }}</p>
               </div>
-              <el-tooltip effect="dark" :content="$t('distribution.message.howToWithdrawal')" placement="top">
-                <el-button type="primary" class="btn">{{ $t('distribution.button.withdrawal') }} </el-button>
+              <el-tooltip effect="dark" :content="$t('distribution.message.developingWithDrawal')" placement="top">
+                <el-button type="primary" size="small" class="btn"
+                  >{{ $t('distribution.button.withdrawal') }}
+                </el-button>
               </el-tooltip>
             </div>
           </el-card>
@@ -69,7 +68,7 @@
                 <p class="description">{{ $t('distribution.title.inviteesCount') }}</p>
                 <p class="value">{{ inviteesCount }}</p>
               </div>
-              <el-button type="primary" class="btn" @click="goInvitees"
+              <el-button type="primary" size="small" class="btn" @click="goInvitees"
                 >{{ $t('distribution.button.detail') }}
               </el-button>
             </div>
@@ -78,13 +77,67 @@
       </el-row>
       <el-row :gutter="15">
         <el-col :md="12" :xs="24">
+          <el-card shadow="hover" class="level-info mb-4">
+            <el-skeleton v-if="loading" />
+            <div v-else>
+              <h4 class="title">
+                {{ $t('distribution.title.levelInfo') }}
+              </h4>
+              <div class="clear-both overflow-hidden">
+                <div class="float-left description">
+                  <p>{{ $t('distribution.title.currentLevel') }}: L{{ distributionStatus?.level?.level }}</p>
+                  <p>
+                    {{ $t('distribution.title.currentPercentage') }}:
+                    {{ distributionLevelMap[distributionStatus?.level?.level!]?.percentage }}%
+                  </p>
+                </div>
+                <div class="float-right description">
+                  <p>{{ $t('distribution.title.nextLevel') }}: L{{ distributionStatus?.level?.level! + 1 }}</p>
+                  <p>
+                    {{ $t('distribution.title.nextPercentage') }}:
+                    {{ distributionLevelMap[distributionStatus?.level?.level! + 1]?.percentage }}%
+                  </p>
+                </div>
+              </div>
+              <el-progress
+                :text-inside="true"
+                :stroke-width="20"
+                :percentage="getPercentageForNextLevel()"
+                class="mb-2"
+              >
+              </el-progress>
+              <p class="description">
+                {{ $t('distribution.message.deltaPriceForNextLevel') }}: ${{ getDeltaForNextLevel() }}
+              </p>
+              <el-divider />
+              <el-table v-if="distributionLevels" :data="distributionLevels" stripe>
+                <el-table-column :label="$t('distribution.field.level')">
+                  <template #default="scope">
+                    <span class="level">L{{ scope.row?.level }}</span>
+                  </template>
+                </el-table-column>
+                <el-table-column :label="$t('distribution.field.threshold')">
+                  <template #default="scope">
+                    <span class="level">${{ scope.row?.threshold }}</span>
+                  </template>
+                </el-table-column>
+                <el-table-column :label="$t('distribution.field.percentage')">
+                  <template #default="scope">
+                    <span class="level">{{ scope.row?.percentage }}%</span>
+                  </template>
+                </el-table-column>
+              </el-table>
+            </div>
+          </el-card>
+        </el-col>
+        <el-col :md="12" :xs="24">
           <el-card shadow="hover" class="distribution-info mb-4">
             <el-skeleton v-if="loading" />
             <div v-else>
               <h4 class="title">
                 {{ $t('distribution.title.distributionLink') }}
               </h4>
-              <el-divider class="mt-4 mb-4" />
+              <el-divider />
               <div class="link-wrapper">
                 <font-awesome-icon v-if="false" icon="fa-solid fa-link" class="icon" />
                 <a :href="distributionLink" class="link">
@@ -92,14 +145,9 @@
                 </a>
                 <copy-to-clipboard :content="distributionLink" />
               </div>
-              <div class="qr-wrapper">
-                <qr-code
-                  v-if="distributionLink"
-                  :value="distributionLink"
-                  :size="150"
-                  class="block mb-2 ml-auto mr-auto"
-                />
-                <p>
+              <div class="qr-wrapper ml-auto mr-auto">
+                <qr-code v-if="distributionLink" :value="distributionLink" :size="150" class="mb-2 ml-auto mr-auto" />
+                <p class="mt-0">
                   {{ $t('distribution.message.distributionQrDescription') }}
                 </p>
               </div>
@@ -115,65 +163,6 @@
                   </el-tooltip>
                 </span>
               </p>
-            </div>
-          </el-card>
-        </el-col>
-        <el-col :md="12" :xs="24">
-          <el-card shadow="hover" class="level-info mb-4">
-            <el-skeleton v-if="loading" />
-            <div v-else>
-              <h4 class="title">
-                {{ $t('distribution.title.levelInfo') }}
-              </h4>
-              <el-divider class="mt-4 mb-4" />
-              <div class="clear-both overflow-hidden">
-                <div class="float-left description">
-                  <p class="mt-0">
-                    {{ $t('distribution.title.currentLevel') }}: L{{ distributionStatus?.level?.level }}
-                  </p>
-                  <p class="mt-0">
-                    {{ $t('distribution.title.currentPercentage') }}:
-                    {{ distributionLevelMap[distributionStatus?.level?.level!]?.percentage }}%
-                  </p>
-                </div>
-                <div class="float-right description">
-                  <p class="mt-0">
-                    {{ $t('distribution.title.nextLevel') }}: L{{ distributionStatus?.level?.level! + 1 }}
-                  </p>
-                  <p class="mt-0">
-                    {{ $t('distribution.title.nextPercentage') }}:
-                    {{ distributionLevelMap[distributionStatus?.level?.level! + 1]?.percentage }}%
-                  </p>
-                </div>
-              </div>
-              <el-progress
-                :text-inside="true"
-                :stroke-width="20"
-                :percentage="getPercentageForNextLevel()"
-                class="mb-2"
-              >
-              </el-progress>
-              <p class="description">
-                {{ $t('distribution.message.deltaPriceForNextLevel') }}: ￥{{ getDeltaForNextLevel() }}
-              </p>
-              <el-divider />
-              <el-table v-if="distributionLevels" :data="distributionLevels" stripe>
-                <el-table-column :label="$t('distribution.field.level')">
-                  <template #default="scope">
-                    <span class="level">L{{ scope.row?.level }}</span>
-                  </template>
-                </el-table-column>
-                <el-table-column :label="$t('distribution.field.threshold')">
-                  <template #default="scope">
-                    <span class="level">¥{{ scope.row?.threshold }}</span>
-                  </template>
-                </el-table-column>
-                <el-table-column :label="$t('distribution.field.percentage')">
-                  <template #default="scope">
-                    <span class="level">{{ scope.row?.percentage }}%</span>
-                  </template>
-                </el-table-column>
-              </el-table>
             </div>
           </el-card>
         </el-col>

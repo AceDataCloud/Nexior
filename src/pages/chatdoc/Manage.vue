@@ -21,7 +21,7 @@
           <upload-document />
         </div>
         <div class="documents">
-          <el-table :data="documents" border>
+          <el-table v-loading="loading" :data="documents" border>
             <el-table-column prop="id" label="ID" />
             <el-table-column prop="file_name" :label="$t('chatdoc.field.fileName')" />
             <el-table-column :label="$t('chatdoc.field.fileExtension')">
@@ -49,7 +49,7 @@
             </el-table-column>
             <el-table-column>
               <template #default="scope">
-                <el-button type="danger" @click="onDelete(scope.row.id)">
+                <el-button type="danger" size="small" @click="onDelete(scope.row.id)">
                   {{ $t('common.button.delete') }}
                 </el-button>
               </template>
@@ -64,7 +64,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Chatdoc.vue';
-import { IApplication, IChatdocRepository } from '@/models';
+import { IChatdocRepository } from '@/models';
 import { ElButton, ElTag, ElTable, ElTableColumn, ElMessage } from 'element-plus';
 import UploadDocument from '@/components/chatdoc/UploadDocument.vue';
 import { Status } from '@/models';
