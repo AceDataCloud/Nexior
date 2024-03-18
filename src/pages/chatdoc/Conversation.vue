@@ -187,7 +187,8 @@ export default defineComponent({
           this.messages[this.messages.length - 1].state = IChatdocMessageState.FINISHED;
           await this.$store.dispatch('chatdoc/setConversation', {
             id: conversationId,
-            messages: this.messages
+            messages: this.messages,
+            repositoryId: this.repositoryId
           });
           this.answering = false;
           if (!this.conversationId) {

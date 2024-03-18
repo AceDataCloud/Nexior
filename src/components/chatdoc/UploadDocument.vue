@@ -18,7 +18,10 @@
       :headers="headers"
     >
       <el-icon v-if="!learning" class="el-icon--upload"><upload-filled /></el-icon>
-      <div v-if="!learning" class="el-upload__text">{{ $t('chatdoc.message.dragOrClickToUpload') }}</div>
+      <div v-if="!learning" class="el-upload__text">
+        <p>{{ $t('chatdoc.message.dragOrClickToUpload') }}</p>
+        <p>{{ $t('chatdoc.message.supportedFiles') }}</p>
+      </div>
       <div v-if="learning">{{ $t('chatdoc.message.learningDocument') }}</div>
     </el-upload>
   </el-dialog>

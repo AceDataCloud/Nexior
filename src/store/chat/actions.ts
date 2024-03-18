@@ -110,7 +110,10 @@ export const getConversations = async ({
       .then((response) => {
         log(getConversations, 'get conversations success', response.data?.items);
         commit('setConversations', response.data.items);
-        resolve(response.data.items);
+        const conversations = response.data.items;
+        // reverse the order of conversations
+        conversations.reverse();
+        resolve(conversations);
       })
       .catch((error) => {
         reject(error);

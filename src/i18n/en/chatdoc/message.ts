@@ -27,5 +27,7 @@ export default {
   deleteRepositorySuccess: '删除知识库成功',
   deleteDocumentSuccess: '删除文档成功',
   currentRepository: '当前知识库',
-  nameRequired: '名称不能为空'
+  nameRequired: '名称不能为空',
+  inputRepositoryName: '知识库名称',
+  inputRepositoryDescription: '一句话描述你的知识库'
 };

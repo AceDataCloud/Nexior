@@ -1,11 +1,11 @@
 <template>
-  <el-dialog v-model="dialogVisible" width="500px">
+  <el-dialog v-model="dialogVisible" width="400px">
     <el-form ref="form" label-width="60px">
       <el-form-item :label="$t('chatdoc.field.name')" :prop="form.name">
-        <el-input v-model="form.name" />
+        <el-input v-model="form.name" :placeholder="$t('chatdoc.message.inputRepositoryName')" />
       </el-form-item>
       <el-form-item :label="$t('chatdoc.field.description')" :prop="form.description">
-        <el-input v-model="form.description" />
+        <el-input v-model="form.description" :placeholder="$t('chatdoc.message.inputRepositoryDescription')" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">{{ $t('common.button.create') }}</el-button>
@@ -32,7 +32,7 @@ interface IData {
 }
 
 export default defineComponent({
-  name: 'UploadDocument',
+  name: 'CreateRepository',
   components: {
     ElButton,
     ElDialog,
@@ -66,7 +66,7 @@ export default defineComponent({
         })
         .then(() => {
           this.creating = false;
-          ElMessage.success(this.$t('chatdoc.message.createDocumentSuccess'));
+          ElMessage.success(this.$t('chatdoc.message.createRepositorySuccess'));
           this.dialogVisible = false;
           this.$store.dispatch('chatdoc/getRepositories');
         })

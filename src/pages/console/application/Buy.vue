@@ -63,13 +63,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import {
-  applicationOperator,
-  IApplication,
-  IApplicationDetailResponse,
-  IOrderDetailResponse,
-  orderOperator
-} from '@/operators';
+import { IApplication, IApplicationDetailResponse, IOrderDetailResponse } from '@/models';
 import {
   ElRow,
   ElCol,
@@ -85,6 +79,7 @@ import {
 } from 'element-plus';
 import { ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
 import Price from '@/components/common/Price.vue';
+import { applicationOperator, orderOperator } from '@/operators';
 
 interface IData {
   application: IApplication | undefined;

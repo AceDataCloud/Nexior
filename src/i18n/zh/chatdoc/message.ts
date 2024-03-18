@@ -27,5 +27,7 @@ export default {
   deleteRepositorySuccess: '删除知识库成功',
   deleteDocumentSuccess: '删除文档成功',
   currentRepository: '当前知识库',
-  nameRequired: '名称不能为空'
+  nameRequired: '名称不能为空',
+  supportedFiles:
+    '支持 .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx, .txt'
 };

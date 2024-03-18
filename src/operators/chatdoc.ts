@@ -1,7 +1,7 @@
 import axios, { AxiosProgressEvent, AxiosResponse } from 'axios';
 import {
-  IChatdocChatResponse,
   IChatdocConversation,
+  IChatdocConversationResponse,
   IChatdocConversationsResponse,
   IChatdocDocumentResponse,
   IChatdocDocumentsResponse,
@@ -279,8 +279,8 @@ class ChatdocOperator {
 
   async chatConversation(
     payload: { repositoryId: string; question: string; id?: string; knowledgeFallback?: boolean },
-    options: { token: string; stream: (response: IChatdocChatResponse) => void }
-  ): Promise<AxiosResponse<IChatdocChatResponse>> {
+    options: { token: string; stream: (response: IChatdocConversationResponse) => void }
+  ): Promise<AxiosResponse<IChatdocConversationResponse>> {
     return await axios.post(
       `/chatdoc/conversations`,
       {
@@ -304,7 +304,7 @@ class ChatdocOperator {
           if (lastLine) {
             const jsonData = JSON.parse(lastLine);
             if (options?.stream) {
-              options?.stream(jsonData as IChatdocChatResponse);
+              options?.stream(jsonData as IChatdocConversationResponse);
             }
           }
         }
