@@ -2,7 +2,15 @@ import { IRootState } from '../common/models';
 import { ActionContext } from 'vuex';
 import { log } from '@/utils/log';
 import { IChatdocState } from './models';
-import { IApplication, IChatdocConversation, IChatdocDocument, IChatdocRepository, IService, Status } from '@/models';
+import {
+  IApplication,
+  IChatdocConversation,
+  IChatdocDocument,
+  IChatdocMessage,
+  IChatdocRepository,
+  IService,
+  Status
+} from '@/models';
 import { chatdocOperator, applicationOperator, serviceOperator } from '@/operators';
 import { CHATDOC_SERVICE_ID } from '@/constants';
 
@@ -168,6 +176,29 @@ export const createDocument = async (
   return document;
 };
 
+export const setConversation = async (
+  { commit, state }: any,
+  payload: {
+    id: string;
+    messages: IChatdocMessage[];
+    repositoryId: string;
+  }
+): Promise<void> => {
+  log(setConversation, 'set conversation', payload);
+  const repository: IChatdocRepository | undefined = state.repositories.find(
+    (repository: IChatdocRepository) => repository.id === payload.repositoryId
+  );
+  const conversations = repository?.conversations;
+  if (!conversations) {
+    return Promise.reject('no conversations');
+  }
+  const index = conversations?.findIndex((conversation: IChatdocConversation) => conversation.id === payload.id);
+  if (index > -1) {
+    conversations[index].messages = payload.messages;
+  }
+  log(setConversation, 'set conversation success', conversations);
+};
+
 export const getDocuments = async (
   { commit, state }: ActionContext<IChatdocState, IRootState>,
   payload: { repositoryId: string }
@@ -216,6 +247,8 @@ export const getConversations = async (
       token
     })
   ).data.items;
+  // reverse the order of conversations
+  conversations.reverse();
   log(getConversations, 'get conversations success', conversations);
   commit('setRepository', {
     id: payload.repositoryId,
@@ -247,6 +280,7 @@ export const getRepository = async (
 
 export default {
   setService,
+  setConversation,
   getService,
   createRepository,
   setApplication,
