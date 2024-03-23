@@ -42,17 +42,17 @@
   "description": {
     "aspect": "Changes the aspect ratio of the generated image, default value depends on the model and mode",
     "_aspect.comment": "Description of the aspect parameter",
-    "chaos": "--chaos, adjusts the degree of variation in the generated image, the higher the number, the more unique and unexpected the generated image, range is 0-100, default is 1",
+    "chaos": "Adjusts the degree of variation in the generated image, the higher the number, the more unique and unexpected the generated image, range is 0-100, default is 1",
     "_chaos.comment": "Description of the chaos parameter",
     "fast": "Ignores current settings and runs a single generation task in fast mode, no default value",
     "_fast.comment": "Description of the fast parameter",
     "iw": "Sets the importance of image prompts relative to text prompts during the generation process, range is 0-2, default is 1",
     "_iw.comment": "Description of the iw parameter",
-    "no": "Indicates the generation system to attempt to exclude certain elements, for example \"--no plants\" will attempt to generate images without plants, no default value",
+    "no": "Indicates the generation system to attempt to exclude certain elements, for example --no plants will attempt to generate images without plants, no default value",
     "_no.comment": "Description of the no parameter",
     "quality": "Sets the quality and rendering time of the generated image, range is .25, .5, or 1, default is 1",
     "_quality.comment": "Description of the quality parameter",
-    "random": "Adds a random base style code to the prompt, can use \"--style random-16\", \"--style random-64\", or \"--style random-128\" to get random style effects of different lengths, no default value",
+    "random": "Adds a random base style code to the prompt, can use --style random-16, --style random-64, or --style random-128 to get random style effects of different lengths, no default value",
     "_random.comment": "Description of the random parameter",
     "relax": "Overrides current settings to run a single task in relaxation mode, no default value",
     "_relax.comment": "Description of the relax parameter",
@@ -62,7 +62,7 @@
     "_seed.comment": "Description of the seed parameter",
     "stop": "Stops the task at any stage of the generation process, range is 10-100, default is 100 (i.e., fully generated)",
     "_stop.comment": "Description of the stop parameter",
-    "style": "--style, switches between different versions or styles of Midjourney or Niji models, for example \"raw\", \"cute\", \"expressive\", \"original\", \"scenic\", default value depends on the model and mode",
+    "style": "--style, switches between different versions or styles of Midjourney or Niji models, for example raw, cute, expressive, original, scenic, default value depends on the model and mode",
     "_style.comment": "Description of the style parameter",
     "stylize": "--stylize, adjusts the intensity of the default aesthetic style of Midjourney applied in generation tasks, range is 0-1000, default is 100",
     "_stylize.comment": "Description of the stylize parameter",
@@ -161,7 +161,7 @@
     "general": "General",
     "_general.comment": "The name of a model which used for general image generation",
     "niji": "Niji",
-    "_niji.comment": "The name of a model which used for anime-style image generation, can be translated as the meaning of `anime-style`"
+    "_niji.comment": "The name of a model which used for anime-style image generation, can be translated as the meaning of anime-style"
   },
   "name": {
     "model": "Model",

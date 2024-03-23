@@ -25,5 +25,5 @@ module.exports = {
   openAIApiModel: 'gpt-3.5-turbo-0125',
   openAIApiUrl: 'https://api.acedata.cloud',
   openAIApiUrlPath: '/openai/chat/completions',
-  modelContextLimit: 16385
+  modelContextLimit: 15000
 };
