@@ -28,12 +28,12 @@
     "_createdAt.comment": "주문의 생성 시간입니다.",
     "service": "서비스 이름",
     "_service.comment": "서비스의 이름입니다.",
-    "payWay": "결제 방법",
-    "_payWay.comment": "주문의 결제 방법입니다.",
+    "payWay": "결제 수단",
+    "_payWay.comment": "주문의 결제 수단입니다.",
     "api": "API",
     "_api.comment": "API는 온라인 서비스의 한 종류입니다.",
     "proxy": "프록시",
-    "_proxy.comment": "프록시는 데이터 전송에 사용되는 HTTP 프록시를 의미하는 온라인 서비스의 한 종류입니다."
+    "_proxy.comment": "프록시는 데이터 전송에 사용되는 HTTP 프록시의 한 종류입니다."
   },
   "message": {
     "paidSuccessfully": "지불 성공",
@@ -50,7 +50,7 @@
     "_updateFailed.comment": "업데이트가 실패한 메시지입니다.",
     "updateSuccessfully": "업데이트 성공",
     "_updateSuccessfully.comment": "업데이트가 성공한 메시지입니다.",
-    "confirmFinish": "이 작업은 주문을 수동으로 지불 상태로 설정하고 배포 처리를 완료합니다. 이 작업은 되돌릴 수 없습니다. 고객이 결제를 완료했는지 확인하십시오. 계속하시겠습니까?",
+    "confirmFinish": "이 작업은 주문을 수동으로 지불 상태로 설정하고 배포 처리를 완료합니다. 이 작업은 되돌릴 수 없습니다. 고객이 지불을 완료했는지 확인하십시오. 계속하시겠습니까?",
     "_confirmFinish.comment": "완료 확인 메시지입니다."
   },
   "state": {
@@ -68,10 +68,10 @@
     "_info.comment": "웹 사이트의 제목으로 사용되는 주문 정보입니다.",
     "wechatPay": "WeChat 지불",
     "_wechatPay.comment": "웹 사이트의 제목으로 사용되는 WeChat 지불입니다.",
-    "aliPay": "알리페이",
-    "_aliPay.comment": "웹 사이트의 제목으로 사용되는 알리페이입니다. 알리페이는 온라인 결제의 한 종류입니다.",
+    "aliPay": "Alipay",
+    "_aliPay.comment": "웹 사이트의 제목으로 사용되는 Alipay 지불, Alipay 지불은 온라인 결제의 한 종류입니다.",
     "stripe": "Stripe",
-    "_stripe.comment": "웹 사이트의 제목으로 사용되는 Stripe입니다. Stripe는 온라인 결제의 한 종류입니다.",
+    "_stripe.comment": "웹 사이트의 제목으로 사용되는 Stripe 지불, Stripe 지불은 온라인 결제의 한 종류입니다.",
     "manageOrder": "주문 관리",
     "_manageOrder.comment": "웹 사이트의 제목으로 사용되는 주문 관리입니다."
   }

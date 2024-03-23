@@ -82,6 +82,10 @@
     "_uploadReferences.comment": "Description of the uploadReferences parameter",
     "raw": "When enabled, generated images will use the Midjourney model, producing original style images",
     "_raw.comment": "Description of the raw parameter",
+    "prompt": "Enter commands, if additional parameters are added, they will override default preset parameters, e.g., adding --stylize 200 will force the final command to use --stylize 200",
+    "_prompt.comment": "Description of the prompt field"
+  },
+  "action": {
     "generate": "Click this button to start generating images",
     "_generate.comment": "Description of the generate button",
     "upscale1": "Upscale the first image",
@@ -131,11 +135,7 @@
     "redo_upscale_2x": "Redo Upscale 2x",
     "_redo_upscale_2x.comment": "Description of the redo_upscale_2x button",
     "redo_upscale_4x": "Redo Upscale 4x",
-    "_redo_upscale_4x.comment": "Description of the redo_upscale_4x button",
-    "download": "Download",
-    "_download.comment": "Description of the download button",
-    "prompt": "Enter commands, if additional parameters are added, they will override default preset parameters, e.g., adding --stylize 200 will force the final command to use --stylize 200",
-    "_prompt.comment": "Description of the prompt field"
+    "_redo_upscale_4x.comment": "Description of the redo_upscale_4x button"
   },
   "message": {
     "promptPlaceholder": "Please enter a sentence to describe the image you want to generate, for example: a cute cat. Additional parameters will override default preset parameters",
