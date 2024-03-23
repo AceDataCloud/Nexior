@@ -49,6 +49,11 @@ export default {
     chatdoc: true,
 
     /**
+     * Show locale entry in left navigation.
+     */
+    locale: true,
+
+    /**
      * Show console entry in left navigation.
      */
     console: true,
