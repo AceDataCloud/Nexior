@@ -46,6 +46,13 @@
       </el-menu>
     </div>
     <div v-else class="bottom">
+      <div v-if="$config.navigation?.locale" class="link">
+        <el-tooltip effect="dark" :content="$t('common.nav.locale')" placement="right">
+          <el-button class="button">
+            <locale-selector />
+          </el-button>
+        </el-tooltip>
+      </div>
       <div v-if="$config.navigation?.console" class="link">
         <el-tooltip effect="dark" :content="$t('common.nav.console')" placement="right">
           <el-button class="button" @click="onConsole">
@@ -75,6 +82,7 @@
 import { defineComponent } from 'vue';
 import { ElButton, ElTooltip, ElMenu, ElMenuItem } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import LocaleSelector from './LocaleSelector.vue';
 import {
   ROUTE_CHATDOC_INDEX,
   ROUTE_CHATDOC_CONVERSATION,
@@ -95,6 +103,7 @@ export default defineComponent({
   components: {
     ElButton,
     ElTooltip,
+    LocaleSelector,
     FontAwesomeIcon,
     ElMenu,
     ElMenuItem,

@@ -2,6 +2,7 @@ import { ActionContext } from 'vuex';
 import { IRootState } from '../common/models';
 import { userOperator, oauthOperator } from '@/operators';
 import { log } from '@/utils/log';
+import { IToken, IUser } from '@/models';
 
 export const resetAll = ({ commit }: ActionContext<IRootState, IRootState>) => {
   commit('resetToken');
@@ -22,6 +23,10 @@ export const resetToken = ({ commit }: ActionContext<IRootState, IRootState>) =>
 
 export const setToken = ({ commit }: ActionContext<IRootState, IRootState>, payload: IToken) => {
   commit('setToken', payload);
+};
+
+export const setLocale = ({ commit }: ActionContext<IRootState, IRootState>, payload: string) => {
+  commit('setLocale', payload);
 };
 
 export const setUser = ({ commit }: ActionContext<IRootState, IRootState>, payload: IUser) => {
@@ -52,6 +57,7 @@ export const getToken = async ({ commit }: ActionContext<IRootState, IRootState>
 };
 
 export default {
+  setLocale,
   resetToken,
   resetAll,
   resetUser,
