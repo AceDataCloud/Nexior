@@ -17,20 +17,20 @@
     "reward": "Empfehlungsbelohnung",
     "_reward.comment": "Die Empfehlungsverdienste, die auf Grundlage des Bestellbetrags und des Empfehlungsverdienstprozentsatzes berechnet werden.",
     "createdAt": "Empfehlungszeit",
-    "_createdAt.comment": "Die Zeit, zu der die Empfehlung erstellt wurde.",
+    "_createdAt.comment": "Die Zeit, zu der die Empfehlung erstellt wird.",
     "level": "Ebene",
     "_level.comment": "Die Ebene der Empfehlung, die zur Berechnung der Empfehlungsverdienste verwendet wird.",
     "threshold": "Empfehlungsverdienstschwelle",
     "_threshold.comment": "Die Schwelle der Empfehlungsverdienste, die zur Abhebung der Empfehlungsverdienste verwendet wird.",
     "inviteeId": "Einlader-ID",
-    "_inviteeId.comment": "Der eindeutige Bezeichner des Einladers, wobei der Einlader der Benutzer ist, der den Eingeladenen zur API-Service-Website einlädt.",
+    "_inviteeId.comment": "Der eindeutige Bezeichner des Einladenden, wobei der Einladende der Benutzer ist, der den Eingeladenen zur API-Service-Website einlädt.",
     "isVerified": "Ist verifiziert",
-    "_isVerified.comment": "Die Kennzeichnung, ob der Empfehlungsbenutzer mit den echten Informationen verifiziert ist."
+    "_isVerified.comment": "Das Flag, um anzuzeigen, ob der Empfehlungsbenutzer mit den echten Informationen verifiziert ist."
   },
   "message": {
     "deltaPriceForNextLevel": "Differenz zum nächsten Level",
     "_deltaPriceForNextLevel": "Die Differenz zwischen dem aktuellen Bestellbetrag und der nächsten Ebenenschwelle.",
-    "developingWithDrawal": "Bitte fügen Sie Kundenservice hinzu, um Abhebungen zu bearbeiten. Abhebungen werden mit 6 % Einkommensteuer belastet, Rechnungen können zur Absetzung verwendet werden.",
+    "developingWithDrawal": "Bitte fügen Sie den Kundenservice hinzu, um Abhebungen zu bearbeiten. Abhebungen werden mit 6 % Einkommensteuer belastet, Rechnungen können zur Absetzung verwendet werden",
     "_developingWithDrawal": "Die Nachricht, die darauf hinweist, dass die Abhebungsfunktion in Entwicklung ist.",
     "technicalDetail": "Technische Details",
     "_technicalDetail": "Die technischen Details des Empfehlungssystems werden implementiert.",
@@ -40,16 +40,16 @@
     "_distributionLink": "Der Empfehlungslink, der verwendet wird, um den Kunden als untergeordneten Kunden zu binden.",
     "updateSuccessfully": "Aktualisierung erfolgreich",
     "_updateSuccessfully": "Die Nachricht, die darauf hinweist, dass die Empfehlungsinformationen erfolgreich aktualisiert wurden.",
-    "distributionLinkDescription": "Wenn ein Kunde sich über diesen Link oder QR-Code auf dieser Plattform registriert, wird der Kunde dauerhaft als Ihr untergeordneter Kunde gebunden, und alle Verbrauchsbestellungen des Kunden auf dieser Plattform werden gemäß dem aktuellen Verteilungsverhältnis auf Ihr Konto zurücküberwiesen.",
+    "distributionLinkDescription": "Wenn sich ein Kunde über diesen Link oder QR-Code auf dieser Plattform registriert, wird der Kunde dauerhaft als Ihr untergeordneter Kunde gebunden, und alle Verbrauchsbestellungen des Kunden auf dieser Plattform werden gemäß dem aktuellen Verteilungsverhältnis auf Ihr Konto zurücküberwiesen.",
     "_distributionLinkDescription": "Die Beschreibung des Empfehlungslinks.",
-    "distributionLinkDescription2": "Dieser Link enthält Ihre Benutzer-ID. Nachdem der Kunde den Link geöffnet hat, wird Ihre Benutzer-ID im Browser des Kunden in Form von Cookies gespeichert, die sieben Tage gültig sind. Innerhalb von sieben Tagen, wenn der Kunde diese Plattform registriert, indem er den Code scannt, wird Ihre Benutzer-ID mit Cookies auf den Registrierungsserver hochgeladen, und der Kunde kann als Ihr nachgelagerter Kunde gebunden werden.",
+    "distributionLinkDescription2": "Dieser Link enthält Ihre Benutzer-ID. Nachdem der Kunde den Link geöffnet hat, wird Ihre Benutzer-ID im Browser des Kunden in Form von Cookies für sieben Tage gespeichert. Innerhalb von sieben Tagen, wenn sich der Kunde durch Scannen des Codes auf dieser Plattform registriert, wird Ihre Benutzer-ID mit Cookies auf den Registrierungsserver hochgeladen, und der Kunde kann als Ihr nachgelagerter Kunde gebunden werden.",
     "_distributionLinkDescription2": "Die Beschreibung des Empfehlungslinks."
   },
   "title": {
     "price": "Gesamtbetrag der Empfehlungsbestellungen",
     "_price.comment": "Der Gesamtbetrag der Empfehlungsbestellungen, der zur Berechnung der Empfehlungsverdienste verwendet wird.",
     "reward": "Gesamte Empfehlungsbelohnungen",
-    "_reward.comment": "Die gesamten Empfehlungsbelohnungen, die auf Grundlage des Bestellbetrags und des Empfehlungsverdienstprozentsatzes berechnet werden.",
+    "_reward.comment": "Die gesamten Empfehlungsverdienste, die auf Grundlage des Bestellbetrags und des Empfehlungsverdienstprozentsatzes berechnet werden.",
     "level": "Empfehlungsebene",
     "_level.comment": "Die Empfehlungsebene, die zur Berechnung der Empfehlungsverdienste verwendet wird.",
     "percentage": "Empfehlungsverdienstprozentsatz",
@@ -63,12 +63,12 @@
     "nextPercentage": "Empfehlungsverdienstprozentsatz der nächsten Ebene",
     "_nextPercentage.comment": "Der Empfehlungsverdienstprozentsatz der nächsten Ebene, der zur Berechnung der Empfehlungsverdienste verwendet wird.",
     "levelInfo": "Ebeneninformationen",
-    "_levelInfo.comment": "Die Informationen zur Empfehlungsebene, die zur Berechnung der Empfehlungsverdienste verwendet wird.",
+    "_levelInfo.comment": "Die Informationen der Empfehlungsebene, die zur Berechnung der Empfehlungsverdienste verwendet wird.",
     "distributionLink": "Empfehlungslink",
     "_distributionLink.comment": "Der Empfehlungslink, der verwendet wird, um den Kunden als untergeordneten Kunden zu binden.",
     "inviteesCount": "Gesamtanzahl der Eingeladenen",
     "_inviteesCount.comment": "Die Gesamtanzahl der Eingeladenen, die zur Berechnung der Empfehlungsverdienste verwendet wird.",
-    "manageDistributionStatus": "Verteilungsverwaltung",
-    "_manageDistributionStatus.comment": "Die Verwaltung des Empfehlungsstatus."
+    "manageDistributionStatus": "Verteilungsmanagement",
+    "_manageDistributionStatus.comment": "Das Management des Empfehlungsstatus."
   }
 }

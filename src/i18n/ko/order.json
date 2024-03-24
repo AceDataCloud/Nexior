@@ -2,7 +2,7 @@
   "button": {
     "pay": "지불",
     "_pay.comment": "주문을 지불하는 데 사용되는 버튼의 텍스트입니다.",
-    "continuePay": "계속해서 지불",
+    "continuePay": "지불 계속하기",
     "_continuePay.comment": "주문을 계속해서 지불하는 데 사용되는 버튼의 텍스트입니다.",
     "checkDetail": "세부 정보 확인",
     "_checkDetail.comment": "주문의 세부 정보를 확인하는 데 사용되는 버튼의 텍스트입니다.",
@@ -33,25 +33,25 @@
     "api": "API",
     "_api.comment": "API는 온라인 서비스의 한 종류입니다.",
     "proxy": "프록시",
-    "_proxy.comment": "프록시는 데이터 전송에 사용되는 HTTP 프록시의 한 종류입니다."
+    "_proxy.comment": "프록시는 데이터 전송에 사용되는 HTTP 프록시의 한 종류인 온라인 서비스입니다."
   },
   "message": {
     "paidSuccessfully": "지불 성공",
-    "_paidSuccessfully.comment": "지불이 성공한 메시지입니다.",
+    "_paidSuccessfully.comment": "지불이 성공한 경우의 메시지입니다.",
     "createFailed": "생성 실패",
-    "_createFailed.comment": "생성이 실패한 메시지입니다.",
-    "wechatPayHelp": "휴대폰에서 WeChat을 열어서 스캔하여 결제를 완료하세요",
-    "_wechatPayHelp.comment": "WeChat 결제 도움말 메시지입니다.",
+    "_createFailed.comment": "생성에 실패한 경우의 메시지입니다.",
+    "wechatPayHelp": "휴대폰에서 WeChat을 열어서 스캔하여 결제를 완료해주세요",
+    "_wechatPayHelp.comment": "WeChat 결제 도움말의 메시지입니다.",
     "free": "무료",
-    "_free.comment": "무료 주문 메시지입니다.",
-    "buyInExternalUrl": "외부 링크에서 결제를 완료하세요",
-    "_buyInExternalUrl.comment": "외부 링크 결제 메시지입니다.",
+    "_free.comment": "무료 주문의 메시지입니다.",
+    "buyInExternalUrl": "외부 링크에서 결제를 완료해주세요",
+    "_buyInExternalUrl.comment": "외부 링크 결제의 메시지입니다.",
     "updateFailed": "업데이트 실패",
-    "_updateFailed.comment": "업데이트가 실패한 메시지입니다.",
+    "_updateFailed.comment": "업데이트에 실패한 경우의 메시지입니다.",
     "updateSuccessfully": "업데이트 성공",
-    "_updateSuccessfully.comment": "업데이트가 성공한 메시지입니다.",
-    "confirmFinish": "이 작업은 주문을 수동으로 지불 상태로 설정하고 배포 처리를 완료합니다. 이 작업은 되돌릴 수 없습니다. 고객이 지불을 완료했는지 확인하십시오. 계속하시겠습니까?",
-    "_confirmFinish.comment": "완료 확인 메시지입니다."
+    "_updateSuccessfully.comment": "업데이트가 성공한 경우의 메시지입니다.",
+    "confirmFinish": "이 작업은 주문을 수동으로 지불 상태로 설정하고 배포 처리를 완료합니다. 이 작업은 되돌릴 수 없습니다. 고객이 지불을 완료했는지 확인하시겠습니까?",
+    "_confirmFinish.comment": "완료 확인의 메시지입니다."
   },
   "state": {
     "pending": "지불 대기 중",
@@ -61,17 +61,17 @@
     "expired": "지불 시간 초과",
     "_expired.comment": "주문의 상태로, 이 주문은 이미 만료된 상태입니다.",
     "failed": "지불 실패",
-    "_failed.comment": "주문의 상태로, 이 주문은 실패한 상태입니다."
+    "_failed.comment": "주문의 상태로, 이 주문은 이미 실패한 상태입니다."
   },
   "title": {
     "info": "주문 정보",
     "_info.comment": "웹 사이트의 제목으로 사용되는 주문 정보입니다.",
     "wechatPay": "WeChat 지불",
     "_wechatPay.comment": "웹 사이트의 제목으로 사용되는 WeChat 지불입니다.",
-    "aliPay": "Alipay",
-    "_aliPay.comment": "웹 사이트의 제목으로 사용되는 Alipay 지불, Alipay 지불은 온라인 결제의 한 종류입니다.",
-    "stripe": "Stripe",
-    "_stripe.comment": "웹 사이트의 제목으로 사용되는 Stripe 지불, Stripe 지불은 온라인 결제의 한 종류입니다.",
+    "aliPay": "알리페이",
+    "_aliPay.comment": "웹 사이트의 제목으로 사용되는 알리페이 지불, 알리페이 지불은 온라인 결제의 한 종류입니다.",
+    "stripe": "스트라이프",
+    "_stripe.comment": "웹 사이트의 제목으로 사용되는 스트라이프 지불, 스트라이프 지불은 온라인 결제의 한 종류입니다.",
     "manageOrder": "주문 관리",
     "_manageOrder.comment": "웹 사이트의 제목으로 사용되는 주문 관리입니다."
   }
