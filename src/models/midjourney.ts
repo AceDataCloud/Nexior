@@ -1,7 +1,7 @@
 export interface IMidjourneyMode {
   icon: string;
   name: string;
-  displayName: string;
+  getDisplayName: () => string;
 }
 
 export interface IMidjourneyPreset {

@@ -34,26 +34,26 @@ export default defineComponent({
         return [
           {
             value: 'cute',
-            label: '可爱'
+            label: this.$t('midjourney.style.cute')
           },
           {
             value: 'expressive',
-            label: '表现力'
+            label: this.$t('midjourney.style.expressive')
           },
           {
             value: 'scenic',
-            label: '场景'
+            label: this.$t('midjourney.style.scenic')
           },
           {
             value: 'original',
-            label: '原始'
+            label: this.$t('midjourney.style.original')
           }
         ];
       } else {
         return [
           {
             value: 'raw',
-            label: '原生'
+            label: this.$t('midjourney.style.raw')
           }
         ];
       }

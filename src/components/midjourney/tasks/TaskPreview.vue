@@ -15,7 +15,7 @@
       <div class="right">
         <el-tag v-if="mode" type="info" class="channel">
           <font-awesome-icon :class="{ icon: true, [mode.name]: true }" :icon="mode.icon" />
-          {{ mode?.displayName }}
+          {{ mode?.getDisplayName() }}
         </el-tag>
       </div>
     </div>

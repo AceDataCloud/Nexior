@@ -25,15 +25,15 @@ export default defineComponent({
     return {
       options: [
         {
-          label: '低',
+          label: this.$t('midjourney.button.low'),
           value: '.25'
         },
         {
-          label: '中',
+          label: this.$t('midjourney.button.medium'),
           value: '.5'
         },
         {
-          label: '高',
+          label: this.$t('midjourney.button.high'),
           value: '1'
         }
       ]
