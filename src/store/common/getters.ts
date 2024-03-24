@@ -8,6 +8,10 @@ export const user = (state: IRootState): any => {
   return state.user;
 };
 
+export const locale = (state: IRootState): string => {
+  return state.locale;
+};
+
 export const token = (state: IRootState): any => {
   return state.token;
 };
@@ -17,6 +21,7 @@ export const setting = (state: IRootState): any => {
 };
 
 export default {
+  locale,
   authenticated,
   user,
   token,

@@ -4,7 +4,7 @@
   "author": "Germey Technology <dev@germey.cn>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/acedatacloud/HubFrontend.git"
+    "url": "git+https://github.com/AceDataCloud/HubFrontend.git"
   },
   "files": [
     "dist/"
@@ -13,6 +13,7 @@
     "start": "vite --host",
     "build": "vite build --mode=development",
     "serve": "vite preview",
+    "translate": "transmart",
     "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
     "prettier": "prettier --write .",
     "change": "beachball change --no-commit",
@@ -59,6 +60,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-replace": "^3.0.0",
+    "@transmart/cli": "^0.3.1",
     "@types/lodash": "^4.14.172",
     "@types/markdown-it": "^12.2.3",
     "@types/node": "^16.7.4",
