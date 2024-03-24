@@ -8,7 +8,7 @@
     >
       <font-awesome-icon :class="{ icon: true, [option.name]: true }" :icon="option.icon" />
       <span>
-        {{ option.displayName }}
+        {{ option.getDisplayName() }}
       </span>
     </el-button>
   </div>

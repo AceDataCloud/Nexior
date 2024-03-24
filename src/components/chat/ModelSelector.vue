@@ -10,7 +10,7 @@
       <el-button :class="{ group: true, active: group.value === activeGroup }" @click="onSwitchGroup(group)">
         <font-awesome-icon :icon="group.icon" :class="'icon ' + group.value" />
         <span v-if="group.value === activeGroup">
-          {{ model.displayName }}
+          {{ model.getDisplayName() }}
         </span>
         <span v-else>
           {{ group.label }}
@@ -31,10 +31,10 @@
               </div>
               <div class="info">
                 <p class="name">
-                  {{ groupModel.displayName }}
+                  {{ groupModel.getDisplayName() }}
                 </p>
                 <p class="description">
-                  {{ groupModel.description }}
+                  {{ groupModel.getDescription() }}
                 </p>
               </div>
             </div>

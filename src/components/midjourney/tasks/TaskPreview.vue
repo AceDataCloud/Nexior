@@ -15,7 +15,7 @@
       <div class="right">
         <el-tag v-if="mode" type="info" class="channel">
           <font-awesome-icon :class="{ icon: true, [mode.name]: true }" :icon="mode.icon" />
-          {{ mode?.displayName }}
+          {{ mode?.getDisplayName() }}
         </el-tag>
       </div>
     </div>
@@ -174,33 +174,33 @@ export default defineComponent({
         [MidjourneyImagineAction.REROLL]: '🔄'
       },
       descriptionMapping: {
-        [MidjourneyImagineAction.GENERATE]: this.$t('midjourney.description.generate'),
-        [MidjourneyImagineAction.UPSCALE1]: this.$t('midjourney.description.upscale1'),
-        [MidjourneyImagineAction.UPSCALE2]: this.$t('midjourney.description.upscale2'),
-        [MidjourneyImagineAction.UPSCALE3]: this.$t('midjourney.description.upscale3'),
-        [MidjourneyImagineAction.UPSCALE4]: this.$t('midjourney.description.upscale4'),
-        [MidjourneyImagineAction.VARIATION1]: this.$t('midjourney.description.variation1'),
-        [MidjourneyImagineAction.VARIATION2]: this.$t('midjourney.description.variation2'),
-        [MidjourneyImagineAction.VARIATION3]: this.$t('midjourney.description.variation3'),
-        [MidjourneyImagineAction.VARIATION4]: this.$t('midjourney.description.variation4'),
-        [MidjourneyImagineAction.VARIATION_STRONG]: this.$t('midjourney.description.variation_strong'),
-        [MidjourneyImagineAction.VARIATION_SUBTLE]: this.$t('midjourney.description.variation_subtle'),
-        [MidjourneyImagineAction.ZOOM_OUT_2X]: this.$t('midjourney.description.zoom_out_2x'),
-        [MidjourneyImagineAction.ZOOM_OUT_1_5X]: this.$t('midjourney.description.zoom_out_1_5x'),
-        [MidjourneyImagineAction.UPSCALE_2X]: this.$t('midjourney.description.upscale_2x'),
-        [MidjourneyImagineAction.UPSCALE_4X]: this.$t('midjourney.description.upscale_4x'),
-        [MidjourneyImagineAction.UPSCALE_SUBTLE]: this.$t('midjourney.description.upscale_subtle'),
-        [MidjourneyImagineAction.UPSCALE_CREATIVE]: this.$t('midjourney.description.upscale_creative'),
-        [MidjourneyImagineAction.REDO_UPSCALE_2X]: this.$t('midjourney.description.redo_upscale_2x'),
-        [MidjourneyImagineAction.REDO_UPSCALE_4X]: this.$t('midjourney.description.redo_upscale_4x'),
-        [MidjourneyImagineAction.REDO_UPSCALE_SUBTLE]: this.$t('midjourney.description.redo_upscale_subtle'),
-        [MidjourneyImagineAction.REDO_UPSCALE_CREATIVE]: this.$t('midjourney.description.redo_upscale_creative'),
-        [MidjourneyImagineAction.SQUARE]: this.$t('midjourney.description.square'),
-        [MidjourneyImagineAction.PAN_LEFT]: this.$t('midjourney.description.pan_left'),
-        [MidjourneyImagineAction.PAN_UP]: this.$t('midjourney.description.pan_up'),
-        [MidjourneyImagineAction.PAN_DOWN]: this.$t('midjourney.description.pan_down'),
-        [MidjourneyImagineAction.PAN_RIGHT]: this.$t('midjourney.description.pan_right'),
-        [MidjourneyImagineAction.REROLL]: this.$t('midjourney.description.reroll')
+        [MidjourneyImagineAction.GENERATE]: this.$t('midjourney.action.generate'),
+        [MidjourneyImagineAction.UPSCALE1]: this.$t('midjourney.action.upscale1'),
+        [MidjourneyImagineAction.UPSCALE2]: this.$t('midjourney.action.upscale2'),
+        [MidjourneyImagineAction.UPSCALE3]: this.$t('midjourney.action.upscale3'),
+        [MidjourneyImagineAction.UPSCALE4]: this.$t('midjourney.action.upscale4'),
+        [MidjourneyImagineAction.VARIATION1]: this.$t('midjourney.action.variation1'),
+        [MidjourneyImagineAction.VARIATION2]: this.$t('midjourney.action.variation2'),
+        [MidjourneyImagineAction.VARIATION3]: this.$t('midjourney.action.variation3'),
+        [MidjourneyImagineAction.VARIATION4]: this.$t('midjourney.action.variation4'),
+        [MidjourneyImagineAction.VARIATION_STRONG]: this.$t('midjourney.action.variation_strong'),
+        [MidjourneyImagineAction.VARIATION_SUBTLE]: this.$t('midjourney.action.variation_subtle'),
+        [MidjourneyImagineAction.ZOOM_OUT_2X]: this.$t('midjourney.action.zoom_out_2x'),
+        [MidjourneyImagineAction.ZOOM_OUT_1_5X]: this.$t('midjourney.action.zoom_out_1_5x'),
+        [MidjourneyImagineAction.UPSCALE_2X]: this.$t('midjourney.action.upscale_2x'),
+        [MidjourneyImagineAction.UPSCALE_4X]: this.$t('midjourney.action.upscale_4x'),
+        [MidjourneyImagineAction.UPSCALE_SUBTLE]: this.$t('midjourney.action.upscale_subtle'),
+        [MidjourneyImagineAction.UPSCALE_CREATIVE]: this.$t('midjourney.action.upscale_creative'),
+        [MidjourneyImagineAction.REDO_UPSCALE_2X]: this.$t('midjourney.action.redo_upscale_2x'),
+        [MidjourneyImagineAction.REDO_UPSCALE_4X]: this.$t('midjourney.action.redo_upscale_4x'),
+        [MidjourneyImagineAction.REDO_UPSCALE_SUBTLE]: this.$t('midjourney.action.redo_upscale_subtle'),
+        [MidjourneyImagineAction.REDO_UPSCALE_CREATIVE]: this.$t('midjourney.action.redo_upscale_creative'),
+        [MidjourneyImagineAction.SQUARE]: this.$t('midjourney.action.square'),
+        [MidjourneyImagineAction.PAN_LEFT]: this.$t('midjourney.action.pan_left'),
+        [MidjourneyImagineAction.PAN_UP]: this.$t('midjourney.action.pan_up'),
+        [MidjourneyImagineAction.PAN_DOWN]: this.$t('midjourney.action.pan_down'),
+        [MidjourneyImagineAction.PAN_RIGHT]: this.$t('midjourney.action.pan_right'),
+        [MidjourneyImagineAction.REROLL]: this.$t('midjourney.action.reroll')
       }
     };
   },

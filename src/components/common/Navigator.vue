@@ -4,7 +4,7 @@
     <chevron v-else class="chevron" direction="left" @click="onCollapseMenu"></chevron>
     <div class="top">
       <div v-if="!collapsed">
-        <img src="@/assets/images/logo.svg" class="logo" @click="onHome" />
+        <img src="@/assets/images/logo.png" class="logo" @click="onHome" />
       </div>
       <el-menu v-if="!collapsed" :default-active="activeIndex">
         <el-menu-item
@@ -211,7 +211,7 @@ export default defineComponent({
   position: relative;
 
   .el-menu {
-    width: 150px;
+    width: 180px;
     border-right: none;
     .el-menu-item {
       height: 50px;
@@ -228,7 +228,7 @@ export default defineComponent({
 
   .logo {
     width: 80%;
-    max-height: 40px;
+    max-height: 50px;
     cursor: pointer;
     margin: 10px auto 20px auto;
     display: block;

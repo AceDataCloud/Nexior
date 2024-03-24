@@ -16,8 +16,8 @@ export type IChatModelName =
 
 export interface IChatModel {
   name: IChatModelName;
-  displayName: string;
-  description: string;
+  getDisplayName: () => string;
+  getDescription: () => string;
 }
 
 interface IError {

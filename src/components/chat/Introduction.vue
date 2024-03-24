@@ -92,10 +92,10 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .introduction {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 80%;
+  margin: auto;
+  padding: 30px 0;
+  padding: 60px;
 
   .title {
     height: 70px;
@@ -108,14 +108,13 @@ export default defineComponent({
 
   .introduction-items {
     height: fit-content;
-    margin-bottom: 100px;
     .icon {
       font-size: 20px;
     }
     .subtitle {
       text-align: center;
       font-size: 18px;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
     }
     .introduction-item {
       margin-bottom: 15px;
