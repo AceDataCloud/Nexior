@@ -36,18 +36,18 @@
     "_buy.comment": "ボタンのテキスト、ユーザーに何かを購入するために使用される",
     "try": "試す",
     "_try.comment": "ボタンのテキスト、ユーザーに何かを試すために使用される",
-    "startForFree": "無料で始める",
-    "_startForFree.comment": "ボタンのテキスト、ユーザーに無料で始めるために使用される",
+    "startForFree": "無料で開始",
+    "_startForFree.comment": "ボタンのテキスト、ユーザーに無料で開始するために使用される",
     "apply": "申し込む",
-    "_apply.comment": "ボタンのテキスト、ユーザーにAPIサービスに申し込むために使用される",
+    "_apply.comment": "ボタンのテキスト、APIサービスに申し込むために使用される",
     "refresh": "更新",
     "_refresh.comment": "ボタンのテキスト、ページを更新するために使用される",
     "pay": "支払う",
     "_pay.comment": "ボタンのテキスト、ユーザーにサービスの支払いをするために使用される",
     "repay": "継続して支払う",
-    "_repay.comment": "ボタンのテキスト、ユーザーにサービスの継続的な支払いをするために使用される",
+    "_repay.comment": "ボタンのテキスト、ユーザーにサービスの継続支払いをするために使用される",
     "applied": "申し込み済み",
-    "_applied.comment": "ボタンのテキスト、ユーザーがサービスに申し込み済みであることを示すために使用される",
+    "_applied.comment": "ボタンのテキスト、ユーザーがサービスに申し込んだことを表示するために使用される",
     "acquire": "取得",
     "_acquire.comment": "ボタンのテキスト、ユーザーにトークンやAPIサービスのキーなどを取得するために使用される",
     "fillExample": "例を入力",
@@ -63,13 +63,13 @@
     "create": "作成",
     "_create.comment": "ボタンのテキスト、何かを作成するために使用される",
     "referralEarnings": "紹介報酬",
-    "_referralEarnings.comment": "ボタンのテキスト、ユーザーが他の人を招待してサービスを利用することでお金を稼ぐことができることを示すために使用される",
+    "_referralEarnings.comment": "ボタンのテキスト、紹介報酬を表示するために使用される。ユーザーは他の人を招待してサービスを利用することでお金を稼ぐことができます",
     "finish": "完了",
     "_finish.comment": "ボタンのテキスト、何かを完了するために使用される"
   },
   "entity": {
     "website": "Ace Data Cloud",
-    "_website.comment": "ウェブサイトの名前、翻訳する必要はなく、'Ace Data Cloud'のままである",
+    "_website.comment": "ウェブサイトの名前、翻訳する必要はありません。'Ace Data Cloud'のままで構いません",
     "copyright": "著作権",
     "_copyright.comment": "著作権を表示するためのテキスト",
     "platform": "プラットフォーム",
@@ -89,7 +89,7 @@
     "updatedAt": "更新日",
     "_updatedAt.comment": "エンティティが更新された時刻",
     "order": "注文",
-    "_order.comment": "エンティティの注文、注文にはお金、サービス情報が含まれており、ユーザーはそれに支払う必要がある"
+    "_order.comment": "エンティティの注文、注文にはお金、サービス情報が含まれており、ユーザーはそれに対して支払う必要があります"
   },
   "message": {
     "usedAmount": "使用量",
@@ -105,11 +105,11 @@
     "info": "重要なお知らせ",
     "_info.comment": "情報を表示するためのメッセージ",
     "free": "無料",
-    "_free.comment": "サービスが無料であることを示すメッセージ、つまりユーザーは支払う必要がない",
-    "startPrice": "開始",
+    "_free.comment": "サービスが無料であることを示すメッセージ、ユーザーはそれに対して支払う必要はありません",
+    "startPrice": "開始価格",
     "_startPrice.comment": "サービスの最低価格を表示するメッセージ",
     "joinDiscord": "Discordに参加",
-    "_joinDiscord.comment": "ユーザーにDiscordチャンネルに参加するように促すメッセージ",
+    "_joinDiscord.comment": "ユーザーにDiscordチャンネルに参加するよう促すメッセージ",
     "noData": "データがありません",
     "_noData.comment": "テーブルやリストにデータがないことを示すメッセージ"
   },
@@ -147,9 +147,9 @@
     "orderInfo": "注文情報",
     "_orderInfo.comment": "注文情報を表示するページのタイトル",
     "buyMore": "さらに購入",
-    "_buyMore.comment": "ユーザーにさらに購入するためのページのタイトル",
+    "_buyMore.comment": "さらに購入するためのページのタイトル",
     "distribution": "紹介報酬",
-    "_distribution.comment": "紹介報酬を表示するページのタイトル、ユーザーは他の人を招待してサービスを利用することでお金を稼ぐことができる",
+    "_distribution.comment": "紹介報酬を表示するページのタイトル、ユーザーは他の人を招待してサービスを利用することでお金を稼ぐことができます",
     "distributionHistory": "紹介履歴",
     "_distributionHistory.comment": "紹介履歴を表示するページのタイトル",
     "invitee": "招待者",
@@ -157,6 +157,6 @@
     "allUsages": "利用履歴",
     "_allUsages.comment": "APIサービスのすべての利用履歴を表示するページのタイトル",
     "allCredentials": "資格情報",
-    "_allCredentials.comment": "すべての資格情報を表示するページのタイトル、資格情報はAPIにアクセスするために使用される"
+    "_allCredentials.comment": "すべての資格情報を表示するページのタイトル、資格情報はAPIにアクセスするために使用されます"
   }
 }

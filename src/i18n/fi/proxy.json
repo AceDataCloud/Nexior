@@ -1,8 +1,8 @@
 {
   "entity": {
     "requestQueries": "URL-parametrit",
-    "_requestQueries.comment": "Nämä ovat parametreja, jotka välitetään URL-osoitteessa. Ne erotetaan '?' ja erotetaan '&'.",
-    "requestBody": "Pyyntökehote",
+    "_requestQueries.comment": "Nämä ovat parametreja, jotka välitetään URLissa. Ne erotetaan '?' ja erotetaan '&'.",
+    "requestBody": "Pyyntökehys",
     "_requestBody.comment": "Tämä on pyynnön runko. Sitä käytetään yleensä POST- ja PUT-pyyntöihin.",
     "responseBody": "Vastauksen runko",
     "_responseBody.comment": "Tämä on vastauksen runko. Se on yleensä JSON-muodossa.",
@@ -30,7 +30,7 @@
     "_appliedCount.comment": "API-palvelun hakemusten määrä",
     "firstFree": "Ensimmäinen kerta ilmainen",
     "_firstFree.comment": "Tarkoittaa, että API-palvelun ensimmäinen käyttökerta on ilmainen, eikä siitä tarvitse maksaa hyvityksiä tai rahaa",
-    "custom": "Määritelty määrä",
+    "custom": "Määritetty määrä",
     "_custom.comment": "Tarkoittaa, että hinta on määritelty, ja API-palvelun käytöstä on maksettava määritelty määrä hyvityksiä tai rahaa",
     "present": "Lahja",
     "_present.comment": "Annamme hyvityksiä, kun käytät API-palvelua ensimmäistä kertaa",
@@ -42,12 +42,12 @@
     "_ySuccessRate.comment": "API-palvelun onnistumisprosentti",
     "xMinutes": "Aika (minuutit)",
     "_xMinutes.comment": "Aika minuuteissa",
-    "streamUsage": "Ystävällinen muistutus: Suoratoistopyyntöihin yllä oleva koodi ei välttämättä ole täysin sovellettavissa. Viittaa muokkausten tekemiseen telakointiasiakirjaan.",
-    "_streamUsage.comment": "Suoratoistopyyntöihin yllä oleva koodi ei välttämättä ole täysin sovellettavissa. Viittaa muokkausten tekemiseen telakointiasiakirjaan.",
-    "alphaStage": "Tämä API on Alfa-vaiheessa, se on varhainen esikatseluversio, jossa saattaa olla mahdollista epävakautta, API-muoto saattaa muuttua merkittävästi, eikä sitä suositella tuotantoympäristössä käytettäväksi. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla merkittäviä hintamuutoksia.",
-    "_alphaStage.comment": "Tämä API on Alfa-vaiheessa, se on varhainen esikatseluversio, jossa saattaa olla mahdollista epävakautta, API-muoto saattaa muuttua merkittävästi, eikä sitä suositella tuotantoympäristössä käytettäväksi. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla merkittäviä hintamuutoksia.",
-    "betaStage": "Tämä API on Beta-vaiheessa, API-muoto ei muutu paljon, mutta siinä saattaa olla mahdollista epävakautta, joten käytä sitä varovasti tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla kohtuullisia hintamuutoksia.",
-    "_betaStage.comment": "Tämä API on Beta-vaiheessa, API-muoto ei muutu paljon, mutta siinä saattaa olla mahdollista epävakautta, joten käytä sitä varovasti tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla kohtuullisia hintamuutoksia."
+    "streamUsage": "Ystävällinen muistutus: Suoratoistopyyntöihin yllä oleva koodi ei välttämättä ole täysin sovellettavissa. Katso muutokset telakointiasiakirjasta.",
+    "_streamUsage.comment": "Suoratoistopyyntöihin yllä oleva koodi ei välttämättä ole täysin sovellettavissa. Katso muutokset telakointiasiakirjasta.",
+    "alphaStage": "Tämä API on Alfa-vaiheessa, se on varhainen esikatseluversio, jossa saattaa olla mahdollisia epävakaisuuksia, API-muoto saattaa muuttua merkittävästi, sitä ei suositella tuotantoympäristössä käytettäväksi. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla merkittäviä hintamuutoksia.",
+    "_alphaStage.comment": "Tämä API on Alfa-vaiheessa, se on varhainen esikatseluversio, jossa saattaa olla mahdollisia epävakaisuuksia, API-muoto saattaa muuttua merkittävästi, sitä ei suositella tuotantoympäristössä käytettäväksi. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla merkittäviä hintamuutoksia.",
+    "betaStage": "Tämä API on Beta-vaiheessa, API-muoto ei muutu paljon, mutta siinä saattaa olla mahdollisia epävakaisuuksia, käytä sitä varovasti tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla kohtalaisia hintamuutoksia.",
+    "_betaStage.comment": "Tämä API on Beta-vaiheessa, API-muoto ei muutu paljon, mutta siinä saattaa olla mahdollisia epävakaisuuksia, käytä sitä varovasti tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla kohtalaisia hintamuutoksia."
   },
   "unit": {
     "GB": "Gt",
