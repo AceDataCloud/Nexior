@@ -1,7 +1,7 @@
 <template>
   <div class="field">
     <h2 class="title">{{ $t('midjourney.name.quality') }}</h2>
-    <el-radio-group v-model="value">
+    <el-radio-group v-model="value" size="small" class="quality">
       <el-radio-button v-for="item in options" :key="item.value" :label="item.value">
         {{ item.label }}
       </el-radio-button>
@@ -74,6 +74,14 @@ export default defineComponent({
   }
   .value {
     flex: 1;
+  }
+}
+</style>
+
+<style lang="scss">
+.quality {
+  .el-radio-button--small .el-radio-button__inner {
+    padding: 8px 11px;
   }
 }
 </style>
