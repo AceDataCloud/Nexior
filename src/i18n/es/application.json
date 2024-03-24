@@ -1,104 +1,190 @@
 {
-  "button": {
-    "goDocument": "Documento",
-    "_goDocument.comment": "El texto en un botón, al hacer clic en este botón, irá a la página del documento.",
-    "goCredentials": "Credenciales",
-    "_goCredentials.comment": "El texto en un botón, al hacer clic en este botón, irá a la página de credenciales.",
-    "buyMore": "Comprar más",
-    "_buyMore.comment": "El texto en un botón, al hacer clic en este botón, irá a la página de comprar más.",
-    "createOrder": "Crear orden",
-    "_createOrder.comment": "El texto en un botón, al hacer clic en este botón, irá a la página de crear orden.",
-    "custom": "Personalizado",
-    "_custom.comment": "El texto en un botón, al hacer clic en este botón, irá a la página personalizada.",
-    "query": "Consulta",
-    "_query.comment": "El texto en un botón, al hacer clic en este botón, irá a la página de consulta.",
-    "usage": "Historial de uso",
-    "_usage.comment": "El texto en un botón, al hacer clic en este botón, irá a la página de historial de uso."
+  "button.goDocument": {
+    "message": "Documento",
+    "description": "El texto en un botón, al hacer clic en este botón, irá a la página del documento."
   },
-  "field": {
-    "id": "ID de la aplicación",
-    "_id.comment": "El ID de la aplicación.",
-    "remainingAmount": "Cantidad restante",
-    "_remainingAmount.comment": "La cantidad restante de la aplicación.",
-    "usedAmount": "Cantidad utilizada",
-    "_usedAmount.comment": "La cantidad utilizada de la aplicación.",
-    "apiKey": "Clave API",
-    "_apiKey.comment": "La clave API",
-    "service": "Servicio",
-    "_service.comment": "El servicio de la aplicación.",
-    "operation": "Operación",
-    "_operation.comment": "La operación de la aplicación.",
-    "amount": "Cantidad",
-    "_amount.comment": "La cantidad de la aplicación.",
-    "traceId": "ID de seguimiento",
-    "_traceId.comment": "El ID de seguimiento de una llamada de API, para la aplicación del servicio de API, no lo traduzca, manténgalo como 'ID de seguimiento'",
-    "shouldPayPrice": "Precio final",
-    "_shouldPayPrice.comment": "El precio final de la aplicación.",
-    "api": "API",
-    "_api.comment": "Este es un tipo de servicio en línea, el formulario es a través de API para proporcionar servicio al usuario.",
-    "proxy": "Proxy",
-    "_proxy.comment": "Este es un tipo de servicio en línea, el formulario es a través de un proxy HTTP (utilizado para transferir datos) para proporcionar servicio al usuario.",
-    "credential": "Credencial",
-    "_credential.comment": "La credencial de la aplicación.",
-    "name": "Nombre",
-    "_name.comment": "El nombre de la aplicación.",
-    "package": "Paquete",
-    "_package.comment": "El paquete significa diferentes paquetes de precios, como $100 por 10000 créditos, $200 por 20000 créditos.",
-    "type": "Tipo",
-    "_type.comment": "El tipo de la aplicación.",
-    "freeAmount": "Cantidad gratuita",
-    "_freeAmount.comment": "La cantidad gratuita de la aplicación.",
-    "extraPrice": "Precio adicional",
-    "_extraPrice.comment": "El precio adicional que el usuario debe pagar de la aplicación."
+  "button.goCredentials": {
+    "message": "Credenciales",
+    "description": "El texto en un botón, al hacer clic en este botón, irá a la página de credenciales."
   },
-  "message": {
-    "alreadyApplied": "Ya has solicitado este servicio, por favor verifica la consola",
-    "_alreadyApplied.comment": "El mensaje mostrado al usuario cuando el usuario ya ha solicitado este servicio.",
-    "applySuccessfully": "Solicitud exitosa",
-    "_applySuccessfully.comment": "El mensaje mostrado al usuario cuando el usuario ha solicitado este servicio con éxito.",
-    "notApplied": "Todavía no has solicitado este servicio, por favor solicita el servicio antes de usarlo",
-    "_notApplied.comment": "El mensaje mostrado al usuario cuando el usuario aún no ha solicitado este servicio.",
-    "yourApplication": "Tu solicitud",
-    "_yourApplication.comment": "El mensaje mostrado al usuario cuando la solicitud del usuario.",
-    "unverified": "Necesitas completar la autenticación de nombre real antes de poder solicitar este servicio",
-    "_unverified.comment": "El mensaje mostrado al usuario cuando el usuario no ha completado la autenticación de nombre real.",
-    "goVerify": "Ir a la autenticación de nombre real",
-    "_goVerify.comment": "El mensaje mostrado al usuario cuando el usuario no ha completado la autenticación de nombre real.",
-    "requiredParameter": "Parámetro requerido",
-    "_requiredParameter.comment": "El mensaje mostrado al usuario cuando el usuario no ha ingresado el parámetro requerido.",
-    "example": "Ejemplo",
-    "_example.comment": "El mensaje mostrado al usuario cuando el usuario no ha ingresado el parámetro requerido.",
-    "createCredentialSuccessfully": "Credencial creada exitosamente",
-    "_createCredentialSuccessfully.comment": "El mensaje mostrado al usuario cuando el usuario ha creado la credencial con éxito.",
-    "readPolicy": "He leído y acepto",
-    "_readPolicy.comment": "El mensaje mostrado al usuario cuando el usuario ha leído y aceptado la política.",
-    "policy": "Acuerdo de Uso del Servicio de Tecnología de Datos",
-    "_policy.comment": "El mensaje mostrado al usuario cuando el usuario ha leído y aceptado la política.",
-    "notAgreePolicy": "No has aceptado el Acuerdo de Uso del Servicio de Tecnología de Datos",
-    "_notAgreePolicy.comment": "El mensaje mostrado al usuario cuando el usuario no ha aceptado la política.",
-    "confirmApplying": "Confirmar solicitud de servicio",
-    "_confirmApplying.comment": "El mensaje mostrado al usuario cuando el usuario ha confirmado la solicitud de servicio.",
-    "rotateCredential": "Restablecer clave",
-    "_rotateCredential.comment": "El mensaje mostrado al usuario cuando el usuario ha restablecido la clave.",
-    "rotateCredentialConfirm": "¿Estás seguro de que quieres restablecer la clave? No se puede recuperar después de restablecerla",
-    "_rotateCredentialConfirm.comment": "El mensaje mostrado al usuario cuando el usuario ha confirmado el restablecimiento de la clave.",
-    "idDoesNotExist": "La aplicación no existe",
-    "_idDoesNotExist.comment": "El mensaje mostrado al usuario cuando la aplicación no existe.",
-    "rotateCredentialSuccessfully": "Restablecimiento de clave exitoso",
-    "_rotateCredentialSuccessfully.comment": "El mensaje mostrado al usuario cuando el restablecimiento de la clave es exitoso.",
-    "rotateCredentialFailed": "Error al restablecer la clave, por favor contacta para solucionarlo",
-    "_rotateCredentialFailed.comment": "El mensaje mostrado al usuario cuando el restablecimiento de la clave falla.",
-    "updateFailed": "Fallo en la modificación",
-    "_updateFailed.comment": "El mensaje mostrado al usuario cuando la modificación falla.",
-    "updateSuccessfully": "Modificación exitosa",
-    "_updateSuccessfully.comment": "El mensaje mostrado al usuario cuando la modificación es exitosa."
+  "button.buyMore": {
+    "message": "Comprar más",
+    "description": "El texto en un botón, al hacer clic en este botón, irá a la página de compra adicional."
   },
-  "title": {
-    "buyService": "Comprar servicio",
-    "_buyService.comment": "El título de la página, cuando el usuario quiere comprar el servicio.",
-    "applicationRemainingCount": "Modificar cantidad",
-    "_applicationRemainingCount.comment": "El título de la página, cuando el usuario quiere modificar la cantidad de la aplicación.",
-    "manageApplication": "Gestión de la aplicación",
-    "_manageApplication.comment": "El título de la página, cuando el usuario quiere gestionar la aplicación."
+  "button.createOrder": {
+    "message": "Crear orden",
+    "description": "El texto en un botón, al hacer clic en este botón, irá a la página de creación de orden."
+  },
+  "button.custom": {
+    "message": "Personalizado",
+    "description": "El texto en un botón, al hacer clic en este botón, irá a la página personalizada."
+  },
+  "button.query": {
+    "message": "Consulta",
+    "description": "El texto en un botón, al hacer clic en este botón, irá a la página de consulta."
+  },
+  "button.usage": {
+    "message": "Historial de uso",
+    "description": "El texto en un botón, al hacer clic en este botón, irá a la página de historial de uso."
+  },
+  "field.id": {
+    "message": "ID de la aplicación",
+    "description": "El ID de la aplicación."
+  },
+  "field.remainingAmount": {
+    "message": "Cantidad restante",
+    "description": "La cantidad restante de la aplicación."
+  },
+  "field.usedAmount": {
+    "message": "Cantidad utilizada",
+    "description": "La cantidad utilizada de la aplicación."
+  },
+  "field.apiKey": {
+    "message": "Clave API",
+    "description": "La clave API"
+  },
+  "field.service": {
+    "message": "Servicio",
+    "description": "El servicio de la aplicación."
+  },
+  "field.operation": {
+    "message": "Operación",
+    "description": "La operación de la aplicación."
+  },
+  "field.amount": {
+    "message": "Cantidad",
+    "description": "La cantidad de la aplicación."
+  },
+  "field.traceId": {
+    "message": "ID de traza",
+    "description": "El ID de traza de una llamada de API, para la aplicación del servicio de API, no lo traduzca, manténgalo como 'ID de traza'"
+  },
+  "field.shouldPayPrice": {
+    "message": "Precio final",
+    "description": "El precio final de la aplicación."
+  },
+  "field.api": {
+    "message": "API",
+    "description": "Este es un tipo de servicio en línea, el formulario es a través de API para proporcionar servicio al usuario."
+  },
+  "field.proxy": {
+    "message": "Proxy",
+    "description": "Este es un tipo de servicio en línea, el formulario es a través de un proxy HTTP (utilizado para transferir datos) para proporcionar servicio al usuario."
+  },
+  "field.credential": {
+    "message": "Credencial",
+    "description": "La credencial de la aplicación."
+  },
+  "field.name": {
+    "message": "Nombre",
+    "description": "El nombre de la aplicación."
+  },
+  "field.package": {
+    "message": "Paquete",
+    "description": "El paquete significa diferentes paquetes de precios, como $100 por 10000 créditos, $200 por 20000 créditos."
+  },
+  "field.type": {
+    "message": "Tipo",
+    "description": "El tipo de la aplicación."
+  },
+  "field.freeAmount": {
+    "message": "Cantidad gratuita",
+    "description": "La cantidad gratuita de la aplicación."
+  },
+  "field.extraPrice": {
+    "message": "Precio",
+    "description": "El precio extra que el usuario debe pagar de la aplicación."
+  },
+  "message.alreadyApplied": {
+    "message": "Ya has solicitado este servicio, por favor verifica en la consola",
+    "description": "El mensaje mostrado al usuario cuando el usuario ya ha solicitado este servicio."
+  },
+  "message.applySuccessfully": {
+    "message": "Solicitud exitosa",
+    "description": "El mensaje mostrado al usuario cuando el usuario ha solicitado este servicio con éxito."
+  },
+  "message.notApplied": {
+    "message": "Todavía no has solicitado este servicio, por favor solicítalo antes de usarlo",
+    "description": "El mensaje mostrado al usuario cuando el usuario aún no ha solicitado este servicio."
+  },
+  "message.yourApplication": {
+    "message": "Tu solicitud",
+    "description": "El mensaje mostrado al usuario cuando la solicitud del usuario."
+  },
+  "message.unverified": {
+    "message": "Necesitas completar la autenticación de nombre real antes de poder solicitar este servicio",
+    "description": "El mensaje mostrado al usuario cuando el usuario no ha completado la autenticación de nombre real."
+  },
+  "message.goVerify": {
+    "message": "Ir a la autenticación de nombre real",
+    "description": "El mensaje mostrado al usuario cuando el usuario no ha completado la autenticación de nombre real."
+  },
+  "message.requiredParameter": {
+    "message": "Parámetro requerido",
+    "description": "El mensaje mostrado al usuario cuando el usuario no ha ingresado el parámetro requerido."
+  },
+  "message.example": {
+    "message": "Ejemplo",
+    "description": "El mensaje mostrado al usuario cuando el usuario no ha ingresado el parámetro requerido."
+  },
+  "message.createCredentialSuccessfully": {
+    "message": "Credencial creada exitosamente",
+    "description": "El mensaje mostrado al usuario cuando el usuario ha creado la credencial con éxito."
+  },
+  "message.readPolicy": {
+    "message": "He leído y acepto",
+    "description": "El mensaje mostrado al usuario cuando el usuario ha leído y aceptado la política."
+  },
+  "message.policy": {
+    "message": "Acuerdo de Uso del Servicio de Tecnología de Datos",
+    "description": "El mensaje mostrado al usuario cuando el usuario ha leído y aceptado la política."
+  },
+  "message.notAgreePolicy": {
+    "message": "No has aceptado el Acuerdo de Uso del Servicio de Tecnología de Datos",
+    "description": "El mensaje mostrado al usuario cuando el usuario no ha aceptado la política."
+  },
+  "message.confirmApplying": {
+    "message": "Confirmar solicitud de servicio",
+    "description": "El mensaje mostrado al usuario cuando el usuario ha confirmado la solicitud de servicio."
+  },
+  "message.rotateCredential": {
+    "message": "Restablecer clave",
+    "description": "El mensaje mostrado al usuario cuando el usuario ha restablecido la clave."
+  },
+  "message.rotateCredentialConfirm": {
+    "message": "¿Estás seguro de que quieres restablecer la clave? No se puede recuperar después de restablecerla",
+    "description": "El mensaje mostrado al usuario cuando el usuario ha confirmado el restablecimiento de la clave."
+  },
+  "message.idDoesNotExist": {
+    "message": "La aplicación no existe",
+    "description": "El mensaje mostrado al usuario cuando la aplicación no existe."
+  },
+  "message.rotateCredentialSuccessfully": {
+    "message": "Restablecimiento de clave exitoso",
+    "description": "El mensaje mostrado al usuario cuando el restablecimiento de la clave es exitoso."
+  },
+  "message.rotateCredentialFailed": {
+    "message": "Error al restablecer la clave, por favor contacta para su manejo",
+    "description": "El mensaje mostrado al usuario cuando el restablecimiento de la clave falla."
+  },
+  "message.updateFailed": {
+    "message": "Fallo en la modificación",
+    "description": "El mensaje mostrado al usuario cuando la modificación falla."
+  },
+  "message.updateSuccessfully": {
+    "message": "Modificación exitosa",
+    "description": "El mensaje mostrado al usuario cuando la modificación es exitosa."
+  },
+  "title.buyService": {
+    "message": "Comprar servicio",
+    "description": "El título de la página, cuando el usuario quiere comprar el servicio."
+  },
+  "title.applicationRemainingCount": {
+    "message": "Modificar conteo",
+    "description": "El título de la página, cuando el usuario quiere modificar el conteo de la aplicación."
+  },
+  "title.manageApplication": {
+    "message": "Gestión de aplicaciones",
+    "description": "El título de la página, cuando el usuario quiere gestionar la aplicación."
   }
 }

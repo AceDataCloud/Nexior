@@ -1,108 +1,194 @@
 {
-  "button": {
-    "uploadDocuments": "Отпреми документа",
-    "_uploadDocuments.comment": "Текст на дугмету који омогућава кориснику да отпреми документа"
+  "button.uploadDocuments": {
+    "message": "Отпреми документе",
+    "description": "Текст на дугмету који омогућава кориснику да отпреми документе"
   },
-  "field": {
-    "fileName": "Име документа",
-    "_fileName.comment": "Име документа који је отпремљен",
-    "createdAt": "Време креирања",
-    "_createdAt": "Време када је документ отпремљен",
-    "fileExtension": "Тип документа",
-    "_fileExtension.comment": "Тип документа који је отпремљен",
-    "fileUrl": "Линк документа",
-    "_fileUrl.comment": "Линк ка отпремљеном документу",
-    "fileSize": "Величина документа",
-    "_fileSize.comment": "Величина отпремљеног документа",
-    "state": "Статус",
-    "_state.comment": "Статус обраде документа",
-    "stateProcessing": "Учење",
-    "_stateProcessing.comment": "Документ се обрађује",
-    "stateCompleted": "Учење завршено",
-    "_stateCompleted.comment": "Документ је успешно обрађен",
-    "stateFailed": "Неуспело учење",
-    "_stateFailed.comment": "Неуспела обрада документа",
-    "name": "Име",
-    "_name.comment": "Име документа",
-    "description": "Опис",
-    "_description.comment": "Опис документа"
+  "field.fileName": {
+    "message": "Име фајла",
+    "description": "Име фајла за отпремљени документ"
   },
-  "message": {
-    "introductionForKnowledge": "Документи могу бити додати у базу знања, а када робот одговара, може користити знање у репозиторијуму за одговор.",
-    "_introductionForKnowledge.comment": "Уводна порука за базу знања",
-    "introductionForRepository": "База знања је збир докумената у које можете додати документа. Када робот одговара, одговориће из докумената у бази знања.",
-    "_introductionForRepository.comment": "Уводна порука за базу знања",
-    "uploadDocumentsExceed": "Количина отпремљених докумената прелази лимит",
-    "_uploadDocumentsExceed.comment": "Грешка када количина отпремљених докумената прелази лимит",
-    "uploadDocumentsError": "Неуспешно отпремање документа",
-    "_uploadDocumentsError.comment": "Грешка када је неуспешно отпремање документа",
-    "uploadDocumentsSuccess": "Документ је успешно отпремљен",
-    "_uploadDocumentsSuccess.comment": "Порука успеха када је документ успешно отпремљен",
-    "createDocumentSuccess": "Успешно креирање документа",
-    "_createDocumentSuccess.comment": "Порука успеха када је креирање документа успешно",
-    "startCreateDocument": "Почетак учења документа...",
-    "_startCreateDocument.comment": "Порука када почиње учење документа",
-    "createDocumentError": "Неуспешно учење документа",
-    "_createDocumentError.comment": "Грешка када је учење документа неуспешно",
-    "dragOrClickToUpload": "Превуци или кликни да отпремиш документ",
-    "_dragOrClickToUpload.comment": "Порука за превлачење или клик за отпремање документа",
-    "learningDocument": "Учење, молим сачекајте...",
-    "_learningDocument.comment": "Порука када се учи документ",
-    "startNewChat": "Почни нови разговор",
-    "_startNewChat.comment": "Порука за почетак новог разговора",
-    "errorApiError": "Неуспешно одговарање, молим покушајте поново касније",
-    "_errorApiError.comment": "Грешка када је одговарање неуспешно",
-    "errorBadRequest": "Садржај захтева није исправно форматиран, молим поново поставите питање",
-    "_errorBadRequest.comment": "Грешка када садржај захтева није исправно форматиран",
-    "errorNoConversation": "Садржај разговора не постоји или је истекао, молим почните нови разговор",
-    "_errorNoConversation.comment": "Грешка када садржај разговора не постоји или је истекао",
-    "errorContentTooLarge": "Садржај питања је превелик, молим скратите и покушајте поново",
-    "_errorContentTooLarge.comment": "Грешка када је садржај питања превелик",
-    "errorTooManyRequests": "Ваша операција је превише честа, молим покушајте поново касније",
-    "_errorTooManyRequests.comment": "Грешка када је операција превише честа",
-    "errorUsedUp": "Достигли сте лимит коришћења вашег пакета, молимо купите више коришћења да бисте наставили",
-    "_errorUsedUp.comment": "Грешка када је достигнут лимит коришћења пакета",
-    "errorUnknown": "Дошло је до непознате грешке на серверу, молимо покушајте поново касније или контактирајте службу за кориснике",
-    "_errorUnknown.comment": "Грешка када је дошло до непознате грешке на серверу",
-    "errorTimeout": "Одговарање на питање је истекло, молимо покушајте поново касније",
-    "_errorTimeout.comment": "Грешка када је одговарање на питање истекло",
-    "errorNotApplied": "Нисте се пријавили за ову услугу, молимо пријавите се пре него што наставите са питањима",
-    "_errorNotApplied.comment": "Грешка када корисник још увек није пријављен за ову услугу",
-    "confirmDelete": "Потврди брисање",
-    "_confirmDelete.comment": "Порука за потврду брисања",
-    "howToUse": "Притисните Shift+Enter за прелазак у нови ред",
-    "_howToUse.comment": "Порука која показује како да се прелази у нови ред",
-    "createRepositorySuccess": "База знања успешно креирана",
-    "_createRepositorySuccess.comment": "Порука успеха када је база знања успешно креирана",
-    "createRepositoryFailed": "Неуспешно креирање базе знања",
-    "_createRepositoryFailed.comment": "Грешка када је креирање базе знања неуспешно",
-    "deleteRepositorySuccess": "База знања успешно обрисана",
-    "_deleteRepositorySuccess.comment": "Порука успеха када је база знања успешно обрисана",
-    "deleteDocumentSuccess": "Документ успешно обрисан",
-    "_deleteDocumentSuccess.comment": "Порука успеха када је документ успешно обрисан",
-    "currentRepository": "Тренутна база знања",
-    "_currentRepository.comment": "Порука која показује тренутну базу знања",
-    "nameRequired": "Име не може бити празно",
-    "_nameRequired.comment": "Грешка када је име празно",
-    "inputRepositoryName": "Име базе знања",
-    "_inputRepositoryName.comment": "Поље за унос имена базе знања",
-    "inputRepositoryDescription": "Опишите вашу базу знања у једној реченици",
-    "_inputRepositoryDescription.comment": "Поље за унос описа базе знања"
+  "field.createdAt": {
+    "message": "Време креирања",
+    "description": "Време када је документ отпремљен"
   },
-  "nav": {
-    "chat": "Разговор",
-    "_chat.comment": "Навигациони елемент за разговор",
-    "setting": "Подешавање",
-    "_setting.comment": "Навигациони елемент за подешавање",
-    "manage": "Управљање",
-    "_manage.comment": "Навигациони елемент за управљање"
+  "field.fileExtension": {
+    "message": "Тип фајла",
+    "description": "Тип фајла за отпремљени документ"
   },
-  "title": {
-    "manage": "Управљање репозиторијумима",
-    "_manage.comment": "Наслов за управљање базом знања",
-    "createRepository": "Креирање репозиторијума",
-    "_createRepository.comment": "Наслов за креирање базе знања",
-    "repositories": "Листа репозиторијума",
-    "_repositories.comment": "Наслов за листу базе знања"
+  "field.fileUrl": {
+    "message": "Линк фајла",
+    "description": "Линк до отпремљеног документа"
+  },
+  "field.fileSize": {
+    "message": "Величина фајла",
+    "description": "Величина отпремљеног документа"
+  },
+  "field.state": {
+    "message": "Статус",
+    "description": "Статус обраде документа"
+  },
+  "field.stateProcessing": {
+    "message": "Учење",
+    "description": "Документ се обрађује"
+  },
+  "field.stateCompleted": {
+    "message": "Учење завршено",
+    "description": "Документ је успешно обрађен"
+  },
+  "field.stateFailed": {
+    "message": "Неуспело учење",
+    "description": "Неуспела обрада документа"
+  },
+  "field.name": {
+    "message": "Име",
+    "description": "Име документа"
+  },
+  "field.description": {
+    "message": "Опис",
+    "description": "Опис документа"
+  },
+  "message.introductionForKnowledge": {
+    "message": "Документи могу бити додати у базу знања, и када робот одговара, може користити знање у репозиторијуму за одговор.",
+    "description": "Уводна порука за базу знања"
+  },
+  "message.introductionForRepository": {
+    "message": "База знања је збир докумената где можете додати документе. Када робот одговара, одговориће из докумената у бази знања.",
+    "description": "Уводна порука за базу знања"
+  },
+  "message.uploadDocumentsExceed": {
+    "message": "Број отпремљених докумената прелази лимит",
+    "description": "Грешка када број отпремљених докумената прелази лимит"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Неуспешно отпремање документа",
+    "description": "Грешка када је неуспешно отпремање документа"
+  },
+  "message.uploadDocumentsSuccess": {
+    "message": "Успешно отпремање документа",
+    "description": "Порука успеха када је документ успешно отпремљен"
+  },
+  "message.createDocumentSuccess": {
+    "message": "Успешно креирање документа",
+    "description": "Порука успеха када је документ успешно креиран"
+  },
+  "message.startCreateDocument": {
+    "message": "Почетак учења документа...",
+    "description": "Порука при почетку учења документа"
+  },
+  "message.createDocumentError": {
+    "message": "Неуспешно учење документа",
+    "description": "Грешка када је неуспешно учење документа"
+  },
+  "message.dragOrClickToUpload": {
+    "message": "Превуци или кликни да отпремиш документ",
+    "description": "Порука за превлачење или клик за отпремање документа"
+  },
+  "message.learningDocument": {
+    "message": "Учење, молимо сачекајте...",
+    "description": "Порука при учењу документа"
+  },
+  "message.startNewChat": {
+    "message": "Почни нови разговор",
+    "description": "Порука за почетак новог разговора"
+  },
+  "message.errorApiError": {
+    "message": "Неуспешно одговарање, молимо покушајте поново касније",
+    "description": "Грешка када је неуспешно одговарање"
+  },
+  "message.errorBadRequest": {
+    "message": "Садржај захтева није исправно форматиран, молимо поново поставите питање",
+    "description": "Грешка када садржај захтева није исправно форматиран"
+  },
+  "message.errorNoConversation": {
+    "message": "Садржај разговора не постоји или је истекао, молимо почните нови разговор",
+    "description": "Грешка када садржај разговора не постоји или је истекао"
+  },
+  "message.errorContentTooLarge": {
+    "message": "Садржај питања је превише дугачак, молимо скратите и покушајте поново",
+    "description": "Грешка када је садржај питања превише дугачак"
+  },
+  "message.errorTooManyRequests": {
+    "message": "Ваша операција је превише честа, молимо покушајте поново касније",
+    "description": "Грешка када је операција превише честа"
+  },
+  "message.errorUsedUp": {
+    "message": "Достигли сте лимит коришћења вашег пакета, молимо купите више коришћења да бисте наставили",
+    "description": "Грешка када је достигнут лимит коришћења пакета"
+  },
+  "message.errorUnknown": {
+    "message": "Дошло је до непознате грешке на серверу, молимо покушајте поново касније или контактирајте службу за кориснике",
+    "description": "Грешка када је дошло до непознате грешке на серверу"
+  },
+  "message.errorTimeout": {
+    "message": "Истекло је време за одговор на питање, молимо покушајте поново касније",
+    "description": "Грешка када је истекло време за одговор на питање"
+  },
+  "message.errorNotApplied": {
+    "message": "Још увек нисте захтевали ову услугу, молимо захтевајте пре него што наставите са питањима",
+    "description": "Грешка када корисник још увек није захтевао ову услугу"
+  },
+  "message.confirmDelete": {
+    "message": "Потврди брисање",
+    "description": "Порука за потврду брисања"
+  },
+  "message.howToUse": {
+    "message": "Притисните Shift+Enter за прелом линије",
+    "description": "Порука за приказ како преломити линију"
+  },
+  "message.createRepositorySuccess": {
+    "message": "База знања успешно креирана",
+    "description": "Порука успеха када је база знања успешно креирана"
+  },
+  "message.createRepositoryFailed": {
+    "message": "Неуспешно креирање базе знања",
+    "description": "Грешка када је неуспешно креирање базе знања"
+  },
+  "message.deleteRepositorySuccess": {
+    "message": "База знања успешно обрисана",
+    "description": "Порука успеха када је база знања успешно обрисана"
+  },
+  "message.deleteDocumentSuccess": {
+    "message": "Документ успешно обрисан",
+    "description": "Порука успеха када је документ успешно обрисан"
+  },
+  "message.currentRepository": {
+    "message": "Тренутна база знања",
+    "description": "Порука за приказ тренутне базе знања"
+  },
+  "message.nameRequired": {
+    "message": "Име не може бити празно",
+    "description": "Грешка када је име празно"
+  },
+  "message.inputRepositoryName": {
+    "message": "Име базе знања",
+    "description": "Поље за унос имена базе знања"
+  },
+  "message.inputRepositoryDescription": {
+    "message": "Опишите вашу базу знања у једној реченици",
+    "description": "Поље за унос описа базе знања"
+  },
+  "nav.chat": {
+    "message": "Разговор",
+    "description": "Навигациона ставка за разговор"
+  },
+  "nav.setting": {
+    "message": "Подешавање",
+    "description": "Навигациона ставка за подешавање"
+  },
+  "nav.manage": {
+    "message": "Управљање",
+    "description": "Навигациона ставка за управљање"
+  },
+  "title.manage": {
+    "message": "Управљање репозиторијумима",
+    "description": "Наслов за управљање базом знања"
+  },
+  "title.createRepository": {
+    "message": "Креирање репозиторијума",
+    "description": "Наслов за креирање базе знања"
+  },
+  "title.repositories": {
+    "message": "Листа репозиторијума",
+    "description": "Наслов за листу базе знања"
   }
 }

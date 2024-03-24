@@ -12,7 +12,7 @@
     </span>
     <el-input
       v-model="questionValue"
-      :rows="1"
+      :rows="3"
       :disabled="disabled"
       class="input"
       type="textarea"
@@ -20,8 +20,8 @@
       @keydown.enter.exact.prevent="onSubmit"
     >
     </el-input>
-    <p class="info">{{ $t('chat.message.howToUse') }}</p>
   </div>
+  <p class="info">{{ $t('chat.message.howToUse') }}</p>
 </template>
 
 <script lang="ts">
@@ -94,7 +94,6 @@ export default defineComponent({
       box-shadow: none;
       resize: none;
       line-height: 30px;
-      height: 40px;
     }
   }
   .el-upload-list {
@@ -117,20 +116,12 @@ export default defineComponent({
   border-radius: 10px;
   background: none;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
-  top: 30px;
   .input {
     border: none;
     width: calc(100% - 80px);
     margin-left: 5px;
   }
-  .info {
-    display: block;
-    position: absolute;
-    font-size: 12px;
-    color: #666;
-    margin-top: 5px;
-    margin-left: 3px;
-  }
+
   .btn {
     display: block;
     z-index: 100;
@@ -151,5 +142,14 @@ export default defineComponent({
       }
     }
   }
+}
+
+.info {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+  margin-left: 3px;
+  margin-bottom: 0;
 }
 </style>

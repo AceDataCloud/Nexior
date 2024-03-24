@@ -1,78 +1,134 @@
 {
-  "button": {
-    "pay": "دفع",
-    "_pay.comment": "النص في الزر، الذي يستخدم لدفع الطلب.",
-    "continuePay": "متابعة الدفع",
-    "_continuePay.comment": "النص في الزر، الذي يستخدم لمتابعة دفع الطلب.",
-    "checkDetail": "فحص التفاصيل",
-    "_checkDetail.comment": "النص في الزر، الذي يستخدم لفحص تفاصيل الطلب.",
-    "query": "استعلام",
-    "_query.comment": "النص في الزر، الذي يستخدم للاستعلام عن الطلب.",
-    "finish": "اكتمال يدوياً",
-    "_finish.comment": "النص في الزر، الذي يستخدم لاكتمال الطلب يدوياً.",
-    "update": "تحديث",
-    "_update.comment": "النص في الزر، الذي يستخدم لتحديث الطلب."
+  "button.pay": {
+    "message": "دفع",
+    "description": "النص في الزر، الذي يستخدم لدفع الطلب."
   },
-  "field": {
-    "id": "معرف الطلب",
-    "_id.comment": "معرف الطلب.",
-    "amount": "المبلغ",
-    "_amount.comment": "مبلغ الاعتمادات للطلب.",
-    "price": "المبلغ",
-    "_price.comment": "مبلغ الاعتمادات للطلب.",
-    "description": "وصف الطلب",
-    "_description.comment": "وصف الطلب.",
-    "state": "الحالة",
-    "_state.comment": "حالة الطلب.",
-    "createdAt": "وقت الإنشاء",
-    "_createdAt.comment": "وقت إنشاء الطلب.",
-    "service": "اسم الخدمة",
-    "_service.comment": "اسم الخدمة.",
-    "payWay": "طريقة الدفع",
-    "_payWay.comment": "طريقة الدفع للطلب.",
-    "api": "واجهة برمجة التطبيقات",
-    "_api.comment": "واجهة برمجة التطبيقات هي نوع من الخدمة عبر الإنترنت.",
-    "proxy": "الوكيل",
-    "_proxy.comment": "الوكيل هو نوع من الخدمة عبر الإنترنت، ويعني الوكيل HTTP المستخدم لنقل البيانات."
+  "button.continuePay": {
+    "message": "متابعة الدفع",
+    "description": "النص في الزر، الذي يستخدم لمتابعة دفع الطلب."
   },
-  "message": {
-    "paidSuccessfully": "تم الدفع بنجاح",
-    "_paidSuccessfully.comment": "رسالة الدفع الناجح.",
-    "createFailed": "فشل الإنشاء",
-    "_createFailed.comment": "رسالة الفشل في الإنشاء.",
-    "wechatPayHelp": "يرجى فتح تطبيق WeChat على هاتفك، ومسح لإتمام الدفع",
-    "_wechatPayHelp.comment": "رسالة مساعدة الدفع عبر WeChat.",
-    "free": "مجاناً",
-    "_free.comment": "رسالة الطلب المجاني.",
-    "buyInExternalUrl": "يرجى إكمال الدفع في الرابط الخارجي",
-    "_buyInExternalUrl.comment": "رسالة الدفع عبر الرابط الخارجي.",
-    "updateFailed": "فشل التحديث",
-    "_updateFailed.comment": "رسالة فشل التحديث.",
-    "updateSuccessfully": "تم التحديث بنجاح",
-    "_updateSuccessfully.comment": "رسالة التحديث الناجح.",
-    "confirmFinish": "سيقوم هذا الإجراء بتعيين الطلب يدوياً إلى حالة الدفع واكتمال معالجة التوزيع، ولا يمكن التراجع عنه. يرجى تأكيد أن العميل قد أكمل الدفع، هل ترغب في المتابعة؟",
-    "_confirmFinish.comment": "رسالة تأكيد الاكتمال."
+  "button.checkDetail": {
+    "message": "فحص التفاصيل",
+    "description": "النص في الزر، الذي يستخدم لفحص تفاصيل الطلب."
   },
-  "state": {
-    "pending": "قيد الانتظار للدفع",
-    "_pending.comment": "حالة الطلب، والتي تعني أن هذا الطلب لا يزال في انتظار دفع المستخدم.",
-    "paid": "تم الدفع",
-    "_paid.comment": "حالة الطلب، والتي تعني أن هذا الطلب تم دفعه.",
-    "expired": "انتهت مهلة الدفع",
-    "_expired.comment": "حالة الطلب، والتي تعني أن هذا الطلب قد انتهت مهلة الدفع.",
-    "failed": "فشل الدفع",
-    "_failed.comment": "حالة الطلب، والتي تعني أن هذا الطلب قد فشل الدفع."
+  "button.query": {
+    "message": "استعلام",
+    "description": "النص في الزر، الذي يستخدم للاستعلام عن الطلب."
   },
-  "title": {
-    "info": "معلومات الطلب",
-    "_info.comment": "العنوان المستخدم كعنوان للموقع، يعني معلومات الطلب.",
-    "wechatPay": "WeChat Pay",
-    "_wechatPay.comment": "العنوان المستخدم كعنوان للموقع، يعني دفع WeChat.",
-    "aliPay": "Alipay",
-    "_aliPay.comment": "العنوان المستخدم كعنوان للموقع، يعني دفع Alipay، دفع Alipay هو نوع من الدفع عبر الإنترنت.",
-    "stripe": "Stripe",
-    "_stripe.comment": "العنوان المستخدم كعنوان للموقع، يعني دفع Stripe، دفع Stripe هو نوع من الدفع عبر الإنترنت.",
-    "manageOrder": "إدارة الطلب",
-    "_manageOrder.comment": "العنوان المستخدم كعنوان للموقع، يعني إدارة الطلب."
+  "button.finish": {
+    "message": "اكتمال يدوي",
+    "description": "النص في الزر، الذي يستخدم لاكتمال الطلب يدويًا."
+  },
+  "button.update": {
+    "message": "تحديث",
+    "description": "النص في الزر، الذي يستخدم لتحديث الطلب."
+  },
+  "field.id": {
+    "message": "معرف الطلب",
+    "description": "معرف الطلب."
+  },
+  "field.amount": {
+    "message": "المبلغ",
+    "description": "مبلغ الاعتمادات للطلب."
+  },
+  "field.price": {
+    "message": "المبلغ",
+    "description": "مبلغ الاعتمادات للطلب."
+  },
+  "field.description": {
+    "message": "وصف الطلب",
+    "description": "وصف الطلب."
+  },
+  "field.state": {
+    "message": "الحالة",
+    "description": "حالة الطلب."
+  },
+  "field.createdAt": {
+    "message": "وقت الإنشاء",
+    "description": "وقت إنشاء الطلب."
+  },
+  "field.service": {
+    "message": "اسم الخدمة",
+    "description": "اسم الخدمة."
+  },
+  "field.payWay": {
+    "message": "طريقة الدفع",
+    "description": "طريقة الدفع للطلب."
+  },
+  "field.api": {
+    "message": "واجهة برمجة التطبيقات",
+    "description": "واجهة برمجة التطبيقات هي نوع من الخدمة عبر الإنترنت."
+  },
+  "field.proxy": {
+    "message": "الوكيل",
+    "description": "الوكيل هو نوع من الخدمة عبر الإنترنت، وهو يعني الوكيل HTTP المستخدم لنقل البيانات."
+  },
+  "message.paidSuccessfully": {
+    "message": "تم الدفع بنجاح",
+    "description": "رسالة الدفع الناجح."
+  },
+  "message.createFailed": {
+    "message": "فشل الإنشاء",
+    "description": "رسالة الإنشاء الفاشل."
+  },
+  "message.wechatPayHelp": {
+    "message": "يرجى فتح تطبيق WeChat على هاتفك، ومسح لإتمام الدفع",
+    "description": "رسالة مساعدة دفع WeChat."
+  },
+  "message.free": {
+    "message": "مجاني",
+    "description": "رسالة الطلب المجاني."
+  },
+  "message.buyInExternalUrl": {
+    "message": "يرجى إكمال الدفع في الرابط الخارجي",
+    "description": "رسالة الدفع في الرابط الخارجي."
+  },
+  "message.updateFailed": {
+    "message": "فشل التحديث",
+    "description": "رسالة فشل التحديث."
+  },
+  "message.updateSuccessfully": {
+    "message": "تم التحديث بنجاح",
+    "description": "رسالة التحديث الناجح."
+  },
+  "message.confirmFinish": {
+    "message": "سيقوم هذا الإجراء بتعيين الطلب يدويًا إلى حالة الدفع واكتمال معالجة التوزيع، ولا يمكن التراجع عنه. يرجى تأكيد أن العميل قد أكمل الدفع، هل ترغب في المتابعة؟",
+    "description": "رسالة تأكيد الاكتمال."
+  },
+  "state.pending": {
+    "message": "قيد الانتظار للدفع",
+    "description": "حالة الطلب، والتي تعني أن هذا الطلب لا يزال في انتظار دفع المستخدم."
+  },
+  "state.paid": {
+    "message": "تم الدفع",
+    "description": "حالة الطلب، والتي تعني أن هذا الطلب تم دفعه."
+  },
+  "state.expired": {
+    "message": "انتهت مهلة الدفع",
+    "description": "حالة الطلب، والتي تعني أن مهلة الدفع لهذا الطلب قد انتهت."
+  },
+  "state.failed": {
+    "message": "فشل الدفع",
+    "description": "حالة الطلب، والتي تعني أن هذا الطلب قد فشل الدفع."
+  },
+  "title.info": {
+    "message": "معلومات الطلب",
+    "description": "العنوان الذي يستخدم كعنوان للموقع، يعني معلومات الطلب."
+  },
+  "title.wechatPay": {
+    "message": "WeChat Pay",
+    "description": "العنوان الذي يستخدم كعنوان للموقع، يعني دفع WeChat."
+  },
+  "title.aliPay": {
+    "message": "الدفع بواسطة Alipay",
+    "description": "العنوان الذي يستخدم كعنوان للموقع، يعني دفع Alipay، دفع Alipay هو نوع من الدفع عبر الإنترنت."
+  },
+  "title.stripe": {
+    "message": "Stripe",
+    "description": "العنوان الذي يستخدم كعنوان للموقع، يعني دفع Stripe، دفع Stripe هو نوع من الدفع عبر الإنترنت."
+  },
+  "title.manageOrder": {
+    "message": "إدارة الطلب",
+    "description": "العنوان الذي يستخدم كعنوان للموقع، يعني إدارة الطلب."
   }
 }

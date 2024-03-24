@@ -1,76 +1,130 @@
 {
-  "button": {
-    "learnMore": "了解更多",
-    "_learnMore.comment": "按钮上显示的文本，用於了解有關服務的更多信息。",
-    "apply": "立即申請",
-    "_apply.comment": "按钮上显示的文本，用於申請服務。",
-    "introduction": "服務介紹",
-    "_introduction.comment": "按钮上显示的文本，用於查看服務介紹。",
-    "apis": "API 描述",
-    "_apis.comment": "按钮上显示的文本，用於查看 API 描述。",
-    "pricing": "價格",
-    "_pricing.comment": "按钮上显示的文本，用於查看價格信息。"
+  "button.learnMore": {
+    "message": "了解更多",
+    "description": "顯示在按鈕上的文字，用於了解有關服務的更多信息。"
   },
-  "field": {
-    "price": "價格",
-    "_price.comment": "服務的價格。",
-    "introduction": "介紹",
-    "_introduction.comment": "服務的介紹。",
-    "apis": "API",
-    "_apis.comment": "服務的 API，API 是一種線上服務的形式。",
-    "proxies": "代理",
-    "_proxies.comment": "服務的代理，代理是線上服務的一種形式，表示用於傳輸數據的 HTTP 代理。"
+  "button.apply": {
+    "message": "立即申請",
+    "description": "顯示在按鈕上的文字，用於申請服務。"
   },
-  "message": {
-    "free": "免費",
-    "_free.comment": "當服務免費時顯示的文本，表示服務是免費的。",
-    "around": "大約",
-    "_around.comment": "當價格大約在某個值附近時顯示的文本。",
-    "welcomeCredits": "歡迎積分",
-    "_welcomeCredits.comment": "當服務提供歡迎積分時顯示的文本。",
-    "appliedCount": "申請數量",
-    "_appliedCount.comment": "計算申請數量時顯示的文本。",
-    "indexTitle": "您數位服務的明智選擇",
-    "_indexTitle.comment": "首頁的標題。",
-    "indexSubtitle": "在服務的卓越標準下賦予您的工作和生活更多力量。",
-    "_indexSubtitle.comment": "首頁的副標題。",
-    "fromPrice": "從",
-    "_fromPrice.comment": "價格前顯示的文本。",
-    "packages": "我們提供各種積分套餐，購買的套餐越多，折扣越多。",
-    "_packages.comment": "當服務提供積分套餐時顯示的文本。",
-    "offer": "優惠",
-    "_offer.comment": "當服務提供優惠時顯示的文本。",
-    "partnersTitle": "受領先合作夥伴信任",
-    "_partnersTitle.comment": "合作夥伴部分的標題。"
+  "button.introduction": {
+    "message": "服務介紹",
+    "description": "顯示在按鈕上的文字，用於查看服務介紹。"
   },
-  "title": {
-    "apis": "API",
-    "_apis.comment": "服務的 API，API 是一種線上服務的形式。",
-    "proxies": "代理",
-    "_proxies.comment": "服務的代理，代理是線上服務的一種形式，表示用於傳輸數據的 HTTP 代理。",
-    "packages": "套餐",
-    "_packages.comment": "服務的套餐，套餐用於購買積分，例如，服務提供 3 個套餐，100 美元可獲得 100 積分，200 美元可獲得 200 積分，300 美元可獲得 300 積分。"
+  "button.apis": {
+    "message": "API 描述",
+    "description": "顯示在按鈕上的文字，用於查看 API 描述。"
   },
-  "unit": {
-    "credit": "積分",
-    "_credit.comment": "積分是 API 服務中使用的虛擬貨幣。",
-    "Credit": "積分",
-    "_Credit.comment": "積分是 API 服務中使用的虛擬貨幣，這是大寫形式",
-    "credits": "積分",
-    "_credits.comment": "積分是 API 服務中使用的虛擬貨幣，這是複數形式",
-    "Credits": "積分",
-    "_Credits.comment": "積分是 API 服務中使用的虛擬貨幣，這是大寫和複數形式",
-    "call": "呼叫",
-    "_call.comment": "呼叫是 API 服務被呼叫的次數",
-    "Call": "呼叫",
-    "_Call.comment": "呼叫是 API 服務被呼叫的次數，這是大寫形式",
-    "calls": "呼叫",
-    "_calls.comment": "呼叫是 API 服務被呼叫的次數，這是複數形式",
-    "Calls": "呼叫",
-    "_Calls.comment": "呼叫是 API 服務被呼叫的次數，這是大寫和複數形式",
-    "MB": "MB",
-    "_MB.comment": "MB 表示兆位元組，一種數位信息存儲單位",
-    "GB": "GB",
-    "_GB.comment": "GB 表示千兆位元組，一種數位信息存儲單位"
+  "button.pricing": {
+    "message": "價格",
+    "description": "顯示在按鈕上的文字，用於查看價格信息。"
+  },
+  "field.price": {
+    "message": "價格",
+    "description": "服務的價格。"
+  },
+  "field.introduction": {
+    "message": "介紹",
+    "description": "服務的介紹。"
+  },
+  "field.apis": {
+    "message": "API",
+    "description": "服務的 API，API 是一種線上服務的形式。"
+  },
+  "field.proxies": {
+    "message": "代理",
+    "description": "服務的代理，代理是線上服務的一種形式，用於傳輸數據的 HTTP 代理。"
+  },
+  "message.free": {
+    "message": "免費",
+    "description": "當服務免費時顯示的文字，表示服務是免費的。"
+  },
+  "message.around": {
+    "message": "大約",
+    "description": "當價格大約在某個值附近時顯示的文字。"
+  },
+  "message.welcomeCredits": {
+    "message": "歡迎積分",
+    "description": "當服務提供免費的歡迎積分時顯示的文字。"
+  },
+  "message.appliedCount": {
+    "message": "申請數量",
+    "description": "計算申請數量時顯示的文字。"
+  },
+  "message.indexTitle": {
+    "message": "您的智慧數位服務首選",
+    "description": "首頁的標題。"
+  },
+  "message.indexSubtitle": {
+    "message": "在服務的卓越標準中賦予您的工作和生活更多力量。",
+    "description": "首頁的副標題。"
+  },
+  "message.fromPrice": {
+    "message": "從",
+    "description": "價格前顯示的文字。"
+  },
+  "message.packages": {
+    "message": "我們提供各種積分套餐，購買的套餐越多，折扣越多。",
+    "description": "當服務提供積分套餐時顯示的文字。"
+  },
+  "message.offer": {
+    "message": "優惠",
+    "description": "當服務提供優惠時顯示的文字。"
+  },
+  "message.partnersTitle": {
+    "message": "受領先合作夥伴信任",
+    "description": "合作夥伴部分的標題。"
+  },
+  "title.apis": {
+    "message": "API",
+    "description": "服務的 API，API 是一種線上服務的形式。"
+  },
+  "title.proxies": {
+    "message": "代理",
+    "description": "服務的代理，代理是線上服務的一種形式，用於傳輸數據的 HTTP 代理。"
+  },
+  "title.packages": {
+    "message": "套餐",
+    "description": "服務的套餐，套餐用於購買積分，例如，服務提供 3 個套餐，100 美元可獲得 100 積分，200 美元可獲得 200 積分，300 美元可獲得 300 積分。"
+  },
+  "unit.credit": {
+    "message": "積分",
+    "description": "積分是 API 服務中使用的虛擬貨幣。"
+  },
+  "unit.Credit": {
+    "message": "積分",
+    "description": "積分是 API 服務中使用的虛擬貨幣，這是大寫形式。"
+  },
+  "unit.credits": {
+    "message": "積分",
+    "description": "積分是 API 服務中使用的虛擬貨幣，這是複數形式。"
+  },
+  "unit.Credits": {
+    "message": "積分",
+    "description": "積分是 API 服務中使用的虛擬貨幣，這是大寫和複數形式。"
+  },
+  "unit.call": {
+    "message": "呼叫",
+    "description": "呼叫表示已呼叫 API 服務的次數。"
+  },
+  "unit.Call": {
+    "message": "呼叫",
+    "description": "呼叫表示已呼叫 API 服務的次數，這是大寫形式。"
+  },
+  "unit.calls": {
+    "message": "呼叫",
+    "description": "呼叫表示已呼叫 API 服務的次數，這是複數形式。"
+  },
+  "unit.Calls": {
+    "message": "呼叫",
+    "description": "呼叫表示已呼叫 API 服務的次數，這是大寫和複數形式。"
+  },
+  "unit.MB": {
+    "message": "MB",
+    "description": "MB 表示兆位元組，一種數位信息存儲單位。"
+  },
+  "unit.GB": {
+    "message": "GB",
+    "description": "GB 表示千兆位元組，一種數位信息存儲單位。"
   }
 }

@@ -24,7 +24,7 @@
         >
         <application-policy v-model.visible="showPolicy" />
       </div>
-      <el-button type="primary" @click="onApply">{{ $t('common.button.apply') }}</el-button>
+      <el-button round type="primary" @click="onApply">{{ $t('common.button.apply') }}</el-button>
     </div>
   </el-dialog>
 </template>

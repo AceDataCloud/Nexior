@@ -1,228 +1,1874 @@
 {
-  "button": {
-    "buyMore": "Comprar Mais",
-    "_buyMore.comment": "Texto no botão, que permite ao usuário comprar mais créditos",
-    "uploadReferences": "Enviar Referências",
-    "_uploadReferences.comment": "Texto no botão, que permite ao usuário enviar referências",
-    "success": "Sucesso",
-    "_success.comment": "Texto no botão, que indica que a operação foi bem-sucedida",
-    "generating": "Gerando",
-    "_generating.comment": "Texto no botão, que indica que a operação está em andamento",
-    "failed": "Falhou",
-    "_failed.comment": "Texto no botão, que indica que a operação falhou",
-    "download": "Baixar",
-    "_download.comment": "Texto no botão, que permite ao usuário baixar o resultado",
-    "fast": "Rápido",
-    "_fast.comment": "Texto no botão, que permite ao usuário definir o modo 'velocidade rápida' para gerar a imagem, deve ser traduzido para 'Velocidade rápida'",
-    "relax": "Lento",
-    "_relax.comment": "Texto no botão, que permite ao usuário definir o modo 'velocidade lenta' para relaxar e gerar a imagem, deve ser traduzido para 'Velocidade lenta'",
-    "turbo": "Turbo",
-    "_turbo.comment": "Texto no botão, que permite ao usuário definir o modo 'velocidade extrema' para turbo para gerar a imagem, deve ser traduzido para 'Velocidade extrema'",
-    "more": "Mais",
-    "_more.comment": "Texto no botão, que permite ao usuário ver mais opções",
-    "generate": "Gerar",
-    "_generate.comment": "Texto no botão, que permite ao usuário gerar a imagem",
-    "history": "Histórico",
-    "_history.comment": "Texto no botão, que permite ao usuário ver o histórico de imagens geradas",
-    "generateNew": "Gerar Novo",
-    "_generateNew.comment": "Texto no botão, que permite ao usuário desenhar uma nova imagem"
+  "style.cute": {
+    "message": "Bonito",
+    "description": "Texto no botão, que representa o estilo 'fofo'"
   },
-  "field": {
-    "taskId": "ID da Tarefa",
-    "_taskId.comment": "ID da Tarefa",
-    "finalPrompt": "Prompt Final",
-    "_finalPrompt.comment": "Prompt final usado para gerar a imagem",
-    "elements": "Estilos",
-    "_elements.comment": "Estilo de desenho usado para gerar a imagem",
-    "failureReason": "Motivo da Falha",
-    "_failureReason.comment": "Motivo da falha",
-    "traceId": "ID de Rastreamento",
-    "_traceId.comment": "ID de rastreamento para rastrear a solicitação de geração da imagem, não traduzir, manter como 'ID de Rastreamento'"
+  "style.expressive": {
+    "message": "Expressivo",
+    "description": "Texto no botão, que representa o estilo 'expressivo'"
   },
-  "description": {
-    "aspect": "--aspecto, Altera a proporção de aspecto da imagem gerada, o valor padrão depende do modelo e do modo",
-    "_aspect.comment": "Descrição do parâmetro de aspecto",
-    "chaos": "--caos, Ajusta o grau de variação na imagem gerada, quanto maior o número, mais única e inesperada será a imagem gerada, a faixa é de 0 a 100, o padrão é 1",
-    "_chaos.comment": "Descrição do parâmetro de caos",
-    "fast": "Ignora as configurações atuais e executa uma única tarefa de geração no modo 'velocidade rápida', sem valor padrão",
-    "_fast.comment": "Descrição do parâmetro de velocidade rápida",
-    "iw": "--iw, Define a importância das sugestões de imagem em relação às sugestões de texto durante o processo de geração, a faixa é de 0 a 2, o padrão é 1",
-    "_iw.comment": "Descrição do parâmetro iw",
-    "no": "--no, Indica ao sistema de geração para tentar excluir certos elementos, por exemplo, `--no plantas` tentará gerar imagens sem plantas, sem valor padrão",
-    "_no.comment": "Descrição do parâmetro no, traduzir como 'Excluir'",
-    "quality": "--qualidade, Define a qualidade e o tempo de renderização da imagem gerada, a faixa é .25, .5 ou 1, o padrão é 1",
-    "_quality.comment": "Descrição do parâmetro de qualidade",
-    "random": "Adiciona um código de estilo base aleatório ao prompt, pode usar `--estilo aleatório-16`, `--estilo aleatório-64` ou `--estilo aleatório-128` para obter efeitos de estilo aleatório de diferentes comprimentos, sem valor padrão",
-    "_random.comment": "Descrição do parâmetro aleatório",
-    "relax": "Substitui as configurações atuais para executar uma única tarefa no modo 'velocidade lenta', sem valor padrão",
-    "_relax.comment": "Descrição do parâmetro relax",
-    "repeat": "--repetir, Cria várias tarefas a partir de um prompt, a faixa é de 1 a 40, o padrão é 1",
-    "_repeat.comment": "Descrição do parâmetro repetir",
-    "seed": "--seed, Ruído visual inicial para imagens geradas, a faixa é de 0 a 4294967295, o padrão é gerado aleatoriamente",
-    "_seed.comment": "Descrição do parâmetro seed",
-    "stop": "--parar, Interrompe a tarefa em qualquer estágio do processo de geração, a faixa é de 10 a 100, o padrão é 100 (ou seja, totalmente gerado)",
-    "_stop.comment": "Descrição do parâmetro parar",
-    "style": "--estilo, altera entre diferentes versões ou estilos dos modelos Midjourney ou Niji, por exemplo, cru, fofo, expressivo, original, cênico, o valor padrão depende do modelo e do modo",
-    "_style.comment": "Descrição do parâmetro estilo",
-    "stylize": "--estilizar, ajusta a intensidade do estilo estético padrão da Midjourney aplicado em tarefas de geração, a faixa é de 0 a 1000, o padrão é 100",
-    "_stylize.comment": "Descrição do parâmetro estilizar",
-    "tile": "--ladrilho, Gera uma imagem que pode ser usada para mosaico sem emenda para criar padrões sem emenda, sem valor padrão",
-    "_tile.comment": "Descrição do parâmetro ladrilho",
-    "turbo": "Substitui as configurações atuais para executar uma única tarefa no modo 'velocidade extrema', sem valor padrão",
-    "_turbo.comment": "Descrição do parâmetro turbo",
-    "weird": "--estranho, explora estilos estéticos incomuns com natureza experimental, a faixa é de 0 a 3000, o padrão é 0",
-    "_weird.comment": "Descrição do parâmetro estranho",
-    "translation": "Ativa a tradução automática durante a geração, conteúdo não chinês será automaticamente traduzido para o inglês para entrada no Midjourney",
-    "_translation.comment": "Descrição do parâmetro de tradução",
-    "imageWeight": "--iw, ajusta o peso das sugestões de imagem em relação às sugestões de texto, a faixa é de 0 a 2, o padrão é 1",
-    "_imageWeight.comment": "Descrição do parâmetro de peso da imagem",
-    "niji": "--niji, Quando ativado, as imagens geradas usarão o modelo Niji, produzindo imagens no estilo anime",
-    "_niji.comment": "Descrição do parâmetro niji",
-    "uploadReferences": "Enviar imagens como referências para geração, suporta até 5 imagens. Se mais de 1 imagem for enviada, elas serão mescladas automaticamente",
-    "_uploadReferences.comment": "Descrição do parâmetro de enviarReferências",
-    "raw": "--cru, Quando ativado, as imagens geradas usarão o modelo Midjourney, produzindo imagens no estilo original",
-    "_raw.comment": "Descrição do parâmetro cru",
-    "prompt": "Digite comandos, se parâmetros adicionais forem adicionados, eles substituirão os parâmetros predefinidos padrão, por exemplo, adicionar `--estilizar 200` forçará o comando final a usar `--estilizar 200`",
-    "_prompt.comment": "Descrição do campo de prompt"
+  "style.original": {
+    "message": "Original",
+    "description": "Texto no botão, que representa o estilo 'original'"
   },
-  "action": {
-    "generate": "Clique neste botão para começar a gerar imagens",
-    "_generate.comment": "Descrição do botão de gerar",
-    "upscale1": "Aumentar a escala da primeira imagem",
-    "_upscale1.comment": "Descrição do botão de aumentar a escala 1",
-    "upscale2": "Aumentar a escala da segunda imagem",
-    "_upscale2.comment": "Descrição do botão de aumentar a escala 2",
-    "upscale3": "Aumentar a escala da terceira imagem",
-    "_upscale3.comment": "Descrição do botão de aumentar a escala 3",
-    "upscale4": "Aumentar a escala da quarta imagem",
-    "_upscale4.comment": "Descrição do botão de aumentar a escala 4",
-    "variation1": "Ajustar variação da primeira imagem",
-    "_variation1.comment": "Descrição do botão de ajustar variação 1",
-    "variation2": "Ajustar variação da segunda imagem",
-    "_variation2.comment": "Descrição do botão de ajustar variação 2",
-    "variation3": "Ajustar variação da terceira imagem",
-    "_variation3.comment": "Descrição do botão de ajustar variação 3",
-    "variation4": "Ajustar variação da quarta imagem",
-    "_variation4.comment": "Descrição do botão de ajustar variação 4",
-    "reroll": "Rolar Novamente",
-    "_reroll.comment": "Descrição do botão de rolar novamente",
-    "high_variation": "Alta Variação",
-    "_high_variation.comment": "Descrição do botão de alta variação",
-    "low_variation": "Baixa Variação",
-    "_low_variation.comment": "Descrição do botão de baixa variação",
-    "zoom_out_2x": "Reduzir Zoom 2x",
-    "_zoom_out_2x.comment": "Descrição do botão de reduzir zoom 2x",
-    "zoom_out_1_5x": "Reduzir Zoom 1.5x",
-    "_zoom_out_1_5x.comment": "Descrição do botão de reduzir zoom 1.5x",
-    "square": "Quadrado",
-    "_square.comment": "Descrição do botão de quadrado",
-    "pan_left": "Mover para a Esquerda",
-    "_pan_left.comment": "Descrição do botão de mover para a esquerda",
-    "pan_up": "Mover para Cima",
-    "_pan_up.comment": "Descrição do botão de mover para cima",
-    "pan_down": "Mover para Baixo",
-    "_pan_down.comment": "Descrição do botão de mover para baixo",
-    "pan_right": "Mover para a Direita",
-    "_pan_right.comment": "Descrição do botão de mover para a direita",
-    "zoom_in_2x": "Aumentar Zoom 2x",
-    "_zoom_in_2x.comment": "Descrição do botão de aumentar zoom 2x",
-    "zoom_in_1_5x": "Aumentar Zoom 1.5x",
-    "_zoom_in_1_5x.comment": "Descrição do botão de aumentar zoom 1.5x",
-    "upscale_2x": "Aumentar Escala 2x",
-    "_upscale_2x.comment": "Descrição do botão de aumentar escala 2x",
-    "upscale_4x": "Aumentar Escala 4x",
-    "_upscale_4x.comment": "Descrição do botão de aumentar escala 4x",
-    "redo_upscale_2x": "Refazer Aumento de Escala 2x",
-    "_redo_upscale_2x.comment": "Descrição do botão de refazer aumento de escala 2x",
-    "redo_upscale_4x": "Refazer Aumento de Escala 4x",
-    "_redo_upscale_4x.comment": "Descrição do botão de refazer aumento de escala 4x"
+  "style.scenic": {
+    "message": "Cênico",
+    "description": "Texto no botão, que representa o estilo 'cênico'"
   },
-  "message": {
-    "promptPlaceholder": "Por favor, insira uma frase para descrever a imagem que deseja gerar, por exemplo: um gato fofo. Parâmetros adicionais substituirão os parâmetros predefinidos padrão",
-    "_promptPlaceholder.comment": "Texto de espaço reservado no campo de prompt",
-    "uploadReferencesExceed": "Você pode enviar no máximo 5 imagens",
-    "_uploadReferencesExceed.comment": "Mensagem de erro quando o número de imagens enviadas excede o limite",
-    "uploadReferencesSuccess": "Imagens enviadas com sucesso",
-    "_uploadReferencesSuccess.comment": "Mensagem de sucesso quando as imagens são enviadas com sucesso",
-    "uploadReferencesError": "Falha ao enviar imagens, por favor, tente novamente mais tarde",
-    "_uploadReferencesError.comment": "Mensagem de erro quando as imagens não são enviadas com sucesso",
-    "startTaskSuccess": "Tarefa de desenho iniciada com sucesso",
-    "_startTaskSuccess.comment": "Mensagem de sucesso quando a tarefa de desenho é iniciada com sucesso",
-    "startTaskFailed": "Falha ao iniciar a tarefa de desenho",
-    "_startTaskFailed.comment": "Mensagem de erro quando a tarefa de desenho falha ao iniciar",
-    "generating": "Gerando...",
-    "_generating.comment": "Mensagem quando a imagem está sendo gerada",
-    "noOperations": "Nenhuma operação disponível",
-    "_noOperations.comment": "Mensagem quando não há operações disponíveis",
-    "noTasks": "Nenhuma tarefa histórica, por favor, inicie uma nova tarefa primeiro",
-    "_noTasks.comment": "Mensagem quando não há tarefas históricas"
+  "style.raw": {
+    "message": "Cru",
+    "description": "Texto no botão, que representa o estilo 'cru'"
   },
-  "model": {
-    "general": "Geral",
-    "_general.comment": "O nome de um modelo usado para geração de imagens em geral",
-    "niji": "Niji",
-    "_niji.comment": "O nome de um modelo usado para geração de imagens no estilo anime, não traduzir, manter como 'Niji'"
+  "styleCategory.special": {
+    "message": "Especial",
+    "description": "Uma palavra de categoria usada para descrever e gerar uma imagem, a imagem gerada deve incluir a categoria desta tag."
   },
-  "name": {
-    "model": "Modelo",
-    "_model.comment": "O nome do modelo, modelo é um termo em aprendizado de máquina, que é usado para gerar imagens",
-    "aspect": "Proporção de Aspecto",
-    "_aspect.comment": "O nome do parâmetro de aspecto",
-    "ratio": "Proporção",
-    "_ratio.comment": "O nome do parâmetro de proporção",
-    "chaos": "Caos",
-    "_chaos.comment": "O nome do parâmetro de caos, traduza como 'taxa de bagunça'",
-    "fast": "Rápido",
-    "_fast.comment": "O nome do modo rápido, que é usado para gerar imagens rapidamente, traduza como 'Velocidade rápida'",
-    "nijiStyle": "Niji",
-    "_nijiStyle.comment": "O nome do parâmetro nijiStyle, não traduza, mantenha como 'Niji'",
-    "version": "Versão",
-    "_version.comment": "O nome do parâmetro de versão",
-    "imageWeight": "Peso da Imagem",
-    "_imageWeight.comment": "O nome do parâmetro de peso da imagem",
-    "no": "Não",
-    "_no.comment": "O nome do parâmetro de não, que é usado para excluir certos elementos, traduza como 'Excluir'",
-    "quality": "Qualidade",
-    "_quality.comment": "O nome do parâmetro de qualidade, que é usado para definir a qualidade da imagem gerada",
-    "random": "Aleatório",
-    "_random.comment": "O nome do parâmetro aleatório, que é usado para adicionar efeitos de estilo aleatório",
-    "relax": "Lento",
-    "_relax.comment": "O nome do modo relax, que é usado para gerar imagens em modo 'velocidade lenta', traduza como 'velocidade lenta'",
-    "repeat": "Repetir",
-    "_repeat.comment": "O nome do parâmetro de repetição, que é usado para criar várias tarefas a partir de um prompt",
-    "seed": "Semente",
-    "_seed.comment": "O nome do parâmetro de semente, que é usado para definir o ruído visual inicial",
-    "stop": "Parar",
-    "_stop.comment": "O nome do parâmetro de parada, que é usado para parar a tarefa em qualquer estágio",
-    "style": "Estilo",
-    "_style.comment": "O nome do parâmetro de estilo, que é usado para alternar entre diferentes versões ou estilos de modelos",
-    "stylize": "Estilizar",
-    "_stylize.comment": "O nome do parâmetro de estilização, que é usado para ajustar a intensidade do estilo estético padrão",
-    "tile": "Mosaico",
-    "_tile.comment": "O nome do parâmetro de mosaico, que é usado para gerar imagens que podem ser usadas para mosaicos sem emenda",
-    "turbo": "Turbo",
-    "_turbo.comment": "O nome do modo turbo, que é usado para gerar imagens no modo 'velocidade extrema', traduza como 'Velocidade extrema'",
-    "weird": "Estranho",
-    "_weird.comment": "O nome do parâmetro estranho, que é usado para explorar estilos estéticos incomuns, traduza como 'Estranheza'",
-    "translation": "Tradução",
-    "_translation.comment": "O nome do parâmetro de tradução, que é usado para habilitar a tradução automática durante a geração",
-    "advanced": "Avançado",
-    "_advanced.comment": "O nome do modo avançado, que é usado para habilitar o modo avançado",
-    "niji": "Niji",
-    "_niji.comment": "O nome do parâmetro niji, que é usado para habilitar o modelo Niji, não traduza, mantenha como 'Niji'",
-    "ignore": "Ignorar",
-    "_ignore.comment": "O nome do parâmetro de ignorar, que é usado para ignorar certos elementos",
-    "prompt": "Prompt",
-    "_prompt.comment": "O nome do parâmetro de prompt, que é usado para inserir instruções de desenho",
-    "raw": "Bruto",
-    "_raw.comment": "O nome do parâmetro bruto, que é usado para habilitar o modelo Midjourney"
+  "styleCategory.chinese": {
+    "message": "Chinês",
+    "description": "Uma palavra de categoria usada para descrever e gerar uma imagem, a imagem gerada deve incluir a categoria desta tag."
   },
-  "placeholder": {
-    "prompt": "Digite uma frase para descrever a imagem que deseja gerar, por exemplo: um gato fofo. Parâmetros adicionais substituirão os parâmetros predefinidos",
-    "_prompt.comment": "O texto de espaço reservado no campo de prompt",
-    "ignore": "Digite elementos a serem ignorados, por exemplo: `--ignorar plantas`",
-    "_ignore.comment": "O texto de espaço reservado no campo de ignorar",
-    "select": "Selecionar",
-    "_select.comment": "O texto de espaço reservado no campo de seleção"
+  "styleCategory.emotion": {
+    "message": "Emoção",
+    "description": "Uma palavra de categoria usada para descrever e gerar uma imagem, a imagem gerada deve incluir a categoria desta tag."
+  },
+  "styleCategory.camera": {
+    "message": "Câmera",
+    "description": "Uma palavra de categoria usada para descrever e gerar uma imagem, a imagem gerada deve incluir a categoria desta tag."
+  },
+  "styleCategory.styles": {
+    "message": "Estilos",
+    "description": "Uma palavra de categoria usada para descrever e gerar uma imagem, a imagem gerada deve incluir a categoria desta tag."
+  },
+  "styleCategory.lighting": {
+    "message": "Iluminação",
+    "description": "Uma palavra de categoria usada para descrever e gerar uma imagem, a imagem gerada deve incluir a categoria desta tag."
+  },
+  "styleCategory.painters": {
+    "message": "Pintores",
+    "description": "Uma palavra de categoria usada para descrever e gerar uma imagem, a imagem gerada deve incluir a categoria desta tag."
+  },
+  "styleCategory.material": {
+    "message": "Material",
+    "description": "Uma palavra de categoria usada para descrever e gerar uma imagem, a imagem gerada deve incluir a categoria desta tag."
+  },
+  "styleCategory.artists": {
+    "message": "Artistas",
+    "description": "Uma palavra de categoria usada para descrever e gerar uma imagem, a imagem gerada deve incluir a categoria desta tag."
+  },
+  "styleTag.watercolour": {
+    "message": "Aquarela",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.oilPainting": {
+    "message": "Pintura a óleo",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.oldPhotograph": {
+    "message": "Fotografia antiga",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.oneLineDrawing": {
+    "message": "Desenho de uma linha",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.sketchDrawing": {
+    "message": "Desenho de esboço",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.gouache": {
+    "message": "Guache",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.filmStyle": {
+    "message": "Estilo de filme",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.photorealistic": {
+    "message": "Fotorealista",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.logo": {
+    "message": "Logotipo",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.cartoon": {
+    "message": "Desenho animado",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.marbleStatue": {
+    "message": "Estátua de mármore",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.1800S": {
+    "message": "1800s",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.1980S": {
+    "message": "1980s",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.isometricAnime": {
+    "message": "Anime isométrico",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.analyticDrawing": {
+    "message": "Desenho analítico",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.coloringBook": {
+    "message": "Livro de colorir",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.infographicDrawing": {
+    "message": "Desenho infográfico",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.doubleExposure": {
+    "message": "Dupla exposição",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.diagrammaticDrawing": {
+    "message": "Desenho diagramático",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.2DIllustration": {
+    "message": "Ilustração 2D",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.diagrammaticPortrait": {
+    "message": "Retrato diagramático",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.pixelArt": {
+    "message": "Pixel art",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.darkFantasy": {
+    "message": "Fantasia sombria",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.ukiyoEArt": {
+    "message": "Arte ukiyo-e",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.paperQuilling": {
+    "message": "Quilling de papel",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.paperCutCraft": {
+    "message": "Arte em papel cortado",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.iridescent": {
+    "message": "Iridescente",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.patchworkCollage": {
+    "message": "Colagem de patchwork",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.opArt": {
+    "message": "Arte óptica",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.japaneseInk": {
+    "message": "Tinta japonesa",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.pastelDrawing": {
+    "message": "Desenho de giz pastel",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.drippingArt": {
+    "message": "Arte gotejante",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.tattooArt": {
+    "message": "Arte de tatuagem",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.16Bit": {
+    "message": "16-Bit",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.8Bit": {
+    "message": "8-Bit",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.amber": {
+    "message": "Âmbar",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.anatomicalDrawing": {
+    "message": "Desenho anatômico",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.ancient": {
+    "message": "Antigo",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.anime": {
+    "message": "Anime",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.arabic": {
+    "message": "Árabe",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.blocky": {
+    "message": "Blocado",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.blueprint": {
+    "message": "Plano",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.comicbook": {
+    "message": "Quadrinhos",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.caribbean": {
+    "message": "Caribenho",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.celestial": {
+    "message": "Celestial",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.cellulose": {
+    "message": "Celulose",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.charcoalStyle": {
+    "message": "Estilo de carvão",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.chromatic": {
+    "message": "Cromático",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.coral": {
+    "message": "Coral",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.conceptArt": {
+    "message": "Arte conceitual",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.fibonacci": {
+    "message": "Fibonacci",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.cyberpunk": {
+    "message": "Cyberpunk",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.diabolic": {
+    "message": "Diabólico",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.diffractionGrading": {
+    "message": "Classificação de difração",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.lightspeed": {
+    "message": "Velocidade da luz",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.liquid": {
+    "message": "Líquido",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.dots": {
+    "message": "Pontos",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.dune": {
+    "message": "Duna",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.drippingPaint": {
+    "message": "Tinta escorrendo",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.electronicCircuitry": {
+    "message": "Circuitaria eletrônica",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.electrical": {
+    "message": "Elétrico",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.futuristic": {
+    "message": "Futurista",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.etching": {
+    "message": "Gravura",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.extraterrestrial": {
+    "message": "Extraterrestre",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.glitchart": {
+    "message": "Arte de falha",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.floral": {
+    "message": "Floral",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.fractal": {
+    "message": "Fractal",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.preHistoric": {
+    "message": "Pré-histórico",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.prokaryotic": {
+    "message": "Procarionte",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.horror": {
+    "message": "Horror",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.iceAge": {
+    "message": "Era do gelo",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.jurassic": {
+    "message": "Jurássico",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.knitted": {
+    "message": "Tricotado",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.polka": {
+    "message": "Bolinhas",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.latex": {
+    "message": "Látex",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.pastel": {
+    "message": "Pastel",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.mandala": {
+    "message": "Mandala",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.molecular": {
+    "message": "Molecular",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.merkaba": {
+    "message": "Merkaba",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.mitochondria": {
+    "message": "Mitocôndria",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.graffiti": {
+    "message": "Graffiti",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.graphicNovel": {
+    "message": "Novela gráfica",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.multidimensional": {
+    "message": "Multidimensional",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.nasa": {
+    "message": "NASA",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.nebula": {
+    "message": "Nébula",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.neon": {
+    "message": "Neon",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.nuclear": {
+    "message": "Nuclear",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.orbital": {
+    "message": "Orbital",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.rayTracing": {
+    "message": "Traçado de raios",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.realistic": {
+    "message": "Realista",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.renaissance": {
+    "message": "Renascentista",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.retro": {
+    "message": "Retrô",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.risograph": {
+    "message": "Risografia",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.origami": {
+    "message": "Origami",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.ornamental": {
+    "message": "Ornamental",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.space": {
+    "message": "Espacial",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.splatterPaint": {
+    "message": "Tinta respingada",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.sprayPaint": {
+    "message": "Tinta spray",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.squiggles": {
+    "message": "Rabiscos",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.stitching": {
+    "message": "Costura",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.veins": {
+    "message": "Veias",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.streetArt": {
+    "message": "Arte de rua",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.surreal": {
+    "message": "Surreal",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.symmetric": {
+    "message": "Simétrico",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.synthWave": {
+    "message": "Onda sintética",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.technological": {
+    "message": "Tecnológico",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.tron": {
+    "message": "Tron",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.tropical": {
+    "message": "Tropical",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.ultraModern": {
+    "message": "Ultra moderno",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.wormhole": {
+    "message": "Buraco de minhoca",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.wrinkled": {
+    "message": "Amassado",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.volcanic": {
+    "message": "Vulcânico",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.wetPaint": {
+    "message": "Tinta molhada",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.wildWest": {
+    "message": "Velho oeste",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.wind": {
+    "message": "Vento",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.miniatureFaking": {
+    "message": "Falsificação em miniatura",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.accentLighting": {
+    "message": "Iluminação de destaque",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.backlight": {
+    "message": "Luz de fundo",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.blacklight": {
+    "message": "Luz negra",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.goldenHourLight": {
+    "message": "Luz da hora dourada",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.candlelight": {
+    "message": "Luz de vela",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.concertLighting": {
+    "message": "Iluminação de concerto",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.crepuscularRays": {
+    "message": "Raios crepusculares",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.directSunlight": {
+    "message": "Luz solar direta",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.dust": {
+    "message": "Poeira",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.studioLighting": {
+    "message": "Iluminação de estúdio",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.rimLight": {
+    "message": "Luz de borda",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.volumetricLighting": {
+    "message": "Iluminação volumétrica",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.fluorescent": {
+    "message": "Fluorescente",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.glowing": {
+    "message": "Brilhante",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.glowStick": {
+    "message": "Bastão luminoso",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.glowRadioactive": {
+    "message": "Brilho radioativo",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.lavaGlow": {
+    "message": "Brilho de lava",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.moonlight": {
+    "message": "Luz da lua",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.naturalLighting": {
+    "message": "Iluminação natural",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.neonLamp": {
+    "message": "Lâmpada de néon",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.nightclubLighting": {
+    "message": "Iluminação de boate",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.nuclearWasteGlo": {
+    "message": "Brilho de resíduos nucleares",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.quantumDot": {
+    "message": "Ponto quântico",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.spotlight": {
+    "message": "Holofote",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.edgeLight": {
+    "message": "Luz de borda",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.coldLight": {
+    "message": "Luz fria",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.keyLighting": {
+    "message": "Iluminação chave",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.ambientLight": {
+    "message": "Luz ambiente",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.highKeyLighting": {
+    "message": "Iluminação de alto chave",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.lowKeyLighting": {
+    "message": "Iluminação de baixo chave",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.motivatedLighting": {
+    "message": "Iluminação motivada",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.3PointLighting": {
+    "message": "Iluminação de 3 pontos",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.strobeLight": {
+    "message": "Luz estroboscópica",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.sunLight": {
+    "message": "Luz solar",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.ultraviolet": {
+    "message": "Ultravioleta",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.beautifulLighting": {
+    "message": "Iluminação bonita",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.moodyLighting": {
+    "message": "Iluminação sombria",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.softLighting": {
+    "message": "Iluminação suave",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.michelangelo": {
+    "message": "Michelangelo",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.monet": {
+    "message": "Monet",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.paulCezanne": {
+    "message": "Paul Cezanne",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.markRothko": {
+    "message": "Mark Rothko",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.paulKlee": {
+    "message": "Paul Klee",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.picasso": {
+    "message": "Picasso",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.pietMondrian": {
+    "message": "Piet Mondrian",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.pierreAugusteRer": {
+    "message": "Pierre Auguste Rer",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.rembrandt": {
+    "message": "Rembrandt",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.reneMagritte": {
+    "message": "Rene Magritte",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.royLichtenstein": {
+    "message": "Roy Lichtenstein",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.salvadorDali": {
+    "message": "Salvador Dali",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.sandroBotticelli": {
+    "message": "Sandro Botticelli",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.takashiMurakami": {
+    "message": "Takashi Murakami",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.vanGogh": {
+    "message": "Van Gogh",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.wassilyKandinsky": {
+    "message": "Wassily Kandinsky",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.matCollishaw": {
+    "message": "Mat Collishaw",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.yayoiKusama": {
+    "message": "Yayoi Kusama",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.igorMorski": {
+    "message": "Igor Morski",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.shinkaiMakoto": {
+    "message": "Shinkai Makoto",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.pixar": {
+    "message": "Pixar",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.kyotoAnime": {
+    "message": "Kyoto Anime",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.jerryPinkney": {
+    "message": "Jerry Pinkney",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.hayaoMiyazaki": {
+    "message": "Hayao Miyazaki",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.beatrixPotter": {
+    "message": "Beatrix Potter",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.jonKlassen": {
+    "message": "Jon Klassen",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.kaySage": {
+    "message": "Kay Sage",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.jeffreyCatherineJones": {
+    "message": "Jeffrey Catherine Jones",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.yaacovAgam": {
+    "message": "Yaacov Agam",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.davidHockney": {
+    "message": "David Hockney",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.victorMoscoso": {
+    "message": "Victor Moscoso",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.raphaelite": {
+    "message": "Rafaelita",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.stefanKoidl": {
+    "message": "Stefan Koidl",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.suiIshida": {
+    "message": "Sui Ishida",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.swoon": {
+    "message": "Swoon",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.tashaTudor": {
+    "message": "Tasha Tudor",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.tintoretto": {
+    "message": "Tintoretto",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.theodoreRobinsor": {
+    "message": "Theodore Robinsor",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.titian": {
+    "message": "Titian",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.wlop": {
+    "message": "WLOP",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.yanjunCheng": {
+    "message": "Yanjun Cheng",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.yojiShinkawa": {
+    "message": "Yoji Shinkawa",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.zhelongXu": {
+    "message": "Zhelong Xu",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.alenaAenami": {
+    "message": "Alena Aenami",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.anntonFadeevi": {
+    "message": "Annton Fadeevi",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.charlieBowater": {
+    "message": "Charlie Bowater",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.coryLoftis": {
+    "message": "Cory Loftis",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.fenghuaZhong": {
+    "message": "Fenghua Zhong",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.gregRutkowski": {
+    "message": "Greg Rutkowski",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.hongSoonsang": {
+    "message": "Hong SoonSang",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.dennisStock": {
+    "message": "Dennis Stock",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.michalLisowski": {
+    "message": "Michal Lisowski",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.paulLehr": {
+    "message": "Paul Lehr",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.rossTran": {
+    "message": "Ross Tran",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.antonPieck": {
+    "message": "Anton Pieck",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.carlBarks": {
+    "message": "Carl Barks",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.alphonseMucha": {
+    "message": "Alphonse Mucha",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.andyWarhol": {
+    "message": "Andy Warhol",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.banksy": {
+    "message": "Banksy",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.franciscoDeGoya": {
+    "message": "Francisco De Goya",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.caravaggio": {
+    "message": "Caravaggio",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.diegoRivera": {
+    "message": "Diego Rivera",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.marcChagall": {
+    "message": "Marc Chagall",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.edgarDegas": {
+    "message": "Edgar Degas",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.eugeneDelacroix": {
+    "message": "Eugene Delacroix",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.francisBacon": {
+    "message": "Francis Bacon",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.fridaKahlo": {
+    "message": "Frida Kahlo",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.garaldBrom": {
+    "message": "Garald Brom",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.gustavKlimt": {
+    "message": "Gustav Klimt",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.henriMatisse": {
+    "message": "Henri Matisse",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.jackKirby": {
+    "message": "Jack Kirby",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.jacksonPollock": {
+    "message": "Jackson Pollock",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.johannesVermeer": {
+    "message": "Johannes Vermeer",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.jeanMichelBasquiat": {
+    "message": "Jean Michel Basquiat",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.marcelDuchamp": {
+    "message": "Marcel Duchamp",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.aluminum": {
+    "message": "Alumínio",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.brick": {
+    "message": "Tijolo",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.bronze": {
+    "message": "Bronze",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.carbonFiber": {
+    "message": "Fibra de carbono",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.cardboard": {
+    "message": "Papelão",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.ceramic": {
+    "message": "Cerâmica",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.cotton": {
+    "message": "Algodão",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.fabric": {
+    "message": "Tecido",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.fiberOptic": {
+    "message": "Fibra óptica",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.foil": {
+    "message": "Folha de alumínio",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.yarn": {
+    "message": "Fio",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.glass": {
+    "message": "Vidro",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.gold": {
+    "message": "Ouro",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.gummies": {
+    "message": "Gomas",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.leather": {
+    "message": "Couro",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.magma": {
+    "message": "Magma",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.metallic": {
+    "message": "Metálico",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.nickel": {
+    "message": "Níquel",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.nylon": {
+    "message": "Nylon",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.paper": {
+    "message": "Papel",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.plastic": {
+    "message": "Plástico",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.quartz": {
+    "message": "Quartzo",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.wrap": {
+    "message": "Embrulho",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.wooden": {
+    "message": "Madeira",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.slime": {
+    "message": "Gosma",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.engraving": {
+    "message": "Gravura",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.ivory": {
+    "message": "Marfim",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.basalt": {
+    "message": "Basalto",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.pine": {
+    "message": "Pinho",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.diamond": {
+    "message": "Diamante",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.amethyst": {
+    "message": "Ametista",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.ruby": {
+    "message": "Rubi",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.highPolished": {
+    "message": "Altamente polido",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.brushed": {
+    "message": "Escovado",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.matte": {
+    "message": "Fosco",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.satin": {
+    "message": "Cetim",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.sandblasted": {
+    "message": "Jateado",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.ebony": {
+    "message": "Ébano",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.bokeh": {
+    "message": "Bokeh",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.aerialView": {
+    "message": "Vista aérea",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.shotByDslr": {
+    "message": "Tirada por DSLR",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.360Panorama": {
+    "message": "360 Panorama",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.panorama": {
+    "message": "Panorama",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.telephotoLens": {
+    "message": "Lente telefoto",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.macroShot": {
+    "message": "Macro shot",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.microscopy": {
+    "message": "Microscopia",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.magnification": {
+    "message": "Aumento",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.closeUp": {
+    "message": "Close up",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.fullBody": {
+    "message": "Corpo inteiro",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.portrait": {
+    "message": "Retrato",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.profile": {
+    "message": "Perfil",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.pinholeLens": {
+    "message": "Lente pinhole",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.wideView": {
+    "message": "Visão ampla",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.telescopeLens": {
+    "message": "Lente de telescópio",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.satelliteImagery": {
+    "message": "Imagem de satélite",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.headshot": {
+    "message": "Retrato",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.extremeCloseup": {
+    "message": "Close up extremo",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.ultrawideShot": {
+    "message": "Tiro ultralargo",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.birdView": {
+    "message": "Visão de pássaro",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.topView": {
+    "message": "Visão superior",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.frontView": {
+    "message": "Visão frontal",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.sideView": {
+    "message": "Visão lateral",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.backView": {
+    "message": "Visão traseira",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.faceShot": {
+    "message": "Retrato facial",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.chestShot": {
+    "message": "Retrato do peito",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.waistShot": {
+    "message": "Retrato da cintura",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.extraLongShot": {
+    "message": "Tiro extra longo",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.lookUp": {
+    "message": "Olhar para cima",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.isometricview": {
+    "message": "Visão isométrica",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.highAngleView": {
+    "message": "Visão em ângulo alto",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.lowAngleView": {
+    "message": "Visão em ângulo baixo",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.happy": {
+    "message": "Feliz",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.excited": {
+    "message": "Animado",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.angry": {
+    "message": "Zangado",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.ped": {
+    "message": "Ped",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.disgusted": {
+    "message": "Enojado",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.supnned": {
+    "message": "Surpreso",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.hopeful": {
+    "message": "Esperançoso",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.anxious": {
+    "message": "Ansioso",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.elated": {
+    "message": "Exultante",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.fearful": {
+    "message": "Temeroso",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.hateful": {
+    "message": "Odioso",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.apoow": {
+    "message": "Apoow",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.dark": {
+    "message": "Escuro",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.brutal": {
+    "message": "Brutal",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.hanfu": {
+    "message": "Hanfu",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.cheongsam": {
+    "message": "Cheongsam",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.chineseCostume": {
+    "message": "Traje chinês",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.chineseDress": {
+    "message": "Vestido chinês",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.wuxia": {
+    "message": "Wuxia",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.chinesePhoenix": {
+    "message": "Fênix chinesa",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.kungfu": {
+    "message": "Kungfu",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.kunquOpera": {
+    "message": "Ópera Kunqu",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.cloisonne": {
+    "message": "Cloisonné",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.porcelain": {
+    "message": "Porcelana",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.embroidered": {
+    "message": "Bordado",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.jade": {
+    "message": "Jade",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.chinesePavilion": {
+    "message": "Pavilhão chinês",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.plumFlower": {
+    "message": "Flor de ameixa",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.forbiddenCity": {
+    "message": "Cidade proibida",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.peony": {
+    "message": "Peônia",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.unrealEngine": {
+    "message": "Unreal Engine",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.octaneRender": {
+    "message": "Renderização Octane",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.maxonCinema4D": {
+    "message": "Maxon Cinema 4D",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.quixelMegascansRender": {
+    "message": "Renderização Quixel Megascans",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.coronaRender": {
+    "message": "Renderização Corona",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.vRay": {
+    "message": "V-ray",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.architecturalVisualisation": {
+    "message": "Visualização arquitetônica",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.dramaticContrast": {
+    "message": "Contraste dramático",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.goldAndBlackTone": {
+    "message": "Tom dourado e preto",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.whiteAndPinkTone": {
+    "message": "Tom branco e rosa",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.redAndBlackTone": {
+    "message": "Tom vermelho e preto",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.neonShades": {
+    "message": "Tons de néon",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.richColor": {
+    "message": "Cores ricas",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.monotone": {
+    "message": "Monocromático",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.theLowPurityTone": {
+    "message": "O tom de baixa pureza",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "styleTag.theHighPurityTone": {
+    "message": "O tom de alta pureza",
+    "description": "Uma palavra de estilo usada para descrever e gerar uma imagem, a imagem gerada deve incluir o estilo desta tag."
+  },
+  "button.low": {
+    "message": "Baixa",
+    "description": "Texto no botão, que representa a qualidade de imagem 'baixa'"
+  },
+  "button.medium": {
+    "message": "Média",
+    "description": "Texto no botão, que representa a qualidade de imagem 'média'"
+  },
+  "button.high": {
+    "message": "Alta",
+    "description": "Texto no botão, que representa a qualidade de imagem 'alta'"
+  },
+  "button.buyMore": {
+    "message": "Comprar mais",
+    "description": "Texto no botão, que permite ao usuário comprar mais créditos"
+  },
+  "button.uploadReferences": {
+    "message": "Enviar referências",
+    "description": "Texto no botão, que permite ao usuário enviar referências"
+  },
+  "button.success": {
+    "message": "Sucesso",
+    "description": "Texto no botão, que indica que a operação foi bem-sucedida"
+  },
+  "button.generating": {
+    "message": "Gerando",
+    "description": "Texto no botão, que indica que a operação está em andamento"
+  },
+  "button.failed": {
+    "message": "Falhou",
+    "description": "Texto no botão, que indica que a operação falhou"
+  },
+  "button.download": {
+    "message": "Baixar",
+    "description": "Texto no botão, que permite ao usuário baixar o resultado"
+  },
+  "button.fast": {
+    "message": "Rápido",
+    "description": "Texto no botão, que permite ao usuário definir o modo 'velocidade rápida' para gerar a imagem, deve ser traduzido como 'Velocidade rápida'"
+  },
+  "button.relax": {
+    "message": "Devagar",
+    "description": "Texto no botão, que permite ao usuário definir o modo 'velocidade lenta' para relaxar e gerar a imagem, deve ser traduzido como 'Velocidade lenta'"
+  },
+  "button.turbo": {
+    "message": "Turbo",
+    "description": "Texto no botão, que permite ao usuário definir o modo 'velocidade extrema' para turbo para gerar a imagem, deve ser traduzido como 'Velocidade extrema'"
+  },
+  "button.more": {
+    "message": "Mais",
+    "description": "Texto no botão, que permite ao usuário ver mais opções"
+  },
+  "button.generate": {
+    "message": "Gerar",
+    "description": "Texto no botão, que permite ao usuário gerar a imagem"
+  },
+  "button.history": {
+    "message": "Histórico",
+    "description": "Texto no botão, que permite ao usuário ver o histórico de imagens geradas"
+  },
+  "button.generateNew": {
+    "message": "Gerar Novo",
+    "description": "Texto no botão, que permite ao usuário desenhar uma nova imagem"
+  },
+  "field.taskId": {
+    "message": "ID da tarefa",
+    "description": "ID da tarefa"
+  },
+  "field.finalPrompt": {
+    "message": "Prompt final",
+    "description": "Prompt final usado para gerar a imagem"
+  },
+  "field.elements": {
+    "message": "Estilos",
+    "description": "Estilo de desenho usado para gerar a imagem"
+  },
+  "field.failureReason": {
+    "message": "Motivo da falha",
+    "description": "Motivo da falha"
+  },
+  "field.traceId": {
+    "message": "ID de rastreamento",
+    "description": "ID de rastreamento para rastrear a solicitação de geração da imagem, não traduza, mantenha como 'ID de rastreamento'"
+  },
+  "description.aspect": {
+    "message": "--aspect, Altera a proporção de aspecto da imagem gerada, o valor padrão depende do modelo e do modo",
+    "description": "Descrição do parâmetro de aspecto"
+  },
+  "description.chaos": {
+    "message": "--chaos, Ajusta o grau de variação na imagem gerada, quanto maior o número, mais única e inesperada será a imagem gerada, a faixa é de 0 a 100, o padrão é 1",
+    "description": "Descrição do parâmetro de caos"
+  },
+  "description.fast": {
+    "message": "Ignora as configurações atuais e executa uma única tarefa de geração no modo 'velocidade rápida', sem valor padrão",
+    "description": "Descrição do parâmetro de velocidade rápida"
+  },
+  "description.iw": {
+    "message": "--iw, Define a importância das sugestões de imagem em relação às sugestões de texto durante o processo de geração, a faixa é de 0 a 2, o padrão é 1",
+    "description": "Descrição do parâmetro iw"
+  },
+  "description.no": {
+    "message": "--no, Indica ao sistema de geração para tentar excluir certos elementos, por exemplo, `--no plantas` tentará gerar imagens sem plantas, sem valor padrão",
+    "description": "Descrição do parâmetro no, traduza como 'Excluir'"
+  },
+  "description.quality": {
+    "message": "--quality, Define a qualidade e o tempo de renderização da imagem gerada, a faixa é .25, .5 ou 1, o padrão é 1",
+    "description": "Descrição do parâmetro de qualidade"
+  },
+  "description.random": {
+    "message": "Adiciona um código de estilo base aleatório ao prompt, pode usar `--style random-16`, `--style random-64` ou `--style random-128` para obter efeitos de estilo aleatório de diferentes comprimentos, sem valor padrão",
+    "description": "Descrição do parâmetro aleatório"
+  },
+  "description.relax": {
+    "message": "Substitui as configurações atuais para executar uma única tarefa no modo 'velocidade lenta', sem valor padrão",
+    "description": "Descrição do parâmetro de relaxamento"
+  },
+  "description.repeat": {
+    "message": "--repeat, Cria várias tarefas a partir de um prompt, a faixa é de 1 a 40, o padrão é 1",
+    "description": "Descrição do parâmetro de repetição"
+  },
+  "description.seed": {
+    "message": "--seed, Ruído visual inicial para imagens geradas, a faixa é de 0 a 4294967295, o padrão é gerado aleatoriamente",
+    "description": "Descrição do parâmetro de semente"
+  },
+  "description.stop": {
+    "message": "--stop, Interrompe a tarefa em qualquer estágio do processo de geração, a faixa é de 10 a 100, o padrão é 100 (ou seja, totalmente gerado)",
+    "description": "Descrição do parâmetro de parada"
+  },
+  "description.style": {
+    "message": "--style, Alterna entre diferentes versões ou estilos dos modelos Midjourney ou Niji, por exemplo, cru, fofo, expressivo, original, cênico, o valor padrão depende do modelo e do modo",
+    "description": "Descrição do parâmetro de estilo"
+  },
+  "description.stylize": {
+    "message": "--stylize, ajusta a intensidade do estilo estético padrão da Midjourney aplicado em tarefas de geração, a faixa é de 0 a 1000, o padrão é 100",
+    "description": "Descrição do parâmetro de estilização"
+  },
+  "description.tile": {
+    "message": "--tile, Gera uma imagem que pode ser usada para mosaicos sem emenda para criar padrões sem emenda, sem valor padrão",
+    "description": "Descrição do parâmetro de mosaico"
+  },
+  "description.turbo": {
+    "message": "Substitui as configurações atuais para executar uma única tarefa no modo 'velocidade extrema', sem valor padrão",
+    "description": "Descrição do parâmetro turbo"
+  },
+  "description.weird": {
+    "message": "--weird, explora estilos estéticos incomuns com natureza experimental, a faixa é de 0 a 3000, o padrão é 0",
+    "description": "Descrição do parâmetro estranho"
+  },
+  "description.translation": {
+    "message": "Habilita a tradução automática durante a geração, o conteúdo não chinês será automaticamente traduzido para o inglês para entrada no Midjourney",
+    "description": "Descrição do parâmetro de tradução"
+  },
+  "description.imageWeight": {
+    "message": "--iw, ajusta o peso das sugestões de imagem em relação às sugestões de texto, a faixa é de 0 a 2, o padrão é 1",
+    "description": "Descrição do parâmetro de peso da imagem"
+  },
+  "description.niji": {
+    "message": "--niji, Quando ativado, as imagens geradas usarão o modelo Niji, produzindo imagens no estilo anime",
+    "description": "Descrição do parâmetro niji"
+  },
+  "description.uploadReferences": {
+    "message": "Enviar imagens como referências para geração, suporta até 5 imagens. Se mais de 1 imagem for enviada, elas serão mescladas automaticamente",
+    "description": "Descrição do parâmetro de envio de referências"
+  },
+  "description.raw": {
+    "message": "--raw, Quando ativado, as imagens geradas usarão o modelo Midjourney, produzindo imagens no estilo original",
+    "description": "Descrição do parâmetro cru"
+  },
+  "description.prompt": {
+    "message": "Digite comandos, se parâmetros adicionais forem adicionados, eles substituirão os parâmetros predefinidos, por exemplo, adicionar `--stylize 200` forçará o comando final a usar `--stylize 200`",
+    "description": "Descrição do campo de prompt"
+  },
+  "action.generate": {
+    "message": "Clique neste botão para começar a gerar imagens",
+    "description": "Descrição do botão de geração"
+  },
+  "action.upscale1": {
+    "message": "Aumentar a escala da primeira imagem",
+    "description": "Descrição do botão de aumentar a escala 1"
+  },
+  "action.upscale2": {
+    "message": "Aumentar a escala da segunda imagem",
+    "description": "Descrição do botão de aumentar a escala 2"
+  },
+  "action.upscale3": {
+    "message": "Aumentar a escala da terceira imagem",
+    "description": "Descrição do botão de aumentar a escala 3"
+  },
+  "action.upscale4": {
+    "message": "Aumentar a escala da quarta imagem",
+    "description": "Descrição do botão de aumentar a escala 4"
+  },
+  "action.variation1": {
+    "message": "Ajustar variação da primeira imagem",
+    "description": "Descrição do botão de ajustar variação 1"
+  },
+  "action.variation2": {
+    "message": "Ajustar variação da segunda imagem",
+    "description": "Descrição do botão de ajustar variação 2"
+  },
+  "action.variation3": {
+    "message": "Ajustar variação da terceira imagem",
+    "description": "Descrição do botão de ajustar variação 3"
+  },
+  "action.variation4": {
+    "message": "Ajustar variação da quarta imagem",
+    "description": "Descrição do botão de ajustar variação 4"
+  },
+  "action.reroll": {
+    "message": "Rolar novamente",
+    "description": "Descrição do botão de rolar novamente"
+  },
+  "action.high_variation": {
+    "message": "Alta Variação",
+    "description": "Descrição do botão de alta variação"
+  },
+  "action.low_variation": {
+    "message": "Baixa Variação",
+    "description": "Descrição do botão de baixa variação"
+  },
+  "action.zoom_out_2x": {
+    "message": "Diminuir zoom 2x",
+    "description": "Descrição do botão de diminuir zoom 2x"
+  },
+  "action.zoom_out_1_5x": {
+    "message": "Diminuir zoom 1.5x",
+    "description": "Descrição do botão de diminuir zoom 1.5x"
+  },
+  "action.square": {
+    "message": "Quadrado",
+    "description": "Descrição do botão de quadrado"
+  },
+  "action.pan_left": {
+    "message": "Mover para a esquerda",
+    "description": "Descrição do botão de mover para a esquerda"
+  },
+  "action.pan_up": {
+    "message": "Mover para cima",
+    "description": "Descrição do botão de mover para cima"
+  },
+  "action.pan_down": {
+    "message": "Mover para baixo",
+    "description": "Descrição do botão de mover para baixo"
+  },
+  "action.pan_right": {
+    "message": "Mover para a direita",
+    "description": "Descrição do botão de mover para a direita"
+  },
+  "action.zoom_in_2x": {
+    "message": "Aumentar zoom 2x",
+    "description": "Descrição do botão de aumentar zoom 2x"
+  },
+  "action.zoom_in_1_5x": {
+    "message": "Aumentar zoom 1.5x",
+    "description": "Descrição do botão de aumentar zoom 1.5x"
+  },
+  "action.upscale_2x": {
+    "message": "Aumentar escala 2x",
+    "description": "Descrição do botão de aumentar escala 2x"
+  },
+  "action.upscale_4x": {
+    "message": "Aumentar escala 4x",
+    "description": "Descrição do botão de aumentar escala 4x"
+  },
+  "action.redo_upscale_2x": {
+    "message": "Refazer aumento de escala 2x",
+    "description": "Descrição do botão de refazer aumento de escala 2x"
+  },
+  "action.redo_upscale_4x": {
+    "message": "Refazer aumento de escala 4x",
+    "description": "Descrição do botão de refazer aumento de escala 4x"
+  },
+  "message.promptPlaceholder": {
+    "message": "Por favor, insira uma frase para descrever a imagem que deseja gerar, por exemplo: um gato fofo. Parâmetros adicionais substituirão os parâmetros predefinidos",
+    "description": "Texto de espaço reservado no campo de prompt"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Você pode fazer upload de até 5 imagens no máximo",
+    "description": "Mensagem de erro quando o número de imagens enviadas excede o limite"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Imagens enviadas com sucesso",
+    "description": "Mensagem de sucesso quando as imagens são enviadas com sucesso"
+  },
+  "message.uploadReferencesError": {
+    "message": "Falha ao enviar imagens, por favor, tente novamente mais tarde",
+    "description": "Mensagem de erro quando as imagens não são enviadas com sucesso"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tarefa de desenho iniciada com sucesso",
+    "description": "Mensagem de sucesso quando a tarefa de desenho é iniciada com sucesso"
+  },
+  "message.startTaskFailed": {
+    "message": "Falha ao iniciar a tarefa de desenho",
+    "description": "Mensagem de erro quando a tarefa de desenho falha ao iniciar"
+  },
+  "message.generating": {
+    "message": "Gerando...",
+    "description": "Mensagem quando a imagem está sendo gerada"
+  },
+  "message.noOperations": {
+    "message": "Nenhuma operação disponível",
+    "description": "Mensagem quando não há operações disponíveis"
+  },
+  "message.noTasks": {
+    "message": "Nenhuma tarefa histórica, por favor, inicie uma nova tarefa primeiro",
+    "description": "Mensagem quando não há tarefas históricas"
+  },
+  "model.general": {
+    "message": "Geral",
+    "description": "O nome de um modelo usado para geração de imagens gerais"
+  },
+  "model.niji": {
+    "message": "Niji",
+    "description": "O nome de um modelo usado para geração de imagens no estilo anime, não traduzir, mantê-lo como 'Niji'"
+  },
+  "name.model": {
+    "message": "Modelo",
+    "description": "O nome do modelo, modelo é um termo em aprendizado de máquina, que é usado para gerar imagens"
+  },
+  "name.aspect": {
+    "message": "Proporção",
+    "description": "O nome do parâmetro de aspecto"
+  },
+  "name.ratio": {
+    "message": "Proporção",
+    "description": "O nome do parâmetro de proporção"
+  },
+  "name.chaos": {
+    "message": "Caos",
+    "description": "O nome do parâmetro de caos, traduza como 'taxa de bagunça'"
+  },
+  "name.fast": {
+    "message": "Rápido",
+    "description": "O nome do modo rápido, que é usado para gerar imagens rapidamente, traduza como 'Velocidade rápida'"
+  },
+  "name.nijiStyle": {
+    "message": "Niji",
+    "description": "O nome do parâmetro de estilo Niji, não traduza, mantenha como 'Niji'"
+  },
+  "name.version": {
+    "message": "Versão",
+    "description": "O nome do parâmetro de versão"
+  },
+  "name.imageWeight": {
+    "message": "Peso da Imagem",
+    "description": "O nome do parâmetro de peso da imagem"
+  },
+  "name.no": {
+    "message": "Não",
+    "description": "O nome do parâmetro de não, que é usado para excluir certos elementos, traduza como 'Excluir'"
+  },
+  "name.quality": {
+    "message": "Qualidade",
+    "description": "O nome do parâmetro de qualidade, que é usado para definir a qualidade da imagem gerada"
+  },
+  "name.random": {
+    "message": "Aleatório",
+    "description": "O nome do parâmetro aleatório, que é usado para adicionar efeitos de estilo aleatório"
+  },
+  "name.relax": {
+    "message": "Lento",
+    "description": "O nome do modo relax, que é usado para gerar imagens em modo 'velocidade lenta', traduza como 'Velocidade lenta'"
+  },
+  "name.repeat": {
+    "message": "Repetir",
+    "description": "O nome do parâmetro de repetição, que é usado para criar várias tarefas a partir de um prompt"
+  },
+  "name.seed": {
+    "message": "Semente",
+    "description": "O nome do parâmetro de semente, que é usado para definir o ruído visual inicial"
+  },
+  "name.stop": {
+    "message": "Parar",
+    "description": "O nome do parâmetro de parar, que é usado para parar a tarefa em qualquer estágio"
+  },
+  "name.style": {
+    "message": "Estilo",
+    "description": "O nome do parâmetro de estilo, que é usado para alternar entre diferentes versões ou estilos de modelos"
+  },
+  "name.stylize": {
+    "message": "Estilizar",
+    "description": "O nome do parâmetro de estilizar, que é usado para ajustar a intensidade do estilo estético padrão"
+  },
+  "name.tile": {
+    "message": "Mosaico",
+    "description": "O nome do parâmetro de mosaico, que é usado para gerar imagens que podem ser usadas para mosaicos sem emendas"
+  },
+  "name.turbo": {
+    "message": "Turbo",
+    "description": "O nome do modo turbo, que é usado para gerar imagens no modo 'velocidade extrema', traduza como 'Velocidade extrema'"
+  },
+  "name.weird": {
+    "message": "Estranho",
+    "description": "O nome do parâmetro estranho, que é usado para explorar estilos estéticos incomuns, traduza como 'Estranheza'"
+  },
+  "name.translation": {
+    "message": "Tradução",
+    "description": "O nome do parâmetro de tradução, que é usado para habilitar a tradução automática durante a geração"
+  },
+  "name.advanced": {
+    "message": "Avançado",
+    "description": "O nome do modo avançado, que é usado para habilitar o modo avançado"
+  },
+  "name.niji": {
+    "message": "Niji",
+    "description": "O nome do parâmetro Niji, que é usado para habilitar o modelo Niji, não traduza, mantenha como 'Niji'"
+  },
+  "name.ignore": {
+    "message": "Ignorar",
+    "description": "O nome do parâmetro de ignorar, que é usado para ignorar certos elementos"
+  },
+  "name.prompt": {
+    "message": "Prompt",
+    "description": "O nome do parâmetro de prompt, que é usado para inserir instruções de desenho"
+  },
+  "name.raw": {
+    "message": "Bruto",
+    "description": "O nome do parâmetro bruto, que é usado para habilitar o modelo Midjourney"
+  },
+  "placeholder.prompt": {
+    "message": "Digite uma frase para descrever a imagem que deseja gerar, por exemplo: um gato fofo. Parâmetros adicionais substituirão os parâmetros predefinidos",
+    "description": "O texto de espaço reservado no campo de prompt"
+  },
+  "placeholder.ignore": {
+    "message": "Digite elementos a serem ignorados, por exemplo: `--ignorar plantas`",
+    "description": "O texto de espaço reservado no campo de ignorar"
+  },
+  "placeholder.select": {
+    "message": "Selecionar",
+    "description": "O texto de espaço reservado no campo de seleção"
   }
 }

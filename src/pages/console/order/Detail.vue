@@ -10,62 +10,50 @@
         <el-col :span="24">
           <el-card shadow="hover">
             <el-row>
-              <el-col :span="12" :offset="6">
+              <el-col :span="14" :offset="5">
                 <div v-if="loading" class="pt-5">
                   <el-skeleton animated />
                 </div>
                 <div v-else class="order">
                   <el-descriptions :column="1">
-                    <el-descriptions-item :label="$t('order.field.id')">{{ order?.id }}</el-descriptions-item>
+                    <el-descriptions-item :label="$t('order.field.id')">
+                      <span>{{ order?.id }} </span>
+                      <copy-to-clipboard v-if="order?.id" :content="order?.id" class="inline-block" />
+                    </el-descriptions-item>
                     <el-descriptions-item :label="$t('order.field.description')">
                       {{ order?.description }}
                     </el-descriptions-item>
-                    <el-descriptions-item
-                      v-if="order?.application?.type === applicationType.API"
-                      :label="$t('order.field.api')"
-                    >
-                      {{ order?.application?.api?.title }}
+                    <el-descriptions-item v-if="order?.application?.service" :label="$t('order.field.api')">
+                      {{ order?.application?.service?.title }}
                     </el-descriptions-item>
                     <el-descriptions-item :label="$t('order.field.amount')">
-                      <span v-if="order?.application?.type === applicationType.API">
-                        {{ order?.amount }}{{ $t(`api.unit.${order?.application?.api?.unit}`) }}
-                      </span>
+                      {{ order?.amount }} {{ $t(`service.unit.${order?.application?.service?.unit}`) }}
                     </el-descriptions-item>
                     <el-descriptions-item :label="$t('order.field.createdAt')">
                       {{ $dayjs.format(order?.created_at) }}
                     </el-descriptions-item>
                     <el-descriptions-item :label="$t('order.field.price')">
                       <span v-if="order?.price && order?.price > 0" class="price unfree">
-                        ¥{{ order?.price?.toFixed(2) }}
+                        ${{ order?.price?.toFixed(2) }}
                       </span>
                       <span v-else class="price free"> {{ $t('order.message.free') }} </span>
-                    </el-descriptions-item>
-                    <el-descriptions-item v-if="order?.pay_way" :label="$t('order.field.payWay')">
-                      <span v-if="order?.pay_way === PayWay.WechatPay">
-                        {{ $t('order.title.wechatPay') }}
-                      </span>
-                      <span v-if="order?.pay_way === PayWay.AliPay">
-                        {{ $t('order.title.aliPay') }}
-                      </span>
-                      <span v-if="order?.pay_way === PayWay.Stripe">
-                        {{ $t('order.title.stripe') }}
-                      </span>
                     </el-descriptions-item>
                   </el-descriptions>
                 </div>
               </el-col>
             </el-row>
             <el-row v-if="order?.state === OrderState.PAID" class="mb-5">
-              <el-col :span="12" :offset="6">
+              <el-col :span="14" :offset="5">
                 <el-divider border-style="dashed" />
                 <el-alert :title="$t('order.message.paidSuccessfully')" type="success" show-icon :closable="false" />
               </el-col>
             </el-row>
             <el-row v-if="order?.state === OrderState.PENDING || order?.state === OrderState.FAILED">
-              <el-col :span="12" :offset="6">
+              <el-col :span="14" :offset="5">
                 <el-divider border-style="dashed" />
                 <div v-if="order.price && order.price > 0 && !order.pay_way" class="payways mb-4">
                   <div
+                    v-if="false"
                     :class="{
                       payway: true,
                       wechatpay: true,
@@ -180,7 +168,7 @@ export default defineComponent({
   data(): IData {
     return {
       PayWay: PayWay,
-      payWay: PayWay.WechatPay,
+      payWay: PayWay.Stripe,
       OrderState: OrderState,
       order: undefined,
       loading: false,

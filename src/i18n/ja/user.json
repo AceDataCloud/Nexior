@@ -1,14 +1,22 @@
 {
-  "field": {
-    "id": "ユーザーID",
-    "_id.comment": "ユーザーID",
-    "isVerified": "認証済み",
-    "_isVerified.comment": "実際の情報に基づいてユーザーが認証済みかどうかを示すフラグ",
-    "nickname": "ニックネーム",
-    "_nickname.comment": "ユーザーのニックネーム",
-    "username": "ユーザー名",
-    "_username.comment": "ユーザーのユーザー名",
-    "dateJoined": "登録日時",
-    "_dateJoined.comment": "ユーザーが登録した時刻"
+  "field.id": {
+    "message": "ユーザーID",
+    "description": "ユーザーID"
+  },
+  "field.isVerified": {
+    "message": "認証済み",
+    "description": "実際の情報に基づいてユーザーが認証されているかどうかを示すフラグ"
+  },
+  "field.nickname": {
+    "message": "ニックネーム",
+    "description": "ユーザーのニックネーム"
+  },
+  "field.username": {
+    "message": "ユーザー名",
+    "description": "ユーザーのユーザー名"
+  },
+  "field.dateJoined": {
+    "message": "登録時間",
+    "description": "ユーザーが登録した時間"
   }
 }

@@ -1,74 +1,130 @@
 {
-  "button": {
-    "detail": "詳細を表示",
-    "_detail.comment": "ウェブサイトの紹介履歴の詳細を表示するために使用されるボタンのテキスト。",
-    "withdrawal": "引き出し",
-    "_withdrawal.comment": "ウェブサイトの紹介報酬を引き出すために使用されるボタンのテキスト。",
-    "query": "クエリ",
-    "_query.comment": "ウェブサイトの紹介報酬をクエリするために使用されるボタンのテキスト。"
+  "button.detail": {
+    "message": "詳細を表示",
+    "description": "ウェブサイトの紹介履歴の詳細を表示するために使用されるボタンのテキスト。"
   },
-  "field": {
-    "id": "紹介ID",
-    "_id.comment": "配布の一意の識別子、配布はAPIサービスウェブサイトの紹介を意味します。",
-    "percentage": "紹介報酬率",
-    "_percentage.comment": "注文金額に基づいて計算される紹介報酬の割合。",
-    "price": "注文金額",
-    "_price.comment": "紹介報酬を計算するために使用される注文の金額。",
-    "reward": "紹介報酬",
-    "_reward.comment": "注文金額と紹介報酬率に基づいて計算される紹介報酬。",
-    "createdAt": "紹介時間",
-    "_createdAt.comment": "紹介が作成された時刻。",
-    "level": "レベル",
-    "_level.comment": "紹介報酬を計算するために使用される紹介のレベル。",
-    "threshold": "紹介報酬閾値",
-    "_threshold.comment": "紹介報酬を引き出すために使用される紹介報酬の閾値。",
-    "inviteeId": "招待者ID",
-    "_inviteeId.comment": "招待者の一意の識別子、招待者はAPIサービスウェブサイトに招待者を招待するユーザーを意味します。",
-    "isVerified": "確認済み",
-    "_isVerified.comment": "紹介ユーザーが実際の情報で確認されているかどうかを示すフラグ。"
+  "button.withdrawal": {
+    "message": "引き出し",
+    "description": "ウェブサイトの紹介報酬を引き出すために使用されるボタンのテキスト。"
   },
-  "message": {
-    "deltaPriceForNextLevel": "次のレベルまでの差額",
-    "_deltaPriceForNextLevel": "現在の注文金額と次のレベルの閾値との差。",
-    "developingWithDrawal": "引き出し処理を追加してください。引き出しには6％の所得税がかかり、請求書は控除に使用できます。",
-    "_developingWithDrawal": "引き出し機能が開発中であることを示すメッセージ。",
-    "technicalDetail": "技術的な詳細",
-    "_technicalDetail": "紹介システムの技術的な詳細が実装されています。",
-    "distributionQrDescription": "紹介QRコード（リンクと同じ内容）",
-    "_distributionQrDescription": "紹介QRコードの説明。",
-    "distributionLink": "紹介リンク",
-    "_distributionLink": "顧客を下位顧客としてバインドするために使用される紹介リンク。",
-    "updateSuccessfully": "更新が成功しました",
-    "_updateSuccessfully": "紹介情報が正常に更新されたことを示すメッセージ。",
-    "distributionLinkDescription": "このプラットフォームで顧客がこのリンクまたはQRコードを介して登録すると、顧客は永久にあなたの下位顧客としてバインドされ、このプラットフォームでの顧客のすべての消費注文は現在の分配比率に従ってあなたのアカウントに返金されます。",
-    "_distributionLinkDescription": "紹介リンクの説明。",
-    "distributionLinkDescription2": "このリンクにはユーザーIDが含まれています。顧客がリンクを開くと、顧客のブラウザにユーザーIDがCookieの形式で記録され、有効期間は7日間です。 7日以内に顧客がこのプラットフォームに登録し、コードをスキャンすると、CookieとともにユーザーIDが登録サーバーにアップロードされ、顧客はあなたの下流顧客としてバインドできます。",
-    "_distributionLinkDescription2": "紹介リンクの説明。"
+  "button.query": {
+    "message": "クエリ",
+    "description": "ウェブサイトの紹介報酬をクエリするために使用されるボタンのテキスト。"
   },
-  "title": {
-    "price": "紹介注文の合計金額",
-    "_price.comment": "紹介注文の合計金額、紹介報酬を計算するために使用されます。",
-    "reward": "合計紹介報酬",
-    "_reward.comment": "注文金額と紹介報酬率に基づいて計算される合計紹介報酬。",
-    "level": "紹介レベル",
-    "_level.comment": "紹介報酬を計算するために使用される紹介レベル。",
-    "percentage": "紹介報酬率",
-    "_percentage.comment": "紹介報酬を計算するために使用される紹介報酬率。",
-    "currentLevel": "現在のレベル",
-    "_currentLevel.comment": "紹介報酬を計算するために使用される現在の紹介レベル。",
-    "nextLevel": "次のレベル",
-    "_nextLevel.comment": "紹介報酬を計算するために使用される次の紹介レベル。",
-    "currentPercentage": "現在の紹介報酬率",
-    "_currentPercentage.comment": "紹介報酬を計算するために使用される現在の紹介報酬率。",
-    "nextPercentage": "次のレベルの紹介報酬率",
-    "_nextPercentage.comment": "紹介報酬を計算するために使用される次のレベルの紹介報酬率。",
-    "levelInfo": "レベル情報",
-    "_levelInfo.comment": "紹介報酬を計算するために使用される紹介レベルの情報。",
-    "distributionLink": "紹介リンク",
-    "_distributionLink.comment": "顧客を下位顧客としてバインドするために使用される紹介リンク。",
-    "inviteesCount": "招待者の合計数",
-    "_inviteesCount.comment": "紹介報酬を計算するために使用される招待者の合計数。",
-    "manageDistributionStatus": "配布管理",
-    "_manageDistributionStatus.comment": "紹介ステータスの管理。"
+  "field.id": {
+    "message": "紹介ID",
+    "description": "配布の一意の識別子。配布とはAPIサービスウェブサイトの紹介を指します。"
+  },
+  "field.percentage": {
+    "message": "紹介報酬率",
+    "description": "注文金額に基づいて計算される紹介報酬の割合。"
+  },
+  "field.price": {
+    "message": "注文金額",
+    "description": "紹介報酬を計算するために使用される注文の金額。"
+  },
+  "field.reward": {
+    "message": "紹介報酬",
+    "description": "注文金額と紹介報酬率に基づいて計算される紹介報酬。"
+  },
+  "field.createdAt": {
+    "message": "紹介時間",
+    "description": "紹介が作成された時間。"
+  },
+  "field.level": {
+    "message": "レベル",
+    "description": "紹介報酬を計算するために使用される紹介のレベル。"
+  },
+  "field.threshold": {
+    "message": "紹介報酬閾値",
+    "description": "紹介報酬を引き出すために使用される紹介報酬の閾値。"
+  },
+  "field.inviteeId": {
+    "message": "招待者ID",
+    "description": "招待者の一意の識別子。招待者とはAPIサービスウェブサイトに招待者を招待するユーザーを指します。"
+  },
+  "field.isVerified": {
+    "message": "確認済み",
+    "description": "紹介ユーザーが実際の情報で確認されているかどうかを示すフラグ。"
+  },
+  "message.deltaPriceForNextLevel": {
+    "message": "次のレベルまでの差額",
+    "description": "現在の注文金額と次のレベルの閾値との差額。"
+  },
+  "message.developingWithDrawal": {
+    "message": "引き出しを処理するためにカスタマーサービスを追加してください。引き出しには6％の所得税が控除されます。請求書は控除に使用できます。",
+    "description": "引き出し機能が開発中であることを示すメッセージ。"
+  },
+  "message.technicalDetail": {
+    "message": "技術的な詳細",
+    "description": "紹介システムの技術的な詳細が実装されています。"
+  },
+  "message.distributionQrDescription": {
+    "message": "紹介QRコード（リンクと同じ内容）",
+    "description": "紹介QRコードの説明。"
+  },
+  "message.distributionLink": {
+    "message": "紹介リンク",
+    "description": "顧客を下位顧客としてバインドするために使用される紹介リンク。"
+  },
+  "message.updateSuccessfully": {
+    "message": "更新が成功しました",
+    "description": "紹介情報が正常に更新されたことを示すメッセージ。"
+  },
+  "message.distributionLinkDescription": {
+    "message": "このプラットフォームで顧客がこのリンクまたはQRコードを介して登録すると、顧客は永久にあなたの下位顧客としてバインドされ、現在の配布比率に従ってこのプラットフォームでの顧客のすべての消費注文があなたのアカウントに返金されます。",
+    "description": "紹介リンクの説明。"
+  },
+  "message.distributionLinkDescription2": {
+    "message": "このリンクにはあなたのユーザーIDが含まれています。顧客がリンクを開くと、顧客のブラウザにCookieの形であなたのユーザーIDが記録されます。有効期間は7日間です。 7日以内に顧客がコードをスキャンしてこのプラットフォームに登録すると、CookieとともにあなたのユーザーIDが登録サーバーにアップロードされ、顧客はあなたの下流顧客としてバインドできます。",
+    "description": "紹介リンクの説明。"
+  },
+  "title.price": {
+    "message": "紹介注文の合計金額",
+    "description": "紹介報酬を計算するために使用される紹介注文の合計金額。"
+  },
+  "title.reward": {
+    "message": "紹介報酬の合計",
+    "description": "注文金額と紹介報酬率に基づいて計算される紹介報酬の合計。"
+  },
+  "title.level": {
+    "message": "紹介レベル",
+    "description": "紹介報酬を計算するために使用される紹介レベル。"
+  },
+  "title.percentage": {
+    "message": "紹介報酬率",
+    "description": "紹介報酬を計算するために使用される紹介報酬率。"
+  },
+  "title.currentLevel": {
+    "message": "現在のレベル",
+    "description": "紹介報酬を計算するために使用される現在の紹介レベル。"
+  },
+  "title.nextLevel": {
+    "message": "次のレベル",
+    "description": "紹介報酬を計算するために使用される次の紹介レベル。"
+  },
+  "title.currentPercentage": {
+    "message": "現在の紹介報酬率",
+    "description": "紹介報酬を計算するために使用される現在の紹介報酬率。"
+  },
+  "title.nextPercentage": {
+    "message": "次のレベルの紹介報酬率",
+    "description": "紹介報酬を計算するために使用される次のレベルの紹介報酬率。"
+  },
+  "title.levelInfo": {
+    "message": "レベル情報",
+    "description": "紹介報酬を計算するために使用される紹介レベルの情報。"
+  },
+  "title.distributionLink": {
+    "message": "紹介リンク",
+    "description": "顧客を下位顧客としてバインドするために使用される紹介リンク。"
+  },
+  "title.inviteesCount": {
+    "message": "招待者の総数",
+    "description": "紹介報酬を計算するために使用される招待者の総数。"
+  },
+  "title.manageDistributionStatus": {
+    "message": "配布管理",
+    "description": "紹介ステータスの管理。"
   }
 }

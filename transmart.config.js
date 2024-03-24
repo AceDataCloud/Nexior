@@ -25,7 +25,7 @@ module.exports = {
   openAIApiModel: 'gpt-3.5-turbo-1106',
   openAIApiUrl: 'https://api.acedata.cloud',
   openAIApiUrlPath: '/openai/chat/completions',
-  modelContextLimit: 4000,
+  modelContextLimit: 15000,
   additionalReqBodyParams: {
     response_format: {
       type: 'json_object'
@@ -36,16 +36,20 @@ module.exports = {
       `Translate the i18n JSON file to ${languageName} according to the BCP 47 standard` +
       (context ? `\nHere are some contexts to help with better translation.  ---${context}---` : '') +
       `\n Keep the keys the same as the original file and make sure the output remains a valid i18n JSON file.` +
-      `For every key, there will be another key with suffix '.comment' like '_{key}.comment' which is a comment for the original key. You must translate according to the comment for that key.` +
+      `For every key, there will be sub-key named as 'message' and 'description', 'message' is the real value, 'description' is comment for the value. You must translate according to the description.` +
       `For example,` +
       `'''{
-        "relax": "Relax",
-        "_relax.comment": "Text in button, which allows user to set the 'slow speed' mode to relax to generate the image, must translate to 'Slow speed'"
+        "relax": {
+          "message": "Relax",
+          "description": "Text in button, which allows user to set the 'slow speed' mode to relax to generate the image, must translate to 'Slow speed'"
+        }
       }'''` +
       ` should be translated to ` +
       `'''{
-        "relax": "慢速",
-        "_relax.comment": "按钮文本，允许用户设置为放松模式生成图像，必须翻译为'慢速'"
+        "relax": {
+          "message": "慢速",
+          "description": "按钮文本，允许用户设置为放松模式生成图像，必须翻译为'慢速'"
+        }
       }'''
       `
     );

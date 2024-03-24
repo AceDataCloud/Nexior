@@ -138,7 +138,7 @@
                 {{ $t('distribution.title.distributionLink') }}
               </h4>
               <el-divider />
-              <div class="link-wrapper">
+              <div class="link-wrapper text-center">
                 <font-awesome-icon v-if="false" icon="fa-solid fa-link" class="icon" />
                 <a :href="distributionLink" class="link">
                   {{ distributionLink }}
@@ -146,7 +146,12 @@
                 <copy-to-clipboard :content="distributionLink" />
               </div>
               <div class="qr-wrapper ml-auto mr-auto">
-                <qr-code v-if="distributionLink" :value="distributionLink" :size="150" class="mb-2 ml-auto mr-auto" />
+                <qr-code
+                  v-if="distributionLink"
+                  :value="distributionLink"
+                  :size="150"
+                  class="block mb-2 ml-auto mr-auto"
+                />
                 <p class="mt-0">
                   {{ $t('distribution.message.distributionQrDescription') }}
                 </p>

@@ -1,104 +1,190 @@
 {
-  "button": {
-    "goDocument": "Dokument",
-    "_goDocument.comment": "Tekst na dugmetu, kada se klikne na ovo dugme, preći će na stranicu dokumenta.",
-    "goCredentials": "Poverilačni podaci",
-    "_goCredentials.comment": "Tekst na dugmetu, kada se klikne na ovo dugme, preći će na stranicu poverilačnih podataka.",
-    "buyMore": "Kupi više",
-    "_buyMore.comment": "Tekst na dugmetu, kada se klikne na ovo dugme, preći će na stranicu kupovine više.",
-    "createOrder": "Napravi narudžbinu",
-    "_createOrder.comment": "Tekst na dugmetu, kada se klikne na ovo dugme, preći će na stranicu kreiranja narudžbine.",
-    "custom": "Prilagođeno",
-    "_custom.comment": "Tekst na dugmetu, kada se klikne na ovo dugme, preći će na prilagođenu stranicu.",
-    "query": "Upit",
-    "_query.comment": "Tekst na dugmetu, kada se klikne na ovo dugme, preći će na stranicu upita.",
-    "usage": "Istorija korišćenja",
-    "_usage.comment": "Tekst na dugmetu, kada se klikne na ovo dugme, preći će na stranicu istorije korišćenja."
+  "button.goDocument": {
+    "message": "Dokument",
+    "description": "Tekst na dugmetu, kada se klikne na ovo dugme, preći će na stranicu dokumenta."
   },
-  "field": {
-    "id": "ID aplikacije",
-    "_id.comment": "ID aplikacije.",
-    "remainingAmount": "Preostali iznos",
-    "_remainingAmount.comment": "Preostali iznos aplikacije.",
-    "usedAmount": "Iskorišćeni iznos",
-    "_usedAmount.comment": "Iskorišćeni iznos aplikacije.",
-    "apiKey": "API ključ",
-    "_apiKey.comment": "API ključ",
-    "service": "Usluga",
-    "_service.comment": "Usluga aplikacije.",
-    "operation": "Operacija",
-    "_operation.comment": "Operacija aplikacije.",
-    "amount": "Iznos",
-    "_amount.comment": "Iznos aplikacije.",
-    "traceId": "ID traga",
-    "_traceId.comment": "ID traga jednog API poziva, za aplikaciju API usluge, nemojte ga prevoditi, zadržite ga kao 'ID traga'",
-    "shouldPayPrice": "Konačna cena",
-    "_shouldPayPrice.comment": "Konačna cena aplikacije.",
-    "api": "API",
-    "_api.comment": "Ovo je vrsta online usluge, oblik je putem API-ja za pružanje usluge korisniku.",
-    "proxy": "Proksi",
-    "_proxy.comment": "Ovo je vrsta online usluge, oblik je putem HTTP proksija (koristi se za prenos podataka) za pružanje usluge korisniku.",
-    "credential": "Poverilačni podatak",
-    "_credential.comment": "Poverilačni podatak aplikacije.",
-    "name": "Ime",
-    "_name.comment": "Ime aplikacije.",
-    "package": "Paket",
-    "_package.comment": "Paket znači različite cene paketa, kao što su 100 dolara za 10000 kredita, 200 dolara za 20000 kredita.",
-    "type": "Vrsta",
-    "_type.comment": "Vrsta aplikacije.",
-    "freeAmount": "Besplatni iznos",
-    "_freeAmount.comment": "Besplatni iznos aplikacije.",
-    "extraPrice": "Cena",
-    "_extraPrice.comment": "Dodatna cena koju korisnik treba da plati za aplikaciju."
+  "button.goCredentials": {
+    "message": "Poverilački podaci",
+    "description": "Tekst na dugmetu, kada se klikne na ovo dugme, preći će na stranicu poverilačkih podataka."
   },
-  "message": {
-    "alreadyApplied": "Već ste se prijavili za ovu uslugu, molimo proverite konzolu",
-    "_alreadyApplied.comment": "Poruka koja se prikazuje korisniku kada se već prijavio za ovu uslugu.",
-    "applySuccessfully": "Prijava uspešna",
-    "_applySuccessfully.comment": "Poruka koja se prikazuje korisniku kada se uspešno prijavio za ovu uslugu.",
-    "notApplied": "Još uvek se niste prijavili za ovu uslugu, molimo prijavite se za uslugu pre korišćenja",
-    "_notApplied.comment": "Poruka koja se prikazuje korisniku kada se još uvek nije prijavio za ovu uslugu.",
-    "yourApplication": "Vaša prijava",
-    "_yourApplication.comment": "Poruka koja se prikazuje korisniku kada je njegova prijava.",
-    "unverified": "Morate završiti autentifikaciju stvarnog imena pre nego što se možete prijaviti za ovu uslugu",
-    "_unverified.comment": "Poruka koja se prikazuje korisniku kada nije završio autentifikaciju stvarnog imena.",
-    "goVerify": "Idi na autentifikaciju stvarnog imena",
-    "_goVerify.comment": "Poruka koja se prikazuje korisniku kada nije završio autentifikaciju stvarnog imena.",
-    "requiredParameter": "Potreban parametar",
-    "_requiredParameter.comment": "Poruka koja se prikazuje korisniku kada nije uneo potreban parametar.",
-    "example": "Primer",
-    "_example.comment": "Poruka koja se prikazuje korisniku kada nije uneo potreban parametar.",
-    "createCredentialSuccessfully": "Uspešno kreiranje poverilačnog podatka",
-    "_createCredentialSuccessfully.comment": "Poruka koja se prikazuje korisniku kada je uspešno kreirao poverilačni podatak.",
-    "readPolicy": "Pročitao/la sam i saglasan/na sam",
-    "_readPolicy.comment": "Poruka koja se prikazuje korisniku kada je pročitao/la i saglasan/na sa politikom.",
-    "policy": "Ugovor o korišćenju usluga podataka",
-    "_policy.comment": "Poruka koja se prikazuje korisniku kada je pročitao/la i saglasan/na sa politikom.",
-    "notAgreePolicy": "Niste se složili sa Ugovorom o korišćenju usluga podataka",
-    "_notAgreePolicy.comment": "Poruka koja se prikazuje korisniku kada se nije složio sa politikom.",
-    "confirmApplying": "Potvrdi prijavu za uslugu",
-    "_confirmApplying.comment": "Poruka koja se prikazuje korisniku kada je potvrdio prijavu za uslugu.",
-    "rotateCredential": "Resetuj ključ",
-    "_rotateCredential.comment": "Poruka koja se prikazuje korisniku kada je resetovao ključ.",
-    "rotateCredentialConfirm": "Da li ste sigurni da želite da resetujete ključ? Ne može se povratiti nakon resetovanja",
-    "_rotateCredentialConfirm.comment": "Poruka koja se prikazuje korisniku kada je potvrdio resetovanje ključa.",
-    "idDoesNotExist": "Aplikacija ne postoji",
-    "_idDoesNotExist.comment": "Poruka koja se prikazuje korisniku kada aplikacija ne postoji.",
-    "rotateCredentialSuccessfully": "Resetovanje ključa uspešno",
-    "_rotateCredentialSuccessfully.comment": "Poruka koja se prikazuje korisniku kada je resetovanje ključa uspešno.",
-    "rotateCredentialFailed": "Resetovanje ključa nije uspelo, molimo kontaktirajte za pomoć",
-    "_rotateCredentialFailed.comment": "Poruka koja se prikazuje korisniku kada resetovanje ključa nije uspelo.",
-    "updateFailed": "Ažuriranje nije uspelo",
-    "_updateFailed.comment": "Poruka koja se prikazuje korisniku kada ažuriranje nije uspelo.",
-    "updateSuccessfully": "Ažuriranje uspešno",
-    "_updateSuccessfully.comment": "Poruka koja se prikazuje korisniku kada je ažuriranje uspešno."
+  "button.buyMore": {
+    "message": "Kupi više",
+    "description": "Tekst na dugmetu, kada se klikne na ovo dugme, preći će na stranicu za kupovinu više."
   },
-  "title": {
-    "buyService": "Kupi uslugu",
-    "_buyService.comment": "Naslov stranice, kada korisnik želi da kupi uslugu.",
-    "applicationRemainingCount": "Izmeni broj",
-    "_applicationRemainingCount.comment": "Naslov stranice, kada korisnik želi da izmeni broj aplikacije.",
-    "manageApplication": "Upravljanje aplikacijom",
-    "_manageApplication.comment": "Naslov stranice, kada korisnik želi da upravlja aplikacijom."
+  "button.createOrder": {
+    "message": "Napravi porudžbinu",
+    "description": "Tekst na dugmetu, kada se klikne na ovo dugme, preći će na stranicu za kreiranje porudžbine."
+  },
+  "button.custom": {
+    "message": "Prilagođeno",
+    "description": "Tekst na dugmetu, kada se klikne na ovo dugme, preći će na prilagođenu stranicu."
+  },
+  "button.query": {
+    "message": "Upit",
+    "description": "Tekst na dugmetu, kada se klikne na ovo dugme, preći će na stranicu upita."
+  },
+  "button.usage": {
+    "message": "Istorija korišćenja",
+    "description": "Tekst na dugmetu, kada se klikne na ovo dugme, preći će na stranicu istorije korišćenja."
+  },
+  "field.id": {
+    "message": "ID aplikacije",
+    "description": "ID aplikacije."
+  },
+  "field.remainingAmount": {
+    "message": "Preostali iznos",
+    "description": "Preostali iznos aplikacije."
+  },
+  "field.usedAmount": {
+    "message": "Iskorišćeni iznos",
+    "description": "Iskorišćeni iznos aplikacije."
+  },
+  "field.apiKey": {
+    "message": "API ključ",
+    "description": "API ključ"
+  },
+  "field.service": {
+    "message": "Usluga",
+    "description": "Usluga aplikacije."
+  },
+  "field.operation": {
+    "message": "Operacija",
+    "description": "Operacija aplikacije."
+  },
+  "field.amount": {
+    "message": "Iznos",
+    "description": "Iznos aplikacije."
+  },
+  "field.traceId": {
+    "message": "ID tragova",
+    "description": "ID tragova jednog API poziva, za aplikaciju usluge API-ja, nemojte ga prevoditi, zadržite ga kao 'ID tragova'"
+  },
+  "field.shouldPayPrice": {
+    "message": "Konačna cena",
+    "description": "Konačna cena aplikacije."
+  },
+  "field.api": {
+    "message": "API",
+    "description": "Ovo je vrsta online usluge, oblik je putem API-ja za pružanje usluge korisniku."
+  },
+  "field.proxy": {
+    "message": "Proksi",
+    "description": "Ovo je vrsta online usluge, oblik je putem HTTP proksija (koristi se za prenos podataka) za pružanje usluge korisniku."
+  },
+  "field.credential": {
+    "message": "Poverenje",
+    "description": "Poverenje aplikacije."
+  },
+  "field.name": {
+    "message": "Ime",
+    "description": "Ime aplikacije."
+  },
+  "field.package": {
+    "message": "Paket",
+    "description": "Paket znači različite cene paketa, kao što su 100 dolara za 10000 kredita, 200 dolara za 20000 kredita."
+  },
+  "field.type": {
+    "message": "Vrsta",
+    "description": "Vrsta aplikacije."
+  },
+  "field.freeAmount": {
+    "message": "Besplatni iznos",
+    "description": "Besplatni iznos aplikacije."
+  },
+  "field.extraPrice": {
+    "message": "Cena",
+    "description": "Dodatna cena koju korisnik treba da plati za aplikaciju."
+  },
+  "message.alreadyApplied": {
+    "message": "Već ste se prijavili za ovu uslugu, molimo proverite konzolu",
+    "description": "Poruka koja se prikazuje korisniku kada se već prijavio za ovu uslugu."
+  },
+  "message.applySuccessfully": {
+    "message": "Prijava uspešna",
+    "description": "Poruka koja se prikazuje korisniku kada se uspešno prijavio za ovu uslugu."
+  },
+  "message.notApplied": {
+    "message": "Još se niste prijavili za ovu uslugu, molimo prijavite se za uslugu pre korišćenja",
+    "description": "Poruka koja se prikazuje korisniku kada se još nije prijavio za ovu uslugu."
+  },
+  "message.yourApplication": {
+    "message": "Vaša prijava",
+    "description": "Poruka koja se prikazuje korisniku kada je njegova prijava."
+  },
+  "message.unverified": {
+    "message": "Morate završiti autentifikaciju sa pravim imenom pre nego što se prijavite za ovu uslugu",
+    "description": "Poruka koja se prikazuje korisniku kada nije završio autentifikaciju sa pravim imenom."
+  },
+  "message.goVerify": {
+    "message": "Idi na autentifikaciju sa pravim imenom",
+    "description": "Poruka koja se prikazuje korisniku kada nije završio autentifikaciju sa pravim imenom."
+  },
+  "message.requiredParameter": {
+    "message": "Obavezan parametar",
+    "description": "Poruka koja se prikazuje korisniku kada nije uneo obavezan parametar."
+  },
+  "message.example": {
+    "message": "Primer",
+    "description": "Poruka koja se prikazuje korisniku kada nije uneo obavezan parametar."
+  },
+  "message.createCredentialSuccessfully": {
+    "message": "Uspešno kreiranje poverenja",
+    "description": "Poruka koja se prikazuje korisniku kada je uspešno kreirao poverenje."
+  },
+  "message.readPolicy": {
+    "message": "Pročitao/la sam i saglasan/na sam sa",
+    "description": "Poruka koja se prikazuje korisniku kada je pročitao/la i saglasan/na sa politikom."
+  },
+  "message.policy": {
+    "message": "Ugovor o korišćenju usluga podataka",
+    "description": "Poruka koja se prikazuje korisniku kada je pročitao/la i saglasan/na sa politikom."
+  },
+  "message.notAgreePolicy": {
+    "message": "Niste saglasni sa Ugovorom o korišćenju usluga podataka",
+    "description": "Poruka koja se prikazuje korisniku kada nije saglasan sa politikom."
+  },
+  "message.confirmApplying": {
+    "message": "Potvrdi prijavu za uslugu",
+    "description": "Poruka koja se prikazuje korisniku kada je potvrdio prijavu za uslugu."
+  },
+  "message.rotateCredential": {
+    "message": "Resetuj ključ",
+    "description": "Poruka koja se prikazuje korisniku kada je resetovao ključ."
+  },
+  "message.rotateCredentialConfirm": {
+    "message": "Da li ste sigurni da želite da resetujete ključ? Ne može se povratiti nakon resetovanja",
+    "description": "Poruka koja se prikazuje korisniku kada je potvrdio resetovanje ključa."
+  },
+  "message.idDoesNotExist": {
+    "message": "Aplikacija ne postoji",
+    "description": "Poruka koja se prikazuje korisniku kada aplikacija ne postoji."
+  },
+  "message.rotateCredentialSuccessfully": {
+    "message": "Resetovanje ključa uspešno",
+    "description": "Poruka koja se prikazuje korisniku kada je resetovanje ključa uspešno."
+  },
+  "message.rotateCredentialFailed": {
+    "message": "Resetovanje ključa nije uspelo, molimo kontaktirajte za rešavanje",
+    "description": "Poruka koja se prikazuje korisniku kada resetovanje ključa nije uspelo."
+  },
+  "message.updateFailed": {
+    "message": "Ažuriranje nije uspelo",
+    "description": "Poruka koja se prikazuje korisniku kada ažuriranje nije uspelo."
+  },
+  "message.updateSuccessfully": {
+    "message": "Ažuriranje uspešno",
+    "description": "Poruka koja se prikazuje korisniku kada je ažuriranje uspešno."
+  },
+  "title.buyService": {
+    "message": "Kupi uslugu",
+    "description": "Naslov stranice, kada korisnik želi da kupi uslugu."
+  },
+  "title.applicationRemainingCount": {
+    "message": "Izmeni broj",
+    "description": "Naslov stranice, kada korisnik želi da izmeni broj aplikacije."
+  },
+  "title.manageApplication": {
+    "message": "Upravljanje aplikacijom",
+    "description": "Naslov stranice, kada korisnik želi da upravlja aplikacijom."
   }
 }

@@ -15,7 +15,7 @@
       {{ $t(`service.unit.` + application?.service?.unit + 's') }}
     </span>
     <span class="actions">
-      <el-button size="small" type="primary" @click="onBuyMore(application)">{{
+      <el-button round size="small" type="primary" @click="onBuyMore(application)">{{
         $t('common.button.buyMore')
       }}</el-button>
     </span>
@@ -23,7 +23,7 @@
   <div v-if="needApply && service" class="text-center info">
     <span class="mr-2">{{ $t('chat.message.notApplied') }}</span>
     <span>
-      <el-button type="primary" class="btn btn-apply" size="small" @click="confirming = true">
+      <el-button round type="primary" class="btn btn-apply" size="small" @click="confirming = true">
         {{ $t('common.button.apply') }}
       </el-button>
     </span>
@@ -34,7 +34,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { applicationOperator } from '@/operators';
+import { applicationOperator, credentialOperator } from '@/operators';
 import { ElButton, ElMessage, ElSkeleton, ElSkeletonItem } from 'element-plus';
 import ApplicationConfirm from '@/components/application/Confirm.vue';
 import { IApplicationType, IApplication, IApplicationDetailResponse, IService } from '@/models';
@@ -67,7 +67,7 @@ export default defineComponent({
       default: false
     }
   },
-  emits: ['apply', 'refresh'],
+  emits: ['apply', 'refresh', 'applied', 'update:application'],
   data(): IData {
     return {
       confirming: this.needApply,
@@ -106,10 +106,19 @@ export default defineComponent({
         })
         .then(({ data: data }: { data: IApplicationDetailResponse }) => {
           ElMessage.success(this.$t('application.message.applySuccessfully'));
-          setTimeout(() => {
-            this.$emit('refresh');
-          }, 2000);
-          this.confirming = false;
+          credentialOperator
+            .create({
+              application_id: data.id
+            })
+            .then(() => {
+              setTimeout(() => {
+                this.$emit('refresh');
+              }, 2000);
+              this.confirming = false;
+            })
+            .finally(() => {
+              this.$emit('applied');
+            });
         })
         .catch((error) => {
           if (error?.response?.data?.code === ERROR_CODE_DUPLICATION) {

@@ -1,162 +1,314 @@
 {
-  "button": {
-    "setup": "设置",
-    "_setup.comment": "按钮文本，用于设置某物",
-    "edit": "编辑",
-    "_edit.comment": "按钮文本，用于编辑某物",
-    "login": "登录",
-    "_login.comment": "按钮文本，用于登录",
-    "logout": "退出",
-    "_logout.comment": "按钮文本，用于退出登录",
-    "new": "新建",
-    "_new.comment": "按钮文本，用于创建新项目",
-    "delete": "删除",
-    "_delete.comment": "按钮文本，用于删除某物",
-    "confirm": "确认",
-    "_confirm.comment": "按钮文本，用于确认某物",
-    "cancel": "取消",
-    "_cancel.comment": "按钮文本，用于取消某物",
-    "alert": "警告",
-    "_alert.comment": "按钮文本，用于警告某物",
-    "info": "信息",
-    "_info.comment": "按钮文本，用于显示信息",
-    "publish": "发布",
-    "_publish.comment": "按钮文本，用于发布某物",
-    "watch": "观看",
-    "_watch.comment": "按钮文本，用于观看某物",
-    "verify": "实名认证",
-    "_verify.comment": "按钮文本，用于让用户进行实名认证",
-    "profile": "个人资料",
-    "_profile.comment": "按钮文本，用于显示个人资料",
-    "console": "控制台",
-    "_console.comment": "按钮文本，用于显示控制台页面以控制网页中的某些内容",
-    "learn": "学习",
-    "_learn.comment": "按钮文本，用于让用户学习某物",
-    "buy": "购买",
-    "_buy.comment": "按钮文本，用于让用户购买某物",
-    "try": "尝试",
-    "_try.comment": "按钮文本，用于让用户尝试某物",
-    "startForFree": "免费开始",
-    "_startForFree.comment": "按钮文本，用于让用户免费开始",
-    "apply": "申请",
-    "_apply.comment": "按钮文本，用于让用户申请API服务",
-    "refresh": "刷新",
-    "_refresh.comment": "按钮文本，用于刷新页面",
-    "pay": "支付",
-    "_pay.comment": "按钮文本，用于让用户支付服务费",
-    "repay": "继续支付",
-    "_repay.comment": "按钮文本，用于让用户继续支付服务费",
-    "applied": "已申请",
-    "_applied.comment": "按钮文本，用于显示用户已申请服务",
-    "acquire": "获取",
-    "_acquire.comment": "按钮文本，用于让用户获取令牌或API服务的密钥",
-    "fillExample": "填写示例",
-    "_fillExample.comment": "按钮文本，用于让用户填写示例数据",
-    "buyMore": "购买更多",
-    "_buyMore.comment": "按钮文本，用于让用户购买更多",
-    "update": "更新",
-    "_update.comment": "按钮文本，用于更新某物",
-    "view": "查看",
-    "_view.comment": "按钮文本，用于查看某物",
-    "copy": "复制",
-    "_copy.comment": "按钮文本，用于复制某物",
-    "create": "创建",
-    "_create.comment": "按钮文本，用于创建某物",
-    "referralEarnings": "推荐收益",
-    "_referralEarnings.comment": "按钮文本，用于显示推荐收益，表示用户可以通过邀请他人使用服务来赚钱",
-    "finish": "完成",
-    "_finish.comment": "按钮文本，用于完成某物"
+  "button.setup": {
+    "message": "设置",
+    "description": "按钮文本，用于设置某些内容"
   },
-  "entity": {
-    "website": "Ace Data Cloud",
-    "_website.comment": "网站名称，无需翻译，保持为'Ace Data Cloud'",
-    "copyright": "版权",
-    "_copyright.comment": "版权信息",
-    "platform": "平台",
-    "_platform.comment": "指示这是API服务的平台文本",
-    "title": "标题",
-    "_title.comment": "实体的标题",
-    "icon": "图标",
-    "_icon.comment": "实体的图标",
-    "status": "状态",
-    "_status.comment": "实体的状态",
-    "operation": "操作",
-    "_operation.comment": "实体的操作",
-    "description": "描述",
-    "_description.comment": "实体的描述",
-    "createdAt": "创建时间",
-    "_createdAt.comment": "实体创建时间",
-    "updatedAt": "更新时间",
-    "_updatedAt.comment": "实体更新时间",
-    "order": "订单",
-    "_order.comment": "实体的订单，订单包含金额、服务信息，用户需要为其付款"
+  "button.edit": {
+    "message": "编辑",
+    "description": "按钮文本，用于编辑某些内容"
   },
-  "message": {
-    "usedAmount": "已使用金额",
-    "_usedAmount.comment": "显示服务已使用金额的消息",
-    "remainingAmount": "剩余金额",
-    "_remainingAmount.comment": "显示服务剩余金额的消息",
-    "copied": "已成功复制",
-    "_copied.comment": "显示内容已成功复制的消息",
-    "confirmDelete": "确定要删除吗？",
-    "_confirmDelete.comment": "确认用户是否要删除某物的消息",
-    "alert": "警告",
-    "_alert.comment": "警告用户的消息",
-    "info": "友情提醒",
-    "_info.comment": "显示信息的消息",
-    "free": "免费",
-    "_free.comment": "显示服务免费的消息，表示用户无需付费",
-    "startPrice": "起价",
-    "_startPrice.comment": "显示服务最低价格的消息",
-    "joinDiscord": "加入Discord",
-    "_joinDiscord.comment": "让用户加入Discord频道的消息",
-    "noData": "无数据",
-    "_noData.comment": "显示表格或列表中没有数据的消息"
+  "button.login": {
+    "message": "登录",
+    "description": "按钮文本，用于登录"
   },
-  "nav": {
-    "home": "首页",
-    "_home.comment": "网站导航栏中的文本，用于显示首页",
-    "content": "内容",
-    "_content.comment": "网站导航栏中的文本，用于显示内容页面",
-    "category": "分类",
-    "_category.comment": "网站导航栏中的文本，用于显示分类页面",
-    "service": "服务",
-    "_service.comment": "网站导航栏中的文本，用于显示服务页面",
-    "document": "文档",
-    "_document.comment": "网站导航栏中的文本，用于显示文档页面",
-    "console": "控制台",
-    "_console.comment": "网站导航栏中的文本，用于显示控制台页面",
-    "chat": "聊天",
-    "_chat.comment": "网站导航栏中的文本，用于显示聊天页面",
-    "midjourney": "中途",
-    "_midjourney.comment": "网站导航栏中的文本，用于显示中途页面",
-    "chatdoc": "聊天文档",
-    "_chatdoc.comment": "网站导航栏中的文本，用于显示聊天文档页面"
+  "button.logout": {
+    "message": "退出",
+    "description": "按钮文本，用于退出登录"
   },
-  "title": {
-    "alert": "警报",
-    "_alert.comment": "警报消息的标题",
-    "placeholderOfSelect": "请选择",
-    "_placeholderOfSelect.comment": "选择输入框的占位符",
-    "placeholderOfInput": "请填写",
-    "_placeholderOfInput.comment": "输入框的占位符",
-    "allApplications": "所有申请",
-    "_allApplications.comment": "显示所有申请的页面标题",
-    "allOrders": "所有订单",
-    "_allOrders.comment": "显示所有订单的页面标题",
-    "orderInfo": "订单信息",
-    "_orderInfo.comment": "显示订单信息的页面标题",
-    "buyMore": "购买更多",
-    "_buyMore.comment": "让用户购买更多的页面标题",
-    "distribution": "推荐收益",
-    "_distribution.comment": "显示推荐收益的页面标题，表示用户可以通过邀请他人使用服务来赚钱",
-    "distributionHistory": "推荐历史",
-    "_distributionHistory.comment": "显示推荐历史的页面标题",
-    "invitee": "邀请者",
-    "_invitee.comment": "显示邀请者的页面标题",
-    "allUsages": "使用历史",
-    "_allUsages.comment": "显示API服务所有使用历史的页面标题",
-    "allCredentials": "凭证",
-    "_allCredentials.comment": "显示所有凭证的页面标题，凭证用于访问API"
+  "button.new": {
+    "message": "新建",
+    "description": "按钮文本，用于创建新项目"
+  },
+  "button.delete": {
+    "message": "删除",
+    "description": "按钮文本，用于删除某些内容"
+  },
+  "button.confirm": {
+    "message": "确认",
+    "description": "按钮文本，用于确认某些内容"
+  },
+  "button.cancel": {
+    "message": "取消",
+    "description": "按钮文本，用于取消某些操作"
+  },
+  "button.alert": {
+    "message": "警告",
+    "description": "按钮文本，用于警告某些内容"
+  },
+  "button.info": {
+    "message": "信息",
+    "description": "按钮文本，用于显示信息"
+  },
+  "button.publish": {
+    "message": "发布",
+    "description": "按钮文本，用于发布某些内容"
+  },
+  "button.watch": {
+    "message": "观看",
+    "description": "按钮文本，用于观看某些内容"
+  },
+  "button.verify": {
+    "message": "实名认证",
+    "description": "按钮文本，用于让用户进行实名认证"
+  },
+  "button.profile": {
+    "message": "个人资料",
+    "description": "按钮文本，用于显示个人资料"
+  },
+  "button.console": {
+    "message": "控制台",
+    "description": "按钮文本，用于显示控制台页面以控制网页中的某些内容"
+  },
+  "button.learn": {
+    "message": "学习",
+    "description": "按钮文本，用于让用户学习某些内容"
+  },
+  "button.buy": {
+    "message": "购买",
+    "description": "按钮文本，用于让用户购买某些内容"
+  },
+  "button.try": {
+    "message": "尝试",
+    "description": "按钮文本，用于让用户尝试某些内容"
+  },
+  "button.startForFree": {
+    "message": "免费开始",
+    "description": "按钮文本，用于让用户免费开始使用"
+  },
+  "button.apply": {
+    "message": "申请",
+    "description": "按钮文本，用于让用户申请API服务"
+  },
+  "button.refresh": {
+    "message": "刷新",
+    "description": "按钮文本，用于刷新页面"
+  },
+  "button.pay": {
+    "message": "支付",
+    "description": "按钮文本，用于让用户支付服务费用"
+  },
+  "button.repay": {
+    "message": "继续支付",
+    "description": "按钮文本，用于让用户继续支付服务费用"
+  },
+  "button.applied": {
+    "message": "已申请",
+    "description": "按钮文本，用于显示用户已经申请了服务"
+  },
+  "button.acquire": {
+    "message": "获取",
+    "description": "按钮文本，用于让用户获取API服务的令牌或密钥"
+  },
+  "button.fillExample": {
+    "message": "填写示例",
+    "description": "按钮文本，用于让用户填写示例数据"
+  },
+  "button.buyMore": {
+    "message": "购买更多",
+    "description": "按钮文本，用于让用户购买更多内容"
+  },
+  "button.update": {
+    "message": "更新",
+    "description": "按钮文本，用于更新某些内容"
+  },
+  "button.view": {
+    "message": "查看",
+    "description": "按钮文本，用于查看某些内容"
+  },
+  "button.copy": {
+    "message": "复制",
+    "description": "按钮文本，用于复制某些内容"
+  },
+  "button.create": {
+    "message": "创建",
+    "description": "按钮文本，用于创建某些内容"
+  },
+  "button.referralEarnings": {
+    "message": "推荐收益",
+    "description": "按钮文本，用于显示推荐收益，表示用户可以通过邀请他人使用服务来赚钱"
+  },
+  "button.finish": {
+    "message": "完成",
+    "description": "按钮文本，用于完成某些内容"
+  },
+  "entity.website": {
+    "message": "Ace Data Cloud",
+    "description": "网站名称，无需翻译，保持为'Ace Data Cloud'"
+  },
+  "entity.copyright": {
+    "message": "版权",
+    "description": "用于显示版权信息的文本"
+  },
+  "entity.platform": {
+    "message": "平台",
+    "description": "指示这是API服务的平台的文本"
+  },
+  "entity.title": {
+    "message": "标题",
+    "description": "实体的标题"
+  },
+  "entity.icon": {
+    "message": "图标",
+    "description": "实体的图标"
+  },
+  "entity.status": {
+    "message": "状态",
+    "description": "实体的状态"
+  },
+  "entity.operation": {
+    "message": "操作",
+    "description": "实体的操作"
+  },
+  "entity.description": {
+    "message": "描述",
+    "description": "实体的描述"
+  },
+  "entity.createdAt": {
+    "message": "创建时间",
+    "description": "实体创建的时间"
+  },
+  "entity.updatedAt": {
+    "message": "更新时间",
+    "description": "实体更新的时间"
+  },
+  "entity.order": {
+    "message": "订单",
+    "description": "实体的订单，订单包含金额、服务信息，用户需要为其付款"
+  },
+  "message.usedAmount": {
+    "message": "已使用金额",
+    "description": "用于显示服务已使用的金额"
+  },
+  "message.remainingAmount": {
+    "message": "剩余金额",
+    "description": "用于显示服务剩余的金额"
+  },
+  "message.copied": {
+    "message": "已成功复制",
+    "description": "用于显示内容已成功复制的消息"
+  },
+  "message.confirmDelete": {
+    "message": "确定要删除吗？",
+    "description": "用于确认用户是否要删除某些内容的消息"
+  },
+  "message.alert": {
+    "message": "警告",
+    "description": "用于警告用户的消息"
+  },
+  "message.info": {
+    "message": "友情提醒",
+    "description": "用于显示信息的消息"
+  },
+  "message.free": {
+    "message": "免费",
+    "description": "用于显示服务免费的消息，表示用户无需付费"
+  },
+  "message.startPrice": {
+    "message": "起价",
+    "description": "用于显示服务的最低价格的消息"
+  },
+  "message.joinDiscord": {
+    "message": "加入Discord",
+    "description": "用于让用户加入Discord频道的消息"
+  },
+  "message.noData": {
+    "message": "无数据",
+    "description": "用于显示表格或列表中没有数据的消息"
+  },
+  "nav.home": {
+    "message": "首页",
+    "description": "网站导航栏中的文本，用于显示首页"
+  },
+  "nav.content": {
+    "message": "内容",
+    "description": "网站导航栏中的文本，用于显示内容页面"
+  },
+  "nav.category": {
+    "message": "分类",
+    "description": "网站导航栏中的文本，用于显示分类页面"
+  },
+  "nav.service": {
+    "message": "服务",
+    "description": "网站导航栏中的文本，用于显示服务页面"
+  },
+  "nav.document": {
+    "message": "文档",
+    "description": "网站导航栏中的文本，用于显示文档页面"
+  },
+  "nav.console": {
+    "message": "控制台",
+    "description": "网站导航栏中的文本，用于显示控制台页面"
+  },
+  "nav.chat": {
+    "message": "聊天",
+    "description": "网站导航栏中的文本，用于显示聊天页面"
+  },
+  "nav.midjourney": {
+    "message": "中途之旅",
+    "description": "网站导航栏中的文本，用于显示中途之旅页面，请不要翻译'Midjourney'，保持为'Midjourney'"
+  },
+  "nav.chatdoc": {
+    "message": "聊天文档",
+    "description": "网站导航栏中的文本，用于显示聊天文档页面"
+  },
+  "nav.distribution": {
+    "message": "推荐收益",
+    "description": "网站导航栏中的文本，用于显示推荐收益页面"
+  },
+  "nav.logOut": {
+    "message": "退出登录",
+    "description": "网站导航栏中的文本，用于退出登录"
+  },
+  "nav.locale": {
+    "message": "语言",
+    "description": "网站导航栏中的文本，用于切换语言"
+  },
+  "title.alert": {
+    "message": "警报",
+    "description": "警报消息的标题"
+  },
+  "title.placeholderOfSelect": {
+    "message": "请选择",
+    "description": "选择输入框的占位符"
+  },
+  "title.placeholderOfInput": {
+    "message": "请填写",
+    "description": "输入框的占位符"
+  },
+  "title.allApplications": {
+    "message": "所有申请",
+    "description": "用于显示所有申请的页面标题"
+  },
+  "title.allOrders": {
+    "message": "所有订单",
+    "description": "用于显示所有订单的页面标题"
+  },
+  "title.orderInfo": {
+    "message": "订单信息",
+    "description": "用于显示订单信息的页面标题"
+  },
+  "title.buyMore": {
+    "message": "购买更多",
+    "description": "用于让用户购买更多的页面标题"
+  },
+  "title.distribution": {
+    "message": "推荐收益",
+    "description": "用于显示推荐收益的页面标题，表示用户可以通过邀请他人使用服务来赚钱"
+  },
+  "title.distributionHistory": {
+    "message": "推荐历史",
+    "description": "用于显示推荐历史的页面标题"
+  },
+  "title.invitee": {
+    "message": "邀请者",
+    "description": "用于显示邀请者的页面标题"
+  },
+  "title.allUsages": {
+    "message": "使用历史",
+    "description": "用于显示API服务所有使用历史的页面标题"
+  },
+  "title.allCredentials": {
+    "message": "凭证",
+    "description": "用于显示所有凭证的页面标题，凭证用于访问API"
   }
 }

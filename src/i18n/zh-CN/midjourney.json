@@ -1,228 +1,1874 @@
 {
-  "button": {
-    "buyMore": "购买更多",
-    "_buyMore.comment": "按钮文本，允许用户购买更多积分",
-    "uploadReferences": "上传参考",
-    "_uploadReferences.comment": "按钮文本，允许用户上传参考",
-    "success": "成功",
-    "_success.comment": "按钮文本，表示操作成功",
-    "generating": "生成中",
-    "_generating.comment": "按钮文本，表示操作正在进行中",
-    "failed": "失败",
-    "_failed.comment": "按钮文本，表示操作失败",
-    "download": "下载",
-    "_download.comment": "按钮文本，允许用户下载结果",
-    "fast": "快速",
-    "_fast.comment": "按钮文本，允许用户设置为'快速模式'以快速生成图像，必须翻译为'快速模式'",
-    "relax": "慢速",
-    "_relax.comment": "按钮文本，允许用户设置为'放松模式'以慢速生成图像，必须翻译为'慢速模式'",
-    "turbo": "极速",
-    "_turbo.comment": "按钮文本，允许用户设置为'极速模式'以极速生成图像，必须翻译为'极速模式'",
-    "more": "更多",
-    "_more.comment": "按钮文本，允许用户查看更多选项",
-    "generate": "生成",
-    "_generate.comment": "按钮文本，允许用户生成图像",
-    "history": "历史",
-    "_history.comment": "按钮文本，允许用户查看生成的图像历史",
-    "generateNew": "生成新图像",
-    "_generateNew.comment": "按钮文本，允许用户绘制新图片"
+  "style.cute": {
+    "message": "可爱",
+    "description": "按钮文本，代表'可爱'风格"
   },
-  "field": {
-    "taskId": "任务ID",
-    "_taskId.comment": "任务ID",
-    "finalPrompt": "最终提示",
-    "_finalPrompt.comment": "用于生成图像的最终绘画提示",
-    "elements": "风格",
-    "_elements.comment": "用于生成图像的绘画风格",
-    "failureReason": "失败原因",
-    "_failureReason.comment": "失败原因",
-    "traceId": "追踪ID",
-    "_traceId.comment": "用于追踪生成图像请求的追踪ID，不要翻译，保持为'追踪ID'"
+  "style.expressive": {
+    "message": "富有表现力",
+    "description": "按钮文本，代表'富有表现力'风格"
   },
-  "description": {
-    "aspect": "--aspect，改变生成图像的宽高比，默认值取决于模型和模式",
-    "_aspect.comment": "aspect参数的描述",
-    "chaos": "--chaos，调整生成图像的变化程度，数字越高，生成的图像越独特和意想不到，范围为0-100，默认为1",
-    "_chaos.comment": "chaos参数的描述",
-    "fast": "忽略当前设置，在'快速模式'下运行单个生成任务，无默认值",
-    "_fast.comment": "fast参数的描述",
-    "iw": "--iw，设置图像提示相对于文本提示在生成过程中的重要性，范围为0-2，默认为1",
-    "_iw.comment": "iw参数的描述",
-    "no": "--no，指示生成系统尝试排除某些元素，例如`--no plants`将尝试生成不带植物的图像，无默认值",
-    "_no.comment": "no参数的描述，翻译为'排除'",
-    "quality": "--quality，设置生成图像的质量和渲染时间，范围为.25、.5或1，默认为1",
-    "_quality.comment": "quality参数的描述",
-    "random": "向提示添加随机基本风格代码，可以使用`--style random-16`、`--style random-64`或`--style random-128`来获得不同长度的随机风格效果，无默认值",
-    "_random.comment": "random参数的描述",
-    "relax": "覆盖当前设置，在'慢速模式'下运行单个任务，无默认值",
-    "_relax.comment": "relax参数的描述",
-    "repeat": "--repeat，从一个提示创建多个任务，范围为1-40，默认为1",
-    "_repeat.comment": "repeat参数的描述",
-    "seed": "--seed，生成图像的起始视觉噪音，范围为0-4294967295，默认为随机生成",
-    "_seed.comment": "seed参数的描述",
-    "stop": "--stop，在生成过程的任何阶段停止任务，范围为10-100，默认为100（即完全生成）",
-    "_stop.comment": "stop参数的描述",
-    "style": "--style，在Midjourney或Niji模型的不同版本或风格之间切换，例如raw、cute、expressive、original、scenic，默认值取决于模型和模式",
-    "_style.comment": "style参数的描述",
-    "stylize": "--stylize，调整生成任务中应用的Midjourney默认审美风格的强度，范围为0-1000，默认为100",
-    "_stylize.comment": "stylize参数的描述",
-    "tile": "--tile，生成可用于创建无缝图案的图像，无默认值",
-    "_tile.comment": "tile参数的描述",
-    "turbo": "覆盖当前设置，在'极速模式'下运行单个任务，无默认值",
-    "_turbo.comment": "turbo参数的描述",
-    "weird": "--weird，探索具有实验性质的不寻常审美风格，范围为0-3000，默认为0",
-    "_weird.comment": "weird参数的描述",
-    "translation": "启用生成过程中的自动翻译，非中文内容将自动翻译为Midjourney的英文输入",
-    "_translation.comment": "translation参数的描述",
-    "imageWeight": "--iw，调整图像提示相对于文本提示的权重，范围为0-2，默认为1",
-    "_imageWeight.comment": "imageWeight参数的描述",
-    "niji": "--niji，启用后，生成的图像将使用Niji模型，生成动漫风格的图像",
-    "_niji.comment": "niji参数的描述",
-    "uploadReferences": "上传图像作为生成的参考，支持最多5张图像。如果上传超过1张图像，它们将被自动合并",
-    "_uploadReferences.comment": "uploadReferences参数的描述",
-    "raw": "--raw，启用后，生成的图像将使用Midjourney模型，生成原始风格的图像",
-    "_raw.comment": "raw参数的描述",
-    "prompt": "输入命令，如果添加了额外参数，它们将覆盖默认预设参数，例如添加`--stylize 200`将强制最终命令使用`--stylize 200`",
-    "_prompt.comment": "prompt字段的描述"
+  "style.original": {
+    "message": "原创",
+    "description": "按钮文本，代表'原创'风格"
   },
-  "action": {
-    "generate": "点击此按钮开始生成图像",
-    "_generate.comment": "generate按钮的描述",
-    "upscale1": "放大第一张图像",
-    "_upscale1.comment": "upscale1按钮的描述",
-    "upscale2": "放大第二张图像",
-    "_upscale2.comment": "upscale2按钮的描述",
-    "upscale3": "放大第三张图像",
-    "_upscale3.comment": "upscale3按钮的描述",
-    "upscale4": "放大第四张图像",
-    "_upscale4.comment": "upscale4按钮的描述",
-    "variation1": "调整第一张图像的变化",
-    "_variation1.comment": "variation1按钮的描述",
-    "variation2": "调整第二张图像的变化",
-    "_variation2.comment": "variation2按钮的描述",
-    "variation3": "调整第三张图像的变化",
-    "_variation3.comment": "variation3按钮的描述",
-    "variation4": "调整第四张图像的变化",
-    "_variation4.comment": "variation4按钮的描述",
-    "reroll": "重新生成",
-    "_reroll.comment": "reroll按钮的描述",
-    "high_variation": "高变化",
-    "_high_variation.comment": "high_variation按钮的描述",
-    "low_variation": "低变化",
-    "_low_variation.comment": "low_variation按钮的描述",
-    "zoom_out_2x": "2倍缩小",
-    "_zoom_out_2x.comment": "zoom_out_2x按钮的描述",
-    "zoom_out_1_5x": "1.5倍缩小",
-    "_zoom_out_1_5x.comment": "zoom_out_1_5x按钮的描述",
-    "square": "正方形",
-    "_square.comment": "square按钮的描述",
-    "pan_left": "向左平移",
-    "_pan_left.comment": "pan_left按钮的描述",
-    "pan_up": "向上平移",
-    "_pan_up.comment": "pan_up按钮的描述",
-    "pan_down": "向下平移",
-    "_pan_down.comment": "pan_down按钮的描述",
-    "pan_right": "向右平移",
-    "_pan_right.comment": "pan_right按钮的描述",
-    "zoom_in_2x": "2倍放大",
-    "_zoom_in_2x.comment": "zoom_in_2x按钮的描述",
-    "zoom_in_1_5x": "1.5倍放大",
-    "_zoom_in_1_5x.comment": "zoom_in_1_5x按钮的描述",
-    "upscale_2x": "2倍放大",
-    "_upscale_2x.comment": "upscale_2x按钮的描述",
-    "upscale_4x": "4倍放大",
-    "_upscale_4x.comment": "upscale_4x按钮的描述",
-    "redo_upscale_2x": "重新放大2倍",
-    "_redo_upscale_2x.comment": "redo_upscale_2x按钮的描述",
-    "redo_upscale_4x": "重新放大4倍",
-    "_redo_upscale_4x.comment": "redo_upscale_4x按钮的描述"
+  "style.scenic": {
+    "message": "风景",
+    "description": "按钮文本，代表'风景'风格"
   },
-  "message": {
-    "promptPlaceholder": "请输入一句话描述您想生成的图像，例如：一只可爱的猫。额外参数将覆盖默认预设参数",
-    "_promptPlaceholder.comment": "提示字段中的占位文本",
-    "uploadReferencesExceed": "最多可以上传5张图像",
-    "_uploadReferencesExceed.comment": "上传的图像数量超过限制时的错误消息",
-    "uploadReferencesSuccess": "成功上传图像",
-    "_uploadReferencesSuccess.comment": "成功上传图像时的成功消息",
-    "uploadReferencesError": "上传图像失败，请稍后重试",
-    "_uploadReferencesError.comment": "图像上传失败时的错误消息",
-    "startTaskSuccess": "成功开始绘画任务",
-    "_startTaskSuccess.comment": "绘画任务成功开始时的成功消息",
-    "startTaskFailed": "无法开始绘画任务",
-    "_startTaskFailed.comment": "绘画任务无法开始时的错误消息",
-    "generating": "生成中...",
-    "_generating.comment": "图像正在生成时的消息",
-    "noOperations": "没有可用操作",
-    "_noOperations.comment": "没有可用操作时的消息",
-    "noTasks": "没有历史任务，请先开始新任务",
-    "_noTasks.comment": "没有历史任务时的消息"
+  "style.raw": {
+    "message": "原始",
+    "description": "按钮文本，代表'原始'风格"
   },
-  "model": {
-    "general": "通用",
-    "_general.comment": "用于通用图像生成的模型名称",
-    "niji": "Niji",
-    "_niji.comment": "用于生成动漫风格图像的模型名称，不要翻译，保持为'Niji'"
+  "styleCategory.special": {
+    "message": "特殊",
+    "description": "用于描述和生成图像的类别词，生成的图像应包括此标签的类别"
   },
-  "name": {
-    "model": "模型",
-    "_model.comment": "模型名称，模型是机器学习中的一个术语，用于生成图像",
-    "aspect": "宽高比",
-    "_aspect.comment": "宽高比参数的名称",
-    "ratio": "比例",
-    "_ratio.comment": "比例参数的名称",
-    "chaos": "混乱度",
-    "_chaos.comment": "混乱度参数的名称，翻译为'混乱程度'",
-    "fast": "快速",
-    "_fast.comment": "快速模式的名称，用于快速生成图像，翻译为'快速模式'",
-    "nijiStyle": "Niji",
-    "_nijiStyle.comment": "nijiStyle参数的名称，不要翻译，保持为'Niji'",
-    "version": "版本",
-    "_version.comment": "版本参数的名称",
-    "imageWeight": "图像权重",
-    "_imageWeight.comment": "图像权重参数的名称",
-    "no": "排除",
-    "_no.comment": "no参数的名称，用于排除特定元素，翻译为'排除'",
-    "quality": "质量",
-    "_quality.comment": "质量参数的名称，用于设置生成图像的质量",
-    "random": "随机",
-    "_random.comment": "随机参数的名称，用于添加随机风格效果",
-    "relax": "慢速",
-    "_relax.comment": "放松模式的名称，用于在'慢速'模式下生成图像，翻译为'慢速'",
-    "repeat": "重复",
-    "_repeat.comment": "重复参数的名称，用于从一个提示创建多个任务",
-    "seed": "种子",
-    "_seed.comment": "种子参数的名称，用于设置起始视觉噪音",
-    "stop": "停止",
-    "_stop.comment": "停止参数的名称，用于在任何阶段停止任务",
-    "style": "风格",
-    "_style.comment": "风格参数的名称，用于在不同版本或风格的模型之间切换",
-    "stylize": "风格化",
-    "_stylize.comment": "风格化参数的名称，用于调整默认美学风格的强度",
-    "tile": "平铺",
-    "_tile.comment": "平铺参数的名称，用于生成可用于平铺的图像",
-    "turbo": "极速",
-    "_turbo.comment": "极速模式的名称，用于在'极速'模式下生成图像，翻译为'极速模式'",
-    "weird": "怪异度",
-    "_weird.comment": "怪异度参数的名称，用于探索不常见的美学风格，翻译为'怪异度'",
-    "translation": "翻译",
-    "_translation.comment": "翻译参数的名称，用于在生成过程中启用自动翻译",
-    "advanced": "高级",
-    "_advanced.comment": "高级模式的名称，用于启用高级模式",
-    "niji": "Niji",
-    "_niji.comment": "niji参数的名称，用于启用Niji模型，不要翻译，保持为'Niji'",
-    "ignore": "忽略",
-    "_ignore.comment": "忽略参数的名称，用于忽略某些元素",
-    "prompt": "提示",
-    "_prompt.comment": "提示参数的名称，用于输入绘图指令",
-    "raw": "原始",
-    "_raw.comment": "原始参数的名称，用于启用Midjourney模型"
+  "styleCategory.chinese": {
+    "message": "中国风",
+    "description": "用于描述和生成图像的类别词，生成的图像应包括此标签的类别"
   },
-  "placeholder": {
-    "prompt": "输入描述要生成的图像的句子，例如：一只可爱的猫。额外的参数将覆盖默认预设参数",
-    "_prompt.comment": "提示字段中的占位文本",
-    "ignore": "输入要忽略的元素，例如：`--ignore plants`",
-    "_ignore.comment": "忽略字段中的占位文本",
-    "select": "选择",
-    "_select.comment": "选择字段中的占位文本"
+  "styleCategory.emotion": {
+    "message": "情感",
+    "description": "用于描述和生成图像的类别词，生成的图像应包括此标签的类别"
+  },
+  "styleCategory.camera": {
+    "message": "相机",
+    "description": "用于描述和生成图像的类别词，生成的图像应包括此标签的类别"
+  },
+  "styleCategory.styles": {
+    "message": "风格",
+    "description": "用于描述和生成图像的类别词，生成的图像应包括此标签的类别"
+  },
+  "styleCategory.lighting": {
+    "message": "灯光",
+    "description": "用于描述和生成图像的类别词，生成的图像应包括此标签的类别"
+  },
+  "styleCategory.painters": {
+    "message": "画家",
+    "description": "用于描述和生成图像的类别词，生成的图像应包括此标签的类别"
+  },
+  "styleCategory.material": {
+    "message": "材料",
+    "description": "用于描述和生成图像的类别词，生成的图像应包括此标签的类别"
+  },
+  "styleCategory.artists": {
+    "message": "艺术家",
+    "description": "用于描述和生成图像的类别词，生成的图像应包括此标签的类别"
+  },
+  "styleTag.watercolour": {
+    "message": "水彩",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.oilPainting": {
+    "message": "油画",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.oldPhotograph": {
+    "message": "旧照片",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.oneLineDrawing": {
+    "message": "单线绘画",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.sketchDrawing": {
+    "message": "素描",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.gouache": {
+    "message": "水粉画",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.filmStyle": {
+    "message": "电影风格",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.photorealistic": {
+    "message": "照片写实",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.logo": {
+    "message": "商标",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.cartoon": {
+    "message": "卡通",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.marbleStatue": {
+    "message": "大理石雕像",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.1800S": {
+    "message": "十八世纪",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.1980S": {
+    "message": "一九八零年代",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.isometricAnime": {
+    "message": "等距动漫",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.analyticDrawing": {
+    "message": "分析绘画",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.coloringBook": {
+    "message": "填色书",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.infographicDrawing": {
+    "message": "信息图绘画",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.doubleExposure": {
+    "message": "双重曝光",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.diagrammaticDrawing": {
+    "message": "图解绘画",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.2DIllustration": {
+    "message": "2D插画",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.diagrammaticPortrait": {
+    "message": "图解肖像",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.pixelArt": {
+    "message": "像素艺术",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.darkFantasy": {
+    "message": "黑暗幻想",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.ukiyoEArt": {
+    "message": "浮世绘艺术",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.paperQuilling": {
+    "message": "纸艺术",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.paperCutCraft": {
+    "message": "剪纸工艺",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.iridescent": {
+    "message": "虹彩",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.patchworkCollage": {
+    "message": "拼贴画",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.opArt": {
+    "message": "视错觉艺术",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.japaneseInk": {
+    "message": "日本水墨画",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.pastelDrawing": {
+    "message": "粉彩画",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.drippingArt": {
+    "message": "滴漆艺术",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.tattooArt": {
+    "message": "纹身艺术",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.16Bit": {
+    "message": "16位",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.8Bit": {
+    "message": "8位",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.amber": {
+    "message": "琥珀色",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.anatomicalDrawing": {
+    "message": "解剖图",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.ancient": {
+    "message": "古代风",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.anime": {
+    "message": "动漫风",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.arabic": {
+    "message": "阿拉伯风",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.blocky": {
+    "message": "方块风",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.blueprint": {
+    "message": "蓝图风",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.comicbook": {
+    "message": "漫画书风",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.caribbean": {
+    "message": "加勒比风",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.celestial": {
+    "message": "天体风",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.cellulose": {
+    "message": "纤维素风",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.charcoalStyle": {
+    "message": "木炭风格",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.chromatic": {
+    "message": "色彩丰富的",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.coral": {
+    "message": "珊瑚风",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.conceptArt": {
+    "message": "概念艺术",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.fibonacci": {
+    "message": "斐波那契风",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.cyberpunk": {
+    "message": "赛博朋克风",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.diabolic": {
+    "message": "邪恶风",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.diffractionGrading": {
+    "message": "衍射光栅风",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.lightspeed": {
+    "message": "光速风",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.liquid": {
+    "message": "液体风",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.dots": {
+    "message": "点阵风",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.dune": {
+    "message": "沙丘风",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.drippingPaint": {
+    "message": "滴漆",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.electronicCircuitry": {
+    "message": "电子电路",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.electrical": {
+    "message": "电气",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.futuristic": {
+    "message": "未来主义",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.etching": {
+    "message": "蚀刻",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.extraterrestrial": {
+    "message": "外星",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.glitchart": {
+    "message": "故障艺术",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.floral": {
+    "message": "花卉",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.fractal": {
+    "message": "分形",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.preHistoric": {
+    "message": "史前",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.prokaryotic": {
+    "message": "原核生物",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.horror": {
+    "message": "恐怖",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.iceAge": {
+    "message": "冰河时代",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.jurassic": {
+    "message": "侏罗纪",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.knitted": {
+    "message": "编织",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.polka": {
+    "message": "波尔卡",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.latex": {
+    "message": "乳胶",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.pastel": {
+    "message": "粉彩",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.mandala": {
+    "message": "曼陀罗",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.molecular": {
+    "message": "分子",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.merkaba": {
+    "message": "梅卡巴",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.mitochondria": {
+    "message": "线粒体",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.graffiti": {
+    "message": "涂鸦",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.graphicNovel": {
+    "message": "图像小说",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.multidimensional": {
+    "message": "多维",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.nasa": {
+    "message": "NASA",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.nebula": {
+    "message": "星云",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.neon": {
+    "message": "霓虹",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.nuclear": {
+    "message": "核能",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.orbital": {
+    "message": "轨道",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.rayTracing": {
+    "message": "光线追踪",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.realistic": {
+    "message": "逼真",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.renaissance": {
+    "message": "文艺复兴",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.retro": {
+    "message": "复古",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.risograph": {
+    "message": "孔版印刷",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.origami": {
+    "message": "折纸",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.ornamental": {
+    "message": "装饰性",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.space": {
+    "message": "太空",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.splatterPaint": {
+    "message": "溅墨",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.sprayPaint": {
+    "message": "喷漆",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.squiggles": {
+    "message": "涂鸦线条",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.stitching": {
+    "message": "缝合",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.veins": {
+    "message": "静脉",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.streetArt": {
+    "message": "街头艺术",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.surreal": {
+    "message": "超现实主义",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.symmetric": {
+    "message": "对称",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.synthWave": {
+    "message": "合成波",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.technological": {
+    "message": "技术",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.tron": {
+    "message": "特梦",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.tropical": {
+    "message": "热带风情",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.ultraModern": {
+    "message": "超现代",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.wormhole": {
+    "message": "虫洞",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.wrinkled": {
+    "message": "皱纹",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.volcanic": {
+    "message": "火山",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.wetPaint": {
+    "message": "湿油漆",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.wildWest": {
+    "message": "西部荒野",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.wind": {
+    "message": "风",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.miniatureFaking": {
+    "message": "微缩仿真",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.accentLighting": {
+    "message": "重点照明",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.backlight": {
+    "message": "背光",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.blacklight": {
+    "message": "紫外光",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.goldenHourLight": {
+    "message": "黄金时光灯光",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.candlelight": {
+    "message": "烛光",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.concertLighting": {
+    "message": "音乐会灯光",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.crepuscularRays": {
+    "message": "黄昏光线",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.directSunlight": {
+    "message": "直射阳光",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.dust": {
+    "message": "灰尘",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.studioLighting": {
+    "message": "工作室灯光",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.rimLight": {
+    "message": "边缘光",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.volumetricLighting": {
+    "message": "体积光",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.fluorescent": {
+    "message": "荧光",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.glowing": {
+    "message": "发光",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.glowStick": {
+    "message": "荧光棒",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.glowRadioactive": {
+    "message": "放射性发光",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.lavaGlow": {
+    "message": "熔岩发光",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.moonlight": {
+    "message": "月光",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.naturalLighting": {
+    "message": "自然光",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.neonLamp": {
+    "message": "霓虹灯",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.nightclubLighting": {
+    "message": "夜总会灯光",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.nuclearWasteGlo": {
+    "message": "核废料发光",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.quantumDot": {
+    "message": "量子点",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.spotlight": {
+    "message": "聚光灯",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.edgeLight": {
+    "message": "边缘光",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.coldLight": {
+    "message": "冷光",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.keyLighting": {
+    "message": "关键灯光",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.ambientLight": {
+    "message": "环境光",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.highKeyLighting": {
+    "message": "高关键灯光",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.lowKeyLighting": {
+    "message": "低关键灯光",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.motivatedLighting": {
+    "message": "动机灯光",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.3PointLighting": {
+    "message": "三点照明",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.strobeLight": {
+    "message": "闪光灯",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.sunLight": {
+    "message": "阳光",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.ultraviolet": {
+    "message": "紫外线",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.beautifulLighting": {
+    "message": "美丽的灯光",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.moodyLighting": {
+    "message": "情绪化的灯光",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.softLighting": {
+    "message": "柔和的灯光",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.michelangelo": {
+    "message": "米开朗基罗",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.monet": {
+    "message": "莫奈",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.paulCezanne": {
+    "message": "保罗·塞尚",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.markRothko": {
+    "message": "马克·罗斯科",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.paulKlee": {
+    "message": "保罗·克利",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.picasso": {
+    "message": "毕加索",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.pietMondrian": {
+    "message": "彼得·蒙德里安",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.pierreAugusteRer": {
+    "message": "皮埃尔·奥古斯特·雷尔",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.rembrandt": {
+    "message": "伦勃朗",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.reneMagritte": {
+    "message": "勒内·马格利特",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.royLichtenstein": {
+    "message": "罗伊·利希滕斯坦",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.salvadorDali": {
+    "message": "萨尔瓦多·达利",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.sandroBotticelli": {
+    "message": "桑德罗·波提切利",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.takashiMurakami": {
+    "message": "村上隆",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.vanGogh": {
+    "message": "梵高",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.wassilyKandinsky": {
+    "message": "瓦西里·康定斯基",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.matCollishaw": {
+    "message": "马特·科利肖",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.yayoiKusama": {
+    "message": "草间弥生",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.igorMorski": {
+    "message": "伊戈尔·莫尔斯基",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.shinkaiMakoto": {
+    "message": "新海诚",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.pixar": {
+    "message": "皮克斯",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.kyotoAnime": {
+    "message": "京都动画",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.jerryPinkney": {
+    "message": "杰瑞·平克尼",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.hayaoMiyazaki": {
+    "message": "宫崎骏",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.beatrixPotter": {
+    "message": "贝娅特丽克丝·波特",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.jonKlassen": {
+    "message": "乔恩·克拉森",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.kaySage": {
+    "message": "凯·塞奇",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.jeffreyCatherineJones": {
+    "message": "杰弗里·凯瑟琳·琼斯",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.yaacovAgam": {
+    "message": "雅科夫·阿甘",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.davidHockney": {
+    "message": "大卫·霍克尼",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.victorMoscoso": {
+    "message": "维克多·莫斯科索",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.raphaelite": {
+    "message": "拉斐尔派",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.stefanKoidl": {
+    "message": "斯特凡·科伊德尔",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.suiIshida": {
+    "message": "石田水",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.swoon": {
+    "message": "陶醉",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.tashaTudor": {
+    "message": "塔莎·图多",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.tintoretto": {
+    "message": "丁托列托",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.theodoreRobinsor": {
+    "message": "西奥多·罗宾索尔",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.titian": {
+    "message": "提香",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.wlop": {
+    "message": "WLOP",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.yanjunCheng": {
+    "message": "严君成",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.yojiShinkawa": {
+    "message": "新川洋司",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.zhelongXu": {
+    "message": "徐哲龙",
+    "description": "用于描述和生成图像的样式词，生成的图像应包含此标签的样式。"
+  },
+  "styleTag.alenaAenami": {
+    "message": "Alena Aenami",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.anntonFadeevi": {
+    "message": "Annton Fadeevi",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.charlieBowater": {
+    "message": "Charlie Bowater",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.coryLoftis": {
+    "message": "Cory Loftis",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.fenghuaZhong": {
+    "message": "Fenghua Zhong",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.gregRutkowski": {
+    "message": "Greg Rutkowski",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.hongSoonsang": {
+    "message": "Hong SoonSang",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.dennisStock": {
+    "message": "Dennis Stock",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.michalLisowski": {
+    "message": "Michal Lisowski",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.paulLehr": {
+    "message": "Paul Lehr",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.rossTran": {
+    "message": "Ross Tran",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.antonPieck": {
+    "message": "Anton Pieck",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.carlBarks": {
+    "message": "Carl Barks",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.alphonseMucha": {
+    "message": "Alphonse Mucha",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.andyWarhol": {
+    "message": "Andy Warhol",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.banksy": {
+    "message": "Banksy",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.franciscoDeGoya": {
+    "message": "Francisco De Goya",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.caravaggio": {
+    "message": "Caravaggio",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.diegoRivera": {
+    "message": "Diego Rivera",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.marcChagall": {
+    "message": "Marc Chagall",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.edgarDegas": {
+    "message": "Edgar Degas",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.eugeneDelacroix": {
+    "message": "Eugene Delacroix",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.francisBacon": {
+    "message": "Francis Bacon",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.fridaKahlo": {
+    "message": "Frida Kahlo",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.garaldBrom": {
+    "message": "Garald Brom",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.gustavKlimt": {
+    "message": "Gustav Klimt",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.henriMatisse": {
+    "message": "Henri Matisse",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.jackKirby": {
+    "message": "Jack Kirby",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.jacksonPollock": {
+    "message": "Jackson Pollock",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.johannesVermeer": {
+    "message": "Johannes Vermeer",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.jeanMichelBasquiat": {
+    "message": "Jean Michel Basquiat",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.marcelDuchamp": {
+    "message": "Marcel Duchamp",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.aluminum": {
+    "message": "铝",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.brick": {
+    "message": "砖",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.bronze": {
+    "message": "青铜",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.carbonFiber": {
+    "message": "碳纤维",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.cardboard": {
+    "message": "纸板",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.ceramic": {
+    "message": "陶瓷",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.cotton": {
+    "message": "棉花",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.fabric": {
+    "message": "织物",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.fiberOptic": {
+    "message": "光纤",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.foil": {
+    "message": "箔纸",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.yarn": {
+    "message": "纱线",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.glass": {
+    "message": "玻璃",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.gold": {
+    "message": "金",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.gummies": {
+    "message": "软糖",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.leather": {
+    "message": "皮革",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.magma": {
+    "message": "岩浆",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.metallic": {
+    "message": "金属质感",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.nickel": {
+    "message": "镍",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.nylon": {
+    "message": "尼龙",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.paper": {
+    "message": "纸张",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.plastic": {
+    "message": "塑料材料",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.quartz": {
+    "message": "石英材料",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.wrap": {
+    "message": "包装材料",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.wooden": {
+    "message": "木质材料",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.slime": {
+    "message": "黏液材料",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.engraving": {
+    "message": "雕刻材料",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.ivory": {
+    "message": "象牙材料",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.basalt": {
+    "message": "玄武岩材料",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.pine": {
+    "message": "松木材料",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.diamond": {
+    "message": "钻石材料",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.amethyst": {
+    "message": "紫水晶材料",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.ruby": {
+    "message": "红宝石材料",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.highPolished": {
+    "message": "高光泽度材料",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.brushed": {
+    "message": "刷砂材料",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.matte": {
+    "message": "哑光材料",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.satin": {
+    "message": "缎面材料",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.sandblasted": {
+    "message": "喷砂材料",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.ebony": {
+    "message": "乌木",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.bokeh": {
+    "message": "浅景深",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.aerialView": {
+    "message": "航拍视角",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.shotByDslr": {
+    "message": "单反拍摄",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.360Panorama": {
+    "message": "360全景",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.panorama": {
+    "message": "全景",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.telephotoLens": {
+    "message": "长焦镜头",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.macroShot": {
+    "message": "微距拍摄",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.microscopy": {
+    "message": "显微镜下",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.magnification": {
+    "message": "放大镜下",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.closeUp": {
+    "message": "特写",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.fullBody": {
+    "message": "全身照",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.portrait": {
+    "message": "肖像照",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.profile": {
+    "message": "侧面照",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.pinholeLens": {
+    "message": "针孔镜头",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.wideView": {
+    "message": "广角视野",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.telescopeLens": {
+    "message": "望远镜头",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.satelliteImagery": {
+    "message": "卫星图像",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.headshot": {
+    "message": "头部特写",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.extremeCloseup": {
+    "message": "极端特写",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.ultrawideShot": {
+    "message": "超广角镜头",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.birdView": {
+    "message": "鸟瞰视角",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.topView": {
+    "message": "俯视视角",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.frontView": {
+    "message": "正面视角",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.sideView": {
+    "message": "侧面视角",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.backView": {
+    "message": "背面视角",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.faceShot": {
+    "message": "面部特写",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.chestShot": {
+    "message": "胸部特写",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.waistShot": {
+    "message": "腰部特写",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.extraLongShot": {
+    "message": "超长镜头",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.lookUp": {
+    "message": "仰视角",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.isometricview": {
+    "message": "等轴测图",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.highAngleView": {
+    "message": "高角度视角",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.lowAngleView": {
+    "message": "低角度视角",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.happy": {
+    "message": "快乐",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.excited": {
+    "message": "兴奋",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.angry": {
+    "message": "愤怒",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.ped": {
+    "message": "厌恶",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.disgusted": {
+    "message": "厌恶",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.supnned": {
+    "message": "惊讶",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.hopeful": {
+    "message": "希望的",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.anxious": {
+    "message": "焦虑的",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.elated": {
+    "message": "欣喜的",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.fearful": {
+    "message": "恐惧的",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.hateful": {
+    "message": "憎恨的",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.apoow": {
+    "message": "阿婆",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.dark": {
+    "message": "黑暗",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.brutal": {
+    "message": "残酷的",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.hanfu": {
+    "message": "汉服",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.cheongsam": {
+    "message": "旗袍",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.chineseCostume": {
+    "message": "中国服饰",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.chineseDress": {
+    "message": "中国服装",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.wuxia": {
+    "message": "武侠",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.chinesePhoenix": {
+    "message": "凤凰图案",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.kungfu": {
+    "message": "功夫",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.kunquOpera": {
+    "message": "昆曲戏曲",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.cloisonne": {
+    "message": "景泰蓝",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.porcelain": {
+    "message": "瓷器",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.embroidered": {
+    "message": "刺绣的",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.jade": {
+    "message": "玉石制品",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.chinesePavilion": {
+    "message": "中国亭台楼阁",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.plumFlower": {
+    "message": "梅花图案",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.forbiddenCity": {
+    "message": "紫禁城",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.peony": {
+    "message": "牡丹花图案",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.unrealEngine": {
+    "message": "虚幻引擎",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.octaneRender": {
+    "message": "Octane渲染器",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.maxonCinema4D": {
+    "message": "Maxon Cinema 4D",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.quixelMegascansRender": {
+    "message": "Quixel Megascans渲染器",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.coronaRender": {
+    "message": "Corona渲染器",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.vRay": {
+    "message": "V-ray渲染器",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.architecturalVisualisation": {
+    "message": "建筑可视化",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.dramaticContrast": {
+    "message": "戏剧性对比",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.goldAndBlackTone": {
+    "message": "金色和黑色色调",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.whiteAndPinkTone": {
+    "message": "白色和粉色色调",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.redAndBlackTone": {
+    "message": "红色和黑色色调",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.neonShades": {
+    "message": "霓虹色调",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.richColor": {
+    "message": "丰富色彩",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.monotone": {
+    "message": "单色调",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.theLowPurityTone": {
+    "message": "低纯度色调",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "styleTag.theHighPurityTone": {
+    "message": "高纯度色调",
+    "description": "用于描述和生成图像的风格词，生成的图像应包含此标签的风格。"
+  },
+  "button.low": {
+    "message": "低",
+    "description": "按钮文本，表示'低'图片质量"
+  },
+  "button.medium": {
+    "message": "中",
+    "description": "按钮文本，表示'中'图片质量"
+  },
+  "button.high": {
+    "message": "高",
+    "description": "按钮文本，表示'高'图片质量"
+  },
+  "button.buyMore": {
+    "message": "购买更多",
+    "description": "按钮文本，允许用户购买更多积分"
+  },
+  "button.uploadReferences": {
+    "message": "上传参考图片",
+    "description": "按钮文本，允许用户上传参考图片"
+  },
+  "button.success": {
+    "message": "成功",
+    "description": "按钮文本，表示操作成功"
+  },
+  "button.generating": {
+    "message": "生成中",
+    "description": "按钮文本，表示操作正在进行中"
+  },
+  "button.failed": {
+    "message": "失败",
+    "description": "按钮文本，表示操作失败"
+  },
+  "button.download": {
+    "message": "下载",
+    "description": "按钮文本，允许用户下载结果"
+  },
+  "button.fast": {
+    "message": "快速",
+    "description": "按钮文本，允许用户设置'快速模式'以快速生成图像，必须翻译为'快速模式'"
+  },
+  "button.relax": {
+    "message": "慢速",
+    "description": "按钮文本，允许用户设置'慢速模式'以放松生成图像，必须翻译为'慢速模式'"
+  },
+  "button.turbo": {
+    "message": "极速",
+    "description": "按钮文本，允许用户设置'极速模式'以极速生成图像，必须翻译为'极速模式'"
+  },
+  "button.more": {
+    "message": "更多",
+    "description": "按钮文本，允许用户查看更多选项"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "按钮文本，允许用户生成图像"
+  },
+  "button.history": {
+    "message": "历史记录",
+    "description": "按钮文本，允许用户查看生成的图像历史记录"
+  },
+  "button.generateNew": {
+    "message": "生成新图",
+    "description": "按钮文本，允许用户绘制新图片"
+  },
+  "field.taskId": {
+    "message": "任务ID",
+    "description": "任务ID"
+  },
+  "field.finalPrompt": {
+    "message": "最终提示",
+    "description": "用于生成图像的最终绘画提示"
+  },
+  "field.elements": {
+    "message": "风格",
+    "description": "用于生成图像的绘画风格"
+  },
+  "field.failureReason": {
+    "message": "失败原因",
+    "description": "失败原因"
+  },
+  "field.traceId": {
+    "message": "追踪ID",
+    "description": "用于跟踪生成图像请求的追踪ID，不要翻译，保持为'追踪ID'"
+  },
+  "description.aspect": {
+    "message": "--aspect，更改生成图像的纵横比，默认值取决于模型和模式",
+    "description": "aspect参数的描述"
+  },
+  "description.chaos": {
+    "message": "--chaos，调整生成图像中的变化程度，数字越高，生成的图像越独特和意想不到，范围为0-100，默认为1",
+    "description": "chaos参数的描述"
+  },
+  "description.fast": {
+    "message": "忽略当前设置，在'快速模式'下运行单个生成任务，无默认值",
+    "description": "fast参数的描述"
+  },
+  "description.iw": {
+    "message": "--iw，设置图像提示相对于文本提示在生成过程中的重要性，范围为0-2，默认为1",
+    "description": "iw参数的描述"
+  },
+  "description.no": {
+    "message": "--no，指示生成系统尝试排除某些元素，例如'--no plants'将尝试生成不带植物的图像，无默认值",
+    "description": "no参数的描述，翻译为'排除'"
+  },
+  "description.quality": {
+    "message": "--quality，设置生成图像的质量和渲染时间，范围为.25、.5或1，默认为1",
+    "description": "quality参数的描述"
+  },
+  "description.random": {
+    "message": "向提示添加随机基本风格代码，可以使用'--style random-16'、'--style random-64'或'--style random-128'来获得不同长度的随机风格效果，无默认值",
+    "description": "random参数的描述"
+  },
+  "description.relax": {
+    "message": "覆盖当前设置，在'慢速模式'下运行单个任务，无默认值",
+    "description": "relax参数的描述"
+  },
+  "description.repeat": {
+    "message": "--repeat，从一个提示创建多个任务，范围为1-40，默认为1",
+    "description": "repeat参数的描述"
+  },
+  "description.seed": {
+    "message": "--seed，生成图像的起始视觉噪音，范围为0-4294967295，默认为随机生成",
+    "description": "seed参数的描述"
+  },
+  "description.stop": {
+    "message": "--stop，在生成过程的任何阶段停止任务，范围为10-100，默认为100（即完全生成）",
+    "description": "stop参数的描述"
+  },
+  "description.style": {
+    "message": "--style，在Midjourney或Niji模型的不同版本或风格之间切换，例如raw、cute、expressive、original、scenic，默认值取决于模型和模式",
+    "description": "style参数的描述"
+  },
+  "description.stylize": {
+    "message": "--stylize，调整应用于生成任务中的Midjourney默认审美风格的强度，范围为0-1000，默认为100",
+    "description": "stylize参数的描述"
+  },
+  "description.tile": {
+    "message": "--tile，生成可用于创建无缝平铺的图像，无默认值",
+    "description": "tile参数的描述"
+  },
+  "description.turbo": {
+    "message": "覆盖当前设置，在'极速模式'下运行单个任务，无默认值",
+    "description": "turbo参数的描述"
+  },
+  "description.weird": {
+    "message": "--weird，探索具有实验性质的不寻常审美风格，范围为0-3000，默认为0",
+    "description": "weird参数的描述"
+  },
+  "description.translation": {
+    "message": "在生成过程中启用自动翻译，非中文内容将自动翻译为Midjourney的英文输入",
+    "description": "translation参数的描述"
+  },
+  "description.imageWeight": {
+    "message": "--iw，调整图像提示相对于文本提示的权重，范围为0-2，默认为1",
+    "description": "imageWeight参数的描述"
+  },
+  "description.niji": {
+    "message": "--niji，启用后，生成的图像将使用Niji模型，生成动漫风格图像",
+    "description": "niji参数的描述"
+  },
+  "description.uploadReferences": {
+    "message": "上传图像作为生成的参考，支持最多5张图片。如果上传超过1张图片，它们将被自动合并",
+    "description": "uploadReferences参数的描述"
+  },
+  "description.raw": {
+    "message": "--raw，启用后，生成的图像将使用Midjourney模型，生成原始风格图像",
+    "description": "raw参数的描述"
+  },
+  "description.prompt": {
+    "message": "输入命令，如果添加了额外参数，它们将覆盖默认预设参数，例如添加'--stylize 200'将强制最终命令使用'--stylize 200'",
+    "description": "prompt字段的描述"
+  },
+  "action.generate": {
+    "message": "单击此按钮开始生成图像",
+    "description": "生成按钮的描述"
+  },
+  "action.upscale1": {
+    "message": "放大第一张图像",
+    "description": "upscale1按钮的描述"
+  },
+  "action.upscale2": {
+    "message": "放大第二张图像",
+    "description": "upscale2按钮的描述"
+  },
+  "action.upscale3": {
+    "message": "放大第三张图像",
+    "description": "upscale3按钮的描述"
+  },
+  "action.upscale4": {
+    "message": "放大第四张图像",
+    "description": "upscale4按钮的描述"
+  },
+  "action.variation1": {
+    "message": "调整第一张图像的变化",
+    "description": "variation1按钮的描述"
+  },
+  "action.variation2": {
+    "message": "调整第二张图像的变化",
+    "description": "variation2按钮的描述"
+  },
+  "action.variation3": {
+    "message": "调整第三张图像的变化",
+    "description": "variation3按钮的描述"
+  },
+  "action.variation4": {
+    "message": "调整第四张图像的变化",
+    "description": "variation4按钮的描述"
+  },
+  "action.reroll": {
+    "message": "重新投掷",
+    "description": "reroll按钮的描述"
+  },
+  "action.high_variation": {
+    "message": "高变化",
+    "description": "high_variation按钮的描述"
+  },
+  "action.low_variation": {
+    "message": "低变化",
+    "description": "low_variation按钮的描述"
+  },
+  "action.zoom_out_2x": {
+    "message": "2倍缩小",
+    "description": "zoom_out_2x按钮的描述"
+  },
+  "action.zoom_out_1_5x": {
+    "message": "1.5倍缩小",
+    "description": "zoom_out_1_5x按钮的描述"
+  },
+  "action.square": {
+    "message": "正方形",
+    "description": "square按钮的描述"
+  },
+  "action.pan_left": {
+    "message": "向左平移",
+    "description": "pan_left按钮的描述"
+  },
+  "action.pan_up": {
+    "message": "向上平移",
+    "description": "pan_up按钮的描述"
+  },
+  "action.pan_down": {
+    "message": "向下平移",
+    "description": "pan_down按钮的描述"
+  },
+  "action.pan_right": {
+    "message": "向右平移",
+    "description": "pan_right按钮的描述"
+  },
+  "action.zoom_in_2x": {
+    "message": "2倍放大",
+    "description": "zoom_in_2x按钮的描述"
+  },
+  "action.zoom_in_1_5x": {
+    "message": "1.5倍放大",
+    "description": "zoom_in_1_5x按钮的描述"
+  },
+  "action.upscale_2x": {
+    "message": "2倍放大",
+    "description": "upscale_2x按钮的描述"
+  },
+  "action.upscale_4x": {
+    "message": "4倍放大",
+    "description": "upscale_4x按钮的描述"
+  },
+  "action.redo_upscale_2x": {
+    "message": "重新放大2倍",
+    "description": "redo_upscale_2x按钮的描述"
+  },
+  "action.redo_upscale_4x": {
+    "message": "重新放大4倍",
+    "description": "redo_upscale_4x按钮的描述"
+  },
+  "message.promptPlaceholder": {
+    "message": "请输入一句话描述你想生成的图片，例如：一只可爱的猫。额外参数将覆盖默认预设参数",
+    "description": "提示字段中的占位文本"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "最多可上传5张图片",
+    "description": "当上传的图片数量超过限制时显示的错误消息"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "成功上传图片",
+    "description": "当成功上传图片时显示的成功消息"
+  },
+  "message.uploadReferencesError": {
+    "message": "上传图片失败，请稍后重试",
+    "description": "当图片上传失败时显示的错误消息"
+  },
+  "message.startTaskSuccess": {
+    "message": "成功开始绘制任务",
+    "description": "当绘制任务成功开始时显示的成功消息"
+  },
+  "message.startTaskFailed": {
+    "message": "启动绘制任务失败",
+    "description": "当绘制任务启动失败时显示的错误消息"
+  },
+  "message.generating": {
+    "message": "生成中...",
+    "description": "图片正在生成时显示的消息"
+  },
+  "message.noOperations": {
+    "message": "无可用操作",
+    "description": "当没有可用操作时显示的消息"
+  },
+  "message.noTasks": {
+    "message": "没有历史任务，请先开始新任务",
+    "description": "当没有历史任务时显示的消息"
+  },
+  "model.general": {
+    "message": "通用",
+    "description": "用于通用图像生成的模型名称"
+  },
+  "model.niji": {
+    "message": "Niji",
+    "description": "用于动漫风格图像生成的模型名称，不要翻译，保持为'Niji'"
+  },
+  "name.model": {
+    "message": "模型",
+    "description": "模型名称，模型是机器学习中用于生成图像的术语"
+  },
+  "name.aspect": {
+    "message": "纵横比",
+    "description": "纵横比参数的名称"
+  },
+  "name.ratio": {
+    "message": "比率",
+    "description": "比率参数的名称"
+  },
+  "name.chaos": {
+    "message": "混乱度",
+    "description": "混乱度参数的名称，翻译为'混乱率'"
+  },
+  "name.fast": {
+    "message": "快速",
+    "description": "快速模式的名称，用于快速生成图像，翻译为'快速模式'"
+  },
+  "name.nijiStyle": {
+    "message": "Niji",
+    "description": "nijiStyle参数的名称，不要翻译，保持为'Niji'"
+  },
+  "name.version": {
+    "message": "版本",
+    "description": "版本参数的名称"
+  },
+  "name.imageWeight": {
+    "message": "图像权重",
+    "description": "图像权重参数的名称"
+  },
+  "name.no": {
+    "message": "排除",
+    "description": "排除参数的名称，用于排除特定元素，翻译为'排除'"
+  },
+  "name.quality": {
+    "message": "质量",
+    "description": "质量参数的名称，用于设置生成图像的质量"
+  },
+  "name.random": {
+    "message": "随机",
+    "description": "随机参数的名称，用于添加随机风格效果"
+  },
+  "name.relax": {
+    "message": "慢速",
+    "description": "放松模式的名称，用于在'慢速'模式下生成图像，翻译为'慢速'"
+  },
+  "name.repeat": {
+    "message": "重复",
+    "description": "重复参数的名称，用于从一个提示中创建多个任务"
+  },
+  "name.seed": {
+    "message": "种子",
+    "description": "种子参数的名称，用于设置起始视觉噪音"
+  },
+  "name.stop": {
+    "message": "停止",
+    "description": "停止参数的名称，用于在任何阶段停止任务"
+  },
+  "name.style": {
+    "message": "风格",
+    "description": "风格参数的名称，用于在不同版本或风格的模型之间切换"
+  },
+  "name.stylize": {
+    "message": "风格化",
+    "description": "风格化参数的名称，用于调整默认美学风格的强度"
+  },
+  "name.tile": {
+    "message": "平铺",
+    "description": "平铺参数的名称，用于生成可用于平铺的图像"
+  },
+  "name.turbo": {
+    "message": "极速",
+    "description": "极速模式的名称，用于在'极速'模式下生成图像，翻译为'极速模式'"
+  },
+  "name.weird": {
+    "message": "怪异度",
+    "description": "怪异度参数的名称，用于探索不常见的美学风格，翻译为'怪异度'"
+  },
+  "name.translation": {
+    "message": "翻译",
+    "description": "翻译参数的名称，用于在生成过程中启用自动翻译"
+  },
+  "name.advanced": {
+    "message": "高级",
+    "description": "高级模式的名称，用于启用高级模式"
+  },
+  "name.niji": {
+    "message": "Niji",
+    "description": "niji参数的名称，用于启用Niji模型，不要翻译，保持为'Niji'"
+  },
+  "name.ignore": {
+    "message": "忽略",
+    "description": "忽略参数的名称，用于忽略某些元素"
+  },
+  "name.prompt": {
+    "message": "提示",
+    "description": "提示参数的名称，用于输入绘图指令"
+  },
+  "name.raw": {
+    "message": "原始",
+    "description": "原始参数的名称，用于启用Midjourney模型"
+  },
+  "placeholder.prompt": {
+    "message": "输入一句话描述你想生成的图片，例如：一只可爱的猫。额外参数将覆盖默认预设参数",
+    "description": "提示字段中的占位文本"
+  },
+  "placeholder.ignore": {
+    "message": "输入要忽略的元素，例如：`--忽略 植物`",
+    "description": "忽略字段中的占位文本"
+  },
+  "placeholder.select": {
+    "message": "选择",
+    "description": "选择字段中的占位文本"
   }
 }

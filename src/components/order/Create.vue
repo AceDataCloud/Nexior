@@ -2,13 +2,13 @@
   <el-form label-width="100px">
     <el-form-item :label="$t('application.field.service')">
       <span v-if="application.type === applicationType.API">
-        {{ application?.api?.title }}
+        {{ application?.service?.title }}
       </span>
     </el-form-item>
     <el-form-item :label="$t('application.field.package')">
       <el-radio-group v-if="application.type === applicationType.API" v-model="form.packageId">
-        <el-radio-button v-for="(pkg, pkgIndex) in application?.api?.packages" :key="pkgIndex" :label="pkg.id">
-          {{ pkg.amount }}{{ $t(`api.unit.${application?.api?.unit}`) }}
+        <el-radio-button v-for="(pkg, pkgIndex) in application?.service?.packages" :key="pkgIndex" :label="pkg.id">
+          {{ pkg.amount }}{{ $t(`api.unit.${application?.service?.unit}`) }}
         </el-radio-button>
         <el-radio-button label="custom">
           {{ $t('application.button.custom') }}
@@ -22,8 +22,8 @@
       <div v-if="application.type === applicationType.API">
         <price
           v-if="form.packageId === 'custom'"
-          :price="application?.api?.price"
-          :unit="$t(`api.unit.${application?.api?.unit}`)"
+          :price="application?.service?.price"
+          :unit="$t(`api.unit.${application?.service?.unit}`)"
         />
         <price v-else :price="package?.price" />
       </div>

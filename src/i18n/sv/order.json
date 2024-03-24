@@ -1,78 +1,134 @@
 {
-  "button": {
-    "pay": "Betala",
-    "_pay.comment": "Texten på knappen som används för att betala beställningen.",
-    "continuePay": "Fortsätt att betala",
-    "_continuePay.comment": "Texten på knappen som används för att fortsätta att betala beställningen.",
-    "checkDetail": "Kontrollera detaljer",
-    "_checkDetail.comment": "Texten på knappen som används för att kontrollera detaljerna i beställningen.",
-    "query": "Förfrågan",
-    "_query.comment": "Texten på knappen som används för att förfråga beställningen.",
-    "finish": "Avsluta manuellt",
-    "_finish.comment": "Texten på knappen som används för att avsluta beställningen manuellt.",
-    "update": "Uppdatera",
-    "_update.comment": "Texten på knappen som används för att uppdatera beställningen."
+  "button.pay": {
+    "message": "Betala",
+    "description": "Texten på knappen som används för att betala beställningen."
   },
-  "field": {
-    "id": "Beställnings-ID",
-    "_id.comment": "Beställningens ID.",
-    "amount": "Belopp",
-    "_amount.comment": "Kreditbeloppet för beställningen.",
-    "price": "Belopp",
-    "_price.comment": "Kreditbeloppet för beställningen.",
-    "description": "Beställningsbeskrivning",
-    "_description.comment": "Beskrivningen av beställningen.",
-    "state": "Status",
-    "_state.comment": "Beställningens status.",
-    "createdAt": "Skapad tid",
-    "_createdAt.comment": "Beställningens skapad tid.",
-    "service": "Tjänstens namn",
-    "_service.comment": "Namnet på tjänsten.",
-    "payWay": "Betalningsmetod",
-    "_payWay.comment": "Beställningens betalningsmetod.",
-    "api": "API",
-    "_api.comment": "API är en typ av online-tjänst.",
-    "proxy": "Proxy",
-    "_proxy.comment": "Proxy är en typ av online-tjänst, vilket innebär HTTP-proxy som används för att överföra data."
+  "button.continuePay": {
+    "message": "Fortsätt att betala",
+    "description": "Texten på knappen som används för att fortsätta att betala beställningen."
   },
-  "message": {
-    "paidSuccessfully": "Betalning lyckades",
-    "_paidSuccessfully.comment": "Meddelandet om lyckad betalning.",
-    "createFailed": "Skapande misslyckades",
-    "_createFailed.comment": "Meddelandet om misslyckad skapande.",
-    "wechatPayHelp": "Öppna WeChat på din telefon, skanna för att slutföra betalningen",
-    "_wechatPayHelp.comment": "Meddelandet om WeChat-betalningshjälp.",
-    "free": "Gratis",
-    "_free.comment": "Meddelandet om gratis beställning.",
-    "buyInExternalUrl": "Slutför betalningen på den externa länken",
-    "_buyInExternalUrl.comment": "Meddelandet om betalning via extern länk.",
-    "updateFailed": "Uppdatering misslyckades",
-    "_updateFailed.comment": "Meddelandet om misslyckad uppdatering.",
-    "updateSuccessfully": "Uppdatering lyckades",
-    "_updateSuccessfully.comment": "Meddelandet om lyckad uppdatering.",
-    "confirmFinish": "Denna åtgärd kommer manuellt att ställa in beställningen till betalningsstatus och slutföra distributionsprocessen, vilket inte kan ångras. Bekräfta att kunden har slutfört betalningen, vill du fortsätta?",
-    "_confirmFinish.comment": "Meddelandet om bekräftelse av avslut."
+  "button.checkDetail": {
+    "message": "Kontrollera detaljer",
+    "description": "Texten på knappen som används för att kontrollera detaljerna i beställningen."
   },
-  "state": {
-    "pending": "Avvaktar betalning",
-    "_pending.comment": "Beställningens status, vilket innebär att denna beställning fortfarande avvaktar användarens betalning.",
-    "paid": "Betald",
-    "_paid.comment": "Beställningens status, vilket innebär att denna beställning har blivit betald.",
-    "expired": "Betalningstid utgången",
-    "_expired.comment": "Beställningens status, vilket innebär att denna beställning har utgått.",
-    "failed": "Betalning misslyckades",
-    "_failed.comment": "Beställningens status, vilket innebär att denna beställning har misslyckats."
+  "button.query": {
+    "message": "Förfrågan",
+    "description": "Texten på knappen som används för att förfråga beställningen."
   },
-  "title": {
-    "info": "Beställningsinformation",
-    "_info.comment": "Titeln som används för att visa som en titel på webbplatsen, betyder beställningsinformation.",
-    "wechatPay": "WeChat Betalning",
-    "_wechatPay.comment": "Titeln som används för att visa som en titel på webbplatsen, betyder WeChat-betalning.",
-    "aliPay": "Alipay",
-    "_aliPay.comment": "Titeln som används för att visa som en titel på webbplatsen, betyder Alipay-betalning, Alipay-betalning är en typ av onlinebetalning.",
-    "stripe": "Stripe",
-    "_stripe.comment": "Titeln som används för att visa som en titel på webbplatsen, betyder Stripe-betalning, Stripe-betalning är en typ av onlinebetalning.",
-    "manageOrder": "Hantera beställning",
-    "_manageOrder.comment": "Titeln som används för att visa som en titel på webbplatsen, betyder hantera beställning."
+  "button.finish": {
+    "message": "Avsluta manuellt",
+    "description": "Texten på knappen som används för att avsluta beställningen manuellt."
+  },
+  "button.update": {
+    "message": "Uppdatera",
+    "description": "Texten på knappen som används för att uppdatera beställningen."
+  },
+  "field.id": {
+    "message": "Beställnings-ID",
+    "description": "Beställningens ID."
+  },
+  "field.amount": {
+    "message": "Belopp",
+    "description": "Kreditbeloppet för beställningen."
+  },
+  "field.price": {
+    "message": "Belopp",
+    "description": "Kreditbeloppet för beställningen."
+  },
+  "field.description": {
+    "message": "Beställningsbeskrivning",
+    "description": "Beskrivningen av beställningen."
+  },
+  "field.state": {
+    "message": "Status",
+    "description": "Beställningens status."
+  },
+  "field.createdAt": {
+    "message": "Skapad tid",
+    "description": "Beställningens skapad tid."
+  },
+  "field.service": {
+    "message": "Tjänstens namn",
+    "description": "Namnet på tjänsten."
+  },
+  "field.payWay": {
+    "message": "Betalningsmetod",
+    "description": "Beställningens betalningsmetod."
+  },
+  "field.api": {
+    "message": "API",
+    "description": "API är en typ av online-tjänst."
+  },
+  "field.proxy": {
+    "message": "Proxy",
+    "description": "Proxy är en typ av online-tjänst, vilket innebär HTTP-proxy som används för att överföra data."
+  },
+  "message.paidSuccessfully": {
+    "message": "Betalning lyckades",
+    "description": "Meddelandet om lyckad betalning."
+  },
+  "message.createFailed": {
+    "message": "Skapande misslyckades",
+    "description": "Meddelandet om misslyckad skapande."
+  },
+  "message.wechatPayHelp": {
+    "message": "Öppna WeChat på din telefon, skanna för att slutföra betalningen",
+    "description": "Meddelandet om WeChat-betalningshjälp."
+  },
+  "message.free": {
+    "message": "Gratis",
+    "description": "Meddelandet om den gratis beställningen."
+  },
+  "message.buyInExternalUrl": {
+    "message": "Slutför betalningen på den externa länken",
+    "description": "Meddelandet om betalning via extern länk."
+  },
+  "message.updateFailed": {
+    "message": "Uppdatering misslyckades",
+    "description": "Meddelandet om misslyckad uppdatering."
+  },
+  "message.updateSuccessfully": {
+    "message": "Uppdatering lyckades",
+    "description": "Meddelandet om lyckad uppdatering."
+  },
+  "message.confirmFinish": {
+    "message": "Denna åtgärd kommer manuellt att ställa in beställningen till betalningsstatus och slutföra distributionsprocessen, vilket inte kan ångras. Bekräfta att kunden har slutfört betalningen, vill du fortsätta?",
+    "description": "Meddelandet om att bekräfta avslut."
+  },
+  "state.pending": {
+    "message": "Avvaktar betalning",
+    "description": "Beställningens status, vilket innebär att denna beställning fortfarande väntar på användarens betalning."
+  },
+  "state.paid": {
+    "message": "Betald",
+    "description": "Beställningens status, vilket innebär att denna beställning har blivit betald."
+  },
+  "state.expired": {
+    "message": "Betalningstid utgången",
+    "description": "Beställningens status, vilket innebär att denna beställning har utgått."
+  },
+  "state.failed": {
+    "message": "Betalning misslyckades",
+    "description": "Beställningens status, vilket innebär att denna beställning har misslyckats."
+  },
+  "title.info": {
+    "message": "Beställningsinformation",
+    "description": "Titeln som används för att visa som en webbplatsens titel, betyder beställningsinformation."
+  },
+  "title.wechatPay": {
+    "message": "WeChat Pay",
+    "description": "Titeln som används för att visa som en webbplatsens titel, betyder WeChat-betalning."
+  },
+  "title.aliPay": {
+    "message": "Alipay",
+    "description": "Titeln som används för att visa som en webbplatsens titel, betyder Alipay-betalning, Alipay-betalning är en typ av onlinebetalning."
+  },
+  "title.stripe": {
+    "message": "Stripe",
+    "description": "Titeln som används för att visa som en webbplatsens titel, betyder Stripe-betalning, Stripe-betalning är en typ av onlinebetalning."
+  },
+  "title.manageOrder": {
+    "message": "Hantera beställning",
+    "description": "Titeln som används för att visa som en webbplatsens titel, betyder hantera beställning."
   }
 }

@@ -1,108 +1,194 @@
 {
-  "button": {
-    "uploadDocuments": "上传文档",
-    "_uploadDocuments.comment": "按钮文本，允许用户上传文档"
+  "button.uploadDocuments": {
+    "message": "上传文档",
+    "description": "按钮文本，允许用户上传文档"
   },
-  "field": {
-    "fileName": "文件名",
-    "_fileName.comment": "上传文档的文件名",
-    "createdAt": "创建时间",
-    "_createdAt.comment": "文档上传时间",
-    "fileExtension": "文件类型",
-    "_fileExtension.comment": "上传文档的文件类型",
-    "fileUrl": "文件链接",
-    "_fileUrl.comment": "上传文档的链接",
-    "fileSize": "文件大小",
-    "_fileSize.comment": "上传文档的大小",
-    "state": "状态",
-    "_state.comment": "文档处理状态",
-    "stateProcessing": "学习中",
-    "_stateProcessing.comment": "文档正在处理中",
-    "stateCompleted": "学习完成",
-    "_stateCompleted.comment": "文档处理成功完成",
-    "stateFailed": "学习失败",
-    "_stateFailed.comment": "文档处理失败",
-    "name": "名称",
-    "_name.comment": "文档名称",
-    "description": "描述",
-    "_description.comment": "文档描述"
+  "field.fileName": {
+    "message": "文件名",
+    "description": "上传文档的文件名"
   },
-  "message": {
-    "introductionForKnowledge": "文档可以添加到知识库中，机器人在回复时可以使用知识库中的知识。",
-    "_introductionForKnowledge.comment": "知识库介绍信息",
-    "introductionForRepository": "知识库是文档的集合，您可以向其中添加文档。机器人在回复时将使用知识库中的文档。",
-    "_introductionForRepository.comment": "知识库介绍信息",
-    "uploadDocumentsExceed": "上传文档数量超过限制",
-    "_uploadDocumentsExceed.comment": "上传文档数量超过限制的错误消息",
-    "uploadDocumentsError": "上传文档失败",
-    "_uploadDocumentsError.comment": "上传文档失败的错误消息",
-    "uploadDocumentsSuccess": "文档上传成功",
-    "_uploadDocumentsSuccess.comment": "文档上传成功的提示消息",
-    "createDocumentSuccess": "文档创建成功",
-    "_createDocumentSuccess.comment": "文档创建成功的提示消息",
-    "startCreateDocument": "开始学习文档...",
-    "_startCreateDocument.comment": "开始学习文档的消息",
-    "createDocumentError": "学习文档失败",
-    "_createDocumentError.comment": "学习文档失败的错误消息",
-    "dragOrClickToUpload": "拖拽或点击上传文档",
-    "_dragOrClickToUpload.comment": "拖拽或点击上传文档的提示消息",
-    "learningDocument": "学习中，请稍候...",
-    "_learningDocument.comment": "学习文档的消息",
-    "startNewChat": "开始新对话",
-    "_startNewChat.comment": "开始新对话的消息",
-    "errorApiError": "回复失败，请稍后重试",
-    "_errorApiError.comment": "回复失败的错误消息",
-    "errorBadRequest": "请求内容格式不正确，请重新提问",
-    "_errorBadRequest.comment": "请求内容格式不正确的错误消息",
-    "errorNoConversation": "对话内容不存在或已过期，请开始新对话",
-    "_errorNoConversation.comment": "对话内容不存在或已过期的错误消息",
-    "errorContentTooLarge": "问题内容过长，请缩短后重试",
-    "_errorContentTooLarge.comment": "问题内容过长的错误消息",
-    "errorTooManyRequests": "您的操作过于频繁，请稍后重试",
-    "_errorTooManyRequests.comment": "操作过于频繁的错误消息",
-    "errorUsedUp": "您的套餐使用量已达上限，请购买更多使用量以继续",
-    "_errorUsedUp.comment": "套餐使用量已达上限的错误消息",
-    "errorUnknown": "发生未知服务器错误，请稍后重试或联系客服",
-    "_errorUnknown.comment": "未知服务器错误的错误消息",
-    "errorTimeout": "回答问题超时，请稍后重试",
-    "_errorTimeout.comment": "回答问题超时的错误消息",
-    "errorNotApplied": "您尚未申请该服务，请申请后继续提问",
-    "_errorNotApplied.comment": "用户尚未申请该服务的错误消息",
-    "confirmDelete": "确认删除",
-    "_confirmDelete.comment": "确认删除的消息",
-    "howToUse": "按 Shift+Enter 进行换行",
-    "_howToUse.comment": "换行操作提示消息",
-    "createRepositorySuccess": "知识库创建成功",
-    "_createRepositorySuccess.comment": "知识库创建成功的提示消息",
-    "createRepositoryFailed": "知识库创建失败",
-    "_createRepositoryFailed.comment": "知识库创建失败的错误消息",
-    "deleteRepositorySuccess": "知识库删除成功",
-    "_deleteRepositorySuccess.comment": "知识库删除成功的提示消息",
-    "deleteDocumentSuccess": "文档删除成功",
-    "_deleteDocumentSuccess.comment": "文档删除成功的提示消息",
-    "currentRepository": "当前知识库",
-    "_currentRepository.comment": "显示当前知识库的消息",
-    "nameRequired": "名称不能为空",
-    "_nameRequired.comment": "名称不能为空的错误消息",
-    "inputRepositoryName": "知识库名称",
-    "_inputRepositoryName.comment": "知识库名称的输入占位符",
-    "inputRepositoryDescription": "简要描述您的知识库",
-    "_inputRepositoryDescription.comment": "知识库描述的输入占位符"
+  "field.createdAt": {
+    "message": "创建时间",
+    "description": "文档上传时间"
   },
-  "nav": {
-    "chat": "对话",
-    "_chat.comment": "对话导航项",
-    "setting": "设置",
-    "_setting.comment": "设置导航项",
-    "manage": "管理",
-    "_manage.comment": "管理导航项"
+  "field.fileExtension": {
+    "message": "文件类型",
+    "description": "上传文档的文件类型"
   },
-  "title": {
-    "manage": "管理知识库",
-    "_manage.comment": "管理知识库的标题",
-    "createRepository": "创建知识库",
-    "_createRepository.comment": "创建知识库的标题",
-    "repositories": "知识库列表",
-    "_repositories.comment": "知识库列表的标题"
+  "field.fileUrl": {
+    "message": "文件链接",
+    "description": "上传文档的链接"
+  },
+  "field.fileSize": {
+    "message": "文件大小",
+    "description": "上传文档的大小"
+  },
+  "field.state": {
+    "message": "状态",
+    "description": "文档处理状态"
+  },
+  "field.stateProcessing": {
+    "message": "学习中",
+    "description": "文档正在处理中"
+  },
+  "field.stateCompleted": {
+    "message": "学习完成",
+    "description": "文档处理成功完成"
+  },
+  "field.stateFailed": {
+    "message": "学习失败",
+    "description": "文档处理失败"
+  },
+  "field.name": {
+    "message": "名称",
+    "description": "文档名称"
+  },
+  "field.description": {
+    "message": "描述",
+    "description": "文档描述"
+  },
+  "message.introductionForKnowledge": {
+    "message": "文档可以添加到知识库中，机器人回复时可以使用知识库中的知识。",
+    "description": "知识库介绍信息"
+  },
+  "message.introductionForRepository": {
+    "message": "知识库是文档的集合，您可以向其中添加文档。机器人回答时将从知识库中的文档中回复。",
+    "description": "知识库介绍信息"
+  },
+  "message.uploadDocumentsExceed": {
+    "message": "上传文档数量超过限制",
+    "description": "上传文档数量超过限制时的错误信息"
+  },
+  "message.uploadDocumentsError": {
+    "message": "上传文档失败",
+    "description": "上传文档失败时的错误信息"
+  },
+  "message.uploadDocumentsSuccess": {
+    "message": "文档上传成功",
+    "description": "文档上传成功时的成功信息"
+  },
+  "message.createDocumentSuccess": {
+    "message": "文档创建成功",
+    "description": "文档创建成功时的成功信息"
+  },
+  "message.startCreateDocument": {
+    "message": "开始学习文档...",
+    "description": "开始学习文档时的信息"
+  },
+  "message.createDocumentError": {
+    "message": "学习文档失败",
+    "description": "学习文档失败时的错误信息"
+  },
+  "message.dragOrClickToUpload": {
+    "message": "拖拽或点击上传文档",
+    "description": "拖拽或点击上传文档的提示信息"
+  },
+  "message.learningDocument": {
+    "message": "学习中，请稍候...",
+    "description": "学习文档时的信息"
+  },
+  "message.startNewChat": {
+    "message": "开始新对话",
+    "description": "开始新对话的信息"
+  },
+  "message.errorApiError": {
+    "message": "响应失败，请稍后重试",
+    "description": "响应失败时的错误信息"
+  },
+  "message.errorBadRequest": {
+    "message": "请求内容格式不正确，请重新提问",
+    "description": "请求内容格式不正确时的错误信息"
+  },
+  "message.errorNoConversation": {
+    "message": "对话内容不存在或已过期，请开始新对话",
+    "description": "对话内容不存在或已过期时的错误信息"
+  },
+  "message.errorContentTooLarge": {
+    "message": "问题内容过长，请缩短后重试",
+    "description": "问题内容过长时的错误信息"
+  },
+  "message.errorTooManyRequests": {
+    "message": "您的操作过于频繁，请稍后重试",
+    "description": "操作过于频繁时的错误信息"
+  },
+  "message.errorUsedUp": {
+    "message": "您的套餐使用量已达上限，请购买更多使用量以继续",
+    "description": "套餐使用量已达上限时的错误信息"
+  },
+  "message.errorUnknown": {
+    "message": "发生未知服务器错误，请稍后重试或联系客服",
+    "description": "发生未知服务器错误时的错误信息"
+  },
+  "message.errorTimeout": {
+    "message": "回答问题超时，请稍后重试",
+    "description": "回答问题超时时的错误信息"
+  },
+  "message.errorNotApplied": {
+    "message": "您尚未申请此服务，请申请后继续提问",
+    "description": "用户尚未申请此服务时的错误信息"
+  },
+  "message.confirmDelete": {
+    "message": "确认删除",
+    "description": "确认删除的信息"
+  },
+  "message.howToUse": {
+    "message": "按 Shift+Enter 进行换行",
+    "description": "换行操作提示信息"
+  },
+  "message.createRepositorySuccess": {
+    "message": "知识库创建成功",
+    "description": "知识库创建成功时的成功信息"
+  },
+  "message.createRepositoryFailed": {
+    "message": "知识库创建失败",
+    "description": "知识库创建失败时的错误信息"
+  },
+  "message.deleteRepositorySuccess": {
+    "message": "知识库删除成功",
+    "description": "知识库删除成功时的成功信息"
+  },
+  "message.deleteDocumentSuccess": {
+    "message": "文档删除成功",
+    "description": "文档删除成功时的成功信息"
+  },
+  "message.currentRepository": {
+    "message": "当前知识库",
+    "description": "显示当前知识库的信息"
+  },
+  "message.nameRequired": {
+    "message": "名称不能为空",
+    "description": "名称为空时的错误信息"
+  },
+  "message.inputRepositoryName": {
+    "message": "知识库名称",
+    "description": "知识库名称的输入提示"
+  },
+  "message.inputRepositoryDescription": {
+    "message": "用一句话描述您的知识库",
+    "description": "知识库描述的输入提示"
+  },
+  "nav.chat": {
+    "message": "对话",
+    "description": "对话的导航项"
+  },
+  "nav.setting": {
+    "message": "设置",
+    "description": "设置的导航项"
+  },
+  "nav.manage": {
+    "message": "管理",
+    "description": "管理的导航项"
+  },
+  "title.manage": {
+    "message": "管理知识库",
+    "description": "管理知识库的标题"
+  },
+  "title.createRepository": {
+    "message": "创建知识库",
+    "description": "创建知识库的标题"
+  },
+  "title.repositories": {
+    "message": "知识库列表",
+    "description": "知识库列表的标题"
   }
 }

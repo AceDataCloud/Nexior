@@ -1,74 +1,130 @@
 {
-  "button": {
-    "detail": "查看詳情",
-    "_detail.comment": "按鈕上的文字，用於查看網站轉介歷史的詳情。",
-    "withdrawal": "提款",
-    "_withdrawal.comment": "按鈕上的文字，用於提取網站的轉介收益。",
-    "query": "查詢",
-    "_query.comment": "按鈕上的文字，用於查詢網站的轉介收益。"
+  "button.detail": {
+    "message": "查看詳情",
+    "description": "按鈕上的文字，用於查看網站的推薦歷史詳情。"
   },
-  "field": {
-    "id": "轉介 ID",
-    "_id.comment": "分配的唯一標識符，分配表示 API 服務網站的轉介。",
-    "percentage": "轉介收益百分比",
-    "_percentage.comment": "轉介收益的百分比，根據訂單金額計算。",
-    "price": "訂單金額",
-    "_price.comment": "訂單金額，用於計算轉介收益。",
-    "reward": "轉介獎勵",
-    "_reward.comment": "根據訂單金額和轉介收益百分比計算的轉介收益。",
-    "createdAt": "轉介時間",
-    "_createdAt.comment": "轉介創建的時間。",
-    "level": "等級",
-    "_level.comment": "轉介的等級，用於計算轉介收益。",
-    "threshold": "轉介收益閾值",
-    "_threshold.comment": "轉介收益的閾值，用於提取轉介收益。",
-    "inviteeId": "邀請者 ID",
-    "_inviteeId.comment": "邀請者的唯一標識符，邀請者表示邀請受邀者到 API 服務網站。",
-    "isVerified": "已驗證",
-    "_isVerified.comment": "標誌指示轉介使用者是否通過真實信息驗證。"
+  "button.withdrawal": {
+    "message": "提領",
+    "description": "按鈕上的文字，用於提領網站的推薦收益。"
   },
-  "message": {
-    "deltaPriceForNextLevel": "升級差額",
-    "_deltaPriceForNextLevel": "當前訂單金額與下一等級閾值之間的差額。",
-    "developingWithDrawal": "請添加客戶服務以處理提款，提款將扣除 6% 所得稅，發票可用於抵扣",
-    "_developingWithDrawal": "指示提款功能正在開發中的消息。",
-    "technicalDetail": "技術細節",
-    "_technicalDetail": "轉介系統的技術細節已實施。",
-    "distributionQrDescription": "轉介 QR 碼（與鏈接內容相同）",
-    "_distributionQrDescription": "轉介 QR 碼的描述。",
-    "distributionLink": "轉介鏈接",
-    "_distributionLink": "轉介鏈接，用於將客戶綁定為下級客戶。",
-    "updateSuccessfully": "更新成功",
-    "_updateSuccessfully": "指示轉介信息已成功更新的消息。",
-    "distributionLinkDescription": "如果客戶通過此鏈接或 QR 碼在此平台上註冊，該客戶將永久綁定為您的下級客戶，並且該客戶在此平台上的所有消費訂單將根據當前分配比例返回到您的帳戶。",
-    "_distributionLinkDescription": "轉介鏈接的描述。",
-    "distributionLinkDescription2": "此鏈接包含您的使用者 ID。客戶打開鏈接後，您的使用者 ID 將以 Cookies 的形式記錄在客戶的瀏覽器中，有效期為七天。在七天內，如果客戶掃描該代碼在此平台上註冊，您的使用者 ID 將與 Cookies 一起上傳到註冊服務器，客戶可以綁定為您的下游客戶。",
-    "_distributionLinkDescription2": "轉介鏈接的描述。"
+  "button.query": {
+    "message": "查詢",
+    "description": "按鈕上的文字，用於查詢網站的推薦收益。"
   },
-  "title": {
-    "price": "轉介訂單總金額",
-    "_price.comment": "轉介訂單的總金額，用於計算轉介收益。",
-    "reward": "總轉介獎勵",
-    "_reward.comment": "根據訂單金額和轉介收益百分比計算的總轉介獎勵。",
-    "level": "轉介等級",
-    "_level.comment": "用於計算轉介收益的轉介等級。",
-    "percentage": "轉介收益百分比",
-    "_percentage.comment": "用於計算轉介收益的轉介收益百分比。",
-    "currentLevel": "當前等級",
-    "_currentLevel.comment": "當前的轉介等級，用於計算轉介收益。",
-    "nextLevel": "下一等級",
-    "_nextLevel.comment": "下一個轉介等級，用於計算轉介收益。",
-    "currentPercentage": "當前轉介收益百分比",
-    "_currentPercentage.comment": "用於計算轉介收益的當前轉介收益百分比。",
-    "nextPercentage": "下一等級轉介收益百分比",
-    "_nextPercentage.comment": "用於計算轉介收益的下一等級轉介收益百分比。",
-    "levelInfo": "等級資訊",
-    "_levelInfo.comment": "用於計算轉介收益的轉介等級資訊。",
-    "distributionLink": "轉介鏈接",
-    "_distributionLink.comment": "轉介鏈接，用於將客戶綁定為下級客戶。",
-    "inviteesCount": "邀請者總數",
-    "_inviteesCount.comment": "用於計算轉介收益的邀請者總數。",
-    "manageDistributionStatus": "轉介管理",
-    "_manageDistributionStatus.comment": "轉介狀態的管理。"
+  "field.id": {
+    "message": "推薦 ID",
+    "description": "分發的唯一標識符，分發指的是 API 服務網站的推薦。"
+  },
+  "field.percentage": {
+    "message": "推薦收益百分比",
+    "description": "推薦收益的百分比，根據訂單金額計算。"
+  },
+  "field.price": {
+    "message": "訂單金額",
+    "description": "訂單金額，用於計算推薦收益。"
+  },
+  "field.reward": {
+    "message": "推薦獎勵",
+    "description": "推薦收益，根據訂單金額和推薦收益百分比計算。"
+  },
+  "field.createdAt": {
+    "message": "推薦時間",
+    "description": "推薦創建的時間。"
+  },
+  "field.level": {
+    "message": "等級",
+    "description": "推薦的等級，用於計算推薦收益。"
+  },
+  "field.threshold": {
+    "message": "推薦收益閾值",
+    "description": "推薦收益的閾值，用於提領推薦收益。"
+  },
+  "field.inviteeId": {
+    "message": "邀請者 ID",
+    "description": "邀請者的唯一標識符，邀請者指的是邀請受邀者到 API 服務網站的用戶。"
+  },
+  "field.isVerified": {
+    "message": "已驗證",
+    "description": "標誌，指示推薦用戶是否通過真實信息驗證。"
+  },
+  "message.deltaPriceForNextLevel": {
+    "message": "與下一等級的差額",
+    "description": "當前訂單金額與下一等級閾值之間的差額。"
+  },
+  "message.developingWithDrawal": {
+    "message": "請添加客戶服務來處理提領，提領將扣除 6% 所得稅，發票可用於抵扣",
+    "description": "指示提領功能正在開發中的消息。"
+  },
+  "message.technicalDetail": {
+    "message": "技術細節",
+    "description": "推薦系統的技術細節實現。"
+  },
+  "message.distributionQrDescription": {
+    "message": "推薦 QR 碼（與鏈接內容相同）",
+    "description": "推薦 QR 碼的描述。"
+  },
+  "message.distributionLink": {
+    "message": "推薦鏈接",
+    "description": "推薦鏈接，用於將客戶綁定為下級客戶。"
+  },
+  "message.updateSuccessfully": {
+    "message": "更新成功",
+    "description": "指示推薦信息已成功更新的消息。"
+  },
+  "message.distributionLinkDescription": {
+    "message": "如果客戶通過此鏈接或 QR 碼在此平台上註冊，該客戶將永久綁定為您的下級客戶，並且客戶在此平台上的所有消費訂單將根據當前分發比例返回到您的帳戶。",
+    "description": "推薦鏈接的描述。"
+  },
+  "message.distributionLinkDescription2": {
+    "message": "此鏈接包含您的用戶 ID。客戶打開鏈接後，您的用戶 ID 將以 Cookies 的形式記錄在客戶的瀏覽器中，有效期為七天。在七天內，如果客戶掃描該碼在此平台上註冊，您的用戶 ID 將與 Cookies 一起上傳到註冊服務器，客戶可以綁定為您的下游客戶。",
+    "description": "推薦鏈接的描述。"
+  },
+  "title.price": {
+    "message": "推薦訂單總金額",
+    "description": "推薦訂單的總金額，用於計算推薦收益。"
+  },
+  "title.reward": {
+    "message": "總推薦獎勵",
+    "description": "總推薦獎勵，根據訂單金額和推薦收益百分比計算。"
+  },
+  "title.level": {
+    "message": "推薦等級",
+    "description": "推薦等級，用於計算推薦收益。"
+  },
+  "title.percentage": {
+    "message": "推薦收益百分比",
+    "description": "推薦收益百分比，用於計算推薦收益。"
+  },
+  "title.currentLevel": {
+    "message": "當前等級",
+    "description": "當前推薦等級，用於計算推薦收益。"
+  },
+  "title.nextLevel": {
+    "message": "下一等級",
+    "description": "下一推薦等級，用於計算推薦收益。"
+  },
+  "title.currentPercentage": {
+    "message": "當前推薦收益百分比",
+    "description": "當前推薦收益百分比，用於計算推薦收益。"
+  },
+  "title.nextPercentage": {
+    "message": "下一等級推薦收益百分比",
+    "description": "下一等級推薦收益百分比，用於計算推薦收益。"
+  },
+  "title.levelInfo": {
+    "message": "等級信息",
+    "description": "推薦等級的信息，用於計算推薦收益。"
+  },
+  "title.distributionLink": {
+    "message": "推薦鏈接",
+    "description": "推薦鏈接，用於將客戶綁定為下級客戶。"
+  },
+  "title.inviteesCount": {
+    "message": "邀請者總數",
+    "description": "邀請者的總數，用於計算推薦收益。"
+  },
+  "title.manageDistributionStatus": {
+    "message": "分發管理",
+    "description": "推薦狀態的管理。"
   }
 }

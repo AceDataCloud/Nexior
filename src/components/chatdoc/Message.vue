@@ -16,7 +16,7 @@
     </div>
   </div>
   <el-alert v-if="errorText" class="error" :title="errorText" type="error" :closable="false" />
-  <el-button v-if="showBuyMore" type="primary" class="btn btn-buy" size="small" @click="onBuyMore">
+  <el-button v-if="showBuyMore" round type="primary" class="btn btn-buy" size="small" @click="onBuyMore">
     {{ $t('common.button.buyMore') }}
   </el-button>
 </template>

@@ -1,22 +1,8 @@
+import { ICredential } from './credential';
 import { IService } from './service';
 
 export enum IApplicationType {
   API = 'Api'
-}
-
-export enum ICredentialType {
-  TOKEN = 'Token',
-  IDENTITY = 'Identity'
-}
-
-export interface ICredential {
-  type: ICredentialType;
-  name?: string;
-  token?: string;
-  username?: string;
-  password?: string;
-  created_at?: string;
-  updated_at?: string;
 }
 
 export interface IApplication {

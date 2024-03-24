@@ -1,108 +1,194 @@
 {
-  "button": {
-    "uploadDocuments": "Dokumente hochladen",
-    "_uploadDocuments.comment": "Text in Schaltfläche, mit der Benutzer Dokumente hochladen können"
+  "button.uploadDocuments": {
+    "message": "Dokumente hochladen",
+    "description": "Text in Schaltfläche, die es dem Benutzer ermöglicht, Dokumente hochzuladen"
   },
-  "field": {
-    "fileName": "Dateiname",
-    "_fileName.comment": "Dateiname für hochgeladenes Dokument",
-    "createdAt": "Erstellungszeit",
-    "_createdAt": "Zeitpunkt, zu dem das Dokument hochgeladen wurde",
-    "fileExtension": "Dateityp",
-    "_fileExtension.comment": "Dateityp für hochgeladenes Dokument",
-    "fileUrl": "Dateiverknüpfung",
-    "_fileUrl.comment": "Verknüpfung zum hochgeladenen Dokument",
-    "fileSize": "Dateigröße",
-    "_fileSize.comment": "Größe des hochgeladenen Dokuments",
-    "state": "Status",
-    "_state.comment": "Status der Dokumentenverarbeitung",
-    "stateProcessing": "Lernen",
-    "_stateProcessing.comment": "Dokument wird verarbeitet",
-    "stateCompleted": "Lernen abgeschlossen",
-    "_stateCompleted.comment": "Dokument wurde erfolgreich verarbeitet",
-    "stateFailed": "Lernen fehlgeschlagen",
-    "_stateFailed.comment": "Dokumentenverarbeitung fehlgeschlagen",
-    "name": "Name",
-    "_name.comment": "Name des Dokuments",
-    "description": "Beschreibung",
-    "_description.comment": "Beschreibung des Dokuments"
+  "field.fileName": {
+    "message": "Dateiname",
+    "description": "Dateiname für hochgeladenes Dokument"
   },
-  "message": {
-    "introductionForKnowledge": "Dokumente können der Wissensbasis hinzugefügt werden, und wenn der Roboter antwortet, kann er das Wissen im Repository verwenden, um zu antworten.",
-    "_introductionForKnowledge.comment": "Einführungsnachricht für Wissensbasis",
-    "introductionForRepository": "Die Wissensbasis ist eine Sammlung von Dokumenten, in der Sie Dokumente hinzufügen können. Wenn der Roboter antwortet, wird er aus den Dokumenten in der Wissensbasis antworten.",
-    "_introductionForRepository.comment": "Einführungsnachricht für Wissensbasis",
-    "uploadDocumentsExceed": "Die Anzahl der hochgeladenen Dokumente überschreitet das Limit",
-    "_uploadDocumentsExceed.comment": "Fehlermeldung, wenn die Anzahl der hochgeladenen Dokumente das Limit überschreitet",
-    "uploadDocumentsError": "Fehler beim Hochladen des Dokuments",
-    "_uploadDocumentsError.comment": "Fehlermeldung, wenn das Hochladen des Dokuments fehlgeschlagen ist",
-    "uploadDocumentsSuccess": "Dokument erfolgreich hochgeladen",
-    "_uploadDocumentsSuccess.comment": "Erfolgsmeldung, wenn das Dokument erfolgreich hochgeladen wurde",
-    "createDocumentSuccess": "Dokumentenerstellung erfolgreich",
-    "_createDocumentSuccess.comment": "Erfolgsmeldung, wenn die Dokumentenerstellung erfolgreich ist",
-    "startCreateDocument": "Dokumentenlernen starten...",
-    "_startCreateDocument.comment": "Nachricht beim Starten des Dokumentenlernens",
-    "createDocumentError": "Fehler beim Lernen des Dokuments",
-    "_createDocumentError.comment": "Fehlermeldung, wenn das Dokumentenlernen fehlgeschlagen ist",
-    "dragOrClickToUpload": "Zum Hochladen Dokument ziehen oder klicken",
-    "_dragOrClickToUpload.comment": "Nachricht zum Ziehen oder Klicken, um ein Dokument hochzuladen",
-    "learningDocument": "Lernen, bitte warten...",
-    "_learningDocument.comment": "Nachricht beim Lernen des Dokuments",
-    "startNewChat": "Neuen Chat starten",
-    "_startNewChat.comment": "Nachricht, um einen neuen Chat zu starten",
-    "errorApiError": "Antwort fehlgeschlagen, bitte versuchen Sie es später erneut",
-    "_errorApiError.comment": "Fehlermeldung, wenn die Antwort fehlgeschlagen ist",
-    "errorBadRequest": "Anforderungsinhalt ist nicht korrekt formatiert, bitte erneut fragen",
-    "_errorBadRequest.comment": "Fehlermeldung, wenn der Anforderungsinhalt nicht korrekt formatiert ist",
-    "errorNoConversation": "Gesprächsinhalt existiert nicht oder ist abgelaufen, bitte starten Sie ein neues Gespräch",
-    "_errorNoConversation.comment": "Fehlermeldung, wenn der Gesprächsinhalt nicht existiert oder abgelaufen ist",
-    "errorContentTooLarge": "Frageinhalt ist zu lang, bitte kürzen und erneut versuchen",
-    "_errorContentTooLarge.comment": "Fehlermeldung, wenn der Frageinhalt zu lang ist",
-    "errorTooManyRequests": "Ihre Operation ist zu häufig, bitte versuchen Sie es später erneut",
-    "_errorTooManyRequests.comment": "Fehlermeldung, wenn die Operation zu häufig ist",
-    "errorUsedUp": "Ihr Paketnutzungslimit wurde erreicht, bitte kaufen Sie mehr Nutzung, um fortzufahren",
-    "_errorUsedUp.comment": "Fehlermeldung, wenn das Paketnutzungslimit erreicht wurde",
-    "errorUnknown": "Ein unbekannter Serverfehler ist aufgetreten, bitte versuchen Sie es später erneut oder kontaktieren Sie den Kundenservice",
-    "_errorUnknown.comment": "Fehlermeldung, wenn ein unbekannter Serverfehler aufgetreten ist",
-    "errorTimeout": "Antwort auf die Fragezeitüberschreitung, bitte versuchen Sie es später erneut",
-    "_errorTimeout.comment": "Fehlermeldung, wenn die Antwort auf die Fragezeitüberschreitung",
-    "errorNotApplied": "Sie haben diesen Service noch nicht beantragt, bitte beantragen Sie ihn, bevor Sie fortfahren",
-    "_errorNotApplied.comment": "Fehlermeldung, wenn der Benutzer diesen Service noch nicht beantragt hat",
-    "confirmDelete": "Löschung bestätigen",
-    "_confirmDelete.comment": "Nachricht zur Bestätigung der Löschung",
-    "howToUse": "Drücken Sie Umschalt+Eingabe, um einen Zeilenumbruch durchzuführen",
-    "_howToUse.comment": "Nachricht, um anzuzeigen, wie ein Zeilenumbruch durchgeführt wird",
-    "createRepositorySuccess": "Wissensbasis erfolgreich erstellt",
-    "_createRepositorySuccess.comment": "Erfolgsmeldung, wenn die Wissensbasis erfolgreich erstellt wurde",
-    "createRepositoryFailed": "Fehler beim Erstellen der Wissensbasis",
-    "_createRepositoryFailed.comment": "Fehlermeldung, wenn das Erstellen der Wissensbasis fehlgeschlagen ist",
-    "deleteRepositorySuccess": "Wissensbasis erfolgreich gelöscht",
-    "_deleteRepositorySuccess.comment": "Erfolgsmeldung, wenn die Wissensbasis erfolgreich gelöscht wurde",
-    "deleteDocumentSuccess": "Dokument erfolgreich gelöscht",
-    "_deleteDocumentSuccess.comment": "Erfolgsmeldung, wenn das Dokument erfolgreich gelöscht wurde",
-    "currentRepository": "Aktuelle Wissensbasis",
-    "_currentRepository.comment": "Nachricht zur Anzeige der aktuellen Wissensbasis",
-    "nameRequired": "Name darf nicht leer sein",
-    "_nameRequired.comment": "Fehlermeldung, wenn der Name leer ist",
-    "inputRepositoryName": "Wissensbasisname eingeben",
-    "_inputRepositoryName.comment": "Platzhalter für den Wissensbasisnamen",
-    "inputRepositoryDescription": "Beschreiben Sie Ihre Wissensbasis in einem Satz",
-    "_inputRepositoryDescription.comment": "Platzhalter für die Beschreibung der Wissensbasis"
+  "field.createdAt": {
+    "message": "Erstellungszeit",
+    "description": "Zeitpunkt, an dem das Dokument hochgeladen wurde"
   },
-  "nav": {
-    "chat": "Chat",
-    "_chat.comment": "Navigationspunkt für Chat",
-    "setting": "Einstellung",
-    "_setting.comment": "Navigationspunkt für Einstellung",
-    "manage": "Verwalten",
-    "_manage.comment": "Navigationspunkt für Verwalten"
+  "field.fileExtension": {
+    "message": "Dateityp",
+    "description": "Dateityp für hochgeladenes Dokument"
   },
-  "title": {
-    "manage": "Wissensbasen verwalten",
-    "_manage.comment": "Titel für die Verwaltung der Wissensbasis",
-    "createRepository": "Wissensbasis erstellen",
-    "_createRepository.comment": "Titel für das Erstellen der Wissensbasis",
-    "repositories": "Wissensbasisliste",
-    "_repositories.comment": "Titel für die Wissensbasisliste"
+  "field.fileUrl": {
+    "message": "Dateiverknüpfung",
+    "description": "Verknüpfung zum hochgeladenen Dokument"
+  },
+  "field.fileSize": {
+    "message": "Dateigröße",
+    "description": "Größe des hochgeladenen Dokuments"
+  },
+  "field.state": {
+    "message": "Status",
+    "description": "Status der Dokumentenverarbeitung"
+  },
+  "field.stateProcessing": {
+    "message": "Lernen",
+    "description": "Dokument wird verarbeitet"
+  },
+  "field.stateCompleted": {
+    "message": "Lernen abgeschlossen",
+    "description": "Dokument wurde erfolgreich verarbeitet"
+  },
+  "field.stateFailed": {
+    "message": "Lernen fehlgeschlagen",
+    "description": "Dokumentenverarbeitung fehlgeschlagen"
+  },
+  "field.name": {
+    "message": "Name",
+    "description": "Name des Dokuments"
+  },
+  "field.description": {
+    "message": "Beschreibung",
+    "description": "Beschreibung des Dokuments"
+  },
+  "message.introductionForKnowledge": {
+    "message": "Dokumente können der Wissensbasis hinzugefügt werden, und wenn der Roboter antwortet, kann er das Wissen im Repository verwenden, um zu antworten.",
+    "description": "Einführungsnachricht für die Wissensbasis"
+  },
+  "message.introductionForRepository": {
+    "message": "Die Wissensbasis ist eine Sammlung von Dokumenten, in der Sie Dokumente hinzufügen können. Wenn der Roboter antwortet, wird er aus den Dokumenten in der Wissensbasis antworten.",
+    "description": "Einführungsnachricht für die Wissensbasis"
+  },
+  "message.uploadDocumentsExceed": {
+    "message": "Die Anzahl der hochgeladenen Dokumente überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Dokumente das Limit überschreitet"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Fehler beim Hochladen des Dokuments",
+    "description": "Fehlermeldung, wenn das Hochladen des Dokuments fehlgeschlagen ist"
+  },
+  "message.uploadDocumentsSuccess": {
+    "message": "Dokument erfolgreich hochgeladen",
+    "description": "Erfolgsmeldung, wenn das Dokument erfolgreich hochgeladen wurde"
+  },
+  "message.createDocumentSuccess": {
+    "message": "Dokumentenerstellung erfolgreich",
+    "description": "Erfolgsmeldung, wenn die Dokumentenerstellung erfolgreich ist"
+  },
+  "message.startCreateDocument": {
+    "message": "Starte das Lernen des Dokuments...",
+    "description": "Nachricht beim Starten des Lernens des Dokuments"
+  },
+  "message.createDocumentError": {
+    "message": "Fehler beim Lernen des Dokuments",
+    "description": "Fehlermeldung, wenn das Lernen des Dokuments fehlgeschlagen ist"
+  },
+  "message.dragOrClickToUpload": {
+    "message": "Zum Hochladen des Dokuments ziehen oder klicken",
+    "description": "Nachricht zum Ziehen oder Klicken, um das Dokument hochzuladen"
+  },
+  "message.learningDocument": {
+    "message": "Lernen, bitte warten...",
+    "description": "Nachricht beim Lernen des Dokuments"
+  },
+  "message.startNewChat": {
+    "message": "Neuen Chat starten",
+    "description": "Nachricht, um einen neuen Chat zu starten"
+  },
+  "message.errorApiError": {
+    "message": "Antwort fehlgeschlagen, bitte versuchen Sie es später erneut",
+    "description": "Fehlermeldung, wenn die Antwort fehlgeschlagen ist"
+  },
+  "message.errorBadRequest": {
+    "message": "Die Anforderung ist nicht korrekt formatiert, bitte fragen Sie erneut",
+    "description": "Fehlermeldung, wenn die Anforderung nicht korrekt formatiert ist"
+  },
+  "message.errorNoConversation": {
+    "message": "Das Gespräch existiert nicht oder ist abgelaufen, bitte starten Sie ein neues Gespräch",
+    "description": "Fehlermeldung, wenn das Gespräch nicht existiert oder abgelaufen ist"
+  },
+  "message.errorContentTooLarge": {
+    "message": "Die Frage ist zu lang, bitte kürzen Sie sie und versuchen Sie es erneut",
+    "description": "Fehlermeldung, wenn der Inhalt der Frage zu lang ist"
+  },
+  "message.errorTooManyRequests": {
+    "message": "Ihre Operation ist zu häufig, bitte versuchen Sie es später erneut",
+    "description": "Fehlermeldung, wenn die Operation zu häufig ist"
+  },
+  "message.errorUsedUp": {
+    "message": "Ihr Kontingent ist aufgebraucht, bitte kaufen Sie mehr Nutzung, um fortzufahren",
+    "description": "Fehlermeldung, wenn das Kontingent aufgebraucht ist"
+  },
+  "message.errorUnknown": {
+    "message": "Ein unbekannter Serverfehler ist aufgetreten, bitte versuchen Sie es später erneut oder kontaktieren Sie den Kundenservice",
+    "description": "Fehlermeldung, wenn ein unbekannter Serverfehler aufgetreten ist"
+  },
+  "message.errorTimeout": {
+    "message": "Die Beantwortung der Frage hat Zeitüberschreitung, bitte versuchen Sie es später erneut",
+    "description": "Fehlermeldung, wenn die Beantwortung der Frage Zeitüberschreitung hat"
+  },
+  "message.errorNotApplied": {
+    "message": "Sie haben diesen Service noch nicht beantragt, bitte beantragen Sie ihn, bevor Sie fortfahren",
+    "description": "Fehlermeldung, wenn der Benutzer diesen Service noch nicht beantragt hat"
+  },
+  "message.confirmDelete": {
+    "message": "Löschung bestätigen",
+    "description": "Nachricht zur Bestätigung der Löschung"
+  },
+  "message.howToUse": {
+    "message": "Drücken Sie Umschalt+Eingabe, um einen Zeilenumbruch einzufügen",
+    "description": "Nachricht, wie man einen Zeilenumbruch einfügt"
+  },
+  "message.createRepositorySuccess": {
+    "message": "Wissensbasis erfolgreich erstellt",
+    "description": "Erfolgsmeldung, wenn die Wissensbasis erfolgreich erstellt wurde"
+  },
+  "message.createRepositoryFailed": {
+    "message": "Fehler beim Erstellen der Wissensbasis",
+    "description": "Fehlermeldung, wenn das Erstellen der Wissensbasis fehlgeschlagen ist"
+  },
+  "message.deleteRepositorySuccess": {
+    "message": "Wissensbasis erfolgreich gelöscht",
+    "description": "Erfolgsmeldung, wenn die Wissensbasis erfolgreich gelöscht wurde"
+  },
+  "message.deleteDocumentSuccess": {
+    "message": "Dokument erfolgreich gelöscht",
+    "description": "Erfolgsmeldung, wenn das Dokument erfolgreich gelöscht wurde"
+  },
+  "message.currentRepository": {
+    "message": "Aktuelle Wissensbasis",
+    "description": "Nachricht zur Anzeige der aktuellen Wissensbasis"
+  },
+  "message.nameRequired": {
+    "message": "Name darf nicht leer sein",
+    "description": "Fehlermeldung, wenn der Name leer ist"
+  },
+  "message.inputRepositoryName": {
+    "message": "Name der Wissensbasis",
+    "description": "Platzhalter für den Namen der Wissensbasis"
+  },
+  "message.inputRepositoryDescription": {
+    "message": "Beschreiben Sie Ihre Wissensbasis in einem Satz",
+    "description": "Platzhalter für die Beschreibung der Wissensbasis"
+  },
+  "nav.chat": {
+    "message": "Chat",
+    "description": "Navigationspunkt für Chat"
+  },
+  "nav.setting": {
+    "message": "Einstellung",
+    "description": "Navigationspunkt für Einstellung"
+  },
+  "nav.manage": {
+    "message": "Verwalten",
+    "description": "Navigationspunkt für Verwalten"
+  },
+  "title.manage": {
+    "message": "Wissensbasen verwalten",
+    "description": "Titel für die Verwaltung der Wissensbasis"
+  },
+  "title.createRepository": {
+    "message": "Wissensbasis erstellen",
+    "description": "Titel für das Erstellen der Wissensbasis"
+  },
+  "title.repositories": {
+    "message": "Liste der Wissensbasen",
+    "description": "Titel für die Liste der Wissensbasen"
   }
 }

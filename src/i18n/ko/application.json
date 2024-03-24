@@ -1,104 +1,190 @@
 {
-  "button": {
-    "goDocument": "문서",
-    "_goDocument.comment": "버튼의 텍스트,이 버튼을 클릭하면 문서 페이지로 이동합니다.",
-    "goCredentials": "자격 증명",
-    "_goCredentials.comment": "버튼의 텍스트,이 버튼을 클릭하면 자격 증명 페이지로 이동합니다.",
-    "buyMore": "더 구매",
-    "_buyMore.comment": "버튼의 텍스트,이 버튼을 클릭하면 더 많은 페이지로 이동합니다.",
-    "createOrder": "주문 생성",
-    "_createOrder.comment": "버튼의 텍스트,이 버튼을 클릭하면 주문 생성 페이지로 이동합니다.",
-    "custom": "사용자 정의",
-    "_custom.comment": "버튼의 텍스트,이 버튼을 클릭하면 사용자 정의 페이지로 이동합니다.",
-    "query": "쿼리",
-    "_query.comment": "버튼의 텍스트,이 버튼을 클릭하면 쿼리 페이지로 이동합니다.",
-    "usage": "사용 내역",
-    "_usage.comment": "버튼의 텍스트,이 버튼을 클릭하면 사용 내역 페이지로 이동합니다."
+  "button.goDocument": {
+    "message": "문서",
+    "description": "버튼의 텍스트, 이 버튼을 클릭하면 문서 페이지로 이동합니다."
   },
-  "field": {
-    "id": "애플리케이션 ID",
-    "_id.comment": "애플리케이션의 ID입니다.",
-    "remainingAmount": "남은 양",
-    "_remainingAmount.comment": "애플리케이션의 남은 양입니다.",
-    "usedAmount": "사용된 양",
-    "_usedAmount.comment": "애플리케이션의 사용된 양입니다.",
-    "apiKey": "API 키",
-    "_apiKey.comment": "API 키",
-    "service": "서비스",
-    "_service.comment": "애플리케이션의 서비스입니다.",
-    "operation": "작업",
-    "_operation.comment": "애플리케이션의 작업입니다.",
-    "amount": "양",
-    "_amount.comment": "애플리케이션의 양입니다.",
-    "traceId": "추적 ID",
-    "_traceId.comment": "API 서비스의 애플리케이션에 대한 한 API 호출의 추적 ID입니다. 번역하지 말고 '추적 ID'로 유지하십시오.",
-    "shouldPayPrice": "최종 가격",
-    "_shouldPayPrice.comment": "애플리케이션의 최종 가격입니다.",
-    "api": "API",
-    "_api.comment": "이것은 온라인 서비스의 한 종류입니다. 양식은 사용자에게 API를 통해 서비스를 제공합니다.",
-    "proxy": "프록시",
-    "_proxy.comment": "이것은 온라인 서비스의 한 종류입니다. 양식은 사용자에게 데이터 전송에 사용되는 HTTP 프록시를 통해 서비스를 제공합니다.",
-    "credential": "자격 증명",
-    "_credential.comment": "애플리케이션의 자격 증명입니다.",
-    "name": "이름",
-    "_name.comment": "애플리케이션의 이름입니다.",
-    "package": "패키지",
-    "_package.comment": "$100에 10000 크레딧, $200에 20000 크레딧과 같은 다양한 가격 패키지를 의미합니다.",
-    "type": "유형",
-    "_type.comment": "애플리케이션의 유형입니다.",
-    "freeAmount": "무료 양",
-    "_freeAmount.comment": "애플리케이션의 무료 양입니다.",
-    "extraPrice": "가격",
-    "_extraPrice.comment": "사용자가 지불해야 하는 애플리케이션의 추가 가격입니다."
+  "button.goCredentials": {
+    "message": "자격 증명",
+    "description": "버튼의 텍스트, 이 버튼을 클릭하면 자격 증명 페이지로 이동합니다."
   },
-  "message": {
-    "alreadyApplied": "이 서비스에 이미 신청했습니다. 콘솔을 확인하세요",
-    "_alreadyApplied.comment": "사용자가 이미 이 서비스에 신청한 경우 사용자에게 표시되는 메시지입니다.",
-    "applySuccessfully": "신청이 성공적으로 완료되었습니다",
-    "_applySuccessfully.comment": "사용자가 이 서비스에 성공적으로 신청한 경우 사용자에게 표시되는 메시지입니다.",
-    "notApplied": "아직 이 서비스에 신청하지 않았습니다. 사용하기 전에 서비스에 신청하세요",
-    "_notApplied.comment": "사용자가 아직 이 서비스에 신청하지 않은 경우 사용자에게 표시되는 메시지입니다.",
-    "yourApplication": "귀하의 신청",
-    "_yourApplication.comment": "사용자의 신청에 대해 사용자에게 표시되는 메시지입니다.",
-    "unverified": "실명 인증을 완료해야 이 서비스를 신청할 수 있습니다",
-    "_unverified.comment": "사용자가 실명 인증을 완료하지 않은 경우 사용자에게 표시되는 메시지입니다.",
-    "goVerify": "실명 인증으로 이동",
-    "_goVerify.comment": "사용자가 실명 인증을 완료하지 않은 경우 사용자에게 표시되는 메시지입니다.",
-    "requiredParameter": "필수 매개변수",
-    "_requiredParameter.comment": "사용자가 필수 매개변수를 입력하지 않은 경우 사용자에게 표시되는 메시지입니다.",
-    "example": "예시",
-    "_example.comment": "사용자가 필수 매개변수를 입력하지 않은 경우 사용자에게 표시되는 메시지입니다.",
-    "createCredentialSuccessfully": "자격 증명이 성공적으로 생성되었습니다",
-    "_createCredentialSuccessfully.comment": "사용자가 자격 증명을 성공적으로 생성한 경우 사용자에게 표시되는 메시지입니다.",
-    "readPolicy": "내가 읽고 동의했습니다",
-    "_readPolicy.comment": "사용자가 정책을 읽고 동의한 경우 사용자에게 표시되는 메시지입니다.",
-    "policy": "데이터 기술 서비스 이용 약관",
-    "_policy.comment": "사용자가 정책을 읽고 동의한 경우 사용자에게 표시되는 메시지입니다.",
-    "notAgreePolicy": "데이터 기술 서비스 이용 약관에 동의하지 않았습니다",
-    "_notAgreePolicy.comment": "사용자가 정책에 동의하지 않은 경우 사용자에게 표시되는 메시지입니다.",
-    "confirmApplying": "서비스 신청 확인",
-    "_confirmApplying.comment": "사용자가 서비스 신청을 확인한 경우 사용자에게 표시되는 메시지입니다.",
-    "rotateCredential": "키 재설정",
-    "_rotateCredential.comment": "사용자가 키를 재설정한 경우 사용자에게 표시되는 메시지입니다.",
-    "rotateCredentialConfirm": "키를 재설정하시겠습니까? 재설정 후에는 복구할 수 없습니다",
-    "_rotateCredentialConfirm.comment": "사용자가 키를 재설정한 경우 사용자에게 표시되는 메시지입니다.",
-    "idDoesNotExist": "애플리케이션이 존재하지 않습니다",
-    "_idDoesNotExist.comment": "애플리케이션이 존재하지 않는 경우 사용자에게 표시되는 메시지입니다.",
-    "rotateCredentialSuccessfully": "키 재설정이 성공적으로 완료되었습니다",
-    "_rotateCredentialSuccessfully.comment": "키 재설정이 성공한 경우 사용자에게 표시되는 메시지입니다.",
-    "rotateCredentialFailed": "키 재설정에 실패했습니다. 처리를 위해 문의하세요",
-    "_rotateCredentialFailed.comment": "키 재설정에 실패한 경우 사용자에게 표시되는 메시지입니다.",
-    "updateFailed": "수정에 실패했습니다",
-    "_updateFailed.comment": "수정에 실패한 경우 사용자에게 표시되는 메시지입니다.",
-    "updateSuccessfully": "수정이 성공적으로 완료되었습니다",
-    "_updateSuccessfully.comment": "수정이 성공한 경우 사용자에게 표시되는 메시지입니다."
+  "button.buyMore": {
+    "message": "더 구매",
+    "description": "버튼의 텍스트, 이 버튼을 클릭하면 더 많은 페이지로 이동합니다."
   },
-  "title": {
-    "buyService": "서비스 구매",
-    "_buyService.comment": "사용자가 서비스를 구매하려는 경우 페이지의 제목입니다.",
-    "applicationRemainingCount": "수량 수정",
-    "_applicationRemainingCount.comment": "사용자가 애플리케이션의 수량을 수정하려는 경우 페이지의 제목입니다.",
-    "manageApplication": "애플리케이션 관리",
-    "_manageApplication.comment": "사용자가 애플리케이션을 관리하려는 경우 페이지의 제목입니다."
+  "button.createOrder": {
+    "message": "주문 생성",
+    "description": "버튼의 텍스트, 이 버튼을 클릭하면 주문 생성 페이지로 이동합니다."
+  },
+  "button.custom": {
+    "message": "사용자 정의",
+    "description": "버튼의 텍스트, 이 버튼을 클릭하면 사용자 정의 페이지로 이동합니다."
+  },
+  "button.query": {
+    "message": "쿼리",
+    "description": "버튼의 텍스트, 이 버튼을 클릭하면 쿼리 페이지로 이동합니다."
+  },
+  "button.usage": {
+    "message": "사용 내역",
+    "description": "버튼의 텍스트, 이 버튼을 클릭하면 사용 내역 페이지로 이동합니다."
+  },
+  "field.id": {
+    "message": "애플리케이션 ID",
+    "description": "애플리케이션의 ID입니다."
+  },
+  "field.remainingAmount": {
+    "message": "남은 양",
+    "description": "애플리케이션의 남은 양입니다."
+  },
+  "field.usedAmount": {
+    "message": "사용된 양",
+    "description": "애플리케이션의 사용된 양입니다."
+  },
+  "field.apiKey": {
+    "message": "API 키",
+    "description": "API 키입니다."
+  },
+  "field.service": {
+    "message": "서비스",
+    "description": "애플리케이션의 서비스입니다."
+  },
+  "field.operation": {
+    "message": "작업",
+    "description": "애플리케이션의 작업입니다."
+  },
+  "field.amount": {
+    "message": "양",
+    "description": "애플리케이션의 양입니다."
+  },
+  "field.traceId": {
+    "message": "추적 ID",
+    "description": "API 서비스의 애플리케이션을 위한 한 API 호출의 추적 ID입니다. 번역하지 말고 '추적 ID'로 유지해야 합니다."
+  },
+  "field.shouldPayPrice": {
+    "message": "최종 가격",
+    "description": "애플리케이션의 최종 가격입니다."
+  },
+  "field.api": {
+    "message": "API",
+    "description": "온라인 서비스의 한 종류입니다. 사용자에게 API를 통해 서비스를 제공합니다."
+  },
+  "field.proxy": {
+    "message": "프록시",
+    "description": "온라인 서비스의 한 종류입니다. 데이터 전송에 사용되는 HTTP 프록시를 통해 서비스를 제공합니다."
+  },
+  "field.credential": {
+    "message": "자격 증명",
+    "description": "애플리케이션의 자격 증명입니다."
+  },
+  "field.name": {
+    "message": "이름",
+    "description": "애플리케이션의 이름입니다."
+  },
+  "field.package": {
+    "message": "패키지",
+    "description": "$100에 10000 크레딧, $200에 20000 크레딧과 같은 다양한 가격 패키지를 의미합니다."
+  },
+  "field.type": {
+    "message": "유형",
+    "description": "애플리케이션의 유형입니다."
+  },
+  "field.freeAmount": {
+    "message": "무료 양",
+    "description": "애플리케이션의 무료 양입니다."
+  },
+  "field.extraPrice": {
+    "message": "가격",
+    "description": "사용자가 추가로 지불해야 하는 애플리케이션의 가격입니다."
+  },
+  "message.alreadyApplied": {
+    "message": "이 서비스에 이미 신청했습니다. 콘솔을 확인하세요.",
+    "description": "사용자가 이미 이 서비스에 신청한 경우 사용자에게 표시되는 메시지입니다."
+  },
+  "message.applySuccessfully": {
+    "message": "신청이 성공적으로 완료되었습니다.",
+    "description": "사용자가 이 서비스를 성공적으로 신청한 경우 사용자에게 표시되는 메시지입니다."
+  },
+  "message.notApplied": {
+    "message": "아직 이 서비스에 신청하지 않았습니다. 사용하기 전에 서비스를 신청하세요.",
+    "description": "사용자가 아직 이 서비스에 신청하지 않은 경우 사용자에게 표시되는 메시지입니다."
+  },
+  "message.yourApplication": {
+    "message": "귀하의 신청",
+    "description": "사용자의 신청에 대해 사용자에게 표시되는 메시지입니다."
+  },
+  "message.unverified": {
+    "message": "이 서비스를 신청하려면 실명 인증을 완료해야 합니다.",
+    "description": "사용자가 실명 인증을 완료하지 않은 경우 사용자에게 표시되는 메시지입니다."
+  },
+  "message.goVerify": {
+    "message": "실명 인증으로 이동",
+    "description": "사용자가 실명 인증을 완료하지 않은 경우 사용자에게 표시되는 메시지입니다."
+  },
+  "message.requiredParameter": {
+    "message": "필수 매개변수",
+    "description": "사용자가 필수 매개변수를 입력하지 않은 경우 사용자에게 표시되는 메시지입니다."
+  },
+  "message.example": {
+    "message": "예시",
+    "description": "사용자가 필수 매개변수를 입력하지 않은 경우 사용자에게 표시되는 메시지입니다."
+  },
+  "message.createCredentialSuccessfully": {
+    "message": "자격 증명이 성공적으로 생성되었습니다.",
+    "description": "사용자가 자격 증명을 성공적으로 생성한 경우 사용자에게 표시되는 메시지입니다."
+  },
+  "message.readPolicy": {
+    "message": "내용을 읽고 동의합니다",
+    "description": "사용자가 정책을 읽고 동의한 경우 사용자에게 표시되는 메시지입니다."
+  },
+  "message.policy": {
+    "message": "데이터 기술 서비스 이용 약관",
+    "description": "사용자가 정책을 읽고 동의한 경우 사용자에게 표시되는 메시지입니다."
+  },
+  "message.notAgreePolicy": {
+    "message": "데이터 기술 서비스 이용 약관에 동의하지 않았습니다.",
+    "description": "사용자가 정책에 동의하지 않은 경우 사용자에게 표시되는 메시지입니다."
+  },
+  "message.confirmApplying": {
+    "message": "서비스 신청 확인",
+    "description": "사용자가 서비스 신청을 확인한 경우 사용자에게 표시되는 메시지입니다."
+  },
+  "message.rotateCredential": {
+    "message": "키 재설정",
+    "description": "사용자가 키를 재설정한 경우 사용자에게 표시되는 메시지입니다."
+  },
+  "message.rotateCredentialConfirm": {
+    "message": "키를 재설정하시겠습니까? 재설정 후에는 복구할 수 없습니다.",
+    "description": "사용자가 키 재설정을 확인한 경우 사용자에게 표시되는 메시지입니다."
+  },
+  "message.idDoesNotExist": {
+    "message": "애플리케이션이 존재하지 않습니다.",
+    "description": "애플리케이션이 존재하지 않는 경우 사용자에게 표시되는 메시지입니다."
+  },
+  "message.rotateCredentialSuccessfully": {
+    "message": "키 재설정이 성공적으로 완료되었습니다.",
+    "description": "키 재설정이 성공한 경우 사용자에게 표시되는 메시지입니다."
+  },
+  "message.rotateCredentialFailed": {
+    "message": "키 재설정에 실패했습니다. 처리를 위해 문의하세요.",
+    "description": "키 재설정에 실패한 경우 사용자에게 표시되는 메시지입니다."
+  },
+  "message.updateFailed": {
+    "message": "수정에 실패했습니다.",
+    "description": "수정에 실패한 경우 사용자에게 표시되는 메시지입니다."
+  },
+  "message.updateSuccessfully": {
+    "message": "수정이 성공적으로 완료되었습니다.",
+    "description": "수정이 성공한 경우 사용자에게 표시되는 메시지입니다."
+  },
+  "title.buyService": {
+    "message": "서비스 구매",
+    "description": "사용자가 서비스를 구매하려는 경우 페이지의 제목입니다."
+  },
+  "title.applicationRemainingCount": {
+    "message": "수정 횟수",
+    "description": "사용자가 애플리케이션의 횟수를 수정하려는 경우 페이지의 제목입니다."
+  },
+  "title.manageApplication": {
+    "message": "애플리케이션 관리",
+    "description": "사용자가 애플리케이션을 관리하려는 경우 페이지의 제목입니다."
   }
 }

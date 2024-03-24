@@ -1,14 +1,22 @@
 {
-  "field": {
-    "id": "ID do usuário",
-    "_id.comment": "ID do usuário",
-    "isVerified": "Está Verificado",
-    "_isVerified.comment": "Uma bandeira que indica se o usuário está verificado com base em informações reais ou não",
-    "nickname": "Apelido",
-    "_nickname.comment": "Apelido de um usuário",
-    "username": "Nome de usuário",
-    "_username.comment": "Nome de usuário de um usuário",
-    "dateJoined": "Data de Registro",
-    "_dateJoined.comment": "Hora em que o usuário se registrou"
+  "field.id": {
+    "message": "ID do usuário",
+    "description": "ID do usuário"
+  },
+  "field.isVerified": {
+    "message": "Está Verificado",
+    "description": "Uma sinalização que indica se o usuário está verificado com base em informações reais ou não"
+  },
+  "field.nickname": {
+    "message": "Apelido",
+    "description": "Apelido de um usuário"
+  },
+  "field.username": {
+    "message": "Nome de usuário",
+    "description": "Nome de usuário de um usuário"
+  },
+  "field.dateJoined": {
+    "message": "Tempo de Registro",
+    "description": "Hora em que o usuário se registrou"
   }
 }

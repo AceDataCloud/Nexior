@@ -46,6 +46,7 @@
                       size="large"
                       class="btn-create"
                       :loading="creating"
+                      round
                       @click="onCreateOrder"
                     >
                       {{ $t('application.button.createOrder') }}
@@ -206,6 +207,16 @@ export default defineComponent({
 
   .el-card {
     padding: 50px 0;
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+      &.unfree {
+        color: #ff5441;
+      }
+      &.free {
+        color: #29c287;
+      }
+    }
   }
 }
 
