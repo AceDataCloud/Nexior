@@ -55,6 +55,7 @@ export default defineComponent({
   },
   async mounted() {
     await this.$store.dispatch('midjourney/setImagineTasks', undefined);
+    this.getImagineTasks();
     // @ts-ignore
     this.job = setInterval(() => {
       this.getImagineTasks();

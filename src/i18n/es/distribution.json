@@ -1,74 +1,130 @@
 {
-  "button": {
-    "detail": "Ver detalles",
-    "_detail.comment": "El texto en el botón, que se utiliza para ver los detalles del historial de referidos para el sitio web.",
-    "withdrawal": "Retirar",
-    "_withdrawal.comment": "El texto en el botón, que se utiliza para retirar las ganancias por referidos para el sitio web.",
-    "query": "Consultar",
-    "_query.comment": "El texto en el botón, que se utiliza para consultar las ganancias por referidos para el sitio web."
+  "button.detail": {
+    "message": "Ver detalles",
+    "description": "El texto en el botón, que se utiliza para ver los detalles del historial de referencias para el sitio web."
   },
-  "field": {
-    "id": "ID de referido",
-    "_id.comment": "El identificador único de la distribución, la distribución significa el referido para el sitio web de servicios de API.",
-    "percentage": "Porcentaje de ganancia por referido",
-    "_percentage.comment": "El porcentaje de las ganancias por referidos, que se calcula en función del monto del pedido.",
-    "price": "Monto del pedido",
-    "_price.comment": "El monto del pedido, que se utiliza para calcular las ganancias por referidos.",
-    "reward": "Recompensa por referido",
-    "_reward.comment": "Las ganancias por referidos, que se calculan en función del monto del pedido y el porcentaje de ganancia por referido.",
-    "createdAt": "Tiempo de referido",
-    "_createdAt.comment": "El momento en que se creó el referido.",
-    "level": "Nivel",
-    "_level.comment": "El nivel del referido, que se utiliza para calcular las ganancias por referidos.",
-    "threshold": "Umbral de ganancia por referido",
-    "_threshold.comment": "El umbral de las ganancias por referidos, que se utiliza para retirar las ganancias por referidos.",
-    "inviteeId": "ID del invitador",
-    "_inviteeId.comment": "El identificador único del invitador, el invitador significa el usuario que invita al invitado al sitio web de servicios de API.",
-    "isVerified": "Está verificado",
-    "_isVerified.comment": "La bandera para indicar si el usuario referido está verificado con la información real."
+  "button.withdrawal": {
+    "message": "Retirar",
+    "description": "El texto en el botón, que se utiliza para retirar las ganancias por referencias para el sitio web."
   },
-  "message": {
-    "deltaPriceForNextLevel": "Diferencia al siguiente nivel",
-    "_deltaPriceForNextLevel": "La diferencia entre el monto actual del pedido y el umbral del siguiente nivel.",
-    "developingWithDrawal": "Por favor, agregue servicio al cliente para manejar retiros, los retiros deducirán un impuesto sobre la renta del 6%, las facturas se pueden utilizar para la deducción",
-    "_developingWithDrawal": "El mensaje para indicar que la función de retiro está en desarrollo.",
-    "technicalDetail": "Detalle técnico",
-    "_technicalDetail": "El detalle técnico del sistema de referidos se implementa.",
-    "distributionQrDescription": "Código QR de referido (mismo contenido que el enlace)",
-    "_distributionQrDescription": "La descripción del código QR de referido.",
-    "distributionLink": "Enlace de referido",
-    "_distributionLink": "El enlace de referido, que se utiliza para vincular al cliente como cliente subordinado.",
-    "updateSuccessfully": "Actualización exitosa",
-    "_updateSuccessfully": "El mensaje para indicar que la información de referido se ha actualizado correctamente.",
-    "distributionLinkDescription": "Si un cliente se registra en esta plataforma a través de este enlace o código QR, el cliente estará permanentemente vinculado como su cliente subordinado, y todos los pedidos de consumo del cliente en esta plataforma se devolverán a su cuenta de acuerdo con la proporción de distribución actual.",
-    "_distributionLinkDescription": "La descripción del enlace de referido.",
-    "distributionLinkDescription2": "Este enlace contiene su ID de usuario. Después de que el cliente abra el enlace, su ID de usuario se registrará en el navegador del cliente en forma de Cookies, que es válido por siete días. Dentro de los siete días, si el cliente registra esta plataforma escaneando el código, su ID de usuario se cargará en el servidor de registro con Cookies, y el cliente puede estar vinculado como su cliente descendente.",
-    "_distributionLinkDescription2": "La descripción del enlace de referido."
+  "button.query": {
+    "message": "Consultar",
+    "description": "El texto en el botón, que se utiliza para consultar las ganancias por referencias para el sitio web."
   },
-  "title": {
-    "price": "Monto total de pedidos de referidos",
-    "_price.comment": "El monto total de los pedidos de referidos, que se utiliza para calcular las ganancias por referidos.",
-    "reward": "Recompensas totales por referido",
-    "_reward.comment": "Las recompensas totales por referidos, que se calculan en función del monto del pedido y el porcentaje de ganancia por referido.",
-    "level": "Nivel de referido",
-    "_level.comment": "El nivel de referido, que se utiliza para calcular las ganancias por referidos.",
-    "percentage": "Porcentaje de ganancia por referido",
-    "_percentage.comment": "El porcentaje de ganancia por referido, que se utiliza para calcular las ganancias por referidos.",
-    "currentLevel": "Nivel actual",
-    "_currentLevel.comment": "El nivel actual de referido, que se utiliza para calcular las ganancias por referidos.",
-    "nextLevel": "Próximo nivel",
-    "_nextLevel.comment": "El próximo nivel de referido, que se utiliza para calcular las ganancias por referidos.",
-    "currentPercentage": "Porcentaje actual de ganancia por referido",
-    "_currentPercentage.comment": "El porcentaje actual de ganancia por referido, que se utiliza para calcular las ganancias por referidos.",
-    "nextPercentage": "Porcentaje de ganancia por referido del próximo nivel",
-    "_nextPercentage.comment": "El porcentaje de ganancia por referido del próximo nivel, que se utiliza para calcular las ganancias por referidos.",
-    "levelInfo": "Información de nivel",
-    "_levelInfo.comment": "La información del nivel de referido, que se utiliza para calcular las ganancias por referidos.",
-    "distributionLink": "Enlace de referido",
-    "_distributionLink.comment": "El enlace de referido, que se utiliza para vincular al cliente como cliente subordinado.",
-    "inviteesCount": "Número total de invitados",
-    "_inviteesCount.comment": "El número total de los invitados, que se utiliza para calcular las ganancias por referidos.",
-    "manageDistributionStatus": "Gestión de distribución",
-    "_manageDistributionStatus.comment": "La gestión del estado de referido."
+  "field.id": {
+    "message": "ID de referencia",
+    "description": "El identificador único de la distribución, la distribución significa la referencia para el sitio web del servicio de API."
+  },
+  "field.percentage": {
+    "message": "Porcentaje de ganancia por referencia",
+    "description": "El porcentaje de las ganancias por referencia, que se calcula en función del monto del pedido."
+  },
+  "field.price": {
+    "message": "Monto del pedido",
+    "description": "El monto del pedido, que se utiliza para calcular las ganancias por referencia."
+  },
+  "field.reward": {
+    "message": "Recompensa por referencia",
+    "description": "Las ganancias por referencia, que se calculan en función del monto del pedido y el porcentaje de ganancia por referencia."
+  },
+  "field.createdAt": {
+    "message": "Tiempo de referencia",
+    "description": "El momento en que se crea la referencia."
+  },
+  "field.level": {
+    "message": "Nivel",
+    "description": "El nivel de la referencia, que se utiliza para calcular las ganancias por referencia."
+  },
+  "field.threshold": {
+    "message": "Umbral de ganancia por referencia",
+    "description": "El umbral de las ganancias por referencia, que se utiliza para retirar las ganancias por referencia."
+  },
+  "field.inviteeId": {
+    "message": "ID del invitador",
+    "description": "El identificador único del invitador, el invitador significa el usuario que invita al invitado al sitio web del servicio de API."
+  },
+  "field.isVerified": {
+    "message": "Está verificado",
+    "description": "La bandera que indica si el usuario de referencia está verificado con la información real."
+  },
+  "message.deltaPriceForNextLevel": {
+    "message": "Diferencia al siguiente nivel",
+    "description": "La diferencia entre el monto actual del pedido y el umbral del siguiente nivel."
+  },
+  "message.developingWithDrawal": {
+    "message": "Por favor, agregue servicio al cliente para manejar retiros, los retiros deducirán un impuesto sobre la renta del 6%, las facturas se pueden utilizar para la deducción",
+    "description": "El mensaje para indicar que la función de retiro está en desarrollo."
+  },
+  "message.technicalDetail": {
+    "message": "Detalle técnico",
+    "description": "El detalle técnico del sistema de referencia se implementa."
+  },
+  "message.distributionQrDescription": {
+    "message": "Código QR de referencia (mismo contenido que el enlace)",
+    "description": "La descripción del código QR de referencia."
+  },
+  "message.distributionLink": {
+    "message": "Enlace de referencia",
+    "description": "El enlace de referencia, que se utiliza para vincular al cliente como cliente subordinado."
+  },
+  "message.updateSuccessfully": {
+    "message": "Actualización exitosa",
+    "description": "El mensaje para indicar que la información de referencia se ha actualizado correctamente."
+  },
+  "message.distributionLinkDescription": {
+    "message": "Si un cliente se registra en esta plataforma a través de este enlace o código QR, el cliente estará permanentemente vinculado como su cliente subordinado, y todos los pedidos de consumo del cliente en esta plataforma se devolverán a su cuenta de acuerdo con la proporción de distribución actual.",
+    "description": "La descripción del enlace de referencia."
+  },
+  "message.distributionLinkDescription2": {
+    "message": "Este enlace contiene su ID de usuario. Después de que el cliente abra el enlace, su ID de usuario se registrará en el navegador del cliente en forma de Cookies, que es válido por siete días. Dentro de los siete días, si el cliente registra esta plataforma escaneando el código, su ID de usuario se cargará en el servidor de registro con Cookies, y el cliente puede estar vinculado como su cliente descendente.",
+    "description": "La descripción del enlace de referencia."
+  },
+  "title.price": {
+    "message": "Monto total de pedidos de referencia",
+    "description": "El monto total de los pedidos de referencia, que se utiliza para calcular las ganancias por referencia."
+  },
+  "title.reward": {
+    "message": "Recompensas totales por referencia",
+    "description": "Las recompensas totales por referencia, que se calculan en función del monto del pedido y el porcentaje de ganancia por referencia."
+  },
+  "title.level": {
+    "message": "Nivel de referencia",
+    "description": "El nivel de referencia, que se utiliza para calcular las ganancias por referencia."
+  },
+  "title.percentage": {
+    "message": "Porcentaje de ganancia por referencia",
+    "description": "El porcentaje de ganancia por referencia, que se utiliza para calcular las ganancias por referencia."
+  },
+  "title.currentLevel": {
+    "message": "Nivel actual",
+    "description": "El nivel actual de referencia, que se utiliza para calcular las ganancias por referencia."
+  },
+  "title.nextLevel": {
+    "message": "Próximo nivel",
+    "description": "El próximo nivel de referencia, que se utiliza para calcular las ganancias por referencia."
+  },
+  "title.currentPercentage": {
+    "message": "Porcentaje actual de ganancia por referencia",
+    "description": "El porcentaje actual de ganancia por referencia, que se utiliza para calcular las ganancias por referencia."
+  },
+  "title.nextPercentage": {
+    "message": "Porcentaje de ganancia por referencia del próximo nivel",
+    "description": "El porcentaje de ganancia por referencia del próximo nivel, que se utiliza para calcular las ganancias por referencia."
+  },
+  "title.levelInfo": {
+    "message": "Información del nivel",
+    "description": "La información del nivel de referencia, que se utiliza para calcular las ganancias por referencia."
+  },
+  "title.distributionLink": {
+    "message": "Enlace de referencia",
+    "description": "El enlace de referencia, que se utiliza para vincular al cliente como cliente subordinado."
+  },
+  "title.inviteesCount": {
+    "message": "Número total de invitados",
+    "description": "El número total de los invitados, que se utiliza para calcular las ganancias por referencia."
+  },
+  "title.manageDistributionStatus": {
+    "message": "Gestión de distribución",
+    "description": "La gestión del estado de referencia."
   }
 }

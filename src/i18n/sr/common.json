@@ -1,162 +1,314 @@
 {
-  "button": {
-    "setup": "Podešavanje",
-    "_setup.comment": "Tekst na dugmetu, koje se koristi za podešavanje nečega",
-    "edit": "Uredi",
-    "_edit.comment": "Tekst na dugmetu, koje se koristi za uređivanje nečega",
-    "login": "Prijavi se",
-    "_login.comment": "Tekst na dugmetu, koje se koristi za prijavljivanje",
-    "logout": "Odjavi se",
-    "_logout.comment": "Tekst na dugmetu, koje se koristi za odjavljivanje",
-    "new": "Novo",
-    "_new.comment": "Tekst na dugmetu, koje se koristi za kreiranje novog elementa",
-    "delete": "Obriši",
-    "_delete.comment": "Tekst na dugmetu, koje se koristi za brisanje nečega",
-    "confirm": "Potvrdi",
-    "_confirm.comment": "Tekst na dugmetu, koje se koristi za potvrdu nečega",
-    "cancel": "Otkaži",
-    "_cancel.comment": "Tekst na dugmetu, koje se koristi za otkazivanje nečega",
-    "alert": "Upozorenje",
-    "_alert.comment": "Tekst na dugmetu, koje se koristi za upozorenje na nešto",
-    "info": "Informacije",
-    "_info.comment": "Tekst na dugmetu, koje se koristi za prikazivanje informacija",
-    "publish": "Objavi",
-    "_publish.comment": "Tekst na dugmetu, koje se koristi za objavljivanje nečega",
-    "watch": "Pogledaj",
-    "_watch.comment": "Tekst na dugmetu, koje se koristi za posmatranje nečega",
-    "verify": "Verifikuj",
-    "_verify.comment": "Tekst na dugmetu, koje se koristi za omogućavanje korisniku da izvrši verifikaciju pravog imena",
-    "profile": "Profil",
-    "_profile.comment": "Tekst na dugmetu, koje se koristi za prikazivanje profila",
-    "console": "Konzola",
-    "_console.comment": "Tekst na dugmetu, koje se koristi za prikazivanje konzolne stranice za kontrolu nečega na web stranici",
-    "learn": "Nauči",
-    "_learn.comment": "Tekst na dugmetu, koje se koristi za omogućavanje korisniku da nauči nešto",
-    "buy": "Kupi",
-    "_buy.comment": "Tekst na dugmetu, koje se koristi za omogućavanje korisniku da kupi nešto",
-    "try": "Isprobaj",
-    "_try.comment": "Tekst na dugmetu, koje se koristi za omogućavanje korisniku da isproba nešto",
-    "startForFree": "Počni besplatno",
-    "_startForFree.comment": "Tekst na dugmetu, koje se koristi za omogućavanje korisniku da počne besplatno",
-    "apply": "Prijavi se",
-    "_apply.comment": "Tekst na dugmetu, koje se koristi za omogućavanje korisniku da se prijavi za API uslugu",
-    "refresh": "Osveži",
-    "_refresh.comment": "Tekst na dugmetu, koje se koristi za osvežavanje stranice",
-    "pay": "Plati",
-    "_pay.comment": "Tekst na dugmetu, koje se koristi za omogućavanje korisniku da plati za uslugu",
-    "repay": "Nastavi sa plaćanjem",
-    "_repay.comment": "Tekst na dugmetu, koje se koristi za omogućavanje korisniku da nastavi sa plaćanjem za uslugu",
-    "applied": "Primijenjeno",
-    "_applied.comment": "Tekst na dugmetu, koje se koristi za prikazivanje da je korisnik aplicirao za uslugu",
-    "acquire": "Pribavi",
-    "_acquire.comment": "Tekst na dugmetu, koje se koristi za omogućavanje korisniku da pribavi nešto poput tokena ili ključa za API uslugu",
-    "fillExample": "Popuni primer",
-    "_fillExample.comment": "Tekst na dugmetu, koje se koristi za omogućavanje korisniku da popuni primer podataka",
-    "buyMore": "Kupi više",
-    "_buyMore.comment": "Tekst na dugmetu, koje se koristi za omogućavanje korisniku da kupi više",
-    "update": "Ažuriraj",
-    "_update.comment": "Tekst na dugmetu, koje se koristi za ažuriranje nečega",
-    "view": "Pogledaj",
-    "_view.comment": "Tekst na dugmetu, koje se koristi za pregled nečega",
-    "copy": "Kopiraj",
-    "_copy.comment": "Tekst na dugmetu, koje se koristi za kopiranje nečega",
-    "create": "Kreiraj",
-    "_create.comment": "Tekst na dugmetu, koje se koristi za kreiranje nečega",
-    "referralEarnings": "Zarada od preporuka",
-    "_referralEarnings.comment": "Tekst na dugmetu, koje se koristi za prikazivanje zarade od preporuka, što znači da korisnik može zaraditi novac pozivajući druge da koriste uslugu",
-    "finish": "Završi",
-    "_finish.comment": "Tekst na dugmetu, koje se koristi za završavanje nečega"
+  "button.setup": {
+    "message": "Podešavanje",
+    "description": "Tekst na dugmetu, koje se koristi za podešavanje nečega"
   },
-  "entity": {
-    "website": "Ace Data Cloud",
-    "_website.comment": "Ime web stranice, ne treba prevoditi, samo ga zadržite kao 'Ace Data Cloud'",
-    "copyright": "Autorska prava",
-    "_copyright.comment": "Tekst za prikaz autorskih prava",
-    "platform": "Platforma",
-    "_platform.comment": "Tekst koji ukazuje da je ovo platforma API usluge",
-    "title": "Naslov",
-    "_title.comment": "Naslov entiteta",
-    "icon": "Ikona",
-    "_icon.comment": "Ikona entiteta",
-    "status": "Status",
-    "_status.comment": "Status entiteta",
-    "operation": "Operacija",
-    "_operation.comment": "Operacija entiteta",
-    "description": "Opis",
-    "_description.comment": "Opis entiteta",
-    "createdAt": "Kreirano u",
-    "_createdAt.comment": "Vreme kada je entitet kreiran",
-    "updatedAt": "Ažurirano u",
-    "_updatedAt.comment": "Vreme kada je entitet ažuriran",
-    "order": "Narudžbina",
-    "_order.comment": "Narudžbina entiteta, sadrži novac, informacije o usluzi, korisnik mora da plati za to"
+  "button.edit": {
+    "message": "Uredi",
+    "description": "Tekst na dugmetu, koje se koristi za uređivanje nečega"
   },
-  "message": {
-    "usedAmount": "Iskorišćeni iznos",
-    "_usedAmount.comment": "Poruka za prikaz iskorišćenog iznosa usluge",
-    "remainingAmount": "Preostali iznos",
-    "_remainingAmount.comment": "Poruka za prikaz preostalog iznosa usluge",
-    "copied": "Uspešno kopirano",
-    "_copied.comment": "Poruka za prikaz da je sadržaj uspešno kopiran",
-    "confirmDelete": "Da li ste sigurni da želite da obrišete?",
-    "_confirmDelete.comment": "Poruka za potvrdu da korisnik želi da obriše nešto",
-    "alert": "Upozorenje",
-    "_alert.comment": "Poruka za upozorenje korisnika",
-    "info": "Vrsta podsetnika",
-    "_info.comment": "Poruka za prikaz informacija",
-    "free": "Besplatno",
-    "_free.comment": "Poruka za prikaz da je usluga besplatna, što znači da korisnik ne mora da plati za nju",
-    "startPrice": "Početak",
-    "_startPrice.comment": "Poruka za prikaz najniže cene usluge",
-    "joinDiscord": "Pridruži se Discord-u",
-    "_joinDiscord.comment": "Poruka za omogućavanje korisniku da se pridruži Discord kanalu",
-    "noData": "Nema podataka",
-    "_noData.comment": "Poruka za prikaz da nema podataka u tabeli ili listi"
+  "button.login": {
+    "message": "Prijavi se",
+    "description": "Tekst na dugmetu, koje se koristi za prijavljivanje"
   },
-  "nav": {
-    "home": "Početna",
-    "_home.comment": "Tekst u navigacionoj traci web stranice, koji se koristi za prikaz početne stranice",
-    "content": "Sadržaj",
-    "_content.comment": "Tekst u navigacionoj traci web stranice, koji se koristi za prikaz stranice sa sadržajem",
-    "category": "Kategorija",
-    "_category.comment": "Tekst u navigacionoj traci web stranice, koji se koristi za prikaz stranice sa kategorijama",
-    "service": "Usluge",
-    "_service.comment": "Tekst u navigacionoj traci web stranice, koji se koristi za prikaz stranice sa uslugama",
-    "document": "Dokumenti",
-    "_document.comment": "Tekst u navigacionoj traci web stranice, koji se koristi za prikaz stranice sa dokumentima",
-    "console": "Konzola",
-    "_console.comment": "Tekst u navigacionoj traci web stranice, koji se koristi za prikazivanje konzolne stranice",
-    "chat": "Ćaskanje",
-    "_chat.comment": "Tekst u navigacionoj traci web stranice, koji se koristi za prikaz stranice za ćaskanje",
-    "midjourney": "Midjourney",
-    "_midjourney.comment": "Tekst u navigacionoj traci web stranice, koji se koristi za prikaz stranice Midjourney",
-    "chatdoc": "Chatdoc",
-    "_chatdoc.comment": "Tekst u navigacionoj traci web stranice, koji se koristi za prikaz stranice Chatdoc"
+  "button.logout": {
+    "message": "Odjavi se",
+    "description": "Tekst na dugmetu, koje se koristi za odjavljivanje"
   },
-  "title": {
-    "alert": "Upozorenje",
-    "_alert.comment": "Naslov poruke upozorenja",
-    "placeholderOfSelect": "Molimo odaberite",
-    "_placeholderOfSelect.comment": "Tekst za upisivanje u polje za odabir",
-    "placeholderOfInput": "Molimo popunite",
-    "_placeholderOfInput.comment": "Tekst za upisivanje u polje za unos",
-    "allApplications": "Sve aplikacije",
-    "_allApplications.comment": "Naslov stranice za prikaz svih aplikacija",
-    "allOrders": "Sve narudžbine",
-    "_allOrders.comment": "Naslov stranice za prikaz svih narudžbina",
-    "orderInfo": "Informacije o narudžbini",
-    "_orderInfo.comment": "Naslov stranice za prikaz informacija o narudžbini",
-    "buyMore": "Kupi više",
-    "_buyMore.comment": "Naslov stranice za omogućavanje korisniku da kupi više",
-    "distribution": "Zarada od preporuka",
-    "_distribution.comment": "Naslov stranice za prikaz zarade od preporuka, što znači da korisnik može zaraditi novac pozivajući druge da koriste uslugu",
-    "distributionHistory": "Istorija preporuka",
-    "_distributionHistory.comment": "Naslov stranice za prikaz istorije preporuka",
-    "invitee": "Pozivač",
-    "_invitee.comment": "Naslov stranice za prikaz pozivača",
-    "allUsages": "Istorija korišćenja",
-    "_allUsages.comment": "Naslov stranice za prikaz istorije korišćenja API usluge",
-    "allCredentials": "Akreditivi",
-    "_allCredentials.comment": "Naslov stranice za prikaz svih akreditiva, akreditivi se koriste za pristup API-ju"
+  "button.new": {
+    "message": "Novo",
+    "description": "Tekst na dugmetu, koje se koristi za kreiranje novog elementa"
+  },
+  "button.delete": {
+    "message": "Obriši",
+    "description": "Tekst na dugmetu, koje se koristi za brisanje nečega"
+  },
+  "button.confirm": {
+    "message": "Potvrdi",
+    "description": "Tekst na dugmetu, koje se koristi za potvrdu nečega"
+  },
+  "button.cancel": {
+    "message": "Otkaži",
+    "description": "Tekst na dugmetu, koje se koristi za otkazivanje nečega"
+  },
+  "button.alert": {
+    "message": "Upozorenje",
+    "description": "Tekst na dugmetu, koje se koristi za upozorenje"
+  },
+  "button.info": {
+    "message": "Informacije",
+    "description": "Tekst na dugmetu, koje se koristi za prikazivanje informacija"
+  },
+  "button.publish": {
+    "message": "Objavi",
+    "description": "Tekst na dugmetu, koje se koristi za objavljivanje nečega"
+  },
+  "button.watch": {
+    "message": "Pogledaj",
+    "description": "Tekst na dugmetu, koje se koristi za posmatranje nečega"
+  },
+  "button.verify": {
+    "message": "Verifikuj",
+    "description": "Tekst na dugmetu, koje se koristi za verifikaciju pravog imena korisnika"
+  },
+  "button.profile": {
+    "message": "Profil",
+    "description": "Tekst na dugmetu, koje se koristi za prikazivanje profila"
+  },
+  "button.console": {
+    "message": "Konzola",
+    "description": "Tekst na dugmetu, koje se koristi za prikazivanje konzolne stranice za kontrolu nečega na veb stranici"
+  },
+  "button.learn": {
+    "message": "Nauči",
+    "description": "Tekst na dugmetu, koje se koristi za omogućavanje korisniku da nauči nešto"
+  },
+  "button.buy": {
+    "message": "Kupi",
+    "description": "Tekst na dugmetu, koje se koristi za omogućavanje korisniku da kupi nešto"
+  },
+  "button.try": {
+    "message": "Isprobaj",
+    "description": "Tekst na dugmetu, koje se koristi za omogućavanje korisniku da isproba nešto"
+  },
+  "button.startForFree": {
+    "message": "Počni besplatno",
+    "description": "Tekst na dugmetu, koje se koristi za omogućavanje korisniku da počne besplatno"
+  },
+  "button.apply": {
+    "message": "Prijavi se",
+    "description": "Tekst na dugmetu, koje se koristi za omogućavanje korisniku da se prijavi za API uslugu"
+  },
+  "button.refresh": {
+    "message": "Osveži",
+    "description": "Tekst na dugmetu, koje se koristi za osvežavanje stranice"
+  },
+  "button.pay": {
+    "message": "Plati",
+    "description": "Tekst na dugmetu, koje se koristi za omogućavanje korisniku da plati za uslugu"
+  },
+  "button.repay": {
+    "message": "Nastavi sa plaćanjem",
+    "description": "Tekst na dugmetu, koje se koristi za omogućavanje korisniku da nastavi sa plaćanjem za uslugu"
+  },
+  "button.applied": {
+    "message": "Primijenjeno",
+    "description": "Tekst na dugmetu, koje se koristi za prikazivanje da je korisnik aplicirao za uslugu"
+  },
+  "button.acquire": {
+    "message": "Pribavi",
+    "description": "Tekst na dugmetu, koje se koristi za omogućavanje korisniku da pribavi nešto poput tokena ili ključa za API uslugu"
+  },
+  "button.fillExample": {
+    "message": "Popuni primer",
+    "description": "Tekst na dugmetu, koje se koristi za omogućavanje korisniku da popuni primer podataka"
+  },
+  "button.buyMore": {
+    "message": "Kupi više",
+    "description": "Tekst na dugmetu, koje se koristi za omogućavanje korisniku da kupi više"
+  },
+  "button.update": {
+    "message": "Ažuriraj",
+    "description": "Tekst na dugmetu, koje se koristi za ažuriranje nečega"
+  },
+  "button.view": {
+    "message": "Pogledaj",
+    "description": "Tekst na dugmetu, koje se koristi za pregled nečega"
+  },
+  "button.copy": {
+    "message": "Kopiraj",
+    "description": "Tekst na dugmetu, koje se koristi za kopiranje nečega"
+  },
+  "button.create": {
+    "message": "Kreiraj",
+    "description": "Tekst na dugmetu, koje se koristi za kreiranje nečega"
+  },
+  "button.referralEarnings": {
+    "message": "Zarada od preporuke",
+    "description": "Tekst na dugmetu, koje se koristi za prikazivanje zarade od preporuke, znači da korisnik može zaraditi novac pozivajući druge da koriste uslugu"
+  },
+  "button.finish": {
+    "message": "Završi",
+    "description": "Tekst na dugmetu, koje se koristi za završavanje nečega"
+  },
+  "entity.website": {
+    "message": "Ace Data Cloud",
+    "description": "Ime veb sajta, nema potrebe za prevodom, samo ga zadržite kao 'Ace Data Cloud'"
+  },
+  "entity.copyright": {
+    "message": "Autorska prava",
+    "description": "Tekst za prikazivanje autorskih prava"
+  },
+  "entity.platform": {
+    "message": "Platforma",
+    "description": "Tekst koji ukazuje da je ovo platforma API usluge"
+  },
+  "entity.title": {
+    "message": "Naslov",
+    "description": "Naslov entiteta"
+  },
+  "entity.icon": {
+    "message": "Ikona",
+    "description": "Ikona entiteta"
+  },
+  "entity.status": {
+    "message": "Status",
+    "description": "Status entiteta"
+  },
+  "entity.operation": {
+    "message": "Operacija",
+    "description": "Operacija entiteta"
+  },
+  "entity.description": {
+    "message": "Opis",
+    "description": "Opis entiteta"
+  },
+  "entity.createdAt": {
+    "message": "Kreirano",
+    "description": "Vreme kada je entitet kreiran"
+  },
+  "entity.updatedAt": {
+    "message": "Ažurirano",
+    "description": "Vreme kada je entitet ažuriran"
+  },
+  "entity.order": {
+    "message": "Narudžbina",
+    "description": "Narudžbina entiteta, narudžbina sadrži novac, informacije o usluzi, korisnik mora da plati za to"
+  },
+  "message.usedAmount": {
+    "message": "Iskorišćeni iznos",
+    "description": "Poruka za prikazivanje iskorišćenog iznosa usluge"
+  },
+  "message.remainingAmount": {
+    "message": "Preostali iznos",
+    "description": "Poruka za prikazivanje preostalog iznosa usluge"
+  },
+  "message.copied": {
+    "message": "Uspešno kopirano",
+    "description": "Poruka za prikazivanje da je sadržaj uspešno kopiran"
+  },
+  "message.confirmDelete": {
+    "message": "Da li ste sigurni da želite da obrišete?",
+    "description": "Poruka za potvrdu da korisnik želi da obriše nešto"
+  },
+  "message.alert": {
+    "message": "Upozorenje",
+    "description": "Poruka za upozorenje korisnika"
+  },
+  "message.info": {
+    "message": "Vrsta podsetnika",
+    "description": "Poruka za prikazivanje informacija"
+  },
+  "message.free": {
+    "message": "Besplatno",
+    "description": "Poruka za prikazivanje da je usluga besplatna, što znači da korisnik ne mora da plati za nju"
+  },
+  "message.startPrice": {
+    "message": "Početna cena",
+    "description": "Poruka za prikazivanje najniže cene usluge"
+  },
+  "message.joinDiscord": {
+    "message": "Pridruži se Discord-u",
+    "description": "Poruka za omogućavanje korisniku da se pridruži Discord kanalu"
+  },
+  "message.noData": {
+    "message": "Nema podataka",
+    "description": "Poruka za prikazivanje da nema podataka u tabeli ili listi"
+  },
+  "nav.home": {
+    "message": "Početna",
+    "description": "Tekst u navigacionom baru veb sajta, koji se koristi za prikazivanje početne stranice"
+  },
+  "nav.content": {
+    "message": "Sadržaj",
+    "description": "Tekst u navigacionom baru veb sajta, koji se koristi za prikazivanje stranice sa sadržajem"
+  },
+  "nav.category": {
+    "message": "Kategorija",
+    "description": "Tekst u navigacionom baru veb sajta, koji se koristi za prikazivanje stranice sa kategorijama"
+  },
+  "nav.service": {
+    "message": "Usluge",
+    "description": "Tekst u navigacionom baru veb sajta, koji se koristi za prikazivanje stranice sa uslugama"
+  },
+  "nav.document": {
+    "message": "Dokumenti",
+    "description": "Tekst u navigacionom baru veb sajta, koji se koristi za prikazivanje stranice sa dokumentima"
+  },
+  "nav.console": {
+    "message": "Konzola",
+    "description": "Tekst u navigacionom baru veb sajta, koji se koristi za prikazivanje konzolne stranice"
+  },
+  "nav.chat": {
+    "message": "Ćaskanje",
+    "description": "Tekst u navigacionom baru veb sajta, koji se koristi za prikazivanje stranice za ćaskanje"
+  },
+  "nav.midjourney": {
+    "message": "Midjourney",
+    "description": "Tekst u navigacionom baru veb sajta, koji se koristi za prikazivanje stranice Midjourney, molimo vas da ne prevodite 'Midjourney', zadržite ga kao 'Midjourney'"
+  },
+  "nav.chatdoc": {
+    "message": "Chatdoc",
+    "description": "Tekst u navigacionom baru veb sajta, koji se koristi za prikazivanje stranice Chatdoc"
+  },
+  "nav.distribution": {
+    "message": "Zarada od preporuke",
+    "description": "Tekst u navigacionom baru veb sajta, koji se koristi za prikazivanje stranice zarade od preporuke"
+  },
+  "nav.logOut": {
+    "message": "Odjavi se",
+    "description": "Tekst u navigacionom baru veb sajta, koji se koristi za odjavljivanje"
+  },
+  "nav.locale": {
+    "message": "Jezik",
+    "description": "Tekst u navigacionom baru veb sajta, koji se koristi za promenu jezika"
+  },
+  "title.alert": {
+    "message": "Upozorenje",
+    "description": "Naslov poruke upozorenja"
+  },
+  "title.placeholderOfSelect": {
+    "message": "Molimo odaberite",
+    "description": "Placeholder za unos selekcije"
+  },
+  "title.placeholderOfInput": {
+    "message": "Molimo popunite",
+    "description": "Placeholder za unos"
+  },
+  "title.allApplications": {
+    "message": "Sve aplikacije",
+    "description": "Naslov stranice za prikaz svih aplikacija"
+  },
+  "title.allOrders": {
+    "message": "Sve narudžbine",
+    "description": "Naslov stranice za prikaz svih narudžbina"
+  },
+  "title.orderInfo": {
+    "message": "Informacije o narudžbini",
+    "description": "Naslov stranice za prikaz informacija o narudžbini"
+  },
+  "title.buyMore": {
+    "message": "Kupi više",
+    "description": "Naslov stranice za omogućavanje korisniku da kupi više"
+  },
+  "title.distribution": {
+    "message": "Zarada od preporuke",
+    "description": "Naslov stranice za prikaz zarade od preporuke, znači da korisnik može zaraditi novac pozivajući druge da koriste uslugu"
+  },
+  "title.distributionHistory": {
+    "message": "Istorija preporuka",
+    "description": "Naslov stranice za prikaz istorije preporuka"
+  },
+  "title.invitee": {
+    "message": "Pozivač",
+    "description": "Naslov stranice za prikazivače pozivača"
+  },
+  "title.allUsages": {
+    "message": "Istorija korišćenja",
+    "description": "Naslov stranice za prikaz svih korišćenja API usluge"
+  },
+  "title.allCredentials": {
+    "message": "Akreditivi",
+    "description": "Naslov stranice za prikaz svih akreditiva, akreditivi se koriste za pristup API-ju"
   }
 }

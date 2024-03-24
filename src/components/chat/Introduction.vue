@@ -114,6 +114,7 @@ export default defineComponent({
     .subtitle {
       text-align: center;
       font-size: 18px;
+      margin-top: 10px;
       margin-bottom: 40px;
     }
     .introduction-item {

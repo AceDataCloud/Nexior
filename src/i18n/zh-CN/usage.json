@@ -1,16 +1,26 @@
 {
-  "field": {
-    "createdAt": "使用时间",
-    "_createdAt.comment": "记录的使用时间。",
-    "statusCode": "状态码",
-    "statusCode.comment": "使用记录的状态码。",
-    "usedAmount": "使用量",
-    "usedAmount.comment": "使用的资源量。",
-    "deductedAmount": "扣除量",
-    "deductedAmount.comment": "被扣除的资源量。",
-    "remainingAmount": "剩余量",
-    "remainingAmount.comment": "剩余的资源量。",
-    "metadata": "元数据",
-    "metadata.comment": "使用记录的元数据。"
+  "field.createdAt": {
+    "message": "使用时间",
+    "description": "使用记录创建的时间。"
+  },
+  "field.statusCode": {
+    "message": "状态码",
+    "description": "使用记录的状态码。"
+  },
+  "field.usedAmount": {
+    "message": "已使用数量",
+    "description": "已使用的资源数量。"
+  },
+  "field.deductedAmount": {
+    "message": "已扣除数量",
+    "description": "已扣除的资源数量。"
+  },
+  "field.remainingAmount": {
+    "message": "剩余数量",
+    "description": "剩余的资源数量。"
+  },
+  "field.metadata": {
+    "message": "元数据",
+    "description": "使用记录的元数据。"
   }
 }

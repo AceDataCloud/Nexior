@@ -11,7 +11,7 @@
         :service="service"
         :need-apply="needApply"
         class="mb-4"
-        @refresh="onGetApplications"
+        @refresh="onGetApplication"
       />
       <div class="pt-4">
         <reference-image class="mb-4" @change="references = $event" />
@@ -46,7 +46,7 @@ import TaskBriefList from '@/components/midjourney/tasks/TaskBriefList.vue';
 import FinalPrompt from '@/components/midjourney/FinalPrompt.vue';
 import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
 import { MidjourneyImagineMode, Status } from '@/models';
-import { IMidjourneyImagineRequest, IApplicationDetailResponse, IApplication, MidjourneyImagineAction } from '@/models';
+import { IMidjourneyImagineRequest, IApplicationDetailResponse, MidjourneyImagineAction } from '@/models';
 
 interface IData {
   prompt: string;
@@ -143,9 +143,6 @@ export default defineComponent({
       return this.prompt || this.references?.length > 0 ? content : '';
     }
   },
-  async mounted() {
-    await this.onGetApplications();
-  },
   methods: {
     onApply() {
       applicationOperator
@@ -163,7 +160,7 @@ export default defineComponent({
           }
         });
     },
-    async onGetApplications() {
+    async onGetApplication() {
       await this.$store.dispatch('midjourney/getApplication');
     },
     async onStartTask(request: IMidjourneyImagineRequest) {
@@ -172,6 +169,7 @@ export default defineComponent({
         console.error('no token specified');
         return;
       }
+      ElMessage.success(this.$t('midjourney.message.startingTask'));
       midjourneyOperator
         .imagine(request, {
           token

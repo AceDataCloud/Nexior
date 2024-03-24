@@ -55,6 +55,7 @@
                     <el-button
                       v-if="scope.row.state !== OrderState.PAID"
                       type="primary"
+                      size="small"
                       @click="
                         $router.push({
                           name: 'console-order-detail',
@@ -68,6 +69,7 @@
                     </el-button>
                     <el-button
                       v-else
+                      size="small"
                       @click="
                         $router.push({
                           name: 'console-order-detail',

@@ -1,162 +1,314 @@
 {
-  "button": {
-    "setup": "Configuración",
-    "_setup.comment": "El texto en el botón, que se utiliza para configurar algo",
-    "edit": "Editar",
-    "_edit.comment": "El texto en el botón, que se utiliza para editar algo",
-    "login": "Iniciar sesión",
-    "_login.comment": "El texto en el botón, que se utiliza para iniciar sesión",
-    "logout": "Cerrar sesión",
-    "_logout.comment": "El texto en el botón, que se utiliza para cerrar sesión",
-    "new": "Nuevo",
-    "_new.comment": "El texto en el botón, que se utiliza para crear un nuevo elemento",
-    "delete": "Eliminar",
-    "_delete.comment": "El texto en el botón, que se utiliza para eliminar algo",
-    "confirm": "Confirmar",
-    "_confirm.comment": "El texto en el botón, que se utiliza para confirmar algo",
-    "cancel": "Cancelar",
-    "_cancel.comment": "El texto en el botón, que se utiliza para cancelar algo",
-    "alert": "Alerta",
-    "_alert.comment": "El texto en el botón, que se utiliza para alertar algo",
-    "info": "Información",
-    "_info.comment": "El texto en el botón, que se utiliza para mostrar información",
-    "publish": "Publicar",
-    "_publish.comment": "El texto en el botón, que se utiliza para publicar algo",
-    "watch": "Ver",
-    "_watch.comment": "El texto en el botón, que se utiliza para ver algo",
-    "verify": "Verificar",
-    "_verify.comment": "El texto en el botón, que se utiliza para permitir al usuario realizar una verificación de nombre real",
-    "profile": "Perfil",
-    "_profile.comment": "El texto en el botón, que se utiliza para mostrar el perfil",
-    "console": "Consola",
-    "_console.comment": "El texto en el botón, que se utiliza para mostrar la página de consola para controlar algo en la página web",
-    "learn": "Aprender",
-    "_learn.comment": "El texto en el botón, que se utiliza para permitir al usuario aprender algo",
-    "buy": "Comprar",
-    "_buy.comment": "El texto en el botón, que se utiliza para permitir al usuario comprar algo",
-    "try": "Probar",
-    "_try.comment": "El texto en el botón, que se utiliza para permitir al usuario probar algo",
-    "startForFree": "Comenzar gratis",
-    "_startForFree.comment": "El texto en el botón, que se utiliza para permitir al usuario comenzar de forma gratuita",
-    "apply": "Aplicar",
-    "_apply.comment": "El texto en el botón, que se utiliza para permitir al usuario solicitar el servicio de API",
-    "refresh": "Actualizar",
-    "_refresh.comment": "El texto en el botón, que se utiliza para actualizar la página",
-    "pay": "Pagar",
-    "_pay.comment": "El texto en el botón, que se utiliza para permitir al usuario pagar por el servicio",
-    "repay": "Continuar pagando",
-    "_repay.comment": "El texto en el botón, que se utiliza para permitir al usuario continuar pagando por el servicio",
-    "applied": "Aplicado",
-    "_applied.comment": "El texto en el botón, que se utiliza para mostrar que el usuario ha solicitado el servicio",
-    "acquire": "Adquirir",
-    "_acquire.comment": "El texto en el botón, que se utiliza para permitir al usuario adquirir algo como el token o la clave para el servicio de API",
-    "fillExample": "Llenar ejemplo",
-    "_fillExample.comment": "El texto en el botón, que se utiliza para permitir al usuario completar los datos de ejemplo",
-    "buyMore": "Comprar más",
-    "_buyMore.comment": "El texto en el botón, que se utiliza para permitir al usuario comprar más",
-    "update": "Actualizar",
-    "_update.comment": "El texto en el botón, que se utiliza para actualizar algo",
-    "view": "Ver",
-    "_view.comment": "El texto en el botón, que se utiliza para ver algo",
-    "copy": "Copiar",
-    "_copy.comment": "El texto en el botón, que se utiliza para copiar algo",
-    "create": "Crear",
-    "_create.comment": "El texto en el botón, que se utiliza para crear algo",
-    "referralEarnings": "Ganancias por referidos",
-    "_referralEarnings.comment": "El texto en el botón, que se utiliza para mostrar las ganancias por referidos, significa que el usuario puede ganar dinero invitando a otros a usar el servicio",
-    "finish": "Finalizar",
-    "_finish.comment": "El texto en el botón, que se utiliza para finalizar algo"
+  "button.setup": {
+    "message": "Configurar",
+    "description": "El texto en el botón, que se utiliza para configurar algo"
   },
-  "entity": {
-    "website": "Ace Data Cloud",
-    "_website.comment": "El nombre del sitio web, no es necesario traducirlo, solo mantenerlo como 'Ace Data Cloud'",
-    "copyright": "Derechos de autor",
-    "_copyright.comment": "El texto para mostrar los derechos de autor",
-    "platform": "Plataforma",
-    "_platform.comment": "El texto que indica que esta es una plataforma del servicio de API",
-    "title": "Título",
-    "_title.comment": "El título de la entidad",
-    "icon": "Ícono",
-    "_icon.comment": "El ícono de la entidad",
-    "status": "Estado",
-    "_status.comment": "El estado de la entidad",
-    "operation": "Operación",
-    "_operation.comment": "La operación de la entidad",
-    "description": "Descripción",
-    "_description.comment": "La descripción de la entidad",
-    "createdAt": "Creado en",
-    "_createdAt.comment": "La hora en que se creó la entidad",
-    "updatedAt": "Actualizado en",
-    "_updatedAt.comment": "La hora en que se actualizó la entidad",
-    "order": "Orden",
-    "_order.comment": "El orden de la entidad, el orden contiene el dinero, la información del servicio, el usuario necesita pagar por ello"
+  "button.edit": {
+    "message": "Editar",
+    "description": "El texto en el botón, que se utiliza para editar algo"
   },
-  "message": {
-    "usedAmount": "Cantidad utilizada",
-    "_usedAmount.comment": "El mensaje para mostrar la cantidad utilizada del servicio",
-    "remainingAmount": "Cantidad restante",
-    "_remainingAmount.comment": "El mensaje para mostrar la cantidad restante del servicio",
-    "copied": "Copiado exitosamente",
-    "_copied.comment": "El mensaje para mostrar que el contenido se ha copiado correctamente",
-    "confirmDelete": "¿Está seguro de que desea eliminar?",
-    "_confirmDelete.comment": "El mensaje para confirmar que el usuario desea eliminar algo",
-    "alert": "Advertencia",
-    "_alert.comment": "El mensaje para alertar al usuario",
-    "info": "Recordatorio amable",
-    "_info.comment": "El mensaje para mostrar información",
-    "free": "Gratis",
-    "_free.comment": "El mensaje para mostrar que el servicio es gratuito, lo que significa que el usuario no necesita pagar por ello",
-    "startPrice": "Comenzando",
-    "_startPrice.comment": "El mensaje para mostrar el precio más bajo del servicio",
-    "joinDiscord": "Unirse a Discord",
-    "_joinDiscord.comment": "El mensaje para permitir al usuario unirse al canal de Discord",
-    "noData": "Sin datos",
-    "_noData.comment": "El mensaje para mostrar que no hay datos en la tabla o lista"
+  "button.login": {
+    "message": "Iniciar sesión",
+    "description": "El texto en el botón, que se utiliza para iniciar sesión"
   },
-  "nav": {
-    "home": "Inicio",
-    "_home.comment": "El texto en la barra de navegación del sitio web, que se utiliza para mostrar la página de inicio",
-    "content": "Contenido",
-    "_content.comment": "El texto en la barra de navegación del sitio web, que se utiliza para mostrar la página de contenido",
-    "category": "Categoría",
-    "_category.comment": "El texto en la barra de navegación del sitio web, que se utiliza para mostrar la página de categoría",
-    "service": "Servicios",
-    "_service.comment": "El texto en la barra de navegación del sitio web, que se utiliza para mostrar la página de servicio",
-    "document": "Documentos",
-    "_document.comment": "El texto en la barra de navegación del sitio web, que se utiliza para mostrar la página de documentos",
-    "console": "Consola",
-    "_console.comment": "El texto en la barra de navegación del sitio web, que se utiliza para mostrar la página de consola",
-    "chat": "Chat",
-    "_chat.comment": "El texto en la barra de navegación del sitio web, que se utiliza para mostrar la página de chat",
-    "midjourney": "Medio viaje",
-    "_midjourney.comment": "El texto en la barra de navegación del sitio web, que se utiliza para mostrar la página de medio viaje",
-    "chatdoc": "Chatdoc",
-    "_chatdoc.comment": "El texto en la barra de navegación del sitio web, que se utiliza para mostrar la página de chatdoc"
+  "button.logout": {
+    "message": "Cerrar sesión",
+    "description": "El texto en el botón, que se utiliza para cerrar sesión"
   },
-  "title": {
-    "alert": "Alerta",
-    "_alert.comment": "El título del mensaje de alerta",
-    "placeholderOfSelect": "Por favor seleccione",
-    "_placeholderOfSelect.comment": "El marcador de posición de la entrada de selección",
-    "placeholderOfInput": "Por favor complete",
-    "_placeholderOfInput.comment": "El marcador de posición de la entrada",
-    "allApplications": "Todas las aplicaciones",
-    "_allApplications.comment": "El título de la página para mostrar todas las aplicaciones",
-    "allOrders": "Todas las órdenes",
-    "_allOrders.comment": "El título de la página para mostrar todas las órdenes",
-    "orderInfo": "Información de la orden",
-    "_orderInfo.comment": "El título de la página para mostrar la información de la orden",
-    "buyMore": "Comprar más",
-    "_buyMore.comment": "El título de la página para permitir al usuario comprar más",
-    "distribution": "Ganancias por referidos",
-    "_distribution.comment": "El título de la página para mostrar las ganancias por referidos, significa que el usuario puede ganar dinero invitando a otros a usar el servicio",
-    "distributionHistory": "Historial de referidos",
-    "_distributionHistory.comment": "El título de la página para mostrar el historial de referidos",
-    "invitee": "Persona que invita",
-    "_invitee.comment": "El título de la página para mostrar la persona que invita",
-    "allUsages": "Historial de uso",
-    "_allUsages.comment": "El título de la página para mostrar todos los usos del servicio de API",
-    "allCredentials": "Credenciales",
-    "_allCredentials.comment": "El título de la página para mostrar todas las credenciales, las credenciales se utilizan para acceder a la API"
+  "button.new": {
+    "message": "Nuevo",
+    "description": "El texto en el botón, que se utiliza para crear un nuevo elemento"
+  },
+  "button.delete": {
+    "message": "Eliminar",
+    "description": "El texto en el botón, que se utiliza para eliminar algo"
+  },
+  "button.confirm": {
+    "message": "Confirmar",
+    "description": "El texto en el botón, que se utiliza para confirmar algo"
+  },
+  "button.cancel": {
+    "message": "Cancelar",
+    "description": "El texto en el botón, que se utiliza para cancelar algo"
+  },
+  "button.alert": {
+    "message": "Alerta",
+    "description": "El texto en el botón, que se utiliza para alertar algo"
+  },
+  "button.info": {
+    "message": "Información",
+    "description": "El texto en el botón, que se utiliza para mostrar información"
+  },
+  "button.publish": {
+    "message": "Publicar",
+    "description": "El texto en el botón, que se utiliza para publicar algo"
+  },
+  "button.watch": {
+    "message": "Ver",
+    "description": "El texto en el botón, que se utiliza para ver algo"
+  },
+  "button.verify": {
+    "message": "Verificar",
+    "description": "El texto en el botón, que se utiliza para que el usuario realice una verificación de nombre real"
+  },
+  "button.profile": {
+    "message": "Perfil",
+    "description": "El texto en el botón, que se utiliza para mostrar el perfil"
+  },
+  "button.console": {
+    "message": "Consola",
+    "description": "El texto en el botón, que se utiliza para mostrar la página de consola para controlar algo en la página web"
+  },
+  "button.learn": {
+    "message": "Aprender",
+    "description": "El texto en el botón, que se utiliza para que el usuario aprenda algo"
+  },
+  "button.buy": {
+    "message": "Comprar",
+    "description": "El texto en el botón, que se utiliza para que el usuario compre algo"
+  },
+  "button.try": {
+    "message": "Intentar",
+    "description": "El texto en el botón, que se utiliza para que el usuario pruebe algo"
+  },
+  "button.startForFree": {
+    "message": "Comenzar gratis",
+    "description": "El texto en el botón, que se utiliza para que el usuario comience de forma gratuita"
+  },
+  "button.apply": {
+    "message": "Aplicar",
+    "description": "El texto en el botón, que se utiliza para que el usuario solicite el servicio de API"
+  },
+  "button.refresh": {
+    "message": "Actualizar",
+    "description": "El texto en el botón, que se utiliza para actualizar la página"
+  },
+  "button.pay": {
+    "message": "Pagar",
+    "description": "El texto en el botón, que se utiliza para que el usuario pague por el servicio"
+  },
+  "button.repay": {
+    "message": "Continuar pagando",
+    "description": "El texto en el botón, que se utiliza para que el usuario continúe pagando por el servicio"
+  },
+  "button.applied": {
+    "message": "Aplicado",
+    "description": "El texto en el botón, que se utiliza para mostrar que el usuario ha solicitado el servicio"
+  },
+  "button.acquire": {
+    "message": "Adquirir",
+    "description": "El texto en el botón, que se utiliza para que el usuario adquiera algo como el token o la clave para el servicio de API"
+  },
+  "button.fillExample": {
+    "message": "Llenar ejemplo",
+    "description": "El texto en el botón, que se utiliza para que el usuario complete los datos de ejemplo"
+  },
+  "button.buyMore": {
+    "message": "Comprar más",
+    "description": "El texto en el botón, que se utiliza para que el usuario compre más"
+  },
+  "button.update": {
+    "message": "Actualizar",
+    "description": "El texto en el botón, que se utiliza para actualizar algo"
+  },
+  "button.view": {
+    "message": "Ver",
+    "description": "El texto en el botón, que se utiliza para ver algo"
+  },
+  "button.copy": {
+    "message": "Copiar",
+    "description": "El texto en el botón, que se utiliza para copiar algo"
+  },
+  "button.create": {
+    "message": "Crear",
+    "description": "El texto en el botón, que se utiliza para crear algo"
+  },
+  "button.referralEarnings": {
+    "message": "Ganancias por referidos",
+    "description": "El texto en el botón, que se utiliza para mostrar las ganancias por referidos, significa que el usuario puede ganar dinero invitando a otros a usar el servicio"
+  },
+  "button.finish": {
+    "message": "Finalizar",
+    "description": "El texto en el botón, que se utiliza para finalizar algo"
+  },
+  "entity.website": {
+    "message": "Ace Data Cloud",
+    "description": "El nombre del sitio web, no es necesario traducirlo, solo mantenerlo como 'Ace Data Cloud'"
+  },
+  "entity.copyright": {
+    "message": "Derechos de autor",
+    "description": "El texto para mostrar los derechos de autor"
+  },
+  "entity.platform": {
+    "message": "Plataforma",
+    "description": "El texto que indica que esta es una plataforma del servicio de API"
+  },
+  "entity.title": {
+    "message": "Título",
+    "description": "El título de la entidad"
+  },
+  "entity.icon": {
+    "message": "Icono",
+    "description": "El icono de la entidad"
+  },
+  "entity.status": {
+    "message": "Estado",
+    "description": "El estado de la entidad"
+  },
+  "entity.operation": {
+    "message": "Operación",
+    "description": "La operación de la entidad"
+  },
+  "entity.description": {
+    "message": "Descripción",
+    "description": "La descripción de la entidad"
+  },
+  "entity.createdAt": {
+    "message": "Creado en",
+    "description": "La hora en que se creó la entidad"
+  },
+  "entity.updatedAt": {
+    "message": "Actualizado en",
+    "description": "La hora en que se actualizó la entidad"
+  },
+  "entity.order": {
+    "message": "Orden",
+    "description": "El pedido de la entidad, el pedido contiene el dinero, la información del servicio, el usuario necesita pagar por ello"
+  },
+  "message.usedAmount": {
+    "message": "Cantidad utilizada",
+    "description": "El mensaje para mostrar la cantidad utilizada del servicio"
+  },
+  "message.remainingAmount": {
+    "message": "Cantidad restante",
+    "description": "El mensaje para mostrar la cantidad restante del servicio"
+  },
+  "message.copied": {
+    "message": "Copiado exitosamente",
+    "description": "El mensaje para mostrar que el contenido se ha copiado correctamente"
+  },
+  "message.confirmDelete": {
+    "message": "¿Estás seguro de que quieres eliminar?",
+    "description": "El mensaje para confirmar que el usuario quiere eliminar algo"
+  },
+  "message.alert": {
+    "message": "Advertencia",
+    "description": "El mensaje para alertar al usuario"
+  },
+  "message.info": {
+    "message": "Recordatorio amable",
+    "description": "El mensaje para mostrar información"
+  },
+  "message.free": {
+    "message": "Gratis",
+    "description": "El mensaje para mostrar que el servicio es gratuito, lo que significa que el usuario no necesita pagar por ello"
+  },
+  "message.startPrice": {
+    "message": "Comenzando",
+    "description": "El mensaje para mostrar el precio más bajo del servicio"
+  },
+  "message.joinDiscord": {
+    "message": "Unirse a Discord",
+    "description": "El mensaje para que el usuario se una al canal de Discord"
+  },
+  "message.noData": {
+    "message": "Sin datos",
+    "description": "El mensaje para mostrar que no hay datos en la tabla o lista"
+  },
+  "nav.home": {
+    "message": "Inicio",
+    "description": "El texto en la barra de navegación del sitio web, que se utiliza para mostrar la página de inicio"
+  },
+  "nav.content": {
+    "message": "Contenido",
+    "description": "El texto en la barra de navegación del sitio web, que se utiliza para mostrar la página de contenido"
+  },
+  "nav.category": {
+    "message": "Categoría",
+    "description": "El texto en la barra de navegación del sitio web, que se utiliza para mostrar la página de categoría"
+  },
+  "nav.service": {
+    "message": "Servicios",
+    "description": "El texto en la barra de navegación del sitio web, que se utiliza para mostrar la página de servicio"
+  },
+  "nav.document": {
+    "message": "Documentos",
+    "description": "El texto en la barra de navegación del sitio web, que se utiliza para mostrar la página de documentos"
+  },
+  "nav.console": {
+    "message": "Consola",
+    "description": "El texto en la barra de navegación del sitio web, que se utiliza para mostrar la página de consola"
+  },
+  "nav.chat": {
+    "message": "Chat",
+    "description": "El texto en la barra de navegación del sitio web, que se utiliza para mostrar la página de chat"
+  },
+  "nav.midjourney": {
+    "message": "Midjourney",
+    "description": "El texto en la barra de navegación del sitio web, que se utiliza para mostrar la página de Midjourney, por favor no traducir 'Midjourney', mantenerlo como 'Midjourney'"
+  },
+  "nav.chatdoc": {
+    "message": "Chatdoc",
+    "description": "El texto en la barra de navegación del sitio web, que se utiliza para mostrar la página de chatdoc"
+  },
+  "nav.distribution": {
+    "message": "Ganancias por referidos",
+    "description": "El texto en la barra de navegación del sitio web, que se utiliza para mostrar la página de ganancias por referidos"
+  },
+  "nav.logOut": {
+    "message": "Cerrar sesión",
+    "description": "El texto en la barra de navegación del sitio web, que se utiliza para cerrar sesión"
+  },
+  "nav.locale": {
+    "message": "Idioma",
+    "description": "El texto en la barra de navegación del sitio web, que se utiliza para cambiar el idioma"
+  },
+  "title.alert": {
+    "message": "Alerta",
+    "description": "El título del mensaje de alerta"
+  },
+  "title.placeholderOfSelect": {
+    "message": "Por favor selecciona",
+    "description": "El marcador de posición de la entrada de selección"
+  },
+  "title.placeholderOfInput": {
+    "message": "Por favor completa",
+    "description": "El marcador de posición de la entrada"
+  },
+  "title.allApplications": {
+    "message": "Todas las aplicaciones",
+    "description": "El título de la página para mostrar todas las aplicaciones"
+  },
+  "title.allOrders": {
+    "message": "Todas las órdenes",
+    "description": "El título de la página para mostrar todas las órdenes"
+  },
+  "title.orderInfo": {
+    "message": "Información de la orden",
+    "description": "El título de la página para mostrar la información de la orden"
+  },
+  "title.buyMore": {
+    "message": "Comprar más",
+    "description": "El título de la página para que el usuario compre más"
+  },
+  "title.distribution": {
+    "message": "Ganancias por referidos",
+    "description": "El título de la página para mostrar las ganancias por referidos, significa que el usuario puede ganar dinero invitando a otros a usar el servicio"
+  },
+  "title.distributionHistory": {
+    "message": "Historial de referidos",
+    "description": "El título de la página para mostrar el historial de referidos"
+  },
+  "title.invitee": {
+    "message": "Persona que invita",
+    "description": "El título de la página para mostrar la persona que invita"
+  },
+  "title.allUsages": {
+    "message": "Historial de uso",
+    "description": "El título de la página para mostrar todos los usos del servicio de API"
+  },
+  "title.allCredentials": {
+    "message": "Credenciales",
+    "description": "El título de la página para mostrar todas las credenciales, las credenciales se utilizan para acceder a la API"
   }
 }

@@ -2133,11 +2133,11 @@ export default defineComponent({
     $height: 100px;
     $width: 100px;
     position: relative;
-    width: $height;
-    height: $width;
+    width: $width;
+    height: $height;
     margin-right: 8px;
     margin-bottom: 8px;
-    border-width: 2px;
+    border-width: 3px;
     border-style: solid;
     border-color: #eee;
     border-radius: 5px;
@@ -2161,12 +2161,12 @@ export default defineComponent({
       bottom: 0;
       left: 0;
       right: 0;
-      height: 20px;
       width: $width;
       background-color: rgba(0, 0, 0, 0.5);
       color: white;
       font-size: 10px;
       text-align: center;
+      padding: 0 5px;
     }
   }
 }

@@ -1,104 +1,190 @@
 {
-  "button": {
-    "goDocument": "文档",
-    "_goDocument.comment": "按钮文本，点击此按钮将转到文档页面。",
-    "goCredentials": "凭证",
-    "_goCredentials.comment": "按钮文本，点击此按钮将转到凭证页面。",
-    "buyMore": "购买更多",
-    "_buyMore.comment": "按钮文本，点击此按钮将转到购买更多页面。",
-    "createOrder": "创建订单",
-    "_createOrder.comment": "按钮文本，点击此按钮将转到创建订单页面。",
-    "custom": "自定义",
-    "_custom.comment": "按钮文本，点击此按钮将转到自定义页面。",
-    "query": "查询",
-    "_query.comment": "按钮文本，点击此按钮将转到查询页面。",
-    "usage": "使用记录",
-    "_usage.comment": "按钮文本，点击此按钮将转到使用记录页面。"
+  "button.goDocument": {
+    "message": "文档",
+    "description": "按钮文本，点击此按钮将转到文档页面。"
   },
-  "field": {
-    "id": "应用ID",
-    "_id.comment": "应用的ID。",
-    "remainingAmount": "剩余金额",
-    "_remainingAmount.comment": "应用的剩余金额。",
-    "usedAmount": "已使用金额",
-    "_usedAmount.comment": "应用的已使用金额。",
-    "apiKey": "API密钥",
-    "_apiKey.comment": "API密钥",
-    "service": "服务",
-    "_service.comment": "应用的服务。",
-    "operation": "操作",
-    "_operation.comment": "应用的操作。",
-    "amount": "金额",
-    "_amount.comment": "应用的金额。",
-    "traceId": "跟踪ID",
-    "_traceId.comment": "API服务的应用的一个API调用的跟踪ID，不要翻译，保持为'跟踪ID'。",
-    "shouldPayPrice": "最终价格",
-    "_shouldPayPrice.comment": "应用的最终价格。",
-    "api": "API",
-    "_api.comment": "这是一种在线服务，表单通过API向用户提供服务。",
-    "proxy": "代理",
-    "_proxy.comment": "这是一种在线服务，表单通过HTTP代理（用于传输数据）向用户提供服务。",
-    "credential": "凭证",
-    "_credential.comment": "应用的凭证。",
-    "name": "名称",
-    "_name.comment": "应用的名称。",
-    "package": "套餐",
-    "_package.comment": "套餐指不同的价格套餐，比如100美元可获得10000积分，200美元可获得20000积分。",
-    "type": "类型",
-    "_type.comment": "应用的类型。",
-    "freeAmount": "免费金额",
-    "_freeAmount.comment": "应用的免费金额。",
-    "extraPrice": "额外价格",
-    "_extraPrice.comment": "用户应该支付的应用的额外价格。"
+  "button.goCredentials": {
+    "message": "凭证",
+    "description": "按钮文本，点击此按钮将转到凭证页面。"
   },
-  "message": {
-    "alreadyApplied": "您已经申请了此服务，请查看控制台",
-    "_alreadyApplied.comment": "当用户已经申请了此服务时向用户显示的消息。",
-    "applySuccessfully": "申请成功",
-    "_applySuccessfully.comment": "当用户成功申请了此服务时向用户显示的消息。",
-    "notApplied": "您尚未申请此服务，请在使用之前申请该服务",
-    "_notApplied.comment": "当用户尚未申请此服务时向用户显示的消息。",
-    "yourApplication": "您的申请",
-    "_yourApplication.comment": "当用户的申请时向用户显示的消息。",
-    "unverified": "您需要完成实名认证后才能申请此服务",
-    "_unverified.comment": "当用户尚未完成实名认证时向用户显示的消息。",
-    "goVerify": "前往实名认证",
-    "_goVerify.comment": "当用户尚未完成实名认证时向用户显示的消息。",
-    "requiredParameter": "必填参数",
-    "_requiredParameter.comment": "当用户尚未输入必填参数时向用户显示的消息。",
-    "example": "示例",
-    "_example.comment": "当用户尚未输入必填参数时向用户显示的消息。",
-    "createCredentialSuccessfully": "成功创建凭证",
-    "_createCredentialSuccessfully.comment": "当用户成功创建凭证时向用户显示的消息。",
-    "readPolicy": "我已阅读并同意",
-    "_readPolicy.comment": "当用户已阅读并同意政策时向用户显示的消息。",
-    "policy": "数据技术服务使用协议",
-    "_policy.comment": "当用户已阅读并同意政策时向用户显示的消息。",
-    "notAgreePolicy": "您尚未同意数据技术服务使用协议",
-    "_notAgreePolicy.comment": "当用户尚未同意政策时向用户显示的消息。",
-    "confirmApplying": "确认服务申请",
-    "_confirmApplying.comment": "当用户确认服务申请时向用户显示的消息。",
-    "rotateCredential": "重置密钥",
-    "_rotateCredential.comment": "当用户重置密钥时向用户显示的消息。",
-    "rotateCredentialConfirm": "您确定要重置密钥吗？重置后将无法恢复",
-    "_rotateCredentialConfirm.comment": "当用户确认重置密钥时向用户显示的消息。",
-    "idDoesNotExist": "应用不存在",
-    "_idDoesNotExist.comment": "当应用不存在时向用户显示的消息。",
-    "rotateCredentialSuccessfully": "密钥重置成功",
-    "_rotateCredentialSuccessfully.comment": "当密钥重置成功时向用户显示的消息。",
-    "rotateCredentialFailed": "密钥重置失败，请联系处理",
-    "_rotateCredentialFailed.comment": "当密钥重置失败时向用户显示的消息。",
-    "updateFailed": "修改失败",
-    "_updateFailed.comment": "当修改失败时向用户显示的消息。",
-    "updateSuccessfully": "修改成功",
-    "_updateSuccessfully.comment": "当修改成功时向用户显示的消息。"
+  "button.buyMore": {
+    "message": "购买更多",
+    "description": "按钮文本，点击此按钮将转到购买更多页面。"
   },
-  "title": {
-    "buyService": "购买服务",
-    "_buyService.comment": "当用户想要购买服务时页面的标题。",
-    "applicationRemainingCount": "修改数量",
-    "_applicationRemainingCount.comment": "当用户想要修改应用数量时页面的标题。",
-    "manageApplication": "应用管理",
-    "_manageApplication.comment": "当用户想要管理应用时页面的标题。"
+  "button.createOrder": {
+    "message": "创建订单",
+    "description": "按钮文本，点击此按钮将转到创建订单页面。"
+  },
+  "button.custom": {
+    "message": "自定义",
+    "description": "按钮文本，点击此按钮将转到自定义页面。"
+  },
+  "button.query": {
+    "message": "查询",
+    "description": "按钮文本，点击此按钮将转到查询页面。"
+  },
+  "button.usage": {
+    "message": "使用记录",
+    "description": "按钮文本，点击此按钮将转到使用记录页面。"
+  },
+  "field.id": {
+    "message": "应用ID",
+    "description": "应用的ID。"
+  },
+  "field.remainingAmount": {
+    "message": "剩余数量",
+    "description": "应用的剩余数量。"
+  },
+  "field.usedAmount": {
+    "message": "已使用数量",
+    "description": "应用的已使用数量。"
+  },
+  "field.apiKey": {
+    "message": "API密钥",
+    "description": "API密钥。"
+  },
+  "field.service": {
+    "message": "服务",
+    "description": "应用的服务。"
+  },
+  "field.operation": {
+    "message": "操作",
+    "description": "应用的操作。"
+  },
+  "field.amount": {
+    "message": "数量",
+    "description": "应用的数量。"
+  },
+  "field.traceId": {
+    "message": "跟踪ID",
+    "description": "API服务的应用的跟踪ID，不要翻译，保持为'跟踪ID'。"
+  },
+  "field.shouldPayPrice": {
+    "message": "最终价格",
+    "description": "应用的最终价格。"
+  },
+  "field.api": {
+    "message": "API",
+    "description": "这是一种在线服务，形式是通过API向用户提供服务。"
+  },
+  "field.proxy": {
+    "message": "代理",
+    "description": "这是一种在线服务，形式是通过HTTP代理（用于传输数据）向用户提供服务。"
+  },
+  "field.credential": {
+    "message": "凭证",
+    "description": "应用的凭证。"
+  },
+  "field.name": {
+    "message": "名称",
+    "description": "应用的名称。"
+  },
+  "field.package": {
+    "message": "套餐",
+    "description": "套餐表示不同的价格套餐，比如100美元可以获得10000积分，200美元可以获得20000积分。"
+  },
+  "field.type": {
+    "message": "类型",
+    "description": "应用的类型。"
+  },
+  "field.freeAmount": {
+    "message": "免费数量",
+    "description": "应用的免费数量。"
+  },
+  "field.extraPrice": {
+    "message": "价格",
+    "description": "用户应该支付的应用额外价格。"
+  },
+  "message.alreadyApplied": {
+    "message": "您已经申请了此服务，请查看控制台",
+    "description": "当用户已经申请了此服务时向用户显示的消息。"
+  },
+  "message.applySuccessfully": {
+    "message": "申请成功",
+    "description": "当用户成功申请了此服务时向用户显示的消息。"
+  },
+  "message.notApplied": {
+    "message": "您尚未申请此服务，请在使用之前申请该服务",
+    "description": "当用户尚未申请此服务时向用户显示的消息。"
+  },
+  "message.yourApplication": {
+    "message": "您的申请",
+    "description": "当用户的申请时向用户显示的消息。"
+  },
+  "message.unverified": {
+    "message": "您需要完成实名认证后才能申请此服务",
+    "description": "当用户尚未完成实名认证时向用户显示的消息。"
+  },
+  "message.goVerify": {
+    "message": "前往实名认证",
+    "description": "当用户尚未完成实名认证时向用户显示的消息。"
+  },
+  "message.requiredParameter": {
+    "message": "必填参数",
+    "description": "当用户未输入必填参数时向用户显示的消息。"
+  },
+  "message.example": {
+    "message": "示例",
+    "description": "当用户未输入必填参数时向用户显示的消息。"
+  },
+  "message.createCredentialSuccessfully": {
+    "message": "成功创建凭证",
+    "description": "当用户成功创建凭证时向用户显示的消息。"
+  },
+  "message.readPolicy": {
+    "message": "我已阅读并同意",
+    "description": "当用户已阅读并同意政策时向用户显示的消息。"
+  },
+  "message.policy": {
+    "message": "数据技术服务使用协议",
+    "description": "当用户已阅读并同意政策时向用户显示的消息。"
+  },
+  "message.notAgreePolicy": {
+    "message": "您尚未同意数据技术服务使用协议",
+    "description": "当用户尚未同意政策时向用户显示的消息。"
+  },
+  "message.confirmApplying": {
+    "message": "确认服务申请",
+    "description": "当用户确认服务申请时向用户显示的消息。"
+  },
+  "message.rotateCredential": {
+    "message": "重置密钥",
+    "description": "当用户重置密钥时向用户显示的消息。"
+  },
+  "message.rotateCredentialConfirm": {
+    "message": "您确定要重置密钥吗？重置后将无法恢复",
+    "description": "当用户确认重置密钥时向用户显示的消息。"
+  },
+  "message.idDoesNotExist": {
+    "message": "应用不存在",
+    "description": "当应用不存在时向用户显示的消息。"
+  },
+  "message.rotateCredentialSuccessfully": {
+    "message": "密钥重置成功",
+    "description": "当密钥重置成功时向用户显示的消息。"
+  },
+  "message.rotateCredentialFailed": {
+    "message": "密钥重置失败，请联系处理",
+    "description": "当密钥重置失败时向用户显示的消息。"
+  },
+  "message.updateFailed": {
+    "message": "修改失败",
+    "description": "当修改失败时向用户显示的消息。"
+  },
+  "message.updateSuccessfully": {
+    "message": "修改成功",
+    "description": "当修改成功时向用户显示的消息。"
+  },
+  "title.buyService": {
+    "message": "购买服务",
+    "description": "当用户想要购买服务时页面的标题。"
+  },
+  "title.applicationRemainingCount": {
+    "message": "修改数量",
+    "description": "当用户想要修改应用数量时页面的标题。"
+  },
+  "title.manageApplication": {
+    "message": "应用管理",
+    "description": "当用户想要管理应用时页面的标题。"
   }
 }

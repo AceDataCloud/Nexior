@@ -1,14 +1,22 @@
 {
-  "field": {
-    "id": "User ID",
-    "_id.comment": "User ID",
-    "isVerified": "Is Verified",
-    "_isVerified.comment": "A flag which indicates whether the user is verified based on real info or not",
-    "nickname": "Nickname",
-    "_nickname.comment": "Nickname of a user",
-    "username": "Username",
-    "_username.comment": "Username of a user",
-    "dateJoined": "Registration Time",
-    "_dateJoined.comment": "Time when the user registered"
+  "field.id": {
+    "message": "User ID",
+    "description": "User ID"
+  },
+  "field.isVerified": {
+    "message": "Is Verified",
+    "description": "A flag which indicates whether the user is verified based on real info or not"
+  },
+  "field.nickname": {
+    "message": "Nickname",
+    "description": "Nickname of a user"
+  },
+  "field.username": {
+    "message": "Username",
+    "description": "Username of a user"
+  },
+  "field.dateJoined": {
+    "message": "Registration Time",
+    "description": "Time when the user registered"
   }
 }

@@ -1,78 +1,134 @@
 {
-  "button": {
-    "pay": "Payer",
-    "_pay.comment": "Le texte sur le bouton, qui est utilisé pour payer la commande.",
-    "continuePay": "Continuer à payer",
-    "_continuePay.comment": "Le texte sur le bouton, qui est utilisé pour continuer à payer la commande.",
-    "checkDetail": "Vérifier les détails",
-    "_checkDetail.comment": "Le texte sur le bouton, qui est utilisé pour vérifier les détails de la commande.",
-    "query": "Interroger",
-    "_query.comment": "Le texte sur le bouton, qui est utilisé pour interroger la commande.",
-    "finish": "Terminer manuellement",
-    "_finish.comment": "Le texte sur le bouton, qui est utilisé pour terminer manuellement la commande.",
-    "update": "Mettre à jour",
-    "_update.comment": "Le texte sur le bouton, qui est utilisé pour mettre à jour la commande."
+  "button.pay": {
+    "message": "Payer",
+    "description": "Le texte sur le bouton, qui est utilisé pour payer la commande."
   },
-  "field": {
-    "id": "Identifiant de commande",
-    "_id.comment": "L'identifiant de la commande.",
-    "amount": "Montant",
-    "_amount.comment": "Le montant de crédits de la commande.",
-    "price": "Montant",
-    "_price.comment": "Le montant de crédits de la commande.",
-    "description": "Description de la commande",
-    "_description.comment": "La description de la commande.",
-    "state": "État",
-    "_state.comment": "L'état de la commande.",
-    "createdAt": "Heure de création",
-    "_createdAt.comment": "L'heure de création de la commande.",
-    "service": "Nom du service",
-    "_service.comment": "Le nom du service.",
-    "payWay": "Méthode de paiement",
-    "_payWay.comment": "La méthode de paiement de la commande.",
-    "api": "API",
-    "_api.comment": "L'API est une sorte de service en ligne.",
-    "proxy": "Proxy",
-    "_proxy.comment": "Le proxy est une sorte de service en ligne, ce qui signifie le proxy HTTP utilisé pour transférer les données."
+  "button.continuePay": {
+    "message": "Continuer à payer",
+    "description": "Le texte sur le bouton, qui est utilisé pour continuer à payer la commande."
   },
-  "message": {
-    "paidSuccessfully": "Paiement réussi",
-    "_paidSuccessfully.comment": "Le message du paiement réussi.",
-    "createFailed": "Échec de la création",
-    "_createFailed.comment": "Le message de l'échec de la création.",
-    "wechatPayHelp": "Veuillez ouvrir WeChat sur votre téléphone, scannez pour compléter le paiement",
-    "_wechatPayHelp.comment": "Le message de l'aide au paiement WeChat.",
-    "free": "Gratuit",
-    "_free.comment": "Le message de la commande gratuite.",
-    "buyInExternalUrl": "Veuillez compléter le paiement dans le lien externe",
-    "_buyInExternalUrl.comment": "Le message du paiement par lien externe.",
-    "updateFailed": "Échec de la mise à jour",
-    "_updateFailed.comment": "Le message de l'échec de la mise à jour.",
-    "updateSuccessfully": "Mise à jour réussie",
-    "_updateSuccessfully.comment": "Le message de la mise à jour réussie.",
-    "confirmFinish": "Cette opération va définir manuellement la commande sur l'état de paiement et compléter le traitement de la distribution, ce qui ne peut pas être annulé. Veuillez confirmer que le client a effectué le paiement, voulez-vous continuer ?",
-    "_confirmFinish.comment": "Le message de la confirmation de la finition."
+  "button.checkDetail": {
+    "message": "Vérifier les détails",
+    "description": "Le texte sur le bouton, qui est utilisé pour vérifier les détails de la commande."
   },
-  "state": {
-    "pending": "En attente de paiement",
-    "_pending.comment": "L'état de la commande, ce qui signifie que cette commande est toujours en attente du paiement de l'utilisateur.",
-    "paid": "Payé",
-    "_paid.comment": "L'état de la commande, ce qui signifie que cette commande a été payée.",
-    "expired": "Délai de paiement dépassé",
-    "_expired.comment": "L'état de la commande, ce qui signifie que cette commande a expiré.",
-    "failed": "Paiement échoué",
-    "_failed.comment": "L'état de la commande, ce qui signifie que cette commande a échoué."
+  "button.query": {
+    "message": "Interroger",
+    "description": "Le texte sur le bouton, qui est utilisé pour interroger la commande."
   },
-  "title": {
-    "info": "Informations de commande",
-    "_info.comment": "Le titre utilisé pour afficher en tant que titre du site web, signifie les informations de la commande.",
-    "wechatPay": "WeChat Pay",
-    "_wechatPay.comment": "Le titre utilisé pour afficher en tant que titre du site web, signifie le paiement WeChat.",
-    "aliPay": "Alipay",
-    "_aliPay.comment": "Le titre utilisé pour afficher en tant que titre du site web, signifie le paiement Alipay, le paiement Alipay est une sorte de paiement en ligne.",
-    "stripe": "Stripe",
-    "_stripe.comment": "Le titre utilisé pour afficher en tant que titre du site web, signifie le paiement Stripe, le paiement Stripe est une sorte de paiement en ligne.",
-    "manageOrder": "Gérer la commande",
-    "_manageOrder.comment": "Le titre utilisé pour afficher en tant que titre du site web, signifie gérer la commande."
+  "button.finish": {
+    "message": "Terminer manuellement",
+    "description": "Le texte sur le bouton, qui est utilisé pour terminer manuellement la commande."
+  },
+  "button.update": {
+    "message": "Mettre à jour",
+    "description": "Le texte sur le bouton, qui est utilisé pour mettre à jour la commande."
+  },
+  "field.id": {
+    "message": "Identifiant de commande",
+    "description": "L'identifiant de la commande."
+  },
+  "field.amount": {
+    "message": "Montant",
+    "description": "Le montant de crédits de la commande."
+  },
+  "field.price": {
+    "message": "Montant",
+    "description": "Le montant de crédits de la commande."
+  },
+  "field.description": {
+    "message": "Description de la commande",
+    "description": "La description de la commande."
+  },
+  "field.state": {
+    "message": "État",
+    "description": "L'état de la commande."
+  },
+  "field.createdAt": {
+    "message": "Heure de création",
+    "description": "L'heure de création de la commande."
+  },
+  "field.service": {
+    "message": "Nom du service",
+    "description": "Le nom du service."
+  },
+  "field.payWay": {
+    "message": "Méthode de paiement",
+    "description": "La méthode de paiement de la commande."
+  },
+  "field.api": {
+    "message": "API",
+    "description": "L'API est une sorte de service en ligne."
+  },
+  "field.proxy": {
+    "message": "Proxy",
+    "description": "Le proxy est une sorte de service en ligne, ce qui signifie le proxy HTTP utilisé pour transférer les données."
+  },
+  "message.paidSuccessfully": {
+    "message": "Paiement réussi",
+    "description": "Le message du paiement réussi."
+  },
+  "message.createFailed": {
+    "message": "Échec de la création",
+    "description": "Le message de l'échec de la création."
+  },
+  "message.wechatPayHelp": {
+    "message": "Veuillez ouvrir WeChat sur votre téléphone, scannez pour compléter le paiement",
+    "description": "Le message de l'aide au paiement WeChat."
+  },
+  "message.free": {
+    "message": "Gratuit",
+    "description": "Le message de la commande gratuite."
+  },
+  "message.buyInExternalUrl": {
+    "message": "Veuillez compléter le paiement dans le lien externe",
+    "description": "Le message du paiement par lien externe."
+  },
+  "message.updateFailed": {
+    "message": "Échec de la mise à jour",
+    "description": "Le message de l'échec de la mise à jour."
+  },
+  "message.updateSuccessfully": {
+    "message": "Mise à jour réussie",
+    "description": "Le message de la mise à jour réussie."
+  },
+  "message.confirmFinish": {
+    "message": "Cette opération va définir manuellement la commande sur l'état de paiement et compléter le traitement de la distribution, ce qui ne peut pas être annulé. Veuillez confirmer que le client a effectué le paiement, voulez-vous continuer ?",
+    "description": "Le message de la confirmation de la fin."
+  },
+  "state.pending": {
+    "message": "En attente de paiement",
+    "description": "L'état de la commande, ce qui signifie que cette commande est toujours en attente du paiement de l'utilisateur."
+  },
+  "state.paid": {
+    "message": "Payé",
+    "description": "L'état de la commande, ce qui signifie que cette commande a été payée."
+  },
+  "state.expired": {
+    "message": "Délai de paiement dépassé",
+    "description": "L'état de la commande, ce qui signifie que cette commande a expiré."
+  },
+  "state.failed": {
+    "message": "Paiement échoué",
+    "description": "L'état de la commande, ce qui signifie que cette commande a échoué."
+  },
+  "title.info": {
+    "message": "Informations sur la commande",
+    "description": "Le titre qui est utilisé comme titre du site web, signifie les informations sur la commande."
+  },
+  "title.wechatPay": {
+    "message": "Paiement WeChat",
+    "description": "Le titre qui est utilisé comme titre du site web, signifie le paiement WeChat."
+  },
+  "title.aliPay": {
+    "message": "Alipay",
+    "description": "Le titre qui est utilisé comme titre du site web, signifie le paiement Alipay, le paiement Alipay est une sorte de paiement en ligne."
+  },
+  "title.stripe": {
+    "message": "Stripe",
+    "description": "Le titre qui est utilisé comme titre du site web, signifie le paiement Stripe, le paiement Stripe est une sorte de paiement en ligne."
+  },
+  "title.manageOrder": {
+    "message": "Gérer la commande",
+    "description": "Le titre qui est utilisé comme titre du site web, signifie gérer la commande."
   }
 }

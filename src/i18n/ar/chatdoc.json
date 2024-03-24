@@ -1,108 +1,194 @@
 {
-  "button": {
-    "uploadDocuments": "تحميل المستندات",
-    "_uploadDocuments.comment": "نص في الزر، الذي يسمح للمستخدم بتحميل المستندات"
+  "button.uploadDocuments": {
+    "message": "تحميل المستندات",
+    "description": "نص في زر، الذي يسمح للمستخدم بتحميل المستندات"
   },
-  "field": {
-    "fileName": "اسم الملف",
-    "_fileName.comment": "اسم الملف للمستند المحمل",
-    "createdAt": "وقت الإنشاء",
-    "_createdAt": "الوقت الذي تم فيه تحميل المستند",
-    "fileExtension": "نوع الملف",
-    "_fileExtension.comment": "نوع الملف للمستند المحمل",
-    "fileUrl": "رابط الملف",
-    "_fileUrl.comment": "رابط المستند المحمل",
-    "fileSize": "حجم الملف",
-    "_fileSize.comment": "حجم المستند المحمل",
-    "state": "الحالة",
-    "_state.comment": "حالة معالجة المستند",
-    "stateProcessing": "جاري التعلم",
-    "_stateProcessing.comment": "المستند قيد المعالجة",
-    "stateCompleted": "اكتمل التعلم",
-    "_stateCompleted.comment": "تمت معالجة المستند بنجاح",
-    "stateFailed": "فشل التعلم",
-    "_stateFailed.comment": "فشل معالجة المستند",
-    "name": "الاسم",
-    "_name.comment": "اسم المستند",
-    "description": "الوصف",
-    "_description.comment": "وصف المستند"
+  "field.fileName": {
+    "message": "اسم الملف",
+    "description": "اسم الملف للمستند المحمل"
   },
-  "message": {
-    "introductionForKnowledge": "يمكن إضافة المستندات إلى قاعدة المعرفة، وعندما يرد الروبوت، يمكنه استخدام المعرفة في المستودع للرد.",
-    "_introductionForKnowledge.comment": "رسالة تقديمية لقاعدة المعرفة",
-    "introductionForRepository": "قاعدة المعرفة هي مجموعة من المستندات يمكنك إضافتها. عندما يرد الروبوت، سيتم الرد من المستندات في قاعدة المعرفة.",
-    "_introductionForRepository.comment": "رسالة تقديمية لقاعدة المعرفة",
-    "uploadDocumentsExceed": "تجاوزت كمية المستندات المحملة الحد",
-    "_uploadDocumentsExceed.comment": "رسالة خطأ عند تجاوز كمية المستندات المحملة الحد",
-    "uploadDocumentsError": "فشل تحميل المستند",
-    "_uploadDocumentsError.comment": "رسالة خطأ عند فشل تحميل المستند",
-    "uploadDocumentsSuccess": "تم تحميل المستند بنجاح",
-    "_uploadDocumentsSuccess.comment": "رسالة نجاح عند نجاح تحميل المستند",
-    "createDocumentSuccess": "تم إنشاء المستند بنجاح",
-    "_createDocumentSuccess.comment": "رسالة نجاح عند نجاح إنشاء المستند",
-    "startCreateDocument": "بدء تعلم المستند...",
-    "_startCreateDocument.comment": "رسالة عند بدء تعلم المستند",
-    "createDocumentError": "فشل تعلم المستند",
-    "_createDocumentError.comment": "رسالة خطأ عند فشل تعلم المستند",
-    "dragOrClickToUpload": "اسحب أو انقر لتحميل المستند",
-    "_dragOrClickToUpload.comment": "رسالة لسحب أو النقر لتحميل المستند",
-    "learningDocument": "جاري التعلم، يرجى الانتظار...",
-    "_learningDocument.comment": "رسالة عند تعلم المستند",
-    "startNewChat": "بدء محادثة جديدة",
-    "_startNewChat.comment": "رسالة لبدء محادثة جديدة",
-    "errorApiError": "فشل الرد، يرجى المحاولة مرة أخرى لاحقًا",
-    "_errorApiError.comment": "رسالة خطأ عند فشل الرد",
-    "errorBadRequest": "محتوى الطلب غير مهيأ بشكل صحيح، يرجى السؤال مرة أخرى",
-    "_errorBadRequest.comment": "رسالة خطأ عند عدم تهيئة محتوى الطلب بشكل صحيح",
-    "errorNoConversation": "محتوى المحادثة غير موجود أو انتهت صلاحيته، يرجى بدء محادثة جديدة",
-    "_errorNoConversation.comment": "رسالة خطأ عند عدم وجود محتوى المحادثة أو انتهاء صلاحيته",
-    "errorContentTooLarge": "محتوى السؤال طويل جدًا، يرجى تقصيره والمحاولة مرة أخرى",
-    "_errorContentTooLarge.comment": "رسالة خطأ عندما يكون محتوى السؤال طويل جدًا",
-    "errorTooManyRequests": "عملية التشغيل الخاصة بك متكررة للغاية، يرجى المحاولة مرة أخرى لاحقًا",
-    "_errorTooManyRequests.comment": "رسالة خطأ عندما تكون عملية التشغيل متكررة للغاية",
-    "errorUsedUp": "لقد تم الوصول إلى حد استخدام حزمتك، يرجى شراء المزيد للمتابعة",
-    "_errorUsedUp.comment": "رسالة خطأ عندما يتم الوصول إلى حد استخدام الحزمة",
-    "errorUnknown": "حدث خطأ غير معروف في الخادم، يرجى المحاولة مرة أخرى لاحقًا أو الاتصال بخدمة العملاء",
-    "_errorUnknown.comment": "رسالة خطأ عند حدوث خطأ غير معروف في الخادم",
-    "errorTimeout": "انتهت مهلة الإجابة على السؤال، يرجى المحاولة مرة أخرى لاحقًا",
-    "_errorTimeout.comment": "رسالة خطأ عند انتهاء مهلة الإجابة على السؤال",
-    "errorNotApplied": "لم تقدم طلب لهذه الخدمة بعد، يرجى التقدم بالطلب قبل الاستمرار في السؤال",
-    "_errorNotApplied.comment": "رسالة خطأ عندما لا يكون المستخدم قد قدم طلبًا لهذه الخدمة بعد",
-    "confirmDelete": "تأكيد الحذف",
-    "_confirmDelete.comment": "رسالة لتأكيد الحذف",
-    "howToUse": "اضغط Shift+Enter للفصل بين الأسطر",
-    "_howToUse.comment": "رسالة لتوضيح كيفية فصل الأسطر",
-    "createRepositorySuccess": "تم إنشاء قاعدة المعرفة بنجاح",
-    "_createRepositorySuccess.comment": "رسالة نجاح عند نجاح إنشاء قاعدة المعرفة",
-    "createRepositoryFailed": "فشل إنشاء قاعدة المعرفة",
-    "_createRepositoryFailed.comment": "رسالة خطأ عند فشل إنشاء قاعدة المعرفة",
-    "deleteRepositorySuccess": "تم حذف قاعدة المعرفة بنجاح",
-    "_deleteRepositorySuccess.comment": "رسالة نجاح عند نجاح حذف قاعدة المعرفة",
-    "deleteDocumentSuccess": "تم حذف المستند بنجاح",
-    "_deleteDocumentSuccess.comment": "رسالة نجاح عند نجاح حذف المستند",
-    "currentRepository": "قاعدة المعرفة الحالية",
-    "_currentRepository.comment": "رسالة لعرض قاعدة المعرفة الحالية",
-    "nameRequired": "لا يمكن أن يكون الاسم فارغًا",
-    "_nameRequired.comment": "رسالة خطأ عندما يكون الاسم فارغًا",
-    "inputRepositoryName": "اسم قاعدة المعرفة",
-    "_inputRepositoryName.comment": "عنصر إدخال لاسم قاعدة المعرفة",
-    "inputRepositoryDescription": "صف قاعدة المعرفة في جملة واحدة",
-    "_inputRepositoryDescription.comment": "عنصر إدخال لوصف قاعدة المعرفة"
+  "field.createdAt": {
+    "message": "وقت الإنشاء",
+    "description": "الوقت الذي تم فيه تحميل المستند"
   },
-  "nav": {
-    "chat": "محادثة",
-    "_chat.comment": "عنصر التنقل للمحادثة",
-    "setting": "الإعدادات",
-    "_setting.comment": "عنصر التنقل للإعدادات",
-    "manage": "إدارة",
-    "_manage.comment": "عنصر التنقل للإدارة"
+  "field.fileExtension": {
+    "message": "نوع الملف",
+    "description": "نوع الملف للمستند المحمل"
   },
-  "title": {
-    "manage": "إدارة قواعد المعرفة",
-    "_manage.comment": "عنوان لإدارة قاعدة المعرفة",
-    "createRepository": "إنشاء قاعدة المعرفة",
-    "_createRepository.comment": "عنوان لإنشاء قاعدة المعرفة",
-    "repositories": "قائمة قواعد المعرفة",
-    "_repositories.comment": "عنوان لقائمة قواعد المعرفة"
+  "field.fileUrl": {
+    "message": "رابط الملف",
+    "description": "رابط المستند المحمل"
+  },
+  "field.fileSize": {
+    "message": "حجم الملف",
+    "description": "حجم المستند المحمل"
+  },
+  "field.state": {
+    "message": "الحالة",
+    "description": "حالة معالجة المستند"
+  },
+  "field.stateProcessing": {
+    "message": "جاري المعالجة",
+    "description": "المستند قيد المعالجة"
+  },
+  "field.stateCompleted": {
+    "message": "اكتمل التعلم",
+    "description": "تمت معالجة المستند بنجاح"
+  },
+  "field.stateFailed": {
+    "message": "فشل التعلم",
+    "description": "فشل معالجة المستند"
+  },
+  "field.name": {
+    "message": "الاسم",
+    "description": "اسم المستند"
+  },
+  "field.description": {
+    "message": "الوصف",
+    "description": "وصف المستند"
+  },
+  "message.introductionForKnowledge": {
+    "message": "يمكن إضافة المستندات إلى قاعدة المعرفة، وعندما يرد الروبوت، يمكنه استخدام المعرفة في المستودع للرد.",
+    "description": "رسالة تقديمية لقاعدة المعرفة"
+  },
+  "message.introductionForRepository": {
+    "message": "قاعدة المعرفة هي مجموعة من المستندات يمكنك إضافة المستندات إليها. عندما يرد الروبوت، سيتم الرد من المستندات في قاعدة المعرفة.",
+    "description": "رسالة تقديمية لقاعدة المعرفة"
+  },
+  "message.uploadDocumentsExceed": {
+    "message": "تجاوزت كمية المستندات المحملة الحد",
+    "description": "رسالة خطأ عند تجاوز كمية المستندات المحملة الحد"
+  },
+  "message.uploadDocumentsError": {
+    "message": "فشل تحميل المستند",
+    "description": "رسالة خطأ عند فشل تحميل المستند"
+  },
+  "message.uploadDocumentsSuccess": {
+    "message": "تم تحميل المستند بنجاح",
+    "description": "رسالة نجاح عند نجاح تحميل المستند"
+  },
+  "message.createDocumentSuccess": {
+    "message": "تم إنشاء المستند بنجاح",
+    "description": "رسالة نجاح عند نجاح إنشاء المستند"
+  },
+  "message.startCreateDocument": {
+    "message": "بدء تعلم المستند...",
+    "description": "رسالة عند بدء تعلم المستند"
+  },
+  "message.createDocumentError": {
+    "message": "فشل تعلم المستند",
+    "description": "رسالة خطأ عند فشل تعلم المستند"
+  },
+  "message.dragOrClickToUpload": {
+    "message": "اسحب أو انقر لتحميل المستند",
+    "description": "رسالة لسحب أو النقر لتحميل المستند"
+  },
+  "message.learningDocument": {
+    "message": "جاري التعلم، يرجى الانتظار...",
+    "description": "رسالة عند تعلم المستند"
+  },
+  "message.startNewChat": {
+    "message": "بدء محادثة جديدة",
+    "description": "رسالة لبدء محادثة جديدة"
+  },
+  "message.errorApiError": {
+    "message": "فشل الرد، يرجى المحاولة مرة أخرى لاحقًا",
+    "description": "رسالة خطأ عند فشل الرد"
+  },
+  "message.errorBadRequest": {
+    "message": "محتوى الطلب غير مهيأ بشكل صحيح، يرجى السؤال مرة أخرى",
+    "description": "رسالة خطأ عند عدم تهيئة محتوى الطلب بشكل صحيح"
+  },
+  "message.errorNoConversation": {
+    "message": "محتوى المحادثة غير موجود أو انتهت صلاحيته، يرجى بدء محادثة جديدة",
+    "description": "رسالة خطأ عند عدم وجود محتوى المحادثة أو انتهاء صلاحيته"
+  },
+  "message.errorContentTooLarge": {
+    "message": "محتوى السؤال طويل جدًا، يرجى تقصيره والمحاولة مرة أخرى",
+    "description": "رسالة خطأ عندما يكون محتوى السؤال طويل جدًا"
+  },
+  "message.errorTooManyRequests": {
+    "message": "عمليتك متكررة بشكل مفرط، يرجى المحاولة مرة أخرى لاحقًا",
+    "description": "رسالة خطأ عندما تكون العملية متكررة بشكل مفرط"
+  },
+  "message.errorUsedUp": {
+    "message": "لقد تم الوصول إلى حد استخدام حزمتك، يرجى شراء المزيد للمتابعة",
+    "description": "رسالة خطأ عندما يتم الوصول إلى حد استخدام الحزمة"
+  },
+  "message.errorUnknown": {
+    "message": "حدث خطأ غير معروف في الخادم، يرجى المحاولة مرة أخرى لاحقًا أو الاتصال بخدمة العملاء",
+    "description": "رسالة خطأ عند حدوث خطأ غير معروف في الخادم"
+  },
+  "message.errorTimeout": {
+    "message": "انتهت مهلة الإجابة على السؤال، يرجى المحاولة مرة أخرى لاحقًا",
+    "description": "رسالة خطأ عند انتهاء مهلة الإجابة على السؤال"
+  },
+  "message.errorNotApplied": {
+    "message": "لم تقدم طلبًا لهذه الخدمة بعد، يرجى التقديم قبل الاستمرار في السؤال",
+    "description": "رسالة خطأ عندما لم يقدم المستخدم طلبًا لهذه الخدمة بعد"
+  },
+  "message.confirmDelete": {
+    "message": "تأكيد الحذف",
+    "description": "رسالة لتأكيد الحذف"
+  },
+  "message.howToUse": {
+    "message": "اضغط Shift+Enter للفصل بين الأسطر",
+    "description": "رسالة لتوضيح كيفية فصل الأسطر"
+  },
+  "message.createRepositorySuccess": {
+    "message": "تم إنشاء قاعدة المعرفة بنجاح",
+    "description": "رسالة نجاح عند نجاح إنشاء قاعدة المعرفة"
+  },
+  "message.createRepositoryFailed": {
+    "message": "فشل إنشاء قاعدة المعرفة",
+    "description": "رسالة خطأ عند فشل إنشاء قاعدة المعرفة"
+  },
+  "message.deleteRepositorySuccess": {
+    "message": "تم حذف قاعدة المعرفة بنجاح",
+    "description": "رسالة نجاح عند نجاح حذف قاعدة المعرفة"
+  },
+  "message.deleteDocumentSuccess": {
+    "message": "تم حذف المستند بنجاح",
+    "description": "رسالة نجاح عند نجاح حذف المستند"
+  },
+  "message.currentRepository": {
+    "message": "قاعدة المعرفة الحالية",
+    "description": "رسالة لعرض قاعدة المعرفة الحالية"
+  },
+  "message.nameRequired": {
+    "message": "لا يمكن أن يكون الاسم فارغًا",
+    "description": "رسالة خطأ عندما يكون الاسم فارغًا"
+  },
+  "message.inputRepositoryName": {
+    "message": "اسم قاعدة المعرفة",
+    "description": "عنصر إدخال لاسم قاعدة المعرفة"
+  },
+  "message.inputRepositoryDescription": {
+    "message": "صف وصف قاعدة المعرفة في جملة واحدة",
+    "description": "عنصر إدخال لوصف قاعدة المعرفة"
+  },
+  "nav.chat": {
+    "message": "محادثة",
+    "description": "عنصر التنقل للمحادثة"
+  },
+  "nav.setting": {
+    "message": "الإعدادات",
+    "description": "عنصر التنقل للإعدادات"
+  },
+  "nav.manage": {
+    "message": "إدارة",
+    "description": "عنصر التنقل للإدارة"
+  },
+  "title.manage": {
+    "message": "إدارة قواعد المعرفة",
+    "description": "عنوان لإدارة قاعدة المعرفة"
+  },
+  "title.createRepository": {
+    "message": "إنشاء قاعدة المعرفة",
+    "description": "عنوان لإنشاء قاعدة المعرفة"
+  },
+  "title.repositories": {
+    "message": "قائمة قواعد المعرفة",
+    "description": "عنوان لقائمة قواعد المعرفة"
   }
 }

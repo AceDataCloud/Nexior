@@ -1,62 +1,114 @@
 {
-  "entity": {
-    "requestQueries": "URL 매개변수",
-    "_requestQueries.comment": "URL에 전달되는 매개변수입니다. '?'로 구분되며 '&'로 구분됩니다.",
-    "requestBody": "요청 본문",
-    "_requestBody.comment": "이것은 요청의 본문입니다. 일반적으로 POST 및 PUT 요청에 사용됩니다.",
-    "responseBody": "응답 본문",
-    "_responseBody.comment": "이것은 응답의 본문입니다. 일반적으로 JSON 형식입니다.",
-    "requestHeaders": "요청 헤더",
-    "_requestHeaders.comment": "요청에 전달되는 헤더입니다. 일반적으로 인증에 사용됩니다.",
-    "requestHeader": "요청 헤더",
-    "requestQuery": "URL 매개변수",
-    "responseHeaders": "응답 헤더",
-    "_responseHeaders.comment": "응답에 전달되는 헤더입니다. 일반적으로 인증에 사용됩니다.",
-    "response": "응답",
-    "_response.comment": "서버에서 반환된 응답입니다.",
-    "success": "성공",
-    "_success.comment": "요청이 성공적일 때 반환되는 응답입니다.",
-    "failure": "실패",
-    "_failure.comment": "요청이 실패했을 때 반환되는 응답입니다.",
-    "responseExample": "예시",
-    "_responseExample.comment": "서버에서 반환된 응답의 예시입니다.",
-    "authentication": "인증",
-    "_authentication.comment": "요청을 만들기 위해 필요한 인증입니다."
+  "entity.requestQueries": {
+    "message": "URL 매개변수",
+    "description": "URL에 전달되는 매개변수입니다. '?'로 구분되며 '&'로 구분됩니다."
   },
-  "message": {
-    "free": "무료",
-    "_free.comment": "가격이 무료임을 의미하며 API 서비스 사용 시 크레딧이나 돈이 필요하지 않습니다.",
-    "appliedCount": "적용 횟수",
-    "_appliedCount.comment": "적용된 API 서비스의 횟수입니다.",
-    "firstFree": "첫 무료",
-    "_firstFree.comment": "처음으로 API 서비스를 무료로 이용할 수 있음을 의미하며 크레딧이나 돈이 필요하지 않습니다.",
-    "custom": "지정된 금액",
-    "_custom.comment": "가격이 지정되어 있음을 의미하며 API 서비스 사용 시 지정된 크레딧이나 돈이 필요합니다.",
-    "present": "선물",
-    "_present.comment": "API 서비스를 처음 사용할 때 크레딧을 선물로 제공합니다.",
-    "around": "대략",
-    "_around.comment": "가격이 대략적으로 표시되며 실제 가격은 다를 수 있습니다.",
-    "successRate15min": "실시간 성공률",
-    "_successRate15min.comment": "지난 15분 동안의 API 서비스의 실시간 성공률입니다.",
-    "ySuccessRate": "성공률 (100%)",
-    "_ySuccessRate.comment": "API 서비스의 성공률입니다.",
-    "xMinutes": "시간 (분)",
-    "_xMinutes.comment": "분 단위의 시간입니다.",
-    "streamUsage": "유의사항: 스트리밍 요청의 경우 위 코드가 완전히 적용되지 않을 수 있습니다. 수정 사항은 도킹 문서를 참조하십시오.",
-    "_streamUsage.comment": "스트리밍 요청의 경우 위 코드가 완전히 적용되지 않을 수 있습니다. 수정 사항은 도킹 문서를 참조하십시오.",
-    "alphaStage": "이 API는 알파 단계에 있으며 초기 미리보기 버전입니다. 잠재적인 불안정성이 있을 수 있으며 API 형식이 크게 변경될 수 있습니다. 제품 환경에서 사용을 권장하지 않습니다. 현재 가격은 비교적 낮으며 향후 가격 조정이 상당히 있을 수 있습니다.",
-    "_alphaStage.comment": "이 API는 알파 단계에 있으며 초기 미리보기 버전입니다. 잠재적인 불안정성이 있을 수 있으며 API 형식이 크게 변경될 수 있습니다. 제품 환경에서 사용을 권장하지 않습니다. 현재 가격은 비교적 낮으며 향후 가격 조정이 상당히 있을 수 있습니다.",
-    "betaStage": "이 API는 베타 단계에 있으며 API 형식은 크게 변경되지 않지만 잠재적인 불안정성이 있습니다. 제품 환경에서 신중하게 사용하십시오. 현재 가격은 비교적 낮으며 향후 가격 조정이 중간 정도 있을 수 있습니다.",
-    "_betaStage.comment": "이 API는 베타 단계에 있으며 API 형식은 크게 변경되지 않지만 잠재적인 불안정성이 있습니다. 제품 환경에서 신중하게 사용하십시오. 현재 가격은 비교적 낮으며 향후 가격 조정이 중간 정도 있을 수 있습니다."
+  "entity.requestBody": {
+    "message": "요청 본문",
+    "description": "이것은 요청의 본문입니다. 일반적으로 POST 및 PUT 요청에 사용됩니다."
   },
-  "unit": {
-    "GB": "GB",
-    "_GB.comment": "디지털 정보 저장의 단위인 기가바이트",
-    "MB": "MB",
-    "_MB.comment": "디지털 정보 저장의 단위인 메가바이트",
-    "KB": "KB",
-    "_KB.comment": "디지털 정보 저장의 단위인 킬로바이트",
-    "B": "B",
-    "_B.comment": "디지털 정보 저장의 단위인 바이트"
+  "entity.responseBody": {
+    "message": "응답 본문",
+    "description": "이것은 응답의 본문입니다. 일반적으로 JSON 형식입니다."
+  },
+  "entity.requestHeaders": {
+    "message": "요청 헤더",
+    "description": "요청에 전달되는 헤더입니다. 일반적으로 인증에 사용됩니다."
+  },
+  "entity.requestHeader": {
+    "message": "요청 헤더",
+    "description": "요청에 전달되는 헤더입니다. 일반적으로 인증에 사용됩니다."
+  },
+  "entity.requestQuery": {
+    "message": "URL 매개변수",
+    "description": "URL에 전달되는 매개변수입니다. '?'로 구분되며 '&'로 구분됩니다."
+  },
+  "entity.responseHeaders": {
+    "message": "응답 헤더",
+    "description": "응답에 전달되는 헤더입니다. 일반적으로 인증에 사용됩니다."
+  },
+  "entity.response": {
+    "message": "응답",
+    "description": "서버에서 반환된 응답입니다."
+  },
+  "entity.success": {
+    "message": "성공",
+    "description": "요청이 성공적일 때 반환되는 응답입니다."
+  },
+  "entity.failure": {
+    "message": "실패",
+    "description": "요청이 실패했을 때 반환되는 응답입니다."
+  },
+  "entity.responseExample": {
+    "message": "예시",
+    "description": "서버에서 반환된 응답의 예시입니다."
+  },
+  "entity.authentication": {
+    "message": "인증",
+    "description": "요청을 만들기 위해 필요한 인증입니다."
+  },
+  "message.free": {
+    "message": "무료",
+    "description": "가격이 무료이며 API 서비스를 사용할 때 크레딧이나 돈을 지불할 필요가 없음을 의미합니다."
+  },
+  "message.appliedCount": {
+    "message": "신청 횟수",
+    "description": "적용된 API 서비스의 횟수입니다."
+  },
+  "message.firstFree": {
+    "message": "첫 무료",
+    "description": "처음으로 API 서비스를 무료로 사용할 수 있으며 크레딧이나 돈을 지불할 필요가 없음을 의미합니다."
+  },
+  "message.custom": {
+    "message": "지정된 금액",
+    "description": "가격이 지정되어 있으며 API 서비스를 사용할 때 지정된 크레딧이나 돈을 지불해야 함을 의미합니다."
+  },
+  "message.present": {
+    "message": "선물",
+    "description": "API 서비스를 처음 사용할 때 크레딧을 선물로 제공할 것입니다."
+  },
+  "message.around": {
+    "message": "대략",
+    "description": "가격이 대략적으로 지정되어 있으며 실제 가격은 다를 수 있습니다."
+  },
+  "message.successRate15min": {
+    "message": "실시간 성공률",
+    "description": "지난 15분 동안의 API 서비스의 실시간 성공률입니다."
+  },
+  "message.ySuccessRate": {
+    "message": "성공률 (100%)",
+    "description": "API 서비스의 성공률입니다."
+  },
+  "message.xMinutes": {
+    "message": "시간 (분)",
+    "description": "분 단위의 시간입니다."
+  },
+  "message.streamUsage": {
+    "message": "친절한 알림: 스트리밍 요청의 경우 위의 코드가 완전히 적용되지 않을 수 있습니다. 수정 사항은 도킹 문서를 참조하십시오.",
+    "description": "스트리밍 요청의 경우 위의 코드가 완전히 적용되지 않을 수 있습니다. 수정 사항은 도킹 문서를 참조하십시오."
+  },
+  "message.alphaStage": {
+    "message": "이 API는 알파 단계에 있으며 초기 미리보기 버전입니다. 잠재적인 불안정성이 있을 수 있으며 API 형식이 크게 변경될 수 있습니다. 제품 환경에서 사용을 권장하지 않습니다. 현재 가격은 비교적 낮으며 향후 중요한 가격 조정이 있을 수 있습니다.",
+    "description": "이 API는 알파 단계에 있으며 초기 미리보기 버전입니다. 잠재적인 불안정성이 있을 수 있으며 API 형식이 크게 변경될 수 있습니다. 제품 환경에서 사용을 권장하지 않습니다. 현재 가격은 비교적 낮으며 향후 중요한 가격 조정이 있을 수 있습니다."
+  },
+  "message.betaStage": {
+    "message": "이 API는 베타 단계에 있으며 API 형식은 크게 변경되지 않지만 잠재적인 불안정성이 있으므로 제품 환경에서 신중하게 사용하십시오. 현재 가격은 비교적 낮으며 향후 중간 정도의 가격 조정이 있을 수 있습니다.",
+    "description": "이 API는 베타 단계에 있으며 API 형식은 크게 변경되지 않지만 잠재적인 불안정성이 있으므로 제품 환경에서 신중하게 사용하십시오. 현재 가격은 비교적 낮으며 향후 중간 정도의 가격 조정이 있을 수 있습니다."
+  },
+  "unit.GB": {
+    "message": "GB",
+    "description": "디지털 정보 저장의 단위인 기가바이트"
+  },
+  "unit.MB": {
+    "message": "MB",
+    "description": "디지털 정보 저장의 단위인 메가바이트"
+  },
+  "unit.KB": {
+    "message": "KB",
+    "description": "디지털 정보 저장의 단위인 킬로바이트"
+  },
+  "unit.B": {
+    "message": "B",
+    "description": "디지털 정보 저장의 단위인 바이트"
   }
 }

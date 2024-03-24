@@ -1,78 +1,186 @@
 {
-  "message": {
-    "startNewChat": "Iniciar una nueva conversación",
-    "_startNewChat.comment": "Mensaje en una página web, que indica al usuario que inicie una nueva conversación",
-    "uploadFile": "Subir archivo",
-    "_uploadFile.comment": "Mensaje en una página web, que indica al usuario que suba un archivo",
-    "noToken": "Por favor solicite primero el servicio correspondiente",
-    "_noToken.comment": "Mensaje en una página web, que indica al usuario que solicite primero el servicio correspondiente",
-    "newMessagePlaceholder": "Por favor ingrese su pregunta...",
-    "_newMessagePlaceholder.comment": "Marcador de posición en una página web, que indica al usuario que ingrese una pregunta",
-    "noInput": "La pregunta no puede estar vacía",
-    "_noInput.comment": "Mensaje en una página web, que indica al usuario que la pregunta no puede estar vacía",
-    "uploadReferencesExceed": "Solo puedes subir 1 archivo como máximo",
-    "_uploadReferencesExceed.comment": "Mensaje en una página web, que indica al usuario que solo puede subir 1 archivo como máximo",
-    "uploadReferencesError": "Error al subir el archivo, por favor inténtelo de nuevo más tarde",
-    "_uploadReferencesError.comment": "Mensaje en una página web, que indica al usuario que ocurrió un error al subir el archivo, por favor inténtelo de nuevo más tarde",
-    "notApplied": "Todavía no has solicitado este servicio, por favor solicítalo primero",
-    "_notApplied.comment": "Mensaje en una página web, que indica al usuario que todavía no ha solicitado este servicio, por favor solicítalo primero",
-    "tryForFree": "Prueba gratis",
-    "_tryForFree.comment": "Mensaje en una página web, que indica al usuario que pruebe gratis",
-    "question1": "Escribe un fragmento de código JavaScript que muestre Hola Mundo",
-    "_question1.comment": "Un ejemplo de pregunta para iniciar un chat, que pide al usuario que escriba un fragmento de código JavaScript que muestre Hola Mundo",
-    "question2": "Escribe un correo electrónico a Mike, diciéndole que acabo de mudarme",
-    "_question2.comment": "Un ejemplo de pregunta para iniciar un chat, que pide al usuario que escriba un correo electrónico a Mike, diciéndole que acabo de mudarme",
-    "question3": "Explica los principios básicos de la computación cuántica en términos sencillos",
-    "_question3.comment": "Un ejemplo de pregunta para iniciar un chat, que pide al usuario que explique los principios básicos de la computación cuántica en términos sencillos",
-    "question4": "¿Qué impacto ha tenido la realidad virtual en la creación artística?",
-    "_question4.comment": "Un ejemplo de pregunta para iniciar un chat, que pide al usuario que explique qué impacto ha tenido la realidad virtual en la creación artística",
-    "question5": "¿Cómo afectan la protección de la privacidad y la seguridad de datos a la práctica legal?",
-    "_question5.comment": "Un ejemplo de pregunta para iniciar un chat, que pide al usuario que explique cómo afectan la protección de la privacidad y la seguridad de datos a la práctica legal",
-    "question6": "¿Cómo lidiar con los cambios complejos en las leyes fiscales en el mundo actual?",
-    "_question6.comment": "Un ejemplo de pregunta para iniciar un chat, que pide al usuario que explique cómo lidiar con los cambios complejos en las leyes fiscales en el mundo actual",
-    "question7": "¿Cómo crear una cocina única combinando diferentes antecedentes culturales regionales?",
-    "_question7.comment": "Un ejemplo de pregunta para iniciar un chat, que pide al usuario que explique cómo crear una cocina única combinando diferentes antecedentes culturales regionales",
-    "question8": "¿Cómo obtener inspiración para la creación literaria a partir de experiencias de viaje?",
-    "_question8.comment": "Un ejemplo de pregunta para iniciar un chat, que pide al usuario que explique cómo obtener inspiración para la creación literaria a partir de experiencias de viaje",
-    "question9": "¿Cómo obtener ideas de negocios a partir de casos exitosos en diferentes industrias?",
-    "_question9.comment": "Un ejemplo de pregunta para iniciar un chat, que pide al usuario que explique cómo obtener ideas de negocios a partir de casos exitosos en diferentes industrias",
-    "errorApiError": "La respuesta falló, por favor inténtelo de nuevo más tarde",
-    "_errorApiError.comment": "Mensaje en una página web, que indica al usuario que la respuesta falló, por favor inténtelo de nuevo más tarde",
-    "errorBadRequest": "El contenido de la solicitud no está estandarizado, por favor pregunte de nuevo",
-    "_errorBadRequest.comment": "Mensaje en una página web, que indica al usuario que el contenido de la solicitud no está estandarizado, por favor pregunte de nuevo",
-    "errorNoConversation": "La conversación no existe o ha expirado, por favor inicie una nueva conversación",
-    "_errorNoConversation.comment": "Mensaje en una página web, que indica al usuario que la conversación no existe o ha expirado, por favor inicie una nueva conversación",
-    "errorContentTooLarge": "El contenido de la pregunta es demasiado largo, por favor acórtelo e inténtelo de nuevo",
-    "_errorContentTooLarge.comment": "Mensaje en una página web, que indica al usuario que el contenido de la pregunta es demasiado largo, por favor acórtelo e inténtelo de nuevo",
-    "errorTooManyRequests": "Tus operaciones son demasiado frecuentes, por favor inténtalo de nuevo más tarde",
-    "_errorTooManyRequests.comment": "Mensaje en una página web, que indica al usuario que sus operaciones son demasiado frecuentes, por favor inténtalo de nuevo más tarde",
-    "errorUsedUp": "Has agotado tus veces de paquete, por favor compra más veces para seguir utilizando",
-    "_errorUsedUp.comment": "Mensaje en una página web, que indica al usuario que ha agotado sus veces de paquete, por favor compra más veces para seguir utilizando",
-    "errorUnknown": "Ocurrió un error desconocido en el servidor, por favor inténtelo de nuevo más tarde o contacte al servicio al cliente",
-    "_errorUnknown.comment": "Mensaje en una página web, que indica al usuario que ocurrió un error desconocido en el servidor, por favor inténtelo de nuevo más tarde o contacte al servicio al cliente",
-    "errorTimeout": "Se agotó el tiempo para responder la pregunta, por favor inténtelo de nuevo más tarde",
-    "_errorTimeout.comment": "Mensaje en una página web, que indica al usuario que se agotó el tiempo para responder la pregunta, por favor inténtelo de nuevo más tarde",
-    "errorNotApplied": "Todavía no has solicitado este servicio, por favor solicítalo primero antes de continuar haciendo preguntas",
-    "_errorNotApplied.comment": "Mensaje en una página web, que indica al usuario que todavía no ha solicitado este servicio, por favor solicítalo primero antes de continuar haciendo preguntas",
-    "confirmDelete": "Confirmar eliminación",
-    "_confirmDelete.comment": "Mensaje en una página web, que indica al usuario que confirme la eliminación",
-    "howToUse": "Presiona Shift+Enter para iniciar una nueva línea",
-    "_howToUse.comment": "Mensaje en una página web, que indica al usuario que presione Shift+Enter para iniciar una nueva línea"
+  "model.35Standard": {
+    "message": "3.5 Estándar",
+    "description": "Nombre del modelo del servicio, que es GPT 3.5 Básico"
   },
-  "title": {
-    "chat": "Chat de IA",
-    "_chat.comment": "Título de una página web, que es Chat de IA",
-    "example": "Ejemplo",
-    "_example.comment": "Título de una página web, que es Ejemplo",
-    "capabilities": "Capacidades",
-    "_capabilities.comment": "Título de una página web, que es Capacidades",
-    "limitations": "Limitaciones",
-    "_limitations.comment": "Título en una página web, que indica que esta parte trata sobre las limitaciones técnicas del servicio",
-    "complexQuestion": "Responder preguntas complejas",
-    "_complexQuestion.comment": "Título en una página web, que indica que esta parte trata sobre la capacidad del servicio para responder preguntas complejas",
-    "professionalQuestion": "Consultar preguntas profesionales",
-    "_professionalQuestion.comment": "Título en una página web, que indica que esta parte trata sobre la capacidad del servicio para consultar preguntas profesionales",
-    "getTips": "Obtener inspiración y creatividad",
-    "_getTips.comment": "Título en una página web, que indica que esta parte trata sobre la capacidad del servicio para obtener inspiración y creatividad"
+  "model.35StandardDescription": {
+    "message": "Modelo básico que puede responder preguntas simples y proporcionar información general.",
+    "description": "Descripción del modelo 3.5 Estándar"
+  },
+  "model.35Browsing": {
+    "message": "3.5 Navegación",
+    "description": "Nombre del modelo del servicio, que es GPT 3.5 Navegación"
+  },
+  "model.35BrowsingDescription": {
+    "message": "Puede recuperar información en tiempo real de la web y proporcionar respuestas más básicas.",
+    "description": "Descripción del modelo 3.5 Navegación"
+  },
+  "model.4Standard": {
+    "message": "4.0 Estándar",
+    "description": "Nombre del modelo del servicio, que es GPT 4.0 Estándar"
+  },
+  "model.4StandardDescription": {
+    "message": "Modelo más potente que puede responder preguntas más complejas.",
+    "description": "Descripción del modelo 4.0 Estándar"
+  },
+  "model.4Browsing": {
+    "message": "4.0 Navegación",
+    "description": "Nombre del modelo del servicio, que es GPT 4.0 Navegación"
+  },
+  "model.4BrowsingDescription": {
+    "message": "Puede recuperar información en tiempo real para proporcionar más respuestas basadas en el modelo 4.0 Estándar.",
+    "description": "Descripción del modelo 4.0 Navegación"
+  },
+  "model.4Vision": {
+    "message": "4.0 Visión",
+    "description": "Nombre del modelo del servicio, que es GPT 4.0 Visión"
+  },
+  "model.4VisionDescription": {
+    "message": "Puede analizar imágenes y proporcionar información basada en el contenido de las imágenes.",
+    "description": "Descripción del modelo 4.0 Visión"
+  },
+  "message.startNewChat": {
+    "message": "Iniciar una nueva conversación",
+    "description": "Mensaje en una página web, que indica al usuario que inicie una nueva conversación"
+  },
+  "message.uploadFile": {
+    "message": "Subir archivo",
+    "description": "Mensaje en una página web, que indica al usuario que suba un archivo"
+  },
+  "message.noToken": {
+    "message": "Por favor solicite primero el servicio correspondiente",
+    "description": "Mensaje en una página web, que indica al usuario que solicite primero el servicio correspondiente"
+  },
+  "message.newMessagePlaceholder": {
+    "message": "Por favor ingrese su pregunta...",
+    "description": "Marcador de posición en una página web, que indica al usuario que ingrese una pregunta"
+  },
+  "message.noInput": {
+    "message": "La pregunta no puede estar vacía",
+    "description": "Mensaje en una página web, que indica al usuario que la pregunta no puede estar vacía"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Solo puede subir 1 archivo como máximo",
+    "description": "Mensaje en una página web, que indica al usuario que solo puede subir 1 archivo como máximo"
+  },
+  "message.uploadReferencesError": {
+    "message": "Error al subir el archivo, por favor inténtelo de nuevo más tarde",
+    "description": "Mensaje en una página web, que indica al usuario que ocurrió un error al subir el archivo, por favor inténtelo de nuevo más tarde"
+  },
+  "message.notApplied": {
+    "message": "Todavía no ha solicitado este servicio, por favor solicítelo primero",
+    "description": "Mensaje en una página web, que indica al usuario que todavía no ha solicitado este servicio, por favor solicítelo primero"
+  },
+  "message.tryForFree": {
+    "message": "Pruebe gratis",
+    "description": "Mensaje en una página web, que indica al usuario que pruebe gratis"
+  },
+  "message.question1": {
+    "message": "Escriba un fragmento de código JavaScript que muestre Hola Mundo",
+    "description": "Un ejemplo de pregunta para iniciar un chat, que pide al usuario que escriba un fragmento de código JavaScript que muestre Hola Mundo"
+  },
+  "message.question2": {
+    "message": "Escriba un correo electrónico a Mike, diciéndole que acabo de mudarme",
+    "description": "Un ejemplo de pregunta para iniciar un chat, que pide al usuario que escriba un correo electrónico a Mike, diciéndole que acabo de mudarme"
+  },
+  "message.question3": {
+    "message": "Explique los principios básicos de la computación cuántica en términos sencillos",
+    "description": "Un ejemplo de pregunta para iniciar un chat, que pide al usuario que explique los principios básicos de la computación cuántica en términos sencillos"
+  },
+  "message.question4": {
+    "message": "¿Qué impacto ha tenido la realidad virtual en la creación artística?",
+    "description": "Un ejemplo de pregunta para iniciar un chat, que pide al usuario que explique qué impacto ha tenido la realidad virtual en la creación artística"
+  },
+  "message.question5": {
+    "message": "¿Cómo afectan la protección de la privacidad y la seguridad de los datos a la práctica legal?",
+    "description": "Un ejemplo de pregunta para iniciar un chat, que pide al usuario que explique cómo afectan la protección de la privacidad y la seguridad de los datos a la práctica legal"
+  },
+  "message.question6": {
+    "message": "¿Cómo lidiar con los cambios complejos en las leyes fiscales en el mundo de hoy?",
+    "description": "Un ejemplo de pregunta para iniciar un chat, que pide al usuario que explique cómo lidiar con los cambios complejos en las leyes fiscales en el mundo de hoy"
+  },
+  "message.question7": {
+    "message": "¿Cómo crear una cocina única combinando diferentes antecedentes culturales regionales?",
+    "description": "Un ejemplo de pregunta para iniciar un chat, que pide al usuario que explique cómo crear una cocina única combinando diferentes antecedentes culturales regionales"
+  },
+  "message.question8": {
+    "message": "¿Cómo obtener inspiración para la creación literaria a partir de experiencias de viaje?",
+    "description": "Un ejemplo de pregunta para iniciar un chat, que pide al usuario que explique cómo obtener inspiración para la creación literaria a partir de experiencias de viaje"
+  },
+  "message.question9": {
+    "message": "¿Cómo obtener ideas de negocios a partir de casos exitosos en diferentes industrias?",
+    "description": "Un ejemplo de pregunta para iniciar un chat, que pide al usuario que explique cómo obtener ideas de negocios a partir de casos exitosos en diferentes industrias"
+  },
+  "message.errorApiError": {
+    "message": "La respuesta falló, por favor inténtelo de nuevo más tarde",
+    "description": "Mensaje en una página web, que indica al usuario que la respuesta falló, por favor inténtelo de nuevo más tarde"
+  },
+  "message.errorBadRequest": {
+    "message": "El contenido de la solicitud no está estandarizado, por favor pregunte de nuevo",
+    "description": "Mensaje en una página web, que indica al usuario que el contenido de la solicitud no está estandarizado, por favor pregunte de nuevo"
+  },
+  "message.errorNoConversation": {
+    "message": "La conversación no existe o ha expirado, por favor inicie una nueva conversación",
+    "description": "Mensaje en una página web, que indica al usuario que la conversación no existe o ha expirado, por favor inicie una nueva conversación"
+  },
+  "message.errorContentTooLarge": {
+    "message": "El contenido de la pregunta es demasiado largo, por favor redúzcalo e inténtelo de nuevo",
+    "description": "Mensaje en una página web, que indica al usuario que el contenido de la pregunta es demasiado largo, por favor redúzcalo e inténtelo de nuevo"
+  },
+  "message.errorTooManyRequests": {
+    "message": "Sus operaciones son demasiado frecuentes, por favor inténtelo de nuevo más tarde",
+    "description": "Mensaje en una página web, que indica al usuario que sus operaciones son demasiado frecuentes, por favor inténtelo de nuevo más tarde"
+  },
+  "message.errorUsedUp": {
+    "message": "Ha agotado sus veces de paquete, por favor compre más veces para seguir utilizando",
+    "description": "Mensaje en una página web, que indica al usuario que ha agotado sus veces de paquete, por favor compre más veces para seguir utilizando"
+  },
+  "message.errorUnknown": {
+    "message": "Ocurrió un error desconocido en el servidor, por favor inténtelo de nuevo más tarde o contacte al servicio de atención al cliente",
+    "description": "Mensaje en una página web, que indica al usuario que ocurrió un error desconocido en el servidor, por favor inténtelo de nuevo más tarde o contacte al servicio de atención al cliente"
+  },
+  "message.errorTimeout": {
+    "message": "La respuesta a la pregunta ha caducado, por favor inténtelo de nuevo más tarde",
+    "description": "Mensaje en una página web, que indica al usuario que la respuesta a la pregunta ha caducado, por favor inténtelo de nuevo más tarde"
+  },
+  "message.errorNotApplied": {
+    "message": "Todavía no ha solicitado este servicio, por favor solicítelo antes de continuar haciendo preguntas",
+    "description": "Mensaje en una página web, que indica al usuario que todavía no ha solicitado este servicio, por favor solicítelo antes de continuar haciendo preguntas"
+  },
+  "message.confirmDelete": {
+    "message": "Confirmar eliminación",
+    "description": "Mensaje en una página web, que indica al usuario que confirme la eliminación"
+  },
+  "message.howToUse": {
+    "message": "Presione Shift+Enter para iniciar una nueva línea",
+    "description": "Mensaje en una página web, que indica al usuario que presione Shift+Enter para iniciar una nueva línea"
+  },
+  "title.chat": {
+    "message": "Chat de IA",
+    "description": "Título de una página web, que es Chat de IA"
+  },
+  "title.example": {
+    "message": "Ejemplo",
+    "description": "Título de una página web, que es Ejemplo"
+  },
+  "title.capabilities": {
+    "message": "Capacidades",
+    "description": "Título de una página web, que es Capacidades"
+  },
+  "title.limitations": {
+    "message": "Limitaciones",
+    "description": "Título en una página web, que indica que esta parte trata sobre las limitaciones técnicas del servicio"
+  },
+  "title.complexQuestion": {
+    "message": "Responder preguntas complejas",
+    "description": "Título en una página web, que indica que esta parte trata sobre la capacidad del servicio para responder preguntas complejas"
+  },
+  "title.professionalQuestion": {
+    "message": "Consultar preguntas profesionales",
+    "description": "Título en una página web, que indica que esta parte trata sobre la capacidad del servicio para consultar preguntas profesionales"
+  },
+  "title.getTips": {
+    "message": "Obtener inspiración y creatividad",
+    "description": "Título en una página web, que indica que esta parte trata sobre la capacidad del servicio para obtener inspiración y creatividad"
   }
 }

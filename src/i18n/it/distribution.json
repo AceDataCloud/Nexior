@@ -1,74 +1,130 @@
 {
-  "button": {
-    "detail": "Visualizza dettagli",
-    "_detail.comment": "Il testo nel pulsante, che viene utilizzato per visualizzare i dettagli della cronologia dei rinvii per il sito web.",
-    "withdrawal": "Prelievo",
-    "_withdrawal.comment": "Il testo nel pulsante, che viene utilizzato per prelevare i guadagni dei rinvii per il sito web.",
-    "query": "Query",
-    "_query.comment": "Il testo nel pulsante, che viene utilizzato per interrogare i guadagni dei rinvii per il sito web."
+  "button.detail": {
+    "message": "Visualizza dettagli",
+    "description": "Il testo nel pulsante, che viene utilizzato per visualizzare i dettagli della cronologia dei rinvii per il sito web."
   },
-  "field": {
-    "id": "ID del rinvio",
-    "_id.comment": "L'identificatore univoco della distribuzione, la distribuzione significa il rinvio per il sito web del servizio API.",
-    "percentage": "Percentuale di guadagno per rinvio",
-    "_percentage.comment": "La percentuale dei guadagni per rinvio, calcolata in base all'importo dell'ordine.",
-    "price": "Importo dell'ordine",
-    "_price.comment": "L'importo dell'ordine, utilizzato per calcolare i guadagni per rinvio.",
-    "reward": "Ricompensa per rinvio",
-    "_reward.comment": "I guadagni per rinvio, calcolati in base all'importo dell'ordine e alla percentuale di guadagno per rinvio.",
-    "createdAt": "Data del rinvio",
-    "_createdAt.comment": "Il momento in cui il rinvio è stato creato.",
-    "level": "Livello",
-    "_level.comment": "Il livello del rinvio, utilizzato per calcolare i guadagni per rinvio.",
-    "threshold": "Soglia di guadagno per rinvio",
-    "_threshold.comment": "La soglia dei guadagni per rinvio, utilizzata per prelevare i guadagni per rinvio.",
-    "inviteeId": "ID dell'invitante",
-    "_inviteeId.comment": "L'identificatore univoco dell'invitante, l'invitante significa l'utente che invita l'invitato al sito web del servizio API.",
-    "isVerified": "È verificato",
-    "_isVerified.comment": "Il flag per indicare se l'utente del rinvio è verificato con le informazioni reali."
+  "button.withdrawal": {
+    "message": "Prelievo",
+    "description": "Il testo nel pulsante, che viene utilizzato per prelevare i guadagni dei rinvii per il sito web."
   },
-  "message": {
-    "deltaPriceForNextLevel": "Differenza per il prossimo livello",
-    "_deltaPriceForNextLevel": "La differenza tra l'importo dell'ordine attuale e la soglia del livello successivo.",
-    "developingWithDrawal": "Si prega di aggiungere il servizio clienti per gestire i prelievi, i prelievi dedurranno il 6% di imposta sul reddito, le fatture possono essere utilizzate per la detrazione",
-    "_developingWithDrawal": "Il messaggio per indicare che la funzione di prelievo è in fase di sviluppo.",
-    "technicalDetail": "Dettaglio tecnico",
-    "_technicalDetail": "Il dettaglio tecnico del sistema di rinvio è implementato.",
-    "distributionQrDescription": "Codice QR del rinvio (stesso contenuto del link)",
-    "_distributionQrDescription": "La descrizione del codice QR del rinvio.",
-    "distributionLink": "Link di rinvio",
-    "_distributionLink": "Il link di rinvio, che viene utilizzato per collegare il cliente come cliente subordinato.",
-    "updateSuccessfully": "Aggiornamento riuscito",
-    "_updateSuccessfully": "Il messaggio per indicare che le informazioni del rinvio sono state aggiornate con successo.",
-    "distributionLinkDescription": "Se un cliente si registra su questa piattaforma tramite questo link o codice QR, il cliente sarà permanentemente vincolato come tuo cliente subordinato, e tutti gli ordini di consumo del cliente su questa piattaforma verranno restituiti al tuo account in base al rapporto di distribuzione attuale.",
-    "_distributionLinkDescription": "La descrizione del link di rinvio.",
-    "distributionLinkDescription2": "Questo link contiene il tuo ID utente. Dopo che il cliente apre il link, il tuo ID utente verrà registrato nel browser del cliente sotto forma di cookie, che è valido per sette giorni. Entro sette giorni, se il cliente registra questa piattaforma scansando il codice, il tuo ID utente verrà caricato sul server di registrazione con i cookie, e il cliente può essere vincolato come tuo cliente downstream.",
-    "_distributionLinkDescription2": "La descrizione del link di rinvio."
+  "button.query": {
+    "message": "Query",
+    "description": "Il testo nel pulsante, che viene utilizzato per interrogare i guadagni dei rinvii per il sito web."
   },
-  "title": {
-    "price": "Importo totale degli ordini di rinvio",
-    "_price.comment": "L'importo totale degli ordini di rinvio, utilizzato per calcolare i guadagni per rinvio.",
-    "reward": "Ricompense totali per rinvio",
-    "_reward.comment": "Le ricompense totali per rinvio, calcolate in base all'importo dell'ordine e alla percentuale di guadagno per rinvio.",
-    "level": "Livello di rinvio",
-    "_level.comment": "Il livello di rinvio, utilizzato per calcolare i guadagni per rinvio.",
-    "percentage": "Percentuale di guadagno per rinvio",
-    "_percentage.comment": "La percentuale di guadagno per rinvio, utilizzata per calcolare i guadagni per rinvio.",
-    "currentLevel": "Livello attuale",
-    "_currentLevel.comment": "Il livello di rinvio attuale, utilizzato per calcolare i guadagni per rinvio.",
-    "nextLevel": "Prossimo livello",
-    "_nextLevel.comment": "Il livello di rinvio successivo, utilizzato per calcolare i guadagni per rinvio.",
-    "currentPercentage": "Percentuale di guadagno per rinvio attuale",
-    "_currentPercentage.comment": "La percentuale di guadagno per rinvio attuale, utilizzata per calcolare i guadagni per rinvio.",
-    "nextPercentage": "Percentuale di guadagno per rinvio del prossimo livello",
-    "_nextPercentage.comment": "La percentuale di guadagno per rinvio del prossimo livello, utilizzata per calcolare i guadagni per rinvio.",
-    "levelInfo": "Informazioni sul livello",
-    "_levelInfo.comment": "Le informazioni del livello di rinvio, utilizzate per calcolare i guadagni per rinvio.",
-    "distributionLink": "Link di rinvio",
-    "_distributionLink.comment": "Il link di rinvio, che viene utilizzato per collegare il cliente come cliente subordinato.",
-    "inviteesCount": "Numero totale di invitati",
-    "_inviteesCount.comment": "Il numero totale degli invitati, utilizzato per calcolare i guadagni per rinvio.",
-    "manageDistributionStatus": "Gestione della distribuzione",
-    "_manageDistributionStatus.comment": "La gestione dello stato del rinvio."
+  "field.id": {
+    "message": "ID del rinvio",
+    "description": "L'identificatore univoco della distribuzione, la distribuzione significa il rinvio per il sito web del servizio API."
+  },
+  "field.percentage": {
+    "message": "Percentuale di guadagno per rinvio",
+    "description": "La percentuale dei guadagni per rinvio, calcolata in base all'importo dell'ordine."
+  },
+  "field.price": {
+    "message": "Importo dell'ordine",
+    "description": "L'importo dell'ordine, utilizzato per calcolare i guadagni per rinvio."
+  },
+  "field.reward": {
+    "message": "Ricompensa per rinvio",
+    "description": "I guadagni per rinvio, calcolati in base all'importo dell'ordine e alla percentuale di guadagno per rinvio."
+  },
+  "field.createdAt": {
+    "message": "Data del rinvio",
+    "description": "Il momento in cui il rinvio è stato creato."
+  },
+  "field.level": {
+    "message": "Livello",
+    "description": "Il livello del rinvio, utilizzato per calcolare i guadagni per rinvio."
+  },
+  "field.threshold": {
+    "message": "Soglia di guadagno per rinvio",
+    "description": "La soglia dei guadagni per rinvio, utilizzata per prelevare i guadagni per rinvio."
+  },
+  "field.inviteeId": {
+    "message": "ID dell'invitante",
+    "description": "L'identificatore univoco dell'invitante, l'invitante significa l'utente che invita l'invitato al sito web del servizio API."
+  },
+  "field.isVerified": {
+    "message": "È verificato",
+    "description": "Il flag per indicare se l'utente del rinvio è verificato con le informazioni reali."
+  },
+  "message.deltaPriceForNextLevel": {
+    "message": "Differenza per il livello successivo",
+    "description": "La differenza tra l'importo dell'ordine attuale e la soglia del livello successivo."
+  },
+  "message.developingWithDrawal": {
+    "message": "Si prega di aggiungere il servizio clienti per gestire i prelievi, i prelievi dedurranno il 6% di imposta sul reddito, le fatture possono essere utilizzate per la detrazione",
+    "description": "Il messaggio per indicare che la funzione di prelievo è in fase di sviluppo."
+  },
+  "message.technicalDetail": {
+    "message": "Dettaglio tecnico",
+    "description": "Il dettaglio tecnico del sistema di rinvio è implementato."
+  },
+  "message.distributionQrDescription": {
+    "message": "Codice QR del rinvio (stesso contenuto del link)",
+    "description": "La descrizione del codice QR del rinvio."
+  },
+  "message.distributionLink": {
+    "message": "Link di rinvio",
+    "description": "Il link di rinvio, utilizzato per collegare il cliente come cliente subordinato."
+  },
+  "message.updateSuccessfully": {
+    "message": "Aggiornamento riuscito",
+    "description": "Il messaggio per indicare che le informazioni del rinvio sono state aggiornate con successo."
+  },
+  "message.distributionLinkDescription": {
+    "message": "Se un cliente si registra su questa piattaforma tramite questo link o codice QR, il cliente sarà permanentemente vincolato come tuo cliente subordinato, e tutti gli ordini di consumo del cliente su questa piattaforma verranno restituiti al tuo account in base al rapporto di distribuzione attuale.",
+    "description": "La descrizione del link di rinvio."
+  },
+  "message.distributionLinkDescription2": {
+    "message": "Questo link contiene il tuo ID utente. Dopo che il cliente apre il link, il tuo ID utente verrà registrato nel browser del cliente sotto forma di cookie, che è valido per sette giorni. Entro sette giorni, se il cliente registra questa piattaforma scansionando il codice, il tuo ID utente verrà caricato sul server di registrazione con i cookie e il cliente può essere vincolato come tuo cliente downstream.",
+    "description": "La descrizione del link di rinvio."
+  },
+  "title.price": {
+    "message": "Importo totale degli ordini di rinvio",
+    "description": "L'importo totale degli ordini di rinvio, utilizzato per calcolare i guadagni per rinvio."
+  },
+  "title.reward": {
+    "message": "Ricompense totali per rinvio",
+    "description": "Le ricompense totali per rinvio, calcolate in base all'importo dell'ordine e alla percentuale di guadagno per rinvio."
+  },
+  "title.level": {
+    "message": "Livello di rinvio",
+    "description": "Il livello di rinvio, utilizzato per calcolare i guadagni per rinvio."
+  },
+  "title.percentage": {
+    "message": "Percentuale di guadagno per rinvio",
+    "description": "La percentuale di guadagno per rinvio, utilizzata per calcolare i guadagni per rinvio."
+  },
+  "title.currentLevel": {
+    "message": "Livello attuale",
+    "description": "Il livello di rinvio attuale, utilizzato per calcolare i guadagni per rinvio."
+  },
+  "title.nextLevel": {
+    "message": "Prossimo livello",
+    "description": "Il prossimo livello di rinvio, utilizzato per calcolare i guadagni per rinvio."
+  },
+  "title.currentPercentage": {
+    "message": "Percentuale di guadagno per rinvio attuale",
+    "description": "La percentuale di guadagno per rinvio attuale, utilizzata per calcolare i guadagni per rinvio."
+  },
+  "title.nextPercentage": {
+    "message": "Percentuale di guadagno per rinvio del livello successivo",
+    "description": "La percentuale di guadagno per rinvio del livello successivo, utilizzata per calcolare i guadagni per rinvio."
+  },
+  "title.levelInfo": {
+    "message": "Informazioni sul livello",
+    "description": "Le informazioni del livello di rinvio, utilizzate per calcolare i guadagni per rinvio."
+  },
+  "title.distributionLink": {
+    "message": "Link di rinvio",
+    "description": "Il link di rinvio, utilizzato per collegare il cliente come cliente subordinato."
+  },
+  "title.inviteesCount": {
+    "message": "Numero totale di invitati",
+    "description": "Il numero totale degli invitati, utilizzato per calcolare i guadagni per rinvio."
+  },
+  "title.manageDistributionStatus": {
+    "message": "Gestione della distribuzione",
+    "description": "La gestione dello stato del rinvio."
   }
 }

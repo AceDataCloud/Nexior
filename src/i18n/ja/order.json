@@ -1,78 +1,134 @@
 {
-  "button": {
-    "pay": "支払う",
-    "_pay.comment": "注文を支払うために使用されるボタンのテキスト。",
-    "continuePay": "支払いを続ける",
-    "_continuePay.comment": "注文の支払いを続けるために使用されるボタンのテキスト。",
-    "checkDetail": "詳細を確認",
-    "_checkDetail.comment": "注文の詳細を確認するために使用されるボタンのテキスト。",
-    "query": "クエリ",
-    "_query.comment": "注文をクエリするために使用されるボタンのテキスト。",
-    "finish": "手動で完了",
-    "_finish.comment": "注文を手動で完了するために使用されるボタンのテキスト。",
-    "update": "更新",
-    "_update.comment": "注文を更新するために使用されるボタンのテキスト。"
+  "button.pay": {
+    "message": "支払う",
+    "description": "注文を支払うために使用されるボタンのテキスト。"
   },
-  "field": {
-    "id": "注文ID",
-    "_id.comment": "注文のID。",
-    "amount": "金額",
-    "_amount.comment": "注文のクレジット金額。",
-    "price": "金額",
-    "_price.comment": "注文のクレジット金額。",
-    "description": "注文の説明",
-    "_description.comment": "注文の説明。",
-    "state": "ステータス",
-    "_state.comment": "注文のステータス。",
-    "createdAt": "作成日時",
-    "_createdAt.comment": "注文の作成日時。",
-    "service": "サービス名",
-    "_service.comment": "サービスの名前。",
-    "payWay": "支払い方法",
-    "_payWay.comment": "注文の支払い方法。",
-    "api": "API",
-    "_api.comment": "APIはオンラインサービスの一種です。",
-    "proxy": "プロキシ",
-    "_proxy.comment": "プロキシはデータの転送に使用されるオンラインサービスの一種です。"
+  "button.continuePay": {
+    "message": "支払いを続ける",
+    "description": "注文の支払いを続けるために使用されるボタンのテキスト。"
   },
-  "message": {
-    "paidSuccessfully": "支払い成功",
-    "_paidSuccessfully.comment": "支払いが成功した場合のメッセージ。",
-    "createFailed": "作成失敗",
-    "_createFailed.comment": "作成に失敗した場合のメッセージ。",
-    "wechatPayHelp": "携帯電話でWeChatを開き、支払いを完了するためにスキャンしてください",
-    "_wechatPayHelp.comment": "WeChat支払いのヘルプメッセージ。",
-    "free": "無料",
-    "_free.comment": "無料注文のメッセージ。",
-    "buyInExternalUrl": "外部リンクで支払いを完了してください",
-    "_buyInExternalUrl.comment": "外部リンク支払いのメッセージ。",
-    "updateFailed": "更新失敗",
-    "_updateFailed.comment": "更新に失敗した場合のメッセージ。",
-    "updateSuccessfully": "更新成功",
-    "_updateSuccessfully.comment": "更新が成功した場合のメッセージ。",
-    "confirmFinish": "この操作は注文を手動で支払い状態に設定し、配布処理を完了します。元に戻すことはできません。お客様が支払いを完了したことを確認してください。続行しますか？",
-    "_confirmFinish.comment": "完了を確認するメッセージ。"
+  "button.checkDetail": {
+    "message": "詳細を確認",
+    "description": "注文の詳細を確認するために使用されるボタンのテキスト。"
   },
-  "state": {
-    "pending": "支払い保留中",
-    "_pending.comment": "注文のステータス。この注文はまだユーザーの支払いを保留しています。",
-    "paid": "支払済み",
-    "_paid.comment": "注文のステータス。この注文は支払済みです。",
-    "expired": "支払いタイムアウト",
-    "_expired.comment": "注文のステータス。この注文は期限切れです。",
-    "failed": "支払い失敗",
-    "_failed.comment": "注文のステータス。この注文は支払いに失敗しました。"
+  "button.query": {
+    "message": "クエリ",
+    "description": "注文をクエリするために使用されるボタンのテキスト。"
   },
-  "title": {
-    "info": "注文情報",
-    "_info.comment": "ウェブサイトのタイトルとして使用されるタイトル。注文情報を意味します。",
-    "wechatPay": "WeChat支払い",
-    "_wechatPay.comment": "ウェブサイトのタイトルとして使用されるタイトル。WeChat支払いを意味します。",
-    "aliPay": "Alipay",
-    "_aliPay.comment": "ウェブサイトのタイトルとして使用されるタイトル。Alipay支払いはオンライン支払いの一種です。",
-    "stripe": "Stripe",
-    "_stripe.comment": "ウェブサイトのタイトルとして使用されるタイトル。Stripe支払いはオンライン支払いの一種です。",
-    "manageOrder": "注文管理",
-    "_manageOrder.comment": "ウェブサイトのタイトルとして使用されるタイトル。注文の管理を意味します。"
+  "button.finish": {
+    "message": "手動で完了",
+    "description": "注文を手動で完了するために使用されるボタンのテキスト。"
+  },
+  "button.update": {
+    "message": "更新",
+    "description": "注文を更新するために使用されるボタンのテキスト。"
+  },
+  "field.id": {
+    "message": "注文ID",
+    "description": "注文のID。"
+  },
+  "field.amount": {
+    "message": "金額",
+    "description": "注文のクレジット金額。"
+  },
+  "field.price": {
+    "message": "金額",
+    "description": "注文のクレジット金額。"
+  },
+  "field.description": {
+    "message": "注文の説明",
+    "description": "注文の説明。"
+  },
+  "field.state": {
+    "message": "ステータス",
+    "description": "注文のステータス。"
+  },
+  "field.createdAt": {
+    "message": "作成日時",
+    "description": "注文の作成日時。"
+  },
+  "field.service": {
+    "message": "サービス名",
+    "description": "サービスの名前。"
+  },
+  "field.payWay": {
+    "message": "支払い方法",
+    "description": "注文の支払い方法。"
+  },
+  "field.api": {
+    "message": "API",
+    "description": "APIはオンラインサービスの一種です。"
+  },
+  "field.proxy": {
+    "message": "プロキシ",
+    "description": "プロキシはデータ転送に使用されるHTTPプロキシの一種です。"
+  },
+  "message.paidSuccessfully": {
+    "message": "支払いが成功しました",
+    "description": "支払いが成功した場合のメッセージ。"
+  },
+  "message.createFailed": {
+    "message": "作成に失敗しました",
+    "description": "作成に失敗した場合のメッセージ。"
+  },
+  "message.wechatPayHelp": {
+    "message": "携帯電話でWeChatを開き、支払いを完了するためにスキャンしてください",
+    "description": "WeChat支払いのヘルプメッセージ。"
+  },
+  "message.free": {
+    "message": "無料",
+    "description": "無料注文のメッセージ。"
+  },
+  "message.buyInExternalUrl": {
+    "message": "外部リンクで支払いを完了してください",
+    "description": "外部リンク支払いのメッセージ。"
+  },
+  "message.updateFailed": {
+    "message": "更新に失敗しました",
+    "description": "更新に失敗した場合のメッセージ。"
+  },
+  "message.updateSuccessfully": {
+    "message": "更新が成功しました",
+    "description": "更新が成功した場合のメッセージ。"
+  },
+  "message.confirmFinish": {
+    "message": "この操作は注文を手動で支払い状態に設定し、配布処理を完了させます。元に戻すことはできません。お客様が支払いを完了したことを確認してください。続行しますか？",
+    "description": "完了を確認するメッセージ。"
+  },
+  "state.pending": {
+    "message": "支払い保留中",
+    "description": "注文のステータス。このステータスは、この注文がまだユーザーの支払いを保留していることを意味します。"
+  },
+  "state.paid": {
+    "message": "支払い済み",
+    "description": "注文のステータス。このステータスは、この注文が支払い済みであることを意味します。"
+  },
+  "state.expired": {
+    "message": "支払い期限切れ",
+    "description": "注文のステータス。このステータスは、この注文が期限切れになったことを意味します。"
+  },
+  "state.failed": {
+    "message": "支払い失敗",
+    "description": "注文のステータス。このステータスは、この注文が支払いに失敗したことを意味します。"
+  },
+  "title.info": {
+    "message": "注文情報",
+    "description": "ウェブサイトのタイトルとして使用されるタイトル。注文情報を意味します。"
+  },
+  "title.wechatPay": {
+    "message": "WeChat支払い",
+    "description": "ウェブサイトのタイトルとして使用されるタイトル。WeChat支払いを意味します。"
+  },
+  "title.aliPay": {
+    "message": "Alipay",
+    "description": "ウェブサイトのタイトルとして使用されるタイトル。Alipay支払いはオンライン支払いの一種です。"
+  },
+  "title.stripe": {
+    "message": "Stripe",
+    "description": "ウェブサイトのタイトルとして使用されるタイトル。Stripe支払いはオンライン支払いの一種です。"
+  },
+  "title.manageOrder": {
+    "message": "注文管理",
+    "description": "ウェブサイトのタイトルとして使用されるタイトル。注文管理を意味します。"
   }
 }

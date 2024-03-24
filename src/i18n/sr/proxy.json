@@ -1,62 +1,114 @@
 {
-  "entity": {
-    "requestQueries": "URL Parametri",
-    "_requestQueries.comment": "Ovo su parametri koji se prosleđuju u URL-u. Razdvojeni su znakom '?' i odvojeni su znakom '&'.",
-    "requestBody": "Telo zahteva",
-    "_requestBody.comment": "Ovo je telo zahteva. Obično se koristi za POST i PUT zahteve.",
-    "responseBody": "Telo odgovora",
-    "_responseBody.comment": "Ovo je telo odgovora. Obično je u JSON formatu.",
-    "requestHeaders": "Zaglavlja zahteva",
-    "_requestHeaders.comment": "Ovo su zaglavlja koja se prosleđuju u zahtevu. Obično se koriste za autentifikaciju.",
-    "requestHeader": "Zaglavlje zahteva",
-    "requestQuery": "URL Parametar",
-    "responseHeaders": "Zaglavlja odgovora",
-    "_responseHeaders.comment": "Ovo su zaglavlja koja se prosleđuju u odgovoru. Obično se koriste za autentifikaciju.",
-    "response": "Odgovor",
-    "_response.comment": "Ovo je odgovor koji se vraća sa servera.",
-    "success": "Uspeh",
-    "_success.comment": "Ovo je odgovor koji se vraća kada je zahtev uspešan.",
-    "failure": "Neuspeh",
-    "_failure.comment": "Ovo je odgovor koji se vraća kada je zahtev neuspešan.",
-    "responseExample": "Primer",
-    "_responseExample.comment": "Ovo je primer odgovora koji se vraća sa servera.",
-    "authentication": "Autentifikacija",
-    "_authentication.comment": "Ovo je autentifikacija koja je potrebna da bi se napravio zahtev."
+  "entity.requestQueries": {
+    "message": "URL parametri",
+    "description": "Ovo su parametri koji se prosleđuju u URL-u. Razdvojeni su znakom '?' i odvojeni znakom '&'."
   },
-  "message": {
-    "free": "Besplatno",
-    "_free.comment": "Znači da je cena besplatna, nema potrebe da se troše krediti ili novac prilikom korišćenja API servisa",
-    "appliedCount": "Broj primenjenih",
-    "_appliedCount.comment": "Broj puta kada je primenjen API servis",
-    "firstFree": "Prvi put besplatno",
-    "_firstFree.comment": "Znači da je prvi put korišćenja API servisa besplatan, nema potrebe da se troše krediti ili novac",
-    "custom": "Specifičan iznos",
-    "_custom.comment": "Znači da je cena određena, potrebno je potrošiti određene kredite ili novac prilikom korišćenja API servisa",
-    "present": "Poklon",
-    "_present.comment": "Poklonićemo vam kredite kada prvi put koristite API servis",
-    "around": "Približno",
-    "_around.comment": "Cena je približna, stvarna cena može biti drugačija",
-    "successRate15min": "Realni uspeh u realnom vremenu",
-    "_successRate15min.comment": "Realni uspeh API servisa u poslednjih 15 minuta",
-    "ySuccessRate": "Stopa uspeha (100%)",
-    "_ySuccessRate.comment": "Stopa uspeha API servisa",
-    "xMinutes": "Vreme (minuti)",
-    "_xMinutes.comment": "Vreme u minutima",
-    "streamUsage": "Vrsta podsetnika: Za zahteve za strimovanje, gore navedeni kod možda nije potpuno primenljiv. Molimo pogledajte dokumentaciju za modifikacije.",
-    "_streamUsage.comment": "Za zahteve za strimovanje, gore navedeni kod možda nije potpuno primenljiv. Molimo pogledajte dokumentaciju za modifikacije.",
-    "alphaStage": "Ovaj API je u Alpha fazi, to je rana verzija pregleda, može postojati potencijalna nestabilnost, format API-ja može se značajno promeniti, nije preporučljivo za korišćenje u proizvodnom okruženju. Trenutno je cena relativno niska, a može doći do značajnih promena cena u budućnosti.",
-    "_alphaStage.comment": "Ovaj API je u Alpha fazi, to je rana verzija pregleda, može postojati potencijalna nestabilnost, format API-ja može se značajno promeniti, nije preporučljivo za korišćenje u proizvodnom okruženju. Trenutno je cena relativno niska, a može doći do značajnih promena cena u budućnosti.",
-    "betaStage": "Ovaj API je u Beta fazi, format API-ja se neće mnogo promeniti, ali može postojati potencijalna nestabilnost, molimo koristite ga pažljivo u proizvodnom okruženju. Trenutno je cena relativno niska, a može doći do umerenih promena cena u budućnosti.",
-    "_betaStage.comment": "Ovaj API je u Beta fazi, format API-ja se neće mnogo promeniti, ali može postojati potencijalna nestabilnost, molimo koristite ga pažljivo u proizvodnom okruženju. Trenutno je cena relativno niska, a može doći do umerenih promena cena u budućnosti."
+  "entity.requestBody": {
+    "message": "Telo zahteva",
+    "description": "Ovo je telo zahteva. Obično se koristi za POST i PUT zahteve."
   },
-  "unit": {
-    "GB": "GB",
-    "_GB.comment": "Gigabajt, jedinica digitalnog skladištenja informacija",
-    "MB": "MB",
-    "_MB.comment": "Megabajt, jedinica digitalnog skladištenja informacija",
-    "KB": "KB",
-    "_KB.comment": "Kilobajt, jedinica digitalnog skladištenja informacija",
-    "B": "B",
-    "_B.comment": "Bajt, jedinica digitalnog skladištenja informacija"
+  "entity.responseBody": {
+    "message": "Telo odgovora",
+    "description": "Ovo je telo odgovora. Obično je u JSON formatu."
+  },
+  "entity.requestHeaders": {
+    "message": "Zaglavlja zahteva",
+    "description": "Ovo su zaglavlja koja se prosleđuju u zahtevu. Obično se koriste za autentifikaciju."
+  },
+  "entity.requestHeader": {
+    "message": "Zaglavlje zahteva",
+    "description": "Ovo je zaglavlje koje se prosleđuje u zahtevu. Obično se koristi za autentifikaciju."
+  },
+  "entity.requestQuery": {
+    "message": "URL parametar",
+    "description": "Ovo je parametar koji se prosleđuje u URL-u. Razdvojen je znakom '?' i odvojen znakom '&'."
+  },
+  "entity.responseHeaders": {
+    "message": "Zaglavlja odgovora",
+    "description": "Ovo su zaglavlja koja se prosleđuju u odgovoru. Obično se koriste za autentifikaciju."
+  },
+  "entity.response": {
+    "message": "Odgovor",
+    "description": "Ovo je odgovor koji se vraća sa servera."
+  },
+  "entity.success": {
+    "message": "Uspeh",
+    "description": "Ovo je odgovor koji se vraća kada je zahtev uspešan."
+  },
+  "entity.failure": {
+    "message": "Neuspeh",
+    "description": "Ovo je odgovor koji se vraća kada je zahtev neuspešan."
+  },
+  "entity.responseExample": {
+    "message": "Primer",
+    "description": "Ovo je primer odgovora koji se vraća sa servera."
+  },
+  "entity.authentication": {
+    "message": "Autentifikacija",
+    "description": "Ovo je autentifikacija koja je potrebna za izvršavanje zahteva."
+  },
+  "message.free": {
+    "message": "Besplatno",
+    "description": "Znači da je cena besplatna, nema potrebe za trošenjem kredita ili novca prilikom korišćenja API servisa"
+  },
+  "message.appliedCount": {
+    "message": "Broj primena",
+    "description": "Broj puta kada je API servis korišćen"
+  },
+  "message.firstFree": {
+    "message": "Prvi put besplatno",
+    "description": "Znači da je prvo korišćenje API servisa besplatno, nema potrebe za trošenjem kredita ili novca"
+  },
+  "message.custom": {
+    "message": "Određeni iznos",
+    "description": "Znači da je cena određena, potrebno je potrošiti određeni broj kredita ili novca prilikom korišćenja API servisa"
+  },
+  "message.present": {
+    "message": "Poklon",
+    "description": "Poklonićemo vam kredite kada prvi put koristite API servis"
+  },
+  "message.around": {
+    "message": "Približno",
+    "description": "Cena je približna, stvarna cena može biti drugačija"
+  },
+  "message.successRate15min": {
+    "message": "Realni uspešni procenat",
+    "description": "Realni uspešni procenat API servisa u poslednjih 15 minuta"
+  },
+  "message.ySuccessRate": {
+    "message": "Procenat uspeha (100%)",
+    "description": "Procenat uspeha API servisa"
+  },
+  "message.xMinutes": {
+    "message": "Vreme (minuti)",
+    "description": "Vreme u minutima"
+  },
+  "message.streamUsage": {
+    "message": "Vrsta podsetnika: Za zahteve za strimovanje, gore navedeni kod možda nije potpuno primenljiv. Molimo vas da se obratite dokumentaciji za modifikacije.",
+    "description": "Za zahteve za strimovanje, gore navedeni kod možda nije potpuno primenljiv. Molimo vas da se obratite dokumentaciji za modifikacije."
+  },
+  "message.alphaStage": {
+    "message": "Ovaj API je u Alpha fazi, to je rana verzija pregleda, može postojati potencijalna nestabilnost, format API-ja može se značajno promeniti, nije preporučljivo za korišćenje u proizvodnom okruženju. Trenutna cena je relativno niska, a moguće su značajne promene cena u budućnosti.",
+    "description": "Ovaj API je u Alpha fazi, to je rana verzija pregleda, može postojati potencijalna nestabilnost, format API-ja može se značajno promeniti, nije preporučljivo za korišćenje u proizvodnom okruženju. Trenutna cena je relativno niska, a moguće su značajne promene cena u budućnosti."
+  },
+  "message.betaStage": {
+    "message": "Ovaj API je u Beta fazi, format API-ja se neće mnogo promeniti, ali može postojati potencijalna nestabilnost, molimo vas da ga pažljivo koristite u proizvodnom okruženju. Trenutna cena je relativno niska, a moguće su umerene promene cena u budućnosti.",
+    "description": "Ovaj API je u Beta fazi, format API-ja se neće mnogo promeniti, ali može postojati potencijalna nestabilnost, molimo vas da ga pažljivo koristite u proizvodnom okruženju. Trenutna cena je relativno niska, a moguće su umerene promene cena u budućnosti."
+  },
+  "unit.GB": {
+    "message": "GB",
+    "description": "Gigabajt, jedinica digitalnog skladištenja informacija"
+  },
+  "unit.MB": {
+    "message": "MB",
+    "description": "Megabajt, jedinica digitalnog skladištenja informacija"
+  },
+  "unit.KB": {
+    "message": "KB",
+    "description": "Kilobajt, jedinica digitalnog skladištenja informacija"
+  },
+  "unit.B": {
+    "message": "B",
+    "description": "Bajt, jedinica digitalnog skladištenja informacija"
   }
 }

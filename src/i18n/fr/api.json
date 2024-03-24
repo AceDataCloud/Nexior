@@ -1,78 +1,142 @@
 {
-  "entity": {
-    "requestQueries": "Requêtes de demande",
-    "_requestQueries.comment": "Les paramètres de requête HTTP.",
-    "requestBody": "Corps de la requête",
-    "_requestBody.comment": "Le corps de la requête HTTP.",
-    "responseBody": "Corps de la réponse",
-    "_responseBody.comment": "Le corps de la réponse HTTP.",
-    "requestHeaders": "En-têtes de la requête",
-    "_requestHeaders.comment": "Les en-têtes de la requête HTTP.",
-    "requestHeader": "En-tête de la requête",
-    "_requestHeader.comment": "L'en-tête de la requête HTTP, juste une seule forme pour les en-têtes de la requête.",
-    "responseHeaders": "En-têtes de la réponse",
-    "_responseHeaders.comment": "Les en-têtes de la réponse HTTP.",
-    "response": "Réponse",
-    "_response.comment": "La réponse HTTP.",
-    "success": "Succès",
-    "_success.comment": "La réponse réussie.",
-    "failure": "Échec",
-    "_failure.comment": "La réponse échouée.",
-    "responseExample": "Exemple",
-    "_responseExample.comment": "L'exemple de la réponse.",
-    "authentication": "Authentification",
-    "_authentication.comment": "Les informations d'authentification.",
-    "arrayOf": "Tableau de",
-    "_arrayOf.comment": "Le tableau de l'entité.",
-    "apiKey": "Clé API",
-    "_apiKey.comment": "La clé API"
+  "entity.requestQueries": {
+    "message": "Requête de la requête",
+    "description": "Les paramètres de requête HTTP."
   },
-  "message": {
-    "free": "Gratuit",
-    "_free.comment": "Signifie que le prix est gratuit, pas besoin de dépenser de crédits ou d'argent lors de l'utilisation du service API",
-    "appliedCount": "Nombre d'applications",
-    "_appliedCount.comment": "Le nombre de fois où le service API a été appliqué",
-    "firstFree": "Première fois gratuite",
-    "_firstFree.comment": "Signifie que la première fois du service API est gratuite, pas besoin de dépenser de crédits ou d'argent",
-    "custom": "Montant spécifié",
-    "_custom.comment": "Signifie que le prix est spécifié, besoin de dépenser les crédits ou l'argent spécifiés lors de l'utilisation du service API",
-    "present": "Présent",
-    "_present.comment": "Nous vous offrirons des crédits lorsque vous utiliserez le service API pour la première fois",
-    "around": "Environ",
-    "_around.comment": "Le prix est approximatif, le prix réel peut être différent",
-    "successRate15min": "Taux de réussite en temps réel",
-    "_successRate15min.comment": "Le taux de réussite en temps réel du service API au cours des 15 dernières minutes",
-    "ySuccessRate": "Taux de réussite (100%)",
-    "_ySuccessRate.comment": "Le taux de réussite du service API",
-    "xMinutes": "Temps (minutes)",
-    "_xMinutes.comment": "Le temps en minutes",
-    "streamUsage": "Rappel amical : Pour les demandes en continu, le code ci-dessus peut ne pas être entièrement applicable. Veuillez vous référer au document d'accueil pour les modifications.",
-    "_streamUsage.comment": "Pour les demandes en continu, le code ci-dessus peut ne pas être entièrement applicable. Veuillez vous référer au document d'accueil pour les modifications.",
-    "alphaStage": "Cette API est à l'étape Alpha, c'est une version de prévisualisation précoce, il peut y avoir une instabilité potentielle, le format de l'API peut changer de manière significative, il n'est pas recommandé pour une utilisation dans un environnement de production. Les tarifs actuels sont relativement bas, et il peut y avoir des ajustements de prix importants à l'avenir.",
-    "_alphaStage.comment": "Cette API est à l'étape Alpha, c'est une version de prévisualisation précoce, il peut y avoir une instabilité potentielle, le format de l'API peut changer de manière significative, il n'est pas recommandé pour une utilisation dans un environnement de production. Les tarifs actuels sont relativement bas, et il peut y avoir des ajustements de prix importants à l'avenir.",
-    "betaStage": "Cette API est à l'étape Beta, le format de l'API ne changera pas beaucoup, mais il peut y avoir une instabilité potentielle, veuillez l'utiliser avec précaution dans un environnement de production. Les tarifs actuels sont relativement bas, et il peut y avoir des ajustements de prix modérés à l'avenir.",
-    "_betaStage.comment": "Cette API est à l'étape Beta, le format de l'API ne changera pas beaucoup, mais il peut y avoir une instabilité potentielle, veuillez l'utiliser avec précaution dans un environnement de production. Les tarifs actuels sont relativement bas, et il peut y avoir des ajustements de prix modérés à l'avenir."
+  "entity.requestBody": {
+    "message": "Corps de la requête",
+    "description": "Le corps de la requête HTTP."
   },
-  "unit": {
-    "credit": "Crédit",
-    "_credit.comment": "Crédit signifie la monnaie virtuelle utilisée dans le service API",
-    "Credit": "Crédit",
-    "_Credit.comment": "Crédit signifie la monnaie virtuelle utilisée dans le service API, c'est la forme capitalisée",
-    "credits": "Crédits",
-    "_credits.comment": "Crédits signifie la monnaie virtuelle utilisée dans le service API, c'est la forme plurielle",
-    "Credits": "Crédits",
-    "_Credits.comment": "Crédits signifie la monnaie virtuelle utilisée dans le service API, c'est la forme capitalisée et plurielle",
-    "call": "Appel",
-    "_call.comment": "Appel signifie le nombre de fois où le service API a été appelé",
-    "Call": "Appel",
-    "_Call.comment": "Appel signifie le nombre de fois où le service API a été appelé, c'est la forme capitalisée",
-    "calls": "Appels",
-    "_calls.comment": "Appels signifie le nombre de fois où le service API a été appelé, c'est la forme plurielle",
-    "Calls": "Appels",
-    "_Calls.comment": "Appels signifie le nombre de fois où le service API a été appelé, c'est la forme capitalisée et plurielle",
-    "MB": "Mo",
-    "_MB.comment": "Mo signifie mégaoctet, une unité de stockage d'informations numériques",
-    "GB": "Go",
-    "_GB.comment": "Go signifie gigaoctet, une unité de stockage d'informations numériques"
+  "entity.responseBody": {
+    "message": "Corps de la réponse",
+    "description": "Le corps de la réponse HTTP."
+  },
+  "entity.requestHeaders": {
+    "message": "En-têtes de la requête",
+    "description": "Les en-têtes de requête HTTP."
+  },
+  "entity.requestHeader": {
+    "message": "En-tête de la requête",
+    "description": "L'en-tête de la requête HTTP, juste une seule forme pour les en-têtes de requête."
+  },
+  "entity.responseHeaders": {
+    "message": "En-têtes de la réponse",
+    "description": "Les en-têtes de réponse HTTP."
+  },
+  "entity.response": {
+    "message": "Réponse",
+    "description": "La réponse HTTP."
+  },
+  "entity.success": {
+    "message": "Succès",
+    "description": "La réponse réussie."
+  },
+  "entity.failure": {
+    "message": "Échec",
+    "description": "La réponse échouée."
+  },
+  "entity.responseExample": {
+    "message": "Exemple",
+    "description": "L'exemple de la réponse."
+  },
+  "entity.authentication": {
+    "message": "Authentification",
+    "description": "Les informations d'authentification."
+  },
+  "entity.arrayOf": {
+    "message": "Tableau de",
+    "description": "Le tableau de l'entité."
+  },
+  "entity.apiKey": {
+    "message": "Clé API",
+    "description": "La clé API"
+  },
+  "message.free": {
+    "message": "Gratuit",
+    "description": "Signifie que le prix est gratuit, pas besoin de dépenser de crédits ou d'argent lors de l'utilisation du service API"
+  },
+  "message.appliedCount": {
+    "message": "Nombre d'applications",
+    "description": "Le nombre de fois où le service API a été appliqué"
+  },
+  "message.firstFree": {
+    "message": "Première fois gratuite",
+    "description": "Signifie que la première utilisation du service API est gratuite, pas besoin de dépenser de crédits ou d'argent"
+  },
+  "message.custom": {
+    "message": "Montant spécifié",
+    "description": "Signifie que le prix est spécifié, il faut dépenser les crédits ou l'argent spécifié lors de l'utilisation du service API"
+  },
+  "message.present": {
+    "message": "Présent",
+    "description": "Nous vous offrirons des crédits lorsque vous utiliserez le service API pour la première fois"
+  },
+  "message.around": {
+    "message": "Environ",
+    "description": "Le prix est approximatif, le prix réel peut être différent"
+  },
+  "message.successRate15min": {
+    "message": "Taux de réussite en temps réel",
+    "description": "Le taux de réussite en temps réel du service API au cours des 15 dernières minutes"
+  },
+  "message.ySuccessRate": {
+    "message": "Taux de réussite (100%)",
+    "description": "Le taux de réussite du service API"
+  },
+  "message.xMinutes": {
+    "message": "Temps (minutes)",
+    "description": "Le temps en minutes"
+  },
+  "message.streamUsage": {
+    "message": "Rappel amical : Pour les requêtes en streaming, le code ci-dessus peut ne pas être entièrement applicable. Veuillez vous référer au document d'accueil pour les modifications.",
+    "description": "Pour les requêtes en streaming, le code ci-dessus peut ne pas être entièrement applicable. Veuillez vous référer au document d'accueil pour les modifications."
+  },
+  "message.alphaStage": {
+    "message": "Cette API est à l'étape Alpha, c'est une version de prévisualisation précoce, il peut y avoir une instabilité potentielle, le format de l'API peut changer significativement, il n'est pas recommandé pour une utilisation dans un environnement de production. Les tarifs actuels sont relativement bas, et il peut y avoir des ajustements de prix importants à l'avenir.",
+    "description": "Cette API est à l'étape Alpha, c'est une version de prévisualisation précoce, il peut y avoir une instabilité potentielle, le format de l'API peut changer significativement, il n'est pas recommandé pour une utilisation dans un environnement de production. Les tarifs actuels sont relativement bas, et il peut y avoir des ajustements de prix importants à l'avenir."
+  },
+  "message.betaStage": {
+    "message": "Cette API est à l'étape Beta, le format de l'API ne changera pas beaucoup, mais il peut y avoir une instabilité potentielle, veuillez l'utiliser avec précaution dans un environnement de production. Les tarifs actuels sont relativement bas, et il peut y avoir des ajustements de prix modérés à l'avenir.",
+    "description": "Cette API est à l'étape Beta, le format de l'API ne changera pas beaucoup, mais il peut y avoir une instabilité potentielle, veuillez l'utiliser avec précaution dans un environnement de production. Les tarifs actuels sont relativement bas, et il peut y avoir des ajustements de prix modérés à l'avenir."
+  },
+  "unit.credit": {
+    "message": "Crédit",
+    "description": "Le crédit est la monnaie virtuelle utilisée dans le service API"
+  },
+  "unit.Credit": {
+    "message": "Crédit",
+    "description": "Le crédit est la monnaie virtuelle utilisée dans le service API, ceci est la forme en majuscules"
+  },
+  "unit.credits": {
+    "message": "Crédits",
+    "description": "Crédits signifie la monnaie virtuelle utilisée dans le service API, ceci est la forme plurielle"
+  },
+  "unit.Credits": {
+    "message": "Crédits",
+    "description": "Crédits signifie la monnaie virtuelle utilisée dans le service API, ceci est la forme plurielle en majuscules"
+  },
+  "unit.call": {
+    "message": "Appel",
+    "description": "Appel signifie le nombre de fois où le service API a été appelé"
+  },
+  "unit.Call": {
+    "message": "Appel",
+    "description": "Appel signifie le nombre de fois où le service API a été appelé, ceci est la forme en majuscules"
+  },
+  "unit.calls": {
+    "message": "Appels",
+    "description": "Appels signifie le nombre de fois où le service API a été appelé, ceci est la forme plurielle"
+  },
+  "unit.Calls": {
+    "message": "Appels",
+    "description": "Appels signifie le nombre de fois où le service API a été appelé, ceci est la forme plurielle en majuscules"
+  },
+  "unit.MB": {
+    "message": "Mo",
+    "description": "Mo signifie mégaoctet, une unité de stockage d'informations numériques"
+  },
+  "unit.GB": {
+    "message": "Go",
+    "description": "Go signifie gigaoctet, une unité de stockage d'informations numériques"
   }
 }

@@ -16,7 +16,7 @@
               table-layout="fixed"
               :empty-text="$t('common.message.noData')"
             >
-              <el-table-column prop="id" :label="$t('application.field.id')" width="220px" class-name="text-center">
+              <el-table-column prop="id" :label="$t('application.field.id')" width="240px" class-name="text-center">
                 <template #default="scope">
                   <span>{{ scope.row.id }}</span>
                   <span class="copy">
@@ -49,6 +49,15 @@
                   <span>{{ getUsedAmount(scope.row) }}</span>
                 </template>
               </el-table-column>
+              <el-table-column fixed="right" width="360px">
+                <template #default="scope">
+                  <div class="float-right">
+                    <el-button type="primary" size="small" @click="onBuyMore(scope?.row)">
+                      {{ $t('application.button.buyMore') }}
+                    </el-button>
+                  </div>
+                </template>
+              </el-table-column>
             </el-table>
           </el-card>
         </el-col>
@@ -69,7 +78,7 @@ import { defineComponent } from 'vue';
 import { applicationOperator } from '@/operators';
 import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { ElTable, ElRow, ElCol, ElTableColumn, ElCard } from 'element-plus';
+import { ElTable, ElRow, ElCol, ElTableColumn, ElCard, ElButton } from 'element-plus';
 import { ROUTE_CONSOLE_APPLICATION_BUY } from '@/router/constants';
 import { IApplication, IApplicationListResponse, ICredentialType, IService } from '@/models';
 
@@ -96,6 +105,7 @@ export default defineComponent({
     CopyToClipboard,
     ElTable,
     ElRow,
+    ElButton,
     ElCol,
     ElTableColumn,
     ElCard

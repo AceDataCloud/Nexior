@@ -1,162 +1,314 @@
 {
-  "button": {
-    "setup": "Ustawienie",
-    "_setup.comment": "Tekst na przycisku, który służy do czegoś ustawienia",
-    "edit": "Edytuj",
-    "_edit.comment": "Tekst na przycisku, który służy do edycji czegoś",
-    "login": "Zaloguj się",
-    "_login.comment": "Tekst na przycisku, który służy do logowania",
-    "logout": "Wyloguj się",
-    "_logout.comment": "Tekst na przycisku, który służy do wylogowania",
-    "new": "Nowy",
-    "_new.comment": "Tekst na przycisku, który służy do utworzenia nowego elementu",
-    "delete": "Usuń",
-    "_delete.comment": "Tekst na przycisku, który służy do usunięcia czegoś",
-    "confirm": "Potwierdź",
-    "_confirm.comment": "Tekst na przycisku, który służy do potwierdzenia czegoś",
-    "cancel": "Anuluj",
-    "_cancel.comment": "Tekst na przycisku, który służy do anulowania czegoś",
-    "alert": "Alert",
-    "_alert.comment": "Tekst na przycisku, który służy do ostrzeżenia",
-    "info": "Info",
-    "_info.comment": "Tekst na przycisku, który służy do pokazania informacji",
-    "publish": "Opublikuj",
-    "_publish.comment": "Tekst na przycisku, który służy do opublikowania czegoś",
-    "watch": "Oglądaj",
-    "_watch.comment": "Tekst na przycisku, który służy do obserwowania czegoś",
-    "verify": "Zweryfikuj",
-    "_verify.comment": "Tekst na przycisku, który służy do weryfikacji tożsamości użytkownika",
-    "profile": "Profil",
-    "_profile.comment": "Tekst na przycisku, który służy do pokazania profilu",
-    "console": "Konsola",
-    "_console.comment": "Tekst na przycisku, który służy do pokazania strony konsoli do kontrolowania czegoś na stronie internetowej",
-    "learn": "Naucz się",
-    "_learn.comment": "Tekst na przycisku, który służy do umożliwienia użytkownikowi nauki czegoś",
-    "buy": "Kup",
-    "_buy.comment": "Tekst na przycisku, który służy do umożliwienia użytkownikowi zakupu czegoś",
-    "try": "Spróbuj",
-    "_try.comment": "Tekst na przycisku, który służy do umożliwienia użytkownikowi wypróbowania czegoś",
-    "startForFree": "Rozpocznij za darmo",
-    "_startForFree.comment": "Tekst na przycisku, który służy do umożliwienia użytkownikowi rozpoczęcia za darmo",
-    "apply": "Zastosuj",
-    "_apply.comment": "Tekst na przycisku, który służy do umożliwienia użytkownikowi zastosowania usługi API",
-    "refresh": "Odśwież",
-    "_refresh.comment": "Tekst na przycisku, który służy do odświeżenia strony",
-    "pay": "Zapłać",
-    "_pay.comment": "Tekst na przycisku, który służy do umożliwienia użytkownikowi zapłacenia za usługę",
-    "repay": "Kontynuuj płatność",
-    "_repay.comment": "Tekst na przycisku, który służy do umożliwienia użytkownikowi kontynuowania płatności za usługę",
-    "applied": "Zastosowano",
-    "_applied.comment": "Tekst na przycisku, który służy do pokazania, że użytkownik zastosował się do usługi",
-    "acquire": "Zdobądź",
-    "_acquire.comment": "Tekst na przycisku, który służy do umożliwienia użytkownikowi zdobycia czegoś, takiego jak token lub klucz do usługi API",
-    "fillExample": "Wypełnij przykład",
-    "_fillExample.comment": "Tekst na przycisku, który służy do umożliwienia użytkownikowi wypełnienia danych przykładowych",
-    "buyMore": "Kup więcej",
-    "_buyMore.comment": "Tekst na przycisku, który służy do umożliwienia użytkownikowi zakupu więcej",
-    "update": "Aktualizuj",
-    "_update.comment": "Tekst na przycisku, który służy do aktualizacji czegoś",
-    "view": "Zobacz",
-    "_view.comment": "Tekst na przycisku, który służy do zobaczenia czegoś",
-    "copy": "Kopiuj",
-    "_copy.comment": "Tekst na przycisku, który służy do skopiowania czegoś",
-    "create": "Utwórz",
-    "_create.comment": "Tekst na przycisku, który służy do utworzenia czegoś",
-    "referralEarnings": "Zarobki z poleceń",
-    "_referralEarnings.comment": "Tekst na przycisku, który służy do pokazania zarobków z poleceń, oznacza, że użytkownik może zarabiać pieniądze, zapraszając innych do korzystania z usługi",
-    "finish": "Zakończ",
-    "_finish.comment": "Tekst na przycisku, który służy do zakończenia czegoś"
+  "button.setup": {
+    "message": "Ustawienie",
+    "description": "Tekst na przycisku, który służy do ustawienia czegoś"
   },
-  "entity": {
-    "website": "Ace Data Cloud",
-    "_website.comment": "Nazwa strony internetowej, nie trzeba tłumaczyć, po prostu zachować jako 'Ace Data Cloud'",
-    "copyright": "Prawo autorskie",
-    "_copyright.comment": "Tekst do pokazania praw autorskich",
-    "platform": "Platforma",
-    "_platform.comment": "Tekst, który wskazuje, że jest to platforma usługi API",
-    "title": "Tytuł",
-    "_title.comment": "Tytuł jednostki",
-    "icon": "Ikona",
-    "_icon.comment": "Ikona jednostki",
-    "status": "Status",
-    "_status.comment": "Status jednostki",
-    "operation": "Operacja",
-    "_operation.comment": "Operacja jednostki",
-    "description": "Opis",
-    "_description.comment": "Opis jednostki",
-    "createdAt": "Utworzono",
-    "_createdAt.comment": "Czas utworzenia jednostki",
-    "updatedAt": "Zaktualizowano",
-    "_updatedAt.comment": "Czas aktualizacji jednostki",
-    "order": "Zamówienie",
-    "_order.comment": "Zamówienie jednostki, zamówienie zawiera pieniądze, informacje o usłudze, użytkownik musi za nią zapłacić"
+  "button.edit": {
+    "message": "Edytuj",
+    "description": "Tekst na przycisku, który służy do edycji czegoś"
   },
-  "message": {
-    "usedAmount": "Ilość użyta",
-    "_usedAmount.comment": "Wiadomość do pokazania użytej ilości usługi",
-    "remainingAmount": "Pozostała ilość",
-    "_remainingAmount.comment": "Wiadomość do pokazania pozostałej ilości usługi",
-    "copied": "Skopiowano pomyślnie",
-    "_copied.comment": "Wiadomość do pokazania, że zawartość została pomyślnie skopiowana",
-    "confirmDelete": "Czy na pewno chcesz usunąć?",
-    "_confirmDelete.comment": "Wiadomość potwierdzająca, że użytkownik chce usunąć coś",
-    "alert": "Ostrzeżenie",
-    "_alert.comment": "Wiadomość ostrzegająca użytkownika",
-    "info": "Przyjazne przypomnienie",
-    "_info.comment": "Wiadomość do pokazania informacji",
-    "free": "Darmowe",
-    "_free.comment": "Wiadomość do pokazania, że usługa jest darmowa, co oznacza, że użytkownik nie musi za nią płacić",
-    "startPrice": "Początek",
-    "_startPrice.comment": "Wiadomość do pokazania najniższej ceny usługi",
-    "joinDiscord": "Dołącz do Discorda",
-    "_joinDiscord.comment": "Wiadomość umożliwiająca użytkownikowi dołączenie do kanału Discord",
-    "noData": "Brak danych",
-    "_noData.comment": "Wiadomość do pokazania, że nie ma danych w tabeli lub liście"
+  "button.login": {
+    "message": "Zaloguj się",
+    "description": "Tekst na przycisku, który służy do logowania"
   },
-  "nav": {
-    "home": "Strona główna",
-    "_home.comment": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony głównej",
-    "content": "Zawartość",
-    "_content.comment": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony z zawartością",
-    "category": "Kategoria",
-    "_category.comment": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony kategorii",
-    "service": "Usługi",
-    "_service.comment": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony usług",
-    "document": "Dokumenty",
-    "_document.comment": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony dokumentów",
-    "console": "Konsola",
-    "_console.comment": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony konsoli",
-    "chat": "Czat",
-    "_chat.comment": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony czatu",
-    "midjourney": "Środek podróży",
-    "_midjourney.comment": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony środka podróży",
-    "chatdoc": "Czatdok",
-    "_chatdoc.comment": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony czatdok"
+  "button.logout": {
+    "message": "Wyloguj się",
+    "description": "Tekst na przycisku, który służy do wylogowania"
   },
-  "title": {
-    "alert": "Alert",
-    "_alert.comment": "Tytuł wiadomości alertu",
-    "placeholderOfSelect": "Proszę wybrać",
-    "_placeholderOfSelect.comment": "Tekst zastępczy dla pola wyboru",
-    "placeholderOfInput": "Proszę wypełnić",
-    "_placeholderOfInput.comment": "Tekst zastępczy dla pola wprowadzania",
-    "allApplications": "Wszystkie aplikacje",
-    "_allApplications.comment": "Tytuł strony do pokazania wszystkich aplikacji",
-    "allOrders": "Wszystkie zamówienia",
-    "_allOrders.comment": "Tytuł strony do pokazania wszystkich zamówień",
-    "orderInfo": "Informacje o zamówieniu",
-    "_orderInfo.comment": "Tytuł strony do pokazania informacji o zamówieniu",
-    "buyMore": "Kup więcej",
-    "_buyMore.comment": "Tytuł strony umożliwiający użytkownikowi zakupienie więcej",
-    "distribution": "Zarobki z poleceń",
-    "_distribution.comment": "Tytuł strony do pokazania zarobków z poleceń, oznacza, że użytkownik może zarabiać pieniądze, zapraszając innych do korzystania z usługi",
-    "distributionHistory": "Historia poleceń",
-    "_distributionHistory.comment": "Tytuł strony do pokazania historii poleceń",
-    "invitee": "Zapraszający",
-    "_invitee.comment": "Tytuł strony do pokazania zapraszającego",
-    "allUsages": "Historia użytkowania",
-    "_allUsages.comment": "Tytuł strony do pokazania całej historii użytkowania usługi API",
-    "allCredentials": "Poświadczenia",
-    "_allCredentials.comment": "Tytuł strony do pokazania wszystkich poświadczeń, poświadczenia służą do dostępu do API"
+  "button.new": {
+    "message": "Nowy",
+    "description": "Tekst na przycisku, który służy do utworzenia nowego elementu"
+  },
+  "button.delete": {
+    "message": "Usuń",
+    "description": "Tekst na przycisku, który służy do usunięcia czegoś"
+  },
+  "button.confirm": {
+    "message": "Potwierdź",
+    "description": "Tekst na przycisku, który służy do potwierdzenia czegoś"
+  },
+  "button.cancel": {
+    "message": "Anuluj",
+    "description": "Tekst na przycisku, który służy do anulowania czegoś"
+  },
+  "button.alert": {
+    "message": "Alert",
+    "description": "Tekst na przycisku, który służy do ostrzeżenia przed czymś"
+  },
+  "button.info": {
+    "message": "Informacja",
+    "description": "Tekst na przycisku, który służy do wyświetlenia informacji"
+  },
+  "button.publish": {
+    "message": "Opublikuj",
+    "description": "Tekst na przycisku, który służy do opublikowania czegoś"
+  },
+  "button.watch": {
+    "message": "Obejrzyj",
+    "description": "Tekst na przycisku, który służy do obejrzenia czegoś"
+  },
+  "button.verify": {
+    "message": "Zweryfikuj",
+    "description": "Tekst na przycisku, który służy do weryfikacji tożsamości użytkownika"
+  },
+  "button.profile": {
+    "message": "Profil",
+    "description": "Tekst na przycisku, który służy do wyświetlenia profilu"
+  },
+  "button.console": {
+    "message": "Konsola",
+    "description": "Tekst na przycisku, który służy do wyświetlenia strony konsoli do kontrolowania czegoś na stronie internetowej"
+  },
+  "button.learn": {
+    "message": "Dowiedz się",
+    "description": "Tekst na przycisku, który służy do umożliwienia użytkownikowi nauki czegoś"
+  },
+  "button.buy": {
+    "message": "Kup",
+    "description": "Tekst na przycisku, który służy do umożliwienia użytkownikowi zakupu czegoś"
+  },
+  "button.try": {
+    "message": "Wypróbuj",
+    "description": "Tekst na przycisku, który służy do umożliwienia użytkownikowi wypróbowania czegoś"
+  },
+  "button.startForFree": {
+    "message": "Rozpocznij za darmo",
+    "description": "Tekst na przycisku, który służy do umożliwienia użytkownikowi rozpoczęcia za darmo"
+  },
+  "button.apply": {
+    "message": "Zastosuj",
+    "description": "Tekst na przycisku, który służy do umożliwienia użytkownikowi zastosowania usługi API"
+  },
+  "button.refresh": {
+    "message": "Odśwież",
+    "description": "Tekst na przycisku, który służy do odświeżenia strony"
+  },
+  "button.pay": {
+    "message": "Zapłać",
+    "description": "Tekst na przycisku, który służy do umożliwienia użytkownikowi zapłacenia za usługę"
+  },
+  "button.repay": {
+    "message": "Kontynuuj płatność",
+    "description": "Tekst na przycisku, który służy do umożliwienia użytkownikowi kontynuacji płatności za usługę"
+  },
+  "button.applied": {
+    "message": "Zastosowano",
+    "description": "Tekst na przycisku, który służy do pokazania, że użytkownik zastosował się do usługi"
+  },
+  "button.acquire": {
+    "message": "Zdobądź",
+    "description": "Tekst na przycisku, który służy do umożliwienia użytkownikowi zdobycia czegoś, takiego jak token lub klucz do usługi API"
+  },
+  "button.fillExample": {
+    "message": "Wypełnij przykład",
+    "description": "Tekst na przycisku, który służy do umożliwienia użytkownikowi wypełnienia danych przykładowych"
+  },
+  "button.buyMore": {
+    "message": "Kup więcej",
+    "description": "Tekst na przycisku, który służy do umożliwienia użytkownikowi zakupu więcej"
+  },
+  "button.update": {
+    "message": "Aktualizuj",
+    "description": "Tekst na przycisku, który służy do aktualizacji czegoś"
+  },
+  "button.view": {
+    "message": "Zobacz",
+    "description": "Tekst na przycisku, który służy do zobaczenia czegoś"
+  },
+  "button.copy": {
+    "message": "Kopiuj",
+    "description": "Tekst na przycisku, który służy do skopiowania czegoś"
+  },
+  "button.create": {
+    "message": "Utwórz",
+    "description": "Tekst na przycisku, który służy do utworzenia czegoś"
+  },
+  "button.referralEarnings": {
+    "message": "Zarobki z poleceń",
+    "description": "Tekst na przycisku, który służy do pokazania zarobków z poleceń, oznacza, że użytkownik może zarabiać pieniądze, zapraszając innych do korzystania z usługi"
+  },
+  "button.finish": {
+    "message": "Zakończ",
+    "description": "Tekst na przycisku, który służy do zakończenia czegoś"
+  },
+  "entity.website": {
+    "message": "Ace Data Cloud",
+    "description": "Nazwa strony internetowej, nie trzeba tłumaczyć, po prostu zachowaj jako 'Ace Data Cloud'"
+  },
+  "entity.copyright": {
+    "message": "Prawo autorskie",
+    "description": "Tekst do wyświetlenia praw autorskich"
+  },
+  "entity.platform": {
+    "message": "Platforma",
+    "description": "Tekst wskazujący, że jest to platforma usługi API"
+  },
+  "entity.title": {
+    "message": "Tytuł",
+    "description": "Tytuł jednostki"
+  },
+  "entity.icon": {
+    "message": "Ikona",
+    "description": "Ikona jednostki"
+  },
+  "entity.status": {
+    "message": "Status",
+    "description": "Status jednostki"
+  },
+  "entity.operation": {
+    "message": "Operacja",
+    "description": "Operacja jednostki"
+  },
+  "entity.description": {
+    "message": "Opis",
+    "description": "Opis jednostki"
+  },
+  "entity.createdAt": {
+    "message": "Utworzono",
+    "description": "Czas utworzenia jednostki"
+  },
+  "entity.updatedAt": {
+    "message": "Zaktualizowano",
+    "description": "Czas aktualizacji jednostki"
+  },
+  "entity.order": {
+    "message": "Zamówienie",
+    "description": "Zamówienie jednostki, zamówienie zawiera pieniądze, informacje o usłudze, użytkownik musi za nią zapłacić"
+  },
+  "message.usedAmount": {
+    "message": "Ilość użyta",
+    "description": "Wiadomość do pokazania ilości użytej usługi"
+  },
+  "message.remainingAmount": {
+    "message": "Pozostała ilość",
+    "description": "Wiadomość do pokazania pozostałej ilości usługi"
+  },
+  "message.copied": {
+    "message": "Skopiowano pomyślnie",
+    "description": "Wiadomość do pokazania, że zawartość została pomyślnie skopiowana"
+  },
+  "message.confirmDelete": {
+    "message": "Czy na pewno chcesz usunąć?",
+    "description": "Wiadomość potwierdzająca, że użytkownik chce usunąć coś"
+  },
+  "message.alert": {
+    "message": "Ostrzeżenie",
+    "description": "Wiadomość ostrzegająca użytkownika"
+  },
+  "message.info": {
+    "message": "Przyjazne przypomnienie",
+    "description": "Wiadomość do pokazania informacji"
+  },
+  "message.free": {
+    "message": "Darmowe",
+    "description": "Wiadomość do pokazania, że usługa jest darmowa, co oznacza, że użytkownik nie musi za nią płacić"
+  },
+  "message.startPrice": {
+    "message": "Początek",
+    "description": "Wiadomość do pokazania najniższej ceny usługi"
+  },
+  "message.joinDiscord": {
+    "message": "Dołącz do Discorda",
+    "description": "Wiadomość umożliwiająca użytkownikowi dołączenie do kanału Discord"
+  },
+  "message.noData": {
+    "message": "Brak danych",
+    "description": "Wiadomość do pokazania, że w tabeli lub liście nie ma danych"
+  },
+  "nav.home": {
+    "message": "Strona główna",
+    "description": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony głównej"
+  },
+  "nav.content": {
+    "message": "Zawartość",
+    "description": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony z zawartością"
+  },
+  "nav.category": {
+    "message": "Kategoria",
+    "description": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony kategorii"
+  },
+  "nav.service": {
+    "message": "Usługi",
+    "description": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony usług"
+  },
+  "nav.document": {
+    "message": "Dokumenty",
+    "description": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony dokumentów"
+  },
+  "nav.console": {
+    "message": "Konsola",
+    "description": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony konsoli"
+  },
+  "nav.chat": {
+    "message": "Czat",
+    "description": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony czatu"
+  },
+  "nav.midjourney": {
+    "message": "Midjourney",
+    "description": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony midjourney, proszę nie tłumaczyć 'Midjourney', zachowaj to jako 'Midjourney'"
+  },
+  "nav.chatdoc": {
+    "message": "Chatdoc",
+    "description": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony chatdoc"
+  },
+  "nav.distribution": {
+    "message": "Zarobki z poleceń",
+    "description": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony zarobków z poleceń"
+  },
+  "nav.logOut": {
+    "message": "Wyloguj się",
+    "description": "Tekst w pasku nawigacyjnym strony internetowej, który służy do wylogowania"
+  },
+  "nav.locale": {
+    "message": "Język",
+    "description": "Tekst w pasku nawigacyjnym strony internetowej, który służy do zmiany języka"
+  },
+  "title.alert": {
+    "message": "Alert",
+    "description": "Tytuł wiadomości alertu"
+  },
+  "title.placeholderOfSelect": {
+    "message": "Proszę wybrać",
+    "description": "Tekst zastępczy dla pola wyboru"
+  },
+  "title.placeholderOfInput": {
+    "message": "Proszę wypełnić",
+    "description": "Tekst zastępczy dla pola wprowadzania danych"
+  },
+  "title.allApplications": {
+    "message": "Wszystkie aplikacje",
+    "description": "Tytuł strony do pokazania wszystkich aplikacji"
+  },
+  "title.allOrders": {
+    "message": "Wszystkie zamówienia",
+    "description": "Tytuł strony do pokazania wszystkich zamówień"
+  },
+  "title.orderInfo": {
+    "message": "Informacje o zamówieniu",
+    "description": "Tytuł strony do pokazania informacji o zamówieniu"
+  },
+  "title.buyMore": {
+    "message": "Kup więcej",
+    "description": "Tytuł strony umożliwiający użytkownikowi zakupienie więcej"
+  },
+  "title.distribution": {
+    "message": "Zarobki z poleceń",
+    "description": "Tytuł strony do pokazania zarobków z poleceń, oznacza, że użytkownik może zarabiać pieniądze, zapraszając innych do korzystania z usługi"
+  },
+  "title.distributionHistory": {
+    "message": "Historia poleceń",
+    "description": "Tytuł strony do pokazania historii poleceń"
+  },
+  "title.invitee": {
+    "message": "Zapraszający",
+    "description": "Tytuł strony do pokazania zapraszającego"
+  },
+  "title.allUsages": {
+    "message": "Historia użytkowania",
+    "description": "Tytuł strony do pokazania całej historii użytkowania usługi API"
+  },
+  "title.allCredentials": {
+    "message": "Poświadczenia",
+    "description": "Tytuł strony do pokazania wszystkich poświadczeń, poświadczenia służą do dostępu do API"
   }
 }

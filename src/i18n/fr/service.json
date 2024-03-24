@@ -1,76 +1,130 @@
 {
-  "button": {
-    "learnMore": "En savoir plus",
-    "_learnMore.comment": "Le texte affiché sur le bouton pour en savoir plus sur le service.",
-    "apply": "Appliquer maintenant",
-    "_apply.comment": "Le texte affiché sur le bouton pour postuler au service.",
-    "introduction": "Introduction au service",
-    "_introduction.comment": "Le texte affiché sur le bouton pour voir l'introduction du service.",
-    "apis": "Description de l'API",
-    "_apis.comment": "Le texte affiché sur le bouton pour voir la description de l'API.",
-    "pricing": "Tarification",
-    "_pricing.comment": "Le texte affiché sur le bouton pour voir les informations de tarification."
+  "button.learnMore": {
+    "message": "En savoir plus",
+    "description": "Le texte affiché sur le bouton pour en savoir plus sur le service."
   },
-  "field": {
-    "price": "Prix",
-    "_price.comment": "Le prix du service.",
-    "introduction": "Introduction",
-    "_introduction.comment": "L'introduction du service.",
-    "apis": "API",
-    "_apis.comment": "L'API du service, l'API est une forme de service en ligne.",
-    "proxies": "Proxy",
-    "_proxies.comment": "Le proxy du service, le proxy est une forme de service en ligne, signifie le proxy HTTP utilisé pour transférer les données."
+  "button.apply": {
+    "message": "Appliquer maintenant",
+    "description": "Le texte affiché sur le bouton pour postuler au service."
   },
-  "message": {
-    "free": "Gratuit",
-    "_free.comment": "Le texte affiché lorsque le service est gratuit, ce qui signifie que le service est gratuit.",
-    "around": "Environ",
-    "_around.comment": "Le texte affiché lorsque le prix est d'environ une certaine valeur.",
-    "welcomeCredits": "Crédits de bienvenue",
-    "_welcomeCredits.comment": "Le texte affiché lorsque le service fournit des crédits de bienvenue gratuitement",
-    "appliedCount": "Nombre de demandes",
-    "_appliedCount.comment": "Le texte affiché lorsque le nombre de demandes est compté.",
-    "indexTitle": "Votre choix intelligent pour les services numériques",
-    "_indexTitle.comment": "Le titre de la page d'index.",
-    "indexSubtitle": "Donnez de la puissance à votre travail et à votre vie avec l'excellence standardisée des services.",
-    "_indexSubtitle.comment": "Le sous-titre de la page d'index.",
-    "fromPrice": "À partir de ",
-    "_fromPrice.comment": "Le texte affiché avant le prix.",
-    "packages": "Nous proposons une variété de forfaits pour des crédits, plus vous achetez de forfaits, plus vous obtenez de réductions.",
-    "_packages.comment": "Le texte affiché lorsque le service propose des forfaits pour des crédits.",
-    "offer": "Offre",
-    "_offer.comment": "Le texte affiché lorsque le service propose une offre.",
-    "partnersTitle": "Faites confiance à des partenaires de premier plan",
-    "_partnersTitle.comment": "Le titre de la section des partenaires."
+  "button.introduction": {
+    "message": "Introduction au service",
+    "description": "Le texte affiché sur le bouton pour voir l'introduction du service."
   },
-  "title": {
-    "apis": "API",
-    "_apis.comment": "L'API du service, l'API est une forme de service en ligne.",
-    "proxies": "Proxy",
-    "_proxies.comment": "Le proxy du service, le proxy est une forme de service en ligne, signifie le proxy HTTP utilisé pour transférer les données.",
-    "packages": "Forfaits",
-    "_packages.comment": "Les forfaits du service, les forfaits sont utilisés pour acheter des crédits, par exemple, le service propose 3 forfaits, 100 $ pour 100 crédits, 200 $ pour 200 crédits, 300 $ pour 300 crédits."
+  "button.apis": {
+    "message": "Description de l'API",
+    "description": "Le texte affiché sur le bouton pour voir la description de l'API."
   },
-  "unit": {
-    "credit": "Crédit",
-    "_credit.comment": "Crédit signifie la monnaie virtuelle utilisée dans le service API",
-    "Credit": "Crédit",
-    "_Credit.comment": "Crédit signifie la monnaie virtuelle utilisée dans le service API, c'est la forme en majuscule",
-    "credits": "Crédits",
-    "_credits.comment": "Crédits signifie la monnaie virtuelle utilisée dans le service API, c'est la forme plurielle",
-    "Credits": "Crédits",
-    "_Credits.comment": "Crédits signifie la monnaie virtuelle utilisée dans le service API, c'est la forme en majuscule et plurielle",
-    "call": "Appel",
-    "_call.comment": "Appel signifie le nombre de fois où le service API a été appelé",
-    "Call": "Appel",
-    "_Call.comment": "Appel signifie le nombre de fois où le service API a été appelé, c'est la forme en majuscule",
-    "calls": "Appels",
-    "_calls.comment": "Appels signifie le nombre de fois où le service API a été appelé, c'est la forme plurielle",
-    "Calls": "Appels",
-    "_Calls.comment": "Appels signifie le nombre de fois où le service API a été appelé, c'est la forme en majuscule et plurielle",
-    "MB": "Mo",
-    "_MB.comment": "Mo signifie mégaoctet, une unité de stockage d'informations numériques",
-    "GB": "Go",
-    "_GB.comment": "Go signifie gigaoctet, une unité de stockage d'informations numériques"
+  "button.pricing": {
+    "message": "Tarification",
+    "description": "Le texte affiché sur le bouton pour voir les informations de tarification."
+  },
+  "field.price": {
+    "message": "Prix",
+    "description": "Le prix du service."
+  },
+  "field.introduction": {
+    "message": "Introduction",
+    "description": "L'introduction du service."
+  },
+  "field.apis": {
+    "message": "API",
+    "description": "L'API du service, l'API est une forme de service en ligne."
+  },
+  "field.proxies": {
+    "message": "Proxy",
+    "description": "Le proxy du service, le proxy est une forme de service en ligne, signifie le proxy HTTP utilisé pour transférer les données."
+  },
+  "message.free": {
+    "message": "Gratuit",
+    "description": "Le texte affiché lorsque le service est gratuit, ce qui signifie que le service est gratuit."
+  },
+  "message.around": {
+    "message": "Environ",
+    "description": "Le texte affiché lorsque le prix est autour d'une certaine valeur."
+  },
+  "message.welcomeCredits": {
+    "message": "Crédits de bienvenue",
+    "description": "Le texte affiché lorsque le service fournit des crédits de bienvenue gratuitement."
+  },
+  "message.appliedCount": {
+    "message": "Nombre de demandes",
+    "description": "Le texte affiché lorsque le nombre de demandes est compté."
+  },
+  "message.indexTitle": {
+    "message": "Votre choix intelligent pour les services numériques",
+    "description": "Le titre de la page d'accueil."
+  },
+  "message.indexSubtitle": {
+    "message": "Donnez de la puissance à votre travail et à votre vie avec l'excellence standardisée des services.",
+    "description": "Le sous-titre de la page d'accueil."
+  },
+  "message.fromPrice": {
+    "message": "À partir de ",
+    "description": "Le texte affiché avant le prix."
+  },
+  "message.packages": {
+    "message": "Nous proposons une variété de forfaits pour des crédits, plus vous en achetez, plus vous obtenez de réductions.",
+    "description": "Le texte affiché lorsque le service propose des forfaits pour des crédits."
+  },
+  "message.offer": {
+    "message": "Offre",
+    "description": "Le texte affiché lorsque le service propose une offre."
+  },
+  "message.partnersTitle": {
+    "message": "Fait confiance par des partenaires de premier plan",
+    "description": "Le titre de la section des partenaires."
+  },
+  "title.apis": {
+    "message": "API",
+    "description": "L'API du service, l'API est une forme de service en ligne."
+  },
+  "title.proxies": {
+    "message": "Proxy",
+    "description": "Le proxy du service, le proxy est une forme de service en ligne, signifie le proxy HTTP utilisé pour transférer les données."
+  },
+  "title.packages": {
+    "message": "Forfaits",
+    "description": "Les forfaits du service, les forfaits sont utilisés pour acheter des crédits, par exemple, le service propose 3 forfaits, 100 $ pour 100 crédits, 200 $ pour 200 crédits, 300 $ pour 300 crédits."
+  },
+  "unit.credit": {
+    "message": "Crédit",
+    "description": "Crédit signifie la monnaie virtuelle utilisée dans le service API"
+  },
+  "unit.Credit": {
+    "message": "Crédit",
+    "description": "Crédit signifie la monnaie virtuelle utilisée dans le service API, c'est la forme en majuscule"
+  },
+  "unit.credits": {
+    "message": "Crédits",
+    "description": "Crédits signifie la monnaie virtuelle utilisée dans le service API, c'est la forme plurielle"
+  },
+  "unit.Credits": {
+    "message": "Crédits",
+    "description": "Crédits signifie la monnaie virtuelle utilisée dans le service API, c'est la forme en majuscule et plurielle"
+  },
+  "unit.call": {
+    "message": "Appel",
+    "description": "Appel signifie le nombre de fois où le service API a été appelé"
+  },
+  "unit.Call": {
+    "message": "Appel",
+    "description": "Appel signifie le nombre de fois où le service API a été appelé, c'est la forme en majuscule"
+  },
+  "unit.calls": {
+    "message": "Appels",
+    "description": "Appels signifie le nombre de fois où le service API a été appelé, c'est la forme plurielle"
+  },
+  "unit.Calls": {
+    "message": "Appels",
+    "description": "Appels signifie le nombre de fois où le service API a été appelé, c'est la forme en majuscule et plurielle"
+  },
+  "unit.MB": {
+    "message": "Mo",
+    "description": "Mo signifie mégaoctet, une unité de stockage d'informations numériques"
+  },
+  "unit.GB": {
+    "message": "Go",
+    "description": "Go signifie gigaoctet, une unité de stockage d'informations numériques"
   }
 }

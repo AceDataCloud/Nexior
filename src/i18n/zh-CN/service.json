@@ -1,76 +1,130 @@
 {
-  "button": {
-    "learnMore": "了解更多",
-    "_learnMore.comment": "按钮上显示的文本，用于了解有关服务的更多信息。",
-    "apply": "立即申请",
-    "_apply.comment": "按钮上显示的文本，用于申请服务。",
-    "introduction": "服务介绍",
-    "_introduction.comment": "按钮上显示的文本，用于查看服务介绍。",
-    "apis": "API描述",
-    "_apis.comment": "按钮上显示的文本，用于查看API描述。",
-    "pricing": "定价",
-    "_pricing.comment": "按钮上显示的文本，用于查看定价信息。"
+  "button.learnMore": {
+    "message": "了解更多",
+    "description": "按钮上显示的文本，用于了解有关服务的更多信息。"
   },
-  "field": {
-    "price": "价格",
-    "_price.comment": "服务的价格。",
-    "introduction": "介绍",
-    "_introduction.comment": "服务的介绍。",
-    "apis": "API",
-    "_apis.comment": "服务的API，API是一种在线服务的形式。",
-    "proxies": "代理",
-    "_proxies.comment": "服务的代理，代理是在线服务的一种形式，表示用于传输数据的HTTP代理。"
+  "button.apply": {
+    "message": "立即申请",
+    "description": "按钮上显示的文本，用于申请服务。"
   },
-  "message": {
-    "free": "免费",
-    "_free.comment": "当服务免费时显示的文本，表示服务是免费的。",
-    "around": "大约",
-    "_around.comment": "当价格大约为某个特定值时显示的文本。",
-    "welcomeCredits": "欢迎积分",
-    "_welcomeCredits.comment": "当服务提供免费的欢迎积分时显示的文本。",
-    "appliedCount": "申请数量",
-    "_appliedCount.comment": "计算申请数量时显示的文本。",
-    "indexTitle": "您数字服务的明智选择",
-    "_indexTitle.comment": "首页的标题。",
-    "indexSubtitle": "在服务的卓越标准下赋予您的工作和生活力量。",
-    "_indexSubtitle.comment": "首页的副标题。",
-    "fromPrice": "从",
-    "_fromPrice.comment": "价格前显示的文本。",
-    "packages": "我们提供各种积分套餐，购买的套餐越多，折扣越多。",
-    "_packages.comment": "当服务提供积分套餐时显示的文本。",
-    "offer": "优惠",
-    "_offer.comment": "当服务提供优惠时显示的文本。",
-    "partnersTitle": "得到领先合作伙伴的信任",
-    "_partnersTitle.comment": "合作伙伴部分的标题。"
+  "button.introduction": {
+    "message": "服务介绍",
+    "description": "按钮上显示的文本，用于查看服务介绍。"
   },
-  "title": {
-    "apis": "API",
-    "_apis.comment": "服务的API，API是一种在线服务的形式。",
-    "proxies": "代理",
-    "_proxies.comment": "服务的代理，代理是在线服务的一种形式，表示用于传输数据的HTTP代理。",
-    "packages": "套餐",
-    "_packages.comment": "服务的套餐，套餐用于购买积分，例如，服务提供3种套餐，100美元可获得100积分，200美元可获得200积分，300美元可获得300积分。"
+  "button.apis": {
+    "message": "API描述",
+    "description": "按钮上显示的文本，用于查看API描述。"
   },
-  "unit": {
-    "credit": "积分",
-    "_credit.comment": "积分是API服务中使用的虚拟货币",
-    "Credit": "积分",
-    "_Credit.comment": "积分是API服务中使用的虚拟货币，这是大写形式",
-    "credits": "积分",
-    "_credits.comment": "积分是API服务中使用的虚拟货币，这是复数形式",
-    "Credits": "积分",
-    "_Credits.comment": "积分是API服务中使用的虚拟货币，这是大写和复数形式",
-    "call": "调用",
-    "_call.comment": "调用是API服务被调用的次数",
-    "Call": "调用",
-    "_Call.comment": "调用是API服务被调用的次数，这是大写形式",
-    "calls": "调用",
-    "_calls.comment": "调用是API服务被调用的次数，这是复数形式",
-    "Calls": "调用",
-    "_Calls.comment": "调用是API服务被调用的次数，这是大写和复数形式",
-    "MB": "MB",
-    "_MB.comment": "MB表示兆字节，一种数字信息存储单位",
-    "GB": "GB",
-    "_GB.comment": "GB表示千兆字节，一种数字信息存储单位"
+  "button.pricing": {
+    "message": "定价",
+    "description": "按钮上显示的文本，用于查看定价信息。"
+  },
+  "field.price": {
+    "message": "价格",
+    "description": "服务的价格。"
+  },
+  "field.introduction": {
+    "message": "介绍",
+    "description": "服务的介绍。"
+  },
+  "field.apis": {
+    "message": "API",
+    "description": "服务的API，API是一种在线服务的形式。"
+  },
+  "field.proxies": {
+    "message": "代理",
+    "description": "服务的代理，代理是在线服务的一种形式，表示用于传输数据的HTTP代理。"
+  },
+  "message.free": {
+    "message": "免费",
+    "description": "当服务免费时显示的文本，表示服务是免费的。"
+  },
+  "message.around": {
+    "message": "大约",
+    "description": "当价格大约在某个特定值时显示的文本。"
+  },
+  "message.welcomeCredits": {
+    "message": "欢迎积分",
+    "description": "当服务提供免费的欢迎积分时显示的文本。"
+  },
+  "message.appliedCount": {
+    "message": "申请数量",
+    "description": "计算申请数量时显示的文本。"
+  },
+  "message.indexTitle": {
+    "message": "您数字服务的明智选择",
+    "description": "首页的标题。"
+  },
+  "message.indexSubtitle": {
+    "message": "在服务的标准卓越中赋予您的工作和生活力量。",
+    "description": "首页的副标题。"
+  },
+  "message.fromPrice": {
+    "message": "从",
+    "description": "价格前显示的文本。"
+  },
+  "message.packages": {
+    "message": "我们提供各种积分套餐，购买的套餐越多，折扣就越多。",
+    "description": "当服务提供积分套餐时显示的文本。"
+  },
+  "message.offer": {
+    "message": "优惠",
+    "description": "当服务提供优惠时显示的文本。"
+  },
+  "message.partnersTitle": {
+    "message": "得到领先合作伙伴的信任",
+    "description": "合作伙伴部分的标题。"
+  },
+  "title.apis": {
+    "message": "API",
+    "description": "服务的API，API是一种在线服务的形式。"
+  },
+  "title.proxies": {
+    "message": "代理",
+    "description": "服务的代理，代理是在线服务的一种形式，表示用于传输数据的HTTP代理。"
+  },
+  "title.packages": {
+    "message": "套餐",
+    "description": "服务的套餐，套餐用于购买积分，例如，服务提供3种套餐，100美元可获得100积分，200美元可获得200积分，300美元可获得300积分。"
+  },
+  "unit.credit": {
+    "message": "积分",
+    "description": "积分是API服务中使用的虚拟货币。"
+  },
+  "unit.Credit": {
+    "message": "积分",
+    "description": "积分是API服务中使用的虚拟货币，这是大写形式。"
+  },
+  "unit.credits": {
+    "message": "积分",
+    "description": "积分是API服务中使用的虚拟货币，这是复数形式。"
+  },
+  "unit.Credits": {
+    "message": "积分",
+    "description": "积分是API服务中使用的虚拟货币，这是大写和复数形式。"
+  },
+  "unit.call": {
+    "message": "调用",
+    "description": "调用是API服务被调用的次数。"
+  },
+  "unit.Call": {
+    "message": "调用",
+    "description": "调用是API服务被调用的次数，这是大写形式。"
+  },
+  "unit.calls": {
+    "message": "调用",
+    "description": "调用是API服务被调用的次数，这是复数形式。"
+  },
+  "unit.Calls": {
+    "message": "调用",
+    "description": "调用是API服务被调用的次数，这是大写和复数形式。"
+  },
+  "unit.MB": {
+    "message": "MB",
+    "description": "MB表示兆字节，一种数字信息存储单位。"
+  },
+  "unit.GB": {
+    "message": "GB",
+    "description": "GB表示千兆字节，一种数字信息存储单位。"
   }
 }
