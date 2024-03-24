@@ -16,10 +16,10 @@
   "field": {
     "id": "Bestellnummer",
     "_id.comment": "Die ID der Bestellung.",
-    "amount": "Menge",
-    "_amount.comment": "Die Kreditmenge der Bestellung.",
-    "price": "Menge",
-    "_price.comment": "Die Kreditmenge der Bestellung.",
+    "amount": "Betrag",
+    "_amount.comment": "Der Kreditbetrag der Bestellung.",
+    "price": "Betrag",
+    "_price.comment": "Der Kreditbetrag der Bestellung.",
     "description": "Bestellbeschreibung",
     "_description.comment": "Die Beschreibung der Bestellung.",
     "state": "Status",
@@ -33,25 +33,25 @@
     "api": "API",
     "_api.comment": "Die API ist eine Art Online-Service.",
     "proxy": "Proxy",
-    "_proxy.comment": "Der Proxy ist eine Art Online-Service, der für die Übertragung von Daten verwendet wird."
+    "_proxy.comment": "Der Proxy ist eine Art Online-Service, der für die Datenübertragung verwendet wird."
   },
   "message": {
     "paidSuccessfully": "Zahlung erfolgreich",
-    "_paidSuccessfully.comment": "Die Nachricht über die erfolgreiche Zahlung.",
+    "_paidSuccessfully.comment": "Die Nachricht der erfolgreichen Zahlung.",
     "createFailed": "Erstellung fehlgeschlagen",
-    "_createFailed.comment": "Die Nachricht über die fehlgeschlagene Erstellung.",
+    "_createFailed.comment": "Die Nachricht der fehlgeschlagenen Erstellung.",
     "wechatPayHelp": "Bitte öffnen Sie WeChat auf Ihrem Telefon und scannen Sie, um die Zahlung abzuschließen",
-    "_wechatPayHelp.comment": "Die Nachricht über die WeChat-Zahlungshilfe.",
+    "_wechatPayHelp.comment": "Die Nachricht der WeChat-Zahlungshilfe.",
     "free": "Kostenlos",
-    "_free.comment": "Die Nachricht über die kostenlose Bestellung.",
+    "_free.comment": "Die Nachricht der kostenlosen Bestellung.",
     "buyInExternalUrl": "Bitte schließen Sie die Zahlung über den externen Link ab",
-    "_buyInExternalUrl.comment": "Die Nachricht über die Zahlung über den externen Link.",
+    "_buyInExternalUrl.comment": "Die Nachricht der Zahlung über den externen Link.",
     "updateFailed": "Aktualisierung fehlgeschlagen",
-    "_updateFailed.comment": "Die Nachricht über die fehlgeschlagene Aktualisierung.",
+    "_updateFailed.comment": "Die Nachricht der fehlgeschlagenen Aktualisierung.",
     "updateSuccessfully": "Aktualisierung erfolgreich",
-    "_updateSuccessfully.comment": "Die Nachricht über die erfolgreiche Aktualisierung.",
-    "confirmFinish": "Dieser Vorgang setzt die Bestellung manuell auf den Zahlungsstatus und schließt die Verteilungsverarbeitung ab, was nicht rückgängig gemacht werden kann. Bitte bestätigen Sie, dass der Kunde die Zahlung abgeschlossen hat. Möchten Sie fortfahren?",
-    "_confirmFinish.comment": "Die Nachricht zur Bestätigung des Abschlusses."
+    "_updateSuccessfully.comment": "Die Nachricht der erfolgreichen Aktualisierung.",
+    "confirmFinish": "Diese Operation setzt die Bestellung manuell auf den Zahlungsstatus und schließt die Verteilungsverarbeitung ab, was nicht rückgängig gemacht werden kann. Bitte bestätigen Sie, dass der Kunde die Zahlung abgeschlossen hat. Möchten Sie fortfahren?",
+    "_confirmFinish.comment": "Die Nachricht der Bestätigung des Abschlusses."
   },
   "state": {
     "pending": "Ausstehende Zahlung",
@@ -65,14 +65,14 @@
   },
   "title": {
     "info": "Bestellinformationen",
-    "_info.comment": "Der Titel, der als Titel der Website verwendet wird und die Bestellinformationen bedeutet.",
+    "_info.comment": "Der Titel, der als Titel der Website verwendet wird, bedeutet die Bestellinformationen.",
     "wechatPay": "WeChat-Zahlung",
-    "_wechatPay.comment": "Der Titel, der als Titel der Website verwendet wird und die WeChat-Zahlung bedeutet.",
+    "_wechatPay.comment": "Der Titel, der als Titel der Website verwendet wird, bedeutet die WeChat-Zahlung.",
     "aliPay": "Alipay",
-    "_aliPay.comment": "Der Titel, der als Titel der Website verwendet wird und die Alipay-Zahlung bedeutet. Alipay-Zahlung ist eine Art Online-Zahlung.",
+    "_aliPay.comment": "Der Titel, der als Titel der Website verwendet wird, bedeutet die Alipay-Zahlung. Alipay-Zahlung ist eine Art Online-Zahlung.",
     "stripe": "Stripe",
-    "_stripe.comment": "Der Titel, der als Titel der Website verwendet wird und die Stripe-Zahlung bedeutet. Stripe-Zahlung ist eine Art Online-Zahlung.",
+    "_stripe.comment": "Der Titel, der als Titel der Website verwendet wird, bedeutet die Stripe-Zahlung. Stripe-Zahlung ist eine Art Online-Zahlung.",
     "manageOrder": "Bestellung verwalten",
-    "_manageOrder.comment": "Der Titel, der als Titel der Website verwendet wird und die Bestellung verwalten bedeutet."
+    "_manageOrder.comment": "Der Titel, der als Titel der Website verwendet wird, bedeutet die Bestellung verwalten."
   }
 }

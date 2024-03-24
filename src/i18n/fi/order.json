@@ -1,25 +1,25 @@
 {
   "button": {
     "pay": "Maksa",
-    "_pay.comment": "Teksti painikkeessa, jota käytetään tilauksen maksamiseen.",
-    "continuePay": "Jatka maksua",
-    "_continuePay.comment": "Teksti painikkeessa, jota käytetään tilauksen maksamisen jatkamiseen.",
+    "_pay.comment": "Nappiteksti, jota käytetään tilauksen maksamiseen.",
+    "continuePay": "Jatka maksamista",
+    "_continuePay.comment": "Nappiteksti, jota käytetään tilauksen maksamisen jatkamiseen.",
     "checkDetail": "Tarkista tiedot",
-    "_checkDetail.comment": "Teksti painikkeessa, jota käytetään tilauksen tietojen tarkistamiseen.",
+    "_checkDetail.comment": "Nappiteksti, jota käytetään tilauksen tietojen tarkistamiseen.",
     "query": "Kysely",
-    "_query.comment": "Teksti painikkeessa, jota käytetään tilauksen kyselyyn.",
+    "_query.comment": "Nappiteksti, jota käytetään tilauksen kyselyyn.",
     "finish": "Suorita manuaalisesti",
-    "_finish.comment": "Teksti painikkeessa, jota käytetään tilauksen suorittamiseen manuaalisesti.",
+    "_finish.comment": "Nappiteksti, jota käytetään tilauksen manuaaliseen suorittamiseen.",
     "update": "Päivitä",
-    "_update.comment": "Teksti painikkeessa, jota käytetään tilauksen päivittämiseen."
+    "_update.comment": "Nappiteksti, jota käytetään tilauksen päivittämiseen."
   },
   "field": {
-    "id": "Tilauksen tunniste",
+    "id": "Tilausnumero",
     "_id.comment": "Tilauksen tunniste.",
     "amount": "Määrä",
-    "_amount.comment": "Tilauksen hyvitysten määrä.",
+    "_amount.comment": "Tilauksen hyvitysmäärä.",
     "price": "Määrä",
-    "_price.comment": "Tilauksen hyvitysten määrä.",
+    "_price.comment": "Tilauksen hyvitysmäärä.",
     "description": "Tilauksen kuvaus",
     "_description.comment": "Tilauksen kuvaus.",
     "state": "Tila",
@@ -44,14 +44,14 @@
     "_wechatPayHelp.comment": "Viesti WeChat-maksun avusta.",
     "free": "Ilmainen",
     "_free.comment": "Viesti ilmaisesta tilauksesta.",
-    "buyInExternalUrl": "Suorita maksu ulkoisessa linkissä",
+    "buyInExternalUrl": "Täydennä maksu ulkoisessa linkissä",
     "_buyInExternalUrl.comment": "Viesti ulkoisesta linkkimaksusta.",
     "updateFailed": "Päivitys epäonnistui",
     "_updateFailed.comment": "Viesti epäonnistuneesta päivityksestä.",
     "updateSuccessfully": "Päivitys onnistui",
     "_updateSuccessfully.comment": "Viesti onnistuneesta päivityksestä.",
-    "confirmFinish": "Tämä toiminto asettaa tilauksen manuaalisesti maksutilaan ja suorittaa jakelukäsittelyn, mitä ei voi perua. Vahvista, että asiakas on suorittanut maksun, haluatko jatkaa?",
-    "_confirmFinish.comment": "Viesti vahvista lopetus."
+    "confirmFinish": "Tämä toimenpide asettaa tilauksen manuaalisesti maksutilaan ja suorittaa jakelukäsittelyn, mikä ei ole peruutettavissa. Vahvista, että asiakas on suorittanut maksun. Haluatko jatkaa?",
+    "_confirmFinish.comment": "Viesti vahvistuksesta."
   },
   "state": {
     "pending": "Odottaa maksua",
@@ -64,15 +64,15 @@
     "_failed.comment": "Tilauksen tila, mikä tarkoittaa, että tilauksen maksu epäonnistui."
   },
   "title": {
-    "info": "Tilaustiedot",
+    "info": "Tilauksen tiedot",
     "_info.comment": "Otsikko, joka näytetään verkkosivuston otsikkona, tarkoittaa tilaustietoja.",
     "wechatPay": "WeChat-maksu",
     "_wechatPay.comment": "Otsikko, joka näytetään verkkosivuston otsikkona, tarkoittaa WeChat-maksua.",
     "aliPay": "Alipay",
-    "_aliPay.comment": "Otsikko, joka näytetään verkkosivuston otsikkona, tarkoittaa Alipay-maksua, Alipay-maksu on eräänlainen verkkomaksu.",
+    "_aliPay.comment": "Otsikko, joka näytetään verkkosivuston otsikkona, tarkoittaa Alipay-maksua. Alipay-maksu on eräänlainen verkkomaksu.",
     "stripe": "Stripe",
-    "_stripe.comment": "Otsikko, joka näytetään verkkosivuston otsikkona, tarkoittaa Stripe-maksua, Stripe-maksu on eräänlainen verkkomaksu.",
-    "manageOrder": "Hallitse tilausta",
+    "_stripe.comment": "Otsikko, joka näytetään verkkosivuston otsikkona, tarkoittaa Stripe-maksua. Stripe-maksu on eräänlainen verkkomaksu.",
+    "manageOrder": "Hallinnoi tilausta",
     "_manageOrder.comment": "Otsikko, joka näytetään verkkosivuston otsikkona, tarkoittaa tilauksen hallintaa."
   }
 }

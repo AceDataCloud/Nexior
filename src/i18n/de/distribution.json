@@ -9,7 +9,7 @@
   },
   "field": {
     "id": "Empfehlungs-ID",
-    "_id.comment": "Der eindeutige Bezeichner der Verteilung, wobei die Verteilung die Empfehlung für die API-Service-Website bedeutet.",
+    "_id.comment": "Der eindeutige Bezeichner der Verteilung, wobei Verteilung die Empfehlung für die API-Service-Website bedeutet.",
     "percentage": "Empfehlungsverdienstprozentsatz",
     "_percentage.comment": "Der Prozentsatz der Empfehlungsverdienste, der auf Grundlage des Bestellbetrags berechnet wird.",
     "price": "Bestellbetrag",
@@ -23,7 +23,7 @@
     "threshold": "Empfehlungsverdienstschwelle",
     "_threshold.comment": "Die Schwelle der Empfehlungsverdienste, die zur Abhebung der Empfehlungsverdienste verwendet wird.",
     "inviteeId": "Einlader-ID",
-    "_inviteeId.comment": "Der eindeutige Bezeichner des Einladenden, wobei der Einladende der Benutzer ist, der den Eingeladenen zur API-Service-Website einlädt.",
+    "_inviteeId.comment": "Der eindeutige Bezeichner des Einladenden, wobei Einladender den Benutzer bezeichnet, der den Eingeladenen zur API-Service-Website einlädt.",
     "isVerified": "Ist verifiziert",
     "_isVerified.comment": "Das Flag, um anzuzeigen, ob der Empfehlungsbenutzer mit den echten Informationen verifiziert ist."
   },
@@ -40,16 +40,16 @@
     "_distributionLink": "Der Empfehlungslink, der verwendet wird, um den Kunden als untergeordneten Kunden zu binden.",
     "updateSuccessfully": "Aktualisierung erfolgreich",
     "_updateSuccessfully": "Die Nachricht, die darauf hinweist, dass die Empfehlungsinformationen erfolgreich aktualisiert wurden.",
-    "distributionLinkDescription": "Wenn sich ein Kunde über diesen Link oder QR-Code auf dieser Plattform registriert, wird der Kunde dauerhaft als Ihr untergeordneter Kunde gebunden, und alle Verbrauchsbestellungen des Kunden auf dieser Plattform werden gemäß dem aktuellen Verteilungsverhältnis auf Ihr Konto zurücküberwiesen.",
+    "distributionLinkDescription": "Wenn ein Kunde sich über diesen Link oder QR-Code auf dieser Plattform registriert, wird der Kunde dauerhaft als Ihr untergeordneter Kunde gebunden, und alle Verbrauchsbestellungen des Kunden auf dieser Plattform werden gemäß dem aktuellen Verteilungsverhältnis auf Ihr Konto zurücküberwiesen.",
     "_distributionLinkDescription": "Die Beschreibung des Empfehlungslinks.",
-    "distributionLinkDescription2": "Dieser Link enthält Ihre Benutzer-ID. Nachdem der Kunde den Link geöffnet hat, wird Ihre Benutzer-ID im Browser des Kunden in Form von Cookies für sieben Tage gespeichert. Innerhalb von sieben Tagen, wenn sich der Kunde durch Scannen des Codes auf dieser Plattform registriert, wird Ihre Benutzer-ID mit Cookies auf den Registrierungsserver hochgeladen, und der Kunde kann als Ihr nachgelagerter Kunde gebunden werden.",
+    "distributionLinkDescription2": "Dieser Link enthält Ihre Benutzer-ID. Nachdem der Kunde den Link geöffnet hat, wird Ihre Benutzer-ID im Browser des Kunden in Form von Cookies aufgezeichnet, die sieben Tage gültig sind. Innerhalb von sieben Tagen, wenn der Kunde diese Plattform durch Scannen des Codes registriert, wird Ihre Benutzer-ID mit Cookies auf den Registrierungsserver hochgeladen, und der Kunde kann als Ihr nachgelagerter Kunde gebunden werden.",
     "_distributionLinkDescription2": "Die Beschreibung des Empfehlungslinks."
   },
   "title": {
     "price": "Gesamtbetrag der Empfehlungsbestellungen",
     "_price.comment": "Der Gesamtbetrag der Empfehlungsbestellungen, der zur Berechnung der Empfehlungsverdienste verwendet wird.",
     "reward": "Gesamte Empfehlungsbelohnungen",
-    "_reward.comment": "Die gesamten Empfehlungsverdienste, die auf Grundlage des Bestellbetrags und des Empfehlungsverdienstprozentsatzes berechnet werden.",
+    "_reward.comment": "Die gesamten Empfehlungsbelohnungen, die auf Grundlage des Bestellbetrags und des Empfehlungsverdienstprozentsatzes berechnet werden.",
     "level": "Empfehlungsebene",
     "_level.comment": "Die Empfehlungsebene, die zur Berechnung der Empfehlungsverdienste verwendet wird.",
     "percentage": "Empfehlungsverdienstprozentsatz",
@@ -68,7 +68,7 @@
     "_distributionLink.comment": "Der Empfehlungslink, der verwendet wird, um den Kunden als untergeordneten Kunden zu binden.",
     "inviteesCount": "Gesamtanzahl der Eingeladenen",
     "_inviteesCount.comment": "Die Gesamtanzahl der Eingeladenen, die zur Berechnung der Empfehlungsverdienste verwendet wird.",
-    "manageDistributionStatus": "Verteilungsmanagement",
-    "_manageDistributionStatus.comment": "Das Management des Empfehlungsstatus."
+    "manageDistributionStatus": "Verteilungsverwaltung",
+    "_manageDistributionStatus.comment": "Die Verwaltung des Empfehlungsstatus."
   }
 }

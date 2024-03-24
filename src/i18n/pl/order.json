@@ -17,9 +17,9 @@
     "id": "ID zamówienia",
     "_id.comment": "ID zamówienia.",
     "amount": "Kwota",
-    "_amount.comment": "Kwota kredytów zamówienia.",
+    "_amount.comment": "Ilość kredytów zamówienia.",
     "price": "Kwota",
-    "_price.comment": "Kwota kredytów zamówienia.",
+    "_price.comment": "Ilość kredytów zamówienia.",
     "description": "Opis zamówienia",
     "_description.comment": "Opis zamówienia.",
     "state": "Status",
@@ -33,14 +33,14 @@
     "api": "API",
     "_api.comment": "API to rodzaj usługi online.",
     "proxy": "Proxy",
-    "_proxy.comment": "Proxy to rodzaj usługi online, która oznacza używany do transferu danych HTTP Proxy."
+    "_proxy.comment": "Proxy to rodzaj usługi online, która służy do transferu danych."
   },
   "message": {
     "paidSuccessfully": "Płatność udana",
     "_paidSuccessfully.comment": "Komunikat o udanej płatności.",
-    "createFailed": "Utworzenie nieudane",
-    "_createFailed.comment": "Komunikat o nieudanym utworzeniu.",
-    "wechatPayHelp": "Proszę otworzyć WeChat na telefonie, zeskanować w celu ukończenia płatności",
+    "createFailed": "Tworzenie nieudane",
+    "_createFailed.comment": "Komunikat o nieudanym tworzeniu.",
+    "wechatPayHelp": "Proszę otworzyć WeChat na telefonie, zeskanować, aby zakończyć płatność",
     "_wechatPayHelp.comment": "Komunikat pomocy dotyczący płatności WeChat.",
     "free": "Darmowe",
     "_free.comment": "Komunikat o darmowym zamówieniu.",
@@ -50,12 +50,12 @@
     "_updateFailed.comment": "Komunikat o nieudanej aktualizacji.",
     "updateSuccessfully": "Aktualizacja udana",
     "_updateSuccessfully.comment": "Komunikat o udanej aktualizacji.",
-    "confirmFinish": "Ta operacja spowoduje ręczne ustawienie zamówienia na status płatności i zakończenie procesu dystrybucji, co nie może być cofnięte. Potwierdź, że klient dokonał płatności, czy chcesz kontynuować?",
+    "confirmFinish": "Ta operacja ręcznie ustawia zamówienie na status płatności i kończy proces dystrybucji, co jest nieodwracalne. Proszę potwierdzić, że klient dokonał płatności. Czy chcesz kontynuować?",
     "_confirmFinish.comment": "Komunikat potwierdzenia zakończenia."
   },
   "state": {
     "pending": "Oczekiwanie na płatność",
-    "_pending.comment": "Status zamówienia, oznacza, że zamówienie jest nadal oczekujące na płatność użytkownika.",
+    "_pending.comment": "Status zamówienia, oznacza, że zamówienie oczekuje na płatność użytkownika.",
     "paid": "Opłacone",
     "_paid.comment": "Status zamówienia, oznacza, że zamówienie zostało opłacone.",
     "expired": "Przekroczony czas płatności",
@@ -65,14 +65,14 @@
   },
   "title": {
     "info": "Informacje o zamówieniu",
-    "_info.comment": "Tytuł używany jako tytuł strony internetowej, oznacza informacje o zamówieniu.",
+    "_info.comment": "Tytuł wyświetlany jako tytuł strony internetowej, oznacza informacje o zamówieniu.",
     "wechatPay": "WeChat Pay",
-    "_wechatPay.comment": "Tytuł używany jako tytuł strony internetowej, oznacza płatność WeChat.",
+    "_wechatPay.comment": "Tytuł wyświetlany jako tytuł strony internetowej, oznacza płatność WeChat.",
     "aliPay": "Alipay",
-    "_aliPay.comment": "Tytuł używany jako tytuł strony internetowej, oznacza płatność Alipay, Alipay to rodzaj płatności online.",
+    "_aliPay.comment": "Tytuł wyświetlany jako tytuł strony internetowej, oznacza płatność Alipay, płatność Alipay to rodzaj płatności online.",
     "stripe": "Stripe",
-    "_stripe.comment": "Tytuł używany jako tytuł strony internetowej, oznacza płatność Stripe, Stripe to rodzaj płatności online.",
+    "_stripe.comment": "Tytuł wyświetlany jako tytuł strony internetowej, oznacza płatność Stripe, płatność Stripe to rodzaj płatności online.",
     "manageOrder": "Zarządzaj zamówieniem",
-    "_manageOrder.comment": "Tytuł używany jako tytuł strony internetowej, oznacza zarządzanie zamówieniem."
+    "_manageOrder.comment": "Tytuł wyświetlany jako tytuł strony internetowej, oznacza zarządzanie zamówieniem."
   }
 }

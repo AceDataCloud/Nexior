@@ -14,7 +14,7 @@
     "_update.comment": "Le texte sur le bouton, qui est utilisé pour mettre à jour la commande."
   },
   "field": {
-    "id": "ID de commande",
+    "id": "Identifiant de commande",
     "_id.comment": "L'identifiant de la commande.",
     "amount": "Montant",
     "_amount.comment": "Le montant de crédits de la commande.",
@@ -22,8 +22,8 @@
     "_price.comment": "Le montant de crédits de la commande.",
     "description": "Description de la commande",
     "_description.comment": "La description de la commande.",
-    "state": "État",
-    "_state.comment": "L'état de la commande.",
+    "state": "Statut",
+    "_state.comment": "Le statut de la commande.",
     "createdAt": "Heure de création",
     "_createdAt.comment": "L'heure de création de la commande.",
     "service": "Nom du service",
@@ -50,29 +50,29 @@
     "_updateFailed.comment": "Le message de l'échec de la mise à jour.",
     "updateSuccessfully": "Mise à jour réussie",
     "_updateSuccessfully.comment": "Le message de la mise à jour réussie.",
-    "confirmFinish": "Cette opération va définir manuellement la commande sur l'état de paiement et compléter le traitement de distribution, ce qui ne peut pas être annulé. Veuillez confirmer que le client a effectué le paiement, voulez-vous continuer ?",
+    "confirmFinish": "Cette opération va définir manuellement la commande sur le statut de paiement et compléter le traitement de distribution, ce qui ne peut pas être annulé. Veuillez confirmer que le client a effectué le paiement, voulez-vous continuer ?",
     "_confirmFinish.comment": "Le message de la confirmation de la fin."
   },
   "state": {
     "pending": "En attente de paiement",
-    "_pending.comment": "L'état de la commande, ce qui signifie que cette commande est toujours en attente de paiement de l'utilisateur.",
+    "_pending.comment": "Le statut de la commande, ce qui signifie que cette commande est toujours en attente de paiement par l'utilisateur.",
     "paid": "Payé",
-    "_paid.comment": "L'état de la commande, ce qui signifie que cette commande a été payée.",
+    "_paid.comment": "Le statut de la commande, ce qui signifie que cette commande a été payée.",
     "expired": "Délai de paiement dépassé",
-    "_expired.comment": "L'état de la commande, ce qui signifie que cette commande a expiré.",
+    "_expired.comment": "Le statut de la commande, ce qui signifie que cette commande a expiré.",
     "failed": "Paiement échoué",
-    "_failed.comment": "L'état de la commande, ce qui signifie que cette commande a échoué."
+    "_failed.comment": "Le statut de la commande, ce qui signifie que cette commande a échoué."
   },
   "title": {
     "info": "Informations de commande",
-    "_info.comment": "Le titre utilisé pour afficher en tant que titre du site web, signifie les informations de commande.",
+    "_info.comment": "Le titre utilisé pour afficher en tant que titre du site Web, signifie les informations de commande.",
     "wechatPay": "WeChat Pay",
-    "_wechatPay.comment": "Le titre utilisé pour afficher en tant que titre du site web, signifie le paiement WeChat.",
+    "_wechatPay.comment": "Le titre utilisé pour afficher en tant que titre du site Web, signifie le paiement WeChat.",
     "aliPay": "Alipay",
-    "_aliPay.comment": "Le titre utilisé pour afficher en tant que titre du site web, signifie le paiement Alipay, le paiement Alipay est une sorte de paiement en ligne.",
+    "_aliPay.comment": "Le titre utilisé pour afficher en tant que titre du site Web, signifie le paiement Alipay, le paiement Alipay est une sorte de paiement en ligne.",
     "stripe": "Stripe",
-    "_stripe.comment": "Le titre utilisé pour afficher en tant que titre du site web, signifie le paiement Stripe, le paiement Stripe est une sorte de paiement en ligne.",
+    "_stripe.comment": "Le titre utilisé pour afficher en tant que titre du site Web, signifie le paiement Stripe, le paiement Stripe est une sorte de paiement en ligne.",
     "manageOrder": "Gérer la commande",
-    "_manageOrder.comment": "Le titre utilisé pour afficher en tant que titre du site web, signifie gérer la commande."
+    "_manageOrder.comment": "Le titre utilisé pour afficher en tant que titre du site Web, signifie gérer la commande."
   }
 }

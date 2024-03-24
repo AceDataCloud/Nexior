@@ -1,13 +1,13 @@
 {
   "button": {
     "uploadDocuments": "Subir Documentos",
-    "_uploadDocuments.comment": "Texto en el botón que permite al usuario subir documentos"
+    "_uploadDocuments.comment": "Texto en el botón, que permite al usuario subir documentos"
   },
   "field": {
-    "fileName": "Nombre de Archivo",
+    "fileName": "Nombre del Archivo",
     "_fileName.comment": "Nombre del archivo del documento subido",
     "createdAt": "Tiempo de Creación",
-    "_createdAt": "Tiempo en que se subió el documento",
+    "_createdAt": "Hora en que se subió el documento",
     "fileExtension": "Tipo de Archivo",
     "_fileExtension.comment": "Tipo de archivo del documento subido",
     "fileUrl": "Enlace del Archivo",
@@ -21,14 +21,14 @@
     "stateCompleted": "Aprendizaje Completado",
     "_stateCompleted.comment": "El documento se procesó con éxito",
     "stateFailed": "Aprendizaje Fallido",
-    "_stateFailed.comment": "Falló el procesamiento del documento",
+    "_stateFailed.comment": "Fallo en el procesamiento del documento",
     "name": "Nombre",
     "_name.comment": "Nombre del documento",
     "description": "Descripción",
     "_description.comment": "Descripción del documento"
   },
   "message": {
-    "introductionForKnowledge": "Los documentos pueden ser agregados a la base de conocimientos, y cuando el robot responda, puede utilizar el conocimiento en el repositorio para responder.",
+    "introductionForKnowledge": "Los documentos pueden ser agregados a la base de conocimientos, y cuando el robot responde, puede utilizar el conocimiento en el repositorio para responder.",
     "_introductionForKnowledge.comment": "Mensaje de introducción para la base de conocimientos",
     "introductionForRepository": "La base de conocimientos es una colección de documentos donde puedes agregar documentos. Cuando el robot responde, lo hará desde los documentos en la base de conocimientos.",
     "_introductionForRepository.comment": "Mensaje de introducción para la base de conocimientos",
@@ -36,9 +36,9 @@
     "_uploadDocumentsExceed.comment": "Mensaje de error cuando la cantidad de documentos subidos excede el límite",
     "uploadDocumentsError": "Error al subir el documento",
     "_uploadDocumentsError.comment": "Mensaje de error cuando falla al subir el documento",
-    "uploadDocumentsSuccess": "Subida de documento exitosa",
-    "_uploadDocumentsSuccess.comment": "Mensaje de éxito cuando la subida del documento es exitosa",
-    "createDocumentSuccess": "Creación de documento exitosa",
+    "uploadDocumentsSuccess": "Documento subido exitosamente",
+    "_uploadDocumentsSuccess.comment": "Mensaje de éxito cuando el documento se sube exitosamente",
+    "createDocumentSuccess": "Creación del documento exitosa",
     "_createDocumentSuccess.comment": "Mensaje de éxito cuando la creación del documento es exitosa",
     "startCreateDocument": "Comenzar a aprender el documento...",
     "_startCreateDocument.comment": "Mensaje al comenzar a aprender el documento",
@@ -48,7 +48,7 @@
     "_dragOrClickToUpload.comment": "Mensaje para arrastrar o hacer clic para subir el documento",
     "learningDocument": "Aprendiendo, por favor espera...",
     "_learningDocument.comment": "Mensaje al aprender el documento",
-    "startNewChat": "Comenzar nuevo chat",
+    "startNewChat": "Comenzar un nuevo chat",
     "_startNewChat.comment": "Mensaje para comenzar un nuevo chat",
     "errorApiError": "Error al responder, por favor inténtalo de nuevo más tarde",
     "_errorApiError.comment": "Mensaje de error cuando falla al responder",
@@ -64,8 +64,8 @@
     "_errorUsedUp.comment": "Mensaje de error cuando se ha alcanzado el límite de uso del paquete",
     "errorUnknown": "Ocurrió un error desconocido en el servidor, por favor inténtalo de nuevo más tarde o contacta al servicio al cliente",
     "_errorUnknown.comment": "Mensaje de error cuando ocurre un error desconocido en el servidor",
-    "errorTimeout": "Se agotó el tiempo para responder la pregunta, por favor inténtalo de nuevo más tarde",
-    "_errorTimeout.comment": "Mensaje de error cuando se agota el tiempo para responder la pregunta",
+    "errorTimeout": "El tiempo de respuesta a la pregunta se agotó, por favor inténtalo de nuevo más tarde",
+    "_errorTimeout.comment": "Mensaje de error cuando se agota el tiempo de respuesta a la pregunta",
     "errorNotApplied": "Todavía no has solicitado este servicio, por favor solicítalo antes de continuar preguntando",
     "_errorNotApplied.comment": "Mensaje de error cuando el usuario no ha solicitado este servicio aún",
     "confirmDelete": "Confirmar eliminación",
@@ -101,7 +101,7 @@
     "manage": "Gestionar Bases de Conocimientos",
     "_manage.comment": "Título para gestionar la base de conocimientos",
     "createRepository": "Crear Base de Conocimientos",
-    "_createRepository.comment": "Título para crear la base de conocimientos",
+    "_createRepository.comment": "Título para crear base de conocimientos",
     "repositories": "Lista de Bases de Conocimientos",
     "_repositories.comment": "Título para la lista de bases de conocimientos"
   }

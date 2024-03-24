@@ -2,14 +2,14 @@
   "button": {
     "detail": "Visa detaljer",
     "_detail.comment": "Texten på knappen som används för att visa detaljerna i hänvisningshistoriken för webbplatsen.",
-    "withdrawal": "Ta ut",
+    "withdrawal": "Uttag",
     "_withdrawal.comment": "Texten på knappen som används för att ta ut hänvisningsintäkterna för webbplatsen.",
     "query": "Förfrågan",
     "_query.comment": "Texten på knappen som används för att förfråga hänvisningsintäkterna för webbplatsen."
   },
   "field": {
     "id": "Hänvisnings-ID",
-    "_id.comment": "Det unika identifieraren för distributionen, distributionen innebär hänvisningen för API-tjänstens webbplats.",
+    "_id.comment": "Den unika identifieraren för distributionen, distributionen innebär hänvisningen för API-tjänstens webbplats.",
     "percentage": "Hänvisningsintäktsprocent",
     "_percentage.comment": "Procentandelen av hänvisningsintäkterna, som beräknas baserat på orderbeloppet.",
     "price": "Orderbelopp",
@@ -23,13 +23,13 @@
     "threshold": "Hänvisningsintäktsgräns",
     "_threshold.comment": "Gränsen för hänvisningsintäkterna, som används för att ta ut hänvisningsintäkterna.",
     "inviteeId": "Inbjudarens ID",
-    "_inviteeId.comment": "Det unika identifieraren för inbjudaren, inbjudaren innebär användaren som bjuder in inbjudaren till API-tjänstens webbplats.",
+    "_inviteeId.comment": "Den unika identifieraren för inbjudaren, inbjudaren innebär användaren som bjuder in inbjuden till API-tjänstens webbplats.",
     "isVerified": "Är verifierad",
     "_isVerified.comment": "Flaggan som indikerar om hänvisningsanvändaren är verifierad med verklig information."
   },
   "message": {
     "deltaPriceForNextLevel": "Skillnad till nästa nivå",
-    "_deltaPriceForNextLevel": "Skillnaden mellan det aktuella orderbeloppet och nästa nivågräns.",
+    "_deltaPriceForNextLevel": "Skillnaden mellan det aktuella orderbeloppet och nästa nivås tröskelvärde.",
     "developingWithDrawal": "Lägg till kundtjänst för att hantera uttag, uttag kommer att dra av 6% inkomstskatt, fakturor kan användas för avdrag",
     "_developingWithDrawal": "Meddelandet som indikerar att uttagsfunktionen är under utveckling.",
     "technicalDetail": "Teknisk detalj",
@@ -60,8 +60,8 @@
     "_nextLevel.comment": "Nästa hänvisningsnivå, som används för att beräkna hänvisningsintäkterna.",
     "currentPercentage": "Aktuell hänvisningsintäktsprocent",
     "_currentPercentage.comment": "Den aktuella hänvisningsintäktsprocenten, som används för att beräkna hänvisningsintäkterna.",
-    "nextPercentage": "Hänvisningsintäktsprocent för nästa nivå",
-    "_nextPercentage.comment": "Hänvisningsintäktsprocenten för nästa nivå, som används för att beräkna hänvisningsintäkterna.",
+    "nextPercentage": "Nästa nivå hänvisningsintäktsprocent",
+    "_nextPercentage.comment": "Nästa nivå hänvisningsintäktsprocent, som används för att beräkna hänvisningsintäkterna.",
     "levelInfo": "Nivåinformation",
     "_levelInfo.comment": "Informationen om hänvisningsnivån, som används för att beräkna hänvisningsintäkterna.",
     "distributionLink": "Hänvisningslänk",
