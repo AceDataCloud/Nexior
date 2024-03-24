@@ -32,7 +32,7 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
-  const locale = store.getters.locale || DEFAULT_LOCALE;
+  const locale = store.state.locale || DEFAULT_LOCALE;
   await setI18nLanguage(locale);
   return next();
 });

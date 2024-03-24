@@ -64,6 +64,7 @@ export const loadLocaleMessages = async (i18n: I18n, locale: string) => {
   const messages: any = {};
   for (const name of names) {
     const resource = await loadLocalResource(name, locale);
+    console.log('resource', resource);
     messages[name] = resource;
   }
 

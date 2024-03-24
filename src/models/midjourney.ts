@@ -1,7 +1,7 @@
 export interface IMidjourneyMode {
   icon: string;
   name: string;
-  displayName: string;
+  getDisplayName: () => string;
 }
 
 export interface IMidjourneyPreset {
@@ -79,8 +79,10 @@ export interface IMidjourneyImagineResponse {
   trace_id: string;
   raw_image_url: string;
   actions: MidjourneyImagineAction[];
-  code?: string;
-  detail?: string;
+  error?: {
+    code?: string;
+    message?: string;
+  };
   success?: boolean;
 }
 
