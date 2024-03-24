@@ -133,6 +133,8 @@ export default defineComponent({
   height: 100%;
   padding: 20px;
   background-color: #f2f3f5;
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
@@ -152,39 +154,43 @@ export default defineComponent({
   width: fit-content;
 }
 
-.repository {
-  width: 100%;
-  height: 150px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  position: relative;
+.repositories {
+  flex: 1;
+  overflow-y: scroll;
+  .repository {
+    width: 100%;
+    height: 150px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    position: relative;
 
-  .el-dropdown {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-  }
+    .el-dropdown {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
 
-  .operation {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
+    .operation {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
 
-  .name {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
+    .name {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
 
-  .id {
-    font-size: 12px;
-    color: #333;
-  }
+    .id {
+      font-size: 12px;
+      color: #333;
+    }
 
-  .description {
-    font-size: 12px;
-    color: #666;
+    .description {
+      font-size: 12px;
+      color: #666;
+    }
   }
 }
 </style>

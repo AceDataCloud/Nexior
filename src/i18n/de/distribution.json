@@ -1,74 +1,130 @@
 {
-  "button": {
-    "detail": "Details anzeigen",
-    "_detail.comment": "Der Text auf der Schaltfläche, der verwendet wird, um die Details des Empfehlungsverlaufs für die Website anzuzeigen.",
-    "withdrawal": "Abheben",
-    "_withdrawal.comment": "Der Text auf der Schaltfläche, der verwendet wird, um die Empfehlungsverdienste für die Website abzuheben.",
-    "query": "Abfrage",
-    "_query.comment": "Der Text auf der Schaltfläche, der verwendet wird, um die Empfehlungsverdienste für die Website abzufragen."
+  "button.detail": {
+    "message": "Details anzeigen",
+    "description": "Der Text auf der Schaltfläche, mit der die Details des Empfehlungsverlaufs für die Website angezeigt werden."
   },
-  "field": {
-    "id": "Empfehlungs-ID",
-    "_id.comment": "Der eindeutige Bezeichner der Verteilung, wobei Verteilung die Empfehlung für die API-Service-Website bedeutet.",
-    "percentage": "Empfehlungsverdienstprozentsatz",
-    "_percentage.comment": "Der Prozentsatz der Empfehlungsverdienste, der auf der Bestellmenge basiert.",
-    "price": "Bestellmenge",
-    "_price.comment": "Die Höhe der Bestellung, die zur Berechnung der Empfehlungsverdienste verwendet wird.",
-    "reward": "Empfehlungsbelohnung",
-    "_reward.comment": "Die Empfehlungsverdienste, die auf der Bestellmenge und dem Empfehlungsverdienstprozentsatz basieren.",
-    "createdAt": "Empfehlungszeit",
-    "_createdAt.comment": "Die Zeit, zu der die Empfehlung erstellt wird.",
-    "level": "Ebene",
-    "_level.comment": "Die Ebene der Empfehlung, die zur Berechnung der Empfehlungsverdienste verwendet wird.",
-    "threshold": "Empfehlungsverdienstschwelle",
-    "_threshold.comment": "Die Schwelle der Empfehlungsverdienste, die zur Abhebung der Empfehlungsverdienste verwendet wird.",
-    "inviteeId": "Einlader-ID",
-    "_inviteeId.comment": "Der eindeutige Bezeichner des Einladenden, wobei Einladender den Benutzer bezeichnet, der den Eingeladenen zur API-Service-Website einlädt.",
-    "isVerified": "Ist verifiziert",
-    "_isVerified.comment": "Die Kennzeichnung, ob der Empfehlungsbenutzer mit den echten Informationen verifiziert ist."
+  "button.withdrawal": {
+    "message": "Abheben",
+    "description": "Der Text auf der Schaltfläche, mit der die Empfehlungsverdienste für die Website abgehoben werden."
   },
-  "message": {
-    "deltaPriceForNextLevel": "Differenz zum nächsten Level",
-    "_deltaPriceForNextLevel": "Die Differenz zwischen der aktuellen Bestellmenge und der nächsten Ebenenschwelle.",
-    "developingWithDrawal": "Bitte fügen Sie den Kundenservice hinzu, um Abhebungen zu bearbeiten. Abhebungen werden mit 6 % Einkommensteuer belastet, Rechnungen können zur Absetzung verwendet werden",
-    "_developingWithDrawal": "Die Nachricht, die darauf hinweist, dass die Abhebungsfunktion in Entwicklung ist.",
-    "technicalDetail": "Technische Details",
-    "_technicalDetail": "Die technischen Details des Empfehlungssystems werden implementiert.",
-    "distributionQrDescription": "Empfehlungs-QR-Code (gleicher Inhalt wie Link)",
-    "_distributionQrDescription": "Die Beschreibung des Empfehlungs-QR-Codes.",
-    "distributionLink": "Empfehlungslink",
-    "_distributionLink": "Der Empfehlungslink, der verwendet wird, um den Kunden als untergeordneten Kunden zu binden.",
-    "updateSuccessfully": "Aktualisierung erfolgreich",
-    "_updateSuccessfully": "Die Nachricht, die darauf hinweist, dass die Empfehlungsinformationen erfolgreich aktualisiert wurden.",
-    "distributionLinkDescription": "Wenn ein Kunde sich über diesen Link oder QR-Code auf dieser Plattform registriert, wird der Kunde dauerhaft als Ihr untergeordneter Kunde gebunden, und alle Verbrauchsbestellungen des Kunden auf dieser Plattform werden gemäß dem aktuellen Verteilungsverhältnis auf Ihr Konto zurücküberwiesen.",
-    "_distributionLinkDescription": "Die Beschreibung des Empfehlungslinks.",
-    "distributionLinkDescription2": "Dieser Link enthält Ihre Benutzer-ID. Nachdem der Kunde den Link geöffnet hat, wird Ihre Benutzer-ID im Browser des Kunden in Form von Cookies für sieben Tage gespeichert. Innerhalb von sieben Tagen, wenn der Kunde diese Plattform durch Scannen des Codes registriert, wird Ihre Benutzer-ID mit Cookies auf den Registrierungsserver hochgeladen, und der Kunde kann als Ihr nachgelagerter Kunde gebunden werden.",
-    "_distributionLinkDescription2": "Die Beschreibung des Empfehlungslinks."
+  "button.query": {
+    "message": "Abfragen",
+    "description": "Der Text auf der Schaltfläche, mit der die Empfehlungsverdienste für die Website abgefragt werden."
   },
-  "title": {
-    "price": "Gesamtbetrag der Empfehlungsbestellungen",
-    "_price.comment": "Der Gesamtbetrag der Empfehlungsbestellungen, der zur Berechnung der Empfehlungsverdienste verwendet wird.",
-    "reward": "Gesamte Empfehlungsbelohnungen",
-    "_reward.comment": "Die gesamten Empfehlungsverdienste, die auf der Bestellmenge und dem Empfehlungsverdienstprozentsatz basieren.",
-    "level": "Empfehlungsebene",
-    "_level.comment": "Die Empfehlungsebene, die zur Berechnung der Empfehlungsverdienste verwendet wird.",
-    "percentage": "Empfehlungsverdienstprozentsatz",
-    "_percentage.comment": "Der Empfehlungsverdienstprozentsatz, der zur Berechnung der Empfehlungsverdienste verwendet wird.",
-    "currentLevel": "Aktuelle Ebene",
-    "_currentLevel.comment": "Die aktuelle Empfehlungsebene, die zur Berechnung der Empfehlungsverdienste verwendet wird.",
-    "nextLevel": "Nächste Ebene",
-    "_nextLevel.comment": "Die nächste Empfehlungsebene, die zur Berechnung der Empfehlungsverdienste verwendet wird.",
-    "currentPercentage": "Aktueller Empfehlungsverdienstprozentsatz",
-    "_currentPercentage.comment": "Der aktuelle Empfehlungsverdienstprozentsatz, der zur Berechnung der Empfehlungsverdienste verwendet wird.",
-    "nextPercentage": "Empfehlungsverdienstprozentsatz der nächsten Ebene",
-    "_nextPercentage.comment": "Der Empfehlungsverdienstprozentsatz der nächsten Ebene, der zur Berechnung der Empfehlungsverdienste verwendet wird.",
-    "levelInfo": "Ebeneninformationen",
-    "_levelInfo.comment": "Die Informationen der Empfehlungsebene, die zur Berechnung der Empfehlungsverdienste verwendet wird.",
-    "distributionLink": "Empfehlungslink",
-    "_distributionLink.comment": "Der Empfehlungslink, der verwendet wird, um den Kunden als untergeordneten Kunden zu binden.",
-    "inviteesCount": "Gesamtanzahl der Eingeladenen",
-    "_inviteesCount.comment": "Die Gesamtanzahl der Eingeladenen, die zur Berechnung der Empfehlungsverdienste verwendet wird.",
-    "manageDistributionStatus": "Verteilungsverwaltung",
-    "_manageDistributionStatus.comment": "Die Verwaltung des Empfehlungsstatus."
+  "field.id": {
+    "message": "Empfehlungs-ID",
+    "description": "Der eindeutige Bezeichner der Verteilung, wobei Verteilung die Empfehlung für die API-Service-Website bedeutet."
+  },
+  "field.percentage": {
+    "message": "Empfehlungsverdienstprozentsatz",
+    "description": "Der Prozentsatz der Empfehlungsverdienste, der auf Grundlage des Bestellbetrags berechnet wird."
+  },
+  "field.price": {
+    "message": "Bestellbetrag",
+    "description": "Der Betrag der Bestellung, der zur Berechnung der Empfehlungsverdienste verwendet wird."
+  },
+  "field.reward": {
+    "message": "Empfehlungsbelohnung",
+    "description": "Die Empfehlungsverdienste, die auf Grundlage des Bestellbetrags und des Empfehlungsverdienstprozentsatzes berechnet werden."
+  },
+  "field.createdAt": {
+    "message": "Empfehlungszeit",
+    "description": "Die Zeit, zu der die Empfehlung erstellt wird."
+  },
+  "field.level": {
+    "message": "Ebene",
+    "description": "Die Ebene der Empfehlung, die zur Berechnung der Empfehlungsverdienste verwendet wird."
+  },
+  "field.threshold": {
+    "message": "Empfehlungsverdienstschwelle",
+    "description": "Die Schwelle der Empfehlungsverdienste, die zur Abhebung der Empfehlungsverdienste verwendet wird."
+  },
+  "field.inviteeId": {
+    "message": "Einlader-ID",
+    "description": "Der eindeutige Bezeichner des Einladenden, wobei Einladender den Benutzer bezeichnet, der den Eingeladenen zur API-Service-Website einlädt."
+  },
+  "field.isVerified": {
+    "message": "Ist verifiziert",
+    "description": "Das Flag, um anzuzeigen, ob der Empfehlungsbenutzer mit den echten Informationen verifiziert ist."
+  },
+  "message.deltaPriceForNextLevel": {
+    "message": "Differenz zum nächsten Level",
+    "description": "Die Differenz zwischen dem aktuellen Bestellbetrag und der nächsten Ebenenschwelle."
+  },
+  "message.developingWithDrawal": {
+    "message": "Bitte fügen Sie den Kundenservice hinzu, um Abhebungen zu bearbeiten. Bei Abhebungen wird eine Einkommensteuer von 6 % abgezogen, Rechnungen können zur Absetzung verwendet werden",
+    "description": "Die Nachricht, die darauf hinweist, dass die Abhebungsfunktion in Entwicklung ist."
+  },
+  "message.technicalDetail": {
+    "message": "Technische Details",
+    "description": "Die technischen Details des Empfehlungssystems werden implementiert."
+  },
+  "message.distributionQrDescription": {
+    "message": "Empfehlungs-QR-Code (gleicher Inhalt wie Link)",
+    "description": "Die Beschreibung des Empfehlungs-QR-Codes."
+  },
+  "message.distributionLink": {
+    "message": "Empfehlungslink",
+    "description": "Der Empfehlungslink, der verwendet wird, um den Kunden als untergeordneten Kunden zu binden."
+  },
+  "message.updateSuccessfully": {
+    "message": "Aktualisierung erfolgreich",
+    "description": "Die Nachricht, die darauf hinweist, dass die Empfehlungsinformationen erfolgreich aktualisiert wurden."
+  },
+  "message.distributionLinkDescription": {
+    "message": "Wenn ein Kunde über diesen Link oder QR-Code auf dieser Plattform registriert wird, wird der Kunde dauerhaft als Ihr untergeordneter Kunde gebunden, und alle Verbrauchsbestellungen des Kunden auf dieser Plattform werden gemäß dem aktuellen Verteilungsverhältnis auf Ihr Konto zurücküberwiesen.",
+    "description": "Die Beschreibung des Empfehlungslinks."
+  },
+  "message.distributionLinkDescription2": {
+    "message": "Dieser Link enthält Ihre Benutzer-ID. Nachdem der Kunde den Link öffnet, wird Ihre Benutzer-ID im Browser des Kunden in Form von Cookies aufgezeichnet, die sieben Tage gültig sind. Innerhalb von sieben Tagen, wenn der Kunde diese Plattform durch Scannen des Codes registriert, wird Ihre Benutzer-ID mit Cookies auf den Registrierungsserver hochgeladen, und der Kunde kann als Ihr nachgelagerter Kunde gebunden werden.",
+    "description": "Die Beschreibung des Empfehlungslinks."
+  },
+  "title.price": {
+    "message": "Gesamtbetrag der Empfehlungsbestellungen",
+    "description": "Der Gesamtbetrag der Empfehlungsbestellungen, der zur Berechnung der Empfehlungsverdienste verwendet wird."
+  },
+  "title.reward": {
+    "message": "Gesamte Empfehlungsbelohnungen",
+    "description": "Die gesamten Empfehlungsverdienste, die auf Grundlage des Bestellbetrags und des Empfehlungsverdienstprozentsatzes berechnet werden."
+  },
+  "title.level": {
+    "message": "Empfehlungsebene",
+    "description": "Die Empfehlungsebene, die zur Berechnung der Empfehlungsverdienste verwendet wird."
+  },
+  "title.percentage": {
+    "message": "Empfehlungsverdienstprozentsatz",
+    "description": "Der Empfehlungsverdienstprozentsatz, der zur Berechnung der Empfehlungsverdienste verwendet wird."
+  },
+  "title.currentLevel": {
+    "message": "Aktuelle Ebene",
+    "description": "Die aktuelle Empfehlungsebene, die zur Berechnung der Empfehlungsverdienste verwendet wird."
+  },
+  "title.nextLevel": {
+    "message": "Nächste Ebene",
+    "description": "Die nächste Empfehlungsebene, die zur Berechnung der Empfehlungsverdienste verwendet wird."
+  },
+  "title.currentPercentage": {
+    "message": "Aktueller Empfehlungsverdienstprozentsatz",
+    "description": "Der aktuelle Empfehlungsverdienstprozentsatz, der zur Berechnung der Empfehlungsverdienste verwendet wird."
+  },
+  "title.nextPercentage": {
+    "message": "Empfehlungsverdienstprozentsatz der nächsten Ebene",
+    "description": "Der Empfehlungsverdienstprozentsatz der nächsten Ebene, der zur Berechnung der Empfehlungsverdienste verwendet wird."
+  },
+  "title.levelInfo": {
+    "message": "Ebeneninformationen",
+    "description": "Die Informationen der Empfehlungsebene, die zur Berechnung der Empfehlungsverdienste verwendet wird."
+  },
+  "title.distributionLink": {
+    "message": "Empfehlungslink",
+    "description": "Der Empfehlungslink, der verwendet wird, um den Kunden als untergeordneten Kunden zu binden."
+  },
+  "title.inviteesCount": {
+    "message": "Gesamtanzahl der Eingeladenen",
+    "description": "Die Gesamtanzahl der Eingeladenen, die zur Berechnung der Empfehlungsverdienste verwendet wird."
+  },
+  "title.manageDistributionStatus": {
+    "message": "Verteilungsverwaltung",
+    "description": "Die Verwaltung des Empfehlungsstatus."
   }
 }

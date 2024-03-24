@@ -1,6 +1,6 @@
 <template>
   <div class="panel">
-    <el-skeleton v-if="loading && conversations === undefined" />
+    <el-skeleton v-if="conversations === undefined" />
     <div v-else class="conversations">
       <div class="conversation" @click="onNewConversation">
         <div class="icons">

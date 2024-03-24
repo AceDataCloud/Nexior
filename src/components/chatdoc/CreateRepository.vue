@@ -8,7 +8,7 @@
         <el-input v-model="form.description" :placeholder="$t('chatdoc.message.inputRepositoryDescription')" />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">{{ $t('common.button.create') }}</el-button>
+        <el-button type="primary" round @click="onSubmit">{{ $t('common.button.create') }}</el-button>
       </el-form-item>
     </el-form>
   </el-dialog>

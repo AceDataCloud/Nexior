@@ -1,78 +1,134 @@
 {
-  "button": {
-    "pay": "支付",
-    "_pay.comment": "按钮中的文本，用于支付订单。",
-    "continuePay": "继续支付",
-    "_continuePay.comment": "按钮中的文本，用于继续支付订单。",
-    "checkDetail": "查看详情",
-    "_checkDetail.comment": "按钮中的文本，用于查看订单详情。",
-    "query": "查询",
-    "_query.comment": "按钮中的文本，用于查询订单。",
-    "finish": "手动完成",
-    "_finish.comment": "按钮中的文本，用于手动完成订单。",
-    "update": "更新",
-    "_update.comment": "按钮中的文本，用于更新订单。"
+  "button.pay": {
+    "message": "支付",
+    "description": "按钮文本，用于支付订单。"
   },
-  "field": {
-    "id": "订单编号",
-    "_id.comment": "订单的编号。",
-    "amount": "金额",
-    "_amount.comment": "订单的积分金额。",
-    "price": "金额",
-    "_price.comment": "订单的积分金额。",
-    "description": "订单描述",
-    "_description.comment": "订单的描述。",
-    "state": "状态",
-    "_state.comment": "订单的状态。",
-    "createdAt": "创建时间",
-    "_createdAt.comment": "订单的创建时间。",
-    "service": "服务名称",
-    "_service.comment": "服务的名称。",
-    "payWay": "支付方式",
-    "_payWay.comment": "订单的支付方式。",
-    "api": "API",
-    "_api.comment": "API是一种在线服务。",
-    "proxy": "代理",
-    "_proxy.comment": "代理是一种在线服务，用于数据传输的HTTP代理。"
+  "button.continuePay": {
+    "message": "继续支付",
+    "description": "按钮文本，用于继续支付订单。"
   },
-  "message": {
-    "paidSuccessfully": "支付成功",
-    "_paidSuccessfully.comment": "成功支付的消息。",
-    "createFailed": "创建失败",
-    "_createFailed.comment": "创建失败的消息。",
-    "wechatPayHelp": "请在手机上打开微信，扫码完成支付",
-    "_wechatPayHelp.comment": "微信支付帮助的消息。",
-    "free": "免费",
-    "_free.comment": "免费订单的消息。",
-    "buyInExternalUrl": "请在外部链接中完成支付",
-    "_buyInExternalUrl.comment": "外部链接支付的消息。",
-    "updateFailed": "更新失败",
-    "_updateFailed.comment": "更新失败的消息。",
-    "updateSuccessfully": "更新成功",
-    "_updateSuccessfully.comment": "成功更新的消息。",
-    "confirmFinish": "此操作将手动设置订单为支付状态并完成分发处理，无法撤销。 请确认客户已完成支付，是否继续？",
-    "_confirmFinish.comment": "确认完成的消息。"
+  "button.checkDetail": {
+    "message": "查看详情",
+    "description": "按钮文本，用于查看订单详情。"
   },
-  "state": {
-    "pending": "待支付",
-    "_pending.comment": "订单的状态，表示此订单仍在等待用户支付。",
-    "paid": "已支付",
-    "_paid.comment": "订单的状态，表示此订单已经支付。",
-    "expired": "支付超时",
-    "_expired.comment": "订单的状态，表示此订单已过期。",
-    "failed": "支付失败",
-    "_failed.comment": "订单的状态，表示此订单支付失败。"
+  "button.query": {
+    "message": "查询",
+    "description": "按钮文本，用于查询订单。"
   },
-  "title": {
-    "info": "订单信息",
-    "_info.comment": "用作网站标题显示的标题，表示订单信息。",
-    "wechatPay": "微信支付",
-    "_wechatPay.comment": "用作网站标题显示的标题，表示微信支付。",
-    "aliPay": "支付宝",
-    "_aliPay.comment": "用作网站标题显示的标题，表示支付宝支付，支付宝支付是一种在线支付。",
-    "stripe": "Stripe",
-    "_stripe.comment": "用作网站标题显示的标题，表示Stripe支付，Stripe支付是一种在线支付。",
-    "manageOrder": "管理订单",
-    "_manageOrder.comment": "用作网站标题显示的标题，表示管理订单。"
+  "button.finish": {
+    "message": "手动完成",
+    "description": "按钮文本，用于手动完成订单。"
+  },
+  "button.update": {
+    "message": "更新",
+    "description": "按钮文本，用于更新订单。"
+  },
+  "field.id": {
+    "message": "订单编号",
+    "description": "订单的编号。"
+  },
+  "field.amount": {
+    "message": "金额",
+    "description": "订单的积分金额。"
+  },
+  "field.price": {
+    "message": "金额",
+    "description": "订单的积分金额。"
+  },
+  "field.description": {
+    "message": "订单描述",
+    "description": "订单的描述。"
+  },
+  "field.state": {
+    "message": "状态",
+    "description": "订单的状态。"
+  },
+  "field.createdAt": {
+    "message": "创建时间",
+    "description": "订单的创建时间。"
+  },
+  "field.service": {
+    "message": "服务名称",
+    "description": "服务的名称。"
+  },
+  "field.payWay": {
+    "message": "支付方式",
+    "description": "订单的支付方式。"
+  },
+  "field.api": {
+    "message": "API",
+    "description": "API是一种在线服务。"
+  },
+  "field.proxy": {
+    "message": "代理",
+    "description": "代理是一种在线服务，用于数据传输的HTTP代理。"
+  },
+  "message.paidSuccessfully": {
+    "message": "支付成功",
+    "description": "成功支付的消息。"
+  },
+  "message.createFailed": {
+    "message": "创建失败",
+    "description": "创建失败的消息。"
+  },
+  "message.wechatPayHelp": {
+    "message": "请在手机上打开微信，扫码完成支付",
+    "description": "微信支付帮助的消息。"
+  },
+  "message.free": {
+    "message": "免费",
+    "description": "免费订单的消息。"
+  },
+  "message.buyInExternalUrl": {
+    "message": "请在外部链接完成支付",
+    "description": "外部链接支付的消息。"
+  },
+  "message.updateFailed": {
+    "message": "更新失败",
+    "description": "更新失败的消息。"
+  },
+  "message.updateSuccessfully": {
+    "message": "更新成功",
+    "description": "成功更新的消息。"
+  },
+  "message.confirmFinish": {
+    "message": "此操作将手动设置订单为支付状态并完成分发处理，无法撤销。请确认客户已完成支付，是否继续？",
+    "description": "确认完成的消息。"
+  },
+  "state.pending": {
+    "message": "待支付",
+    "description": "订单的状态，表示此订单仍在等待用户支付。"
+  },
+  "state.paid": {
+    "message": "已支付",
+    "description": "订单的状态，表示此订单已经支付。"
+  },
+  "state.expired": {
+    "message": "支付超时",
+    "description": "订单的状态，表示此订单已过期。"
+  },
+  "state.failed": {
+    "message": "支付失败",
+    "description": "订单的状态，表示此订单支付失败。"
+  },
+  "title.info": {
+    "message": "订单信息",
+    "description": "用作网站标题显示的标题，表示订单信息。"
+  },
+  "title.wechatPay": {
+    "message": "微信支付",
+    "description": "用作网站标题显示的标题，表示微信支付。"
+  },
+  "title.aliPay": {
+    "message": "支付宝",
+    "description": "用作网站标题显示的标题，表示支付宝支付，支付宝支付是一种在线支付。"
+  },
+  "title.stripe": {
+    "message": "Stripe",
+    "description": "用作网站标题显示的标题，表示Stripe支付，Stripe支付是一种在线支付。"
+  },
+  "title.manageOrder": {
+    "message": "管理订单",
+    "description": "用作网站标题显示的标题，表示管理订单。"
   }
 }

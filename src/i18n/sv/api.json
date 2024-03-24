@@ -1,78 +1,142 @@
 {
-  "entity": {
-    "requestQueries": "Förfrågningsfrågor",
-    "_requestQueries.comment": "HTTP-förfrågningsfrågans parametrar.",
-    "requestBody": "Förfrågningskropp",
-    "_requestBody.comment": "HTTP-förfrågningskroppen.",
-    "responseBody": "Svars kropp",
-    "_responseBody.comment": "HTTP-svars kropp.",
-    "requestHeaders": "Förfrågningshuvuden",
-    "_requestHeaders.comment": "HTTP-förfrågningshuvuden.",
-    "requestHeader": "Förfrågningshuvud",
-    "_requestHeader.comment": "HTTP-förfrågningshuvud, bara en enda form för förfrågningshuvuden.",
-    "responseHeaders": "Svarshuvuden",
-    "_responseHeaders.comment": "HTTP-svarshuvuden.",
-    "response": "Svar",
-    "_response.comment": "HTTP-svar.",
-    "success": "Lyckad",
-    "_success.comment": "Den lyckade responsen.",
-    "failure": "Misslyckande",
-    "_failure.comment": "Den misslyckade responsen.",
-    "responseExample": "Exempel",
-    "_responseExample.comment": "Exemplet på responsen.",
-    "authentication": "Autentisering",
-    "_authentication.comment": "Autentiseringsinformationen.",
-    "arrayOf": "Array av",
-    "_arrayOf.comment": "Entitetens array.",
-    "apiKey": "API-nyckel",
-    "_apiKey.comment": "API-nyckeln"
+  "entity.requestQueries": {
+    "message": "Förfrågningsfrågor",
+    "description": "HTTP-förfrågningsfrågeparametrar."
   },
-  "message": {
-    "free": "Gratis",
-    "_free.comment": "Betyder att priset är gratis, inga krediter eller pengar behövs när du använder API-tjänsten",
-    "appliedCount": "Tillämpat antal",
-    "_appliedCount.comment": "Antalet gånger API-tjänsten har tillämpats",
-    "firstFree": "Första gången gratis",
-    "_firstFree.comment": "Betyder att första gången av API-tjänsten är gratis, inga krediter eller pengar behövs",
-    "custom": "Specificerat belopp",
-    "_custom.comment": "Betyder att priset är specificerat, behöver kosta de specificerade krediterna eller pengarna när du använder API-tjänsten",
-    "present": "Present",
-    "_present.comment": "Vi kommer att ge dig krediter när du använder API-tjänsten för första gången",
-    "around": "Ungefär",
-    "_around.comment": "Priset är ungefärligt, det verkliga priset kan vara annorlunda",
-    "successRate15min": "Realtidsframgångsgrad",
-    "_successRate15min.comment": "API-tjänstens realtidsframgångsgrad under de senaste 15 minuterna",
-    "ySuccessRate": "Framgångsgrad (100%)",
-    "_ySuccessRate.comment": "API-tjänstens framgångsgrad",
-    "xMinutes": "Tid (minuter)",
-    "_xMinutes.comment": "Tiden i minuter",
-    "streamUsage": "Vänligen observera: För strömmande förfrågningar kan ovanstående kod vara inte helt tillämplig. Vänligen se dockningsdokumentet för modifieringar.",
-    "_streamUsage.comment": "För strömmande förfrågningar kan ovanstående kod vara inte helt tillämplig. Vänligen se dockningsdokumentet för modifieringar.",
-    "alphaStage": "Denna API är i Alfa-stadiet, det är en tidig förhandsgranskningsversion, det kan finnas potentiell instabilitet, API-formatet kan ändras betydligt, det rekommenderas inte att användas i en produktionsmiljö. Det nuvarande priset är relativt lågt, och det kan finnas betydande prisjusteringar i framtiden.",
-    "_alphaStage.comment": "Denna API är i Alfa-stadiet, det är en tidig förhandsgranskningsversion, det kan finnas potentiell instabilitet, API-formatet kan ändras betydligt, det rekommenderas inte att användas i en produktionsmiljö. Det nuvarande priset är relativt lågt, och det kan finnas betydande prisjusteringar i framtiden.",
-    "betaStage": "Denna API är i Beta-stadiet, API-formatet kommer inte att ändras mycket, men det kan finnas potentiell instabilitet, använd det försiktigt i en produktionsmiljö. Det nuvarande priset är relativt lågt, och det kan finnas måttliga prisjusteringar i framtiden.",
-    "_betaStage.comment": "Denna API är i Beta-stadiet, API-formatet kommer inte att ändras mycket, men det kan finnas potentiell instabilitet, använd det försiktigt i en produktionsmiljö. Det nuvarande priset är relativt lågt, och det kan finnas måttliga prisjusteringar i framtiden."
+  "entity.requestBody": {
+    "message": "Förfrågningskropp",
+    "description": "HTTP-förfrågningskropp."
   },
-  "unit": {
-    "credit": "Kredit",
-    "_credit.comment": "Kredit betyder den virtuella valutan som används i API-tjänsten",
-    "Credit": "Kredit",
-    "_Credit.comment": "Kredit betyder den virtuella valutan som används i API-tjänsten, detta är den kapitaliserade formen",
-    "credits": "Krediter",
-    "_credits.comment": "Krediter betyder den virtuella valutan som används i API-tjänsten, detta är den plurala formen",
-    "Credits": "Krediter",
-    "_Credits.comment": "Krediter betyder den virtuella valutan som används i API-tjänsten, detta är den kapitaliserade och plurala formen",
-    "call": "Anrop",
-    "_call.comment": "Anrop betyder antalet gånger API-tjänsten har blivit anropad",
-    "Call": "Anrop",
-    "_Call.comment": "Anrop betyder antalet gånger API-tjänsten har blivit anropad, detta är den kapitaliserade formen",
-    "calls": "Anrop",
-    "_calls.comment": "Anrop betyder antalet gånger API-tjänsten har blivit anropad, detta är den plurala formen",
-    "Calls": "Anrop",
-    "_Calls.comment": "Anrop betyder antalet gånger API-tjänsten har blivit anropad, detta är den kapitaliserade och plurala formen",
-    "MB": "MB",
-    "_MB.comment": "MB betyder Megabyte, en enhet för digital informationslagring",
-    "GB": "GB",
-    "_GB.comment": "GB betyder Gigabyte, en enhet för digital informationslagring"
+  "entity.responseBody": {
+    "message": "Svars kropp",
+    "description": "HTTP-svars kropp."
+  },
+  "entity.requestHeaders": {
+    "message": "Förfrågningshuvuden",
+    "description": "HTTP-förfrågningshuvuden."
+  },
+  "entity.requestHeader": {
+    "message": "Förfrågningshuvud",
+    "description": "HTTP-förfrågningshuvud, bara en enda form för förfrågningshuvuden."
+  },
+  "entity.responseHeaders": {
+    "message": "Svarshuvuden",
+    "description": "HTTP-svarshuvuden."
+  },
+  "entity.response": {
+    "message": "Svar",
+    "description": "HTTP-svar."
+  },
+  "entity.success": {
+    "message": "Lyckad",
+    "description": "Det lyckade svaret."
+  },
+  "entity.failure": {
+    "message": "Misslyckande",
+    "description": "Det misslyckade svaret."
+  },
+  "entity.responseExample": {
+    "message": "Exempel",
+    "description": "Exemplet på svaret."
+  },
+  "entity.authentication": {
+    "message": "Autentisering",
+    "description": "Autentiseringsinformationen."
+  },
+  "entity.arrayOf": {
+    "message": "Array av",
+    "description": "Entitetens array."
+  },
+  "entity.apiKey": {
+    "message": "API-nyckel",
+    "description": "API-nyckeln"
+  },
+  "message.free": {
+    "message": "Gratis",
+    "description": "Betyder att priset är gratis, inga krediter eller pengar behövs när du använder API-tjänsten"
+  },
+  "message.appliedCount": {
+    "message": "Ansökningsantal",
+    "description": "Antalet gånger API-tjänsten har använts"
+  },
+  "message.firstFree": {
+    "message": "Första gången gratis",
+    "description": "Betyder att första gången av API-tjänsten är gratis, inga krediter eller pengar behövs"
+  },
+  "message.custom": {
+    "message": "Specificerat belopp",
+    "description": "Betyder att priset är specificerat, behöver kosta de specificerade krediterna eller pengarna när du använder API-tjänsten"
+  },
+  "message.present": {
+    "message": "Present",
+    "description": "Vi kommer att ge dig krediter när du använder API-tjänsten för första gången"
+  },
+  "message.around": {
+    "message": "Ungefär",
+    "description": "Priset är ungefärligt, det verkliga priset kan vara annorlunda"
+  },
+  "message.successRate15min": {
+    "message": "Realtidsframgångsgrad",
+    "description": "API-tjänstens realtidsframgångsgrad under de senaste 15 minuterna"
+  },
+  "message.ySuccessRate": {
+    "message": "Framgångsgrad (100%)",
+    "description": "API-tjänstens framgångsgrad"
+  },
+  "message.xMinutes": {
+    "message": "Tid (minuter)",
+    "description": "Tiden i minuter"
+  },
+  "message.streamUsage": {
+    "message": "Vänligen observera: För strömmande förfrågningar kan ovanstående kod vara inte helt tillämplig. Vänligen hänvisa till anslutningsdokumentet för modifieringar.",
+    "description": "För strömmande förfrågningar kan ovanstående kod vara inte helt tillämplig. Vänligen hänvisa till anslutningsdokumentet för modifieringar."
+  },
+  "message.alphaStage": {
+    "message": "Denna API är i alfastadiet, det är en tidig förhandsgranskningsversion, det kan finnas potentiell instabilitet, API-formatet kan ändras betydligt, det rekommenderas inte för användning i en produktionsmiljö. Det nuvarande priset är relativt lågt, och det kan finnas betydande prisjusteringar i framtiden.",
+    "description": "Denna API är i alfastadiet, det är en tidig förhandsgranskningsversion, det kan finnas potentiell instabilitet, API-formatet kan ändras betydligt, det rekommenderas inte för användning i en produktionsmiljö. Det nuvarande priset är relativt lågt, och det kan finnas betydande prisjusteringar i framtiden."
+  },
+  "message.betaStage": {
+    "message": "Denna API är i betastadiet, API-formatet kommer inte att ändras mycket, men det kan finnas potentiell instabilitet, använd det försiktigt i en produktionsmiljö. Det nuvarande priset är relativt lågt, och det kan finnas måttliga prisjusteringar i framtiden.",
+    "description": "Denna API är i betastadiet, API-formatet kommer inte att ändras mycket, men det kan finnas potentiell instabilitet, använd det försiktigt i en produktionsmiljö. Det nuvarande priset är relativt lågt, och det kan finnas måttliga prisjusteringar i framtiden."
+  },
+  "unit.credit": {
+    "message": "Kredit",
+    "description": "Kredit betyder den virtuella valutan som används i API-tjänsten"
+  },
+  "unit.Credit": {
+    "message": "Kredit",
+    "description": "Kredit betyder den virtuella valutan som används i API-tjänsten, detta är den kapitaliserade formen"
+  },
+  "unit.credits": {
+    "message": "Krediter",
+    "description": "Krediter betyder den virtuella valutan som används i API-tjänsten, detta är den plurala formen"
+  },
+  "unit.Credits": {
+    "message": "Krediter",
+    "description": "Krediter betyder den virtuella valutan som används i API-tjänsten, detta är den kapitaliserade och plurala formen"
+  },
+  "unit.call": {
+    "message": "Anrop",
+    "description": "Anrop betyder antalet gånger API-tjänsten har blivit anropad"
+  },
+  "unit.Call": {
+    "message": "Anrop",
+    "description": "Anrop betyder antalet gånger API-tjänsten har blivit anropad, detta är den kapitaliserade formen"
+  },
+  "unit.calls": {
+    "message": "Anrop",
+    "description": "Anrop betyder antalet gånger API-tjänsten har blivit anropad, detta är den plurala formen"
+  },
+  "unit.Calls": {
+    "message": "Anrop",
+    "description": "Anrop betyder antalet gånger API-tjänsten har blivit anropad, detta är den kapitaliserade och plurala formen"
+  },
+  "unit.MB": {
+    "message": "MB",
+    "description": "MB betyder Megabyte, en enhet för digital informationslagring"
+  },
+  "unit.GB": {
+    "message": "GB",
+    "description": "GB betyder Gigabyte, en enhet för digital informationslagring"
   }
 }

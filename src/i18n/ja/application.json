@@ -1,104 +1,190 @@
 {
-  "button": {
-    "goDocument": "ドキュメント",
-    "_goDocument.comment": "このボタンをクリックすると、ドキュメントページに移動します。",
-    "goCredentials": "資格情報",
-    "_goCredentials.comment": "このボタンをクリックすると、資格情報ページに移動します。",
-    "buyMore": "さらに購入",
-    "_buyMore.comment": "このボタンをクリックすると、さらに購入ページに移動します。",
-    "createOrder": "注文を作成",
-    "_createOrder.comment": "このボタンをクリックすると、注文作成ページに移動します。",
-    "custom": "カスタム",
-    "_custom.comment": "このボタンをクリックすると、カスタムページに移動します。",
-    "query": "クエリ",
-    "_query.comment": "このボタンをクリックすると、クエリページに移動します。",
-    "usage": "利用履歴",
-    "_usage.comment": "このボタンをクリックすると、利用履歴ページに移動します。"
+  "button.goDocument": {
+    "message": "ドキュメント",
+    "description": "ボタンのテキスト、このボタンをクリックするとドキュメントページに移動します。"
   },
-  "field": {
-    "id": "アプリケーションID",
-    "_id.comment": "アプリケーションのID。",
-    "remainingAmount": "残高",
-    "_remainingAmount.comment": "アプリケーションの残高。",
-    "usedAmount": "使用済み金額",
-    "_usedAmount.comment": "アプリケーションの使用済み金額。",
-    "apiKey": "APIキー",
-    "_apiKey.comment": "APIキー",
-    "service": "サービス",
-    "_service.comment": "アプリケーションのサービス。",
-    "operation": "操作",
-    "_operation.comment": "アプリケーションの操作。",
-    "amount": "金額",
-    "_amount.comment": "アプリケーションの金額。",
-    "traceId": "トレースID",
-    "_traceId.comment": "APIサービスのアプリケーションの1つのAPI呼び出しのトレースID、翻訳しないでください、'トレースID'のままにしてください",
-    "shouldPayPrice": "最終金額",
-    "_shouldPayPrice.comment": "アプリケーションの最終金額。",
-    "api": "API",
-    "_api.comment": "これはオンラインサービスの一種です。フォームはAPIを介してユーザーにサービスを提供します。",
-    "proxy": "プロキシ",
-    "_proxy.comment": "これはオンラインサービスの一種です。フォームはHTTPプロキシ（データ転送に使用）を介してユーザーにサービスを提供します。",
-    "credential": "資格情報",
-    "_credential.comment": "アプリケーションの資格情報。",
-    "name": "名前",
-    "_name.comment": "アプリケーションの名前。",
-    "package": "パッケージ",
-    "_package.comment": "$100で10000クレジット、$200で20000クレジットなど、異なる価格のパッケージを意味します。",
-    "type": "タイプ",
-    "_type.comment": "アプリケーションのタイプ。",
-    "freeAmount": "無料金額",
-    "_freeAmount.comment": "アプリケーションの無料金額。",
-    "extraPrice": "追加料金",
-    "_extraPrice.comment": "ユーザーが支払う必要があるアプリケーションの追加料金。"
+  "button.goCredentials": {
+    "message": "資格情報",
+    "description": "ボタンのテキスト、このボタンをクリックすると資格情報ページに移動します。"
   },
-  "message": {
-    "alreadyApplied": "このサービスには既に申し込み済みです。コンソールを確認してください",
-    "_alreadyApplied.comment": "ユーザーが既にこのサービスに申し込んでいる場合に表示されるメッセージ。",
-    "applySuccessfully": "申し込みが成功しました",
-    "_applySuccessfully.comment": "ユーザーがこのサービスに申し込みに成功した場合に表示されるメッセージ。",
-    "notApplied": "まだこのサービスに申し込んでいません。使用する前にサービスに申し込んでください",
-    "_notApplied.comment": "ユーザーがまだこのサービスに申し込んでいない場合に表示されるメッセージ。",
-    "yourApplication": "あなたの申し込み",
-    "_yourApplication.comment": "ユーザーの申し込みに関するメッセージ。",
-    "unverified": "このサービスを申し込む前に実名認証を完了する必要があります",
-    "_unverified.comment": "ユーザーが実名認証を完了していない場合に表示されるメッセージ。",
-    "goVerify": "実名認証に進む",
-    "_goVerify.comment": "ユーザーが実名認証を完了していない場合に表示されるメッセージ。",
-    "requiredParameter": "必須パラメータ",
-    "_requiredParameter.comment": "ユーザーが必須パラメータを入力していない場合に表示されるメッセージ。",
-    "example": "例",
-    "_example.comment": "ユーザーが必須パラメータを入力していない場合に表示されるメッセージ。",
-    "createCredentialSuccessfully": "資格情報の作成に成功しました",
-    "_createCredentialSuccessfully.comment": "ユーザーが資格情報を作成に成功した場合に表示されるメッセージ。",
-    "readPolicy": "私は読んで同意しました",
-    "_readPolicy.comment": "ユーザーがポリシーを読んで同意した場合に表示されるメッセージ。",
-    "policy": "データ技術サービス利用契約",
-    "_policy.comment": "ユーザーがポリシーを読んで同意した場合に表示されるメッセージ。",
-    "notAgreePolicy": "データ技術サービス利用契約に同意していません",
-    "_notAgreePolicy.comment": "ユーザーがポリシーに同意していない場合に表示されるメッセージ。",
-    "confirmApplying": "サービス申し込みを確認",
-    "_confirmApplying.comment": "ユーザーがサービス申し込みを確認した場合に表示されるメッセージ。",
-    "rotateCredential": "キーをリセット",
-    "_rotateCredential.comment": "ユーザーがキーをリセットした場合に表示されるメッセージ。",
-    "rotateCredentialConfirm": "本当にキーをリセットしますか？リセット後は復元できません",
-    "_rotateCredentialConfirm.comment": "ユーザーがキーのリセットを確認した場合に表示されるメッセージ。",
-    "idDoesNotExist": "アプリケーションが存在しません",
-    "_idDoesNotExist.comment": "アプリケーションが存在しない場合に表示されるメッセージ。",
-    "rotateCredentialSuccessfully": "キーのリセットに成功しました",
-    "_rotateCredentialSuccessfully.comment": "キーのリセットが成功した場合に表示されるメッセージ。",
-    "rotateCredentialFailed": "キーのリセットに失敗しました。処理のために連絡してください",
-    "_rotateCredentialFailed.comment": "キーのリセットが失敗した場合に表示されるメッセージ。",
-    "updateFailed": "変更に失敗しました",
-    "_updateFailed.comment": "変更が失敗した場合に表示されるメッセージ。",
-    "updateSuccessfully": "変更に成功しました",
-    "_updateSuccessfully.comment": "変更が成功した場合に表示されるメッセージ。"
+  "button.buyMore": {
+    "message": "さらに購入",
+    "description": "ボタンのテキスト、このボタンをクリックするとさらに購入ページに移動します。"
   },
-  "title": {
-    "buyService": "サービスを購入",
-    "_buyService.comment": "ユーザーがサービスを購入したいときのページのタイトル。",
-    "applicationRemainingCount": "数を変更",
-    "_applicationRemainingCount.comment": "ユーザーがアプリケーションの数を変更したいときのページのタイトル。",
-    "manageApplication": "アプリケーション管理",
-    "_manageApplication.comment": "ユーザーがアプリケーションを管理したいときのページのタイトル。"
+  "button.createOrder": {
+    "message": "注文を作成",
+    "description": "ボタンのテキスト、このボタンをクリックすると注文作成ページに移動します。"
+  },
+  "button.custom": {
+    "message": "カスタム",
+    "description": "ボタンのテキスト、このボタンをクリックするとカスタムページに移動します。"
+  },
+  "button.query": {
+    "message": "クエリ",
+    "description": "ボタンのテキスト、このボタンをクリックするとクエリページに移動します。"
+  },
+  "button.usage": {
+    "message": "利用履歴",
+    "description": "ボタンのテキスト、このボタンをクリックすると利用履歴ページに移動します。"
+  },
+  "field.id": {
+    "message": "アプリケーションID",
+    "description": "アプリケーションのID。"
+  },
+  "field.remainingAmount": {
+    "message": "残高",
+    "description": "アプリケーションの残高。"
+  },
+  "field.usedAmount": {
+    "message": "使用量",
+    "description": "アプリケーションの使用量。"
+  },
+  "field.apiKey": {
+    "message": "APIキー",
+    "description": "APIキー。"
+  },
+  "field.service": {
+    "message": "サービス",
+    "description": "アプリケーションのサービス。"
+  },
+  "field.operation": {
+    "message": "操作",
+    "description": "アプリケーションの操作。"
+  },
+  "field.amount": {
+    "message": "金額",
+    "description": "アプリケーションの金額。"
+  },
+  "field.traceId": {
+    "message": "トレースID",
+    "description": "APIサービスのアプリケーションの1つのAPI呼び出しのトレースID、翻訳しないでください、'トレースID'のままにしてください。"
+  },
+  "field.shouldPayPrice": {
+    "message": "最終価格",
+    "description": "アプリケーションの最終価格。"
+  },
+  "field.api": {
+    "message": "API",
+    "description": "これはオンラインサービスの一種で、フォームはAPIを介してユーザーにサービスを提供します。"
+  },
+  "field.proxy": {
+    "message": "プロキシ",
+    "description": "これはオンラインサービスの一種で、フォームはHTTPプロキシ（データ転送に使用）を介してユーザーにサービスを提供します。"
+  },
+  "field.credential": {
+    "message": "資格情報",
+    "description": "アプリケーションの資格情報。"
+  },
+  "field.name": {
+    "message": "名前",
+    "description": "アプリケーションの名前。"
+  },
+  "field.package": {
+    "message": "パッケージ",
+    "description": "$100で10000クレジット、$200で20000クレジットなど、異なる価格のパッケージを意味します。"
+  },
+  "field.type": {
+    "message": "タイプ",
+    "description": "アプリケーションのタイプ。"
+  },
+  "field.freeAmount": {
+    "message": "無料残高",
+    "description": "アプリケーションの無料残高。"
+  },
+  "field.extraPrice": {
+    "message": "価格",
+    "description": "アプリケーションのユーザーが支払う追加料金。"
+  },
+  "message.alreadyApplied": {
+    "message": "このサービスには既に申し込み済みです。コンソールを確認してください",
+    "description": "ユーザーが既にこのサービスに申し込んでいる場合に表示されるメッセージ。"
+  },
+  "message.applySuccessfully": {
+    "message": "申し込みが成功しました",
+    "description": "ユーザーがこのサービスに申し込みに成功した場合に表示されるメッセージ。"
+  },
+  "message.notApplied": {
+    "message": "まだこのサービスに申し込んでいません。使用する前にサービスに申し込んでください",
+    "description": "ユーザーがまだこのサービスに申し込んでいない場合に表示されるメッセージ。"
+  },
+  "message.yourApplication": {
+    "message": "あなたの申し込み",
+    "description": "ユーザーの申し込みを示すメッセージ。"
+  },
+  "message.unverified": {
+    "message": "このサービスに申し込む前に実名認証を完了する必要があります",
+    "description": "ユーザーが実名認証を完了していない場合に表示されるメッセージ。"
+  },
+  "message.goVerify": {
+    "message": "実名認証に進む",
+    "description": "ユーザーが実名認証を完了していない場合に表示されるメッセージ。"
+  },
+  "message.requiredParameter": {
+    "message": "必須パラメータ",
+    "description": "ユーザーが必須パラメータを入力していない場合に表示されるメッセージ。"
+  },
+  "message.example": {
+    "message": "例",
+    "description": "ユーザーが必須パラメータを入力していない場合に表示されるメッセージ。"
+  },
+  "message.createCredentialSuccessfully": {
+    "message": "資格情報の作成に成功しました",
+    "description": "ユーザーが資格情報を作成に成功した場合に表示されるメッセージ。"
+  },
+  "message.readPolicy": {
+    "message": "私は読んで同意します",
+    "description": "ユーザーがポリシーを読んで同意した場合に表示されるメッセージ。"
+  },
+  "message.policy": {
+    "message": "データ技術サービス利用契約",
+    "description": "ユーザーがポリシーを読んで同意した場合に表示されるメッセージ。"
+  },
+  "message.notAgreePolicy": {
+    "message": "データ技術サービス利用契約に同意していません",
+    "description": "ユーザーがポリシーに同意していない場合に表示されるメッセージ。"
+  },
+  "message.confirmApplying": {
+    "message": "サービス申し込みを確認",
+    "description": "ユーザーがサービス申し込みを確認した場合に表示されるメッセージ。"
+  },
+  "message.rotateCredential": {
+    "message": "キーをリセット",
+    "description": "ユーザーがキーをリセットした場合に表示されるメッセージ。"
+  },
+  "message.rotateCredentialConfirm": {
+    "message": "本当にキーをリセットしますか？リセット後は復元できません",
+    "description": "ユーザーがキーのリセットを確認した場合に表示されるメッセージ。"
+  },
+  "message.idDoesNotExist": {
+    "message": "アプリケーションが存在しません",
+    "description": "アプリケーションが存在しない場合に表示されるメッセージ。"
+  },
+  "message.rotateCredentialSuccessfully": {
+    "message": "キーのリセットに成功しました",
+    "description": "キーのリセットが成功した場合に表示されるメッセージ。"
+  },
+  "message.rotateCredentialFailed": {
+    "message": "キーのリセットに失敗しました。処理のために連絡してください",
+    "description": "キーのリセットが失敗した場合に表示されるメッセージ。"
+  },
+  "message.updateFailed": {
+    "message": "更新に失敗しました",
+    "description": "更新が失敗した場合に表示されるメッセージ。"
+  },
+  "message.updateSuccessfully": {
+    "message": "更新が成功しました",
+    "description": "更新が成功した場合に表示されるメッセージ。"
+  },
+  "title.buyService": {
+    "message": "サービスを購入",
+    "description": "ユーザーがサービスを購入したい場合のページのタイトル。"
+  },
+  "title.applicationRemainingCount": {
+    "message": "残高を変更",
+    "description": "ユーザーがアプリケーションの残高を変更したい場合のページのタイトル。"
+  },
+  "title.manageApplication": {
+    "message": "アプリケーション管理",
+    "description": "ユーザーがアプリケーションを管理したい場合のページのタイトル。"
   }
 }

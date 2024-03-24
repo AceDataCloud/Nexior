@@ -1,78 +1,142 @@
 {
-  "entity": {
-    "requestQueries": "Parametry zapytania",
-    "_requestQueries.comment": "Parametry zapytania HTTP.",
-    "requestBody": "Treść zapytania",
-    "_requestBody.comment": "Treść zapytania HTTP.",
-    "responseBody": "Treść odpowiedzi",
-    "_responseBody.comment": "Treść odpowiedzi HTTP.",
-    "requestHeaders": "Nagłówki żądania",
-    "_requestHeaders.comment": "Nagłówki żądania HTTP.",
-    "requestHeader": "Nagłówek żądania",
-    "_requestHeader.comment": "Nagłówek żądania HTTP, pojedynczy formularz dla nagłówków żądania.",
-    "responseHeaders": "Nagłówki odpowiedzi",
-    "_responseHeaders.comment": "Nagłówki odpowiedzi HTTP.",
-    "response": "Odpowiedź",
-    "_response.comment": "Odpowiedź HTTP.",
-    "success": "Sukces",
-    "_success.comment": "Pomyślna odpowiedź.",
-    "failure": "Błąd",
-    "_failure.comment": "Nieudana odpowiedź.",
-    "responseExample": "Przykład",
-    "_responseExample.comment": "Przykład odpowiedzi.",
-    "authentication": "Uwierzytelnianie",
-    "_authentication.comment": "Informacje uwierzytelniające.",
-    "arrayOf": "Tablica z",
-    "_arrayOf.comment": "Tablica jednostki.",
-    "apiKey": "Klucz API",
-    "_apiKey.comment": "Klucz API"
+  "entity.requestQueries": {
+    "message": "Parametry zapytania",
+    "description": "Parametry zapytania HTTP."
   },
-  "message": {
-    "free": "Darmowe",
-    "_free.comment": "Oznacza, że cena jest darmowa, nie trzeba wydawać żadnych kredytów ani pieniędzy podczas korzystania z usługi API",
-    "appliedCount": "Liczba zastosowań",
-    "_appliedCount.comment": "Liczba zastosowań usługi API",
-    "firstFree": "Pierwszy raz za darmo",
-    "_firstFree.comment": "Oznacza, że pierwsze użycie usługi API jest darmowe, nie trzeba wydawać żadnych kredytów ani pieniędzy",
-    "custom": "Określona ilość",
-    "_custom.comment": "Oznacza, że cena jest określona, trzeba wydać określoną liczbę kredytów lub pieniędzy podczas korzystania z usługi API",
-    "present": "Prezent",
-    "_present.comment": "Podarujemy Ci kredyty, gdy pierwszy raz skorzystasz z usługi API",
-    "around": "Około",
-    "_around.comment": "Cena jest w przybliżeniu, rzeczywista cena może się różnić",
-    "successRate15min": "Rzeczywisty wskaźnik sukcesu",
-    "_successRate15min.comment": "Rzeczywisty wskaźnik sukcesu usługi API w ciągu ostatnich 15 minut",
-    "ySuccessRate": "Wskaźnik sukcesu (100%)",
-    "_ySuccessRate.comment": "Wskaźnik sukcesu usługi API",
-    "xMinutes": "Czas (minuty)",
-    "_xMinutes.comment": "Czas w minutach",
-    "streamUsage": "Uwaga: Dla żądań strumieniowych powyższy kod może nie być w pełni odpowiedni. Proszę odnieść się do dokumentacji integracyjnej w celu dokonania modyfikacji.",
-    "_streamUsage.comment": "Dla żądań strumieniowych powyższy kod może nie być w pełni odpowiedni. Proszę odnieść się do dokumentacji integracyjnej w celu dokonania modyfikacji.",
-    "alphaStage": "To API jest w fazie Alfa, jest to wczesna wersja podglądowa, może wystąpić potencjalna niestabilność, format API może ulec znaczącym zmianom, nie zaleca się używania go w środowisku produkcyjnym. Obecne ceny są stosunkowo niskie, a w przyszłości mogą wystąpić znaczące zmiany cen.",
-    "_alphaStage.comment": "To API jest w fazie Alfa, jest to wczesna wersja podglądowa, może wystąpić potencjalna niestabilność, format API może ulec znaczącym zmianom, nie zaleca się używania go w środowisku produkcyjnym. Obecne ceny są stosunkowo niskie, a w przyszłości mogą wystąpić znaczące zmiany cen.",
-    "betaStage": "To API jest w fazie Beta, format API nie ulegnie znaczącym zmianom, ale może wystąpić potencjalna niestabilność, proszę używać ostrożnie w środowisku produkcyjnym. Obecne ceny są stosunkowo niskie, a w przyszłości mogą wystąpić umiarkowane zmiany cen.",
-    "_betaStage.comment": "To API jest w fazie Beta, format API nie ulegnie znaczącym zmianom, ale może wystąpić potencjalna niestabilność, proszę używać ostrożnie w środowisku produkcyjnym. Obecne ceny są stosunkowo niskie, a w przyszłości mogą wystąpić umiarkowane zmiany cen."
+  "entity.requestBody": {
+    "message": "Treść zapytania",
+    "description": "Treść zapytania HTTP."
   },
-  "unit": {
-    "credit": "Kredyt",
-    "_credit.comment": "Kredyt oznacza wirtualną walutę używaną w usłudze API",
-    "Credit": "Kredyt",
-    "_Credit.comment": "Kredyt oznacza wirtualną walutę używaną w usłudze API, jest to forma z wielkiej litery",
-    "credits": "Kredyty",
-    "_credits.comment": "Kredyty oznaczają wirtualną walutę używaną w usłudze API, jest to forma liczby mnogiej",
-    "Credits": "Kredyty",
-    "_Credits.comment": "Kredyty oznaczają wirtualną walutę używaną w usłudze API, jest to forma z wielkiej litery i liczby mnogiej",
-    "call": "Wywołanie",
-    "_call.comment": "Wywołanie oznacza liczbę wywołań usługi API",
-    "Call": "Wywołanie",
-    "_Call.comment": "Wywołanie oznacza liczbę wywołań usługi API, jest to forma z wielkiej litery",
-    "calls": "Wywołania",
-    "_calls.comment": "Wywołania oznaczają liczbę wywołań usługi API, jest to forma liczby mnogiej",
-    "Calls": "Wywołania",
-    "_Calls.comment": "Wywołania oznaczają liczbę wywołań usługi API, jest to forma z wielkiej litery i liczby mnogiej",
-    "MB": "MB",
-    "_MB.comment": "MB oznacza megabajt, jednostkę przechowywania informacji cyfrowej",
-    "GB": "GB",
-    "_GB.comment": "GB oznacza gigabajt, jednostkę przechowywania informacji cyfrowej"
+  "entity.responseBody": {
+    "message": "Treść odpowiedzi",
+    "description": "Treść odpowiedzi HTTP."
+  },
+  "entity.requestHeaders": {
+    "message": "Nagłówki żądania",
+    "description": "Nagłówki żądania HTTP."
+  },
+  "entity.requestHeader": {
+    "message": "Nagłówek żądania",
+    "description": "Nagłówek żądania HTTP, pojedynczy formularz dla nagłówków żądania."
+  },
+  "entity.responseHeaders": {
+    "message": "Nagłówki odpowiedzi",
+    "description": "Nagłówki odpowiedzi HTTP."
+  },
+  "entity.response": {
+    "message": "Odpowiedź",
+    "description": "Odpowiedź HTTP."
+  },
+  "entity.success": {
+    "message": "Sukces",
+    "description": "Pomyślna odpowiedź."
+  },
+  "entity.failure": {
+    "message": "Niepowodzenie",
+    "description": "Nieudana odpowiedź."
+  },
+  "entity.responseExample": {
+    "message": "Przykład",
+    "description": "Przykład odpowiedzi."
+  },
+  "entity.authentication": {
+    "message": "Uwierzytelnienie",
+    "description": "Informacje uwierzytelniające."
+  },
+  "entity.arrayOf": {
+    "message": "Tablica",
+    "description": "Tablica encji."
+  },
+  "entity.apiKey": {
+    "message": "Klucz API",
+    "description": "Klucz API."
+  },
+  "message.free": {
+    "message": "Darmowe",
+    "description": "Oznacza, że cena jest darmowa, nie trzeba wydawać żadnych kredytów ani pieniędzy przy korzystaniu z usługi API."
+  },
+  "message.appliedCount": {
+    "message": "Liczba zastosowań",
+    "description": "Liczba zastosowań usługi API."
+  },
+  "message.firstFree": {
+    "message": "Pierwsze darmowe",
+    "description": "Oznacza, że pierwsze użycie usługi API jest darmowe, nie trzeba wydawać żadnych kredytów ani pieniędzy."
+  },
+  "message.custom": {
+    "message": "Określona ilość",
+    "description": "Oznacza, że cena jest określona, trzeba wydać określoną liczbę kredytów lub pieniędzy przy korzystaniu z usługi API."
+  },
+  "message.present": {
+    "message": "Prezent",
+    "description": "Podarujemy Ci kredyty przy pierwszym użyciu usługi API."
+  },
+  "message.around": {
+    "message": "Około",
+    "description": "Cena jest przybliżona, rzeczywista cena może się różnić."
+  },
+  "message.successRate15min": {
+    "message": "Rzeczywisty wskaźnik sukcesu",
+    "description": "Rzeczywisty wskaźnik sukcesu usługi API w ciągu ostatnich 15 minut."
+  },
+  "message.ySuccessRate": {
+    "message": "Wskaźnik sukcesu (100%)",
+    "description": "Wskaźnik sukcesu usługi API."
+  },
+  "message.xMinutes": {
+    "message": "Czas (minuty)",
+    "description": "Czas w minutach."
+  },
+  "message.streamUsage": {
+    "message": "Przypomnienie: Dla żądań strumieniowych powyższy kod może nie być w pełni odpowiedni. Proszę odnieść się do dokumentacji integracyjnej w celu dokonania modyfikacji.",
+    "description": "Dla żądań strumieniowych powyższy kod może nie być w pełni odpowiedni. Proszę odnieść się do dokumentacji integracyjnej w celu dokonania modyfikacji."
+  },
+  "message.alphaStage": {
+    "message": "Ta usługa API jest w fazie Alfa, jest to wczesna wersja podglądowa, może wystąpić potencjalna niestabilność, format API może ulec znaczącym zmianom, nie zaleca się korzystania w środowisku produkcyjnym. Obecne ceny są stosunkowo niskie, a w przyszłości mogą nastąpić znaczące zmiany cen.",
+    "description": "Ta usługa API jest w fazie Alfa, jest to wczesna wersja podglądowa, może wystąpić potencjalna niestabilność, format API może ulec znaczącym zmianom, nie zaleca się korzystania w środowisku produkcyjnym. Obecne ceny są stosunkowo niskie, a w przyszłości mogą nastąpić znaczące zmiany cen."
+  },
+  "message.betaStage": {
+    "message": "Ta usługa API jest w fazie Beta, format API nie ulegnie znaczącym zmianom, ale może wystąpić potencjalna niestabilność, prosimy o ostrożne korzystanie w środowisku produkcyjnym. Obecne ceny są stosunkowo niskie, a w przyszłości mogą nastąpić umiarkowane zmiany cen.",
+    "description": "Ta usługa API jest w fazie Beta, format API nie ulegnie znaczącym zmianom, ale może wystąpić potencjalna niestabilność, prosimy o ostrożne korzystanie w środowisku produkcyjnym. Obecne ceny są stosunkowo niskie, a w przyszłości mogą nastąpić umiarkowane zmiany cen."
+  },
+  "unit.credit": {
+    "message": "Kredyt",
+    "description": "Kredyt oznacza wirtualną walutę używaną w usłudze API."
+  },
+  "unit.Credit": {
+    "message": "Kredyt",
+    "description": "Kredyt oznacza wirtualną walutę używaną w usłudze API, jest to forma z wielkiej litery."
+  },
+  "unit.credits": {
+    "message": "Kredyty",
+    "description": "Kredyty oznaczają wirtualną walutę używaną w usłudze API, jest to forma liczby mnogiej."
+  },
+  "unit.Credits": {
+    "message": "Kredyty",
+    "description": "Kredyty oznaczają wirtualną walutę używaną w usłudze API, jest to forma z wielkiej litery i liczby mnogiej."
+  },
+  "unit.call": {
+    "message": "Wywołanie",
+    "description": "Wywołanie oznacza liczbę wywołań usługi API."
+  },
+  "unit.Call": {
+    "message": "Wywołanie",
+    "description": "Wywołanie oznacza liczbę wywołań usługi API, jest to forma z wielkiej litery."
+  },
+  "unit.calls": {
+    "message": "Wywołania",
+    "description": "Wywołania oznaczają liczbę wywołań usługi API, jest to forma liczby mnogiej."
+  },
+  "unit.Calls": {
+    "message": "Wywołania",
+    "description": "Wywołania oznaczają liczbę wywołań usługi API, jest to forma z wielkiej litery i liczby mnogiej."
+  },
+  "unit.MB": {
+    "message": "MB",
+    "description": "MB oznacza megabajt, jednostkę cyfrowego przechowywania informacji."
+  },
+  "unit.GB": {
+    "message": "GB",
+    "description": "GB oznacza gigabajt, jednostkę cyfrowego przechowywania informacji."
   }
 }

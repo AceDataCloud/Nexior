@@ -1,108 +1,198 @@
 {
-  "button": {
-    "uploadDocuments": "Upload Documents",
-    "_uploadDocuments.comment": "Text in button, which allows user to upload documents"
+  "button.uploadDocuments": {
+    "message": "Upload Documents",
+    "description": "Text in button, which allows user to upload documents"
   },
-  "field": {
-    "fileName": "File Name",
-    "_fileName.comment": "File name for uploaded document",
-    "createdAt": "Creation Time",
-    "_createdAt": "Time when document was uploaded",
-    "fileExtension": "File Type",
-    "_fileExtension.comment": "File type for uploaded document",
-    "fileUrl": "File Link",
-    "_fileUrl.comment": "Link to uploaded document",
-    "fileSize": "File Size",
-    "_fileSize.comment": "Size of uploaded document",
-    "state": "Status",
-    "_state.comment": "Status of document processing",
-    "stateProcessing": "Learning",
-    "_stateProcessing.comment": "Document is being processed",
-    "stateCompleted": "Learning Completed",
-    "_stateCompleted.comment": "Document was processed successfully",
-    "stateFailed": "Learning Failed",
-    "_stateFailed.comment": "Document processing failed",
-    "name": "Name",
-    "_name.comment": "Name of document",
-    "description": "Description",
-    "_description.comment": "Description of document"
+  "field.fileName": {
+    "message": "File Name",
+    "description": "File name for uploaded document"
   },
-  "message": {
-    "introductionForKnowledge": "Documents can be added to the knowledge base, and when the robot responds, it can use the knowledge in the repository to reply.",
-    "_introductionForKnowledge.comment": "Introduction message for knowledge base",
-    "introductionForRepository": "The knowledge base is a collection of documents where you can add documents. When the robot answers, it will respond from the documents in the knowledge base.",
-    "_introductionForRepository.comment": "Introduction message for knowledge base",
-    "uploadDocumentsExceed": "Uploaded document quantity exceeds limit",
-    "_uploadDocumentsExceed.comment": "Error message when uploaded document quantity exceeds limit",
-    "uploadDocumentsError": "Failed to upload document",
-    "_uploadDocumentsError.comment": "Error message when failed to upload document",
-    "uploadDocumentsSuccess": "Document upload successful",
-    "_uploadDocumentsSuccess.comment": "Success message when document upload is successful",
-    "createDocumentSuccess": "Document creation successful",
-    "_createDocumentSuccess.comment": "Success message when document creation is successful",
-    "startCreateDocument": "Start learning document...",
-    "_startCreateDocument.comment": "Message when starting to learn document",
-    "createDocumentError": "Failed to learn document",
-    "_createDocumentError.comment": "Error message when failed to learn document",
-    "dragOrClickToUpload": "Drag or click to upload document",
-    "_dragOrClickToUpload.comment": "Message to drag or click to upload document",
-    "learningDocument": "Learning, please wait...",
-    "_learningDocument.comment": "Message when learning document",
-    "startNewChat": "Start new chat",
-    "_startNewChat.comment": "Message to start new chat",
-    "errorApiError": "Failed to respond, please try again later",
-    "_errorApiError.comment": "Error message when failed to respond",
-    "errorBadRequest": "Request content is not formatted correctly, please ask again",
-    "_errorBadRequest.comment": "Error message when request content is not formatted correctly",
-    "errorNoConversation": "Conversation content does not exist or has expired, please start a new conversation",
-    "_errorNoConversation.comment": "Error message when conversation content does not exist or has expired",
-    "errorContentTooLarge": "Question content is too long, please shorten and try again",
-    "_errorContentTooLarge.comment": "Error message when question content is too long",
-    "errorTooManyRequests": "Your operation is too frequent, please try again later",
-    "_errorTooManyRequests.comment": "Error message when operation is too frequent",
-    "errorUsedUp": "Your package usage limit has been reached, please purchase more usage to continue",
-    "_errorUsedUp.comment": "Error message when package usage limit has been reached",
-    "errorUnknown": "An unknown server error occurred, please try again later or contact customer service",
-    "_errorUnknown.comment": "Error message when unknown server error occurred",
-    "errorTimeout": "Answering question timed out, please try again later",
-    "_errorTimeout.comment": "Error message when answering question timed out",
-    "errorNotApplied": "You have not applied for this service yet, please apply before continuing to ask",
-    "_errorNotApplied.comment": "Error message when user has not applied for this service yet",
-    "confirmDelete": "Confirm deletion",
-    "_confirmDelete.comment": "Message to confirm deletion",
-    "howToUse": "Press Shift+Enter to line break",
-    "_howToUse.comment": "Message to show how to line break",
-    "createRepositorySuccess": "Knowledge base created successfully",
-    "_createRepositorySuccess.comment": "Success message when knowledge base is created successfully",
-    "createRepositoryFailed": "Failed to create knowledge base",
-    "_createRepositoryFailed.comment": "Error message when failed to create knowledge base",
-    "deleteRepositorySuccess": "Knowledge base deleted successfully",
-    "_deleteRepositorySuccess.comment": "Success message when knowledge base is deleted successfully",
-    "deleteDocumentSuccess": "Document deleted successfully",
-    "_deleteDocumentSuccess.comment": "Success message when document is deleted successfully",
-    "currentRepository": "Current knowledge base",
-    "_currentRepository.comment": "Message to show current knowledge base",
-    "nameRequired": "Name cannot be empty",
-    "_nameRequired.comment": "Error message when name is empty",
-    "inputRepositoryName": "Knowledge base name",
-    "_inputRepositoryName.comment": "Input placeholder for knowledge base name",
-    "inputRepositoryDescription": "Describe your knowledge base in one sentence",
-    "_inputRepositoryDescription.comment": "Input placeholder for knowledge base description"
+  "field.createdAt": {
+    "message": "Creation Time",
+    "description": "Time when document was uploaded"
   },
-  "nav": {
-    "chat": "Chat",
-    "_chat.comment": "Navigation item for chat",
-    "setting": "Setting",
-    "_setting.comment": "Navigation item for setting",
-    "manage": "Manage",
-    "_manage.comment": "Navigation item for manage"
+  "field.fileExtension": {
+    "message": "File Type",
+    "description": "File type for uploaded document"
   },
-  "title": {
-    "manage": "Manage Repositories",
-    "_manage.comment": "Title for manage knowledge base",
-    "createRepository": "Create Repository",
-    "_createRepository.comment": "Title for create knowledge base",
-    "repositories": "Repositories List",
-    "_repositories.comment": "Title for knowledge base list"
+  "field.fileUrl": {
+    "message": "File Link",
+    "description": "Link to uploaded document"
+  },
+  "field.fileSize": {
+    "message": "File Size",
+    "description": "Size of uploaded document"
+  },
+  "field.state": {
+    "message": "Status",
+    "description": "Status of document processing"
+  },
+  "field.stateProcessing": {
+    "message": "Learning",
+    "description": "Document is being processed"
+  },
+  "field.stateCompleted": {
+    "message": "Learning Completed",
+    "description": "Document was processed successfully"
+  },
+  "field.stateFailed": {
+    "message": "Learning Failed",
+    "description": "Document processing failed"
+  },
+  "field.name": {
+    "message": "Name",
+    "description": "Name of document"
+  },
+  "field.description": {
+    "message": "Description",
+    "description": "Description of document"
+  },
+  "message.introductionForKnowledge": {
+    "message": "Documents can be added to the knowledge base, and when the robot responds, it can use the knowledge in the repository to reply.",
+    "description": "Introduction message for knowledge base"
+  },
+  "message.introductionForRepository": {
+    "message": "The knowledge base is a collection of documents where you can add documents. When the robot answers, it will respond from the documents in the knowledge base.",
+    "description": "Introduction message for knowledge base"
+  },
+  "message.uploadDocumentsExceed": {
+    "message": "Uploaded document quantity exceeds limit",
+    "description": "Error message when uploaded document quantity exceeds limit"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Failed to upload document",
+    "description": "Error message when failed to upload document"
+  },
+  "message.uploadDocumentsSuccess": {
+    "message": "Document upload successful",
+    "description": "Success message when document upload is successful"
+  },
+  "message.createDocumentSuccess": {
+    "message": "Document creation successful",
+    "description": "Success message when document creation is successful"
+  },
+  "message.startCreateDocument": {
+    "message": "Start learning document...",
+    "description": "Message when starting to learn document"
+  },
+  "message.createDocumentError": {
+    "message": "Failed to learn document",
+    "description": "Error message when failed to learn document"
+  },
+  "message.dragOrClickToUpload": {
+    "message": "Drag or click to upload document",
+    "description": "Message to drag or click to upload document"
+  },
+  "message.learningDocument": {
+    "message": "Learning, please wait...",
+    "description": "Message when learning document"
+  },
+  "message.startNewChat": {
+    "message": "Start new chat",
+    "description": "Message to start new chat"
+  },
+  "message.errorApiError": {
+    "message": "Failed to respond, please try again later",
+    "description": "Error message when failed to respond"
+  },
+  "message.errorBadRequest": {
+    "message": "Request content is not formatted correctly, please ask again",
+    "description": "Error message when request content is not formatted correctly"
+  },
+  "message.errorNoConversation": {
+    "message": "Conversation content does not exist or has expired, please start a new conversation",
+    "description": "Error message when conversation content does not exist or has expired"
+  },
+  "message.errorContentTooLarge": {
+    "message": "Question content is too long, please shorten and try again",
+    "description": "Error message when question content is too long"
+  },
+  "message.errorTooManyRequests": {
+    "message": "Your operation is too frequent, please try again later",
+    "description": "Error message when operation is too frequent"
+  },
+  "message.errorUsedUp": {
+    "message": "Your package usage limit has been reached, please purchase more usage to continue",
+    "description": "Error message when package usage limit has been reached"
+  },
+  "message.errorUnknown": {
+    "message": "An unknown server error occurred, please try again later or contact customer service",
+    "description": "Error message when unknown server error occurred"
+  },
+  "message.errorTimeout": {
+    "message": "Answering question timed out, please try again later",
+    "description": "Error message when answering question timed out"
+  },
+  "message.errorNotApplied": {
+    "message": "You have not applied for this service yet, please apply before continuing to ask",
+    "description": "Error message when user has not applied for this service yet"
+  },
+  "message.confirmDelete": {
+    "message": "Confirm deletion",
+    "description": "Message to confirm deletion"
+  },
+  "message.howToUse": {
+    "message": "Press Shift+Enter to line break",
+    "description": "Message to show how to line break"
+  },
+  "message.createRepositorySuccess": {
+    "message": "Knowledge base created successfully",
+    "description": "Success message when knowledge base is created successfully"
+  },
+  "message.createRepositoryFailed": {
+    "message": "Failed to create knowledge base",
+    "description": "Error message when failed to create knowledge base"
+  },
+  "message.deleteRepositorySuccess": {
+    "message": "Knowledge base deleted successfully",
+    "description": "Success message when knowledge base is deleted successfully"
+  },
+  "message.deleteDocumentSuccess": {
+    "message": "Document deleted successfully",
+    "description": "Success message when document is deleted successfully"
+  },
+  "message.currentRepository": {
+    "message": "Current knowledge base",
+    "description": "Message to show current knowledge base"
+  },
+  "message.nameRequired": {
+    "message": "Name cannot be empty",
+    "description": "Error message when name is empty"
+  },
+  "message.inputRepositoryName": {
+    "message": "Knowledge base name",
+    "description": "Input placeholder for knowledge base name"
+  },
+  "message.inputRepositoryDescription": {
+    "message": "Describe your knowledge base in one sentence",
+    "description": "Input placeholder for knowledge base description"
+  },
+  "message.supportedFiles": {
+    "message": "Supported file types: .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
+    "description": "Message to show supported file types"
+  },
+  "nav.chat": {
+    "message": "Chat",
+    "description": "Navigation item for chat"
+  },
+  "nav.setting": {
+    "message": "Setting",
+    "description": "Navigation item for setting"
+  },
+  "nav.manage": {
+    "message": "Manage",
+    "description": "Navigation item for manage"
+  },
+  "title.manage": {
+    "message": "Manage Repositories",
+    "description": "Title for manage knowledge base"
+  },
+  "title.createRepository": {
+    "message": "Create Repository",
+    "description": "Title for create knowledge base"
+  },
+  "title.repositories": {
+    "message": "Repositories List",
+    "description": "Title for knowledge base list"
   }
 }

@@ -1,78 +1,142 @@
 {
-  "entity": {
-    "requestQueries": "リクエストクエリ",
-    "_requestQueries.comment": "HTTPリクエストクエリパラメータ。",
-    "requestBody": "リクエストボディ",
-    "_requestBody.comment": "HTTPリクエストボディ。",
-    "responseBody": "レスポンスボディ",
-    "_responseBody.comment": "HTTPレスポンスボディ。",
-    "requestHeaders": "リクエストヘッダ",
-    "_requestHeaders.comment": "HTTPリクエストヘッダ。",
-    "requestHeader": "リクエストヘッダ",
-    "_requestHeader.comment": "HTTPリクエストヘッダ、リクエストヘッダの単一形式。",
-    "responseHeaders": "レスポンスヘッダ",
-    "_responseHeaders.comment": "HTTPレスポンスヘッダ。",
-    "response": "レスポンス",
-    "_response.comment": "HTTPレスポンス。",
-    "success": "成功",
-    "_success.comment": "成功したレスポンス。",
-    "failure": "失敗",
-    "_failure.comment": "失敗したレスポンス。",
-    "responseExample": "例",
-    "_responseExample.comment": "レスポンスの例。",
-    "authentication": "認証",
-    "_authentication.comment": "認証情報。",
-    "arrayOf": "配列の",
-    "_arrayOf.comment": "エンティティの配列。",
-    "apiKey": "APIキー",
-    "_apiKey.comment": "APIキー"
+  "entity.requestQueries": {
+    "message": "リクエストクエリ",
+    "description": "HTTPリクエストクエリパラメータ。"
   },
-  "message": {
-    "free": "無料",
-    "_free.comment": "価格が無料で、APIサービスを利用する際にクレジットやお金を支払う必要がないことを意味します",
-    "appliedCount": "申請回数",
-    "_appliedCount.comment": "適用されたAPIサービスの回数",
-    "firstFree": "初回無料",
-    "_firstFree.comment": "APIサービスの初回が無料で、クレジットやお金を支払う必要がないことを意味します",
-    "custom": "指定された金額",
-    "_custom.comment": "価格が指定されており、APIサービスを利用する際に指定されたクレジットやお金を支払う必要があることを意味します",
-    "present": "プレゼント",
-    "_present.comment": "APIサービスを初めて利用する際にクレジットをプレゼントします",
-    "around": "約",
-    "_around.comment": "価格は約であり、実際の価格は異なる場合があります",
-    "successRate15min": "リアルタイム成功率",
-    "_successRate15min.comment": "過去15分間のAPIサービスのリアルタイム成功率",
-    "ySuccessRate": "成功率（100%）",
-    "_ySuccessRate.comment": "APIサービスの成功率",
-    "xMinutes": "時間（分）",
-    "_xMinutes.comment": "分単位の時間",
-    "streamUsage": "注意：ストリーミングリクエストの場合、上記のコードは完全に適用されない場合があります。変更についてはドッキング文書を参照してください。",
-    "_streamUsage.comment": "ストリーミングリクエストの場合、上記のコードは完全に適用されない場合があります。変更についてはドッキング文書を参照してください。",
-    "alphaStage": "このAPIはアルファステージです。これは初期のプレビューバージョンであり、潜在的な不安定性があり、APIフォーマットが大幅に変更される可能性があります。本番環境での使用は推奨されません。現在の価格は比較的低く、将来的に価格が大幅に調整される可能性があります。",
-    "_alphaStage.comment": "このAPIはアルファステージです。これは初期のプレビューバージョンであり、潜在的な不安定性があり、APIフォーマットが大幅に変更される可能性があります。本番環境での使用は推奨されません。現在の価格は比較的低く、将来的に価格が大幅に調整される可能性があります。",
-    "betaStage": "このAPIはベータステージです。APIフォーマットはあまり変更されませんが、潜在的な不安定性があり、本番環境で注意して使用してください。現在の価格は比較的低く、将来的に価格が適度に調整される可能性があります。",
-    "_betaStage.comment": "このAPIはベータステージです。APIフォーマットはあまり変更されませんが、潜在的な不安定性があり、本番環境で注意して使用してください。現在の価格は比較的低く、将来的に価格が適度に調整される可能性があります。"
+  "entity.requestBody": {
+    "message": "リクエストボディ",
+    "description": "HTTPリクエストボディ。"
   },
-  "unit": {
-    "credit": "クレジット",
-    "_credit.comment": "APIサービスで使用される仮想通貨",
-    "Credit": "クレジット",
-    "_Credit.comment": "APIサービスで使用される仮想通貨の大文字形式",
-    "credits": "クレジット",
-    "_credits.comment": "APIサービスで使用される仮想通貨の複数形",
-    "Credits": "クレジット",
-    "_Credits.comment": "APIサービスで使用される仮想通貨の大文字形式および複数形",
-    "call": "コール",
-    "_call.comment": "呼び出されたAPIサービスの回数",
-    "Call": "コール",
-    "_Call.comment": "呼び出されたAPIサービスの回数の大文字形式",
-    "calls": "コール",
-    "_calls.comment": "呼び出されたAPIサービスの回数の複数形",
-    "Calls": "コール",
-    "_Calls.comment": "呼び出されたAPIサービスの回数の大文字形式および複数形",
-    "MB": "MB",
-    "_MB.comment": "メガバイト、デジタル情報の記憶単位",
-    "GB": "GB",
-    "_GB.comment": "ギガバイト、デジタル情報の記憶単位"
+  "entity.responseBody": {
+    "message": "レスポンスボディ",
+    "description": "HTTPレスポンスボディ。"
+  },
+  "entity.requestHeaders": {
+    "message": "リクエストヘッダ",
+    "description": "HTTPリクエストヘッダ。"
+  },
+  "entity.requestHeader": {
+    "message": "リクエストヘッダ",
+    "description": "HTTPリクエストヘッダ、リクエストヘッダの単一形式。"
+  },
+  "entity.responseHeaders": {
+    "message": "レスポンスヘッダ",
+    "description": "HTTPレスポンスヘッダ。"
+  },
+  "entity.response": {
+    "message": "レスポンス",
+    "description": "HTTPレスポンス。"
+  },
+  "entity.success": {
+    "message": "成功",
+    "description": "成功したレスポンス。"
+  },
+  "entity.failure": {
+    "message": "失敗",
+    "description": "失敗したレスポンス。"
+  },
+  "entity.responseExample": {
+    "message": "例",
+    "description": "レスポンスの例。"
+  },
+  "entity.authentication": {
+    "message": "認証",
+    "description": "認証情報。"
+  },
+  "entity.arrayOf": {
+    "message": "配列",
+    "description": "エンティティの配列。"
+  },
+  "entity.apiKey": {
+    "message": "APIキー",
+    "description": "APIキー。"
+  },
+  "message.free": {
+    "message": "無料",
+    "description": "価格が無料であり、APIサービスの利用にクレジットやお金を支払う必要がないことを意味します。"
+  },
+  "message.appliedCount": {
+    "message": "申請回数",
+    "description": "適用されたAPIサービスの回数。"
+  },
+  "message.firstFree": {
+    "message": "初回無料",
+    "description": "初回のAPIサービスが無料であり、クレジットやお金を支払う必要がないことを意味します。"
+  },
+  "message.custom": {
+    "message": "指定された金額",
+    "description": "価格が指定されており、APIサービスの利用に指定されたクレジットやお金を支払う必要があることを意味します。"
+  },
+  "message.present": {
+    "message": "プレゼント",
+    "description": "APIサービスを初めて利用する際にクレジットをプレゼントします。"
+  },
+  "message.around": {
+    "message": "おおよそ",
+    "description": "価格はおおよそであり、実際の価格は異なる場合があります。"
+  },
+  "message.successRate15min": {
+    "message": "リアルタイム成功率",
+    "description": "過去15分間のAPIサービスのリアルタイム成功率。"
+  },
+  "message.ySuccessRate": {
+    "message": "成功率（100%）",
+    "description": "APIサービスの成功率。"
+  },
+  "message.xMinutes": {
+    "message": "時間（分）",
+    "description": "分単位の時間。"
+  },
+  "message.streamUsage": {
+    "message": "注意：ストリーミングリクエストの場合、上記のコードは完全に適用されない場合があります。修正についてはドッキングドキュメントを参照してください。",
+    "description": "ストリーミングリクエストの場合、上記のコードは完全に適用されない場合があります。修正についてはドッキングドキュメントを参照してください。"
+  },
+  "message.alphaStage": {
+    "message": "このAPIはアルファステージです。これは初期のプレビューバージョンであり、潜在的な不安定性があり、APIフォーマットが大幅に変更される可能性があります。本番環境での使用は推奨されません。現在の価格は比較的低く、将来的に価格が大幅に調整される可能性があります。",
+    "description": "このAPIはアルファステージです。これは初期のプレビューバージョンであり、潜在的な不安定性があり、APIフォーマットが大幅に変更される可能性があります。本番環境での使用は推奨されません。現在の価格は比較的低く、将来的に価格が大幅に調整される可能性があります。"
+  },
+  "message.betaStage": {
+    "message": "このAPIはベータステージです。APIフォーマットはあまり変更されませんが、潜在的な不安定性があります。本番環境で慎重に使用してください。現在の価格は比較的低く、将来的に価格が適度に調整される可能性があります。",
+    "description": "このAPIはベータステージです。APIフォーマットはあまり変更されませんが、潜在的な不安定性があります。本番環境で慎重に使用してください。現在の価格は比較的低く、将来的に価格が適度に調整される可能性があります。"
+  },
+  "unit.credit": {
+    "message": "クレジット",
+    "description": "APIサービスで使用される仮想通貨。"
+  },
+  "unit.Credit": {
+    "message": "クレジット",
+    "description": "APIサービスで使用される仮想通貨。これは大文字形式です。"
+  },
+  "unit.credits": {
+    "message": "クレジット",
+    "description": "APIサービスで使用される仮想通貨。これは複数形式です。"
+  },
+  "unit.Credits": {
+    "message": "クレジット",
+    "description": "APIサービスで使用される仮想通貨。これは大文字形式および複数形式です。"
+  },
+  "unit.call": {
+    "message": "コール",
+    "description": "呼び出されたAPIサービスの回数。"
+  },
+  "unit.Call": {
+    "message": "コール",
+    "description": "呼び出されたAPIサービスの回数。これは大文字形式です。"
+  },
+  "unit.calls": {
+    "message": "コール",
+    "description": "呼び出されたAPIサービスの回数。これは複数形式です。"
+  },
+  "unit.Calls": {
+    "message": "コール",
+    "description": "呼び出されたAPIサービスの回数。これは大文字形式および複数形式です。"
+  },
+  "unit.MB": {
+    "message": "MB",
+    "description": "メガバイト、デジタル情報の記憶単位。"
+  },
+  "unit.GB": {
+    "message": "GB",
+    "description": "ギガバイト、デジタル情報の記憶単位。"
   }
 }

@@ -1,108 +1,194 @@
 {
-  "button": {
-    "uploadDocuments": "Загрузить документы",
-    "_uploadDocuments.comment": "Текст на кнопке, который позволяет пользователю загружать документы"
+  "button.uploadDocuments": {
+    "message": "Загрузить документы",
+    "description": "Текст на кнопке, который позволяет пользователю загрузить документы"
   },
-  "field": {
-    "fileName": "Имя файла",
-    "_fileName.comment": "Имя файла загруженного документа",
-    "createdAt": "Время создания",
-    "_createdAt": "Время загрузки документа",
-    "fileExtension": "Тип файла",
-    "_fileExtension.comment": "Тип файла загруженного документа",
-    "fileUrl": "Ссылка на файл",
-    "_fileUrl.comment": "Ссылка на загруженный документ",
-    "fileSize": "Размер файла",
-    "_fileSize.comment": "Размер загруженного документа",
-    "state": "Статус",
-    "_state.comment": "Статус обработки документа",
-    "stateProcessing": "Обучение",
-    "_stateProcessing.comment": "Документ обрабатывается",
-    "stateCompleted": "Обучение завершено",
-    "_stateCompleted.comment": "Документ успешно обработан",
-    "stateFailed": "Обучение не удалось",
-    "_stateFailed.comment": "Сбой обработки документа",
-    "name": "Имя",
-    "_name.comment": "Имя документа",
-    "description": "Описание",
-    "_description.comment": "Описание документа"
+  "field.fileName": {
+    "message": "Имя файла",
+    "description": "Имя файла для загруженного документа"
   },
-  "message": {
-    "introductionForKnowledge": "Документы могут быть добавлены в базу знаний, и когда робот отвечает, он может использовать знания в репозитории для ответа.",
-    "_introductionForKnowledge.comment": "Вводное сообщение для базы знаний",
-    "introductionForRepository": "База знаний - это коллекция документов, в которую можно добавлять документы. Когда робот отвечает, он будет отвечать из документов в базе знаний.",
-    "_introductionForRepository.comment": "Вводное сообщение для базы знаний",
-    "uploadDocumentsExceed": "Количество загруженных документов превышает лимит",
-    "_uploadDocumentsExceed.comment": "Сообщение об ошибке, когда количество загруженных документов превышает лимит",
-    "uploadDocumentsError": "Не удалось загрузить документ",
-    "_uploadDocumentsError.comment": "Сообщение об ошибке, когда не удалось загрузить документ",
-    "uploadDocumentsSuccess": "Документ успешно загружен",
-    "_uploadDocumentsSuccess.comment": "Сообщение об успешной загрузке документа",
-    "createDocumentSuccess": "Документ успешно создан",
-    "_createDocumentSuccess.comment": "Сообщение об успешном создании документа",
-    "startCreateDocument": "Начать обучение документа...",
-    "_startCreateDocument.comment": "Сообщение о начале обучения документа",
-    "createDocumentError": "Не удалось обучить документ",
-    "_createDocumentError.comment": "Сообщение об ошибке, когда не удалось обучить документ",
-    "dragOrClickToUpload": "Перетащите или нажмите, чтобы загрузить документ",
-    "_dragOrClickToUpload.comment": "Сообщение о перетаскивании или нажатии для загрузки документа",
-    "learningDocument": "Обучение, пожалуйста, подождите...",
-    "_learningDocument.comment": "Сообщение при обучении документа",
-    "startNewChat": "Начать новый чат",
-    "_startNewChat.comment": "Сообщение о начале нового чата",
-    "errorApiError": "Не удалось ответить, пожалуйста, попробуйте позже",
-    "_errorApiError.comment": "Сообщение об ошибке, когда не удалось ответить",
-    "errorBadRequest": "Содержание запроса неверно отформатировано, пожалуйста, задайте вопрос снова",
-    "_errorBadRequest.comment": "Сообщение об ошибке, когда содержание запроса неверно отформатировано",
-    "errorNoConversation": "Содержание разговора не существует или истекло, пожалуйста, начните новый разговор",
-    "_errorNoConversation.comment": "Сообщение об ошибке, когда содержание разговора не существует или истекло",
-    "errorContentTooLarge": "Содержание вопроса слишком длинное, пожалуйста, сократите и попробуйте снова",
-    "_errorContentTooLarge.comment": "Сообщение об ошибке, когда содержание вопроса слишком длинное",
-    "errorTooManyRequests": "Ваша операция слишком частая, пожалуйста, попробуйте позже",
-    "_errorTooManyRequests.comment": "Сообщение об ошибке, когда операция слишком частая",
-    "errorUsedUp": "Лимит использования вашего пакета исчерпан, пожалуйста, приобретите больше использования для продолжения",
-    "_errorUsedUp.comment": "Сообщение об ошибке, когда лимит использования пакета исчерпан",
-    "errorUnknown": "Произошла неизвестная ошибка сервера, пожалуйста, попробуйте позже или свяжитесь с службой поддержки",
-    "_errorUnknown.comment": "Сообщение об ошибке, когда произошла неизвестная ошибка сервера",
-    "errorTimeout": "Время ответа на вопрос истекло, пожалуйста, попробуйте позже",
-    "_errorTimeout.comment": "Сообщение об ошибке, когда время ответа на вопрос истекло",
-    "errorNotApplied": "Вы еще не подали заявку на эту услугу, пожалуйста, подайте заявку перед продолжением вопросов",
-    "_errorNotApplied.comment": "Сообщение об ошибке, когда пользователь еще не подал заявку на эту услугу",
-    "confirmDelete": "Подтвердить удаление",
-    "_confirmDelete.comment": "Сообщение для подтверждения удаления",
-    "howToUse": "Нажмите Shift+Enter для переноса строки",
-    "_howToUse.comment": "Сообщение о том, как сделать перенос строки",
-    "createRepositorySuccess": "База знаний успешно создана",
-    "_createRepositorySuccess.comment": "Сообщение об успешном создании базы знаний",
-    "createRepositoryFailed": "Не удалось создать базу знаний",
-    "_createRepositoryFailed.comment": "Сообщение об ошибке, когда не удалось создать базу знаний",
-    "deleteRepositorySuccess": "База знаний успешно удалена",
-    "_deleteRepositorySuccess.comment": "Сообщение об успешном удалении базы знаний",
-    "deleteDocumentSuccess": "Документ успешно удален",
-    "_deleteDocumentSuccess.comment": "Сообщение об успешном удалении документа",
-    "currentRepository": "Текущая база знаний",
-    "_currentRepository.comment": "Сообщение для отображения текущей базы знаний",
-    "nameRequired": "Имя не может быть пустым",
-    "_nameRequired.comment": "Сообщение об ошибке, когда имя пустое",
-    "inputRepositoryName": "Имя базы знаний",
-    "_inputRepositoryName.comment": "Плейсхолдер для имени базы знаний",
-    "inputRepositoryDescription": "Опишите вашу базу знаний одним предложением",
-    "_inputRepositoryDescription.comment": "Плейсхолдер для описания базы знаний"
+  "field.createdAt": {
+    "message": "Время создания",
+    "description": "Время загрузки документа"
   },
-  "nav": {
-    "chat": "Чат",
-    "_chat.comment": "Элемент навигации для чата",
-    "setting": "Настройки",
-    "_setting.comment": "Элемент навигации для настроек",
-    "manage": "Управление",
-    "_manage.comment": "Элемент навигации для управления"
+  "field.fileExtension": {
+    "message": "Тип файла",
+    "description": "Тип файла для загруженного документа"
   },
-  "title": {
-    "manage": "Управление базами знаний",
-    "_manage.comment": "Заголовок для управления базой знаний",
-    "createRepository": "Создать базу знаний",
-    "_createRepository.comment": "Заголовок для создания базы знаний",
-    "repositories": "Список баз знаний",
-    "_repositories.comment": "Заголовок для списка баз знаний"
+  "field.fileUrl": {
+    "message": "Ссылка на файл",
+    "description": "Ссылка на загруженный документ"
+  },
+  "field.fileSize": {
+    "message": "Размер файла",
+    "description": "Размер загруженного документа"
+  },
+  "field.state": {
+    "message": "Статус",
+    "description": "Статус обработки документа"
+  },
+  "field.stateProcessing": {
+    "message": "Обучение",
+    "description": "Документ обрабатывается"
+  },
+  "field.stateCompleted": {
+    "message": "Обучение завершено",
+    "description": "Документ успешно обработан"
+  },
+  "field.stateFailed": {
+    "message": "Обучение не удалось",
+    "description": "Сбой обработки документа"
+  },
+  "field.name": {
+    "message": "Имя",
+    "description": "Имя документа"
+  },
+  "field.description": {
+    "message": "Описание",
+    "description": "Описание документа"
+  },
+  "message.introductionForKnowledge": {
+    "message": "Документы могут быть добавлены в базу знаний, и когда робот отвечает, он может использовать знания в репозитории для ответа.",
+    "description": "Вводное сообщение для базы знаний"
+  },
+  "message.introductionForRepository": {
+    "message": "База знаний - это коллекция документов, в которую вы можете добавлять документы. Когда робот отвечает, он будет отвечать из документов в базе знаний.",
+    "description": "Вводное сообщение для базы знаний"
+  },
+  "message.uploadDocumentsExceed": {
+    "message": "Количество загруженных документов превышает лимит",
+    "description": "Сообщение об ошибке, когда количество загруженных документов превышает лимит"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Не удалось загрузить документ",
+    "description": "Сообщение об ошибке, когда не удалось загрузить документ"
+  },
+  "message.uploadDocumentsSuccess": {
+    "message": "Успешная загрузка документа",
+    "description": "Сообщение об успешной загрузке документа"
+  },
+  "message.createDocumentSuccess": {
+    "message": "Успешное создание документа",
+    "description": "Сообщение об успешном создании документа"
+  },
+  "message.startCreateDocument": {
+    "message": "Начало обучения документа...",
+    "description": "Сообщение о начале обучения документа"
+  },
+  "message.createDocumentError": {
+    "message": "Сбой обучения документа",
+    "description": "Сообщение об ошибке, когда обучение документа не удалось"
+  },
+  "message.dragOrClickToUpload": {
+    "message": "Перетащите или нажмите, чтобы загрузить документ",
+    "description": "Сообщение для перетаскивания или нажатия для загрузки документа"
+  },
+  "message.learningDocument": {
+    "message": "Обучение, пожалуйста, подождите...",
+    "description": "Сообщение во время обучения документа"
+  },
+  "message.startNewChat": {
+    "message": "Начать новый чат",
+    "description": "Сообщение для начала нового чата"
+  },
+  "message.errorApiError": {
+    "message": "Не удалось ответить, пожалуйста, попробуйте позже",
+    "description": "Сообщение об ошибке, когда не удалось ответить"
+  },
+  "message.errorBadRequest": {
+    "message": "Содержание запроса неверно отформатировано, пожалуйста, задайте вопрос снова",
+    "description": "Сообщение об ошибке, когда содержание запроса неверно отформатировано"
+  },
+  "message.errorNoConversation": {
+    "message": "Содержание разговора не существует или устарело, пожалуйста, начните новый разговор",
+    "description": "Сообщение об ошибке, когда содержание разговора не существует или устарело"
+  },
+  "message.errorContentTooLarge": {
+    "message": "Содержание вопроса слишком длинное, пожалуйста, сократите и попробуйте снова",
+    "description": "Сообщение об ошибке, когда содержание вопроса слишком длинное"
+  },
+  "message.errorTooManyRequests": {
+    "message": "Ваша операция слишком частая, пожалуйста, попробуйте позже",
+    "description": "Сообщение об ошибке, когда операция слишком частая"
+  },
+  "message.errorUsedUp": {
+    "message": "Лимит использования вашего пакета исчерпан, пожалуйста, приобретите больше использования для продолжения",
+    "description": "Сообщение об ошибке, когда лимит использования пакета исчерпан"
+  },
+  "message.errorUnknown": {
+    "message": "Произошла неизвестная ошибка сервера, пожалуйста, попробуйте позже или свяжитесь с службой поддержки",
+    "description": "Сообщение об ошибке, когда произошла неизвестная ошибка сервера"
+  },
+  "message.errorTimeout": {
+    "message": "Время ответа на вопрос истекло, пожалуйста, попробуйте позже",
+    "description": "Сообщение об ошибке, когда время ответа на вопрос истекло"
+  },
+  "message.errorNotApplied": {
+    "message": "Вы еще не подали заявку на эту услугу, пожалуйста, подайте заявку перед продолжением запроса",
+    "description": "Сообщение об ошибке, когда пользователь еще не подал заявку на эту услугу"
+  },
+  "message.confirmDelete": {
+    "message": "Подтвердить удаление",
+    "description": "Сообщение для подтверждения удаления"
+  },
+  "message.howToUse": {
+    "message": "Нажмите Shift+Enter для переноса строки",
+    "description": "Сообщение о том, как сделать перенос строки"
+  },
+  "message.createRepositorySuccess": {
+    "message": "База знаний успешно создана",
+    "description": "Сообщение об успешном создании базы знаний"
+  },
+  "message.createRepositoryFailed": {
+    "message": "Сбой создания базы знаний",
+    "description": "Сообщение об ошибке, когда создание базы знаний не удалось"
+  },
+  "message.deleteRepositorySuccess": {
+    "message": "База знаний успешно удалена",
+    "description": "Сообщение об успешном удалении базы знаний"
+  },
+  "message.deleteDocumentSuccess": {
+    "message": "Документ успешно удален",
+    "description": "Сообщение об успешном удалении документа"
+  },
+  "message.currentRepository": {
+    "message": "Текущая база знаний",
+    "description": "Сообщение для отображения текущей базы знаний"
+  },
+  "message.nameRequired": {
+    "message": "Имя не может быть пустым",
+    "description": "Сообщение об ошибке, когда имя пустое"
+  },
+  "message.inputRepositoryName": {
+    "message": "Название базы знаний",
+    "description": "Плейсхолдер для названия базы знаний"
+  },
+  "message.inputRepositoryDescription": {
+    "message": "Опишите вашу базу знаний одним предложением",
+    "description": "Плейсхолдер для описания базы знаний"
+  },
+  "nav.chat": {
+    "message": "Чат",
+    "description": "Элемент навигации для чата"
+  },
+  "nav.setting": {
+    "message": "Настройки",
+    "description": "Элемент навигации для настроек"
+  },
+  "nav.manage": {
+    "message": "Управление",
+    "description": "Элемент навигации для управления"
+  },
+  "title.manage": {
+    "message": "Управление репозиториями",
+    "description": "Заголовок для управления базой знаний"
+  },
+  "title.createRepository": {
+    "message": "Создать репозиторий",
+    "description": "Заголовок для создания базы знаний"
+  },
+  "title.repositories": {
+    "message": "Список репозиториев",
+    "description": "Заголовок для списка баз знаний"
   }
 }

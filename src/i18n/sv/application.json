@@ -1,104 +1,190 @@
 {
-  "button": {
-    "goDocument": "Dokument",
-    "_goDocument.comment": "Texten på en knapp, när du klickar på denna knapp, kommer du till dokumentsidan.",
-    "goCredentials": "Legitimation",
-    "_goCredentials.comment": "Texten på en knapp, när du klickar på denna knapp, kommer du till legitimationssidan.",
-    "buyMore": "Köp mer",
-    "_buyMore.comment": "Texten på en knapp, när du klickar på denna knapp, kommer du till köp mer-sidan.",
-    "createOrder": "Skapa order",
-    "_createOrder.comment": "Texten på en knapp, när du klickar på denna knapp, kommer du till skapa order-sidan.",
-    "custom": "Anpassad",
-    "_custom.comment": "Texten på en knapp, när du klickar på denna knapp, kommer du till anpassad-sidan.",
-    "query": "Förfrågan",
-    "_query.comment": "Texten på en knapp, när du klickar på denna knapp, kommer du till förfrågans sida.",
-    "usage": "Användningshistorik",
-    "_usage.comment": "Texten på en knapp, när du klickar på denna knapp, kommer du till användningshistorik-sidan."
+  "button.goDocument": {
+    "message": "Dokument",
+    "description": "Texten på en knapp, när du klickar på denna knapp, kommer du till dokumentsidan."
   },
-  "field": {
-    "id": "Applikations-ID",
-    "_id.comment": "Applikationens ID.",
-    "remainingAmount": "Återstående belopp",
-    "_remainingAmount.comment": "Det återstående beloppet för applikationen.",
-    "usedAmount": "Använt belopp",
-    "_usedAmount.comment": "Det använda beloppet för applikationen.",
-    "apiKey": "API-nyckel",
-    "_apiKey.comment": "API-nyckeln",
-    "service": "Tjänst",
-    "_service.comment": "Applikationens tjänst.",
-    "operation": "Operation",
-    "_operation.comment": "Applikationens operation.",
-    "amount": "Belopp",
-    "_amount.comment": "Beloppet för applikationen.",
-    "traceId": "Spår-ID",
-    "_traceId.comment": "Ett spår-ID för ett API-anrop för applikationen av API-tjänsten, översätt inte det, behåll det som 'Spår-ID'.",
-    "shouldPayPrice": "Slutpris",
-    "_shouldPayPrice.comment": "Det slutliga priset för applikationen.",
-    "api": "API",
-    "_api.comment": "Detta är en typ av onlinetjänst. Formen är via API för att tillhandahålla tjänst till användaren.",
-    "proxy": "Proxy",
-    "_proxy.comment": "Detta är en typ av onlinetjänst. Formen är via HTTP-proxy (används för att överföra data) för att tillhandahålla tjänst till användaren.",
-    "credential": "Legitimation",
-    "_credential.comment": "Applikationens legitimation.",
-    "name": "Namn",
-    "_name.comment": "Applikationens namn.",
-    "package": "Paket",
-    "_package.comment": "Paketet innebär olika prisalternativ, som $100 för 10000 krediter, $200 för 20000 krediter.",
-    "type": "Typ",
-    "_type.comment": "Applikationens typ.",
-    "freeAmount": "Gratis belopp",
-    "_freeAmount.comment": "Det gratis beloppet för applikationen.",
-    "extraPrice": "Pris",
-    "_extraPrice.comment": "Det extra pris som användaren ska betala för applikationen."
+  "button.goCredentials": {
+    "message": "Legitimation",
+    "description": "Texten på en knapp, när du klickar på denna knapp, kommer du till legitimationssidan."
   },
-  "message": {
-    "alreadyApplied": "Du har redan ansökt om denna tjänst, vänligen kontrollera konsolen",
-    "_alreadyApplied.comment": "Meddelandet som visas för användaren när denne redan har ansökt om denna tjänst.",
-    "applySuccessfully": "Ansökan lyckades",
-    "_applySuccessfully.comment": "Meddelandet som visas för användaren när denne har ansökt om denna tjänst framgångsrikt.",
-    "notApplied": "Du har ännu inte ansökt om denna tjänst, vänligen ansök om tjänsten innan du använder den",
-    "_notApplied.comment": "Meddelandet som visas för användaren när denne ännu inte har ansökt om denna tjänst.",
-    "yourApplication": "Din ansökan",
-    "_yourApplication.comment": "Meddelandet som visas för användaren när denne har ansökt.",
-    "unverified": "Du måste slutföra den verkliga namn-autentiseringen innan du kan ansöka om denna tjänst",
-    "_unverified.comment": "Meddelandet som visas för användaren när denne inte har slutfört den verkliga namn-autentiseringen.",
-    "goVerify": "Gå till verklig namn-autentisering",
-    "_goVerify.comment": "Meddelandet som visas för användaren när denne inte har slutfört den verkliga namn-autentiseringen.",
-    "requiredParameter": "Obligatorisk parameter",
-    "_requiredParameter.comment": "Meddelandet som visas för användaren när denne inte har angett den obligatoriska parametern.",
-    "example": "Exempel",
-    "_example.comment": "Meddelandet som visas för användaren när denne inte har angett den obligatoriska parametern.",
-    "createCredentialSuccessfully": "Skapa legitimation lyckades",
-    "_createCredentialSuccessfully.comment": "Meddelandet som visas för användaren när denne har skapat legitimationen framgångsrikt.",
-    "readPolicy": "Jag har läst och godkänt",
-    "_readPolicy.comment": "Meddelandet som visas för användaren när denne har läst och godkänt policyn.",
-    "policy": "Användaravtal för datatjänster",
-    "_policy.comment": "Meddelandet som visas för användaren när denne har läst och godkänt policyn.",
-    "notAgreePolicy": "Du har inte godkänt användaravtalet för datatjänster",
-    "_notAgreePolicy.comment": "Meddelandet som visas för användaren när denne inte har godkänt policyn.",
-    "confirmApplying": "Bekräfta tjänstansökan",
-    "_confirmApplying.comment": "Meddelandet som visas för användaren när denne har bekräftat tjänstansökan.",
-    "rotateCredential": "Återställ nyckel",
-    "_rotateCredential.comment": "Meddelandet som visas för användaren när denne har återställt nyckeln.",
-    "rotateCredentialConfirm": "Är du säker på att du vill återställa nyckeln? Den kan inte återställas efter återställning",
-    "_rotateCredentialConfirm.comment": "Meddelandet som visas för användaren när denne har bekräftat återställningen av nyckeln.",
-    "idDoesNotExist": "Applikationen finns inte",
-    "_idDoesNotExist.comment": "Meddelandet som visas för användaren när applikationen inte finns.",
-    "rotateCredentialSuccessfully": "Nyckelåterställning lyckades",
-    "_rotateCredentialSuccessfully.comment": "Meddelandet som visas för användaren när nyckeln har återställts framgångsrikt.",
-    "rotateCredentialFailed": "Nyckelåterställning misslyckades, vänligen kontakta för hantering",
-    "_rotateCredentialFailed.comment": "Meddelandet som visas för användaren när nyckeln återställning misslyckas.",
-    "updateFailed": "Uppdatering misslyckades",
-    "_updateFailed.comment": "Meddelandet som visas för användaren när uppdateringen misslyckas.",
-    "updateSuccessfully": "Uppdatering lyckades",
-    "_updateSuccessfully.comment": "Meddelandet som visas för användaren när uppdateringen lyckas."
+  "button.buyMore": {
+    "message": "Köp mer",
+    "description": "Texten på en knapp, när du klickar på denna knapp, kommer du till köp mer-sidan."
   },
-  "title": {
-    "buyService": "Köp tjänst",
-    "_buyService.comment": "Sidans titel, när användaren vill köpa tjänsten.",
-    "applicationRemainingCount": "Ändra antal",
-    "_applicationRemainingCount.comment": "Sidans titel, när användaren vill ändra antalet för applikationen.",
-    "manageApplication": "Applikationshantering",
-    "_manageApplication.comment": "Sidans titel, när användaren vill hantera applikationen."
+  "button.createOrder": {
+    "message": "Skapa order",
+    "description": "Texten på en knapp, när du klickar på denna knapp, kommer du till skapa order-sidan."
+  },
+  "button.custom": {
+    "message": "Anpassad",
+    "description": "Texten på en knapp, när du klickar på denna knapp, kommer du till anpassad-sidan."
+  },
+  "button.query": {
+    "message": "Förfrågan",
+    "description": "Texten på en knapp, när du klickar på denna knapp, kommer du till förfrågningssidan."
+  },
+  "button.usage": {
+    "message": "Användningshistorik",
+    "description": "Texten på en knapp, när du klickar på denna knapp, kommer du till användningshistorik-sidan."
+  },
+  "field.id": {
+    "message": "Applikations-ID",
+    "description": "Applikationens ID."
+  },
+  "field.remainingAmount": {
+    "message": "Återstående belopp",
+    "description": "Det återstående beloppet för applikationen."
+  },
+  "field.usedAmount": {
+    "message": "Använt belopp",
+    "description": "Det använda beloppet för applikationen."
+  },
+  "field.apiKey": {
+    "message": "API-nyckel",
+    "description": "API-nyckeln"
+  },
+  "field.service": {
+    "message": "Tjänst",
+    "description": "Applikationens tjänst."
+  },
+  "field.operation": {
+    "message": "Operation",
+    "description": "Applikationens operation."
+  },
+  "field.amount": {
+    "message": "Belopp",
+    "description": "Beloppet för applikationen."
+  },
+  "field.traceId": {
+    "message": "Spår-ID",
+    "description": "Ett API-anrop spår-ID för applikationen, översätt inte det, behåll det som 'Spår-ID'"
+  },
+  "field.shouldPayPrice": {
+    "message": "Slutpris",
+    "description": "Applikationens slutpris."
+  },
+  "field.api": {
+    "message": "API",
+    "description": "Detta är en typ av onlinetjänst, formuläret är via API för att tillhandahålla tjänst till användaren."
+  },
+  "field.proxy": {
+    "message": "Proxy",
+    "description": "Detta är en typ av onlinetjänst, formuläret är via HTTP-proxy (används för dataöverföring) för att tillhandahålla tjänst till användaren."
+  },
+  "field.credential": {
+    "message": "Legitimation",
+    "description": "Applikationens legitimation."
+  },
+  "field.name": {
+    "message": "Namn",
+    "description": "Applikationens namn."
+  },
+  "field.package": {
+    "message": "Paket",
+    "description": "Paketet innebär olika prisalternativ, som $100 för 10000 krediter, $200 för 20000 krediter."
+  },
+  "field.type": {
+    "message": "Typ",
+    "description": "Applikationens typ."
+  },
+  "field.freeAmount": {
+    "message": "Gratis belopp",
+    "description": "Applikationens gratisbelopp."
+  },
+  "field.extraPrice": {
+    "message": "Pris",
+    "description": "Det extra pris som användaren ska betala för applikationen."
+  },
+  "message.alreadyApplied": {
+    "message": "Du har redan ansökt om denna tjänst, vänligen kontrollera konsolen",
+    "description": "Meddelandet som visas för användaren när denne redan har ansökt om denna tjänst."
+  },
+  "message.applySuccessfully": {
+    "message": "Ansökan lyckades",
+    "description": "Meddelandet som visas för användaren när denne har ansökt om denna tjänst framgångsrikt."
+  },
+  "message.notApplied": {
+    "message": "Du har ännu inte ansökt om denna tjänst, vänligen ansök om tjänsten innan du använder den",
+    "description": "Meddelandet som visas för användaren när denne ännu inte har ansökt om denna tjänst."
+  },
+  "message.yourApplication": {
+    "message": "Din ansökan",
+    "description": "Meddelandet som visas för användaren när denne har en ansökan."
+  },
+  "message.unverified": {
+    "message": "Du måste slutföra den verkliga namnautentiseringen innan du kan ansöka om denna tjänst",
+    "description": "Meddelandet som visas för användaren när denne inte har slutfört den verkliga namnautentiseringen."
+  },
+  "message.goVerify": {
+    "message": "Gå till verklig namnautentisering",
+    "description": "Meddelandet som visas för användaren när denne inte har slutfört den verkliga namnautentiseringen."
+  },
+  "message.requiredParameter": {
+    "message": "Obligatorisk parameter",
+    "description": "Meddelandet som visas för användaren när denne inte har angett den obligatoriska parametern."
+  },
+  "message.example": {
+    "message": "Exempel",
+    "description": "Meddelandet som visas för användaren när denne inte har angett den obligatoriska parametern."
+  },
+  "message.createCredentialSuccessfully": {
+    "message": "Skapa legitimation lyckades",
+    "description": "Meddelandet som visas för användaren när denne har skapat legitimationen framgångsrikt."
+  },
+  "message.readPolicy": {
+    "message": "Jag har läst och godkänt",
+    "description": "Meddelandet som visas för användaren när denne har läst och godkänt policyn."
+  },
+  "message.policy": {
+    "message": "Datateknik Tjänst Användaravtal",
+    "description": "Meddelandet som visas för användaren när denne har läst och godkänt policyn."
+  },
+  "message.notAgreePolicy": {
+    "message": "Du har inte godkänt Datateknik Tjänst Användaravtal",
+    "description": "Meddelandet som visas för användaren när denne inte har godkänt policyn."
+  },
+  "message.confirmApplying": {
+    "message": "Bekräfta tjänstansökan",
+    "description": "Meddelandet som visas för användaren när denne har bekräftat tjänstansökan."
+  },
+  "message.rotateCredential": {
+    "message": "Återställ nyckel",
+    "description": "Meddelandet som visas för användaren när denne har återställt nyckeln."
+  },
+  "message.rotateCredentialConfirm": {
+    "message": "Är du säker på att du vill återställa nyckeln? Den kan inte återställas efter återställning",
+    "description": "Meddelandet som visas för användaren när denne har bekräftat nyckelåterställningen."
+  },
+  "message.idDoesNotExist": {
+    "message": "Applikationen finns inte",
+    "description": "Meddelandet som visas för användaren när applikationen inte finns."
+  },
+  "message.rotateCredentialSuccessfully": {
+    "message": "Nyckelåterställning lyckades",
+    "description": "Meddelandet som visas för användaren när nyckelåterställningen lyckas."
+  },
+  "message.rotateCredentialFailed": {
+    "message": "Nyckelåterställning misslyckades, vänligen kontakta för hantering",
+    "description": "Meddelandet som visas för användaren när nyckelåterställningen misslyckas."
+  },
+  "message.updateFailed": {
+    "message": "Uppdatering misslyckades",
+    "description": "Meddelandet som visas för användaren när uppdateringen misslyckas."
+  },
+  "message.updateSuccessfully": {
+    "message": "Uppdatering lyckades",
+    "description": "Meddelandet som visas för användaren när uppdateringen lyckas."
+  },
+  "title.buyService": {
+    "message": "Köp tjänst",
+    "description": "Sidans titel, när användaren vill köpa tjänsten."
+  },
+  "title.applicationRemainingCount": {
+    "message": "Modifiera antal",
+    "description": "Sidans titel, när användaren vill modifiera antalet för applikationen."
+  },
+  "title.manageApplication": {
+    "message": "Applikationshantering",
+    "description": "Sidans titel, när användaren vill hantera applikationen."
   }
 }

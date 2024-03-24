@@ -1,76 +1,130 @@
 {
-  "button": {
-    "learnMore": "Lue lisää",
-    "_learnMore.comment": "Näytetään painikkeessa, jolla voi lukea lisää palvelusta.",
-    "apply": "Hae nyt",
-    "_apply.comment": "Näytetään painikkeessa, jolla voi hakea palvelua.",
-    "introduction": "Palvelun esittely",
-    "_introduction.comment": "Näytetään painikkeessa, jolla voi katsoa palvelun esittelyn.",
-    "apis": "API-kuvaus",
-    "_apis.comment": "Näytetään painikkeessa, jolla voi katsoa API-kuvauksen.",
-    "pricing": "Hinnoittelu",
-    "_pricing.comment": "Näytetään painikkeessa, jolla voi katsoa hinnoittelutiedot."
+  "button.learnMore": {
+    "message": "Lue lisää",
+    "description": "Teksti näytetään painikkeessa, jolla voi lukea lisää palvelusta."
   },
-  "field": {
-    "price": "Hinta",
-    "_price.comment": "Palvelun hinta.",
-    "introduction": "Esittely",
-    "_introduction.comment": "Palvelun esittely.",
-    "apis": "API",
-    "_apis.comment": "Palvelun API, API on muoto verkkopalvelusta.",
-    "proxies": "Välityspalvelin",
-    "_proxies.comment": "Palvelun välityspalvelin, välityspalvelin on muoto verkkopalvelusta, tarkoittaa HTTP-välityspalvelinta, jota käytetään tietojen siirtoon."
+  "button.apply": {
+    "message": "Hae nyt",
+    "description": "Teksti näytetään painikkeessa, jolla voi hakea palvelua."
   },
-  "message": {
-    "free": "Ilmainen",
-    "_free.comment": "Näytetään kun palvelu on ilmainen, mikä tarkoittaa että palvelu on maksuton.",
-    "around": "Noin",
-    "_around.comment": "Näytetään kun hinta on noin tietty arvo.",
-    "welcomeCredits": "Tervetuliaisluotot",
-    "_welcomeCredits.comment": "Näytetään kun palvelu tarjoaa tervetuliaisluottoja ilmaiseksi.",
-    "appliedCount": "Hakemusten lukumäärä",
-    "_appliedCount.comment": "Näytetään kun hakemusten lukumäärä lasketaan.",
-    "indexTitle": "Älykäs valintasi digitaalisissa palveluissa",
-    "_indexTitle.comment": "Etusivun otsikko.",
-    "indexSubtitle": "Voimaannuta työssäsi ja elämässäsi standardoidulla erinomaisuudella palveluissa.",
-    "_indexSubtitle.comment": "Etusivun alaotsikko.",
-    "fromPrice": "Alkaen ",
-    "_fromPrice.comment": "Näytetään ennen hintaa.",
-    "packages": "Tarjoamme erilaisia paketteja luottojen ostamiseen, mitä enemmän paketteja ostat, sitä enemmän alennusta saat.",
-    "_packages.comment": "Näytetään kun palvelu tarjoaa paketteja luottojen ostamiseen.",
-    "offer": "Tarjous",
-    "_offer.comment": "Näytetään kun palvelu tarjoaa tarjouksen.",
-    "partnersTitle": "Luotettu johtavien kumppaneiden toimesta",
-    "_partnersTitle.comment": "Kumppanien osion otsikko."
+  "button.introduction": {
+    "message": "Palvelun esittely",
+    "description": "Teksti näytetään painikkeessa, jolla voi tarkastella palvelun esittelyä."
   },
-  "title": {
-    "apis": "API",
-    "_apis.comment": "Palvelun API, API on muoto verkkopalvelusta.",
-    "proxies": "Välityspalvelin",
-    "_proxies.comment": "Palvelun välityspalvelin, välityspalvelin on muoto verkkopalvelusta, tarkoittaa HTTP-välityspalvelinta, jota käytetään tietojen siirtoon.",
-    "packages": "Paketit",
-    "_packages.comment": "Palvelun paketit, paketteja käytetään luottojen ostamiseen, esimerkiksi palvelu tarjoaa 3 pakettia, 100 $:n paketti 100 luotolle, 200 $:n paketti 200 luotolle, 300 $:n paketti 300 luotolle."
+  "button.apis": {
+    "message": "API-kuvaus",
+    "description": "Teksti näytetään painikkeessa, jolla voi tarkastella API-kuvauksia."
   },
-  "unit": {
-    "credit": "Luotto",
-    "_credit.comment": "Luotto tarkoittaa virtuaalivaluuttaa, jota käytetään API-palvelussa",
-    "Credit": "Luotto",
-    "_Credit.comment": "Luotto tarkoittaa virtuaalivaluuttaa, jota käytetään API-palvelussa, tämä on iso alkukirjainmuoto",
-    "credits": "Luotot",
-    "_credits.comment": "Luotot tarkoittaa virtuaalivaluuttaa, jota käytetään API-palvelussa, tämä on monikkomuoto",
-    "Credits": "Luotot",
-    "_Credits.comment": "Luotot tarkoittaa virtuaalivaluuttaa, jota käytetään API-palvelussa, tämä on iso alkukirjainmuoto ja monikkomuoto",
-    "call": "Kutsu",
-    "_call.comment": "Kutsu tarkoittaa API-palvelun kutsujen määrää",
-    "Call": "Kutsu",
-    "_Call.comment": "Kutsu tarkoittaa API-palvelun kutsujen määrää, tämä on iso alkukirjainmuoto",
-    "calls": "Kutsut",
-    "_calls.comment": "Kutsut tarkoittaa API-palvelun kutsujen määrää, tämä on monikkomuoto",
-    "Calls": "Kutsut",
-    "_Calls.comment": "Kutsut tarkoittaa API-palvelun kutsujen määrää, tämä on iso alkukirjainmuoto ja monikkomuoto",
-    "MB": "Mt",
-    "_MB.comment": "Mt tarkoittaa megatavua, digitaalisen tiedon tallennusyksikkö",
-    "GB": "Gt",
-    "_GB.comment": "Gt tarkoittaa gigatavua, digitaalisen tiedon tallennusyksikkö"
+  "button.pricing": {
+    "message": "Hinnat",
+    "description": "Teksti näytetään painikkeessa, jolla voi tarkastella hinnoittelutietoja."
+  },
+  "field.price": {
+    "message": "Hinta",
+    "description": "Palvelun hinta."
+  },
+  "field.introduction": {
+    "message": "Esittely",
+    "description": "Palvelun esittely."
+  },
+  "field.apis": {
+    "message": "API",
+    "description": "Palvelun API, API on muoto verkkopalvelusta."
+  },
+  "field.proxies": {
+    "message": "Välityspalvelin",
+    "description": "Palvelun välityspalvelin, välityspalvelin on muoto verkkopalvelusta, joka tarkoittaa HTTP-välityspalvelinta tiedonsiirtoon."
+  },
+  "message.free": {
+    "message": "Ilmainen",
+    "description": "Teksti näytetään, kun palvelu on ilmainen, mikä tarkoittaa, että palvelu on maksuton."
+  },
+  "message.around": {
+    "message": "Noin",
+    "description": "Teksti näytetään, kun hinta on noin tietty arvo."
+  },
+  "message.welcomeCredits": {
+    "message": "Tervetuliaisluotot",
+    "description": "Teksti näytetään, kun palvelu tarjoaa tervetuliaisluottoja ilmaiseksi."
+  },
+  "message.appliedCount": {
+    "message": "Hakemusten lukumäärä",
+    "description": "Teksti näytetään, kun hakemusten lukumäärä lasketaan."
+  },
+  "message.indexTitle": {
+    "message": "Älykäs valintasi digitaalisissa palveluissa",
+    "description": "Etusivun otsikko."
+  },
+  "message.indexSubtitle": {
+    "message": "Voimaannuta työssäsi ja elämässäsi standardoidulla erinomaisuudella palveluissa.",
+    "description": "Etusivun alaotsikko."
+  },
+  "message.fromPrice": {
+    "message": "Alkaen ",
+    "description": "Teksti näytetään ennen hintaa."
+  },
+  "message.packages": {
+    "message": "Tarjoamme erilaisia paketteja luottoja varten, mitä enemmän paketteja ostat, sitä enemmän alennusta saat.",
+    "description": "Teksti näytetään, kun palvelu tarjoaa paketteja luottoja varten."
+  },
+  "message.offer": {
+    "message": "Tarjous",
+    "description": "Teksti näytetään, kun palvelu tarjoaa tarjouksen."
+  },
+  "message.partnersTitle": {
+    "message": "Luotettu johtavien kumppaneiden toimesta",
+    "description": "Kumppanien osion otsikko."
+  },
+  "title.apis": {
+    "message": "API",
+    "description": "Palvelun API, API on muoto verkkopalvelusta."
+  },
+  "title.proxies": {
+    "message": "Välityspalvelin",
+    "description": "Palvelun välityspalvelin, välityspalvelin on muoto verkkopalvelusta, joka tarkoittaa HTTP-välityspalvelinta tiedonsiirtoon."
+  },
+  "title.packages": {
+    "message": "Paketit",
+    "description": "Palvelun paketit, paketit ovat käytössä luottojen ostamiseen, esimerkiksi palvelu tarjoaa 3 pakettia, 100 $ 100 luotolle, 200 $ 200 luotolle, 300 $ 300 luotolle."
+  },
+  "unit.credit": {
+    "message": "Luotto",
+    "description": "Luotto tarkoittaa virtuaalivaluuttaa, jota käytetään API-palvelussa."
+  },
+  "unit.Credit": {
+    "message": "Luotto",
+    "description": "Luotto tarkoittaa virtuaalivaluuttaa, jota käytetään API-palvelussa, tämä on iso alkukirjainmuoto."
+  },
+  "unit.credits": {
+    "message": "Luotot",
+    "description": "Luotot tarkoittavat virtuaalivaluuttaa, jota käytetään API-palvelussa, tämä on monikkomuoto."
+  },
+  "unit.Credits": {
+    "message": "Luotot",
+    "description": "Luotot tarkoittavat virtuaalivaluuttaa, jota käytetään API-palvelussa, tämä on iso alkukirjain- ja monikkomuoto."
+  },
+  "unit.call": {
+    "message": "Puhelu",
+    "description": "Puhelu tarkoittaa API-palvelun kutsujen määrää."
+  },
+  "unit.Call": {
+    "message": "Puhelu",
+    "description": "Puhelu tarkoittaa API-palvelun kutsujen määrää, tämä on iso alkukirjainmuoto."
+  },
+  "unit.calls": {
+    "message": "Puhelut",
+    "description": "Puhelut tarkoittavat API-palvelun kutsujen määrää, tämä on monikkomuoto."
+  },
+  "unit.Calls": {
+    "message": "Puhelut",
+    "description": "Puhelut tarkoittavat API-palvelun kutsujen määrää, tämä on iso alkukirjain- ja monikkomuoto."
+  },
+  "unit.MB": {
+    "message": "Mt",
+    "description": "Mt tarkoittaa megatavua, digitaalisen tiedon tallennusyksikkö."
+  },
+  "unit.GB": {
+    "message": "Gt",
+    "description": "Gt tarkoittaa gigatavua, digitaalisen tiedon tallennusyksikkö."
   }
 }

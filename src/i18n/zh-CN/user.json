@@ -1,14 +1,22 @@
 {
-  "field": {
-    "id": "用户ID",
-    "_id.comment": "用户ID",
-    "isVerified": "已验证",
-    "_isVerified.comment": "一个标志，指示用户是否基于真实信息进行了验证",
-    "nickname": "昵称",
-    "_nickname.comment": "用户的昵称",
-    "username": "用户名",
-    "_username.comment": "用户的用户名",
-    "dateJoined": "注册时间",
-    "_dateJoined.comment": "用户注册的时间"
+  "field.id": {
+    "message": "用户ID",
+    "description": "用户ID"
+  },
+  "field.isVerified": {
+    "message": "已验证",
+    "description": "指示用户是否基于真实信息已验证的标志"
+  },
+  "field.nickname": {
+    "message": "昵称",
+    "description": "用户的昵称"
+  },
+  "field.username": {
+    "message": "用户名",
+    "description": "用户的用户名"
+  },
+  "field.dateJoined": {
+    "message": "注册时间",
+    "description": "用户注册时间"
   }
 }

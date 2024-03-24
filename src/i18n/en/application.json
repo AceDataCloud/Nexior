@@ -1,104 +1,190 @@
 {
-  "button": {
-    "goDocument": "Document",
-    "_goDocument.comment": "The text in a button, when click this button, will go to the document page.",
-    "goCredentials": "Credentials",
-    "_goCredentials.comment": "The text in a button, when click this button, will go to the credentials page.",
-    "buyMore": "Buy more",
-    "_buyMore.comment": "The text in a button, when click this button, will go to the buy more page.",
-    "createOrder": "Create order",
-    "_createOrder.comment": "The text in a button, when click this button, will go to the create order page.",
-    "custom": "Custom",
-    "_custom.comment": "The text in a button, when click this button, will go to the custom page.",
-    "query": "Query",
-    "_query.comment": "The text in a button, when click this button, will go to the query page.",
-    "usage": "Usage History",
-    "_usage.comment": "The text in a button, when click this button, will go to the usage history page."
+  "button.goDocument": {
+    "message": "Document",
+    "description": "The text in a button, when click this button, will go to the document page."
   },
-  "field": {
-    "id": "Application ID",
-    "_id.comment": "The ID of the application.",
-    "remainingAmount": "Remaining amount",
-    "_remainingAmount.comment": "The remaining amount of the application.",
-    "usedAmount": "Used amount",
-    "_usedAmount.comment": "The used amount of the application.",
-    "apiKey": "API Key",
-    "_apiKey.comment": "The API key",
-    "service": "Service",
-    "_service.comment": "The service of the application.",
-    "operation": "Operation",
-    "_operation.comment": "The operation of the application.",
-    "amount": "Amount",
-    "_amount.comment": "The amount of the application.",
-    "traceId": "Trace ID",
-    "_traceId.comment": "The trace ID of one api call, for the application of the API service, do not translate it, keep it as 'Trace ID'",
-    "shouldPayPrice": "Final price",
-    "_shouldPayPrice.comment": "The final price of the application.",
-    "api": "API",
-    "_api.comment": "This is a kind of Online Service, The form is via API to provide service to the user.",
-    "proxy": "Proxy",
-    "_proxy.comment": "This is a kind of Online Service, The form is via HTTP Proxy (used for transferring data) to provide service to the user.",
-    "credential": "Credential",
-    "_credential.comment": "The credential of the application.",
-    "name": "Name",
-    "_name.comment": "The name of the application.",
-    "package": "Package",
-    "_package.comment": "The package means different price packages, like $100 for 10000 credits, $200 for 20000 credits.",
-    "type": "Type",
-    "_type.comment": "The type of the application.",
-    "freeAmount": "Free amount",
-    "_freeAmount.comment": "The free amount of the application.",
-    "extraPrice": "Price",
-    "_extraPrice.comment": "The extra price the user should pay of the application."
+  "button.goCredentials": {
+    "message": "Credentials",
+    "description": "The text in a button, when click this button, will go to the credentials page."
   },
-  "message": {
-    "alreadyApplied": "You have already applied for this service, please check the console",
-    "_alreadyApplied.comment": "The message shown to the user when the user has already applied for this service.",
-    "applySuccessfully": "Application successful",
-    "_applySuccessfully.comment": "The message shown to the user when the user has applied for this service successfully.",
-    "notApplied": "You have not applied for this service yet, please apply for the service before using it",
-    "_notApplied.comment": "The message shown to the user when the user has not applied for this service yet.",
-    "yourApplication": "Your application",
-    "_yourApplication.comment": "The message shown to the user when the user's application.",
-    "unverified": "You need to complete the real-name authentication before you can apply for this service",
-    "_unverified.comment": "The message shown to the user when the user has not completed the real-name authentication.",
-    "goVerify": "Go to real-name authentication",
-    "_goVerify.comment": "The message shown to the user when the user has not completed the real-name authentication.",
-    "requiredParameter": "Required parameter",
-    "_requiredParameter.comment": "The message shown to the user when the user has not input the required parameter.",
-    "example": "Example",
-    "_example.comment": "The message shown to the user when the user has not input the required parameter.",
-    "createCredentialSuccessfully": "Create credential successfully",
-    "_createCredentialSuccessfully.comment": "The message shown to the user when the user has created the credential successfully.",
-    "readPolicy": "I have read and agree to",
-    "_readPolicy.comment": "The message shown to the user when the user has read and agreed to the policy.",
-    "policy": "Data Technology Service Use Agreement",
-    "_policy.comment": "The message shown to the user when the user has read and agreed to the policy.",
-    "notAgreePolicy": "You have not agreed to the Data Technology Service Use Agreement",
-    "_notAgreePolicy.comment": "The message shown to the user when the user has not agreed to the policy.",
-    "confirmApplying": "Confirm service application",
-    "_confirmApplying.comment": "The message shown to the user when the user has confirmed the service application.",
-    "rotateCredential": "Reset key",
-    "_rotateCredential.comment": "The message shown to the user when the user has reset the key.",
-    "rotateCredentialConfirm": "Are you sure you want to reset the key? It cannot be recovered after resetting",
-    "_rotateCredentialConfirm.comment": "The message shown to the user when the user has confirmed the key reset.",
-    "idDoesNotExist": "Application does not exist",
-    "_idDoesNotExist.comment": "The message shown to the user when the application does not exist.",
-    "rotateCredentialSuccessfully": "Key reset successful",
-    "_rotateCredentialSuccessfully.comment": "The message shown to the user when the key reset is successful.",
-    "rotateCredentialFailed": "Key reset failed, please contact for handling",
-    "_rotateCredentialFailed.comment": "The message shown to the user when the key reset is failed.",
-    "updateFailed": "Modification failed",
-    "_updateFailed.comment": "The message shown to the user when the modification is failed.",
-    "updateSuccessfully": "Modification successful",
-    "_updateSuccessfully.comment": "The message shown to the user when the modification is successful."
+  "button.buyMore": {
+    "message": "Buy more",
+    "description": "The text in a button, when click this button, will go to the buy more page."
   },
-  "title": {
-    "buyService": "Buy service",
-    "_buyService.comment": "The title of the page, when the user wants to buy the service.",
-    "applicationRemainingCount": "Modify count",
-    "_applicationRemainingCount.comment": "The title of the page, when the user wants to modify the count of the application.",
-    "manageApplication": "Application management",
-    "_manageApplication.comment": "The title of the page, when the user wants to manage the application."
+  "button.createOrder": {
+    "message": "Create order",
+    "description": "The text in a button, when click this button, will go to the create order page."
+  },
+  "button.custom": {
+    "message": "Custom",
+    "description": "The text in a button, when click this button, will go to the custom page."
+  },
+  "button.query": {
+    "message": "Query",
+    "description": "The text in a button, when click this button, will go to the query page."
+  },
+  "button.usage": {
+    "message": "Usage History",
+    "description": "The text in a button, when click this button, will go to the usage history page."
+  },
+  "field.id": {
+    "message": "Application ID",
+    "description": "The ID of the application."
+  },
+  "field.remainingAmount": {
+    "message": "Remaining amount",
+    "description": "The remaining amount of the application."
+  },
+  "field.usedAmount": {
+    "message": "Used amount",
+    "description": "The used amount of the application."
+  },
+  "field.apiKey": {
+    "message": "API Key",
+    "description": "The API key"
+  },
+  "field.service": {
+    "message": "Service",
+    "description": "The service of the application."
+  },
+  "field.operation": {
+    "message": "Operation",
+    "description": "The operation of the application."
+  },
+  "field.amount": {
+    "message": "Amount",
+    "description": "The amount of the application."
+  },
+  "field.traceId": {
+    "message": "Trace ID",
+    "description": "The trace ID of one api call, for the application of the API service, do not translate it, keep it as 'Trace ID'"
+  },
+  "field.shouldPayPrice": {
+    "message": "Final price",
+    "description": "The final price of the application."
+  },
+  "field.api": {
+    "message": "API",
+    "description": "This is a kind of Online Service, The form is via API to provide service to the user."
+  },
+  "field.proxy": {
+    "message": "Proxy",
+    "description": "This is a kind of Online Service, The form is via HTTP Proxy (used for transferring data) to provide service to the user."
+  },
+  "field.credential": {
+    "message": "Credential",
+    "description": "The credential of the application."
+  },
+  "field.name": {
+    "message": "Name",
+    "description": "The name of the application."
+  },
+  "field.package": {
+    "message": "Package",
+    "description": "The package means different price packages, like $100 for 10000 credits, $200 for 20000 credits."
+  },
+  "field.type": {
+    "message": "Type",
+    "description": "The type of the application."
+  },
+  "field.freeAmount": {
+    "message": "Free amount",
+    "description": "The free amount of the application."
+  },
+  "field.extraPrice": {
+    "message": "Price",
+    "description": "The extra price the user should pay of the application."
+  },
+  "message.alreadyApplied": {
+    "message": "You have already applied for this service, please check the console",
+    "description": "The message shown to the user when the user has already applied for this service."
+  },
+  "message.applySuccessfully": {
+    "message": "Application successful",
+    "description": "The message shown to the user when the user has applied for this service successfully."
+  },
+  "message.notApplied": {
+    "message": "You have not applied for this service yet, please apply for the service before using it",
+    "description": "The message shown to the user when the user has not applied for this service yet."
+  },
+  "message.yourApplication": {
+    "message": "Your application",
+    "description": "The message shown to the user when the user's application."
+  },
+  "message.unverified": {
+    "message": "You need to complete the real-name authentication before you can apply for this service",
+    "description": "The message shown to the user when the user has not completed the real-name authentication."
+  },
+  "message.goVerify": {
+    "message": "Go to real-name authentication",
+    "description": "The message shown to the user when the user has not completed the real-name authentication."
+  },
+  "message.requiredParameter": {
+    "message": "Required parameter",
+    "description": "The message shown to the user when the user has not input the required parameter."
+  },
+  "message.example": {
+    "message": "Example",
+    "description": "The message shown to the user when the user has not input the required parameter."
+  },
+  "message.createCredentialSuccessfully": {
+    "message": "Create credential successfully",
+    "description": "The message shown to the user when the user has created the credential successfully."
+  },
+  "message.readPolicy": {
+    "message": "I have read and agree to",
+    "description": "The message shown to the user when the user has read and agreed to the policy."
+  },
+  "message.policy": {
+    "message": "Data Technology Service Use Agreement",
+    "description": "The message shown to the user when the user has read and agreed to the policy."
+  },
+  "message.notAgreePolicy": {
+    "message": "You have not agreed to the Data Technology Service Use Agreement",
+    "description": "The message shown to the user when the user has not agreed to the policy."
+  },
+  "message.confirmApplying": {
+    "message": "Confirm service application",
+    "description": "The message shown to the user when the user has confirmed the service application."
+  },
+  "message.rotateCredential": {
+    "message": "Reset key",
+    "description": "The message shown to the user when the user has reset the key."
+  },
+  "message.rotateCredentialConfirm": {
+    "message": "Are you sure you want to reset the key? It cannot be recovered after resetting",
+    "description": "The message shown to the user when the user has confirmed the key reset."
+  },
+  "message.idDoesNotExist": {
+    "message": "Application does not exist",
+    "description": "The message shown to the user when the application does not exist."
+  },
+  "message.rotateCredentialSuccessfully": {
+    "message": "Key reset successful",
+    "description": "The message shown to the user when the key reset is successful."
+  },
+  "message.rotateCredentialFailed": {
+    "message": "Key reset failed, please contact for handling",
+    "description": "The message shown to the user when the key reset is failed."
+  },
+  "message.updateFailed": {
+    "message": "Modification failed",
+    "description": "The message shown to the user when the modification is failed."
+  },
+  "message.updateSuccessfully": {
+    "message": "Modification successful",
+    "description": "The message shown to the user when the modification is successful."
+  },
+  "title.buyService": {
+    "message": "Buy service",
+    "description": "The title of the page, when the user wants to buy the service."
+  },
+  "title.applicationRemainingCount": {
+    "message": "Modify count",
+    "description": "The title of the page, when the user wants to modify the count of the application."
+  },
+  "title.manageApplication": {
+    "message": "Application management",
+    "description": "The title of the page, when the user wants to manage the application."
   }
 }

@@ -1,78 +1,186 @@
 {
-  "message": {
-    "startNewChat": "开始新对话",
-    "_startNewChat.comment": "网页中的消息，告诉用户开始新对话",
-    "uploadFile": "上传文件",
-    "_uploadFile.comment": "网页中的消息，告诉用户上传文件",
-    "noToken": "请先申请相应的服务",
-    "_noToken.comment": "网页中的消息，告诉用户先申请相应的服务",
-    "newMessagePlaceholder": "请输入您的问题...",
-    "_newMessagePlaceholder.comment": "网页中的占位符，告诉用户输入问题",
-    "noInput": "问题不能为空",
-    "_noInput.comment": "网页中的消息，告诉用户问题不能为空",
-    "uploadReferencesExceed": "最多只能上传1个文件",
-    "_uploadReferencesExceed.comment": "网页中的消息，告诉用户最多只能上传1个文件",
-    "uploadReferencesError": "文件上传失败，请稍后重试",
-    "_uploadReferencesError.comment": "网页中的消息，告诉用户文件上传失败，请稍后重试",
-    "notApplied": "您还未申请该服务，请先申请",
-    "_notApplied.comment": "网页中的消息，告诉用户您还未申请该服务，请先申请",
-    "tryForFree": "免费试用",
-    "_tryForFree.comment": "网页中的消息，告诉用户免费试用",
-    "question1": "编写一段JavaScript代码，输出Hello World",
-    "_question1.comment": "开始对话的示例问题，要求用户编写一段JavaScript代码，输出Hello World",
-    "question2": "给迈克写封邮件，告诉他我刚搬家",
-    "_question2.comment": "开始对话的示例问题，要求用户给迈克写封邮件，告诉他我刚搬家",
-    "question3": "用简单的语言解释量子计算的基本原理",
-    "_question3.comment": "开始对话的示例问题，要求用户用简单的语言解释量子计算的基本原理",
-    "question4": "虚拟现实对艺术创作产生了什么影响？",
-    "_question4.comment": "开始对话的示例问题，要求用户解释虚拟现实对艺术创作产生了什么影响",
-    "question5": "隐私保护和数据安全如何影响法律实践？",
-    "_question5.comment": "开始对话的示例问题，要求用户解释隐私保护和数据安全如何影响法律实践",
-    "question6": "如何应对当今世界税法的复杂变化？",
-    "_question6.comment": "开始对话的示例问题，要求用户解释如何应对当今世界税法的复杂变化",
-    "question7": "如何通过结合不同地区文化背景创造独特的美食？",
-    "_question7.comment": "开始对话的示例问题，要求用户解释如何通过结合不同地区文化背景创造独特的美食",
-    "question8": "如何从旅行经历中汲取文学创作灵感？",
-    "_question8.comment": "开始对话的示例问题，要求用户解释如何从旅行经历中汲取文学创作灵感",
-    "question9": "如何从不同行业成功案例中获得商业创意？",
-    "_question9.comment": "开始对话的示例问题，要求用户解释如何从不同行业成功案例中获得商业创意",
-    "errorApiError": "回答失败，请稍后重试",
-    "_errorApiError.comment": "网页中的消息，告诉用户回答失败，请稍后重试",
-    "errorBadRequest": "请求内容不规范，请重新提问",
-    "_errorBadRequest.comment": "网页中的消息，告诉用户请求内容不规范，请重新提问",
-    "errorNoConversation": "对话不存在或已过期，请开始新对话",
-    "_errorNoConversation.comment": "网页中的消息，告诉用户对话不存在或已过期，请开始新对话",
-    "errorContentTooLarge": "问题内容过长，请缩短后重试",
-    "_errorContentTooLarge.comment": "网页中的消息，告诉用户问题内容过长，请缩短后重试",
-    "errorTooManyRequests": "您的操作过于频繁，请稍后重试",
-    "_errorTooManyRequests.comment": "网页中的消息，告诉用户您的操作过于频繁，请稍后重试",
-    "errorUsedUp": "您已用完套餐次数，请购买更多次数继续使用",
-    "_errorUsedUp.comment": "网页中的消息，告诉用户您已用完套餐次数，请购买更多次数继续使用",
-    "errorUnknown": "服务器发生未知错误，请稍后重试或联系客服",
-    "_errorUnknown.comment": "网页中的消息，告诉用户服务器发生未知错误，请稍后重试或联系客服",
-    "errorTimeout": "回答问题超时，请稍后重试",
-    "_errorTimeout.comment": "网页中的消息，告诉用户回答问题超时，请稍后重试",
-    "errorNotApplied": "您还未申请该服务，请先申请再继续提问",
-    "_errorNotApplied.comment": "网页中的消息，告诉用户您还未申请该服务，请先申请再继续提问",
-    "confirmDelete": "确认删除",
-    "_confirmDelete.comment": "网页中的消息，告诉用户确认删除",
-    "howToUse": "按Shift+Enter开始新行",
-    "_howToUse.comment": "网页中的消息，告诉用户按Shift+Enter开始新行"
+  "model.35Standard": {
+    "message": "3.5 标准版",
+    "description": "服务的模型名称，即 GPT 3.5 基础版"
   },
-  "title": {
-    "chat": "AI聊天",
-    "_chat.comment": "网页标题，AI聊天",
-    "example": "示例",
-    "_example.comment": "网页标题，示例",
-    "capabilities": "功能",
-    "_capabilities.comment": "网页标题，功能",
-    "limitations": "限制",
-    "_limitations.comment": "网页标题，表明此部分是关于服务的技术限制",
-    "complexQuestion": "回答复杂问题",
-    "_complexQuestion.comment": "网页标题，表明此部分是关于服务回答复杂问题的能力",
-    "professionalQuestion": "咨询专业问题",
-    "_professionalQuestion.comment": "网页标题，表明此部分是关于服务咨询专业问题的能力",
-    "getTips": "获取灵感和创意",
-    "_getTips.comment": "网页标题，表明此部分是关于服务获取灵感和创意的能力"
+  "model.35StandardDescription": {
+    "message": "基本模型，可回答简单问题并提供一般信息。",
+    "description": "3.5 标准版模型的描述"
+  },
+  "model.35Browsing": {
+    "message": "3.5 浏览版",
+    "description": "服务的模型名称，即 GPT 3.5 浏览版"
+  },
+  "model.35BrowsingDescription": {
+    "message": "可实时从网络检索信息并提供更基本的答案。",
+    "description": "3.5 浏览版模型的描述"
+  },
+  "model.4Standard": {
+    "message": "4.0 标准版",
+    "description": "服务的模型名称，即 GPT 4.0 标准版"
+  },
+  "model.4StandardDescription": {
+    "message": "更强大的模型，可回答更复杂的问题。",
+    "description": "4.0 标准版模型的描述"
+  },
+  "model.4Browsing": {
+    "message": "4.0 浏览版",
+    "description": "服务的模型名称，即 GPT 4.0 浏览版"
+  },
+  "model.4BrowsingDescription": {
+    "message": "可实时检索信息以基于 4.0 标准版模型提供更多答案。",
+    "description": "4.0 浏览版模型的描述"
+  },
+  "model.4Vision": {
+    "message": "4.0 视觉版",
+    "description": "服务的模型名称，即 GPT 4.0 视觉版"
+  },
+  "model.4VisionDescription": {
+    "message": "可分析图像并基于图像内容提供信息。",
+    "description": "4.0 视觉版模型的描述"
+  },
+  "message.startNewChat": {
+    "message": "开始新对话",
+    "description": "网页中的消息，告诉用户开始新对话"
+  },
+  "message.uploadFile": {
+    "message": "上传文件",
+    "description": "网页中的消息，告诉用户上传文件"
+  },
+  "message.noToken": {
+    "message": "请先申请相应服务",
+    "description": "网页中的消息，告诉用户先申请相应服务"
+  },
+  "message.newMessagePlaceholder": {
+    "message": "请输入您的问题...",
+    "description": "网页中的占位符，告诉用户输入问题"
+  },
+  "message.noInput": {
+    "message": "问题不能为空",
+    "description": "网页中的消息，告诉用户问题不能为空"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "最多只能上传 1 个文件",
+    "description": "网页中的消息，告诉用户最多只能上传 1 个文件"
+  },
+  "message.uploadReferencesError": {
+    "message": "文件上传失败，请稍后重试",
+    "description": "网页中的消息，告诉用户文件上传失败，请稍后重试"
+  },
+  "message.notApplied": {
+    "message": "您尚未申请此服务，请先申请",
+    "description": "网页中的消息，告诉用户您尚未申请此服务，请先申请"
+  },
+  "message.tryForFree": {
+    "message": "免费试用",
+    "description": "网页中的消息，告诉用户免费试用"
+  },
+  "message.question1": {
+    "message": "编写一段 JavaScript 代码，输出 Hello World",
+    "description": "开始对话的示例问题，要求用户编写一段 JavaScript 代码，输出 Hello World"
+  },
+  "message.question2": {
+    "message": "给迈克写封邮件，告诉他我刚搬家",
+    "description": "开始对话的示例问题，要求用户给迈克写封邮件，告诉他我刚搬家"
+  },
+  "message.question3": {
+    "message": "用简单的语言解释量子计算的基本原理",
+    "description": "开始对话的示例问题，要求用户用简单的语言解释量子计算的基本原理"
+  },
+  "message.question4": {
+    "message": "虚拟现实对艺术创作产生了什么影响？",
+    "description": "开始对话的示例问题，要求用户解释虚拟现实对艺术创作产生了什么影响"
+  },
+  "message.question5": {
+    "message": "隐私保护和数据安全如何影响法律实践？",
+    "description": "开始对话的示例问题，要求用户解释隐私保护和数据安全如何影响法律实践"
+  },
+  "message.question6": {
+    "message": "如何应对当今世界税法的复杂变化？",
+    "description": "开始对话的示例问题，要求用户解释如何应对当今世界税法的复杂变化"
+  },
+  "message.question7": {
+    "message": "如何通过结合不同地区文化背景创造独特的美食？",
+    "description": "开始对话的示例问题，要求用户解释如何通过结合不同地区文化背景创造独特的美食"
+  },
+  "message.question8": {
+    "message": "如何从旅行经历中汲取文学创作灵感？",
+    "description": "开始对话的示例问题，要求用户解释如何从旅行经历中汲取文学创作灵感"
+  },
+  "message.question9": {
+    "message": "如何从不同行业成功案例中获得商业创意？",
+    "description": "开始对话的示例问题，要求用户解释如何从不同行业成功案例中获得商业创意"
+  },
+  "message.errorApiError": {
+    "message": "回答失败，请稍后重试",
+    "description": "网页中的消息，告诉用户回答失败，请稍后重试"
+  },
+  "message.errorBadRequest": {
+    "message": "请求内容不规范，请重新提问",
+    "description": "网页中的消息，告诉用户请求内容不规范，请重新提问"
+  },
+  "message.errorNoConversation": {
+    "message": "对话不存在或已过期，请开始新对话",
+    "description": "网页中的消息，告诉用户对话不存在或已过期，请开始新对话"
+  },
+  "message.errorContentTooLarge": {
+    "message": "问题内容过长，请缩短后重试",
+    "description": "网页中的消息，告诉用户问题内容过长，请缩短后重试"
+  },
+  "message.errorTooManyRequests": {
+    "message": "您的操作过于频繁，请稍后重试",
+    "description": "网页中的消息，告诉用户您的操作过于频繁，请稍后重试"
+  },
+  "message.errorUsedUp": {
+    "message": "您已用完套餐次数，请购买更多次数继续使用",
+    "description": "网页中的消息，告诉用户您已用完套餐次数，请购买更多次数继续使用"
+  },
+  "message.errorUnknown": {
+    "message": "服务器发生未知错误，请稍后重试或联系客服",
+    "description": "网页中的消息，告诉用户服务器发生未知错误，请稍后重试或联系客服"
+  },
+  "message.errorTimeout": {
+    "message": "回答问题超时，请稍后重试",
+    "description": "网页中的消息，告诉用户回答问题超时，请稍后重试"
+  },
+  "message.errorNotApplied": {
+    "message": "您尚未申请此服务，请先申请后继续提问",
+    "description": "网页中的消息，告诉用户您尚未申请此服务，请先申请后继续提问"
+  },
+  "message.confirmDelete": {
+    "message": "确认删除",
+    "description": "网页中的消息，告诉用户确认删除"
+  },
+  "message.howToUse": {
+    "message": "按 Shift+Enter 开始新行",
+    "description": "网页中的消息，告诉用户按 Shift+Enter 开始新行"
+  },
+  "title.chat": {
+    "message": "AI 对话",
+    "description": "网页的标题，即 AI 对话"
+  },
+  "title.example": {
+    "message": "示例",
+    "description": "网页的标题，即 示例"
+  },
+  "title.capabilities": {
+    "message": "能力",
+    "description": "网页的标题，告诉此部分是关于服务的技术能力"
+  },
+  "title.limitations": {
+    "message": "限制",
+    "description": "网页的标题，告诉此部分是关于服务的技术限制"
+  },
+  "title.complexQuestion": {
+    "message": "回答复杂问题",
+    "description": "网页的标题，告诉此部分是关于服务回答复杂问题的能力"
+  },
+  "title.professionalQuestion": {
+    "message": "咨询专业问题",
+    "description": "网页的标题，告诉此部分是关于服务咨询专业问题的能力"
+  },
+  "title.getTips": {
+    "message": "获取灵感和创意",
+    "description": "网页的标题，告诉此部分是关于服务获取灵感和创意的能力"
   }
 }

@@ -1,62 +1,114 @@
 {
-  "entity": {
-    "requestQueries": "Parâmetros de URL",
-    "_requestQueries.comment": "Estes são os parâmetros que são passados na URL. Eles são separados por '?' e são separados por '&'.",
-    "requestBody": "Corpo da solicitação",
-    "_requestBody.comment": "Este é o corpo da solicitação. Geralmente é usado para solicitações POST e PUT.",
-    "responseBody": "Corpo da resposta",
-    "_responseBody.comment": "Este é o corpo da resposta. Geralmente está no formato JSON.",
-    "requestHeaders": "Cabeçalhos da solicitação",
-    "_requestHeaders.comment": "Estes são os cabeçalhos que são passados na solicitação. Geralmente são usados para autenticação.",
-    "requestHeader": "Cabeçalho da solicitação",
-    "requestQuery": "Parâmetro de URL",
-    "responseHeaders": "Cabeçalhos da resposta",
-    "_responseHeaders.comment": "Estes são os cabeçalhos que são passados na resposta. Geralmente são usados para autenticação.",
-    "response": "Resposta",
-    "_response.comment": "Esta é a resposta que é retornada pelo servidor.",
-    "success": "Sucesso",
-    "_success.comment": "Esta é a resposta que é retornada quando a solicitação é bem-sucedida.",
-    "failure": "Falha",
-    "_failure.comment": "Esta é a resposta que é retornada quando a solicitação não é bem-sucedida.",
-    "responseExample": "Exemplo",
-    "_responseExample.comment": "Este é um exemplo da resposta que é retornada pelo servidor.",
-    "authentication": "Autenticação",
-    "_authentication.comment": "Esta é a autenticação necessária para fazer a solicitação."
+  "entity.requestQueries": {
+    "message": "Parâmetros de URL",
+    "description": "Estes são os parâmetros que são passados na URL. Eles são separados por '?' e são separados por '&'."
   },
-  "message": {
-    "free": "Grátis",
-    "_free.comment": "Significa que o preço é gratuito, não é necessário gastar créditos ou dinheiro ao usar o serviço da API",
-    "appliedCount": "Contagem de aplicação",
-    "_appliedCount.comment": "O número de vezes que o serviço da API foi aplicado",
-    "firstFree": "Primeira vez grátis",
-    "_firstFree.comment": "Significa que a primeira vez do serviço da API é gratuita, não é necessário gastar créditos ou dinheiro",
-    "custom": "Quantidade especificada",
-    "_custom.comment": "Significa que o preço é especificado, é necessário gastar os créditos ou dinheiro especificados ao usar o serviço da API",
-    "present": "Presente",
-    "_present.comment": "Nós iremos apresentar os créditos para você quando usar o serviço da API pela primeira vez",
-    "around": "Aproximadamente",
-    "_around.comment": "O preço é aproximado, o preço real pode ser diferente",
-    "successRate15min": "Taxa de sucesso em tempo real",
-    "_successRate15min.comment": "A taxa de sucesso em tempo real do serviço da API nos últimos 15 minutos",
-    "ySuccessRate": "Taxa de sucesso (100%)",
-    "_ySuccessRate.comment": "A taxa de sucesso do serviço da API",
-    "xMinutes": "Tempo (minutos)",
-    "_xMinutes.comment": "O tempo em minutos",
-    "streamUsage": "Aviso importante: Para solicitações de streaming, o código acima pode não ser totalmente aplicável. Consulte o documento de integração para modificações.",
-    "_streamUsage.comment": "Para solicitações de streaming, o código acima pode não ser totalmente aplicável. Consulte o documento de integração para modificações.",
-    "alphaStage": "Esta API está na fase Alpha, é uma versão de prévia inicial, pode haver instabilidade potencial, o formato da API pode mudar significativamente, não é recomendado para uso em um ambiente de produção. O preço atual é relativamente baixo, e pode haver ajustes significativos de preço no futuro.",
-    "_alphaStage.comment": "Esta API está na fase Alpha, é uma versão de prévia inicial, pode haver instabilidade potencial, o formato da API pode mudar significativamente, não é recomendado para uso em um ambiente de produção. O preço atual é relativamente baixo, e pode haver ajustes significativos de preço no futuro.",
-    "betaStage": "Esta API está na fase Beta, o formato da API não mudará muito, mas pode haver instabilidade potencial, por favor, use com cuidado em um ambiente de produção. O preço atual é relativamente baixo, e pode haver ajustes moderados de preço no futuro.",
-    "_betaStage.comment": "Esta API está na fase Beta, o formato da API não mudará muito, mas pode haver instabilidade potencial, por favor, use com cuidado em um ambiente de produção. O preço atual é relativamente baixo, e pode haver ajustes moderados de preço no futuro."
+  "entity.requestBody": {
+    "message": "Corpo da Requisição",
+    "description": "Este é o corpo da requisição. Geralmente é usado para requisições POST e PUT."
   },
-  "unit": {
-    "GB": "GB",
-    "_GB.comment": "Gigabyte, uma unidade de armazenamento de informações digitais",
-    "MB": "MB",
-    "_MB.comment": "Megabyte, uma unidade de armazenamento de informações digitais",
-    "KB": "KB",
-    "_KB.comment": "Quilobyte, uma unidade de armazenamento de informações digitais",
-    "B": "B",
-    "_B.comment": "Byte, uma unidade de armazenamento de informações digitais"
+  "entity.responseBody": {
+    "message": "Corpo da Resposta",
+    "description": "Este é o corpo da resposta. Geralmente está no formato JSON."
+  },
+  "entity.requestHeaders": {
+    "message": "Cabeçalhos da Requisição",
+    "description": "Estes são os cabeçalhos que são passados na requisição. Geralmente são usados para autenticação."
+  },
+  "entity.requestHeader": {
+    "message": "Cabeçalho da Requisição",
+    "description": "Este é o cabeçalho que é passado na requisição. Geralmente é usado para autenticação."
+  },
+  "entity.requestQuery": {
+    "message": "Parâmetro de URL",
+    "description": "Este é o parâmetro que é passado na URL. É separado por '?' e é separado por '&'."
+  },
+  "entity.responseHeaders": {
+    "message": "Cabeçalhos da Resposta",
+    "description": "Estes são os cabeçalhos que são passados na resposta. Geralmente são usados para autenticação."
+  },
+  "entity.response": {
+    "message": "Resposta",
+    "description": "Esta é a resposta que é retornada do servidor."
+  },
+  "entity.success": {
+    "message": "Sucesso",
+    "description": "Esta é a resposta que é retornada quando a requisição é bem-sucedida."
+  },
+  "entity.failure": {
+    "message": "Falha",
+    "description": "Esta é a resposta que é retornada quando a requisição não é bem-sucedida."
+  },
+  "entity.responseExample": {
+    "message": "Exemplo",
+    "description": "Este é um exemplo da resposta que é retornada do servidor."
+  },
+  "entity.authentication": {
+    "message": "Autenticação",
+    "description": "Esta é a autenticação necessária para fazer a requisição."
+  },
+  "message.free": {
+    "message": "Grátis",
+    "description": "Significa que o preço é gratuito, não é necessário gastar créditos ou dinheiro ao usar o serviço da API"
+  },
+  "message.appliedCount": {
+    "message": "Contagem de Aplicações",
+    "description": "O número de vezes que o serviço da API foi aplicado"
+  },
+  "message.firstFree": {
+    "message": "Primeira vez grátis",
+    "description": "Significa que a primeira vez do serviço da API é gratuita, não é necessário gastar créditos ou dinheiro"
+  },
+  "message.custom": {
+    "message": "Quantidade Especificada",
+    "description": "Significa que o preço é especificado, é necessário gastar os créditos ou dinheiro especificados ao usar o serviço da API"
+  },
+  "message.present": {
+    "message": "Presente",
+    "description": "Nós iremos presentear os créditos a você quando usar o serviço da API pela primeira vez"
+  },
+  "message.around": {
+    "message": "Aproximadamente",
+    "description": "O preço é aproximado, o preço real pode ser diferente"
+  },
+  "message.successRate15min": {
+    "message": "Taxa de Sucesso em Tempo Real",
+    "description": "A taxa de sucesso em tempo real do serviço da API nos últimos 15 minutos"
+  },
+  "message.ySuccessRate": {
+    "message": "Taxa de Sucesso (100%)",
+    "description": "A taxa de sucesso do serviço da API"
+  },
+  "message.xMinutes": {
+    "message": "Tempo (minutos)",
+    "description": "O tempo em minutos"
+  },
+  "message.streamUsage": {
+    "message": "Lembrete: Para requisições de streaming, o código acima pode não ser totalmente aplicável. Consulte o documento de integração para modificações.",
+    "description": "Para requisições de streaming, o código acima pode não ser totalmente aplicável. Consulte o documento de integração para modificações."
+  },
+  "message.alphaStage": {
+    "message": "Esta API está na fase Alpha, é uma versão de prévia inicial, pode haver instabilidade potencial, o formato da API pode mudar significativamente, não é recomendado para uso em um ambiente de produção. O preço atual é relativamente baixo, e pode haver ajustes significativos de preço no futuro.",
+    "description": "Esta API está na fase Alpha, é uma versão de prévia inicial, pode haver instabilidade potencial, o formato da API pode mudar significativamente, não é recomendado para uso em um ambiente de produção. O preço atual é relativamente baixo, e pode haver ajustes significativos de preço no futuro."
+  },
+  "message.betaStage": {
+    "message": "Esta API está na fase Beta, o formato da API não mudará muito, mas pode haver instabilidade potencial, por favor, use com cuidado em um ambiente de produção. O preço atual é relativamente baixo, e pode haver ajustes moderados de preço no futuro.",
+    "description": "Esta API está na fase Beta, o formato da API não mudará muito, mas pode haver instabilidade potencial, por favor, use com cuidado em um ambiente de produção. O preço atual é relativamente baixo, e pode haver ajustes moderados de preço no futuro."
+  },
+  "unit.GB": {
+    "message": "GB",
+    "description": "Gigabyte, uma unidade de armazenamento de informações digitais"
+  },
+  "unit.MB": {
+    "message": "MB",
+    "description": "Megabyte, uma unidade de armazenamento de informações digitais"
+  },
+  "unit.KB": {
+    "message": "KB",
+    "description": "Quilobyte, uma unidade de armazenamento de informações digitais"
+  },
+  "unit.B": {
+    "message": "B",
+    "description": "Byte, uma unidade de armazenamento de informações digitais"
   }
 }

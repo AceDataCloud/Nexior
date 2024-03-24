@@ -1,108 +1,194 @@
 {
-  "button": {
-    "uploadDocuments": "ドキュメントをアップロード",
-    "_uploadDocuments.comment": "ユーザーがドキュメントをアップロードするためのボタンのテキスト"
+  "button.uploadDocuments": {
+    "message": "ドキュメントをアップロード",
+    "description": "ユーザーがドキュメントをアップロードするためのボタンのテキスト"
   },
-  "field": {
-    "fileName": "ファイル名",
-    "_fileName.comment": "アップロードされたドキュメントのファイル名",
-    "createdAt": "作成日時",
-    "_createdAt": "ドキュメントがアップロードされた時刻",
-    "fileExtension": "ファイルタイプ",
-    "_fileExtension.comment": "アップロードされたドキュメントのファイルタイプ",
-    "fileUrl": "ファイルリンク",
-    "_fileUrl.comment": "アップロードされたドキュメントへのリンク",
-    "fileSize": "ファイルサイズ",
-    "_fileSize.comment": "アップロードされたドキュメントのサイズ",
-    "state": "ステータス",
-    "_state.comment": "ドキュメント処理のステータス",
-    "stateProcessing": "学習中",
-    "_stateProcessing.comment": "ドキュメントが処理中であることを示す",
-    "stateCompleted": "学習完了",
-    "_stateCompleted.comment": "ドキュメントが正常に処理されたことを示す",
-    "stateFailed": "学習失敗",
-    "_stateFailed.comment": "ドキュメント処理が失敗したことを示す",
-    "name": "名前",
-    "_name.comment": "ドキュメントの名前",
-    "description": "説明",
-    "_description.comment": "ドキュメントの説明"
+  "field.fileName": {
+    "message": "ファイル名",
+    "description": "アップロードされたドキュメントのファイル名"
   },
-  "message": {
-    "introductionForKnowledge": "ドキュメントを知識ベースに追加でき、ロボットが応答する際にリポジトリ内の知識を使用できます。",
-    "_introductionForKnowledge.comment": "知識ベースの紹介メッセージ",
-    "introductionForRepository": "知識ベースはドキュメントのコレクションであり、ドキュメントを追加できます。ロボットが応答する際には、知識ベース内のドキュメントから応答します。",
-    "_introductionForRepository.comment": "知識ベースの紹介メッセージ",
-    "uploadDocumentsExceed": "アップロードされたドキュメントの数量が制限を超えています",
-    "_uploadDocumentsExceed.comment": "アップロードされたドキュメントの数量が制限を超えた際のエラーメッセージ",
-    "uploadDocumentsError": "ドキュメントのアップロードに失敗しました",
-    "_uploadDocumentsError.comment": "ドキュメントのアップロードに失敗した際のエラーメッセージ",
-    "uploadDocumentsSuccess": "ドキュメントのアップロードが成功しました",
-    "_uploadDocumentsSuccess.comment": "ドキュメントのアップロードが成功した際の成功メッセージ",
-    "createDocumentSuccess": "ドキュメントの作成が成功しました",
-    "_createDocumentSuccess.comment": "ドキュメントの作成が成功した際の成功メッセージ",
-    "startCreateDocument": "ドキュメントの学習を開始中...",
-    "_startCreateDocument.comment": "ドキュメントの学習を開始する際のメッセージ",
-    "createDocumentError": "ドキュメントの学習に失敗しました",
-    "_createDocumentError.comment": "ドキュメントの学習に失敗した際のエラーメッセージ",
-    "dragOrClickToUpload": "ドキュメントをドラッグまたはクリックしてアップロード",
-    "_dragOrClickToUpload.comment": "ドキュメントをアップロードするためのドラッグまたはクリックのメッセージ",
-    "learningDocument": "学習中、お待ちください...",
-    "_learningDocument.comment": "ドキュメントの学習中のメッセージ",
-    "startNewChat": "新しいチャットを開始",
-    "_startNewChat.comment": "新しいチャットを開始するためのメッセージ",
-    "errorApiError": "応答に失敗しました。後でもう一度お試しください",
-    "_errorApiError.comment": "応答に失敗した際のエラーメッセージ",
-    "errorBadRequest": "リクエストのコンテンツが正しくフォーマットされていません。もう一度お尋ねください",
-    "_errorBadRequest.comment": "リクエストのコンテンツが正しくフォーマットされていない際のエラーメッセージ",
-    "errorNoConversation": "会話のコンテンツが存在しないか有効期限が切れています。新しい会話を開始してください",
-    "_errorNoConversation.comment": "会話のコンテンツが存在しないか有効期限が切れている際のエラーメッセージ",
-    "errorContentTooLarge": "質問のコンテンツが長すぎます。短くしてもう一度お試しください",
-    "_errorContentTooLarge.comment": "質問のコンテンツが長すぎる際のエラーメッセージ",
-    "errorTooManyRequests": "操作が頻繁すぎます。後でもう一度お試しください",
-    "_errorTooManyRequests.comment": "操作が頻繁すぎる際のエラーメッセージ",
-    "errorUsedUp": "パッケージの使用制限に達しました。継続するにはもっと使用量を購入してください",
-    "_errorUsedUp.comment": "パッケージの使用制限に達した際のエラーメッセージ",
-    "errorUnknown": "不明なサーバーエラーが発生しました。後でもう一度お試しください、またはカスタマーサービスにお問い合わせください",
-    "_errorUnknown.comment": "不明なサーバーエラーが発生した際のエラーメッセージ",
-    "errorTimeout": "質問への回答がタイムアウトしました。後でもう一度お試しください",
-    "_errorTimeout.comment": "質問への回答がタイムアウトした際のエラーメッセージ",
-    "errorNotApplied": "まだこのサービスに申し込んでいません。続ける前に申し込んでください",
-    "_errorNotApplied.comment": "ユーザーがまだこのサービスに申し込んでいない際のエラーメッセージ",
-    "confirmDelete": "削除を確認",
-    "_confirmDelete.comment": "削除を確認するためのメッセージ",
-    "howToUse": "Shift+Enterを押して改行",
-    "_howToUse.comment": "改行方法を示すメッセージ",
-    "createRepositorySuccess": "知識ベースが正常に作成されました",
-    "_createRepositorySuccess.comment": "知識ベースが正常に作成された際の成功メッセージ",
-    "createRepositoryFailed": "知識ベースの作成に失敗しました",
-    "_createRepositoryFailed.comment": "知識ベースの作成に失敗した際のエラーメッセージ",
-    "deleteRepositorySuccess": "知識ベースが正常に削除されました",
-    "_deleteRepositorySuccess.comment": "知識ベースが正常に削除された際の成功メッセージ",
-    "deleteDocumentSuccess": "ドキュメントが正常に削除されました",
-    "_deleteDocumentSuccess.comment": "ドキュメントが正常に削除された際の成功メッセージ",
-    "currentRepository": "現在の知識ベース",
-    "_currentRepository.comment": "現在の知識ベースを表示するメッセージ",
-    "nameRequired": "名前は空にできません",
-    "_nameRequired.comment": "名前が空の際のエラーメッセージ",
-    "inputRepositoryName": "知識ベースの名前を入力",
-    "_inputRepositoryName.comment": "知識ベースの名前の入力プレースホルダー",
-    "inputRepositoryDescription": "知識ベースの説明を一文で記述",
-    "_inputRepositoryDescription.comment": "知識ベースの説明の入力プレースホルダー"
+  "field.createdAt": {
+    "message": "作成日時",
+    "description": "ドキュメントがアップロードされた時刻"
   },
-  "nav": {
-    "chat": "チャット",
-    "_chat.comment": "チャットのナビゲーション項目",
-    "setting": "設定",
-    "_setting.comment": "設定のナビゲーション項目",
-    "manage": "管理",
-    "_manage.comment": "管理のナビゲーション項目"
+  "field.fileExtension": {
+    "message": "ファイルタイプ",
+    "description": "アップロードされたドキュメントのファイルタイプ"
   },
-  "title": {
-    "manage": "知識ベースを管理",
-    "_manage.comment": "知識ベースを管理するためのタイトル",
-    "createRepository": "知識ベースを作成",
-    "_createRepository.comment": "知識ベースを作成するためのタイトル",
-    "repositories": "知識ベースリスト",
-    "_repositories.comment": "知識ベースリストのタイトル"
+  "field.fileUrl": {
+    "message": "ファイルリンク",
+    "description": "アップロードされたドキュメントへのリンク"
+  },
+  "field.fileSize": {
+    "message": "ファイルサイズ",
+    "description": "アップロードされたドキュメントのサイズ"
+  },
+  "field.state": {
+    "message": "ステータス",
+    "description": "ドキュメント処理のステータス"
+  },
+  "field.stateProcessing": {
+    "message": "処理中",
+    "description": "ドキュメントが処理中であることを示す"
+  },
+  "field.stateCompleted": {
+    "message": "処理完了",
+    "description": "ドキュメントが正常に処理されたことを示す"
+  },
+  "field.stateFailed": {
+    "message": "処理失敗",
+    "description": "ドキュメント処理が失敗したことを示す"
+  },
+  "field.name": {
+    "message": "名前",
+    "description": "ドキュメントの名前"
+  },
+  "field.description": {
+    "message": "説明",
+    "description": "ドキュメントの説明"
+  },
+  "message.introductionForKnowledge": {
+    "message": "ドキュメントを知識ベースに追加でき、ロボットが応答する際にリポジトリ内の知識を使用できます。",
+    "description": "知識ベースの紹介メッセージ"
+  },
+  "message.introductionForRepository": {
+    "message": "知識ベースはドキュメントのコレクションであり、ドキュメントを追加できます。ロボットが応答する際には、知識ベース内のドキュメントから応答します。",
+    "description": "知識ベースの紹介メッセージ"
+  },
+  "message.uploadDocumentsExceed": {
+    "message": "アップロードされたドキュメントの数量が制限を超えています",
+    "description": "アップロードされたドキュメントの数量が制限を超えた場合のエラーメッセージ"
+  },
+  "message.uploadDocumentsError": {
+    "message": "ドキュメントのアップロードに失敗しました",
+    "description": "ドキュメントのアップロードに失敗した場合のエラーメッセージ"
+  },
+  "message.uploadDocumentsSuccess": {
+    "message": "ドキュメントのアップロードが成功しました",
+    "description": "ドキュメントのアップロードが成功した場合の成功メッセージ"
+  },
+  "message.createDocumentSuccess": {
+    "message": "ドキュメントの作成が成功しました",
+    "description": "ドキュメントの作成が成功した場合の成功メッセージ"
+  },
+  "message.startCreateDocument": {
+    "message": "ドキュメントの学習を開始中...",
+    "description": "ドキュメントの学習を開始する際のメッセージ"
+  },
+  "message.createDocumentError": {
+    "message": "ドキュメントの学習に失敗しました",
+    "description": "ドキュメントの学習に失敗した場合のエラーメッセージ"
+  },
+  "message.dragOrClickToUpload": {
+    "message": "ドキュメントをドラッグまたはクリックしてアップロード",
+    "description": "ドキュメントをアップロードするためのドラッグまたはクリックのメッセージ"
+  },
+  "message.learningDocument": {
+    "message": "学習中、お待ちください...",
+    "description": "ドキュメントの学習中のメッセージ"
+  },
+  "message.startNewChat": {
+    "message": "新しいチャットを開始",
+    "description": "新しいチャットを開始するためのメッセージ"
+  },
+  "message.errorApiError": {
+    "message": "応答に失敗しました。後でもう一度お試しください",
+    "description": "応答に失敗した場合のエラーメッセージ"
+  },
+  "message.errorBadRequest": {
+    "message": "リクエストのコンテンツが正しくフォーマットされていません。もう一度質問してください",
+    "description": "リクエストのコンテンツが正しくフォーマットされていない場合のエラーメッセージ"
+  },
+  "message.errorNoConversation": {
+    "message": "会話のコンテンツが存在しないか有効期限が切れています。新しい会話を開始してください",
+    "description": "会話のコンテンツが存在しないか有効期限が切れている場合のエラーメッセージ"
+  },
+  "message.errorContentTooLarge": {
+    "message": "質問のコンテンツが長すぎます。短くしてもう一度お試しください",
+    "description": "質問のコンテンツが長すぎる場合のエラーメッセージ"
+  },
+  "message.errorTooManyRequests": {
+    "message": "操作が頻繁すぎます。後でもう一度お試しください",
+    "description": "操作が頻繁すぎる場合のエラーメッセージ"
+  },
+  "message.errorUsedUp": {
+    "message": "パッケージの使用制限に達しました。継続するにはもっと使用量を購入してください",
+    "description": "パッケージの使用制限に達した場合のエラーメッセージ"
+  },
+  "message.errorUnknown": {
+    "message": "不明なサーバーエラーが発生しました。後でもう一度お試しください、またはカスタマーサービスに連絡してください",
+    "description": "不明なサーバーエラーが発生した場合のエラーメッセージ"
+  },
+  "message.errorTimeout": {
+    "message": "質問への回答がタイムアウトしました。後でもう一度お試しください",
+    "description": "質問への回答がタイムアウトした場合のエラーメッセージ"
+  },
+  "message.errorNotApplied": {
+    "message": "まだこのサービスに申し込んでいません。続行する前に申し込んでください",
+    "description": "ユーザーがまだこのサービスに申し込んでいない場合のエラーメッセージ"
+  },
+  "message.confirmDelete": {
+    "message": "削除を確認",
+    "description": "削除を確認するためのメッセージ"
+  },
+  "message.howToUse": {
+    "message": "Shift+Enterを押して改行",
+    "description": "改行する方法を示すメッセージ"
+  },
+  "message.createRepositorySuccess": {
+    "message": "知識ベースが正常に作成されました",
+    "description": "知識ベースが正常に作成された場合の成功メッセージ"
+  },
+  "message.createRepositoryFailed": {
+    "message": "知識ベースの作成に失敗しました",
+    "description": "知識ベースの作成に失敗した場合のエラーメッセージ"
+  },
+  "message.deleteRepositorySuccess": {
+    "message": "知識ベースが正常に削除されました",
+    "description": "知識ベースが正常に削除された場合の成功メッセージ"
+  },
+  "message.deleteDocumentSuccess": {
+    "message": "ドキュメントが正常に削除されました",
+    "description": "ドキュメントが正常に削除された場合の成功メッセージ"
+  },
+  "message.currentRepository": {
+    "message": "現在の知識ベース",
+    "description": "現在の知識ベースを表示するメッセージ"
+  },
+  "message.nameRequired": {
+    "message": "名前は空にできません",
+    "description": "名前が空の場合のエラーメッセージ"
+  },
+  "message.inputRepositoryName": {
+    "message": "知識ベースの名前を入力",
+    "description": "知識ベースの名前の入力プレースホルダー"
+  },
+  "message.inputRepositoryDescription": {
+    "message": "知識ベースの説明を一文で記述",
+    "description": "知識ベースの説明の入力プレースホルダー"
+  },
+  "nav.chat": {
+    "message": "チャット",
+    "description": "チャットのナビゲーション項目"
+  },
+  "nav.setting": {
+    "message": "設定",
+    "description": "設定のナビゲーション項目"
+  },
+  "nav.manage": {
+    "message": "管理",
+    "description": "管理のナビゲーション項目"
+  },
+  "title.manage": {
+    "message": "リポジトリを管理",
+    "description": "知識ベースを管理するためのタイトル"
+  },
+  "title.createRepository": {
+    "message": "リポジトリを作成",
+    "description": "知識ベースを作成するためのタイトル"
+  },
+  "title.repositories": {
+    "message": "リポジトリ一覧",
+    "description": "知識ベースの一覧のタイトル"
   }
 }

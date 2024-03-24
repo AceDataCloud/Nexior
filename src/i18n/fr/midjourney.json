@@ -1,228 +1,1874 @@
 {
-  "button": {
-    "buyMore": "Acheter plus",
-    "_buyMore.comment": "Texte sur le bouton, qui permet à l'utilisateur d'acheter plus de crédits",
-    "uploadReferences": "Télécharger des références",
-    "_uploadReferences.comment": "Texte sur le bouton, qui permet à l'utilisateur de télécharger des références",
-    "success": "Succès",
-    "_success.comment": "Texte sur le bouton, qui indique que l'opération a réussi",
-    "generating": "Génération",
-    "_generating.comment": "Texte sur le bouton, qui indique que l'opération est en cours",
-    "failed": "Échoué",
-    "_failed.comment": "Texte sur le bouton, qui indique que l'opération a échoué",
-    "download": "Télécharger",
-    "_download.comment": "Texte sur le bouton, qui permet à l'utilisateur de télécharger le résultat",
-    "fast": "Rapide",
-    "_fast.comment": "Texte sur le bouton, qui permet à l'utilisateur de définir le mode 'vitesse rapide' pour générer l'image, doit être traduit par 'Vitesse rapide'",
-    "relax": "Détendre",
-    "_relax.comment": "Texte sur le bouton, qui permet à l'utilisateur de définir le mode 'vitesse lente' pour se détendre et générer l'image, doit être traduit par 'Vitesse lente'",
-    "turbo": "Turbo",
-    "_turbo.comment": "Texte sur le bouton, qui permet à l'utilisateur de définir le mode 'vitesse extrême' pour turbo pour générer l'image, doit être traduit par 'Vitesse extrême'",
-    "more": "Plus",
-    "_more.comment": "Texte sur le bouton, qui permet à l'utilisateur de voir plus d'options",
-    "generate": "Générer",
-    "_generate.comment": "Texte sur le bouton, qui permet à l'utilisateur de générer l'image",
-    "history": "Historique",
-    "_history.comment": "Texte sur le bouton, qui permet à l'utilisateur de voir l'historique des images générées",
-    "generateNew": "Générer une nouvelle",
-    "_generateNew.comment": "Texte sur le bouton, qui permet à l'utilisateur de dessiner une nouvelle image"
+  "style.cute": {
+    "message": "Mignon",
+    "description": "Texte sur le bouton, qui représente le style 'mignon'"
   },
-  "field": {
-    "taskId": "ID de tâche",
-    "_taskId.comment": "ID de tâche",
-    "finalPrompt": "Dernière invite",
-    "_finalPrompt.comment": "Dernière invite de dessin utilisée pour générer l'image",
-    "elements": "Styles",
-    "_elements.comment": "Style de dessin utilisé pour générer l'image",
-    "failureReason": "Raison de l'échec",
-    "_failureReason.comment": "Raison de l'échec",
-    "traceId": "ID de trace",
-    "_traceId.comment": "ID de trace pour suivre la demande de génération de l'image, ne pas le traduire, le laisser comme 'ID de trace'"
+  "style.expressive": {
+    "message": "Expressif",
+    "description": "Texte sur le bouton, qui représente le style 'expressif'"
   },
-  "description": {
-    "aspect": "--aspect, Modifie le rapport hauteur/largeur de l'image générée, la valeur par défaut dépend du modèle et du mode",
-    "_aspect.comment": "Description du paramètre d'aspect",
-    "chaos": "--chaos, Ajuste le degré de variation dans l'image générée, plus le nombre est élevé, plus l'image générée est unique et inattendue, la plage est de 0 à 100, la valeur par défaut est 1",
-    "_chaos.comment": "Description du paramètre de chaos",
-    "fast": "Ignore les paramètres actuels et lance une seule tâche de génération en mode 'vitesse rapide', aucune valeur par défaut",
-    "_fast.comment": "Description du paramètre de vitesse rapide",
-    "iw": "--iw, Définit l'importance des invites d'image par rapport aux invites de texte pendant le processus de génération, la plage est de 0 à 2, la valeur par défaut est 1",
-    "_iw.comment": "Description du paramètre iw",
-    "no": "--no, Indique au système de génération de tenter d'exclure certains éléments, par exemple `--no plants` tentera de générer des images sans plantes, aucune valeur par défaut",
-    "_no.comment": "Description du paramètre no, le traduire par 'Exclure'",
-    "quality": "--quality, Définit la qualité et le temps de rendu de l'image générée, la plage est .25, .5, ou 1, la valeur par défaut est 1",
-    "_quality.comment": "Description du paramètre de qualité",
-    "random": "Ajoute un code de style de base aléatoire à l'invite, peut utiliser `--style random-16`, `--style random-64`, ou `--style random-128` pour obtenir des effets de style aléatoires de différentes longueurs, aucune valeur par défaut",
-    "_random.comment": "Description du paramètre aléatoire",
-    "relax": "Remplace les paramètres actuels pour exécuter une seule tâche en mode 'vitesse lente', aucune valeur par défaut",
-    "_relax.comment": "Description du paramètre de détente",
-    "repeat": "--repeat, Crée plusieurs tâches à partir d'une invite, la plage est de 1 à 40, la valeur par défaut est 1",
-    "_repeat.comment": "Description du paramètre de répétition",
-    "seed": "--seed, Bruit visuel initial pour les images générées, la plage est de 0 à 4294967295, la valeur par défaut est générée aléatoirement",
-    "_seed.comment": "Description du paramètre de graine",
-    "stop": "--stop, Arrête la tâche à n'importe quel stade du processus de génération, la plage est de 10 à 100, la valeur par défaut est 100 (c'est-à-dire, entièrement généré)",
-    "_stop.comment": "Description du paramètre d'arrêt",
-    "style": "--style, bascule entre différentes versions ou styles des modèles Midjourney ou Niji, par exemple brut, mignon, expressif, original, scénique, la valeur par défaut dépend du modèle et du mode",
-    "_style.comment": "Description du paramètre de style",
-    "stylize": "--stylize, ajuste l'intensité du style esthétique par défaut de Midjourney appliqué dans les tâches de génération, la plage est de 0 à 1000, la valeur par défaut est 100",
-    "_stylize.comment": "Description du paramètre de stylisation",
-    "tile": "--tile, Génère une image pouvant être utilisée pour un carrelage sans soudure afin de créer des motifs sans soudure, aucune valeur par défaut",
-    "_tile.comment": "Description du paramètre de carrelage",
-    "turbo": "Remplace les paramètres actuels pour exécuter une seule tâche en mode 'vitesse extrême', aucune valeur par défaut",
-    "_turbo.comment": "Description du paramètre turbo",
-    "weird": "--weird, explore des styles esthétiques inhabituels avec une nature expérimentale, la plage est de 0 à 3000, la valeur par défaut est 0",
-    "_weird.comment": "Description du paramètre étrange",
-    "translation": "Active la traduction automatique pendant la génération, le contenu non chinois sera automatiquement traduit en anglais pour Midjourney",
-    "_translation.comment": "Description du paramètre de traduction",
-    "imageWeight": "--iw, ajuste le poids des invites d'image par rapport aux invites de texte, la plage est de 0 à 2, la valeur par défaut est 1",
-    "_imageWeight.comment": "Description du paramètre de poids de l'image",
-    "niji": "--niji, Lorsqu'il est activé, les images générées utiliseront le modèle Niji, produisant des images de style anime",
-    "_niji.comment": "Description du paramètre niji",
-    "uploadReferences": "Téléchargez des images comme références pour la génération, prend en charge jusqu'à 5 images. Si plus d'une image est téléchargée, elles seront automatiquement fusionnées",
-    "_uploadReferences.comment": "Description du paramètre de téléchargement de références",
-    "raw": "--raw, Lorsqu'il est activé, les images générées utiliseront le modèle Midjourney, produisant des images de style original",
-    "_raw.comment": "Description du paramètre brut",
-    "prompt": "Entrez des commandes, si des paramètres supplémentaires sont ajoutés, ils remplaceront les paramètres prédéfinis par défaut, par exemple, ajouter `--stylize 200` forcera la commande finale à utiliser `--stylize 200`",
-    "_prompt.comment": "Description du champ d'invite"
+  "style.original": {
+    "message": "Original",
+    "description": "Texte sur le bouton, qui représente le style 'original'"
   },
-  "action": {
-    "generate": "Cliquez sur ce bouton pour commencer à générer des images",
-    "_generate.comment": "Description du bouton de génération",
-    "upscale1": "Suréchantillonner la première image",
-    "_upscale1.comment": "Description du bouton de suréchantillonnage1",
-    "upscale2": "Suréchantillonner la deuxième image",
-    "_upscale2.comment": "Description du bouton de suréchantillonnage2",
-    "upscale3": "Suréchantillonner la troisième image",
-    "_upscale3.comment": "Description du bouton de suréchantillonnage3",
-    "upscale4": "Suréchantillonner la quatrième image",
-    "_upscale4.comment": "Description du bouton de suréchantillonnage4",
-    "variation1": "Ajuster la variation de la première image",
-    "_variation1.comment": "Description du bouton de variation1",
-    "variation2": "Ajuster la variation de la deuxième image",
-    "_variation2.comment": "Description du bouton de variation2",
-    "variation3": "Ajuster la variation de la troisième image",
-    "_variation3.comment": "Description du bouton de variation3",
-    "variation4": "Ajuster la variation de la quatrième image",
-    "_variation4.comment": "Description du bouton de variation4",
-    "reroll": "Relancer",
-    "_reroll.comment": "Description du bouton de relance",
-    "high_variation": "Variation élevée",
-    "_high_variation.comment": "Description du bouton de variation élevée",
-    "low_variation": "Variation faible",
-    "_low_variation.comment": "Description du bouton de variation faible",
-    "zoom_out_2x": "Dézoomer 2x",
-    "_zoom_out_2x.comment": "Description du bouton de dézoomer 2x",
-    "zoom_out_1_5x": "Dézoomer 1.5x",
-    "_zoom_out_1_5x.comment": "Description du bouton de dézoomer 1.5x",
-    "square": "Carré",
-    "_square.comment": "Description du bouton carré",
-    "pan_left": "Déplacer à gauche",
-    "_pan_left.comment": "Description du bouton de déplacement à gauche",
-    "pan_up": "Déplacer vers le haut",
-    "_pan_up.comment": "Description du bouton de déplacement vers le haut",
-    "pan_down": "Déplacer vers le bas",
-    "_pan_down.comment": "Description du bouton de déplacement vers le bas",
-    "pan_right": "Déplacer à droite",
-    "_pan_right.comment": "Description du bouton de déplacement à droite",
-    "zoom_in_2x": "Zoomer 2x",
-    "_zoom_in_2x.comment": "Description du bouton de zoomer 2x",
-    "zoom_in_1_5x": "Zoomer 1.5x",
-    "_zoom_in_1_5x.comment": "Description du bouton de zoomer 1.5x",
-    "upscale_2x": "Suréchantillonner 2x",
-    "_upscale_2x.comment": "Description du bouton de suréchantillonnage 2x",
-    "upscale_4x": "Suréchantillonner 4x",
-    "_upscale_4x.comment": "Description du bouton de suréchantillonnage 4x",
-    "redo_upscale_2x": "Refaire le suréchantillonnage 2x",
-    "_redo_upscale_2x.comment": "Description du bouton de refaire le suréchantillonnage 2x",
-    "redo_upscale_4x": "Refaire le suréchantillonnage 4x",
-    "_redo_upscale_4x.comment": "Description du bouton de refaire le suréchantillonnage 4x"
+  "style.scenic": {
+    "message": "Paysage",
+    "description": "Texte sur le bouton, qui représente le style 'paysage'"
   },
-  "message": {
-    "promptPlaceholder": "Veuillez saisir une phrase pour décrire l'image que vous souhaitez générer, par exemple : un chat mignon. Les paramètres supplémentaires remplaceront les paramètres prédéfinis par défaut",
-    "_promptPlaceholder.comment": "Texte d'espace réservé dans le champ d'invite",
-    "uploadReferencesExceed": "Vous pouvez télécharger jusqu'à 5 images au maximum",
-    "_uploadReferencesExceed.comment": "Message d'erreur lorsque le nombre d'images téléchargées dépasse la limite",
-    "uploadReferencesSuccess": "Images téléchargées avec succès",
-    "_uploadReferencesSuccess.comment": "Message de succès lorsque les images sont téléchargées avec succès",
-    "uploadReferencesError": "Échec du téléchargement des images, veuillez réessayer ultérieurement",
-    "_uploadReferencesError.comment": "Message d'erreur lorsque les images échouent à se télécharger",
-    "startTaskSuccess": "Tâche de dessin démarrée avec succès",
-    "_startTaskSuccess.comment": "Message de succès lorsque la tâche de dessin démarre avec succès",
-    "startTaskFailed": "Échec du démarrage de la tâche de dessin",
-    "_startTaskFailed.comment": "Message d'erreur lorsque la tâche de dessin échoue à démarrer",
-    "generating": "Génération en cours...",
-    "_generating.comment": "Message lorsque l'image est en cours de génération",
-    "noOperations": "Aucune opération disponible",
-    "_noOperations.comment": "Message lorsqu'il n'y a aucune opération disponible",
-    "noTasks": "Aucune tâche historique, veuillez d'abord démarrer une nouvelle tâche",
-    "_noTasks.comment": "Message lorsqu'il n'y a aucune tâche historique"
+  "style.raw": {
+    "message": "Brut",
+    "description": "Texte sur le bouton, qui représente le style 'brut'"
   },
-  "model": {
-    "general": "Général",
-    "_general.comment": "Le nom d'un modèle utilisé pour la génération d'images générales",
-    "niji": "Niji",
-    "_niji.comment": "Le nom d'un modèle utilisé pour la génération d'images de style anime, ne pas traduire, le laisser comme 'Niji'"
+  "styleCategory.special": {
+    "message": "Spécial",
+    "description": "Un mot de catégorie utilisé pour décrire et générer une image, l'image générée doit inclure la catégorie de cette balise."
   },
-  "name": {
-    "model": "Modèle",
-    "_model.comment": "Le nom du modèle, le modèle est un terme en apprentissage automatique, qui est utilisé pour générer des images",
-    "aspect": "Ratio d'aspect",
-    "_aspect.comment": "Le nom du paramètre d'aspect",
-    "ratio": "Ratio",
-    "_ratio.comment": "Le nom du paramètre de ratio",
-    "chaos": "Chaos",
-    "_chaos.comment": "Le nom du paramètre de chaos, traduisez-le par 'taux de désordre'",
-    "fast": "Rapide",
-    "_fast.comment": "Le nom du mode rapide, qui est utilisé pour générer des images rapidement, traduisez-le par 'Vitesse rapide'",
-    "nijiStyle": "Niji",
-    "_nijiStyle.comment": "Le nom du paramètre nijiStyle, ne le traduisez pas, gardez-le comme 'Niji'",
-    "version": "Version",
-    "_version.comment": "Le nom du paramètre de version",
-    "imageWeight": "Poids de l'image",
-    "_imageWeight.comment": "Le nom du paramètre de poids de l'image",
-    "no": "Exclure",
-    "_no.comment": "Le nom du paramètre non, qui est utilisé pour exclure certains éléments, traduisez-le par 'Exclure'",
-    "quality": "Qualité",
-    "_quality.comment": "Le nom du paramètre de qualité, qui est utilisé pour définir la qualité de l'image générée",
-    "random": "Aléatoire",
-    "_random.comment": "Le nom du paramètre aléatoire, qui est utilisé pour ajouter des effets de style aléatoires",
-    "relax": "Lent",
-    "_relax.comment": "Le nom du mode relax, qui est utilisé pour générer des images en mode 'lent', traduisez-le par 'lent'",
-    "repeat": "Répéter",
-    "_repeat.comment": "Le nom du paramètre de répétition, qui est utilisé pour créer plusieurs tâches à partir d'une seule instruction",
-    "seed": "Graine",
-    "_seed.comment": "Le nom du paramètre de graine, qui est utilisé pour définir le bruit visuel initial",
-    "stop": "Arrêter",
-    "_stop.comment": "Le nom du paramètre d'arrêt, qui est utilisé pour arrêter la tâche à n'importe quel stade",
-    "style": "Style",
-    "_style.comment": "Le nom du paramètre de style, qui est utilisé pour basculer entre différentes versions ou styles de modèles",
-    "stylize": "Styliser",
-    "_stylize.comment": "Le nom du paramètre de stylisation, qui est utilisé pour ajuster l'intensité du style esthétique par défaut",
-    "tile": "Tuile",
-    "_tile.comment": "Le nom du paramètre de tuile, qui est utilisé pour générer des images pouvant être utilisées pour un carrelage sans soudure",
-    "turbo": "Turbo",
-    "_turbo.comment": "Le nom du mode turbo, qui est utilisé pour générer des images en mode 'extrême vitesse', traduisez-le par 'Vitesse extrême'",
-    "weird": "Étrange",
-    "_weird.comment": "Le nom du paramètre étrange, qui est utilisé pour explorer des styles esthétiques inhabituels, traduisez-le par 'Étrangeté'",
-    "translation": "Traduction",
-    "_translation.comment": "Le nom du paramètre de traduction, qui est utilisé pour activer la traduction automatique lors de la génération",
-    "advanced": "Avancé",
-    "_advanced.comment": "Le nom du mode avancé, qui est utilisé pour activer le mode avancé",
-    "niji": "Niji",
-    "_niji.comment": "Le nom du paramètre niji, qui est utilisé pour activer le modèle Niji, ne le traduisez pas, gardez-le comme 'Niji'",
-    "ignore": "Ignorer",
-    "_ignore.comment": "Le nom du paramètre d'ignorer, qui est utilisé pour ignorer certains éléments",
-    "prompt": "Instruction",
-    "_prompt.comment": "Le nom du paramètre d'instruction, qui est utilisé pour entrer des instructions de dessin",
-    "raw": "Brut",
-    "_raw.comment": "Le nom du paramètre brut, qui est utilisé pour activer le modèle Midjourney"
+  "styleCategory.chinese": {
+    "message": "Chinois",
+    "description": "Un mot de catégorie utilisé pour décrire et générer une image, l'image générée doit inclure la catégorie de cette balise."
   },
-  "placeholder": {
-    "prompt": "Entrez une phrase pour décrire l'image que vous souhaitez générer, par exemple : un chat mignon. Les paramètres supplémentaires remplaceront les paramètres prédéfinis par défaut",
-    "_prompt.comment": "Le texte de substitution dans le champ d'instruction",
-    "ignore": "Entrez les éléments à ignorer, par exemple : `--ignorer les plantes`",
-    "_ignore.comment": "Le texte de substitution dans le champ d'ignorer",
-    "select": "Sélectionner",
-    "_select.comment": "Le texte de substitution dans le champ de sélection"
+  "styleCategory.emotion": {
+    "message": "Émotion",
+    "description": "Un mot de catégorie utilisé pour décrire et générer une image, l'image générée doit inclure la catégorie de cette balise."
+  },
+  "styleCategory.camera": {
+    "message": "Caméra",
+    "description": "Un mot de catégorie utilisé pour décrire et générer une image, l'image générée doit inclure la catégorie de cette balise."
+  },
+  "styleCategory.styles": {
+    "message": "Styles",
+    "description": "Un mot de catégorie utilisé pour décrire et générer une image, l'image générée doit inclure la catégorie de cette balise."
+  },
+  "styleCategory.lighting": {
+    "message": "Éclairage",
+    "description": "Un mot de catégorie utilisé pour décrire et générer une image, l'image générée doit inclure la catégorie de cette balise."
+  },
+  "styleCategory.painters": {
+    "message": "Peintres",
+    "description": "Un mot de catégorie utilisé pour décrire et générer une image, l'image générée doit inclure la catégorie de cette balise."
+  },
+  "styleCategory.material": {
+    "message": "Matériel",
+    "description": "Un mot de catégorie utilisé pour décrire et générer une image, l'image générée doit inclure la catégorie de cette balise."
+  },
+  "styleCategory.artists": {
+    "message": "Artistes",
+    "description": "Un mot de catégorie utilisé pour décrire et générer une image, l'image générée doit inclure la catégorie de cette balise."
+  },
+  "styleTag.watercolour": {
+    "message": "Aquarelle",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.oilPainting": {
+    "message": "Peinture à l'huile",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.oldPhotograph": {
+    "message": "Vieille photographie",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.oneLineDrawing": {
+    "message": "Dessin en une ligne",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.sketchDrawing": {
+    "message": "Esquisse",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.gouache": {
+    "message": "Gouache",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.filmStyle": {
+    "message": "Style cinématographique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.photorealistic": {
+    "message": "Réaliste",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.logo": {
+    "message": "Logo",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.cartoon": {
+    "message": "Dessin animé",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.marbleStatue": {
+    "message": "Statue en marbre",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.1800S": {
+    "message": "Années 1800",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.1980S": {
+    "message": "Années 1980",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.isometricAnime": {
+    "message": "Anime isométrique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.analyticDrawing": {
+    "message": "Dessin analytique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.coloringBook": {
+    "message": "Livre de coloriage",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.infographicDrawing": {
+    "message": "Dessin infographique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.doubleExposure": {
+    "message": "Double exposition",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.diagrammaticDrawing": {
+    "message": "Dessin diagrammatique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.2DIllustration": {
+    "message": "Illustration 2D",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.diagrammaticPortrait": {
+    "message": "Portrait diagrammatique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.pixelArt": {
+    "message": "Art pixel",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.darkFantasy": {
+    "message": "Fantaisie sombre",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.ukiyoEArt": {
+    "message": "Art Ukiyo-e",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.paperQuilling": {
+    "message": "Papier quilling",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.paperCutCraft": {
+    "message": "Art du découpage de papier",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.iridescent": {
+    "message": "Iridescent",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.patchworkCollage": {
+    "message": "Collage patchwork",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.opArt": {
+    "message": "Art optique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.japaneseInk": {
+    "message": "Encre japonaise",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.pastelDrawing": {
+    "message": "Dessin pastel",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.drippingArt": {
+    "message": "Art ruisselant",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.tattooArt": {
+    "message": "Art du tatouage",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.16Bit": {
+    "message": "16 bits",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.8Bit": {
+    "message": "8 bits",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.amber": {
+    "message": "Ambre",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.anatomicalDrawing": {
+    "message": "Dessin anatomique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.ancient": {
+    "message": "Ancien",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.anime": {
+    "message": "Anime",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.arabic": {
+    "message": "Arabe",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.blocky": {
+    "message": "Blocage",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.blueprint": {
+    "message": "Plan",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.comicbook": {
+    "message": "Bande dessinée",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.caribbean": {
+    "message": "Caribéen",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.celestial": {
+    "message": "Céleste",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.cellulose": {
+    "message": "Cellulose",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.charcoalStyle": {
+    "message": "Style fusain",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.chromatic": {
+    "message": "Chromatique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.coral": {
+    "message": "Corail",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.conceptArt": {
+    "message": "Art conceptuel",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.fibonacci": {
+    "message": "Fibonacci",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.cyberpunk": {
+    "message": "Cyberpunk",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.diabolic": {
+    "message": "Diabolique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.diffractionGrading": {
+    "message": "Diffraction",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.lightspeed": {
+    "message": "Vitesse de la lumière",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.liquid": {
+    "message": "Liquide",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.dots": {
+    "message": "Points",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.dune": {
+    "message": "Dune",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.drippingPaint": {
+    "message": "Peinture qui goutte",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.electronicCircuitry": {
+    "message": "Circuit électronique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.electrical": {
+    "message": "Électrique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.futuristic": {
+    "message": "Futuriste",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.etching": {
+    "message": "Gravure",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.extraterrestrial": {
+    "message": "Extraterrestre",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.glitchart": {
+    "message": "Art glitch",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.floral": {
+    "message": "Floral",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.fractal": {
+    "message": "Fractal",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.preHistoric": {
+    "message": "Préhistorique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.prokaryotic": {
+    "message": "Procaryote",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.horror": {
+    "message": "Horreur",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.iceAge": {
+    "message": "Ère glaciaire",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.jurassic": {
+    "message": "Jurassique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.knitted": {
+    "message": "Tricoté",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.polka": {
+    "message": "À pois",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.latex": {
+    "message": "Latex",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.pastel": {
+    "message": "Pastel",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.mandala": {
+    "message": "Mandala",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.molecular": {
+    "message": "Moléculaire",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.merkaba": {
+    "message": "Merkaba",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.mitochondria": {
+    "message": "Mitochondrie",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.graffiti": {
+    "message": "Graffiti",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.graphicNovel": {
+    "message": "Roman graphique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.multidimensional": {
+    "message": "Multidimensionnel",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.nasa": {
+    "message": "NASA",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.nebula": {
+    "message": "Nébuleuse",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.neon": {
+    "message": "Néon",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.nuclear": {
+    "message": "Nucléaire",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.orbital": {
+    "message": "Orbital",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.rayTracing": {
+    "message": "Traçage de rayons",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.realistic": {
+    "message": "Réaliste",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.renaissance": {
+    "message": "Renaissance",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.retro": {
+    "message": "Rétro",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.risograph": {
+    "message": "Risographie",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.origami": {
+    "message": "Origami",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.ornamental": {
+    "message": "Ornemental",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.space": {
+    "message": "Espace",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.splatterPaint": {
+    "message": "Peinture éclaboussée",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.sprayPaint": {
+    "message": "Peinture en bombe",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.squiggles": {
+    "message": "Gribouillis",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.stitching": {
+    "message": "Couture",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.veins": {
+    "message": "Veines",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.streetArt": {
+    "message": "Art de rue",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.surreal": {
+    "message": "Surréaliste",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.symmetric": {
+    "message": "Symétrique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.synthWave": {
+    "message": "Synth-wave",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.technological": {
+    "message": "Technologique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.tron": {
+    "message": "Tron",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.tropical": {
+    "message": "Tropical",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.ultraModern": {
+    "message": "Ultra moderne",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.wormhole": {
+    "message": "Trou de ver",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.wrinkled": {
+    "message": "Froissé",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.volcanic": {
+    "message": "Volcanique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.wetPaint": {
+    "message": "Peinture fraîche",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.wildWest": {
+    "message": "Far West",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.wind": {
+    "message": "Vent",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.miniatureFaking": {
+    "message": "Faux en miniature",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.accentLighting": {
+    "message": "Éclairage d'accentuation",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.backlight": {
+    "message": "Rétroéclairage",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.blacklight": {
+    "message": "Lumière noire",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.goldenHourLight": {
+    "message": "Lumière de l'heure dorée",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.candlelight": {
+    "message": "Lumière de bougie",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.concertLighting": {
+    "message": "Éclairage de concert",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.crepuscularRays": {
+    "message": "Rayons crépusculaires",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.directSunlight": {
+    "message": "Lumière directe du soleil",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.dust": {
+    "message": "Poussière",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.studioLighting": {
+    "message": "Éclairage de studio",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.rimLight": {
+    "message": "Lumière de contour",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.volumetricLighting": {
+    "message": "Éclairage volumétrique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.fluorescent": {
+    "message": "Fluorescent",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.glowing": {
+    "message": "Brillant",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.glowStick": {
+    "message": "Bâton lumineux",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.glowRadioactive": {
+    "message": "Lueur radioactive",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.lavaGlow": {
+    "message": "Lueur de lave",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.moonlight": {
+    "message": "Clair de lune",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.naturalLighting": {
+    "message": "Éclairage naturel",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.neonLamp": {
+    "message": "Lampe néon",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.nightclubLighting": {
+    "message": "Éclairage de boîte de nuit",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.nuclearWasteGlo": {
+    "message": "Déchet nucléaire lumineux",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.quantumDot": {
+    "message": "Point quantique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.spotlight": {
+    "message": "Projecteur",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.edgeLight": {
+    "message": "Lumière de bord",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.coldLight": {
+    "message": "Lumière froide",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.keyLighting": {
+    "message": "Éclairage clé",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.ambientLight": {
+    "message": "Lumière ambiante",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.highKeyLighting": {
+    "message": "Éclairage clair",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.lowKeyLighting": {
+    "message": "Éclairage sombre",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.motivatedLighting": {
+    "message": "Éclairage motivé",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.3PointLighting": {
+    "message": "Éclairage à 3 points",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.strobeLight": {
+    "message": "Lumière stroboscopique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.sunLight": {
+    "message": "Lumière du soleil",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.ultraviolet": {
+    "message": "Ultraviolet",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.beautifulLighting": {
+    "message": "Éclairage magnifique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.moodyLighting": {
+    "message": "Éclairage d'humeur",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.softLighting": {
+    "message": "Éclairage doux",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.michelangelo": {
+    "message": "Michel-Ange",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.monet": {
+    "message": "Monet",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.paulCezanne": {
+    "message": "Paul Cézanne",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.markRothko": {
+    "message": "Mark Rothko",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.paulKlee": {
+    "message": "Paul Klee",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.picasso": {
+    "message": "Picasso",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.pietMondrian": {
+    "message": "Piet Mondrian",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.pierreAugusteRer": {
+    "message": "Pierre Auguste Rer",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.rembrandt": {
+    "message": "Rembrandt",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.reneMagritte": {
+    "message": "René Magritte",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.royLichtenstein": {
+    "message": "Roy Lichtenstein",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.salvadorDali": {
+    "message": "Salvador Dalí",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.sandroBotticelli": {
+    "message": "Sandro Botticelli",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.takashiMurakami": {
+    "message": "Takashi Murakami",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.vanGogh": {
+    "message": "Van Gogh",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.wassilyKandinsky": {
+    "message": "Wassily Kandinsky",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.matCollishaw": {
+    "message": "Mat Collishaw",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.yayoiKusama": {
+    "message": "Yayoi Kusama",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.igorMorski": {
+    "message": "Igor Morski",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.shinkaiMakoto": {
+    "message": "Shinkai Makoto",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.pixar": {
+    "message": "Pixar",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.kyotoAnime": {
+    "message": "Kyoto Anime",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.jerryPinkney": {
+    "message": "Jerry Pinkney",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.hayaoMiyazaki": {
+    "message": "Hayao Miyazaki",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.beatrixPotter": {
+    "message": "Beatrix Potter",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.jonKlassen": {
+    "message": "Jon Klassen",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.kaySage": {
+    "message": "Kay Sage",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.jeffreyCatherineJones": {
+    "message": "Jeffrey Catherine Jones",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.yaacovAgam": {
+    "message": "Yaacov Agam",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.davidHockney": {
+    "message": "David Hockney",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.victorMoscoso": {
+    "message": "Victor Moscoso",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.raphaelite": {
+    "message": "Raphaélite",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.stefanKoidl": {
+    "message": "Stefan Koidl",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.suiIshida": {
+    "message": "Sui Ishida",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.swoon": {
+    "message": "Swoon",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.tashaTudor": {
+    "message": "Tasha Tudor",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.tintoretto": {
+    "message": "Tintoretto",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.theodoreRobinsor": {
+    "message": "Theodore Robinsor",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.titian": {
+    "message": "Titien",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.wlop": {
+    "message": "WLOP",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.yanjunCheng": {
+    "message": "Yanjun Cheng",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.yojiShinkawa": {
+    "message": "Yoji Shinkawa",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.zhelongXu": {
+    "message": "Zhelong Xu",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.alenaAenami": {
+    "message": "Alena Aenami",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.anntonFadeevi": {
+    "message": "Annton Fadeevi",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.charlieBowater": {
+    "message": "Charlie Bowater",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.coryLoftis": {
+    "message": "Cory Loftis",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.fenghuaZhong": {
+    "message": "Fenghua Zhong",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.gregRutkowski": {
+    "message": "Greg Rutkowski",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.hongSoonsang": {
+    "message": "Hong SoonSang",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.dennisStock": {
+    "message": "Dennis Stock",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.michalLisowski": {
+    "message": "Michal Lisowski",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.paulLehr": {
+    "message": "Paul Lehr",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.rossTran": {
+    "message": "Ross Tran",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.antonPieck": {
+    "message": "Anton Pieck",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.carlBarks": {
+    "message": "Carl Barks",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.alphonseMucha": {
+    "message": "Alphonse Mucha",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.andyWarhol": {
+    "message": "Andy Warhol",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.banksy": {
+    "message": "Banksy",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.franciscoDeGoya": {
+    "message": "Francisco De Goya",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.caravaggio": {
+    "message": "Caravaggio",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.diegoRivera": {
+    "message": "Diego Rivera",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.marcChagall": {
+    "message": "Marc Chagall",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.edgarDegas": {
+    "message": "Edgar Degas",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.eugeneDelacroix": {
+    "message": "Eugene Delacroix",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.francisBacon": {
+    "message": "Francis Bacon",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.fridaKahlo": {
+    "message": "Frida Kahlo",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.garaldBrom": {
+    "message": "Garald Brom",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.gustavKlimt": {
+    "message": "Gustav Klimt",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.henriMatisse": {
+    "message": "Henri Matisse",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.jackKirby": {
+    "message": "Jack Kirby",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.jacksonPollock": {
+    "message": "Jackson Pollock",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.johannesVermeer": {
+    "message": "Johannes Vermeer",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.jeanMichelBasquiat": {
+    "message": "Jean Michel Basquiat",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.marcelDuchamp": {
+    "message": "Marcel Duchamp",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.aluminum": {
+    "message": "Aluminium",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.brick": {
+    "message": "Brique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.bronze": {
+    "message": "Bronze",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.carbonFiber": {
+    "message": "Fibre de carbone",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.cardboard": {
+    "message": "Carton",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.ceramic": {
+    "message": "Céramique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.cotton": {
+    "message": "Coton",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.fabric": {
+    "message": "Tissu",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.fiberOptic": {
+    "message": "Fibre optique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.foil": {
+    "message": "Feuille métallique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.yarn": {
+    "message": "Fil",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.glass": {
+    "message": "Verre",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.gold": {
+    "message": "Or",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.gummies": {
+    "message": "Bonbons gélifiés",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.leather": {
+    "message": "Cuir",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.magma": {
+    "message": "Magma",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.metallic": {
+    "message": "Métallique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.nickel": {
+    "message": "Nickel",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.nylon": {
+    "message": "Nylon",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.paper": {
+    "message": "Papier",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.plastic": {
+    "message": "Plastique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.quartz": {
+    "message": "Quartz",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.wrap": {
+    "message": "Emballage",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.wooden": {
+    "message": "Bois",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.slime": {
+    "message": "Slime",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.engraving": {
+    "message": "Gravure",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.ivory": {
+    "message": "Ivoire",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.basalt": {
+    "message": "Basalte",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.pine": {
+    "message": "Pin",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.diamond": {
+    "message": "Diamant",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.amethyst": {
+    "message": "Améthyste",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.ruby": {
+    "message": "Rubis",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.highPolished": {
+    "message": "Hautement poli",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.brushed": {
+    "message": "Brossé",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.matte": {
+    "message": "Mat",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.satin": {
+    "message": "Satiné",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.sandblasted": {
+    "message": "Sablé",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.ebony": {
+    "message": "Ébène",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.bokeh": {
+    "message": "Bokeh",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.aerialView": {
+    "message": "Vue aérienne",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.shotByDslr": {
+    "message": "Pris par un appareil photo reflex numérique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.360Panorama": {
+    "message": "360° Panorama",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.panorama": {
+    "message": "Panorama",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.telephotoLens": {
+    "message": "Objectif téléobjectif",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.macroShot": {
+    "message": "Macro",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.microscopy": {
+    "message": "Microscopie",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.magnification": {
+    "message": "Grossissement",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.closeUp": {
+    "message": "Gros plan",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.fullBody": {
+    "message": "Corps entier",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.portrait": {
+    "message": "Portrait",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.profile": {
+    "message": "Profil",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.pinholeLens": {
+    "message": "Objectif sténopé",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.wideView": {
+    "message": "Vue large",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.telescopeLens": {
+    "message": "Objectif télescopique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.satelliteImagery": {
+    "message": "Imagerie satellite",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.headshot": {
+    "message": "Portrait en buste",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.extremeCloseup": {
+    "message": "Gros plan extrême",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.ultrawideShot": {
+    "message": "Prise de vue ultra-large",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.birdView": {
+    "message": "Vue d'oiseau",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.topView": {
+    "message": "Vue de dessus",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.frontView": {
+    "message": "Vue de face",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.sideView": {
+    "message": "Vue de côté",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.backView": {
+    "message": "Vue arrière",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.faceShot": {
+    "message": "Portrait de face",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.chestShot": {
+    "message": "Portrait de buste",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.waistShot": {
+    "message": "Portrait de taille",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.extraLongShot": {
+    "message": "Prise de vue extra longue",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.lookUp": {
+    "message": "Regarder vers le haut",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.isometricview": {
+    "message": "Vue isométrique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.highAngleView": {
+    "message": "Vue en plongée",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.lowAngleView": {
+    "message": "Vue en contre-plongée",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.happy": {
+    "message": "Heureux",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.excited": {
+    "message": "Excité",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.angry": {
+    "message": "En colère",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.ped": {
+    "message": "Péd",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.disgusted": {
+    "message": "Dégoûté",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.supnned": {
+    "message": "Surpris",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.hopeful": {
+    "message": "Plein d'espoir",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.anxious": {
+    "message": "Anxieux",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.elated": {
+    "message": "Enchanté",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.fearful": {
+    "message": "Craintif",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.hateful": {
+    "message": "Haineux",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.apoow": {
+    "message": "Apoow",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.dark": {
+    "message": "Sombre",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.brutal": {
+    "message": "Brutal",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.hanfu": {
+    "message": "Hanfu",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.cheongsam": {
+    "message": "Cheongsam",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.chineseCostume": {
+    "message": "Costume chinois",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.chineseDress": {
+    "message": "Robe chinoise",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.wuxia": {
+    "message": "Wuxia",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.chinesePhoenix": {
+    "message": "Phénix chinois",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.kungfu": {
+    "message": "Kung-fu",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.kunquOpera": {
+    "message": "Opéra Kunqu",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.cloisonne": {
+    "message": "Cloisonné",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.porcelain": {
+    "message": "Porcelaine",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.embroidered": {
+    "message": "Brodé",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.jade": {
+    "message": "Jade",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.chinesePavilion": {
+    "message": "Pavillon chinois",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.plumFlower": {
+    "message": "Fleur de prunier",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.forbiddenCity": {
+    "message": "Cité interdite",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.peony": {
+    "message": "Pivoine",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.unrealEngine": {
+    "message": "Unreal Engine",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.octaneRender": {
+    "message": "Octane Render",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.maxonCinema4D": {
+    "message": "Maxon Cinema 4D",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.quixelMegascansRender": {
+    "message": "Rendu Quixel Megascans",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.coronaRender": {
+    "message": "Rendu Corona",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.vRay": {
+    "message": "V-Ray",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette balise."
+  },
+  "styleTag.architecturalVisualisation": {
+    "message": "Visualisation architecturale",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée devrait inclure le style de cette balise."
+  },
+  "styleTag.dramaticContrast": {
+    "message": "Contraste dramatique",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée devrait inclure le style de cette balise."
+  },
+  "styleTag.goldAndBlackTone": {
+    "message": "Tons dorés et noirs",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée devrait inclure le style de cette balise."
+  },
+  "styleTag.whiteAndPinkTone": {
+    "message": "Tons blancs et roses",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée devrait inclure le style de cette balise."
+  },
+  "styleTag.redAndBlackTone": {
+    "message": "Tons rouges et noirs",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée devrait inclure le style de cette balise."
+  },
+  "styleTag.neonShades": {
+    "message": "Teintes néon",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée devrait inclure le style de cette balise."
+  },
+  "styleTag.richColor": {
+    "message": "Couleur riche",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée devrait inclure le style de cette balise."
+  },
+  "styleTag.monotone": {
+    "message": "Monochrome",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée devrait inclure le style de cette balise."
+  },
+  "styleTag.theLowPurityTone": {
+    "message": "La tonalité de faible pureté",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée devrait inclure le style de cette balise."
+  },
+  "styleTag.theHighPurityTone": {
+    "message": "La tonalité de haute pureté",
+    "description": "Un mot de style utilisé pour décrire et générer une image, l'image générée devrait inclure le style de cette balise."
+  },
+  "button.low": {
+    "message": "Faible",
+    "description": "Texte sur le bouton, qui représente la qualité d'image 'faible'"
+  },
+  "button.medium": {
+    "message": "Moyen",
+    "description": "Texte sur le bouton, qui représente la qualité d'image 'moyenne'"
+  },
+  "button.high": {
+    "message": "Élevée",
+    "description": "Texte sur le bouton, qui représente la qualité d'image 'élevée'"
+  },
+  "button.buyMore": {
+    "message": "Acheter plus",
+    "description": "Texte sur le bouton, qui permet à l'utilisateur d'acheter plus de crédits"
+  },
+  "button.uploadReferences": {
+    "message": "Télécharger des références",
+    "description": "Texte sur le bouton, qui permet à l'utilisateur de télécharger des références"
+  },
+  "button.success": {
+    "message": "Succès",
+    "description": "Texte sur le bouton, qui indique que l'opération a réussi"
+  },
+  "button.generating": {
+    "message": "Génération en cours",
+    "description": "Texte sur le bouton, qui indique que l'opération est en cours"
+  },
+  "button.failed": {
+    "message": "Échec",
+    "description": "Texte sur le bouton, qui indique que l'opération a échoué"
+  },
+  "button.download": {
+    "message": "Télécharger",
+    "description": "Texte sur le bouton, qui permet à l'utilisateur de télécharger le résultat"
+  },
+  "button.fast": {
+    "message": "Rapide",
+    "description": "Texte sur le bouton, qui permet à l'utilisateur de définir le mode 'vitesse rapide' pour générer l'image, doit être traduit par 'Vitesse rapide'"
+  },
+  "button.relax": {
+    "message": "Détente",
+    "description": "Texte sur le bouton, qui permet à l'utilisateur de définir le mode 'vitesse lente' pour se détendre et générer l'image, doit être traduit par 'Vitesse lente'"
+  },
+  "button.turbo": {
+    "message": "Turbo",
+    "description": "Texte sur le bouton, qui permet à l'utilisateur de définir le mode 'vitesse extrême' en turbo pour générer l'image, doit être traduit par 'Vitesse extrême'"
+  },
+  "button.more": {
+    "message": "Plus",
+    "description": "Texte sur le bouton, qui permet à l'utilisateur de voir plus d'options"
+  },
+  "button.generate": {
+    "message": "Générer",
+    "description": "Texte sur le bouton, qui permet à l'utilisateur de générer l'image"
+  },
+  "button.history": {
+    "message": "Historique",
+    "description": "Texte sur le bouton, qui permet à l'utilisateur de voir l'historique des images générées"
+  },
+  "button.generateNew": {
+    "message": "Générer une nouvelle",
+    "description": "Texte sur le bouton, qui permet à l'utilisateur de dessiner une nouvelle image"
+  },
+  "field.taskId": {
+    "message": "ID de tâche",
+    "description": "ID de tâche"
+  },
+  "field.finalPrompt": {
+    "message": "Dernière instruction",
+    "description": "Dernière instruction de dessin utilisée pour générer l'image"
+  },
+  "field.elements": {
+    "message": "Styles",
+    "description": "Style de dessin utilisé pour générer l'image"
+  },
+  "field.failureReason": {
+    "message": "Raison de l'échec",
+    "description": "Raison de l'échec"
+  },
+  "field.traceId": {
+    "message": "ID de trace",
+    "description": "ID de trace pour suivre la demande de génération de l'image, ne pas le traduire, le laisser tel quel 'ID de trace'"
+  },
+  "description.aspect": {
+    "message": "--aspect, Modifie le rapport hauteur/largeur de l'image générée, la valeur par défaut dépend du modèle et du mode",
+    "description": "Description du paramètre aspect"
+  },
+  "description.chaos": {
+    "message": "--chaos, Ajuste le degré de variation dans l'image générée, plus le nombre est élevé, plus l'image générée est unique et inattendue, la plage est de 0 à 100, la valeur par défaut est 1",
+    "description": "Description du paramètre chaos"
+  },
+  "description.fast": {
+    "message": "Ignore les paramètres actuels et lance une tâche de génération unique en mode 'vitesse rapide', aucune valeur par défaut",
+    "description": "Description du paramètre fast"
+  },
+  "description.iw": {
+    "message": "--iw, Définit l'importance des instructions d'image par rapport aux instructions de texte pendant le processus de génération, la plage est de 0 à 2, la valeur par défaut est 1",
+    "description": "Description du paramètre iw"
+  },
+  "description.no": {
+    "message": "--no, Indique au système de génération de tenter d'exclure certains éléments, par exemple `--no plants` tentera de générer des images sans plantes, aucune valeur par défaut",
+    "description": "Description du paramètre no, traduisez-le par 'Exclure'"
+  },
+  "description.quality": {
+    "message": "--quality, Définit la qualité et le temps de rendu de l'image générée, la plage est .25, .5, ou 1, la valeur par défaut est 1",
+    "description": "Description du paramètre qualité"
+  },
+  "description.random": {
+    "message": "Ajoute un code de style de base aléatoire à l'instruction, peut utiliser `--style random-16`, `--style random-64`, ou `--style random-128` pour obtenir des effets de style aléatoires de différentes longueurs, aucune valeur par défaut",
+    "description": "Description du paramètre aléatoire"
+  },
+  "description.relax": {
+    "message": "Remplace les paramètres actuels pour exécuter une tâche unique en mode 'vitesse lente', aucune valeur par défaut",
+    "description": "Description du paramètre relax"
+  },
+  "description.repeat": {
+    "message": "--repeat, Crée plusieurs tâches à partir d'une instruction, la plage est de 1 à 40, la valeur par défaut est 1",
+    "description": "Description du paramètre repeat"
+  },
+  "description.seed": {
+    "message": "--seed, Bruit visuel initial pour les images générées, la plage est de 0 à 4294967295, la valeur par défaut est générée aléatoirement",
+    "description": "Description du paramètre seed"
+  },
+  "description.stop": {
+    "message": "--stop, Arrête la tâche à n'importe quelle étape du processus de génération, la plage est de 10 à 100, la valeur par défaut est 100 (c'est-à-dire, entièrement généré)",
+    "description": "Description du paramètre stop"
+  },
+  "description.style": {
+    "message": "--style, bascule entre différentes versions ou styles des modèles Midjourney ou Niji, par exemple brut, mignon, expressif, original, pittoresque, la valeur par défaut dépend du modèle et du mode",
+    "description": "Description du paramètre style"
+  },
+  "description.stylize": {
+    "message": "--stylize, ajuste l'intensité du style esthétique par défaut de Midjourney appliqué dans les tâches de génération, la plage est de 0 à 1000, la valeur par défaut est 100",
+    "description": "Description du paramètre stylize"
+  },
+  "description.tile": {
+    "message": "--tile, Génère une image pouvant être utilisée pour un carrelage sans soudure afin de créer des motifs sans soudure, aucune valeur par défaut",
+    "description": "Description du paramètre tile"
+  },
+  "description.turbo": {
+    "message": "Remplace les paramètres actuels pour exécuter une tâche unique en mode 'vitesse extrême', aucune valeur par défaut",
+    "description": "Description du paramètre turbo"
+  },
+  "description.weird": {
+    "message": "--weird, explore des styles esthétiques inhabituels avec une nature expérimentale, la plage est de 0 à 3000, la valeur par défaut est 0",
+    "description": "Description du paramètre weird"
+  },
+  "description.translation": {
+    "message": "Active la traduction automatique pendant la génération, le contenu non chinois sera automatiquement traduit en entrée anglaise pour Midjourney",
+    "description": "Description du paramètre de traduction"
+  },
+  "description.imageWeight": {
+    "message": "--iw, ajuste le poids des instructions d'image par rapport aux instructions de texte, la plage est de 0 à 2, la valeur par défaut est 1",
+    "description": "Description du paramètre imageWeight"
+  },
+  "description.niji": {
+    "message": "--niji, Lorsqu'il est activé, les images générées utiliseront le modèle Niji, produisant des images de style anime",
+    "description": "Description du paramètre niji"
+  },
+  "description.uploadReferences": {
+    "message": "Téléchargez des images comme références pour la génération, prend en charge jusqu'à 5 images. Si plus d'une image est téléchargée, elles seront automatiquement fusionnées",
+    "description": "Description du paramètre de téléchargement de références"
+  },
+  "description.raw": {
+    "message": "--raw, Lorsqu'il est activé, les images générées utiliseront le modèle Midjourney, produisant des images de style original",
+    "description": "Description du paramètre brut"
+  },
+  "description.prompt": {
+    "message": "Entrez des commandes, si des paramètres supplémentaires sont ajoutés, ils remplaceront les paramètres prédéfinis par défaut, par exemple, en ajoutant `--stylize 200` forcera la commande finale à utiliser `--stylize 200`",
+    "description": "Description du champ de l'instruction"
+  },
+  "action.generate": {
+    "message": "Cliquez sur ce bouton pour commencer à générer des images",
+    "description": "Description du bouton de génération"
+  },
+  "action.upscale1": {
+    "message": "Améliorer la première image",
+    "description": "Description du bouton d'amélioration 1"
+  },
+  "action.upscale2": {
+    "message": "Améliorer la deuxième image",
+    "description": "Description du bouton d'amélioration 2"
+  },
+  "action.upscale3": {
+    "message": "Améliorer la troisième image",
+    "description": "Description du bouton d'amélioration 3"
+  },
+  "action.upscale4": {
+    "message": "Améliorer la quatrième image",
+    "description": "Description du bouton d'amélioration 4"
+  },
+  "action.variation1": {
+    "message": "Ajuster la variation de la première image",
+    "description": "Description du bouton de variation 1"
+  },
+  "action.variation2": {
+    "message": "Ajuster la variation de la deuxième image",
+    "description": "Description du bouton de variation 2"
+  },
+  "action.variation3": {
+    "message": "Ajuster la variation de la troisième image",
+    "description": "Description du bouton de variation 3"
+  },
+  "action.variation4": {
+    "message": "Ajuster la variation de la quatrième image",
+    "description": "Description du bouton de variation 4"
+  },
+  "action.reroll": {
+    "message": "Relancer",
+    "description": "Description du bouton de relance"
+  },
+  "action.high_variation": {
+    "message": "Variation élevée",
+    "description": "Description du bouton de variation élevée"
+  },
+  "action.low_variation": {
+    "message": "Variation faible",
+    "description": "Description du bouton de variation faible"
+  },
+  "action.zoom_out_2x": {
+    "message": "Zoom arrière 2x",
+    "description": "Description du bouton de zoom arrière 2x"
+  },
+  "action.zoom_out_1_5x": {
+    "message": "Zoom arrière 1,5x",
+    "description": "Description du bouton de zoom arrière 1,5x"
+  },
+  "action.square": {
+    "message": "Carré",
+    "description": "Description du bouton carré"
+  },
+  "action.pan_left": {
+    "message": "Déplacer à gauche",
+    "description": "Description du bouton déplacer à gauche"
+  },
+  "action.pan_up": {
+    "message": "Déplacer vers le haut",
+    "description": "Description du bouton déplacer vers le haut"
+  },
+  "action.pan_down": {
+    "message": "Déplacer vers le bas",
+    "description": "Description du bouton déplacer vers le bas"
+  },
+  "action.pan_right": {
+    "message": "Déplacer à droite",
+    "description": "Description du bouton déplacer à droite"
+  },
+  "action.zoom_in_2x": {
+    "message": "Zoom avant 2x",
+    "description": "Description du bouton de zoom avant 2x"
+  },
+  "action.zoom_in_1_5x": {
+    "message": "Zoom avant 1,5x",
+    "description": "Description du bouton de zoom avant 1,5x"
+  },
+  "action.upscale_2x": {
+    "message": "Améliorer 2x",
+    "description": "Description du bouton d'amélioration 2x"
+  },
+  "action.upscale_4x": {
+    "message": "Améliorer 4x",
+    "description": "Description du bouton d'amélioration 4x"
+  },
+  "action.redo_upscale_2x": {
+    "message": "Refaire l'amélioration 2x",
+    "description": "Description du bouton de refaire l'amélioration 2x"
+  },
+  "action.redo_upscale_4x": {
+    "message": "Refaire l'amélioration 4x",
+    "description": "Description du bouton de refaire l'amélioration 4x"
+  },
+  "message.promptPlaceholder": {
+    "message": "Veuillez saisir une phrase pour décrire l'image que vous souhaitez générer, par exemple : un chat mignon. Les paramètres supplémentaires remplaceront les paramètres prédéfinis par défaut",
+    "description": "Texte de substitution dans le champ de saisie"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Vous pouvez télécharger jusqu'à 5 images au maximum",
+    "description": "Message d'erreur lorsque le nombre d'images téléchargées dépasse la limite"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Images téléchargées avec succès",
+    "description": "Message de réussite lorsque les images sont téléchargées avec succès"
+  },
+  "message.uploadReferencesError": {
+    "message": "Échec du téléchargement des images, veuillez réessayer plus tard",
+    "description": "Message d'erreur lorsque les images échouent à se télécharger"
+  },
+  "message.startTaskSuccess": {
+    "message": "Démarrage de la tâche de dessin réussi",
+    "description": "Message de réussite lorsque la tâche de dessin démarre avec succès"
+  },
+  "message.startTaskFailed": {
+    "message": "Échec du démarrage de la tâche de dessin",
+    "description": "Message d'erreur lorsque la tâche de dessin échoue à démarrer"
+  },
+  "message.generating": {
+    "message": "Génération en cours...",
+    "description": "Message lorsque l'image est en cours de génération"
+  },
+  "message.noOperations": {
+    "message": "Aucune opération disponible",
+    "description": "Message lorsqu'il n'y a aucune opération disponible"
+  },
+  "message.noTasks": {
+    "message": "Aucune tâche historique, veuillez d'abord démarrer une nouvelle tâche",
+    "description": "Message lorsqu'il n'y a aucune tâche historique"
+  },
+  "model.general": {
+    "message": "Général",
+    "description": "Le nom d'un modèle utilisé pour la génération d'images générales"
+  },
+  "model.niji": {
+    "message": "Niji",
+    "description": "Le nom d'un modèle utilisé pour la génération d'images de style anime, ne pas traduire, le laisser tel quel : 'Niji'"
+  },
+  "name.model": {
+    "message": "Modèle",
+    "description": "Le nom du modèle, modèle est un terme en apprentissage automatique, utilisé pour générer des images"
+  },
+  "name.aspect": {
+    "message": "Ratio d'aspect",
+    "description": "Le nom du paramètre de ratio d'aspect"
+  },
+  "name.ratio": {
+    "message": "Ratio",
+    "description": "Le nom du paramètre de ratio"
+  },
+  "name.chaos": {
+    "message": "Désordre",
+    "description": "Le nom du paramètre de désordre, traduisez-le par 'taux de désordre'"
+  },
+  "name.fast": {
+    "message": "Rapide",
+    "description": "Le nom du mode rapide, utilisé pour générer des images rapidement, traduisez-le par 'Vitesse rapide'"
+  },
+  "name.nijiStyle": {
+    "message": "Niji",
+    "description": "Le nom du paramètre de style Niji, ne pas le traduire, le laisser tel quel : 'Niji'"
+  },
+  "name.version": {
+    "message": "Version",
+    "description": "Le nom du paramètre de version"
+  },
+  "name.imageWeight": {
+    "message": "Poids de l'image",
+    "description": "Le nom du paramètre de poids de l'image"
+  },
+  "name.no": {
+    "message": "Non",
+    "description": "Le nom du paramètre de non, utilisé pour exclure certains éléments, traduisez-le par 'Exclure'"
+  },
+  "name.quality": {
+    "message": "Qualité",
+    "description": "Le nom du paramètre de qualité, utilisé pour définir la qualité de l'image générée"
+  },
+  "name.random": {
+    "message": "Aléatoire",
+    "description": "Le nom du paramètre aléatoire, utilisé pour ajouter des effets de style aléatoires"
+  },
+  "name.relax": {
+    "message": "Lent",
+    "description": "Le nom du mode relax, utilisé pour générer des images en mode 'lent', traduisez-le par 'Vitesse lente'"
+  },
+  "name.repeat": {
+    "message": "Répéter",
+    "description": "Le nom du paramètre de répétition, utilisé pour créer plusieurs tâches à partir d'une seule instruction"
+  },
+  "name.seed": {
+    "message": "Graine",
+    "description": "Le nom du paramètre de graine, utilisé pour définir le bruit visuel initial"
+  },
+  "name.stop": {
+    "message": "Arrêter",
+    "description": "Le nom du paramètre d'arrêt, utilisé pour arrêter la tâche à n'importe quel stade"
+  },
+  "name.style": {
+    "message": "Style",
+    "description": "Le nom du paramètre de style, utilisé pour basculer entre différentes versions ou styles de modèles"
+  },
+  "name.stylize": {
+    "message": "Styliser",
+    "description": "Le nom du paramètre de stylisation, utilisé pour ajuster l'intensité du style esthétique par défaut"
+  },
+  "name.tile": {
+    "message": "Tuile",
+    "description": "Le nom du paramètre de tuile, utilisé pour générer des images pouvant être utilisées pour un carrelage sans soudure"
+  },
+  "name.turbo": {
+    "message": "Turbo",
+    "description": "Le nom du mode turbo, utilisé pour générer des images en mode 'extrême vitesse', traduisez-le par 'Vitesse extrême'"
+  },
+  "name.weird": {
+    "message": "Étrange",
+    "description": "Le nom du paramètre étrange, utilisé pour explorer des styles esthétiques inhabituels, traduisez-le par 'Étrangeté'"
+  },
+  "name.translation": {
+    "message": "Traduction",
+    "description": "Le nom du paramètre de traduction, utilisé pour activer la traduction automatique pendant la génération"
+  },
+  "name.advanced": {
+    "message": "Avancé",
+    "description": "Le nom du mode avancé, utilisé pour activer le mode avancé"
+  },
+  "name.niji": {
+    "message": "Niji",
+    "description": "Le nom du paramètre Niji, utilisé pour activer le modèle Niji, ne pas le traduire, le laisser tel quel : 'Niji'"
+  },
+  "name.ignore": {
+    "message": "Ignorer",
+    "description": "Le nom du paramètre d'ignorer, utilisé pour ignorer certains éléments"
+  },
+  "name.prompt": {
+    "message": "Instruction",
+    "description": "Le nom du paramètre d'instruction, utilisé pour saisir des instructions de dessin"
+  },
+  "name.raw": {
+    "message": "Brut",
+    "description": "Le nom du paramètre brut, utilisé pour activer le modèle Midjourney"
+  },
+  "placeholder.prompt": {
+    "message": "Saisissez une phrase pour décrire l'image que vous souhaitez générer, par exemple : un chat mignon. Les paramètres supplémentaires remplaceront les paramètres prédéfinis par défaut",
+    "description": "Le texte de substitution dans le champ de saisie"
+  },
+  "placeholder.ignore": {
+    "message": "Saisissez les éléments à ignorer, par exemple : `--ignorer les plantes`",
+    "description": "Le texte de substitution dans le champ d'ignorer"
+  },
+  "placeholder.select": {
+    "message": "Sélectionner",
+    "description": "Le texte de substitution dans le champ de sélection"
   }
 }

@@ -1,62 +1,114 @@
 {
-  "entity": {
-    "requestQueries": "URL参数",
-    "_requestQueries.comment": "这些是传递在URL中的参数。它们由'?'分隔，并由'&'分隔。",
-    "requestBody": "请求体",
-    "_requestBody.comment": "这是请求的主体。通常用于POST和PUT请求。",
-    "responseBody": "响应体",
-    "_responseBody.comment": "这是响应的主体。通常以JSON格式。",
-    "requestHeaders": "请求头",
-    "_requestHeaders.comment": "这些是传递在请求中的头部。通常用于身份验证。",
-    "requestHeader": "请求头",
-    "requestQuery": "URL参数",
-    "responseHeaders": "响应头",
-    "_responseHeaders.comment": "这些是传递在响应中的头部。通常用于身份验证。",
-    "response": "响应",
-    "_response.comment": "这是从服务器返回的响应。",
-    "success": "成功",
-    "_success.comment": "这是请求成功时返回的响应。",
-    "failure": "失败",
-    "_failure.comment": "这是请求失败时返回的响应。",
-    "responseExample": "示例",
-    "_responseExample.comment": "这是从服务器返回的响应的示例。",
-    "authentication": "身份验证",
-    "_authentication.comment": "这是发出请求所需的身份验证。"
+  "entity.requestQueries": {
+    "message": "URL参数",
+    "description": "这些是传递在URL中的参数。它们由'?'分隔，并由'&'分隔。"
   },
-  "message": {
-    "free": "免费",
-    "_free.comment": "表示价格是免费的，在使用API服务时不需要花费任何积分或金钱",
-    "appliedCount": "申请次数",
-    "_appliedCount.comment": "已申请的API服务次数",
-    "firstFree": "首次免费",
-    "_firstFree.comment": "表示首次使用API服务是免费的，不需要花费任何积分或金钱",
-    "custom": "指定金额",
-    "_custom.comment": "表示价格是指定的，在使用API服务时需要花费指定的积分或金钱",
-    "present": "赠送",
-    "_present.comment": "首次使用API服务时我们会赠送积分给您",
-    "around": "大约",
-    "_around.comment": "价格是大约的，实际价格可能有所不同",
-    "successRate15min": "实时成功率",
-    "_successRate15min.comment": "API服务在过去15分钟内的实时成功率",
-    "ySuccessRate": "成功率（100%）",
-    "_ySuccessRate.comment": "API服务的成功率",
-    "xMinutes": "时间（分钟）",
-    "_xMinutes.comment": "时间，以分钟为单位",
-    "streamUsage": "温馨提示：对于流式请求，上述代码可能不完全适用。请参考对接文档进行修改。",
-    "_streamUsage.comment": "对于流式请求，上述代码可能不完全适用。请参考对接文档进行修改。",
-    "alphaStage": "该API处于Alpha阶段，是早期预览版本，可能存在潜在的不稳定性，API格式可能会发生重大变化，不建议在生产环境中使用。当前定价相对较低，未来可能会有显著的价格调整。",
-    "_alphaStage.comment": "该API处于Alpha阶段，是早期预览版本，可能存在潜在的不稳定性，API格式可能会发生重大变化，不建议在生产环境中使用。当前定价相对较低，未来可能会有显著的价格调整。",
-    "betaStage": "该API处于Beta阶段，API格式不会发生太大变化，但可能存在潜在的不稳定性，请谨慎在生产环境中使用。当前定价相对较低，未来可能会有适度的价格调整。",
-    "_betaStage.comment": "该API处于Beta阶段，API格式不会发生太大变化，但可能存在潜在的不稳定性，请谨慎在生产环境中使用。当前定价相对较低，未来可能会有适度的价格调整。"
+  "entity.requestBody": {
+    "message": "请求体",
+    "description": "这是请求的主体。通常用于POST和PUT请求。"
   },
-  "unit": {
-    "GB": "GB",
-    "_GB.comment": "千兆字节，数字信息存储的单位",
-    "MB": "MB",
-    "_MB.comment": "兆字节，数字信息存储的单位",
-    "KB": "KB",
-    "_KB.comment": "千字节，数字信息存储的单位",
-    "B": "B",
-    "_B.comment": "字节，数字信息存储的单位"
+  "entity.responseBody": {
+    "message": "响应体",
+    "description": "这是响应的主体。通常以JSON格式呈现。"
+  },
+  "entity.requestHeaders": {
+    "message": "请求头",
+    "description": "这些是传递在请求中的头部。通常用于身份验证。"
+  },
+  "entity.requestHeader": {
+    "message": "请求头",
+    "description": "这是传递在请求中的头部。通常用于身份验证。"
+  },
+  "entity.requestQuery": {
+    "message": "URL参数",
+    "description": "这是传递在URL中的参数。由'?'分隔，并由'&'分隔。"
+  },
+  "entity.responseHeaders": {
+    "message": "响应头",
+    "description": "这些是传递在响应中的头部。通常用于身份验证。"
+  },
+  "entity.response": {
+    "message": "响应",
+    "description": "这是从服务器返回的响应。"
+  },
+  "entity.success": {
+    "message": "成功",
+    "description": "这是在请求成功时返回的响应。"
+  },
+  "entity.failure": {
+    "message": "失败",
+    "description": "这是在请求失败时返回的响应。"
+  },
+  "entity.responseExample": {
+    "message": "示例",
+    "description": "这是从服务器返回的响应的示例。"
+  },
+  "entity.authentication": {
+    "message": "身份验证",
+    "description": "这是发起请求所需的身份验证。"
+  },
+  "message.free": {
+    "message": "免费",
+    "description": "表示价格是免费的，在使用API服务时无需花费任何积分或金钱"
+  },
+  "message.appliedCount": {
+    "message": "申请次数",
+    "description": "已申请API服务的次数"
+  },
+  "message.firstFree": {
+    "message": "首次免费",
+    "description": "表示首次使用API服务是免费的，无需花费任何积分或金钱"
+  },
+  "message.custom": {
+    "message": "指定金额",
+    "description": "表示价格是指定的，在使用API服务时需要花费指定的积分或金钱"
+  },
+  "message.present": {
+    "message": "赠送",
+    "description": "首次使用API服务时，我们将赠送积分给您"
+  },
+  "message.around": {
+    "message": "大约",
+    "description": "价格是大约的，实际价格可能有所不同"
+  },
+  "message.successRate15min": {
+    "message": "实时成功率",
+    "description": "API服务在过去15分钟内的实时成功率"
+  },
+  "message.ySuccessRate": {
+    "message": "成功率（100%）",
+    "description": "API服务的成功率"
+  },
+  "message.xMinutes": {
+    "message": "时间（分钟）",
+    "description": "以分钟为单位的时间"
+  },
+  "message.streamUsage": {
+    "message": "温馨提示：对于流式请求，上述代码可能不完全适用。请参考对接文档进行修改。",
+    "description": "对于流式请求，上述代码可能不完全适用。请参考对接文档进行修改。"
+  },
+  "message.alphaStage": {
+    "message": "此API处于Alpha阶段，这是一个早期预览版本，可能存在潜在的不稳定性，API格式可能会发生重大变化，不建议在生产环境中使用。当前定价相对较低，未来可能会有显著的价格调整。",
+    "description": "此API处于Alpha阶段，这是一个早期预览版本，可能存在潜在的不稳定性，API格式可能会发生重大变化，不建议在生产环境中使用。当前定价相对较低，未来可能会有显著的价格调整。"
+  },
+  "message.betaStage": {
+    "message": "此API处于Beta阶段，API格式不会发生太大变化，但可能存在潜在的不稳定性，请在生产环境中谨慎使用。当前定价相对较低，未来可能会有适度的价格调整。",
+    "description": "此API处于Beta阶段，API格式不会发生太大变化，但可能存在潜在的不稳定性，请在生产环境中谨慎使用。当前定价相对较低，未来可能会有适度的价格调整。"
+  },
+  "unit.GB": {
+    "message": "GB",
+    "description": "千兆字节，数字信息存储的单位"
+  },
+  "unit.MB": {
+    "message": "MB",
+    "description": "兆字节，数字信息存储的单位"
+  },
+  "unit.KB": {
+    "message": "KB",
+    "description": "千字节，数字信息存储的单位"
+  },
+  "unit.B": {
+    "message": "B",
+    "description": "字节，数字信息存储的单位"
   }
 }

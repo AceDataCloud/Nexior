@@ -1,78 +1,142 @@
 {
-  "entity": {
-    "requestQueries": "請求查詢",
-    "_requestQueries.comment": "HTTP 請求查詢參數。",
-    "requestBody": "請求主體",
-    "_requestBody.comment": "HTTP 請求主體。",
-    "responseBody": "回應主體",
-    "_responseBody.comment": "HTTP 回應主體。",
-    "requestHeaders": "請求標頭",
-    "_requestHeaders.comment": "HTTP 請求標頭。",
-    "requestHeader": "請求標頭",
-    "_requestHeader.comment": "HTTP 請求標頭，僅為請求標頭的單一形式。",
-    "responseHeaders": "回應標頭",
-    "_responseHeaders.comment": "HTTP 回應標頭。",
-    "response": "回應",
-    "_response.comment": "HTTP 回應。",
-    "success": "成功",
-    "_success.comment": "成功的回應。",
-    "failure": "失敗",
-    "_failure.comment": "失敗的回應。",
-    "responseExample": "範例",
-    "_responseExample.comment": "回應的範例。",
-    "authentication": "驗證",
-    "_authentication.comment": "驗證資訊。",
-    "arrayOf": "陣列",
-    "_arrayOf.comment": "實體的陣列。",
-    "apiKey": "API 金鑰",
-    "_apiKey.comment": "API 金鑰"
+  "entity.requestQueries": {
+    "message": "請求查詢",
+    "description": "HTTP 請求查詢參數。"
   },
-  "message": {
-    "free": "免費",
-    "_free.comment": "表示價格是免費的，在使用 API 服務時不需要花費任何積分或金錢",
-    "appliedCount": "申請次數",
-    "_appliedCount.comment": "已申請的 API 服務次數",
-    "firstFree": "首次免費",
-    "_firstFree.comment": "表示首次使用 API 服務是免費的，不需要花費任何積分或金錢",
-    "custom": "指定金額",
-    "_custom.comment": "表示價格是指定的，在使用 API 服務時需要花費指定的積分或金錢",
-    "present": "贈送",
-    "_present.comment": "當您首次使用 API 服務時，我們將贈送積分給您",
-    "around": "大約",
-    "_around.comment": "價格大約是，實際價格可能有所不同",
-    "successRate15min": "即時成功率",
-    "_successRate15min.comment": "過去 15 分鐘內 API 服務的即時成功率",
-    "ySuccessRate": "成功率 (100%)",
-    "_ySuccessRate.comment": "API 服務的成功率",
-    "xMinutes": "時間 (分鐘)",
-    "_xMinutes.comment": "以分鐘為單位的時間",
-    "streamUsage": "友情提醒：對於串流請求，上述程式碼可能不完全適用。請參考對接文件進行修改。",
-    "_streamUsage.comment": "對於串流請求，上述程式碼可能不完全適用。請參考對接文件進行修改。",
-    "alphaStage": "此 API 屬於 Alpha 階段，這是早期預覽版本，可能存在潛在的不穩定性，API 格式可能會發生重大變化，不建議在生產環境中使用。目前價格相對較低，未來可能會有顯著的價格調整。",
-    "_alphaStage.comment": "此 API 屬於 Alpha 階段，這是早期預覽版本，可能存在潛在的不穩定性，API 格式可能會發生重大變化，不建議在生產環境中使用。目前價格相對較低，未來可能會有顯著的價格調整。",
-    "betaStage": "此 API 屬於 Beta 階段，API 格式不會有太大變化，但可能存在潛在的不穩定性，請在生產環境中謹慎使用。目前價格相對較低，未來可能會有適度的價格調整。",
-    "_betaStage.comment": "此 API 屬於 Beta 階段，API 格式不會有太大變化，但可能存在潛在的不穩定性，請在生產環境中謹慎使用。目前價格相對較低，未來可能會有適度的價格調整。"
+  "entity.requestBody": {
+    "message": "請求主體",
+    "description": "HTTP 請求主體。"
   },
-  "unit": {
-    "credit": "積分",
-    "_credit.comment": "積分是在 API 服務中使用的虛擬貨幣",
-    "Credit": "積分",
-    "_Credit.comment": "積分是在 API 服務中使用的虛擬貨幣，這是大寫形式",
-    "credits": "積分",
-    "_credits.comment": "積分是在 API 服務中使用的虛擬貨幣，這是複數形式",
-    "Credits": "積分",
-    "_Credits.comment": "積分是在 API 服務中使用的虛擬貨幣，這是大寫和複數形式",
-    "call": "呼叫",
-    "_call.comment": "呼叫表示已呼叫的 API 服務次數",
-    "Call": "呼叫",
-    "_Call.comment": "呼叫表示已呼叫的 API 服務次數，這是大寫形式",
-    "calls": "呼叫",
-    "_calls.comment": "呼叫表示已呼叫的 API 服務次數，這是複數形式",
-    "Calls": "呼叫",
-    "_Calls.comment": "呼叫表示已呼叫的 API 服務次數，這是大寫和複數形式",
-    "MB": "MB",
-    "_MB.comment": "MB 表示兆位元組，一種數位資訊存儲單位",
-    "GB": "GB",
-    "_GB.comment": "GB 表示吉位元組，一種數位資訊存儲單位"
+  "entity.responseBody": {
+    "message": "回應主體",
+    "description": "HTTP 回應主體。"
+  },
+  "entity.requestHeaders": {
+    "message": "請求標頭",
+    "description": "HTTP 請求標頭。"
+  },
+  "entity.requestHeader": {
+    "message": "請求標頭",
+    "description": "HTTP 請求標頭，僅為請求標頭的單一形式。"
+  },
+  "entity.responseHeaders": {
+    "message": "回應標頭",
+    "description": "HTTP 回應標頭。"
+  },
+  "entity.response": {
+    "message": "回應",
+    "description": "HTTP 回應。"
+  },
+  "entity.success": {
+    "message": "成功",
+    "description": "成功的回應。"
+  },
+  "entity.failure": {
+    "message": "失敗",
+    "description": "失敗的回應。"
+  },
+  "entity.responseExample": {
+    "message": "範例",
+    "description": "回應的範例。"
+  },
+  "entity.authentication": {
+    "message": "驗證",
+    "description": "驗證資訊。"
+  },
+  "entity.arrayOf": {
+    "message": "陣列",
+    "description": "實體的陣列。"
+  },
+  "entity.apiKey": {
+    "message": "API 金鑰",
+    "description": "API 金鑰。"
+  },
+  "message.free": {
+    "message": "免費",
+    "description": "表示價格為免費，在使用 API 服務時無需花費任何點數或金錢"
+  },
+  "message.appliedCount": {
+    "message": "申請次數",
+    "description": "已申請 API 服務的次數"
+  },
+  "message.firstFree": {
+    "message": "首次免費",
+    "description": "表示首次使用 API 服務免費，無需花費任何點數或金錢"
+  },
+  "message.custom": {
+    "message": "指定金額",
+    "description": "表示價格為指定金額，在使用 API 服務時需要花費指定的點數或金錢"
+  },
+  "message.present": {
+    "message": "贈送",
+    "description": "當您首次使用 API 服務時，我們將贈送點數給您"
+  },
+  "message.around": {
+    "message": "大約",
+    "description": "價格大約為，實際價格可能有所不同"
+  },
+  "message.successRate15min": {
+    "message": "即時成功率",
+    "description": "API 服務在過去 15 分鐘內的即時成功率"
+  },
+  "message.ySuccessRate": {
+    "message": "成功率 (100%)",
+    "description": "API 服務的成功率"
+  },
+  "message.xMinutes": {
+    "message": "時間 (分鐘)",
+    "description": "以分鐘為單位的時間"
+  },
+  "message.streamUsage": {
+    "message": "友情提醒：對於串流請求，上述程式碼可能不完全適用。請參考對接文件進行修改。",
+    "description": "對於串流請求，上述程式碼可能不完全適用。請參考對接文件進行修改。"
+  },
+  "message.alphaStage": {
+    "message": "此 API 屬於 Alpha 階段，這是早期預覽版本，可能存在潛在的不穩定性，API 格式可能會發生重大變化，不建議在生產環境中使用。目前價格相對較低，未來可能會有顯著的價格調整。",
+    "description": "此 API 屬於 Alpha 階段，這是早期預覽版本，可能存在潛在的不穩定性，API 格式可能會發生重大變化，不建議在生產環境中使用。目前價格相對較低，未來可能會有顯著的價格調整。"
+  },
+  "message.betaStage": {
+    "message": "此 API 屬於 Beta 階段，API 格式不會有太大變化，但可能存在潛在的不穩定性，請在生產環境中謹慎使用。目前價格相對較低，未來可能會有適度的價格調整。",
+    "description": "此 API 屬於 Beta 階段，API 格式不會有太大變化，但可能存在潛在的不穩定性，請在生產環境中謹慎使用。目前價格相對較低，未來可能會有適度的價格調整。"
+  },
+  "unit.credit": {
+    "message": "點數",
+    "description": "點數是在 API 服務中使用的虛擬貨幣"
+  },
+  "unit.Credit": {
+    "message": "點數",
+    "description": "點數是在 API 服務中使用的虛擬貨幣，這是大寫形式"
+  },
+  "unit.credits": {
+    "message": "點數",
+    "description": "點數是在 API 服務中使用的虛擬貨幣，這是複數形式"
+  },
+  "unit.Credits": {
+    "message": "點數",
+    "description": "點數是在 API 服務中使用的虛擬貨幣，這是大寫和複數形式"
+  },
+  "unit.call": {
+    "message": "呼叫",
+    "description": "呼叫是已呼叫 API 服務的次數"
+  },
+  "unit.Call": {
+    "message": "呼叫",
+    "description": "呼叫是已呼叫 API 服務的次數，這是大寫形式"
+  },
+  "unit.calls": {
+    "message": "呼叫",
+    "description": "呼叫是已呼叫 API 服務的次數，這是複數形式"
+  },
+  "unit.Calls": {
+    "message": "呼叫",
+    "description": "呼叫是已呼叫 API 服務的次數，這是大寫和複數形式"
+  },
+  "unit.MB": {
+    "message": "MB",
+    "description": "MB 代表兆位元組，一種數位資訊儲存單位"
+  },
+  "unit.GB": {
+    "message": "GB",
+    "description": "GB 代表吉位元組，一種數位資訊儲存單位"
   }
 }

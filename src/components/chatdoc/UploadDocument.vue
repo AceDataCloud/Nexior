@@ -25,7 +25,7 @@
       <div v-if="learning">{{ $t('chatdoc.message.learningDocument') }}</div>
     </el-upload>
   </el-dialog>
-  <el-button type="primary" @click="dialogVisible = true">{{ $t('chatdoc.button.uploadDocuments') }}</el-button>
+  <el-button type="primary" round @click="dialogVisible = true">{{ $t('chatdoc.button.uploadDocuments') }}</el-button>
 </template>
 
 <script lang="ts">

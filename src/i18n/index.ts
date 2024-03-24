@@ -65,7 +65,12 @@ export const loadLocaleMessages = async (i18n: I18n, locale: string) => {
   for (const name of names) {
     const resource = await loadLocalResource(name, locale);
     console.log('resource', resource);
-    messages[name] = resource;
+    for (const key in resource) {
+      if (resource.hasOwnProperty(key)) {
+        const element = resource[key];
+        messages[`${name}.${key}`] = element.message;
+      }
+    }
   }
 
   // set locale and locale message

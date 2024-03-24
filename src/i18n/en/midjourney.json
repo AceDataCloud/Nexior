@@ -1,960 +1,1878 @@
 {
-  "style": {
-    "cute": "Cute",
-    "_cute.comment": "Text in button, which represents the 'cute' style",
-    "expressive": "Expressive",
-    "_expressive.comment": "Text in button, which represents the 'expressive' style",
-    "original": "Original",
-    "_original.comment": "Text in button, which represents the 'original' style",
-    "scenic": "Scenic",
-    "_scenic.comment": "Text in button, which represents the 'scenic' style",
-    "raw": "Raw",
-    "_raw.comment": "Text in button, which represents the 'raw' style"
+  "style.cute": {
+    "message": "Cute",
+    "description": "Text in button, which represents the 'cute' style"
   },
-  "styleCategory": {
-    "special": "Special",
-    "_special.comment": "A word of category used for describing and generating an image, the generated image should include the category of this tag.",
-    "chinese": "Chinese",
-    "_chinese.comment": "A word of category used for describing and generating an image, the generated image should include the category of this tag.",
-    "emotion": "Emotion",
-    "_emotion.comment": "A word of category used for describing and generating an image, the generated image should include the category of this tag.",
-    "camera": "Camera",
-    "_camera.comment": "A word of category used for describing and generating an image, the generated image should include the category of this tag.",
-    "styles": "Styles",
-    "_styles.comment": "A word of category used for describing and generating an image, the generated image should include the category of this tag.",
-    "lighting": "Lighting",
-    "_lighting.comment": "A word of category used for describing and generating an image, the generated image should include the category of this tag.",
-    "painters": "Painters",
-    "_painters.comment": "A word of category used for describing and generating an image, the generated image should include the category of this tag.",
-    "material": "Material",
-    "_material.comment": "A word of category used for describing and generating an image, the generated image should include the category of this tag.",
-    "artists": "Artists",
-    "_artists.comment": "A word of category used for describing and generating an image, the generated image should include the category of this tag."
+  "style.expressive": {
+    "message": "Expressive",
+    "description": "Text in button, which represents the 'expressive' style"
   },
-  "styleTag": {
-    "watercolour": "Watercolour",
-    "_watercolour.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "oilPainting": "Oil painting",
-    "_oilPainting.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "oldPhotograph": "Old Photograph",
-    "_oldPhotograph.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "oneLineDrawing": "One-line drawing",
-    "_oneLineDrawing.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "sketchDrawing": "Sketch Drawing",
-    "_sketchDrawing.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "gouache": "Gouache",
-    "_gouache.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "filmStyle": "Film style",
-    "_filmStyle.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "photorealistic": "Photorealistic",
-    "_photorealistic.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "logo": "Logo",
-    "_logo.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "cartoon": "Cartoon",
-    "_cartoon.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "marbleStatue": "Marble Statue",
-    "_marbleStatue.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "1800S": "1800s",
-    "_1800S.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "1980S": "1980s",
-    "_1980S.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "isometricAnime": "Isometric anime",
-    "_isometricAnime.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "analyticDrawing": "Analytic drawing",
-    "_analyticDrawing.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "coloringBook": "Coloring book",
-    "_coloringBook.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "infographicDrawing": "Infographic drawing",
-    "_infographicDrawing.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "doubleExposure": "Double exposure",
-    "_doubleExposure.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "diagrammaticDrawing": "Diagrammatic drawing",
-    "_diagrammaticDrawing.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "2DIllustration": "2D illustration",
-    "_2DIllustration.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "diagrammaticPortrait": "Diagrammatic portrait",
-    "_diagrammaticPortrait.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "pixelArt": "Pixel art",
-    "_pixelArt.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "darkFantasy": "Dark fantasy",
-    "_darkFantasy.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "ukiyoEArt": "Ukiyo-e art",
-    "_ukiyoEArt.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "paperQuilling": "Paper quilling",
-    "_paperQuilling.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "paperCutCraft": "Paper cut craft",
-    "_paperCutCraft.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "iridescent": "Iridescent",
-    "_iridescent.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "patchworkCollage": "Patchwork collage",
-    "_patchworkCollage.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "opArt": "Op art",
-    "_opArt.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "japaneseInk": "Japanese ink",
-    "_japaneseInk.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "pastelDrawing": "Pastel drawing",
-    "_pastelDrawing.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "drippingArt": "Dripping art",
-    "_drippingArt.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "tattooArt": "Tattoo art",
-    "_tattooArt.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "16Bit": "16-Bit",
-    "_16Bit.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "8Bit": "8-Bit",
-    "_8Bit.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "amber": "Amber",
-    "_amber.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "anatomicalDrawing": "Anatomical Drawing",
-    "_anatomicalDrawing.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "ancient": "Ancient",
-    "_ancient.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "anime": "Anime",
-    "_anime.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "arabic": "Arabic",
-    "_arabic.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "blocky": "Blocky",
-    "_blocky.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "blueprint": "Blueprint",
-    "_blueprint.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "comicbook": "Comicbook",
-    "_comicbook.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "caribbean": "Caribbean",
-    "_caribbean.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "celestial": "Celestial",
-    "_celestial.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "cellulose": "Cellulose",
-    "_cellulose.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "charcoalStyle": "Charcoal Style",
-    "_charcoalStyle.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "chromatic": "Chromatic",
-    "_chromatic.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "coral": "Coral",
-    "_coral.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "conceptArt": "Concept Art",
-    "_conceptArt.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "fibonacci": "Fibonacci",
-    "_fibonacci.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "cyberpunk": "Cyberpunk",
-    "_cyberpunk.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "diabolic": "Diabolic",
-    "_diabolic.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "diffractionGrading": "Diffraction Grading",
-    "_diffractionGrading.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "lightspeed": "Lightspeed",
-    "_lightspeed.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "liquid": "Liquid",
-    "_liquid.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "dots": "Dots",
-    "_dots.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "dune": "Dune",
-    "_dune.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "drippingPaint": "Dripping Paint",
-    "_drippingPaint.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "electronicCircuitry": "Electronic Circuitry",
-    "_electronicCircuitry.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "electrical": "Electrical",
-    "_electrical.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "futuristic": "Futuristic",
-    "_futuristic.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "etching": "Etching",
-    "_etching.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "extraterrestrial": "Extraterrestrial",
-    "_extraterrestrial.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "glitchart": "Glitchart",
-    "_glitchart.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "floral": "Floral",
-    "_floral.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "fractal": "Fractal",
-    "_fractal.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "preHistoric": "Pre Historic",
-    "_preHistoric.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "prokaryotic": "Prokaryotic",
-    "_prokaryotic.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "horror": "Horror",
-    "_horror.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "iceAge": "Ice Age",
-    "_iceAge.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "jurassic": "Jurassic",
-    "_jurassic.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "knitted": "Knitted",
-    "_knitted.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "polka": "Polka",
-    "_polka.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "latex": "Latex",
-    "_latex.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "pastel": "Pastel",
-    "_pastel.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "mandala": "Mandala",
-    "_mandala.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "molecular": "Molecular",
-    "_molecular.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "merkaba": "Merkaba",
-    "_merkaba.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "mitochondria": "Mitochondria",
-    "_mitochondria.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "graffiti": "Graffiti",
-    "_graffiti.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "graphicNovel": "Graphic Novel",
-    "_graphicNovel.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "multidimensional": "Multidimensional",
-    "_multidimensional.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "nasa": "NASA",
-    "_nasa.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "nebula": "Nebula",
-    "_nebula.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "neon": "Neon",
-    "_neon.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "nuclear": "Nuclear",
-    "_nuclear.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "orbital": "Orbital",
-    "_orbital.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "rayTracing": "Ray Tracing",
-    "_rayTracing.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "realistic": "Realistic",
-    "_realistic.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "renaissance": "Renaissance",
-    "_renaissance.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "retro": "Retro",
-    "_retro.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "risograph": "Risograph",
-    "_risograph.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "origami": "Origami",
-    "_origami.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "ornamental": "Ornamental",
-    "_ornamental.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "space": "Space",
-    "_space.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "splatterPaint": "Splatter Paint",
-    "_splatterPaint.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "sprayPaint": "Spray Paint",
-    "_sprayPaint.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "squiggles": "Squiggles",
-    "_squiggles.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "stitching": "Stitching",
-    "_stitching.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "veins": "Veins",
-    "_veins.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "streetArt": "Street Art",
-    "_streetArt.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "surreal": "Surreal",
-    "_surreal.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "symmetric": "Symmetric",
-    "_symmetric.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "synthWave": "Synth-wave",
-    "_synthWave.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "technological": "Technological",
-    "_technological.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "tron": "Tron",
-    "_tron.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "tropical": "Tropical",
-    "_tropical.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "ultraModern": "Ultra Modern",
-    "_ultraModern.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "wormhole": "Wormhole",
-    "_wormhole.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "wrinkled": "Wrinkled",
-    "_wrinkled.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "volcanic": "Volcanic",
-    "_volcanic.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "wetPaint": "Wet Paint",
-    "_wetPaint.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "wildWest": "Wild West",
-    "_wildWest.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "wind": "Wind",
-    "_wind.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "miniatureFaking": "Miniature Faking",
-    "_miniatureFaking.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "accentLighting": "Accent Lighting",
-    "_accentLighting.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "backlight": "Backlight",
-    "_backlight.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "blacklight": "Blacklight",
-    "_blacklight.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "goldenHourLight": "Golden hour light",
-    "_goldenHourLight.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "candlelight": "Candlelight",
-    "_candlelight.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "concertLighting": "Concert Lighting",
-    "_concertLighting.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "crepuscularRays": "Crepuscular Rays",
-    "_crepuscularRays.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "directSunlight": "Direct Sunlight",
-    "_directSunlight.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "dust": "Dust",
-    "_dust.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "studioLighting": "Studio lighting",
-    "_studioLighting.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "rimLight": "Rim light",
-    "_rimLight.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "volumetricLighting": "Volumetric Lighting",
-    "_volumetricLighting.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "fluorescent": "Fluorescent",
-    "_fluorescent.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "glowing": "Glowing",
-    "_glowing.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "glowStick": "Glow-stick",
-    "_glowStick.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "glowRadioactive": "Glow Radioactive",
-    "_glowRadioactive.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "lavaGlow": "Lava Glow",
-    "_lavaGlow.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "moonlight": "Moonlight",
-    "_moonlight.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "naturalLighting": "Natural Lighting",
-    "_naturalLighting.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "neonLamp": "Neon Lamp",
-    "_neonLamp.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "nightclubLighting": "Nightclub Lighting",
-    "_nightclubLighting.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "nuclearWasteGlo": "Nuclear Waste Glo",
-    "_nuclearWasteGlo.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "quantumDot": "Quantum Dot",
-    "_quantumDot.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "spotlight": "Spotlight",
-    "_spotlight.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "edgeLight": "Edge light",
-    "_edgeLight.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "coldLight": "Cold light",
-    "_coldLight.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "keyLighting": "Key lighting",
-    "_keyLighting.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "ambientLight": "Ambient Light",
-    "_ambientLight.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "highKeyLighting": "High key lighting",
-    "_highKeyLighting.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "lowKeyLighting": "Low key lighting",
-    "_lowKeyLighting.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "motivatedLighting": "Motivated lighting",
-    "_motivatedLighting.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "3PointLighting": "3 point lighting",
-    "_3PointLighting.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "strobeLight": "Strobe light",
-    "_strobeLight.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "sunLight": "Sun light",
-    "_sunLight.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "ultraviolet": "Ultraviolet",
-    "_ultraviolet.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "beautifulLighting": "Beautiful Lighting",
-    "_beautifulLighting.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "moodyLighting": "Moody Lighting",
-    "_moodyLighting.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "softLighting": "Soft Lighting",
-    "_softLighting.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "michelangelo": "Michelangelo",
-    "_michelangelo.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "monet": "Monet",
-    "_monet.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "paulCezanne": "Paul Cezanne",
-    "_paulCezanne.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "markRothko": "Mark Rothko",
-    "_markRothko.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "paulKlee": "Paul Klee",
-    "_paulKlee.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "picasso": "Picasso",
-    "_picasso.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "pietMondrian": "Piet Mondrian",
-    "_pietMondrian.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "pierreAugusteRer": "Pierre Auguste Rer",
-    "_pierreAugusteRer.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "rembrandt": "Rembrandt",
-    "_rembrandt.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "reneMagritte": "Rene Magritte",
-    "_reneMagritte.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "royLichtenstein": "Roy Lichtenstein",
-    "_royLichtenstein.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "salvadorDali": "Salvador Dali",
-    "_salvadorDali.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "sandroBotticelli": "Sandro Botticelli",
-    "_sandroBotticelli.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "takashiMurakami": "Takashi Murakami",
-    "_takashiMurakami.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "vanGogh": "Van Gogh",
-    "_vanGogh.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "wassilyKandinsky": "Wassily Kandinsky",
-    "_wassilyKandinsky.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "matCollishaw": "Mat Collishaw",
-    "_matCollishaw.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "yayoiKusama": "Yayoi Kusama",
-    "_yayoiKusama.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "igorMorski": "Igor Morski",
-    "_igorMorski.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "shinkaiMakoto": "Shinkai Makoto",
-    "_shinkaiMakoto.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "pixar": "Pixar",
-    "_pixar.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "kyotoAnime": "Kyoto Anime",
-    "_kyotoAnime.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "jerryPinkney": "Jerry Pinkney",
-    "_jerryPinkney.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "hayaoMiyazaki": "Hayao Miyazaki",
-    "_hayaoMiyazaki.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "beatrixPotter": "Beatrix Potter",
-    "_beatrixPotter.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "jonKlassen": "Jon Klassen",
-    "_jonKlassen.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "kaySage": "Kay Sage",
-    "_kaySage.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "jeffreyCatherineJones": "Jeffrey Catherine Jones",
-    "_jeffreyCatherineJones.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "yaacovAgam": "Yaacov Agam",
-    "_yaacovAgam.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "davidHockney": "David Hockney",
-    "_davidHockney.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "victorMoscoso": "Victor Moscoso",
-    "_victorMoscoso.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "raphaelite": "Raphaelite",
-    "_raphaelite.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "stefanKoidl": "Stefan Koidl",
-    "_stefanKoidl.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "suiIshida": "Sui Ishida",
-    "_suiIshida.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "swoon": "Swoon",
-    "_swoon.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "tashaTudor": "Tasha Tudor",
-    "_tashaTudor.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "tintoretto": "Tintoretto",
-    "_tintoretto.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "theodoreRobinsor": "Theodore Robinsor",
-    "_theodoreRobinsor.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "titian": "Titian",
-    "_titian.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "wlop": "WLOP",
-    "_wlop.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "yanjunCheng": "Yanjun Cheng",
-    "_yanjunCheng.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "yojiShinkawa": "Yoji Shinkawa",
-    "_yojiShinkawa.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "zhelongXu": "Zhelong Xu",
-    "_zhelongXu.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "alenaAenami": "Alena Aenami",
-    "_alenaAenami.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "anntonFadeevi": "Annton Fadeevi",
-    "_anntonFadeevi.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "charlieBowater": "Charlie Bowater",
-    "_charlieBowater.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "coryLoftis": "Cory Loftis",
-    "_coryLoftis.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "fenghuaZhong": "Fenghua Zhong",
-    "_fenghuaZhong.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "gregRutkowski": "Greg Rutkowski",
-    "_gregRutkowski.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "hongSoonsang": "Hong SoonSang",
-    "_hongSoonsang.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "dennisStock": "Dennis Stock",
-    "_dennisStock.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "michalLisowski": "Michal Lisowski",
-    "_michalLisowski.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "paulLehr": "Paul Lehr",
-    "_paulLehr.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "rossTran": "Ross Tran",
-    "_rossTran.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "antonPieck": "Anton Pieck",
-    "_antonPieck.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "carlBarks": "Carl Barks",
-    "_carlBarks.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "alphonseMucha": "Alphonse Mucha",
-    "_alphonseMucha.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "andyWarhol": "Andy Warhol",
-    "_andyWarhol.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "banksy": "Banksy",
-    "_banksy.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "franciscoDeGoya": "Francisco De Goya",
-    "_franciscoDeGoya.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "caravaggio": "Caravaggio",
-    "_caravaggio.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "diegoRivera": "Diego Rivera",
-    "_diegoRivera.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "marcChagall": "Marc Chagall",
-    "_marcChagall.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "edgarDegas": "Edgar Degas",
-    "_edgarDegas.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "eugeneDelacroix": "Eugene Delacroix",
-    "_eugeneDelacroix.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "francisBacon": "Francis Bacon",
-    "_francisBacon.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "fridaKahlo": "Frida Kahlo",
-    "_fridaKahlo.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "garaldBrom": "Garald Brom",
-    "_garaldBrom.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "gustavKlimt": "Gustav Klimt",
-    "_gustavKlimt.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "henriMatisse": "Henri Matisse",
-    "_henriMatisse.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "jackKirby": "Jack Kirby",
-    "_jackKirby.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "jacksonPollock": "Jackson Pollock",
-    "_jacksonPollock.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "johannesVermeer": "Johannes Vermeer",
-    "_johannesVermeer.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "jeanMichelBasquiat": "Jean Michel Basquiat",
-    "_jeanMichelBasquiat.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "marcelDuchamp": "Marcel Duchamp",
-    "_marcelDuchamp.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "aluminum": "Aluminum",
-    "_aluminum.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "brick": "Brick",
-    "_brick.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "bronze": "Bronze",
-    "_bronze.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "carbonFiber": "Carbon Fiber",
-    "_carbonFiber.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "cardboard": "Cardboard",
-    "_cardboard.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "ceramic": "Ceramic",
-    "_ceramic.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "cotton": "Cotton",
-    "_cotton.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "fabric": "Fabric",
-    "_fabric.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "fiberOptic": "Fiber Optic",
-    "_fiberOptic.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "foil": "Foil",
-    "_foil.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "yarn": "Yarn",
-    "_yarn.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "glass": "Glass",
-    "_glass.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "gold": "Gold",
-    "_gold.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "gummies": "Gummies",
-    "_gummies.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "leather": "Leather",
-    "_leather.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "magma": "Magma",
-    "_magma.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "metallic": "Metallic",
-    "_metallic.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "nickel": "Nickel",
-    "_nickel.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "nylon": "Nylon",
-    "_nylon.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "paper": "Paper",
-    "_paper.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "plastic": "Plastic",
-    "_plastic.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "quartz": "Quartz",
-    "_quartz.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "wrap": "Wrap",
-    "_wrap.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "wooden": "Wooden",
-    "_wooden.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "slime": "Slime",
-    "_slime.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "engraving": "Engraving",
-    "_engraving.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "ivory": "Ivory",
-    "_ivory.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "basalt": "Basalt",
-    "_basalt.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "pine": "Pine",
-    "_pine.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "diamond": "Diamond",
-    "_diamond.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "amethyst": "Amethyst",
-    "_amethyst.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "ruby": "Ruby",
-    "_ruby.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "highPolished": "High polished",
-    "_highPolished.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "brushed": "Brushed",
-    "_brushed.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "matte": "Matte",
-    "_matte.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "satin": "Satin",
-    "_satin.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "sandblasted": "Sandblasted",
-    "_sandblasted.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "ebony": "Ebony",
-    "_ebony.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "bokeh": "Bokeh",
-    "_bokeh.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "aerialView": "Aerial view",
-    "_aerialView.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "shotByDslr": "Shot by DSLR",
-    "_shotByDslr.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "360Panorama": "360Panorama",
-    "_360Panorama.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "panorama": "Panorama",
-    "_panorama.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "telephotoLens": "Telephoto Lens",
-    "_telephotoLens.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "macroShot": "Macro shot",
-    "_macroShot.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "microscopy": "Microscopy",
-    "_microscopy.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "magnification": "Magnification",
-    "_magnification.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "closeUp": "Close up",
-    "_closeUp.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "fullBody": "Full body",
-    "_fullBody.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "portrait": "Portrait",
-    "_portrait.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "profile": "Profile",
-    "_profile.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "pinholeLens": "Pinhole Lens",
-    "_pinholeLens.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "wideView": "Wide view",
-    "_wideView.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "telescopeLens": "Telescope Lens",
-    "_telescopeLens.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "satelliteImagery": "Satellite Imagery",
-    "_satelliteImagery.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "headshot": "Headshot",
-    "_headshot.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "extremeCloseup": "Extreme closeup",
-    "_extremeCloseup.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "ultrawideShot": "Ultrawide shot",
-    "_ultrawideShot.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "birdView": "Bird view",
-    "_birdView.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "topView": "Top view",
-    "_topView.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "frontView": "Front view",
-    "_frontView.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "sideView": "Side view",
-    "_sideView.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "backView": "Back view",
-    "_backView.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "faceShot": "Face shot",
-    "_faceShot.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "chestShot": "Chest shot",
-    "_chestShot.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "waistShot": "Waist shot",
-    "_waistShot.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "extraLongShot": "Extra long shot",
-    "_extraLongShot.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "lookUp": "look up",
-    "_lookUp.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "isometricview": "isometricview",
-    "_isometricview.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "highAngleView": "High angle view",
-    "_highAngleView.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "lowAngleView": "Low angle view",
-    "_lowAngleView.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "happy": "Happy",
-    "_happy.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "excited": "Excited",
-    "_excited.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "angry": "Angry",
-    "_angry.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "ped": "ped",
-    "_ped.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "disgusted": "Disgusted",
-    "_disgusted.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "supnned": "supnned",
-    "_supnned.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "hopeful": "Hopeful",
-    "_hopeful.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "anxious": "Anxious",
-    "_anxious.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "elated": "Elated",
-    "_elated.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "fearful": "Fearful",
-    "_fearful.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "hateful": "Hateful",
-    "_hateful.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "apoow": "Apoow",
-    "_apoow.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "dark": "Dark",
-    "_dark.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "brutal": "Brutal",
-    "_brutal.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "hanfu": "Hanfu",
-    "_hanfu.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "cheongsam": "Cheongsam",
-    "_cheongsam.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "chineseCostume": "Chinese costume",
-    "_chineseCostume.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "chineseDress": "Chinese dress",
-    "_chineseDress.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "wuxia": "Wuxia",
-    "_wuxia.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "chinesePhoenix": "Chinese phoenix",
-    "_chinesePhoenix.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "kungfu": "Kungfu",
-    "_kungfu.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "kunquOpera": "Kunqu opera",
-    "_kunquOpera.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "cloisonne": "Cloisonne",
-    "_cloisonne.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "porcelain": "Porcelain",
-    "_porcelain.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "embroidered": "Embroidered",
-    "_embroidered.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "jade": "Jade",
-    "_jade.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "chinesePavilion": "Chinese pavilion",
-    "_chinesePavilion.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "plumFlower": "Plum flower",
-    "_plumFlower.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "forbiddenCity": "Forbidden city",
-    "_forbiddenCity.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "peony": "Peony",
-    "_peony.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "unrealEngine": "Unreal engine",
-    "_unrealEngine.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "octaneRender": "Octane render",
-    "_octaneRender.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "maxonCinema4D": "Maxon cinema 4D",
-    "_maxonCinema4D.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "quixelMegascansRender": "Quixel megascans render",
-    "_quixelMegascansRender.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "coronaRender": "Corona render",
-    "_coronaRender.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "vRay": "V-ray",
-    "_vRay.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "architecturalVisualisation": "Architectural visualisation",
-    "_architecturalVisualisation.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "dramaticContrast": "Dramatic contrast",
-    "_dramaticContrast.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "goldAndBlackTone": "Gold and black tone",
-    "_goldAndBlackTone.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "whiteAndPinkTone": "White and pink tone",
-    "_whiteAndPinkTone.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "redAndBlackTone": "Red and black tone",
-    "_redAndBlackTone.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "neonShades": "Neon shades",
-    "_neonShades.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "richColor": "Rich color",
-    "_richColor.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "monotone": "Monotone",
-    "_monotone.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "theLowPurityTone": "The low-purity tone",
-    "_theLowPurityTone.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag.",
-    "theHighPurityTone": "The high-purity tone",
-    "_theHighPurityTone.comment": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  "style.original": {
+    "message": "Original",
+    "description": "Text in button, which represents the 'original' style"
   },
-  "button": {
-    "low": "Low",
-    "_low.comment": "Text in button, which represents the 'low' picture quality",
-    "medium": "Medium",
-    "_medium.comment": "Text in button, which represents the 'medium' picture quality",
-    "high": "High",
-    "_high.comment": "Text in button, which represents the 'high' picture quality",
-    "buyMore": "Buy More",
-    "_buyMore.comment": "Text in button, which allows user to buy more credits",
-    "uploadReferences": "Upload References",
-    "_uploadReferences.comment": "Text in button, which allows user to upload references",
-    "success": "Success",
-    "_success.comment": "Text in button, which indicates that the operation was successful",
-    "generating": "Generating",
-    "_generating.comment": "Text in button, which indicates that the operation is in progress",
-    "failed": "Failed",
-    "_failed.comment": "Text in button, which indicates that the operation failed",
-    "download": "Download",
-    "_download.comment": "Text in button, which allows user to download the result",
-    "fast": "Fast",
-    "_fast.comment": "Text in button, which allows user to set the 'fast speed' mode to fast to generate the image, must translate to 'Fast speed'",
-    "relax": "Relax",
-    "_relax.comment": "Text in button, which allows user to set the 'slow speed' mode to relax to generate the image, must translate to 'Slow speed'",
-    "turbo": "Turbo",
-    "_turbo.comment": "Text in button, which allows user to set the 'extreme speed' mode to turbo to generate the image, must translate to 'Extreme speed'",
-    "more": "More",
-    "_more.comment": "Text in button, which allows user to see more options",
-    "generate": "Generate",
-    "_generate.comment": "Text in button, which allows user to generate the image",
-    "history": "History",
-    "_history.comment": "Text in button, which allows user to see the history of generated images",
-    "generateNew": "Generate New",
-    "_generateNew.comment": "Text in button, which allows user to draw a new picture"
+  "style.scenic": {
+    "message": "Scenic",
+    "description": "Text in button, which represents the 'scenic' style"
   },
-  "field": {
-    "taskId": "Task ID",
-    "_taskId.comment": "Task ID",
-    "finalPrompt": "Final Prompt",
-    "_finalPrompt.comment": "Final Drawing prompt used to generate the image",
-    "elements": "Styles",
-    "_elements.comment": "Drawing style used to generate the image",
-    "failureReason": "Failure Reason",
-    "_failureReason.comment": "Reason for the failure",
-    "traceId": "Trace ID",
-    "_traceId.comment": "Trace ID for tracing the request of generating the image, do not translate it, keep it as 'Trace ID'"
+  "style.raw": {
+    "message": "Raw",
+    "description": "Text in button, which represents the 'raw' style"
   },
-  "description": {
-    "aspect": "--aspect, Changes the aspect ratio of the generated image, default value depends on the model and mode",
-    "_aspect.comment": "Description of the aspect parameter",
-    "chaos": "--chaos, Adjusts the degree of variation in the generated image, the higher the number, the more unique and unexpected the generated image, range is 0-100, default is 1",
-    "_chaos.comment": "Description of the chaos parameter",
-    "fast": "Ignores current settings and runs a single generation task in 'fast speed' mode, no default value",
-    "_fast.comment": "Description of the fast parameter",
-    "iw": "--iw, Sets the importance of image prompts relative to text prompts during the generation process, range is 0-2, default is 1",
-    "_iw.comment": "Description of the iw parameter",
-    "no": "--no, Indicates the generation system to attempt to exclude certain elements, for example `--no plants` will attempt to generate images without plants, no default value",
-    "_no.comment": "Description of the no parameter, translate it as 'Exclude'",
-    "quality": "--quality, Sets the quality and rendering time of the generated image, range is .25, .5, or 1, default is 1",
-    "_quality.comment": "Description of the quality parameter",
-    "random": "Adds a random base style code to the prompt, can use `--style random-16`, `--style random-64`, or `--style random-128` to get random style effects of different lengths, no default value",
-    "_random.comment": "Description of the random parameter",
-    "relax": "Overrides current settings to run a single task in 'slow speed' mode, no default value",
-    "_relax.comment": "Description of the relax parameter",
-    "repeat": "--repeat, Creates multiple tasks from one prompt, range is 1-40, default is 1",
-    "_repeat.comment": "Description of the repeat parameter",
-    "seed": "--seed, Starting visual noise for generated images, range is 0-4294967295, default is randomly generated",
-    "_seed.comment": "Description of the seed parameter",
-    "stop": "--stop, Stops the task at any stage of the generation process, range is 10-100, default is 100 (i.e., fully generated)",
-    "_stop.comment": "Description of the stop parameter",
-    "style": "--style, switches between different versions or styles of Midjourney or Niji models, for example raw, cute, expressive, original, scenic, default value depends on the model and mode",
-    "_style.comment": "Description of the style parameter",
-    "stylize": "--stylize, adjusts the intensity of the default aesthetic style of Midjourney applied in generation tasks, range is 0-1000, default is 100",
-    "_stylize.comment": "Description of the stylize parameter",
-    "tile": "--tile, Generates an image that can be used for seamless tiling to create seamless patterns, no default value",
-    "_tile.comment": "Description of the tile parameter",
-    "turbo": "Overrides current settings to run a single task in 'extreme speed' mode, no default value",
-    "_turbo.comment": "Description of the turbo parameter",
-    "weird": "--weird, explores uncommon aesthetic styles with experimental nature, range is 0-3000, default is 0",
-    "_weird.comment": "Description of the weird parameter",
-    "translation": "Enables automatic translation during generation, non-Chinese content will be automatically translated to English input for Midjourney",
-    "_translation.comment": "Description of the translation parameter",
-    "imageWeight": "--iw, adjusts the weight of image prompts relative to text prompts, range is 0-2, default is 1",
-    "_imageWeight.comment": "Description of the imageWeight parameter",
-    "niji": "--niji, When enabled, generated images will use the Niji model, producing anime-style images",
-    "_niji.comment": "Description of the niji parameter",
-    "uploadReferences": "Upload images as references for generation, supports up to 5 images. If more than 1 image is uploaded, they will be automatically merged",
-    "_uploadReferences.comment": "Description of the uploadReferences parameter",
-    "raw": "--raw, When enabled, generated images will use the Midjourney model, producing original style images",
-    "_raw.comment": "Description of the raw parameter",
-    "prompt": "Enter commands, if additional parameters are added, they will override default preset parameters, e.g., adding `--stylize 200` will force the final command to use `--stylize 200`",
-    "_prompt.comment": "Description of the prompt field"
+  "styleCategory.special": {
+    "message": "Special",
+    "description": "A word of category used for describing and generating an image, the generated image should include the category of this tag."
   },
-  "action": {
-    "generate": "Click this button to start generating images",
-    "_generate.comment": "Description of the generate button",
-    "upscale1": "Upscale the first image",
-    "_upscale1.comment": "Description of the upscale1 button",
-    "upscale2": "Upscale the second image",
-    "_upscale2.comment": "Description of the upscale2 button",
-    "upscale3": "Upscale the third image",
-    "_upscale3.comment": "Description of the upscale3 button",
-    "upscale4": "Upscale the fourth image",
-    "_upscale4.comment": "Description of the upscale4 button",
-    "variation1": "Adjust variation of the first image",
-    "_variation1.comment": "Description of the variation1 button",
-    "variation2": "Adjust variation of the second image",
-    "_variation2.comment": "Description of the variation2 button",
-    "variation3": "Adjust variation of the third image",
-    "_variation3.comment": "Description of the variation3 button",
-    "variation4": "Adjust variation of the fourth image",
-    "_variation4.comment": "Description of the variation4 button",
-    "reroll": "Reroll",
-    "_reroll.comment": "Description of the reroll button",
-    "high_variation": "High Variation",
-    "_high_variation.comment": "Description of the high_variation button",
-    "low_variation": "Low Variation",
-    "_low_variation.comment": "Description of the low_variation button",
-    "zoom_out_2x": "Zoom out 2x",
-    "_zoom_out_2x.comment": "Description of the zoom_out_2x button",
-    "zoom_out_1_5x": "Zoom out 1.5x",
-    "_zoom_out_1_5x.comment": "Description of the zoom_out_1_5x button",
-    "square": "Square",
-    "_square.comment": "Description of the square button",
-    "pan_left": "Pan Left",
-    "_pan_left.comment": "Description of the pan_left button",
-    "pan_up": "Pan Up",
-    "_pan_up.comment": "Description of the pan_up button",
-    "pan_down": "Pan Down",
-    "_pan_down.comment": "Description of the pan_down button",
-    "pan_right": "Pan Right",
-    "_pan_right.comment": "Description of the pan_right button",
-    "zoom_in_2x": "Zoom in 2x",
-    "_zoom_in_2x.comment": "Description of the zoom_in_2x button",
-    "zoom_in_1_5x": "Zoom in 1.5x",
-    "_zoom_in_1_5x.comment": "Description of the zoom_in_1_5x button",
-    "upscale_2x": "Upscale 2x",
-    "_upscale_2x.comment": "Description of the upscale_2x button",
-    "upscale_4x": "Upscale 4x",
-    "_upscale_4x.comment": "Description of the upscale_4x button",
-    "redo_upscale_2x": "Redo Upscale 2x",
-    "_redo_upscale_2x.comment": "Description of the redo_upscale_2x button",
-    "redo_upscale_4x": "Redo Upscale 4x",
-    "_redo_upscale_4x.comment": "Description of the redo_upscale_4x button"
+  "styleCategory.chinese": {
+    "message": "Chinese",
+    "description": "A word of category used for describing and generating an image, the generated image should include the category of this tag."
   },
-  "message": {
-    "promptPlaceholder": "Please enter a sentence to describe the image you want to generate, for example: a cute cat. Additional parameters will override default preset parameters",
-    "_promptPlaceholder.comment": "Placeholder text in the prompt field",
-    "uploadReferencesExceed": "You can upload up to 5 images at most",
-    "_uploadReferencesExceed.comment": "Error message when the number of uploaded images exceeds the limit",
-    "uploadReferencesSuccess": "Successfully uploaded images",
-    "_uploadReferencesSuccess.comment": "Success message when images are uploaded successfully",
-    "uploadReferencesError": "Failed to upload images, please try again later",
-    "_uploadReferencesError.comment": "Error message when images fail to upload",
-    "startTaskSuccess": "Successfully started drawing task",
-    "_startTaskSuccess.comment": "Success message when the drawing task is started successfully",
-    "startTaskFailed": "Failed to start drawing task",
-    "_startTaskFailed.comment": "Error message when the drawing task fails to start",
-    "generating": "Generating...",
-    "_generating.comment": "Message when the image is being generated",
-    "noOperations": "No available operations",
-    "_noOperations.comment": "Message when there are no available operations",
-    "noTasks": "No historical tasks, please start a new task first",
-    "_noTasks.comment": "Message when there are no historical tasks"
+  "styleCategory.emotion": {
+    "message": "Emotion",
+    "description": "A word of category used for describing and generating an image, the generated image should include the category of this tag."
   },
-  "model": {
-    "general": "General",
-    "_general.comment": "The name of a model which used for general image generation",
-    "niji": "Niji",
-    "_niji.comment": "The name of a model which used for anime-style image generation, do not translate, keep it as 'Niji'"
+  "styleCategory.camera": {
+    "message": "Camera",
+    "description": "A word of category used for describing and generating an image, the generated image should include the category of this tag."
   },
-  "name": {
-    "model": "Model",
-    "_model.comment": "The model name, model is a term in machine learning, which is used to generate images",
-    "aspect": "Aspect Ratio",
-    "_aspect.comment": "The name of the aspect parameter",
-    "ratio": "Ratio",
-    "_ratio.comment": "The name of the ratio parameter",
-    "chaos": "Chaos",
-    "_chaos.comment": "The name of the chaos parameter, translate is as 'rate of messy'",
-    "fast": "Fast",
-    "_fast.comment": "The name of the fast mode, which is used to generate images quickly, translate it as 'Fast speed'",
-    "nijiStyle": "Niji",
-    "_nijiStyle.comment": "The name of the nijiStyle parameter, do not translate it, keep it as 'Niji'",
-    "version": "Version",
-    "_version.comment": "The name of the version parameter",
-    "imageWeight": "Image Weight",
-    "_imageWeight.comment": "The name of the imageWeight parameter",
-    "no": "No",
-    "_no.comment": "The name of the no parameter, which is used to exclude certain elements, translate it as 'Exclude'",
-    "quality": "Quality",
-    "_quality.comment": "The name of the quality parameter, which is used to set the quality of the generated image",
-    "random": "Random",
-    "_random.comment": "The name of the random parameter, which is used to add random style effects",
-    "relax": "Relax",
-    "_relax.comment": "The name of the relax mode, which is used to generate images in 'slow speed' mode, translate it as 'slow speed'",
-    "repeat": "Repeat",
-    "_repeat.comment": "The name of the repeat parameter, which is used to create multiple tasks from one prompt",
-    "seed": "Seed",
-    "_seed.comment": "The name of the seed parameter, which is used to set the starting visual noise",
-    "stop": "Stop",
-    "_stop.comment": "The name of the stop parameter, which is used to stop the task at any stage",
-    "style": "Style",
-    "_style.comment": "The name of the style parameter, which is used to switch between different versions or styles of models",
-    "stylize": "Stylize",
-    "_stylize.comment": "The name of the stylize parameter, which is used to adjust the intensity of the default aesthetic style",
-    "tile": "Tile",
-    "_tile.comment": "The name of the tile parameter, which is used to generate images that can be used for seamless tiling",
-    "turbo": "Turbo",
-    "_turbo.comment": "The name of the turbo mode, which is used to generate images in the 'Extreme speed' mode, translate it as 'Extreme speed'",
-    "weird": "Weird",
-    "_weird.comment": "The name of the weird parameter, which is used to explore uncommon aesthetic styles, translate it as 'Weirdness'",
-    "translation": "Translation",
-    "_translation.comment": "The name of the translation parameter, which is used to enable automatic translation during generation",
-    "advanced": "Advanced",
-    "_advanced.comment": "The name of the advanced mode, which is used to enable advanced mode",
-    "niji": "Niji",
-    "_niji.comment": "The name of the niji parameter, which is used to enable the Niji model, do not translate it, keep it as 'Niji'",
-    "ignore": "Ignore",
-    "_ignore.comment": "The name of the ignore parameter, which is used to ignore certain elements",
-    "prompt": "Prompt",
-    "_prompt.comment": "The name of the prompt parameter, which is used to enter drawing instructions",
-    "raw": "Raw",
-    "_raw.comment": "The name of the raw parameter, which is used to enable the Midjourney model"
+  "styleCategory.styles": {
+    "message": "Styles",
+    "description": "A word of category used for describing and generating an image, the generated image should include the category of this tag."
   },
-  "placeholder": {
-    "prompt": "Enter a sentence to describe the image you want to generate, for example: a cute cat. Additional parameters will override default preset parameters",
-    "_prompt.comment": "The placeholder text in the prompt field",
-    "ignore": "Enter elements to ignore, for example: `--ignore plants`",
-    "_ignore.comment": "The placeholder text in the ignore field",
-    "select": "Select",
-    "_select.comment": "The placeholder text in the select field"
+  "styleCategory.lighting": {
+    "message": "Lighting",
+    "description": "A word of category used for describing and generating an image, the generated image should include the category of this tag."
+  },
+  "styleCategory.painters": {
+    "message": "Painters",
+    "description": "A word of category used for describing and generating an image, the generated image should include the category of this tag."
+  },
+  "styleCategory.material": {
+    "message": "Material",
+    "description": "A word of category used for describing and generating an image, the generated image should include the category of this tag."
+  },
+  "styleCategory.artists": {
+    "message": "Artists",
+    "description": "A word of category used for describing and generating an image, the generated image should include the category of this tag."
+  },
+  "styleTag.watercolour": {
+    "message": "Watercolour",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.oilPainting": {
+    "message": "Oil painting",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.oldPhotograph": {
+    "message": "Old Photograph",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.oneLineDrawing": {
+    "message": "One-line drawing",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.sketchDrawing": {
+    "message": "Sketch Drawing",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.gouache": {
+    "message": "Gouache",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.filmStyle": {
+    "message": "Film style",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.photorealistic": {
+    "message": "Photorealistic",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.logo": {
+    "message": "Logo",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.cartoon": {
+    "message": "Cartoon",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.marbleStatue": {
+    "message": "Marble Statue",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.1800S": {
+    "message": "1800s",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.1980S": {
+    "message": "1980s",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.isometricAnime": {
+    "message": "Isometric anime",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.analyticDrawing": {
+    "message": "Analytic drawing",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.coloringBook": {
+    "message": "Coloring book",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.infographicDrawing": {
+    "message": "Infographic drawing",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.doubleExposure": {
+    "message": "Double exposure",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.diagrammaticDrawing": {
+    "message": "Diagrammatic drawing",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.2DIllustration": {
+    "message": "2D illustration",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.diagrammaticPortrait": {
+    "message": "Diagrammatic portrait",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.pixelArt": {
+    "message": "Pixel art",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.darkFantasy": {
+    "message": "Dark fantasy",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.ukiyoEArt": {
+    "message": "Ukiyo-e art",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.paperQuilling": {
+    "message": "Paper quilling",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.paperCutCraft": {
+    "message": "Paper cut craft",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.iridescent": {
+    "message": "Iridescent",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.patchworkCollage": {
+    "message": "Patchwork collage",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.opArt": {
+    "message": "Op art",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.japaneseInk": {
+    "message": "Japanese ink",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.pastelDrawing": {
+    "message": "Pastel drawing",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.drippingArt": {
+    "message": "Dripping art",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.tattooArt": {
+    "message": "Tattoo art",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.16Bit": {
+    "message": "16-Bit",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.8Bit": {
+    "message": "8-Bit",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.amber": {
+    "message": "Amber",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.anatomicalDrawing": {
+    "message": "Anatomical Drawing",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.ancient": {
+    "message": "Ancient",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.anime": {
+    "message": "Anime",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.arabic": {
+    "message": "Arabic",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.blocky": {
+    "message": "Blocky",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.blueprint": {
+    "message": "Blueprint",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.comicbook": {
+    "message": "Comicbook",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.caribbean": {
+    "message": "Caribbean",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.celestial": {
+    "message": "Celestial",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.cellulose": {
+    "message": "Cellulose",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.charcoalStyle": {
+    "message": "Charcoal Style",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.chromatic": {
+    "message": "Chromatic",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.coral": {
+    "message": "Coral",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.conceptArt": {
+    "message": "Concept Art",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.fibonacci": {
+    "message": "Fibonacci",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.cyberpunk": {
+    "message": "Cyberpunk",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.diabolic": {
+    "message": "Diabolic",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.diffractionGrading": {
+    "message": "Diffraction Grading",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.lightspeed": {
+    "message": "Lightspeed",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.liquid": {
+    "message": "Liquid",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.dots": {
+    "message": "Dots",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.dune": {
+    "message": "Dune",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.drippingPaint": {
+    "message": "Dripping Paint",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.electronicCircuitry": {
+    "message": "Electronic Circuitry",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.electrical": {
+    "message": "Electrical",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.futuristic": {
+    "message": "Futuristic",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.etching": {
+    "message": "Etching",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.extraterrestrial": {
+    "message": "Extraterrestrial",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.glitchart": {
+    "message": "Glitchart",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.floral": {
+    "message": "Floral",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.fractal": {
+    "message": "Fractal",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.preHistoric": {
+    "message": "Pre Historic",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.prokaryotic": {
+    "message": "Prokaryotic",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.horror": {
+    "message": "Horror",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.iceAge": {
+    "message": "Ice Age",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.jurassic": {
+    "message": "Jurassic",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.knitted": {
+    "message": "Knitted",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.polka": {
+    "message": "Polka",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.latex": {
+    "message": "Latex",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.pastel": {
+    "message": "Pastel",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.mandala": {
+    "message": "Mandala",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.molecular": {
+    "message": "Molecular",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.merkaba": {
+    "message": "Merkaba",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.mitochondria": {
+    "message": "Mitochondria",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.graffiti": {
+    "message": "Graffiti",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.graphicNovel": {
+    "message": "Graphic Novel",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.multidimensional": {
+    "message": "Multidimensional",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.nasa": {
+    "message": "NASA",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.nebula": {
+    "message": "Nebula",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.neon": {
+    "message": "Neon",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.nuclear": {
+    "message": "Nuclear",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.orbital": {
+    "message": "Orbital",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.rayTracing": {
+    "message": "Ray Tracing",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.realistic": {
+    "message": "Realistic",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.renaissance": {
+    "message": "Renaissance",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.retro": {
+    "message": "Retro",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.risograph": {
+    "message": "Risograph",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.origami": {
+    "message": "Origami",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.ornamental": {
+    "message": "Ornamental",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.space": {
+    "message": "Space",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.splatterPaint": {
+    "message": "Splatter Paint",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.sprayPaint": {
+    "message": "Spray Paint",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.squiggles": {
+    "message": "Squiggles",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.stitching": {
+    "message": "Stitching",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.veins": {
+    "message": "Veins",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.streetArt": {
+    "message": "Street Art",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.surreal": {
+    "message": "Surreal",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.symmetric": {
+    "message": "Symmetric",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.synthWave": {
+    "message": "Synth-wave",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.technological": {
+    "message": "Technological",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.tron": {
+    "message": "Tron",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.tropical": {
+    "message": "Tropical",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.ultraModern": {
+    "message": "Ultra Modern",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.wormhole": {
+    "message": "Wormhole",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.wrinkled": {
+    "message": "Wrinkled",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.volcanic": {
+    "message": "Volcanic",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.wetPaint": {
+    "message": "Wet Paint",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.wildWest": {
+    "message": "Wild West",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.wind": {
+    "message": "Wind",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.miniatureFaking": {
+    "message": "Miniature Faking",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.accentLighting": {
+    "message": "Accent Lighting",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.backlight": {
+    "message": "Backlight",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.blacklight": {
+    "message": "Blacklight",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.goldenHourLight": {
+    "message": "Golden hour light",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.candlelight": {
+    "message": "Candlelight",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.concertLighting": {
+    "message": "Concert Lighting",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.crepuscularRays": {
+    "message": "Crepuscular Rays",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.directSunlight": {
+    "message": "Direct Sunlight",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.dust": {
+    "message": "Dust",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.studioLighting": {
+    "message": "Studio lighting",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.rimLight": {
+    "message": "Rim light",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.volumetricLighting": {
+    "message": "Volumetric Lighting",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.fluorescent": {
+    "message": "Fluorescent",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.glowing": {
+    "message": "Glowing",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.glowStick": {
+    "message": "Glow-stick",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.glowRadioactive": {
+    "message": "Glow Radioactive",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.lavaGlow": {
+    "message": "Lava Glow",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.moonlight": {
+    "message": "Moonlight",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.naturalLighting": {
+    "message": "Natural Lighting",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.neonLamp": {
+    "message": "Neon Lamp",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.nightclubLighting": {
+    "message": "Nightclub Lighting",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.nuclearWasteGlo": {
+    "message": "Nuclear Waste Glo",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.quantumDot": {
+    "message": "Quantum Dot",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.spotlight": {
+    "message": "Spotlight",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.edgeLight": {
+    "message": "Edge light",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.coldLight": {
+    "message": "Cold light",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.keyLighting": {
+    "message": "Key lighting",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.ambientLight": {
+    "message": "Ambient Light",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.highKeyLighting": {
+    "message": "High key lighting",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.lowKeyLighting": {
+    "message": "Low key lighting",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.motivatedLighting": {
+    "message": "Motivated lighting",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.3PointLighting": {
+    "message": "3 point lighting",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.strobeLight": {
+    "message": "Strobe light",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.sunLight": {
+    "message": "Sun light",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.ultraviolet": {
+    "message": "Ultraviolet",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.beautifulLighting": {
+    "message": "Beautiful Lighting",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.moodyLighting": {
+    "message": "Moody Lighting",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.softLighting": {
+    "message": "Soft Lighting",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.michelangelo": {
+    "message": "Michelangelo",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.monet": {
+    "message": "Monet",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.paulCezanne": {
+    "message": "Paul Cezanne",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.markRothko": {
+    "message": "Mark Rothko",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.paulKlee": {
+    "message": "Paul Klee",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.picasso": {
+    "message": "Picasso",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.pietMondrian": {
+    "message": "Piet Mondrian",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.pierreAugusteRer": {
+    "message": "Pierre Auguste Rer",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.rembrandt": {
+    "message": "Rembrandt",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.reneMagritte": {
+    "message": "Rene Magritte",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.royLichtenstein": {
+    "message": "Roy Lichtenstein",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.salvadorDali": {
+    "message": "Salvador Dali",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.sandroBotticelli": {
+    "message": "Sandro Botticelli",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.takashiMurakami": {
+    "message": "Takashi Murakami",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.vanGogh": {
+    "message": "Van Gogh",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.wassilyKandinsky": {
+    "message": "Wassily Kandinsky",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.matCollishaw": {
+    "message": "Mat Collishaw",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.yayoiKusama": {
+    "message": "Yayoi Kusama",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.igorMorski": {
+    "message": "Igor Morski",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.shinkaiMakoto": {
+    "message": "Shinkai Makoto",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.pixar": {
+    "message": "Pixar",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.kyotoAnime": {
+    "message": "Kyoto Anime",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.jerryPinkney": {
+    "message": "Jerry Pinkney",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.hayaoMiyazaki": {
+    "message": "Hayao Miyazaki",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.beatrixPotter": {
+    "message": "Beatrix Potter",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.jonKlassen": {
+    "message": "Jon Klassen",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.kaySage": {
+    "message": "Kay Sage",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.jeffreyCatherineJones": {
+    "message": "Jeffrey Catherine Jones",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.yaacovAgam": {
+    "message": "Yaacov Agam",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.davidHockney": {
+    "message": "David Hockney",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.victorMoscoso": {
+    "message": "Victor Moscoso",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.raphaelite": {
+    "message": "Raphaelite",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.stefanKoidl": {
+    "message": "Stefan Koidl",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.suiIshida": {
+    "message": "Sui Ishida",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.swoon": {
+    "message": "Swoon",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.tashaTudor": {
+    "message": "Tasha Tudor",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.tintoretto": {
+    "message": "Tintoretto",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.theodoreRobinsor": {
+    "message": "Theodore Robinsor",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.titian": {
+    "message": "Titian",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.wlop": {
+    "message": "WLOP",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.yanjunCheng": {
+    "message": "Yanjun Cheng",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.yojiShinkawa": {
+    "message": "Yoji Shinkawa",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.zhelongXu": {
+    "message": "Zhelong Xu",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.alenaAenami": {
+    "message": "Alena Aenami",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.anntonFadeevi": {
+    "message": "Annton Fadeevi",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.charlieBowater": {
+    "message": "Charlie Bowater",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.coryLoftis": {
+    "message": "Cory Loftis",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.fenghuaZhong": {
+    "message": "Fenghua Zhong",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.gregRutkowski": {
+    "message": "Greg Rutkowski",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.hongSoonsang": {
+    "message": "Hong SoonSang",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.dennisStock": {
+    "message": "Dennis Stock",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.michalLisowski": {
+    "message": "Michal Lisowski",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.paulLehr": {
+    "message": "Paul Lehr",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.rossTran": {
+    "message": "Ross Tran",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.antonPieck": {
+    "message": "Anton Pieck",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.carlBarks": {
+    "message": "Carl Barks",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.alphonseMucha": {
+    "message": "Alphonse Mucha",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.andyWarhol": {
+    "message": "Andy Warhol",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.banksy": {
+    "message": "Banksy",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.franciscoDeGoya": {
+    "message": "Francisco De Goya",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.caravaggio": {
+    "message": "Caravaggio",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.diegoRivera": {
+    "message": "Diego Rivera",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.marcChagall": {
+    "message": "Marc Chagall",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.edgarDegas": {
+    "message": "Edgar Degas",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.eugeneDelacroix": {
+    "message": "Eugene Delacroix",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.francisBacon": {
+    "message": "Francis Bacon",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.fridaKahlo": {
+    "message": "Frida Kahlo",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.garaldBrom": {
+    "message": "Garald Brom",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.gustavKlimt": {
+    "message": "Gustav Klimt",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.henriMatisse": {
+    "message": "Henri Matisse",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.jackKirby": {
+    "message": "Jack Kirby",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.jacksonPollock": {
+    "message": "Jackson Pollock",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.johannesVermeer": {
+    "message": "Johannes Vermeer",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.jeanMichelBasquiat": {
+    "message": "Jean Michel Basquiat",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.marcelDuchamp": {
+    "message": "Marcel Duchamp",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.aluminum": {
+    "message": "Aluminum",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.brick": {
+    "message": "Brick",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.bronze": {
+    "message": "Bronze",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.carbonFiber": {
+    "message": "Carbon Fiber",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.cardboard": {
+    "message": "Cardboard",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.ceramic": {
+    "message": "Ceramic",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.cotton": {
+    "message": "Cotton",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.fabric": {
+    "message": "Fabric",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.fiberOptic": {
+    "message": "Fiber Optic",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.foil": {
+    "message": "Foil",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.yarn": {
+    "message": "Yarn",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.glass": {
+    "message": "Glass",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.gold": {
+    "message": "Gold",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.gummies": {
+    "message": "Gummies",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.leather": {
+    "message": "Leather",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.magma": {
+    "message": "Magma",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.metallic": {
+    "message": "Metallic",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.nickel": {
+    "message": "Nickel",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.nylon": {
+    "message": "Nylon",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.paper": {
+    "message": "Paper",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.plastic": {
+    "message": "Plastic",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.quartz": {
+    "message": "Quartz",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.wrap": {
+    "message": "Wrap",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.wooden": {
+    "message": "Wooden",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.slime": {
+    "message": "Slime",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.engraving": {
+    "message": "Engraving",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.ivory": {
+    "message": "Ivory",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.basalt": {
+    "message": "Basalt",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.pine": {
+    "message": "Pine",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.diamond": {
+    "message": "Diamond",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.amethyst": {
+    "message": "Amethyst",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.ruby": {
+    "message": "Ruby",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.highPolished": {
+    "message": "High polished",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.brushed": {
+    "message": "Brushed",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.matte": {
+    "message": "Matte",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.satin": {
+    "message": "Satin",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.sandblasted": {
+    "message": "Sandblasted",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.ebony": {
+    "message": "Ebony",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.bokeh": {
+    "message": "Bokeh",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.aerialView": {
+    "message": "Aerial view",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.shotByDslr": {
+    "message": "Shot by DSLR",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.360Panorama": {
+    "message": "360Panorama",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.panorama": {
+    "message": "Panorama",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.telephotoLens": {
+    "message": "Telephoto Lens",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.macroShot": {
+    "message": "Macro shot",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.microscopy": {
+    "message": "Microscopy",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.magnification": {
+    "message": "Magnification",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.closeUp": {
+    "message": "Close up",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.fullBody": {
+    "message": "Full body",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.portrait": {
+    "message": "Portrait",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.profile": {
+    "message": "Profile",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.pinholeLens": {
+    "message": "Pinhole Lens",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.wideView": {
+    "message": "Wide view",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.telescopeLens": {
+    "message": "Telescope Lens",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.satelliteImagery": {
+    "message": "Satellite Imagery",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.headshot": {
+    "message": "Headshot",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.extremeCloseup": {
+    "message": "Extreme closeup",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.ultrawideShot": {
+    "message": "Ultrawide shot",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.birdView": {
+    "message": "Bird view",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.topView": {
+    "message": "Top view",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.frontView": {
+    "message": "Front view",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.sideView": {
+    "message": "Side view",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.backView": {
+    "message": "Back view",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.faceShot": {
+    "message": "Face shot",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.chestShot": {
+    "message": "Chest shot",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.waistShot": {
+    "message": "Waist shot",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.extraLongShot": {
+    "message": "Extra long shot",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.lookUp": {
+    "message": "look up",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.isometricview": {
+    "message": "isometricview",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.highAngleView": {
+    "message": "High angle view",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.lowAngleView": {
+    "message": "Low angle view",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.happy": {
+    "message": "Happy",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.excited": {
+    "message": "Excited",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.angry": {
+    "message": "Angry",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.ped": {
+    "message": "ped",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.disgusted": {
+    "message": "Disgusted",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.supnned": {
+    "message": "supnned",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.hopeful": {
+    "message": "Hopeful",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.anxious": {
+    "message": "Anxious",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.elated": {
+    "message": "Elated",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.fearful": {
+    "message": "Fearful",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.hateful": {
+    "message": "Hateful",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.apoow": {
+    "message": "Apoow",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.dark": {
+    "message": "Dark",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.brutal": {
+    "message": "Brutal",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.hanfu": {
+    "message": "Hanfu",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.cheongsam": {
+    "message": "Cheongsam",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.chineseCostume": {
+    "message": "Chinese costume",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.chineseDress": {
+    "message": "Chinese dress",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.wuxia": {
+    "message": "Wuxia",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.chinesePhoenix": {
+    "message": "Chinese phoenix",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.kungfu": {
+    "message": "Kungfu",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.kunquOpera": {
+    "message": "Kunqu opera",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.cloisonne": {
+    "message": "Cloisonne",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.porcelain": {
+    "message": "Porcelain",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.embroidered": {
+    "message": "Embroidered",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.jade": {
+    "message": "Jade",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.chinesePavilion": {
+    "message": "Chinese pavilion",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.plumFlower": {
+    "message": "Plum flower",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.forbiddenCity": {
+    "message": "Forbidden city",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.peony": {
+    "message": "Peony",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.unrealEngine": {
+    "message": "Unreal engine",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.octaneRender": {
+    "message": "Octane render",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.maxonCinema4D": {
+    "message": "Maxon cinema 4D",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.quixelMegascansRender": {
+    "message": "Quixel megascans render",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.coronaRender": {
+    "message": "Corona render",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.vRay": {
+    "message": "V-ray",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.architecturalVisualisation": {
+    "message": "Architectural visualisation",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.dramaticContrast": {
+    "message": "Dramatic contrast",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.goldAndBlackTone": {
+    "message": "Gold and black tone",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.whiteAndPinkTone": {
+    "message": "White and pink tone",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.redAndBlackTone": {
+    "message": "Red and black tone",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.neonShades": {
+    "message": "Neon shades",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.richColor": {
+    "message": "Rich color",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.monotone": {
+    "message": "Monotone",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.theLowPurityTone": {
+    "message": "The low-purity tone",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "styleTag.theHighPurityTone": {
+    "message": "The high-purity tone",
+    "description": "A word of style used for describing and generating an image, the generated image should include the style of this tag."
+  },
+  "button.low": {
+    "message": "Low",
+    "description": "Text in button, which represents the 'low' picture quality"
+  },
+  "button.medium": {
+    "message": "Medium",
+    "description": "Text in button, which represents the 'medium' picture quality"
+  },
+  "button.high": {
+    "message": "High",
+    "description": "Text in button, which represents the 'high' picture quality"
+  },
+  "button.buyMore": {
+    "message": "Buy More",
+    "description": "Text in button, which allows user to buy more credits"
+  },
+  "button.uploadReferences": {
+    "message": "Upload References",
+    "description": "Text in button, which allows user to upload references"
+  },
+  "button.success": {
+    "message": "Success",
+    "description": "Text in button, which indicates that the operation was successful"
+  },
+  "button.generating": {
+    "message": "Generating",
+    "description": "Text in button, which indicates that the operation is in progress"
+  },
+  "button.failed": {
+    "message": "Failed",
+    "description": "Text in button, which indicates that the operation failed"
+  },
+  "button.download": {
+    "message": "Download",
+    "description": "Text in button, which allows user to download the result"
+  },
+  "button.fast": {
+    "message": "Fast",
+    "description": "Text in button, which allows user to set the 'fast speed' mode to fast to generate the image, must translate to 'Fast speed'"
+  },
+  "button.relax": {
+    "message": "Relax",
+    "description": "Text in button, which allows user to set the 'slow speed' mode to relax to generate the image, must translate to 'Slow speed'"
+  },
+  "button.turbo": {
+    "message": "Turbo",
+    "description": "Text in button, which allows user to set the 'extreme speed' mode to turbo to generate the image, must translate to 'Extreme speed'"
+  },
+  "button.more": {
+    "message": "More",
+    "description": "Text in button, which allows user to see more options"
+  },
+  "button.generate": {
+    "message": "Generate",
+    "description": "Text in button, which allows user to generate the image"
+  },
+  "button.history": {
+    "message": "History",
+    "description": "Text in button, which allows user to see the history of generated images"
+  },
+  "button.generateNew": {
+    "message": "Generate New",
+    "description": "Text in button, which allows user to draw a new picture"
+  },
+  "field.taskId": {
+    "message": "Task ID",
+    "description": "Task ID"
+  },
+  "field.finalPrompt": {
+    "message": "Final Prompt",
+    "description": "Final Drawing prompt used to generate the image"
+  },
+  "field.elements": {
+    "message": "Styles",
+    "description": "Drawing style used to generate the image"
+  },
+  "field.failureReason": {
+    "message": "Failure Reason",
+    "description": "Reason for the failure"
+  },
+  "field.traceId": {
+    "message": "Trace ID",
+    "description": "Trace ID for tracing the request of generating the image, do not translate it, keep it as 'Trace ID'"
+  },
+  "description.aspect": {
+    "message": "--aspect, Changes the aspect ratio of the generated image, default value depends on the model and mode",
+    "description": "Description of the aspect parameter"
+  },
+  "description.chaos": {
+    "message": "--chaos, Adjusts the degree of variation in the generated image, the higher the number, the more unique and unexpected the generated image, range is 0-100, default is 1",
+    "description": "Description of the chaos parameter"
+  },
+  "description.fast": {
+    "message": "Ignores current settings and runs a single generation task in 'fast speed' mode, no default value",
+    "description": "Description of the fast parameter"
+  },
+  "description.iw": {
+    "message": "--iw, Sets the importance of image prompts relative to text prompts during the generation process, range is 0-2, default is 1",
+    "description": "Description of the iw parameter"
+  },
+  "description.no": {
+    "message": "--no, Indicates the generation system to attempt to exclude certain elements, for example `--no plants` will attempt to generate images without plants, no default value",
+    "description": "Description of the no parameter, translate it as 'Exclude'"
+  },
+  "description.quality": {
+    "message": "--quality, Sets the quality and rendering time of the generated image, range is .25, .5, or 1, default is 1",
+    "description": "Description of the quality parameter"
+  },
+  "description.random": {
+    "message": "Adds a random base style code to the prompt, can use `--style random-16`, `--style random-64`, or `--style random-128` to get random style effects of different lengths, no default value",
+    "description": "Description of the random parameter"
+  },
+  "description.relax": {
+    "message": "Overrides current settings to run a single task in 'slow speed' mode, no default value",
+    "description": "Description of the relax parameter"
+  },
+  "description.repeat": {
+    "message": "--repeat, Creates multiple tasks from one prompt, range is 1-40, default is 1",
+    "description": "Description of the repeat parameter"
+  },
+  "description.seed": {
+    "message": "--seed, Starting visual noise for generated images, range is 0-4294967295, default is randomly generated",
+    "description": "Description of the seed parameter"
+  },
+  "description.stop": {
+    "message": "--stop, Stops the task at any stage of the generation process, range is 10-100, default is 100 (i.e., fully generated)",
+    "description": "Description of the stop parameter"
+  },
+  "description.style": {
+    "message": "--style, switches between different versions or styles of Midjourney or Niji models, for example raw, cute, expressive, original, scenic, default value depends on the model and mode",
+    "description": "Description of the style parameter"
+  },
+  "description.stylize": {
+    "message": "--stylize, adjusts the intensity of the default aesthetic style of Midjourney applied in generation tasks, range is 0-1000, default is 100",
+    "description": "Description of the stylize parameter"
+  },
+  "description.tile": {
+    "message": "--tile, Generates an image that can be used for seamless tiling to create seamless patterns, no default value",
+    "description": "Description of the tile parameter"
+  },
+  "description.turbo": {
+    "message": "Overrides current settings to run a single task in 'extreme speed' mode, no default value",
+    "description": "Description of the turbo parameter"
+  },
+  "description.weird": {
+    "message": "--weird, explores uncommon aesthetic styles with experimental nature, range is 0-3000, default is 0",
+    "description": "Description of the weird parameter"
+  },
+  "description.translation": {
+    "message": "Enables automatic translation during generation, non-Chinese content will be automatically translated to English input for Midjourney",
+    "description": "Description of the translation parameter"
+  },
+  "description.imageWeight": {
+    "message": "--iw, adjusts the weight of image prompts relative to text prompts, range is 0-2, default is 1",
+    "description": "Description of the imageWeight parameter"
+  },
+  "description.niji": {
+    "message": "--niji, When enabled, generated images will use the Niji model, producing anime-style images",
+    "description": "Description of the niji parameter"
+  },
+  "description.uploadReferences": {
+    "message": "Upload images as references for generation, supports up to 5 images. If more than 1 image is uploaded, they will be automatically merged",
+    "description": "Description of the uploadReferences parameter"
+  },
+  "description.raw": {
+    "message": "--raw, When enabled, generated images will use the Midjourney model, producing original style images",
+    "description": "Description of the raw parameter"
+  },
+  "description.prompt": {
+    "message": "Enter commands, if additional parameters are added, they will override default preset parameters, e.g., adding `--stylize 200` will force the final command to use `--stylize 200`",
+    "description": "Description of the prompt field"
+  },
+  "action.generate": {
+    "message": "Click this button to start generating images",
+    "description": "Description of the generate button"
+  },
+  "action.upscale1": {
+    "message": "Upscale the first image",
+    "description": "Description of the upscale1 button"
+  },
+  "action.upscale2": {
+    "message": "Upscale the second image",
+    "description": "Description of the upscale2 button"
+  },
+  "action.upscale3": {
+    "message": "Upscale the third image",
+    "description": "Description of the upscale3 button"
+  },
+  "action.upscale4": {
+    "message": "Upscale the fourth image",
+    "description": "Description of the upscale4 button"
+  },
+  "action.variation1": {
+    "message": "Adjust variation of the first image",
+    "description": "Description of the variation1 button"
+  },
+  "action.variation2": {
+    "message": "Adjust variation of the second image",
+    "description": "Description of the variation2 button"
+  },
+  "action.variation3": {
+    "message": "Adjust variation of the third image",
+    "description": "Description of the variation3 button"
+  },
+  "action.variation4": {
+    "message": "Adjust variation of the fourth image",
+    "description": "Description of the variation4 button"
+  },
+  "action.reroll": {
+    "message": "Reroll",
+    "description": "Description of the reroll button"
+  },
+  "action.high_variation": {
+    "message": "High Variation",
+    "description": "Description of the high_variation button"
+  },
+  "action.low_variation": {
+    "message": "Low Variation",
+    "description": "Description of the low_variation button"
+  },
+  "action.zoom_out_2x": {
+    "message": "Zoom out 2x",
+    "description": "Description of the zoom_out_2x button"
+  },
+  "action.zoom_out_1_5x": {
+    "message": "Zoom out 1.5x",
+    "description": "Description of the zoom_out_1_5x button"
+  },
+  "action.square": {
+    "message": "Square",
+    "description": "Description of the square button"
+  },
+  "action.pan_left": {
+    "message": "Pan Left",
+    "description": "Description of the pan_left button"
+  },
+  "action.pan_up": {
+    "message": "Pan Up",
+    "description": "Description of the pan_up button"
+  },
+  "action.pan_down": {
+    "message": "Pan Down",
+    "description": "Description of the pan_down button"
+  },
+  "action.pan_right": {
+    "message": "Pan Right",
+    "description": "Description of the pan_right button"
+  },
+  "action.zoom_in_2x": {
+    "message": "Zoom in 2x",
+    "description": "Description of the zoom_in_2x button"
+  },
+  "action.zoom_in_1_5x": {
+    "message": "Zoom in 1.5x",
+    "description": "Description of the zoom_in_1_5x button"
+  },
+  "action.upscale_2x": {
+    "message": "Upscale 2x",
+    "description": "Description of the upscale_2x button"
+  },
+  "action.upscale_4x": {
+    "message": "Upscale 4x",
+    "description": "Description of the upscale_4x button"
+  },
+  "action.redo_upscale_2x": {
+    "message": "Redo Upscale 2x",
+    "description": "Description of the redo_upscale_2x button"
+  },
+  "action.redo_upscale_4x": {
+    "message": "Redo Upscale 4x",
+    "description": "Description of the redo_upscale_4x button"
+  },
+  "message.promptPlaceholder": {
+    "message": "Please enter a sentence to describe the image you want to generate, for example: a cute cat. Additional parameters will override default preset parameters",
+    "description": "Placeholder text in the prompt field"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "You can upload up to 5 images at most",
+    "description": "Error message when the number of uploaded images exceeds the limit"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Successfully uploaded images",
+    "description": "Success message when images are uploaded successfully"
+  },
+  "message.uploadReferencesError": {
+    "message": "Failed to upload images, please try again later",
+    "description": "Error message when images fail to upload"
+  },
+  "message.startingTask": {
+    "message": "Starting task...",
+    "description": "Message when the drawing task is starting"
+  },
+  "message.startTaskSuccess": {
+    "message": "Successfully started drawing task",
+    "description": "Success message when the drawing task is started successfully"
+  },
+  "message.startTaskFailed": {
+    "message": "Failed to start drawing task",
+    "description": "Error message when the drawing task fails to start"
+  },
+  "message.generating": {
+    "message": "Generating...",
+    "description": "Message when the image is being generated"
+  },
+  "message.noOperations": {
+    "message": "No available operations",
+    "description": "Message when there are no available operations"
+  },
+  "message.noTasks": {
+    "message": "No historical tasks, please start a new task first",
+    "description": "Message when there are no historical tasks"
+  },
+  "model.general": {
+    "message": "General",
+    "description": "The name of a model which used for general image generation"
+  },
+  "model.niji": {
+    "message": "Niji",
+    "description": "The name of a model which used for anime-style image generation, do not translate, keep it as 'Niji'"
+  },
+  "name.model": {
+    "message": "Model",
+    "description": "The model name, model is a term in machine learning, which is used to generate images"
+  },
+  "name.aspect": {
+    "message": "Aspect Ratio",
+    "description": "The name of the aspect parameter"
+  },
+  "name.ratio": {
+    "message": "Ratio",
+    "description": "The name of the ratio parameter"
+  },
+  "name.chaos": {
+    "message": "Chaos",
+    "description": "The name of the chaos parameter, translate is as 'rate of messy'"
+  },
+  "name.fast": {
+    "message": "Fast",
+    "description": "The name of the fast mode, which is used to generate images quickly, translate it as 'Fast speed'"
+  },
+  "name.nijiStyle": {
+    "message": "Niji",
+    "description": "The name of the nijiStyle parameter, do not translate it, keep it as 'Niji'"
+  },
+  "name.version": {
+    "message": "Version",
+    "description": "The name of the version parameter"
+  },
+  "name.imageWeight": {
+    "message": "Image Weight",
+    "description": "The name of the imageWeight parameter"
+  },
+  "name.no": {
+    "message": "No",
+    "description": "The name of the no parameter, which is used to exclude certain elements, translate it as 'Exclude'"
+  },
+  "name.quality": {
+    "message": "Quality",
+    "description": "The name of the quality parameter, which is used to set the quality of the generated image"
+  },
+  "name.random": {
+    "message": "Random",
+    "description": "The name of the random parameter, which is used to add random style effects"
+  },
+  "name.relax": {
+    "message": "Relax",
+    "description": "The name of the relax mode, which is used to generate images in 'slow speed' mode, translate it as 'slow speed'"
+  },
+  "name.repeat": {
+    "message": "Repeat",
+    "description": "The name of the repeat parameter, which is used to create multiple tasks from one prompt"
+  },
+  "name.seed": {
+    "message": "Seed",
+    "description": "The name of the seed parameter, which is used to set the starting visual noise"
+  },
+  "name.stop": {
+    "message": "Stop",
+    "description": "The name of the stop parameter, which is used to stop the task at any stage"
+  },
+  "name.style": {
+    "message": "Style",
+    "description": "The name of the style parameter, which is used to switch between different versions or styles of models"
+  },
+  "name.stylize": {
+    "message": "Stylize",
+    "description": "The name of the stylize parameter, which is used to adjust the intensity of the default aesthetic style"
+  },
+  "name.tile": {
+    "message": "Tile",
+    "description": "The name of the tile parameter, which is used to generate images that can be used for seamless tiling"
+  },
+  "name.turbo": {
+    "message": "Turbo",
+    "description": "The name of the turbo mode, which is used to generate images in the 'Extreme speed' mode, translate it as 'Extreme speed'"
+  },
+  "name.weird": {
+    "message": "Weird",
+    "description": "The name of the weird parameter, which is used to explore uncommon aesthetic styles, translate it as 'Weirdness'"
+  },
+  "name.translation": {
+    "message": "Translation",
+    "description": "The name of the translation parameter, which is used to enable automatic translation during generation"
+  },
+  "name.advanced": {
+    "message": "Advanced",
+    "description": "The name of the advanced mode, which is used to enable advanced mode"
+  },
+  "name.niji": {
+    "message": "Niji",
+    "description": "The name of the niji parameter, which is used to enable the Niji model, do not translate it, keep it as 'Niji'"
+  },
+  "name.ignore": {
+    "message": "Ignore",
+    "description": "The name of the ignore parameter, which is used to ignore certain elements"
+  },
+  "name.prompt": {
+    "message": "Prompt",
+    "description": "The name of the prompt parameter, which is used to enter drawing instructions"
+  },
+  "name.raw": {
+    "message": "Raw",
+    "description": "The name of the raw parameter, which is used to enable the Midjourney model"
+  },
+  "placeholder.prompt": {
+    "message": "Enter a sentence to describe the image you want to generate, for example: a cute cat. Additional parameters will override default preset parameters",
+    "description": "The placeholder text in the prompt field"
+  },
+  "placeholder.ignore": {
+    "message": "Enter elements to ignore, for example: `--ignore plants`",
+    "description": "The placeholder text in the ignore field"
+  },
+  "placeholder.select": {
+    "message": "Select",
+    "description": "The placeholder text in the select field"
   }
 }
