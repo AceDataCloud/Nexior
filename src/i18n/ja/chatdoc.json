@@ -8,7 +8,7 @@
     "description": "アップロードされたドキュメントのファイル名"
   },
   "field.createdAt": {
-    "message": "作成日時",
+    "message": "作成時間",
     "description": "ドキュメントがアップロードされた時刻"
   },
   "field.fileExtension": {
@@ -84,7 +84,7 @@
     "description": "ドキュメントをアップロードするためのドラッグまたはクリックのメッセージ"
   },
   "message.learningDocument": {
-    "message": "学習中、お待ちください...",
+    "message": "学習中、しばらくお待ちください...",
     "description": "ドキュメントの学習中のメッセージ"
   },
   "message.startNewChat": {
@@ -96,16 +96,16 @@
     "description": "応答に失敗した場合のエラーメッセージ"
   },
   "message.errorBadRequest": {
-    "message": "リクエストのコンテンツが正しくフォーマットされていません。もう一度質問してください",
-    "description": "リクエストのコンテンツが正しくフォーマットされていない場合のエラーメッセージ"
+    "message": "リクエストの内容が正しくフォーマットされていません。もう一度質問してください",
+    "description": "リクエストの内容が正しくフォーマットされていない場合のエラーメッセージ"
   },
   "message.errorNoConversation": {
-    "message": "会話のコンテンツが存在しないか有効期限が切れています。新しい会話を開始してください",
-    "description": "会話のコンテンツが存在しないか有効期限が切れている場合のエラーメッセージ"
+    "message": "会話の内容が存在しないか有効期限が切れています。新しい会話を開始してください",
+    "description": "会話の内容が存在しないか有効期限が切れている場合のエラーメッセージ"
   },
   "message.errorContentTooLarge": {
-    "message": "質問のコンテンツが長すぎます。短くしてもう一度お試しください",
-    "description": "質問のコンテンツが長すぎる場合のエラーメッセージ"
+    "message": "質問の内容が長すぎます。短くしてもう一度お試しください",
+    "description": "質問の内容が長すぎる場合のエラーメッセージ"
   },
   "message.errorTooManyRequests": {
     "message": "操作が頻繁すぎます。後でもう一度お試しください",
@@ -133,7 +133,7 @@
   },
   "message.howToUse": {
     "message": "Shift+Enterを押して改行",
-    "description": "改行する方法を示すメッセージ"
+    "description": "改行方法を示すメッセージ"
   },
   "message.createRepositorySuccess": {
     "message": "知識ベースが正常に作成されました",
@@ -153,7 +153,7 @@
   },
   "message.currentRepository": {
     "message": "現在の知識ベース",
-    "description": "現在の知識ベースを表示するメッセージ"
+    "description": "現在の知識ベースを示すメッセージ"
   },
   "message.nameRequired": {
     "message": "名前は空にできません",
@@ -166,6 +166,10 @@
   "message.inputRepositoryDescription": {
     "message": "知識ベースの説明を一文で記述",
     "description": "知識ベースの説明の入力プレースホルダー"
+  },
+  "message.supportedFiles": {
+    "message": ".docx、.doc、.pdf、.txt、.csv、.enex、.epub、.eml、.html、.htm、.shtml、.md、.odt、.ppt、.pptxのサポートされているファイルタイプ",
+    "description": "サポートされているファイルタイプを示すメッセージ"
   },
   "nav.chat": {
     "message": "チャット",

@@ -17,7 +17,7 @@
   },
   "field.fileUrl": {
     "message": "Link al File",
-    "description": "Link al documento caricato"
+    "description": "Collegamento al documento caricato"
   },
   "field.fileSize": {
     "message": "Dimensione del File",
@@ -28,7 +28,7 @@
     "description": "Stato dell'elaborazione del documento"
   },
   "field.stateProcessing": {
-    "message": "Elaborazione in corso",
+    "message": "In Elaborazione",
     "description": "Il documento è in fase di elaborazione"
   },
   "field.stateCompleted": {
@@ -96,7 +96,7 @@
     "description": "Messaggio di errore in caso di impossibilità di rispondere"
   },
   "message.errorBadRequest": {
-    "message": "Il contenuto della richiesta non è formattato correttamente, si prega di ripetere la richiesta",
+    "message": "Il contenuto della richiesta non è formattato correttamente, si prega di ripetere la domanda",
     "description": "Messaggio di errore quando il contenuto della richiesta non è formattato correttamente"
   },
   "message.errorNoConversation": {
@@ -104,7 +104,7 @@
     "description": "Messaggio di errore quando il contenuto della conversazione non esiste o è scaduto"
   },
   "message.errorContentTooLarge": {
-    "message": "Il contenuto della domanda è troppo lungo, si prega di accorciarlo e riprovare",
+    "message": "Il contenuto della domanda è troppo lungo, si prega di accorciare e riprovare",
     "description": "Messaggio di errore quando il contenuto della domanda è troppo lungo"
   },
   "message.errorTooManyRequests": {
@@ -137,7 +137,7 @@
   },
   "message.createRepositorySuccess": {
     "message": "Base di conoscenza creata con successo",
-    "description": "Messaggio di successo quando la base di conoscenza è stata creata con successo"
+    "description": "Messaggio di successo quando la base di conoscenza viene creata con successo"
   },
   "message.createRepositoryFailed": {
     "message": "Impossibile creare la base di conoscenza",
@@ -145,11 +145,11 @@
   },
   "message.deleteRepositorySuccess": {
     "message": "Base di conoscenza eliminata con successo",
-    "description": "Messaggio di successo quando la base di conoscenza è stata eliminata con successo"
+    "description": "Messaggio di successo quando la base di conoscenza viene eliminata con successo"
   },
   "message.deleteDocumentSuccess": {
     "message": "Documento eliminato con successo",
-    "description": "Messaggio di successo quando il documento è stato eliminato con successo"
+    "description": "Messaggio di successo quando il documento viene eliminato con successo"
   },
   "message.currentRepository": {
     "message": "Base di conoscenza attuale",
@@ -166,6 +166,10 @@
   "message.inputRepositoryDescription": {
     "message": "Descrivi la tua base di conoscenza in una frase",
     "description": "Segnaposto per la descrizione della base di conoscenza"
+  },
+  "message.supportedFiles": {
+    "message": "Tipi di file supportati: .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
+    "description": "Messaggio per mostrare i tipi di file supportati"
   },
   "nav.chat": {
     "message": "Chat",
