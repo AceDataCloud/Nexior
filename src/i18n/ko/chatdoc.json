@@ -61,15 +61,15 @@
   },
   "message.uploadDocumentsError": {
     "message": "문서 업로드 실패",
-    "description": "문서 업로드 실패 시의 오류 메시지"
+    "description": "문서 업로드에 실패했을 때의 오류 메시지"
   },
   "message.uploadDocumentsSuccess": {
     "message": "문서 업로드 성공",
-    "description": "문서 업로드 성공 시의 성공 메시지"
+    "description": "문서 업로드가 성공했을 때의 성공 메시지"
   },
   "message.createDocumentSuccess": {
     "message": "문서 생성 성공",
-    "description": "문서 생성 성공 시의 성공 메시지"
+    "description": "문서 생성이 성공했을 때의 성공 메시지"
   },
   "message.startCreateDocument": {
     "message": "문서 학습 시작 중...",
@@ -77,7 +77,7 @@
   },
   "message.createDocumentError": {
     "message": "문서 학습 실패",
-    "description": "문서 학습 실패 시의 오류 메시지"
+    "description": "문서 학습에 실패했을 때의 오류 메시지"
   },
   "message.dragOrClickToUpload": {
     "message": "드래그하거나 클릭하여 문서를 업로드하세요",
@@ -104,8 +104,8 @@
     "description": "대화 내용이 존재하지 않거나 만료되었을 때의 오류 메시지"
   },
   "message.errorContentTooLarge": {
-    "message": "질문 내용이 너무 깁니다. 짧게 요약하고 다시 시도해주세요",
-    "description": "질문 내용이 너무 깁니다. 짧게 요약하고 다시 시도해주세요"
+    "message": "질문 내용이 너무 깁니다. 짧게 줄이고 다시 시도해주세요",
+    "description": "질문 내용이 너무 깁니다. 짧게 줄여야 할 때의 오류 메시지"
   },
   "message.errorTooManyRequests": {
     "message": "작업이 너무 빈번합니다. 나중에 다시 시도해주세요",
@@ -124,7 +124,7 @@
     "description": "질문 응답 시간이 초과되었을 때의 오류 메시지"
   },
   "message.errorNotApplied": {
-    "message": "아직 이 서비스에 신청하지 않았습니다. 계속하기 전에 신청해주세요",
+    "message": "아직 이 서비스에 신청하지 않았습니다. 계속 질문하기 전에 신청해주세요",
     "description": "사용자가 아직 이 서비스에 신청하지 않았을 때의 오류 메시지"
   },
   "message.confirmDelete": {
@@ -132,7 +132,7 @@
     "description": "삭제를 확인하기 위한 메시지"
   },
   "message.howToUse": {
-    "message": "Shift+Enter를 눌러 줄 바꿈을 할 수 있습니다",
+    "message": "Shift+Enter를 눌러 줄 바꿈",
     "description": "줄 바꿈하는 방법을 보여주는 메시지"
   },
   "message.createRepositorySuccess": {
@@ -140,7 +140,7 @@
     "description": "지식 베이스가 성공적으로 생성되었을 때의 성공 메시지"
   },
   "message.createRepositoryFailed": {
-    "message": "지식 베이스 생성에 실패했습니다",
+    "message": "지식 베이스 생성 실패",
     "description": "지식 베이스 생성에 실패했을 때의 오류 메시지"
   },
   "message.deleteRepositorySuccess": {
@@ -156,16 +156,20 @@
     "description": "현재 지식 베이스를 보여주는 메시지"
   },
   "message.nameRequired": {
-    "message": "이름을 입력해주세요",
+    "message": "이름을 비워둘 수 없습니다",
     "description": "이름이 비어있을 때의 오류 메시지"
   },
   "message.inputRepositoryName": {
-    "message": "지식 베이스 이름 입력",
-    "description": "지식 베이스 이름을 입력하는 입력 플레이스홀더"
+    "message": "지식 베이스 이름",
+    "description": "지식 베이스 이름을 입력하는 곳의 플레이스홀더"
   },
   "message.inputRepositoryDescription": {
     "message": "한 문장으로 지식 베이스를 설명해주세요",
-    "description": "지식 베이스 설명을 입력하는 입력 플레이스홀더"
+    "description": "지식 베이스 설명을 입력하는 곳의 플레이스홀더"
+  },
+  "message.supportedFiles": {
+    "message": ".docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx 형식을 지원합니다",
+    "description": "지원되는 파일 형식을 보여주는 메시지"
   },
   "nav.chat": {
     "message": "채팅",
@@ -181,11 +185,11 @@
   },
   "title.manage": {
     "message": "지식 베이스 관리",
-    "description": "지식 베이스 관리를 위한 제목"
+    "description": "지식 베이스를 관리하기 위한 제목"
   },
   "title.createRepository": {
     "message": "지식 베이스 생성",
-    "description": "지식 베이스 생성을 위한 제목"
+    "description": "지식 베이스를 생성하기 위한 제목"
   },
   "title.repositories": {
     "message": "지식 베이스 목록",

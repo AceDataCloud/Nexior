@@ -1,194 +1,198 @@
 {
   "button.uploadDocuments": {
     "message": "Dokumente hochladen",
-    "description": "Text in Schaltfläche, die es dem Benutzer ermöglicht, Dokumente hochzuladen"
+    "description": "Text in button, which allows user to upload documents"
   },
   "field.fileName": {
     "message": "Dateiname",
-    "description": "Dateiname für hochgeladenes Dokument"
+    "description": "File name for uploaded document"
   },
   "field.createdAt": {
     "message": "Erstellungszeit",
-    "description": "Zeitpunkt, an dem das Dokument hochgeladen wurde"
+    "description": "Time when document was uploaded"
   },
   "field.fileExtension": {
     "message": "Dateityp",
-    "description": "Dateityp für hochgeladenes Dokument"
+    "description": "File type for uploaded document"
   },
   "field.fileUrl": {
     "message": "Dateiverknüpfung",
-    "description": "Verknüpfung zum hochgeladenen Dokument"
+    "description": "Link to uploaded document"
   },
   "field.fileSize": {
     "message": "Dateigröße",
-    "description": "Größe des hochgeladenen Dokuments"
+    "description": "Size of uploaded document"
   },
   "field.state": {
     "message": "Status",
-    "description": "Status der Dokumentenverarbeitung"
+    "description": "Status of document processing"
   },
   "field.stateProcessing": {
     "message": "Lernen",
-    "description": "Dokument wird verarbeitet"
+    "description": "Document is being processed"
   },
   "field.stateCompleted": {
     "message": "Lernen abgeschlossen",
-    "description": "Dokument wurde erfolgreich verarbeitet"
+    "description": "Document was processed successfully"
   },
   "field.stateFailed": {
     "message": "Lernen fehlgeschlagen",
-    "description": "Dokumentenverarbeitung fehlgeschlagen"
+    "description": "Document processing failed"
   },
   "field.name": {
     "message": "Name",
-    "description": "Name des Dokuments"
+    "description": "Name of document"
   },
   "field.description": {
     "message": "Beschreibung",
-    "description": "Beschreibung des Dokuments"
+    "description": "Description of document"
   },
   "message.introductionForKnowledge": {
     "message": "Dokumente können der Wissensbasis hinzugefügt werden, und wenn der Roboter antwortet, kann er das Wissen im Repository verwenden, um zu antworten.",
-    "description": "Einführungsnachricht für die Wissensbasis"
+    "description": "Introduction message for knowledge base"
   },
   "message.introductionForRepository": {
     "message": "Die Wissensbasis ist eine Sammlung von Dokumenten, in der Sie Dokumente hinzufügen können. Wenn der Roboter antwortet, wird er aus den Dokumenten in der Wissensbasis antworten.",
-    "description": "Einführungsnachricht für die Wissensbasis"
+    "description": "Introduction message for knowledge base"
   },
   "message.uploadDocumentsExceed": {
     "message": "Die Anzahl der hochgeladenen Dokumente überschreitet das Limit",
-    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Dokumente das Limit überschreitet"
+    "description": "Error message when uploaded document quantity exceeds limit"
   },
   "message.uploadDocumentsError": {
     "message": "Fehler beim Hochladen des Dokuments",
-    "description": "Fehlermeldung, wenn das Hochladen des Dokuments fehlgeschlagen ist"
+    "description": "Error message when failed to upload document"
   },
   "message.uploadDocumentsSuccess": {
     "message": "Dokument erfolgreich hochgeladen",
-    "description": "Erfolgsmeldung, wenn das Dokument erfolgreich hochgeladen wurde"
+    "description": "Success message when document upload is successful"
   },
   "message.createDocumentSuccess": {
     "message": "Dokumentenerstellung erfolgreich",
-    "description": "Erfolgsmeldung, wenn die Dokumentenerstellung erfolgreich ist"
+    "description": "Success message when document creation is successful"
   },
   "message.startCreateDocument": {
-    "message": "Starte das Lernen des Dokuments...",
-    "description": "Nachricht beim Starten des Lernens des Dokuments"
+    "message": "Beginne mit dem Lernen des Dokuments...",
+    "description": "Message when starting to learn document"
   },
   "message.createDocumentError": {
     "message": "Fehler beim Lernen des Dokuments",
-    "description": "Fehlermeldung, wenn das Lernen des Dokuments fehlgeschlagen ist"
+    "description": "Error message when failed to learn document"
   },
   "message.dragOrClickToUpload": {
     "message": "Zum Hochladen des Dokuments ziehen oder klicken",
-    "description": "Nachricht zum Ziehen oder Klicken, um das Dokument hochzuladen"
+    "description": "Message to drag or click to upload document"
   },
   "message.learningDocument": {
     "message": "Lernen, bitte warten...",
-    "description": "Nachricht beim Lernen des Dokuments"
+    "description": "Message when learning document"
   },
   "message.startNewChat": {
     "message": "Neuen Chat starten",
-    "description": "Nachricht, um einen neuen Chat zu starten"
+    "description": "Message to start new chat"
   },
   "message.errorApiError": {
     "message": "Antwort fehlgeschlagen, bitte versuchen Sie es später erneut",
-    "description": "Fehlermeldung, wenn die Antwort fehlgeschlagen ist"
+    "description": "Error message when failed to respond"
   },
   "message.errorBadRequest": {
     "message": "Die Anforderung ist nicht korrekt formatiert, bitte fragen Sie erneut",
-    "description": "Fehlermeldung, wenn die Anforderung nicht korrekt formatiert ist"
+    "description": "Error message when request content is not formatted correctly"
   },
   "message.errorNoConversation": {
     "message": "Das Gespräch existiert nicht oder ist abgelaufen, bitte starten Sie ein neues Gespräch",
-    "description": "Fehlermeldung, wenn das Gespräch nicht existiert oder abgelaufen ist"
+    "description": "Error message when conversation content does not exist or has expired"
   },
   "message.errorContentTooLarge": {
     "message": "Die Frage ist zu lang, bitte kürzen Sie sie und versuchen Sie es erneut",
-    "description": "Fehlermeldung, wenn der Inhalt der Frage zu lang ist"
+    "description": "Error message when question content is too long"
   },
   "message.errorTooManyRequests": {
     "message": "Ihre Operation ist zu häufig, bitte versuchen Sie es später erneut",
-    "description": "Fehlermeldung, wenn die Operation zu häufig ist"
+    "description": "Error message when operation is too frequent"
   },
   "message.errorUsedUp": {
-    "message": "Ihr Kontingent ist aufgebraucht, bitte kaufen Sie mehr Nutzung, um fortzufahren",
-    "description": "Fehlermeldung, wenn das Kontingent aufgebraucht ist"
+    "message": "Ihr Paketnutzungslimit wurde erreicht, bitte kaufen Sie mehr Nutzung, um fortzufahren",
+    "description": "Error message when package usage limit has been reached"
   },
   "message.errorUnknown": {
     "message": "Ein unbekannter Serverfehler ist aufgetreten, bitte versuchen Sie es später erneut oder kontaktieren Sie den Kundenservice",
-    "description": "Fehlermeldung, wenn ein unbekannter Serverfehler aufgetreten ist"
+    "description": "Error message when unknown server error occurred"
   },
   "message.errorTimeout": {
     "message": "Die Beantwortung der Frage hat Zeitüberschreitung, bitte versuchen Sie es später erneut",
-    "description": "Fehlermeldung, wenn die Beantwortung der Frage Zeitüberschreitung hat"
+    "description": "Error message when answering question timed out"
   },
   "message.errorNotApplied": {
     "message": "Sie haben diesen Service noch nicht beantragt, bitte beantragen Sie ihn, bevor Sie fortfahren",
-    "description": "Fehlermeldung, wenn der Benutzer diesen Service noch nicht beantragt hat"
+    "description": "Error message when user has not applied for this service yet"
   },
   "message.confirmDelete": {
     "message": "Löschung bestätigen",
-    "description": "Nachricht zur Bestätigung der Löschung"
+    "description": "Message to confirm deletion"
   },
   "message.howToUse": {
     "message": "Drücken Sie Umschalt+Eingabe, um einen Zeilenumbruch einzufügen",
-    "description": "Nachricht, wie man einen Zeilenumbruch einfügt"
+    "description": "Message to show how to line break"
   },
   "message.createRepositorySuccess": {
     "message": "Wissensbasis erfolgreich erstellt",
-    "description": "Erfolgsmeldung, wenn die Wissensbasis erfolgreich erstellt wurde"
+    "description": "Success message when knowledge base is created successfully"
   },
   "message.createRepositoryFailed": {
     "message": "Fehler beim Erstellen der Wissensbasis",
-    "description": "Fehlermeldung, wenn das Erstellen der Wissensbasis fehlgeschlagen ist"
+    "description": "Error message when failed to create knowledge base"
   },
   "message.deleteRepositorySuccess": {
     "message": "Wissensbasis erfolgreich gelöscht",
-    "description": "Erfolgsmeldung, wenn die Wissensbasis erfolgreich gelöscht wurde"
+    "description": "Success message when knowledge base is deleted successfully"
   },
   "message.deleteDocumentSuccess": {
     "message": "Dokument erfolgreich gelöscht",
-    "description": "Erfolgsmeldung, wenn das Dokument erfolgreich gelöscht wurde"
+    "description": "Success message when document is deleted successfully"
   },
   "message.currentRepository": {
     "message": "Aktuelle Wissensbasis",
-    "description": "Nachricht zur Anzeige der aktuellen Wissensbasis"
+    "description": "Message to show current knowledge base"
   },
   "message.nameRequired": {
     "message": "Name darf nicht leer sein",
-    "description": "Fehlermeldung, wenn der Name leer ist"
+    "description": "Error message when name is empty"
   },
   "message.inputRepositoryName": {
     "message": "Name der Wissensbasis",
-    "description": "Platzhalter für den Namen der Wissensbasis"
+    "description": "Input placeholder for knowledge base name"
   },
   "message.inputRepositoryDescription": {
     "message": "Beschreiben Sie Ihre Wissensbasis in einem Satz",
-    "description": "Platzhalter für die Beschreibung der Wissensbasis"
+    "description": "Input placeholder for knowledge base description"
+  },
+  "message.supportedFiles": {
+    "message": "Unterstützte Dateitypen: .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
+    "description": "Message to show supported file types"
   },
   "nav.chat": {
     "message": "Chat",
-    "description": "Navigationspunkt für Chat"
+    "description": "Navigation item for chat"
   },
   "nav.setting": {
     "message": "Einstellung",
-    "description": "Navigationspunkt für Einstellung"
+    "description": "Navigation item for setting"
   },
   "nav.manage": {
     "message": "Verwalten",
-    "description": "Navigationspunkt für Verwalten"
+    "description": "Navigation item for manage"
   },
   "title.manage": {
     "message": "Wissensbasen verwalten",
-    "description": "Titel für die Verwaltung der Wissensbasis"
+    "description": "Title for manage knowledge base"
   },
   "title.createRepository": {
     "message": "Wissensbasis erstellen",
-    "description": "Titel für das Erstellen der Wissensbasis"
+    "description": "Title for create knowledge base"
   },
   "title.repositories": {
-    "message": "Liste der Wissensbasen",
-    "description": "Titel für die Liste der Wissensbasen"
+    "message": "Wissensbasisliste",
+    "description": "Title for knowledge base list"
   }
 }

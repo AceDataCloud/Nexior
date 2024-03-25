@@ -25,7 +25,7 @@ module.exports = {
   openAIApiModel: 'gpt-3.5-turbo-1106',
   openAIApiUrl: 'https://api.acedata.cloud',
   openAIApiUrlPath: '/openai/chat/completions',
-  modelContextLimit: 15000,
+  modelContextLimit: 12000,
   additionalReqBodyParams: {
     response_format: {
       type: 'json_object'
