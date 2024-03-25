@@ -1,7 +1,7 @@
 {
   "button.uploadDocuments": {
     "message": "Ladda upp dokument",
-    "description": "Text i knappen som låter användaren ladda upp dokument"
+    "description": "Text i knappen, som låter användaren ladda upp dokument"
   },
   "field.fileName": {
     "message": "Filnamn",
@@ -52,7 +52,7 @@
     "description": "Introduktionsmeddelande för kunskapsbasen"
   },
   "message.introductionForRepository": {
-    "message": "Kunskapsbasen är en samling av dokument där du kan lägga till dokument. När roboten svarar kommer den att svara från dokumenten i kunskapsbasen.",
+    "message": "Kunskapsbasen är en samling dokument där du kan lägga till dokument. När roboten svarar kommer den att svara från dokumenten i kunskapsbasen.",
     "description": "Introduktionsmeddelande för kunskapsbasen"
   },
   "message.uploadDocumentsExceed": {
@@ -60,23 +60,23 @@
     "description": "Felmeddelande när antalet uppladdade dokument överstiger gränsen"
   },
   "message.uploadDocumentsError": {
-    "message": "Misslyckades att ladda upp dokument",
+    "message": "Misslyckades med att ladda upp dokument",
     "description": "Felmeddelande när det misslyckades att ladda upp dokument"
   },
   "message.uploadDocumentsSuccess": {
     "message": "Dokumentuppladdning lyckades",
-    "description": "Lyckat meddelande när dokumentuppladdning är lyckad"
+    "description": "Lyckat meddelande när dokumentuppladdning lyckas"
   },
   "message.createDocumentSuccess": {
     "message": "Dokumentskapande lyckades",
-    "description": "Lyckat meddelande när dokumentskapande är lyckat"
+    "description": "Lyckat meddelande när dokumentskapande lyckas"
   },
   "message.startCreateDocument": {
     "message": "Börja lära dokument...",
     "description": "Meddelande när man börjar lära dokument"
   },
   "message.createDocumentError": {
-    "message": "Misslyckades att lära dokument",
+    "message": "Misslyckades med att lära dokument",
     "description": "Felmeddelande när det misslyckades att lära dokument"
   },
   "message.dragOrClickToUpload": {
@@ -92,7 +92,7 @@
     "description": "Meddelande för att starta ny chatt"
   },
   "message.errorApiError": {
-    "message": "Misslyckades att svara, var god försök igen senare",
+    "message": "Misslyckades med att svara, försök igen senare",
     "description": "Felmeddelande när det misslyckades att svara"
   },
   "message.errorBadRequest": {
@@ -116,8 +116,8 @@
     "description": "Felmeddelande när paketanvändningsgränsen har nåtts"
   },
   "message.errorUnknown": {
-    "message": "En okänd serverfel inträffade, var god försök igen senare eller kontakta kundtjänst",
-    "description": "Felmeddelande när okänt serverfel inträffade"
+    "message": "Ett okänt serverfel inträffade, var god försök igen senare eller kontakta kundtjänst",
+    "description": "Felmeddelande när ett okänt serverfel inträffade"
   },
   "message.errorTimeout": {
     "message": "Svar på frågan tog för lång tid, var god försök igen senare",
@@ -140,7 +140,7 @@
     "description": "Lyckat meddelande när kunskapsbasen skapas framgångsrikt"
   },
   "message.createRepositoryFailed": {
-    "message": "Misslyckades att skapa kunskapsbas",
+    "message": "Misslyckades med att skapa kunskapsbas",
     "description": "Felmeddelande när det misslyckades att skapa kunskapsbas"
   },
   "message.deleteRepositorySuccess": {
@@ -156,7 +156,7 @@
     "description": "Meddelande för att visa aktuell kunskapsbas"
   },
   "message.nameRequired": {
-    "message": "Namn får inte vara tomt",
+    "message": "Namnet får inte vara tomt",
     "description": "Felmeddelande när namnet är tomt"
   },
   "message.inputRepositoryName": {
@@ -166,6 +166,10 @@
   "message.inputRepositoryDescription": {
     "message": "Beskriv din kunskapsbas i en mening",
     "description": "Inmatningsplats för beskrivning av kunskapsbas"
+  },
+  "message.supportedFiles": {
+    "message": "Stödda filtyper: .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
+    "description": "Meddelande för att visa stödda filtyper"
   },
   "nav.chat": {
     "message": "Chatt",
@@ -185,7 +189,7 @@
   },
   "title.createRepository": {
     "message": "Skapa kunskapsbas",
-    "description": "Titel för skapa kunskapsbas"
+    "description": "Titel för att skapa kunskapsbas"
   },
   "title.repositories": {
     "message": "Lista över kunskapsbaser",

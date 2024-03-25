@@ -33,7 +33,7 @@
   },
   "field.stateCompleted": {
     "message": "Aprendizaje completado",
-    "description": "El documento se procesó correctamente"
+    "description": "El documento se procesó con éxito"
   },
   "field.stateFailed": {
     "message": "Aprendizaje fallido",
@@ -65,11 +65,11 @@
   },
   "message.uploadDocumentsSuccess": {
     "message": "Documento subido con éxito",
-    "description": "Mensaje de éxito cuando se sube el documento con éxito"
+    "description": "Mensaje de éxito cuando la subida del documento es exitosa"
   },
   "message.createDocumentSuccess": {
     "message": "Creación del documento exitosa",
-    "description": "Mensaje de éxito cuando se crea el documento con éxito"
+    "description": "Mensaje de éxito cuando la creación del documento es exitosa"
   },
   "message.startCreateDocument": {
     "message": "Comenzar a aprender el documento...",
@@ -100,8 +100,8 @@
     "description": "Mensaje de error cuando el contenido de la solicitud no está formateado correctamente"
   },
   "message.errorNoConversation": {
-    "message": "El contenido de la conversación no existe o ha caducado, por favor inicia una nueva conversación",
-    "description": "Mensaje de error cuando el contenido de la conversación no existe o ha caducado"
+    "message": "El contenido de la conversación no existe o ha expirado, por favor inicia una nueva conversación",
+    "description": "Mensaje de error cuando el contenido de la conversación no existe o ha expirado"
   },
   "message.errorContentTooLarge": {
     "message": "El contenido de la pregunta es demasiado largo, por favor acórtalo e inténtalo de nuevo",
@@ -120,12 +120,12 @@
     "description": "Mensaje de error cuando se produce un error desconocido en el servidor"
   },
   "message.errorTimeout": {
-    "message": "El tiempo de respuesta a la pregunta ha expirado, por favor inténtalo de nuevo más tarde",
-    "description": "Mensaje de error cuando expira el tiempo de respuesta a la pregunta"
+    "message": "El tiempo de respuesta a la pregunta se agotó, por favor inténtalo de nuevo más tarde",
+    "description": "Mensaje de error cuando se agota el tiempo de respuesta a la pregunta"
   },
   "message.errorNotApplied": {
     "message": "Todavía no has solicitado este servicio, por favor solicítalo antes de continuar preguntando",
-    "description": "Mensaje de error cuando el usuario aún no ha solicitado este servicio"
+    "description": "Mensaje de error cuando el usuario no ha solicitado este servicio aún"
   },
   "message.confirmDelete": {
     "message": "Confirmar eliminación",
@@ -136,20 +136,20 @@
     "description": "Mensaje para mostrar cómo hacer un salto de línea"
   },
   "message.createRepositorySuccess": {
-    "message": "Base de conocimientos creada con éxito",
-    "description": "Mensaje de éxito cuando se crea la base de conocimientos con éxito"
+    "message": "Base de conocimientos creada exitosamente",
+    "description": "Mensaje de éxito cuando se crea la base de conocimientos exitosamente"
   },
   "message.createRepositoryFailed": {
     "message": "Error al crear la base de conocimientos",
     "description": "Mensaje de error cuando falla la creación de la base de conocimientos"
   },
   "message.deleteRepositorySuccess": {
-    "message": "Base de conocimientos eliminada con éxito",
-    "description": "Mensaje de éxito cuando se elimina la base de conocimientos con éxito"
+    "message": "Base de conocimientos eliminada exitosamente",
+    "description": "Mensaje de éxito cuando se elimina la base de conocimientos exitosamente"
   },
   "message.deleteDocumentSuccess": {
-    "message": "Documento eliminado con éxito",
-    "description": "Mensaje de éxito cuando se elimina el documento con éxito"
+    "message": "Documento eliminado exitosamente",
+    "description": "Mensaje de éxito cuando se elimina el documento exitosamente"
   },
   "message.currentRepository": {
     "message": "Base de conocimientos actual",
@@ -164,8 +164,12 @@
     "description": "Marcador de posición de entrada para el nombre de la base de conocimientos"
   },
   "message.inputRepositoryDescription": {
-    "message": "Describe tu base de conocimientos en una frase",
+    "message": "Describe tu base de conocimientos en una oración",
     "description": "Marcador de posición de entrada para la descripción de la base de conocimientos"
+  },
+  "message.supportedFiles": {
+    "message": "Tipos de archivo admitidos: .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
+    "description": "Mensaje para mostrar los tipos de archivo admitidos"
   },
   "nav.chat": {
     "message": "Chat",

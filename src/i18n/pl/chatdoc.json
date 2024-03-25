@@ -68,11 +68,11 @@
     "description": "Komunikat o sukcesie przesłania dokumentu"
   },
   "message.createDocumentSuccess": {
-    "message": "Utworzenie dokumentu zakończone sukcesem",
+    "message": "Pomyślne utworzenie dokumentu",
     "description": "Komunikat o sukcesie utworzenia dokumentu"
   },
   "message.startCreateDocument": {
-    "message": "Rozpoczęcie uczenia dokumentu...",
+    "message": "Rozpocznij uczenie dokumentu...",
     "description": "Komunikat rozpoczęcia uczenia dokumentu"
   },
   "message.createDocumentError": {
@@ -112,7 +112,7 @@
     "description": "Komunikat o błędzie, gdy operacja jest zbyt częsta"
   },
   "message.errorUsedUp": {
-    "message": "Osiągnięto limit wykorzystania pakietu, proszę zakupić więcej używania, aby kontynuować",
+    "message": "Osiągnięto limit wykorzystania pakietu, proszę zakupić więcej użyć, aby kontynuować",
     "description": "Komunikat o błędzie, gdy osiągnięto limit wykorzystania pakietu"
   },
   "message.errorUnknown": {
@@ -121,7 +121,7 @@
   },
   "message.errorTimeout": {
     "message": "Odpowiadanie na pytanie przekroczyło limit czasu, proszę spróbować ponownie później",
-    "description": "Komunikat o błędzie, gdy odpowiedź na pytanie przekroczyła limit czasu"
+    "description": "Komunikat o błędzie, gdy przekroczono limit czasu odpowiedzi na pytanie"
   },
   "message.errorNotApplied": {
     "message": "Nie złożyłeś jeszcze wniosku o tę usługę, proszę złożyć wniosek przed kontynuowaniem pytania",
@@ -129,14 +129,14 @@
   },
   "message.confirmDelete": {
     "message": "Potwierdź usunięcie",
-    "description": "Komunikat potwierdzenia usunięcia"
+    "description": "Komunikat potwierdzający usunięcie"
   },
   "message.howToUse": {
     "message": "Naciśnij Shift+Enter, aby zrobić nową linię",
     "description": "Komunikat pokazujący, jak zrobić nową linię"
   },
   "message.createRepositorySuccess": {
-    "message": "Utworzono bazę wiedzy pomyślnie",
+    "message": "Baza wiedzy utworzona pomyślnie",
     "description": "Komunikat o sukcesie utworzenia bazy wiedzy"
   },
   "message.createRepositoryFailed": {
@@ -144,11 +144,11 @@
     "description": "Komunikat o błędzie, gdy nie udało się utworzyć bazy wiedzy"
   },
   "message.deleteRepositorySuccess": {
-    "message": "Usunięto bazę wiedzy pomyślnie",
+    "message": "Baza wiedzy pomyślnie usunięta",
     "description": "Komunikat o sukcesie usunięcia bazy wiedzy"
   },
   "message.deleteDocumentSuccess": {
-    "message": "Usunięto dokument pomyślnie",
+    "message": "Dokument pomyślnie usunięty",
     "description": "Komunikat o sukcesie usunięcia dokumentu"
   },
   "message.currentRepository": {
@@ -166,6 +166,10 @@
   "message.inputRepositoryDescription": {
     "message": "Opisz swoją bazę wiedzy w jednym zdaniu",
     "description": "Pole zastępcze dla opisu bazy wiedzy"
+  },
+  "message.supportedFiles": {
+    "message": "Obsługiwane typy plików: .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
+    "description": "Komunikat pokazujący obsługiwane typy plików"
   },
   "nav.chat": {
     "message": "Czat",
@@ -188,7 +192,7 @@
     "description": "Tytuł dla tworzenia bazy wiedzy"
   },
   "title.repositories": {
-    "message": "Lista baz wiedzy",
+    "message": "Lista repozytoriów",
     "description": "Tytuł dla listy baz wiedzy"
   }
 }
