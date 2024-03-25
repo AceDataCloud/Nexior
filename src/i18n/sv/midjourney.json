@@ -1,228 +1,1878 @@
 {
-  "button": {
-    "buyMore": "Köp mer",
-    "_buyMore.comment": "Text på knappen, som låter användaren köpa fler krediter",
-    "uploadReferences": "Ladda upp referenser",
-    "_uploadReferences.comment": "Text på knappen, som låter användaren ladda upp referenser",
-    "success": "Lyckades",
-    "_success.comment": "Text på knappen, som indikerar att operationen var framgångsrik",
-    "generating": "Genererar",
-    "_generating.comment": "Text på knappen, som indikerar att operationen pågår",
-    "failed": "Misslyckades",
-    "_failed.comment": "Text på knappen, som indikerar att operationen misslyckades",
-    "download": "Ladda ner",
-    "_download.comment": "Text på knappen, som låter användaren ladda ner resultatet",
-    "fast": "Snabb",
-    "_fast.comment": "Text på knappen, som låter användaren ställa in 'snabb hastighet' för att generera bilden, måste översättas till 'Snabb hastighet'",
-    "relax": "Lugn",
-    "_relax.comment": "Text på knappen, som låter användaren ställa in 'långsam hastighet' för att slappna av och generera bilden, måste översättas till 'Långsam hastighet'",
-    "turbo": "Turbo",
-    "_turbo.comment": "Text på knappen, som låter användaren ställa in 'extrem hastighet' för att generera bilden, måste översättas till 'Extrem hastighet'",
-    "more": "Mer",
-    "_more.comment": "Text på knappen, som låter användaren se fler alternativ",
-    "generate": "Generera",
-    "_generate.comment": "Text på knappen, som låter användaren generera bilden",
-    "history": "Historik",
-    "_history.comment": "Text på knappen, som låter användaren se historiken över genererade bilder",
-    "generateNew": "Generera ny",
-    "_generateNew.comment": "Text på knappen, som låter användaren rita en ny bild"
+  "style.cute": {
+    "message": "Söt",
+    "description": "Text på knappen som representerar stilen 'söt'"
   },
-  "field": {
-    "taskId": "Uppgifts-ID",
-    "_taskId.comment": "Uppgifts-ID",
-    "finalPrompt": "Slutlig prompt",
-    "_finalPrompt.comment": "Slutlig ritningsprompt som används för att generera bilden",
-    "elements": "Stilar",
-    "_elements.comment": "Ritningsstil som används för att generera bilden",
-    "failureReason": "Misslyckandeanledning",
-    "_failureReason.comment": "Orsak till misslyckandet",
-    "traceId": "Spår-ID",
-    "_traceId.comment": "Spår-ID för att spåra begäran om att generera bilden, översätt inte det, behåll det som 'Spår-ID'"
+  "style.expressive": {
+    "message": "Expressiv",
+    "description": "Text på knappen som representerar stilen 'expressiv'"
   },
-  "description": {
-    "aspect": "--aspect, Ändrar bildens sidoförhållande, standardvärdet beror på modellen och läget",
-    "_aspect.comment": "Beskrivning av aspektparametern",
-    "chaos": "--chaos, Justerar graden av variation i den genererade bilden, ju högre nummer, desto unikare och oväntad blir den genererade bilden, omfånget är 0-100, standard är 1",
-    "_chaos.comment": "Beskrivning av kaosparametern",
-    "fast": "Ignorerar aktuella inställningar och kör en enda genereringsuppgift i 'snabb hastighet' läge, inget standardvärde",
-    "_fast.comment": "Beskrivning av snabbparametern",
-    "iw": "--iw, Ställer in vikten av bildprompter i förhållande till textprompter under genereringsprocessen, omfånget är 0-2, standard är 1",
-    "_iw.comment": "Beskrivning av iw-parametern",
-    "no": "--no, Indikerar att genereringssystemet ska försöka utesluta vissa element, till exempel `--no plants` kommer att försöka generera bilder utan växter, inget standardvärde",
-    "_no.comment": "Beskrivning av no-parametern, översätt den som 'Uteslut'",
-    "quality": "--quality, Ställer in kvaliteten och renderingtiden för den genererade bilden, omfånget är .25, .5 eller 1, standard är 1",
-    "_quality.comment": "Beskrivning av kvalitetsparametern",
-    "random": "Lägger till en slumpmässig basstilskod till prompten, kan använda `--style random-16`, `--style random-64` eller `--style random-128` för att få slumpmässiga stileffekter av olika längder, inget standardvärde",
-    "_random.comment": "Beskrivning av slumpmässigparametern",
-    "relax": "Åsidosätter aktuella inställningar för att köra en enda uppgift i 'långsam hastighet' läge, inget standardvärde",
-    "_relax.comment": "Beskrivning av avslappningsparametern",
-    "repeat": "--repeat, Skapar flera uppgifter från en prompt, omfånget är 1-40, standard är 1",
-    "_repeat.comment": "Beskrivning av repeat-parametern",
-    "seed": "--seed, Startvisuell brus för genererade bilder, omfånget är 0-4294967295, standard är slumpmässigt genererat",
-    "_seed.comment": "Beskrivning av seed-parametern",
-    "stop": "--stop, Stoppar uppgiften vid vilken som helst fas av genereringsprocessen, omfånget är 10-100, standard är 100 (dvs. helt genererad)",
-    "_stop.comment": "Beskrivning av stopparametern",
-    "style": "--style, Växlar mellan olika versioner eller stilar av Midjourney- eller Niji-modeller, till exempel rå, söt, expressiv, original, naturskön, standardvärdet beror på modellen och läget",
-    "_style.comment": "Beskrivning av stilparametern",
-    "stylize": "--stylize, Justerar intensiteten av den förinställda estetiska stilen hos Midjourney som tillämpas i genereringsuppgifter, omfånget är 0-1000, standard är 100",
-    "_stylize.comment": "Beskrivning av stylize-parametern",
-    "tile": "--tile, Genererar en bild som kan användas för sömlös mosaik för att skapa sömlösa mönster, inget standardvärde",
-    "_tile.comment": "Beskrivning av tile-parametern",
-    "turbo": "Åsidosätter aktuella inställningar för att köra en enda uppgift i 'extrem hastighet' läge, inget standardvärde",
-    "_turbo.comment": "Beskrivning av turboparametern",
-    "weird": "--weird, Utforskar ovanliga estetiska stilar med experimentell natur, omfånget är 0-3000, standard är 0",
-    "_weird.comment": "Beskrivning av weird-parametern",
-    "translation": "Aktiverar automatisk översättning under generering, icke-kinesiskt innehåll kommer automatiskt att översättas till engelsk inmatning för Midjourney",
-    "_translation.comment": "Beskrivning av översättningsparametern",
-    "imageWeight": "--iw, justerar vikten av bildprompter i förhållande till textprompter, omfånget är 0-2, standard är 1",
-    "_imageWeight.comment": "Beskrivning av bildvikt-parametern",
-    "niji": "--niji, När det är aktiverat kommer genererade bilder att använda Niji-modellen och producera anime-stilbilder",
-    "_niji.comment": "Beskrivning av niji-parametern",
-    "uploadReferences": "Ladda upp bilder som referenser för generering, stöder upp till 5 bilder. Om fler än 1 bild laddas upp, kommer de automatiskt att sammanfogas",
-    "_uploadReferences.comment": "Beskrivning av uploadReferences-parametern",
-    "raw": "--raw, När det är aktiverat kommer genererade bilder att använda Midjourney-modellen och producera originalstilbilder",
-    "_raw.comment": "Beskrivning av raw-parametern",
-    "prompt": "Ange kommandon, om ytterligare parametrar läggs till kommer de att åsidosätta standardförinställda parametrar, t.ex. att lägga till `--stylize 200` kommer att tvinga det slutliga kommandot att använda `--stylize 200`",
-    "_prompt.comment": "Beskrivning av prompt-fältet"
+  "style.original": {
+    "message": "Original",
+    "description": "Text på knappen som representerar stilen 'original'"
   },
-  "action": {
-    "generate": "Klicka på den här knappen för att börja generera bilder",
-    "_generate.comment": "Beskrivning av generera-knappen",
-    "upscale1": "Skala upp den första bilden",
-    "_upscale1.comment": "Beskrivning av uppskalning1-knappen",
-    "upscale2": "Skala upp den andra bilden",
-    "_upscale2.comment": "Beskrivning av uppskalning2-knappen",
-    "upscale3": "Skala upp den tredje bilden",
-    "_upscale3.comment": "Beskrivning av uppskalning3-knappen",
-    "upscale4": "Skala upp den fjärde bilden",
-    "_upscale4.comment": "Beskrivning av uppskalning4-knappen",
-    "variation1": "Justera variationen av den första bilden",
-    "_variation1.comment": "Beskrivning av variation1-knappen",
-    "variation2": "Justera variationen av den andra bilden",
-    "_variation2.comment": "Beskrivning av variation2-knappen",
-    "variation3": "Justera variationen av den tredje bilden",
-    "_variation3.comment": "Beskrivning av variation3-knappen",
-    "variation4": "Justera variationen av den fjärde bilden",
-    "_variation4.comment": "Beskrivning av variation4-knappen",
-    "reroll": "Rulla om",
-    "_reroll.comment": "Beskrivning av reroll-knappen",
-    "high_variation": "Hög variation",
-    "_high_variation.comment": "Beskrivning av high_variation-knappen",
-    "low_variation": "Låg variation",
-    "_low_variation.comment": "Beskrivning av low_variation-knappen",
-    "zoom_out_2x": "Zooma ut 2x",
-    "_zoom_out_2x.comment": "Beskrivning av zoom_out_2x-knappen",
-    "zoom_out_1_5x": "Zooma ut 1,5x",
-    "_zoom_out_1_5x.comment": "Beskrivning av zoom_out_1_5x-knappen",
-    "square": "Fyrkantig",
-    "_square.comment": "Beskrivning av square-knappen",
-    "pan_left": "Panorera vänster",
-    "_pan_left.comment": "Beskrivning av pan_left-knappen",
-    "pan_up": "Panorera uppåt",
-    "_pan_up.comment": "Beskrivning av pan_up-knappen",
-    "pan_down": "Panorera nedåt",
-    "_pan_down.comment": "Beskrivning av pan_down-knappen",
-    "pan_right": "Panorera höger",
-    "_pan_right.comment": "Beskrivning av pan_right-knappen",
-    "zoom_in_2x": "Zooma in 2x",
-    "_zoom_in_2x.comment": "Beskrivning av zoom_in_2x-knappen",
-    "zoom_in_1_5x": "Zooma in 1,5x",
-    "_zoom_in_1_5x.comment": "Beskrivning av zoom_in_1_5x-knappen",
-    "upscale_2x": "Skala upp 2x",
-    "_upscale_2x.comment": "Beskrivning av upscale_2x-knappen",
-    "upscale_4x": "Skala upp 4x",
-    "_upscale_4x.comment": "Beskrivning av upscale_4x-knappen",
-    "redo_upscale_2x": "Gör om uppskalning 2x",
-    "_redo_upscale_2x.comment": "Beskrivning av redo_upscale_2x-knappen",
-    "redo_upscale_4x": "Gör om uppskalning 4x",
-    "_redo_upscale_4x.comment": "Beskrivning av redo_upscale_4x-knappen"
+  "style.scenic": {
+    "message": "Målande",
+    "description": "Text på knappen som representerar stilen 'målande'"
   },
-  "message": {
-    "promptPlaceholder": "Ange en mening för att beskriva bilden du vill generera, t.ex. en söt katt. Ytterligare parametrar kommer att åsidosätta standardförinställda parametrar",
-    "_promptPlaceholder.comment": "Platshållartext i prompt-fältet",
-    "uploadReferencesExceed": "Du kan ladda upp högst 5 bilder",
-    "_uploadReferencesExceed.comment": "Felmeddelande när antalet uppladdade bilder överskrider gränsen",
-    "uploadReferencesSuccess": "Lyckades ladda upp bilder",
-    "_uploadReferencesSuccess.comment": "Lyckandesmeddelande när bilderna laddas upp framgångsrikt",
-    "uploadReferencesError": "Misslyckades med att ladda upp bilder, försök igen senare",
-    "_uploadReferencesError.comment": "Felmeddelande när bilderna misslyckas med att laddas upp",
-    "startTaskSuccess": "Startade ritningsuppgiften framgångsrikt",
-    "_startTaskSuccess.comment": "Lyckandesmeddelande när ritningsuppgiften startas framgångsrikt",
-    "startTaskFailed": "Misslyckades med att starta ritningsuppgiften",
-    "_startTaskFailed.comment": "Felmeddelande när ritningsuppgiften misslyckas med att starta",
-    "generating": "Genererar...",
-    "_generating.comment": "Meddelande när bilden genereras",
-    "noOperations": "Inga tillgängliga operationer",
-    "_noOperations.comment": "Meddelande när det inte finns några tillgängliga operationer",
-    "noTasks": "Inga historiska uppgifter, starta först en ny uppgift",
-    "_noTasks.comment": "Meddelande när det inte finns några historiska uppgifter"
+  "style.raw": {
+    "message": "Rå",
+    "description": "Text på knappen som representerar stilen 'rå'"
   },
-  "model": {
-    "general": "Allmän",
-    "_general.comment": "Namnet på en modell som används för allmän bildgenerering",
-    "niji": "Niji",
-    "_niji.comment": "Namnet på en modell som används för anime-stilbildgenerering, översätt inte, behåll det som 'Niji'"
+  "styleCategory.special": {
+    "message": "Speciell",
+    "description": "Ett ord för kategori som används för att beskriva och generera en bild, den genererade bilden bör inkludera kategorin för denna tagg."
   },
-  "name": {
-    "model": "Modell",
-    "_model.comment": "Modellnamnet, modell är en term inom maskininlärning, som används för att generera bilder",
-    "aspect": "Aspektförhållande",
-    "_aspect.comment": "Namnet på aspektparametern",
-    "ratio": "Förhållande",
-    "_ratio.comment": "Namnet på förhållandeparametern",
-    "chaos": "Kaotiskt",
-    "_chaos.comment": "Namnet på kaosparametern, översätt det som 'grad av rörighet'",
-    "fast": "Snabb",
-    "_fast.comment": "Namnet på snabbt läge, som används för att generera bilder snabbt, översätt det som 'Snabb hastighet'",
-    "nijiStyle": "Niji",
-    "_nijiStyle.comment": "Namnet på nijiStyle-parametern, översätt inte det, behåll det som 'Niji'",
-    "version": "Version",
-    "_version.comment": "Namnet på versionsparametern",
-    "imageWeight": "Bildvikt",
-    "_imageWeight.comment": "Namnet på bildviktsparametern",
-    "no": "Uteslut",
-    "_no.comment": "Namnet på uteslutningsparametern, som används för att utesluta vissa element, översätt det som 'Uteslut'",
-    "quality": "Kvalitet",
-    "_quality.comment": "Namnet på kvalitetsparametern, som används för att ställa in kvaliteten på den genererade bilden",
-    "random": "Slumpmässig",
-    "_random.comment": "Namnet på slumpmässighetsparametern, som används för att lägga till slumpmässiga stileffekter",
-    "relax": "Långsam",
-    "_relax.comment": "Namnet på avslappningsläget, som används för att generera bilder i 'långsam hastighet' läge, översätt det som 'långsam hastighet'",
-    "repeat": "Upprepa",
-    "_repeat.comment": "Namnet på upprepningparametern, som används för att skapa flera uppgifter från en prompt",
-    "seed": "Frö",
-    "_seed.comment": "Namnet på fröparametern, som används för att ställa in startvisuell brus",
-    "stop": "Stopp",
-    "_stop.comment": "Namnet på stopp-parametern, som används för att stoppa uppgiften vid vilket som helst stadium",
-    "style": "Stil",
-    "_style.comment": "Namnet på stilparametern, som används för att växla mellan olika versioner eller stilar av modeller",
-    "stylize": "Stilisera",
-    "_stylize.comment": "Namnet på stiliseringsparametern, som används för att justera intensiteten av standardestetisk stil",
-    "tile": "Kakel",
-    "_tile.comment": "Namnet på kakelparametern, som används för att generera bilder som kan användas för sömlös kakling",
-    "turbo": "Turbo",
-    "_turbo.comment": "Namnet på turboläget, som används för att generera bilder i 'extrem hastighet' läge, översätt det som 'Extrem hastighet'",
-    "weird": "Konstig",
-    "_weird.comment": "Namnet på konstighetsparametern, som används för att utforska ovanliga estetiska stilar, översätt det som 'Konstighet'",
-    "translation": "Översättning",
-    "_translation.comment": "Namnet på översättningsparametern, som används för att aktivera automatisk översättning under generering",
-    "advanced": "Avancerad",
-    "_advanced.comment": "Namnet på avancerat läge, som används för att aktivera avancerat läge",
-    "niji": "Niji",
-    "_niji.comment": "Namnet på niji-parametern, som används för att aktivera Niji-modellen, översätt inte det, behåll det som 'Niji'",
-    "ignore": "Ignorera",
-    "_ignore.comment": "Namnet på ignorera-parametern, som används för att ignorera vissa element",
-    "prompt": "Instruktion",
-    "_prompt.comment": "Namnet på prompt-parametern, som används för att ange ritinstruktioner",
-    "raw": "Rå",
-    "_raw.comment": "Namnet på råparametern, som används för att aktivera Midjourney-modellen"
+  "styleCategory.chinese": {
+    "message": "Kinesisk",
+    "description": "Ett ord för kategori som används för att beskriva och generera en bild, den genererade bilden bör inkludera kategorin för denna tagg."
   },
-  "placeholder": {
-    "prompt": "Ange en mening för att beskriva den bild du vill generera, till exempel: en söt katt. Ytterligare parametrar kommer att åsidosätta standardinställda parametrar",
-    "_prompt.comment": "Platshållartexten i promptfältet",
-    "ignore": "Ange element att ignorera, till exempel: `--ignorera växter`",
-    "_ignore.comment": "Platshållartexten i ignorera-fältet",
-    "select": "Välj",
-    "_select.comment": "Platshållartexten i väljfältet"
+  "styleCategory.emotion": {
+    "message": "Känsla",
+    "description": "Ett ord för kategori som används för att beskriva och generera en bild, den genererade bilden bör inkludera kategorin för denna tagg."
+  },
+  "styleCategory.camera": {
+    "message": "Kamera",
+    "description": "Ett ord för kategori som används för att beskriva och generera en bild, den genererade bilden bör inkludera kategorin för denna tagg."
+  },
+  "styleCategory.styles": {
+    "message": "Stilar",
+    "description": "Ett ord för kategori som används för att beskriva och generera en bild, den genererade bilden bör inkludera kategorin för denna tagg."
+  },
+  "styleCategory.lighting": {
+    "message": "Belysning",
+    "description": "Ett ord för kategori som används för att beskriva och generera en bild, den genererade bilden bör inkludera kategorin för denna tagg."
+  },
+  "styleCategory.painters": {
+    "message": "Målare",
+    "description": "Ett ord för kategori som används för att beskriva och generera en bild, den genererade bilden bör inkludera kategorin för denna tagg."
+  },
+  "styleCategory.material": {
+    "message": "Material",
+    "description": "Ett ord för kategori som används för att beskriva och generera en bild, den genererade bilden bör inkludera kategorin för denna tagg."
+  },
+  "styleCategory.artists": {
+    "message": "Konstnärer",
+    "description": "Ett ord för kategori som används för att beskriva och generera en bild, den genererade bilden bör inkludera kategorin för denna tagg."
+  },
+  "styleTag.watercolour": {
+    "message": "Vattenfärg",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.oilPainting": {
+    "message": "Oljemålning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.oldPhotograph": {
+    "message": "Gammal fotografi",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.oneLineDrawing": {
+    "message": "Enlinjesritning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.sketchDrawing": {
+    "message": "Skissritning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.gouache": {
+    "message": "Gouache",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.filmStyle": {
+    "message": "Filmstil",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.photorealistic": {
+    "message": "Fotorealistisk",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.logo": {
+    "message": "Logotyp",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.cartoon": {
+    "message": "Tecknad film",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.marbleStatue": {
+    "message": "Marmorskulptur",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.1800S": {
+    "message": "1800-talet",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.1980S": {
+    "message": "1980-talet",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.isometricAnime": {
+    "message": "Isometrisk anime",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.analyticDrawing": {
+    "message": "Analytisk ritning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.coloringBook": {
+    "message": "Färgläggningsbok",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.infographicDrawing": {
+    "message": "Infografisk ritning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.doubleExposure": {
+    "message": "Dubbelexponering",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.diagrammaticDrawing": {
+    "message": "Diagrammatisk ritning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.2DIllustration": {
+    "message": "2D-illustration",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.diagrammaticPortrait": {
+    "message": "Diagrammatisk porträtt",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.pixelArt": {
+    "message": "Pixelkonst",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.darkFantasy": {
+    "message": "Mörk fantasy",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.ukiyoEArt": {
+    "message": "Ukiyo-e-konst",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.paperQuilling": {
+    "message": "Pappersquilling",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.paperCutCraft": {
+    "message": "Pappersskärning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.iridescent": {
+    "message": "Iridescerande",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.patchworkCollage": {
+    "message": "Patchwork-collage",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.opArt": {
+    "message": "Opkonst",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.japaneseInk": {
+    "message": "Japansk bläck",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.pastelDrawing": {
+    "message": "Pastellritning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.drippingArt": {
+    "message": "Droppkonst",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.tattooArt": {
+    "message": "Tatueringskonst",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.16Bit": {
+    "message": "16-bitars",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.8Bit": {
+    "message": "8-bitars",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.amber": {
+    "message": "Bärnsten",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.anatomicalDrawing": {
+    "message": "Anatomisk ritning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.ancient": {
+    "message": "Antik",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.anime": {
+    "message": "Anime",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.arabic": {
+    "message": "Arabisk",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.blocky": {
+    "message": "Kantig",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.blueprint": {
+    "message": "Ritning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.comicbook": {
+    "message": "Tecknad serie",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.caribbean": {
+    "message": "Karibisk",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.celestial": {
+    "message": "Himmelsk",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.cellulose": {
+    "message": "Cellulosa",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.charcoalStyle": {
+    "message": "Kolstil",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.chromatic": {
+    "message": "Kromatisk",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.coral": {
+    "message": "Korall",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.conceptArt": {
+    "message": "Konstnärligt koncept",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.fibonacci": {
+    "message": "Fibonacci",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.cyberpunk": {
+    "message": "Cyberpunk",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.diabolic": {
+    "message": "Diabolisk",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.diffractionGrading": {
+    "message": "Diffraktionsgradering",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.lightspeed": {
+    "message": "Ljusets hastighet",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.liquid": {
+    "message": "Flytande",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.dots": {
+    "message": "Punkter",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.dune": {
+    "message": "Dyna",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.drippingPaint": {
+    "message": "Droppande färg",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.electronicCircuitry": {
+    "message": "Elektronisk kretsteknik",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.electrical": {
+    "message": "Elektrisk",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.futuristic": {
+    "message": "Futuristisk",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.etching": {
+    "message": "Ritsning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.extraterrestrial": {
+    "message": "Utomjordisk",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.glitchart": {
+    "message": "Glitchkonst",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.floral": {
+    "message": "Blommig",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.fractal": {
+    "message": "Fraktal",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.preHistoric": {
+    "message": "Förhistorisk",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.prokaryotic": {
+    "message": "Prokaryotisk",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.horror": {
+    "message": "Skräck",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.iceAge": {
+    "message": "Istid",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.jurassic": {
+    "message": "Jurassic",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.knitted": {
+    "message": "Stickad",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.polka": {
+    "message": "Polka",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.latex": {
+    "message": "Latex",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.pastel": {
+    "message": "Pastell",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.mandala": {
+    "message": "Mandala",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.molecular": {
+    "message": "Molekylär",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.merkaba": {
+    "message": "Merkaba",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.mitochondria": {
+    "message": "Mitokondrie",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.graffiti": {
+    "message": "Graffiti",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.graphicNovel": {
+    "message": "Seriebok",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.multidimensional": {
+    "message": "Multidimensionell",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.nasa": {
+    "message": "NASA",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.nebula": {
+    "message": "Nebulosa",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.neon": {
+    "message": "Neon",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.nuclear": {
+    "message": "Kärn-",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.orbital": {
+    "message": "Orbital",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.rayTracing": {
+    "message": "Strålsökning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.realistic": {
+    "message": "Realistisk",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.renaissance": {
+    "message": "Renässans",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.retro": {
+    "message": "Retro",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.risograph": {
+    "message": "Risografi",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.origami": {
+    "message": "Origami",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.ornamental": {
+    "message": "Ornamental",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.space": {
+    "message": "Rymd",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.splatterPaint": {
+    "message": "Stänkfärg",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.sprayPaint": {
+    "message": "Sprayfärg",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.squiggles": {
+    "message": "Krumelurer",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.stitching": {
+    "message": "Sömnad",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.veins": {
+    "message": "Ådror",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.streetArt": {
+    "message": "Gatukonst",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.surreal": {
+    "message": "Surrealistisk",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.symmetric": {
+    "message": "Symmetrisk",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.synthWave": {
+    "message": "Synth-våg",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.technological": {
+    "message": "Teknologisk",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.tron": {
+    "message": "Tron",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.tropical": {
+    "message": "Tropisk",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.ultraModern": {
+    "message": "Ultramodern",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.wormhole": {
+    "message": "Maskhål",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.wrinkled": {
+    "message": "Skrynklig",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.volcanic": {
+    "message": "Vulkanisk",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.wetPaint": {
+    "message": "Blöt färg",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.wildWest": {
+    "message": "Vilda västern",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.wind": {
+    "message": "Vind",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.miniatureFaking": {
+    "message": "Miniatyrförfalskning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.accentLighting": {
+    "message": "Accentbelysning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.backlight": {
+    "message": "Bakgrundsbelysning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.blacklight": {
+    "message": "Svartljus",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.goldenHourLight": {
+    "message": "Gyllene timmens ljus",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.candlelight": {
+    "message": "Stearinljus",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.concertLighting": {
+    "message": "Konsertbelysning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.crepuscularRays": {
+    "message": "Skymningsstrålar",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.directSunlight": {
+    "message": "Direkt solljus",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.dust": {
+    "message": "Damm",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.studioLighting": {
+    "message": "Studiobelysning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.rimLight": {
+    "message": "Kantljus",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.volumetricLighting": {
+    "message": "Volymetrisk belysning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.fluorescent": {
+    "message": "Fluorescerande",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.glowing": {
+    "message": "Glowing",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.glowStick": {
+    "message": "Glow-stick",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.glowRadioactive": {
+    "message": "Glow Radioactive",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.lavaGlow": {
+    "message": "Lava Glow",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.moonlight": {
+    "message": "Månsken",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.naturalLighting": {
+    "message": "Naturlig belysning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.neonLamp": {
+    "message": "Neonlampa",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.nightclubLighting": {
+    "message": "Nattklubbsbelysning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.nuclearWasteGlo": {
+    "message": "Kärnavfallsglo",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.quantumDot": {
+    "message": "Kvantpunkt",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.spotlight": {
+    "message": "Strålkastare",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.edgeLight": {
+    "message": "Kantljus",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.coldLight": {
+    "message": "Kallt ljus",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.keyLighting": {
+    "message": "Nyckelbelysning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.ambientLight": {
+    "message": "Omgebingsljus",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.highKeyLighting": {
+    "message": "Hög nyckelbelysning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.lowKeyLighting": {
+    "message": "Låg nyckelbelysning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.motivatedLighting": {
+    "message": "Motiverad belysning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.3PointLighting": {
+    "message": "3-punktsbelysning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.strobeLight": {
+    "message": "Stroboskopljus",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.sunLight": {
+    "message": "Solljus",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.ultraviolet": {
+    "message": "Ultraviolett",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.beautifulLighting": {
+    "message": "Vacker belysning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.moodyLighting": {
+    "message": "Stämningsfull belysning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.softLighting": {
+    "message": "Mjuk belysning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.michelangelo": {
+    "message": "Michelangelo",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.monet": {
+    "message": "Monet",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.paulCezanne": {
+    "message": "Paul Cezanne",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.markRothko": {
+    "message": "Mark Rothko",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.paulKlee": {
+    "message": "Paul Klee",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.picasso": {
+    "message": "Picasso",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.pietMondrian": {
+    "message": "Piet Mondrian",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.pierreAugusteRer": {
+    "message": "Pierre Auguste Rer",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.rembrandt": {
+    "message": "Rembrandt",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.reneMagritte": {
+    "message": "Rene Magritte",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.royLichtenstein": {
+    "message": "Roy Lichtenstein",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.salvadorDali": {
+    "message": "Salvador Dali",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.sandroBotticelli": {
+    "message": "Sandro Botticelli",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.takashiMurakami": {
+    "message": "Takashi Murakami",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.vanGogh": {
+    "message": "Van Gogh",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.wassilyKandinsky": {
+    "message": "Wassily Kandinsky",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.matCollishaw": {
+    "message": "Mat Collishaw",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.yayoiKusama": {
+    "message": "Yayoi Kusama",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.igorMorski": {
+    "message": "Igor Morski",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.shinkaiMakoto": {
+    "message": "Shinkai Makoto",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.pixar": {
+    "message": "Pixar",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.kyotoAnime": {
+    "message": "Kyoto Anime",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.jerryPinkney": {
+    "message": "Jerry Pinkney",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.hayaoMiyazaki": {
+    "message": "Hayao Miyazaki",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.beatrixPotter": {
+    "message": "Beatrix Potter",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.jonKlassen": {
+    "message": "Jon Klassen",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.kaySage": {
+    "message": "Kay Sage",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.jeffreyCatherineJones": {
+    "message": "Jeffrey Catherine Jones",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.yaacovAgam": {
+    "message": "Yaacov Agam",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.davidHockney": {
+    "message": "David Hockney",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.victorMoscoso": {
+    "message": "Victor Moscoso",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.raphaelite": {
+    "message": "Raphaelite",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.stefanKoidl": {
+    "message": "Stefan Koidl",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.suiIshida": {
+    "message": "Sui Ishida",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.swoon": {
+    "message": "Swoon",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.tashaTudor": {
+    "message": "Tasha Tudor",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.tintoretto": {
+    "message": "Tintoretto",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.theodoreRobinsor": {
+    "message": "Theodore Robinsor",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.titian": {
+    "message": "Titian",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.wlop": {
+    "message": "WLOP",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.yanjunCheng": {
+    "message": "Yanjun Cheng",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.yojiShinkawa": {
+    "message": "Yoji Shinkawa",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.zhelongXu": {
+    "message": "Zhelong Xu",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.alenaAenami": {
+    "message": "Alena Aenami",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.anntonFadeevi": {
+    "message": "Annton Fadeevi",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.charlieBowater": {
+    "message": "Charlie Bowater",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.coryLoftis": {
+    "message": "Cory Loftis",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.fenghuaZhong": {
+    "message": "Fenghua Zhong",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.gregRutkowski": {
+    "message": "Greg Rutkowski",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.hongSoonsang": {
+    "message": "Hong SoonSang",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.dennisStock": {
+    "message": "Dennis Stock",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.michalLisowski": {
+    "message": "Michal Lisowski",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.paulLehr": {
+    "message": "Paul Lehr",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.rossTran": {
+    "message": "Ross Tran",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.antonPieck": {
+    "message": "Anton Pieck",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.carlBarks": {
+    "message": "Carl Barks",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.alphonseMucha": {
+    "message": "Alphonse Mucha",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.andyWarhol": {
+    "message": "Andy Warhol",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.banksy": {
+    "message": "Banksy",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.franciscoDeGoya": {
+    "message": "Francisco De Goya",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.caravaggio": {
+    "message": "Caravaggio",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.diegoRivera": {
+    "message": "Diego Rivera",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.marcChagall": {
+    "message": "Marc Chagall",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.edgarDegas": {
+    "message": "Edgar Degas",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.eugeneDelacroix": {
+    "message": "Eugene Delacroix",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.francisBacon": {
+    "message": "Francis Bacon",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.fridaKahlo": {
+    "message": "Frida Kahlo",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.garaldBrom": {
+    "message": "Garald Brom",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.gustavKlimt": {
+    "message": "Gustav Klimt",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.henriMatisse": {
+    "message": "Henri Matisse",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.jackKirby": {
+    "message": "Jack Kirby",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.jacksonPollock": {
+    "message": "Jackson Pollock",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.johannesVermeer": {
+    "message": "Johannes Vermeer",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.jeanMichelBasquiat": {
+    "message": "Jean Michel Basquiat",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.marcelDuchamp": {
+    "message": "Marcel Duchamp",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.aluminum": {
+    "message": "Aluminium",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.brick": {
+    "message": "Tegel",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.bronze": {
+    "message": "Brons",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.carbonFiber": {
+    "message": "Kolfiber",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.cardboard": {
+    "message": "Papp",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.ceramic": {
+    "message": "Keramik",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.cotton": {
+    "message": "Bomull",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.fabric": {
+    "message": "Tyg",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.fiberOptic": {
+    "message": "Fiber Optik",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.foil": {
+    "message": "Folie",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.yarn": {
+    "message": "Garn",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.glass": {
+    "message": "Glas",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.gold": {
+    "message": "Guld",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.gummies": {
+    "message": "Gummibjörnar",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.leather": {
+    "message": "Läder",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.magma": {
+    "message": "Magma",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.metallic": {
+    "message": "Metallisk",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.nickel": {
+    "message": "Nickel",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen på denna tagg."
+  },
+  "styleTag.nylon": {
+    "message": "Nylon",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.paper": {
+    "message": "Papper",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.plastic": {
+    "message": "Plast",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.quartz": {
+    "message": "Kvarts",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.wrap": {
+    "message": "Inslag",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.wooden": {
+    "message": "Trä",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.slime": {
+    "message": "Slem",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.engraving": {
+    "message": "Gravyr",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.ivory": {
+    "message": "Elfenben",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.basalt": {
+    "message": "Basalt",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.pine": {
+    "message": "Tall",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.diamond": {
+    "message": "Diamant",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.amethyst": {
+    "message": "Ametist",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.ruby": {
+    "message": "Rubin",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.highPolished": {
+    "message": "Högpolerad",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.brushed": {
+    "message": "Borstad",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.matte": {
+    "message": "Matt",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.satin": {
+    "message": "Siden",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.sandblasted": {
+    "message": "Sandblästrad",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.ebony": {
+    "message": "Ebenholts",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.bokeh": {
+    "message": "Bokeh",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.aerialView": {
+    "message": "Fågelperspektiv",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.shotByDslr": {
+    "message": "Fotograferad med DSLR",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.360Panorama": {
+    "message": "360Panorama",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.panorama": {
+    "message": "Panorama",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.telephotoLens": {
+    "message": "Telefotolins",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.macroShot": {
+    "message": "Makrofotografering",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.microscopy": {
+    "message": "Mikroskopi",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.magnification": {
+    "message": "Förstoring",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.closeUp": {
+    "message": "Närbild",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.fullBody": {
+    "message": "Helskott",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.portrait": {
+    "message": "Porträtt",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.profile": {
+    "message": "Profil",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.pinholeLens": {
+    "message": "Nålhålsobjektiv",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.wideView": {
+    "message": "Vidvinkelvy",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.telescopeLens": {
+    "message": "Teleskopobjektiv",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.satelliteImagery": {
+    "message": "Satellitbilder",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.headshot": {
+    "message": "Porträttfoto",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.extremeCloseup": {
+    "message": "Extrem närbild",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.ultrawideShot": {
+    "message": "Ultravidvinkelbild",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.birdView": {
+    "message": "Fågelperspektiv",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.topView": {
+    "message": "Ovanifrån",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.frontView": {
+    "message": "Framifrån",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.sideView": {
+    "message": "Sidovy",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.backView": {
+    "message": "Bakifrån",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.faceShot": {
+    "message": "Ansiktsfoto",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.chestShot": {
+    "message": "Bröstfoto",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.waistShot": {
+    "message": "Midjefoto",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.extraLongShot": {
+    "message": "Extra långt foto",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.lookUp": {
+    "message": "Titta uppåt",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.isometricview": {
+    "message": "Isometrisk vy",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.highAngleView": {
+    "message": "Hög vinkelvy",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.lowAngleView": {
+    "message": "Låg vinkelvy",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden ska inkludera stilen för denna tagg."
+  },
+  "styleTag.happy": {
+    "message": "Glad",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.excited": {
+    "message": "Spänd",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.angry": {
+    "message": "Arg",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.ped": {
+    "message": "ped",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.disgusted": {
+    "message": "Förtvivlad",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.supnned": {
+    "message": "supnned",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.hopeful": {
+    "message": "Hoppfull",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.anxious": {
+    "message": "Orolig",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.elated": {
+    "message": "Förhöjd",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.fearful": {
+    "message": "Rädd",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.hateful": {
+    "message": "Hatfull",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.apoow": {
+    "message": "Apoow",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.dark": {
+    "message": "Mörk",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.brutal": {
+    "message": "Brutal",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.hanfu": {
+    "message": "Hanfu",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.cheongsam": {
+    "message": "Cheongsam",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.chineseCostume": {
+    "message": "Kinesisk dräkt",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.chineseDress": {
+    "message": "Kinesisk klänning",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.wuxia": {
+    "message": "Wuxia",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.chinesePhoenix": {
+    "message": "Kinesisk fenix",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.kungfu": {
+    "message": "Kungfu",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.kunquOpera": {
+    "message": "Kunqu-opera",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.cloisonne": {
+    "message": "Cloisonné",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.porcelain": {
+    "message": "Porslin",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.embroidered": {
+    "message": "Broderad",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.jade": {
+    "message": "Jade",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.chinesePavilion": {
+    "message": "Kinesisk paviljong",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.plumFlower": {
+    "message": "Plommonblomma",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.forbiddenCity": {
+    "message": "Förbjudna staden",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.peony": {
+    "message": "Pion",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.unrealEngine": {
+    "message": "Overklig motor",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.octaneRender": {
+    "message": "Octane-rendering",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.maxonCinema4D": {
+    "message": "Maxon Cinema 4D",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.quixelMegascansRender": {
+    "message": "Quixel Megascans-rendering",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.coronaRender": {
+    "message": "Corona-rendering",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.vRay": {
+    "message": "V-ray",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.architecturalVisualisation": {
+    "message": "Arkitektonisk visualisering",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.dramaticContrast": {
+    "message": "Dramatisk kontrast",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.goldAndBlackTone": {
+    "message": "Guld och svart ton",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.whiteAndPinkTone": {
+    "message": "Vit och rosa ton",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.redAndBlackTone": {
+    "message": "Röd och svart ton",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.neonShades": {
+    "message": "Neonfärger",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.richColor": {
+    "message": "Rik färg",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.monotone": {
+    "message": "Monoton",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.theLowPurityTone": {
+    "message": "Den låga renhetstonen",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "styleTag.theHighPurityTone": {
+    "message": "Den höga renhetstonen",
+    "description": "Ett ord för stil som används för att beskriva och generera en bild, den genererade bilden bör inkludera stilen för denna tagg."
+  },
+  "button.low": {
+    "message": "Låg",
+    "description": "Text i knappen, som representerar 'låg' bildkvalitet"
+  },
+  "button.medium": {
+    "message": "Medium",
+    "description": "Text i knappen, som representerar 'medium' bildkvalitet"
+  },
+  "button.high": {
+    "message": "Hög",
+    "description": "Text i knappen, som representerar 'hög' bildkvalitet"
+  },
+  "button.buyMore": {
+    "message": "Köp mer",
+    "description": "Text i knappen, som låter användaren köpa fler krediter"
+  },
+  "button.uploadReferences": {
+    "message": "Ladda upp referenser",
+    "description": "Text i knappen, som låter användaren ladda upp referenser"
+  },
+  "button.success": {
+    "message": "Lyckades",
+    "description": "Text i knappen, som indikerar att operationen var framgångsrik"
+  },
+  "button.generating": {
+    "message": "Genererar",
+    "description": "Text i knappen, som indikerar att operationen pågår"
+  },
+  "button.failed": {
+    "message": "Misslyckades",
+    "description": "Text i knappen, som indikerar att operationen misslyckades"
+  },
+  "button.download": {
+    "message": "Ladda ner",
+    "description": "Text på knappen som låter användaren ladda ner resultatet"
+  },
+  "button.fast": {
+    "message": "Snabb hastighet",
+    "description": "Text på knappen som låter användaren ställa in 'snabb hastighet' för att generera bilden, måste översättas till 'Snabb hastighet'"
+  },
+  "button.relax": {
+    "message": "Långsam hastighet",
+    "description": "Text på knappen som låter användaren ställa in 'långsam hastighet' för att generera bilden, måste översättas till 'Långsam hastighet'"
+  },
+  "button.turbo": {
+    "message": "Extrem hastighet",
+    "description": "Text på knappen som låter användaren ställa in 'extrem hastighet' för att generera bilden, måste översättas till 'Extrem hastighet'"
+  },
+  "button.more": {
+    "message": "Mer",
+    "description": "Text på knappen som låter användaren se fler alternativ"
+  },
+  "button.generate": {
+    "message": "Generera",
+    "description": "Text på knappen som låter användaren generera bilden"
+  },
+  "button.history": {
+    "message": "Historik",
+    "description": "Text på knappen som låter användaren se historiken över genererade bilder"
+  },
+  "button.generateNew": {
+    "message": "Generera ny",
+    "description": "Text på knappen som låter användaren rita en ny bild"
+  },
+  "field.taskId": {
+    "message": "Uppgifts-ID",
+    "description": "Uppgifts-ID"
+  },
+  "field.finalPrompt": {
+    "message": "Slutlig prompt",
+    "description": "Slutlig ritningsprompt som används för att generera bilden"
+  },
+  "field.elements": {
+    "message": "Stilar",
+    "description": "Ritningsstil som används för att generera bilden"
+  },
+  "field.failureReason": {
+    "message": "Orsak till misslyckande",
+    "description": "Orsak till misslyckande"
+  },
+  "field.traceId": {
+    "message": "Spår-ID",
+    "description": "Spår-ID för att spåra begäran om att generera bilden, översätt inte det, behåll det som 'Spår-ID'"
+  },
+  "description.aspect": {
+    "message": "--aspect, Ändrar bildens sidoförhållande, standardvärdet beror på modellen och läget",
+    "description": "Beskrivning av aspektparametern"
+  },
+  "description.chaos": {
+    "message": "--chaos, Justerar graden av variation i den genererade bilden, ju högre siffran, desto unikare och oväntad blir den genererade bilden, omfånget är 0-100, standardvärdet är 1",
+    "description": "Beskrivning av kaosparametern"
+  },
+  "description.fast": {
+    "message": "Ignorerar aktuella inställningar och kör en enda genereringsuppgift i 'snabb hastighet' läge, inget standardvärde",
+    "description": "Beskrivning av snabbparametern"
+  },
+  "description.iw": {
+    "message": "--iw, Ställer in vikten av bildprompter i förhållande till textprompter under genereringsprocessen, omfånget är 0-2, standardvärdet är 1",
+    "description": "Beskrivning av iw-parametern"
+  },
+  "description.no": {
+    "message": "--no, Indikerar att genereringssystemet ska försöka utesluta vissa element, till exempel `--no plants` kommer att försöka generera bilder utan växter, inget standardvärde",
+    "description": "Beskrivning av no-parametern, översätt det som 'Uteslut'"
+  },
+  "description.quality": {
+    "message": "--quality, Ställer in kvaliteten och renderingtiden för den genererade bilden, omfånget är .25, .5 eller 1, standardvärdet är 1",
+    "description": "Beskrivning av kvalitetsparametern"
+  },
+  "description.random": {
+    "message": "Lägger till en slumpmässig basstilskod till prompten, kan använda `--style random-16`, `--style random-64` eller `--style random-128` för att få slumpmässiga stileffekter av olika längder, inget standardvärde",
+    "description": "Beskrivning av random-parametern"
+  },
+  "description.relax": {
+    "message": "Åsidosätter aktuella inställningar för att köra en enda uppgift i 'långsam hastighet' läge, inget standardvärde",
+    "description": "Beskrivning av relax-parametern"
+  },
+  "description.repeat": {
+    "message": "--repeat, Skapar flera uppgifter från en prompt, omfånget är 1-40, standardvärdet är 1",
+    "description": "Beskrivning av repeat-parametern"
+  },
+  "description.seed": {
+    "message": "--seed, Startvisuellt brus för genererade bilder, omfånget är 0-4294967295, standardvärdet genereras slumpmässigt",
+    "description": "Beskrivning av seed-parametern"
+  },
+  "description.stop": {
+    "message": "--stop, Stoppar uppgiften vid vilken som helst fas av genereringsprocessen, omfånget är 10-100, standardvärdet är 100 (dvs. helt genererad)",
+    "description": "Beskrivning av stop-parametern"
+  },
+  "description.style": {
+    "message": "--style, Växlar mellan olika versioner eller stilar av Midjourney- eller Niji-modeller, till exempel rå, söt, expressiv, original, naturskön, standardvärdet beror på modellen och läget",
+    "description": "Beskrivning av stilparametern"
+  },
+  "description.stylize": {
+    "message": "--stylize, Justerar intensiteten av standardestetisk stil av Midjourney som tillämpas i genereringsuppgifter, omfånget är 0-1000, standardvärdet är 100",
+    "description": "Beskrivning av stylize-parametern"
+  },
+  "description.tile": {
+    "message": "--tile, Genererar en bild som kan användas för sömlös mosaik för att skapa sömlösa mönster, inget standardvärde",
+    "description": "Beskrivning av tile-parametern"
+  },
+  "description.turbo": {
+    "message": "Åsidosätter aktuella inställningar för att köra en enda uppgift i 'extrem hastighet' läge, inget standardvärde",
+    "description": "Beskrivning av turbo-parametern"
+  },
+  "description.weird": {
+    "message": "--weird, Utforskar ovanliga estetiska stilar med experimentell natur, omfånget är 0-3000, standardvärdet är 0",
+    "description": "Beskrivning av weird-parametern"
+  },
+  "description.translation": {
+    "message": "Aktiverar automatisk översättning under generering, icke-kinesiskt innehåll kommer automatiskt att översättas till engelsk inmatning för Midjourney",
+    "description": "Beskrivning av översättningsparametern"
+  },
+  "description.imageWeight": {
+    "message": "--iw, Justerar vikten av bildprompter i förhållande till textprompter, omfånget är 0-2, standardvärdet är 1",
+    "description": "Beskrivning av bildvikt-parametern"
+  },
+  "description.niji": {
+    "message": "--niji, När det är aktiverat kommer genererade bilder att använda Niji-modellen och producera anime-stilbilder",
+    "description": "Beskrivning av niji-parametern"
+  },
+  "description.uploadReferences": {
+    "message": "Ladda upp bilder som referenser för generering, stöder upp till 5 bilder. Om mer än 1 bild laddas upp, kommer de automatiskt att sammanfogas",
+    "description": "Beskrivning av uploadReferences-parametern"
+  },
+  "description.raw": {
+    "message": "--raw, När det är aktiverat kommer genererade bilder att använda Midjourney-modellen och producera originalstilbilder",
+    "description": "Beskrivning av raw-parametern"
+  },
+  "description.prompt": {
+    "message": "Ange kommandon, om ytterligare parametrar läggs till kommer de att åsidosätta standardinställda parametrar, t.ex. att lägga till `--stylize 200` kommer att tvinga det slutliga kommandot att använda `--stylize 200`",
+    "description": "Beskrivning av prompt-fältet"
+  },
+  "action.generate": {
+    "message": "Klicka på den här knappen för att börja generera bilder",
+    "description": "Beskrivning av generera-knappen"
+  },
+  "action.upscale1": {
+    "message": "Skala upp den första bilden",
+    "description": "Beskrivning av knappen för att skala upp den första bilden"
+  },
+  "action.upscale2": {
+    "message": "Skala upp den andra bilden",
+    "description": "Beskrivning av knappen för att skala upp den andra bilden"
+  },
+  "action.upscale3": {
+    "message": "Skala upp den tredje bilden",
+    "description": "Beskrivning av knappen för att skala upp den tredje bilden"
+  },
+  "action.upscale4": {
+    "message": "Skala upp den fjärde bilden",
+    "description": "Beskrivning av knappen för att skala upp den fjärde bilden"
+  },
+  "action.variation1": {
+    "message": "Justera variationen av den första bilden",
+    "description": "Beskrivning av knappen för att justera variationen av den första bilden"
+  },
+  "action.variation2": {
+    "message": "Justera variationen av den andra bilden",
+    "description": "Beskrivning av knappen för att justera variationen av den andra bilden"
+  },
+  "action.variation3": {
+    "message": "Justera variationen av den tredje bilden",
+    "description": "Beskrivning av knappen för att justera variationen av den tredje bilden"
+  },
+  "action.variation4": {
+    "message": "Justera variationen av den fjärde bilden",
+    "description": "Beskrivning av knappen för att justera variationen av den fjärde bilden"
+  },
+  "action.reroll": {
+    "message": "Rulla om",
+    "description": "Beskrivning av knappen för att rulla om"
+  },
+  "action.high_variation": {
+    "message": "Hög variation",
+    "description": "Beskrivning av knappen för hög variation"
+  },
+  "action.low_variation": {
+    "message": "Låg variation",
+    "description": "Beskrivning av knappen för låg variation"
+  },
+  "action.zoom_out_2x": {
+    "message": "Zooma ut 2x",
+    "description": "Beskrivning av knappen för att zooma ut 2x"
+  },
+  "action.zoom_out_1_5x": {
+    "message": "Zooma ut 1,5x",
+    "description": "Beskrivning av knappen för att zooma ut 1,5x"
+  },
+  "action.square": {
+    "message": "Fyrkant",
+    "description": "Beskrivning av knappen för fyrkant"
+  },
+  "action.pan_left": {
+    "message": "Panorera vänster",
+    "description": "Beskrivning av knappen för att panorera vänster"
+  },
+  "action.pan_up": {
+    "message": "Panorera uppåt",
+    "description": "Beskrivning av knappen för att panorera uppåt"
+  },
+  "action.pan_down": {
+    "message": "Panorera nedåt",
+    "description": "Beskrivning av knappen för att panorera nedåt"
+  },
+  "action.pan_right": {
+    "message": "Panorera höger",
+    "description": "Beskrivning av knappen för att panorera höger"
+  },
+  "action.zoom_in_2x": {
+    "message": "Zooma in 2x",
+    "description": "Beskrivning av knappen för att zooma in 2x"
+  },
+  "action.zoom_in_1_5x": {
+    "message": "Zooma in 1,5x",
+    "description": "Beskrivning av knappen för att zooma in 1,5x"
+  },
+  "action.upscale_2x": {
+    "message": "Skala upp 2x",
+    "description": "Beskrivning av knappen för att skala upp 2x"
+  },
+  "action.upscale_4x": {
+    "message": "Skala upp 4x",
+    "description": "Beskrivning av knappen för att skala upp 4x"
+  },
+  "action.redo_upscale_2x": {
+    "message": "Gör om uppskalning 2x",
+    "description": "Beskrivning av knappen för att göra om uppskalning 2x"
+  },
+  "action.redo_upscale_4x": {
+    "message": "Gör om Upscale 4x",
+    "description": "Beskrivning av knappen redo_upscale_4x"
+  },
+  "message.promptPlaceholder": {
+    "message": "Ange en mening för att beskriva bilden du vill generera, till exempel: en söt katt. Ytterligare parametrar kommer att åsidosätta standardinställda parametrar",
+    "description": "Platshållartext i promptfältet"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Du kan ladda upp högst 5 bilder",
+    "description": "Felmeddelande när antalet uppladdade bilder överskrider gränsen"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Bilderna har laddats upp framgångsrikt",
+    "description": "Lyckomeddelande när bilderna har laddats upp framgångsrikt"
+  },
+  "message.uploadReferencesError": {
+    "message": "Det gick inte att ladda upp bilderna, försök igen senare",
+    "description": "Felmeddelande när bilderna misslyckas med att laddas upp"
+  },
+  "message.startingTask": {
+    "message": "Startar uppgift...",
+    "description": "Meddelande när ritningsuppgiften börjar"
+  },
+  "message.startTaskSuccess": {
+    "message": "Uppgiften att rita har startats framgångsrikt",
+    "description": "Lyckomeddelande när ritningsuppgiften har startats framgångsrikt"
+  },
+  "message.startTaskFailed": {
+    "message": "Det gick inte att starta ritningsuppgiften",
+    "description": "Felmeddelande när ritningsuppgiften misslyckas med att starta"
+  },
+  "message.generating": {
+    "message": "Genererar...",
+    "description": "Meddelande när bilden håller på att genereras"
+  },
+  "message.noOperations": {
+    "message": "Inga tillgängliga operationer",
+    "description": "Meddelande när det inte finns några tillgängliga operationer"
+  },
+  "message.noTasks": {
+    "message": "Inga historiska uppgifter, starta först en ny uppgift",
+    "description": "Meddelande när det inte finns några historiska uppgifter"
+  },
+  "model.general": {
+    "message": "Allmän",
+    "description": "Namnet på en modell som används för allmän bildgenerering"
+  },
+  "model.niji": {
+    "message": "Niji",
+    "description": "Namnet på en modell som används för anime-stil bildgenerering, översätt inte, behåll det som 'Niji'"
+  },
+  "name.model": {
+    "message": "Modell",
+    "description": "Modellnamnet, modell är en term inom maskininlärning, som används för att generera bilder"
+  },
+  "name.aspect": {
+    "message": "Aspektförhållande",
+    "description": "Namnet på aspektparametern"
+  },
+  "name.ratio": {
+    "message": "Förhållande",
+    "description": "Namnet på förhållandeparametern"
+  },
+  "name.chaos": {
+    "message": "Röra",
+    "description": "Namnet på röraparametern, översätt den som 'grad av rörighet'"
+  },
+  "name.fast": {
+    "message": "Snabb",
+    "description": "Namnet på snabbt läge, som används för att generera bilder snabbt, översätt den som 'Snabb hastighet'"
+  },
+  "name.nijiStyle": {
+    "message": "Niji",
+    "description": "Namnet på nijiStyle-parametern, översätt inte den, behåll den som 'Niji'"
+  },
+  "name.version": {
+    "message": "Version",
+    "description": "Namnet på versionsparametern"
+  },
+  "name.imageWeight": {
+    "message": "Bildvikt",
+    "description": "Namnet på bildviktsparametern"
+  },
+  "name.no": {
+    "message": "Nej",
+    "description": "Namnet på nej-parametern, som används för att exkludera vissa element, översätt den som 'Exkludera'"
+  },
+  "name.quality": {
+    "message": "Kvalitet",
+    "description": "Namnet på kvalitetsparametern, som används för att ställa in kvaliteten på den genererade bilden"
+  },
+  "name.random": {
+    "message": "Slumpmässig",
+    "description": "Namnet på slumpmässig parametern, som används för att lägga till slumpmässiga stileffekter"
+  },
+  "name.relax": {
+    "message": "Lugn",
+    "description": "Namnet på lugnt läge, som används för att generera bilder i 'långsam hastighet' läge, översätt den som 'långsam hastighet'"
+  },
+  "name.repeat": {
+    "message": "Upprepa",
+    "description": "Namnet på upprepaparametern, som används för att skapa flera uppgifter från en prompt"
+  },
+  "name.seed": {
+    "message": "Frö",
+    "description": "Namnet på fröparametern, som används för att ställa in startvisuell brus"
+  },
+  "name.stop": {
+    "message": "Stopp",
+    "description": "Namnet på stoppparametern, som används för att stoppa uppgiften vid vilket stadium som helst"
+  },
+  "name.style": {
+    "message": "Stil",
+    "description": "Namnet på stilparametern, som används för att växla mellan olika versioner eller stilar av modeller"
+  },
+  "name.stylize": {
+    "message": "Stilisera",
+    "description": "Namnet på stiliseraparametern, som används för att justera intensiteten av standardestetisk stil"
+  },
+  "name.tile": {
+    "message": "Kakel",
+    "description": "Namnet på kakelparametern, som används för att generera bilder som kan användas för sömlös kakling"
+  },
+  "name.turbo": {
+    "message": "Turbo",
+    "description": "Namnet på turboläge, som används för att generera bilder i 'Extrem hastighet' läge, översätt den som 'Extrem hastighet'"
+  },
+  "name.weird": {
+    "message": "Konstig",
+    "description": "Namnet på konstig parametern, som används för att utforska ovanliga estetiska stilar, översätt den som 'Konstighet'"
+  },
+  "name.translation": {
+    "message": "Översättning",
+    "description": "Namnet på översättningsparametern, som används för att aktivera automatisk översättning under generering"
+  },
+  "name.advanced": {
+    "message": "Avancerad",
+    "description": "Namnet på avancerat läge, som används för att aktivera avancerat läge"
+  },
+  "name.niji": {
+    "message": "Niji",
+    "description": "Namnet på niji-parametern, som används för att aktivera Niji-modellen, översätt inte den, behåll den som 'Niji'"
+  },
+  "name.ignore": {
+    "message": "Ignorera",
+    "description": "Namnet på ignorera-parametern, som används för att ignorera vissa element"
+  },
+  "name.prompt": {
+    "message": "Prompt",
+    "description": "Namnet på prompt-parametern, som används för att ange ritningsinstruktioner"
+  },
+  "name.raw": {
+    "message": "Rå",
+    "description": "Namnet på råparametern, som används för att aktivera Midjourney-modellen"
+  },
+  "placeholder.prompt": {
+    "message": "Ange en mening för att beskriva bilden du vill generera, till exempel: en söt katt. Ytterligare parametrar kommer att åsidosätta standardinställda parametrar",
+    "description": "Platshållartext i promptfältet"
+  },
+  "placeholder.ignore": {
+    "message": "Ange element att ignorera, till exempel: `--ignorera växter`",
+    "description": "Platshållartext i ignorera-fältet"
+  },
+  "placeholder.select": {
+    "message": "Välj",
+    "description": "Platshållartext i väljfältet"
   }
 }
