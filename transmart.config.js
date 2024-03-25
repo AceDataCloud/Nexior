@@ -20,12 +20,13 @@ module.exports = {
     'ar',
     'sr'
   ],
+  cacheEnabled: true,
   localePath: 'src/i18n',
   openAIApiKey: process.env.VITE_OPENAI_API_KEY,
   openAIApiModel: 'gpt-3.5-turbo-1106',
   openAIApiUrl: 'https://api.acedata.cloud',
   openAIApiUrlPath: '/openai/chat/completions',
-  modelContextLimit: 12000,
+  modelContextLimit: 3000,
   additionalReqBodyParams: {
     response_format: {
       type: 'json_object'

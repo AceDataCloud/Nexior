@@ -1,228 +1,1878 @@
 {
-  "button": {
-    "buyMore": "Kup więcej",
-    "_buyMore.comment": "Tekst na przycisku, który pozwala użytkownikowi kupić więcej kredytów",
-    "uploadReferences": "Prześlij odnośniki",
-    "_uploadReferences.comment": "Tekst na przycisku, który pozwala użytkownikowi przesłać odnośniki",
-    "success": "Sukces",
-    "_success.comment": "Tekst na przycisku, który wskazuje, że operacja zakończyła się sukcesem",
-    "generating": "Generowanie",
-    "_generating.comment": "Tekst na przycisku, który wskazuje, że operacja jest w trakcie postępu",
-    "failed": "Niepowodzenie",
-    "_failed.comment": "Tekst na przycisku, który wskazuje, że operacja zakończyła się niepowodzeniem",
-    "download": "Pobierz",
-    "_download.comment": "Tekst na przycisku, który pozwala użytkownikowi pobrać wynik",
-    "fast": "Szybko",
-    "_fast.comment": "Tekst na przycisku, który pozwala użytkownikowi ustawić tryb „szybka prędkość” na szybko, aby wygenerować obraz, musi zostać przetłumaczony na „Szybka prędkość”",
-    "relax": "Wolno",
-    "_relax.comment": "Tekst na przycisku, który pozwala użytkownikowi ustawić tryb „wolna prędkość” na relaks, aby wygenerować obraz, musi zostać przetłumaczony na „Wolna prędkość”",
-    "turbo": "Turbo",
-    "_turbo.comment": "Tekst na przycisku, który pozwala użytkownikowi ustawić tryb „ekstremalna prędkość” na turbo, aby wygenerować obraz, musi zostać przetłumaczony na „Ekstremalna prędkość”",
-    "more": "Więcej",
-    "_more.comment": "Tekst na przycisku, który pozwala użytkownikowi zobaczyć więcej opcji",
-    "generate": "Generuj",
-    "_generate.comment": "Tekst na przycisku, który pozwala użytkownikowi wygenerować obraz",
-    "history": "Historia",
-    "_history.comment": "Tekst na przycisku, który pozwala użytkownikowi zobaczyć historię wygenerowanych obrazów",
-    "generateNew": "Generuj nowy",
-    "_generateNew.comment": "Tekst na przycisku, który pozwala użytkownikowi narysować nowy obraz"
+  "style.cute": {
+    "message": "Śliczny",
+    "description": "Tekst na przycisku, który reprezentuje styl 'śliczny'"
   },
-  "field": {
-    "taskId": "ID zadania",
-    "_taskId.comment": "ID zadania",
-    "finalPrompt": "Ostateczny komunikat",
-    "_finalPrompt.comment": "Ostateczny komunikat rysunkowy używany do wygenerowania obrazu",
-    "elements": "Style",
-    "_elements.comment": "Styl rysowania używany do wygenerowania obrazu",
-    "failureReason": "Powód niepowodzenia",
-    "_failureReason.comment": "Powód niepowodzenia",
-    "traceId": "ID śladu",
-    "_traceId.comment": "ID śladu do śledzenia żądania generowania obrazu, nie tłumacz, zachowaj jako „ID śladu”"
+  "style.expressive": {
+    "message": "Ekspresyjny",
+    "description": "Tekst na przycisku, który reprezentuje styl 'ekspresyjny'"
   },
-  "description": {
-    "aspect": "--aspect, Zmienia proporcje obrazu wygenerowanego, wartość domyślna zależy od modelu i trybu",
-    "_aspect.comment": "Opis parametru proporcji",
-    "chaos": "--chaos, Reguluje stopień zmienności wygenerowanego obrazu, im wyższa liczba, tym bardziej unikalny i nieoczekiwany wygenerowany obraz, zakres to 0-100, domyślnie 1",
-    "_chaos.comment": "Opis parametru chaosu",
-    "fast": "Ignoruje bieżące ustawienia i uruchamia pojedyncze zadanie generacji w trybie „szybka prędkość”, brak wartości domyślnej",
-    "_fast.comment": "Opis parametru szybkości",
-    "iw": "--iw, Ustawia znaczenie komunikatów obrazu w stosunku do komunikatów tekstowych podczas procesu generacji, zakres to 0-2, domyślnie 1",
-    "_iw.comment": "Opis parametru iw",
-    "no": "--no, Wskazuje systemowi generacji, aby próbował wykluczyć pewne elementy, na przykład „--no rośliny” spróbuje wygenerować obrazy bez roślin, brak wartości domyślnej",
-    "_no.comment": "Opis parametru no, przetłumacz jako „Wyklucz”",
-    "quality": "--quality, Ustawia jakość i czas renderowania wygenerowanego obrazu, zakres to .25, .5 lub 1, domyślnie 1",
-    "_quality.comment": "Opis parametru jakości",
-    "random": "Dodaje losowy kod stylu bazowego do komunikatu, można użyć „--style random-16”, „--style random-64” lub „--style random-128” aby uzyskać losowe efekty stylu o różnych długościach, brak wartości domyślnej",
-    "_random.comment": "Opis parametru losowego",
-    "relax": "Nadpisuje bieżące ustawienia, aby uruchomić pojedyncze zadanie w trybie „wolna prędkość”, brak wartości domyślnej",
-    "_relax.comment": "Opis parametru relaksu",
-    "repeat": "--repeat, Tworzy wiele zadań z jednego komunikatu, zakres to 1-40, domyślnie 1",
-    "_repeat.comment": "Opis parametru powtórzenia",
-    "seed": "--seed, Początkowy szum wizualny dla wygenerowanych obrazów, zakres to 0-4294967295, domyślnie losowo generowany",
-    "_seed.comment": "Opis parametru seed",
-    "stop": "--stop, Zatrzymuje zadanie na dowolnym etapie procesu generacji, zakres to 10-100, domyślnie 100 (tj. w pełni wygenerowany)",
-    "_stop.comment": "Opis parametru stop",
-    "style": "--style, Przełącza między różnymi wersjami lub stylami modeli Midjourney lub Niji, na przykład surowy, uroczy, ekspresyjny, oryginalny, malowniczy, wartość domyślna zależy od modelu i trybu",
-    "_style.comment": "Opis parametru stylu",
-    "stylize": "--stylize, Reguluje intensywność domyślnego stylu estetycznego modelu Midjourney stosowanego w zadaniach generacji, zakres to 0-1000, domyślnie 100",
-    "_stylize.comment": "Opis parametru stylizacji",
-    "tile": "--tile, Generuje obraz, który może być użyty do bezszwowego kafelkowania w celu tworzenia bezszwowych wzorów, brak wartości domyślnej",
-    "_tile.comment": "Opis parametru kafelkowania",
-    "turbo": "Nadpisuje bieżące ustawienia, aby uruchomić pojedyncze zadanie w trybie „ekstremalna prędkość”, brak wartości domyślnej",
-    "_turbo.comment": "Opis parametru turbo",
-    "weird": "--weird, Eksploruje nietypowe style estetyczne o eksperymentalnej naturze, zakres to 0-3000, domyślnie 0",
-    "_weird.comment": "Opis parametru dziwnego",
-    "translation": "Włącza automatyczne tłumaczenie podczas generacji, treści niechińskie zostaną automatycznie przetłumaczone na angielski input dla Midjourney",
-    "_translation.comment": "Opis parametru tłumaczenia",
-    "imageWeight": "--iw, reguluje wagę komunikatów obrazu w stosunku do komunikatów tekstowych, zakres to 0-2, domyślnie 1",
-    "_imageWeight.comment": "Opis parametru wagi obrazu",
-    "niji": "--niji, Po włączeniu wygenerowane obrazy będą używać modelu Niji, generując obrazy w stylu anime",
-    "_niji.comment": "Opis parametru niji",
-    "uploadReferences": "Prześlij obrazy jako odnośniki do generacji, obsługuje do 5 obrazów. Jeśli przesłano więcej niż 1 obraz, zostaną one automatycznie scalone",
-    "_uploadReferences.comment": "Opis parametru przesyłania odnośników",
-    "raw": "--raw, Po włączeniu wygenerowane obrazy będą używać modelu Midjourney, generując oryginalne obrazy stylowe",
-    "_raw.comment": "Opis parametru surowego",
-    "prompt": "Wprowadź polecenia, jeśli dodano dodatkowe parametry, zostaną one zastąpione domyślnymi parametrami presetu, np. dodanie „--stylize 200” spowoduje wymuszenie użycia „--stylize 200” w końcowym poleceniu",
-    "_prompt.comment": "Opis pola prompt"
+  "style.original": {
+    "message": "Oryginalny",
+    "description": "Tekst na przycisku, który reprezentuje styl 'oryginalny'"
   },
-  "action": {
-    "generate": "Kliknij ten przycisk, aby rozpocząć generowanie obrazów",
-    "_generate.comment": "Opis przycisku generowania",
-    "upscale1": "Upskaluj pierwszy obraz",
-    "_upscale1.comment": "Opis przycisku upscaling1",
-    "upscale2": "Upskaluj drugi obraz",
-    "_upscale2.comment": "Opis przycisku upscaling2",
-    "upscale3": "Upskaluj trzeci obraz",
-    "_upscale3.comment": "Opis przycisku upscaling3",
-    "upscale4": "Upskaluj czwarty obraz",
-    "_upscale4.comment": "Opis przycisku upscaling4",
-    "variation1": "Dostosuj wariację pierwszego obrazu",
-    "_variation1.comment": "Opis przycisku wariacji1",
-    "variation2": "Dostosuj wariację drugiego obrazu",
-    "_variation2.comment": "Opis przycisku wariacji2",
-    "variation3": "Dostosuj wariację trzeciego obrazu",
-    "_variation3.comment": "Opis przycisku wariacji3",
-    "variation4": "Dostosuj wariację czwartego obrazu",
-    "_variation4.comment": "Opis przycisku wariacji4",
-    "reroll": "Przegeneruj",
-    "_reroll.comment": "Opis przycisku przegenerowania",
-    "high_variation": "Wysoka wariacja",
-    "_high_variation.comment": "Opis przycisku wysokiej wariacji",
-    "low_variation": "Niska wariacja",
-    "_low_variation.comment": "Opis przycisku niskiej wariacji",
-    "zoom_out_2x": "Oddal 2x",
-    "_zoom_out_2x.comment": "Opis przycisku oddalania 2x",
-    "zoom_out_1_5x": "Oddal 1.5x",
-    "_zoom_out_1_5x.comment": "Opis przycisku oddalania 1.5x",
-    "square": "Kwadrat",
-    "_square.comment": "Opis przycisku kwadratu",
-    "pan_left": "Przesuń w lewo",
-    "_pan_left.comment": "Opis przycisku przesunięcia w lewo",
-    "pan_up": "Przesuń w górę",
-    "_pan_up.comment": "Opis przycisku przesunięcia w górę",
-    "pan_down": "Przesuń w dół",
-    "_pan_down.comment": "Opis przycisku przesunięcia w dół",
-    "pan_right": "Przesuń w prawo",
-    "_pan_right.comment": "Opis przycisku przesunięcia w prawo",
-    "zoom_in_2x": "Przybliż 2x",
-    "_zoom_in_2x.comment": "Opis przycisku przybliżenia 2x",
-    "zoom_in_1_5x": "Przybliż 1.5x",
-    "_zoom_in_1_5x.comment": "Opis przycisku przybliżenia 1.5x",
-    "upscale_2x": "Upskaluj 2x",
-    "_upscale_2x.comment": "Opis przycisku upscaling_2x",
-    "upscale_4x": "Upskaluj 4x",
-    "_upscale_4x.comment": "Opis przycisku upscaling_4x",
-    "redo_upscale_2x": "Powtórz upscaling 2x",
-    "_redo_upscale_2x.comment": "Opis przycisku powtórnego upscalingu 2x",
-    "redo_upscale_4x": "Powtórz upscaling 4x",
-    "_redo_upscale_4x.comment": "Opis przycisku powtórnego upscalingu 4x"
+  "style.scenic": {
+    "message": "Malowniczy",
+    "description": "Tekst na przycisku, który reprezentuje styl 'malowniczy'"
   },
-  "message": {
-    "promptPlaceholder": "Proszę wprowadzić zdanie opisujące obraz, który chcesz wygenerować, na przykład: uroczy kot. Dodatkowe parametry zastąpią domyślne parametry presetu",
-    "_promptPlaceholder.comment": "Tekst zastępczy w polu prompt",
-    "uploadReferencesExceed": "Możesz przesłać maksymalnie do 5 obrazów",
-    "_uploadReferencesExceed.comment": "Komunikat o błędzie, gdy liczba przesłanych obrazów przekracza limit",
-    "uploadReferencesSuccess": "Pomyślnie przesłano obrazy",
-    "_uploadReferencesSuccess.comment": "Komunikat o sukcesie, gdy obrazy są pomyślnie przesłane",
-    "uploadReferencesError": "Nie udało się przesłać obrazów, spróbuj ponownie później",
-    "_uploadReferencesError.comment": "Komunikat o błędzie, gdy obrazy nie udaje się przesłać",
-    "startTaskSuccess": "Pomyślnie rozpoczęto zadanie rysowania",
-    "_startTaskSuccess.comment": "Komunikat o sukcesie, gdy zadanie rysowania jest pomyślnie rozpoczęte",
-    "startTaskFailed": "Nie udało się rozpocząć zadania rysowania",
-    "_startTaskFailed.comment": "Komunikat o błędzie, gdy zadanie rysowania nie udaje się rozpocząć",
-    "generating": "Generowanie...",
-    "_generating.comment": "Komunikat, gdy obraz jest generowany",
-    "noOperations": "Brak dostępnych operacji",
-    "_noOperations.comment": "Komunikat, gdy nie ma dostępnych operacji",
-    "noTasks": "Brak historycznych zadań, proszę najpierw rozpocząć nowe zadanie",
-    "_noTasks.comment": "Komunikat, gdy nie ma historycznych zadań"
+  "style.raw": {
+    "message": "Surowy",
+    "description": "Tekst na przycisku, który reprezentuje styl 'surowy'"
   },
-  "model": {
-    "general": "Ogólny",
-    "_general.comment": "Nazwa modelu używanego do ogólnego generowania obrazów",
-    "niji": "Niji",
-    "_niji.comment": "Nazwa modelu używanego do generowania obrazów w stylu anime, nie tłumacz, zachowaj jako „Niji”"
+  "styleCategory.special": {
+    "message": "Specjalny",
+    "description": "Słowo kategorii używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać kategorię tego tagu."
   },
-  "name": {
-    "model": "Model",
-    "_model.comment": "Nazwa modelu, model to termin w uczeniu maszynowym, który służy do generowania obrazów",
-    "aspect": "Proporcje",
-    "_aspect.comment": "Nazwa parametru proporcji",
-    "ratio": "Stosunek",
-    "_ratio.comment": "Nazwa parametru stosunku",
-    "chaos": "Chaos",
-    "_chaos.comment": "Nazwa parametru chaosu, tłumaczyć jako 'stopień bałaganu'",
-    "fast": "Szybki",
-    "_fast.comment": "Nazwa trybu szybkiego, który służy do szybkiego generowania obrazów, tłumaczyć jako 'Szybka prędkość'",
-    "nijiStyle": "Niji",
-    "_nijiStyle.comment": "Nazwa parametru stylu niji, nie tłumaczyć, zachować jako 'Niji'",
-    "version": "Wersja",
-    "_version.comment": "Nazwa parametru wersji",
-    "imageWeight": "Waga obrazu",
-    "_imageWeight.comment": "Nazwa parametru wagi obrazu",
-    "no": "Wyklucz",
-    "_no.comment": "Nazwa parametru 'no', który służy do wykluczania pewnych elementów, tłumaczyć jako 'Wyklucz'",
-    "quality": "Jakość",
-    "_quality.comment": "Nazwa parametru jakości, który służy do ustawiania jakości generowanego obrazu",
-    "random": "Losowy",
-    "_random.comment": "Nazwa parametru losowego, który służy do dodawania losowych efektów stylu",
-    "relax": "Wolny",
-    "_relax.comment": "Nazwa trybu relaksu, który służy do generowania obrazów w trybie 'wolnej prędkości', tłumaczyć jako 'Wolna prędkość'",
-    "repeat": "Powtórz",
-    "_repeat.comment": "Nazwa parametru powtórzenia, który służy do tworzenia wielu zadań z jednego polecenia",
-    "seed": "Ziarno",
-    "_seed.comment": "Nazwa parametru ziarna, który służy do ustawiania początkowego szumu wizualnego",
-    "stop": "Stop",
-    "_stop.comment": "Nazwa parametru stop, który służy do zatrzymywania zadania na dowolnym etapie",
-    "style": "Styl",
-    "_style.comment": "Nazwa parametru stylu, który służy do przełączania między różnymi wersjami lub stylami modeli",
-    "stylize": "Stylizuj",
-    "_stylize.comment": "Nazwa parametru stylizacji, który służy do dostosowania intensywności domyślnego stylu estetycznego",
-    "tile": "Kafelek",
-    "_tile.comment": "Nazwa parametru kafelka, który służy do generowania obrazów, które mogą być używane do bezszwowego kafelkowania",
-    "turbo": "Turbo",
-    "_turbo.comment": "Nazwa trybu turbo, który służy do generowania obrazów w trybie 'Ekstremalnej prędkości', tłumaczyć jako 'Ekstremalna prędkość'",
-    "weird": "Dziwaczny",
-    "_weird.comment": "Nazwa parametru dziwaczności, który służy do eksploracji nietypowych stylów estetycznych, tłumaczyć jako 'Dziwactwo'",
-    "translation": "Tłumaczenie",
-    "_translation.comment": "Nazwa parametru tłumaczenia, który służy do włączenia automatycznego tłumaczenia podczas generowania",
-    "advanced": "Zaawansowany",
-    "_advanced.comment": "Nazwa zaawansowanego trybu, który służy do włączenia zaawansowanego trybu",
-    "niji": "Niji",
-    "_niji.comment": "Nazwa parametru niji, który służy do włączenia modelu Niji, nie tłumaczyć, zachować jako 'Niji'",
-    "ignore": "Ignoruj",
-    "_ignore.comment": "Nazwa parametru ignorowania, który służy do ignorowania pewnych elementów",
-    "prompt": "Polecenie",
-    "_prompt.comment": "Nazwa parametru polecenia, który służy do wprowadzania instrukcji rysowania",
-    "raw": "Surowy",
-    "_raw.comment": "Nazwa parametru surowego, który służy do włączenia modelu Midjourney"
+  "styleCategory.chinese": {
+    "message": "Chiński",
+    "description": "Słowo kategorii używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać kategorię tego tagu."
   },
-  "placeholder": {
-    "prompt": "Wprowadź zdanie opisujące obraz, który chcesz wygenerować, na przykład: uroczy kot. Dodatkowe parametry zastąpią domyślne ustawienia",
-    "_prompt.comment": "Tekst zastępczy w polu polecenia",
-    "ignore": "Wprowadź elementy do zignorowania, na przykład: `--ignoruj rośliny`",
-    "_ignore.comment": "Tekst zastępczy w polu ignorowania",
-    "select": "Wybierz",
-    "_select.comment": "Tekst zastępczy w polu wyboru"
+  "styleCategory.emotion": {
+    "message": "Emocje",
+    "description": "Słowo kategorii używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać kategorię tego tagu."
+  },
+  "styleCategory.camera": {
+    "message": "Aparat",
+    "description": "Słowo kategorii używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać kategorię tego tagu."
+  },
+  "styleCategory.styles": {
+    "message": "Style",
+    "description": "Słowo kategorii używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać kategorię tego tagu."
+  },
+  "styleCategory.lighting": {
+    "message": "Oświetlenie",
+    "description": "Słowo kategorii używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać kategorię tego tagu."
+  },
+  "styleCategory.painters": {
+    "message": "Malarze",
+    "description": "Słowo kategorii używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać kategorię tego tagu."
+  },
+  "styleCategory.material": {
+    "message": "Materiał",
+    "description": "Słowo kategorii używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać kategorię tego tagu."
+  },
+  "styleCategory.artists": {
+    "message": "Artyści",
+    "description": "Słowo kategorii używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać kategorię tego tagu."
+  },
+  "styleTag.watercolour": {
+    "message": "Akvarel",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.oilPainting": {
+    "message": "Malarstwo olejne",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.oldPhotograph": {
+    "message": "Stare zdjęcie",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.oneLineDrawing": {
+    "message": "Rysunek jednoliniowy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.sketchDrawing": {
+    "message": "Szkic",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.gouache": {
+    "message": "Gwasz",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.filmStyle": {
+    "message": "Styl filmowy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.photorealistic": {
+    "message": "Fotorealistyczny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.logo": {
+    "message": "Logo",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.cartoon": {
+    "message": "Kreskówka",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.marbleStatue": {
+    "message": "Marmurowy posąg",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.1800S": {
+    "message": "XIX wiek",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.1980S": {
+    "message": "Lata 80.",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.isometricAnime": {
+    "message": "Izometryczne anime",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.analyticDrawing": {
+    "message": "Rysunek analityczny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.coloringBook": {
+    "message": "Książka do kolorowania",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.infographicDrawing": {
+    "message": "Rysunek infograficzny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.doubleExposure": {
+    "message": "Podwójna ekspozycja",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.diagrammaticDrawing": {
+    "message": "Rysunek diagramatyczny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.2DIllustration": {
+    "message": "Ilustracja 2D",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.diagrammaticPortrait": {
+    "message": "Portret diagramatyczny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.pixelArt": {
+    "message": "Sztuka pikselowa",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.darkFantasy": {
+    "message": "Mroczna fantastyka",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.ukiyoEArt": {
+    "message": "Sztuka ukiyo-e",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.paperQuilling": {
+    "message": "Quilling papieru",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.paperCutCraft": {
+    "message": "Rękodzieło z wycinanego papieru",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.iridescent": {
+    "message": "Irydyscentny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.patchworkCollage": {
+    "message": "Kolaż patchworkowy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.opArt": {
+    "message": "Sztuka op-art",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.japaneseInk": {
+    "message": "Japoński tusz",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.pastelDrawing": {
+    "message": "Rysunek pastelowy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.drippingArt": {
+    "message": "Sztuka kapania",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.tattooArt": {
+    "message": "Sztuka tatuażu",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.16Bit": {
+    "message": "16-bitowy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.8Bit": {
+    "message": "8-bitowy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.amber": {
+    "message": "Bursztynowy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.anatomicalDrawing": {
+    "message": "Rysunek anatomiczny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.ancient": {
+    "message": "Starożytny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.anime": {
+    "message": "Anime",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.arabic": {
+    "message": "Arabski",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.blocky": {
+    "message": "Kanciasty",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.blueprint": {
+    "message": "Szkic techniczny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.comicbook": {
+    "message": "Komiks",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.caribbean": {
+    "message": "Karaibski",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.celestial": {
+    "message": "Niebiański",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.cellulose": {
+    "message": "Celulozowy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.charcoalStyle": {
+    "message": "Styl węglowy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.chromatic": {
+    "message": "Chromatyczny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.coral": {
+    "message": "Koralowy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.conceptArt": {
+    "message": "Sztuka koncepcyjna",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.fibonacci": {
+    "message": "Fibonacciego",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.cyberpunk": {
+    "message": "Cyberpunk",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.diabolic": {
+    "message": "Diaboliczny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.diffractionGrading": {
+    "message": "Ocena dyfrakcji",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.lightspeed": {
+    "message": "Prędkość światła",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.liquid": {
+    "message": "Płynny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.dots": {
+    "message": "Kropki",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.dune": {
+    "message": "Wydma",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.drippingPaint": {
+    "message": "Kapie farba",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.electronicCircuitry": {
+    "message": "Układy elektroniczne",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.electrical": {
+    "message": "Elektryczny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.futuristic": {
+    "message": "Futurystyczny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.etching": {
+    "message": "Rycina",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.extraterrestrial": {
+    "message": "Obcy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.glitchart": {
+    "message": "Sztuka błędu",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.floral": {
+    "message": "Kwiatowy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.fractal": {
+    "message": "Fraktalny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.preHistoric": {
+    "message": "Prehistoryczny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.prokaryotic": {
+    "message": "Prokariotyczny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.horror": {
+    "message": "Horror",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.iceAge": {
+    "message": "Era lodowcowa",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.jurassic": {
+    "message": "Jurajski",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.knitted": {
+    "message": "Zapleciony",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.polka": {
+    "message": "Kropki",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.latex": {
+    "message": "Lateksowy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.pastel": {
+    "message": "Pastelowy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.mandala": {
+    "message": "Mandala",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.molecular": {
+    "message": "Molekularny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.merkaba": {
+    "message": "Merkaba",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.mitochondria": {
+    "message": "Mitochondria",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.graffiti": {
+    "message": "Graffiti",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.graphicNovel": {
+    "message": "Komiks graficzny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.multidimensional": {
+    "message": "Wielowymiarowy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.nasa": {
+    "message": "NASA",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.nebula": {
+    "message": "Mgławica",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.neon": {
+    "message": "Neonowy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.nuclear": {
+    "message": "Nuklearny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.orbital": {
+    "message": "Orbitalny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.rayTracing": {
+    "message": "Śledzenie promieni",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.realistic": {
+    "message": "Realistyczny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.renaissance": {
+    "message": "Renesansowy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.retro": {
+    "message": "Retro",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.risograph": {
+    "message": "Risografia",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.origami": {
+    "message": "Origami",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.ornamental": {
+    "message": "Ornamental",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.space": {
+    "message": "Przestrzeń",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.splatterPaint": {
+    "message": "Farba rozpryskowa",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.sprayPaint": {
+    "message": "Farba natryskowa",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.squiggles": {
+    "message": "Bazgroły",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.stitching": {
+    "message": "Szycie",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.veins": {
+    "message": "Żyły",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.streetArt": {
+    "message": "Sztuka uliczna",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.surreal": {
+    "message": "Surrealistyczny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.symmetric": {
+    "message": "Symetryczny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.synthWave": {
+    "message": "Fala syntezatorowa",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.technological": {
+    "message": "Technologiczny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.tron": {
+    "message": "Tron",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.tropical": {
+    "message": "Tropikalny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.ultraModern": {
+    "message": "Ultra nowoczesny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.wormhole": {
+    "message": "Dziura czasoprzestrzenna",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.wrinkled": {
+    "message": "Pognieciony",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.volcanic": {
+    "message": "Wulkaniczny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.wetPaint": {
+    "message": "Mokra farba",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.wildWest": {
+    "message": "Dziki Zachód",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.wind": {
+    "message": "Wiatr",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.miniatureFaking": {
+    "message": "Fałszywe miniatury",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.accentLighting": {
+    "message": "Oświetlenie akcentowe",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.backlight": {
+    "message": "Podświetlenie",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.blacklight": {
+    "message": "Czarna lampa",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.goldenHourLight": {
+    "message": "Złota godzina",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.candlelight": {
+    "message": "Światło świecy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.concertLighting": {
+    "message": "Oświetlenie koncertowe",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.crepuscularRays": {
+    "message": "Promienie zmierzchu",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.directSunlight": {
+    "message": "Bezpośrednie światło słoneczne",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.dust": {
+    "message": "Kurz",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.studioLighting": {
+    "message": "Oświetlenie studyjne",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.rimLight": {
+    "message": "Światło obwodowe",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.volumetricLighting": {
+    "message": "Oświetlenie wolumetryczne",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.fluorescent": {
+    "message": "Fluorescencyjne",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.glowing": {
+    "message": "Świecący",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.glowStick": {
+    "message": "Pałka świecąca",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.glowRadioactive": {
+    "message": "Promieniotwórcze światło świecące",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.lavaGlow": {
+    "message": "Świecenie lawy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.moonlight": {
+    "message": "Światło księżyca",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.naturalLighting": {
+    "message": "Naturalne oświetlenie",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.neonLamp": {
+    "message": "Lampa neonowa",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.nightclubLighting": {
+    "message": "Oświetlenie klubowe",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.nuclearWasteGlo": {
+    "message": "Promieniowanie odpadów nuklearnych",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.quantumDot": {
+    "message": "Kropka kwantowa",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.spotlight": {
+    "message": "Reflektor",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.edgeLight": {
+    "message": "Światło krawędziowe",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.coldLight": {
+    "message": "Zimne światło",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.keyLighting": {
+    "message": "Oświetlenie kluczowe",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.ambientLight": {
+    "message": "Światło otoczenia",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.highKeyLighting": {
+    "message": "Wysokie oświetlenie kluczowe",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.lowKeyLighting": {
+    "message": "Niskie oświetlenie",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.motivatedLighting": {
+    "message": "Oświetlenie motywowane",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.3PointLighting": {
+    "message": "Oświetlenie 3-punktowe",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.strobeLight": {
+    "message": "Światło stroboskopowe",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.sunLight": {
+    "message": "Światło słoneczne",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.ultraviolet": {
+    "message": "Ultrafiolet",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.beautifulLighting": {
+    "message": "Piękne oświetlenie",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.moodyLighting": {
+    "message": "Nastrojowe oświetlenie",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.softLighting": {
+    "message": "Miękkie oświetlenie",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.michelangelo": {
+    "message": "Michelangelo",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.monet": {
+    "message": "Monet",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.paulCezanne": {
+    "message": "Paul Cezanne",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.markRothko": {
+    "message": "Mark Rothko",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.paulKlee": {
+    "message": "Paul Klee",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.picasso": {
+    "message": "Picasso",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.pietMondrian": {
+    "message": "Piet Mondrian",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.pierreAugusteRer": {
+    "message": "Pierre Auguste Rer",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.rembrandt": {
+    "message": "Rembrandt",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.reneMagritte": {
+    "message": "Rene Magritte",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.royLichtenstein": {
+    "message": "Roy Lichtenstein",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.salvadorDali": {
+    "message": "Salvador Dali",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.sandroBotticelli": {
+    "message": "Sandro Botticelli",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.takashiMurakami": {
+    "message": "Takashi Murakami",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.vanGogh": {
+    "message": "Van Gogh",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.wassilyKandinsky": {
+    "message": "Wassily Kandinsky",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.matCollishaw": {
+    "message": "Mat Collishaw",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.yayoiKusama": {
+    "message": "Yayoi Kusama",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.igorMorski": {
+    "message": "Igor Morski",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.shinkaiMakoto": {
+    "message": "Shinkai Makoto",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.pixar": {
+    "message": "Pixar",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.kyotoAnime": {
+    "message": "Kyoto Anime",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.jerryPinkney": {
+    "message": "Jerry Pinkney",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.hayaoMiyazaki": {
+    "message": "Hayao Miyazaki",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.beatrixPotter": {
+    "message": "Beatrix Potter",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.jonKlassen": {
+    "message": "Jon Klassen",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.kaySage": {
+    "message": "Kay Sage",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.jeffreyCatherineJones": {
+    "message": "Jeffrey Catherine Jones",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.yaacovAgam": {
+    "message": "Yaacov Agam",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.davidHockney": {
+    "message": "David Hockney",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.victorMoscoso": {
+    "message": "Victor Moscoso",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.raphaelite": {
+    "message": "Rafaelit",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.stefanKoidl": {
+    "message": "Stefan Koidl",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.suiIshida": {
+    "message": "Sui Ishida",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.swoon": {
+    "message": "Swoon",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.tashaTudor": {
+    "message": "Tasha Tudor",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.tintoretto": {
+    "message": "Tintoretto",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.theodoreRobinsor": {
+    "message": "Theodore Robinsor",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.titian": {
+    "message": "Tycjan",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.wlop": {
+    "message": "WLOP",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.yanjunCheng": {
+    "message": "Yanjun Cheng",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.yojiShinkawa": {
+    "message": "Yoji Shinkawa",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.zhelongXu": {
+    "message": "Zhelong Xu",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.alenaAenami": {
+    "message": "Alena Aenami",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.anntonFadeevi": {
+    "message": "Annton Fadeevi",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.charlieBowater": {
+    "message": "Charlie Bowater",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.coryLoftis": {
+    "message": "Cory Loftis",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.fenghuaZhong": {
+    "message": "Fenghua Zhong",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.gregRutkowski": {
+    "message": "Greg Rutkowski",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.hongSoonsang": {
+    "message": "Hong SoonSang",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.dennisStock": {
+    "message": "Dennis Stock",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.michalLisowski": {
+    "message": "Michal Lisowski",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.paulLehr": {
+    "message": "Paul Lehr",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.rossTran": {
+    "message": "Ross Tran",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.antonPieck": {
+    "message": "Anton Pieck",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.carlBarks": {
+    "message": "Carl Barks",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.alphonseMucha": {
+    "message": "Alphonse Mucha",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.andyWarhol": {
+    "message": "Andy Warhol",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.banksy": {
+    "message": "Banksy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.franciscoDeGoya": {
+    "message": "Francisco De Goya",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.caravaggio": {
+    "message": "Caravaggio",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.diegoRivera": {
+    "message": "Diego Rivera",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.marcChagall": {
+    "message": "Marc Chagall",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.edgarDegas": {
+    "message": "Edgar Degas",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.eugeneDelacroix": {
+    "message": "Eugene Delacroix",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.francisBacon": {
+    "message": "Francis Bacon",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.fridaKahlo": {
+    "message": "Frida Kahlo",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.garaldBrom": {
+    "message": "Garald Brom",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.gustavKlimt": {
+    "message": "Gustav Klimt",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.henriMatisse": {
+    "message": "Henri Matisse",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.jackKirby": {
+    "message": "Jack Kirby",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.jacksonPollock": {
+    "message": "Jackson Pollock",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.johannesVermeer": {
+    "message": "Johannes Vermeer",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.jeanMichelBasquiat": {
+    "message": "Jean Michel Basquiat",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.marcelDuchamp": {
+    "message": "Marcel Duchamp",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.aluminum": {
+    "message": "Aluminium",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.brick": {
+    "message": "Cegła",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.bronze": {
+    "message": "Brąz",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.carbonFiber": {
+    "message": "Włókno węglowe",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.cardboard": {
+    "message": "Tektura",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.ceramic": {
+    "message": "Ceramika",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.cotton": {
+    "message": "Bawełna",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.fabric": {
+    "message": "Materiał",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.fiberOptic": {
+    "message": "Światłowód",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.foil": {
+    "message": "Folia",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.yarn": {
+    "message": "Przędza",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.glass": {
+    "message": "Szkło",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.gold": {
+    "message": "Złoto",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.gummies": {
+    "message": "Żelki",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.leather": {
+    "message": "Skóra",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.magma": {
+    "message": "Magma",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.metallic": {
+    "message": "Metaliczny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.nickel": {
+    "message": "Nikiel",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.nylon": {
+    "message": "Nylon",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.paper": {
+    "message": "Papier",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.plastic": {
+    "message": "Plastik",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.quartz": {
+    "message": "Kwarc",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.wrap": {
+    "message": "Zawijanie",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.wooden": {
+    "message": "Drewniany",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.slime": {
+    "message": "Śluz",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.engraving": {
+    "message": "Grawerowanie",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.ivory": {
+    "message": "Kość słoniowa",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.basalt": {
+    "message": "Bazalt",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.pine": {
+    "message": "Sosna",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.diamond": {
+    "message": "Diament",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.amethyst": {
+    "message": "Ametyst",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.ruby": {
+    "message": "Rubin",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.highPolished": {
+    "message": "Wysoko polerowany",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.brushed": {
+    "message": "Szczotkowany",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.matte": {
+    "message": "Matowy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.satin": {
+    "message": "Satynowy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.sandblasted": {
+    "message": "Piaskowany",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.ebony": {
+    "message": "Hebanowy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.bokeh": {
+    "message": "Bokeh",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.aerialView": {
+    "message": "Widok z lotu ptaka",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.shotByDslr": {
+    "message": "Zdjęcie zrobione lustrzanką cyfrową",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.360Panorama": {
+    "message": "360° Panorama",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.panorama": {
+    "message": "Panorama",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.telephotoLens": {
+    "message": "Obiektyw telefoto",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.macroShot": {
+    "message": "Makro zdjęcie",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.microscopy": {
+    "message": "Mikroskopia",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.magnification": {
+    "message": "Powiększenie",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.closeUp": {
+    "message": "Zbliżenie",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.fullBody": {
+    "message": "Całe ciało",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.portrait": {
+    "message": "Portret",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.profile": {
+    "message": "Profil",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.pinholeLens": {
+    "message": "Obiektyw otworkowy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.wideView": {
+    "message": "Szeroki widok",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.telescopeLens": {
+    "message": "Obiektyw teleskopowy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.satelliteImagery": {
+    "message": "Obrazowanie satelitarne",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.headshot": {
+    "message": "Zdjęcie portretowe",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.extremeCloseup": {
+    "message": "Ekstremalne zbliżenie",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.ultrawideShot": {
+    "message": "Ultra szeroki kadr",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.birdView": {
+    "message": "Widok z lotu ptaka",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.topView": {
+    "message": "Widok z góry",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.frontView": {
+    "message": "Widok z przodu",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.sideView": {
+    "message": "Widok z boku",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.backView": {
+    "message": "Widok z tyłu",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.faceShot": {
+    "message": "Zdjęcie twarzy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.chestShot": {
+    "message": "Zdjęcie klatki piersiowej",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.waistShot": {
+    "message": "Zdjęcie talii",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.extraLongShot": {
+    "message": "Bardzo długi kadr",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.lookUp": {
+    "message": "Patrzenie w górę",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.isometricview": {
+    "message": "Widok izometryczny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.highAngleView": {
+    "message": "Wysoki kąt widzenia",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.lowAngleView": {
+    "message": "Niski kąt widzenia",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.happy": {
+    "message": "Szczęśliwy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.excited": {
+    "message": "Podekscytowany",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.angry": {
+    "message": "Zły",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.ped": {
+    "message": "ped",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.disgusted": {
+    "message": "Zdegustowany",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.supnned": {
+    "message": "supnned",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.hopeful": {
+    "message": "Pełen nadziei",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.anxious": {
+    "message": "Zaniepokojony",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.elated": {
+    "message": "Rozradowany",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.fearful": {
+    "message": "Bojaźliwy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.hateful": {
+    "message": "Nienawistny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.apoow": {
+    "message": "Apoow",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.dark": {
+    "message": "Ciemny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.brutal": {
+    "message": "Brutalny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.hanfu": {
+    "message": "Hanfu",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.cheongsam": {
+    "message": "Cheongsam",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.chineseCostume": {
+    "message": "Chiński kostium",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.chineseDress": {
+    "message": "Chińska suknia",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.wuxia": {
+    "message": "Wuxia",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.chinesePhoenix": {
+    "message": "Chiński feniks",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.kungfu": {
+    "message": "Kungfu",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.kunquOpera": {
+    "message": "Opera Kunqu",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.cloisonne": {
+    "message": "Cloisonne",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.porcelain": {
+    "message": "Porcelana",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.embroidered": {
+    "message": "Haftowany",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.jade": {
+    "message": "Jadeit",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.chinesePavilion": {
+    "message": "Chiński pawilon",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.plumFlower": {
+    "message": "Kwiat śliwy",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.forbiddenCity": {
+    "message": "Zakazane miasto",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.peony": {
+    "message": "Piwonia",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.unrealEngine": {
+    "message": "Unreal Engine",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.octaneRender": {
+    "message": "Octane Render",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.maxonCinema4D": {
+    "message": "Maxon Cinema 4D",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.quixelMegascansRender": {
+    "message": "Quixel Megascans Render",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.coronaRender": {
+    "message": "Corona Render",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.vRay": {
+    "message": "V-Ray",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.architecturalVisualisation": {
+    "message": "Wizualizacja architektoniczna",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.dramaticContrast": {
+    "message": "Dramatyczny kontrast",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.goldAndBlackTone": {
+    "message": "Złoto i czarny odcień",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.whiteAndPinkTone": {
+    "message": "Biały i różowy odcień",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.redAndBlackTone": {
+    "message": "Czerwony i czarny odcień",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.neonShades": {
+    "message": "Neonowe odcienie",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.richColor": {
+    "message": "Bogaty kolor",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.monotone": {
+    "message": "Monochromatyczny",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.theLowPurityTone": {
+    "message": "Niski odcień czystości",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "styleTag.theHighPurityTone": {
+    "message": "Wysoki odcień czystości",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu."
+  },
+  "button.low": {
+    "message": "Niska",
+    "description": "Tekst na przycisku, który reprezentuje 'niską' jakość obrazu"
+  },
+  "button.medium": {
+    "message": "Średnia",
+    "description": "Tekst na przycisku, który reprezentuje 'średnią' jakość obrazu"
+  },
+  "button.high": {
+    "message": "Wysoka",
+    "description": "Tekst na przycisku, który reprezentuje 'wysoką' jakość obrazu"
+  },
+  "button.buyMore": {
+    "message": "Kup więcej",
+    "description": "Tekst na przycisku, który pozwala użytkownikowi kupić więcej kredytów"
+  },
+  "button.uploadReferences": {
+    "message": "Prześlij odnośniki",
+    "description": "Tekst na przycisku, który pozwala użytkownikowi przesłać odnośniki"
+  },
+  "button.success": {
+    "message": "Sukces",
+    "description": "Tekst na przycisku, który wskazuje, że operacja zakończyła się sukcesem"
+  },
+  "button.generating": {
+    "message": "Generowanie",
+    "description": "Tekst na przycisku, który wskazuje, że operacja jest w toku"
+  },
+  "button.failed": {
+    "message": "Niepowodzenie",
+    "description": "Tekst na przycisku, który wskazuje, że operacja zakończyła się niepowodzeniem"
+  },
+  "button.download": {
+    "message": "Pobierz",
+    "description": "Tekst na przycisku, który pozwala użytkownikowi pobrać wynik"
+  },
+  "button.fast": {
+    "message": "Szybkość",
+    "description": "Tekst na przycisku, który pozwala użytkownikowi ustawić tryb 'szybkiej prędkości' na szybko, aby wygenerować obraz, musi zostać przetłumaczony na 'Szybkość'"
+  },
+  "button.relax": {
+    "message": "Wolno",
+    "description": "Tekst na przycisku, który pozwala użytkownikowi ustawić tryb 'wolnej prędkości' na relaks, aby wygenerować obraz, musi zostać przetłumaczony na 'Wolna prędkość'"
+  },
+  "button.turbo": {
+    "message": "Turbo",
+    "description": "Tekst na przycisku, który pozwala użytkownikowi ustawić tryb 'ekstremalnej prędkości' na turbo, aby wygenerować obraz, musi zostać przetłumaczony na 'Ekstremalna prędkość'"
+  },
+  "button.more": {
+    "message": "Więcej",
+    "description": "Tekst na przycisku, który pozwala użytkownikowi zobaczyć więcej opcji"
+  },
+  "button.generate": {
+    "message": "Generuj",
+    "description": "Tekst na przycisku, który pozwala użytkownikowi wygenerować obraz"
+  },
+  "button.history": {
+    "message": "Historia",
+    "description": "Tekst na przycisku, który pozwala użytkownikowi zobaczyć historię wygenerowanych obrazów"
+  },
+  "button.generateNew": {
+    "message": "Generuj nowy",
+    "description": "Tekst na przycisku, który pozwala użytkownikowi narysować nowy obraz"
+  },
+  "field.taskId": {
+    "message": "ID zadania",
+    "description": "ID zadania"
+  },
+  "field.finalPrompt": {
+    "message": "Ostateczny komunikat",
+    "description": "Ostateczny komunikat rysowania używany do wygenerowania obrazu"
+  },
+  "field.elements": {
+    "message": "Style",
+    "description": "Styl rysowania używany do wygenerowania obrazu"
+  },
+  "field.failureReason": {
+    "message": "Powód niepowodzenia",
+    "description": "Powód niepowodzenia"
+  },
+  "field.traceId": {
+    "message": "ID śladu",
+    "description": "ID śladu do śledzenia żądania generowania obrazu, nie tłumacz go, zachowaj go jako 'ID śladu'"
+  },
+  "description.aspect": {
+    "message": "--aspect, Zmienia proporcje obrazu wygenerowanego, wartość domyślna zależy od modelu i trybu",
+    "description": "Opis parametru aspect"
+  },
+  "description.chaos": {
+    "message": "--chaos, Reguluje stopień zmienności w wygenerowanym obrazie, im wyższa liczba, tym bardziej unikalny i nieoczekiwany wygenerowany obraz, zakres to 0-100, domyślnie 1",
+    "description": "Opis parametru chaos"
+  },
+  "description.fast": {
+    "message": "Ignoruje bieżące ustawienia i uruchamia pojedyncze zadanie generacji w trybie 'szybkiej prędkości', brak wartości domyślnej",
+    "description": "Opis parametru fast"
+  },
+  "description.iw": {
+    "message": "--iw, Ustawia znaczenie sugestii obrazu w stosunku do sugestii tekstowych podczas procesu generacji, zakres to 0-2, domyślnie 1",
+    "description": "Opis parametru iw"
+  },
+  "description.no": {
+    "message": "--no, Wskazuje systemowi generacji, aby próbował wykluczyć pewne elementy, na przykład `--no rośliny` spróbuje generować obrazy bez roślin, brak wartości domyślnej",
+    "description": "Opis parametru no, przetłumacz go jako 'Wyklucz'"
+  },
+  "description.quality": {
+    "message": "--quality, Ustawia jakość i czas renderowania wygenerowanego obrazu, zakres to .25, .5 lub 1, domyślnie 1",
+    "description": "Opis parametru quality"
+  },
+  "description.random": {
+    "message": "Dodaje losowy kod bazowego stylu do sugestii, można użyć `--style random-16`, `--style random-64` lub `--style random-128` aby uzyskać losowe efekty stylu o różnych długościach, brak wartości domyślnej",
+    "description": "Opis parametru random"
+  },
+  "description.relax": {
+    "message": "Nadpisuje bieżące ustawienia, aby uruchomić pojedyncze zadanie w trybie 'wolnej prędkości', brak wartości domyślnej",
+    "description": "Opis parametru relax"
+  },
+  "description.repeat": {
+    "message": "--repeat, Tworzy wiele zadań z jednej sugestii, zakres to 1-40, domyślnie 1",
+    "description": "Opis parametru repeat"
+  },
+  "description.seed": {
+    "message": "--seed, Początkowy szum wizualny dla wygenerowanych obrazów, zakres to 0-4294967295, domyślnie losowo generowany",
+    "description": "Opis parametru seed"
+  },
+  "description.stop": {
+    "message": "--stop, Zatrzymuje zadanie na dowolnym etapie procesu generacji, zakres to 10-100, domyślnie 100 (tj. w pełni wygenerowany)",
+    "description": "Opis parametru stop"
+  },
+  "description.style": {
+    "message": "--style, Przełącza między różnymi wersjami lub stylami modeli Midjourney lub Niji, na przykład surowy, uroczy, ekspresyjny, oryginalny, malowniczy, wartość domyślna zależy od modelu i trybu",
+    "description": "Opis parametru style"
+  },
+  "description.stylize": {
+    "message": "--stylize, Dostosowuje intensywność domyślnego stylu estetycznego Midjourney stosowanego w zadaniach generacji, zakres to 0-1000, domyślnie 100",
+    "description": "Opis parametru stylize"
+  },
+  "description.tile": {
+    "message": "--tile, Generuje obraz, który może być używany do bezszwowego kafelkowania w celu tworzenia bezszwowych wzorów, brak wartości domyślnej",
+    "description": "Opis parametru tile"
+  },
+  "description.turbo": {
+    "message": "Nadpisuje bieżące ustawienia, aby uruchomić pojedyncze zadanie w trybie 'ekstremalnej prędkości', brak wartości domyślnej",
+    "description": "Opis parametru turbo"
+  },
+  "description.weird": {
+    "message": "--weird, Eksploruje nietypowe style estetyczne o eksperymentalnej naturze, zakres to 0-3000, domyślnie 0",
+    "description": "Opis parametru weird"
+  },
+  "description.translation": {
+    "message": "Włącza automatyczne tłumaczenie podczas generacji, treści niechińskie zostaną automatycznie przetłumaczone na wejście w języku angielskim dla Midjourney",
+    "description": "Opis parametru translation"
+  },
+  "description.imageWeight": {
+    "message": "--iw, dostosowuje wagę sugestii obrazu w stosunku do sugestii tekstowych, zakres to 0-2, domyślnie 1",
+    "description": "Opis parametru imageWeight"
+  },
+  "description.niji": {
+    "message": "--niji, Po włączeniu wygenerowane obrazy będą używać modelu Niji, generując obrazy w stylu anime",
+    "description": "Opis parametru niji"
+  },
+  "description.uploadReferences": {
+    "message": "Prześlij obrazy jako odniesienia do generacji, obsługuje do 5 obrazów. Jeśli przesłano więcej niż 1 obraz, zostaną one automatycznie połączone",
+    "description": "Opis parametru uploadReferences"
+  },
+  "description.raw": {
+    "message": "--raw, Po włączeniu wygenerowane obrazy będą używać modelu Midjourney, generując oryginalne obrazy stylowe",
+    "description": "Opis parametru raw"
+  },
+  "description.prompt": {
+    "message": "Wprowadź polecenia, jeśli dodano dodatkowe parametry, zostaną one zastąpione domyślnymi parametrami presetu, np. dodanie `--stylize 200` spowoduje, że ostateczne polecenie użyje `--stylize 200`",
+    "description": "Opis pola prompt"
+  },
+  "action.generate": {
+    "message": "Kliknij ten przycisk, aby rozpocząć generowanie obrazów",
+    "description": "Opis przycisku generowania"
+  },
+  "action.upscale1": {
+    "message": "Upskaluj pierwszy obraz",
+    "description": "Opis przycisku upscale1"
+  },
+  "action.upscale2": {
+    "message": "Upskaluj drugi obraz",
+    "description": "Opis przycisku upscale2"
+  },
+  "action.upscale3": {
+    "message": "Upskaluj trzeci obraz",
+    "description": "Opis przycisku upscale3"
+  },
+  "action.upscale4": {
+    "message": "Upskaluj czwarty obraz",
+    "description": "Opis przycisku upscale4"
+  },
+  "action.variation1": {
+    "message": "Dostosuj wariację pierwszego obrazu",
+    "description": "Opis przycisku variation1"
+  },
+  "action.variation2": {
+    "message": "Dostosuj wariację drugiego obrazu",
+    "description": "Opis przycisku variation2"
+  },
+  "action.variation3": {
+    "message": "Dostosuj wariację trzeciego obrazu",
+    "description": "Opis przycisku variation3"
+  },
+  "action.variation4": {
+    "message": "Dostosuj wariację czwartego obrazu",
+    "description": "Opis przycisku variation4"
+  },
+  "action.reroll": {
+    "message": "Przegeneruj",
+    "description": "Opis przycisku przegenerowania"
+  },
+  "action.high_variation": {
+    "message": "Wysoka wariacja",
+    "description": "Opis przycisku wysoka_wariacja"
+  },
+  "action.low_variation": {
+    "message": "Niska wariacja",
+    "description": "Opis przycisku niska_wariacja"
+  },
+  "action.zoom_out_2x": {
+    "message": "Oddal 2x",
+    "description": "Opis przycisku zoom_out_2x"
+  },
+  "action.zoom_out_1_5x": {
+    "message": "Oddal 1.5x",
+    "description": "Opis przycisku zoom_out_1_5x"
+  },
+  "action.square": {
+    "message": "Kwadrat",
+    "description": "Opis przycisku kwadrat"
+  },
+  "action.pan_left": {
+    "message": "Przesuń w lewo",
+    "description": "Opis przycisku pan_left"
+  },
+  "action.pan_up": {
+    "message": "Przesuń w górę",
+    "description": "Opis przycisku pan_up"
+  },
+  "action.pan_down": {
+    "message": "Przesuń w dół",
+    "description": "Opis przycisku pan_down"
+  },
+  "action.pan_right": {
+    "message": "Przesuń w prawo",
+    "description": "Opis przycisku pan_right"
+  },
+  "action.zoom_in_2x": {
+    "message": "Przybliż 2x",
+    "description": "Opis przycisku zoom_in_2x"
+  },
+  "action.zoom_in_1_5x": {
+    "message": "Przybliż 1.5x",
+    "description": "Opis przycisku zoom_in_1_5x"
+  },
+  "action.upscale_2x": {
+    "message": "Upskaluj 2x",
+    "description": "Opis przycisku upscale_2x"
+  },
+  "action.upscale_4x": {
+    "message": "Upskaluj 4x",
+    "description": "Opis przycisku upscale_4x"
+  },
+  "action.redo_upscale_2x": {
+    "message": "Powtórz upscaling 2x",
+    "description": "Opis przycisku redo_upscale_2x"
+  },
+  "action.redo_upscale_4x": {
+    "message": "Powtórz skalowanie 4x",
+    "description": "Opis przycisku powtórz skalowanie 4x"
+  },
+  "message.promptPlaceholder": {
+    "message": "Proszę wprowadzić zdanie opisujące obraz, który chcesz wygenerować, na przykład: uroczy kot. Dodatkowe parametry zastąpią domyślne parametry presetowe",
+    "description": "Tekst zastępczy w polu prompt"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Możesz przesłać maksymalnie 5 obrazów",
+    "description": "Komunikat o błędzie, gdy liczba przesłanych obrazów przekracza limit"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Obrazy zostały pomyślnie przesłane",
+    "description": "Komunikat sukcesu, gdy obrazy zostaną pomyślnie przesłane"
+  },
+  "message.uploadReferencesError": {
+    "message": "Nie udało się przesłać obrazów, spróbuj ponownie później",
+    "description": "Komunikat o błędzie, gdy obrazy nie zostaną pomyślnie przesłane"
+  },
+  "message.startingTask": {
+    "message": "Rozpoczynanie zadania...",
+    "description": "Komunikat, gdy zadanie rysowania jest rozpoczynane"
+  },
+  "message.startTaskSuccess": {
+    "message": "Pomyślnie rozpoczęto zadanie rysowania",
+    "description": "Komunikat sukcesu, gdy zadanie rysowania zostanie pomyślnie rozpoczęte"
+  },
+  "message.startTaskFailed": {
+    "message": "Nie udało się rozpocząć zadania rysowania",
+    "description": "Komunikat o błędzie, gdy zadanie rysowania nie zostanie pomyślnie rozpoczęte"
+  },
+  "message.generating": {
+    "message": "Generowanie...",
+    "description": "Komunikat, gdy obraz jest generowany"
+  },
+  "message.noOperations": {
+    "message": "Brak dostępnych operacji",
+    "description": "Komunikat, gdy nie ma dostępnych operacji"
+  },
+  "message.noTasks": {
+    "message": "Brak historycznych zadań, proszę najpierw rozpocząć nowe zadanie",
+    "description": "Komunikat, gdy nie ma historycznych zadań"
+  },
+  "model.general": {
+    "message": "Ogólny",
+    "description": "Nazwa modelu używanego do ogólnej generacji obrazów"
+  },
+  "model.niji": {
+    "message": "Niji",
+    "description": "Nazwa modelu używanego do generacji obrazów w stylu anime, nie tłumacz, zachowaj jako 'Niji'"
+  },
+  "name.model": {
+    "message": "Model",
+    "description": "Nazwa modelu, model to termin w uczeniu maszynowym, który jest używany do generowania obrazów"
+  },
+  "name.aspect": {
+    "message": "Proporcje",
+    "description": "Nazwa parametru proporcji"
+  },
+  "name.ratio": {
+    "message": "Stosunek",
+    "description": "Nazwa parametru stosunku"
+  },
+  "name.chaos": {
+    "message": "Chaos",
+    "description": "Nazwa parametru chaosu, przetłumacz jako 'stopień bałaganu'"
+  },
+  "name.fast": {
+    "message": "Szybki",
+    "description": "Nazwa trybu szybkiego, który jest używany do szybkiego generowania obrazów, przetłumacz jako 'Szybka prędkość'"
+  },
+  "name.nijiStyle": {
+    "message": "Niji",
+    "description": "Nazwa parametru stylu niji, nie tłumacz, zachowaj jako 'Niji'"
+  },
+  "name.version": {
+    "message": "Wersja",
+    "description": "Nazwa parametru wersji"
+  },
+  "name.imageWeight": {
+    "message": "Waga obrazu",
+    "description": "Nazwa parametru wagi obrazu"
+  },
+  "name.no": {
+    "message": "Nie",
+    "description": "Nazwa parametru 'no', który jest używany do wykluczania pewnych elementów, przetłumacz jako 'Wyklucz'"
+  },
+  "name.quality": {
+    "message": "Jakość",
+    "description": "Nazwa parametru jakości, który jest używany do ustawiania jakości wygenerowanego obrazu"
+  },
+  "name.random": {
+    "message": "Losowy",
+    "description": "Nazwa parametru losowego, który jest używany do dodawania losowych efektów stylu"
+  },
+  "name.relax": {
+    "message": "Relaks",
+    "description": "Nazwa trybu relaksu, który jest używany do generowania obrazów w trybie 'wolnej prędkości', przetłumacz jako 'Wolna prędkość'"
+  },
+  "name.repeat": {
+    "message": "Powtórz",
+    "description": "Nazwa parametru powtórzenia, który jest używany do tworzenia wielu zadań z jednego polecenia"
+  },
+  "name.seed": {
+    "message": "Ziarno",
+    "description": "Nazwa parametru ziarna, który jest używany do ustawiania początkowego szumu wizualnego"
+  },
+  "name.stop": {
+    "message": "Stop",
+    "description": "Nazwa parametru stop, który jest używany do zatrzymywania zadania na dowolnym etapie"
+  },
+  "name.style": {
+    "message": "Styl",
+    "description": "Nazwa parametru stylu, który jest używany do przełączania między różnymi wersjami lub stylami modeli"
+  },
+  "name.stylize": {
+    "message": "Stylizuj",
+    "description": "Nazwa parametru stylizacji, który jest używany do dostosowania intensywności domyślnego stylu estetycznego"
+  },
+  "name.tile": {
+    "message": "Kafelek",
+    "description": "Nazwa parametru kafelka, który jest używany do generowania obrazów, które mogą być używane do bezszwowych kafelkowania"
+  },
+  "name.turbo": {
+    "message": "Turbo",
+    "description": "Nazwa trybu turbo, który jest używany do generowania obrazów w trybie 'Ekstremalnej prędkości', przetłumacz jako 'Ekstremalna prędkość'"
+  },
+  "name.weird": {
+    "message": "Dziwny",
+    "description": "Nazwa parametru dziwnego, który jest używany do eksploracji nietypowych stylów estetycznych, przetłumacz jako 'Dziwactwo'"
+  },
+  "name.translation": {
+    "message": "Tłumaczenie",
+    "description": "Nazwa parametru tłumaczenia, który jest używany do włączenia automatycznego tłumaczenia podczas generacji"
+  },
+  "name.advanced": {
+    "message": "Zaawansowany",
+    "description": "Nazwa trybu zaawansowanego, który jest używany do włączenia trybu zaawansowanego"
+  },
+  "name.niji": {
+    "message": "Niji",
+    "description": "Nazwa parametru niji, który jest używany do włączenia modelu Niji, nie tłumacz, zachowaj jako 'Niji'"
+  },
+  "name.ignore": {
+    "message": "Ignoruj",
+    "description": "Nazwa parametru ignorowania, który jest używany do ignorowania pewnych elementów"
+  },
+  "name.prompt": {
+    "message": "Polecenie",
+    "description": "Nazwa parametru polecenia, który jest używany do wprowadzania instrukcji rysowania"
+  },
+  "name.raw": {
+    "message": "Surowy",
+    "description": "Nazwa parametru surowego, który jest używany do włączenia modelu Midjourney"
+  },
+  "placeholder.prompt": {
+    "message": "Wprowadź zdanie opisujące obraz, który chcesz wygenerować, na przykład: uroczy kot. Dodatkowe parametry zastąpią domyślne parametry presetowe",
+    "description": "Tekst zastępczy w polu prompt"
+  },
+  "placeholder.ignore": {
+    "message": "Wprowadź elementy do zignorowania, na przykład: `--ignoruj rośliny`",
+    "description": "Tekst zastępczy w polu ignorowania"
+  },
+  "placeholder.select": {
+    "message": "Wybierz",
+    "description": "Tekst zastępczy w polu wyboru"
   }
 }
