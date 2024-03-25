@@ -1,11 +1,11 @@
 {
   "entity.requestQueries": {
     "message": "Parametry URL",
-    "description": "Są to parametry przekazywane w adresie URL. Są one oddzielone znakiem '?' i rozdzielone znakiem '&'."
+    "description": "Są to parametry przekazywane w adresie URL. Są one oddzielone przez '?' i są rozdzielone przez '&'."
   },
   "entity.requestBody": {
     "message": "Treść żądania",
-    "description": "Jest to treść żądania. Zazwyczaj jest używana w żądaniach typu POST i PUT."
+    "description": "Jest to treść żądania. Zazwyczaj jest używana do żądań typu POST i PUT."
   },
   "entity.responseBody": {
     "message": "Treść odpowiedzi",
@@ -21,7 +21,7 @@
   },
   "entity.requestQuery": {
     "message": "Parametr URL",
-    "description": "Jest to parametr przekazywany w adresie URL. Jest oddzielony znakiem '?' i rozdzielony znakiem '&'."
+    "description": "Jest to parametr przekazywany w adresie URL. Jest oddzielony przez '?' i jest rozdzielony przez '&'."
   },
   "entity.responseHeaders": {
     "message": "Nagłówki odpowiedzi",
@@ -29,19 +29,19 @@
   },
   "entity.response": {
     "message": "Odpowiedź",
-    "description": "Jest to odpowiedź zwrócona przez serwer."
+    "description": "Jest to odpowiedź zwrócona z serwera."
   },
   "entity.success": {
     "message": "Sukces",
-    "description": "Jest to odpowiedź zwrócona, gdy żądanie zakończyło się sukcesem."
+    "description": "Jest to odpowiedź zwrócona, gdy żądanie jest udane."
   },
   "entity.failure": {
     "message": "Niepowodzenie",
-    "description": "Jest to odpowiedź zwrócona, gdy żądanie zakończyło się niepowodzeniem."
+    "description": "Jest to odpowiedź zwrócona, gdy żądanie jest nieudane."
   },
   "entity.responseExample": {
     "message": "Przykład",
-    "description": "Jest to przykład odpowiedzi zwróconej przez serwer."
+    "description": "Jest to przykład odpowiedzi zwróconej z serwera."
   },
   "entity.authentication": {
     "message": "Uwierzytelnianie",
@@ -49,7 +49,7 @@
   },
   "message.free": {
     "message": "Darmowe",
-    "description": "Oznacza, że cena jest darmowa, nie trzeba płacić żadnych kredytów ani pieniędzy podczas korzystania z usługi API"
+    "description": "Oznacza, że cena jest darmowa, nie trzeba wydawać żadnych kredytów ani pieniędzy podczas korzystania z usługi API"
   },
   "message.appliedCount": {
     "message": "Liczba zastosowań",
@@ -57,11 +57,11 @@
   },
   "message.firstFree": {
     "message": "Pierwsze darmowe",
-    "description": "Oznacza, że pierwsze użycie usługi API jest darmowe, nie trzeba płacić żadnych kredytów ani pieniędzy"
+    "description": "Oznacza, że pierwsze użycie usługi API jest darmowe, nie trzeba wydawać żadnych kredytów ani pieniędzy"
   },
   "message.custom": {
     "message": "Określona ilość",
-    "description": "Oznacza, że cena jest określona, trzeba zapłacić określoną liczbę kredytów lub pieniędzy podczas korzystania z usługi API"
+    "description": "Oznacza, że cena jest określona, trzeba wydać określoną liczbę kredytów lub pieniędzy podczas korzystania z usługi API"
   },
   "message.present": {
     "message": "Prezent",
@@ -69,7 +69,7 @@
   },
   "message.around": {
     "message": "Około",
-    "description": "Cena jest przybliżona, rzeczywista cena może się różnić"
+    "description": "Cena jest przybliżona, rzeczywista cena może być inna"
   },
   "message.successRate15min": {
     "message": "Rzeczywisty wskaźnik sukcesu",
@@ -88,12 +88,12 @@
     "description": "Dla żądań strumieniowych powyższy kod może nie być w pełni odpowiedni. Proszę odnieść się do dokumentacji dołączenia w celu dokonania modyfikacji."
   },
   "message.alphaStage": {
-    "message": "Ta usługa API jest w fazie Alfa, jest to wczesna wersja podglądowa, może wystąpić potencjalna niestabilność, format API może ulec znaczącym zmianom, nie zaleca się używania jej w środowisku produkcyjnym. Obecne ceny są stosunkowo niskie, a w przyszłości mogą nastąpić znaczące zmiany cen.",
-    "description": "Ta usługa API jest w fazie Alfa, jest to wczesna wersja podglądowa, może wystąpić potencjalna niestabilność, format API może ulec znaczącym zmianom, nie zaleca się używania jej w środowisku produkcyjnym. Obecne ceny są stosunkowo niskie, a w przyszłości mogą nastąpić znaczące zmiany cen."
+    "message": "Ta usługa API jest w fazie Alfa, jest to wczesna wersja podglądowa, może wystąpić potencjalna niestabilność, format API może ulec znaczącym zmianom, nie zaleca się używania jej w środowisku produkcyjnym. Obecne ceny są stosunkowo niskie, a w przyszłości mogą wystąpić znaczące zmiany cen.",
+    "description": "Ta usługa API jest w fazie Alfa, jest to wczesna wersja podglądowa, może wystąpić potencjalna niestabilność, format API może ulec znaczącym zmianom, nie zaleca się używania jej w środowisku produkcyjnym. Obecne ceny są stosunkowo niskie, a w przyszłości mogą wystąpić znaczące zmiany cen."
   },
   "message.betaStage": {
-    "message": "Ta usługa API jest w fazie Beta, format API nie ulegnie znaczącym zmianom, ale może wystąpić potencjalna niestabilność, prosimy o ostrożne korzystanie z niej w środowisku produkcyjnym. Obecne ceny są stosunkowo niskie, a w przyszłości mogą nastąpić umiarkowane zmiany cen.",
-    "description": "Ta usługa API jest w fazie Beta, format API nie ulegnie znaczącym zmianom, ale może wystąpić potencjalna niestabilność, prosimy o ostrożne korzystanie z niej w środowisku produkcyjnym. Obecne ceny są stosunkowo niskie, a w przyszłości mogą nastąpić umiarkowane zmiany cen."
+    "message": "Ta usługa API jest w fazie Beta, format API nie ulegnie znaczącym zmianom, ale może wystąpić potencjalna niestabilność, prosimy o ostrożne korzystanie z niej w środowisku produkcyjnym. Obecne ceny są stosunkowo niskie, a w przyszłości mogą wystąpić umiarkowane zmiany cen.",
+    "description": "Ta usługa API jest w fazie Beta, format API nie ulegnie znaczącym zmianom, ale może wystąpić potencjalna niestabilność, prosimy o ostrożne korzystanie z niej w środowisku produkcyjnym. Obecne ceny są stosunkowo niskie, a w przyszłości mogą wystąpić umiarkowane zmiany cen."
   },
   "unit.GB": {
     "message": "GB",
