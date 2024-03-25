@@ -1,8 +1,30 @@
 # Change Log - @acedatacloud/hub
 
-This log was last generated on Mon, 29 Jan 2024 16:17:58 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Mar 2024 15:25:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.15.0
+
+Mon, 25 Mar 2024 15:25:10 GMT
+
+### Minor changes
+
+- add i18n support (cqc@cuiqingcai.com)
+- add localization support (cqc@cuiqingcai.com)
+
+### Patches
+
+- bump version manually (cqc@cuiqingcai.com)
+- migrate to new architecture (cqc@cuiqingcai.com)
+- fix chatdoc issues (germey@acedata.cloud)
+- bump version manually (cqc@cuiqingcai.com)
+- fix experience bugs (cqc@cuiqingcai.com)
+- add test i18n files (germey@acedata.cloud)
+- update translations files (cqc@cuiqingcai.com)
+- fix translate issues (germey@acedata.cloud)
+- update i18n files (cqc@cuiqingcai.com)
+- update i18n files (germey@acedata.cloud)
 
 ## 1.0.1
 
