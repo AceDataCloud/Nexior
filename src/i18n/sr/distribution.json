@@ -13,7 +13,7 @@
   },
   "field.id": {
     "message": "ID preporuke",
-    "description": "Jedinstveni identifikator distribucije, distribucija označava preporuku za veb lokaciju API servisa."
+    "description": "Jedinstveni identifikator distribucije, distribucija označava preporuku za veb lokaciju API usluge."
   },
   "field.percentage": {
     "message": "Procenat zarade od preporuke",
@@ -41,7 +41,7 @@
   },
   "field.inviteeId": {
     "message": "ID pozivaoca",
-    "description": "Jedinstveni identifikator pozivaoca, pozivalac označava korisnika koji poziva pozvanih na veb lokaciju API servisa."
+    "description": "Jedinstveni identifikator pozivaoca, pozivalac označava korisnika koji poziva pozvaniog na veb lokaciju API usluge."
   },
   "field.isVerified": {
     "message": "Da li je verifikovano",
@@ -52,8 +52,8 @@
     "description": "Razlika između trenutnog iznosa narudžbine i praga sledećeg nivoa."
   },
   "message.developingWithDrawal": {
-    "message": "Molimo dodajte korisničku podršku za obradu isplata, isplate će umanjiti porez na prihod od 6%, fakture se mogu koristiti za odbitak",
-    "description": "Poruka koja ukazuje da je funkcija isplate u fazi razvoja."
+    "message": "Molimo dodajte korisničku podršku za rukovanje isplatama, isplate će umanjiti porez na prihod od 6%, fakture se mogu koristiti za odbitak",
+    "description": "Poruka koja ukazuje da je funkcija povlačenja u razvoju."
   },
   "message.technicalDetail": {
     "message": "Tehnički detalj",
@@ -72,11 +72,11 @@
     "description": "Poruka koja ukazuje da su informacije o preporuci uspešno ažurirane."
   },
   "message.distributionLinkDescription": {
-    "message": "Ako se korisnik registruje na ovoj platformi putem ove veze ili QR koda, korisnik će trajno biti vezan kao vaš podređeni korisnik, i svi potrošački nalozi korisnika na ovoj platformi će biti vraćeni na vaš račun prema trenutnom odnosu distribucije.",
+    "message": "Ako se korisnik registruje na ovoj platformi putem ove veze ili QR koda, korisnik će trajno biti vezan kao vaš podređeni korisnik, i sve potrošačke narudžbine korisnika na ovoj platformi će biti vraćene na vaš račun prema trenutnom odnosu distribucije.",
     "description": "Opis veze preporuke."
   },
   "message.distributionLinkDescription2": {
-    "message": "Ova veza sadrži vaš ID korisnika. Nakon što korisnik otvori vezu, vaš ID korisnika će biti zabeležen u pretraživaču korisnika u obliku kolačića, koji je važeći sedam dana. U roku od sedam dana, ako se korisnik registruje na ovoj platformi skeniranjem koda, vaš ID korisnika će biti otpremljen na registracioni server sa kolačićima, i korisnik može biti vezan kao vaš podređeni korisnik.",
+    "message": "Ova veza sadrži vaš ID korisnika. Nakon što korisnik otvori vezu, vaš ID korisnika će biti zabeležen u korisnikovom pregledaču u obliku kolačića, koji je važeći sedam dana. U roku od sedam dana, ako se korisnik registruje na ovoj platformi skeniranjem koda, vaš ID korisnika će biti otpremljen na server za registraciju sa kolačićima, i korisnik može biti vezan kao vaš podređeni korisnik.",
     "description": "Opis veze preporuke."
   },
   "title.price": {

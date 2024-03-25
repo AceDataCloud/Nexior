@@ -28,15 +28,15 @@
     "description": "Asiakirjan käsittelyn tila"
   },
   "field.stateProcessing": {
-    "message": "Käsittely",
+    "message": "Opetus",
     "description": "Asiakirjaa käsitellään"
   },
   "field.stateCompleted": {
-    "message": "Käsittely valmis",
+    "message": "Opetus valmis",
     "description": "Asiakirja käsitelty onnistuneesti"
   },
   "field.stateFailed": {
-    "message": "Käsittely epäonnistui",
+    "message": "Opetus epäonnistui",
     "description": "Asiakirjan käsittely epäonnistui"
   },
   "field.name": {
@@ -49,11 +49,11 @@
   },
   "message.introductionForKnowledge": {
     "message": "Asiakirjoja voidaan lisätä tietokantaan, ja kun robotti vastaa, se voi käyttää tietokannassa olevaa tietoa vastauksena.",
-    "description": "Tervetuloviesti tietokantaa varten"
+    "description": "Johdanto viesti tietokantaa varten"
   },
   "message.introductionForRepository": {
     "message": "Tietokanta on kokoelma asiakirjoja, joihin voit lisätä asiakirjoja. Kun robotti vastaa, se vastaa tietokannassa olevista asiakirjoista.",
-    "description": "Tervetuloviesti tietokantaa varten"
+    "description": "Johdanto viesti tietokantaa varten"
   },
   "message.uploadDocumentsExceed": {
     "message": "Ladattujen asiakirjojen määrä ylittää rajan",
@@ -65,11 +65,11 @@
   },
   "message.uploadDocumentsSuccess": {
     "message": "Asiakirjan lataus onnistui",
-    "description": "Onnistumisviesti, kun asiakirjan lataus onnistui"
+    "description": "Onnistunut viesti, kun asiakirjan lataus onnistui"
   },
   "message.createDocumentSuccess": {
     "message": "Asiakirjan luonti onnistui",
-    "description": "Onnistumisviesti, kun asiakirjan luonti onnistui"
+    "description": "Onnistunut viesti, kun asiakirjan luonti onnistui"
   },
   "message.startCreateDocument": {
     "message": "Aloita asiakirjan oppiminen...",
@@ -81,15 +81,15 @@
   },
   "message.dragOrClickToUpload": {
     "message": "Vedä tai klikkaa ladataksesi asiakirjan",
-    "description": "Viesti asiakirjan vetämiseen tai klikkaamiseen lataamiseksi"
+    "description": "Viesti, jotta voit vetää tai klikata ladataksesi asiakirjan"
   },
   "message.learningDocument": {
-    "message": "Oppiminen, odota hetki...",
-    "description": "Viesti, kun asiakirjaa opitaan"
+    "message": "Opetetaan, odota hetki...",
+    "description": "Viesti, kun opetetaan asiakirjaa"
   },
   "message.startNewChat": {
     "message": "Aloita uusi keskustelu",
-    "description": "Viesti uuden keskustelun aloittamiseen"
+    "description": "Viesti aloittaaksesi uuden keskustelun"
   },
   "message.errorApiError": {
     "message": "Vastaus epäonnistui, yritä myöhemmin uudelleen",
@@ -113,7 +113,7 @@
   },
   "message.errorUsedUp": {
     "message": "Pakettisi käyttöraja on saavutettu, osta lisää käyttöä jatkaaksesi",
-    "description": "Virheviesti, kun pakettisi käyttöraja on saavutettu"
+    "description": "Virheviesti, kun paketin käyttöraja on saavutettu"
   },
   "message.errorUnknown": {
     "message": "Tuntematon palvelinvirhe tapahtui, yritä myöhemmin uudelleen tai ota yhteyttä asiakaspalveluun",
@@ -129,15 +129,15 @@
   },
   "message.confirmDelete": {
     "message": "Vahvista poisto",
-    "description": "Viesti poiston vahvistamiseen"
+    "description": "Viesti vahvistaaksesi poiston"
   },
   "message.howToUse": {
     "message": "Paina Shift+Enter rivinvaihtoon",
-    "description": "Viesti rivinvaihdon tekemisestä"
+    "description": "Viesti, joka näyttää, miten tehdä rivinvaihto"
   },
   "message.createRepositorySuccess": {
     "message": "Tietokanta luotu onnistuneesti",
-    "description": "Onnistumisviesti, kun tietokanta on luotu onnistuneesti"
+    "description": "Onnistunut viesti, kun tietokanta on luotu onnistuneesti"
   },
   "message.createRepositoryFailed": {
     "message": "Tietokannan luominen epäonnistui",
@@ -145,15 +145,15 @@
   },
   "message.deleteRepositorySuccess": {
     "message": "Tietokanta poistettu onnistuneesti",
-    "description": "Onnistumisviesti, kun tietokanta on poistettu onnistuneesti"
+    "description": "Onnistunut viesti, kun tietokanta on poistettu onnistuneesti"
   },
   "message.deleteDocumentSuccess": {
     "message": "Asiakirja poistettu onnistuneesti",
-    "description": "Onnistumisviesti, kun asiakirja on poistettu onnistuneesti"
+    "description": "Onnistunut viesti, kun asiakirja on poistettu onnistuneesti"
   },
   "message.currentRepository": {
     "message": "Nykyinen tietokanta",
-    "description": "Viesti nykyisen tietokannan näyttämiseen"
+    "description": "Viesti näyttääkseen nykyisen tietokannan"
   },
   "message.nameRequired": {
     "message": "Nimi ei voi olla tyhjä",
@@ -169,7 +169,7 @@
   },
   "message.supportedFiles": {
     "message": "Tuetut tiedostotyypit: .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
-    "description": "Viesti tuetuista tiedostotyypeistä"
+    "description": "Viesti näyttääkseen tuetut tiedostotyypit"
   },
   "nav.chat": {
     "message": "Keskustelu",
@@ -192,7 +192,7 @@
     "description": "Otsikko tietokannan luomiselle"
   },
   "title.repositories": {
-    "message": "Tietokantojen luettelo",
-    "description": "Otsikko tietokantojen luettelolle"
+    "message": "Tietokantojen lista",
+    "description": "Otsikko tietokantojen listalle"
   }
 }

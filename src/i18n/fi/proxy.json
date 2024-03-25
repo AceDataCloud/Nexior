@@ -1,7 +1,7 @@
 {
   "entity.requestQueries": {
     "message": "URL-parametrit",
-    "description": "Nämä ovat parametreja, jotka välitetään URL-osoitteessa. Ne erotetaan '?' ja ne erotetaan '&'."
+    "description": "Nämä ovat parametreja, jotka välitetään URLissa. Ne erotetaan '?' ja erotetaan '&'."
   },
   "entity.requestBody": {
     "message": "Pyyntökehys",
@@ -21,7 +21,7 @@
   },
   "entity.requestQuery": {
     "message": "URL-parametri",
-    "description": "Tämä on parametri, joka välitetään URL-osoitteessa. Se erotetaan '?' ja se erotetaan '&'."
+    "description": "Tämä on parametri, joka välitetään URLissa. Se erotetaan '?' ja erotetaan '&'."
   },
   "entity.responseHeaders": {
     "message": "Vastauksen otsikot",
@@ -53,7 +53,7 @@
   },
   "message.appliedCount": {
     "message": "Hakemuksen määrä",
-    "description": "API-palvelun hakemiskertojen määrä"
+    "description": "Kuinka monta kertaa API-palvelua on haettu"
   },
   "message.firstFree": {
     "message": "Ensimmäinen kerta ilmainen",
@@ -88,12 +88,12 @@
     "description": "Suoratoistopyynnöissä yllä oleva koodi ei välttämättä ole täysin sovellettavissa. Katso muutokset telakointiasiakirjasta."
   },
   "message.alphaStage": {
-    "message": "Tämä API on alfa-vaiheessa, se on varhainen esikatseluversio, siinä saattaa olla mahdollisia epävakautta, API-muoto saattaa muuttua merkittävästi, sitä ei suositella tuotantokäyttöön. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla merkittäviä hintamuutoksia.",
-    "description": "Tämä API on alfa-vaiheessa, se on varhainen esikatseluversio, siinä saattaa olla mahdollisia epävakautta, API-muoto saattaa muuttua merkittävästi, sitä ei suositella tuotantokäyttöön. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla merkittäviä hintamuutoksia."
+    "message": "Tämä API on Alfa-vaiheessa, se on varhainen esikatseluversio, siinä saattaa olla mahdollisia epävakautta, API-muoto saattaa muuttua merkittävästi, sitä ei suositella tuotantoympäristössä käytettäväksi. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla merkittäviä hintamuutoksia.",
+    "description": "Tämä API on Alfa-vaiheessa, se on varhainen esikatseluversio, siinä saattaa olla mahdollisia epävakautta, API-muoto saattaa muuttua merkittävästi, sitä ei suositella tuotantoympäristössä käytettäväksi. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla merkittäviä hintamuutoksia."
   },
   "message.betaStage": {
-    "message": "Tämä API on beeta-vaiheessa, API-muoto ei muutu paljon, mutta siinä saattaa olla mahdollisia epävakautta, käytä sitä varovasti tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla kohtalaisia hintamuutoksia.",
-    "description": "Tämä API on beeta-vaiheessa, API-muoto ei muutu paljon, mutta siinä saattaa olla mahdollisia epävakautta, käytä sitä varovasti tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla kohtalaisia hintamuutoksia."
+    "message": "Tämä API on Beta-vaiheessa, API-muoto ei muutu paljon, mutta siinä saattaa olla mahdollisia epävakautta, käytä sitä varovasti tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla kohtalaisia hintamuutoksia.",
+    "description": "Tämä API on Beta-vaiheessa, API-muoto ei muutu paljon, mutta siinä saattaa olla mahdollisia epävakautta, käytä sitä varovasti tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla kohtalaisia hintamuutoksia."
   },
   "unit.GB": {
     "message": "GB",
@@ -109,6 +109,6 @@
   },
   "unit.B": {
     "message": "tavua",
-    "description": "tavu, digitaalisen tiedon tallennusyksikkö"
+    "description": "Tavu, digitaalisen tiedon tallennusyksikkö"
   }
 }
