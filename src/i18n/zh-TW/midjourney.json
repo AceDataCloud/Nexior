@@ -1,228 +1,1878 @@
 {
-  "button": {
-    "buyMore": "購買更多",
-    "_buyMore.comment": "按鈕文本，允許用戶購買更多積分",
-    "uploadReferences": "上傳參考",
-    "_uploadReferences.comment": "按鈕文本，允許用戶上傳參考",
-    "success": "成功",
-    "_success.comment": "按鈕文本，表示操作成功",
-    "generating": "生成中",
-    "_generating.comment": "按鈕文本，表示操作正在進行中",
-    "failed": "失敗",
-    "_failed.comment": "按鈕文本，表示操作失敗",
-    "download": "下載",
-    "_download.comment": "按鈕文本，允許用戶下載結果",
-    "fast": "快速",
-    "_fast.comment": "按鈕文本，允許用戶將'快速模式'設置為快速以生成圖像，必須翻譯為'快速模式'",
-    "relax": "慢速",
-    "_relax.comment": "按鈕文本，允許用戶將'慢速模式'設置為放鬆以生成圖像，必須翻譯為'慢速模式'",
-    "turbo": "極速",
-    "_turbo.comment": "按鈕文本，允許用戶將'極速模式'設置為極速以生成圖像，必須翻譯為'極速模式'",
-    "more": "更多",
-    "_more.comment": "按鈕文本，允許用戶查看更多選項",
-    "generate": "生成",
-    "_generate.comment": "按鈕文本，允許用戶生成圖像",
-    "history": "歷史",
-    "_history.comment": "按鈕文本，允許用戶查看生成的圖像歷史",
-    "generateNew": "生成新圖",
-    "_generateNew.comment": "按鈕文本，允許用戶繪製新圖片"
+  "style.cute": {
+    "message": "可愛",
+    "description": "按鈕上的文字，代表'可愛'風格"
   },
-  "field": {
-    "taskId": "任務 ID",
-    "_taskId.comment": "任務 ID",
-    "finalPrompt": "最終提示",
-    "_finalPrompt.comment": "用於生成圖像的最終繪製提示",
-    "elements": "風格",
-    "_elements.comment": "用於生成圖像的繪製風格",
-    "failureReason": "失敗原因",
-    "_failureReason.comment": "失敗原因",
-    "traceId": "追踪 ID",
-    "_traceId.comment": "用於追踪生成圖像請求的追踪 ID，不要翻譯，保持為'追踪 ID'"
+  "style.expressive": {
+    "message": "表現",
+    "description": "按鈕上的文字，代表'表現'風格"
   },
-  "description": {
-    "aspect": "--aspect，更改生成圖像的長寬比，默認值取決於模型和模式",
-    "_aspect.comment": "aspect 參數的描述",
-    "chaos": "--chaos，調整生成圖像的變化程度，數字越高，生成的圖像越獨特和意外，範圍為 0-100，默認為 1",
-    "_chaos.comment": "chaos 參數的描述",
-    "fast": "忽略當前設置，在'快速模式'下運行單個生成任務，沒有默認值",
-    "_fast.comment": "fast 參數的描述",
-    "iw": "--iw，設置圖像提示相對於文本提示在生成過程中的重要性，範圍為 0-2，默認為 1",
-    "_iw.comment": "iw 參數的描述",
-    "no": "--no，指示生成系統嘗試排除某些元素，例如'--no plants' 將嘗試生成沒有植物的圖像，沒有默認值",
-    "_no.comment": "no 參數的描述，翻譯為'排除'",
-    "quality": "--quality，設置生成圖像的質量和渲染時間，範圍為 .25、.5 或 1，默認為 1",
-    "_quality.comment": "quality 參數的描述",
-    "random": "向提示添加隨機基本風格代碼，可以使用'--style random-16'、'--style random-64' 或'--style random-128' 獲得不同長度的隨機風格效果，沒有默認值",
-    "_random.comment": "random 參數的描述",
-    "relax": "覆蓋當前設置，在'慢速模式'下運行單個任務，沒有默認值",
-    "_relax.comment": "relax 參數的描述",
-    "repeat": "--repeat，從一個提示創建多個任務，範圍為 1-40，默認為 1",
-    "_repeat.comment": "repeat 參數的描述",
-    "seed": "--seed，生成圖像的起始視覺噪音，範圍為 0-4294967295，默認為隨機生成",
-    "_seed.comment": "seed 參數的描述",
-    "stop": "--stop，在生成過程的任何階段停止任務，範圍為 10-100，默認為 100（即完全生成）",
-    "_stop.comment": "stop 參數的描述",
-    "style": "--style，在 Midjourney 或 Niji 模型的不同版本或風格之間切換，例如 raw、cute、expressive、original、scenic，默認值取決於模型和模式",
-    "_style.comment": "style 參數的描述",
-    "stylize": "--stylize，調整生成任務中應用的 Midjourney 默認美學風格的強度，範圍為 0-1000，默認為 100",
-    "_stylize.comment": "stylize 參數的描述",
-    "tile": "--tile，生成可用於無縫平鋪以創建無縫圖案的圖像，沒有默認值",
-    "_tile.comment": "tile 參數的描述",
-    "turbo": "覆蓋當前設置，在'極速模式'下運行單個任務，沒有默認值",
-    "_turbo.comment": "turbo 參數的描述",
-    "weird": "--weird，探索具有實驗性質的不尋常美學風格，範圍為 0-3000，默認為 0",
-    "_weird.comment": "weird 參數的描述",
-    "translation": "啟用生成過程中的自動翻譯，非中文內容將自動翻譯為 Midjourney 的英文輸入",
-    "_translation.comment": "translation 參數的描述",
-    "imageWeight": "--iw，調整圖像提示相對於文本提示的權重，範圍為 0-2，默認為 1",
-    "_imageWeight.comment": "imageWeight 參數的描述",
-    "niji": "--niji，啟用後，生成的圖像將使用 Niji 模型，生成動畫風格的圖像",
-    "_niji.comment": "niji 參數的描述",
-    "uploadReferences": "上傳圖像作為生成的參考，支持最多 5 張圖像。如果上傳多於 1 張圖像，它們將被自動合併",
-    "_uploadReferences.comment": "uploadReferences 參數的描述",
-    "raw": "--raw，啟用後，生成的圖像將使用 Midjourney 模型，生成原始風格的圖像",
-    "_raw.comment": "raw 參數的描述",
-    "prompt": "輸入命令，如果添加了額外參數，它們將覆蓋默認預設參數，例如添加'--stylize 200' 將強制最終命令使用'--stylize 200'",
-    "_prompt.comment": "prompt 欄位的描述"
+  "style.original": {
+    "message": "原創",
+    "description": "按鈕上的文字，代表'原創'風格"
   },
-  "action": {
-    "generate": "點擊此按鈕開始生成圖像",
-    "_generate.comment": "generate 按鈕的描述",
-    "upscale1": "放大第一張圖像",
-    "_upscale1.comment": "upscale1 按鈕的描述",
-    "upscale2": "放大第二張圖像",
-    "_upscale2.comment": "upscale2 按鈕的描述",
-    "upscale3": "放大第三張圖像",
-    "_upscale3.comment": "upscale3 按鈕的描述",
-    "upscale4": "放大第四張圖像",
-    "_upscale4.comment": "upscale4 按鈕的描述",
-    "variation1": "調整第一張圖像的變化",
-    "_variation1.comment": "variation1 按鈕的描述",
-    "variation2": "調整第二張圖像的變化",
-    "_variation2.comment": "variation2 按鈕的描述",
-    "variation3": "調整第三張圖像的變化",
-    "_variation3.comment": "variation3 按鈕的描述",
-    "variation4": "調整第四張圖像的變化",
-    "_variation4.comment": "variation4 按鈕的描述",
-    "reroll": "重新擲骰",
-    "_reroll.comment": "reroll 按鈕的描述",
-    "high_variation": "高變化",
-    "_high_variation.comment": "high_variation 按鈕的描述",
-    "low_variation": "低變化",
-    "_low_variation.comment": "low_variation 按鈕的描述",
-    "zoom_out_2x": "2 倍縮小",
-    "_zoom_out_2x.comment": "zoom_out_2x 按鈕的描述",
-    "zoom_out_1_5x": "1.5 倍縮小",
-    "_zoom_out_1_5x.comment": "zoom_out_1_5x 按鈕的描述",
-    "square": "正方形",
-    "_square.comment": "square 按鈕的描述",
-    "pan_left": "向左移動",
-    "_pan_left.comment": "pan_left 按鈕的描述",
-    "pan_up": "向上移動",
-    "_pan_up.comment": "pan_up 按鈕的描述",
-    "pan_down": "向下移動",
-    "_pan_down.comment": "pan_down 按鈕的描述",
-    "pan_right": "向右移動",
-    "_pan_right.comment": "pan_right 按鈕的描述",
-    "zoom_in_2x": "2 倍放大",
-    "_zoom_in_2x.comment": "zoom_in_2x 按鈕的描述",
-    "zoom_in_1_5x": "1.5 倍放大",
-    "_zoom_in_1_5x.comment": "zoom_in_1_5x 按鈕的描述",
-    "upscale_2x": "2 倍放大",
-    "_upscale_2x.comment": "upscale_2x 按鈕的描述",
-    "upscale_4x": "4 倍放大",
-    "_upscale_4x.comment": "upscale_4x 按鈕的描述",
-    "redo_upscale_2x": "重新放大 2 倍",
-    "_redo_upscale_2x.comment": "redo_upscale_2x 按鈕的描述",
-    "redo_upscale_4x": "重新放大 4 倍",
-    "_redo_upscale_4x.comment": "redo_upscale_4x 按鈕的描述"
+  "style.scenic": {
+    "message": "風景",
+    "description": "按鈕上的文字，代表'風景'風格"
   },
-  "message": {
-    "promptPlaceholder": "請輸入一個描述您想生成的圖像的句子，例如：一隻可愛的貓。額外參數將覆蓋默認預設參數",
-    "_promptPlaceholder.comment": "提示欄位中的占位文本",
-    "uploadReferencesExceed": "最多可以上傳 5 張圖像",
-    "_uploadReferencesExceed.comment": "當上傳的圖像數量超過限制時的錯誤消息",
-    "uploadReferencesSuccess": "成功上傳圖像",
-    "_uploadReferencesSuccess.comment": "圖像成功上傳時的成功消息",
-    "uploadReferencesError": "上傳圖像失敗，請稍後重試",
-    "_uploadReferencesError.comment": "圖像上傳失敗時的錯誤消息",
-    "startTaskSuccess": "成功開始繪製任務",
-    "_startTaskSuccess.comment": "繪製任務成功開始時的成功消息",
-    "startTaskFailed": "無法開始繪製任務",
-    "_startTaskFailed.comment": "繪製任務無法成功開始時的錯誤消息",
-    "generating": "生成中...",
-    "_generating.comment": "圖像正在生成時的消息",
-    "noOperations": "沒有可用操作",
-    "_noOperations.comment": "沒有可用操作時的消息",
-    "noTasks": "沒有歷史任務，請先開始一個新任務",
-    "_noTasks.comment": "沒有歷史任務時的消息"
+  "style.raw": {
+    "message": "原始",
+    "description": "按鈕上的文字，代表'原始'風格"
   },
-  "model": {
-    "general": "一般",
-    "_general.comment": "用於一般圖像生成的模型名稱",
-    "niji": "Niji",
-    "_niji.comment": "用於生成動畫風格圖像的模型名稱，不要翻譯，保持為'Niji'"
+  "styleCategory.special": {
+    "message": "特殊",
+    "description": "用於描述和生成圖像的類別詞，生成的圖像應包含此標籤的類別"
   },
-  "name": {
-    "model": "模型",
-    "_model.comment": "模型名稱，模型是機器學習中的術語，用於生成圖像",
-    "aspect": "長寬比",
-    "_aspect.comment": "長寬比參數的名稱",
-    "ratio": "比例",
-    "_ratio.comment": "比例參數的名稱",
-    "chaos": "混亂",
-    "_chaos.comment": "混亂參數的名稱，翻譯為'混亂程度'",
-    "fast": "快速",
-    "_fast.comment": "快速模式的名稱，用於快速生成圖像，翻譯為'快速模式'",
-    "nijiStyle": "Niji",
-    "_nijiStyle.comment": "nijiStyle參數的名稱，不要翻譯，保持為'Niji'",
-    "version": "版本",
-    "_version.comment": "版本參數的名稱",
-    "imageWeight": "圖像權重",
-    "_imageWeight.comment": "圖像權重參數的名稱",
-    "no": "排除",
-    "_no.comment": "no參數的名稱，用於排除特定元素，翻譯為'排除'",
-    "quality": "品質",
-    "_quality.comment": "品質參數的名稱，用於設置生成圖像的品質",
-    "random": "隨機",
-    "_random.comment": "隨機參數的名稱，用於添加隨機風格效果",
-    "relax": "慢速",
-    "_relax.comment": "放鬆模式的名稱，用於在'慢速'模式下生成圖像，翻譯為'慢速'",
-    "repeat": "重複",
-    "_repeat.comment": "重複參數的名稱，用於從一個提示創建多個任務",
-    "seed": "種子",
-    "_seed.comment": "種子參數的名稱，用於設置起始視覺噪音",
-    "stop": "停止",
-    "_stop.comment": "停止參數的名稱，用於在任何階段停止任務",
-    "style": "風格",
-    "_style.comment": "風格參數的名稱，用於在不同版本或風格的模型之間切換",
-    "stylize": "風格化",
-    "_stylize.comment": "風格化參數的名稱，用於調整默認美學風格的強度",
-    "tile": "平鋪",
-    "_tile.comment": "平鋪參數的名稱，用於生成可用於平鋪的圖像",
-    "turbo": "極速",
-    "_turbo.comment": "極速模式的名稱，用於在'極速'模式下生成圖像，翻譯為'極速'",
-    "weird": "奇異",
-    "_weird.comment": "奇異參數的名稱，用於探索不尋常的美學風格，翻譯為'奇異度'",
-    "translation": "翻譯",
-    "_translation.comment": "翻譯參數的名稱，用於在生成過程中啟用自動翻譯",
-    "advanced": "高級",
-    "_advanced.comment": "高級模式的名稱，用於啟用高級模式",
-    "niji": "Niji",
-    "_niji.comment": "niji參數的名稱，用於啟用Niji模型，不要翻譯，保持為'Niji'",
-    "ignore": "忽略",
-    "_ignore.comment": "忽略參數的名稱，用於忽略某些元素",
-    "prompt": "提示",
-    "_prompt.comment": "提示參數的名稱，用於輸入繪製指令",
-    "raw": "原始",
-    "_raw.comment": "原始參數的名稱，用於啟用Midjourney模型"
+  "styleCategory.chinese": {
+    "message": "中國風",
+    "description": "用於描述和生成圖像的類別詞，生成的圖像應包含此標籤的類別"
   },
-  "placeholder": {
-    "prompt": "輸入一個描述您想生成的圖像的句子，例如：一隻可愛的貓。額外的參數將覆蓋默認預設參數",
-    "_prompt.comment": "提示欄位中的佔位文字",
-    "ignore": "輸入要忽略的元素，例如：`--ignore plants`",
-    "_ignore.comment": "忽略欄位中的佔位文字",
-    "select": "選擇",
-    "_select.comment": "選擇欄位中的佔位文字"
+  "styleCategory.emotion": {
+    "message": "情感",
+    "description": "用於描述和生成圖像的類別詞，生成的圖像應包含此標籤的類別"
+  },
+  "styleCategory.camera": {
+    "message": "相機",
+    "description": "用於描述和生成圖像的類別詞，生成的圖像應包含此標籤的類別"
+  },
+  "styleCategory.styles": {
+    "message": "風格",
+    "description": "用於描述和生成圖像的類別詞，生成的圖像應包含此標籤的類別"
+  },
+  "styleCategory.lighting": {
+    "message": "燈光",
+    "description": "用於描述和生成圖像的類別詞，生成的圖像應包含此標籤的類別"
+  },
+  "styleCategory.painters": {
+    "message": "畫家",
+    "description": "用於描述和生成圖像的類別詞，生成的圖像應包含此標籤的類別"
+  },
+  "styleCategory.material": {
+    "message": "材料",
+    "description": "用於描述和生成圖像的類別詞，生成的圖像應包含此標籤的類別"
+  },
+  "styleCategory.artists": {
+    "message": "藝術家",
+    "description": "用於描述和生成圖像的類別詞，生成的圖像應包含此標籤的類別"
+  },
+  "styleTag.watercolour": {
+    "message": "水彩",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.oilPainting": {
+    "message": "油畫",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.oldPhotograph": {
+    "message": "舊照片",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.oneLineDrawing": {
+    "message": "單線繪畫",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.sketchDrawing": {
+    "message": "素描",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.gouache": {
+    "message": "水粉",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.filmStyle": {
+    "message": "電影風格",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.photorealistic": {
+    "message": "寫實照片",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.logo": {
+    "message": "標誌",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.cartoon": {
+    "message": "卡通",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.marbleStatue": {
+    "message": "大理石雕像",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.1800S": {
+    "message": "十八世紀",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.1980S": {
+    "message": "一九八零年代",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.isometricAnime": {
+    "message": "等距動畫",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.analyticDrawing": {
+    "message": "分析繪畫",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.coloringBook": {
+    "message": "著色書",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.infographicDrawing": {
+    "message": "資訊圖繪畫",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.doubleExposure": {
+    "message": "雙重曝光",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.diagrammaticDrawing": {
+    "message": "示意圖繪畫",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.2DIllustration": {
+    "message": "2D插畫",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.diagrammaticPortrait": {
+    "message": "示意肖像",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.pixelArt": {
+    "message": "像素藝術",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.darkFantasy": {
+    "message": "黑暗奇幻",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.ukiyoEArt": {
+    "message": "浮世繪藝術",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.paperQuilling": {
+    "message": "紙雕",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.paperCutCraft": {
+    "message": "剪紙工藝",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.iridescent": {
+    "message": "彩虹色",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.patchworkCollage": {
+    "message": "拼布拼貼",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.opArt": {
+    "message": "視覺藝術",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.japaneseInk": {
+    "message": "日本水墨畫",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.pastelDrawing": {
+    "message": "粉彩畫",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.drippingArt": {
+    "message": "滴筆畫",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.tattooArt": {
+    "message": "紋身藝術",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.16Bit": {
+    "message": "16位元",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.8Bit": {
+    "message": "8位元",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.amber": {
+    "message": "琥珀色",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.anatomicalDrawing": {
+    "message": "解剖繪畫",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.ancient": {
+    "message": "古代",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.anime": {
+    "message": "動漫",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.arabic": {
+    "message": "阿拉伯風",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格"
+  },
+  "styleTag.blocky": {
+    "message": "方塊",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.blueprint": {
+    "message": "藍圖",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.comicbook": {
+    "message": "漫畫書",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.caribbean": {
+    "message": "加勒比",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.celestial": {
+    "message": "天際",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.cellulose": {
+    "message": "纖維素",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.charcoalStyle": {
+    "message": "木炭風格",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.chromatic": {
+    "message": "色彩",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.coral": {
+    "message": "珊瑚",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.conceptArt": {
+    "message": "概念藝術",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.fibonacci": {
+    "message": "費氏數列",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.cyberpunk": {
+    "message": "賽博朋克",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.diabolic": {
+    "message": "惡魔",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.diffractionGrading": {
+    "message": "繞射分級",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.lightspeed": {
+    "message": "光速",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.liquid": {
+    "message": "液體",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.dots": {
+    "message": "點狀",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.dune": {
+    "message": "沙丘",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.drippingPaint": {
+    "message": "滴漆",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.electronicCircuitry": {
+    "message": "電子電路",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.electrical": {
+    "message": "電氣",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.futuristic": {
+    "message": "未來主義",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.etching": {
+    "message": "蝕刻",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.extraterrestrial": {
+    "message": "外星",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.glitchart": {
+    "message": "故障藝術",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.floral": {
+    "message": "花卉",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.fractal": {
+    "message": "分形",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.preHistoric": {
+    "message": "史前",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.prokaryotic": {
+    "message": "原核生物",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.horror": {
+    "message": "恐怖",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.iceAge": {
+    "message": "冰河時代",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.jurassic": {
+    "message": "侏羅紀",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.knitted": {
+    "message": "針織",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.polka": {
+    "message": "波點",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.latex": {
+    "message": "乳膠",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.pastel": {
+    "message": "粉彩",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.mandala": {
+    "message": "曼陀羅",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.molecular": {
+    "message": "分子",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.merkaba": {
+    "message": "梅卡巴",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.mitochondria": {
+    "message": "線粒體",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.graffiti": {
+    "message": "塗鴉",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.graphicNovel": {
+    "message": "圖像小說",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.multidimensional": {
+    "message": "多維",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.nasa": {
+    "message": "NASA",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.nebula": {
+    "message": "星雲",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.neon": {
+    "message": "霓虹",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.nuclear": {
+    "message": "核能",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.orbital": {
+    "message": "軌道",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.rayTracing": {
+    "message": "光線追蹤",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.realistic": {
+    "message": "寫實",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.renaissance": {
+    "message": "文藝復興",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.retro": {
+    "message": "復古",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.risograph": {
+    "message": "孔版印刷",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.origami": {
+    "message": "摺紙",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.ornamental": {
+    "message": "裝飾性的",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.space": {
+    "message": "太空",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.splatterPaint": {
+    "message": "飛濺油漆",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.sprayPaint": {
+    "message": "噴漆",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.squiggles": {
+    "message": "曲線",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.stitching": {
+    "message": "縫紉",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.veins": {
+    "message": "靜脈",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.streetArt": {
+    "message": "街頭藝術",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.surreal": {
+    "message": "超現實",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.symmetric": {
+    "message": "對稱",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.synthWave": {
+    "message": "合成波",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.technological": {
+    "message": "科技感",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.tron": {
+    "message": "特隆",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.tropical": {
+    "message": "熱帶",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.ultraModern": {
+    "message": "超現代",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.wormhole": {
+    "message": "蟲洞",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.wrinkled": {
+    "message": "皺褶",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.volcanic": {
+    "message": "火山",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.wetPaint": {
+    "message": "濕油漆",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.wildWest": {
+    "message": "荒野西部",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.wind": {
+    "message": "風",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.miniatureFaking": {
+    "message": "微縮仿製",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.accentLighting": {
+    "message": "重點照明",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.backlight": {
+    "message": "背光",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.blacklight": {
+    "message": "黑光",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.goldenHourLight": {
+    "message": "黃金時光燈光",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.candlelight": {
+    "message": "燭光",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.concertLighting": {
+    "message": "音樂會燈光",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.crepuscularRays": {
+    "message": "黃昏光線",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.directSunlight": {
+    "message": "直射陽光",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.dust": {
+    "message": "灰塵",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.studioLighting": {
+    "message": "工作室燈光",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.rimLight": {
+    "message": "邊緣光",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.volumetricLighting": {
+    "message": "體積光線",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.fluorescent": {
+    "message": "螢光",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.glowing": {
+    "message": "發光",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.glowStick": {
+    "message": "發光棒",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.glowRadioactive": {
+    "message": "輻射發光",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.lavaGlow": {
+    "message": "熔岩發光",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.moonlight": {
+    "message": "月光",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.naturalLighting": {
+    "message": "自然光線",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.neonLamp": {
+    "message": "霓虹燈",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.nightclubLighting": {
+    "message": "夜店燈光",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.nuclearWasteGlo": {
+    "message": "核廢料發光",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.quantumDot": {
+    "message": "量子點",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.spotlight": {
+    "message": "聚光燈",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.edgeLight": {
+    "message": "邊緣燈",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.coldLight": {
+    "message": "冷光",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.keyLighting": {
+    "message": "主燈",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.ambientLight": {
+    "message": "環境光",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.highKeyLighting": {
+    "message": "高鍵燈光",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.lowKeyLighting": {
+    "message": "低調燈光",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.motivatedLighting": {
+    "message": "動機照明",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.3PointLighting": {
+    "message": "三點燈光",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.strobeLight": {
+    "message": "閃光燈",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.sunLight": {
+    "message": "陽光",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.ultraviolet": {
+    "message": "紫外線",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.beautifulLighting": {
+    "message": "美麗燈光",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.moodyLighting": {
+    "message": "情緒燈光",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.softLighting": {
+    "message": "柔和燈光",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.michelangelo": {
+    "message": "米開朗基羅",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.monet": {
+    "message": "莫內",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.paulCezanne": {
+    "message": "保羅·塞尚",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.markRothko": {
+    "message": "馬克·羅斯科",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.paulKlee": {
+    "message": "保羅·克利",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.picasso": {
+    "message": "畢卡索",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.pietMondrian": {
+    "message": "畢加·蒙德里安",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.pierreAugusteRer": {
+    "message": "皮埃爾·奧古斯特·雷爾",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.rembrandt": {
+    "message": "倫勃朗",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.reneMagritte": {
+    "message": "勒內·馬格利特",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.royLichtenstein": {
+    "message": "羅伊·利希滕斯坦",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.salvadorDali": {
+    "message": "薩爾瓦多·達利",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.sandroBotticelli": {
+    "message": "桑德羅·波提切利",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.takashiMurakami": {
+    "message": "村上隆",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.vanGogh": {
+    "message": "梵谷",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.wassilyKandinsky": {
+    "message": "瓦西里·康定斯基",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.matCollishaw": {
+    "message": "馬特·科利肖",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.yayoiKusama": {
+    "message": "草間彌生",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.igorMorski": {
+    "message": "伊戈爾·莫爾斯基",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.shinkaiMakoto": {
+    "message": "新海誠",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.pixar": {
+    "message": "皮克斯",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.kyotoAnime": {
+    "message": "京都動畫",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.jerryPinkney": {
+    "message": "傑瑞·平克尼",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.hayaoMiyazaki": {
+    "message": "宮崎駿",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.beatrixPotter": {
+    "message": "碧雅翠絲·波特",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.jonKlassen": {
+    "message": "喬恩·克拉森",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.kaySage": {
+    "message": "凱·賽奇",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.jeffreyCatherineJones": {
+    "message": "傑佛瑞·凱瑟琳·瓊斯",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.yaacovAgam": {
+    "message": "雅各夫·阿甘",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.davidHockney": {
+    "message": "大衛·霍克尼",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.victorMoscoso": {
+    "message": "維克多·莫斯科索",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.raphaelite": {
+    "message": "拉斐爾派",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.stefanKoidl": {
+    "message": "史蒂芬·科伊德爾",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.suiIshida": {
+    "message": "石田翠",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.swoon": {
+    "message": "昏厥",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.tashaTudor": {
+    "message": "塔莎·都德",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.tintoretto": {
+    "message": "丁托列托",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.theodoreRobinsor": {
+    "message": "西奧多·羅賓索爾",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.titian": {
+    "message": "提香",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.wlop": {
+    "message": "WLOP",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.yanjunCheng": {
+    "message": "鄭彥君",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.yojiShinkawa": {
+    "message": "新川洋司",
+    "description": "用於描述和生成圖像的風格詞語，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.zhelongXu": {
+    "message": "許哲龍",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.alenaAenami": {
+    "message": "Alena Aenami",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.anntonFadeevi": {
+    "message": "Annton Fadeevi",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.charlieBowater": {
+    "message": "Charlie Bowater",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.coryLoftis": {
+    "message": "Cory Loftis",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.fenghuaZhong": {
+    "message": "鍾鳳華",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.gregRutkowski": {
+    "message": "Greg Rutkowski",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.hongSoonsang": {
+    "message": "洪純相",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.dennisStock": {
+    "message": "Dennis Stock",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.michalLisowski": {
+    "message": "Michal Lisowski",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.paulLehr": {
+    "message": "Paul Lehr",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.rossTran": {
+    "message": "Ross Tran",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.antonPieck": {
+    "message": "Anton Pieck",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.carlBarks": {
+    "message": "Carl Barks",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.alphonseMucha": {
+    "message": "Alphonse Mucha",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.andyWarhol": {
+    "message": "Andy Warhol",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.banksy": {
+    "message": "Banksy",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.franciscoDeGoya": {
+    "message": "Francisco De Goya",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.caravaggio": {
+    "message": "Caravaggio",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.diegoRivera": {
+    "message": "Diego Rivera",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.marcChagall": {
+    "message": "Marc Chagall",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.edgarDegas": {
+    "message": "Edgar Degas",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.eugeneDelacroix": {
+    "message": "Eugene Delacroix",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.francisBacon": {
+    "message": "Francis Bacon",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.fridaKahlo": {
+    "message": "Frida Kahlo",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.garaldBrom": {
+    "message": "Garald Brom",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.gustavKlimt": {
+    "message": "Gustav Klimt",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.henriMatisse": {
+    "message": "Henri Matisse",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.jackKirby": {
+    "message": "Jack Kirby",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.jacksonPollock": {
+    "message": "Jackson Pollock",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.johannesVermeer": {
+    "message": "Johannes Vermeer",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.jeanMichelBasquiat": {
+    "message": "Jean Michel Basquiat",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.marcelDuchamp": {
+    "message": "Marcel Duchamp",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.aluminum": {
+    "message": "鋁",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.brick": {
+    "message": "磚",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.bronze": {
+    "message": "青銅",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.carbonFiber": {
+    "message": "碳纖維",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.cardboard": {
+    "message": "紙板",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.ceramic": {
+    "message": "陶瓷",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.cotton": {
+    "message": "棉花",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.fabric": {
+    "message": "織物",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.fiberOptic": {
+    "message": "光纖",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.foil": {
+    "message": "箔",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.yarn": {
+    "message": "紗線",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.glass": {
+    "message": "玻璃",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.gold": {
+    "message": "黃金",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.gummies": {
+    "message": "軟糖",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.leather": {
+    "message": "皮革",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.magma": {
+    "message": "岩漿",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.metallic": {
+    "message": "金屬質感",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.nickel": {
+    "message": "鎳",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.nylon": {
+    "message": "尼龍",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.paper": {
+    "message": "紙張",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.plastic": {
+    "message": "塑料",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.quartz": {
+    "message": "石英",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.wrap": {
+    "message": "包裝",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.wooden": {
+    "message": "木製",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.slime": {
+    "message": "黏液",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.engraving": {
+    "message": "雕刻",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.ivory": {
+    "message": "象牙",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.basalt": {
+    "message": "玄武岩",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.pine": {
+    "message": "松木",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.diamond": {
+    "message": "鑽石",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.amethyst": {
+    "message": "紫水晶",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.ruby": {
+    "message": "紅寶石",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.highPolished": {
+    "message": "高度拋光",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.brushed": {
+    "message": "刷研",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.matte": {
+    "message": "啞光",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.satin": {
+    "message": "緞面",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.sandblasted": {
+    "message": "噴砂",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.ebony": {
+    "message": "烏木",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.bokeh": {
+    "message": "背景虛化",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.aerialView": {
+    "message": "航拍",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.shotByDslr": {
+    "message": "單反拍攝",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.360Panorama": {
+    "message": "360全景",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.panorama": {
+    "message": "全景",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.telephotoLens": {
+    "message": "望遠鏡頭",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.macroShot": {
+    "message": "微距拍攝",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.microscopy": {
+    "message": "顯微鏡觀察",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.magnification": {
+    "message": "放大",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.closeUp": {
+    "message": "特寫",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.fullBody": {
+    "message": "全身照",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.portrait": {
+    "message": "肖像",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.profile": {
+    "message": "側面",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.pinholeLens": {
+    "message": "針孔鏡頭",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.wideView": {
+    "message": "廣角視角",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.telescopeLens": {
+    "message": "望遠鏡鏡頭",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.satelliteImagery": {
+    "message": "衛星影像",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.headshot": {
+    "message": "頭部特寫",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.extremeCloseup": {
+    "message": "極端特寫",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.ultrawideShot": {
+    "message": "超廣角拍攝",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.birdView": {
+    "message": "鳥瞰",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.topView": {
+    "message": "俯視",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.frontView": {
+    "message": "正面視角",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.sideView": {
+    "message": "側面視角",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.backView": {
+    "message": "背面視角",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.faceShot": {
+    "message": "面部特寫",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.chestShot": {
+    "message": "胸部特寫",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.waistShot": {
+    "message": "腰部特寫",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.extraLongShot": {
+    "message": "超長鏡頭",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.lookUp": {
+    "message": "仰拍",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.isometricview": {
+    "message": "等距視角",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.highAngleView": {
+    "message": "高角度視角",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.lowAngleView": {
+    "message": "低角度視角",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.happy": {
+    "message": "開心",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.excited": {
+    "message": "興奮",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.angry": {
+    "message": "生氣",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.ped": {
+    "message": "ped",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.disgusted": {
+    "message": "厭惡",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.supnned": {
+    "message": "supnned",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.hopeful": {
+    "message": "滿懷希望",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.anxious": {
+    "message": "焦慮",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.elated": {
+    "message": "興高采烈",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.fearful": {
+    "message": "害怕",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.hateful": {
+    "message": "憎恨",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.apoow": {
+    "message": "apoow",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.dark": {
+    "message": "黑暗",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.brutal": {
+    "message": "殘酷",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.hanfu": {
+    "message": "漢服",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.cheongsam": {
+    "message": "旗袍",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.chineseCostume": {
+    "message": "中國服飾",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.chineseDress": {
+    "message": "中國服裝",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.wuxia": {
+    "message": "武俠",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.chinesePhoenix": {
+    "message": "中國鳳凰",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.kungfu": {
+    "message": "功夫",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.kunquOpera": {
+    "message": "崑曲",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.cloisonne": {
+    "message": "景泰藍",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.porcelain": {
+    "message": "瓷器",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.embroidered": {
+    "message": "刺繡",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.jade": {
+    "message": "玉石",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.chinesePavilion": {
+    "message": "中國亭台",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.plumFlower": {
+    "message": "梅花",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.forbiddenCity": {
+    "message": "紫禁城",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.peony": {
+    "message": "牡丹",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.unrealEngine": {
+    "message": "虛幻引擎",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.octaneRender": {
+    "message": "Octane渲染",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.maxonCinema4D": {
+    "message": "Maxon Cinema 4D",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.quixelMegascansRender": {
+    "message": "Quixel Megascans渲染",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.coronaRender": {
+    "message": "Corona渲染",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.vRay": {
+    "message": "V-ray",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.architecturalVisualisation": {
+    "message": "建築視覺化",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.dramaticContrast": {
+    "message": "戲劇性對比",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.goldAndBlackTone": {
+    "message": "金色和黑色調",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.whiteAndPinkTone": {
+    "message": "白色和粉色調",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.redAndBlackTone": {
+    "message": "紅色和黑色調",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.neonShades": {
+    "message": "霓虹色調",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.richColor": {
+    "message": "豐富色彩",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.monotone": {
+    "message": "單色調",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.theLowPurityTone": {
+    "message": "低純度色調",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "styleTag.theHighPurityTone": {
+    "message": "高純度色調",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包含此標籤的風格。"
+  },
+  "button.low": {
+    "message": "低",
+    "description": "按鈕上的文字，代表'低'圖片品質"
+  },
+  "button.medium": {
+    "message": "中",
+    "description": "按鈕上的文字，代表'中'圖片品質"
+  },
+  "button.high": {
+    "message": "高",
+    "description": "按鈕上的文字，代表'高'圖片品質"
+  },
+  "button.buyMore": {
+    "message": "購買更多",
+    "description": "按鈕上的文字，允許用戶購買更多積分"
+  },
+  "button.uploadReferences": {
+    "message": "上傳參考",
+    "description": "按鈕上的文字，允許用戶上傳參考資料"
+  },
+  "button.success": {
+    "message": "成功",
+    "description": "按鈕上的文字，表示操作成功"
+  },
+  "button.generating": {
+    "message": "生成中",
+    "description": "按鈕上的文字，表示操作正在進行中"
+  },
+  "button.failed": {
+    "message": "失敗",
+    "description": "按鈕上的文字，表示操作失敗"
+  },
+  "button.download": {
+    "message": "下載",
+    "description": "按鈕上的文字，允許使用者下載結果"
+  },
+  "button.fast": {
+    "message": "快速",
+    "description": "按鈕上的文字，允許使用者將'快速模式'設置為快速以生成圖像，必須翻譯為'快速模式'"
+  },
+  "button.relax": {
+    "message": "慢速",
+    "description": "按鈕上的文字，允許使用者將'慢速模式'設置為放鬆以生成圖像，必須翻譯為'慢速模式'"
+  },
+  "button.turbo": {
+    "message": "極速",
+    "description": "按鈕上的文字，允許使用者將'極速模式'設置為極速以生成圖像，必須翻譯為'極速模式'"
+  },
+  "button.more": {
+    "message": "更多",
+    "description": "按鈕上的文字，允許使用者查看更多選項"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "按鈕上的文字，允許使用者生成圖像"
+  },
+  "button.history": {
+    "message": "歷史",
+    "description": "按鈕上的文字，允許使用者查看生成的圖像歷史"
+  },
+  "button.generateNew": {
+    "message": "生成新圖片",
+    "description": "按鈕上的文字，允許使用者繪製新圖片"
+  },
+  "field.taskId": {
+    "message": "任務 ID",
+    "description": "任務 ID"
+  },
+  "field.finalPrompt": {
+    "message": "最終提示",
+    "description": "用於生成圖像的最終繪畫提示"
+  },
+  "field.elements": {
+    "message": "風格",
+    "description": "用於生成圖像的繪畫風格"
+  },
+  "field.failureReason": {
+    "message": "失敗原因",
+    "description": "失敗原因"
+  },
+  "field.traceId": {
+    "message": "追踪 ID",
+    "description": "用於追踪生成圖像請求的追踪 ID，不要翻譯，保持為'追踪 ID'"
+  },
+  "description.aspect": {
+    "message": "--aspect，更改生成圖像的寬高比，默認值取決於模型和模式",
+    "description": "aspect 參數的描述"
+  },
+  "description.chaos": {
+    "message": "--chaos，調整生成圖像中的變化程度，數字越高，生成的圖像越獨特和意外，範圍為 0-100，默認為 1",
+    "description": "chaos 參數的描述"
+  },
+  "description.fast": {
+    "message": "忽略當前設置，以'快速模式'運行單個生成任務，沒有默認值",
+    "description": "fast 參數的描述"
+  },
+  "description.iw": {
+    "message": "--iw，設置圖像提示相對於文本提示在生成過程中的重要性，範圍為 0-2，默認為 1",
+    "description": "iw 參數的描述"
+  },
+  "description.no": {
+    "message": "--no，指示生成系統嘗試排除某些元素，例如'--no 植物'將嘗試生成沒有植物的圖像，沒有默認值",
+    "description": "no 參數的描述，翻譯為'排除'"
+  },
+  "description.quality": {
+    "message": "--quality，設置生成圖像的質量和渲染時間，範圍為 .25、.5 或 1，默認為 1",
+    "description": "quality 參數的描述"
+  },
+  "description.random": {
+    "message": "向提示添加隨機基本風格代碼，可以使用'--style random-16'、'--style random-64'或'--style random-128'來獲得不同長度的隨機風格效果，沒有默認值",
+    "description": "random 參數的描述"
+  },
+  "description.relax": {
+    "message": "覆蓋當前設置，以'慢速模式'運行單個任務，沒有默認值",
+    "description": "relax 參數的描述"
+  },
+  "description.repeat": {
+    "message": "--repeat，從一個提示創建多個任務，範圍為 1-40，默認為 1",
+    "description": "repeat 參數的描述"
+  },
+  "description.seed": {
+    "message": "--seed，生成圖像的起始視覺噪音，範圍為 0-4294967295，默認為隨機生成",
+    "description": "seed 參數的描述"
+  },
+  "description.stop": {
+    "message": "--stop，在生成過程的任何階段停止任務，範圍為 10-100，默認為 100（即完全生成）",
+    "description": "stop 參數的描述"
+  },
+  "description.style": {
+    "message": "--style，在 Midjourney 或 Niji 模型的不同版本或風格之間切換，例如 raw、cute、expressive、original、scenic，默認值取決於模型和模式",
+    "description": "style 參數的描述"
+  },
+  "description.stylize": {
+    "message": "--stylize，調整生成任務中應用的 Midjourney 默認美學風格的強度，範圍為 0-1000，默認為 100",
+    "description": "stylize 參數的描述"
+  },
+  "description.tile": {
+    "message": "--tile，生成可用於無縫平鋪以創建無縫圖案的圖像，沒有默認值",
+    "description": "tile 參數的描述"
+  },
+  "description.turbo": {
+    "message": "覆蓋當前設置，以'極速模式'運行單個任務，沒有默認值",
+    "description": "turbo 參數的描述"
+  },
+  "description.weird": {
+    "message": "--weird，探索具有實驗性質的不尋常美學風格，範圍為 0-3000，默認為 0",
+    "description": "weird 參數的描述"
+  },
+  "description.translation": {
+    "message": "啟用生成過程中的自動翻譯，非中文內容將自動翻譯為 Midjourney 的英文輸入",
+    "description": "translation 參數的描述"
+  },
+  "description.imageWeight": {
+    "message": "--iw，調整圖像提示相對於文本提示的權重，範圍為 0-2，默認為 1",
+    "description": "imageWeight 參數的描述"
+  },
+  "description.niji": {
+    "message": "--niji，啟用後，生成的圖像將使用 Niji 模型，生成動漫風格的圖像",
+    "description": "niji 參數的描述"
+  },
+  "description.uploadReferences": {
+    "message": "上傳圖像作為生成的參考，支持最多 5 張圖像。如果上傳多於 1 張圖像，它們將被自動合併",
+    "description": "uploadReferences 參數的描述"
+  },
+  "description.raw": {
+    "message": "--raw，啟用後，生成的圖像將使用 Midjourney 模型，生成原始風格的圖像",
+    "description": "raw 參數的描述"
+  },
+  "description.prompt": {
+    "message": "輸入命令，如果添加了額外參數，它們將覆蓋默認預設參數，例如添加'--stylize 200'將強制最終命令使用'--stylize 200'",
+    "description": "prompt 欄位的描述"
+  },
+  "action.generate": {
+    "message": "點擊此按鈕開始生成圖像",
+    "description": "生成按鈕的描述"
+  },
+  "action.upscale1": {
+    "message": "放大第一張圖像",
+    "description": "upscale1 按鈕的描述"
+  },
+  "action.upscale2": {
+    "message": "放大第二張圖像",
+    "description": "upscale2 按鈕的描述"
+  },
+  "action.upscale3": {
+    "message": "放大第三張圖像",
+    "description": "upscale3 按鈕的描述"
+  },
+  "action.upscale4": {
+    "message": "放大第四張圖像",
+    "description": "upscale4 按鈕的描述"
+  },
+  "action.variation1": {
+    "message": "調整第一張圖像的變化",
+    "description": "variation1 按鈕的描述"
+  },
+  "action.variation2": {
+    "message": "調整第二張圖像的變化",
+    "description": "variation2 按鈕的描述"
+  },
+  "action.variation3": {
+    "message": "調整第三張圖像的變化",
+    "description": "variation3 按鈕的描述"
+  },
+  "action.variation4": {
+    "message": "調整第四張圖像的變化",
+    "description": "variation4 按鈕的描述"
+  },
+  "action.reroll": {
+    "message": "重新擲骰",
+    "description": "reroll 按鈕的描述"
+  },
+  "action.high_variation": {
+    "message": "高變化",
+    "description": "high_variation 按鈕的描述"
+  },
+  "action.low_variation": {
+    "message": "低變化",
+    "description": "low_variation 按鈕的描述"
+  },
+  "action.zoom_out_2x": {
+    "message": "2 倍縮小",
+    "description": "zoom_out_2x 按鈕的描述"
+  },
+  "action.zoom_out_1_5x": {
+    "message": "1.5 倍縮小",
+    "description": "zoom_out_1_5x 按鈕的描述"
+  },
+  "action.square": {
+    "message": "正方形",
+    "description": "square 按鈕的描述"
+  },
+  "action.pan_left": {
+    "message": "向左移動",
+    "description": "pan_left 按鈕的描述"
+  },
+  "action.pan_up": {
+    "message": "向上移動",
+    "description": "pan_up 按鈕的描述"
+  },
+  "action.pan_down": {
+    "message": "向下移動",
+    "description": "pan_down 按鈕的描述"
+  },
+  "action.pan_right": {
+    "message": "向右移動",
+    "description": "pan_right 按鈕的描述"
+  },
+  "action.zoom_in_2x": {
+    "message": "2 倍放大",
+    "description": "zoom_in_2x 按鈕的描述"
+  },
+  "action.zoom_in_1_5x": {
+    "message": "1.5 倍放大",
+    "description": "zoom_in_1_5x 按鈕的描述"
+  },
+  "action.upscale_2x": {
+    "message": "2 倍放大",
+    "description": "upscale_2x 按鈕的描述"
+  },
+  "action.upscale_4x": {
+    "message": "4 倍放大",
+    "description": "upscale_4x 按鈕的描述"
+  },
+  "action.redo_upscale_2x": {
+    "message": "重新放大 2 倍",
+    "description": "redo_upscale_2x 按鈕的描述"
+  },
+  "action.redo_upscale_4x": {
+    "message": "重做4倍放大",
+    "description": "重做4倍放大按鈕的描述"
+  },
+  "message.promptPlaceholder": {
+    "message": "請輸入一個句子來描述您想要生成的圖像，例如：一隻可愛的貓。額外的參數將覆蓋默認預設參數",
+    "description": "提示欄位中的占位符文字"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "最多只能上傳5張圖片",
+    "description": "當上傳的圖片數量超過限制時的錯誤訊息"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "成功上傳圖片",
+    "description": "當圖片成功上傳時的成功訊息"
+  },
+  "message.uploadReferencesError": {
+    "message": "上傳圖片失敗，請稍後重試",
+    "description": "當圖片上傳失敗時的錯誤訊息"
+  },
+  "message.startingTask": {
+    "message": "任務開始中...",
+    "description": "當繪圖任務開始時的訊息"
+  },
+  "message.startTaskSuccess": {
+    "message": "成功開始繪圖任務",
+    "description": "當繪圖任務成功開始時的成功訊息"
+  },
+  "message.startTaskFailed": {
+    "message": "無法開始繪圖任務",
+    "description": "當繪圖任務無法成功開始時的錯誤訊息"
+  },
+  "message.generating": {
+    "message": "生成中...",
+    "description": "圖像生成中的訊息"
+  },
+  "message.noOperations": {
+    "message": "沒有可用的操作",
+    "description": "當沒有可用操作時的訊息"
+  },
+  "message.noTasks": {
+    "message": "沒有歷史任務，請先開始一個新任務",
+    "description": "當沒有歷史任務時的訊息"
+  },
+  "model.general": {
+    "message": "一般",
+    "description": "用於一般圖像生成的模型名稱"
+  },
+  "model.niji": {
+    "message": "Niji",
+    "description": "用於動漫風格圖像生成的模型名稱，不要翻譯，保持為'Niji'"
+  },
+  "name.model": {
+    "message": "模型",
+    "description": "模型名稱，模型是機器學習中用於生成圖像的術語"
+  },
+  "name.aspect": {
+    "message": "長寬比",
+    "description": "長寬比參數的名稱"
+  },
+  "name.ratio": {
+    "message": "比例",
+    "description": "比例參數的名稱"
+  },
+  "name.chaos": {
+    "message": "混亂度",
+    "description": "混亂度參數的名稱，翻譯為'混亂程度'"
+  },
+  "name.fast": {
+    "message": "快速",
+    "description": "快速模式的名稱，用於快速生成圖像，翻譯為'快速模式'"
+  },
+  "name.nijiStyle": {
+    "message": "Niji",
+    "description": "nijiStyle參數的名稱，不要翻譯，保持為'Niji'"
+  },
+  "name.version": {
+    "message": "版本",
+    "description": "版本參數的名稱"
+  },
+  "name.imageWeight": {
+    "message": "圖像權重",
+    "description": "圖像權重參數的名稱"
+  },
+  "name.no": {
+    "message": "排除",
+    "description": "排除參數的名稱，用於排除特定元素，翻譯為'排除'"
+  },
+  "name.quality": {
+    "message": "品質",
+    "description": "品質參數的名稱，用於設置生成圖像的品質"
+  },
+  "name.random": {
+    "message": "隨機",
+    "description": "隨機參數的名稱，用於添加隨機風格效果"
+  },
+  "name.relax": {
+    "message": "慢速",
+    "description": "放鬆模式的名稱，用於在'慢速'模式下生成圖像，翻譯為'慢速模式'"
+  },
+  "name.repeat": {
+    "message": "重複",
+    "description": "重複參數的名稱，用於從一個提示中創建多個任務"
+  },
+  "name.seed": {
+    "message": "種子",
+    "description": "種子參數的名稱，用於設置起始視覺噪音"
+  },
+  "name.stop": {
+    "message": "停止",
+    "description": "停止參數的名稱，用於在任何階段停止任務"
+  },
+  "name.style": {
+    "message": "風格",
+    "description": "風格參數的名稱，用於在不同版本或風格的模型之間切換"
+  },
+  "name.stylize": {
+    "message": "風格化",
+    "description": "風格化參數的名稱，用於調整默認美學風格的強度"
+  },
+  "name.tile": {
+    "message": "平鋪",
+    "description": "平鋪參數的名稱，用於生成可用於平鋪的圖像"
+  },
+  "name.turbo": {
+    "message": "極速",
+    "description": "極速模式的名稱，用於在'極速'模式下生成圖像，翻譯為'極速模式'"
+  },
+  "name.weird": {
+    "message": "異常",
+    "description": "異常參數的名稱，用於探索不尋常的美學風格，翻譯為'異常度'"
+  },
+  "name.translation": {
+    "message": "翻譯",
+    "description": "翻譯參數的名稱，用於在生成過程中啟用自動翻譯"
+  },
+  "name.advanced": {
+    "message": "高級",
+    "description": "高級模式的名稱，用於啟用高級模式"
+  },
+  "name.niji": {
+    "message": "Niji",
+    "description": "niji參數的名稱，用於啟用Niji模型，不要翻譯，保持為'Niji'"
+  },
+  "name.ignore": {
+    "message": "忽略",
+    "description": "忽略參數的名稱，用於忽略某些元素"
+  },
+  "name.prompt": {
+    "message": "提示",
+    "description": "提示參數的名稱，用於輸入繪圖指令"
+  },
+  "name.raw": {
+    "message": "原始",
+    "description": "原始參數的名稱，用於啟用Midjourney模型"
+  },
+  "placeholder.prompt": {
+    "message": "輸入一個句子來描述您想要生成的圖像，例如：一隻可愛的貓。額外的參數將覆蓋默認預設參數",
+    "description": "提示欄位中的占位符文字"
+  },
+  "placeholder.ignore": {
+    "message": "輸入要忽略的元素，例如：`--忽略 植物`",
+    "description": "忽略欄位中的占位符文字"
+  },
+  "placeholder.select": {
+    "message": "選擇",
+    "description": "選擇欄位中的占位符文字"
   }
 }
