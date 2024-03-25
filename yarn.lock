@@ -7,12 +7,12 @@
   resolved "https://registry.npmjs.org/@aashutoshrathi/word-wrap/-/word-wrap-1.2.6.tgz"
   integrity sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==
 
-"@acedatacloud/transmart-cli@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@acedatacloud/transmart-cli/-/transmart-cli-0.4.2.tgz#6c5c472e1792398599e810175117d0f67f356326"
-  integrity sha512-J2oqAST6SlelLXPEGO/4Zw2C+E5MjFwriYSlR0oChIfVgo/PTyUplunKxWzaJMGPHh3NGW/zHhAy42LNWuNTpg==
+"@acedatacloud/transmart-cli@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@acedatacloud/transmart-cli/-/transmart-cli-0.5.0.tgz#215eca9a227f141acc3dd647ada9df4103cde232"
+  integrity sha512-UCNoyrQuFUn1SLU6cfHfaH5C+8UNRKmhJrwzQd+9Kx6h9o7lmVYm5W2FWuqP7Q+ADDdlFojmZaQ3MU9ucVCMnA==
   dependencies:
-    "@acedatacloud/transmart-core" "^0.4.0"
+    "@acedatacloud/transmart-core" "^0.5.0"
     "@types/spinnies" "^0.5.0"
     commander "^9.4.1"
     cosmiconfig "^8.3.6"
@@ -20,16 +20,17 @@
     fs-extra "^11.1.0"
     spinnies "^0.5.1"
 
-"@acedatacloud/transmart-core@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@acedatacloud/transmart-core/-/transmart-core-0.4.0.tgz#7530e269afe1b72bbc506dc10edf1659670f8187"
-  integrity sha512-NrmeadPsjKCoAX+KhDeWNQVv6rDy5geiHtJMbSZHojZJ63mAz0Sl5m5h01qp8LqDCXCLo1MZVLEW5pwFHCQ+wg==
+"@acedatacloud/transmart-core@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@acedatacloud/transmart-core/-/transmart-core-0.5.0.tgz#76bf4e97347e68abdf5002cca9d1221c776287ee"
+  integrity sha512-AJpf6Jey26iRsHGk/1o+cQGMfPzRdEIGmDJBUNp22U3F7Tzmziy+sSRw6MBxdVpPG16Ajjaw5grwbUV+Ruf33Q==
   dependencies:
     "@types/glob" "^8.1.0"
     fs-extra "^11.1.0"
     glob "^9.3.0"
     gpt-3-encoder "^1.1.4"
     gpt3-tokenizer "^1.1.5"
+    jsonrepair "^3.6.0"
     node-fetch "^2.6.9"
     p-limit "^3.1.0"
 
@@ -2887,6 +2888,11 @@ jsonfile@^6.0.1:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
+jsonrepair@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/jsonrepair/-/jsonrepair-3.6.0.tgz#995a85675ec0398dcd86d8dcb74206a53c6680f7"
+  integrity sha512-ZvOmoq35LhlDaf1W3uT7e17Bh2dYbln1+pdJ1KUIMkRAoUC4mvXX+dbr9Ih6dDmYvB0mdijAucyPk4xX1cEjww==
+
 keyv@^4.5.3:
   version "4.5.4"
   resolved "https://registry.npmjs.org/keyv/-/keyv-4.5.4.tgz"
@@ -4466,6 +4472,7 @@ workspace-tools@^0.36.3:
     micromatch "^4.0.0"
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-7.0.0.tgz"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==

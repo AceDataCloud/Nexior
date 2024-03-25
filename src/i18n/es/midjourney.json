@@ -84,7 +84,7 @@
     "description": "Una palabra de estilo utilizada para describir y generar una imagen, la imagen generada debe incluir el estilo de esta etiqueta."
   },
   "styleTag.photorealistic": {
-    "message": "Fotorrealista",
+    "message": "Fotorealista",
     "description": "Una palabra de estilo utilizada para describir y generar una imagen, la imagen generada debe incluir el estilo de esta etiqueta."
   },
   "styleTag.logo": {
@@ -100,11 +100,11 @@
     "description": "Una palabra de estilo utilizada para describir y generar una imagen, la imagen generada debe incluir el estilo de esta etiqueta."
   },
   "styleTag.1800S": {
-    "message": "1800s",
+    "message": "Años 1800",
     "description": "Una palabra de estilo utilizada para describir y generar una imagen, la imagen generada debe incluir el estilo de esta etiqueta."
   },
   "styleTag.1980S": {
-    "message": "1980s",
+    "message": "Años 1980",
     "description": "Una palabra de estilo utilizada para describir y generar una imagen, la imagen generada debe incluir el estilo de esta etiqueta."
   },
   "styleTag.isometricAnime": {
@@ -168,7 +168,7 @@
     "description": "Una palabra de estilo utilizada para describir y generar una imagen, la imagen generada debe incluir el estilo de esta etiqueta."
   },
   "styleTag.opArt": {
-    "message": "Op art",
+    "message": "Arte óptico",
     "description": "Una palabra de estilo utilizada para describir y generar una imagen, la imagen generada debe incluir el estilo de esta etiqueta."
   },
   "styleTag.japaneseInk": {
@@ -572,7 +572,7 @@
     "description": "Una palabra de estilo utilizada para describir y generar una imagen, la imagen generada debe incluir el estilo de esta etiqueta."
   },
   "styleTag.glowing": {
-    "message": "Brillante",
+    "message": "Resplandeciente",
     "description": "Una palabra de estilo utilizada para describir y generar una imagen, la imagen generada debe incluir el estilo de esta etiqueta."
   },
   "styleTag.glowStick": {
@@ -580,11 +580,11 @@
     "description": "Una palabra de estilo utilizada para describir y generar una imagen, la imagen generada debe incluir el estilo de esta etiqueta."
   },
   "styleTag.glowRadioactive": {
-    "message": "Brillo radioactivo",
+    "message": "Resplandor radioactivo",
     "description": "Una palabra de estilo utilizada para describir y generar una imagen, la imagen generada debe incluir el estilo de esta etiqueta."
   },
   "styleTag.lavaGlow": {
-    "message": "Brillo de lava",
+    "message": "Resplandor de lava",
     "description": "Una palabra de estilo utilizada para describir y generar una imagen, la imagen generada debe incluir el estilo de esta etiqueta."
   },
   "styleTag.moonlight": {
@@ -604,7 +604,7 @@
     "description": "Una palabra de estilo utilizada para describir y generar una imagen, la imagen generada debe incluir el estilo de esta etiqueta."
   },
   "styleTag.nuclearWasteGlo": {
-    "message": "Residuos nucleares brillantes",
+    "message": "Resplandor de desechos nucleares",
     "description": "Una palabra de estilo utilizada para describir y generar una imagen, la imagen generada debe incluir el estilo de esta etiqueta."
   },
   "styleTag.quantumDot": {
@@ -1268,7 +1268,7 @@
     "description": "Una palabra de estilo utilizada para describir y generar una imagen, la imagen generada debe incluir el estilo de esta etiqueta."
   },
   "styleTag.ped": {
-    "message": "Ped",
+    "message": "ped",
     "description": "Una palabra de estilo utilizada para describir y generar una imagen, la imagen generada debe incluir el estilo de esta etiqueta."
   },
   "styleTag.disgusted": {
@@ -1477,11 +1477,11 @@
   },
   "button.fast": {
     "message": "Rápido",
-    "description": "Texto en el botón, que permite al usuario establecer el modo de 'velocidad rápida' a rápido para generar la imagen, debe traducirse como 'Velocidad rápida'"
+    "description": "Texto en el botón, que permite al usuario establecer el modo de 'velocidad rápida' para generar la imagen, debe traducirse como 'Velocidad rápida'"
   },
   "button.relax": {
     "message": "Lento",
-    "description": "Texto en el botón, que permite al usuario establecer el modo de 'velocidad lenta' a relajado para generar la imagen, debe traducirse como 'Velocidad lenta'"
+    "description": "Texto en el botón, que permite al usuario establecer el modo de 'velocidad lenta' para relajarse y generar la imagen, debe traducirse como 'Velocidad lenta'"
   },
   "button.turbo": {
     "message": "Turbo",
@@ -1524,11 +1524,11 @@
     "description": "ID de traza para rastrear la solicitud de generación de la imagen, no lo traduzca, manténgalo como 'ID de traza'"
   },
   "description.aspect": {
-    "message": "--aspecto, Cambia la relación de aspecto de la imagen generada, el valor predeterminado depende del modelo y el modo",
+    "message": "--aspect, Cambia la relación de aspecto de la imagen generada, el valor predeterminado depende del modelo y el modo",
     "description": "Descripción del parámetro de aspecto"
   },
   "description.chaos": {
-    "message": "--caos, Ajusta el grado de variación en la imagen generada, cuanto mayor sea el número, más única e inesperada será la imagen generada, el rango es 0-100, el valor predeterminado es 1",
+    "message": "--chaos, Ajusta el grado de variación en la imagen generada, cuanto mayor sea el número, más única e inesperada será la imagen generada, el rango es 0-100, el valor predeterminado es 1",
     "description": "Descripción del parámetro de caos"
   },
   "description.fast": {
@@ -1540,8 +1540,8 @@
     "description": "Descripción del parámetro iw"
   },
   "description.no": {
-    "message": "--excluir, Indica al sistema de generación que intente excluir ciertos elementos, por ejemplo, `--excluir plantas` intentará generar imágenes sin plantas, sin valor predeterminado",
-    "description": "Descripción del parámetro de exclusión, tradúzcalo como 'Excluir'"
+    "message": "--no, Indica al sistema de generación que intente excluir ciertos elementos, por ejemplo, `--no plantas` intentará generar imágenes sin plantas, sin valor predeterminado",
+    "description": "Descripción del parámetro no, tradúzcalo como 'Excluir'"
   },
   "description.quality": {
     "message": "--calidad, Establece la calidad y el tiempo de renderizado de la imagen generada, el rango es .25, .5 o 1, el valor predeterminado es 1",
@@ -1565,7 +1565,7 @@
   },
   "description.stop": {
     "message": "--detener, Detiene la tarea en cualquier etapa del proceso de generación, el rango es 10-100, el valor predeterminado es 100 (es decir, completamente generado)",
-    "description": "Descripción del parámetro de detención"
+    "description": "Descripción del parámetro de detener"
   },
   "description.style": {
     "message": "--estilo, cambia entre diferentes versiones o estilos de los modelos Midjourney o Niji, por ejemplo, crudo, lindo, expresivo, original, escénico, el valor predeterminado depende del modelo y el modo",
@@ -1596,7 +1596,7 @@
     "description": "Descripción del parámetro de peso de imagen"
   },
   "description.niji": {
-    "message": "--niji, Cuando está habilitado, las imágenes generadas utilizarán el modelo Niji, produciendo imágenes de estilo anime",
+    "message": "--niji, cuando está habilitado, las imágenes generadas usarán el modelo Niji, produciendo imágenes de estilo anime",
     "description": "Descripción del parámetro niji"
   },
   "description.uploadReferences": {
@@ -1604,11 +1604,11 @@
     "description": "Descripción del parámetro de subirReferencias"
   },
   "description.raw": {
-    "message": "--crudo, Cuando está habilitado, las imágenes generadas utilizarán el modelo Midjourney, produciendo imágenes de estilo original",
+    "message": "--crudo, cuando está habilitado, las imágenes generadas usarán el modelo Midjourney, produciendo imágenes de estilo original",
     "description": "Descripción del parámetro crudo"
   },
   "description.prompt": {
-    "message": "Ingrese comandos, si se agregan parámetros adicionales, anularán los parámetros preestablecidos predeterminados, por ejemplo, agregar `--estilizar 200` obligará al comando final a usar `--estilizar 200`",
+    "message": "Ingrese comandos, si se agregan parámetros adicionales, anularán los parámetros preestablecidos predeterminados, por ejemplo, agregar `--estilizar 200` forzará que el comando final use `--estilizar 200`",
     "description": "Descripción del campo de indicación"
   },
   "action.generate": {
@@ -1616,36 +1616,36 @@
     "description": "Descripción del botón de generar"
   },
   "action.upscale1": {
-    "message": "Aumentar la escala de la primera imagen",
-    "description": "Descripción del botón de aumentar escala 1"
+    "message": "Agrandar la primera imagen",
+    "description": "Descripción del botón de agrandar1"
   },
   "action.upscale2": {
-    "message": "Aumentar la escala de la segunda imagen",
-    "description": "Descripción del botón de aumentar escala 2"
+    "message": "Agrandar la segunda imagen",
+    "description": "Descripción del botón de agrandar2"
   },
   "action.upscale3": {
-    "message": "Aumentar la escala de la tercera imagen",
-    "description": "Descripción del botón de aumentar escala 3"
+    "message": "Agrandar la tercera imagen",
+    "description": "Descripción del botón de agrandar3"
   },
   "action.upscale4": {
-    "message": "Aumentar la escala de la cuarta imagen",
-    "description": "Descripción del botón de aumentar escala 4"
+    "message": "Agrandar la cuarta imagen",
+    "description": "Descripción del botón de agrandar4"
   },
   "action.variation1": {
     "message": "Ajustar la variación de la primera imagen",
-    "description": "Descripción del botón de ajustar variación 1"
+    "description": "Descripción del botón de variación1"
   },
   "action.variation2": {
     "message": "Ajustar la variación de la segunda imagen",
-    "description": "Descripción del botón de ajustar variación 2"
+    "description": "Descripción del botón de variación2"
   },
   "action.variation3": {
     "message": "Ajustar la variación de la tercera imagen",
-    "description": "Descripción del botón de ajustar variación 3"
+    "description": "Descripción del botón de variación3"
   },
   "action.variation4": {
     "message": "Ajustar la variación de la cuarta imagen",
-    "description": "Descripción del botón de ajustar variación 4"
+    "description": "Descripción del botón de variación4"
   },
   "action.reroll": {
     "message": "Volver a lanzar",
@@ -1653,19 +1653,19 @@
   },
   "action.high_variation": {
     "message": "Alta variación",
-    "description": "Descripción del botón de alta variación"
+    "description": "Descripción del botón de alta_variación"
   },
   "action.low_variation": {
     "message": "Baja variación",
-    "description": "Descripción del botón de baja variación"
+    "description": "Descripción del botón de baja_variación"
   },
   "action.zoom_out_2x": {
     "message": "Alejar 2x",
-    "description": "Descripción del botón de alejar 2x"
+    "description": "Descripción del botón de alejar_2x"
   },
   "action.zoom_out_1_5x": {
     "message": "Alejar 1.5x",
-    "description": "Descripción del botón de alejar 1.5x"
+    "description": "Descripción del botón de alejar_1_5x"
   },
   "action.square": {
     "message": "Cuadrado",
@@ -1673,39 +1673,39 @@
   },
   "action.pan_left": {
     "message": "Desplazar a la izquierda",
-    "description": "Descripción del botón de desplazar a la izquierda"
+    "description": "Descripción del botón de desplazar_izquierda"
   },
   "action.pan_up": {
     "message": "Desplazar hacia arriba",
-    "description": "Descripción del botón de desplazar hacia arriba"
+    "description": "Descripción del botón de desplazar_arriba"
   },
   "action.pan_down": {
     "message": "Desplazar hacia abajo",
-    "description": "Descripción del botón de desplazar hacia abajo"
+    "description": "Descripción del botón de desplazar_abajo"
   },
   "action.pan_right": {
     "message": "Desplazar a la derecha",
-    "description": "Descripción del botón de desplazar a la derecha"
+    "description": "Descripción del botón de desplazar_derecha"
   },
   "action.zoom_in_2x": {
     "message": "Acercar 2x",
-    "description": "Descripción del botón de acercar 2x"
+    "description": "Descripción del botón de acercar_2x"
   },
   "action.zoom_in_1_5x": {
     "message": "Acercar 1.5x",
-    "description": "Descripción del botón de acercar 1.5x"
+    "description": "Descripción del botón de acercar_1_5x"
   },
   "action.upscale_2x": {
-    "message": "Aumentar escala 2x",
-    "description": "Descripción del botón de aumentar escala 2x"
+    "message": "Agrandar 2x",
+    "description": "Descripción del botón de agrandar_2x"
   },
   "action.upscale_4x": {
-    "message": "Aumentar escala 4x",
-    "description": "Descripción del botón de aumentar escala 4x"
+    "message": "Agrandar 4x",
+    "description": "Descripción del botón de agrandar_4x"
   },
   "action.redo_upscale_2x": {
-    "message": "Rehacer aumento de escala 2x",
-    "description": "Descripción del botón de rehacer aumento de escala 2x"
+    "message": "Rehacer agrandamiento 2x",
+    "description": "Descripción del botón de rehacer_agrandamiento_2x"
   },
   "action.redo_upscale_4x": {
     "message": "Rehacer Ampliación 4x",
@@ -1716,7 +1716,7 @@
     "description": "Texto de marcador de posición en el campo de entrada"
   },
   "message.uploadReferencesExceed": {
-    "message": "Puede cargar como máximo 5 imágenes",
+    "message": "Puede cargar hasta 5 imágenes como máximo",
     "description": "Mensaje de error cuando el número de imágenes cargadas excede el límite"
   },
   "message.uploadReferencesSuccess": {
@@ -1804,8 +1804,8 @@
     "description": "El nombre del parámetro aleatorio, que se utiliza para agregar efectos de estilo aleatorio"
   },
   "name.relax": {
-    "message": "Relajado",
-    "description": "El nombre del modo relajado, que se utiliza para generar imágenes en modo 'velocidad lenta', traducirlo como 'Velocidad lenta'"
+    "message": "Lento",
+    "description": "El nombre del modo de relajación, que se utiliza para generar imágenes en modo 'velocidad lenta', traducirlo como 'Velocidad lenta'"
   },
   "name.repeat": {
     "message": "Repetir",
@@ -1837,7 +1837,7 @@
   },
   "name.weird": {
     "message": "Extraño",
-    "description": "El nombre del parámetro extraño, que se utiliza para explorar estilos estéticos poco comunes, traducirlo como 'Rareza'"
+    "description": "El nombre del parámetro de extraño, que se utiliza para explorar estilos estéticos poco comunes, traducirlo como 'Rareza'"
   },
   "name.translation": {
     "message": "Traducción",
