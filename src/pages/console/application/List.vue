@@ -16,7 +16,7 @@
               table-layout="fixed"
               :empty-text="$t('common.message.noData')"
             >
-              <el-table-column prop="id" :label="$t('application.field.id')" width="240px" class-name="text-center">
+              <el-table-column prop="id" :label="$t('application.field.id')" width="300px" class-name="text-center">
                 <template #default="scope">
                   <span>{{ scope.row.id }}</span>
                   <span class="copy">
@@ -49,7 +49,7 @@
                   <span>{{ getUsedAmount(scope.row) }}</span>
                 </template>
               </el-table-column>
-              <el-table-column fixed="right" width="360px">
+              <el-table-column fixed="right" width="120px">
                 <template #default="scope">
                   <div class="float-right">
                     <el-button type="primary" size="small" @click="onBuyMore(scope?.row)">
