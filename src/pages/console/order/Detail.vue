@@ -51,9 +51,9 @@
             <el-row v-if="order?.state === OrderState.PENDING || order?.state === OrderState.FAILED">
               <el-col :span="14" :offset="5">
                 <el-divider border-style="dashed" />
-                <div v-if="order.price && order.price > 0 && !order.pay_way" class="payways mb-4">
+                <div v-if="order.price && order.price > 0 && !order.pay_way" class="payways mb-6">
                   <div
-                    v-if="false"
+                    v-if="true"
                     :class="{
                       payway: true,
                       wechatpay: true,
@@ -62,7 +62,7 @@
                     @click="payWay = PayWay.WechatPay"
                   >
                     <span class="payicon wechatpay"></span>
-                    {{ $t('order.title.wechatPay') }}
+                    <span class="payname">{{ $t('order.title.wechatPay') }}</span>
                   </div>
                   <div
                     v-if="false"
@@ -74,10 +74,10 @@
                     @click="payWay = PayWay.AliPay"
                   >
                     <span class="payicon alipay"></span>
-                    {{ $t('order.title.aliPay') }}
+                    <span class="payname">{{ $t('order.title.aliPay') }}</span>
                   </div>
                   <div
-                    v-if="false"
+                    v-if="true"
                     :class="{
                       payway: true,
                       stripe: true,
@@ -86,7 +86,7 @@
                     @click="payWay = PayWay.Stripe"
                   >
                     <span class="payicon stripe"></span>
-                    {{ $t('order.title.stripe') }}
+                    <span class="payname">{{ $t('order.title.stripe') }}</span>
                   </div>
                 </div>
                 <div v-if="!order?.pay_way">
@@ -168,7 +168,7 @@ export default defineComponent({
   data(): IData {
     return {
       PayWay: PayWay,
-      payWay: PayWay.Stripe,
+      payWay: PayWay.WechatPay,
       OrderState: OrderState,
       order: undefined,
       loading: false,
@@ -245,78 +245,103 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.title {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
 .panel {
   padding: 30px;
   width: calc(100% - 300px);
   background-color: #f3f5f6;
-
-  .title {
-    font-size: 26px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
+  .el-card {
+    min-height: 500px;
   }
-}
-
-.order {
-  padding-top: 50px;
-  .price {
-    font-size: 20px;
-    font-weight: bold;
-    &.unfree {
-      color: #ff5441;
-    }
-    &.free {
-      color: #29c287;
+  .order {
+    padding-top: 50px;
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+      &.unfree {
+        color: #ff5441;
+      }
+      &.free {
+        color: #29c287;
+      }
     }
   }
-}
-.payways {
-  overflow: hidden;
-  .payway {
-    cursor: pointer;
-    font-size: 14px;
-    float: left;
-    width: 120px;
-    line-height: 40px;
-    text-align: center;
-    height: 40px;
-    border: 1px solid #eee;
-    &.active {
-      border: 1px solid #3879d1;
+  .payways {
+    overflow: hidden;
+    .payway {
+      cursor: pointer;
+      font-size: 14px;
+      float: left;
+      width: 120px;
+      line-height: 40px;
+      text-align: center;
+      height: 40px;
+      border: 2px solid #eee;
+      &:first-child {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+      }
+      &:last-child {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+      &:not(:last-child) {
+        border-right: none;
+      }
+      &.active {
+        border-top: 2px solid var(--el-color-primary);
+        border-right: 2px solid var(--el-color-primary);
+        border-bottom: 2px solid var(--el-color-primary);
+        border-left: 2px solid var(--el-color-primary);
+        & + .payway {
+          border-left: none;
+        }
+      }
     }
-  }
 
-  .payicon {
-    width: 20px;
-    height: 20px;
-    margin-top: 2px;
-    display: inline-block;
-    &.wechatpay {
+    .payname {
+      display: inline-block;
+      font-size: 12px;
+      margin-left: 5px;
       position: relative;
-      top: 3px;
-      width: 22px;
-      height: 19px;
-      background-image: url(//midas.gtimg.cn/enterprise/images/ep_new_sprites@2x.png);
-      background-repeat: no-repeat;
-      background-size: 60px 250px;
-      background-position: 0 -50px;
+      top: -2px;
     }
-    &.stripe {
-      position: relative;
-      top: 3px;
-      width: 22px;
-      height: 18px;
-      background-image: url(https://acedatacloud-1256437459.cos.ap-beijing.myqcloud.com/2023-08-27-164440.png);
-      background-size: contain;
-      background-repeat: no-repeat;
+
+    .payicon {
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      display: inline-block;
+      &.wechatpay {
+        position: relative;
+        top: 3px;
+        width: 22px;
+        height: 19px;
+        background-image: url(//midas.gtimg.cn/enterprise/images/ep_new_sprites@2x.png);
+        background-repeat: no-repeat;
+        background-size: 60px 250px;
+        background-position: 0 -50px;
+      }
+      &.stripe {
+        position: relative;
+        top: 3px;
+        width: 22px;
+        height: 18px;
+        background-image: url(//cdn.acedata.cloud/2023-08-27-164440.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
     }
   }
-}
 
-.btn-pay,
-.btn-repay {
-  width: 150px;
-  border-radius: 20px;
+  .btn-pay {
+    width: 150px;
+  }
 }
 </style>
