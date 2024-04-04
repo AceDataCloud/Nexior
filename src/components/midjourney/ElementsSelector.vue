@@ -2139,7 +2139,7 @@ export default defineComponent({
     margin-bottom: 8px;
     border-width: 3px;
     border-style: solid;
-    border-color: #eee;
+    border-color: var(--el-border-color);
     border-radius: 5px;
     overflow: hidden;
     cursor: pointer;

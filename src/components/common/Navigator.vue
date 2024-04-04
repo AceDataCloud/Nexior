@@ -4,7 +4,8 @@
     <chevron v-else class="chevron" direction="left" @click="onCollapseMenu"></chevron>
     <div class="top">
       <div v-if="!collapsed">
-        <img src="@/assets/images/logo.png" class="logo" @click="onHome" />
+        <logo @click="onHome" />
+        <dark-selector v-show="false" />
       </div>
       <el-menu v-if="!collapsed" :default-active="activeIndex">
         <el-menu-item
@@ -97,11 +98,15 @@ import {
   ROUTE_MIDJOURNEY_INDEX
 } from '@/router/constants';
 import Chevron from './Chevron.vue';
+import DarkSelector from './DarkSelector.vue';
+import Logo from './Logo.vue';
 
 export default defineComponent({
   name: 'Navigator',
   components: {
     ElButton,
+    Logo,
+    DarkSelector,
     ElTooltip,
     LocaleSelector,
     FontAwesomeIcon,
@@ -213,8 +218,16 @@ export default defineComponent({
   .el-menu {
     width: 180px;
     border-right: none;
+    background: none;
     .el-menu-item {
       height: 50px;
+      color: var(--el-text-color-primary);
+      &.active,
+      &:hover,
+      &:focus {
+        background-color: var(--el-button-hover-bg-color);
+        color: var(--el-color-primary);
+      }
     }
   }
 
@@ -248,11 +261,11 @@ export default defineComponent({
         height: 40px;
         border-radius: 10px;
         border: none;
-        background-color: var(--el-bg-color-page);
+        color: var(--el-text-color-primary);
+        background-color: var(--el-bg-color-overlay);
         &.active,
         &:hover,
         &:focus {
-          background-color: var(--el-button-hover-bg-color);
           color: var(--el-button-active-text-color);
         }
       }

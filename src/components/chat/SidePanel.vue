@@ -149,7 +149,7 @@ export default defineComponent({
   padding: 15px;
   width: 300px;
   height: 100%;
-  border-right: 1px solid #eee;
+  border-right: 1px solid var(--el-border-color);
   overflow-y: scroll;
 
   .conversations {
@@ -164,15 +164,15 @@ export default defineComponent({
       flex-direction: row;
       padding: 10px;
       margin-bottom: 5px;
-      border: 1px dashed hsl(0, 0%, 93%);
+      border: 1px dashed var(--el-border-color);
       line-height: 30px;
       border-radius: 10px;
-      color: #666;
+      color: var(--el-text-color-primary);
       cursor: pointer;
 
       &.active,
       &:hover {
-        background-color: #eee;
+        background-color: var(--el-fill-color-extra-light);
       }
 
       .icons {
@@ -189,10 +189,11 @@ export default defineComponent({
         overflow: hidden;
         text-overflow: ellipsis;
         padding-right: 8px;
-        color: #666;
+        color: var(--el-text-color-primary);
       }
       .operations {
         width: 40px;
+        color: var(--el-text-color-regular);
         .icon {
           cursor: pointer;
           font-size: 14px;

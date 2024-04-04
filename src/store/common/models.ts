@@ -9,9 +9,10 @@ export interface ISetting {
 
 export interface ICommonState {
   token: IToken;
-  user: IUser;
+  user?: IUser;
   setting?: ISetting;
   locale: string;
+  dark: boolean;
 }
 
 export interface IRootState extends ICommonState {

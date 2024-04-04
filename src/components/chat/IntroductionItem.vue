@@ -25,8 +25,9 @@ export default defineComponent({
 <style lang="scss" scoped>
 .introduction-item {
   font-size: 14px;
-  background-color: #eee;
-  color: #333;
+  background-color: var(--el-fill-color-extra-light);
+  color: var(--el-text-color-primary);
+  border: 1px solid var(--el-border-color-lighter);
   padding: 10px 20px;
   border-radius: 20px;
 }

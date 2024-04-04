@@ -121,7 +121,7 @@ $padding-left: 10px;
     cursor: pointer;
     margin-bottom: 5px;
     position: relative;
-    color: #444;
+    color: var(--el-text-color-primary);
     line-height: $height;
     padding-left: 10px;
     .suffix {
@@ -150,7 +150,7 @@ $padding-left: 10px;
       }
     }
     &:hover {
-      background-color: #ebedf1;
+      background-color: var(--el-fill-color-extra-light);
     }
   }
 }
