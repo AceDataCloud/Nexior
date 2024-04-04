@@ -249,13 +249,13 @@ export default defineComponent({
   font-size: 26px;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #333;
+  color: var(--el-text-color-primary);
 }
 
 .panel {
   padding: 30px;
   width: calc(100% - 300px);
-  background-color: #f3f5f6;
+  background-color: var(--el-bg-color-page);
   .el-card {
     min-height: 500px;
   }
@@ -282,7 +282,7 @@ export default defineComponent({
       line-height: 40px;
       text-align: center;
       height: 40px;
-      border: 2px solid #eee;
+      border: 2px solid var(--el-border-color);
       &:first-child {
         border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;

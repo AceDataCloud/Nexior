@@ -25,6 +25,10 @@ export const setToken = ({ commit }: ActionContext<IRootState, IRootState>, payl
   commit('setToken', payload);
 };
 
+export const setDark = ({ commit }: ActionContext<IRootState, IRootState>, payload: boolean) => {
+  commit('setDark', payload);
+};
+
 export const setLocale = ({ commit }: ActionContext<IRootState, IRootState>, payload: string) => {
   commit('setLocale', payload);
 };
@@ -63,6 +67,7 @@ export default {
   resetUser,
   resetSetting,
   setToken,
+  setDark,
   setUser,
   getToken,
   getUser

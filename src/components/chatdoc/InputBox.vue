@@ -12,7 +12,6 @@
     </span>
     <el-input
       v-model="questionValue"
-      :rows="3"
       :disabled="disabled"
       class="input"
       type="textarea"
@@ -89,6 +88,8 @@ export default defineComponent({
 .input-box {
   .input {
     textarea {
+      height: auto;
+      max-height: 100px;
       border: none;
       background: none;
       box-shadow: none;
@@ -112,7 +113,7 @@ export default defineComponent({
 .input-box {
   position: relative;
   width: 100%;
-  border: 1px solid #eee;
+  border: 1px solid var(--el-border-color);
   border-radius: 10px;
   background: none;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
@@ -132,13 +133,13 @@ export default defineComponent({
       right: 15px;
       &.disabled {
         .icon-send {
-          color: #eee;
+          color: var(--el-text-color-disabled);
         }
         cursor: not-allowed;
       }
       .icon-send {
         font-size: 16px;
-        color: #666;
+        color: var(--el-text-color-primary);
       }
     }
   }
@@ -147,7 +148,7 @@ export default defineComponent({
 .info {
   display: block;
   font-size: 12px;
-  color: #666;
+  color: var(--el-text-color-regular);
   margin-top: 5px;
   margin-left: 3px;
   margin-bottom: 0;

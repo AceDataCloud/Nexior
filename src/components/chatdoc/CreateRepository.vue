@@ -88,7 +88,7 @@ export default defineComponent({
   height: 50px;
   border-radius: 50%;
   margin-top: 5px;
-  background-color: #eee;
+  background-color: var(--el-bg-color-page);
   margin-bottom: 0;
 }
 

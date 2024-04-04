@@ -333,7 +333,7 @@ export default defineComponent({
   font-size: 26px;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #333;
+  color: var(--el-text-color-primary);
 }
 
 .item-mini {
@@ -343,7 +343,7 @@ export default defineComponent({
     width: 40px;
     line-height: 40px;
     border-radius: 50%;
-    background-color: #eee;
+    background-color: var(--el-bg-color-page);
     text-align: center;
     margin-bottom: 10px;
     .icon {
@@ -364,7 +364,7 @@ export default defineComponent({
     margin: 0;
   }
   .description {
-    color: #999;
+    color: var(--el-text-color-secondary);
     font-size: 14px;
     margin-bottom: 5px;
   }
@@ -415,13 +415,13 @@ export default defineComponent({
 .panel {
   padding: 30px;
   width: calc(100% - 300px);
-  background-color: #f3f5f6;
+  background-color: var(--el-bg-color-page);
   height: 100%;
   overflow-y: scroll;
 
   .message {
     font-size: 14px;
-    color: #666;
+    color: var(--el-text-color-regular);
   }
 }
 </style>

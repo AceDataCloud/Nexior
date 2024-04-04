@@ -2,6 +2,10 @@ import { createI18n, I18n } from 'vue-i18n';
 import { nextTick } from 'vue';
 import axios from 'axios';
 
+declare namespace Intl {
+  function getCanonicalLocales(locales: string | string[] | undefined): string[];
+}
+
 export const DEFAULT_LOCALE = 'en';
 
 export const SUPPORTED_LOCALES = [
@@ -41,6 +45,24 @@ export const loadLocalResource = async (name: string, locale: string) => {
     const module = await import(`./${DEFAULT_LOCALE}/${name}.json`);
     return module.default;
   }
+};
+
+export const getLocale = (): string => {
+  const canonicalLang = Intl.getCanonicalLocales(navigator.language)?.[0];
+  const supportedLocales = SUPPORTED_LOCALES.map((locale) => locale.value);
+  // if the canonical language is supported, use it
+  if (canonicalLang && supportedLocales.includes(canonicalLang)) {
+    console.debug('canonicalLang', canonicalLang);
+    return canonicalLang;
+  } else {
+    // if the canonical language prefix is supported, use it
+    const canonicalLangPrefix = canonicalLang?.split('-')?.[0];
+    if (canonicalLangPrefix && supportedLocales.includes(canonicalLangPrefix)) {
+      console.debug('canonicalLangPrefix', canonicalLangPrefix);
+      return canonicalLangPrefix;
+    }
+  }
+  return DEFAULT_LOCALE;
 };
 
 export const loadLocaleMessages = async (i18n: I18n, locale: string) => {
