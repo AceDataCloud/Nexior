@@ -132,7 +132,7 @@ export default defineComponent({
   width: 100%;
   height: 100%;
   padding: 20px;
-  background-color: #f2f3f5;
+  background-color: var(--el-bg-color-page);
   display: flex;
   flex-direction: column;
 }
@@ -141,12 +141,13 @@ export default defineComponent({
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 20px;
+  color: var(--el-text-color-primary);
 }
 
 .introduction {
   margin-bottom: 20px;
   font-size: 14px;
-  color: #666;
+  color: var(--el-text-color-regular);
 }
 
 .status {
@@ -184,12 +185,12 @@ export default defineComponent({
 
     .id {
       font-size: 12px;
-      color: #333;
+      color: var(--el-text-color-regular);
     }
 
     .description {
       font-size: 12px;
-      color: #666;
+      color: var(--el-text-color-regular);
     }
   }
 }

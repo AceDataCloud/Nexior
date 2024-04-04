@@ -130,23 +130,21 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .model-selector {
-  background-color: #ececf1;
+  background-color: var(--el-bg-color-page);
   padding: 7px 6px;
   border-radius: 15px;
   margin-bottom: 5px;
   .group {
     padding: 20px 30px;
-    color: black;
+    color: var(--el-text-color-primary);
     border: none;
     border-radius: 10px;
     margin: 0 3px;
     background-color: inherit;
     &:hover,
-    &:focus {
-      background-color: inherit;
-    }
+    &:focus,
     &.active {
-      background-color: white;
+      background-color: var(--el-fill-color-extra-light);
     }
     .icon {
       display: inline-block;
@@ -161,7 +159,7 @@ export default defineComponent({
     .fa-chevron-down {
       margin-left: 5px;
       font-weight: 100;
-      color: #999;
+      color: var(--el-text-color-primary);
       transform: scale(0.8);
     }
   }
@@ -171,6 +169,7 @@ export default defineComponent({
     .item {
       display: flex;
       flex-direction: row;
+
       .icon {
         width: 15px;
         display: flex;
@@ -190,12 +189,12 @@ export default defineComponent({
         .name {
           font-size: 14px;
           font-weight: bold;
-          color: #333;
+          color: var(--el-text-color-primary);
           margin: 0;
         }
         .description {
           font-size: 12px;
-          color: #999;
+          color: var(--el-text-color-secondary);
           margin: 0;
         }
       }

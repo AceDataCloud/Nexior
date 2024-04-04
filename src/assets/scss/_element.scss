@@ -1,14 +1,4 @@
-@forward 'element-plus/theme-chalk/src/common/var.scss' with (
-  $colors: (
-    'primary': (
-      'base': #277186
-    ),
-    'danger': (
-      'base': #ec4450
-    )
-  )
-);
-
 $--font-path: 'element-plus/theme-chalk/src/fonts';
 
 @import 'element-plus/theme-chalk/src/index.scss';
+@import 'element-plus/theme-chalk/dark/css-vars.css';

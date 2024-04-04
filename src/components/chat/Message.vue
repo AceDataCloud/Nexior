@@ -158,7 +158,7 @@ export default defineComponent({
     align-items: start;
     .content {
       background-color: var(--el-bg-color-page);
-      color: var(--el-color-black);
+      color: var(--el-text-color-primary);
       border-bottom-left-radius: 0;
     }
   }

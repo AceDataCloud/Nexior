@@ -56,7 +56,6 @@ export default defineComponent({
   border-right: 1px solid var(--el-border-color);
   height: 100%;
   padding: 10px;
-  background-color: var(--el-bg-color);
   .block {
     margin-bottom: 15px;
   }

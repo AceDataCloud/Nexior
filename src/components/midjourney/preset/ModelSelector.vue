@@ -81,7 +81,7 @@ export default defineComponent({
   .item {
     width: 115px;
     height: 60px;
-    border: 2px solid #eee;
+    border: 2px solid var(--el-border-color);
     display: flex;
     flex-direction: column;
     align-items: center;

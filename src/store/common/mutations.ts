@@ -12,6 +12,10 @@ export const setLocale = (state: IRootState, payload: string): void => {
   state.locale = payload;
 };
 
+export const setDark = (state: IRootState, payload: boolean): void => {
+  state.dark = payload;
+};
+
 export const setToken = (state: IRootState, payload: any): void => {
   state.token = {
     ...state.token,
@@ -43,6 +47,7 @@ export default {
   setUser,
   resetUser,
   setToken,
+  setDark,
   resetToken,
   setSetting,
   resetSetting

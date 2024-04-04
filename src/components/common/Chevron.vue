@@ -32,7 +32,7 @@ export default defineComponent({
   border-radius: 50%;
   padding: 5px 6px;
   cursor: pointer;
-  color: var(--el-color-black);
-  background: var(--el-color-white);
+  background-color: inherit;
+  color: var(--el-text-color-primary);
 }
 </style>

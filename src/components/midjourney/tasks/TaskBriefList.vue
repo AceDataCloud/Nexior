@@ -85,7 +85,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .description {
   font-size: 14px;
-  color: #333;
+  color: var(--el-text-color-secondary);
 }
 
 .tasks {

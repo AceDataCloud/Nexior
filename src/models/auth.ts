@@ -1,6 +1,7 @@
 export interface IToken {
   access?: string;
   refresh?: string;
+  expiration?: number;
 }
 
 export interface ITokenResponse extends IToken {}

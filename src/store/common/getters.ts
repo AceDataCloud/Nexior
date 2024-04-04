@@ -8,6 +8,10 @@ export const user = (state: IRootState): any => {
   return state.user;
 };
 
+export const dark = (state: IRootState): boolean => {
+  return state.dark;
+};
+
 export const locale = (state: IRootState): string => {
   return state.locale;
 };
@@ -25,5 +29,6 @@ export default {
   authenticated,
   user,
   token,
+  dark,
   setting
 };

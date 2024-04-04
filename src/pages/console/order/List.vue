@@ -191,13 +191,13 @@ export default defineComponent({
 .panel {
   padding: 30px;
   width: calc(100% - 300px);
-  background-color: #f3f5f6;
+  background-color: var(--el-bg-color-page);
 
   .title {
     font-size: 26px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #333;
+    color: var(--el-text-color-primary);
   }
   .el-table {
     min-height: calc(100vh - 300px);
