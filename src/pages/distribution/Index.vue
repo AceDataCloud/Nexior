@@ -18,7 +18,7 @@
                 <p class="description">{{ $t('distribution.title.price') }}</p>
                 <p class="value">${{ distributionStatus?.price?.toFixed(2) }}</p>
               </div>
-              <el-button type="primary" size="small" class="btn" @click="goHistory"
+              <el-button type="primary" round size="small" class="btn" @click="goHistory"
                 >{{ $t('distribution.button.detail') }}
               </el-button>
             </div>
@@ -36,7 +36,7 @@
                 <p class="value">${{ distributionStatus?.reward?.toFixed(2) }}</p>
               </div>
               <el-tooltip effect="dark" :content="$t('distribution.message.developingWithDrawal')" placement="top">
-                <el-button type="primary" size="small" class="btn"
+                <el-button type="primary" round size="small" class="btn"
                   >{{ $t('distribution.button.withdrawal') }}
                 </el-button>
               </el-tooltip>
@@ -68,7 +68,7 @@
                 <p class="description">{{ $t('distribution.title.inviteesCount') }}</p>
                 <p class="value">{{ inviteesCount }}</p>
               </div>
-              <el-button type="primary" size="small" class="btn" @click="goInvitees"
+              <el-button type="primary" round size="small" class="btn" @click="goInvitees"
                 >{{ $t('distribution.button.detail') }}
               </el-button>
             </div>
@@ -364,7 +364,7 @@ export default defineComponent({
     margin: 0;
   }
   .description {
-    color: var(--el-text-color-secondary);
+    color: var(--el-text-color-regular);
     font-size: 14px;
     margin-bottom: 5px;
   }
@@ -406,7 +406,7 @@ export default defineComponent({
     font-size: 14px;
     margin-bottom: 10px;
     .more {
-      color: var(--el-color-primary);
+      color: var(--el-color-regular);
       cursor: pointer;
     }
   }

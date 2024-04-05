@@ -90,12 +90,12 @@
                   </div>
                 </div>
                 <div v-if="!order?.pay_way">
-                  <el-button :loading="prepaying" type="primary" size="large" class="btn-pay" @click="onPay">{{
+                  <el-button :loading="prepaying" round type="primary" size="large" class="btn-pay" @click="onPay">{{
                     $t('common.button.pay')
                   }}</el-button>
                 </div>
                 <div v-else>
-                  <el-button type="primary" size="large" class="btn-repay" @click="onRepay">{{
+                  <el-button type="primary" round size="large" class="btn-repay" @click="onRepay">{{
                     $t('common.button.repay')
                   }}</el-button>
                 </div>
