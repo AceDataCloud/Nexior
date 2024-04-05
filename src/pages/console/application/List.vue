@@ -52,7 +52,7 @@
               <el-table-column fixed="right" width="120px">
                 <template #default="scope">
                   <div class="float-right">
-                    <el-button type="primary" size="small" @click="onBuyMore(scope?.row)">
+                    <el-button type="primary" round size="small" @click="onBuyMore(scope?.row)">
                       {{ $t('application.button.buyMore') }}
                     </el-button>
                   </div>

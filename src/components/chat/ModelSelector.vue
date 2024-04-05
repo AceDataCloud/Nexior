@@ -97,7 +97,15 @@ export default defineComponent({
   },
   computed: {
     model() {
-      return this.$store.state.chat.model;
+      const modelName = this.$store.state.chat.model.name;
+      const model = [
+        CHAT_MODEL_GPT_3_5,
+        CHAT_MODEL_GPT_3_5_BROWSING,
+        CHAT_MODEL_GPT_4,
+        CHAT_MODEL_GPT_4_BROWSING,
+        CHAT_MODEL_GPT_4_VISION
+      ].find((model) => model.name === modelName);
+      return model;
     }
   },
   methods: {

@@ -40,14 +40,7 @@ import axios from 'axios';
 import { defineComponent } from 'vue';
 import Message from '@/components/chat/Message.vue';
 import { ROLE_ASSISTANT, ROLE_USER } from '@/constants';
-import {
-  IChatModel,
-  IApplication,
-  IChatMessageState,
-  IChatConversationResponse,
-  IChatConversation,
-  IChatMessage
-} from '@/models';
+import { IChatModel, IChatMessageState, IChatConversationResponse, IChatConversation, IChatMessage } from '@/models';
 import InputBox from '@/components/chat/InputBox.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
