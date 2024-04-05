@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/hub
 
-This log was last generated on Thu, 04 Apr 2024 18:13:26 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Apr 2024 06:40:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.16.1
+
+Fri, 05 Apr 2024 06:40:33 GMT
+
+### Patches
+
+- fix wrong model name (germey@acedata.cloud)
 
 ## 0.16.0
 
