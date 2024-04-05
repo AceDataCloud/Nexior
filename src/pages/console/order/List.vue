@@ -23,17 +23,7 @@
                   <span class="price">¥{{ scope.row?.price?.toFixed(2) }}</span>
                 </template>
               </el-table-column>
-              <el-table-column :label="$t('order.field.createdAt')" width="180px">
-                <template #default="scope">
-                  <span class="created-at">{{ $dayjs.format(scope.row.created_at) }}</span>
-                </template>
-              </el-table-column>
-              <el-table-column :label="$t('order.field.description')" width="300px">
-                <template #default="scope">
-                  <span class="description">{{ scope.row.description }}</span>
-                </template>
-              </el-table-column>
-              <el-table-column prop="state" :label="$t('order.field.state')" class-name="text-center">
+              <el-table-column prop="state" :label="$t('order.field.state')" class-name="text-center" width="120px">
                 <template #default="scope">
                   <span v-if="scope.row.state === OrderState?.PENDING">
                     <el-tag type="info" class="mx-1" effect="dark">{{ $t('order.state.pending') }}</el-tag>
@@ -49,13 +39,24 @@
                   </span>
                 </template>
               </el-table-column>
-              <el-table-column min-width="120px">
+              <el-table-column :label="$t('order.field.description')" width="300px">
+                <template #default="scope">
+                  <span class="description">{{ scope.row.description }}</span>
+                </template>
+              </el-table-column>
+              <el-table-column :label="$t('order.field.createdAt')" width="180px">
+                <template #default="scope">
+                  <span class="created-at">{{ $dayjs.format(scope.row.created_at) }}</span>
+                </template>
+              </el-table-column>
+              <el-table-column fixed="right" min-width="120px">
                 <template #default="scope">
                   <div class="float-right">
                     <el-button
                       v-if="scope.row.state !== OrderState.PAID"
                       type="primary"
                       size="small"
+                      round
                       @click="
                         $router.push({
                           name: 'console-order-detail',
@@ -70,6 +71,7 @@
                     <el-button
                       v-else
                       size="small"
+                      round
                       @click="
                         $router.push({
                           name: 'console-order-detail',

@@ -10,7 +10,7 @@
       @refresh="onGetApplications"
     />
     <task-full-list @custom="onCustom" />
-    <el-button type="primary" class="btn btn-generate" @click="onGenerateNew">
+    <el-button type="primary" round class="btn btn-generate" @click="onGenerateNew">
       <font-awesome-icon icon="fa-solid fa-chevron-left" class="icon icon-rotate mr-1" />
       {{ $t('midjourney.button.generateNew') }}
     </el-button>
