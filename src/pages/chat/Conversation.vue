@@ -83,7 +83,6 @@ export default defineComponent({
   },
   computed: {
     model() {
-      console.log('model', this.$store.state.chat.model);
       return this.$store.state.chat.model;
     },
     conversationId(): string | undefined {
