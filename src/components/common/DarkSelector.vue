@@ -1,41 +1,52 @@
 <template>
-  <dark-switch class="switch" dark-background="#333" light-background="#fff" />
+  <el-button :class="{ active: !!dark }" @click="setDark(!dark)">
+    <font-awesome-icon v-if="dark" icon="fa-solid fa-moon" />
+    <font-awesome-icon v-else icon="fa-solid fa-moon" />
+  </el-button>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Switch as DarkSwitch, toggleDark, isDark } from 'vue-dark-switch';
+import { toggleDark } from 'vue-dark-switch';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { ElButton } from 'element-plus';
 
 export default defineComponent({
   components: {
-    DarkSwitch
+    FontAwesomeIcon,
+    ElButton
   },
   emits: ['update:dark'],
   computed: {
     dark() {
       return this.$store.getters.dark;
-    },
-    switchValue() {
-      return isDark.value;
     }
+    // switchValue() {
+    //   return isDark.value;
+    // }
   },
   watch: {
-    switchValue(val) {
-      console.log('switchValue', val);
-      this.$store.dispatch('setDark', val);
-    },
     dark(val) {
-      document.documentElement.classList.toggle('dark', val);
-      this.$store.dispatch('setDark', this.dark);
+      this.setDark(val);
     }
+    // switchValue(val) {
+    //   console.log('switchValue', val);
+    //   // this.$store.dispatch('setDark', val);
+    // }
   },
   mounted() {
-    if (this.dark) {
-      toggleDark(true);
-      document.documentElement.classList.add('dark');
-    } else {
-      toggleDark(false);
-      document.documentElement.classList.remove('dark');
+    console.log('mounted', this.dark);
+    this.setDark(this.dark);
+  },
+  methods: {
+    setDark(flag: boolean) {
+      toggleDark(flag);
+      this.$store.dispatch('setDark', flag);
+      if (flag === true) {
+        document.documentElement.classList.add('dark');
+      } else if (flag === false) {
+        document.documentElement.classList.remove('dark');
+      }
     }
   }
 });

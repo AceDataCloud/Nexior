@@ -9,6 +9,7 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 import {
   faChevronRight as faSolidChevronRight,
+  faMoon as faSolidMoon,
   faChevronLeft as faSolidChevronLeft,
   faFire as faSolidFire,
   faBook as faSolidBook,
@@ -71,6 +72,7 @@ library.add(faSolidCheck);
 library.add(faSolidLocationArrow);
 library.add(faRegularUser);
 library.add(faRegularSun);
+library.add(faSolidMoon);
 library.add(faSolidBolt);
 library.add(faSolidBook);
 library.add(faSolidGear);
