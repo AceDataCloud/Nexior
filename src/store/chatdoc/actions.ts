@@ -29,16 +29,26 @@ export const setRepository = async ({ commit }: any, payload: { repository: ICha
 
 export const getApplication = async ({
   commit,
-  rootState
+  rootState,
+  state
 }: ActionContext<IChatdocState, IRootState>): Promise<IApplication> => {
-  log(getApplication, 'start to get application for chat');
-  const { data: applications } = await applicationOperator.getAll({
-    user_id: rootState.user.id,
-    service_id: CHATDOC_SERVICE_ID
+  return new Promise(async (resolve, reject) => {
+    state.status.getApplication = Status.Request;
+    applicationOperator
+      .getAll({
+        user_id: rootState?.user?.id,
+        service_id: CHATDOC_SERVICE_ID
+      })
+      .then((response) => {
+        state.status.getApplication = Status.Success;
+        commit('setApplication', response.data.items[0]);
+        resolve(response.data.items[0]);
+      })
+      .catch((error) => {
+        state.status.getApplication = Status.Error;
+        reject(error);
+      });
   });
-  log(getApplication, 'get application for chat success', applications);
-  commit('setApplication', applications?.items?.[0]);
-  return applications.items?.[0];
 };
 
 export const resetAll = ({ commit }: ActionContext<IChatdocState, IRootState>): void => {
