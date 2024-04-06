@@ -17,10 +17,10 @@ export const setApplication = (state: IChatdocState, payload: IApplication): voi
 
 export const setRepositories = (state: IChatdocState, payload: IChatdocRepository[]): void => {
   const currentRepositories = state.repositories;
-  if (currentRepositories) {
+  if (currentRepositories && payload) {
     // merge current repositories into payload
     payload.forEach((repository: IChatdocRepository) => {
-      const index = currentRepositories.findIndex((item: IChatdocRepository) => item.id === repository.id);
+      const index = currentRepositories?.findIndex((item: IChatdocRepository) => item.id === repository.id);
       if (index !== -1) {
         payload[index] = {
           ...currentRepositories[index],
