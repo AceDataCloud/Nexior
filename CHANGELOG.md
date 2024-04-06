@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/hub
 
-This log was last generated on Sat, 06 Apr 2024 10:06:57 GMT and should not be manually modified.
+This log was last generated on Sat, 06 Apr 2024 13:52:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.17.3
+
+Sat, 06 Apr 2024 13:52:35 GMT
+
+### Patches
+
+- fix error json parse for chat (cqc@cuiqingcai.com)
 
 ## 0.17.2
 
