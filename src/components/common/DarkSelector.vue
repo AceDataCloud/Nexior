@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { toggleDark, isDark } from 'vue-dark-switch';
+import { toggleDark } from 'vue-dark-switch';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ElButton } from 'element-plus';
 
