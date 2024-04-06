@@ -38,7 +38,7 @@
       </span>
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" size="large" class="btn-create" :loading="creating" @click="onCreateOrder">
+      <el-button type="primary" round size="large" class="btn-create" :loading="creating" @click="onCreateOrder">
         {{ $t('application.button.createOrder') }}
       </el-button>
     </el-form-item>

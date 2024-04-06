@@ -112,7 +112,6 @@ export default defineComponent({
       application: undefined,
       loading: false,
       form: {
-        amount: 1000,
         packageId: undefined
       },
       creating: false
@@ -165,13 +164,13 @@ export default defineComponent({
       orderOperator
         .create({
           application_id: this.application?.id,
-          amount: this.form.amount,
+          amount: this.package?.amount,
           ...(this.form.packageId !== 'custom' && this.package
             ? {
                 package_id: this.package.id
               }
             : {}),
-          description: `${this.application?.service?.title} x ${this.form.amount} ${unit}`
+          description: `${this.application?.service?.title} x ${this.package?.amount} ${unit}`
         })
         .then(({ data: data }: { data: IOrderDetailResponse }) => {
           this.creating = false;
