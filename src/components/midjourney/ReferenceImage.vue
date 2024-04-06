@@ -12,7 +12,7 @@
       :on-error="onError"
       :headers="headers"
     >
-      <el-button type="primary" class="btn btn-upload">
+      <el-button round type="primary" class="btn btn-upload">
         <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-2" />
         {{ $t('midjourney.button.uploadReferences') }}
       </el-button>

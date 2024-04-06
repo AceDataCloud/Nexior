@@ -16,7 +16,9 @@
     <div v-for="(task, taskKey) in tasks" :key="taskKey" class="task">
       <task-preview :full="false" :model-value="task" @custom="$emit('custom', $event)" />
     </div>
-    <el-button type="primary" class="btn mb-4" @click="onLoadHistory">{{ $t('midjourney.button.history') }}</el-button>
+    <el-button type="primary" round class="btn mb-4" @click="onLoadHistory">{{
+      $t('midjourney.button.history')
+    }}</el-button>
   </div>
 </template>
 
