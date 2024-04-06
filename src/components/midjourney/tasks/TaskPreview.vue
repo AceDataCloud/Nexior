@@ -93,7 +93,7 @@
     <div class="extra">
       <p v-if="modelValue?.created_at" class="datetime">
         <font-awesome-icon icon="fa-regular fa-clock" class="mr-1" />
-        {{ $dayjs.format(new Date(parseFloat(modelValue?.created_at) * 1000)) }}
+        {{ $dayjs.format('' + new Date(parseFloat(modelValue?.created_at) * 1000)) }}
       </p>
     </div>
   </div>
@@ -337,8 +337,7 @@ export default defineComponent({
         width: 100%;
         height: 100%;
         background: var(--el-fill-color-light);
-        color: var(--el-text-color-secondary);
-        // font-size: 30px;
+        color: var(--el-text-color-regular);
       }
     }
     .progress {
@@ -362,7 +361,7 @@ export default defineComponent({
     flex-wrap: wrap;
     overflow: hidden;
     text-align: center;
-    color: #666;
+    color: var(--el-text-color-regular);
     font-size: 14px;
     overflow-y: scroll;
 
@@ -380,7 +379,7 @@ export default defineComponent({
     .datetime,
     .prompt {
       font-size: 12px;
-      color: #666;
+      color: var(--el-text-color-regular);
       margin-bottom: 5px;
     }
   }
