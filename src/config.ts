@@ -54,6 +54,11 @@ export default {
     locale: true,
 
     /**
+     * Show dark entry in left navigation.
+     */
+    darkMode: true,
+
+    /**
      * Show console entry in left navigation.
      */
     console: true,

@@ -5,7 +5,6 @@
     <div class="top">
       <div v-if="!collapsed">
         <logo @click="onHome" />
-        <dark-selector v-show="false" />
       </div>
       <el-menu v-if="!collapsed" :default-active="activeIndex">
         <el-menu-item
@@ -47,6 +46,11 @@
       </el-menu>
     </div>
     <div v-else class="bottom">
+      <div v-if="$config.navigation?.darkMode" class="link">
+        <el-tooltip effect="dark" :content="$t('common.nav.darkMode')" placement="right">
+          <dark-selector class="button" />
+        </el-tooltip>
+      </div>
       <div v-if="$config.navigation?.locale" class="link">
         <el-tooltip effect="dark" :content="$t('common.nav.locale')" placement="right">
           <el-button class="button">
@@ -84,6 +88,7 @@ import { defineComponent } from 'vue';
 import { ElButton, ElTooltip, ElMenu, ElMenuItem } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import LocaleSelector from './LocaleSelector.vue';
+import DarkSelector from './DarkSelector.vue';
 import {
   ROUTE_CHATDOC_INDEX,
   ROUTE_CHATDOC_CONVERSATION,
@@ -98,7 +103,6 @@ import {
   ROUTE_MIDJOURNEY_INDEX
 } from '@/router/constants';
 import Chevron from './Chevron.vue';
-import DarkSelector from './DarkSelector.vue';
 import Logo from './Logo.vue';
 
 export default defineComponent({
@@ -262,7 +266,7 @@ export default defineComponent({
         border-radius: 10px;
         border: none;
         color: var(--el-text-color-primary);
-        background-color: var(--el-bg-color-overlay);
+        background-color: var(--el-bg-color-page);
         &.active,
         &:hover,
         &:focus {

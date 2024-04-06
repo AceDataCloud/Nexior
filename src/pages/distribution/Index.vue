@@ -376,7 +376,7 @@ export default defineComponent({
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #333;
+    color: var(--el-text-color-primary);
   }
   .icon {
     margin-right: 5px;
@@ -385,7 +385,7 @@ export default defineComponent({
     padding: 15px 0;
     p {
       text-align: center;
-      color: #999;
+      color: var(--el-text-color-regular);
       font-size: 12px;
     }
   }
@@ -402,7 +402,7 @@ export default defineComponent({
   }
 
   .description {
-    color: #999;
+    color: var(--el-text-color-regular);
     font-size: 14px;
     margin-bottom: 10px;
     .more {
