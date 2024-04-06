@@ -258,12 +258,12 @@ export default defineComponent({
               code: ERROR_CODE_CANCELED
             };
           } else if (error?.response?.data) {
-            let data = error?.response?.data?.error;
+            let data = error?.response?.data;
             if (isJSONString(data)) {
               data = JSON.parse(data);
             }
             if (this.messages && this.messages.length > 0) {
-              this.messages[this.messages.length - 1].error = data;
+              this.messages[this.messages.length - 1].error = data.error;
             }
           } else {
             if (this.messages && this.messages.length > 0) {
