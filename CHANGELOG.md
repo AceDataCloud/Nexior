@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/hub
 
-This log was last generated on Sat, 06 Apr 2024 05:28:44 GMT and should not be manually modified.
+This log was last generated on Sat, 06 Apr 2024 06:59:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.17.0
+
+Sat, 06 Apr 2024 06:59:17 GMT
+
+### Minor changes
+
+- add dark mode switch (cqc@cuiqingcai.com)
 
 ## 0.16.2
 
