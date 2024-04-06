@@ -49,7 +49,7 @@
             </el-table-column>
             <el-table-column>
               <template #default="scope">
-                <el-button type="danger" size="small" @click="onDelete(scope.row.id)">
+                <el-button type="danger" round size="small" @click="onDelete(scope.row.id)">
                   {{ $t('common.button.delete') }}
                 </el-button>
               </template>

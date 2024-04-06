@@ -26,6 +26,10 @@
                     <el-descriptions-item v-if="order?.application?.service" :label="$t('order.field.api')">
                       {{ order?.application?.service?.title }}
                     </el-descriptions-item>
+                    <el-descriptions-item v-if="order?.pay_way" :label="$t('order.field.payWay')">
+                      <span v-if="order?.pay_way === PayWay.WechatPay">{{ $t('order.title.wechatPay') }}</span>
+                      <span v-if="order?.pay_way === PayWay.Stripe">{{ $t('order.title.stripe') }}</span>
+                    </el-descriptions-item>
                     <el-descriptions-item :label="$t('order.field.amount')">
                       {{ order?.amount }} {{ $t(`service.unit.${order?.application?.service?.unit}`) }}
                     </el-descriptions-item>
@@ -46,6 +50,12 @@
               <el-col :span="14" :offset="5">
                 <el-divider border-style="dashed" />
                 <el-alert :title="$t('order.message.paidSuccessfully')" type="success" show-icon :closable="false" />
+              </el-col>
+            </el-row>
+            <el-row v-if="order?.state === OrderState.EXPIRED" class="mb-5">
+              <el-col :span="14" :offset="5">
+                <el-divider border-style="dashed" />
+                <el-alert :title="$t('order.message.orderExpired')" type="error" show-icon :closable="false" />
               </el-col>
             </el-row>
             <el-row v-if="order?.state === OrderState.PENDING || order?.state === OrderState.FAILED">
