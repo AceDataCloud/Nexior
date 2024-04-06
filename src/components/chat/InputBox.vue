@@ -1,27 +1,27 @@
 <template>
+  <el-upload
+    v-if="canUpload"
+    v-model:file-list="fileList"
+    :class="{
+      upload: true
+    }"
+    :disabled="!canUpload"
+    name="file"
+    :show-file-list="true"
+    :limit="1"
+    :multiple="false"
+    :action="uploadUrl"
+    :on-exceed="onExceed"
+    :on-error="onError"
+    :headers="headers"
+  >
+    <el-tooltip class="box-item" effect="dark" :content="$t('chat.message.uploadFile')" placement="top">
+      <span class="btn btn-upload">
+        <font-awesome-icon icon="fa-solid fa-paperclip" class="icon icon-attachment" />
+      </span>
+    </el-tooltip>
+  </el-upload>
   <div class="input-box">
-    <el-upload
-      v-model:file-list="fileList"
-      :class="{
-        upload: true,
-        disabled: !canUpload
-      }"
-      :disabled="!canUpload"
-      name="file"
-      :show-file-list="true"
-      :limit="1"
-      :multiple="false"
-      :action="uploadUrl"
-      :on-exceed="onExceed"
-      :on-error="onError"
-      :headers="headers"
-    >
-      <el-tooltip class="box-item" effect="dark" :content="$t('chat.message.uploadFile')" placement="top">
-        <span class="btn btn-upload">
-          <font-awesome-icon icon="fa-solid fa-paperclip" class="icon icon-attachment" />
-        </span>
-      </el-tooltip>
-    </el-upload>
     <span
       :class="{
         btn: true,
@@ -138,6 +138,14 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+.upload {
+  display: flex;
+  height: 40px;
+  .el-upload-list {
+    flex: 1;
+  }
+}
+
 .input-box {
   position: relative;
   .input {
@@ -150,11 +158,6 @@ export default defineComponent({
       resize: none;
       line-height: 30px;
     }
-  }
-  .el-upload-list {
-    position: absolute;
-    width: 400px;
-    bottom: 45px;
   }
 
   .el-textarea.is-disabled .el-textarea__inner {
@@ -171,7 +174,7 @@ export default defineComponent({
   background: none;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
   .upload {
-    display: inline-block;
+    display: block;
     &.disabled {
       .btn-upload {
         cursor: not-allowed;
@@ -184,7 +187,6 @@ export default defineComponent({
   .input {
     border: none;
     width: calc(100% - 80px);
-    margin-left: 30px;
   }
   .btn {
     display: block;

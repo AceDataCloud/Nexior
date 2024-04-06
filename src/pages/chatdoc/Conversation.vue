@@ -256,7 +256,7 @@ export default defineComponent({
   .dialogue {
     flex: 1;
     overflow-y: scroll;
-    padding: 20px 0;
+    margin: 15px 0;
     position: relative;
     .messages {
       .message {
