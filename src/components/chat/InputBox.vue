@@ -1,53 +1,56 @@
 <template>
-  <el-upload
-    v-if="canUpload"
-    v-model:file-list="fileList"
-    :class="{
-      upload: true
-    }"
-    :disabled="!canUpload"
-    name="file"
-    :show-file-list="true"
-    :limit="1"
-    :multiple="false"
-    :action="uploadUrl"
-    :on-exceed="onExceed"
-    :on-error="onError"
-    :headers="headers"
-  >
-    <el-tooltip class="box-item" effect="dark" :content="$t('chat.message.uploadFile')" placement="top">
-      <span class="btn btn-upload">
-        <font-awesome-icon icon="fa-solid fa-paperclip" class="icon icon-attachment" />
-      </span>
-    </el-tooltip>
-  </el-upload>
   <div class="input-box">
+    <el-upload
+      v-model:file-list="fileList"
+      :class="{
+        upload: true,
+        disabled: !canUpload
+      }"
+      :disabled="!canUpload"
+      name="file"
+      :show-file-list="true"
+      :limit="1"
+      :multiple="false"
+      :action="uploadUrl"
+      :on-exceed="onExceed"
+      :on-error="onError"
+      :headers="headers"
+    >
+      <el-tooltip class="box-item" effect="dark" :content="$t('chat.message.uploadFile')" placement="top">
+        <span class="btn btn-upload">
+          <font-awesome-icon icon="fa-solid fa-paperclip" class="icon icon-attachment" />
+        </span>
+      </el-tooltip>
+    </el-upload>
     <span
       :class="{
         btn: true,
         'btn-send': true,
-        disabled: !question
+        disabled: !questionValue
       }"
       @click="onSubmit"
     >
       <font-awesome-icon icon="fa-solid fa-location-arrow" class="icon icon-send" />
     </span>
-    <el-input
+    <!-- add this textarea -->
+    <textarea
+      ref="textarea"
       v-model="questionValue"
       :disabled="disabled"
       class="input"
-      type="textarea"
       :placeholder="$t('chat.message.newMessagePlaceholder')"
+      :style="{ height: inputHeight }"
       @keydown.enter.exact.prevent="onSubmit"
-    >
-    </el-input>
+      @input="adjustTextareaHeight"
+    ></textarea>
   </div>
   <p class="info">{{ $t('chat.message.howToUse') }}</p>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElInput, ElMessage, ElTooltip, ElUpload } from 'element-plus';
+// import { ElInput, ElMessage, ElTooltip, ElUpload } from 'element-plus';
+import { ElMessage, ElTooltip, ElUpload } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IChatModel } from '@/models';
 import { getBaseUrlData } from '@/utils';
@@ -56,7 +59,7 @@ import { CHAT_MODEL_GPT_4_VISION } from '@/constants';
 export default defineComponent({
   name: 'InputBox',
   components: {
-    ElInput,
+    // ElInput,
     ElTooltip,
     FontAwesomeIcon,
     ElUpload
@@ -80,6 +83,7 @@ export default defineComponent({
   emits: ['update:question', 'update:references', 'submit'],
   data() {
     return {
+      inputHeight: '35px', //add inputHeight
       questionValue: this.question,
       fileList: [],
       uploadUrl: getBaseUrlData() + '/api/v1/files/'
@@ -121,6 +125,16 @@ export default defineComponent({
     }
   },
   methods: {
+    // add textarea method
+    adjustTextareaHeight() {
+      this.$nextTick(() => {
+        const textarea = this.$refs.textarea;
+        if (textarea) {
+          textarea.style.height = '35px'; // 先重置高度
+          textarea.style.height = textarea.scrollHeight + 'px'; // 设置高度为内容的实际高度
+        }
+      });
+    },
     onSubmit() {
       if (!this.question) {
         return;
@@ -138,19 +152,25 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.upload {
-  display: flex;
-  height: 40px;
-  .el-upload-list {
-    flex: 1;
-  }
+textarea.input {
+  min-height: 35px;
+  max-height: 350px;
+  border: none;
+  background: none;
+  box-shadow: none;
+  resize: none;
+  line-height: 30px;
+  width: calc(100% - 80px);
+  margin-left: 30px;
 }
-
+textarea.input:focus {
+  outline: none;
+}
 .input-box {
+  // height: auto;
   position: relative;
   .input {
     textarea {
-      height: auto;
       max-height: 100px;
       border: none;
       background: none;
@@ -158,6 +178,11 @@ export default defineComponent({
       resize: none;
       line-height: 30px;
     }
+  }
+  .el-upload-list {
+    position: absolute;
+    width: 400px;
+    bottom: 45px;
   }
 
   .el-textarea.is-disabled .el-textarea__inner {
@@ -174,7 +199,7 @@ export default defineComponent({
   background: none;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
   .upload {
-    display: block;
+    display: inline-block;
     &.disabled {
       .btn-upload {
         cursor: not-allowed;
@@ -187,6 +212,7 @@ export default defineComponent({
   .input {
     border: none;
     width: calc(100% - 80px);
+    margin-left: 30px;
   }
   .btn {
     display: block;
