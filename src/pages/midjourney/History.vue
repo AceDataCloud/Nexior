@@ -7,9 +7,9 @@
       :need-apply="needApply"
       class="mb-4"
       :service="service"
-      @refresh="onGetApplications"
+      @refresh="onGetApplication"
     />
-    <task-full-list @custom="onCustom" />
+    <task-full-list @custom="onCustom" @refresh="onGetApplication" />
     <el-button type="primary" round class="btn btn-generate" @click="onGenerateNew">
       <font-awesome-icon icon="fa-solid fa-chevron-left" class="icon icon-rotate mr-1" />
       {{ $t('midjourney.button.generateNew') }}
@@ -71,7 +71,7 @@ export default defineComponent({
     }
   },
   async mounted() {
-    await this.onGetApplications();
+    await this.onGetApplication();
   },
   methods: {
     async onGenerateNew() {
@@ -79,7 +79,7 @@ export default defineComponent({
         name: ROUTE_MIDJOURNEY_INDEX
       });
     },
-    async onGetApplications() {
+    async onGetApplication() {
       await this.$store.dispatch('midjourney/getApplication');
     },
     async onStartTask(request: IMidjourneyImagineRequest) {

@@ -25,7 +25,7 @@
       </div>
     </template>
     <template #results>
-      <task-brief-list @custom="onCustom" />
+      <task-brief-list @custom="onCustom" @refresh="onGetApplication" />
     </template>
   </layout>
 </template>
