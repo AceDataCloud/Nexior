@@ -39,7 +39,7 @@ export default defineComponent({
     ElSkeletonItem,
     ElCard
   },
-  emits: ['update:modelValue', 'custom'],
+  emits: ['update:modelValue', 'custom', 'refresh'],
   data(): IData {
     return {
       job: undefined
@@ -74,6 +74,14 @@ export default defineComponent({
         await this.$store.dispatch('midjourney/setImagineTasks', undefined);
         this.getImagineTasks();
       }
+    },
+    tasks: {
+      handler(val, oldVal) {
+        if (val && oldVal && JSON.stringify(val) !== JSON.stringify(oldVal)) {
+          this.$emit('refresh', val);
+        }
+      },
+      deep: true
     }
   },
   async mounted() {

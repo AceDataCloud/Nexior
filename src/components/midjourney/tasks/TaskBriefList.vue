@@ -38,7 +38,7 @@ export default defineComponent({
     ElSkeleton,
     ElSkeletonItem
   },
-  emits: ['update:modelValue', 'custom'],
+  emits: ['update:modelValue', 'custom', 'refresh'],
   data() {
     return {
       job: 0
@@ -53,6 +53,16 @@ export default defineComponent({
     },
     application() {
       return this.$store.state.midjourney.application;
+    }
+  },
+  watch: {
+    tasks: {
+      handler(val, oldVal) {
+        if (val && oldVal && JSON.stringify(val) !== JSON.stringify(oldVal)) {
+          this.$emit('refresh', val);
+        }
+      },
+      deep: true
     }
   },
   async mounted() {
