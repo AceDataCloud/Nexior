@@ -28,7 +28,12 @@
       </el-button>
     </span>
     <span class="ml-1">{{ $t('chat.message.tryForFree') }}</span>
-    <application-confirm v-if="service" v-model.visible="confirming" :service="service" @apply="onApply" />
+    <application-confirm
+      v-if="service && authenticated"
+      v-model.visible="confirming"
+      :service="service"
+      @apply="onApply"
+    />
   </div>
 </template>
 
