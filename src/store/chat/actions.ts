@@ -70,7 +70,7 @@ export const getApplication = async ({
     state.status.getApplication = Status.Request;
     applicationOperator
       .getAll({
-        user_id: rootState.user.id,
+        user_id: rootState?.user?.id,
         service_id: CHAT_SERVICE_ID
       })
       .then((response) => {
