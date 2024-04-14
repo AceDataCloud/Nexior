@@ -1,4 +1,4 @@
-import { IApplication, IChatdocRepository, IService } from '@/models';
+import { IApplication, IChatdocRepository, ICredential, IService } from '@/models';
 import { IChatdocState } from './models';
 import { log } from '@/utils';
 
@@ -36,6 +36,10 @@ export const setRepositories = (state: IChatdocState, payload: IChatdocRepositor
   }
 };
 
+export const setCredential = (state: IChatdocState, payload: ICredential): void => {
+  state.credential = payload;
+};
+
 export const setRepository = (state: IChatdocState, payload: IChatdocRepository): void => {
   log(setRepository, 'mutation', payload);
   // find the repository and set it
@@ -62,5 +66,6 @@ export default {
   setApplication,
   setRepositories,
   setRepository,
+  setCredential,
   resetAll
 };

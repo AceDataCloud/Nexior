@@ -10,6 +10,7 @@ export interface ICredential {
   name?: string;
   type?: ICredentialType;
   limited_amount?: number;
+  host?: string;
   used_amount?: number;
   expired_at?: string;
   token?: string;

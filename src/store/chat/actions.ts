@@ -3,7 +3,7 @@ import { IRootState } from '../common/models';
 import { ActionContext } from 'vuex';
 import { log } from '@/utils/log';
 import { IChatState } from './models';
-import { IApplication, IChatConversation, IChatModel, IService, Status } from '@/models';
+import { IApplication, IChatConversation, IChatModel, ICredential, IService, Status } from '@/models';
 import { CHAT_SERVICE_ID } from '@/constants';
 
 export const resetAll = ({ commit }: ActionContext<IChatState, IRootState>): void => {
@@ -27,6 +27,11 @@ export const setService = async ({ commit }: any, payload: IService): Promise<vo
 export const setConversations = async ({ commit }: any, payload: IChatConversation[]): Promise<void> => {
   log(setConversations, 'set conversations', payload);
   commit('setConversations', payload);
+};
+
+export const setCredential = async ({ commit }: any, payload: ICredential): Promise<void> => {
+  log(setCredential, 'set credential', payload);
+  commit('setCredential', payload);
 };
 
 export const setConversation = async ({ commit, state }: any, payload: IChatConversation): Promise<void> => {
@@ -76,6 +81,10 @@ export const getApplication = async ({
       .then((response) => {
         state.status.getApplication = Status.Success;
         commit('setApplication', response.data.items[0]);
+        const credential = response.data.items?.[0].credentials?.find(
+          (credential) => credential?.host === window.location.origin
+        );
+        commit('setCredential', credential);
         resolve(response.data.items[0]);
       })
       .catch((error) => {
@@ -91,9 +100,9 @@ export const getConversations = async ({
 }: ActionContext<IChatState, IRootState>): Promise<IChatConversation[]> => {
   return new Promise(async (resolve, reject) => {
     state.status.getConversations = Status.Request;
-    const application = state.application;
-    log(getConversations, 'application', application);
-    const token = application?.credentials?.[0].token;
+    const credential = state.credential;
+    log(getConversations, 'credential', credential);
+    const token = credential?.token;
     if (!token) {
       state.status.getConversations = Status.Error;
       return reject(new Error('Token not found'));
@@ -126,6 +135,7 @@ export default {
   setModel,
   getService,
   setService,
+  setCredential,
   setApplication,
   getApplication,
   setConversation,

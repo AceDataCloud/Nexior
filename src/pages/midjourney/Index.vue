@@ -47,6 +47,12 @@ import FinalPrompt from '@/components/midjourney/FinalPrompt.vue';
 import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
 import { MidjourneyImagineMode, Status } from '@/models';
 import { IMidjourneyImagineRequest, IApplicationDetailResponse, MidjourneyImagineAction } from '@/models';
+import {
+  MIDJOURNEY_DEFAULT_IMAGE_WEIGHT,
+  MIDJOURNEY_DEFAULT_RATIO,
+  MIDJOURNEY_DEFAULT_STYLIZE,
+  MIDJOURNEY_DEFAULT_WIRED
+} from '@/constants';
 
 interface IData {
   prompt: string;
@@ -87,6 +93,9 @@ export default defineComponent({
     mode() {
       return this.$store.state.midjourney.mode;
     },
+    credential() {
+      return this.$store.state.midjourney.credential;
+    },
     preset() {
       return this.$store.state.midjourney.preset;
     },
@@ -122,19 +131,34 @@ export default defineComponent({
       if (this.preset.quality && !content.includes(`--quality `) && !content.includes(`--q `)) {
         content += ` --quality ${this.preset.quality}`;
       }
-      if (this.preset.ratio && !content.includes(`--aspect `) && !content.includes(`--ar `)) {
+      if (
+        this.preset.ratio &&
+        !content.includes(`--aspect `) &&
+        !content.includes(`--ar `) &&
+        this.preset.ratio !== MIDJOURNEY_DEFAULT_RATIO
+      ) {
         content += ` --aspect ${this.preset.ratio}`;
       }
-      if (this.preset.stylize && !content.includes(`--stylize `) && !content.includes(`--s `)) {
+      if (
+        this.preset.stylize &&
+        !content.includes(`--stylize `) &&
+        !content.includes(`--s `) &&
+        this.preset.stylize !== MIDJOURNEY_DEFAULT_STYLIZE
+      ) {
         content += ` --stylize ${this.preset.stylize}`;
       }
-      if (this.preset.weird && !content.includes(`--weird `) && !content.includes(`--w `)) {
+      if (
+        this.preset.weird &&
+        !content.includes(`--weird `) &&
+        !content.includes(`--w `) &&
+        this.preset.weird !== MIDJOURNEY_DEFAULT_WIRED
+      ) {
         content += ` --weird ${this.preset.weird}`;
       }
       if (this.ignore && !content.includes(`--no `)) {
         content += ` --no ${this.ignore}`;
       }
-      if (this.preset.iw && !content.includes(`--iw `)) {
+      if (this.preset.iw && !content.includes(`--iw `) && this.preset.iw !== MIDJOURNEY_DEFAULT_IMAGE_WEIGHT) {
         content += ` --iw ${this.preset.iw}`;
       }
       if (this.preset.style && !content.includes(`--style`)) {
@@ -164,7 +188,7 @@ export default defineComponent({
       await this.$store.dispatch('midjourney/getApplication');
     },
     async onStartTask(request: IMidjourneyImagineRequest) {
-      const token = this.application?.credentials?.[0]?.token;
+      const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');
         return;

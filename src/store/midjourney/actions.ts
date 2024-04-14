@@ -3,12 +3,24 @@ import { IMidjourneyState } from './models';
 import { ActionContext } from 'vuex';
 import { log } from '@/utils/log';
 import { IRootState } from '../common/models';
-import { IApplication, IMidjourneyImagineTask, IMidjourneyMode, IMidjourneyPreset, IService } from '@/models';
+import {
+  IApplication,
+  ICredential,
+  IMidjourneyImagineTask,
+  IMidjourneyMode,
+  IMidjourneyPreset,
+  IService
+} from '@/models';
 import { Status } from '@/models/common';
 import { MIDJOURNEY_SERVICE_ID } from '@/constants';
 
 export const resetAll = ({ commit }: ActionContext<IMidjourneyState, IRootState>): void => {
   commit('resetAll');
+};
+
+export const setCredential = async ({ commit }: any, payload: ICredential): Promise<void> => {
+  log(setCredential, 'set credential', payload);
+  commit('setCredential', payload);
 };
 
 export const setPreset = ({ commit }: any, payload: IMidjourneyPreset) => {
@@ -44,6 +56,10 @@ export const getApplication = async ({
       .then((response) => {
         state.status.getApplication = Status.Success;
         commit('setApplication', response.data.items[0]);
+        const credential = response.data.items?.[0].credentials?.find(
+          (credential) => credential?.host === window.location.origin
+        );
+        commit('setCredential', credential);
         resolve(response.data.items[0]);
       })
       .catch((error) => {
@@ -81,8 +97,8 @@ export const getImagineTasks = async (
 ): Promise<IMidjourneyImagineTask[]> => {
   return new Promise(async (resolve, reject) => {
     log(getImagineTasks, 'start to get imagine tasks', offset, limit);
-    const application = state.application;
-    const token = application?.credentials?.[0]?.token;
+    const credential = state.credential;
+    const token = credential?.token;
     if (!token) {
       return reject('no token');
     }
@@ -111,6 +127,7 @@ export default {
   setService,
   getService,
   resetAll,
+  setCredential,
   setPreset,
   setMode,
   setApplication,

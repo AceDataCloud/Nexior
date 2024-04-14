@@ -96,7 +96,7 @@ export default defineComponent({
       return this.$store.state.chat.status.getConversations === Status.Request;
     },
     token() {
-      return this.application?.credentials?.[0].token;
+      return this.$store.state.chat?.credential?.token;
     }
   },
   methods: {

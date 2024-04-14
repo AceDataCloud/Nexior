@@ -94,6 +94,16 @@ export default defineComponent({
       }
     }
   },
+  mounted() {
+    // check if the credential is created
+    if (
+      this.application &&
+      !this.application?.credentials?.find((credential) => credential.host === window.location.origin)
+    ) {
+      console.log('create extra credential');
+      this.onCreateCredential(this.application);
+    }
+  },
   methods: {
     onBuyMore(application: IApplication) {
       this.$router.push({
@@ -103,6 +113,22 @@ export default defineComponent({
         }
       });
     },
+    onCreateCredential(application: IApplication | undefined) {
+      credentialOperator
+        .create({
+          application_id: application?.id,
+          host: window.location.origin
+        })
+        .then(() => {
+          setTimeout(() => {
+            this.$emit('refresh');
+          }, 2000);
+          this.confirming = false;
+        })
+        .finally(() => {
+          this.$emit('applied');
+        });
+    },
     onApply() {
       applicationOperator
         .create({
@@ -111,19 +137,7 @@ export default defineComponent({
         })
         .then(({ data: data }: { data: IApplicationDetailResponse }) => {
           ElMessage.success(this.$t('application.message.applySuccessfully'));
-          credentialOperator
-            .create({
-              application_id: data.id
-            })
-            .then(() => {
-              setTimeout(() => {
-                this.$emit('refresh');
-              }, 2000);
-              this.confirming = false;
-            })
-            .finally(() => {
-              this.$emit('applied');
-            });
+          this.onCreateCredential(data);
         })
         .catch((error) => {
           if (error?.response?.data?.code === ERROR_CODE_DUPLICATION) {

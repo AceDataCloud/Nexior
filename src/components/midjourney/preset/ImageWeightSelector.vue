@@ -10,8 +10,7 @@
 import { defineComponent } from 'vue';
 import { ElSlider } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-
-const DEFAULT_IW = 1.0;
+import { MIDJOURNEY_DEFAULT_IMAGE_WEIGHT } from '@/constants';
 
 export default defineComponent({
   name: 'ImageWeightSelector',
@@ -35,7 +34,7 @@ export default defineComponent({
   },
   mounted() {
     if (!this.value) {
-      this.value = DEFAULT_IW;
+      this.value = MIDJOURNEY_DEFAULT_IMAGE_WEIGHT;
     }
   }
 });
