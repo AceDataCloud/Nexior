@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/hub
 
-This log was last generated on Sat, 13 Apr 2024 16:31:12 GMT and should not be manually modified.
+This log was last generated on Sun, 14 Apr 2024 17:24:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.18.0
+
+Sun, 14 Apr 2024 17:24:51 GMT
+
+### Minor changes
+
+- add support for renew credentials (cqc@cuiqingcai.com)
 
 ## 0.17.6
 
