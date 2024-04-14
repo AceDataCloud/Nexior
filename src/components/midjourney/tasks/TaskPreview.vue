@@ -63,6 +63,8 @@
         :preview-src-list="[modelValue?.response?.raw_image_url as string]"
         fit="contain"
         class="image"
+        :lazy="true"
+        @error="onReload($event)"
       />
       <p v-if="modelValue?.response?.progress !== undefined && modelValue?.response?.progress !== 100" class="progress">
         {{ modelValue?.response?.progress }}%
@@ -111,6 +113,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { MIDJOURNEY_MODE_FAST, MIDJOURNEY_MODE_RELAX, MIDJOURNEY_MODE_TURBO } from '@/constants';
+import { parse } from 'path';
 
 interface IData {
   midjourneyImagineState: typeof MidjourneyImagineState;
@@ -222,6 +225,25 @@ export default defineComponent({
     }
   },
   methods: {
+    onReload(event: Event) {
+      const target = event.target as HTMLImageElement;
+      // append a random url query to existing url query, to force reload the image
+      // extract exiting url query
+      const url = new URL(target.src);
+      // extract `retry` query
+      const retry = url.searchParams.get('retry');
+      if (!retry) {
+        // if no retry query, set it as random string
+        url.searchParams.set('retry', '1');
+      } else if (parseInt(retry) < 2) {
+        // if retry < 3, increase it by 1
+        url.searchParams.set('retry', (parseInt(retry) + 1).toString());
+      } else {
+        return;
+      }
+      // set the new url
+      target.src = url.toString();
+    },
     onCustom(action: string) {
       this.$emit('custom', {
         action,

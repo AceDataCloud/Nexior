@@ -63,6 +63,9 @@ export default defineComponent({
     application() {
       return this.$store.state.midjourney.application;
     },
+    credential() {
+      return this.$store.state.midjourney.credential;
+    },
     initializing() {
       return this.$store.state.midjourney.status.getApplication === Status.Request;
     },
@@ -83,7 +86,7 @@ export default defineComponent({
       await this.$store.dispatch('midjourney/getApplication');
     },
     async onStartTask(request: IMidjourneyImagineRequest) {
-      const token = this.application?.credentials?.[0]?.token;
+      const token = this.credential?.token;
       if (!token) {
         console.error('no token found');
         return;

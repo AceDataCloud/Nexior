@@ -1,1 +1,7 @@
-export default ['midjourney.preset', 'midjourney.mode', 'midjourney.application', 'midjourney.imagineTasks'];
+export default [
+  'midjourney.preset',
+  'midjourney.credential',
+  'midjourney.mode',
+  'midjourney.application',
+  'midjourney.imagineTasks'
+];

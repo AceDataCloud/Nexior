@@ -6,6 +6,7 @@ export default (): IChatdocState => {
     service: undefined,
     application: undefined,
     repositories: undefined,
+    credential: undefined,
     status: {
       getService: Status.None,
       getApplication: Status.None,

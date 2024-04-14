@@ -159,7 +159,7 @@ textarea.input {
   background: none;
   box-shadow: none;
   resize: none;
-  line-height: 30px;
+  line-height: 35px;
   width: calc(100% - 80px);
   margin-left: 30px;
 }
@@ -176,7 +176,7 @@ textarea.input:focus {
       background: none;
       box-shadow: none;
       resize: none;
-      line-height: 30px;
+      line-height: 35px;
     }
   }
   .el-upload-list {
