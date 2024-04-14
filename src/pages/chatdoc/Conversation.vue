@@ -101,6 +101,9 @@ export default defineComponent({
     application() {
       return this.$store.state.chatdoc.application;
     },
+    credential() {
+      return this.$store.state.chatdoc.credential;
+    },
     needApply() {
       return this.$store.state.chatdoc.status.getApplication === Status.Success && !this.application;
     },
@@ -136,7 +139,7 @@ export default defineComponent({
       }, 0);
     },
     async onFetchAnswer() {
-      const token = this.application?.credentials?.[0]?.token;
+      const token = this.credential?.token;
       const question = this.question;
       log(this.onFetchAnswer, 'validated', question);
       // reset question and references

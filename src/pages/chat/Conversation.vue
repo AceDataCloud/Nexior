@@ -99,6 +99,9 @@ export default defineComponent({
     application() {
       return this.$store.state.chat.application;
     },
+    credential() {
+      return this.$store.state.chat?.credential;
+    },
     needApply() {
       return this.$store.state.chat.status.getApplication === Status.Success && !this.application;
     },
@@ -178,7 +181,7 @@ export default defineComponent({
       }, 0);
     },
     async onFetchAnswer() {
-      const token = this.application?.credentials?.[0]?.token;
+      const token = this.credential?.token;
       const question = this.question;
       const references = this.references;
       log(this.onFetchAnswer, 'validated', question, references);

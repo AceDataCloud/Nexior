@@ -8,6 +8,7 @@ import {
   IChatdocDocument,
   IChatdocMessage,
   IChatdocRepository,
+  ICredential,
   IService,
   Status
 } from '@/models';
@@ -16,6 +17,11 @@ import { CHATDOC_SERVICE_ID } from '@/constants';
 
 export const setApplication = async ({ commit }: any, payload: IApplication): Promise<void> => {
   commit('setApplication', payload);
+};
+
+export const setCredential = async ({ commit }: any, payload: ICredential): Promise<void> => {
+  log(setCredential, 'set credential', payload);
+  commit('setCredential', payload);
 };
 
 export const setService = async ({ commit }: any, payload: IService): Promise<void> => {
@@ -42,6 +48,10 @@ export const getApplication = async ({
       .then((response) => {
         state.status.getApplication = Status.Success;
         commit('setApplication', response.data.items[0]);
+        const credential = response.data.items?.[0].credentials?.find(
+          (credential) => credential?.host === window.location.origin
+        );
+        commit('setCredential', credential);
         resolve(response.data.items[0]);
       })
       .catch((error) => {
@@ -60,9 +70,9 @@ export const getRepositories = async ({
   state
 }: ActionContext<IChatdocState, IRootState>): Promise<IChatdocRepository[]> => {
   log(getRepositories, 'start to get repositories');
-  const application = state.application;
-  console.log('application', application);
-  const token = application?.credentials?.[0]?.token;
+  const credential = state.credential;
+  console.log('credential', credential);
+  const token = credential?.token;
   if (!token) {
     commit('setRepositories', undefined);
     return Promise.reject('no token');
@@ -84,9 +94,9 @@ export const deleteRepository = async (
   }
 ): Promise<IChatdocRepository> => {
   log(deleteRepository, 'start to delete repository');
-  const application = state.application;
-  console.log('application', application);
-  const token = application?.credentials?.[0]?.token;
+  const credential = state.credential;
+  console.log('credential', credential);
+  const token = credential?.token;
   if (!token) {
     return Promise.reject('no token');
   }
@@ -106,9 +116,9 @@ export const deleteDocument = async (
   }
 ): Promise<IChatdocDocument> => {
   log(deleteDocument, 'start to delete document');
-  const application = state.application;
-  console.log('application', application);
-  const token = application?.credentials?.[0]?.token;
+  const credential = state.credential;
+  console.log('credential', credential);
+  const token = credential?.token;
   if (!token) {
     return Promise.reject('no token');
   }
@@ -147,9 +157,9 @@ export const createRepository = async (
   }
 ): Promise<IChatdocRepository> => {
   log(createRepository, 'start to create repository');
-  const application = state.application;
-  console.log('application', application);
-  const token = application?.credentials?.[0]?.token;
+  const credential = state.credential;
+  console.log('credential', credential);
+  const token = credential?.token;
   if (!token) {
     return Promise.reject('no token');
   }
@@ -171,9 +181,9 @@ export const createDocument = async (
   }
 ): Promise<IChatdocDocument> => {
   log(createDocument, 'start to create document');
-  const application = state.application;
-  console.log('application', application);
-  const token = application?.credentials?.[0]?.token;
+  const credential = state.credential;
+  console.log('credential', credential);
+  const token = credential?.token;
   if (!token) {
     return Promise.reject('no token');
   }
@@ -214,9 +224,9 @@ export const getDocuments = async (
   payload: { repositoryId: string }
 ): Promise<IChatdocDocument[]> => {
   log(getRepositories, 'start to get documents');
-  const application = state.application;
-  console.log('application for getDocuments', application);
-  const token = application?.credentials?.[0]?.token;
+  const credential = state.credential;
+  console.log('credential for getDocuments', credential);
+  const token = credential?.token;
   if (!token) {
     commit('setRepository', {
       id: payload.repositoryId,
@@ -242,9 +252,9 @@ export const getConversations = async (
   payload: { repositoryId: string }
 ): Promise<IChatdocConversation[]> => {
   log(getConversations, 'start to get conversations');
-  const application = state.application;
-  console.log('application for getConversations', application);
-  const token = application?.credentials?.[0]?.token;
+  const credential = state.credential;
+  console.log('credential for getConversations', credential);
+  const token = credential?.token;
   if (!token) {
     commit('setRepository', {
       id: payload.repositoryId,
@@ -272,8 +282,8 @@ export const getRepository = async (
   payload: { id: string }
 ): Promise<IChatdocRepository> => {
   log(getRepository, 'start to get repository');
-  const application = state.application;
-  const token = application?.credentials?.[0]?.token;
+  const credential = state.credential;
+  const token = credential?.token;
   if (!token) {
     commit('setRepository', { id: payload.id });
     return Promise.reject('no token');
@@ -296,6 +306,7 @@ export default {
   setApplication,
   getApplication,
   getRepositories,
+  setCredential,
   deleteRepository,
   getRepository,
   setRepository,

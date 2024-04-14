@@ -21,8 +21,7 @@
 
 <script>
 import { defineComponent } from 'vue';
-
-const DEFAULT_RATIO = '1:1';
+import { MIDJOURNEY_DEFAULT_RATIO } from '@/constants';
 
 export default defineComponent({
   name: 'RatioSelector',
@@ -81,7 +80,7 @@ export default defineComponent({
   },
   mounted() {
     if (!this.value) {
-      this.value = DEFAULT_RATIO;
+      this.value = MIDJOURNEY_DEFAULT_RATIO;
     }
   }
 });

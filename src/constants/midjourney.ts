@@ -24,3 +24,8 @@ export const MIDJOURNEY_MODE_TURBO: IMidjourneyMode = {
   name: MIDJOURNEY_MODE_NAME_TURBO,
   getDisplayName: () => i18n.global.t('midjourney.button.turbo')
 };
+
+export const MIDJOURNEY_DEFAULT_RATIO = '1:1';
+export const MIDJOURNEY_DEFAULT_IMAGE_WEIGHT = 1.0;
+export const MIDJOURNEY_DEFAULT_STYLIZE = 100;
+export const MIDJOURNEY_DEFAULT_WIRED = 0;

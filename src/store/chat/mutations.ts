@@ -1,4 +1,4 @@
-import { IApplication, IChatConversation, IChatModel, IService } from '@/models';
+import { IApplication, IChatConversation, IChatModel, ICredential, IService } from '@/models';
 import { IChatState } from './models';
 
 export const resetAll = (state: IChatState): void => {
@@ -8,6 +8,10 @@ export const resetAll = (state: IChatState): void => {
 
 export const setModel = (state: IChatState, payload: IChatModel): void => {
   state.model = payload;
+};
+
+export const setCredential = (state: IChatState, payload: ICredential): void => {
+  state.credential = payload;
 };
 
 export const setApplication = (state: IChatState, payload: IApplication): void => {
@@ -25,6 +29,7 @@ export const setConversations = (state: IChatState, payload: IChatConversation[]
 export default {
   setModel,
   setService,
+  setCredential,
   setConversations,
   setApplication,
   resetAll

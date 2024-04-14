@@ -8,6 +8,7 @@ export default (): IMidjourneyState => {
     application: undefined,
     imagineTasks: undefined,
     imagineTasksTotal: undefined,
+    credential: undefined,
     preset: {},
     mode: MIDJOURNEY_MODE_FAST,
     status: {

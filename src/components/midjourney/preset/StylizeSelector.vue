@@ -10,8 +10,7 @@
 import { defineComponent } from 'vue';
 import { ElSlider } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-
-const DEFAULT_STYLIZE = 100;
+import { MIDJOURNEY_DEFAULT_STYLIZE } from '@/constants';
 
 export default defineComponent({
   name: 'StylizeSelector',
@@ -35,7 +34,7 @@ export default defineComponent({
   },
   mounted() {
     if (!this.value) {
-      this.value = DEFAULT_STYLIZE;
+      this.value = MIDJOURNEY_DEFAULT_STYLIZE;
     }
   }
 });
