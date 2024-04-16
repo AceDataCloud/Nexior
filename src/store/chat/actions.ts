@@ -81,7 +81,7 @@ export const getApplication = async ({
       .then((response) => {
         state.status.getApplication = Status.Success;
         commit('setApplication', response.data.items[0]);
-        const credential = response.data.items?.[0].credentials?.find(
+        const credential = response.data.items?.[0]?.credentials?.find(
           (credential) => credential?.host === window.location.origin
         );
         commit('setCredential', credential);
