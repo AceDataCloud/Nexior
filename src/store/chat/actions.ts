@@ -125,6 +125,8 @@ export const getConversations = async ({
         resolve(conversations);
       })
       .catch((error) => {
+        state.status.getConversations = Status.Error;
+        commit('setConversations', []);
         reject(error);
       });
   });

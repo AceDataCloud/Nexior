@@ -184,7 +184,7 @@ export default defineComponent({
       const token = this.credential?.token;
       const question = this.question;
       const references = this.references;
-      log(this.onFetchAnswer, 'validated', question, references);
+      console.debug('validated', question, references);
       // reset question and references
       this.question = '';
       this.references = [];
@@ -205,7 +205,7 @@ export default defineComponent({
         role: ROLE_ASSISTANT,
         state: IChatMessageState.PENDING
       });
-      log(this.onFetchAnswer, 'start to get answer', this.messages);
+      console.debug('start to get answer', this.messages);
       this.onScrollDown();
       // request server to get answer
       this.answering = true;
@@ -221,6 +221,7 @@ export default defineComponent({
           {
             token,
             stream: (response: IChatConversationResponse) => {
+              console.debug('stream response', response);
               this.messages[this.messages.length - 1] = {
                 role: ROLE_ASSISTANT,
                 content: response.answer,
@@ -232,7 +233,7 @@ export default defineComponent({
           }
         )
         .then(async () => {
-          log(this.onFetchAnswer, 'finished fetch answer');
+          console.debug('finished fetch answer', this.messages);
           this.messages[this.messages.length - 1].state = IChatMessageState.FINISHED;
           await this.$store.dispatch('chat/setConversation', {
             id: conversationId,
