@@ -24,3 +24,5 @@ export const ROUTE_CONSOLE_APPLICATION_BUY = 'console-application-buy';
 export const ROUTE_DISTRIBUTION_INDEX = 'distribution-index';
 export const ROUTE_DISTRIBUTION_HISTORY = 'distribution-history';
 export const ROUTE_DISTRIBUTION_INVITEES = 'distribution-invitees';
+
+export const ROUTE_CONSOLE_USAGE_LIST = 'console-usage-list';
