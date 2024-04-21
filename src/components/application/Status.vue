@@ -15,9 +15,14 @@
       {{ $t(`service.unit.` + application?.service?.unit + 's') }}
     </span>
     <span class="actions">
-      <el-button round size="small" type="primary" @click="onBuyMore(application)">{{
+      <el-button round size="small" type="primary" class="mr-1" @click="onBuyMore(application)">{{
         $t('common.button.buyMore')
       }}</el-button>
+      <api-price
+        v-if="application?.service?.apis?.[0]?.price"
+        class="price inline-block"
+        :price="application?.service?.apis?.[0]?.price"
+      />
     </span>
   </div>
   <div v-if="needApply && service" class="text-center info">
@@ -45,6 +50,7 @@ import ApplicationConfirm from '@/components/application/Confirm.vue';
 import { IApplicationType, IApplication, IApplicationDetailResponse, IService } from '@/models';
 import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
 import { ROUTE_CONSOLE_APPLICATION_BUY } from '@/router';
+import ApiPrice from '@/components/api/Price.vue';
 
 export interface IData {
   confirming: boolean;
@@ -53,7 +59,7 @@ export interface IData {
 
 export default defineComponent({
   name: 'ApplicationStatus',
-  components: { ElButton, ApplicationConfirm, ElSkeleton, ElSkeletonItem },
+  components: { ElButton, ApplicationConfirm, ElSkeleton, ElSkeletonItem, ApiPrice },
   props: {
     application: {
       type: Object as () => IApplication | undefined,

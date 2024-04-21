@@ -9,7 +9,7 @@
   },
   "button.checkDetail": {
     "message": "Kontrollera detaljer",
-    "description": "Texten på knappen som används för att kontrollera beställningens detaljer."
+    "description": "Texten på knappen som används för att kontrollera detaljerna i beställningen."
   },
   "button.query": {
     "message": "Förfrågan",
@@ -67,6 +67,10 @@
     "message": "Betalning lyckades",
     "description": "Meddelandet om lyckad betalning."
   },
+  "message.orderExpired": {
+    "message": "Beställningen har löpt ut, skapa en ny beställning för att betala.",
+    "description": "Meddelandet om den utgångna beställningen."
+  },
   "message.createFailed": {
     "message": "Skapande misslyckades",
     "description": "Meddelandet om misslyckad skapande."
@@ -77,7 +81,7 @@
   },
   "message.free": {
     "message": "Gratis",
-    "description": "Meddelandet om gratis beställning."
+    "description": "Meddelandet om den gratis beställningen."
   },
   "message.buyInExternalUrl": {
     "message": "Slutför betalningen på den externa länken",
@@ -93,11 +97,11 @@
   },
   "message.confirmFinish": {
     "message": "Denna åtgärd kommer manuellt att ställa in beställningen till betalningsstatus och slutföra distributionsprocessen, vilket inte kan ångras. Bekräfta att kunden har slutfört betalningen, vill du fortsätta?",
-    "description": "Meddelandet om bekräftelse av avslutande."
+    "description": "Meddelandet om att bekräfta avslut."
   },
   "state.pending": {
     "message": "Avvaktar betalning",
-    "description": "Beställningens status, vilket innebär att denna beställning fortfarande avvaktar användarens betalning."
+    "description": "Beställningens status, vilket innebär att denna beställning fortfarande väntar på användarens betalning."
   },
   "state.paid": {
     "message": "Betald",
@@ -105,7 +109,7 @@
   },
   "state.expired": {
     "message": "Betalningstid utgången",
-    "description": "Beställningens status, vilket innebär att denna beställning har utgått."
+    "description": "Beställningens status, vilket innebär att denna beställning har löpt ut."
   },
   "state.failed": {
     "message": "Betalning misslyckades",

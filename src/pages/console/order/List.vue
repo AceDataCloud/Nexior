@@ -20,7 +20,7 @@
               </el-table-column>
               <el-table-column :label="$t('order.field.price')" width="100px">
                 <template #default="scope">
-                  <span class="price">¥{{ scope.row?.price?.toFixed(2) }}</span>
+                  <span class="price">${{ scope.row?.price?.toFixed(2) }}</span>
                 </template>
               </el-table-column>
               <el-table-column prop="state" :label="$t('order.field.state')" class-name="text-center" width="150px">

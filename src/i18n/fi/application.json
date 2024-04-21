@@ -9,11 +9,11 @@
   },
   "button.buyMore": {
     "message": "Osta lisää",
-    "description": "Painikkeen teksti, kun tätä painiketta napsautetaan, siirrytään lisää ostoja -sivulle."
+    "description": "Painikkeen teksti, kun tätä painiketta napsautetaan, siirrytään osta lisää -sivulle."
   },
   "button.createOrder": {
     "message": "Luo tilaus",
-    "description": "Painikkeen teksti, kun tätä painiketta napsautetaan, siirrytään tilauksen luontisivulle."
+    "description": "Painikkeen teksti, kun tätä painiketta napsautetaan, siirrytään luo tilaus -sivulle."
   },
   "button.custom": {
     "message": "Mukautettu",
@@ -26,6 +26,14 @@
   "button.usage": {
     "message": "Käyttöhistoria",
     "description": "Painikkeen teksti, kun tätä painiketta napsautetaan, siirrytään käyttöhistoriasivulle."
+  },
+  "field.application": {
+    "message": "Sovellus",
+    "description": "Palvelun sovellus."
+  },
+  "field.status": {
+    "message": "Tila",
+    "description": "Sovelluksen tila."
   },
   "field.id": {
     "message": "Sovellus-ID",
@@ -69,7 +77,7 @@
   },
   "field.proxy": {
     "message": "Välityspalvelin",
-    "description": "Tämä on eräänlainen verkkopalvelu, muoto on HTTP-välityspalvelin (käytetään datan siirtoon) tarjota palvelua käyttäjälle."
+    "description": "Tämä on eräänlainen verkkopalvelu, muoto on HTTP-välityspalvelimen kautta (käytetään datan siirtoon) tarjota palvelua käyttäjälle."
   },
   "field.credential": {
     "message": "Tunniste",
@@ -81,7 +89,7 @@
   },
   "field.package": {
     "message": "Paketti",
-    "description": "Paketti tarkoittaa erilaisia hintapaketteja, kuten 100 dollaria 10000 luottoa, 200 dollaria 20000 luottoa."
+    "description": "Paketti tarkoittaa erilaisia hintapaketteja, kuten 100 dollaria 10000 luottopistettä, 200 dollaria 20000 luottopistettä."
   },
   "field.type": {
     "message": "Tyyppi",
@@ -101,15 +109,15 @@
   },
   "message.applySuccessfully": {
     "message": "Hakemus hyväksytty",
-    "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjä on onnistuneesti hakenut tätä palvelua."
+    "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjä on hakenut tätä palvelua onnistuneesti."
   },
   "message.notApplied": {
     "message": "Et ole vielä hakenut tätä palvelua, hae palvelua ennen sen käyttöä",
     "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjä ei ole vielä hakenut tätä palvelua."
   },
   "message.yourApplication": {
-    "message": "Sovelluksesi",
-    "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjän sovellus."
+    "message": "Sinun hakemuksesi",
+    "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjällä on hakemus."
   },
   "message.unverified": {
     "message": "Sinun on suoritettava henkilöllisyyden varmennus ennen kuin voit hakea tätä palvelua",
@@ -152,7 +160,7 @@
     "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjä on nollannut avaimen."
   },
   "message.rotateCredentialConfirm": {
-    "message": "Haluatko varmasti nollata avaimen? Sitä ei voi palauttaa nollauksen jälkeen",
+    "message": "Oletko varma, että haluat nollata avaimen? Sitä ei voi palauttaa nollauksen jälkeen",
     "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjä on vahvistanut avaimen nollauksen."
   },
   "message.idDoesNotExist": {
@@ -168,12 +176,12 @@
     "description": "Viesti, joka näytetään käyttäjälle, kun avaimen nollaus epäonnistuu."
   },
   "message.updateFailed": {
-    "message": "Päivitys epäonnistui",
-    "description": "Viesti, joka näytetään käyttäjälle, kun päivitys epäonnistuu."
+    "message": "Muokkaus epäonnistui",
+    "description": "Viesti, joka näytetään käyttäjälle, kun muokkaus epäonnistuu."
   },
   "message.updateSuccessfully": {
-    "message": "Päivitys onnistui",
-    "description": "Viesti, joka näytetään käyttäjälle, kun päivitys onnistuu."
+    "message": "Muokkaus onnistui",
+    "description": "Viesti, joka näytetään käyttäjälle, kun muokkaus onnistuu."
   },
   "title.buyService": {
     "message": "Osta palvelu",

@@ -60,16 +60,20 @@
     "description": "API je vrsta online usluge."
   },
   "field.proxy": {
-    "message": "Proksi",
-    "description": "Proksi je vrsta online usluge, što znači HTTP proksi korišćen za prenos podataka."
+    "message": "Proxy",
+    "description": "Proxy je vrsta online usluge, što znači HTTP Proxy koji se koristi za prenos podataka."
   },
   "message.paidSuccessfully": {
     "message": "Plaćanje uspešno",
     "description": "Poruka uspešnog plaćanja."
   },
+  "message.orderExpired": {
+    "message": "Narudžbina istekla, molimo kreirajte novu narudžbinu za plaćanje.",
+    "description": "Poruka o istekloj narudžbini."
+  },
   "message.createFailed": {
     "message": "Kreiranje nije uspelo",
-    "description": "Poruka neuspelog kreiranja."
+    "description": "Poruka o neuspelom kreiranju."
   },
   "message.wechatPayHelp": {
     "message": "Molimo otvorite WeChat na svom telefonu, skenirajte da biste završili plaćanje",
@@ -77,19 +81,19 @@
   },
   "message.free": {
     "message": "Besplatno",
-    "description": "Poruka besplatne narudžbine."
+    "description": "Poruka o besplatnoj narudžbini."
   },
   "message.buyInExternalUrl": {
     "message": "Završite plaćanje na spoljnom linku",
-    "description": "Poruka plaćanja na spoljnom linku."
+    "description": "Poruka o plaćanju na spoljnom linku."
   },
   "message.updateFailed": {
     "message": "Ažuriranje nije uspelo",
-    "description": "Poruka neuspelog ažuriranja."
+    "description": "Poruka o neuspelom ažuriranju."
   },
   "message.updateSuccessfully": {
     "message": "Ažuriranje uspešno",
-    "description": "Poruka uspešnog ažuriranja."
+    "description": "Poruka o uspešnom ažuriranju."
   },
   "message.confirmFinish": {
     "message": "Ova operacija će ručno postaviti narudžbinu na status plaćanja i završiti proces distribucije, što se ne može poništiti. Molimo potvrdite da je kupac završio plaćanje, da li želite da nastavite?",
@@ -97,14 +101,14 @@
   },
   "state.pending": {
     "message": "Čeka se plaćanje",
-    "description": "Status narudžbine, što znači da ova narudžbina još uvek čeka plaćanje od korisnika."
+    "description": "Status narudžbine, što znači da ova narudžbina još uvek čeka korisnikovo plaćanje."
   },
   "state.paid": {
     "message": "Plaćeno",
     "description": "Status narudžbine, što znači da je ova narudžbina plaćena."
   },
   "state.expired": {
-    "message": "Isteklo vreme plaćanja",
+    "message": "Isteklo plaćanje",
     "description": "Status narudžbine, što znači da je ova narudžbina istekla."
   },
   "state.failed": {

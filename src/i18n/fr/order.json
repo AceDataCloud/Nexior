@@ -67,6 +67,10 @@
     "message": "Paiement réussi",
     "description": "Le message du paiement réussi."
   },
+  "message.orderExpired": {
+    "message": "Commande expirée, veuillez créer une nouvelle commande pour payer.",
+    "description": "Le message de la commande expirée."
+  },
   "message.createFailed": {
     "message": "Échec de la création",
     "description": "Le message de l'échec de la création."
@@ -92,7 +96,7 @@
     "description": "Le message de la mise à jour réussie."
   },
   "message.confirmFinish": {
-    "message": "Cette opération va définir manuellement la commande sur l'état de paiement et compléter le traitement de la distribution, ce qui ne peut pas être annulé. Veuillez confirmer que le client a effectué le paiement, voulez-vous continuer ?",
+    "message": "Cette opération définira manuellement la commande sur le statut de paiement et complétera le traitement de la distribution, ce qui ne peut pas être annulé. Veuillez confirmer que le client a effectué le paiement, voulez-vous continuer ?",
     "description": "Le message de la confirmation de la finition."
   },
   "state.pending": {

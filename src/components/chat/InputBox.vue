@@ -130,8 +130,10 @@ export default defineComponent({
       this.$nextTick(() => {
         const textarea = this.$refs.textarea;
         if (textarea) {
-          textarea.style.height = '35px'; // 先重置高度
-          textarea.style.height = textarea.scrollHeight + 'px'; // 设置高度为内容的实际高度
+          // @ts-ignore
+          textarea.style.height = '35px';
+          // @ts-ignore
+          textarea.style.height = textarea.scrollHeight + 'px';
         }
       });
     },
@@ -159,9 +161,11 @@ textarea.input {
   background: none;
   box-shadow: none;
   resize: none;
-  line-height: 35px;
+  line-height: 25px;
   width: calc(100% - 80px);
   margin-left: 30px;
+  font-family: var(--el-font-family);
+  padding-top: 6px;
 }
 textarea.input:focus {
   outline: none;
