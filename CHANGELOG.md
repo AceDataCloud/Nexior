@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/hub
 
-This log was last generated on Sat, 20 Apr 2024 17:27:50 GMT and should not be manually modified.
+This log was last generated on Sun, 21 Apr 2024 17:40:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.19.0
+
+Sun, 21 Apr 2024 17:40:44 GMT
+
+### Minor changes
+
+- add support for usage history (germey@acedata.cloud)
 
 ## 0.18.2
 
