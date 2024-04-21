@@ -13,7 +13,7 @@
   },
   "field.id": {
     "message": "추천 ID",
-    "description": "분배의 고유 식별자로, 분배는 API 서비스 웹 사이트의 추천을 의미합니다."
+    "description": "분배의 고유 식별자, 분배는 API 서비스 웹 사이트의 추천을 의미합니다."
   },
   "field.percentage": {
     "message": "추천 수익 비율",
@@ -41,10 +41,10 @@
   },
   "field.inviteeId": {
     "message": "초대자 ID",
-    "description": "초대자의 고유 식별자로, 초대자는 API 서비스 웹 사이트에 초대자를 초대하는 사용자를 의미합니다."
+    "description": "초대자의 고유 식별자, 초대자는 API 서비스 웹 사이트에 초대자를 초대하는 사용자를 의미합니다."
   },
   "field.isVerified": {
-    "message": "인증됨 여부",
+    "message": "인증됨",
     "description": "추천 사용자가 실제 정보로 인증되었는지를 나타내는 플래그입니다."
   },
   "message.deltaPriceForNextLevel": {
@@ -52,12 +52,12 @@
     "description": "현재 주문 금액과 다음 레벨 임계값 간의 차이입니다."
   },
   "message.developingWithDrawal": {
-    "message": "출금 처리를 위해 고객 서비스를 추가하십시오. 출금 시 6%의 소득세가 공제되며, 송장은 공제에 사용될 수 있습니다.",
+    "message": "출금 기능은 개발 중이므로 디스코드에 가입하여 지원팀과 상의하십시오. 출금 시 관련 소득세가 공제됩니다.",
     "description": "출금 기능이 개발 중임을 나타내는 메시지입니다."
   },
   "message.technicalDetail": {
-    "message": "기술적인 세부 정보",
-    "description": "추천 시스템의 기술적인 세부 정보입니다."
+    "message": "기술적 세부 정보",
+    "description": "추천 시스템의 기술적 세부 정보입니다."
   },
   "message.distributionQrDescription": {
     "message": "추천 QR 코드 (링크와 동일한 내용)",
@@ -76,12 +76,12 @@
     "description": "추천 링크의 설명입니다."
   },
   "message.distributionLinkDescription2": {
-    "message": "이 링크에는 사용자 ID가 포함되어 있습니다. 고객이 링크를 열면 사용자 ID가 쿠키 형식으로 고객의 브라우저에 기록되며, 7일 동안 유효합니다. 7일 이내에 고객이 코드를 스캔하여 이 플랫폼에 등록하면 쿠키와 함께 사용자 ID가 등록 서버로 업로드되어 고객이 하위 고객으로 바인딩됩니다.",
+    "message": "이 링크에는 사용자 ID가 포함되어 있습니다. 고객이 링크를 열면 사용자 ID가 쿠키 형식으로 고객의 브라우저에 기록되며 7일 동안 유효합니다. 7일 이내에 고객이 코드를 스캔하여 이 플랫폼에 등록하면 쿠키와 함께 사용자 ID가 등록 서버로 업로드되어 고객이 하위 고객으로 바인딩됩니다.",
     "description": "추천 링크의 설명입니다."
   },
   "title.price": {
     "message": "추천 주문 총액",
-    "description": "추천 수익을 계산하는 데 사용되는 추천 주문의 총액입니다."
+    "description": "추천 주문의 총액으로, 추천 수익을 계산하는 데 사용됩니다."
   },
   "title.reward": {
     "message": "총 추천 보상",
@@ -113,7 +113,7 @@
   },
   "title.levelInfo": {
     "message": "레벨 정보",
-    "description": "추천 수익을 계산하는 데 사용되는 추천 레벨의 정보입니다."
+    "description": "추천 수익을 계산하는 데 사용되는 추천 레벨 정보입니다."
   },
   "title.distributionLink": {
     "message": "추천 링크",

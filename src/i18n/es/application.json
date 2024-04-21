@@ -13,7 +13,7 @@
   },
   "button.createOrder": {
     "message": "Crear orden",
-    "description": "El texto en un botón, al hacer clic en este botón, irá a la página de creación de órdenes."
+    "description": "El texto en un botón, al hacer clic en este botón, irá a la página de creación de orden."
   },
   "button.custom": {
     "message": "Personalizado",
@@ -26,6 +26,14 @@
   "button.usage": {
     "message": "Historial de uso",
     "description": "El texto en un botón, al hacer clic en este botón, irá a la página de historial de uso."
+  },
+  "field.application": {
+    "message": "Aplicación",
+    "description": "La aplicación del servicio."
+  },
+  "field.status": {
+    "message": "Estado",
+    "description": "El estado de la aplicación."
   },
   "field.id": {
     "message": "ID de la aplicación",
@@ -57,7 +65,7 @@
   },
   "field.traceId": {
     "message": "ID de traza",
-    "description": "El ID de traza de una llamada de API, para la aplicación del servicio de API, no lo traduzca, manténgalo como 'ID de traza'"
+    "description": "El ID de traza de una llamada de API, para la aplicación del servicio de la API, no lo traduzca, manténgalo como 'ID de traza'"
   },
   "field.shouldPayPrice": {
     "message": "Precio final",
@@ -92,8 +100,8 @@
     "description": "La cantidad gratuita de la aplicación."
   },
   "field.extraPrice": {
-    "message": "Precio adicional",
-    "description": "El precio adicional que el usuario debe pagar de la aplicación."
+    "message": "Precio",
+    "description": "El precio extra que el usuario debe pagar de la aplicación."
   },
   "message.alreadyApplied": {
     "message": "Ya has solicitado este servicio, por favor verifica en la consola",
@@ -104,12 +112,12 @@
     "description": "El mensaje mostrado al usuario cuando el usuario ha solicitado este servicio con éxito."
   },
   "message.notApplied": {
-    "message": "Todavía no has solicitado este servicio, por favor solicítalo antes de usarlo",
+    "message": "Todavía no has solicitado este servicio, por favor solicita el servicio antes de usarlo",
     "description": "El mensaje mostrado al usuario cuando el usuario aún no ha solicitado este servicio."
   },
   "message.yourApplication": {
-    "message": "Tu solicitud",
-    "description": "El mensaje mostrado al usuario cuando la solicitud del usuario."
+    "message": "Tu aplicación",
+    "description": "El mensaje mostrado al usuario cuando la aplicación del usuario."
   },
   "message.unverified": {
     "message": "Necesitas completar la autenticación de nombre real antes de poder solicitar este servicio",
@@ -164,7 +172,7 @@
     "description": "El mensaje mostrado al usuario cuando el restablecimiento de la clave es exitoso."
   },
   "message.rotateCredentialFailed": {
-    "message": "Restablecimiento de clave fallido, por favor contacta para su manejo",
+    "message": "Restablecimiento de clave fallido, por favor contacta para manejar",
     "description": "El mensaje mostrado al usuario cuando el restablecimiento de la clave falla."
   },
   "message.updateFailed": {

@@ -7,6 +7,7 @@ import {
   faSun as faRegularSun,
   faClock as faRegularClock
 } from '@fortawesome/free-regular-svg-icons';
+import { faDiscord as faBrandsDiscord } from '@fortawesome/free-brands-svg-icons';
 import {
   faChevronRight as faSolidChevronRight,
   faMoon as faSolidMoon,
@@ -110,3 +111,4 @@ library.add(faSolidShieldHalved);
 library.add(faSolidCubes);
 library.add(faSolidLink);
 library.add(faSolidWandMagic);
+library.add(faBrandsDiscord);

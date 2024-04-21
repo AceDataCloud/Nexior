@@ -67,6 +67,10 @@
     "message": "Pagamento Bem-sucedido",
     "description": "A mensagem do pagamento bem-sucedido."
   },
+  "message.orderExpired": {
+    "message": "Pedido expirado, por favor crie um novo pedido para pagar.",
+    "description": "A mensagem do pedido expirado."
+  },
   "message.createFailed": {
     "message": "Criação Falhou",
     "description": "A mensagem da criação falhada."
@@ -92,12 +96,12 @@
     "description": "A mensagem da atualização bem-sucedida."
   },
   "message.confirmFinish": {
-    "message": "Esta operação definirá manualmente o pedido para o status de pagamento e concluirá o processamento de distribuição, o que não pode ser desfeito. Por favor, confirme que o cliente completou o pagamento, você deseja continuar?",
+    "message": "Esta operação definirá manualmente o pedido para o status de pagamento e concluirá o processamento de distribuição, o que não pode ser desfeito. Por favor, confirme que o cliente concluiu o pagamento, você deseja continuar?",
     "description": "A mensagem da confirmação de conclusão."
   },
   "state.pending": {
-    "message": "Aguardando Pagamento",
-    "description": "O estado do pedido, o que significa que este pedido ainda está aguardando o pagamento do usuário."
+    "message": "Pagamento Pendente",
+    "description": "O estado do pedido, o que significa que este pedido ainda está pendente de pagamento pelo usuário."
   },
   "state.paid": {
     "message": "Pago",

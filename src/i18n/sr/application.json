@@ -4,8 +4,8 @@
     "description": "Tekst na dugmetu, kada se klikne na ovo dugme, preći će na stranicu dokumenta."
   },
   "button.goCredentials": {
-    "message": "Poverilački dokumenti",
-    "description": "Tekst na dugmetu, kada se klikne na ovo dugme, preći će na stranicu poverilačkih dokumenata."
+    "message": "Poverilački podaci",
+    "description": "Tekst na dugmetu, kada se klikne na ovo dugme, preći će na stranicu poverilačkih podataka."
   },
   "button.buyMore": {
     "message": "Kupi više",
@@ -27,21 +27,29 @@
     "message": "Istorija korišćenja",
     "description": "Tekst na dugmetu, kada se klikne na ovo dugme, preći će na stranicu istorije korišćenja."
   },
+  "field.application": {
+    "message": "Aplikacija",
+    "description": "Aplikacija usluge."
+  },
+  "field.status": {
+    "message": "Status",
+    "description": "Status aplikacije."
+  },
   "field.id": {
     "message": "ID aplikacije",
     "description": "ID aplikacije."
   },
   "field.remainingAmount": {
-    "message": "Preostali iznos",
-    "description": "Preostali iznos aplikacije."
+    "message": "Preostala količina",
+    "description": "Preostala količina aplikacije."
   },
   "field.usedAmount": {
-    "message": "Iskorišćeni iznos",
-    "description": "Iskorišćeni iznos aplikacije."
+    "message": "Iskorišćena količina",
+    "description": "Iskorišćena količina aplikacije."
   },
   "field.apiKey": {
     "message": "API ključ",
-    "description": "API ključ"
+    "description": "API ključ."
   },
   "field.service": {
     "message": "Usluga",
@@ -52,12 +60,12 @@
     "description": "Operacija aplikacije."
   },
   "field.amount": {
-    "message": "Iznos",
-    "description": "Iznos aplikacije."
+    "message": "Količina",
+    "description": "Količina aplikacije."
   },
   "field.traceId": {
     "message": "ID traga",
-    "description": "ID traga jednog API poziva, za aplikaciju API servisa, nemojte prevesti, zadržite kao 'ID traga'"
+    "description": "ID traga jednog API poziva, za aplikaciju API usluge, nemojte prevesti, zadržite kao 'ID traga'"
   },
   "field.shouldPayPrice": {
     "message": "Konačna cena",
@@ -72,8 +80,8 @@
     "description": "Ovo je vrsta online usluge, oblik je putem HTTP proksija (koristi se za prenos podataka) za pružanje usluge korisniku."
   },
   "field.credential": {
-    "message": "Poverenje",
-    "description": "Poverenje aplikacije."
+    "message": "Poverilački podatak",
+    "description": "Poverilački podatak aplikacije."
   },
   "field.name": {
     "message": "Ime",
@@ -88,8 +96,8 @@
     "description": "Vrsta aplikacije."
   },
   "field.freeAmount": {
-    "message": "Besplatni iznos",
-    "description": "Besplatni iznos aplikacije."
+    "message": "Besplatna količina",
+    "description": "Besplatna količina aplikacije."
   },
   "field.extraPrice": {
     "message": "Cena",
@@ -100,12 +108,12 @@
     "description": "Poruka koja se prikazuje korisniku kada se već prijavio za ovu uslugu."
   },
   "message.applySuccessfully": {
-    "message": "Prijava uspešna",
+    "message": "Uspesna prijava",
     "description": "Poruka koja se prikazuje korisniku kada se uspešno prijavio za ovu uslugu."
   },
   "message.notApplied": {
-    "message": "Još se niste prijavili za ovu uslugu, molimo prijavite se za uslugu pre korišćenja",
-    "description": "Poruka koja se prikazuje korisniku kada se još nije prijavio za ovu uslugu."
+    "message": "Još uvek se niste prijavili za ovu uslugu, molimo prijavite se za uslugu pre korišćenja",
+    "description": "Poruka koja se prikazuje korisniku kada se još uvek nije prijavio za ovu uslugu."
   },
   "message.yourApplication": {
     "message": "Vaša prijava",
@@ -120,28 +128,28 @@
     "description": "Poruka koja se prikazuje korisniku kada nije završio autentifikaciju sa pravim imenom."
   },
   "message.requiredParameter": {
-    "message": "Obavezan parametar",
-    "description": "Poruka koja se prikazuje korisniku kada nije uneo obavezan parametar."
+    "message": "Potreban parametar",
+    "description": "Poruka koja se prikazuje korisniku kada nije uneo potreban parametar."
   },
   "message.example": {
     "message": "Primer",
-    "description": "Poruka koja se prikazuje korisniku kada nije uneo obavezan parametar."
+    "description": "Poruka koja se prikazuje korisniku kada nije uneo potreban parametar."
   },
   "message.createCredentialSuccessfully": {
-    "message": "Uspešno kreiranje poverenja",
-    "description": "Poruka koja se prikazuje korisniku kada je uspešno kreirao poverenje."
+    "message": "Uspešno kreiranje poverilačkog podatka",
+    "description": "Poruka koja se prikazuje korisniku kada je uspešno kreirao poverilački podatak."
   },
   "message.readPolicy": {
-    "message": "Pročitao/la sam i saglasan/na sam sa",
-    "description": "Poruka koja se prikazuje korisniku kada je pročitao/la i saglasan/na sa politikom."
+    "message": "Pročitao sam i saglasan sam sa",
+    "description": "Poruka koja se prikazuje korisniku kada je pročitao i saglasan sa politikom."
   },
   "message.policy": {
-    "message": "Ugovor o korišćenju usluga podataka",
-    "description": "Poruka koja se prikazuje korisniku kada je pročitao/la i saglasan/na sa politikom."
+    "message": "Ugovor o korišćenju usluge podataka",
+    "description": "Poruka koja se prikazuje korisniku kada je pročitao i saglasan sa politikom."
   },
   "message.notAgreePolicy": {
-    "message": "Niste saglasni sa Ugovorom o korišćenju usluga podataka",
-    "description": "Poruka koja se prikazuje korisniku kada nije saglasan sa politikom."
+    "message": "Niste se složili sa Ugovorom o korišćenju usluge podataka",
+    "description": "Poruka koja se prikazuje korisniku kada se nije složio sa politikom."
   },
   "message.confirmApplying": {
     "message": "Potvrdi prijavu za uslugu",
@@ -164,7 +172,7 @@
     "description": "Poruka koja se prikazuje korisniku kada je resetovanje ključa uspešno."
   },
   "message.rotateCredentialFailed": {
-    "message": "Neuspešno resetovanje ključa, molimo kontaktirajte za pomoć",
+    "message": "Neuspešno resetovanje ključa, molimo kontaktirajte za rešavanje",
     "description": "Poruka koja se prikazuje korisniku kada je resetovanje ključa neuspešno."
   },
   "message.updateFailed": {

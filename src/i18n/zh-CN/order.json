@@ -61,11 +61,15 @@
   },
   "field.proxy": {
     "message": "代理",
-    "description": "代理是一种在线服务，用于数据传输的HTTP代理。"
+    "description": "代理是一种在线服务，用于传输数据的HTTP代理。"
   },
   "message.paidSuccessfully": {
     "message": "支付成功",
     "description": "成功支付的消息。"
+  },
+  "message.orderExpired": {
+    "message": "订单已过期，请创建新订单进行支付。",
+    "description": "订单过期的消息。"
   },
   "message.createFailed": {
     "message": "创建失败",
@@ -105,7 +109,7 @@
   },
   "state.expired": {
     "message": "支付超时",
-    "description": "订单的状态，表示此订单已过期。"
+    "description": "订单的状态，表示此订单已经过期。"
   },
   "state.failed": {
     "message": "支付失败",
@@ -113,22 +117,22 @@
   },
   "title.info": {
     "message": "订单信息",
-    "description": "用作网站标题显示的标题，表示订单信息。"
+    "description": "用作网站标题的标题，表示订单信息。"
   },
   "title.wechatPay": {
     "message": "微信支付",
-    "description": "用作网站标题显示的标题，表示微信支付。"
+    "description": "用作网站标题的标题，表示微信支付。"
   },
   "title.aliPay": {
     "message": "支付宝",
-    "description": "用作网站标题显示的标题，表示支付宝支付，支付宝支付是一种在线支付。"
+    "description": "用作网站标题的标题，表示支付宝支付，支付宝支付是一种在线支付。"
   },
   "title.stripe": {
     "message": "Stripe",
-    "description": "用作网站标题显示的标题，表示Stripe支付，Stripe支付是一种在线支付。"
+    "description": "用作网站标题的标题，表示Stripe支付，Stripe支付是一种在线支付。"
   },
   "title.manageOrder": {
     "message": "管理订单",
-    "description": "用作网站标题显示的标题，表示管理订单。"
+    "description": "用作网站标题的标题，表示管理订单。"
   }
 }
