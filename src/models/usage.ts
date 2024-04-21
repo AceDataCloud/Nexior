@@ -1,14 +1,16 @@
 import { IApi } from './api';
+import { IService } from './service';
 
 export interface IApiUsage {
   id?: string;
-  api?: IApi;
   api_id?: string;
-  application_id?: string;
+  status_code?: number;
   trace_id?: string;
-  metadata?: any;
   created_at?: string;
-  updated_at?: string;
+  remaining_amount?: number;
+  used_amount?: number;
+  deducted_amount?: number;
+  service?: IService;
 }
 
 export interface IApiUsageListResponse {

@@ -26,7 +26,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ROUTE_CONSOLE_APPLICATION_LIST, ROUTE_CONSOLE_ORDER_LIST, ROUTE_INDEX } from '@/router';
+import {
+  ROUTE_CONSOLE_APPLICATION_LIST,
+  ROUTE_CONSOLE_ORDER_LIST,
+  ROUTE_CONSOLE_USAGE_LIST,
+  ROUTE_INDEX
+} from '@/router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { BASE_URL_HUB } from '@/constants';
 
@@ -67,6 +72,12 @@ export default defineComponent({
           text: this.$t('console.menu.orderList'),
           name: ROUTE_CONSOLE_ORDER_LIST,
           icon: 'fa-solid fa-store'
+        },
+        {
+          key: 'usage-list',
+          text: this.$t('console.menu.usageList'),
+          name: ROUTE_CONSOLE_USAGE_LIST,
+          icon: 'fa-solid fa-rotate-left'
         }
       ];
 
