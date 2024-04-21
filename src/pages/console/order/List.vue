@@ -23,7 +23,7 @@
                   <span class="price">¥{{ scope.row?.price?.toFixed(2) }}</span>
                 </template>
               </el-table-column>
-              <el-table-column prop="state" :label="$t('order.field.state')" class-name="text-center" width="120px">
+              <el-table-column prop="state" :label="$t('order.field.state')" class-name="text-center" width="150px">
                 <template #default="scope">
                   <span v-if="scope.row.state === OrderState?.PENDING">
                     <el-tag type="info" class="mx-1" effect="dark">{{ $t('order.state.pending') }}</el-tag>
@@ -202,7 +202,7 @@ export default defineComponent({
     color: var(--el-text-color-primary);
   }
   .el-table {
-    min-height: calc(100vh - 300px);
+    height: calc(100vh - 350px);
     margin-bottom: 50px;
     .el-button {
       border-radius: 20px;
