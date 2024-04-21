@@ -27,6 +27,14 @@
     "message": "利用履歴",
     "description": "ボタンのテキスト、このボタンをクリックすると利用履歴ページに移動します。"
   },
+  "field.application": {
+    "message": "アプリケーション",
+    "description": "サービスのアプリケーション。"
+  },
+  "field.status": {
+    "message": "ステータス",
+    "description": "アプリケーションのステータス。"
+  },
   "field.id": {
     "message": "アプリケーションID",
     "description": "アプリケーションのID。"
@@ -41,7 +49,7 @@
   },
   "field.apiKey": {
     "message": "APIキー",
-    "description": "APIキー。"
+    "description": "APIキー"
   },
   "field.service": {
     "message": "サービス",
@@ -57,7 +65,7 @@
   },
   "field.traceId": {
     "message": "トレースID",
-    "description": "APIサービスのアプリケーションの1つのAPI呼び出しのトレースID。翻訳しないでください。'トレースID'のままにしてください。"
+    "description": "APIサービスのアプリケーションの1つのAPI呼び出しのトレースID、翻訳しないでください、'トレースID'のままにしてください。"
   },
   "field.shouldPayPrice": {
     "message": "最終価格",
@@ -65,11 +73,11 @@
   },
   "field.api": {
     "message": "API",
-    "description": "オンラインサービスの一種です。APIを介してユーザーにサービスを提供します。"
+    "description": "これはオンラインサービスの一種で、フォームはAPIを介してユーザーにサービスを提供します。"
   },
   "field.proxy": {
     "message": "プロキシ",
-    "description": "オンラインサービスの一種です。データの転送に使用されるHTTPプロキシを介してユーザーにサービスを提供します。"
+    "description": "これはオンラインサービスの一種で、フォームはHTTPプロキシ（データ転送に使用）を介してユーザーにサービスを提供します。"
   },
   "field.credential": {
     "message": "資格情報",
@@ -88,12 +96,12 @@
     "description": "アプリケーションのタイプ。"
   },
   "field.freeAmount": {
-    "message": "無料残高",
-    "description": "アプリケーションの無料残高。"
+    "message": "無料量",
+    "description": "アプリケーションの無料量。"
   },
   "field.extraPrice": {
     "message": "価格",
-    "description": "ユーザーが支払う必要があるアプリケーションの追加価格。"
+    "description": "アプリケーションのユーザーが支払う追加料金。"
   },
   "message.alreadyApplied": {
     "message": "このサービスには既に申し込み済みです。コンソールを確認してください",
@@ -112,7 +120,7 @@
     "description": "ユーザーの申し込みを示すメッセージ。"
   },
   "message.unverified": {
-    "message": "このサービスに申し込む前に実名認証を完了する必要があります",
+    "message": "このサービスを申し込む前に実名認証を完了する必要があります",
     "description": "ユーザーが実名認証を完了していない場合に表示されるメッセージ。"
   },
   "message.goVerify": {
@@ -129,7 +137,7 @@
   },
   "message.createCredentialSuccessfully": {
     "message": "資格情報の作成に成功しました",
-    "description": "ユーザーが資格情報を作成に成功した場合に表示されるメッセージ。"
+    "description": "ユーザーが資格情報を作成した場合に表示されるメッセージ。"
   },
   "message.readPolicy": {
     "message": "私は読んで同意します",
@@ -165,7 +173,7 @@
   },
   "message.rotateCredentialFailed": {
     "message": "キーのリセットに失敗しました。処理についてはお問い合わせください",
-    "description": "キーのリセットが失敗した場合に表示されるメッセージ。"
+    "description": "キーのリセットに失敗した場合に表示されるメッセージ。"
   },
   "message.updateFailed": {
     "message": "更新に失敗しました",

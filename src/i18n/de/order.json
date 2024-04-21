@@ -5,11 +5,11 @@
   },
   "button.continuePay": {
     "message": "Weiter bezahlen",
-    "description": "Der Text auf der Schaltfläche, die verwendet wird, um die Bestellung fortzusetzen."
+    "description": "Der Text auf der Schaltfläche, die verwendet wird, um die Bestellung weiter zu bezahlen."
   },
   "button.checkDetail": {
     "message": "Details prüfen",
-    "description": "Der Text auf der Schaltfläche, die verwendet wird, um die Details der Bestellung zu überprüfen."
+    "description": "Der Text auf der Schaltfläche, die verwendet wird, um die Details der Bestellung zu prüfen."
   },
   "button.query": {
     "message": "Abfragen",
@@ -61,39 +61,43 @@
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Der Proxy ist eine Art Online-Dienst, der für die Datenübertragung verwendet wird."
+    "description": "Der Proxy ist eine Art Online-Dienst, der bedeutet, dass der HTTP-Proxy zur Datenübertragung verwendet wird."
   },
   "message.paidSuccessfully": {
     "message": "Zahlung erfolgreich",
-    "description": "Die Meldung der erfolgreichen Zahlung."
+    "description": "Die Nachricht der erfolgreichen Zahlung."
+  },
+  "message.orderExpired": {
+    "message": "Bestellung abgelaufen, bitte erstellen Sie eine neue Bestellung, um zu bezahlen.",
+    "description": "Die Nachricht der abgelaufenen Bestellung."
   },
   "message.createFailed": {
     "message": "Erstellung fehlgeschlagen",
-    "description": "Die Meldung der fehlgeschlagenen Erstellung."
+    "description": "Die Nachricht der fehlgeschlagenen Erstellung."
   },
   "message.wechatPayHelp": {
-    "message": "Bitte öffnen Sie WeChat auf Ihrem Telefon und scannen Sie, um die Zahlung abzuschließen",
-    "description": "Die Meldung der WeChat-Zahlungshilfe."
+    "message": "Bitte öffnen Sie WeChat auf Ihrem Telefon, scannen Sie, um die Zahlung abzuschließen",
+    "description": "Die Nachricht der WeChat-Zahlungshilfe."
   },
   "message.free": {
     "message": "Kostenlos",
-    "description": "Die Meldung der kostenlosen Bestellung."
+    "description": "Die Nachricht der kostenlosen Bestellung."
   },
   "message.buyInExternalUrl": {
     "message": "Bitte schließen Sie die Zahlung über den externen Link ab",
-    "description": "Die Meldung der Zahlung über den externen Link."
+    "description": "Die Nachricht der Zahlung über den externen Link."
   },
   "message.updateFailed": {
     "message": "Aktualisierung fehlgeschlagen",
-    "description": "Die Meldung der fehlgeschlagenen Aktualisierung."
+    "description": "Die Nachricht der fehlgeschlagenen Aktualisierung."
   },
   "message.updateSuccessfully": {
     "message": "Aktualisierung erfolgreich",
-    "description": "Die Meldung der erfolgreichen Aktualisierung."
+    "description": "Die Nachricht der erfolgreichen Aktualisierung."
   },
   "message.confirmFinish": {
-    "message": "Dieser Vorgang setzt die Bestellung manuell auf den Zahlungsstatus und schließt die Verteilungsverarbeitung ab, was nicht rückgängig gemacht werden kann. Bitte bestätigen Sie, dass der Kunde die Zahlung abgeschlossen hat. Möchten Sie fortfahren?",
-    "description": "Die Meldung der Bestätigung des Abschlusses."
+    "message": "Diese Operation setzt die Bestellung manuell auf den Zahlungsstatus und schließt die Verteilungsverarbeitung ab, was nicht rückgängig gemacht werden kann. Bitte bestätigen Sie, dass der Kunde die Zahlung abgeschlossen hat. Möchten Sie fortfahren?",
+    "description": "Die Nachricht der Bestätigung des Abschlusses."
   },
   "state.pending": {
     "message": "Ausstehende Zahlung",

@@ -46,7 +46,6 @@ import ModelSelector from '@/components/chat/ModelSelector.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router';
 import { Status } from '@/models';
-import { log } from '@/utils/log';
 import Introduction from '@/components/chat/Introduction.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isJSONString } from '@/utils/is';
