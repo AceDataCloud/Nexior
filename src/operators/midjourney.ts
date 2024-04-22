@@ -77,7 +77,7 @@ class MidjourneyOperator {
       headers: {
         authorization: `Bearer ${options.token}`,
         'content-type': 'application/json',
-        accept: 'application/json'
+        accept: 'application/x-ndjson'
       },
       baseURL: BASE_URL_API
     });
