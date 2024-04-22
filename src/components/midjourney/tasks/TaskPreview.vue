@@ -25,7 +25,6 @@
         {{ modelValue?.request?.prompt }}
       </p>
     </div>
-    <p v-show="false" class="description">{{ $t('midjourney.field.taskId') }}: {{ modelValue?.id }}</p>
     <div v-if="!modelValue?.response" :class="{ content: true, full: !!full }">
       <el-image class="image">
         <template #error>
@@ -97,6 +96,7 @@
         <font-awesome-icon icon="fa-regular fa-clock" class="mr-1" />
         {{ $dayjs.format('' + new Date(parseFloat(modelValue?.created_at) * 1000)) }}
       </p>
+      <p class="description">{{ $t('midjourney.field.taskId') }}: {{ modelValue?.id }}</p>
     </div>
   </div>
 </template>
@@ -113,7 +113,6 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { MIDJOURNEY_MODE_FAST, MIDJOURNEY_MODE_RELAX, MIDJOURNEY_MODE_TURBO } from '@/constants';
-import { parse } from 'path';
 
 interface IData {
   midjourneyImagineState: typeof MidjourneyImagineState;
