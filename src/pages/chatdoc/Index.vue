@@ -10,6 +10,7 @@
         </div>
         <div class="status">
           <application-status
+            :show-price="false"
             :initializing="initializing"
             :application="application"
             :need-apply="needApply"

@@ -10,6 +10,7 @@
         </div>
         <div class="status">
           <application-status
+            :show-price="false"
             :initializing="initializing"
             :application="application"
             :need-apply="needApply"
@@ -24,17 +25,17 @@
           <el-table v-loading="loading" :data="documents" border>
             <el-table-column prop="id" label="ID" />
             <el-table-column prop="file_name" :label="$t('chatdoc.field.fileName')" />
-            <el-table-column :label="$t('chatdoc.field.fileExtension')">
+            <el-table-column :label="$t('chatdoc.field.fileExtension')" width="100px">
               <template #default="scope">
                 {{ scope.row.file_name.split('.').pop() }}
               </template>
             </el-table-column>
-            <el-table-column :label="$t('chatdoc.field.createdAt')">
+            <el-table-column :label="$t('chatdoc.field.createdAt')" width="200px">
               <template #default="scope">
                 {{ scope.row.created_at ? $dayjs.format(scope.row.created_at) : '' }}
               </template>
             </el-table-column>
-            <el-table-column :label="$t('chatdoc.field.state')">
+            <el-table-column :label="$t('chatdoc.field.state')" width="180px">
               <template #default="scope">
                 <el-tag v-if="scope.row.state === 'processing'" type="info">
                   {{ $t('chatdoc.field.stateProcessing') }}
@@ -49,6 +50,9 @@
             </el-table-column>
             <el-table-column>
               <template #default="scope">
+                <el-button type="primary" round size="small" @click="onPreview(scope.row.file_url)">
+                  {{ $t('common.button.preview') }}
+                </el-button>
                 <el-button type="danger" round size="small" @click="onDelete(scope.row.id)">
                   {{ $t('common.button.delete') }}
                 </el-button>
@@ -127,6 +131,9 @@ export default defineComponent({
           repositoryId: this.repositoryId
         });
       });
+    },
+    onPreview(url: string) {
+      window.open(url, '_blank');
     }
   }
 });

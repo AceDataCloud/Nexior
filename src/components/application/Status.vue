@@ -19,7 +19,7 @@
         $t('common.button.buyMore')
       }}</el-button>
       <api-price
-        v-if="application?.service?.apis?.[0]?.price"
+        v-if="showPrice && application?.service?.apis?.[0]?.price"
         class="price inline-block"
         :price="application?.service?.apis?.[0]?.price"
       />
@@ -68,6 +68,10 @@ export default defineComponent({
     initializing: {
       type: Boolean,
       default: false
+    },
+    showPrice: {
+      type: Boolean,
+      default: true
     },
     service: {
       type: Object as () => IService | undefined,
