@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/hub
 
-This log was last generated on Mon, 22 Apr 2024 05:05:03 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Apr 2024 15:47:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.20.2
+
+Mon, 22 Apr 2024 15:47:56 GMT
+
+### Patches
+
+- remove unnecessary records (cqc@cuiqingcai.com)
 
 ## 0.20.1
 
