@@ -49,7 +49,8 @@ class ChatOperator {
       {
         headers: {
           'content-type': 'application/json',
-          authorization: `Bearer ${options.token}`
+          authorization: `Bearer ${options.token}`,
+          'x-record-exempt': 'true'
         },
         baseURL: BASE_URL_API
       }
@@ -81,7 +82,8 @@ class ChatOperator {
       {
         headers: {
           'content-type': 'application/json',
-          authorization: `Bearer ${options.token}`
+          authorization: `Bearer ${options.token}`,
+          'x-record-exempt': 'true'
         },
         baseURL: BASE_URL_API
       }
@@ -98,7 +100,8 @@ class ChatOperator {
       {
         headers: {
           'content-type': 'application/json',
-          authorization: `Bearer ${options.token}`
+          authorization: `Bearer ${options.token}`,
+          'x-record-exempt': 'true'
         },
         baseURL: BASE_URL_API
       }
@@ -118,7 +121,8 @@ class ChatOperator {
       {
         headers: {
           'content-type': 'application/json',
-          authorization: `Bearer ${options.token}`
+          authorization: `Bearer ${options.token}`,
+          'x-record-exempt': 'true'
         },
         baseURL: BASE_URL_API
       }

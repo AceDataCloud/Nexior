@@ -3,6 +3,10 @@
     "message": "Asetukset",
     "description": "Painikkeen teksti, jota käytetään johonkin asetuksen määrittämiseen"
   },
+  "button.preview": {
+    "message": "Esikatselu",
+    "description": "Painikkeen teksti, jota käytetään avataksesi esikatselun jonkin tiedoston URL-osoitteen perusteella"
+  },
   "button.edit": {
     "message": "Muokkaa",
     "description": "Painikkeen teksti, jota käytetään johonkin muokkaukseen"
@@ -29,15 +33,15 @@
   },
   "button.cancel": {
     "message": "Peruuta",
-    "description": "Painikkeen teksti, jota käytetään jonkin peruuttamiseen"
+    "description": "Painikkeen teksti, jota käytetään jonkin perumiseen"
   },
   "button.alert": {
     "message": "Hälytys",
     "description": "Painikkeen teksti, jota käytetään jonkin hälyttämiseen"
   },
   "button.info": {
-    "message": "Tiedot",
-    "description": "Painikkeen teksti, jota käytetään tietojen näyttämiseen"
+    "message": "Tiedote",
+    "description": "Painikkeen teksti, jota käytetään tiedotteen näyttämiseen"
   },
   "button.publish": {
     "message": "Julkaise",
@@ -49,7 +53,7 @@
   },
   "button.verify": {
     "message": "Vahvista henkilöllisyys",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän oikean nimen vahvistamiseen"
+    "description": "Painikkeen teksti, jota käytetään käyttäjän oikean henkilöllisyyden vahvistamiseen"
   },
   "button.profile": {
     "message": "Profiili",
@@ -57,10 +61,10 @@
   },
   "button.console": {
     "message": "Konsoli",
-    "description": "Painikkeen teksti, jota käytetään konsolisivun näyttämiseen johonkin verkkosivulla hallittavaan asiaan"
+    "description": "Painikkeen teksti, jota käytetään konsolisivun näyttämiseen johonkin verkkosivulla hallittavaan toimintoon"
   },
   "button.learn": {
-    "message": "Opettele",
+    "message": "Opi",
     "description": "Painikkeen teksti, jota käytetään käyttäjän opettamiseen jostakin"
   },
   "button.buy": {
@@ -73,7 +77,7 @@
   },
   "button.startForFree": {
     "message": "Aloita ilmaiseksi",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän ohjaamiseen aloittamaan ilmaiseksi"
+    "description": "Painikkeen teksti, jota käytetään käyttäjän ohjaamiseen aloittamaan jokin toiminto ilmaiseksi"
   },
   "button.apply": {
     "message": "Hae",
@@ -97,7 +101,7 @@
   },
   "button.acquire": {
     "message": "Hanki",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän ohjaamiseen hankkimaan jotakin, kuten avain tai token API-palvelua varten"
+    "description": "Painikkeen teksti, jota käytetään käyttäjän ohjaamiseen hankkimaan jotakin, kuten avain tai tunniste API-palvelua varten"
   },
   "button.fillExample": {
     "message": "Täytä esimerkki",
@@ -125,11 +129,11 @@
   },
   "button.referralEarnings": {
     "message": "Suositusten tuotot",
-    "description": "Painikkeen teksti, jota käytetään suositusten tuottojen näyttämiseen, tarkoittaa että käyttäjä voi ansaita rahaa kutsuessaan muita käyttämään palvelua"
+    "description": "Painikkeen teksti, jota käytetään suositusten tuottojen näyttämiseen, tarkoittaa, että käyttäjä voi ansaita rahaa kutsuessaan muita käyttämään palvelua"
   },
   "button.finish": {
     "message": "Valmis",
-    "description": "Painikkeen teksti, jota käytetään jonkin valmiiksi merkitsemiseen"
+    "description": "Painikkeen teksti, jota käytetään jonkin valmiiksi saattamiseen"
   },
   "entity.website": {
     "message": "Ace Data Cloud",
@@ -137,11 +141,11 @@
   },
   "entity.copyright": {
     "message": "Tekijänoikeus",
-    "description": "Teksti tekijänoikeuden näyttämiseen"
+    "description": "Teksti, joka näyttää tekijänoikeuden"
   },
   "entity.platform": {
     "message": "Alusta",
-    "description": "Teksti, joka osoittaa tämän olevan API-palvelun alusta"
+    "description": "Teksti, joka osoittaa, että tämä on API-palvelun alusta"
   },
   "entity.title": {
     "message": "Otsikko",
@@ -185,7 +189,7 @@
   },
   "message.copied": {
     "message": "Kopioitu onnistuneesti",
-    "description": "Viesti, joka kertoo, että sisältö on kopioitu onnistuneesti"
+    "description": "Viesti, joka osoittaa, että sisältö on kopioitu onnistuneesti"
   },
   "message.confirmDelete": {
     "message": "Haluatko varmasti poistaa?",
@@ -197,11 +201,11 @@
   },
   "message.info": {
     "message": "Ystävällinen muistutus",
-    "description": "Viesti, joka näyttää tietoa"
+    "description": "Viesti, joka näyttää tiedotteen"
   },
   "message.free": {
     "message": "Ilmainen",
-    "description": "Viesti, joka kertoo, että palvelu on ilmainen, mikä tarkoittaa, ettei käyttäjän tarvitse maksaa siitä"
+    "description": "Viesti, joka osoittaa, että palvelu on ilmainen, mikä tarkoittaa, ettei käyttäjän tarvitse maksaa siitä"
   },
   "message.startPrice": {
     "message": "Alkaen",
@@ -213,7 +217,7 @@
   },
   "message.noData": {
     "message": "Ei dataa",
-    "description": "Viesti, joka kertoo, ettei taulukossa tai listassa ole dataa"
+    "description": "Viesti, joka osoittaa, ettei taulukossa tai listassa ole dataa"
   },
   "nav.home": {
     "message": "Koti",
@@ -240,16 +244,16 @@
     "description": "Teksti verkkosivuston navigointipalkissa, joka näyttää konsolisivun"
   },
   "nav.chat": {
-    "message": "Keskustelu",
-    "description": "Teksti verkkosivuston navigointipalkissa, joka näyttää keskustelusivun, älä käännä tätä kenttää, pidä se 'Chat'ina"
+    "message": "Chat",
+    "description": "Teksti verkkosivuston navigointipalkissa, joka näyttää chat-sivun, älä käännä tätä kenttää, pidä se 'Chat'ina"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "Teksti verkkosivuston navigointipalkissa, joka näyttää midjourneysivun, älä käännä tätä kenttää, pidä se 'Midjourney'na"
+    "description": "Teksti verkkosivuston navigointipalkissa, joka näyttää midjourney-sivun, älä käännä tätä kenttää, pidä se 'Midjourney'ina"
   },
   "nav.chatdoc": {
     "message": "Chatdoc",
-    "description": "Teksti verkkosivuston navigointipalkissa, joka näyttää chatdocsivun, älä käännä tätä kenttää, pidä se 'Chatdoc'ina"
+    "description": "Teksti verkkosivuston navigointipalkissa, joka näyttää chatdoc-sivun, älä käännä tätä kenttää, pidä se 'Chatdoc'ina"
   },
   "nav.distribution": {
     "message": "Suositusten tuotot",
@@ -265,7 +269,7 @@
   },
   "nav.darkMode": {
     "message": "Tumma tila",
-    "description": "Teksti verkkosivuston navigointipalkissa, joka käytetään teeman vaihtamiseen tummaan tilaan"
+    "description": "Verkkosivuston navigaatiovalikossa oleva teksti, jota käytetään teeman vaihtamiseen tummaan tilaan"
   },
   "title.alert": {
     "message": "Hälytys",
@@ -281,38 +285,38 @@
   },
   "title.allApplications": {
     "message": "Kaikki sovellukset",
-    "description": "Sivun otsikko, joka näyttää kaikki sovellukset"
+    "description": "Sivun otsikko, jossa näytetään kaikki sovellukset"
   },
   "title.allOrders": {
     "message": "Kaikki tilaukset",
-    "description": "Sivun otsikko, joka näyttää kaikki tilaukset"
+    "description": "Sivun otsikko, jossa näytetään kaikki tilaukset"
   },
   "title.orderInfo": {
     "message": "Tilaustiedot",
-    "description": "Sivun otsikko, joka näyttää tilaustiedot"
+    "description": "Sivun otsikko, jossa näytetään tilaustiedot"
   },
   "title.buyMore": {
     "message": "Osta lisää",
-    "description": "Sivun otsikko, joka kannustaa käyttäjää ostamaan lisää"
+    "description": "Sivun otsikko, jossa käyttäjä voi ostaa lisää"
   },
   "title.distribution": {
     "message": "Suosittelijan ansio",
-    "description": "Sivun otsikko, joka näyttää suosittelijan ansioita, tarkoittaa että käyttäjä voi ansaita rahaa kutsuessaan muita käyttämään palvelua"
+    "description": "Sivun otsikko, jossa näytetään suosittelijan ansio, tarkoittaa että käyttäjä voi ansaita rahaa kutsuessaan muita käyttämään palvelua"
   },
   "title.distributionHistory": {
     "message": "Suositteluhistoria",
-    "description": "Sivun otsikko, joka näyttää suositteluhistorian"
+    "description": "Sivun otsikko, jossa näytetään suositteluhistoria"
   },
   "title.invitee": {
     "message": "Kutsuja",
-    "description": "Sivun otsikko, joka näyttää kutsujan"
+    "description": "Sivun otsikko, jossa näytetään kutsuja"
   },
   "title.allUsages": {
     "message": "Käyttöhistoria",
-    "description": "Sivun otsikko, joka näyttää API-palvelun kaikki käytöt"
+    "description": "Sivun otsikko, jossa näytetään API-palvelun kaikki käytöt"
   },
   "title.allCredentials": {
     "message": "Tunnukset",
-    "description": "Sivun otsikko, joka näyttää kaikki tunnukset, tunnuksia käytetään API:en käyttöön"
+    "description": "Sivun otsikko, jossa näytetään kaikki tunnukset, tunnuksia käytetään API:en käyttöön"
   }
 }
