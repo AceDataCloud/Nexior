@@ -30,7 +30,8 @@ class ChatdocOperator {
         headers: {
           authorization: `Bearer ${options.token}`,
           accept: 'application/json',
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          'x-record-exempt': 'true'
         },
         baseURL: BASE_URL_API
       }
@@ -48,7 +49,8 @@ class ChatdocOperator {
         headers: {
           authorization: `Bearer ${options.token}`,
           accept: 'application/json',
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          'x-record-exempt': 'true'
         },
         baseURL: BASE_URL_API
       }
@@ -66,7 +68,8 @@ class ChatdocOperator {
         headers: {
           authorization: `Bearer ${options.token}`,
           accept: 'application/json',
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          'x-record-exempt': 'true'
         },
         baseURL: BASE_URL_API
       }
@@ -83,7 +86,8 @@ class ChatdocOperator {
         headers: {
           authorization: `Bearer ${options.token}`,
           accept: 'application/json',
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          'x-record-exempt': 'true'
         },
         baseURL: BASE_URL_API
       }
@@ -104,7 +108,8 @@ class ChatdocOperator {
         headers: {
           authorization: `Bearer ${options.token}`,
           accept: 'application/json',
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          'x-record-exempt': 'true'
         },
         baseURL: BASE_URL_API
       }
@@ -125,7 +130,8 @@ class ChatdocOperator {
         headers: {
           authorization: `Bearer ${options.token}`,
           accept: 'application/json',
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          'x-record-exempt': 'true'
         },
         baseURL: BASE_URL_API
       }
@@ -154,7 +160,8 @@ class ChatdocOperator {
       {
         headers: {
           accept: 'application/json',
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          'x-record-exempt': 'true'
         },
         baseURL: BASE_URL_API
       }
@@ -199,7 +206,8 @@ class ChatdocOperator {
         headers: {
           authorization: `Bearer ${options.token}`,
           accept: 'application/json',
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          'x-record-exempt': 'true'
         },
         baseURL: BASE_URL_API
       }
@@ -217,7 +225,8 @@ class ChatdocOperator {
         headers: {
           authorization: `Bearer ${options.token}`,
           accept: 'application/json',
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          'x-record-exempt': 'true'
         },
         baseURL: BASE_URL_API
       }
@@ -235,7 +244,8 @@ class ChatdocOperator {
         headers: {
           authorization: `Bearer ${options.token}`,
           accept: 'application/json',
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          'x-record-exempt': 'true'
         },
         baseURL: BASE_URL_API
       }
@@ -253,7 +263,8 @@ class ChatdocOperator {
       {
         headers: {
           accept: 'application/json',
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          'x-record-exempt': 'true'
         },
         baseURL: BASE_URL_API
       }
@@ -270,7 +281,8 @@ class ChatdocOperator {
       {
         headers: {
           accept: 'application/json',
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          'x-record-exempt': 'true'
         },
         baseURL: BASE_URL_API
       }

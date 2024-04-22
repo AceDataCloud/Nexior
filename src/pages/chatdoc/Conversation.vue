@@ -6,6 +6,7 @@
         <div class="chat">
           <div class="status">
             <application-status
+              :show-price="false"
               :initializing="initializing"
               :application="application"
               :need-apply="needApply"
@@ -195,10 +196,11 @@ export default defineComponent({
           });
           this.answering = false;
           if (!this.conversationId) {
+            console.log('push to conversation', conversationId);
             await this.$router.push({
               name: ROUTE_CHATDOC_CONVERSATION,
               params: {
-                conversationId: this.conversationId,
+                conversationId: conversationId,
                 repositoryId: this.repositoryId
               }
             });

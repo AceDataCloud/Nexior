@@ -283,7 +283,7 @@ export default defineComponent({
 
   .description {
     font-size: 12px;
-    color: #666;
+    color: var(--el-text-color-regular);
     margin-bottom: 10px;
   }
 
