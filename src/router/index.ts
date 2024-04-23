@@ -5,6 +5,7 @@ import chat from './chat';
 import midjourney from './midjourney';
 import distribution from './distribution';
 import chatdoc from './chatdoc';
+import qrart from './qrart';
 
 import { ROUTE_CHAT_CONVERSATION_NEW, ROUTE_INDEX } from './constants';
 import store from '@/store';
@@ -22,6 +23,7 @@ const routes = [
   chatdoc,
   auth,
   chat,
+  qrart,
   midjourney,
   distribution
 ];
