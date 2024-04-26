@@ -1,7 +1,7 @@
 <template>
   <div class="field">
     <h2 class="title">{{ $t('qrart.name.prompt') }}</h2>
-    <el-input v-model="value" size="small" class="prompt" />
+    <el-input v-model="value" :rows="3" type="textarea" class="prompt" :placeholder="$t('qrart.placeholder.prompt')" />
   </div>
 </template>
 
@@ -43,17 +43,11 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .field {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
   .title {
     font-size: 14px;
     margin: 0;
     width: 30%;
-  }
-  .value {
-    flex: 1;
+    margin-bottom: 10px;
   }
 }
 </style>

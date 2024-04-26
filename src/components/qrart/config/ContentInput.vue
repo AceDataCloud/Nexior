@@ -1,7 +1,7 @@
 <template>
   <div class="field">
     <h2 class="title">{{ $t('qrart.name.content') }}</h2>
-    <el-input v-model="value" size="small" class="content" />
+    <el-input v-model="value" class="content" :placeholder="$t('qrart.placeholder.content')" />
   </div>
 </template>
 
@@ -9,10 +9,10 @@
 import { defineComponent } from 'vue';
 import { ElInput } from 'element-plus';
 
-export const DEFAULT_content = '';
+export const DEFAULT_CONTENT = '';
 
 export default defineComponent({
-  name: 'contentInput',
+  name: 'ContentInput',
   components: {
     ElInput
   },
@@ -35,7 +35,7 @@ export default defineComponent({
   },
   mounted() {
     if (!this.value) {
-      this.value = DEFAULT_content;
+      this.value = DEFAULT_CONTENT;
     }
   }
 });
@@ -43,17 +43,11 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .field {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
   .title {
     font-size: 14px;
     margin: 0;
     width: 30%;
-  }
-  .value {
-    flex: 1;
+    margin-bottom: 10px;
   }
 }
 </style>

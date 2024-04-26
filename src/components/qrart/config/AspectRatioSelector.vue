@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="title">{{ $t('qrart.name.ratio') }}</h2>
+    <h2 class="title">{{ $t('qrart.name.aspectRatio') }}</h2>
     <div class="items">
       <div
         v-for="(option, optionKey) in options"
@@ -24,39 +24,39 @@ import { defineComponent } from 'vue';
 import { MIDJOURNEY_DEFAULT_RATIO } from '@/constants';
 
 export default defineComponent({
-  name: 'RatioSelector',
+  name: 'AspectRatioSelector',
   data() {
     return {
       options: [
         {
           value: '1:1',
           label: '1:1',
-          width: 15,
-          height: 15
+          width: 30,
+          height: 30
         },
         {
           value: '4:3',
           label: '4:3',
-          width: 16,
-          height: 12
+          width: 32,
+          height: 24
         },
         {
           value: '3:4',
           label: '3:4',
-          width: 12,
-          height: 16
+          width: 24,
+          height: 32
         },
         {
           value: '16:9',
           label: '16:9',
-          width: 16,
-          height: 9
+          width: 32,
+          height: 18
         },
         {
           value: '9:16',
           label: '9:16',
-          width: 9,
-          height: 16
+          width: 18,
+          height: 32
         }
       ]
     };
@@ -67,13 +67,13 @@ export default defineComponent({
     },
     value: {
       get() {
-        return this.$store.state.qrart.preset?.ratio;
+        return this.$store.state.qrart.config?.aspect_ratio;
       },
       set(val) {
-        console.debug('set ratio', val);
-        this.$store.commit('qrart/setPreset', {
-          ...this.$store.state.qrart.preset,
-          ratio: val
+        console.debug('set aspect ratio', val);
+        this.$store.commit('qrart/setConfig', {
+          ...this.$store.state.qrart.config,
+          aspect_ratio: val
         });
       }
     }
@@ -98,8 +98,8 @@ export default defineComponent({
   justify-content: space-between;
 
   .item {
-    width: 40px;
-    height: 60px;
+    width: 65px;
+    height: 75px;
     border: 2px solid var(--el-border-color);
     display: flex;
     flex-direction: column;

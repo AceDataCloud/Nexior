@@ -1,7 +1,7 @@
 <template>
   <div class="main">
-    <div class="preset">
-      <slot name="preset" />
+    <div class="config">
+      <slot name="config" />
     </div>
     <div class="result">
       <slot name="result" />
@@ -10,7 +10,7 @@
       <font-awesome-icon icon="fa-solid fa-bars" class="icon-menu" />
     </el-button>
     <el-drawer v-model="drawer" :with-header="false" size="340px" class="drawer">
-      <slot name="preset" />
+      <slot name="config" />
     </el-drawer>
   </div>
 </template>
@@ -56,7 +56,7 @@ export default defineComponent({
   flex: 1;
   display: flex;
   flex-direction: row;
-  .preset {
+  .config {
     width: 400px;
     height: 100%;
     overflow-y: scroll;

@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('qrart.name.version') }}</h2>
+    <h2 class="title">{{ $t('qrart.name.type') }}</h2>
     <el-select v-model="value" class="value" :placeholder="$t('qrart.placeholder.select')">
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </el-select>
@@ -30,12 +30,12 @@ export default defineComponent({
     return {
       options: [
         {
-          value: 'Text',
-          label: 'text'
+          label: 'Text',
+          value: 'text'
         },
         {
-          value: 'Link',
-          label: 'link'
+          label: 'Link',
+          value: 'link'
         }
       ]
     };
@@ -43,7 +43,7 @@ export default defineComponent({
   computed: {
     value: {
       get() {
-        return this.$store.state.midjourney.config?.type;
+        return this.$store.state.qrart.config?.type;
       },
       set(val) {
         console.debug('set type', val);

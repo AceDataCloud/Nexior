@@ -69,6 +69,7 @@ export const loadLocaleMessages = async (i18n: I18n, locale: string) => {
   const names = [
     'api',
     'application',
+    'qrart',
     'common',
     'console',
     'credential',
