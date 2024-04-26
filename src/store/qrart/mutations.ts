@@ -1,9 +1,9 @@
-import { IApplication, ICredential, IQrartPreset, IQrartTask, IService } from '@/models';
+import { IApplication, ICredential, IQrartConfig, IQrartTask, IService } from '@/models';
 import { IQrartState } from './models';
 
 export const resetAll = (state: IQrartState): void => {
   state.application = undefined;
-  state.preset = {};
+  state.config = {};
   state.tasks = [];
 };
 
@@ -19,8 +19,8 @@ export const setApplication = (state: IQrartState, payload: IApplication): void 
   state.application = payload;
 };
 
-export const setPreset = (state: IQrartState, payload: IQrartPreset): void => {
-  state.preset = payload;
+export const setConfig = (state: IQrartState, payload: IQrartConfig): void => {
+  state.config = payload;
 };
 
 export const setTasks = (state: IQrartState, payload: IQrartTask[]): void => {
@@ -33,7 +33,7 @@ export const setTasksTotal = (state: IQrartState, payload: number): void => {
 
 export default {
   setApplication,
-  setPreset,
+  setConfig,
   setCredential,
   setService,
   setTasks,

@@ -1,32 +1,28 @@
 <template>
   <div class="main">
-    <div class="side">
-      <slot name="side">
-        <side-panel />
-      </slot>
+    <div class="preset">
+      <slot name="preset" />
     </div>
-    <div class="chat">
-      <slot name="chat" />
+    <div class="result">
+      <slot name="result" />
     </div>
     <el-button round class="menu" @click="drawer = true">
       <font-awesome-icon icon="fa-solid fa-bars" class="icon-menu" />
     </el-button>
     <el-drawer v-model="drawer" :with-header="false" size="340px" class="drawer">
-      <side-panel />
+      <slot name="preset" />
     </el-drawer>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import SidePanel from '@/components/chat/SidePanel.vue';
 import { ElDrawer, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default defineComponent({
-  name: 'LayoutChat',
+  name: 'LayoutQrart',
   components: {
-    SidePanel,
     ElDrawer,
     ElButton,
     FontAwesomeIcon
@@ -43,13 +39,13 @@ export default defineComponent({
   },
   methods: {
     async onGetService() {
-      await this.$store.dispatch('chat/getService');
+      await this.$store.dispatch('qrart/getService');
     },
     async onGetApplication() {
-      await this.$store.dispatch('chat/getApplication');
+      await this.$store.dispatch('qrart/getApplication');
     },
     async onGetConversations() {
-      await this.$store.dispatch('chat/getConversations');
+      await this.$store.dispatch('qrart/getConversations');
     }
   }
 });
@@ -60,17 +56,18 @@ export default defineComponent({
   flex: 1;
   display: flex;
   flex-direction: row;
-  .side {
-    width: 300px;
+  .preset {
+    width: 400px;
     height: 100%;
     overflow-y: scroll;
+    border-right: 1px solid var(--el-border-color);
   }
 
-  .chat {
+  .result {
     height: 100%;
     padding: 15px;
     flex: 1;
-    width: calc(100% - 300px);
+    width: calc(100% - 400px);
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -82,10 +79,10 @@ export default defineComponent({
 }
 
 @media (max-width: 767px) {
-  .side {
+  .preset {
     display: none;
   }
-  .chat {
+  .result {
     width: 100%;
   }
   .menu {

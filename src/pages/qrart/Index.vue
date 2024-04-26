@@ -1,14 +1,14 @@
 <template>
   <layout>
-    <template #presets> </template>
-    <template #results> </template>
+    <template #preset> </template>
+    <template #result> </template>
   </layout>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Layout from '@/layouts/Midjourney.vue';
-import PresetPanel from '@/components/midjourney/PresetPanel.vue';
+import Layout from '@/layouts/Qrart.vue';
+import PresetPanel from '@/components/qrart/PresetPanel.vue';
 import PromptInput from '@/components/midjourney/PromptInput.vue';
 import ElementsSelector from '@/components/midjourney/ElementsSelector.vue';
 import IgnoreSelector from '@/components/midjourney/IgnoreSelector.vue';
@@ -36,10 +36,10 @@ interface IData {
   references: string[];
 }
 
-const CALLBACK_URL = 'https://webhook.acedata.cloud/midjourney';
+const CALLBACK_URL = 'https://webhook.acedata.cloud/qrart';
 
 export default defineComponent({
-  name: 'MidjourneyIndex',
+  name: 'QrartIndex',
   components: {
     ModeSelector,
     ReferenceImage,

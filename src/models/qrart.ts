@@ -1,4 +1,4 @@
-export interface IQrartPreset {
+export interface IQrartConfig {
   content?: string;
   type?: string;
   prompt?: string;

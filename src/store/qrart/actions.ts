@@ -3,7 +3,7 @@ import { IQrartState } from './models';
 import { ActionContext } from 'vuex';
 import { log } from '@/utils/log';
 import { IRootState } from '../common/models';
-import { IApplication, ICredential, IMidjourneyPreset, IQrartTask, IService } from '@/models';
+import { IApplication, ICredential, IQrartConfig, IQrartTask, IService } from '@/models';
 import { Status } from '@/models/common';
 import { QRART_SERVICE_ID } from '@/constants';
 
@@ -16,8 +16,8 @@ export const setCredential = async ({ commit }: any, payload: ICredential): Prom
   commit('setCredential', payload);
 };
 
-export const setPreset = ({ commit }: any, payload: IMidjourneyPreset) => {
-  commit('setPreset', payload);
+export const setConfig = ({ commit }: any, payload: IQrartConfig) => {
+  commit('setConfig', payload);
 };
 
 export const setService = async ({ commit }: any, payload: IService): Promise<void> => {
@@ -34,7 +34,7 @@ export const getApplication = async ({
   state,
   rootState
 }: ActionContext<IQrartState, IRootState>): Promise<IApplication> => {
-  log(getApplication, 'start to get application for midjourney');
+  log(getApplication, 'start to get application for qrart');
   return new Promise(async (resolve, reject) => {
     state.status.getApplication = Status.Request;
     applicationOperator
@@ -64,7 +64,7 @@ export const setTasks = ({ commit }: any, payload: IQrartTask[]) => {
 
 export const getService = async ({ commit, state }: ActionContext<IQrartState, IRootState>): Promise<IService> => {
   return new Promise(async (resolve, reject) => {
-    log(getService, 'start to get service for midjourney');
+    log(getService, 'start to get service for qrart');
     state.status.getService = Status.Request;
     serviceOperator
       .get(QRART_SERVICE_ID)
@@ -117,7 +117,7 @@ export default {
   getService,
   resetAll,
   setCredential,
-  setPreset,
+  setConfig,
   setApplication,
   getApplication,
   setTasks,
