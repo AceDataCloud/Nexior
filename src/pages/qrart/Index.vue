@@ -12,6 +12,7 @@
         class="mb-4"
         @refresh="onGetApplication"
       />
+      <result-panel />
     </template>
   </layout>
 </template>
@@ -20,6 +21,7 @@
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Qrart.vue';
 import ConfigPanel from '@/components/qrart/ConfigPanel.vue';
+import ResultPanel from '@/components/qrart/ResultPanel.vue';
 import { applicationOperator, qrartOperator } from '@/operators';
 import { IApplicationDetailResponse, IQrartGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
@@ -32,6 +34,7 @@ export default defineComponent({
   name: 'QrartIndex',
   components: {
     ConfigPanel,
+    ResultPanel,
     Layout,
     ApplicationStatus
   },
@@ -41,9 +44,6 @@ export default defineComponent({
   computed: {
     service() {
       return this.$store.state.qrart.service;
-    },
-    mode() {
-      return this.$store.state.qrart.mode;
     },
     credential() {
       return this.$store.state.qrart.credential;
