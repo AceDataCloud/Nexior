@@ -7,6 +7,9 @@
       class="preview"
       @click="onSelectTask(task)"
     />
+    <p v-if="tasks?.items?.length === 0">
+      {{ $t('qrart.message.noTasks') }}
+    </p>
   </div>
 </template>
 
@@ -28,10 +31,10 @@ export default defineComponent({
   },
   computed: {
     loading() {
-      return this.$store.state.qrart.status.getApplication === Status.Request;
+      return this.$store.state.qrart?.status?.getApplication === Status.Request;
     },
     tasks() {
-      return this.$store.state.qrart.tasks;
+      return this.$store.state.qrart?.tasks;
     }
   },
   async mounted() {

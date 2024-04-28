@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "Typ",
-    "description": "Der Inhaltstyp für den zu generierenden QR-Code, wie 'Link', 'Text' usw."
+    "description": "Der Inhaltstyp für den zu generierenden QR-Code, wie z.B. 'Link', 'Text' usw."
   },
   "name.size": {
     "message": "Größe",
@@ -32,7 +32,7 @@
     "description": "Das Seitenverhältnis für den zu generierenden QR-Code"
   },
   "name.qrw": {
-    "message": "Sichtbarkeit des QR-Codes",
+    "message": "QR-Code-Sichtbarkeit",
     "description": "Der Name des QR-Code-Generators"
   },
   "name.steps": {
@@ -45,11 +45,11 @@
   },
   "description.qrw": {
     "message": "Die Sichtbarkeit des QR-Codes, je größer die Größe, desto sichtbarer wird der QR-Code sein",
-    "description": "Die Beschreibung des Parameters 'qrw'"
+    "description": "Die Beschreibung des Parameters `qrw`"
   },
   "description.steps": {
     "message": "Die Schritte zur Generierung des QR-Codes, je mehr Schritte, desto sichtbarer wird der QR-Code sein",
-    "description": "Die Beschreibung des Parameters 'steps'"
+    "description": "Die Beschreibung des Parameters `steps`"
   },
   "placeholder.prompt": {
     "message": "Geben Sie einen Satz ein, um den zu generierenden QR-Code zu beschreiben",
@@ -62,6 +62,10 @@
   "placeholder.aspectRatio": {
     "message": "Bitte auswählen...",
     "description": "Der Platzhalter für die Eingabe des Seitenverhältnisses"
+  },
+  "placeholder.preset": {
+    "message": "Bitte auswählen...",
+    "description": "Der Platzhalter für die Voreinstellungseingabe"
   },
   "button.generate": {
     "message": "Generieren",
@@ -164,11 +168,11 @@
     "description": "Der Voreinstellungsstil für den zu generierenden QR-Code"
   },
   "message.promptPlaceholder": {
-    "message": "Bitte geben Sie einen Satz ein, um das Bild zu beschreiben, das Sie generieren möchten, z.B.: eine niedliche Katze. Zusätzliche Parameter überschreiben die Standardvoreinstellungsparameter",
+    "message": "Bitte geben Sie einen Satz ein, um das Bild zu beschreiben, das Sie generieren möchten, z.B. eine niedliche Katze. Zusätzliche Parameter überschreiben die Standardvoreinstellungen",
     "description": "Platzhaltertext im Aufforderungsfeld"
   },
   "message.uploadReferencesExceed": {
-    "message": "Sie können maximal 5 Bilder hochladen",
+    "message": "Sie können höchstens 5 Bilder hochladen",
     "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Bilder das Limit überschreitet"
   },
   "message.uploadReferencesSuccess": {
@@ -177,7 +181,7 @@
   },
   "message.uploadReferencesError": {
     "message": "Fehler beim Hochladen der Bilder, bitte versuchen Sie es später erneut",
-    "description": "Fehlermeldung, wenn das Hochladen von Bildern fehlschlägt"
+    "description": "Fehlermeldung, wenn Bilder nicht hochgeladen werden konnten"
   },
   "message.startingTask": {
     "message": "Aufgabe wird gestartet...",
@@ -189,14 +193,18 @@
   },
   "message.startTaskFailed": {
     "message": "Fehler beim Starten der Zeichnungsaufgabe",
-    "description": "Fehlermeldung, wenn die Zeichnungsaufgabe nicht gestartet werden kann"
+    "description": "Fehlermeldung, wenn die Zeichnungsaufgabe nicht gestartet werden konnte"
   },
   "message.generating": {
-    "message": "Generieren...",
+    "message": "Generiere...",
     "description": "Nachricht, wenn das Bild generiert wird"
   },
   "message.noOperations": {
     "message": "Keine verfügbaren Operationen",
     "description": "Nachricht, wenn keine verfügbaren Operationen vorhanden sind"
+  },
+  "message.noTasks": {
+    "message": "Keine Aufgaben, bitte erstellen Sie eine neue Aufgabe",
+    "description": "Nachricht, wenn keine Aufgaben vorhanden sind"
   }
 }

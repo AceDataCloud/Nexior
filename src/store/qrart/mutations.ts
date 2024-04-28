@@ -3,7 +3,7 @@ import { IQrartState } from './models';
 
 export const resetAll = (state: IQrartState): void => {
   state.application = undefined;
-  state.config = {};
+  state.config = undefined;
   state.tasks = undefined;
 };
 
@@ -47,7 +47,12 @@ export const setTasksActive = (state: IQrartState, payload: IQrartTask): void =>
   state.tasks = newPayload;
 };
 
+export const setTasks = (state: IQrartState, payload: any): void => {
+  state.tasks = payload;
+};
+
 export default {
+  setTasks,
   setApplication,
   setConfig,
   setCredential,

@@ -22,12 +22,12 @@ export default defineComponent({
   computed: {
     value: {
       get() {
-        return this.$store.state.qrart.config?.content;
+        return this.$store.state.qrart?.config?.content;
       },
       set(val) {
         console.debug('set content', val);
         this.$store.commit('qrart/setConfig', {
-          ...this.$store.state.qrart.config,
+          ...this.$store.state.qrart?.config,
           content: val
         });
       }

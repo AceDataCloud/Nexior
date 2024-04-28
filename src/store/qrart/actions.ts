@@ -58,6 +58,10 @@ export const getApplication = async ({
   });
 };
 
+export const setTasks = ({ commit }: any, payload: any) => {
+  commit('setTasks', payload);
+};
+
 export const setTasksItems = ({ commit }: any, payload: IQrartTask[]) => {
   commit('setTasksItems', payload);
 };
@@ -128,6 +132,7 @@ export default {
   setConfig,
   setApplication,
   getApplication,
+  setTasks,
   setTasksItems,
   setTasksTotal,
   setTasksActive,

@@ -44,11 +44,11 @@
     "description": "要生成的 QR 码的预设"
   },
   "description.qrw": {
-    "message": "QR 码可见性，尺寸越大，QR 码越可见",
+    "message": "QR 码可见性，尺寸越大，QR 码越清晰可见",
     "description": "参数'qrw'的描述"
   },
   "description.steps": {
-    "message": "生成 QR 码的步骤，步骤越多，QR 码越可见",
+    "message": "生成 QR 码的步骤，步骤越多，QR 码越清晰可见",
     "description": "参数'steps'的描述"
   },
   "placeholder.prompt": {
@@ -62,6 +62,10 @@
   "placeholder.aspectRatio": {
     "message": "请选择...",
     "description": "宽高比输入的占位符"
+  },
+  "placeholder.preset": {
+    "message": "请选择...",
+    "description": "预设输入的占位符"
   },
   "button.generate": {
     "message": "生成",
@@ -180,16 +184,16 @@
     "description": "图片上传失败时的错误消息"
   },
   "message.startingTask": {
-    "message": "正在启动任务...",
+    "message": "正在开始任务...",
     "description": "绘图任务开始时的消息"
   },
   "message.startTaskSuccess": {
-    "message": "成功启动绘图任务",
-    "description": "成功启动绘图任务时的成功消息"
+    "message": "成功开始绘图任务",
+    "description": "成功开始绘图任务时的成功消息"
   },
   "message.startTaskFailed": {
-    "message": "启动绘图任务失败",
-    "description": "绘图任务启动失败时的错误消息"
+    "message": "无法开始绘图任务",
+    "description": "绘图任务无法开始时的错误消息"
   },
   "message.generating": {
     "message": "生成中...",
@@ -198,5 +202,9 @@
   "message.noOperations": {
     "message": "无可用操作",
     "description": "没有可用操作时的消息"
+  },
+  "message.noTasks": {
+    "message": "没有任务，请创建新任务",
+    "description": "没有任务时的消息"
   }
 }
