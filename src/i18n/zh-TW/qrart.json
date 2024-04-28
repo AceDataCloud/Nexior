@@ -5,11 +5,11 @@
   },
   "name.type": {
     "message": "類型",
-    "description": "要生成的 QR 碼的內容類型，如 '連結'、'文字' 等"
+    "description": "要生成 QR 碼的內容類型，如 '連結'、'文字' 等"
   },
   "name.size": {
     "message": "尺寸",
-    "description": "要生成的 QR 碼的尺寸"
+    "description": "要生成的 QR 碼尺寸"
   },
   "name.createdAt": {
     "message": "建立時間",
@@ -17,7 +17,7 @@
   },
   "name.seed": {
     "message": "種子",
-    "description": "生成 QR 碼的種子"
+    "description": "要生成的 QR 碼的種子"
   },
   "name.content": {
     "message": "內容",
@@ -44,24 +44,28 @@
     "description": "要生成的 QR 碼的預設設定"
   },
   "description.qrw": {
-    "message": "QR 碼可見度，尺寸越大，QR 碼將會越明顯",
+    "message": "QR 碼可見度，尺寸越大，QR 碼將越明顯可見",
     "description": "參數 `qrw` 的描述"
   },
   "description.steps": {
-    "message": "生成 QR 碼的步驟，步驟越多，QR 碼將會越明顯",
+    "message": "生成 QR 碼的步驟，步驟越多，QR 碼將越明顯可見",
     "description": "參數 `steps` 的描述"
   },
   "placeholder.prompt": {
-    "message": "輸入一個句子描述您想要生成的 QR 碼",
-    "description": "提示欄位的預設文字"
+    "message": "輸入一個描述您想生成的 QR 碼的句子",
+    "description": "提示欄位的占位文字"
   },
   "placeholder.content": {
-    "message": "輸入要生成的 QR 碼的內容",
-    "description": "內容欄位的預設文字"
+    "message": "輸入 QR 碼的內容",
+    "description": "內容欄位的占位文字"
   },
   "placeholder.aspectRatio": {
     "message": "請選擇...",
-    "description": "長寬比輸入的預設文字"
+    "description": "長寬比輸入的占位文字"
+  },
+  "placeholder.preset": {
+    "message": "請選擇...",
+    "description": "預設輸入的占位文字"
   },
   "button.generate": {
     "message": "生成",
@@ -104,7 +108,7 @@
     "description": "要生成的 QR 碼的預設風格"
   },
   "preset.luminousHighway": {
-    "message": "發光之路",
+    "message": "發光高速公路",
     "description": "要生成的 QR 碼的預設風格"
   },
   "preset.celestialJourney": {
@@ -164,8 +168,8 @@
     "description": "要生成的 QR 碼的預設風格"
   },
   "message.promptPlaceholder": {
-    "message": "請輸入一個句子描述您想要生成的圖像，例如：一隻可愛的貓。額外的參數將覆蓋默認預設參數",
-    "description": "提示欄位的預設文字"
+    "message": "請輸入一個描述您想生成的圖像的句子，例如：一隻可愛的貓。額外參數將覆蓋默認預設參數",
+    "description": "提示欄位的占位文字"
   },
   "message.uploadReferencesExceed": {
     "message": "最多可上傳 5 張圖片",
@@ -180,16 +184,16 @@
     "description": "當圖片上傳失敗時的錯誤訊息"
   },
   "message.startingTask": {
-    "message": "正在開始任務...",
+    "message": "正在啟動任務...",
     "description": "繪製任務開始時的訊息"
   },
   "message.startTaskSuccess": {
-    "message": "成功開始繪製任務",
-    "description": "繪製任務成功開始時的成功訊息"
+    "message": "成功啟動繪製任務",
+    "description": "繪製任務成功啟動時的成功訊息"
   },
   "message.startTaskFailed": {
-    "message": "無法開始繪製任務",
-    "description": "繪製任務無法成功開始時的錯誤訊息"
+    "message": "啟動繪製任務失敗",
+    "description": "繪製任務無法成功啟動時的錯誤訊息"
   },
   "message.generating": {
     "message": "生成中...",
@@ -198,5 +202,9 @@
   "message.noOperations": {
     "message": "沒有可用的操作",
     "description": "沒有可用操作時的訊息"
+  },
+  "message.noTasks": {
+    "message": "沒有任務，請建立新任務",
+    "description": "沒有任務時的訊息"
   }
 }

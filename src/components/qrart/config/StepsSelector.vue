@@ -21,12 +21,12 @@ export default defineComponent({
   computed: {
     value: {
       get() {
-        return this.$store.state.qrart.config?.steps;
+        return this.$store.state.qrart?.config?.steps || QRART_DEFAULT_STEPS;
       },
       set(val) {
-        console.debug('set qrw', val);
+        console.debug('set steps', val);
         this.$store.commit('qrart/setConfig', {
-          ...this.$store.state.qrart.config,
+          ...this.$store.state.qrart?.config,
           steps: val
         });
       }
@@ -34,6 +34,7 @@ export default defineComponent({
   },
   mounted() {
     if (!this.value) {
+      console.log('set default steps', QRART_DEFAULT_STEPS);
       this.value = QRART_DEFAULT_STEPS;
     }
   }

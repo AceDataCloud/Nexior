@@ -1,5 +1,5 @@
 <template>
-  <div class="detail">
+  <div v-if="task" class="detail">
     <el-row class="h-full">
       <el-col :span="24" class="h-full">
         <el-row class="h-full main">
@@ -33,7 +33,7 @@
               </el-descriptions-item>
               <el-descriptions-item :label="$t('qrart.name.prompt')">
                 {{ task?.request?.prompt }}
-                <copy-to-clipboard :content="task?.request?.prompt" class="btn-copy" />
+                <copy-to-clipboard v-if="task?.request?.prompt" :content="task?.request?.prompt" class="btn-copy" />
               </el-descriptions-item>
               <el-descriptions-item :label="$t('qrart.name.size')">
                 {{ task?.response?.image_width }} x {{ task?.response?.image_height }}
@@ -43,7 +43,11 @@
               </el-descriptions-item>
               <el-descriptions-item :label="$t('qrart.name.seed')">
                 {{ task?.request?.seed || task?.response?.seed }}
-                <copy-to-clipboard :content="task?.request?.seed || task?.response?.seed" class="btn-copy" />
+                <copy-to-clipboard
+                  v-if="task?.request?.seed || task?.response?.seed"
+                  :content="task?.request?.seed || task?.response?.seed"
+                  class="btn-copy"
+                />
               </el-descriptions-item>
               <el-descriptions-item :label="$t('qrart.name.steps')">
                 {{ task?.request?.steps }}
@@ -97,7 +101,7 @@ export default defineComponent({
       return this.$store.state.qrart?.application;
     },
     task() {
-      return this.$store.state.qrart.tasks?.active;
+      return this.$store.state.qrart?.tasks?.active;
     }
   },
   methods: {

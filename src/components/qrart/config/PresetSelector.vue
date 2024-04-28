@@ -1,15 +1,13 @@
 <template>
   <div class="field">
     <h2 class="title">{{ $t('qrart.name.preset') }}</h2>
-    <el-select v-model="value" class="value" :placeholder="$t('qrart.placeholder.select')">
+    <el-select v-model="value" clearable class="value" :placeholder="$t('qrart.placeholder.preset')">
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </el-select>
   </div>
 </template>
 
 <script>
-import { ElSlider } from 'element-plus';
-import InfoIcon from '@/components/common/InfoIcon.vue';
 import { QRART_DEFAULT_PRESET } from '@/constants';
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
@@ -125,12 +123,12 @@ export default defineComponent({
   computed: {
     value: {
       get() {
-        return this.$store.state.qrart.config?.preset;
+        return this.$store.state.qrart?.config?.preset;
       },
       set(val) {
         console.debug('set qrw', val);
         this.$store.commit('qrart/setConfig', {
-          ...this.$store.state.qrart.config,
+          ...this.$store.state.qrart?.config,
           preset: val
         });
       }
@@ -138,7 +136,7 @@ export default defineComponent({
   },
   mounted() {
     if (!this.value) {
-      this.value = QRART_DEFAULT_STEPS;
+      this.value = QRART_DEFAULT_PRESET;
     }
   }
 });

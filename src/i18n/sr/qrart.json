@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "Tip",
-    "description": "Vrsta sadržaja za generisanje QR koda, kao što su 'Link', 'Tekst', itd."
+    "description": "Vrsta sadržaja za generisanje QR koda, kao što su 'Link', 'Tekst', itd"
   },
   "name.size": {
     "message": "Veličina",
@@ -53,15 +53,19 @@
   },
   "placeholder.prompt": {
     "message": "Unesite rečenicu koja opisuje QR kod koji želite da generišete",
-    "description": "Tekst za unos u polju upita"
+    "description": "Tekst mesta za unos u polju upita"
   },
   "placeholder.content": {
     "message": "Unesite sadržaj za QR kod",
-    "description": "Tekst za unos u polju sadržaja"
+    "description": "Tekst mesta za unos u polju sadržaja"
   },
   "placeholder.aspectRatio": {
     "message": "Molimo odaberite...",
-    "description": "Tekst za unos u polju odnosa stranica"
+    "description": "Tekst mesta za unos za unos odnosa stranica"
+  },
+  "placeholder.preset": {
+    "message": "Molimo odaberite...",
+    "description": "Tekst mesta za unos za unos podešavanja"
   },
   "button.generate": {
     "message": "Generiši",
@@ -116,7 +120,7 @@
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.etherealLowPoly": {
-    "message": "Eterični low poly",
+    "message": "Eterični niskopoligonalni",
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.goldenVista": {
@@ -124,15 +128,15 @@
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.cinematicExpanse": {
-    "message": "Cinematografsko prostranstvo",
+    "message": "Kinematografsko prostranstvo",
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.cinematicWarm": {
-    "message": "Cinematografska toplina",
+    "message": "Toplo kinematografsko",
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.desolateWilderness": {
-    "message": "Pusto prostranstvo",
+    "message": "Pusto divlje mesto",
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.vibrantPalette": {
@@ -144,7 +148,7 @@
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.timelessCinematic": {
-    "message": "Vremenski neograničeno kinematografsko",
+    "message": "Večno kinematografsko",
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.regalGalaxy": {
@@ -165,18 +169,18 @@
   },
   "message.promptPlaceholder": {
     "message": "Molimo unesite rečenicu koja opisuje sliku koju želite da generišete, na primer: slatka mačka. Dodatni parametri će zameniti podrazumevane parametre podešavanja",
-    "description": "Tekst za unos u polju upita"
+    "description": "Tekst mesta za unos u polju upita"
   },
   "message.uploadReferencesExceed": {
     "message": "Možete maksimalno učitati do 5 slika",
-    "description": "Poruka o grešci kada broj učitanih slika premaši limit"
+    "description": "Poruka o grešci kada broj učitanih slika premašuje limit"
   },
   "message.uploadReferencesSuccess": {
     "message": "Uspešno učitane slike",
     "description": "Poruka o uspehu kada se slike uspešno učitaju"
   },
   "message.uploadReferencesError": {
-    "message": "Neuspešno učitavanje slika, molimo pokušajte ponovo kasnije",
+    "message": "Neuspešno učitavanje slika, molimo pokušajte kasnije",
     "description": "Poruka o grešci kada slike ne uspeju da se učitaju"
   },
   "message.startingTask": {
@@ -198,5 +202,9 @@
   "message.noOperations": {
     "message": "Nema dostupnih operacija",
     "description": "Poruka kada nema dostupnih operacija"
+  },
+  "message.noTasks": {
+    "message": "Nema zadataka, molimo kreirajte novi zadatak",
+    "description": "Poruka kada nema zadataka"
   }
 }

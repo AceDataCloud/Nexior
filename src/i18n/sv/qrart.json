@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "Typ",
-    "description": "Innehållets typ för att generera QR-koden, som 'Länk', 'Text', etc"
+    "description": "Innehållet för QR-koden att generera, som 'Länk', 'Text', etc"
   },
   "name.size": {
     "message": "Storlek",
@@ -24,8 +24,8 @@
     "description": "Innehållet för QR-koden att generera"
   },
   "name.prompt": {
-    "message": "Prompt",
-    "description": "Prompts för innehållsinmatning"
+    "message": "Instruktion",
+    "description": "Instruktion för innehållsinmatningen"
   },
   "name.aspectRatio": {
     "message": "Aspektförhållande",
@@ -33,7 +33,7 @@
   },
   "name.qrw": {
     "message": "QR-kodens synlighet",
-    "description": "Namnet på QR-kodgeneratorn"
+    "description": "Namnet på QR-kodsgeneratorn"
   },
   "name.steps": {
     "message": "Steg",
@@ -52,8 +52,8 @@
     "description": "Beskrivning av parametern 'steg'"
   },
   "placeholder.prompt": {
-    "message": "Ange en mening för att beskriva den QR du vill generera",
-    "description": "Platshållartext i promptfältet"
+    "message": "Ange en mening för att beskriva den QR-kod du vill generera",
+    "description": "Platshållartext i instruktionsfältet"
   },
   "placeholder.content": {
     "message": "Ange innehållet för QR-koden",
@@ -63,109 +63,113 @@
     "message": "Vänligen välj...",
     "description": "Platshållare för aspektförhållandet"
   },
+  "placeholder.preset": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för förinställningen"
+  },
   "button.generate": {
     "message": "Generera",
     "description": "Knappens text för att generera QR-koden"
   },
   "preset.sunset": {
     "message": "Solnedgång",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.floral": {
     "message": "Blommig",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.snowflakes": {
     "message": "Snöflingor",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.feathers": {
     "message": "Fjädrar",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.raindrops": {
     "message": "Regndroppar",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.ultraRealism": {
     "message": "Ultra realism",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.epicRealms": {
     "message": "Episka riken",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.intricateStudio": {
     "message": "Intrikat studio",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.symmetricMasterpiece": {
     "message": "Symmetriskt mästerverk",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.luminousHighway": {
     "message": "Lysande motorväg",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.celestialJourney": {
     "message": "Himmelsk resa",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.neonMech": {
     "message": "Neonmek",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.etherealLowPoly": {
     "message": "Eterisk låg poly",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.goldenVista": {
     "message": "Gyllene vy",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.cinematicExpanse": {
     "message": "Filmisk vidsträckt",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.cinematicWarm": {
     "message": "Filmisk varm",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.desolateWilderness": {
     "message": "Öde vildmark",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.vibrantPalette": {
     "message": "Livlig palett",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.enigmaticJourney": {
     "message": "Gåtfull resa",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.timelessCinematic": {
     "message": "Tidlös filmisk",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.regalGalaxy": {
     "message": "Kunglig galax",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.illustriousCanvas": {
     "message": "Berömd duk",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.expressiveMural": {
     "message": "Uttrycksfull mural",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "preset.sereneHaze": {
     "message": "Fridfull dimma",
-    "description": "Förinställd stil för QR-koden att generera"
+    "description": "Förinställningen för QR-koden att generera"
   },
   "message.promptPlaceholder": {
     "message": "Ange en mening för att beskriva bilden du vill generera, till exempel: en söt katt. Ytterligare parametrar kommer att åsidosätta standardförinställningsparametrar",
-    "description": "Platshållartext i promptfältet"
+    "description": "Platshållartext i instruktionsfältet"
   },
   "message.uploadReferencesExceed": {
     "message": "Du kan ladda upp högst 5 bilder",
@@ -198,5 +202,9 @@
   "message.noOperations": {
     "message": "Inga tillgängliga operationer",
     "description": "Meddelande när det inte finns några tillgängliga operationer"
+  },
+  "message.noTasks": {
+    "message": "Inga uppgifter, skapa en ny uppgift",
+    "description": "Meddelande när det inte finns några uppgifter"
   }
 }

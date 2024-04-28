@@ -10,8 +10,7 @@
 <script>
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
-
-const DEFAULT_TYPE = 'Link';
+import { QRART_DEFAULT_TYPE } from '@/constants';
 
 export default defineComponent({
   name: 'VersionSelector',
@@ -43,12 +42,12 @@ export default defineComponent({
   computed: {
     value: {
       get() {
-        return this.$store.state.qrart.config?.type;
+        return this.$store.state.qrart?.config?.type;
       },
       set(val) {
         console.debug('set type', val);
         this.$store.commit('qrart/setConfig', {
-          ...this.$store.state.qrart.config,
+          ...this.$store.state.qrart?.config,
           type: val
         });
       }
@@ -56,7 +55,8 @@ export default defineComponent({
   },
   mounted() {
     if (!this.value) {
-      this.value = DEFAULT_TYPE;
+      console.debug('set default type', QRART_DEFAULT_TYPE);
+      this.value = QRART_DEFAULT_TYPE;
     }
   }
 });

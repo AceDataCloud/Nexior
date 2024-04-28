@@ -21,12 +21,12 @@ export default defineComponent({
   computed: {
     value: {
       get() {
-        return this.$store.state.qrart.config?.qrw;
+        return this.$store.state.qrart?.config?.qrw || QRART_DEFAULT_QRW;
       },
       set(val) {
         console.debug('set qrw', val);
         this.$store.commit('qrart/setConfig', {
-          ...this.$store.state.qrart.config,
+          ...this.$store.state.qrart?.config,
           qrw: val
         });
       }
@@ -34,6 +34,7 @@ export default defineComponent({
   },
   mounted() {
     if (!this.value) {
+      console.log('set default qrw');
       this.value = QRART_DEFAULT_QRW;
     }
   }

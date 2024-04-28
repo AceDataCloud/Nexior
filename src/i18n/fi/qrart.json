@@ -53,19 +53,23 @@
   },
   "placeholder.prompt": {
     "message": "Kirjoita lause kuvaamaan haluamaasi QR-koodia",
-    "description": "Paikkamerkki-teksti ohjekentässä"
+    "description": "Paikkamerkki ohjekentässä"
   },
   "placeholder.content": {
     "message": "Syötä sisältö QR-koodille",
-    "description": "Paikkamerkki-teksti sisältökentässä"
+    "description": "Paikkamerkki sisältökentässä"
   },
   "placeholder.aspectRatio": {
     "message": "Valitse...",
     "description": "Paikkamerkki kuvasuhde-kentässä"
   },
+  "placeholder.preset": {
+    "message": "Valitse...",
+    "description": "Paikkamerkki esiasetus-kentässä"
+  },
   "button.generate": {
     "message": "Generoi",
-    "description": "Nappiteksti QR-koodin generoimiseen"
+    "description": "Nappiteksti QR-koodin luomiseen"
   },
   "preset.sunset": {
     "message": "Auringonlasku",
@@ -92,7 +96,7 @@
     "description": "Esiasetus tyyli QR-koodin luomiseen"
   },
   "preset.epicRealms": {
-    "message": "Eeppiset maailmat",
+    "message": "Eeppiset valtakunnat",
     "description": "Esiasetus tyyli QR-koodin luomiseen"
   },
   "preset.intricateStudio": {
@@ -152,11 +156,11 @@
     "description": "Esiasetus tyyli QR-koodin luomiseen"
   },
   "preset.illustriousCanvas": {
-    "message": "Kuuluisa kanvas",
+    "message": "Kuuluisa kangas",
     "description": "Esiasetus tyyli QR-koodin luomiseen"
   },
   "preset.expressiveMural": {
-    "message": "Ilmaisuvoimainen muuri",
+    "message": "Ilmaisuvoimainen seinämaalaus",
     "description": "Esiasetus tyyli QR-koodin luomiseen"
   },
   "preset.sereneHaze": {
@@ -165,7 +169,7 @@
   },
   "message.promptPlaceholder": {
     "message": "Syötä lause kuvaamaan haluamaasi kuvaa, esim. söpö kissa. Lisäparametrit korvaavat oletusesiasetukset",
-    "description": "Paikkamerkki-teksti ohjekentässä"
+    "description": "Paikkamerkki ohjekentässä"
   },
   "message.uploadReferencesExceed": {
     "message": "Voit ladata enintään 5 kuvaa",
@@ -181,15 +185,15 @@
   },
   "message.startingTask": {
     "message": "Tehtävä käynnistyy...",
-    "description": "Viesti, kun piirustustehtävä käynnistyy"
+    "description": "Viesti, kun piirtotehtävä käynnistyy"
   },
   "message.startTaskSuccess": {
-    "message": "Piirustustehtävä käynnistetty onnistuneesti",
-    "description": "Onnistumisviesti, kun piirustustehtävä käynnistyy onnistuneesti"
+    "message": "Piirtotehtävä käynnistetty onnistuneesti",
+    "description": "Onnistumisviesti, kun piirtotehtävä käynnistyy onnistuneesti"
   },
   "message.startTaskFailed": {
-    "message": "Piirustustehtävän käynnistäminen epäonnistui",
-    "description": "Virheviesti, kun piirustustehtävän käynnistäminen epäonnistuu"
+    "message": "Piirtotehtävän käynnistäminen epäonnistui",
+    "description": "Virheviesti, kun piirtotehtävän käynnistäminen epäonnistuu"
   },
   "message.generating": {
     "message": "Generoidaan...",
@@ -198,5 +202,9 @@
   "message.noOperations": {
     "message": "Ei käytettävissä olevia toimintoja",
     "description": "Viesti, kun käytettävissä ei ole toimintoja"
+  },
+  "message.noTasks": {
+    "message": "Ei tehtäviä, luo uusi tehtävä",
+    "description": "Viesti, kun tehtäviä ei ole"
   }
 }
