@@ -4,7 +4,7 @@ import { IQrartState } from './models';
 export const resetAll = (state: IQrartState): void => {
   state.application = undefined;
   state.config = {};
-  state.tasks = [];
+  state.tasks = undefined;
 };
 
 export const setService = (state: IQrartState, payload: IService): void => {
@@ -23,12 +23,28 @@ export const setConfig = (state: IQrartState, payload: IQrartConfig): void => {
   state.config = payload;
 };
 
-export const setTasks = (state: IQrartState, payload: IQrartTask[]): void => {
-  state.tasks = payload;
+export const setTasksItems = (state: IQrartState, payload: IQrartTask[]): void => {
+  const newPayload = {
+    ...state.tasks,
+    items: payload
+  } as typeof state.tasks;
+  state.tasks = newPayload;
 };
 
 export const setTasksTotal = (state: IQrartState, payload: number): void => {
-  state.tasksTotal = payload;
+  const newPayload = {
+    ...state.tasks,
+    total: payload
+  } as typeof state.tasks;
+  state.tasks = newPayload;
+};
+
+export const setTasksActive = (state: IQrartState, payload: IQrartTask): void => {
+  const newPayload = {
+    ...state.tasks,
+    active: payload
+  } as typeof state.tasks;
+  state.tasks = newPayload;
 };
 
 export default {
@@ -36,7 +52,8 @@ export default {
   setConfig,
   setCredential,
   setService,
-  setTasks,
+  setTasksActive,
+  setTasksItems,
   setTasksTotal,
   resetAll
 };

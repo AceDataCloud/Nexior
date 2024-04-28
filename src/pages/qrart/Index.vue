@@ -12,7 +12,8 @@
         class="mb-4"
         @refresh="onGetApplication"
       />
-      <result-panel />
+      <detail-panel class="panel detail" />
+      <recent-panel class="panel recent" />
     </template>
   </layout>
 </template>
@@ -21,25 +22,34 @@
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Qrart.vue';
 import ConfigPanel from '@/components/qrart/ConfigPanel.vue';
-import ResultPanel from '@/components/qrart/ResultPanel.vue';
 import { applicationOperator, qrartOperator } from '@/operators';
 import { IApplicationDetailResponse, IQrartGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_DUPLICATION } from '@/constants';
 import ApplicationStatus from '@/components/application/Status.vue';
+import DetailPanel from '@/components/qrart/DetailPanel.vue';
+import RecentPanel from '@/components/qrart/RecentPanel.vue';
+import { IQrartTask } from '@/models';
 
 const CALLBACK_URL = 'https://webhook.acedata.cloud/qrart';
+
+interface IData {
+  task: IQrartTask | undefined;
+}
 
 export default defineComponent({
   name: 'QrartIndex',
   components: {
     ConfigPanel,
-    ResultPanel,
     Layout,
-    ApplicationStatus
+    ApplicationStatus,
+    DetailPanel,
+    RecentPanel
   },
-  data() {
-    return {};
+  data(): IData {
+    return {
+      task: undefined
+    };
   },
   computed: {
     service() {
@@ -123,6 +133,22 @@ export default defineComponent({
   .btn.btn-generate {
     width: 80px;
     border-radius: 20px;
+  }
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.panel {
+  &.detail {
+    width: 100%;
+    flex: 1;
+    overflow-y: scroll;
+  }
+  &.recent {
+    height: 300px;
+    width: 100%;
   }
 }
 </style>

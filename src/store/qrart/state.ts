@@ -6,7 +6,6 @@ export default (): IQrartState => {
     service: undefined,
     application: undefined,
     tasks: undefined,
-    tasksTotal: undefined,
     credential: undefined,
     config: {},
     status: {

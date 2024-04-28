@@ -35,7 +35,6 @@ export default defineComponent({
   async mounted() {
     await this.onGetService();
     await this.onGetApplication();
-    await this.onGetConversations();
   },
   methods: {
     async onGetService() {
@@ -43,9 +42,6 @@ export default defineComponent({
     },
     async onGetApplication() {
       await this.$store.dispatch('qrart/getApplication');
-    },
-    async onGetConversations() {
-      await this.$store.dispatch('qrart/getConversations');
     }
   }
 });

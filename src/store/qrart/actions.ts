@@ -58,8 +58,16 @@ export const getApplication = async ({
   });
 };
 
-export const setTasks = ({ commit }: any, payload: IQrartTask[]) => {
-  commit('setTasks', payload);
+export const setTasksItems = ({ commit }: any, payload: IQrartTask[]) => {
+  commit('setTasksItems', payload);
+};
+
+export const setTasksTotal = ({ commit }: any, payload: number) => {
+  commit('setTasksTotal', payload);
+};
+
+export const setTasksActive = ({ commit }: any, payload: IQrartTask) => {
+  commit('setTasksActive', payload);
 };
 
 export const getService = async ({ commit, state }: ActionContext<IQrartState, IRootState>): Promise<IService> => {
@@ -102,7 +110,7 @@ export const getTasks = async (
       )
       .then((response) => {
         log(getTasks, 'get imagine tasks success', response.data.items);
-        commit('setTasks', response.data.items);
+        commit('setTasksItems', response.data.items);
         commit('setTasksTotal', response.data.count);
         resolve(response.data.items);
       })
@@ -120,6 +128,8 @@ export default {
   setConfig,
   setApplication,
   getApplication,
-  setTasks,
+  setTasksItems,
+  setTasksTotal,
+  setTasksActive,
   getTasks
 };

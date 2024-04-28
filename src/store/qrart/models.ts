@@ -6,8 +6,13 @@ export interface IQrartState {
   service: IService | undefined;
   credential: ICredential | undefined;
   config: IQrartConfig | undefined;
-  tasks: IQrartTask[] | undefined;
-  tasksTotal: number | undefined;
+  tasks:
+    | {
+        items: IQrartTask[] | undefined;
+        total: number | undefined;
+        active: IQrartTask | undefined;
+      }
+    | undefined;
   status: {
     getService: Status;
     getApplication: Status;
