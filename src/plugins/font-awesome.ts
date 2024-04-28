@@ -11,6 +11,7 @@ import { faDiscord as faBrandsDiscord } from '@fortawesome/free-brands-svg-icons
 import {
   faChevronRight as faSolidChevronRight,
   faMoon as faSolidMoon,
+  faQrcode as faSolidQrcode,
   faChevronLeft as faSolidChevronLeft,
   faFire as faSolidFire,
   faBook as faSolidBook,
@@ -89,6 +90,7 @@ library.add(faRegularClock);
 library.add(faSolidArrowsRotate);
 library.add(faRegularPaperPlane);
 library.add(faSolidWind);
+library.add(faSolidQrcode);
 library.add(faRegularComment);
 library.add(faSolidArrowRightFromBracket);
 library.add(faSolidTrash);

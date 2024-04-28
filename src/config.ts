@@ -49,6 +49,11 @@ export default {
     chatdoc: true,
 
     /**
+     * Show qrart entry in left navigation.
+     */
+    qrart: true,
+
+    /**
      * Show locale entry in left navigation.
      */
     locale: true,

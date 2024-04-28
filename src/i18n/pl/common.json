@@ -1,7 +1,7 @@
 {
   "button.setup": {
     "message": "Ustawienie",
-    "description": "Tekst na przycisku, który służy do czegoś ustawienia"
+    "description": "Tekst na przycisku, który służy do ustawienia czegoś"
   },
   "button.preview": {
     "message": "Podgląd",
@@ -41,7 +41,7 @@
   },
   "button.info": {
     "message": "Informacja",
-    "description": "Tekst na przycisku, który służy do pokazania informacji"
+    "description": "Tekst na przycisku, który służy do wyświetlenia informacji"
   },
   "button.publish": {
     "message": "Opublikuj",
@@ -57,11 +57,11 @@
   },
   "button.profile": {
     "message": "Profil",
-    "description": "Tekst na przycisku, który służy do pokazania profilu"
+    "description": "Tekst na przycisku, który służy do wyświetlenia profilu"
   },
   "button.console": {
     "message": "Konsola",
-    "description": "Tekst na przycisku, który służy do pokazania strony konsoli do kontrolowania czegoś na stronie internetowej"
+    "description": "Tekst na przycisku, który służy do wyświetlenia strony konsoli do kontrolowania czegoś na stronie internetowej"
   },
   "button.learn": {
     "message": "Dowiedz się",
@@ -81,7 +81,7 @@
   },
   "button.apply": {
     "message": "Zastosuj",
-    "description": "Tekst na przycisku, który służy do umożliwienia użytkownikowi zastosowania się do usługi API"
+    "description": "Tekst na przycisku, który służy do umożliwienia użytkownikowi zastosowania usługi API"
   },
   "button.refresh": {
     "message": "Odśwież",
@@ -93,11 +93,11 @@
   },
   "button.repay": {
     "message": "Kontynuuj płatność",
-    "description": "Tekst na przycisku, który służy do umożliwienia użytkownikowi kontynuowania płatności za usługę"
+    "description": "Tekst na przycisku, który służy do umożliwienia użytkownikowi kontynuacji płatności za usługę"
   },
   "button.applied": {
     "message": "Zastosowano",
-    "description": "Tekst na przycisku, który służy do pokazania, że użytkownik zastosował się do usługi"
+    "description": "Tekst na przycisku, który służy do pokazania, że użytkownik złożył wniosek o usługę"
   },
   "button.acquire": {
     "message": "Zdobądź",
@@ -141,11 +141,11 @@
   },
   "entity.copyright": {
     "message": "Prawo autorskie",
-    "description": "Tekst do pokazania praw autorskich"
+    "description": "Tekst do wyświetlenia praw autorskich"
   },
   "entity.platform": {
     "message": "Platforma",
-    "description": "Tekst, który wskazuje, że jest to platforma usługi API"
+    "description": "Tekst wskazujący, że jest to platforma usługi API"
   },
   "entity.title": {
     "message": "Tytuł",
@@ -177,11 +177,11 @@
   },
   "entity.order": {
     "message": "Zamówienie",
-    "description": "Zamówienie jednostki, zamówienie zawiera pieniądze, informacje o usłudze, użytkownik musi za to zapłacić"
+    "description": "Zamówienie jednostki, zamówienie zawiera pieniądze, informacje o usłudze, użytkownik musi za nią zapłacić"
   },
   "message.usedAmount": {
     "message": "Ilość użyta",
-    "description": "Wiadomość do pokazania użytej ilości usługi"
+    "description": "Wiadomość do pokazania ilości użytej usługi"
   },
   "message.remainingAmount": {
     "message": "Pozostała ilość",
@@ -189,7 +189,7 @@
   },
   "message.copied": {
     "message": "Skopiowano pomyślnie",
-    "description": "Wiadomość do pokazania, że zawartość została pomyślnie skopiowana"
+    "description": "Wiadomość informująca, że zawartość została pomyślnie skopiowana"
   },
   "message.confirmDelete": {
     "message": "Czy na pewno chcesz usunąć?",
@@ -205,7 +205,7 @@
   },
   "message.free": {
     "message": "Darmowe",
-    "description": "Wiadomość do pokazania, że usługa jest darmowa, co oznacza, że użytkownik nie musi za nią płacić"
+    "description": "Wiadomość informująca, że usługa jest darmowa, co oznacza, że użytkownik nie musi za nią płacić"
   },
   "message.startPrice": {
     "message": "Początek",
@@ -217,7 +217,7 @@
   },
   "message.noData": {
     "message": "Brak danych",
-    "description": "Wiadomość do pokazania, że w tabeli lub liście nie ma danych"
+    "description": "Wiadomość informująca, że w tabeli lub liście nie ma danych"
   },
   "nav.home": {
     "message": "Strona główna",
@@ -255,6 +255,10 @@
     "message": "Chatdoc",
     "description": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony chatdoc, proszę nie tłumaczyć tego pola, należy zachować je jako 'Chatdoc'"
   },
+  "nav.qrart": {
+    "message": "QRArt",
+    "description": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony qrart, proszę nie tłumaczyć tego pola, należy zachować je jako 'QRArt'"
+  },
   "nav.distribution": {
     "message": "Zarobki z poleceń",
     "description": "Tekst w pasku nawigacyjnym strony internetowej, który służy do pokazania strony zarobków z poleceń"
@@ -265,7 +269,7 @@
   },
   "nav.locale": {
     "message": "Język",
-    "description": "Tekst w pasku nawigacyjnym strony internetowej, który służy do zmiany języka"
+    "description": "Tekst w pasku nawigacyjnym witryny, który służy do zmiany języka"
   },
   "nav.darkMode": {
     "message": "Tryb ciemny",
@@ -285,38 +289,38 @@
   },
   "title.allApplications": {
     "message": "Wszystkie aplikacje",
-    "description": "Tytuł strony wyświetlającej wszystkie aplikacje"
+    "description": "Tytuł strony do wyświetlania wszystkich aplikacji"
   },
   "title.allOrders": {
     "message": "Wszystkie zamówienia",
-    "description": "Tytuł strony wyświetlającej wszystkie zamówienia"
+    "description": "Tytuł strony do wyświetlania wszystkich zamówień"
   },
   "title.orderInfo": {
     "message": "Informacje o zamówieniu",
-    "description": "Tytuł strony wyświetlającej informacje o zamówieniu"
+    "description": "Tytuł strony do wyświetlania informacji o zamówieniu"
   },
   "title.buyMore": {
     "message": "Kup więcej",
-    "description": "Tytuł strony zachęcającej użytkownika do zakupu więcej"
+    "description": "Tytuł strony umożliwiającej użytkownikowi zakupienie więcej"
   },
   "title.distribution": {
     "message": "Zarobki z poleceń",
-    "description": "Tytuł strony wyświetlającej zarobki z poleceń, oznacza, że użytkownik może zarabiać pieniądze, zapraszając innych do korzystania z usługi"
+    "description": "Tytuł strony do wyświetlania zarobków z poleceń, oznacza, że użytkownik może zarabiać pieniądze, zapraszając innych do korzystania z usługi"
   },
   "title.distributionHistory": {
     "message": "Historia poleceń",
-    "description": "Tytuł strony wyświetlającej historię poleceń"
+    "description": "Tytuł strony do wyświetlania historii poleceń"
   },
   "title.invitee": {
-    "message": "Osoba polecająca",
-    "description": "Tytuł strony wyświetlającej osobę polecającą"
+    "message": "Zapraszający",
+    "description": "Tytuł strony do wyświetlania zapraszającego"
   },
   "title.allUsages": {
-    "message": "Historia korzystania",
-    "description": "Tytuł strony wyświetlającej całą historię korzystania z usługi API"
+    "message": "Historia użytkowania",
+    "description": "Tytuł strony do wyświetlania całej historii korzystania z usługi API"
   },
   "title.allCredentials": {
     "message": "Poświadczenia",
-    "description": "Tytuł strony wyświetlającej wszystkie poświadczenia, które służą do dostępu do interfejsu API"
+    "description": "Tytuł strony do wyświetlania wszystkich poświadczeń, poświadczenia są używane do dostępu do interfejsu API"
   }
 }

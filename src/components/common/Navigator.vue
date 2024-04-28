@@ -100,7 +100,9 @@ import {
   ROUTE_DISTRIBUTION_INDEX,
   ROUTE_INDEX,
   ROUTE_MIDJOURNEY_HISTORY,
-  ROUTE_MIDJOURNEY_INDEX
+  ROUTE_MIDJOURNEY_INDEX,
+  ROUTE_QRART_INDEX,
+  ROUTE_QRART_HISTORY
 } from '@/router/constants';
 import Chevron from './Chevron.vue';
 import Logo from './Logo.vue';
@@ -149,6 +151,17 @@ export default defineComponent({
         displayName: this.$t('common.nav.chatdoc'),
         icon: 'fa-solid fa-file-lines',
         routes: [ROUTE_CHATDOC_INDEX, ROUTE_CHATDOC_CONVERSATION, ROUTE_CHATDOC_MANAGE, ROUTE_CHATDOC_SETTING]
+      });
+    }
+
+    if (this.$config.navigation?.qrart) {
+      links.push({
+        route: {
+          name: ROUTE_QRART_INDEX
+        },
+        displayName: this.$t('common.nav.qrart'),
+        icon: 'fa-solid fa-qrcode',
+        routes: [ROUTE_QRART_INDEX, ROUTE_QRART_HISTORY]
       });
     }
 

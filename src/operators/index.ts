@@ -11,3 +11,4 @@ export * from './chatdoc';
 export * from './auth';
 export * from './service';
 export * from './credential';
+export * from './qrart';
