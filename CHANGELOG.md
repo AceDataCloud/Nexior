@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/hub
 
-This log was last generated on Mon, 22 Apr 2024 15:47:56 GMT and should not be manually modified.
+This log was last generated on Sun, 28 Apr 2024 13:33:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.0.0
+
+Sun, 28 Apr 2024 13:33:01 GMT
+
+### Major changes
+
+- Add Qrart support (cqc@cuiqingcai.com)
 
 ## 0.20.2
 
