@@ -92,6 +92,8 @@ export default defineComponent({
     padding: 15px;
     height: 100%;
     overflow-x: scroll;
+    display: flex;
+    flex-direction: column;
   }
   .results {
     overflow-y: scroll;
