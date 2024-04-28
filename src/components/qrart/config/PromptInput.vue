@@ -22,12 +22,12 @@ export default defineComponent({
   computed: {
     value: {
       get() {
-        return this.$store.state.qrart.config?.prompt;
+        return this.$store.state.qrart?.config?.prompt;
       },
       set(val) {
         console.debug('set prompt', val);
         this.$store.commit('qrart/setConfig', {
-          ...this.$store.state.qrart.config,
+          ...this.$store.state.qrart?.config,
           prompt: val
         });
       }

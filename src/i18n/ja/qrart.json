@@ -45,11 +45,11 @@
   },
   "description.qrw": {
     "message": "QRコードの表示、サイズが大きいほどQRコードがより目立つ",
-    "description": "パラメータ `qrw` の説明"
+    "description": "パラメータ`qrw`の説明"
   },
   "description.steps": {
     "message": "QRコードを生成するためのステップ、ステップが多いほどQRコードがより目立つ",
-    "description": "パラメータ `steps` の説明"
+    "description": "パラメータ`steps`の説明"
   },
   "placeholder.prompt": {
     "message": "生成するQRを説明する文章を入力してください",
@@ -62,6 +62,10 @@
   "placeholder.aspectRatio": {
     "message": "選択してください...",
     "description": "アスペクト比入力のプレースホルダー"
+  },
+  "placeholder.preset": {
+    "message": "選択してください...",
+    "description": "プリセット入力のプレースホルダー"
   },
   "button.generate": {
     "message": "生成",
@@ -116,7 +120,7 @@
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.etherealLowPoly": {
-    "message": "エーテルローポリ",
+    "message": "エーテリアルローポリ",
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.goldenVista": {
@@ -168,7 +172,7 @@
     "description": "プロンプトフィールドのプレースホルダーテキスト"
   },
   "message.uploadReferencesExceed": {
-    "message": "最大で5枚まで画像をアップロードできます",
+    "message": "最大5枚までアップロードできます",
     "description": "アップロードされた画像の数が制限を超えた場合のエラーメッセージ"
   },
   "message.uploadReferencesSuccess": {
@@ -181,7 +185,7 @@
   },
   "message.startingTask": {
     "message": "タスクを開始しています...",
-    "description": "描画タスクが開始されるときのメッセージ"
+    "description": "描画タスクが開始されているときのメッセージ"
   },
   "message.startTaskSuccess": {
     "message": "描画タスクが正常に開始されました",
@@ -198,5 +202,9 @@
   "message.noOperations": {
     "message": "利用可能な操作はありません",
     "description": "利用可能な操作がない場合のメッセージ"
+  },
+  "message.noTasks": {
+    "message": "タスクがありません。新しいタスクを作成してください",
+    "description": "タスクがない場合のメッセージ"
   }
 }

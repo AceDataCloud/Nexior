@@ -39,7 +39,7 @@ export default defineComponent({
   },
   computed: {
     application() {
-      return this.$store.state.midjourney.application;
+      return this.$store.state.qrart?.application;
     }
   },
   methods: {

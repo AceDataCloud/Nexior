@@ -52,7 +52,7 @@
     "description": "La descripción del parámetro `steps`"
   },
   "placeholder.prompt": {
-    "message": "Ingrese una frase para describir el QR que desea generar",
+    "message": "Ingrese una frase para describir el código QR que desea generar",
     "description": "El texto de marcador de posición en el campo de indicación"
   },
   "placeholder.content": {
@@ -62,6 +62,10 @@
   "placeholder.aspectRatio": {
     "message": "Por favor seleccione...",
     "description": "El marcador de posición para la entrada de relación de aspecto"
+  },
+  "placeholder.preset": {
+    "message": "Por favor seleccione...",
+    "description": "El marcador de posición para la entrada de preestablecido"
   },
   "button.generate": {
     "message": "Generar",
@@ -169,7 +173,7 @@
   },
   "message.uploadReferencesExceed": {
     "message": "Puede cargar como máximo 5 imágenes",
-    "description": "Mensaje de error cuando se excede el límite de imágenes cargadas"
+    "description": "Mensaje de error cuando el número de imágenes cargadas excede el límite"
   },
   "message.uploadReferencesSuccess": {
     "message": "Imágenes cargadas con éxito",
@@ -198,5 +202,9 @@
   "message.noOperations": {
     "message": "No hay operaciones disponibles",
     "description": "Mensaje cuando no hay operaciones disponibles"
+  },
+  "message.noTasks": {
+    "message": "No hay tareas, por favor cree una nueva tarea",
+    "description": "Mensaje cuando no hay tareas"
   }
 }

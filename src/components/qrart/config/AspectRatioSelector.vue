@@ -21,7 +21,7 @@
 
 <script>
 import { defineComponent } from 'vue';
-import { MIDJOURNEY_DEFAULT_RATIO } from '@/constants';
+import { QRART_DEFAULT_RATIO } from '@/constants';
 
 export default defineComponent({
   name: 'AspectRatioSelector',
@@ -67,12 +67,12 @@ export default defineComponent({
     },
     value: {
       get() {
-        return this.$store.state.qrart.config?.aspect_ratio;
+        return this.$store.state.qrart?.config?.aspect_ratio;
       },
       set(val) {
         console.debug('set aspect ratio', val);
         this.$store.commit('qrart/setConfig', {
-          ...this.$store.state.qrart.config,
+          ...this.$store.state.qrart?.config,
           aspect_ratio: val
         });
       }
@@ -80,7 +80,7 @@ export default defineComponent({
   },
   mounted() {
     if (!this.value) {
-      this.value = MIDJOURNEY_DEFAULT_RATIO;
+      this.value = QRART_DEFAULT_RATIO;
     }
   }
 });

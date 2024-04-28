@@ -45,14 +45,14 @@
   },
   "description.qrw": {
     "message": "QR 코드 표시 여부, 크기가 클수록 QR 코드가 더 잘 보임",
-    "description": "`qrw` 매개변수에 대한 설명"
+    "description": "매개변수 'qrw'의 설명"
   },
   "description.steps": {
     "message": "QR 코드를 생성하는 데 필요한 단계, 단계가 많을수록 QR 코드가 더 잘 보임",
-    "description": "`steps` 매개변수에 대한 설명"
+    "description": "매개변수 'steps'의 설명"
   },
   "placeholder.prompt": {
-    "message": "생성할 QR에 대한 문장을 입력하세요, 예: 귀여운 고양이",
+    "message": "생성할 QR에 대한 문장을 입력하세요",
     "description": "프롬프트 필드의 플레이스홀더 텍스트"
   },
   "placeholder.content": {
@@ -62,6 +62,10 @@
   "placeholder.aspectRatio": {
     "message": "선택해주세요...",
     "description": "가로 세로 비율 입력의 플레이스홀더"
+  },
+  "placeholder.preset": {
+    "message": "선택해주세요...",
+    "description": "프리셋 입력의 플레이스홀더"
   },
   "button.generate": {
     "message": "생성",
@@ -164,7 +168,7 @@
     "description": "생성할 QR 코드의 프리셋 스타일"
   },
   "message.promptPlaceholder": {
-    "message": "생성할 이미지를 설명하는 문장을 입력하세요, 예: 귀여운 고양이. 추가 매개변수는 기본 프리셋 매개변수를 덮어씁니다",
+    "message": "생성할 이미지를 설명하는 문장을 입력하세요. 예: 귀여운 고양이. 추가 매개변수는 기본 프리셋 매개변수를 덮어씁니다",
     "description": "프롬프트 필드의 플레이스홀더 텍스트"
   },
   "message.uploadReferencesExceed": {
@@ -197,6 +201,10 @@
   },
   "message.noOperations": {
     "message": "사용 가능한 작업이 없습니다",
-    "description": "사용 가능한 작업이 없는 경우의 메시지"
+    "description": "사용 가능한 작업이 없을 때의 메시지"
+  },
+  "message.noTasks": {
+    "message": "작업이 없습니다. 새로운 작업을 생성해주세요",
+    "description": "작업이 없을 때의 메시지"
   }
 }
