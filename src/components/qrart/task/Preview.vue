@@ -91,6 +91,9 @@ export default defineComponent({
     font-size: 12px;
     color: var(--el-text-color-regular);
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 </style>

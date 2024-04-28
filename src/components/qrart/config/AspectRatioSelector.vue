@@ -98,7 +98,7 @@ export default defineComponent({
   justify-content: space-between;
 
   .item {
-    width: 65px;
+    width: 55px;
     height: 75px;
     border: 2px solid var(--el-border-color);
     display: flex;

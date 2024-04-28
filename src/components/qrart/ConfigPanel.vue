@@ -5,9 +5,13 @@
       <content-input class="mb-4" />
       <prompt-input class="mb-4" />
       <aspect-ratio-selector class="mb-4" />
+      <qrw-selector class="mb-4" />
+      <steps-selector class="mb-4" />
+      <preset-selector class="mb-4" />
     </div>
     <div class="actions">
       <el-button type="primary" class="btn" round @click="onGenerate">
+        <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
         {{ $t('qrart.button.generate') }}
       </el-button>
     </div>
@@ -20,16 +24,24 @@ import TypeSelector from './config/TypeSelector.vue';
 import ContentInput from './config/ContentInput.vue';
 import PromptInput from './config/PromptInput.vue';
 import AspectRatioSelector from './config/AspectRatioSelector.vue';
+import QrwSelector from './config/QrwSelector.vue';
+import StepsSelector from './config/StepsSelector.vue';
+import PresetSelector from './config/PresetSelector.vue';
 import { ElButton } from 'element-plus';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default defineComponent({
   name: 'PresetPanel',
   components: {
     TypeSelector,
+    FontAwesomeIcon,
     ContentInput,
     PromptInput,
     AspectRatioSelector,
-    ElButton
+    ElButton,
+    QrwSelector,
+    StepsSelector,
+    PresetSelector
   },
   emits: ['generate'],
   computed: {

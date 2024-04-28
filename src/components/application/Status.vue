@@ -1,44 +1,46 @@
 <template>
-  <div v-if="initializing && application === undefined">
-    <el-skeleton :rows="1" class="text-center">
-      <template #template>
-        <el-skeleton-item variant="p" class="shimmer" />
-      </template>
-    </el-skeleton>
-  </div>
-  <div v-else-if="application" class="status">
-    <span class="info">
-      {{ $t('common.message.usedAmount') }}: {{ application?.used_amount?.toFixed(6) }}
-      {{ $t(`service.unit.` + application?.service?.unit + 's') }}
-      {{ $t('common.message.remainingAmount') }}:
-      {{ application?.remaining_amount?.toFixed(6) }}
-      {{ $t(`service.unit.` + application?.service?.unit + 's') }}
-    </span>
-    <span class="actions">
-      <el-button round size="small" type="primary" class="mr-1" @click="onBuyMore(application)">{{
-        $t('common.button.buyMore')
-      }}</el-button>
-      <api-price
-        v-if="showPrice && application?.service?.apis?.[0]?.price"
-        class="price inline-block"
-        :price="application?.service?.apis?.[0]?.price"
+  <div>
+    <div v-if="initializing && application === undefined">
+      <el-skeleton :rows="1" class="text-center">
+        <template #template>
+          <el-skeleton-item variant="p" class="shimmer" />
+        </template>
+      </el-skeleton>
+    </div>
+    <div v-else-if="application" class="status">
+      <span class="info">
+        {{ $t('common.message.usedAmount') }}: {{ application?.used_amount?.toFixed(6) }}
+        {{ $t(`service.unit.` + application?.service?.unit + 's') }}
+        {{ $t('common.message.remainingAmount') }}:
+        {{ application?.remaining_amount?.toFixed(6) }}
+        {{ $t(`service.unit.` + application?.service?.unit + 's') }}
+      </span>
+      <span class="actions">
+        <el-button round size="small" type="primary" class="mr-1" @click="onBuyMore(application)">{{
+          $t('common.button.buyMore')
+        }}</el-button>
+        <api-price
+          v-if="showPrice && application?.service?.apis?.[0]?.price"
+          class="price inline-block"
+          :price="application?.service?.apis?.[0]?.price"
+        />
+      </span>
+    </div>
+    <div v-if="needApply && service" class="text-center info">
+      <span class="mr-2">{{ $t('chat.message.notApplied') }}</span>
+      <span>
+        <el-button round type="primary" class="btn btn-apply" size="small" @click="confirming = true">
+          {{ $t('common.button.apply') }}
+        </el-button>
+      </span>
+      <span class="ml-1">{{ $t('chat.message.tryForFree') }}</span>
+      <application-confirm
+        v-if="service && authenticated"
+        v-model.visible="confirming"
+        :service="service"
+        @apply="onApply"
       />
-    </span>
-  </div>
-  <div v-if="needApply && service" class="text-center info">
-    <span class="mr-2">{{ $t('chat.message.notApplied') }}</span>
-    <span>
-      <el-button round type="primary" class="btn btn-apply" size="small" @click="confirming = true">
-        {{ $t('common.button.apply') }}
-      </el-button>
-    </span>
-    <span class="ml-1">{{ $t('chat.message.tryForFree') }}</span>
-    <application-confirm
-      v-if="service && authenticated"
-      v-model.visible="confirming"
-      :service="service"
-      @apply="onApply"
-    />
+    </div>
   </div>
 </template>
 

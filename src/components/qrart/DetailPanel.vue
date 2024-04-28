@@ -6,7 +6,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Status } from '@/models';
 import TaskDetail from './task/Detail.vue';
 
 export default defineComponent({
@@ -14,7 +13,6 @@ export default defineComponent({
   components: {
     TaskDetail
   },
-  props: {},
   data() {
     return {
       job: 0

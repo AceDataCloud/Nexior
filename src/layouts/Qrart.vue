@@ -53,7 +53,7 @@ export default defineComponent({
   display: flex;
   flex-direction: row;
   .config {
-    width: 400px;
+    width: 350px;
     height: 100%;
     overflow-y: scroll;
     border-right: 1px solid var(--el-border-color);
@@ -63,7 +63,7 @@ export default defineComponent({
     height: 100%;
     padding: 15px;
     flex: 1;
-    width: calc(100% - 400px);
+    width: calc(100% - 350px);
     height: 100%;
     display: flex;
     flex-direction: column;

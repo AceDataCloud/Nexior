@@ -3,7 +3,7 @@
     <el-row class="h-full">
       <el-col :span="24" class="h-full">
         <el-row class="h-full main">
-          <el-col :span="16" class="h-full">
+          <el-col :span="12" class="h-full p-4">
             <el-image
               v-if="task?.response?.image_url"
               :src="task?.response?.image_url"
@@ -12,38 +12,47 @@
               fit="contain"
               @error="onReload($event)"
             />
+            <el-image v-else class="image error">
+              <template #error>
+                <div class="image-slot">{{ $t('qrart.message.generating') }}</div>
+              </template>
+            </el-image>
           </el-col>
-          <el-col :span="8" class="h-full overflow-scroll">
+          <el-col :span="12" class="h-full overflow-scroll">
             <el-descriptions title="" :column="1">
-              <el-descriptions-item label="Task ID">
+              <el-descriptions-item :label="$t('qrart.name.taskId')">
                 {{ task?.id }}
+                <copy-to-clipboard :content="task?.id" class="btn-copy" />
               </el-descriptions-item>
-              <el-descriptions-item label="Type">
+              <el-descriptions-item :label="$t('qrart.name.type')">
                 {{ task?.request?.type }}
               </el-descriptions-item>
-              <el-descriptions-item label="Content">
+              <el-descriptions-item :label="$t('qrart.name.content')">
                 {{ task?.request?.content }}
+                <copy-to-clipboard :content="task?.request?.content" class="btn-copy" />
               </el-descriptions-item>
-              <el-descriptions-item label="Prompt">
+              <el-descriptions-item :label="$t('qrart.name.prompt')">
                 {{ task?.request?.prompt }}
+                <copy-to-clipboard :content="task?.request?.prompt" class="btn-copy" />
               </el-descriptions-item>
-              <el-descriptions-item label="Size">
+              <el-descriptions-item :label="$t('qrart.name.size')">
                 {{ task?.response?.image_width }} x {{ task?.response?.image_height }}
               </el-descriptions-item>
-              <el-descriptions-item v-if="task?.created_at" label="Created At">
+              <el-descriptions-item v-if="task?.created_at" :label="$t('qrart.name.createdAt')">
                 {{ $dayjs.format('' + new Date(parseFloat(task?.created_at) * 1000)) }}
               </el-descriptions-item>
-              <el-descriptions-item label="Steps">
+              <el-descriptions-item :label="$t('qrart.name.seed')">
+                {{ task?.request?.seed || task?.response?.seed }}
+                <copy-to-clipboard :content="task?.request?.seed || task?.response?.seed" class="btn-copy" />
+              </el-descriptions-item>
+              <el-descriptions-item :label="$t('qrart.name.steps')">
                 {{ task?.request?.steps }}
               </el-descriptions-item>
-              <el-descriptions-item label="Qrw">
+              <el-descriptions-item :label="$t('qrart.name.qrw')">
                 {{ task?.request?.qrw }}
               </el-descriptions-item>
-              <el-descriptions-item label="Preset">
+              <el-descriptions-item :label="$t('qrart.name.preset')">
                 {{ task?.request?.preset }}
-              </el-descriptions-item>
-              <el-descriptions-item label="Seed">
-                {{ task?.request?.seed || task?.response?.seed }}
               </el-descriptions-item>
             </el-descriptions>
           </el-col>
@@ -68,23 +77,18 @@ import {
   ElDescriptionsItem
 } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 
 export default defineComponent({
   name: 'TaskDetail',
   components: {
     ElImage,
-    ElTag,
+    CopyToClipboard,
     ElDescriptions,
     ElDescriptionsItem,
-    ElButton,
     ElRow,
-    ElCol,
-    FontAwesomeIcon,
-    ElTooltip,
-    ElSkeleton,
-    ElAlert
+    ElCol
   },
-  props: {},
   data() {
     return {};
   },
@@ -134,6 +138,21 @@ export default defineComponent({
     height: 100%;
     display: block;
     margin: auto;
+  }
+}
+</style>
+
+<style lang="scss">
+.detail {
+  .image.error {
+    background: var(--el-bg-color-page);
+    .image-slot {
+      font-size: 18px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 }
 </style>

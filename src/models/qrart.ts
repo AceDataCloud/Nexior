@@ -1,8 +1,22 @@
 export interface IQrartConfig {
-  content?: string;
-  type?: string;
-  prompt?: string;
+  content: string;
+  type: string;
+  prompt: string;
+  pattern?: string;
+  preset?: string;
+  steps?: number;
+  qrw?: number;
+  seed?: number;
+  rawurl?: boolean;
+  padding_level?: number;
+  aspect_ratio?: number;
+  position?: string;
+  pixel_style?: string;
+  marker_shape?: string;
+  sub_marker?: string;
+  rotate?: number;
   ecl?: string;
+  padding_nose?: number;
 }
 
 export interface IQrartGenerateRequest {

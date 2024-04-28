@@ -4,22 +4,25 @@
       <preset-panel />
     </template>
     <template #operation>
-      <mode-selector class="mb-4" />
-      <application-status
-        :initializing="initializing"
-        :application="application"
-        :service="service"
-        :need-apply="needApply"
-        class="mb-4"
-        @refresh="onGetApplication"
-      />
-      <div class="pt-4">
+      <div class="top">
+        <mode-selector class="mb-4" />
+        <application-status
+          :initializing="initializing"
+          :application="application"
+          :service="service"
+          :need-apply="needApply"
+          class="mb-4"
+          @refresh="onGetApplication"
+        />
         <reference-image class="mb-4" @change="references = $event" />
         <prompt-input v-model="prompt" class="mb-4" />
         <elements-selector v-model="elements" :advanced="preset?.advanced" class="mb-4" />
         <ignore-selector v-if="preset?.advanced" v-model="ignore" class="mb-4" />
         <final-prompt v-if="finalPrompt" :model-value="finalPrompt" />
+      </div>
+      <div class="bottom">
         <el-button type="primary" round class="btn btn-generate" :disabled="!finalPrompt" @click="onGenerate">
+          <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
           {{ $t('midjourney.button.generate') }}
         </el-button>
       </div>
@@ -53,6 +56,7 @@ import {
   MIDJOURNEY_DEFAULT_STYLIZE,
   MIDJOURNEY_DEFAULT_WIRED
 } from '@/constants';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 interface IData {
   prompt: string;
@@ -68,6 +72,7 @@ export default defineComponent({
   components: {
     ModeSelector,
     ReferenceImage,
+    FontAwesomeIcon,
     PresetPanel,
     PromptInput,
     ElementsSelector,
@@ -125,7 +130,7 @@ export default defineComponent({
       if (this.preset.version && !content.includes(`--version `) && !content.includes(`--v `)) {
         content += ` --version ${this.preset.version}`;
       }
-      if (this.preset.chaos && !content.includes(`--chaos `)) {
+      if (this.preset.chaos && this.preset.advanced && !content.includes(`--chaos `)) {
         content += ` --chaos ${this.preset.chaos}`;
       }
       if (this.preset.quality && !content.includes(`--quality `) && !content.includes(`--q `)) {
@@ -143,6 +148,7 @@ export default defineComponent({
         this.preset.stylize &&
         !content.includes(`--stylize `) &&
         !content.includes(`--s `) &&
+        this.preset.advanced &&
         this.preset.stylize !== MIDJOURNEY_DEFAULT_STYLIZE
       ) {
         content += ` --stylize ${this.preset.stylize}`;
@@ -151,6 +157,7 @@ export default defineComponent({
         this.preset.weird &&
         !content.includes(`--weird `) &&
         !content.includes(`--w `) &&
+        this.preset.advanced &&
         this.preset.weird !== MIDJOURNEY_DEFAULT_WIRED
       ) {
         content += ` --weird ${this.preset.weird}`;
@@ -158,10 +165,15 @@ export default defineComponent({
       if (this.ignore && !content.includes(`--no `)) {
         content += ` --no ${this.ignore}`;
       }
-      if (this.preset.iw && !content.includes(`--iw `) && this.preset.iw !== MIDJOURNEY_DEFAULT_IMAGE_WEIGHT) {
+      if (
+        this.preset.iw &&
+        !content.includes(`--iw `) &&
+        this.preset.advanced &&
+        this.preset.iw !== MIDJOURNEY_DEFAULT_IMAGE_WEIGHT
+      ) {
         content += ` --iw ${this.preset.iw}`;
       }
-      if (this.preset.style && !content.includes(`--style`)) {
+      if (this.preset.style && this.preset.advanced && !content.includes(`--style`)) {
         content += ` --style ${this.preset.style}`;
       }
       return this.prompt || this.references?.length > 0 ? content : '';
@@ -209,6 +221,7 @@ export default defineComponent({
       const request = {
         image_id: payload.image_id,
         action: payload.action,
+        mode: this.mode.name as MidjourneyImagineMode,
         callback_url: CALLBACK_URL
       };
       this.onStartTask(request);
@@ -228,18 +241,17 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.operation {
+.top {
   flex: 1;
-  padding: 15px;
-  height: 100%;
-  overflow-x: scroll;
-  .title {
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  .btn.btn-generate {
-    width: 80px;
-    border-radius: 20px;
+  height: calc(100% - 40px);
+  margin-bottom: 5px;
+  overflow-y: scroll;
+}
+.bottom {
+  height: 35px;
+  width: 100%;
+  .btn {
+    width: 100%;
   }
 }
 </style>
