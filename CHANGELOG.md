@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/hub
 
-This log was last generated on Sun, 28 Apr 2024 14:22:14 GMT and should not be manually modified.
+This log was last generated on Fri, 03 May 2024 10:01:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.1.0
+
+Fri, 03 May 2024 10:01:48 GMT
+
+### Minor changes
+
+- add new parameter for qrart (germey@acedata.cloud)
 
 ## 1.0.1
 
