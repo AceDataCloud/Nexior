@@ -97,7 +97,23 @@ export default defineComponent({
         content: this.config?.content,
         prompt: this.config?.prompt,
         aspect_ratio: this.config?.aspect_ratio,
-        callback_url: CALLBACK_URL
+        callback_url: CALLBACK_URL,
+        qrw: this.config?.qrw,
+        steps: this.config?.steps,
+        preset: this.config?.preset,
+        ...(this.config?.advanced
+          ? {
+              position: this.config?.position,
+              pixel_style: this.config?.pixel_style,
+              marker_shape: this.config?.marker_shape,
+              sub_marker: this.config?.sub_marker,
+              rotate: this.config?.rotate,
+              ecl: this.config?.ecl,
+              seed: this.config?.seed,
+              padding_level: this.config?.padding_level,
+              padding_noise: this.config?.padding_noise
+            }
+          : {})
       } as IQrartGenerateRequest;
       const token = this.credential?.token;
       if (!token) {

@@ -9,27 +9,63 @@
   },
   "name.size": {
     "message": "الحجم",
-    "description": "حجم رمز الاستجابة السريعة المراد إنشاؤه"
+    "description": "حجم رمز الاستجابة السريعة لإنشاء"
   },
   "name.createdAt": {
     "message": "تم الإنشاء في",
     "description": "تاريخ ووقت إنشاء رمز الاستجابة السريعة"
   },
+  "name.pixelStyle": {
+    "message": "نمط البكسل",
+    "description": "نمط البكسل لإنشاء رمز الاستجابة السريعة"
+  },
   "name.seed": {
     "message": "البذرة",
     "description": "البذرة لإنشاء رمز الاستجابة السريعة"
+  },
+  "name.paddingLevel": {
+    "message": "مستوى التبطين",
+    "description": "مستوى التبطين لإنشاء رمز الاستجابة السريعة"
+  },
+  "name.paddingNoise": {
+    "message": "ضجيج التبطين",
+    "description": "ضجيج التبطين لإنشاء رمز الاستجابة السريعة"
   },
   "name.content": {
     "message": "المحتوى",
     "description": "المحتوى لإنشاء رمز الاستجابة السريعة"
   },
+  "name.ecl": {
+    "message": "مستوى تصحيح الخطأ",
+    "description": "مستوى تصحيح الخطأ لإنشاء رمز الاستجابة السريعة"
+  },
+  "name.position": {
+    "message": "الموقع",
+    "description": "الموقع لإنشاء رمز الاستجابة السريعة"
+  },
   "name.prompt": {
-    "message": "التلميح",
-    "description": "التلميح لإدخال المحتوى"
+    "message": "تعليم",
+    "description": "التعليم لإدخال المحتوى"
+  },
+  "name.rotate": {
+    "message": "تدوير",
+    "description": "الدوران لإنشاء رمز الاستجابة السريعة"
+  },
+  "name.advanced": {
+    "message": "متقدم",
+    "description": "الإعدادات المتقدمة لإنشاء رمز الاستجابة السريعة"
   },
   "name.aspectRatio": {
     "message": "نسبة العرض إلى الارتفاع",
-    "description": "نسبة العرض إلى الارتفاع لرمز الاستجابة السريعة المراد إنشاؤه"
+    "description": "نسبة العرض إلى الارتفاع لإنشاء رمز الاستجابة السريعة"
+  },
+  "name.markerShape": {
+    "message": "شكل العلامة",
+    "description": "شكل العلامة لإنشاء رمز الاستجابة السريعة"
+  },
+  "name.subMarker": {
+    "message": "علامة فرعية",
+    "description": "العلامة الفرعية لإنشاء رمز الاستجابة السريعة"
   },
   "name.qrw": {
     "message": "رؤية رمز الاستجابة السريعة",
@@ -40,8 +76,8 @@
     "description": "الخطوات لإنشاء رمز الاستجابة السريعة"
   },
   "name.preset": {
-    "message": "الإعداد المسبق",
-    "description": "الإعداد المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "message": "مسبق الضبط",
+    "description": "الضبط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "description.qrw": {
     "message": "رؤية رمز الاستجابة السريعة، كلما زاد الحجم، زادت وضوحية رمز الاستجابة السريعة",
@@ -51,21 +87,49 @@
     "message": "الخطوات لإنشاء رمز الاستجابة السريعة، كلما زادت الخطوات، زادت وضوحية رمز الاستجابة السريعة",
     "description": "وصف المعلمة 'steps'"
   },
+  "placeholder.paddingNoise": {
+    "message": "الرجاء الاختيار...",
+    "description": "النص البديل لإدخال ضجيج التبطين"
+  },
+  "placeholder.paddingLevel": {
+    "message": "الرجاء الاختيار...",
+    "description": "النص البديل لمستوى التبطين"
+  },
   "placeholder.prompt": {
-    "message": "أدخل جملة لوصف الصورة التي ترغب في إنشائها، على سبيل المثال: قطة لطيفة. ستتمكن من تجاوز المعلمات الافتراضية",
-    "description": "نص العنصر النائب في حقل التلميح"
+    "message": "أدخل جملة لوصف الصورة التي ترغب في إنشائها",
+    "description": "النص البديل في حقل التعليم"
+  },
+  "placeholder.seed": {
+    "message": "البذرة من 1 إلى 9007199254740991",
+    "description": "النص البديل لإدخال البذرة"
+  },
+  "placeholder.position": {
+    "message": "الرجاء الاختيار...",
+    "description": "النص البديل لإدخال الموقع"
   },
   "placeholder.content": {
     "message": "أدخل المحتوى لرمز الاستجابة السريعة",
-    "description": "نص العنصر النائب في حقل المحتوى"
+    "description": "النص البديل في حقل المحتوى"
   },
   "placeholder.aspectRatio": {
     "message": "الرجاء الاختيار...",
-    "description": "العنصر النائب لإدخال نسبة العرض إلى الارتفاع"
+    "description": "النص البديل لإدخال نسبة العرض إلى الارتفاع"
   },
   "placeholder.preset": {
     "message": "الرجاء الاختيار...",
-    "description": "العنصر النائب لإدخال الإعداد المسبق"
+    "description": "النص البديل لإدخال الضبط المسبق"
+  },
+  "placeholder.markerShape": {
+    "message": "الرجاء الاختيار...",
+    "description": "النص البديل لإدخال شكل العلامة"
+  },
+  "placeholder.rotate": {
+    "message": "الرجاء الاختيار...",
+    "description": "النص البديل لإدخال التدوير"
+  },
+  "placeholder.subMarker": {
+    "message": "الرجاء الاختيار...",
+    "description": "النص البديل لإدخال العلامة الفرعية"
   },
   "button.generate": {
     "message": "إنشاء",
@@ -73,103 +137,103 @@
   },
   "preset.sunset": {
     "message": "غروب الشمس",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.floral": {
     "message": "زهري",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.snowflakes": {
-    "message": "بلورات الثلج",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "message": "نجوم الثلج",
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.feathers": {
     "message": "ريش",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.raindrops": {
     "message": "قطرات المطر",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.ultraRealism": {
     "message": "واقعية فائقة",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.epicRealms": {
-    "message": "عوالم ملحمية",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "message": "ممالك ملحمية",
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.intricateStudio": {
     "message": "استوديو معقد",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.symmetricMasterpiece": {
     "message": "تحفة متناظرة",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.luminousHighway": {
     "message": "طريق مضيء",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.celestialJourney": {
     "message": "رحلة سماوية",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.neonMech": {
     "message": "نيون ميكانيكي",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.etherealLowPoly": {
-    "message": "منخفض البولي إثيري",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "message": "منخفض البولي الأثيري",
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.goldenVista": {
     "message": "منظر ذهبي",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.cinematicExpanse": {
     "message": "توسع سينمائي",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.cinematicWarm": {
     "message": "دافئ سينمائي",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.desolateWilderness": {
     "message": "برية مهجورة",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.vibrantPalette": {
     "message": "لوحة حية",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.enigmaticJourney": {
     "message": "رحلة غامضة",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.timelessCinematic": {
     "message": "سينمائي خالد",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.regalGalaxy": {
     "message": "مجرة ملكية",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.illustriousCanvas": {
-    "message": "لوحة مشهورة",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "message": "قماش مشهور",
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.expressiveMural": {
-    "message": "جدارية تعبيرية",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "message": "لوحة تعبيرية",
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "preset.sereneHaze": {
     "message": "ضباب هادئ",
-    "description": "النمط المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+    "description": "النمط المسبق لإنشاء رمز الاستجابة السريعة"
   },
   "message.promptPlaceholder": {
-    "message": "الرجاء إدخال جملة لوصف الصورة التي ترغب في إنشائها، على سبيل المثال: قطة لطيفة. ستتمكن من تجاوز المعلمات الافتراضية",
-    "description": "نص العنصر النائب في حقل التلميح"
+    "message": "الرجاء إدخال جملة لوصف الصورة التي ترغب في إنشائها، على سبيل المثال: قطة لطيفة. ستتمكن من تجاوز المعلمات الإضافية للضبط المسبق الافتراضي",
+    "description": "نص البديل في حقل التعليم"
   },
   "message.uploadReferencesExceed": {
     "message": "يمكنك تحميل ما يصل إلى 5 صور كحد أقصى",
@@ -204,7 +268,135 @@
     "description": "رسالة عند عدم توفر عمليات"
   },
   "message.noTasks": {
-    "message": "لا توجد مهام، الرجاء إنشاء مهمة جديدة",
+    "message": "لا توجد مهام، يرجى إنشاء مهمة جديدة",
     "description": "رسالة عند عدم توفر مهام"
+  },
+  "markerShape.square": {
+    "message": "مربع",
+    "description": "شكل العلامة لإنشاء رمز الاستجابة السريعة"
+  },
+  "markerShape.circle": {
+    "message": "دائرة",
+    "description": "شكل العلامة لتوليد رمز الاستجابة السريعة"
+  },
+  "markerShape.plus": {
+    "message": "زائد",
+    "description": "شكل العلامة لتوليد رمز الاستجابة السريعة"
+  },
+  "markerShape.box": {
+    "message": "صندوق",
+    "description": "شكل العلامة لتوليد رمز الاستجابة السريعة"
+  },
+  "markerShape.octagon": {
+    "message": "مضلع",
+    "description": "شكل العلامة لتوليد رمز الاستجابة السريعة"
+  },
+  "markerShape.tinyPlus": {
+    "message": "زائد صغير",
+    "description": "شكل العلامة لتوليد رمز الاستجابة السريعة"
+  },
+  "markerShape.random": {
+    "message": "عشوائي",
+    "description": "شكل العلامة لتوليد رمز الاستجابة السريعة"
+  },
+  "subMarker.square": {
+    "message": "مربع",
+    "description": "شكل العلامة الفرعية لتوليد رمز الاستجابة السريعة"
+  },
+  "subMarker.circle": {
+    "message": "دائرة",
+    "description": "شكل العلامة الفرعية لتوليد رمز الاستجابة السريعة"
+  },
+  "subMarker.plus": {
+    "message": "زائد",
+    "description": "شكل العلامة الفرعية لتوليد رمز الاستجابة السريعة"
+  },
+  "subMarker.box": {
+    "message": "صندوق",
+    "description": "شكل العلامة الفرعية لتوليد رمز الاستجابة السريعة"
+  },
+  "subMarker.random": {
+    "message": "عشوائي",
+    "description": "شكل العلامة الفرعية لتوليد رمز الاستجابة السريعة"
+  },
+  "position.center": {
+    "message": "الوسط",
+    "description": "الموقع لتوليد رمز الاستجابة السريعة"
+  },
+  "position.topLeft": {
+    "message": "أعلى اليسار",
+    "description": "الموقع لتوليد رمز الاستجابة السريعة"
+  },
+  "position.topRight": {
+    "message": "أعلى اليمين",
+    "description": "الموقع لتوليد رمز الاستجابة السريعة"
+  },
+  "position.bottomLeft": {
+    "message": "أسفل اليسار",
+    "description": "الموقع لتوليد رمز الاستجابة السريعة"
+  },
+  "position.bottomRight": {
+    "message": "أسفل اليمين",
+    "description": "الموقع لتوليد رمز الاستجابة السريعة"
+  },
+  "position.top": {
+    "message": "أعلى",
+    "description": "الموقع لتوليد رمز الاستجابة السريعة"
+  },
+  "position.bottom": {
+    "message": "أسفل",
+    "description": "الموقع لتوليد رمز الاستجابة السريعة"
+  },
+  "position.left": {
+    "message": "يسار",
+    "description": "الموقع لتوليد رمز الاستجابة السريعة"
+  },
+  "position.right": {
+    "message": "يمين",
+    "description": "الموقع لتوليد رمز الاستجابة السريعة"
+  },
+  "pixelStyle.row": {
+    "message": "صف",
+    "description": "نمط البكسل لتوليد رمز الاستجابة السريعة"
+  },
+  "pixelStyle.column": {
+    "message": "عمود",
+    "description": "نمط البكسل لتوليد رمز الاستجابة السريعة"
+  },
+  "pixelStyle.square": {
+    "message": "مربع",
+    "description": "نمط البكسل لتوليد رمز الاستجابة السريعة"
+  },
+  "pixelStyle.rounded": {
+    "message": "مستدير",
+    "description": "نمط البكسل لتوليد رمز الاستجابة السريعة"
+  },
+  "pixelStyle.dot": {
+    "message": "نقطة",
+    "description": "نمط البكسل لتوليد رمز الاستجابة السريعة"
+  },
+  "pixelStyle.squircle": {
+    "message": "مربع دائري",
+    "description": "نمط البكسل لتوليد رمز الاستجابة السريعة"
+  },
+  "type.text": {
+    "message": "نص",
+    "description": "نوع المحتوى لتوليد رمز الاستجابة السريعة"
+  },
+  "type.link": {
+    "message": "رابط",
+    "description": "نوع المحتوى لتوليد رمز الاستجابة السريعة"
+  },
+  "type.email": {
+    "message": "بريد إلكتروني",
+    "description": "نوع المحتوى لتوليد رمز الاستجابة السريعة"
+  },
+  "type.phone": {
+    "message": "هاتف",
+    "description": "نوع المحتوى لتوليد رمز الاستجابة السريعة"
+  },
+  "type.sms": {
+    "message": "رسالة نصية قصيرة",
+    "description": "نوع المحتوى لتوليد رمز الاستجابة السريعة"
   }
 }

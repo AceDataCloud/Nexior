@@ -15,21 +15,57 @@
     "message": "创建时间",
     "description": "生成 QR 码的日期和时间"
   },
+  "name.pixelStyle": {
+    "message": "像素风格",
+    "description": "要生成的 QR 码的像素风格"
+  },
   "name.seed": {
     "message": "种子",
     "description": "要生成的 QR 码的种子"
+  },
+  "name.paddingLevel": {
+    "message": "填充级别",
+    "description": "要生成的 QR 码的填充级别"
+  },
+  "name.paddingNoise": {
+    "message": "填充噪音",
+    "description": "要生成的 QR 码的填充噪音"
   },
   "name.content": {
     "message": "内容",
     "description": "要生成的 QR 码的内容"
   },
+  "name.ecl": {
+    "message": "纠错级别",
+    "description": "要生成的 QR 码的纠错级别"
+  },
+  "name.position": {
+    "message": "位置",
+    "description": "要生成的 QR 码的位置"
+  },
   "name.prompt": {
     "message": "提示",
     "description": "内容输入的提示"
   },
+  "name.rotate": {
+    "message": "旋转",
+    "description": "要生成的 QR 码的旋转"
+  },
+  "name.advanced": {
+    "message": "高级",
+    "description": "要生成的 QR 码的高级设置"
+  },
   "name.aspectRatio": {
     "message": "宽高比",
     "description": "要生成的 QR 码的宽高比"
+  },
+  "name.markerShape": {
+    "message": "标记形状",
+    "description": "要生成的 QR 码的标记形状"
+  },
+  "name.subMarker": {
+    "message": "子标记",
+    "description": "要生成的 QR 码的子标记"
   },
   "name.qrw": {
     "message": "QR 码可见性",
@@ -44,16 +80,32 @@
     "description": "要生成的 QR 码的预设"
   },
   "description.qrw": {
-    "message": "QR 码可见性，尺寸越大，QR 码越清晰可见",
+    "message": "QR 码可见性，尺寸越大，QR 码越可见",
     "description": "参数'qrw'的描述"
   },
   "description.steps": {
-    "message": "生成 QR 码的步骤，步骤越多，QR 码越清晰可见",
+    "message": "生成 QR 码的步骤，步骤越多，QR 码越可见",
     "description": "参数'steps'的描述"
+  },
+  "placeholder.paddingNoise": {
+    "message": "请选择...",
+    "description": "填充噪音输入的占位符"
+  },
+  "placeholder.paddingLevel": {
+    "message": "请选择...",
+    "description": "填充级别的占位符"
   },
   "placeholder.prompt": {
     "message": "输入描述要生成的 QR 码的句子",
     "description": "提示字段中的占位文本"
+  },
+  "placeholder.seed": {
+    "message": "种子范围为 1 到 9007199254740991",
+    "description": "种子输入的占位符"
+  },
+  "placeholder.position": {
+    "message": "请选择...",
+    "description": "位置输入的占位符"
   },
   "placeholder.content": {
     "message": "输入要生成的 QR 码的内容",
@@ -67,105 +119,117 @@
     "message": "请选择...",
     "description": "预设输入的占位符"
   },
+  "placeholder.markerShape": {
+    "message": "请选择...",
+    "description": "标记形状输入的占位符"
+  },
+  "placeholder.rotate": {
+    "message": "请选择...",
+    "description": "旋转输入的占位符"
+  },
+  "placeholder.subMarker": {
+    "message": "请选择...",
+    "description": "子标记输入的占位符"
+  },
   "button.generate": {
     "message": "生成",
     "description": "生成 QR 码的按钮文本"
   },
   "preset.sunset": {
     "message": "日落",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.floral": {
     "message": "花卉",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.snowflakes": {
     "message": "雪花",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.feathers": {
     "message": "羽毛",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.raindrops": {
     "message": "雨滴",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.ultraRealism": {
     "message": "超现实",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.epicRealms": {
     "message": "史诗王国",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.intricateStudio": {
     "message": "复杂工作室",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.symmetricMasterpiece": {
     "message": "对称杰作",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.luminousHighway": {
     "message": "发光之路",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.celestialJourney": {
     "message": "天体之旅",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.neonMech": {
     "message": "霓虹机械",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.etherealLowPoly": {
-    "message": "空灵低聚",
-    "description": "要生成的 QR 码的预设样式"
+    "message": "空灵低多边形",
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.goldenVista": {
     "message": "金色景观",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.cinematicExpanse": {
     "message": "电影般的广阔",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.cinematicWarm": {
     "message": "电影般的温暖",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.desolateWilderness": {
     "message": "荒凉荒野",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.vibrantPalette": {
     "message": "充满活力的调色板",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.enigmaticJourney": {
     "message": "神秘之旅",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.timelessCinematic": {
     "message": "永恒的电影",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.regalGalaxy": {
     "message": "华丽星系",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.illustriousCanvas": {
     "message": "杰出画布",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.expressiveMural": {
     "message": "富有表现力的壁画",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "preset.sereneHaze": {
     "message": "宁静薄雾",
-    "description": "要生成的 QR 码的预设样式"
+    "description": "要生成的 QR 码的预设风格"
   },
   "message.promptPlaceholder": {
     "message": "请输入描述要生成的图像的句子，例如：一只可爱的猫。额外参数将覆盖默认预设参数",
@@ -206,5 +270,133 @@
   "message.noTasks": {
     "message": "没有任务，请创建新任务",
     "description": "没有任务时的消息"
+  },
+  "markerShape.square": {
+    "message": "正方形",
+    "description": "要生成的 QR 码的标记形状"
+  },
+  "markerShape.circle": {
+    "message": "圆形",
+    "description": "要生成的QR码的标记形状"
+  },
+  "markerShape.plus": {
+    "message": "加号",
+    "description": "要生成的QR码的标记形状"
+  },
+  "markerShape.box": {
+    "message": "方框",
+    "description": "要生成的QR码的标记形状"
+  },
+  "markerShape.octagon": {
+    "message": "八边形",
+    "description": "要生成的QR码的标记形状"
+  },
+  "markerShape.tinyPlus": {
+    "message": "微加号",
+    "description": "要生成的QR码的标记形状"
+  },
+  "markerShape.random": {
+    "message": "随机",
+    "description": "要生成的QR码的标记形状"
+  },
+  "subMarker.square": {
+    "message": "正方形",
+    "description": "要生成的QR码的子标记形状"
+  },
+  "subMarker.circle": {
+    "message": "圆形",
+    "description": "要生成的QR码的子标记形状"
+  },
+  "subMarker.plus": {
+    "message": "加号",
+    "description": "要生成的QR码的子标记形状"
+  },
+  "subMarker.box": {
+    "message": "方框",
+    "description": "要生成的QR码的子标记形状"
+  },
+  "subMarker.random": {
+    "message": "随机",
+    "description": "要生成的QR码的子标记形状"
+  },
+  "position.center": {
+    "message": "中心",
+    "description": "要生成的QR码的位置"
+  },
+  "position.topLeft": {
+    "message": "左上",
+    "description": "要生成的QR码的位置"
+  },
+  "position.topRight": {
+    "message": "右上",
+    "description": "要生成的QR码的位置"
+  },
+  "position.bottomLeft": {
+    "message": "左下",
+    "description": "要生成的QR码的位置"
+  },
+  "position.bottomRight": {
+    "message": "右下",
+    "description": "要生成的QR码的位置"
+  },
+  "position.top": {
+    "message": "顶部",
+    "description": "要生成的QR码的位置"
+  },
+  "position.bottom": {
+    "message": "底部",
+    "description": "要生成的QR码的位置"
+  },
+  "position.left": {
+    "message": "左侧",
+    "description": "要生成的QR码的位置"
+  },
+  "position.right": {
+    "message": "右侧",
+    "description": "要生成的QR码的位置"
+  },
+  "pixelStyle.row": {
+    "message": "行",
+    "description": "要生成的QR码的像素风格"
+  },
+  "pixelStyle.column": {
+    "message": "列",
+    "description": "要生成的QR码的像素风格"
+  },
+  "pixelStyle.square": {
+    "message": "方形",
+    "description": "要生成的QR码的像素风格"
+  },
+  "pixelStyle.rounded": {
+    "message": "圆角",
+    "description": "要生成的QR码的像素风格"
+  },
+  "pixelStyle.dot": {
+    "message": "点",
+    "description": "要生成的QR码的像素风格"
+  },
+  "pixelStyle.squircle": {
+    "message": "圆角矩形",
+    "description": "要生成的QR码的像素风格"
+  },
+  "type.text": {
+    "message": "文本",
+    "description": "要生成的QR码的内容类型"
+  },
+  "type.link": {
+    "message": "链接",
+    "description": "要生成的QR码的内容类型"
+  },
+  "type.email": {
+    "message": "邮件",
+    "description": "要生成的QR码的内容类型"
+  },
+  "type.phone": {
+    "message": "电话",
+    "description": "要生成的QR码的内容类型"
+  },
+  "type.sms": {
+    "message": "短信",
+    "description": "要生成的QR码的内容类型"
   }
 }

@@ -7,7 +7,7 @@ export default (): IQrartState => {
     application: undefined,
     tasks: undefined,
     credential: undefined,
-    config: {},
+    config: undefined,
     status: {
       getService: Status.None,
       getApplication: Status.None,

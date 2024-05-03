@@ -1,52 +1,49 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('qrart.name.type') }}</h2>
-    <el-select v-model="value" class="value" :placeholder="$t('qrart.placeholder.select')">
+    <h2 class="title">{{ $t('qrart.name.pixelStyle') }}</h2>
+    <el-select v-model="value" clearable class="value" :placeholder="$t('qrart.placeholder.pixelStyle')">
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </el-select>
   </div>
 </template>
 
 <script>
+import { QRART_DEFAULT_PIXEL_STYLE } from '@/constants';
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
-import { QRART_DEFAULT_TYPE } from '@/constants';
 
 export default defineComponent({
-  name: 'VersionSelector',
+  name: 'PixelStyleSelector',
   components: {
     ElSelect,
     ElOption
   },
-  props: {
-    modelValue: {
-      type: String,
-      default: undefined
-    }
-  },
-  emits: ['update:modelValue'],
   data() {
     return {
       options: [
         {
-          label: this.$t('qrart.type.text'),
-          value: 'text'
+          value: 'square',
+          label: this.$t('qrart.pixelStyle.square')
         },
         {
-          label: this.$t('qrart.type.link'),
-          value: 'link'
+          value: 'rounded',
+          label: this.$t('qrart.pixelStyle.rounded')
         },
         {
-          label: this.$t('qrart.type.email'),
-          value: 'email'
+          value: 'dot',
+          label: this.$t('qrart.pixelStyle.dot')
         },
         {
-          label: this.$t('qrart.type.phone'),
-          value: 'phone'
+          value: 'squircle',
+          label: this.$t('qrart.pixelStyle.squircle')
         },
         {
-          label: this.$t('qrart.type.sms'),
-          value: 'sms'
+          value: 'row',
+          label: this.$t('qrart.pixelStyle.row')
+        },
+        {
+          value: 'column',
+          label: this.$t('qrart.pixelStyle.column')
         }
       ]
     };
@@ -54,21 +51,20 @@ export default defineComponent({
   computed: {
     value: {
       get() {
-        return this.$store.state.qrart?.config?.type;
+        return this.$store.state.qrart?.config?.pixel_style;
       },
       set(val) {
-        console.debug('set type', val);
+        console.debug('set pixel_style', val);
         this.$store.commit('qrart/setConfig', {
           ...this.$store.state.qrart?.config,
-          type: val
+          pixel_style: val
         });
       }
     }
   },
   mounted() {
     if (!this.value) {
-      console.debug('set default type', QRART_DEFAULT_TYPE);
-      this.value = QRART_DEFAULT_TYPE;
+      this.value = QRART_DEFAULT_PIXEL_STYLE;
     }
   }
 });
