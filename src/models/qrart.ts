@@ -7,6 +7,7 @@ export interface IQrartConfig {
   steps?: number;
   qrw?: number;
   seed?: number;
+  advanced?: boolean;
   rawurl?: boolean;
   padding_level?: number;
   aspect_ratio?: number;
@@ -16,7 +17,7 @@ export interface IQrartConfig {
   sub_marker?: string;
   rotate?: number;
   ecl?: string;
-  padding_nose?: number;
+  padding_noise?: number;
 }
 
 export interface IQrartGenerateRequest {

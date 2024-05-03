@@ -1,52 +1,45 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('qrart.name.type') }}</h2>
-    <el-select v-model="value" class="value" :placeholder="$t('qrart.placeholder.select')">
+    <h2 class="title">{{ $t('qrart.name.subMarker') }}</h2>
+    <el-select v-model="value" clearable class="value" :placeholder="$t('qrart.placeholder.subMarker')">
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </el-select>
   </div>
 </template>
 
 <script>
+import { QRART_DEFAULT_SUB_MARKER } from '@/constants';
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
-import { QRART_DEFAULT_TYPE } from '@/constants';
 
 export default defineComponent({
-  name: 'VersionSelector',
+  name: 'SubMarkerSelector',
   components: {
     ElSelect,
     ElOption
   },
-  props: {
-    modelValue: {
-      type: String,
-      default: undefined
-    }
-  },
-  emits: ['update:modelValue'],
   data() {
     return {
       options: [
         {
-          label: this.$t('qrart.type.text'),
-          value: 'text'
+          value: 'square',
+          label: this.$t('qrart.subMarker.square')
         },
         {
-          label: this.$t('qrart.type.link'),
-          value: 'link'
+          value: 'circle',
+          label: this.$t('qrart.subMarker.circle')
         },
         {
-          label: this.$t('qrart.type.email'),
-          value: 'email'
+          value: 'plus',
+          label: this.$t('qrart.subMarker.plus')
         },
         {
-          label: this.$t('qrart.type.phone'),
-          value: 'phone'
+          value: 'box',
+          label: this.$t('qrart.subMarker.box')
         },
         {
-          label: this.$t('qrart.type.sms'),
-          value: 'sms'
+          value: 'random',
+          label: this.$t('qrart.subMarker.random')
         }
       ]
     };
@@ -54,21 +47,20 @@ export default defineComponent({
   computed: {
     value: {
       get() {
-        return this.$store.state.qrart?.config?.type;
+        return this.$store.state.qrart?.config?.sub_marker;
       },
       set(val) {
-        console.debug('set type', val);
+        console.debug('set sub_marker', val);
         this.$store.commit('qrart/setConfig', {
           ...this.$store.state.qrart?.config,
-          type: val
+          sub_marker: val
         });
       }
     }
   },
   mounted() {
     if (!this.value) {
-      console.debug('set default type', QRART_DEFAULT_TYPE);
-      this.value = QRART_DEFAULT_TYPE;
+      this.value = QRART_DEFAULT_SUB_MARKER;
     }
   }
 });

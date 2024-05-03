@@ -1,52 +1,49 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('qrart.name.type') }}</h2>
-    <el-select v-model="value" class="value" :placeholder="$t('qrart.placeholder.select')">
+    <h2 class="title">{{ $t('qrart.name.paddingLevel') }}</h2>
+    <el-select v-model="value" clearable class="value" :placeholder="$t('qrart.placeholder.paddingLevel')">
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </el-select>
   </div>
 </template>
 
 <script>
+import { QRART_DEFAULT_PADDING_LEVEL } from '@/constants';
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
-import { QRART_DEFAULT_TYPE } from '@/constants';
 
 export default defineComponent({
-  name: 'VersionSelector',
+  name: 'PaddingLevelSelector',
   components: {
     ElSelect,
     ElOption
   },
-  props: {
-    modelValue: {
-      type: String,
-      default: undefined
-    }
-  },
-  emits: ['update:modelValue'],
   data() {
     return {
       options: [
         {
-          label: this.$t('qrart.type.text'),
-          value: 'text'
+          value: 0,
+          label: 0
         },
         {
-          label: this.$t('qrart.type.link'),
-          value: 'link'
+          value: 5,
+          label: 5
         },
         {
-          label: this.$t('qrart.type.email'),
-          value: 'email'
+          value: 10,
+          label: 10
         },
         {
-          label: this.$t('qrart.type.phone'),
-          value: 'phone'
+          value: 10,
+          label: 10
         },
         {
-          label: this.$t('qrart.type.sms'),
-          value: 'sms'
+          value: 15,
+          label: 15
+        },
+        {
+          value: 20,
+          label: 20
         }
       ]
     };
@@ -54,21 +51,20 @@ export default defineComponent({
   computed: {
     value: {
       get() {
-        return this.$store.state.qrart?.config?.type;
+        return this.$store.state.qrart?.config?.padding_level;
       },
       set(val) {
-        console.debug('set type', val);
+        console.debug('set padding_level', val);
         this.$store.commit('qrart/setConfig', {
           ...this.$store.state.qrart?.config,
-          type: val
+          padding_level: val
         });
       }
     }
   },
   mounted() {
     if (!this.value) {
-      console.debug('set default type', QRART_DEFAULT_TYPE);
-      this.value = QRART_DEFAULT_TYPE;
+      this.value = QRART_DEFAULT_PADDING_LEVEL;
     }
   }
 });
