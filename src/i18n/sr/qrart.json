@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "Tip",
-    "description": "Vrsta sadržaja za generisanje QR koda, kao što su 'Link', 'Tekst', itd"
+    "description": "Vrsta sadržaja za generisanje QR koda, kao što su 'Link', 'Tekst', itd."
   },
   "name.size": {
     "message": "Veličina",
@@ -15,21 +15,57 @@
     "message": "Kreirano u",
     "description": "Datum i vreme kada je generisan QR kod"
   },
+  "name.pixelStyle": {
+    "message": "Stil piksela",
+    "description": "Stil piksela za generisanje QR koda"
+  },
   "name.seed": {
     "message": "Seme",
     "description": "Seme za generisanje QR koda"
+  },
+  "name.paddingLevel": {
+    "message": "Nivo punjenja",
+    "description": "Nivo punjenja za generisanje QR koda"
+  },
+  "name.paddingNoise": {
+    "message": "Buka punjenja",
+    "description": "Buka punjenja za generisanje QR koda"
   },
   "name.content": {
     "message": "Sadržaj",
     "description": "Sadržaj za generisanje QR koda"
   },
+  "name.ecl": {
+    "message": "Nivo ispravke grešaka",
+    "description": "Nivo ispravke grešaka za generisanje QR koda"
+  },
+  "name.position": {
+    "message": "Pozicija",
+    "description": "Pozicija za generisanje QR koda"
+  },
   "name.prompt": {
     "message": "Upit",
     "description": "Upit za unos sadržaja"
   },
+  "name.rotate": {
+    "message": "Rotiraj",
+    "description": "Rotacija za generisanje QR koda"
+  },
+  "name.advanced": {
+    "message": "Napredno",
+    "description": "Napredne postavke za generisanje QR koda"
+  },
   "name.aspectRatio": {
     "message": "Odnos stranica",
     "description": "Odnos stranica za generisanje QR koda"
+  },
+  "name.markerShape": {
+    "message": "Oblik markera",
+    "description": "Oblik markera za generisanje QR koda"
+  },
+  "name.subMarker": {
+    "message": "Podmarkera",
+    "description": "Podmarkera za generisanje QR koda"
   },
   "name.qrw": {
     "message": "Vidljivost QR koda",
@@ -51,21 +87,49 @@
     "message": "Koraci za generisanje QR koda, što je više koraka, to će QR kod biti vidljiviji",
     "description": "Opis parametra `steps`"
   },
+  "placeholder.paddingNoise": {
+    "message": "Molimo odaberite...",
+    "description": "Privremeni tekst za unos buke punjenja"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Molimo odaberite...",
+    "description": "Privremeni tekst za nivo punjenja"
+  },
   "placeholder.prompt": {
-    "message": "Unesite rečenicu koja opisuje QR kod koji želite da generišete",
-    "description": "Tekst mesta za unos u polju upita"
+    "message": "Unesite rečenicu koja opisuje QR kod koji želite generisati",
+    "description": "Privremeni tekst u polju za upit"
+  },
+  "placeholder.seed": {
+    "message": "Seme od 1 do 9007199254740991",
+    "description": "Privremeni tekst za unos semena"
+  },
+  "placeholder.position": {
+    "message": "Molimo odaberite...",
+    "description": "Privremeni tekst za unos pozicije"
   },
   "placeholder.content": {
     "message": "Unesite sadržaj za QR kod",
-    "description": "Tekst mesta za unos u polju sadržaja"
+    "description": "Privremeni tekst u polju za sadržaj"
   },
   "placeholder.aspectRatio": {
     "message": "Molimo odaberite...",
-    "description": "Tekst mesta za unos za unos odnosa stranica"
+    "description": "Privremeni tekst za unos odnosa stranica"
   },
   "placeholder.preset": {
     "message": "Molimo odaberite...",
-    "description": "Tekst mesta za unos za unos podešavanja"
+    "description": "Privremeni tekst za podešavanje"
+  },
+  "placeholder.markerShape": {
+    "message": "Molimo odaberite...",
+    "description": "Privremeni tekst za unos oblika markera"
+  },
+  "placeholder.rotate": {
+    "message": "Molimo odaberite...",
+    "description": "Privremeni tekst za unos rotacije"
+  },
+  "placeholder.subMarker": {
+    "message": "Molimo odaberite...",
+    "description": "Privremeni tekst za unos podmarkera"
   },
   "button.generate": {
     "message": "Generiši",
@@ -80,7 +144,7 @@
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.snowflakes": {
-    "message": "Pahulje snega",
+    "message": "Pahuljice snega",
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.feathers": {
@@ -96,7 +160,7 @@
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.epicRealms": {
-    "message": "Epski svetovi",
+    "message": "Epohalni svetovi",
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.intricateStudio": {
@@ -136,7 +200,7 @@
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.desolateWilderness": {
-    "message": "Pusto divlje mesto",
+    "message": "Pusto divlje",
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.vibrantPalette": {
@@ -148,7 +212,7 @@
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.timelessCinematic": {
-    "message": "Večno kinematografsko",
+    "message": "Vremenski kinematografski",
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.regalGalaxy": {
@@ -168,12 +232,12 @@
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "message.promptPlaceholder": {
-    "message": "Molimo unesite rečenicu koja opisuje sliku koju želite da generišete, na primer: slatka mačka. Dodatni parametri će zameniti podrazumevane parametre podešavanja",
-    "description": "Tekst mesta za unos u polju upita"
+    "message": "Molimo unesite rečenicu koja opisuje sliku koju želite generisati, na primer: slatka mačka. Dodatni parametri će zameniti podrazumevane parametre podešavanja",
+    "description": "Privremeni tekst u polju za upit"
   },
   "message.uploadReferencesExceed": {
     "message": "Možete maksimalno učitati do 5 slika",
-    "description": "Poruka o grešci kada broj učitanih slika premašuje limit"
+    "description": "Poruka o grešci kada broj učitanih slika premaši limit"
   },
   "message.uploadReferencesSuccess": {
     "message": "Uspešno učitane slike",
@@ -206,5 +270,133 @@
   "message.noTasks": {
     "message": "Nema zadataka, molimo kreirajte novi zadatak",
     "description": "Poruka kada nema zadataka"
+  },
+  "markerShape.square": {
+    "message": "Kvadrat",
+    "description": "Oblik markera za generisanje QR koda"
+  },
+  "markerShape.circle": {
+    "message": "Krug",
+    "description": "Oblik markera za generisanje QR koda"
+  },
+  "markerShape.plus": {
+    "message": "Plus",
+    "description": "Oblik markera za generisanje QR koda"
+  },
+  "markerShape.box": {
+    "message": "Kutija",
+    "description": "Oblik markera za generisanje QR koda"
+  },
+  "markerShape.octagon": {
+    "message": "Osmougao",
+    "description": "Oblik markera za generisanje QR koda"
+  },
+  "markerShape.tinyPlus": {
+    "message": "Mali plus",
+    "description": "Oblik markera za generisanje QR koda"
+  },
+  "markerShape.random": {
+    "message": "Nasumično",
+    "description": "Oblik markera za generisanje QR koda"
+  },
+  "subMarker.square": {
+    "message": "Kvadrat",
+    "description": "Podoblik markera za generisanje QR koda"
+  },
+  "subMarker.circle": {
+    "message": "Krug",
+    "description": "Podoblik markera za generisanje QR koda"
+  },
+  "subMarker.plus": {
+    "message": "Plus",
+    "description": "Podoblik markera za generisanje QR koda"
+  },
+  "subMarker.box": {
+    "message": "Kutija",
+    "description": "Podoblik markera za generisanje QR koda"
+  },
+  "subMarker.random": {
+    "message": "Nasumično",
+    "description": "Podoblik markera za generisanje QR koda"
+  },
+  "position.center": {
+    "message": "Centar",
+    "description": "Pozicija za generisanje QR koda"
+  },
+  "position.topLeft": {
+    "message": "Gore levo",
+    "description": "Pozicija za generisanje QR koda"
+  },
+  "position.topRight": {
+    "message": "Gore desno",
+    "description": "Pozicija za generisanje QR koda"
+  },
+  "position.bottomLeft": {
+    "message": "Dole levo",
+    "description": "Pozicija za generisanje QR koda"
+  },
+  "position.bottomRight": {
+    "message": "Dole desno",
+    "description": "Pozicija za generisanje QR koda"
+  },
+  "position.top": {
+    "message": "Gore",
+    "description": "Pozicija za generisanje QR koda"
+  },
+  "position.bottom": {
+    "message": "Dole",
+    "description": "Pozicija za generisanje QR koda"
+  },
+  "position.left": {
+    "message": "Levo",
+    "description": "Pozicija za generisanje QR koda"
+  },
+  "position.right": {
+    "message": "Desno",
+    "description": "Pozicija za generisanje QR koda"
+  },
+  "pixelStyle.row": {
+    "message": "Red",
+    "description": "Stil piksela za generisanje QR koda"
+  },
+  "pixelStyle.column": {
+    "message": "Kolona",
+    "description": "Stil piksela za generisanje QR koda"
+  },
+  "pixelStyle.square": {
+    "message": "Kvadrat",
+    "description": "Stil piksela za generisanje QR koda"
+  },
+  "pixelStyle.rounded": {
+    "message": "Zaobljen",
+    "description": "Stil piksela za generisanje QR koda"
+  },
+  "pixelStyle.dot": {
+    "message": "Tačka",
+    "description": "Stil piksela za generisanje QR koda"
+  },
+  "pixelStyle.squircle": {
+    "message": "Kvadratni krug",
+    "description": "Stil piksela za generisanje QR koda"
+  },
+  "type.text": {
+    "message": "Tekst",
+    "description": "Vrsta sadržaja za generisanje QR koda"
+  },
+  "type.link": {
+    "message": "Link",
+    "description": "Vrsta sadržaja za generisanje QR koda"
+  },
+  "type.email": {
+    "message": "Email",
+    "description": "Vrsta sadržaja za generisanje QR koda"
+  },
+  "type.phone": {
+    "message": "Telefon",
+    "description": "Vrsta sadržaja za generisanje QR koda"
+  },
+  "type.sms": {
+    "message": "SMS",
+    "description": "Vrsta sadržaja za generisanje QR koda"
   }
 }

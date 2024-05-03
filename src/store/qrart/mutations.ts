@@ -2,8 +2,10 @@ import { IApplication, ICredential, IQrartConfig, IQrartTask, IService } from '@
 import { IQrartState } from './models';
 
 export const resetAll = (state: IQrartState): void => {
+  state.service = undefined;
   state.application = undefined;
   state.config = undefined;
+  state.credential = undefined;
   state.tasks = undefined;
 };
 

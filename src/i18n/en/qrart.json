@@ -15,21 +15,57 @@
     "message": "Created At",
     "description": "The date and time the QR code was generated"
   },
+  "name.pixelStyle": {
+    "message": "Pixel Style",
+    "description": "The pixel style for the QR code to generate"
+  },
   "name.seed": {
     "message": "Seed",
     "description": "The seed for the QR code to generate"
+  },
+  "name.paddingLevel": {
+    "message": "Padding Level",
+    "description": "The padding level for the QR code to generate"
+  },
+  "name.paddingNoise": {
+    "message": "Padding Noise",
+    "description": "The padding noise for the QR code to generate"
   },
   "name.content": {
     "message": "Content",
     "description": "The content for the QR code to generate"
   },
+  "name.ecl": {
+    "message": "Error Correction Level",
+    "description": "The error correction level for the QR code to generate"
+  },
+  "name.position": {
+    "message": "Position",
+    "description": "The position for the QR code to generate"
+  },
   "name.prompt": {
     "message": "Prompt",
     "description": "The prompt for the content input"
   },
+  "name.rotate": {
+    "message": "Rotate",
+    "description": "The rotation for the QR code to generate"
+  },
+  "name.advanced": {
+    "message": "Advanced",
+    "description": "The advanced settings for the QR code to generate"
+  },
   "name.aspectRatio": {
     "message": "Aspect Ratio",
     "description": "The aspect ratio for the QR code to generate"
+  },
+  "name.markerShape": {
+    "message": "Marker Shape",
+    "description": "The marker shape for the QR code to generate"
+  },
+  "name.subMarker": {
+    "message": "Sub Marker",
+    "description": "The sub marker for the QR code to generate"
   },
   "name.qrw": {
     "message": "QR code visibility",
@@ -51,9 +87,25 @@
     "message": "The steps to generate the QR code, the more steps, the more visible the QR code will be",
     "description": "The description of the parameter `steps`"
   },
+  "placeholder.paddingNoise": {
+    "message": "Please select...",
+    "description": "The placeholder for the padding noise input"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Please select...",
+    "description": "The placeholder for the padding level"
+  },
   "placeholder.prompt": {
     "message": "Enter a sentence to describe the QR you want to generate",
     "description": "The placeholder text in the prompt field"
+  },
+  "placeholder.seed": {
+    "message": "Seed from 1 to 9007199254740991",
+    "description": "The placeholder for the seed input"
+  },
+  "placeholder.position": {
+    "message": "Please select...",
+    "description": "The placeholder for the position input"
   },
   "placeholder.content": {
     "message": "Enter the content for the QR code",
@@ -66,6 +118,18 @@
   "placeholder.preset": {
     "message": "Please select...",
     "description": "The placeholder for the preset input"
+  },
+  "placeholder.markerShape": {
+    "message": "Please select...",
+    "description": "The placeholder for the marker shape input"
+  },
+  "placeholder.rotate": {
+    "message": "Please select...",
+    "description": "The placeholder for the rotate input"
+  },
+  "placeholder.subMarker": {
+    "message": "Please select...",
+    "description": "The placeholder for the sub marker input"
   },
   "button.generate": {
     "message": "Generate",
@@ -206,5 +270,133 @@
   "message.noTasks": {
     "message": "No tasks, please create a new task",
     "description": "Message when there are no tasks"
+  },
+  "markerShape.square": {
+    "message": "Square",
+    "description": "The marker shape for the QR code to generate"
+  },
+  "markerShape.circle": {
+    "message": "Circle",
+    "description": "The marker shape for the QR code to generate"
+  },
+  "markerShape.plus": {
+    "message": "Plus",
+    "description": "The marker shape for the QR code to generate"
+  },
+  "markerShape.box": {
+    "message": "Box",
+    "description": "The marker shape for the QR code to generate"
+  },
+  "markerShape.octagon": {
+    "message": "Octagon",
+    "description": "The marker shape for the QR code to generate"
+  },
+  "markerShape.tinyPlus": {
+    "message": "Tiny Plus",
+    "description": "The marker shape for the QR code to generate"
+  },
+  "markerShape.random": {
+    "message": "Random",
+    "description": "The marker shape for the QR code to generate"
+  },
+  "subMarker.square": {
+    "message": "Square",
+    "description": "The sub marker shape for the QR code to generate"
+  },
+  "subMarker.circle": {
+    "message": "Circle",
+    "description": "The sub marker shape for the QR code to generate"
+  },
+  "subMarker.plus": {
+    "message": "Plus",
+    "description": "The sub marker shape for the QR code to generate"
+  },
+  "subMarker.box": {
+    "message": "Box",
+    "description": "The sub marker shape for the QR code to generate"
+  },
+  "subMarker.random": {
+    "message": "Random",
+    "description": "The sub marker shape for the QR code to generate"
+  },
+  "position.center": {
+    "message": "Center",
+    "description": "The position for the QR code to generate"
+  },
+  "position.topLeft": {
+    "message": "Top Left",
+    "description": "The position for the QR code to generate"
+  },
+  "position.topRight": {
+    "message": "Top Right",
+    "description": "The position for the QR code to generate"
+  },
+  "position.bottomLeft": {
+    "message": "Bottom Left",
+    "description": "The position for the QR code to generate"
+  },
+  "position.bottomRight": {
+    "message": "Bottom Right",
+    "description": "The position for the QR code to generate"
+  },
+  "position.top": {
+    "message": "Top",
+    "description": "The position for the QR code to generate"
+  },
+  "position.bottom": {
+    "message": "Bottom",
+    "description": "The position for the QR code to generate"
+  },
+  "position.left": {
+    "message": "Left",
+    "description": "The position for the QR code to generate"
+  },
+  "position.right": {
+    "message": "Right",
+    "description": "The position for the QR code to generate"
+  },
+  "pixelStyle.row": {
+    "message": "Row",
+    "description": "The pixel style for the QR code to generate"
+  },
+  "pixelStyle.column": {
+    "message": "Column",
+    "description": "The pixel style for the QR code to generate"
+  },
+  "pixelStyle.square": {
+    "message": "Square",
+    "description": "The pixel style for the QR code to generate"
+  },
+  "pixelStyle.rounded": {
+    "message": "Rounded",
+    "description": "The pixel style for the QR code to generate"
+  },
+  "pixelStyle.dot": {
+    "message": "Dot",
+    "description": "The pixel style for the QR code to generate"
+  },
+  "pixelStyle.squircle": {
+    "message": "Squircle",
+    "description": "The pixel style for the QR code to generate"
+  },
+  "type.text": {
+    "message": "Text",
+    "description": "The type of content for the QR code to generate"
+  },
+  "type.link": {
+    "message": "Link",
+    "description": "The type of content for the QR code to generate"
+  },
+  "type.email": {
+    "message": "Email",
+    "description": "The type of content for the QR code to generate"
+  },
+  "type.phone": {
+    "message": "Phone",
+    "description": "The type of content for the QR code to generate"
+  },
+  "type.sms": {
+    "message": "SMS",
+    "description": "The type of content for the QR code to generate"
   }
 }

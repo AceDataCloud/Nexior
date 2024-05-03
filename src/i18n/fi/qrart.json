@@ -5,31 +5,67 @@
   },
   "name.type": {
     "message": "Tyyppi",
-    "description": "QR-koodin luotavan sisällön tyyppi, kuten 'Linkki', 'Teksti', jne."
+    "description": "Sisällön tyyppi, jota varten QR-koodi luodaan, kuten 'Linkki', 'Teksti', jne."
   },
   "name.size": {
     "message": "Koko",
-    "description": "QR-koodin luotava koko"
+    "description": "QR-koodin koko, joka luodaan"
   },
   "name.createdAt": {
     "message": "Luotu",
     "description": "Päivämäärä ja aika, jolloin QR-koodi luotiin"
   },
+  "name.pixelStyle": {
+    "message": "Pikselityyli",
+    "description": "Pikselityyli QR-koodin luomiseen"
+  },
   "name.seed": {
     "message": "Siemen",
-    "description": "QR-koodin luomiseen käytetty siemen"
+    "description": "Siemen QR-koodin luomiseen"
+  },
+  "name.paddingLevel": {
+    "message": "Täyttötaso",
+    "description": "Täyttötaso QR-koodin luomiseen"
+  },
+  "name.paddingNoise": {
+    "message": "Täyttömelu",
+    "description": "Täyttömelu QR-koodin luomiseen"
   },
   "name.content": {
     "message": "Sisältö",
-    "description": "QR-koodin luotava sisältö"
+    "description": "Sisältö QR-koodin luomiseen"
+  },
+  "name.ecl": {
+    "message": "Virheenkorjaustaso",
+    "description": "Virheenkorjaustaso QR-koodin luomiseen"
+  },
+  "name.position": {
+    "message": "Sijainti",
+    "description": "Sijainti QR-koodin luomiseen"
   },
   "name.prompt": {
     "message": "Ohje",
-    "description": "Ohje syöttökentälle"
+    "description": "Ohje sisällön syöttökenttään"
+  },
+  "name.rotate": {
+    "message": "Käännä",
+    "description": "Käännös QR-koodin luomiseen"
+  },
+  "name.advanced": {
+    "message": "Lisäasetukset",
+    "description": "Lisäasetukset QR-koodin luomiseen"
   },
   "name.aspectRatio": {
     "message": "Kuvasuhde",
-    "description": "QR-koodin luotava kuvasuhde"
+    "description": "Kuvasuhde QR-koodin luomiseen"
+  },
+  "name.markerShape": {
+    "message": "Merkkikuvio",
+    "description": "Merkkikuvio QR-koodin luomiseen"
+  },
+  "name.subMarker": {
+    "message": "Alimerkki",
+    "description": "Alimerkki QR-koodin luomiseen"
   },
   "name.qrw": {
     "message": "QR-koodin näkyvyys",
@@ -51,25 +87,53 @@
     "message": "Askeleet QR-koodin luomiseen, mitä enemmän askeleita, sitä näkyvämpi QR-koodi on",
     "description": "Parametrin `steps` kuvaus"
   },
+  "placeholder.paddingNoise": {
+    "message": "Valitse...",
+    "description": "Paikkamerkki täyttömelojen syöttöön"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Valitse...",
+    "description": "Paikkamerkki täyttötasolle"
+  },
   "placeholder.prompt": {
-    "message": "Kirjoita lause kuvaamaan haluamaasi QR-koodia",
-    "description": "Paikkamerkki ohjekentässä"
+    "message": "Syötä lause kuvaamaan haluamaasi kuvaa",
+    "description": "Paikkateksti ohjekentässä"
+  },
+  "placeholder.seed": {
+    "message": "Siemen luku 1-9007199254740991",
+    "description": "Paikkamerkki siemenen syöttöön"
+  },
+  "placeholder.position": {
+    "message": "Valitse...",
+    "description": "Paikkamerkki sijainnin syöttöön"
   },
   "placeholder.content": {
     "message": "Syötä sisältö QR-koodille",
-    "description": "Paikkamerkki sisältökentässä"
+    "description": "Paikkateksti sisältökentässä"
   },
   "placeholder.aspectRatio": {
     "message": "Valitse...",
-    "description": "Paikkamerkki kuvasuhde-kentässä"
+    "description": "Paikkamerkki kuvasuhteen syöttöön"
   },
   "placeholder.preset": {
     "message": "Valitse...",
-    "description": "Paikkamerkki esiasetus-kentässä"
+    "description": "Paikkamerkki esiasetuksen syöttöön"
+  },
+  "placeholder.markerShape": {
+    "message": "Valitse...",
+    "description": "Paikkamerkki merkkikuvion syöttöön"
+  },
+  "placeholder.rotate": {
+    "message": "Valitse...",
+    "description": "Paikkamerkki käännöksen syöttöön"
+  },
+  "placeholder.subMarker": {
+    "message": "Valitse...",
+    "description": "Paikkamerkki alimerkin syöttöön"
   },
   "button.generate": {
     "message": "Generoi",
-    "description": "Nappiteksti QR-koodin luomiseen"
+    "description": "Nappiteksti QR-koodin generoimiseen"
   },
   "preset.sunset": {
     "message": "Auringonlasku",
@@ -108,7 +172,7 @@
     "description": "Esiasetus tyyli QR-koodin luomiseen"
   },
   "preset.luminousHighway": {
-    "message": "Valoisa valtatie",
+    "message": "Valaiseva valtatie",
     "description": "Esiasetus tyyli QR-koodin luomiseen"
   },
   "preset.celestialJourney": {
@@ -169,42 +233,170 @@
   },
   "message.promptPlaceholder": {
     "message": "Syötä lause kuvaamaan haluamaasi kuvaa, esim. söpö kissa. Lisäparametrit korvaavat oletusesiasetukset",
-    "description": "Paikkamerkki ohjekentässä"
+    "description": "Paikkateksti ohjekentässä"
   },
   "message.uploadReferencesExceed": {
     "message": "Voit ladata enintään 5 kuvaa",
     "description": "Virheviesti, kun ladattujen kuvien määrä ylittää rajan"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Kuvat ladattu onnistuneesti",
+    "message": "Kuvien lataaminen onnistui",
     "description": "Onnistumisviesti, kun kuvat on ladattu onnistuneesti"
   },
   "message.uploadReferencesError": {
-    "message": "Kuvien lataus epäonnistui, yritä myöhemmin uudelleen",
+    "message": "Kuvien lataaminen epäonnistui, yritä myöhemmin uudelleen",
     "description": "Virheviesti, kun kuvien lataus epäonnistuu"
   },
   "message.startingTask": {
-    "message": "Tehtävä käynnistyy...",
-    "description": "Viesti, kun piirtotehtävä käynnistyy"
+    "message": "Tehtävän aloittaminen...",
+    "description": "Viesti, kun piirtotehtävä on käynnistymässä"
   },
   "message.startTaskSuccess": {
-    "message": "Piirtotehtävä käynnistetty onnistuneesti",
-    "description": "Onnistumisviesti, kun piirtotehtävä käynnistyy onnistuneesti"
+    "message": "Piirtotehtävän aloitus onnistui",
+    "description": "Onnistumisviesti, kun piirtotehtävä on käynnistetty onnistuneesti"
   },
   "message.startTaskFailed": {
-    "message": "Piirtotehtävän käynnistäminen epäonnistui",
-    "description": "Virheviesti, kun piirtotehtävän käynnistäminen epäonnistuu"
+    "message": "Piirtotehtävän aloitus epäonnistui",
+    "description": "Virheviesti, kun piirtotehtävä epäonnistuu käynnistymään"
   },
   "message.generating": {
     "message": "Generoidaan...",
-    "description": "Viesti, kun kuvaa generoidaan"
+    "description": "Viesti, kun kuvaa luodaan"
   },
   "message.noOperations": {
     "message": "Ei käytettävissä olevia toimintoja",
-    "description": "Viesti, kun käytettävissä ei ole toimintoja"
+    "description": "Viesti, kun mitään toimintoja ei ole käytettävissä"
   },
   "message.noTasks": {
     "message": "Ei tehtäviä, luo uusi tehtävä",
     "description": "Viesti, kun tehtäviä ei ole"
+  },
+  "markerShape.square": {
+    "message": "Neliö",
+    "description": "Merkkikuvio QR-koodin luomiseen"
+  },
+  "markerShape.circle": {
+    "message": "Ympyrä",
+    "description": "The marker shape for the QR code to generate"
+  },
+  "markerShape.plus": {
+    "message": "Plus-merkki",
+    "description": "The marker shape for the QR code to generate"
+  },
+  "markerShape.box": {
+    "message": "Laatikko",
+    "description": "The marker shape for the QR code to generate"
+  },
+  "markerShape.octagon": {
+    "message": "Oktagoni",
+    "description": "The marker shape for the QR code to generate"
+  },
+  "markerShape.tinyPlus": {
+    "message": "Pieni plus-merkki",
+    "description": "The marker shape for the QR code to generate"
+  },
+  "markerShape.random": {
+    "message": "Satunnainen",
+    "description": "The marker shape for the QR code to generate"
+  },
+  "subMarker.square": {
+    "message": "Neliö",
+    "description": "The sub marker shape for the QR code to generate"
+  },
+  "subMarker.circle": {
+    "message": "Ympyrä",
+    "description": "The sub marker shape for the QR code to generate"
+  },
+  "subMarker.plus": {
+    "message": "Plus-merkki",
+    "description": "The sub marker shape for the QR code to generate"
+  },
+  "subMarker.box": {
+    "message": "Laatikko",
+    "description": "The sub marker shape for the QR code to generate"
+  },
+  "subMarker.random": {
+    "message": "Satunnainen",
+    "description": "The sub marker shape for the QR code to generate"
+  },
+  "position.center": {
+    "message": "Keski",
+    "description": "The position for the QR code to generate"
+  },
+  "position.topLeft": {
+    "message": "Ylävasen",
+    "description": "The position for the QR code to generate"
+  },
+  "position.topRight": {
+    "message": "Yläoikea",
+    "description": "The position for the QR code to generate"
+  },
+  "position.bottomLeft": {
+    "message": "Alavasen",
+    "description": "The position for the QR code to generate"
+  },
+  "position.bottomRight": {
+    "message": "Alaoikea",
+    "description": "The position for the QR code to generate"
+  },
+  "position.top": {
+    "message": "Ylä",
+    "description": "The position for the QR code to generate"
+  },
+  "position.bottom": {
+    "message": "Ala",
+    "description": "The position for the QR code to generate"
+  },
+  "position.left": {
+    "message": "Vasen",
+    "description": "The position for the QR code to generate"
+  },
+  "position.right": {
+    "message": "Oikea",
+    "description": "The position for the QR code to generate"
+  },
+  "pixelStyle.row": {
+    "message": "Rivi",
+    "description": "The pixel style for the QR code to generate"
+  },
+  "pixelStyle.column": {
+    "message": "Sarake",
+    "description": "The pixel style for the QR code to generate"
+  },
+  "pixelStyle.square": {
+    "message": "Neliö",
+    "description": "The pixel style for the QR code to generate"
+  },
+  "pixelStyle.rounded": {
+    "message": "Pyöristetty",
+    "description": "The pixel style for the QR code to generate"
+  },
+  "pixelStyle.dot": {
+    "message": "Piste",
+    "description": "The pixel style for the QR code to generate"
+  },
+  "pixelStyle.squircle": {
+    "message": "Nelikulmio",
+    "description": "The pixel style for the QR code to generate"
+  },
+  "type.text": {
+    "message": "Teksti",
+    "description": "The type of content for the QR code to generate"
+  },
+  "type.link": {
+    "message": "Linkki",
+    "description": "The type of content for the QR code to generate"
+  },
+  "type.email": {
+    "message": "Sähköposti",
+    "description": "The type of content for the QR code to generate"
+  },
+  "type.phone": {
+    "message": "Puhelin",
+    "description": "The type of content for the QR code to generate"
+  },
+  "type.sms": {
+    "message": "Tekstiviesti",
+    "description": "The type of content for the QR code to generate"
   }
 }

@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "Typ",
-    "description": "Der Inhaltstyp für den zu generierenden QR-Code, wie z.B. 'Link', 'Text' usw."
+    "description": "Der Inhaltstyp für den zu generierenden QR-Code, wie 'Link', 'Text' usw."
   },
   "name.size": {
     "message": "Größe",
@@ -15,24 +15,60 @@
     "message": "Erstellt am",
     "description": "Das Datum und die Uhrzeit, zu denen der QR-Code generiert wurde"
   },
+  "name.pixelStyle": {
+    "message": "Pixelstil",
+    "description": "Der Pixelstil für den zu generierenden QR-Code"
+  },
   "name.seed": {
     "message": "Seed",
     "description": "Der Seed für den zu generierenden QR-Code"
+  },
+  "name.paddingLevel": {
+    "message": "Füllstufe",
+    "description": "Die Füllstufe für den zu generierenden QR-Code"
+  },
+  "name.paddingNoise": {
+    "message": "Füllrauschen",
+    "description": "Das Füllrauschen für den zu generierenden QR-Code"
   },
   "name.content": {
     "message": "Inhalt",
     "description": "Der Inhalt für den zu generierenden QR-Code"
   },
+  "name.ecl": {
+    "message": "Fehlerkorrekturstufe",
+    "description": "Die Fehlerkorrekturstufe für den zu generierenden QR-Code"
+  },
+  "name.position": {
+    "message": "Position",
+    "description": "Die Position für den zu generierenden QR-Code"
+  },
   "name.prompt": {
     "message": "Aufforderung",
     "description": "Die Aufforderung für die Eingabe des Inhalts"
+  },
+  "name.rotate": {
+    "message": "Drehen",
+    "description": "Die Drehung für den zu generierenden QR-Code"
+  },
+  "name.advanced": {
+    "message": "Erweitert",
+    "description": "Die erweiterten Einstellungen für den zu generierenden QR-Code"
   },
   "name.aspectRatio": {
     "message": "Seitenverhältnis",
     "description": "Das Seitenverhältnis für den zu generierenden QR-Code"
   },
+  "name.markerShape": {
+    "message": "Markerform",
+    "description": "Die Markerform für den zu generierenden QR-Code"
+  },
+  "name.subMarker": {
+    "message": "Untermarker",
+    "description": "Der Untermarker für den zu generierenden QR-Code"
+  },
   "name.qrw": {
-    "message": "QR-Code-Sichtbarkeit",
+    "message": "Sichtbarkeit des QR-Codes",
     "description": "Der Name des QR-Code-Generators"
   },
   "name.steps": {
@@ -45,15 +81,31 @@
   },
   "description.qrw": {
     "message": "Die Sichtbarkeit des QR-Codes, je größer die Größe, desto sichtbarer wird der QR-Code sein",
-    "description": "Die Beschreibung des Parameters `qrw`"
+    "description": "Die Beschreibung des Parameters 'qrw'"
   },
   "description.steps": {
     "message": "Die Schritte zur Generierung des QR-Codes, je mehr Schritte, desto sichtbarer wird der QR-Code sein",
-    "description": "Die Beschreibung des Parameters `steps`"
+    "description": "Die Beschreibung des Parameters 'steps'"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Bitte auswählen...",
+    "description": "Der Platzhalter für die Eingabe des Füllrauschens"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Bitte auswählen...",
+    "description": "Der Platzhalter für die Füllstufe"
   },
   "placeholder.prompt": {
     "message": "Geben Sie einen Satz ein, um den zu generierenden QR-Code zu beschreiben",
     "description": "Der Platzhaltertext im Aufforderungsfeld"
+  },
+  "placeholder.seed": {
+    "message": "Seed von 1 bis 9007199254740991",
+    "description": "Der Platzhalter für die Seed-Eingabe"
+  },
+  "placeholder.position": {
+    "message": "Bitte auswählen...",
+    "description": "Der Platzhalter für die Positionseingabe"
   },
   "placeholder.content": {
     "message": "Geben Sie den Inhalt für den QR-Code ein",
@@ -61,11 +113,23 @@
   },
   "placeholder.aspectRatio": {
     "message": "Bitte auswählen...",
-    "description": "Der Platzhalter für die Eingabe des Seitenverhältnisses"
+    "description": "Der Platzhalter für die Seitenverhältniseingabe"
   },
   "placeholder.preset": {
     "message": "Bitte auswählen...",
     "description": "Der Platzhalter für die Voreinstellungseingabe"
+  },
+  "placeholder.markerShape": {
+    "message": "Bitte auswählen...",
+    "description": "Der Platzhalter für die Markerform-Eingabe"
+  },
+  "placeholder.rotate": {
+    "message": "Bitte auswählen...",
+    "description": "Der Platzhalter für die Drehungseingabe"
+  },
+  "placeholder.subMarker": {
+    "message": "Bitte auswählen...",
+    "description": "Der Platzhalter für die Untermarker-Eingabe"
   },
   "button.generate": {
     "message": "Generieren",
@@ -168,11 +232,11 @@
     "description": "Der Voreinstellungsstil für den zu generierenden QR-Code"
   },
   "message.promptPlaceholder": {
-    "message": "Bitte geben Sie einen Satz ein, um das Bild zu beschreiben, das Sie generieren möchten, z.B. eine niedliche Katze. Zusätzliche Parameter überschreiben die Standardvoreinstellungen",
+    "message": "Bitte geben Sie einen Satz ein, um das Bild zu beschreiben, das Sie generieren möchten, z.B.: eine niedliche Katze. Zusätzliche Parameter überschreiben die Standardvoreinstellungen",
     "description": "Platzhaltertext im Aufforderungsfeld"
   },
   "message.uploadReferencesExceed": {
-    "message": "Sie können höchstens 5 Bilder hochladen",
+    "message": "Sie können maximal 5 Bilder hochladen",
     "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Bilder das Limit überschreitet"
   },
   "message.uploadReferencesSuccess": {
@@ -185,18 +249,18 @@
   },
   "message.startingTask": {
     "message": "Aufgabe wird gestartet...",
-    "description": "Nachricht, wenn die Zeichnungsaufgabe gestartet wird"
+    "description": "Nachricht, wenn die Zeichenaufgabe gestartet wird"
   },
   "message.startTaskSuccess": {
-    "message": "Zeichnungsaufgabe erfolgreich gestartet",
-    "description": "Erfolgsmeldung, wenn die Zeichnungsaufgabe erfolgreich gestartet wurde"
+    "message": "Zeichenaufgabe erfolgreich gestartet",
+    "description": "Erfolgsmeldung, wenn die Zeichenaufgabe erfolgreich gestartet wurde"
   },
   "message.startTaskFailed": {
-    "message": "Fehler beim Starten der Zeichnungsaufgabe",
-    "description": "Fehlermeldung, wenn die Zeichnungsaufgabe nicht gestartet werden konnte"
+    "message": "Fehler beim Starten der Zeichenaufgabe",
+    "description": "Fehlermeldung, wenn die Zeichenaufgabe nicht gestartet werden konnte"
   },
   "message.generating": {
-    "message": "Generiere...",
+    "message": "Generieren...",
     "description": "Nachricht, wenn das Bild generiert wird"
   },
   "message.noOperations": {
@@ -206,5 +270,133 @@
   "message.noTasks": {
     "message": "Keine Aufgaben, bitte erstellen Sie eine neue Aufgabe",
     "description": "Nachricht, wenn keine Aufgaben vorhanden sind"
+  },
+  "markerShape.square": {
+    "message": "Quadrat",
+    "description": "Die Markerform für den zu generierenden QR-Code"
+  },
+  "markerShape.circle": {
+    "message": "Kreis",
+    "description": "Die Markerform für den zu generierenden QR-Code"
+  },
+  "markerShape.plus": {
+    "message": "Plus",
+    "description": "Die Markerform für den zu generierenden QR-Code"
+  },
+  "markerShape.box": {
+    "message": "Kasten",
+    "description": "Die Markerform für den zu generierenden QR-Code"
+  },
+  "markerShape.octagon": {
+    "message": "Achteck",
+    "description": "Die Markerform für den zu generierenden QR-Code"
+  },
+  "markerShape.tinyPlus": {
+    "message": "Winziges Plus",
+    "description": "Die Markerform für den zu generierenden QR-Code"
+  },
+  "markerShape.random": {
+    "message": "Zufällig",
+    "description": "Die Markerform für den zu generierenden QR-Code"
+  },
+  "subMarker.square": {
+    "message": "Quadrat",
+    "description": "Die Untermarkerform für den zu generierenden QR-Code"
+  },
+  "subMarker.circle": {
+    "message": "Kreis",
+    "description": "Die Untermarkerform für den zu generierenden QR-Code"
+  },
+  "subMarker.plus": {
+    "message": "Plus",
+    "description": "Die Untermarkerform für den zu generierenden QR-Code"
+  },
+  "subMarker.box": {
+    "message": "Kasten",
+    "description": "Die Untermarkerform für den zu generierenden QR-Code"
+  },
+  "subMarker.random": {
+    "message": "Zufällig",
+    "description": "Die Untermarkerform für den zu generierenden QR-Code"
+  },
+  "position.center": {
+    "message": "Mitte",
+    "description": "Die Position für den zu generierenden QR-Code"
+  },
+  "position.topLeft": {
+    "message": "Oben links",
+    "description": "Die Position für den zu generierenden QR-Code"
+  },
+  "position.topRight": {
+    "message": "Oben rechts",
+    "description": "Die Position für den zu generierenden QR-Code"
+  },
+  "position.bottomLeft": {
+    "message": "Unten links",
+    "description": "Die Position für den zu generierenden QR-Code"
+  },
+  "position.bottomRight": {
+    "message": "Unten rechts",
+    "description": "Die Position für den zu generierenden QR-Code"
+  },
+  "position.top": {
+    "message": "Oben",
+    "description": "Die Position für den zu generierenden QR-Code"
+  },
+  "position.bottom": {
+    "message": "Unten",
+    "description": "Die Position für den zu generierenden QR-Code"
+  },
+  "position.left": {
+    "message": "Links",
+    "description": "Die Position für den zu generierenden QR-Code"
+  },
+  "position.right": {
+    "message": "Rechts",
+    "description": "Die Position für den zu generierenden QR-Code"
+  },
+  "pixelStyle.row": {
+    "message": "Reihe",
+    "description": "Der Pixelstil für den zu generierenden QR-Code"
+  },
+  "pixelStyle.column": {
+    "message": "Spalte",
+    "description": "Der Pixelstil für den zu generierenden QR-Code"
+  },
+  "pixelStyle.square": {
+    "message": "Quadrat",
+    "description": "Der Pixelstil für den zu generierenden QR-Code"
+  },
+  "pixelStyle.rounded": {
+    "message": "Abgerundet",
+    "description": "Der Pixelstil für den zu generierenden QR-Code"
+  },
+  "pixelStyle.dot": {
+    "message": "Punkt",
+    "description": "Der Pixelstil für den zu generierenden QR-Code"
+  },
+  "pixelStyle.squircle": {
+    "message": "Squircle",
+    "description": "Der Pixelstil für den zu generierenden QR-Code"
+  },
+  "type.text": {
+    "message": "Text",
+    "description": "Der Inhaltstyp für den zu generierenden QR-Code"
+  },
+  "type.link": {
+    "message": "Link",
+    "description": "Der Inhaltstyp für den zu generierenden QR-Code"
+  },
+  "type.email": {
+    "message": "E-Mail",
+    "description": "Der Inhaltstyp für den zu generierenden QR-Code"
+  },
+  "type.phone": {
+    "message": "Telefon",
+    "description": "Der Inhaltstyp für den zu generierenden QR-Code"
+  },
+  "type.sms": {
+    "message": "SMS",
+    "description": "Der Inhaltstyp für den zu generierenden QR-Code"
   }
 }
