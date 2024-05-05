@@ -5,7 +5,23 @@
   },
   "name.type": {
     "message": "タイプ",
-    "description": "QRコードを生成するコンテンツのタイプ、'リンク'、'テキスト'など"
+    "description": "QRコードを生成するコンテンツのタイプ、例：'リンク'、'テキスト'など"
+  },
+  "name.failure": {
+    "message": "失敗",
+    "description": "タスクの失敗ステータス"
+  },
+  "name.failureReason": {
+    "message": "失敗理由",
+    "description": "タスクの失敗理由"
+  },
+  "name.status": {
+    "message": "ステータス",
+    "description": "タスクのステータス"
+  },
+  "name.traceId": {
+    "message": "トレースID",
+    "description": "タスクのトレースID"
   },
   "name.size": {
     "message": "サイズ",
@@ -96,7 +112,7 @@
     "description": "パディングレベルのプレースホルダー"
   },
   "placeholder.prompt": {
-    "message": "生成したい画像を説明する文章を入力してください。例：かわいい猫",
+    "message": "生成したいQRを説明する文章を入力してください、例：かわいい猫",
     "description": "プロンプトフィールドのプレースホルダーテキスト"
   },
   "placeholder.seed": {
@@ -133,22 +149,22 @@
   },
   "button.generate": {
     "message": "生成",
-    "description": "QRコードを生成するためのボタンテキスト"
+    "description": "QRコードを生成するボタンのテキスト"
   },
   "preset.sunset": {
-    "message": "夕日",
+    "message": "サンセット",
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.floral": {
-    "message": "花の",
+    "message": "フローラル",
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.snowflakes": {
-    "message": "雪片",
+    "message": "スノーフレーク",
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.feathers": {
-    "message": "羽",
+    "message": "フェザー",
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.raindrops": {
@@ -188,7 +204,7 @@
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.goldenVista": {
-    "message": "黄金の景色",
+    "message": "ゴールデンビスタ",
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.cinematicExpanse": {
@@ -252,19 +268,23 @@
     "description": "描画タスクが開始されているときのメッセージ"
   },
   "message.startTaskSuccess": {
-    "message": "描画タスクが正常に開始されました",
+    "message": "描画タスクの開始に成功しました",
     "description": "描画タスクが正常に開始された場合の成功メッセージ"
   },
   "message.startTaskFailed": {
     "message": "描画タスクの開始に失敗しました",
-    "description": "描画タスクの開始に失敗した場合のエラーメッセージ"
+    "description": "描画タスクが開始に失敗した場合のエラーメッセージ"
   },
   "message.generating": {
     "message": "生成中...",
     "description": "画像が生成されているときのメッセージ"
   },
+  "message.generateFailed": {
+    "message": "画像の生成に失敗しました",
+    "description": "画像の生成に失敗した場合のメッセージ"
+  },
   "message.noOperations": {
-    "message": "利用可能な操作はありません",
+    "message": "利用可能な操作がありません",
     "description": "利用可能な操作がない場合のメッセージ"
   },
   "message.noTasks": {
@@ -277,126 +297,126 @@
   },
   "markerShape.circle": {
     "message": "円",
-    "description": "QRコードの生成に使用するマーカーの形状"
+    "description": "生成するQRコードのマーカー形状"
   },
   "markerShape.plus": {
     "message": "プラス",
-    "description": "QRコードの生成に使用するマーカーの形状"
+    "description": "生成するQRコードのマーカー形状"
   },
   "markerShape.box": {
     "message": "ボックス",
-    "description": "QRコードの生成に使用するマーカーの形状"
+    "description": "生成するQRコードのマーカー形状"
   },
   "markerShape.octagon": {
     "message": "八角形",
-    "description": "QRコードの生成に使用するマーカーの形状"
+    "description": "生成するQRコードのマーカー形状"
   },
   "markerShape.tinyPlus": {
     "message": "小さいプラス",
-    "description": "QRコードの生成に使用するマーカーの形状"
+    "description": "生成するQRコードのマーカー形状"
   },
   "markerShape.random": {
     "message": "ランダム",
-    "description": "QRコードの生成に使用するマーカーの形状"
+    "description": "生成するQRコードのマーカー形状"
   },
   "subMarker.square": {
-    "message": "四角",
-    "description": "QRコードの生成に使用するサブマーカーの形状"
+    "message": "四角形",
+    "description": "生成するQRコードのサブマーカー形状"
   },
   "subMarker.circle": {
     "message": "円",
-    "description": "QRコードの生成に使用するサブマーカーの形状"
+    "description": "生成するQRコードのサブマーカー形状"
   },
   "subMarker.plus": {
     "message": "プラス",
-    "description": "QRコードの生成に使用するサブマーカーの形状"
+    "description": "生成するQRコードのサブマーカー形状"
   },
   "subMarker.box": {
     "message": "ボックス",
-    "description": "QRコードの生成に使用するサブマーカーの形状"
+    "description": "生成するQRコードのサブマーカー形状"
   },
   "subMarker.random": {
     "message": "ランダム",
-    "description": "QRコードの生成に使用するサブマーカーの形状"
+    "description": "生成するQRコードのサブマーカー形状"
   },
   "position.center": {
     "message": "中央",
-    "description": "QRコードの生成に使用する位置"
+    "description": "生成するQRコードの位置"
   },
   "position.topLeft": {
     "message": "左上",
-    "description": "QRコードの生成に使用する位置"
+    "description": "生成するQRコードの位置"
   },
   "position.topRight": {
     "message": "右上",
-    "description": "QRコードの生成に使用する位置"
+    "description": "生成するQRコードの位置"
   },
   "position.bottomLeft": {
     "message": "左下",
-    "description": "QRコードの生成に使用する位置"
+    "description": "生成するQRコードの位置"
   },
   "position.bottomRight": {
     "message": "右下",
-    "description": "QRコードの生成に使用する位置"
+    "description": "生成するQRコードの位置"
   },
   "position.top": {
     "message": "上",
-    "description": "QRコードの生成に使用する位置"
+    "description": "生成するQRコードの位置"
   },
   "position.bottom": {
     "message": "下",
-    "description": "QRコードの生成に使用する位置"
+    "description": "生成するQRコードの位置"
   },
   "position.left": {
     "message": "左",
-    "description": "QRコードの生成に使用する位置"
+    "description": "生成するQRコードの位置"
   },
   "position.right": {
     "message": "右",
-    "description": "QRコードの生成に使用する位置"
+    "description": "生成するQRコードの位置"
   },
   "pixelStyle.row": {
     "message": "行",
-    "description": "QRコードの生成に使用するピクセルスタイル"
+    "description": "生成するQRコードのピクセルスタイル"
   },
   "pixelStyle.column": {
     "message": "列",
-    "description": "QRコードの生成に使用するピクセルスタイル"
+    "description": "生成するQRコードのピクセルスタイル"
   },
   "pixelStyle.square": {
     "message": "四角",
-    "description": "QRコードの生成に使用するピクセルスタイル"
+    "description": "生成するQRコードのピクセルスタイル"
   },
   "pixelStyle.rounded": {
     "message": "丸みを帯びた",
-    "description": "QRコードの生成に使用するピクセルスタイル"
+    "description": "生成するQRコードのピクセルスタイル"
   },
   "pixelStyle.dot": {
     "message": "ドット",
-    "description": "QRコードの生成に使用するピクセルスタイル"
+    "description": "生成するQRコードのピクセルスタイル"
   },
   "pixelStyle.squircle": {
     "message": "スクエアサークル",
-    "description": "QRコードの生成に使用するピクセルスタイル"
+    "description": "生成するQRコードのピクセルスタイル"
   },
   "type.text": {
     "message": "テキスト",
-    "description": "QRコードの生成に使用するコンテンツのタイプ"
+    "description": "生成するQRコードのコンテンツタイプ"
   },
   "type.link": {
     "message": "リンク",
-    "description": "QRコードの生成に使用するコンテンツのタイプ"
+    "description": "生成するQRコードのコンテンツタイプ"
   },
   "type.email": {
     "message": "メール",
-    "description": "QRコードの生成に使用するコンテンツのタイプ"
+    "description": "生成するQRコードのコンテンツタイプ"
   },
   "type.phone": {
     "message": "電話",
-    "description": "QRコードの生成に使用するコンテンツのタイプ"
+    "description": "生成するQRコードのコンテンツタイプ"
   },
   "type.sms": {
     "message": "SMS",
-    "description": "QRコードの生成に使用するコンテンツのタイプ"
+    "description": "生成するQRコードのコンテンツタイプ"
   }
 }

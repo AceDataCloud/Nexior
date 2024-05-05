@@ -46,6 +46,12 @@ export interface IQrartGenerateResponse {
   image_width: number;
   image_height: number;
   seed: number;
+  success: boolean;
+  trace_id: string;
+  error: {
+    code?: string;
+    message?: string;
+  };
 }
 
 export interface IQrartTask {

@@ -7,6 +7,22 @@
     "message": "Type",
     "description": "The type of content for the QR code to generate, like 'Link', 'Text', etc"
   },
+  "name.failure": {
+    "message": "Failure",
+    "description": "The failure status of the task"
+  },
+  "name.failureReason": {
+    "message": "Failure Reason",
+    "description": "The reason for the task failure"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "The status of the task"
+  },
+  "name.traceId": {
+    "message": "Trace ID",
+    "description": "The trace ID of the task"
+  },
   "name.size": {
     "message": "Size",
     "description": "The size of the QR code to generate"
@@ -262,6 +278,10 @@
   "message.generating": {
     "message": "Generating...",
     "description": "Message when the image is being generated"
+  },
+  "message.generateFailed": {
+    "message": "Failed to generate image",
+    "description": "Message when the image fails to generate"
   },
   "message.noOperations": {
     "message": "No available operations",

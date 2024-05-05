@@ -1,12 +1,30 @@
 <template>
   <div class="preview">
     <el-image
-      v-if="modelValue?.response"
+      v-if="modelValue?.response?.image_url"
       v-loading="!modelValue?.response?.image_url"
       :src="modelValue?.response?.image_url"
       fit="contain"
       class="image"
     />
+    <el-alert v-else-if="modelValue?.response?.success === false" :closable="false" class="failure">
+      <template #template>
+        <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
+        {{ $t('qrart.name.failure') }}
+      </template>
+      <p class="description">
+        <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
+        {{ $t('qrart.name.failureReason') }}:
+        {{ modelValue?.response?.error?.message }}
+        <copy-to-clipboard :content="modelValue?.response?.error?.message!" class="btn-copy" />
+      </p>
+      <p class="description">
+        <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+        {{ $t('qrart.name.traceId') }}:
+        {{ modelValue?.response?.trace_id }}
+        <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy" />
+      </p>
+    </el-alert>
     <el-image v-else class="image error">
       <template #error>
         <div class="image-slot">{{ $t('qrart.message.generating') }}</div>
@@ -20,13 +38,18 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage } from 'element-plus';
+import { ElImage, ElAlert } from 'element-plus';
 import { IQrartTask } from '@/models';
+import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default defineComponent({
   name: 'TaskPreview',
   components: {
-    ElImage
+    ElImage,
+    CopyToClipboard,
+    FontAwesomeIcon,
+    ElAlert
   },
   props: {
     modelValue: {
@@ -109,6 +132,11 @@ export default defineComponent({
       left: 50%;
       transform: translate(-50%, -50%);
     }
+  }
+  .failure {
+    background: var(--el-fill-color-light);
+    height: 220px;
+    width: 220px;
   }
 }
 </style>

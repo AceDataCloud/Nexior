@@ -12,6 +12,24 @@
               fit="contain"
               @error="onReload($event)"
             />
+            <el-alert v-else-if="task?.response?.success === false" :closable="false" class="failure">
+              <template #template>
+                <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
+                {{ $t('qrart.name.failure') }}
+              </template>
+              <p class="description">
+                <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
+                {{ $t('qrart.name.failureReason') }}:
+                {{ task?.response?.error?.message }}
+                <copy-to-clipboard :content="task?.response?.error?.message!" class="btn-copy" />
+              </p>
+              <p class="description">
+                <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+                {{ $t('qrart.name.traceId') }}:
+                {{ task?.response?.trace_id }}
+                <copy-to-clipboard :content="task?.response?.trace_id" class="btn-copy" />
+              </p>
+            </el-alert>
             <el-image v-else class="image error">
               <template #error>
                 <div class="image-slot">{{ $t('qrart.message.generating') }}</div>
@@ -68,25 +86,16 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import {
-  ElImage,
-  ElTag,
-  ElButton,
-  ElTooltip,
-  ElSkeleton,
-  ElAlert,
-  ElRow,
-  ElCol,
-  ElDescriptions,
-  ElDescriptionsItem
-} from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { ElImage, ElRow, ElCol, ElDescriptions, ElDescriptionsItem, ElAlert } from 'element-plus';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default defineComponent({
   name: 'TaskDetail',
   components: {
     ElImage,
+    ElAlert,
+    FontAwesomeIcon,
     CopyToClipboard,
     ElDescriptions,
     ElDescriptionsItem,
@@ -157,6 +166,11 @@ export default defineComponent({
       left: 50%;
       transform: translate(-50%, -50%);
     }
+  }
+  .failure {
+    background: var(--el-fill-color-light);
+    height: 100%;
+    width: 100%;
   }
 }
 </style>
