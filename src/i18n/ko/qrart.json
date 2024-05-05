@@ -7,6 +7,22 @@
     "message": "유형",
     "description": "생성할 QR 코드의 콘텐츠 유형, '링크', '텍스트' 등"
   },
+  "name.failure": {
+    "message": "실패",
+    "description": "작업의 실패 상태"
+  },
+  "name.failureReason": {
+    "message": "실패 이유",
+    "description": "작업 실패의 이유"
+  },
+  "name.status": {
+    "message": "상태",
+    "description": "작업의 상태"
+  },
+  "name.traceId": {
+    "message": "추적 ID",
+    "description": "작업의 추적 ID"
+  },
   "name.size": {
     "message": "크기",
     "description": "생성할 QR 코드의 크기"
@@ -36,8 +52,8 @@
     "description": "생성할 QR 코드의 콘텐츠"
   },
   "name.ecl": {
-    "message": "오류 정정 레벨",
-    "description": "생성할 QR 코드의 오류 정정 레벨"
+    "message": "오류 수정 레벨",
+    "description": "생성할 QR 코드의 오류 수정 레벨"
   },
   "name.position": {
     "message": "위치",
@@ -81,55 +97,55 @@
   },
   "description.qrw": {
     "message": "QR 코드 표시, 크기가 클수록 QR 코드가 더 잘 보임",
-    "description": "`qrw` 매개변수에 대한 설명"
+    "description": "매개변수 'qrw'의 설명"
   },
   "description.steps": {
     "message": "QR 코드를 생성하는 데 필요한 단계, 단계가 많을수록 QR 코드가 더 잘 보임",
-    "description": "`steps` 매개변수에 대한 설명"
+    "description": "매개변수 'steps'의 설명"
   },
   "placeholder.paddingNoise": {
     "message": "선택해주세요...",
-    "description": "패딩 노이즈 입력을 위한 플레이스홀더"
+    "description": "패딩 노이즈 입력을 위한 자리 표시자"
   },
   "placeholder.paddingLevel": {
     "message": "선택해주세요...",
-    "description": "패딩 레벨을 위한 플레이스홀더"
+    "description": "패딩 레벨을 위한 자리 표시자"
   },
   "placeholder.prompt": {
-    "message": "생성할 이미지를 설명하는 문장을 입력해주세요, 예: 귀여운 고양이",
-    "description": "프롬프트 필드의 플레이스홀더 텍스트"
+    "message": "생성하려는 이미지를 설명하는 문장을 입력해주세요, 예: 귀여운 고양이",
+    "description": "프롬프트 필드의 자리 표시자 텍스트"
   },
   "placeholder.seed": {
     "message": "1부터 9007199254740991까지의 시드를 입력해주세요",
-    "description": "시드 입력을 위한 플레이스홀더"
+    "description": "시드 입력을 위한 자리 표시자"
   },
   "placeholder.position": {
     "message": "선택해주세요...",
-    "description": "위치 입력을 위한 플레이스홀더"
+    "description": "위치 입력을 위한 자리 표시자"
   },
   "placeholder.content": {
     "message": "QR 코드의 콘텐츠를 입력해주세요",
-    "description": "콘텐츠 필드의 플레이스홀더 텍스트"
+    "description": "콘텐츠 필드의 자리 표시자 텍스트"
   },
   "placeholder.aspectRatio": {
     "message": "선택해주세요...",
-    "description": "가로세로 비율 입력을 위한 플레이스홀더"
+    "description": "가로세로 비율 입력을 위한 자리 표시자"
   },
   "placeholder.preset": {
     "message": "선택해주세요...",
-    "description": "프리셋 입력을 위한 플레이스홀더"
+    "description": "프리셋 입력을 위한 자리 표시자"
   },
   "placeholder.markerShape": {
     "message": "선택해주세요...",
-    "description": "마커 모양 입력을 위한 플레이스홀더"
+    "description": "마커 모양 입력을 위한 자리 표시자"
   },
   "placeholder.rotate": {
     "message": "선택해주세요...",
-    "description": "회전 입력을 위한 플레이스홀더"
+    "description": "회전 입력을 위한 자리 표시자"
   },
   "placeholder.subMarker": {
     "message": "선택해주세요...",
-    "description": "서브 마커 입력을 위한 플레이스홀더"
+    "description": "서브 마커 입력을 위한 자리 표시자"
   },
   "button.generate": {
     "message": "생성",
@@ -176,7 +192,7 @@
     "description": "생성할 QR 코드의 프리셋 스타일"
   },
   "preset.celestialJourney": {
-    "message": "천상의 여행",
+    "message": "천체 여행",
     "description": "생성할 QR 코드의 프리셋 스타일"
   },
   "preset.neonMech": {
@@ -216,7 +232,7 @@
     "description": "생성할 QR 코드의 프리셋 스타일"
   },
   "preset.regalGalaxy": {
-    "message": "황제의 은하",
+    "message": "황제 은하",
     "description": "생성할 QR 코드의 프리셋 스타일"
   },
   "preset.illustriousCanvas": {
@@ -232,11 +248,11 @@
     "description": "생성할 QR 코드의 프리셋 스타일"
   },
   "message.promptPlaceholder": {
-    "message": "생성할 이미지를 설명하는 문장을 입력해주세요, 예: 귀여운 고양이. 추가 매개변수는 기본 프리셋 매개변수를 덮어씁니다",
-    "description": "프롬프트 필드의 플레이스홀더 텍스트"
+    "message": "생성하려는 이미지를 설명하는 문장을 입력해주세요, 예: 귀여운 고양이. 추가 매개변수는 기본 프리셋 매개변수를 덮어씁니다",
+    "description": "프롬프트 필드의 자리 표시자 텍스트"
   },
   "message.uploadReferencesExceed": {
-    "message": "최대 5개의 이미지를 업로드할 수 있습니다",
+    "message": "최대 5개의 이미지까지 업로드할 수 있습니다",
     "description": "업로드된 이미지 수가 제한을 초과했을 때의 오류 메시지"
   },
   "message.uploadReferencesSuccess": {
@@ -263,20 +279,24 @@
     "message": "생성 중...",
     "description": "이미지가 생성 중일 때의 메시지"
   },
+  "message.generateFailed": {
+    "message": "이미지 생성 실패",
+    "description": "이미지 생성에 실패한 경우의 메시지"
+  },
   "message.noOperations": {
-    "message": "사용 가능한 작업이 없습니다",
-    "description": "사용 가능한 작업이 없을 때의 메시지"
+    "message": "사용 가능한 작업 없음",
+    "description": "사용 가능한 작업이 없는 경우의 메시지"
   },
   "message.noTasks": {
-    "message": "작업이 없습니다. 새로운 작업을 생성해주세요",
-    "description": "작업이 없을 때의 메시지"
+    "message": "작업 없음, 새 작업을 생성하세요",
+    "description": "작업이 없는 경우의 메시지"
   },
   "markerShape.square": {
     "message": "사각형",
     "description": "생성할 QR 코드의 마커 모양"
   },
   "markerShape.circle": {
-    "message": "원형",
+    "message": "원",
     "description": "생성할 QR 코드의 마커 모양"
   },
   "markerShape.plus": {
@@ -304,7 +324,7 @@
     "description": "생성할 QR 코드의 하위 마커 모양"
   },
   "subMarker.circle": {
-    "message": "원형",
+    "message": "원",
     "description": "생성할 QR 코드의 하위 마커 모양"
   },
   "subMarker.plus": {
@@ -368,7 +388,7 @@
     "description": "생성할 QR 코드의 픽셀 스타일"
   },
   "pixelStyle.rounded": {
-    "message": "둥근 모서리",
+    "message": "둥근",
     "description": "생성할 QR 코드의 픽셀 스타일"
   },
   "pixelStyle.dot": {

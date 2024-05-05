@@ -7,6 +7,22 @@
     "message": "Tipo",
     "description": "O tipo de conteúdo para o QR code a ser gerado, como 'Link', 'Texto', etc"
   },
+  "name.failure": {
+    "message": "Falha",
+    "description": "O status de falha da tarefa"
+  },
+  "name.failureReason": {
+    "message": "Motivo da Falha",
+    "description": "O motivo da falha da tarefa"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "O status da tarefa"
+  },
+  "name.traceId": {
+    "message": "ID de Rastreamento",
+    "description": "O ID de rastreamento da tarefa"
+  },
   "name.size": {
     "message": "Tamanho",
     "description": "O tamanho do QR code a ser gerado"
@@ -56,12 +72,12 @@
     "description": "As configurações avançadas para o QR code a ser gerado"
   },
   "name.aspectRatio": {
-    "message": "Proporção de Aspecto",
-    "description": "A proporção de aspecto para o QR code a ser gerado"
+    "message": "Proporção",
+    "description": "A proporção para o QR code a ser gerado"
   },
   "name.markerShape": {
-    "message": "Formato do Marcador",
-    "description": "O formato do marcador para o QR code a ser gerado"
+    "message": "Forma do Marcador",
+    "description": "A forma do marcador para o QR code a ser gerado"
   },
   "name.subMarker": {
     "message": "Sub Marcador",
@@ -113,7 +129,7 @@
   },
   "placeholder.aspectRatio": {
     "message": "Por favor, selecione...",
-    "description": "O espaço reservado para a entrada de proporção de aspecto"
+    "description": "O espaço reservado para a entrada de proporção"
   },
   "placeholder.preset": {
     "message": "Por favor, selecione...",
@@ -121,7 +137,7 @@
   },
   "placeholder.markerShape": {
     "message": "Por favor, selecione...",
-    "description": "O espaço reservado para a entrada de formato de marcador"
+    "description": "O espaço reservado para a entrada de forma do marcador"
   },
   "placeholder.rotate": {
     "message": "Por favor, selecione...",
@@ -184,7 +200,7 @@
     "description": "O estilo de predefinição para o QR code a ser gerado"
   },
   "preset.etherealLowPoly": {
-    "message": "Polígono Baixo Etéreo",
+    "message": "Poli Baixo Etéreo",
     "description": "O estilo de predefinição para o QR code a ser gerado"
   },
   "preset.goldenVista": {
@@ -228,7 +244,7 @@
     "description": "O estilo de predefinição para o QR code a ser gerado"
   },
   "preset.sereneHaze": {
-    "message": "Neblina Serena",
+    "message": "Névoa Serena",
     "description": "O estilo de predefinição para o QR code a ser gerado"
   },
   "message.promptPlaceholder": {
@@ -263,17 +279,21 @@
     "message": "Gerando...",
     "description": "Mensagem quando a imagem está sendo gerada"
   },
+  "message.generateFailed": {
+    "message": "Falha ao gerar imagem",
+    "description": "Mensagem quando a imagem falha ao gerar"
+  },
   "message.noOperations": {
     "message": "Nenhuma operação disponível",
     "description": "Mensagem quando não há operações disponíveis"
   },
   "message.noTasks": {
-    "message": "Nenhuma tarefa, por favor, crie uma nova tarefa",
+    "message": "Nenhuma tarefa, por favor crie uma nova tarefa",
     "description": "Mensagem quando não há tarefas"
   },
   "markerShape.square": {
     "message": "Quadrado",
-    "description": "O formato do marcador para o QR code a ser gerado"
+    "description": "A forma do marcador para gerar o código QR"
   },
   "markerShape.circle": {
     "message": "Círculo",

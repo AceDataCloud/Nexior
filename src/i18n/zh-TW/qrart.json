@@ -5,14 +5,30 @@
   },
   "name.type": {
     "message": "類型",
-    "description": "要生成的 QR 碼的內容類型，如 '連結'、'文字' 等"
+    "description": "要生成 QR 碼的內容類型，如 '連結'、'文字' 等"
+  },
+  "name.failure": {
+    "message": "失敗",
+    "description": "任務的失敗狀態"
+  },
+  "name.failureReason": {
+    "message": "失敗原因",
+    "description": "任務失敗的原因"
+  },
+  "name.status": {
+    "message": "狀態",
+    "description": "任務的狀態"
+  },
+  "name.traceId": {
+    "message": "追踪 ID",
+    "description": "任務的追踪 ID"
   },
   "name.size": {
-    "message": "尺寸",
-    "description": "要生成的 QR 碼的尺寸"
+    "message": "大小",
+    "description": "要生成的 QR 碼大小"
   },
   "name.createdAt": {
-    "message": "建立於",
+    "message": "建立時間",
     "description": "生成 QR 碼的日期和時間"
   },
   "name.pixelStyle": {
@@ -45,7 +61,7 @@
   },
   "name.prompt": {
     "message": "提示",
-    "description": "輸入內容的提示"
+    "description": "內容輸入的提示"
   },
   "name.rotate": {
     "message": "旋轉",
@@ -100,7 +116,7 @@
     "description": "提示欄位的佔位文字"
   },
   "placeholder.seed": {
-    "message": "種子範圍為 1 到 9007199254740991",
+    "message": "種子從 1 到 9007199254740991",
     "description": "種子輸入的佔位符"
   },
   "placeholder.position": {
@@ -192,11 +208,11 @@
     "description": "要生成的 QR 碼的預設風格"
   },
   "preset.cinematicExpanse": {
-    "message": "電影般的廣闊",
+    "message": "電影式廣闊",
     "description": "要生成的 QR 碼的預設風格"
   },
   "preset.cinematicWarm": {
-    "message": "電影般的溫暖",
+    "message": "電影式溫暖",
     "description": "要生成的 QR 碼的預設風格"
   },
   "preset.desolateWilderness": {
@@ -212,11 +228,11 @@
     "description": "要生成的 QR 碼的預設風格"
   },
   "preset.timelessCinematic": {
-    "message": "永恆的電影風",
+    "message": "永恆電影風",
     "description": "要生成的 QR 碼的預設風格"
   },
   "preset.regalGalaxy": {
-    "message": "華麗星系",
+    "message": "皇家星系",
     "description": "要生成的 QR 碼的預設風格"
   },
   "preset.illustriousCanvas": {
@@ -232,36 +248,40 @@
     "description": "要生成的 QR 碼的預設風格"
   },
   "message.promptPlaceholder": {
-    "message": "請輸入一個句子來描述您想生成的圖像，例如：一隻可愛的貓。額外的參數將覆蓋默認預設參數",
+    "message": "請輸入一個描述您想生成的圖像的句子，例如：一隻可愛的貓。額外參數將覆蓋默認預設參數",
     "description": "提示欄位的佔位文字"
   },
   "message.uploadReferencesExceed": {
     "message": "最多可上傳 5 張圖片",
-    "description": "當上傳的圖片數量超過限制時的錯誤訊息"
+    "description": "上傳的圖片數量超過限制時的錯誤訊息"
   },
   "message.uploadReferencesSuccess": {
     "message": "成功上傳圖片",
-    "description": "當圖片成功上傳時的成功訊息"
+    "description": "成功上傳圖片時的訊息"
   },
   "message.uploadReferencesError": {
     "message": "上傳圖片失敗，請稍後再試",
-    "description": "當圖片上傳失敗時的錯誤訊息"
+    "description": "圖片上傳失敗時的錯誤訊息"
   },
   "message.startingTask": {
-    "message": "正在開始任務...",
+    "message": "正在啟動任務...",
     "description": "繪製任務開始時的訊息"
   },
   "message.startTaskSuccess": {
-    "message": "成功開始繪製任務",
-    "description": "繪製任務成功開始時的成功訊息"
+    "message": "成功啟動繪製任務",
+    "description": "成功啟動繪製任務時的訊息"
   },
   "message.startTaskFailed": {
-    "message": "無法開始繪製任務",
-    "description": "繪製任務無法成功開始時的錯誤訊息"
+    "message": "啟動繪製任務失敗",
+    "description": "啟動繪製任務失敗時的錯誤訊息"
   },
   "message.generating": {
     "message": "生成中...",
     "description": "圖像正在生成時的訊息"
+  },
+  "message.generateFailed": {
+    "message": "無法生成圖像",
+    "description": "圖像生成失敗時的訊息"
   },
   "message.noOperations": {
     "message": "沒有可用的操作",
@@ -272,8 +292,8 @@
     "description": "沒有任務時的訊息"
   },
   "markerShape.square": {
-    "message": "正方形",
-    "description": "要生成的 QR 碼的標記形狀"
+    "message": "方形",
+    "description": "要生成的QR碼的標記形狀"
   },
   "markerShape.circle": {
     "message": "圓形",
@@ -301,23 +321,23 @@
   },
   "subMarker.square": {
     "message": "方形",
-    "description": "要生成的QR碼的子標記形狀"
+    "description": "要生成的QR碼的次要標記形狀"
   },
   "subMarker.circle": {
     "message": "圓形",
-    "description": "要生成的QR碼的子標記形狀"
+    "description": "要生成的QR碼的次要標記形狀"
   },
   "subMarker.plus": {
     "message": "加號",
-    "description": "要生成的QR碼的子標記形狀"
+    "description": "要生成的QR碼的次要標記形狀"
   },
   "subMarker.box": {
     "message": "方框",
-    "description": "要生成的QR碼的子標記形狀"
+    "description": "要生成的QR碼的次要標記形狀"
   },
   "subMarker.random": {
     "message": "隨機",
-    "description": "要生成的QR碼的子標記形狀"
+    "description": "要生成的QR碼的次要標記形狀"
   },
   "position.center": {
     "message": "中心",
@@ -356,11 +376,11 @@
     "description": "要生成的QR碼的位置"
   },
   "pixelStyle.row": {
-    "message": "行",
+    "message": "列",
     "description": "要生成的QR碼的像素風格"
   },
   "pixelStyle.column": {
-    "message": "列",
+    "message": "欄",
     "description": "要生成的QR碼的像素風格"
   },
   "pixelStyle.square": {
@@ -388,7 +408,7 @@
     "description": "要生成的QR碼的內容類型"
   },
   "type.email": {
-    "message": "郵件",
+    "message": "電子郵件",
     "description": "要生成的QR碼的內容類型"
   },
   "type.phone": {

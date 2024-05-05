@@ -7,6 +7,22 @@
     "message": "Tipo",
     "description": "Il tipo di contenuto per generare il codice QR, come 'Link', 'Testo', ecc."
   },
+  "name.failure": {
+    "message": "Fallimento",
+    "description": "Lo stato di fallimento dell'attività"
+  },
+  "name.failureReason": {
+    "message": "Motivo del fallimento",
+    "description": "Il motivo del fallimento dell'attività"
+  },
+  "name.status": {
+    "message": "Stato",
+    "description": "Lo stato dell'attività"
+  },
+  "name.traceId": {
+    "message": "ID traccia",
+    "description": "L'ID di tracciamento dell'attività"
+  },
   "name.size": {
     "message": "Dimensione",
     "description": "La dimensione del codice QR da generare"
@@ -64,8 +80,8 @@
     "description": "La forma del marcatore per il codice QR da generare"
   },
   "name.subMarker": {
-    "message": "Sotto-marcatore",
-    "description": "Il sotto-marcatore per il codice QR da generare"
+    "message": "Sottomarcatore",
+    "description": "Il sottomarcatore per il codice QR da generare"
   },
   "name.qrw": {
     "message": "Visibilità del codice QR",
@@ -117,11 +133,11 @@
   },
   "placeholder.preset": {
     "message": "Si prega di selezionare...",
-    "description": "Il segnaposto per l'input del preset"
+    "description": "Il segnaposto per il preset"
   },
   "placeholder.markerShape": {
     "message": "Si prega di selezionare...",
-    "description": "Il segnaposto per l'input della forma del marcatore"
+    "description": "Il segnaposto per la forma del marcatore"
   },
   "placeholder.rotate": {
     "message": "Si prega di selezionare...",
@@ -129,7 +145,7 @@
   },
   "placeholder.subMarker": {
     "message": "Si prega di selezionare...",
-    "description": "Il segnaposto per l'input del sotto-marcatore"
+    "description": "Il segnaposto per il sottomarcatore"
   },
   "button.generate": {
     "message": "Genera",
@@ -228,7 +244,7 @@
     "description": "Lo stile preset per il codice QR da generare"
   },
   "preset.sereneHaze": {
-    "message": "Foschia serena",
+    "message": "Nebbia serena",
     "description": "Lo stile preset per il codice QR da generare"
   },
   "message.promptPlaceholder": {
@@ -249,7 +265,7 @@
   },
   "message.startingTask": {
     "message": "Avvio dell'attività...",
-    "description": "Messaggio quando l'attività di disegno sta per iniziare"
+    "description": "Messaggio quando l'attività di disegno sta iniziando"
   },
   "message.startTaskSuccess": {
     "message": "Avvio dell'attività di disegno riuscito",
@@ -263,17 +279,21 @@
     "message": "Generazione...",
     "description": "Messaggio quando l'immagine viene generata"
   },
+  "message.generateFailed": {
+    "message": "Impossibile generare l'immagine",
+    "description": "Messaggio quando l'immagine non può essere generata"
+  },
   "message.noOperations": {
     "message": "Nessuna operazione disponibile",
     "description": "Messaggio quando non ci sono operazioni disponibili"
   },
   "message.noTasks": {
-    "message": "Nessuna attività, si prega di creare una nuova attività",
-    "description": "Messaggio quando non ci sono attività"
+    "message": "Nessun compito, si prega di creare un nuovo compito",
+    "description": "Messaggio quando non ci sono compiti"
   },
   "markerShape.square": {
     "message": "Quadrato",
-    "description": "La forma del marcatore per il codice QR da generare"
+    "description": "La forma del marcatore per generare il codice QR"
   },
   "markerShape.circle": {
     "message": "Cerchio",
@@ -284,7 +304,7 @@
     "description": "La forma del marcatore per generare il codice QR"
   },
   "markerShape.box": {
-    "message": "Casella",
+    "message": "Scatola",
     "description": "La forma del marcatore per generare il codice QR"
   },
   "markerShape.octagon": {
@@ -292,7 +312,7 @@
     "description": "La forma del marcatore per generare il codice QR"
   },
   "markerShape.tinyPlus": {
-    "message": "Più Piccolo",
+    "message": "Più piccolo",
     "description": "La forma del marcatore per generare il codice QR"
   },
   "markerShape.random": {
@@ -312,7 +332,7 @@
     "description": "La forma del sottomarcatore per generare il codice QR"
   },
   "subMarker.box": {
-    "message": "Casella",
+    "message": "Scatola",
     "description": "La forma del sottomarcatore per generare il codice QR"
   },
   "subMarker.random": {
@@ -324,60 +344,60 @@
     "description": "La posizione per generare il codice QR"
   },
   "position.topLeft": {
-    "message": "In Alto a Sinistra",
+    "message": "In alto a sinistra",
     "description": "La posizione per generare il codice QR"
   },
   "position.topRight": {
-    "message": "In Alto a Destra",
+    "message": "In alto a destra",
     "description": "La posizione per generare il codice QR"
   },
   "position.bottomLeft": {
-    "message": "In Basso a Sinistra",
+    "message": "In basso a sinistra",
     "description": "La posizione per generare il codice QR"
   },
   "position.bottomRight": {
-    "message": "In Basso a Destra",
+    "message": "In basso a destra",
     "description": "La posizione per generare il codice QR"
   },
   "position.top": {
-    "message": "In Alto",
+    "message": "In alto",
     "description": "La posizione per generare il codice QR"
   },
   "position.bottom": {
-    "message": "In Basso",
+    "message": "In basso",
     "description": "La posizione per generare il codice QR"
   },
   "position.left": {
-    "message": "A Sinistra",
+    "message": "A sinistra",
     "description": "La posizione per generare il codice QR"
   },
   "position.right": {
-    "message": "A Destra",
+    "message": "A destra",
     "description": "La posizione per generare il codice QR"
   },
   "pixelStyle.row": {
     "message": "Riga",
-    "description": "Lo stile del pixel per generare il codice QR"
+    "description": "Lo stile dei pixel per generare il codice QR"
   },
   "pixelStyle.column": {
     "message": "Colonna",
-    "description": "Lo stile del pixel per generare il codice QR"
+    "description": "Lo stile dei pixel per generare il codice QR"
   },
   "pixelStyle.square": {
     "message": "Quadrato",
-    "description": "Lo stile del pixel per generare il codice QR"
+    "description": "Lo stile dei pixel per generare il codice QR"
   },
   "pixelStyle.rounded": {
     "message": "Arrotondato",
-    "description": "Lo stile del pixel per generare il codice QR"
+    "description": "Lo stile dei pixel per generare il codice QR"
   },
   "pixelStyle.dot": {
     "message": "Punto",
-    "description": "Lo stile del pixel per generare il codice QR"
+    "description": "Lo stile dei pixel per generare il codice QR"
   },
   "pixelStyle.squircle": {
     "message": "Squircle",
-    "description": "Lo stile del pixel per generare il codice QR"
+    "description": "Lo stile dei pixel per generare il codice QR"
   },
   "type.text": {
     "message": "Testo",
