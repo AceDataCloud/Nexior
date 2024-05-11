@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/hub
 
-This log was last generated on Sat, 11 May 2024 10:02:39 GMT and should not be manually modified.
+This log was last generated on Sat, 11 May 2024 19:00:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.1.4
+
+Sat, 11 May 2024 19:00:48 GMT
+
+### Patches
+
+- fix image display issue for vision model (cqc@cuiqingcai.com)
 
 ## 1.1.3
 
