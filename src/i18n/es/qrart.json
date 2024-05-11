@@ -5,7 +5,23 @@
   },
   "name.type": {
     "message": "Tipo",
-    "description": "El tipo de contenido para generar el código QR, como 'Enlace', 'Texto', etc."
+    "description": "El tipo de contenido para generar el código QR, como 'Enlace', 'Texto', etc"
+  },
+  "name.failure": {
+    "message": "Fallo",
+    "description": "El estado de fallo de la tarea"
+  },
+  "name.failureReason": {
+    "message": "Motivo del fallo",
+    "description": "El motivo del fallo de la tarea"
+  },
+  "name.status": {
+    "message": "Estado",
+    "description": "El estado de la tarea"
+  },
+  "name.traceId": {
+    "message": "ID de traza",
+    "description": "El ID de traza de la tarea"
   },
   "name.size": {
     "message": "Tamaño",
@@ -117,11 +133,11 @@
   },
   "placeholder.preset": {
     "message": "Por favor seleccione...",
-    "description": "El marcador de posición para la entrada de preestablecido"
+    "description": "El marcador de posición para el preestablecido"
   },
   "placeholder.markerShape": {
     "message": "Por favor seleccione...",
-    "description": "El marcador de posición para la entrada de forma del marcador"
+    "description": "El marcador de posición para la forma del marcador"
   },
   "placeholder.rotate": {
     "message": "Por favor seleccione...",
@@ -129,7 +145,7 @@
   },
   "placeholder.subMarker": {
     "message": "Por favor seleccione...",
-    "description": "El marcador de posición para la entrada de submarcador"
+    "description": "El marcador de posición para el submarcador"
   },
   "button.generate": {
     "message": "Generar",
@@ -192,7 +208,7 @@
     "description": "El estilo preestablecido para el código QR a generar"
   },
   "preset.cinematicExpanse": {
-    "message": "Amplitud cinematográfica",
+    "message": "Expansión cinematográfica",
     "description": "El estilo preestablecido para el código QR a generar"
   },
   "preset.cinematicWarm": {
@@ -263,17 +279,21 @@
     "message": "Generando...",
     "description": "Mensaje cuando la imagen se está generando"
   },
+  "message.generateFailed": {
+    "message": "Error al generar la imagen",
+    "description": "Mensaje cuando la imagen no se puede generar"
+  },
   "message.noOperations": {
     "message": "No hay operaciones disponibles",
     "description": "Mensaje cuando no hay operaciones disponibles"
   },
   "message.noTasks": {
-    "message": "No hay tareas, por favor cree una nueva tarea",
+    "message": "No hay tareas, por favor crea una nueva tarea",
     "description": "Mensaje cuando no hay tareas"
   },
   "markerShape.square": {
     "message": "Cuadrado",
-    "description": "La forma del marcador para el código QR a generar"
+    "description": "La forma del marcador para generar el código QR"
   },
   "markerShape.circle": {
     "message": "Círculo",
@@ -292,7 +312,7 @@
     "description": "La forma del marcador para generar el código QR"
   },
   "markerShape.tinyPlus": {
-    "message": "Pequeño Más",
+    "message": "Más pequeño",
     "description": "La forma del marcador para generar el código QR"
   },
   "markerShape.random": {
@@ -324,19 +344,19 @@
     "description": "La posición para generar el código QR"
   },
   "position.topLeft": {
-    "message": "Arriba a la Izquierda",
+    "message": "Arriba a la izquierda",
     "description": "La posición para generar el código QR"
   },
   "position.topRight": {
-    "message": "Arriba a la Derecha",
+    "message": "Arriba a la derecha",
     "description": "La posición para generar el código QR"
   },
   "position.bottomLeft": {
-    "message": "Abajo a la Izquierda",
+    "message": "Abajo a la izquierda",
     "description": "La posición para generar el código QR"
   },
   "position.bottomRight": {
-    "message": "Abajo a la Derecha",
+    "message": "Abajo a la derecha",
     "description": "La posición para generar el código QR"
   },
   "position.top": {

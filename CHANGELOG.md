@@ -1,8 +1,24 @@
 # Change Log - @acedatacloud/hub
 
-This log was last generated on Fri, 03 May 2024 10:01:48 GMT and should not be manually modified.
+This log was last generated on Sat, 11 May 2024 09:40:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.1.2
+
+Sat, 11 May 2024 09:40:27 GMT
+
+### Patches
+
+- align across site for theme and locale (cqc@cuiqingcai.com)
+
+## 1.1.1
+
+Sun, 05 May 2024 06:16:02 GMT
+
+### Patches
+
+- fix custom style of qrart (cqc@cuiqingcai.com)
 
 ## 1.1.0
 

@@ -5,7 +5,23 @@
   },
   "name.type": {
     "message": "Tip",
-    "description": "Vrsta sadržaja za generisanje QR koda, kao što su 'Link', 'Tekst', itd."
+    "description": "Vrsta sadržaja za generisanje QR koda, kao što su 'Link', 'Tekst', itd"
+  },
+  "name.failure": {
+    "message": "Neuspeh",
+    "description": "Status neuspeha zadatka"
+  },
+  "name.failureReason": {
+    "message": "Razlog neuspeha",
+    "description": "Razlog neuspeha zadatka"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Status zadatka"
+  },
+  "name.traceId": {
+    "message": "ID traga",
+    "description": "ID traga zadatka"
   },
   "name.size": {
     "message": "Veličina",
@@ -144,7 +160,7 @@
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.snowflakes": {
-    "message": "Pahuljice snega",
+    "message": "Pahulje snega",
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.feathers": {
@@ -160,7 +176,7 @@
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.epicRealms": {
-    "message": "Epohalni svetovi",
+    "message": "Epski svetovi",
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.intricateStudio": {
@@ -184,7 +200,7 @@
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.etherealLowPoly": {
-    "message": "Eterični niskopoligonalni",
+    "message": "Eterični low poly",
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.goldenVista": {
@@ -192,15 +208,15 @@
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.cinematicExpanse": {
-    "message": "Kinematografsko prostranstvo",
+    "message": "Cinematografsko prostranstvo",
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.cinematicWarm": {
-    "message": "Toplo kinematografsko",
+    "message": "Cinematografska toplina",
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.desolateWilderness": {
-    "message": "Pusto divlje",
+    "message": "Pusto prostranstvo",
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.vibrantPalette": {
@@ -212,7 +228,7 @@
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.timelessCinematic": {
-    "message": "Vremenski kinematografski",
+    "message": "Vremenski cinematično",
     "description": "Podešavanje stila za generisanje QR koda"
   },
   "preset.regalGalaxy": {
@@ -244,7 +260,7 @@
     "description": "Poruka o uspehu kada se slike uspešno učitaju"
   },
   "message.uploadReferencesError": {
-    "message": "Neuspešno učitavanje slika, molimo pokušajte kasnije",
+    "message": "Neuspeh učitavanja slika, molimo pokušajte ponovo kasnije",
     "description": "Poruka o grešci kada slike ne uspeju da se učitaju"
   },
   "message.startingTask": {
@@ -256,12 +272,16 @@
     "description": "Poruka o uspehu kada se zadatak crtanja uspešno pokrene"
   },
   "message.startTaskFailed": {
-    "message": "Neuspešno pokretanje zadatka crtanja",
-    "description": "Poruka o grešci kada se zadatak crtanja ne uspešno pokrene"
+    "message": "Neuspeh pokretanja zadatka crtanja",
+    "description": "Poruka o grešci kada zadatak crtanja ne uspe da se pokrene"
   },
   "message.generating": {
     "message": "Generisanje...",
     "description": "Poruka kada se slika generiše"
+  },
+  "message.generateFailed": {
+    "message": "Neuspešno generisanje slike",
+    "description": "Poruka kada generisanje slike ne uspe"
   },
   "message.noOperations": {
     "message": "Nema dostupnih operacija",

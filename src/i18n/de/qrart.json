@@ -7,6 +7,22 @@
     "message": "Typ",
     "description": "Der Inhaltstyp für den zu generierenden QR-Code, wie 'Link', 'Text' usw."
   },
+  "name.failure": {
+    "message": "Fehler",
+    "description": "Der Fehlerstatus der Aufgabe"
+  },
+  "name.failureReason": {
+    "message": "Fehlergrund",
+    "description": "Der Grund für das Aufgabenversagen"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Der Status der Aufgabe"
+  },
+  "name.traceId": {
+    "message": "Spur-ID",
+    "description": "Die Spur-ID der Aufgabe"
+  },
   "name.size": {
     "message": "Größe",
     "description": "Die Größe des zu generierenden QR-Codes"
@@ -68,7 +84,7 @@
     "description": "Der Untermarker für den zu generierenden QR-Code"
   },
   "name.qrw": {
-    "message": "Sichtbarkeit des QR-Codes",
+    "message": "QR-Code-Sichtbarkeit",
     "description": "Der Name des QR-Code-Generators"
   },
   "name.steps": {
@@ -81,11 +97,11 @@
   },
   "description.qrw": {
     "message": "Die Sichtbarkeit des QR-Codes, je größer die Größe, desto sichtbarer wird der QR-Code sein",
-    "description": "Die Beschreibung des Parameters 'qrw'"
+    "description": "Die Beschreibung des Parameters `qrw`"
   },
   "description.steps": {
     "message": "Die Schritte zur Generierung des QR-Codes, je mehr Schritte, desto sichtbarer wird der QR-Code sein",
-    "description": "Die Beschreibung des Parameters 'steps'"
+    "description": "Die Beschreibung des Parameters `steps`"
   },
   "placeholder.paddingNoise": {
     "message": "Bitte auswählen...",
@@ -113,7 +129,7 @@
   },
   "placeholder.aspectRatio": {
     "message": "Bitte auswählen...",
-    "description": "Der Platzhalter für die Seitenverhältniseingabe"
+    "description": "Der Platzhalter für die Eingabe des Seitenverhältnisses"
   },
   "placeholder.preset": {
     "message": "Bitte auswählen...",
@@ -121,7 +137,7 @@
   },
   "placeholder.markerShape": {
     "message": "Bitte auswählen...",
-    "description": "Der Platzhalter für die Markerform-Eingabe"
+    "description": "Der Platzhalter für die Eingabe der Markerform"
   },
   "placeholder.rotate": {
     "message": "Bitte auswählen...",
@@ -129,7 +145,7 @@
   },
   "placeholder.subMarker": {
     "message": "Bitte auswählen...",
-    "description": "Der Platzhalter für die Untermarker-Eingabe"
+    "description": "Der Platzhalter für die Eingabe des Untermarkers"
   },
   "button.generate": {
     "message": "Generieren",
@@ -212,7 +228,7 @@
     "description": "Der Voreinstellungsstil für den zu generierenden QR-Code"
   },
   "preset.timelessCinematic": {
-    "message": "Zeitlose Kinematik",
+    "message": "Zeitlose Filmische",
     "description": "Der Voreinstellungsstil für den zu generierenden QR-Code"
   },
   "preset.regalGalaxy": {
@@ -245,7 +261,7 @@
   },
   "message.uploadReferencesError": {
     "message": "Fehler beim Hochladen der Bilder, bitte versuchen Sie es später erneut",
-    "description": "Fehlermeldung, wenn Bilder nicht hochgeladen werden konnten"
+    "description": "Fehlermeldung, wenn das Hochladen von Bildern fehlschlägt"
   },
   "message.startingTask": {
     "message": "Aufgabe wird gestartet...",
@@ -257,11 +273,15 @@
   },
   "message.startTaskFailed": {
     "message": "Fehler beim Starten der Zeichenaufgabe",
-    "description": "Fehlermeldung, wenn die Zeichenaufgabe nicht gestartet werden konnte"
+    "description": "Fehlermeldung, wenn die Zeichenaufgabe nicht gestartet werden kann"
   },
   "message.generating": {
     "message": "Generieren...",
     "description": "Nachricht, wenn das Bild generiert wird"
+  },
+  "message.generateFailed": {
+    "message": "Fehler beim Generieren des Bildes",
+    "description": "Nachricht, wenn das Bild nicht generiert werden kann"
   },
   "message.noOperations": {
     "message": "Keine verfügbaren Operationen",

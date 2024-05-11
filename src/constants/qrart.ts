@@ -1,10 +1,10 @@
 export const QRART_SERVICE_ID = '38ecf158-36f2-42f2-8e7f-6786cdfc2452';
 
-export const QRART_DEFAULT_QRW = 1.5;
-export const QRART_DEFAULT_STEPS = 16;
+export const QRART_DEFAULT_QRW = 2;
+export const QRART_DEFAULT_STEPS = 20;
 export const QRART_DEFAULT_PRESET = '';
-export const QRART_DEFAULT_TYPE = 'link';
-export const QRART_DEFAULT_RATIO = '1:1';
+export const QRART_DEFAULT_TYPE = 'text';
+export const QRART_DEFAULT_ASPECT_RATIO = '1:1';
 export const QRART_DEFAULT_ADVANCED = false;
 export const QRART_DEFAULT_RAWURL = true;
 export const QRART_DEFAULT_PADDING_LEVEL = 5;

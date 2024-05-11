@@ -15,39 +15,43 @@ import copyToClipboard from 'copy-to-clipboard';
 import { initializeCookies, initializeFavicon, initializeTitle } from './utils/initializer';
 import config from './plugins/config';
 
-initializeCookies();
-initializeTitle();
-initializeFavicon();
+const main = async () => {
+  await initializeCookies();
+  await initializeTitle();
+  await initializeFavicon();
 
-const app = createApp(App);
+  const app = createApp(App);
 
-app.use(router);
-app.use(store);
-app.use(i18n);
-app.use(dayjs, {
-  formatString: 'YYYY-MM-DD HH:mm:ss'
-});
-app.use(config);
-app.directive('loading', vLoading);
-app.mount('#app');
-console.debug('app mounted');
-
-app.directive('highlight', async (el) => {
-  const blocks = el.querySelectorAll('pre code');
-  blocks.forEach((block: HTMLPreElement) => {
-    // create the copy button
-    const copy = document.createElement('button');
-    copy.innerHTML = i18n.global.t('common.button.copy').toString();
-    // add the event listener to each click
-    copy.addEventListener('click', () => {
-      copyToClipboard(block.innerText);
-    });
-    // append the copy button to each code block
-    block.parentElement?.prepend(copy);
-    hl.highlightBlock(block);
+  app.use(router);
+  app.use(store);
+  app.use(i18n);
+  app.use(dayjs, {
+    formatString: 'YYYY-MM-DD HH:mm:ss'
   });
-});
+  app.use(config);
+  app.directive('loading', vLoading);
+  app.mount('#app');
+  console.debug('app mounted');
 
-// make app available globally
-// @ts-ignore
-window.app = app;
+  app.directive('highlight', async (el) => {
+    const blocks = el.querySelectorAll('pre code');
+    blocks.forEach((block: HTMLPreElement) => {
+      // create the copy button
+      const copy = document.createElement('button');
+      copy.innerHTML = i18n.global.t('common.button.copy').toString();
+      // add the event listener to each click
+      copy.addEventListener('click', () => {
+        copyToClipboard(block.innerText);
+      });
+      // append the copy button to each code block
+      block.parentElement?.prepend(copy);
+      hl.highlightBlock(block);
+    });
+  });
+
+  // make app available globally
+  // @ts-ignore
+  window.app = app;
+};
+
+main();
