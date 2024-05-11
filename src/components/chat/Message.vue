@@ -11,7 +11,7 @@
       <markdown-renderer v-if="!Array.isArray(message.content)" :content="message?.content" />
       <div v-else>
         <div v-for="(item, index) in message.content" :key="index">
-          <img v-if="item.type === 'image_url'" :src="item.image_url" fit="cover" class="image" />
+          <img v-if="item.type === 'image_url'" :src="item.image_url?.url" fit="cover" class="image" />
           <markdown-renderer v-if="item.type === 'text'" :key="index" :content="item.text" />
         </div>
       </div>
