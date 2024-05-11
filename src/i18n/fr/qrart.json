@@ -1,11 +1,27 @@
 {
   "name.taskId": {
     "message": "ID de la tâche",
-    "description": "L'identifiant de la tâche"
+    "description": "L'ID de la tâche"
   },
   "name.type": {
     "message": "Type",
     "description": "Le type de contenu pour générer le code QR, comme 'Lien', 'Texte', etc"
+  },
+  "name.failure": {
+    "message": "Échec",
+    "description": "Le statut d'échec de la tâche"
+  },
+  "name.failureReason": {
+    "message": "Raison de l'échec",
+    "description": "La raison de l'échec de la tâche"
+  },
+  "name.status": {
+    "message": "Statut",
+    "description": "Le statut de la tâche"
+  },
+  "name.traceId": {
+    "message": "ID de trace",
+    "description": "L'ID de trace de la tâche"
   },
   "name.size": {
     "message": "Taille",
@@ -200,7 +216,7 @@
     "description": "Le style prédéfini pour le code QR à générer"
   },
   "preset.desolateWilderness": {
-    "message": "Désert désolé",
+    "message": "Désert sauvage",
     "description": "Le style prédéfini pour le code QR à générer"
   },
   "preset.vibrantPalette": {
@@ -263,17 +279,21 @@
     "message": "Génération en cours...",
     "description": "Message lorsque l'image est en cours de génération"
   },
+  "message.generateFailed": {
+    "message": "Échec de la génération de l'image",
+    "description": "Message lorsque la génération de l'image échoue"
+  },
   "message.noOperations": {
     "message": "Aucune opération disponible",
-    "description": "Message lorsqu'il n'y a aucune opération disponible"
+    "description": "Message lorsqu'il n'y a pas d'opérations disponibles"
   },
   "message.noTasks": {
     "message": "Aucune tâche, veuillez créer une nouvelle tâche",
-    "description": "Message lorsqu'il n'y a aucune tâche"
+    "description": "Message lorsqu'il n'y a pas de tâches"
   },
   "markerShape.square": {
     "message": "Carré",
-    "description": "La forme du marqueur pour le code QR à générer"
+    "description": "La forme du marqueur pour générer le code QR"
   },
   "markerShape.circle": {
     "message": "Cercle",
@@ -301,23 +321,23 @@
   },
   "subMarker.square": {
     "message": "Carré",
-    "description": "La forme du sous-marqueur pour générer le code QR"
+    "description": "La sous-forme du marqueur pour générer le code QR"
   },
   "subMarker.circle": {
     "message": "Cercle",
-    "description": "La forme du sous-marqueur pour générer le code QR"
+    "description": "La sous-forme du marqueur pour générer le code QR"
   },
   "subMarker.plus": {
     "message": "Plus",
-    "description": "La forme du sous-marqueur pour générer le code QR"
+    "description": "La sous-forme du marqueur pour générer le code QR"
   },
   "subMarker.box": {
     "message": "Boîte",
-    "description": "La forme du sous-marqueur pour générer le code QR"
+    "description": "La sous-forme du marqueur pour générer le code QR"
   },
   "subMarker.random": {
     "message": "Aléatoire",
-    "description": "La forme du sous-marqueur pour générer le code QR"
+    "description": "La sous-forme du marqueur pour générer le code QR"
   },
   "position.center": {
     "message": "Centre",

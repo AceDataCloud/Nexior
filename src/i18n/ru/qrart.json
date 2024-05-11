@@ -7,6 +7,22 @@
     "message": "Тип",
     "description": "Тип содержимого для генерации QR-кода, например 'Ссылка', 'Текст' и т. д."
   },
+  "name.failure": {
+    "message": "Ошибка",
+    "description": "Статус ошибки задачи"
+  },
+  "name.failureReason": {
+    "message": "Причина ошибки",
+    "description": "Причина ошибки задачи"
+  },
+  "name.status": {
+    "message": "Статус",
+    "description": "Статус задачи"
+  },
+  "name.traceId": {
+    "message": "Идентификатор трассировки",
+    "description": "Идентификатор трассировки задачи"
+  },
   "name.size": {
     "message": "Размер",
     "description": "Размер генерируемого QR-кода"
@@ -52,8 +68,8 @@
     "description": "Поворот для генерации QR-кода"
   },
   "name.advanced": {
-    "message": "Дополнительно",
-    "description": "Дополнительные настройки для генерации QR-кода"
+    "message": "Расширенный",
+    "description": "Расширенные настройки для генерации QR-кода"
   },
   "name.aspectRatio": {
     "message": "Соотношение сторон",
@@ -96,7 +112,7 @@
     "description": "Заполнитель для уровня заполнения"
   },
   "placeholder.prompt": {
-    "message": "Введите предложение, описывающее изображение, которое вы хотите сгенерировать",
+    "message": "Введите предложение, описывающее QR-код, который вы хотите сгенерировать",
     "description": "Текст заполнителя в поле подсказки"
   },
   "placeholder.seed": {
@@ -140,7 +156,7 @@
     "description": "Предустановленный стиль для генерации QR-кода"
   },
   "preset.floral": {
-    "message": "Флора",
+    "message": "Цветочный",
     "description": "Предустановленный стиль для генерации QR-кода"
   },
   "preset.snowflakes": {
@@ -164,7 +180,7 @@
     "description": "Предустановленный стиль для генерации QR-кода"
   },
   "preset.intricateStudio": {
-    "message": "Запутанная студия",
+    "message": "Запутанный студио",
     "description": "Предустановленный стиль для генерации QR-кода"
   },
   "preset.symmetricMasterpiece": {
@@ -252,7 +268,7 @@
     "description": "Сообщение о запуске задачи на рисование"
   },
   "message.startTaskSuccess": {
-    "message": "Задача на рисование успешно запущена",
+    "message": "Задача по рисованию успешно запущена",
     "description": "Сообщение об успешном запуске задачи на рисование"
   },
   "message.startTaskFailed": {
@@ -262,6 +278,10 @@
   "message.generating": {
     "message": "Генерация...",
     "description": "Сообщение о генерации изображения"
+  },
+  "message.generateFailed": {
+    "message": "Не удалось сгенерировать изображение",
+    "description": "Сообщение, когда не удается сгенерировать изображение"
   },
   "message.noOperations": {
     "message": "Нет доступных операций",
@@ -284,7 +304,7 @@
     "description": "Форма маркера для генерации QR-кода"
   },
   "markerShape.box": {
-    "message": "Квадрат",
+    "message": "Прямоугольник",
     "description": "Форма маркера для генерации QR-кода"
   },
   "markerShape.octagon": {
@@ -312,7 +332,7 @@
     "description": "Форма подмаркера для генерации QR-кода"
   },
   "subMarker.box": {
-    "message": "Квадрат",
+    "message": "Прямоугольник",
     "description": "Форма подмаркера для генерации QR-кода"
   },
   "subMarker.random": {

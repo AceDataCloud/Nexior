@@ -5,7 +5,23 @@
   },
   "name.type": {
     "message": "Typ",
-    "description": "Innehållets typ för att generera QR-koden, som 'Länk', 'Text', etc"
+    "description": "Innehålletstyp för att generera QR-koden, som 'Länk', 'Text', etc"
+  },
+  "name.failure": {
+    "message": "Misslyckande",
+    "description": "Uppgiftens misslyckandestatus"
+  },
+  "name.failureReason": {
+    "message": "Misslyckande Orsak",
+    "description": "Orsaken till uppgiftens misslyckande"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Uppgiftens status"
+  },
+  "name.traceId": {
+    "message": "Spår-ID",
+    "description": "Uppgiftens spårnings-ID"
   },
   "name.size": {
     "message": "Storlek",
@@ -16,20 +32,20 @@
     "description": "Datum och tid då QR-koden genererades"
   },
   "name.pixelStyle": {
-    "message": "Pixelform",
-    "description": "Pixelformen för QR-koden att generera"
+    "message": "Pixlarstil",
+    "description": "Pixlarstil för QR-koden att generera"
   },
   "name.seed": {
     "message": "Frö",
-    "description": "Fröet för QR-koden att generera"
+    "description": "Frö för QR-koden att generera"
   },
   "name.paddingLevel": {
     "message": "Fyllnadsnivå",
-    "description": "Fyllnadsnivån för QR-koden att generera"
+    "description": "Fyllnadsnivå för QR-koden att generera"
   },
   "name.paddingNoise": {
     "message": "Fyllnadsbrus",
-    "description": "Fyllnadsbruset för QR-koden att generera"
+    "description": "Fyllnadsbrus för QR-koden att generera"
   },
   "name.content": {
     "message": "Innehåll",
@@ -37,7 +53,7 @@
   },
   "name.ecl": {
     "message": "Felkorrektionsnivå",
-    "description": "Felkorrektionsnivån för QR-koden att generera"
+    "description": "Felkorrektionsnivå för QR-koden att generera"
   },
   "name.position": {
     "message": "Position",
@@ -45,30 +61,30 @@
   },
   "name.prompt": {
     "message": "Instruktion",
-    "description": "Instruktionen för innehållsinmatningen"
+    "description": "Instruktion för innehållsinmatning"
   },
   "name.rotate": {
     "message": "Rotera",
-    "description": "Rotationen för QR-koden att generera"
+    "description": "Rotation för QR-koden att generera"
   },
   "name.advanced": {
     "message": "Avancerat",
-    "description": "De avancerade inställningarna för QR-koden att generera"
+    "description": "Avancerade inställningar för QR-koden att generera"
   },
   "name.aspectRatio": {
     "message": "Aspektförhållande",
     "description": "Aspektförhållandet för QR-koden att generera"
   },
   "name.markerShape": {
-    "message": "Markörsform",
-    "description": "Markörens form för QR-koden att generera"
+    "message": "Markörform",
+    "description": "Markörform för QR-koden att generera"
   },
   "name.subMarker": {
     "message": "Undermarkör",
-    "description": "Undermarkören för QR-koden att generera"
+    "description": "Undermarkör för QR-koden att generera"
   },
   "name.qrw": {
-    "message": "QR-kodens synlighet",
+    "message": "QR-kod synlighet",
     "description": "Namnet på QR-kodsgeneratorn"
   },
   "name.steps": {
@@ -80,20 +96,20 @@
     "description": "Förinställningen för QR-koden att generera"
   },
   "description.qrw": {
-    "message": "QR-kodens synlighet, ju större storlek desto mer synlig blir QR-koden",
-    "description": "Beskrivningen av parametern 'qrw'"
+    "message": "QR-kodens synlighet, ju större storlek, desto mer synlig blir QR-koden",
+    "description": "Beskrivning av parametern 'qrw'"
   },
   "description.steps": {
-    "message": "Stegen för att generera QR-koden, ju fler steg desto mer synlig blir QR-koden",
-    "description": "Beskrivningen av parametern 'steps'"
+    "message": "Stegen för att generera QR-koden, ju fler steg, desto mer synlig blir QR-koden",
+    "description": "Beskrivning av parametern 'steg'"
   },
   "placeholder.paddingNoise": {
     "message": "Vänligen välj...",
-    "description": "Platshållartext för fyllnadsbrusinmatningen"
+    "description": "Platshållartext för fyllnadsbrusinmatning"
   },
   "placeholder.paddingLevel": {
     "message": "Vänligen välj...",
-    "description": "Platshållartext för fyllnadsnivån"
+    "description": "Platshållartext för fyllnadsnivå"
   },
   "placeholder.prompt": {
     "message": "Ange en mening för att beskriva den QR-kod du vill generera",
@@ -101,11 +117,11 @@
   },
   "placeholder.seed": {
     "message": "Frö från 1 till 9007199254740991",
-    "description": "Platshållartext för fröinmatningen"
+    "description": "Platshållartext för fröinmatning"
   },
   "placeholder.position": {
     "message": "Vänligen välj...",
-    "description": "Platshållartext för positionen"
+    "description": "Platshållartext för positionsinmatning"
   },
   "placeholder.content": {
     "message": "Ange innehållet för QR-koden",
@@ -113,23 +129,23 @@
   },
   "placeholder.aspectRatio": {
     "message": "Vänligen välj...",
-    "description": "Platshållartext för aspektförhållandet"
+    "description": "Platshållartext för aspektförhållandeinmatning"
   },
   "placeholder.preset": {
     "message": "Vänligen välj...",
-    "description": "Platshållartext för förinställningen"
+    "description": "Platshållartext för förinställningsinmatning"
   },
   "placeholder.markerShape": {
     "message": "Vänligen välj...",
-    "description": "Platshållartext för markörsformen"
+    "description": "Platshållartext för markörforminmatning"
   },
   "placeholder.rotate": {
     "message": "Vänligen välj...",
-    "description": "Platshållartext för rotationsinmatningen"
+    "description": "Platshållartext för roterainmatning"
   },
   "placeholder.subMarker": {
     "message": "Vänligen välj...",
-    "description": "Platshållartext för undermarkörsinmatningen"
+    "description": "Platshållartext för undermarkörsinmatning"
   },
   "button.generate": {
     "message": "Generera",
@@ -137,99 +153,99 @@
   },
   "preset.sunset": {
     "message": "Solnedgång",
-    "description": "Förinställningen för QR-koden att generera"
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.floral": {
     "message": "Blommig",
-    "description": "Förinställningen för QR-koden att generera"
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.snowflakes": {
     "message": "Snöflingor",
-    "description": "Förinställningen för QR-koden att generera"
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.feathers": {
     "message": "Fjädrar",
-    "description": "Förinställningen för QR-koden att generera"
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.raindrops": {
     "message": "Regndroppar",
-    "description": "Förinställningen för QR-koden att generera"
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.ultraRealism": {
-    "message": "Ultra realism",
-    "description": "Förinställningen för QR-koden att generera"
+    "message": "Ultra Realism",
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.epicRealms": {
-    "message": "Episka riken",
-    "description": "Förinställningen för QR-koden att generera"
+    "message": "Episka Riken",
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.intricateStudio": {
-    "message": "Intrikat studio",
-    "description": "Förinställningen för QR-koden att generera"
+    "message": "Intrikat Studio",
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.symmetricMasterpiece": {
-    "message": "Symmetriskt mästerverk",
-    "description": "Förinställningen för QR-koden att generera"
+    "message": "Symmetriskt Mästerverk",
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.luminousHighway": {
-    "message": "Lysande motorväg",
-    "description": "Förinställningen för QR-koden att generera"
+    "message": "Lysande Motorväg",
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.celestialJourney": {
-    "message": "Himmelsk resa",
-    "description": "Förinställningen för QR-koden att generera"
+    "message": "Himmelsk Resa",
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.neonMech": {
     "message": "Neonmek",
-    "description": "Förinställningen för QR-koden att generera"
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.etherealLowPoly": {
-    "message": "Eterisk låg poly",
-    "description": "Förinställningen för QR-koden att generera"
+    "message": "Eterisk Låg Poly",
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.goldenVista": {
-    "message": "Gyllene vy",
-    "description": "Förinställningen för QR-koden att generera"
+    "message": "Gyllene Utsikt",
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.cinematicExpanse": {
-    "message": "Filmisk vidsträckt",
-    "description": "Förinställningen för QR-koden att generera"
+    "message": "Filmisk Utvidgning",
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.cinematicWarm": {
-    "message": "Filmisk varm",
-    "description": "Förinställningen för QR-koden att generera"
+    "message": "Filmisk Värme",
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.desolateWilderness": {
-    "message": "Öde vildmark",
-    "description": "Förinställningen för QR-koden att generera"
+    "message": "Öde Vildmark",
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.vibrantPalette": {
-    "message": "Livfull palett",
-    "description": "Förinställningen för QR-koden att generera"
+    "message": "Livlig Palett",
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.enigmaticJourney": {
-    "message": "Gåtfull resa",
-    "description": "Förinställningen för QR-koden att generera"
+    "message": "Gåtfull Resa",
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.timelessCinematic": {
-    "message": "Tidlös filmisk",
-    "description": "Förinställningen för QR-koden att generera"
+    "message": "Tidlös Filmisk",
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.regalGalaxy": {
-    "message": "Kunglig galax",
-    "description": "Förinställningen för QR-koden att generera"
+    "message": "Kunglig Galax",
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.illustriousCanvas": {
-    "message": "Berömd duk",
-    "description": "Förinställningen för QR-koden att generera"
+    "message": "Berömd Kanvas",
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.expressiveMural": {
-    "message": "Uttrycksfull mural",
-    "description": "Förinställningen för QR-koden att generera"
+    "message": "Uttrycksfull Målning",
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "preset.sereneHaze": {
-    "message": "Fridfull dimma",
-    "description": "Förinställningen för QR-koden att generera"
+    "message": "Fridfull Dimma",
+    "description": "Förinställd stil för QR-koden att generera"
   },
   "message.promptPlaceholder": {
     "message": "Vänligen ange en mening för att beskriva bilden du vill generera, till exempel: en söt katt. Ytterligare parametrar kommer att åsidosätta standardförinställningsparametrar",
@@ -244,11 +260,11 @@
     "description": "Lyckat meddelande när bilderna har laddats upp framgångsrikt"
   },
   "message.uploadReferencesError": {
-    "message": "Misslyckades med att ladda upp bilder, försök igen senare",
-    "description": "Felmeddelande när bilderna misslyckas med att laddas upp"
+    "message": "Misslyckades att ladda upp bilder, försök igen senare",
+    "description": "Felmeddelande när bilderna misslyckas att laddas upp"
   },
   "message.startingTask": {
-    "message": "Startar uppgiften...",
+    "message": "Startar uppgift...",
     "description": "Meddelande när ritningsuppgiften startar"
   },
   "message.startTaskSuccess": {
@@ -256,147 +272,151 @@
     "description": "Lyckat meddelande när ritningsuppgiften har startats framgångsrikt"
   },
   "message.startTaskFailed": {
-    "message": "Misslyckades med att starta ritningsuppgiften",
-    "description": "Felmeddelande när ritningsuppgiften misslyckas med att starta"
+    "message": "Misslyckades att starta ritningsuppgiften",
+    "description": "Felmeddelande när ritningsuppgiften misslyckas att starta"
   },
   "message.generating": {
     "message": "Genererar...",
     "description": "Meddelande när bilden genereras"
+  },
+  "message.generateFailed": {
+    "message": "Misslyckades med att generera bild",
+    "description": "Meddelande när bilden misslyckas med att generera"
   },
   "message.noOperations": {
     "message": "Inga tillgängliga operationer",
     "description": "Meddelande när det inte finns några tillgängliga operationer"
   },
   "message.noTasks": {
-    "message": "Inga uppgifter, vänligen skapa en ny uppgift",
+    "message": "Inga uppgifter, skapa en ny uppgift",
     "description": "Meddelande när det inte finns några uppgifter"
   },
   "markerShape.square": {
     "message": "Fyrkant",
-    "description": "Markörens form för QR-koden att generera"
+    "description": "Märkformen för QR-koden att generera"
   },
   "markerShape.circle": {
     "message": "Cirkel",
-    "description": "Markörens form för att generera QR-koden"
+    "description": "Märkformen för QR-koden att generera"
   },
   "markerShape.plus": {
     "message": "Plus",
-    "description": "Markörens form för att generera QR-koden"
+    "description": "Märkformen för QR-koden att generera"
   },
   "markerShape.box": {
     "message": "Låda",
-    "description": "Markörens form för att generera QR-koden"
+    "description": "Märkformen för QR-koden att generera"
   },
   "markerShape.octagon": {
     "message": "Åttkant",
-    "description": "Markörens form för att generera QR-koden"
+    "description": "Märkformen för QR-koden att generera"
   },
   "markerShape.tinyPlus": {
-    "message": "Liten Plus",
-    "description": "Markörens form för att generera QR-koden"
+    "message": "Liten plus",
+    "description": "Märkformen för QR-koden att generera"
   },
   "markerShape.random": {
     "message": "Slumpmässig",
-    "description": "Markörens form för att generera QR-koden"
+    "description": "Märkformen för QR-koden att generera"
   },
   "subMarker.square": {
     "message": "Fyrkant",
-    "description": "Undermarkörens form för att generera QR-koden"
+    "description": "Undermärkformen för QR-koden att generera"
   },
   "subMarker.circle": {
     "message": "Cirkel",
-    "description": "Undermarkörens form för att generera QR-koden"
+    "description": "Undermärkformen för QR-koden att generera"
   },
   "subMarker.plus": {
     "message": "Plus",
-    "description": "Undermarkörens form för att generera QR-koden"
+    "description": "Undermärkformen för QR-koden att generera"
   },
   "subMarker.box": {
     "message": "Låda",
-    "description": "Undermarkörens form för att generera QR-koden"
+    "description": "Undermärkformen för QR-koden att generera"
   },
   "subMarker.random": {
     "message": "Slumpmässig",
-    "description": "Undermarkörens form för att generera QR-koden"
+    "description": "Undermärkformen för QR-koden att generera"
   },
   "position.center": {
     "message": "Mitten",
-    "description": "Positionen för att generera QR-koden"
+    "description": "Positionen för QR-koden att generera"
   },
   "position.topLeft": {
     "message": "Övre vänster",
-    "description": "Positionen för att generera QR-koden"
+    "description": "Positionen för QR-koden att generera"
   },
   "position.topRight": {
     "message": "Övre höger",
-    "description": "Positionen för att generera QR-koden"
+    "description": "Positionen för QR-koden att generera"
   },
   "position.bottomLeft": {
     "message": "Nedre vänster",
-    "description": "Positionen för att generera QR-koden"
+    "description": "Positionen för QR-koden att generera"
   },
   "position.bottomRight": {
     "message": "Nedre höger",
-    "description": "Positionen för att generera QR-koden"
+    "description": "Positionen för QR-koden att generera"
   },
   "position.top": {
     "message": "Övre",
-    "description": "Positionen för att generera QR-koden"
+    "description": "Positionen för QR-koden att generera"
   },
   "position.bottom": {
     "message": "Nedre",
-    "description": "Positionen för att generera QR-koden"
+    "description": "Positionen för QR-koden att generera"
   },
   "position.left": {
     "message": "Vänster",
-    "description": "Positionen för att generera QR-koden"
+    "description": "Positionen för QR-koden att generera"
   },
   "position.right": {
     "message": "Höger",
-    "description": "Positionen för att generera QR-koden"
+    "description": "Positionen för QR-koden att generera"
   },
   "pixelStyle.row": {
     "message": "Rad",
-    "description": "Pixelformen för att generera QR-koden"
+    "description": "Pixelformen för QR-koden att generera"
   },
   "pixelStyle.column": {
     "message": "Kolumn",
-    "description": "Pixelformen för att generera QR-koden"
+    "description": "Pixelformen för QR-koden att generera"
   },
   "pixelStyle.square": {
     "message": "Fyrkant",
-    "description": "Pixelformen för att generera QR-koden"
+    "description": "Pixelformen för QR-koden att generera"
   },
   "pixelStyle.rounded": {
     "message": "Avrundad",
-    "description": "Pixelformen för att generera QR-koden"
+    "description": "Pixelformen för QR-koden att generera"
   },
   "pixelStyle.dot": {
     "message": "Punkt",
-    "description": "Pixelformen för att generera QR-koden"
+    "description": "Pixelformen för QR-koden att generera"
   },
   "pixelStyle.squircle": {
-    "message": "Kvadratisk rund",
-    "description": "Pixelformen för att generera QR-koden"
+    "message": "Squircle",
+    "description": "Pixelformen för QR-koden att generera"
   },
   "type.text": {
     "message": "Text",
-    "description": "Typen av innehåll för att generera QR-koden"
+    "description": "Typen av innehåll för QR-koden att generera"
   },
   "type.link": {
     "message": "Länk",
-    "description": "Typen av innehåll för att generera QR-koden"
+    "description": "Typen av innehåll för QR-koden att generera"
   },
   "type.email": {
     "message": "E-post",
-    "description": "Typen av innehåll för att generera QR-koden"
+    "description": "Typen av innehåll för QR-koden att generera"
   },
   "type.phone": {
     "message": "Telefon",
-    "description": "Typen av innehåll för att generera QR-koden"
+    "description": "Typen av innehåll för QR-koden att generera"
   },
   "type.sms": {
     "message": "SMS",
-    "description": "Typen av innehåll för att generera QR-koden"
+    "description": "Typen av innehåll för QR-koden att generera"
   }
 }

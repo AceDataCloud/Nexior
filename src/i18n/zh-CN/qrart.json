@@ -7,6 +7,22 @@
     "message": "类型",
     "description": "要生成的 QR 码的内容类型，如'链接'、'文本'等"
   },
+  "name.failure": {
+    "message": "失败",
+    "description": "任务的失败状态"
+  },
+  "name.failureReason": {
+    "message": "失败原因",
+    "description": "任务失败的原因"
+  },
+  "name.status": {
+    "message": "状态",
+    "description": "任务的状态"
+  },
+  "name.traceId": {
+    "message": "追踪 ID",
+    "description": "任务的追踪 ID"
+  },
   "name.size": {
     "message": "尺寸",
     "description": "要生成的 QR 码的尺寸"
@@ -248,23 +264,27 @@
     "description": "图片上传失败时的错误消息"
   },
   "message.startingTask": {
-    "message": "正在开始任务...",
+    "message": "正在启动任务...",
     "description": "绘图任务开始时的消息"
   },
   "message.startTaskSuccess": {
-    "message": "成功开始绘图任务",
-    "description": "成功开始绘图任务时的成功消息"
+    "message": "成功启动绘图任务",
+    "description": "成功启动绘图任务时的成功消息"
   },
   "message.startTaskFailed": {
-    "message": "无法开始绘图任务",
-    "description": "绘图任务无法开始时的错误消息"
+    "message": "启动绘图任务失败",
+    "description": "启动绘图任务失败时的错误消息"
   },
   "message.generating": {
     "message": "生成中...",
     "description": "图像正在生成时的消息"
   },
+  "message.generateFailed": {
+    "message": "生成图像失败",
+    "description": "图像生成失败时的消息"
+  },
   "message.noOperations": {
-    "message": "无可用操作",
+    "message": "没有可用操作",
     "description": "没有可用操作时的消息"
   },
   "message.noTasks": {
@@ -273,130 +293,130 @@
   },
   "markerShape.square": {
     "message": "正方形",
-    "description": "要生成的 QR 码的标记形状"
+    "description": "用于生成QR码的标记形状"
   },
   "markerShape.circle": {
     "message": "圆形",
-    "description": "要生成的QR码的标记形状"
+    "description": "用于生成QR码的标记形状"
   },
   "markerShape.plus": {
     "message": "加号",
-    "description": "要生成的QR码的标记形状"
+    "description": "用于生成QR码的标记形状"
   },
   "markerShape.box": {
     "message": "方框",
-    "description": "要生成的QR码的标记形状"
+    "description": "用于生成QR码的标记形状"
   },
   "markerShape.octagon": {
     "message": "八边形",
-    "description": "要生成的QR码的标记形状"
+    "description": "用于生成QR码的标记形状"
   },
   "markerShape.tinyPlus": {
     "message": "微加号",
-    "description": "要生成的QR码的标记形状"
+    "description": "用于生成QR码的标记形状"
   },
   "markerShape.random": {
     "message": "随机",
-    "description": "要生成的QR码的标记形状"
+    "description": "用于生成QR码的标记形状"
   },
   "subMarker.square": {
     "message": "正方形",
-    "description": "要生成的QR码的子标记形状"
+    "description": "用于生成QR码的子标记形状"
   },
   "subMarker.circle": {
     "message": "圆形",
-    "description": "要生成的QR码的子标记形状"
+    "description": "用于生成QR码的子标记形状"
   },
   "subMarker.plus": {
     "message": "加号",
-    "description": "要生成的QR码的子标记形状"
+    "description": "用于生成QR码的子标记形状"
   },
   "subMarker.box": {
     "message": "方框",
-    "description": "要生成的QR码的子标记形状"
+    "description": "用于生成QR码的子标记形状"
   },
   "subMarker.random": {
     "message": "随机",
-    "description": "要生成的QR码的子标记形状"
+    "description": "用于生成QR码的子标记形状"
   },
   "position.center": {
     "message": "中心",
-    "description": "要生成的QR码的位置"
+    "description": "用于生成QR码的位置"
   },
   "position.topLeft": {
     "message": "左上",
-    "description": "要生成的QR码的位置"
+    "description": "用于生成QR码的位置"
   },
   "position.topRight": {
     "message": "右上",
-    "description": "要生成的QR码的位置"
+    "description": "用于生成QR码的位置"
   },
   "position.bottomLeft": {
     "message": "左下",
-    "description": "要生成的QR码的位置"
+    "description": "用于生成QR码的位置"
   },
   "position.bottomRight": {
     "message": "右下",
-    "description": "要生成的QR码的位置"
+    "description": "用于生成QR码的位置"
   },
   "position.top": {
     "message": "顶部",
-    "description": "要生成的QR码的位置"
+    "description": "用于生成QR码的位置"
   },
   "position.bottom": {
     "message": "底部",
-    "description": "要生成的QR码的位置"
+    "description": "用于生成QR码的位置"
   },
   "position.left": {
     "message": "左侧",
-    "description": "要生成的QR码的位置"
+    "description": "用于生成QR码的位置"
   },
   "position.right": {
     "message": "右侧",
-    "description": "要生成的QR码的位置"
+    "description": "用于生成QR码的位置"
   },
   "pixelStyle.row": {
     "message": "行",
-    "description": "要生成的QR码的像素风格"
+    "description": "用于生成QR码的像素风格"
   },
   "pixelStyle.column": {
     "message": "列",
-    "description": "要生成的QR码的像素风格"
+    "description": "用于生成QR码的像素风格"
   },
   "pixelStyle.square": {
-    "message": "方形",
-    "description": "要生成的QR码的像素风格"
+    "message": "正方形",
+    "description": "用于生成QR码的像素风格"
   },
   "pixelStyle.rounded": {
     "message": "圆角",
-    "description": "要生成的QR码的像素风格"
+    "description": "用于生成QR码的像素风格"
   },
   "pixelStyle.dot": {
     "message": "点",
-    "description": "要生成的QR码的像素风格"
+    "description": "用于生成QR码的像素风格"
   },
   "pixelStyle.squircle": {
     "message": "圆角矩形",
-    "description": "要生成的QR码的像素风格"
+    "description": "用于生成QR码的像素风格"
   },
   "type.text": {
     "message": "文本",
-    "description": "要生成的QR码的内容类型"
+    "description": "用于生成QR码的内容类型"
   },
   "type.link": {
     "message": "链接",
-    "description": "要生成的QR码的内容类型"
+    "description": "用于生成QR码的内容类型"
   },
   "type.email": {
     "message": "邮件",
-    "description": "要生成的QR码的内容类型"
+    "description": "用于生成QR码的内容类型"
   },
   "type.phone": {
     "message": "电话",
-    "description": "要生成的QR码的内容类型"
+    "description": "用于生成QR码的内容类型"
   },
   "type.sms": {
     "message": "短信",
-    "description": "要生成的QR码的内容类型"
+    "description": "用于生成QR码的内容类型"
   }
 }

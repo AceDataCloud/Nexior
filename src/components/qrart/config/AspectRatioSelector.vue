@@ -21,7 +21,7 @@
 
 <script>
 import { defineComponent } from 'vue';
-import { QRART_DEFAULT_RATIO } from '@/constants';
+import { QRART_DEFAULT_ASPECT_RATIO } from '@/constants';
 
 export default defineComponent({
   name: 'AspectRatioSelector',
@@ -80,7 +80,7 @@ export default defineComponent({
   },
   mounted() {
     if (!this.value) {
-      this.value = QRART_DEFAULT_RATIO;
+      this.value = QRART_DEFAULT_ASPECT_RATIO;
     }
   }
 });
