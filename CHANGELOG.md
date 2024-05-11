@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/hub
 
-This log was last generated on Sat, 11 May 2024 09:40:27 GMT and should not be manually modified.
+This log was last generated on Sat, 11 May 2024 10:02:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.1.3
+
+Sat, 11 May 2024 10:02:39 GMT
+
+### Patches
+
+- fix logo dark theme (cqc@cuiqingcai.com)
 
 ## 1.1.2
 
