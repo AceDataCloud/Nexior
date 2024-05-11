@@ -22,8 +22,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElDropdown, ElDropdownItem, ElDropdownMenu, ElButton } from 'element-plus';
+import { ElDropdown, ElDropdownItem, ElDropdownMenu } from 'element-plus';
 import { SUPPORTED_LOCALES, setI18nLanguage } from '@/i18n';
+import { setCookie } from 'typescript-cookie';
+import { getDomain } from '@/utils/initializer';
 
 export default defineComponent({
   name: 'LocaleSelector',
@@ -39,9 +41,17 @@ export default defineComponent({
   },
   methods: {
     async onSelectLocale(locale: string) {
+      // change router
+      this.$router.push({ query: { ...this.$route.query, locale: undefined } });
       await setI18nLanguage(locale);
-      this.$store.dispatch('setLocale', locale);
+      this.setCookie(locale);
       window.location.reload();
+    },
+    setCookie(locale: string) {
+      setCookie('LOCALE', locale, {
+        path: '/',
+        domain: getDomain()
+      });
     }
   }
 });

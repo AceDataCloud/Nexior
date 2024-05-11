@@ -8,14 +8,6 @@ export const setUser = (state: IRootState, payload: IUser): void => {
   };
 };
 
-export const setLocale = (state: IRootState, payload: string): void => {
-  state.locale = payload;
-};
-
-export const setDark = (state: IRootState, payload: boolean): void => {
-  state.dark = payload;
-};
-
 export const setToken = (state: IRootState, payload: any): void => {
   state.token = {
     ...state.token,
@@ -43,11 +35,9 @@ export const setSetting = (state: IRootState, payload: any): void => {
 };
 
 export default {
-  setLocale,
   setUser,
   resetUser,
   setToken,
-  setDark,
   resetToken,
   setSetting,
   resetSetting

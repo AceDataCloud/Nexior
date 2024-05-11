@@ -8,8 +8,8 @@ import chatdoc from './chatdoc';
 import qrart from './qrart';
 
 import { ROUTE_CHAT_CONVERSATION_NEW, ROUTE_INDEX } from './constants';
-import store from '@/store';
 import { DEFAULT_LOCALE, setI18nLanguage } from '@/i18n';
+import { getCookie } from 'typescript-cookie';
 
 const routes = [
   {
@@ -34,7 +34,7 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
-  const locale = store.state.locale || DEFAULT_LOCALE;
+  const locale = getCookie('LOCALE') || DEFAULT_LOCALE;
   await setI18nLanguage(locale);
   return next();
 });

@@ -12,8 +12,6 @@ export interface ICommonState {
   token: IToken;
   user?: IUser;
   setting?: ISetting;
-  locale: string;
-  dark: boolean;
 }
 
 export interface IRootState extends ICommonState {
