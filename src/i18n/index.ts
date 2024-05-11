@@ -47,8 +47,8 @@ export const loadLocalResource = async (name: string, locale: string) => {
   }
 };
 
-export const getLocale = (): string => {
-  const canonicalLang = Intl.getCanonicalLocales(navigator.language)?.[0];
+export const getLocale = (lang?: string): string => {
+  const canonicalLang = Intl.getCanonicalLocales(lang || navigator.language)?.[0];
   const supportedLocales = SUPPORTED_LOCALES.map((locale) => locale.value);
   // if the canonical language is supported, use it
   if (canonicalLang && supportedLocales.includes(canonicalLang)) {

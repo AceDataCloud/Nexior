@@ -10,6 +10,8 @@ import { defineComponent } from 'vue';
 import { toggleDark } from 'vue-dark-switch';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ElButton } from 'element-plus';
+import { getCookie, setCookie } from 'typescript-cookie';
+import { getDomain } from '@/utils/initializer';
 
 export default defineComponent({
   components: {
@@ -19,20 +21,13 @@ export default defineComponent({
   emits: ['update:dark'],
   computed: {
     dark() {
-      return this.$store.getters.dark;
+      return getCookie('THEME') === 'dark';
     }
-    // switchValue() {
-    //   return isDark.value;
-    // }
   },
   watch: {
     dark(val) {
       this.setDark(val);
     }
-    // switchValue(val) {
-    //   console.log('switchValue', val);
-    //   // this.$store.dispatch('setDark', val);
-    // }
   },
   mounted() {
     console.log('mounted', this.dark);
@@ -41,12 +36,18 @@ export default defineComponent({
   methods: {
     setDark(flag: boolean) {
       toggleDark(flag);
-      this.$store.dispatch('setDark', flag);
+      this.setCookie(flag);
       if (flag === true) {
         document.documentElement.classList.add('dark');
       } else if (flag === false) {
         document.documentElement.classList.remove('dark');
       }
+    },
+    setCookie(isDark: boolean) {
+      setCookie('THEME', isDark ? 'dark' : 'light', {
+        path: '/',
+        domain: getDomain()
+      });
     }
   }
 });
