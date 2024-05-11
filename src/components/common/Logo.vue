@@ -3,6 +3,7 @@
 </template>
 
 <script lang="ts">
+import { getCookie } from 'typescript-cookie';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
@@ -15,7 +16,7 @@ export default defineComponent({
   },
   computed: {
     dark() {
-      return this.$store.getters.dark;
+      return getCookie('THEME') === 'dark';
     },
     url() {
       return this.dark ? this.url2 : this.url1;
