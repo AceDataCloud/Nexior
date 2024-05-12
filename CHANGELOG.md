@@ -1,4 +1,4 @@
-# Change Log - @acedatacloud/hub
+# Change Log - @acedatacloud/nexior
 
 This log was last generated on Sun, 12 May 2024 03:07:35 GMT and should not be manually modified.
 
@@ -10,7 +10,7 @@ Sun, 12 May 2024 03:07:35 GMT
 
 ### Patches
 
-- fix conversations reverse (cqc@cuiqingcai.com)
+- fix conversations reverse (germey@acedata.cloud)
 
 ## 1.1.4
 
@@ -18,7 +18,7 @@ Sat, 11 May 2024 19:00:48 GMT
 
 ### Patches
 
-- fix image display issue for vision model (cqc@cuiqingcai.com)
+- fix image display issue for vision model (germey@acedata.cloud)
 
 ## 1.1.3
 
@@ -26,7 +26,7 @@ Sat, 11 May 2024 10:02:39 GMT
 
 ### Patches
 
-- fix logo dark theme (cqc@cuiqingcai.com)
+- fix logo dark theme (germey@acedata.cloud)
 
 ## 1.1.2
 
@@ -34,7 +34,7 @@ Sat, 11 May 2024 09:40:27 GMT
 
 ### Patches
 
-- align across site for theme and locale (cqc@cuiqingcai.com)
+- align across site for theme and locale (germey@acedata.cloud)
 
 ## 1.1.1
 
@@ -42,7 +42,7 @@ Sun, 05 May 2024 06:16:02 GMT
 
 ### Patches
 
-- fix custom style of qrart (cqc@cuiqingcai.com)
+- fix custom style of qrart (germey@acedata.cloud)
 
 ## 1.1.0
 
@@ -66,7 +66,7 @@ Sun, 28 Apr 2024 13:33:01 GMT
 
 ### Major changes
 
-- Add Qrart support (cqc@cuiqingcai.com)
+- Add Qrart support (germey@acedata.cloud)
 
 ## 0.20.2
 
@@ -74,7 +74,7 @@ Mon, 22 Apr 2024 15:47:56 GMT
 
 ### Patches
 
-- remove unnecessary records (cqc@cuiqingcai.com)
+- remove unnecessary records (germey@acedata.cloud)
 
 ## 0.20.1
 
@@ -82,7 +82,7 @@ Mon, 22 Apr 2024 05:05:03 GMT
 
 ### Patches
 
-- fix progress display for mj (cqc@cuiqingcai.com)
+- fix progress display for mj (germey@acedata.cloud)
 
 ## 0.20.0
 
@@ -106,7 +106,7 @@ Sat, 20 Apr 2024 17:27:50 GMT
 
 ### Patches
 
-- fix conversation display issue (cqc@cuiqingcai.com)
+- fix conversation display issue (germey@acedata.cloud)
 
 ## 0.18.1
 
@@ -114,7 +114,7 @@ Tue, 16 Apr 2024 18:39:16 GMT
 
 ### Patches
 
-- fix bug of applying (cqc@cuiqingcai.com)
+- fix bug of applying (germey@acedata.cloud)
 
 ## 0.18.0
 
@@ -122,7 +122,7 @@ Sun, 14 Apr 2024 17:24:51 GMT
 
 ### Minor changes
 
-- add support for renew credentials (cqc@cuiqingcai.com)
+- add support for renew credentials (germey@acedata.cloud)
 
 ## 0.17.6
 
@@ -130,7 +130,7 @@ Sat, 13 Apr 2024 16:31:12 GMT
 
 ### Patches
 
-- fix apply dialog display (cqc@cuiqingcai.com)
+- fix apply dialog display (germey@acedata.cloud)
 
 ## 0.17.5
 
@@ -154,7 +154,7 @@ Sat, 06 Apr 2024 13:52:35 GMT
 
 ### Patches
 
-- fix error json parse for chat (cqc@cuiqingcai.com)
+- fix error json parse for chat (germey@acedata.cloud)
 
 ## 0.17.2
 
@@ -162,7 +162,7 @@ Sat, 06 Apr 2024 10:06:57 GMT
 
 ### Patches
 
-- fix style bugs (cqc@cuiqingcai.com)
+- fix style bugs (germey@acedata.cloud)
 
 ## 0.17.1
 
@@ -170,7 +170,7 @@ Sat, 06 Apr 2024 07:11:07 GMT
 
 ### Patches
 
-- update translations (cqc@cuiqingcai.com)
+- update translations (germey@acedata.cloud)
 
 ## 0.17.0
 
@@ -178,7 +178,7 @@ Sat, 06 Apr 2024 06:59:17 GMT
 
 ### Minor changes
 
-- add dark mode switch (cqc@cuiqingcai.com)
+- add dark mode switch (germey@acedata.cloud)
 
 ## 0.16.2
 
@@ -186,7 +186,7 @@ Sat, 06 Apr 2024 05:28:44 GMT
 
 ### Patches
 
-- fix chatdoc create issue (cqc@cuiqingcai.com)
+- fix chatdoc create issue (germey@acedata.cloud)
 
 ## 0.16.1
 
@@ -202,7 +202,7 @@ Thu, 04 Apr 2024 18:13:26 GMT
 
 ### Minor changes
 
-- add dark mode support (cqc@cuiqingcai.com)
+- add dark mode support (germey@acedata.cloud)
 
 ## 0.15.1
 
@@ -218,20 +218,20 @@ Mon, 25 Mar 2024 15:25:10 GMT
 
 ### Minor changes
 
-- add i18n support (cqc@cuiqingcai.com)
-- add localization support (cqc@cuiqingcai.com)
+- add i18n support (germey@acedata.cloud)
+- add localization support (germey@acedata.cloud)
 
 ### Patches
 
-- bump version manually (cqc@cuiqingcai.com)
-- migrate to new architecture (cqc@cuiqingcai.com)
+- bump version manually (germey@acedata.cloud)
+- migrate to new architecture (germey@acedata.cloud)
 - fix chatdoc issues (germey@acedata.cloud)
-- bump version manually (cqc@cuiqingcai.com)
-- fix experience bugs (cqc@cuiqingcai.com)
+- bump version manually (germey@acedata.cloud)
+- fix experience bugs (germey@acedata.cloud)
 - add test i18n files (germey@acedata.cloud)
-- update translations files (cqc@cuiqingcai.com)
+- update translations files (germey@acedata.cloud)
 - fix translate issues (germey@acedata.cloud)
-- update i18n files (cqc@cuiqingcai.com)
+- update i18n files (germey@acedata.cloud)
 - update i18n files (germey@acedata.cloud)
 
 ## 1.0.1
@@ -256,7 +256,7 @@ Sun, 21 Jan 2024 03:37:14 GMT
 
 ### Patches
 
-- add docs for docker deploy (cqc@cuiqingcai.com)
+- add docs for docker deploy (germey@acedata.cloud)
 
 ## 0.12.1
 
@@ -376,7 +376,7 @@ Wed, 03 Jan 2024 08:41:15 GMT
 
 ### Minor changes
 
-- update onboarding experience  (germey@acedata.cloud)
+- update onboarding experience (germey@acedata.cloud)
 
 ## 0.8.4
 
