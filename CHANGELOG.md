@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/hub
 
-This log was last generated on Sat, 11 May 2024 19:00:48 GMT and should not be manually modified.
+This log was last generated on Sun, 12 May 2024 03:07:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.1.5
+
+Sun, 12 May 2024 03:07:35 GMT
+
+### Patches
+
+- fix conversations reverse (cqc@cuiqingcai.com)
 
 ## 1.1.4
 
