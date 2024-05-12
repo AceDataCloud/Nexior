@@ -267,8 +267,6 @@ export const getConversations = async (
       token
     })
   ).data.items;
-  // reverse the order of conversations
-  conversations.reverse();
   log(getConversations, 'get conversations success', conversations);
   commit('setRepository', {
     id: payload.repositoryId,
