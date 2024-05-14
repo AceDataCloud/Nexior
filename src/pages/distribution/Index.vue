@@ -318,7 +318,8 @@ export default defineComponent({
     },
     async onFetchDistributionLevels() {
       const { data } = await distributionLevelOperator.getAll({
-        limit: 20
+        limit: 20,
+        user_id: this.$store.getters.user.id
       });
       this.distributionLevels = data.items;
     },
