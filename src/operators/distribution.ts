@@ -47,6 +47,7 @@ class DistributionStatusService {
 export const distributionStatusOperator = new DistributionStatusService();
 
 export interface IDistributionLevelQuery {
+  user_id?: string;
   limit?: number;
 }
 
