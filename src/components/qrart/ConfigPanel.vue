@@ -9,15 +9,15 @@
       <steps-selector class="mb-4" />
       <preset-selector class="mb-4" />
       <advanced-selector class="mb-4" />
-      <seed-input v-if="config.advanced" class="mb-4" />
-      <position-selector v-if="config.advanced" class="mb-4" />
-      <pixel-style-selector v-if="config.advanced" class="mb-4" />
-      <marker-shape-selector v-if="config.advanced" class="mb-4" />
-      <sub-marker-selector v-if="config.advanced" class="mb-4" />
-      <rotate-selector v-if="config.advanced" class="mb-4" />
-      <ecl-selector v-if="config.advanced" class="mb-4" />
-      <padding-level-selector v-if="config.advanced" class="mb-4" />
-      <padding-noise-selector v-if="config.advanced" class="mb-4" />
+      <seed-input v-if="config?.advanced" class="mb-4" />
+      <position-selector v-if="config?.advanced" class="mb-4" />
+      <pixel-style-selector v-if="config?.advanced" class="mb-4" />
+      <marker-shape-selector v-if="config?.advanced" class="mb-4" />
+      <sub-marker-selector v-if="config?.advanced" class="mb-4" />
+      <rotate-selector v-if="config?.advanced" class="mb-4" />
+      <ecl-selector v-if="config?.advanced" class="mb-4" />
+      <padding-level-selector v-if="config?.advanced" class="mb-4" />
+      <padding-noise-selector v-if="config?.advanced" class="mb-4" />
     </div>
     <div class="actions">
       <el-button type="primary" class="btn" round @click="onGenerate">

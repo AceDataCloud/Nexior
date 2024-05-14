@@ -18,12 +18,12 @@ export default defineComponent({
   computed: {
     value: {
       get() {
-        return this.$store.state.qrart.config?.advanced;
+        return this.$store.state.qrart?.config?.advanced;
       },
       set(val) {
         console.debug('set advanced', val);
         this.$store.commit('qrart/setConfig', {
-          ...this.$store.state.qrart.config,
+          ...this.$store.state.qrart?.config,
           advanced: val
         });
       }
