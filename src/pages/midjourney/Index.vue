@@ -124,41 +124,41 @@ export default defineComponent({
       if (this.elements.length > 0) {
         content += ',' + this.elements.join(',');
       }
-      if (this.preset.model && !content.includes(`--${this.preset.model}`)) {
+      if (this.preset?.model && !content.includes(`--${this.preset.model}`)) {
         content += ` --${this.preset.model}`;
       }
-      if (this.preset.version && !content.includes(`--version `) && !content.includes(`--v `)) {
+      if (this.preset?.version && !content.includes(`--version `) && !content.includes(`--v `)) {
         content += ` --version ${this.preset.version}`;
       }
-      if (this.preset.chaos && this.preset.advanced && !content.includes(`--chaos `)) {
+      if (this.preset?.chaos && this.preset?.advanced && !content.includes(`--chaos `)) {
         content += ` --chaos ${this.preset.chaos}`;
       }
-      if (this.preset.quality && !content.includes(`--quality `) && !content.includes(`--q `)) {
+      if (this.preset?.quality && !content.includes(`--quality `) && !content.includes(`--q `)) {
         content += ` --quality ${this.preset.quality}`;
       }
       if (
-        this.preset.ratio &&
+        this.preset?.ratio &&
         !content.includes(`--aspect `) &&
         !content.includes(`--ar `) &&
-        this.preset.ratio !== MIDJOURNEY_DEFAULT_RATIO
+        this.preset?.ratio !== MIDJOURNEY_DEFAULT_RATIO
       ) {
         content += ` --aspect ${this.preset.ratio}`;
       }
       if (
-        this.preset.stylize &&
+        this.preset?.stylize &&
         !content.includes(`--stylize `) &&
         !content.includes(`--s `) &&
-        this.preset.advanced &&
-        this.preset.stylize !== MIDJOURNEY_DEFAULT_STYLIZE
+        this.preset?.advanced &&
+        this.preset?.stylize !== MIDJOURNEY_DEFAULT_STYLIZE
       ) {
-        content += ` --stylize ${this.preset.stylize}`;
+        content += ` --stylize ${this.preset?.stylize}`;
       }
       if (
-        this.preset.weird &&
+        this.preset?.weird &&
         !content.includes(`--weird `) &&
         !content.includes(`--w `) &&
-        this.preset.advanced &&
-        this.preset.weird !== MIDJOURNEY_DEFAULT_WIRED
+        this.preset?.advanced &&
+        this.preset?.weird !== MIDJOURNEY_DEFAULT_WIRED
       ) {
         content += ` --weird ${this.preset.weird}`;
       }
@@ -166,15 +166,15 @@ export default defineComponent({
         content += ` --no ${this.ignore}`;
       }
       if (
-        this.preset.iw &&
+        this.preset?.iw &&
         !content.includes(`--iw `) &&
-        this.preset.advanced &&
-        this.preset.iw !== MIDJOURNEY_DEFAULT_IMAGE_WEIGHT
+        this.preset?.advanced &&
+        this.preset?.iw !== MIDJOURNEY_DEFAULT_IMAGE_WEIGHT
       ) {
         content += ` --iw ${this.preset.iw}`;
       }
-      if (this.preset.style && this.preset.advanced && !content.includes(`--style`)) {
-        content += ` --style ${this.preset.style}`;
+      if (this.preset?.style && this.preset?.advanced && !content.includes(`--style`)) {
+        content += ` --style ${this.preset?.style}`;
       }
       return this.prompt || this.references?.length > 0 ? content : '';
     }
