@@ -8,7 +8,6 @@
 <script>
 import { defineComponent } from 'vue';
 import { ElSwitch } from 'element-plus';
-import { QRART_DEFAULT_ADVANCED } from '@/constants';
 
 export default defineComponent({
   name: 'RawurlSelector',
@@ -18,12 +17,12 @@ export default defineComponent({
   computed: {
     value: {
       get() {
-        return this.$store.state.qrart.config?.rawurl;
+        return this.$store.state.qrart?.config?.rawurl;
       },
       set(val) {
         console.debug('set rawurl', val);
         this.$store.commit('qrart/setConfig', {
-          ...this.$store.state.qrart.config,
+          ...this.$store.state.qrart?.config,
           rawurl: val
         });
       }
