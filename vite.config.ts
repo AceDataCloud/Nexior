@@ -53,7 +53,18 @@ export default defineConfig((config: ConfigEnv) => {
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
-              const modules = ['@vue', 'element-plus', 'axios', 'highlight.js'];
+              const modules = [
+                '@vue',
+                'element-plus',
+                'axios',
+                'highlight.js',
+                'mustache',
+                'markdown',
+                'fortawesome',
+                'qrcode',
+                'vue-dark-switch',
+                'chart.js'
+              ];
               const chunk = modules.find((module) => id.includes(module));
               return chunk ? `vendor-${chunk}` : 'vendor-others';
             }
