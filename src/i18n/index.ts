@@ -84,9 +84,12 @@ export const loadLocaleMessages = async (i18n: I18n, locale: string) => {
     'chatdoc'
   ];
 
+  const promises = names.map((name) => loadLocalResource(name, locale));
+  const resources = await Promise.all(promises);
+
   const messages: any = {};
-  for (const name of names) {
-    const resource = await loadLocalResource(name, locale);
+  names.forEach((name, index) => {
+    const resource = resources[index];
     console.log('resource', resource);
     for (const key in resource) {
       if (resource.hasOwnProperty(key)) {
@@ -94,7 +97,7 @@ export const loadLocaleMessages = async (i18n: I18n, locale: string) => {
         messages[`${name}.${key}`] = element.message;
       }
     }
-  }
+  });
 
   // set locale and locale message
   i18n.global.setLocaleMessage(locale, messages);
