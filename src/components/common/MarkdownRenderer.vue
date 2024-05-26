@@ -5,9 +5,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import VueMarkdown from './VueMarkdown.vue';
+import { highlight } from '@/utils';
+import 'highlight.js/styles/night-owl.css';
 
 export default defineComponent({
   name: 'ApiCode',
+  directives: {
+    highlight
+  },
   components: {
     VueMarkdown
   },
