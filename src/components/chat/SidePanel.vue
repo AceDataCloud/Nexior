@@ -118,10 +118,16 @@ export default defineComponent({
       ) as Record<string, IChatConversation[]>;
       // sort every group by `updated_at` field.
       return {
-        today: groups?.today?.sort((a, b) => b.updated_at - a.updated_at),
-        yesterday: groups?.yesterday?.sort((a, b) => b.updated_at - a.updated_at),
-        thisWeek: groups?.thisWeek?.sort((a, b) => b.updated_at - a.updated_at),
-        earlier: groups?.earlier?.sort((a, b) => b.updated_at - a.updated_at)
+        ...(groups?.today?.length > 0 ? { today: groups?.today?.sort((a, b) => b.updated_at - a.updated_at) } : {}),
+        ...(groups?.yesterday?.length > 0
+          ? { yesterday: groups?.yesterday?.sort((a, b) => b.updated_at - a.updated_at) }
+          : {}),
+        ...(groups?.thisWeek?.length > 0
+          ? { thisWeek: groups?.thisWeek?.sort((a, b) => b.updated_at - a.updated_at) }
+          : {}),
+        ...(groups?.earlier?.length > 0
+          ? { earlier: groups?.earlier?.sort((a, b) => b.updated_at - a.updated_at) }
+          : {})
       };
     },
     application() {

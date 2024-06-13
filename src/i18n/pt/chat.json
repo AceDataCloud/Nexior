@@ -4,7 +4,7 @@
     "description": "Nome do modelo do serviço, que é GPT 3.5 Básico"
   },
   "model.35StandardDescription": {
-    "message": "Modelo básico que pode responder a perguntas simples e fornecer informações gerais.",
+    "message": "Ótimo para tarefas do dia-a-dia.",
     "description": "Descrição do modelo 3.5 Padrão"
   },
   "model.35Browsing": {
@@ -12,7 +12,7 @@
     "description": "Nome do modelo do serviço, que é GPT 3.5 Navegação"
   },
   "model.35BrowsingDescription": {
-    "message": "Pode recuperar informações em tempo real da web e fornecer respostas mais básicas.",
+    "message": "Pode recuperar informações em tempo real.",
     "description": "Descrição do modelo 3.5 Navegação"
   },
   "model.4Standard": {
@@ -20,7 +20,7 @@
     "description": "Nome do modelo do serviço, que é GPT 4.0 Padrão"
   },
   "model.4StandardDescription": {
-    "message": "Modelo mais poderoso que pode responder a perguntas mais complexas.",
+    "message": "Modelo mais poderoso para tarefas complexas.",
     "description": "Descrição do modelo 4.0 Padrão"
   },
   "model.4Browsing": {
@@ -28,7 +28,7 @@
     "description": "Nome do modelo do serviço, que é GPT 4.0 Navegação"
   },
   "model.4BrowsingDescription": {
-    "message": "Pode recuperar informações em tempo real para fornecer mais respostas com base no modelo 4.0 Padrão.",
+    "message": "Poderoso e pode recuperar informações em tempo real.",
     "description": "Descrição do modelo 4.0 Navegação"
   },
   "model.4Vision": {
@@ -36,128 +36,108 @@
     "description": "Nome do modelo do serviço, que é GPT 4.0 Visão"
   },
   "model.4VisionDescription": {
-    "message": "Pode analisar imagens e fornecer informações com base no conteúdo das imagens.",
+    "message": "Pode analisar imagens.",
     "description": "Descrição do modelo 4.0 Visão"
   },
   "message.startNewChat": {
     "message": "Iniciar uma nova conversa",
-    "description": "Mensagem em uma página da web, que diz ao usuário para iniciar uma nova conversa"
+    "description": "Mensagem em uma página da web, que indica ao usuário para iniciar uma nova conversa"
   },
   "message.uploadFile": {
     "message": "Enviar arquivo",
-    "description": "Mensagem em uma página da web, que diz ao usuário para enviar um arquivo"
+    "description": "Mensagem em uma página da web, que indica ao usuário para enviar um arquivo"
   },
   "message.noToken": {
-    "message": "Por favor, aplique primeiro para o serviço correspondente",
-    "description": "Mensagem em uma página da web, que diz ao usuário para aplicar primeiro para o serviço correspondente"
+    "message": "Por favor aplique primeiro para o serviço correspondente",
+    "description": "Mensagem em uma página da web, que indica ao usuário para aplicar primeiro para o serviço correspondente"
   },
   "message.newMessagePlaceholder": {
-    "message": "Por favor, insira sua pergunta...",
-    "description": "Espaço reservado em uma página da web, que diz ao usuário para inserir uma pergunta"
+    "message": "Por favor, digite a sua pergunta...",
+    "description": "Espaço reservado em uma página da web, que indica ao usuário para digitar uma pergunta"
   },
   "message.noInput": {
     "message": "A pergunta não pode estar vazia",
-    "description": "Mensagem em uma página da web, que diz ao usuário que a pergunta não pode estar vazia"
+    "description": "Mensagem em uma página da web, que indica ao usuário que a pergunta não pode estar vazia"
   },
   "message.uploadReferencesExceed": {
     "message": "Você só pode enviar no máximo 1 arquivo",
-    "description": "Mensagem em uma página da web, que diz ao usuário que só é possível enviar no máximo 1 arquivo"
+    "description": "Mensagem em uma página da web, que indica ao usuário que só é possível enviar no máximo 1 arquivo"
   },
   "message.uploadReferencesError": {
-    "message": "Falha no envio do arquivo, por favor, tente novamente mais tarde",
-    "description": "Mensagem em uma página da web, que diz ao usuário que houve uma falha no envio do arquivo, por favor, tente novamente mais tarde"
+    "message": "Falha ao enviar o arquivo, por favor tente novamente mais tarde",
+    "description": "Mensagem em uma página da web, que indica ao usuário que a falha ao enviar o arquivo, por favor tente novamente mais tarde"
   },
   "message.notApplied": {
-    "message": "Você ainda não se inscreveu para este serviço, por favor, inscreva-se primeiro",
-    "description": "Mensagem em uma página da web, que diz ao usuário que ainda não se inscreveu para este serviço, por favor, inscreva-se primeiro"
+    "message": "Você ainda não aplicou para este serviço, por favor aplique primeiro",
+    "description": "Mensagem em uma página da web, que indica ao usuário que você ainda não aplicou para este serviço, por favor aplique primeiro"
   },
   "message.tryForFree": {
     "message": "Experimente gratuitamente",
-    "description": "Mensagem em uma página da web, que diz ao usuário para experimentar gratuitamente"
+    "description": "Mensagem em uma página da web, que indica ao usuário para experimentar gratuitamente"
   },
   "message.question1": {
-    "message": "Escreva um pedaço de código JavaScript que imprima Olá Mundo",
-    "description": "Um exemplo de pergunta para iniciar um chat, que pede ao usuário para escrever um pedaço de código JavaScript que imprima Olá Mundo"
+    "message": "Criar um plano de treino",
+    "description": "Exemplo de perguntas para iniciar uma conversa, que pede ao usuário para escrever um pedaço de código JavaScript que resulta em Olá Mundo"
   },
   "message.question2": {
-    "message": "Escreva um e-mail para Mike, dizendo a ele que acabei de me mudar",
-    "description": "Um exemplo de pergunta para iniciar um chat, que pede ao usuário para escrever um e-mail para Mike, dizendo a ele que acabei de me mudar"
+    "message": "Criar uma página pessoal",
+    "description": "Exemplo de perguntas para iniciar uma conversa, que pede ao usuário para escrever um e-mail para Mike, informando-o que acabou de se mudar"
   },
   "message.question3": {
-    "message": "Explique os princípios básicos da computação quântica em termos simples",
-    "description": "Um exemplo de pergunta para iniciar um chat, que pede ao usuário para explicar os princípios básicos da computação quântica em termos simples"
+    "message": "Projetar um jogo de programação divertido",
+    "description": "Exemplo de perguntas para iniciar uma conversa, que pede ao usuário para explicar os princípios básicos da computação quântica em termos simples"
   },
   "message.question4": {
-    "message": "Qual impacto a realidade virtual teve na criação artística?",
-    "description": "Um exemplo de pergunta para iniciar um chat, que pede ao usuário para explicar qual impacto a realidade virtual teve na criação artística"
-  },
-  "message.question5": {
-    "message": "Como a proteção da privacidade e a segurança de dados afetam a prática jurídica?",
-    "description": "Um exemplo de pergunta para iniciar um chat, que pede ao usuário para explicar como a proteção da privacidade e a segurança de dados afetam a prática jurídica"
-  },
-  "message.question6": {
-    "message": "Como lidar com as mudanças complexas nas leis tributárias no mundo de hoje?",
-    "description": "Um exemplo de pergunta para iniciar um chat, que pede ao usuário para explicar como lidar com as mudanças complexas nas leis tributárias no mundo de hoje"
-  },
-  "message.question7": {
-    "message": "Como criar uma culinária única combinando diferentes contextos culturais regionais?",
-    "description": "Um exemplo de pergunta para iniciar um chat, que pede ao usuário para explicar como criar uma culinária única combinando diferentes contextos culturais regionais"
-  },
-  "message.question8": {
-    "message": "Como obter inspiração para criação literária a partir de experiências de viagem?",
-    "description": "Um exemplo de pergunta para iniciar um chat, que pede ao usuário para explicar como obter inspiração para criação literária a partir de experiências de viagem"
-  },
-  "message.question9": {
-    "message": "Como obter ideias de negócios a partir de casos de sucesso em diferentes setores?",
-    "description": "Um exemplo de pergunta para iniciar um chat, que pede ao usuário para explicar como obter ideias de negócios a partir de casos de sucesso em diferentes setores"
+    "message": "Experimentar Seul como um local",
+    "description": "Exemplo de perguntas para iniciar uma conversa, que pede ao usuário para explicar qual impacto a realidade virtual teve na criação artística"
   },
   "message.errorApiError": {
-    "message": "Falha na resposta, por favor, tente novamente mais tarde",
-    "description": "Mensagem em uma página da web, que diz ao usuário que houve uma falha na resposta, por favor, tente novamente mais tarde"
+    "message": "Resposta falhou, por favor tente novamente mais tarde",
+    "description": "Mensagem em uma página da web, que indica ao usuário que a resposta falhou, por favor tente novamente mais tarde"
   },
   "message.errorBadRequest": {
-    "message": "O conteúdo da solicitação não está padronizado, por favor, pergunte novamente",
-    "description": "Mensagem em uma página da web, que diz ao usuário que o conteúdo da solicitação não está padronizado, por favor, pergunte novamente"
+    "message": "O conteúdo da pergunta não está padronizado, por favor pergunte novamente",
+    "description": "Mensagem em uma página da web, que indica ao usuário que o conteúdo da pergunta não está padronizado, por favor pergunte novamente"
   },
   "message.errorNoConversation": {
-    "message": "A conversa não existe ou expirou, por favor, inicie uma nova conversa",
-    "description": "Mensagem em uma página da web, que diz ao usuário que a conversa não existe ou expirou, por favor, inicie uma nova conversa"
+    "message": "A conversa não existe ou expirou, por favor inicie uma nova conversa",
+    "description": "Mensagem em uma página da web, que indica ao usuário que a conversa não existe ou expirou, por favor inicie uma nova conversa"
   },
   "message.errorContentTooLarge": {
-    "message": "O conteúdo da pergunta é muito longo, por favor, encurte e tente novamente",
-    "description": "Mensagem em uma página da web, que diz ao usuário que o conteúdo da pergunta é muito longo, por favor, encurte e tente novamente"
+    "message": "O conteúdo da pergunta é muito longo, por favor encurte e tente novamente",
+    "description": "Mensagem em uma página da web, que indica ao usuário que o conteúdo da pergunta é muito longo, por favor encurte e tente novamente"
   },
   "message.errorTooManyRequests": {
-    "message": "Suas operações são muito frequentes, por favor, tente novamente mais tarde",
-    "description": "Mensagem em uma página da web, que diz ao usuário que suas operações são muito frequentes, por favor, tente novamente mais tarde"
+    "message": "Suas operações são muito frequentes, por favor tente novamente mais tarde",
+    "description": "Mensagem em uma página da web, que indica ao usuário que suas operações são muito frequentes, por favor tente novamente mais tarde"
   },
   "message.errorUsedUp": {
-    "message": "Você usou todas as suas vezes disponíveis, por favor, compre mais vezes para continuar usando",
-    "description": "Mensagem em uma página da web, que diz ao usuário que você usou todas as suas vezes disponíveis, por favor, compre mais vezes para continuar usando"
+    "message": "Você usou todas as suas vezes do pacote, por favor compre mais vezes para continuar usando",
+    "description": "Mensagem em uma página da web, que indica ao usuário que você usou todas as suas vezes do pacote, por favor compre mais vezes para continuar usando"
   },
   "message.errorUnknown": {
-    "message": "Ocorreu um erro desconhecido no servidor, por favor, tente novamente mais tarde ou entre em contato com o serviço de atendimento ao cliente",
-    "description": "Mensagem em uma página da web, que diz ao usuário que ocorreu um erro desconhecido no servidor, por favor, tente novamente mais tarde ou entre em contato com o serviço de atendimento ao cliente"
+    "message": "Ocorreu um erro desconhecido no servidor, por favor tente novamente mais tarde ou entre em contato com o serviço de atendimento ao cliente",
+    "description": "Mensagem em uma página da web, que indica ao usuário que ocorreu um erro desconhecido no servidor, por favor tente novamente mais tarde ou entre em contato com o serviço de atendimento ao cliente"
   },
   "message.errorTimeout": {
-    "message": "A resposta à pergunta expirou, por favor, tente novamente mais tarde",
-    "description": "Mensagem em uma página da web, que diz ao usuário que a resposta à pergunta expirou, por favor, tente novamente mais tarde"
+    "message": "O tempo para responder à pergunta expirou, por favor tente novamente mais tarde",
+    "description": "Mensagem em uma página da web, que indica ao usuário que o tempo para responder à pergunta expirou, por favor tente novamente mais tarde"
   },
   "message.errorNotApplied": {
-    "message": "Você ainda não se inscreveu para este serviço, por favor, inscreva-se antes de continuar a fazer perguntas",
-    "description": "Mensagem em uma página da web, que diz ao usuário que você ainda não se inscreveu para este serviço, por favor, inscreva-se antes de continuar a fazer perguntas"
+    "message": "Você ainda não aplicou para este serviço, por favor aplique primeiro antes de continuar a fazer perguntas",
+    "description": "Mensagem em uma página da web, que indica ao usuário que você ainda não aplicou para este serviço, por favor aplique primeiro antes de continuar a fazer perguntas"
   },
   "message.confirmDelete": {
     "message": "Confirmar exclusão",
-    "description": "Mensagem em uma página da web, que diz ao usuário para confirmar a exclusão"
+    "description": "Mensagem em uma página da web, que indica ao usuário para confirmar a exclusão"
   },
   "message.howToUse": {
-    "message": "Pressione Shift+Enter para iniciar uma nova linha",
-    "description": "Mensagem em uma página da web, que diz ao usuário para pressionar Shift+Enter para iniciar uma nova linha"
+    "message": "A IA pode cometer erros. Confira informações importantes.",
+    "description": "Mensagem em uma página da web, que indica ao usuário que a IA pode cometer erros. Confira informações importantes."
   },
   "title.chat": {
-    "message": "Chat de IA",
-    "description": "Título de uma página da web, que é Chat de IA"
+    "message": "Chat da IA",
+    "description": "Título de uma página da web, que é Chat da IA"
   },
   "title.example": {
     "message": "Exemplo",
@@ -172,7 +152,7 @@
     "description": "Título em uma página da web, que indica que esta parte é sobre as limitações técnicas do serviço"
   },
   "title.complexQuestion": {
-    "message": "Responder a perguntas complexas",
+    "message": "Responder perguntas complexas",
     "description": "Título em uma página da web, que indica que esta parte é sobre a capacidade do serviço de responder a perguntas complexas"
   },
   "title.professionalQuestion": {
@@ -182,5 +162,21 @@
   "title.getTips": {
     "message": "Obter inspiração e criatividade",
     "description": "Título em uma página da web, que indica que esta parte é sobre a capacidade do serviço de obter inspiração e criatividade"
+  },
+  "group.today": {
+    "message": "Hoje",
+    "description": "Nome do grupo em uma página da web, que é Hoje"
+  },
+  "group.yesterday": {
+    "message": "Ontem",
+    "description": "Nome do grupo em uma página da web, que é Ontem"
+  },
+  "group.thisWeek": {
+    "message": "Esta semana",
+    "description": "Nome do grupo em uma página da web, que é Esta semana"
+  },
+  "group.earlier": {
+    "message": "Anterior",
+    "description": "Nome do grupo em uma página da web, que é Anterior"
   }
 }

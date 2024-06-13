@@ -1,7 +1,13 @@
 <template>
   <div>
     <h2 class="title">{{ $t('midjourney.name.prompt') }}</h2>
-    <el-input v-model="value" :rows="3" type="textarea" :placeholder="$t('midjourney.placeholder.prompt')" />
+    <el-input
+      v-model="value"
+      :rows="3"
+      class="prompt"
+      type="textarea"
+      :placeholder="$t('midjourney.placeholder.prompt')"
+    />
     <p class="description">
       {{ $t('midjourney.description.prompt') }}
     </p>
@@ -61,5 +67,17 @@ export default defineComponent({
   font-size: 12px;
   margin-top: 10px;
   color: var(--el-text-color-regular);
+}
+</style>
+
+<style lang="scss">
+.prompt {
+  border: none;
+  textarea {
+    border-radius: 15px !important;
+    resize: none;
+    font-size: 14px;
+    padding: 10px 15px;
+  }
 }
 </style>
