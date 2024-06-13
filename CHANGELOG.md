@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Thu, 13 Jun 2024 16:04:05 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Jun 2024 16:50:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.4.1
+
+Thu, 13 Jun 2024 16:50:06 GMT
+
+### Patches
+
+- update mj style and fix chat conv groups (germey@acedata.cloud)
 
 ## 1.4.0
 
