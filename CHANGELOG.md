@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sun, 26 May 2024 04:02:57 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Jun 2024 16:04:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.4.0
+
+Thu, 13 Jun 2024 16:04:05 GMT
+
+### Minor changes
+
+- adapt to latest chatgpt stlye for aichat (germey@acedata.cloud)
 
 ## 1.3.0
 
