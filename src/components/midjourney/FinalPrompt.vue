@@ -1,7 +1,7 @@
 <template>
   <div class="mb-4">
     <h2 class="title">{{ $t('midjourney.field.finalPrompt') }}</h2>
-    <el-alert :title="modelValue" :closable="false" class="pt-3" />
+    <el-alert :title="modelValue" :closable="false" class="pt-3 value" />
   </div>
 </template>
 
@@ -31,9 +31,11 @@ export default defineComponent({
   margin-bottom: 10px;
   width: 30%;
 }
-.prompt {
-  color: #333;
-  font-size: 16px;
+.value {
+  color: var(--el-text-color-regular);
+  font-size: 14px;
+  background-color: var(--el-bg-color-page);
+  border-radius: 15px;
   flex: 1;
 }
 </style>

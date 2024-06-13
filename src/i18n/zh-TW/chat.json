@@ -4,7 +4,7 @@
     "description": "服務的模型名稱，即 GPT 3.5 基本版"
   },
   "model.35StandardDescription": {
-    "message": "基本模型，可回答簡單問題並提供一般資訊。",
+    "message": "適用於日常任務。",
     "description": "3.5 標準版模型的描述"
   },
   "model.35Browsing": {
@@ -12,7 +12,7 @@
     "description": "服務的模型名稱，即 GPT 3.5 瀏覽版"
   },
   "model.35BrowsingDescription": {
-    "message": "可即時從網路檢索資訊並提供更基本的答案。",
+    "message": "可即時檢索資訊。",
     "description": "3.5 瀏覽版模型的描述"
   },
   "model.4Standard": {
@@ -20,7 +20,7 @@
     "description": "服務的模型名稱，即 GPT 4.0 標準版"
   },
   "model.4StandardDescription": {
-    "message": "更強大的模型，可回答更複雜的問題。",
+    "message": "適用於複雜任務的更強大模型。",
     "description": "4.0 標準版模型的描述"
   },
   "model.4Browsing": {
@@ -28,7 +28,7 @@
     "description": "服務的模型名稱，即 GPT 4.0 瀏覽版"
   },
   "model.4BrowsingDescription": {
-    "message": "可即時檢索資訊以基於 4.0 標準版模型提供更多答案。",
+    "message": "強大且可即時檢索資訊。",
     "description": "4.0 瀏覽版模型的描述"
   },
   "model.4Vision": {
@@ -36,124 +36,104 @@
     "description": "服務的模型名稱，即 GPT 4.0 視覺版"
   },
   "model.4VisionDescription": {
-    "message": "可分析圖像並根據圖像內容提供資訊。",
+    "message": "可分析圖片。",
     "description": "4.0 視覺版模型的描述"
   },
   "message.startNewChat": {
     "message": "開始新對話",
-    "description": "網頁中的訊息，告訴使用者開始新對話"
+    "description": "網頁中的訊息，告訴用戶開始一個新的對話"
   },
   "message.uploadFile": {
     "message": "上傳檔案",
-    "description": "網頁中的訊息，告訴使用者上傳檔案"
+    "description": "網頁中的訊息，告訴用戶上傳檔案"
   },
   "message.noToken": {
     "message": "請先申請相應的服務",
-    "description": "網頁中的訊息，告訴使用者先申請相應的服務"
+    "description": "網頁中的訊息，告訴用戶先申請相應的服務"
   },
   "message.newMessagePlaceholder": {
     "message": "請輸入您的問題...",
-    "description": "網頁中的占位符，告訴使用者輸入問題"
+    "description": "網頁中的占位符，告訴用戶輸入問題"
   },
   "message.noInput": {
     "message": "問題不能為空",
-    "description": "網頁中的訊息，告訴使用者問題不能為空"
+    "description": "網頁中的訊息，告訴用戶問題不能為空"
   },
   "message.uploadReferencesExceed": {
     "message": "最多只能上傳 1 個檔案",
-    "description": "網頁中的訊息，告訴使用者最多只能上傳 1 個檔案"
+    "description": "網頁中的訊息，告訴用戶最多只能上傳 1 個檔案"
   },
   "message.uploadReferencesError": {
-    "message": "檔案上傳失敗，請稍後再試",
-    "description": "網頁中的訊息，告訴使用者檔案上傳失敗，請稍後再試"
+    "message": "檔案上傳失敗，請稍後重試",
+    "description": "網頁中的訊息，告訴用戶檔案上傳失敗，請稍後重試"
   },
   "message.notApplied": {
     "message": "您尚未申請此服務，請先申請",
-    "description": "網頁中的訊息，告訴使用者您尚未申請此服務，請先申請"
+    "description": "網頁中的訊息，告訴用戶您尚未申請此服務，請先申請"
   },
   "message.tryForFree": {
     "message": "免費試用",
-    "description": "網頁中的訊息，告訴使用者免費試用"
+    "description": "網頁中的訊息，告訴用戶免費試用"
   },
   "message.question1": {
-    "message": "撰寫一段輸出 Hello World 的 JavaScript 代碼",
-    "description": "開始對話的範例問題，要求使用者撰寫一段輸出 Hello World 的 JavaScript 代碼"
+    "message": "製作一個運動計畫",
+    "description": "開始對話的範例問題，詢問用戶撰寫一段輸出 Hello World 的 JavaScript 程式碼"
   },
   "message.question2": {
-    "message": "給 Mike 寫封電子郵件，告訴他我剛搬家",
-    "description": "開始對話的範例問題，要求使用者給 Mike 寫封電子郵件，告訴他我剛搬家"
+    "message": "製作個人網頁",
+    "description": "開始對話的範例問題，詢問用戶給 Mike 寫一封電子郵件，告訴他我剛搬家了"
   },
   "message.question3": {
-    "message": "以簡單的方式解釋量子運算的基本原理",
-    "description": "開始對話的範例問題，要求使用者以簡單的方式解釋量子運算的基本原理"
+    "message": "設計一個有趣的編碼遊戲",
+    "description": "開始對話的範例問題，詢問用戶以簡單的方式解釋量子運算的基本原理"
   },
   "message.question4": {
-    "message": "虛擬實境對藝術創作有何影響？",
-    "description": "開始對話的範例問題，要求使用者解釋虛擬實境對藝術創作有何影響"
-  },
-  "message.question5": {
-    "message": "隱私保護和資料安全如何影響法律實踐？",
-    "description": "開始對話的範例問題，要求使用者解釋隱私保護和資料安全如何影響法律實踐"
-  },
-  "message.question6": {
-    "message": "如何應對當今世界稅法的複雜變化？",
-    "description": "開始對話的範例問題，要求使用者解釋如何應對當今世界稅法的複雜變化"
-  },
-  "message.question7": {
-    "message": "如何通過結合不同地區文化背景創造獨特的美食？",
-    "description": "開始對話的範例問題，要求使用者解釋如何通過結合不同地區文化背景創造獨特的美食"
-  },
-  "message.question8": {
-    "message": "如何從旅行經驗中獲得文學創作靈感？",
-    "description": "開始對話的範例問題，要求使用者解釋如何從旅行經驗中獲得文學創作靈感"
-  },
-  "message.question9": {
-    "message": "如何從不同行業成功案例中獲得商業創意？",
-    "description": "開始對話的範例問題，要求使用者解釋如何從不同行業成功案例中獲得商業創意"
+    "message": "像當地人一樣體驗首爾",
+    "description": "開始對話的範例問題，詢問用戶解釋虛擬實境對藝術創作的影響"
   },
   "message.errorApiError": {
-    "message": "回答失敗，請稍後再試",
-    "description": "網頁中的訊息，告訴使用者回答失敗，請稍後再試"
+    "message": "答案失敗，請稍後重試",
+    "description": "網頁中的訊息，告訴用戶答案失敗，請稍後重試"
   },
   "message.errorBadRequest": {
     "message": "請求內容不規範，請重新提問",
-    "description": "網頁中的訊息，告訴使用者請求內容不規範，請重新提問"
+    "description": "網頁中的訊息，告訴用戶請求內容不規範，請重新提問"
   },
   "message.errorNoConversation": {
-    "message": "對話不存在或已過期，請開始新對話",
-    "description": "網頁中的訊息，告訴使用者對話不存在或已過期，請開始新對話"
+    "message": "無法找到或已過期的對話，請開始新對話",
+    "description": "網頁中的訊息，告訴用戶找不到或已過期的對話，請開始新對話"
   },
   "message.errorContentTooLarge": {
-    "message": "問題內容過長，請縮短後再試",
-    "description": "網頁中的訊息，告訴使用者問題內容過長，請縮短後再試"
+    "message": "問題內容太長，請縮短後重試",
+    "description": "網頁中的訊息，告訴用戶問題內容太長，請縮短後重試"
   },
   "message.errorTooManyRequests": {
-    "message": "您的操作過於頻繁，請稍後再試",
-    "description": "網頁中的訊息，告訴使用者您的操作過於頻繁，請稍後再試"
+    "message": "您的操作過於頻繁，請稍後重試",
+    "description": "網頁中的訊息，告訴用戶您的操作過於頻繁，請稍後重試"
   },
   "message.errorUsedUp": {
     "message": "您已用完套餐次數，請購買更多次數以繼續使用",
-    "description": "網頁中的訊息，告訴使用者您已用完套餐次數，請購買更多次數以繼續使用"
+    "description": "網頁中的訊息，告訴用戶您已用完套餐次數，請購買更多次數以繼續使用"
   },
   "message.errorUnknown": {
-    "message": "伺服器發生未知錯誤，請稍後再試或聯繫客服",
-    "description": "網頁中的訊息，告訴使用者伺服器發生未知錯誤，請稍後再試或聯繫客服"
+    "message": "伺服器發生未知錯誤，請稍後重試或聯絡客服",
+    "description": "網頁中的訊息，告訴用戶伺服器發生未知錯誤，請稍後重試或聯絡客服"
   },
   "message.errorTimeout": {
-    "message": "回答問題逾時，請稍後再試",
-    "description": "網頁中的訊息，告訴使用者回答問題逾時，請稍後再試"
+    "message": "答案逾時，請稍後重試",
+    "description": "網頁中的訊息，告訴用戶答案逾時，請稍後重試"
   },
   "message.errorNotApplied": {
-    "message": "您尚未申請此服務，請先申請再繼續提問",
-    "description": "網頁中的訊息，告訴使用者您尚未申請此服務，請先申請再繼續提問"
+    "message": "您尚未申請此服務，請先申請後繼續提問",
+    "description": "網頁中的訊息，告訴用戶您尚未申請此服務，請先申請後繼續提問"
   },
   "message.confirmDelete": {
     "message": "確認刪除",
-    "description": "網頁中的訊息，告訴使用者確認刪除"
+    "description": "網頁中的訊息，告訴用戶確認刪除"
   },
   "message.howToUse": {
-    "message": "按 Shift+Enter 開始新行",
-    "description": "網頁中的訊息，告訴使用者按 Shift+Enter 開始新行"
+    "message": "人工智慧也會犯錯，請確認重要資訊。",
+    "description": "網頁中的訊息，告訴用戶人工智慧也會犯錯，請確認重要資訊"
   },
   "title.chat": {
     "message": "AI 對話",
@@ -165,22 +145,38 @@
   },
   "title.capabilities": {
     "message": "功能",
-    "description": "網頁的標題，告訴此部分是關於服務的技術限制"
+    "description": "網頁的標題，即 功能"
   },
   "title.limitations": {
     "message": "限制",
-    "description": "網頁的標題，告訴此部分是關於服務的技術限制"
+    "description": "網頁中的標題，指出本部分為服務的技術限制"
   },
   "title.complexQuestion": {
     "message": "回答複雜問題",
-    "description": "網頁的標題，告訴此部分是關於服務回答複雜問題的能力"
+    "description": "網頁中的標題，指出本部分為服務回答複雜問題的能力"
   },
   "title.professionalQuestion": {
     "message": "諮詢專業問題",
-    "description": "網頁的標題，告訴此部分是關於服務諮詢專業問題的能力"
+    "description": "網頁中的標題，指出本部分為服務諮詢專業問題的能力"
   },
   "title.getTips": {
-    "message": "獲取靈感和創意",
-    "description": "網頁的標題，告訴此部分是關於服務獲取靈感和創意的能力"
+    "message": "獲取靈感與創意",
+    "description": "網頁中的標題，指出本部分為服務獲取靈感與創意的能力"
+  },
+  "group.today": {
+    "message": "今天",
+    "description": "網頁中的群組名稱，即 今天"
+  },
+  "group.yesterday": {
+    "message": "昨天",
+    "description": "網頁中的群組名稱，即 昨天"
+  },
+  "group.thisWeek": {
+    "message": "本週",
+    "description": "網頁中的群組名稱，即 本週"
+  },
+  "group.earlier": {
+    "message": "更早",
+    "description": "網頁中的群組名稱，即 更早"
   }
 }

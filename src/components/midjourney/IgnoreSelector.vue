@@ -1,7 +1,13 @@
 <template>
   <div>
     <h2 class="title">{{ $t('midjourney.name.ignore') }}</h2>
-    <el-input v-model="value" :rows="1" type="textarea" :placeholder="$t('midjourney.placeholder.ignore')" />
+    <el-input
+      v-model="value"
+      :rows="1"
+      class="ignore"
+      type="textarea"
+      :placeholder="$t('midjourney.placeholder.ignore')"
+    />
   </div>
 </template>
 
@@ -52,6 +58,19 @@ export default defineComponent({
 
   .value {
     flex: 1;
+  }
+}
+</style>
+
+<style lang="scss">
+.ignore {
+  border: none;
+  textarea {
+    font-size: 14px;
+    border-radius: 15px !important;
+    border: none;
+    resize: none;
+    padding: 10px 15px;
   }
 }
 </style>
