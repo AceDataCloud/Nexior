@@ -155,6 +155,7 @@ export default defineComponent({
 
 <style lang="scss">
 textarea.input {
+  font-size: 14px;
   min-height: 35px;
   max-height: 350px;
   border: none;
@@ -171,7 +172,6 @@ textarea.input:focus {
   outline: none;
 }
 .input-box {
-  // height: auto;
   position: relative;
   .input {
     textarea {
@@ -197,11 +197,12 @@ textarea.input:focus {
 
 <style lang="scss" scoped>
 .input-box {
-  width: 100%;
-  border: 1px solid var(--el-border-color);
-  border-radius: 10px;
-  background: none;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+  width: 800px;
+  margin: auto;
+  position: relative;
+  border-radius: 20px;
+  background: var(--el-bg-color-page);
+  padding: 5px;
   .upload {
     display: inline-block;
     &.disabled {
@@ -216,18 +217,18 @@ textarea.input:focus {
   .input {
     border: none;
     width: calc(100% - 80px);
-    margin-left: 30px;
+    margin-left: 35px;
   }
   .btn {
     display: block;
     z-index: 100;
     cursor: pointer;
+    bottom: 15px;
     position: absolute;
-    top: 7px;
     &.btn-upload {
-      left: 10px;
+      left: 15px;
       .icon-attachment {
-        font-size: 14px;
+        font-size: 16px;
         color: var(--el-text-color-primary);
       }
     }
@@ -250,9 +251,9 @@ textarea.input:focus {
 .info {
   display: block;
   font-size: 12px;
-  color: #666;
+  color: var(--el-text-color-secondary);
   margin-top: 5px;
-  margin-left: 3px;
+  text-align: center;
   margin-bottom: 0;
 }
 </style>

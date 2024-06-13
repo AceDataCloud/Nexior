@@ -9,8 +9,11 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 import { faDiscord as faBrandsDiscord } from '@fortawesome/free-brands-svg-icons';
 import {
+  faLaptopCode as faSolidLaptopCode,
   faChevronRight as faSolidChevronRight,
   faMoon as faSolidMoon,
+  faFan as faSolidFan,
+  faPenNib as faSolidPenNib,
   faQrcode as faSolidQrcode,
   faChevronLeft as faSolidChevronLeft,
   faFire as faSolidFire,
@@ -48,6 +51,7 @@ import {
   faXmark as faSolidXmark,
   faCoins as faSolidCoins,
   faRotateLeft as faSolidRotateLeft,
+  faPlaneDeparture as faSolidPlaneDeparture,
   faWallet as faSolidWallet,
   faCartShopping as faSolidCartShopping,
   faPercent as faSolidPercent,
@@ -56,18 +60,23 @@ import {
   faCubes as faSolidCubes,
   faFileLines as faSolidFileLines,
   faLink as faSolidLink,
-  faWandMagic as faSolidWandMagic
+  faWandMagic as faSolidWandMagic,
+  faAngleDown as faSolidAngleDown
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faRegularCopy);
+library.add(faSolidAngleDown);
 library.add(faSolidStore);
 library.add(faSolidChevronRight);
+library.add(faSolidPlaneDeparture);
 library.add(faSolidCube);
 library.add(faSolidFileLines);
 library.add(faSolidCompass);
 library.add(faSolidPaperclip);
+library.add(faSolidFan);
 library.add(faSolidXmark);
 library.add(faSolidFire);
+library.add(faSolidLaptopCode);
 library.add(faSolidRotateRight);
 library.add(faSolidPenToSquare);
 library.add(faSolidCheck);
@@ -88,6 +97,7 @@ library.add(faSolidTriangleExclamation);
 library.add(faSolidUpRightFromSquare);
 library.add(faRegularClock);
 library.add(faSolidArrowsRotate);
+library.add(faSolidPenNib);
 library.add(faRegularPaperPlane);
 library.add(faSolidWind);
 library.add(faSolidQrcode);

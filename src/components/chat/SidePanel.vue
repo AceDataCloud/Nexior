@@ -1,6 +1,6 @@
 <template>
   <div class="panel">
-    <el-skeleton v-if="loading && conversations === undefined" />
+    <el-skeleton v-if="loading && conversationGroups === undefined" />
     <div v-else class="conversations">
       <div class="conversation" @click="onNewConversation">
         <div class="icons">
@@ -10,54 +10,56 @@
           {{ $t('chat.message.startNewChat') }}
         </div>
       </div>
-      <div
-        v-for="(conversation, conversationIndex) in conversations"
-        :key="conversationIndex"
-        :class="{ conversation: true, active: conversation.id === conversationId }"
-        @click="onClick(conversation.id)"
-      >
-        <div class="icons">
-          <font-awesome-icon icon="fa-regular fa-comment" class="icon" />
+      <div v-for="(conversations, groupKey) in conversationGroups" :key="groupKey" class="group">
+        <div class="key">
+          {{ $t(`chat.group.${groupKey}`) }}
         </div>
-        <div class="title">
-          <span v-if="conversation?.deleting">
-            {{ `${$t('chat.message.confirmDelete')}?` }}
-          </span>
-          <span v-else-if="conversation?.editing">
-            <el-input v-model="conversation.title" @keydown.enter="onConfirm(conversation)" />
-          </span>
-          <span v-else-if="conversation?.title || conversation?.messages">{{
-            conversation?.title || conversation?.messages[conversation?.messages.length - 1]?.content
-          }}</span>
-        </div>
-        <div class="operations">
-          <font-awesome-icon
-            v-if="!conversation?.editing && !conversation.deleting"
-            icon="fa-solid fa-edit"
-            class="icon icon-edit"
-            @click.stop="conversation.editing = true"
-          />
-          <font-awesome-icon
-            v-if="!conversation?.editing && !conversation.deleting"
-            icon="fa-solid fa-trash"
-            class="icon icon-delete"
-            @click.stop="conversation.deleting = true"
-          />
-          <font-awesome-icon
-            v-if="conversation?.editing || conversation.deleting"
-            icon="fa-solid fa-check"
-            class="icon icon-confirm"
-            @click.stop="onConfirm(conversation)"
-          />
-          <font-awesome-icon
-            v-if="conversation?.editing || conversation.deleting"
-            icon="fa-solid fa-xmark"
-            class="icon icon-cancel"
-            @click.stop="
-              conversation.editing = false;
-              conversation.deleting = false;
-            "
-          />
+        <div
+          v-for="(conversation, conversationIndex) in conversations"
+          :key="conversationIndex"
+          :class="{ conversation: true, active: conversation.id === conversationId }"
+          @click="onClick(conversation.id)"
+        >
+          <div class="title">
+            <span v-if="conversation?.deleting">
+              {{ `${$t('chat.message.confirmDelete')}?` }}
+            </span>
+            <span v-else-if="conversation?.editing">
+              <el-input v-model="conversation.title" @keydown.enter="onConfirm(conversation)" />
+            </span>
+            <span v-else-if="conversation?.title || conversation?.messages">{{
+              conversation?.title || conversation?.messages[conversation?.messages.length - 1]?.content
+            }}</span>
+          </div>
+          <div class="operations">
+            <font-awesome-icon
+              v-if="!conversation?.editing && !conversation.deleting"
+              icon="fa-solid fa-edit"
+              class="icon icon-edit"
+              @click.stop="conversation.editing = true"
+            />
+            <font-awesome-icon
+              v-if="!conversation?.editing && !conversation.deleting"
+              icon="fa-solid fa-trash"
+              class="icon icon-delete"
+              @click.stop="conversation.deleting = true"
+            />
+            <font-awesome-icon
+              v-if="conversation?.editing || conversation.deleting"
+              icon="fa-solid fa-check"
+              class="icon icon-confirm"
+              @click.stop="onConfirm(conversation)"
+            />
+            <font-awesome-icon
+              v-if="conversation?.editing || conversation.deleting"
+              icon="fa-solid fa-xmark"
+              class="icon icon-cancel"
+              @click.stop="
+                conversation.editing = false;
+                conversation.deleting = false;
+              "
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -86,8 +88,41 @@ export default defineComponent({
     conversationId() {
       return this.$route.params?.id?.toString();
     },
-    conversations() {
-      return this.$store.state.chat.conversations;
+    conversationGroups() {
+      const conversations = this.$store.state.chat.conversations;
+      // split our 4 groups according to the `updated_at` field, to 'today', 'yesterday', 'this week', 'earlier'.
+      // if (conversations) {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const yesterday = new Date(today);
+      yesterday.setDate(yesterday.getDate() - 1);
+      const thisWeek = new Date(today);
+      thisWeek.setDate(thisWeek.getDate() - today.getDay());
+      const earlier = new Date(thisWeek);
+      earlier.setDate(earlier.getDate() - 7);
+      const groups = conversations?.reduce(
+        (acc, conversation: IChatConversation) => {
+          const updatedAt = new Date(conversation.updated_at * 1000);
+          if (updatedAt >= today) {
+            (acc.today as IChatConversation[]).push(conversation);
+          } else if (updatedAt >= yesterday) {
+            (acc.yesterday as IChatConversation[]).push(conversation);
+          } else if (updatedAt >= thisWeek) {
+            (acc.thisWeek as IChatConversation[]).push(conversation);
+          } else {
+            (acc.earlier as IChatConversation[]).push(conversation);
+          }
+          return acc;
+        },
+        { today: [], yesterday: [], thisWeek: [], earlier: [] }
+      ) as Record<string, IChatConversation[]>;
+      // sort every group by `updated_at` field.
+      return {
+        today: groups?.today?.sort((a, b) => b.updated_at - a.updated_at),
+        yesterday: groups?.yesterday?.sort((a, b) => b.updated_at - a.updated_at),
+        thisWeek: groups?.thisWeek?.sort((a, b) => b.updated_at - a.updated_at),
+        earlier: groups?.earlier?.sort((a, b) => b.updated_at - a.updated_at)
+      };
     },
     application() {
       return this.$store.state.chat.application;
@@ -146,33 +181,47 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  padding: 15px;
-  width: 300px;
+  padding: 10px;
+  width: 250px;
   height: 100%;
   border-right: 1px solid var(--el-border-color);
-  overflow-y: scroll;
 
   .conversations {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    .group {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      .key {
+        font-size: 12px;
+        font-weight: 600;
+        width: 100%;
+        line-height: 40px;
+        padding-left: 10px;
+        color: var(--el-text-color-secondary);
+      }
+    }
     .conversation {
       width: 100%;
-      height: 55px;
+      height: 40px;
       display: flex;
       flex-direction: row;
-      padding: 10px;
-      margin-bottom: 5px;
-      border: 1px dashed var(--el-border-color);
-      line-height: 30px;
+      line-height: 40px;
       border-radius: 10px;
+      padding: 0 10px;
       color: var(--el-text-color-primary);
       cursor: pointer;
 
       &.active,
       &:hover {
-        background-color: var(--el-fill-color-extra-light);
+        background-color: var(--el-bg-color-page);
+        .operations {
+          display: block;
+        }
       }
 
       .icons {
@@ -185,13 +234,14 @@ export default defineComponent({
       .title {
         flex: 1;
         font-size: 14px;
-        line-height: 32px;
+        line-height: 40px;
         overflow: hidden;
         text-overflow: ellipsis;
         padding-right: 8px;
         color: var(--el-text-color-primary);
       }
       .operations {
+        display: none;
         width: 40px;
         color: var(--el-text-color-regular);
         .icon {

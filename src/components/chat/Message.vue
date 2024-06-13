@@ -46,7 +46,7 @@ import {
   ERROR_CODE_USED_UP,
   ROLE_ASSISTANT
 } from '@/constants';
-import message from '@/i18n/zh/common/message';
+// import message from '@/i18n/zh/common/message';
 import { ROUTE_CONSOLE_APPLICATION_BUY } from '@/router';
 
 interface IData {
@@ -159,19 +159,17 @@ export default defineComponent({
     .content {
       background-color: var(--el-bg-color-page);
       color: var(--el-text-color-primary);
-      border-bottom-left-radius: 0;
     }
   }
   &.user {
     align-items: end;
     .content {
-      background-color: var(--el-color-primary);
-      color: var(--el-color-white);
-      border-bottom-right-radius: 0;
+      background-color: var(--el-bg-color-page);
+      color: var(--el-text-color-primary);
     }
   }
   .content {
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 8px 15px;
     max-width: 800px;
     .image {
