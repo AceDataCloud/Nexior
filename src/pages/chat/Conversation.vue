@@ -1,7 +1,7 @@
 <template>
   <layout>
     <template #chat>
-      <model-selector class="model-selector" />
+      <model-selector2 class="selector" />
       <application-status
         :initializing="initializing"
         :application="application"
@@ -21,6 +21,7 @@
           />
         </div>
       </div>
+
       <div class="bottom">
         <input-box
           :disabled="answering"
@@ -42,7 +43,7 @@ import Message from '@/components/chat/Message.vue';
 import { ROLE_ASSISTANT, ROLE_USER } from '@/constants';
 import { IChatModel, IChatMessageState, IChatConversationResponse, IChatConversation, IChatMessage } from '@/models';
 import InputBox from '@/components/chat/InputBox.vue';
-import ModelSelector from '@/components/chat/ModelSelector.vue';
+import ModelSelector2 from '@/components/chat/ModelSelector2.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router';
 import { Status } from '@/models';
@@ -64,7 +65,7 @@ export default defineComponent({
   components: {
     InputBox,
     Introduction,
-    ModelSelector,
+    ModelSelector2,
     Message,
     ApplicationStatus,
     Layout
@@ -283,16 +284,19 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.model-selector {
+.selector {
   width: max-content;
-  margin: auto;
   margin-bottom: 10px;
+  position: absolute;
+  left: 10px;
+  top: 5px;
 }
 
 .dialogue {
   flex: 1;
+  width: 800px;
+  margin: 15px auto;
   overflow-y: scroll;
-  margin: 15px 0;
   position: relative;
   .messages {
     padding-top: 30px;

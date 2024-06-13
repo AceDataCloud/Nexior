@@ -173,8 +173,8 @@ export default defineComponent({
   margin: auto;
 }
 .info {
-  font-size: 14px;
-  color: var(--el-text-color-regular);
+  font-size: 12px;
+  color: var(--el-text-color-secondary);
   text-align: center;
 }
 .actions {
