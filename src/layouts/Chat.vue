@@ -61,7 +61,7 @@ export default defineComponent({
   display: flex;
   flex-direction: row;
   .side {
-    width: 300px;
+    width: 250px;
     height: 100%;
     overflow-y: scroll;
   }
@@ -70,10 +70,11 @@ export default defineComponent({
     height: 100%;
     padding: 15px;
     flex: 1;
-    width: calc(100% - 300px);
+    width: calc(100% - 250px);
     height: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
   }
 }
 

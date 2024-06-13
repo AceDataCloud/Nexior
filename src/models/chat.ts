@@ -52,6 +52,7 @@ export interface IChatConversation {
   deleting?: boolean;
   editing?: boolean;
   new?: boolean;
+  updated_at: number;
 }
 
 export interface IChatConversationOptions {

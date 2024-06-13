@@ -1,5 +1,5 @@
 <template>
-  <div class="model-selector">
+  <div class="selector">
     <el-dropdown
       v-for="(group, groupIndex) in groups"
       :key="groupIndex"
@@ -137,7 +137,7 @@ export default defineComponent({
 </style>
 
 <style lang="scss" scoped>
-.model-selector {
+.selector {
   background-color: var(--el-bg-color-page);
   padding: 7px 6px;
   border-radius: 15px;
