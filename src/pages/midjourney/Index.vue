@@ -248,9 +248,10 @@ export default defineComponent({
   overflow-y: scroll;
 }
 .bottom {
-  height: 35px;
+  height: 40px;
   width: 100%;
   .btn {
+    height: 40px;
     width: 100%;
   }
 }
