@@ -3,6 +3,7 @@
     <template #chat>
       <model-selector2 class="selector" />
       <application-status
+        class="status"
         :initializing="initializing"
         :application="application"
         :need-apply="needApply"
@@ -294,9 +295,10 @@ export default defineComponent({
 
 .dialogue {
   flex: 1;
-  width: 800px;
+  width: 100%;
+  max-width: 800px;
   margin: 15px auto;
-  overflow-y: scroll;
+  overflow-y: auto;
   position: relative;
   .messages {
     padding-top: 30px;
@@ -307,5 +309,11 @@ export default defineComponent({
 }
 .bottom {
   width: 100%;
+}
+
+@media (max-width: 767px) {
+  .status {
+    margin-top: 20px;
+  }
 }
 </style>

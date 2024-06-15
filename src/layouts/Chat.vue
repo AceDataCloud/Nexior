@@ -11,7 +11,7 @@
     <el-button round class="menu" @click="drawer = true">
       <font-awesome-icon icon="fa-solid fa-bars" class="icon-menu" />
     </el-button>
-    <el-drawer v-model="drawer" :with-header="false" size="340px" class="drawer">
+    <el-drawer v-model="drawer" :with-header="false" size="290px" class="drawer">
       <side-panel />
     </el-drawer>
   </div>
