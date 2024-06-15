@@ -6,7 +6,7 @@ import midjourney from './midjourney';
 import distribution from './distribution';
 import chatdoc from './chatdoc';
 import qrart from './qrart';
-import config from './config';
+import site from './site';
 
 import { ROUTE_CHAT_CONVERSATION_NEW, ROUTE_INDEX } from './constants';
 import { DEFAULT_LOCALE, setI18nLanguage } from '@/i18n';
@@ -27,7 +27,7 @@ const routes = [
   qrart,
   midjourney,
   distribution,
-  config
+  site
 ];
 
 const router = createRouter({

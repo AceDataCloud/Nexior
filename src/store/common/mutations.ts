@@ -23,6 +23,10 @@ export const resetSetting = (state: IRootState): void => {
   state.setting = {};
 };
 
+export const resetSite = (state: IRootState): void => {
+  state.site = {};
+};
+
 export const resetUser = (state: IRootState): void => {
   state.user = {};
 };
@@ -40,5 +44,6 @@ export default {
   setToken,
   resetToken,
   setSetting,
-  resetSetting
+  resetSetting,
+  resetSite
 };

@@ -7,6 +7,8 @@ import { IToken, IUser } from '@/models';
 export const resetAll = ({ commit }: ActionContext<IRootState, IRootState>) => {
   commit('resetToken');
   commit('resetUser');
+  commit('resetSetting');
+  commit('resetSite');
 };
 
 export const resetUser = ({ commit }: ActionContext<IRootState, IRootState>) => {
@@ -15,6 +17,10 @@ export const resetUser = ({ commit }: ActionContext<IRootState, IRootState>) => 
 
 export const resetSetting = ({ commit }: ActionContext<IRootState, IRootState>) => {
   commit('resetSetting');
+};
+
+export const resetSite = ({ commit }: ActionContext<IRootState, IRootState>) => {
+  commit('resetSite');
 };
 
 export const resetToken = ({ commit }: ActionContext<IRootState, IRootState>) => {
@@ -57,6 +63,7 @@ export default {
   resetAll,
   resetUser,
   resetSetting,
+  resetSite,
   setToken,
   setUser,
   getToken,

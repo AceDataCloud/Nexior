@@ -6,16 +6,15 @@ export interface ISiteAuth {}
 
 export interface ISite {
   id?: string;
-  origin: string;
+  origin?: string;
   title?: string;
   logo?: string;
   favicon?: string;
   keywords?: string;
   description?: string;
-  features: ISiteFeatures;
-  distribution: ISiteDistribution;
-  auth: ISiteAuth;
-
+  features?: ISiteFeatures;
+  distribution?: ISiteDistribution;
+  auth?: ISiteAuth;
   created_at?: string;
   updated_at?: string;
   metadata?: any;
