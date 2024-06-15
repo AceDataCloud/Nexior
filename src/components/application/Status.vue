@@ -180,6 +180,11 @@ export default defineComponent({
 .actions {
   margin: 0 5px;
   display: inline-block;
+  @media (max-width: 767px) {
+    display: block;
+    margin: 5px auto 0 auto;
+    width: fit-content;
+  }
   .el-button {
     border-radius: 20px;
   }

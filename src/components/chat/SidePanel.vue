@@ -192,6 +192,10 @@ export default defineComponent({
   height: 100%;
   border-right: 1px solid var(--el-border-color);
 
+  @media (max-width: 767px) {
+    border-right: none;
+  }
+
   .conversations {
     width: 100%;
     display: flex;

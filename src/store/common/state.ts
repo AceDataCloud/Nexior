@@ -13,8 +13,7 @@ export default (): IRootState => {
       expiration: undefined
     },
     setting: {
-      // if PC, set default to true, else false
-      navigationCollapsed: window.innerWidth < 768
+      navigationCollapsed: true
     },
     chatdoc: chatdocState(),
     chat: chatState(),

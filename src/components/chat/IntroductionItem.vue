@@ -49,11 +49,12 @@ export default defineComponent({
 .item {
   height: 100px;
   font-size: 14px;
-  background-color: var(--el-color-white);
+  background-color: var(--el-color-color);
   color: var(--el-text-color-primary);
   border: 1px solid var(--el-border-color-lighter);
   padding: 10px 20px;
   border-radius: 20px;
+  margin-bottom: 15px;
   &:hover {
     background-color: var(--el-bg-color-page);
   }
