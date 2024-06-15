@@ -1,7 +1,7 @@
 <template>
   <div class="introduction">
     <el-row class="items" justify="center" :gutter="15">
-      <el-col v-for="(item, itemKey) in items" :key="itemKey" :md="6" :sm="12" :xs="24">
+      <el-col v-for="(item, itemKey) in items" :key="itemKey" :md="6" :sm="12" :xs="12">
         <introduction-item
           :content="item.content"
           :icon="item.icon"
@@ -67,7 +67,8 @@ export default defineComponent({
   justify-content: center;
 
   .items {
-    width: 800px;
+    max-width: 800px;
+    width: 100%;
     margin: auto;
   }
 }

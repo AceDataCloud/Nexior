@@ -46,7 +46,6 @@ import {
   ERROR_CODE_USED_UP,
   ROLE_ASSISTANT
 } from '@/constants';
-// import message from '@/i18n/zh/common/message';
 import { ROUTE_CONSOLE_APPLICATION_BUY } from '@/router';
 
 interface IData {
@@ -171,6 +170,7 @@ export default defineComponent({
   .content {
     border-radius: 20px;
     padding: 8px 15px;
+    width: 100%;
     max-width: 800px;
     .image {
       max-width: 100%;

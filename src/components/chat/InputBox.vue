@@ -197,7 +197,8 @@ textarea.input:focus {
 
 <style lang="scss" scoped>
 .input-box {
-  width: 800px;
+  width: 100%;
+  max-width: 800px;
   margin: auto;
   position: relative;
   border-radius: 20px;
