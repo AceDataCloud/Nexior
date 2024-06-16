@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sat, 15 Jun 2024 04:49:17 GMT and should not be manually modified.
+This log was last generated on Sun, 16 Jun 2024 15:39:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.5.0
+
+Sun, 16 Jun 2024 15:39:44 GMT
+
+### Minor changes
+
+- add config page for site (germey@acedata.cloud)
 
 ## 1.4.2
 
