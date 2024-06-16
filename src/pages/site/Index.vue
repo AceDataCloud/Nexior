@@ -7,13 +7,16 @@
         </el-col>
       </el-row>
       <el-row :gutter="15">
-        <el-col :md="24" :xs="24">
-          <el-card>
+        <el-col :md="12" :xs="24">
+          <el-card shadow="hover">
             <h4 class="title">
               {{ $t('site.title.basicConfig') }}
             </h4>
             <el-divider />
             <el-form :model="site" class="form" label-width="auto" style="max-width: 600px">
+              <el-form-item :label="$t('site.field.origin')">
+                {{ site.origin }}
+              </el-form-item>
               <el-form-item :label="$t('site.field.title')">
                 {{ site.title }}
                 <edit-text
@@ -57,8 +60,80 @@
                   :model-value="site.admins"
                   :title="$t('site.title.editAdmins')"
                   :placeholder="$t('site.placeholder.admins')"
+                  :min="1"
+                  :min-error-message="$t('site.message.atLeastOneAdmin')"
                   @confirm="onSave({ admins: $event })"
                 />
+              </el-form-item>
+            </el-form>
+          </el-card>
+        </el-col>
+        <el-col :md="12" :xs="24">
+          <el-card shadow="hover" class="mb-4">
+            <h4 class="title">
+              {{ $t('site.title.distributionConfig') }}
+            </h4>
+            <el-divider />
+            <el-form :model="site" class="form" label-width="auto" style="max-width: 600px">
+              <el-form-item :label="$t('site.field.distributionDefaultInviterId')">
+                {{ site.distribution?.default_inviter_id }}
+                <edit-text
+                  :model-value="site.distribution?.default_inviter_id"
+                  :title="$t('site.title.editDistributionDefaultInviterId')"
+                  :placeholder="$t('site.placeholder.editDistributionDefaultInviterId')"
+                  @confirm="
+                    onSave({
+                      distribution: {
+                        ...site.distribution,
+                        default_inviter_id: $event
+                      }
+                    })
+                  "
+                />
+                <span class="block tip">
+                  {{ $t('site.message.distributionDefaultInviterIdTip') }}
+                </span>
+              </el-form-item>
+              <el-form-item :label="$t('site.field.distributionForceInviterId')">
+                {{ site.distribution?.force_inviter_id }}
+                <edit-text
+                  :model-value="site.distribution?.force_inviter_id"
+                  :title="$t('site.title.editDistributionForceInviterId')"
+                  :placeholder="$t('site.placeholder.editDistributionForceInviterId')"
+                  @confirm="
+                    onSave({
+                      distribution: {
+                        ...site.distribution,
+                        force_inviter_id: $event
+                      }
+                    })
+                  "
+                />
+                <span class="block tip">
+                  {{ $t('site.message.distributionForceInviterIdTip') }}
+                </span>
+              </el-form-item>
+            </el-form>
+          </el-card>
+          <el-card shadow="hover">
+            <h4 class="title">
+              {{ $t('site.title.featuresConfig') }}
+            </h4>
+            <el-divider />
+            <el-form :model="site" class="form" label-width="auto" style="max-width: 600px">
+              <el-form-item :label="$t('site.field.distributionDefaultInviterId')">
+                {{ site.distribution?.default_inviter_id }}
+
+                <span class="block tip">
+                  {{ $t('site.message.distributionDefaultInviterIdTip') }}
+                </span>
+              </el-form-item>
+              <el-form-item :label="$t('site.field.distributionForceInviterId')">
+                {{ site.distribution?.force_inviter_id }}
+
+                <span class="block tip">
+                  {{ $t('site.message.distributionForceInviterIdTip') }}
+                </span>
               </el-form-item>
             </el-form>
           </el-card>
@@ -75,6 +150,7 @@ import EditText from '@/components/site/EditText.vue';
 import EditImage from '@/components/site/EditImage.vue';
 import EditArray from '@/components/site/EditArray.vue';
 import { siteOperator } from '@/operators';
+import site from '@/router/site';
 
 export default defineComponent({
   name: 'SiteIndex',
@@ -121,6 +197,7 @@ export default defineComponent({
 .panel {
   padding: 30px;
   background-color: var(--el-bg-color-page);
+  overflow-y: auto;
   h2.title {
     font-size: 26px;
     font-weight: bold;
@@ -136,6 +213,10 @@ export default defineComponent({
   .form {
     .logo {
       max-width: 200px;
+    }
+    .tip {
+      color: var(--el-text-color-secondary);
+      font-size: 12px;
     }
   }
 }

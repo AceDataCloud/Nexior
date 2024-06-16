@@ -1,10 +1,11 @@
 <template>
   <el-dialog v-model="editing" :title="title" width="400px">
     <el-tag
-      v-for="(item, itemKey) in modelValue"
+      v-for="(item, itemKey) in value"
       :key="itemKey"
       closable
       round
+      class="mr-2 mb-2"
       :disable-transitions="false"
       @close="onClose(item)"
     >
@@ -36,7 +37,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElDialog, ElInput, ElButton, ElIcon, ElTag } from 'element-plus';
+import { ElDialog, ElInput, ElButton, ElIcon, ElTag, ElMessage } from 'element-plus';
 import { Edit } from '@element-plus/icons-vue';
 
 export default defineComponent({
@@ -61,6 +62,14 @@ export default defineComponent({
     placeholder: {
       type: String,
       required: true
+    },
+    min: {
+      type: Number,
+      default: undefined
+    },
+    minErrorMessage: {
+      type: String,
+      default: undefined
     }
   },
   emits: ['confirm', 'cancel'],
@@ -77,6 +86,10 @@ export default defineComponent({
       this.editing = false;
     },
     onConfirm() {
+      if (this.min !== undefined && this.value.length < this.min) {
+        ElMessage.error(this.minErrorMessage);
+        return;
+      }
       this.$emit('confirm', this.value);
       this.editing = false;
     },

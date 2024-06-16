@@ -3,6 +3,10 @@
     "message": "站点标题",
     "description": "展示在编辑框的标题"
   },
+  "field.origin": {
+    "message": "站点域名",
+    "description": "展示在编辑框的标题"
+  },
   "field.description": {
     "message": "站点描述",
     "description": "展示在编辑框的标题"
@@ -19,12 +23,28 @@
     "message": "站点管理员",
     "description": "展示在编辑框的标题"
   },
+  "field.distributionDefaultInviterId": {
+    "message": "默认邀请人",
+    "description": "展示在编辑框的标题"
+  },
+  "field.distributionForceInviterId": {
+    "message": "强制邀请人",
+    "description": "展示在编辑框的标题"
+  },
+  "field.featuresChat": {
+    "message": "Chat",
+    "description": "展示在编辑框的标题"
+  },
   "title.basicConfig": {
     "message": "基本配置",
     "description": "展示在编辑框的标题"
   },
   "title.editAdmins": {
     "message": "编辑管理员",
+    "description": "展示在编辑框的标题"
+  },
+  "title.featuresConfig": {
+    "message": "功能配置",
     "description": "展示在编辑框的标题"
   },
   "title.editTitle": {
@@ -43,8 +63,28 @@
     "message": "编辑描述",
     "description": "展示在编辑框的标题"
   },
+  "title.distributionConfig": {
+    "message": "分销配置",
+    "description": "展示在编辑框的标题"
+  },
+  "title.editDistributionDefaultInviterId": {
+    "message": "编辑默认邀请人",
+    "description": "展示在编辑框的标题"
+  },
+  "title.editDistributionForceInviterId": {
+    "message": "编辑强制邀请人",
+    "description": "展示在编辑框的标题"
+  },
   "placeholder.title": {
     "message": "请输入站点标题",
+    "description": "展示在编辑框的标题"
+  },
+  "placeholder.editDistributionDefaultInviterId": {
+    "message": "请输入默认邀请人ID",
+    "description": "展示在编辑框的标题"
+  },
+  "placeholder.editDistributionForceInviterId": {
+    "message": "请输入强制邀请人ID",
     "description": "展示在编辑框的标题"
   },
   "message.uploadImageExceed": {
@@ -62,6 +102,18 @@
   "message.editFaviconTip": {
     "message": "建议尺寸：32*32px",
     "description": "上传图片的提示语言"
+  },
+  "message.atLeastOneAdmin": {
+    "message": "至少保留一个管理员",
+    "description": "至少保留一个管理员的提示"
+  },
+  "message.distributionDefaultInviterIdTip": {
+    "message": "默认邀请人的用户 ID，分销链接如果不携带 inviter_id 参数，则默认使用该用户 ID 作为邀请人。",
+    "description": "默认邀请人ID的提示"
+  },
+  "message.distributionForceInviterIdTip": {
+    "message": "强制邀请人的用户 ID，如果设置了此 ID，无论分销链接是否携带 inviter_id 参数，则强制使用该用户 ID 作为邀请人。",
+    "description": "强制邀请人ID的提示"
   },
   "button.upload": {
     "message": "上传",
