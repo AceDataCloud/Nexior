@@ -15,6 +15,7 @@ export default (): IRootState => {
     setting: {
       navigationCollapsed: true
     },
+    site: {},
     chatdoc: chatdocState(),
     chat: chatState(),
     midjourney: midjourneyState(),

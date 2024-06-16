@@ -1,130 +1,130 @@
 {
   "button.detail": {
-    "message": "詳細を表示",
-    "description": "ウェブサイトの紹介履歴の詳細を表示するために使用されるボタンのテキスト。"
+    "message": "查看详情",
+    "description": "按钮文本，用于查看网站的推荐历史详情。"
   },
   "button.withdrawal": {
-    "message": "引き出し",
-    "description": "ウェブサイトの紹介報酬を引き出すために使用されるボタンのテキスト。"
+    "message": "提现",
+    "description": "按钮文本，用于提现网站的推荐收益。"
   },
   "button.query": {
-    "message": "クエリ",
-    "description": "ウェブサイトの紹介報酬をクエリするために使用されるボタンのテキスト。"
+    "message": "查询",
+    "description": "按钮文本，用于查询网站的推荐收益。"
   },
   "field.id": {
-    "message": "紹介ID",
-    "description": "配布の一意の識別子。配布とはAPIサービスウェブサイトの紹介を指します。"
+    "message": "推荐 ID",
+    "description": "分销的唯一标识符，分销指 API 服务网站的推荐。"
   },
   "field.percentage": {
-    "message": "紹介報酬率",
-    "description": "紹介報酬の割合。注文金額に基づいて計算されます。"
+    "message": "推荐收益百分比",
+    "description": "推荐收益的百分比，根据订单金额计算。"
   },
   "field.price": {
-    "message": "注文金額",
-    "description": "紹介報酬を計算するために使用される注文の金額。"
+    "message": "订单金额",
+    "description": "订单金额，用于计算推荐收益。"
   },
   "field.reward": {
-    "message": "紹介報酬",
-    "description": "注文金額と紹介報酬率に基づいて計算される紹介報酬。"
+    "message": "推荐奖励",
+    "description": "推荐收益，根据订单金额和推荐收益百分比计算。"
   },
   "field.createdAt": {
-    "message": "紹介時間",
-    "description": "紹介が作成された時間。"
+    "message": "推荐时间",
+    "description": "推荐创建的时间。"
   },
   "field.level": {
-    "message": "レベル",
-    "description": "紹介報酬を計算するために使用される紹介のレベル。"
+    "message": "级别",
+    "description": "推荐的级别，用于计算推荐收益。"
   },
   "field.threshold": {
-    "message": "紹介報酬閾値",
-    "description": "紹介報酬を引き出すために使用される紹介報酬の閾値。"
+    "message": "推荐收益门槛",
+    "description": "推荐收益的门槛，用于提现推荐收益。"
   },
   "field.inviteeId": {
-    "message": "招待者ID",
-    "description": "招待者の一意の識別子。招待者とはAPIサービスウェブサイトに招待者を招待するユーザーを指します。"
+    "message": "邀请者 ID",
+    "description": "邀请者的唯一标识符，邀请者指邀请被邀请者到 API 服务网站。"
   },
   "field.isVerified": {
-    "message": "確認済み",
-    "description": "紹介ユーザーが実際の情報で確認されているかどうかを示すフラグ。"
+    "message": "已验证",
+    "description": "标志，指示推荐用户是否通过真实信息验证。"
   },
   "message.deltaPriceForNextLevel": {
-    "message": "次のレベルまでの差額",
-    "description": "現在の注文金額と次のレベルの閾値との差額。"
+    "message": "与下一级别的差额",
+    "description": "当前订单金额与下一级别门槛之间的差额。"
   },
   "message.developingWithDrawal": {
-    "message": "引き出し機能は開発中です。Discordに参加し、サポートに相談してください。引き出しには関連する所得税が控除されます。",
-    "description": "引き出し機能が開発中であることを示すメッセージ。"
+    "message": "请加入 Discord 并咨询支持人员处理提现，提现将扣除相关所得税。",
+    "description": "指示提现功能正在开发中的消息。"
   },
   "message.technicalDetail": {
-    "message": "技術的な詳細",
-    "description": "紹介システムの技術的な詳細が実装されています。"
+    "message": "技术细节",
+    "description": "推荐系统的技术细节实现。"
   },
   "message.distributionQrDescription": {
-    "message": "紹介QRコード（リンクと同じ内容）",
-    "description": "紹介QRコードの説明。"
+    "message": "推荐二维码（与链接内容相同）",
+    "description": "推荐二维码的描述。"
   },
   "message.distributionLink": {
-    "message": "紹介リンク",
-    "description": "顧客を下位顧客としてバインドするために使用される紹介リンク。"
+    "message": "推荐链接",
+    "description": "推荐链接，用于将客户绑定为下级客户。"
   },
   "message.updateSuccessfully": {
-    "message": "更新が成功しました",
-    "description": "紹介情報が正常に更新されたことを示すメッセージ。"
+    "message": "更新成功",
+    "description": "指示推荐信息已成功更新的消息。"
   },
   "message.distributionLinkDescription": {
-    "message": "このプラットフォームで顧客がこのリンクまたはQRコードを介して登録すると、顧客は永久にあなたの下位顧客としてバインドされ、現在の配布比率に従ってこのプラットフォームでのすべての消費注文があなたのアカウントに返金されます。",
-    "description": "紹介リンクの説明。"
+    "message": "如果客户通过此链接或二维码在本平台注册，客户将永久绑定为您的下级客户，并且客户在本平台的所有消费订单将根据当前分销比例返还到您的账户。",
+    "description": "推荐链接的描述。"
   },
   "message.distributionLinkDescription2": {
-    "message": "このリンクにはあなたのユーザーIDが含まれています。顧客がリンクを開くと、顧客のブラウザにCookieの形であなたのユーザーIDが記録され、有効期間は7日間です。7日以内に顧客がこのプラットフォームに登録し、コードをスキャンすると、CookieとともにあなたのユーザーIDが登録サーバーにアップロードされ、顧客はあなたの下流顧客としてバインドされます。",
-    "description": "紹介リンクの説明。"
+    "message": "此链接包含您的用户 ID。客户打开链接后，您的用户 ID 将以 Cookies 的形式记录在客户的浏览器中，有效期为七天。在七天内，如果客户通过扫描该代码注册本平台，您的用户 ID 将与 Cookies 一起上传到注册服务器，并且客户可以作为您的下游客户绑定。",
+    "description": "推荐链接的描述。"
   },
   "title.price": {
-    "message": "紹介注文の合計金額",
-    "description": "紹介注文の合計金額。紹介報酬を計算するために使用されます。"
+    "message": "推荐订单总金额",
+    "description": "推荐订单的总金额，用于计算推荐收益。"
   },
   "title.reward": {
-    "message": "紹介報酬の合計",
-    "description": "注文金額と紹介報酬率に基づいて計算される紹介報酬の合計。"
+    "message": "总推荐奖励",
+    "description": "总推荐奖励，根据订单金额和推荐收益百分比计算。"
   },
   "title.level": {
-    "message": "紹介レベル",
-    "description": "紹介報酬を計算するために使用される紹介レベル。"
+    "message": "推荐级别",
+    "description": "推荐级别，用于计算推荐收益。"
   },
   "title.percentage": {
-    "message": "紹介報酬率",
-    "description": "紹介報酬率。紹介報酬を計算するために使用されます。"
+    "message": "推荐收益百分比",
+    "description": "推荐收益百分比，用于计算推荐收益。"
   },
   "title.currentLevel": {
-    "message": "現在のレベル",
-    "description": "紹介報酬を計算するために使用される現在の紹介レベル。"
+    "message": "当前级别",
+    "description": "当前推荐级别，用于计算推荐收益。"
   },
   "title.nextLevel": {
-    "message": "次のレベル",
-    "description": "紹介報酬を計算するために使用される次の紹介レベル。"
+    "message": "下一级别",
+    "description": "下一个推荐级别，用于计算推荐收益。"
   },
   "title.currentPercentage": {
-    "message": "現在の紹介報酬率",
-    "description": "紹介報酬を計算するために使用される現在の紹介報酬率。"
+    "message": "当前推荐收益百分比",
+    "description": "当前推荐收益百分比，用于计算推荐收益。"
   },
   "title.nextPercentage": {
-    "message": "次のレベルの紹介報酬率",
-    "description": "紹介報酬を計算するために使用される次のレベルの紹介報酬率。"
+    "message": "下一级别推荐收益百分比",
+    "description": "下一个级别的推荐收益百分比，用于计算推荐收益。"
   },
   "title.levelInfo": {
-    "message": "レベル情報",
-    "description": "紹介報酬を計算するために使用される紹介レベルの情報。"
+    "message": "级别信息",
+    "description": "推荐级别的信息，用于计算推荐收益。"
   },
   "title.distributionLink": {
-    "message": "紹介リンク",
-    "description": "顧客を下位顧客としてバインドするために使用される紹介リンク。"
+    "message": "推荐链接",
+    "description": "推荐链接，用于将客户绑定为下级客户。"
   },
   "title.inviteesCount": {
-    "message": "招待者の総数",
-    "description": "招待者の総数。紹介報酬を計算するために使用されます。"
+    "message": "邀请者总数",
+    "description": "邀请者的总数，用于计算推荐收益。"
   },
   "title.manageDistributionStatus": {
-    "message": "配布管理",
-    "description": "紹介ステータスの管理。"
+    "message": "分销管理",
+    "description": "推荐状态的管理。"
   }
 }

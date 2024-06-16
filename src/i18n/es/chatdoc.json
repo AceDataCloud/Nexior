@@ -1,43 +1,43 @@
 {
   "button.uploadDocuments": {
     "message": "Subir documentos",
-    "description": "Texto en el botón, que permite al usuario subir documentos"
+    "description": "Botón que permite al usuario subir documentos"
   },
   "field.fileName": {
-    "message": "Nombre del archivo",
-    "description": "Nombre del archivo para el documento subido"
+    "message": "Nombre de archivo",
+    "description": "Nombre del archivo cargado"
   },
   "field.createdAt": {
-    "message": "Hora de creación",
-    "description": "Hora en que se subió el documento"
+    "message": "Fecha de creación",
+    "description": "Hora de carga del documento"
   },
   "field.fileExtension": {
     "message": "Tipo de archivo",
-    "description": "Tipo de archivo para el documento subido"
+    "description": "Tipo de archivo cargado"
   },
   "field.fileUrl": {
-    "message": "Enlace del archivo",
-    "description": "Enlace al documento subido"
+    "message": "Enlace de archivo",
+    "description": "Enlace del archivo cargado"
   },
   "field.fileSize": {
-    "message": "Tamaño del archivo",
-    "description": "Tamaño del documento subido"
+    "message": "Tamaño de archivo",
+    "description": "Tamaño del archivo cargado"
   },
   "field.state": {
     "message": "Estado",
     "description": "Estado del procesamiento del documento"
   },
   "field.stateProcessing": {
-    "message": "Aprendiendo",
-    "description": "El documento se está procesando"
+    "message": "Procesando",
+    "description": "El documento está siendo procesado"
   },
   "field.stateCompleted": {
-    "message": "Aprendizaje completado",
-    "description": "El documento se procesó con éxito"
+    "message": "Completado",
+    "description": "El procesamiento del documento fue exitoso"
   },
   "field.stateFailed": {
-    "message": "Aprendizaje fallido",
-    "description": "Error en el procesamiento del documento"
+    "message": "Fallido",
+    "description": "El procesamiento del documento ha fallado"
   },
   "field.name": {
     "message": "Nombre",
@@ -48,128 +48,128 @@
     "description": "Descripción del documento"
   },
   "message.introductionForKnowledge": {
-    "message": "Los documentos se pueden agregar a la base de conocimientos, y cuando el robot responda, puede utilizar el conocimiento en el repositorio para responder.",
-    "description": "Mensaje de introducción para la base de conocimientos"
+    "message": "Los documentos pueden agregarse al repositorio de conocimientos para que el robot pueda utilizarlos al dar respuestas.",
+    "description": "Información introductoria sobre el repositorio de conocimientos"
   },
   "message.introductionForRepository": {
-    "message": "La base de conocimientos es una colección de documentos donde puedes agregar documentos. Cuando el robot responde, responderá desde los documentos en la base de conocimientos.",
-    "description": "Mensaje de introducción para la base de conocimientos"
+    "message": "El repositorio de conocimientos es una colección de documentos a la que puede agregar documentos. El robot responderá utilizando los documentos del repositorio de conocimientos.",
+    "description": "Información introductoria sobre el repositorio de conocimientos"
   },
   "message.uploadDocumentsExceed": {
-    "message": "La cantidad de documentos subidos excede el límite",
-    "description": "Mensaje de error cuando la cantidad de documentos subidos excede el límite"
+    "message": "Se ha excedido el límite de carga de documentos",
+    "description": "Mensaje de error cuando se excede el límite de carga de documentos"
   },
   "message.uploadDocumentsError": {
-    "message": "Error al subir el documento",
-    "description": "Mensaje de error cuando falla la carga del documento"
+    "message": "Error al subir documentos",
+    "description": "Mensaje de error al fallar la carga de documentos"
   },
   "message.uploadDocumentsSuccess": {
-    "message": "Carga de documento exitosa",
-    "description": "Mensaje de éxito cuando la carga del documento es exitosa"
+    "message": "Documentos subidos exitosamente",
+    "description": "Mensaje de éxito al subir documentos"
   },
   "message.createDocumentSuccess": {
-    "message": "Creación de documento exitosa",
-    "description": "Mensaje de éxito cuando la creación del documento es exitosa"
+    "message": "Documento creado exitosamente",
+    "description": "Mensaje de éxito al crear el documento"
   },
   "message.startCreateDocument": {
-    "message": "Comenzar a aprender el documento...",
-    "description": "Mensaje al comenzar a aprender el documento"
+    "message": "Iniciando proceso de aprendizaje del documento...",
+    "description": "Mensaje al iniciar el proceso de aprendizaje del documento"
   },
   "message.createDocumentError": {
     "message": "Error al aprender el documento",
-    "description": "Mensaje de error cuando falla el aprendizaje del documento"
+    "description": "Mensaje de error al fallar el aprendizaje del documento"
   },
   "message.dragOrClickToUpload": {
-    "message": "Arrastra o haz clic para subir el documento",
-    "description": "Mensaje para arrastrar o hacer clic para subir el documento"
+    "message": "Arrastre o haga clic para subir documentos",
+    "description": "Mensaje sobre cómo subir documentos arrastrando o haciendo clic"
   },
   "message.learningDocument": {
-    "message": "Aprendiendo, por favor espera...",
-    "description": "Mensaje al aprender el documento"
+    "message": "Aprendiendo, por favor espere...",
+    "description": "Mensaje durante el proceso de aprendizaje del documento"
   },
   "message.startNewChat": {
-    "message": "Iniciar nuevo chat",
-    "description": "Mensaje para iniciar un nuevo chat"
+    "message": "Iniciar nueva conversación",
+    "description": "Mensaje para iniciar una nueva conversación"
   },
   "message.errorApiError": {
-    "message": "Error al responder, por favor inténtalo de nuevo más tarde",
-    "description": "Mensaje de error cuando falla la respuesta"
+    "message": "Error de respuesta. Por favor, inténtelo de nuevo más tarde",
+    "description": "Mensaje de error al fallar la respuesta de la API"
   },
   "message.errorBadRequest": {
-    "message": "El contenido de la solicitud no está formateado correctamente, por favor pregunta de nuevo",
-    "description": "Mensaje de error cuando el contenido de la solicitud no está formateado correctamente"
+    "message": "Formato de contenido de la solicitud incorrecto. Por favor, reformule la pregunta",
+    "description": "Mensaje de error cuando el formato del contenido de la solicitud es incorrecto"
   },
   "message.errorNoConversation": {
-    "message": "El contenido de la conversación no existe o ha expirado, por favor inicia una nueva conversación",
-    "description": "Mensaje de error cuando el contenido de la conversación no existe o ha expirado"
+    "message": "La conversación no existe o ha expirado. Por favor, inicie una nueva conversación",
+    "description": "Mensaje de error cuando la conversación no existe o ha expirado"
   },
   "message.errorContentTooLarge": {
-    "message": "El contenido de la pregunta es demasiado largo, por favor acórtalo e inténtalo de nuevo",
-    "description": "Mensaje de error cuando el contenido de la pregunta es demasiado largo"
+    "message": "El contenido de la pregunta es demasiado largo. Por favor, reduzca su extensión y vuelva a intentarlo",
+    "description": "Mensaje de error cuando el contenido de la pregunta es demasiado extenso"
   },
   "message.errorTooManyRequests": {
-    "message": "Tu operación es demasiado frecuente, por favor inténtalo de nuevo más tarde",
-    "description": "Mensaje de error cuando la operación es demasiado frecuente"
+    "message": "Sus operaciones son demasiado frecuentes. Por favor, inténtelo de nuevo más tarde",
+    "description": "Mensaje de error cuando las operaciones son demasiado frecuentes"
   },
   "message.errorUsedUp": {
-    "message": "Se ha alcanzado el límite de uso de tu paquete, por favor compra más uso para continuar",
+    "message": "Ha alcanzado el límite de uso de su paquete. Por favor, compre más uso para continuar",
     "description": "Mensaje de error cuando se ha alcanzado el límite de uso del paquete"
   },
   "message.errorUnknown": {
-    "message": "Se produjo un error desconocido en el servidor, por favor inténtalo de nuevo más tarde o contacta al servicio al cliente",
-    "description": "Mensaje de error cuando se produce un error desconocido en el servidor"
+    "message": "Ocurrió un error desconocido en el servidor. Por favor, inténtelo de nuevo más tarde o póngase en contacto con el servicio de atención al cliente",
+    "description": "Mensaje de error cuando ocurre un error desconocido en el servidor"
   },
   "message.errorTimeout": {
-    "message": "El tiempo de respuesta a la pregunta se agotó, por favor inténtalo de nuevo más tarde",
-    "description": "Mensaje de error cuando se agota el tiempo de respuesta a la pregunta"
+    "message": "Se ha excedido el tiempo para responder a la pregunta. Por favor, inténtelo de nuevo más tarde",
+    "description": "Mensaje de error cuando se excede el tiempo para responder a la pregunta"
   },
   "message.errorNotApplied": {
-    "message": "Todavía no has solicitado este servicio, por favor solicítalo antes de continuar preguntando",
-    "description": "Mensaje de error cuando el usuario no ha solicitado este servicio aún"
+    "message": "Usted no ha solicitado este servicio. Por favor, solicítelo antes de continuar preguntando",
+    "description": "Mensaje de error cuando el usuario no ha solicitado el servicio"
   },
   "message.confirmDelete": {
     "message": "Confirmar eliminación",
-    "description": "Mensaje para confirmar la eliminación"
+    "description": "Mensaje de confirmación para eliminar"
   },
   "message.howToUse": {
-    "message": "Presiona Shift+Enter para hacer un salto de línea",
-    "description": "Mensaje para mostrar cómo hacer un salto de línea"
+    "message": "Presione Shift+Enter para hacer un salto de línea",
+    "description": "Instrucciones sobre cómo hacer un salto de línea"
   },
   "message.createRepositorySuccess": {
-    "message": "Base de conocimientos creada exitosamente",
-    "description": "Mensaje de éxito cuando se crea la base de conocimientos exitosamente"
+    "message": "Repositorio creado con éxito",
+    "description": "Mensaje de éxito al crear el repositorio"
   },
   "message.createRepositoryFailed": {
-    "message": "Error al crear la base de conocimientos",
-    "description": "Mensaje de error cuando falla la creación de la base de conocimientos"
+    "message": "Fallo al crear el repositorio",
+    "description": "Mensaje de error al fallar la creación del repositorio"
   },
   "message.deleteRepositorySuccess": {
-    "message": "Base de conocimientos eliminada exitosamente",
-    "description": "Mensaje de éxito cuando se elimina la base de conocimientos exitosamente"
+    "message": "Repositorio eliminado con éxito",
+    "description": "Mensaje de éxito al eliminar el repositorio"
   },
   "message.deleteDocumentSuccess": {
-    "message": "Documento eliminado exitosamente",
-    "description": "Mensaje de éxito cuando se elimina el documento exitosamente"
+    "message": "Documento eliminado con éxito",
+    "description": "Mensaje de éxito al eliminar el documento"
   },
   "message.currentRepository": {
-    "message": "Base de conocimientos actual",
-    "description": "Mensaje para mostrar la base de conocimientos actual"
+    "message": "Repositorio actual",
+    "description": "Mensaje para mostrar el repositorio actual"
   },
   "message.nameRequired": {
-    "message": "El nombre no puede estar vacío",
-    "description": "Mensaje de error cuando el nombre está vacío"
+    "message": "El nombre es obligatorio",
+    "description": "Mensaje de error cuando el nombre es obligatorio"
   },
   "message.inputRepositoryName": {
-    "message": "Nombre de la base de conocimientos",
-    "description": "Marcador de posición de entrada para el nombre de la base de conocimientos"
+    "message": "Nombre del repositorio",
+    "description": "Marcador de posición para ingresar el nombre del repositorio"
   },
   "message.inputRepositoryDescription": {
-    "message": "Describe tu base de conocimientos en una oración",
-    "description": "Marcador de posición de entrada para la descripción de la base de conocimientos"
+    "message": "Describe su repositorio en una oración",
+    "description": "Descripción del repositorio de conocimientos como marcador de posición de entrada"
   },
   "message.supportedFiles": {
     "message": "Tipos de archivo admitidos: .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
-    "description": "Mensaje para mostrar los tipos de archivo admitidos"
+    "description": "Muestra la información de los tipos de archivo admitidos"
   },
   "nav.chat": {
     "message": "Chat",
@@ -180,19 +180,19 @@
     "description": "Elemento de navegación para configuración"
   },
   "nav.manage": {
-    "message": "Gestionar",
-    "description": "Elemento de navegación para gestionar"
+    "message": "Gestión",
+    "description": "Elemento de navegación para gestión"
   },
   "title.manage": {
-    "message": "Gestionar bases de conocimientos",
-    "description": "Título para gestionar la base de conocimientos"
+    "message": "Gestionar conocimientos",
+    "description": "Título de gestión de conocimientos"
   },
   "title.createRepository": {
-    "message": "Crear base de conocimientos",
-    "description": "Título para crear la base de conocimientos"
+    "message": "Crear repositorio",
+    "description": "Título de creación de repositorio de conocimientos"
   },
   "title.repositories": {
-    "message": "Lista de bases de conocimientos",
-    "description": "Título para la lista de bases de conocimientos"
+    "message": "Lista de repositorios",
+    "description": "Título de la lista de repositorios de conocimientos"
   }
 }

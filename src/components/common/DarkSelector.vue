@@ -19,10 +19,10 @@ export default defineComponent({
     ElButton
   },
   emits: ['update:dark'],
-  computed: {
-    dark() {
-      return getCookie('THEME') === 'dark';
-    }
+  data() {
+    return {
+      dark: getCookie('THEME') === 'dark'
+    };
   },
   watch: {
     dark(val) {
@@ -48,6 +48,7 @@ export default defineComponent({
         path: '/',
         domain: getDomain()
       });
+      this.dark = isDark;
     }
   }
 });

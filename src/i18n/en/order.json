@@ -1,51 +1,51 @@
 {
   "button.pay": {
     "message": "Pay",
-    "description": "The text in the button, which is used to pay the order."
+    "description": "Button text for paying an order."
   },
   "button.continuePay": {
     "message": "Continue to Pay",
-    "description": "The text in the button, which is used to continue to pay the order."
+    "description": "Button text for continuing to pay an order."
   },
   "button.checkDetail": {
     "message": "Check Details",
-    "description": "The text in the button, which is used to check the details of the order."
+    "description": "Button text for checking the details of an order."
   },
   "button.query": {
     "message": "Query",
-    "description": "The text in the button, which is used to query the order."
+    "description": "Button text for querying an order."
   },
   "button.finish": {
-    "message": "Manually Complete",
-    "description": "The text in the button, which is used to manually complete the order."
+    "message": "Complete Manually",
+    "description": "Button text for manually completing an order."
   },
   "button.update": {
     "message": "Update",
-    "description": "The text in the button, which is used to update the order."
+    "description": "Button text for updating an order."
   },
   "field.id": {
     "message": "Order ID",
-    "description": "The ID of the order."
+    "description": "The identification number of an order."
   },
   "field.amount": {
     "message": "Amount",
-    "description": "The credits amount of the order."
+    "description": "The monetary amount of an order."
   },
   "field.price": {
-    "message": "Amount",
-    "description": "The credits amount of the order."
+    "message": "Price",
+    "description": "The monetary price of an order."
   },
   "field.description": {
     "message": "Order Description",
-    "description": "The description of the order."
+    "description": "The description of an order."
   },
   "field.state": {
     "message": "Status",
-    "description": "The status of the order."
+    "description": "The status of an order."
   },
   "field.createdAt": {
     "message": "Creation Time",
-    "description": "The creation time of the order."
+    "description": "The time when the order was created."
   },
   "field.service": {
     "message": "Service Name",
@@ -53,86 +53,86 @@
   },
   "field.payWay": {
     "message": "Payment Method",
-    "description": "The payment method of the order."
+    "description": "The method of payment for an order."
   },
   "field.api": {
     "message": "API",
-    "description": "The API is a kind of the online service."
+    "description": "An online service known as an application programming interface."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "The Proxy is a kind of the online service, which means the HTTP Proxy used for transferring the data."
+    "description": "An online service used for transmitting data, such as an HTTP proxy."
   },
   "message.paidSuccessfully": {
     "message": "Payment Successful",
-    "description": "The message of the successful payment."
+    "description": "Message indicating successful payment."
   },
   "message.orderExpired": {
-    "message": "Order expired, please create a new order to pay.",
-    "description": "The message of the expired order."
+    "message": "Order has expired. Please create a new order to proceed with the payment.",
+    "description": "Message indicating that the order has expired."
   },
   "message.createFailed": {
     "message": "Creation Failed",
-    "description": "The message of the failed creation."
+    "description": "Message indicating failed creation."
   },
   "message.wechatPayHelp": {
-    "message": "Please open WeChat on your phone, scan to complete the payment",
-    "description": "The message of the WeChat payment help."
+    "message": "Please open WeChat on your mobile device and scan to complete the payment.",
+    "description": "Message providing guidance for WeChat payment."
   },
   "message.free": {
     "message": "Free",
-    "description": "The message of the free order."
+    "description": "Message indicating that the order is free of charge."
   },
   "message.buyInExternalUrl": {
-    "message": "Please complete the payment in the external link",
-    "description": "The message of the external link payment."
+    "message": "Please complete the payment via an external link.",
+    "description": "Message indicating payment through an external link."
   },
   "message.updateFailed": {
     "message": "Update Failed",
-    "description": "The message of the failed update."
+    "description": "Message indicating failed update."
   },
   "message.updateSuccessfully": {
     "message": "Update Successful",
-    "description": "The message of the successful update."
+    "description": "Message indicating successful update."
   },
   "message.confirmFinish": {
-    "message": "This operation will manually set the order to the payment status and complete the distribution processing, which cannot be undone. Please confirm that the customer has completed the payment, do you want to continue?",
-    "description": "The message of the confirm finish."
+    "message": "This action will manually set the order to a paid status and complete the distribution process. It cannot be undone. Please confirm that the customer has completed the payment. Do you want to proceed?",
+    "description": "Confirmation message for completing an order."
   },
   "state.pending": {
     "message": "Pending Payment",
-    "description": "The status of the order, which means this order is still pending user's payment."
+    "description": "The status of an order, indicating that the order is still awaiting payment from the user."
   },
   "state.paid": {
     "message": "Paid",
-    "description": "The status of the order, which means this order has been paid."
+    "description": "The status of an order, indicating that the order has been paid."
   },
   "state.expired": {
-    "message": "Payment Timeout",
-    "description": "The status of the order, which means this order has been expired."
+    "message": "Payment Timed Out",
+    "description": "The status of an order, indicating that the order has timed out."
   },
   "state.failed": {
     "message": "Payment Failed",
-    "description": "The status of the order, which means this order has been failed."
+    "description": "The status of an order, indicating that the payment for the order has failed."
   },
   "title.info": {
     "message": "Order Information",
-    "description": "The title which used show as a title of website, means the order information."
+    "description": "Title used for the website, indicating order information."
   },
   "title.wechatPay": {
     "message": "WeChat Pay",
-    "description": "The title which used show as a title of website, means the WeChat payment."
+    "description": "Title used for the website, indicating WeChat payment."
   },
   "title.aliPay": {
     "message": "Alipay",
-    "description": "The title which used show as a title of website, means the Alipay payment, Alipay payment is a kind of the online payment."
+    "description": "Title used for the website, indicating Alipay payment, which is an online payment method."
   },
   "title.stripe": {
     "message": "Stripe",
-    "description": "The title which used show as a title of website, means the Stripe payment, Stripe payment is a kind of the online payment."
+    "description": "Title used for the website, indicating Stripe payment, which is an online payment method."
   },
   "title.manageOrder": {
-    "message": "Manage Order",
-    "description": "The title which used show as a title of website, means the manage order."
+    "message": "Manage Orders",
+    "description": "Title used for the website, indicating order management."
   }
 }

@@ -1,35 +1,35 @@
 {
   "button.goDocument": {
     "message": "Dokument",
-    "description": "Tekst na przycisku, po kliknięciu tego przycisku zostanie przeniesiony do strony dokumentu."
+    "description": "Przycisk przenoszący użytkownika do strony dokumentacji."
   },
   "button.goCredentials": {
     "message": "Poświadczenia",
-    "description": "Tekst na przycisku, po kliknięciu tego przycisku zostanie przeniesiony do strony poświadczeń."
+    "description": "Przycisk przenoszący użytkownika do strony poświadczeń."
   },
   "button.buyMore": {
     "message": "Kup więcej",
-    "description": "Tekst na przycisku, po kliknięciu tego przycisku zostanie przeniesiony do strony zakupu więcej."
+    "description": "Przycisk przenoszący użytkownika do strony zakupu dodatkowej ilości."
   },
   "button.createOrder": {
     "message": "Utwórz zamówienie",
-    "description": "Tekst na przycisku, po kliknięciu tego przycisku zostanie przeniesiony do strony tworzenia zamówienia."
+    "description": "Przycisk przenoszący użytkownika do strony tworzenia zamówienia."
   },
   "button.custom": {
-    "message": "Niestandardowy",
-    "description": "Tekst na przycisku, po kliknięciu tego przycisku zostanie przeniesiony do niestandardowej strony."
+    "message": "Dostosuj",
+    "description": "Przycisk przenoszący użytkownika do strony dostosowania."
   },
   "button.query": {
     "message": "Zapytanie",
-    "description": "Tekst na przycisku, po kliknięciu tego przycisku zostanie przeniesiony do strony zapytania."
+    "description": "Przycisk przenoszący użytkownika do strony zapytań."
   },
   "button.usage": {
-    "message": "Historia użytkowania",
-    "description": "Tekst na przycisku, po kliknięciu tego przycisku zostanie przeniesiony do strony historii użytkowania."
+    "message": "Faktycznie wykorzystane",
+    "description": "Przycisk przenoszący użytkownika do strony faktycznie wykorzystanych zasobów."
   },
   "field.application": {
     "message": "Aplikacja",
-    "description": "Aplikacja usługi."
+    "description": "Usługa aplikacji."
   },
   "field.status": {
     "message": "Status",
@@ -45,7 +45,7 @@
   },
   "field.usedAmount": {
     "message": "Ilość użyta",
-    "description": "Ilość użyta aplikacji."
+    "description": "Ilość już użyta w aplikacji."
   },
   "field.apiKey": {
     "message": "Klucz API",
@@ -65,19 +65,19 @@
   },
   "field.traceId": {
     "message": "ID śladu",
-    "description": "ID śladu jednego wywołania API, dla aplikacji usługi API, nie tłumacz tego, zachowaj to jako 'ID śladu'"
+    "description": "ID śladu wywołania API usługi aplikacji, nie tłumaczyć, zachować jako 'ID śladu'."
   },
   "field.shouldPayPrice": {
-    "message": "Ostateczna cena",
-    "description": "Ostateczna cena aplikacji."
+    "message": "Końcowa cena",
+    "description": "Końcowa cena aplikacji."
   },
   "field.api": {
     "message": "API",
-    "description": "To rodzaj usługi online, formularz jest za pośrednictwem interfejsu API, aby zapewnić usługę użytkownikowi."
+    "description": "To jest rodzaj usługi online, która dostarcza usługi użytkownikowi za pomocą interfejsu API."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "To rodzaj usługi online, formularz jest za pośrednictwem serwera proxy HTTP (używanego do transferu danych), aby zapewnić usługę użytkownikowi."
+    "description": "To jest rodzaj usługi online, która dostarcza usługi użytkownikowi za pomocą serwera proxy HTTP (służącego do przesyłania danych)."
   },
   "field.credential": {
     "message": "Poświadczenie",
@@ -89,107 +89,107 @@
   },
   "field.package": {
     "message": "Pakiet",
-    "description": "Pakiet oznacza różne pakiety cenowe, np. 100 USD za 10000 kredytów, 200 USD za 20000 kredytów."
+    "description": "Pakiet reprezentuje różne pakiety cenowe, np. za 100 USD można otrzymać 10 000 punktów, za 200 USD można otrzymać 20 000 punktów."
   },
   "field.type": {
     "message": "Typ",
     "description": "Typ aplikacji."
   },
   "field.freeAmount": {
-    "message": "Darmowa ilość",
+    "message": "Ilość bezpłatna",
     "description": "Darmowa ilość aplikacji."
   },
   "field.extraPrice": {
-    "message": "Cena dodatkowa",
-    "description": "Dodatkowa cena, którą użytkownik powinien zapłacić za aplikację."
+    "message": "Dodatkowa cena",
+    "description": "Dodatkowa cena, którą użytkownik musi zapłacić za aplikację."
   },
   "message.alreadyApplied": {
-    "message": "Już złożyłeś wniosek o tę usługę, proszę sprawdzić konsolę",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy użytkownik już złożył wniosek o tę usługę."
+    "message": "Już złożyłeś wniosek o tę usługę, sprawdź w konsoli",
+    "description": "Komunikat dla użytkownika, gdy już złożył wniosek o tę usługę."
   },
   "message.applySuccessfully": {
-    "message": "Wniosek złożony pomyślnie",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy użytkownik pomyślnie złożył wniosek o tę usługę."
+    "message": "Wniosek pomyślnie złożony",
+    "description": "Komunikat dla użytkownika, gdy wniosek o usługę złożony pomyślnie."
   },
   "message.notApplied": {
-    "message": "Nie złożyłeś jeszcze wniosku o tę usługę, proszę złożyć wniosek o usługę przed jej użyciem",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy użytkownik jeszcze nie złożył wniosku o tę usługę."
+    "message": "Nie złożyłeś jeszcze wniosku o tę usługę, złoż go przed użyciem tej usługi",
+    "description": "Komunikat dla użytkownika, gdy jeszcze nie złożył wniosku o tę usługę przed jej użyciem."
   },
   "message.yourApplication": {
     "message": "Twój wniosek",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy użytkownik przegląda swój wniosek."
+    "description": "Komunikat dla użytkownika, gdy posiada aktywny wniosek."
   },
   "message.unverified": {
-    "message": "Musisz ukończyć uwierzytelnianie tożsamości przed złożeniem wniosku o tę usługę",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy użytkownik nie ukończył uwierzytelniania tożsamości."
+    "message": "Musisz najpierw zakończyć proces weryfikacji tożsamości, aby złożyć wniosek o tę usługę",
+    "description": "Komunikat dla użytkownika, gdy jeszcze nie zakończył procesu weryfikacji tożsamości."
   },
   "message.goVerify": {
-    "message": "Przejdź do uwierzytelniania tożsamości",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy użytkownik nie ukończył uwierzytelniania tożsamości."
+    "message": "Przejdź do weryfikacji tożsamości",
+    "description": "Komunikat dla użytkownika, aby przeszedł do procesu weryfikacji tożsamości."
   },
   "message.requiredParameter": {
     "message": "Wymagany parametr",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy użytkownik nie wprowadził wymaganego parametru."
+    "description": "Komunikat dla użytkownika, gdy nie podał wymaganego parametru."
   },
   "message.example": {
     "message": "Przykład",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy użytkownik nie wprowadził wymaganego parametru."
+    "description": "Komunikat dla użytkownika, gdy nie podał wymaganego parametru."
   },
   "message.createCredentialSuccessfully": {
-    "message": "Pomyślnie utworzono poświadczenie",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy użytkownik pomyślnie utworzył poświadczenie."
+    "message": "Utworzono poświadczenie pomyślnie",
+    "description": "Komunikat dla użytkownika, gdy pomyślnie utworzył poświadczenie."
   },
   "message.readPolicy": {
     "message": "Przeczytałem i zgadzam się",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy użytkownik przeczytał i zgodził się na politykę."
+    "description": "Komunikat dla użytkownika, gdy już przeczytał i zgadza się z polityką."
   },
   "message.policy": {
-    "message": "Umowa o korzystaniu z usług technologii danych",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy użytkownik przeczytał i zgodził się na politykę."
+    "message": "Umowa o świadczenie usług technologii danych",
+    "description": "Komunikat dla użytkownika, gdy już przeczytał i zgadza się z polityką."
   },
   "message.notAgreePolicy": {
-    "message": "Nie zgadzasz się na Umowę o korzystaniu z usług technologii danych",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy użytkownik nie zgadza się na politykę."
+    "message": "Nie zgadzasz się jeszcze na umowę o świadczenie usług technologii danych",
+    "description": "Komunikat dla użytkownika, gdy jeszcze nie zgadza się na politykę."
   },
   "message.confirmApplying": {
-    "message": "Potwierdź złożenie wniosku o usługę",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy użytkownik potwierdził złożenie wniosku o usługę."
+    "message": "Potwierdź wniosek o usługę",
+    "description": "Komunikat dla użytkownika, gdy potwierdza wniosek o usługę."
   },
   "message.rotateCredential": {
-    "message": "Zresetuj klucz",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy użytkownik zresetował klucz."
+    "message": "Resetuj klucz",
+    "description": "Komunikat dla użytkownika, gdy resetuje klucz."
   },
   "message.rotateCredentialConfirm": {
-    "message": "Czy na pewno chcesz zresetować klucz? Po zresetowaniu nie będzie możliwości odzyskania",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy użytkownik potwierdził resetowanie klucza."
+    "message": "Czy na pewno chcesz zresetować klucz? Po zresetowaniu nie będzie możliwe przywrócenie",
+    "description": "Wiadomość wyświetlana użytkownikowi, gdy potwierdza zresetowanie klucza."
   },
   "message.idDoesNotExist": {
-    "message": "Aplikacja nie istnieje",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy aplikacja nie istnieje."
+    "message": "ID nie istnieje",
+    "description": "Wiadomość wyświetlana użytkownikowi, gdy ID nie istnieje."
   },
   "message.rotateCredentialSuccessfully": {
-    "message": "Pomyślnie zresetowano klucz",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy resetowanie klucza zakończyło się sukcesem."
+    "message": "Klucz zresetowany pomyślnie",
+    "description": "Wiadomość wyświetlana użytkownikowi po pomyślnym zresetowaniu klucza."
   },
   "message.rotateCredentialFailed": {
-    "message": "Resetowanie klucza nie powiodło się, proszę skontaktować się z obsługą",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy resetowanie klucza nie powiodło się."
+    "message": "Zresetowanie klucza nie powiodło się, skontaktuj się z obsługą",
+    "description": "Wiadomość wyświetlana użytkownikowi po nieudanym zresetowaniu klucza."
   },
   "message.updateFailed": {
     "message": "Aktualizacja nie powiodła się",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy aktualizacja nie powiodła się."
+    "description": "Wiadomość wyświetlana użytkownikowi po nieudanej aktualizacji."
   },
   "message.updateSuccessfully": {
-    "message": "Aktualizacja zakończona sukcesem",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy aktualizacja zakończyła się sukcesem."
+    "message": "Aktualizacja pomyślna",
+    "description": "Wiadomość wyświetlana użytkownikowi po pomyślnej aktualizacji."
   },
   "title.buyService": {
     "message": "Kup usługę",
     "description": "Tytuł strony, gdy użytkownik chce kupić usługę."
   },
   "title.applicationRemainingCount": {
-    "message": "Modyfikuj liczbę",
-    "description": "Tytuł strony, gdy użytkownik chce zmodyfikować liczbę aplikacji."
+    "message": "Liczba pozostałych aplikacji",
+    "description": "Tytuł strony, gdy użytkownik chce zmienić liczbę aplikacji."
   },
   "title.manageApplication": {
     "message": "Zarządzanie aplikacją",

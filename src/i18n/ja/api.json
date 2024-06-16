@@ -1,31 +1,31 @@
 {
   "entity.requestQueries": {
     "message": "リクエストクエリ",
-    "description": "HTTPリクエストクエリパラメータ。"
+    "description": "HTTP リクエストのクエリパラメータ。"
   },
   "entity.requestBody": {
     "message": "リクエストボディ",
-    "description": "HTTPリクエストボディ。"
+    "description": "HTTP リクエストのリクエストボディ。"
   },
   "entity.responseBody": {
     "message": "レスポンスボディ",
-    "description": "HTTPレスポンスボディ。"
+    "description": "HTTP レスポンスのレスポンスボディ。"
   },
   "entity.requestHeaders": {
     "message": "リクエストヘッダ",
-    "description": "HTTPリクエストヘッダ。"
+    "description": "HTTP リクエストのリクエストヘッダ。"
   },
   "entity.requestHeader": {
     "message": "リクエストヘッダ",
-    "description": "HTTPリクエストヘッダ、リクエストヘッダの単一形式。"
+    "description": "HTTP リクエストのリクエストヘッダ、単数形式のみ。"
   },
   "entity.responseHeaders": {
     "message": "レスポンスヘッダ",
-    "description": "HTTPレスポンスヘッダ。"
+    "description": "HTTP レスポンスのレスポンスヘッダ。"
   },
   "entity.response": {
     "message": "レスポンス",
-    "description": "HTTPレスポンス。"
+    "description": "HTTP レスポンス。"
   },
   "entity.success": {
     "message": "成功",
@@ -53,31 +53,31 @@
   },
   "message.free": {
     "message": "無料",
-    "description": "価格が無料であり、APIサービスの利用にクレジットやお金を支払う必要がないことを意味します。"
+    "description": "価格が無料であり、APIサービスを利用する際には何らポイントや通貨を支払う必要がないことを示します。"
   },
   "message.appliedCount": {
-    "message": "申請回数",
+    "message": "適用回数",
     "description": "適用されたAPIサービスの回数。"
   },
   "message.firstFree": {
     "message": "初回無料",
-    "description": "初回のAPIサービスが無料であり、クレジットやお金を支払う必要がないことを意味します。"
+    "description": "APIサービスを初めて利用する際に何らポイントや通貨を支払う必要がないことを示します。"
   },
   "message.custom": {
-    "message": "指定された金額",
-    "description": "価格が指定されており、APIサービスの利用に指定されたクレジットやお金を支払う必要があることを意味します。"
+    "message": "カスタム",
+    "description": "価格が指定されており、APIサービスを利用する際に特定のポイントや通貨を支払う必要があることを示します。"
   },
   "message.present": {
     "message": "プレゼント",
-    "description": "APIサービスを初めて利用する際にクレジットをプレゼントします。"
+    "description": "初めてAPIサービスを利用する際、ポイントをプレゼントします。"
   },
   "message.around": {
-    "message": "おおよそ",
-    "description": "価格はおおよそであり、実際の価格は異なる場合があります。"
+    "message": "約",
+    "description": "価格は約〇〇であり、実際の価格は異なる可能性があります。"
   },
   "message.successRate15min": {
-    "message": "リアルタイム成功率",
-    "description": "過去15分間のAPIサービスのリアルタイム成功率。"
+    "message": "15分間の成功率",
+    "description": "過去15分間の実時のAPIサービスの成功率。"
   },
   "message.ySuccessRate": {
     "message": "成功率（100%）",
@@ -85,58 +85,58 @@
   },
   "message.xMinutes": {
     "message": "時間（分）",
-    "description": "分単位の時間。"
+    "description": "時間（分）。"
   },
   "message.streamUsage": {
-    "message": "注意: ストリーミングリクエストの場合、上記のコードは完全に適用されない場合があります。修正についてはドッキングドキュメントを参照してください。",
-    "description": "ストリーミングリクエストの場合、上記のコードは完全に適用されない場合があります。修正についてはドッキングドキュメントを参照してください。"
+    "message": "温馨な注意：ストリームリクエストの場合、上記のコードは完全には適用されない場合があります。連携ドキュメントを参照して変更してください。",
+    "description": "ストリームリクエストの場合、上記のコードは完全には適用されない場合があります。連携ドキュメントを参照して変更してください。"
   },
   "message.alphaStage": {
-    "message": "このAPIはアルファステージです。これは初期のプレビューバージョンであり、潜在的な不安定性があり、APIフォーマットが大幅に変更される可能性があります。本番環境での使用は推奨されません。現在の価格は比較的低く、将来的に価格が大幅に調整される可能性があります。",
-    "description": "このAPIはアルファステージです。これは初期のプレビューバージョンであり、潜在的な不安定性があり、APIフォーマットが大幅に変更される可能性があります。本番環境での使用は推奨されません。現在の価格は比較的低く、将来的に価格が大幅に調整される可能性があります。"
+    "message": "このAPIはアルファ段階です。これは初期のプレビューバージョンであり、潜在的な不安定性があり、APIの形式が大幅に変更される可能性があります。本番環境で使用することはお勧めしません。 現在の価格は比較的低いですが、将来的には価格が大幅に調整される可能性があります。",
+    "description": "このAPIはアルファ段階です。これは初期のプレビューバージョンであり、潜在的な不安定性があり、APIの形式が大幅に変更される可能性があります。本番環境で使用することはお勧めしません。 現在の価格は比較的低いですが、将来的には価格が大幅に調整される可能性があります。"
   },
   "message.betaStage": {
-    "message": "このAPIはベータステージです。APIフォーマットはあまり変更されませんが、潜在的な不安定性がありますので、本番環境で注意して使用してください。現在の価格は比較的低く、将来的に価格が適度に調整される可能性があります。",
-    "description": "このAPIはベータステージです。APIフォーマットはあまり変更されませんが、潜在的な不安定性がありますので、本番環境で注意して使用してください。現在の価格は比較的低く、将来的に価格が適度に調整される可能性があります。"
+    "message": "このAPIはベータ段階です。APIの形式には大きな変更はありませんが、潜在的な不安定性があり、本番環境での使用には注意が必要です。 現在の価格は比較的低いですが、将来的には適度な価格調整が行われる可能性があります。",
+    "description": "このAPIはベータ段階です。APIの形式には大きな変更はありませんが、潜在的な不安定性があり、本番環境での使用には注意が必要です。 現在の価格は比較的低いですが、将来的には適度な価格調整が行われる可能性があります。"
   },
   "unit.credit": {
-    "message": "クレジット",
-    "description": "APIサービスで使用される仮想通貨。"
+    "message": "ポイント",
+    "description": "ポイントはAPIサービスで使用される仮想通貨です。"
   },
   "unit.Credit": {
-    "message": "クレジット",
-    "description": "APIサービスで使用される仮想通貨。これは大文字形式です。"
+    "message": "ポイント",
+    "description": "ポイントはAPIサービスで使用される仮想通貨の大文字形式。"
   },
   "unit.credits": {
-    "message": "クレジット",
-    "description": "APIサービスで使用される仮想通貨。これは複数形です。"
+    "message": "ポイント",
+    "description": "ポイントはAPIサービスで使用される仮想通貨の複数形式。"
   },
   "unit.Credits": {
-    "message": "クレジット",
-    "description": "APIサービスで使用される仮想通貨。これは大文字形式および複数形です。"
+    "message": "ポイント",
+    "description": "ポイントはAPIサービスで使用される仮想通貨の大文字形式と複数形式。"
   },
   "unit.call": {
     "message": "コール",
-    "description": "APIサービスが呼び出された回数。"
+    "description": "コールはAPIサービスの呼び出し回数を表します。"
   },
   "unit.Call": {
     "message": "コール",
-    "description": "APIサービスが呼び出された回数。これは大文字形式です。"
+    "description": "コールはAPIサービスの呼び出し回数を表します。これは大文字形式です。"
   },
   "unit.calls": {
     "message": "コール",
-    "description": "APIサービスが呼び出された回数。これは複数形です。"
+    "description": "コールはAPIサービスの呼び出し回数を表します。これは複数形式です。"
   },
   "unit.Calls": {
     "message": "コール",
-    "description": "APIサービスが呼び出された回数。これは大文字形式および複数形です。"
+    "description": "コールはAPIサービスの呼び出し回数を表します。これは大文字形式と複数形式です。"
   },
   "unit.MB": {
     "message": "MB",
-    "description": "メガバイト、デジタル情報の記憶単位。"
+    "description": "MBはメガバイトを表し、情報の記憶単位です。"
   },
   "unit.GB": {
     "message": "GB",
-    "description": "ギガバイト、デジタル情報の記憶単位。"
+    "description": "GBはギガバイトを表し、情報の記憶単位です。"
   }
 }

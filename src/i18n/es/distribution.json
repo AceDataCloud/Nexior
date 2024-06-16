@@ -1,130 +1,130 @@
 {
   "button.detail": {
-    "message": "Ver detalles",
-    "description": "El texto en el botón, que se utiliza para ver los detalles del historial de referencias para el sitio web."
+    "message": "查看详情",
+    "description": "按钮文本，用于查看网站的推荐历史详情。"
   },
   "button.withdrawal": {
-    "message": "Retirar",
-    "description": "El texto en el botón, que se utiliza para retirar las ganancias por referencias para el sitio web."
+    "message": "提现",
+    "description": "按钮文本，用于提现网站的推荐收益。"
   },
   "button.query": {
-    "message": "Consultar",
-    "description": "El texto en el botón, que se utiliza para consultar las ganancias por referencias para el sitio web."
+    "message": "查询",
+    "description": "按钮文本，用于查询网站的推荐收益。"
   },
   "field.id": {
-    "message": "ID de referencia",
-    "description": "El identificador único de la distribución, la distribución significa la referencia para el sitio web del servicio de API."
+    "message": "推荐 ID",
+    "description": "分销的唯一标识符，分销指 API 服务网站的推荐。"
   },
   "field.percentage": {
-    "message": "Porcentaje de ganancia por referencia",
-    "description": "El porcentaje de las ganancias por referencia, que se calcula en función del monto del pedido."
+    "message": "推荐收益百分比",
+    "description": "推荐收益的百分比，根据订单金额计算。"
   },
   "field.price": {
-    "message": "Monto del pedido",
-    "description": "El monto del pedido, que se utiliza para calcular las ganancias por referencia."
+    "message": "订单金额",
+    "description": "订单金额，用于计算推荐收益。"
   },
   "field.reward": {
-    "message": "Recompensa por referencia",
-    "description": "Las ganancias por referencia, que se calculan en función del monto del pedido y el porcentaje de ganancia por referencia."
+    "message": "推荐奖励",
+    "description": "推荐收益，根据订单金额和推荐收益百分比计算。"
   },
   "field.createdAt": {
-    "message": "Tiempo de referencia",
-    "description": "El momento en que se crea la referencia."
+    "message": "推荐时间",
+    "description": "推荐创建的时间。"
   },
   "field.level": {
-    "message": "Nivel",
-    "description": "El nivel de la referencia, que se utiliza para calcular las ganancias por referencia."
+    "message": "级别",
+    "description": "推荐的级别，用于计算推荐收益。"
   },
   "field.threshold": {
-    "message": "Umbral de ganancia por referencia",
-    "description": "El umbral de las ganancias por referencia, que se utiliza para retirar las ganancias por referencia."
+    "message": "推荐收益门槛",
+    "description": "推荐收益的门槛，用于提现推荐收益。"
   },
   "field.inviteeId": {
-    "message": "ID del invitador",
-    "description": "El identificador único del invitador, el invitador significa el usuario que invita al invitado al sitio web del servicio de API."
+    "message": "邀请者 ID",
+    "description": "邀请者的唯一标识符，邀请者指邀请被邀请者到 API 服务网站。"
   },
   "field.isVerified": {
-    "message": "Está verificado",
-    "description": "La bandera que indica si el usuario de referencia está verificado con la información real."
+    "message": "已验证",
+    "description": "标志，指示推荐用户是否通过真实信息验证。"
   },
   "message.deltaPriceForNextLevel": {
-    "message": "Diferencia al siguiente nivel",
-    "description": "La diferencia entre el monto actual del pedido y el umbral del siguiente nivel."
+    "message": "与下一级别的差额",
+    "description": "当前订单金额与下一级别门槛之间的差额。"
   },
   "message.developingWithDrawal": {
-    "message": "Únase a Discord y consulte con el soporte para manejar retiros, los retiros deducirán impuestos sobre la renta relacionados.",
-    "description": "El mensaje para indicar que la función de retiro está en desarrollo."
+    "message": "请加入 Discord 并咨询支持人员处理提现，提现将扣除相关所得税。",
+    "description": "指示提现功能正在开发中的消息。"
   },
   "message.technicalDetail": {
-    "message": "Detalle técnico",
-    "description": "El detalle técnico del sistema de referencia se implementa."
+    "message": "技术细节",
+    "description": "推荐系统的技术细节实现。"
   },
   "message.distributionQrDescription": {
-    "message": "Código QR de referencia (mismo contenido que el enlace)",
-    "description": "La descripción del código QR de referencia."
+    "message": "推荐二维码（与链接内容相同）",
+    "description": "推荐二维码的描述。"
   },
   "message.distributionLink": {
-    "message": "Enlace de referencia",
-    "description": "El enlace de referencia, que se utiliza para vincular al cliente como cliente subordinado."
+    "message": "推荐链接",
+    "description": "推荐链接，用于将客户绑定为下级客户。"
   },
   "message.updateSuccessfully": {
-    "message": "Actualización exitosa",
-    "description": "El mensaje para indicar que la información de referencia se ha actualizado correctamente."
+    "message": "更新成功",
+    "description": "指示推荐信息已成功更新的消息。"
   },
   "message.distributionLinkDescription": {
-    "message": "Si un cliente se registra en esta plataforma a través de este enlace o código QR, el cliente estará permanentemente vinculado como su cliente subordinado, y todos los pedidos de consumo del cliente en esta plataforma se devolverán a su cuenta según la proporción de distribución actual.",
-    "description": "La descripción del enlace de referencia."
+    "message": "如果客户通过此链接或二维码在本平台注册，客户将永久绑定为您的下级客户，并且客户在本平台的所有消费订单将根据当前分销比例返还到您的账户。",
+    "description": "推荐链接的描述。"
   },
   "message.distributionLinkDescription2": {
-    "message": "Este enlace contiene su ID de usuario. Después de que el cliente abra el enlace, su ID de usuario se registrará en el navegador del cliente en forma de Cookies, que es válido por siete días. Dentro de los siete días, si el cliente registra esta plataforma escaneando el código, su ID de usuario se cargará en el servidor de registro con Cookies, y el cliente puede estar vinculado como su cliente descendente.",
-    "description": "La descripción del enlace de referencia."
+    "message": "此链接包含您的用户 ID。客户打开链接后，您的用户 ID 将以 Cookies 的形式记录在客户的浏览器中，有效期为七天。在七天内，如果客户通过扫描该代码注册本平台，您的用户 ID 将与 Cookies 一起上传到注册服务器，并且客户可以作为您的下游客户绑定。",
+    "description": "推荐链接的描述。"
   },
   "title.price": {
-    "message": "Monto total de pedidos de referencia",
-    "description": "El monto total de los pedidos de referencia, que se utiliza para calcular las ganancias por referencia."
+    "message": "推荐订单总金额",
+    "description": "推荐订单的总金额，用于计算推荐收益。"
   },
   "title.reward": {
-    "message": "Recompensas totales por referencia",
-    "description": "Las recompensas totales por referencia, que se calculan en función del monto del pedido y el porcentaje de ganancia por referencia."
+    "message": "总推荐奖励",
+    "description": "总推荐奖励，根据订单金额和推荐收益百分比计算。"
   },
   "title.level": {
-    "message": "Nivel de referencia",
-    "description": "El nivel de referencia, que se utiliza para calcular las ganancias por referencia."
+    "message": "推荐级别",
+    "description": "推荐级别，用于计算推荐收益。"
   },
   "title.percentage": {
-    "message": "Porcentaje de ganancia por referencia",
-    "description": "El porcentaje de ganancia por referencia, que se utiliza para calcular las ganancias por referencia."
+    "message": "推荐收益百分比",
+    "description": "推荐收益百分比，用于计算推荐收益。"
   },
   "title.currentLevel": {
-    "message": "Nivel actual",
-    "description": "El nivel actual de referencia, que se utiliza para calcular las ganancias por referencia."
+    "message": "当前级别",
+    "description": "当前推荐级别，用于计算推荐收益。"
   },
   "title.nextLevel": {
-    "message": "Próximo nivel",
-    "description": "El próximo nivel de referencia, que se utiliza para calcular las ganancias por referencia."
+    "message": "下一级别",
+    "description": "下一个推荐级别，用于计算推荐收益。"
   },
   "title.currentPercentage": {
-    "message": "Porcentaje actual de ganancia por referencia",
-    "description": "El porcentaje actual de ganancia por referencia, que se utiliza para calcular las ganancias por referencia."
+    "message": "当前推荐收益百分比",
+    "description": "当前推荐收益百分比，用于计算推荐收益。"
   },
   "title.nextPercentage": {
-    "message": "Porcentaje de ganancia por referencia del próximo nivel",
-    "description": "El porcentaje de ganancia por referencia del próximo nivel, que se utiliza para calcular las ganancias por referencia."
+    "message": "下一级别推荐收益百分比",
+    "description": "下一个级别的推荐收益百分比，用于计算推荐收益。"
   },
   "title.levelInfo": {
-    "message": "Información del nivel",
-    "description": "La información del nivel de referencia, que se utiliza para calcular las ganancias por referencia."
+    "message": "级别信息",
+    "description": "推荐级别的信息，用于计算推荐收益。"
   },
   "title.distributionLink": {
-    "message": "Enlace de referencia",
-    "description": "El enlace de referencia, que se utiliza para vincular al cliente como cliente subordinado."
+    "message": "推荐链接",
+    "description": "推荐链接，用于将客户绑定为下级客户。"
   },
   "title.inviteesCount": {
-    "message": "Número total de invitados",
-    "description": "El número total de los invitados, que se utiliza para calcular las ganancias por referencia."
+    "message": "邀请者总数",
+    "description": "邀请者的总数，用于计算推荐收益。"
   },
   "title.manageDistributionStatus": {
-    "message": "Gestión de distribución",
-    "description": "La gestión del estado de referencia."
+    "message": "分销管理",
+    "description": "推荐状态的管理。"
   }
 }
