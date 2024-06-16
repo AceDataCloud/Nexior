@@ -21,6 +21,7 @@
       @blur="onInputConfirm"
     />
     <el-button v-else round class="block" size="small" @click="onNewItem"> + </el-button>
+    <span class="block tip">{{ tip }}</span>
     <template #footer>
       <span class="dialog-footer">
         <el-button round @click="onCancel">{{ $t('common.button.cancel') }}</el-button>
@@ -63,6 +64,10 @@ export default defineComponent({
       type: String,
       required: true
     },
+    tip: {
+      type: String,
+      default: undefined
+    },
     min: {
       type: Number,
       default: undefined
@@ -78,7 +83,7 @@ export default defineComponent({
       inputVisible: false,
       inputValue: '',
       editing: false,
-      value: this.modelValue
+      value: JSON.parse(JSON.stringify(this.modelValue))
     };
   },
   methods: {
@@ -124,5 +129,9 @@ export default defineComponent({
   .icon {
     font-size: 14px;
   }
+}
+.tip {
+  color: var(--el-text-color-secondary);
+  font-size: 12px;
 }
 </style>
