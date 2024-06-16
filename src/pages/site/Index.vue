@@ -9,6 +9,10 @@
       <el-row :gutter="15">
         <el-col :md="24" :xs="24">
           <el-card>
+            <h4 class="title">
+              {{ $t('site.title.basicConfig') }}
+            </h4>
+            <el-divider />
             <el-form :model="site" class="form" label-width="auto" style="max-width: 600px">
               <el-form-item :label="$t('site.field.title')">
                 {{ site.title }}
@@ -46,6 +50,16 @@
                   @confirm="onSave({ favicon: $event })"
                 />
               </el-form-item>
+              <el-divider border-style="dashed" />
+              <el-form-item :label="$t('site.field.admins')">
+                {{ site.admins.join(', ') }}
+                <edit-array
+                  :model-value="site.admins"
+                  :title="$t('site.title.editAdmins')"
+                  :placeholder="$t('site.placeholder.admins')"
+                  @confirm="onSave({ admins: $event })"
+                />
+              </el-form-item>
             </el-form>
           </el-card>
         </el-col>
@@ -56,9 +70,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElRow, ElCol, ElCard, ElForm, ElFormItem, ElImage } from 'element-plus';
+import { ElRow, ElCol, ElCard, ElForm, ElFormItem, ElImage, ElDivider } from 'element-plus';
 import EditText from '@/components/site/EditText.vue';
 import EditImage from '@/components/site/EditImage.vue';
+import EditArray from '@/components/site/EditArray.vue';
 import { siteOperator } from '@/operators';
 
 export default defineComponent({
@@ -66,6 +81,8 @@ export default defineComponent({
   components: {
     EditText,
     EditImage,
+    EditArray,
+    ElDivider,
     ElRow,
     ElImage,
     ElCol,
@@ -104,8 +121,14 @@ export default defineComponent({
 .panel {
   padding: 30px;
   background-color: var(--el-bg-color-page);
-  .title {
+  h2.title {
     font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--el-text-color-primary);
+  }
+  h4.title {
+    font-size: 20px;
     font-weight: bold;
     margin-bottom: 20px;
     color: var(--el-text-color-primary);
