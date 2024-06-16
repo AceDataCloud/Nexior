@@ -121,7 +121,7 @@
             </h4>
             <el-divider />
             <el-form :model="site" class="form" label-width="auto" style="max-width: 600px">
-              <el-form-item :label="$t('site.field.distributionDefaultInviterId')">
+              <el-form-item :label="$t('site.field.featuresChat')">
                 {{ site.distribution?.default_inviter_id }}
 
                 <span class="block tip">
