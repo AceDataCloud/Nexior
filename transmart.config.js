@@ -4,7 +4,7 @@ module.exports = {
   cacheEnabled: true,
   localePath: 'src/i18n',
   openAIApiKey: process.env.VITE_OPENAI_API_KEY,
-  openAIApiModel: 'gpt-3.5-turbo',
+  openAIApiModel: 'gpt-3.5-turbo-1106',
   openAIApiUrl: 'https://api.acedata.cloud',
   openAIApiUrlPath: '/openai/chat/completions',
   modelContextLimit: 3000,

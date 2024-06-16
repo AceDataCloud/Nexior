@@ -1,130 +1,130 @@
 {
   "button.detail": {
     "message": "Näytä tiedot",
-    "description": "Painikkeen teksti, jota käytetään katsomaan viittaushistorian yksityiskohtia verkkosivustolle."
+    "description": "按钮文本，用于查看网站的推荐历史详情。"
   },
   "button.withdrawal": {
-    "message": "Nosta",
-    "description": "Painikkeen teksti, jota käytetään viittaustulojen nostamiseen verkkosivustolla."
+    "message": "Nosto",
+    "description": "按钮文本，用于提现网站的推荐收益。"
   },
   "button.query": {
-    "message": "Kysely",
-    "description": "Painikkeen teksti, jota käytetään viittaustulojen kyselyyn verkkosivustolla."
+    "message": "Haku",
+    "description": "按钮文本，用于查询网站的推荐收益。"
   },
   "field.id": {
-    "message": "Viittaus-ID",
-    "description": "Jakelun yksilöllinen tunniste, jakelu tarkoittaa viittausta API-palvelun verkkosivustolle."
+    "message": "Suositus ID",
+    "description": "分销的唯一标识符，分销指 API 服务网站的推荐。"
   },
   "field.percentage": {
-    "message": "Viittaustulojen prosenttiosuus",
-    "description": "Viittaustulojen prosenttiosuus, joka lasketaan tilausmäärän perusteella."
+    "message": "Suosituksen tulo prosentteina",
+    "description": "推荐收益的百分比，根据订单金额计算。"
   },
   "field.price": {
-    "message": "Tilausmäärä",
-    "description": "Tilauksen määrä, jota käytetään viittaustulojen laskemiseen."
+    "message": "Tilauksen summa",
+    "description": "订单金额，用于计算推荐收益。"
   },
   "field.reward": {
-    "message": "Viittauspalkkio",
-    "description": "Viittaustulot, jotka lasketaan tilausmäärän ja viittaustulojen prosenttiosuuden perusteella."
+    "message": "Suosituksen palkkio",
+    "description": "推荐收益，根据订单金额和推荐收益百分比计算。"
   },
   "field.createdAt": {
-    "message": "Viittauksen aika",
-    "description": "Aika, jolloin viittaus on luotu."
+    "message": "Suosituksen luontiaika",
+    "description": "推荐创建的时间。"
   },
   "field.level": {
     "message": "Taso",
-    "description": "Viittauksen taso, jota käytetään viittaustulojen laskemiseen."
+    "description": "推荐的级别，用于计算推荐收益。"
   },
   "field.threshold": {
-    "message": "Viittaustulojen kynnysarvo",
-    "description": "Viittaustulojen kynnysarvo, jota käytetään viittaustulojen nostamiseen."
+    "message": "Suosituksen tulo kynnys",
+    "description": "推荐收益的门槛，用于提现推荐收益。"
   },
   "field.inviteeId": {
     "message": "Kutsujan ID",
-    "description": "Kutsujan yksilöllinen tunniste, kutsuja tarkoittaa käyttäjää, joka kutsuu kutsutun API-palvelun verkkosivustolle."
+    "description": "邀请者的唯一标识符，邀请者指邀请被邀请者到 API 服务网站。"
   },
   "field.isVerified": {
-    "message": "Onko vahvistettu",
-    "description": "Lippu, joka osoittaa, onko viittauskäyttäjä vahvistettu oikeilla tiedoilla."
+    "message": "Vahvistettu",
+    "description": "标志，指示推荐用户是否通过真实信息验证。"
   },
   "message.deltaPriceForNextLevel": {
-    "message": "Erotus seuraavaan tasoon",
-    "description": "Erotus nykyisen tilausmäärän ja seuraavan tason kynnyksen välillä."
+    "message": "Erotus seuraavalle tasolle",
+    "description": "当前订单金额与下一级别门槛之间的差额。"
   },
   "message.developingWithDrawal": {
-    "message": "Liity Discordiin ja kysy tukea nostojen käsittelyyn, nostot vähentävät liittyvää tuloveroa.",
-    "description": "Viesti, joka osoittaa, että nostotoiminto on kehitysvaiheessa."
+    "message": "Liity Discordiin ja ota yhteyttä tukihenkilöön nostoa varten, nostosta vähennetään verot.",
+    "description": "指示提现功能正在开发中的消息。"
   },
   "message.technicalDetail": {
-    "message": "Tekninen yksityiskohta",
-    "description": "Viittausjärjestelmän tekninen yksityiskohta on toteutettu."
+    "message": "Tekniset yksityiskohdat",
+    "description": "推荐系统的技术细节实现。"
   },
   "message.distributionQrDescription": {
-    "message": "Viittaus QR-koodi (sama sisältö kuin linkki)",
-    "description": "Viittaus QR-koodin kuvaus."
+    "message": "Suosituskoodi (sama kuin linkin sisältö)",
+    "description": "推荐二维码的描述。"
   },
   "message.distributionLink": {
-    "message": "Viittauslinkki",
-    "description": "Viittauslinkki, jota käytetään sitomaan asiakas alaisasiakkaaksi."
+    "message": "Suosituslinkki",
+    "description": "推荐链接，用于将客户绑定为下级客户。"
   },
   "message.updateSuccessfully": {
     "message": "Päivitys onnistui",
-    "description": "Viesti, joka osoittaa, että viittaustiedot on päivitetty onnistuneesti."
+    "description": "指示推荐信息已成功更新的消息。"
   },
   "message.distributionLinkDescription": {
-    "message": "Jos asiakas rekisteröityy tälle alustalle tämän linkin tai QR-koodin kautta, asiakas sitoutuu pysyvästi alaisasiakkaaksesi, ja kaikki asiakkaan kulutustilaukset tällä alustalla palautetaan tilillesi nykyisen jakosuhteen mukaisesti.",
-    "description": "Viittauslinkin kuvaus."
+    "message": "Jos asiakas rekisteröityy tällä linkillä tai QR-koodilla tälle alustalle, asiakas sitoutuu pysyvästi alaisuuteenne, ja kaikki asiakkaan kulutustilaukset tässä alustassa palautetaan tilillenne nykyisen jakosuhteen mukaisesti.",
+    "description": "推荐链接的描述。"
   },
   "message.distributionLinkDescription2": {
-    "message": "Tämä linkki sisältää käyttäjätunnuksesi. Kun asiakas avaa linkin, käyttäjätunnuksesi tallennetaan asiakkaan selaimeen evästeen muodossa, ja se on voimassa seitsemän päivää. Seitsemän päivän kuluessa, jos asiakas rekisteröityy tälle alustalle skannaamalla koodi, käyttäjätunnuksesi lähetetään rekisteröintipalvelimelle evästeiden kanssa, ja asiakas voidaan sitoa alaisasiakkaaksesi.",
-    "description": "Viittauslinkin kuvaus."
+    "message": "此链接包含您的用户 ID。客户打开链接后，您的用户 ID 将以 Cookies 的形式记录在客户的浏览器中，有效期为七天。在七天内，如果客户通过扫描该代码注册本平台，您的用户 ID 将与 Cookies 一起上传到注册服务器，并且客户可以作为您的下游客户绑定。",
+    "description": "推荐链接的描述。"
   },
   "title.price": {
-    "message": "Viittausmäärän kokonaismäärä",
-    "description": "Viittausmäärän kokonaismäärä, jota käytetään viittaustulojen laskemiseen."
+    "message": "Suosituksen tilauksen kokonaissumma",
+    "description": "推荐订单的总金额，用于计算推荐收益。"
   },
   "title.reward": {
-    "message": "Kokonaisviittauspalkkiot",
-    "description": "Kokonaisviittauspalkkiot, jotka lasketaan tilausmäärän ja viittaustulojen prosenttiosuuden perusteella."
+    "message": "Kokonaisuusvinkki",
+    "description": "总推荐奖励，根据订单金额和推荐收益百分比计算。"
   },
   "title.level": {
-    "message": "Viittauksen taso",
-    "description": "Viittauksen taso, jota käytetään viittaustulojen laskemiseen."
+    "message": "Suosituksen taso",
+    "description": "推荐级别，用于计算推荐收益。"
   },
   "title.percentage": {
-    "message": "Viittaustulojen prosenttiosuus",
-    "description": "Viittaustulojen prosenttiosuus, jota käytetään viittaustulojen laskemiseen."
+    "message": "Suosituksen tuotto prosentteina",
+    "description": "推荐收益百分比，用于计算推荐收益。"
   },
   "title.currentLevel": {
     "message": "Nykyinen taso",
-    "description": "Nykyinen viittauksen taso, jota käytetään viittaustulojen laskemiseen."
+    "description": "当前推荐级别，用于计算推荐收益。"
   },
   "title.nextLevel": {
     "message": "Seuraava taso",
-    "description": "Seuraava viittauksen taso, jota käytetään viittaustulojen laskemiseen."
+    "description": "下一个推荐级别，用于计算推荐收益。"
   },
   "title.currentPercentage": {
-    "message": "Nykyinen viittaustulojen prosenttiosuus",
-    "description": "Nykyinen viittaustulojen prosenttiosuus, jota käytetään viittaustulojen laskemiseen."
+    "message": "Nykyinen suosituksen tulo prosentteina",
+    "description": "当前推荐收益百分比，用于计算推荐收益。"
   },
   "title.nextPercentage": {
-    "message": "Seuraavan tason viittaustulojen prosenttiosuus",
-    "description": "Seuraavan tason viittaustulojen prosenttiosuus, jota käytetään viittaustulojen laskemiseen."
+    "message": "下一级别推荐收益百分比",
+    "description": "下一个级别的推荐收益百分比，用于计算推荐收益。"
   },
   "title.levelInfo": {
     "message": "Tason tiedot",
-    "description": "Viittauksen tason tiedot, jotka käytetään viittaustulojen laskemiseen."
+    "description": "推荐级别的信息，用于计算推荐收益。"
   },
   "title.distributionLink": {
-    "message": "Viittauslinkki",
-    "description": "Viittauslinkki, jota käytetään sitomaan asiakas alaisasiakkaaksi."
+    "message": "推荐链接",
+    "description": "推荐链接，用于将客户绑定为下级客户。"
   },
   "title.inviteesCount": {
-    "message": "Kutsuttujen kokonaismäärä",
-    "description": "Kutsuttujen kokonaismäärä, jota käytetään viittaustulojen laskemiseen."
+    "message": "Kutsujien kokonaismäärä",
+    "description": "邀请者的总数，用于计算推荐收益。"
   },
   "title.manageDistributionStatus": {
-    "message": "Jakelun hallinta",
-    "description": "Viittaustilan hallinta."
+    "message": "分销管理",
+    "description": "推荐状态的管理。"
   }
 }

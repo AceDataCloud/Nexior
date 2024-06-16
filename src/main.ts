@@ -9,11 +9,12 @@ import 'mac-scrollbar/dist/mac-scrollbar.css';
 import dayjs from './plugins/dayjs';
 import './plugins/font-awesome';
 import { vLoading } from 'element-plus';
-import { initializeCookies, initializeFavicon, initializeTitle } from './utils/initializer';
+import { initializeCookies, initializeFavicon, initializeSite, initializeTitle } from './utils/initializer';
 import config from './plugins/config';
 
 const main = async () => {
   await initializeCookies();
+  await initializeSite();
   await initializeTitle();
   await initializeFavicon();
 

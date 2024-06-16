@@ -12,6 +12,10 @@ export interface ISiteQuery {
 class SiteService {
   key = 'sites';
 
+  async initialize(data: ISite): Promise<AxiosResponse<ISiteDetailResponse>> {
+    return await httpClient.post(`/${this.key}/initialize/`, data);
+  }
+
   async get(id: string): Promise<AxiosResponse<ISiteDetailResponse>> {
     return await httpClient.get(`/${this.key}/${id}`);
   }

@@ -2,6 +2,7 @@ import { getCookie, setCookie } from 'typescript-cookie';
 import config from '@/config';
 import favicon from '@/assets/images/favicon.ico';
 import { getLocale } from '@/i18n';
+import store from '@/store';
 
 export const getDomain = () => {
   const host = window.location.hostname;
@@ -94,4 +95,11 @@ export const initializeFavicon = async () => {
     document.head.appendChild(faviconElement);
   }
   faviconElement.href = favIconUrl || favicon;
+};
+
+/**
+ * Need to initialize site before render contents
+ */
+export const initializeSite = async () => {
+  await store.dispatch('initializeSite');
 };

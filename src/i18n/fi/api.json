@@ -1,43 +1,43 @@
 {
   "entity.requestQueries": {
-    "message": "Pyyntöparametrit",
+    "message": "Pyyntö kyselyt",
     "description": "HTTP-pyynnön kyselyparametrit."
   },
   "entity.requestBody": {
     "message": "Pyyntökehys",
-    "description": "HTTP-pyynnön keho."
+    "description": "HTTP-pyynnön pyyntökehys."
   },
   "entity.responseBody": {
-    "message": "Vastauksen keho",
-    "description": "HTTP-vastauksen keho."
+    "message": "Vastauskehys",
+    "description": "HTTP-vasteen vastauskehys."
   },
   "entity.requestHeaders": {
     "message": "Pyyntöotsikot",
-    "description": "HTTP-pyynnön otsikot."
+    "description": "HTTP-pyynnön pyyntöotsikot."
   },
   "entity.requestHeader": {
     "message": "Pyyntöotsikko",
-    "description": "HTTP-pyynnön otsikko, vain yksi muoto pyyntöotsikoille."
+    "description": "HTTP-pyynnön pyyntöotsikko, ainoastaan yksittäisen otsikon muoto."
   },
   "entity.responseHeaders": {
     "message": "Vastausotsikot",
-    "description": "HTTP-vastauksen otsikot."
+    "description": "HTTP-vasteen vastausotsikot."
   },
   "entity.response": {
-    "message": "Vastaus",
-    "description": "HTTP-vastaus."
+    "message": "Vaste",
+    "description": "HTTP-vaste."
   },
   "entity.success": {
-    "message": "Onnistuminen",
-    "description": "Onnistunut vastaus."
+    "message": "Onnistunut",
+    "description": "Onnistunut vaste."
   },
   "entity.failure": {
     "message": "Epäonnistuminen",
-    "description": "Epäonnistunut vastaus."
+    "description": "Epäonnistunut vaste."
   },
   "entity.responseExample": {
     "message": "Esimerkki",
-    "description": "Vastauksen esimerkki."
+    "description": "Vasteen esimerkki."
   },
   "entity.authentication": {
     "message": "Autentikointi",
@@ -45,98 +45,98 @@
   },
   "entity.arrayOf": {
     "message": "Taulukko",
-    "description": "Taulukko entiteetistä."
+    "description": "Entiteetin taulukko."
   },
   "entity.apiKey": {
     "message": "API-avain",
-    "description": "API-avain"
+    "description": "API-avain."
   },
   "message.free": {
     "message": "Ilmainen",
-    "description": "Tarkoittaa, että hinta on ilmainen, ei tarvitse käyttää mitään luottoja tai rahaa API-palvelun käytöstä"
+    "description": "Ilmaisee, että hinta on ilmainen eikä API-palvelun käytöstä tarvitse maksaa pisteitä tai valuuttaa."
   },
   "message.appliedCount": {
-    "message": "Hakemuksen määrä",
-    "description": "Kuinka monta kertaa API-palvelua on haettu"
+    "message": "Hakemuskerrat",
+    "description": "Kerrat, jolloin API-palvelua on haettu."
   },
   "message.firstFree": {
-    "message": "Ensimmäinen kerta ilmainen",
-    "description": "Tarkoittaa, että API-palvelun ensimmäinen käyttökerta on ilmainen, ei tarvitse käyttää mitään luottoja tai rahaa"
+    "message": "Ensimmäinen ilmainen",
+    "description": "Ilmaisee, että ensimmäinen käyttökerta API-palvelussa on ilmainen eikä siitä tarvitse maksaa pisteitä tai valuuttaa."
   },
   "message.custom": {
-    "message": "Määritelty määrä",
-    "description": "Tarkoittaa, että hinta on määritelty, täytyy käyttää määritelty määrä luottoja tai rahaa API-palvelun käytöstä"
+    "message": "Mukautettu summa",
+    "description": "Ilmaisee, että hinta on mukautettu ja API-palvelun käytöstä on maksettava määrätty määrä pisteitä tai valuuttaa."
   },
   "message.present": {
-    "message": "Lahja",
-    "description": "Lahjoitamme sinulle luottoja, kun käytät API-palvelua ensimmäistä kertaa"
+    "message": "lahja",
+    "description": "Ensimmäisellä API-palvelun käyttökerralla annamme sinulle pisteitä lahjaksi."
   },
   "message.around": {
     "message": "Noin",
-    "description": "Hinta on noin, todellinen hinta saattaa poiketa"
+    "description": "Hinta on noin, todellinen hinta saattaa vaihdella."
   },
   "message.successRate15min": {
     "message": "Reaaliaikainen onnistumisprosentti",
-    "description": "API-palvelun reaaliaikainen onnistumisprosentti viimeisen 15 minuutin aikana"
+    "description": "API-palvelun reaaliaikainen onnistumisprosentti viimeisen 15 minuutin aikana."
   },
   "message.ySuccessRate": {
-    "message": "Onnistumisprosentti (100 %)",
-    "description": "API-palvelun onnistumisprosentti"
+    "message": "Onnistumisprosentti (100%)",
+    "description": "API-palvelun onnistumisprosentti."
   },
   "message.xMinutes": {
     "message": "Aika (minuutit)",
-    "description": "Aika minuutteina"
+    "description": "Aika (minuutit)."
   },
   "message.streamUsage": {
-    "message": "Ystävällinen muistutus: Suoratoistopyynnöissä yllä oleva koodi ei välttämättä ole täysin sovellettavissa. Katso muutokset telakointiasiakirjasta.",
-    "description": "Suoratoistopyynnöissä yllä oleva koodi ei välttämättä ole täysin sovellettavissa. Katso muutokset telakointiasiakirjasta."
+    "message": "Vinkki: Virtapistoketta käytettäessä yllä oleva koodi saattaa olla vain osittain sopiva. Katso integraatiodokumentaatiota muutosten tekemiseksi.",
+    "description": "Virtapistoketta käytettäessä yllä oleva koodi saattaa olla vain osittain sopiva. Katso integraatiodokumentaatiota muutosten tekemiseksi."
   },
   "message.alphaStage": {
-    "message": "Tämä API on alfa-vaiheessa, se on varhainen esikatseluversio, siinä saattaa olla mahdollista epävakautta, API-muoto saattaa muuttua merkittävästi, sitä ei suositella tuotantoympäristössä käytettäväksi. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla merkittäviä hintamuutoksia.",
-    "description": "Tämä API on alfa-vaiheessa, se on varhainen esikatseluversio, siinä saattaa olla mahdollista epävakautta, API-muoto saattaa muuttua merkittävästi, sitä ei suositella tuotantoympäristössä käytettäväksi. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla merkittäviä hintamuutoksia."
+    "message": "Tämä API on alfa-vaiheessa, eli se on varhainen esikatseluversio, ja siinä saattaa olla potentiaalista epävakautta. API-formaatti voi muuttua merkittävästi, joten sitä ei suositella tuotantokäyttöön. Nykyinen hinnoittelu on melko alhainen, mutta tulevaisuudessa voi olla merkittäviä hintamuutoksia.",
+    "description": "Tämä API on alfa-vaiheessa, eli se on varhainen esikatseluversio, ja siinä saattaa olla potentiaalista epävakautta. API-formaatti voi muuttua merkittävästi, joten sitä ei suositella tuotantokäyttöön. Nykyinen hinnoittelu on melko alhainen, mutta tulevaisuudessa voi olla merkittäviä hintamuutoksia."
   },
   "message.betaStage": {
-    "message": "Tämä API on beeta-vaiheessa, API-muoto ei muutu paljon, mutta siinä saattaa olla mahdollista epävakautta, käytä sitä varovasti tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla kohtalaisia hintamuutoksia.",
-    "description": "Tämä API on beeta-vaiheessa, API-muoto ei muutu paljon, mutta siinä saattaa olla mahdollista epävakautta, käytä sitä varovasti tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla kohtalaisia hintamuutoksia."
+    "message": "Tämä API on beetavaiheessa, eikä API-formaatissa ole suuria muutoksia, mutta siinä voi olla potentiaalista epävakautta. Käytä tuotantoympäristössä varoen. Nykyinen hinnoittelu on melko alhainen, mutta tulevaisuudessa saattaa olla kohtalaisia hintamuutoksia.",
+    "description": "Tämä API on beetavaiheessa, eikä API-formaatissa ole suuria muutoksia, mutta siinä voi olla potentiaalista epävakautta. Käytä tuotantoympäristössä varoen. Nykyinen hinnoittelu on melko alhainen, mutta tulevaisuudessa saattaa olla kohtalaisia hintamuutoksia."
   },
   "unit.credit": {
-    "message": "Luotto",
-    "description": "Luotto tarkoittaa virtuaalivaluuttaa, jota käytetään API-palvelussa"
+    "message": "Piste",
+    "description": "Piste on virtuaalivaluutta API-palvelussa."
   },
   "unit.Credit": {
-    "message": "Luotto",
-    "description": "Luotto tarkoittaa virtuaalivaluuttaa, jota käytetään API-palvelussa, tämä on iso alkukirjainmuoto"
+    "message": "Piste",
+    "description": "Piste on virtuaalivaluutta API-palvelussa, tämä on suuraakkosmuoto."
   },
   "unit.credits": {
-    "message": "Luotot",
-    "description": "Luotot tarkoittaa virtuaalivaluuttaa, jota käytetään API-palvelussa, tämä on monikkomuoto"
+    "message": "Pisteet",
+    "description": "Piste on virtuaalivaluutta API-palvelussa, tämä on monikkomuoto."
   },
   "unit.Credits": {
-    "message": "Luotot",
-    "description": "Luotot tarkoittaa virtuaalivaluuttaa, jota käytetään API-palvelussa, tämä on iso alkukirjain- ja monikkomuoto"
+    "message": "Pisteet",
+    "description": "Piste on virtuaalivaluutta API-palvelussa, tämä on suuraakkos- ja monikkomuoto."
   },
   "unit.call": {
-    "message": "Puhelu",
-    "description": "Puhelu tarkoittaa API-palvelun kutsujen määrää"
+    "message": "Kutsu",
+    "description": "Kutsu edustaa API-palvelun käyttökertoja."
   },
   "unit.Call": {
-    "message": "Puhelu",
-    "description": "Puhelu tarkoittaa API-palvelun kutsujen määrää, tämä on iso alkukirjainmuoto"
+    "message": "Kutsu",
+    "description": "Kutsu edustaa API-palvelun käyttökertoja, tämä on suuraakkosmuoto."
   },
   "unit.calls": {
-    "message": "Puhelut",
-    "description": "Puhelut tarkoittaa API-palvelun kutsujen määrää, tämä on monikkomuoto"
+    "message": "Kutsut",
+    "description": "Kutsu edustaa API-palvelun käyttökertoja, tämä on monikkomuoto."
   },
   "unit.Calls": {
-    "message": "Puhelut",
-    "description": "Puhelut tarkoittaa API-palvelun kutsujen määrää, tämä on iso alkukirjain- ja monikkomuoto"
+    "message": "Kutsut",
+    "description": "Kutsu edustaa API-palvelun käyttökertoja, tämä on suuraakkos- ja monikkomuoto."
   },
   "unit.MB": {
     "message": "Mt",
-    "description": "Mt tarkoittaa megatavua, digitaalisen tiedon tallennusyksikkö"
+    "description": "Mt tarkoittaa megatavua, numeerisen tiedon tallennusyksikkö."
   },
   "unit.GB": {
     "message": "Gt",
-    "description": "Gt tarkoittaa gigatavua, digitaalisen tiedon tallennusyksikkö"
+    "description": "Gt tarkoittaa gigatavua, numeerisen tiedon tallennusyksikkö."
   }
 }

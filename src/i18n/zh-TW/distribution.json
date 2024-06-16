@@ -1,19 +1,19 @@
 {
   "button.detail": {
     "message": "查看詳情",
-    "description": "按鈕上的文字，用於查看網站的推薦歷史詳情。"
+    "description": "按鈕文本，用於查看網站的推薦歷史詳情。"
   },
   "button.withdrawal": {
-    "message": "提領",
-    "description": "按鈕上的文字，用於提領網站的推薦收益。"
+    "message": "提現",
+    "description": "按鈕文本，用於提現網站的推薦收益。"
   },
   "button.query": {
     "message": "查詢",
-    "description": "按鈕上的文字，用於查詢網站的推薦收益。"
+    "description": "按鈕文本，用於查詢網站的推薦收益。"
   },
   "field.id": {
     "message": "推薦 ID",
-    "description": "分發的唯一標識符，分發指的是 API 服務網站的推薦。"
+    "description": "分銷的唯一標識符，分銷指 API 服務網站的推薦。"
   },
   "field.percentage": {
     "message": "推薦收益百分比",
@@ -32,52 +32,52 @@
     "description": "推薦創建的時間。"
   },
   "field.level": {
-    "message": "等級",
-    "description": "推薦的等級，用於計算推薦收益。"
+    "message": "級別",
+    "description": "推薦的級別，用於計算推薦收益。"
   },
   "field.threshold": {
-    "message": "推薦收益閾值",
-    "description": "推薦收益的閾值，用於提領推薦收益。"
+    "message": "推薦收益門檻",
+    "description": "推薦收益的門檻，用於提現推薦收益。"
   },
   "field.inviteeId": {
     "message": "邀請者 ID",
-    "description": "邀請者的唯一標識符，邀請者指的是邀請受邀者到 API 服務網站的用戶。"
+    "description": "邀請者的唯一標識符，邀請者指邀請被邀請者到 API 服務網站。"
   },
   "field.isVerified": {
     "message": "已驗證",
     "description": "標誌，指示推薦用戶是否通過真實信息驗證。"
   },
   "message.deltaPriceForNextLevel": {
-    "message": "與下一等級的差額",
-    "description": "當前訂單金額與下一等級閾值之間的差額。"
+    "message": "與下一級別的差額",
+    "description": "當前訂單金額與下一級別門檻之間的差額。"
   },
   "message.developingWithDrawal": {
-    "message": "請加入 Discord 並諮詢支援以處理提領，提領將扣除相關所得稅。",
-    "description": "指示提領功能正在開發中的訊息。"
+    "message": "請加入 Discord 並諮詢支援人員處理提現，提現將扣除相關所得稅。",
+    "description": "指示提現功能正在開發中的消息。"
   },
   "message.technicalDetail": {
     "message": "技術細節",
     "description": "推薦系統的技術細節實現。"
   },
   "message.distributionQrDescription": {
-    "message": "推薦 QR 碼（與連結內容相同）",
-    "description": "推薦 QR 碼的描述。"
+    "message": "推薦二維碼（與連結內容相同）",
+    "description": "推薦二維碼的描述。"
   },
   "message.distributionLink": {
-    "message": "推薦連結",
-    "description": "推薦連結，用於將客戶綁定為下級客戶。"
+    "message": "推薦鏈接",
+    "description": "推薦鏈接，用於將客戶綁定為下級客戶。"
   },
   "message.updateSuccessfully": {
     "message": "更新成功",
-    "description": "指示推薦信息已成功更新的訊息。"
+    "description": "指示推薦信息已成功更新的消息。"
   },
   "message.distributionLinkDescription": {
-    "message": "如果客戶通過此連結或 QR 碼在此平台註冊，該客戶將永久綁定為您的下級客戶，並且該客戶在此平台的所有消費訂單將根據當前分發比例返回到您的帳戶。",
-    "description": "推薦連結的描述。"
+    "message": "如果客戶通過此鏈接或二維碼在本平台註冊，客戶將永久綁定為您的下級客戶，並且客戶在本平台的所有消費訂單將根據當前分銷比例返還到您的帳戶。",
+    "description": "推薦鏈接的描述。"
   },
   "message.distributionLinkDescription2": {
-    "message": "此連結包含您的使用者 ID。客戶打開連結後，您的使用者 ID 將以 Cookies 的形式記錄在客戶的瀏覽器中，有效期為七天。在七天內，如果客戶掃描該碼在此平台註冊，您的使用者 ID 將與 Cookies 一起上傳到註冊伺服器，客戶可以作為您的下游客戶綁定。",
-    "description": "推薦連結的描述。"
+    "message": "此鏈接包含您的用戶 ID。客戶打開鏈接後，您的用戶 ID 將以 Cookies 的形式記錄在客戶的瀏覽器中，有效期為七天。在七天內，如果客戶通過掃描該代碼註冊本平台，您的用戶 ID 將與 Cookies 一起上傳到註冊伺服器，並且客戶可以作為您的下游客戶綁定。",
+    "description": "推薦鏈接的描述。"
   },
   "title.price": {
     "message": "推薦訂單總金額",
@@ -88,43 +88,43 @@
     "description": "總推薦獎勵，根據訂單金額和推薦收益百分比計算。"
   },
   "title.level": {
-    "message": "推薦等級",
-    "description": "推薦等級，用於計算推薦收益。"
+    "message": "推薦級別",
+    "description": "推薦級別，用於計算推薦收益。"
   },
   "title.percentage": {
     "message": "推薦收益百分比",
     "description": "推薦收益百分比，用於計算推薦收益。"
   },
   "title.currentLevel": {
-    "message": "當前等級",
-    "description": "當前推薦等級，用於計算推薦收益。"
+    "message": "當前級別",
+    "description": "當前推薦級別，用於計算推薦收益。"
   },
   "title.nextLevel": {
-    "message": "下一等級",
-    "description": "下一個推薦等級，用於計算推薦收益。"
+    "message": "下一級別",
+    "description": "下一個推薦級別，用於計算推薦收益。"
   },
   "title.currentPercentage": {
     "message": "當前推薦收益百分比",
     "description": "當前推薦收益百分比，用於計算推薦收益。"
   },
   "title.nextPercentage": {
-    "message": "下一等級推薦收益百分比",
-    "description": "下一等級推薦收益百分比，用於計算推薦收益。"
+    "message": "下一級別推薦收益百分比",
+    "description": "下一個級別的推薦收益百分比，用於計算推薦收益。"
   },
   "title.levelInfo": {
-    "message": "等級資訊",
-    "description": "推薦等級的資訊，用於計算推薦收益。"
+    "message": "級別資訊",
+    "description": "推薦級別的資訊，用於計算推薦收益。"
   },
   "title.distributionLink": {
-    "message": "推薦連結",
-    "description": "推薦連結，用於將客戶綁定為下級客戶。"
+    "message": "推薦鏈接",
+    "description": "推薦鏈接，用於將客戶綁定為下級客戶。"
   },
   "title.inviteesCount": {
     "message": "邀請者總數",
     "description": "邀請者的總數，用於計算推薦收益。"
   },
   "title.manageDistributionStatus": {
-    "message": "分發管理",
+    "message": "分銷管理",
     "description": "推薦狀態的管理。"
   }
 }

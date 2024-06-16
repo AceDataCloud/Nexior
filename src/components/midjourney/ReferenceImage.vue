@@ -2,7 +2,6 @@
   <div class="mb-4">
     <el-upload
       v-model:file-list="fileList"
-      class="upload-demo"
       name="file"
       :limit="5"
       :multiple="true"
@@ -29,7 +28,7 @@
 import { defineComponent } from 'vue';
 import { ElUpload, ElButton, UploadFiles, UploadFile, ElMessage } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { getBaseUrlData } from '@/utils';
+import { getBaseUrlPlatform } from '@/utils';
 
 interface IData {
   fileList: UploadFiles;
@@ -47,7 +46,7 @@ export default defineComponent({
   data(): IData {
     return {
       fileList: [],
-      uploadUrl: getBaseUrlData() + '/api/v1/files/'
+      uploadUrl: getBaseUrlPlatform() + '/api/v1/files/'
     };
   },
   computed: {

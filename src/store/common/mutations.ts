@@ -38,8 +38,16 @@ export const setSetting = (state: IRootState, payload: any): void => {
   };
 };
 
+export const setSite = (state: IRootState, payload: any): void => {
+  state.site = {
+    ...state.site,
+    ...payload
+  };
+};
+
 export default {
   setUser,
+  setSite,
   resetUser,
   setToken,
   resetToken,

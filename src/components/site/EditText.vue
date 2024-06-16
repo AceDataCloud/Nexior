@@ -54,10 +54,11 @@ export default defineComponent({
   },
   methods: {
     onCancel() {
-      this.$emit('cancel');
+      this.editing = false;
     },
     onConfirm() {
       this.$emit('confirm', this.value);
+      this.editing = false;
     }
   }
 });
