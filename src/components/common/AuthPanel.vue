@@ -43,18 +43,18 @@ export default defineComponent({
   },
   computed: {
     iframeUrl() {
-      return `${getBaseUrlAuth()}/auth/login?config=${JSON.stringify(this.$config.auth)}&inviter_id=${this.inviterId}`;
+      return `${getBaseUrlAuth()}/auth/login?inviter_id=${this.inviterId}`;
     },
     inviterId() {
       // if forceInviterId is set, then use forceInviterId
-      if (this.$config?.distribution?.forceInviterId) {
-        return this.$config?.distribution?.forceInviterId;
+      if (this.$store?.state?.site?.distribution?.force_inviter_id) {
+        return this.$store?.state?.site?.distribution?.force_inviter_id;
       }
       // Otherwise, use the inviter_id in the url, then use the inviter_id in the cookie, and finally use the default inviter_id
       const result =
         this.$route.query.inviter_id?.toString() ||
         getCookie('INVITER_ID') ||
-        this.$config?.distribution?.defaultInviterId;
+        this.$store?.state?.site?.distribution?.default_inviter_id;
       return result;
     },
     authenticated() {

@@ -31,7 +31,7 @@
     <div class="middle" />
     <div v-if="!collapsed" class="bottom">
       <el-menu :default-active="activeIndex">
-        <el-menu-item v-if="$config.navigation?.console" @click="onConsole">
+        <el-menu-item @click="onConsole">
           <font-awesome-icon icon="fa-solid fa-compass" class="mr-2" />
           <template #title>{{ $t('common.nav.console') }}</template>
         </el-menu-item>
@@ -46,22 +46,29 @@
       </el-menu>
     </div>
     <div v-else class="bottom">
-      <div v-if="$config.navigation?.darkMode" class="link">
+      <div class="link">
         <el-tooltip effect="dark" :content="$t('common.nav.darkMode')" placement="right">
           <dark-selector class="button" />
         </el-tooltip>
       </div>
-      <div v-if="$config.navigation?.locale" class="link">
+      <div class="link">
         <el-tooltip effect="dark" :content="$t('common.nav.locale')" placement="right">
           <el-button class="button">
             <locale-selector />
           </el-button>
         </el-tooltip>
       </div>
-      <div v-if="$config.navigation?.console" class="link">
+      <div class="link">
         <el-tooltip effect="dark" :content="$t('common.nav.console')" placement="right">
           <el-button class="button" @click="onConsole">
             <font-awesome-icon icon="fa-solid fa-compass" />
+          </el-button>
+        </el-tooltip>
+      </div>
+      <div v-if="showSite" class="link">
+        <el-tooltip effect="dark" :content="$t('common.nav.site')" placement="right">
+          <el-button class="button" @click="onSite">
+            <font-awesome-icon icon="fa-solid fa-gear" />
           </el-button>
         </el-tooltip>
       </div>
@@ -102,7 +109,8 @@ import {
   ROUTE_MIDJOURNEY_HISTORY,
   ROUTE_MIDJOURNEY_INDEX,
   ROUTE_QRART_INDEX,
-  ROUTE_QRART_HISTORY
+  ROUTE_QRART_HISTORY,
+  ROUTE_SITE_INDEX
 } from '@/router/constants';
 import Chevron from './Chevron.vue';
 import Logo from './Logo.vue';
@@ -122,7 +130,7 @@ export default defineComponent({
   },
   data() {
     const links = [];
-    if (this.$config?.navigation?.chat) {
+    if (this.$store?.state?.site?.features?.chat?.enabled) {
       links.push({
         route: {
           name: ROUTE_CHAT_CONVERSATION_NEW
@@ -132,7 +140,7 @@ export default defineComponent({
         routes: [ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW]
       });
     }
-    if (this.$config.navigation?.midjourney) {
+    if (this.$store?.state?.site?.features?.midjourney?.enabled) {
       links.push({
         route: {
           name: ROUTE_MIDJOURNEY_INDEX
@@ -143,7 +151,7 @@ export default defineComponent({
       });
     }
 
-    if (this.$config.navigation?.chatdoc) {
+    if (this.$store?.state?.site?.features?.chatdoc?.enabled) {
       links.push({
         route: {
           name: ROUTE_CHATDOC_INDEX
@@ -154,7 +162,7 @@ export default defineComponent({
       });
     }
 
-    if (this.$config.navigation?.qrart) {
+    if (this.$store?.state?.site?.features?.qrart?.enabled) {
       links.push({
         route: {
           name: ROUTE_QRART_INDEX
@@ -174,14 +182,15 @@ export default defineComponent({
     authenticated() {
       return !!this.$store.state.token.access;
     },
+    showSite() {
+      return this.$store?.state?.site?.admins?.includes(this.$store.getters.user?.id);
+    },
     showDistribution() {
       return (
-        // config is enabled
-        this.$config.navigation.distribution &&
         // if forcedInviterId is set, only the forced inviter can see the distribution menu
         // if forcedInviterId is not set, everyone can see the distribution menu
-        (!this.$config.distribution?.forceInviterId ||
-          this.$store.getters.user?.id === this.$config.distribution?.forceInviterId)
+        !this.$store?.state?.site?.distribution?.force_inviter_id ||
+        this.$store.getters.user?.id === this.$store?.state?.site?.distribution?.force_inviter_id
       );
     },
     collapsed: {
@@ -199,6 +208,11 @@ export default defineComponent({
     onHome() {
       this.$router.push({
         name: ROUTE_INDEX
+      });
+    },
+    onSite() {
+      this.$router.push({
+        name: ROUTE_SITE_INDEX
       });
     },
     onDistribution() {

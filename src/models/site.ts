@@ -1,6 +1,14 @@
-export interface ISiteFeatures {}
+export interface ISiteFeatures {
+  chat?: any;
+  midjourney?: any;
+  chatdoc?: any;
+  qrart?: any;
+}
 
-export interface ISiteDistribution {}
+export interface ISiteDistribution {
+  default_inviter_id?: string;
+  force_inviter_id?: string;
+}
 
 export interface ISiteAuth {}
 
@@ -10,11 +18,11 @@ export interface ISite {
   title?: string;
   logo?: string;
   favicon?: string;
-  keywords?: string;
+  keywords?: string[];
+  admins?: string[];
   description?: string;
   features?: ISiteFeatures;
   distribution?: ISiteDistribution;
-  auth?: ISiteAuth;
   created_at?: string;
   updated_at?: string;
   metadata?: any;
