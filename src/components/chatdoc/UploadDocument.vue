@@ -32,7 +32,7 @@
 import { defineComponent } from 'vue';
 import { ElButton, ElDialog, ElUpload, ElIcon, ElMessage, UploadFiles } from 'element-plus';
 import { UploadFilled } from '@element-plus/icons-vue';
-import { getBaseUrlData } from '@/utils';
+import { getBaseUrlPlatform } from '@/utils';
 
 interface IData {
   dialogVisible: boolean;
@@ -55,7 +55,7 @@ export default defineComponent({
       dialogVisible: false,
       fileList: [],
       learning: false,
-      uploadUrl: getBaseUrlData() + '/api/v1/files/'
+      uploadUrl: getBaseUrlPlatform() + '/api/v1/files/'
     };
   },
   computed: {

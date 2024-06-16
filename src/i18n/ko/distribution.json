@@ -1,31 +1,31 @@
 {
   "button.detail": {
-    "message": "상세 보기",
-    "description": "웹 사이트의 추천 이력 세부 정보를 보는 데 사용되는 버튼의 텍스트입니다."
+    "message": "세부 정보 보기",
+    "description": "버튼 텍스트, 웹사이트의 추천 이력 세부 정보를 확인하는 데 사용됩니다."
   },
   "button.withdrawal": {
-    "message": "출금",
-    "description": "웹 사이트의 추천 수익을 인출하는 데 사용되는 버튼의 텍스트입니다."
+    "message": "인출",
+    "description": "버튼 텍스트, 웹사이트의 추천 수익을 인출하는 데 사용됩니다."
   },
   "button.query": {
     "message": "조회",
-    "description": "웹 사이트의 추천 수익을 조회하는 데 사용되는 버튼의 텍스트입니다."
+    "description": "버튼 텍스트, 웹사이트의 추천 수익을 조회하는 데 사용됩니다."
   },
   "field.id": {
     "message": "추천 ID",
-    "description": "분배의 고유 식별자, 분배는 API 서비스 웹 사이트의 추천을 의미합니다."
+    "description": "추천의 고유 식별자, API 서비스 웹사이트의 추천을 가리킵니다."
   },
   "field.percentage": {
-    "message": "추천 수익 비율",
-    "description": "주문 금액을 기반으로 계산된 추천 수익의 비율입니다."
+    "message": "추천 수익 백분율",
+    "description": "주문 금액에 따라 계산된 추천 수익의 백분율입니다."
   },
   "field.price": {
     "message": "주문 금액",
-    "description": "추천 수익을 계산하는 데 사용되는 주문 금액입니다."
+    "description": "주문 금액, 추천 수익을 계산하는 데 사용됩니다."
   },
   "field.reward": {
     "message": "추천 보상",
-    "description": "주문 금액과 추천 수익 비율을 기반으로 계산된 추천 수익입니다."
+    "description": "주문 금액 및 추천 수익 백분율에 따라 계산된 추천 수익입니다."
   },
   "field.createdAt": {
     "message": "추천 시간",
@@ -33,34 +33,34 @@
   },
   "field.level": {
     "message": "레벨",
-    "description": "추천 수익을 계산하는 데 사용되는 추천의 레벨입니다."
+    "description": "추천의 레벨, 추천 수익을 계산하는 데 사용됩니다."
   },
   "field.threshold": {
     "message": "추천 수익 임계값",
-    "description": "추천 수익을 인출하는 데 사용되는 추천 수익의 임계값입니다."
+    "description": "추천 수익의 임계값으로, 추천 수익을 인출하는 데 사용됩니다."
   },
   "field.inviteeId": {
     "message": "초대자 ID",
-    "description": "초대자의 고유 식별자, 초대자는 API 서비스 웹 사이트에 초대자를 초대하는 사용자를 의미합니다."
+    "description": "초대자의 고유 식별자, API 서비스 웹사이트로 초대된 사람을 가리킵니다."
   },
   "field.isVerified": {
     "message": "인증됨",
-    "description": "추천 사용자가 실제 정보로 인증되었는지를 나타내는 플래그입니다."
+    "description": "추천 사용자가 실제 정보 확인을 통과했는지를 나타내는 플래그입니다."
   },
   "message.deltaPriceForNextLevel": {
-    "message": "다음 레벨까지의 차이",
-    "description": "현재 주문 금액과 다음 레벨 임계값 간의 차이입니다."
+    "message": "다음 레벨까지의 가격 차이",
+    "description": "현재 주문 금액과 다음 레벨의 임계값 사이의 차이입니다."
   },
   "message.developingWithDrawal": {
-    "message": "출금 기능은 개발 중이므로 디스코드에 가입하여 지원팀과 상의하십시오. 출금 시 관련 소득세가 공제됩니다.",
-    "description": "출금 기능이 개발 중임을 나타내는 메시지입니다."
+    "message": "디스코드에 가입하고 지원팀에게 문의하여 인출을 처리하십시오. 인출 시 관련 세금이 공제됩니다.",
+    "description": "인출 기능이 개발 중임을 나타내는 메시지입니다."
   },
   "message.technicalDetail": {
-    "message": "기술적 세부 정보",
-    "description": "추천 시스템의 기술적 세부 정보입니다."
+    "message": "기술적인 세부 정보",
+    "description": "추천 시스템의 기술적인 세부 내용 구현입니다."
   },
   "message.distributionQrDescription": {
-    "message": "추천 QR 코드 (링크와 동일한 내용)",
+    "message": "추천 QR 코드 (링크 내용과 동일)",
     "description": "추천 QR 코드의 설명입니다."
   },
   "message.distributionLink": {
@@ -68,63 +68,63 @@
     "description": "고객을 하위 고객으로 바인딩하는 데 사용되는 추천 링크입니다."
   },
   "message.updateSuccessfully": {
-    "message": "업데이트 성공",
+    "message": "성공적으로 업데이트됨",
     "description": "추천 정보가 성공적으로 업데이트되었음을 나타내는 메시지입니다."
   },
   "message.distributionLinkDescription": {
-    "message": "이 플랫폼을 통해 고객이 이 링크나 QR 코드를 통해 등록하면 해당 고객은 영구적으로 하위 고객으로 바인딩되며, 현재 분배 비율에 따라 이 플랫폼에서의 모든 소비 주문이 귀하의 계정으로 반환됩니다.",
+    "message": "고객이이 링크 또는 QR 코드를 통해 플랫폼에 등록하는 경우, 고객은 영구적으로 귀하의 하위 고객으로 바인딩되며, 고객의 모든 소비 주문은 현재 분배 비율에 따라 귀하의 계정으로 환불됩니다.",
     "description": "추천 링크의 설명입니다."
   },
   "message.distributionLinkDescription2": {
-    "message": "이 링크에는 사용자 ID가 포함되어 있습니다. 고객이 링크를 열면 사용자 ID가 쿠키 형식으로 고객의 브라우저에 기록되며 7일 동안 유효합니다. 7일 이내에 고객이 코드를 스캔하여 이 플랫폼에 등록하면 쿠키와 함께 사용자 ID가 등록 서버로 업로드되어 고객이 하위 고객으로 바인딩됩니다.",
+    "message": "이 링크에는 사용자 ID가 포함됩니다. 고객이 링크를 열면 사용자 ID가 쿠키로 7일 동안 고객의 브라우저에 기록되며, 7일 이내에 고객이이 코드를 스캔하여 플랫폼에 등록하는 경우 사용자 ID는 쿠키와 함께 등록 서버로 업로드되어 고객은 귀하의 하위 고객으로 바인딩됩니다.",
     "description": "추천 링크의 설명입니다."
   },
   "title.price": {
     "message": "추천 주문 총액",
-    "description": "추천 주문의 총액으로, 추천 수익을 계산하는 데 사용됩니다."
+    "description": "추천 주문의 총 금액으로, 추천 수익을 계산하는 데 사용됩니다."
   },
   "title.reward": {
     "message": "총 추천 보상",
-    "description": "주문 금액과 추천 수익 비율을 기반으로 계산된 총 추천 보상입니다."
+    "description": "주문 금액 및 추천 수익 백분율에 따라 계산된 총 추천 보상입니다."
   },
   "title.level": {
     "message": "추천 레벨",
-    "description": "추천 수익을 계산하는 데 사용되는 추천 레벨입니다."
+    "description": "추천 레벨로, 추천 수익을 계산하는 데 사용됩니다."
   },
   "title.percentage": {
-    "message": "추천 수익 비율",
-    "description": "추천 수익을 계산하는 데 사용되는 추천 수익 비율입니다."
+    "message": "추천 수익 백분율",
+    "description": "추천 수익을 계산하는 데 사용되는 추천 수익 백분율입니다."
   },
   "title.currentLevel": {
     "message": "현재 레벨",
-    "description": "추천 수익을 계산하는 데 사용되는 현재 추천 레벨입니다."
+    "description": "현재 추천 레벨로, 추천 수익을 계산하는 데 사용됩니다."
   },
   "title.nextLevel": {
     "message": "다음 레벨",
-    "description": "추천 수익을 계산하는 데 사용되는 다음 추천 레벨입니다."
+    "description": "다음 추천 레벨로, 추천 수익을 계산하는 데 사용됩니다."
   },
   "title.currentPercentage": {
-    "message": "현재 추천 수익 비율",
-    "description": "추천 수익을 계산하는 데 사용되는 현재 추천 수익 비율입니다."
+    "message": "현재 추천 수익 백분율",
+    "description": "추천 수익을 계산하는 데 사용되는 현재 추천 수익 백분율입니다."
   },
   "title.nextPercentage": {
-    "message": "다음 레벨 추천 수익 비율",
-    "description": "추천 수익을 계산하는 데 사용되는 다음 레벨 추천 수익 비율입니다."
+    "message": "다음 레벨 추천 수익 백분율",
+    "description": "추천 수익을 계산하는 데 사용되는 다음 레벨의 추천 수익 백분율입니다."
   },
   "title.levelInfo": {
     "message": "레벨 정보",
-    "description": "추천 수익을 계산하는 데 사용되는 추천 레벨 정보입니다."
+    "description": "추천 수익을 계산하는 데 사용되는 추천 레벨의 정보입니다."
   },
   "title.distributionLink": {
     "message": "추천 링크",
     "description": "고객을 하위 고객으로 바인딩하는 데 사용되는 추천 링크입니다."
   },
   "title.inviteesCount": {
-    "message": "총 초대자 수",
-    "description": "추천 수익을 계산하는 데 사용되는 총 초대자 수입니다."
+    "message": "초대자 수",
+    "description": "추천 수익을 계산하는 데 사용되는 초대자의 총 수입니다."
   },
   "title.manageDistributionStatus": {
     "message": "분배 관리",
-    "description": "추천 상태의 관리입니다."
+    "description": "추천 상태 관리입니다."
   }
 }

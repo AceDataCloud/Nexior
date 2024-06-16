@@ -1,130 +1,130 @@
 {
   "button.detail": {
     "message": "Voir les détails",
-    "description": "Le texte sur le bouton, qui est utilisé pour voir les détails de l'historique des recommandations pour le site web."
+    "description": "Bouton pour afficher les détails de l'historique des recommandations du site."
   },
   "button.withdrawal": {
     "message": "Retrait",
-    "description": "Le texte sur le bouton, qui est utilisé pour retirer les gains de recommandation pour le site web."
+    "description": "Bouton pour retirer les gains recommandés du site."
   },
   "button.query": {
     "message": "Interroger",
-    "description": "Le texte sur le bouton, qui est utilisé pour interroger les gains de recommandation pour le site web."
+    "description": "Bouton pour interroger les gains recommandés du site."
   },
   "field.id": {
     "message": "ID de recommandation",
-    "description": "L'identifiant unique de la distribution, la distribution signifie la recommandation pour le site web du service API."
+    "description": "Identifiant unique de la recommandation, la recommandation se réfère aux recommandations du site via l'API."
   },
   "field.percentage": {
-    "message": "Pourcentage de gains de recommandation",
-    "description": "Le pourcentage des gains de recommandation, qui est calculé en fonction du montant de la commande."
+    "message": "Pourcentage de gains recommandés",
+    "description": "Pourcentage de gains recommandés calculé en fonction du montant de la commande."
   },
   "field.price": {
     "message": "Montant de la commande",
-    "description": "Le montant de la commande, qui est utilisé pour calculer les gains de recommandation."
+    "description": "Montant de la commande utilisé pour calculer les gains recommandés."
   },
   "field.reward": {
-    "message": "Récompense de recommandation",
-    "description": "Les gains de recommandation, qui sont calculés en fonction du montant de la commande et du pourcentage de gains de recommandation."
+    "message": "Récompense recommandée",
+    "description": "Gains recommandés calculés en fonction du montant de la commande et du pourcentage de gains recommandés."
   },
   "field.createdAt": {
-    "message": "Heure de recommandation",
-    "description": "L'heure à laquelle la recommandation est créée."
+    "message": "Date de recommandation",
+    "description": "Date de création de la recommandation."
   },
   "field.level": {
     "message": "Niveau",
-    "description": "Le niveau de la recommandation, qui est utilisé pour calculer les gains de recommandation."
+    "description": "Niveau de recommandation utilisé pour calculer les gains recommandés."
   },
   "field.threshold": {
-    "message": "Seuil de gains de recommandation",
-    "description": "Le seuil des gains de recommandation, qui est utilisé pour retirer les gains de recommandation."
+    "message": "Seuil de gains recommandés",
+    "description": "Seuil de gains recommandés utilisé pour retirer les gains recommandés."
   },
   "field.inviteeId": {
-    "message": "ID de l'invitant",
-    "description": "L'identifiant unique de l'invitant, l'invitant signifie l'utilisateur qui invite l'invité sur le site web du service API."
+    "message": "ID de l'invité",
+    "description": "Identifiant unique de l'invité, l'invité fait référence aux personnes invitées sur le site via l'API."
   },
   "field.isVerified": {
-    "message": "Est vérifié",
-    "description": "Le drapeau pour indiquer si l'utilisateur de recommandation est vérifié avec les informations réelles."
+    "message": "Vérifié",
+    "description": "Indique si l'utilisateur recommandé a été vérifié avec des informations réelles."
   },
   "message.deltaPriceForNextLevel": {
-    "message": "Différence pour le prochain niveau",
-    "description": "La différence entre le montant de la commande actuel et le seuil du prochain niveau."
+    "message": "Différence de prix pour le prochain niveau",
+    "description": "Différence entre le montant actuel de la commande et le seuil du niveau suivant."
   },
   "message.developingWithDrawal": {
-    "message": "Veuillez rejoindre Discord et consulter les supports pour gérer les retraits, les retraits seront soumis à l'impôt sur le revenu connexe.",
-    "description": "Le message pour indiquer que la fonction de retrait est en cours de développement."
+    "message": "Veuillez rejoindre Discord et consulter le support pour traiter le retrait. Le retrait sera soumis à une retenue d'impôt correspondante.",
+    "description": "Message indiquant que la fonction de retrait est en cours de développement."
   },
   "message.technicalDetail": {
     "message": "Détail technique",
-    "description": "Le détail technique du système de recommandation est mis en œuvre."
+    "description": "Détail technique de la mise en œuvre du système de recommandation."
   },
   "message.distributionQrDescription": {
-    "message": "Code QR de recommandation (même contenu que le lien)",
-    "description": "La description du code QR de recommandation."
+    "message": "Description du code QR de recommandation (identique au contenu du lien)",
+    "description": "Description du code QR de recommandation."
   },
   "message.distributionLink": {
     "message": "Lien de recommandation",
-    "description": "Le lien de recommandation, qui est utilisé pour lier le client en tant que client subordonné."
+    "description": "Lien de recommandation utilisé pour lier les clients comme clients inférieurs."
   },
   "message.updateSuccessfully": {
     "message": "Mise à jour réussie",
-    "description": "Le message pour indiquer que les informations de recommandation ont été mises à jour avec succès."
+    "description": "Indique que les informations de recommandation ont été mises à jour avec succès."
   },
   "message.distributionLinkDescription": {
-    "message": "Si un client s'inscrit sur cette plateforme via ce lien ou ce code QR, le client sera lié de manière permanente en tant que votre client subordonné, et toutes les commandes de consommation du client sur cette plateforme seront retournées sur votre compte selon le ratio de distribution actuel.",
-    "description": "La description du lien de recommandation."
+    "message": "Si un client s'inscrit sur la plateforme via ce lien ou ce code QR, il sera lié en tant que votre client inférieur de manière permanente. Toutes les commandes de consommation du client sur cette plateforme seront remboursées sur votre compte en fonction du taux de distribution actuel.",
+    "description": "Description du lien de recommandation."
   },
   "message.distributionLinkDescription2": {
-    "message": "Ce lien contient votre identifiant d'utilisateur. Après que le client ouvre le lien, votre identifiant d'utilisateur sera enregistré dans le navigateur du client sous forme de cookies, qui est valide pendant sept jours. Dans les sept jours, si le client s'inscrit sur cette plateforme en scannant le code, votre identifiant d'utilisateur sera téléchargé sur le serveur d'inscription avec les cookies, et le client peut être lié en tant que votre client aval.",
-    "description": "La description du lien de recommandation."
+    "message": "Ce lien contient votre ID utilisateur. Lorsqu'un client ouvre ce lien, votre ID utilisateur sera enregistré sous forme de cookies dans le navigateur du client, avec une durée de validité de sept jours. Dans les sept jours, si le client s'inscrit sur la plateforme en scannant ce code, votre ID utilisateur sera téléchargé sur le serveur d'inscription avec les cookies, et le client pourra être lié en tant que votre client inférieur.",
+    "description": "Description du lien de recommandation."
   },
   "title.price": {
     "message": "Montant total des commandes de recommandation",
-    "description": "Le montant total des commandes de recommandation, qui est utilisé pour calculer les gains de recommandation."
+    "description": "Montant total des commandes de recommandation utilisé pour calculer les gains recommandés."
   },
   "title.reward": {
-    "message": "Récompenses totales de recommandation",
-    "description": "Les récompenses totales de recommandation, qui sont calculées en fonction du montant de la commande et du pourcentage de gains de recommandation."
+    "message": "Total des récompenses de recommandation",
+    "description": "Total des récompenses de recommandation calculé en fonction du montant de la commande et du pourcentage de gains recommandés."
   },
   "title.level": {
     "message": "Niveau de recommandation",
-    "description": "Le niveau de recommandation, qui est utilisé pour calculer les gains de recommandation."
+    "description": "Niveau de recommandation utilisé pour calculer les gains recommandés."
   },
   "title.percentage": {
-    "message": "Pourcentage de gains de recommandation",
-    "description": "Le pourcentage de gains de recommandation, qui est utilisé pour calculer les gains de recommandation."
+    "message": "Pourcentage de gains recommandés",
+    "description": "Pourcentage de gains recommandés utilisé pour calculer les gains recommandés."
   },
   "title.currentLevel": {
     "message": "Niveau actuel",
-    "description": "Le niveau actuel de recommandation, qui est utilisé pour calculer les gains de recommandation."
+    "description": "Niveau de recommandation actuel utilisé pour calculer les gains recommandés."
   },
   "title.nextLevel": {
     "message": "Prochain niveau",
-    "description": "Le prochain niveau de recommandation, qui est utilisé pour calculer les gains de recommandation."
+    "description": "Prochain niveau de recommandation utilisé pour calculer les gains recommandés."
   },
   "title.currentPercentage": {
-    "message": "Pourcentage de gains de recommandation actuel",
-    "description": "Le pourcentage de gains de recommandation actuel, qui est utilisé pour calculer les gains de recommandation."
+    "message": "Pourcentage actuel de gains recommandés",
+    "description": "Pourcentage actuel de gains recommandés utilisé pour calculer les gains recommandés."
   },
   "title.nextPercentage": {
-    "message": "Pourcentage de gains de recommandation du prochain niveau",
-    "description": "Le pourcentage de gains de recommandation du prochain niveau, qui est utilisé pour calculer les gains de recommandation."
+    "message": "Pourcentage de gains recommandés du prochain niveau",
+    "description": "Pourcentage de gains recommandés du prochain niveau utilisé pour calculer les gains recommandés."
   },
   "title.levelInfo": {
-    "message": "Informations de niveau",
-    "description": "Les informations du niveau de recommandation, qui sont utilisées pour calculer les gains de recommandation."
+    "message": "Informations sur le niveau",
+    "description": "Informations sur le niveau de recommandation utilisées pour calculer les gains recommandés."
   },
   "title.distributionLink": {
     "message": "Lien de recommandation",
-    "description": "Le lien de recommandation, qui est utilisé pour lier le client en tant que client subordonné."
+    "description": "Lien de recommandation utilisé pour lier les clients comme clients inférieurs."
   },
   "title.inviteesCount": {
     "message": "Nombre total d'invités",
-    "description": "Le nombre total des invités, qui est utilisé pour calculer les gains de recommandation."
+    "description": "Nombre total d'invités utilisé pour calculer les gains recommandés."
   },
   "title.manageDistributionStatus": {
     "message": "Gestion de la distribution",
-    "description": "La gestion de l'état de recommandation."
+    "description": "Gestion du statut de la recommandation."
   }
 }

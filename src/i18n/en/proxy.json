@@ -1,114 +1,114 @@
 {
   "entity.requestQueries": {
     "message": "URL Parameters",
-    "description": "These are the parameters that are passed in the URL. They are separated by a '?' and are separated by a '&'."
+    "description": "These are the parameters passed in the URL. They are separated by '?' and delimited by '&'."
   },
   "entity.requestBody": {
     "message": "Request Body",
-    "description": "This is the body of the request. It is usually used for POST and PUT requests."
+    "description": "This is the body of the request. Typically used for POST and PUT requests."
   },
   "entity.responseBody": {
     "message": "Response Body",
-    "description": "This is the body of the response. It is usually in JSON format."
+    "description": "This is the body of the response. Usually presented in JSON format."
   },
   "entity.requestHeaders": {
     "message": "Request Headers",
-    "description": "These are the headers that are passed in the request. They are usually used for authentication."
+    "description": "These are the headers passed in the request. Typically used for authentication."
   },
   "entity.requestHeader": {
     "message": "Request Header",
-    "description": "This is the header that is passed in the request. It is usually used for authentication."
+    "description": "This is the header passed in the request. Typically used for authentication."
   },
   "entity.requestQuery": {
-    "message": "URL Parameter",
-    "description": "This is the parameter that is passed in the URL. It is separated by a '?' and is separated by a '&'."
+    "message": "URL Parameters",
+    "description": "These are the parameters passed in the URL. Separated by '?' and delimited by '&'."
   },
   "entity.responseHeaders": {
     "message": "Response Headers",
-    "description": "These are the headers that are passed in the response. They are usually used for authentication."
+    "description": "These are the headers passed in the response. Typically used for authentication."
   },
   "entity.response": {
     "message": "Response",
-    "description": "This is the response that is returned from the server."
+    "description": "This is the response returned from the server."
   },
   "entity.success": {
     "message": "Success",
-    "description": "This is the response that is returned when the request is successful."
+    "description": "This is the response returned when the request is successful."
   },
   "entity.failure": {
     "message": "Failure",
-    "description": "This is the response that is returned when the request is unsuccessful."
+    "description": "This is the response returned when the request fails."
   },
   "entity.responseExample": {
     "message": "Example",
-    "description": "This is an example of the response that is returned from the server."
+    "description": "This is an example of the response returned from the server."
   },
   "entity.authentication": {
     "message": "Authentication",
-    "description": "This is the authentication that is required to make the request."
+    "description": "This is the authentication required to make the request."
   },
   "message.free": {
     "message": "Free",
-    "description": "Means the price is free, no need to cost any credits or money when using the API service"
+    "description": "Indicates the price is free, no points or money required when using the API service."
   },
   "message.appliedCount": {
-    "message": "Application count",
-    "description": "The times of the API service which has been applied"
+    "message": "Applied Count",
+    "description": "The number of times the API service has been applied for."
   },
   "message.firstFree": {
-    "message": "First time free",
-    "description": "Means the first time of the API service is free, no need to cost any credits or money"
+    "message": "First Free",
+    "description": "Indicates the first use of the API service is free, no points or money required."
   },
   "message.custom": {
-    "message": "Specified Amount",
-    "description": "Means the price is specified, need to cost the specified credits or money when using the API service"
+    "message": "Custom",
+    "description": "Indicates a specified price, points or money required when using the API service."
   },
   "message.present": {
     "message": "Present",
-    "description": "We will present the credits to you when you use the API service for the first time"
+    "description": "Points will be gifted to you on your first use of the API service."
   },
   "message.around": {
-    "message": "Approximately",
-    "description": "The price is approximately, the actual price may be different"
+    "message": "Around",
+    "description": "Price is approximate, actual price may vary."
   },
   "message.successRate15min": {
-    "message": "Real-time success rate",
-    "description": "The real-time success rate of the API service in the last 15 minutes"
+    "message": "Real-time Success Rate",
+    "description": "Real-time success rate of the API service in the past 15 minutes."
   },
   "message.ySuccessRate": {
-    "message": "Success rate (100%)",
-    "description": "The success rate of the API service"
+    "message": "Success Rate (100%)",
+    "description": "Success rate of the API service."
   },
   "message.xMinutes": {
-    "message": "Time (minutes)",
-    "description": "The time in minutes"
+    "message": "Time (Minutes)",
+    "description": "Time, measured in minutes."
   },
   "message.streamUsage": {
-    "message": "Kind reminder: For streaming requests, the above code may not be fully applicable. Please refer to the docking document for modifications.",
-    "description": "For streaming requests, the above code may not be fully applicable. Please refer to the docking document for modifications."
+    "message": "Note: For streaming requests, the above code may not be fully applicable. Please refer to the integration document for modifications.",
+    "description": "For streaming requests, the above code may not be fully applicable. Please refer to the integration document for modifications."
   },
   "message.alphaStage": {
-    "message": "This API is in the Alpha stage, it is an early preview version, there may be potential instability, the API format may change significantly, it is not recommended for use in a production environment. The current pricing is relatively low, and there may be significant price adjustments in the future.",
-    "description": "This API is in the Alpha stage, it is an early preview version, there may be potential instability, the API format may change significantly, it is not recommended for use in a production environment. The current pricing is relatively low, and there may be significant price adjustments in the future."
+    "message": "This API is in Alpha stage, it is an early preview version with potential instability. API format may undergo significant changes, not recommended for production use. Current pricing is relatively low, significant price adjustments may occur in the future.",
+    "description": "This API is in Alpha stage, it is an early preview version with potential instability. API format may undergo significant changes, not recommended for production use. Current pricing is relatively low, significant price adjustments may occur in the future."
   },
   "message.betaStage": {
-    "message": "This API is in the Beta stage, the API format will not change much, but there may be potential instability, please use it carefully in a production environment. The current pricing is relatively low, and there may be moderate price adjustments in the future.",
-    "description": "This API is in the Beta stage, the API format will not change much, but there may be potential instability, please use it carefully in a production environment. The current pricing is relatively low, and there may be moderate price adjustments in the future."
+    "message": "This API is in Beta stage, API format will not undergo major changes, but potential instability may exist. Use in production environment with caution. Current pricing is relatively low, moderate price adjustments may occur in the future.",
+    "description": "This API is in Beta stage, API format will not undergo major changes, but potential instability may exist. Use in production environment with caution. Current pricing is relatively low, moderate price adjustments may occur in the future."
   },
   "unit.GB": {
     "message": "GB",
-    "description": "Gigabyte, a unit of digital information storage"
+    "description": "Gigabyte, unit of digital information storage"
   },
   "unit.MB": {
     "message": "MB",
-    "description": "Megabyte, a unit of digital information storage"
+    "description": "Megabyte, unit of digital information storage"
   },
   "unit.KB": {
     "message": "KB",
-    "description": "Kilobyte, a unit of digital information storage"
+    "description": "Kilobyte, unit of digital information storage"
   },
   "unit.B": {
     "message": "B",
-    "description": "Byte, a unit of digital information storage"
+    "description": "Byte, unit of digital information storage"
   }
 }

@@ -1,14 +1,14 @@
 {
   "button.uploadDocuments": {
     "message": "上傳文件",
-    "description": "按鈕文本，允許用戶上傳文件"
+    "description": "按鈕文本，允許使用者上傳文件"
   },
   "field.fileName": {
-    "message": "文件名稱",
-    "description": "上傳文件的文件名稱"
+    "message": "檔案名稱",
+    "description": "上傳文件的檔案名稱"
   },
   "field.createdAt": {
-    "message": "創建時間",
+    "message": "建立時間",
     "description": "文件上傳時間"
   },
   "field.fileExtension": {
@@ -16,8 +16,8 @@
     "description": "上傳文件的文件類型"
   },
   "field.fileUrl": {
-    "message": "文件鏈接",
-    "description": "上傳文件的鏈接"
+    "message": "文件連結",
+    "description": "上傳文件的連結"
   },
   "field.fileSize": {
     "message": "文件大小",
@@ -25,18 +25,18 @@
   },
   "field.state": {
     "message": "狀態",
-    "description": "文件處理的狀態"
+    "description": "文件處理狀態"
   },
   "field.stateProcessing": {
-    "message": "學習中",
+    "message": "處理中",
     "description": "文件正在處理中"
   },
   "field.stateCompleted": {
-    "message": "學習完成",
-    "description": "文件處理成功完成"
+    "message": "處理完成",
+    "description": "文件處理成功"
   },
   "field.stateFailed": {
-    "message": "學習失敗",
+    "message": "處理失敗",
     "description": "文件處理失敗"
   },
   "field.name": {
@@ -48,128 +48,128 @@
     "description": "文件描述"
   },
   "message.introductionForKnowledge": {
-    "message": "文件可以添加到知識庫中，當機器人回答時，可以使用知識庫中的知識進行回覆。",
-    "description": "知識庫介紹信息"
+    "message": "文件可以加入至知識庫中，機器人回覆時可以使用知識庫中的知識",
+    "description": "知識庫介紹資訊"
   },
   "message.introductionForRepository": {
-    "message": "知識庫是一個包含文件的集合，您可以添加文件。當機器人回答時，它將從知識庫中的文件中回答。",
-    "description": "知識庫介紹信息"
+    "message": "知識庫是文件的集合，您可以新增文件至其中。機器人回覆時將從知識庫中的文件中回覆",
+    "description": "知識庫介紹資訊"
   },
   "message.uploadDocumentsExceed": {
     "message": "上傳文件數量超過限制",
-    "description": "上傳文件數量超過限制的錯誤信息"
+    "description": "上傳文件數量超過限制時的錯誤訊息"
   },
   "message.uploadDocumentsError": {
     "message": "上傳文件失敗",
-    "description": "上傳文件失敗的錯誤信息"
+    "description": "上傳文件失敗時的錯誤訊息"
   },
   "message.uploadDocumentsSuccess": {
     "message": "文件上傳成功",
-    "description": "文件上傳成功的提示信息"
+    "description": "文件上傳成功時的成功訊息"
   },
   "message.createDocumentSuccess": {
-    "message": "文件創建成功",
-    "description": "文件創建成功的提示信息"
+    "message": "文件建立成功",
+    "description": "文件建立成功時的成功訊息"
   },
   "message.startCreateDocument": {
     "message": "開始學習文件...",
-    "description": "開始學習文件時的提示信息"
+    "description": "開始學習文件時的訊息"
   },
   "message.createDocumentError": {
     "message": "學習文件失敗",
-    "description": "學習文件失敗的錯誤信息"
+    "description": "學習文件失敗時的錯誤訊息"
   },
   "message.dragOrClickToUpload": {
     "message": "拖曳或點擊上傳文件",
-    "description": "拖曳或點擊上傳文件的提示信息"
+    "description": "拖曳或點擊上傳文件的訊息"
   },
   "message.learningDocument": {
     "message": "學習中，請稍候...",
-    "description": "學習文件時的提示信息"
+    "description": "學習文件時的訊息"
   },
   "message.startNewChat": {
-    "message": "開始新的聊天",
-    "description": "開始新的聊天的提示信息"
+    "message": "開始新對話",
+    "description": "開始新對話的訊息"
   },
   "message.errorApiError": {
-    "message": "回答失敗，請稍後再試",
-    "description": "回答失敗的錯誤信息"
+    "message": "回應失敗，請稍後重試",
+    "description": "回應失敗時的錯誤訊息"
   },
   "message.errorBadRequest": {
     "message": "請求內容格式不正確，請重新提問",
-    "description": "請求內容格式不正確的錯誤信息"
+    "description": "請求內容格式不正確時的錯誤訊息"
   },
   "message.errorNoConversation": {
-    "message": "對話內容不存在或已過期，請開始新的對話",
-    "description": "對話內容不存在或已過期的錯誤信息"
+    "message": "對話內容不存在或已過期，請開始新對話",
+    "description": "對話內容不存在或已過期時的錯誤訊息"
   },
   "message.errorContentTooLarge": {
     "message": "問題內容過長，請縮短後重試",
-    "description": "問題內容過長的錯誤信息"
+    "description": "問題內容過長時的錯誤訊息"
   },
   "message.errorTooManyRequests": {
-    "message": "您的操作過於頻繁，請稍後再試",
-    "description": "操作過於頻繁的錯誤信息"
+    "message": "您的操作過於頻繁，請稍後重試",
+    "description": "操作過於頻繁時的錯誤訊息"
   },
   "message.errorUsedUp": {
     "message": "您的套餐使用量已達上限，請購買更多使用量以繼續",
-    "description": "套餐使用量已達上限的錯誤信息"
+    "description": "套餐使用量已達上限時的錯誤訊息"
   },
   "message.errorUnknown": {
-    "message": "發生未知的伺服器錯誤，請稍後再試或聯繫客服",
-    "description": "未知的伺服器錯誤的錯誤信息"
+    "message": "發生未知伺服器錯誤，請稍後重試或聯繫客服",
+    "description": "發生未知伺服器錯誤時的錯誤訊息"
   },
   "message.errorTimeout": {
-    "message": "回答問題逾時，請稍後再試",
-    "description": "回答問題逾時的錯誤信息"
+    "message": "回答問題超時，請稍後重試",
+    "description": "回答問題超時時的錯誤訊息"
   },
   "message.errorNotApplied": {
-    "message": "您尚未申請此服務，請先申請再繼續提問",
-    "description": "用戶尚未申請此服務的錯誤信息"
+    "message": "您尚未申請此服務，請申請後繼續提問",
+    "description": "使用者尚未申請此服務時的錯誤訊息"
   },
   "message.confirmDelete": {
     "message": "確認刪除",
-    "description": "確認刪除的提示信息"
+    "description": "確認刪除的訊息"
   },
   "message.howToUse": {
     "message": "按 Shift+Enter 進行換行",
-    "description": "如何換行的提示信息"
+    "description": "如何換行的訊息"
   },
   "message.createRepositorySuccess": {
-    "message": "知識庫創建成功",
-    "description": "知識庫創建成功的提示信息"
+    "message": "知識庫建立成功",
+    "description": "知識庫建立成功時的成功訊息"
   },
   "message.createRepositoryFailed": {
-    "message": "知識庫創建失敗",
-    "description": "知識庫創建失敗的錯誤信息"
+    "message": "知識庫建立失敗",
+    "description": "知識庫建立失敗時的錯誤訊息"
   },
   "message.deleteRepositorySuccess": {
     "message": "知識庫刪除成功",
-    "description": "知識庫刪除成功的提示信息"
+    "description": "知識庫刪除成功時的成功訊息"
   },
   "message.deleteDocumentSuccess": {
     "message": "文件刪除成功",
-    "description": "文件刪除成功的提示信息"
+    "description": "文件刪除成功時的成功訊息"
   },
   "message.currentRepository": {
-    "message": "當前知識庫",
-    "description": "顯示當前知識庫的提示信息"
+    "message": "目前知識庫",
+    "description": "顯示目前知識庫的訊息"
   },
   "message.nameRequired": {
     "message": "名稱不能為空",
-    "description": "名稱為空的錯誤信息"
+    "description": "名稱為空時的錯誤訊息"
   },
   "message.inputRepositoryName": {
     "message": "知識庫名稱",
-    "description": "知識庫名稱的輸入提示"
+    "description": "知識庫名稱的輸入占位符"
   },
   "message.inputRepositoryDescription": {
-    "message": "用一句話描述您的知識庫",
-    "description": "知識庫描述的輸入提示"
+    "message": "輸入一句話描述您的知識庫",
+    "description": "知識庫描述的輸入占位符"
   },
   "message.supportedFiles": {
-    "message": "支援的文件類型：.docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
-    "description": "顯示支援的文件類型的提示信息"
+    "message": "支持的檔案類型：.docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
+    "description": "顯示支持的檔案類型的資訊"
   },
   "nav.chat": {
     "message": "聊天",
@@ -188,8 +188,8 @@
     "description": "管理知識庫的標題"
   },
   "title.createRepository": {
-    "message": "創建知識庫",
-    "description": "創建知識庫的標題"
+    "message": "建立知識庫",
+    "description": "建立知識庫的標題"
   },
   "title.repositories": {
     "message": "知識庫列表",

@@ -1,4 +1,4 @@
-import { IToken, IUser } from '@/models';
+import { ISite, IToken, IUser } from '@/models';
 import { IMidjourneyState } from '../midjourney/models';
 import { IChatState } from '../chat/models';
 import { IChatdocState } from '../chatdoc/models';
@@ -12,6 +12,7 @@ export interface ICommonState {
   token: IToken;
   user?: IUser;
   setting?: ISetting;
+  site?: ISite;
 }
 
 export interface IRootState extends ICommonState {

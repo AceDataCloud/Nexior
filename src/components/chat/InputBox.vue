@@ -53,7 +53,7 @@ import { defineComponent } from 'vue';
 import { ElMessage, ElTooltip, ElUpload } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IChatModel } from '@/models';
-import { getBaseUrlData } from '@/utils';
+import { getBaseUrlPlatform } from '@/utils';
 import { CHAT_MODEL_GPT_4_VISION } from '@/constants';
 
 export default defineComponent({
@@ -86,7 +86,7 @@ export default defineComponent({
       inputHeight: '35px', //add inputHeight
       questionValue: this.question,
       fileList: [],
-      uploadUrl: getBaseUrlData() + '/api/v1/files/'
+      uploadUrl: getBaseUrlPlatform() + '/api/v1/files/'
     };
   },
   computed: {

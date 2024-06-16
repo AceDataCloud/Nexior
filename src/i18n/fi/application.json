@@ -1,31 +1,31 @@
 {
   "button.goDocument": {
     "message": "Dokumentti",
-    "description": "Painikkeen teksti, kun tätä painiketta napsautetaan, siirrytään dokumenttisivulle."
+    "description": "Painikkeen teksti, jota painamalla siirryt dokumenttisivulle."
   },
   "button.goCredentials": {
     "message": "Tunnisteet",
-    "description": "Painikkeen teksti, kun tätä painiketta napsautetaan, siirrytään tunnisteiden sivulle."
+    "description": "Painikkeen teksti, jota painamalla siirryt tunnisteiden sivulle."
   },
   "button.buyMore": {
     "message": "Osta lisää",
-    "description": "Painikkeen teksti, kun tätä painiketta napsautetaan, siirrytään osta lisää -sivulle."
+    "description": "Painikkeen teksti, jota painamalla siirryt lisää ostoja -sivulle."
   },
   "button.createOrder": {
     "message": "Luo tilaus",
-    "description": "Painikkeen teksti, kun tätä painiketta napsautetaan, siirrytään luo tilaus -sivulle."
+    "description": "Painikkeen teksti, jota painamalla siirryt tilauksen luontisivulle."
   },
   "button.custom": {
     "message": "Mukautettu",
-    "description": "Painikkeen teksti, kun tätä painiketta napsautetaan, siirrytään mukautetulle sivulle."
+    "description": "Painikkeen teksti, jota painamalla siirryt mukautetulle sivulle."
   },
   "button.query": {
-    "message": "Kysely",
-    "description": "Painikkeen teksti, kun tätä painiketta napsautetaan, siirrytään kyselysivulle."
+    "message": "Haku",
+    "description": "Painikkeen teksti, jota painamalla siirryt haku -sivulle."
   },
   "button.usage": {
     "message": "Käyttöhistoria",
-    "description": "Painikkeen teksti, kun tätä painiketta napsautetaan, siirrytään käyttöhistoriasivulle."
+    "description": "Painikkeen teksti, jota painamalla siirryt käyttöhistoriasivulle."
   },
   "field.application": {
     "message": "Sovellus",
@@ -36,8 +36,8 @@
     "description": "Sovelluksen tila."
   },
   "field.id": {
-    "message": "Sovellus-ID",
-    "description": "Sovelluksen tunniste."
+    "message": "Sovellustunnus",
+    "description": "Sovelluksen tunnus."
   },
   "field.remainingAmount": {
     "message": "Jäljellä oleva määrä",
@@ -64,8 +64,8 @@
     "description": "Sovelluksen määrä."
   },
   "field.traceId": {
-    "message": "Jäljitä ID",
-    "description": "Yhden API-kutsun jäljitä ID, API-palvelun sovellukselle, älä käännetä sitä, säilytä se 'Jäljitä ID' -nimisenä."
+    "message": "Jäljitystunnus",
+    "description": "API-palvelun sovelluksen yhden API-kutsun jäljitystunnus, ei käännettävä, pidä ’Jäljitystunnus’."
   },
   "field.shouldPayPrice": {
     "message": "Lopullinen hinta",
@@ -73,11 +73,11 @@
   },
   "field.api": {
     "message": "API",
-    "description": "Tämä on eräänlainen verkkopalvelu, muoto on API:n kautta tarjota palvelua käyttäjälle."
+    "description": "Tämä on verkkopalvelu, joka tarjoaa käyttäjille palveluita API:n kautta."
   },
   "field.proxy": {
     "message": "Välityspalvelin",
-    "description": "Tämä on eräänlainen verkkopalvelu, muoto on HTTP-välityspalvelimen kautta (käytetään datan siirtoon) tarjota palvelua käyttäjälle."
+    "description": "Tämä on verkkopalvelu, joka tarjoaa käyttäjille palveluita HTTP-välityspalvelimen kautta (tietojen siirtoa varten)."
   },
   "field.credential": {
     "message": "Tunniste",
@@ -89,7 +89,7 @@
   },
   "field.package": {
     "message": "Paketti",
-    "description": "Paketti tarkoittaa erilaisia hintapaketteja, kuten 100 dollaria 10000 luottopistettä, 200 dollaria 20000 luottopistettä."
+    "description": "Paketti edustaa eri hintapaketteja, esim. 100 dollaria voi ostaa 10000 pistettä, 200 dollaria voi ostaa 20000 pistettä."
   },
   "field.type": {
     "message": "Tyyppi",
@@ -100,99 +100,99 @@
     "description": "Sovelluksen ilmainen määrä."
   },
   "field.extraPrice": {
-    "message": "Hinta",
-    "description": "Käyttäjän tulee maksaa sovelluksen lisähinta."
+    "message": "Lisähinta",
+    "description": "Käyttäjän maksettava sovelluksen lisähinta."
   },
   "message.alreadyApplied": {
-    "message": "Olet jo hakenut tätä palvelua, tarkista konsoli",
-    "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjä on jo hakenut tätä palvelua."
+    "message": "Olet jo hakenut tätä palvelua, katso hallintapaneelista",
+    "description": "Kun käyttäjä on jo hakenut tätä palvelua, näytetään käyttäjälle viesti."
   },
   "message.applySuccessfully": {
     "message": "Hakemus hyväksytty",
-    "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjä on hakenut tätä palvelua onnistuneesti."
+    "description": "Kun käyttäjä on onnistuneesti hakenut tätä palvelua, näytetään käyttäjälle viesti."
   },
   "message.notApplied": {
-    "message": "Et ole vielä hakenut tätä palvelua, hae palvelua ennen sen käyttöä",
-    "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjä ei ole vielä hakenut tätä palvelua."
+    "message": "Et ole vielä hakenut tätä palvelua, hae palvelu ennen käyttöä",
+    "description": "Kun käyttäjä ei ole vielä hakenut tätä palvelua, näytetään käyttäjälle viesti."
   },
   "message.yourApplication": {
-    "message": "Sinun hakemuksesi",
-    "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjällä on hakemus."
+    "message": "Hakemuksesi",
+    "description": "Kun käyttäjän hakemus on kesken, näytetään käyttäjälle viesti."
   },
   "message.unverified": {
-    "message": "Sinun on suoritettava henkilöllisyyden varmennus ennen kuin voit hakea tätä palvelua",
-    "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjä ei ole suorittanut henkilöllisyyden varmennusta."
+    "message": "Sinun on suoritettava henkilöllisyyden varmistus ennen tämän palvelun hakemista",
+    "description": "Kun käyttäjä ei ole vielä suorittanut henkilöllisyyden varmistusta, näytetään käyttäjälle viesti."
   },
   "message.goVerify": {
-    "message": "Mene henkilöllisyyden varmennukseen",
-    "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjä ei ole suorittanut henkilöllisyyden varmennusta."
+    "message": "Siirry henkilöllisyyden varmistukseen",
+    "description": "Kun käyttäjä ei ole vielä suorittanut henkilöllisyyden varmistusta, näytetään käyttäjälle viesti."
   },
   "message.requiredParameter": {
-    "message": "Vaadittu parametri",
-    "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjä ei ole syöttänyt vaadittua parametria."
+    "message": "Pakollinen parametri",
+    "description": "Kun käyttäjä ei ole vielä syöttänyt pakollista parametria, näytetään käyttäjälle viesti."
   },
   "message.example": {
     "message": "Esimerkki",
-    "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjä ei ole syöttänyt vaadittua parametria."
+    "description": "Kun käyttäjä ei ole vielä syöttänyt pakollista parametria, näytetään käyttäjälle viesti."
   },
   "message.createCredentialSuccessfully": {
-    "message": "Tunnisteen luonti onnistui",
-    "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjä on luonut tunnisteen onnistuneesti."
+    "message": "Tunniste luotu onnistuneesti",
+    "description": "Kun käyttäjä on onnistuneesti luonut tunnisteen, näytetään käyttäjälle viesti."
   },
   "message.readPolicy": {
     "message": "Olen lukenut ja hyväksyn",
-    "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjä on lukenut ja hyväksynyt käytännön."
+    "description": "Kun käyttäjä on lukenut ja hyväksynyt politiikan, näytetään käyttäjälle viesti."
   },
   "message.policy": {
-    "message": "Tietotekniikan palvelun käyttösopimus",
-    "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjä on lukenut ja hyväksynyt käytännön."
+    "message": "Data Technology Services käyttöehdot",
+    "description": "Kun käyttäjä on lukenut ja hyväksynyt politiikan, näytetään käyttäjälle viesti."
   },
   "message.notAgreePolicy": {
-    "message": "Et ole hyväksynyt tietotekniikan palvelun käyttösopimusta",
-    "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjä ei ole hyväksynyt käytäntöä."
+    "message": "Et ole vielä hyväksynyt Data Technology Services käyttöehtoja",
+    "description": "Kun käyttäjä ei ole vielä hyväksynyt politiikkaa, näytetään käyttäjälle viesti."
   },
   "message.confirmApplying": {
     "message": "Vahvista palvelun hakeminen",
-    "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjä on vahvistanut palvelun hakemuksen."
+    "description": "Kun käyttäjä vahvistaa palvelun hakemuksen, näytetään käyttäjälle viesti."
   },
   "message.rotateCredential": {
     "message": "Nollaa avain",
-    "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjä on nollannut avaimen."
+    "description": "Kun käyttäjä nollaa avaimen, näytetään käyttäjälle viesti."
   },
   "message.rotateCredentialConfirm": {
-    "message": "Oletko varma, että haluat nollata avaimen? Sitä ei voi palauttaa nollauksen jälkeen",
-    "description": "Viesti, joka näytetään käyttäjälle, kun käyttäjä on vahvistanut avaimen nollauksen."
+    "message": "Haluatko varmasti nollata salasanan? Nollauksen jälkeen sitä ei voi palauttaa",
+    "description": "Kun käyttäjä vahvistaa salasanan nollauksen, näytettävä viesti."
   },
   "message.idDoesNotExist": {
     "message": "Sovellusta ei ole olemassa",
-    "description": "Viesti, joka näytetään käyttäjälle, kun sovellusta ei ole olemassa."
+    "description": "Kun sovellusta ei ole olemassa, näytettävä viesti."
   },
   "message.rotateCredentialSuccessfully": {
-    "message": "Avaimen nollaus onnistui",
-    "description": "Viesti, joka näytetään käyttäjälle, kun avaimen nollaus onnistuu."
+    "message": "Salasanan nollaus onnistui",
+    "description": "Kun salasanan nollaus onnistuu, näytettävä viesti."
   },
   "message.rotateCredentialFailed": {
-    "message": "Avaimen nollaus epäonnistui, ota yhteyttä käsittelyä varten",
-    "description": "Viesti, joka näytetään käyttäjälle, kun avaimen nollaus epäonnistuu."
+    "message": "Salasanan nollaus epäonnistui, ota yhteyttä asiakaspalveluun",
+    "description": "Kun salasanan nollaus epäonnistuu, näytettävä viesti."
   },
   "message.updateFailed": {
-    "message": "Muokkaus epäonnistui",
-    "description": "Viesti, joka näytetään käyttäjälle, kun muokkaus epäonnistuu."
+    "message": "Päivitys epäonnistui",
+    "description": "Kun päivitys epäonnistuu, näytettävä viesti."
   },
   "message.updateSuccessfully": {
-    "message": "Muokkaus onnistui",
-    "description": "Viesti, joka näytetään käyttäjälle, kun muokkaus onnistuu."
+    "message": "Päivitys onnistui",
+    "description": "Kun päivitys onnistuu, näytettävä viesti."
   },
   "title.buyService": {
     "message": "Osta palvelu",
-    "description": "Sivun otsikko, kun käyttäjä haluaa ostaa palvelun."
+    "description": "Kun käyttäjä haluaa ostaa palvelua, sivun otsikko."
   },
   "title.applicationRemainingCount": {
-    "message": "Muuta määrää",
-    "description": "Sivun otsikko, kun käyttäjä haluaa muuttaa sovelluksen määrää."
+    "message": "Muokkaa sovellusmäärää",
+    "description": "Kun käyttäjä haluaa muokata sovellusmäärää, sivun otsikko."
   },
   "title.manageApplication": {
-    "message": "Sovelluksen hallinta",
-    "description": "Sivun otsikko, kun käyttäjä haluaa hallita sovellusta."
+    "message": "Hallinnoi sovelluksia",
+    "description": "Kun käyttäjä haluaa hallita sovelluksia, sivun otsikko."
   }
 }

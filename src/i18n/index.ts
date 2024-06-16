@@ -79,6 +79,7 @@ export const loadLocaleMessages = async (i18n: I18n, locale: string) => {
     'service',
     'usage',
     'user',
+    'site',
     'chat',
     'midjourney',
     'chatdoc'

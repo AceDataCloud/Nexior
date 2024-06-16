@@ -9,12 +9,21 @@ import 'mac-scrollbar/dist/mac-scrollbar.css';
 import dayjs from './plugins/dayjs';
 import './plugins/font-awesome';
 import { vLoading } from 'element-plus';
-import { initializeCookies, initializeFavicon, initializeTitle } from './utils/initializer';
-import config from './plugins/config';
+import {
+  initializeCookies,
+  initializeDescription,
+  initializeFavicon,
+  initializeKeywords,
+  initializeSite,
+  initializeTitle
+} from './utils/initializer';
 
 const main = async () => {
   await initializeCookies();
+  await initializeSite();
   await initializeTitle();
+  await initializeDescription();
+  await initializeKeywords();
   await initializeFavicon();
 
   const app = createApp(App);
@@ -25,7 +34,6 @@ const main = async () => {
   app.use(dayjs, {
     formatString: 'YYYY-MM-DD HH:mm:ss'
   });
-  app.use(config);
   app.directive('loading', vLoading);
   app.mount('#app');
   console.debug('app mounted');

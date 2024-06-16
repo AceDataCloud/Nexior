@@ -1,31 +1,31 @@
 {
   "entity.requestQueries": {
-    "message": "Parametri URL",
-    "description": "Questi sono i parametri che vengono passati nell'URL. Sono separati da '?' e sono separati da '&'."
+    "message": "Parametri della richiesta",
+    "description": "Questi sono i parametri passati nell'URL. Sono separati da '?' e divisi da '&'."
   },
   "entity.requestBody": {
     "message": "Corpo della richiesta",
-    "description": "Questo è il corpo della richiesta. Di solito viene utilizzato per richieste di tipo POST e PUT."
+    "description": "Questo è il corpo della richiesta. Di solito utilizzato per le richieste POST e PUT."
   },
   "entity.responseBody": {
     "message": "Corpo della risposta",
-    "description": "Questo è il corpo della risposta. Di solito è in formato JSON."
+    "description": "Questo è il corpo della risposta. Di solito presentato in formato JSON."
   },
   "entity.requestHeaders": {
     "message": "Intestazioni della richiesta",
-    "description": "Queste sono le intestazioni che vengono passate nella richiesta. Di solito vengono utilizzate per l'autenticazione."
+    "description": "Queste sono le intestazioni passate nella richiesta. Di solito utilizzate per l'autenticazione."
   },
   "entity.requestHeader": {
     "message": "Intestazione della richiesta",
-    "description": "Questa è l'intestazione che viene passata nella richiesta. Di solito viene utilizzata per l'autenticazione."
+    "description": "Questa è l'intestazione passata nella richiesta. Di solito utilizzata per l'autenticazione."
   },
   "entity.requestQuery": {
-    "message": "Parametro URL",
-    "description": "Questo è il parametro che viene passato nell'URL. È separato da '?' e è separato da '&'."
+    "message": "Parametro dell'URL",
+    "description": "Questo è il parametro passato nell'URL. Separato da '?' e diviso da '&'."
   },
   "entity.responseHeaders": {
     "message": "Intestazioni della risposta",
-    "description": "Queste sono le intestazioni che vengono passate nella risposta. Di solito vengono utilizzate per l'autenticazione."
+    "description": "Queste sono le intestazioni passate nella risposta. Di solito utilizzate per l'autenticazione."
   },
   "entity.response": {
     "message": "Risposta",
@@ -33,82 +33,82 @@
   },
   "entity.success": {
     "message": "Successo",
-    "description": "Questa è la risposta restituita quando la richiesta ha successo."
+    "description": "Questa è la risposta restituita in caso di successo della richiesta."
   },
   "entity.failure": {
     "message": "Fallimento",
-    "description": "Questa è la risposta restituita quando la richiesta non ha successo."
+    "description": "Questa è la risposta restituita in caso di fallimento della richiesta."
   },
   "entity.responseExample": {
-    "message": "Esempio",
-    "description": "Questo è un esempio della risposta restituita dal server."
+    "message": "Esempio di risposta",
+    "description": "Questo è un esempio di risposta restituita dal server."
   },
   "entity.authentication": {
     "message": "Autenticazione",
-    "description": "Questa è l'autenticazione richiesta per effettuare la richiesta."
+    "description": "Questo è l'authentication necessaria per effettuare la richiesta."
   },
   "message.free": {
     "message": "Gratuito",
-    "description": "Indica che il prezzo è gratuito, non è necessario pagare crediti o denaro quando si utilizza il servizio API"
+    "description": "Indica che il prezzo è gratuito, non è richiesto alcun punto o denaro per l'uso del servizio API."
   },
   "message.appliedCount": {
-    "message": "Conteggio delle applicazioni",
-    "description": "Il numero di volte in cui il servizio API è stato richiesto"
+    "message": "Conteggio richieste",
+    "description": "Numero di volte in cui è stata richiesta il servizio API."
   },
   "message.firstFree": {
     "message": "Prima volta gratuita",
-    "description": "Indica che la prima volta del servizio API è gratuita, non è necessario pagare crediti o denaro"
+    "description": "Indica il primo utilizzo del servizio API come gratuito, senza richiesta di punti o denaro."
   },
   "message.custom": {
-    "message": "Importo specificato",
-    "description": "Indica che il prezzo è specificato, è necessario pagare i crediti o il denaro specificato quando si utilizza il servizio API"
+    "message": "Personalizzato",
+    "description": "Indica un prezzo specifico, è richiesto l'uso di punti o denaro specifici per il servizio API."
   },
   "message.present": {
-    "message": "Presente",
-    "description": "Ti presenteremo i crediti quando utilizzi il servizio API per la prima volta"
+    "message": "Regalo",
+    "description": "Al primo utilizzo del servizio API, ti regaleremo dei punti."
   },
   "message.around": {
-    "message": "Approssimativamente",
-    "description": "Il prezzo è approssimativo, il prezzo effettivo potrebbe essere diverso"
+    "message": "Intorno a",
+    "description": "Il prezzo è indicativo, potrebbe variare."
   },
   "message.successRate15min": {
     "message": "Tasso di successo in tempo reale",
-    "description": "Il tasso di successo in tempo reale del servizio API negli ultimi 15 minuti"
+    "description": "Tasso di successo in tempo reale del servizio API negli ultimi 15 minuti."
   },
   "message.ySuccessRate": {
     "message": "Tasso di successo (100%)",
-    "description": "Il tasso di successo del servizio API"
+    "description": "Il tasso di successo del servizio API."
   },
   "message.xMinutes": {
     "message": "Tempo (minuti)",
-    "description": "Il tempo in minuti"
+    "description": "Tempo, misurato in minuti."
   },
   "message.streamUsage": {
-    "message": "Gentile promemoria: Per le richieste di streaming, il codice sopra potrebbe non essere completamente applicabile. Si prega di fare riferimento al documento di integrazione per le modifiche.",
-    "description": "Per le richieste di streaming, il codice sopra potrebbe non essere completamente applicabile. Si prega di fare riferimento al documento di integrazione per le modifiche."
+    "message": "Nota: Per le richieste in streaming, il codice sopra potrebbe non essere del tutto applicabile. Si prega di fare riferimento alla documentazione per l'integrazione.",
+    "description": "Per le richieste in streaming, il codice sopra potrebbe non essere del tutto applicabile. Si prega di fare riferimento alla documentazione per l'integrazione."
   },
   "message.alphaStage": {
-    "message": "Questa API è nella fase Alpha, è una versione di anteprima anticipata, potrebbe esserci un'instabilità potenziale, il formato dell'API potrebbe cambiare significativamente, non è consigliato per l'uso in un ambiente di produzione. Attualmente i prezzi sono relativamente bassi, potrebbero esserci significativi aggiustamenti dei prezzi in futuro.",
-    "description": "Questa API è nella fase Alpha, è una versione di anteprima anticipata, potrebbe esserci un'instabilità potenziale, il formato dell'API potrebbe cambiare significativamente, non è consigliato per l'uso in un ambiente di produzione. Attualmente i prezzi sono relativamente bassi, potrebbero esserci significativi aggiustamenti dei prezzi in futuro."
+    "message": "Questa API è in fase Alpha, si tratta di una versione di anteprima iniziale e potrebbero esserci instabilità potenziali. Il formato dell'API potrebbe subire modifiche significative. Non è consigliabile utilizzarla in un ambiente di produzione. Attualmente il prezzo è relativamente basso, potrebbero esserci significativi aggiustamenti dei prezzi in futuro.",
+    "description": "Questa API è in fase Alpha, si tratta di una versione di anteprima iniziale e potrebbero esserci instabilità potenziali. Il formato dell'API potrebbe subire modifiche significative. Non è consigliabile utilizzarla in un ambiente di produzione. Attualmente il prezzo è relativamente basso, potrebbero esserci significativi aggiustamenti dei prezzi in futuro."
   },
   "message.betaStage": {
-    "message": "Questa API è nella fase Beta, il formato dell'API non cambierà molto, ma potrebbe esserci un'instabilità potenziale, si prega di utilizzarla con attenzione in un ambiente di produzione. Attualmente i prezzi sono relativamente bassi, potrebbero esserci aggiustamenti moderati dei prezzi in futuro.",
-    "description": "Questa API è nella fase Beta, il formato dell'API non cambierà molto, ma potrebbe esserci un'instabilità potenziale, si prega di utilizzarla con attenzione in un ambiente di produzione. Attualmente i prezzi sono relativamente bassi, potrebbero esserci aggiustamenti moderati dei prezzi in futuro."
+    "message": "Questa API è in fase Beta, il formato dell'API non subirà modifiche significative, ma potrebbero comunque esserci instabilità potenziali. Si prega di fare attenzione nell'utilizzarla in un ambiente di produzione. Attualmente il prezzo è relativamente basso, potrebbero esserci adeguamenti moderati dei prezzi in futuro.",
+    "description": "Questa API è in fase Beta, il formato dell'API non subirà modifiche significative, ma potrebbero comunque esserci instabilità potenziali. Si prega di fare attenzione nell'utilizzarla in un ambiente di produzione. Attualmente il prezzo è relativamente basso, potrebbero esserci adeguamenti moderati dei prezzi in futuro."
   },
   "unit.GB": {
     "message": "GB",
-    "description": "Gigabyte, un'unità di archiviazione delle informazioni digitali"
+    "description": "Gigabyte, unità di misura per la memorizzazione di informazioni numeriche"
   },
   "unit.MB": {
     "message": "MB",
-    "description": "Megabyte, un'unità di archiviazione delle informazioni digitali"
+    "description": "Megabyte, unità di misura per la memorizzazione di informazioni numeriche"
   },
   "unit.KB": {
     "message": "KB",
-    "description": "Kilobyte, un'unità di archiviazione delle informazioni digitali"
+    "description": "Kilobyte, unità di misura per la memorizzazione di informazioni numeriche"
   },
   "unit.B": {
     "message": "B",
-    "description": "Byte, un'unità di archiviazione delle informazioni digitali"
+    "description": "Byte, unità di misura per la memorizzazione di informazioni numeriche"
   }
 }

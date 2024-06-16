@@ -1,71 +1,71 @@
 {
   "entity.requestQueries": {
-    "message": "URL-parametrit",
-    "description": "Nämä ovat parametreja, jotka välitetään URLissa. Ne erotetaan '?' ja erotetaan '&'."
+    "message": "Pyynnön URL-parametrit",
+    "description": "Nämä ovat URL-osoitteessa välitettäviä parametrejä. Ne erotetaan '?' ja erotetaan '&'."
   },
   "entity.requestBody": {
-    "message": "Pyyntökehys",
-    "description": "Tämä on pyynnön runko. Sitä käytetään yleensä POST- ja PUT-pyyntöihin."
+    "message": "Pyyntökehote",
+    "description": "Tämä on pyynnön runko. Yleensä käytetään POST- ja PUT-pyyntöihin."
   },
   "entity.responseBody": {
-    "message": "Vastauksen runko",
-    "description": "Tämä on vastauksen runko. Se on yleensä JSON-muodossa."
+    "message": "Vastauskehote",
+    "description": "Tämä on vastauksen runko. Yleensä esitetään JSON-muodossa."
   },
   "entity.requestHeaders": {
     "message": "Pyyntöotsikot",
-    "description": "Nämä ovat otsikoita, jotka välitetään pyynnössä. Niitä käytetään yleensä todennukseen."
+    "description": "Nämä ovat pyynnön mukana lähetettäviä otsikoita. Yleensä käytetään todennuksessa."
   },
   "entity.requestHeader": {
-    "message": "Pyyntöotsake",
-    "description": "Tämä on otsake, joka välitetään pyynnössä. Sitä käytetään yleensä todennukseen."
+    "message": "Pyyntöotsikko",
+    "description": "Tämä on pyynnön mukana lähetettävä otsikko. Yleensä käytetään todennuksessa."
   },
   "entity.requestQuery": {
-    "message": "URL-parametri",
-    "description": "Tämä on parametri, joka välitetään URLissa. Se erotetaan '?' ja erotetaan '&'."
+    "message": "Pyynnön URL-parametrit",
+    "description": "Nämä ovat URL-osoitteessa välitettäviä parametrejä. Erotetaan '?' ja erotetaan '&'."
   },
   "entity.responseHeaders": {
-    "message": "Vastauksen otsikot",
-    "description": "Nämä ovat otsikoita, jotka välitetään vastauksessa. Niitä käytetään yleensä todennukseen."
+    "message": "Vastausotsikot",
+    "description": "Nämä ovat vastauksen mukana lähetettäviä otsikoita. Yleensä käytetään todennuksessa."
   },
   "entity.response": {
     "message": "Vastaus",
-    "description": "Tämä on vastaus, joka palautetaan palvelimelta."
+    "description": "Tämä on palvelimelta saatu vastaus."
   },
   "entity.success": {
-    "message": "Onnistuminen",
-    "description": "Tämä on vastaus, joka palautetaan, kun pyyntö on onnistunut."
+    "message": "Onnistunut",
+    "description": "Tämä on palvelimen onnistuneen pyynnön mukana lähetetty vastaus."
   },
   "entity.failure": {
-    "message": "Epäonnistuminen",
-    "description": "Tämä on vastaus, joka palautetaan, kun pyyntö epäonnistuu."
+    "message": "Epäonnistunut",
+    "description": "Tämä on palvelimen epäonnistuneen pyynnön mukana lähetetty vastaus."
   },
   "entity.responseExample": {
     "message": "Esimerkki",
-    "description": "Tämä on esimerkki vastauksesta, joka palautetaan palvelimelta."
+    "description": "Tämä on palvelimelta saatavan vastauksen esimerkki."
   },
   "entity.authentication": {
     "message": "Todennus",
-    "description": "Tämä on todennus, joka vaaditaan pyynnön tekemiseen."
+    "description": "Tämä on pyynnön aloittamiseen tarvittava todennus."
   },
   "message.free": {
     "message": "Ilmainen",
-    "description": "Tarkoittaa, että hinta on ilmainen, eikä API-palvelun käytöstä tarvitse maksaa mitään luottoja tai rahaa"
+    "description": "Ilmaisee, että hinta on ilmainen eikä API-palvelun käytöstä tarvitse maksaa pisteitä tai rahaa"
   },
   "message.appliedCount": {
-    "message": "Hakemuksen määrä",
-    "description": "Kuinka monta kertaa API-palvelua on haettu"
+    "message": "Käytöskerrat",
+    "description": "API-palvelun käyttöön jo kertaalleen hyväksyttyjen kertojen määrä"
   },
   "message.firstFree": {
-    "message": "Ensimmäinen kerta ilmainen",
-    "description": "Tarkoittaa, että API-palvelun ensimmäinen käyttökerta on ilmainen, eikä siitä tarvitse maksaa mitään luottoja tai rahaa"
+    "message": "Ensimmäinen ilmainen",
+    "description": "Ilmaisee, että API-palvelun ensimmäinen käyttö on maksuton eikä vaadi pisteitä tai rahaa"
   },
   "message.custom": {
-    "message": "Määritelty määrä",
-    "description": "Tarkoittaa, että hinta on määritelty, ja API-palvelun käytöstä on maksettava määritelty määrä luottoja tai rahaa"
+    "message": "Mukautettu summa",
+    "description": "Ilmaisee, että hinta on määritelty ja API-palvelun käytöstä on maksettava määritelty määrä pisteitä tai rahaa"
   },
   "message.present": {
-    "message": "Lahja",
-    "description": "Lahjoitamme sinulle luottoja, kun käytät API-palvelua ensimmäistä kertaa"
+    "message": " Lahja",
+    "description": "Ensimmäisellä API-palvelun käytöllä annamme sinulle pisteitä lahjaksi"
   },
   "message.around": {
     "message": "Noin",
@@ -73,27 +73,27 @@
   },
   "message.successRate15min": {
     "message": "Reaaliaikainen onnistumisprosentti",
-    "description": "API-palvelun reaaliaikainen onnistumisprosentti viimeisen 15 minuutin aikana"
+    "description": "API-palvelun viimeisen 15 minuutin aikana saavutettu reaaliaikainen onnistumisprosentti"
   },
   "message.ySuccessRate": {
-    "message": "Onnistumisprosentti (100 %)",
+    "message": "Onnistumisprosentti (100%)",
     "description": "API-palvelun onnistumisprosentti"
   },
   "message.xMinutes": {
     "message": "Aika (minuutit)",
-    "description": "Aika minuuteissa"
+    "description": "Aika minuuttien mittaisina"
   },
   "message.streamUsage": {
-    "message": "Ystävällinen muistutus: Suoratoistopyynnöissä yllä oleva koodi ei välttämättä ole täysin sovellettavissa. Katso muutokset telakointiasiakirjasta.",
-    "description": "Suoratoistopyynnöissä yllä oleva koodi ei välttämättä ole täysin sovellettavissa. Katso muutokset telakointiasiakirjasta."
+    "message": "Huomautus: Edellä mainitut koodit saattavat olla osittain sopimattomia suoratoistopyyntöihin. Katso integraatiodokumentaatio ja tee tarvittavat muutokset.",
+    "description": "Suoratoistopyyntöjen osalta edellä mainitut koodit saattavat olla osittain sopimattomia. Katso integraatiodokumentaatio ja tee tarvittavat muutokset."
   },
   "message.alphaStage": {
-    "message": "Tämä API on Alfa-vaiheessa, se on varhainen esikatseluversio, siinä saattaa olla mahdollisia epävakautta, API-muoto saattaa muuttua merkittävästi, sitä ei suositella tuotantoympäristössä käytettäväksi. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla merkittäviä hintamuutoksia.",
-    "description": "Tämä API on Alfa-vaiheessa, se on varhainen esikatseluversio, siinä saattaa olla mahdollisia epävakautta, API-muoto saattaa muuttua merkittävästi, sitä ei suositella tuotantoympäristössä käytettäväksi. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla merkittäviä hintamuutoksia."
+    "message": "Tämä API on Alfa-vaiheessa, eli se on varhainen esikatseluversio, ja siinä saattaa olla potentiaalista epävakautta. API-muoto voi muuttua merkittävästi, joten tuotantokäyttöä ei suositella. Nykyinen hinnoittelu on suhteellisen alhainen, mutta tulevaisuudessa hinnoittelu saattaa muuttua merkittävästi.",
+    "description": "Tämä API on Alfa-vaiheessa, eli se on varhainen esikatseluversio, ja siinä saattaa olla potentiaalista epävakautta. API-muoto voi muuttua merkittävästi, joten tuotantokäyttöä ei suositella. Nykyinen hinnoittelu on suhteellisen alhainen, mutta tulevaisuudessa hinnoittelu saattaa muuttua merkittävästi."
   },
   "message.betaStage": {
-    "message": "Tämä API on Beta-vaiheessa, API-muoto ei muutu paljon, mutta siinä saattaa olla mahdollisia epävakautta, käytä sitä varovasti tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla kohtalaisia hintamuutoksia.",
-    "description": "Tämä API on Beta-vaiheessa, API-muoto ei muutu paljon, mutta siinä saattaa olla mahdollisia epävakautta, käytä sitä varovasti tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa saattaa olla kohtalaisia hintamuutoksia."
+    "message": "Tämä API on beeta-vaiheessa, eli API-muoto ei muutu merkittävästi, mutta siinä saattaa esiintyä potentiaalista epävakautta. Ole varovainen käyttäessäsi tuotantokäyttöä. Nykyinen hinnoittelu on suhteellisen alhainen, mutta tulevaisuudessa hinnoittelu saattaa muuttua kohtuullisesti.",
+    "description": "Tämä API on beeta-vaiheessa, eli API-muoto ei muutu merkittävästi, mutta siinä saattaa esiintyä potentiaalista epävakautta. Ole varovainen käyttäessäsi tuotantokäyttöä. Nykyinen hinnoittelu on suhteellisen alhainen, mutta tulevaisuudessa hinnoittelu saattaa muuttua kohtuullisesti."
   },
   "unit.GB": {
     "message": "GB",
@@ -108,7 +108,7 @@
     "description": "Kilotavu, digitaalisen tiedon tallennusyksikkö"
   },
   "unit.B": {
-    "message": "tavua",
+    "message": "B",
     "description": "Tavu, digitaalisen tiedon tallennusyksikkö"
   }
 }

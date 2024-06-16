@@ -1,10 +1,10 @@
 import store from '@/store';
-import { getBaseUrlData } from '@/utils';
+import { getBaseUrlPlatform } from '@/utils';
 import axios, { AxiosInstance } from 'axios';
 import qs from 'qs';
 
 const httpClient: AxiosInstance = axios.create({
-  baseURL: `${getBaseUrlData()}/api/v1`,
+  baseURL: `${getBaseUrlPlatform()}/api/v1`,
   headers: {
     'Content-type': 'application/json',
     Accept: 'application/json'

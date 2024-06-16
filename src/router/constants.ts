@@ -3,6 +3,8 @@ export const ROUTE_INDEX = 'index';
 export const ROUTE_AUTH_LOGIN = 'auth-login';
 export const ROUTE_AUTH_CALLBACK = 'auth-callback';
 
+export const ROUTE_SITE_INDEX = 'site-index';
+
 export const ROUTE_CHAT_CONVERSATION = 'chat-conversation';
 export const ROUTE_CHAT_CONVERSATION_NEW = 'chat-conversation-new';
 
