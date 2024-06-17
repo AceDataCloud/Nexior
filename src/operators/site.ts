@@ -1,10 +1,9 @@
 import { AxiosResponse } from 'axios';
 import { httpClient } from './common';
-import { ISite, ISiteDetailResponse } from '@/models';
+import { ISite, ISiteDetailResponse, ISiteListResponse } from '@/models';
 
 export interface ISiteQuery {
-  user_id?: string;
-  package_id?: string;
+  origin?: string;
   offset?: number;
   limit?: number;
 }
@@ -14,6 +13,12 @@ class SiteService {
 
   async initialize(data: ISite): Promise<AxiosResponse<ISiteDetailResponse>> {
     return await httpClient.post(`/${this.key}/initialize/`, data);
+  }
+
+  async getAll(query: ISiteQuery): Promise<AxiosResponse<ISiteListResponse>> {
+    return await httpClient.get(`/${this.key}/`, {
+      params: query
+    });
   }
 
   async get(id: string): Promise<AxiosResponse<ISiteDetailResponse>> {
