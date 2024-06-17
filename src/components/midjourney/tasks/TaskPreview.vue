@@ -78,7 +78,7 @@
         :content="descriptionMapping[action]"
         placement="top-start"
       >
-        <el-button type="info" size="small" class="btn-action" @click="onCustom(action)">
+        <el-button v-show="actionMapping[action]" type="info" size="small" class="btn-action" @click="onCustom(action)">
           {{ actionMapping[action] }}
         </el-button>
       </el-tooltip>
