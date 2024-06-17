@@ -2,6 +2,7 @@ import { getCookie, setCookie } from 'typescript-cookie';
 import favicon from '@/assets/images/favicon.ico';
 import { getLocale } from '@/i18n';
 import store from '@/store';
+import { log } from './log';
 
 export const getDomain = () => {
   const host = window.location.hostname;
@@ -133,8 +134,9 @@ export const initializeSite = async () => {
   await store.dispatch('getSite');
   // after getSite, the site should have been set
   const site = store.state.site;
+  log(initializeSite, 'site', site);
   // if site is not set, try to initialize site
-  if (!site) {
+  if (!site?.origin) {
     await store.dispatch('initializeSite');
   }
 };
