@@ -15,7 +15,7 @@
             <el-divider />
             <el-form :model="site" class="form" label-width="auto" style="max-width: 600px">
               <el-form-item :label="$t('site.field.origin')">
-                <span class="block">{{ site.origin }}</span>
+                <span class="block w-full">{{ site.origin }}</span>
                 <span class="block tip">
                   {{ $t('site.message.originTip') }}
                 </span>
@@ -66,9 +66,9 @@
               <el-divider border-style="dashed" />
               <el-form-item :label="$t('site.field.admins')">
                 <span class="block w-full">
-                  {{ site.admins.join(', ') }}
+                  {{ site.admins?.join(', ') }}
                   <edit-array
-                    :model-value="site.admins"
+                    :model-value="site?.admins || []"
                     :title="$t('site.title.editAdmins')"
                     :placeholder="$t('site.placeholder.admins')"
                     :tip="$t('site.message.adminsTip2')"
@@ -105,9 +105,9 @@
               </el-form-item>
               <el-form-item :label="$t('site.field.keywords')">
                 <span class="block w-full">
-                  {{ site.keywords.join(', ') }}
+                  {{ site.keywords?.join(', ') }}
                   <edit-array
-                    :model-value="site.keywords"
+                    :model-value="site?.keywords || []"
                     :title="$t('site.title.editKeywords')"
                     :placeholder="$t('site.placeholder.keywords')"
                     :tip="$t('site.message.keywordsTip2')"
@@ -255,7 +255,7 @@ export default defineComponent({
       };
       siteOperator.update(this.site?.id, payload).then(() => {
         console.debug('getSite for id', this.site?.id);
-        this.$store.dispatch('getSite', this.site?.id);
+        this.$store.dispatch('getSite');
       });
     }
   }
