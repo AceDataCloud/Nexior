@@ -62,9 +62,13 @@ export const getToken = async ({ commit }: ActionContext<IRootState, IRootState>
 export const initializeSite = async ({ state, commit }: ActionContext<IRootState, IRootState>) => {
   log(initializeSite, 'start to initialize site');
   const origin = getSiteOrigin(state?.site);
-  const { data } = await siteOperator.initialize({ origin });
-  commit('setSite', data);
-  log(initializeSite, 'initialize site success', data);
+  try {
+    const { data } = await siteOperator.initialize({ origin });
+    commit('setSite', data);
+    log(initializeSite, 'initialize site success', data);
+  } catch (error) {
+    log(initializeSite, 'initialize site failed', error);
+  }
 };
 
 export const getSite = async ({ state, commit }: ActionContext<IRootState, IRootState>) => {
