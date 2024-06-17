@@ -78,7 +78,7 @@ export default defineComponent({
         await this.$store.dispatch('setToken', token);
         await this.$store.dispatch('getUser');
         // if the site is not initialized, initialize it
-        if (this.$store.state.site?.origin) {
+        if (!this.$store.state.site?.origin) {
           await this.$store.dispatch('initializeSite');
           // after initialization, navigate to the site config page
           await this.$router.push({

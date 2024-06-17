@@ -283,6 +283,7 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     padding-top: 10px;
+    min-width: 60px;
     .link {
       width: 40px;
       height: 40px;
