@@ -130,5 +130,11 @@ export const initializeFavicon = async () => {
  * Need to initialize site before render contents
  */
 export const initializeSite = async () => {
-  await store.dispatch('initializeSite');
+  await store.dispatch('getSite');
+  // after getSite, the site should have been set
+  const site = store.state.site;
+  // if site is not set, try to initialize site
+  if (!site) {
+    await store.dispatch('initializeSite');
+  }
 };

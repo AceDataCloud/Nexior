@@ -3,7 +3,7 @@ import { IRootState } from '../common/models';
 import { userOperator, oauthOperator, siteOperator } from '@/operators';
 import { log } from '@/utils/log';
 import { IToken, IUser } from '@/models';
-import { v4 as uuid } from 'uuid';
+import { getSiteOrigin } from '@/utils/site';
 
 export const resetAll = ({ commit }: ActionContext<IRootState, IRootState>) => {
   commit('resetToken');
@@ -61,31 +61,22 @@ export const getToken = async ({ commit }: ActionContext<IRootState, IRootState>
 
 export const initializeSite = async ({ state, commit }: ActionContext<IRootState, IRootState>) => {
   log(initializeSite, 'start to initialize site');
-  const getOrigin = () => {
-    if (state.site?.origin) {
-      return state.site.origin;
-    }
-    const host = window.location.host;
-    // if localhost, try to get machine name
-    if (host.includes('localhost')) {
-      // generate uuid
-      const randomId = uuid();
-      return `http://localhost-${randomId}`;
-    } else {
-      return window.location.origin;
-    }
-  };
-  const origin = getOrigin();
+  const origin = getSiteOrigin(state?.site);
   const { data } = await siteOperator.initialize({ origin });
   commit('setSite', data);
   log(initializeSite, 'initialize site success', data);
 };
 
-export const getSite = async ({ commit }: ActionContext<IRootState, IRootState>, id: string) => {
-  log(initializeSite, 'start to get site');
-  const { data } = await siteOperator.get(id);
-  commit('setSite', data);
-  log(initializeSite, 'get site success', data);
+export const getSite = async ({ state, commit }: ActionContext<IRootState, IRootState>) => {
+  log(getSite, 'start to get site');
+  const origin = getSiteOrigin(state?.site);
+  const site = (
+    await siteOperator.getAll({
+      origin
+    })
+  )?.data?.items?.[0];
+  commit('setSite', site);
+  log(getSite, 'get site success', site);
 };
 
 export default {
