@@ -20,7 +20,7 @@
 
 我们便会看到类似如下的页面，这时候点击 Import 按钮，如图所示：
 
-![image-20240618231428610](https://cdn.acedata.cloud/jjcnnq.png)
+![](https://cdn.acedata.cloud/jjcnnq.png)
 
 此时，Vercel 便展示了你的 GitHub 仓库，选择刚才 Fork 的 Nexior 仓库即可，如图所示：
 
