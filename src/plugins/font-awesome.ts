@@ -7,7 +7,7 @@ import {
   faSun as faRegularSun,
   faClock as faRegularClock
 } from '@fortawesome/free-regular-svg-icons';
-import { faDiscord as faBrandsDiscord } from '@fortawesome/free-brands-svg-icons';
+import { faDiscord as faBrandsDiscord, faWeixin as faBrandsWeixin } from '@fortawesome/free-brands-svg-icons';
 import {
   faLaptopCode as faSolidLaptopCode,
   faOutdent as faSolidOutdent,
@@ -69,6 +69,7 @@ library.add(faRegularCopy);
 library.add(faSolidAngleDown);
 library.add(faSolidStore);
 library.add(faSolidOutdent);
+library.add(faBrandsWeixin);
 library.add(faSolidChevronRight);
 library.add(faSolidPlaneDeparture);
 library.add(faSolidCube);

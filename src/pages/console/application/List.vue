@@ -1,5 +1,6 @@
 <template>
   <el-row class="panel">
+    <help-entry class="help" />
     <el-col :span="24">
       <el-row>
         <el-col :span="24">
@@ -63,8 +64,8 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :span="10" :offset="14">
-          <div class="pagination m-v-lg">
+        <el-col>
+          <div class="pagination">
             <pagination :current-page="page" :page-size="limit" :total="total" @change="onPageChange"> </pagination>
           </div>
         </el-col>
@@ -81,6 +82,7 @@ import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { ElTable, ElRow, ElCol, ElTableColumn, ElCard, ElButton } from 'element-plus';
 import { ROUTE_CONSOLE_APPLICATION_BUY } from '@/router/constants';
 import { IApplication, IApplicationListResponse, ICredentialType, IService } from '@/models';
+import HelpEntry from '@/components/common/HelpEntry.vue';
 
 interface IData {
   applications: IApplication[];
@@ -102,6 +104,7 @@ export default defineComponent({
   name: 'ConsoleApplicationList',
   components: {
     Pagination,
+    HelpEntry,
     CopyToClipboard,
     ElTable,
     ElRow,
@@ -226,6 +229,14 @@ export default defineComponent({
 }
 
 .pagination {
-  float: right;
+  margin: auto;
+  width: fit-content;
+}
+
+.help {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  z-index: 1000;
 }
 </style>

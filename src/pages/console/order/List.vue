@@ -1,5 +1,6 @@
 <template>
   <el-row class="panel">
+    <help-entry class="help" />
     <el-col :span="24">
       <el-row>
         <el-col :span="24">
@@ -91,8 +92,8 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :span="10" :offset="14">
-          <div class="pagination m-v-lg">
+        <el-col>
+          <div class="pagination">
             <pagination :current-page="page" :page-size="limit" :total="total" @change="onPageChange"> </pagination>
           </div>
         </el-col>
@@ -108,6 +109,7 @@ import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { ElRow, ElCol, ElTable, ElTableColumn, ElButton, ElTag, ElCard } from 'element-plus';
 import { IOrder, IOrderListResponse, OrderState } from '@/models';
+import HelpEntry from '@/components/common/HelpEntry.vue';
 
 interface IData {
   orders: IOrder[];
@@ -121,6 +123,7 @@ export default defineComponent({
   name: 'ConsoleOrderList',
   components: {
     Pagination,
+    HelpEntry,
     CopyToClipboard,
     ElRow,
     ElCol,
@@ -211,6 +214,14 @@ export default defineComponent({
 }
 
 .pagination {
-  float: right;
+  margin: auto;
+  width: fit-content;
+}
+
+.help {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  z-index: 1000;
 }
 </style>
