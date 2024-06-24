@@ -1,37 +1,36 @@
 <template>
-  <div class="wrapper">
-    <navigator class="navigator" />
-    <router-view class="main" />
-  </div>
+  <el-container class="wrapper">
+    <el-header class="header">
+      <top-header />
+    </el-header>
+    <el-main class="main"> <router-view /> </el-main>
+  </el-container>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Navigator from '@/components/common/Navigator.vue';
+import TopHeader from '@/components/common/TopHeader.vue';
 
 export default defineComponent({
   name: 'LayoutMain',
   components: {
-    Navigator
+    TopHeader
   }
 });
 </script>
 
 <style lang="scss" scoped>
 .wrapper {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  overflow: hidden;
-  .navigator {
-    height: 100%;
-    border-right: 1px solid var(--el-border-color);
-  }
-  .main {
-    height: 100%;
-    width: calc(100% - 60px);
-    flex: 1;
-  }
+  min-height: 100vh;
+}
+
+.header {
+  padding: 0;
+  height: initial;
+}
+
+.footer {
+  padding: 0;
+  height: initial;
 }
 </style>

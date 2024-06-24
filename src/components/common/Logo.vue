@@ -19,7 +19,7 @@ export default defineComponent({
       return getCookie('THEME') === 'dark';
     },
     url() {
-      return this.dark ? this.url2 : this.url1;
+      return this.$store.state.site?.logo;
     }
   }
 });
