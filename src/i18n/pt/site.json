@@ -16,7 +16,7 @@
     "description": "Exibido como título na caixa de edição"
   },
   "field.logo": {
-    "message": "Logo do site",
+    "message": "Logotipo do site",
     "description": "Exibido como título na caixa de edição"
   },
   "field.favicon": {
@@ -32,7 +32,7 @@
     "description": "Exibido como título na caixa de edição"
   },
   "field.distributionForceInviterId": {
-    "message": "ID do convidador forçado",
+    "message": "ID do convidador obrigatório",
     "description": "Exibido como título na caixa de edição"
   },
   "field.featuresChat": {
@@ -56,11 +56,11 @@
     "description": "Exibido como título na caixa de edição"
   },
   "title.basicConfig": {
-    "message": "Configuração básica",
+    "message": "Configurações básicas",
     "description": "Exibido como título na caixa de edição"
   },
   "title.seoConfig": {
-    "message": "Configuração de SEO",
+    "message": "Configurações de SEO",
     "description": "Exibido como título na caixa de edição"
   },
   "title.editAdmins": {
@@ -68,7 +68,7 @@
     "description": "Exibido como título na caixa de edição"
   },
   "title.featuresConfig": {
-    "message": "Configuração de recursos",
+    "message": "Configurações de recursos",
     "description": "Exibido como título na caixa de edição"
   },
   "title.editTitle": {
@@ -84,7 +84,7 @@
     "description": "Exibido como título na caixa de edição"
   },
   "title.editLogo": {
-    "message": "Editar logo",
+    "message": "Editar logotipo",
     "description": "Exibido como título na caixa de edição"
   },
   "title.editFavicon": {
@@ -96,7 +96,7 @@
     "description": "Exibido como título na caixa de edição"
   },
   "title.distributionConfig": {
-    "message": "Configuração de distribuição",
+    "message": "Configurações de distribuição",
     "description": "Exibido como título na caixa de edição"
   },
   "title.editDistributionDefaultInviterId": {
@@ -104,7 +104,7 @@
     "description": "Exibido como título na caixa de edição"
   },
   "title.editDistributionForceInviterId": {
-    "message": "Editar convidador forçado",
+    "message": "Editar convidador obrigatório",
     "description": "Exibido como título na caixa de edição"
   },
   "placeholder.title": {
@@ -128,39 +128,39 @@
     "description": "Exibido como título na caixa de edição"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "Insira o ID do convidador forçado",
+    "message": "Insira o ID do convidador obrigatório",
     "description": "Exibido como título na caixa de edição"
   },
   "message.uploadImageExceed": {
-    "message": "Upload de imagem excedido",
-    "description": "Mensagem de erro ao exceder o limite de upload de imagem"
+    "message": "Limite de envio de imagem excedido",
+    "description": "Mensagem de erro ao exceder o limite de envio de imagem"
   },
   "message.uploadImageError": {
-    "message": "Erro ao fazer upload da imagem",
-    "description": "Mensagem de erro ao fazer upload da imagem"
+    "message": "Erro ao enviar imagem",
+    "description": "Mensagem de erro ao enviar imagem"
   },
   "message.editLogoTip": {
-    "message": "Sugestão de tamanho: 200*60px",
-    "description": "Dica para upload de imagem"
+    "message": "Sugestão de dimensão: 200*60px",
+    "description": "Dica para enviar a imagem"
   },
   "message.editFaviconTip": {
-    "message": "Sugestão de tamanho: 32*32px",
-    "description": "Dica para upload de imagem"
+    "message": "Sugestão de dimensão: 32*32px",
+    "description": "Dica para enviar a imagem"
   },
   "message.atLeastOneAdmin": {
     "message": "Pelo menos um administrador deve ser mantido",
-    "description": "Mensagem de aviso para manter pelo menos um administrador"
+    "description": "Dica para manter pelo menos um administrador"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "ID do usuário do convidador padrão, se o link de distribuição não incluir o parâmetro inviter_id, este ID será usado como convidador padrão.",
+    "message": "ID do usuário que será o convidador padrão. Se o link de distribuição não contiver o parâmetro inviter_id, esse ID de usuário será usado como convidador padrão.",
     "description": "Dica para o ID do convidador padrão"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID do usuário do convidador forçado, se definido, este ID será usado como convidador, independentemente do parâmetro inviter_id no link de distribuição.",
-    "description": "Dica para o ID do convidador forçado"
+    "message": "ID do usuário que será o convidador obrigatório. Se definido, independentemente de o link de distribuição conter ou não o parâmetro inviter_id, esse ID de usuário será usado como convidador.",
+    "description": "Dica para o ID do convidador obrigatório"
   },
   "message.originTip": {
-    "message": "Domínio do site, a configuração do site está vinculada ao domínio e não pode ser alterada.",
+    "message": "Domínio do site, vinculado à configuração do site. O domínio do site não pode ser alterado.",
     "description": "Dica para o domínio do site"
   },
   "message.titleTip": {
@@ -169,50 +169,50 @@
   },
   "message.descriptionTip": {
     "message": "Descrição do site, localizada nas informações do site, usada para otimização de SEO do site.",
-    "description": "Dica sobre a descrição do site"
+    "description": "Dica para descrição do site"
   },
   "message.logoTip": {
-    "message": "Logotipo do site, é exibido no topo do menu do site quando expandido.",
-    "description": "Dica sobre o logotipo do site"
+    "message": "Logotipo do site, exibido no topo do menu do site quando expandido.",
+    "description": "Dica para o logotipo do site"
   },
   "message.faviconTip": {
-    "message": "Favicon do site, exibido na aba do navegador.",
-    "description": "Dica sobre o Favicon do site"
+    "message": "Favicon do site, exibido na guia do navegador.",
+    "description": "Dica para o favicon do site"
   },
   "message.adminsTip": {
-    "message": "ID do administrador do site, o usuário que criou o site pela primeira vez se torna o administrador, somente os administradores podem gerenciar o site.",
-    "description": "Dica sobre os administradores do site"
+    "message": "ID do administrador do site, o usuário que cria o site pela primeira vez se tornará o administrador, apenas os administradores do site podem gerenciar o site.",
+    "description": "Dica para os administradores do site"
   },
   "message.adminsTip2": {
-    "message": "Você pode adicionar ou remover IDs de administradores aqui, para ver os IDs de usuários, acesse https://auth.acedata.cloud",
-    "description": "Dica sobre os administradores do site"
+    "message": "Você pode adicionar ou remover IDs de administradores aqui, você pode verificar os IDs de usuários em https://auth.acedata.cloud",
+    "description": "Dica para os administradores do site"
   },
   "message.keywordsTip": {
     "message": "Palavras-chave do site, localizadas nas informações do site, usadas para otimização de SEO do site.",
-    "description": "Dica sobre as palavras-chave do site"
+    "description": "Dica para as palavras-chave do site"
   },
   "message.keywordsTip2": {
-    "message": "Você pode adicionar ou remover palavras-chave do site aqui, quanto mais precisas as palavras-chave, melhor para a otimização de SEO.",
-    "description": "Dica sobre as palavras-chave do site"
+    "message": "Você pode adicionar ou remover palavras-chave do site aqui, quanto mais precisas, melhor para a otimização de SEO.",
+    "description": "Dica para as palavras-chave do site"
   },
   "message.featuresChat": {
-    "message": "Ativar ou desativar o módulo de Chat.",
-    "description": "Descrição do recurso de Chat"
+    "message": "Abrir ou fechar o módulo de funcionalidade de Chat.",
+    "description": "Descrição da funcionalidade de Chat"
   },
   "message.featuresMidjourney": {
-    "message": "Ativar ou desativar o módulo Midjourney.",
-    "description": "Descrição do recurso Midjourney"
+    "message": "Abrir ou fechar o módulo de funcionalidade Midjourney.",
+    "description": "Descrição da funcionalidade Midjourney"
   },
   "message.featuresChatdoc": {
-    "message": "Ativar ou desativar o módulo Chatdoc.",
-    "description": "Descrição do recurso Chatdoc"
+    "message": "Abrir ou fechar o módulo de funcionalidade Chatdoc.",
+    "description": "Descrição da funcionalidade Chatdoc"
   },
   "message.featuresQrart": {
-    "message": "Ativar ou desativar o módulo Qrart.",
-    "description": "Descrição do recurso Qrart"
+    "message": "Abrir ou fechar o módulo de funcionalidade Qrart.",
+    "description": "Descrição da funcionalidade Qrart"
   },
   "message.featuresI18n": {
-    "message": "Ativar ou desativar suporte a vários idiomas, quando desativado, os usuários só podem usar o idioma padrão.",
+    "message": "Abrir ou fechar suporte a vários idiomas. Quando desativado, os usuários só podem usar o idioma padrão.",
     "description": "Descrição do suporte a vários idiomas"
   },
   "button.upload": {
@@ -221,10 +221,10 @@
   },
   "button.enabled": {
     "message": "Ativado",
-    "description": "Texto do interruptor indicando que está ativado"
+    "description": "Texto do interruptor, indicando que está ativado"
   },
   "button.disabled": {
     "message": "Desativado",
-    "description": "Texto do interruptor indicando que está desativado"
+    "description": "Texto do interruptor, indicando que está desativado"
   }
 }

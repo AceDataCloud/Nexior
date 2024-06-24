@@ -1,55 +1,55 @@
 {
   "entity.requestQueries": {
     "message": "Parametry URL",
-    "description": "To są parametry przekazywane w adresie URL. Są one oddzielane przez znak '?' i '&'."
+    "description": "Te parametry są przekazywane w adresie URL. Są one oddzielane znakiem '?' i '&'."
   },
   "entity.requestBody": {
     "message": "Treść żądania",
-    "description": "To jest główna treść żądania. Zazwyczaj używana w żądaniach typu POST i PUT."
+    "description": "Jest to główna treść żądania. Zazwyczaj używana w żądaniach typu POST i PUT."
   },
   "entity.responseBody": {
     "message": "Treść odpowiedzi",
-    "description": "To jest główna treść odpowiedzi. Zazwyczaj w formacie JSON."
+    "description": "Jest to główna treść odpowiedzi. Zazwyczaj w formacie JSON."
   },
   "entity.requestHeaders": {
     "message": "Nagłówki żądania",
-    "description": "To są przekazywane w żądaniu nagłówki. Zazwyczaj używane do uwierzytelniania."
+    "description": "Są to nagłówki przekazywane w żądaniu. Zazwyczaj używane do uwierzytelniania."
   },
   "entity.requestHeader": {
-    "message": "Nagłówek żądania",
-    "description": "To jest przekazywany w żądaniu nagłówek. Zazwyczaj używany do uwierzytelniania."
+    "message": "Nagłówki żądania",
+    "description": "Jest to nagłówek przekazywany w żądaniu. Zazwyczaj używany do uwierzytelniania."
   },
   "entity.requestQuery": {
-    "message": "Parametr URL",
-    "description": "To są parametry przekazywane w adresie URL. Oddzielone przez '?' i '&'."
+    "message": "Parametry URL",
+    "description": "Są to parametry przekazywane w adresie URL. Oddzielone znakiem '?' i '&'."
   },
   "entity.responseHeaders": {
     "message": "Nagłówki odpowiedzi",
-    "description": "To są przekazywane w odpowiedzi nagłówki. Zazwyczaj używane do uwierzytelniania."
+    "description": "Są to nagłówki przekazywane w odpowiedzi. Zazwyczaj używane do uwierzytelniania."
   },
   "entity.response": {
     "message": "Odpowiedź",
-    "description": "To jest odpowiedź zwrócona przez serwer."
+    "description": "Jest to odpowiedź zwrócona z serwera."
   },
   "entity.success": {
     "message": "Sukces",
-    "description": "To jest odpowiedź zwracana w przypadku udanego żądania."
+    "description": "Jest to odpowiedź zwrócona po pomyślnym żądaniu."
   },
   "entity.failure": {
     "message": "Błąd",
-    "description": "To jest odpowiedź zwracana w przypadku nieudanego żądania."
+    "description": "Jest to odpowiedź zwrócona po nieudanym żądaniu."
   },
   "entity.responseExample": {
     "message": "Przykład odpowiedzi",
-    "description": "To jest przykład odpowiedzi zwracanej przez serwer."
+    "description": "Jest to przykład odpowiedzi zwrócony z serwera."
   },
   "entity.authentication": {
-    "message": "Uwierzytelnianie",
-    "description": "To jest uwierzytelnianie wymagane do wykonania żądania."
+    "message": "Uwierzytelnienie",
+    "description": "Jest to uwierzytelnienie wymagane do wysłania żądania."
   },
   "message.free": {
     "message": "Darmowe",
-    "description": "Oznacza bezpłatność, brak konieczności wydawania punktów lub pieniędzy podczas korzystania z usługi API."
+    "description": "Oznacza, że usługa jest bezpłatna. Nie wymaga punktów lub pieniędzy przy użyciu usługi API."
   },
   "message.appliedCount": {
     "message": "Liczba zastosowań",
@@ -57,19 +57,19 @@
   },
   "message.firstFree": {
     "message": "Pierwsze darmowe",
-    "description": "Oznacza darmowe skorzystanie z usługi API po raz pierwszy, bez konieczności wydawania punktów lub pieniędzy."
+    "description": "Oznacza, że pierwsze użycie usługi API jest bezpłatne. Nie wymaga punktów lub pieniędzy."
   },
   "message.custom": {
-    "message": "Niestandardowa cena",
-    "description": "Oznacza ustaloną cenę, konieczność wydawania określonej liczby punktów lub pieniędzy podczas korzystania z usługi API."
+    "message": "Niestandardowy",
+    "description": "Oznacza ustaloną cenę. Wymaga punktów lub pieniędzy przy użyciu usługi API."
   },
   "message.present": {
     "message": "Prezent",
-    "description": "Podczas pierwszego skorzystania z usługi API, otrzymasz od nas punkty."
+    "description": "Podczas pierwszego użycia usługi API, otrzymasz dodatkowe punkty."
   },
   "message.around": {
-    "message": "Około",
-    "description": "Cena jest w przybliżeniu, rzeczywista cena może się różnić."
+    "message": "Okooło",
+    "description": "Cena jest okooło przewidziana, rzeczywista cena może się różnić."
   },
   "message.successRate15min": {
     "message": "Wskaźnik sukcesu w czasie rzeczywistym",
@@ -81,34 +81,34 @@
   },
   "message.xMinutes": {
     "message": "Czas (minuty)",
-    "description": "Czas, w minutach."
+    "description": "Czas wyrażony w minutach."
   },
   "message.streamUsage": {
-    "message": "Uwaga: Dla żądań strumieniowych powyższy kod może być nieco nieaktualny. Proszę odnieść się do dokumentacji integracyjnej i dokonać zmian.",
-    "description": "Dla żądań strumieniowych powyższy kod może być nieco nieaktualny. Proszę odnieść się do dokumentacji integracyjnej i dokonać zmian."
+    "message": "Uwaga: Dla żądań strumieniowych powyższy kod może być nieco nieprzystosowany. Proszę odwołać się do dokumentacji integracyjnej, aby dokonać zmian.",
+    "description": "Dla żądań strumieniowych powyższy kod może być nieco nieprzystosowany. Proszę odwołać się do dokumentacji integracyjnej, aby dokonać zmian."
   },
   "message.alphaStage": {
-    "message": "Ta usługa API jest w fazie Alfa. Jest to wersja wczesnego podglądu, może być niestabilna, a format API może ulec znacznym zmianom. Nie zalecane jest korzystanie w środowisku produkcyjnym. Obecna cena jest stosunkowo niska, ale w przyszłości może ulec znaczącej zmianie.",
-    "description": "Ta usługa API jest w fazie Alfa. Jest to wersja wczesnego podglądu, może być niestabilna, a format API może ulec znacznym zmianom. Nie zalecane jest korzystanie w środowisku produkcyjnym. Obecna cena jest stosunkowo niska, ale w przyszłości może ulec znaczącej zmianie."
+    "message": "Ta usługa API jest w fazie alfa. Jest to wersja wczesna i zawiera potencjalne niestabilności oraz znaczące zmiany w formacie API. Niezalecane jest używanie jej w środowisku produkcyjnym. Obecna cena jest relatywnie niska, ale może ulec znaczącej zmianie w przyszłości.",
+    "description": "Ta usługa API jest w fazie alfa. Jest to wersja wczesna i zawiera potencjalne niestabilności oraz znaczące zmiany w formacie API. Niezalecane jest używanie jej w środowisku produkcyjnym. Obecna cena jest relatywnie niska, ale może ulec znaczącej zmianie w przyszłości."
   },
   "message.betaStage": {
-    "message": "Ta usługa API jest w fazie Beta. Format API nie ulegnie dużym zmianom, ale może być niestabilna. Korzystanie w środowisku produkcyjnym powinno być ostrożne. Obecna cena jest stosunkowo niska, ale w przyszłości może ulec umiarkowanej zmianie.",
-    "description": "Ta usługa API jest w fazie Beta. Format API nie ulegnie dużym zmianom, ale może być niestabilna. Korzystanie w środowisku produkcyjnym powinno być ostrożne. Obecna cena jest stosunkowo niska, ale w przyszłości może ulec umiarkowanej zmianie."
+    "message": "Ta usługa API jest w fazie beta. Format API nie ulegnie znaczącym zmianom, ale mogą występować potencjalne niestabilności. Proszę ostrożnie używać jej w środowisku produkcyjnym. Obecna cena jest relatywnie niska, ale może ulec umiarkowanej zmianie w przyszłości.",
+    "description": "Ta usługa API jest w fazie beta. Format API nie ulegnie znaczącym zmianom, ale mogą występować potencjalne niestabilności. Proszę ostrożnie używać jej w środowisku produkcyjnym. Obecna cena jest relatywnie niska, ale może ulec umiarkowanej zmianie w przyszłości."
   },
   "unit.GB": {
     "message": "GB",
-    "description": "Gigabajt, jednostka przechowywania danych"
+    "description": "Gigabajt, jednostka przechowywania informacji"
   },
   "unit.MB": {
     "message": "MB",
-    "description": "Megabajt, jednostka przechowywania danych"
+    "description": "Megabajt, jednostka przechowywania informacji"
   },
   "unit.KB": {
     "message": "KB",
-    "description": "Kilobajt, jednostka przechowywania danych"
+    "description": "Kilobajt, jednostka przechowywania informacji"
   },
   "unit.B": {
     "message": "B",
-    "description": "Bajt, jednostka przechowywania danych"
+    "description": "Bajt, jednostka przechowywania informacji"
   }
 }

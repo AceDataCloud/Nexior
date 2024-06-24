@@ -1,23 +1,23 @@
 {
   "button.detail": {
     "message": "Details anzeigen",
-    "description": "Button-Text, um die Empfehlungshistorie der Website anzuzeigen."
+    "description": "Button-Text zum Anzeigen der Empfehlungshistorie der Website."
   },
   "button.withdrawal": {
     "message": "Abheben",
-    "description": "Button-Text, um die Empfehlungseinnahmen der Website abzuheben."
+    "description": "Button-Text zum Abheben der empfohlenen Einnahmen der Website."
   },
   "button.query": {
     "message": "Abfragen",
-    "description": "Button-Text, um die Empfehlungseinnahmen der Website abzufragen."
+    "description": "Button-Text zum Abfragen der empfohlenen Einnahmen der Website."
   },
   "field.id": {
     "message": "Empfehlungs-ID",
-    "description": "Eindeutiger Bezeichner für die Empfehlung, wobei Empfehlung auf die Empfehlungsdienste der API-Website verweist."
+    "description": "Eindeutiges Kennzeichen der Vertriebspartner, Vertriebspartner bezieht sich auf die empfohlenen Dienste der API-Website."
   },
   "field.percentage": {
-    "message": "Empfehlungseinnahmen Prozentsatz",
-    "description": "Prozentsatz der Empfehlungseinnahmen, berechnet auf Basis des Bestellbetrags."
+    "message": "Empfehlungs-Einnahmen-Prozentsatz",
+    "description": "Prozentsatz der Empfehlungseinnahmen, berechnet abhängig vom Bestellbetrag."
   },
   "field.price": {
     "message": "Bestellbetrag",
@@ -25,39 +25,39 @@
   },
   "field.reward": {
     "message": "Empfehlungsprämie",
-    "description": "Empfehlungseinnahmen, berechnet auf Basis des Bestellbetrags und des Empfehlungseinnahmen Prozentsatzes."
+    "description": "Empfehlungseinnahmen, berechnet abhängig vom Bestellbetrag und dem Empfehlungs-Einnahmen-Prozentsatz."
   },
   "field.createdAt": {
-    "message": "Empfehlungszeitpunkt",
-    "description": "Zeitpunkt der Erstellung der Empfehlung."
+    "message": "Empfehlungsdatum",
+    "description": "Erstellungsdatum der Empfehlung."
   },
   "field.level": {
     "message": "Ebene",
     "description": "Empfehlungsebene, die zur Berechnung der Empfehlungseinnahmen verwendet wird."
   },
   "field.threshold": {
-    "message": "Empfehlungseinnahmen Schwellenwert",
-    "description": "Schwellenwert der Empfehlungseinnahmen, der für die Auszahlung der Empfehlungseinnahmen verwendet wird."
+    "message": "Empfehlungs-Einnahmen-Schwellenwert",
+    "description": "Schwellenwert für Empfehlungseinnahmen, der zur Auszahlung der Empfehlungseinnahmen verwendet wird."
   },
   "field.inviteeId": {
-    "message": "Eingeladene ID",
-    "description": "Eindeutiger Bezeichner des Einladenden, wobei Einladender auf die Einladung von Benutzern zur API-Website verweist."
+    "message": "Einladender ID",
+    "description": "Eindeutiges Kennzeichen des Einladenden, der Einladende verweist auf die Einladung von Personen zur API-Website."
   },
   "field.isVerified": {
     "message": "Verifiziert",
-    "description": "Kennzeichnung, ob der empfohlene Benutzer durch eine Überprüfung der Echtdaten bestätigt wurde."
+    "description": "Kennzeichnung, die anzeigt, ob der empfohlene Benutzer durch echte Informationen verifiziert wurde."
   },
   "message.deltaPriceForNextLevel": {
     "message": "Differenz zum nächsten Level",
-    "description": "Differenz zwischen dem aktuellen Bestellbetrag und dem Schwellenwert des nächsten Levels."
+    "description": "Differenz zwischen dem aktuellen Bestellbetrag und der Schwelle des nächsten Levels."
   },
   "message.developingWithDrawal": {
-    "message": "Bitte treten Sie dem Discord bei und wenden Sie sich an das Support-Team, um die Auszahlung zu bearbeiten. Bei der Auszahlung werden entsprechende Steuern abgezogen.",
-    "description": "Nachricht, die darauf hinweist, dass die Auszahlungsfunktion in Entwicklung ist."
+    "message": "Bitte treten Sie dem Discord bei und fragen Sie das Support-Personal nach der Abwicklung des Abhebens. Das Abheben wird die entsprechenden Steuern abziehen.",
+    "description": "Nachricht, die darauf hinweist, dass die Abhebefunktion derzeit in Bearbeitung ist."
   },
   "message.technicalDetail": {
     "message": "Technische Details",
-    "description": "Technische Details zur Implementierung des Empfehlungssystems."
+    "description": "Technische Umsetzung der Empfehlungssystemdetails."
   },
   "message.distributionQrDescription": {
     "message": "Empfehlungs-QR-Code (identisch mit dem Linkinhalt)",
@@ -65,18 +65,18 @@
   },
   "message.distributionLink": {
     "message": "Empfehlungslink",
-    "description": "Empfehlungslink, um Kunden als untergeordnete Kunden zu binden."
+    "description": "Empfehlungslink, um Kunden als Unterlevel-Kunden zu binden."
   },
   "message.updateSuccessfully": {
-    "message": "Aktualisierung erfolgreich",
-    "description": "Nachricht, die angibt, dass die Empfehlungsinformationen erfolgreich aktualisiert wurden."
+    "message": "Erfolgreich aktualisiert",
+    "description": "Nachricht, die anzeigt, dass die Empfehlungsinformationen erfolgreich aktualisiert wurden."
   },
   "message.distributionLinkDescription": {
-    "message": "Wenn ein Kunde sich über diesen Link oder QR-Code auf dieser Plattform registriert, wird der Kunde dauerhaft als Ihr untergeordneter Kunde gebunden, und alle Verbrauchsbestellungen des Kunden auf dieser Plattform werden gemäß dem aktuellen Verteilungsverhältnis auf Ihr Konto zurücküberwiesen.",
+    "message": "Falls Kunden sich über diesen Link oder den QR-Code auf dieser Plattform registrieren, werden sie dauerhaft als Ihre Unterlevel-Kunden gebunden, und alle ihre Konsumbestellungen auf dieser Plattform werden entsprechend dem aktuellen Vertriebsprozentsatz auf Ihr Konto zurückgezahlt.",
     "description": "Beschreibung des Empfehlungslinks."
   },
   "message.distributionLinkDescription2": {
-    "message": "Dieser Link enthält Ihre Benutzer-ID. Nachdem ein Kunde den Link geöffnet hat, wird Ihre Benutzer-ID in Form von Cookies im Browser des Kunden für sieben Tage gespeichert. Innerhalb von sieben Tagen, wenn ein Kunde sich über diesen Code auf dieser Plattform registriert, wird Ihre Benutzer-ID zusammen mit den Cookies an den Registrierungsserver übermittelt, und der Kunde kann als Ihr untergeordneter Kunde gebunden werden.",
+    "message": "Dieser Link enthält Ihre Benutzer-ID. Wenn Kunden den Link öffnen und sich über diesen Code innerhalb von sieben Tagen auf dieser Plattform registrieren, wird Ihre Benutzer-ID in Form von Cookies in ihrem Browser für sieben Tage gespeichert. Innerhalb von sieben Tagen, wenn Kunden sich über diesen Code auf dieser Plattform registrieren, wird Ihre Benutzer-ID zusammen mit den Cookies an den Registrierungsserver gesendet, und Kunden können als Ihre Unterlevel-Kunden gebunden werden.",
     "description": "Beschreibung des Empfehlungslinks."
   },
   "title.price": {
@@ -85,15 +85,15 @@
   },
   "title.reward": {
     "message": "Gesamte Empfehlungsprämie",
-    "description": "Gesamte Empfehlungsprämie, berechnet auf Basis des Bestellbetrags und des Empfehlungseinnahmen Prozentsatzes."
+    "description": "Gesamte Empfehlungsprämie, berechnet abhängig vom Bestellbetrag und dem Empfehlungs-Einnahmen-Prozentsatz."
   },
   "title.level": {
     "message": "Empfehlungsebene",
     "description": "Empfehlungsebene, die zur Berechnung der Empfehlungseinnahmen verwendet wird."
   },
   "title.percentage": {
-    "message": "Empfehlungseinnahmen Prozentsatz",
-    "description": "Empfehlungseinnahmen Prozentsatz, der zur Berechnung der Empfehlungseinnahmen verwendet wird."
+    "message": "Empfehlungs-Einnahmen-Prozentsatz",
+    "description": "Empfehlungs-Einnahmen-Prozentsatz, der zur Berechnung der Empfehlungseinnahmen verwendet wird."
   },
   "title.currentLevel": {
     "message": "Aktuelle Ebene",
@@ -104,27 +104,27 @@
     "description": "Nächste Empfehlungsebene, die zur Berechnung der Empfehlungseinnahmen verwendet wird."
   },
   "title.currentPercentage": {
-    "message": "Aktueller Empfehlungseinnahmen Prozentsatz",
-    "description": "Aktueller Empfehlungseinnahmen Prozentsatz, der zur Berechnung der Empfehlungseinnahmen verwendet wird."
+    "message": "Aktueller Empfehlungs-Einnahmen-Prozentsatz",
+    "description": "Aktueller Empfehlungs-Einnahmen-Prozentsatz, der zur Berechnung der Empfehlungseinnahmen verwendet wird."
   },
   "title.nextPercentage": {
-    "message": "Empfehlungseinnahmen Prozentsatz der nächsten Ebene",
-    "description": "Empfehlungseinnahmen Prozentsatz der nächsten Ebene, der zur Berechnung der Empfehlungseinnahmen verwendet wird."
+    "message": "Nächster Empfehlungs-Einnahmen-Prozentsatz der nächsten Ebene",
+    "description": "Empfehlungs-Einnahmen-Prozentsatz der nächsten Ebene, der zur Berechnung der Empfehlungseinnahmen verwendet wird."
   },
   "title.levelInfo": {
-    "message": "Ebeneninformation",
+    "message": "Ebeneninformationen",
     "description": "Informationen zur Empfehlungsebene, die zur Berechnung der Empfehlungseinnahmen verwendet wird."
   },
   "title.distributionLink": {
     "message": "Empfehlungslink",
-    "description": "Empfehlungslink, um Kunden als untergeordnete Kunden zu binden."
+    "description": "Empfehlungslink, um Kunden als Unterlevel-Kunden zu binden."
   },
   "title.inviteesCount": {
     "message": "Gesamtzahl der Einladenden",
     "description": "Gesamtzahl der Einladenden, die zur Berechnung der Empfehlungseinnahmen verwendet wird."
   },
   "title.manageDistributionStatus": {
-    "message": "Verteilungsstatus verwalten",
+    "message": "Vertriebsstatus verwalten",
     "description": "Verwaltung des Empfehlungsstatus."
   }
 }

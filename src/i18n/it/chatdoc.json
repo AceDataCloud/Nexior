@@ -9,34 +9,34 @@
   },
   "field.createdAt": {
     "message": "Creato il",
-    "description": "Ora di caricamento del documento"
+    "description": "Orario di caricamento del documento"
   },
   "field.fileExtension": {
-    "message": "Tipo file",
-    "description": "Tipo di file caricato"
+    "message": "Tipo di file",
+    "description": "Tipo di file del documento caricato"
   },
   "field.fileUrl": {
     "message": "URL del file",
-    "description": "URL del file caricato"
+    "description": "URL del documento caricato"
   },
   "field.fileSize": {
-    "message": "Dimensione file",
-    "description": "Dimensione del file caricato"
+    "message": "Dimensione del file",
+    "description": "Dimensione del documento caricato"
   },
   "field.state": {
     "message": "Stato",
     "description": "Stato di elaborazione del documento"
   },
   "field.stateProcessing": {
-    "message": "Elaborazione in corso",
-    "description": "Documento attualmente in fase di elaborazione"
+    "message": "In elaborazione",
+    "description": "Il documento è attualmente in fase di elaborazione"
   },
   "field.stateCompleted": {
     "message": "Elaborazione completata",
     "description": "Elaborazione del documento completata con successo"
   },
   "field.stateFailed": {
-    "message": "Elaborazione non riuscita",
+    "message": "Elaborazione fallita",
     "description": "Elaborazione del documento non riuscita"
   },
   "field.name": {
@@ -48,124 +48,124 @@
     "description": "Descrizione del documento"
   },
   "message.introductionForKnowledge": {
-    "message": "I documenti possono essere aggiunti alla base di conoscenza, il bot userà la base di conoscenza durante le risposte.",
-    "description": "Informazioni introduttive sulla base di conoscenza"
+    "message": "I documenti possono essere aggiunti alla knowledge base, e il bot userà le conoscenze dalla knowledge base per rispondere.",
+    "description": "Informazioni introduttive sulla knowledge base"
   },
   "message.introductionForRepository": {
-    "message": "La base di conoscenza è una raccolta di documenti, puoi aggiungere documenti a essa. Il bot risponderà utilizzando i documenti presenti nella base di conoscenza.",
-    "description": "Informazioni introduttive sulla base di conoscenza"
+    "message": "La knowledge base è una raccolta di documenti a cui è possibile aggiungere nuovi documenti. Il bot risponderà utilizzando i documenti presenti nella knowledge base.",
+    "description": "Informazioni introduttive sulla knowledge base"
   },
   "message.uploadDocumentsExceed": {
-    "message": "Limite di caricamento documenti superato",
-    "description": "Messaggio di errore quando il limite di caricamento documenti viene superato"
+    "message": "Il numero di documenti caricati supera il limite",
+    "description": "Messaggio di errore quando il numero di documenti caricati supera il limite"
   },
   "message.uploadDocumentsError": {
-    "message": "Errore durante il caricamento documenti",
-    "description": "Messaggio di errore in caso di errore durante il caricamento documenti"
+    "message": "Errore nel caricamento dei documenti",
+    "description": "Messaggio di errore in caso di fallimento del caricamento dei documenti"
   },
   "message.uploadDocumentsSuccess": {
-    "message": "Caricamento documento riuscito",
-    "description": "Messaggio di successo quando il documento viene caricato correttamente"
+    "message": "Caricamento dei documenti completato",
+    "description": "Messaggio di successo in caso di completamento del caricamento dei documenti"
   },
   "message.createDocumentSuccess": {
     "message": "Documento creato con successo",
-    "description": "Messaggio di successo quando il documento viene creato correttamente"
+    "description": "Messaggio di successo in caso di creazione di un documento"
   },
   "message.startCreateDocument": {
-    "message": "Inizio creazione documento...",
-    "description": "Messaggio durante l'inizio della creazione del documento"
+    "message": "Avvio dell'elaborazione del documento...",
+    "description": "Messaggio durante l'avvio dell'elaborazione di un documento"
   },
   "message.createDocumentError": {
-    "message": "Errore durante la creazione documento",
-    "description": "Messaggio di errore in caso di errore durante la creazione del documento"
+    "message": "Errore nell'elaborazione del documento",
+    "description": "Messaggio di errore in caso di fallimento dell'elaborazione di un documento"
   },
   "message.dragOrClickToUpload": {
-    "message": "Trascina o clicca per caricare i documenti",
-    "description": "Informazioni su come caricare i documenti trascinandoli o facendo clic"
+    "message": "Trascina o clicca per caricare un documento",
+    "description": "Informazioni su come caricare un documento trascinandolo o cliccando"
   },
   "message.learningDocument": {
-    "message": "In fase di apprendimento, attendere...",
-    "description": "Messaggio durante l'apprendimento del documento"
+    "message": "In elaborazione, attendere...",
+    "description": "Messaggio durante l'elaborazione di un documento"
   },
   "message.startNewChat": {
-    "message": "Inizia nuova chat",
-    "description": "Messaggio per avviare una nuova chat"
+    "message": "Inizia una nuova chat",
+    "description": "Informazioni per avviare una nuova chat"
   },
   "message.errorApiError": {
-    "message": "Risposta non riuscita, si prega di riprovare più tardi",
-    "description": "Messaggio di errore in caso di risposta non riuscita"
+    "message": "Risposta fallita, riprovare più tardi",
+    "description": "Messaggio di errore in caso di fallimento della risposta dell'API"
   },
   "message.errorBadRequest": {
     "message": "Formato della richiesta non corretto, si prega di riformulare la domanda",
     "description": "Messaggio di errore in caso di formato della richiesta non corretto"
   },
   "message.errorNoConversation": {
-    "message": "La conversazione non esiste o è scaduta, si prega di iniziare una nuova conversazione",
-    "description": "Messaggio di errore in caso di conversazione non esistente o scaduta"
+    "message": "La conversazione non esiste o è scaduta, si prega di avviare una nuova conversazione",
+    "description": "Messaggio di errore in caso di conversazione non presente o scaduta"
   },
   "message.errorContentTooLarge": {
-    "message": "Contenuto della domanda troppo lungo, si prega di ridurre e riprovare",
+    "message": "Contenuto della domanda troppo lungo, si prega di accorciarlo e riprovare",
     "description": "Messaggio di errore in caso di contenuto della domanda troppo lungo"
   },
   "message.errorTooManyRequests": {
-    "message": "Troppe richieste effettuate, si prega di riprovare più tardi",
-    "description": "Messaggio di errore in caso di troppe richieste effettuate"
+    "message": "Troppe richieste inviate, si prega di riprovare più tardi",
+    "description": "Messaggio di errore in caso di troppe richieste inviate"
   },
   "message.errorUsedUp": {
-    "message": "Hai esaurito il limite di utilizzo del tuo pacchetto, si prega di acquistarne di più per continuare",
-    "description": "Messaggio di errore in caso di esaurimento del limite di utilizzo del pacchetto"
+    "message": "Il limite di utilizzo del pacchetto è stato raggiunto, si prega di acquistare più utilizzo per continuare",
+    "description": "Messaggio di errore in caso di utilizzo del pacchetto raggiunto"
   },
   "message.errorUnknown": {
-    "message": "Si è verificato un errore sconosciuto sul server, si prega di riprovare più tardi o contattare l'assistenza clienti",
-    "description": "Messaggio di errore in caso di errore sconosciuto sul server"
+    "message": "Si è verificato un errore del server sconosciuto, si prega di riprovare più tardi o contattare l'assistenza clienti",
+    "description": "Messaggio di errore in caso di errore sconosciuto del server"
   },
   "message.errorTimeout": {
-    "message": "Timeout durante la risposta, si prega di riprovare più tardi",
-    "description": "Messaggio di errore in caso di timeout durante la risposta"
+    "message": "Timeout nella risposta, si prega di riprovare più tardi",
+    "description": "Messaggio di errore in caso di timeout nella risposta"
   },
   "message.errorNotApplied": {
-    "message": "Non hai ancora richiesto questo servizio, si prega di richiederlo prima di continuare a fare domande",
-    "description": "Messaggio di errore in caso l'utente non abbia richiesto il servizio"
+    "message": "Non hai ancora richiesto questo servizio, si prega di richiederlo prima di continuare",
+    "description": "Messaggio di errore in caso di servizio non ancora richiesto"
   },
   "message.confirmDelete": {
-    "message": "Conferma cancellazione",
-    "description": "Messaggio per confermare la cancellazione"
+    "message": "Conferma eliminazione",
+    "description": "Messaggio per confermare l'eliminazione"
   },
   "message.howToUse": {
-    "message": "Premi Shift+Invio per inserire un a capo",
-    "description": "Istruzioni su come inserire un a capo"
+    "message": "Premi Shift+Invio per fare un salto di linea",
+    "description": "Istruzioni su come fare un salto di linea"
   },
   "message.createRepositorySuccess": {
-    "message": "Creazione base di conoscenza riuscita",
-    "description": "Messaggio di successo in caso di creazione della base di conoscenza riuscita"
+    "message": "Creazione della knowledge base avvenuta con successo",
+    "description": "Messaggio di successo in caso di creazione della knowledge base"
   },
   "message.createRepositoryFailed": {
-    "message": "Creazione base di conoscenza non riuscita",
-    "description": "Messaggio di errore in caso di creazione della base di conoscenza non riuscita"
+    "message": "Fallimento nella creazione della knowledge base",
+    "description": "Messaggio di errore in caso di fallimento della creazione della knowledge base"
   },
   "message.deleteRepositorySuccess": {
-    "message": "Cancellazione base di conoscenza riuscita",
-    "description": "Messaggio di successo in caso di cancellazione della base di conoscenza riuscita"
+    "message": "Cancellazione della knowledge base avvenuta con successo",
+    "description": "Messaggio di successo in caso di cancellazione della knowledge base"
   },
   "message.deleteDocumentSuccess": {
-    "message": "Cancellazione documento riuscita",
-    "description": "Messaggio di successo in caso di cancellazione del documento riuscita"
+    "message": "Cancellazione del documento avvenuta con successo",
+    "description": "Messaggio di successo in caso di cancellazione di un documento"
   },
   "message.currentRepository": {
-    "message": "Base di conoscenza attuale",
-    "description": "Mostra informazioni sulla base di conoscenza attuale"
+    "message": "Knowledge base attuale",
+    "description": "Mostra le informazioni sulla knowledge base attualmente selezionata"
   },
   "message.nameRequired": {
-    "message": "Nome obbligatorio",
-    "description": "Messaggio di errore in caso il nome sia vuoto"
+    "message": "Il nome è obbligatorio",
+    "description": "Messaggio di errore in caso di mancato inserimento del nome"
   },
   "message.inputRepositoryName": {
-    "message": "Nome base di conoscenza",
-    "description": "Cosa dovrebbe contenere il campo del nome della base di conoscenza"
+    "message": "Nome della knowledge base",
+    "description": "Indicazione dell'input per il nome della knowledge base"
   },
   "message.inputRepositoryDescription": {
     "message": "Inserisci una breve descrizione del tuo repository",
-    "description": "Segnaposto per la descrizione del repository"
+    "description": "Input del placeholder per la descrizione del repository"
   },
   "message.supportedFiles": {
     "message": "Tipi di file supportati: .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
@@ -180,19 +180,19 @@
     "description": "Voce di navigazione per le impostazioni"
   },
   "nav.manage": {
-    "message": "Gestisci",
+    "message": "Gestione",
     "description": "Voce di navigazione per la gestione"
   },
   "title.manage": {
-    "message": "Gestione dei repository",
-    "description": "Titolo della gestione dei repository"
+    "message": "Gestisci repository",
+    "description": "Titolo per la gestione dei repository"
   },
   "title.createRepository": {
     "message": "Crea repository",
-    "description": "Titolo per la creazione del repository"
+    "description": "Titolo per la creazione di un repository"
   },
   "title.repositories": {
     "message": "Elenco dei repository",
-    "description": "Titolo dell'elenco dei repository"
+    "description": "Titolo per l'elenco dei repository"
   }
 }

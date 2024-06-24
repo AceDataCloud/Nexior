@@ -1,31 +1,31 @@
 {
   "button.goDocument": {
     "message": "Document",
-    "description": "Button text, clicking this button will go to the document page."
+    "description": "Text on button, clicking this button will navigate to the document page."
   },
   "button.goCredentials": {
     "message": "Credentials",
-    "description": "Button text, clicking this button will go to the credentials page."
+    "description": "Text on button, clicking this button will navigate to the credentials page."
   },
   "button.buyMore": {
     "message": "Acheter plus",
-    "description": "Button text, clicking this button will go to the buy more page."
+    "description": "Text on button, clicking this button will navigate to the buy more page."
   },
   "button.createOrder": {
     "message": "Créer une commande",
-    "description": "Button text, clicking this button will go to the create order page."
+    "description": "Text on button, clicking this button will navigate to the create order page."
   },
   "button.custom": {
-    "message": "Personnaliser",
-    "description": "Button text, clicking this button will go to the custom page."
+    "message": "Personnalisé",
+    "description": "Text on button, clicking this button will navigate to the custom page."
   },
   "button.query": {
     "message": "Requête",
-    "description": "Button text, clicking this button will go to the query page."
+    "description": "Text on button, clicking this button will navigate to the query page."
   },
   "button.usage": {
-    "message": "Historique d'utilisation",
-    "description": "Button text, clicking this button will go to the usage record page."
+    "message": "Utilisation",
+    "description": "Text on button, clicking this button will navigate to the usage page."
   },
   "field.application": {
     "message": "Application",
@@ -41,15 +41,15 @@
   },
   "field.remainingAmount": {
     "message": "Quantité restante",
-    "description": "The remaining amount of the application."
+    "description": "The remaining quantity of the application."
   },
   "field.usedAmount": {
     "message": "Quantité utilisée",
-    "description": "The used amount of the application."
+    "description": "The used quantity of the application."
   },
   "field.apiKey": {
     "message": "Clé API",
-    "description": "The API key."
+    "description": "API key."
   },
   "field.service": {
     "message": "Service",
@@ -61,11 +61,11 @@
   },
   "field.amount": {
     "message": "Quantité",
-    "description": "The amount of the application."
+    "description": "The quantity of the application."
   },
   "field.traceId": {
-    "message": "Identifiant de trace",
-    "description": "The trace ID of an API call for the application of the API service, do not translate, keep as 'trace ID'."
+    "message": "Trace ID",
+    "description": "The trace ID of an API call for the application of an API service, do not translate, keep as 'Trace ID'."
   },
   "field.shouldPayPrice": {
     "message": "Prix final",
@@ -73,15 +73,15 @@
   },
   "field.api": {
     "message": "API",
-    "description": "This is an online service provided to users through API."
+    "description": "This is an online service, provided to users in the form of services through APIs."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "This is an online service provided to users through HTTP proxy (for data transmission)."
+    "description": "This is an online service, provided to users in the form of services through HTTP proxy (used for data transmission)."
   },
   "field.credential": {
-    "message": "Credential",
-    "description": "The credential of the application."
+    "message": "Crédential",
+    "description": "The credentials of the application."
   },
   "field.name": {
     "message": "Nom",
@@ -89,7 +89,7 @@
   },
   "field.package": {
     "message": "Forfait",
-    "description": "Package represents different price packages, for example, $100 for 10,000 points, $200 for 20,000 points."
+    "description": "The package representing different price packages, such as 100 USD for 10,000 points, 200 USD for 20,000 points."
   },
   "field.type": {
     "message": "Type",
@@ -97,91 +97,91 @@
   },
   "field.freeAmount": {
     "message": "Quantité gratuite",
-    "description": "The free amount of the application."
+    "description": "The free quantity of the application."
   },
   "field.extraPrice": {
     "message": "Prix supplémentaire",
-    "description": "The additional price of the application that the user should pay."
+    "description": "The extra price of the application that the user should pay."
   },
   "message.alreadyApplied": {
-    "message": "Vous avez déjà appliqué ce service, veuillez consulter la console",
-    "description": "Message displayed to the user when the service has already been applied."
+    "message": "You have already applied for this service, please check the console",
+    "description": "Message shown to the user when the user has already applied for this service."
   },
   "message.applySuccessfully": {
     "message": "Application réussie",
-    "description": "Message displayed to the user when the service has been successfully applied."
+    "description": "Message shown to the user when the user successfully applied for this service."
   },
   "message.notApplied": {
-    "message": "Vous n'avez pas encore appliqué ce service, veuillez appliquer ce service avant de l'utiliser",
-    "description": "Message displayed to the user when the service has not been applied yet."
+    "message": "You have not applied for this service yet, please apply for the service before using it",
+    "description": "Message shown to the user when the user has not applied for this service yet."
   },
   "message.yourApplication": {
     "message": "Votre application",
-    "description": "Message displayed to the user when their application is being referenced."
+    "description": "Message shown to the user when the user's application."
   },
   "message.unverified": {
-    "message": "Vous devez d'abord terminer la vérification d'identité pour pouvoir appliquer ce service",
-    "description": "Message displayed to the user when the identity verification has not been completed."
+    "message": "You need to complete the real-name authentication before applying for this service",
+    "description": "Message shown to the user when the user has not completed real-name authentication."
   },
   "message.goVerify": {
-    "message": "Aller à la vérification d'identité",
-    "description": "Message displayed to the user when the identity verification has not been completed."
+    "message": "Go through the real-name authentication",
+    "description": "Message shown to the user when the user has not completed real-name authentication."
   },
   "message.requiredParameter": {
-    "message": "Paramètre requis",
-    "description": "Message displayed to the user when required parameters have not been entered."
+    "message": "Parameter obligatoire",
+    "description": "Message shown to the user when required parameters are not provided."
   },
   "message.example": {
     "message": "Exemple",
-    "description": "Message displayed to the user for required parameters."
+    "description": "An example shown to the user when required parameters are not provided."
   },
   "message.createCredentialSuccessfully": {
-    "message": "Création de la credential réussie",
-    "description": "Message displayed to the user when the credential has been successfully created."
+    "message": "Création de l'identité avec succès",
+    "description": "Message shown to the user when the user successfully creates credentials."
   },
   "message.readPolicy": {
-    "message": "J'ai lu et accepté",
-    "description": "Message displayed to the user when they have read and agreed to the policy."
+    "message": "I have read and agree to",
+    "description": "Message shown to the user when the user has read and agreed to the policy."
   },
   "message.policy": {
-    "message": "Accord de service de technologie des données",
-    "description": "Message displayed to the user when they have read and agreed to the policy."
+    "message": "Data Technology Service Usage Agreement",
+    "description": "Message shown to the user when the user has read and agreed to the policy."
   },
   "message.notAgreePolicy": {
-    "message": "Vous n'avez pas encore accepté l'accord de service de technologie des données",
-    "description": "Message displayed to the user when they have not agreed to the policy."
+    "message": "You have not agreed to the Data Technology Service Usage Agreement",
+    "description": "Message shown to the user when the user has not agreed to the policy."
   },
   "message.confirmApplying": {
-    "message": "Confirmer la demande de service",
-    "description": "Message displayed to the user when confirming the service application."
+    "message": "Confirm service application",
+    "description": "Message shown to the user when confirming the service application."
   },
   "message.rotateCredential": {
-    "message": "Réinitialiser la clé",
-    "description": "Message displayed to the user when resetting the credential."
+    "message": "Reset key",
+    "description": "Message shown to the user when resetting the key."
   },
   "message.rotateCredentialConfirm": {
-    "message": "Voulez-vous vraiment réinitialiser la clé ? Cette opération est irréversible.",
-    "description": "Message affiché à l'utilisateur lorsqu'il confirme la réinitialisation de la clé."
+    "message": "Êtes-vous sûr de vouloir réinitialiser la clé ? Cette action est irréversible",
+    "description": "Lorsque l'utilisateur confirme la réinitialisation de la clé, le message affiché à l'utilisateur."
   },
   "message.idDoesNotExist": {
     "message": "L'application n'existe pas",
-    "description": "Message affiché à l'utilisateur lorsqu'une application n'existe pas."
+    "description": "Message affiché à l'utilisateur lorsque l'application n'existe pas."
   },
   "message.rotateCredentialSuccessfully": {
-    "message": "La clé a été réinitialisée avec succès",
+    "message": "Réinitialisation de la clé réussie",
     "description": "Message affiché à l'utilisateur lorsque la réinitialisation de la clé est réussie."
   },
   "message.rotateCredentialFailed": {
-    "message": "Échec de la réinitialisation de la clé, veuillez contacter le support",
-    "description": "Message affiché à l'utilisateur en cas d'échec de la réinitialisation de la clé."
+    "message": "La réinitialisation de la clé a échoué, veuillez contacter le support",
+    "description": "Message affiché à l'utilisateur lorsque la réinitialisation de la clé a échoué."
   },
   "message.updateFailed": {
-    "message": "Échec de la modification",
-    "description": "Message affiché à l'utilisateur en cas d'échec de la modification."
+    "message": "Échec de la mise à jour",
+    "description": "Message affiché à l'utilisateur en cas d'échec de la mise à jour."
   },
   "message.updateSuccessfully": {
-    "message": "Modification réussie",
-    "description": "Message affiché à l'utilisateur lorsque la modification est réussie."
+    "message": "Mise à jour réussie",
+    "description": "Message affiché à l'utilisateur lorsque la mise à jour est réussie."
   },
   "title.buyService": {
     "message": "Acheter un service",

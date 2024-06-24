@@ -1,5 +1,6 @@
 <template>
   <el-row class="panel">
+    <help-entry class="help" />
     <el-col :span="24">
       <el-row>
         <el-col :span="24">
@@ -219,6 +220,7 @@ import EditImage from '@/components/site/EditImage.vue';
 import EditArray from '@/components/site/EditArray.vue';
 import { siteOperator } from '@/operators';
 import site from '@/router/site';
+import HelpEntry from '@/components/common/HelpEntry.vue';
 
 export default defineComponent({
   name: 'SiteIndex',
@@ -233,7 +235,8 @@ export default defineComponent({
     ElCard,
     ElForm,
     ElSwitch,
-    ElFormItem
+    ElFormItem,
+    HelpEntry
   },
   data() {
     return {
@@ -288,5 +291,12 @@ export default defineComponent({
       font-size: 12px;
     }
   }
+}
+
+.help {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  z-index: 1000;
 }
 </style>

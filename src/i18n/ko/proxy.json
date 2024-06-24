@@ -1,47 +1,47 @@
 {
   "entity.requestQueries": {
-    "message": "URL 매개변수",
-    "description": "URL에 전달되는 매개변수입니다. '?'로 구분되며 '&'로 구분됩니다."
+    "message": "URL 파라미터",
+    "description": "이것들은 URL에 전달되는 파라미터입니다. '?'로 구분되며 '&'로 구분됩니다."
   },
   "entity.requestBody": {
     "message": "요청 본문",
-    "description": "이것은 요청의 본문입니다. 일반적으로 POST 및 PUT 요청에 사용됩니다."
+    "description": "이것은 요청의 본문입니다. 주로 POST 및 PUT 요청에 사용됩니다."
   },
   "entity.responseBody": {
     "message": "응답 본문",
-    "description": "이것은 응답의 본문입니다. 일반적으로 JSON 형식으로 제공됩니다."
+    "description": "이것은 응답의 본문입니다. 일반적으로 JSON 형식으로 표시됩니다."
   },
   "entity.requestHeaders": {
     "message": "요청 헤더",
-    "description": "요청에 포함되는 헤더입니다. 일반적으로 인증에 사용됩니다."
+    "description": "이것들은 요청 중에 전달되는 헤더입니다. 주로 인증에 사용됩니다."
   },
   "entity.requestHeader": {
     "message": "요청 헤더",
-    "description": "요청에 포함되는 헤더입니다. 일반적으로 인증에 사용됩니다."
+    "description": "이것은 요청 중에 전달되는 헤더입니다. 주로 인증에 사용됩니다."
   },
   "entity.requestQuery": {
-    "message": "URL 매개변수",
-    "description": "URL에 전달되는 매개변수입니다. '?'로 구분되며 '&'로 구분됩니다."
+    "message": "URL 파라미터",
+    "description": "이것은 URL에 전달되는 파라미터입니다. '?'로 구분되며 '&'로 구분됩니다."
   },
   "entity.responseHeaders": {
     "message": "응답 헤더",
-    "description": "응답에 포함되는 헤더입니다. 일반적으로 인증에 사용됩니다."
+    "description": "이것들은 응답 중에 전달되는 헤더입니다. 주로 인증에 사용됩니다."
   },
   "entity.response": {
     "message": "응답",
-    "description": "서버에서 반환된 응답입니다."
+    "description": "이것은 서버에서 반환된 응답입니다."
   },
   "entity.success": {
     "message": "성공",
-    "description": "요청이 성공했을 때 반환되는 응답입니다."
+    "description": "이것은 요청이 성공했을 때 반환되는 응답입니다."
   },
   "entity.failure": {
     "message": "실패",
-    "description": "요청이 실패했을 때 반환되는 응답입니다."
+    "description": "이것은 요청이 실패했을 때 반환되는 응답입니다."
   },
   "entity.responseExample": {
     "message": "예시",
-    "description": "서버에서 반환된 응답의 예시입니다."
+    "description": "이것은 서버에서 반환된 응답의 예시입니다."
   },
   "entity.authentication": {
     "message": "인증",
@@ -49,66 +49,42 @@
   },
   "message.free": {
     "message": "무료",
-    "description": "API 서비스를 사용할 때 포인트나 돈을 지불할 필요가 없음을 나타냅니다."
+    "description": "API 서비스를 사용할 때 포인트나 돈을 지불할 필요가 없음을 나타냄"
   },
   "message.appliedCount": {
-    "message": "적용된 횟수",
-    "description": "적용된 API 서비스의 횟수"
+    "message": "신청 횟수",
+    "description": "이미 신청된 API 서비스의 횟수"
   },
   "message.firstFree": {
-    "message": "첫 무료",
-    "description": "처음으로 API 서비스를 무료로 이용할 수 있음을 나타냅니다. 포인트나 돈을 지불할 필요가 없습니다."
+    "message": "최초 무료",
+    "description": "API 서비스를 최초로 사용할 때 포인트나 돈을 지불할 필요가 없음을 나타냄"
   },
   "message.custom": {
-    "message": "지정된 가격",
-    "description": "가격이 이미 지정되어 있으며, API 서비스를 사용할 때 해당 가격을 지불해야 합니다."
+    "message": "지정 금액",
+    "description": "가격이 이미 지정되어 있으며 API 서비스를 사용할 때 해당 포인트나 돈을 지불해야 함을 나타냄"
   },
   "message.present": {
     "message": "선물",
-    "description": "처음으로 API 서비스를 사용할 때 저희가 포인트를 선물합니다."
+    "description": "API 서비스를 최초로 사용할 때 포인트를 선물로 받을 수 있음을 나타냄"
   },
   "message.around": {
-    "message": "약",
-    "description": "가격이 약간 다를 수 있으며 실제 가격은 다를 수 있습니다."
+    "message": "대략",
+    "description": "대략적인 가격을 나타내며 실제 가격은 다를 수 있음을 나타냄"
   },
   "message.successRate15min": {
     "message": "실시간 성공률",
-    "description": "과거 15분 동안의 API 서비스의 실시간 성공률"
+    "description": "과거 15분간의 실시간 성공률"
   },
   "message.ySuccessRate": {
-    "message": "성공률 (100%)",
+    "message": "성공률(100%)",
     "description": "API 서비스의 성공률"
   },
   "message.xMinutes": {
-    "message": "시간 (분)",
-    "description": "시간을 분 단위로 나타낸 것"
+    "message": "시간(분)",
+    "description": "시간의 단위인 분을 나타냄"
   },
   "message.streamUsage": {
-    "message": "참고: 스트리밍 요청의 경우 위 코드가 완전히 적용되지 않을 수 있습니다. 연동 문서를 참조하여 수정하십시오.",
-    "description": "스트리밍 요청의 경우 위 코드가 완전히 적용되지 않을 수 있습니다. 연동 문서를 참조하여 수정하십시오."
-  },
-  "message.alphaStage": {
-    "message": "이 API는 알파 단계에 있으며 초기 미리보기 버전입니다. 잠재적인 불안정성이 있을 수 있으며 API 형식이 크게 변경될 수 있습니다. 생산 환경에서 사용을 권장하지 않습니다. 현재 요금은 비교적 낮으며 앞으로 큰 가격 조정이 있을 수 있습니다.",
-    "description": "이 API는 알파 단계에 있으며 초기 미리보기 버전입니다. 잠재적인 불안정성이 있을 수 있으며 API 형식이 크게 변경될 수 있습니다. 생산 환경에서 사용을 권장하지 않습니다. 현재 요금은 비교적 낮으며 앞으로 큰 가격 조정이 있을 수 있습니다."
-  },
-  "message.betaStage": {
-    "message": "이 API는 베타 단계에 있으며 API 형식은 크게 변경되지 않을 것이지만 잠재적인 불안정성이 있어 생산 환경에서 사용 시 신중히 해야 합니다. 현재 요금은 비교적 낮으며 앞으로 적절한 가격 조정이 있을 수 있습니다.",
-    "description": "이 API는 베타 단계에 있으며 API 형식은 크게 변경되지 않을 것이지만 잠재적인 불안정성이 있어 생산 환경에서 사용 시 신중히 해야 합니다. 현재 요금은 비교적 낮으며 앞으로 적절한 가격 조정이 있을 수 있습니다."
-  },
-  "unit.GB": {
-    "message": "GB",
-    "description": "기가바이트, 숫자 정보 저장의 단위"
-  },
-  "unit.MB": {
-    "message": "MB",
-    "description": "메가바이트, 숫자 정보 저장의 단위"
-  },
-  "unit.KB": {
-    "message": "KB",
-    "description": "킬로바이트, 숫자 정보 저장의 단위"
-  },
-  "unit.B": {
-    "message": "B",
-    "description": "바이트, 숫자 정보 저장의 단위"
+    "message": "참고: 스트리밍 요청의 경우 위 코드가 완전히 적용되지 않을 수 있습니다. 연동 문서를 참고하여 수정하십시오.",
+    "description": "스트리밍 요청의 경우 위 코드가 완전히 적용되지 않을 수 있으니 연동 문서를 참고하여 수정하십시오."
   }
 }

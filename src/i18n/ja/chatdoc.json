@@ -1,7 +1,7 @@
 {
   "button.uploadDocuments": {
     "message": "文書をアップロード",
-    "description": "ユーザーが文書をアップロードするためのボタンテキスト"
+    "description": "ユーザーが文書をアップロードできるボタンのテキスト"
   },
   "field.fileName": {
     "message": "ファイル名",
@@ -16,8 +16,8 @@
     "description": "アップロードされた文書のファイルタイプ"
   },
   "field.fileUrl": {
-    "message": "ファイルURL",
-    "description": "アップロードされた文書のURL"
+    "message": "ファイルリンク",
+    "description": "アップロードされた文書のリンク"
   },
   "field.fileSize": {
     "message": "ファイルサイズ",
@@ -25,19 +25,19 @@
   },
   "field.state": {
     "message": "ステータス",
-    "description": "文書の処理ステータス"
+    "description": "文書の処理状態"
   },
   "field.stateProcessing": {
     "message": "処理中",
-    "description": "文書が処理中であることを示すステータス"
+    "description": "文書が処理中であることを示す状態"
   },
   "field.stateCompleted": {
     "message": "処理完了",
-    "description": "文書の処理が成功したことを示すステータス"
+    "description": "文書が正常に処理されたことを示す状態"
   },
   "field.stateFailed": {
     "message": "処理失敗",
-    "description": "文書の処理が失敗したことを示すステータス"
+    "description": "文書の処理が失敗したことを示す状態"
   },
   "field.name": {
     "message": "名前",
@@ -48,128 +48,128 @@
     "description": "文書の説明"
   },
   "message.introductionForKnowledge": {
-    "message": "文書をナレッジベースに追加すると、ボットがナレッジベースの情報を使用して応答します。",
-    "description": "ナレッジベースの導入情報"
+    "message": "文書を知識ベースに追加すると、ボットが知識ベース内の情報を使用して応答します。",
+    "description": "知識ベースの紹介情報"
   },
   "message.introductionForRepository": {
-    "message": "リポジトリは文書のコレクションであり、そこに文書を追加できます。ボットはリポジトリ内の文書から応答します。",
-    "description": "リポジトリの導入情報"
+    "message": "知識ベースは文書のコレクションであり、そこに文書を追加できます。ボットは知識ベース内の文書から応答します。",
+    "description": "知識ベースの紹介情報"
   },
   "message.uploadDocumentsExceed": {
-    "message": "アップロードされたドキュメントの数が制限を超えています",
-    "description": "アップロードされたドキュメントの数が制限を超えた際のエラーメッセージ"
+    "message": "アップロード可能な文書数を超えました",
+    "description": "アップロード可能な文書数を超えた場合のエラーメッセージ"
   },
   "message.uploadDocumentsError": {
-    "message": "ドキュメントのアップロードに失敗しました",
-    "description": "ドキュメントのアップロードに失敗した際のエラーメッセージ"
+    "message": "文書のアップロードに失敗しました",
+    "description": "文書のアップロードに失敗した場合のエラーメッセージ"
   },
   "message.uploadDocumentsSuccess": {
-    "message": "ドキュメントのアップロードに成功しました",
-    "description": "ドキュメントのアップロードに成功した際の成功メッセージ"
+    "message": "文書のアップロードに成功しました",
+    "description": "文書のアップロードに成功した場合の成功メッセージ"
   },
   "message.createDocumentSuccess": {
-    "message": "ドキュメントの作成に成功しました",
-    "description": "ドキュメントの作成に成功した際の成功メッセージ"
+    "message": "文書の作成に成功しました",
+    "description": "文書の作成に成功した場合の成功メッセージ"
   },
   "message.startCreateDocument": {
-    "message": "ドキュメントの作成を開始しています...",
-    "description": "ドキュメントの作成を開始する際のメッセージ"
+    "message": "文書の学習を開始しています...",
+    "description": "文書の学習を開始する際の情報"
   },
   "message.createDocumentError": {
-    "message": "ドキュメントの作成に失敗しました",
-    "description": "ドキュメントの作成に失敗した際のエラーメッセージ"
+    "message": "文書の学習に失敗しました",
+    "description": "文書の学習に失敗した場合のエラーメッセージ"
   },
   "message.dragOrClickToUpload": {
-    "message": "ドラッグまたはクリックしてドキュメントをアップロード",
-    "description": "ドキュメントをドラッグまたはクリックしてアップロードするための情報"
+    "message": "ドラッグまたはクリックして文書をアップロード",
+    "description": "文書をドラッグまたはクリックしてアップロードする情報"
   },
   "message.learningDocument": {
-    "message": "学習中、しばらくお待ちください...",
-    "description": "ドキュメントを学習する際のメッセージ"
+    "message": "学習中、お待ちください...",
+    "description": "文書を学習する際の情報"
   },
   "message.startNewChat": {
     "message": "新しいチャットを開始",
-    "description": "新しいチャットを開始する際のメッセージ"
+    "description": "新しいチャットを開始する際の情報"
   },
   "message.errorApiError": {
-    "message": "応答に失敗しました。後でもう一度試してください",
-    "description": "応答に失敗した際のエラーメッセージ"
+    "message": "応答に失敗しました。後でもう一度お試しください",
+    "description": "応答に失敗した場合のエラーメッセージ"
   },
   "message.errorBadRequest": {
-    "message": "リクエストの形式が正しくありません。もう一度質問してください",
-    "description": "リクエストの形式が正しくない際のエラーメッセージ"
+    "message": "リクエストのコンテンツ形式が正しくありません。質問をもう一度提出してください",
+    "description": "リクエストのコンテンツ形式が正しくない場合のエラーメッセージ"
   },
   "message.errorNoConversation": {
-    "message": "会話が存在しないか、期限切れです。新しい会話を開始してください",
-    "description": "会話が存在しないか、期限切れの際のエラーメッセージ"
+    "message": "会話内容が存在しないか、期限切れです。新しいチャットを開始してください",
+    "description": "会話内容が存在しないか、期限切れの場合のエラーメッセージ"
   },
   "message.errorContentTooLarge": {
-    "message": "質問内容が長すぎます。短くしてもう一度試してください",
-    "description": "質問内容が長すぎる際のエラーメッセージ"
+    "message": "質問内容が長すぎます。短くしてもう一度お試しください",
+    "description": "質問内容が長すぎる場合のエラーメッセージ"
   },
   "message.errorTooManyRequests": {
-    "message": "操作が多すぎます。後でもう一度試してください",
-    "description": "操作が多すぎる際のエラーメッセージ"
+    "message": "操作が頻繁すぎます。後でもう一度お試しください",
+    "description": "操作が頻繁すぎる場合のエラーメッセージ"
   },
   "message.errorUsedUp": {
-    "message": "ご利用量が上限に達しました。引き続き利用するためにはもっと購入してください",
-    "description": "利用量が上限に達した際のエラーメッセージ"
+    "message": "ご利用量が上限に達しました。継続するには追加の利用量を購入してください",
+    "description": "ご利用量が上限に達した場合のエラーメッセージ"
   },
   "message.errorUnknown": {
-    "message": "未知のサーバーエラーが発生しました。後でもう一度試すか、カスタマーサポートに連絡してください",
-    "description": "未知のサーバーエラーが発生した際のエラーメッセージ"
+    "message": "不明なサーバーエラーが発生しました。後でもう一度お試しください。またはカスタマーサービスにお問い合わせください",
+    "description": "不明なサーバーエラーが発生した場合のエラーメッセージ"
   },
   "message.errorTimeout": {
-    "message": "質問への回答がタイムアウトしました。後でもう一度試してください",
-    "description": "質問への回答がタイムアウトした際のエラーメッセージ"
+    "message": "質問の回答がタイムアウトしました。後でもう一度お試しください",
+    "description": "質問の回答がタイムアウトした場合のエラーメッセージ"
   },
   "message.errorNotApplied": {
-    "message": "このサービスはまだ申請されていません。申請してから質問を続けてください",
-    "description": "ユーザーがサービスをまだ申請していない際のエラーメッセージ"
+    "message": "このサービスはまだ申請されていません。申請後に続けて質問してください",
+    "description": "このサービスがまだ申請されていない場合のエラーメッセージ"
   },
   "message.confirmDelete": {
     "message": "削除を確認",
     "description": "削除を確認する情報"
   },
   "message.howToUse": {
-    "message": "Shift+Enterで改行",
-    "description": "改行方法の情報"
+    "message": "Shift+Enter キーで改行できます",
+    "description": "改行方法に関する情報"
   },
   "message.createRepositorySuccess": {
-    "message": "リポジトリの作成に成功しました",
-    "description": "リポジトリの作成に成功した際の成功メッセージ"
+    "message": "知識ベースが作成されました",
+    "description": "知識ベースが作成された場合の成功メッセージ"
   },
   "message.createRepositoryFailed": {
-    "message": "リポジトリの作成に失敗しました",
-    "description": "リポジトリの作成に失敗した際のエラーメッセージ"
+    "message": "知識ベースの作成に失敗しました",
+    "description": "知識ベースの作成に失敗した場合のエラーメッセージ"
   },
   "message.deleteRepositorySuccess": {
-    "message": "リポジトリの削除に成功しました",
-    "description": "リポジトリの削除に成功した際の成功メッセージ"
+    "message": "知識ベースを削除しました",
+    "description": "知識ベースが削除された場合の成功メッセージ"
   },
   "message.deleteDocumentSuccess": {
-    "message": "ドキュメントの削除に成功しました",
-    "description": "ドキュメントの削除に成功した際の成功メッセージ"
+    "message": "文書を削除しました",
+    "description": "文書が削除された場合の成功メッセージ"
   },
   "message.currentRepository": {
-    "message": "現在のリポジトリ",
-    "description": "現在のリポジトリを表示する情報"
+    "message": "現在の知識ベース",
+    "description": "現在の知識ベースを表示する情報"
   },
   "message.nameRequired": {
-    "message": "名前を入力してください",
-    "description": "名前が空の際のエラーメッセージ"
+    "message": "名前は必須です",
+    "description": "名前が空白の場合のエラーメッセージ"
   },
   "message.inputRepositoryName": {
-    "message": "リポジトリ名",
-    "description": "リポジトリ名の入力プレースホルダー"
+    "message": "知識ベースの名前",
+    "description": "知識ベースの名前の入力プレースホルダー"
   },
   "message.inputRepositoryDescription": {
-    "message": "用一句话描述您的知识库",
-    "description": "知识库描述的输入占位符"
+    "message": "知識庫描述",
+    "description": "知識庫描述的輸入占位符"
   },
   "message.supportedFiles": {
-    "message": "支持的文件类型：.docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
-    "description": "显示支持的文件类型的信息"
+    "message": "支持的文件類型：.docx、.doc、.pdf、.txt、.csv、.enex、.epub、.eml、.html、.htm、.shtml、.md、.odt、.ppt、.pptx",
+    "description": "顯示支持的文件類型的信息"
   },
   "nav.chat": {
     "message": "チャット",
@@ -184,12 +184,12 @@
     "description": "管理のナビゲーション項目"
   },
   "title.manage": {
-    "message": "知識庫の管理",
-    "description": "知識庫の管理のタイトル"
+    "message": "知識庫を管理",
+    "description": "知識庫を管理するページのタイトル"
   },
   "title.createRepository": {
-    "message": "知識庫の作成",
-    "description": "知識庫の作成のタイトル"
+    "message": "知識庫を作成",
+    "description": "知識庫を作成するページのタイトル"
   },
   "title.repositories": {
     "message": "知識庫リスト",

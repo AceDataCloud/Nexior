@@ -1,15 +1,15 @@
 {
   "model.35Standard": {
     "message": "3.5 Standard",
-    "description": "Name of the service model, GPT 3.5 Standard"
+    "description": "Service model name, i.e., GPT 3.5 base"
   },
   "model.35StandardDescription": {
-    "message": "Suitable for everyday tasks.",
+    "message": "Suitable for daily tasks.",
     "description": "Description of the 3.5 Standard model"
   },
   "model.35Browsing": {
     "message": "3.5 Browsing",
-    "description": "Name of the service model, GPT 3.5 Browsing"
+    "description": "Service model name, i.e., GPT 3.5 Browsing"
   },
   "model.35BrowsingDescription": {
     "message": "Real-time information retrieval.",
@@ -17,7 +17,7 @@
   },
   "model.4Standard": {
     "message": "4.0 Standard",
-    "description": "Name of the service model, GPT 4.0 Standard"
+    "description": "Service model name, i.e., GPT 4.0 Standard"
   },
   "model.4StandardDescription": {
     "message": "More powerful model, suitable for complex tasks.",
@@ -25,7 +25,7 @@
   },
   "model.4Browsing": {
     "message": "4.0 Browsing",
-    "description": "Name of the service model, GPT 4.0 Browsing"
+    "description": "Service model name, i.e., GPT 4.0 Browsing"
   },
   "model.4BrowsingDescription": {
     "message": "Powerful and real-time information retrieval.",
@@ -33,150 +33,150 @@
   },
   "model.4Vision": {
     "message": "4.0 Vision",
-    "description": "Name of the service model, GPT 4.0 Vision"
+    "description": "Service model name, i.e., GPT 4.0 Vision"
   },
   "model.4VisionDescription": {
-    "message": "Can analyze images.",
+    "message": "Capable of analyzing images.",
     "description": "Description of the 4.0 Vision model"
   },
   "message.startNewChat": {
     "message": "Neuen Chat starten",
-    "description": "Message on the webpage asking users to start a new chat"
+    "description": "Message on the web page telling users to start a new chat"
   },
   "message.uploadFile": {
     "message": "Datei hochladen",
-    "description": "Message on the webpage asking users to upload a file"
+    "description": "Message on the web page telling users to upload a file"
   },
   "message.noToken": {
     "message": "Bitte beantragen Sie zuerst den entsprechenden Service",
-    "description": "Message on the webpage asking users to apply for the respective service first"
+    "description": "Message on the web page telling users to first apply for the respective service"
   },
   "message.newMessagePlaceholder": {
     "message": "Bitte geben Sie Ihre Frage ein...",
-    "description": "Placeholder on the webpage asking users to input their question"
+    "description": "Placeholder on the web page telling users to input a question"
   },
   "message.noInput": {
-    "message": "Die Frage darf nicht leer sein",
-    "description": "Message on the webpage informing users that the question cannot be empty"
+    "message": "Frage darf nicht leer sein",
+    "description": "Message on the web page telling users that the question cannot be empty"
   },
   "message.uploadReferencesExceed": {
     "message": "Es können maximal 1 Datei hochgeladen werden",
-    "description": "Message on the webpage informing users that they can upload a maximum of 1 file"
+    "description": "Message on the web page telling users that only 1 file can be uploaded at most"
   },
   "message.uploadReferencesError": {
-    "message": "Datei-Upload fehlgeschlagen. Bitte versuchen Sie es später erneut",
-    "description": "Message on the webpage informing users that the file upload failed and to try again later"
+    "message": "Dateiupload fehlgeschlagen. Bitte versuchen Sie es später erneut",
+    "description": "Message on the web page telling users that the file upload failed. Please try again later"
   },
   "message.notApplied": {
-    "message": "Sie haben diesen Service noch nicht beantragt. Bitte beantragen Sie ihn zuerst",
-    "description": "Message on the webpage informing users that they have not applied for this service yet and to apply first"
+    "message": "Sie haben diesen Service noch nicht beantragt. Bitte beantragen Sie zuerst",
+    "description": "Message on the web page telling users that they have not applied for this service yet. Please apply first"
   },
   "message.tryForFree": {
-    "message": "Kostenlos testen",
-    "description": "Message on the webpage asking users to try for free"
+    "message": "Kostenlos ausprobieren",
+    "description": "Message on the web page telling users to try for free"
   },
   "message.question1": {
-    "message": "Training plan erstellen",
-    "description": "Example question to start a conversation, asking users to write a JavaScript code to output Hello World"
+    "message": "Trainingsplan erstellen",
+    "description": "Example question to start a conversation, asking the user to write a piece of JavaScript code that outputs 'Hello World'"
   },
   "message.question2": {
-    "message": "Personal website erstellen",
-    "description": "Example question to start a conversation, asking users to write an email to Mike telling him about the recent move"
+    "message": "Persönliche Webseite erstellen",
+    "description": "Example question to start a conversation, asking the user to write an email to Mike telling him 'I just moved'"
   },
   "message.question3": {
     "message": "Interessantes Programmierspiel entwerfen",
-    "description": "Example question to start a conversation, asking users to explain the basic principles of quantum computing in simple language"
+    "description": "Example question to start a conversation, asking the user to explain the basic principles of quantum computing in simple language"
   },
   "message.question4": {
-    "message": "Seoul wie ein Einheimischer erleben",
-    "description": "Example question to start a conversation, asking users to explain the impact of virtual reality on art creation"
+    "message": "Erleben Sie Seoul wie ein Einheimischer",
+    "description": "Example question to start a conversation, asking the user to explain the impact of virtual reality on artistic creation"
   },
   "message.errorApiError": {
     "message": "Antwort fehlgeschlagen. Bitte versuchen Sie es später erneut",
-    "description": "Message on the webpage informing users that the answer failed and to try again later"
+    "description": "Message on the web page telling users that the response failed. Please try again later"
   },
   "message.errorBadRequest": {
-    "message": "Ungültige Anfrage. Bitte stellen Sie eine neue Frage",
-    "description": "Message on the webpage informing users that the request is not valid and to ask a new question"
+    "message": "Ungültige Anforderungsinhalte. Bitte stellen Sie die Frage erneut",
+    "description": "Message on the web page telling users that the request contents are not valid. Please ask again"
   },
   "message.errorNoConversation": {
-    "message": "Konversation existiert nicht oder ist abgelaufen. Bitte starten Sie einen neuen Chat",
-    "description": "Message on the webpage informing users that the conversation does not exist or has expired and to start a new chat"
+    "message": "Conversation does not exist or has expired. Please start a new conversation",
+    "description": "Message on the web page telling users that the conversation does not exist or has expired. Please start a new conversation"
   },
   "message.errorContentTooLarge": {
     "message": "Frageinhalt ist zu lang. Bitte kürzen Sie ihn und versuchen Sie es erneut",
-    "description": "Message on the webpage informing users that the question content is too long and to shorten it and try again"
+    "description": "Message on the web page telling users that the question content is too long. Please shorten it and try again"
   },
   "message.errorTooManyRequests": {
-    "message": "Ihre Aktion ist zu häufig. Bitte versuchen Sie es später erneut",
-    "description": "Message on the webpage informing users that their action is too frequent and to try again later"
+    "message": "Ihre Aktionen sind zu häufig. Bitte versuchen Sie es später erneut",
+    "description": "Message on the web page telling users that their actions are too frequent. Please try again later"
   },
   "message.errorUsedUp": {
-    "message": "Sie haben Ihr Kontingent bereits aufgebraucht. Bitte kaufen Sie mehr, um fortzufahren",
-    "description": "Message on the webpage informing users that they have used up their quota and to purchase more to continue"
+    "message": "Sie haben Ihr Kontingent bereits verbraucht. Bitte kaufen Sie weitere, um fortzufahren",
+    "description": "Message on the web page telling users that they have already used up their quota. Please purchase more to continue using"
   },
   "message.errorUnknown": {
-    "message": "Ein unbekannter Serverfehler ist aufgetreten. Bitte versuchen Sie es später erneut oder kontaktieren Sie den Kundenservice",
-    "description": "Message on the webpage informing users that an unknown server error has occurred and to try again later or contact customer service"
+    "message": "Es ist ein unbekannter Serverfehler aufgetreten. Bitte versuchen Sie es später erneut oder wenden Sie sich an den Kundendienst",
+    "description": "Message on the web page telling users that an unknown server error occurred. Please try again later or contact customer service"
   },
   "message.errorTimeout": {
-    "message": "Timeout bei der Beantwortung der Frage. Bitte versuchen Sie es später erneut",
-    "description": "Message on the webpage informing users that the question answering timed out and to try again later"
+    "message": "Fehler beim Beantworten der Frage. Bitte versuchen Sie es später erneut",
+    "description": "Message on the web page telling users that there was a timeout while answering the question. Please try again later"
   },
   "message.errorNotApplied": {
-    "message": "Sie haben diesen Service noch nicht beantragt. Bitte beantragen Sie ihn, bevor Sie fortfahren.",
-    "description": "Nachricht auf der Webseite, die dem Benutzer mitteilt, dass er diesen Service noch nicht beantragt hat und ihn zuerst beantragen soll, bevor er eine Frage stellt."
+    "message": "Sie haben diesen Service noch nicht beantragt. Bitte beantragen Sie ihn zuerst, bevor Sie weitere Fragen stellen.",
+    "description": "Nachricht auf der Webseite, die dem Benutzer mitteilt, dass er diesen Service noch nicht beantragt hat. Bitte beantragen Sie ihn zuerst, bevor Sie weitere Fragen stellen."
   },
   "message.confirmDelete": {
-    "message": "Bestätigen Sie die Löschung",
-    "description": "Nachricht auf der Webseite, die dem Benutzer sagt, bestätigen Sie die Löschung"
+    "message": "Löschen bestätigen",
+    "description": "Nachricht auf der Webseite, die dem Benutzer mitteilt, dass er das Löschen bestätigen muss."
   },
   "message.howToUse": {
-    "message": "KI kann Fehler enthalten. Bitte überprüfen Sie wichtige Informationen.",
-    "description": "Nachricht auf der Webseite, die dem Benutzer mitteilt, dass die KI Fehler enthalten kann. Bitte überprüfen Sie wichtige Informationen."
+    "message": "KI-System könnte fehlerhaft sein. Bitte überprüfen Sie wichtige Informationen.",
+    "description": "Nachricht auf der Webseite, die dem Benutzer mitteilt, dass das KI-System möglicherweise fehlerhaft ist. Bitte überprüfen Sie wichtige Informationen."
   },
   "title.chat": {
     "message": "AI-Chat",
-    "description": "Titel der Webseite, also AI-Chat"
+    "description": "Titel der Webseite, d.h. AI-Chat"
   },
   "title.example": {
     "message": "Beispiel",
-    "description": "Titel der Webseite, also Beispiel"
+    "description": "Titel der Webseite, d.h. Beispiel"
   },
   "title.capabilities": {
     "message": "Fähigkeiten",
-    "description": "Titel der Webseite, also Fähigkeiten"
+    "description": "Titel der Webseite, d.h. Fähigkeiten"
   },
   "title.limitations": {
     "message": "Einschränkungen",
-    "description": "Titel der Webseite, der diesen Abschnitt über die technischen Einschränkungen des Dienstes kennzeichnet"
+    "description": "Titel der Webseite, der anzeigt, dass dieser Abschnitt technische Einschränkungen des Dienstes betrifft"
   },
   "title.complexQuestion": {
     "message": "Beantwortung komplexer Fragen",
-    "description": "Titel der Webseite, der diesen Abschnitt über die Fähigkeit des Dienstes zur Beantwortung komplexer Fragen kennzeichnet"
+    "description": "Titel der Webseite, der anzeigt, dass dieser Abschnitt die Fähigkeit des Dienstes zur Beantwortung komplexer Fragen betrifft"
   },
   "title.professionalQuestion": {
-    "message": "Beratung zu professionellen Fragen",
-    "description": "Titel der Webseite, der diesen Abschnitt über die Fähigkeit des Dienstes zur Beratung zu professionellen Fragen kennzeichnet"
+    "message": "Beantwortung fachlicher Fragen",
+    "description": "Titel der Webseite, der anzeigt, dass dieser Abschnitt die Fähigkeit des Dienstes zur Beantwortung fachlicher Fragen betrifft"
   },
   "title.getTips": {
-    "message": "Tipps und Kreativität erhalten",
-    "description": "Titel der Webseite, der diesen Abschnitt über die Fähigkeit des Dienstes zur Erhaltung von Tipps und Kreativität kennzeichnet"
+    "message": "Tipps und Ideen bekommen",
+    "description": "Titel der Webseite, der anzeigt, dass dieser Abschnitt die Fähigkeit des Dienstes beinhaltet, Tipps und Ideen zu bekommen"
   },
   "group.today": {
     "message": "Heute",
-    "description": "Name der Gruppe auf der Webseite, also Heute"
+    "description": "Name der Gruppe auf der Webseite, d.h. heute"
   },
   "group.yesterday": {
     "message": "Gestern",
-    "description": "Name der Gruppe auf der Webseite, also Gestern"
+    "description": "Name der Gruppe auf der Webseite, d.h. gestern"
   },
   "group.thisWeek": {
     "message": "Diese Woche",
-    "description": "Name der Gruppe auf der Webseite, also Diese Woche"
+    "description": "Name der Gruppe auf der Webseite, d.h. diese Woche"
   },
   "group.earlier": {
     "message": "Früher",
-    "description": "Name der Gruppe auf der Webseite, also Früher"
+    "description": "Name der Gruppe auf der Webseite, d.h. früher"
   }
 }

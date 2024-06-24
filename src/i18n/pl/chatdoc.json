@@ -1,7 +1,7 @@
 {
   "button.uploadDocuments": {
     "message": "Prześlij dokumenty",
-    "description": "Przycisk umożliwiający użytkownikowi przesłanie dokumentów"
+    "description": "Tekst na przycisku, który umożliwia użytkownikowi przesłanie dokumentów"
   },
   "field.fileName": {
     "message": "Nazwa pliku",
@@ -12,12 +12,12 @@
     "description": "Czas przesłania dokumentu"
   },
   "field.fileExtension": {
-    "message": "Typ pliku",
-    "description": "Typ przesłanego dokumentu"
+    "message": "Rozszerzenie pliku",
+    "description": "Rozszerzenie pliku przesłanego dokumentu"
   },
   "field.fileUrl": {
-    "message": "Link do pliku",
-    "description": "Link do przesłanego dokumentu"
+    "message": "Adres pliku",
+    "description": "Adres URL przesłanego dokumentu"
   },
   "field.fileSize": {
     "message": "Rozmiar pliku",
@@ -25,7 +25,7 @@
   },
   "field.state": {
     "message": "Status",
-    "description": "Status przetwarzania dokumentu"
+    "description": "Stan przetwarzania dokumentu"
   },
   "field.stateProcessing": {
     "message": "Przetwarzanie",
@@ -48,128 +48,128 @@
     "description": "Opis dokumentu"
   },
   "message.introductionForKnowledge": {
-    "message": "Dokument można dodać do bazy wiedzy, robot będzie mógł korzystać z dokumentów w bazie wiedzy podczas udzielania odpowiedzi.",
-    "description": "Informacja wstępna dotycząca bazy wiedzy"
+    "message": "Dokumenty mogą zostać dodane do bazy wiedzy, aby robot podczas odpowiedzi mógł skorzystać z wiedzy z bazy.",
+    "description": "Informacja wprowadzająca do bazy wiedzy"
   },
   "message.introductionForRepository": {
-    "message": "Repozytorium to zbiór dokumentów, możesz dodawać dokumenty do repozytorium. Robot będzie udzielać odpowiedzi korzystając z dokumentów znajdujących się w repozytorium.",
-    "description": "Informacja wstępna dotycząca repozytorium"
+    "message": "Repozytorium to zbiór dokumentów, do którego można dodawać dokumenty. Podczas odpowiedzi robota będą używane dokumenty z repozytorium.",
+    "description": "Informacja wprowadzająca do repozytorium"
   },
   "message.uploadDocumentsExceed": {
-    "message": "Przekroczono limit liczby przesłanych dokumentów",
-    "description": "Komunikat błędu gdy liczba przesłanych dokumentów przekracza limit"
+    "message": "Przesłano zbyt dużo dokumentów",
+    "description": "Komunikat o przekroczeniu limitu liczby dokumentów do przesłania"
   },
   "message.uploadDocumentsError": {
     "message": "Błąd przesyłania dokumentów",
-    "description": "Komunikat błędu w przypadku niepowodzenia przesyłania dokumentów"
+    "description": "Komunikat o niepowodzeniu przesyłania dokumentów"
   },
   "message.uploadDocumentsSuccess": {
-    "message": "Przesłanie dokumentów sukcesem",
-    "description": "Komunikat sukcesu po pomyślnym przesłaniu dokumentów"
+    "message": "Dokumenty zostały pomyślnie przesłane",
+    "description": "Komunikat o pomyślnym przesłaniu dokumentów"
   },
   "message.createDocumentSuccess": {
-    "message": "Utworzenie dokumentu powiodło się",
-    "description": "Komunikat sukcesu po pomyślnym utworzeniu dokumentu"
+    "message": "Utworzono dokument",
+    "description": "Komunikat o pomyślnym utworzeniu dokumentu"
   },
   "message.startCreateDocument": {
-    "message": "Rozpoczęcie tworzenia dokumentu...",
-    "description": "Komunikat informujący o rozpoczęciu tworzenia dokumentu"
+    "message": "Rozpoczęcie nauki dokumentu...",
+    "description": "Informacja o rozpoczęciu nauki dokumentu"
   },
   "message.createDocumentError": {
-    "message": "Błąd tworzenia dokumentu",
-    "description": "Komunikat błędu w przypadku niepowodzenia tworzenia dokumentu"
+    "message": "Błąd nauki dokumentu",
+    "description": "Komunikat o niepowodzeniu nauki dokumentu"
   },
   "message.dragOrClickToUpload": {
-    "message": "Przeciągnij lub kliknij, aby przesłać dokumenty",
-    "description": "Informacja dotycząca przeciągania lub klikania w celu przesłania dokumentów"
+    "message": "Przeciągnij lub kliknij, aby przesłać dokument",
+    "description": "Informacja o przeciągnięciu lub kliknięciu do przesłania dokumentu"
   },
   "message.learningDocument": {
-    "message": "Przetwarzanie dokumentu, proszę czekać...",
-    "description": "Komunikat informujący o przetwarzaniu dokumentu"
+    "message": "Trwa nauka dokumentu...",
+    "description": "Informacja o nauce dokumentu"
   },
   "message.startNewChat": {
     "message": "Rozpocznij nową rozmowę",
-    "description": "Informacja dotycząca rozpoczęcia nowej rozmowy"
+    "description": "Informacja o rozpoczęciu nowej rozmowy"
   },
   "message.errorApiError": {
-    "message": "Błąd odpowiedzi API, proszę spróbować ponownie później",
-    "description": "Komunikat błędu w przypadku niepowodzenia odpowiedzi API"
+    "message": "Błąd odpowiedzi API, spróbuj ponownie później",
+    "description": "Komunikat o błędzie odpowiedzi API"
   },
   "message.errorBadRequest": {
-    "message": "Niepoprawny format treści, proszę ponownie zadać pytanie",
-    "description": "Komunikat błędu w przypadku niepoprawnego formatu treści"
+    "message": "Niepoprawny format treści zapytania, proszę ponownie zadać pytanie",
+    "description": "Komunikat o błędnym formacie treści zapytania"
   },
   "message.errorNoConversation": {
-    "message": "Brak rozmowy lub rozmowa wygasła, proszę rozpocząć nową rozmowę",
-    "description": "Komunikat błędu gdy brak rozmowy lub rozmowa wygasła"
+    "message": "Brak rozmowy lub rozmowa wygasła, rozpocznij nową rozmowę",
+    "description": "Komunikat o braku rozmowy lub wygaśnięciu rozmowy"
   },
   "message.errorContentTooLarge": {
-    "message": "Treść pytania jest zbyt długa, proszę skrócić i spróbować ponownie",
-    "description": "Komunikat błędu w przypadku zbyt długiej treści pytania"
+    "message": "Zbyt duża treść pytania, skróć i spróbuj ponownie",
+    "description": "Komunikat o zbyt długiej treści pytania"
   },
   "message.errorTooManyRequests": {
-    "message": "Zbyt dużo żądań, proszę spróbować ponownie później",
-    "description": "Komunikat błędu w przypadku zbyt dużo żądań"
+    "message": "Zbyt wiele żądań, spróbuj ponownie później",
+    "description": "Komunikat o zbyt wielu żądaniach"
   },
   "message.errorUsedUp": {
-    "message": "Korzystanie z usługi przekroczyło limit, proszę zakupić więcej użyć, aby kontynuować",
-    "description": "Komunikat błędu gdy limit użyć został przekroczony"
+    "message": "Przekroczono limit wykorzystania usługi, aby kontynuować, zakup więcej dostępnych opcji",
+    "description": "Komunikat o przekroczeniu limitu wykorzystania usługi"
   },
   "message.errorUnknown": {
-    "message": "Wystąpił nieznany błąd serwera, proszę spróbować ponownie później lub skontaktować się z obsługą klienta",
-    "description": "Komunikat błędu w przypadku nieznanego błędu serwera"
+    "message": "Wystąpił nieznany błąd serwera, spróbuj ponownie później lub skontaktuj się z pomocą techniczną",
+    "description": "Komunikat o nieznanym błędzie serwera"
   },
   "message.errorTimeout": {
-    "message": "Przekroczono limit czasu na odpowiedź, proszę spróbować ponownie później",
-    "description": "Komunikat błędu w przypadku przekroczenia limitu czasu na odpowiedź"
+    "message": "Przekroczono limit czasu odpowiedzi, spróbuj ponownie później",
+    "description": "Komunikat o przekroczeniu limitu czasu odpowiedzi"
   },
   "message.errorNotApplied": {
-    "message": "Nie złożono jeszcze wniosku o tę usługę, proszę złożyć wniosek przed kontynuacją pytania",
-    "description": "Komunikat błędu gdy użytkownik nie złożył jeszcze wniosku o daną usługę"
+    "message": "Usługa nie została jeszcze zastosowana, zastosuj usługę przed kontynuacją pytania",
+    "description": "Komunikat o niezastosowaniu usługi przez użytkownika"
   },
   "message.confirmDelete": {
     "message": "Potwierdź usunięcie",
     "description": "Informacja o potwierdzeniu usunięcia"
   },
   "message.howToUse": {
-    "message": "Naciśnij Shift+Enter, aby uzyskać nowy wiersz",
-    "description": "Informacja dotycząca sposobu użycia"
+    "message": "Naciśnij Shift+Enter, aby zrobić nową linię",
+    "description": "Informacja o sposobie użycia przejścia do nowej linii"
   },
   "message.createRepositorySuccess": {
-    "message": "Utworzenie repozytorium zakończone sukcesem",
-    "description": "Komunikat sukcesu po pomyślnym utworzeniu repozytorium"
+    "message": "Utworzono repozytorium z wiedzą",
+    "description": "Komunikat o pomyślnym utworzeniu repozytorium z wiedzą"
   },
   "message.createRepositoryFailed": {
-    "message": "Utworzenie repozytorium nie powiodło się",
-    "description": "Komunikat błędu w przypadku niepowodzenia utworzenia repozytorium"
+    "message": "Nie udało się utworzyć repozytorium z wiedzą",
+    "description": "Komunikat o niepowodzeniu utworzenia repozytorium z wiedzą"
   },
   "message.deleteRepositorySuccess": {
-    "message": "Usunięcie repozytorium zakończone sukcesem",
-    "description": "Komunikat sukcesu po pomyślnym usunięciu repozytorium"
+    "message": "Usunięto repozytorium z wiedzą",
+    "description": "Komunikat o pomyślnym usunięciu repozytorium z wiedzą"
   },
   "message.deleteDocumentSuccess": {
-    "message": "Usunięcie dokumentu zakończone sukcesem",
-    "description": "Komunikat sukcesu po pomyślnym usunięciu dokumentu"
+    "message": "Usunięto dokument",
+    "description": "Komunikat o pomyślnym usunięciu dokumentu"
   },
   "message.currentRepository": {
-    "message": "Aktualne repozytorium",
-    "description": "Informacja wyświetlająca aktualne repozytorium"
+    "message": "Bieżące repozytorium z wiedzą",
+    "description": "Wyświetlanie informacji o bieżącym repozytorium z wiedzą"
   },
   "message.nameRequired": {
     "message": "Nazwa jest wymagana",
-    "description": "Komunikat błędu w przypadku braku nazwy"
+    "description": "Komunikat o braku nazwy"
   },
   "message.inputRepositoryName": {
-    "message": "Nazwa repozytorium",
-    "description": "Podpowiedź dotycząca nazwy repozytorium"
+    "message": "Nazwa repozytorium wiedzy",
+    "description": "Tytuł do wprowadzania nazwy repozytorium wiedzy"
   },
   "message.inputRepositoryDescription": {
-    "message": "Opisz swój repozytorium w jednym zdaniu",
-    "description": "Opis miejsca na wpisanie opisu repozytorium"
+    "message": "Opis swojego repozytorium w jednym zdaniu",
+    "description": "Opis pola wprowadzania opisu repozytorium"
   },
   "message.supportedFiles": {
     "message": "Obsługiwane typy plików: .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
-    "description": "Informacja o obsługiwanych typach plików"
+    "description": "Informacja wyświetlająca obsługiwane typy plików"
   },
   "nav.chat": {
     "message": "Czat",
@@ -180,7 +180,7 @@
     "description": "Element nawigacji do ustawień"
   },
   "nav.manage": {
-    "message": "Zarządzanie",
+    "message": "Zarządzaj",
     "description": "Element nawigacji do zarządzania"
   },
   "title.manage": {

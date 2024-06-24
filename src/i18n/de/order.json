@@ -1,55 +1,55 @@
 {
   "button.pay": {
-    "message": "Zahlen",
-    "description": "Schaltflächentext zur Zahlung einer Bestellung."
+    "message": "Bezahlen",
+    "description": "Tastentext für die Bestellung Bezahlung."
   },
   "button.continuePay": {
     "message": "Weiter bezahlen",
-    "description": "Schaltflächentext zum Fortsetzen der Zahlung einer Bestellung."
+    "description": "Tastentext für die Bestellung fortzusetzen Bezahlung."
   },
   "button.checkDetail": {
     "message": "Details anzeigen",
-    "description": "Schaltflächentext zum Anzeigen von Bestelldetails."
+    "description": "Tastentext zur Anzeige der Bestelldetails."
   },
   "button.query": {
     "message": "Abfragen",
-    "description": "Schaltflächentext zum Abfragen einer Bestellung."
+    "description": "Tastentext zum Abfragen der Bestellung."
   },
   "button.finish": {
     "message": "Manuell abschließen",
-    "description": "Schaltflächentext zum manuellen Abschließen einer Bestellung."
+    "description": "Tastentext zur manuellen Abschluss der Bestellung."
   },
   "button.update": {
     "message": "Aktualisieren",
-    "description": "Schaltflächentext zur Aktualisierung einer Bestellung."
+    "description": "Tastentext zur Aktualisierung der Bestellung."
   },
   "field.id": {
     "message": "Bestellnummer",
     "description": "Bestellnummer."
   },
   "field.amount": {
-    "message": "Betrag",
-    "description": "Punktwert des Auftrags."
+    "message": "Menge",
+    "description": "Punktemenge der Bestellung."
   },
   "field.price": {
-    "message": "Betrag",
-    "description": "Punktwert des Auftrags."
+    "message": "Menge",
+    "description": "Punktemenge der Bestellung."
   },
   "field.description": {
     "message": "Bestellbeschreibung",
-    "description": "Beschreibung der Bestellung."
+    "description": "Bestellbeschreibung."
   },
   "field.state": {
     "message": "Status",
-    "description": "Status der Bestellung."
+    "description": "Bestellstatus."
   },
   "field.createdAt": {
-    "message": "Erstellungszeitpunkt",
-    "description": "Erstellungszeitpunkt der Bestellung."
+    "message": "Erstellungszeit",
+    "description": "Bestellerstellungszeit."
   },
   "field.service": {
     "message": "Dienstname",
-    "description": "Name des Dienstes."
+    "description": "Dienstname."
   },
   "field.payWay": {
     "message": "Zahlungsart",
@@ -57,26 +57,26 @@
   },
   "field.api": {
     "message": "API",
-    "description": "API ist ein Onlinedienst."
+    "description": "API ist ein Online-Service."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Proxy ist ein Onlinedienst zum Übertragen von Daten über HTTP-Proxy."
+    "description": "Proxy ist ein Online-Service, der zum Übertragen von Daten verwendet wird HTTP-Proxy."
   },
   "message.paidSuccessfully": {
     "message": "Erfolgreich bezahlt",
-    "description": "Erfolgreiche Zahlungsnachricht."
+    "description": "Erfolgreiche Bezahlungsnachricht."
   },
   "message.orderExpired": {
-    "message": "Bestellung ist abgelaufen. Bitte erstellen Sie eine neue Bestellung zur Zahlung.",
+    "message": "Bestellung abgelaufen, bitte neue Bestellung für die Zahlung erstellen.",
     "description": "Nachricht bei abgelaufener Bestellung."
   },
   "message.createFailed": {
     "message": "Erstellen fehlgeschlagen",
-    "description": "Nachricht bei fehlgeschlagener Erstellung."
+    "description": "Nachricht bei fehlgeschlagenem Erstellen."
   },
   "message.wechatPayHelp": {
-    "message": "Öffnen Sie WeChat auf Ihrem Handy und scannen Sie den QR-Code, um die Zahlung abzuschließen.",
+    "message": "Bitte öffnen Sie WeChat auf Ihrem Handy und scannen Sie den Code, um die Zahlung abzuschließen",
     "description": "Nachricht zur Hilfe für WeChat-Zahlungen."
   },
   "message.free": {
@@ -84,36 +84,36 @@
     "description": "Nachricht für kostenlose Bestellungen."
   },
   "message.buyInExternalUrl": {
-    "message": "Schließen Sie die Zahlung über den externen Link ab",
-    "description": "Nachricht für Zahlung über externen Link."
+    "message": "Bitte bezahlen Sie über den externen Link",
+    "description": "Nachricht für Zahlungen über einen externen Link."
   },
   "message.updateFailed": {
     "message": "Aktualisierung fehlgeschlagen",
     "description": "Nachricht bei fehlgeschlagener Aktualisierung."
   },
   "message.updateSuccessfully": {
-    "message": "Erfolgreich aktualisiert",
-    "description": "Erfolgreiche Aktualisierungsnachricht."
+    "message": "Aktualisierung erfolgreich",
+    "description": "Nachricht bei erfolgreicher Aktualisierung."
   },
   "message.confirmFinish": {
-    "message": "Diese Aktion setzt die Bestellung manuell auf den Zahlungsstatus und schließt die Verteilung ab. Sie kann nicht rückgängig gemacht werden. Bitte bestätigen Sie, dass der Kunde die Zahlung abgeschlossen hat. Möchten Sie fortfahren?",
-    "description": "Bestätigungsnachricht."
+    "message": "Dieser Vorgang setzt die Bestellung manuell auf den Zahlungsstatus und schließt die Verteilung ab. Er kann nicht rückgängig gemacht werden. Bitte bestätigen Sie, dass der Kunde die Zahlung abgeschlossen hat. Möchten Sie fortfahren?",
+    "description": "Nachricht zur Bestätigung des Abschlusses."
   },
   "state.pending": {
     "message": "Ausstehend",
-    "description": "Status der Bestellung, der angibt, dass die Bestellung noch auf die Zahlung durch den Benutzer wartet."
+    "description": "Bestellstatus, der angibt, dass diese Bestellung noch auf die Zahlung des Benutzers wartet."
   },
   "state.paid": {
     "message": "Bezahlt",
-    "description": "Status der Bestellung, der angibt, dass die Bestellung bereits bezahlt wurde."
+    "description": "Bestellstatus, der angibt, dass diese Bestellung bereits bezahlt wurde."
   },
   "state.expired": {
-    "message": "Zahlung abgelaufen",
-    "description": "Status der Bestellung, der angibt, dass die Bestellung abgelaufen ist."
+    "message": "Zahlungszeitüberschreitung",
+    "description": "Bestellstatus, der angibt, dass diese Bestellung abgelaufen ist."
   },
   "state.failed": {
     "message": "Zahlung fehlgeschlagen",
-    "description": "Status der Bestellung, der angibt, dass die Zahlung der Bestellung fehlgeschlagen ist."
+    "description": "Bestellstatus, der angibt, dass diese Bestellung fehlgeschlagen ist."
   },
   "title.info": {
     "message": "Bestellinformationen",
@@ -124,12 +124,12 @@
     "description": "Titel für WeChat-Zahlungen auf der Website."
   },
   "title.aliPay": {
-    "message": "AliPay",
-    "description": "Titel für AliPay-Zahlungen auf der Website. AliPay ist eine Art Online-Zahlung."
+    "message": "Alipay",
+    "description": "Titel für Alipay-Zahlungen auf der Website. Alipay ist eine Form der Online-Zahlung."
   },
   "title.stripe": {
     "message": "Stripe",
-    "description": "Titel für Stripe-Zahlungen auf der Website. Stripe ist eine Art Online-Zahlung."
+    "description": "Titel für Stripe-Zahlungen auf der Website. Stripe ist eine Form der Online-Zahlung."
   },
   "title.manageOrder": {
     "message": "Bestellung verwalten",

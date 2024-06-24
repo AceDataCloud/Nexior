@@ -1,8 +1,5 @@
 <template>
   <div class="side-panel">
-    <div class="pl-16 pr-16">
-      <logo @click="onHome" />
-    </div>
     <div class="links">
       <a
         v-for="(link, linkIndex) in links"
@@ -37,7 +34,6 @@ import {
 } from '@/router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { BASE_URL_HUB } from '@/constants';
-import Logo from '../common/Logo.vue';
 
 interface ILink {
   key: string;
@@ -51,8 +47,7 @@ interface ILink {
 export default defineComponent({
   name: 'Navigator',
   components: {
-    FontAwesomeIcon,
-    Logo
+    FontAwesomeIcon
   },
   computed: {
     isOfficial() {
