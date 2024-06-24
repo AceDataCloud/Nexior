@@ -1,23 +1,23 @@
 {
   "button.pay": {
-    "message": "دفع",
+    "message": "الدفع",
     "description": "زر النص، المستخدم لدفع الطلب."
   },
   "button.continuePay": {
-    "message": "متابعة الدفع",
-    "description": "زر النص، المستخدم لمتابعة دفع الطلب."
+    "message": "استمر في الدفع",
+    "description": "زر النص، المستخدم لاستمرار في دفع الطلب."
   },
   "button.checkDetail": {
-    "message": "التحقق من التفاصيل",
-    "description": "زر النص، المستخدم للتحقق من تفاصيل الطلب."
+    "message": "فحص التفاصيل",
+    "description": "زر النص، المستخم لفحص تفاصيل الطلب."
   },
   "button.query": {
     "message": "استعلام",
     "description": "زر النص، المستخدم للاستعلام عن الطلب."
   },
   "button.finish": {
-    "message": "إكمال يدوي",
-    "description": "زر النص، المستخدم لإكمال الطلب يدويًا."
+    "message": "انتهاء يدوي",
+    "description": "زر النص، المستخدم لانهاء الطلب يدويًا."
   },
   "button.update": {
     "message": "تحديث",
@@ -29,11 +29,11 @@
   },
   "field.amount": {
     "message": "المبلغ",
-    "description": "مبلغ النقاط الخاص بالطلب."
+    "description": "مبلغ النقاط الخاصة بالطلب."
   },
   "field.price": {
     "message": "المبلغ",
-    "description": "مبلغ النقاط الخاص بالطلب."
+    "description": "مبلغ النقاط الخاصة بالطلب."
   },
   "field.description": {
     "message": "وصف الطلب",
@@ -44,8 +44,8 @@
     "description": "حالة الطلب."
   },
   "field.createdAt": {
-    "message": "وقت الإنشاء",
-    "description": "وقت إنشاء الطلب."
+    "message": "تاريخ الإنشاء",
+    "description": "تاريخ إنشاء الطلب."
   },
   "field.service": {
     "message": "اسم الخدمة",
@@ -53,15 +53,15 @@
   },
   "field.payWay": {
     "message": "طريقة الدفع",
-    "description": "طريقة الدفع للطلب."
+    "description": "طريقة دفع الطلب."
   },
   "field.api": {
     "message": "واجهة برمجة التطبيقات (API)",
-    "description": "واجهة برمجة التطبيقات (API) هو نوع من الخدمات عبر الإنترنت."
+    "description": "API هو نوع من الخدمات عبر الإنترنت."
   },
   "field.proxy": {
-    "message": "بروكسي",
-    "description": "البروكسي هو نوع من خدمات الويب المستخدمة لنقل البيانات."
+    "message": "الوكيل",
+    "description": "الوكيل هو نوع من خدمات الوساطة عبر الإنترنت، المستخدمة في نقل البيانات."
   },
   "message.paidSuccessfully": {
     "message": "تم الدفع بنجاح",
@@ -76,63 +76,63 @@
     "description": "رسالة فشل الإنشاء."
   },
   "message.wechatPayHelp": {
-    "message": "يرجى فتح تطبيق WeChat على الهاتف الجوال ومسح الكود لإكمال الدفع",
-    "description": "رسالة مساعدة WeChat Pay."
+    "message": "يرجى فتح تطبيق WeChat على الهاتف ومسح الكود لإكمال الدفع",
+    "description": "رسالة مساعدة الدفع عبر WeChat."
   },
   "message.free": {
-    "message": "مجانًا",
+    "message": "مجاني",
     "description": "رسالة الطلب المجاني."
   },
   "message.buyInExternalUrl": {
     "message": "يرجى إكمال الدفع عبر الرابط الخارجي",
-    "description": "رسالة دفع الطلب عبر الرابط الخارجي."
+    "description": "رسالة الدفع من خلال رابط خارجي."
   },
   "message.updateFailed": {
     "message": "فشل التحديث",
     "description": "رسالة فشل التحديث."
   },
   "message.updateSuccessfully": {
-    "message": "تم التحديث بنجاح",
+    "message": "نجح التحديث",
     "description": "رسالة نجاح التحديث."
   },
   "message.confirmFinish": {
-    "message": "سيقوم هذا الإجراء بتعيين حالة الطلب إلى مدفوع واكتمال معالجة التوزيع يدويًا، ولا يمكن التراجع عنه. يرجى التأكد من أن العميل قد أكمل الدفع، هل ترغب في المتابعة؟",
-    "description": "رسالة تأكيد الإكمال."
+    "message": "هذا الإجراء سيعيد تعيين حالة الطلب يدويًا ويكتمل معالجته، ولا يمكن التراجع عنه. يرجى التأكد من إتمام العميل للدفع، هل ترغب في المتابعة؟",
+    "description": "رسالة التأكيد على الانتهاء."
   },
   "state.pending": {
     "message": "قيد الانتظار",
-    "description": "حالة الطلب، تعني أن الطلب ما زال ينتظر دفع المستخدم."
+    "description": "حالة الطلب، تعني أن الطلب ما زال في انتظار دفع المستخدم."
   },
   "state.paid": {
     "message": "تم الدفع",
-    "description": "حالة الطلب، تعني أن الطلب تم دفعه بنجاح."
+    "description": "حالة الطلب، تعني أن الطلب تم دفعه بالفعل."
   },
   "state.expired": {
-    "message": "منتهي الصلاحية",
-    "description": "حالة الطلب، تعني أن الطلب منتهي الصلاحية."
+    "message": "انتهاء الصلاحية",
+    "description": "حالة الطلب، تعني أن الطلب انتهت صلاحيته بالفعل."
   },
   "state.failed": {
     "message": "فشل الدفع",
-    "description": "حالة الطلب، تعني أن الطلب فشل في عملية الدفع."
+    "description": "حالة الطلب، تعني أن الطلب فشل الدفع."
   },
   "title.info": {
     "message": "معلومات الطلب",
-    "description": "عنوان يستخدم على الموقع، يعبر عن معلومات الطلب."
+    "description": "عنوان الموقع، يمثل معلومات الطلب."
   },
   "title.wechatPay": {
-    "message": "WeChat Pay",
-    "description": "عنوان يستخدم على الموقع، يعبر عن WeChat Pay."
+    "message": "الدفع عبر WeChat",
+    "description": "عنوان الموقع، يمثل الدفع عبر WeChat."
   },
   "title.aliPay": {
     "message": "AliPay",
-    "description": "عنوان يستخدم على الموقع، يعبر عن دفع اليكسير. دفع اليكسير هو نوع من الدفع عبر الإنترنت."
+    "description": "عنوان الموقع، يمثل الدفع عبر AliPay، وهو نوع من خدمات الدفع عبر الإنترنت."
   },
   "title.stripe": {
     "message": "Stripe",
-    "description": "عنوان يستخدم على الموقع، يعبر عن دفع Stripe. دفع Stripe هو نوع من الدفع عبر الإنترنت."
+    "description": "عنوان الموقع، يمثل الدفع عبر Stripe، وهو نوع من خدمات الدفع عبر الإنترنت."
   },
   "title.manageOrder": {
     "message": "إدارة الطلب",
-    "description": "عنوان يستخدم على الموقع، يعبر عن إدارة الطلب."
+    "description": "عنوان الموقع، يمثل إدارة الطلب."
   }
 }

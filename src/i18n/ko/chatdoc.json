@@ -1,43 +1,43 @@
 {
   "button.uploadDocuments": {
     "message": "문서 업로드",
-    "description": "버튼 텍스트, 사용자가 문서를 업로드할 수 있는 버튼"
+    "description": "버튼 텍스트, 사용자가 문서를 업로드할 수 있도록 함"
   },
   "field.fileName": {
     "message": "파일 이름",
-    "description": "문서의 파일 이름"
+    "description": "문서 업로드 파일 이름"
   },
   "field.createdAt": {
-    "message": "작성 날짜",
-    "description": "문서 업로드 일시"
+    "message": "생성 날짜",
+    "description": "문서 업로드 시간"
   },
   "field.fileExtension": {
     "message": "파일 유형",
-    "description": "문서의 파일 유형"
+    "description": "문서 업로드 파일 유형"
   },
   "field.fileUrl": {
     "message": "파일 링크",
-    "description": "문서의 링크"
+    "description": "문서 업로드 링크"
   },
   "field.fileSize": {
     "message": "파일 크기",
-    "description": "문서의 크기"
+    "description": "문서 업로드 파일 크기"
   },
   "field.state": {
     "message": "상태",
     "description": "문서 처리 상태"
   },
   "field.stateProcessing": {
-    "message": "처리 중",
-    "description": "문서가 처리 중인 상태"
+    "message": "진행 중",
+    "description": "문서 처리 중"
   },
   "field.stateCompleted": {
-    "message": "처리 완료",
-    "description": "문서 처리가 완료된 상태"
+    "message": "완료됨",
+    "description": "문서 처리 완료"
   },
   "field.stateFailed": {
-    "message": "처리 실패",
-    "description": "문서 처리 실패 상태"
+    "message": "실패함",
+    "description": "문서 처리 실패"
   },
   "field.name": {
     "message": "이름",
@@ -48,16 +48,16 @@
     "description": "문서 설명"
   },
   "message.introductionForKnowledge": {
-    "message": "문서는 지식 저장소에 추가할 수 있으며로봇이 지식 저장소에서 지식을 사용하여 응답합니다.",
-    "description": "지식 저장소 소개 정보"
+    "message": "문서를 지식베이스에 추가할 수 있으며, 로봇이 답장할 때 지식베이스에서 지식을 사용할 수 있습니다.",
+    "description": "지식베이스 소개 정보"
   },
   "message.introductionForRepository": {
-    "message": "지식 저장소는 문서의 모음이며, 여기에 문서를 추가할 수 있습니다. 로봇 응답 시 지식 저장소의 문서에서 응답합니다.",
-    "description": "지식 저장소 소개 정보"
+    "message": "지식베이스는 문서의 모음이며, 그 안에 문서를 추가할 수 있습니다. 로봇이 답장할 때 지식베이스의 문서에서 답장합니다.",
+    "description": "지식베이스 소개 정보"
   },
   "message.uploadDocumentsExceed": {
-    "message": "문서 업로드 제한 초과",
-    "description": "문서 업로드 제한을 초과할 때의 오류 메시지"
+    "message": "문서 업로드 수가 제한을 초과했습니다",
+    "description": "문서 업로드 수가 제한을 초과했을 때의 오류 메시지"
   },
   "message.uploadDocumentsError": {
     "message": "문서 업로드 실패",
@@ -80,116 +80,116 @@
     "description": "문서 생성 실패 시의 오류 메시지"
   },
   "message.dragOrClickToUpload": {
-    "message": "드래그하거나 클릭하여 문서 업로드",
-    "description": "문서를 업로드하기 위해 드래그하거나 클릭하는 정보"
+    "message": "드래그하거나 업로드하려면 클릭하세요",
+    "description": "문서를 드래그하거나 업로드하라는 정보"
   },
   "message.learningDocument": {
     "message": "학습 중, 잠시 기다려주세요...",
-    "description": "문서 학습 중인 정보"
+    "description": "문서 학습 중의 정보"
   },
   "message.startNewChat": {
     "message": "새 대화 시작",
-    "description": "새 대화를 시작하는 정보"
+    "description": "새 대화 시작 정보"
   },
   "message.errorApiError": {
-    "message": "응답 실패, 잠시 후 다시 시도해주세요",
+    "message": "응답 실패, 잠시 후 다시 시도하세요",
     "description": "응답 실패 시의 오류 메시지"
   },
   "message.errorBadRequest": {
-    "message": "잘못된 요청 형식, 다시 질문해주세요",
-    "description": "잘못된 요청 형식 시의 오류 메시지"
+    "message": "요청 내용 형식이 올바르지 않습니다. 다시 질문하세요",
+    "description": "요청 내용 형식이 올바르지 않을 때의 오류 메시지"
   },
   "message.errorNoConversation": {
-    "message": "대화 내용이 없거나 만료되었습니다. 새 대화를 시작해주세요",
+    "message": "대화 내용이 없거나 만료되었습니다. 새 대화를 시작하세요",
     "description": "대화 내용이 없거나 만료되었을 때의 오류 메시지"
   },
   "message.errorContentTooLarge": {
-    "message": "질문 내용이 너무 깁니다. 줄여서 다시 시도해주세요",
-    "description": "질문 내용이 너무 깁니다 시의 오류 메시지"
+    "message": "질문 내용이 너무 깁니다. 짧게 다시 시도하세요",
+    "description": "질문 내용이 너무 깁니다. 때의 오류 메시지"
   },
   "message.errorTooManyRequests": {
-    "message": "너무 많은 요청으로 작업이 너무 빨리 진행되었습니다. 잠시 후 다시 시도해주세요",
-    "description": "너무 많은 요청으로 작업이 너무 빨리 진행되었을 때의 오류 메시지"
+    "message": "작업이 너무 빈번합니다. 잠시 후 다시 시도하세요",
+    "description": "작업이 너무 빈번할 때의 오류 메시지"
   },
   "message.errorUsedUp": {
-    "message": "패키지 사용량이 한도에 도달했습니다. 계속하려면 더 많은 사용량을 구매해주세요",
-    "description": "패키지 사용량이 한도에 도달했을 때의 오류 메시지"
+    "message": "이용 횟수가 제한에 도달했습니다. 계속하려면 더 많이 구매하세요",
+    "description": "이용 횟수가 제한에 도달했을 때의 오류 메시지"
   },
   "message.errorUnknown": {
-    "message": "알 수 없는 서버 오류가 발생했습니다. 잠시 후 다시 시도하거나 고객 지원팀에 문의해주세요",
+    "message": "알 수 없는 서버 오류가 발생했습니다. 잠시 후 다시 시도하거나 고객 서비스에 문의하세요",
     "description": "알 수 없는 서버 오류가 발생했을 때의 오류 메시지"
   },
   "message.errorTimeout": {
-    "message": "질문에 대한 응답 시간이 초과되었습니다. 잠시 후 다시 시도해주세요",
-    "description": "질문에 대한 응답 시간이 초과되었을 때의 오류 메시지"
+    "message": "답변이 시간을 초과했습니다. 잠시 후 다시 시도하세요",
+    "description": "답변이 시간을 초과했을 때의 오류 메시지"
   },
   "message.errorNotApplied": {
-    "message": "아직 이 서비스를 신청하지 않았습니다. 신청한 후 질문을 계속해주세요",
-    "description": "사용자가 아직 이 서비스를 신청하지 않았을 때의 오류 메시지"
+    "message": "아직 이 서비스를 신청하지 않았습니다. 신청한 후 질문을 계속하세요",
+    "description": "사용자가 이 서비스를 아직 신청하지 않았을 때의 오류 메시지"
   },
   "message.confirmDelete": {
     "message": "삭제 확인",
     "description": "삭제 확인 정보"
   },
   "message.howToUse": {
-    "message": "Shift+Enter를 눌러 줄 바꿈을 수행합니다",
-    "description": "줄 바꿈 방법에 대한 정보"
+    "message": "Shift+Enter를 눌러 줄 바꿈을 하세요",
+    "description": "줄 바꿈하는 방법 정보"
   },
   "message.createRepositorySuccess": {
-    "message": "지식 저장소 생성 성공",
-    "description": "지식 저장소 생성 성공 시의 성공 메시지"
+    "message": "지식베이스 생성 성공",
+    "description": "지식베이스 생성 성공 시의 성공 메시지"
   },
   "message.createRepositoryFailed": {
-    "message": "지식 저장소 생성 실패",
-    "description": "지식 저장소 생성 실패 시의 오류 메시지"
+    "message": "지식베이스 생성 실패",
+    "description": "지식베이스 생성 실패 시의 오류 메시지"
   },
   "message.deleteRepositorySuccess": {
-    "message": "지식 저장소 삭제 성공",
-    "description": "지식 저장소 삭제 성공 시의 성공 메시지"
+    "message": "지식베이스 삭제 성공",
+    "description": "지식베이스 삭제 성공 시의 성공 메시지"
   },
   "message.deleteDocumentSuccess": {
     "message": "문서 삭제 성공",
     "description": "문서 삭제 성공 시의 성공 메시지"
   },
   "message.currentRepository": {
-    "message": "현재 지식 저장소",
-    "description": "현재 지식 저장소 표시 정보"
+    "message": "현재 지식베이스",
+    "description": "현재 지식베이스 정보 표시"
   },
   "message.nameRequired": {
     "message": "이름을 입력하세요",
     "description": "이름이 비어 있을 때의 오류 메시지"
   },
   "message.inputRepositoryName": {
-    "message": "지식 저장소 이름",
-    "description": "지식 저장소 이름의 입력 플레이스홀더"
+    "message": "지식베이스 이름",
+    "description": "지식베이스 이름의 입력 플레이스홀더"
   },
   "message.inputRepositoryDescription": {
-    "message": "지식 저장소를 한 문장으로 설명",
-    "description": "지식 저장소 설명을 위한 입력 플레이스홀더"
+    "message": "나의 지식 저장소를 한 문장으로 설명해주세요",
+    "description": "지식 저장소 설명을 입력하는 곳의 플레이스홀더"
   },
   "message.supportedFiles": {
-    "message": "지원되는 파일 유형: .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
-    "description": "지원되는 파일 유형 정보 표시"
+    "message": "지원하는 파일 유형: .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
+    "description": "지원하는 파일 유형을 보여주는 정보"
   },
   "nav.chat": {
     "message": "채팅",
-    "description": "채팅 항목의 내비게이션"
+    "description": "채팅 탐색 항목"
   },
   "nav.setting": {
     "message": "설정",
-    "description": "설정 항목의 내비게이션"
+    "description": "설정 탐색 항목"
   },
   "nav.manage": {
     "message": "관리",
-    "description": "관리 항목의 내비게이션"
+    "description": "관리 탐색 항목"
   },
   "title.manage": {
     "message": "지식 저장소 관리",
-    "description": "지식 저장소 관리의 제목"
+    "description": "지식 저장소를 관리하는 제목"
   },
   "title.createRepository": {
-    "message": "지식 저장소 생성",
-    "description": "지식 저장소 생성의 제목"
+    "message": "지식 저장소 만들기",
+    "description": "지식 저장소를 만드는 제목"
   },
   "title.repositories": {
     "message": "지식 저장소 목록",

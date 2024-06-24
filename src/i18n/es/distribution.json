@@ -1,130 +1,130 @@
 {
   "button.detail": {
-    "message": "查看详情",
-    "description": "按钮文本，用于查看网站的推荐历史详情。"
+    "message": "Ver detalles",
+    "description": "Botón para ver el historial de recomendaciones del sitio web."
   },
   "button.withdrawal": {
-    "message": "提现",
-    "description": "按钮文本，用于提现网站的推荐收益。"
+    "message": "Retirar",
+    "description": "Botón para retirar las ganancias recomendadas del sitio web."
   },
   "button.query": {
-    "message": "查询",
-    "description": "按钮文本，用于查询网站的推荐收益。"
+    "message": "Consultar",
+    "description": "Botón para consultar las ganancias recomendadas del sitio web."
   },
   "field.id": {
-    "message": "推荐 ID",
-    "description": "分销的唯一标识符，分销指 API 服务网站的推荐。"
+    "message": "ID de recomendación",
+    "description": "Identificador único de la distribución, la distribución se refiere a la recomendación del sitio de servicio API."
   },
   "field.percentage": {
-    "message": "推荐收益百分比",
-    "description": "推荐收益的百分比，根据订单金额计算。"
+    "message": "Porcentaje de ganancia de recomendación",
+    "description": "Porcentaje de ganancia de recomendación, calculado según el monto del pedido."
   },
   "field.price": {
-    "message": "订单金额",
-    "description": "订单金额，用于计算推荐收益。"
+    "message": "Monto del pedido",
+    "description": "Monto del pedido, utilizado para calcular la ganancia de recomendación."
   },
   "field.reward": {
-    "message": "推荐奖励",
-    "description": "推荐收益，根据订单金额和推荐收益百分比计算。"
+    "message": "Recompensa de recomendación",
+    "description": "Ganancia de recomendación, calculada según el monto del pedido y el porcentaje de ganancia de recomendación."
   },
   "field.createdAt": {
-    "message": "推荐时间",
-    "description": "推荐创建的时间。"
+    "message": "Fecha de creación de la recomendación",
+    "description": "Tiempo en que se creó la recomendación."
   },
   "field.level": {
-    "message": "级别",
-    "description": "推荐的级别，用于计算推荐收益。"
+    "message": "Nivel",
+    "description": "Nivel de la recomendación, utilizado para calcular la ganancia de recomendación."
   },
   "field.threshold": {
-    "message": "推荐收益门槛",
-    "description": "推荐收益的门槛，用于提现推荐收益。"
+    "message": "Umbral de ganancia de recomendación",
+    "description": "Umbral de ganancia de recomendación, utilizado para retirar la ganancia de recomendación."
   },
   "field.inviteeId": {
-    "message": "邀请者 ID",
-    "description": "邀请者的唯一标识符，邀请者指邀请被邀请者到 API 服务网站。"
+    "message": "ID del invitador",
+    "description": "Identificador único del invitador, el invitador se refiere a la persona que invita a otros al sitio de servicio API."
   },
   "field.isVerified": {
-    "message": "已验证",
-    "description": "标志，指示推荐用户是否通过真实信息验证。"
+    "message": "Verificado",
+    "description": "Indicador que muestra si el usuario recomendado ha sido verificado con información real."
   },
   "message.deltaPriceForNextLevel": {
-    "message": "与下一级别的差额",
-    "description": "当前订单金额与下一级别门槛之间的差额。"
+    "message": "Diferencia de precio con el próximo nivel",
+    "description": "Diferencia entre el monto del pedido actual y el umbral del siguiente nivel."
   },
   "message.developingWithDrawal": {
-    "message": "请加入 Discord 并咨询支持人员处理提现，提现将扣除相关所得税。",
-    "description": "指示提现功能正在开发中的消息。"
+    "message": "Por favor, únete a Discord y consulta con el personal de soporte para el proceso de retiro. El retiro estará sujeto a impuestos relacionados.",
+    "description": "Mensaje que indica que la función de retiro se encuentra en desarrollo."
   },
   "message.technicalDetail": {
-    "message": "技术细节",
-    "description": "推荐系统的技术细节实现。"
+    "message": "Detalle técnico",
+    "description": "Implementación técnica del sistema de recomendaciones."
   },
   "message.distributionQrDescription": {
-    "message": "推荐二维码（与链接内容相同）",
-    "description": "推荐二维码的描述。"
+    "message": "Código QR de recomendación (igual que el contenido del enlace)",
+    "description": "Descripción del código QR de recomendación."
   },
   "message.distributionLink": {
-    "message": "推荐链接",
-    "description": "推荐链接，用于将客户绑定为下级客户。"
+    "message": "Enlace de recomendación",
+    "description": "Enlace de recomendación utilizado para vincular a los clientes como subclientes."
   },
   "message.updateSuccessfully": {
-    "message": "更新成功",
-    "description": "指示推荐信息已成功更新的消息。"
+    "message": "Actualización exitosa",
+    "description": "Mensaje que indica que la información de la recomendación se ha actualizado correctamente."
   },
   "message.distributionLinkDescription": {
-    "message": "如果客户通过此链接或二维码在本平台注册，客户将永久绑定为您的下级客户，并且客户在本平台的所有消费订单将根据当前分销比例返还到您的账户。",
-    "description": "推荐链接的描述。"
+    "message": "Si un cliente se registra en esta plataforma a través de este enlace o código QR, el cliente quedará vinculado permanentemente como tu subcliente, y todas las órdenes de consumo en esta plataforma del cliente se reembolsarán a tu cuenta según la tasa de distribución actual.",
+    "description": "Descripción del enlace de recomendación."
   },
   "message.distributionLinkDescription2": {
-    "message": "此链接包含您的用户 ID。客户打开链接后，您的用户 ID 将以 Cookies 的形式记录在客户的浏览器中，有效期为七天。在七天内，如果客户通过扫描该代码注册本平台，您的用户 ID 将与 Cookies 一起上传到注册服务器，并且客户可以作为您的下游客户绑定。",
-    "description": "推荐链接的描述。"
+    "message": "Este enlace contiene tu ID de usuario. Cuando un cliente abre este enlace, tu ID de usuario se registra en forma de cookies en el navegador del cliente, con una validez de siete días. Dentro de los siete días, si el cliente se registra en esta plataforma escaneando este código, tu ID de usuario se cargará junto con las cookies en el servidor de registro, y el cliente se vinculará como tu subcliente.",
+    "description": "Descripción del enlace de recomendación."
   },
   "title.price": {
-    "message": "推荐订单总金额",
-    "description": "推荐订单的总金额，用于计算推荐收益。"
+    "message": "Monto total de la orden de recomendación",
+    "description": "Monto total de la orden de recomendación utilizado para calcular la ganancia de recomendación."
   },
   "title.reward": {
-    "message": "总推荐奖励",
-    "description": "总推荐奖励，根据订单金额和推荐收益百分比计算。"
+    "message": "Recompensa total de recomendación",
+    "description": "Recompensa total de recomendación, calculada según el monto del pedido y el porcentaje de ganancia de recomendación."
   },
   "title.level": {
-    "message": "推荐级别",
-    "description": "推荐级别，用于计算推荐收益。"
+    "message": "Nivel de recomendación",
+    "description": "Nivel de recomendación utilizado para calcular la ganancia de recomendación."
   },
   "title.percentage": {
-    "message": "推荐收益百分比",
-    "description": "推荐收益百分比，用于计算推荐收益。"
+    "message": "Porcentaje de ganancia de recomendación",
+    "description": "Porcentaje de ganancia de recomendación utilizado para calcular la ganancia de recomendación."
   },
   "title.currentLevel": {
-    "message": "当前级别",
-    "description": "当前推荐级别，用于计算推荐收益。"
+    "message": "Nivel actual",
+    "description": "Nivel actual de recomendación utilizado para calcular la ganancia de recomendación."
   },
   "title.nextLevel": {
-    "message": "下一级别",
-    "description": "下一个推荐级别，用于计算推荐收益。"
+    "message": "Siguiente nivel",
+    "description": "Próximo nivel de recomendación utilizado para calcular la ganancia de recomendación."
   },
   "title.currentPercentage": {
-    "message": "当前推荐收益百分比",
-    "description": "当前推荐收益百分比，用于计算推荐收益。"
+    "message": "Porcentaje actual de ganancia de recomendación",
+    "description": "Porcentaje actual de ganancia de recomendación utilizado para calcular la ganancia de recomendación."
   },
   "title.nextPercentage": {
-    "message": "下一级别推荐收益百分比",
-    "description": "下一个级别的推荐收益百分比，用于计算推荐收益。"
+    "message": "Porcentaje de ganancia de recomendación del siguiente nivel",
+    "description": "Porcentaje de ganancia de recomendación del próximo nivel utilizado para calcular la ganancia de recomendación."
   },
   "title.levelInfo": {
-    "message": "级别信息",
-    "description": "推荐级别的信息，用于计算推荐收益。"
+    "message": "Información de nivel",
+    "description": "Información del nivel de recomendación utilizada para calcular la ganancia de recomendación."
   },
   "title.distributionLink": {
-    "message": "推荐链接",
-    "description": "推荐链接，用于将客户绑定为下级客户。"
+    "message": "Enlace de recomendación",
+    "description": "Enlace de recomendación utilizado para vincular a los clientes como subclientes."
   },
   "title.inviteesCount": {
-    "message": "邀请者总数",
-    "description": "邀请者的总数，用于计算推荐收益。"
+    "message": "Número total de invitadores",
+    "description": "Número total de invitadores utilizado para calcular la ganancia de recomendación."
   },
   "title.manageDistributionStatus": {
-    "message": "分销管理",
-    "description": "推荐状态的管理。"
+    "message": "Gestionar estado de distribución",
+    "description": "Gestión del estado de la recomendación."
   }
 }

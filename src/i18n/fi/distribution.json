@@ -1,130 +1,130 @@
 {
   "button.detail": {
     "message": "Näytä tiedot",
-    "description": "按钮文本，用于查看网站的推荐历史详情。"
+    "description": "painikkeen teksti, jota käytetään sivuston suositushistorian yksityiskohtien tarkastelemiseen."
   },
   "button.withdrawal": {
     "message": "Nosto",
-    "description": "按钮文本，用于提现网站的推荐收益。"
+    "description": "painikkeen teksti, jota käytetään sivuston suositustulojen nostamiseen."
   },
   "button.query": {
     "message": "Haku",
-    "description": "按钮文本，用于查询网站的推荐收益。"
+    "description": "painikkeen teksti, jota käytetään sivuston suositustulojen hakemiseen."
   },
   "field.id": {
-    "message": "Suositus ID",
-    "description": "分销的唯一标识符，分销指 API 服务网站的推荐。"
+    "message": "Suositus-ID",
+    "description": "jakelun yksilöllinen tunniste, jakelu viittaa API-palvelun suositukseen."
   },
   "field.percentage": {
-    "message": "Suosituksen tulo prosentteina",
-    "description": "推荐收益的百分比，根据订单金额计算。"
+    "message": "Suositustulon prosenttiosuus",
+    "description": "Suositustulon prosenttiosuus, lasketaan tilausten määrän perusteella."
   },
   "field.price": {
     "message": "Tilauksen summa",
-    "description": "订单金额，用于计算推荐收益。"
+    "description": "Tilauksen summa, käytetään suositustulojen laskemiseen."
   },
   "field.reward": {
-    "message": "Suosituksen palkkio",
-    "description": "推荐收益，根据订单金额和推荐收益百分比计算。"
+    "message": "Suosituspalkkio",
+    "description": "Suositustulojen määrä, lasketaan tilauksen summan ja suositustulon prosenttiosuuden perusteella."
   },
   "field.createdAt": {
     "message": "Suosituksen luontiaika",
-    "description": "推荐创建的时间。"
+    "description": "Suosituksen luomisaika."
   },
   "field.level": {
     "message": "Taso",
-    "description": "推荐的级别，用于计算推荐收益。"
+    "description": "Suosituksen taso, käytetään suositustulojen laskemiseen."
   },
   "field.threshold": {
-    "message": "Suosituksen tulo kynnys",
-    "description": "推荐收益的门槛，用于提现推荐收益。"
+    "message": "Suositustulojen kynnysarvo",
+    "description": "Suositustulojen kynnysarvo, käytetään suositustulojen nostamiseen."
   },
   "field.inviteeId": {
     "message": "Kutsujan ID",
-    "description": "邀请者的唯一标识符，邀请者指邀请被邀请者到 API 服务网站。"
+    "description": "Kutsujan yksilöllinen tunniste, kutsuja viittaa kutsujan kutsumiseen API-palveluun."
   },
   "field.isVerified": {
     "message": "Vahvistettu",
-    "description": "标志，指示推荐用户是否通过真实信息验证。"
+    "description": "tunnus, joka osoittaa, onko suositeltu käyttäjä todennettu oikeilla tiedoilla."
   },
   "message.deltaPriceForNextLevel": {
-    "message": "Erotus seuraavalle tasolle",
-    "description": "当前订单金额与下一级别门槛之间的差额。"
+    "message": "Erotus seuraavaan tasoon",
+    "description": "erotus nykyisen tilauksen summan ja seuraavan tason kynnyksen välillä."
   },
   "message.developingWithDrawal": {
-    "message": "Liity Discordiin ja ota yhteyttä tukihenkilöön nostoa varten, nostosta vähennetään verot.",
-    "description": "指示提现功能正在开发中的消息。"
+    "message": "Liity Discordiin ja ota yhteyttä tukeen nostoa varten, verot pidätetään nostosta.",
+    "description": "viesti, joka osoittaa, että nostotoiminto on kehitysvaiheessa."
   },
   "message.technicalDetail": {
     "message": "Tekniset yksityiskohdat",
-    "description": "推荐系统的技术细节实现。"
+    "description": "Suositusjärjestelmän tekniset yksityiskohdat toteutuksessa."
   },
   "message.distributionQrDescription": {
-    "message": "Suosituskoodi (sama kuin linkin sisältö)",
-    "description": "推荐二维码的描述。"
+    "message": "Suositus QR-koodi (sisällön kanssa identtinen)",
+    "description": "Suosituskoodin kuvaus."
   },
   "message.distributionLink": {
     "message": "Suosituslinkki",
-    "description": "推荐链接，用于将客户绑定为下级客户。"
+    "description": "Suosituslinkki, jota käytetään asiakkaan sitomiseen alaisasiakkaaksi."
   },
   "message.updateSuccessfully": {
     "message": "Päivitys onnistui",
-    "description": "指示推荐信息已成功更新的消息。"
+    "description": "viesti, joka osoittaa, että suositustiedot on päivitetty onnistuneesti."
   },
   "message.distributionLinkDescription": {
-    "message": "Jos asiakas rekisteröityy tällä linkillä tai QR-koodilla tälle alustalle, asiakas sitoutuu pysyvästi alaisuuteenne, ja kaikki asiakkaan kulutustilaukset tässä alustassa palautetaan tilillenne nykyisen jakosuhteen mukaisesti.",
-    "description": "推荐链接的描述。"
+    "message": "Jos asiakas rekisteröityy tällä linkillä tai QR-koodilla tälle alustalle, asiakas sitoutuu pysyvästi alaisasiakkaaksesi, ja kaikki asiakkaan kuluttajatilaukset tällä alustalla palautetaan tilillesi nykyisen jakosuhteen perusteella.",
+    "description": "Suosituslinkin kuvaus."
   },
   "message.distributionLinkDescription2": {
-    "message": "此链接包含您的用户 ID。客户打开链接后，您的用户 ID 将以 Cookies 的形式记录在客户的浏览器中，有效期为七天。在七天内，如果客户通过扫描该代码注册本平台，您的用户 ID 将与 Cookies 一起上传到注册服务器，并且客户可以作为您的下游客户绑定。",
-    "description": "推荐链接的描述。"
+    "message": "Tämä linkki sisältää käyttäjätunnuksesi. Asiakas avaa linkin jälkeen, käyttäjätunnuksesi tallennetaan evästeiksi asiakkaan selaimeen seitsemän päivän ajaksi. Seitsemän päivän aikana, jos asiakas rekisteröityy tällä koodilla tälle alustalle, käyttäjätunnuksesi lähetetään evästeiden kanssa rekisteröintipalvelimelle, ja asiakas voidaan sitoa alaisasiakkaaksesi.",
+    "description": "Suosituslinkin kuvaus."
   },
   "title.price": {
-    "message": "Suosituksen tilauksen kokonaissumma",
-    "description": "推荐订单的总金额，用于计算推荐收益。"
+    "message": "Suositustilauksen kokonaissumma",
+    "description": "Suositustilauksen kokonaissumma, käytetään suositustulojen laskemiseen."
   },
   "title.reward": {
-    "message": "Kokonaisuusvinkki",
-    "description": "总推荐奖励，根据订单金额和推荐收益百分比计算。"
+    "message": "Kokonaisuudessaan suosituspalkkio",
+    "description": "Kokonaisuudessaan suosituspalkkio, lasketaan tilauksen summan ja suositustulon prosenttiosuuden perusteella."
   },
   "title.level": {
-    "message": "Suosituksen taso",
-    "description": "推荐级别，用于计算推荐收益。"
+    "message": "Suositustaso",
+    "description": "Suositustaso, käytetään suositustulojen laskemiseen."
   },
   "title.percentage": {
-    "message": "Suosituksen tuotto prosentteina",
-    "description": "推荐收益百分比，用于计算推荐收益。"
+    "message": "Suositustulon prosenttiosuus",
+    "description": "Suositustulon prosenttiosuus, käytetään suositustulojen laskemiseen."
   },
   "title.currentLevel": {
     "message": "Nykyinen taso",
-    "description": "当前推荐级别，用于计算推荐收益。"
+    "description": "Nykyinen suositustaso, käytetään suositustulojen laskemiseen."
   },
   "title.nextLevel": {
     "message": "Seuraava taso",
-    "description": "下一个推荐级别，用于计算推荐收益。"
+    "description": "Seuraava suositustaso, käytetään suositustulojen laskemiseen."
   },
   "title.currentPercentage": {
-    "message": "Nykyinen suosituksen tulo prosentteina",
-    "description": "当前推荐收益百分比，用于计算推荐收益。"
+    "message": "Nykyinen suositustulon prosenttiosuus",
+    "description": "Nykyinen suositustulon prosenttiosuus, käytetään suositustulojen laskemiseen."
   },
   "title.nextPercentage": {
-    "message": "下一级别推荐收益百分比",
-    "description": "下一个级别的推荐收益百分比，用于计算推荐收益。"
+    "message": "Seuraavan tason suositustulon prosenttiosuus",
+    "description": "Seuraavan tason suositustulon prosenttiosuus, käytetään suositustulojen laskemiseen."
   },
   "title.levelInfo": {
     "message": "Tason tiedot",
-    "description": "推荐级别的信息，用于计算推荐收益。"
+    "description": "Suositustason tiedot, käytetään suositustulojen laskemiseen."
   },
   "title.distributionLink": {
-    "message": "推荐链接",
-    "description": "推荐链接，用于将客户绑定为下级客户。"
+    "message": "Suosituslinkki",
+    "description": "Suosituslinkki, jota käytetään asiakkaan sitomiseen alaisasiakkaaksi."
   },
   "title.inviteesCount": {
-    "message": "Kutsujien kokonaismäärä",
-    "description": "邀请者的总数，用于计算推荐收益。"
+    "message": "Kutsujien määrä",
+    "description": "Kutsujien kokonaismäärä, käytetään suositustulojen laskemiseen."
   },
   "title.manageDistributionStatus": {
-    "message": "分销管理",
-    "description": "推荐状态的管理。"
+    "message": "Jakelutilan hallinta",
+    "description": "Suositustilan hallinta."
   }
 }

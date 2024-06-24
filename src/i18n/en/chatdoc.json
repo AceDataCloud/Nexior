@@ -1,23 +1,23 @@
 {
   "button.uploadDocuments": {
     "message": "Upload Documents",
-    "description": "Button text that allows users to upload documents"
+    "description": "Button text to allow user to upload documents"
   },
   "field.fileName": {
     "message": "File Name",
-    "description": "Name of the uploaded document"
+    "description": "File name for uploaded document"
   },
   "field.createdAt": {
     "message": "Created At",
-    "description": "Time of document upload"
+    "description": "Time when the document was uploaded"
   },
   "field.fileExtension": {
     "message": "File Type",
-    "description": "File type of the uploaded document"
+    "description": "File type for uploaded document"
   },
   "field.fileUrl": {
     "message": "File Link",
-    "description": "Link to the uploaded document"
+    "description": "Link for the uploaded document"
   },
   "field.fileSize": {
     "message": "File Size",
@@ -25,11 +25,11 @@
   },
   "field.state": {
     "message": "Status",
-    "description": "Processing status of the document"
+    "description": "Status of document processing"
   },
   "field.stateProcessing": {
     "message": "Processing",
-    "description": "Document is currently being processed"
+    "description": "Document processing is in progress"
   },
   "field.stateCompleted": {
     "message": "Completed",
@@ -37,7 +37,7 @@
   },
   "field.stateFailed": {
     "message": "Failed",
-    "description": "Document processing has failed"
+    "description": "Document processing failed"
   },
   "field.name": {
     "message": "Name",
@@ -48,19 +48,19 @@
     "description": "Description of the document"
   },
   "message.introductionForKnowledge": {
-    "message": "Documents can be added to the knowledge base, and the robot can use the knowledge in the knowledge base when replying.",
+    "message": "Documents can be added to the knowledge base, and the robot can use the knowledge from the knowledge base when replying.",
     "description": "Introduction information for the knowledge base"
   },
   "message.introductionForRepository": {
-    "message": "The knowledge base is a collection of documents where you can add documents. The robot will reply from the documents in the knowledge base when answering.",
+    "message": "The knowledge base is a collection of documents, and you can add documents to it. When the robot responds, it will reply from the documents in the knowledge base.",
     "description": "Introduction information for the knowledge base"
   },
   "message.uploadDocumentsExceed": {
-    "message": "The number of uploaded documents exceeds the limit",
-    "description": "Error message when the number of uploaded documents exceeds the limit"
+    "message": "Exceeded the limit for uploading documents",
+    "description": "Error message when the limit for uploading documents is exceeded"
   },
   "message.uploadDocumentsError": {
-    "message": "Failed to upload the document",
+    "message": "Failed to upload documents",
     "description": "Error message when the document upload fails"
   },
   "message.uploadDocumentsSuccess": {
@@ -69,31 +69,31 @@
   },
   "message.createDocumentSuccess": {
     "message": "Document created successfully",
-    "description": "Success message when the document creation is successful"
+    "description": "Success message when the document is created successfully"
   },
   "message.startCreateDocument": {
-    "message": "Start learning the document...",
-    "description": "Information when starting to learn the document"
+    "message": "Starting to process the document...",
+    "description": "Information when starting to process the document"
   },
   "message.createDocumentError": {
-    "message": "Failed to learn the document",
-    "description": "Error message when the document learning fails"
+    "message": "Failed to process the document",
+    "description": "Error message when the document processing fails"
   },
   "message.dragOrClickToUpload": {
     "message": "Drag or click to upload documents",
     "description": "Information for dragging or clicking to upload documents"
   },
   "message.learningDocument": {
-    "message": "Learning, please wait...",
-    "description": "Information when learning the document"
+    "message": "Processing, please wait...",
+    "description": "Information when processing the document"
   },
   "message.startNewChat": {
     "message": "Start a new chat",
-    "description": "Information to start a new chat"
+    "description": "Information for starting a new chat"
   },
   "message.errorApiError": {
-    "message": "Response failed, please try again later",
-    "description": "Error message when the response fails"
+    "message": "Request failed, please try again later",
+    "description": "Error message when the request fails"
   },
   "message.errorBadRequest": {
     "message": "Incorrect request format, please rephrase your question",
@@ -104,7 +104,7 @@
     "description": "Error message when the conversation content does not exist or has expired"
   },
   "message.errorContentTooLarge": {
-    "message": "The question content is too long, please shorten it and try again",
+    "message": "Question content is too long, please shorten and try again",
     "description": "Error message when the question content is too long"
   },
   "message.errorTooManyRequests": {
@@ -116,12 +116,12 @@
     "description": "Error message when the package usage has reached the limit"
   },
   "message.errorUnknown": {
-    "message": "An unknown server error occurred, please try again later or contact customer service",
+    "message": "Unknown server error occurred, please try again later or contact customer service",
     "description": "Error message when an unknown server error occurs"
   },
   "message.errorTimeout": {
     "message": "Answering the question timed out, please try again later",
-    "description": "Error message when answering the question times out"
+    "description": "Error message when the question answering times out"
   },
   "message.errorNotApplied": {
     "message": "You have not applied for this service, please apply before continuing to ask",
@@ -129,11 +129,11 @@
   },
   "message.confirmDelete": {
     "message": "Confirm Delete",
-    "description": "Confirmation message for deletion"
+    "description": "Confirmation message for delete action"
   },
   "message.howToUse": {
-    "message": "Press Shift+Enter to line break",
-    "description": "Information on how to line break"
+    "message": "Press Shift+Enter to create a new line",
+    "description": "Information on how to create a new line"
   },
   "message.createRepositorySuccess": {
     "message": "Knowledge base created successfully",
@@ -153,23 +153,23 @@
   },
   "message.currentRepository": {
     "message": "Current Knowledge Base",
-    "description": "Information displaying the current knowledge base"
+    "description": "Displays information about the current knowledge base"
   },
   "message.nameRequired": {
     "message": "Name is required",
-    "description": "Error message when the name is required"
+    "description": "Error message when the name is required but not provided"
   },
   "message.inputRepositoryName": {
     "message": "Knowledge Base Name",
-    "description": "Placeholder for the knowledge base name input"
+    "description": "Input placeholder for the knowledge base name"
   },
   "message.inputRepositoryDescription": {
-    "message": "Describe your repository in a sentence",
+    "message": "Describe your repository in one sentence",
     "description": "Input placeholder for repository description"
   },
   "message.supportedFiles": {
     "message": "Supported file types: .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
-    "description": "Information displaying supported file types"
+    "description": "Information displaying the supported file types"
   },
   "nav.chat": {
     "message": "Chat",
@@ -189,10 +189,10 @@
   },
   "title.createRepository": {
     "message": "Create Repository",
-    "description": "Title for creating repository"
+    "description": "Title for creating a repository"
   },
   "title.repositories": {
     "message": "Repository List",
-    "description": "Title for repository list"
+    "description": "Title for the list of repositories"
   }
 }

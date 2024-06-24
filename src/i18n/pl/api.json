@@ -1,15 +1,15 @@
 {
   "entity.requestQueries": {
-    "message": "Zapytanie o parametry",
+    "message": "Zapytanie zapytań",
     "description": "Parametry zapytania HTTP."
   },
   "entity.requestBody": {
-    "message": "Treść zapytania",
-    "description": "Treść zapytania HTTP."
+    "message": "Ciało zapytania",
+    "description": "Ciało żądania HTTP."
   },
   "entity.responseBody": {
-    "message": "Treść odpowiedzi",
-    "description": "Treść odpowiedzi HTTP."
+    "message": "Ciało odpowiedzi",
+    "description": "Ciało odpowiedzi HTTP."
   },
   "entity.requestHeaders": {
     "message": "Nagłówki żądania",
@@ -17,7 +17,7 @@
   },
   "entity.requestHeader": {
     "message": "Nagłówek żądania",
-    "description": "Nagłówek pojedynczego żądania HTTP."
+    "description": "Nagłówek żądania HTTP, pojedyncza forma nagłówka."
   },
   "entity.responseHeaders": {
     "message": "Nagłówki odpowiedzi",
@@ -29,11 +29,11 @@
   },
   "entity.success": {
     "message": "Sukces",
-    "description": "Sukces odpowiedzi."
+    "description": "Udane odpowiedzi."
   },
   "entity.failure": {
-    "message": "Niepowodzenie",
-    "description": "Niepowodzenie odpowiedzi."
+    "message": "Błąd",
+    "description": "Nieudane odpowiedzi."
   },
   "entity.responseExample": {
     "message": "Przykład odpowiedzi",
@@ -45,7 +45,7 @@
   },
   "entity.arrayOf": {
     "message": "Tablica",
-    "description": "Tablica encji."
+    "description": "Tablica jednostek."
   },
   "entity.apiKey": {
     "message": "Klucz API",
@@ -53,7 +53,7 @@
   },
   "message.free": {
     "message": "Darmowe",
-    "description": "Oznacza, że cena jest bezpłatna, korzystając z usługi API nie trzeba płacić żadnych punktów ani waluty."
+    "description": "Oznacza darmową cenę, korzystanie z usługi API nie wymaga wydawania punktów ani pieniędzy."
   },
   "message.appliedCount": {
     "message": "Liczba zastosowań",
@@ -61,82 +61,82 @@
   },
   "message.firstFree": {
     "message": "Pierwsze darmowe",
-    "description": "Oznacza, że pierwsze użycie usługi API jest bezpłatne, nie trzeba płacić żadnych punktów ani waluty."
+    "description": "Oznacza pierwsze darmowe korzystanie z usługi API, nie wymaga wydawania punktów ani pieniędzy."
   },
   "message.custom": {
-    "message": "Dostosowana kwota",
-    "description": "Oznacza, że cena jest określona, korzystając z usługi API trzeba zapłacić określoną liczbę punktów lub walutę."
+    "message": "Niestandardowa kwota",
+    "description": "Oznacza cenę niestandardową, wymagane jest wydanie określonej liczby punktów lub pieniędzy podczas korzystania z usługi API."
   },
   "message.present": {
     "message": "Prezent",
-    "description": "Podczas pierwszego użycia usługi API, otrzymasz od nas punkty."
+    "description": "Podczas pierwszego korzystania z usługi API otrzymasz punkty prezentowe."
   },
   "message.around": {
-    "message": "Około",
-    "description": "Oznacza, że cena jest około określonej kwoty, rzeczywista cena może się nieco różnić."
+    "message": "Ok. ",
+    "description": "Cena jest około, faktyczna cena może się nieco różnić."
   },
   "message.successRate15min": {
-    "message": "Bieżąca stawka sukcesu",
-    "description": "Bieżąca stawka sukcesu usługi API w ciągu ostatnich 15 minut."
+    "message": "Wskaźnik sukcesu w czasie rzeczywistym (15 min)",
+    "description": "Wskaźnik sukcesu usługi API w ciągu ostatnich 15 minut."
   },
   "message.ySuccessRate": {
-    "message": "Stawka sukcesu (100%)",
-    "description": "Stawka sukcesu usługi API."
+    "message": "Wskaźnik sukcesu (100%)",
+    "description": "Wskaźnik sukcesu usługi API."
   },
   "message.xMinutes": {
     "message": "Czas (minuty)",
-    "description": "Czas (minuty)."
+    "description": "Czas (w minutach)."
   },
   "message.streamUsage": {
-    "message": "Uwaga: Dla żądań strumieniowych powyższy kod może nie być w pełni odpowiedni. Proszę sięgnij do dokumentacji integracyjnej i dokonaj odpowiednich zmian.",
-    "description": "Dla żądań strumieniowych powyższy kod może nie być w pełni odpowiedni. Proszę sięgnij do dokumentacji integracyjnej i dokonaj odpowiednich zmian."
+    "message": "Uwaga: Dla żądań strumieniowych powyższy kod może nie być w pełni odpowiedni. Proszę sprawdzić dokumentację integracyjną.",
+    "description": "Dla żądań strumieniowych powyższy kod może nie być w pełni odpowiedni. Proszę sprawdzić dokumentację integracyjną."
   },
   "message.alphaStage": {
-    "message": "Ta usługa API jest w fazie Alfa. To wczesna wersja podglądowa, mogą wystąpić potencjalne niestabilności, format API może ulec znaczącej zmianie. Nie zalecamy użytkowania w środowisku produkcyjnym. Aktualne ceny są relatywnie niskie, ale w przyszłości mogą ulec znacznemu dostosowaniu cenowemu.",
-    "description": "Ta usługa API jest w fazie Alfa. To wczesna wersja podglądowa, mogą wystąpić potencjalne niestabilności, format API może ulec znaczącej zmianie. Nie zalecamy użytkowania w środowisku produkcyjnym. Aktualne ceny są relatywnie niskie, ale w przyszłości mogą ulec znacznemu dostosowaniu cenowemu."
+    "message": "Ta usługa API jest w fazie Alfa, jest to wczesna wersja podglądowa, może być niestabilna, format API może ulec znaczącym zmianom, nie zaleca się używania w środowisku produkcyjnym. Aktualna cena jest stosunkowo niska, ale może ulec znaczącym zmianom w przyszłości.",
+    "description": "Ta usługa API jest w fazie Alfa, jest to wczesna wersja podglądowa, może być niestabilna, format API może ulec znaczącym zmianom, nie zaleca się używania w środowisku produkcyjnym. Aktualna cena jest stosunkowo niska, ale może ulec znaczącym zmianom w przyszłości."
   },
   "message.betaStage": {
-    "message": "Ta usługa API jest w fazie Beta. Format API nie ulegnie znaczącym zmianom, ale mogą wystąpić potencjalne niestabilności. Prosimy o ostrożne korzystanie w środowisku produkcyjnym. Aktualne ceny są relatywnie niskie, ale w przyszłości mogą ulec umiarkowanemu dostosowaniu cenowemu.",
-    "description": "Ta usługa API jest w fazie Beta. Format API nie ulegnie znaczącym zmianom, ale mogą wystąpić potencjalne niestabilności. Prosimy o ostrożne korzystanie w środowisku produkcyjnym. Aktualne ceny są relatywnie niskie, ale w przyszłości mogą ulec umiarkowanemu dostosowaniu cenowemu."
+    "message": "Ta usługa API jest w fazie Beta, format API nie ulegnie znaczącym zmianom, ale może być niestabilna, prosimy o ostrożne korzystanie w środowisku produkcyjnym. Aktualna cena jest stosunkowo niska, ale może ulec umiarkowanej zmianie w przyszłości.",
+    "description": "Ta usługa API jest w fazie Beta, format API nie ulegnie znaczącym zmianom, ale może być niestabilna, prosimy o ostrożne korzystanie w środowisku produkcyjnym. Aktualna cena jest stosunkowo niska, ale może ulec umiarkowanej zmianie w przyszłości."
   },
   "unit.credit": {
-    "message": "Punkt",
-    "description": "Punkty to wirtualna waluta używana w usłudze API."
+    "message": "punkt",
+    "description": "Punkt to wirtualna waluta używana w usługach API."
   },
   "unit.Credit": {
     "message": "Punkt",
-    "description": "Punkty to wirtualna waluta używana w usłudze API, to jest wersja z dużej litery."
+    "description": "Punkt to wirtualna waluta używana w usługach API, w formie wielkich liter."
   },
   "unit.credits": {
-    "message": "Punkty",
-    "description": "Punkty to wirtualna waluta używana w usłudze API, to jest forma mnoga."
+    "message": "punkty",
+    "description": "Punkt to wirtualna waluta używana w usługach API, w formie mnogiej."
   },
   "unit.Credits": {
     "message": "Punkty",
-    "description": "Punkty to wirtualna waluta używana w usłudze API, to jest wersja z dużej litery i forma mnoga."
+    "description": "Punkt to wirtualna waluta używana w usługach API, w formie wielkich liter i mnogiej."
   },
   "unit.call": {
-    "message": "Wywołanie",
-    "description": "Ilość wywołań usługi API."
+    "message": "wywołanie",
+    "description": "Wywołanie oznacza liczbę wywołań usługi API."
   },
   "unit.Call": {
     "message": "Wywołanie",
-    "description": "Ilość wywołań usługi API, to jest wersja z dużej litery."
+    "description": "Wywołanie oznacza liczbę wywołań usługi API, w formie wielkich liter."
   },
   "unit.calls": {
-    "message": "Wywołania",
-    "description": "Ilość wywołań usługi API, to jest forma mnoga."
+    "message": "wywołania",
+    "description": "Wywołanie oznacza liczbę wywołań usługi API, w formie mnogiej."
   },
   "unit.Calls": {
     "message": "Wywołania",
-    "description": "Ilość wywołań usługi API, to jest wersja z dużej litery i forma mnoga."
+    "description": "Wywołanie oznacza liczbę wywołań usługi API, w formie wielkich liter i mnogiej."
   },
   "unit.MB": {
     "message": "MB",
-    "description": "MB to skrótowiec oznaczający megabajty, jednostka przechowywania informacji."
+    "description": "MB oznacza megabajt, jednostkę przechowywania informacji."
   },
   "unit.GB": {
     "message": "GB",
-    "description": "GB to skrótowiec oznaczający gigabajty, jednostka przechowywania informacji."
+    "description": "GB oznacza gigabajt, jednostkę przechowywania informacji."
   }
 }

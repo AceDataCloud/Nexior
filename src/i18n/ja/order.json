@@ -1,39 +1,39 @@
 {
   "button.pay": {
     "message": "支払う",
-    "description": "ボタンテキスト、注文を支払うために使用される。"
+    "description": "ボタンテキスト、注文を支払うために使用します。"
   },
   "button.continuePay": {
     "message": "支払いを続ける",
-    "description": "ボタンテキスト、注文の支払いを続けるために使用される。"
+    "description": "ボタンテキスト、注文の支払いを続けるために使用します。"
   },
   "button.checkDetail": {
-    "message": "詳細を確認",
-    "description": "ボタンテキスト、注文の詳細を確認するために使用される。"
+    "message": "詳細をチェック",
+    "description": "ボタンテキスト、注文の詳細をチェックするために使用します。"
   },
   "button.query": {
     "message": "クエリ",
-    "description": "ボタンテキスト、注文をクエリするために使用される。"
+    "description": "ボタンテキスト、注文をクエリするために使用します。"
   },
   "button.finish": {
     "message": "手動で完了",
-    "description": "ボタンテキスト、注文を手動で完了するために使用される。"
+    "description": "ボタンテキスト、注文を手動で完了するために使用します。"
   },
   "button.update": {
     "message": "更新",
-    "description": "ボタンテキスト、注文を更新するために使用される。"
+    "description": "ボタンテキスト、注文を更新するために使用します。"
   },
   "field.id": {
-    "message": "注文ID",
-    "description": "注文のID。"
+    "message": "注文番号",
+    "description": "注文の番号。"
   },
   "field.amount": {
     "message": "金額",
-    "description": "注文の金額。"
+    "description": "注文のポイント金額。"
   },
   "field.price": {
-    "message": "金額",
-    "description": "注文の金額。"
+    "message": "価格",
+    "description": "注文のポイント金額。"
   },
   "field.description": {
     "message": "注文の説明",
@@ -61,22 +61,22 @@
   },
   "field.proxy": {
     "message": "プロキシ",
-    "description": "プロキシはデータを転送するためのオンラインサービスです。"
+    "description": "プロキシはデータ転送に使用するオンラインサービスの一種です。"
   },
   "message.paidSuccessfully": {
     "message": "支払いが成功しました",
     "description": "成功した支払いのメッセージ。"
   },
   "message.orderExpired": {
-    "message": "注文の有効期限が切れています。新しい注文を作成して支払いを行ってください。",
-    "description": "注文が期限切れのメッセージ。"
+    "message": "注文が期限切れです。新しい注文を作成して支払いを行ってください。",
+    "description": "注文期限切れのメッセージ。"
   },
   "message.createFailed": {
     "message": "作成に失敗しました",
     "description": "作成に失敗したメッセージ。"
   },
   "message.wechatPayHelp": {
-    "message": "携帯電話でWeChatを開いて、支払いを完了させてください",
+    "message": "携帯電話でWeChatを開き、支払いを完了させるためにQRコードをスキャンしてください",
     "description": "WeChat支払いのヘルプメッセージ。"
   },
   "message.free": {
@@ -96,43 +96,43 @@
     "description": "成功した更新のメッセージ。"
   },
   "message.confirmFinish": {
-    "message": "この操作は注文を手動で支払い済み状態に設定し、処理を完了します。取り消すことはできません。お客様が支払いを完了したことを確認して続行しますか？",
-    "description": "完了を確認するメッセージ。"
+    "message": "この操作は注文を手動で支払い状態に設定し、処理を完了させます。取り消すことはできません。お客様が支払いを完了したことを確認して続行しますか？",
+    "description": "確認完了のメッセージ。"
   },
   "state.pending": {
-    "message": "保留中",
-    "description": "注文の状態、この注文はユーザーが支払いを行うのを待っていることを示す。"
+    "message": "支払い待ち",
+    "description": "注文の状態、この注文はまだユーザーが支払いを行うのを待っています。"
   },
   "state.paid": {
-    "message": "支払済み",
-    "description": "注文の状態、この注文は支払済みであることを示す。"
+    "message": "支払い済み",
+    "description": "注文の状態、この注文はすでに支払い済みです。"
   },
   "state.expired": {
-    "message": "有効期限切れ",
-    "description": "注文の状態、この注文は有効期限切れであることを示す。"
+    "message": "支払い期限切れ",
+    "description": "注文の状態、この注文は期限切れになりました。"
   },
   "state.failed": {
     "message": "支払い失敗",
-    "description": "注文の状態、この注文は支払い失敗であることを示す。"
+    "description": "注文の状態、この注文は支払いに失敗しました。"
   },
   "title.info": {
     "message": "注文情報",
-    "description": "ウェブサイトのタイトルとして使用される、注文情報を示すタイトル。"
+    "description": "ウェブサイトのタイトルとして使用される注文情報のタイトル。"
   },
   "title.wechatPay": {
     "message": "WeChat支払い",
-    "description": "ウェブサイトのタイトルとして使用される、WeChat支払いを示すタイトル。"
+    "description": "ウェブサイトのタイトルとして使用されるWeChat支払いのタイトル。"
   },
   "title.aliPay": {
-    "message": "Alipay",
-    "description": "ウェブサイトのタイトルとして使用される、Alipay支払いはオンライン支払いの一種です。"
+    "message": "アリペイ",
+    "description": "ウェブサイトのタイトルとして使用されるアリペイ支払いのタイトル。アリペイ支払いはオンライン支払いの一種です。"
   },
   "title.stripe": {
     "message": "Stripe",
-    "description": "ウェブサイトのタイトルとして使用される、Stripe支払いはオンライン支払いの一種です。"
+    "description": "ウェブサイトのタイトルとして使用されるStripe支払いのタイトル。Stripe支払いはオンライン支払いの一種です。"
   },
   "title.manageOrder": {
     "message": "注文を管理",
-    "description": "ウェブサイトのタイトルとして使用される、注文管理を示すタイトル。"
+    "description": "ウェブサイトのタイトルとして使用される注文管理のタイトル。"
   }
 }

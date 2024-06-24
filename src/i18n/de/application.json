@@ -1,31 +1,31 @@
 {
   "button.goDocument": {
     "message": "Dokument",
-    "description": "Schaltflächentext, um zur Dokumentenseite zu gelangen."
+    "description": "Schaltflächentext, mit dem beim Klicken auf diese Schaltfläche zur Dokumentseite gewechselt wird."
   },
   "button.goCredentials": {
     "message": "Anmeldedaten",
-    "description": "Schaltflächentext, um zur Anmeldedatenseite zu gelangen."
+    "description": "Schaltflächentext, mit dem beim Klicken auf diese Schaltfläche zur Anmeldedatenseite gewechselt wird."
   },
   "button.buyMore": {
     "message": "Mehr kaufen",
-    "description": "Schaltflächentext, um zur Seite zum Kauf weiterer Artikel zu gelangen."
+    "description": "Schaltflächentext, mit dem beim Klicken auf diese Schaltfläche zur Seite 'Mehr kaufen' gewechselt wird."
   },
   "button.createOrder": {
     "message": "Bestellung erstellen",
-    "description": "Schaltflächentext, um zur Seite zur Bestellungserstellung zu gelangen."
+    "description": "Schaltflächentext, mit dem beim Klicken auf diese Schaltfläche zur Seite 'Bestellung erstellen' gewechselt wird."
   },
   "button.custom": {
     "message": "Benutzerdefiniert",
-    "description": "Schaltflächentext, um zur benutzerdefinierten Seite zu gelangen."
+    "description": "Schaltflächentext, mit dem beim Klicken auf diese Schaltfläche zur benutzerdefinierten Seite gewechselt wird."
   },
   "button.query": {
     "message": "Abfrage",
-    "description": "Schaltflächentext, um zur Abfrageseite zu gelangen."
+    "description": "Schaltflächentext, mit dem beim Klicken auf diese Schaltfläche zur Abfrageseite gewechselt wird."
   },
   "button.usage": {
-    "message": "Nutzungsaufzeichnung",
-    "description": "Schaltflächentext, um zur Seite der Nutzungsaufzeichnungen zu gelangen."
+    "message": "Verwendung",
+    "description": "Schaltflächentext, mit dem beim Klicken auf diese Schaltfläche zur Verwendungsseiten gewechselt wird."
   },
   "field.application": {
     "message": "Anwendung",
@@ -33,15 +33,15 @@
   },
   "field.status": {
     "message": "Status",
-    "description": "Status der Anwendung."
+    "description": "Anwendungsstatus."
   },
   "field.id": {
     "message": "Anwendungs-ID",
-    "description": "ID der Anwendung."
+    "description": "Anwendungs-ID."
   },
   "field.remainingAmount": {
     "message": "Verbleibende Menge",
-    "description": "Übrige Menge der Anwendung."
+    "description": "Verbleibende Menge der Anwendung."
   },
   "field.usedAmount": {
     "message": "Verwendete Menge",
@@ -53,19 +53,19 @@
   },
   "field.service": {
     "message": "Dienst",
-    "description": "Dienst der Anwendung."
+    "description": "Anwendungsdienst."
   },
   "field.operation": {
     "message": "Operation",
-    "description": "Betrieb der Anwendung."
+    "description": "Anwendungsoperation."
   },
   "field.amount": {
     "message": "Menge",
-    "description": "Menge der Anwendung."
+    "description": "Anwendungsmenge."
   },
   "field.traceId": {
-    "message": "Trace-ID",
-    "description": "Trace-ID eines API-Aufrufs für eine Dienstanwendung, nicht übersetzen, als 'Trace-ID' belassen."
+    "message": "Nachverfolgungs-ID",
+    "description": "Nachverfolgungs-ID für einen API-Aufruf einer Anwendung des API-Dienstes, nicht übersetzen, 'Nachverfolgungs-ID' beibehalten."
   },
   "field.shouldPayPrice": {
     "message": "Endpreis",
@@ -73,27 +73,27 @@
   },
   "field.api": {
     "message": "API",
-    "description": "Dies ist ein Onlinedienst, der den Benutzern über eine API-Daten bereitstellt."
+    "description": "Dies ist eine Art Online-Dienst, der Benutzern über eine API Dienste bereitstellt."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Dies ist ein Onlinedienst, der den Benutzern über einen HTTP-Proxy (zur Datenübertragung) Dienste bereitstellt."
+    "description": "Dies ist eine Art Online-Dienst, der Benutzern über einen HTTP-Proxy (zur Datenübertragung) Dienste bereitstellt."
   },
   "field.credential": {
-    "message": "Anmeldedaten",
-    "description": "Anmeldedaten der Anwendung."
+    "message": "Anmeldeinformationen",
+    "description": "Anwendungsanmeldeinformationen."
   },
   "field.name": {
     "message": "Name",
-    "description": "Name der Anwendung."
+    "description": "Anwendungsname."
   },
   "field.package": {
     "message": "Paket",
-    "description": "Paket repräsentiert verschiedene Preispakete, z. B. 100 US-Dollar für 10000 Punkte, 200 US-Dollar für 20000 Punkte."
+    "description": "Ein Paket repräsentiert verschiedene Preispakete, z.B. 100 US-Dollar für 10000 Punkte, 200 US-Dollar für 20000 Punkte."
   },
   "field.type": {
     "message": "Typ",
-    "description": "Typ der Anwendung."
+    "description": "Anwendungstyp."
   },
   "field.freeAmount": {
     "message": "Kostenlose Menge",
@@ -105,94 +105,94 @@
   },
   "message.alreadyApplied": {
     "message": "Sie haben diesen Dienst bereits beantragt, überprüfen Sie die Konsole",
-    "description": "Meldung, die dem Benutzer angezeigt wird, wenn er diesen Dienst bereits beantragt hat."
+    "description": "Anzeige einer Nachricht an den Benutzer, wenn dieser den Dienst bereits beantragt hat."
   },
   "message.applySuccessfully": {
-    "message": "Erfolgreich beantragt",
-    "description": "Meldung, die dem Benutzer angezeigt wird, wenn die Beantragung dieses Dienstes erfolgreich war."
+    "message": "Erfolgreich angewendet",
+    "description": "Anzeige einer Nachricht an den Benutzer, wenn die Anwendung des Dienstes erfolgreich war."
   },
   "message.notApplied": {
-    "message": "Sie haben diesen Dienst noch nicht beantragt, bitte beantragen Sie ihn vor der Nutzung",
-    "description": "Meldung, die dem Benutzer angezeigt wird, wenn er diesen Dienst noch nicht beantragt hat."
+    "message": "Sie haben diesen Dienst noch nicht beantragt, bitte beantragen Sie ihn, bevor Sie ihn verwenden",
+    "description": "Anzeige einer Nachricht an den Benutzer, wenn dieser den Dienst noch nicht beantragt hat."
   },
   "message.yourApplication": {
-    "message": "Ihr Antrag",
-    "description": "Meldung, die dem Benutzer angezeigt wird, wenn sein Antrag erfolgreich war."
+    "message": "Ihre Bewerbung",
+    "description": "Anzeige einer Nachricht an den Benutzer, wenn es sich um ihre Bewerbung handelt."
   },
   "message.unverified": {
-    "message": "Sie müssen Ihre Identität verifizieren, um diesen Dienst beantragen zu können",
-    "description": "Meldung, die dem Benutzer angezeigt wird, wenn er seine Identität noch nicht verifiziert hat."
+    "message": "Sie müssen Ihre Identität überprüfen, um diesen Dienst beantragen zu können",
+    "description": "Anzeige einer Nachricht an den Benutzer, wenn dieser seine Identität noch nicht überprüft hat."
   },
   "message.goVerify": {
-    "message": "Gehen Sie zur Identitätsverifizierung",
-    "description": "Meldung, die dem Benutzer angezeigt wird, wenn er seine Identität noch nicht verifiziert hat."
+    "message": "Zur Identitätsprüfung gehen",
+    "description": "Anzeige einer Nachricht an den Benutzer, wie er zur Identitätsprüfung gelangt."
   },
   "message.requiredParameter": {
     "message": "Erforderlicher Parameter",
-    "description": "Meldung, die dem Benutzer angezeigt wird, wenn er einen erforderlichen Parameter noch nicht eingegeben hat."
+    "description": "Anzeige einer Nachricht an den Benutzer, wenn ein erforderlicher Parameter fehlt."
   },
   "message.example": {
     "message": "Beispiel",
-    "description": "Meldung, die dem Benutzer angezeigt wird, wenn er einen erforderlichen Parameter noch nicht eingegeben hat."
+    "description": "Anzeige einer Nachricht an den Benutzer, wenn ein erforderlicher Parameter fehlt."
   },
   "message.createCredentialSuccessfully": {
-    "message": "Anmeldedaten erfolgreich erstellt",
-    "description": "Meldung, die dem Benutzer angezeigt wird, wenn die Anmeldedaten erfolgreich erstellt wurden."
+    "message": "Anmeldeinformationen erfolgreich erstellt",
+    "description": "Anzeige einer Nachricht an den Benutzer, wenn die Anmeldeinformationen erfolgreich erstellt wurden."
   },
   "message.readPolicy": {
     "message": "Ich habe die Datenschutzrichtlinie gelesen und stimme zu",
-    "description": "Meldung, die dem Benutzer angezeigt wird, wenn er die Datenschutzrichtlinie gelesen und zugestimmt hat."
+    "description": "Anzeige einer Nachricht an den Benutzer, wenn dieser die Richtlinie gelesen und zugestimmt hat."
   },
   "message.policy": {
-    "message": "Datentechnikdienstnutzungsvereinbarung",
-    "description": "Meldung, die dem Benutzer angezeigt wird, wenn er die Datenschutzrichtlinie gelesen und zugestimmt hat."
+    "message": "Datentechnikdienste Nutzungsvereinbarung",
+    "description": "Anzeige einer Nachricht an den Benutzer, wenn dieser die Richtlinie gelesen und zugestimmt hat."
   },
   "message.notAgreePolicy": {
-    "message": "Sie haben der Datentechnikdienstnutzungsvereinbarung noch nicht zugestimmt",
-    "description": "Meldung, die dem Benutzer angezeigt wird, wenn er der Datenschutzrichtlinie noch nicht zugestimmt hat."
+    "message": "Sie haben der Datentechnikdienste Nutzungsvereinbarung noch nicht zugestimmt",
+    "description": "Anzeige einer Nachricht an den Benutzer, wenn dieser der Richtlinie noch nicht zugestimmt hat."
   },
   "message.confirmApplying": {
-    "message": "Diensteantrag bestätigen",
-    "description": "Meldung, die dem Benutzer angezeigt wird, wenn er die Beantragung eines Dienstes bestätigt."
+    "message": "Bewerbung bestätigen",
+    "description": "Anzeige einer Nachricht an den Benutzer, wenn dieser die Bewerbung bestätigt."
   },
   "message.rotateCredential": {
-    "message": "Anmeldedaten zurücksetzen",
-    "description": "Meldung, die dem Benutzer angezeigt wird, wenn er die Anmeldedaten zurücksetzt."
+    "message": "Anmeldeinformationen zurücksetzen",
+    "description": "Anzeige einer Nachricht an den Benutzer, wenn dieser die Anmeldeinformationen zurücksetzt."
   },
   "message.rotateCredentialConfirm": {
-    "message": "Sind Sie sicher, dass Sie den Schlüssel zurücksetzen möchten? Dies kann nicht rückgängig gemacht werden.",
-    "description": "Wenn der Benutzer das Zurücksetzen des Schlüssels bestätigt, wird dem Benutzer die Nachricht angezeigt."
+    "message": "Sind Sie sicher, dass Sie den Schlüssel zurücksetzen möchten? Der zurückgesetzte Schlüssel kann nicht wiederhergestellt werden.",
+    "description": "Wenn der Benutzer die Zurücksetzung des Schlüssels bestätigt, wird dem Benutzer die angezeigte Nachricht angezeigt."
   },
   "message.idDoesNotExist": {
-    "message": "Anwendung existiert nicht",
-    "description": "Wenn die Anwendung nicht existiert, wird dem Benutzer die Nachricht angezeigt."
+    "message": "App existiert nicht",
+    "description": "Wenn die App nicht existiert, wird dem Benutzer die angezeigte Nachricht angezeigt."
   },
   "message.rotateCredentialSuccessfully": {
     "message": "Schlüssel erfolgreich zurückgesetzt",
-    "description": "Wenn das Zurücksetzen des Schlüssels erfolgreich war, wird dem Benutzer die Nachricht angezeigt."
+    "description": "Wenn der Schlüssel erfolgreich zurückgesetzt wurde, wird dem Benutzer die angezeigte Nachricht angezeigt."
   },
   "message.rotateCredentialFailed": {
-    "message": "Schlüssel zurücksetzen fehlgeschlagen, bitte kontaktieren Sie den Support",
-    "description": "Wenn das Zurücksetzen des Schlüssels fehlgeschlagen ist, wird dem Benutzer die Nachricht angezeigt."
+    "message": "Schlüsselrückstellung fehlgeschlagen, bitte wenden Sie sich an den Support",
+    "description": "Wenn die Schlüsselrückstellung fehlgeschlagen ist, wird dem Benutzer die angezeigte Nachricht angezeigt."
   },
   "message.updateFailed": {
     "message": "Aktualisierung fehlgeschlagen",
-    "description": "Wenn die Aktualisierung fehlgeschlagen ist, wird dem Benutzer die Nachricht angezeigt."
+    "description": "Wenn die Aktualisierung fehlgeschlagen ist, wird dem Benutzer die angezeigte Nachricht angezeigt."
   },
   "message.updateSuccessfully": {
     "message": "Aktualisierung erfolgreich",
-    "description": "Wenn die Aktualisierung erfolgreich war, wird dem Benutzer die Nachricht angezeigt."
+    "description": "Wenn die Aktualisierung erfolgreich war, wird dem Benutzer die angezeigte Nachricht angezeigt."
   },
   "title.buyService": {
     "message": "Service kaufen",
     "description": "Titel der Seite, wenn der Benutzer einen Service kaufen möchte."
   },
   "title.applicationRemainingCount": {
-    "message": "Anzahl der Anwendungen ändern",
+    "message": "Anwendungsanzahl ändern",
     "description": "Titel der Seite, wenn der Benutzer die Anzahl der Anwendungen ändern möchte."
   },
   "title.manageApplication": {
-    "message": "Anwendungsverwaltung",
+    "message": "Anwendung verwalten",
     "description": "Titel der Seite, wenn der Benutzer Anwendungen verwalten möchte."
   }
 }

@@ -5,11 +5,11 @@
   },
   "name.type": {
     "message": "Тип",
-    "description": "Тип садржаја који ће бити у QR коду, као што су 'веза', 'текст' итд."
+    "description": "Тип садржаја QR кода који се генерише, као што су 'Линк' и 'Текст'"
   },
   "name.failure": {
     "message": "Неуспех",
-    "description": "Статус задатка - неуспех"
+    "description": "Статус задатка који је неуспешан"
   },
   "name.failureReason": {
     "message": "Разлог неуспеха",
@@ -20,8 +20,8 @@
     "description": "Статус задатка"
   },
   "name.traceId": {
-    "message": "ИД трага",
-    "description": "ИД трага задатка"
+    "message": "ИД праћења",
+    "description": "ИД праћења задатка"
   },
   "name.size": {
     "message": "Величина",
@@ -40,20 +40,20 @@
     "description": "Семе QR кода који се генерише"
   },
   "name.paddingLevel": {
-    "message": "Ниво попуне",
-    "description": "Ниво попуне QR кода који се генерише"
+    "message": "Ниво попуњавања",
+    "description": "Ниво попуњавања QR кода који се генерише"
   },
   "name.paddingNoise": {
-    "message": "Ниво шума попуне",
-    "description": "Ниво шума попуне QR кода који се генерише"
+    "message": "Бучност попуњавања",
+    "description": "Бучност попуњавања QR кода који се генерише"
   },
   "name.content": {
     "message": "Садржај",
     "description": "Садржај QR кода који се генерише"
   },
   "name.ecl": {
-    "message": "Ниво исправљања грешака",
-    "description": "Ниво исправљања грешака QR кода који се генерише"
+    "message": "Ниво исправке грешака",
+    "description": "Ниво исправке грешака QR кода који се генерише"
   },
   "name.position": {
     "message": "Позиција",
@@ -61,362 +61,326 @@
   },
   "name.prompt": {
     "message": "Упутство",
-    "description": "Упутство за унос садржаја"
+    "description": "Упутства за унос садржаја"
   },
   "name.rotate": {
-    "message": "Ротација",
+    "message": "Ротирање",
     "description": "Ротација QR кода који се генерише"
   },
   "name.advanced": {
     "message": "Напредно",
-    "description": "Напредно конфигурисање QR кода који се генерише"
+    "description": "Напредна поставка QR кода који се генерише"
   },
   "name.aspectRatio": {
-    "message": "Однос структура",
+    "message": "Однос ширине и висине",
     "description": "Однос ширине и висине QR кода који се генерише"
   },
   "name.markerShape": {
     "message": "Облик маркера",
-    "description": "Облик маркера на QR коду који се генерише"
+    "description": "Облик маркера QR кода који се генерише"
   },
   "name.subMarker": {
-    "message": "Подмаркер",
-    "description": "Подмаркер на QR коду који се генерише"
+    "message": "Под-маркер",
+    "description": "Под-маркер QR кода који се генерише"
   },
   "name.qrw": {
-    "message": "Видљивост QR кода",
-    "description": "Назив QR код генератора"
+    "message": "Видљивост к352207243ра QR",
+    "description": "Назив QR генератора"
   },
   "name.steps": {
     "message": "Кораци",
-    "description": "Кораци приликом генерисања QR кода"
+    "description": "Кораци за генерисање QR к352207243ра"
   },
   "name.preset": {
-    "message": "Претходно подешавање",
-    "description": "Претходно подешавање QR кода који се генерише"
+    "message": "Поставка",
+    "description": "Поставка QR кода који се генерише"
   },
   "description.qrw": {
-    "message": "Видљивост QR кода, већа величина QR кода чини га видљивијим",
+    "message": "Видљивост к352207243ра QR кода, што је већа величина, то је QR код више видљив",
     "description": "Опис параметра 'qrw'"
   },
   "description.steps": {
-    "message": "Кораци приликом генерисања QR кода, више корака чини QR код видљивијим",
+    "message": "Кораци за генерисање QR кода, што их има више, QR код је видљивији",
     "description": "Опис параметра 'steps'"
   },
   "placeholder.paddingNoise": {
     "message": "Изаберите...",
-    "description": "Потпис за унос попуне шума"
+    "description": "Местохолдер за унос бучности попуњавања"
   },
   "placeholder.paddingLevel": {
     "message": "Изаберите...",
-    "description": "Потпис за ниво попуне"
+    "description": "Местохолдер за ниво попуњавања"
   },
   "placeholder.prompt": {
-    "message": "Унесите опис за генерисање QR кода",
-    "description": "Текст упутства за унос садржаја"
+    "message": "Унесите опис реченице за генерисање QR кода",
+    "description": "Местохолдер за упутства приликом уноса"
   },
   "placeholder.seed": {
-    "message": "Семе је у опсегу од 1 до 9007199254740991",
-    "description": "Потпис за унос семена"
+    "message": "Семенска вредност од 1 до 9007199254740991",
+    "description": "Местохолдер за унос семенске вредности"
   },
   "placeholder.position": {
     "message": "Изаберите...",
-    "description": "Потпис за унос позиције"
+    "description": "Местохолдер за унос позиције"
   },
   "placeholder.content": {
     "message": "Унесите садржај за генерисање QR кода",
-    "description": "Текст упутства за унос садржаја"
+    "description": "Местохолдер за унос садржаја"
   },
   "placeholder.aspectRatio": {
     "message": "Изаберите...",
-    "description": "Потпис за унос односа структура"
+    "description": "Местохолдер за унос односа ширине и висине"
   },
   "placeholder.preset": {
     "message": "Изаберите...",
-    "description": "Потпис за претходно подешавање"
+    "description": "Местохолдер за унос поставке"
   },
   "placeholder.markerShape": {
     "message": "Изаберите...",
-    "description": "Потпис за унос облика маркера"
+    "description": "Местохолдер за унос облика маркера"
   },
   "placeholder.rotate": {
     "message": "Изаберите...",
-    "description": "Потпис за унос ротације"
+    "description": "Местохолдер за унос ротације"
   },
   "placeholder.subMarker": {
     "message": "Изаберите...",
-    "description": "Потпис за унос подмаркера"
+    "description": "Местохолдер за унос под-маркера"
   },
   "button.generate": {
     "message": "Генериши",
     "description": "Текст на дугмету за генерисање QR кода"
   },
   "preset.sunset": {
-    "message": "Залазак сунца",
-    "description": "Претходно подешавање за стил QR кода"
+    "message": "Заљубљени",
+    "description": "Поставка QR кода - Заљубљени"
   },
   "preset.floral": {
-    "message": "Цвеће",
-    "description": "Претходно подешавање за стил QR кода"
+    "message": "Цветно",
+    "description": "Поставка QR кода - Цветно"
   },
   "preset.snowflakes": {
-    "message": "Снежинке",
-    "description": "Претходно подешавање за стил QR кода"
+    "message": "Снежне пахуљице",
+    "description": "Поставка QR кода - Снежне пахуљице"
   },
   "preset.feathers": {
     "message": "Перје",
-    "description": "Претходно подешавање за стил QR кода"
-  },
-  "preset.raindrops": {
-    "message": "Капи кише",
-    "description": "Претходно подешавање за стил QR кода"
-  },
-  "preset.ultraRealism": {
-    "message": "Ултра реализам",
-    "description": "Претходно подешавање за стил QR кода"
-  },
-  "preset.epicRealms": {
-    "message": "Епско краљевство",
-    "description": "Претходно подешавање за стил QR кода"
-  },
-  "preset.intricateStudio": {
-    "message": "Комплексни студио",
-    "description": "Претходно подешавање за стил QR кода"
-  },
-  "preset.symmetricMasterpiece": {
-    "message": "Симетрично  дело",
-    "description": "Претходно подешавање за стил QR кода"
-  },
-  "preset.luminousHighway": {
-    "message": "Светлуцави пут",
-    "description": "Претходно подешавање за стил QR кода"
-  },
-  "preset.celestialJourney": {
-    "message": "Небески пут",
-    "description": "Претходно подешавање за стил QR кода"
-  },
-  "preset.neonMech": {
-    "message": "Неонска механика",
-    "description": "Претходно подешавање за стил QR кода"
-  },
-  "preset.etherealLowPoly": {
-    "message": "Етерични нискополигонски",
-    "description": "Претходно подешавање за стил QR кода"
+    "description": "Поставка QR кода - Перје"
   },
   "preset.goldenVista": {
     "message": "Златни поглед",
-    "description": "Претходни стил QR кода који ће бити генерисан"
+    "description": "Желјени стил QR кôда за генерисање"
   },
   "preset.cinematicExpanse": {
-    "message": "Кинематички простор",
-    "description": "Претходни стил QR кода који ће бити генерисан"
+    "message": "Филмски простор",
+    "description": "Желјени стил QR кôда за генерисање"
   },
   "preset.cinematicWarm": {
-    "message": "Кинематички топао",
-    "description": "Претходни стил QR кода који ће бити генерисан"
+    "message": "Филмска топлина",
+    "description": "Желјени стил QR кôда за генерисање"
   },
   "preset.desolateWilderness": {
-    "message": "Пуста пустошина",
-    "description": "Претходни стил QR кода који ће бити генерисан"
+    "message": "Пуста дивљина",
+    "description": "Желјени стил QR кôда за генерисање"
   },
   "preset.vibrantPalette": {
-    "message": "Витална палета",
-    "description": "Претходни стил QR кода који ће бити генерисан"
+    "message": "Вибрантна палета",
+    "description": "Желјени стил QR кôда за генерисање"
   },
   "preset.enigmaticJourney": {
-    "message": "Загонетно путовање",
-    "description": "Претходни стил QR кода који ће бити генерисан"
+    "message": "Тајанствен пут",
+    "description": "Желјени стил QR кôда за генерисање"
   },
   "preset.timelessCinematic": {
-    "message": "Вечни кинематограф",
-    "description": "Претходни стил QR кода који ће бити генерисан"
+    "message": "Вечни филм",
+    "description": "Желјени стил QR кôда за генерисање"
   },
   "preset.regalGalaxy": {
     "message": "Краљевска галаксија",
-    "description": "Претходни стил QR кода који ће бити генерисан"
+    "description": "Желјени стил QR кôда за генерисање"
   },
   "preset.illustriousCanvas": {
-    "message": "Илустровано платно",
-    "description": "Претходни стил QR кода који ће бити генерисан"
+    "message": "Славни платно",
+    "description": "Желјени стил QR кôда за генерисање"
   },
   "preset.expressiveMural": {
-    "message": "Изразита фреска",
-    "description": "Претходни стил QR кода који ће бити генерисан"
+    "message": "Изразитивни зидницы",
+    "description": "Желјени стил QR кôда за генерисање"
   },
   "preset.sereneHaze": {
-    "message": "Тиха магла",
-    "description": "Претходни стил QR кода који ће бити генерисан"
+    "message": "Бистра магла",
+    "description": "Желјени стил QR кôда за генерисање"
   },
   "message.promptPlaceholder": {
-    "message": "Унесите опис слике коју треба генерисати, на пример: слатка мачка. Додатни параметри ће прегазити подразумеване поставке.",
-    "description": "Заменски текст у пољу за упутство"
+    "message": "Унесите опис за генерисање слике, на пример: слатка мачка. Додатни параметри ће заменити задате поставке",
+    "description": "Замена у промпту за унос текста"
   },
   "message.uploadReferencesExceed": {
-    "message": "Можете поставити највише 5 слика",
-    "description": "Порука о грешци када се прекорачи максималан број постављених слика"
+    "message": "Можете да отпремите највише 5 слика",
+    "description": "Порука за грешку када је прекорачен број отпремљених слика"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Успешно сте поставили слику",
-    "description": "Порука о успеху када се слика успешно постави"
+    "message": "Успешно отпремљена слика",
+    "description": "Порука о успешном отпремању слике"
   },
   "message.uploadReferencesError": {
-    "message": "Грешка при постављању слике, покушајте поново касније",
-    "description": "Порука о грешци када се слика неуспешно постави"
+    "message": "Грешка у отпремању слике, покушајте поново касније",
+    "description": "Порука о грешци при отпремању слике"
   },
   "message.startingTask": {
     "message": "Покрећем задатак...",
-    "description": "Порука почетка задатка за цртање"
+    "description": "Порука при покретању посла"
   },
   "message.startTaskSuccess": {
     "message": "Успешно покренут задатак за цртање",
-    "description": "Порука успеха када се задатак за цртање успешно покрене"
+    "description": "Порука о успешном покретању задатка за цртање"
   },
   "message.startTaskFailed": {
     "message": "Неуспешно покретање задатка за цртање",
-    "description": "Порука о грешци када се задатак за цртање неуспешно покрене"
+    "description": "Порука о неуспешном покретању задатка за цртање"
   },
   "message.generating": {
-    "message": "Генерисање...",
-    "description": "Порука док се слика генерише"
+    "message": "Генерисање у току...",
+    "description": "Порука за време генерисања слике"
   },
   "message.generateFailed": {
-    "message": "Неуспело генерисање слике",
-    "description": "Порука о грешци када слика неуспешно генерише"
+    "message": "Генерисање слике неуспешно",
+    "description": "Порука о неуспелом генерисању слике"
   },
   "message.noOperations": {
     "message": "Нема доступних операција",
     "description": "Порука када нема доступних операција"
   },
   "message.noTasks": {
-    "message": "Нема задатака, креирајте нови задатак",
+    "message": "Нема задатака, молимо креирајте нови задатак",
     "description": "Порука када нема задатака"
   },
   "markerShape.square": {
     "message": "Квадрат",
-    "description": "Облик маркера који се користи за генерисање QR кода"
+    "description": "Облик маркера за генерисање QR кôда"
   },
   "markerShape.circle": {
     "message": "Круг",
-    "description": "Облик маркера који се користи за генерисање QR кода"
+    "description": "Облик маркера за генерисање QR кôда"
   },
   "markerShape.plus": {
     "message": "Плус",
-    "description": "Облик маркера који се користи за генерисање QR кода"
+    "description": "Облик маркера за генерисање QR кôда"
   },
   "markerShape.box": {
     "message": "Кутија",
-    "description": "Облик маркера који се користи за генерисање QR кода"
+    "description": "Облик маркера за генерисање QR кôда"
   },
   "markerShape.octagon": {
-    "message": "Осмоугаоник",
-    "description": "Облик маркера који се користи за генерисање QR кода"
+    "message": "Осмоугао",
+    "description": "Облик маркера за генерисање QR кôда"
   },
   "markerShape.tinyPlus": {
     "message": "Мали плус",
-    "description": "Облик маркера који се користи за генерисање QR кода"
+    "description": "Облик маркера за генерисање QR кôда"
   },
   "markerShape.random": {
     "message": "Случајно",
-    "description": "Облик маркера који се користи за генерисање QR кода"
+    "description": "Облик маркера за генерисање QR кôда"
   },
   "subMarker.square": {
     "message": "Квадрат",
-    "description": "Облик подмаркера који се користи за генерисање QR кода"
+    "description": "Облик под-маркера за генерисање QR кôда"
   },
   "subMarker.circle": {
     "message": "Круг",
-    "description": "Облик подмаркера који се користи за генерисање QR кода"
+    "description": "Облик под-маркера за генерисање QR кôда"
   },
   "subMarker.plus": {
     "message": "Плус",
-    "description": "Облик подмаркера који се користи за генерисање QR кода"
+    "description": "Облик под-маркера за генерисање QR кôда"
   },
   "subMarker.box": {
     "message": "Кутија",
-    "description": "Облик подмаркера који се користи за генерисање QR кода"
+    "description": "Облик под-маркера за генерисање QR кôда"
   },
   "subMarker.random": {
     "message": "Случајно",
-    "description": "Облик подмаркера који се користи за генерисање QR кода"
+    "description": "Облик под-маркера за генерисање QR кôда"
   },
   "position.center": {
     "message": "Центар",
-    "description": "Позиција за генерисање QR кода"
+    "description": "Позиција за генерисање QR кôда"
   },
   "position.topLeft": {
-    "message": "Горњи леви угао",
-    "description": "Позиција за генерисање QR кода"
+    "message": "Горњи лево",
+    "description": "Позиција за генерисање QR кôда"
   },
   "position.topRight": {
-    "message": "Горњи десни угао",
-    "description": "Позиција за генерисање QR кода"
+    "message": "Горњи десно",
+    "description": "Позиција за генерисање QR кôда"
   },
   "position.bottomLeft": {
-    "message": "Доњи леви угао",
-    "description": "Позиција за генерисање QR кода"
+    "message": "Доњи лево",
+    "description": "Позиција за генерисање QR кôда"
   },
   "position.bottomRight": {
-    "message": "Доњи десни угао",
-    "description": "Позиција за генерисање QR кода"
+    "message": "Доњи десно",
+    "description": "Позиција за генерисање QR кôда"
   },
   "position.top": {
     "message": "Горе",
-    "description": "Позиција за генерисање QR кода"
+    "description": "Позиција за генерисање QR кôда"
   },
   "position.bottom": {
     "message": "Доле",
-    "description": "Позиција за генерисање QR кода"
+    "description": "Позиција за генерисање QR кôда"
   },
   "position.left": {
     "message": "Лево",
-    "description": "Позиција за генерисање QR кода"
+    "description": "Позиција за генерисање QR кôда"
   },
   "position.right": {
     "message": "Десно",
-    "description": "Позиција за генерисање QR кода"
+    "description": "Позиција за генерисање QR кôда"
   },
   "pixelStyle.row": {
-    "message": "Ред",
-    "description": "Стил пиксела који се користи за генерисање QR кода"
+    "message": "Линија",
+    "description": "Стил пиксела за генерисање QR кôда"
   },
   "pixelStyle.column": {
     "message": "Колона",
-    "description": "Стил пиксела који се користи за генерисање QR кода"
+    "description": "Стил пиксела за генерисање QR кôда"
   },
   "pixelStyle.square": {
     "message": "Квадрат",
-    "description": "Стил пиксела који се користи за генерисање QR кода"
+    "description": "Стил пиксела за генерисање QR кôда"
   },
   "pixelStyle.rounded": {
-    "message": "Заобљено",
-    "description": "Стил пиксела који се користи за генерисање QR кода"
+    "message": "Заобљен",
+    "description": "Стил пиксела за генерисање QR кôда"
   },
   "pixelStyle.dot": {
     "message": "Тачка",
-    "description": "Стил пиксела који се користи за генерисање QR кода"
+    "description": "Стил пиксела за генерисање QR кôда"
   },
   "pixelStyle.squircle": {
-    "message": "Квадратић са закруглим ивицама",
-    "description": "Коришћен за генерисање QR кодова пиксел стилом"
+    "message": "Квадратни круг",
+    "description": "Користи се за генерисање QR кода у пиксел стилу"
   },
   "type.text": {
     "message": "Текст",
-    "description": "Коришћено за генерисање QR кода за тип садржаја"
+    "description": "Тип садржаја који се користи за генерисање QR кода"
   },
   "type.link": {
-    "message": "Веза",
-    "description": "Коришћено за генерисање QR кода за тип садржаја"
+    "message": "Линк",
+    "description": "Тип садржаја који се користи за генерисање QR кода"
   },
   "type.email": {
     "message": "Е-пошта",
-    "description": "Коришћено за генерисање QR кода за тип садржаја"
+    "description": "Тип садржаја који се користи за генерисање QR кода"
   },
   "type.phone": {
     "message": "Телефон",
-    "description": "Коришћено за генерисање QR кода за тип садржаја"
+    "description": "Тип садржаја који се користи за генерисање QR кода"
   },
   "type.sms": {
-    "message": "СМС",
-    "description": "Коришћено за генерисање QR кода за тип садржаја"
+    "message": "SMS",
+    "description": "Тип садржаја који се користи за генерисање QR кода"
   }
 }
