@@ -6,6 +6,9 @@
       <div v-if="!collapsed">
         <logo @click="onHome" />
       </div>
+      <div v-else>
+        <logo-tiny @click="onHome" />
+      </div>
       <el-menu v-if="!collapsed" :default-active="activeIndex">
         <el-menu-item
           v-for="(link, linkIndex) in links"
@@ -34,6 +37,10 @@
         <el-menu-item @click="onConsole">
           <font-awesome-icon icon="fa-solid fa-compass" class="mr-2" />
           <template #title>{{ $t('common.nav.console') }}</template>
+        </el-menu-item>
+        <el-menu-item @click="onSite">
+          <font-awesome-icon icon="fa-solid fa-gear" class="mr-2" />
+          <template #title>{{ $t('common.nav.site') }}</template>
         </el-menu-item>
         <el-menu-item v-if="showDistribution" @click="onDistribution">
           <font-awesome-icon icon="fa-solid fa-coins" class="mr-2" />
@@ -114,12 +121,14 @@ import {
 } from '@/router/constants';
 import Chevron from './Chevron.vue';
 import Logo from './Logo.vue';
+import LogoTiny from './LogoTiny.vue';
 
 export default defineComponent({
   name: 'Navigator',
   components: {
     ElButton,
     Logo,
+    LogoTiny,
     DarkSelector,
     ElTooltip,
     LocaleSelector,
@@ -247,7 +256,7 @@ export default defineComponent({
   position: relative;
 
   .el-menu {
-    width: 180px;
+    width: 150px;
     border-right: none;
     background: none;
     .el-menu-item {
@@ -276,6 +285,11 @@ export default defineComponent({
     cursor: pointer;
     margin: 10px auto 20px auto;
     display: block;
+    &.tiny {
+      margin: 0 auto 10px auto;
+      width: 40px;
+      height: 40px;
+    }
   }
 
   .top,

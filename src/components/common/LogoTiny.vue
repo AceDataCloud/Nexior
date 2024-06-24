@@ -1,5 +1,5 @@
 <template>
-  <img :src="url" class="logo" @click="$emit('click')" />
+  <img :src="url" class="logo tiny" @click="$emit('click')" />
 </template>
 
 <script lang="ts">
@@ -13,7 +13,7 @@ export default defineComponent({
       return getCookie('THEME') === 'dark';
     },
     url() {
-      return this.$store.state.site?.logo;
+      return this.$store.state.site?.favicon;
     }
   }
 });
