@@ -1,4 +1,4 @@
-## Nexior 在 Vercel 上的部署
+# Nexior 在 Vercel 上的部署
 
 本文章会介绍 Nexior 项目在 Vercel 上的部署流程，无需任何编程技巧即可几分钟部署一套属于自己的 AI 站点，并轻松利用该站点获取收益。
 
