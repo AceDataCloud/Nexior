@@ -211,7 +211,7 @@ export default defineComponent({
       return this.$store.state.midjourney.application;
     },
     mode() {
-      switch (this.modelValue?.mode) {
+      switch (this.modelValue?.request?.mode) {
         case MidjourneyImagineMode.FAST:
           return MIDJOURNEY_MODE_FAST;
         case MidjourneyImagineMode.TURBO:

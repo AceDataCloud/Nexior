@@ -61,7 +61,7 @@
             <el-row v-if="order?.state === OrderState.PENDING || order?.state === OrderState.FAILED">
               <el-col :span="14" :offset="5">
                 <el-divider border-style="dashed" />
-                <div v-if="order.price && order.price > 0 && !order.pay_way" class="payways mb-6">
+                <div v-if="showPayWays && order.price && order.price > 0 && !order.pay_way" class="payways mb-6">
                   <div
                     v-if="true"
                     :class="{
@@ -156,6 +156,7 @@ interface IData {
   order: IOrder | undefined;
   loading: boolean;
   paying: boolean;
+  showPayWays: boolean;
   prepaying: boolean;
   applicationType: typeof IApplicationType;
 }
@@ -178,9 +179,10 @@ export default defineComponent({
   data(): IData {
     return {
       PayWay: PayWay,
-      payWay: PayWay.WechatPay,
+      payWay: PayWay.Stripe,
       OrderState: OrderState,
       order: undefined,
+      showPayWays: false,
       loading: false,
       paying: false,
       prepaying: false,

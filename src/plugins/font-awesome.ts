@@ -10,6 +10,7 @@ import {
 import { faDiscord as faBrandsDiscord } from '@fortawesome/free-brands-svg-icons';
 import {
   faLaptopCode as faSolidLaptopCode,
+  faOutdent as faSolidOutdent,
   faChevronRight as faSolidChevronRight,
   faMoon as faSolidMoon,
   faFan as faSolidFan,
@@ -67,6 +68,7 @@ import {
 library.add(faRegularCopy);
 library.add(faSolidAngleDown);
 library.add(faSolidStore);
+library.add(faSolidOutdent);
 library.add(faSolidChevronRight);
 library.add(faSolidPlaneDeparture);
 library.add(faSolidCube);

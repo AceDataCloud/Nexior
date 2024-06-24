@@ -190,7 +190,6 @@ export default defineComponent({
   padding: 10px;
   width: 250px;
   height: 100%;
-  border-right: 1px solid var(--el-border-color);
 
   @media (max-width: 767px) {
     border-right: none;

@@ -8,7 +8,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Navigator from '@/components/common/Navigator.vue';
-
 export default defineComponent({
   name: 'LayoutMain',
   components: {
