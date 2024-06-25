@@ -5,7 +5,6 @@
     </template>
     <template #operation>
       <div class="top">
-        <mode-selector class="mb-4" />
         <application-status
           :initializing="initializing"
           :application="application"
@@ -14,21 +13,23 @@
           class="mb-4"
           @refresh="onGetApplication"
         />
-        <reference-image class="mb-4" @change="references = $event" />
-        <prompt-input v-model="prompt" class="mb-4" />
-        <elements-selector v-model="elements" :advanced="preset?.advanced" class="mb-4" />
-        <ignore-selector v-if="preset?.advanced" v-model="ignore" class="mb-4" />
-        <final-prompt v-if="finalPrompt" :model-value="finalPrompt" />
+        <task-list @custom="onCustom" @refresh="onGetApplication" />
       </div>
       <div class="bottom">
-        <el-button type="primary" round class="btn btn-generate" :disabled="!finalPrompt" @click="onGenerate">
-          <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
-          {{ $t('midjourney.button.generate') }}
-        </el-button>
+        <el-card v-show="operating" class="operations">
+          <reference-image class="mb-4" @change="references = $event" />
+          <elements-selector v-model="elements" :advanced="preset?.advanced" class="mb-4" />
+          <ignore-selector v-if="preset?.advanced" v-model="ignore" class="mb-4" />
+          <final-prompt v-if="finalPrompt" :model-value="finalPrompt" />
+        </el-card>
+        <input-box
+          :prompt="prompt"
+          class="mb-4"
+          @operate="operating = !operating"
+          @update:prompt="prompt = $event"
+          @submit="onGenerate"
+        />
       </div>
-    </template>
-    <template #results>
-      <task-brief-list @custom="onCustom" @refresh="onGetApplication" />
     </template>
   </layout>
 </template>
@@ -37,15 +38,13 @@
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Midjourney.vue';
 import PresetPanel from '@/components/midjourney/PresetPanel.vue';
-import PromptInput from '@/components/midjourney/PromptInput.vue';
 import ElementsSelector from '@/components/midjourney/ElementsSelector.vue';
 import IgnoreSelector from '@/components/midjourney/IgnoreSelector.vue';
-import { ElButton, ElMessage } from 'element-plus';
-import ModeSelector from '@/components/midjourney/ModeSelector.vue';
+import { ElMessage, ElCard } from 'element-plus';
 import ReferenceImage from '@/components/midjourney/ReferenceImage.vue';
 import { applicationOperator, midjourneyOperator } from '@/operators';
 import ApplicationStatus from '@/components/application/Status.vue';
-import TaskBriefList from '@/components/midjourney/tasks/TaskBriefList.vue';
+import TaskList from '@/components/midjourney/tasks/TaskList.vue';
 import FinalPrompt from '@/components/midjourney/FinalPrompt.vue';
 import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
 import { MidjourneyImagineMode, Status } from '@/models';
@@ -56,13 +55,14 @@ import {
   MIDJOURNEY_DEFAULT_STYLIZE,
   MIDJOURNEY_DEFAULT_WIRED
 } from '@/constants';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import InputBox from '@/components/midjourney/InputBox.vue';
 
 interface IData {
   prompt: string;
   elements: string[];
   ignore: string;
   references: string[];
+  operating: boolean;
 }
 
 const CALLBACK_URL = 'https://webhook.acedata.cloud/midjourney';
@@ -70,16 +70,14 @@ const CALLBACK_URL = 'https://webhook.acedata.cloud/midjourney';
 export default defineComponent({
   name: 'MidjourneyIndex',
   components: {
-    ModeSelector,
+    ElCard,
     ReferenceImage,
-    FontAwesomeIcon,
     PresetPanel,
-    PromptInput,
+    InputBox,
     ElementsSelector,
     IgnoreSelector,
-    ElButton,
     ApplicationStatus,
-    TaskBriefList,
+    TaskList,
     FinalPrompt,
     Layout
   },
@@ -88,7 +86,8 @@ export default defineComponent({
       prompt: '',
       elements: [],
       ignore: '',
-      references: []
+      references: [],
+      operating: false
     };
   },
   computed: {
@@ -234,7 +233,10 @@ export default defineComponent({
         translation: this.preset?.translation,
         callback_url: CALLBACK_URL
       };
-      this.onStartTask(request);
+      await this.onStartTask(request);
+      this.prompt = '';
+      this.elements = [];
+      this.references = [];
     }
   }
 });
@@ -243,16 +245,27 @@ export default defineComponent({
 <style lang="scss" scoped>
 .top {
   flex: 1;
-  height: calc(100% - 40px);
-  margin-bottom: 5px;
+  height: calc(100% - 50px);
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
 }
 .bottom {
-  height: 40px;
+  height: 50px;
   width: 100%;
+  position: relative;
   .btn {
     height: 40px;
     width: 100%;
+  }
+  .operations {
+    position: absolute;
+    width: 100%;
+    height: 50vh;
+    max-height: 500px;
+    bottom: 50px;
+    left: 0;
   }
 }
 </style>

@@ -1,109 +1,101 @@
 <template>
-  <div class="preview">
-    <div class="info mb-4">
-      <div class="left">
-        <el-tag v-if="modelValue?.response?.success === true" type="success">
-          {{ $t('midjourney.button.success') }}
-        </el-tag>
-        <el-tag v-if="modelValue?.response?.success === false" type="danger">
-          {{ $t('midjourney.button.failed') }}
-        </el-tag>
-        <el-tag v-if="!modelValue?.response" type="info">
-          {{ $t('midjourney.button.generating') }}
-        </el-tag>
+  <div class="item">
+    <div class="left">
+      <el-image src="https://cdn.acedata.cloud/05daz4.png" class="avatar" />
+    </div>
+    <div class="preview">
+      <div class="bot">
+        {{ $t('midjourney.name.midjourneyBot') }}
+        <span class="datetime">
+          {{ $dayjs.format('' + new Date(parseFloat(modelValue?.created_at || '') * 1000)) }}
+        </span>
       </div>
-      <div class="right">
-        <el-tag v-if="mode" type="info" class="channel">
-          <font-awesome-icon :class="{ icon: true, [mode.name]: true }" :icon="mode.icon" />
-          {{ mode?.getDisplayName() }}
-        </el-tag>
+      <div class="info">
+        <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
+          {{ modelValue?.request?.prompt }}
+          <span v-if="!modelValue?.response"> - ({{ $t('midjourney.status.pending') }}) </span>
+          <span v-if="modelValue?.response?.progress !== undefined && modelValue?.response?.progress !== 100">
+            - ({{ modelValue?.response?.progress }}%)
+          </span>
+          <span>({{ mode?.getDisplayName() }})</span>
+        </p>
+        <p v-if="modelValue?.request?.image_id" class="prompt mt-2">
+          {{ modelValue?.request?.image_id }} - {{ modelValue?.request?.action }}
+          <span v-if="!modelValue?.response"> - ({{ $t('midjourney.status.pending') }}) </span>
+          <span>({{ mode?.getDisplayName() }})</span>
+        </p>
       </div>
-    </div>
-    <div class="extra">
-      <p v-if="modelValue?.request?.prompt" class="prompt">
-        <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
-        {{ modelValue?.request?.prompt }}
-      </p>
-    </div>
-    <div v-if="!modelValue?.response" :class="{ content: true, full: !!full }">
-      <el-image class="image">
-        <template #error>
-          <div class="image-slot">{{ $t('midjourney.message.generating') }}</div>
-        </template>
-      </el-image>
-    </div>
-    <div
-      v-else-if="modelValue?.response.success === false"
-      :class="{ content: true, full: full, failed: true, 'p-2': true }"
-    >
-      <el-alert :closable="false">
-        <template #template>
-          <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
-          {{ $t('midjourney.field.failure') }}
-        </template>
-        <p class="description">
-          <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
-          {{ $t('midjourney.field.failureReason') }}:
-          {{ modelValue?.response?.error?.message }}
-          <copy-to-clipboard :content="modelValue?.response?.error?.message!" class="btn-copy" />
-        </p>
-        <p class="description">
-          <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
-          {{ $t('midjourney.field.traceId') }}:
-          {{ modelValue?.response?.trace_id }}
-          <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy" />
-        </p>
-      </el-alert>
-    </div>
-    <div v-else :class="{ content: true, full: full }">
-      <el-image
-        v-if="modelValue?.response?.image_url"
-        :src="modelValue?.response?.image_url"
-        :preview-src-list="[modelValue?.response?.raw_image_url as string]"
-        fit="contain"
-        class="image"
-        :lazy="true"
-        @error="onReload($event)"
-      />
-      <p v-if="modelValue?.response?.progress !== undefined && modelValue?.response?.progress !== 100" class="progress">
-        {{ modelValue?.response?.progress }}%
-      </p>
-    </div>
-    <div v-if="modelValue?.response?.actions" :class="{ operations: true, full }">
-      <el-tooltip
-        v-for="(action, actionKey) in modelValue?.response?.actions"
-        :key="actionKey"
-        class="box-item"
-        effect="dark"
-        :content="descriptionMapping[action]"
-        placement="top-start"
-      >
-        <el-button v-show="actionMapping[action]" type="info" size="small" class="btn-action" @click="onCustom(action)">
-          {{ actionMapping[action] }}
-        </el-button>
-      </el-tooltip>
-    </div>
-    <div v-else-if="!modelValue?.response" v-show="full" :class="{ operations: true, full }">
-      <el-skeleton :rows="1" />
-    </div>
-    <div v-else v-show="full" :class="{ operations: true, full }">
-      <p>
-        {{ $t('midjourney.message.noOperations') }}
-      </p>
-    </div>
-    <div class="extra">
-      <p v-if="modelValue?.created_at" class="datetime">
-        <font-awesome-icon icon="fa-regular fa-clock" class="mr-1" />
-        {{ $dayjs.format('' + new Date(parseFloat(modelValue?.created_at) * 1000)) }}
-      </p>
-      <p class="description">{{ $t('midjourney.field.taskId') }}: {{ modelValue?.id }}</p>
+      <div v-if="modelValue?.response?.success === false" :class="{ content: true, full: full, failed: true }">
+        <el-alert :closable="false" class="failure">
+          <p class="description">
+            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            {{ $t('midjourney.field.taskId') }}:
+            {{ modelValue?.id }}
+            <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
+          </p>
+          <p class="description">
+            <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
+            {{ $t('midjourney.field.failureReason') }}:
+            {{ modelValue?.response?.error?.message }}
+            <copy-to-clipboard :content="modelValue?.response?.error?.message!" class="btn-copy" />
+          </p>
+          <p class="description">
+            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            {{ $t('midjourney.field.traceId') }}:
+            {{ modelValue?.response?.trace_id }}
+            <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy" />
+          </p>
+        </el-alert>
+      </div>
+      <div v-else :class="{ content: true, full: full }">
+        <el-image
+          v-if="modelValue?.response?.image_url"
+          :src="modelValue?.response?.image_url"
+          :preview-src-list="[modelValue?.response?.raw_image_url as string]"
+          fit="contain"
+          class="image"
+          :lazy="true"
+          @error="onReload($event)"
+        />
+      </div>
+      <div v-if="modelValue?.response?.actions" :class="{ operations: true, full }">
+        <el-tooltip
+          v-for="(action, actionKey) in modelValue?.response?.actions"
+          :key="actionKey"
+          class="box-item"
+          effect="dark"
+          :content="descriptionMapping[action]"
+          placement="top-start"
+        >
+          <el-button
+            v-show="actionMapping[action]"
+            type="info"
+            size="small"
+            class="btn-action"
+            @click="onCustom(action)"
+          >
+            {{ actionMapping[action] }}
+          </el-button>
+        </el-tooltip>
+        <el-alert :closable="false" class="mt-2 success">
+          <p class="description">
+            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            {{ $t('midjourney.field.taskId') }}:
+            {{ modelValue?.id }}
+            <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
+          </p>
+        </el-alert>
+      </div>
+      <div v-else-if="!modelValue?.response" v-show="full" :class="{ operations: true, full }">
+        <el-skeleton :rows="1" />
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElTag, ElButton, ElTooltip, ElSkeleton, ElAlert } from 'element-plus';
+import { ElImage, ElButton, ElTooltip, ElSkeleton, ElAlert } from 'element-plus';
 import {
   IMidjourneyImagineTask,
   MidjourneyImagineAction,
@@ -124,7 +116,6 @@ export default defineComponent({
   name: 'TaskPreview',
   components: {
     ElImage,
-    ElTag,
     ElButton,
     FontAwesomeIcon,
     ElTooltip,
@@ -255,62 +246,67 @@ export default defineComponent({
       link.href = url;
       link.download = url.split('/').pop() as string;
       link.click();
-    },
-    getModeIcon(mode: MidjourneyImagineMode): string | undefined {
-      switch (mode) {
-        case MidjourneyImagineMode.FAST:
-          return MIDJOURNEY_MODE_FAST.icon;
-        case MidjourneyImagineMode.TURBO:
-          return MIDJOURNEY_MODE_TURBO.icon;
-        case MidjourneyImagineMode.RELAX:
-          return MIDJOURNEY_MODE_RELAX.icon;
-      }
     }
   }
 });
 </script>
 
 <style lang="scss" scoped>
-.preview {
-  width: 350px;
-  padding: 15px;
+$left-width: 70px;
+.item {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 20px;
-  margin-bottom: 20px;
-  border: 1px solid var(--el-border-color);
-
-  .description {
-    font-size: 12px;
-    color: var(--el-text-color-regular);
-    margin-bottom: 10px;
+  flex-direction: row;
+  .left {
+    width: $left-width;
+    .avatar {
+      background-color: white;
+      padding: 8px;
+      width: 50px;
+      height: 50px;
+      margin: 10px;
+      border-radius: 50%;
+    }
   }
-
-  .info {
+  .preview {
+    flex: 1;
+    width: calc(100% - $left-width);
+    padding: 0 10px;
     display: flex;
-    flex-direction: row;
-    justify-content: stretch;
-    width: 100%;
+    flex-direction: column;
 
-    .left {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      flex: 1;
+    .bot {
+      font-size: 16px;
+      font-weight: bold;
+      color: rgb(46, 204, 113);
+      margin-bottom: 0;
+      margin-top: 0;
+      .datetime {
+        font-size: 12px;
+        font-weight: normal;
+        color: var(--el-text-color-secondary);
+        margin-left: 10px;
+      }
     }
 
-    .right {
+    .description {
+      font-size: 12px;
+      color: var(--el-text-color-regular);
+      margin-bottom: 10px;
+    }
+
+    .info {
       display: flex;
       flex-direction: row;
-      justify-content: flex-end;
-      flex: 1;
+      width: 100%;
 
-      .btn {
-        cursor: pointer;
+      .prompt {
+        font-size: 14px;
+        font-weight: bold;
+        color: var(--el-text-color-regular);
+        margin-bottom: 10px;
       }
 
-      .channel {
+      .mode {
         .icon {
           display: inline-block;
           margin-right: 2px;
@@ -326,82 +322,81 @@ export default defineComponent({
         }
       }
     }
-  }
-  .content {
-    width: 100%;
-    position: relative;
-    margin-bottom: 10px;
-    &.full {
-      height: 220px;
-      display: flex;
-      align-items: center;
-      .image {
-        min-height: 200px;
-      }
-    }
-    &.failed {
-      .image {
-        .image-slot {
-          font-size: 16px;
-          padding: 20px;
+
+    .content {
+      width: 100%;
+      position: relative;
+      margin-bottom: 10px;
+      &.full {
+        height: 220px;
+        display: flex;
+        align-items: center;
+        .image {
+          min-height: 200px;
         }
       }
-    }
-    .image {
-      width: 100%;
-      height: 100%;
-      min-height: 100px;
-      .image-slot {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        background: var(--el-fill-color-light);
-        color: var(--el-text-color-regular);
+      &.failed {
+        .image {
+          .image-slot {
+            font-size: 16px;
+            padding: 20px;
+          }
+        }
+      }
+      .image {
+        height: 350px;
+        .image-slot {
+          display: flex;
+          justify-content: left;
+          width: 100%;
+          height: 100%;
+          background: var(--el-fill-color-light);
+          color: var(--el-text-color-regular);
+        }
+      }
+      .progress {
+        position: absolute;
+        top: 49%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 0 0 5px black;
       }
     }
-    .progress {
-      position: absolute;
-      top: 49%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 20px;
-      font-weight: bold;
-      color: white;
-      text-shadow: 0 0 5px black;
-    }
-  }
 
-  .operations {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    width: 100%;
-    align-items: baseline;
-    flex-wrap: wrap;
-    overflow: hidden;
-    text-align: center;
-    color: var(--el-text-color-regular);
-    font-size: 14px;
-    overflow-y: scroll;
-
-    &.full {
-      height: 70px;
+    .el-alert {
+      border-left-width: 2px;
+      border-left-style: solid;
+      &.failure {
+        border-color: var(--el-color-danger);
+      }
+      &.success {
+        border-color: var(--el-color-success);
+      }
     }
 
-    .btn-action {
-      margin-bottom: 10px;
-    }
-  }
-
-  .extra {
-    text-align: center;
-    .datetime,
-    .prompt {
-      font-size: 12px;
+    .operations {
+      display: flex;
+      justify-content: left;
+      flex-direction: row;
+      width: 100%;
+      align-items: baseline;
+      flex-wrap: wrap;
+      overflow: hidden;
+      text-align: center;
       color: var(--el-text-color-regular);
-      margin-bottom: 5px;
+      font-size: 14px;
+      overflow-y: scroll;
+
+      &.full {
+        height: 70px;
+      }
+
+      .btn-action {
+        margin-bottom: 10px;
+      }
     }
   }
 }

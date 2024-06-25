@@ -6,9 +6,6 @@
     <div class="operation">
       <slot name="operation" />
     </div>
-    <div class="results">
-      <slot name="results" />
-    </div>
     <el-button round class="menu" @click="drawer = true">
       <font-awesome-icon icon="fa-solid fa-gear" class="icon-menu" />
     </el-button>
