@@ -1,8 +1,21 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Mon, 17 Jun 2024 16:58:12 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jun 2024 03:01:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.7.0
+
+Tue, 25 Jun 2024 03:01:07 GMT
+
+### Minor changes
+
+- Add a navbar on top (office@acedata.cloud)
+- bump version (office@acedata.cloud)
+
+### Patches
+
+- update support info (office@acedata.cloud)
 
 ## 1.5.5
 
