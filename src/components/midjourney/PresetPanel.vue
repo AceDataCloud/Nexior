@@ -2,9 +2,9 @@
   <div class="panel">
     <model-selector class="mb-4" />
     <ratio-selector class="mb-4" />
+    <mode-selector class="mb-4" />
     <quality-selector class="mb-4" />
     <version-selector class="mb-4" />
-    <translation-selector class="mb-4" />
     <advanced-selector class="mb-4" />
     <stylize-selector v-if="preset.advanced" class="mb-4" />
     <weird-selector v-if="preset.advanced" class="mb-4" />
@@ -25,13 +25,14 @@ import QualitySelector from './preset/QualitySelector.vue';
 import ImageWeightSelector from './preset/ImageWeightSelector.vue';
 import WeirdSelector from './preset/WeirdSelector.vue';
 import AdvancedSelector from './preset/AdvancedSelector.vue';
-import TranslationSelector from './preset/TranslationSelector.vue';
 import StyleSelector from './preset/StyleSelector.vue';
+import ModeSelector from './preset/ModeSelector.vue';
 
 export default defineComponent({
   name: 'PresetPanel',
   components: {
     ModelSelector,
+    ModeSelector,
     StyleSelector,
     QualitySelector,
     RatioSelector,
@@ -40,8 +41,7 @@ export default defineComponent({
     ChaosSelector,
     WeirdSelector,
     AdvancedSelector,
-    ImageWeightSelector,
-    TranslationSelector
+    ImageWeightSelector
   },
   computed: {
     preset() {

@@ -1,4 +1,4 @@
-import { IApplication, ICredential, IMidjourneyMode, IMidjourneyPreset, IService } from '@/models';
+import { IApplication, ICredential, IMidjourneyPreset, IService } from '@/models';
 import { IMidjourneyState } from './models';
 
 export const resetAll = (state: IMidjourneyState): void => {
@@ -23,10 +23,6 @@ export const setPreset = (state: IMidjourneyState, payload: IMidjourneyPreset): 
   state.preset = payload;
 };
 
-export const setMode = (state: IMidjourneyState, payload: IMidjourneyMode): void => {
-  state.mode = payload;
-};
-
 export const setImagineTasks = (state: IMidjourneyState, payload: any): void => {
   state.imagineTasks = payload;
 };
@@ -40,7 +36,6 @@ export default {
   setPreset,
   setCredential,
   setService,
-  setMode,
   setImagineTasks,
   setImagineTasksTotal,
   resetAll

@@ -47,13 +47,15 @@ import ApplicationStatus from '@/components/application/Status.vue';
 import TaskList from '@/components/midjourney/tasks/TaskList.vue';
 import FinalPrompt from '@/components/midjourney/FinalPrompt.vue';
 import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
-import { MidjourneyImagineMode, Status } from '@/models';
+import { Status } from '@/models';
 import { IMidjourneyImagineRequest, IApplicationDetailResponse, MidjourneyImagineAction } from '@/models';
 import {
   MIDJOURNEY_DEFAULT_IMAGE_WEIGHT,
   MIDJOURNEY_DEFAULT_RATIO,
   MIDJOURNEY_DEFAULT_STYLIZE,
-  MIDJOURNEY_DEFAULT_WIRED
+  MIDJOURNEY_DEFAULT_WIRED,
+  MIDJOURNEY_DEFAULT_MODE,
+  MIDJOURNEY_DEFAULT_QUALITY
 } from '@/constants';
 import InputBox from '@/components/midjourney/InputBox.vue';
 
@@ -94,9 +96,6 @@ export default defineComponent({
     service() {
       return this.$store.state.midjourney.service;
     },
-    mode() {
-      return this.$store.state.midjourney.mode;
-    },
     credential() {
       return this.$store.state.midjourney.credential;
     },
@@ -132,7 +131,12 @@ export default defineComponent({
       if (this.preset?.chaos && this.preset?.advanced && !content.includes(`--chaos `)) {
         content += ` --chaos ${this.preset.chaos}`;
       }
-      if (this.preset?.quality && !content.includes(`--quality `) && !content.includes(`--q `)) {
+      if (
+        this.preset?.quality &&
+        !content.includes(`--quality `) &&
+        !content.includes(`--q `) &&
+        this.preset?.quality !== MIDJOURNEY_DEFAULT_QUALITY
+      ) {
         content += ` --quality ${this.preset.quality}`;
       }
       if (
@@ -175,6 +179,8 @@ export default defineComponent({
       if (this.preset?.style && this.preset?.advanced && !content.includes(`--style`)) {
         content += ` --style ${this.preset?.style}`;
       }
+      // remove `--fast`, `--relax`, `--turbo`
+      content = content.replace(/--(fast|relax|turbo) /g, '');
       return this.prompt || this.references?.length > 0 ? content : '';
     }
   },
@@ -220,14 +226,14 @@ export default defineComponent({
       const request = {
         image_id: payload.image_id,
         action: payload.action,
-        mode: this.mode.name as MidjourneyImagineMode,
+        mode: this.preset?.mode || MIDJOURNEY_DEFAULT_MODE,
         callback_url: CALLBACK_URL
       };
       this.onStartTask(request);
     },
     async onGenerate() {
       const request = {
-        mode: this.mode.name as MidjourneyImagineMode,
+        mode: this.preset?.mode || MIDJOURNEY_DEFAULT_MODE,
         prompt: this.finalPrompt,
         action: MidjourneyImagineAction.GENERATE,
         translation: this.preset?.translation,
@@ -237,6 +243,13 @@ export default defineComponent({
       this.prompt = '';
       this.elements = [];
       this.references = [];
+    },
+    async onScrollDown() {
+      // scroll to bottom for `.tasks`
+      const el = document.querySelector('.tasks');
+      if (el) {
+        el.scrollTop = el.scrollHeight;
+      }
     }
   }
 });

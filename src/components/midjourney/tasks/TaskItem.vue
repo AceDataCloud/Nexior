@@ -17,14 +17,15 @@
           <span v-if="modelValue?.response?.progress !== undefined && modelValue?.response?.progress !== 100">
             - ({{ modelValue?.response?.progress }}%)
           </span>
-          <span>({{ mode?.getDisplayName() }})</span>
+          <span>({{ modelValue?.request?.mode }})</span>
         </p>
         <p v-if="modelValue?.request?.image_id" class="prompt mt-2">
           {{ modelValue?.request?.image_id }} - {{ modelValue?.request?.action }}
           <span v-if="!modelValue?.response"> - ({{ $t('midjourney.status.pending') }}) </span>
-          <span>({{ mode?.getDisplayName() }})</span>
+          <span>({{ modelValue?.request?.mode }})</span>
         </p>
       </div>
+      <!-- response error -->
       <div v-if="modelValue?.response?.success === false" :class="{ content: true, full: full, failed: true }">
         <el-alert :closable="false" class="failure">
           <p class="description">
@@ -47,7 +48,8 @@
           </p>
         </el-alert>
       </div>
-      <div v-else :class="{ content: true, full: full }">
+      <!-- response success -->
+      <div v-if="modelValue?.response?.success === true" :class="{ content: true, full: full }">
         <el-image
           v-if="modelValue?.response?.image_url"
           :src="modelValue?.response?.image_url"
@@ -57,27 +59,44 @@
           :lazy="true"
           @error="onReload($event)"
         />
-      </div>
-      <div v-if="modelValue?.response?.actions" :class="{ operations: true, full }">
-        <el-tooltip
-          v-for="(action, actionKey) in modelValue?.response?.actions"
-          :key="actionKey"
-          class="box-item"
-          effect="dark"
-          :content="descriptionMapping[action]"
-          placement="top-start"
-        >
-          <el-button
-            v-show="actionMapping[action]"
-            type="info"
-            size="small"
-            class="btn-action"
-            @click="onCustom(action)"
+        <div v-if="modelValue?.response?.actions" :class="{ operations: true, full, 'mt-2': true }">
+          <el-tooltip
+            v-for="(action, actionKey) in modelValue?.response?.actions"
+            :key="actionKey"
+            class="box-item"
+            effect="dark"
+            :content="descriptionMapping[action]"
+            placement="top-start"
           >
-            {{ actionMapping[action] }}
-          </el-button>
-        </el-tooltip>
-        <el-alert :closable="false" class="mt-2 success">
+            <el-button
+              v-show="actionMapping[action]"
+              type="info"
+              size="small"
+              class="btn-action"
+              @click="onCustom(action)"
+            >
+              {{ actionMapping[action] }}
+            </el-button>
+          </el-tooltip>
+          <el-alert :closable="false" class="mt-2 success">
+            <p class="description">
+              <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+              {{ $t('midjourney.field.taskId') }}:
+              {{ modelValue?.id }}
+              <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
+            </p>
+            <p class="description">
+              <font-awesome-icon icon="fa-solid fa-image" class="mr-1" />
+              {{ $t('midjourney.field.imageId') }}:
+              {{ modelValue?.response?.image_id }}
+              <copy-to-clipboard :content="modelValue?.response?.image_id" class="btn-copy" />
+            </p>
+          </el-alert>
+        </div>
+      </div>
+      <!-- response pending -->
+      <div v-if="!modelValue?.response">
+        <el-alert :closable="false" class="mt-2 info">
           <p class="description">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('midjourney.field.taskId') }}:
@@ -86,25 +105,16 @@
           </p>
         </el-alert>
       </div>
-      <div v-else-if="!modelValue?.response" v-show="full" :class="{ operations: true, full }">
-        <el-skeleton :rows="1" />
-      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElButton, ElTooltip, ElSkeleton, ElAlert } from 'element-plus';
-import {
-  IMidjourneyImagineTask,
-  MidjourneyImagineAction,
-  MidjourneyImagineMode,
-  MidjourneyImagineState
-} from '@/models';
+import { ElImage, ElButton, ElTooltip, ElAlert } from 'element-plus';
+import { IMidjourneyImagineTask, MidjourneyImagineAction, MidjourneyImagineState } from '@/models';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { MIDJOURNEY_MODE_FAST, MIDJOURNEY_MODE_RELAX, MIDJOURNEY_MODE_TURBO } from '@/constants';
 
 interface IData {
   midjourneyImagineState: typeof MidjourneyImagineState;
@@ -119,7 +129,6 @@ export default defineComponent({
     ElButton,
     FontAwesomeIcon,
     ElTooltip,
-    ElSkeleton,
     ElAlert,
     CopyToClipboard
   },
@@ -200,18 +209,6 @@ export default defineComponent({
   computed: {
     application() {
       return this.$store.state.midjourney.application;
-    },
-    mode() {
-      switch (this.modelValue?.request?.mode) {
-        case MidjourneyImagineMode.FAST:
-          return MIDJOURNEY_MODE_FAST;
-        case MidjourneyImagineMode.TURBO:
-          return MIDJOURNEY_MODE_TURBO;
-        case MidjourneyImagineMode.RELAX:
-          return MIDJOURNEY_MODE_RELAX;
-        default:
-          return undefined;
-      }
     }
   },
   methods: {
@@ -270,7 +267,7 @@ $left-width: 70px;
   .preview {
     flex: 1;
     width: calc(100% - $left-width);
-    padding: 0 10px;
+    padding: 10px 10px 0 10px;
     display: flex;
     flex-direction: column;
 
@@ -292,6 +289,7 @@ $left-width: 70px;
       font-size: 12px;
       color: var(--el-text-color-regular);
       margin-bottom: 10px;
+      text-align: left;
     }
 
     .info {
@@ -374,6 +372,9 @@ $left-width: 70px;
       }
       &.success {
         border-color: var(--el-color-success);
+      }
+      &.info {
+        border-color: var(--el-color-info);
       }
     }
 

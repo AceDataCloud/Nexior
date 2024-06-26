@@ -1,12 +1,4 @@
-import {
-  IApplication,
-  ICredential,
-  IMidjourneyImagineTask,
-  IMidjourneyMode,
-  IMidjourneyPreset,
-  IService,
-  Status
-} from '@/models';
+import { IApplication, ICredential, IMidjourneyImagineTask, IMidjourneyPreset, IService, Status } from '@/models';
 
 export interface IMidjourneyState {
   service: IService | undefined;
@@ -15,7 +7,6 @@ export interface IMidjourneyState {
   imagineTasksTotal: number | undefined;
   credential: ICredential | undefined;
   preset: IMidjourneyPreset;
-  mode: IMidjourneyMode;
   status: {
     getService: Status;
     getApplication: Status;

@@ -3,14 +3,7 @@ import { IMidjourneyState } from './models';
 import { ActionContext } from 'vuex';
 import { log } from '@/utils/log';
 import { IRootState } from '../common/models';
-import {
-  IApplication,
-  ICredential,
-  IMidjourneyImagineTask,
-  IMidjourneyMode,
-  IMidjourneyPreset,
-  IService
-} from '@/models';
+import { IApplication, ICredential, IMidjourneyImagineTask, IMidjourneyPreset, IService } from '@/models';
 import { Status } from '@/models/common';
 import { MIDJOURNEY_SERVICE_ID } from '@/constants';
 
@@ -27,7 +20,7 @@ export const setPreset = ({ commit }: any, payload: IMidjourneyPreset) => {
   commit('setPreset', payload);
 };
 
-export const setMode = ({ commit }: any, payload: IMidjourneyMode) => {
+export const setMode = ({ commit }: any, payload: string) => {
   commit('setMode', payload);
 };
 
@@ -105,7 +98,9 @@ export const getImagineTasks = async (
     midjourneyOperator
       .tasks(
         {
-          applicationId: state.application?.id
+          applicationId: state.application?.id,
+          offset,
+          limit
         },
         {
           token
