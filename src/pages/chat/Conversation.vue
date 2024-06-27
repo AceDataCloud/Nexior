@@ -296,10 +296,10 @@ export default defineComponent({
 .dialogue {
   flex: 1;
   width: 100%;
-  max-width: 800px;
   margin: 15px auto;
   overflow-y: auto;
   position: relative;
+  padding: 0 calc(50% - 400px);
   .messages {
     padding-top: 30px;
     .message {

@@ -25,7 +25,9 @@
         <input-box
           :prompt="prompt"
           class="mb-4"
-          @operate="operating = !operating"
+          @open-panel="operating = true"
+          @close-panel="operating = false"
+          @toggle-panel="operating = !operating"
           @update:prompt="prompt = $event"
           @submit="onGenerate"
         />
@@ -93,6 +95,9 @@ export default defineComponent({
     };
   },
   computed: {
+    imagineTasks() {
+      return this.$store.state.midjourney.imagineTasks;
+    },
     service() {
       return this.$store.state.midjourney.service;
     },
@@ -184,6 +189,16 @@ export default defineComponent({
       return this.prompt || this.references?.length > 0 ? content : '';
     }
   },
+  watch: {
+    imagineTasks: {
+      handler(val, oldVal) {
+        if (oldVal === undefined && val) {
+          this.onScrollDown();
+        }
+      },
+      deep: true
+    }
+  },
   methods: {
     onApply() {
       applicationOperator
@@ -220,6 +235,10 @@ export default defineComponent({
         })
         .catch(() => {
           ElMessage.error(this.$t('midjourney.message.startTaskFailed'));
+        })
+        .finally(async () => {
+          await this.onSyncTasks();
+          await this.onScrollDown();
         });
     },
     async onCustom(payload: { image_id: string; action: MidjourneyImagineAction }) {
@@ -245,11 +264,19 @@ export default defineComponent({
       this.references = [];
     },
     async onScrollDown() {
-      // scroll to bottom for `.tasks`
-      const el = document.querySelector('.tasks');
-      if (el) {
-        el.scrollTop = el.scrollHeight;
-      }
+      setTimeout(() => {
+        // scroll to bottom for `.tasks`
+        const el = document.querySelector('.tasks');
+        if (el) {
+          el.scrollTop = el.scrollHeight;
+        }
+      }, 500);
+    },
+    async onSyncTasks() {
+      await this.$store.dispatch('midjourney/getImagineTasks', {
+        limit: 50,
+        offset: 0
+      });
     }
   }
 });
@@ -275,9 +302,8 @@ export default defineComponent({
   .operations {
     position: absolute;
     width: 100%;
-    height: 50vh;
-    max-height: 500px;
-    bottom: 50px;
+    max-height: 400px;
+    bottom: 60px;
     left: 0;
   }
 }
