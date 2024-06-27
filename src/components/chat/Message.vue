@@ -7,31 +7,41 @@
     }"
     :role="message.role"
   >
-    <div class="content">
-      <markdown-renderer v-if="!Array.isArray(message.content)" :content="message?.content" />
-      <div v-else>
-        <div v-for="(item, index) in message.content" :key="index">
-          <img v-if="item.type === 'image_url'" :src="item.image_url?.url" fit="cover" class="image" />
-          <markdown-renderer v-if="item.type === 'text'" :key="index" :content="item.text" />
+    <div class="author">
+      <el-image
+        v-if="message.role === 'assistant'"
+        src="https://cdn.acedata.cloud/7dljuv.png"
+        fit="cover"
+        class="avatar"
+      />
+    </div>
+    <div class="main">
+      <div class="content">
+        <markdown-renderer v-if="!Array.isArray(message.content)" :content="message?.content" />
+        <div v-else>
+          <div v-for="(item, index) in message.content" :key="index">
+            <img v-if="item.type === 'image_url'" :src="item.image_url?.url" fit="cover" class="image" />
+            <markdown-renderer v-if="item.type === 'text'" :key="index" :content="item.text" />
+          </div>
         </div>
+        <answering-mark v-if="message.state === messageState.PENDING" />
       </div>
-      <answering-mark v-if="message.state === messageState.PENDING" />
+      <div class="operations">
+        <copy-to-clipboard v-if="!Array.isArray(message.content)" :content="message.content!" class="btn-copy" />
+      </div>
     </div>
-    <div class="operations">
-      <copy-to-clipboard v-if="!Array.isArray(message.content)" :content="message.content!" class="btn-copy" />
-    </div>
+    <el-alert v-if="errorText" class="error" :title="errorText" type="error" :closable="false" />
+    <el-button v-if="showBuyMore" round type="primary" class="btn btn-buy" size="small" @click="onBuyMore">
+      {{ $t('common.button.buyMore') }}
+    </el-button>
   </div>
-  <el-alert v-if="errorText" class="error" :title="errorText" type="error" :closable="false" />
-  <el-button v-if="showBuyMore" round type="primary" class="btn btn-buy" size="small" @click="onBuyMore">
-    {{ $t('common.button.buyMore') }}
-  </el-button>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import AnsweringMark from './AnsweringMark.vue';
 import copy from 'copy-to-clipboard';
-import { ElAlert, ElButton } from 'element-plus';
+import { ElAlert, ElButton, ElImage } from 'element-plus';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { IApplication, IChatMessage, IChatMessageState } from '@/models';
 import CopyToClipboard from '../common/CopyToClipboard.vue';
@@ -60,7 +70,8 @@ export default defineComponent({
     AnsweringMark,
     MarkdownRenderer,
     ElAlert,
-    ElButton
+    ElButton,
+    ElImage
   },
   props: {
     message: {
@@ -145,31 +156,56 @@ export default defineComponent({
 }
 .message {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-bottom: 15px;
+
   &[role='system'] {
     display: none;
   }
+
   &.hidden {
     display: none;
   }
+
+  .author {
+    width: 50px;
+    padding: 10px;
+    .avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid var(--el-border-color);
+    }
+  }
+
+  .main {
+    flex: 1;
+    width: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+  }
+
   &.assistant {
     align-items: start;
     .content {
-      background-color: var(--el-bg-color-page);
       color: var(--el-text-color-primary);
     }
   }
   &.user {
-    align-items: end;
+    .main {
+      align-items: end;
+    }
     .content {
       background-color: var(--el-bg-color-page);
       color: var(--el-text-color-primary);
+      width: fit-content;
+      text-align: right;
+      padding: 8px 15px;
     }
   }
   .content {
     border-radius: 20px;
-    padding: 8px 15px;
+    padding: 8px;
     width: 100%;
     max-width: 800px;
     .image {

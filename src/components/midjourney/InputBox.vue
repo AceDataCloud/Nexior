@@ -1,7 +1,7 @@
 <template>
   <div class="input-box">
     <el-tooltip class="box-item" effect="dark" :content="$t('midjourney.message.operation')" placement="top">
-      <span class="btn btn-upload" @click="onOperate">
+      <span class="btn btn-upload" @click="$emit('toggle-panel')" @mouseenter="$emit('open-panel')">
         <font-awesome-icon icon="fa-solid fa-plus" class="icon icon-operation" />
       </span>
     </el-tooltip>
@@ -23,6 +23,7 @@
       :placeholder="$t('midjourney.message.promptPlaceholder')"
       :style="{ height: inputHeight }"
       @keydown.enter.exact.prevent="onSubmit"
+      @focus="$emit('close-panel')"
       @input="adjustTextareaHeight"
     ></textarea>
   </div>
@@ -45,7 +46,7 @@ export default defineComponent({
       required: true
     }
   },
-  emits: ['update:prompt', 'submit', 'operate'],
+  emits: ['update:prompt', 'submit', 'open-panel', 'toggle-panel', 'close-panel'],
   data() {
     return {
       inputHeight: '35px', //add inputHeight
@@ -71,12 +72,11 @@ export default defineComponent({
           // @ts-ignore
           textarea.style.height = '35px';
           // @ts-ignore
-          textarea.style.height = textarea.scrollHeight + 'px';
+          if (this.prompt) {
+            textarea.style.height = textarea.scrollHeight + 'px';
+          }
         }
       });
-    },
-    onOperate() {
-      this.$emit('operate');
     },
     onSubmit() {
       if (!this.prompt) {
@@ -131,8 +131,8 @@ textarea.input:focus {
   max-width: 100%;
   margin: auto;
   position: relative;
-  border-radius: 20px;
-  background: var(--el-bg-color-page);
+  border-radius: 10px;
+  background: var(--el-color-info-light-9);
   padding: 5px;
   .upload {
     display: inline-block;
@@ -149,6 +149,7 @@ textarea.input:focus {
     border: none;
     width: calc(100% - 80px);
     margin-left: 35px;
+    line-height: 28px;
   }
   .btn {
     display: block;
@@ -158,6 +159,13 @@ textarea.input:focus {
     position: absolute;
     &.btn-upload {
       left: 15px;
+      background: var(--el-color-info-light-5);
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 12px;
+      text-align: center;
+      padding-top: 2px;
       .icon-attachment {
         font-size: 16px;
         color: var(--el-text-color-primary);
