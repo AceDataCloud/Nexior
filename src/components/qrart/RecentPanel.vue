@@ -75,11 +75,10 @@ export default defineComponent({
   height: 100%;
   &.recent {
     width: 100%;
-    height: 300px;
+    height: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    overflow-x: scroll;
+    overflow-y: auto;
+    flex-direction: column;
     .preview {
       margin-right: 15px;
     }

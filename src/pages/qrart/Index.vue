@@ -12,7 +12,6 @@
         class="mb-4"
         @refresh="onGetApplication"
       />
-      <detail-panel class="panel detail" />
       <recent-panel class="panel recent" />
     </template>
   </layout>
@@ -43,7 +42,6 @@ export default defineComponent({
     ConfigPanel,
     Layout,
     ApplicationStatus,
-    DetailPanel,
     RecentPanel
   },
   data(): IData {
@@ -163,7 +161,7 @@ export default defineComponent({
     overflow-y: scroll;
   }
   &.recent {
-    height: 300px;
+    height: 100%;
     width: 100%;
   }
 }

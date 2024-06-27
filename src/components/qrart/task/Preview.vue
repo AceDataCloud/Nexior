@@ -123,6 +123,7 @@ export default defineComponent({
 
 <style lang="scss">
 .preview {
+  width: 100%;
   .image.error {
     background: var(--el-bg-color-page);
     .image-slot {
@@ -135,8 +136,7 @@ export default defineComponent({
   }
   .failure {
     background: var(--el-fill-color-light);
-    height: 220px;
-    width: 220px;
+    width: 100%;
   }
 }
 </style>
