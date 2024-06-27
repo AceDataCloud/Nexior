@@ -5,7 +5,6 @@
     </template>
     <template #operation>
       <div class="top">
-        <mode-selector class="mb-4" />
         <application-status
           :initializing="initializing"
           :application="application"
@@ -14,21 +13,25 @@
           class="mb-4"
           @refresh="onGetApplication"
         />
-        <reference-image class="mb-4" @change="references = $event" />
-        <prompt-input v-model="prompt" class="mb-4" />
-        <elements-selector v-model="elements" :advanced="preset?.advanced" class="mb-4" />
-        <ignore-selector v-if="preset?.advanced" v-model="ignore" class="mb-4" />
-        <final-prompt v-if="finalPrompt" :model-value="finalPrompt" />
+        <task-list @custom="onCustom" @refresh="onGetApplication" />
       </div>
       <div class="bottom">
-        <el-button type="primary" round class="btn btn-generate" :disabled="!finalPrompt" @click="onGenerate">
-          <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
-          {{ $t('midjourney.button.generate') }}
-        </el-button>
+        <el-card v-show="operating" class="operations">
+          <reference-image class="mb-4" @change="references = $event" />
+          <elements-selector v-model="elements" :advanced="preset?.advanced" class="mb-4" />
+          <ignore-selector v-if="preset?.advanced" v-model="ignore" class="mb-4" />
+          <final-prompt v-if="finalPrompt" :model-value="finalPrompt" />
+        </el-card>
+        <input-box
+          :prompt="prompt"
+          class="mb-4"
+          @open-panel="operating = true"
+          @close-panel="operating = false"
+          @toggle-panel="operating = !operating"
+          @update:prompt="prompt = $event"
+          @submit="onGenerate"
+        />
       </div>
-    </template>
-    <template #results>
-      <task-brief-list @custom="onCustom" @refresh="onGetApplication" />
     </template>
   </layout>
 </template>
@@ -37,32 +40,33 @@
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Midjourney.vue';
 import PresetPanel from '@/components/midjourney/PresetPanel.vue';
-import PromptInput from '@/components/midjourney/PromptInput.vue';
 import ElementsSelector from '@/components/midjourney/ElementsSelector.vue';
 import IgnoreSelector from '@/components/midjourney/IgnoreSelector.vue';
-import { ElButton, ElMessage } from 'element-plus';
-import ModeSelector from '@/components/midjourney/ModeSelector.vue';
+import { ElMessage, ElCard } from 'element-plus';
 import ReferenceImage from '@/components/midjourney/ReferenceImage.vue';
 import { applicationOperator, midjourneyOperator } from '@/operators';
 import ApplicationStatus from '@/components/application/Status.vue';
-import TaskBriefList from '@/components/midjourney/tasks/TaskBriefList.vue';
+import TaskList from '@/components/midjourney/tasks/TaskList.vue';
 import FinalPrompt from '@/components/midjourney/FinalPrompt.vue';
 import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
-import { MidjourneyImagineMode, Status } from '@/models';
+import { Status } from '@/models';
 import { IMidjourneyImagineRequest, IApplicationDetailResponse, MidjourneyImagineAction } from '@/models';
 import {
   MIDJOURNEY_DEFAULT_IMAGE_WEIGHT,
   MIDJOURNEY_DEFAULT_RATIO,
   MIDJOURNEY_DEFAULT_STYLIZE,
-  MIDJOURNEY_DEFAULT_WIRED
+  MIDJOURNEY_DEFAULT_WIRED,
+  MIDJOURNEY_DEFAULT_MODE,
+  MIDJOURNEY_DEFAULT_QUALITY
 } from '@/constants';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import InputBox from '@/components/midjourney/InputBox.vue';
 
 interface IData {
   prompt: string;
   elements: string[];
   ignore: string;
   references: string[];
+  operating: boolean;
 }
 
 const CALLBACK_URL = 'https://webhook.acedata.cloud/midjourney';
@@ -70,16 +74,14 @@ const CALLBACK_URL = 'https://webhook.acedata.cloud/midjourney';
 export default defineComponent({
   name: 'MidjourneyIndex',
   components: {
-    ModeSelector,
+    ElCard,
     ReferenceImage,
-    FontAwesomeIcon,
     PresetPanel,
-    PromptInput,
+    InputBox,
     ElementsSelector,
     IgnoreSelector,
-    ElButton,
     ApplicationStatus,
-    TaskBriefList,
+    TaskList,
     FinalPrompt,
     Layout
   },
@@ -88,15 +90,16 @@ export default defineComponent({
       prompt: '',
       elements: [],
       ignore: '',
-      references: []
+      references: [],
+      operating: false
     };
   },
   computed: {
+    imagineTasks() {
+      return this.$store.state.midjourney.imagineTasks;
+    },
     service() {
       return this.$store.state.midjourney.service;
-    },
-    mode() {
-      return this.$store.state.midjourney.mode;
     },
     credential() {
       return this.$store.state.midjourney.credential;
@@ -133,7 +136,12 @@ export default defineComponent({
       if (this.preset?.chaos && this.preset?.advanced && !content.includes(`--chaos `)) {
         content += ` --chaos ${this.preset.chaos}`;
       }
-      if (this.preset?.quality && !content.includes(`--quality `) && !content.includes(`--q `)) {
+      if (
+        this.preset?.quality &&
+        !content.includes(`--quality `) &&
+        !content.includes(`--q `) &&
+        this.preset?.quality !== MIDJOURNEY_DEFAULT_QUALITY
+      ) {
         content += ` --quality ${this.preset.quality}`;
       }
       if (
@@ -176,7 +184,19 @@ export default defineComponent({
       if (this.preset?.style && this.preset?.advanced && !content.includes(`--style`)) {
         content += ` --style ${this.preset?.style}`;
       }
+      // remove `--fast`, `--relax`, `--turbo`
+      content = content.replace(/--(fast|relax|turbo) /g, '');
       return this.prompt || this.references?.length > 0 ? content : '';
+    }
+  },
+  watch: {
+    imagineTasks: {
+      handler(val, oldVal) {
+        if (oldVal === undefined && val) {
+          this.onScrollDown();
+        }
+      },
+      deep: true
     }
   },
   methods: {
@@ -215,26 +235,48 @@ export default defineComponent({
         })
         .catch(() => {
           ElMessage.error(this.$t('midjourney.message.startTaskFailed'));
+        })
+        .finally(async () => {
+          await this.onSyncTasks();
+          await this.onScrollDown();
         });
     },
     async onCustom(payload: { image_id: string; action: MidjourneyImagineAction }) {
       const request = {
         image_id: payload.image_id,
         action: payload.action,
-        mode: this.mode.name as MidjourneyImagineMode,
+        mode: this.preset?.mode || MIDJOURNEY_DEFAULT_MODE,
         callback_url: CALLBACK_URL
       };
       this.onStartTask(request);
     },
     async onGenerate() {
       const request = {
-        mode: this.mode.name as MidjourneyImagineMode,
+        mode: this.preset?.mode || MIDJOURNEY_DEFAULT_MODE,
         prompt: this.finalPrompt,
         action: MidjourneyImagineAction.GENERATE,
         translation: this.preset?.translation,
         callback_url: CALLBACK_URL
       };
-      this.onStartTask(request);
+      await this.onStartTask(request);
+      this.prompt = '';
+      this.elements = [];
+      this.references = [];
+    },
+    async onScrollDown() {
+      setTimeout(() => {
+        // scroll to bottom for `.tasks`
+        const el = document.querySelector('.tasks');
+        if (el) {
+          el.scrollTop = el.scrollHeight;
+        }
+      }, 500);
+    },
+    async onSyncTasks() {
+      await this.$store.dispatch('midjourney/getImagineTasks', {
+        limit: 50,
+        offset: 0
+      });
     }
   }
 });
@@ -243,16 +285,26 @@ export default defineComponent({
 <style lang="scss" scoped>
 .top {
   flex: 1;
-  height: calc(100% - 40px);
-  margin-bottom: 5px;
+  height: calc(100% - 50px);
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
 }
 .bottom {
-  height: 40px;
+  height: 50px;
   width: 100%;
+  position: relative;
   .btn {
     height: 40px;
     width: 100%;
+  }
+  .operations {
+    position: absolute;
+    width: 100%;
+    max-height: 400px;
+    bottom: 60px;
+    left: 0;
   }
 }
 </style>

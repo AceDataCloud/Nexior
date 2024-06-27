@@ -11,6 +11,7 @@ import { faDiscord as faBrandsDiscord, faWeixin as faBrandsWeixin } from '@forta
 import {
   faLaptopCode as faSolidLaptopCode,
   faOutdent as faSolidOutdent,
+  faImage as faSolidImage,
   faChevronRight as faSolidChevronRight,
   faMoon as faSolidMoon,
   faFan as faSolidFan,
@@ -77,6 +78,7 @@ library.add(faSolidFileLines);
 library.add(faSolidCompass);
 library.add(faSolidPaperclip);
 library.add(faSolidFan);
+library.add(faSolidImage);
 library.add(faSolidXmark);
 library.add(faSolidFire);
 library.add(faSolidLaptopCode);

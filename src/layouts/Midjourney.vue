@@ -6,20 +6,11 @@
     <div class="operation">
       <slot name="operation" />
     </div>
-    <div class="results">
-      <slot name="results" />
-    </div>
     <el-button round class="menu" @click="drawer = true">
       <font-awesome-icon icon="fa-solid fa-gear" class="icon-menu" />
     </el-button>
-    <el-button round class="menu2" @click="drawer2 = true">
-      <font-awesome-icon icon="fa-solid fa-bars" class="icon-menu" />
-    </el-button>
     <el-drawer v-model="drawer" :with-header="false" size="300px" class="drawer">
       <slot name="presets" />
-    </el-drawer>
-    <el-drawer v-model="drawer2" :show-close="true" size="400px" class="drawer2">
-      <slot name="results" />
     </el-drawer>
   </div>
 </template>
@@ -95,12 +86,6 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
   }
-  .results {
-    overflow-y: scroll;
-    width: 400px;
-    height: 100%;
-    border-left: 1px solid var(--el-border-color);
-  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1060px) {
@@ -131,15 +116,8 @@ export default defineComponent({
     .menu {
       display: block;
       position: absolute;
-      left: 20px;
-      top: 20px;
-      z-index: 1000;
-    }
-    .menu2 {
-      display: block;
-      position: fixed;
-      right: 20px;
-      top: 20px;
+      left: 10px;
+      top: 25px;
       z-index: 1000;
     }
   }

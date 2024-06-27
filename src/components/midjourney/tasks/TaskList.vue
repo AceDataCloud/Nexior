@@ -1,40 +1,44 @@
 <template>
   <div v-if="tasks === undefined" class="tasks">
-    <el-card v-for="_ in 3" :key="_" class="task">
-      <el-skeleton animated>
-        <template #template>
-          <el-skeleton-item variant="image" class="icon-placeholder" />
-          <el-skeleton-item variant="p" class="title-placeholder" />
-        </template>
-      </el-skeleton>
-    </el-card>
+    <div v-for="_ in 3" :key="_" class="task placeholder">
+      <div class="left">
+        <el-skeleton animated>
+          <template #template>
+            <el-skeleton-item variant="image" class="avatar" />
+          </template>
+        </el-skeleton>
+      </div>
+      <div class="main">
+        <el-skeleton animated>
+          <template #template>
+            <el-skeleton-item variant="p" class="title" />
+            <el-skeleton-item variant="image" class="icon" />
+          </template>
+        </el-skeleton>
+      </div>
+    </div>
   </div>
   <div v-else-if="tasks && tasks?.length === 0">
     <p class="p-5 description">{{ $t('midjourney.message.noTasks') }}</p>
   </div>
   <div v-else-if="tasks.length > 0" class="tasks">
     <div v-for="(task, taskKey) in tasks" :key="taskKey" class="task">
-      <task-preview :full="false" :model-value="task" @custom="$emit('custom', $event)" />
+      <task-item :full="false" :model-value="task" @custom="$emit('custom', $event)" />
     </div>
-    <el-button type="primary" round class="btn mb-4" @click="onLoadHistory">{{
-      $t('midjourney.button.history')
-    }}</el-button>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import TaskPreview from './TaskPreview.vue';
+import TaskItem from './TaskItem.vue';
 import { ROUTE_MIDJOURNEY_HISTORY } from '@/router';
-import { ElButton, ElCard, ElSkeleton, ElSkeletonItem } from 'element-plus';
+import { ElSkeleton, ElSkeletonItem } from 'element-plus';
 import { Status } from '@/models';
 
 export default defineComponent({
-  name: 'TaskBriefList',
+  name: 'TaskList',
   components: {
-    TaskPreview,
-    ElButton,
-    ElCard,
+    TaskItem,
     ElSkeleton,
     ElSkeletonItem
   },
@@ -49,7 +53,8 @@ export default defineComponent({
       return this.$store.state.midjourney.status.getApplication === Status.Request;
     },
     tasks() {
-      return this.$store.state.midjourney.imagineTasks;
+      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+      return this.$store.state.midjourney.imagineTasks?.reverse();
     },
     application() {
       return this.$store.state.midjourney.application;
@@ -86,7 +91,7 @@ export default defineComponent({
         return;
       }
       await this.$store.dispatch('midjourney/getImagineTasks', {
-        limit: 12,
+        limit: 50,
         offset: 0
       });
     }
@@ -101,31 +106,48 @@ export default defineComponent({
 }
 
 .tasks {
-  padding-top: 20px;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  align-items: center;
 
   .task {
     margin-bottom: 15px;
-    width: 350px;
-    margin: 8px;
+    width: 100%;
     height: fit-content;
+    text-align: left;
 
-    .icon-placeholder {
+    &.placeholder {
       display: flex;
-      height: 310px;
-      width: 310px;
-      margin: 0 auto 15px auto;
-      text-align: center;
-    }
+      flex-direction: row;
+      .left {
+        width: 70px;
+        padding: 10px;
 
-    .title-placeholder {
-      display: block;
-      width: 80px;
-      height: 20px;
-      margin: 0 auto 10px auto;
+        .avatar {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
+      }
+
+      .main {
+        width: calc(100% - 70px);
+        flex: 1;
+        padding: 0 10px;
+
+        .icon {
+          display: flex;
+          height: 300px;
+          width: 300px;
+        }
+
+        .title {
+          display: block;
+          width: 200px;
+          height: 20px;
+          margin-bottom: 20px;
+        }
+      }
     }
 
     .operations {

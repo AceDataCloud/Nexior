@@ -27,9 +27,13 @@ class ChatOperator {
         const lines = response.split('\r\n').filter((line: string) => !!line);
         const lastLine = lines[lines.length - 1];
         if (lastLine) {
-          const jsonData = JSON.parse(lastLine);
-          if (options?.stream) {
-            options?.stream(jsonData as IChatConversationResponse);
+          try {
+            const jsonData = JSON.parse(lastLine);
+            if (options?.stream) {
+              options?.stream(jsonData as IChatConversationResponse);
+            }
+          } catch (e) {
+            console.error(e);
           }
         }
       }
