@@ -78,21 +78,21 @@
               {{ actionMapping[action] }}
             </el-button>
           </el-tooltip>
-          <el-alert :closable="false" class="mt-2 success">
-            <p class="description">
-              <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
-              {{ $t('midjourney.field.taskId') }}:
-              {{ modelValue?.id }}
-              <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
-            </p>
-            <p class="description">
-              <font-awesome-icon icon="fa-solid fa-image" class="mr-1" />
-              {{ $t('midjourney.field.imageId') }}:
-              {{ modelValue?.response?.image_id }}
-              <copy-to-clipboard :content="modelValue?.response?.image_id" class="btn-copy" />
-            </p>
-          </el-alert>
         </div>
+        <el-alert :closable="false" class="mt-2 success">
+          <p class="description">
+            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            {{ $t('midjourney.field.taskId') }}:
+            {{ modelValue?.id }}
+            <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
+          </p>
+          <p class="description">
+            <font-awesome-icon icon="fa-solid fa-image" class="mr-1" />
+            {{ $t('midjourney.field.imageId') }}:
+            {{ modelValue?.response?.image_id }}
+            <copy-to-clipboard :content="modelValue?.response?.image_id" class="btn-copy" />
+          </p>
+        </el-alert>
       </div>
       <!-- response pending -->
       <div v-if="!modelValue?.response">
