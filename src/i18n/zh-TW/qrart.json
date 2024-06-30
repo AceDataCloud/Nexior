@@ -28,7 +28,7 @@
     "description": "要生成的 QR 碼的尺寸"
   },
   "name.createdAt": {
-    "message": "創建時間",
+    "message": "建立時間",
     "description": "生成 QR 碼的日期和時間"
   },
   "name.pixelStyle": {
@@ -36,7 +36,7 @@
     "description": "要生成的 QR 碼的像素風格"
   },
   "name.seed": {
-    "message": "種子",
+    "message": "種子值",
     "description": "要生成的 QR 碼的種子"
   },
   "name.paddingLevel": {
@@ -52,8 +52,8 @@
     "description": "要生成的 QR 碼的內容"
   },
   "name.ecl": {
-    "message": "紀錯級別",
-    "description": "要生成的 QR 碼的紀錯級別"
+    "message": "紀錄錯誤級別",
+    "description": "要生成的 QR 碼的紀錄錯誤級別"
   },
   "name.position": {
     "message": "位置",
@@ -64,7 +64,7 @@
     "description": "內容輸入的提示"
   },
   "name.rotate": {
-    "message": "旋轉",
+    "message": "旋轉角度",
     "description": "要生成的 QR 碼的旋轉"
   },
   "name.advanced": {
@@ -88,68 +88,92 @@
     "description": "QR 碼生成器的名稱"
   },
   "name.steps": {
-    "message": "步驟",
-    "description": "生成 QR 碼的步驟"
+    "message": "生成步數",
+    "description": "生成 QR 碼的步數"
   },
   "name.preset": {
-    "message": "預設",
+    "message": "預設風格",
     "description": "要生成的 QR 碼的預設"
   },
+  "name.qrartBot": {
+    "message": "QrArt Bot",
+    "description": "QR 碼生成器的名稱"
+  },
+  "name.contentImageUrl": {
+    "message": "內容圖片連結",
+    "description": "要生成的 QR 碼的內容圖片 URL"
+  },
+  "inputWay.input": {
+    "message": "輸入內容",
+    "description": "輸入方式"
+  },
+  "inputWay.upload": {
+    "message": "上傳二維碼",
+    "description": "輸入方式"
+  },
   "description.qrw": {
-    "message": "QR 碼可見性，尺寸越大，QR 碼越可見",
+    "message": "QR 碼可見性，尺寸越大，QR 碼可見度越高",
     "description": "參數'qrw'的描述"
   },
   "description.steps": {
-    "message": "生成 QR 碼的步驟，步驟越多，QR 碼越可見",
+    "message": "生成 QR 碼的步數，步數越多，QR 碼可見度越高",
     "description": "參數'steps'的描述"
+  },
+  "status.pending": {
+    "message": "等待中",
+    "description": "任務的等待狀態"
   },
   "placeholder.paddingNoise": {
     "message": "請選擇...",
-    "description": "填充噪音輸入的佔位符"
+    "description": "填充噪音輸入的占位符"
   },
   "placeholder.paddingLevel": {
     "message": "請選擇...",
-    "description": "填充級別的佔位符"
+    "description": "填充級別的占位符"
   },
   "placeholder.prompt": {
-    "message": "輸入描述要生成的 QR 碼的句子",
-    "description": "提示欄位中的佔位文本"
+    "message": "輸入要生成的 QR 碼風格的提示詞，例如：flowers",
+    "description": "提示欄位中的占位文字"
   },
   "placeholder.seed": {
     "message": "種子範圍為 1 到 9007199254740991",
-    "description": "種子輸入的佔位符"
+    "description": "種子輸入的占位符"
   },
   "placeholder.position": {
     "message": "請選擇...",
-    "description": "位置輸入的佔位符"
+    "description": "位置輸入的占位符"
   },
   "placeholder.content": {
-    "message": "輸入要生成的 QR 碼的內容",
-    "description": "內容欄位中的佔位文本"
+    "message": "輸入要生成的 QR 碼的內容，例如：https://www.google.com",
+    "description": "內容欄位中的占位文字"
   },
   "placeholder.aspectRatio": {
     "message": "請選擇...",
-    "description": "寬高比輸入的佔位符"
+    "description": "寬高比輸入的占位符"
   },
   "placeholder.preset": {
     "message": "請選擇...",
-    "description": "預設輸入的佔位符"
+    "description": "預設輸入的占位符"
   },
   "placeholder.markerShape": {
     "message": "請選擇...",
-    "description": "標記形狀輸入的佔位符"
+    "description": "標記形狀輸入的占位符"
   },
   "placeholder.rotate": {
     "message": "請選擇...",
-    "description": "旋轉輸入的佔位符"
+    "description": "旋轉輸入的占位符"
   },
   "placeholder.subMarker": {
     "message": "請選擇...",
-    "description": "子標記輸入的佔位符"
+    "description": "子標記輸入的占位符"
   },
   "button.generate": {
     "message": "生成",
     "description": "生成 QR 碼的按鈕文本"
+  },
+  "button.uploadQr": {
+    "message": "上傳二維碼",
+    "description": "上傳二維碼的按鈕文本"
   },
   "preset.sunset": {
     "message": "日落",
@@ -204,7 +228,7 @@
     "description": "要生成的 QR 碼的預設風格"
   },
   "preset.goldenVista": {
-    "message": "金色風景",
+    "message": "金色景觀",
     "description": "要生成的 QR 碼的預設風格"
   },
   "preset.cinematicExpanse": {
@@ -236,7 +260,7 @@
     "description": "要生成的 QR 碼的預設風格"
   },
   "preset.illustriousCanvas": {
-    "message": "卓越畫布",
+    "message": "傑出畫布",
     "description": "要生成的 QR 碼的預設風格"
   },
   "preset.expressiveMural": {
@@ -247,49 +271,53 @@
     "message": "寧靜薄霧",
     "description": "要生成的 QR 碼的預設風格"
   },
+  "message.uploadQr": {
+    "message": "上傳二維碼圖片，可生成和二維碼內容一致的藝術二維碼",
+    "description": "上傳二維碼的說明"
+  },
   "message.promptPlaceholder": {
-    "message": "請輸入描述要生成的影像的句子，例如：一隻可愛的貓。額外參數將覆蓋默認預設參數",
-    "description": "提示欄位中的占位文本"
+    "message": "請輸入描述要生成的圖像的句子，例如：一隻可愛的貓。額外參數將覆蓋預設參數",
+    "description": "提示字段中的占位文本"
   },
   "message.uploadReferencesExceed": {
     "message": "最多可上傳 5 張圖片",
-    "description": "上傳的圖片數量超過限制時的錯誤訊息"
+    "description": "上傳的圖片數量超過限制時的錯誤消息"
   },
   "message.uploadReferencesSuccess": {
     "message": "成功上傳圖片",
-    "description": "成功上傳圖片時的成功訊息"
+    "description": "成功上傳圖片時的成功消息"
   },
   "message.uploadReferencesError": {
     "message": "上傳圖片失敗，請稍後重試",
-    "description": "圖片上傳失敗時的錯誤訊息"
+    "description": "圖片上傳失敗時的錯誤消息"
   },
   "message.startingTask": {
     "message": "正在啟動任務...",
-    "description": "繪圖任務開始時的訊息"
+    "description": "繪圖任務開始時的消息"
   },
   "message.startTaskSuccess": {
     "message": "成功啟動繪圖任務",
-    "description": "成功啟動繪圖任務時的成功訊息"
+    "description": "成功啟動繪圖任務時的成功消息"
   },
   "message.startTaskFailed": {
     "message": "啟動繪圖任務失敗",
-    "description": "啟動繪圖任務失敗時的錯誤訊息"
+    "description": "啟動繪圖任務失敗時的錯誤消息"
   },
   "message.generating": {
     "message": "生成中...",
-    "description": "影像正在生成時的訊息"
+    "description": "圖像正在生成時的消息"
   },
   "message.generateFailed": {
-    "message": "生成影像失敗",
-    "description": "影像生成失敗時的訊息"
+    "message": "生成圖像失敗",
+    "description": "圖像生成失敗時的消息"
   },
   "message.noOperations": {
     "message": "沒有可用操作",
-    "description": "沒有可用操作時的訊息"
+    "description": "沒有可用操作時的消息"
   },
   "message.noTasks": {
-    "message": "沒有任務，請建立新任務",
-    "description": "沒有任務時的訊息"
+    "message": "沒有任務，請創建新任務",
+    "description": "沒有任務時的消息"
   },
   "markerShape.square": {
     "message": "正方形",

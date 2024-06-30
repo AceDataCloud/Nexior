@@ -4,10 +4,10 @@
       <type-selector class="mb-4" />
       <aspect-ratio-selector class="mb-4" />
       <qrw-selector class="mb-4" />
-      <steps-selector class="mb-4" />
+      <position-selector class="mb-4" />
       <advanced-selector class="mb-4" />
+      <steps-selector v-if="config?.advanced" class="mb-4" />
       <seed-input v-if="config?.advanced" class="mb-4" />
-      <position-selector v-if="config?.advanced" class="mb-4" />
       <pixel-style-selector v-if="config?.advanced" class="mb-4" />
       <marker-shape-selector v-if="config?.advanced" class="mb-4" />
       <sub-marker-selector v-if="config?.advanced" class="mb-4" />
@@ -35,7 +35,6 @@ import PaddingLevelSelector from './config/PaddingLevelSelector.vue';
 import PaddingNoiseSelector from './config/PaddingNoiseSelector.vue';
 import PixelStyleSelector from './config/PixelStyleSelector.vue';
 import SeedInput from './config/SeedInput.vue';
-import { ElButton } from 'element-plus';
 
 export default defineComponent({
   name: 'PresetPanel',

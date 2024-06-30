@@ -91,10 +91,20 @@ export default defineComponent({
     async onGetApplication() {
       await this.$store.dispatch('qrart/getApplication');
     },
+    async onScrollDown() {
+      setTimeout(() => {
+        // scroll to bottom for `.tasks`
+        const el = document.querySelector('.tasks');
+        if (el) {
+          el.scrollTop = el.scrollHeight;
+        }
+      }, 500);
+    },
     async onGenerate() {
       const request = {
         type: this.config?.type,
         content: this.config?.content,
+        content_image_url: this.config?.content_image_url,
         prompt: this.config?.prompt,
         aspect_ratio: this.config?.aspect_ratio,
         callback_url: CALLBACK_URL,
@@ -131,11 +141,12 @@ export default defineComponent({
         .catch(() => {
           ElMessage.error(this.$t('qrart.message.startTaskFailed'));
         })
-        .finally(() => {
-          this.$store.dispatch('qrart/getTasks', {
+        .finally(async () => {
+          await this.$store.dispatch('qrart/getTasks', {
             limit: 50,
             offset: 0
           });
+          await this.onScrollDown();
         });
     }
   }
@@ -158,6 +169,7 @@ export default defineComponent({
     width: 100%;
     margin-bottom: 10px;
     position: relative;
+    justify-content: initial;
   }
   &.operation {
     position: relative;

@@ -1,5 +1,6 @@
 export interface IQrartConfig {
-  content: string;
+  content?: string;
+  content_image_url?: string;
   type: string;
   prompt: string;
   pattern?: string;
@@ -21,7 +22,8 @@ export interface IQrartConfig {
 }
 
 export interface IQrartGenerateRequest {
-  content: string;
+  content?: string;
+  content_image_url?: string;
   type: string;
   prompt: string;
   pattern?: string;

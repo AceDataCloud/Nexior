@@ -5,10 +5,13 @@ import {
   faPaperPlane as faRegularPaperPlane,
   faComment as faRegularComment,
   faSun as faRegularSun,
+  faMessage as faRegularMessage,
   faClock as faRegularClock
 } from '@fortawesome/free-regular-svg-icons';
 import { faDiscord as faBrandsDiscord, faWeixin as faBrandsWeixin } from '@fortawesome/free-brands-svg-icons';
 import {
+  faSeedling as faSolidSeedling,
+  faDiamond as faSolidDiamond,
   faLaptopCode as faSolidLaptopCode,
   faOutdent as faSolidOutdent,
   faImage as faSolidImage,
@@ -67,6 +70,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faRegularCopy);
+library.add(faRegularMessage);
 library.add(faSolidAngleDown);
 library.add(faSolidStore);
 library.add(faSolidOutdent);
@@ -83,8 +87,10 @@ library.add(faSolidXmark);
 library.add(faSolidFire);
 library.add(faSolidLaptopCode);
 library.add(faSolidRotateRight);
+library.add(faSolidSeedling);
 library.add(faSolidPenToSquare);
 library.add(faSolidCheck);
+library.add(faSolidDiamond);
 library.add(faSolidLocationArrow);
 library.add(faRegularUser);
 library.add(faRegularSun);

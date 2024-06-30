@@ -20,7 +20,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElButton, ElCard } from 'element-plus';
-import PresetSelector from './config/PresetSelector.vue';
+import PresetSelector from './config/PresetSelector2.vue';
 import ContentInput from './config/ContentInput.vue';
 import PromptInput from './config/PromptInput.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -44,6 +44,7 @@ export default defineComponent({
   methods: {
     onGenerate() {
       this.$emit('generate');
+      this.operating = false;
     }
   }
 });
@@ -51,13 +52,18 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .el-card {
-  width: 600px;
-  height: 400px;
+  width: 580px;
+  height: fit-content;
   overflow-y: scroll;
   position: absolute;
-  bottom: 80px;
+  bottom: 70px;
   left: calc(50% - 300px);
+  @media (max-width: 767px) {
+    width: 100%;
+    left: 0;
+  }
 }
+
 .btn-operate {
   width: 50px;
   height: 50px;

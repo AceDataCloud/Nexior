@@ -1,7 +1,7 @@
 <template>
   <div class="preview">
     <div class="left">
-      <el-image src="https://cdn.acedata.cloud/05daz4.png" class="avatar" />
+      <el-image src="https://cdn.acedata.cloud/bcml67.png" class="avatar" />
     </div>
     <div class="main">
       <div class="bot">
@@ -17,14 +17,23 @@
         </p>
       </div>
       <div v-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">
-        <el-image
-          v-if="modelValue?.response?.image_url"
-          v-loading="!modelValue?.response?.image_url"
-          :src="modelValue?.response?.image_url"
-          fit="contain"
-          :lazy="true"
-          class="image"
-        />
+        <div class="image-wrapper">
+          <img
+            v-if="modelValue?.response?.image_url"
+            v-loading="!modelValue?.response?.image_url"
+            :src="modelValue?.response?.image_url"
+            class="image mb-3"
+          />
+          <el-button
+            v-if="modelValue?.response?.image_url"
+            type="info"
+            round
+            class="btn-raw"
+            @click="onOpenUrl(modelValue?.response?.image_url)"
+          >
+            {{ $t('common.button.seeRawImage') }}
+          </el-button>
+        </div>
         <el-alert :closable="false" class="mt-2 success">
           <p class="description">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
@@ -33,19 +42,28 @@
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
           </p>
           <p class="description">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <font-awesome-icon icon="fa-solid fa-diamond" class="mr-1" />
             {{ $t('qrart.name.type') }}:
-            {{ modelValue?.request?.type }}
+            {{ $t('qrart.type.' + modelValue?.request?.type) }}
             <copy-to-clipboard :content="modelValue?.request?.type!" class="btn-copy" />
           </p>
-          <p class="description">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+          <p v-if="modelValue?.request?.content" class="description">
+            <font-awesome-icon icon="fa-regular fa-message" class="mr-1" />
             {{ $t('qrart.name.content') }}:
             {{ modelValue?.request?.content }}
             <copy-to-clipboard :content="modelValue?.request?.content!" class="btn-copy" />
           </p>
+          <p v-if="modelValue?.request?.content_image_url" class="description">
+            <font-awesome-icon icon="fa-regular fa-message" class="mr-1" />
+            {{ $t('qrart.name.contentImageUrl') }}:
+            <font-awesome-icon
+              icon="fa-solid fa-up-right-from-square"
+              class="mr-1 cursor-pointer"
+              @click="onOpenLink(modelValue?.request?.content_image_url)"
+            />
+          </p>
           <p v-if="modelValue?.request?.seed || modelValue?.response?.seed" class="description">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <font-awesome-icon icon="fa-solid fa-seedling" class="mr-1" />
             {{ $t('qrart.name.seed') }}:
             {{ modelValue?.request?.seed || modelValue?.response?.seed }}
             <copy-to-clipboard
@@ -81,13 +99,27 @@
           </p>
         </el-alert>
       </div>
+      <div v-if="!modelValue?.response" :class="{ content: true }">
+        <el-alert :closable="false" class="info">
+          <template #template>
+            <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
+            {{ $t('qrart.name.failure') }}
+          </template>
+          <p class="description">
+            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            {{ $t('qrart.name.taskId') }}:
+            {{ modelValue?.id }}
+            <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
+          </p>
+        </el-alert>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElAlert } from 'element-plus';
+import { ElImage, ElAlert, ElButton } from 'element-plus';
 import { IQrartTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -98,7 +130,8 @@ export default defineComponent({
     ElImage,
     CopyToClipboard,
     FontAwesomeIcon,
-    ElAlert
+    ElAlert,
+    ElButton
   },
   props: {
     modelValue: {
@@ -115,6 +148,9 @@ export default defineComponent({
     }
   },
   methods: {
+    onOpenLink(url: string) {
+      window.open(url, '_blank');
+    },
     onReload(event: Event) {
       const target = event.target as HTMLImageElement;
       // append a random url query to existing url query, to force reload the image
@@ -133,6 +169,9 @@ export default defineComponent({
       }
       // set the new url
       target.src = url.toString();
+    },
+    onOpenUrl(url: string) {
+      window.open(url, '_blank');
     },
     onDownload(url: string) {
       // download image using javascript
@@ -158,7 +197,7 @@ $left-width: 70px;
     width: $left-width;
     .avatar {
       background-color: white;
-      padding: 8px;
+      padding: 2px;
       width: 50px;
       height: 50px;
       margin: 10px;
@@ -210,12 +249,33 @@ $left-width: 70px;
       }
     }
 
-    .image {
-      height: 220px;
-      display: block;
+    .image-wrapper {
+      position: relative;
       width: fit-content;
-      min-width: 120px;
-      margin-bottom: 10px;
+      min-height: 50px;
+      min-width: 100px;
+      .image {
+        max-height: 400px;
+        max-width: 300px;
+        display: block;
+        width: fit-content;
+      }
+      .btn-raw {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        display: none;
+      }
+      &:hover {
+        .image {
+          filter: brightness(0.6);
+        }
+        .btn-raw {
+          display: block;
+        }
+      }
     }
   }
 }

@@ -75,7 +75,7 @@ export default defineComponent({
 }
 
 @media (max-width: 767px) {
-  .preset {
+  .config {
     display: none;
   }
   .result {

@@ -1,11 +1,11 @@
 {
   "name.taskId": {
-    "message": "Identifiant de la tâche",
-    "description": "Identifiant de la tâche"
+    "message": "ID de la tâche",
+    "description": "ID de la tâche"
   },
   "name.type": {
     "message": "Type",
-    "description": "Type de contenu du code QR à générer, tel que 'lien', 'texte', etc."
+    "description": "Type de contenu pour générer le code QR, tel que 'lien', 'texte', etc."
   },
   "name.failure": {
     "message": "Échec",
@@ -28,7 +28,7 @@
     "description": "Taille du code QR à générer"
   },
   "name.createdAt": {
-    "message": "Créé le",
+    "message": "Créé à",
     "description": "Date et heure de création du code QR"
   },
   "name.pixelStyle": {
@@ -36,7 +36,7 @@
     "description": "Style de pixel du code QR à générer"
   },
   "name.seed": {
-    "message": "Graine",
+    "message": "Valeur de la graine",
     "description": "Graine du code QR à générer"
   },
   "name.paddingLevel": {
@@ -44,7 +44,7 @@
     "description": "Niveau de remplissage du code QR à générer"
   },
   "name.paddingNoise": {
-    "message": "Bruitage de remplissage",
+    "message": "Bruit de remplissage",
     "description": "Bruit de remplissage du code QR à générer"
   },
   "name.content": {
@@ -60,11 +60,11 @@
     "description": "Position du code QR à générer"
   },
   "name.prompt": {
-    "message": "Consigne",
-    "description": "Consigne d'entrée de contenu"
+    "message": "Invite",
+    "description": "Invite de saisie du contenu"
   },
   "name.rotate": {
-    "message": "Rotation",
+    "message": "Angle de rotation",
     "description": "Rotation du code QR à générer"
   },
   "name.advanced": {
@@ -88,68 +88,92 @@
     "description": "Nom du générateur de code QR"
   },
   "name.steps": {
-    "message": "Étapes",
-    "description": "Étapes de génération du code QR"
+    "message": "Nombre d'étapes de génération",
+    "description": "Nombre d'étapes de génération du code QR"
   },
   "name.preset": {
-    "message": "Préréglage",
-    "description": "Préréglage du code QR à générer"
+    "message": "Style prédéfini",
+    "description": "Style prédéfini du code QR à générer"
+  },
+  "name.qrartBot": {
+    "message": "QrArt Bot",
+    "description": "Nom du générateur de code QR"
+  },
+  "name.contentImageUrl": {
+    "message": "Lien de l'image du contenu",
+    "description": "URL de l'image du contenu du code QR à générer"
+  },
+  "inputWay.input": {
+    "message": "Entrer le contenu",
+    "description": "Méthode d'entrée"
+  },
+  "inputWay.upload": {
+    "message": "Télécharger le code QR",
+    "description": "Méthode d'entrée"
   },
   "description.qrw": {
-    "message": "Visibilité du code QR, plus la taille est grande, plus le code QR est visible",
+    "message": "Visibilité du code QR, plus la taille est grande, plus la visibilité du code QR est élevée",
     "description": "Description du paramètre 'qrw'"
   },
   "description.steps": {
-    "message": "Étapes de génération du code QR, plus il y a d'étapes, plus le code QR est visible",
+    "message": "Nombre d'étapes de génération du code QR, plus le nombre d'étapes est élevé, plus la visibilité du code QR est élevée",
     "description": "Description du paramètre 'steps'"
   },
+  "status.pending": {
+    "message": "En attente",
+    "description": "État d'attente de la tâche"
+  },
   "placeholder.paddingNoise": {
-    "message": "Sélectionnez...",
-    "description": "Espace réservé pour l'entrée de bruit de remplissage"
+    "message": "Veuillez sélectionner...",
+    "description": "Placeholder pour l'entrée du bruit de remplissage"
   },
   "placeholder.paddingLevel": {
-    "message": "Sélectionnez...",
-    "description": "Espace réservé pour le niveau de remplissage"
+    "message": "Veuillez sélectionner...",
+    "description": "Placeholder pour le niveau de remplissage"
   },
   "placeholder.prompt": {
-    "message": "Entrez la phrase décrivant le code QR à générer",
-    "description": "Texte de l'espace réservé pour la consigne"
+    "message": "Entrez le mot d'invite pour le style du code QR à générer, par exemple : fleurs",
+    "description": "Texte de substitution dans le champ d'invite"
   },
   "placeholder.seed": {
-    "message": "La graine doit être comprise entre 1 et 9007199254740991",
-    "description": "Espace réservé pour l'entrée de la graine"
+    "message": "La plage de la graine est de 1 à 9007199254740991",
+    "description": "Placeholder pour l'entrée de la graine"
   },
   "placeholder.position": {
-    "message": "Sélectionnez...",
-    "description": "Espace réservé pour l'entrée de la position"
+    "message": "Veuillez sélectionner...",
+    "description": "Placeholder pour l'entrée de la position"
   },
   "placeholder.content": {
-    "message": "Entrez le contenu du code QR à générer",
-    "description": "Texte de l'espace réservé pour le contenu"
+    "message": "Entrez le contenu du code QR à générer, par exemple : https://www.google.com",
+    "description": "Texte de substitution dans le champ de contenu"
   },
   "placeholder.aspectRatio": {
-    "message": "Sélectionnez...",
-    "description": "Espace réservé pour le ratio d'aspect"
+    "message": "Veuillez sélectionner...",
+    "description": "Placeholder pour l'entrée du ratio d'aspect"
   },
   "placeholder.preset": {
-    "message": "Sélectionnez...",
-    "description": "Espace réservé pour le préréglage"
+    "message": "Veuillez sélectionner...",
+    "description": "Placeholder pour l'entrée du style prédéfini"
   },
   "placeholder.markerShape": {
-    "message": "Sélectionnez...",
-    "description": "Espace réservé pour la forme du marqueur"
+    "message": "Veuillez sélectionner...",
+    "description": "Placeholder pour l'entrée de la forme du marqueur"
   },
   "placeholder.rotate": {
-    "message": "Sélectionnez...",
-    "description": "Espace réservé pour la rotation"
+    "message": "Veuillez sélectionner...",
+    "description": "Placeholder pour l'entrée de la rotation"
   },
   "placeholder.subMarker": {
-    "message": "Sélectionnez...",
-    "description": "Espace réservé pour le sous-marqueur"
+    "message": "Veuillez sélectionner...",
+    "description": "Placeholder pour l'entrée du sous-marqueur"
   },
   "button.generate": {
     "message": "Générer",
     "description": "Texte du bouton pour générer le code QR"
+  },
+  "button.uploadQr": {
+    "message": "Télécharger le code QR",
+    "description": "Texte du bouton pour télécharger le code QR"
   },
   "preset.sunset": {
     "message": "Coucher de soleil",
@@ -181,95 +205,99 @@
   },
   "preset.intricateStudio": {
     "message": "Studio complexe",
-    "description": "Style prédéfini du code QR à générer"
+    "description": "Style prédéfini pour générer le code QR"
   },
   "preset.symmetricMasterpiece": {
     "message": "Chef-d'œuvre symétrique",
-    "description": "Style prédéfini du code QR à générer"
+    "description": "Style prédéfini pour générer le code QR"
   },
   "preset.luminousHighway": {
     "message": "Autoroute lumineuse",
-    "description": "Style prédéfini du code QR à générer"
+    "description": "Style prédéfini pour générer le code QR"
   },
   "preset.celestialJourney": {
     "message": "Voyage céleste",
-    "description": "Style prédéfini du code QR à générer"
+    "description": "Style prédéfini pour générer le code QR"
   },
   "preset.neonMech": {
     "message": "Néon mécanique",
-    "description": "Style prédéfini du code QR à générer"
+    "description": "Style prédéfini pour générer le code QR"
   },
   "preset.etherealLowPoly": {
     "message": "Low poly éthéré",
-    "description": "Style prédéfini du code QR à générer"
+    "description": "Style prédéfini pour générer le code QR"
   },
   "preset.goldenVista": {
     "message": "Vue dorée",
-    "description": "Style prédéfini pour le QR code à générer"
+    "description": "Style prédéfini pour générer le code QR"
   },
   "preset.cinematicExpanse": {
     "message": "Étendue cinématographique",
-    "description": "Style prédéfini pour le QR code à générer"
+    "description": "Style prédéfini pour générer le code QR"
   },
   "preset.cinematicWarm": {
-    "message": "Chaud cinématographique",
-    "description": "Style prédéfini pour le QR code à générer"
+    "message": "Chaleur cinématographique",
+    "description": "Style prédéfini pour générer le code QR"
   },
   "preset.desolateWilderness": {
     "message": "Désert désolé",
-    "description": "Style prédéfini pour le QR code à générer"
+    "description": "Style prédéfini pour générer le code QR"
   },
   "preset.vibrantPalette": {
     "message": "Palette vibrante",
-    "description": "Style prédéfini pour le QR code à générer"
+    "description": "Style prédéfini pour générer le code QR"
   },
   "preset.enigmaticJourney": {
     "message": "Voyage énigmatique",
-    "description": "Style prédéfini pour le QR code à générer"
+    "description": "Style prédéfini pour générer le code QR"
   },
   "preset.timelessCinematic": {
     "message": "Cinématographique intemporel",
-    "description": "Style prédéfini pour le QR code à générer"
+    "description": "Style prédéfini pour générer le code QR"
   },
   "preset.regalGalaxy": {
     "message": "Galaxie royale",
-    "description": "Style prédéfini pour le QR code à générer"
+    "description": "Style prédéfini pour générer le code QR"
   },
   "preset.illustriousCanvas": {
     "message": "Toile illustre",
-    "description": "Style prédéfini pour le QR code à générer"
+    "description": "Style prédéfini pour générer le code QR"
   },
   "preset.expressiveMural": {
     "message": "Murale expressive",
-    "description": "Style prédéfini pour le QR code à générer"
+    "description": "Style prédéfini pour générer le code QR"
   },
   "preset.sereneHaze": {
     "message": "Brume sereine",
-    "description": "Style prédéfini pour le QR code à générer"
+    "description": "Style prédéfini pour générer le code QR"
+  },
+  "message.uploadQr": {
+    "message": "Téléchargez une image de code QR pour générer un code QR artistique correspondant au contenu du code QR",
+    "description": "Description de téléchargement du code QR"
   },
   "message.promptPlaceholder": {
-    "message": "Veuillez saisir la description de l'image à générer, par exemple : un chat mignon. Les paramètres supplémentaires remplaceront les paramètres prédéfinis.",
+    "message": "Entrez une phrase décrivant l'image à générer, par exemple : un chat mignon. Les paramètres supplémentaires remplaceront les paramètres prédéfinis par défaut",
     "description": "Texte de substitution dans le champ de saisie"
   },
   "message.uploadReferencesExceed": {
-    "message": "Au maximum 5 images peuvent être téléchargées",
+    "message": "Vous pouvez télécharger jusqu'à 5 images",
     "description": "Message d'erreur lorsque le nombre d'images téléchargées dépasse la limite"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Téléchargement des images réussi",
-    "description": "Message de succès pour un téléchargement d'image réussi"
+    "message": "Image téléchargée avec succès",
+    "description": "Message de succès lors du téléchargement d'une image"
   },
   "message.uploadReferencesError": {
-    "message": "Échec du téléchargement des images, veuillez réessayer ultérieurement",
-    "description": "Message d'erreur en cas d'échec du téléchargement d'image"
+    "message": "Échec du téléchargement de l'image, veuillez réessayer ultérieurement",
+    "description": "Message d'erreur en cas d'échec du téléchargement de l'image"
   },
   "message.startingTask": {
     "message": "Démarrage de la tâche...",
-    "description": "Message au début de l'exécution de la tâche de dessin"
+    "description": "Message au démarrage de la tâche de dessin"
   },
   "message.startTaskSuccess": {
-    "message": "Démarrage de la tâche de dessin réussi",
-    "description": "Message de succès pour un démarrage de tâche de dessin réussi"
+    "message": "La tâche de dessin a démarré avec succès",
+    "description": "Message de succès au démarrage de la tâche de dessin"
   },
   "message.startTaskFailed": {
     "message": "Échec du démarrage de la tâche de dessin",
@@ -277,146 +305,146 @@
   },
   "message.generating": {
     "message": "Génération en cours...",
-    "description": "Message lors de la génération de l'image"
+    "description": "Message pendant la génération de l'image"
   },
   "message.generateFailed": {
     "message": "Échec de la génération de l'image",
-    "description": "Message d'erreur en cas d'échec de la génération de l'image"
+    "description": "Message en cas d'échec de la génération de l'image"
   },
   "message.noOperations": {
     "message": "Aucune opération disponible",
-    "description": "Message lorsqu'aucune opération n'est disponible"
+    "description": "Message en cas d'absence d'opération disponible"
   },
   "message.noTasks": {
-    "message": "Aucune tâche en cours, veuillez créer une nouvelle tâche",
-    "description": "Message lorsqu'aucune tâche n'est disponible"
+    "message": "Aucune tâche, veuillez créer une nouvelle tâche",
+    "description": "Message en cas d'absence de tâche"
   },
   "markerShape.square": {
     "message": "Carré",
-    "description": "Forme du marqueur utilisée pour générer le QR code"
+    "description": "Forme de marque pour générer le code QR"
   },
   "markerShape.circle": {
     "message": "Cercle",
-    "description": "Forme du marqueur utilisée pour générer le QR code"
+    "description": "Forme de marque pour générer le code QR"
   },
   "markerShape.plus": {
     "message": "Plus",
-    "description": "Forme du marqueur utilisée pour générer le QR code"
+    "description": "Forme de marque pour générer le code QR"
   },
   "markerShape.box": {
     "message": "Boîte",
-    "description": "Forme du marqueur utilisée pour générer le QR code"
+    "description": "Forme de marque pour générer le code QR"
   },
   "markerShape.octagon": {
     "message": "Octogone",
-    "description": "Forme du marqueur utilisée pour générer le QR code"
+    "description": "Forme de marque pour générer le code QR"
   },
   "markerShape.tinyPlus": {
     "message": "Petit plus",
-    "description": "Forme du marqueur utilisée pour générer le QR code"
+    "description": "Forme de marque pour générer le code QR"
   },
   "markerShape.random": {
     "message": "Aléatoire",
-    "description": "Forme du marqueur utilisée pour générer le QR code"
+    "description": "Forme de marque pour générer le code QR"
   },
   "subMarker.square": {
     "message": "Carré",
-    "description": "Forme du sous-marqueur utilisée pour générer le QR code"
+    "description": "Sous-forme de marque pour générer le code QR"
   },
   "subMarker.circle": {
     "message": "Cercle",
-    "description": "Forme du sous-marqueur utilisée pour générer le QR code"
+    "description": "Sous-forme de marque pour générer le code QR"
   },
   "subMarker.plus": {
     "message": "Plus",
-    "description": "Forme du sous-marqueur utilisée pour générer le QR code"
+    "description": "Sous-forme de marque pour générer le code QR"
   },
   "subMarker.box": {
     "message": "Boîte",
-    "description": "Forme du sous-marqueur utilisée pour générer le QR code"
+    "description": "Sous-forme de marque pour générer le code QR"
   },
   "subMarker.random": {
     "message": "Aléatoire",
-    "description": "Forme du sous-marqueur utilisée pour générer le QR code"
+    "description": "Sous-forme de marque pour générer le code QR"
   },
   "position.center": {
     "message": "Centre",
-    "description": "Position pour générer le QR code"
+    "description": "Position pour générer le code QR"
   },
   "position.topLeft": {
     "message": "En haut à gauche",
-    "description": "Position pour générer le QR code"
+    "description": "Position pour générer le code QR"
   },
   "position.topRight": {
     "message": "En haut à droite",
-    "description": "Position pour générer le QR code"
+    "description": "Position pour générer le code QR"
   },
   "position.bottomLeft": {
     "message": "En bas à gauche",
-    "description": "Position pour générer le QR code"
+    "description": "Position pour générer le code QR"
   },
   "position.bottomRight": {
     "message": "En bas à droite",
-    "description": "Position pour générer le QR code"
+    "description": "Position pour générer le code QR"
   },
   "position.top": {
-    "message": "En haut",
-    "description": "Position pour générer le QR code"
+    "message": "Top",
+    "description": "Used for the position to generate the QR code"
   },
   "position.bottom": {
-    "message": "En bas",
-    "description": "Position pour générer le QR code"
+    "message": "Bottom",
+    "description": "Used for the position to generate the QR code"
   },
   "position.left": {
-    "message": "À gauche",
-    "description": "Position pour générer le QR code"
+    "message": "Left",
+    "description": "Used for the position to generate the QR code"
   },
   "position.right": {
-    "message": "À droite",
-    "description": "Position pour générer le QR code"
+    "message": "Right",
+    "description": "Used for the position to generate the QR code"
   },
   "pixelStyle.row": {
-    "message": "Rangée",
-    "description": "Style de pixel pour générer le QR code"
+    "message": "Row",
+    "description": "Used for the pixel style to generate the QR code"
   },
   "pixelStyle.column": {
-    "message": "Colonne",
-    "description": "Style de pixel pour générer le QR code"
+    "message": "Column",
+    "description": "Used for the pixel style to generate the QR code"
   },
   "pixelStyle.square": {
-    "message": "Carré",
-    "description": "Style de pixel pour générer le QR code"
+    "message": "Square",
+    "description": "Used for the pixel style to generate the QR code"
   },
   "pixelStyle.rounded": {
-    "message": "Arrondi",
-    "description": "Style de pixel pour générer le QR code"
+    "message": "Rounded",
+    "description": "Used for the pixel style to generate the QR code"
   },
   "pixelStyle.dot": {
-    "message": "Point",
-    "description": "Style de pixel pour générer le QR code"
+    "message": "Dot",
+    "description": "Used for the pixel style to generate the QR code"
   },
   "pixelStyle.squircle": {
-    "message": "Rond carré",
-    "description": "Utilisé pour le style de pixel pour générer des QR codes"
+    "message": "Squircle",
+    "description": "Used for the pixel style to generate the QR code"
   },
   "type.text": {
-    "message": "Texte",
-    "description": "Type de contenu utilisé pour générer des QR codes"
+    "message": "Text",
+    "description": "Used for the content type to generate the QR code"
   },
   "type.link": {
-    "message": "Lien",
-    "description": "Type de contenu utilisé pour générer des QR codes"
+    "message": "Link",
+    "description": "Used for the content type to generate the QR code"
   },
   "type.email": {
-    "message": "E-mail",
-    "description": "Type de contenu utilisé pour générer des QR codes"
+    "message": "Email",
+    "description": "Used for the content type to generate the QR code"
   },
   "type.phone": {
-    "message": "Téléphone",
-    "description": "Type de contenu utilisé pour générer des QR codes"
+    "message": "Phone",
+    "description": "Used for the content type to generate the QR code"
   },
   "type.sms": {
     "message": "SMS",
-    "description": "Type de contenu utilisé pour générer des QR codes"
+    "description": "Used for the content type to generate the QR code"
   }
 }
