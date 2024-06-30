@@ -73,7 +73,6 @@ export default defineComponent({
     width: 100%;
     height: calc(100% - 50px);
     flex: 1;
-    overflow-y: scroll;
   }
   .actions {
     height: 50px;

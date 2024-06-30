@@ -1,7 +1,7 @@
 <template>
   <div class="panel recent tasks">
     <task-preview v-for="(task, taskIndex) in tasks?.items" :key="taskIndex" :model-value="task" class="preview" />
-    <p v-if="tasks?.items?.length === 0">
+    <p v-if="tasks?.items?.length === 0" class="description">
       {{ $t('qrart.message.noTasks') }}
     </p>
   </div>
@@ -27,6 +27,9 @@ export default defineComponent({
       return this.$store.state.qrart?.status?.getApplication === Status.Request;
     },
     tasks() {
+      return {
+        items: []
+      };
       // reverse the order of the tasks.items
       return {
         ...this.$store.state.qrart?.tasks,
@@ -85,6 +88,11 @@ export default defineComponent({
     flex-direction: column;
     .preview {
       margin-right: 15px;
+    }
+    .description {
+      text-align: left;
+      font-size: 14px;
+      color: var(--el-text-color-secondary);
     }
   }
 }
