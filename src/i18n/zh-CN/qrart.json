@@ -36,7 +36,7 @@
     "description": "要生成的 QR 码的像素风格"
   },
   "name.seed": {
-    "message": "种子",
+    "message": "种子值",
     "description": "要生成的 QR 码的种子"
   },
   "name.paddingLevel": {
@@ -64,7 +64,7 @@
     "description": "内容输入的提示"
   },
   "name.rotate": {
-    "message": "旋转",
+    "message": "旋转角度",
     "description": "要生成的 QR 码的旋转"
   },
   "name.advanced": {
@@ -88,20 +88,40 @@
     "description": "QR 码生成器的名称"
   },
   "name.steps": {
-    "message": "步骤",
-    "description": "生成 QR 码的步骤"
+    "message": "生成步数",
+    "description": "生成 QR 码的步数"
   },
   "name.preset": {
-    "message": "预设",
+    "message": "预设风格",
     "description": "要生成的 QR 码的预设"
   },
+  "name.qrartBot": {
+    "message": "QrArt Bot",
+    "description": "QR 码生成器的名称"
+  },
+  "name.contentImageUrl": {
+    "message": "内容图片链接",
+    "description": "要生成的 QR 码的内容图片 URL"
+  },
+  "inputWay.input": {
+    "message": "输入内容",
+    "description": "输入方式"
+  },
+  "inputWay.upload": {
+    "message": "上传二维码",
+    "description": "输入方式"
+  },
   "description.qrw": {
-    "message": "QR 码可见性，尺寸越大，QR 码越可见",
+    "message": "QR 码可见性，尺寸越大，QR 码可见度越高",
     "description": "参数'qrw'的描述"
   },
   "description.steps": {
-    "message": "生成 QR 码的步骤，步骤越多，QR 码越可见",
+    "message": "生成 QR 码的步数，步数越多，QR 码可见度越高",
     "description": "参数'steps'的描述"
+  },
+  "status.pending": {
+    "message": "等待中",
+    "description": "任务的等待状态"
   },
   "placeholder.paddingNoise": {
     "message": "请选择...",
@@ -112,7 +132,7 @@
     "description": "填充级别的占位符"
   },
   "placeholder.prompt": {
-    "message": "输入描述要生成的 QR 码的句子",
+    "message": "输入要生成的 QR 码风格的提示词，例如：flowers",
     "description": "提示字段中的占位文本"
   },
   "placeholder.seed": {
@@ -124,7 +144,7 @@
     "description": "位置输入的占位符"
   },
   "placeholder.content": {
-    "message": "输入要生成的 QR 码的内容",
+    "message": "输入要生成的 QR 码的内容，例如：https://www.google.com",
     "description": "内容字段中的占位文本"
   },
   "placeholder.aspectRatio": {
@@ -150,6 +170,10 @@
   "button.generate": {
     "message": "生成",
     "description": "生成 QR 码的按钮文本"
+  },
+  "button.uploadQr": {
+    "message": "上传二维码",
+    "description": "上传二维码的按钮文本"
   },
   "preset.sunset": {
     "message": "日落",
@@ -246,6 +270,10 @@
   "preset.sereneHaze": {
     "message": "宁静薄雾",
     "description": "要生成的 QR 码的预设风格"
+  },
+  "message.uploadQr": {
+    "message": "上传二维码图片，可生成和二维码内容一致的艺术二维码",
+    "description": "上传二维码的说明"
   },
   "message.promptPlaceholder": {
     "message": "请输入描述要生成的图像的句子，例如：一只可爱的猫。额外参数将覆盖默认预设参数",

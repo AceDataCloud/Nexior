@@ -5,7 +5,11 @@
   },
   "button.preview": {
     "message": "Visualizar",
-    "description": "Botão de texto, usado para abrir a visualização de um arquivo por URL"
+    "description": "Botão de texto, usado para abrir a pré-visualização de um arquivo por URL"
+  },
+  "button.seeRawImage": {
+    "message": "Ver imagem original",
+    "description": "Botão de texto, usado para ver a imagem original"
   },
   "button.edit": {
     "message": "Editar",
@@ -37,11 +41,11 @@
   },
   "button.alert": {
     "message": "Alerta",
-    "description": "Botão de texto, usado para alertar algum conteúdo"
+    "description": "Botão de texto, usado para alertar sobre algum conteúdo"
   },
   "button.info": {
     "message": "Informação",
-    "description": "Botão de texto, usado para exibir informações"
+    "description": "Botão de texto, usado para mostrar informações"
   },
   "button.publish": {
     "message": "Publicar",
@@ -52,36 +56,36 @@
     "description": "Botão de texto, usado para assistir algum conteúdo"
   },
   "button.verify": {
-    "message": "Verificação de Identidade",
-    "description": "Botão de texto, usado para fazer com que o usuário faça a verificação da identidade"
+    "message": "Verificar identidade",
+    "description": "Botão de texto, usado para que o usuário faça a verificação de identidade"
   },
   "button.profile": {
     "message": "Perfil",
-    "description": "Botão de texto, usado para exibir o perfil do usuário"
+    "description": "Botão de texto, usado para mostrar o perfil pessoal"
   },
   "button.console": {
     "message": "Console",
-    "description": "Botão de texto, usado para exibir a página de console para controlar o conteúdo da página da web"
+    "description": "Botão de texto, usado para mostrar a página do console para controlar algum conteúdo na web"
   },
   "button.learn": {
     "message": "Aprender",
-    "description": "Botão de texto, usado para permitir que o usuário aprenda algum conteúdo"
+    "description": "Botão de texto, usado para que o usuário aprenda algum conteúdo"
   },
   "button.buy": {
     "message": "Comprar",
-    "description": "Botão de texto, usado para permitir que o usuário compre algum conteúdo"
+    "description": "Botão de texto, usado para que o usuário compre algum conteúdo"
   },
   "button.try": {
-    "message": "Tentar",
-    "description": "Botão de texto, usado para permitir que o usuário tente algum conteúdo"
+    "message": "Experimentar",
+    "description": "Botão de texto, usado para que o usuário experimente algum conteúdo"
   },
   "button.startForFree": {
-    "message": "Começar Grátis",
-    "description": "Botão de texto, usado para permitir que o usuário comece a usar gratuitamente"
+    "message": "Começar de graça",
+    "description": "Botão de texto, usado para que o usuário comece a usar de graça"
   },
   "button.apply": {
     "message": "Aplicar",
-    "description": "Botão de texto, usado para permitir que o usuário aplique o serviço de API"
+    "description": "Botão de texto, usado para que o usuário aplique o serviço de API"
   },
   "button.refresh": {
     "message": "Atualizar",
@@ -89,11 +93,11 @@
   },
   "button.pay": {
     "message": "Pagar",
-    "description": "Botão de texto, usado para permitir que o usuário pague pela taxa de serviço"
+    "description": "Botão de texto, usado para que o usuário pague pelo serviço"
   },
   "button.repay": {
-    "message": "Pagar Novamente",
-    "description": "Botão de texto, usado para permitir que o usuário pague novamente a taxa de serviço"
+    "message": "Repagar",
+    "description": "Botão de texto, usado para que o usuário continue a pagar pelo serviço"
   },
   "button.applied": {
     "message": "Aplicado",
@@ -101,15 +105,15 @@
   },
   "button.acquire": {
     "message": "Adquirir",
-    "description": "Botão de texto, usado para permitir que o usuário obtenha tokens ou chaves de API"
+    "description": "Botão de texto, usado para que o usuário adquira o token ou chave do serviço de API"
   },
   "button.fillExample": {
-    "message": "Preencher Exemplo",
-    "description": "Botão de texto, usado para permitir que o usuário preencha dados de exemplo"
+    "message": "Preencher exemplo",
+    "description": "Botão de texto, usado para que o usuário preencha dados de exemplo"
   },
   "button.buyMore": {
-    "message": "Comprar Mais",
-    "description": "Botão de texto, usado para permitir que o usuário compre mais conteúdo"
+    "message": "Comprar mais",
+    "description": "Botão de texto, usado para que o usuário compre mais conteúdo"
   },
   "button.update": {
     "message": "Atualizar",
@@ -128,8 +132,8 @@
     "description": "Botão de texto, usado para criar algum conteúdo"
   },
   "button.referralEarnings": {
-    "message": "Ganhos por Indicação",
-    "description": "Botão de texto, usado para mostrar ganhos por indicação, indicando que o usuário pode ganhar dinheiro ao convidar outras pessoas para usar o serviço"
+    "message": "Ganhos por indicação",
+    "description": "Botão de texto, usado para mostrar os ganhos por indicação, indicando que o usuário pode ganhar dinheiro convidando outras pessoas para usar o serviço"
   },
   "button.finish": {
     "message": "Concluir",
@@ -140,12 +144,12 @@
     "description": "Nome do site, não precisa ser traduzido, mantenha como 'Ace Data Cloud'"
   },
   "entity.copyright": {
-    "message": "Direitos Autorais",
+    "message": "Direitos autorais",
     "description": "Texto usado para exibir informações de direitos autorais"
   },
   "entity.platform": {
     "message": "Plataforma",
-    "description": "Texto que indica que se trata de uma plataforma de serviços de API"
+    "description": "Texto indicando que se trata da plataforma de serviço de API"
   },
   "entity.title": {
     "message": "Título",
@@ -177,107 +181,107 @@
   },
   "entity.order": {
     "message": "Pedido",
-    "description": "Pedido da entidade, contendo valor, informações de serviço, e que o usuário precisa pagar por ele"
+    "description": "Pedido da entidade, contendo informações de valor, serviço e requer pagamento pelo usuário"
   },
   "message.usedAmount": {
-    "message": "已使用金额",
-    "description": "用于显示服务已使用的金额"
+    "message": "Valor Utilizado",
+    "description": "Usado para exibir o valor utilizado do serviço"
   },
   "message.remainingAmount": {
-    "message": "剩余金额",
-    "description": "用于显示服务剩余的金额"
+    "message": "Valor Restante",
+    "description": "Usado para exibir o valor restante do serviço"
   },
   "message.copied": {
-    "message": "已成功复制",
-    "description": "用于显示内容已成功复制的消息"
+    "message": "Copiado com Sucesso",
+    "description": "Usado para exibir a mensagem de conteúdo copiado com sucesso"
   },
   "message.confirmDelete": {
-    "message": "确定要删除吗？",
-    "description": "用于确认用户是否要删除某些内容的消息"
+    "message": "Tem certeza que deseja excluir?",
+    "description": "Usado para confirmar se o usuário deseja excluir algum conteúdo"
   },
   "message.alert": {
-    "message": "警告",
-    "description": "用于警告用户的消息"
+    "message": "Alerta",
+    "description": "Usado para exibir mensagem de alerta ao usuário"
   },
   "message.info": {
-    "message": "友情提醒",
-    "description": "用于显示信息的消息"
+    "message": "Informação",
+    "description": "Usado para exibir mensagem informativa"
   },
   "message.free": {
-    "message": "免费",
-    "description": "用于显示服务免费的消息，表示用户无需付费"
+    "message": "Grátis",
+    "description": "Usado para exibir mensagem de serviço gratuito, indicando que o usuário não precisa pagar"
   },
   "message.startPrice": {
-    "message": "起价",
-    "description": "用于显示服务的最低价格的消息"
+    "message": "Preço Inicial",
+    "description": "Usado para exibir o preço mínimo do serviço"
   },
   "message.joinDiscord": {
-    "message": "加入Discord",
-    "description": "用于让用户加入Discord频道的消息"
+    "message": "Participar do Discord",
+    "description": "Usado para permitir que o usuário participe do canal do Discord"
   },
   "message.noData": {
-    "message": "无数据",
-    "description": "用于显示表格或列表中没有数据的消息"
+    "message": "Sem Dados",
+    "description": "Usado para exibir mensagem de ausência de dados em tabelas ou listas"
   },
   "nav.home": {
     "message": "Início",
-    "description": "Net barra de navegação do site, usado para mostrar a página inicial"
+    "description": "Texto na barra de navegação do site, usado para exibir a página inicial"
   },
   "nav.content": {
     "message": "Conteúdo",
-    "description": "Net barra de navegação do site, usado para mostrar a página de conteúdo"
+    "description": "Texto na barra de navegação do site, usado para exibir a página de conteúdo"
   },
   "nav.category": {
     "message": "Categoria",
-    "description": "Net barra de navegação do site, usado para mostrar a página de categoria"
+    "description": "Texto na barra de navegação do site, usado para exibir a página de categorias"
   },
   "nav.service": {
     "message": "Serviço",
-    "description": "Net barra de navegação do site, usado para mostrar a página de serviço"
+    "description": "Texto na barra de navegação do site, usado para exibir a página de serviços"
   },
   "nav.document": {
     "message": "Documento",
-    "description": "Net barra de navegação do site, usado para mostrar a página de documento"
+    "description": "Texto na barra de navegação do site, usado para exibir a página de documentos"
   },
   "nav.console": {
     "message": "Console",
-    "description": "Net barra de navegação do site, usado para mostrar a página do console"
+    "description": "Texto na barra de navegação do site, usado para exibir a página do console"
   },
   "nav.chat": {
     "message": "Chat",
-    "description": "Net barra de navegação do site, usado para mostrar a página de bate-papo, não traduza este item, deve permanecer como 'Chat'"
+    "description": "Texto na barra de navegação do site, usado para exibir a página de chat, não deve ser traduzido, deve permanecer como 'Chat'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "Net barra de navegação do site, usado para mostrar a página de viagem intermediária, não traduza este item, deve permanecer como 'Midjourney'"
+    "description": "Texto na barra de navegação do site, usado para exibir a página de meio da jornada, não deve ser traduzido, deve permanecer como 'Midjourney'"
   },
   "nav.chatdoc": {
     "message": "ChatDoc",
-    "description": "Net barra de navegação do site, usado para mostrar a página de documentos do bate-papo, não traduza este item, deve permanecer como 'Chatdoc'"
+    "description": "Texto na barra de navegação do site, usado para exibir a página de documentos de chat, não deve ser traduzido, deve permanecer como 'Chatdoc'"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Net barra de navegação do site, usado para mostrar a página de arte QR, não traduza este item, deve permanecer como 'QRArt'"
+    "description": "Texto na barra de navegação do site, usado para exibir a página de arte QR, não deve ser traduzido, deve permanecer como 'QRArt'"
   },
   "nav.distribution": {
-    "message": "Receita Recomendada",
-    "description": "Net barra de navegação do site, usado para mostrar a página de receita recomendada"
+    "message": "Rendimento Recomendado",
+    "description": "Texto na barra de navegação do site, usado para exibir a página de rendimento recomendado"
   },
   "nav.logOut": {
     "message": "Sair",
-    "description": "Net barra de navegação do site, usado para sair"
+    "description": "Texto na barra de navegação do site, usado para sair da conta"
   },
   "nav.site": {
-    "message": "Configurações do Site",
-    "description": "Net barra de navegação do site, usado para mostrar a página de configurações do site"
+    "message": "Configuração do Site",
+    "description": "Texto na barra de navegação do site, usado para exibir a página de configuração do site"
   },
   "nav.locale": {
     "message": "Idioma",
-    "description": "Net barra de navegação do site, usado para mudar o idioma"
+    "description": "Texto na barra de navegação do site, usado para alterar o idioma"
   },
   "nav.darkMode": {
     "message": "Modo Escuro",
-    "description": "Net barra de navegação do site, usado para alternar para o tema escuro"
+    "description": "Texto na barra de navegação do site, usado para alternar para o tema escuro"
   },
   "title.alert": {
     "message": "Alerta",
@@ -288,7 +292,7 @@
     "description": "Marcador de posição do campo de seleção"
   },
   "title.placeholderOfInput": {
-    "message": "Por favor preencha",
+    "message": "Por favor, preencha",
     "description": "Marcador de posição do campo de entrada"
   },
   "title.allApplications": {
@@ -305,19 +309,19 @@
   },
   "title.buyMore": {
     "message": "Comprar Mais",
-    "description": "Título da página que permite aos usuários comprar mais"
+    "description": "Título da página que permite ao usuário comprar mais"
   },
   "title.distribution": {
-    "message": "Receita Recomendada",
-    "description": "Título da página que exibe a receita recomendada, indicando que os usuários podem ganhar dinheiro convidando outras pessoas para usar o serviço"
+    "message": "Rendimento Recomendado",
+    "description": "Título da página que exibe o rendimento recomendado, indicando que o usuário pode ganhar dinheiro convidando outras pessoas para usar o serviço"
   },
   "title.site": {
-    "message": "Configurações do Site",
-    "description": "Título da página que exibe as configurações do site"
+    "message": "Configuração do Site",
+    "description": "Título da página que exibe a configuração do site"
   },
   "title.distributionHistory": {
-    "message": "Histórico de Receita Recomendada",
-    "description": "Título da página que exibe o histórico de receita recomendada"
+    "message": "Histórico de Recomendações",
+    "description": "Título da página que exibe o histórico de recomendações"
   },
   "title.invitee": {
     "message": "Convidado",
@@ -325,10 +329,10 @@
   },
   "title.allUsages": {
     "message": "Histórico de Uso",
-    "description": "Título da página que exibe todo o histórico de uso do serviço de API"
+    "description": "Título da página que exibe todo o histórico de uso dos serviços de API"
   },
   "title.allCredentials": {
     "message": "Credenciais",
-    "description": "Título da página que exibe todas as credenciais para acessar a API"
+    "description": "Título da página que exibe todas as credenciais usadas para acessar a API"
   }
 }

@@ -47,7 +47,7 @@
               </el-descriptions-item>
               <el-descriptions-item :label="$t('qrart.name.content')">
                 {{ task?.request?.content }}
-                <copy-to-clipboard :content="task?.request?.content" class="btn-copy" />
+                <copy-to-clipboard :content="task?.request?.content!" class="btn-copy" />
               </el-descriptions-item>
               <el-descriptions-item :label="$t('qrart.name.prompt')">
                 {{ task?.request?.prompt }}

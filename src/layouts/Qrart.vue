@@ -53,7 +53,7 @@ export default defineComponent({
   display: flex;
   flex-direction: row;
   .config {
-    width: 350px;
+    width: 300px;
     height: 100%;
     overflow-y: scroll;
     border-right: 1px solid var(--el-border-color);
@@ -63,7 +63,7 @@ export default defineComponent({
     height: 100%;
     padding: 15px;
     flex: 1;
-    width: calc(100% - 350px);
+    width: calc(100% - 300px);
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -75,7 +75,7 @@ export default defineComponent({
 }
 
 @media (max-width: 767px) {
-  .preset {
+  .config {
     display: none;
   }
   .result {

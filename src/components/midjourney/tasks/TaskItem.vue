@@ -50,15 +50,24 @@
       </div>
       <!-- response success -->
       <div v-if="modelValue?.response?.success === true" :class="{ content: true, full: full }">
-        <el-image
-          v-if="modelValue?.response?.image_url"
-          :src="modelValue?.response?.image_url"
-          :preview-src-list="[modelValue?.response?.raw_image_url as string]"
-          fit="contain"
-          class="image"
-          :lazy="true"
-          @error="onReload($event)"
-        />
+        <div class="image-wrapper">
+          <img
+            v-if="modelValue?.response?.image_url"
+            :src="modelValue?.response?.image_url"
+            :preview-src-list="[modelValue?.response?.raw_image_url as string]"
+            class="image"
+            @error="onReload($event)"
+          />
+          <el-button
+            v-if="modelValue?.response?.image_url"
+            type="info"
+            round
+            class="btn-raw"
+            @click="onOpenUrl(modelValue?.response?.raw_image_url)"
+          >
+            {{ $t('common.button.seeRawImage') }}
+          </el-button>
+        </div>
         <div v-if="modelValue?.response?.actions" :class="{ operations: true, full, 'mt-2': true }">
           <el-tooltip
             v-for="(action, actionKey) in modelValue?.response?.actions"
@@ -78,21 +87,21 @@
               {{ actionMapping[action] }}
             </el-button>
           </el-tooltip>
-          <el-alert :closable="false" class="mt-2 success">
-            <p class="description">
-              <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
-              {{ $t('midjourney.field.taskId') }}:
-              {{ modelValue?.id }}
-              <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
-            </p>
-            <p class="description">
-              <font-awesome-icon icon="fa-solid fa-image" class="mr-1" />
-              {{ $t('midjourney.field.imageId') }}:
-              {{ modelValue?.response?.image_id }}
-              <copy-to-clipboard :content="modelValue?.response?.image_id" class="btn-copy" />
-            </p>
-          </el-alert>
         </div>
+        <el-alert :closable="false" class="mt-2 success">
+          <p class="description">
+            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            {{ $t('midjourney.field.taskId') }}:
+            {{ modelValue?.id }}
+            <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
+          </p>
+          <p class="description">
+            <font-awesome-icon icon="fa-solid fa-image" class="mr-1" />
+            {{ $t('midjourney.field.imageId') }}:
+            {{ modelValue?.response?.image_id }}
+            <copy-to-clipboard :content="modelValue?.response?.image_id" class="btn-copy" />
+          </p>
+        </el-alert>
       </div>
       <!-- response pending -->
       <div v-if="!modelValue?.response">
@@ -237,6 +246,9 @@ export default defineComponent({
         image_id: this.modelValue?.response?.image_id
       });
     },
+    onOpenUrl(url: string) {
+      window.open(url, '_blank');
+    },
     onDownload(url: string) {
       // download image using javascript
       const link = document.createElement('a');
@@ -333,23 +345,30 @@ $left-width: 70px;
           min-height: 200px;
         }
       }
-      &.failed {
+      .image-wrapper {
+        position: relative;
+        width: fit-content;
+        min-height: 50px;
+        min-width: 100px;
         .image {
-          .image-slot {
-            font-size: 16px;
-            padding: 20px;
-          }
+          max-height: 400px;
+          max-width: 300px;
         }
-      }
-      .image {
-        height: 350px;
-        .image-slot {
-          display: flex;
-          justify-content: left;
-          width: 100%;
-          height: 100%;
-          background: var(--el-fill-color-light);
-          color: var(--el-text-color-regular);
+        .btn-raw {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 1000;
+          display: none;
+        }
+        &:hover {
+          .image {
+            filter: brightness(0.6);
+          }
+          .btn-raw {
+            display: block;
+          }
         }
       }
       .progress {

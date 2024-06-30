@@ -1,7 +1,7 @@
 <template>
   <layout>
     <template #config>
-      <config-panel @generate="onGenerate" />
+      <config-panel />
     </template>
     <template #result>
       <application-status
@@ -12,8 +12,8 @@
         class="mb-4"
         @refresh="onGetApplication"
       />
-      <detail-panel class="panel detail" />
       <recent-panel class="panel recent" />
+      <operation-panel class="panel operation" @generate="onGenerate" />
     </template>
   </layout>
 </template>
@@ -27,7 +27,7 @@ import { IApplicationDetailResponse, IQrartGenerateRequest, Status } from '@/mod
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_DUPLICATION } from '@/constants';
 import ApplicationStatus from '@/components/application/Status.vue';
-import DetailPanel from '@/components/qrart/DetailPanel.vue';
+import OperationPanel from '@/components/qrart/OperationPanel.vue';
 import RecentPanel from '@/components/qrart/RecentPanel.vue';
 import { IQrartTask } from '@/models';
 
@@ -43,8 +43,8 @@ export default defineComponent({
     ConfigPanel,
     Layout,
     ApplicationStatus,
-    DetailPanel,
-    RecentPanel
+    RecentPanel,
+    OperationPanel
   },
   data(): IData {
     return {
@@ -91,10 +91,20 @@ export default defineComponent({
     async onGetApplication() {
       await this.$store.dispatch('qrart/getApplication');
     },
+    async onScrollDown() {
+      setTimeout(() => {
+        // scroll to bottom for `.tasks`
+        const el = document.querySelector('.tasks');
+        if (el) {
+          el.scrollTop = el.scrollHeight;
+        }
+      }, 500);
+    },
     async onGenerate() {
       const request = {
         type: this.config?.type,
         content: this.config?.content,
+        content_image_url: this.config?.content_image_url,
         prompt: this.config?.prompt,
         aspect_ratio: this.config?.aspect_ratio,
         callback_url: CALLBACK_URL,
@@ -130,6 +140,13 @@ export default defineComponent({
         })
         .catch(() => {
           ElMessage.error(this.$t('qrart.message.startTaskFailed'));
+        })
+        .finally(async () => {
+          await this.$store.dispatch('qrart/getTasks', {
+            limit: 50,
+            offset: 0
+          });
+          await this.onScrollDown();
         });
     }
   }
@@ -137,21 +154,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.operation {
-  flex: 1;
-  padding: 15px;
-  height: 100%;
-  overflow-x: scroll;
-  .title {
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  .btn.btn-generate {
-    width: 80px;
-    border-radius: 20px;
-  }
-}
-
 .status {
   margin-bottom: 10px;
 }
@@ -163,8 +165,14 @@ export default defineComponent({
     overflow-y: scroll;
   }
   &.recent {
-    height: 300px;
+    height: 100%;
     width: 100%;
+    margin-bottom: 10px;
+    position: relative;
+    justify-content: initial;
+  }
+  &.operation {
+    position: relative;
   }
 }
 </style>
