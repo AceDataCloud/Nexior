@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sun, 30 Jun 2024 11:19:28 GMT and should not be manually modified.
+This log was last generated on Sun, 30 Jun 2024 11:35:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.8.3
+
+Sun, 30 Jun 2024 11:35:08 GMT
+
+### Patches
+
+- update qrart task style (germey@acedata.cloud)
 
 ## 1.8.2
 
