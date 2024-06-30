@@ -1,7 +1,7 @@
 <template>
   <layout>
     <template #config>
-      <config-panel @generate="onGenerate" />
+      <config-panel />
     </template>
     <template #result>
       <application-status
@@ -13,6 +13,7 @@
         @refresh="onGetApplication"
       />
       <recent-panel class="panel recent" />
+      <operation-panel class="panel operation" @generate="onGenerate" />
     </template>
   </layout>
 </template>
@@ -26,7 +27,7 @@ import { IApplicationDetailResponse, IQrartGenerateRequest, Status } from '@/mod
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_DUPLICATION } from '@/constants';
 import ApplicationStatus from '@/components/application/Status.vue';
-import DetailPanel from '@/components/qrart/DetailPanel.vue';
+import OperationPanel from '@/components/qrart/OperationPanel.vue';
 import RecentPanel from '@/components/qrart/RecentPanel.vue';
 import { IQrartTask } from '@/models';
 
@@ -42,7 +43,8 @@ export default defineComponent({
     ConfigPanel,
     Layout,
     ApplicationStatus,
-    RecentPanel
+    RecentPanel,
+    OperationPanel
   },
   data(): IData {
     return {
@@ -128,6 +130,12 @@ export default defineComponent({
         })
         .catch(() => {
           ElMessage.error(this.$t('qrart.message.startTaskFailed'));
+        })
+        .finally(() => {
+          this.$store.dispatch('qrart/getTasks', {
+            limit: 50,
+            offset: 0
+          });
         });
     }
   }
@@ -135,21 +143,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.operation {
-  flex: 1;
-  padding: 15px;
-  height: 100%;
-  overflow-x: scroll;
-  .title {
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  .btn.btn-generate {
-    width: 80px;
-    border-radius: 20px;
-  }
-}
-
 .status {
   margin-bottom: 10px;
 }
@@ -163,6 +156,11 @@ export default defineComponent({
   &.recent {
     height: 100%;
     width: 100%;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  &.operation {
+    position: relative;
   }
 }
 </style>

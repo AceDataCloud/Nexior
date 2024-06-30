@@ -1,12 +1,6 @@
 <template>
   <div class="panel recent">
-    <task-preview
-      v-for="(task, taskIndex) in tasks?.items"
-      :key="taskIndex"
-      :model-value="task"
-      class="preview"
-      @click="onSelectTask(task)"
-    />
+    <task-preview v-for="(task, taskIndex) in tasks?.items" :key="taskIndex" :model-value="task" class="preview" />
     <p v-if="tasks?.items?.length === 0">
       {{ $t('qrart.message.noTasks') }}
     </p>
@@ -49,16 +43,13 @@ export default defineComponent({
     async onLoadHistory() {
       // this.$router.push({ name: ROUTE_MIDJOURNEY_HISTORY });
     },
-    async onSelectTask(task: IQrartTask) {
-      this.$store.dispatch('qrart/setTasksActive', task);
-    },
     async getTasks() {
       // ensure that the previous request has been completed
       if (this.loading) {
         return;
       }
       await this.$store.dispatch('qrart/getTasks', {
-        limit: 12,
+        limit: 50,
         offset: 0
       });
     }
