@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Mon, 01 Jul 2024 06:15:45 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jul 2024 17:01:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.9.0
+
+Mon, 01 Jul 2024 17:01:05 GMT
+
+### Minor changes
+
+- add support for mobile nav (office@acedata.cloud)
 
 ## 1.8.4
 
