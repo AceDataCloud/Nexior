@@ -87,7 +87,7 @@ export default defineComponent({
         );
       },
       set(messages: any[]) {
-        console.log('set messages', messages);
+        console.debug('set messages', messages);
       }
     },
     repository(): IChatdocRepository | undefined {
@@ -116,7 +116,7 @@ export default defineComponent({
     }
   },
   async mounted() {
-    console.log('start get conversations');
+    console.debug('start get conversations');
     this.loading = true;
     this.$store.dispatch('chatdoc/getConversations', { repositoryId: this.repositoryId }).finally(() => {
       this.loading = false;
@@ -196,7 +196,7 @@ export default defineComponent({
           });
           this.answering = false;
           if (!this.conversationId) {
-            console.log('push to conversation', conversationId);
+            console.debug('push to conversation', conversationId);
             await this.$router.push({
               name: ROUTE_CHATDOC_CONVERSATION,
               params: {

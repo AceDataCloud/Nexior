@@ -20,9 +20,6 @@ export default defineComponent({
     return {
       items: this.$route.matched
     };
-  },
-  mounted() {
-    console.log('this', this.$route);
   }
 });
 </script>

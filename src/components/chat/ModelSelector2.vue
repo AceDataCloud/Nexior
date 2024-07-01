@@ -117,7 +117,7 @@ export default defineComponent({
   cursor: pointer;
   padding: 7px 6px;
   border-radius: 15px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   .name {
     font-size: 16px;
     font-weight: bold;

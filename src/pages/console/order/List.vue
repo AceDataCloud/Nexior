@@ -224,4 +224,10 @@ export default defineComponent({
   bottom: 40px;
   z-index: 1000;
 }
+
+@media (max-width: 767px) {
+  .help {
+    top: 40px;
+  }
+}
 </style>

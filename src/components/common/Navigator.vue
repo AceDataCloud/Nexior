@@ -1,27 +1,15 @@
 <template>
-  <div class="navigator">
-    <chevron v-if="collapsed" class="chevron" direction="right" @click="onOpenMenu"></chevron>
-    <chevron v-else class="chevron" direction="left" @click="onCollapseMenu"></chevron>
+  <div :direction="direction" class="navigator">
     <div class="top">
-      <div v-if="!collapsed">
-        <logo @click="onHome" />
-      </div>
-      <div v-else>
+      <div v-if="direction === 'column'">
         <logo-tiny @click="onHome" />
       </div>
-      <el-menu v-if="!collapsed" :default-active="activeIndex">
-        <el-menu-item
-          v-for="(link, linkIndex) in links"
-          :key="linkIndex"
-          :index="link.route.name"
-          @click="$router.push(link.route)"
-        >
-          <font-awesome-icon :icon="link.icon" class="mr-2" />
-          <template #title>{{ link.displayName }}</template>
-        </el-menu-item>
-      </el-menu>
-      <div v-for="(link, linkIndex) in links" v-else :key="linkIndex" class="link">
-        <el-tooltip v-if="collapsed" effect="dark" :content="link.displayName" placement="right">
+      <div
+        v-for="(link, linkIndex) in links"
+        :key="linkIndex"
+        :class="{link: true, active: link.routes.includes($route.name as string)}"
+      >
+        <el-tooltip v-if="direction === 'column'" effect="dark" :content="link.displayName" placement="right">
           <el-button
             :class="{button: true, active: link.routes.includes($route.name as string)}"
             @click="$router.push(link.route)"
@@ -29,41 +17,36 @@
             <font-awesome-icon :icon="link.icon" />
           </el-button>
         </el-tooltip>
+        <div v-else class="cursor-pointer" @click="$router.push(link.route)">
+          <font-awesome-icon :icon="link.icon" />
+          <p class="description">{{ link.displayName }}</p>
+        </div>
       </div>
     </div>
     <div class="middle" />
-    <div v-if="!collapsed" class="bottom">
-      <el-menu :default-active="activeIndex">
-        <el-menu-item @click="onConsole">
-          <font-awesome-icon icon="fa-solid fa-compass" class="mr-2" />
-          <template #title>{{ $t('common.nav.console') }}</template>
-        </el-menu-item>
-        <el-menu-item @click="onSite">
-          <font-awesome-icon icon="fa-solid fa-gear" class="mr-2" />
-          <template #title>{{ $t('common.nav.site') }}</template>
-        </el-menu-item>
-        <el-menu-item v-if="showDistribution" @click="onDistribution">
-          <font-awesome-icon icon="fa-solid fa-coins" class="mr-2" />
-          <template #title>{{ $t('common.nav.distribution') }}</template>
-        </el-menu-item>
-        <el-menu-item v-if="authenticated" @click="onLogout">
-          <font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket" class="mr-2" />
-          <template #title>{{ $t('common.nav.logOut') }}</template>
-        </el-menu-item>
-      </el-menu>
-    </div>
-    <div v-else class="bottom">
+    <div class="bottom">
       <div class="link">
         <el-tooltip effect="dark" :content="$t('common.nav.darkMode')" placement="right">
-          <dark-selector class="button" />
+          <el-button class="button" @click="operating.dark = true">
+            <font-awesome-icon icon="fa-solid fa-moon" />
+          </el-button>
         </el-tooltip>
+        <dark-selector :visible="operating.dark" @close="operating.dark = false" />
       </div>
       <div class="link">
         <el-tooltip effect="dark" :content="$t('common.nav.locale')" placement="right">
-          <el-button class="button">
-            <locale-selector />
+          <el-button class="button" @click="operating.locale = true">
+            <i class="icon">
+              <svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" width="1.2em" height="1.2em">
+                <path
+                  fill="currentColor"
+                  d="m18.5 10l4.4 11h-2.155l-1.201-3h-4.09l-1.199 3h-2.154L16.5 10h2zM10 2v2h6v2h-1.968a18.222 18.222 0 0 1-3.62 6.301a14.864 14.864 0 0 0 2.336 1.707l-.751 1.878A17.015 17.015 0 0 1 9 13.725a16.676 16.676 0 0 1-6.201 3.548l-.536-1.929a14.7 14.7 0 0 0 5.327-3.042A18.078 18.078 0 0 1 4.767 8h2.24A16.032 16.032 0 0 0 9 10.877a16.165 16.165 0 0 0 2.91-4.876L2 6V4h6V2h2zm7.5 10.885L16.253 16h2.492L17.5 12.885z"
+                ></path>
+              </svg>
+            </i>
           </el-button>
         </el-tooltip>
+        <locale-selector :visible="operating.locale" @close="operating.locale = false" />
       </div>
       <div class="link">
         <el-tooltip effect="dark" :content="$t('common.nav.console')" placement="right">
@@ -99,7 +82,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton, ElTooltip, ElMenu, ElMenuItem } from 'element-plus';
+import { ElButton, ElTooltip } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import LocaleSelector from './LocaleSelector.vue';
 import DarkSelector from './DarkSelector.vue';
@@ -111,6 +94,7 @@ import {
   ROUTE_CHAT_CONVERSATION,
   ROUTE_CHAT_CONVERSATION_NEW,
   ROUTE_CONSOLE_ROOT,
+  ROUTE_PROFILE_INDEX,
   ROUTE_DISTRIBUTION_INDEX,
   ROUTE_INDEX,
   ROUTE_MIDJOURNEY_HISTORY,
@@ -119,75 +103,91 @@ import {
   ROUTE_QRART_HISTORY,
   ROUTE_SITE_INDEX
 } from '@/router/constants';
-import Chevron from './Chevron.vue';
-import Logo from './Logo.vue';
 import LogoTiny from './LogoTiny.vue';
 
 export default defineComponent({
   name: 'Navigator',
   components: {
     ElButton,
-    Logo,
     LogoTiny,
     DarkSelector,
     ElTooltip,
     LocaleSelector,
-    FontAwesomeIcon,
-    ElMenu,
-    ElMenuItem,
-    Chevron
+    FontAwesomeIcon
+  },
+  props: {
+    direction: {
+      type: String,
+      default: 'column'
+    }
   },
   data() {
-    const links = [];
-    if (this.$store?.state?.site?.features?.chat?.enabled) {
-      links.push({
-        route: {
-          name: ROUTE_CHAT_CONVERSATION_NEW
-        },
-        displayName: this.$t('common.nav.chat'),
-        icon: 'fa-regular fa-comment',
-        routes: [ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW]
-      });
-    }
-    if (this.$store?.state?.site?.features?.midjourney?.enabled) {
-      links.push({
-        route: {
-          name: ROUTE_MIDJOURNEY_INDEX
-        },
-        displayName: this.$t('common.nav.midjourney'),
-        icon: 'fa-solid fa-palette',
-        routes: [ROUTE_MIDJOURNEY_INDEX, ROUTE_MIDJOURNEY_HISTORY]
-      });
-    }
-
-    if (this.$store?.state?.site?.features?.chatdoc?.enabled) {
-      links.push({
-        route: {
-          name: ROUTE_CHATDOC_INDEX
-        },
-        displayName: this.$t('common.nav.chatdoc'),
-        icon: 'fa-solid fa-file-lines',
-        routes: [ROUTE_CHATDOC_INDEX, ROUTE_CHATDOC_CONVERSATION, ROUTE_CHATDOC_MANAGE, ROUTE_CHATDOC_SETTING]
-      });
-    }
-
-    if (this.$store?.state?.site?.features?.qrart?.enabled) {
-      links.push({
-        route: {
-          name: ROUTE_QRART_INDEX
-        },
-        displayName: this.$t('common.nav.qrart'),
-        icon: 'fa-solid fa-qrcode',
-        routes: [ROUTE_QRART_INDEX, ROUTE_QRART_HISTORY]
-      });
-    }
-
     return {
-      links,
+      operating: {
+        dark: false,
+        locale: false
+      },
       activeIndex: this.$route.name as string
     };
   },
   computed: {
+    links() {
+      const result = [];
+      if (this.$store?.state?.site?.features?.chat?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_CHAT_CONVERSATION_NEW
+          },
+          displayName: this.$t('common.nav.chat'),
+          icon: 'fa-regular fa-comment',
+          routes: [ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW]
+        });
+      }
+      if (this.$store?.state?.site?.features?.midjourney?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_MIDJOURNEY_INDEX
+          },
+          displayName: this.$t('common.nav.midjourney'),
+          icon: 'fa-solid fa-palette',
+          routes: [ROUTE_MIDJOURNEY_INDEX, ROUTE_MIDJOURNEY_HISTORY]
+        });
+      }
+
+      if (this.$store?.state?.site?.features?.chatdoc?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_CHATDOC_INDEX
+          },
+          displayName: this.$t('common.nav.chatdoc'),
+          icon: 'fa-solid fa-file-lines',
+          routes: [ROUTE_CHATDOC_INDEX, ROUTE_CHATDOC_CONVERSATION, ROUTE_CHATDOC_MANAGE, ROUTE_CHATDOC_SETTING]
+        });
+      }
+
+      if (this.$store?.state?.site?.features?.qrart?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_QRART_INDEX
+          },
+          displayName: this.$t('common.nav.qrart'),
+          icon: 'fa-solid fa-qrcode',
+          routes: [ROUTE_QRART_INDEX, ROUTE_QRART_HISTORY]
+        });
+      }
+
+      if (this.direction === 'row') {
+        result.push({
+          route: {
+            name: ROUTE_PROFILE_INDEX
+          },
+          displayName: this.$t('common.nav.profile'),
+          icon: 'fa-solid fa-user',
+          routes: [ROUTE_PROFILE_INDEX]
+        });
+      }
+      return result;
+    },
     authenticated() {
       return !!this.$store.state.token.access;
     },
@@ -240,6 +240,7 @@ export default defineComponent({
       await this.$store.dispatch('chat/resetAll');
       await this.$store.dispatch('midjourney/resetAll');
       await this.$store.dispatch('chatdoc/resetAll');
+      await this.$store.dispatch('qrart/resetAll');
     },
     onConsole() {
       this.$router.push({ name: ROUTE_CONSOLE_ROOT });
@@ -251,76 +252,106 @@ export default defineComponent({
 <style lang="scss" scoped>
 .navigator {
   display: flex;
-  flex-direction: column;
   align-items: center;
   position: relative;
-
-  .el-menu {
-    width: 150px;
-    border-right: none;
-    background: none;
-    .el-menu-item {
-      height: 50px;
-      color: var(--el-text-color-primary);
-      &.active,
-      &:hover,
-      &:focus {
-        background-color: var(--el-button-hover-bg-color);
-        color: var(--el-color-primary);
-      }
-    }
-  }
-
-  .chevron {
-    position: absolute;
-    right: -12px;
-    top: 50%;
-    transform: translateY(-50%) scale(0.8);
-    z-index: 10;
-  }
-
-  .logo {
-    width: 80%;
-    max-height: 50px;
-    cursor: pointer;
-    margin: 10px auto 20px auto;
-    display: block;
-    &.tiny {
-      margin: 0 auto 10px auto;
-      width: 40px;
-      height: 40px;
-    }
-  }
-
-  .top,
-  .bottom {
-    display: flex;
-    flex-direction: column;
+  &[direction='row'] {
+    flex-direction: row;
     padding-top: 10px;
-    min-width: 60px;
-    .link {
-      width: 40px;
-      height: 40px;
-      margin: 0 10px 10px 10px;
-      .button {
-        width: 40px;
-        height: 40px;
-        border-radius: 10px;
-        border: none;
-        color: var(--el-text-color-primary);
-        background-color: var(--el-bg-color-page);
-        &.active,
-        &:hover,
-        &:focus {
-          color: var(--el-button-active-text-color);
+    border-top: 1px solid var(--el-border-color);
+    .chevron,
+    .logo {
+      display: none;
+    }
+    .top {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 100%;
+      .link {
+        text-align: center;
+        .description {
+          font-size: 10px;
+          margin-top: 3px;
+        }
+        &.active {
+          color: var(--el-color-primary);
         }
       }
     }
+    .bottom {
+      display: none;
+    }
   }
-  .bottom {
-    display: block;
-    position: absolute;
-    bottom: 0;
+  &[direction='column'] {
+    flex-direction: column;
+    .el-menu {
+      width: 150px;
+      border-right: none;
+      background: none;
+      .el-menu-item {
+        height: 50px;
+        color: var(--el-text-color-primary);
+        &.active,
+        &:hover,
+        &:focus {
+          background-color: var(--el-button-hover-bg-color);
+          color: var(--el-color-primary);
+        }
+      }
+    }
+
+    .chevron {
+      position: absolute;
+      right: -12px;
+      top: 50%;
+      transform: translateY(-50%) scale(0.8);
+      z-index: 10;
+    }
+
+    .logo {
+      width: 80%;
+      max-height: 50px;
+      cursor: pointer;
+      margin: 10px auto 20px auto;
+      display: block;
+      &.tiny {
+        margin: 0 auto 10px auto;
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    .top,
+    .bottom {
+      display: flex;
+      flex-direction: column;
+      padding-top: 10px;
+      min-width: 60px;
+      .link {
+        width: 40px;
+        height: 40px;
+        margin: 0 10px 10px 10px;
+        .button {
+          width: 40px;
+          height: 40px;
+          border-radius: 10px;
+          border: none;
+          color: var(--el-text-color-primary);
+          background-color: var(--el-bg-color-page);
+          &.active,
+          &:hover,
+          &:focus {
+            color: var(--el-button-active-text-color);
+          }
+        }
+      }
+    }
+    .bottom {
+      display: block;
+      position: absolute;
+      bottom: 0;
+    }
   }
 }
 </style>

@@ -120,7 +120,7 @@ export default defineComponent({
       }
     },
     onChangePackage(pkg: IPackage) {
-      console.log('pkg', pkg);
+      console.debug('pkg', pkg);
     },
     onCreateOrder() {
       if (!this.application?.id) {

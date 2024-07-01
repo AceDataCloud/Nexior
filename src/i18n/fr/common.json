@@ -65,7 +65,7 @@
   },
   "button.console": {
     "message": "Console",
-    "description": "Bouton pour afficher la page de la console afin de contrôler certains contenus sur le site"
+    "description": "Bouton pour afficher la page de la console afin de contrôler certains contenus sur le site web"
   },
   "button.learn": {
     "message": "Apprendre",
@@ -89,15 +89,15 @@
   },
   "button.refresh": {
     "message": "Actualiser",
-    "description": "Bouton pour actualiser la page"
+    "description": "Bouton pour rafraîchir la page"
   },
   "button.pay": {
     "message": "Payer",
     "description": "Bouton pour permettre à l'utilisateur de payer des frais de service"
   },
   "button.repay": {
-    "message": "Repayer",
-    "description": "Bouton pour permettre à l'utilisateur de continuer à payer des frais de service"
+    "message": "Reprendre le paiement",
+    "description": "Bouton pour permettre à l'utilisateur de reprendre le paiement des frais de service"
   },
   "button.applied": {
     "message": "Appliqué",
@@ -105,7 +105,7 @@
   },
   "button.acquire": {
     "message": "Acquérir",
-    "description": "Bouton pour permettre à l'utilisateur d'acquérir un jeton ou une clé de service API"
+    "description": "Bouton pour permettre à l'utilisateur d'obtenir un jeton ou une clé de service API"
   },
   "button.fillExample": {
     "message": "Remplir l'exemple",
@@ -141,7 +141,7 @@
   },
   "entity.website": {
     "message": "Ace Data Cloud",
-    "description": "Nom du site, ne pas traduire, garder 'Ace Data Cloud'"
+    "description": "Nom du site web, ne pas traduire, garder 'Ace Data Cloud'"
   },
   "entity.copyright": {
     "message": "Droits d'auteur",
@@ -196,7 +196,7 @@
     "description": "Utilisé pour afficher le message indiquant que le contenu a été copié avec succès"
   },
   "message.confirmDelete": {
-    "message": "Voulez-vous vraiment supprimer ?",
+    "message": "Êtes-vous sûr de vouloir supprimer ?",
     "description": "Utilisé pour confirmer si l'utilisateur souhaite supprimer certains contenus"
   },
   "message.alert": {
@@ -219,9 +219,21 @@
     "message": "Rejoindre Discord",
     "description": "Utilisé pour inviter l'utilisateur à rejoindre le canal Discord"
   },
+  "message.addWeChat": {
+    "message": "Ajouter WeChat",
+    "description": "Utilisé pour inviter l'utilisateur à ajouter WeChat"
+  },
+  "message.serviceTech": {
+    "message": "Support technique",
+    "description": "Utilisé pour afficher le support technique du service"
+  },
+  "message.businessCooperation": {
+    "message": "Coopération commerciale",
+    "description": "Utilisé pour afficher la coopération commerciale"
+  },
   "message.noData": {
     "message": "Aucune donnée",
-    "description": "Utilisé pour afficher qu'il n'y a pas de données dans le tableau ou la liste"
+    "description": "Utilisé pour indiquer qu'il n'y a pas de données dans le tableau ou la liste"
   },
   "nav.home": {
     "message": "Accueil",
@@ -239,6 +251,10 @@
     "message": "Service",
     "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page de services"
   },
+  "nav.profile": {
+    "message": "Moi",
+    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page de profil personnel"
+  },
   "nav.document": {
     "message": "Document",
     "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page de documents"
@@ -249,19 +265,19 @@
   },
   "nav.chat": {
     "message": "Chat",
-    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page de chat, ne pas traduire ce champ, doit rester 'Chat'"
+    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page de chat, ne pas traduire ce champ, il doit rester 'Chat'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page de Midjourney, ne pas traduire ce champ, doit rester 'Midjourney'"
+    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page de voyage intermédiaire, ne pas traduire ce champ, il doit rester 'Midjourney'"
   },
   "nav.chatdoc": {
     "message": "ChatDoc",
-    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page de ChatDoc, ne pas traduire ce champ, doit rester 'Chatdoc'"
+    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page de documents de chat, ne pas traduire ce champ, il doit rester 'Chatdoc'"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page de QRArt, ne pas traduire ce champ, doit rester 'QRArt'"
+    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page d'art QR, ne pas traduire ce champ, il doit rester 'QRArt'"
   },
   "nav.distribution": {
     "message": "Revenus recommandés",
@@ -276,12 +292,12 @@
     "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page de configuration du site"
   },
   "nav.locale": {
-    "message": "Langue",
-    "description": "Texte dans la barre de navigation du site, utilisé pour changer de langue"
+    "message": "Paramètres de langue",
+    "description": "Texte dans la barre de navigation du site, utilisé pour changer la langue"
   },
   "nav.darkMode": {
     "message": "Mode sombre",
-    "description": "Texte dans la barre de navigation du site, utilisé pour basculer en mode sombre"
+    "description": "Texte dans la barre de navigation du site, utilisé pour basculer vers le thème sombre"
   },
   "title.alert": {
     "message": "Alerte",
@@ -309,7 +325,7 @@
   },
   "title.buyMore": {
     "message": "Acheter plus",
-    "description": "Titre de la page permettant à l'utilisateur d'acheter plus"
+    "description": "Titre de la page incitant l'utilisateur à acheter plus"
   },
   "title.distribution": {
     "message": "Revenus recommandés",
@@ -325,14 +341,14 @@
   },
   "title.invitee": {
     "message": "Invité",
-    "description": "Titre de la page affichant l'invité"
+    "description": "Affiche le titre de la page de l'invité"
   },
   "title.allUsages": {
-    "message": "Historique d'utilisation",
-    "description": "Titre de la page affichant l'historique d'utilisation de tous les services API"
+    "message": "Tous les usages",
+    "description": "Affiche le titre de la page de l'historique d'utilisation de l'API"
   },
   "title.allCredentials": {
-    "message": "Tous les identifiants",
-    "description": "Titre de la page affichant tous les identifiants utilisés pour accéder à l'API"
+    "message": "Toutes les informations d'identification",
+    "description": "Affiche le titre de la page de toutes les informations d'identification utilisées pour accéder à l'API"
   }
 }

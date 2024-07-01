@@ -93,11 +93,11 @@
   },
   "button.pay": {
     "message": "Pagar",
-    "description": "Botão de texto, usado para que o usuário pague pelo serviço"
+    "description": "Botão de texto, usado para que o usuário pague a taxa do serviço"
   },
   "button.repay": {
-    "message": "Repagar",
-    "description": "Botão de texto, usado para que o usuário continue a pagar pelo serviço"
+    "message": "Continuar pagando",
+    "description": "Botão de texto, usado para que o usuário continue pagando a taxa do serviço"
   },
   "button.applied": {
     "message": "Aplicado",
@@ -109,7 +109,7 @@
   },
   "button.fillExample": {
     "message": "Preencher exemplo",
-    "description": "Botão de texto, usado para que o usuário preencha dados de exemplo"
+    "description": "Botão de texto, usado para que o usuário preencha os dados de exemplo"
   },
   "button.buyMore": {
     "message": "Comprar mais",
@@ -120,8 +120,8 @@
     "description": "Botão de texto, usado para atualizar algum conteúdo"
   },
   "button.view": {
-    "message": "Visualizar",
-    "description": "Botão de texto, usado para visualizar algum conteúdo"
+    "message": "Ver",
+    "description": "Botão de texto, usado para ver algum conteúdo"
   },
   "button.copy": {
     "message": "Copiar",
@@ -181,7 +181,7 @@
   },
   "entity.order": {
     "message": "Pedido",
-    "description": "Pedido da entidade, contendo informações de valor, serviço e requer pagamento pelo usuário"
+    "description": "Pedido da entidade, inclui valor, informações de serviço e requer pagamento do usuário"
   },
   "message.usedAmount": {
     "message": "Valor Utilizado",
@@ -205,7 +205,7 @@
   },
   "message.info": {
     "message": "Informação",
-    "description": "Usado para exibir mensagem informativa"
+    "description": "Usado para exibir mensagem de informação"
   },
   "message.free": {
     "message": "Grátis",
@@ -216,12 +216,24 @@
     "description": "Usado para exibir o preço mínimo do serviço"
   },
   "message.joinDiscord": {
-    "message": "Participar do Discord",
-    "description": "Usado para permitir que o usuário participe do canal do Discord"
+    "message": "Entrar no Discord",
+    "description": "Usado para permitir que o usuário entre no canal do Discord"
+  },
+  "message.addWeChat": {
+    "message": "Adicionar WeChat",
+    "description": "Usado para permitir que o usuário adicione o WeChat"
+  },
+  "message.serviceTech": {
+    "message": "Suporte Técnico",
+    "description": "Usado para exibir mensagem de suporte técnico do serviço"
+  },
+  "message.businessCooperation": {
+    "message": "Cooperação Comercial",
+    "description": "Usado para exibir mensagem de cooperação comercial"
   },
   "message.noData": {
     "message": "Sem Dados",
-    "description": "Usado para exibir mensagem de ausência de dados em tabelas ou listas"
+    "description": "Usado para exibir mensagem de ausência de dados em tabela ou lista"
   },
   "nav.home": {
     "message": "Início",
@@ -238,6 +250,10 @@
   "nav.service": {
     "message": "Serviço",
     "description": "Texto na barra de navegação do site, usado para exibir a página de serviços"
+  },
+  "nav.profile": {
+    "message": "Perfil",
+    "description": "Texto na barra de navegação do site, usado para exibir a página de perfil pessoal"
   },
   "nav.document": {
     "message": "Documento",
@@ -276,7 +292,7 @@
     "description": "Texto na barra de navegação do site, usado para exibir a página de configuração do site"
   },
   "nav.locale": {
-    "message": "Idioma",
+    "message": "Configuração de Idioma",
     "description": "Texto na barra de navegação do site, usado para alterar o idioma"
   },
   "nav.darkMode": {
@@ -285,7 +301,7 @@
   },
   "title.alert": {
     "message": "Alerta",
-    "description": "Título da mensagem de alerta"
+    "description": "Título de mensagem de alerta"
   },
   "title.placeholderOfSelect": {
     "message": "Selecione",
@@ -320,19 +336,19 @@
     "description": "Título da página que exibe a configuração do site"
   },
   "title.distributionHistory": {
-    "message": "Histórico de Recomendações",
-    "description": "Título da página que exibe o histórico de recomendações"
+    "message": "Histórico de Recomendação",
+    "description": "Título da página que exibe o histórico de recomendação"
   },
   "title.invitee": {
     "message": "Convidado",
-    "description": "Título da página que exibe o convidado"
+    "description": "Mostra o título da página do convidado"
   },
   "title.allUsages": {
-    "message": "Histórico de Uso",
-    "description": "Título da página que exibe todo o histórico de uso dos serviços de API"
+    "message": "Todos os Usos",
+    "description": "Mostra o título da página de todos os registros de uso do serviço de API"
   },
   "title.allCredentials": {
-    "message": "Credenciais",
-    "description": "Título da página que exibe todas as credenciais usadas para acessar a API"
+    "message": "Todas as Credenciais",
+    "description": "Mostra o título da página de todas as credenciais usadas para acessar a API"
   }
 }

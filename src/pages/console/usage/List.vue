@@ -7,8 +7,8 @@
           <h2 class="title">{{ $t('common.title.allUsages') }}</h2>
         </el-col>
       </el-row>
-      <el-row class="mb-4">
-        <el-col :span="8">
+      <el-row>
+        <el-col :md="8" :sm="12" class="mb-4">
           <span class="inline-block mr-3"> {{ $t('usage.field.application') }} </span>
           <el-select
             v-model="applicationId"
@@ -19,7 +19,7 @@
             <el-option v-for="item in applications" :key="item.id" :label="item.service?.title" :value="item?.id" />
           </el-select>
         </el-col>
-        <el-col :span="8">
+        <el-col :md="8" :sm="12" class="mb-4">
           <span class="inline-block mr-3"> {{ $t('usage.field.api') }} </span>
           <el-select v-model="apiId" :placeholder="$t('usage.field.api')" clearable @change="onApiChange">
             <el-option v-for="item in apis" :key="item?.id" :label="item?.title" :value="item?.id" />
@@ -298,7 +298,7 @@ export default defineComponent({
     color: var(--el-text-color-primary);
   }
   .el-table {
-    height: calc(100vh - 350px);
+    height: calc(100vh - 430px);
     margin-bottom: 50px;
     .el-button {
       border-radius: 20px;
@@ -316,5 +316,11 @@ export default defineComponent({
   right: 40px;
   bottom: 40px;
   z-index: 1000;
+}
+
+@media (max-width: 767px) {
+  .help {
+    top: 40px;
+  }
 }
 </style>

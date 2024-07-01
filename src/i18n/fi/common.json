@@ -133,7 +133,7 @@
   },
   "button.referralEarnings": {
     "message": "Suositusten tuotot",
-    "description": "Painikkeen teksti, jota käytetään suositusten tuottojen näyttämiseen, osoittaa että käyttäjä voi ansaita rahaa kutsuessaan muita käyttämään palvelua"
+    "description": "Painikkeen teksti, jota käytetään näyttämään suositusten tuottoja, osoittaa että käyttäjä voi ansaita rahaa kutsuessaan muita käyttämään palvelua"
   },
   "button.finish": {
     "message": "Valmis",
@@ -141,7 +141,7 @@
   },
   "entity.website": {
     "message": "Ace Data Cloud",
-    "description": "Sivuston nimi, ei tarvitse kääntää, pidä ennallaan 'Ace Data Cloud'"
+    "description": "Sivuston nimi, ei tarvitse kääntää, pidä 'Ace Data Cloud' samana"
   },
   "entity.copyright": {
     "message": "Tekijänoikeus",
@@ -185,103 +185,119 @@
   },
   "message.usedAmount": {
     "message": "Käytetty summa",
-    "description": "Palvelun käytetty summa näytetään"
+    "description": "Palvelun käytetyn summan näyttämiseen"
   },
   "message.remainingAmount": {
     "message": "Jäljellä oleva summa",
-    "description": "Palvelun jäljellä oleva summa näytetään"
+    "description": "Palvelun jäljellä olevan summan näyttämiseen"
   },
   "message.copied": {
     "message": "Kopioitu onnistuneesti",
-    "description": "Näytetään viesti, kun sisältö on kopioitu onnistuneesti"
+    "description": "Ilmoitus sisällön onnistuneesta kopioinnista"
   },
   "message.confirmDelete": {
     "message": "Haluatko varmasti poistaa?",
-    "description": "Viesti, joka varmistaa, haluaako käyttäjä poistaa tiettyä sisältöä"
+    "description": "Viesti, joka vahvistaa käyttäjän halun poistaa tiettyä sisältöä"
   },
   "message.alert": {
     "message": "Varoitus",
-    "description": "Käyttäjälle näytettävä varoitusviesti"
+    "description": "Käyttäjälle annettava varoitusviesti"
   },
   "message.info": {
     "message": "Tiedoksi",
-    "description": "Näytetään tiedotusviesti"
+    "description": "Tiedon näyttämiseen tarkoitettu viesti"
   },
   "message.free": {
     "message": "Ilmainen",
-    "description": "Näytetään viesti, kun palvelu on ilmainen ja käyttäjän ei tarvitse maksaa siitä"
+    "description": "Ilmaisen palvelun ilmoittamiseen tarkoitettu viesti, joka kertoo käyttäjän ei tarvitse maksaa"
   },
   "message.startPrice": {
     "message": "Alkaen",
-    "description": "Näytetään palvelun alin hinta"
+    "description": "Palvelun alimman hinnan näyttämiseen tarkoitettu viesti"
   },
   "message.joinDiscord": {
     "message": "Liity Discordiin",
-    "description": "Kutsu käyttäjä liittymään Discord-kanavalle"
+    "description": "Käyttäjän liittymistä Discord-kanavalle koskeva viesti"
+  },
+  "message.addWeChat": {
+    "message": "Lisää WeChat",
+    "description": "Käyttäjän WeChatin lisäämistä koskeva viesti"
+  },
+  "message.serviceTech": {
+    "message": "Tekninen tuki",
+    "description": "Palvelun teknistä tukea koskeva viesti"
+  },
+  "message.businessCooperation": {
+    "message": "Liiketoimintayhteistyö",
+    "description": "Liiketoimintayhteistyötä koskeva viesti"
   },
   "message.noData": {
     "message": "Ei tietoja",
-    "description": "Näytetään viesti, kun taulukossa tai listassa ei ole tietoja"
+    "description": "Taulukon tai listan tyhjyyttä kuvaava viesti"
   },
   "nav.home": {
     "message": "Koti",
-    "description": "Sivuston navigointipalkin teksti, joka näyttää kotisivun"
+    "description": "Sivuston navigaatiopalkissa näkyvä teksti, joka ohjaa käyttäjän kotisivulle"
   },
   "nav.content": {
     "message": "Sisältö",
-    "description": "Sivuston navigointipalkin teksti, joka näyttää sisältösivun"
+    "description": "Sivuston navigaatiopalkissa näkyvä teksti, joka ohjaa käyttäjän sisältösivulle"
   },
   "nav.category": {
     "message": "Kategoria",
-    "description": "Sivuston navigointipalkin teksti, joka näyttää kategoriasivun"
+    "description": "Sivuston navigaatiopalkissa näkyvä teksti, joka ohjaa käyttäjän kategoriasivulle"
   },
   "nav.service": {
     "message": "Palvelu",
-    "description": "Sivuston navigointipalkin teksti, joka näyttää palvelusivun"
+    "description": "Sivuston navigaatiopalkissa näkyvä teksti, joka ohjaa käyttäjän palvelusivulle"
+  },
+  "nav.profile": {
+    "message": "Profiili",
+    "description": "Sivuston navigaatiopalkissa näkyvä teksti, joka ohjaa käyttäjän profiilisivulle"
   },
   "nav.document": {
     "message": "Asiakirja",
-    "description": "Sivuston navigointipalkin teksti, joka näyttää asiakirjasivun"
+    "description": "Sivuston navigaatiopalkissa näkyvä teksti, joka ohjaa käyttäjän asiakirjasivulle"
   },
   "nav.console": {
-    "message": "Konsoli",
-    "description": "Sivuston navigointipalkin teksti, joka näyttää konsolisivun"
+    "message": "Hallintapaneeli",
+    "description": "Sivuston navigaatiopalkissa näkyvä teksti, joka ohjaa käyttäjän hallintapaneelisivulle"
   },
   "nav.chat": {
     "message": "Chat",
-    "description": "Sivuston navigointipalkin teksti, joka näyttää chat-sivun, älä käännä tätä kenttää, sen on pysyttävä 'Chat'"
+    "description": "Sivuston navigaatiopalkissa näkyvä teksti, joka ohjaa käyttäjän chat-sivulle"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "Sivuston navigointipalkin teksti, joka näyttää midjourney-sivun, älä käännä tätä kenttää, sen on pysyttävä 'Midjourney'"
+    "description": "Sivuston navigaatiopalkissa näkyvä teksti, joka ohjaa käyttäjän midjourney-sivulle"
   },
   "nav.chatdoc": {
     "message": "ChatDoc",
-    "description": "Sivuston navigointipalkin teksti, joka näyttää chat-dokumenttisivun, älä käännä tätä kenttää, sen on pysyttävä 'Chatdoc'"
+    "description": "Sivuston navigaatiopalkissa näkyvä teksti, joka ohjaa käyttäjän chatdoc-sivulle"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Sivuston navigointipalkin teksti, joka näyttää QR-taidesivun, älä käännä tätä kenttää, sen on pysyttävä 'QRArt'"
+    "description": "Sivuston navigaatiopalkissa näkyvä teksti, joka ohjaa käyttäjän qrart-sivulle"
   },
   "nav.distribution": {
     "message": "Suositeltu tulo",
-    "description": "Sivuston navigointipalkin teksti, joka näyttää suositeltujen tulojen sivun"
+    "description": "Sivuston navigaatiopalkissa näkyvä teksti, joka ohjaa käyttäjän suositeltu tulo -sivulle"
   },
   "nav.logOut": {
     "message": "Kirjaudu ulos",
-    "description": "Sivuston navigointipalkin teksti, joka näyttää kirjaudu ulos -sivun"
+    "description": "Sivuston navigaatiopalkissa näkyvä teksti, joka ohjaa käyttäjän uloskirjautumissivulle"
   },
   "nav.site": {
     "message": "Sivuston asetukset",
-    "description": "Sivuston navigointipalkin teksti, joka näyttää sivuston asetukset -sivun"
+    "description": "Sivuston navigaatiopalkissa näkyvä teksti, joka ohjaa käyttäjän sivuston asetukset -sivulle"
   },
   "nav.locale": {
-    "message": "Kieli",
-    "description": "Sivuston navigointipalkin teksti, joka mahdollistaa kielen vaihtamisen"
+    "message": "Kielen asetukset",
+    "description": "Sivuston navigaatiopalkissa näkyvä teksti, joka ohjaa käyttäjän kielen asetukset -sivulle"
   },
   "nav.darkMode": {
     "message": "Tumma tila",
-    "description": "Sivuston navigointipalkin teksti, joka mahdollistaa vaihtamisen tummaan teemaan"
+    "description": "Sivuston navigaatiopalkissa näkyvä teksti, joka ohjaa käyttäjän tummaan tilaan"
   },
   "title.alert": {
     "message": "Hälytys",
@@ -289,50 +305,50 @@
   },
   "title.placeholderOfSelect": {
     "message": "Valitse",
-    "description": "Valintaruudun paikkamerkki"
+    "description": "Valintakentän paikkamerkki"
   },
   "title.placeholderOfInput": {
     "message": "Kirjoita tähän",
-    "description": "Syöttökentän paikkamerkki"
+    "description": "Syötekentän paikkamerkki"
   },
   "title.allApplications": {
     "message": "Kaikki sovellukset",
-    "description": "Näyttää kaikkien sovellusten sivun otsikon"
+    "description": "Näyttää kaikki sovellukset -sivun otsikon"
   },
   "title.allOrders": {
     "message": "Kaikki tilaukset",
-    "description": "Näyttää kaikkien tilausten sivun otsikon"
+    "description": "Näyttää kaikki tilaukset -sivun otsikon"
   },
   "title.orderInfo": {
     "message": "Tilaustiedot",
-    "description": "Näyttää tilaustietojen sivun otsikon"
+    "description": "Näyttää tilaustiedot -sivun otsikon"
   },
   "title.buyMore": {
     "message": "Osta lisää",
-    "description": "Kehottaa käyttäjää ostamaan lisää sivun otsikossa"
+    "description": "Kehottaa käyttäjää ostamaan lisää -sivun otsikko"
   },
   "title.distribution": {
     "message": "Suositeltu tulo",
-    "description": "Näyttää suositeltujen tulojen sivun otsikon, joka kertoo käyttäjän voivan ansaita rahaa kutsuessaan muita käyttämään palvelua"
+    "description": "Näyttää suositeltu tulo -sivun otsikon, joka kertoo käyttäjän voivan ansaita rahaa kutsuessaan muita käyttämään palvelua"
   },
   "title.site": {
     "message": "Sivuston asetukset",
-    "description": "Näyttää sivuston asetusten sivun otsikon"
+    "description": "Näyttää sivuston asetukset -sivun otsikon"
   },
   "title.distributionHistory": {
     "message": "Suositushistoria",
-    "description": "Näyttää suositushistorian sivun otsikon"
+    "description": "Näyttää suositushistoria -sivun otsikon"
   },
   "title.invitee": {
     "message": "Kutsuja",
     "description": "Näyttää kutsujan sivun otsikon"
   },
   "title.allUsages": {
-    "message": "Käyttöhistoria",
-    "description": "Näyttää kaikkien API-palveluiden käyttöhistorian sivun otsikon"
+    "message": "Kaikki käytöt",
+    "description": "Näyttää API-palvelun kaikkien käyttöjen sivun otsikon"
   },
   "title.allCredentials": {
-    "message": "Kaikki tunnukset",
-    "description": "Näyttää kaikkien tunnusten sivun otsikon, joita käytetään API:en pääsyyn"
+    "message": "Kaikki tunnistetiedot",
+    "description": "Näyttää kaikkien API:n käyttöön tarkoitettujen tunnistetietojen sivun otsikon"
   }
 }

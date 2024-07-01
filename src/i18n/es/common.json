@@ -37,7 +37,7 @@
   },
   "button.cancel": {
     "message": "Cancelar",
-    "description": "Botón de texto, utilizado para cancelar cierta operación"
+    "description": "Botón de texto, utilizado para cancelar ciertas operaciones"
   },
   "button.alert": {
     "message": "Alerta",
@@ -93,15 +93,15 @@
   },
   "button.pay": {
     "message": "Pagar",
-    "description": "Botón de texto, utilizado para que el usuario pague el costo del servicio"
+    "description": "Botón de texto, utilizado para que el usuario pague la tarifa del servicio"
   },
   "button.repay": {
     "message": "Continuar pagando",
-    "description": "Botón de texto, utilizado para que el usuario continúe pagando el costo del servicio"
+    "description": "Botón de texto, utilizado para que el usuario continúe pagando la tarifa del servicio"
   },
   "button.applied": {
     "message": "Aplicado",
-    "description": "Botón de texto, utilizado para mostrar que el usuario ya ha aplicado para el servicio"
+    "description": "Botón de texto, utilizado para mostrar que el usuario ya ha aplicado ese servicio"
   },
   "button.acquire": {
     "message": "Obtener",
@@ -133,7 +133,7 @@
   },
   "button.referralEarnings": {
     "message": "Ganancias por referidos",
-    "description": "Botón de texto, utilizado para mostrar las ganancias por referidos, indicando que los usuarios pueden ganar dinero al invitar a otros a usar el servicio"
+    "description": "Botón de texto, utilizado para mostrar las ganancias por referidos, indicando que los usuarios pueden ganar dinero invitando a otros a usar el servicio"
   },
   "button.finish": {
     "message": "Finalizar",
@@ -181,43 +181,55 @@
   },
   "entity.order": {
     "message": "Orden",
-    "description": "Real value for entity order, which includes amount, service information, and requires payment from the user"
+    "description": "Real value, which represents an entity's order containing amount, service information, and requires payment from the user"
   },
   "message.usedAmount": {
     "message": "Cantidad utilizada",
-    "description": "Used to display the amount already used for the service"
+    "description": "Used to display the amount of service already used"
   },
   "message.remainingAmount": {
     "message": "Cantidad restante",
-    "description": "Used to display the remaining amount for the service"
+    "description": "Used to display the remaining amount of service"
   },
   "message.copied": {
     "message": "Copiado exitosamente",
-    "description": "Used to display a message indicating successful content copy"
+    "description": "Used to display a message indicating the content has been successfully copied"
   },
   "message.confirmDelete": {
     "message": "¿Seguro que quieres eliminar?",
-    "description": "Message to confirm if the user wants to delete certain content"
+    "description": "Used to confirm if the user wants to delete certain content"
   },
   "message.alert": {
     "message": "Alerta",
-    "description": "Message used to alert the user"
+    "description": "Used to warn the user"
   },
   "message.info": {
     "message": "Información",
-    "description": "Message used to display information"
+    "description": "Used to display informational messages"
   },
   "message.free": {
     "message": "Gratis",
-    "description": "Used to display that the service is free, indicating no payment is required"
+    "description": "Used to display that the service is free, indicating the user does not need to pay"
   },
   "message.startPrice": {
     "message": "Precio inicial",
-    "description": "Used to display the minimum price for the service"
+    "description": "Used to display the minimum price of the service"
   },
   "message.joinDiscord": {
     "message": "Unirse a Discord",
-    "description": "Message to prompt the user to join a Discord channel"
+    "description": "Used to prompt the user to join a Discord channel"
+  },
+  "message.addWeChat": {
+    "message": "Agregar WeChat",
+    "description": "Used to prompt the user to add a WeChat account"
+  },
+  "message.serviceTech": {
+    "message": "Soporte técnico",
+    "description": "Used to display the technical support for the service"
+  },
+  "message.businessCooperation": {
+    "message": "Cooperación comercial",
+    "description": "Used to display business cooperation messages"
   },
   "message.noData": {
     "message": "Sin datos",
@@ -225,63 +237,67 @@
   },
   "nav.home": {
     "message": "Inicio",
-    "description": "Text in website navigation bar to display the home page"
+    "description": "Text in website navigation bar, used to display the home page"
   },
   "nav.content": {
     "message": "Contenido",
-    "description": "Text in website navigation bar to display the content page"
+    "description": "Text in website navigation bar, used to display the content page"
   },
   "nav.category": {
     "message": "Categoría",
-    "description": "Text in website navigation bar to display the category page"
+    "description": "Text in website navigation bar, used to display the category page"
   },
   "nav.service": {
     "message": "Servicio",
-    "description": "Text in website navigation bar to display the service page"
+    "description": "Text in website navigation bar, used to display the service page"
+  },
+  "nav.profile": {
+    "message": "Perfil",
+    "description": "Text in website navigation bar, used to display the profile page"
   },
   "nav.document": {
     "message": "Documento",
-    "description": "Text in website navigation bar to display the document page"
+    "description": "Text in website navigation bar, used to display the document page"
   },
   "nav.console": {
     "message": "Consola",
-    "description": "Text in website navigation bar to display the console page"
+    "description": "Text in website navigation bar, used to display the console page"
   },
   "nav.chat": {
     "message": "Chat",
-    "description": "Text in website navigation bar to display the chat page, do not translate this field, it must remain as 'Chat'"
+    "description": "Text in website navigation bar, used to display the chat page, do not translate this field, it must remain as 'Chat'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "Text in website navigation bar to display the midjourney page, do not translate this field, it must remain as 'Midjourney'"
+    "description": "Text in website navigation bar, used to display the midjourney page, do not translate this field, it must remain as 'Midjourney'"
   },
   "nav.chatdoc": {
     "message": "ChatDoc",
-    "description": "Text in website navigation bar to display the chat document page, do not translate this field, it must remain as 'Chatdoc'"
+    "description": "Text in website navigation bar, used to display the chat document page, do not translate this field, it must remain as 'Chatdoc'"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Text in website navigation bar to display the QR art page, do not translate this field, it must remain as 'QRArt'"
+    "description": "Text in website navigation bar, used to display the QR art page, do not translate this field, it must remain as 'QRArt'"
   },
   "nav.distribution": {
     "message": "Ingresos recomendados",
-    "description": "Text in website navigation bar to display the recommended income page"
+    "description": "Text in website navigation bar, used to display the recommended income page"
   },
   "nav.logOut": {
     "message": "Cerrar sesión",
-    "description": "Text in website navigation bar to log out"
+    "description": "Text in website navigation bar, used to log out"
   },
   "nav.site": {
     "message": "Configuración del sitio",
-    "description": "Text in website navigation bar to display the site configuration page"
+    "description": "Text in website navigation bar, used to display the site configuration page"
   },
   "nav.locale": {
-    "message": "Idioma",
-    "description": "Text in website navigation bar to change the language"
+    "message": "Configuración de idioma",
+    "description": "Text in website navigation bar, used to change the language"
   },
   "nav.darkMode": {
     "message": "Modo oscuro",
-    "description": "Text in website navigation bar to switch to dark mode"
+    "description": "Text in website navigation bar, used to switch to dark mode"
   },
   "title.alert": {
     "message": "Alerta",
@@ -297,15 +313,15 @@
   },
   "title.allApplications": {
     "message": "Todas las aplicaciones",
-    "description": "Title to display all applications page"
+    "description": "Title for the page displaying all applications"
   },
   "title.allOrders": {
     "message": "Todas las órdenes",
-    "description": "Title to display all orders page"
+    "description": "Title for the page displaying all orders"
   },
   "title.orderInfo": {
     "message": "Información de la orden",
-    "description": "Title to display order information page"
+    "description": "Title for the page displaying order information"
   },
   "title.buyMore": {
     "message": "Comprar más",
@@ -313,26 +329,26 @@
   },
   "title.distribution": {
     "message": "Ingresos recomendados",
-    "description": "Title to display the recommended income page, indicating users can earn money by inviting others to use the service"
+    "description": "Title for the page displaying recommended income, indicating users can earn money by inviting others to use the service"
   },
   "title.site": {
     "message": "Configuración del sitio",
-    "description": "Title to display site configuration page"
+    "description": "Title for the page displaying site configuration"
   },
   "title.distributionHistory": {
     "message": "Historial de recomendaciones",
-    "description": "Title to display the distribution history page"
+    "description": "Title for the page displaying distribution history"
   },
   "title.invitee": {
     "message": "Invitado",
-    "description": "Title to display the invitee page"
+    "description": "Mostrar el título de la página del invitado"
   },
   "title.allUsages": {
-    "message": "Historial de uso",
-    "description": "Title to display all usage records of the API service"
+    "message": "Todos los usos",
+    "description": "Mostrar el título de la página que contiene todos los registros de uso del servicio API"
   },
   "title.allCredentials": {
-    "message": "Credenciales",
-    "description": "Title to display all credentials page, these credentials are used to access the API"
+    "message": "Todas las credenciales",
+    "description": "Mostrar el título de la página que contiene todas las credenciales utilizadas para acceder a la API"
   }
 }

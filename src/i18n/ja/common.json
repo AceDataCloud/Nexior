@@ -68,52 +68,52 @@
     "description": "按钮文本，用于显示控制台页面以控制网页中的某些内容"
   },
   "button.learn": {
-    "message": "学習",
+    "message": "学ぶ",
     "description": "按钮文本，用于让用户学习某些内容"
   },
   "button.buy": {
     "message": "購入",
-    "description": "按钮文本，用于让用户购买某些内容"
+    "description": "按钮文本，用于让用户購入某些内容"
   },
   "button.try": {
     "message": "試す",
-    "description": "按钮文本，用于让用户尝试某些内容"
+    "description": "按钮文本，用于让用户試す某些内容"
   },
   "button.startForFree": {
     "message": "無料で始める",
-    "description": "按钮文本，用于让用户免费开始使用"
+    "description": "按钮文本，用于让用户無料で始める"
   },
   "button.apply": {
     "message": "申請",
-    "description": "按钮文本，用于让用户申请API服务"
+    "description": "按钮文本，用于让用户申請APIサービス"
   },
   "button.refresh": {
     "message": "更新",
-    "description": "按钮文本，用于刷新页面"
+    "description": "按钮文本，用于更新页面"
   },
   "button.pay": {
     "message": "支払う",
-    "description": "按钮文本，用于让用户支付服务费用"
+    "description": "按钮文本，用于让用户支払う"
   },
   "button.repay": {
-    "message": "継続支払い",
-    "description": "按钮文本，用于让用户继续支付服务费用"
+    "message": "再支払い",
+    "description": "按钮文本，用于再支払い"
   },
   "button.applied": {
     "message": "申請済み",
-    "description": "按钮文本，用于显示用户已经申请了该服务"
+    "description": "按钮文本，用于表示申請済み"
   },
   "button.acquire": {
     "message": "取得",
-    "description": "按钮文本，用于让用户获取API服务的令牌或密钥"
+    "description": "按钮文本，用于取得APIサービスのトークンまたはキー"
   },
   "button.fillExample": {
     "message": "例を記入",
-    "description": "按钮文本，用于让用户填写示例数据"
+    "description": "按钮文本，用于例を記入"
   },
   "button.buyMore": {
     "message": "さらに購入",
-    "description": "按钮文本，用于让用户购买更多内容"
+    "description": "按钮文本，用于さらに購入"
   },
   "button.update": {
     "message": "更新",
@@ -121,30 +121,30 @@
   },
   "button.view": {
     "message": "表示",
-    "description": "按钮文本，用于查看某些内容"
+    "description": "按钮文本，用于表示某些内容"
   },
   "button.copy": {
     "message": "コピー",
-    "description": "按钮文本，用于复制某些内容"
+    "description": "按钮文本，用于コピー"
   },
   "button.create": {
     "message": "作成",
-    "description": "按钮文本，用于创建某些内容"
+    "description": "按钮文本，用于作成"
   },
   "button.referralEarnings": {
     "message": "紹介収益",
-    "description": "按钮文本，用于显示推荐收益，表示用户通过邀请他人使用服务可以赚钱"
+    "description": "按钮文本，用于表示紹介収益"
   },
   "button.finish": {
     "message": "完了",
-    "description": "按钮文本，用于完成某些内容"
+    "description": "按钮文本，用于完了"
   },
   "entity.website": {
     "message": "Ace Data Cloud",
     "description": "网站名称，无需翻译，保持为'Ace Data Cloud'"
   },
   "entity.copyright": {
-    "message": "著作権",
+    "message": "版権",
     "description": "用于显示版权信息的文本"
   },
   "entity.platform": {
@@ -181,15 +181,15 @@
   },
   "entity.order": {
     "message": "注文",
-    "description": "実体の注文、金額やサービス情報が含まれ、ユーザーは支払いが必要です"
+    "description": "実体の注文、注文には金額やサービス情報が含まれ、ユーザーは支払いが必要です"
   },
   "message.usedAmount": {
     "message": "使用済み金額",
-    "description": "サービスの使用済み金額を表示するために使用されます"
+    "description": "サービスで使用済みの金額を表示するために使用されます"
   },
   "message.remainingAmount": {
     "message": "残高金額",
-    "description": "サービスの残高金額を表示するために使用されます"
+    "description": "サービスで残っている金額を表示するために使用されます"
   },
   "message.copied": {
     "message": "コピー済み",
@@ -217,7 +217,19 @@
   },
   "message.joinDiscord": {
     "message": "Discordに参加",
-    "description": "ユーザーをDiscordチャンネルに参加させるためのメッセージ"
+    "description": "ユーザーがDiscordチャンネルに参加するよう促すメッセージ"
+  },
+  "message.addWeChat": {
+    "message": "WeChatを追加",
+    "description": "ユーザーがWeChatを追加するよう促すメッセージ"
+  },
+  "message.serviceTech": {
+    "message": "テクニカルサポート",
+    "description": "サービスのテクニカルサポートを表示するために使用されます"
+  },
+  "message.businessCooperation": {
+    "message": "ビジネス提携",
+    "description": "ビジネス提携に関する情報を表示するために使用されます"
   },
   "message.noData": {
     "message": "データなし",
@@ -232,12 +244,16 @@
     "description": "サイトのナビゲーションバーで使用され、コンテンツページを表示します"
   },
   "nav.category": {
-    "message": "カテゴリ",
-    "description": "サイトのナビゲーションバーで使用され、カテゴリページを表示します"
+    "message": "カテゴリー",
+    "description": "サイトのナビゲーションバーで使用され、カテゴリーページを表示します"
   },
   "nav.service": {
     "message": "サービス",
     "description": "サイトのナビゲーションバーで使用され、サービスページを表示します"
+  },
+  "nav.profile": {
+    "message": "プロフィール",
+    "description": "サイトのナビゲーションバーで使用され、個人プロフィールページを表示します"
   },
   "nav.document": {
     "message": "ドキュメント",
@@ -253,7 +269,7 @@
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "サイトのナビゲーションバーで使用され、中途之旅ページを表示します。このフィールドを翻訳しないでください。'Midjourney'のままである必要があります"
+    "description": "サイトのナビゲーションバーで使用され、中途の旅ページを表示します。このフィールドを翻訳しないでください。'Midjourney'のままである必要があります"
   },
   "nav.chatdoc": {
     "message": "ChatDoc",
@@ -264,8 +280,8 @@
     "description": "サイトのナビゲーションバーで使用され、QRアートページを表示します。このフィールドを翻訳しないでください。'QRArt'のままである必要があります"
   },
   "nav.distribution": {
-    "message": "推薦収益",
-    "description": "サイトのナビゲーションバーで使用され、推薦収益ページを表示します"
+    "message": "推奨収益",
+    "description": "サイトのナビゲーションバーで使用され、推奨収益ページを表示します"
   },
   "nav.logOut": {
     "message": "ログアウト",
@@ -276,7 +292,7 @@
     "description": "サイトのナビゲーションバーで使用され、サイト設定ページを表示します"
   },
   "nav.locale": {
-    "message": "言語",
+    "message": "言語設定",
     "description": "サイトのナビゲーションバーで使用され、言語を変更します"
   },
   "nav.darkMode": {
@@ -289,11 +305,11 @@
   },
   "title.placeholderOfSelect": {
     "message": "選択してください",
-    "description": "選択入力ボックスのプレースホルダ"
+    "description": "選択入力ボックスのプレースホルダー"
   },
   "title.placeholderOfInput": {
     "message": "入力してください",
-    "description": "入力ボックスのプレースホルダ"
+    "description": "入力ボックスのプレースホルダー"
   },
   "title.allApplications": {
     "message": "すべてのアプリケーション",
@@ -309,30 +325,30 @@
   },
   "title.buyMore": {
     "message": "さらに購入",
-    "description": "ユーザーにさらに購入するよう促すページのタイトル"
+    "description": "ユーザーがさらに購入するためのページのタイトル"
   },
   "title.distribution": {
-    "message": "推薦収益",
-    "description": "推薦収益を表示するページのタイトル。ユーザーは他の人を招待してサービスを使用することでお金を稼ぐことができます"
+    "message": "推奨収益",
+    "description": "推奨収益を表示するページのタイトル。他のユーザーを招待してサービスを使用することでお金を稼ぐことができます"
   },
   "title.site": {
     "message": "サイト設定",
     "description": "サイト設定を表示するページのタイトル"
   },
   "title.distributionHistory": {
-    "message": "推薦履歴",
-    "description": "推薦履歴を表示するページのタイトル"
+    "message": "推奨履歴",
+    "description": "推奨履歴を表示するページのタイトル"
   },
   "title.invitee": {
     "message": "招待者",
-    "description": "招待者を表示するページのタイトル"
+    "description": "显示邀请者的页面标题"
   },
   "title.allUsages": {
-    "message": "使用履歴",
-    "description": "APIサービスのすべての使用履歴を表示するページのタイトル"
+    "message": "すべての利用履歴",
+    "description": "APIサービスのすべての利用履歴を表示するページのタイトル"
   },
   "title.allCredentials": {
-    "message": "資格情報",
-    "description": "すべての資格情報を表示するページのタイトル。これらの資格情報はAPIへのアクセスに使用されます"
+    "message": "すべての資格情報",
+    "description": "APIへのアクセスに使用されるすべての資格情報を表示するページのタイトル"
   }
 }

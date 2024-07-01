@@ -200,6 +200,7 @@ export default defineComponent({
       color: var(--el-text-color-primary);
       width: fit-content;
       text-align: right;
+      max-width: 100%;
       padding: 8px 15px;
     }
   }

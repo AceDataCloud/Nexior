@@ -34,7 +34,7 @@ export default defineComponent({
   },
   mounted() {
     if (!this.value) {
-      console.log('set default steps', QRART_DEFAULT_STEPS);
+      console.debug('set default steps', QRART_DEFAULT_STEPS);
       this.value = QRART_DEFAULT_STEPS;
     }
   }

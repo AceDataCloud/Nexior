@@ -18,7 +18,7 @@
           <font-awesome-icon icon="fa-brands fa-discord" class="mr-2" />
           <template #title>{{ $t('common.message.joinDiscord') }}</template>
         </el-menu-item>
-        <el-popover placement="right" :width="420" trigger="hover">
+        <el-popover :width="350" trigger="hover">
           <template #reference>
             <el-menu-item index="2">
               <font-awesome-icon icon="fa-brands fa-weixin" class="mr-2" />

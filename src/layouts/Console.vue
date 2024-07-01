@@ -1,16 +1,10 @@
 <template>
   <div class="wrapper">
-    <navigator class="navigator" />
     <div class="main">
       <side-panel class="side" />
-      <router-view class="operation" />
+      <router-view class="panel" />
     </div>
-    <el-button round class="menu" @click="drawer = true">
-      <font-awesome-icon icon="fa-solid fa-bars" class="icon-menu" />
-    </el-button>
-    <el-drawer v-model="drawer" :with-header="false" size="340px" class="drawer">
-      <side-panel />
-    </el-drawer>
+    <navigator class="navigator" :direction="mobile ? 'row' : 'column'" />
   </div>
 </template>
 
@@ -18,22 +12,22 @@
 import { defineComponent } from 'vue';
 import Navigator from '@/components/common/Navigator.vue';
 import SidePanel from '@/components/console/SidePanel.vue';
-import { ElDrawer, ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default defineComponent({
   name: 'LayoutConsole',
   components: {
     SidePanel,
-    Navigator,
-    ElDrawer,
-    ElButton,
-    FontAwesomeIcon
+    Navigator
   },
   data() {
     return {
-      drawer: false
+      mobile: window.innerWidth < 768
     };
+  },
+  mounted() {
+    window.addEventListener('resize', () => {
+      this.mobile = window.innerWidth < 768;
+    });
   }
 });
 </script>
@@ -43,7 +37,7 @@ export default defineComponent({
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
 
   .navigator {
     height: 100%;
@@ -57,32 +51,29 @@ export default defineComponent({
     display: flex;
     flex-direction: row;
   }
-  .menu {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 767px) {
   .wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     .navigator {
-      border-right: none;
+      width: 100%;
+      height: 60px;
     }
     .main {
+      height: calc(100% - 60px);
+      width: 100%;
+      flex: 1;
       .side {
         display: none;
       }
       .panel {
         width: 100%;
         height: 100%;
-        overflow-y: scroll;
       }
-    }
-    .menu {
-      display: block;
-      position: fixed;
-      right: 20px;
-      top: 20px;
-      z-index: 100;
     }
   }
 }
