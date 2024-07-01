@@ -27,9 +27,6 @@ export default defineComponent({
       return this.$store.state.qrart?.status?.getApplication === Status.Request;
     },
     tasks() {
-      return {
-        items: []
-      };
       // reverse the order of the tasks.items
       return {
         ...this.$store.state.qrart?.tasks,
