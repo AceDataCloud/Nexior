@@ -1,54 +1,60 @@
 <template>
-  <el-button :class="{ active: !!dark }" @click="setDark(!dark)">
-    <font-awesome-icon v-if="dark" icon="fa-solid fa-moon" />
-    <font-awesome-icon v-else icon="fa-solid fa-moon" />
-  </el-button>
+  <el-dialog :model-value="visible" :width="200" class="text-center" @close="$emit('close')">
+    <dark-switch class="switch" dark-background="#333" light-background="#fff" />
+  </el-dialog>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { toggleDark } from 'vue-dark-switch';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ElButton } from 'element-plus';
+import { getDomain } from '@/utils';
 import { getCookie, setCookie } from 'typescript-cookie';
-import { getDomain } from '@/utils/initializer';
+import { defineComponent } from 'vue';
+import { Switch as DarkSwitch, toggleDark, isDark } from 'vue-dark-switch';
+import { ElDialog } from 'element-plus';
 
 export default defineComponent({
   components: {
-    FontAwesomeIcon,
-    ElButton
+    DarkSwitch,
+    ElDialog
   },
-  emits: ['update:dark'],
-  data() {
-    return {
-      dark: getCookie('THEME') === 'dark'
-    };
+  props: {
+    visible: {
+      type: Boolean,
+      default: true
+    }
+  },
+  emits: ['update:dark', 'close'],
+  computed: {
+    dark() {
+      return getCookie('THEME') === 'dark';
+    },
+    switchValue() {
+      return isDark.value;
+    }
   },
   watch: {
+    switchValue(val) {
+      this.setCookie(val);
+    },
     dark(val) {
-      this.setDark(val);
+      document.documentElement.classList.toggle('dark', val);
+      this.setCookie(this.dark);
     }
   },
   mounted() {
-    console.log('mounted', this.dark);
-    this.setDark(this.dark);
+    if (this.dark) {
+      toggleDark(true);
+      document.documentElement.classList.add('dark');
+    } else {
+      toggleDark(false);
+      document.documentElement.classList.remove('dark');
+    }
   },
   methods: {
-    setDark(flag: boolean) {
-      toggleDark(flag);
-      this.setCookie(flag);
-      if (flag === true) {
-        document.documentElement.classList.add('dark');
-      } else if (flag === false) {
-        document.documentElement.classList.remove('dark');
-      }
-    },
     setCookie(isDark: boolean) {
       setCookie('THEME', isDark ? 'dark' : 'light', {
         path: '/',
         domain: getDomain()
       });
-      this.dark = isDark;
     }
   }
 });

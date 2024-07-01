@@ -181,7 +181,7 @@
   },
   "entity.order": {
     "message": "訂單",
-    "description": "實體的訂單，訂單包含金額、服務資訊，使用者需要付費"
+    "description": "實體的訂單，訂單包含金額、服務資訊，用戶需要為其付費"
   },
   "message.usedAmount": {
     "message": "已使用金額",
@@ -197,11 +197,11 @@
   },
   "message.confirmDelete": {
     "message": "確定要刪除嗎？",
-    "description": "用於確認使用者是否要刪除某些內容的訊息"
+    "description": "用於確認用戶是否要刪除某些內容的訊息"
   },
   "message.alert": {
     "message": "警告",
-    "description": "用於警告使用者的訊息"
+    "description": "用於警告用戶的訊息"
   },
   "message.info": {
     "message": "友情提醒",
@@ -209,7 +209,7 @@
   },
   "message.free": {
     "message": "免費",
-    "description": "用於顯示服務免費的訊息，表示使用者無需付費"
+    "description": "用於顯示服務免費的訊息，表示用戶無需付費"
   },
   "message.startPrice": {
     "message": "起價",
@@ -217,7 +217,19 @@
   },
   "message.joinDiscord": {
     "message": "加入Discord",
-    "description": "用於讓使用者加入Discord頻道的訊息"
+    "description": "用於讓用戶加入Discord頻道的訊息"
+  },
+  "message.addWeChat": {
+    "message": "添加微信",
+    "description": "用於讓用戶添加微信的訊息"
+  },
+  "message.serviceTech": {
+    "message": "技術支援",
+    "description": "用於顯示服務技術支援的訊息"
+  },
+  "message.businessCooperation": {
+    "message": "商務合作",
+    "description": "用於顯示商務合作的訊息"
   },
   "message.noData": {
     "message": "無資料",
@@ -225,63 +237,67 @@
   },
   "nav.home": {
     "message": "首頁",
-    "description": "網站導覽列中的文字，用於顯示首頁"
+    "description": "網站導覽欄中的文本，用於顯示首頁"
   },
   "nav.content": {
     "message": "內容",
-    "description": "網站導覽列中的文字，用於顯示內容頁面"
+    "description": "網站導覽欄中的文本，用於顯示內容頁面"
   },
   "nav.category": {
     "message": "分類",
-    "description": "網站導覽列中的文字，用於顯示分類頁面"
+    "description": "網站導覽欄中的文本，用於顯示分類頁面"
   },
   "nav.service": {
     "message": "服務",
-    "description": "網站導覽列中的文字，用於顯示服務頁面"
+    "description": "網站導覽欄中的文本，用於顯示服務頁面"
+  },
+  "nav.profile": {
+    "message": "我",
+    "description": "網站導覽欄中的文本，用於顯示個人資料頁面"
   },
   "nav.document": {
     "message": "文件",
-    "description": "網站導覽列中的文字，用於顯示文件頁面"
+    "description": "網站導覽欄中的文本，用於顯示文件頁面"
   },
   "nav.console": {
     "message": "控制台",
-    "description": "網站導覽列中的文字，用於顯示控制台頁面"
+    "description": "網站導覽欄中的文本，用於顯示控制台頁面"
   },
   "nav.chat": {
     "message": "Chat",
-    "description": "網站導覽列中的文字，用於顯示聊天頁面，請不要翻譯此字段，必須保持為'Chat'"
+    "description": "網站導覽欄中的文本，用於顯示聊天頁面，請不要翻譯此字段，必須保持為'Chat'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "網站導覽列中的文字，用於顯示中途之旅頁面，請不要翻譯此字段，必須保持為'Midjourney'"
+    "description": "網站導覽欄中的文本，用於顯示中途之旅頁面，請不要翻譯此字段，必須保持為'Midjourney'"
   },
   "nav.chatdoc": {
     "message": "ChatDoc",
-    "description": "網站導覽列中的文字，用於顯示聊天文檔頁面，請不要翻譯此字段，必須保持為'Chatdoc'"
+    "description": "網站導覽欄中的文本，用於顯示聊天文檔頁面，請不要翻譯此字段，必須保持為'Chatdoc'"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "網站導覽列中的文字，用於顯示二維藝術頁面，請不要翻譯此字段，必須保持為'QRArt'"
+    "description": "網站導覽欄中的文本，用於顯示二維藝術頁面，請不要翻譯此字段，必須保持為'QRArt'"
   },
   "nav.distribution": {
     "message": "推薦收益",
-    "description": "網站導覽列中的文字，用於顯示推薦收益頁面"
+    "description": "網站導覽欄中的文本，用於顯示推薦收益頁面"
   },
   "nav.logOut": {
     "message": "登出",
-    "description": "網站導覽列中的文字，用於登出"
+    "description": "網站導覽欄中的文本，用於登出"
   },
   "nav.site": {
     "message": "站點配置",
-    "description": "網站導覽列中的文字，用於顯示站點配置頁面"
+    "description": "網站導覽欄中的文本，用於顯示站點配置頁面"
   },
   "nav.locale": {
-    "message": "語言",
-    "description": "網站導覽列中的文字，用於更改語言"
+    "message": "語言設定",
+    "description": "網站導覽欄中的文本，用於更改語言"
   },
   "nav.darkMode": {
     "message": "深色模式",
-    "description": "網站導覽列中的文字，用於切換到深色主題"
+    "description": "網站導覽欄中的文本，用於切換到深色主題"
   },
   "title.alert": {
     "message": "警報",
@@ -309,11 +325,11 @@
   },
   "title.buyMore": {
     "message": "購買更多",
-    "description": "讓使用者購買更多的頁面標題"
+    "description": "讓用戶購買更多的頁面標題"
   },
   "title.distribution": {
     "message": "推薦收益",
-    "description": "顯示推薦收益的頁面標題，表示使用者可以透過邀請他人使用服務來賺錢"
+    "description": "顯示推薦收益的頁面標題，表示用戶可以通過邀請他人使用服務來賺錢"
   },
   "title.site": {
     "message": "站點配置",

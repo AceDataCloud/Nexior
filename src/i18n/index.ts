@@ -91,7 +91,6 @@ export const loadLocaleMessages = async (i18n: I18n, locale: string) => {
   const messages: any = {};
   names.forEach((name, index) => {
     const resource = resources[index];
-    console.log('resource', resource);
     for (const key in resource) {
       if (resource.hasOwnProperty(key)) {
         const element = resource[key];

@@ -116,8 +116,8 @@ export default defineComponent({
     .menu {
       display: block;
       position: absolute;
-      left: 10px;
-      top: 25px;
+      left: 15px;
+      top: 15px;
       z-index: 1000;
     }
   }

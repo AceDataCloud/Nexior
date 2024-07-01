@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="element">
     <div v-if="initializing && application === undefined">
       <el-skeleton :rows="1" class="text-center">
         <template #template>
@@ -112,7 +112,7 @@ export default defineComponent({
       this.application &&
       !this.application?.credentials?.find((credential) => credential.host === window.location.origin)
     ) {
-      console.log('create extra credential');
+      console.debug('create extra credential');
       this.onCreateCredential(this.application);
     }
   },
@@ -163,6 +163,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.element {
+  margin-bottom: 10px;
+}
 .shimmer {
   width: 300px;
   margin: auto;

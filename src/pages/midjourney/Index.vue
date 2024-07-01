@@ -10,7 +10,6 @@
           :application="application"
           :service="service"
           :need-apply="needApply"
-          class="mb-4"
           @refresh="onGetApplication"
         />
         <task-list @custom="onCustom" @refresh="onGetApplication" />
@@ -274,7 +273,7 @@ export default defineComponent({
     },
     async onSyncTasks() {
       await this.$store.dispatch('midjourney/getImagineTasks', {
-        limit: 50,
+        limit: 30,
         offset: 0
       });
     }

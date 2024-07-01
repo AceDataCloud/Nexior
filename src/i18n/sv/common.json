@@ -4,7 +4,7 @@
     "description": "Knapp-text för att konfigurera viss innehåll"
   },
   "button.preview": {
-    "message": "Förhandsgranska",
+    "message": "Förhandsvisa",
     "description": "Knapp-text för att öppna förhandsgranska av en fil via URL"
   },
   "button.seeRawImage": {
@@ -57,7 +57,7 @@
   },
   "button.verify": {
     "message": "Verifiera",
-    "description": "Knapp-text för att låta användaren genomföra en verifiering"
+    "description": "Knapp-text för att låta användaren genomföra verifiering av riktiga uppgifter"
   },
   "button.profile": {
     "message": "Profil",
@@ -65,7 +65,7 @@
   },
   "button.console": {
     "message": "Konsol",
-    "description": "Knapp-text för att visa konsolsidan för att kontrollera viss innehåll på webbplatsen"
+    "description": "Knapp-text för att visa konsolsida för att kontrollera viss innehåll på webbplatsen"
   },
   "button.learn": {
     "message": "Lära",
@@ -181,7 +181,7 @@
   },
   "entity.order": {
     "message": "Beställning",
-    "description": "Entitetens beställning, beställningen innehåller belopp, tjänsteinformation och användaren behöver betala för den"
+    "description": "Entitetens beställning, beställningen innehåller belopp, tjänsteinformation, användare måste betala för den"
   },
   "message.usedAmount": {
     "message": "Använt belopp",
@@ -204,7 +204,7 @@
     "description": "Används för att varna användaren"
   },
   "message.info": {
-    "message": "Vänlig påminnelse",
+    "message": "Information",
     "description": "Används för att visa informationsmeddelanden"
   },
   "message.free": {
@@ -218,6 +218,18 @@
   "message.joinDiscord": {
     "message": "Gå med i Discord",
     "description": "Används för att låta användaren gå med i Discord-kanalen"
+  },
+  "message.addWeChat": {
+    "message": "Lägg till WeChat",
+    "description": "Används för att låta användaren lägga till WeChat"
+  },
+  "message.serviceTech": {
+    "message": "Teknisk support",
+    "description": "Används för att visa meddelanden om tjänstens tekniska support"
+  },
+  "message.businessCooperation": {
+    "message": "Affärssamarbete",
+    "description": "Används för att visa meddelanden om affärssamarbete"
   },
   "message.noData": {
     "message": "Inga data",
@@ -239,13 +251,17 @@
     "message": "Tjänst",
     "description": "Text i webbplatsens navigeringsfält, används för att visa tjänstsidan"
   },
+  "nav.profile": {
+    "message": "Profil",
+    "description": "Text i webbplatsens navigeringsfält, används för att visa användarprofilssidan"
+  },
   "nav.document": {
     "message": "Dokument",
-    "description": "Text i webbplatsens navigeringsfält, används för att visa dokumentationssidan"
+    "description": "Text i webbplatsens navigeringsfält, används för att visa dokumentssidan"
   },
   "nav.console": {
     "message": "Konsol",
-    "description": "Text i webbplatsens navigeringsfält, används för att visa konsolsidan"
+    "description": "Text i webbplatsens navigeringsfält, används för att visa konsolssidan"
   },
   "nav.chat": {
     "message": "Chat",
@@ -257,7 +273,7 @@
   },
   "nav.chatdoc": {
     "message": "ChatDoc",
-    "description": "Text i webbplatsens navigeringsfält, används för att visa chattedokumentationssidan, detta fält får inte översättas, det måste förbli 'Chatdoc'"
+    "description": "Text i webbplatsens navigeringsfält, används för att visa chattrumssidan, detta fält får inte översättas, det måste förbli 'Chatdoc'"
   },
   "nav.qrart": {
     "message": "QRArt",
@@ -276,7 +292,7 @@
     "description": "Text i webbplatsens navigeringsfält, används för att visa sidan för webbplatskonfiguration"
   },
   "nav.locale": {
-    "message": "Språk",
+    "message": "Språkinställningar",
     "description": "Text i webbplatsens navigeringsfält, används för att ändra språk"
   },
   "nav.darkMode": {
@@ -324,15 +340,15 @@
     "description": "Titel för sidan som visar rekommendationshistorik"
   },
   "title.invitee": {
-    "message": "Inbjudare",
-    "description": "Titel för sidan som visar inbjudare"
+    "message": "Inbjudan",
+    "description": "Visar sidtiteln för inbjudaren"
   },
   "title.allUsages": {
-    "message": "Användningshistorik",
-    "description": "Titel för sidan som visar all användningshistorik för API-tjänsten"
+    "message": "Alla användningar",
+    "description": "Visar sidtiteln för alla användningshistorik för API-tjänsten"
   },
   "title.allCredentials": {
-    "message": "Referenser",
-    "description": "Titel för sidan som visar alla referenser som används för att komma åt API"
+    "message": "Alla referenser",
+    "description": "Visar sidtiteln för alla referenser som används för att komma åt API"
   }
 }

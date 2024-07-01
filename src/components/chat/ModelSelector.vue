@@ -141,7 +141,7 @@ export default defineComponent({
   background-color: var(--el-bg-color-page);
   padding: 7px 6px;
   border-radius: 15px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   .group {
     padding: 20px 30px;
     color: var(--el-text-color-primary);

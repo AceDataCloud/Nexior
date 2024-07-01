@@ -91,7 +91,7 @@ export default defineComponent({
         return;
       }
       await this.$store.dispatch('midjourney/getImagineTasks', {
-        limit: 50,
+        limit: 30,
         offset: 0
       });
     }

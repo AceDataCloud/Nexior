@@ -101,7 +101,6 @@ export default defineComponent({
     },
     onSetContentImageUrl() {
       const url = this.urls?.[0];
-      console.log('content_image_url', url);
       this.$store.commit('qrart/setConfig', {
         ...this.$store.state.qrart?.config,
         content: undefined,

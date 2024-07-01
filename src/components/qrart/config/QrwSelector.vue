@@ -34,7 +34,7 @@ export default defineComponent({
   },
   mounted() {
     if (!this.value) {
-      console.log('set default qrw');
+      console.debug('set default qrw');
       this.value = QRART_DEFAULT_QRW;
     }
   }

@@ -107,9 +107,6 @@ export default defineComponent({
   },
   async mounted() {},
   methods: {
-    onCreate() {
-      console.log('onCreate');
-    },
     onClick(repository: IChatdocRepository) {
       this.$router.push({
         name: ROUTE_CHATDOC_MANAGE,
