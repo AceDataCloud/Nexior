@@ -3,7 +3,14 @@ import { IMidjourneyState } from './models';
 import { ActionContext } from 'vuex';
 import { log } from '@/utils/log';
 import { IRootState } from '../common/models';
-import { IApplication, ICredential, IMidjourneyImagineTask, IMidjourneyPreset, IService } from '@/models';
+import {
+  IApplication,
+  ICredential,
+  IMidjourneyPreset,
+  IMidjourneyTask,
+  IMidjourneyTasksResponse,
+  IService
+} from '@/models';
 import { Status } from '@/models/common';
 import { MIDJOURNEY_SERVICE_ID } from '@/constants';
 
@@ -62,8 +69,8 @@ export const getApplication = async ({
   });
 };
 
-export const setImagineTasks = ({ commit }: any, payload: IMidjourneyImagineTask[]) => {
-  commit('setImagineTasks', payload);
+export const setTasks = ({ commit }: any, payload: IMidjourneyTask[]) => {
+  commit('setTasks', payload);
 };
 
 export const getService = async ({ commit, state }: ActionContext<IMidjourneyState, IRootState>): Promise<IService> => {
@@ -84,12 +91,12 @@ export const getService = async ({ commit, state }: ActionContext<IMidjourneySta
   });
 };
 
-export const getImagineTasks = async (
+export const getTasks = async (
   { commit, state }: ActionContext<IMidjourneyState, IRootState>,
   { offset, limit }: { offset?: number; limit?: number }
-): Promise<IMidjourneyImagineTask[]> => {
+): Promise<IMidjourneyTasksResponse> => {
   return new Promise(async (resolve, reject) => {
-    log(getImagineTasks, 'start to get imagine tasks', offset, limit);
+    log(getTasks, 'start to get tasks', offset, limit);
     const credential = state.credential;
     const token = credential?.token;
     if (!token) {
@@ -107,10 +114,9 @@ export const getImagineTasks = async (
         }
       )
       .then((response) => {
-        log(getImagineTasks, 'get imagine tasks success', response.data.items);
-        commit('setImagineTasks', response.data.items);
-        commit('setImagineTasksTotal', response.data.count);
-        resolve(response.data.items);
+        log(getTasks, 'get tasks success', response.data);
+        commit('setTasks', response.data);
+        resolve(response.data);
       })
       .catch((error) => {
         return reject(error);
@@ -127,6 +133,6 @@ export default {
   setMode,
   setApplication,
   getApplication,
-  setImagineTasks,
-  getImagineTasks
+  setTasks,
+  getTasks
 };

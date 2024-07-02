@@ -3,5 +3,5 @@ export default [
   'midjourney.credential',
   'midjourney.mode',
   'midjourney.application',
-  'midjourney.imagineTasks'
+  'midjourney.tasks'
 ];

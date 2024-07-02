@@ -4,7 +4,10 @@ import { IMidjourneyState } from './models';
 export const resetAll = (state: IMidjourneyState): void => {
   state.application = undefined;
   state.preset = {};
-  state.imagineTasks = [];
+  state.tasks = {
+    items: undefined,
+    total: undefined
+  };
 };
 
 export const setService = (state: IMidjourneyState, payload: IService): void => {
@@ -23,12 +26,8 @@ export const setPreset = (state: IMidjourneyState, payload: IMidjourneyPreset): 
   state.preset = payload;
 };
 
-export const setImagineTasks = (state: IMidjourneyState, payload: any): void => {
-  state.imagineTasks = payload;
-};
-
-export const setImagineTasksTotal = (state: IMidjourneyState, payload: number): void => {
-  state.imagineTasksTotal = payload;
+export const setTasks = (state: IMidjourneyState, payload: any): void => {
+  state.tasks = payload;
 };
 
 export default {
@@ -36,7 +35,6 @@ export default {
   setPreset,
   setCredential,
   setService,
-  setImagineTasks,
-  setImagineTasksTotal,
+  setTasks,
   resetAll
 };

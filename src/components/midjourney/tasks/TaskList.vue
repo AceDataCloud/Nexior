@@ -54,7 +54,7 @@ export default defineComponent({
     },
     tasks() {
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      return this.$store.state.midjourney.imagineTasks?.reverse();
+      return this.$store.state.midjourney.tasks?.items?.reverse();
     },
     application() {
       return this.$store.state.midjourney.application;
@@ -71,11 +71,11 @@ export default defineComponent({
     }
   },
   async mounted() {
-    await this.$store.dispatch('midjourney/setImagineTasks', undefined);
-    this.getImagineTasks();
+    await this.$store.dispatch('midjourney/setTasks', undefined);
+    this.getTasks();
     // @ts-ignore
     this.job = setInterval(() => {
-      this.getImagineTasks();
+      this.getTasks();
     }, 5000);
   },
   unmounted() {
@@ -85,12 +85,12 @@ export default defineComponent({
     async onLoadHistory() {
       this.$router.push({ name: ROUTE_MIDJOURNEY_HISTORY });
     },
-    async getImagineTasks() {
+    async getTasks() {
       // ensure that the previous request has been completed
       if (this.loading) {
         return;
       }
-      await this.$store.dispatch('midjourney/getImagineTasks', {
+      await this.$store.dispatch('midjourney/getTasks', {
         limit: 30,
         offset: 0
       });
@@ -133,7 +133,7 @@ export default defineComponent({
       .main {
         width: calc(100% - 70px);
         flex: 1;
-        padding: 0 10px;
+        padding: 10px;
 
         .icon {
           display: flex;

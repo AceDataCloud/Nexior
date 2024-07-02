@@ -73,6 +73,9 @@ export default defineComponent({
     user() {
       return this.$store.getters.user;
     },
+    showSite() {
+      return this.$store?.state?.site?.admins?.includes(this.$store.getters.user?.id);
+    },
     links(): ILink[] {
       let links: ILink[] = [
         {
@@ -105,12 +108,16 @@ export default defineComponent({
           name: ROUTE_DISTRIBUTION_INDEX,
           icon: 'fa-solid fa-coins'
         },
-        {
-          key: 'site-index',
-          text: this.$t('common.nav.site'),
-          name: ROUTE_SITE_INDEX,
-          icon: 'fa-solid fa-gear'
-        },
+        ...(this.showSite
+          ? [
+              {
+                key: 'site-index',
+                text: this.$t('common.nav.site'),
+                name: ROUTE_SITE_INDEX,
+                icon: 'fa-solid fa-gear'
+              }
+            ]
+          : []),
         {
           key: 'dark-setting',
           text: this.$t('common.nav.darkMode'),

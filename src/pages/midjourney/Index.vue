@@ -94,8 +94,8 @@ export default defineComponent({
     };
   },
   computed: {
-    imagineTasks() {
-      return this.$store.state.midjourney.imagineTasks;
+    tasks() {
+      return this.$store.state.midjourney.tasks;
     },
     service() {
       return this.$store.state.midjourney.service;
@@ -189,7 +189,7 @@ export default defineComponent({
     }
   },
   watch: {
-    imagineTasks: {
+    tasks: {
       handler(val, oldVal) {
         if (oldVal === undefined && val) {
           this.onScrollDown();
@@ -272,7 +272,7 @@ export default defineComponent({
       }, 500);
     },
     async onSyncTasks() {
-      await this.$store.dispatch('midjourney/getImagineTasks', {
+      await this.$store.dispatch('midjourney/getTasks', {
         limit: 30,
         offset: 0
       });
