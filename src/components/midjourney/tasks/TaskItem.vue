@@ -1,5 +1,5 @@
 <template>
-  <div class="item">
+  <div v-if="modelValue?.type === 'imagine'" class="item">
     <div class="left">
       <el-image src="https://cdn.acedata.cloud/05daz4.png" class="avatar" />
     </div>
@@ -121,7 +121,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElImage, ElButton, ElTooltip, ElAlert } from 'element-plus';
-import { IMidjourneyImagineTask, MidjourneyImagineAction, MidjourneyImagineState } from '@/models';
+import { IMidjourneyTask, MidjourneyImagineAction, MidjourneyImagineState } from '@/models';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 
@@ -143,7 +143,7 @@ export default defineComponent({
   },
   props: {
     modelValue: {
-      type: Object as () => IMidjourneyImagineTask | undefined,
+      type: Object as () => IMidjourneyTask | undefined,
       required: true
     },
     full: {
@@ -241,10 +241,12 @@ export default defineComponent({
       target.src = url.toString();
     },
     onCustom(action: string) {
-      this.$emit('custom', {
-        action,
-        image_id: this.modelValue?.response?.image_id
-      });
+      if (this.modelValue?.type === 'imagine') {
+        this.$emit('custom', {
+          action,
+          image_id: this.modelValue?.response?.image_id
+        });
+      }
     },
     onOpenUrl(url: string) {
       window.open(url, '_blank');
@@ -332,7 +334,6 @@ $left-width: 70px;
         }
       }
     }
-
     .content {
       width: 100%;
       position: relative;

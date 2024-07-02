@@ -1,15 +1,19 @@
-import { IApplication, ICredential, IMidjourneyImagineTask, IMidjourneyPreset, IService, Status } from '@/models';
+import { IApplication, ICredential, IMidjourneyPreset, IMidjourneyTask, IService, Status } from '@/models';
 
 export interface IMidjourneyState {
   service: IService | undefined;
   application: IApplication | undefined;
-  imagineTasks: IMidjourneyImagineTask[] | undefined;
-  imagineTasksTotal: number | undefined;
+  tasks:
+    | {
+        items: IMidjourneyTask[] | undefined;
+        total: number | undefined;
+      }
+    | undefined;
   credential: ICredential | undefined;
   preset: IMidjourneyPreset;
   status: {
     getService: Status;
     getApplication: Status;
-    getImagineTasks: Status;
+    getTasks: Status;
   };
 }

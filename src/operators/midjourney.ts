@@ -2,13 +2,13 @@ import axios, { AxiosResponse } from 'axios';
 import {
   IMidjourneyImagineRequest,
   IMidjourneyImagineResponse,
-  IMidjourneyImagineTaskResponse,
-  IMidjourneyImagineTasksResponse
+  IMidjourneyTaskResponse,
+  IMidjourneyTasksResponse
 } from '@/models';
 import { BASE_URL_API } from '@/constants';
 
 class MidjourneyOperator {
-  async task(id: string, options: { token: string }): Promise<AxiosResponse<IMidjourneyImagineTaskResponse>> {
+  async task(id: string, options: { token: string }): Promise<AxiosResponse<IMidjourneyTaskResponse>> {
     return await axios.post(
       `/midjourney/tasks`,
       {
@@ -30,7 +30,7 @@ class MidjourneyOperator {
   async tasks(
     filter: { ids?: string[]; applicationId?: string; limit?: number; offset?: number },
     options: { token: string }
-  ): Promise<AxiosResponse<IMidjourneyImagineTasksResponse>> {
+  ): Promise<AxiosResponse<IMidjourneyTasksResponse>> {
     return await axios.post(
       `/midjourney/tasks`,
       {

@@ -199,7 +199,7 @@ export default defineComponent({
       background-color: var(--el-bg-color-page);
       color: var(--el-text-color-primary);
       width: fit-content;
-      text-align: right;
+      text-align: left;
       max-width: 100%;
       padding: 8px 15px;
     }

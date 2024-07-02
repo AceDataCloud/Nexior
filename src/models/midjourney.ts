@@ -60,6 +60,11 @@ export interface IMidjourneyImagineRequest {
   application_id?: string;
 }
 
+export interface IMidjourneyDescribeRequest {
+  image_url: string;
+  application_id?: string;
+}
+
 export interface IMidjourneyImagineResponse {
   task_id: string;
   progress: number;
@@ -75,18 +80,33 @@ export interface IMidjourneyImagineResponse {
   success?: boolean;
 }
 
+export interface IMidjourneyDescribeResponse {
+  descriptions: string[];
+}
+
 export interface IMidjourneyImagineTask {
   id: string;
+  type: 'imagine';
   created_at?: string;
   request?: IMidjourneyImagineRequest;
   response?: IMidjourneyImagineResponse;
   state?: MidjourneyImagineState;
 }
 
-export type IMidjourneyImagineTaskResponse = IMidjourneyImagineTask;
+export interface IMidjourneyDescribeTask {
+  id: string;
+  type: 'describe';
+  created_at?: string;
+  request?: IMidjourneyDescribeRequest;
+  response?: IMidjourneyDescribeResponse;
+}
 
-export interface IMidjourneyImagineTasksResponse {
-  items: IMidjourneyImagineTask[];
+export type IMidjourneyTask = IMidjourneyImagineTask | IMidjourneyDescribeTask;
+
+export type IMidjourneyTaskResponse = IMidjourneyTask;
+
+export interface IMidjourneyTasksResponse {
+  items: IMidjourneyTask[];
   count: number;
 }
 

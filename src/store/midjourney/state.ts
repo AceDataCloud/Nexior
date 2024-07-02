@@ -5,14 +5,16 @@ export default (): IMidjourneyState => {
   return {
     service: undefined,
     application: undefined,
-    imagineTasks: undefined,
-    imagineTasksTotal: undefined,
+    tasks: {
+      items: undefined,
+      total: undefined
+    },
     credential: undefined,
     preset: {},
     status: {
       getService: Status.None,
       getApplication: Status.None,
-      getImagineTasks: Status.None
+      getTasks: Status.None
     }
   };
 };
