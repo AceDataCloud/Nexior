@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Mon, 01 Jul 2024 17:01:05 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Jul 2024 16:30:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.9.1
+
+Tue, 02 Jul 2024 16:30:09 GMT
+
+### Patches
+
+- upgrade to use tasks for mj (germey@acedata.cloud)
 
 ## 1.9.0
 
