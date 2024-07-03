@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Wed, 03 Jul 2024 17:18:06 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Jul 2024 17:56:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.10.1
+
+Wed, 03 Jul 2024 17:56:58 GMT
+
+### Patches
+
+- fix model name (office@acedata.cloud)
+- fix model name (office@acedata.cloud)
 
 ## 1.10.0
 
