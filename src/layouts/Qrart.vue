@@ -31,18 +31,6 @@ export default defineComponent({
     return {
       drawer: false
     };
-  },
-  async mounted() {
-    await this.onGetService();
-    await this.onGetApplication();
-  },
-  methods: {
-    async onGetService() {
-      await this.$store.dispatch('qrart/getService');
-    },
-    async onGetApplication() {
-      await this.$store.dispatch('qrart/getApplication');
-    }
   }
 });
 </script>
