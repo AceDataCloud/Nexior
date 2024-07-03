@@ -97,7 +97,6 @@ import {
   ROUTE_PROFILE_INDEX,
   ROUTE_DISTRIBUTION_INDEX,
   ROUTE_INDEX,
-  ROUTE_MIDJOURNEY_HISTORY,
   ROUTE_MIDJOURNEY_INDEX,
   ROUTE_QRART_INDEX,
   ROUTE_QRART_HISTORY,
@@ -150,7 +149,7 @@ export default defineComponent({
           },
           displayName: this.$t('common.nav.midjourney'),
           icon: 'fa-solid fa-palette',
-          routes: [ROUTE_MIDJOURNEY_INDEX, ROUTE_MIDJOURNEY_HISTORY]
+          routes: [ROUTE_MIDJOURNEY_INDEX]
         });
       }
 
@@ -201,16 +200,6 @@ export default defineComponent({
         !this.$store?.state?.site?.distribution?.force_inviter_id ||
         this.$store.getters.user?.id === this.$store?.state?.site?.distribution?.force_inviter_id
       );
-    },
-    collapsed: {
-      get() {
-        return this.$store.state.setting?.navigationCollapsed;
-      },
-      set(val: boolean) {
-        this.$store.commit('setSetting', {
-          navigationCollapsed: val
-        });
-      }
     }
   },
   methods: {
@@ -229,18 +218,8 @@ export default defineComponent({
         name: ROUTE_DISTRIBUTION_INDEX
       });
     },
-    async onOpenMenu() {
-      this.collapsed = false;
-    },
-    async onCollapseMenu() {
-      this.collapsed = true;
-    },
     async onLogout() {
-      await this.$store.dispatch('resetAll');
-      await this.$store.dispatch('chat/resetAll');
-      await this.$store.dispatch('midjourney/resetAll');
-      await this.$store.dispatch('chatdoc/resetAll');
-      await this.$store.dispatch('qrart/resetAll');
+      await this.$store.dispatch('logout');
     },
     onConsole() {
       this.$router.push({ name: ROUTE_CONSOLE_ROOT });

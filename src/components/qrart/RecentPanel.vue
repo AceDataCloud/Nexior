@@ -47,48 +47,12 @@ export default defineComponent({
     };
   },
   computed: {
-    loading() {
-      return this.$store.state.qrart?.status?.getApplication === Status.Request;
-    },
     tasks() {
       // reverse the order of the tasks.items
       return {
         ...this.$store.state.qrart?.tasks,
         items: this.$store.state.qrart?.tasks?.items?.slice().reverse()
       };
-    }
-  },
-  async mounted() {
-    await this.$store.dispatch('qrart/setTasks', undefined);
-    await this.getTasks();
-    await this.onScrollDown();
-    // @ts-ignore
-    this.job = setInterval(() => {
-      this.getTasks();
-    }, 5000);
-  },
-  async unmounted() {
-    clearInterval(this.job);
-  },
-  methods: {
-    async onScrollDown() {
-      setTimeout(() => {
-        // scroll to bottom for `.recent`
-        const el = document.querySelector('.recent');
-        if (el) {
-          el.scrollTop = el.scrollHeight;
-        }
-      }, 500);
-    },
-    async getTasks() {
-      // ensure that the previous request has been completed
-      if (this.loading) {
-        return;
-      }
-      await this.$store.dispatch('qrart/getTasks', {
-        limit: 50,
-        offset: 0
-      });
     }
   }
 });

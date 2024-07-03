@@ -3,6 +3,7 @@ import favicon from '@/assets/images/favicon.ico';
 import { getLocale } from '@/i18n';
 import store from '@/store';
 import { log } from './log';
+import { IToken } from '@/models';
 
 export const getDomain = () => {
   const host = window.location.hostname;
@@ -139,4 +140,29 @@ export const initializeSite = async () => {
   if (!site?.origin) {
     await store.dispatch('initializeSite');
   }
+};
+
+/**
+ * Initialize token by code
+ */
+export const initializeToken = async () => {
+  const query = new URLSearchParams(window.location.search);
+  const code = query.get('code');
+  if (code) {
+    const token = await store.dispatch('getToken', code);
+    console.debug('get token', token);
+  }
+};
+
+/**
+ * Initialize user by token
+ */
+export const initializeUser = async () => {
+  const token = store.state.token as IToken;
+  if (!token?.access) {
+    console.debug('no access token, skip get user');
+    return;
+  }
+  const user = await store.dispatch('getUser');
+  console.debug('get user', user);
 };

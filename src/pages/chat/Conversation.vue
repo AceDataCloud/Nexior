@@ -128,10 +128,28 @@ export default defineComponent({
       }
     }
   },
-  mounted() {
-    this.onScrollDown();
+  async mounted() {
+    await this.onGetService();
+    await this.onGetApplication();
+    await this.onGetConversations();
+    await this.onScrollDown();
   },
   methods: {
+    async onGetService() {
+      console.debug('start onGetService');
+      await this.$store.dispatch('chat/getService');
+      console.debug('end onGetService');
+    },
+    async onGetApplication() {
+      console.debug('start onGetApplication');
+      await this.$store.dispatch('chat/getApplication');
+      console.debug('end onGetApplication');
+    },
+    async onGetConversations() {
+      console.debug('start onGetConversations');
+      await this.$store.dispatch('chat/getConversations');
+      console.debug('end onGetConversations');
+    },
     async onDraft(question: string) {
       this.question = question;
       this.onSubmit();

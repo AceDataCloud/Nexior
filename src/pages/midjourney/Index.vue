@@ -12,7 +12,7 @@
           :need-apply="needApply"
           @refresh="onGetApplication"
         />
-        <task-list @custom="onCustom" @refresh="onGetApplication" />
+        <task-list @custom="onCustom" />
       </div>
       <div class="bottom">
         <el-card v-show="operating" class="operations">
@@ -66,6 +66,7 @@ interface IData {
   ignore: string;
   references: string[];
   operating: boolean;
+  job: number;
 }
 
 const CALLBACK_URL = 'https://webhook.acedata.cloud/midjourney';
@@ -90,7 +91,8 @@ export default defineComponent({
       elements: [],
       ignore: '',
       references: [],
-      operating: false
+      operating: false,
+      job: 0
     };
   },
   computed: {
@@ -105,6 +107,9 @@ export default defineComponent({
     },
     preset() {
       return this.$store.state.midjourney.preset;
+    },
+    loading() {
+      return this.$store.state.midjourney.status.getApplication === Status.Request;
     },
     initializing() {
       return this.$store.state.midjourney.status.getApplication === Status.Request;
@@ -198,7 +203,31 @@ export default defineComponent({
       deep: true
     }
   },
+  async mounted() {
+    await this.onGetService();
+    await this.onGetApplication();
+    await this.onScrollDown();
+    await this.onGetTasks();
+    await this.onScrollDown();
+    // @ts-ignore
+    this.job = setInterval(() => {
+      this.onGetTasks();
+    }, 5000);
+  },
+  async unmounted() {
+    clearInterval(this.job);
+  },
   methods: {
+    async onGetService() {
+      console.debug('start onGetService');
+      await this.$store.dispatch('midjourney/getService');
+      console.debug('end onGetService');
+    },
+    async onGetApplication() {
+      console.debug('start onGetApplication');
+      await this.$store.dispatch('midjourney/getApplication');
+      console.debug('end onGetApplication');
+    },
     onApply() {
       applicationOperator
         .create({
@@ -214,9 +243,6 @@ export default defineComponent({
             ElMessage.error(this.$t('application.message.alreadyApplied'));
           }
         });
-    },
-    async onGetApplication() {
-      await this.$store.dispatch('midjourney/getApplication');
     },
     async onStartTask(request: IMidjourneyImagineRequest) {
       const token = this.credential?.token;
@@ -236,7 +262,7 @@ export default defineComponent({
           ElMessage.error(this.$t('midjourney.message.startTaskFailed'));
         })
         .finally(async () => {
-          await this.onSyncTasks();
+          await this.onGetTasks();
           await this.onScrollDown();
         });
     },
@@ -271,7 +297,11 @@ export default defineComponent({
         }
       }, 500);
     },
-    async onSyncTasks() {
+    async onGetTasks() {
+      if (this.loading) {
+        console.debug('loading');
+        return;
+      }
       await this.$store.dispatch('midjourney/getTasks', {
         limit: 30,
         offset: 0

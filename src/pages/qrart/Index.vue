@@ -35,6 +35,7 @@ const CALLBACK_URL = 'https://webhook.acedata.cloud/qrart';
 
 interface IData {
   task: IQrartTask | undefined;
+  job: number;
 }
 
 export default defineComponent({
@@ -48,10 +49,14 @@ export default defineComponent({
   },
   data(): IData {
     return {
-      task: undefined
+      task: undefined,
+      job: 0
     };
   },
   computed: {
+    loading() {
+      return this.$store.state.qrart?.status?.getApplication === Status.Request;
+    },
     service() {
       return this.$store.state.qrart.service;
     },
@@ -71,7 +76,31 @@ export default defineComponent({
       return this.$store.state.qrart.application;
     }
   },
+  async mounted() {
+    await this.onGetService();
+    await this.onGetApplication();
+    await this.onScrollDown();
+    await this.onGetTasks();
+    await this.onScrollDown();
+    // @ts-ignore
+    this.job = setInterval(() => {
+      this.onGetTasks();
+    }, 5000);
+  },
+  async unmounted() {
+    clearInterval(this.job);
+  },
   methods: {
+    async onGetService() {
+      console.debug('start onGetService');
+      await this.$store.dispatch('qrart/getService');
+      console.debug('end onGetService');
+    },
+    async onGetApplication() {
+      console.debug('start onGetApplication');
+      await this.$store.dispatch('qrart/getApplication');
+      console.debug('end onGetApplication');
+    },
     onApply() {
       applicationOperator
         .create({
@@ -88,9 +117,6 @@ export default defineComponent({
           }
         });
     },
-    async onGetApplication() {
-      await this.$store.dispatch('qrart/getApplication');
-    },
     async onScrollDown() {
       setTimeout(() => {
         // scroll to bottom for `.tasks`
@@ -99,6 +125,16 @@ export default defineComponent({
           el.scrollTop = el.scrollHeight;
         }
       }, 500);
+    },
+    async onGetTasks() {
+      if (this.loading) {
+        console.debug('loading');
+        return;
+      }
+      await this.$store.dispatch('qrart/getTasks', {
+        limit: 30,
+        offset: 0
+      });
     },
     async onGenerate() {
       const request = {
@@ -142,10 +178,7 @@ export default defineComponent({
           ElMessage.error(this.$t('qrart.message.startTaskFailed'));
         })
         .finally(async () => {
-          await this.$store.dispatch('qrart/getTasks', {
-            limit: 50,
-            offset: 0
-          });
+          await this.onGetTasks();
           await this.onScrollDown();
         });
     }

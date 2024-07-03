@@ -9,7 +9,6 @@ export const ROUTE_CHAT_CONVERSATION = 'chat-conversation';
 export const ROUTE_CHAT_CONVERSATION_NEW = 'chat-conversation-new';
 
 export const ROUTE_MIDJOURNEY_INDEX = 'midjourney-index';
-export const ROUTE_MIDJOURNEY_HISTORY = 'midjourney-history';
 
 export const ROUTE_QRART_INDEX = 'qrart-index';
 export const ROUTE_QRART_HISTORY = 'qrart-history';

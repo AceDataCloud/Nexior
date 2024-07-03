@@ -31,7 +31,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import TaskItem from './TaskItem.vue';
-import { ROUTE_MIDJOURNEY_HISTORY } from '@/router';
 import { ElSkeleton, ElSkeletonItem } from 'element-plus';
 import { Status } from '@/models';
 
@@ -49,51 +48,12 @@ export default defineComponent({
     };
   },
   computed: {
-    loading() {
-      return this.$store.state.midjourney.status.getApplication === Status.Request;
-    },
     tasks() {
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       return this.$store.state.midjourney.tasks?.items?.reverse();
     },
     application() {
       return this.$store.state.midjourney.application;
-    }
-  },
-  watch: {
-    tasks: {
-      handler(val, oldVal) {
-        if (val && oldVal && JSON.stringify(val) !== JSON.stringify(oldVal)) {
-          this.$emit('refresh', val);
-        }
-      },
-      deep: true
-    }
-  },
-  async mounted() {
-    await this.$store.dispatch('midjourney/setTasks', undefined);
-    this.getTasks();
-    // @ts-ignore
-    this.job = setInterval(() => {
-      this.getTasks();
-    }, 5000);
-  },
-  unmounted() {
-    clearInterval(this.job);
-  },
-  methods: {
-    async onLoadHistory() {
-      this.$router.push({ name: ROUTE_MIDJOURNEY_HISTORY });
-    },
-    async getTasks() {
-      // ensure that the previous request has been completed
-      if (this.loading) {
-        return;
-      }
-      await this.$store.dispatch('midjourney/getTasks', {
-        limit: 30,
-        offset: 0
-      });
     }
   }
 });

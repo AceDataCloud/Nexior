@@ -13,6 +13,8 @@ import {
   initializeCookies,
   initializeDescription,
   initializeFavicon,
+  initializeToken,
+  initializeUser,
   initializeKeywords,
   initializeSite,
   initializeTitle
@@ -20,6 +22,8 @@ import {
 
 const main = async () => {
   await initializeCookies();
+  await initializeToken();
+  await initializeUser();
   await initializeSite();
   await initializeTitle();
   await initializeDescription();

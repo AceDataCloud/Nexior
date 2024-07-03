@@ -29,21 +29,8 @@ export default defineComponent({
   },
   data() {
     return {
-      drawer: false,
-      drawer2: false
+      drawer: false
     };
-  },
-  async mounted() {
-    await this.onGetService();
-    await this.onGetApplication();
-  },
-  methods: {
-    async onGetService() {
-      await this.$store.dispatch('midjourney/getService');
-    },
-    async onGetApplication() {
-      await this.$store.dispatch('midjourney/getApplication');
-    }
   }
 });
 </script>
