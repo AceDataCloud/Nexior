@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Tue, 02 Jul 2024 16:30:09 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Jul 2024 17:18:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.10.0
+
+Wed, 03 Jul 2024 17:18:06 GMT
+
+### Minor changes
+
+- optimize auth flow (office@acedata.cloud)
 
 ## 1.9.1
 
