@@ -24,17 +24,17 @@ Vercel 是一个可以帮助快速部署项目网站的平台，我们可以利�
 
 我们便会看到类似如下的页面，这时候点击 Import 按钮，如图所示：
 
-<p><img src="https://cdn.acedata.cloud/jjcnnq.png" width="400" class="m-auto"></p>
+<p><img src="https://cdn.acedata.cloud/jjcnnq.png" width="600" class="m-auto"></p>
 
 此时，Vercel 便展示了你的 GitHub 仓库，选择刚才 Fork 的 Nexior 仓库即可，如图所示：
 
-<p><img src="https://cdn.acedata.cloud/38advc.png" width="400" class="m-auto"></p>
+<p><img src="https://cdn.acedata.cloud/38advc.png" width="600" class="m-auto"></p>
 
 找到 Nexior 仓库之后，点击 Import 按钮导入。
 
 接着便会弹出一个配置页面，完全保持默认配置，点击 Deploy 按钮，如图所示：
 
-<p><img src="https://cdn.acedata.cloud/6kvz1p.png" width="400" class="m-auto"></p>
+<p><img src="https://cdn.acedata.cloud/6kvz1p.png" width="600" class="m-auto"></p>
 
 点击 Deploy 之后，Vercel 便开始构建整个项目并进行部署，我们不需要做任何操作，只需等待 1-2 分钟左右即可，如图所示：
 
@@ -52,11 +52,11 @@ Vercel 是一个可以帮助快速部署项目网站的平台，我们可以利�
 
 打开之后注册登录一下，比如用邮箱、GitHub 登录都是可以的，登录完毕之后便可以看到一个配置页面，比如 Site Configuration，我们可以自行修改该站点的标题、Logo、Favicon、管理员等信息，如下图所示：
 
-<p><img src="https://cdn.acedata.cloud/o4fuy6.png" width="400" class="m-auto"></p>
+<p><img src="https://cdn.acedata.cloud/o4fuy6.png" width="600" class="m-auto"></p>
 
 同时还有一个比较重要的部分就是分销推广的配置，如图所示：
 
-<p><img src="https://cdn.acedata.cloud/d8c4md.png" width="400" class="m-auto"></p>
+<p><img src="https://cdn.acedata.cloud/d8c4md.png" width="600" class="m-auto"></p>
 
 这里我们可以修改两个信息，一个叫默认邀请人 ID、一个叫强制邀请人 ID，说明如下：
 
@@ -67,7 +67,7 @@ Vercel 是一个可以帮助快速部署项目网站的平台，我们可以利�
 
 另外还有一个配置选项就是功能开关，如图所示：
 
-<p><img src="https://cdn.acedata.cloud/zwi7hu.png" width="400" class="m-auto"></p>
+<p><img src="https://cdn.acedata.cloud/zwi7hu.png" width="600" class="m-auto"></p>
 
 目前 Nexior 提供了多个功能，站长可以选择性地打开或关闭某些特定功能。
 
@@ -89,7 +89,7 @@ Vercel 是一个可以帮助快速部署项目网站的平台，我们可以利�
 
 接下来 Vercel 提示要选择域名配置的选项，推荐我们也添加一个 www 开头的域名，这个可加可不加，添加了之后就可以 www 开头的域名也能访问到此网站。这里我们直接选择最后一项直接添加根域名：
 
-<p><img src="https://cdn.acedata.cloud/zmdx31.png" width="400" class="m-auto"></p>
+<p><img src="https://cdn.acedata.cloud/zmdx31.png" width="600" class="m-auto"></p>
 
 确定之后我们就发现这里提示有一个待配置的 DNS：
 
@@ -129,4 +129,4 @@ Vercel 是一个可以帮助快速部署项目网站的平台，我们可以利�
 
 进入分销界面，可以随时查看当前邀请人数、分销总金额、总奖励等，直接添加客服提现即可。
 
-<p><img src="https://cdn.acedata.cloud/zo05gl.png" width="400" class="m-auto"></p>
+<p><img src="https://cdn.acedata.cloud/zo05gl.png" width="600" class="m-auto"></p>
