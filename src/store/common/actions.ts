@@ -92,8 +92,9 @@ export const getSite = async ({ state, commit }: ActionContext<IRootState, IRoot
   }
 };
 
-export const auth = async () => {
-  login(window.location.pathname);
+export const auth = async ({ state }: ActionContext<IRootState, IRootState>) => {
+  const site = state?.site?.origin;
+  login({ redirect: window.location.pathname, site });
 };
 
 export default {
