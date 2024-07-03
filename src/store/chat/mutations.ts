@@ -6,7 +6,6 @@ export const resetAll = (state: IChatState): void => {
   state.conversations = undefined;
   state.credential = undefined;
   state.service = undefined;
-  state.model = undefined;
 };
 
 export const setModel = (state: IChatState, payload: IChatModel): void => {
