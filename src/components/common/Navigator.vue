@@ -218,18 +218,8 @@ export default defineComponent({
         name: ROUTE_DISTRIBUTION_INDEX
       });
     },
-    async onOpenMenu() {
-      this.collapsed = false;
-    },
-    async onCollapseMenu() {
-      this.collapsed = true;
-    },
     async onLogout() {
-      await this.$store.dispatch('resetAll');
-      await this.$store.dispatch('chat/resetAll');
-      await this.$store.dispatch('midjourney/resetAll');
-      await this.$store.dispatch('chatdoc/resetAll');
-      await this.$store.dispatch('qrart/resetAll');
+      await this.$store.dispatch('logout');
     },
     onConsole() {
       this.$router.push({ name: ROUTE_CONSOLE_ROOT });

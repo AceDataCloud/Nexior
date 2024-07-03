@@ -4,7 +4,7 @@ import { userOperator, oauthOperator, siteOperator } from '@/operators';
 import { log } from '@/utils/log';
 import { IToken, IUser } from '@/models';
 import { getSiteOrigin } from '@/utils/site';
-import { login } from '@/utils';
+import { login as authLogin } from '@/utils';
 
 export const resetAll = ({ commit }: ActionContext<IRootState, IRootState>) => {
   commit('resetToken');
@@ -72,7 +72,7 @@ export const initializeSite = async ({ state, commit, dispatch }: ActionContext<
     log(initializeSite, 'initialize site success', data);
   } catch (error) {
     log(initializeSite, 'initialize site failed', error);
-    dispatch('auth');
+    dispatch('login');
   }
 };
 
@@ -92,13 +92,22 @@ export const getSite = async ({ state, commit }: ActionContext<IRootState, IRoot
   }
 };
 
-export const auth = async ({ state }: ActionContext<IRootState, IRootState>) => {
+export const login = async ({ state }: ActionContext<IRootState, IRootState>) => {
   const site = state?.site?.origin;
-  login({ redirect: window.location.pathname, site });
+  authLogin({ redirect: window.location.pathname, site });
+};
+
+export const logout = async ({ dispatch }: ActionContext<IRootState, IRootState>) => {
+  await dispatch('resetAll');
+  await dispatch('chat/resetAll');
+  await dispatch('midjourney/resetAll');
+  await dispatch('chatdoc/resetAll');
+  await dispatch('qrart/resetAll');
 };
 
 export default {
-  auth,
+  login,
+  logout,
   resetToken,
   resetAll,
   resetUser,
