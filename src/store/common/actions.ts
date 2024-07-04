@@ -103,6 +103,7 @@ export const logout = async ({ dispatch }: ActionContext<IRootState, IRootState>
   await dispatch('midjourney/resetAll');
   await dispatch('chatdoc/resetAll');
   await dispatch('qrart/resetAll');
+  await dispatch('login');
 };
 
 export default {
