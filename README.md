@@ -2,19 +2,15 @@
 
 <h1 align="center">Nexior</h1>
 
-One click to deploy your own AI Application Web UI, including GPT, Midjourney, ChatDoc, QrArt and easily earn profits.
+Deploy your own AI application site in minutes, including applications such as AIChat, Midjourney, ChatDoc, QRArt, etc. No development experience required, no need to purchase AI accounts, no need to worry about API support, and no need to configure payment systems. Zero startup costs, zero risk, earn revenue through AI.
 
-一键部署属于你的 AI 应用站点，包括 GPT 问答、Midjourney 绘画、文档问答、艺术二维码等应用，并轻松赚取收益。
+一键部署属于你的 AI 应用站点，包括 AI 问答、Midjourney 绘画、知识库问答、艺术二维码等应用，无需任何开发经验、无需采购 AI 账号、无需关心 API 支持、无需配置支付系统。零启动成本，零风险通过 AI 赚取收益。
 
 ---
 
 One click to deploy to Vercel：
 
-[![Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/AceDataCloud/Nexior)
-
-One click to deploy to Netlify：
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/AceDataCloud/Nexior)
+[![Vercel](https://vercel.com/button)](https://platform.acedata.cloud/documents/5b942c64-5612-4aab-ab3c-9e58b64cb069)
 
 </div>
 
@@ -42,24 +38,30 @@ One click to deploy to Netlify：
 - 开箱支持用户系统，支持邮箱登录和注册，无需额外配置。
 - 完全开源免费，采用 MIT 协议，配置简单，可直接部署为您自己的系统。
 
-Powered by [AceDataCloud](https://platform.acedata.cloud/).
+Demo URL: [https://hub.acedata.cloud/](https://hub.acedata.cloud/), Powered by [AceDataCloud](https://platform.acedata.cloud/).
+
+## Principle of Making Money
+
+This system supports a customer binding mechanism, where registered users of each website can be permanently bound as sub-customers of the website owner or sharer. The customer's consumption orders on this platform will be refunded to the superior account according to the distributor's distribution ratio, and can contact customer service to withdraw funds at any time.
+
+本系统支持客源绑定机制，每个网站的注册用户可永久绑定为站长或分享者的下级客户，客户在本平台的所有消费订单将根据站长的分销比例返还到上级账户，并可联系客服随时提现。
 
 ## Preview
 
 Midjourney:
 
-![](https://cdn.acedata.cloud/hhxwd2.png)
+![](https://cdn.acedata.cloud/8y8kfo.png)
+
+<img src="https://cdn.acedata.cloud/bw11q9.png" style="width: 300px">
 
 GPT Chat：
 
-![](https://cdn.acedata.cloud/mkt6bl.png)
+![](https://cdn.acedata.cloud/3ur7e0.png)
+
+<img src="https://cdn.acedata.cloud/k4dxw0.png" style="width: 300px">
 
 Artistic QR Code:
 
-![](https://cdn.acedata.cloud/jz8sd8.png)
+![](https://cdn.acedata.cloud/q3ivan.png)
 
-Referral System:
-
-![](https://cdn.acedata.cloud/yi77uc.png)
-
-Demo URL: [https://hub.acedata.cloud/](https://hub.acedata.cloud/).
+<img src="https://cdn.acedata.cloud/l11ebv.png" style="width: 300px">
