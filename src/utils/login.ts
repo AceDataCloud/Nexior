@@ -22,6 +22,12 @@ export const login = ({ redirect = '/', site = window.location.origin }: { redir
   // callback url used to init access token and then redirect back of `redirect`
   const callbackUrl = `${hubBaseUrl}/auth/callback?redirect=${redirect}`;
   // redirect to auth service to get access token then redirect back
-  const targetUrl = `${authBaseUrl}/auth/login?redirect=${callbackUrl}&site=${site}&inviter_id=${inviterId}`;
+  const targetBaseUrl = `${authBaseUrl}/auth/login`;
+  const targetQuery = {
+    site,
+    ...(inviterId ? { inviter_id: inviterId } : {}),
+    ...(callbackUrl ? { redirect: callbackUrl } : {})
+  };
+  const targetUrl = `${targetBaseUrl}?${new URLSearchParams(targetQuery).toString()}`;
   window.location.href = targetUrl;
 };
