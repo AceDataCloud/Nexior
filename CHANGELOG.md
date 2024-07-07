@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sun, 07 Jul 2024 13:11:47 GMT and should not be manually modified.
+This log was last generated on Sun, 07 Jul 2024 15:40:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.10.5
+
+Sun, 07 Jul 2024 15:40:07 GMT
+
+### Patches
+
+- fix for domain parsing (office@acedata.cloud)
 
 ## 1.10.4
 
