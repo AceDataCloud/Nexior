@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Thu, 04 Jul 2024 03:37:16 GMT and should not be manually modified.
+This log was last generated on Sun, 07 Jul 2024 12:31:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.10.3
+
+Sun, 07 Jul 2024 12:31:24 GMT
+
+### Patches
+
+- fix for inviter id (office@acedata.cloud)
 
 ## 1.10.2
 
