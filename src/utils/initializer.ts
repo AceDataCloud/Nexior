@@ -7,11 +7,11 @@ import { IToken } from '@/models';
 import psl from 'psl';
 
 export const getDomain = (host: string = window.location.hostname) => {
-  if (host === 'localhost') {
-    return host;
-  }
   const parsed = psl.parse(host);
   if (parsed.error) {
+    return host;
+  }
+  if (!parsed.listed) {
     return host;
   }
   if (parsed.domain === host) {
@@ -19,6 +19,9 @@ export const getDomain = (host: string = window.location.hostname) => {
   }
   return '.' + parsed.domain;
 };
+
+// @ts-ignore
+window.getDomain = getDomain;
 
 export const initializeCookies = async () => {
   // parse the query string and set to cookies
