@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sun, 07 Jul 2024 12:31:24 GMT and should not be manually modified.
+This log was last generated on Sun, 07 Jul 2024 13:11:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.10.4
+
+Sun, 07 Jul 2024 13:11:47 GMT
+
+### Patches
+
+- fix the cookie domain (office@acedata.cloud)
 
 ## 1.10.3
 
