@@ -4,15 +4,20 @@ import { getLocale } from '@/i18n';
 import store from '@/store';
 import { log } from './log';
 import { IToken } from '@/models';
+import psl from 'psl';
 
-export const getDomain = () => {
-  const host = window.location.hostname;
-  // process test env and prod env, for example:
-  // hub.acedata.cloud -> .acedata.cloud
-  // hub.test.acedata.cloud -> .acedata.cloud
-  const domain = host.replace(/^\S+?\.(test\.|local\.)?/, '.');
-  console.log('cookies domain', domain);
-  return domain;
+export const getDomain = (host: string = window.location.hostname) => {
+  if (host === 'localhost') {
+    return host;
+  }
+  const parsed = psl.parse(host);
+  if (parsed.error) {
+    return host;
+  }
+  if (parsed.domain === host) {
+    return host;
+  }
+  return '.' + parsed.domain;
 };
 
 export const initializeCookies = async () => {
