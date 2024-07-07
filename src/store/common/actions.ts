@@ -9,7 +9,6 @@ import { login as authLogin } from '@/utils';
 export const resetAll = ({ commit }: ActionContext<IRootState, IRootState>) => {
   commit('resetToken');
   commit('resetUser');
-  commit('resetSite');
 };
 
 export const resetUser = ({ commit }: ActionContext<IRootState, IRootState>) => {
