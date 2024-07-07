@@ -13,3 +13,4 @@ export * from './service';
 export * from './credential';
 export * from './qrart';
 export * from './site';
+export * from './suno';

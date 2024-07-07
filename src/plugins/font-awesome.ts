@@ -10,6 +10,7 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 import { faDiscord as faBrandsDiscord, faWeixin as faBrandsWeixin } from '@fortawesome/free-brands-svg-icons';
 import {
+  faMusic as faSolidMusic,
   faLanguage as faSolidLanguage,
   faUser as faSolidUser,
   faSeedling as faSolidSeedling,
@@ -83,6 +84,7 @@ library.add(faSolidPlaneDeparture);
 library.add(faSolidCube);
 library.add(faSolidFileLines);
 library.add(faSolidCompass);
+library.add(faSolidMusic);
 library.add(faSolidPaperclip);
 library.add(faSolidFan);
 library.add(faSolidImage);

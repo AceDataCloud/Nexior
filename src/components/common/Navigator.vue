@@ -100,7 +100,8 @@ import {
   ROUTE_MIDJOURNEY_INDEX,
   ROUTE_QRART_INDEX,
   ROUTE_QRART_HISTORY,
-  ROUTE_SITE_INDEX
+  ROUTE_SITE_INDEX,
+  ROUTE_SUNO_INDEX
 } from '@/router/constants';
 import LogoTiny from './LogoTiny.vue';
 
@@ -172,6 +173,18 @@ export default defineComponent({
           displayName: this.$t('common.nav.qrart'),
           icon: 'fa-solid fa-qrcode',
           routes: [ROUTE_QRART_INDEX, ROUTE_QRART_HISTORY]
+        });
+      }
+
+      // TODO: remove `true`
+      if (this.$store?.state?.site?.features?.qrart?.enabled || true) {
+        result.push({
+          route: {
+            name: ROUTE_SUNO_INDEX
+          },
+          displayName: this.$t('common.nav.suno'),
+          icon: 'fa-solid fa-music',
+          routes: [ROUTE_SUNO_INDEX]
         });
       }
 

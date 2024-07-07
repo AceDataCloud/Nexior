@@ -6,6 +6,7 @@ import midjourney from './midjourney';
 import distribution from './distribution';
 import chatdoc from './chatdoc';
 import qrart from './qrart';
+import suno from './suno';
 import site from './site';
 import profile from './profile';
 
@@ -26,6 +27,7 @@ const routes = [
   auth,
   chat,
   qrart,
+  suno,
   midjourney,
   distribution,
   site,
