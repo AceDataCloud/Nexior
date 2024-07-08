@@ -1,6 +1,5 @@
 <template>
   <el-row class="panel">
-    <help-entry class="help" />
     <el-col :span="24">
       <el-row>
         <el-col :span="24">
@@ -82,7 +81,6 @@ import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { ElTable, ElRow, ElCol, ElTableColumn, ElCard, ElButton } from 'element-plus';
 import { ROUTE_CONSOLE_APPLICATION_BUY } from '@/router/constants';
 import { IApplication, IApplicationListResponse, ICredentialType, IService } from '@/models';
-import HelpEntry from '@/components/common/HelpEntry.vue';
 
 interface IData {
   applications: IApplication[];
@@ -104,7 +102,6 @@ export default defineComponent({
   name: 'ConsoleApplicationList',
   components: {
     Pagination,
-    HelpEntry,
     CopyToClipboard,
     ElTable,
     ElRow,
@@ -233,17 +230,7 @@ export default defineComponent({
   width: fit-content;
 }
 
-.help {
-  position: fixed;
-  right: 40px;
-  bottom: 40px;
-  z-index: 1000;
-}
-
 @media (max-width: 767px) {
-  .help {
-    top: 40px;
-  }
   .panel {
     width: 100%;
     height: 100%;

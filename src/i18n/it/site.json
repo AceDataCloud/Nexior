@@ -23,16 +23,24 @@
     "message": "Favicon del sito",
     "description": "Mostrato come titolo nella casella di modifica"
   },
+  "field.qr": {
+    "message": "Codice QR",
+    "description": "Mostrato come titolo nella casella di modifica"
+  },
+  "field.url": {
+    "message": "URL",
+    "description": "Mostrato come titolo nella casella di modifica"
+  },
   "field.admins": {
-    "message": "ID degli amministratori del sito",
+    "message": "ID amministratore del sito",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "field.distributionDefaultInviterId": {
-    "message": "ID dell'invitante predefinito",
+    "message": "ID invito predefinito",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "field.distributionForceInviterId": {
-    "message": "ID dell'invitante forzato",
+    "message": "ID invito forzato",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "field.featuresChat": {
@@ -51,8 +59,12 @@
     "message": "Qrart",
     "description": "Mostrato come titolo nella casella di modifica"
   },
+  "field.featuresSupport": {
+    "message": "Supporto clienti",
+    "description": "Mostrato come titolo nella casella di modifica"
+  },
   "field.featuresI18n": {
-    "message": "Supporto multi lingua",
+    "message": "Supporto multilingua",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "title.basicConfig": {
@@ -96,15 +108,23 @@
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "title.distributionConfig": {
-    "message": "Configurazione della distribuzione",
+    "message": "Configurazione di distribuzione",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "title.editDistributionDefaultInviterId": {
-    "message": "Modifica invitante predefinito",
+    "message": "Modifica invito predefinito",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "title.editDistributionForceInviterId": {
-    "message": "Modifica invitante forzato",
+    "message": "Modifica invito forzato",
+    "description": "Mostrato come titolo nella casella di modifica"
+  },
+  "title.editQR": {
+    "message": "Modifica codice QR",
+    "description": "Mostrato come titolo nella casella di modifica"
+  },
+  "title.editUrl": {
+    "message": "Modifica URL",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "placeholder.title": {
@@ -124,43 +144,51 @@
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "placeholder.editDistributionDefaultInviterId": {
-    "message": "Inserisci l'ID dell'invitante predefinito",
+    "message": "Inserisci l'ID dell'invito predefinito",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "Inserisci l'ID dell'invitante forzato",
+    "message": "Inserisci l'ID dell'invito forzato",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "message.uploadImageExceed": {
-    "message": "Caricamento dell'immagine supera il limite",
-    "description": "Avviso di superamento del limite di caricamento dell'immagine"
+    "message": "Limite di caricamento immagine superato",
+    "description": "Avviso di superamento del limite di caricamento immagine"
   },
   "message.uploadImageError": {
-    "message": "Errore di caricamento dell'immagine",
-    "description": "Avviso di errore di caricamento dell'immagine"
+    "message": "Errore durante il caricamento dell'immagine",
+    "description": "Avviso di errore durante il caricamento dell'immagine"
   },
   "message.editLogoTip": {
     "message": "Dimensioni consigliate: 200*60px",
-    "description": "Avviso di caricamento dell'immagine"
+    "description": "Suggerimento per il caricamento dell'immagine"
+  },
+  "message.editQRTip": {
+    "message": "Dimensioni consigliate: 200*200px",
+    "description": "Suggerimento per il caricamento dell'immagine"
   },
   "message.editFaviconTip": {
     "message": "Dimensioni consigliate: 32*32px",
-    "description": "Avviso di caricamento dell'immagine"
+    "description": "Suggerimento per il caricamento dell'immagine"
+  },
+  "message.editUrl": {
+    "message": "Inserisci l'URL",
+    "description": "Suggerimento per l'inserimento dell'URL"
   },
   "message.atLeastOneAdmin": {
-    "message": "Devi mantenere almeno un amministratore",
-    "description": "Avviso di mantenere almeno un amministratore"
+    "message": "Deve essere presente almeno un amministratore",
+    "description": "Avviso di presenza di almeno un amministratore"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "ID dell'utente dell'invitante predefinito. Se i link di distribuzione non contengono il parametro inviter_id, questo ID verrà utilizzato come invitante predefinito.",
-    "description": "Suggerimento per l'ID dell'invitante predefinito"
+    "message": "ID predefinito dell'utente inviatore, se il link di distribuzione non include il parametro inviter_id, verrà utilizzato automaticamente questo ID come inviatore.",
+    "description": "Suggerimento per l'ID predefinito dell'utente inviatore"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID dell'utente dell'invitante forzato. Se questo ID è impostato, verrà utilizzato come invitante indipendentemente dai parametri nei link di distribuzione.",
-    "description": "Suggerimento per l'ID dell'invitante forzato"
+    "message": "ID forzato dell'utente inviatore, se impostato, verrà utilizzato questo ID come inviatore indipendentemente dal parametro inviter_id nel link di distribuzione.",
+    "description": "Suggerimento per l'ID forzato dell'utente inviatore"
   },
   "message.originTip": {
-    "message": "Dominio del sito. Il dominio è vincolato alla configurazione del sito e non può essere modificato.",
+    "message": "Dominio del sito, il dominio del sito è vincolato alla configurazione del sito e non può essere modificato.",
     "description": "Suggerimento per il dominio del sito"
   },
   "message.titleTip": {
@@ -168,11 +196,11 @@
     "description": "Suggerimento per il titolo del sito"
   },
   "message.descriptionTip": {
-    "message": "Descrizione del sito, situata nelle informazioni sul sito, utilizzata per l'ottimizzazione SEO del sito.",
+    "message": "Descrizione del sito, presente nelle meta informazioni del sito, utilizzata per ottimizzazione SEO del sito.",
     "description": "Suggerimento per la descrizione del sito"
   },
   "message.logoTip": {
-    "message": "Logo del sito, mostrato nella parte superiore del menu del sito quando il menu è espanso.",
+    "message": "Logo del sito, visualizzato nella parte superiore del menu del sito quando è espanso.",
     "description": "Suggerimento per il logo del sito"
   },
   "message.faviconTip": {
@@ -180,19 +208,19 @@
     "description": "Suggerimento per il favicon del sito"
   },
   "message.adminsTip": {
-    "message": "ID degli amministratori del sito, di default il primo utente che crea il sito diventa un amministratore. Solo gli amministratori del sito possono gestire il sito.",
-    "description": "Suggerimento per gli amministratori del sito"
+    "message": "ID dell'amministratore del sito, l'utente che crea il sito per la prima volta diventa automaticamente amministratore, solo gli amministratori possono gestire il sito.",
+    "description": "Suggerimento per l'amministratore del sito"
   },
   "message.adminsTip2": {
-    "message": "Qui è possibile aggiungere o rimuovere gli ID degli amministratori. Gli ID degli utenti possono essere visti su https://auth.acedata.cloud",
-    "description": "Suggerimento per gli amministratori del sito"
+    "message": "È possibile aggiungere o rimuovere gli ID degli amministratori qui, è possibile visualizzare gli ID degli utenti su https://auth.acedata.cloud",
+    "description": "Suggerimento per l'amministratore del sito"
   },
   "message.keywordsTip": {
-    "message": "Parole chiave del sito, situate nelle informazioni sul sito, utilizzate per l'ottimizzazione SEO del sito.",
+    "message": "Parole chiave del sito, presenti nelle meta informazioni del sito, utilizzate per ottimizzazione SEO del sito.",
     "description": "Suggerimento per le parole chiave del sito"
   },
   "message.keywordsTip2": {
-    "message": "Qui è possibile aggiungere o rimuovere le parole chiave del sito. Più specifiche sono le parole chiave, migliori saranno per l'ottimizzazione SEO.",
+    "message": "È possibile aggiungere o rimuovere le parole chiave del sito qui, parole chiave più precise favoriscono l'ottimizzazione SEO.",
     "description": "Suggerimento per le parole chiave del sito"
   },
   "message.featuresChat": {
@@ -200,20 +228,24 @@
     "description": "Descrizione della funzione di Chat"
   },
   "message.featuresMidjourney": {
-    "message": "Attiva o disattiva il modulo di Midjourney.",
-    "description": "Descrizione della funzione di Midjourney"
+    "message": "Attiva o disattiva il modulo Midjourney.",
+    "description": "Descrizione della funzione Midjourney"
   },
   "message.featuresChatdoc": {
-    "message": "Attiva o disattiva il modulo di Chatdoc.",
-    "description": "Descrizione della funzione di Chatdoc"
+    "message": "Attiva o disattiva il modulo Chatdoc.",
+    "description": "Descrizione della funzione Chatdoc"
   },
   "message.featuresQrart": {
-    "message": "Attiva o disattiva il modulo di Qrart.",
-    "description": "Descrizione della funzione di Qrart"
+    "message": "Attiva o disattiva il modulo Qrart.",
+    "description": "Descrizione della funzione Qrart"
+  },
+  "message.featuresSupport": {
+    "message": "Attiva o disattiva il supporto clienti",
+    "description": "Descrizione della funzione di supporto"
   },
   "message.featuresI18n": {
-    "message": "Attiva o disattiva il supporto per multiple lingue. Una volta disattivato, gli utenti potranno utilizzare solo la lingua predefinita.",
-    "description": "Descrizione del supporto per multiple lingue"
+    "message": "Attiva o disattiva il supporto multilingua, se disattivato, gli utenti possono utilizzare solo la lingua predefinita.",
+    "description": "Descrizione del supporto multilingua"
   },
   "button.upload": {
     "message": "Carica",
@@ -221,10 +253,10 @@
   },
   "button.enabled": {
     "message": "Abilitato",
-    "description": "Testo dello switch che indica che è già abilitato"
+    "description": "Testo dell'interruttore, indica che è già abilitato"
   },
   "button.disabled": {
     "message": "Disabilitato",
-    "description": "Testo dello switch che indica che è già disabilitato"
+    "description": "Testo dell'interruttore, indica che è già disabilitato"
   }
 }

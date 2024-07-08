@@ -37,7 +37,7 @@
   },
   "button.cancel": {
     "message": "Cancelar",
-    "description": "Botón de texto, utilizado para cancelar cierta operación"
+    "description": "Botón de texto, utilizado para cancelar ciertas operaciones"
   },
   "button.alert": {
     "message": "Alerta",
@@ -93,11 +93,11 @@
   },
   "button.pay": {
     "message": "Pagar",
-    "description": "Botón de texto, utilizado para que el usuario pague el costo del servicio"
+    "description": "Botón de texto, utilizado para que el usuario pague la tarifa del servicio"
   },
   "button.repay": {
     "message": "Continuar pagando",
-    "description": "Botón de texto, utilizado para que el usuario continúe pagando el costo del servicio"
+    "description": "Botón de texto, utilizado para que el usuario continúe pagando la tarifa del servicio"
   },
   "button.applied": {
     "message": "Aplicado",
@@ -105,7 +105,7 @@
   },
   "button.acquire": {
     "message": "Obtener",
-    "description": "Botón de texto, utilizado para que el usuario obtenga el token o clave del servicio de API"
+    "description": "Botón de texto, utilizado para que el usuario obtenga el token o la clave del servicio de API"
   },
   "button.fillExample": {
     "message": "Completar ejemplo",
@@ -141,7 +141,7 @@
   },
   "entity.website": {
     "message": "Ace Data Cloud",
-    "description": "Nombre del sitio web, no necesita traducción, mantener como 'Ace Data Cloud'"
+    "description": "Nombre del sitio web, no necesita traducción, debe mantenerse como 'Ace Data Cloud'"
   },
   "entity.copyright": {
     "message": "Derechos de autor",
@@ -181,7 +181,7 @@
   },
   "entity.order": {
     "message": "Orden",
-    "description": "Real value for entity order, which includes amount, service information, and requires payment from the user"
+    "description": "Real value, which represents an entity's order containing amount, service information, and requires payment from the user"
   },
   "message.usedAmount": {
     "message": "Cantidad utilizada",
@@ -193,7 +193,7 @@
   },
   "message.copied": {
     "message": "Copiado exitosamente",
-    "description": "Used to display a message indicating the content has been successfully copied"
+    "description": "Used to display a message indicating successful content copying"
   },
   "message.confirmDelete": {
     "message": "¿Seguro que quieres eliminar?",
@@ -201,7 +201,7 @@
   },
   "message.alert": {
     "message": "Alerta",
-    "description": "Used to alert the user"
+    "description": "Used to warn the user"
   },
   "message.info": {
     "message": "Información",
@@ -209,7 +209,7 @@
   },
   "message.free": {
     "message": "Gratis",
-    "description": "Used to display that the service is free, indicating the user does not need to pay"
+    "description": "Used to display that the service is free, indicating no payment is required"
   },
   "message.startPrice": {
     "message": "Precio inicial",
@@ -217,11 +217,11 @@
   },
   "message.joinDiscord": {
     "message": "Unirse a Discord",
-    "description": "Used to prompt the user to join a Discord channel"
+    "description": "Used to prompt users to join a Discord channel"
   },
   "message.addWeChat": {
     "message": "Agregar WeChat",
-    "description": "Used to prompt the user to add a WeChat account"
+    "description": "Used to prompt users to add a WeChat account"
   },
   "message.serviceTech": {
     "message": "Soporte técnico",
@@ -281,7 +281,7 @@
   },
   "nav.distribution": {
     "message": "Ingresos recomendados",
-    "description": "Text in website navigation bar, used to display the recommended income page"
+    "description": "Text in website navigation bar, used to display the recommended earnings page"
   },
   "nav.logOut": {
     "message": "Cerrar sesión",
@@ -299,6 +299,10 @@
     "message": "Modo oscuro",
     "description": "Text in website navigation bar, used to switch to dark mode"
   },
+  "nav.support": {
+    "message": "Soporte al cliente",
+    "description": "Text in website navigation bar, used to display the customer support page"
+  },
   "title.alert": {
     "message": "Alerta",
     "description": "Title for alert messages"
@@ -313,42 +317,42 @@
   },
   "title.allApplications": {
     "message": "Todas las aplicaciones",
-    "description": "Title for displaying all applications page"
+    "description": "Title for page displaying all applications"
   },
   "title.allOrders": {
     "message": "Todas las órdenes",
-    "description": "Title for displaying all orders page"
+    "description": "Title for page displaying all orders"
   },
   "title.orderInfo": {
     "message": "Información de la orden",
-    "description": "Title for displaying order information page"
+    "description": "Title for page displaying order information"
   },
   "title.buyMore": {
     "message": "Comprar más",
-    "description": "Title to prompt the user to buy more"
+    "description": "Title for page prompting users to buy more"
   },
   "title.distribution": {
     "message": "Ingresos recomendados",
-    "description": "Title for displaying the recommended income page, indicating users can earn money by inviting others to use the service"
+    "description": "Title for page displaying recommended earnings, indicating users can earn money by inviting others to use the service"
   },
   "title.site": {
     "message": "Configuración del sitio",
-    "description": "Title for displaying site configuration page"
+    "description": "Mostrar el título de la página de configuración del sitio"
   },
   "title.distributionHistory": {
     "message": "Historial de recomendaciones",
-    "description": "Title for displaying the distribution history page"
+    "description": "Mostrar el título de la página de historial de recomendaciones"
   },
   "title.invitee": {
-    "message": "Invitado",
-    "description": "Mostrar el título de la página del invitado"
+    "message": "Invitador",
+    "description": "Mostrar el título de la página del invitador"
   },
   "title.allUsages": {
-    "message": "Todos los usos",
-    "description": "Mostrar el título de la página que contiene todos los registros de uso del servicio API"
+    "message": "Historial de uso",
+    "description": "Mostrar el título de la página de todos los registros de uso del servicio API"
   },
   "title.allCredentials": {
-    "message": "Todas las credenciales",
-    "description": "Mostrar el título de la página que contiene todas las credenciales utilizadas para acceder a la API"
+    "message": "Credenciales",
+    "description": "Mostrar el título de la página de todas las credenciales utilizadas para acceder a la API"
   }
 }

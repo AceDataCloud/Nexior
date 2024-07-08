@@ -1,6 +1,5 @@
 <template>
   <el-row class="panel">
-    <help-entry class="help" />
     <el-col :span="24">
       <el-row>
         <el-col :span="24">
@@ -35,7 +34,6 @@
                   {{ $t('site.message.titleTip') }}
                 </span>
               </el-form-item>
-
               <el-form-item :label="$t('site.field.logo')">
                 <span class="block w-full">
                   <el-image :src="site.logo" class="logo" />
@@ -176,7 +174,7 @@
             <el-divider />
             <el-form :model="site" class="form" label-width="auto" style="max-width: 600px">
               <el-form-item
-                v-for="(feature, featureIndex) in ['chat', 'midjourney', 'chatdoc', 'qrart']"
+                v-for="(feature, featureIndex) in ['chat', 'midjourney', 'chatdoc', 'qrart', 'support']"
                 :key="featureIndex"
                 :label="$t('site.field.features' + feature.charAt(0).toUpperCase() + feature.slice(1))"
               >
@@ -200,9 +198,103 @@
                     "
                   />
                 </div>
-                <span class="block tip">
+                <span class="block tip w-full">
                   {{ $t('site.message.features' + feature.charAt(0).toUpperCase() + feature.slice(1)) }}
                 </span>
+                <div v-if="feature === 'support'" v-show="site.features[feature].enabled">
+                  <el-form-item label="WeChat">
+                    <el-switch
+                      v-model="site.features[feature].wechat.enabled"
+                      inline-prompt
+                      :active-text="$t('site.button.enabled')"
+                      :inactive-text="$t('site.button.disabled')"
+                      @change="
+                        onSave({
+                          features: {
+                            ...site.features,
+                            [feature]: {
+                              ...site.features[feature],
+                              wechat: {
+                                ...site.features[feature].wechat,
+                                enabled: $event
+                              }
+                            }
+                          }
+                        })
+                      "
+                    ></el-switch>
+                  </el-form-item>
+                  <el-form-item v-show="site.features[feature].wechat.enabled" :label="$t('site.field.qr')">
+                    <span class="block w-full">
+                      <el-image :src="site.features[feature].wechat?.qr" />
+                      <edit-image
+                        :model-value="site.features[feature].wechat.qr"
+                        :title="$t('site.title.editQR')"
+                        :tip="$t('site.message.editQRTip')"
+                        @confirm="
+                          onSave({
+                            features: {
+                              ...site.features,
+                              [feature]: {
+                                ...site.features[feature],
+                                wechat: {
+                                  ...site.features[feature].wechat,
+                                  qr: $event
+                                }
+                              }
+                            }
+                          })
+                        "
+                      />
+                    </span>
+                  </el-form-item>
+                  <el-form-item label="Discord">
+                    <el-switch
+                      v-model="site.features[feature].discord.enabled"
+                      inline-prompt
+                      :active-text="$t('site.button.enabled')"
+                      :inactive-text="$t('site.button.disabled')"
+                      @change="
+                        onSave({
+                          features: {
+                            ...site.features,
+                            [feature]: {
+                              ...site.features[feature],
+                              discord: {
+                                ...site.features[feature].discord,
+                                enabled: $event
+                              }
+                            }
+                          }
+                        })
+                      "
+                    ></el-switch>
+                  </el-form-item>
+                  <el-form-item v-show="site.features[feature].discord.enabled" :label="$t('site.field.url')">
+                    <span class="block w-full">
+                      {{ site.features[feature].discord?.url }}
+                      <edit-text
+                        :model-value="site.features[feature].discord?.url"
+                        :title="$t('site.title.editUrl')"
+                        :placeholder="$t('site.placeholder.editUrl')"
+                        @confirm="
+                          onSave({
+                            features: {
+                              ...site.features,
+                              [feature]: {
+                                ...site.features[feature],
+                                discord: {
+                                  ...site.features[feature].discord,
+                                  url: $event
+                                }
+                              }
+                            }
+                          })
+                        "
+                      />
+                    </span>
+                  </el-form-item>
+                </div>
               </el-form-item>
             </el-form>
           </el-card>
@@ -220,7 +312,6 @@ import EditImage from '@/components/site/EditImage.vue';
 import EditArray from '@/components/site/EditArray.vue';
 import { siteOperator } from '@/operators';
 import site from '@/router/site';
-import HelpEntry from '@/components/common/HelpEntry.vue';
 
 export default defineComponent({
   name: 'SiteIndex',
@@ -235,8 +326,7 @@ export default defineComponent({
     ElCard,
     ElForm,
     ElSwitch,
-    ElFormItem,
-    HelpEntry
+    ElFormItem
   },
   data() {
     return {
@@ -291,12 +381,5 @@ export default defineComponent({
       font-size: 12px;
     }
   }
-}
-
-.help {
-  position: fixed;
-  right: 40px;
-  bottom: 40px;
-  z-index: 1000;
 }
 </style>

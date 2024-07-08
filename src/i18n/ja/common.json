@@ -93,11 +93,11 @@
   },
   "button.pay": {
     "message": "支払う",
-    "description": "按钮文本，用于让用户支払うサービス料金"
+    "description": "按钮文本，用于让用户支払う"
   },
   "button.repay": {
     "message": "継続支払い",
-    "description": "按钮文本，用于让用户継続して支払うサービス料金"
+    "description": "按钮文本，用于让用户継続支払い"
   },
   "button.applied": {
     "message": "申請済み",
@@ -109,11 +109,11 @@
   },
   "button.fillExample": {
     "message": "例を記入",
-    "description": "按钮文本，用于让用户例を記入する"
+    "description": "按钮文本，用于让用户例を記入"
   },
   "button.buyMore": {
     "message": "購入",
-    "description": "按钮文本，用于让用户更多のコンテンツを購入する"
+    "description": "按钮文本，用于让用户更多のコンテンツを購入"
   },
   "button.update": {
     "message": "更新",
@@ -180,175 +180,179 @@
     "description": "实体更新的时间"
   },
   "entity.order": {
-    "message": "注文",
-    "description": "実体の注文、注文には金額やサービス情報が含まれ、ユーザーは支払いが必要です"
+    "message": "订单",
+    "description": "实体的订单，订单包含金额、服务信息，用户需要为其付费"
   },
   "message.usedAmount": {
-    "message": "使用済み金額",
-    "description": "サービスで使用済みの金額を表示するために使用されます"
+    "message": "已使用金额",
+    "description": "用于显示服务已使用的金额"
   },
   "message.remainingAmount": {
-    "message": "残高金額",
-    "description": "サービスで残っている金額を表示するために使用されます"
+    "message": "剩余金额",
+    "description": "用于显示服务剩余的金额"
   },
   "message.copied": {
-    "message": "コピー済み",
-    "description": "コンテンツが正常にコピーされたことを表示するために使用されます"
+    "message": "已成功复制",
+    "description": "用于显示内容已成功复制的消息"
   },
   "message.confirmDelete": {
-    "message": "削除してもよろしいですか？",
-    "description": "特定のコンテンツを削除するかどうかを確認するためのメッセージ"
+    "message": "确定要删除吗？",
+    "description": "用于确认用户是否要删除某些内容的消息"
   },
   "message.alert": {
     "message": "警告",
-    "description": "ユーザーに警告を表示するために使用されます"
+    "description": "用于警告用户的消息"
   },
   "message.info": {
-    "message": "情報",
-    "description": "情報を表示するために使用されます"
+    "message": "友情提醒",
+    "description": "用于显示信息的消息"
   },
   "message.free": {
-    "message": "無料",
-    "description": "サービスが無料であることを表示するために使用されます。ユーザーは支払いが不要です"
+    "message": "免费",
+    "description": "用于显示服务免费的消息，表示用户无需付费"
   },
   "message.startPrice": {
-    "message": "開始価格",
-    "description": "サービスの最低価格を表示するために使用されます"
+    "message": "起价",
+    "description": "用于显示服务的最低价格的消息"
   },
   "message.joinDiscord": {
-    "message": "Discordに参加",
-    "description": "ユーザーがDiscordチャンネルに参加するよう促すメッセージ"
+    "message": "Discord社区",
+    "description": "用于让用户加入Discord频道的消息"
   },
   "message.addWeChat": {
-    "message": "WeChatを追加",
-    "description": "ユーザーがWeChatを追加するよう促すメッセージ"
+    "message": "微信客服",
+    "description": "用于让用户添加微信的消息"
   },
   "message.serviceTech": {
-    "message": "テクニカルサポート",
-    "description": "サービスのテクニカルサポートを表示するために使用されます"
+    "message": "技术支持",
+    "description": "用于显示服务技术支持的消息"
   },
   "message.businessCooperation": {
-    "message": "ビジネス提携",
-    "description": "ビジネス提携に関するメッセージを表示するために使用されます"
+    "message": "商务合作",
+    "description": "用于显示商务合作的消息"
   },
   "message.noData": {
-    "message": "データなし",
-    "description": "テーブルやリストにデータがないことを表示するために使用されます"
+    "message": "无数据",
+    "description": "用于显示表格或列表中没有数据的消息"
   },
   "nav.home": {
-    "message": "ホーム",
-    "description": "サイトのナビゲーションバーで使用され、ホームページを表示します"
+    "message": "首页",
+    "description": "网站导航栏中的文本，用于显示首页"
   },
   "nav.content": {
-    "message": "コンテンツ",
-    "description": "サイトのナビゲーションバーで使用され、コンテンツページを表示します"
+    "message": "内容",
+    "description": "网站导航栏中的文本，用于显示内容页面"
   },
   "nav.category": {
-    "message": "カテゴリ",
-    "description": "サイトのナビゲーションバーで使用され、カテゴリページを表示します"
+    "message": "分类",
+    "description": "网站导航栏中的文本，用于显示分类页面"
   },
   "nav.service": {
-    "message": "サービス",
-    "description": "サイトのナビゲーションバーで使用され、サービスページを表示します"
+    "message": "服务",
+    "description": "网站导航栏中的文本，用于显示服务页面"
   },
   "nav.profile": {
-    "message": "プロフィール",
-    "description": "サイトのナビゲーションバーで使用され、個人プロフィールページを表示します"
+    "message": "我",
+    "description": "网站导航栏中的文本，用于显示个人资料页面"
   },
   "nav.document": {
-    "message": "ドキュメント",
-    "description": "サイトのナビゲーションバーで使用され、ドキュメントページを表示します"
+    "message": "文档",
+    "description": "网站导航栏中的文本，用于显示文档页面"
   },
   "nav.console": {
-    "message": "コンソール",
-    "description": "サイトのナビゲーションバーで使用され、コンソールページを表示します"
+    "message": "控制台",
+    "description": "网站导航栏中的文本，用于显示控制台页面"
   },
   "nav.chat": {
     "message": "Chat",
-    "description": "サイトのナビゲーションバーで使用され、チャットページを表示します。このフィールドを翻訳しないでください。'Chat'のままである必要があります"
+    "description": "网站导航栏中的文本，用于显示聊天页面，请不要翻译此字段，必须保持为'Chat'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "サイトのナビゲーションバーで使用され、中途の旅ページを表示します。このフィールドを翻訳しないでください。'Midjourney'のままである必要があります"
+    "description": "网站导航栏中的文本，用于显示中途之旅页面，请不要翻译此字段，必须保持为'Midjourney'"
   },
   "nav.chatdoc": {
     "message": "ChatDoc",
-    "description": "サイトのナビゲーションバーで使用され、チャットドキュメントページを表示します。このフィールドを翻訳しないでください。'Chatdoc'のままである必要があります"
+    "description": "网站导航栏中的文本，用于显示聊天文档页面，请不要翻译此字段，必须保持为'Chatdoc'"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "サイトのナビゲーションバーで使用され、QRアートページを表示します。このフィールドを翻訳しないでください。'QRArt'のままである必要があります"
+    "description": "网站导航栏中的文本，用于显示二维艺术页面，请不要翻译此字段，必须保持为'QRArt'"
   },
   "nav.distribution": {
-    "message": "推奨収益",
-    "description": "サイトのナビゲーションバーで使用され、推奨収益ページを表示します"
+    "message": "推荐收益",
+    "description": "网站导航栏中的文本，用于显示推荐收益页面"
   },
   "nav.logOut": {
-    "message": "ログアウト",
-    "description": "サイトのナビゲーションバーで使用され、ログアウトを表示します"
+    "message": "退出登录",
+    "description": "网站导航栏中的文本，用于退出登录"
   },
   "nav.site": {
-    "message": "サイト設定",
-    "description": "サイトのナビゲーションバーで使用され、サイト設定ページを表示します"
+    "message": "站点配置",
+    "description": "网站导航栏中的文本，用于显示站点配置页面"
   },
   "nav.locale": {
-    "message": "言語設定",
-    "description": "サイトのナビゲーションバーで使用され、言語を変更します"
+    "message": "语言设置",
+    "description": "网站导航栏中的文本，用于更改语言"
   },
   "nav.darkMode": {
-    "message": "ダークモード",
-    "description": "サイトのナビゲーションバーで使用され、ダークモードに切り替えます"
+    "message": "深色模式",
+    "description": "网站导航栏中的文本，用于切换到深色主题"
+  },
+  "nav.support": {
+    "message": "客服支持",
+    "description": "网站导航栏中的文本，用于显示客服支持页面"
   },
   "title.alert": {
-    "message": "アラート",
-    "description": "アラートメッセージのタイトル"
+    "message": "警报",
+    "description": "警报消息的标题"
   },
   "title.placeholderOfSelect": {
-    "message": "選択してください",
-    "description": "選択入力ボックスのプレースホルダ"
+    "message": "请选择",
+    "description": "选择输入框的占位符"
   },
   "title.placeholderOfInput": {
-    "message": "入力してください",
-    "description": "入力ボックスのプレースホルダ"
+    "message": "请填写",
+    "description": "输入框的占位符"
   },
   "title.allApplications": {
-    "message": "すべてのアプリケーション",
-    "description": "すべてのアプリケーションを表示するページのタイトル"
+    "message": "所有应用",
+    "description": "显示所有应用的页面标题"
   },
   "title.allOrders": {
-    "message": "すべての注文",
-    "description": "すべての注文を表示するページのタイトル"
+    "message": "所有订单",
+    "description": "显示所有订单的页面标题"
   },
   "title.orderInfo": {
-    "message": "注文情報",
-    "description": "注文情報を表示するページのタイトル"
+    "message": "订单信息",
+    "description": "显示订单信息的页面标题"
   },
   "title.buyMore": {
-    "message": "もっと購入",
-    "description": "ユーザーにもっと購入するよう促すページのタイトル"
+    "message": "购买更多",
+    "description": "让用户购买更多的页面标题"
   },
   "title.distribution": {
-    "message": "推奨収益",
-    "description": "推奨収益を表示するページのタイトル。他のユーザーを招待してサービスを使用することでお金を稼ぐことができます"
+    "message": "推荐收益",
+    "description": "显示推荐收益的页面标题，表示用户可以通过邀请他人使用服务来赚钱"
   },
   "title.site": {
-    "message": "サイト設定",
-    "description": "サイト設定を表示するページのタイトル"
+    "message": "サイトの設定",
+    "description": "サイトの設定ページのタイトルを表示する"
   },
   "title.distributionHistory": {
-    "message": "推奨履歴",
-    "description": "推奨履歴を表示するページのタイトル"
+    "message": "配信履歴",
+    "description": "配信履歴ページのタイトルを表示する"
   },
   "title.invitee": {
     "message": "招待者",
-    "description": "显示邀请者的页面标题"
+    "description": "招待者ページのタイトルを表示する"
   },
   "title.allUsages": {
-    "message": "すべての利用履歴",
-    "description": "APIサービスのすべての利用履歴を表示するページのタイトル"
+    "message": "利用履歴",
+    "description": "APIサービスのすべての利用履歴を表示するページのタイトルを表示する"
   },
   "title.allCredentials": {
-    "message": "すべての資格情報",
-    "description": "APIへのアクセスに使用されるすべての資格情報を表示するページのタイトル"
+    "message": "資格情報",
+    "description": "APIへのアクセスに使用されるすべての資格情報を表示するページのタイトルを表示する"
   }
 }

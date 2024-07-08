@@ -25,6 +25,7 @@
     </div>
     <locale-selector :visible="operating.locale == true" @close="operating.locale = false" />
     <dark-selector :visible="operating.dark == true" @close="operating.dark = false" />
+    <help-dialog :visible="operating.help == true" @close="operating.help = false" />
   </div>
 </template>
 
@@ -43,6 +44,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlAuth, getBaseUrlPlatform } from '@/utils';
 import LocaleSelector from '@/components/common/LocaleSelector.vue';
 import DarkSelector from '@/components/common/DarkSelector.vue';
+import HelpDialog from '@/components/common/HelpDialog.vue';
 
 interface ILink {
   key: string;
@@ -57,6 +59,7 @@ export default defineComponent({
   name: 'ProfileIndex',
   components: {
     ElImage,
+    HelpDialog,
     FontAwesomeIcon,
     LocaleSelector,
     DarkSelector
@@ -65,7 +68,8 @@ export default defineComponent({
     return {
       operating: {
         locale: false,
-        dark: false
+        dark: false,
+        help: false
       }
     };
   },
@@ -141,6 +145,14 @@ export default defineComponent({
           icon: 'fa-solid fa-laptop-code'
         },
         {
+          key: 'support',
+          text: this.$t('common.nav.support'),
+          callback: () => {
+            this.operating.help = true;
+          },
+          icon: 'fa-solid fa-question'
+        },
+        {
           key: 'logout',
           text: this.$t('common.nav.logOut'),
           icon: 'fa-solid fa-arrow-right-from-bracket',
@@ -150,6 +162,7 @@ export default defineComponent({
             await this.$store.dispatch('midjourney/resetAll');
             await this.$store.dispatch('chatdoc/resetAll');
             await this.$store.dispatch('qrart/resetAll');
+            await this.$store.dispatch('login');
           }
         }
       ];

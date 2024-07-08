@@ -3,6 +3,7 @@ export interface ISiteFeatures {
   midjourney?: any;
   chatdoc?: any;
   qrart?: any;
+  support?: any;
 }
 
 export interface ISiteDistribution {

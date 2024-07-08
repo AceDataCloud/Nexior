@@ -1,6 +1,5 @@
 <template>
   <el-row class="panel">
-    <help-entry class="help" />
     <el-col :span="24">
       <el-row>
         <el-col :span="24">
@@ -198,7 +197,6 @@ import { userOperator } from '@/operators';
 import QrCode from 'vue-qrcode';
 import { ROUTE_DISTRIBUTION_HISTORY, ROUTE_DISTRIBUTION_INVITEES } from '@/router';
 import { IDistributionLevel, IDistributionStatus, IUser } from '@/models';
-import HelpEntry from '@/components/common/HelpEntry.vue';
 
 interface IData {
   invitees: IUser[];
@@ -214,7 +212,6 @@ export default defineComponent({
     CopyToClipboard,
     FontAwesomeIcon,
     QrCode,
-    HelpEntry,
     ElProgress,
     ElRow,
     ElCol,
@@ -426,18 +423,6 @@ export default defineComponent({
   .message {
     font-size: 14px;
     color: var(--el-text-color-regular);
-  }
-}
-.help {
-  position: fixed;
-  right: 40px;
-  bottom: 40px;
-  z-index: 1000;
-}
-
-@media (max-width: 767px) {
-  .help {
-    top: 40px;
   }
 }
 </style>
