@@ -165,7 +165,7 @@ textarea.input:focus {
       height: 20px;
       font-size: 12px;
       text-align: center;
-      padding-top: 2px;
+      padding-top: 1px;
       .icon-attachment {
         font-size: 16px;
         color: var(--el-text-color-primary);

@@ -1756,7 +1756,7 @@
     "description": "成功开始绘图任务时的成功消息"
   },
   "message.startTaskFailed": {
-    "message": "无法开始绘图任务",
+    "message": "无法开始绘图任务，请联系管理员",
     "description": "无法开始绘图任务时的错误消息"
   },
   "message.generating": {
@@ -1770,6 +1770,10 @@
   "message.noTasks": {
     "message": "没有历史任务，请先开始新任务",
     "description": "没有历史任务时的消息"
+  },
+  "message.usedUp": {
+    "message": "您的积分已用完，请购买更多积分后继续使用",
+    "description": "已用完时的消息"
   },
   "message.operation": {
     "message": "配置选项",
@@ -1900,7 +1904,7 @@
     "description": "提示字段中的占位文本"
   },
   "placeholder.ignore": {
-    "message": "输入要忽略的元素，例如：`--忽略 植物`",
+    "message": "输入要忽略的元素，例如不想让画面出现汽车，可以填写`汽车`",
     "description": "忽略字段中的占位文本"
   },
   "placeholder.select": {

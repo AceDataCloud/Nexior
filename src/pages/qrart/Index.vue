@@ -25,7 +25,7 @@ import ConfigPanel from '@/components/qrart/ConfigPanel.vue';
 import { applicationOperator, qrartOperator } from '@/operators';
 import { IApplicationDetailResponse, IQrartGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_DUPLICATION } from '@/constants';
+import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP } from '@/constants';
 import ApplicationStatus from '@/components/application/Status.vue';
 import OperationPanel from '@/components/qrart/OperationPanel.vue';
 import RecentPanel from '@/components/qrart/RecentPanel.vue';
@@ -119,8 +119,8 @@ export default defineComponent({
     },
     async onScrollDown() {
       setTimeout(() => {
-        // scroll to bottom for `.tasks`
-        const el = document.querySelector('.tasks');
+        // scroll to bottom for `.recent`
+        const el = document.querySelector('.recent');
         if (el) {
           el.scrollTop = el.scrollHeight;
         }
@@ -166,7 +166,7 @@ export default defineComponent({
         console.error('no token specified');
         return;
       }
-      ElMessage.success(this.$t('qrart.message.startingTask'));
+      ElMessage.info(this.$t('qrart.message.startingTask'));
       qrartOperator
         .generate(request, {
           token
@@ -174,8 +174,13 @@ export default defineComponent({
         .then(() => {
           ElMessage.success(this.$t('qrart.message.startTaskSuccess'));
         })
-        .catch(() => {
-          ElMessage.error(this.$t('qrart.message.startTaskFailed'));
+        .catch((error) => {
+          const response = error?.response?.data;
+          if (response?.error?.code === ERROR_CODE_USED_UP) {
+            ElMessage.error(this.$t('qrart.message.usedUp'));
+          } else {
+            ElMessage.error(this.$t('qrart.message.startTaskFailed'));
+          }
         })
         .finally(async () => {
           await this.onGetTasks();

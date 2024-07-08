@@ -9,8 +9,6 @@
     </div>
     <div v-else-if="application" class="status">
       <span class="info">
-        {{ $t('common.message.usedAmount') }}: {{ application?.used_amount?.toFixed(6) }}
-        {{ $t(`service.unit.` + application?.service?.unit + 's') }}
         {{ $t('common.message.remainingAmount') }}:
         {{ application?.remaining_amount?.toFixed(6) }}
         {{ $t(`service.unit.` + application?.service?.unit + 's') }}
