@@ -23,8 +23,16 @@
     "message": "Faworytka strony",
     "description": "Wyświetlany tytuł w polu edycji"
   },
+  "field.qr": {
+    "message": "Kod QR",
+    "description": "Wyświetlany tytuł w polu edycji"
+  },
+  "field.url": {
+    "message": "Adres URL",
+    "description": "Wyświetlany tytuł w polu edycji"
+  },
   "field.admins": {
-    "message": "ID administratorów strony",
+    "message": "ID administratora strony",
     "description": "Wyświetlany tytuł w polu edycji"
   },
   "field.distributionDefaultInviterId": {
@@ -51,8 +59,12 @@
     "message": "Qrart",
     "description": "Wyświetlany tytuł w polu edycji"
   },
+  "field.featuresSupport": {
+    "message": "Wsparcie techniczne",
+    "description": "Wyświetlany tytuł w polu edycji"
+  },
   "field.featuresI18n": {
-    "message": "Obsługa wielu języków",
+    "message": "Wsparcie wielojęzyczne",
     "description": "Wyświetlany tytuł w polu edycji"
   },
   "title.basicConfig": {
@@ -107,6 +119,14 @@
     "message": "Edytuj wymuszonego zapraszającego",
     "description": "Wyświetlany tytuł w polu edycji"
   },
+  "title.editQR": {
+    "message": "Edytuj kod QR",
+    "description": "Wyświetlany tytuł w polu edycji"
+  },
+  "title.editUrl": {
+    "message": "Edytuj adres URL",
+    "description": "Wyświetlany tytuł w polu edycji"
+  },
   "placeholder.title": {
     "message": "Wprowadź tytuł strony",
     "description": "Wyświetlany tytuł w polu edycji"
@@ -132,67 +152,75 @@
     "description": "Wyświetlany tytuł w polu edycji"
   },
   "message.uploadImageExceed": {
-    "message": "Przekroczono limit uploadu obrazu",
-    "description": "Komunikat o przekroczeniu limitu uploadu obrazu"
+    "message": "Przekroczono limit wielkości pliku",
+    "description": "Komunikat o przekroczeniu limitu wielkości pliku"
   },
   "message.uploadImageError": {
-    "message": "Błąd uploadu obrazu",
-    "description": "Komunikat o błędzie uploadu obrazu"
+    "message": "Błąd podczas przesyłania obrazu",
+    "description": "Komunikat o błędzie podczas przesyłania obrazu"
   },
   "message.editLogoTip": {
-    "message": "Zalecane wymiary: 200*60px",
-    "description": "Komunikat dotyczący uploadu obrazu"
+    "message": "Sugerowany rozmiar: 200*60px",
+    "description": "Komunikat dotyczący przesyłania obrazu"
+  },
+  "message.editQRTip": {
+    "message": "Sugerowany rozmiar: 200*200px",
+    "description": "Komunikat dotyczący przesyłania obrazu"
   },
   "message.editFaviconTip": {
-    "message": "Zalecane wymiary: 32*32px",
-    "description": "Komunikat dotyczący uploadu obrazu"
+    "message": "Sugerowany rozmiar: 32*32px",
+    "description": "Komunikat dotyczący przesyłania obrazu"
+  },
+  "message.editUrl": {
+    "message": "Wprowadź adres URL",
+    "description": "Komunikat dotyczący wprowadzania adresu URL"
   },
   "message.atLeastOneAdmin": {
     "message": "Zachowaj co najmniej jednego administratora",
     "description": "Komunikat o zachowaniu co najmniej jednego administratora"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "ID domyślnego zapraszającego użytkownika. Jeśli link dystrybucyjny nie zawiera parametru inviter_id, to używany jest domyślny ID tego użytkownika jako zapraszającego.",
-    "description": "Porada dotycząca ID domyślnego zapraszającego"
+    "message": "ID domyślnego zapraszającego, jeśli parametr inviter_id nie jest przekazywany w linku dystrybucyjnym, to domyślnie używane jest to ID użytkownika jako zapraszającego.",
+    "description": "Podpowiedź dotycząca domyślnego zapraszającego"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID wymuszonego zapraszającego użytkownika. Jeśli ustawione, to niezależnie od obecności parametru inviter_id w linku dystrybucyjnym, ten ID jest używany jako zapraszający.",
-    "description": "Porada dotycząca ID wymuszonego zapraszającego"
+    "message": "ID użytkownika, który jest wymuszony jako zapraszający. Jeśli to ID jest ustawione, to niezależnie od tego, czy link dystrybucyjny zawiera parametr inviter_id, to ID użytkownika jest wymuszone jako zapraszający.",
+    "description": "Podpowiedź dotycząca wymuszonego zapraszającego"
   },
   "message.originTip": {
-    "message": "Domena strony, konfiguracja strony powiązana jest z tą domeną. Domena strony nie może być zmieniona.",
-    "description": "Porada dotycząca domeny strony"
+    "message": "Domena witryny, powiązana z konfiguracją witryny, nie można zmienić domeny witryny.",
+    "description": "Podpowiedź dotycząca domeny witryny"
   },
   "message.titleTip": {
-    "message": "Tytuł strony, wyświetlany w etykiecie przeglądarki.",
-    "description": "Porada dotycząca tytułu strony"
+    "message": "Tytuł witryny, wyświetlany w karcie przeglądarki.",
+    "description": "Podpowiedź dotycząca tytułu witryny"
   },
   "message.descriptionTip": {
-    "message": "Opis witryny, znajduje się w metadanych witryny, służy do optymalizacji SEO witryny.",
+    "message": "Opis witryny, znajdujący się w metadanych witryny, służy do optymalizacji SEO witryny.",
     "description": "Podpowiedź dotycząca opisu witryny"
   },
   "message.logoTip": {
-    "message": "Logo witryny, gdy menu witryny jest rozszerzone, wyświetlane na górze menu witryny.",
+    "message": "Logo witryny, wyświetlane na górze menu witryny po rozwinięciu.",
     "description": "Podpowiedź dotycząca logo witryny"
   },
   "message.faviconTip": {
-    "message": "Favicon witryny, wyświetlane na karcie przeglądarki.",
-    "description": "Podpowiedź dotycząca faviconu witryny"
+    "message": "Favicon witryny, wyświetlane w karcie przeglądarki.",
+    "description": "Podpowiedź dotycząca favicon witryny"
   },
   "message.adminsTip": {
-    "message": "ID administratora witryny, domyślnie użytkownik tworzący witrynę zostanie administratorem, tylko administrator witryny może zarządzać witryną.",
-    "description": "Podpowiedź dotycząca administratora witryny"
+    "message": "ID administratora witryny, domyślnie użytkownik, który pierwszy utworzył witrynę, zostanie administratorem. Tylko administratorzy witryny mogą zarządzać witryną.",
+    "description": "Podpowiedź dotycząca administratorów witryny"
   },
   "message.adminsTip2": {
-    "message": "Można tutaj dodawać lub usuwać ID administratorów, ID użytkowników można zobaczyć na stronie https://auth.acedata.cloud",
-    "description": "Podpowiedź dotycząca administratora witryny"
+    "message": "Można tutaj dodawać i usuwać ID administratorów, można sprawdzić ID użytkownika na stronie https://auth.acedata.cloud",
+    "description": "Podpowiedź dotycząca administratorów witryny"
   },
   "message.keywordsTip": {
-    "message": "Słowa kluczowe witryny, znajdują się w metadanych witryny, służą do optymalizacji SEO witryny.",
+    "message": "Słowa kluczowe witryny, znajdujące się w metadanych witryny, służą do optymalizacji SEO witryny.",
     "description": "Podpowiedź dotycząca słów kluczowych witryny"
   },
   "message.keywordsTip2": {
-    "message": "Można tutaj dodawać lub usuwać słowa kluczowe witryny, im bardziej precyzyjne, tym lepsza optymalizacja SEO.",
+    "message": "Można tutaj dodawać i usuwać słowa kluczowe witryny, im bardziej precyzyjne, tym lepsza optymalizacja SEO.",
     "description": "Podpowiedź dotycząca słów kluczowych witryny"
   },
   "message.featuresChat": {
@@ -211,8 +239,12 @@
     "message": "Włącz lub wyłącz moduł funkcji Qrart.",
     "description": "Opis funkcji Qrart"
   },
+  "message.featuresSupport": {
+    "message": "Włącz lub wyłącz wsparcie techniczne.",
+    "description": "Opis funkcji wsparcia"
+  },
   "message.featuresI18n": {
-    "message": "Włącz lub wyłącz obsługę wielu języków, po wyłączeniu użytkownicy będą mogli używać tylko domyślnego języka.",
+    "message": "Włącz lub wyłącz obsługę wielu języków, po wyłączeniu użytkownicy mogą korzystać tylko z domyślnego języka.",
     "description": "Opis obsługi wielu języków"
   },
   "button.upload": {
@@ -221,10 +253,10 @@
   },
   "button.enabled": {
     "message": "Włączone",
-    "description": "Tekst włączenia, oznaczający, że jest już włączone"
+    "description": "Tekst przełącznika, oznaczający, że jest już włączone"
   },
   "button.disabled": {
     "message": "Wyłączone",
-    "description": "Tekst wyłączenia, oznaczający, że jest już wyłączone"
+    "description": "Tekst przełącznika, oznaczający, że jest już wyłączone"
   }
 }

@@ -125,7 +125,6 @@ import Pagination from '@/components/common/Pagination.vue';
 import { ElTable, ElRow, ElCol, ElTableColumn, ElCard, ElTag, ElSelect, ElOption } from 'element-plus';
 import { apiUsageOperator, applicationOperator } from '@/operators';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import HelpEntry from '@/components/common/HelpEntry.vue';
 
 interface IData {
   apiUsages: IApiUsage[];
@@ -142,7 +141,6 @@ export default defineComponent({
   name: 'ConsoleUsageList',
   components: {
     Pagination,
-    HelpEntry,
     ElTag,
     ElTable,
     ElSelect,
@@ -309,18 +307,5 @@ export default defineComponent({
 .pagination {
   margin: auto;
   width: fit-content;
-}
-
-.help {
-  position: fixed;
-  right: 40px;
-  bottom: 40px;
-  z-index: 1000;
-}
-
-@media (max-width: 767px) {
-  .help {
-    top: 40px;
-  }
 }
 </style>

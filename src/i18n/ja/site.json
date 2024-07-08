@@ -23,16 +23,24 @@
     "message": "サイトのファビコン",
     "description": "編集ボックスに表示されるタイトル"
   },
+  "field.qr": {
+    "message": "QRコード",
+    "description": "編集ボックスに表示されるタイトル"
+  },
+  "field.url": {
+    "message": "リンク",
+    "description": "編集ボックスに表示されるタイトル"
+  },
   "field.admins": {
-    "message": "サイト管理者 ID",
+    "message": "サイト管理者ID",
     "description": "編集ボックスに表示されるタイトル"
   },
   "field.distributionDefaultInviterId": {
-    "message": "デフォルト招待者のID",
+    "message": "デフォルト招待者ID",
     "description": "編集ボックスに表示されるタイトル"
   },
   "field.distributionForceInviterId": {
-    "message": "強制招待者のID",
+    "message": "強制招待者ID",
     "description": "編集ボックスに表示されるタイトル"
   },
   "field.featuresChat": {
@@ -49,6 +57,10 @@
   },
   "field.featuresQrart": {
     "message": "Qrart",
+    "description": "編集ボックスに表示されるタイトル"
+  },
+  "field.featuresSupport": {
+    "message": "サポート",
     "description": "編集ボックスに表示されるタイトル"
   },
   "field.featuresI18n": {
@@ -96,7 +108,7 @@
     "description": "編集ボックスに表示されるタイトル"
   },
   "title.distributionConfig": {
-    "message": "配信設定",
+    "message": "配布設定",
     "description": "編集ボックスに表示されるタイトル"
   },
   "title.editDistributionDefaultInviterId": {
@@ -105,6 +117,14 @@
   },
   "title.editDistributionForceInviterId": {
     "message": "強制招待者を編集",
+    "description": "編集ボックスに表示されるタイトル"
+  },
+  "title.editQR": {
+    "message": "QRコードを編集",
+    "description": "編集ボックスに表示されるタイトル"
+  },
+  "title.editUrl": {
+    "message": "リンクを編集",
     "description": "編集ボックスに表示されるタイトル"
   },
   "placeholder.title": {
@@ -124,96 +144,108 @@
     "description": "編集ボックスに表示されるタイトル"
   },
   "placeholder.editDistributionDefaultInviterId": {
-    "message": "デフォルトの招待者IDを入力してください",
+    "message": "デフォルト招待者IDを入力してください",
     "description": "編集ボックスに表示されるタイトル"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "強制招待者のIDを入力してください",
+    "message": "強制招待者IDを入力してください",
     "description": "編集ボックスに表示されるタイトル"
   },
   "message.uploadImageExceed": {
-    "message": "画像のアップロード制限を超えました",
-    "description": "画像のアップロード制限を超えた場合のメッセージ"
+    "message": "画像のアップロードが制限を超えています",
+    "description": "画像のアップロード制限を超えた際のメッセージ"
   },
   "message.uploadImageError": {
     "message": "画像のアップロードエラー",
-    "description": "画像のアップロードエラーのメッセージ"
+    "description": "画像のアップロードエラー時のメッセージ"
   },
   "message.editLogoTip": {
     "message": "推奨サイズ：200*60px",
-    "description": "画像のアップロードのヒント言語"
+    "description": "画像のアップロードのヒント"
+  },
+  "message.editQRTip": {
+    "message": "推奨サイズ：200*200px",
+    "description": "画像のアップロードのヒント"
   },
   "message.editFaviconTip": {
     "message": "推奨サイズ：32*32px",
-    "description": "画像のアップロードのヒント言語"
+    "description": "画像のアップロードのヒント"
+  },
+  "message.editUrl": {
+    "message": "リンクを入力してください",
+    "description": "リンクを入力する際のメッセージ"
   },
   "message.atLeastOneAdmin": {
     "message": "少なくとも1人の管理者を残してください",
-    "description": "少なくとも1人の管理者を残すよう促すメッセージ"
+    "description": "少なくとも1人の管理者を残す際のメッセージ"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "デフォルトの招待者のユーザーID。分散リンクにinviter_idパラメータが含まれていない場合は、デフォルトでこのユーザーIDが招待者として使用されます。",
+    "message": "デフォルトの招待者のユーザーID、ディストリビューションリンクにinviter_idパラメータが含まれていない場合、デフォルトでこのユーザーIDが招待者として使用されます。",
     "description": "デフォルトの招待者IDのヒント"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "強制招待者のユーザーID。このIDが設定されている場合、分散リンクにinviter_idパラメータが含まれていても、強制的にこのユーザーIDが招待者として使用されます。",
-    "description": "強制招待者IDのヒント"
+    "message": "強制的な招待者のユーザーID、このIDが設定されている場合、ディストリビューションリンクにinviter_idパラメータが含まれていても、強制的にこのユーザーIDが招待者として使用されます。",
+    "description": "強制的な招待者IDのヒント"
   },
   "message.originTip": {
-    "message": "サイトのドメイン、サイト構成とドメインがバインドされており、サイトのドメインは変更できません。",
-    "description": "サイトのドメインのヒント"
+    "message": "サイトのドメイン名、サイト構成とドメインがバインドされ、サイトのドメイン名は変更できません。",
+    "description": "サイトのドメイン名のヒント"
   },
   "message.titleTip": {
     "message": "サイトのタイトル、ブラウザのタブに表示されます。",
     "description": "サイトのタイトルのヒント"
   },
   "message.descriptionTip": {
-    "message": "Site description, located in the site meta information, used for site SEO optimization.",
-    "description": "Tip for site description"
+    "message": "サイトの説明、サイトのメタ情報にあり、サイトのSEO最適化に使用されます。",
+    "description": "サイトの説明のヒント"
   },
   "message.logoTip": {
-    "message": "Site logo, displayed at the top of the site menu when the menu bar is expanded.",
-    "description": "Tip for site logo"
+    "message": "サイトのロゴ、メニューバーが展開されている場合に、サイトメニューの上部に表示されます。",
+    "description": "サイトのロゴのヒント"
   },
   "message.faviconTip": {
-    "message": "Site favicon, displayed in the browser tab.",
-    "description": "Tip for site favicon"
+    "message": "サイトのファビコン、ブラウザのタブに表示されます。",
+    "description": "サイトのファビコンのヒント"
   },
   "message.adminsTip": {
-    "message": "Site administrator ID, the user who first creates the site will become the administrator by default. Only site administrators can manage the site.",
-    "description": "Tip for site administrators"
+    "message": "サイトの管理者ID、サイトを最初に作成したユーザーが自動的に管理者になります。サイトの管理者のみがサイトを管理できます。",
+    "description": "サイトの管理者のヒント"
   },
   "message.adminsTip2": {
-    "message": "You can add or remove administrator IDs here, and view user IDs at https://auth.acedata.cloud.",
-    "description": "Tip for site administrators"
+    "message": "ここで管理者IDを追加または削除できます。ユーザーIDはhttps://auth.acedata.cloudで確認できます。",
+    "description": "サイトの管理者のヒント"
   },
   "message.keywordsTip": {
-    "message": "Site keywords, located in the site meta information, used for site SEO optimization.",
-    "description": "Tip for site keywords"
+    "message": "サイトのキーワード、サイトのメタ情報にあり、サイトのSEO最適化に使用されます。",
+    "description": "サイトのキーワードのヒント"
   },
   "message.keywordsTip2": {
-    "message": "You can add or remove website keywords here. The more precise the keywords, the better for SEO optimization.",
-    "description": "Tip for site keywords"
+    "message": "ここでウェブサイトのキーワードを追加または削除できます。キーワードがより正確であれば、SEO最適化に有利です。",
+    "description": "サイトのキーワードのヒント"
   },
   "message.featuresChat": {
-    "message": "Open or close the Chat feature module.",
-    "description": "Description of the Chat feature"
+    "message": "Chat機能モジュールをオープンまたはクローズします。",
+    "description": "Chat機能の説明"
   },
   "message.featuresMidjourney": {
-    "message": "Open or close the Midjourney feature module.",
-    "description": "Description of the Midjourney feature"
+    "message": "Midjourney機能モジュールをオープンまたはクローズします。",
+    "description": "Midjourney機能の説明"
   },
   "message.featuresChatdoc": {
-    "message": "Open or close the Chatdoc feature module.",
-    "description": "Description of the Chatdoc feature"
+    "message": "Chatdoc機能モジュールをオープンまたはクローズします。",
+    "description": "Chatdoc機能の説明"
   },
   "message.featuresQrart": {
-    "message": "Open or close the Qrart feature module.",
-    "description": "Description of the Qrart feature"
+    "message": "Qrart機能モジュールをオープンまたはクローズします。",
+    "description": "Qrart機能の説明"
+  },
+  "message.featuresSupport": {
+    "message": "カスタマーサポートをオープンまたはクローズします",
+    "description": "サポート機能の説明"
   },
   "message.featuresI18n": {
-    "message": "Open or close multi-language support. When closed, users can only use the default language.",
-    "description": "Description of multi-language support"
+    "message": "多言語サポートをオープンまたはクローズします。クローズすると、ユーザーはデフォルト言語のみを使用できます。",
+    "description": "多言語サポートの説明"
   },
   "button.upload": {
     "message": "アップロード",
@@ -221,10 +253,10 @@
   },
   "button.enabled": {
     "message": "有効",
-    "description": "Switch text indicating it is already enabled"
+    "description": "有効になっていることを示すスイッチのテキスト"
   },
   "button.disabled": {
     "message": "無効",
-    "description": "Switch text indicating it is already disabled"
+    "description": "無効になっていることを示すスイッチのテキスト"
   }
 }

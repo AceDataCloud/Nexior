@@ -26,6 +26,15 @@
     <div class="middle" />
     <div class="bottom">
       <div class="link">
+        <help-entry>
+          <template #main>
+            <el-button class="button">
+              <font-awesome-icon icon="fa-solid fa-question" />
+            </el-button>
+          </template>
+        </help-entry>
+      </div>
+      <div class="link">
         <el-tooltip effect="dark" :content="$t('common.nav.darkMode')" placement="right">
           <el-button class="button" @click="operating.dark = true">
             <font-awesome-icon icon="fa-solid fa-moon" />
@@ -103,11 +112,13 @@ import {
   ROUTE_SITE_INDEX
 } from '@/router/constants';
 import LogoTiny from './LogoTiny.vue';
+import HelpEntry from '@/components/common/HelpEntry.vue';
 
 export default defineComponent({
   name: 'Navigator',
   components: {
     ElButton,
+    HelpEntry,
     LogoTiny,
     DarkSelector,
     ElTooltip,

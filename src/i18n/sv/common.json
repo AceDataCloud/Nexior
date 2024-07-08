@@ -25,7 +25,7 @@
   },
   "button.new": {
     "message": "Ny",
-    "description": "Knapp-text för att skapa nytt projekt"
+    "description": "Knapp-text för att skapa ett nytt projekt"
   },
   "button.delete": {
     "message": "Radera",
@@ -57,7 +57,7 @@
   },
   "button.verify": {
     "message": "Verifiera",
-    "description": "Knapp-text för att låta användaren genomföra verifiering av riktiga namn"
+    "description": "Knapp-text för att låta användaren genomföra en verifiering"
   },
   "button.profile": {
     "message": "Profil",
@@ -65,7 +65,7 @@
   },
   "button.console": {
     "message": "Konsol",
-    "description": "Knapp-text för att visa konsolsida för att kontrollera viss innehåll på webbplatsen"
+    "description": "Knapp-text för att visa konsolsidan för att kontrollera viss innehåll på webbplatsen"
   },
   "button.learn": {
     "message": "Lära",
@@ -172,16 +172,16 @@
     "description": "Entitetens beskrivning"
   },
   "entity.createdAt": {
-    "message": "Skapad tid",
-    "description": "Tidpunkt för entitetens skapande"
+    "message": "Skapad den",
+    "description": "Tidpunkt då entiteten skapades"
   },
   "entity.updatedAt": {
-    "message": "Uppdaterad tid",
-    "description": "Tidpunkt för entitetens uppdatering"
+    "message": "Uppdaterad den",
+    "description": "Tidpunkt då entiteten uppdaterades"
   },
   "entity.order": {
     "message": "Beställning",
-    "description": "Entitetens beställning, beställningen innehåller belopp, tjänsteinformation, användare måste betala för den"
+    "description": "Entitetens beställning, beställningen innehåller belopp, tjänsteinformation och användaren behöver betala för den"
   },
   "message.usedAmount": {
     "message": "Använt belopp",
@@ -209,14 +209,14 @@
   },
   "message.free": {
     "message": "Gratis",
-    "description": "Används för att visa meddelanden om att tjänsten är gratis, vilket innebär att användaren inte behöver betala"
+    "description": "Används för att visa meddelandet att tjänsten är gratis, vilket innebär att användaren inte behöver betala"
   },
   "message.startPrice": {
     "message": "Startpris",
-    "description": "Används för att visa meddelanden om tjänstens lägsta pris"
+    "description": "Används för att visa det lägsta priset för tjänsten"
   },
   "message.joinDiscord": {
-    "message": "Gå med i Discord",
+    "message": "Discord-community",
     "description": "Används för att låta användaren gå med i Discord-kanalen"
   },
   "message.addWeChat": {
@@ -225,15 +225,15 @@
   },
   "message.serviceTech": {
     "message": "Teknisk support",
-    "description": "Används för att visa meddelanden om tjänstens tekniska support"
+    "description": "Används för att visa teknisk support för tjänsten"
   },
   "message.businessCooperation": {
     "message": "Affärssamarbete",
-    "description": "Används för att visa meddelanden om affärssamarbete"
+    "description": "Används för att visa affärssamarbete"
   },
   "message.noData": {
     "message": "Inga data",
-    "description": "Används för att visa meddelanden när det inte finns några data i tabellen eller listan"
+    "description": "Används för att visa meddelandet att det inte finns några data i tabellen eller listan"
   },
   "nav.home": {
     "message": "Hem",
@@ -253,11 +253,11 @@
   },
   "nav.profile": {
     "message": "Profil",
-    "description": "Text i webbplatsens navigeringsfält, används för att visa användarprofilssidan"
+    "description": "Text i webbplatsens navigeringsfält, används för att visa profilsidan"
   },
   "nav.document": {
     "message": "Dokument",
-    "description": "Text i webbplatsens navigeringsfält, används för att visa dokumentationssidan"
+    "description": "Text i webbplatsens navigeringsfält, används för att visa dokumentssidan"
   },
   "nav.console": {
     "message": "Konsol",
@@ -265,19 +265,19 @@
   },
   "nav.chat": {
     "message": "Chat",
-    "description": "Text i webbplatsens navigeringsfält, används för att visa chattsidan, får inte översättas, måste förbli 'Chat'"
+    "description": "Text i webbplatsens navigeringsfält, används för att visa chattsidan, detta fält får inte översättas, måste förbli 'Chat'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "Text i webbplatsens navigeringsfält, används för att visa sidan för Midjourney, får inte översättas, måste förbli 'Midjourney'"
+    "description": "Text i webbplatsens navigeringsfält, används för att visa sidan för Midjourney, detta fält får inte översättas, måste förbli 'Midjourney'"
   },
   "nav.chatdoc": {
     "message": "ChatDoc",
-    "description": "Text i webbplatsens navigeringsfält, används för att visa chattrumssidan, får inte översättas, måste förbli 'Chatdoc'"
+    "description": "Text i webbplatsens navigeringsfält, används för att visa chattrumssidan, detta fält får inte översättas, måste förbli 'Chatdoc'"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Text i webbplatsens navigeringsfält, används för att visa sidan för QR-konst, får inte översättas, måste förbli 'QRArt'"
+    "description": "Text i webbplatsens navigeringsfält, används för att visa sidan för QR-konst, detta fält får inte översättas, måste förbli 'QRArt'"
   },
   "nav.distribution": {
     "message": "Rekommenderad inkomst",
@@ -298,6 +298,10 @@
   "nav.darkMode": {
     "message": "Mörkt läge",
     "description": "Text i webbplatsens navigeringsfält, används för att växla till mörkt tema"
+  },
+  "nav.support": {
+    "message": "Kundsupport",
+    "description": "Text i webbplatsens navigeringsfält, används för att visa kundsupportsidan"
   },
   "title.alert": {
     "message": "Varning",
@@ -325,30 +329,30 @@
   },
   "title.buyMore": {
     "message": "Köp mer",
-    "description": "Titel för sidan som uppmanar användaren att köpa mer"
+    "description": "Titel för sidan som uppmuntrar användaren att köpa mer"
   },
   "title.distribution": {
     "message": "Rekommenderad inkomst",
     "description": "Titel för sidan som visar rekommenderad inkomst, vilket innebär att användaren kan tjäna pengar genom att bjuda in andra att använda tjänsten"
   },
   "title.site": {
-    "message": "Webbplatskonfiguration",
-    "description": "Titel för sidan som visar webbplatskonfiguration"
+    "message": "Sitekonfiguration",
+    "description": "Visar sidans konfigurationssida"
   },
   "title.distributionHistory": {
-    "message": "Rekommendationshistorik",
-    "description": "Titel för sidan som visar rekommendationshistorik"
+    "message": "Distributionshistorik",
+    "description": "Visar sidan för distributionshistorik"
   },
   "title.invitee": {
-    "message": "Inbjudan",
-    "description": "Visar sidtiteln för inbjudaren"
+    "message": "Inbjudare",
+    "description": "Visar sidan för inbjudare"
   },
   "title.allUsages": {
-    "message": "Alla användningar",
-    "description": "Visar sidtiteln för alla användningshistorik för API-tjänsten"
+    "message": "All användningshistorik",
+    "description": "Visar sidan för all användningshistorik av API-tjänsten"
   },
   "title.allCredentials": {
     "message": "Alla referenser",
-    "description": "Visar sidtiteln för alla referenser som används för att komma åt API"
+    "description": "Visar sidan för alla referenser som används för att komma åt API"
   }
 }
