@@ -229,5 +229,9 @@ export default defineComponent({
   .help {
     top: 40px;
   }
+  .panel {
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>

@@ -10,7 +10,7 @@
         <el-col :span="24">
           <el-card shadow="hover">
             <el-row>
-              <el-col :span="14" :offset="5">
+              <el-col :span="16" :offset="4">
                 <div v-if="loading" class="pt-5">
                   <el-skeleton animated />
                 </div>
@@ -47,19 +47,19 @@
               </el-col>
             </el-row>
             <el-row v-if="order?.state === OrderState.PAID" class="mb-5">
-              <el-col :span="14" :offset="5">
+              <el-col :span="16" :offset="4">
                 <el-divider border-style="dashed" />
                 <el-alert :title="$t('order.message.paidSuccessfully')" type="success" show-icon :closable="false" />
               </el-col>
             </el-row>
             <el-row v-if="order?.state === OrderState.EXPIRED" class="mb-5">
-              <el-col :span="14" :offset="5">
+              <el-col :span="16" :offset="4">
                 <el-divider border-style="dashed" />
                 <el-alert :title="$t('order.message.orderExpired')" type="error" show-icon :closable="false" />
               </el-col>
             </el-row>
             <el-row v-if="order?.state === OrderState.PENDING || order?.state === OrderState.FAILED">
-              <el-col :span="14" :offset="5">
+              <el-col :span="16" :offset="4">
                 <el-divider border-style="dashed" />
                 <div v-if="showPayWays && order.price && order.price > 0 && !order.pay_way" class="payways mb-6">
                   <div
@@ -354,6 +354,13 @@ export default defineComponent({
 
   .btn-pay {
     width: 150px;
+  }
+}
+
+@media (max-width: 767px) {
+  .panel {
+    width: 100%;
+    height: 100%;
   }
 }
 </style>

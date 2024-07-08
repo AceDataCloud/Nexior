@@ -10,7 +10,7 @@
         <el-col :span="24">
           <el-card shadow="hover">
             <el-row>
-              <el-col :span="12" :offset="6">
+              <el-col :span="16" :offset="4">
                 <el-skeleton v-if="loading" />
                 <el-form v-else-if="application" label-width="100px">
                   <el-form-item :label="$t('application.field.service')">
@@ -22,6 +22,7 @@
                         v-for="(pkg, pkgIndex) in application?.service.packages"
                         :key="pkgIndex"
                         :label="pkg.id"
+                        class="mb-2"
                       >
                         {{ pkg.amount }} {{ $t(`service.unit.${application?.service?.unit}s`) }}
                       </el-radio-button>
@@ -29,6 +30,15 @@
                   </el-form-item>
                   <el-form-item :label="$t('service.field.price')">
                     <price :price="package?.price" />
+                    <span v-if="package" class="ml-2"
+                      >({{
+                        $t('service.message.around') +
+                        ' $' +
+                        (package?.price / package?.amount).toFixed(4) +
+                        ' / ' +
+                        $t(`service.unit.${application?.service?.unit}`)
+                      }})
+                    </span>
                   </el-form-item>
                   <el-divider border-style="dashed" />
                   <el-form-item :label="$t('application.field.shouldPayPrice')">
@@ -86,7 +96,7 @@ interface IData {
   application: IApplication | undefined;
   loading: boolean;
   form: {
-    amount: number;
+    amount: number | undefined;
     packageId: string | undefined;
   };
   creating: boolean;
@@ -112,7 +122,8 @@ export default defineComponent({
       application: undefined,
       loading: false,
       form: {
-        packageId: undefined
+        packageId: undefined,
+        amount: undefined
       },
       creating: false
     };
@@ -221,5 +232,12 @@ export default defineComponent({
 
 .pagination {
   float: right;
+}
+
+@media (max-width: 767px) {
+  .panel {
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>

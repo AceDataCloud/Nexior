@@ -1,15 +1,15 @@
 {
   "entity.requestQueries": {
-    "message": "Pyyntökyselyt",
+    "message": "Pyyntö kyselyt",
     "description": "HTTP-pyynnön kyselyparametrit."
   },
   "entity.requestBody": {
-    "message": "Pyyntökehys",
-    "description": "HTTP-pyynnön pyyntökehys."
+    "message": "Pyyntö runko",
+    "description": "HTTP-pyynnön pyyntörunko."
   },
   "entity.responseBody": {
-    "message": "Vastauskehys",
-    "description": "HTTP-vastauksen vastauskehys."
+    "message": "Vastauksen runko",
+    "description": "HTTP-vastauksen vastauksen runko."
   },
   "entity.requestHeaders": {
     "message": "Pyyntöotsikot",
@@ -45,7 +45,7 @@
   },
   "entity.arrayOf": {
     "message": "Taulukko",
-    "description": "Taulukko entiteetistä."
+    "description": "Entiteetin taulukko."
   },
   "entity.apiKey": {
     "message": "API-avain",
@@ -53,27 +53,27 @@
   },
   "message.free": {
     "message": "Ilmainen",
-    "description": "Ei maksua merkitsevä termi, API-palvelua käytettäessä ei tarvita pisteitä tai rahaa."
+    "description": "Ilmaisee ilmaisen hinnan, ei tarvitse käyttää API-palvelua varten mitään pisteitä tai valuuttaa."
   },
   "message.appliedCount": {
-    "message": "Hakemuskerrat",
-    "description": "API-palvelun hakemuskerrat."
+    "message": "Käytetty kerta",
+    "description": "Käytettyjen API-palveluiden määrä."
   },
   "message.firstFree": {
-    "message": "Ensimäinen ilmainen",
-    "description": "Ensimmäinen kerta ilmaiseksi, ei tarvita pisteitä tai rahaa."
+    "message": "Ensimmäinen ilmainen",
+    "description": "Ilmaisee ensimmäisen käytön API-palvelussa ilmaiseksi, ei tarvitse käyttää mitään pisteitä tai valuuttaa."
   },
   "message.custom": {
     "message": "Mukautettu",
-    "description": "Hinta on määritelty, ja API-palvelua käytettäessä tarvitaan tietty määrä pisteitä tai rahaa."
+    "description": "Ilmaisee hinnan olevan mukautettu, API-palvelua käytettäessä on käytettävä määriteltyä pistemäärää tai valuuttaa."
   },
   "message.present": {
-    "message": "lahjoitus",
-    "description": "Kun käytät API-palvelua ensimmäistä kertaa, me lahjoitamme pisteitä sinulle."
+    "message": "Lahja",
+    "description": "Ensimmäisen käytön API-palvelussa annamme sinulle lahjaksi pisteitä."
   },
   "message.around": {
-    "message": "noin",
-    "description": "Noin hinta, todellinen hinta saattaa vaihdella."
+    "message": "Noin",
+    "description": "Hinta on suunnilleen, todellinen hinta voi vaihdella."
   },
   "message.successRate15min": {
     "message": "Reaaliaikainen onnistumisprosentti",
@@ -88,55 +88,55 @@
     "description": "Aika (minuutit)."
   },
   "message.streamUsage": {
-    "message": "Vinkki: virtapiirin pyynnöt saattavat edellyttää yllä olevan koodin muokkaamista. Katso liitäntäasiakirja ohjeiden saamiseksi.",
-    "description": "Virtapiirin pyynnöt saattavat edellyttää yllä olevan koodin muokkaamista. Katso liitäntäasiakirja ohjeiden saamiseksi."
+    "message": "Huomautus: Virtapyynnöille yllä oleva koodi saattaa olla epätäydellinen. Katso integrointiohjeet muokkausta varten.",
+    "description": "Virtapyynnöille yllä oleva koodi saattaa olla epätäydellinen. Katso integrointiohjeet muokkausta varten."
   },
   "message.alphaStage": {
-    "message": "Tämä API on alfa-vaiheessa. Tämä on varhainen esikatseluversio, joka saattaa olla epävakaa, ja API:n muoto voi muuttua merkittävästi. Ei suositella tuotantokäyttöön. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa voi olla merkittäviä hintamuutoksia.",
-    "description": "Tämä API on alfa-vaiheessa. Tämä on varhainen esikatseluversio, joka saattaa olla epävakaa, ja API:n muoto voi muuttua merkittävästi. Ei suositella tuotantokäyttöön. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa voi olla merkittäviä hintamuutoksia."
+    "message": "Tämä API on alfa-vaiheessa, tämä on varhainen esikatseluversio, joka saattaa sisältää mahdollisia epävakaisuuksia, API-muoto saattaa muuttua merkittävästi, ei suositella tuotantokäyttöön. Nykyinen hinnoittelu on suhteellisen alhainen, tulevaisuudessa voi olla merkittäviä hintamuutoksia.",
+    "description": "Tämä API on alfa-vaiheessa, tämä on varhainen esikatseluversio, joka saattaa sisältää mahdollisia epävakaisuuksia, API-muoto saattaa muuttua merkittävästi, ei suositella tuotantokäyttöön. Nykyinen hinnoittelu on suhteellisen alhainen, tulevaisuudessa voi olla merkittäviä hintamuutoksia."
   },
   "message.betaStage": {
-    "message": "Tämä API on beeta-vaiheessa. API:n muoto ei tule kokemaan merkittäviä muutoksia, mutta siinä voi esiintyä epävakautta. Ole varovainen käyttäessäsi tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa voi olla kohtuullisia hintamuutoksia.",
-    "description": "Tämä API on beeta-vaiheessa. API:n muoto ei tule kokemaan merkittäviä muutoksia, mutta siinä voi esiintyä epävakautta. Ole varovainen käyttäessäsi tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen alhainen, ja tulevaisuudessa voi olla kohtuullisia hintamuutoksia."
+    "message": "Tämä API on beta-vaiheessa, API-muoto ei muutu merkittävästi, mutta siinä saattaa olla mahdollisia epävakaisuuksia, ole varovainen käyttäessäsi tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen alhainen, tulevaisuudessa voi olla kohtuullisia hintamuutoksia.",
+    "description": "Tämä API on beta-vaiheessa, API-muoto ei muutu merkittävästi, mutta siinä saattaa olla mahdollisia epävakaisuuksia, ole varovainen käyttäessäsi tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen alhainen, tulevaisuudessa voi olla kohtuullisia hintamuutoksia."
   },
   "unit.credit": {
     "message": "Piste",
-    "description": "Piste on virtuaalivaluutta API-palvelussa."
+    "description": "Piste on virtuaalivaluutta, jota käytetään API-palvelussa."
   },
   "unit.Credit": {
     "message": "Piste",
-    "description": "Piste on virtuaalivaluutta API-palvelussa, tämä on suurimmankirjainmuoto."
+    "description": "Piste on virtuaalivaluutta, tämä on iso alkukirjainmuoto."
   },
   "unit.credits": {
     "message": "Pisteet",
-    "description": "Pisteet ovat virtuaalivaluuttaa API-palvelussa, tämä on monikkomuoto."
+    "description": "Pisteet ovat virtuaalivaluutta, tämä on monikkomuoto."
   },
   "unit.Credits": {
     "message": "Pisteet",
-    "description": "Pisteet ovat virtuaalivaluuttaa API-palvelussa, tämä on suurimmankirjainmuoto ja monikkomuoto."
+    "description": "Pisteet ovat virtuaalivaluutta, tämä on iso alkukirjain- ja monikkomuoto."
   },
   "unit.call": {
     "message": "Kutsu",
-    "description": "Kutsu tarkoittaa API-palvelun kutsujen määrää."
+    "description": "Kutsu edustaa API-palvelun kutsujen määrää."
   },
   "unit.Call": {
     "message": "Kutsu",
-    "description": "Kutsu tarkoittaa API-palvelun kutsujen määrää, tämä on suurimmankirjainmuoto."
+    "description": "Kutsu edustaa API-palvelun kutsujen määrää, tämä on iso alkukirjainmuoto."
   },
   "unit.calls": {
     "message": "Kutsut",
-    "description": "Kutsut tarkoittavat API-palvelun kutsujen määrää, tämä on monikkomuoto."
+    "description": "Kutsut edustavat API-palvelun kutsujen määrää, tämä on monikkomuoto."
   },
   "unit.Calls": {
     "message": "Kutsut",
-    "description": "Kutsut tarkoittavat API-palvelun kutsujen määrää, tämä on suurimmankirjainmuoto ja monikkomuoto."
+    "description": "Kutsut edustavat API-palvelun kutsujen määrää, tämä on iso alkukirjain- ja monikkomuoto."
   },
   "unit.MB": {
     "message": "Mt",
-    "description": "Mt tarkoittaa megatavua, tietojen tallennuksen yksikkö."
+    "description": "Mt edustaa megatavua, eräänlainen numerotietojen tallennusyksikkö."
   },
   "unit.GB": {
     "message": "Gt",
-    "description": "Gt tarkoittaa gigatavua, tietojen tallennuksen yksikkö."
+    "description": "Gt edustaa gigatavua, eräänlainen numerotietojen tallennusyksikkö."
   }
 }

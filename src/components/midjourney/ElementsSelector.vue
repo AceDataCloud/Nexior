@@ -2127,7 +2127,7 @@ export default defineComponent({
   align-items: center;
   flex-wrap: wrap;
   height: auto;
-  max-height: 320px;
+  max-height: 220px;
   overflow-y: scroll;
   .item {
     $height: 100px;

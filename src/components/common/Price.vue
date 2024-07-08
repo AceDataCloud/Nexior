@@ -37,21 +37,5 @@ export default defineComponent({
 .price-text {
   display: inline-block;
   margin: 0;
-  .unfree {
-    color: #ff5441;
-
-    .value {
-      font-weight: bold;
-      color: #ff5441;
-      font-size: 30px;
-    }
-
-    .unit {
-      color: #666;
-    }
-  }
-  .free {
-    color: #29c287;
-  }
 }
 </style>

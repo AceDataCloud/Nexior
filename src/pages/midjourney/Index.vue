@@ -18,8 +18,7 @@
         <el-card v-show="operating" class="operations">
           <reference-image class="mb-4" @change="references = $event" />
           <elements-selector v-model="elements" :advanced="preset?.advanced" class="mb-4" />
-          <ignore-selector v-if="preset?.advanced" v-model="ignore" class="mb-4" />
-          <final-prompt v-if="finalPrompt" :model-value="finalPrompt" />
+          <ignore-selector v-if="preset?.advanced" v-model="ignore" />
         </el-card>
         <input-box
           :prompt="prompt"
@@ -46,8 +45,7 @@ import ReferenceImage from '@/components/midjourney/ReferenceImage.vue';
 import { applicationOperator, midjourneyOperator } from '@/operators';
 import ApplicationStatus from '@/components/application/Status.vue';
 import TaskList from '@/components/midjourney/tasks/TaskList.vue';
-import FinalPrompt from '@/components/midjourney/FinalPrompt.vue';
-import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
+import { ERROR_CODE_DUPLICATION, ERROR_CODE_FORBIDDEN, ERROR_CODE_USED_UP } from '@/constants/errorCode';
 import { Status } from '@/models';
 import { IMidjourneyImagineRequest, IApplicationDetailResponse, MidjourneyImagineAction } from '@/models';
 import {
@@ -82,7 +80,6 @@ export default defineComponent({
     IgnoreSelector,
     ApplicationStatus,
     TaskList,
-    FinalPrompt,
     Layout
   },
   data(): IData {
@@ -250,7 +247,7 @@ export default defineComponent({
         console.error('no token specified');
         return;
       }
-      ElMessage.success(this.$t('midjourney.message.startingTask'));
+      ElMessage.info(this.$t('midjourney.message.startingTask'));
       midjourneyOperator
         .imagine(request, {
           token
@@ -258,8 +255,13 @@ export default defineComponent({
         .then(() => {
           ElMessage.success(this.$t('midjourney.message.startTaskSuccess'));
         })
-        .catch(() => {
-          ElMessage.error(this.$t('midjourney.message.startTaskFailed'));
+        .catch((error) => {
+          const response = error?.response?.data;
+          if (response?.error?.code === ERROR_CODE_USED_UP) {
+            ElMessage.error(this.$t('midjourney.message.usedUp'));
+          } else {
+            ElMessage.error(this.$t('midjourney.message.startTaskFailed'));
+          }
         })
         .finally(async () => {
           await this.onGetTasks();
@@ -331,7 +333,7 @@ export default defineComponent({
   .operations {
     position: absolute;
     width: 100%;
-    max-height: 400px;
+    max-height: 650px;
     bottom: 60px;
     left: 0;
   }

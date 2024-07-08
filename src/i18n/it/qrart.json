@@ -52,8 +52,8 @@
     "description": "Contenuto del codice QR da generare"
   },
   "name.ecl": {
-    "message": "Livello di correzione",
-    "description": "Livello di correzione del codice QR da generare"
+    "message": "Livello di correzione degli errori",
+    "description": "Livello di correzione degli errori del codice QR da generare"
   },
   "name.position": {
     "message": "Posizione",
@@ -104,7 +104,7 @@
     "description": "URL dell'immagine del contenuto del codice QR da generare"
   },
   "inputWay.input": {
-    "message": "Inserisci contenuto",
+    "message": "Inserimento del contenuto",
     "description": "Modo di inserimento"
   },
   "inputWay.upload": {
@@ -116,7 +116,7 @@
     "description": "Descrizione del parametro 'qrw'"
   },
   "description.steps": {
-    "message": "Passaggi di generazione del codice QR, più passaggi ci sono, maggiore è la visibilità del codice QR",
+    "message": "Passaggi di generazione del codice QR, maggiore è il numero di passaggi, maggiore è la visibilità del codice QR",
     "description": "Descrizione del parametro 'steps'"
   },
   "status.pending": {
@@ -133,7 +133,7 @@
   },
   "placeholder.prompt": {
     "message": "Inserisci il prompt per lo stile del codice QR da generare, ad esempio: fiori",
-    "description": "Testo segnaposto per il prompt"
+    "description": "Testo di segnaposto nel campo del prompt"
   },
   "placeholder.seed": {
     "message": "Il seme varia da 1 a 9007199254740991",
@@ -145,7 +145,7 @@
   },
   "placeholder.content": {
     "message": "Inserisci il contenuto del codice QR da generare, ad esempio: https://www.google.com",
-    "description": "Testo segnaposto per il contenuto"
+    "description": "Testo di segnaposto nel campo del contenuto"
   },
   "placeholder.aspectRatio": {
     "message": "Seleziona...",
@@ -277,7 +277,7 @@
   },
   "message.promptPlaceholder": {
     "message": "Inserisci una frase che descriva l'immagine da generare, ad esempio: un gatto carino. I parametri aggiuntivi sovrascriveranno i parametri predefiniti",
-    "description": "Testo segnaposto per l'input"
+    "description": "Testo segnaposto nel campo di inserimento"
   },
   "message.uploadReferencesExceed": {
     "message": "È possibile caricare al massimo 5 immagini",
@@ -285,38 +285,42 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Immagine caricata con successo",
-    "description": "Messaggio di successo quando l'immagine viene caricata con successo"
+    "description": "Messaggio di successo quando l'immagine viene caricata correttamente"
   },
   "message.uploadReferencesError": {
     "message": "Errore durante il caricamento dell'immagine, riprova più tardi",
     "description": "Messaggio di errore quando il caricamento dell'immagine fallisce"
   },
   "message.startingTask": {
-    "message": "Avvio dell'attività in corso...",
-    "description": "Messaggio di avvio dell'attività"
+    "message": "Avvio dell'attività...",
+    "description": "Messaggio all'avvio dell'attività di disegno"
   },
   "message.startTaskSuccess": {
-    "message": "Attività di avvio riuscita",
-    "description": "Messaggio di successo quando l'attività viene avviata con successo"
+    "message": "Attività di generazione avviata con successo",
+    "description": "Messaggio di successo all'avvio dell'attività"
   },
   "message.startTaskFailed": {
-    "message": "Avvio dell'attività non riuscito",
-    "description": "Messaggio di errore quando l'avvio dell'attività fallisce"
+    "message": "Impossibile avviare l'attività, contattare l'amministratore",
+    "description": "Messaggio di errore all'avvio dell'attività di disegno"
+  },
+  "message.usedUp": {
+    "message": "I tuoi punti sono esauriti, acquista più punti per continuare",
+    "description": "Messaggio quando i punti sono esauriti"
   },
   "message.generating": {
     "message": "Generazione in corso...",
     "description": "Messaggio durante la generazione dell'immagine"
   },
   "message.generateFailed": {
-    "message": "Generazione dell'immagine non riuscita",
-    "description": "Messaggio di errore quando la generazione dell'immagine fallisce"
+    "message": "Generazione dell'immagine fallita",
+    "description": "Messaggio in caso di fallimento della generazione dell'immagine"
   },
   "message.noOperations": {
     "message": "Nessuna operazione disponibile",
     "description": "Messaggio quando non ci sono operazioni disponibili"
   },
   "message.noTasks": {
-    "message": "Nessuna attività precedente, fare clic di seguito per generare un nuovo codice QR",
+    "message": "Nessuna attività precedente, fai clic di seguito per generare un nuovo codice QR",
     "description": "Messaggio quando non ci sono attività disponibili"
   },
   "markerShape.square": {
@@ -380,71 +384,71 @@
     "description": "Posizione per generare il codice QR"
   },
   "position.bottomLeft": {
-    "message": "In basso a sinistra",
-    "description": "Posizione per generare il codice QR"
+    "message": "Inferiore sinistra",
+    "description": "Utilizzato per generare la posizione del codice QR"
   },
   "position.bottomRight": {
-    "message": "In basso a destra",
-    "description": "Posizione per generare il codice QR"
+    "message": "Inferiore destra",
+    "description": "Utilizzato per generare la posizione del codice QR"
   },
   "position.top": {
-    "message": "Top",
-    "description": "Position used for generating the QR code"
+    "message": "Superiore",
+    "description": "Utilizzato per generare la posizione del codice QR"
   },
   "position.bottom": {
-    "message": "Bottom",
-    "description": "Position used for generating the QR code"
+    "message": "Inferiore",
+    "description": "Utilizzato per generare la posizione del codice QR"
   },
   "position.left": {
-    "message": "Left",
-    "description": "Position used for generating the QR code"
+    "message": "Sinistra",
+    "description": "Utilizzato per generare la posizione del codice QR"
   },
   "position.right": {
-    "message": "Right",
-    "description": "Position used for generating the QR code"
+    "message": "Destra",
+    "description": "Utilizzato per generare la posizione del codice QR"
   },
   "pixelStyle.row": {
-    "message": "Row",
-    "description": "Pixel style used for generating the QR code"
+    "message": "Riga",
+    "description": "Utilizzato per generare lo stile dei pixel del codice QR"
   },
   "pixelStyle.column": {
-    "message": "Column",
-    "description": "Pixel style used for generating the QR code"
+    "message": "Colonna",
+    "description": "Utilizzato per generare lo stile dei pixel del codice QR"
   },
   "pixelStyle.square": {
-    "message": "Square",
-    "description": "Pixel style used for generating the QR code"
+    "message": "Quadrato",
+    "description": "Utilizzato per generare lo stile dei pixel del codice QR"
   },
   "pixelStyle.rounded": {
-    "message": "Rounded",
-    "description": "Pixel style used for generating the QR code"
+    "message": "Arrotondato",
+    "description": "Utilizzato per generare lo stile dei pixel del codice QR"
   },
   "pixelStyle.dot": {
-    "message": "Dot",
-    "description": "Pixel style used for generating the QR code"
+    "message": "Punto",
+    "description": "Utilizzato per generare lo stile dei pixel del codice QR"
   },
   "pixelStyle.squircle": {
     "message": "Squircle",
-    "description": "Pixel style used for generating the QR code"
+    "description": "Utilizzato per generare lo stile dei pixel del codice QR"
   },
   "type.text": {
-    "message": "Text",
-    "description": "Content type used for generating the QR code"
+    "message": "Testo",
+    "description": "Utilizzato per generare il tipo di contenuto del codice QR"
   },
   "type.link": {
-    "message": "Link",
-    "description": "Content type used for generating the QR code"
+    "message": "Collegamento",
+    "description": "Utilizzato per generare il tipo di contenuto del codice QR"
   },
   "type.email": {
     "message": "Email",
-    "description": "Content type used for generating the QR code"
+    "description": "Utilizzato per generare il tipo di contenuto del codice QR"
   },
   "type.phone": {
-    "message": "Phone",
-    "description": "Content type used for generating the QR code"
+    "message": "Telefono",
+    "description": "Utilizzato per generare il tipo di contenuto del codice QR"
   },
   "type.sms": {
     "message": "SMS",
-    "description": "Content type used for generating the QR code"
+    "description": "Utilizzato per generare il tipo di contenuto del codice QR"
   }
 }

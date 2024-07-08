@@ -116,7 +116,7 @@
     "description": "Descripción del parámetro 'qrw'"
   },
   "description.steps": {
-    "message": "Pasos de generación del código QR, cuanto más pasos, mayor será la visibilidad del código QR",
+    "message": "Pasos de generación del código QR, cuantos más pasos, mayor será la visibilidad del código QR",
     "description": "Descripción del parámetro 'steps'"
   },
   "status.pending": {
@@ -125,23 +125,23 @@
   },
   "placeholder.paddingNoise": {
     "message": "Seleccione...",
-    "description": "Marcador de posición para la entrada de ruido de relleno"
+    "description": "Marcador de posición para el ruido de relleno"
   },
   "placeholder.paddingLevel": {
     "message": "Seleccione...",
     "description": "Marcador de posición para el nivel de relleno"
   },
   "placeholder.prompt": {
-    "message": "Ingrese la indicación para el estilo del código QR a generar, por ejemplo: flores",
+    "message": "Ingrese la indicación del estilo de código QR a generar, por ejemplo: flores",
     "description": "Texto de marcador de posición en el campo de indicación"
   },
   "placeholder.seed": {
     "message": "El rango de semilla es de 1 a 9007199254740991",
-    "description": "Marcador de posición para la entrada de semilla"
+    "description": "Marcador de posición para la semilla"
   },
   "placeholder.position": {
     "message": "Seleccione...",
-    "description": "Marcador de posición para la entrada de posición"
+    "description": "Marcador de posición para la posición"
   },
   "placeholder.content": {
     "message": "Ingrese el contenido del código QR a generar, por ejemplo: https://www.google.com",
@@ -149,23 +149,23 @@
   },
   "placeholder.aspectRatio": {
     "message": "Seleccione...",
-    "description": "Marcador de posición para la entrada de relación de aspecto"
+    "description": "Marcador de posición para la relación de aspecto"
   },
   "placeholder.preset": {
     "message": "Seleccione...",
-    "description": "Marcador de posición para la entrada de estilo predefinido"
+    "description": "Marcador de posición para el estilo predefinido"
   },
   "placeholder.markerShape": {
     "message": "Seleccione...",
-    "description": "Marcador de posición para la entrada de forma del marcador"
+    "description": "Marcador de posición para la forma del marcador"
   },
   "placeholder.rotate": {
     "message": "Seleccione...",
-    "description": "Marcador de posición para la entrada de rotación"
+    "description": "Marcador de posición para la rotación"
   },
   "placeholder.subMarker": {
     "message": "Seleccione...",
-    "description": "Marcador de posición para la entrada de submarcador"
+    "description": "Marcador de posición para el submarcador"
   },
   "button.generate": {
     "message": "Generar",
@@ -272,51 +272,55 @@
     "description": "要生成的 QR 码的预设风格"
   },
   "message.uploadQr": {
-    "message": "Subir imagen del código QR, puede generar un código QR artístico que coincida con el contenido del código QR",
+    "message": "上传二维码图片，可生成和二维码内容一致的艺术二维码",
     "description": "上传二维码的说明"
   },
   "message.promptPlaceholder": {
-    "message": "Ingrese una oración que describa la imagen a generar, por ejemplo: un gato lindo. Los parámetros adicionales reemplazarán los parámetros preestablecidos por defecto",
+    "message": "请输入描述要生成的图像的句子，例如：一只可爱的猫。额外参数将覆盖默认预设参数",
     "description": "提示字段中的占位文本"
   },
   "message.uploadReferencesExceed": {
-    "message": "Se pueden subir como máximo 5 imágenes",
+    "message": "最多可上传 5 张图片",
     "description": "上传的图片数量超过限制时的错误消息"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Imagen subida con éxito",
+    "message": "成功上传图片",
     "description": "成功上传图片时的成功消息"
   },
   "message.uploadReferencesError": {
-    "message": "Error al subir la imagen, por favor inténtelo de nuevo más tarde",
+    "message": "上传图片失败，请稍后重试",
     "description": "图片上传失败时的错误消息"
   },
   "message.startingTask": {
-    "message": "Iniciando tarea...",
+    "message": "正在启动任务...",
     "description": "绘图任务开始时的消息"
   },
   "message.startTaskSuccess": {
-    "message": "Tarea de dibujo iniciada con éxito",
-    "description": "成功启动绘图任务时的成功消息"
+    "message": "成功发起生成任务",
+    "description": "成功启动任务时的成功消息"
   },
   "message.startTaskFailed": {
-    "message": "Fallo al iniciar la tarea de dibujo",
+    "message": "发起任务失败，请联系管理员",
     "description": "启动绘图任务失败时的错误消息"
   },
+  "message.usedUp": {
+    "message": "您的积分已用完，请购买更多积分后继续使用",
+    "description": "已用完时的消息"
+  },
   "message.generating": {
-    "message": "Generando...",
+    "message": "生成中...",
     "description": "图像正在生成时的消息"
   },
   "message.generateFailed": {
-    "message": "Fallo al generar la imagen",
+    "message": "生成图像失败",
     "description": "图像生成失败时的消息"
   },
   "message.noOperations": {
-    "message": "No hay operaciones disponibles",
+    "message": "没有可用操作",
     "description": "没有可用操作时的消息"
   },
   "message.noTasks": {
-    "message": "No hay tareas anteriores, haga clic abajo para generar un nuevo código QR",
+    "message": "没有历史任务，请点击下方生成新二维码",
     "description": "没有任务时的消息"
   },
   "markerShape.square": {
@@ -380,19 +384,19 @@
     "description": "用于生成QR码的位置"
   },
   "position.bottomLeft": {
-    "message": "Abajo Izquierda",
+    "message": "Inferior izquierda",
     "description": "用于生成QR码的位置"
   },
   "position.bottomRight": {
-    "message": "Abajo Derecha",
+    "message": "Inferior derecha",
     "description": "用于生成QR码的位置"
   },
   "position.top": {
-    "message": "Arriba",
+    "message": "Superior",
     "description": "用于生成QR码的位置"
   },
   "position.bottom": {
-    "message": "Abajo",
+    "message": "Inferior",
     "description": "用于生成QR码的位置"
   },
   "position.left": {
@@ -424,7 +428,7 @@
     "description": "用于生成QR码的像素风格"
   },
   "pixelStyle.squircle": {
-    "message": "Rectángulo redondeado",
+    "message": "Cuadrado redondeado",
     "description": "用于生成QR码的像素风格"
   },
   "type.text": {

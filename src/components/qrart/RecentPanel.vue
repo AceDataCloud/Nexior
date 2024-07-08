@@ -31,7 +31,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import TaskPreview from './task/Preview.vue';
-import { Status } from '@/models';
 import { ElSkeleton, ElSkeletonItem } from 'element-plus';
 
 export default defineComponent({
