@@ -180,12 +180,11 @@
               >
                 <div class="w-full">
                   <el-switch
-                    v-if="site?.features?.[feature]?.enabled !== undefined"
-                    v-model="site.features[feature].enabled"
+                    :model-value="site.features[feature]?.enabled || false"
                     inline-prompt
                     :active-text="$t('site.button.enabled')"
                     :inactive-text="$t('site.button.disabled')"
-                    @change="
+                    @update:model-value="
                       onSave({
                         features: {
                           ...site.features,
@@ -201,21 +200,21 @@
                 <span class="block tip w-full">
                   {{ $t('site.message.features' + feature.charAt(0).toUpperCase() + feature.slice(1)) }}
                 </span>
-                <div v-if="feature === 'support'" v-show="site.features[feature].enabled">
+                <div v-if="feature === 'support'" v-show="site.features[feature]?.enabled">
                   <el-form-item label="WeChat">
                     <el-switch
-                      v-model="site.features[feature].wechat.enabled"
+                      :model-value="site.features[feature]?.wechat?.enabled || false"
                       inline-prompt
                       :active-text="$t('site.button.enabled')"
                       :inactive-text="$t('site.button.disabled')"
-                      @change="
+                      @update:model-value="
                         onSave({
                           features: {
                             ...site.features,
                             [feature]: {
                               ...site.features[feature],
                               wechat: {
-                                ...site.features[feature].wechat,
+                                ...site.features[feature]?.wechat,
                                 enabled: $event
                               }
                             }
@@ -224,11 +223,11 @@
                       "
                     ></el-switch>
                   </el-form-item>
-                  <el-form-item v-show="site.features[feature].wechat.enabled" :label="$t('site.field.qr')">
+                  <el-form-item v-show="site.features[feature]?.wechat?.enabled" :label="$t('site.field.qr')">
                     <span class="block w-full">
-                      <el-image :src="site.features[feature].wechat?.qr" />
+                      <el-image :src="site.features[feature]?.wechat?.qr" />
                       <edit-image
-                        :model-value="site.features[feature].wechat.qr"
+                        :model-value="site.features[feature]?.wechat?.qr"
                         :title="$t('site.title.editQR')"
                         :tip="$t('site.message.editQRTip')"
                         @confirm="
@@ -238,7 +237,7 @@
                               [feature]: {
                                 ...site.features[feature],
                                 wechat: {
-                                  ...site.features[feature].wechat,
+                                  ...site.features[feature]?.wechat,
                                   qr: $event
                                 }
                               }
@@ -250,18 +249,18 @@
                   </el-form-item>
                   <el-form-item label="Discord">
                     <el-switch
-                      v-model="site.features[feature].discord.enabled"
+                      :model-value="site.features[feature]?.discord?.enabled || false"
                       inline-prompt
                       :active-text="$t('site.button.enabled')"
                       :inactive-text="$t('site.button.disabled')"
-                      @change="
+                      @update:model-value="
                         onSave({
                           features: {
                             ...site.features,
                             [feature]: {
                               ...site.features[feature],
                               discord: {
-                                ...site.features[feature].discord,
+                                ...site.features[feature]?.discord,
                                 enabled: $event
                               }
                             }
@@ -270,11 +269,11 @@
                       "
                     ></el-switch>
                   </el-form-item>
-                  <el-form-item v-show="site.features[feature].discord.enabled" :label="$t('site.field.url')">
+                  <el-form-item v-show="site.features[feature]?.discord?.enabled" :label="$t('site.field.url')">
                     <span class="block w-full">
-                      {{ site.features[feature].discord?.url }}
+                      {{ site.features[feature]?.discord?.url }}
                       <edit-text
-                        :model-value="site.features[feature].discord?.url"
+                        :model-value="site.features[feature]?.discord?.url"
                         :title="$t('site.title.editUrl')"
                         :placeholder="$t('site.placeholder.editUrl')"
                         @confirm="
@@ -284,7 +283,7 @@
                               [feature]: {
                                 ...site.features[feature],
                                 discord: {
-                                  ...site.features[feature].discord,
+                                  ...site.features[feature]?.discord,
                                   url: $event
                                 }
                               }

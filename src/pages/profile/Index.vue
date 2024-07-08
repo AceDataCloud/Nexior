@@ -77,6 +77,9 @@ export default defineComponent({
     user() {
       return this.$store.getters.user;
     },
+    showSupport() {
+      return this.$store?.state?.site?.features?.support?.enabled;
+    },
     showSite() {
       return this.$store?.state?.site?.admins?.includes(this.$store.getters.user?.id);
     },
@@ -144,14 +147,18 @@ export default defineComponent({
           href: getBaseUrlPlatform(),
           icon: 'fa-solid fa-laptop-code'
         },
-        {
-          key: 'support',
-          text: this.$t('common.nav.support'),
-          callback: () => {
-            this.operating.help = true;
-          },
-          icon: 'fa-solid fa-question'
-        },
+        ...(this.showSupport
+          ? [
+              {
+                key: 'support',
+                text: this.$t('common.nav.support'),
+                callback: () => {
+                  this.operating.help = true;
+                },
+                icon: 'fa-solid fa-question'
+              }
+            ]
+          : []),
         {
           key: 'logout',
           text: this.$t('common.nav.logOut'),
