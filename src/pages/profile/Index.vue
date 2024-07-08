@@ -78,7 +78,11 @@ export default defineComponent({
       return this.$store.getters.user;
     },
     showSupport() {
-      return this.$store?.state?.site?.features?.support?.enabled;
+      return (
+        this.$store?.state?.site?.features?.support?.enabled &&
+        (this.$store?.state?.site?.features?.support?.discord?.enabled ||
+          this.$store?.state?.site?.features?.support?.wechat?.enabled)
+      );
     },
     showSite() {
       return this.$store?.state?.site?.admins?.includes(this.$store.getters.user?.id);

@@ -135,6 +135,10 @@
     "message": "Wprowadź domenę strony",
     "description": "Wyświetlany tytuł w polu edycji"
   },
+  "placeholder.editUrl": {
+    "message": "Wprowadź adres URL",
+    "description": "Wyświetlany tytuł w polu edycji"
+  },
   "placeholder.description": {
     "message": "Wprowadź opis strony",
     "description": "Wyświetlany tytuł w polu edycji"
@@ -177,18 +181,18 @@
   },
   "message.atLeastOneAdmin": {
     "message": "Zachowaj co najmniej jednego administratora",
-    "description": "Komunikat o zachowaniu co najmniej jednego administratora"
+    "description": "Komunikat o konieczności zachowania co najmniej jednego administratora"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "ID domyślnego zapraszającego, jeśli parametr inviter_id nie jest przekazywany w linku dystrybucyjnym, to domyślnie używane jest to ID użytkownika jako zapraszającego.",
-    "description": "Podpowiedź dotycząca domyślnego zapraszającego"
+    "message": "Domyślny identyfikator zapraszającego użytkownika, jeśli link dystrybucyjny nie zawiera parametru inviter_id, to domyślnie używany jest ten identyfikator użytkownika jako zapraszający.",
+    "description": "Podpowiedź dotycząca domyślnego identyfikatora zapraszającego"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID użytkownika, który jest wymuszony jako zapraszający. Jeśli to ID jest ustawione, to niezależnie od tego, czy link dystrybucyjny zawiera parametr inviter_id, to ID użytkownika jest wymuszone jako zapraszający.",
-    "description": "Podpowiedź dotycząca wymuszonego zapraszającego"
+    "message": "Wymuszony identyfikator zapraszającego użytkownika, jeśli ustawiono ten identyfikator, to niezależnie od tego, czy link dystrybucyjny zawiera parametr inviter_id, to ten identyfikator użytkownika jest wymuszony jako zapraszający.",
+    "description": "Podpowiedź dotycząca wymuszonego identyfikatora zapraszającego"
   },
   "message.originTip": {
-    "message": "Domena witryny, powiązana z konfiguracją witryny, nie można zmienić domeny witryny.",
+    "message": "Domena witryny, konfiguracja witryny jest powiązana z domeną, domena witryny nie może być zmieniona.",
     "description": "Podpowiedź dotycząca domeny witryny"
   },
   "message.titleTip": {
@@ -196,31 +200,31 @@
     "description": "Podpowiedź dotycząca tytułu witryny"
   },
   "message.descriptionTip": {
-    "message": "Opis witryny, znajdujący się w metadanych witryny, służy do optymalizacji SEO witryny.",
+    "message": "Opis witryny, znajduje się w metadanych witryny, służy do optymalizacji SEO witryny.",
     "description": "Podpowiedź dotycząca opisu witryny"
   },
   "message.logoTip": {
-    "message": "Logo witryny, wyświetlane na górze menu witryny po rozwinięciu.",
+    "message": "Logo witryny, gdy menu jest rozwinięte, wyświetlane na górze menu witryny.",
     "description": "Podpowiedź dotycząca logo witryny"
   },
   "message.faviconTip": {
-    "message": "Favicon witryny, wyświetlane w karcie przeglądarki.",
+    "message": "Favicon witryny, wyświetlany w karcie przeglądarki.",
     "description": "Podpowiedź dotycząca favicon witryny"
   },
   "message.adminsTip": {
-    "message": "ID administratora witryny, domyślnie użytkownik, który pierwszy utworzył witrynę, zostanie administratorem. Tylko administratorzy witryny mogą zarządzać witryną.",
+    "message": "Identyfikator administratora witryny, domyślnie użytkownik, który pierwszy utworzył witrynę, zostanie administratorem, tylko administratorzy witryny mogą zarządzać witryną.",
     "description": "Podpowiedź dotycząca administratorów witryny"
   },
   "message.adminsTip2": {
-    "message": "Można tutaj dodawać i usuwać ID administratorów, można sprawdzić ID użytkownika na stronie https://auth.acedata.cloud",
+    "message": "Można tutaj dodawać lub usuwać identyfikatory administratorów, identyfikatory użytkowników można zobaczyć na stronie https://auth.acedata.cloud",
     "description": "Podpowiedź dotycząca administratorów witryny"
   },
   "message.keywordsTip": {
-    "message": "Słowa kluczowe witryny, znajdujące się w metadanych witryny, służą do optymalizacji SEO witryny.",
+    "message": "Słowa kluczowe witryny, znajdują się w metadanych witryny, służą do optymalizacji SEO witryny.",
     "description": "Podpowiedź dotycząca słów kluczowych witryny"
   },
   "message.keywordsTip2": {
-    "message": "Można tutaj dodawać i usuwać słowa kluczowe witryny, im bardziej precyzyjne, tym lepsza optymalizacja SEO.",
+    "message": "Można tutaj dodawać lub usuwać słowa kluczowe witryny, im bardziej precyzyjne, tym lepsza optymalizacja SEO.",
     "description": "Podpowiedź dotycząca słów kluczowych witryny"
   },
   "message.featuresChat": {

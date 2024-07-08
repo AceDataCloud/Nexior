@@ -205,7 +205,11 @@ export default defineComponent({
       return this.$store?.state?.site?.admins?.includes(this.$store.getters.user?.id);
     },
     showSupport() {
-      return this.$store?.state?.site?.features?.support?.enabled;
+      return (
+        this.$store?.state?.site?.features?.support?.enabled &&
+        (this.$store?.state?.site?.features?.support?.discord?.enabled ||
+          this.$store?.state?.site?.features?.support?.wechat?.enabled)
+      );
     },
     showDistribution() {
       return (

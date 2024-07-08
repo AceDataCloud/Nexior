@@ -135,6 +135,10 @@
     "message": "사이트 도메인을 입력하세요",
     "description": "편집 상자에 표시되는 제목"
   },
+  "placeholder.editUrl": {
+    "message": "링크를 입력하세요",
+    "description": "편집 상자에 표시되는 제목"
+  },
   "placeholder.description": {
     "message": "사이트 설명을 입력하세요",
     "description": "편집 상자에 표시되는 제목"
@@ -173,79 +177,79 @@
   },
   "message.editUrl": {
     "message": "링크를 입력하세요",
-    "description": "링크 입력 메시지"
+    "description": "링크를 입력하는 팁"
   },
   "message.atLeastOneAdmin": {
-    "message": "최소한 하나의 관리자를 유지하세요",
+    "message": "최소한 하나의 관리자를 유지해야 합니다",
     "description": "최소한 하나의 관리자를 유지해야 하는 메시지"
   },
   "message.distributionDefaultInviterIdTip": {
     "message": "기본 초대자의 사용자 ID, 분배 링크에 inviter_id 매개변수가 포함되지 않은 경우 기본적으로 이 사용자 ID가 초대자로 사용됩니다.",
-    "description": "기본 초대자 ID의 팁"
+    "description": "기본 초대자 ID에 대한 팁"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "강제 초대자의 사용자 ID, 이 ID가 설정된 경우 분배 링크가 inviter_id 매개변수를 포함하더라도 이 사용자 ID가 강제적으로 초대자로 사용됩니다.",
-    "description": "강제 초대자 ID의 팁"
+    "message": "강제 초대자의 사용자 ID, 이 ID가 설정된 경우 분배 링크에 inviter_id 매개변수가 포함되어 있든 없든 강제적으로 이 사용자 ID가 초대자로 사용됩니다.",
+    "description": "강제 초대자 ID에 대한 팁"
   },
   "message.originTip": {
     "message": "사이트 도메인, 사이트 구성과 도메인이 바인딩되며 사이트 도메인은 변경할 수 없습니다.",
-    "description": "사이트 도메인의 팁"
+    "description": "사이트 도메인에 대한 팁"
   },
   "message.titleTip": {
     "message": "사이트 제목, 브라우저 탭에 표시됩니다.",
-    "description": "사이트 제목의 팁"
+    "description": "사이트 제목에 대한 팁"
   },
   "message.descriptionTip": {
     "message": "사이트 설명, 사이트 메타 정보에 위치하며 사이트 SEO 최적화에 사용됩니다.",
-    "description": "사이트 설명의 팁"
+    "description": "사이트 설명에 대한 팁"
   },
   "message.logoTip": {
     "message": "사이트 로고, 메뉴가 펼쳐진 상태에서 사이트 메뉴 상단에 표시됩니다.",
-    "description": "사이트 로고의 팁"
+    "description": "사이트 로고에 대한 팁"
   },
   "message.faviconTip": {
     "message": "사이트 파비콘, 브라우저 탭에 표시됩니다.",
-    "description": "사이트 파비콘의 팁"
+    "description": "사이트 파비콘에 대한 팁"
   },
   "message.adminsTip": {
-    "message": "사이트 관리자 ID, 사이트를 처음 생성한 사용자가 자동으로 관리자가 되며 사이트 관리자만이 사이트를 관리할 수 있습니다.",
-    "description": "사이트 관리자의 팁"
+    "message": "사이트 관리자 ID, 사이트를 처음 생성한 사용자가 기본적으로 관리자가 되며 사이트 관리자만이 사이트를 관리할 수 있습니다.",
+    "description": "사이트 관리자에 대한 팁"
   },
   "message.adminsTip2": {
-    "message": "여기에서 관리자 ID를 추가하거나 삭제할 수 있으며 사용자 ID는 https://auth.acedata.cloud에서 확인할 수 있습니다.",
-    "description": "사이트 관리자의 팁"
+    "message": "여기에서 관리자 ID를 추가하거나 제거할 수 있으며 사용자 ID는 https://auth.acedata.cloud에서 확인할 수 있습니다.",
+    "description": "사이트 관리자에 대한 팁"
   },
   "message.keywordsTip": {
     "message": "사이트 키워드, 사이트 메타 정보에 위치하며 사이트 SEO 최적화에 사용됩니다.",
-    "description": "사이트 키워드의 팁"
+    "description": "사이트 키워드에 대한 팁"
   },
   "message.keywordsTip2": {
-    "message": "여기에서 웹 사이트 키워드를 추가하거나 삭제할 수 있으며 키워드가 정확할수록 SEO 최적화에 유리합니다.",
-    "description": "사이트 키워드의 팁"
+    "message": "여기에서 웹 사이트 키워드를 추가하거나 제거할 수 있으며 키워드가 더 정확할수록 SEO 최적화에 유리합니다.",
+    "description": "사이트 키워드에 대한 팁"
   },
   "message.featuresChat": {
     "message": "채팅 기능 모듈을 열거나 닫습니다.",
-    "description": "채팅 기능의 설명"
+    "description": "채팅 기능에 대한 설명"
   },
   "message.featuresMidjourney": {
     "message": "Midjourney 기능 모듈을 열거나 닫습니다.",
-    "description": "Midjourney 기능의 설명"
+    "description": "Midjourney 기능에 대한 설명"
   },
   "message.featuresChatdoc": {
     "message": "Chatdoc 기능 모듈을 열거나 닫습니다.",
-    "description": "Chatdoc 기능의 설명"
+    "description": "Chatdoc 기능에 대한 설명"
   },
   "message.featuresQrart": {
     "message": "Qrart 기능 모듈을 열거나 닫습니다.",
-    "description": "Qrart 기능의 설명"
+    "description": "Qrart 기능에 대한 설명"
   },
   "message.featuresSupport": {
     "message": "고객 지원 기능을 열거나 닫습니다.",
-    "description": "지원 기능의 설명"
+    "description": "지원 기능에 대한 설명"
   },
   "message.featuresI18n": {
     "message": "다국어 지원을 열거나 닫습니다. 닫은 경우 사용자는 기본 언어만 사용할 수 있습니다.",
-    "description": "다국어 지원의 설명"
+    "description": "다국어 지원에 대한 설명"
   },
   "button.upload": {
     "message": "업로드",
@@ -253,10 +257,10 @@
   },
   "button.enabled": {
     "message": "활성화됨",
-    "description": "활성화되었음을 나타내는 텍스트"
+    "description": "이미 활성화되었음을 나타내는 스위치 텍스트"
   },
   "button.disabled": {
     "message": "비활성화됨",
-    "description": "비활성화되었음을 나타내는 텍스트"
+    "description": "이미 비활성화되었음을 나타내는 스위치 텍스트"
   }
 }
