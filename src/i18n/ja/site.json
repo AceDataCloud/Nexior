@@ -135,6 +135,10 @@
     "message": "サイトのドメインを入力してください",
     "description": "編集ボックスに表示されるタイトル"
   },
+  "placeholder.editUrl": {
+    "message": "リンクを入力してください",
+    "description": "編集ボックスに表示されるタイトル"
+  },
   "placeholder.description": {
     "message": "サイトの説明を入力してください",
     "description": "編集ボックスに表示されるタイトル"
@@ -177,18 +181,18 @@
   },
   "message.atLeastOneAdmin": {
     "message": "少なくとも1人の管理者を残してください",
-    "description": "少なくとも1人の管理者を残す際のメッセージ"
+    "description": "少なくとも1人の管理者を残すよう促すメッセージ"
   },
   "message.distributionDefaultInviterIdTip": {
     "message": "デフォルトの招待者のユーザーID、ディストリビューションリンクにinviter_idパラメータが含まれていない場合、デフォルトでこのユーザーIDが招待者として使用されます。",
     "description": "デフォルトの招待者IDのヒント"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "強制的な招待者のユーザーID、このIDが設定されている場合、ディストリビューションリンクにinviter_idパラメータが含まれていても、強制的にこのユーザーIDが招待者として使用されます。",
+    "message": "強制的な招待者のユーザーID、このIDが設定されている場合、ディストリビューションリンクにinviter_idパラメータが含まれているかどうかに関係なく、このユーザーIDが招待者として強制的に使用されます。",
     "description": "強制的な招待者IDのヒント"
   },
   "message.originTip": {
-    "message": "サイトのドメイン名、サイト構成とドメインがバインドされ、サイトのドメイン名は変更できません。",
+    "message": "サイトのドメイン名、サイトの構成とドメインがバインドされ、サイトのドメイン名は変更できません。",
     "description": "サイトのドメイン名のヒント"
   },
   "message.titleTip": {
@@ -200,7 +204,7 @@
     "description": "サイトの説明のヒント"
   },
   "message.logoTip": {
-    "message": "サイトのロゴ、メニューバーが展開されている場合に、サイトメニューの上部に表示されます。",
+    "message": "サイトのロゴ、メニューバーが展開されたときに、サイトメニューの上部に表示されます。",
     "description": "サイトのロゴのヒント"
   },
   "message.faviconTip": {
@@ -253,10 +257,10 @@
   },
   "button.enabled": {
     "message": "有効",
-    "description": "有効になっていることを示すスイッチのテキスト"
+    "description": "スイッチのテキスト、すでに有効であることを示します"
   },
   "button.disabled": {
     "message": "無効",
-    "description": "無効になっていることを示すスイッチのテキスト"
+    "description": "スイッチのテキスト、すでに無効であることを示します"
   }
 }

@@ -135,6 +135,10 @@
     "message": "Ange sidans domän",
     "description": "Visas i redigeringsrutan som titel"
   },
+  "placeholder.editUrl": {
+    "message": "Ange länk",
+    "description": "Visas i redigeringsrutan som titel"
+  },
   "placeholder.description": {
     "message": "Ange sidans beskrivning",
     "description": "Visas i redigeringsrutan som titel"
@@ -152,12 +156,12 @@
     "description": "Visas i redigeringsrutan som titel"
   },
   "message.uploadImageExceed": {
-    "message": "Överstiger begränsningen för uppladdning av bilder",
-    "description": "Meddelande om att uppladdning av bilder överskrider begränsningen"
+    "message": "Överstiger begränsningen för bilduppladdning",
+    "description": "Meddelande om att bilduppladdningen överskrider begränsningen"
   },
   "message.uploadImageError": {
-    "message": "Fel vid uppladdning av bild",
-    "description": "Meddelande om fel vid uppladdning av bild"
+    "message": "Fel vid bilduppladdning",
+    "description": "Meddelande om fel vid bilduppladdning"
   },
   "message.editLogoTip": {
     "message": "Rekommenderad storlek: 200*60px",
@@ -180,52 +184,52 @@
     "description": "Meddelande om att minst en administratör måste behållas"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "Standardinvitörens användar-ID. Om distributionslänken inte innehåller parametern inviter_id, används standardmässigt detta användar-ID som inbjudare.",
-    "description": "Tips om standardinvitörens ID"
+    "message": "Standardinvitörens användar-ID, om distributionslänken inte innehåller parametern inviter_id, används standardmässigt detta användar-ID som inbjudare.",
+    "description": "Tips för standardinbjudarens ID"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "Tvinga inbjudarens användar-ID. Om detta ID är inställt, används det som inbjudare oavsett om distributionslänken innehåller parametern inviter_id eller inte.",
-    "description": "Tips om tvingande inbjudarens ID"
+    "message": "Tvinga inbjudarens användar-ID, om detta ID är inställt, oavsett om distributionslänken innehåller parametern inviter_id eller inte, tvingas detta användar-ID att användas som inbjudare.",
+    "description": "Tips för tvingande inbjudarens ID"
   },
   "message.originTip": {
-    "message": "Webbplatsens domännamn. Webbplatskonfigurationen är bunden till domännamnet och kan inte ändras.",
-    "description": "Tips om webbplatsens domännamn"
+    "message": "Webbplatsens domän, webbplatskonfigurationen är bunden till domänen, och webbplatsens domän kan inte ändras.",
+    "description": "Tips för webbplatsens domän"
   },
   "message.titleTip": {
-    "message": "Webbplatsens titel som visas i webbläsarens flik.",
-    "description": "Tips om webbplatsens titel"
+    "message": "Webbplatsens titel, visas i webbläsarens flik.",
+    "description": "Tips för webbplatsens titel"
   },
   "message.descriptionTip": {
-    "message": "Webbplatsens beskrivning som ingår i webbplatsens metadata och används för SEO-optimering av webbplatsen.",
-    "description": "Tips om webbplatsens beskrivning"
+    "message": "Webbplatsens beskrivning, finns i webbplatsens metainformation, används för webbplatsens SEO-optimering.",
+    "description": "Tips för webbplatsens beskrivning"
   },
   "message.logoTip": {
-    "message": "Webbplatsens logotyp som visas högst upp i webbplatsens meny när menyn är utfälld.",
-    "description": "Tips om webbplatsens logotyp"
+    "message": "Webbplatsens logotyp, visas när menyn är utökad, visas högst upp i webbplatsens meny.",
+    "description": "Tips för webbplatsens logotyp"
   },
   "message.faviconTip": {
-    "message": "Webbplatsens favicon som visas i webbläsarens flik.",
-    "description": "Tips om webbplatsens favicon"
+    "message": "Webbplatsens favicon, visas i webbläsarens flik.",
+    "description": "Tips för webbplatsens favicon"
   },
   "message.adminsTip": {
-    "message": "Webbplatsens administratörs-ID. Den användare som skapar webbplatsen för första gången blir standardmässigt administratör, och endast administratören kan hantera webbplatsen.",
-    "description": "Tips om webbplatsens administratörer"
+    "message": "Webbplatsens administratörs-ID, den användare som skapar webbplatsen för första gången blir standardmässigt administratör, endast webbplatsens administratörer kan hantera webbplatsen.",
+    "description": "Tips för webbplatsens administratörer"
   },
   "message.adminsTip2": {
-    "message": "Här kan du lägga till eller ta bort administratörs-ID. Du kan se användar-ID på https://auth.acedata.cloud",
-    "description": "Tips om webbplatsens administratörer"
+    "message": "Här kan du lägga till eller ta bort administratörs-ID, du kan se användar-ID på https://auth.acedata.cloud",
+    "description": "Tips för webbplatsens administratörer"
   },
   "message.keywordsTip": {
-    "message": "Webbplatsens nyckelord som ingår i webbplatsens metadata och används för SEO-optimering av webbplatsen.",
-    "description": "Tips om webbplatsens nyckelord"
+    "message": "Webbplatsens nyckelord, finns i webbplatsens metainformation, används för webbplatsens SEO-optimering.",
+    "description": "Tips för webbplatsens nyckelord"
   },
   "message.keywordsTip2": {
-    "message": "Här kan du lägga till eller ta bort webbplatsens nyckelord. Ju mer exakta nyckelorden är, desto bättre för SEO-optimering.",
-    "description": "Tips om webbplatsens nyckelord"
+    "message": "Här kan du lägga till eller ta bort webbplatsens nyckelord, ju mer exakta nyckelorden är, desto bättre för SEO-optimering.",
+    "description": "Tips för webbplatsens nyckelord"
   },
   "message.featuresChat": {
-    "message": "Aktivera eller inaktivera chattfunktionen.",
-    "description": "Beskrivning av chattfunktionen"
+    "message": "Aktivera eller inaktivera Chat-funktionen.",
+    "description": "Beskrivning av Chat-funktionen"
   },
   "message.featuresMidjourney": {
     "message": "Aktivera eller inaktivera Midjourney-funktionen.",
@@ -240,11 +244,11 @@
     "description": "Beskrivning av Qrart-funktionen"
   },
   "message.featuresSupport": {
-    "message": "Aktivera eller inaktivera supportfunktionen.",
-    "description": "Beskrivning av supportfunktionen"
+    "message": "Aktivera eller inaktivera kundsupport",
+    "description": "Beskrivning av Support-funktionen"
   },
   "message.featuresI18n": {
-    "message": "Aktivera eller inaktivera flerspråkigt stöd. När det är inaktiverat kan användarna endast använda standardspråket.",
+    "message": "Aktivera eller inaktivera flerspråkigt stöd, om det är inaktiverat kan användarna endast använda standardspråket.",
     "description": "Beskrivning av flerspråkigt stöd"
   },
   "button.upload": {
@@ -253,10 +257,10 @@
   },
   "button.enabled": {
     "message": "Aktiverad",
-    "description": "Text för växelknapp som indikerar att det redan är aktiverat"
+    "description": "Text för växel, indikerar att det redan är aktiverat"
   },
   "button.disabled": {
     "message": "Inaktiverad",
-    "description": "Text för växelknapp som indikerar att det redan är inaktiverat"
+    "description": "Text för växel, indikerar att det redan är inaktiverat"
   }
 }
