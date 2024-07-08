@@ -179,10 +179,10 @@ export default defineComponent({
   data(): IData {
     return {
       PayWay: PayWay,
-      payWay: PayWay.Stripe,
+      payWay: PayWay.WechatPay,
       OrderState: OrderState,
       order: undefined,
-      showPayWays: false,
+      showPayWays: true,
       loading: false,
       paying: false,
       prepaying: false,
