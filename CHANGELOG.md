@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sun, 07 Jul 2024 15:40:07 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Jul 2024 04:03:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.11.0
+
+Mon, 08 Jul 2024 04:03:05 GMT
+
+### Minor changes
+
+- add wechatpay (office@acedata.cloud)
 
 ## 1.10.5
 
