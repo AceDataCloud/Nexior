@@ -80,8 +80,8 @@ export default defineComponent({
     showSupport() {
       return (
         this.$store?.state?.site?.features?.support?.enabled &&
-        (!!this.$store?.state?.site?.features?.support?.discord?.url ||
-          !!this.$store?.state?.site?.features?.support?.wechat?.qr)
+        (this.$store?.state?.site?.features?.support?.discord?.enabled ||
+          this.$store?.state?.site?.features?.support?.wechat?.enabled)
       );
     },
     showSite() {
