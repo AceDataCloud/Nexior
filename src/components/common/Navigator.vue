@@ -25,7 +25,7 @@
     </div>
     <div class="middle" />
     <div class="bottom">
-      <div class="link">
+      <div v-if="showSupport" class="link">
         <help-entry>
           <template #main>
             <el-button class="button">
@@ -203,6 +203,9 @@ export default defineComponent({
     },
     showSite() {
       return this.$store?.state?.site?.admins?.includes(this.$store.getters.user?.id);
+    },
+    showSupport() {
+      return this.$store?.state?.site?.features?.support?.enabled;
     },
     showDistribution() {
       return (
