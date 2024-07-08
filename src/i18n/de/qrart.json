@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "Typ",
-    "description": "Inhaltstyp des zu generierenden QR-Codes, z.B. 'Link', 'Text' usw."
+    "description": "Art des Inhalts, für den der QR-Code generiert werden soll, z.B. 'Link', 'Text' usw."
   },
   "name.failure": {
     "message": "Fehlgeschlagen",
@@ -29,7 +29,7 @@
   },
   "name.createdAt": {
     "message": "Erstellungsdatum",
-    "description": "Datum und Uhrzeit der Erstellung des QR-Codes"
+    "description": "Datum und Uhrzeit der Generierung des QR-Codes"
   },
   "name.pixelStyle": {
     "message": "Pixelstil",
@@ -101,7 +101,7 @@
   },
   "name.contentImageUrl": {
     "message": "Inhaltsbild-URL",
-    "description": "URL des Bildinhalts des zu generierenden QR-Codes"
+    "description": "URL des Bildinhalts für den zu generierenden QR-Code"
   },
   "inputWay.input": {
     "message": "Eingabeinhalt",
@@ -136,7 +136,7 @@
     "description": "Platzhaltertext im Hinweisfeld"
   },
   "placeholder.seed": {
-    "message": "Seed-Wertbereich von 1 bis 9007199254740991",
+    "message": "Seed-Bereich von 1 bis 9007199254740991",
     "description": "Platzhalter für das Seed-Eingabefeld"
   },
   "placeholder.position": {
@@ -145,7 +145,7 @@
   },
   "placeholder.content": {
     "message": "Geben Sie den Inhalt für den zu generierenden QR-Code ein, z.B.: https://www.google.com",
-    "description": "Platzhaltertext im Inhaltfeld"
+    "description": "Platzhaltertext im Inhaltsfeld"
   },
   "placeholder.aspectRatio": {
     "message": "Bitte auswählen...",
@@ -268,7 +268,7 @@
     "description": "要生成的 QR 码的预设风格"
   },
   "preset.sereneHaze": {
-    "message": "Heitere Dunst",
+    "message": "Ruhiger Dunst",
     "description": "要生成的 QR 码的预设风格"
   },
   "message.uploadQr": {
@@ -284,11 +284,11 @@
     "description": "上传的图片数量超过限制时的错误消息"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Bilder erfolgreich hochgeladen",
+    "message": "Bild erfolgreich hochgeladen",
     "description": "成功上传图片时的成功消息"
   },
   "message.uploadReferencesError": {
-    "message": "Fehler beim Hochladen der Bilder. Bitte versuchen Sie es später erneut",
+    "message": "Bildhochladung fehlgeschlagen, bitte versuchen Sie es später erneut",
     "description": "图片上传失败时的错误消息"
   },
   "message.startingTask": {
@@ -296,12 +296,16 @@
     "description": "绘图任务开始时的消息"
   },
   "message.startTaskSuccess": {
-    "message": "Aufgabe erfolgreich gestartet",
-    "description": "成功启动绘图任务时的成功消息"
+    "message": "Aufgabe zur Generierung erfolgreich gestartet",
+    "description": "成功启动任务时的成功消息"
   },
   "message.startTaskFailed": {
-    "message": "Starten der Aufgabe fehlgeschlagen",
+    "message": "Starten der Aufgabe fehlgeschlagen, bitte kontaktieren Sie den Administrator",
     "description": "启动绘图任务失败时的错误消息"
+  },
+  "message.usedUp": {
+    "message": "Ihre Punkte sind aufgebraucht, bitte kaufen Sie mehr Punkte, um fortzufahren",
+    "description": "已用完时的消息"
   },
   "message.generating": {
     "message": "Generiere...",
@@ -316,7 +320,7 @@
     "description": "没有可用操作时的消息"
   },
   "message.noTasks": {
-    "message": "Keine vergangenen Aufgaben. Klicken Sie unten, um einen neuen QR-Code zu generieren",
+    "message": "Keine vergangenen Aufgaben, klicken Sie unten, um einen neuen QR-Code zu generieren",
     "description": "没有任务时的消息"
   },
   "markerShape.square": {
@@ -389,62 +393,62 @@
   },
   "position.top": {
     "message": "Oben",
-    "description": "Verwendet für die Positionierung des QR-Codes"
+    "description": "用于生成QR码的位置"
   },
   "position.bottom": {
     "message": "Unten",
-    "description": "Verwendet für die Positionierung des QR-Codes"
+    "description": "用于生成QR码的位置"
   },
   "position.left": {
     "message": "Links",
-    "description": "Verwendet für die Positionierung des QR-Codes"
+    "description": "用于生成QR码的位置"
   },
   "position.right": {
     "message": "Rechts",
-    "description": "Verwendet für die Positionierung des QR-Codes"
+    "description": "用于生成QR码的位置"
   },
   "pixelStyle.row": {
-    "message": "Reihe",
-    "description": "Verwendet für den Pixelstil des QR-Codes"
+    "message": "Zeile",
+    "description": "用于生成QR码的像素风格"
   },
   "pixelStyle.column": {
     "message": "Spalte",
-    "description": "Verwendet für den Pixelstil des QR-Codes"
+    "description": "用于生成QR码的像素风格"
   },
   "pixelStyle.square": {
     "message": "Quadrat",
-    "description": "Verwendet für den Pixelstil des QR-Codes"
+    "description": "用于生成QR码的像素风格"
   },
   "pixelStyle.rounded": {
     "message": "Abgerundet",
-    "description": "Verwendet für den Pixelstil des QR-Codes"
+    "description": "用于生成QR码的像素风格"
   },
   "pixelStyle.dot": {
     "message": "Punkt",
-    "description": "Verwendet für den Pixelstil des QR-Codes"
+    "description": "用于生成QR码的像素风格"
   },
   "pixelStyle.squircle": {
     "message": "Rundes Rechteck",
-    "description": "Verwendet für den Pixelstil des QR-Codes"
+    "description": "用于生成QR码的像素风格"
   },
   "type.text": {
     "message": "Text",
-    "description": "Verwendet für den Inhaltstyp des QR-Codes"
+    "description": "用于生成QR码的内容类型"
   },
   "type.link": {
     "message": "Link",
-    "description": "Verwendet für den Inhaltstyp des QR-Codes"
+    "description": "用于生成QR码的内容类型"
   },
   "type.email": {
     "message": "E-Mail",
-    "description": "Verwendet für den Inhaltstyp des QR-Codes"
+    "description": "用于生成QR码的内容类型"
   },
   "type.phone": {
     "message": "Telefon",
-    "description": "Verwendet für den Inhaltstyp des QR-Codes"
+    "description": "用于生成QR码的内容类型"
   },
   "type.sms": {
     "message": "SMS",
-    "description": "Verwendet für den Inhaltstyp des QR-Codes"
+    "description": "用于生成QR码的内容类型"
   }
 }

@@ -112,11 +112,11 @@
     "description": "입력 방식"
   },
   "description.qrw": {
-    "message": "QR 코드 가시성, 크기가 클수록 QR 코드 가시성이 높아집니다",
+    "message": "QR 코드 가시성, 크기가 클수록 QR 코드의 가시성이 높아집니다",
     "description": "'qrw' 매개변수 설명"
   },
   "description.steps": {
-    "message": "QR 코드 생성의 단계 수, 단계 수가 많을수록 QR 코드 가시성이 높아집니다",
+    "message": "QR 코드 생성의 단계 수, 단계 수가 많을수록 QR 코드의 가시성이 높아집니다",
     "description": "'steps' 매개변수 설명"
   },
   "status.pending": {
@@ -224,7 +224,7 @@
     "description": "QR 코드에 생성할 프리셋 스타일"
   },
   "preset.etherealLowPoly": {
-    "message": "에테르 실 로우 폴리",
+    "message": "에테르의 로우 폴리",
     "description": "QR 코드에 생성할 프리셋 스타일"
   },
   "preset.goldenVista": {
@@ -232,11 +232,11 @@
     "description": "QR 코드에 생성할 프리셋 스타일"
   },
   "preset.cinematicExpanse": {
-    "message": "시네마틱 확장",
+    "message": "시네마틱한 광활함",
     "description": "QR 코드에 생성할 프리셋 스타일"
   },
   "preset.cinematicWarm": {
-    "message": "시네마틱 따뜻함",
+    "message": "시네마틱한 따뜻함",
     "description": "QR 코드에 생성할 프리셋 스타일"
   },
   "preset.desolateWilderness": {
@@ -248,7 +248,7 @@
     "description": "QR 코드에 생성할 프리셋 스타일"
   },
   "preset.enigmaticJourney": {
-    "message": "수수께끼의 여행",
+    "message": "불가사의한 여행",
     "description": "QR 코드에 생성할 프리셋 스타일"
   },
   "preset.timelessCinematic": {
@@ -272,11 +272,11 @@
     "description": "QR 코드에 생성할 프리셋 스타일"
   },
   "message.uploadQr": {
-    "message": "업로드할 QR 코드 이미지를 선택하여 QR 코드 내용과 일치하는 예술 QR 코드를 생성할 수 있습니다",
+    "message": "업로드한 QR 코드 이미지로 일치하는 예술적인 QR 코드를 생성할 수 있습니다",
     "description": "QR 코드 업로드 설명"
   },
   "message.promptPlaceholder": {
-    "message": "생성할 이미지에 대한 설명을 입력하십시오. 예: 귀여운 고양이. 추가 매개변수는 기본 프리셋 매개변수를 덮어씁니다",
+    "message": "생성할 이미지에 대한 설명을 입력하세요. 예: 귀여운 고양이. 추가 매개변수는 기본 프리셋 매개변수를 덮어씁니다",
     "description": "프롬프트 필드의 자리 표시자 텍스트"
   },
   "message.uploadReferencesExceed": {
@@ -285,23 +285,27 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "이미지 업로드 성공",
-    "description": "이미지 업로드에 성공했을 때의 성공 메시지"
+    "description": "이미지 업로드 성공 시의 성공 메시지"
   },
   "message.uploadReferencesError": {
-    "message": "이미지 업로드 실패. 나중에 다시 시도하십시오",
-    "description": "이미지 업로드에 실패했을 때의 오류 메시지"
+    "message": "이미지 업로드 실패. 나중에 다시 시도하세요",
+    "description": "이미지 업로드 실패 시의 오류 메시지"
   },
   "message.startingTask": {
     "message": "작업 시작 중...",
     "description": "그림 작업이 시작될 때의 메시지"
   },
   "message.startTaskSuccess": {
-    "message": "작업 시작 성공",
-    "description": "그림 작업이 성공적으로 시작됐을 때의 성공 메시지"
+    "message": "생성 작업 성공적으로 시작됨",
+    "description": "작업 시작 성공 시의 성공 메시지"
   },
   "message.startTaskFailed": {
-    "message": "그림 작업 시작 실패",
-    "description": "그림 작업이 시작에 실패했을 때의 오류 메시지"
+    "message": "작업 시작 실패. 관리자에게 문의하세요",
+    "description": "그림 작업 시작 실패 시의 오류 메시지"
+  },
+  "message.usedUp": {
+    "message": "포인트가 모두 소진되었습니다. 추가 포인트를 구매하여 계속 사용하세요",
+    "description": "소진됐을 때의 메시지"
   },
   "message.generating": {
     "message": "생성 중...",
@@ -309,7 +313,7 @@
   },
   "message.generateFailed": {
     "message": "이미지 생성 실패",
-    "description": "이미지 생성에 실패했을 때의 메시지"
+    "description": "이미지 생성 실패 시의 메시지"
   },
   "message.noOperations": {
     "message": "사용 가능한 작업이 없습니다",
@@ -380,71 +384,71 @@
     "description": "QR 코드 생성에 사용되는 위치"
   },
   "position.bottomLeft": {
-    "message": "왼쪽 하단",
-    "description": "QR 코드 생성에 사용되는 위치"
+    "message": "왼쪽 아래",
+    "description": "용도: QR 코드 생성 위치"
   },
   "position.bottomRight": {
-    "message": "오른쪽 하단",
-    "description": "QR 코드 생성에 사용되는 위치"
+    "message": "오른쪽 아래",
+    "description": "용도: QR 코드 생성 위치"
   },
   "position.top": {
     "message": "상단",
-    "description": "QR 코드 생성을 위한 위치"
+    "description": "용도: QR 코드 생성 위치"
   },
   "position.bottom": {
     "message": "하단",
-    "description": "QR 코드 생성을 위한 위치"
+    "description": "용도: QR 코드 생성 위치"
   },
   "position.left": {
     "message": "왼쪽",
-    "description": "QR 코드 생성을 위한 위치"
+    "description": "용도: QR 코드 생성 위치"
   },
   "position.right": {
     "message": "오른쪽",
-    "description": "QR 코드 생성을 위한 위치"
+    "description": "용도: QR 코드 생성 위치"
   },
   "pixelStyle.row": {
     "message": "행",
-    "description": "QR 코드 생성을 위한 픽셀 스타일"
+    "description": "용도: QR 코드 생성 픽셀 스타일"
   },
   "pixelStyle.column": {
     "message": "열",
-    "description": "QR 코드 생성을 위한 픽셀 스타일"
+    "description": "용도: QR 코드 생성 픽셀 스타일"
   },
   "pixelStyle.square": {
     "message": "사각형",
-    "description": "QR 코드 생성을 위한 픽셀 스타일"
+    "description": "용도: QR 코드 생성 픽셀 스타일"
   },
   "pixelStyle.rounded": {
     "message": "둥근 모서리",
-    "description": "QR 코드 생성을 위한 픽셀 스타일"
+    "description": "용도: QR 코드 생성 픽셀 스타일"
   },
   "pixelStyle.dot": {
     "message": "점",
-    "description": "QR 코드 생성을 위한 픽셀 스타일"
+    "description": "용도: QR 코드 생성 픽셀 스타일"
   },
   "pixelStyle.squircle": {
-    "message": "둥근 직사각형",
-    "description": "QR 코드 생성을 위한 픽셀 스타일"
+    "message": "둥근 사각형",
+    "description": "용도: QR 코드 생성 픽셀 스타일"
   },
   "type.text": {
     "message": "텍스트",
-    "description": "QR 코드 생성을 위한 콘텐츠 유형"
+    "description": "용도: QR 코드 생성 콘텐츠 유형"
   },
   "type.link": {
     "message": "링크",
-    "description": "QR 코드 생성을 위한 콘텐츠 유형"
+    "description": "용도: QR 코드 생성 콘텐츠 유형"
   },
   "type.email": {
     "message": "이메일",
-    "description": "QR 코드 생성을 위한 콘텐츠 유형"
+    "description": "용도: QR 코드 생성 콘텐츠 유형"
   },
   "type.phone": {
     "message": "전화",
-    "description": "QR 코드 생성을 위한 콘텐츠 유형"
+    "description": "용도: QR 코드 생성 콘텐츠 유형"
   },
   "type.sms": {
     "message": "문자 메시지",
-    "description": "QR 코드 생성을 위한 콘텐츠 유형"
+    "description": "용도: QR 코드 생성 콘텐츠 유형"
   }
 }

@@ -37,8 +37,8 @@
                         (package?.price / package?.amount).toFixed(4) +
                         ' / ' +
                         $t(`service.unit.${application?.service?.unit}`)
-                      }})</span
-                    >
+                      }})
+                    </span>
                   </el-form-item>
                   <el-divider border-style="dashed" />
                   <el-form-item :label="$t('application.field.shouldPayPrice')">

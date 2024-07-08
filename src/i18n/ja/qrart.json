@@ -212,7 +212,7 @@
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.luminousHighway": {
-    "message": "発光ハイウェイ",
+    "message": "発光する道",
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.celestialJourney": {
@@ -224,19 +224,19 @@
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.etherealLowPoly": {
-    "message": "エーテルローポリ",
+    "message": "エーテル低ポリ",
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.goldenVista": {
-    "message": "ゴールデンビスタ",
+    "message": "黄金の景色",
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.cinematicExpanse": {
-    "message": "シネマティックな広がり",
+    "message": "映画のような広がり",
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.cinematicWarm": {
-    "message": "シネマティックな暖かさ",
+    "message": "映画のような暖かさ",
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.desolateWilderness": {
@@ -244,7 +244,7 @@
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.vibrantPalette": {
-    "message": "活気あるパレット",
+    "message": "活気に満ちたパレット",
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.enigmaticJourney": {
@@ -252,7 +252,7 @@
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.timelessCinematic": {
-    "message": "永遠のシネマ",
+    "message": "永遠の映画",
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.regalGalaxy": {
@@ -281,7 +281,7 @@
   },
   "message.uploadReferencesExceed": {
     "message": "最大5枚の画像をアップロードできます",
-    "description": "アップロードした画像の数が制限を超えた場合のエラーメッセージ"
+    "description": "制限を超えて画像をアップロードした場合のエラーメッセージ"
   },
   "message.uploadReferencesSuccess": {
     "message": "画像のアップロードに成功しました",
@@ -296,12 +296,16 @@
     "description": "描画タスクが開始されたときのメッセージ"
   },
   "message.startTaskSuccess": {
-    "message": "描画タスクの開始に成功しました",
-    "description": "描画タスクが開始されたときの成功メッセージ"
+    "message": "生成タスクを正常に開始しました",
+    "description": "タスクの開始に成功した場合の成功メッセージ"
   },
   "message.startTaskFailed": {
-    "message": "描画タスクの開始に失敗しました",
-    "description": "描画タスクが開始されたときのエラーメッセージ"
+    "message": "タスクの開始に失敗しました。管理者に連絡してください",
+    "description": "描画タスクの開始に失敗した場合のエラーメッセージ"
+  },
+  "message.usedUp": {
+    "message": "ポイントが使い切れました。続けるにはもっとポイントを購入してください",
+    "description": "使い切った場合のメッセージ"
   },
   "message.generating": {
     "message": "生成中...",
@@ -309,15 +313,15 @@
   },
   "message.generateFailed": {
     "message": "画像の生成に失敗しました",
-    "description": "画像の生成に失敗したときのメッセージ"
+    "description": "画像の生成に失敗した場合のメッセージ"
   },
   "message.noOperations": {
     "message": "利用可能な操作はありません",
-    "description": "利用可能な操作がないときのメッセージ"
+    "description": "利用可能な操作がない場合のメッセージ"
   },
   "message.noTasks": {
     "message": "履歴タスクはありません。下のQRコードを生成をクリックしてください",
-    "description": "タスクがないときのメッセージ"
+    "description": "タスクがない場合のメッセージ"
   },
   "markerShape.square": {
     "message": "正方形",
@@ -381,70 +385,70 @@
   },
   "position.bottomLeft": {
     "message": "左下",
-    "description": "QRコードの位置"
+    "description": "用于生成QR码的位置"
   },
   "position.bottomRight": {
     "message": "右下",
-    "description": "QRコードの位置"
+    "description": "用于生成QR码的位置"
   },
   "position.top": {
-    "message": "上",
+    "message": "上部",
     "description": "用于生成QR码的位置"
   },
   "position.bottom": {
-    "message": "下",
+    "message": "底部",
     "description": "用于生成QR码的位置"
   },
   "position.left": {
-    "message": "左",
+    "message": "左側",
     "description": "用于生成QR码的位置"
   },
   "position.right": {
-    "message": "右",
+    "message": "右側",
     "description": "用于生成QR码的位置"
   },
   "pixelStyle.row": {
     "message": "行",
-    "description": "用于生成QR码的像素风格"
+    "description": "用于生成QR码的像素風格"
   },
   "pixelStyle.column": {
     "message": "列",
-    "description": "用于生成QR码的像素风格"
+    "description": "用于生成QR码的像素風格"
   },
   "pixelStyle.square": {
     "message": "正方形",
-    "description": "用于生成QR码的像素风格"
+    "description": "用于生成QR码的像素風格"
   },
   "pixelStyle.rounded": {
     "message": "丸い",
-    "description": "用于生成QR码的像素风格"
+    "description": "用于生成QR码的像素風格"
   },
   "pixelStyle.dot": {
     "message": "ドット",
-    "description": "用于生成QR码的像素风格"
+    "description": "用于生成QR码的像素風格"
   },
   "pixelStyle.squircle": {
-    "message": "スクエア",
-    "description": "用于生成QR码的像素风格"
+    "message": "スクエアサークル",
+    "description": "用于生成QR码的像素風格"
   },
   "type.text": {
     "message": "テキスト",
-    "description": "用于生成QR码的内容类型"
+    "description": "用于生成QR码的内容タイプ"
   },
   "type.link": {
     "message": "リンク",
-    "description": "用于生成QR码的内容类型"
+    "description": "用于生成QR码的内容タイプ"
   },
   "type.email": {
     "message": "Eメール",
-    "description": "用于生成QR码的内容类型"
+    "description": "用于生成QR码的内容タイプ"
   },
   "type.phone": {
     "message": "電話",
-    "description": "用于生成QR码的内容类型"
+    "description": "用于生成QR码的内容タイプ"
   },
   "type.sms": {
     "message": "SMS",
-    "description": "用于生成QR码的内容类型"
+    "description": "用于生成QR码的内容タイプ"
   }
 }

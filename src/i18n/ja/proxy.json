@@ -1,7 +1,7 @@
 {
   "entity.requestQueries": {
     "message": "URLパラメータ",
-    "description": "これらはURLに渡されるパラメータです。 '?'で区切られ、'&'で区切られます。"
+    "description": "これらはURLに渡されるパラメータです。'?'で区切られ、'&'で区切られます。"
   },
   "entity.requestBody": {
     "message": "リクエストボディ",
@@ -9,71 +9,71 @@
   },
   "entity.responseBody": {
     "message": "レスポンスボディ",
-    "description": "これはレスポンスの本体です。通常、JSON形式で提供されます。"
+    "description": "これはレスポンスの本体です。通常、JSON形式で表示されます。"
   },
   "entity.requestHeaders": {
     "message": "リクエストヘッダ",
-    "description": "これらはリクエストに含まれるヘッダです。通常、認証に使用されます。"
+    "description": "これらはリクエストで渡されるヘッダです。通常、認証に使用されます。"
   },
   "entity.requestHeader": {
     "message": "リクエストヘッダ",
-    "description": "これはリクエストに含まれるヘッダです。通常、認証に使用されます。"
+    "description": "これはリクエストで渡されるヘッダです。通常、認証に使用されます。"
   },
   "entity.requestQuery": {
     "message": "URLパラメータ",
-    "description": "これはURLに渡されるパラメータです。 '?'で区切られ、'&'で区切られます。"
+    "description": "これはURLに渡されるパラメータです。'?'で区切られ、'&'で区切られます。"
   },
   "entity.responseHeaders": {
     "message": "レスポンスヘッダ",
-    "description": "これらはレスポンスに含まれるヘッダです。通常、認証に使用されます。"
+    "description": "これらはレスポンスで渡されるヘッダです。通常、認証に使用されます。"
   },
   "entity.response": {
     "message": "レスポンス",
-    "description": "サーバーから返されるレスポンスです。"
+    "description": "これはサーバーから返されるレスポンスです。"
   },
   "entity.success": {
     "message": "成功",
-    "description": "リクエストが成功した場合に返されるレスポンスです。"
+    "description": "これはリクエストが成功した場合に返されるレスポンスです。"
   },
   "entity.failure": {
     "message": "失敗",
-    "description": "リクエストが失敗した場合に返されるレスポンスです。"
+    "description": "これはリクエストが失敗した場合に返されるレスポンスです。"
   },
   "entity.responseExample": {
     "message": "例",
-    "description": "サーバーから返されるレスポンスの例です。"
+    "description": "これはサーバーから返されるレスポンスの例です。"
   },
   "entity.authentication": {
     "message": "認証",
-    "description": "リクエストを開始するために必要な認証です。"
+    "description": "これはリクエストを発行するために必要な認証です。"
   },
   "message.free": {
     "message": "無料",
-    "description": "APIサービスを使用する際に、ポイントや金銭を支払う必要がないことを示します。"
+    "description": "APIサービスを使用する際にポイントやお金を支払う必要がないことを示します"
   },
   "message.appliedCount": {
-    "message": "利用回数",
-    "description": "APIサービスを利用した回数です。"
+    "message": "適用回数",
+    "description": "APIサービスを適用した回数"
   },
   "message.firstFree": {
     "message": "初回無料",
-    "description": "APIサービスを初めて利用する際に、ポイントや金銭を支払う必要がないことを示します。"
+    "description": "APIサービスを初めて使用する際にポイントやお金を支払う必要がないことを示します"
   },
   "message.custom": {
     "message": "カスタム",
-    "description": "指定された価格で、APIサービスを利用する際に指定されたポイントや金銭を支払う必要があります。"
+    "description": "価格が指定されており、APIサービスを使用する際に指定されたポイントやお金を支払う必要があることを示します"
   },
   "message.present": {
     "message": "プレゼント",
-    "description": "APIサービスを初めて利用する際にポイントがプレゼントされます。"
+    "description": "初めてAPIサービスを使用する際に、ポイントがプレゼントされることを示します"
   },
   "message.around": {
-    "message": "およそ",
-    "description": "価格はおよそです。実際の価格は異なる場合があります。"
+    "message": "約",
+    "description": "価格はおおよそであり、実際の価格は異なる可能性があります"
   },
   "message.successRate15min": {
     "message": "15分間の成功率",
-    "description": "直近15分間のAPIサービスの成功率"
+    "description": "過去15分間のAPIサービスのリアルタイム成功率"
   },
   "message.ySuccessRate": {
     "message": "成功率（100%）",
@@ -81,34 +81,34 @@
   },
   "message.xMinutes": {
     "message": "時間（分）",
-    "description": "時間単位は分です。"
+    "description": "時間を分単位で表します"
   },
   "message.streamUsage": {
-    "message": "温馨提示：对于流式请求，上述代码可能不完全适用。请参考对接文档进行修改。",
-    "description": "流式リクエストに対して、上記のコードは完全に適用されない場合があります。接続文書を参照して修正してください。"
+    "message": "注意：ストリームリクエストの場合、上記のコードは完全に適用されない場合があります。統合ドキュメントを参照して変更してください。",
+    "description": "ストリームリクエストの場合、上記のコードは完全に適用されない場合があります。統合ドキュメントを参照して変更してください。"
   },
   "message.alphaStage": {
-    "message": "このAPIはアルファ段階です。これは早期プレビューバージョンであり、潜在的な不安定性があり、API形式が大きく変更される可能性があります。本番環境での使用は推奨されず、現在の価格は比較的低いですが、将来的に価格が大幅に変更される可能性があります。",
-    "description": "このAPIはアルファ段階です。これは早期プレビューバージョンであり、潜在的な不安定性があり、API形式が大きく変更される可能性があります。本番環境での使用は推奨されず、現在の価格は比較的低いですが、将来的に価格が大幅に変更される可能性があります。"
+    "message": "このAPIはアルファ段階です。これは初期プレビューバージョンであり、潜在的な不安定性があり、APIフォーマットが大幅に変更される可能性があります。本番環境での使用は推奨されません。現在の価格は比較的低く、将来的には価格が大幅に変更される可能性があります。",
+    "description": "このAPIはアルファ段階です。これは初期プレビューバージョンであり、潜在的な不安定性があり、APIフォーマットが大幅に変更される可能性があります。本番環境での使用は推奨されません。現在の価格は比較的低く、将来的には価格が大幅に変更される可能性があります。"
   },
   "message.betaStage": {
-    "message": "このAPIはベータ段階です。API形式は大幅に変更されることはありませんが、潜在的な不安定性があります。本番環境での使用には注意が必要です。現在の価格は比較的低いですが、将来的には適度な価格調整が行われる可能性があります。",
-    "description": "このAPIはベータ段階です。API形式は大幅に変更されることはありませんが、潜在的な不安定性があります。本番環境での使用には注意が必要です。現在の価格は比較的低いですが、将来的には適度な価格調整が行われる可能性があります。"
+    "message": "このAPIはベータ段階です。APIフォーマットは大幅に変更されることはありませんが、潜在的な不安定性があり、本番環境での使用には注意が必要です。現在の価格は比較的低く、将来的には価格が適度に変更される可能性があります。",
+    "description": "このAPIはベータ段階です。APIフォーマットは大幅に変更されることはありませんが、潜在的な不安定性があり、本番環境での使用には注意が必要です。現在の価格は比較的低く、将来的には価格が適度に変更される可能性があります。"
   },
   "unit.GB": {
-    "message": "GB",
-    "description": "ギガバイト、数字情報の単位"
+    "message": "ギガバイト",
+    "description": "数字情報の保存単位であるギガバイト"
   },
   "unit.MB": {
-    "message": "MB",
-    "description": "メガバイト、数字情報の単位"
+    "message": "メガバイト",
+    "description": "数字情報の保存単位であるメガバイト"
   },
   "unit.KB": {
-    "message": "KB",
-    "description": "キロバイト、数字情報の単位"
+    "message": "キロバイト",
+    "description": "数字情報の保存単位であるキロバイト"
   },
   "unit.B": {
-    "message": "B",
-    "description": "バイト、数字情報の単位"
+    "message": "バイト",
+    "description": "数字情報の保存単位であるバイト"
   }
 }
