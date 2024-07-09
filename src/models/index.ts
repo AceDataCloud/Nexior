@@ -12,4 +12,5 @@ export * from './user';
 export * from './service';
 export * from './credential';
 export * from './qrart';
+export * from './suno';
 export * from './site';
