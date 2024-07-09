@@ -20,13 +20,11 @@
 <script>
 import { defineComponent } from 'vue';
 import { SUNO_DEFAULT_ASPECT_RATIO } from '@/constants';
-import { ElInput } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 export default defineComponent({
   name: 'AspectRatioSelector',
   components: {
-    InfoIcon,
-    ElInput
+    InfoIcon
   },
   data() {
     return {
