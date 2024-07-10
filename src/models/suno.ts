@@ -3,6 +3,7 @@ export interface ISunoConfig {
   model?: string;
   lyric?: string;
   custom?: boolean;
+  instrumental?: boolean;
   title?: string;
   style?: string;
   action?: string;

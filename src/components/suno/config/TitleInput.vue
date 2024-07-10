@@ -1,21 +1,15 @@
 <template>
   <div class="field">
     <div class="title-container">
-      <h2 class="title">{{ $t('suno.name.prompt') }}</h2>
-      <info-icon :content="$t('suno.description.prompt')" class="info" />
-      <el-switch
-        v-model="instrumental"
-        class="value right-aligned-switch"
-        active-text="有歌词"
-        inactive-text="无歌词"
-      />
+      <h2 class="title">{{ $t('suno.name.title') }}</h2>
+      <info-icon :content="$t('suno.description.title')" class="info" />
     </div>
     <el-input
-      v-model="prompt"
+      v-model="title"
       :rows="3"
       type="textarea"
-      class="prompt"
-      :placeholder="$t('suno.placeholder.prompt')"
+      class="title"
+      :placeholder="$t('suno.placeholder.title')"
       :maxlength="300"
       show-word-limit
     />
@@ -24,31 +18,30 @@
 
 <script>
 import { defineComponent } from 'vue';
-import { ElInput, ElSwitch } from 'element-plus';
+import { ElInput } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 
 export const DEFAULT_PROMPT = '';
 
 export default defineComponent({
-  name: 'PromptInput',
+  name: 'TitleInput',
   components: {
     ElInput,
-    ElSwitch,
     InfoIcon
   },
   data() {
     return {};
   },
   computed: {
-    prompt: {
+    title: {
       get() {
-        return this.$store.state.suno?.config?.prompt;
+        return this.$store.state.suno?.config?.title;
       },
       set(val) {
-        console.debug('set prompt', val);
+        console.debug('set title', val);
         this.$store.commit('suno/setConfig', {
           ...this.$store.state.suno?.config,
-          prompt: val
+          title: val
         });
       }
     },

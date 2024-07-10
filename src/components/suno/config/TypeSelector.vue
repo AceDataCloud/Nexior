@@ -1,9 +1,14 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('suno.name.type') }}</h2>
-    <el-switch v-model="value" class="value" />
-    <el-select v-model="value" class="value" :placeholder="$t('suno.placeholder.select')">
-      <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+    <h2 class="type">{{ $t('suno.name.type') }}</h2>
+    <el-switch v-model="custom" class="value" />
+    <el-select v-model="model" class="value" :placeholder="$t('suno.placeholder.select')" style="width: 240px">
+      <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+        <span style="float: left">{{ item.label }}</span>
+        <span style="float: right; color: var(--el-text-color-secondary); font-size: 13px">
+          {{ item.description }}
+        </span>
+      </el-option>
     </el-select>
   </div>
 </template>
@@ -32,37 +37,44 @@ export default defineComponent({
       options: [
         {
           label: this.$t('suno.type.text'),
-          value: 'text'
+          value: 'text',
+          description: 'Newest model'
         },
         {
           label: this.$t('suno.type.link'),
-          value: 'link'
+          value: 'link',
+          description: 'Newest model'
         },
         {
           label: this.$t('suno.type.email'),
-          value: 'email'
-        },
-        {
-          label: this.$t('suno.type.phone'),
-          value: 'phone'
-        },
-        {
-          label: this.$t('suno.type.sms'),
-          value: 'sms'
+          value: 'email',
+          description: 'Newest model'
         }
       ]
     };
   },
   computed: {
-    value: {
+    custom: {
       get() {
-        return this.$store.state.qrart?.config?.type;
+        return this.$store.state.suno?.config?.custom;
       },
       set(val) {
-        console.debug('set type', val);
-        this.$store.commit('qrart/setConfig', {
-          ...this.$store.state.qrart?.config,
-          type: val
+        console.debug('set custom', val);
+        this.$store.commit('suno/setConfig', {
+          ...this.$store.state.suno?.config,
+          custom: val
+        });
+      }
+    },
+    model: {
+      get() {
+        return this.$store.state.suno?.config?.model;
+      },
+      set(val) {
+        console.debug('set model', val);
+        this.$store.commit('suno/setConfig', {
+          ...this.$store.state.suno?.config,
+          model: val
         });
       }
     }
@@ -82,7 +94,7 @@ export default defineComponent({
   flex-direction: row;
   align-items: center;
 
-  .title {
+  .type {
     font-size: 14px;
     margin: 0;
     width: 30%;

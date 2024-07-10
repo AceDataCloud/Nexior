@@ -5,15 +5,23 @@
   },
   "name.type": {
     "message": "自定义",
-    "description": "要生成的 QR 码的内容类型，如'链接'、'文本'等"
+    "description": "要生成的 歌曲 的内容类型，如'链接'、'文本'等"
   },
-  "name.description": {
+  "name.prompt": {
     "message": "歌曲描述",
-    "description": "要生成的 QR 码的内容类型，如'链接'、'文本'等"
+    "description": "内容输入的提示"
   },
-  "name.failure": {
-    "message": "失败",
-    "description": "任务的失败状态"
+  "name.lyrics": {
+    "message": "歌词内容",
+    "description": "歌词内容输入的提示"
+  },
+  "name.style": {
+    "message": "歌曲风格",
+    "description": "歌曲风格内容输入的提示"
+  },
+  "name.title": {
+    "message": "歌曲标题",
+    "description": "歌曲标题内容输入的提示"
   },
   "name.failureReason": {
     "message": "失败原因",
@@ -27,121 +35,45 @@
     "message": "追踪 ID",
     "description": "任务的追踪 ID"
   },
-  "name.size": {
-    "message": "尺寸",
-    "description": "要生成的 QR 码的尺寸"
+  "description.prompt": {
+    "message": "歌曲提示词",
+    "description": "参数'prompt'的描述"
   },
-  "name.createdAt": {
-    "message": "创建时间",
-    "description": "生成 QR 码的日期和时间"
+  "description.lyrics": {
+    "message": "歌词的内容",
+    "description": "参数'lyrics'的描述"
   },
-  "name.pixelStyle": {
-    "message": "像素风格",
-    "description": "要生成的 QR 码的像素风格"
+  "description.style": {
+    "message": "歌曲风格的内容",
+    "description": "参数'style'的描述"
   },
-  "name.seed": {
-    "message": "种子值",
-    "description": "要生成的 QR 码的种子"
-  },
-  "name.paddingLevel": {
-    "message": "填充级别",
-    "description": "要生成的 QR 码的填充级别"
-  },
-  "name.paddingNoise": {
-    "message": "填充噪音",
-    "description": "要生成的 QR 码的填充噪音"
-  },
-  "name.content": {
-    "message": "内容",
-    "description": "要生成的 QR 码的内容"
-  },
-  "name.ecl": {
-    "message": "纠错级别",
-    "description": "要生成的 QR 码的纠错级别"
-  },
-  "name.position": {
-    "message": "位置",
-    "description": "要生成的 QR 码的位置"
-  },
-  "name.prompt": {
-    "message": "歌曲描述",
-    "description": "内容输入的提示"
-  },
-  "name.rotate": {
-    "message": "旋转角度",
-    "description": "要生成的 QR 码的旋转"
-  },
-  "name.advanced": {
-    "message": "高级",
-    "description": "要生成的 QR 码的高级设置"
-  },
-  "name.aspectRatio": {
-    "message": "宽高比",
-    "description": "要生成的 QR 码的宽高比"
-  },
-  "name.markerShape": {
-    "message": "标记形状",
-    "description": "要生成的 QR 码的标记形状"
-  },
-  "name.subMarker": {
-    "message": "子标记",
-    "description": "要生成的 QR 码的子标记"
-  },
-  "name.qrw": {
-    "message": "QR 码可见性",
-    "description": "QR 码生成器的名称"
-  },
-  "name.steps": {
-    "message": "生成步数",
-    "description": "生成 QR 码的步数"
-  },
-  "name.preset": {
-    "message": "预设风格",
-    "description": "要生成的 QR 码的预设"
-  },
-  "name.qrartBot": {
-    "message": "QrArt Bot",
-    "description": "QR 码生成器的名称"
-  },
-  "name.contentImageUrl": {
-    "message": "内容图片链接",
-    "description": "要生成的 QR 码的内容图片 URL"
-  },
-  "inputWay.input": {
-    "message": "输入内容",
-    "description": "输入方式"
-  },
-  "inputWay.upload": {
-    "message": "上传二维码",
-    "description": "输入方式"
-  },
-  "description.qrw": {
-    "message": "QR 码可见性，尺寸越大，QR 码可见度越高",
-    "description": "参数'qrw'的描述"
-  },
-  "description.steps": {
-    "message": "生成 QR 码的步数，步数越多，QR 码可见度越高",
-    "description": "参数'steps'的描述"
+  "description.title": {
+    "message": "歌曲标题的内容",
+    "description": "参数'title'的描述"
   },
   "status.pending": {
     "message": "等待中",
     "description": "任务的等待状态"
   },
-  "placeholder.paddingNoise": {
-    "message": "请选择...",
+  "placeholder.prompt": {
+    "message": "请输入歌曲提示词...",
     "description": "填充噪音输入的占位符"
   },
-  "placeholder.paddingLevel": {
-    "message": "请选择...",
+  "placeholder.lyrics": {
+    "message": "请输入歌词...",
     "description": "填充级别的占位符"
   },
-  "placeholder.prompt": {
-    "message": "输入要生成的 QR 码风格的提示词，例如：flowers",
+  "placeholder.style": {
+    "message": "请输入要生成的歌曲风格的提示词，例如：flowers",
     "description": "提示字段中的占位文本"
   },
-  "placeholder.seed": {
-    "message": "种子范围为 1 到 9007199254740991",
+  "placeholder.title": {
+    "message": "请输入要生成的歌曲标题的提示词，例如：flowers",
     "description": "种子输入的占位符"
+  },
+  "placeholder.select": {
+    "message": "请选择模型...",
+    "description": "位置输入的占位符"
   },
   "placeholder.position": {
     "message": "请选择...",
@@ -432,15 +364,15 @@
     "description": "用于生成QR码的像素风格"
   },
   "type.text": {
-    "message": "文本",
+    "message": "v3.5",
     "description": "用于生成QR码的内容类型"
   },
   "type.link": {
-    "message": "链接",
+    "message": "v3",
     "description": "用于生成QR码的内容类型"
   },
   "type.email": {
-    "message": "邮件",
+    "message": "v2",
     "description": "用于生成QR码的内容类型"
   },
   "type.phone": {

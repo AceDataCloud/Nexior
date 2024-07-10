@@ -1,21 +1,16 @@
 <template>
   <div class="field">
     <div class="title-container">
-      <h2 class="title">{{ $t('suno.name.prompt') }}</h2>
-      <info-icon :content="$t('suno.description.prompt')" class="info" />
-      <el-switch
-        v-model="instrumental"
-        class="value right-aligned-switch"
-        active-text="有歌词"
-        inactive-text="无歌词"
-      />
+      <h2 class="title">{{ $t('suno.name.lyrics') }}</h2>
+      <info-icon :content="$t('suno.description.lyrics')" class="info" />
+      <el-switch v-model="instrumental" class="info" active-text="有歌词" inactive-text="无歌词" />
     </div>
     <el-input
-      v-model="prompt"
+      v-model="lyrics"
       :rows="3"
       type="textarea"
-      class="prompt"
-      :placeholder="$t('suno.placeholder.prompt')"
+      class="lyrics"
+      :placeholder="$t('suno.placeholder.lyrics')"
       :maxlength="300"
       show-word-limit
     />
@@ -40,15 +35,15 @@ export default defineComponent({
     return {};
   },
   computed: {
-    prompt: {
+    lyrics: {
       get() {
-        return this.$store.state.suno?.config?.prompt;
+        return this.$store.state.suno?.config?.lyrics;
       },
       set(val) {
-        console.debug('set prompt', val);
+        console.debug('set lyrics', val);
         this.$store.commit('suno/setConfig', {
           ...this.$store.state.suno?.config,
-          prompt: val
+          lyrics: val
         });
       }
     },
@@ -83,8 +78,8 @@ export default defineComponent({
       font-size: 14px;
       margin-bottom: 10px;
     }
-    .right-aligned-switch {
-      float: left;
+    .info {
+      flex: 1;
     }
   }
 }

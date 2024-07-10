@@ -1,8 +1,8 @@
 <template>
   <div class="field">
     <div class="title-container">
-      <h2 class="title">{{ $t('suno.name.prompt') }}</h2>
-      <info-icon :content="$t('suno.description.prompt')" class="info" />
+      <h2 class="title">{{ $t('suno.name.style') }}</h2>
+      <info-icon :content="$t('suno.description.style')" class="info" />
       <el-switch
         v-model="instrumental"
         class="value right-aligned-switch"
@@ -11,11 +11,11 @@
       />
     </div>
     <el-input
-      v-model="prompt"
+      v-model="style"
       :rows="3"
       type="textarea"
-      class="prompt"
-      :placeholder="$t('suno.placeholder.prompt')"
+      class="style"
+      :placeholder="$t('suno.placeholder.style')"
       :maxlength="300"
       show-word-limit
     />
@@ -30,7 +30,7 @@ import InfoIcon from '@/components/common/InfoIcon.vue';
 export const DEFAULT_PROMPT = '';
 
 export default defineComponent({
-  name: 'PromptInput',
+  name: 'StyleInput',
   components: {
     ElInput,
     ElSwitch,
@@ -40,15 +40,15 @@ export default defineComponent({
     return {};
   },
   computed: {
-    prompt: {
+    style: {
       get() {
-        return this.$store.state.suno?.config?.prompt;
+        return this.$store.state.suno?.config?.style;
       },
       set(val) {
-        console.debug('set prompt', val);
+        console.debug('set style', val);
         this.$store.commit('suno/setConfig', {
           ...this.$store.state.suno?.config,
-          prompt: val
+          style: val
         });
       }
     },
