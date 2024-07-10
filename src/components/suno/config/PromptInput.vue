@@ -5,7 +5,9 @@
       <info-icon :content="$t('suno.description.prompt')" class="info" />
       <el-switch
         v-model="instrumental"
-        class="value right-aligned-switch"
+        class="ml-2"
+        inline-prompt
+        style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949"
         active-text="有歌词"
         inactive-text="无歌词"
       />

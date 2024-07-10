@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch, inject, Ref } from 'vue';
+import { ref, onMounted, watch, inject, type Ref } from 'vue';
 import { ElMessage } from 'element-plus';
 
 interface Song {

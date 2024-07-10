@@ -3,7 +3,14 @@
     <div class="title-container">
       <h2 class="title">{{ $t('suno.name.lyrics') }}</h2>
       <info-icon :content="$t('suno.description.lyrics')" class="info" />
-      <el-switch v-model="instrumental" class="info" active-text="有歌词" inactive-text="无歌词" />
+      <el-switch
+        v-model="instrumental"
+        class="ml-2"
+        inline-prompt
+        style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949"
+        active-text="有歌词"
+        inactive-text="无歌词"
+      />
     </div>
     <el-input
       v-model="lyrics"

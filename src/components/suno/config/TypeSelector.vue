@@ -1,7 +1,13 @@
 <template>
   <div class="field">
-    <h2 class="type">{{ $t('suno.name.type') }}</h2>
-    <el-switch v-model="custom" class="value" />
+    <el-switch
+      v-model="custom"
+      class="ml-2 value"
+      inline-prompt
+      style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949"
+      active-text="定制模式"
+      inactive-text="描述摸索"
+    />
     <el-select v-model="model" class="value" :placeholder="$t('suno.placeholder.select')" style="width: 240px">
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
         <span style="float: left">{{ item.label }}</span>

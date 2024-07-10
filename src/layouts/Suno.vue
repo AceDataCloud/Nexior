@@ -1,11 +1,14 @@
 <template>
   <div class="main">
+    <!-- 最左侧配置栏 -->
     <div class="config">
       <slot name="config" />
     </div>
+    <!-- 中间歌曲列表栏 -->
     <div class="result">
       <slot name="result" />
     </div>
+    <!-- 最右边歌曲预览栏 -->
     <div class="preview">
       <slot name="preview" />
     </div>
