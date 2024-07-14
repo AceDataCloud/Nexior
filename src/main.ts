@@ -17,18 +17,25 @@ import {
   initializeUser,
   initializeKeywords,
   initializeSite,
-  initializeTitle
+  initializeTitle,
+  initializeCurrency,
+  initializeExchangeRate
 } from './utils/initializer';
 
 const main = async () => {
+  // async and need to await
   await initializeCookies();
   await initializeToken();
   await initializeUser();
   await initializeSite();
-  await initializeTitle();
-  await initializeDescription();
-  await initializeKeywords();
-  await initializeFavicon();
+
+  // non-async and no need to await
+  initializeCurrency();
+  initializeExchangeRate();
+  initializeTitle();
+  initializeDescription();
+  initializeKeywords();
+  initializeFavicon();
 
   const app = createApp(App);
 

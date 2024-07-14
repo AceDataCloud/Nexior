@@ -34,9 +34,22 @@ export const setSite = (state: IRootState, payload: any): void => {
   };
 };
 
+export const setExchange = (state: IRootState, payload: any): void => {
+  state.exchange = {
+    ...state.exchange,
+    ...payload
+  };
+};
+
+export const setCurrency = (state: IRootState, payload: string): void => {
+  state.currency = payload;
+};
+
 export default {
   setUser,
   setSite,
+  setCurrency,
+  setExchange,
   resetUser,
   setToken,
   resetToken,

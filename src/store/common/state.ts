@@ -6,15 +6,15 @@ import qrartState from '../qrart/state';
 
 export default (): IRootState => {
   return {
+    currency: 'usd',
+    exchange: undefined,
     user: {},
     token: {
       access: undefined,
       refresh: undefined,
       expiration: undefined
     },
-    setting: {
-      navigationCollapsed: true
-    },
+    setting: {},
     site: {},
     chatdoc: chatdocState(),
     chat: chatState(),

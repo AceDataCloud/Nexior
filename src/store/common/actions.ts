@@ -1,6 +1,6 @@
 import { ActionContext } from 'vuex';
 import { IRootState } from '../common/models';
-import { userOperator, oauthOperator, siteOperator } from '@/operators';
+import { userOperator, oauthOperator, siteOperator, exchangeOperator } from '@/operators';
 import { log } from '@/utils/log';
 import { IToken, IUser } from '@/models';
 import { getSiteOrigin } from '@/utils/site';
@@ -31,6 +31,14 @@ export const setUser = ({ commit }: ActionContext<IRootState, IRootState>, paylo
   commit('setUser', payload);
 };
 
+export const setCurrency = ({ commit }: ActionContext<IRootState, IRootState>, payload: string) => {
+  commit('setCurrency', payload);
+};
+
+export const setExchange = ({ commit }: ActionContext<IRootState, IRootState>, payload: any) => {
+  commit('setExchange', payload);
+};
+
 export const getUser = async ({ commit }: ActionContext<IRootState, IRootState>): Promise<IUser> => {
   log(getUser, 'start to get user');
   try {
@@ -59,6 +67,27 @@ export const getToken = async ({ commit }: ActionContext<IRootState, IRootState>
     return token;
   } catch (error) {
     log(getToken, 'get token failed', error);
+  }
+};
+
+export const getExchangeRate = async (
+  { state, commit }: ActionContext<IRootState, IRootState>,
+  payload: { source: string; target: string }
+) => {
+  if (payload.source === payload.target) {
+    return;
+  }
+  const key = `${payload.source}-${payload.target}`;
+  if (!state.exchange || !state.exchange[key]) {
+    try {
+      const { data } = await exchangeOperator.rate(payload);
+      commit('setExchange', {
+        [key]: data.rate
+      });
+      return state.exchange![key];
+    } catch (e) {
+      log(getExchangeRate, 'get exchange rate failed');
+    }
   }
 };
 
@@ -113,9 +142,12 @@ export default {
   resetUser,
   resetSite,
   setToken,
+  setCurrency,
   setUser,
+  getExchangeRate,
   getToken,
   getUser,
   initializeSite,
-  getSite
+  getSite,
+  setExchange
 };
