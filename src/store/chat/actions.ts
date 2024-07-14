@@ -36,7 +36,7 @@ export const setCredential = async ({ commit }: any, payload: ICredential): Prom
 
 export const setConversation = async ({ commit, state }: any, payload: IChatConversation): Promise<void> => {
   log(setConversation, 'set conversation', payload);
-  const conversations = state.conversations;
+  const conversations = state.conversations || [];
   const index = conversations?.findIndex((conversation: IChatConversation) => conversation.id === payload.id);
   if (index > -1) {
     conversations[index] = payload;

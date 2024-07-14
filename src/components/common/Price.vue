@@ -1,7 +1,8 @@
 <template>
   <div class="price-text">
     <span v-if="price > 0" class="unfree"
-      >${{ price }} {{ unit ? ` / ${unit}` : '' }}{{ start ? $t('common.message.startPrice') : '' }}
+      >{{ getPriceString({ value: price }) }} {{ unit ? ` / ${unit}` : ''
+      }}{{ start ? $t('common.message.startPrice') : '' }}
     </span>
     <span v-else class="free">
       {{ $t('common.message.free') }}
@@ -11,6 +12,8 @@
 
 <script>
 import { defineComponent } from 'vue';
+import { getPriceString } from '@/utils';
+
 export default defineComponent({
   name: 'ApiPrice',
   props: {
@@ -29,6 +32,9 @@ export default defineComponent({
       required: false,
       default: false
     }
+  },
+  methods: {
+    getPriceString
   }
 });
 </script>

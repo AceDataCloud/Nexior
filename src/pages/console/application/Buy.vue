@@ -32,9 +32,7 @@
                     <price :price="package?.price" />
                     <span v-if="package" class="ml-2"
                       >({{
-                        $t('service.message.around') +
-                        ' $' +
-                        (package?.price / package?.amount).toFixed(4) +
+                        getPriceString({ value: package?.price / package?.amount }) +
                         ' / ' +
                         $t(`service.unit.${application?.service?.unit}`)
                       }})
@@ -46,7 +44,7 @@
                       v-if="package"
                       :class="{ price: true, unfree: package?.price > 0, free: package?.price === 0 }"
                     >
-                      ${{ package?.price?.toFixed(2) }}
+                      {{ getPriceString({ value: package?.price }) }}
                     </span>
                     <span v-else :class="{ price: true, free: true }"> $ 0 </span>
                   </el-form-item>
@@ -91,6 +89,7 @@ import {
 import { ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
 import Price from '@/components/common/Price.vue';
 import { applicationOperator, orderOperator } from '@/operators';
+import { getPriceString } from '@/utils';
 
 interface IData {
   application: IApplication | undefined;
@@ -152,6 +151,7 @@ export default defineComponent({
     this.onFetchApplication();
   },
   methods: {
+    getPriceString,
     onFetchApplication() {
       this.loading = true;
       applicationOperator
