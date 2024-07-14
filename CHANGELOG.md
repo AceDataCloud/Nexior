@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Mon, 08 Jul 2024 18:29:13 GMT and should not be manually modified.
+This log was last generated on Sun, 14 Jul 2024 07:35:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.12.0
+
+Sun, 14 Jul 2024 07:35:58 GMT
+
+### Minor changes
+
+- add auto concurrency transform (office@acedata.cloud)
 
 ## 1.11.4
 
