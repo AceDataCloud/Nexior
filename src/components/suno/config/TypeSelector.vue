@@ -5,11 +5,12 @@
       class="ml-2 value"
       inline-prompt
       style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949"
-      active-text="定制模式"
-      inactive-text="描述摸索"
+      size="large"
+      :inactive-text="$t('suno.name.type_1')"
+      :active-text="$t('suno.name.type_2')"
     />
-    <el-select v-model="model" class="value" :placeholder="$t('suno.placeholder.select')" style="width: 240px">
-      <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+    <el-select v-model="model" size="large" class="value" :placeholder="$t('suno.placeholder.select')">
+      <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" style="width: 300px">
         <span style="float: left">{{ item.label }}</span>
         <span style="float: right; color: var(--el-text-color-secondary); font-size: 13px">
           {{ item.description }}
@@ -22,7 +23,7 @@
 <script>
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption, ElSwitch } from 'element-plus';
-import { SUNO_DEFAULT_TYPE } from '@/constants';
+import { SUNO_DEFAULT_MODEL } from '@/constants';
 
 export default defineComponent({
   name: 'VersionSelector',
@@ -42,19 +43,19 @@ export default defineComponent({
     return {
       options: [
         {
-          label: this.$t('suno.type.text'),
-          value: 'text',
-          description: 'Newest model'
+          label: this.$t('suno.model.model_1'),
+          value: this.$t('suno.model.model_1'),
+          description: 'chirp-v2的模型'
         },
         {
-          label: this.$t('suno.type.link'),
-          value: 'link',
-          description: 'Newest model'
+          label: this.$t('suno.model.model_2'),
+          value: this.$t('suno.model.model_2'),
+          description: 'chirp-v3的模型'
         },
         {
-          label: this.$t('suno.type.email'),
-          value: 'email',
-          description: 'Newest model'
+          label: this.$t('suno.model.model_3'),
+          value: this.$t('suno.model.model_3'),
+          description: 'chirp-v3-5的模型'
         }
       ]
     };
@@ -86,9 +87,9 @@ export default defineComponent({
     }
   },
   mounted() {
-    if (!this.value) {
-      console.debug('set default type', SUNO_DEFAULT_TYPE);
-      this.value = SUNO_DEFAULT_TYPE;
+    if (!this.model) {
+      console.debug('set default type', SUNO_DEFAULT_MODEL);
+      this.model = SUNO_DEFAULT_MODEL;
     }
   }
 });

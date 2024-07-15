@@ -1,23 +1,14 @@
 <template>
   <div class="player-slider">
-    <el-slider
-      :show-tooltip="false"
-      :min="0"
-      v-model="currentTime"
-      :max="duration"
-      @change="onSliderChange"
-      @input="onSliderInput"
-    />
+    <el-slider :show-tooltip="false" :min="0" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { usePlayerStore } from "@/stores/player";
-import { toRefs } from "vue";
-
-const { duration, currentTime, onSliderInput, onSliderChange } = toRefs(
-  usePlayerStore()
-);
+// import { usePlayerStore } from '@/stores/player';
+import { toRefs } from 'vue';
+import { ElSlider } from 'element-plus';
+// const { duration, currentTime, onSliderInput, onSliderChange } = toRefs(usePlayerStore());
 </script>
 
 <style lang="scss">

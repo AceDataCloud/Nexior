@@ -6,19 +6,25 @@
       <lyrics-input v-if="config?.custom && !config?.instrumental" class="mb-4" />
       <style-input v-if="config?.custom" class="mb-4" />
       <title-input v-if="config?.custom" class="mb-4" />
-      <generate-button class="mb-4" />
+      <div class="actions">
+        <el-button type="primary" class="btn w-full" round @click="onGenerate">
+          <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
+          {{ $t('suno.button.generate') }}
+        </el-button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
+import { ElButton } from 'element-plus';
 import TypeSelector from './config/TypeSelector.vue';
 import PromptInput from './config/PromptInput.vue';
 import LyricsInput from './config/LyricsInput.vue';
 import StyleInput from './config/StyleInput.vue';
 import TitleInput from './config/TitleInput.vue';
-import GenerateButton from './config/GenerateButton.vue';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default defineComponent({
   name: 'PresetPanel',
@@ -28,12 +34,18 @@ export default defineComponent({
     LyricsInput,
     StyleInput,
     TitleInput,
-    GenerateButton
+    FontAwesomeIcon,
+    ElButton
   },
   emits: ['generate'],
   computed: {
     config() {
       return this.$store.state.suno?.config;
+    }
+  },
+  methods: {
+    onGenerate() {
+      this.$emit('generate');
     }
   }
 });

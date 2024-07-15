@@ -124,6 +124,16 @@ export const getTasks = async (
   });
 };
 
+// 歌曲播放action部分
+
+export const init = ({ commit, state }: any) => {
+  commit('init');
+};
+
+export const pushPlayList = ({ commit }: any, replace: boolean, ...list: Song[]) => {
+  commit('setTasks', payload);
+};
+
 export default {
   setService,
   getService,

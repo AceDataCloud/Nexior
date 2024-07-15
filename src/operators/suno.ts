@@ -69,7 +69,7 @@ class SunoOperator {
       }
     );
   }
-
+  // 生成歌曲
   async audio(
     data: ISunoAudioRequest,
     options: {
@@ -84,7 +84,7 @@ class SunoOperator {
       baseURL: BASE_URL_API
     });
   }
-
+  // 生成歌曲歌词
   async lyric(
     data: ISunoLyricRequest,
     options: {

@@ -1,5 +1,5 @@
 import { IApplication, ICredential, IService, Status } from '@/models';
-import { ISunoConfig, ISunoTask } from '@/models';
+import { ISunoConfig, ISunoTask, IMusicConfig } from '@/models';
 
 export interface ISunoState {
   application: IApplication | undefined;
@@ -18,4 +18,5 @@ export interface ISunoState {
     getApplication: Status;
     getTasks: Status;
   };
+  music: IMusicConfig;
 }

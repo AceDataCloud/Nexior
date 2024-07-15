@@ -3,8 +3,28 @@
     "message": "任务 ID",
     "description": "任务的 ID"
   },
+  "model.model_1": {
+    "message": "chirp-v2-xxl-alpha",
+    "description": "用于生成QR码的内容类型"
+  },
+  "model.model_2": {
+    "message": "chirp-v3-0",
+    "description": "用于生成QR码的内容类型"
+  },
+  "model.model_3": {
+    "message": "chirp-v3-5",
+    "description": "用于生成QR码的内容类型"
+  },
+  "name.type_1": {
+    "message": "描述模式",
+    "description": "要生成的 歌曲 的内容类型，如'链接'、'文本'等"
+  },
+  "name.type_2": {
+    "message": "定制模式",
+    "description": "要生成的 歌曲 的内容类型，如'链接'、'文本'等"
+  },
   "name.type": {
-    "message": "自定义",
+    "message": "模型类型",
     "description": "要生成的 歌曲 的内容类型，如'链接'、'文本'等"
   },
   "name.prompt": {
@@ -34,6 +54,10 @@
   "name.traceId": {
     "message": "追踪 ID",
     "description": "任务的追踪 ID"
+  },
+  "name.sunoBot": {
+    "message": "Suno Bot",
+    "description": "Suno生成器的名称"
   },
   "description.prompt": {
     "message": "歌曲提示词",
@@ -229,30 +253,30 @@
   },
   "message.startingTask": {
     "message": "正在启动任务...",
-    "description": "绘图任务开始时的消息"
+    "description": "音乐生成任务开始时的消息"
   },
   "message.startTaskSuccess": {
-    "message": "成功启动绘图任务",
-    "description": "成功启动绘图任务时的成功消息"
+    "message": "成功启动音乐生成任务",
+    "description": "成功启动音乐生成任务时的成功消息"
   },
   "message.startTaskFailed": {
-    "message": "启动绘图任务失败",
-    "description": "启动绘图任务失败时的错误消息"
+    "message": "启动音乐生成任务失败",
+    "description": "启动音乐生成任务失败时的错误消息"
   },
   "message.generating": {
     "message": "生成中...",
-    "description": "图像正在生成时的消息"
+    "description": "音乐正在生成时的消息"
   },
   "message.generateFailed": {
-    "message": "生成图像失败",
-    "description": "图像生成失败时的消息"
+    "message": "生成音乐失败",
+    "description": "音乐生成失败时的消息"
   },
   "message.noOperations": {
     "message": "没有可用操作",
     "description": "没有可用操作时的消息"
   },
   "message.noTasks": {
-    "message": "没有历史任务，请点击下方生成新二维码",
+    "message": "没有历史任务，请在左侧配置栏生成音乐",
     "description": "没有任务时的消息"
   },
   "markerShape.square": {
@@ -362,25 +386,5 @@
   "pixelStyle.squircle": {
     "message": "圆角矩形",
     "description": "用于生成QR码的像素风格"
-  },
-  "type.text": {
-    "message": "v3.5",
-    "description": "用于生成QR码的内容类型"
-  },
-  "type.link": {
-    "message": "v3",
-    "description": "用于生成QR码的内容类型"
-  },
-  "type.email": {
-    "message": "v2",
-    "description": "用于生成QR码的内容类型"
-  },
-  "type.phone": {
-    "message": "电话",
-    "description": "用于生成QR码的内容类型"
-  },
-  "type.sms": {
-    "message": "短信",
-    "description": "用于生成QR码的内容类型"
   }
 }
