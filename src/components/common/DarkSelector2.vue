@@ -1,7 +1,5 @@
 <template>
-  <el-dialog :model-value="visible" :width="200" class="text-center" @close="$emit('close')">
-    <dark-switch class="switch" dark-background="#333" light-background="#fff" />
-  </el-dialog>
+  <dark-switch class="switch" dark-background="#333" light-background="#fff" />
 </template>
 
 <script lang="ts">
@@ -9,20 +7,12 @@ import { getDomain } from '@/utils';
 import { getCookie, setCookie } from 'typescript-cookie';
 import { defineComponent } from 'vue';
 import { Switch as DarkSwitch, toggleDark, isDark } from 'vue-dark-switch';
-import { ElDialog } from 'element-plus';
 
 export default defineComponent({
   components: {
-    DarkSwitch,
-    ElDialog
+    DarkSwitch
   },
-  props: {
-    visible: {
-      type: Boolean,
-      default: true
-    }
-  },
-  emits: ['update:dark', 'close'],
+  emits: ['update:dark'],
   computed: {
     dark() {
       return getCookie('THEME') === 'dark';
@@ -33,6 +23,7 @@ export default defineComponent({
   },
   watch: {
     switchValue(val) {
+      console.log('switchValue', val);
       this.setCookie(val);
     },
     dark(val) {
@@ -41,6 +32,7 @@ export default defineComponent({
     }
   },
   mounted() {
+    console.log('dark selector mounted');
     if (this.dark) {
       toggleDark(true);
       document.documentElement.classList.add('dark');

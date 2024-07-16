@@ -16,10 +16,14 @@ import { getCookie } from 'typescript-cookie';
 const routes = [
   {
     path: '/',
-    name: ROUTE_INDEX,
-    redirect: {
-      name: ROUTE_CHAT_CONVERSATION_NEW
-    }
+    component: () => import('@/layouts/Index.vue'),
+    children: [
+      {
+        path: '',
+        name: ROUTE_INDEX,
+        component: () => import('@/pages/index/Index.vue')
+      }
+    ]
   },
   console,
   chatdoc,
