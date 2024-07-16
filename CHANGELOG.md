@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sun, 14 Jul 2024 07:35:58 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jul 2024 13:39:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.13.0
+
+Tue, 16 Jul 2024 13:39:17 GMT
+
+### Minor changes
+
+- add index page (office@acedata.cloud)
 
 ## 1.12.0
 
