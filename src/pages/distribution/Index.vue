@@ -398,6 +398,7 @@ export default defineComponent({
   }
 
   .link-wrapper {
+    text-align: center;
     margin-bottom: 10px;
     .link {
       color: var(--el-color-primary);
