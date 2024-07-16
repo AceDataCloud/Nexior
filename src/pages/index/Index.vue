@@ -6,13 +6,22 @@
           <el-col :md="12" :xs="24" class="left">
             <div class="info">
               <h1 class="title">
-                {{ $t('index.title.banner') }}
+                {{ site?.title }}
               </h1>
               <h3 class="subtitle">
-                {{ $t('index.subtitle.banner') }}
+                {{ site?.description }}
               </h3>
               <div class="operations">
-                <el-button type="primary" round class="btn-apply">
+                <el-button
+                  type="primary"
+                  round
+                  class="btn-apply"
+                  @click="
+                    $router.push({
+                      path: '/chat'
+                    })
+                  "
+                >
                   {{ $t('common.button.startForFree') }}
                 </el-button>
               </div>
@@ -42,6 +51,7 @@
             :key="capabilityIndex"
             :md="24 / capabilities.length"
             :xs="24"
+            class="mb-4"
           >
             <el-card class="info text-center" shadow="hover">
               <div class="icon-wrapper">
@@ -64,7 +74,16 @@
           <el-col :md="8" :xs="24" class="info">
             <h2 class="title">{{ $t('index.title.chat') }}</h2>
             <p class="subtitle">{{ $t('index.subtitle.chat') }}</p>
-            <el-button type="primary" round class="btn-try">
+            <el-button
+              type="primary"
+              round
+              class="btn-try"
+              @click="
+                $router.push({
+                  path: '/chat'
+                })
+              "
+            >
               {{ $t('index.button.try') }}
             </el-button>
           </el-col>
@@ -77,7 +96,16 @@
           <el-col :md="8" :xs="24" class="info">
             <h2 class="title">{{ $t('index.title.midjourney') }}</h2>
             <p class="subtitle">{{ $t('index.subtitle.midjourney') }}</p>
-            <el-button type="primary" round class="btn-try">
+            <el-button
+              type="primary"
+              round
+              class="btn-try"
+              @click="
+                $router.push({
+                  path: '/midjourney'
+                })
+              "
+            >
               {{ $t('index.button.try') }}
             </el-button>
           </el-col>
@@ -88,7 +116,15 @@
         </el-row>
       </div>
     </div>
-    <div id="qrart" class="block">
+    <div
+      id="qrart"
+      class="block"
+      @click="
+        $router.push({
+          path: '/qrart'
+        })
+      "
+    >
       <div class="container">
         <el-row>
           <el-col :md="16" :xs="24" class="preview">
@@ -105,7 +141,16 @@
         </el-row>
       </div>
     </div>
-    <div v-if="false" id="suno" class="block">
+    <div
+      v-if="false"
+      id="suno"
+      class="block"
+      @click="
+        $router.push({
+          path: '/suno'
+        })
+      "
+    >
       <div class="container">
         <el-row>
           <el-col :md="8" :xs="24" class="info">
@@ -166,7 +211,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 interface IData {
   comments: any[];
-  capabilities: any[];
 }
 
 export default defineComponent({
@@ -181,23 +225,6 @@ export default defineComponent({
   },
   data(): IData {
     return {
-      capabilities: [
-        {
-          title: this.$t('index.title.chat'),
-          subtitle: this.$t('index.subtitle.chat'),
-          icon: 'fa-regular fa-comment'
-        },
-        {
-          title: this.$t('index.title.midjourney'),
-          subtitle: this.$t('index.subtitle.midjourney'),
-          icon: 'fa-solid fa-palette'
-        },
-        {
-          title: this.$t('index.title.qrart'),
-          subtitle: this.$t('index.subtitle.qrart'),
-          icon: 'fa-solid fa-qrcode'
-        }
-      ],
       comments: [
         {
           avatar: 'https://cdn.acedata.cloud/avatar1.png',
@@ -219,6 +246,42 @@ export default defineComponent({
         }
       ]
     };
+  },
+  computed: {
+    site() {
+      return this.$store.state.site;
+    },
+    capabilities() {
+      return [
+        ...(this.site?.features?.chat?.enabled
+          ? [
+              {
+                title: this.$t('index.title.chat'),
+                subtitle: this.$t('index.subtitle.chat'),
+                icon: 'fa-regular fa-comment'
+              }
+            ]
+          : []),
+        ...(this.site?.features?.midjourney?.enabled
+          ? [
+              {
+                title: this.$t('index.title.midjourney'),
+                subtitle: this.$t('index.subtitle.midjourney'),
+                icon: 'fa-solid fa-palette'
+              }
+            ]
+          : []),
+        ...(this.site?.features?.qrart?.enabled
+          ? [
+              {
+                title: this.$t('index.title.qrart'),
+                subtitle: this.$t('index.subtitle.qrart'),
+                icon: 'fa-solid fa-qrcode'
+              }
+            ]
+          : [])
+      ];
+    }
   },
   mounted() {},
   methods: {}
@@ -254,7 +317,7 @@ export default defineComponent({
     .image {
       border-radius: 10px;
       padding: 5px;
-      background-color: var(--el-bg-color);
+      background-color: white;
       box-shadow: var(--el-box-shadow-light);
       &.desktop {
         max-width: 100%;
@@ -269,7 +332,7 @@ export default defineComponent({
     }
   }
   .info {
-    padding: 20px 80px;
+    padding: 20px 60px;
     text-align: center;
     .title {
       font-size: 40px;
@@ -302,7 +365,6 @@ export default defineComponent({
         margin-bottom: 50px;
         text-align: left;
         -webkit-text-fill-color: transparent;
-        // color: var(--el-text-color-primary);
         background-clip: text;
         background-image: linear-gradient(90deg, #277186, #7752ff 40%, #5f98fa 60%, #44beff);
       }
@@ -338,6 +400,9 @@ export default defineComponent({
 
 #introduction {
   padding: 100px 0;
+  @media (max-width: 767px) {
+    padding: 100px 20px;
+  }
   .info {
     .title {
       font-size: 20px;
@@ -368,6 +433,14 @@ export default defineComponent({
 #midjourney,
 #suno {
   background: linear-gradient(90deg, #ebe7ff, #f2faff 53%, #e0f5fe);
+}
+
+.dark {
+  #introduction,
+  #midjourney,
+  #suno {
+    background-image: linear-gradient(270deg, #277186 0%, #330867 100%);
+  }
 }
 
 #comments {
