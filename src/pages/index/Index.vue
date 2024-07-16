@@ -9,7 +9,7 @@
                 {{ site?.title }}
               </h1>
               <h3 class="subtitle">
-                {{ site?.description }}
+                {{ $t('index.subtitle.banner') }}
               </h3>
               <div class="operations">
                 <el-button

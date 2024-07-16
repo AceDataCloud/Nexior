@@ -22,7 +22,10 @@
         <dark-selector class="float-right mr-4" />
       </div>
       <div v-else class="float-right">
-        <dark-selector class="mt-5" />
+        <dark-selector />
+        <div class="console" @click="onConsole">
+          {{ $t('common.button.console') }}
+        </div>
         <el-dropdown trigger="click">
           <img :src="user?.avatar || defaultAvatar" class="avatar" />
           <template #dropdown>
