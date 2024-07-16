@@ -24,12 +24,42 @@
         </el-row>
       </div>
     </div>
+    <div id="introduction">
+      <div class="container">
+        <el-row class="mb-6">
+          <el-col :span="24">
+            <h2 class="title">
+              {{ $t('index.title.introduction') }}
+            </h2>
+            <h5 class="subtitle">
+              {{ $t('index.subtitle.introduction') }}
+            </h5>
+          </el-col>
+        </el-row>
+        <el-row :gutter="15">
+          <el-col
+            v-for="(capability, capabilityIndex) in capabilities"
+            :key="capabilityIndex"
+            :md="24 / capabilities.length"
+            :xs="24"
+          >
+            <el-card class="info text-center" shadow="hover">
+              <div class="icon-wrapper">
+                <font-awesome-icon :icon="capability.icon" class="icon" />
+              </div>
+              <h2 class="title">{{ capability.title }}</h2>
+              <p class="subtitle">{{ capability.subtitle }}</p>
+            </el-card>
+          </el-col>
+        </el-row>
+      </div>
+    </div>
     <div id="chat" class="block">
       <div class="container">
         <el-row>
           <el-col :md="16" :xs="24" class="preview">
-            <img src="https://cdn.acedata.cloud/6qnk2o.png" class="image desktop" />
-            <img src="https://cdn.acedata.cloud/rgyads.png" class="image mobile" />
+            <img src="https://cdn.acedata.cloud/axynds.png" class="image desktop" />
+            <img src="https://cdn.acedata.cloud/vds4i3.png" class="image mobile" />
           </el-col>
           <el-col :md="8" :xs="24" class="info">
             <h2 class="title">{{ $t('index.title.chat') }}</h2>
@@ -52,14 +82,8 @@
             </el-button>
           </el-col>
           <el-col :md="16" :xs="24" class="preview">
-            <img
-              src="https://camo.githubusercontent.com/923bcdf733181c64cff8b3fc1da7ef2798be8584e1885a627fad632ac7654a48/68747470733a2f2f63646e2e616365646174612e636c6f75642f3879386b666f2e706e67"
-              class="image desktop"
-            />
-            <img
-              src="https://camo.githubusercontent.com/c553461cc48e163b5fcf22ac2205e9dc2ed486b31eca4e2b1ab30939e41349e1/68747470733a2f2f63646e2e616365646174612e636c6f75642f6277313171392e706e67"
-              class="image mobile"
-            />
+            <img src="https://cdn.acedata.cloud/uk86mz.png" class="image desktop" />
+            <img src="https://cdn.acedata.cloud/rvelwm.png" class="image mobile" />
           </el-col>
         </el-row>
       </div>
@@ -68,14 +92,8 @@
       <div class="container">
         <el-row>
           <el-col :md="16" :xs="24" class="preview">
-            <img
-              src="https://camo.githubusercontent.com/d1f1f752ffb9a7baa195db4403ad889ed77bc3c9d846da1eb796493dab2bd661/68747470733a2f2f63646e2e616365646174612e636c6f75642f71336976616e2e706e67"
-              class="image desktop"
-            />
-            <img
-              src="https://camo.githubusercontent.com/cbe8abf65cbf75179a83e8a2e37657af5844c2e61887c5d497fb164fe88a7a31/68747470733a2f2f63646e2e616365646174612e636c6f75642f6c31316562762e706e67"
-              class="image mobile"
-            />
+            <img src="https://cdn.acedata.cloud/gyogar.png" class="image desktop" />
+            <img src="https://cdn.acedata.cloud/5kunm0.png" class="image mobile" />
           </el-col>
           <el-col :md="8" :xs="24" class="info">
             <h2 class="title">{{ $t('index.title.qrart') }}</h2>
@@ -87,7 +105,7 @@
         </el-row>
       </div>
     </div>
-    <div id="suno" class="block">
+    <div v-if="false" id="suno" class="block">
       <div class="container">
         <el-row>
           <el-col :md="8" :xs="24" class="info">
@@ -98,14 +116,8 @@
             </el-button>
           </el-col>
           <el-col :md="16" :xs="24" class="preview">
-            <img
-              src="https://camo.githubusercontent.com/923bcdf733181c64cff8b3fc1da7ef2798be8584e1885a627fad632ac7654a48/68747470733a2f2f63646e2e616365646174612e636c6f75642f3879386b666f2e706e67"
-              class="image desktop"
-            />
-            <img
-              src="https://camo.githubusercontent.com/c553461cc48e163b5fcf22ac2205e9dc2ed486b31eca4e2b1ab30939e41349e1/68747470733a2f2f63646e2e616365646174612e636c6f75642f6277313171392e706e67"
-              class="image mobile"
-            />
+            <img class="image desktop" />
+            <img class="image mobile" />
           </el-col>
         </el-row>
       </div>
@@ -150,9 +162,11 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElButton, ElImage, ElRow, ElCol, ElCard } from 'element-plus';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 interface IData {
   comments: any[];
+  capabilities: any[];
 }
 
 export default defineComponent({
@@ -162,10 +176,28 @@ export default defineComponent({
     ElRow,
     ElCol,
     ElCard,
-    ElImage
+    ElImage,
+    FontAwesomeIcon
   },
   data(): IData {
     return {
+      capabilities: [
+        {
+          title: this.$t('index.title.chat'),
+          subtitle: this.$t('index.subtitle.chat'),
+          icon: 'fa-regular fa-comment'
+        },
+        {
+          title: this.$t('index.title.midjourney'),
+          subtitle: this.$t('index.subtitle.midjourney'),
+          icon: 'fa-solid fa-palette'
+        },
+        {
+          title: this.$t('index.title.qrart'),
+          subtitle: this.$t('index.subtitle.qrart'),
+          icon: 'fa-solid fa-qrcode'
+        }
+      ],
       comments: [
         {
           avatar: 'https://cdn.acedata.cloud/avatar1.png',
@@ -204,7 +236,7 @@ export default defineComponent({
     color: var(--el-text-color-primary);
   }
   .subtitle {
-    font-size: 14px;
+    font-size: 20px;
     line-height: 40px;
     text-align: center;
     color: var(--el-text-color-secondary);
@@ -213,10 +245,10 @@ export default defineComponent({
 .container {
   margin: auto;
   max-width: 1200px;
-  padding: 100px 0;
 }
 
 .block {
+  padding: 150px 0;
   .preview {
     position: relative;
     .image {
@@ -232,7 +264,7 @@ export default defineComponent({
         width: 30%;
         position: absolute;
         right: -5%;
-        top: 30%;
+        top: 10%;
       }
     }
   }
@@ -252,11 +284,13 @@ export default defineComponent({
       font-size: 20px;
       line-height: 20px;
       font-weight: 700;
+      border-radius: 50px;
     }
   }
 }
 
 #banner {
+  padding: 100px 0;
   .left {
     .info {
       @media (max-width: 767px) {
@@ -267,7 +301,10 @@ export default defineComponent({
         font-weight: bold;
         margin-bottom: 50px;
         text-align: left;
-        color: var(--el-text-color-primary);
+        -webkit-text-fill-color: transparent;
+        // color: var(--el-text-color-primary);
+        background-clip: text;
+        background-image: linear-gradient(90deg, #277186, #7752ff 40%, #5f98fa 60%, #44beff);
       }
       h3.subtitle {
         font-size: 30px;
@@ -282,6 +319,7 @@ export default defineComponent({
           font-size: 20px;
           line-height: 20px;
           font-weight: 700;
+          border-radius: 50px;
         }
       }
     }
@@ -298,41 +336,42 @@ export default defineComponent({
   }
 }
 
-#chat,
-#qrart {
-  background: linear-gradient(90deg, #ebe7ff, #f2faff 53%, #e0f5fe);
-  // background-image: url(https://cdn.acedata.cloud/kbyc78.png);
-  // background-size: cover;
-  // background-repeat: no-repeat;
+#introduction {
+  padding: 100px 0;
+  .info {
+    .title {
+      font-size: 20px;
+    }
+    .subtitle {
+      font-size: 16px;
+      line-height: 30px;
+      color: var(--el-text-color-secondary);
+    }
+    .icon-wrapper {
+      background: var(--el-bg-color-page);
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      line-height: 40px;
+      margin: 10px auto 20px auto;
+      .icon {
+        font-size: 25px;
+        color: var(--el-color-primary);
+      }
+    }
+  }
 }
 
-#chat {
-  position: relative;
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://cdn.acedata.cloud/weu38f.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to left, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-  }
+#introduction,
+#midjourney,
+#suno {
+  background: linear-gradient(90deg, #ebe7ff, #f2faff 53%, #e0f5fe);
 }
 
 #comments {
+  padding: 100px 0;
   background: var(--el-bg-color-page);
 
   .main {
@@ -362,12 +401,13 @@ export default defineComponent({
         width: 60px;
         height: 60px;
         border-radius: 50%;
-        margin-right: 10px;
+        margin-right: 15px;
         display: block;
       }
       .name {
         font-size: 18px;
         font-weight: bold;
+        margin-bottom: 5px;
         color: var(--el-text-color-regular);
       }
       .job {
