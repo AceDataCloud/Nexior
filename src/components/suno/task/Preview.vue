@@ -1,127 +1,33 @@
 <template>
-  <div class="preview">
-    <div class="left">
-      <el-image src="https://cdn.acedata.cloud/bcml67.png" class="avatar" />
-    </div>
-    <div class="main">
-      <!-- 左侧头像 -->
-      <div class="bot">
-        {{ $t('suno.name.sunoBot') }}
-        <!-- <span class="datetime">
-          {{ $dayjs.format('' + new Date(parseFloat(modelValue?.created_at || '') * 1000)) }}
-        </span> -->
-      </div>
-      <!-- 请求的提示词 -->
-      <div class="info">
-        <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
-          {{ modelValue?.request?.prompt }}
-          <span v-if="!modelValue?.response"> - ({{ $t('suno.status.pending') }}) </span>
-        </p>
-      </div>
-      <div v-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">
-        <div class="image-wrapper">
-          <!-- 歌曲列表 -->
-          <div class="flex-1 overflow-hidden">
-            <ElScrollbar>
-              <div class="container mx-auto">
-                歌曲列表
-                <MusicList />
-              </div>
-            </ElScrollbar>
+  <div class="flex-1 flex flex-col">
+    <!-- 歌曲列表 -->
+    <div class="flex-1 overflow-hidden">
+      <ElScrollbar>
+        <div class="container mx-auto">
+          <div class="playlist">
+            <div v-if="modelValue" class="p-5">
+              <!-- <Info :playlist="playlist" :play-all="() => playAll()" /> -->
+              <el-tabs v-model="tab" class="mt-3">
+                <el-tab-pane lazy :label="`歌曲 ${modelValue.length}`" name="tracks">
+                  <SongList :songs="modelValue" />
+                </el-tab-pane>
+              </el-tabs>
+            </div>
           </div>
+          <!-- <MusicList /> -->
         </div>
-        <!-- 关于歌曲生成任务的简要介绍 -->
-        <el-alert :closable="false" class="mt-2 success">
-          <!-- 任务ID -->
-          <p class="description">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
-            {{ $t('suno.name.taskId') }}:
-            {{ modelValue?.id }}
-            <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
-          </p>
-          <!-- 模型类别 -->
-          <p class="description">
-            <font-awesome-icon icon="fa-solid fa-diamond" class="mr-1" />
-            {{ $t('suno.name.type') }}:
-            {{ modelValue?.request?.model }}
-            <copy-to-clipboard :content="modelValue?.request?.type!" class="btn-copy" />
-          </p>
-          <p v-if="modelValue?.request?.content" class="description">
-            <font-awesome-icon icon="fa-regular fa-message" class="mr-1" />
-            {{ $t('suno.name.content') }}:
-            {{ modelValue?.request?.content }}
-            <copy-to-clipboard :content="modelValue?.request?.content!" class="btn-copy" />
-          </p>
-          <p v-if="modelValue?.request?.content_image_url" class="description">
-            <font-awesome-icon icon="fa-regular fa-message" class="mr-1" />
-            {{ $t('suno.name.contentImageUrl') }}:
-            <font-awesome-icon
-              icon="fa-solid fa-up-right-from-square"
-              class="mr-1 cursor-pointer"
-              @click="onOpenLink(modelValue?.request?.content_image_url)"
-            />
-          </p>
-          <p v-if="modelValue?.request?.seed || modelValue?.response?.seed" class="description">
-            <font-awesome-icon icon="fa-solid fa-seedling" class="mr-1" />
-            {{ $t('suno.name.seed') }}:
-            {{ modelValue?.request?.seed || modelValue?.response?.seed }}
-            <copy-to-clipboard
-              :content="(modelValue?.request?.seed || modelValue?.response?.seed).toString()!"
-              class="btn-copy"
-            />
-          </p>
-        </el-alert>
-      </div>
-      <div v-if="modelValue?.response?.success === false" :class="{ content: true }">
-        <el-alert :closable="false" class="failure">
-          <template #template>
-            <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
-            {{ $t('suno.name.failure') }}
-          </template>
-          <p class="description">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
-            {{ $t('suno.name.taskId') }}:
-            {{ modelValue?.id }}
-            <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
-          </p>
-          <p class="description">
-            <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
-            {{ $t('suno.name.failureReason') }}:
-            {{ modelValue?.response?.error?.message }}
-            <copy-to-clipboard :content="modelValue?.response?.error?.message!" class="btn-copy" />
-          </p>
-          <p class="description">
-            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
-            {{ $t('suno.name.traceId') }}:
-            {{ modelValue?.response?.trace_id }}
-            <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy" />
-          </p>
-        </el-alert>
-      </div>
-      <div v-if="!modelValue?.response" :class="{ content: true }">
-        <el-alert :closable="false" class="info">
-          <template #template>
-            <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
-            {{ $t('suno.name.failure') }}
-          </template>
-          <p class="description">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
-            {{ $t('suno.name.taskId') }}:
-            {{ modelValue?.id }}
-            <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
-          </p>
-        </el-alert>
-      </div>
+      </ElScrollbar>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { ElImage, ElAlert, ElButton } from 'element-plus';
-import { ISunoTask } from '@/models';
+import { defineComponent, ref } from 'vue';
+import { ElImage, ElAlert, ElButton, ElScrollbar, ElTabs, ElTabPane } from 'element-plus';
+import { ISunoTask, ISunoAudio, ISunoAudioLyric } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import SongList from '@/components/suno/musicList/SongList.vue';
 
 export default defineComponent({
   name: 'TaskPreview',
@@ -129,16 +35,22 @@ export default defineComponent({
     ElImage,
     CopyToClipboard,
     FontAwesomeIcon,
-    ElAlert
+    ElAlert,
+    ElScrollbar,
+    SongList,
+    ElTabs,
+    ElTabPane
   },
   props: {
     modelValue: {
-      type: Object as () => ISunoTask | undefined,
+      type: Object as () => (ISunoAudio | ISunoAudioLyric)[],
       required: true
     }
   },
   data() {
-    return {};
+    return {
+      tab: 'tracks'
+    };
   },
   computed: {
     application() {
@@ -146,9 +58,6 @@ export default defineComponent({
     }
   },
   methods: {
-    onOpenLink(url: string) {
-      window.open(url, '_blank');
-    },
     onReload(event: Event) {
       const target = event.target as HTMLImageElement;
       // append a random url query to existing url query, to force reload the image
@@ -167,9 +76,6 @@ export default defineComponent({
       }
       // set the new url
       target.src = url.toString();
-    },
-    onOpenUrl(url: string) {
-      window.open(url, '_blank');
     },
     onDownload(url: string) {
       // download image using javascript
@@ -193,14 +99,6 @@ $left-width: 70px;
   margin-bottom: 15px;
   .left {
     width: $left-width;
-    .avatar {
-      background-color: white;
-      padding: 2px;
-      width: 50px;
-      height: 50px;
-      margin: 10px;
-      border-radius: 50%;
-    }
   }
 
   .main {

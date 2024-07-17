@@ -1,18 +1,8 @@
 <template>
-  <!-- <el-aside width="20%" class="right-panel">
-    <div v-if="selectedSong">
-      <el-image :src="selectedSong.coverImage" fit="cover" class="cover-image"></el-image>
-      <div>{{ selectedSong.title }}</div>
-      <div>{{ selectedSong.artist }}</div>
-      <div>{{ selectedSong.genre }}</div>
-      <div>{{ selectedSong.releaseDate }}</div>
-      <div>{{ selectedSong.description }}</div>
-    </div>
-  </el-aside> -->
   <el-scrollbar class="card-scrollbar">
-    <div v-if="selectedSong" class="card" @mouseenter="showCloseIcon = true" @mouseleave="showCloseIcon = false">
+    <div v-if="song" class="card" @mouseenter="showCloseIcon = true" @mouseleave="showCloseIcon = false">
       <div class="image-container">
-        <el-image :src="selectedSong.coverImage" fit="cover">
+        <el-image :src="song.image_url" fit="cover">
           <template #error>
             <div class="image-slot">
               <el-icon><icon-picture /></el-icon>
@@ -22,22 +12,22 @@
         <el-icon v-show="showCloseIcon" size="large" class="close-icon" @click="closeCard">
           <Close />
         </el-icon>
-        <h2 class="title">{{ selectedSong.title }}</h2>
+        <h2 class="title">{{ song.title }}</h2>
       </div>
       <div class="content">
-        <p>{{ genre }}</p>
+        <p>{{ song.style }}</p>
         <div class="artist">
-          <el-avatar :size="30" :src="selectedSong.coverImage"></el-avatar>
-          <span>IrreverentSoundDesign5...</span>
+          <el-avatar :size="30" :src="song.image_url"></el-avatar>
+          <span>{{ song.prompt }}</span>
         </div>
-        <p>2024年7月12日 22:00</p>
-        <div class="actions">
+        <p>{{ $dayjs.format(song?.created_at) }}</p>
+        <!-- <div class="actions">
           <el-icon class="action-icon"><Plus /></el-icon>
           <el-icon class="action-icon"><Minus /></el-icon>
           <el-icon class="action-icon"><Share /></el-icon>
-        </div>
+        </div> -->
         <div class="lyrics">
-          <p v-for="(line, index) in lyrics" :key="index">{{ line }}</p>
+          <p style="white-space: pre-wrap" v-html="song.lyric"></p>
         </div>
       </div>
     </div>
@@ -48,41 +38,18 @@
 import { inject, Ref, ref } from 'vue';
 import { ElAside, ElImage, ElScrollbar, ElAvatar, ElIcon } from 'element-plus';
 import { Close, Picture as IconPicture, Plus, Minus, Share } from '@element-plus/icons-vue';
-interface Song {
-  id: number;
-  title: string;
-  artist: string;
-  genre: string;
-  releaseDate: string;
-  description: string;
-  coverImage: string;
-  audioSrc: string;
-  duration: string;
-}
+import { ElPopover } from 'element-plus';
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+const store = useStore();
+// 状态
+const song = computed({
+  get: () => store.state.suno.player.song,
+  set: (value) => store.commit('suno/setSong', value)
+});
 
-const selectedSong = {
-  id: 1,
-  title: '依戀',
-  artist: 'DiverseTones341',
-  genre: 'pop, 感性, 輕柔',
-  releaseDate: '2024年7月7日 15:09',
-  description: '街角的咖啡店\n你的笑容閃現\n心裡那抹一瞬間\n語言千言',
-  coverImage: 'https://cdn.huyinfu.space/j0isyu.jpg',
-  audioSrc: 'https://cdn.huyinfu.space/test.mp3',
-  duration: '3:45'
-};
-const showCloseIcon = ref(false);
-const lyrics = ref([
-  '[Verse]',
-  'Saw her in the crowd one night',
-  'Shining like a city light',
-  "Heartbeat racing can't slow down",
-  'Lost in you but never found',
-  '[Verse]',
-  'Saw her in the crowd one night',
-  'Shining like a city light'
-]);
 const genre = ref('synth-driven pop');
+const showCloseIcon = ref(false);
 const closeCard = () => {
   console.log('Card closed');
 };

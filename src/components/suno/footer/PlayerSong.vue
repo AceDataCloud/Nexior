@@ -1,14 +1,11 @@
 <template>
   <div class="flex player-song">
-    <img alt="" class="w-11 h-11 rounded" :src="OpticalDisk" />
+    <img alt="" class="w-11 h-11 rounded" :src="song.image_url || OpticalDisk" />
     <div class="ml-2 text-xs flex flex-col justify-between">
       <div class="w-52 2xl:w-96 cursor-pointer truncate">
         <div class="flex">
-          <!-- <div v-if="songUrl.freeTrialInfo?.end > 0" class="bg-red-500 text-xs text-white rounded px-0.5 scale-75">
-            试听
-          </div> -->
-          <span>{{ '开源云音乐' }}</span>
-          <span class="ml-2 text-dc">- {{ `SmallRuralDog` }}</span>
+          <span>{{ song.title || '开源云音乐' }}</span>
+          <span class="ml-2 text-dc">- {{ song.style || `SmallRuralDog` }}</span>
         </div>
       </div>
       <div class="flex gap-x-3 text-main">
@@ -27,7 +24,25 @@ import { Like, DownTwo, MoreTwo, Comment, ThumbsUp, ThumbsDown, Share, MoreFour,
 // import { usePlayerStore } from '@/stores/player';
 import { OpticalDisk } from '@/assets/img';
 import IconPark from '@/components/common/IconPark.vue';
-import { toRefs } from 'vue';
+import { ElBadge } from 'element-plus';
+
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+const store = useStore();
+// 状态
+const song = computed({
+  get: () => store.state.suno.player.song,
+  set: (value) => store.commit('suno/setSong', value)
+});
+
+const duration = computed({
+  get: () => store.state.suno.player.duration,
+  set: (value) => store.commit('suno/setDuration', value)
+});
+
+// 方法
+const onSliderInput = () => store.dispatch('suno/onSliderInput');
+const onSliderChange = () => store.dispatch('suno/onSliderChange');
 
 // const { song, songUrl } = toRefs(usePlayerStore());
 </script>

@@ -20,21 +20,12 @@ import { usePlayListDetail, usePlayListTrackAll } from '@/utils/api';
 import SongList from './SongList.vue';
 import type { PlayListDetail } from '@/models';
 import type { Song } from '@/models';
-import { usePlayerStore } from '@/stores/player';
 
 const tab = ref('tracks');
 
 const route = useRoute();
 const playlist = ref<PlayListDetail>();
 const songs = ref<Song[]>([]);
-
-const { pushPlayList, play } = usePlayerStore();
-
-const playAll = () => {
-  pushPlayList(true, ...songs.value);
-
-  play(songs.value.first().id);
-};
 
 const getData = () => {
   const id: number = Number(route.query.id);

@@ -1,21 +1,54 @@
 <template>
   <div class="player-volume flex flex-col items-center pt-2">
     <div>
-      <el-slider vertical height="100px" :show-tooltip="false" :max="100" :min="0" size="small" />
+      <el-slider
+        v-model="volume"
+        vertical
+        height="100px"
+        :show-tooltip="false"
+        :max="100"
+        :min="0"
+        size="small"
+        :disabled="muted"
+        @input="setVolume"
+      />
     </div>
-    <!-- <div class="text-sm mt-3">{{ volume }}</div> -->
+    <div class="text-sm mt-3">{{ volume }}</div>
     <div class="mt-2">
-      <IconPark :icon="VolumeSmall" size="16" theme="filled" class="hover-text" />
+      <IconPark
+        :icon="muted ? VolumeMute : VolumeSmall"
+        size="16"
+        theme="filled"
+        class="hover-text"
+        @click="toggleMuted"
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { VolumeMute, VolumeSmall } from '@icon-park/vue-next';
-import { toRefs } from 'vue';
-// import { usePlayerStore } from '@/stores/player';
 import IconPark from '@/components/common/IconPark.vue';
+import { ElSlider } from 'element-plus';
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+const store = useStore();
 
+// 创建响应式引用
+const volume = computed({
+  get: () => store.state.suno.player.volume,
+  set: (value) => store.commit('suno/setVolume', value)
+});
+
+const muted = computed({
+  get: () => store.state.suno.player.muted,
+  set: (value) => store.commit('suno/setMuted', value)
+});
+
+// 方法
+const toggleMuted = () => store.dispatch('suno/toggleMuted');
+
+const setVolume = (value: number) => store.dispatch('suno/setVolume', value);
 // const { volume, muted, toggleMuted, setVolume } = toRefs(usePlayerStore());
 </script>
 <style lang="scss">

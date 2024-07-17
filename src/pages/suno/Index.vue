@@ -38,6 +38,7 @@ const CALLBACK_URL = 'https://webhook.acedata.cloud/suno';
 interface IData {
   task: ISunoTask | undefined;
   job: number;
+  timer: NodeJS.Timer;
 }
 
 export default defineComponent({
@@ -52,7 +53,9 @@ export default defineComponent({
   data(): IData {
     return {
       task: undefined,
-      job: 0
+      job: 0,
+      // @ts-ignore
+      timer: undefined
     };
   },
   computed: {
@@ -76,6 +79,15 @@ export default defineComponent({
     },
     application() {
       return this.$store.state.suno.application;
+    },
+    ended() {
+      return this.$store.state.suno.player.ended;
+    }
+  },
+  watch: {
+    ended(val: boolean) {
+      if (!val) return;
+      this.$store.dispatch('suno/playEnd');
     }
   },
   async mounted() {
@@ -88,9 +100,12 @@ export default defineComponent({
     this.job = setInterval(() => {
       this.onGetTasks();
     }, 5000);
+    this.$store.dispatch('suno/initPlayer');
+    this.timer = setInterval(() => this.$store.dispatch('suno/interval'), 1000);
   },
   async unmounted() {
     clearInterval(this.job);
+    clearInterval(this.timer);
   },
   methods: {
     async onGetService() {

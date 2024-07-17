@@ -1,11 +1,5 @@
 <template>
   <div class="mt-2">
-    <div class="flex text-xs text-gray-400 py-2">
-      <div class="flex-auto">歌曲</div>
-      <div class="w-1/4">歌手</div>
-      <div class="w-1/4">专辑</div>
-      <div class="w-20">时长</div>
-    </div>
     <div class="text-sm">
       <template v-for="song in songs.slice(0, pageSize * page)" :key="song.id">
         <song-list-item :song="song" show-ar-name show-al-name />
@@ -18,12 +12,12 @@
 </template>
 
 <script setup lang="ts">
-import type { Song } from '@/models/song';
-import SongListItem from '@/components/common/SongListItem.vue';
+import type { ISunoAudio, ISunoAudioLyric } from '@/models';
+import SongListItem from '@/components/suno/musicList/SongListItem.vue';
 import { computed, ref } from 'vue';
-
+import { ElImage, ElAlert, ElButton, ElScrollbar } from 'element-plus';
 const props = defineProps<{
-  songs: Song[];
+  songs: (ISunoAudio | ISunoAudioLyric)[];
 }>();
 
 const pageSize = ref(10);

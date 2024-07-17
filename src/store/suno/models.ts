@@ -1,5 +1,5 @@
 import { IApplication, ICredential, IService, Status } from '@/models';
-import { ISunoConfig, ISunoTask, IMusicConfig } from '@/models';
+import { ISunoConfig, ISunoTask, Song, SongUrl } from '@/models';
 
 export interface ISunoState {
   application: IApplication | undefined;
@@ -18,5 +18,27 @@ export interface ISunoState {
     getApplication: Status;
     getTasks: Status;
   };
-  music: IMusicConfig;
+}
+
+export interface PlayerState {
+  audio: HTMLAudioElement;
+  loopType: number;
+  volume: number;
+  playList: Song[];
+  showPlayList: boolean;
+  id: string;
+  url: string;
+  // songUrl: SongUrl;
+  song: Song;
+  isPlaying: boolean;
+  isPause: boolean;
+  sliderInput: boolean;
+  ended: boolean;
+  muted: boolean;
+  currentTime: number;
+  duration: number;
+}
+
+export interface RootState extends ISunoState {
+  player: PlayerState;
 }

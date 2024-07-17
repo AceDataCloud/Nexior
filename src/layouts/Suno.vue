@@ -18,6 +18,9 @@
     <el-drawer v-model="drawer" :with-header="false" size="340px" class="drawer">
       <slot name="config" />
     </el-drawer>
+    <el-drawer v-model="isPlaying" :with-header="false" size="340px" class="preview_drawer">
+      <slot name="preview" />
+    </el-drawer>
   </div>
 </template>
 
@@ -35,8 +38,14 @@ export default defineComponent({
   },
   data() {
     return {
-      drawer: false
+      drawer: false,
+      preview: false
     };
+  },
+  computed: {
+    isPlaying() {
+      return this.$store.state.suno?.player?.isPlaying;
+    }
   }
 });
 </script>
@@ -73,6 +82,9 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
   }
+  .preview_drawer {
+    display: none;
+  }
 }
 
 .menu {
@@ -80,21 +92,23 @@ export default defineComponent({
 }
 
 @media (max-width: 767px) {
-  .config {
-    display: none;
-  }
-  .result {
-    width: 100%;
-  }
-  .preview {
-    display: none;
-  }
-  .menu {
-    display: block;
-    position: fixed;
-    left: 15px;
-    top: 15px;
-    z-index: 2000;
+  .main {
+    .config {
+      display: none;
+    }
+    .result {
+      width: 100%;
+    }
+    .preview {
+      display: none;
+    }
+    .menu {
+      display: block;
+      position: fixed;
+      left: 15px;
+      top: 15px;
+      z-index: 2000;
+    }
   }
 }
 </style>

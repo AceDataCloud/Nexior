@@ -1,6 +1,7 @@
 <template>
   <div class="panel recent">
     <div v-if="tasks?.items === undefined" class="tasks">
+      <!-- 无任务时加载骨架 -->
       <div v-for="_ in 3" :key="_" class="task placeholder">
         <div class="left">
           <el-skeleton animated>
@@ -22,7 +23,7 @@
       </div>
     </div>
     <div v-else-if="tasks?.items?.length && tasks?.items?.length > 0" class="tasks">
-      <task-preview v-for="(task, taskIndex) in tasks?.items" :key="taskIndex" :model-value="task" class="preview" />
+      <task-preview :model-value="tasks.items" class="preview" />
     </div>
     <p v-if="tasks?.items?.length === 0" class="description">
       {{ $t('suno.message.noTasks') }}
@@ -44,6 +45,7 @@ import { defineComponent } from 'vue';
 import TaskPreview from './task/Preview.vue';
 import Footer from '@/components/suno/footer/Footer.vue';
 import { ElSkeleton, ElSkeletonItem } from 'element-plus';
+import { ISunoAudio, ISunoAudioLyric } from '@/models';
 
 export default defineComponent({
   name: 'RecentPanel',
@@ -60,10 +62,16 @@ export default defineComponent({
   },
   computed: {
     tasks() {
+      let songs: (ISunoAudio | ISunoAudioLyric)[] = [];
       // reverse the order of the tasks.items
+      this.$store.state.suno?.tasks?.items
+        ?.slice()
+        .reverse()
+        .flatMap((item) => item?.response?.data ?? [])
+        .forEach((song) => songs.push(song));
       return {
-        ...this.$store.state.suno?.tasks,
-        items: this.$store.state.suno?.tasks?.items?.slice().reverse()
+        // ...this.$store.state.suno?.tasks,
+        items: songs || []
       };
     }
   }
@@ -75,8 +83,8 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100%;
+  // justify-content: center;
+  // height: 100%;
   &.recent {
     width: 100%;
     height: 100%;

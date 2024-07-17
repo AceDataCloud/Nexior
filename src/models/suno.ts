@@ -26,24 +26,6 @@ export interface SongUrl {
   flag: number;
 }
 
-export interface IMusicConfig {
-  audio: HTMLAudioElement;
-  loopType?: number;
-  volume: number;
-  playList: Song[];
-  showPlayList?: boolean;
-  id?: number;
-  url?: string;
-  song?: Song;
-  songUrl?: SongUrl;
-  isPlaying?: boolean;
-  isPause?: boolean;
-  sliderInput?: boolean;
-  ended?: boolean;
-  muted?: boolean;
-  currentTime?: number;
-  duration?: number;
-}
 export interface PlayListDetail {
   task_id: string;
   name: string;
@@ -111,7 +93,7 @@ export interface ISunoLyricRequest {
 }
 
 export interface ISunoAudio {
-  id: string;
+  id?: string;
   lyric?: string;
   model?: string;
   style?: string;
@@ -124,8 +106,8 @@ export interface ISunoAudio {
 }
 
 export interface ISunoAudioLyric {
-  text: string;
-  title: string;
+  text?: string;
+  title?: string;
 }
 
 export interface ISunoAudioResponse {
@@ -141,6 +123,7 @@ export interface ISunoLyricResponse {
 }
 
 export interface ISunoTask {
+  map(arg0: (song: any) => any): any;
   id: string;
   created_at?: string;
   request?: ISunoAudioRequest | ISunoLyricRequest;
