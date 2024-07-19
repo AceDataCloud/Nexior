@@ -1,8 +1,32 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Mon, 08 Jul 2024 18:29:13 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jul 2024 13:57:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.14.0
+
+Tue, 16 Jul 2024 13:57:36 GMT
+
+### Minor changes
+
+- add short link for referral (germey@acedata.cloud)
+
+## 1.13.0
+
+Tue, 16 Jul 2024 13:39:17 GMT
+
+### Minor changes
+
+- add index page (office@acedata.cloud)
+
+## 1.12.0
+
+Sun, 14 Jul 2024 07:35:58 GMT
+
+### Minor changes
+
+- add auto concurrency transform (office@acedata.cloud)
 
 ## 1.11.4
 

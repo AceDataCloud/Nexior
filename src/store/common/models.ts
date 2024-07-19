@@ -5,15 +5,19 @@ import { IChatdocState } from '../chatdoc/models';
 import { IQrartState } from '../qrart/models';
 import { RootState } from '../suno/models';
 
-export interface ISetting {
-  navigationCollapsed?: boolean;
-}
+export interface ISetting {}
 
 export interface ICommonState {
   token: IToken;
   user?: IUser;
   setting?: ISetting;
   site?: ISite;
+  currency: string;
+  exchange:
+    | {
+        [key: string]: number;
+      }
+    | undefined;
 }
 
 export interface IRootState extends ICommonState {

@@ -62,7 +62,6 @@ export default defineComponent({
 
 <style lang="scss">
 .switch {
-  margin-top: 2px;
   --n-rail-color-active: var(--el-color-primary) !important;
   --n-loading-color: var(--el-color-primary) !important;
   border-radius: 10px !important;

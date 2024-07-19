@@ -93,15 +93,15 @@
   },
   "button.pay": {
     "message": "Pagar",
-    "description": "Botão de texto, usado para que o usuário pague a taxa de serviço"
+    "description": "Botão de texto, usado para que o usuário pague pelo serviço"
   },
   "button.repay": {
     "message": "Continuar pagando",
-    "description": "Botão de texto, usado para que o usuário continue pagando a taxa de serviço"
+    "description": "Botão de texto, usado para que o usuário continue pagando pelo serviço"
   },
   "button.applied": {
     "message": "Aplicado",
-    "description": "Botão de texto, usado para mostrar que o usuário já aplicou esse serviço"
+    "description": "Botão de texto, usado para mostrar que o usuário já aplicou o serviço"
   },
   "button.acquire": {
     "message": "Adquirir",
@@ -109,7 +109,7 @@
   },
   "button.fillExample": {
     "message": "Preencher exemplo",
-    "description": "Botão de texto, usado para que o usuário preencha os dados de exemplo"
+    "description": "Botão de texto, usado para que o usuário preencha dados de exemplo"
   },
   "button.buyMore": {
     "message": "Comprar mais",
@@ -181,7 +181,7 @@
   },
   "entity.order": {
     "message": "Pedido",
-    "description": "Pedido da entidade, contendo informações de valor e serviço, pelo qual o usuário precisa pagar"
+    "description": "Pedido da entidade, contendo informações de valor, serviço pelo qual o usuário precisa pagar"
   },
   "message.usedAmount": {
     "message": "Valor Utilizado",
@@ -220,12 +220,12 @@
     "description": "Usado para permitir que o usuário entre no canal do Discord"
   },
   "message.addWeChat": {
-    "message": "Suporte WeChat",
-    "description": "Usado para permitir que o usuário adicione o suporte do WeChat"
+    "message": "Adicionar WeChat",
+    "description": "Usado para permitir que o usuário adicione o WeChat"
   },
   "message.serviceTech": {
     "message": "Suporte Técnico",
-    "description": "Usado para exibir o suporte técnico do serviço"
+    "description": "Usado para exibir mensagem de suporte técnico do serviço"
   },
   "message.businessCooperation": {
     "message": "Cooperação Comercial",
@@ -233,7 +233,7 @@
   },
   "message.noData": {
     "message": "Sem Dados",
-    "description": "Usado para exibir mensagem de ausência de dados em tabelas ou listas"
+    "description": "Usado para exibir mensagem de ausência de dados em tabela ou lista"
   },
   "nav.home": {
     "message": "Início",
@@ -253,7 +253,7 @@
   },
   "nav.profile": {
     "message": "Perfil",
-    "description": "Texto na barra de navegação do site, usado para exibir a página de perfil pessoal"
+    "description": "Texto na barra de navegação do site, usado para exibir a página de perfil do usuário"
   },
   "nav.document": {
     "message": "Documento",
@@ -285,7 +285,7 @@
   },
   "nav.logOut": {
     "message": "Sair",
-    "description": "Texto na barra de navegação do site, usado para sair da sessão"
+    "description": "Texto na barra de navegação do site, usado para sair da conta"
   },
   "nav.site": {
     "message": "Configuração do Site",
@@ -305,7 +305,7 @@
   },
   "title.alert": {
     "message": "Alerta",
-    "description": "Título de mensagem de alerta"
+    "description": "Título da mensagem de alerta"
   },
   "title.placeholderOfSelect": {
     "message": "Selecione",
@@ -329,18 +329,18 @@
   },
   "title.buyMore": {
     "message": "Comprar Mais",
-    "description": "Título da página que incentiva o usuário a comprar mais"
+    "description": "Título da página que permite ao usuário comprar mais"
   },
   "title.distribution": {
     "message": "Rendimento Recomendado",
-    "description": "Título da página que exibe o rendimento recomendado, indicando que o usuário pode ganhar dinheiro convidando outras pessoas a usar o serviço"
+    "description": "Título da página que exibe o rendimento recomendado, indicando que o usuário pode ganhar dinheiro convidando outras pessoas para usar o serviço"
   },
   "title.site": {
-    "message": "Configuração do site",
+    "message": "Configuração do Site",
     "description": "Mostra o título da página de configuração do site"
   },
   "title.distributionHistory": {
-    "message": "Histórico de distribuição",
+    "message": "Histórico de Distribuição",
     "description": "Mostra o título da página de histórico de distribuição"
   },
   "title.invitee": {
@@ -348,11 +348,67 @@
     "description": "Mostra o título da página do convidador"
   },
   "title.allUsages": {
-    "message": "Todos os usos",
+    "message": "Histórico de Uso",
     "description": "Mostra o título da página de todos os registros de uso do serviço de API"
   },
   "title.allCredentials": {
     "message": "Credenciais",
     "description": "Mostra o título da página de todas as credenciais usadas para acessar a API"
+  },
+  "about.title1": {
+    "message": "Entre em Contato",
+    "description": "Mostra o título da seção de informações de contato"
+  },
+  "about.title2": {
+    "message": "Recursos",
+    "description": "Mostra o título da seção de links"
+  },
+  "about.title3": {
+    "message": "Links",
+    "description": "Mostra o título da seção de informações de suporte"
+  },
+  "about.address": {
+    "message": "201 N Broad St, Middletown, DE, EUA",
+    "description": "Endereço da empresa"
+  },
+  "about.email": {
+    "message": "office@acedata.cloud",
+    "description": "E-mail da empresa"
+  },
+  "about.link1": {
+    "message": "Serviço",
+    "description": "Link para a página de serviço"
+  },
+  "about.link2": {
+    "message": "Documentação",
+    "description": "Link para a página de documentação"
+  },
+  "about.link3": {
+    "message": "Console",
+    "description": "Link para a página do console"
+  },
+  "about.link4": {
+    "message": "Perfil",
+    "description": "Link para a página de perfil"
+  },
+  "about.link5": {
+    "message": "Central",
+    "description": "Link para a página central"
+  },
+  "about.link6": {
+    "message": "Rendimento de Indicação",
+    "description": "Link para a página de rendimento de indicação"
+  },
+  "about.link7": {
+    "message": "Suporte",
+    "description": "Link para a página de suporte"
+  },
+  "about.link8": {
+    "message": "Termos de Serviço",
+    "description": "Link para a página de termos de serviço"
+  },
+  "about.link9": {
+    "message": "Política de Privacidade",
+    "description": "Link para a página de política de privacidade"
   }
 }

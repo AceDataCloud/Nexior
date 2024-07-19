@@ -20,7 +20,7 @@
               </el-table-column>
               <el-table-column :label="$t('order.field.price')" width="100px">
                 <template #default="scope">
-                  <span class="price">${{ scope.row?.price?.toFixed(2) }}</span>
+                  <span class="price">{{ getPriceString({ value: scope.row?.price }) }}</span>
                 </template>
               </el-table-column>
               <el-table-column prop="state" :label="$t('order.field.state')" class-name="text-center" width="150px">
@@ -108,6 +108,7 @@ import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { ElRow, ElCol, ElTable, ElTableColumn, ElButton, ElTag, ElCard } from 'element-plus';
 import { IOrder, IOrderListResponse, OrderState } from '@/models';
+import { getPriceString } from '@/utils';
 
 interface IData {
   orders: IOrder[];
@@ -159,6 +160,7 @@ export default defineComponent({
     this.onFetchData();
   },
   methods: {
+    getPriceString,
     onPageChange(page: number) {
       this.$router.push({
         name: this.$route.name?.toString(),

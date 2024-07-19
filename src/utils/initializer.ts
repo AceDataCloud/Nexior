@@ -5,6 +5,7 @@ import store from '@/store';
 import { log } from './log';
 import { IToken } from '@/models';
 import psl from 'psl';
+import { LOCALE_CURRENCY_MAPPING } from '@/constants';
 
 export const getDomain = (host: string = window.location.hostname) => {
   const parsed = psl.parse(host);
@@ -173,4 +174,29 @@ export const initializeUser = async () => {
   }
   const user = await store.dispatch('getUser');
   console.debug('get user', user);
+};
+
+export const initializeCurrency = async () => {
+  const locale = getCookie('LOCALE');
+  console.log('initialize currency', locale);
+  const mapping = LOCALE_CURRENCY_MAPPING;
+  let currency = 'usd';
+  if (locale && mapping[locale]) {
+    currency = mapping[locale];
+  }
+  console.log('set currency', currency);
+  await store.dispatch('setCurrency', currency);
+};
+
+export const initializeExchangeRate = async () => {
+  const locale = getCookie('LOCALE');
+  const mapping = LOCALE_CURRENCY_MAPPING;
+  if (!locale || !mapping[locale]) {
+    return;
+  }
+  const target = mapping[locale];
+  const source = 'usd';
+  const payload = { source, target };
+  console.log('initialize exchange rate', payload);
+  await store.dispatch('getExchangeRate', payload);
 };

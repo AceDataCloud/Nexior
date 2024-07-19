@@ -1,17 +1,13 @@
 <template>
-  <el-container id="footer" class="footer pt-7">
+  <el-container id="footer" class="footer">
     <el-row class="w-full">
       <el-col class="container" :span="18" :offset="3">
         <el-row>
-          <el-col :span="12" :offset="6" class="p-t text-center">
+          <el-col :span="24" class="text-center">
             <p>
-              <span
-                ><a href="https://acedata.cloud">{{ $t('common.entity.website') }}</a> © {{ new Date().getFullYear() }}
-                {{ $t('common.entity.copyright') }}
-              </span>
-              <span class="ml-2">
-                <a href="https://beian.miit.gov.cn/">京ICP备18021371号-2 </a>
-              </span>
+              <a href="https://platform.acedata.cloud">{{ $t('common.entity.website') }}</a> ©
+              {{ new Date().getFullYear() }}
+              {{ $t('common.entity.copyright') }}
             </p>
           </el-col>
         </el-row>
@@ -39,11 +35,24 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
-$height: 80px;
+<style lang="scss" scoped>
+.container {
+  margin: auto;
+  max-width: 1200px;
+  padding: 30px 0 20px 0;
+}
+
 .footer {
-  height: $height;
-  background: radial-gradient(circle at 0 2%, #111827, #1a125d 99%);
+  background-color: var(--el-color-primary);
   color: white;
+  padding: 0;
+  .title {
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+  }
 }
 </style>

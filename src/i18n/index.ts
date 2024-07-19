@@ -67,6 +67,7 @@ export const getLocale = (lang?: string): string => {
 
 export const loadLocaleMessages = async (i18n: I18n, locale: string) => {
   const names = [
+    'index',
     'api',
     'application',
     'qrart',

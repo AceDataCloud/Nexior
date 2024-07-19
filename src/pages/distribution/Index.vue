@@ -191,7 +191,7 @@ import {
   ElTooltip,
   ElSkeleton
 } from 'element-plus';
-import { distributionLevelOperator, distributionStatusOperator } from '@/operators';
+import { distributionLevelOperator, distributionStatusOperator, shortUrlOperator } from '@/operators';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { userOperator } from '@/operators';
 import QrCode from 'vue-qrcode';
@@ -202,6 +202,7 @@ interface IData {
   invitees: IUser[];
   inviteesCount: number | undefined;
   distributionLevels: IDistributionLevel[];
+  distributionLink: string | undefined;
   distributionStatus: IDistributionStatus | undefined;
   loading: boolean;
 }
@@ -228,6 +229,7 @@ export default defineComponent({
       invitees: [],
       inviteesCount: undefined,
       distributionLevels: [],
+      distributionLink: undefined,
       distributionStatus: undefined,
       loading: false
     };
@@ -247,13 +249,6 @@ export default defineComponent({
         result[item.level] = item;
       });
       return result;
-    },
-    distributionLink() {
-      const origin = window.location.origin;
-      if (!this.$store.getters.user?.id) {
-        return origin;
-      }
-      return `${origin}?inviter_id=${this.$store.getters.user.id}`;
     }
   },
   watch: {
@@ -265,6 +260,7 @@ export default defineComponent({
   },
   async mounted() {
     this.onFetchData();
+    this.onGenerateDistributionLink();
   },
   methods: {
     goHistory() {
@@ -304,6 +300,16 @@ export default defineComponent({
           this.loading = false;
         }
       );
+    },
+    async onGenerateDistributionLink() {
+      const origin = window.location.origin;
+      const link = `${origin}?inviter_id=${this.$store.getters.user.id}`;
+      try {
+        const url = (await shortUrlOperator.create(link))?.data?.data?.url;
+        this.distributionLink = url || link;
+      } catch (error) {
+        this.distributionLink = link;
+      }
     },
     async onFetchDistributionStatus() {
       const { data } = await distributionStatusOperator.getAll({
@@ -392,6 +398,7 @@ export default defineComponent({
   }
 
   .link-wrapper {
+    text-align: center;
     margin-bottom: 10px;
     .link {
       color: var(--el-color-primary);

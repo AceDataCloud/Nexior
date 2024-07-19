@@ -38,7 +38,7 @@
                     </el-descriptions-item>
                     <el-descriptions-item :label="$t('order.field.price')">
                       <span v-if="order?.price && order?.price > 0" class="price unfree">
-                        ${{ order?.price?.toFixed(2) }}
+                        {{ getPriceString({ value: order?.price }) }}
                       </span>
                       <span v-else class="price free"> {{ $t('order.message.free') }} </span>
                     </el-descriptions-item>
@@ -142,6 +142,7 @@ import {
 import WechatPayOrder from '@/components/order/WechatPay.vue';
 import StripePayOrder from '@/components/order/StripePay.vue';
 import { IApplicationType, IOrder, IOrderDetailResponse, OrderState } from '@/models';
+import { getPriceString } from '@/utils';
 
 enum PayWay {
   WechatPay = 'WechatPay',
@@ -216,6 +217,7 @@ export default defineComponent({
     this.onFetchData();
   },
   methods: {
+    getPriceString,
     onFetchData() {
       this.loading = true;
       orderOperator

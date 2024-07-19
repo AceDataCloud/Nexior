@@ -62,3 +62,21 @@ class DistributionLevelService {
 }
 
 export const distributionLevelOperator = new DistributionLevelService();
+
+interface IShortUrlCreateResponse {
+  data: {
+    url: string;
+  };
+}
+
+class ShortUrlService {
+  key = 'shorturl';
+
+  async create(url: string): Promise<AxiosResponse<IShortUrlCreateResponse>> {
+    return await httpClient.post(`/${this.key}`, {
+      content: url
+    });
+  }
+}
+
+export const shortUrlOperator = new ShortUrlService();
