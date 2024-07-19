@@ -3,14 +3,8 @@
     <div class="title-container">
       <h2 class="title">{{ $t('suno.name.prompt') }}</h2>
       <info-icon :content="$t('suno.description.prompt')" class="info" />
-      <el-switch
-        v-model="instrumental"
-        class="ml-2"
-        inline-prompt
-        style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949"
-        active-text="有歌词"
-        inactive-text="无歌词"
-      />
+      <el-switch v-model="instrumental" class="value" />
+      <h2 class="title">{{ $t('suno.description.instrumental') }}</h2>
     </div>
     <el-input
       v-model="prompt"

@@ -3,14 +3,8 @@
     <div class="title-container">
       <h2 class="title">{{ $t('suno.name.style') }}</h2>
       <info-icon :content="$t('suno.description.style')" class="info" />
-      <el-switch
-        v-model="instrumental"
-        class="ml-2"
-        inline-prompt
-        style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949"
-        active-text="有歌词"
-        inactive-text="无歌词"
-      />
+      <el-switch v-show="config?.instrumental" v-model="instrumental" class="value" />
+      <h2 v-show="config?.instrumental" class="title">{{ $t('suno.description.instrumental') }}</h2>
     </div>
     <el-input
       v-model="style"
@@ -53,6 +47,9 @@ export default defineComponent({
           style: val
         });
       }
+    },
+    config() {
+      return this.$store.state.suno?.config;
     },
     instrumental: {
       get() {

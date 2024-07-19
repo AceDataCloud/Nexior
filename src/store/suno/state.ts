@@ -1,5 +1,5 @@
 import { RootState } from './models';
-import { Status, Song, SongUrl } from '@/models';
+import { Status, Song } from '@/models';
 
 const KEYS = {
   volume: 'PLAYER-VOLUME'
@@ -23,10 +23,9 @@ export default (): RootState => {
       volume: parseInt(localStorage.getItem(KEYS.volume) || '60'),
       playList: [],
       showPlayList: false,
-      id: '0',
+      id: '',
       url: '',
-      // songUrl: {} as SongUrl,
-      song: {} as Song,
+      song: undefined,
       isPlaying: false,
       isPause: false,
       sliderInput: false,

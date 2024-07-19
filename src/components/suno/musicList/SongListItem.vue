@@ -4,30 +4,29 @@
     :class="{ playing: id === song.id }"
     @dblclick="play(song)"
   >
-    <div class="song-player">
-      <!-- 歌曲封面 -->
+    <div class="flex-shrink-0 flex-1 flex items-center justify-between pr-5">
       <div class="cover-container">
         <el-image :src="song.image_url" class="cover-image" fit="cover">
           <template #placeholder>
             <div class="image-slot">Loading...</div>
           </template>
         </el-image>
-        <div class="duration">{{ useFormatDuring(song.duration) }}</div>
-        <div v-if="id === song.id" class="play-overlay">
+        <div class="duration">{{ useFormatDuring(song?.duration) }}</div>
+        <div v-if="id === song.id && isPlaying" class="play-overlay" @click="togglePlay">
           <el-icon><VideoPause /></el-icon>
         </div>
-        <div v-else class="play-overlay">
+        <div v-else class="play-overlay" @click="play(song)">
           <el-icon><VideoPlay /></el-icon>
         </div>
       </div>
-      <!-- 歌曲详情信息 -->
+
       <div class="content">
         <div class="song-info">
-          <h2>{{ song.title }}</h2>
-          <p>{{ song.style }}</p>
+          <h2>{{ song?.title }}</h2>
+          <p>{{ song?.style }}</p>
         </div>
         <div class="controls">
-          <el-button type="primary" class="extend-btn">{{ extendButtonText }}</el-button>
+          <!-- <el-button type="primary" class="extend-btn">{{ extendButtonText }}</el-button> -->
         </div>
       </div>
     </div>
@@ -41,6 +40,8 @@ import { ElButton, ElImage, ElIcon } from 'element-plus';
 import { VideoPlay, VideoPause } from '@element-plus/icons-vue';
 import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
+import IconPark from '@/components/common/IconPark.vue';
+import { ThumbsUp, More, ThumbsDown } from '@icon-park/vue-next';
 const store = useStore();
 defineProps<{
   // @ts-ignore
@@ -51,8 +52,13 @@ const id = computed({
   get: () => store.state.suno.player.id,
   set: (value) => store.commit('suno/setId', value)
 });
+const isPlaying = computed({
+  get: () => store.state.suno.player.isPlaying,
+  set: (value) => store.commit('suno/setIsPlaying', value)
+});
 // 方法
 const play = (song: Song) => store.dispatch('suno/play', song);
+const togglePlay = () => store.dispatch('suno/togglePlay');
 </script>
 
 <style lang="scss" scoped>
@@ -66,18 +72,8 @@ const play = (song: Song) => store.dispatch('suno/play', song);
 }
 
 .playing {
-  @apply bg-blue-800 dark:bg-stone-800;
-}
-.song-player {
-  display: flex;
-  align-items: center;
-  padding: 12px;
-  background-color: var(--el-color-primary);
-  color: white;
-  border-radius: 8px;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
+  background: var(--el-bg-color-page);
+  // @apply bg-[var(--el-bg-color-page)] dark:bg-[var(--el-bg-color-page)];
 }
 
 .cover-container {
@@ -166,7 +162,7 @@ const play = (song: Song) => store.dispatch('suno/play', song);
 }
 
 .extend-btn:hover {
-  background-color: #1ed760;
+  background-color: var(--el-color-primary);
   border-color: #1ed760;
 }
 

@@ -11,20 +11,6 @@ export interface Song {
   title?: string;
   duration?: number;
 }
-export interface SongUrl {
-  id: number;
-  url: string;
-  br: number;
-  size: number;
-  md5: string;
-  code: number;
-  expi: number;
-  type: string;
-  gain: number;
-  fee: number;
-  payed: number;
-  flag: number;
-}
 
 export interface PlayListDetail {
   task_id: string;

@@ -6,15 +6,9 @@
         <div class="container mx-auto">
           <div class="playlist">
             <div v-if="modelValue" class="p-5">
-              <!-- <Info :playlist="playlist" :play-all="() => playAll()" /> -->
-              <el-tabs v-model="tab" class="mt-3">
-                <el-tab-pane lazy :label="`歌曲 ${modelValue.length}`" name="tracks">
-                  <SongList :songs="modelValue" />
-                </el-tab-pane>
-              </el-tabs>
+              <SongList :songs="modelValue" />
             </div>
           </div>
-          <!-- <MusicList /> -->
         </div>
       </ElScrollbar>
     </div>
@@ -32,14 +26,8 @@ import SongList from '@/components/suno/musicList/SongList.vue';
 export default defineComponent({
   name: 'TaskPreview',
   components: {
-    ElImage,
-    CopyToClipboard,
-    FontAwesomeIcon,
-    ElAlert,
     ElScrollbar,
-    SongList,
-    ElTabs,
-    ElTabPane
+    SongList
   },
   props: {
     modelValue: {

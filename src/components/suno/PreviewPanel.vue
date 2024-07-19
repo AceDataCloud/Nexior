@@ -1,6 +1,6 @@
 <template>
-  <el-scrollbar class="card-scrollbar">
-    <div v-if="song" class="card" @mouseenter="showCloseIcon = true" @mouseleave="showCloseIcon = false">
+  <el-scrollbar class="right-panel">
+    <div v-if="song" class="card">
       <div class="image-container">
         <el-image :src="song.image_url" fit="cover">
           <template #error>
@@ -9,16 +9,16 @@
             </div>
           </template>
         </el-image>
-        <el-icon v-show="showCloseIcon" size="large" class="close-icon" @click="closeCard">
+        <!-- <el-icon v-show="showCloseIcon" size="large" class="close-icon" @click="closeCard">
           <Close />
-        </el-icon>
-        <h2 class="title">{{ song.title }}</h2>
+        </el-icon> -->
+        <h2 class="title">{{ song?.title }}</h2>
       </div>
       <div class="content">
-        <p>{{ song.style }}</p>
+        <p>{{ song?.style }}</p>
         <div class="artist">
-          <el-avatar :size="30" :src="song.image_url"></el-avatar>
-          <span>{{ song.prompt }}</span>
+          <el-avatar :size="30" :src="song?.image_url"></el-avatar>
+          <span>{{ song?.prompt }}</span>
         </div>
         <p>{{ $dayjs.format(song?.created_at) }}</p>
         <!-- <div class="actions">
@@ -27,37 +27,51 @@
           <el-icon class="action-icon"><Share /></el-icon>
         </div> -->
         <div class="lyrics">
-          <p style="white-space: pre-wrap" v-html="song.lyric"></p>
+          <p style="white-space: pre-wrap; font-size: 14%" v-html="song?.lyric"></p>
         </div>
       </div>
     </div>
+    <div v-else class="gradient-background"></div>
   </el-scrollbar>
 </template>
 
-<script setup lang="ts">
-import { inject, Ref, ref } from 'vue';
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
 import { ElAside, ElImage, ElScrollbar, ElAvatar, ElIcon } from 'element-plus';
 import { Close, Picture as IconPicture, Plus, Minus, Share } from '@element-plus/icons-vue';
 import { ElPopover } from 'element-plus';
-import { computed } from 'vue';
-import { useStore } from 'vuex';
-const store = useStore();
-// 状态
-const song = computed({
-  get: () => store.state.suno.player.song,
-  set: (value) => store.commit('suno/setSong', value)
-});
 
-const genre = ref('synth-driven pop');
-const showCloseIcon = ref(false);
-const closeCard = () => {
-  console.log('Card closed');
-};
+export default defineComponent({
+  name: 'TaskPreview',
+  components: {
+    ElScrollbar,
+    IconPicture,
+    ElImage,
+    ElAvatar,
+    ElIcon
+  },
+
+  data() {
+    return {
+      showCloseIcon: true
+    };
+  },
+  computed: {
+    song() {
+      return this.$store.state.suno?.player?.song;
+    }
+  },
+  methods: {
+    closeCard() {
+      this.showCloseIcon = !this.showCloseIcon;
+    }
+  }
+});
 </script>
 
 <style scoped>
 .right-panel {
-  padding: 20px;
+  padding: 2px;
   background-color: #1e1e1e;
   color: #fff;
 }

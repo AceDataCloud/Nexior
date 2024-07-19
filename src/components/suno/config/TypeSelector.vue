@@ -1,15 +1,15 @@
 <template>
   <div class="field">
-    <el-switch
-      v-model="custom"
-      class="ml-2 value"
-      inline-prompt
-      style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949"
-      size="large"
-      :inactive-text="$t('suno.name.type_1')"
-      :active-text="$t('suno.name.type_2')"
-    />
-    <el-select v-model="model" size="large" class="value" :placeholder="$t('suno.placeholder.select')">
+    <el-switch v-model="custom" class="value" />
+    <h2 class="title">{{ $t('suno.name.type_2') }}</h2>
+
+    <el-select
+      v-model="model"
+      size="small"
+      class="value"
+      :placeholder="$t('suno.placeholder.select')"
+      style="width: 3px"
+    >
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" style="width: 300px">
         <span style="float: left">{{ item.label }}</span>
         <span style="float: right; color: var(--el-text-color-secondary); font-size: 13px">
@@ -44,17 +44,17 @@ export default defineComponent({
       options: [
         {
           label: this.$t('suno.model.model_1'),
-          value: this.$t('suno.model.model_1'),
+          value: this.$t('suno.value.model_1'),
           description: 'chirp-v2的模型'
         },
         {
           label: this.$t('suno.model.model_2'),
-          value: this.$t('suno.model.model_2'),
+          value: this.$t('suno.value.model_2'),
           description: 'chirp-v3的模型'
         },
         {
           label: this.$t('suno.model.model_3'),
-          value: this.$t('suno.model.model_3'),
+          value: this.$t('suno.value.model_3'),
           description: 'chirp-v3-5的模型'
         }
       ]
@@ -101,11 +101,12 @@ export default defineComponent({
   flex-direction: row;
   align-items: center;
 
-  .type {
+  .title {
     font-size: 14px;
     margin: 0;
     width: 30%;
   }
+
   .value {
     flex: 1;
   }

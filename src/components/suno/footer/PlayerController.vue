@@ -1,6 +1,5 @@
 <template>
   <div class="flex items-center justify-center gap-x-3">
-    <!-- 歌曲的循环模式 -->
     <IconPark
       :icon="loopType === 0 ? PlayOnce : loopType === 1 ? LoopOnce : ShuffleOne"
       size="20"
@@ -8,9 +7,7 @@
       class="hover-text"
       @click="toggleLoop"
     />
-    <!-- 播放上一首 -->
     <IconPark :icon="GoStart" size="28" theme="filled" class="hover-text" @click="prev" />
-    <!-- 播放与暂停 -->
     <IconPark
       :icon="isPause ? Play : PauseOne"
       size="45"
@@ -18,9 +15,7 @@
       class="hover-text text-emerald-400"
       @click="togglePlay"
     />
-    <!-- 播放下一首 -->
     <IconPark :icon="GoEnd" size="28" class="hover-text" @click="next" />
-    <!-- 歌曲音量控制 -->
     <el-popover placement="top" width="50px">
       <template #reference>
         <IconPark :icon="VolumeSmall" size="20" :stroke-width="3" class="hover-text" />

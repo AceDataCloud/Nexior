@@ -187,7 +187,7 @@ export default defineComponent({
           routes: [ROUTE_QRART_INDEX, ROUTE_QRART_HISTORY]
         });
       }
-      // 添加suno最左边图标
+      // Add suno's leftmost icon
       if (this.$store?.state?.site?.features?.suno?.enabled) {
         result.push({
           route: {

@@ -1,15 +1,14 @@
 <template>
   <div class="flex player-song">
-    <img alt="" class="w-11 h-11 rounded" :src="song.image_url || OpticalDisk" />
+    <img alt="" class="w-11 h-11 rounded" :src="song?.image_url || OpticalDisk" />
     <div class="ml-2 text-xs flex flex-col justify-between">
       <div class="w-52 2xl:w-96 cursor-pointer truncate">
         <div class="flex">
-          <span>{{ song.title || '开源云音乐' }}</span>
-          <span class="ml-2 text-dc">- {{ song.style || `SmallRuralDog` }}</span>
+          <span>{{ song?.title || 'Music' }}</span>
+          <span class="ml-2 text-dc">- {{ song?.style || `SmallRuralDog` }}</span>
         </div>
       </div>
       <div class="flex gap-x-3 text-main">
-        <!-- 点赞，分享，更多 -->
         <IconPark :icon="ThumbsUp" size="18" :stroke-width="3" class="text-slate-400 hover-text" />
         <IconPark :icon="ThumbsDown" size="18" :stroke-width="3" class="text-slate-400 hover-text" />
         <IconPark :icon="Share" size="18" :stroke-width="3" class="text-slate-400 hover-text" />

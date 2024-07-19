@@ -18,9 +18,9 @@
     <el-drawer v-model="drawer" :with-header="false" size="340px" class="drawer">
       <slot name="config" />
     </el-drawer>
-    <el-drawer v-model="isPlaying" :with-header="false" size="340px" class="preview_drawer">
+    <!-- <el-drawer v-model="isPlaying" :with-header="false" size="340px" class="preview_drawer">
       <slot name="preview" />
-    </el-drawer>
+    </el-drawer> -->
   </div>
 </template>
 

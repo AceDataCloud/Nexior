@@ -3,16 +3,28 @@
     "message": "任务 ID",
     "description": "任务的 ID"
   },
-  "model.model_1": {
+  "value.model_1": {
     "message": "chirp-v2-xxl-alpha",
     "description": "用于生成QR码的内容类型"
   },
-  "model.model_2": {
+  "value.model_2": {
     "message": "chirp-v3-0",
     "description": "用于生成QR码的内容类型"
   },
-  "model.model_3": {
+  "value.model_3": {
     "message": "chirp-v3-5",
+    "description": "用于生成QR码的内容类型"
+  },
+  "model.model_1": {
+    "message": "v2",
+    "description": "用于生成QR码的内容类型"
+  },
+  "model.model_2": {
+    "message": "v3",
+    "description": "用于生成QR码的内容类型"
+  },
+  "model.model_3": {
+    "message": "v3.5",
     "description": "用于生成QR码的内容类型"
   },
   "name.type_1": {
@@ -75,6 +87,14 @@
     "message": "歌曲标题的内容",
     "description": "参数'title'的描述"
   },
+  "description.instrumental": {
+    "message": "有歌词",
+    "description": "参数'title'的描述"
+  },
+  "description.noInstrumental": {
+    "message": "无歌词",
+    "description": "参数'title'的描述"
+  },
   "status.pending": {
     "message": "等待中",
     "description": "任务的等待状态"
@@ -135,102 +155,6 @@
     "message": "上传二维码",
     "description": "上传二维码的按钮文本"
   },
-  "preset.sunset": {
-    "message": "日落",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.floral": {
-    "message": "花卉",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.snowflakes": {
-    "message": "雪花",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.feathers": {
-    "message": "羽毛",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.raindrops": {
-    "message": "雨滴",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.ultraRealism": {
-    "message": "超现实",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.epicRealms": {
-    "message": "史诗王国",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.intricateStudio": {
-    "message": "复杂工作室",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.symmetricMasterpiece": {
-    "message": "对称杰作",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.luminousHighway": {
-    "message": "发光之路",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.celestialJourney": {
-    "message": "天体之旅",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.neonMech": {
-    "message": "霓虹机械",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.etherealLowPoly": {
-    "message": "空灵低多边形",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.goldenVista": {
-    "message": "金色景观",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.cinematicExpanse": {
-    "message": "电影般的广阔",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.cinematicWarm": {
-    "message": "电影般的温暖",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.desolateWilderness": {
-    "message": "荒凉荒野",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.vibrantPalette": {
-    "message": "充满活力的调色板",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.enigmaticJourney": {
-    "message": "神秘之旅",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.timelessCinematic": {
-    "message": "永恒的电影",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.regalGalaxy": {
-    "message": "华丽星系",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.illustriousCanvas": {
-    "message": "杰出画布",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.expressiveMural": {
-    "message": "富有表现力的壁画",
-    "description": "要生成的 QR 码的预设风格"
-  },
-  "preset.sereneHaze": {
-    "message": "宁静薄雾",
-    "description": "要生成的 QR 码的预设风格"
-  },
   "message.uploadQr": {
     "message": "上传二维码图片，可生成和二维码内容一致的艺术二维码",
     "description": "上传二维码的说明"
@@ -278,113 +202,5 @@
   "message.noTasks": {
     "message": "没有历史任务，请在左侧配置栏生成音乐",
     "description": "没有任务时的消息"
-  },
-  "markerShape.square": {
-    "message": "正方形",
-    "description": "用于生成QR码的标记形状"
-  },
-  "markerShape.circle": {
-    "message": "圆形",
-    "description": "用于生成QR码的标记形状"
-  },
-  "markerShape.plus": {
-    "message": "加号",
-    "description": "用于生成QR码的标记形状"
-  },
-  "markerShape.box": {
-    "message": "方框",
-    "description": "用于生成QR码的标记形状"
-  },
-  "markerShape.octagon": {
-    "message": "八边形",
-    "description": "用于生成QR码的标记形状"
-  },
-  "markerShape.tinyPlus": {
-    "message": "微加号",
-    "description": "用于生成QR码的标记形状"
-  },
-  "markerShape.random": {
-    "message": "随机",
-    "description": "用于生成QR码的标记形状"
-  },
-  "subMarker.square": {
-    "message": "正方形",
-    "description": "用于生成QR码的子标记形状"
-  },
-  "subMarker.circle": {
-    "message": "圆形",
-    "description": "用于生成QR码的子标记形状"
-  },
-  "subMarker.plus": {
-    "message": "加号",
-    "description": "用于生成QR码的子标记形状"
-  },
-  "subMarker.box": {
-    "message": "方框",
-    "description": "用于生成QR码的子标记形状"
-  },
-  "subMarker.random": {
-    "message": "随机",
-    "description": "用于生成QR码的子标记形状"
-  },
-  "position.center": {
-    "message": "中心",
-    "description": "用于生成QR码的位置"
-  },
-  "position.topLeft": {
-    "message": "左上",
-    "description": "用于生成QR码的位置"
-  },
-  "position.topRight": {
-    "message": "右上",
-    "description": "用于生成QR码的位置"
-  },
-  "position.bottomLeft": {
-    "message": "左下",
-    "description": "用于生成QR码的位置"
-  },
-  "position.bottomRight": {
-    "message": "右下",
-    "description": "用于生成QR码的位置"
-  },
-  "position.top": {
-    "message": "顶部",
-    "description": "用于生成QR码的位置"
-  },
-  "position.bottom": {
-    "message": "底部",
-    "description": "用于生成QR码的位置"
-  },
-  "position.left": {
-    "message": "左侧",
-    "description": "用于生成QR码的位置"
-  },
-  "position.right": {
-    "message": "右侧",
-    "description": "用于生成QR码的位置"
-  },
-  "pixelStyle.row": {
-    "message": "行",
-    "description": "用于生成QR码的像素风格"
-  },
-  "pixelStyle.column": {
-    "message": "列",
-    "description": "用于生成QR码的像素风格"
-  },
-  "pixelStyle.square": {
-    "message": "正方形",
-    "description": "用于生成QR码的像素风格"
-  },
-  "pixelStyle.rounded": {
-    "message": "圆角",
-    "description": "用于生成QR码的像素风格"
-  },
-  "pixelStyle.dot": {
-    "message": "点",
-    "description": "用于生成QR码的像素风格"
-  },
-  "pixelStyle.squircle": {
-    "message": "圆角矩形",
-    "description": "用于生成QR码的像素风格"
   }
 }

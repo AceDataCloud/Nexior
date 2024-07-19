@@ -142,11 +142,12 @@ export const clearPlayList = ({ commit }: ActionContext<RootState, IRootState>):
 };
 // 播放歌曲
 export const play = ({ commit, state, dispatch }: ActionContext<RootState, IRootState>, song: Song): void => {
-  if (song.id == state.player.id) return;
+  if (song.id == state.player?.id) return;
   commit('setIsPlaying', false);
   // const data = await useSongUrl(id);
   // @ts-ignore
   state.player.audio.src = song.audio_url;
+  // @ts-ignore
   state.player.audio
     .play()
     .then(() => {
@@ -159,10 +160,11 @@ export const play = ({ commit, state, dispatch }: ActionContext<RootState, IRoot
       console.log(res);
     });
 };
+
 // 播放结束
 export const playEnd = ({ state, dispatch }: ActionContext<RootState, IRootState>): void => {
   console.log('播放结束');
-  switch (state.player.loopType) {
+  switch (state.player?.loopType) {
     case 0:
       dispatch('rePlay');
       break;
@@ -183,12 +185,13 @@ export const songDetail = ({ commit, state }: ActionContext<RootState, IRootStat
 export const rePlay = ({ commit, state }: ActionContext<RootState, IRootState>): void => {
   setTimeout(() => {
     commit('setCurrentTime', 0);
-    state.player.audio.play();
+    // @ts-ignore
+    state.player?.audio.play();
   }, 1500);
 };
 // 下一首
 export const next = ({ state, dispatch, getters }: ActionContext<RootState, IRootState>): void => {
-  if (state.player.loopType === 2) {
+  if (state.player?.loopType === 2) {
     dispatch('randomPlay');
   } else {
     dispatch('play', getters.nextSong);
@@ -200,44 +203,50 @@ export const prev = ({ dispatch, getters }: ActionContext<RootState, IRootState>
 };
 // 随机播放
 export const randomPlay = ({ state, dispatch }: ActionContext<RootState, IRootState>): void => {
-  const randomSong = state.player.playList[Math.floor(Math.random() * state.player.playList.length)];
+  // @ts-ignore
+  const randomSong = state.player?.playList[Math.floor(Math.random() * state.player?.playList.length)];
   dispatch('play', randomSong);
 };
 
 export const togglePlay = ({ commit, state }: ActionContext<RootState, IRootState>): void => {
-  if (!state.player.song.id) return;
+  if (!state.player?.song?.id) return;
   const isPlaying = !state.player.isPlaying;
   commit('setIsPlaying', isPlaying);
   if (!isPlaying) {
-    state.player.audio.pause();
+    // @ts-ignore
+    state.player?.audio.pause();
     commit('setIsPause', true);
   } else {
-    state.player.audio.play();
+    // @ts-ignore
+    state.player?.audio.play();
     commit('setIsPause', false);
   }
 };
 
 export const setPlay = ({ commit, state }: ActionContext<RootState, IRootState>): void => {
-  if (!state.player.song.id) return;
+  if (!state.player?.song?.id) return;
   commit('setIsPlaying', true);
-  state.player.audio.play();
+  // @ts-ignore
+  state.player?.audio.play();
   commit('setIsPause', false);
 };
 
 export const setPause = ({ commit, state }: ActionContext<RootState, IRootState>): void => {
-  if (!state.player.song.id) return;
+  if (!state.player?.song?.id) return;
   commit('setIsPlaying', false);
-  state.player.audio.pause();
+  // @ts-ignore
+  state.player?.audio.pause();
   commit('setIsPause', true);
 };
 
 export const toggleLoop = ({ commit, state }: ActionContext<RootState, IRootState>): void => {
-  const newLoopType = state.player.loopType === 2 ? 0 : state.player.loopType + 1;
+  // @ts-ignore
+  const newLoopType = state.player?.loopType === 2 ? 0 : state.player?.loopType + 1;
   commit('setLoopType', newLoopType);
 };
 
 export const toggleMuted = ({ commit, state }: ActionContext<RootState, IRootState>): void => {
-  commit('setMuted', !state.player.muted);
+  commit('setMuted', !state.player?.muted);
 };
 
 export const setVolume = ({ commit }: ActionContext<RootState, IRootState>, volume: number): void => {
@@ -248,6 +257,7 @@ export const setVolume = ({ commit }: ActionContext<RootState, IRootState>, volu
 export const onSliderChange = ({ commit, state }: ActionContext<RootState, IRootState>, val: number): void => {
   commit('setCurrentTime', val);
   commit('setSliderInput', false);
+  // @ts-ignore
   state.player.audio.currentTime = val;
 };
 
@@ -256,10 +266,13 @@ export const onSliderInput = ({ commit }: ActionContext<RootState, IRootState>, 
 };
 
 export const interval = ({ commit, state }: ActionContext<RootState, IRootState>): void => {
-  if (state.player.isPlaying && !state.player.sliderInput) {
-    commit('setCurrentTime', Math.floor(state.player.audio.currentTime));
-    commit('setDuration', Math.floor(state.player.audio.duration));
-    commit('setEnded', state.player.audio.ended);
+  if (state.player?.isPlaying && !state.player.sliderInput) {
+    // @ts-ignore
+    commit('setCurrentTime', Math.floor(state.player?.audio?.currentTime));
+    // @ts-ignore
+    commit('setDuration', Math.floor(state.player?.audio.duration));
+    // @ts-ignore
+    commit('setEnded', state.player?.audio.ended);
   }
 };
 

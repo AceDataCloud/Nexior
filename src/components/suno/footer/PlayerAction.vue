@@ -1,13 +1,6 @@
 <template>
   <div class="flex justify-end items-center gap-x-2.5">
     <span class="text-xs"> {{ useFormatDuring(currentTime) }} / {{ useFormatDuring(duration) }} </span>
-    <!-- 展示歌词 -->
-    <IconPark :icon="TextMessage" size="18" :stroke-width="3" class="hover-text" title="歌词" />
-    <!-- 展示播放列表 -->
-    <div class="flex items-center hover-text" @click="showPlayList = true">
-      <IconPark :icon="MusicList" size="18" :stroke-width="3" class="hover-text" title="播放列表" />
-      <span class="text-xs">{{ playListCount }}</span>
-    </div>
   </div>
 </template>
 

@@ -1,3 +1,7 @@
 @import './element';
 @import './common';
 @import './markdown';
+.hover-bg-main {
+  @apply hover:bg-gray-200;
+  @apply dark:hover:bg-stone-700;
+}

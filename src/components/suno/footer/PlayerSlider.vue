@@ -1,9 +1,9 @@
 <template>
   <div class="player-slider">
     <el-slider
+      v-model="currentTime"
       :show-tooltip="false"
       :min="0"
-      v-model="currentTime"
       :max="duration"
       @change="onSliderChange"
       @input="onSliderInput"

@@ -73,6 +73,9 @@ export default defineComponent({
         // ...this.$store.state.suno?.tasks,
         items: songs || []
       };
+    },
+    isPlaying() {
+      return this.$store.state.suno?.player?.isPlaying;
     }
   }
 });
