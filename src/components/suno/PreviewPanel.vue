@@ -72,8 +72,7 @@ export default defineComponent({
 <style scoped>
 .right-panel {
   padding: 2px;
-  background-color: #1e1e1e;
-  color: #fff;
+  background-color: (--el-bg-color);
 }
 
 .cover-image {
