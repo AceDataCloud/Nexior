@@ -2,7 +2,7 @@
   <div class="field">
     <h2 class="title">{{ $t('suno.name.type') }}</h2>
     <el-switch v-model="custom" class="value" />
-    <el-select v-model="model" class="value" :placeholder="$t('suno.placeholder.select')" style="width: 3px">
+    <el-select v-model="model" class="value" :placeholder="$t('suno.placeholder.select')">
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </el-select>
   </div>
@@ -31,19 +31,16 @@ export default defineComponent({
     return {
       options: [
         {
-          label: this.$t('suno.model.model_1'),
-          value: this.$t('suno.value.model_1'),
-          description: 'chirp-v2的模型'
+          label: this.$t('suno.model.model1'),
+          value: this.$t('suno.value.model1')
         },
         {
-          label: this.$t('suno.model.model_2'),
-          value: this.$t('suno.value.model_2'),
-          description: 'chirp-v3的模型'
+          label: this.$t('suno.model.model2'),
+          value: this.$t('suno.value.model2')
         },
         {
-          label: this.$t('suno.model.model_3'),
-          value: this.$t('suno.value.model_3'),
-          description: 'chirp-v3-5的模型'
+          label: this.$t('suno.model.model3'),
+          value: this.$t('suno.value.model3')
         }
       ]
     };

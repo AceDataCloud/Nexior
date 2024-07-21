@@ -1,185 +1,66 @@
 <template>
-  <div class="flex-1 flex flex-col">
-    <!-- 歌曲列表 -->
-    <div class="flex-1 overflow-hidden">
-      <ElScrollbar>
-        <div class="container mx-auto">
-          <div class="playlist">
-            <div v-if="modelValue" class="p-5">
-              <SongList :songs="modelValue" />
-            </div>
-          </div>
+  <div class="flex-shrink-0 flex-1 flex items-center justify-between pr-5">
+    <div v-for="(audio, audioIndex) in audios" :key="audioIndex">
+      <div class="left">
+        <el-image :src="audio?.image_url" class="cover-image" fit="cover">
+          <template #placeholder>
+            <div class="image-slot">...</div>
+          </template>
+        </el-image>
+        <div class="play-overlay" @click="onTogglePlay">
+          <el-icon><video-pause /></el-icon>
         </div>
-      </ElScrollbar>
+        <div class="play-overlay" @click="onTogglePlay">
+          <el-icon><video-play /></el-icon>
+        </div>
+      </div>
+      <div class="info"></div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { ElImage, ElAlert, ElButton, ElScrollbar, ElTabs, ElTabPane } from 'element-plus';
-import { ISunoTask, ISunoAudio, ISunoAudioLyric } from '@/models';
-import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import SongList from '@/components/suno/musicList/SongList.vue';
+import { defineComponent } from 'vue';
+import { useFormatDuring } from '@/utils/number';
+import { ISunoAudio, ISunoTask } from '@/models';
+import { ElButton, ElImage, ElIcon } from 'element-plus';
+import { VideoPlay, VideoPause } from '@element-plus/icons-vue';
 
 export default defineComponent({
   name: 'TaskPreview',
-  components: {
-    ElScrollbar,
-    SongList
-  },
+  components: {},
   props: {
     modelValue: {
-      type: Object as () => (ISunoAudio | ISunoAudioLyric)[],
+      type: Object as () => ISunoTask,
       required: true
     }
   },
   data() {
-    return {
-      tab: 'tracks'
-    };
+    return {};
   },
   computed: {
+    audios(): ISunoAudio[] {
+      let result: ISunoAudio[] = [];
+      if (Array.isArray(this.modelValue?.response?.data)) {
+        this.modelValue?.response?.data?.forEach((item: any) => {
+          let audio = item as ISunoAudio;
+          result.push(audio);
+        });
+      }
+      return result;
+    },
     application() {
       return this.$store.state.suno?.application;
+    },
+    active() {
+      return this.$store.state.suno?.tasks?.active;
     }
   },
   methods: {
-    onReload(event: Event) {
-      const target = event.target as HTMLImageElement;
-      // append a random url query to existing url query, to force reload the image
-      // extract exiting url query
-      const url = new URL(target.src);
-      // extract `retry` query
-      const retry = url.searchParams.get('retry');
-      if (!retry) {
-        // if no retry query, set it as random string
-        url.searchParams.set('retry', '1');
-      } else if (parseInt(retry) < 2) {
-        // if retry < 3, increase it by 1
-        url.searchParams.set('retry', (parseInt(retry) + 1).toString());
-      } else {
-        return;
-      }
-      // set the new url
-      target.src = url.toString();
-    },
-    onDownload(url: string) {
-      // download image using javascript
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = url.split('/').pop() as string;
-      link.click();
+    useFormatDuring,
+    onTogglePlay() {
+      console.log('on toggle play');
     }
   }
 });
 </script>
-
-<style lang="scss" scoped>
-$left-width: 70px;
-.preview {
-  width: 100%;
-  height: fit-content;
-  text-align: left;
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 15px;
-  .left {
-    width: $left-width;
-  }
-
-  .main {
-    flex: 1;
-    width: calc(100% - $left-width);
-    padding: 10px 10px 0 10px;
-
-    .bot {
-      font-size: 16px;
-      font-weight: bold;
-      color: rgb(46, 204, 113);
-      margin-bottom: 0;
-      margin-top: 0;
-      .datetime {
-        font-size: 12px;
-        font-weight: normal;
-        color: var(--el-text-color-secondary);
-        margin-left: 10px;
-      }
-    }
-
-    .info {
-      .prompt {
-        font-size: 14px;
-        font-weight: bold;
-        color: var(--el-text-color-regular);
-        margin-bottom: 10px;
-      }
-    }
-
-    .content {
-      .el-alert {
-        border-left-width: 2px;
-        border-left-style: solid;
-        &.failure {
-          border-color: var(--el-color-danger);
-        }
-        &.success {
-          border-color: var(--el-color-success);
-        }
-        &.info {
-          border-color: var(--el-color-info);
-        }
-      }
-    }
-
-    .image-wrapper {
-      position: relative;
-      width: fit-content;
-      min-height: 50px;
-      min-width: 100px;
-      .image {
-        max-height: 400px;
-        max-width: 300px;
-        display: block;
-        width: fit-content;
-      }
-      .btn-raw {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 1000;
-        display: none;
-      }
-      &:hover {
-        .image {
-          filter: brightness(0.6);
-        }
-        .btn-raw {
-          display: block;
-        }
-      }
-    }
-  }
-}
-</style>
-
-<style lang="scss">
-.preview {
-  .image.error {
-    background: var(--el-bg-color-page);
-    .image-slot {
-      font-size: 14px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
-  .failure {
-    background: var(--el-fill-color-light);
-    width: 100%;
-  }
-}
-</style>

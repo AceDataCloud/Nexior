@@ -3,8 +3,6 @@
     <div class="title-container">
       <h2 class="title">{{ $t('suno.name.style') }}</h2>
       <info-icon :content="$t('suno.description.style')" class="info" />
-      <el-switch v-show="config?.instrumental" v-model="instrumental" class="value" />
-      <h2 v-show="config?.instrumental" class="title">{{ $t('suno.description.instrumental') }}</h2>
     </div>
     <el-input
       v-model="style"
@@ -20,16 +18,13 @@
 
 <script>
 import { defineComponent } from 'vue';
-import { ElInput, ElSwitch } from 'element-plus';
+import { ElInput } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-
-export const DEFAULT_PROMPT = '';
 
 export default defineComponent({
   name: 'StyleInput',
   components: {
     ElInput,
-    ElSwitch,
     InfoIcon
   },
   data() {
@@ -50,23 +45,6 @@ export default defineComponent({
     },
     config() {
       return this.$store.state.suno?.config;
-    },
-    instrumental: {
-      get() {
-        return this.$store.state.suno?.config?.instrumental;
-      },
-      set(val) {
-        console.debug('set instrumental', val);
-        this.$store.commit('suno/setConfig', {
-          ...this.$store.state.suno?.config,
-          instrumental: val
-        });
-      }
-    }
-  },
-  mounted() {
-    if (!this.value) {
-      this.value = DEFAULT_PROMPT;
     }
   }
 });

@@ -31,4 +31,3 @@ const loadMore = () => {
   page.value = page.value + 1;
 };
 </script>
-<style lang="scss"></style>

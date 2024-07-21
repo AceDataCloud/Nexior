@@ -1,13 +1,11 @@
 <template>
   <div class="field">
-    <div class="title-container">
+    <div class="box">
       <h2 class="title">{{ $t('suno.name.lyrics') }}</h2>
       <info-icon :content="$t('suno.description.lyrics')" class="info" />
-      <el-switch v-model="instrumental" class="value" />
-      <h2 class="title">{{ $t('suno.description.instrumental') }}</h2>
     </div>
     <el-input
-      v-model="lyrics"
+      v-model="lyric"
       :rows="3"
       type="textarea"
       class="lyrics"
@@ -20,53 +18,40 @@
 
 <script>
 import { defineComponent } from 'vue';
-import { ElInput, ElSwitch } from 'element-plus';
+import { ElInput } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 
-export const DEFAULT_PROMPT = '';
+export const DEFAULT_LYRIC = '';
 
 export default defineComponent({
-  name: 'PromptInput',
+  name: 'LyricInput',
   components: {
     ElInput,
-    ElSwitch,
     InfoIcon
   },
   data() {
     return {};
   },
   computed: {
-    lyrics: {
+    lyric: {
       get() {
-        return this.$store.state.suno?.config?.lyrics;
+        return this.$store.state.suno?.config?.lyric;
       },
       set(val) {
-        console.debug('set lyrics', val);
+        console.debug('set lyric', val);
         this.$store.commit('suno/setConfig', {
           ...this.$store.state.suno?.config,
-          lyrics: val
+          lyric: val
         });
       }
     },
     config() {
       return this.$store.state.suno?.config;
-    },
-    instrumental: {
-      get() {
-        return this.$store.state.suno?.config?.instrumental;
-      },
-      set(val) {
-        console.debug('set instrumental', val);
-        this.$store.commit('suno/setConfig', {
-          ...this.$store.state.suno?.config,
-          instrumental: val
-        });
-      }
     }
   },
   mounted() {
     if (!this.value) {
-      this.value = DEFAULT_PROMPT;
+      this.value = DEFAULT_LYRIC;
     }
   }
 });
@@ -74,16 +59,14 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .field {
-  .title-container {
+  .box {
     display: flex;
     flex-direction: row;
     align-items: center;
+    position: relative;
     .title {
       font-size: 14px;
       margin-bottom: 10px;
-    }
-    .info {
-      flex: 1;
     }
   }
 }

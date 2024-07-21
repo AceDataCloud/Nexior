@@ -89,6 +89,7 @@ export interface ISunoAudio {
   video_url?: string;
   image_url?: string;
   created_at?: string;
+  state?: 'playing' | 'paused';
 }
 
 export interface ISunoAudioLyric {

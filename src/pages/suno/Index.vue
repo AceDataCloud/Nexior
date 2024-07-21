@@ -79,10 +79,10 @@ export default defineComponent({
     },
     application() {
       return this.$store.state.suno.application;
-    },
-    ended() {
-      return this.$store.state.suno.player.ended;
     }
+    // ended() {
+    //   return this.$store.state.suno.player.ended;
+    // }
   },
   watch: {
     ended(val: boolean) {
@@ -118,7 +118,6 @@ export default defineComponent({
       await this.$store.dispatch('suno/getApplication');
       console.debug('end onGetApplication');
     },
-    // 申请服务
     onApply() {
       applicationOperator
         .create({
@@ -154,11 +153,10 @@ export default defineComponent({
         offset: 0
       });
     },
-    // 调用生成歌曲的接口
     async onGenerateAudio() {
       const request = {
         ...this.config,
-        callbackUrl: CALLBACK_URL
+        callback_url: CALLBACK_URL
       } as ISunoAudioRequest;
       const token = this.credential?.token;
       if (!token) {

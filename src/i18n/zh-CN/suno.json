@@ -1,35 +1,27 @@
 {
+  "model.model1": {
+    "message": "v2",
+    "description": "用于生成音乐的模型"
+  },
+  "model.model2": {
+    "message": "v3",
+    "description": "用于生成音乐的模型"
+  },
+  "name.instrumental": {
+    "message": "无歌词",
+    "description": "参数'instrumental'的描述"
+  },
+  "model.model3": {
+    "message": "v3.5",
+    "description": "用于生成音乐的模型"
+  },
   "name.taskId": {
     "message": "任务 ID",
     "description": "任务的 ID"
   },
-  "value.model_1": {
-    "message": "chirp-v2-xxl-alpha",
-    "description": "用于生成QR码的内容类型"
-  },
-  "value.model_2": {
-    "message": "chirp-v3-0",
-    "description": "用于生成QR码的内容类型"
-  },
-  "value.model_3": {
-    "message": "chirp-v3-5",
-    "description": "用于生成QR码的内容类型"
-  },
-  "model.model_1": {
-    "message": "v2",
-    "description": "用于生成QR码的内容类型"
-  },
-  "model.model_2": {
-    "message": "v3",
-    "description": "用于生成QR码的内容类型"
-  },
-  "model.model_3": {
-    "message": "v3.5",
-    "description": "用于生成QR码的内容类型"
-  },
   "name.type": {
     "message": "定制模式",
-    "description": "要生成的 歌曲 的内容类型，如'链接'、'文本'等"
+    "description": "定制模式的名称"
   },
   "name.prompt": {
     "message": "歌曲描述",
@@ -79,10 +71,6 @@
     "message": "歌曲标题的内容",
     "description": "参数'title'的描述"
   },
-  "description.instrumental": {
-    "message": "无歌词",
-    "description": "参数'instrumental'的描述"
-  },
   "status.pending": {
     "message": "等待中",
     "description": "任务的等待状态"
@@ -115,53 +103,9 @@
     "message": "输入要生成的 QR 码的内容，例如：https://www.google.com",
     "description": "内容字段中的占位文本"
   },
-  "placeholder.aspectRatio": {
-    "message": "请选择...",
-    "description": "宽高比输入的占位符"
-  },
-  "placeholder.preset": {
-    "message": "请选择...",
-    "description": "预设输入的占位符"
-  },
-  "placeholder.markerShape": {
-    "message": "请选择...",
-    "description": "标记形状输入的占位符"
-  },
-  "placeholder.rotate": {
-    "message": "请选择...",
-    "description": "旋转输入的占位符"
-  },
-  "placeholder.subMarker": {
-    "message": "请选择...",
-    "description": "子标记输入的占位符"
-  },
   "button.generate": {
     "message": "生成",
     "description": "生成 QR 码的按钮文本"
-  },
-  "button.uploadQr": {
-    "message": "上传二维码",
-    "description": "上传二维码的按钮文本"
-  },
-  "message.uploadQr": {
-    "message": "上传二维码图片，可生成和二维码内容一致的艺术二维码",
-    "description": "上传二维码的说明"
-  },
-  "message.promptPlaceholder": {
-    "message": "请输入描述要生成的图像的句子，例如：一只可爱的猫。额外参数将覆盖默认预设参数",
-    "description": "提示字段中的占位文本"
-  },
-  "message.uploadReferencesExceed": {
-    "message": "最多可上传 5 张图片",
-    "description": "上传的图片数量超过限制时的错误消息"
-  },
-  "message.uploadReferencesSuccess": {
-    "message": "成功上传图片",
-    "description": "成功上传图片时的成功消息"
-  },
-  "message.uploadReferencesError": {
-    "message": "上传图片失败，请稍后重试",
-    "description": "图片上传失败时的错误消息"
   },
   "message.startingTask": {
     "message": "正在启动任务...",

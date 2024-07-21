@@ -20,24 +20,20 @@ export interface ISunoState {
   };
 }
 
-export interface PlayerState {
-  audio?: HTMLAudioElement | undefined;
-  loopType?: number;
-  volume?: number;
-  playList?: Song[] | undefined;
-  showPlayList?: boolean;
-  id?: string;
-  url?: string;
-  song?: Song | undefined;
-  isPlaying?: boolean;
-  isPause?: boolean;
-  sliderInput?: boolean;
-  ended?: boolean;
-  muted?: boolean;
-  currentTime?: number;
-  duration?: number;
-}
-
-export interface RootState extends ISunoState {
-  player?: PlayerState | undefined;
-}
+// export interface PlayerState {
+//   audio?: HTMLAudioElement | undefined;
+//   loopType?: number;
+//   volume?: number;
+//   playList?: Song[] | undefined;
+//   showPlayList?: boolean;
+//   id?: string;
+//   url?: string;
+//   song?: Song | undefined;
+//   isPlaying?: boolean;
+//   isPause?: boolean;
+//   sliderInput?: boolean;
+//   ended?: boolean;
+//   muted?: boolean;
+//   currentTime?: number;
+//   duration?: number;
+// }

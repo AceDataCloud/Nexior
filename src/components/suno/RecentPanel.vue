@@ -1,7 +1,6 @@
 <template>
   <div class="panel recent">
     <div v-if="tasks?.items === undefined" class="tasks">
-      <!-- 无任务时加载骨架 -->
       <div v-for="_ in 3" :key="_" class="task placeholder">
         <div class="left">
           <el-skeleton animated>
@@ -16,28 +15,23 @@
               <el-skeleton-item variant="p" class="title" />
               <el-skeleton-item variant="text" style="margin-right: 16px" />
               <el-skeleton-item variant="text" style="width: 80%" />
-              <!-- <el-skeleton-item variant="image" class="icon" /> -->
             </template>
           </el-skeleton>
         </div>
       </div>
     </div>
     <div v-else-if="tasks?.items?.length && tasks?.items?.length > 0" class="tasks">
-      <task-preview :model-value="tasks.items" class="preview" />
+      <task-preview v-for="(task, taskId) in tasks?.items" :key="taskId" :model-value="task" class="preview" />
     </div>
     <p v-if="tasks?.items?.length === 0" class="description">
       {{ $t('suno.message.noTasks') }}
     </p>
   </div>
-
   <div class="flex-1 flex flex-col">
     <div class="h-20">
       <Footer />
     </div>
   </div>
-
-  <!-- <PlayList /> -->
-  <!-- <PlayList /> -->
 </template>
 
 <script lang="ts">
@@ -45,7 +39,7 @@ import { defineComponent } from 'vue';
 import TaskPreview from './task/Preview.vue';
 import Footer from '@/components/suno/footer/Footer.vue';
 import { ElSkeleton, ElSkeletonItem } from 'element-plus';
-import { ISunoAudio, ISunoAudioLyric } from '@/models';
+import { ISunoAudio, ISunoAudioLyric, ISunoTask } from '@/models';
 
 export default defineComponent({
   name: 'RecentPanel',
@@ -62,20 +56,11 @@ export default defineComponent({
   },
   computed: {
     tasks() {
-      let songs: (ISunoAudio | ISunoAudioLyric)[] = [];
       // reverse the order of the tasks.items
-      this.$store.state.suno?.tasks?.items
-        ?.slice()
-        .reverse()
-        .flatMap((item) => item?.response?.data ?? [])
-        .forEach((song) => songs.push(song));
       return {
-        // ...this.$store.state.suno?.tasks,
-        items: songs || []
+        ...this.$store.state.suno?.tasks,
+        items: this.$store.state.suno?.tasks?.items?.slice().reverse()
       };
-    },
-    isPlaying() {
-      return this.$store.state.suno?.player?.isPlaying;
     }
   }
 });

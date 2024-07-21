@@ -1,10 +1,8 @@
 <template>
   <div class="field">
-    <div class="title-container">
+    <div class="box">
       <h2 class="title">{{ $t('suno.name.prompt') }}</h2>
       <info-icon :content="$t('suno.description.prompt')" class="info" />
-      <el-switch v-model="instrumental" class="value" />
-      <h2 class="title">{{ $t('suno.description.instrumental') }}</h2>
     </div>
     <el-input
       v-model="prompt"
@@ -20,7 +18,7 @@
 
 <script>
 import { defineComponent } from 'vue';
-import { ElInput, ElSwitch } from 'element-plus';
+import { ElInput } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 
 export const DEFAULT_PROMPT = '';
@@ -29,7 +27,6 @@ export default defineComponent({
   name: 'PromptInput',
   components: {
     ElInput,
-    ElSwitch,
     InfoIcon
   },
   data() {
@@ -47,18 +44,6 @@ export default defineComponent({
           prompt: val
         });
       }
-    },
-    instrumental: {
-      get() {
-        return this.$store.state.suno?.config?.instrumental;
-      },
-      set(val) {
-        console.debug('set instrumental', val);
-        this.$store.commit('suno/setConfig', {
-          ...this.$store.state.suno?.config,
-          instrumental: val
-        });
-      }
     }
   },
   mounted() {
@@ -71,16 +56,14 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .field {
-  .title-container {
+  .box {
     display: flex;
     flex-direction: row;
     align-items: center;
+    position: relative;
     .title {
       font-size: 14px;
       margin-bottom: 10px;
-    }
-    .right-aligned-switch {
-      float: left;
     }
   }
 }

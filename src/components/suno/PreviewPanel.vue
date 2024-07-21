@@ -9,9 +9,6 @@
             </div>
           </template>
         </el-image>
-        <!-- <el-icon v-show="showCloseIcon" size="large" class="close-icon" @click="closeCard">
-          <Close />
-        </el-icon> -->
         <h2 class="title">{{ song?.title }}</h2>
       </div>
       <div class="content">
@@ -21,11 +18,6 @@
           <span>{{ song?.prompt }}</span>
         </div>
         <p>{{ $dayjs.format(song?.created_at) }}</p>
-        <!-- <div class="actions">
-          <el-icon class="action-icon"><Plus /></el-icon>
-          <el-icon class="action-icon"><Minus /></el-icon>
-          <el-icon class="action-icon"><Share /></el-icon>
-        </div> -->
         <div class="lyrics">
           <p style="white-space: pre-wrap; font-size: 14%" v-html="song?.lyric"></p>
         </div>
@@ -36,10 +28,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { ElAside, ElImage, ElScrollbar, ElAvatar, ElIcon } from 'element-plus';
-import { Close, Picture as IconPicture, Plus, Minus, Share } from '@element-plus/icons-vue';
-import { ElPopover } from 'element-plus';
+import { defineComponent } from 'vue';
+import { ElImage, ElScrollbar, ElAvatar, ElIcon } from 'element-plus';
+import { Picture as IconPicture } from '@element-plus/icons-vue';
 
 export default defineComponent({
   name: 'TaskPreview',
@@ -50,7 +41,6 @@ export default defineComponent({
     ElAvatar,
     ElIcon
   },
-
   data() {
     return {
       showCloseIcon: true
