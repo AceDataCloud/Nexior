@@ -32,15 +32,15 @@ export default defineComponent({
       options: [
         {
           label: this.$t('suno.model.model1'),
-          value: this.$t('suno.value.model1')
+          value: 'chirp-v2-xxl-alpha'
         },
         {
           label: this.$t('suno.model.model2'),
-          value: this.$t('suno.value.model2')
+          value: 'chirp-v3-0'
         },
         {
           label: this.$t('suno.model.model3'),
-          value: this.$t('suno.value.model3')
+          value: 'chirp-v3-5'
         }
       ]
     };

@@ -36,13 +36,13 @@ const store = useStore();
 
 // 创建响应式引用
 const volume = computed({
-  get: () => store.state.suno.player.volume,
-  set: (value) => store.commit('suno/setVolume', value)
+  get: () => store.state.suno.audio?.volume,
+  set: (value) => store.commit('suno/setAudio', { ...store.state.suno.audio, volume: value })
 });
 
 const muted = computed({
-  get: () => store.state.suno.player.muted,
-  set: (value) => store.commit('suno/setMuted', value)
+  get: () => store.state.suno.audio?.muted,
+  set: (value) => store.commit('suno/setAudio', { ...store.state.suno.audio, muted: value })
 });
 
 // 方法

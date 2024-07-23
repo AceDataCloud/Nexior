@@ -12,27 +12,31 @@
 </template>
 
 <script setup lang="ts">
-// import { usePlayerStore } from '@/stores/player';
 import { ElSlider } from 'element-plus';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
+
 const store = useStore();
-// 状态
 const currentTime = computed({
-  get: () => store.state.suno.player.currentTime,
-  set: (value) => store.commit('suno/setCurrentTime', value)
+  get: () => store.state.suno?.audio?.currentTime,
+  set: (value) =>
+    store.commit('suno/setAudio', {
+      ...store.state.suno.audio,
+      currentTime: value
+    })
 });
 
 const duration = computed({
-  get: () => store.state.suno.player.duration,
-  set: (value) => store.commit('suno/setDuration', value)
+  get: () => store.state.suno?.audio?.duration,
+  set: (value) => store.commit('suno/setAudio', { ...store.state.suno.audio, duration: value })
 });
 
-// 方法
-const onSliderInput = () => store.dispatch('suno/onSliderInput');
-const onSliderChange = (val: number) => store.dispatch('suno/onSliderChange', val);
-
-// const { duration, currentTime, onSliderInput, onSliderChange } = toRefs(usePlayerStore());
+const onSliderInput = () => {};
+const onSliderChange = (val: number) =>
+  store.dispatch('suno/setAudio', {
+    ...store.state.suno.audio,
+    currentTime: val
+  });
 </script>
 
 <style lang="scss">

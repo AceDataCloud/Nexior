@@ -1,16 +1,15 @@
 <template>
   <div class="flex flex-col items-stretch h-20">
-    <!-- 歌曲进度条 -->
-    <PlayerSlider />
+    <player-slider />
     <div class="flex grow px-5 items-center">
       <div class="flex-1">
-        <PlayerSong />
+        <player-song />
       </div>
       <div class="flex-1">
-        <PlayerController />
+        <player-controller />
       </div>
       <div class="flex-1">
-        <PlayerAction />
+        <player-action />
       </div>
     </div>
   </div>
@@ -22,4 +21,3 @@ import PlayerSong from './PlayerSong.vue';
 import PlayerAction from './PlayerAction.vue';
 import PlayerController from './PlayerController.vue';
 </script>
-<style lang="scss"></style>

@@ -29,7 +29,7 @@
   </div>
   <div class="flex-1 flex flex-col">
     <div class="h-20">
-      <Footer />
+      <player />
     </div>
   </div>
 </template>
@@ -37,9 +37,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import TaskPreview from './task/Preview.vue';
-import Footer from '@/components/suno/footer/Footer.vue';
+import Player from '@/components/suno/player/Player.vue';
 import { ElSkeleton, ElSkeletonItem } from 'element-plus';
-import { ISunoAudio, ISunoAudioLyric, ISunoTask } from '@/models';
+// import { ISunoAudio, ISunoAudioLyric, ISunoTask } from '@/models';
 
 export default defineComponent({
   name: 'RecentPanel',
@@ -47,7 +47,7 @@ export default defineComponent({
     TaskPreview,
     ElSkeleton,
     ElSkeletonItem,
-    Footer
+    Player
   },
   data() {
     return {
@@ -90,7 +90,6 @@ export default defineComponent({
     .tasks {
       width: 100%;
       .task {
-        margin-bottom: 15px;
         width: 100%;
         height: fit-content;
         text-align: left;
