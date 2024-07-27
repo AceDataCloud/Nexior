@@ -1,4 +1,3 @@
-import Logo from './logo.png';
-import OpticalDisk from './OpticalDisk.png';
+import OpticalDisk from './disk.png';
 
-export { Logo, OpticalDisk };
+export { OpticalDisk };
