@@ -65,3 +65,9 @@ Artistic QR Code:
 ![](https://cdn.acedata.cloud/q3ivan.png)
 
 <img src="https://cdn.acedata.cloud/l11ebv.png" style="width: 300px">
+
+Suno Music:
+
+![](https://cdn.acedata.cloud/mewx2.png)
+
+<img src="https://cdn.acedata.cloud/4mvwe.png" style="width: 300px">

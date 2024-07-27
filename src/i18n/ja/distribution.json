@@ -1,130 +1,138 @@
 {
   "button.detail": {
-    "message": "查看详情",
-    "description": "按钮文本，用于查看网站的推荐历史详情。"
+    "message": "詳細を見る",
+    "description": "ウェブサイトの推奨履歴の詳細を表示するボタンのテキスト。"
   },
   "button.withdrawal": {
-    "message": "提现",
-    "description": "按钮文本，用于提现网站的推荐收益。"
+    "message": "引き出し",
+    "description": "ウェブサイトの推薦収益を引き出すためのボタンのテキスト。"
   },
   "button.query": {
-    "message": "查询",
-    "description": "按钮文本，用于查询网站的推荐收益。"
+    "message": "照会",
+    "description": "ウェブサイトの推薦収益を照会するためのボタンのテキスト。"
   },
   "field.id": {
-    "message": "推荐 ID",
-    "description": "分销的唯一标识符，分销指 API 服务网站的推荐。"
+    "message": "推奨ID",
+    "description": "流通のユニークな識別子、流通はAPIサービスウェブサイトの推薦を指します。"
   },
   "field.percentage": {
-    "message": "推荐收益百分比",
-    "description": "推荐收益的百分比，根据订单金额计算。"
+    "message": "推薦収益の百分比",
+    "description": "注文金額に基づいて計算された推薦収益の百分比。"
   },
   "field.price": {
-    "message": "订单金额",
-    "description": "订单金额，用于计算推荐收益。"
+    "message": "注文金額",
+    "description": "推薦収益を計算するための注文金額。"
   },
   "field.reward": {
-    "message": "推荐奖励",
-    "description": "推荐收益，根据订单金额和推荐收益百分比计算。"
+    "message": "推薦報酬",
+    "description": "注文金額と推薦収益の百分比に基づいて計算された推薦収益。"
+  },
+  "field.userId": {
+    "message": "ユーザーID",
+    "description": "ユーザーのユニークな識別子、ユーザーはAPIサービスウェブサイトのユーザーを指します。"
+  },
+  "field.userEmail": {
+    "message": "ユーザーのメール",
+    "description": "ユーザーのメールアドレス。"
   },
   "field.createdAt": {
-    "message": "推荐时间",
-    "description": "推荐创建的时间。"
+    "message": "推奨時間",
+    "description": "推奨が作成された時間。"
   },
   "field.level": {
-    "message": "级别",
-    "description": "推荐的级别，用于计算推荐收益。"
+    "message": "レベル",
+    "description": "推薦のレベルで、推薦収益を計算するために使用されます。"
   },
   "field.threshold": {
-    "message": "推荐收益门槛",
-    "description": "推荐收益的门槛，用于提现推荐收益。"
+    "message": "推薦収益の閾値",
+    "description": "推薦収益の閾値で、推薦収益を引き出すために使用されます。"
   },
   "field.inviteeId": {
-    "message": "邀请者 ID",
-    "description": "邀请者的唯一标识符，邀请者指邀请被邀请者到 API 服务网站。"
+    "message": "招待者ID",
+    "description": "招待者のユニークな識別子、招待者はAPIサービスウェブサイトに被招待者を招待する人を指します。"
   },
   "field.isVerified": {
-    "message": "已验证",
-    "description": "标志，指示推荐用户是否通过真实信息验证。"
+    "message": "確認済み",
+    "description": "推薦ユーザーが実際の情報によって確認されているかどうかを示すフラグ。"
   },
   "message.deltaPriceForNextLevel": {
-    "message": "与下一级别的差额",
-    "description": "当前订单金额与下一级别门槛之间的差额。"
+    "message": "次のレベルとの価格差",
+    "description": "現在の注文金額と次のレベルの閾値との間の差。"
   },
   "message.developingWithDrawal": {
-    "message": "请加入 Discord 并咨询支持人员处理提现，提现将扣除相关所得税。",
-    "description": "指示提现功能正在开发中的消息。"
+    "message": "Discordに参加して、サポート担当者に引き出しを処理するように問い合わせてください。引き出しには関連する所得税が差し引かれます。",
+    "description": "引き出し機能が開発中であることを示すメッセージ。"
   },
   "message.technicalDetail": {
-    "message": "技术细节",
-    "description": "推荐系统的技术细节实现。"
+    "message": "技術詳細",
+    "description": "推奨システムの技術的詳細実装。"
   },
   "message.distributionQrDescription": {
-    "message": "推荐二维码（与链接内容相同）",
-    "description": "推荐二维码的描述。"
+    "message": "推奨QRコード（リンク内容と同じ）",
+    "description": "推奨QRコードの説明。"
   },
   "message.distributionLink": {
-    "message": "推荐链接",
-    "description": "推荐链接，用于将客户绑定为下级客户。"
+    "message": "推奨リンク",
+    "description": "顧客を下級顧客として束縛するための推奨リンク。"
   },
   "message.updateSuccessfully": {
     "message": "更新成功",
-    "description": "指示推荐信息已成功更新的消息。"
+    "description": "推薦情報が正常に更新されたことを示すメッセージ。"
   },
   "message.distributionLinkDescription": {
-    "message": "如果客户通过此链接或二维码在本平台注册，客户将永久绑定为您的下级客户，并且客户在本平台的所有消费订单将根据当前分销比例返还到您的账户。",
-    "description": "推荐链接的描述。"
+    "message": "顧客がこのリンクまたはQRコードを介してこのプラットフォームに登録すると、顧客は永久にあなたの下級顧客として束縛され、顧客のこのプラットフォームでのすべての消費注文は、現在の流通割合に基づいてあなたのアカウントに返還されます。",
+    "description": "推奨リンクの説明。"
   },
   "message.distributionLinkDescription2": {
-    "message": "此链接包含您的用户 ID。客户打开链接后，您的用户 ID 将以 Cookies 的形式记录在客户的浏览器中，有效期为七天。在七天内，如果客户通过扫描该代码注册本平台，您的用户 ID 将与 Cookies 一起上传到注册服务器，并且客户可以作为您的下游客户绑定。",
-    "description": "推荐链接的描述。"
+    "message": "このリンクにはあなたのユーザーIDが含まれています。顧客がリンクを開くと、あなたのユーザーIDは顧客のブラウザにCookie形式で記録され、有効期限は7日間です。7日以内に顧客がこのコードをスキャンしてこのプラットフォームに登録した場合、あなたのユーザーIDはCookieとともに登録サーバーにアップロードされ、顧客はあなたの下流顧客として束縛されます。",
+    "description": "推奨リンクの説明。"
   },
   "title.price": {
-    "message": "推荐订单总金额",
-    "description": "推荐订单的总金额，用于计算推荐收益。"
+    "message": "推薦注文の総金額",
+    "description": "推薦注文の総金額で、推薦収益を計算するために使用されます。"
   },
   "title.reward": {
-    "message": "总推荐奖励",
-    "description": "总推荐奖励，根据订单金额和推荐收益百分比计算。"
+    "message": "総推奨報酬",
+    "description": "総推奨報酬で、注文金額と推薦収益の百分比に基づいて計算されます。"
   },
   "title.level": {
-    "message": "推荐级别",
-    "description": "推荐级别，用于计算推荐收益。"
+    "message": "推薦レベル",
+    "description": "推薦レベルで、推薦収益を計算するために使用されます。"
   },
   "title.percentage": {
-    "message": "推荐收益百分比",
-    "description": "推荐收益百分比，用于计算推荐收益。"
+    "message": "推薦収益の百分比",
+    "description": "推薦収益の百分比で、推薦収益を計算するために使用されます。"
   },
   "title.currentLevel": {
-    "message": "当前级别",
-    "description": "当前推荐级别，用于计算推荐收益。"
+    "message": "現在のレベル",
+    "description": "現在の推薦レベルで、推薦収益を計算するために使用されます。"
   },
   "title.nextLevel": {
-    "message": "下一级别",
-    "description": "下一个推荐级别，用于计算推荐收益。"
+    "message": "次のレベル",
+    "description": "次の推薦レベルで、推薦収益を計算するために使用されます。"
   },
   "title.currentPercentage": {
-    "message": "当前推荐收益百分比",
-    "description": "当前推荐收益百分比，用于计算推荐收益。"
+    "message": "現在の推薦収益の百分比",
+    "description": "現在の推薦収益の百分比で、推薦収益を計算するために使用されます。"
   },
   "title.nextPercentage": {
-    "message": "下一级别推荐收益百分比",
-    "description": "下一个级别的推荐收益百分比，用于计算推荐收益。"
+    "message": "次のレベルの推薦収益の百分比",
+    "description": "次のレベルの推薦収益の百分比で、推薦収益を計算するために使用されます。"
   },
   "title.levelInfo": {
-    "message": "级别信息",
-    "description": "推荐级别的信息，用于计算推荐收益。"
+    "message": "レベル情報",
+    "description": "推薦レベルの情報で、推薦収益を計算するために使用されます。"
   },
   "title.distributionLink": {
-    "message": "推荐链接",
-    "description": "推荐链接，用于将客户绑定为下级客户。"
+    "message": "推薦リンク",
+    "description": "顧客を下級顧客として束縛するための推奨リンク。"
   },
   "title.inviteesCount": {
-    "message": "邀请者总数",
-    "description": "邀请者的总数，用于计算推荐收益。"
+    "message": "招待者の総数",
+    "description": "招待者の総数を示し、推奨収益を計算するために使用されます。"
   },
   "title.manageDistributionStatus": {
-    "message": "分销管理",
-    "description": "推荐状态的管理。"
+    "message": "流通管理",
+    "description": "推奨状況の管理。"
   }
 }

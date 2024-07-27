@@ -33,15 +33,15 @@
               </el-table-column>
               <el-table-column :label="$t('distribution.field.price')" width="100px">
                 <template #default="scope">
-                  <span class="price">¥{{ scope.row?.price?.toFixed(2) }}</span>
+                  <span class="price">{{ getPriceString({ value: scope.row?.price }) }}</span>
                 </template>
               </el-table-column>
               <el-table-column :label="$t('distribution.field.reward')" width="100px">
                 <template #default="scope">
-                  <span class="description">￥{{ scope.row?.reward?.toFixed(2) }}</span>
+                  <span class="description">{{ getPriceString({ value: scope.row?.reward }) }}</span>
                 </template>
               </el-table-column>
-              <el-table-column :label="$t('distribution.field.percentage')" width="100px">
+              <el-table-column :label="$t('distribution.field.percentage')" width="120px">
                 <template #default="scope">
                   <span class="description">{{ scope.row.percentage }}%</span>
                 </template>
@@ -73,6 +73,7 @@ import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { ElRow, ElCol, ElTable, ElTableColumn, ElCard } from 'element-plus';
 import { distributionHistoryOperator } from '@/operators/distribution';
 import { IDistributionHistory, IDistributionStatus } from '@/models';
+import { getPriceString } from '@/utils';
 
 interface IData {
   distributionHistories: IDistributionHistory[];
@@ -121,6 +122,7 @@ export default defineComponent({
     this.onFetchData();
   },
   methods: {
+    getPriceString,
     onPageChange(page: number) {
       this.$router.push({
         name: this.$route.name?.toString(),

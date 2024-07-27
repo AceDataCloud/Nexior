@@ -19,7 +19,7 @@
         <p class="style">{{ audio?.style }}</p>
         <p class="time">{{ $dayjs.format(audio?.created_at) }}</p>
         <div class="lyrics">
-          <p v-html="audio?.lyric"></p>
+          <p>{{ audio?.lyric }}</p>
         </div>
       </div>
     </div>
@@ -150,7 +150,7 @@ export default defineComponent({
 .lyrics {
   margin: 15px 0;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 25px;
   white-space: pre-wrap;
 }
 </style>
