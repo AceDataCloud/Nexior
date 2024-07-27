@@ -10,6 +10,8 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 import { faDiscord as faBrandsDiscord, faWeixin as faBrandsWeixin } from '@fortawesome/free-brands-svg-icons';
 import {
+  // 添加suno图标svg
+  faMusic as faSolidMusic,
   faLanguage as faSolidLanguage,
   faUser as faSolidUser,
   faSeedling as faSolidSeedling,
@@ -70,7 +72,7 @@ import {
   faWandMagic as faSolidWandMagic,
   faAngleDown as faSolidAngleDown
 } from '@fortawesome/free-solid-svg-icons';
-
+library.add(faSolidMusic);
 library.add(faRegularCopy);
 library.add(faRegularMessage);
 library.add(faSolidAngleDown);

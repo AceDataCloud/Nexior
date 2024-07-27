@@ -19,6 +19,9 @@ export const ROUTE_CHATDOC_CONVERSATION_NEW = 'chatdoc-conversation-new';
 export const ROUTE_CHATDOC_SETTING = 'chatdoc-setting';
 export const ROUTE_CHATDOC_MANAGE = 'chatdoc-knowledge';
 
+export const ROUTE_SUNO_INDEX = 'suno-index';
+export const ROUTE_SUNO_HISTORY = 'suno-history';
+
 export const ROUTE_PROFILE_INDEX = 'profile-index';
 
 export const ROUTE_CONSOLE_ROOT = 'console-root';

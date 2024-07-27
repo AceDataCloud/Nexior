@@ -5,4 +5,5 @@ export * from './chat';
 export * from './chatdoc';
 export * from './midjourney';
 export * from './qrart';
+export * from './suno';
 export * from './mapping';

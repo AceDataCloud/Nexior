@@ -12,6 +12,7 @@
           index="/midjourney"
         ></el-menu-item>
         <el-menu-item v-if="site?.features?.qrart?.enabled" v-t="'index.title.qrart'" index="/qrart"></el-menu-item>
+        <el-menu-item v-if="site?.features?.suno?.enabled" v-t="'index.title.suno'" index="/suno"></el-menu-item>
       </el-menu>
     </el-col>
     <el-col :md="4" :xs="11">

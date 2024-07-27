@@ -1,0 +1,192 @@
+<template>
+  <div class="task">
+    <div v-for="(audio, audioIndex) in audios" :key="audioIndex" class="audio" @click="onClick(audio)">
+      <div v-loading="!audio?.audio_url" class="left">
+        <el-image :src="audio?.image_url" class="cover" fit="cover" />
+        <div
+          v-if="
+            audio?.audio_url &&
+            $store.state?.suno?.audio?.id === audio.id &&
+            $store.state?.suno?.audio?.state === 'playing'
+          "
+          class="overlay"
+          @click="onPause(audio)"
+        >
+          <el-icon><video-pause /></el-icon>
+        </div>
+        <div
+          v-if="
+            audio?.audio_url &&
+            ($store.state?.suno?.audio?.id !== audio.id ||
+              ($store.state?.suno?.audio?.id === audio.id && $store.state?.suno?.audio?.state === 'paused'))
+          "
+          class="overlay"
+          @click="onPlay(audio)"
+        >
+          <el-icon><video-play /></el-icon>
+        </div>
+        <div v-if="audio?.duration" class="duration">
+          {{ useFormatDuring(audio?.duration) }}
+        </div>
+      </div>
+      <div class="info">
+        <h2 class="title">{{ audio?.title }}</h2>
+        <p class="style">{{ audio?.style }}</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { useFormatDuring } from '@/utils/number';
+import { ISunoAudio, ISunoTask } from '@/models';
+import { ElButton, ElImage, ElIcon } from 'element-plus';
+import { VideoPlay, VideoPause } from '@element-plus/icons-vue';
+
+export default defineComponent({
+  name: 'TaskPreview',
+  components: {
+    ElImage,
+    ElIcon,
+    VideoPlay,
+    VideoPause
+  },
+  props: {
+    modelValue: {
+      type: Object as () => ISunoTask,
+      required: true
+    }
+  },
+  data() {
+    return {};
+  },
+  computed: {
+    task() {
+      return this.$store.state.suno?.tasks;
+    },
+    audios(): ISunoAudio[] {
+      let result: ISunoAudio[] = [];
+      if (Array.isArray(this.modelValue?.response?.data)) {
+        this.modelValue?.response?.data?.forEach((item: any) => {
+          let audio = item as ISunoAudio;
+          result.push(audio);
+        });
+      }
+      console.log('audios', result);
+      return result;
+    },
+    application() {
+      return this.$store.state.suno?.application;
+    },
+    active() {
+      return this.$store.state.suno?.tasks?.active;
+    }
+  },
+  methods: {
+    useFormatDuring,
+    onPlay(audio: ISunoAudio) {
+      this.$store.dispatch('suno/setAudio', {
+        ...this.$store.state.suno.audio,
+        ...audio,
+        state: 'playing'
+      });
+      console.log('on play');
+    },
+    onPause(audio: ISunoAudio) {
+      this.$store.dispatch('suno/setAudio', {
+        ...this.$store.state.suno.audio,
+        ...audio,
+        state: 'paused'
+      });
+      console.log('on pause');
+    },
+    onClick(audio: ISunoAudio) {
+      if (this.$store.state?.suno?.audio?.id !== audio.id) {
+        this.onPlay({
+          ...audio,
+          progress: 0
+        });
+      }
+    }
+  }
+});
+</script>
+
+<style lang="scss">
+.task {
+  display: flex;
+  flex-direction: column;
+  .audio {
+    display: flex;
+    margin-bottom: 10px;
+
+    &:hover {
+      background-color: var(--el-bg-color-page);
+    }
+
+    .left {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      margin-right: 16px;
+      flex-shrink: 0;
+
+      &:hover .overlay {
+        display: block;
+      }
+
+      .cover {
+        width: 100%;
+        height: 100%;
+        border-radius: 4px;
+      }
+
+      .duration {
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 2px 4px;
+        color: white;
+        border-radius: 2px;
+        font-size: 10px;
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        display: none;
+        transition: opacity 0.3s;
+        border-radius: 4px;
+        text-align: center;
+        line-height: 70px;
+        cursor: pointer;
+        .el-icon {
+          font-size: 20px;
+          color: white;
+        }
+      }
+    }
+    .info {
+      flex: 1;
+      .title {
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 5px;
+      }
+      .style {
+        font-size: 12px;
+        color: var(--el-text-color-secondary);
+      }
+    }
+  }
+}
+</style>

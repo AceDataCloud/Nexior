@@ -23,14 +23,14 @@
                   <span class="description">{{ scope.row?.username }}</span>
                 </template>
               </el-table-column>
+              <el-table-column :label="$t('user.field.email')" width="300px">
+                <template #default="scope">
+                  <span class="description">{{ scope.row?.email }}</span>
+                </template>
+              </el-table-column>
               <el-table-column :label="$t('user.field.nickname')" width="200px">
                 <template #default="scope">
                   <span class="description">{{ scope.row.nickname }}</span>
-                </template>
-              </el-table-column>
-              <el-table-column :label="$t('user.field.isVerified')">
-                <template #default="scope">
-                  <el-switch :model-value="scope.row?.is_verified" />
                 </template>
               </el-table-column>
               <el-table-column :label="$t('user.field.dateJoined')">
@@ -57,7 +57,7 @@
 import { defineComponent } from 'vue';
 import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { ElRow, ElCol, ElTable, ElTableColumn, ElCard, ElSwitch } from 'element-plus';
+import { ElRow, ElCol, ElTable, ElTableColumn, ElCard } from 'element-plus';
 import { userOperator } from '@/operators';
 import { IUser } from '@/models';
 
@@ -74,7 +74,6 @@ export default defineComponent({
     Pagination,
     CopyToClipboard,
     ElRow,
-    ElSwitch,
     ElCol,
     ElTable,
     ElTableColumn,

@@ -3,6 +3,7 @@ import { IMidjourneyState } from '../midjourney/models';
 import { IChatState } from '../chat/models';
 import { IChatdocState } from '../chatdoc/models';
 import { IQrartState } from '../qrart/models';
+import { ISunoState } from '../suno/models';
 
 export interface ISetting {}
 
@@ -24,4 +25,5 @@ export interface IRootState extends ICommonState {
   chat: IChatState;
   chatdoc: IChatdocState;
   qrart: IQrartState;
+  suno: ISunoState;
 }

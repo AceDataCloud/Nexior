@@ -1,130 +1,138 @@
 {
   "button.detail": {
-    "message": "查看详情",
-    "description": "按钮文本，用于查看网站的推荐历史详情。"
+    "message": "Zobacz szczegóły",
+    "description": "Przycisk tekstowy do wyświetlania szczegółów historii poleceń na stronie."
   },
   "button.withdrawal": {
-    "message": "提现",
-    "description": "按钮文本，用于提现网站的推荐收益。"
+    "message": "Wypłata",
+    "description": "Przycisk tekstowy do wypłaty zysków z poleceń na stronie."
   },
   "button.query": {
-    "message": "查询",
-    "description": "按钮文本，用于查询网站的推荐收益。"
+    "message": "Zapytanie",
+    "description": "Przycisk tekstowy do sprawdzania zysków z poleceń na stronie."
   },
   "field.id": {
-    "message": "推荐 ID",
-    "description": "分销的唯一标识符，分销指 API 服务网站的推荐。"
+    "message": "ID polecenia",
+    "description": "Unikalny identyfikator polecenia, które odnosi się do API usług strony."
   },
   "field.percentage": {
-    "message": "推荐收益百分比",
-    "description": "推荐收益的百分比，根据订单金额计算。"
+    "message": "Procent zysków z polecenia",
+    "description": "Procent zysków uzyskanych z polecenia, obliczany na podstawie kwoty zamówienia."
   },
   "field.price": {
-    "message": "订单金额",
-    "description": "订单金额，用于计算推荐收益。"
+    "message": "Kwota zamówienia",
+    "description": "Kwota zamówienia wykorzystywana do obliczenia zysków z polecenia."
   },
   "field.reward": {
-    "message": "推荐奖励",
-    "description": "推荐收益，根据订单金额和推荐收益百分比计算。"
+    "message": "Nagroda za polecenie",
+    "description": "Zysk z polecenia, obliczany na podstawie kwoty zamówienia i procentu zysków z polecenia."
+  },
+  "field.userId": {
+    "message": "ID użytkownika",
+    "description": "Unikalny identyfikator użytkownika, który odnosi się do użytkownika API usług strony."
+  },
+  "field.userEmail": {
+    "message": "E-mail użytkownika",
+    "description": "E-mail użytkownika."
   },
   "field.createdAt": {
-    "message": "推荐时间",
-    "description": "推荐创建的时间。"
+    "message": "Czas polecenia",
+    "description": "Czas utworzenia polecenia."
   },
   "field.level": {
-    "message": "级别",
-    "description": "推荐的级别，用于计算推荐收益。"
+    "message": "Poziom",
+    "description": "Poziom polecenia wykorzystywany do obliczenia zysków z polecenia."
   },
   "field.threshold": {
-    "message": "推荐收益门槛",
-    "description": "推荐收益的门槛，用于提现推荐收益。"
+    "message": "Próg zysków z polecenia",
+    "description": "Próg wykorzystywany do wypłaty zysków z polecenia."
   },
   "field.inviteeId": {
-    "message": "邀请者 ID",
-    "description": "邀请者的唯一标识符，邀请者指邀请被邀请者到 API 服务网站。"
+    "message": "ID zaproszonego",
+    "description": "Unikalny identyfikator zapraszającego, czyli osoba, która zaprosiła nowego użytkownika do API usług strony."
   },
   "field.isVerified": {
-    "message": "已验证",
-    "description": "标志，指示推荐用户是否通过真实信息验证。"
+    "message": "Zweryfikowany",
+    "description": "Flaga wskazująca, czy użytkownik polecenia przeszedł weryfikację na podstawie rzeczywistych informacji."
   },
   "message.deltaPriceForNextLevel": {
-    "message": "与下一级别的差额",
-    "description": "当前订单金额与下一级别门槛之间的差额。"
+    "message": "Różnica z następnym poziomem",
+    "description": "Różnica między aktualną kwotą zamówienia a progiem następnego poziomu."
   },
   "message.developingWithDrawal": {
-    "message": "请加入 Discord 并咨询支持人员处理提现，提现将扣除相关所得税。",
-    "description": "指示提现功能正在开发中的消息。"
+    "message": "Proszę dołączyć do Discord i skontaktować się z zespołem wsparcia w celu przetworzenia wypłaty, która zostanie pomniejszona o odpowiednie podatki dochodowe.",
+    "description": "Wiadomość wskazująca, że opcja wypłaty jest w fazie rozwoju."
   },
   "message.technicalDetail": {
-    "message": "技术细节",
-    "description": "推荐系统的技术细节实现。"
+    "message": "Szczegóły techniczne",
+    "description": "Szczegóły techniczne dotyczące systemu poleceń."
   },
   "message.distributionQrDescription": {
-    "message": "推荐二维码（与链接内容相同）",
-    "description": "推荐二维码的描述。"
+    "message": "Kod QR polecenia (taki sam jak treść linku)",
+    "description": "Opis kodu QR polecenia."
   },
   "message.distributionLink": {
-    "message": "推荐链接",
-    "description": "推荐链接，用于将客户绑定为下级客户。"
+    "message": "Link referencyjny",
+    "description": "Link referencyjny służący do powiązania klientów jako klientów podrzędnych."
   },
   "message.updateSuccessfully": {
-    "message": "更新成功",
-    "description": "指示推荐信息已成功更新的消息。"
+    "message": "Aktualizacja zakończona sukcesem",
+    "description": "Wiadomość wskazująca, że informacje o poleceniu zostały pomyślnie zaktualizowane."
   },
   "message.distributionLinkDescription": {
-    "message": "如果客户通过此链接或二维码在本平台注册，客户将永久绑定为您的下级客户，并且客户在本平台的所有消费订单将根据当前分销比例返还到您的账户。",
-    "description": "推荐链接的描述。"
+    "message": "Jeśli klient zarejestruje się na naszej stronie za pomocą tego linku lub kodu QR, klient zostanie na zawsze powiązany jako Twój klient podrzędny, a wszelkie wydatki klienta na tej platformie będą zwracane na Twoje konto zgodnie z aktualnym współczynnikiem dystrybucji.",
+    "description": "Opis linku referencyjnego."
   },
   "message.distributionLinkDescription2": {
-    "message": "此链接包含您的用户 ID。客户打开链接后，您的用户 ID 将以 Cookies 的形式记录在客户的浏览器中，有效期为七天。在七天内，如果客户通过扫描该代码注册本平台，您的用户 ID 将与 Cookies 一起上传到注册服务器，并且客户可以作为您的下游客户绑定。",
-    "description": "推荐链接的描述。"
+    "message": "Ten link zawiera Twoje ID użytkownika. Po otwarciu linku, Twoje ID użytkownika zostanie zapisane w plikach cookie przeglądarki klienta na siedem dni. W ciągu tych siedmiu dni, jeśli klient zarejestruje się na tej platformie skanując ten kod, Twoje ID użytkownika zostanie przesłane na serwer rejestracyjny razem z plikami cookie i klient może zostać powiązany jako Twój klient podrzędny.",
+    "description": "Opis linku referencyjnego."
   },
   "title.price": {
-    "message": "推荐订单总金额",
-    "description": "推荐订单的总金额，用于计算推荐收益。"
+    "message": "Całkowita kwota zamówienia z polecenia",
+    "description": "Całkowita kwota zamówienia z polecenia wykorzystywana do obliczenia zysków z polecenia."
   },
   "title.reward": {
-    "message": "总推荐奖励",
-    "description": "总推荐奖励，根据订单金额和推荐收益百分比计算。"
+    "message": "Całkowita nagroda za polecenie",
+    "description": "Całkowita nagroda za polecenie, obliczana na podstawie kwoty zamówienia i procentu zysków z polecenia."
   },
   "title.level": {
-    "message": "推荐级别",
-    "description": "推荐级别，用于计算推荐收益。"
+    "message": "Poziom polecenia",
+    "description": "Poziom polecenia, wykorzystywany do obliczenia zysków z polecenia."
   },
   "title.percentage": {
-    "message": "推荐收益百分比",
-    "description": "推荐收益百分比，用于计算推荐收益。"
+    "message": "Procent zysków z polecenia",
+    "description": "Procent zysków z polecenia do obliczania zysków z polecenia."
   },
   "title.currentLevel": {
-    "message": "当前级别",
-    "description": "当前推荐级别，用于计算推荐收益。"
+    "message": "Aktualny poziom",
+    "description": "Aktualny poziom polecenia używany do obliczania zysków z polecenia."
   },
   "title.nextLevel": {
-    "message": "下一级别",
-    "description": "下一个推荐级别，用于计算推荐收益。"
+    "message": "Następny poziom",
+    "description": "Następny poziom polecenia do obliczeń zysków z polecenia."
   },
   "title.currentPercentage": {
-    "message": "当前推荐收益百分比",
-    "description": "当前推荐收益百分比，用于计算推荐收益。"
+    "message": "Aktualny procent zysków z polecenia",
+    "description": "Aktualny procent zysków z polecenia wykorzystywany do obliczeń zysków z polecenia."
   },
   "title.nextPercentage": {
-    "message": "下一级别推荐收益百分比",
-    "description": "下一个级别的推荐收益百分比，用于计算推荐收益。"
+    "message": "Następny poziom procentu zysków z polecenia",
+    "description": "Procent zysków z polecenia następnego poziomu do obliczeń."
   },
   "title.levelInfo": {
-    "message": "级别信息",
-    "description": "推荐级别的信息，用于计算推荐收益。"
+    "message": "Informacje o poziomie",
+    "description": "Informacje na temat poziomu polecenia, wykorzystywane do obliczania zysków z polecenia."
   },
   "title.distributionLink": {
-    "message": "推荐链接",
-    "description": "推荐链接，用于将客户绑定为下级客户。"
+    "message": "Link referencyjny",
+    "description": "Link referencyjny do powiązania klientów jako klientów podrzędnych."
   },
   "title.inviteesCount": {
-    "message": "邀请者总数",
-    "description": "邀请者的总数，用于计算推荐收益。"
+    "message": "Liczba zaproszonych",
+    "description": "Całkowita liczba zaproszonych do obliczenia korzyści z poleceń."
   },
   "title.manageDistributionStatus": {
-    "message": "分销管理",
-    "description": "推荐状态的管理。"
+    "message": "Zarządzanie dystrybucją",
+    "description": "Zarządzanie stanem poleceń."
   }
 }

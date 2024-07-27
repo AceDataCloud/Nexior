@@ -1,130 +1,138 @@
 {
   "button.detail": {
     "message": "Details anzeigen",
-    "description": "Button-Text zum Anzeigen der Empfehlungshistorie der Website."
+    "description": "按钮文本，用于查看网站的推荐历史详情。"
   },
   "button.withdrawal": {
-    "message": "Abheben",
-    "description": "Button-Text zum Abheben der empfohlenen Einnahmen der Website."
+    "message": "Abhebung",
+    "description": "按钮文本，用于提现网站的推荐收益。"
   },
   "button.query": {
-    "message": "Abfragen",
-    "description": "Button-Text zum Abfragen der empfohlenen Einnahmen der Website."
+    "message": "Abfrage",
+    "description": "按钮文本，用于查询网站的推荐收益。"
   },
   "field.id": {
     "message": "Empfehlungs-ID",
-    "description": "Eindeutiges Kennzeichen der Vertriebspartner, Vertriebspartner bezieht sich auf die empfohlenen Dienste der API-Website."
+    "description": "分销的唯一标识符，分销指 API 服务网站的推荐。"
   },
   "field.percentage": {
-    "message": "Empfehlungs-Einnahmen-Prozentsatz",
-    "description": "Prozentsatz der Empfehlungseinnahmen, berechnet abhängig vom Bestellbetrag."
+    "message": "Empfehlungsanteil %",
+    "description": "推荐收益的百分比，根据订单金额计算。"
   },
   "field.price": {
     "message": "Bestellbetrag",
-    "description": "Bestellbetrag, der zur Berechnung der Empfehlungseinnahmen verwendet wird."
+    "description": "订单金额，用于计算推荐收益。"
   },
   "field.reward": {
     "message": "Empfehlungsprämie",
-    "description": "Empfehlungseinnahmen, berechnet abhängig vom Bestellbetrag und dem Empfehlungs-Einnahmen-Prozentsatz."
+    "description": "推荐收益，根据订单金额和推荐收益百分比计算。"
+  },
+  "field.userId": {
+    "message": "Benutzer-ID",
+    "description": "用户的唯一标识符，用户指 API 服务网站的用户。"
+  },
+  "field.userEmail": {
+    "message": "Benutzer-E-Mail",
+    "description": "用户的邮箱"
   },
   "field.createdAt": {
-    "message": "Empfehlungsdatum",
-    "description": "Erstellungsdatum der Empfehlung."
+    "message": "Empfehlungszeit",
+    "description": "推荐创建的时间。"
   },
   "field.level": {
-    "message": "Ebene",
-    "description": "Empfehlungsebene, die zur Berechnung der Empfehlungseinnahmen verwendet wird."
+    "message": "Stufe",
+    "description": "推荐的级别，用于计算推荐收益。"
   },
   "field.threshold": {
-    "message": "Empfehlungs-Einnahmen-Schwellenwert",
-    "description": "Schwellenwert für Empfehlungseinnahmen, der zur Auszahlung der Empfehlungseinnahmen verwendet wird."
+    "message": "Empfehlungsgrenze",
+    "description": "推荐收益的门槛，用于提现推荐收益。"
   },
   "field.inviteeId": {
-    "message": "Einladender ID",
-    "description": "Eindeutiges Kennzeichen des Einladenden, der Einladende verweist auf die Einladung von Personen zur API-Website."
+    "message": "Einladenden-ID",
+    "description": "邀请者的唯一标识符，邀请者指邀请被邀请者到 API 服务网站。"
   },
   "field.isVerified": {
     "message": "Verifiziert",
-    "description": "Kennzeichnung, die anzeigt, ob der empfohlene Benutzer durch echte Informationen verifiziert wurde."
+    "description": "标志，指示推荐用户是否通过真实信息验证。"
   },
   "message.deltaPriceForNextLevel": {
     "message": "Differenz zum nächsten Level",
-    "description": "Differenz zwischen dem aktuellen Bestellbetrag und der Schwelle des nächsten Levels."
+    "description": "当前订单金额与下一级别门槛之间的差额。"
   },
   "message.developingWithDrawal": {
-    "message": "Bitte treten Sie dem Discord bei und fragen Sie das Support-Personal nach der Abwicklung des Abhebens. Das Abheben wird die entsprechenden Steuern abziehen.",
-    "description": "Nachricht, die darauf hinweist, dass die Abhebefunktion derzeit in Bearbeitung ist."
+    "message": "Bitte treten Sie Discord bei und konsultieren Sie unser Support-Team für Auszahlungsanfragen. Bei Auszahlungen werden die entsprechenden Einkommenssteuern abgezogen.",
+    "description": "指示提现功能正在开发中的消息。"
   },
   "message.technicalDetail": {
     "message": "Technische Details",
-    "description": "Technische Umsetzung der Empfehlungssystemdetails."
+    "description": "推荐系统的技术细节实现。"
   },
   "message.distributionQrDescription": {
-    "message": "Empfehlungs-QR-Code (identisch mit dem Linkinhalt)",
-    "description": "Beschreibung des Empfehlungs-QR-Codes."
+    "message": "Empfehlungs-QR-Code (der Inhalt ist identisch mit dem Link)",
+    "description": "推荐二维码的描述。"
   },
   "message.distributionLink": {
     "message": "Empfehlungslink",
-    "description": "Empfehlungslink, um Kunden als Unterlevel-Kunden zu binden."
+    "description": "推荐链接，用于将客户绑定为下级客户。"
   },
   "message.updateSuccessfully": {
     "message": "Erfolgreich aktualisiert",
-    "description": "Nachricht, die anzeigt, dass die Empfehlungsinformationen erfolgreich aktualisiert wurden."
+    "description": "指示推荐信息已成功更新的消息。"
   },
   "message.distributionLinkDescription": {
-    "message": "Falls Kunden sich über diesen Link oder den QR-Code auf dieser Plattform registrieren, werden sie dauerhaft als Ihre Unterlevel-Kunden gebunden, und alle ihre Konsumbestellungen auf dieser Plattform werden entsprechend dem aktuellen Vertriebsprozentsatz auf Ihr Konto zurückgezahlt.",
-    "description": "Beschreibung des Empfehlungslinks."
+    "message": "Wenn Kunden sich über diesen Link oder QR-Code auf dieser Plattform anmelden, werden sie dauerhaft als Ihre untergeordneten Kunden gebunden, und alle ausgegebenen Bestellungen des Kunden werden entsprechend dem aktuellen Verteilungsverhältnis an Ihr Konto zurückgegeben.",
+    "description": "推荐链接的描述。"
   },
   "message.distributionLinkDescription2": {
-    "message": "Dieser Link enthält Ihre Benutzer-ID. Wenn Kunden den Link öffnen und sich über diesen Code innerhalb von sieben Tagen auf dieser Plattform registrieren, wird Ihre Benutzer-ID in Form von Cookies in ihrem Browser für sieben Tage gespeichert. Innerhalb von sieben Tagen, wenn Kunden sich über diesen Code auf dieser Plattform registrieren, wird Ihre Benutzer-ID zusammen mit den Cookies an den Registrierungsserver gesendet, und Kunden können als Ihre Unterlevel-Kunden gebunden werden.",
-    "description": "Beschreibung des Empfehlungslinks."
+    "message": "Dieser Link enthält Ihre Benutzer-ID. Wenn der Kunde den Link öffnet, wird Ihre Benutzer-ID in Form von Cookies im Browser des Kunden für sieben Tage gespeichert. Innerhalb von sieben Tagen, wenn der Kunde diesen Code scannt, um sich auf der Plattform anzumelden, wird Ihre Benutzer-ID zusammen mit den Cookies an den Registrierungsserver übermittelt, und der Kunde kann als Ihr untergeordneter Kunde gebunden werden.",
+    "description": "推荐链接的描述。"
   },
   "title.price": {
-    "message": "Gesamtbetrag der Empfehlungsbestellungen",
-    "description": "Gesamtbetrag der Empfehlungsbestellungen, der zur Berechnung der Empfehlungseinnahmen verwendet wird."
+    "message": "Gesamtbetrag der Empfehlungsbestellung",
+    "description": "推荐订单的总金额，用于计算推荐收益。"
   },
   "title.reward": {
     "message": "Gesamte Empfehlungsprämie",
-    "description": "Gesamte Empfehlungsprämie, berechnet abhängig vom Bestellbetrag und dem Empfehlungs-Einnahmen-Prozentsatz."
+    "description": "总推荐奖励，根据订单金额和推荐收益百分比计算。"
   },
   "title.level": {
-    "message": "Empfehlungsebene",
-    "description": "Empfehlungsebene, die zur Berechnung der Empfehlungseinnahmen verwendet wird."
+    "message": "Empfehlungsstufe",
+    "description": "推荐级别，用于计算推荐收益。"
   },
   "title.percentage": {
-    "message": "Empfehlungs-Einnahmen-Prozentsatz",
-    "description": "Empfehlungs-Einnahmen-Prozentsatz, der zur Berechnung der Empfehlungseinnahmen verwendet wird."
+    "message": "Empfehlungsanteil %",
+    "description": "推荐收益百分比，用于计算推荐收益。"
   },
   "title.currentLevel": {
-    "message": "Aktuelle Ebene",
-    "description": "Aktuelle Empfehlungsebene, die zur Berechnung der Empfehlungseinnahmen verwendet wird."
+    "message": "Aktuelle Stufe",
+    "description": "当前推荐级别，用于计算推荐收益。"
   },
   "title.nextLevel": {
-    "message": "Nächste Ebene",
-    "description": "Nächste Empfehlungsebene, die zur Berechnung der Empfehlungseinnahmen verwendet wird."
+    "message": "Nächste Stufe",
+    "description": "下一个推荐级别，用于计算推荐收益。"
   },
   "title.currentPercentage": {
-    "message": "Aktueller Empfehlungs-Einnahmen-Prozentsatz",
-    "description": "Aktueller Empfehlungs-Einnahmen-Prozentsatz, der zur Berechnung der Empfehlungseinnahmen verwendet wird."
+    "message": "Aktueller Empfehlungsanteil %",
+    "description": "当前推荐收益百分比，用于计算推荐收益。"
   },
   "title.nextPercentage": {
-    "message": "Nächster Empfehlungs-Einnahmen-Prozentsatz der nächsten Ebene",
-    "description": "Empfehlungs-Einnahmen-Prozentsatz der nächsten Ebene, der zur Berechnung der Empfehlungseinnahmen verwendet wird."
+    "message": "Empfehlungsanteil % der nächsten Stufe",
+    "description": "下一个级别的推荐收益百分比，用于计算推荐收益。"
   },
   "title.levelInfo": {
-    "message": "Ebeneninformationen",
-    "description": "Informationen zur Empfehlungsebene, die zur Berechnung der Empfehlungseinnahmen verwendet wird."
+    "message": "Stufeninformationen",
+    "description": "推荐级别的信息，用于计算推荐收益。"
   },
   "title.distributionLink": {
     "message": "Empfehlungslink",
-    "description": "Empfehlungslink, um Kunden als Unterlevel-Kunden zu binden."
+    "description": "推荐链接，用于将客户绑定为下级客户。"
   },
   "title.inviteesCount": {
-    "message": "Gesamtzahl der Einladenden",
-    "description": "Gesamtzahl der Einladenden, die zur Berechnung der Empfehlungseinnahmen verwendet wird."
+    "message": "Anzahl der Eingeladenen",
+    "description": "Die Gesamtzahl der Eingeladenen, die zur Berechnung der Empfehlungsvergütung verwendet wird."
   },
   "title.manageDistributionStatus": {
-    "message": "Vertriebsstatus verwalten",
-    "description": "Verwaltung des Empfehlungsstatus."
+    "message": "Verwaltung der Verteilung",
+    "description": "Die Verwaltung des Empfehlungsstatus."
   }
 }

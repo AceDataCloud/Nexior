@@ -108,7 +108,9 @@ import {
   ROUTE_INDEX,
   ROUTE_MIDJOURNEY_INDEX,
   ROUTE_QRART_INDEX,
+  ROUTE_SUNO_INDEX,
   ROUTE_QRART_HISTORY,
+  ROUTE_SUNO_HISTORY,
   ROUTE_SITE_INDEX
 } from '@/router/constants';
 import LogoTiny from './LogoTiny.vue';
@@ -164,6 +166,7 @@ export default defineComponent({
         });
       }
 
+      /*
       if (this.$store?.state?.site?.features?.chatdoc?.enabled) {
         result.push({
           route: {
@@ -174,6 +177,7 @@ export default defineComponent({
           routes: [ROUTE_CHATDOC_INDEX, ROUTE_CHATDOC_CONVERSATION, ROUTE_CHATDOC_MANAGE, ROUTE_CHATDOC_SETTING]
         });
       }
+      */
 
       if (this.$store?.state?.site?.features?.qrart?.enabled) {
         result.push({
@@ -183,6 +187,17 @@ export default defineComponent({
           displayName: this.$t('common.nav.qrart'),
           icon: 'fa-solid fa-qrcode',
           routes: [ROUTE_QRART_INDEX, ROUTE_QRART_HISTORY]
+        });
+      }
+      // Add suno's leftmost icon
+      if (this.$store?.state?.site?.features?.suno?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_SUNO_INDEX
+          },
+          displayName: this.$t('common.nav.suno'),
+          icon: 'fa-solid fa-music',
+          routes: [ROUTE_SUNO_INDEX, ROUTE_SUNO_HISTORY]
         });
       }
 
