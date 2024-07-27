@@ -79,6 +79,20 @@ export default defineComponent({
     },
     application() {
       return this.$store.state.suno.application;
+    },
+    tasks() {
+      return this.$store.state.suno.tasks;
+    }
+  },
+  watch: {
+    tasks: {
+      handler(value, oldValue) {
+        // scroll down if new tasks are added
+        if (value?.items?.length > oldValue?.items?.length) {
+          console.debug('new tasks detected');
+          this.onScrollDown();
+        }
+      }
     }
   },
   async mounted() {
@@ -125,12 +139,12 @@ export default defineComponent({
     },
     async onScrollDown() {
       setTimeout(() => {
-        // scroll to bottom for `.tasks`
-        const el = document.querySelector('.tasks');
+        // scroll to bottom for `.recent`
+        const el = document.querySelector('.recent');
         if (el) {
           el.scrollTop = el.scrollHeight;
         }
-      }, 500);
+      }, 1000);
     },
     async onGetTasks() {
       if (this.loading) {

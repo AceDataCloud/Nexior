@@ -39,7 +39,6 @@ import { defineComponent } from 'vue';
 import TaskPreview from './task/Preview.vue';
 import Player from '@/components/suno/player/Player.vue';
 import { ElSkeleton, ElSkeletonItem } from 'element-plus';
-// import { ISunoAudio, ISunoAudioLyric, ISunoTask } from '@/models';
 
 export default defineComponent({
   name: 'RecentPanel',
