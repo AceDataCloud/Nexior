@@ -92,7 +92,8 @@ export default defineComponent({
           console.debug('new tasks detected');
           this.onScrollDown();
         }
-      }
+      },
+      deep: true
     }
   },
   async mounted() {
