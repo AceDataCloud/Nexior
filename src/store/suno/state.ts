@@ -1,16 +1,14 @@
 import { ISunoState } from './models';
 import { Status, Song } from '@/models';
 
-// const KEYS = {
-//   volume: 'PLAYER-VOLUME'
-// };
-
 export default (): ISunoState => {
   return {
     service: undefined,
     application: undefined,
     tasks: undefined,
-    audio: undefined,
+    audio: {
+      volume: 100
+    },
     credential: undefined,
     config: undefined,
     status: {
@@ -18,22 +16,5 @@ export default (): ISunoState => {
       getApplication: Status.None,
       getTasks: Status.None
     }
-    // player: {
-    //   audio: new Audio(),
-    //   loopType: 0,
-    //   volume: parseInt(localStorage.getItem(KEYS.volume) || '60'),
-    //   playList: [],
-    //   showPlayList: false,
-    //   id: '',
-    //   url: '',
-    //   song: undefined,
-    //   isPlaying: false,
-    //   isPause: false,
-    //   sliderInput: false,
-    //   ended: false,
-    //   muted: false,
-    //   currentTime: 0,
-    //   duration: 0
-    // }
   };
 };

@@ -27,7 +27,7 @@
       {{ $t('suno.message.noTasks') }}
     </p>
   </div>
-  <div class="flex-1 flex flex-col">
+  <div v-show="!!$store?.state?.suno?.audio?.object" class="flex-1 flex flex-col">
     <div class="h-20">
       <player />
     </div>

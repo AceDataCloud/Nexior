@@ -166,6 +166,7 @@ export default defineComponent({
         });
       }
 
+      /*
       if (this.$store?.state?.site?.features?.chatdoc?.enabled) {
         result.push({
           route: {
@@ -176,6 +177,7 @@ export default defineComponent({
           routes: [ROUTE_CHATDOC_INDEX, ROUTE_CHATDOC_CONVERSATION, ROUTE_CHATDOC_MANAGE, ROUTE_CHATDOC_SETTING]
         });
       }
+      */
 
       if (this.$store?.state?.site?.features?.qrart?.enabled) {
         result.push({

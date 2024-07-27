@@ -13,39 +13,69 @@
 </template>
 
 <script setup lang="ts">
-import { Like, DownTwo, MoreTwo, Comment, ThumbsUp, ThumbsDown, Share, MoreFour, MoreThree } from '@icon-park/vue-next';
-// import { usePlayerStore } from '@/stores/player';
 import { OpticalDisk } from '@/assets/img';
-import IconPark from '@/components/common/IconPark.vue';
-import { ElBadge } from 'element-plus';
-
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import { useStore } from 'vuex';
+
 const store = useStore();
 const audio = computed({
   get: () => store.state.suno.audio,
   set: (value) => store.commit('suno/setAudio', value)
 });
 
-// const duration = computed({
-//   get: () => store.state.suno.player.duration,
-//   set: (value) => store.commit('suno/setDuration', value)
-// });
+// watch audio change and play
+watch(audio, (value, oldValue) => {
+  // url changed
+  if (value?.audio_url !== oldValue?.audio_url) {
+    console.log('audio changed', value);
+    if (value.object) {
+      console.log('111', value.object);
+      // delete old object
+      value.object.pause();
+      delete value.object;
+    }
+    const object = new Audio(value.audio_url);
+    object.currentTime = 0;
+    if (value.state === 'playing') {
+      object.play();
+    } else {
+      object.pause();
+    }
 
-// // 方法
-// const onSliderInput = () => store.dispatch('suno/onSliderInput');
-// const onSliderChange = () => store.dispatch('suno/onSliderChange');
+    // listen to the time change of audio
+    object.addEventListener('timeupdate', () => {
+      store.commit('suno/setAudio', {
+        ...store.state.suno.audio,
+        progress: object.currentTime
+      });
+    });
 
-// const { song, songUrl } = toRefs(usePlayerStore());
-</script>
-
-<style lang="scss">
-.player-song {
-  .badge {
-    .el-badge__content {
-      @apply scale-75 left-1 bg-stone-100 text-slate-500 bg-opacity-80 right-auto;
-      @apply dark:bg-stone-900;
+    store.commit('suno/setAudio', {
+      ...store.state.suno.audio,
+      object: object
+    });
+  } else if (value?.progress !== oldValue?.progress && Math.abs(value.progress - value.object.currentTime) > 2) {
+    console.log('progress changed', value.progress);
+    const audio = store.state.suno.audio;
+    if (audio.object) {
+      audio.object.currentTime = audio.progress;
+    }
+  } else if (value?.state !== oldValue?.state) {
+    console.log('state changed', value.state);
+    if (value.object) {
+      if (value.state === 'playing') {
+        value.object.play();
+      } else {
+        value.object.pause();
+      }
     }
   }
-}
-</style>
+
+  if (value?.volume !== oldValue?.volume) {
+    console.log('volume changed', value.volume);
+    if (value.object) {
+      value.object.volume = value.volume / 100;
+    }
+  }
+});
+</script>

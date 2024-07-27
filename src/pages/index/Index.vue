@@ -142,7 +142,6 @@
       </div>
     </div>
     <div
-      v-if="false"
       id="suno"
       class="block"
       @click="
@@ -161,8 +160,8 @@
             </el-button>
           </el-col>
           <el-col :md="16" :xs="24" class="preview">
-            <img class="image desktop" />
-            <img class="image mobile" />
+            <img src="https://cdn.acedata.cloud/2m8fn.png" class="image desktop" />
+            <img src="https://cdn.acedata.cloud/23knvs.png" class="image mobile" />
           </el-col>
         </el-row>
       </div>
@@ -279,6 +278,15 @@ export default defineComponent({
                 icon: 'fa-solid fa-qrcode'
               }
             ]
+          : []),
+        ...(this.site?.features?.suno?.enabled
+          ? [
+              {
+                title: this.$t('index.title.suno'),
+                subtitle: this.$t('index.subtitle.suno'),
+                icon: 'fa-solid fa-music'
+              }
+            ]
           : [])
       ];
     }
@@ -364,9 +372,9 @@ export default defineComponent({
         font-weight: bold;
         margin-bottom: 50px;
         text-align: left;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        background-image: linear-gradient(90deg, #277186, #7752ff 40%, #5f98fa 60%, #44beff);
+        // -webkit-text-fill-color: transparent;
+        // background-clip: text;
+        // background-image: linear-gradient(90deg, #277186, #7752ff 40%, #5f98fa 60%, #44beff);
       }
       h3.subtitle {
         font-size: 30px;

@@ -2,9 +2,9 @@
   <div class="panel">
     <div class="config">
       <type-selector class="mb-4" />
-      <instrument-switch v-if="false" class="mb-4 instrument" />
+      <instrument-switch class="mb-4 instrument" />
       <prompt-input v-if="!config?.custom" class="mb-4" />
-      <lyric-input v-if="config?.custom" class="mb-4" />
+      <lyric-input v-if="config?.custom && !config.instrumental" class="mb-4" />
       <style-input v-if="config?.custom" class="mb-4" />
       <title-input v-if="config?.custom" class="mb-4" />
       <div class="actions">
@@ -67,8 +67,8 @@ export default defineComponent({
     position: relative;
     .instrument {
       position: absolute;
-      top: 40px;
-      right: 0;
+      top: 50px;
+      right: -10px;
       z-index: 1000;
     }
   }

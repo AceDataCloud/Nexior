@@ -81,6 +81,8 @@ export interface ISunoLyricRequest {
 export interface ISunoAudio {
   id?: string;
   lyric?: string;
+  volume?: number;
+  progress?: number;
   model?: string;
   style?: string;
   title?: string;
@@ -89,7 +91,9 @@ export interface ISunoAudio {
   video_url?: string;
   image_url?: string;
   created_at?: string;
+  duration?: number;
   state?: 'playing' | 'paused';
+  object?: any;
 }
 
 export interface ISunoAudioLyric {

@@ -15,7 +15,7 @@
     </div>
     <div class="text-sm mt-3">{{ volume }}</div>
     <div class="mt-2">
-      <IconPark
+      <icon-park
         :icon="muted ? VolumeMute : VolumeSmall"
         size="16"
         theme="filled"
@@ -34,7 +34,6 @@ import { computed } from 'vue';
 import { useStore } from 'vuex';
 const store = useStore();
 
-// 创建响应式引用
 const volume = computed({
   get: () => store.state.suno.audio?.volume,
   set: (value) => store.commit('suno/setAudio', { ...store.state.suno.audio, volume: value })
@@ -45,11 +44,9 @@ const muted = computed({
   set: (value) => store.commit('suno/setAudio', { ...store.state.suno.audio, muted: value })
 });
 
-// 方法
 const toggleMuted = () => store.dispatch('suno/toggleMuted');
 
 const setVolume = (value: number) => store.dispatch('suno/setVolume', value);
-// const { volume, muted, toggleMuted, setVolume } = toRefs(usePlayerStore());
 </script>
 <style lang="scss">
 .el-popover.el-popper {

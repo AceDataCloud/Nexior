@@ -1,25 +1,25 @@
 <template>
   <el-scrollbar class="right-panel">
-    <div v-if="song" class="card">
+    <div v-if="audio?.object" class="card">
       <div class="image-container">
-        <el-image :src="song.image_url" fit="cover">
+        <el-image :src="audio.image_url" fit="cover">
           <template #error>
             <div class="image-slot">
               <el-icon><icon-picture /></el-icon>
             </div>
           </template>
         </el-image>
-        <h2 class="title">{{ song?.title }}</h2>
+        <h2 class="title">{{ audio?.title }}</h2>
       </div>
       <div class="content">
-        <p>{{ song?.style }}</p>
         <div class="artist">
-          <el-avatar :size="30" :src="song?.image_url"></el-avatar>
-          <span>{{ song?.prompt }}</span>
+          <el-avatar :size="30" :src="audio?.image_url"></el-avatar>
+          <span>{{ audio?.prompt }}</span>
         </div>
-        <p>{{ $dayjs.format(song?.created_at) }}</p>
+        <p class="style">{{ audio?.style }}</p>
+        <p class="time">{{ $dayjs.format(audio?.created_at) }}</p>
         <div class="lyrics">
-          <p style="white-space: pre-wrap; font-size: 14%" v-html="song?.lyric"></p>
+          <p v-html="audio?.lyric"></p>
         </div>
       </div>
     </div>
@@ -47,8 +47,8 @@ export default defineComponent({
     };
   },
   computed: {
-    song() {
-      return this.$store.state.suno?.player?.song;
+    audio() {
+      return this.$store.state.suno?.audio;
     }
   },
   methods: {
@@ -71,7 +71,7 @@ export default defineComponent({
   margin-bottom: 10px;
 }
 .card-scrollbar {
-  height: 600px; /* 增加高度以适应更大的图片 */
+  height: 600px;
   width: 300px;
 }
 
@@ -84,7 +84,7 @@ export default defineComponent({
 
 .image-container {
   position: relative;
-  height: 300px; /* 增加图片容器的高度 */
+  height: 300px;
 }
 
 .image-container .el-image {
@@ -104,6 +104,10 @@ export default defineComponent({
   z-index: 2;
 }
 
+.content {
+  padding: 15px;
+}
+
 .title {
   position: absolute;
   bottom: 0;
@@ -116,18 +120,15 @@ export default defineComponent({
   z-index: 1;
 }
 
-.content {
-  padding: 15px;
-}
-
 .artist {
   display: flex;
   align-items: center;
   margin: 10px 0;
+  font-weight: bold;
 }
 
 .artist span {
-  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .actions {
@@ -141,7 +142,15 @@ export default defineComponent({
   cursor: pointer;
 }
 
+.time {
+  font-size: 12px;
+  color: var(--el-text-color-secondary);
+}
+
 .lyrics {
   margin: 15px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-wrap;
 }
 </style>

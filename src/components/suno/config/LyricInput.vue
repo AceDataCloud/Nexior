@@ -10,7 +10,7 @@
       type="textarea"
       class="lyrics"
       :placeholder="$t('suno.placeholder.lyrics')"
-      :maxlength="300"
+      :maxlength="3000"
       show-word-limit
     />
   </div>

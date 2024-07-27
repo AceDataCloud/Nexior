@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-end items-center gap-x-2.5">
-    <span class="text-xs"> {{ useFormatDuring(currentTime) }} / {{ useFormatDuring(duration) }} </span>
+    <span class="text-xs"> {{ useFormatDuring(progress) }} / {{ useFormatDuring(duration) }} </span>
   </div>
 </template>
 
@@ -8,14 +8,15 @@
 import { useFormatDuring } from '@/utils/number';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
+
 const store = useStore();
 
-const currentTime = computed({
-  get: () => store.state.suno?.audio?.currentTime,
+const progress = computed({
+  get: () => store.state.suno?.audio?.progress,
   set: (value) =>
     store.commit('suno/setAudio', {
       ...store.state.suno.audio,
-      currentTime: value
+      progress: value
     })
 });
 

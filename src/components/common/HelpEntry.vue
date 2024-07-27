@@ -13,7 +13,10 @@
     <el-menu :collapse="false" class="menu">
       <el-popover :width="350" trigger="hover">
         <template #reference>
-          <el-menu-item v-if="site?.features?.support?.wechat?.enabled" index="1">
+          <el-menu-item
+            v-if="site?.features?.support?.wechat?.enabled && site?.features?.support?.wechat?.qr"
+            index="1"
+          >
             <font-awesome-icon icon="fa-brands fa-weixin" class="mr-2" />
             <template #title>{{ $t('common.message.addWeChat') }}</template>
           </el-menu-item>

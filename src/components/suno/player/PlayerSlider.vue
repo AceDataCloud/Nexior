@@ -1,7 +1,7 @@
 <template>
   <div class="player-slider">
     <el-slider
-      v-model="currentTime"
+      v-model="progress"
       :show-tooltip="false"
       :min="0"
       :max="duration"
@@ -17,12 +17,13 @@ import { computed } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
-const currentTime = computed({
-  get: () => store.state.suno?.audio?.currentTime,
+
+const progress = computed({
+  get: () => store.state.suno?.audio?.progress,
   set: (value) =>
     store.commit('suno/setAudio', {
       ...store.state.suno.audio,
-      currentTime: value
+      progress: value
     })
 });
 
@@ -35,7 +36,7 @@ const onSliderInput = () => {};
 const onSliderChange = (val: number) =>
   store.dispatch('suno/setAudio', {
     ...store.state.suno.audio,
-    currentTime: val
+    progress: val
   });
 </script>
 

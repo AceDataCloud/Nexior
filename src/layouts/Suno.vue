@@ -76,7 +76,6 @@ export default defineComponent({
 
   .preview {
     height: 100%;
-    padding: 15px;
     width: 300px;
     height: 100%;
     display: flex;

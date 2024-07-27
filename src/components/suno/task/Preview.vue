@@ -1,17 +1,32 @@
 <template>
   <div class="task">
     <div v-for="(audio, audioIndex) in audios" :key="audioIndex" class="audio" @click="onClick(audio)">
-      <div class="left">
-        <el-image :src="audio?.image_url" class="cover" fit="cover">
-          <template #placeholder>
-            <div class="image-slot">...</div>
-          </template>
-        </el-image>
-        <div class="overlay" @click="onTogglePlay">
+      <div v-loading="!audio?.audio_url" class="left">
+        <el-image :src="audio?.image_url" class="cover" fit="cover" />
+        <div
+          v-if="
+            audio?.audio_url &&
+            $store.state?.suno?.audio?.id === audio.id &&
+            $store.state?.suno?.audio?.state === 'playing'
+          "
+          class="overlay"
+          @click="onPause(audio)"
+        >
           <el-icon><video-pause /></el-icon>
         </div>
-        <div class="overlay" @click="onTogglePlay">
+        <div
+          v-if="
+            audio?.audio_url &&
+            ($store.state?.suno?.audio?.id !== audio.id ||
+              ($store.state?.suno?.audio?.id === audio.id && $store.state?.suno?.audio?.state === 'paused'))
+          "
+          class="overlay"
+          @click="onPlay(audio)"
+        >
           <el-icon><video-play /></el-icon>
+        </div>
+        <div v-if="audio?.duration" class="duration">
+          {{ useFormatDuring(audio?.duration) }}
         </div>
       </div>
       <div class="info">
@@ -70,11 +85,29 @@ export default defineComponent({
   },
   methods: {
     useFormatDuring,
-    onTogglePlay() {
-      console.log('on toggle play');
+    onPlay(audio: ISunoAudio) {
+      this.$store.dispatch('suno/setAudio', {
+        ...this.$store.state.suno.audio,
+        ...audio,
+        state: 'playing'
+      });
+      console.log('on play');
+    },
+    onPause(audio: ISunoAudio) {
+      this.$store.dispatch('suno/setAudio', {
+        ...this.$store.state.suno.audio,
+        ...audio,
+        state: 'paused'
+      });
+      console.log('on pause');
     },
     onClick(audio: ISunoAudio) {
-      console.log('on click', audio);
+      if (this.$store.state?.suno?.audio?.id !== audio.id) {
+        this.onPlay({
+          ...audio,
+          progress: 0
+        });
+      }
     }
   }
 });
@@ -87,10 +120,15 @@ export default defineComponent({
   .audio {
     display: flex;
     margin-bottom: 10px;
+
+    &:hover {
+      background-color: var(--el-bg-color-page);
+    }
+
     .left {
       position: relative;
-      width: 100px;
-      height: 100px;
+      width: 60px;
+      height: 60px;
       margin-right: 16px;
       flex-shrink: 0;
 
@@ -103,14 +141,16 @@ export default defineComponent({
         height: 100%;
         border-radius: 4px;
       }
+
       .duration {
         position: absolute;
-        right: 4px;
-        bottom: 4px;
+        right: 0px;
+        bottom: 0px;
         background-color: rgba(0, 0, 0, 0.7);
         padding: 2px 4px;
+        color: white;
         border-radius: 2px;
-        font-size: 12px;
+        font-size: 10px;
       }
 
       .overlay {
@@ -127,10 +167,10 @@ export default defineComponent({
         transition: opacity 0.3s;
         border-radius: 4px;
         text-align: center;
-        line-height: 120px;
+        line-height: 70px;
         cursor: pointer;
         .el-icon {
-          font-size: 40px;
+          font-size: 20px;
           color: white;
         }
       }
@@ -138,8 +178,9 @@ export default defineComponent({
     .info {
       flex: 1;
       .title {
-        font-size: 16px;
+        font-size: 14px;
         font-weight: bold;
+        margin-top: 5px;
       }
       .style {
         font-size: 12px;
