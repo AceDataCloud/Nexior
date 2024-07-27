@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Tue, 16 Jul 2024 13:57:36 GMT and should not be manually modified.
+This log was last generated on Sat, 27 Jul 2024 18:35:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.0.0
+
+Sat, 27 Jul 2024 18:35:47 GMT
+
+### Major changes
+
+- init suno (office@acedata.cloud)
 
 ## 1.14.0
 
