@@ -1,7 +1,7 @@
 <template>
   <div class="task">
     <div v-for="(audio, audioIndex) in audios" :key="audioIndex" class="audio" @click="onClick(audio)">
-      <div v-loading="!audio?.audio_url" class="left">
+      <div v-loading="!audio?.audio_url || !audio?.video_url" class="left">
         <el-image :src="audio?.image_url" class="cover" fit="cover" />
         <div
           v-if="
@@ -41,7 +41,7 @@
 import { defineComponent } from 'vue';
 import { useFormatDuring } from '@/utils/number';
 import { ISunoAudio, ISunoTask } from '@/models';
-import { ElButton, ElImage, ElIcon } from 'element-plus';
+import { ElImage, ElIcon } from 'element-plus';
 import { VideoPlay, VideoPause } from '@element-plus/icons-vue';
 
 export default defineComponent({
