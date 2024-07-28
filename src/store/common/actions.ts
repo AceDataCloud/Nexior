@@ -1,7 +1,6 @@
 import { ActionContext } from 'vuex';
 import { IRootState } from '../common/models';
 import { userOperator, oauthOperator, siteOperator, exchangeOperator } from '@/operators';
-import { log } from '@/utils/log';
 import { IToken, IUser } from '@/models';
 import { getSiteOrigin } from '@/utils/site';
 import { login as authLogin } from '@/utils';
@@ -40,33 +39,36 @@ export const setExchange = ({ commit }: ActionContext<IRootState, IRootState>, p
 };
 
 export const getUser = async ({ commit }: ActionContext<IRootState, IRootState>): Promise<IUser> => {
-  log(getUser, 'start to get user');
+  console.debug('start to get user');
   try {
+    commit('resetUser');
     const { data: user } = await userOperator.getMe();
     commit('setUser', user);
-    log(getUser, 'get user success', user);
+    console.debug('get user success', user);
     return user;
   } catch (error) {
-    log(getUser, 'get user failed', error);
+    console.error('get user failed', error);
   }
 };
 
 export const getToken = async ({ commit }: ActionContext<IRootState, IRootState>, code: string): Promise<IToken> => {
-  log(getToken, 'start to get token using code', code);
+  console.debug('start to get token using code', code);
   try {
+    commit('resetToken');
     const { data } = await oauthOperator.token({
       code
     });
+    console.debug('get token success', data);
     const token = {
       access: data.access_token,
       refresh: data.refresh_token,
       expiration: data.expires_in
     };
     commit('setToken', token);
-    log(getToken, 'get token success', data);
+    console.debug('get token success', data);
     return token;
   } catch (error) {
-    log(getToken, 'get token failed', error);
+    console.error('get token failed', error);
   }
 };
 
@@ -78,34 +80,34 @@ export const getExchangeRate = async (
     return;
   }
   const key = `${payload.source}-${payload.target}`;
-  if (!state.exchange || !state.exchange[key]) {
-    try {
-      const { data } = await exchangeOperator.rate(payload);
-      commit('setExchange', {
-        [key]: data.rate
-      });
-      return state.exchange![key];
-    } catch (e) {
-      log(getExchangeRate, 'get exchange rate failed');
-    }
+  console.debug('start to get exchange rate', key);
+  try {
+    const { data } = await exchangeOperator.rate(payload);
+    console.debug('get exchange rate success', data);
+    commit('setExchange', {
+      [key]: data.rate
+    });
+    return state.exchange![key];
+  } catch (e) {
+    console.error('get exchange rate failed');
   }
 };
 
 export const initializeSite = async ({ state, commit, dispatch }: ActionContext<IRootState, IRootState>) => {
-  log(initializeSite, 'start to initialize site');
+  console.debug('start to initialize site');
   const origin = getSiteOrigin(state?.site);
   try {
     const { data } = await siteOperator.initialize({ origin });
     commit('setSite', data);
-    log(initializeSite, 'initialize site success', data);
+    console.debug('initialize site success', data);
   } catch (error) {
-    log(initializeSite, 'initialize site failed', error);
+    console.error('initialize site failed', error);
     dispatch('login');
   }
 };
 
 export const getSite = async ({ state, commit }: ActionContext<IRootState, IRootState>) => {
-  log(getSite, 'start to get site');
+  console.debug('start to get site');
   try {
     const origin = getSiteOrigin(state?.site);
     const site = (
@@ -114,9 +116,9 @@ export const getSite = async ({ state, commit }: ActionContext<IRootState, IRoot
       })
     )?.data?.items?.[0];
     commit('setSite', site);
-    log(getSite, 'get site success', site);
+    console.debug('get site success', site);
   } catch (error) {
-    log(getSite, 'get site failed', error);
+    console.error('get site failed', error);
   }
 };
 

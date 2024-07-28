@@ -1,6 +1,5 @@
 import { IApplication, IChatdocRepository, ICredential, IService } from '@/models';
 import { IChatdocState } from './models';
-import { log } from '@/utils';
 
 export const resetAll = (state: IChatdocState): void => {
   state.application = undefined;
@@ -41,20 +40,20 @@ export const setCredential = (state: IChatdocState, payload: ICredential): void 
 };
 
 export const setRepository = (state: IChatdocState, payload: IChatdocRepository): void => {
-  log(setRepository, 'mutation', payload);
+  console.debug('mutation', payload);
   // find the repository and set it
   const repository = payload;
   const repositories = state.repositories;
   if (!repositories) {
-    log(setRepository, 'no repositories');
+    console.debug('no repositories');
     return;
   }
   const index = repositories.findIndex((item: IChatdocRepository) => item.id === repository.id);
   if (index === -1) {
-    log(setRepository, 'no repository found');
+    console.debug('no repository found');
     return;
   }
-  log(setRepository, 'set repository for index', index, repository);
+  console.debug('set repository for index', index, repository);
   repositories[index] = {
     ...repositories[index],
     ...repository

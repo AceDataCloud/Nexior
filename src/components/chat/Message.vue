@@ -2,8 +2,7 @@
   <div
     :class="{
       message: true,
-      [message.role as string]: true,
-      hidden: errorText && message.role === 'assistant'
+      [message.role as string]: true
     }"
     :role="message.role"
   >
@@ -15,12 +14,17 @@
         class="avatar"
       />
     </div>
-    <div class="main">
+    <div v-if="!errorText" class="main">
       <div class="content">
         <markdown-renderer v-if="!Array.isArray(message.content)" :content="message?.content" />
         <div v-else>
           <div v-for="(item, index) in message.content" :key="index">
-            <img v-if="item.type === 'image_url'" :src="item.image_url?.url" fit="cover" class="image" />
+            <img
+              v-if="item.type === 'image_url'"
+              :src="typeof item?.image_url === 'string' ? item.image_url : item.image_url?.url"
+              fit="cover"
+              class="image"
+            />
             <markdown-renderer v-if="item.type === 'text'" :key="index" :content="item.text" />
           </div>
         </div>
@@ -30,7 +34,7 @@
         <copy-to-clipboard v-if="!Array.isArray(message.content)" :content="message.content!" class="btn-copy" />
       </div>
     </div>
-    <el-alert v-if="errorText" class="error" :title="errorText" type="error" :closable="false" />
+    <el-alert v-else class="error" :title="errorText" type="error" :closable="false" />
     <el-button v-if="showBuyMore" round type="primary" class="btn btn-buy" size="small" @click="onBuyMore">
       {{ $t('common.button.buyMore') }}
     </el-button>
@@ -189,6 +193,10 @@ export default defineComponent({
     align-items: start;
     .content {
       color: var(--el-text-color-primary);
+    }
+    .btn-buy {
+      display: inline-block;
+      margin-left: 5px;
     }
   }
   &.user {

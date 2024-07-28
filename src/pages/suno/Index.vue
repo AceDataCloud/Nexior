@@ -121,6 +121,7 @@ export default defineComponent({
       console.debug('start onGetApplication');
       await this.$store.dispatch('suno/getApplication');
       console.debug('end onGetApplication');
+      await this.onGetTasks();
     },
     onApply() {
       applicationOperator

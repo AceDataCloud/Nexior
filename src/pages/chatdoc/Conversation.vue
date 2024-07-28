@@ -52,7 +52,6 @@ import {
   ROLE_ASSISTANT,
   ROLE_USER
 } from '@/constants';
-import { log } from '@/utils';
 import { ROUTE_CHATDOC_CONVERSATION } from '@/router';
 import axios from 'axios';
 import { isJSONString } from '@/utils/is';
@@ -142,7 +141,7 @@ export default defineComponent({
     async onFetchAnswer() {
       const token = this.credential?.token;
       const question = this.question;
-      log(this.onFetchAnswer, 'validated', question);
+      console.debug(this.onFetchAnswer, 'validated', question);
       // reset question and references
       this.question = '';
       if (!token || !question) {
@@ -162,7 +161,7 @@ export default defineComponent({
         role: ROLE_ASSISTANT,
         state: IChatdocMessageState.PENDING
       });
-      log(this.onFetchAnswer, 'start to get answer', this.messages);
+      console.debug('start to get answer', this.messages);
       this.onScrollDown();
       // request server to get answer
       this.answering = true;
@@ -187,7 +186,7 @@ export default defineComponent({
           }
         )
         .then(async () => {
-          log(this.onFetchAnswer, 'finished fetch answer');
+          console.debug('finished fetch answer');
           this.messages[this.messages.length - 1].state = IChatdocMessageState.FINISHED;
           await this.$store.dispatch('chatdoc/setConversation', {
             id: conversationId,

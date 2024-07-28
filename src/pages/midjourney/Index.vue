@@ -224,6 +224,7 @@ export default defineComponent({
       console.debug('start onGetApplication');
       await this.$store.dispatch('midjourney/getApplication');
       console.debug('end onGetApplication');
+      await this.onGetTasks();
     },
     onApply() {
       applicationOperator

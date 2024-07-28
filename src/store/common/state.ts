@@ -3,6 +3,7 @@ import chatState from '../chat/state';
 import midjourneyState from '../midjourney/state';
 import chatdocState from '../chatdoc/state';
 import qrartState from '../qrart/state';
+import sunoState from '../suno/state';
 
 export default (): IRootState => {
   return {
@@ -19,6 +20,7 @@ export default (): IRootState => {
     chatdoc: chatdocState(),
     chat: chatState(),
     midjourney: midjourneyState(),
-    qrart: qrartState()
+    qrart: qrartState(),
+    suno: sunoState()
   };
 };

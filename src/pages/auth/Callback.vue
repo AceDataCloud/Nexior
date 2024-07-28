@@ -15,6 +15,8 @@ export default defineComponent({
   async mounted() {
     if (this.redirect) {
       await this.$router.push(this.redirect);
+    } else {
+      await this.$router.push('/');
     }
   }
 });

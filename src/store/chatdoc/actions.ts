@@ -1,6 +1,5 @@
 import { IRootState } from '../common/models';
 import { ActionContext } from 'vuex';
-import { log } from '@/utils/log';
 import { IChatdocState } from './models';
 import {
   IApplication,
@@ -20,12 +19,12 @@ export const setApplication = async ({ commit }: any, payload: IApplication): Pr
 };
 
 export const setCredential = async ({ commit }: any, payload: ICredential): Promise<void> => {
-  log(setCredential, 'set credential', payload);
+  console.debug('set credential', payload);
   commit('setCredential', payload);
 };
 
 export const setService = async ({ commit }: any, payload: IService): Promise<void> => {
-  log(setService, 'set service', payload);
+  console.debug('set service', payload);
   commit('setService', payload);
 };
 
@@ -69,7 +68,7 @@ export const getRepositories = async ({
   commit,
   state
 }: ActionContext<IChatdocState, IRootState>): Promise<IChatdocRepository[]> => {
-  log(getRepositories, 'start to get repositories');
+  console.debug('start to get repositories');
   const credential = state.credential;
   console.log('credential', credential);
   const token = credential?.token;
@@ -82,7 +81,7 @@ export const getRepositories = async ({
       token
     })
   ).data.items;
-  log(getRepositories, 'get repositories success', repositories);
+  console.debug('get repositories success', repositories);
   commit('setRepositories', repositories);
   return repositories;
 };
@@ -93,7 +92,7 @@ export const deleteRepository = async (
     id: string;
   }
 ): Promise<IChatdocRepository> => {
-  log(deleteRepository, 'start to delete repository');
+  console.debug('start to delete repository');
   const credential = state.credential;
   console.log('credential', credential);
   const token = credential?.token;
@@ -105,7 +104,7 @@ export const deleteRepository = async (
       token
     })
   ).data;
-  log(deleteRepository, 'delete repository success', repository);
+  console.debug('delete repository success', repository);
   return repository;
 };
 
@@ -115,7 +114,7 @@ export const deleteDocument = async (
     id: string;
   }
 ): Promise<IChatdocDocument> => {
-  log(deleteDocument, 'start to delete document');
+  console.debug('start to delete document');
   const credential = state.credential;
   console.log('credential', credential);
   const token = credential?.token;
@@ -127,13 +126,13 @@ export const deleteDocument = async (
       token
     })
   ).data;
-  log(deleteRepository, 'delete document success', document);
+  console.debug('delete document success', document);
   return document;
 };
 
 export const getService = async ({ commit, state }: ActionContext<IChatdocState, IRootState>): Promise<IService> => {
   return new Promise(async (resolve, reject) => {
-    log(getService, 'start to get service for chatdoc');
+    console.debug('start to get service for chatdoc');
     state.status.getService = Status.Request;
     serviceOperator
       .get(CHATDOC_SERVICE_ID)
@@ -156,7 +155,7 @@ export const createRepository = async (
     description?: string;
   }
 ): Promise<IChatdocRepository> => {
-  log(createRepository, 'start to create repository');
+  console.debug('start to create repository');
   const credential = state.credential;
   console.log('credential', credential);
   const token = credential?.token;
@@ -168,7 +167,7 @@ export const createRepository = async (
       token
     })
   ).data;
-  log(createRepository, 'create repository success', repository);
+  console.debug('create repository success', repository);
   return repository;
 };
 
@@ -180,7 +179,7 @@ export const createDocument = async (
     fileName: string;
   }
 ): Promise<IChatdocDocument> => {
-  log(createDocument, 'start to create document');
+  console.debug('start to create document');
   const credential = state.credential;
   console.log('credential', credential);
   const token = credential?.token;
@@ -192,7 +191,7 @@ export const createDocument = async (
       token
     })
   ).data;
-  log(createDocument, 'create document success', document);
+  console.debug('create document success', document);
   return document;
 };
 
@@ -204,7 +203,7 @@ export const setConversation = async (
     repositoryId: string;
   }
 ): Promise<void> => {
-  log(setConversation, 'set conversation', payload);
+  console.debug('set conversation', payload);
   const repository: IChatdocRepository | undefined = state.repositories.find(
     (repository: IChatdocRepository) => repository.id === payload.repositoryId
   );
@@ -216,14 +215,14 @@ export const setConversation = async (
   if (index > -1) {
     conversations[index].messages = payload.messages;
   }
-  log(setConversation, 'set conversation success', conversations);
+  console.debug('set conversation success', conversations);
 };
 
 export const getDocuments = async (
   { commit, state }: ActionContext<IChatdocState, IRootState>,
   payload: { repositoryId: string }
 ): Promise<IChatdocDocument[]> => {
-  log(getRepositories, 'start to get documents');
+  console.debug('start to get documents');
   const credential = state.credential;
   console.log('credential for getDocuments', credential);
   const token = credential?.token;
@@ -239,7 +238,7 @@ export const getDocuments = async (
       token
     })
   ).data.items;
-  log(getRepositories, 'get documents success', documents);
+  console.debug('get documents success', documents);
   commit('setRepository', {
     id: payload.repositoryId,
     documents: documents
@@ -251,7 +250,7 @@ export const getConversations = async (
   { commit, state }: ActionContext<IChatdocState, IRootState>,
   payload: { repositoryId: string }
 ): Promise<IChatdocConversation[]> => {
-  log(getConversations, 'start to get conversations');
+  console.debug('start to get conversations');
   const credential = state.credential;
   console.log('credential for getConversations', credential);
   const token = credential?.token;
@@ -267,7 +266,7 @@ export const getConversations = async (
       token
     })
   ).data.items;
-  log(getConversations, 'get conversations success', conversations);
+  console.debug('get conversations success', conversations);
   commit('setRepository', {
     id: payload.repositoryId,
     conversations: conversations
@@ -279,7 +278,7 @@ export const getRepository = async (
   { commit, state }: ActionContext<IChatdocState, IRootState>,
   payload: { id: string }
 ): Promise<IChatdocRepository> => {
-  log(getRepository, 'start to get repository');
+  console.debug('start to get repository');
   const credential = state.credential;
   const token = credential?.token;
   if (!token) {
@@ -291,7 +290,7 @@ export const getRepository = async (
       token
     })
   ).data;
-  log(getRepository, 'get repository success', repository);
+  console.debug('get repository success', repository);
   commit('setRepository', repository);
   return repository;
 };

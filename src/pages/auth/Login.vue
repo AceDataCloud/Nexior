@@ -14,7 +14,7 @@ export default defineComponent({
     };
   },
   async mounted() {
-    login(this.redirect);
+    login({ redirect: this.redirect });
   },
   methods: {}
 });
