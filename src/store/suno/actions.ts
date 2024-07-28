@@ -1,7 +1,6 @@
 import { applicationOperator, sunoOperator, serviceOperator } from '@/operators';
 import { ISunoState } from './models';
 import { ActionContext } from 'vuex';
-import { log } from '@/utils/log';
 import { IRootState } from '../common/models';
 import { IApplication, ICredential, ISunoConfig, ISunoTask, IService, Song } from '@/models';
 import { Status } from '@/models/common';
@@ -12,7 +11,7 @@ export const resetAll = ({ commit }: ActionContext<ISunoState, IRootState>): voi
 };
 
 export const setCredential = async ({ commit }: any, payload: ICredential): Promise<void> => {
-  log(setCredential, 'set credential', payload);
+  console.debug('set credential', payload);
   commit('setCredential', payload);
 };
 
@@ -21,7 +20,7 @@ export const setConfig = ({ commit }: any, payload: ISunoConfig) => {
 };
 
 export const setService = async ({ commit }: any, payload: IService): Promise<void> => {
-  log(setService, 'set service', payload);
+  console.debug('set service', payload);
   commit('setService', payload);
 };
 
@@ -34,8 +33,8 @@ export const getApplication = async ({
   state,
   rootState
 }: ActionContext<ISunoState, IRootState>): Promise<IApplication> => {
-  log(getApplication, 'start to get application for suno');
-  return new Promise(async (resolve, reject) => {
+  console.debug('start to get application for suno');
+  return new Promise((resolve, reject) => {
     state.status.getApplication = Status.Request;
     applicationOperator
       .getAll({
@@ -78,9 +77,9 @@ export const setAudio = ({ commit }: any, payload: any) => {
   commit('setAudio', payload);
 };
 
-export const getService = async ({ commit, state }: ActionContext<RootState, IRootState>): Promise<IService> => {
-  return new Promise(async (resolve, reject) => {
-    log(getService, 'start to get service for suno');
+export const getService = async ({ commit, state }: ActionContext<ISunoState, IRootState>): Promise<IService> => {
+  return new Promise((resolve, reject) => {
+    console.debug('start to get service for suno');
     state.status.getService = Status.Request;
     serviceOperator
       .get(SUNO_SERVICE_ID)
@@ -100,8 +99,8 @@ export const getTasks = async (
   { commit, state }: ActionContext<ISunoState, IRootState>,
   { offset, limit }: { offset?: number; limit?: number }
 ): Promise<ISunoTask[]> => {
-  return new Promise(async (resolve, reject) => {
-    log(getTasks, 'start to get tasks', offset, limit);
+  return new Promise((resolve, reject) => {
+    console.debug('start to get tasks', offset, limit);
     const credential = state.credential;
     const token = credential?.token;
     if (!token) {
@@ -117,7 +116,7 @@ export const getTasks = async (
         }
       )
       .then((response) => {
-        log(getTasks, 'get imagine tasks success', response.data.items);
+        console.debug('get imagine tasks success', response.data.items);
         commit('setTasksItems', response.data.items);
         commit('setTasksTotal', response.data.count);
         resolve(response.data.items);

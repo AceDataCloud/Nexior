@@ -177,6 +177,7 @@ export default defineComponent({
           });
         }
         this.messages.push({
+          // @ts-ignore
           content: content,
           role: ROLE_USER
         });
@@ -284,6 +285,7 @@ export default defineComponent({
             if (isJSONString(data)) {
               data = JSON.parse(data);
             }
+            console.debug('error', data);
             if (this.messages && this.messages.length > 0) {
               this.messages[this.messages.length - 1].error = data.error;
             }

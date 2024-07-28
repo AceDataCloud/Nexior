@@ -2,7 +2,6 @@ import { getCookie, setCookie } from 'typescript-cookie';
 import favicon from '@/assets/images/favicon.ico';
 import { getLocale } from '@/i18n';
 import store from '@/store';
-import { log } from './log';
 import { IToken } from '@/models';
 import psl from 'psl';
 import { LOCALE_CURRENCY_MAPPING } from '@/constants';
@@ -34,7 +33,7 @@ export const initializeCookies = async () => {
     // set the cookie to expire in 7 days
     const expiration = new Date();
     expiration.setDate(expiration.getDate() + 7);
-    console.log('set INVITER_ID to cookies', inviterId);
+    console.debug('set INVITER_ID to cookies', inviterId);
     setCookie('INVITER_ID', inviterId, {
       expires: expiration,
       path: '/',
@@ -52,7 +51,7 @@ export const initializeCookies = async () => {
     });
   } else if (!getCookie('THEME')) {
     const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    console.log('set THEME to cookies', isDark ? 'dark' : 'light');
+    console.debug('set THEME to cookies', isDark ? 'dark' : 'light');
     setCookie('THEME', isDark ? 'dark' : 'light', {
       path: '/',
       domain: getDomain()
@@ -68,7 +67,7 @@ export const initializeCookies = async () => {
     locale = getLocale();
   }
   if (locale) {
-    console.log('set LOCALE to cookies', locale);
+    console.debug('set LOCALE to cookies', locale);
     setCookie('LOCALE', locale, {
       path: '/',
       domain: getDomain()
@@ -144,7 +143,7 @@ export const initializeSite = async () => {
   await store.dispatch('getSite');
   // after getSite, the site should have been set
   const site = store.state.site;
-  log(initializeSite, 'site', site);
+  console.debug('site', site);
   // if site is not set, try to initialize site
   if (!site?.origin) {
     await store.dispatch('initializeSite');
@@ -157,9 +156,11 @@ export const initializeSite = async () => {
 export const initializeToken = async () => {
   const query = new URLSearchParams(window.location.search);
   const code = query.get('code');
+  console.debug('get code', code);
   if (code) {
+    console.debug('start get token by code', code);
     const token = await store.dispatch('getToken', code);
-    console.debug('get token', token);
+    console.debug('success get token', token);
   }
 };
 
@@ -172,19 +173,20 @@ export const initializeUser = async () => {
     console.debug('no access token, skip get user');
     return;
   }
+  console.debug('start to get user');
   const user = await store.dispatch('getUser');
   console.debug('get user', user);
 };
 
 export const initializeCurrency = async () => {
   const locale = getCookie('LOCALE');
-  console.log('initialize currency', locale);
+  console.debug('initialize currency', locale);
   const mapping = LOCALE_CURRENCY_MAPPING;
   let currency = 'usd';
   if (locale && mapping[locale]) {
     currency = mapping[locale];
   }
-  console.log('set currency', currency);
+  console.debug('set currency', currency);
   await store.dispatch('setCurrency', currency);
 };
 
@@ -197,6 +199,6 @@ export const initializeExchangeRate = async () => {
   const target = mapping[locale];
   const source = 'usd';
   const payload = { source, target };
-  console.log('initialize exchange rate', payload);
+  console.debug('initialize exchange rate', payload);
   await store.dispatch('getExchangeRate', payload);
 };

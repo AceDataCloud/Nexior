@@ -3,7 +3,7 @@
     :class="{
       message: true,
       [message.role as string]: true,
-      hidden: errorText && message.role === 'assistant'
+      hidden: !errorText && message.role === 'assistant'
     }"
     :role="message.role"
   >
@@ -15,7 +15,7 @@
         class="avatar"
       />
     </div>
-    <div class="main">
+    <div v-if="!errorText" class="main">
       <div class="content">
         <markdown-renderer v-if="!Array.isArray(message.content)" :content="message?.content" />
         <div v-else>
@@ -30,7 +30,7 @@
         <copy-to-clipboard v-if="!Array.isArray(message.content)" :content="message.content!" class="btn-copy" />
       </div>
     </div>
-    <el-alert v-if="errorText" class="error" :title="errorText" type="error" :closable="false" />
+    <el-alert v-else class="error" :title="errorText" type="error" :closable="false" />
     <el-button v-if="showBuyMore" round type="primary" class="btn btn-buy" size="small" @click="onBuyMore">
       {{ $t('common.button.buyMore') }}
     </el-button>
@@ -189,6 +189,10 @@ export default defineComponent({
     align-items: start;
     .content {
       color: var(--el-text-color-primary);
+    }
+    .btn-buy {
+      display: inline-block;
+      margin-left: 5px;
     }
   }
   &.user {

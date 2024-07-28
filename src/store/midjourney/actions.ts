@@ -1,7 +1,6 @@
 import { applicationOperator, midjourneyOperator, serviceOperator } from '@/operators';
 import { IMidjourneyState } from './models';
 import { ActionContext } from 'vuex';
-import { log } from '@/utils/log';
 import { IRootState } from '../common/models';
 import {
   IApplication,
@@ -19,7 +18,7 @@ export const resetAll = ({ commit }: ActionContext<IMidjourneyState, IRootState>
 };
 
 export const setCredential = async ({ commit }: any, payload: ICredential): Promise<void> => {
-  log(setCredential, 'set credential', payload);
+  console.debug(setCredential, 'set credential', payload);
   commit('setCredential', payload);
 };
 
@@ -32,7 +31,7 @@ export const setMode = ({ commit }: any, payload: string) => {
 };
 
 export const setService = async ({ commit }: any, payload: IService): Promise<void> => {
-  log(setService, 'set service', payload);
+  console.debug('set service', payload);
   commit('setService', payload);
 };
 
@@ -45,8 +44,8 @@ export const getApplication = async ({
   state,
   rootState
 }: ActionContext<IMidjourneyState, IRootState>): Promise<IApplication> => {
-  log(getApplication, 'start to get application for midjourney');
-  return new Promise(async (resolve, reject) => {
+  console.debug('start to get application for midjourney');
+  return new Promise((resolve, reject) => {
     state.status.getApplication = Status.Request;
     applicationOperator
       .getAll({
@@ -54,6 +53,7 @@ export const getApplication = async ({
         service_id: MIDJOURNEY_SERVICE_ID
       })
       .then((response) => {
+        console.debug('get application success', response?.data);
         state.status.getApplication = Status.Success;
         commit('setApplication', response.data.items[0]);
         const credential = response.data.items?.[0]?.credentials?.find(
@@ -61,6 +61,7 @@ export const getApplication = async ({
         );
         commit('setCredential', credential);
         resolve(response.data.items[0]);
+        console.debug('save application success', response.data.items[0]);
       })
       .catch((error) => {
         state.status.getApplication = Status.Error;
@@ -74,8 +75,8 @@ export const setTasks = ({ commit }: any, payload: IMidjourneyTask[]) => {
 };
 
 export const getService = async ({ commit, state }: ActionContext<IMidjourneyState, IRootState>): Promise<IService> => {
-  return new Promise(async (resolve, reject) => {
-    log(getService, 'start to get service for midjourney');
+  return new Promise((resolve, reject) => {
+    console.debug('start to get service for midjourney');
     state.status.getService = Status.Request;
     serviceOperator
       .get(MIDJOURNEY_SERVICE_ID)
@@ -95,8 +96,8 @@ export const getTasks = async (
   { commit, state }: ActionContext<IMidjourneyState, IRootState>,
   { offset, limit }: { offset?: number; limit?: number }
 ): Promise<IMidjourneyTasksResponse> => {
-  return new Promise(async (resolve, reject) => {
-    log(getTasks, 'start to get tasks', offset, limit);
+  return new Promise((resolve, reject) => {
+    console.debug('start to get tasks', offset, limit);
     const credential = state.credential;
     const token = credential?.token;
     if (!token) {
@@ -114,7 +115,7 @@ export const getTasks = async (
         }
       )
       .then((response) => {
-        log(getTasks, 'get tasks success', response.data);
+        console.debug('get tasks success', response.data);
         commit('setTasks', response.data);
         resolve(response.data);
       })

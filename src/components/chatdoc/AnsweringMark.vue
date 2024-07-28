@@ -1,5 +1,5 @@
 <template>
-  <div class="box"></div>
+  <div class="mark"></div>
 </template>
 
 <script lang="ts">
@@ -30,7 +30,7 @@ export default defineComponent({
     opacity: 1;
   }
 }
-.box {
+.mark {
   width: 2px;
   height: 16px;
   margin-top: 3px;
