@@ -1,7 +1,7 @@
 <template>
   <layout>
     <template #chat>
-      <model-selector2 class="selector" />
+      <model-selector class="selector" />
       <application-status
         :initializing="initializing"
         :application="application"
@@ -43,7 +43,7 @@ import Message from '@/components/chat/Message.vue';
 import { ROLE_ASSISTANT, ROLE_USER } from '@/constants';
 import { IChatModel, IChatMessageState, IChatConversationResponse, IChatConversation, IChatMessage } from '@/models';
 import InputBox from '@/components/chat/InputBox.vue';
-import ModelSelector2 from '@/components/chat/ModelSelector2.vue';
+import ModelSelector from '@/components/chat/ModelSelector.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router';
 import { Status } from '@/models';
@@ -65,7 +65,7 @@ export default defineComponent({
   components: {
     InputBox,
     Introduction,
-    ModelSelector2,
+    ModelSelector,
     Message,
     ApplicationStatus,
     Layout
