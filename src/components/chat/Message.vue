@@ -2,8 +2,7 @@
   <div
     :class="{
       message: true,
-      [message.role as string]: true,
-      hidden: !errorText && message.role === 'assistant'
+      [message.role as string]: true
     }"
     :role="message.role"
   >
