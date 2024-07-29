@@ -35,7 +35,6 @@ watch(audio, (value, oldValue) => {
       delete value.object;
     }
     const object = new Audio(value.audio_url);
-    object.currentTime = 0;
     if (value.state === 'playing') {
       object.play();
     } else {
@@ -43,10 +42,13 @@ watch(audio, (value, oldValue) => {
     }
 
     // listen to the time change of audio
-    object.addEventListener('timeupdate', () => {
-      store.commit('suno/setAudio', {
-        ...store.state.suno.audio,
-        progress: object.currentTime
+    object.addEventListener('loadedmetadata', () => {
+      object.currentTime = 0;
+      object.addEventListener('timeupdate', () => {
+        store.commit('suno/setAudio', {
+          ...store.state.suno.audio,
+          progress: object.currentTime
+        });
       });
     });
 
