@@ -30,6 +30,10 @@ export default defineComponent({
     return {
       options: [
         {
+          value: '6.1',
+          label: '6.1'
+        },
+        {
           value: '6.0',
           label: '6.0'
         },

@@ -1,11 +1,19 @@
 {
+  "button.download": {
+    "message": "Descargar",
+    "description": "Texto del botón de descarga"
+  },
+  "button.video": {
+    "message": "Video",
+    "description": "Texto del botón de video"
+  },
   "model.model1": {
     "message": "v2",
-    "description": "Modelo utilizado para generar música"
+    "description": "Modelo para generar música"
   },
   "model.model2": {
     "message": "v3",
-    "description": "Modelo utilizado para generar música"
+    "description": "Modelo para generar música"
   },
   "name.instrumental": {
     "message": "Sin letra",
@@ -13,11 +21,11 @@
   },
   "model.model3": {
     "message": "v3.5",
-    "description": "Modelo utilizado para generar música"
+    "description": "Modelo para generar música"
   },
   "name.taskId": {
     "message": "ID de tarea",
-    "description": "El ID de la tarea"
+    "description": "ID de la tarea"
   },
   "name.type": {
     "message": "Modo personalizado",
@@ -25,23 +33,23 @@
   },
   "name.prompt": {
     "message": "Descripción de la canción",
-    "description": "Indicaciones para la entrada de contenido"
+    "description": "Sugerencia de contenido de entrada"
   },
   "name.lyrics": {
     "message": "Contenido de la letra",
-    "description": "Indicaciones para la entrada de contenido de la letra"
+    "description": "Sugerencia de contenido de entrada de las letras"
   },
   "name.style": {
     "message": "Estilo de la canción",
-    "description": "Indicaciones para la entrada de contenido sobre el estilo de la canción"
+    "description": "Sugerencia de contenido de entrada del estilo de la canción"
   },
   "name.title": {
     "message": "Título de la canción",
-    "description": "Indicaciones para la entrada de contenido sobre el título de la canción"
+    "description": "Sugerencia de contenido de entrada del título de la canción"
   },
   "name.failureReason": {
-    "message": "Razón de fallo",
-    "description": "La razón por la que la tarea falló"
+    "message": "Razón de la falla",
+    "description": "Razón por la que falló la tarea"
   },
   "name.status": {
     "message": "Estado",
@@ -49,14 +57,14 @@
   },
   "name.traceId": {
     "message": "ID de seguimiento",
-    "description": "El ID de seguimiento de la tarea"
+    "description": "ID de seguimiento de la tarea"
   },
   "name.sunoBot": {
     "message": "Suno Bot",
     "description": "Nombre del generador Suno"
   },
   "description.prompt": {
-    "message": "Rellena el estilo y tema de la música que deseas generar, por ejemplo, pop acústico sobre las vacaciones",
+    "message": "Escribe el estilo y tema de la música que deseas generar, por ejemplo, pop acústico sobre las vacaciones",
     "description": "Descripción del parámetro 'prompt'"
   },
   "description.lyrics": {
@@ -76,35 +84,35 @@
     "description": "Estado de espera de la tarea"
   },
   "placeholder.prompt": {
-    "message": "Ingresa la pista de la canción...",
-    "description": "Placeholder para la entrada de ruido"
+    "message": "Introduce las palabras clave de la canción...",
+    "description": "Marcador de posición para la entrada de ruido"
   },
   "placeholder.lyrics": {
-    "message": "Ingresa la letra...",
-    "description": "Placeholder para el nivel de entrada"
+    "message": "Introduce las letras...",
+    "description": "Marcador de posición para el nivel de relleno"
   },
   "placeholder.style": {
-    "message": "Ingresa la pista del estilo de la canción que deseas generar, por ejemplo, pop acústico",
-    "description": "Texto de placeholder en campo de indicaciones"
+    "message": "Introduce las palabras clave del estilo de la canción que deseas generar, por ejemplo, pop acústico",
+    "description": "Texto de marcador de posición en el campo de sugerencia"
   },
   "placeholder.title": {
-    "message": "Ingresa la pista del título de la canción que deseas generar, por ejemplo, canción de vacaciones",
-    "description": "Placeholder para la entrada de semilla"
+    "message": "Introduce las palabras clave del título de la canción que deseas generar, por ejemplo, canción de vacaciones",
+    "description": "Marcador de posición para la entrada de semilla"
   },
   "placeholder.select": {
     "message": "Selecciona un modelo...",
-    "description": "Placeholder para la entrada de posición"
+    "description": "Marcador de posición para la entrada de posición"
   },
   "placeholder.position": {
     "message": "Selecciona...",
-    "description": "Placeholder para la entrada de posición"
+    "description": "Marcador de posición para la entrada de posición"
   },
   "button.generate": {
     "message": "Generar",
     "description": "Texto del botón de generar"
   },
   "message.startingTask": {
-    "message": "Iniciando tarea...",
+    "message": "Iniciando la tarea...",
     "description": "Mensaje al iniciar la tarea de generación de música"
   },
   "message.startTaskSuccess": {
@@ -112,23 +120,23 @@
     "description": "Mensaje de éxito al iniciar la tarea de generación de música"
   },
   "message.startTaskFailed": {
-    "message": "Fallo al iniciar la tarea de generación de música",
+    "message": "Error al iniciar la tarea de generación de música",
     "description": "Mensaje de error al fallar al iniciar la tarea de generación de música"
   },
   "message.generating": {
     "message": "Generando...",
-    "description": "Mensaje mientras se genera la música"
+    "description": "Mensaje mientras la música se está generando"
   },
   "message.generateFailed": {
-    "message": "Fallo al generar música",
-    "description": "Mensaje al fallar la generación de música"
+    "message": "Error al generar música",
+    "description": "Mensaje al fallar en la generación de música"
   },
   "message.noOperations": {
     "message": "No hay operaciones disponibles",
-    "description": "Mensaje al no haber operaciones disponibles"
+    "description": "Mensaje cuando no hay operaciones disponibles"
   },
   "message.noTasks": {
     "message": "No hay tareas históricas, por favor genera música en la barra de configuración a la izquierda",
-    "description": "Mensaje al no haber tareas"
+    "description": "Mensaje cuando no hay tareas"
   }
 }

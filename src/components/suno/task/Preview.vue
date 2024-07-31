@@ -33,6 +33,24 @@
         <h2 class="title">{{ audio?.title }}</h2>
         <p class="style">{{ audio?.style }}</p>
       </div>
+      <div class="right">
+        <el-tooltip effect="dark" :content="$t('suno.button.download')" placement="top">
+          <font-awesome-icon
+            v-if="audio?.audio_url"
+            icon="fa-solid fa-download"
+            class="icon icon-download"
+            @click="onDownload($event, audio?.audio_url)"
+          />
+        </el-tooltip>
+        <el-tooltip effect="dark" :content="$t('suno.button.video')" placement="top">
+          <font-awesome-icon
+            v-if="audio?.video_url"
+            icon="fa-solid fa-clapperboard"
+            class="icon icon-preview"
+            @click="onPreview($event, audio?.video_url)"
+          />
+        </el-tooltip>
+      </div>
     </div>
   </div>
 </template>
@@ -41,14 +59,17 @@
 import { defineComponent } from 'vue';
 import { useFormatDuring } from '@/utils/number';
 import { ISunoAudio, ISunoTask } from '@/models';
-import { ElImage, ElIcon } from 'element-plus';
+import { ElImage, ElIcon, ElTooltip } from 'element-plus';
 import { VideoPlay, VideoPause } from '@element-plus/icons-vue';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default defineComponent({
   name: 'TaskPreview',
   components: {
     ElImage,
     ElIcon,
+    ElTooltip,
+    FontAwesomeIcon,
     VideoPlay,
     VideoPause
   },
@@ -108,6 +129,18 @@ export default defineComponent({
           progress: 0
         });
       }
+    },
+    onDownload(event: MouseEvent, audioUrl: string) {
+      event.stopPropagation();
+      console.log('on download');
+      // download url here
+      window.open(audioUrl, '_blank');
+    },
+    onPreview(event: MouseEvent, videoUrl: string) {
+      event.stopPropagation();
+      console.log('on preview');
+      // preview url here
+      window.open(videoUrl, '_blank');
     }
   }
 });
@@ -120,6 +153,7 @@ export default defineComponent({
   .audio {
     display: flex;
     margin-bottom: 10px;
+    border-radius: 10px;
 
     &:hover {
       background-color: var(--el-bg-color-page);
@@ -184,7 +218,20 @@ export default defineComponent({
       }
       .style {
         font-size: 12px;
+        margin-bottom: 0;
         color: var(--el-text-color-secondary);
+      }
+    }
+    .right {
+      width: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .icon {
+        display: block;
+        z-index: 100;
+        cursor: pointer;
+        margin-right: 15px;
       }
     }
   }
