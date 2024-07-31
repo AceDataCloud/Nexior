@@ -1,31 +1,39 @@
 {
+  "button.download": {
+    "message": "다운로드",
+    "description": "다운로드 버튼 텍스트"
+  },
+  "button.video": {
+    "message": "비디오",
+    "description": "비디오 버튼 텍스트"
+  },
   "model.model1": {
     "message": "v2",
-    "description": "음악 생성에 사용되는 모델"
+    "description": "음악 생성을 위한 모델"
   },
   "model.model2": {
     "message": "v3",
-    "description": "음악 생성에 사용되는 모델"
+    "description": "음악 생성을 위한 모델"
   },
   "name.instrumental": {
-    "message": "가사 없음",
-    "description": "'instrumental' 매개변수의 설명"
+    "message": "보컬 없음",
+    "description": "매개변수 'instrumental'의 설명"
   },
   "model.model3": {
     "message": "v3.5",
-    "description": "음악 생성에 사용되는 모델"
+    "description": "음악 생성을 위한 모델"
   },
   "name.taskId": {
     "message": "작업 ID",
     "description": "작업의 ID"
   },
   "name.type": {
-    "message": "커스텀 모드",
-    "description": "커스텀 모드의 이름"
+    "message": "맞춤 설정 모드",
+    "description": "맞춤 설정 모드의 이름"
   },
   "name.prompt": {
     "message": "곡 설명",
-    "description": "콘텐츠 입력의 프롬프트"
+    "description": "내용 입력의 프롬프트"
   },
   "name.lyrics": {
     "message": "가사 내용",
@@ -40,8 +48,8 @@
     "description": "곡 제목 내용 입력의 프롬프트"
   },
   "name.failureReason": {
-    "message": "실패 이유",
-    "description": "작업 실패의 이유"
+    "message": "실패 원인",
+    "description": "작업 실패의 원인"
   },
   "name.status": {
     "message": "상태",
@@ -56,79 +64,79 @@
     "description": "Suno 생성기의 이름"
   },
   "description.prompt": {
-    "message": "생성할 음악의 스타일과 주제를 입력하십시오. 예: 휴가에 대한 어쿠스틱 팝",
-    "description": "'prompt' 매개변수의 설명"
+    "message": "생성할 음악의 스타일과 주제를 입력하십시오. 예: 잔잔한 팝 (acoustic pop) 휴가에 관한",
+    "description": "매개변수 'prompt'의 설명"
   },
   "description.lyrics": {
     "message": "가사의 내용",
-    "description": "'lyrics' 매개변수의 설명"
+    "description": "매개변수 'lyrics'의 설명"
   },
   "description.style": {
     "message": "곡 스타일의 내용",
-    "description": "'style' 매개변수의 설명"
+    "description": "매개변수 'style'의 설명"
   },
   "description.title": {
     "message": "곡 제목의 내용",
-    "description": "'title' 매개변수의 설명"
+    "description": "매개변수 'title'의 설명"
   },
   "status.pending": {
     "message": "대기 중",
     "description": "작업의 대기 상태"
   },
   "placeholder.prompt": {
-    "message": "곡 힌트를 입력하세요...",
+    "message": "곡 프롬프트를 입력하십시오...",
     "description": "입력 필드의 자리 표시자"
   },
   "placeholder.lyrics": {
-    "message": "가사를 입력하세요...",
-    "description": "입력 필드의 자리 표시자"
+    "message": "가사를 입력하십시오...",
+    "description": "가사 입력의 자리 표시자"
   },
   "placeholder.style": {
-    "message": "생성할 곡 스타일의 힌트를 입력하세요. 예: 어쿠스틱 팝",
-    "description": "입력 필드의 자리 표시자"
+    "message": "생성할 곡 스타일의 프롬프트를 입력하십시오. 예: 잔잔한 팝 (acoustic pop)",
+    "description": "프롬프트 필드의 자리 표시자"
   },
   "placeholder.title": {
-    "message": "생성할 곡 제목의 힌트를 입력하세요. 예: 휴일 곡",
+    "message": "생성할 곡 제목의 프롬프트를 입력하십시오. 예: 휴가 노래",
     "description": "입력 필드의 자리 표시자"
   },
   "placeholder.select": {
-    "message": "모델을 선택하세요...",
+    "message": "모델을 선택하십시오...",
     "description": "입력 필드의 자리 표시자"
   },
   "placeholder.position": {
-    "message": "선택하세요...",
+    "message": "선택하십시오...",
     "description": "입력 필드의 자리 표시자"
   },
   "button.generate": {
-    "message": "생성하기",
+    "message": "생성",
     "description": "생성 버튼 텍스트"
   },
   "message.startingTask": {
-    "message": "작업을 시작하는 중...",
-    "description": "음악 생성 작업이 시작될 때의 메시지"
+    "message": "작업 시작 중...",
+    "description": "음악 생성 작업 시작 시 메시지"
   },
   "message.startTaskSuccess": {
-    "message": "음악 생성 작업이 성공적으로 시작됨",
-    "description": "음악 생성 작업이 성공적으로 시작될 때의 메시지"
+    "message": "음악 생성 작업을 성공적으로 시작했습니다",
+    "description": "음악 생성 작업을 성공적으로 시작했을 때의 메시지"
   },
   "message.startTaskFailed": {
     "message": "음악 생성 작업 시작 실패",
-    "description": "음악 생성 작업 시작 실패 시의 오류 메시지"
+    "description": "음악 생성 작업 시작 실패 시 메시지"
   },
   "message.generating": {
     "message": "생성 중...",
-    "description": "음악이 생성되고 있을 때의 메시지"
+    "description": "음악이 생성 중일 때의 메시지"
   },
   "message.generateFailed": {
     "message": "음악 생성 실패",
-    "description": "음악 생성 실패 시의 메시지"
+    "description": "음악 생성 실패 시 메시지"
   },
   "message.noOperations": {
-    "message": "사용 가능한 작업이 없습니다",
+    "message": "사용 가능한 작업 없음",
     "description": "사용 가능한 작업이 없을 때의 메시지"
   },
   "message.noTasks": {
-    "message": "이전 작업이 없습니다. 왼쪽 구성판에서 음악을 생성하세요",
+    "message": "이력이 있는 작업이 없습니다. 왼쪽 구성 패널에서 음악을 생성하십시오",
     "description": "작업이 없을 때의 메시지"
   }
 }
