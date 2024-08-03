@@ -14,6 +14,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install docker-compose
+
       - name: Docker Login
         uses: docker/login-action@v2
         with:
@@ -35,15 +43,22 @@ jobs:
           kubectl get nodes
           kubectl get svc -n acedatacloud-test
 
-      - name: Set Build Number
-        run: echo "BUILD_NUMBER=${GITHUB_RUN_NUMBER}" >> $GITHUB_ENV
+      - name: Generate Build Number
+        uses: einaregilsson/build-number@v2
+        with:
+          token: ${{ secrets.github_token }}
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
       - name: Get Build Number
         run: |
           echo $BUILD_NUMBER
 
-      - name: Build Push Deploy
-        run: |
-          docker-compose build
-          docker-compose push
-          sh ./deploy/test/scripts/deploy.sh
+      - name: Build Docker images
+        run: docker-compose build
+
+      - name: Push Docker images
+        run: docker-compose push
+
+      - name: Deploy
+        run: sh ./deploy/test/scripts/deploy.sh
