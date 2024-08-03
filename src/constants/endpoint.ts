@@ -1,4 +1,4 @@
-const isTest = window.location.origin === 'https://hub.acedata.cloud';
+const isTest = window.location.origin === 'https://hub-test.acedata.cloud';
 
 export const BASE_URL_PLATFORM = isTest ? 'https://platform-test.acedata.cloud' : 'https://platform.acedata.cloud';
 export const BASE_URL_HUB = isTest ? 'https://hub-test.acedata.cloud' : 'https://hub.acedata.cloud';
