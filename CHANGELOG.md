@@ -1,8 +1,22 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sat, 03 Aug 2024 16:31:39 GMT and should not be manually modified.
+This log was last generated on Sun, 04 Aug 2024 16:56:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.1.0
+
+Sun, 04 Aug 2024 16:56:06 GMT
+
+### Minor changes
+
+- add android and ios support (office@acedata.cloud)
+
+### Patches
+
+- add test env support (office@acedata.cloud)
+- add test env tag (office@acedata.cloud)
+- fix test env detect (office@acedata.cloud)
 
 ## 2.0.6
 
