@@ -28,12 +28,8 @@ jobs:
         run: yarn build
 
       - name: Setup .npmrc
-        run: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > ~/.npmrc
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Debug NPM_TOKEN
-        run: echo "NPM_TOKEN length: ${#NPM_TOKEN}"
+        run: |
+          echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > ~/.npmrc
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -46,6 +42,6 @@ jobs:
           REPO_PAT: ${{ secrets.REPO_PAT }}
 
       - name: Publish
-        run: yarn release -- --token "$NPM_TOKEN"
+        run: yarn release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
