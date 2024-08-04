@@ -27,6 +27,16 @@ jobs:
       - name: Build
         run: yarn build
 
+      - name: Setup .npmrc
+        run: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > ~/.npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Debug NPM_TOKEN
+        run: echo "NPM_TOKEN length: ${#NPM_TOKEN}"
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Set git credentials
         run: |
           git config --global user.name 'GitHub Actions'
