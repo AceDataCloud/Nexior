@@ -113,12 +113,7 @@ export default defineComponent({
       });
     },
     async onLogout() {
-      await this.$store.dispatch('resetToken');
-      await this.$store.dispatch('resetUser');
-      const url = window.location.href;
-      const baseUrlAuth = getBaseUrlAuth();
-      const redirectUrl = `${baseUrlAuth}/auth/logout?redirect=${url}`;
-      window.location.href = redirectUrl;
+      this.$store.dispatch('logout');
     }
   }
 });

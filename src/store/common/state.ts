@@ -10,6 +10,10 @@ export default (): IRootState => {
     currency: 'usd',
     exchange: undefined,
     user: {},
+    auth: {
+      flow: 'redirect',
+      visible: false
+    },
     token: {
       access: undefined,
       refresh: undefined,

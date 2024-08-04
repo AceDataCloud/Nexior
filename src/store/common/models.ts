@@ -13,6 +13,10 @@ export interface ICommonState {
   setting?: ISetting;
   site?: ISite;
   currency: string;
+  auth: {
+    flow: 'popup' | 'redirect';
+    visible: boolean;
+  };
   exchange:
     | {
         [key: string]: number;
