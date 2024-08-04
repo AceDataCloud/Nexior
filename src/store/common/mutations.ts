@@ -15,6 +15,13 @@ export const setToken = (state: IRootState, payload: any): void => {
   };
 };
 
+export const setAuth = (state: IRootState, payload: any): void => {
+  state.auth = {
+    ...state.auth,
+    ...payload
+  };
+};
+
 export const resetToken = (state: IRootState): void => {
   state.token = {};
 };
@@ -48,6 +55,7 @@ export const setCurrency = (state: IRootState, payload: string): void => {
 export default {
   setUser,
   setSite,
+  setAuth,
   setCurrency,
   setExchange,
   resetUser,

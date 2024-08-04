@@ -7,3 +7,4 @@ export * from './midjourney';
 export * from './qrart';
 export * from './suno';
 export * from './mapping';
+export * from './surface';

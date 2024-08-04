@@ -15,7 +15,13 @@ export const getInviterId = () => {
   return result;
 };
 
-export const login = ({ redirect = '/', site = window.location.origin }: { redirect?: string; site?: string }) => {
+export const loginRedirect = ({
+  redirect = '/',
+  site = window.location.origin
+}: {
+  redirect?: string;
+  site?: string;
+}) => {
   const hubBaseUrl = getBaseUrlHub();
   const authBaseUrl = getBaseUrlAuth();
   const inviterId = getInviterId();

@@ -3,7 +3,8 @@ import { IRootState } from '../common/models';
 import { userOperator, oauthOperator, siteOperator, exchangeOperator } from '@/operators';
 import { IToken, IUser } from '@/models';
 import { getSiteOrigin } from '@/utils/site';
-import { login as authLogin } from '@/utils';
+import { loginRedirect } from '@/utils';
+import { SURFACE_ANDROID, SURFACE_IOS } from '@/constants';
 
 export const resetAll = ({ commit }: ActionContext<IRootState, IRootState>) => {
   commit('resetToken');
@@ -122,9 +123,19 @@ export const getSite = async ({ state, commit }: ActionContext<IRootState, IRoot
   }
 };
 
-export const login = async ({ state }: ActionContext<IRootState, IRootState>) => {
+export const login = async ({ state, commit }: ActionContext<IRootState, IRootState>) => {
   const site = state?.site?.origin;
-  authLogin({ redirect: window.location.pathname, site });
+  if (import.meta.env.VITE_SURFACE === SURFACE_IOS || import.meta.env.VITE_SURFACE === SURFACE_ANDROID) {
+    commit('setAuth', {
+      flow: 'popup',
+      visible: true
+    });
+  } else {
+    commit('setAuth', {
+      flow: 'redirect'
+    });
+    loginRedirect({ redirect: window.location.pathname, site });
+  }
 };
 
 export const logout = async ({ dispatch }: ActionContext<IRootState, IRootState>) => {

@@ -11,7 +11,12 @@
   ],
   "scripts": {
     "start": "vite --host",
-    "build": "vite build --mode=development",
+    "build": "yarn build:web",
+    "build:web": "cross-env VITE_SURFACE=web vite build --mode development",
+    "build:android": "cross-env VITE_SURFACE=android vite build --mode development",
+    "build:ios": "cross-env VITE_SURFACE=ios vite build --mode development",
+    "pack:android": "yarn build:android && npx cap copy android",
+    "pack:ios": "yarn build:ios && npx cap copy ios",
     "serve": "vite preview",
     "translate": "transmart",
     "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
@@ -62,6 +67,10 @@
     "vuex-persistedstate": "^4.0.0"
   },
   "devDependencies": {
+    "@capacitor/android": "^6.1.1",
+    "@capacitor/cli": "^6.1.1",
+    "@capacitor/core": "^6.1.1",
+    "@capacitor/ios": "^6.1.1",
     "@rollup/plugin-replace": "^3.0.0",
     "@transmart/cli": "^0.5.0",
     "@types/lodash": "^4.14.172",
