@@ -1,8 +1,19 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sun, 04 Aug 2024 16:56:06 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Aug 2024 17:25:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.2.1
+
+Fri, 09 Aug 2024 17:25:38 GMT
+
+### Patches
+
+- fix the confirm flow (office@acedata.cloud)
+- fix packages (office@acedata.cloud)
+- try to fix publish error (office@acedata.cloud)
+- fix type definition (office@acedata.cloud)
 
 ## 2.1.0
 
