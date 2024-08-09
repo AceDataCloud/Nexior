@@ -149,7 +149,8 @@
                 <qr-code
                   v-if="distributionLink"
                   :value="distributionLink"
-                  :size="150"
+                  :size="180"
+                  :margin="2"
                   class="block mb-2 ml-auto mr-auto"
                 />
                 <p class="mt-0">
@@ -390,6 +391,9 @@ export default defineComponent({
   }
   .qr-wrapper {
     padding: 15px 0;
+    img {
+      width: 200px;
+    }
     p {
       text-align: center;
       color: var(--el-text-color-regular);

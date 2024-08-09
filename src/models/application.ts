@@ -2,7 +2,8 @@ import { ICredential } from './credential';
 import { IService } from './service';
 
 export enum IApplicationType {
-  API = 'Api'
+  USAGE = 'Usage',
+  PERIOD = 'Period'
 }
 
 export interface IApplication {
