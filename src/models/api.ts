@@ -45,10 +45,17 @@ export interface IResponse {
   headers: ISchema;
 }
 
+export enum IPackageType {
+  PERIOD = 'Period',
+  USAGE = 'Usage'
+}
+
 export interface IPackage {
   id: string;
   amount: number;
   price: number;
+  type?: IPackageType;
+  duration?: number;
 }
 
 export enum IApiUnit {

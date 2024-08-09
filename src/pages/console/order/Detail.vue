@@ -30,9 +30,6 @@
                       <span v-if="order?.pay_way === PayWay.WechatPay">{{ $t('order.title.wechatPay') }}</span>
                       <span v-if="order?.pay_way === PayWay.Stripe">{{ $t('order.title.stripe') }}</span>
                     </el-descriptions-item>
-                    <el-descriptions-item :label="$t('order.field.amount')">
-                      {{ order?.amount }} {{ $t(`service.unit.${order?.application?.service?.unit}`) }}
-                    </el-descriptions-item>
                     <el-descriptions-item :label="$t('order.field.createdAt')">
                       {{ $dayjs.format(order?.created_at) }}
                     </el-descriptions-item>
