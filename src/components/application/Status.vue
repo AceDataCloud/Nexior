@@ -142,7 +142,6 @@ export default defineComponent({
     onApply() {
       applicationOperator
         .create({
-          type: IApplicationType.API,
           service_id: this.service?.id
         })
         .then(({ data: data }: { data: IApplicationDetailResponse }) => {
