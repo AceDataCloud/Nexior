@@ -63,8 +63,7 @@ export default defineComponent({
   emits: ['update:visible', 'apply'],
   data(): IData {
     return {
-      checked: false,
-      showPolicy: false
+      checked: true
     };
   },
   watch: {},
@@ -96,6 +95,7 @@ export default defineComponent({
       &.highlight {
         color: var(--el-color-primary);
         cursor: pointer;
+        text-decoration: none;
       }
     }
   }
