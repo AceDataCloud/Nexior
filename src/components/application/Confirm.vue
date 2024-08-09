@@ -19,10 +19,9 @@
       <div class="policy">
         <el-checkbox v-model="checked" size="large" class="policy-checkbox" />
         <span class="policy-title"> {{ $t('application.message.readPolicy') }} </span>
-        <span class="policy-title highlight" @click="showPolicy = true">
-          &nbsp;{{ $t('application.message.policy') }}</span
-        >
-        <application-policy v-model.visible="showPolicy" />
+        <a class="policy-title highlight" target="_blank" :href="getBaseUrlPlatform() + '/terms'">
+          &nbsp;{{ $t('application.message.policy') }}
+        </a>
       </div>
       <el-button round type="primary" @click="onApply">{{ $t('common.button.apply') }}</el-button>
     </div>
@@ -33,7 +32,7 @@
 import { defineComponent } from 'vue';
 import { ElDialog, ElDescriptions, ElDescriptionsItem, ElDivider, ElCheckbox, ElButton, ElMessage } from 'element-plus';
 import { IService } from '@/models';
-import ApplicationPolicy from './Policy.vue';
+import { getBaseUrlPlatform } from '@/utils';
 
 interface IData {
   checked: boolean;
@@ -48,8 +47,7 @@ export default defineComponent({
     ElDescriptionsItem,
     ElDivider,
     ElCheckbox,
-    ElButton,
-    ApplicationPolicy
+    ElButton
   },
   props: {
     service: {
@@ -65,12 +63,12 @@ export default defineComponent({
   emits: ['update:visible', 'apply'],
   data(): IData {
     return {
-      checked: false,
-      showPolicy: false
+      checked: true
     };
   },
   watch: {},
   methods: {
+    getBaseUrlPlatform,
     onApply() {
       if (!this.checked) {
         ElMessage.error(this.$t('application.message.notAgreePolicy'));
@@ -97,6 +95,7 @@ export default defineComponent({
       &.highlight {
         color: var(--el-color-primary);
         cursor: pointer;
+        text-decoration: none;
       }
     }
   }
