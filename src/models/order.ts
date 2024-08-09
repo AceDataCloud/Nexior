@@ -18,6 +18,8 @@ export interface IOrder {
   updated_at?: string;
   application?: IApplication;
   application_id?: string;
+  application_ids?: string[];
+  package_ids?: string[];
   wechatpay_url?: string;
   pay_id?: string;
   pay_url?: string;
