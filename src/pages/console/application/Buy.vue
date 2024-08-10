@@ -20,6 +20,7 @@
                     <el-radio-group v-if="application?.service?.packages" v-model="form.packageId">
                       <el-radio-button
                         v-for="(pkg, pkgIndex) in application?.service.packages"
+                        v-show="pkg.type === 'Usage'"
                         :key="pkgIndex"
                         :label="pkg.id"
                         class="mb-2"
