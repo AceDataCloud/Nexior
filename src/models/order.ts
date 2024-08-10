@@ -4,7 +4,8 @@ export enum OrderState {
   PENDING = 'Pending',
   PAID = 'Paid',
   EXPIRED = 'Expired',
-  FAILED = 'Failed'
+  FAILED = 'Failed',
+  FINISHED = 'Finished'
 }
 
 export interface IOrder {

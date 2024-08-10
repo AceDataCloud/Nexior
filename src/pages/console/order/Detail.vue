@@ -43,7 +43,7 @@
                 </div>
               </el-col>
             </el-row>
-            <el-row v-if="order?.state === OrderState.PAID" class="mb-5">
+            <el-row v-if="order?.state === OrderState.PAID || order?.state === OrderState.FINISHED" class="mb-5">
               <el-col :span="16" :offset="4">
                 <el-divider border-style="dashed" />
                 <el-alert :title="$t('order.message.paidSuccessfully')" type="success" show-icon :closable="false" />
