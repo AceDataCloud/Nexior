@@ -56,6 +56,7 @@ export interface IPackage {
   price: number;
   duration?: number;
   type?: IPackageType;
+  service?: IService;
 }
 
 export enum IApiUnit {

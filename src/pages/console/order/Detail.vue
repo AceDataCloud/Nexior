@@ -140,6 +140,7 @@ import WechatPayOrder from '@/components/order/WechatPay.vue';
 import StripePayOrder from '@/components/order/StripePay.vue';
 import { IApplicationType, IOrder, IOrderDetailResponse, OrderState } from '@/models';
 import { getPriceString } from '@/utils';
+import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 
 enum PayWay {
   WechatPay = 'WechatPay',
@@ -163,6 +164,7 @@ export default defineComponent({
   name: 'ConsoleOrderDetail',
   components: {
     ElButton,
+    CopyToClipboard,
     ElRow,
     ElCard,
     ElCol,

@@ -16,12 +16,22 @@
               table-layout="fixed"
               :empty-text="$t('common.message.noData')"
             >
-              <el-table-column prop="id" :label="$t('application.field.id')" width="300px" class-name="text-center">
+              <el-table-column prop="id" :label="$t('application.field.id')" width="280px" class-name="text-center">
                 <template #default="scope">
                   <span>{{ scope.row.id }}</span>
                   <span class="copy">
                     <copy-to-clipboard :content="scope?.row?.id" class="inline-block" />
                   </span>
+                </template>
+              </el-table-column>
+              <el-table-column :label="$t('application.field.type')" width="80px">
+                <template #default="scope">
+                  <el-tag v-if="scope.row?.type === 'Period'" type="success">
+                    {{ $t('application.type.period') }}
+                  </el-tag>
+                  <el-tag v-if="scope.row?.type === 'Usage'" type="primary">
+                    {{ $t('application.type.usage') }}
+                  </el-tag>
                 </template>
               </el-table-column>
               <el-table-column :label="$t('application.field.name')" width="180px">
@@ -47,6 +57,11 @@
               >
                 <template #default="scope">
                   <span>{{ getUsedAmount(scope.row) }}</span>
+                </template>
+              </el-table-column>
+              <el-table-column :label="$t('application.field.expiredAt')" width="200px">
+                <template #default="scope">
+                  <span v-if="scope.row.expired_at" class="expired-at">{{ $dayjs.format(scope.row.expired_at) }}</span>
                 </template>
               </el-table-column>
               <el-table-column fixed="right" width="120px">
@@ -78,9 +93,9 @@ import { defineComponent } from 'vue';
 import { applicationOperator } from '@/operators';
 import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { ElTable, ElRow, ElCol, ElTableColumn, ElCard, ElButton } from 'element-plus';
-import { ROUTE_CONSOLE_APPLICATION_BUY } from '@/router/constants';
-import { IApplication, IApplicationListResponse, ICredentialType, IService } from '@/models';
+import { ElTable, ElRow, ElCol, ElTableColumn, ElCard, ElButton, ElTag } from 'element-plus';
+import { ROUTE_CONSOLE_APPLICATION_BUY, ROUTE_CONSOLE_SUBSCRIPTION_BUY } from '@/router/constants';
+import { IApplication, IApplicationListResponse, IApplicationType, ICredentialType, IService } from '@/models';
 
 interface IData {
   applications: IApplication[];
@@ -107,6 +122,7 @@ export default defineComponent({
     ElRow,
     ElButton,
     ElCol,
+    ElTag,
     ElTableColumn,
     ElCard
   },
@@ -152,12 +168,18 @@ export default defineComponent({
   },
   methods: {
     onBuyMore(application: IApplication) {
-      this.$router.push({
-        name: ROUTE_CONSOLE_APPLICATION_BUY,
-        params: {
-          id: application.id
-        }
-      });
+      if (application.type === IApplicationType.USAGE) {
+        this.$router.push({
+          name: ROUTE_CONSOLE_APPLICATION_BUY,
+          params: {
+            id: application.id
+          }
+        });
+      } else {
+        this.$router.push({
+          name: ROUTE_CONSOLE_SUBSCRIPTION_BUY
+        });
+      }
     },
     onPageChange(page: number) {
       this.$router.push({

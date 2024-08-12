@@ -10,7 +10,22 @@
         <el-col :span="24">
           <el-card shadow="hover" class="card">
             <el-row>
+              <el-col class="text-center">
+                <el-radio-group v-if="applicationId" v-model="type" size="large" class="mb-4" @change="onChangeType">
+                  <el-radio-button label="Period">
+                    {{ $t('application.type.period') }}
+                  </el-radio-button>
+                  <el-radio-button label="Usage">
+                    {{ $t('application.type.usage') }}
+                  </el-radio-button>
+                </el-radio-group>
+              </el-col>
+            </el-row>
+            <el-row>
               <el-col :span="16" :offset="4">
+                <p class="introduction">
+                  {{ $t('console.subscription.introduction') }}
+                </p>
                 <el-skeleton v-if="loading" />
                 <el-row v-else :gutter="15" class="subscriptions">
                   <el-col
@@ -24,20 +39,29 @@
                       :class="{ subscription: true, active: subscription?.name === item.name }"
                       @click="subscription = item"
                     >
-                      <h4 class="name">{{ item.label }}</h4>
+                      <h4 class="name">
+                        {{ item.label }}
+                        <el-tag v-if="item.tag" type="warning">{{ item.tag }}</el-tag>
+                      </h4>
                       <h2 class="price">
                         {{ getPriceString({ value: item.price }) }}
                       </h2>
+                      <p class="description">{{ item.description }}</p>
                       <div class="benefits">
                         <div v-for="(benefit, benefitIndex) in item.benefits" :key="benefitIndex" class="benefit">
-                          <font-awesome-icon icon="fa-solid fa-check" class="icon icon-check" />
-                          <span> {{ benefit }}</span>
+                          <font-awesome-icon v-if="benefit.enabled" icon="fa-solid fa-check" class="icon icon-check" />
+                          <font-awesome-icon v-else icon="fa-solid fa-xmark" class="icon icon-xmark" />
+                          <span> {{ benefit.content }}</span>
                         </div>
                       </div>
                       <div class="operations">
-                        <el-button class="btn btn-subscribe" type="primary" round @click="onCreateOrder(item)">{{
-                          $t('common.button.buy')
-                        }}</el-button>
+                        <el-button
+                          class="btn btn-subscribe"
+                          :type="subscription?.name === item?.name ? 'primary' : ''"
+                          round
+                          @click="onCreateOrder(item)"
+                          >{{ $t('common.button.buy') }}</el-button
+                        >
                       </div>
                     </el-card>
                   </el-col>
@@ -60,35 +84,34 @@ import {
   ElCard,
   ElSkeleton,
   ElMessage,
-  ElForm,
-  ElFormItem,
   ElButton,
-  ElDivider,
+  ElTag,
   ElRadioGroup,
   ElRadioButton
 } from 'element-plus';
 import { applicationOperator, orderOperator, serviceOperator } from '@/operators';
-// import { ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
-// import { applicationOperator, orderOperator } from '@/operators';
 import { getPriceString } from '@/utils';
 import { CHAT_SERVICE_ID } from '@/constants/chat';
 import { MIDJOURNEY_SERVICE_ID } from '@/constants/midjourney';
 import { SUNO_SERVICE_ID } from '@/constants/suno';
 import { QRART_SERVICE_ID } from '@/constants/qrart';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
+import { ROUTE_CONSOLE_APPLICATION_BUY, ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
 
 interface ISubscription {
   name: string;
   label: string;
+  tag?: string;
   price?: number;
   duration: number;
-  benefits?: string[];
+  benefits?: { enabled: boolean; content: string }[];
+  description?: string;
 }
 
 interface IData {
   applications: IApplication[];
   services: IService[];
+  type: string;
   loading: boolean;
   creating: boolean;
   subscription: ISubscription | undefined;
@@ -99,17 +122,18 @@ export default defineComponent({
   components: {
     ElSkeleton,
     ElRow,
+    ElTag,
     ElCol,
+    ElRadioGroup,
+    ElRadioButton,
     ElCard,
     FontAwesomeIcon,
-    // ElForm,
-    // ElFormItem,
     ElButton
-    // Price
   },
   data(): IData {
     return {
       applications: [],
+      type: 'Period',
       services: [],
       loading: false,
       creating: false,
@@ -117,31 +141,29 @@ export default defineComponent({
     };
   },
   computed: {
+    applicationId() {
+      return this.$route.params?.id?.toString();
+    },
     subscriptions(): ISubscription[] {
       const items: ISubscription[] = [
         {
           name: 'WEEK',
-          label: '周会员',
-          duration: 7 * 24 * 60 * 60,
-          benefits: ['Best AI-generated image quality', 'Fully featured web app', 'Faceswap and more']
+          label: this.$t('console.subscription.weekly'),
+          description: this.$t('console.subscription.weekly.description'),
+          duration: 7 * 24 * 60 * 60
         },
         {
           name: 'MONTH',
-          label: '月会员',
-          duration: 30 * 24 * 60 * 60,
-          benefits: ['Best AI-generated image quality', 'Fully featured web app', 'Faceswap and more']
-        },
-        {
-          name: 'QUARTER',
-          label: '季会员',
-          duration: 90 * 24 * 60 * 60,
-          benefits: ['Best AI-generated image quality', 'Fully featured web app', 'Faceswap and more']
+          label: this.$t('console.subscription.monthly'),
+          description: this.$t('console.subscription.monthly.description'),
+          duration: 30 * 24 * 60 * 60
         },
         {
           name: 'YEAR',
-          label: '年会员',
-          duration: 365 * 24 * 60 * 60,
-          benefits: ['Best AI-generated image quality', 'Fully featured web app', 'Faceswap and more']
+          tag: this.$t('console.button.suggested'),
+          label: this.$t('console.subscription.yearly'),
+          description: this.$t('console.subscription.yearly.description'),
+          duration: 365 * 24 * 60 * 60
         }
       ];
       for (const item of items) {
@@ -149,6 +171,17 @@ export default defineComponent({
         if (pkgs) {
           item.price = pkgs.reduce((acc, pkg) => acc + pkg.price, 0);
         }
+        for (const pkg of pkgs) {
+          if (!item.benefits) {
+            item.benefits = [];
+          }
+          item.benefits.push({
+            enabled: true,
+            content: `${pkg?.service?.title} - ${pkg.amount} ` + this.$t('service.unit.' + pkg?.service?.unit + 's')
+          });
+        }
+        item.benefits?.push({ enabled: item.name !== 'WEEK', content: this.$t('console.message.benefit1') });
+        item.benefits?.push({ enabled: item.name !== 'WEEK', content: this.$t('console.message.benefit2') });
       }
       return items;
     },
@@ -169,7 +202,7 @@ export default defineComponent({
     await this.onFetchApplications();
     await this.onCreateApplications();
     this.loading = false;
-    this.subscription = this.subscriptions[1];
+    this.subscription = this.subscriptions[2];
   },
   methods: {
     getPriceString,
@@ -183,7 +216,7 @@ export default defineComponent({
         const packages = service.packages;
         const target = packages?.find((p) => p.type === IPackageType.PERIOD && p.duration === duration);
         if (target) {
-          result.push(target);
+          result.push({ ...target, service });
         }
       }
       return result;
@@ -203,6 +236,13 @@ export default defineComponent({
         }
         await this.onFetchApplications();
       }
+    },
+    onChangeType() {
+      console.log('onChangeType', this.type);
+      this.$router.push({
+        name: ROUTE_CONSOLE_APPLICATION_BUY,
+        params: this.$route.params
+      });
     },
     async onFetchServices() {
       const { data } = await serviceOperator.getAll({
@@ -227,7 +267,8 @@ export default defineComponent({
       orderOperator
         .create({
           application_ids: this.applicationIds,
-          package_ids: this.getPackages(subscription.duration).map((p) => p.id)
+          package_ids: this.getPackages(subscription.duration).map((p) => p.id),
+          description: this.$store.state?.site?.title + ' - ' + subscription.label
         })
         .then(({ data: data }: { data: IOrderDetailResponse }) => {
           this.creating = false;
@@ -262,6 +303,13 @@ export default defineComponent({
 
   .card {
     padding: 50px 0 100px 0;
+    cursor: pointer;
+  }
+
+  .introduction {
+    font-size: 16px;
+    color: var(--el-text-color-secondary);
+    margin-bottom: 20px;
   }
 
   .name {
@@ -274,6 +322,21 @@ export default defineComponent({
   .price {
     font-size: 35px;
     font-weight: bold;
+    margin: 0 auto;
+  }
+
+  .description {
+    font-size: 13px;
+    color: var(--el-text-color-secondary);
+    margin-bottom: 20px;
+  }
+
+  .benefits {
+    margin-top: 20px;
+    .benefit {
+      font-size: 14px;
+      color: var(--el-text-color-primary);
+    }
   }
 
   .subscriptions {
@@ -285,11 +348,12 @@ export default defineComponent({
           .icon {
             color: var(--el-color-primary);
             margin-right: 5px;
+            width: 15px;
+            text-align: center;
           }
         }
       }
-      &.active,
-      &:hover {
+      &.active {
         border-color: var(--el-color-primary) !important;
       }
       .operations {

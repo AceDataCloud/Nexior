@@ -36,4 +36,5 @@ export const ROUTE_DISTRIBUTION_INVITEES = 'distribution-invitees';
 
 export const ROUTE_CONSOLE_USAGE_LIST = 'console-usage-list';
 
+export const ROUTE_CONSOLE_SUBSCRIPTION = 'console-subscription';
 export const ROUTE_CONSOLE_SUBSCRIPTION_BUY = 'console-subscription-buy';
