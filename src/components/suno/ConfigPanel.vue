@@ -7,10 +7,15 @@
       <lyric-input v-if="config?.custom && !config.instrumental" class="mb-4" />
       <style-input v-if="config?.custom" class="mb-4" />
       <title-input v-if="config?.custom" class="mb-4" />
+      <extend-from-input v-if="config?.action === 'extend'" class="mb-4" />
       <div class="actions">
-        <el-button type="primary" class="btn w-full" round @click="onGenerate">
+        <el-button v-if="config?.action !== 'extend'" type="primary" class="btn w-full" round @click="onGenerate">
           <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
           {{ $t('suno.button.generate') }}
+        </el-button>
+        <el-button v-else type="primary" class="btn w-full" round @click="onGenerate">
+          <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
+          {{ $t('suno.button.extend') }}
         </el-button>
       </div>
     </div>
@@ -25,6 +30,7 @@ import PromptInput from './config/PromptInput.vue';
 import LyricInput from './config/LyricInput.vue';
 import StyleInput from './config/StyleInput.vue';
 import TitleInput from './config/TitleInput.vue';
+import ExtendFromInput from './config/ExtendFromInput.vue';
 import InstrumentSwitch from './config/InstrumentSwitch.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -37,6 +43,7 @@ export default defineComponent({
     InstrumentSwitch,
     StyleInput,
     TitleInput,
+    ExtendFromInput,
     FontAwesomeIcon,
     ElButton
   },

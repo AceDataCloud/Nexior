@@ -1,5 +1,5 @@
 import { ISunoState } from './models';
-import { Status, Song } from '@/models';
+import { Status } from '@/models';
 
 export default (): ISunoState => {
   return {
