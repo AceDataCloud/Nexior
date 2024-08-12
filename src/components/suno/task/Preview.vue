@@ -34,6 +34,7 @@
         <p class="style">{{ audio?.style }}</p>
       </div>
       <div class="right">
+        <el-button size="small" round @click="onExtend($event, audio)">{{ $t('suno.button.extend') }}</el-button>
         <el-tooltip effect="dark" :content="$t('suno.button.download')" placement="top">
           <font-awesome-icon
             v-if="audio?.audio_url"
@@ -59,7 +60,7 @@
 import { defineComponent } from 'vue';
 import { useFormatDuring } from '@/utils/number';
 import { ISunoAudio, ISunoTask } from '@/models';
-import { ElImage, ElIcon, ElTooltip } from 'element-plus';
+import { ElImage, ElIcon, ElTooltip, ElButton } from 'element-plus';
 import { VideoPlay, VideoPause } from '@element-plus/icons-vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -69,6 +70,7 @@ export default defineComponent({
     ElImage,
     ElIcon,
     ElTooltip,
+    ElButton,
     FontAwesomeIcon,
     VideoPlay,
     VideoPause
@@ -129,6 +131,23 @@ export default defineComponent({
           progress: 0
         });
       }
+    },
+    onExtend(event: MouseEvent, audio: ISunoAudio) {
+      event.stopPropagation();
+      console.log('on extend');
+      // download url here
+      console.debug('set config', audio);
+      this.$store.commit('suno/setConfig', {
+        ...this.$store.state.suno?.config,
+        model: audio.model,
+        custom: true,
+        instrumental: false,
+        style: audio.style,
+        action: 'extend',
+        audio: audio,
+        audio_id: audio.id,
+        continue_at: audio.duration
+      });
     },
     onDownload(event: MouseEvent, audioUrl: string) {
       event.stopPropagation();
@@ -223,15 +242,19 @@ export default defineComponent({
       }
     }
     .right {
-      width: 60px;
+      width: 120px;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-end;
+      padding-right: 1px;
       .icon {
         display: block;
         z-index: 100;
         cursor: pointer;
         margin-right: 15px;
+      }
+      .el-button {
+        margin-right: 15px; /* Add margin to the right of the button */
       }
     }
   }

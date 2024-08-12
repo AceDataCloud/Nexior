@@ -63,6 +63,9 @@ export interface ISunoConfig {
   title?: string;
   style?: string;
   action?: string;
+  audio?: ISunoAudio | undefined;
+  audio_id?: string;
+  continue_at: number;
 }
 export interface ISunoAudioRequest {
   action?: string;
