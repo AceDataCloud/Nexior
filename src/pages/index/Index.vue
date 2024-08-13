@@ -200,9 +200,6 @@
         </el-row>
       </div>
     </div>
-    <div id="subscriptions">
-      <el-button> Subscription </el-button>
-    </div>
   </div>
 </template>
 
@@ -210,7 +207,6 @@
 import { defineComponent } from 'vue';
 import { ElButton, ElImage, ElRow, ElCol, ElCard } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_CONSOLE_SUBSCRIPTION_BUY } from '@/router';
 
 interface IData {
   comments: any[];
@@ -296,15 +292,7 @@ export default defineComponent({
     }
   },
   mounted() {},
-  methods: {
-    onSubscribe(sku: 'MONTH' | 'YEAR' | 'WEEK' | 'QUARTER') {
-      console.debug('subscribe', sku);
-      this.$router.push({
-        name: ROUTE_CONSOLE_SUBSCRIPTION_BUY,
-        params: { sku }
-      });
-    }
-  }
+  methods: {}
 });
 </script>
 

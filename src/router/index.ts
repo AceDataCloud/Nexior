@@ -10,7 +10,7 @@ import suno from './suno';
 import site from './site';
 import profile from './profile';
 
-import { ROUTE_CHAT_CONVERSATION_NEW, ROUTE_INDEX } from './constants';
+import { ROUTE_INDEX } from './constants';
 import { DEFAULT_LOCALE, setI18nLanguage } from '@/i18n';
 import { getCookie } from 'typescript-cookie';
 
