@@ -5,11 +5,22 @@
       <info-icon :content="$t('suno.description.lyrics')" class="info" />
     </div>
     <el-input
+      v-if="config?.action !== 'extend'"
       v-model="lyric"
       :rows="3"
       type="textarea"
       class="lyrics"
       :placeholder="$t('suno.placeholder.lyrics')"
+      :maxlength="3000"
+      show-word-limit
+    />
+    <el-input
+      v-else
+      v-model="lyric"
+      :rows="3"
+      type="textarea"
+      class="lyrics"
+      :placeholder="$t('suno.placeholder.extend.lyrics')"
       :maxlength="3000"
       show-word-limit
     />

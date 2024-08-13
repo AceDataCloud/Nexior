@@ -1,1 +1,1 @@
-export default ['suno.config', 'suno.credential', 'suno.application', 'suno.tasks'];
+export default ['suno.credential', 'suno.application', 'suno.tasks'];
