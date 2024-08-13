@@ -1,182 +1,194 @@
 {
+  "type.period": {
+    "message": "Período",
+    "description": "Serviço do período."
+  },
+  "type.usage": {
+    "message": "Quota",
+    "description": "Quota do serviço."
+  },
+  "field.expiredAt": {
+    "message": "Data de expiração",
+    "description": "Data de expiração do pedido."
+  },
   "button.goDocument": {
-    "message": "Documento",
-    "description": "Botão que redireciona para a página de documentos."
+    "message": "Documentação",
+    "description": "Texto do botão, clicar neste botão irá levar à página de documentação."
   },
   "button.goCredentials": {
     "message": "Credenciais",
-    "description": "Botão que redireciona para a página de credenciais."
+    "description": "Texto do botão, clicar neste botão irá levar à página de credenciais."
   },
   "button.buyMore": {
     "message": "Comprar mais",
-    "description": "Botão que redireciona para a página de compra de mais itens."
+    "description": "Texto do botão, clicar neste botão irá levar à página de compra de mais."
   },
   "button.createOrder": {
     "message": "Criar pedido",
-    "description": "Botão que redireciona para a página de criação de pedidos."
+    "description": "Texto do botão, clicar neste botão irá levar à página de criação de pedidos."
   },
   "button.custom": {
-    "message": "Personalizado",
-    "description": "Botão que redireciona para a página de personalização."
+    "message": "Personalizar",
+    "description": "Texto do botão, clicar neste botão irá levar à página de personalização."
   },
   "button.query": {
-    "message": "Consulta",
-    "description": "Botão que redireciona para a página de consulta."
+    "message": "Consultar",
+    "description": "Texto do botão, clicar neste botão irá levar à página de consulta."
   },
   "button.usage": {
     "message": "Histórico de uso",
-    "description": "Botão que redireciona para a página de histórico de uso."
+    "description": "Texto do botão, clicar neste botão irá levar à página de histórico de uso."
   },
   "field.application": {
-    "message": "Aplicação",
-    "description": "Aplicação de serviço."
+    "message": "Pedido",
+    "description": "Pedido de serviço."
   },
   "field.status": {
     "message": "Status",
-    "description": "Status da aplicação."
+    "description": "Status do pedido."
   },
   "field.id": {
-    "message": "ID da aplicação",
-    "description": "ID da aplicação."
+    "message": "ID do pedido",
+    "description": "ID do pedido."
   },
   "field.remainingAmount": {
     "message": "Quantidade restante",
-    "description": "Quantidade restante da aplicação."
+    "description": "Quantidade restante do pedido."
   },
   "field.usedAmount": {
-    "message": "Quantidade utilizada",
-    "description": "Quantidade utilizada da aplicação."
+    "message": "Quantidade usada",
+    "description": "Quantidade usada do pedido."
   },
   "field.apiKey": {
-    "message": "Chave de API",
-    "description": "Chave de API."
+    "message": "Chave API",
+    "description": "Chave da API."
   },
   "field.service": {
     "message": "Serviço",
-    "description": "Serviço da aplicação."
+    "description": "Serviço do pedido."
   },
   "field.operation": {
     "message": "Operação",
-    "description": "Operação da aplicação."
+    "description": "Operação do pedido."
   },
   "field.amount": {
     "message": "Quantidade",
-    "description": "Quantidade da aplicação."
+    "description": "Quantidade do pedido."
   },
   "field.traceId": {
     "message": "ID de rastreamento",
-    "description": "ID de rastreamento de uma chamada de API do serviço de API. Não traduzir, manter como 'ID de rastreamento'."
+    "description": "ID de rastreamento de uma chamada API do pedido do serviço, não traduza, mantenha como 'ID de rastreamento'."
   },
   "field.shouldPayPrice": {
     "message": "Preço final",
-    "description": "Preço final da aplicação."
+    "description": "Preço final do pedido."
   },
   "field.api": {
     "message": "API",
-    "description": "Este é um tipo de serviço online que fornece serviços aos usuários através de uma API."
+    "description": "Esta é uma forma de serviço online, através da qual o serviço é disponibilizado ao usuário por meio de API."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Este é um tipo de serviço online que fornece serviços aos usuários através de um proxy HTTP (para transferência de dados)."
+    "description": "Esta é uma forma de serviço online, através da qual o serviço é disponibilizado ao usuário por meio de proxy HTTP (para transmissão de dados)."
   },
   "field.credential": {
     "message": "Credencial",
-    "description": "Credencial da aplicação."
+    "description": "Credencial do pedido."
   },
   "field.name": {
     "message": "Nome",
-    "description": "Nome da aplicação."
+    "description": "Nome do pedido."
   },
   "field.package": {
     "message": "Pacote",
-    "description": "Pacote que representa diferentes pacotes de preço, como 100 dólares podem obter 10000 pontos, 200 dólares podem obter 20000 pontos."
+    "description": "Pacote representa diferentes pacotes de preços, como 100 dólares por 10.000 pontos, 200 dólares por 20.000 pontos."
   },
   "field.type": {
     "message": "Tipo",
-    "description": "Tipo da aplicação."
+    "description": "Tipo do pedido."
   },
   "field.freeAmount": {
     "message": "Quantidade gratuita",
-    "description": "Quantidade gratuita da aplicação."
+    "description": "Quantidade gratuita do pedido."
   },
   "field.extraPrice": {
     "message": "Preço adicional",
-    "description": "Preço adicional da aplicação que o usuário precisa pagar."
+    "description": "Preço adicional que o usuário deve pagar pelo pedido."
   },
   "message.alreadyApplied": {
-    "message": "Você já aplicou para este serviço, por favor, verifique o console",
-    "description": "Mensagem exibida quando o usuário já aplicou para este serviço."
+    "message": "Você já solicitou este serviço, por favor verifique o console.",
+    "description": "Mensagem mostrada ao usuário quando ele já solicitou este serviço."
   },
   "message.applySuccessfully": {
-    "message": "Aplicação bem-sucedida",
-    "description": "Mensagem exibida quando o usuário aplica com sucesso para este serviço."
+    "message": "Solicitação bem-sucedida",
+    "description": "Mensagem mostrada ao usuário quando ele solicita este serviço com sucesso."
   },
   "message.notApplied": {
-    "message": "Você ainda não aplicou para este serviço, por favor, aplique antes de usá-lo",
-    "description": "Mensagem exibida quando o usuário ainda não aplicou para este serviço."
+    "message": "Você ainda não solicitou este serviço, por favor solicite-o antes de usar.",
+    "description": "Mensagem mostrada ao usuário quando ele ainda não solicitou este serviço."
   },
   "message.yourApplication": {
-    "message": "Sua aplicação",
-    "description": "Mensagem exibida quando a aplicação do usuário é necessária."
+    "message": "Sua solicitação",
+    "description": "Mensagem mostrada ao usuário durante o pedido dele."
   },
   "message.unverified": {
-    "message": "Você precisa concluir a verificação de identidade antes de aplicar para este serviço",
-    "description": "Mensagem exibida quando o usuário ainda não realizou a verificação de identidade."
+    "message": "Você precisa concluir a verificação de identidade antes de solicitar este serviço.",
+    "description": "Mensagem mostrada ao usuário quando ele ainda não completou a verificação de identidade."
   },
   "message.goVerify": {
     "message": "Ir para verificação de identidade",
-    "description": "Mensagem exibida quando o usuário ainda não realizou a verificação de identidade."
+    "description": "Mensagem mostrada ao usuário quando ele ainda não completou a verificação de identidade."
   },
   "message.requiredParameter": {
-    "message": "Parâmetro obrigatório",
-    "description": "Mensagem exibida quando o usuário não inseriu um parâmetro obrigatório."
+    "message": "Parâmetros obrigatórios",
+    "description": "Mensagem mostrada ao usuário quando ele ainda não inseriu os parâmetros obrigatórios."
   },
   "message.example": {
     "message": "Exemplo",
-    "description": "Mensagem exibida quando o usuário não inseriu um parâmetro obrigatório."
+    "description": "Mensagem mostrada ao usuário quando ele ainda não inseriu os parâmetros obrigatórios."
   },
   "message.createCredentialSuccessfully": {
-    "message": "Credencial criada com sucesso",
-    "description": "Mensagem exibida quando o usuário cria com sucesso uma credencial."
+    "message": "Credenciais criadas com sucesso",
+    "description": "Mensagem mostrada ao usuário quando ele cria credenciais bem-sucedidamente."
   },
   "message.readPolicy": {
-    "message": "Li e concordo com",
-    "description": "Mensagem exibida quando o usuário leu e concordou com a política."
+    "message": "Li e concordo",
+    "description": "Mensagem mostrada ao usuário quando ele leu e concordou com a política."
   },
   "message.policy": {
-    "message": "Termos de uso dos serviços de dados",
-    "description": "Mensagem exibida quando o usuário leu e concordou com a política."
+    "message": "Acordo de Uso de Serviços Técnicos de Dados",
+    "description": "Mensagem mostrada ao usuário quando ele leu e concordou com a política."
   },
   "message.notAgreePolicy": {
-    "message": "Você ainda não concordou com os termos de uso dos serviços de dados",
-    "description": "Mensagem exibida quando o usuário ainda não concordou com a política."
+    "message": "Você ainda não concordou com o Acordo de Uso de Serviços Técnicos de Dados.",
+    "description": "Mensagem mostrada ao usuário quando ele ainda não concordou com a política."
   },
   "message.confirmApplying": {
-    "message": "Confirmar aplicação do serviço",
-    "description": "Mensagem exibida quando o usuário confirma a aplicação do serviço."
+    "message": "Confirmar pedido de serviço",
+    "description": "Mensagem mostrada ao usuário quando ele confirma o pedido de serviço."
   },
   "message.rotateCredential": {
     "message": "Redefinir chave",
-    "description": "Mensagem exibida quando o usuário redefini a chave."
+    "description": "Mensagem exibida ao usuário quando ele redefine a chave."
   },
   "message.rotateCredentialConfirm": {
-    "message": "Tem a certeza de que deseja redefinir a credencial? Após a redefinição, não será possível recuperá-la",
-    "description": "Quando o usuário confirma a redefinição da credencial, exibir a mensagem para o usuário."
+    "message": "Você tem certeza de que deseja redefinir a chave? Após a redefinição, não será possível recuperar.",
+    "description": "Mensagem exibida ao usuário quando ele confirma a redefinição da chave."
   },
   "message.idDoesNotExist": {
-    "message": "ID não existe",
-    "description": "Mensagem exibida ao usuário quando o aplicativo não existe."
+    "message": "Solicitação inexistente",
+    "description": "Mensagem exibida ao usuário quando a solicitação não existe."
   },
   "message.rotateCredentialSuccessfully": {
-    "message": "Credencial redefinida com sucesso",
-    "description": "Mensagem exibida ao usuário quando a redefinição da credencial é bem-sucedida."
+    "message": "Chave redefinida com sucesso",
+    "description": "Mensagem exibida ao usuário quando a chave é redefinida com sucesso."
   },
   "message.rotateCredentialFailed": {
-    "message": "Falha ao redefinir a credencial, entre em contato para obter ajuda",
-    "description": "Mensagem exibida ao usuário quando a redefinição da credencial falha."
+    "message": "Falha ao redefinir a chave, por favor, entre em contato para assistência",
+    "description": "Mensagem exibida ao usuário quando a redefinição da chave falha."
   },
   "message.updateFailed": {
-    "message": "Falha na atualização",
+    "message": "Atualização falhou",
     "description": "Mensagem exibida ao usuário quando a atualização falha."
   },
   "message.updateSuccessfully": {
@@ -184,15 +196,15 @@
     "description": "Mensagem exibida ao usuário quando a atualização é bem-sucedida."
   },
   "title.buyService": {
-    "message": "Comprar Serviço",
+    "message": "Comprar serviço",
     "description": "Título da página quando o usuário deseja comprar um serviço."
   },
   "title.applicationRemainingCount": {
-    "message": "Contagem restante da aplicação",
-    "description": "Título da página quando o usuário deseja modificar o número de aplicativos."
+    "message": "Quantidade de modificações",
+    "description": "Título da página quando o usuário deseja modificar a quantidade de solicitações."
   },
   "title.manageApplication": {
-    "message": "Gerenciar Aplicativo",
-    "description": "Título da página quando o usuário deseja gerenciar um aplicativo."
+    "message": "Gerenciamento de solicitação",
+    "description": "Título da página quando o usuário deseja gerenciar solicitações."
   }
 }

@@ -94,7 +94,7 @@ import { applicationOperator } from '@/operators';
 import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { ElTable, ElRow, ElCol, ElTableColumn, ElCard, ElButton, ElTag } from 'element-plus';
-import { ROUTE_CONSOLE_APPLICATION_BUY, ROUTE_CONSOLE_SUBSCRIPTION_BUY } from '@/router/constants';
+import { ROUTE_CONSOLE_APPLICATION_EXTRA } from '@/router/constants';
 import { IApplication, IApplicationListResponse, IApplicationType, ICredentialType, IService } from '@/models';
 
 interface IData {
@@ -170,7 +170,7 @@ export default defineComponent({
     onBuyMore(application: IApplication) {
       if (application.type === IApplicationType.USAGE) {
         this.$router.push({
-          name: ROUTE_CONSOLE_APPLICATION_BUY,
+          name: ROUTE_CONSOLE_APPLICATION_EXTRA,
           params: {
             id: application.id
           }

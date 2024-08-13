@@ -1,198 +1,210 @@
 {
+  "type.period": {
+    "message": "الفترة",
+    "description": "خدمة الدورة."
+  },
+  "type.usage": {
+    "message": "الحصة",
+    "description": "حصة الخدمة."
+  },
+  "field.expiredAt": {
+    "message": "وقت انتهاء الصلاحية",
+    "description": "وقت انتهاء الطلب."
+  },
   "button.goDocument": {
-    "message": "文档",
-    "description": "按钮文本，点击此按钮将转到文档页面。"
+    "message": "الوثائق",
+    "description": "نص الزر، عند النقر على هذا الزر سوف يتم الانتقال إلى صفحة الوثائق."
   },
   "button.goCredentials": {
-    "message": "凭据",
-    "description": "按钮文本，点击此按钮将转到凭据页面。"
+    "message": "البيانات الاعتمادية",
+    "description": "نص الزر، عند النقر على هذا الزر سوف يتم الانتقال إلى صفحة البيانات الاعتمادية."
   },
   "button.buyMore": {
     "message": "شراء المزيد",
-    "description": "按钮文本，点击此按钮将转到购买更多页面。"
+    "description": "نص الزر، عند النقر على هذا الزر سوف يتم الانتقال إلى صفحة شراء المزيد."
   },
   "button.createOrder": {
-    "message": "إنشاء الطلب",
-    "description": "按钮文本，点击此按钮将转到创建订单页面。"
+    "message": "إنشاء طلب",
+    "description": "نص الزر، عند النقر على هذا الزر سوف يتم الانتقال إلى صفحة إنشاء الطلب."
   },
   "button.custom": {
     "message": "تخصيص",
-    "description": "按钮文本，点击此按钮将转到自定义页面。"
+    "description": "نص الزر، عند النقر على هذا الزر سوف يتم الانتقال إلى صفحة التخصيص."
   },
   "button.query": {
     "message": "استعلام",
-    "description": "按钮文本，点击此按钮将转到查询页面。"
+    "description": "نص الزر، عند النقر على هذا الزر سوف يتم الانتقال إلى صفحة الاستعلام."
   },
   "button.usage": {
     "message": "سجل الاستخدام",
-    "description": "按钮文本，点击此按钮将转到使用记录页面。"
+    "description": "نص الزر، عند النقر على هذا الزر سوف يتم الانتقال إلى صفحة سجل الاستخدام."
   },
   "field.application": {
-    "message": "التطبيق",
-    "description": "服务的应用。"
+    "message": "طلب",
+    "description": "طلب الخدمة."
   },
   "field.status": {
     "message": "الحالة",
-    "description": "应用的状态。"
+    "description": "حالة الطلب."
   },
   "field.id": {
-    "message": "معرف التطبيق",
-    "description": "应用的ID。"
+    "message": "معرف الطلب",
+    "description": "معرف الطلب."
   },
   "field.remainingAmount": {
     "message": "الكمية المتبقية",
-    "description": "应用的剩余数量。"
+    "description": "الكمية المتبقية من الطلب."
   },
   "field.usedAmount": {
-    "message": "كمية المستخدمة",
-    "description": "应用的已使用数量。"
+    "message": "الكمية المستخدمة",
+    "description": "الكمية المستخدمة من الطلب."
   },
   "field.apiKey": {
-    "message": "مفتاح واجهة برمجة التطبيقات (API)",
-    "description": "API密钥。"
+    "message": "مفتاح API",
+    "description": "مفتاح API."
   },
   "field.service": {
     "message": "الخدمة",
-    "description": "应用的服务。"
+    "description": "خدمة الطلب."
   },
   "field.operation": {
     "message": "العملية",
-    "description": "应用的操作。"
+    "description": "عملية الطلب."
   },
   "field.amount": {
     "message": "الكمية",
-    "description": "应用的数量。"
+    "description": "كمية الطلب."
   },
   "field.traceId": {
     "message": "معرف التتبع",
-    "description": "API服务的应用的一个API调用的跟踪ID，不要翻译，保持为'跟踪ID'。"
+    "description": "معرف التتبع لطلب API، لا تترجم، احتفظ به كـ 'معرف التتبع'."
   },
   "field.shouldPayPrice": {
     "message": "السعر النهائي",
-    "description": "应用的最终价格。"
+    "description": "السعر النهائي للطلب."
   },
   "field.api": {
-    "message": "واجهة برمجة التطبيقات (API)",
-    "description": "这是一种在线服务，形式是通过API向用户提供服务。"
+    "message": "API",
+    "description": "هذه خدمة عبر الإنترنت، تقدم خدمات للمستخدمين عبر API."
   },
   "field.proxy": {
     "message": "وكيل",
-    "description": "这是一种在线服务，形式是通过HTTP代理（用于传输数据）向用户提供服务。"
+    "description": "هذه خدمة عبر الإنترنت، تقدم خدمات للمستخدمين عبر وكيل HTTP (لنقل البيانات)."
   },
   "field.credential": {
-    "message": "إثبات",
-    "description": "应用的凭据。"
+    "message": "البيانات الاعتمادية",
+    "description": "البيانات الاعتمادية للطلب."
   },
   "field.name": {
     "message": "الاسم",
-    "description": "应用的名称。"
+    "description": "اسم الطلب."
   },
   "field.package": {
-    "message": "الحزمة",
-    "description": "套餐表示不同的价格套餐，比如100美元可获得10000积分，200美元可获得20000积分。"
+    "message": "الباقة",
+    "description": "الباقة تمثل باقات الأسعار المختلفة، مثل 100 دولار تحصل على 10000 نقطة، و200 دولار تحصل على 20000 نقطة."
   },
   "field.type": {
     "message": "النوع",
-    "description": "应用的类型。"
+    "description": "نوع الطلب."
   },
   "field.freeAmount": {
     "message": "الكمية المجانية",
-    "description": "应用的免费数量。"
+    "description": "الكمية المجانية للطلب."
   },
   "field.extraPrice": {
-    "message": "السعر الإضافي",
-    "description": "用户应支付的应用的额外价格。"
+    "message": "السعر",
+    "description": "السعر الإضافي الذي يجب على المستخدم دفعه للطلب."
   },
   "message.alreadyApplied": {
-    "message": "لقد قمت بتقديم الطلب بالفعل لهذه الخدمة، يرجى التحقق من لوحة التحكم",
-    "description": "当用户已经申请了此服务时向用户显示的消息。"
+    "message": "لقد قدمت لهذا الخدمة، يرجى مراجعة لوحة التحكم",
+    "description": "الرسالة المعروضة للمستخدم عندما يقدم بالفعل لهذه الخدمة."
   },
   "message.applySuccessfully": {
-    "message": "تم التقديم بنجاح",
-    "description": "当用户成功申请了此服务时向用户显示的消息。"
+    "message": "تم تقديم الطلب بنجاح",
+    "description": "الرسالة المعروضة للمستخدم عندما يقدم بنجاح لهذه الخدمة."
   },
   "message.notApplied": {
-    "message": "لم تقم بتقديم الطلب لهذه الخدمة بعد، يرجى تقديم الطلب قبل الاستخدام",
-    "description": "当用户尚未申请此服务时向用户显示的消息。"
+    "message": "لم تقم بتقديم طلب لهذه الخدمة، يرجى تقديم الطلب قبل الاستخدام",
+    "description": "الرسالة المعروضة للمستخدم عندما لا يقدم طلب لهذه الخدمة."
   },
   "message.yourApplication": {
     "message": "طلبك",
-    "description": "当用户的申请时向用户显示的消息。"
+    "description": "الرسالة المعروضة للمستخدم عند تقديم الطلب."
   },
   "message.unverified": {
-    "message": "يجب عليك استكمال التحقق من الهوية قبل تقديم الطلب لهذه الخدمة",
-    "description": "当用户尚未完成实名认证时向用户显示的消息。"
+    "message": "تحتاج إلى إكمال المصادقة الحقيقية قبل أن تتمكن من تقديم طلب لهذه الخدمة",
+    "description": "الرسالة المعروضة للمستخدم عندما لا يكمل المصادقة الحقيقية."
   },
   "message.goVerify": {
-    "message": "الانتقال للتحقق من الهوية",
-    "description": "当用户尚未完成实名认证时向用户显示的消息。"
+    "message": "انتقل إلى المصادقة الحقيقية",
+    "description": "الرسالة المعروضة للمستخدم عندما لا يكمل المصادقة الحقيقية."
   },
   "message.requiredParameter": {
-    "message": "المعلمة مطلوبة",
-    "description": "当用户尚未输入必填参数时向用户显示的消息。"
+    "message": "المعلمة المطلوبة",
+    "description": "الرسالة المعروضة للمستخدم عندما لا يدخل معلمة مطلوبة."
   },
   "message.example": {
     "message": "مثال",
-    "description": "当用户尚未输入必填参数时向用户显示的消息。"
+    "description": "الرسالة المعروضة للمستخدم عندما لا يدخل معلمة مطلوبة."
   },
   "message.createCredentialSuccessfully": {
-    "message": "تم إنشاء الإثبات بنجاح",
-    "description": "当用户成功创建凭据时向用户显示的消息。"
+    "message": "تم إنشاء البيانات الاعتمادية بنجاح",
+    "description": "الرسالة المعروضة للمستخدم عندما ينشئ البيانات الاعتمادية بنجاح."
   },
   "message.readPolicy": {
-    "message": "لقد قرأت ووافقت على",
-    "description": "当用户已阅读并同意政策时向用户显示的消息。"
+    "message": "لقد قرأت ووافقت",
+    "description": "الرسالة المعروضة للمستخدم عندما يقرأ ويوافق على السياسة."
   },
   "message.policy": {
-    "message": "اتفاقية استخدام خدمات التكنولوجيا البيانات",
-    "description": "当用户已阅读并同意政策时向用户显示的消息。"
+    "message": "اتفاقية استخدام خدمات تكنولوجيا البيانات",
+    "description": "الرسالة المعروضة للمستخدم عندما يقرأ ويوافق على السياسة."
   },
   "message.notAgreePolicy": {
-    "message": "لم توافق بعد على اتفاقية استخدام خدمات التكنولوجيا البيانات",
-    "description": "当用户尚未同意政策时向用户显示的消息。"
+    "message": "لم توافق بعد على اتفاقية استخدام خدمات تكنولوجيا البيانات",
+    "description": "الرسالة المعروضة للمستخدم عندما لا يوافق على السياسة."
   },
   "message.confirmApplying": {
     "message": "تأكيد تقديم الطلب للخدمة",
-    "description": "当用户确认服务申请时向用户显示的消息。"
+    "description": "الرسالة المعروضة للمستخدم عند تأكيد تقديم الطلب."
   },
   "message.rotateCredential": {
     "message": "إعادة تعيين المفتاح",
-    "description": "当用户重置密钥时向用户显示的消息。"
+    "description": "عندما يقوم المستخدم بإعادة تعيين المفتاح، الرسالة المعروضة للمستخدم."
   },
   "message.rotateCredentialConfirm": {
-    "message": "هل أنت متأكد أنك تريد إعادة تعيين المفتاح؟ لا يمكن استعادته بعد الإعادة",
-    "description": "عند تأكيد المستخدم على إعادة تعيين المفتاح، يتم عرض هذه الرسالة للمستخدم."
+    "message": "هل أنت متأكد أنك تريد إعادة تعيين المفتاح؟ لن يمكن استعادته بعد إعادة التعيين",
+    "description": "عندما يؤكد المستخدم إعادة تعيين المفتاح، الرسالة المعروضة للمستخدم."
   },
   "message.idDoesNotExist": {
-    "message": "التطبيق غير موجود",
-    "description": "عند عدم وجود التطبيق، يتم عرض هذه الرسالة للمستخدم."
+    "message": "الطلب غير موجود",
+    "description": "عندما يكون الطلب غير موجود، الرسالة المعروضة للمستخدم."
   },
   "message.rotateCredentialSuccessfully": {
     "message": "تمت إعادة تعيين المفتاح بنجاح",
-    "description": "عند نجاح إعادة تعيين المفتاح، يتم عرض هذه الرسالة للمستخدم."
+    "description": "عندما يتم إعادة تعيين المفتاح بنجاح، الرسالة المعروضة للمستخدم."
   },
   "message.rotateCredentialFailed": {
     "message": "فشلت إعادة تعيين المفتاح، يرجى الاتصال بالدعم",
-    "description": "عند فشل إعادة تعيين المفتاح، يتم عرض هذه الرسالة للمستخدم."
+    "description": "عندما تفشل إعادة تعيين المفتاح، الرسالة المعروضة للمستخدم."
   },
   "message.updateFailed": {
-    "message": "فشل التحديث",
-    "description": "عند فشل التحديث، يتم عرض هذه الرسالة للمستخدم."
+    "message": "فشل التعديل",
+    "description": "عندما يفشل التعديل، الرسالة المعروضة للمستخدم."
   },
   "message.updateSuccessfully": {
-    "message": "تم التحديث بنجاح",
-    "description": "عند نجاح التحديث، يتم عرض هذه الرسالة للمستخدم."
+    "message": "تم التعديل بنجاح",
+    "description": "عندما يتم التعديل بنجاح، الرسالة المعروضة للمستخدم."
   },
   "title.buyService": {
     "message": "شراء الخدمة",
-    "description": "عندما يرغب المستخدم في شراء الخدمة، عنوان الصفحة."
+    "description": "عنوان الصفحة عندما يرغب المستخدم في شراء الخدمة."
   },
   "title.applicationRemainingCount": {
-    "message": "تعديل العدد",
-    "description": "عندما يرغب المستخدم في تعديل عدد التطبيقات، عنوان الصفحة."
+    "message": "عدد التعديلات المتبقية",
+    "description": "عنوان الصفحة عندما يرغب المستخدم في تعديل عدد الطلبات."
   },
   "title.manageApplication": {
-    "message": "إدارة التطبيق",
-    "description": "عندما يرغب المستخدم في إدارة التطبيقات، عنوان الصفحة."
+    "message": "إدارة الطلبات",
+    "description": "عنوان الصفحة عندما يرغب المستخدم في إدارة الطلبات."
   }
 }

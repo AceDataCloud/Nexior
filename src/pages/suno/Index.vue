@@ -118,9 +118,9 @@ export default defineComponent({
       console.debug('end onGetService');
     },
     async onGetApplication() {
-      console.debug('start onGetApplication');
-      await this.$store.dispatch('suno/getApplication');
-      console.debug('end onGetApplication');
+      console.debug('start onGetApplications');
+      await this.$store.dispatch('suno/getApplications');
+      console.debug('end onGetApplications');
       await this.onGetTasks();
     },
     onApply() {

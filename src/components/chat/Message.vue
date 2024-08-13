@@ -60,7 +60,7 @@ import {
   ERROR_CODE_USED_UP,
   ROLE_ASSISTANT
 } from '@/constants';
-import { ROUTE_CONSOLE_APPLICATION_BUY } from '@/router';
+import { ROUTE_CONSOLE_APPLICATION_EXTRA } from '@/router';
 
 interface IData {
   copied: boolean;
@@ -135,7 +135,7 @@ export default defineComponent({
     },
     onBuyMore() {
       this.$router.push({
-        name: ROUTE_CONSOLE_APPLICATION_BUY,
+        name: ROUTE_CONSOLE_APPLICATION_EXTRA,
         params: {
           id: this.application?.id
         }

@@ -1,19 +1,31 @@
 {
+  "type.period": {
+    "message": "周期",
+    "description": "服務的周期。"
+  },
+  "type.usage": {
+    "message": "額度",
+    "description": "服務的額度。"
+  },
+  "field.expiredAt": {
+    "message": "過期時間",
+    "description": "申請的過期時間。"
+  },
   "button.goDocument": {
-    "message": "文件",
-    "description": "按鈕文本，點擊此按鈕將轉到文件頁面。"
+    "message": "文檔",
+    "description": "按鈕文本，點擊此按鈕將轉到文檔頁面。"
   },
   "button.goCredentials": {
-    "message": "憑證",
-    "description": "按鈕文本，點擊此按鈕將轉到憑證頁面。"
+    "message": "憑據",
+    "description": "按鈕文本，點擊此按鈕將轉到憑據頁面。"
   },
   "button.buyMore": {
     "message": "購買更多",
     "description": "按鈕文本，點擊此按鈕將轉到購買更多頁面。"
   },
   "button.createOrder": {
-    "message": "建立訂單",
-    "description": "按鈕文本，點擊此按鈕將轉到建立訂單頁面。"
+    "message": "創建訂單",
+    "description": "按鈕文本，點擊此按鈕將轉到創建訂單頁面。"
   },
   "button.custom": {
     "message": "自訂",
@@ -28,48 +40,48 @@
     "description": "按鈕文本，點擊此按鈕將轉到使用記錄頁面。"
   },
   "field.application": {
-    "message": "應用",
-    "description": "服務的應用。"
+    "message": "申請",
+    "description": "服務的申請。"
   },
   "field.status": {
     "message": "狀態",
-    "description": "應用的狀態。"
+    "description": "申請的狀態。"
   },
   "field.id": {
-    "message": "應用ID",
-    "description": "應用的ID。"
+    "message": "申請ID",
+    "description": "申請的ID。"
   },
   "field.remainingAmount": {
     "message": "剩餘數量",
-    "description": "應用的剩餘數量。"
+    "description": "申請的剩餘數量。"
   },
   "field.usedAmount": {
     "message": "已使用數量",
-    "description": "應用的已使用數量。"
+    "description": "申請的已使用數量。"
   },
   "field.apiKey": {
-    "message": "API金鑰",
-    "description": "API金鑰。"
+    "message": "API密鑰",
+    "description": "API密鑰。"
   },
   "field.service": {
     "message": "服務",
-    "description": "應用的服務。"
+    "description": "申請的服務。"
   },
   "field.operation": {
     "message": "操作",
-    "description": "應用的操作。"
+    "description": "申請的操作。"
   },
   "field.amount": {
     "message": "數量",
-    "description": "應用的數量。"
+    "description": "申請的數量。"
   },
   "field.traceId": {
-    "message": "追踪ID",
-    "description": "API服務的應用的一個API調用的追踪ID，不要翻譯，保持為'追踪ID'。"
+    "message": "跟踪ID",
+    "description": "API服務的申請的個API調用的跟踪ID，不要翻譯，保持為'跟踪ID'。"
   },
   "field.shouldPayPrice": {
     "message": "最終價格",
-    "description": "應用的最終價格。"
+    "description": "申請的最終價格。"
   },
   "field.api": {
     "message": "API",
@@ -80,28 +92,28 @@
     "description": "這是一種線上服務，形式是通過HTTP代理（用於傳輸數據）向用戶提供服務。"
   },
   "field.credential": {
-    "message": "憑證",
-    "description": "應用的憑證。"
+    "message": "憑據",
+    "description": "申請的憑據。"
   },
   "field.name": {
     "message": "名稱",
-    "description": "應用的名稱。"
+    "description": "申請的名稱。"
   },
   "field.package": {
     "message": "套餐",
-    "description": "套餐表示不同的價格套餐，例如100美元可獲得10000積分，200美元可獲得20000積分。"
+    "description": "套餐表示不同的價格套餐，比如100美元可獲得10000積分，200美元可獲得20000積分。"
   },
   "field.type": {
     "message": "類型",
-    "description": "應用的類型。"
+    "description": "申請的類型。"
   },
   "field.freeAmount": {
     "message": "免費數量",
-    "description": "應用的免費數量。"
+    "description": "申請的免費數量。"
   },
   "field.extraPrice": {
     "message": "價格",
-    "description": "用戶應支付的應用的額外價格。"
+    "description": "用戶應支付的申請的額外價格。"
   },
   "message.alreadyApplied": {
     "message": "您已經申請了此服務，請查看控制台",
@@ -132,23 +144,23 @@
     "description": "當用戶尚未輸入必填參數時向用戶顯示的消息。"
   },
   "message.example": {
-    "message": "範例",
+    "message": "示例",
     "description": "當用戶尚未輸入必填參數時向用戶顯示的消息。"
   },
   "message.createCredentialSuccessfully": {
-    "message": "成功建立憑證",
-    "description": "當用戶成功建立憑證時向用戶顯示的消息。"
+    "message": "成功創建憑據",
+    "description": "當用戶成功創建憑據時向用戶顯示的消息。"
   },
   "message.readPolicy": {
     "message": "我已閱讀並同意",
     "description": "當用戶已閱讀並同意政策時向用戶顯示的消息。"
   },
   "message.policy": {
-    "message": "資料技術服務使用協議",
+    "message": "數據技術服務使用協議",
     "description": "當用戶已閱讀並同意政策時向用戶顯示的消息。"
   },
   "message.notAgreePolicy": {
-    "message": "您尚未同意資料技術服務使用協議",
+    "message": "您尚未同意數據技術服務使用協議",
     "description": "當用戶尚未同意政策時向用戶顯示的消息。"
   },
   "message.confirmApplying": {
@@ -156,43 +168,43 @@
     "description": "當用戶確認服務申請時向用戶顯示的消息。"
   },
   "message.rotateCredential": {
-    "message": "重置金鑰",
-    "description": "當用戶重置金鑰時向用戶顯示的消息。"
+    "message": "重置密鑰",
+    "description": "當用戶重置密鑰時向用戶顯示的消息。"
   },
   "message.rotateCredentialConfirm": {
-    "message": "您確定要重設憑證嗎？重設後將無法恢復",
-    "description": "當使用者確認重設憑證時向使用者顯示的訊息。"
+    "message": "您確定要重置密鑰嗎？重置後將無法恢復",
+    "description": "當用戶確認重置密鑰時向用戶顯示的消息。"
   },
   "message.idDoesNotExist": {
-    "message": "應用程式不存在",
-    "description": "當應用程式不存在時向使用者顯示的訊息。"
+    "message": "申請不存在",
+    "description": "當申請不存在時向用戶顯示的消息。"
   },
   "message.rotateCredentialSuccessfully": {
-    "message": "憑證重設成功",
-    "description": "當憑證重設成功時向使用者顯示的訊息。"
+    "message": "密鑰重置成功",
+    "description": "當密鑰重置成功時向用戶顯示的消息。"
   },
   "message.rotateCredentialFailed": {
-    "message": "憑證重設失敗，請聯絡處理",
-    "description": "當憑證重設失敗時向使用者顯示的訊息。"
+    "message": "密鑰重置失敗，請聯絡處理",
+    "description": "當密鑰重置失敗時向用戶顯示的消息。"
   },
   "message.updateFailed": {
     "message": "修改失敗",
-    "description": "當修改失敗時向使用者顯示的訊息。"
+    "description": "當修改失敗時向用戶顯示的消息。"
   },
   "message.updateSuccessfully": {
     "message": "修改成功",
-    "description": "當修改成功時向使用者顯示的訊息。"
+    "description": "當修改成功時向用戶顯示的消息。"
   },
   "title.buyService": {
     "message": "購買服務",
-    "description": "當使用者想要購買服務時頁面的標題。"
+    "description": "當用戶想要購買服務時頁面的標題。"
   },
   "title.applicationRemainingCount": {
     "message": "修改數量",
-    "description": "當使用者想要修改應用程式數量時頁面的標題。"
+    "description": "當用戶想要修改申請數量時頁面的標題。"
   },
   "title.manageApplication": {
-    "message": "應用程式管理",
-    "description": "當使用者想要管理應用程式時頁面的標題。"
+    "message": "申請管理",
+    "description": "當用戶想要管理申請時頁面的標題。"
   }
 }

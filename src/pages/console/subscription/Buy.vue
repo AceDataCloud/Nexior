@@ -9,7 +9,7 @@
       <el-row>
         <el-col :span="24">
           <el-card shadow="hover" class="card">
-            <el-row>
+            <el-row v-show="false">
               <el-col class="text-center">
                 <el-radio-group v-if="applicationId" v-model="type" size="large" class="mb-4" @change="onChangeType">
                   <el-radio-button label="Period">
@@ -66,6 +66,12 @@
                     </el-card>
                   </el-col>
                 </el-row>
+                <div v-if="!loading" class="extra">
+                  <span>{{ $t('console.message.doNotWantSubscribe') }}</span>
+                  <el-button type="primary" class="btn btn-extra" round size="small" @click="onBuyExtra">
+                    {{ $t('console.message.buyExtra') }}
+                  </el-button>
+                </div>
               </el-col>
             </el-row>
           </el-card>
@@ -96,7 +102,7 @@ import { MIDJOURNEY_SERVICE_ID } from '@/constants/midjourney';
 import { SUNO_SERVICE_ID } from '@/constants/suno';
 import { QRART_SERVICE_ID } from '@/constants/qrart';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_CONSOLE_APPLICATION_BUY, ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
+import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
 
 interface ISubscription {
   name: string;
@@ -206,6 +212,14 @@ export default defineComponent({
   },
   methods: {
     getPriceString,
+    onBuyExtra() {
+      this.$router.push({
+        name: ROUTE_CONSOLE_APPLICATION_EXTRA,
+        params: {
+          id: this.applicationId
+        }
+      });
+    },
     getPackages(duration: number): IPackage[] {
       let result = [];
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
@@ -240,7 +254,7 @@ export default defineComponent({
     onChangeType() {
       console.log('onChangeType', this.type);
       this.$router.push({
-        name: ROUTE_CONSOLE_APPLICATION_BUY,
+        name: ROUTE_CONSOLE_APPLICATION_EXTRA,
         params: this.$route.params
       });
     },
@@ -308,7 +322,6 @@ export default defineComponent({
 
   .introduction {
     font-size: 16px;
-    color: var(--el-text-color-secondary);
     margin-bottom: 20px;
   }
 
@@ -340,6 +353,7 @@ export default defineComponent({
   }
 
   .subscriptions {
+    margin-bottom: 20px;
     .subscription {
       border: 1px solid var(--el-border-color) !important;
       .benefits {
@@ -363,6 +377,10 @@ export default defineComponent({
         }
       }
     }
+  }
+
+  .extra {
+    font-size: 14px;
   }
 }
 

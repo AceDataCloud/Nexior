@@ -1,46 +1,94 @@
 {
+  "button.suggested": {
+    "message": "Rekommenderad",
+    "description": "Knapptext, rekommenderad anger en knapp för rekommendation"
+  },
   "menu.orderList": {
-    "message": "Orderlista",
-    "description": "Text i menyn på webbplatsen, order representerar användarens köp av tjänster"
+    "message": "Beställningslista",
+    "description": "Text i webbplatsens meny, beställning anger användarens beställningar av tjänster"
   },
   "menu.applicationList": {
     "message": "Ansökningslista",
-    "description": "Text i menyn på webbplatsen, ansökan representerar användarens användning av tjänster"
+    "description": "Text i webbplatsens meny, ansökan anger användarens ansökningar om tjänster"
   },
   "menu.userProfile": {
     "message": "Användarprofil",
-    "description": "Text i menyn på webbplatsen, användarprofil representerar användarens personliga information"
+    "description": "Text i webbplatsens meny, användarprofil anger användarens personliga profil"
   },
   "menu.idVerify": {
-    "message": "ID-verifiering",
-    "description": "Text i menyn på webbplatsen, ID-verifiering representerar verifiering av användarens identitet"
+    "message": "Identitetsverifiering",
+    "description": "Text i webbplatsens meny, identitetsverifiering anger verifiering av användarens identitet"
   },
   "menu.manageApplication": {
-    "message": "Hantera ansökan",
-    "description": "Text i menyn på webbplatsen, hantera ansökan representerar hantering av användarens ansökan"
+    "message": "Hantera ansökningar",
+    "description": "Text i webbplatsens meny, hantera ansökningar anger hanteringen av användarens ansökningar"
   },
   "menu.distributionIndex": {
-    "message": "Rekommenderad inkomst",
-    "description": "Text i menyn på webbplatsen, rekommenderad inkomst representerar användarens rekommenderade inkomst"
+    "message": "Rekommendationsintäkter",
+    "description": "Text i webbplatsens meny, rekommendationsintäkter anger intäkterna från användarens rekommendationer"
   },
   "menu.developerPlatform": {
     "message": "Utvecklarplattform",
-    "description": "Text i menyn på webbplatsen, utvecklarplattform representerar utvecklarens plattform"
+    "description": "Text i webbplatsens meny, utvecklarplattform anger plattformen för utvecklare"
   },
   "menu.usageList": {
     "message": "Användningshistorik",
-    "description": "Text i menyn på webbplatsen, användningshistorik representerar användarens historik av API-tjänsternas användning"
+    "description": "Text i webbplatsens meny, användningshistorik anger historiken för användningen av API-tjänster"
   },
   "menu.credentialIndex": {
-    "message": "Legitimation",
-    "description": "Text i menyn på webbplatsen, legitimation representerar åtkomstlegitimation för API"
+    "message": "Behörigheter",
+    "description": "Text i webbplatsens meny, behörigheter anger behörigheterna för att få åtkomst till API"
   },
   "menu.manageOrder": {
-    "message": "Orderhantering",
-    "description": "Text i menyn på webbplatsen, orderhantering representerar hantering av användarens order, order representerar användarens köp av tjänster"
+    "message": "Hantering av beställningar",
+    "description": "Text i webbplatsens meny, hantering av beställningar anger hanteringen av användarens beställningar, beställning anger användarens beställningar av tjänster"
   },
   "menu.manageDistributionStatus": {
-    "message": "Hantera distributionsstatus",
-    "description": "Text i menyn på webbplatsen, hantera distributionsstatus representerar hantering av användarens distributionsstatus, relaterat till användarens rekommenderade inkomst"
+    "message": "Hantering av distributionsstatus",
+    "description": "Text i webbplatsens meny, hantering av distributionsstatus anger hanteringen av användarens distributionsstatus, relaterat till användarens rekommendationsintäkter"
+  },
+  "message.benefit1": {
+    "message": "Exklusiv kundsupport",
+    "description": "Text på webbplatsens startsida, exklusiv kundsupport anger att användaren kan få exklusiv kundsupport"
+  },
+  "message.benefit2": {
+    "message": "Prioriterad åtkomst till nya funktioner",
+    "description": "Text på webbplatsens startsida, prioriterad åtkomst till nya funktioner anger att användaren kan prioritera nya funktioner"
+  },
+  "message.buyExtra": {
+    "message": "Köp mer",
+    "description": "Text på webbplatsens startsida, köp mer anger att användaren kan köpa mer kapacitet"
+  },
+  "message.doNotWantSubscribe": {
+    "message": "Vill du inte prenumerera på hela webbplatsens medlemskap? Du kan också prova att köpa kapacitet för enstaka tjänster.",
+    "description": "Text på webbplatsens startsida, vill du inte prenumerera anger att användaren inte vill prenumerera på medlemskap"
+  },
+  "subscription.weekly": {
+    "message": "Veckoprenumeration",
+    "description": "Medlemstyp, veckoprenumeration anger att användarens köpta medlemmstyp är veckoprenumeration"
+  },
+  "subscription.monthly": {
+    "message": "Månadsprenumeration",
+    "description": "Medlemstyp, månadsprenumeration anger att användarens köpta medlemmstyp är månadsprenumeration"
+  },
+  "subscription.yearly": {
+    "message": "Årsprenumeration",
+    "description": "Medlemstyp, årsprenumeration anger att användarens köpta medlemmstyp är årsprenumeration"
+  },
+  "subscription.weekly.description": {
+    "message": "Provveckoprenumeration, lämplig för kortvarig användning.",
+    "description": "Beskrivning av medlemstyp, veckoprenumeration anger att användarens köpta medlemstyp är veckoprenumeration"
+  },
+  "subscription.monthly.description": {
+    "message": "Flexibel månadsprenumeration, lämplig för långvarig användning.",
+    "description": "Beskrivning av medlemstyp, månadsprenumeration anger att användarens köpta medlemstyp är månadsprenumeration"
+  },
+  "subscription.yearly.description": {
+    "message": "Otrolig årsprenumeration, det mest kostnadseffektiva valet.",
+    "description": "Beskrivning av medlemstyp, årsprenumeration anger att användarens köpta medlemstyp är årsprenumeration"
+  },
+  "subscription.introduction": {
+    "message": "Prenumerera på medlemskap och lås upp alla AI-tjänster.",
+    "description": "Introduktion av medlemskap anger introduktionen av medlemskapet"
   }
 }

@@ -9,7 +9,7 @@
       <el-row>
         <el-col :span="24">
           <el-card shadow="hover">
-            <el-row>
+            <el-row v-show="false">
               <el-col class="text-center">
                 <el-radio-group v-if="applicationId" v-model="type" size="large" class="mb-4" @change="onChangeType">
                   <el-radio-button label="Period">
@@ -99,7 +99,7 @@ import {
   ElRadioGroup,
   ElRadioButton
 } from 'element-plus';
-import { ROUTE_CONSOLE_ORDER_DETAIL, ROUTE_CONSOLE_SUBSCRIPTION_BUY } from '@/router';
+import { ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
 import Price from '@/components/common/Price.vue';
 import { applicationOperator, orderOperator } from '@/operators';
 import { getPriceString } from '@/utils';
