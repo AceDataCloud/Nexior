@@ -16,8 +16,11 @@
             v-for="(message, messageIndex) in messages"
             :key="messageIndex"
             :message="message"
+            :question="question"
             :application="application"
             class="message"
+            @update:question="question = $event"
+            @submit="onSubmit"
           />
         </div>
       </div>
@@ -163,6 +166,7 @@ export default defineComponent({
       await this.onCreateNewConversation();
       await this.$store.dispatch('chat/getApplication');
     },
+    // Send a message
     async onSubmit() {
       if (this.references.length > 0) {
         let content = [];
