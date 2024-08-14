@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Wed, 14 Aug 2024 04:06:01 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Aug 2024 08:41:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.6.0
+
+Wed, 14 Aug 2024 08:41:03 GMT
+
+### Minor changes
+
+- add edit chat (1348977728@qq.com)
 
 ## 2.5.1
 
