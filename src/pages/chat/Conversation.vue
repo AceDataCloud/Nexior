@@ -103,13 +103,13 @@ export default defineComponent({
       return this.$store.state.chat?.credential;
     },
     needApply() {
-      return this.$store.state.chat.status.getApplication === Status.Success && !this.application;
+      return this.$store.state.chat.status.getApplications === Status.Success && !this.application;
     },
     conversations() {
       return this.$store.state.chat.conversations;
     },
     initializing() {
-      return this.$store.state.chat.status.getApplication === Status.Request;
+      return this.$store.state.chat.status.getApplications === Status.Request;
     }
   },
   watch: {

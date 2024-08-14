@@ -72,10 +72,10 @@ export default defineComponent({
       return this.$store.state.suno.config;
     },
     initializing() {
-      return this.$store.state.suno.status.getApplication === Status.Request;
+      return this.$store.state.suno.status.getApplications === Status.Request;
     },
     needApply() {
-      return this.$store.state.suno.status.getApplication === Status.Success && !this.application;
+      return this.$store.state.suno.status.getApplications === Status.Success && !this.application;
     },
     application() {
       return this.$store.state.suno.application;
