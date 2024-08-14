@@ -48,13 +48,12 @@
             @keydown.enter.exact.prevent="sendEdit"
           ></el-input>
           <div class="button-group">
-            <el-button size="small" class="cancel-button" @click="cancelEdit">取消</el-button>
-            <el-button type="primary" size="small" class="send-button" @click="sendEdit">发送</el-button>
+            <el-button size="small" round @click="cancelEdit">{{ $t('common.button.cancel') }}</el-button>
+            <el-button type="primary" size="small" round @click="sendEdit">{{ $t('common.button.confirm') }}</el-button>
           </div>
         </div>
         <answering-mark v-if="message.state === messageState.PENDING" />
       </div>
-
       <div class="operations">
         <copy-to-clipboard v-if="!Array.isArray(message.content)" :content="message.content!" class="btn-copy" />
       </div>
@@ -270,6 +269,7 @@ export default defineComponent({
         // background-color: var(--el-bg-color-page);
         // color: var(--el-text-color-primary);
         padding: 10px;
+        min-width: 400px;
         width: 100%;
         height: 100%;
         .chat-input {
@@ -282,23 +282,6 @@ export default defineComponent({
           position: absolute;
           bottom: 10px;
           right: 10px;
-          .cancel-button {
-            // background-color: #333;
-            // color: white;
-            background-color: var(--el-bg-color-page);
-            color: var(--el-text-color-primary);
-            border-radius: 20px;
-            // border: none;
-          }
-
-          .send-button {
-            // background-color: white;
-            // color: black;
-            background-color: var(--el-bg-color-page);
-            color: var(--el-text-color-primary);
-            border-radius: 20px;
-            // border: none;
-          }
         }
       }
     }
