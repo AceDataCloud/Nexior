@@ -196,6 +196,7 @@ export default defineComponent({
             id: conversationId,
             messages: this.messages
           });
+          console.debug('finished update conversation', this.messages);
           // 3. Send edited questions
 
           this.messages.push({
@@ -282,6 +283,7 @@ export default defineComponent({
     },
     // Get answers to questions
     async onFetchAnswer() {
+      console.debug('start to get answer', this.messages);
       const token = this.credential?.token;
       const question = this.question;
       const references = this.references;
