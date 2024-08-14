@@ -108,8 +108,10 @@ import {
   ROUTE_INDEX,
   ROUTE_MIDJOURNEY_INDEX,
   ROUTE_QRART_INDEX,
-  ROUTE_SUNO_INDEX,
   ROUTE_QRART_HISTORY,
+  ROUTE_LUMA_INDEX,
+  ROUTE_LUMA_HISTORY,
+  ROUTE_SUNO_INDEX,
   ROUTE_SUNO_HISTORY,
   ROUTE_SITE_INDEX
 } from '@/router/constants';
@@ -198,6 +200,17 @@ export default defineComponent({
           displayName: this.$t('common.nav.suno'),
           icon: 'fa-solid fa-music',
           routes: [ROUTE_SUNO_INDEX, ROUTE_SUNO_HISTORY]
+        });
+      }
+      // Add luma's leftmost icon
+      if (this.$store?.state?.site?.features?.luma?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_LUMA_INDEX
+          },
+          displayName: this.$t('common.nav.luma'),
+          icon: 'fa-solid fa-video',
+          routes: [ROUTE_LUMA_INDEX, ROUTE_LUMA_HISTORY]
         });
       }
 

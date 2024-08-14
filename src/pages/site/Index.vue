@@ -174,7 +174,7 @@
             <el-divider />
             <el-form :model="site" class="form" label-width="auto" style="max-width: 600px">
               <el-form-item
-                v-for="(feature, featureIndex) in ['chat', 'midjourney', 'qrart', 'suno', 'support']"
+                v-for="(feature, featureIndex) in ['chat', 'midjourney', 'qrart', 'suno', 'luma', 'support']"
                 :key="featureIndex"
                 :label="$t('site.field.features' + feature.charAt(0).toUpperCase() + feature.slice(1))"
               >

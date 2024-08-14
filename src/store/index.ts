@@ -4,6 +4,7 @@ import midjourney from './midjourney';
 import chat from './chat';
 import chatdoc from './chatdoc';
 import qrart from './qrart';
+import luma from './luma';
 import suno from './suno';
 import root from './common';
 import persistChat from './chat/persist';
@@ -19,6 +20,7 @@ const store = createStore({
     midjourney: midjourney,
     chat: chat,
     qrart: qrart,
+    luma: luma,
     suno: suno,
     chatdoc: chatdoc
   },

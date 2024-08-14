@@ -11,6 +11,8 @@ import {
 import { faDiscord as faBrandsDiscord, faWeixin as faBrandsWeixin } from '@fortawesome/free-brands-svg-icons';
 import {
   faDownload as faSolidDownload,
+  faPlay as faSolidPlay,
+  faVideo as faSolidVideo,
   faMusic as faSolidMusic,
   faLanguage as faSolidLanguage,
   faUser as faSolidUser,
@@ -73,6 +75,9 @@ import {
   faWandMagic as faSolidWandMagic,
   faAngleDown as faSolidAngleDown
 } from '@fortawesome/free-solid-svg-icons';
+// add icons
+library.add(faSolidPlay);
+library.add(faSolidVideo);
 library.add(faSolidMusic);
 library.add(faRegularCopy);
 library.add(faRegularMessage);
