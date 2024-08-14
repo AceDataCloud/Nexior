@@ -109,10 +109,6 @@ export default defineComponent({
     ElInput
   },
   props: {
-    question: {
-      type: String,
-      required: true
-    },
     message: {
       type: Object as () => IChatMessage,
       required: true
@@ -122,7 +118,7 @@ export default defineComponent({
       required: true
     }
   },
-  emits: ['stop', 'update:question', 'submit'],
+  emits: ['stop', 'update:messages', 'edit'],
   data(): IData {
     return {
       copied: false,
@@ -160,20 +156,12 @@ export default defineComponent({
       return this.message.role === ROLE_ASSISTANT && this.message.error?.code === ERROR_CODE_USED_UP;
     }
   },
-  watch: {
-    questionValue(val: string) {
-      this.$emit('update:question', val);
-    },
-    question(val: string) {
-      if (val !== this.questionValue) {
-        this.questionValue = val;
-      }
-    }
-  },
+  watch: {},
   methods: {
     startEditing() {
       this.isEditing = true;
       this.questionValue = this.message.content as string;
+      console.debug('start to get answer', this.message);
     },
     cancelEdit() {
       this.isEditing = false;
@@ -184,10 +172,7 @@ export default defineComponent({
       this.onSubmit();
     },
     onSubmit() {
-      if (!this.question) {
-        return;
-      }
-      this.$emit('submit');
+      this.$emit('edit', this.message, this.questionValue);
     },
     onCopy() {
       copy(this.message.content!.toString(), {
