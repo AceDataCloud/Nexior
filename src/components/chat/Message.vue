@@ -16,20 +16,45 @@
     </div>
     <div v-if="!errorText" class="main">
       <div class="content">
-        <markdown-renderer v-if="!Array.isArray(message.content)" :content="message?.content" />
-        <div v-else>
-          <div v-for="(item, index) in message.content" :key="index">
-            <img
-              v-if="item.type === 'image_url'"
-              :src="typeof item?.image_url === 'string' ? item.image_url : item.image_url?.url"
-              fit="cover"
-              class="image"
-            />
-            <markdown-renderer v-if="item.type === 'text'" :key="index" :content="item.text" />
+        <div class="edit-left">
+          <el-tooltip
+            v-if="message.role === 'user' && !isEditing"
+            effect="dark"
+            :content="$t('chat.button.edit')"
+            placement="bottom"
+          >
+            <font-awesome-icon icon="fa-solid fa-edit" class="icon icon-edit" @click="startEditing" />
+          </el-tooltip>
+        </div>
+        <div v-if="!isEditing" class="message-content">
+          <markdown-renderer v-if="!Array.isArray(message.content)" :content="message?.content" />
+          <div v-else>
+            <div v-for="(item, index) in message.content" :key="index">
+              <img
+                v-if="item.type === 'image_url'"
+                :src="typeof item?.image_url === 'string' ? item.image_url : item.image_url?.url"
+                fit="cover"
+                class="image"
+              />
+              <markdown-renderer v-if="item.type === 'text'" :key="index" :content="item.text" />
+            </div>
+          </div>
+        </div>
+        <div v-else class="chat-container">
+          <el-input
+            v-model="questionValue"
+            type="textarea"
+            class="chat-input"
+            @keydown.enter.exact.prevent="sendEdit"
+          ></el-input>
+          <div class="button-group">
+            <el-button size="small" class="cancel-button" @click="cancelEdit">取消</el-button>
+            <el-button type="primary" size="small" class="send-button" @click="sendEdit">发送</el-button>
           </div>
         </div>
         <answering-mark v-if="message.state === messageState.PENDING" />
       </div>
+
       <div class="operations">
         <copy-to-clipboard v-if="!Array.isArray(message.content)" :content="message.content!" class="btn-copy" />
       </div>
@@ -45,8 +70,9 @@
 import { defineComponent } from 'vue';
 import AnsweringMark from './AnsweringMark.vue';
 import copy from 'copy-to-clipboard';
-import { ElAlert, ElButton, ElImage } from 'element-plus';
+import { ElAlert, ElButton, ElImage, ElTooltip, ElInput } from 'element-plus';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IApplication, IChatMessage, IChatMessageState } from '@/models';
 import CopyToClipboard from '../common/CopyToClipboard.vue';
 import {
@@ -64,6 +90,8 @@ import { ROUTE_CONSOLE_APPLICATION_BUY } from '@/router';
 
 interface IData {
   copied: boolean;
+  isEditing: boolean;
+  questionValue: string;
   messageState: typeof IChatMessageState;
 }
 
@@ -75,7 +103,10 @@ export default defineComponent({
     MarkdownRenderer,
     ElAlert,
     ElButton,
-    ElImage
+    ElImage,
+    ElTooltip,
+    FontAwesomeIcon,
+    ElInput
   },
   props: {
     message: {
@@ -87,10 +118,12 @@ export default defineComponent({
       required: true
     }
   },
-  emits: ['stop'],
+  emits: ['stop', 'update:messages', 'edit'],
   data(): IData {
     return {
       copied: false,
+      isEditing: false,
+      questionValue: this.message.content as string,
       messageState: IChatMessageState
     };
   },
@@ -123,7 +156,24 @@ export default defineComponent({
       return this.message.role === ROLE_ASSISTANT && this.message.error?.code === ERROR_CODE_USED_UP;
     }
   },
+  watch: {},
   methods: {
+    startEditing() {
+      this.isEditing = true;
+      this.questionValue = this.message.content as string;
+      console.debug('start to get answer', this.message);
+    },
+    cancelEdit() {
+      this.isEditing = false;
+    },
+    sendEdit() {
+      // Implement the logic to save the edited content
+      this.isEditing = false;
+      this.onSubmit();
+    },
+    onSubmit() {
+      this.$emit('edit', this.message, this.questionValue);
+    },
     onCopy() {
       copy(this.message.content!.toString(), {
         debug: true
@@ -209,7 +259,48 @@ export default defineComponent({
       width: fit-content;
       text-align: left;
       max-width: 100%;
-      padding: 8px 15px;
+      position: relative;
+      .edit-left {
+        position: absolute;
+        left: -25px; /* Adjust as needed */
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .chat-container {
+        // background-color: var(--el-bg-color-page);
+        // color: var(--el-text-color-primary);
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+        .chat-input {
+          // background-color: var(--el-bg-color-page);
+          // color: var(--el-text-color-primary);
+          padding-bottom: 30px; /* 为按钮预留空间 */
+        }
+
+        .button-group {
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+          .cancel-button {
+            // background-color: #333;
+            // color: white;
+            background-color: var(--el-bg-color-page);
+            color: var(--el-text-color-primary);
+            border-radius: 20px;
+            // border: none;
+          }
+
+          .send-button {
+            // background-color: white;
+            // color: black;
+            background-color: var(--el-bg-color-page);
+            color: var(--el-text-color-primary);
+            border-radius: 20px;
+            // border: none;
+          }
+        }
+      }
     }
   }
   .content {
@@ -222,6 +313,18 @@ export default defineComponent({
       max-height: 300px;
       margin: 5px 0;
       border-radius: 10px;
+    }
+    .edit-area {
+      width: 100%;
+      min-height: 100px;
+      border-radius: 10px;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+    .edit-buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
     }
   }
 

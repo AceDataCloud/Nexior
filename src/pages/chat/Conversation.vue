@@ -16,8 +16,13 @@
             v-for="(message, messageIndex) in messages"
             :key="messageIndex"
             :message="message"
+            :messages="messages"
+            :question="question"
             :application="application"
             class="message"
+            @update:question="question = $event"
+            @update:messages="messages = $event"
+            @edit="onEdit"
           />
         </div>
       </div>
@@ -154,6 +159,80 @@ export default defineComponent({
       this.question = question;
       this.onSubmit();
     },
+    async onEdit(targetMessage: IChatMessage, questionValue: string) {
+      // 1. Clear the following message
+      const targetIndex = this.messages.findIndex((message) => message === targetMessage);
+      if (targetIndex !== -1) {
+        this.messages = this.messages.slice(0, targetIndex);
+      }
+      this.question = questionValue;
+      // 2. Update the messages
+      const token = this.credential?.token;
+      // reset question and references
+      if (!token) {
+        console.error('no token or endpoint or question');
+        this.messages.push({
+          error: {
+            code: ERROR_CODE_NOT_APPLIED
+          },
+          role: ROLE_ASSISTANT,
+          state: IChatMessageState.FAILED
+        });
+        return;
+      }
+      let conversationId = this.conversationId;
+      chatOperator
+        .updateConversation(
+          {
+            id: this.conversationId,
+            messages: this.messages
+          },
+          {
+            token
+          }
+        )
+        .then(async () => {
+          await this.$store.dispatch('chat/setConversation', {
+            id: conversationId,
+            messages: this.messages
+          });
+          // 3. Send edited questions
+
+          this.messages.push({
+            content: this.question,
+            role: ROLE_USER
+          });
+          console.debug('onEdit', this.question);
+          await this.onFetchAnswer();
+        })
+        .catch((error) => {
+          if (this.messages && this.messages.length > 0) {
+            this.messages[this.messages.length - 1].state = IChatMessageState.FAILED;
+          }
+          console.error(error);
+          if (axios.isCancel(error)) {
+            this.messages[this.messages.length - 1].error = {
+              code: ERROR_CODE_CANCELED
+            };
+          } else if (error?.response?.data) {
+            let data = error?.response?.data;
+            if (isJSONString(data)) {
+              data = JSON.parse(data);
+            }
+            console.debug('error', data);
+            if (this.messages && this.messages.length > 0) {
+              this.messages[this.messages.length - 1].error = data.error;
+            }
+          } else {
+            if (this.messages && this.messages.length > 0) {
+              this.messages[this.messages.length - 1].error = {
+                code: ERROR_CODE_UNKNOWN
+              };
+            }
+          }
+          this.answering = false;
+        });
+    },
     async onCreateNewConversation() {
       await this.$router.push({
         name: ROUTE_CHAT_CONVERSATION_NEW
@@ -163,6 +242,7 @@ export default defineComponent({
       await this.onCreateNewConversation();
       await this.$store.dispatch('chat/getApplication');
     },
+    // Send a message
     async onSubmit() {
       if (this.references.length > 0) {
         let content = [];
@@ -190,6 +270,7 @@ export default defineComponent({
       console.debug('onSubmit', this.question, this.references);
       await this.onFetchAnswer();
     },
+    // Swipe the message to the bottom
     async onScrollDown() {
       setTimeout(() => {
         const container = document.querySelector('.dialogue') as HTMLDivElement;
@@ -199,6 +280,7 @@ export default defineComponent({
         container.scrollTop = container?.scrollHeight;
       }, 0);
     },
+    // Get answers to questions
     async onFetchAnswer() {
       const token = this.credential?.token;
       const question = this.question;

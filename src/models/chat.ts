@@ -46,13 +46,13 @@ export interface IChatMessage {
 }
 
 export interface IChatConversation {
-  id: string;
-  messages: IChatMessage[];
+  id?: string;
+  messages?: IChatMessage[];
   title?: string;
   deleting?: boolean;
   editing?: boolean;
   new?: boolean;
-  updated_at: number;
+  updated_at?: number;
 }
 
 export interface IChatConversationOptions {
