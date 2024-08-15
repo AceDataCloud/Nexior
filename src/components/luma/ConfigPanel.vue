@@ -24,18 +24,8 @@
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import TypeSelector from './config/TypeSelector.vue';
-import StepsSelector from './config/StepsSelector.vue';
 import EnhancementSelector from './config/EnhancementSelector.vue';
 import LoopSelector from './config/LoopSelector.vue';
-import MarkerShapeSelector from './config/MarkerShapeSelector.vue';
-import SubMarkerSelector from './config/SubMarkerSelector.vue';
-import RotateSelector from './config/RotateSelector.vue';
-import EclSelector from './config/EclSelector.vue';
-import PositionSelector from './config/PositionSelector.vue';
-import PaddingLevelSelector from './config/PaddingLevelSelector.vue';
-import PaddingNoiseSelector from './config/PaddingNoiseSelector.vue';
-import PixelStyleSelector from './config/PixelStyleSelector.vue';
 import EndImageUrlInput from './config/EndImageUrlInput.vue';
 import StartImageUrlInput from './config/StartImageUrlInput.vue';
 import PromptInput from './config/PromptInput.vue';
@@ -53,7 +43,7 @@ export default defineComponent({
   emits: ['generate'],
   computed: {
     config() {
-      return this.$store.state.qrart?.config;
+      return this.$store.state.luma?.config;
     }
   },
   methods: {
