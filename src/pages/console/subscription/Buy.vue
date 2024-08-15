@@ -312,6 +312,7 @@ export default defineComponent({
 
 .panel {
   padding: 30px;
+  overflow: scroll;
   width: calc(100% - 300px);
   background-color: var(--el-bg-color-page);
 
