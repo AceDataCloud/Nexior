@@ -165,12 +165,15 @@ export default defineComponent({
       // 1. Clear the following message
       const targetIndex = this.messages.findIndex((message) => message === targetMessage);
       const problem_message = this.messages[targetIndex - 1];
+      // @ts-ignore
+      let update_messages = [];
       if (targetIndex !== -1) {
-        this.messages = this.messages.slice(0, targetIndex - 1);
+        // @ts-ignore
+        update_messages = this.messages.slice(0, targetIndex - 1);
+        this.messages = this.messages.slice(0, targetIndex);
         // @ts-ignore
         this.question = problem_message.content;
       }
-
       // 2. Update the messages
       const token = this.credential?.token;
       const question = this.question;
@@ -191,7 +194,8 @@ export default defineComponent({
         .updateConversation(
           {
             id: this.conversationId,
-            messages: this.messages
+            // @ts-ignore
+            messages: update_messages
           },
           {
             token
@@ -203,10 +207,6 @@ export default defineComponent({
             messages: this.messages
           });
           console.debug('finished update conversation', this.messages);
-          this.messages.push({
-            content: this.question,
-            role: ROLE_USER
-          });
           // 3. Send restart questions
           console.debug('onRestart', this.question);
           await this.onFetchAnswer();
