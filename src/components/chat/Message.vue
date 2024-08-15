@@ -55,12 +55,12 @@
         <answering-mark v-if="message.state === messageState.PENDING" />
       </div>
       <div class="operations">
+        <copy-to-clipboard v-if="!Array.isArray(message.content)" :content="message.content!" class="btn-copy" />
         <restart-to-generate
           v-if="!Array.isArray(message.content) && message.role === 'assistant'"
           :content="message.content!"
           class="btn-copy"
         />
-        <copy-to-clipboard v-if="!Array.isArray(message.content)" :content="message.content!" class="btn-copy" />
       </div>
     </div>
     <el-alert v-else class="error" :title="errorText" type="error" :closable="false" />
