@@ -105,10 +105,10 @@ export default defineComponent({
       return this.$store.state.chatdoc.credential;
     },
     needApply() {
-      return this.$store.state.chatdoc.status.getApplication === Status.Success && !this.application;
+      return this.$store.state.chatdoc.status.getApplications === Status.Success && !this.application;
     },
     initializing() {
-      return this.$store.state.chatdoc.status.getApplication === Status.Request;
+      return this.$store.state.chatdoc.status.getApplications === Status.Request;
     },
     service(): IService | undefined {
       return this.$store.state.chatdoc.service;

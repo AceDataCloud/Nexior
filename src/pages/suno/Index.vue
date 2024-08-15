@@ -72,10 +72,10 @@ export default defineComponent({
       return this.$store.state.suno.config;
     },
     initializing() {
-      return this.$store.state.suno.status.getApplication === Status.Request;
+      return this.$store.state.suno.status.getApplications === Status.Request;
     },
     needApply() {
-      return this.$store.state.suno.status.getApplication === Status.Success && !this.application;
+      return this.$store.state.suno.status.getApplications === Status.Success && !this.application;
     },
     application() {
       return this.$store.state.suno.application;
@@ -118,9 +118,9 @@ export default defineComponent({
       console.debug('end onGetService');
     },
     async onGetApplication() {
-      console.debug('start onGetApplication');
-      await this.$store.dispatch('suno/getApplication');
-      console.debug('end onGetApplication');
+      console.debug('start onGetApplications');
+      await this.$store.dispatch('suno/getApplications');
+      console.debug('end onGetApplications');
       await this.onGetTasks();
     },
     onApply() {

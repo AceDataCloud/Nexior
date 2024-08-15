@@ -6,8 +6,8 @@ export interface IApplicationQuery {
   user_id?: string;
   offset?: number;
   limit?: number;
-  type?: IApplicationType;
-  service_id?: string;
+  type?: IApplicationType | IApplicationType[];
+  service_id?: string | string[];
   ordering?: string;
 }
 

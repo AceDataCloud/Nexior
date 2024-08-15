@@ -1,4 +1,8 @@
 {
+  "button.extend": {
+    "message": "Continuer à générer",
+    "description": "Texte du bouton pour continuer à générer"
+  },
   "button.download": {
     "message": "Télécharger",
     "description": "Texte du bouton de téléchargement"
@@ -17,7 +21,7 @@
   },
   "name.instrumental": {
     "message": "Sans paroles",
-    "description": "Description du paramètre 'instrumental'"
+    "description": "Description de l'paramètre 'instrumental'"
   },
   "model.model3": {
     "message": "v3.5",
@@ -25,7 +29,7 @@
   },
   "name.taskId": {
     "message": "ID de tâche",
-    "description": "L'ID de la tâche"
+    "description": "ID de la tâche"
   },
   "name.type": {
     "message": "Mode personnalisé",
@@ -33,19 +37,23 @@
   },
   "name.prompt": {
     "message": "Description de la chanson",
-    "description": "Invite pour l'entrée de contenu"
+    "description": "Indication pour le contenu à entrer"
+  },
+  "name.extend": {
+    "message": "Extension de la chanson provenant de",
+    "description": "Indication pour le contenu à entrer"
   },
   "name.lyrics": {
     "message": "Contenu des paroles",
-    "description": "Invite pour l'entrée du contenu des paroles"
+    "description": "Indication pour le contenu des paroles à entrer"
   },
   "name.style": {
     "message": "Style de la chanson",
-    "description": "Invite pour l'entrée du contenu du style de la chanson"
+    "description": "Indication pour le contenu du style de la chanson à entrer"
   },
   "name.title": {
     "message": "Titre de la chanson",
-    "description": "Invite pour l'entrée du contenu du titre de la chanson"
+    "description": "Indication pour le contenu du titre de la chanson à entrer"
   },
   "name.failureReason": {
     "message": "Raison de l'échec",
@@ -56,8 +64,8 @@
     "description": "Statut de la tâche"
   },
   "name.traceId": {
-    "message": "ID de traçage",
-    "description": "ID de traçage de la tâche"
+    "message": "ID de suivi",
+    "description": "ID de suivi de la tâche"
   },
   "name.sunoBot": {
     "message": "Suno Bot",
@@ -65,47 +73,55 @@
   },
   "description.prompt": {
     "message": "Indiquez le style et le thème de la musique que vous souhaitez générer, par exemple, pop acoustique sur les vacances",
-    "description": "Description du paramètre 'prompt'"
+    "description": "Description de l'paramètre 'prompt'"
   },
   "description.lyrics": {
     "message": "Contenu des paroles",
-    "description": "Description du paramètre 'lyrics'"
+    "description": "Description de l'paramètre 'lyrics'"
   },
   "description.style": {
     "message": "Contenu du style de la chanson",
-    "description": "Description du paramètre 'style'"
+    "description": "Description de l'paramètre 'style'"
   },
   "description.title": {
     "message": "Contenu du titre de la chanson",
-    "description": "Description du paramètre 'title'"
+    "description": "Description de l'paramètre 'title'"
   },
   "status.pending": {
     "message": "En attente",
     "description": "État d'attente de la tâche"
   },
   "placeholder.prompt": {
-    "message": "Veuillez entrer des mots clés pour la chanson...",
-    "description": "Placeholder pour l'entrée de bruit"
+    "message": "Veuillez entrer les mots clés de la chanson...",
+    "description": "Espace réservé pour l'entrée de bruit"
   },
   "placeholder.lyrics": {
     "message": "Veuillez entrer les paroles...",
-    "description": "Placeholder pour le niveau de remplissage"
+    "description": "Espace réservé pour le niveau de contenu"
+  },
+  "placeholder.extend.lyrics": {
+    "message": "Veuillez entrer les paroles à étendre...",
+    "description": "Espace réservé pour le niveau de contenu"
+  },
+  "placeholder.extend.continue_at": {
+    "message": "Veuillez entrer à quelle seconde de la chanson vous souhaitez étendre...",
+    "description": "Espace réservé pour le niveau de contenu"
   },
   "placeholder.style": {
-    "message": "Veuillez entrer les mots clés pour le style de la chanson que vous souhaitez générer, par exemple, pop acoustique",
-    "description": "Texte placeholder dans le champ d'invite"
+    "message": "Veuillez entrer les mots clés du style de la chanson à générer, par exemple, pop acoustique",
+    "description": "Texte d'espace réservé dans le champ d'indication"
   },
   "placeholder.title": {
-    "message": "Veuillez entrer les mots clés pour le titre de la chanson que vous souhaitez générer, par exemple, chanson de vacances",
-    "description": "Placeholder pour l'entrée de graine"
+    "message": "Veuillez entrer les mots clés du titre de la chanson à générer, par exemple, chanson de vacances",
+    "description": "Espace réservé pour l'entrée de graine"
   },
   "placeholder.select": {
     "message": "Veuillez sélectionner un modèle...",
-    "description": "Placeholder pour l'entrée de position"
+    "description": "Espace réservé pour l'entrée de position"
   },
   "placeholder.position": {
     "message": "Veuillez sélectionner...",
-    "description": "Placeholder pour l'entrée de position"
+    "description": "Espace réservé pour l'entrée de position"
   },
   "button.generate": {
     "message": "Générer",
@@ -113,30 +129,30 @@
   },
   "message.startingTask": {
     "message": "Démarrage de la tâche...",
-    "description": "Message lors du démarrage d'une tâche de génération musicale"
+    "description": "Message au début de la tâche de génération de musique"
   },
   "message.startTaskSuccess": {
-    "message": "Tâche de génération musicale démarrée avec succès",
-    "description": "Message de réussite lors du démarrage d'une tâche de génération musicale"
+    "message": "Tâche de génération de musique lancée avec succès",
+    "description": "Message de succès lors du lancement de la tâche de génération de musique"
   },
   "message.startTaskFailed": {
-    "message": "Échec du démarrage de la tâche de génération musicale",
-    "description": "Message d'erreur lors de l'échec du démarrage d'une tâche de génération musicale"
+    "message": "Échec du démarrage de la tâche de génération de musique",
+    "description": "Message d'erreur en cas d'échec du démarrage de la tâche de génération de musique"
   },
   "message.generating": {
     "message": "Génération en cours...",
-    "description": "Message lors de la génération de musique"
+    "description": "Message pendant que la musique est en cours de génération"
   },
   "message.generateFailed": {
     "message": "Échec de la génération de musique",
-    "description": "Message lors de l'échec de la génération de musique"
+    "description": "Message en cas d'échec de la génération de musique"
   },
   "message.noOperations": {
     "message": "Aucune opération disponible",
     "description": "Message lorsqu'il n'y a aucune opération disponible"
   },
   "message.noTasks": {
-    "message": "Aucune tâche historique, veuillez générer de la musique dans le panneau de configuration à gauche",
-    "description": "Message lorsqu'il n'y a pas de tâche"
+    "message": "Aucune tâche historique, veuillez générer de la musique dans la barre de configuration à gauche",
+    "description": "Message lorsqu'il n'y a aucune tâche"
   }
 }

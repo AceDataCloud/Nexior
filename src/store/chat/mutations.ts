@@ -4,6 +4,7 @@ import { IChatState } from './models';
 export const resetAll = (state: IChatState): void => {
   state.application = undefined;
   state.conversations = undefined;
+  state.applications = undefined;
   state.credential = undefined;
   state.service = undefined;
 };
@@ -20,6 +21,10 @@ export const setApplication = (state: IChatState, payload: IApplication): void =
   state.application = payload;
 };
 
+export const setApplications = (state: IChatState, payload: IApplication[]): void => {
+  state.applications = payload;
+};
+
 export const setService = (state: IChatState, payload: IService): void => {
   state.service = payload;
 };
@@ -34,5 +39,6 @@ export default {
   setCredential,
   setConversations,
   setApplication,
+  setApplications,
   resetAll
 };

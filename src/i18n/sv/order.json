@@ -1,138 +1,142 @@
 {
   "button.pay": {
     "message": "Betala",
-    "description": "Knapp-text för att betala en order."
+    "description": "Knapptext för att betala en beställning."
   },
   "button.continuePay": {
     "message": "Fortsätt betala",
-    "description": "Knapp-text för att fortsätta betala en order."
+    "description": "Knapptext för att fortsätta med betalningen av en beställning."
   },
   "button.checkDetail": {
-    "message": "Kontrollera detaljer",
-    "description": "Knapp-text för att kontrollera orderdetaljer."
+    "message": "Visa detaljer",
+    "description": "Knapptext för att visa beställningsdetaljer."
   },
   "button.query": {
-    "message": "Förfrågan",
-    "description": "Knapp-text för att förfråga en order."
+    "message": "Fråga",
+    "description": "Knapptext för att fråga efter en beställning."
   },
   "button.finish": {
-    "message": "Slutför manuellt",
-    "description": "Knapp-text för att manuellt slutföra en order."
+    "message": "Avsluta manuellt",
+    "description": "Knapptext för att manuellt avsluta en beställning."
   },
   "button.update": {
     "message": "Uppdatera",
-    "description": "Knapp-text för att uppdatera en order."
+    "description": "Knapptext för att uppdatera en beställning."
   },
   "field.id": {
-    "message": "Order-ID",
-    "description": "Orderns identifierare."
+    "message": "Beställningsnummer",
+    "description": "Numret på beställningen."
   },
   "field.amount": {
     "message": "Belopp",
-    "description": "Orderns poängbelopp."
+    "description": "Poängbeloppet för beställningen."
   },
   "field.price": {
-    "message": "Pris",
-    "description": "Orderns poängbelopp."
+    "message": "Belopp",
+    "description": "Poängbeloppet för beställningen."
   },
   "field.description": {
-    "message": "Orderbeskrivning",
-    "description": "Orderns beskrivning."
+    "message": "Beställningsbeskrivning",
+    "description": "Beskrivningen av beställningen."
   },
   "field.state": {
     "message": "Status",
-    "description": "Orderns status."
+    "description": "Statusen för beställningen."
   },
   "field.createdAt": {
-    "message": "Skapad tid",
-    "description": "Tidpunkt då ordern skapades."
+    "message": "Skapat datum",
+    "description": "Tidsstämpeln för när beställningen skapades."
   },
   "field.service": {
-    "message": "Tjänstens namn",
+    "message": "Tjänstnamn",
     "description": "Namnet på tjänsten."
   },
   "field.payWay": {
     "message": "Betalningsmetod",
-    "description": "Orderns betalningsmetod."
+    "description": "Betalningsmetoden för beställningen."
   },
   "field.api": {
     "message": "API",
-    "description": "API är en typ av online-tjänst."
+    "description": "API är en typ av onlinetjänst."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Proxy är en typ av online-tjänst som används för att överföra data via HTTP-proxy."
+    "description": "Proxy är en typ av onlinetjänst för att överföra data via HTTP."
   },
   "message.paidSuccessfully": {
-    "message": "Betalning lyckades",
-    "description": "Meddelande om lyckad betalning."
+    "message": "Betalning genomförd",
+    "description": "Meddelande om att betalningen har genomförts."
   },
   "message.orderExpired": {
-    "message": "Ordern har löpt ut. Vänligen skapa en ny order för betalning.",
-    "description": "Meddelande om att ordern har löpt ut."
+    "message": "Beställningen har gått ut, vänligen skapa en ny beställning för betalning.",
+    "description": "Meddelande om att beställningen har gått ut."
   },
   "message.createFailed": {
     "message": "Skapande misslyckades",
-    "description": "Meddelande om att skapandet misslyckades."
+    "description": "Meddelande om att skapningen har misslyckats."
   },
   "message.wechatPayHelp": {
-    "message": "Vänligen öppna WeChat på din mobil för att slutföra betalningen genom skanning.",
-    "description": "Meddelande om hjälp för WeChat-betalning."
+    "message": "Öppna WeChat på din telefon och skanna koden för att slutföra betalningen",
+    "description": "Meddelande för hjälp med WeChat-betalning."
   },
   "message.free": {
-    "message": "Gratis",
-    "description": "Meddelande om gratis order."
+    "message": "Kostnadsfritt",
+    "description": "Meddelande för kostnadsfria beställningar."
   },
   "message.buyInExternalUrl": {
-    "message": "Vänligen slutför betalningen på extern länk",
-    "description": "Meddelande om betalning via extern länk."
+    "message": "Vänligen slutför betalningen via externa länken",
+    "description": "Meddelande för betalning via extern länk."
   },
   "message.updateFailed": {
     "message": "Uppdatering misslyckades",
-    "description": "Meddelande om att uppdateringen misslyckades."
+    "description": "Meddelande om att uppdateringen har misslyckats."
   },
   "message.updateSuccessfully": {
-    "message": "Uppdatering lyckades",
-    "description": "Meddelande om lyckad uppdatering."
+    "message": "Uppdatering genomförd",
+    "description": "Meddelande om att uppdateringen har genomförts."
   },
   "message.confirmFinish": {
-    "message": "Denna åtgärd kommer manuellt ställa ordern till betalningsstatus och slutföra distributionsprocessen, och kan inte ångras. Bekräfta att kunden har slutfört betalningen innan du fortsätter?",
-    "description": "Meddelande om att bekräfta slutförande."
+    "message": "Denna åtgärd kommer att manuellt ställa in beställningen som betald och avsluta distribueringsprocessen, vilket inte kan återkallas. Vänligen bekräfta att kunden har slutfört betalningen, vill du fortsätta?",
+    "description": "Meddelande för att bekräfta avslutning."
   },
   "state.pending": {
-    "message": "Avvaktar betalning",
-    "description": "Orderns status, indikerar att denna order fortfarande väntar på användarens betalning."
+    "message": "Väntar på betalning",
+    "description": "Status för beställningen, vilket indikerar att beställningen fortfarande väntar på användarens betalning."
   },
   "state.paid": {
     "message": "Betald",
-    "description": "Orderns status, indikerar att denna order har betalats."
+    "description": "Status för beställningen, vilket indikerar att beställningen har betalats."
+  },
+  "state.finished": {
+    "message": "Avslutad",
+    "description": "Status för beställningen, vilket indikerar att beställningen har avslutats."
   },
   "state.expired": {
-    "message": "Tiden för betalning har gått ut",
-    "description": "Orderns status, indikerar att denna order har löpt ut."
+    "message": "Betalningstid har gått ut",
+    "description": "Status för beställningen, vilket indikerar att beställningen har gått ut."
   },
   "state.failed": {
     "message": "Betalning misslyckades",
-    "description": "Orderns status, indikerar att betalningen för denna order misslyckades."
+    "description": "Status för beställningen, vilket indikerar att betalningen för beställningen misslyckades."
   },
   "title.info": {
-    "message": "Orderinformation",
-    "description": "Titel för webbplats som representerar orderinformation."
+    "message": "Beställningsinformation",
+    "description": "Används som titel på webbplatsen för att indikera beställningsinformation."
   },
   "title.wechatPay": {
-    "message": "WeChat-betalning",
-    "description": "Titel för webbplats som representerar WeChat-betalning."
+    "message": "WeChat Betalning",
+    "description": "Används som titel på webbplatsen för att indikera WeChat betalning."
   },
   "title.aliPay": {
-    "message": "AliPay",
-    "description": "Titel för webbplats som representerar AliPay-betalning, AliPay är en typ av onlinebetalning."
+    "message": "Alipay",
+    "description": "Används som titel på webbplatsen för att indikera Alipay betalning, Alipay är en typ av onlinebetalning."
   },
   "title.stripe": {
     "message": "Stripe",
-    "description": "Titel för webbplats som representerar Stripe-betalning, Stripe är en typ av onlinebetalning."
+    "description": "Används som titel på webbplatsen för att indikera Stripe betalning, Stripe är en typ av onlinebetalning."
   },
   "title.manageOrder": {
-    "message": "Hantera order",
-    "description": "Titel för webbplats som representerar hantering av order."
+    "message": "Hantera beställningar",
+    "description": "Används som titel på webbplatsen för att indikera hantering av beställningar."
   }
 }

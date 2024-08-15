@@ -1,11 +1,15 @@
 {
+  "button.suggested": {
+    "message": "Vorschlagen",
+    "description": "Button-Text, Vorschlagen bedeutet den Vorschlagsbutton"
+  },
   "menu.orderList": {
     "message": "Bestellliste",
-    "description": "Text im Website-Menü, Bestellung bedeutet die Bestellung von Dienstleistungen durch Benutzer"
+    "description": "Text im Website-Menü, Bestellliste bedeutet die Bestellungen, die der Benutzer für Dienstleistungen gemacht hat"
   },
   "menu.applicationList": {
-    "message": "Anwendungsliste",
-    "description": "Text im Website-Menü, Anwendung bedeutet die Nutzung von Dienstleistungen durch Benutzer"
+    "message": "Antragsliste",
+    "description": "Text im Website-Menü, Antragsliste bedeutet die Anträge des Benutzers für die Nutzung von Dienstleistungen"
   },
   "menu.userProfile": {
     "message": "Benutzerprofil",
@@ -13,34 +17,86 @@
   },
   "menu.idVerify": {
     "message": "Identitätsprüfung",
-    "description": "Text im Website-Menü, Identitätsprüfung bedeutet die Überprüfung der Benutzeridentität"
+    "description": "Text im Website-Menü, Identitätsprüfung bedeutet die Überprüfung der Identität des Benutzers"
   },
   "menu.manageApplication": {
-    "message": "Anwendungsverwaltung",
-    "description": "Text im Website-Menü, Anwendungsverwaltung bedeutet die Verwaltung der Benutzeranwendungen"
+    "message": "Antragsverwaltung",
+    "description": "Text im Website-Menü, Antragsverwaltung bedeutet die Verwaltung der Anträge des Benutzers"
   },
   "menu.distributionIndex": {
-    "message": "Empfehlungseinkommen",
-    "description": "Text im Website-Menü, Empfehlungseinkommen bedeutet die Einkommen aus Benutzerempfehlungen"
+    "message": "Empfehlungseinnahmen",
+    "description": "Text im Website-Menü, Empfehlungseinnahmen bedeutet die Einnahmen aus Empfehlungen des Benutzers"
   },
   "menu.developerPlatform": {
     "message": "Entwicklerplattform",
     "description": "Text im Website-Menü, Entwicklerplattform bedeutet die Plattform für Entwickler"
   },
   "menu.usageList": {
-    "message": "Nutzungsverlauf",
-    "description": "Text im Website-Menü, Nutzungsverlauf bedeutet die Historie der Nutzung von API-Diensten durch Benutzer"
+    "message": "Nutzungsprotokoll",
+    "description": "Text im Website-Menü, Nutzungsprotokoll bedeutet die Historie der API-Nutzung durch den Benutzer"
   },
   "menu.credentialIndex": {
-    "message": "Anmeldeinformationen",
-    "description": "Text im Website-Menü, Anmeldeinformationen bedeutet den Zugriffsnachweis für die API"
+    "message": "Zugangsberechtigungen",
+    "description": "Text im Website-Menü, Zugangsberechtigungen bedeutet die Berechtigungen zum Zugriff auf die API"
   },
   "menu.manageOrder": {
-    "message": "Bestellungsverwaltung",
-    "description": "Text im Website-Menü, Bestellungsverwaltung bedeutet die Verwaltung der Benutzerbestellungen, Bestellung bedeutet die Bestellung von Dienstleistungen durch Benutzer"
+    "message": "Bestellverwaltung",
+    "description": "Text im Website-Menü, Bestellverwaltung bedeutet die Verwaltung der Bestellungen des Benutzers, Bestellungen beziehen sich auf die Käufe des Benutzers für Dienstleistungen"
   },
   "menu.manageDistributionStatus": {
-    "message": "Verwaltung des Vertriebsstatus",
-    "description": "Text im Website-Menü, Verwaltung des Vertriebsstatus bedeutet die Verwaltung des Vertriebsstatus der Benutzer, der mit den empfohlenen Einnahmen zusammenhängt"
+    "message": "Verwaltung des Vertriebstatus",
+    "description": "Text im Website-Menü, Verwaltung des Vertriebstatus bedeutet die Verwaltung des Vertriebstatus des Benutzers, in Zusammenhang mit den Einnahmen aus Empfehlungen"
+  },
+  "message.benefit1": {
+    "message": "Exklusiver Kundendienst zur Beantwortung von Fragen",
+    "description": "Text auf der Website-Startseite, exklusiver Kundendienst bedeutet, dass der Benutzer Unterstützung von einem exklusiven Kundendienst erhalten kann"
+  },
+  "message.benefit2": {
+    "message": "Bevorzugter Zugang zu neuen Funktionen",
+    "description": "Text auf der Website-Startseite, bevorzuge neuen Funktionen bedeutet, dass der Benutzer zuerst neue Funktionen testen kann"
+  },
+  "message.buyExtra": {
+    "message": "Jetzt kaufen",
+    "description": "Text auf der Website-Startseite, kaufen bedeutet, dass der Benutzer Guthaben erwerben kann"
+  },
+  "message.doNotWantSubscribe": {
+    "message": "Möchten Sie kein Mitglied des gesamten Standorts werden? Sie können auch versuchen, Guthaben für einzelne Dienstleistungen zu kaufen.",
+    "description": "Text auf der Website-Startseite, nicht abonnieren bedeutet, dass der Benutzer kein Mitglied werden möchte"
+  },
+  "subscription.3days": {
+    "message": "3 Tage Testmitgliedschaft",
+    "description": "Mitgliedsart, 3 Tage Testmitgliedschaft"
+  },
+  "subscription.3days.description": {
+    "message": "Testmitgliedschaft, geeignet für kurzfristige Nutzung.",
+    "description": "Mitgliedsart, geeignet für kurzfristige Nutzung"
+  },
+  "subscription.weekly": {
+    "message": "Wochenmitgliedschaft",
+    "description": "Mitgliedsart, Wochenmitgliedschaft bedeutet, dass der Benutzer eine Mitgliedschaft für eine Woche erworben hat"
+  },
+  "subscription.monthly": {
+    "message": "Monatsmitgliedschaft",
+    "description": "Mitgliedsart, Monatsmitgliedschaft bedeutet, dass der Benutzer eine Mitgliedschaft für einen Monat erworben hat"
+  },
+  "subscription.yearly": {
+    "message": "Jahresmitgliedschaft",
+    "description": "Mitgliedsart, Jahresmitgliedschaft bedeutet, dass der Benutzer eine Mitgliedschaft für ein Jahr erworben hat"
+  },
+  "subscription.weekly.description": {
+    "message": "Testwochenmitgliedschaft, geeignet für kurzfristige Nutzung.",
+    "description": "Beschreibung der Mitgliedsart, Wochenmitgliedschaft bedeutet, dass der Benutzer eine Mitgliedschaft für die Woche erworben hat"
+  },
+  "subscription.monthly.description": {
+    "message": "Flexible Monatsmitgliedschaft, geeignet für langfristige Nutzung.",
+    "description": "Beschreibung der Mitgliedsart, Monatsmitgliedschaft bedeutet, dass der Benutzer eine Mitgliedschaft für den Monat erworben hat"
+  },
+  "subscription.yearly.description": {
+    "message": "Wertvolle Jahresmitgliedschaft, die beste Wahl.",
+    "description": "Beschreibung der Mitgliedsart, Jahresmitgliedschaft bedeutet, dass der Benutzer eine Mitgliedschaft für das Jahr erworben hat"
+  },
+  "subscription.introduction": {
+    "message": "Abonnieren Sie Mitgliedschaft, um alle AI-Dienste auf der Website freizuschalten.",
+    "description": "Einführung in die Mitgliedschaft, die Beschreibung der Mitgliedschaft"
   }
 }

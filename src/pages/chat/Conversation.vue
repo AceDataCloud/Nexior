@@ -7,7 +7,7 @@
         :application="application"
         :need-apply="needApply"
         :service="service"
-        @refresh="$store.dispatch('chat/getApplication')"
+        @refresh="$store.dispatch('chat/getApplications')"
       />
       <div class="dialogue">
         <introduction v-if="messages.length === 0" @draft="onDraft" />
@@ -110,13 +110,13 @@ export default defineComponent({
       return this.$store.state.chat?.credential;
     },
     needApply() {
-      return this.$store.state.chat.status.getApplication === Status.Success && !this.application;
+      return this.$store.state.chat.status.getApplications === Status.Success && !this.application;
     },
     conversations() {
       return this.$store.state.chat.conversations;
     },
     initializing() {
-      return this.$store.state.chat.status.getApplication === Status.Request;
+      return this.$store.state.chat.status.getApplications === Status.Request;
     }
   },
   watch: {
@@ -149,7 +149,7 @@ export default defineComponent({
     },
     async onGetApplication() {
       console.debug('start onGetApplication');
-      await this.$store.dispatch('chat/getApplication');
+      await this.$store.dispatch('chat/getApplications');
       console.debug('end onGetApplication');
     },
     async onGetConversations() {
@@ -321,7 +321,7 @@ export default defineComponent({
     },
     async onModelChanged() {
       await this.onCreateNewConversation();
-      await this.$store.dispatch('chat/getApplication');
+      await this.$store.dispatch('chat/getApplications');
     },
     // Send a message
     async onSubmit() {
@@ -434,7 +434,7 @@ export default defineComponent({
           }
           this.onScrollDown();
           await this.$store.dispatch('chat/getConversations');
-          await this.$store.dispatch('chat/getApplication');
+          await this.$store.dispatch('chat/getApplications');
         })
         .catch((error) => {
           if (this.messages && this.messages.length > 0) {

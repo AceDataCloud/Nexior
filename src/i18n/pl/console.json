@@ -1,46 +1,102 @@
 {
+  "button.suggested": {
+    "message": "Zalecane",
+    "description": "Tekst przycisku, zalecane oznacza przycisk do rekomendacji"
+  },
   "menu.orderList": {
     "message": "Lista zamówień",
-    "description": "Tekst w menu witryny, zamówienie oznacza zamówienie usługi przez użytkownika"
+    "description": "Tekst w menu strony, lista zamówień oznacza zamówienia użytkownika na usługi"
   },
   "menu.applicationList": {
-    "message": "Lista aplikacji",
-    "description": "Tekst w menu witryny, aplikacja oznacza złożenie przez użytkownika wniosku o korzystanie z usługi"
+    "message": "Lista zgłoszeń",
+    "description": "Tekst w menu strony, lista zgłoszeń oznacza zgłoszenia użytkownika do korzystania z usługi"
   },
   "menu.userProfile": {
     "message": "Profil użytkownika",
-    "description": "Tekst w menu witryny, profil użytkownika oznacza dane osobowe użytkownika"
+    "description": "Tekst w menu strony, profil użytkownika oznacza dane osobowe użytkownika"
   },
   "menu.idVerify": {
     "message": "Weryfikacja tożsamości",
-    "description": "Tekst w menu witryny, weryfikacja tożsamości oznacza potwierdzenie tożsamości użytkownika"
+    "description": "Tekst w menu strony, weryfikacja tożsamości oznacza potwierdzenie tożsamości użytkownika"
   },
   "menu.manageApplication": {
-    "message": "Zarządzanie aplikacjami",
-    "description": "Tekst w menu witryny, zarządzanie aplikacjami oznacza zarządzanie wnioskami użytkownika"
+    "message": "Zarządzanie zgłoszeniami",
+    "description": "Tekst w menu strony, zarządzanie zgłoszeniami oznacza zarządzanie zgłoszeniami użytkownika"
   },
   "menu.distributionIndex": {
-    "message": "Zyski z poleceń",
-    "description": "Tekst w menu witryny, zyski z poleceń oznaczają zyski z polecenia użytkownika"
+    "message": "Dochody z rekomendacji",
+    "description": "Tekst w menu strony, dochody z rekomendacji oznacza dochody użytkownika z rekomendacji"
   },
   "menu.developerPlatform": {
-    "message": "Platforma deweloperska",
-    "description": "Tekst w menu witryny, platforma deweloperska oznacza platformę dla deweloperów"
+    "message": "Platforma dewelopera",
+    "description": "Tekst w menu strony, platforma dewelopera oznacza platformę dla twórców"
   },
   "menu.usageList": {
-    "message": "Lista użycia",
-    "description": "Tekst w menu witryny, lista użycia oznacza historię korzystania przez użytkownika z usług API"
+    "message": "Historia użycia",
+    "description": "Tekst w menu strony, historia użycia oznacza historię korzystania z usług API przez użytkownika"
   },
   "menu.credentialIndex": {
     "message": "Poświadczenia",
-    "description": "Tekst w menu witryny, poświadczenia oznaczają dostęp do poświadczeń API"
+    "description": "Tekst w menu strony, poświadczenia oznaczają dane dostępowe do API"
   },
   "menu.manageOrder": {
     "message": "Zarządzanie zamówieniami",
-    "description": "Tekst w menu witryny, zarządzanie zamówieniami oznacza zarządzanie zamówieniami użytkownika, zamówienie oznacza zamówienie usługi przez użytkownika"
+    "description": "Tekst w menu strony, zarządzanie zamówieniami oznacza zarządzanie zamówieniami użytkownika, zamówienia oznaczają zakupy usług przez użytkownika"
   },
   "menu.manageDistributionStatus": {
     "message": "Zarządzanie dystrybucją",
-    "description": "Tekst w menu witryny, zarządzanie dystrybucją oznacza zarządzanie statusem dystrybucji użytkownika, związane z zyskami z poleceń użytkownika"
+    "description": "Tekst w menu strony, zarządzanie dystrybucją oznacza zarządzanie stanem dystrybucji użytkownika, związane z dochodami z rekomendacji"
+  },
+  "message.benefit1": {
+    "message": "Wsparcie dedykowanego przedstawiciela",
+    "description": "Tekst na stronie głównej, wsparcie dedykowanego przedstawiciela oznacza, że użytkownik może uzyskać pomoc od dedykowanego przedstawiciela"
+  },
+  "message.benefit2": {
+    "message": "Priorytetowe korzystanie z nowych funkcji",
+    "description": "Tekst na stronie głównej, priorytetowe korzystanie z nowych funkcji oznacza, że użytkownik może korzystać z nowych funkcji w pierwszej kolejności"
+  },
+  "message.buyExtra": {
+    "message": "Przejdź do zakupu",
+    "description": "Tekst na stronie głównej, zakup oznacza możliwość zakupu dodatkowych usług"
+  },
+  "message.doNotWantSubscribe": {
+    "message": "Nie chcesz subskrybować członkostwa na całej stronie? Możesz również spróbować zakupu limitu do pojedynczej usługi.",
+    "description": "Tekst na stronie głównej, nie chcę subskrybować oznacza, że użytkownik nie chce subskrybować członkostwa"
+  },
+  "subscription.3days": {
+    "message": "3-dniowe członkostwo",
+    "description": "Rodzaj członkostwa, 3-dniowe członkostwo"
+  },
+  "subscription.3days.description": {
+    "message": "Członkostwo próbne, idealne na krótki okres.",
+    "description": "Rodzaj członkostwa, idealne na krótki okres"
+  },
+  "subscription.weekly": {
+    "message": "Członkostwo tygodniowe",
+    "description": "Rodzaj członkostwa, członkostwo tygodniowe oznacza, że użytkownik nabył tygodniowe członkostwo"
+  },
+  "subscription.monthly": {
+    "message": "Członkostwo miesięczne",
+    "description": "Rodzaj członkostwa, członkostwo miesięczne oznacza, że użytkownik nabył miesięczne członkostwo"
+  },
+  "subscription.yearly": {
+    "message": "Członkostwo roczne",
+    "description": "Rodzaj członkostwa, członkostwo roczne oznacza, że użytkownik nabył roczne członkostwo"
+  },
+  "subscription.weekly.description": {
+    "message": "Członkostwo próbne tygodniowe, idealne na krótki okres.",
+    "description": "Opis rodzaju członkostwa, członkostwo tygodniowe oznacza, że użytkownik nabył tygodniowe członkostwo"
+  },
+  "subscription.monthly.description": {
+    "message": "Elastyczne członkostwo miesięczne, idealne na długi okres.",
+    "description": "Opis rodzaju członkostwa, członkostwo miesięczne oznacza, że użytkownik nabył miesięczne członkostwo"
+  },
+  "subscription.yearly.description": {
+    "message": "Bardzo korzystne członkostwo roczne, najlepszy wybór.",
+    "description": "Opis rodzaju członkostwa, członkostwo roczne oznacza, że użytkownik nabył roczne członkostwo"
+  },
+  "subscription.introduction": {
+    "message": "Subskrybuj członkostwo, aby odblokować wszystkie usługi AI na stronie.",
+    "description": "Opis członkostwa, które przedstawia szczegóły oferty"
   }
 }

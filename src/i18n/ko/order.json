@@ -1,59 +1,59 @@
 {
   "button.pay": {
     "message": "결제",
-    "description": "버튼 텍스트, 주문 결제에 사용됨."
+    "description": "주문 결제를 위한 버튼 텍스트입니다."
   },
   "button.continuePay": {
-    "message": "계속 결제",
-    "description": "버튼 텍스트, 주문 결제를 계속하기 위해 사용됨."
+    "message": "결제 계속하기",
+    "description": "주문 결제를 계속하기 위한 버튼 텍스트입니다."
   },
   "button.checkDetail": {
-    "message": "세부 정보 확인",
-    "description": "버튼 텍스트, 주문 세부 정보 확인에 사용됨."
+    "message": "상세 보기",
+    "description": "주문 상세 정보를 보기 위한 버튼 텍스트입니다."
   },
   "button.query": {
     "message": "조회",
-    "description": "버튼 텍스트, 주문 조회에 사용됨."
+    "description": "주문을 조회하기 위한 버튼 텍스트입니다."
   },
   "button.finish": {
     "message": "수동 완료",
-    "description": "버튼 텍스트, 주문을 수동으로 완료하기 위해 사용됨."
+    "description": "주문을 수동으로 완료하기 위한 버튼 텍스트입니다."
   },
   "button.update": {
     "message": "업데이트",
-    "description": "버튼 텍스트, 주문 업데이트에 사용됨."
+    "description": "주문을 업데이트하기 위한 버튼 텍스트입니다."
   },
   "field.id": {
     "message": "주문 번호",
-    "description": "주문의 번호."
+    "description": "주문의 번호입니다."
   },
   "field.amount": {
     "message": "금액",
-    "description": "주문의 포인트 금액."
+    "description": "주문의 포인트 금액입니다."
   },
   "field.price": {
     "message": "금액",
-    "description": "주문의 포인트 금액."
+    "description": "주문의 포인트 금액입니다."
   },
   "field.description": {
     "message": "주문 설명",
-    "description": "주문의 설명."
+    "description": "주문의 설명입니다."
   },
   "field.state": {
     "message": "상태",
-    "description": "주문의 상태."
+    "description": "주문의 상태입니다."
   },
   "field.createdAt": {
-    "message": "생성일",
-    "description": "주문의 생성 시간."
+    "message": "생성 시간",
+    "description": "주문의 생성 시간입니다."
   },
   "field.service": {
-    "message": "서비스명",
-    "description": "서비스의 이름."
+    "message": "서비스 이름",
+    "description": "서비스의 이름입니다."
   },
   "field.payWay": {
-    "message": "결제 방식",
-    "description": "주문의 결제 방식."
+    "message": "결제 방법",
+    "description": "주문의 결제 방법입니다."
   },
   "field.api": {
     "message": "API",
@@ -61,78 +61,82 @@
   },
   "field.proxy": {
     "message": "프록시",
-    "description": "프록시는 데이터 전송을 위한 온라인 서비스의 HTTP 프록시입니다."
+    "description": "프록시는 데이터를 전송하는 HTTP 프록시입니다."
   },
   "message.paidSuccessfully": {
     "message": "결제 성공",
-    "description": "성공적인 결제 메시지."
+    "description": "결제 성공 메시지입니다."
   },
   "message.orderExpired": {
     "message": "주문이 만료되었습니다. 새 주문을 생성하여 결제하십시오.",
-    "description": "주문 만료 메시지."
+    "description": "주문 만료 메시지입니다."
   },
   "message.createFailed": {
     "message": "생성 실패",
-    "description": "생성 실패 메시지."
+    "description": "생성 실패 메시지입니다."
   },
   "message.wechatPayHelp": {
-    "message": "휴대폰에서 WeChat을 열고 코드를 스캔하여 결제를 완료하세요.",
-    "description": "WeChat 결제 도움말 메시지."
+    "message": "휴대폰에서 WeChat을 열고 QR 코드를 스캔하여 결제를 완료하십시오.",
+    "description": "WeChat 결제 도움 메시지입니다."
   },
   "message.free": {
     "message": "무료",
-    "description": "무료 주문 메시지."
+    "description": "무료 주문에 대한 메시지입니다."
   },
   "message.buyInExternalUrl": {
-    "message": "외부 링크에서 결제를 완료하세요.",
-    "description": "외부 링크 결제 메시지."
+    "message": "외부 링크에서 결제를 완료하십시오.",
+    "description": "외부 링크 결제 메시지입니다."
   },
   "message.updateFailed": {
     "message": "업데이트 실패",
-    "description": "업데이트 실패 메시지."
+    "description": "업데이트 실패 메시지입니다."
   },
   "message.updateSuccessfully": {
     "message": "업데이트 성공",
-    "description": "성공적인 업데이트 메시지."
+    "description": "업데이트 성공 메시지입니다."
   },
   "message.confirmFinish": {
-    "message": "이 작업은 주문을 수동으로 지불 상태로 설정하고 분배 처리를 완료합니다. 취소할 수 없습니다. 고객이 이미 결제를 완료했는지 확인한 후 계속하시겠습니까?",
-    "description": "완료 확인 메시지."
+    "message": "이 작업은 주문을 결제 상태로 수동 설정하고 배포 처리를 완료합니다. 취소할 수 없습니다. 고객이 결제를 완료했는지 확인하고 계속하시겠습니까?",
+    "description": "완료 확인 메시지입니다."
   },
   "state.pending": {
-    "message": "대기 중",
-    "description": "주문의 상태, 이 주문은 아직 사용자가 결제를 기다리고 있음을 나타냅니다."
+    "message": "결제 대기 중",
+    "description": "사용자가 결제를 기다리는 주문의 상태입니다."
   },
   "state.paid": {
     "message": "결제 완료",
-    "description": "주문의 상태, 이 주문은 이미 결제되었음을 나타냅니다."
+    "description": "이 주문이 결제된 상태를 나타냅니다."
+  },
+  "state.finished": {
+    "message": "완료",
+    "description": "이 주문이 완료된 상태를 나타냅니다."
   },
   "state.expired": {
-    "message": "시간 초과",
-    "description": "주문의 상태, 이 주문은 이미 만료되었음을 나타냅니다."
+    "message": "결제 시간 초과",
+    "description": "이 주문이 만료된 상태를 나타냅니다."
   },
   "state.failed": {
     "message": "결제 실패",
-    "description": "주문의 상태, 이 주문은 결제에 실패했음을 나타냅니다."
+    "description": "이 주문이 결제에 실패한 상태를 나타냅니다."
   },
   "title.info": {
     "message": "주문 정보",
-    "description": "웹 사이트 제목으로 사용되는, 주문 정보를 나타냄."
+    "description": "주문 정보를 나타내는 웹사이트 제목입니다."
   },
   "title.wechatPay": {
     "message": "WeChat 결제",
-    "description": "웹 사이트 제목으로 사용되는, WeChat 결제를 나타냄."
+    "description": "WeChat 결제를 나타내는 웹사이트 제목입니다."
   },
   "title.aliPay": {
-    "message": "알리페이",
-    "description": "웹 사이트 제목으로 사용되는, 알리페이 결제를 나타냄. 알리페이 결제는 온라인 결제 방식 중 하나입니다."
+    "message": "Alipay",
+    "description": "Alipay 결제를 나타내는 웹사이트 제목입니다. Alipay 결제는 온라인 결제입니다."
   },
   "title.stripe": {
-    "message": "스트라이프",
-    "description": "웹 사이트 제목으로 사용되는, 스트라이프 결제를 나타냄. 스트라이프 결제는 온라인 결제 방식 중 하나입니다."
+    "message": "Stripe",
+    "description": "Stripe 결제를 나타내는 웹사이트 제목입니다. Stripe 결제는 온라인 결제입니다."
   },
   "title.manageOrder": {
     "message": "주문 관리",
-    "description": "웹 사이트 제목으로 사용되는, 주문 관리를 나타냄."
+    "description": "주문 관리를 나타내는 웹사이트 제목입니다."
   }
 }
