@@ -5,7 +5,7 @@ import { BASE_URL_API } from '@/constants';
 class LumaOperator {
   async task(id: string, options: { token: string }): Promise<AxiosResponse<ILumaTaskResponse>> {
     return await axios.post(
-      `/qrart/tasks`,
+      `/luma/tasks`,
       {
         action: 'retrieve',
         id: id
@@ -27,7 +27,7 @@ class LumaOperator {
     options: { token: string }
   ): Promise<AxiosResponse<ILumaTasksResponse>> {
     return await axios.post(
-      `/qrart/tasks`,
+      `/luma/tasks`,
       {
         action: 'retrieve_batch',
         ...(filter.ids
@@ -69,7 +69,7 @@ class LumaOperator {
       token: string;
     }
   ): Promise<AxiosResponse<ILumaGenerateResponse>> {
-    return await axios.post('/qrart/generate', data, {
+    return await axios.post('/luma/videos', data, {
       headers: {
         authorization: `Bearer ${options.token}`,
         'content-type': 'application/json',

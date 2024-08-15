@@ -11,6 +11,7 @@ import persistChat from './chat/persist';
 import persistMidjourney from './midjourney/persist';
 import persistChatdoc from './chatdoc/persist';
 import persistQrart from './qrart/persist';
+import persistLuma from './luma/persist';
 import persistSuno from './suno/persist';
 import persistRoot from './common/persist';
 
@@ -26,7 +27,15 @@ const store = createStore({
   },
   plugins: [
     createPersistedState({
-      paths: [...persistRoot, ...persistChat, ...persistMidjourney, ...persistChatdoc, ...persistQrart, ...persistSuno]
+      paths: [
+        ...persistRoot,
+        ...persistChat,
+        ...persistMidjourney,
+        ...persistChatdoc,
+        ...persistQrart,
+        ...persistLuma,
+        ...persistSuno
+      ]
     })
   ]
 });

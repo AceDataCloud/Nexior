@@ -5,109 +5,85 @@
     </div>
     <div class="main">
       <div class="bot">
-        {{ $t('qrart.name.qrartBot') }}
+        {{ $t('luma.name.lumaBot') }}
         <span class="datetime">
-          {{ $dayjs.format('' + new Date(parseFloat(modelValue?.created_at || '') * 1000)) }}
+          <!-- {{ $dayjs.format('' + new Date(parseFloat(modelValue?.created_at || '') * 1000)) }} -->
         </span>
       </div>
       <div class="info">
         <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
           {{ modelValue?.request?.prompt }}
-          <span v-if="!modelValue?.response"> - ({{ $t('qrart.status.pending') }}) </span>
+          <span v-if="!modelValue?.response"> - ({{ $t('luma.status.pending') }}) </span>
         </p>
       </div>
+      <!-- Display success message -->
       <div v-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">
         <div class="image-wrapper">
           <img
-            v-if="modelValue?.response?.image_url"
-            v-loading="!modelValue?.response?.image_url"
-            :src="modelValue?.response?.image_url"
+            v-if="modelValue?.response?.thumbnail_url"
+            v-loading="!modelValue?.response?.thumbnail_url"
+            :src="modelValue?.response?.thumbnail_url"
             class="image mb-3"
           />
+          <div v-if="modelValue?.response?.video_url" class="play-icon">
+            <font-awesome-icon icon="fa-solid fa-play-circle" />
+          </div>
           <el-button
-            v-if="modelValue?.response?.image_url"
+            v-if="modelValue?.response?.video_url"
             type="info"
             round
             class="btn-raw"
-            @click="onOpenUrl(modelValue?.response?.image_url)"
+            @click="onOpenUrl(modelValue?.response?.video_url)"
           >
-            {{ $t('common.button.seeRawImage') }}
+            {{ $t('common.button.seeRawVideo') }}
           </el-button>
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p class="description">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
-            {{ $t('qrart.name.taskId') }}:
+            {{ $t('luma.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
           </p>
-          <p class="description">
-            <font-awesome-icon icon="fa-solid fa-diamond" class="mr-1" />
-            {{ $t('qrart.name.type') }}:
-            {{ $t('qrart.type.' + modelValue?.request?.type) }}
-            <copy-to-clipboard :content="modelValue?.request?.type!" class="btn-copy" />
-          </p>
-          <p v-if="modelValue?.request?.content" class="description">
-            <font-awesome-icon icon="fa-regular fa-message" class="mr-1" />
-            {{ $t('qrart.name.content') }}:
-            {{ modelValue?.request?.content }}
-            <copy-to-clipboard :content="modelValue?.request?.content!" class="btn-copy" />
-          </p>
-          <p v-if="modelValue?.request?.content_image_url" class="description">
-            <font-awesome-icon icon="fa-regular fa-message" class="mr-1" />
-            {{ $t('qrart.name.contentImageUrl') }}:
-            <font-awesome-icon
-              icon="fa-solid fa-up-right-from-square"
-              class="mr-1 cursor-pointer"
-              @click="onOpenLink(modelValue?.request?.content_image_url)"
-            />
-          </p>
-          <p v-if="modelValue?.request?.seed || modelValue?.response?.seed" class="description">
-            <font-awesome-icon icon="fa-solid fa-seedling" class="mr-1" />
-            {{ $t('qrart.name.seed') }}:
-            {{ modelValue?.request?.seed || modelValue?.response?.seed }}
-            <copy-to-clipboard
-              :content="(modelValue?.request?.seed || modelValue?.response?.seed).toString()!"
-              class="btn-copy"
-            />
-          </p>
         </el-alert>
       </div>
+      <!-- Display error message -->
       <div v-if="modelValue?.response?.success === false" :class="{ content: true }">
         <el-alert :closable="false" class="failure">
           <template #template>
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
-            {{ $t('qrart.name.failure') }}
+            {{ $t('luma.name.failure') }}
           </template>
           <p class="description">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
-            {{ $t('qrart.name.taskId') }}:
+            {{ $t('luma.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
           </p>
           <p class="description">
             <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
-            {{ $t('qrart.name.failureReason') }}:
+            {{ $t('luma.name.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
             <copy-to-clipboard :content="modelValue?.response?.error?.message!" class="btn-copy" />
           </p>
           <p class="description">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
-            {{ $t('qrart.name.traceId') }}:
+            {{ $t('luma.name.traceId') }}:
             {{ modelValue?.response?.trace_id }}
             <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy" />
           </p>
         </el-alert>
       </div>
+      <!-- Display error message -->
       <div v-if="!modelValue?.response" :class="{ content: true }">
         <el-alert :closable="false" class="info">
           <template #template>
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
-            {{ $t('qrart.name.failure') }}
+            {{ $t('luma.name.failure') }}
           </template>
           <p class="description">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
-            {{ $t('qrart.name.taskId') }}:
+            {{ $t('luma.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
           </p>
@@ -120,7 +96,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElImage, ElAlert, ElButton } from 'element-plus';
-import { IQrartTask } from '@/models';
+import { ILumaTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -135,7 +111,7 @@ export default defineComponent({
   },
   props: {
     modelValue: {
-      type: Object as () => IQrartTask | undefined,
+      type: Object as () => ILumaTask | undefined,
       required: true
     }
   },
@@ -144,7 +120,7 @@ export default defineComponent({
   },
   computed: {
     application() {
-      return this.$store.state.qrart?.application;
+      return this.$store.state.luma?.application;
     }
   },
   methods: {
@@ -256,7 +232,7 @@ $left-width: 70px;
       min-width: 100px;
       .image {
         max-height: 400px;
-        max-width: 300px;
+        max-width: 500px;
         display: block;
         width: fit-content;
       }
@@ -268,12 +244,25 @@ $left-width: 70px;
         z-index: 1000;
         display: none;
       }
+      .play-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 48px;
+        color: white;
+        z-index: 500;
+        pointer-events: none; /* Ensure the icon doesn't interfere with hover */
+      }
       &:hover {
         .image {
           filter: brightness(0.6);
         }
         .btn-raw {
           display: block;
+        }
+        .play-icon {
+          display: none;
         }
       }
     }

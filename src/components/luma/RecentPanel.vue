@@ -23,7 +23,7 @@
       <task-preview v-for="(task, taskIndex) in tasks?.items" :key="taskIndex" :model-value="task" class="preview" />
     </div>
     <p v-if="tasks?.items?.length === 0" class="description">
-      {{ $t('qrart.message.noTasks') }}
+      {{ $t('luma.message.noTasks') }}
     </p>
   </div>
 </template>
@@ -49,8 +49,8 @@ export default defineComponent({
     tasks() {
       // reverse the order of the tasks.items
       return {
-        ...this.$store.state.qrart?.tasks,
-        items: this.$store.state.qrart?.tasks?.items?.slice().reverse()
+        ...this.$store.state.luma?.tasks,
+        items: this.$store.state.luma?.tasks?.items?.slice().reverse()
       };
     }
   }

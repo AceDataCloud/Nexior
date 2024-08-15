@@ -1,37 +1,39 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('qrart.name.advanced') }}</h2>
+    <h2 class="title">{{ $t('luma.name.advanced') }}</h2>
     <el-switch v-model="value" class="value" />
+    <info-icon :content="$t('luma.description.endImageUrl')" class="info" />
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
 import { ElSwitch } from 'element-plus';
-import { QRART_DEFAULT_ADVANCED } from '@/constants';
-
+import { LUMA_DEFAULT_LOOP } from '@/constants';
+import InfoIcon from '@/components/common/InfoIcon.vue';
 export default defineComponent({
-  name: 'AdvancedSelector',
+  name: 'LoopSelector',
   components: {
-    ElSwitch
+    ElSwitch,
+    InfoIcon
   },
   computed: {
     value: {
       get() {
-        return this.$store.state.qrart?.config?.advanced;
+        return this.$store.state.luma?.config?.loop;
       },
       set(val) {
-        console.debug('set advanced', val);
-        this.$store.commit('qrart/setConfig', {
-          ...this.$store.state.qrart?.config,
-          advanced: val
+        console.debug('set loop', val);
+        this.$store.commit('luma/setConfig', {
+          ...this.$store.state.luma?.config,
+          loop: val
         });
       }
     }
   },
   mounted() {
     if (this.value === undefined) {
-      this.value = QRART_DEFAULT_ADVANCED;
+      this.value = LUMA_DEFAULT_LOOP;
     }
   }
 });
@@ -50,9 +52,7 @@ export default defineComponent({
   }
   .value {
     flex: 1;
-  }
-  .info {
-    width: 20px;
+    margin-left: 60px; // Adjust this value as needed
   }
 }
 </style>

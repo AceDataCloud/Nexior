@@ -1,7 +1,7 @@
 <template>
   <layout>
     <template #config>
-      <config-panel />
+      <config-panel @generate="onGenerateVideo" />
     </template>
     <template #result>
       <application-status
@@ -13,7 +13,7 @@
         @refresh="onGetApplication"
       />
       <recent-panel class="panel recent" />
-      <operation-panel class="panel operation" @generate="onGenerate" />
+      <!-- <operation-panel class="panel operation" @generate="onGenerate" /> -->
     </template>
   </layout>
 </template>
@@ -27,7 +27,6 @@ import { IApplicationDetailResponse, ILumaGenerateRequest, Status } from '@/mode
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP } from '@/constants';
 import ApplicationStatus from '@/components/application/Status.vue';
-import OperationPanel from '@/components/luma/OperationPanel.vue';
 import RecentPanel from '@/components/luma/RecentPanel.vue';
 import { ILumaTask } from '@/models';
 
@@ -44,8 +43,7 @@ export default defineComponent({
     ConfigPanel,
     Layout,
     ApplicationStatus,
-    RecentPanel,
-    OperationPanel
+    RecentPanel
   },
   data(): IData {
     return {
@@ -137,30 +135,10 @@ export default defineComponent({
         offset: 0
       });
     },
-    async onGenerate() {
+    async onGenerateVideo() {
       const request = {
-        type: this.config?.type,
-        content: this.config?.content,
-        content_image_url: this.config?.content_image_url,
-        prompt: this.config?.prompt,
-        aspect_ratio: this.config?.aspect_ratio,
-        callback_url: CALLBACK_URL,
-        qrw: this.config?.qrw,
-        steps: this.config?.steps,
-        preset: this.config?.preset,
-        ...(this.config?.advanced
-          ? {
-              position: this.config?.position,
-              pixel_style: this.config?.pixel_style,
-              marker_shape: this.config?.marker_shape,
-              sub_marker: this.config?.sub_marker,
-              rotate: this.config?.rotate,
-              ecl: this.config?.ecl,
-              seed: this.config?.seed,
-              padding_level: this.config?.padding_level,
-              padding_noise: this.config?.padding_noise
-            }
-          : {})
+        ...this.config,
+        callback_url: CALLBACK_URL
       } as ILumaGenerateRequest;
       const token = this.credential?.token;
       if (!token) {

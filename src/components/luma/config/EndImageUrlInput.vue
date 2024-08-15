@@ -1,18 +1,20 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('qrart.name.seed') }}</h2>
-    <el-input v-model="value" class="value" :placeholder="$t('qrart.placeholder.seed')" />
+    <h2 class="title">{{ $t('luma.name.endImageUrl') }}</h2>
+    <el-input v-model="value" class="value" :placeholder="$t('luma.placeholder.endImageUrl')" />
+    <info-icon :content="$t('luma.description.endImageUrl')" class="info" />
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
 import { ElInput } from 'element-plus';
-
+import InfoIcon from '@/components/common/InfoIcon.vue';
 export default defineComponent({
-  name: 'SeedInput',
+  name: 'EndImageUrlInput',
   components: {
-    ElInput
+    ElInput,
+    InfoIcon
   },
   data() {
     return {};
@@ -20,13 +22,13 @@ export default defineComponent({
   computed: {
     value: {
       get() {
-        return this.$store.state.qrart?.config?.seed;
+        return this.$store.state.luma?.config?.end_image_url;
       },
       set(val) {
-        console.debug('set seed', val);
-        this.$store.commit('qrart/setConfig', {
-          ...this.$store.state.qrart?.config,
-          seed: val ? parseInt(val) : undefined
+        console.debug('set end_image_url', val);
+        this.$store.commit('luma/setConfig', {
+          ...this.$store.state.luma?.config,
+          end_image_url: val
         });
       }
     }

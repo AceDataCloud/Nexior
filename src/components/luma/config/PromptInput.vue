@@ -1,33 +1,46 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('qrart.name.prompt') }}</h2>
-    <el-input v-model="value" :rows="3" type="textarea" class="prompt" :placeholder="$t('qrart.placeholder.prompt')" />
+    <div class="box">
+      <h2 class="title">{{ $t('luma.name.prompt') }}</h2>
+      <info-icon :content="$t('luma.description.prompt')" class="info" />
+    </div>
+    <el-input
+      v-model="prompt"
+      :rows="3"
+      type="textarea"
+      class="prompt"
+      :placeholder="$t('luma.placeholder.prompt')"
+      :maxlength="300"
+      show-word-limit
+    />
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
 import { ElInput } from 'element-plus';
+import InfoIcon from '@/components/common/InfoIcon.vue';
 
 export const DEFAULT_PROMPT = '';
 
 export default defineComponent({
   name: 'PromptInput',
   components: {
-    ElInput
+    ElInput,
+    InfoIcon
   },
   data() {
     return {};
   },
   computed: {
-    value: {
+    prompt: {
       get() {
-        return this.$store.state.qrart?.config?.prompt;
+        return this.$store.state.suno?.config?.prompt;
       },
       set(val) {
         console.debug('set prompt', val);
-        this.$store.commit('qrart/setConfig', {
-          ...this.$store.state.qrart?.config,
+        this.$store.commit('suno/setConfig', {
+          ...this.$store.state.suno?.config,
           prompt: val
         });
       }
@@ -43,11 +56,15 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .field {
-  .title {
-    font-size: 14px;
-    margin: 0;
-    width: 30%;
-    margin-bottom: 10px;
+  .box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    .title {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
   }
 }
 </style>

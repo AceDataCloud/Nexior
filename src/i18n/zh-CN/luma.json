@@ -35,8 +35,12 @@
     "message": "像素风格",
     "description": "要生成的 QR 码的像素风格"
   },
-  "name.seed": {
-    "message": "种子值",
+  "name.startImageUrl": {
+    "message": "首帧图片",
+    "description": "要生成的 QR 码的种子"
+  },
+  "name.endImageUrl": {
+    "message": "尾帧图片",
     "description": "要生成的 QR 码的种子"
   },
   "name.paddingLevel": {
@@ -60,7 +64,7 @@
     "description": "要生成的 QR 码的位置"
   },
   "name.prompt": {
-    "message": "提示",
+    "message": "视频提示",
     "description": "内容输入的提示"
   },
   "name.rotate": {
@@ -68,7 +72,7 @@
     "description": "要生成的 QR 码的旋转"
   },
   "name.advanced": {
-    "message": "高级",
+    "message": "提示词增强",
     "description": "要生成的 QR 码的高级设置"
   },
   "name.aspectRatio": {
@@ -95,9 +99,9 @@
     "message": "预设风格",
     "description": "要生成的 QR 码的预设"
   },
-  "name.qrartBot": {
-    "message": "QrArt Bot",
-    "description": "QR 码生成器的名称"
+  "name.lumaBot": {
+    "message": "Luma Bot",
+    "description": "Luma 视频生成器的名称"
   },
   "name.contentImageUrl": {
     "message": "内容图片链接",
@@ -115,9 +119,17 @@
     "message": "QR 码可见性，尺寸越大，QR 码可见度越高",
     "description": "参数'qrw'的描述"
   },
-  "description.steps": {
-    "message": "生成 QR 码的步数，步数越多，QR 码可见度越高",
+  "description.startImageUrl": {
+    "message": "指定生成视频的首帧图片",
     "description": "参数'steps'的描述"
+  },
+  "description.endImageUrl": {
+    "message": "指定生成视频的尾帧图片",
+    "description": "参数'steps'的描述"
+  },
+  "description.prompt": {
+    "message": "生成Luma视频的提示词",
+    "description": "参数'prompt'的描述"
   },
   "status.pending": {
     "message": "等待中",
@@ -132,11 +144,15 @@
     "description": "填充级别的占位符"
   },
   "placeholder.prompt": {
-    "message": "输入要生成的 QR 码风格的提示词，例如：flowers",
+    "message": "输入要生成的视频风格的提示词，例如：Astronauts shuttle from space to volcano",
     "description": "提示字段中的占位文本"
   },
-  "placeholder.seed": {
-    "message": "种子范围为 1 到 9007199254740991",
+  "placeholder.startImageUrl": {
+    "message": "首帧图片链接",
+    "description": "种子输入的占位符"
+  },
+  "placeholder.endImageUrl": {
+    "message": "尾帧图片链接",
     "description": "种子输入的占位符"
   },
   "placeholder.position": {
@@ -169,7 +185,11 @@
   },
   "button.generate": {
     "message": "生成",
-    "description": "生成 QR 码的按钮文本"
+    "description": "生成Luma视频的按钮文本"
+  },
+  "button.extend": {
+    "message": "继续生成",
+    "description": "继续生成按钮文本"
   },
   "button.uploadQr": {
     "message": "上传二维码",
@@ -320,7 +340,7 @@
     "description": "没有可用操作时的消息"
   },
   "message.noTasks": {
-    "message": "没有历史任务，请点击下方生成新二维码",
+    "message": "没有历史任务，请点击左方生成视频",
     "description": "没有任务时的消息"
   },
   "markerShape.square": {
