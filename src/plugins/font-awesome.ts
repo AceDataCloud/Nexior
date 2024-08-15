@@ -10,6 +10,7 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 import { faDiscord as faBrandsDiscord, faWeixin as faBrandsWeixin } from '@fortawesome/free-brands-svg-icons';
 import {
+  faSync as faSolidSync,
   faDownload as faSolidDownload,
   faMusic as faSolidMusic,
   faLanguage as faSolidLanguage,
@@ -73,6 +74,7 @@ import {
   faWandMagic as faSolidWandMagic,
   faAngleDown as faSolidAngleDown
 } from '@fortawesome/free-solid-svg-icons';
+library.add(faSolidSync);
 library.add(faSolidMusic);
 library.add(faRegularCopy);
 library.add(faRegularMessage);

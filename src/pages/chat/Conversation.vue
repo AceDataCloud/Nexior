@@ -9,6 +9,12 @@
         :service="service"
         @refresh="$store.dispatch('chat/getApplication')"
       />
+      <div class="setting">
+        <el-button round class="menu" @click="drawer = true">
+          <font-awesome-icon icon="fa-solid fa-gear" class="icon-menu" />
+        </el-button>
+        <el-dialog v-model="drawer" center width="80%"> 1111 </el-dialog>
+      </div>
       <div class="dialogue">
         <introduction v-if="messages.length === 0" @draft="onDraft" />
         <div v-else class="messages">
@@ -43,6 +49,8 @@
 
 <script lang="ts">
 import axios from 'axios';
+import { ElDialog, ElButton } from 'element-plus';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { defineComponent } from 'vue';
 import Message from '@/components/chat/Message.vue';
 import { ROLE_ASSISTANT, ROLE_USER } from '@/constants';
@@ -59,6 +67,7 @@ import { chatOperator } from '@/operators';
 import ApplicationStatus from '@/components/application/Status.vue';
 
 export interface IData {
+  drawer: boolean;
   question: string;
   references: string[];
   answering: boolean;
@@ -73,10 +82,14 @@ export default defineComponent({
     ModelSelector,
     Message,
     ApplicationStatus,
-    Layout
+    Layout,
+    ElButton,
+    ElDialog,
+    FontAwesomeIcon
   },
   data(): IData {
     return {
+      drawer: false,
       question: '',
       references: [],
       answering: false,
@@ -395,6 +408,17 @@ export default defineComponent({
   left: 10px;
   top: 10px;
 }
+.setting {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  margin-bottom: 10px;
+}
+@media (max-width: 767px) {
+  .setting {
+    display: none;
+  }
+}
 
 .dialogue {
   flex: 1;
@@ -409,6 +433,7 @@ export default defineComponent({
     }
   }
 }
+
 .bottom {
   width: 100%;
 }

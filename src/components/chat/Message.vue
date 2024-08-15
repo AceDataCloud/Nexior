@@ -55,6 +55,11 @@
         <answering-mark v-if="message.state === messageState.PENDING" />
       </div>
       <div class="operations">
+        <restart-to-generate
+          v-if="!Array.isArray(message.content) && message.role === 'assistant'"
+          :content="message.content!"
+          class="btn-copy"
+        />
         <copy-to-clipboard v-if="!Array.isArray(message.content)" :content="message.content!" class="btn-copy" />
       </div>
     </div>
@@ -73,7 +78,8 @@ import { ElAlert, ElButton, ElImage, ElTooltip, ElInput } from 'element-plus';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IApplication, IChatMessage, IChatMessageState } from '@/models';
-import CopyToClipboard from '../common/CopyToClipboard.vue';
+import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
+import RestartToGenerate from '@/components/common/RestartToGenerate.vue';
 import {
   ERROR_CODE_API_ERROR,
   ERROR_CODE_BAD_REQUEST,
@@ -98,6 +104,7 @@ export default defineComponent({
   name: 'Message',
   components: {
     CopyToClipboard,
+    RestartToGenerate,
     AnsweringMark,
     MarkdownRenderer,
     ElAlert,
