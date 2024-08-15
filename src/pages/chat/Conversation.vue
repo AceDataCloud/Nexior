@@ -27,8 +27,8 @@
             :application="application"
             class="message"
             @update:question="question = $event"
-            @update:messages="messages = $event"
             @edit="onEdit"
+            @restart="onRestart"
           />
         </div>
       </div>
@@ -171,6 +171,81 @@ export default defineComponent({
     async onDraft(question: string) {
       this.question = question;
       this.onSubmit();
+    },
+    async onRestart(targetMessage: IChatMessage) {
+      // 1. Clear the following message
+      const targetIndex = this.messages.findIndex((message) => message === targetMessage);
+      if (targetIndex !== -1) {
+        this.messages = this.messages.slice(0, targetIndex);
+        const problem_message = this.messages[targetIndex - 1];
+        // @ts-ignore
+        this.question = problem_message.content;
+      }
+
+      // 2. Update the messages
+      const token = this.credential?.token;
+      const question = this.question;
+      // reset question and references
+      if (!token || !question) {
+        console.error('no token or endpoint or question');
+        this.messages.push({
+          error: {
+            code: ERROR_CODE_NOT_APPLIED
+          },
+          role: ROLE_ASSISTANT,
+          state: IChatMessageState.FAILED
+        });
+        return;
+      }
+      let conversationId = this.conversationId;
+      chatOperator
+        .updateConversation(
+          {
+            id: this.conversationId,
+            messages: this.messages
+          },
+          {
+            token
+          }
+        )
+        .then(async () => {
+          await this.$store.dispatch('chat/setConversation', {
+            id: conversationId,
+            messages: this.messages
+          });
+          console.log('messages', this.messages);
+          console.debug('finished update conversation', this.messages);
+          // 3. Send edited questions
+          console.debug('onRestart', this.question);
+          await this.onFetchAnswer();
+        })
+        .catch((error) => {
+          if (this.messages && this.messages.length > 0) {
+            this.messages[this.messages.length - 1].state = IChatMessageState.FAILED;
+          }
+          console.error(error);
+          if (axios.isCancel(error)) {
+            this.messages[this.messages.length - 1].error = {
+              code: ERROR_CODE_CANCELED
+            };
+          } else if (error?.response?.data) {
+            let data = error?.response?.data;
+            if (isJSONString(data)) {
+              data = JSON.parse(data);
+            }
+            console.debug('error', data);
+            if (this.messages && this.messages.length > 0) {
+              this.messages[this.messages.length - 1].error = data.error;
+            }
+          } else {
+            if (this.messages && this.messages.length > 0) {
+              this.messages[this.messages.length - 1].error = {
+                code: ERROR_CODE_UNKNOWN
+              };
+            }
+          }
+          this.answering = false;
+        });
     },
     async onEdit(targetMessage: IChatMessage, questionValue: string) {
       // 1. Clear the following message
@@ -355,6 +430,7 @@ export default defineComponent({
             id: conversationId,
             messages: this.messages
           });
+          console.log('messages', this.messages);
           this.answering = false;
           if (!this.conversationId) {
             await this.$router.push({

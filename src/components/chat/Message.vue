@@ -57,9 +57,12 @@
       <div class="operations">
         <copy-to-clipboard v-if="!Array.isArray(message.content)" :content="message.content!" class="btn-copy" />
         <restart-to-generate
-          v-if="!Array.isArray(message.content) && message.role === 'assistant'"
-          :content="message.content!"
-          class="btn-copy"
+          v-if="
+            !Array.isArray(message.content) && message.role === 'assistant' && message === messages[messages.length - 1]
+          "
+          class="btn-restart"
+          :messages="messages"
+          @restart="sendRestart"
         />
       </div>
     </div>
@@ -115,6 +118,11 @@ export default defineComponent({
     ElInput
   },
   props: {
+    messages: {
+      type: Array,
+      required: false,
+      default: () => []
+    },
     message: {
       type: Object as () => IChatMessage,
       required: true
@@ -124,7 +132,7 @@ export default defineComponent({
       required: true
     }
   },
-  emits: ['stop', 'update:messages', 'edit'],
+  emits: ['stop', 'edit', 'restart'],
   data(): IData {
     return {
       copied: false,
@@ -171,6 +179,10 @@ export default defineComponent({
     },
     cancelEdit() {
       this.isEditing = false;
+    },
+    sendRestart() {
+      // Implement the logic to save the edited content
+      this.$emit('restart', this.message);
     },
     sendEdit() {
       // Implement the logic to save the edited content
@@ -319,7 +331,13 @@ export default defineComponent({
   }
 
   .operations {
-    display: block;
+    display: flex; // Use flexbox for better alignment
+    gap: 10px; // Adjust the gap value as needed
+    margin-left: 5px; // Adjust the value as needed
+    .btn-restart {
+      color: var(--el-text-color-regular);
+      font-size: 14px;
+    }
     .btn-copy {
       color: var(--el-text-color-regular);
       font-size: 14px;
