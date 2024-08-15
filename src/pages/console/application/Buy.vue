@@ -29,14 +29,8 @@
                     {{ application?.service?.title }}
                   </el-form-item>
                   <el-form-item :label="$t('application.field.package')">
-                    <el-radio-group v-if="application?.service?.packages" v-model="form.packageId">
-                      <el-radio-button
-                        v-for="(pkg, pkgIndex) in application?.service.packages"
-                        v-show="pkg.type === 'Usage'"
-                        :key="pkgIndex"
-                        :label="pkg.id"
-                        class="mb-2"
-                      >
+                    <el-radio-group v-if="packages" v-model="form.packageId">
+                      <el-radio-button v-for="(pkg, pkgIndex) in packages" :key="pkgIndex" :label="pkg.id" class="mb-2">
                         {{ pkg.amount }} {{ $t(`service.unit.${application?.service?.unit}s`) }}
                       </el-radio-button>
                     </el-radio-group>
@@ -85,7 +79,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IApplication, IApplicationDetailResponse, IOrderDetailResponse } from '@/models';
+import { IApplication, IApplicationDetailResponse, IOrderDetailResponse, IPackageType } from '@/models';
 import {
   ElRow,
   ElCol,
@@ -155,9 +149,12 @@ export default defineComponent({
       }
       return 0;
     },
+    packages() {
+      return this.application?.service?.packages?.filter((pkg) => pkg.type === IPackageType.USAGE);
+    },
     package() {
-      if (this.application?.service?.packages && this.form.packageId) {
-        const filterPackages = this.application.service?.packages.filter((item) => item.id === this.form.packageId);
+      if (this.packages && this.form.packageId) {
+        const filterPackages = this.packages.filter((item) => item.id === this.form.packageId);
         if (filterPackages.length > 0) {
           return filterPackages[0];
         }
@@ -178,7 +175,7 @@ export default defineComponent({
           this.application = data;
           this.loading = false;
           // by default select first packageId
-          this.form.packageId = this.application?.service?.packages?.[0]?.id;
+          this.form.packageId = this.packages?.[0]?.id;
         })
         .catch(() => {
           this.loading = false;

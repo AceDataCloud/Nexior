@@ -1,8 +1,40 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Mon, 12 Aug 2024 13:15:36 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2024 16:11:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.7.0
+
+Thu, 15 Aug 2024 16:11:49 GMT
+
+### Minor changes
+
+- fix chat restart (1348977728@qq.com)
+
+## 2.6.1
+
+Wed, 14 Aug 2024 17:53:13 GMT
+
+### Patches
+
+- fix edit message (office@acedata.cloud)
+
+## 2.6.0
+
+Wed, 14 Aug 2024 08:41:03 GMT
+
+### Minor changes
+
+- add edit chat (1348977728@qq.com)
+
+## 2.5.1
+
+Wed, 14 Aug 2024 04:06:01 GMT
+
+### Patches
+
+- fix application packages options (office@acedata.cloud)
 
 ## 2.5.0
 
