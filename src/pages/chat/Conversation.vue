@@ -175,9 +175,9 @@ export default defineComponent({
     async onRestart(targetMessage: IChatMessage) {
       // 1. Clear the following message
       const targetIndex = this.messages.findIndex((message) => message === targetMessage);
+      const problem_message = this.messages[targetIndex - 1];
       if (targetIndex !== -1) {
-        this.messages = this.messages.slice(0, targetIndex);
-        const problem_message = this.messages[targetIndex - 1];
+        this.messages = this.messages.slice(0, targetIndex - 1);
         // @ts-ignore
         this.question = problem_message.content;
       }
@@ -213,9 +213,12 @@ export default defineComponent({
             id: conversationId,
             messages: this.messages
           });
-          console.log('messages', this.messages);
           console.debug('finished update conversation', this.messages);
-          // 3. Send edited questions
+          this.messages.push({
+            content: this.question,
+            role: ROLE_USER
+          });
+          // 3. Send restart questions
           console.debug('onRestart', this.question);
           await this.onFetchAnswer();
         })
@@ -430,7 +433,7 @@ export default defineComponent({
             id: conversationId,
             messages: this.messages
           });
-          console.log('messages', this.messages);
+          console.log('messages', JSON.stringify(this.messages));
           this.answering = false;
           if (!this.conversationId) {
             await this.$router.push({
