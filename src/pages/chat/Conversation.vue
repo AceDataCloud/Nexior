@@ -21,8 +21,8 @@
             :application="application"
             class="message"
             @update:question="question = $event"
-            @update:messages="messages = $event"
             @edit="onEdit"
+            @restart="onRestart"
           />
         </div>
       </div>
@@ -59,6 +59,7 @@ import { chatOperator } from '@/operators';
 import ApplicationStatus from '@/components/application/Status.vue';
 
 export interface IData {
+  drawer: boolean;
   question: string;
   references: string[];
   answering: boolean;
@@ -77,6 +78,7 @@ export default defineComponent({
   },
   data(): IData {
     return {
+      drawer: false,
       question: '',
       references: [],
       answering: false,
@@ -158,6 +160,84 @@ export default defineComponent({
     async onDraft(question: string) {
       this.question = question;
       this.onSubmit();
+    },
+    async onRestart(targetMessage: IChatMessage) {
+      // 1. Clear the following message
+      const targetIndex = this.messages.findIndex((message) => message === targetMessage);
+      const problem_message = this.messages[targetIndex - 1];
+      if (targetIndex !== -1) {
+        this.messages = this.messages.slice(0, targetIndex - 1);
+        // @ts-ignore
+        this.question = problem_message.content;
+      }
+
+      // 2. Update the messages
+      const token = this.credential?.token;
+      const question = this.question;
+      // reset question and references
+      if (!token || !question) {
+        console.error('no token or endpoint or question');
+        this.messages.push({
+          error: {
+            code: ERROR_CODE_NOT_APPLIED
+          },
+          role: ROLE_ASSISTANT,
+          state: IChatMessageState.FAILED
+        });
+        return;
+      }
+      let conversationId = this.conversationId;
+      chatOperator
+        .updateConversation(
+          {
+            id: this.conversationId,
+            messages: this.messages
+          },
+          {
+            token
+          }
+        )
+        .then(async () => {
+          await this.$store.dispatch('chat/setConversation', {
+            id: conversationId,
+            messages: this.messages
+          });
+          console.debug('finished update conversation', this.messages);
+          this.messages.push({
+            content: this.question,
+            role: ROLE_USER
+          });
+          // 3. Send restart questions
+          console.debug('onRestart', this.question);
+          await this.onFetchAnswer();
+        })
+        .catch((error) => {
+          if (this.messages && this.messages.length > 0) {
+            this.messages[this.messages.length - 1].state = IChatMessageState.FAILED;
+          }
+          console.error(error);
+          if (axios.isCancel(error)) {
+            this.messages[this.messages.length - 1].error = {
+              code: ERROR_CODE_CANCELED
+            };
+          } else if (error?.response?.data) {
+            let data = error?.response?.data;
+            if (isJSONString(data)) {
+              data = JSON.parse(data);
+            }
+            console.debug('error', data);
+            if (this.messages && this.messages.length > 0) {
+              this.messages[this.messages.length - 1].error = data.error;
+            }
+          } else {
+            if (this.messages && this.messages.length > 0) {
+              this.messages[this.messages.length - 1].error = {
+                code: ERROR_CODE_UNKNOWN
+              };
+            }
+          }
+          this.answering = false;
+        });
     },
     async onEdit(targetMessage: IChatMessage, questionValue: string) {
       // 1. Clear the following message
@@ -342,6 +422,7 @@ export default defineComponent({
             id: conversationId,
             messages: this.messages
           });
+          console.log('messages', JSON.stringify(this.messages));
           this.answering = false;
           if (!this.conversationId) {
             await this.$router.push({
@@ -395,6 +476,17 @@ export default defineComponent({
   left: 10px;
   top: 10px;
 }
+.setting {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  margin-bottom: 10px;
+}
+@media (max-width: 767px) {
+  .setting {
+    display: none;
+  }
+}
 
 .dialogue {
   flex: 1;
@@ -409,6 +501,7 @@ export default defineComponent({
     }
   }
 }
+
 .bottom {
   width: 100%;
 }
