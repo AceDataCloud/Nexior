@@ -209,7 +209,7 @@ export default defineComponent({
             name: ROUTE_LUMA_INDEX
           },
           displayName: this.$t('common.nav.luma'),
-          icon: 'fa-solid fa-video',
+          icon: 'fa-solid fa-film',
           routes: [ROUTE_LUMA_INDEX, ROUTE_LUMA_HISTORY]
         });
       }
