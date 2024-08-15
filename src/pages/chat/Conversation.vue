@@ -9,12 +9,6 @@
         :service="service"
         @refresh="$store.dispatch('chat/getApplication')"
       />
-      <div class="setting">
-        <el-button round class="menu" @click="drawer = true">
-          <font-awesome-icon icon="fa-solid fa-gear" class="icon-menu" />
-        </el-button>
-        <el-dialog v-model="drawer" center width="80%"> 1111 </el-dialog>
-      </div>
       <div class="dialogue">
         <introduction v-if="messages.length === 0" @draft="onDraft" />
         <div v-else class="messages">
@@ -49,8 +43,6 @@
 
 <script lang="ts">
 import axios from 'axios';
-import { ElDialog, ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { defineComponent } from 'vue';
 import Message from '@/components/chat/Message.vue';
 import { ROLE_ASSISTANT, ROLE_USER } from '@/constants';
@@ -82,10 +74,7 @@ export default defineComponent({
     ModelSelector,
     Message,
     ApplicationStatus,
-    Layout,
-    ElButton,
-    ElDialog,
-    FontAwesomeIcon
+    Layout
   },
   data(): IData {
     return {
