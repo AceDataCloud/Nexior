@@ -1,4 +1,8 @@
 {
+  "button.extend": {
+    "message": "استمر في التوليد",
+    "description": "نص زر الاستمرار في التوليد"
+  },
   "button.download": {
     "message": "تحميل",
     "description": "نص زر التحميل"
@@ -24,8 +28,8 @@
     "description": "النموذج المستخدم لتوليد الموسيقى"
   },
   "name.taskId": {
-    "message": "معرف المهمة",
-    "description": "معرف المهمة"
+    "message": "معرّف المهمة",
+    "description": "معرّف المهمة"
   },
   "name.type": {
     "message": "وضع مخصص",
@@ -33,19 +37,23 @@
   },
   "name.prompt": {
     "message": "وصف الأغنية",
-    "description": "المشغل لدخل المحتوى"
+    "description": "إشارة إدخال المحتوى"
+  },
+  "name.extend": {
+    "message": "تمديد الأغنية من",
+    "description": "إشارة إدخال المحتوى"
   },
   "name.lyrics": {
     "message": "محتوى الكلمات",
-    "description": "المشغل لدخل محتوى الكلمات"
+    "description": "إشارة إدخال محتوى الكلمات"
   },
   "name.style": {
     "message": "أسلوب الأغنية",
-    "description": "المشغل لدخل أسلوب الأغنية"
+    "description": "إشارة إدخال محتوى أسلوب الأغنية"
   },
   "name.title": {
     "message": "عنوان الأغنية",
-    "description": "المشغل لدخل عنوان الأغنية"
+    "description": "إشارة إدخال محتوى عنوان الأغنية"
   },
   "name.failureReason": {
     "message": "سبب الفشل",
@@ -56,15 +64,15 @@
     "description": "حالة المهمة"
   },
   "name.traceId": {
-    "message": "معرف التتبع",
-    "description": "معرف تتبع المهمة"
+    "message": "معرّف التتبع",
+    "description": "معرّف تتبع المهمة"
   },
   "name.sunoBot": {
-    "message": "روبوت سونو",
-    "description": "اسم مولد سونو"
+    "message": "بوت سونو",
+    "description": "اسم مولّد سونو"
   },
   "description.prompt": {
-    "message": "أدخل أسلوب وموضوع الموسيقى التي تريد إنشاءها، مثل موسيقى بوب أكوستيكية عن العطلات",
+    "message": "املأ نمط وموضوع الموسيقى التي ترغب في توليدها، مثل البوب الع acoustic حول العطلات",
     "description": "وصف المعامل 'prompt'"
   },
   "description.lyrics": {
@@ -84,32 +92,40 @@
     "description": "حالة انتظار المهمة"
   },
   "placeholder.prompt": {
-    "message": "أدخل كلمات الأغنية...",
-    "description": "نص العنصر النائب لدخل الضوضاء"
+    "message": "الرجاء إدخال كلمات أغنية...",
+    "description": "نص بديل لإدخال الضوضاء"
   },
   "placeholder.lyrics": {
-    "message": "أدخل كلمات الأغنية...",
-    "description": "نص العنصر النائب لمستوى التعبئة"
+    "message": "الرجاء إدخال الكلمات...",
+    "description": "نص بديل لمستوى الملء"
+  },
+  "placeholder.extend.lyrics": {
+    "message": "الرجاء إدخال الكلمات التي تحتاج إلى التمديد...",
+    "description": "نص بديل لمستوى الملء"
+  },
+  "placeholder.extend.continue_at": {
+    "message": "الرجاء إدخال من أي ثانية في الأغنية تحتاج إلى التمديد...",
+    "description": "نص بديل لمستوى الملء"
   },
   "placeholder.style": {
-    "message": "أدخل كلمات أسلوب الأغنية المراد إنشاؤها، مثل موسيقى بوب أكوستيكية",
-    "description": "نص العنصر النائب في حقل الإدخال"
+    "message": "الرجاء إدخال كلمات نمط الأغنية التي ترغب في توليدها، مثل البوب الع acoustic",
+    "description": "نص بديل في حقل الإدخال"
   },
   "placeholder.title": {
-    "message": "أدخل كلمات عنوان الأغنية المراد إنشاؤها، مثل أغنية العطلة",
-    "description": "نص العنصر النائب لإدخال البذور"
+    "message": "الرجاء إدخال كلمات عنوان الأغنية التي ترغب في توليدها، مثل أغنية العطلات",
+    "description": "نص بديل لإدخال البذور"
   },
   "placeholder.select": {
-    "message": "اختر النموذج...",
-    "description": "نص العنصر النائب لإدخال الموضع"
+    "message": "يرجى اختيار النموذج...",
+    "description": "نص بديل لإدخال الموقع"
   },
   "placeholder.position": {
-    "message": "اختر...",
-    "description": "نص العنصر النائب لإدخال الموضع"
+    "message": "يرجى الاختيار...",
+    "description": "نص بديل لإدخال الموقع"
   },
   "button.generate": {
-    "message": "إنشاء",
-    "description": "نص زر الإنشاء"
+    "message": "توليد",
+    "description": "نص زر التوليد"
   },
   "message.startingTask": {
     "message": "جارٍ بدء المهمة...",
@@ -120,7 +136,7 @@
     "description": "رسالة نجاح عند بدء مهمة توليد الموسيقى"
   },
   "message.startTaskFailed": {
-    "message": "فشل بدء مهمة توليد الموسيقى",
+    "message": "فشل في بدء مهمة توليد الموسيقى",
     "description": "رسالة خطأ عند فشل بدء مهمة توليد الموسيقى"
   },
   "message.generating": {
@@ -136,7 +152,7 @@
     "description": "رسالة عند عدم وجود عمليات متاحة"
   },
   "message.noTasks": {
-    "message": "لا توجد مهام تاريخية، يرجى توليد الموسيقى من الشريط الجانبي الأيسر",
+    "message": "لا توجد مهام تاريخية، يرجى توليد الموسيقى في الشريط الجانبي الأيسر",
     "description": "رسالة عند عدم وجود مهام"
   }
 }

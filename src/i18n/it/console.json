@@ -1,15 +1,15 @@
 {
   "button.suggested": {
     "message": "Suggerito",
-    "description": "Testo del pulsante, suggerito indica il pulsante di raccomandazione"
+    "description": "Testo del pulsante, suggerito indica un pulsante di raccomandazione"
   },
   "menu.orderList": {
     "message": "Elenco ordini",
-    "description": "Testo nel menu del sito, elenco ordini indica gli ordini effettuati dall'utente per acquistare servizi"
+    "description": "Testo nel menu del sito, elenco ordini indica gli ordini dei servizi acquistati dall'utente"
   },
   "menu.applicationList": {
     "message": "Elenco domande",
-    "description": "Testo nel menu del sito, elenco domande indica le richieste degli utenti per utilizzare i servizi"
+    "description": "Testo nel menu del sito, elenco domande indica le richieste dei servizi da parte dell'utente"
   },
   "menu.userProfile": {
     "message": "Profilo utente",
@@ -17,23 +17,23 @@
   },
   "menu.idVerify": {
     "message": "Verifica identità",
-    "description": "Testo nel menu del sito, verifica identità indica la verifica dell'identità dell'utente"
+    "description": "Testo nel menu del sito, verifica identità indica la convalida dell'identità dell'utente"
   },
   "menu.manageApplication": {
     "message": "Gestione domande",
-    "description": "Testo nel menu del sito, gestione domande indica la gestione delle domande degli utenti"
+    "description": "Testo nel menu del sito, gestione domande indica la gestione delle domande dell'utente"
   },
   "menu.distributionIndex": {
-    "message": "Guadagni da raccomandazione",
-    "description": "Testo nel menu del sito, guadagni da raccomandazione indica i guadagni degli utenti da raccomandazioni"
+    "message": "Guadagni da referenza",
+    "description": "Testo nel menu del sito, guadagni da referenza indica i guadagni derivanti dalle referenze dell'utente"
   },
   "menu.developerPlatform": {
     "message": "Piattaforma per sviluppatori",
     "description": "Testo nel menu del sito, piattaforma per sviluppatori indica la piattaforma dedicata agli sviluppatori"
   },
   "menu.usageList": {
-    "message": "Registro utilizzo",
-    "description": "Testo nel menu del sito, registro utilizzo indica la cronologia delle API utilizzate dagli utenti"
+    "message": "Storico utilizzo",
+    "description": "Testo nel menu del sito, storico utilizzo indica la cronologia dei servizi API utilizzati dall'utente"
   },
   "menu.credentialIndex": {
     "message": "Credenziali",
@@ -41,54 +41,62 @@
   },
   "menu.manageOrder": {
     "message": "Gestione ordini",
-    "description": "Testo nel menu del sito, gestione ordini indica la gestione degli ordini degli utenti"
+    "description": "Testo nel menu del sito, gestione ordini indica la gestione degli ordini dell'utente, ordini che rappresentano i servizi acquistati"
   },
   "menu.manageDistributionStatus": {
     "message": "Gestione distribuzione",
-    "description": "Testo nel menu del sito, gestione distribuzione indica la gestione dello stato di distribuzione degli utenti, relativo ai guadagni da raccomandazione"
+    "description": "Testo nel menu del sito, gestione distribuzione indica la gestione dello stato di distribuzione dell'utente, relativa ai guadagni da referenza"
   },
   "message.benefit1": {
-    "message": "Supporto dedicato dal servizio clienti",
-    "description": "Testo sulla home page, supporto dedicato indica che gli utenti possono ricevere supporto specifico dal servizio clienti"
+    "message": "Supporto assistenza clienti dedicato",
+    "description": "Testo nella homepage del sito, supporto assistenza clienti dedicato indica che l'utente può ricevere supporto da un assistente clienti dedicato"
   },
   "message.benefit2": {
     "message": "Accesso prioritario alle nuove funzionalità",
-    "description": "Testo sulla home page, accesso prioritario indica che gli utenti possono sperimentare per primi le nuove funzionalità"
+    "description": "Testo nella homepage del sito, accesso prioritario alle nuove funzionalità indica che l'utente può provare per primo le nuove funzionalità"
   },
   "message.buyExtra": {
-    "message": "Acquista",
-    "description": "Testo sulla home page, acquisto indica che gli utenti possono comprare il credito"
+    "message": "Acquista ora",
+    "description": "Testo nella homepage del sito, acquisto indica che l'utente può acquistare ulteriori crediti"
   },
   "message.doNotWantSubscribe": {
-    "message": "Non vuoi abbonarti a un abbonamento completo? Puoi anche provare a comprare crediti per singoli servizi.",
-    "description": "Testo sulla home page, non vuoi abbonarti indica che l'utente non desidera sottoscrivere un abbonamento"
+    "message": "Non vuoi abbonarti a tutti i servizi? Puoi anche provare a acquistare crediti per singoli servizi.",
+    "description": "Testo nella homepage del sito, non vuole abbonarsi indica che l'utente non desidera sottoscrivere un abbonamento"
+  },
+  "subscription.3days": {
+    "message": "Abbonamento di 3 giorni",
+    "description": "Tipo di abbonamento, abbonamento di 3 giorni"
+  },
+  "subscription.3days.description": {
+    "message": "Abbonamento provvisorio, adatto per un utilizzo a breve termine.",
+    "description": "Tipo di abbonamento, adatto per un utilizzo a breve termine"
   },
   "subscription.weekly": {
     "message": "Abbonamento settimanale",
-    "description": "Tipo di abbonamento, abbonamento settimanale indica che il tipo di abbonamento acquistato è settimanale"
+    "description": "Tipo di abbonamento, abbonamento settimanale rappresenta il tipo di abbonamento acquistato dall'utente"
   },
   "subscription.monthly": {
     "message": "Abbonamento mensile",
-    "description": "Tipo di abbonamento, abbonamento mensile indica che il tipo di abbonamento acquistato è mensile"
+    "description": "Tipo di abbonamento, abbonamento mensile rappresenta il tipo di abbonamento acquistato dall'utente"
   },
   "subscription.yearly": {
     "message": "Abbonamento annuale",
-    "description": "Tipo di abbonamento, abbonamento annuale indica che il tipo di abbonamento acquistato è annuale"
+    "description": "Tipo di abbonamento, abbonamento annuale rappresenta il tipo di abbonamento acquistato dall'utente"
   },
   "subscription.weekly.description": {
-    "message": "Abbonamento settimanale per una prova, adatto per un uso a breve termine.",
-    "description": "Descrizione del tipo di abbonamento, abbonamento settimanale indica che il tipo di abbonamento acquistato è settimanale"
+    "message": "Abbonamento settimanale provvisorio, adatto per un utilizzo a breve termine.",
+    "description": "Descrizione del tipo di abbonamento, abbonamento settimanale rappresenta il tipo di abbonamento acquistato dall'utente"
   },
   "subscription.monthly.description": {
-    "message": "Abbonamento mensile flessibile, adatto per uso a lungo termine.",
-    "description": "Descrizione del tipo di abbonamento, abbonamento mensile indica che il tipo di abbonamento acquistato è mensile"
+    "message": "Abbonamento mensile flessibile, adatto per un utilizzo a lungo termine.",
+    "description": "Descrizione del tipo di abbonamento, abbonamento mensile rappresenta il tipo di abbonamento acquistato dall'utente"
   },
   "subscription.yearly.description": {
-    "message": "Abbonamento annuale a un valore eccezionale, la scelta più conveniente.",
-    "description": "Descrizione del tipo di abbonamento, abbonamento annuale indica che il tipo di abbonamento acquistato è annuale"
+    "message": "Abbonamento annuale conveniente, la scelta più vantaggiosa.",
+    "description": "Descrizione del tipo di abbonamento, abbonamento annuale rappresenta il tipo di abbonamento acquistato dall'utente"
   },
   "subscription.introduction": {
     "message": "Abbonati per sbloccare tutti i servizi AI del sito.",
-    "description": "Introduzione all'abbonamento indica l'introduzione dei vari abbonamenti"
+    "description": "Introduzione all'abbonamento, indica il contenuto dell'abbonamento"
   }
 }

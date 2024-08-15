@@ -1,11 +1,19 @@
 {
   "button.setup": {
-    "message": "設定",
+    "message": "設置",
+    "description": "按鈕文本，用於設置某些內容"
+  },
+  "button.copy": {
+    "message": "複製該消息",
+    "description": "按鈕文本，用於設置某些內容"
+  },
+  "button.restart": {
+    "message": "重新生成",
     "description": "按鈕文本，用於設置某些內容"
   },
   "button.preview": {
     "message": "預覽",
-    "description": "按鈕文本，用於通過URL打開預覽某個檔案"
+    "description": "按鈕文本，用於通過URL打開預覽某個文件"
   },
   "button.seeRawImage": {
     "message": "查看原圖",
@@ -16,8 +24,8 @@
     "description": "按鈕文本，用於編輯某些內容"
   },
   "button.login": {
-    "message": "登錄",
-    "description": "按鈕文本，用於登錄"
+    "message": "登入",
+    "description": "按鈕文本，用於登入"
   },
   "button.logout": {
     "message": "登出",
@@ -48,16 +56,16 @@
     "description": "按鈕文本，用於顯示信息"
   },
   "button.publish": {
-    "message": "發佈",
-    "description": "按鈕文本，用於發佈某些內容"
+    "message": "發布",
+    "description": "按鈕文本，用於發布某些內容"
   },
   "button.watch": {
     "message": "觀看",
     "description": "按鈕文本，用於觀看某些內容"
   },
   "button.verify": {
-    "message": "實名認證",
-    "description": "按鈕文本，用於讓用戶進行實名認證"
+    "message": "實名驗證",
+    "description": "按鈕文本，用於讓用戶進行實名驗證"
   },
   "button.profile": {
     "message": "個人資料",
@@ -123,10 +131,6 @@
     "message": "查看",
     "description": "按鈕文本，用於查看某些內容"
   },
-  "button.copy": {
-    "message": "複製",
-    "description": "按鈕文本，用於複製某些內容"
-  },
   "button.create": {
     "message": "創建",
     "description": "按鈕文本，用於創建某些內容"
@@ -177,11 +181,11 @@
   },
   "entity.updatedAt": {
     "message": "更新时间",
-    "description": "實體更新的時間"
+    "description": "实体更新的时间"
   },
   "entity.order": {
     "message": "訂單",
-    "description": "實體的訂單，訂單包含金額、服務信息，使用者需要為其付費"
+    "description": "實體的訂單，訂單包含金額、服務信息，用戶需要為其付費"
   },
   "message.usedAmount": {
     "message": "已使用金額",
@@ -195,9 +199,13 @@
     "message": "已成功複製",
     "description": "用於顯示內容已成功複製的消息"
   },
+  "message.restart": {
+    "message": "重新生成",
+    "description": "用於顯示內容已成功複製的消息"
+  },
   "message.confirmDelete": {
     "message": "確定要刪除嗎？",
-    "description": "用於確認使用者是否要刪除某些內容的消息"
+    "description": "用於確認用戶是否要刪除某些內容的消息"
   },
   "message.expiredAt": {
     "message": "過期時間",
@@ -205,15 +213,15 @@
   },
   "message.alert": {
     "message": "警告",
-    "description": "用於警告使用者的消息"
+    "description": "用於警告用戶的消息"
   },
   "message.info": {
-    "message": "友情提醒",
+    "message": "友情提示",
     "description": "用於顯示信息的消息"
   },
   "message.free": {
     "message": "免費",
-    "description": "用於顯示服務免費的消息，表示使用者無需付費"
+    "description": "用於顯示服務免費的消息，表示用戶無需付費"
   },
   "message.startPrice": {
     "message": "起價",
@@ -221,11 +229,11 @@
   },
   "message.joinDiscord": {
     "message": "加入Discord",
-    "description": "用於讓使用者加入Discord頻道的消息"
+    "description": "用於讓用戶加入Discord頻道的消息"
   },
   "message.addWeChat": {
     "message": "添加微信",
-    "description": "用於讓使用者添加微信的消息"
+    "description": "用於讓用戶添加微信的消息"
   },
   "message.serviceTech": {
     "message": "技術支持",
@@ -332,16 +340,16 @@
     "description": "顯示所有訂單的頁面標題"
   },
   "title.orderInfo": {
-    "message": "訂單信息",
-    "description": "顯示訂單信息的頁面標題"
+    "message": "訂單資訊",
+    "description": "顯示訂單資訊的頁面標題"
   },
   "title.buyMore": {
     "message": "購買更多",
-    "description": "讓使用者購買更多的頁面標題"
+    "description": "讓用戶購買更多的頁面標題"
   },
   "title.distribution": {
     "message": "推薦收益",
-    "description": "顯示推薦收益的頁面標題，表示用戶可以通過邀請他人使用服務來賺錢"
+    "description": "顯示推薦收益的頁面標題，表示用戶可以透過邀請他人使用服務來賺錢"
   },
   "title.site": {
     "message": "站點配置",
@@ -357,7 +365,7 @@
   },
   "title.allUsages": {
     "message": "使用歷史",
-    "description": "顯示API服務所有使用記錄的頁面標題"
+    "description": "顯示API服務所有使用紀錄的頁面標題"
   },
   "title.allCredentials": {
     "message": "憑證",
@@ -376,7 +384,7 @@
     "description": "顯示支持信息的部分的標題"
   },
   "about.address": {
-    "message": "美國 德拉瓦州 密德爾敦 N Broad St, 201號辦公室",
+    "message": "美國 特拉華州 密德爾敦 N Broad St, 201號辦公室",
     "description": "公司的地址"
   },
   "about.email": {
@@ -396,8 +404,8 @@
     "description": "控制台頁面的連結"
   },
   "about.link4": {
-    "message": "個人檔案",
-    "description": "個人檔案頁面的連結"
+    "message": "個人資料",
+    "description": "個人資料頁面的連結"
   },
   "about.link5": {
     "message": "中心",
