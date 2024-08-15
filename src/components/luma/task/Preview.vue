@@ -13,7 +13,9 @@
       <div class="info">
         <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
           {{ modelValue?.request?.prompt }}
-          <span v-if="!modelValue?.response"> - ({{ $t('luma.status.pending') }}) </span>
+          <span v-if="modelValue?.response && Object.keys(modelValue.response).length === 0">
+            - ({{ $t('luma.status.pending') }})
+          </span>
         </p>
       </div>
       <!-- Display success message -->

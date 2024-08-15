@@ -71,8 +71,12 @@
     "message": "旋转角度",
     "description": "要生成的 QR 码的旋转"
   },
-  "name.advanced": {
+  "name.enhancement": {
     "message": "提示词增强",
+    "description": "要生成的 QR 码的高级设置"
+  },
+  "name.loop": {
+    "message": "视频循环播放",
     "description": "要生成的 QR 码的高级设置"
   },
   "name.aspectRatio": {
@@ -115,16 +119,20 @@
     "message": "上传二维码",
     "description": "输入方式"
   },
-  "description.qrw": {
-    "message": "QR 码可见性，尺寸越大，QR 码可见度越高",
+  "description.loop": {
+    "message": "为生成的视频启用循环。",
+    "description": "参数'qrw'的描述"
+  },
+  "description.enhancement": {
+    "message": "如果您不确定如何书写提示文字，请启用输入提示文字的增强功能。",
     "description": "参数'qrw'的描述"
   },
   "description.startImageUrl": {
-    "message": "指定生成视频的首帧图片",
+    "message": "首帧图像的 URL，它将是生成视频的第一帧。",
     "description": "参数'steps'的描述"
   },
   "description.endImageUrl": {
-    "message": "指定生成视频的尾帧图片",
+    "message": "尾帧图像的 URL，它将是生成视频的最后一帧。",
     "description": "参数'steps'的描述"
   },
   "description.prompt": {

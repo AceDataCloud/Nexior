@@ -1,8 +1,8 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('luma.name.advanced') }}</h2>
+    <h2 class="title">{{ $t('luma.name.enhancement') }}</h2>
     <el-switch v-model="value" class="value" />
-    <info-icon :content="$t('luma.description.endImageUrl')" class="info" />
+    <info-icon :content="$t('luma.description.enhancement')" class="info" />
   </div>
 </template>
 
