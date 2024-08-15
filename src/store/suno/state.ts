@@ -5,6 +5,7 @@ export default (): ISunoState => {
   return {
     service: undefined,
     application: undefined,
+    applications: undefined,
     tasks: undefined,
     audio: {
       volume: 100
@@ -13,7 +14,7 @@ export default (): ISunoState => {
     config: undefined,
     status: {
       getService: Status.None,
-      getApplication: Status.None,
+      getApplications: Status.None,
       getTasks: Status.None
     }
   };

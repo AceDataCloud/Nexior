@@ -1,11 +1,15 @@
 {
+  "button.suggested": {
+    "message": "Recomendado",
+    "description": "Texto do botão, recomendação representa um botão recomendado"
+  },
   "menu.orderList": {
     "message": "Lista de Pedidos",
-    "description": "Texto no menu do site, pedidos representam os pedidos de serviços feitos pelos usuários"
+    "description": "Texto no menu do site, pedido representa os pedidos de serviços comprados pelo usuário"
   },
   "menu.applicationList": {
     "message": "Lista de Aplicações",
-    "description": "Texto no menu do site, aplicações representam as solicitações de serviços feitas pelos usuários"
+    "description": "Texto no menu do site, aplicação representa os pedidos de serviços usados pelo usuário"
   },
   "menu.userProfile": {
     "message": "Perfil do Usuário",
@@ -13,34 +17,86 @@
   },
   "menu.idVerify": {
     "message": "Verificação de Identidade",
-    "description": "Texto no menu do site, verificação de identidade representa a validação da identidade do usuário"
+    "description": "Texto no menu do site, verificação de identidade representa a confirmação da identidade do usuário"
   },
   "menu.manageApplication": {
-    "message": "Gerenciar Aplicações",
-    "description": "Texto no menu do site, gerenciar aplicações representa o gerenciamento das solicitações dos usuários"
+    "message": "Gerenciamento de Aplicações",
+    "description": "Texto no menu do site, gerenciamento de aplicações representa a gestão das aplicações do usuário"
   },
   "menu.distributionIndex": {
-    "message": "Rendimento de Indicação",
-    "description": "Texto no menu do site, rendimento de indicação representa os ganhos provenientes das indicações dos usuários"
+    "message": "Rendimentos de Recomendação",
+    "description": "Texto no menu do site, rendimentos de recomendação representa os ganhos do usuário com recomendações"
   },
   "menu.developerPlatform": {
-    "message": "Plataforma do Desenvolvedor",
-    "description": "Texto no menu do site, plataforma do desenvolvedor representa a plataforma destinada aos desenvolvedores"
+    "message": "Plataforma de Desenvolvedores",
+    "description": "Texto no menu do site, plataforma de desenvolvedores representa a plataforma para desenvolvedores"
   },
   "menu.usageList": {
-    "message": "Registro de Uso",
-    "description": "Texto no menu do site, registro de uso representa o histórico de uso dos serviços de API pelos usuários"
+    "message": "Histórico de Uso",
+    "description": "Texto no menu do site, histórico de uso representa o registro de uso do serviço API pelo usuário"
   },
   "menu.credentialIndex": {
-    "message": "Credencial",
-    "description": "Texto no menu do site, credencial representa o acesso às credenciais da API"
+    "message": "Credenciais",
+    "description": "Texto no menu do site, credenciais representam as credenciais para acessar a API"
   },
   "menu.manageOrder": {
-    "message": "Gerenciar Pedidos",
-    "description": "Texto no menu do site, gerenciar pedidos representa o gerenciamento dos pedidos dos usuários, pedidos representam os pedidos de serviços feitos pelos usuários"
+    "message": "Gerenciamento de Pedidos",
+    "description": "Texto no menu do site, gerenciamento de pedidos representa a gestão dos pedidos do usuário, pedidos representam serviços comprados pelo usuário"
   },
   "menu.manageDistributionStatus": {
-    "message": "Gerenciar Status de Distribuição",
-    "description": "Texto no menu do site, gerenciar status de distribuição representa o gerenciamento do status de distribuição dos usuários, relacionado aos ganhos provenientes das indicações dos usuários"
+    "message": "Gerenciamento de Distribuição",
+    "description": "Texto no menu do site, gerenciamento de distribuição representa a gestão do status de distribuição do usuário, relacionado aos rendimentos de recomendações"
+  },
+  "message.benefit1": {
+    "message": "Suporte de Atendimento ao Cliente Exclusivo",
+    "description": "Texto na página inicial do site, suporte de atendimento ao cliente exclusivo representa suporte dedicado para o usuário"
+  },
+  "message.benefit2": {
+    "message": "Experimente Novas Funcionalidades Primeiro",
+    "description": "Texto na página inicial do site, experimente novas funcionalidades primeiro representa a prioridade do usuário em experimentar novas funcionalidades"
+  },
+  "message.buyExtra": {
+    "message": "Ir para Comprar",
+    "description": "Texto na página inicial do site, comprar quota representa a opção para o usuário de adquirir uma nova quota"
+  },
+  "message.doNotWantSubscribe": {
+    "message": "Não quer assinar uma assinatura premium? Você também pode tentar comprar quotas de serviços individuais.",
+    "description": "Texto na página inicial do site, não quer assinar representa o desejo do usuário de não assinar um plano de associação"
+  },
+  "subscription.3days": {
+    "message": "Assinatura de 3 dias",
+    "description": "Tipo de assinatura, assinatura de 3 dias"
+  },
+  "subscription.3days.description": {
+    "message": "Assinatura experimental, adequada para uso a curto prazo.",
+    "description": "Tipo de assinatura, adequada para uso a curto prazo"
+  },
+  "subscription.weekly": {
+    "message": "Assinatura Semanal",
+    "description": "Tipo de assinatura, assinatura semanal representa o tipo de assinatura adquirida pelo usuário"
+  },
+  "subscription.monthly": {
+    "message": "Assinatura Mensal",
+    "description": "Tipo de assinatura, assinatura mensal representa o tipo de assinatura adquirida pelo usuário"
+  },
+  "subscription.yearly": {
+    "message": "Assinatura Anual",
+    "description": "Tipo de assinatura, assinatura anual representa o tipo de assinatura adquirida pelo usuário"
+  },
+  "subscription.weekly.description": {
+    "message": "Assinatura semanal experimental, adequada para uso a curto prazo.",
+    "description": "Descrição do tipo de assinatura, assinatura semanal representa o tipo de assinatura adquirida pelo usuário"
+  },
+  "subscription.monthly.description": {
+    "message": "Assinatura mensal flexível, adequada para uso a longo prazo.",
+    "description": "Descrição do tipo de assinatura, assinatura mensal representa o tipo de assinatura adquirida pelo usuário"
+  },
+  "subscription.yearly.description": {
+    "message": "Assinatura anual de alto valor, a escolha mais econômica.",
+    "description": "Descrição do tipo de assinatura, assinatura anual representa o tipo de assinatura adquirida pelo usuário"
+  },
+  "subscription.introduction": {
+    "message": "Assinatura de membro, desbloqueie todos os serviços de IA do site.",
+    "description": "Introdução à assinatura representa a descrição do programa de assinatura"
   }
 }

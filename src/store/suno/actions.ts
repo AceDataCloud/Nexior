@@ -2,7 +2,7 @@ import { applicationOperator, sunoOperator, serviceOperator } from '@/operators'
 import { ISunoState } from './models';
 import { ActionContext } from 'vuex';
 import { IRootState } from '../common/models';
-import { IApplication, ICredential, ISunoConfig, ISunoTask, IService, Song } from '@/models';
+import { IApplication, ICredential, ISunoConfig, ISunoTask, IService, Song, IApplicationType } from '@/models';
 import { Status } from '@/models/common';
 import { SUNO_SERVICE_ID } from '@/constants';
 
@@ -28,30 +28,37 @@ export const setApplication = ({ commit }: any, payload: IApplication[]) => {
   commit('setApplication', payload);
 };
 
-export const getApplication = async ({
+export const getApplications = async ({
   commit,
   state,
   rootState
-}: ActionContext<ISunoState, IRootState>): Promise<IApplication> => {
-  console.debug('start to get application for suno');
+}: ActionContext<ISunoState, IRootState>): Promise<IApplication[]> => {
+  console.debug('start to get applications for suno');
   return new Promise((resolve, reject) => {
-    state.status.getApplication = Status.Request;
+    state.status.getApplications = Status.Request;
     applicationOperator
       .getAll({
         user_id: rootState?.user?.id,
         service_id: SUNO_SERVICE_ID
       })
       .then((response) => {
-        state.status.getApplication = Status.Success;
-        commit('setApplication', response.data.items[0]);
-        const credential = response.data.items?.[0]?.credentials?.find(
-          (credential) => credential?.host === window.location.origin
-        );
-        commit('setCredential', credential);
-        resolve(response.data.items[0]);
+        state.status.getApplications = Status.Success;
+        commit('setApplications', response.data.items);
+        // check if there is any application with 'Period' type
+        const application = response.data.items?.find((application) => application?.type === IApplicationType.PERIOD);
+        const application2 = response.data.items?.find((application) => application?.type === IApplicationType.USAGE);
+        if (application && application?.remaining_amount) {
+          console.debug('set application with Period', application);
+          commit('setApplication', application);
+        } else if (application2) {
+          console.debug('set application with Usage', application2);
+          commit('setApplication', application2);
+        }
+        resolve(response.data.items);
+        console.debug('save applications success', response.data.items);
       })
       .catch((error) => {
-        state.status.getApplication = Status.Error;
+        state.status.getApplications = Status.Error;
         reject(error);
       });
   });
@@ -134,7 +141,7 @@ export default {
   setCredential,
   setConfig,
   setApplication,
-  getApplication,
+  getApplications,
   setTasks,
   setTasksItems,
   setTasksTotal,

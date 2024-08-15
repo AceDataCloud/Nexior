@@ -1,27 +1,27 @@
 {
   "button.pay": {
     "message": "Paga",
-    "description": "Testo del pulsante, utilizzato per pagare un ordine."
+    "description": "Testo del pulsante per pagare l'ordine."
   },
   "button.continuePay": {
     "message": "Continua a pagare",
-    "description": "Testo del pulsante, utilizzato per continuare a pagare un ordine."
+    "description": "Testo del pulsante per continuare a pagare l'ordine."
   },
   "button.checkDetail": {
-    "message": "Controlla dettagli",
-    "description": "Testo del pulsante, utilizzato per controllare i dettagli di un ordine."
+    "message": "Controlla i dettagli",
+    "description": "Testo del pulsante per visualizzare i dettagli dell'ordine."
   },
   "button.query": {
-    "message": "Interrogare",
-    "description": "Testo del pulsante, utilizzato per interrogare un ordine."
+    "message": "Query",
+    "description": "Testo del pulsante per interrogare l'ordine."
   },
   "button.finish": {
-    "message": "Completamento manuale",
-    "description": "Testo del pulsante, utilizzato per completare manualmente un ordine."
+    "message": "Completa manualmente",
+    "description": "Testo del pulsante per completare manualmente l'ordine."
   },
   "button.update": {
-    "message": "Aggiornamento",
-    "description": "Testo del pulsante, utilizzato per aggiornare un ordine."
+    "message": "Aggiorna",
+    "description": "Testo del pulsante per aggiornare l'ordine."
   },
   "field.id": {
     "message": "Numero dell'ordine",
@@ -29,11 +29,11 @@
   },
   "field.amount": {
     "message": "Importo",
-    "description": "L'importo dell'ordine."
+    "description": "L'importo in punti dell'ordine."
   },
   "field.price": {
-    "message": "Prezzo",
-    "description": "Il prezzo dell'ordine."
+    "message": "Importo",
+    "description": "L'importo in punti dell'ordine."
   },
   "field.description": {
     "message": "Descrizione dell'ordine",
@@ -61,14 +61,14 @@
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Un proxy è un servizio online utilizzato per trasmettere dati come HTTP proxy."
+    "description": "Un proxy è un servizio online utilizzato per trasmettere dati via HTTP."
   },
   "message.paidSuccessfully": {
-    "message": "Pagamento effettuato con successo",
-    "description": "Messaggio di pagamento avvenuto con successo."
+    "message": "Pagamento avvenuto con successo",
+    "description": "Messaggio di pagamento riuscito."
   },
   "message.orderExpired": {
-    "message": "L'ordine è scaduto, si prega di creare un nuovo ordine per effettuare il pagamento.",
+    "message": "L'ordine è scaduto, si prega di creare un nuovo ordine per il pagamento.",
     "description": "Messaggio di ordine scaduto."
   },
   "message.createFailed": {
@@ -76,16 +76,16 @@
     "description": "Messaggio di creazione fallita."
   },
   "message.wechatPayHelp": {
-    "message": "Si prega di aprire WeChat sul telefono e scannerizzare per completare il pagamento",
+    "message": "Si prega di aprire WeChat sul telefono e scansionare il codice per completare il pagamento",
     "description": "Messaggio di aiuto per il pagamento WeChat."
   },
   "message.free": {
     "message": "Gratuito",
-    "description": "Messaggio per gli ordini gratuiti."
+    "description": "Messaggio per ordini gratuiti."
   },
   "message.buyInExternalUrl": {
-    "message": "Si prega di completare il pagamento su un link esterno",
-    "description": "Messaggio di pagamento tramite link esterno."
+    "message": "Si prega di completare il pagamento tramite il link esterno",
+    "description": "Messaggio per il pagamento tramite link esterni."
   },
   "message.updateFailed": {
     "message": "Aggiornamento fallito",
@@ -96,43 +96,47 @@
     "description": "Messaggio di aggiornamento riuscito."
   },
   "message.confirmFinish": {
-    "message": "Questa azione imposterà manualmente l'ordine come pagato e completerà la distribuzione, non può essere annullata. Assicurarsi che il cliente abbia effettuato il pagamento. Continuare?",
-    "description": "Messaggio di conferma completamento."
+    "message": "Questa operazione imposterà manualmente l'ordine come stato pagato e completerà la gestione della distribuzione, non può essere annullata. Si prega di confermare che il cliente ha completato il pagamento, si desidera continuare?",
+    "description": "Messaggio di conferma del completamento."
   },
   "state.pending": {
     "message": "In attesa di pagamento",
-    "description": "Lo stato dell'ordine, indica che l'ordine è in attesa del pagamento da parte dell'utente."
+    "description": "Lo stato dell'ordine, indica che quest'ordine è ancora in attesa del pagamento dell'utente."
   },
   "state.paid": {
-    "message": "Pagato",
-    "description": "Lo stato dell'ordine, indica che l'ordine è già stato pagato."
+    "message": "Già pagato",
+    "description": "Lo stato dell'ordine, indica che quest'ordine è stato pagato."
+  },
+  "state.finished": {
+    "message": "Completato",
+    "description": "Lo stato dell'ordine, indica che quest'ordine è stato completato."
   },
   "state.expired": {
-    "message": "Scaduto per pagamento",
-    "description": "Lo stato dell'ordine, indica che l'ordine è scaduto."
+    "message": "Pagamento scaduto",
+    "description": "Lo stato dell'ordine, indica che quest'ordine è scaduto."
   },
   "state.failed": {
     "message": "Pagamento fallito",
-    "description": "Lo stato dell'ordine, indica che il pagamento dell'ordine è fallito."
+    "description": "Lo stato dell'ordine, indica che il pagamento di quest'ordine è fallito."
   },
   "title.info": {
     "message": "Informazioni sull'ordine",
-    "description": "Titolo utilizzato nel sito web per rappresentare le informazioni sull'ordine."
+    "description": "Titolo utilizzato come titolo del sito, indica informazioni sull'ordine."
   },
   "title.wechatPay": {
-    "message": "WeChat Pay",
-    "description": "Titolo utilizzato nel sito web per rappresentare il pagamento tramite WeChat."
+    "message": "Pagamento WeChat",
+    "description": "Titolo utilizzato come titolo del sito, indica pagamento WeChat."
   },
   "title.aliPay": {
     "message": "Alipay",
-    "description": "Titolo utilizzato nel sito web per rappresentare il pagamento tramite Alipay, un servizio di pagamento online."
+    "description": "Titolo utilizzato come titolo del sito, indica il pagamento Alipay, una forma di pagamento online."
   },
   "title.stripe": {
     "message": "Stripe",
-    "description": "Titolo utilizzato nel sito web per rappresentare il pagamento tramite Stripe, un servizio di pagamento online."
+    "description": "Titolo utilizzato come titolo del sito, indica il pagamento Stripe, una forma di pagamento online."
   },
   "title.manageOrder": {
     "message": "Gestisci ordine",
-    "description": "Titolo utilizzato nel sito web per rappresentare la gestione degli ordini."
+    "description": "Titolo utilizzato come titolo del sito, indica la gestione degli ordini."
   }
 }

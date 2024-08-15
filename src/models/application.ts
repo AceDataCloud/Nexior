@@ -17,6 +17,7 @@ export interface IApplication {
   credentials?: ICredential[];
   created_at?: string;
   updated_at?: string;
+  expired_at?: string;
 }
 
 export interface IApplicationListResponse {

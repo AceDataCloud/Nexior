@@ -2,7 +2,7 @@ import { applicationOperator, chatOperator, serviceOperator } from '@/operators'
 import { IRootState } from '../common/models';
 import { ActionContext } from 'vuex';
 import { IChatState } from './models';
-import { IApplication, IChatConversation, IChatModel, ICredential, IService, Status } from '@/models';
+import { IApplication, IApplicationType, IChatConversation, IChatModel, ICredential, IService, Status } from '@/models';
 import { CHAT_SERVICE_ID } from '@/constants';
 
 export const resetAll = ({ commit }: ActionContext<IChatState, IRootState>): void => {
@@ -64,14 +64,14 @@ export const getService = async ({ commit, state }: ActionContext<IChatState, IR
   });
 };
 
-export const getApplication = async ({
+export const getApplications = async ({
   commit,
   state,
   rootState
-}: ActionContext<IChatState, IRootState>): Promise<IApplication> => {
+}: ActionContext<IChatState, IRootState>): Promise<IApplication[]> => {
   return new Promise((resolve, reject) => {
-    console.debug('start to get application for chat');
-    state.status.getApplication = Status.Request;
+    console.debug('start to get applications for chat');
+    state.status.getApplications = Status.Request;
     applicationOperator
       .getAll({
         user_id: rootState?.user?.id,
@@ -79,17 +79,23 @@ export const getApplication = async ({
       })
       .then((response) => {
         console.debug('get application success', response?.data);
-        state.status.getApplication = Status.Success;
-        commit('setApplication', response.data.items[0]);
-        const credential = response.data.items?.[0]?.credentials?.find(
-          (credential) => credential?.host === window.location.origin
-        );
-        commit('setCredential', credential);
-        resolve(response.data.items[0]);
-        console.debug('save application success', response.data.items[0]);
+        state.status.getApplications = Status.Success;
+        commit('setApplications', response.data.items);
+        // check if there is any application with 'Period' type
+        const application = response.data.items?.find((application) => application?.type === IApplicationType.PERIOD);
+        const application2 = response.data.items?.find((application) => application?.type === IApplicationType.USAGE);
+        if (application && application?.remaining_amount) {
+          console.debug('set application with Period', application);
+          commit('setApplication', application);
+        } else if (application2) {
+          console.debug('set application with Usage', application2);
+          commit('setApplication', application2);
+        }
+        resolve(response.data.items);
+        console.debug('save applications success', response.data.items);
       })
       .catch((error) => {
-        state.status.getApplication = Status.Error;
+        state.status.getApplications = Status.Error;
         reject(error);
       });
   });
@@ -138,7 +144,7 @@ export default {
   setService,
   setCredential,
   setApplication,
-  getApplication,
+  getApplications,
   setConversation,
   setConversations,
   getConversations

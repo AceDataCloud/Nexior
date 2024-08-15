@@ -1,27 +1,31 @@
 {
+  "button.extend": {
+    "message": "Continuar generando",
+    "description": "Texto del botón para continuar generando"
+  },
   "button.download": {
     "message": "Descargar",
-    "description": "Texto del botón de descarga"
+    "description": "Texto del botón de descargar"
   },
   "button.video": {
-    "message": "Video",
-    "description": "Texto del botón de video"
+    "message": "Vídeo",
+    "description": "Texto del botón de vídeo"
   },
   "model.model1": {
     "message": "v2",
-    "description": "Modelo para generar música"
+    "description": "Modelo utilizado para generar música"
   },
   "model.model2": {
     "message": "v3",
-    "description": "Modelo para generar música"
+    "description": "Modelo utilizado para generar música"
   },
   "name.instrumental": {
-    "message": "Sin letra",
+    "message": "Sin letras",
     "description": "Descripción del parámetro 'instrumental'"
   },
   "model.model3": {
     "message": "v3.5",
-    "description": "Modelo para generar música"
+    "description": "Modelo utilizado para generar música"
   },
   "name.taskId": {
     "message": "ID de tarea",
@@ -33,23 +37,27 @@
   },
   "name.prompt": {
     "message": "Descripción de la canción",
-    "description": "Sugerencia de contenido de entrada"
+    "description": "Sugerencia de entrada de contenido"
+  },
+  "name.extend": {
+    "message": "Ampliar canción desde",
+    "description": "Sugerencia de entrada de contenido"
   },
   "name.lyrics": {
     "message": "Contenido de la letra",
-    "description": "Sugerencia de contenido de entrada de las letras"
+    "description": "Sugerencia de entrada del contenido de las letras"
   },
   "name.style": {
     "message": "Estilo de la canción",
-    "description": "Sugerencia de contenido de entrada del estilo de la canción"
+    "description": "Sugerencia de entrada del contenido del estilo de canción"
   },
   "name.title": {
     "message": "Título de la canción",
-    "description": "Sugerencia de contenido de entrada del título de la canción"
+    "description": "Sugerencia de entrada del contenido del título de la canción"
   },
   "name.failureReason": {
-    "message": "Razón de la falla",
-    "description": "Razón por la que falló la tarea"
+    "message": "Razón del fallo",
+    "description": "Razón del fallo de la tarea"
   },
   "name.status": {
     "message": "Estado",
@@ -80,56 +88,64 @@
     "description": "Descripción del parámetro 'title'"
   },
   "status.pending": {
-    "message": "En espera",
+    "message": "Pendiente",
     "description": "Estado de espera de la tarea"
   },
   "placeholder.prompt": {
-    "message": "Introduce las palabras clave de la canción...",
-    "description": "Marcador de posición para la entrada de ruido"
+    "message": "Ingresa las palabras clave de la canción...",
+    "description": "Placeholder para la entrada de ruido"
   },
   "placeholder.lyrics": {
-    "message": "Introduce las letras...",
-    "description": "Marcador de posición para el nivel de relleno"
+    "message": "Ingresa la letra...",
+    "description": "Placeholder para el nivel de llenado"
+  },
+  "placeholder.extend.lyrics": {
+    "message": "Ingresa la letra que necesitas ampliar...",
+    "description": "Placeholder para el nivel de llenado"
+  },
+  "placeholder.extend.continue_at": {
+    "message": "Ingresa desde qué segundo de la canción necesitas ampliar...",
+    "description": "Placeholder para el nivel de llenado"
   },
   "placeholder.style": {
-    "message": "Introduce las palabras clave del estilo de la canción que deseas generar, por ejemplo, pop acústico",
-    "description": "Texto de marcador de posición en el campo de sugerencia"
+    "message": "Ingresa las palabras clave del estilo de canción que deseas generar, por ejemplo, pop acústico",
+    "description": "Texto del placeholder en el campo de sugerencia"
   },
   "placeholder.title": {
-    "message": "Introduce las palabras clave del título de la canción que deseas generar, por ejemplo, canción de vacaciones",
-    "description": "Marcador de posición para la entrada de semilla"
+    "message": "Ingresa las palabras clave del título de la canción que deseas generar, por ejemplo, canción de vacaciones",
+    "description": "Placeholder para la entrada de semilla"
   },
   "placeholder.select": {
     "message": "Selecciona un modelo...",
-    "description": "Marcador de posición para la entrada de posición"
+    "description": "Placeholder para la entrada de posición"
   },
   "placeholder.position": {
     "message": "Selecciona...",
-    "description": "Marcador de posición para la entrada de posición"
+    "description": "Placeholder para la entrada de posición"
   },
   "button.generate": {
     "message": "Generar",
-    "description": "Texto del botón de generar"
+    "description": "Texto del botón para generar"
   },
   "message.startingTask": {
-    "message": "Iniciando la tarea...",
-    "description": "Mensaje al iniciar la tarea de generación de música"
+    "message": "Iniciando tarea...",
+    "description": "Mensaje al comenzar la tarea de generación de música"
   },
   "message.startTaskSuccess": {
     "message": "Tarea de generación de música iniciada con éxito",
     "description": "Mensaje de éxito al iniciar la tarea de generación de música"
   },
   "message.startTaskFailed": {
-    "message": "Error al iniciar la tarea de generación de música",
-    "description": "Mensaje de error al fallar al iniciar la tarea de generación de música"
+    "message": "Falló al iniciar la tarea de generación de música",
+    "description": "Mensaje de error al intentar iniciar la tarea de generación de música"
   },
   "message.generating": {
     "message": "Generando...",
-    "description": "Mensaje mientras la música se está generando"
+    "description": "Mensaje mientras se está generando música"
   },
   "message.generateFailed": {
-    "message": "Error al generar música",
-    "description": "Mensaje al fallar en la generación de música"
+    "message": "Falló al generar música",
+    "description": "Mensaje al fallar la generación de música"
   },
   "message.noOperations": {
     "message": "No hay operaciones disponibles",

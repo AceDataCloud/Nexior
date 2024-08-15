@@ -1,4 +1,8 @@
 {
+  "button.extend": {
+    "message": "Continuar gerando",
+    "description": "Texto do botão para continuar a geração"
+  },
   "button.download": {
     "message": "Baixar",
     "description": "Texto do botão de download"
@@ -9,62 +13,66 @@
   },
   "model.model1": {
     "message": "v2",
-    "description": "Modelo usado para gerar música"
+    "description": "Modelo utilizado para gerar música"
   },
   "model.model2": {
     "message": "v3",
-    "description": "Modelo usado para gerar música"
+    "description": "Modelo utilizado para gerar música"
   },
   "name.instrumental": {
-    "message": "Instrumental",
+    "message": "Sem letras",
     "description": "Descrição do parâmetro 'instrumental'"
   },
   "model.model3": {
     "message": "v3.5",
-    "description": "Modelo usado para gerar música"
+    "description": "Modelo utilizado para gerar música"
   },
   "name.taskId": {
-    "message": "ID da Tarefa",
-    "description": "ID da tarefa"
+    "message": "ID da tarefa",
+    "description": "O ID da tarefa"
   },
   "name.type": {
-    "message": "Modo Personalizado",
+    "message": "Modo personalizado",
     "description": "Nome do modo personalizado"
   },
   "name.prompt": {
-    "message": "Descrição da Música",
-    "description": "Prompt para entrada de conteúdo"
+    "message": "Descrição da música",
+    "description": "Sugestão para o conteúdo a ser inserido"
+  },
+  "name.extend": {
+    "message": "Expandir música de",
+    "description": "Sugestão para o conteúdo a ser inserido"
   },
   "name.lyrics": {
-    "message": "Conteúdo da Letra",
-    "description": "Prompt para entrada de letras"
+    "message": "Conteúdo da letra",
+    "description": "Sugestão para o conteúdo a ser inserido"
   },
   "name.style": {
-    "message": "Estilo da Música",
-    "description": "Prompt para entrada de estilo musical"
+    "message": "Estilo da música",
+    "description": "Sugestão para o conteúdo a ser inserido"
   },
   "name.title": {
-    "message": "Título da Música",
-    "description": "Prompt para entrada de título da música"
+    "message": "Título da música",
+    "description": "Sugestão para o conteúdo a ser inserido"
   },
   "name.failureReason": {
-    "message": "Razão da Falha",
+    "message": "Motivo da falha",
     "description": "Razão pela qual a tarefa falhou"
   },
   "name.status": {
     "message": "Status",
-    "description": "Status da tarefa"
+    "description": "O status da tarefa"
   },
   "name.traceId": {
-    "message": "ID de Rastreamento",
-    "description": "ID de rastreamento da tarefa"
+    "message": "ID de rastreio",
+    "description": "O ID de rastreio da tarefa"
   },
   "name.sunoBot": {
     "message": "Suno Bot",
     "description": "Nome do gerador Suno"
   },
   "description.prompt": {
-    "message": "Preencha o estilo e o tema da música que você deseja gerar, por exemplo, pop acústico sobre feriados",
+    "message": "Preencha o estilo e tema da música que deseja gerar, por exemplo, pop acústico sobre feriados",
     "description": "Descrição do parâmetro 'prompt'"
   },
   "description.lyrics": {
@@ -81,31 +89,39 @@
   },
   "status.pending": {
     "message": "Aguardando",
-    "description": "Estado de espera da tarefa"
+    "description": "Status de espera da tarefa"
   },
   "placeholder.prompt": {
-    "message": "Digite as palavras-chave da música...",
-    "description": "Placeholder para entrada de ruído preenchida"
+    "message": "Insira palavras-chave para a música...",
+    "description": "Placeholder para o campo de entrada de sugestão"
   },
   "placeholder.lyrics": {
-    "message": "Digite a letra...",
-    "description": "Placeholder para nível de preenchimento"
+    "message": "Insira a letra...",
+    "description": "Placeholder para o nível de preenchimento"
+  },
+  "placeholder.extend.lyrics": {
+    "message": "Insira a letra que precisa ser expandida...",
+    "description": "Placeholder para o nível de preenchimento"
+  },
+  "placeholder.extend.continue_at": {
+    "message": "Insira de que segundo da música precisa expandir...",
+    "description": "Placeholder para o nível de preenchimento"
   },
   "placeholder.style": {
-    "message": "Digite as palavras-chave do estilo da música que deseja gerar, como pop acústico",
-    "description": "Texto de placeholder no campo de prompt"
+    "message": "Insira palavras-chave para o estilo da música que deseja gerar, por exemplo, pop acústico",
+    "description": "Texto do placeholder no campo de sugestão"
   },
   "placeholder.title": {
-    "message": "Digite as palavras-chave do título da música que deseja gerar, como música de feriado",
-    "description": "Placeholder para entrada de semente"
+    "message": "Insira palavras-chave para o título da música que deseja gerar, por exemplo, música de feriado",
+    "description": "Placeholder para a entrada de semente"
   },
   "placeholder.select": {
-    "message": "Selecione o modelo...",
-    "description": "Placeholder para entrada de localização"
+    "message": "Selecione um modelo...",
+    "description": "Placeholder para a entrada de posição"
   },
   "placeholder.position": {
     "message": "Selecione...",
-    "description": "Placeholder para entrada de posição"
+    "description": "Placeholder para a entrada de posição"
   },
   "button.generate": {
     "message": "Gerar",
@@ -113,7 +129,7 @@
   },
   "message.startingTask": {
     "message": "Iniciando tarefa...",
-    "description": "Mensagem quando a tarefa de geração de música começa"
+    "description": "Mensagem ao iniciar a tarefa de geração de música"
   },
   "message.startTaskSuccess": {
     "message": "Tarefa de geração de música iniciada com sucesso",
@@ -121,11 +137,11 @@
   },
   "message.startTaskFailed": {
     "message": "Falha ao iniciar a tarefa de geração de música",
-    "description": "Mensagem de erro ao falhar em iniciar a tarefa de geração de música"
+    "description": "Mensagem de erro ao falhar ao iniciar a tarefa de geração de música"
   },
   "message.generating": {
     "message": "Gerando...",
-    "description": "Mensagem enquanto a música está em processo de geração"
+    "description": "Mensagem enquanto a música está sendo gerada"
   },
   "message.generateFailed": {
     "message": "Falha ao gerar música",
@@ -136,7 +152,7 @@
     "description": "Mensagem quando não há operações disponíveis"
   },
   "message.noTasks": {
-    "message": "Nenhuma tarefa histórica, por favor, configure a geração de música na barra de configuração à esquerda",
+    "message": "Nenhuma tarefa histórica, por favor, gere música na barra de configuração à esquerda",
     "description": "Mensagem quando não há tarefas"
   }
 }

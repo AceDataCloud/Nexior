@@ -1,4 +1,16 @@
 {
+  "type.period": {
+    "message": "周期",
+    "description": "服务的周期。"
+  },
+  "type.usage": {
+    "message": "额度",
+    "description": "服务的额度。"
+  },
+  "field.expiredAt": {
+    "message": "过期时间",
+    "description": "申请的过期时间。"
+  },
   "button.goDocument": {
     "message": "文档",
     "description": "按钮文本，点击此按钮将转到文档页面。"
@@ -28,24 +40,24 @@
     "description": "按钮文本，点击此按钮将转到使用记录页面。"
   },
   "field.application": {
-    "message": "应用",
-    "description": "服务的应用。"
+    "message": "申请",
+    "description": "服务的申请。"
   },
   "field.status": {
     "message": "状态",
-    "description": "应用的状态。"
+    "description": "申请的状态。"
   },
   "field.id": {
-    "message": "应用ID",
-    "description": "应用的ID。"
+    "message": "申请ID",
+    "description": "申请的ID。"
   },
   "field.remainingAmount": {
     "message": "剩余数量",
-    "description": "应用的剩余数量。"
+    "description": "申请的剩余数量。"
   },
   "field.usedAmount": {
     "message": "已使用数量",
-    "description": "应用的已使用数量。"
+    "description": "申请的已使用数量。"
   },
   "field.apiKey": {
     "message": "API密钥",
@@ -53,23 +65,23 @@
   },
   "field.service": {
     "message": "服务",
-    "description": "应用的服务。"
+    "description": "申请的服务。"
   },
   "field.operation": {
     "message": "操作",
-    "description": "应用的操作。"
+    "description": "申请的操作。"
   },
   "field.amount": {
     "message": "数量",
-    "description": "应用的数量。"
+    "description": "申请的数量。"
   },
   "field.traceId": {
     "message": "跟踪ID",
-    "description": "API服务的应用的一个API调用的跟踪ID，不要翻译，保持为'跟踪ID'。"
+    "description": "API服务的申请的一个API调用的跟踪ID，不要翻译，保持为'跟踪ID'。"
   },
   "field.shouldPayPrice": {
     "message": "最终价格",
-    "description": "应用的最终价格。"
+    "description": "申请的最终价格。"
   },
   "field.api": {
     "message": "API",
@@ -81,11 +93,11 @@
   },
   "field.credential": {
     "message": "凭据",
-    "description": "应用的凭据。"
+    "description": "申请的凭据。"
   },
   "field.name": {
     "message": "名称",
-    "description": "应用的名称。"
+    "description": "申请的名称。"
   },
   "field.package": {
     "message": "套餐",
@@ -93,15 +105,15 @@
   },
   "field.type": {
     "message": "类型",
-    "description": "应用的类型。"
+    "description": "申请的类型。"
   },
   "field.freeAmount": {
     "message": "免费数量",
-    "description": "应用的免费数量。"
+    "description": "申请的免费数量。"
   },
   "field.extraPrice": {
     "message": "价格",
-    "description": "用户应支付的应用的额外价格。"
+    "description": "用户应支付的申请的额外价格。"
   },
   "message.alreadyApplied": {
     "message": "您已经申请了此服务，请查看控制台",
@@ -164,8 +176,8 @@
     "description": "当用户确认重置密钥时向用户显示的消息。"
   },
   "message.idDoesNotExist": {
-    "message": "应用不存在",
-    "description": "当应用不存在时向用户显示的消息。"
+    "message": "申请不存在",
+    "description": "当申请不存在时向用户显示的消息。"
   },
   "message.rotateCredentialSuccessfully": {
     "message": "密钥重置成功",
@@ -189,10 +201,10 @@
   },
   "title.applicationRemainingCount": {
     "message": "修改数量",
-    "description": "当用户想要修改应用数量时页面的标题。"
+    "description": "当用户想要修改申请数量时页面的标题。"
   },
   "title.manageApplication": {
-    "message": "应用管理",
-    "description": "当用户想要管理应用时页面的标题。"
+    "message": "申请管理",
+    "description": "当用户想要管理申请时页面的标题。"
   }
 }

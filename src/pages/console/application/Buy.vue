@@ -9,6 +9,18 @@
       <el-row>
         <el-col :span="24">
           <el-card shadow="hover">
+            <el-row v-show="false">
+              <el-col class="text-center">
+                <el-radio-group v-if="applicationId" v-model="type" size="large" class="mb-4" @change="onChangeType">
+                  <el-radio-button label="Period">
+                    {{ $t('application.type.period') }}
+                  </el-radio-button>
+                  <el-radio-button label="Usage">
+                    {{ $t('application.type.usage') }}
+                  </el-radio-button>
+                </el-radio-group>
+              </el-col>
+            </el-row>
             <el-row>
               <el-col :span="16" :offset="4">
                 <el-skeleton v-if="loading" />
@@ -93,6 +105,7 @@ interface IData {
     amount: number | undefined;
     packageId: string | undefined;
   };
+  type: string;
   creating: boolean;
 }
 
@@ -115,6 +128,7 @@ export default defineComponent({
     return {
       application: undefined,
       loading: false,
+      type: 'Usage',
       form: {
         packageId: undefined,
         amount: undefined
@@ -123,6 +137,9 @@ export default defineComponent({
     };
   },
   computed: {
+    applicationId() {
+      return this.$route.params?.id?.toString();
+    },
     id() {
       return this.$route.params?.id?.toString();
     },
@@ -163,6 +180,13 @@ export default defineComponent({
         .catch(() => {
           this.loading = false;
         });
+    },
+    onChangeType() {
+      console.log('onChangeType', this.type);
+      this.$router.push({
+        name: ROUTE_CONSOLE_SUBSCRIPTION_BUY,
+        params: this.$route.params
+      });
     },
     onCreateOrder() {
       if (!this.application?.id) {
