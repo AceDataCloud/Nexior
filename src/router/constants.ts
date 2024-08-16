@@ -31,10 +31,13 @@ export const ROUTE_CONSOLE_ROOT = 'console-root';
 export const ROUTE_CONSOLE_ORDER_LIST = 'console-order-list';
 export const ROUTE_CONSOLE_ORDER_DETAIL = 'console-order-detail';
 export const ROUTE_CONSOLE_APPLICATION_LIST = 'console-application-list';
-export const ROUTE_CONSOLE_APPLICATION_BUY = 'console-application-buy';
+export const ROUTE_CONSOLE_APPLICATION_EXTRA = 'console-application-extra';
+export const ROUTE_CONSOLE_APPLICATION_SUBSCRIBE = 'console-application-subscribe';
 
 export const ROUTE_DISTRIBUTION_INDEX = 'distribution-index';
 export const ROUTE_DISTRIBUTION_HISTORY = 'distribution-history';
 export const ROUTE_DISTRIBUTION_INVITEES = 'distribution-invitees';
 
 export const ROUTE_CONSOLE_USAGE_LIST = 'console-usage-list';
+
+export const ROUTE_CONSOLE_SUBSCRIPTION = 'console-subscription';

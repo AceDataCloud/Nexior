@@ -1,7 +1,11 @@
 {
+  "button.extend": {
+    "message": "Kontynuuj generowanie",
+    "description": "Tekst przycisku do kontynuacji generowania"
+  },
   "button.download": {
     "message": "Pobierz",
-    "description": "Tekst przycisku do pobierania"
+    "description": "Tekst przycisku do pobrania"
   },
   "button.video": {
     "message": "Wideo",
@@ -16,7 +20,7 @@
     "description": "Model do generowania muzyki"
   },
   "name.instrumental": {
-    "message": "Bez słów",
+    "message": "Bez tekstu",
     "description": "Opis parametru 'instrumental'"
   },
   "model.model3": {
@@ -32,20 +36,24 @@
     "description": "Nazwa trybu dostosowanego"
   },
   "name.prompt": {
-    "message": "Opis utworu",
-    "description": "Podpowiedź do wprowadzenia treści"
+    "message": "Opis piosenki",
+    "description": "Podpowiedź do wprowadzania treści"
+  },
+  "name.extend": {
+    "message": "Rozszerz piosenkę z",
+    "description": "Podpowiedź do wprowadzania treści"
   },
   "name.lyrics": {
-    "message": "Treść słów",
-    "description": "Podpowiedź do wprowadzenia treści słów"
+    "message": "Treść tekstu",
+    "description": "Podpowiedź do wprowadzania treści tekstu"
   },
   "name.style": {
-    "message": "Styl utworu",
-    "description": "Podpowiedź do wprowadzenia treści stylu"
+    "message": "Styl piosenki",
+    "description": "Podpowiedź do wprowadzania treści stylu"
   },
   "name.title": {
-    "message": "Tytuł utworu",
-    "description": "Podpowiedź do wprowadzenia treści tytułu"
+    "message": "Tytuł piosenki",
+    "description": "Podpowiedź do wprowadzania treści tytułu"
   },
   "name.failureReason": {
     "message": "Powód niepowodzenia",
@@ -64,19 +72,19 @@
     "description": "Nazwa generatora Suno"
   },
   "description.prompt": {
-    "message": "Podaj styl i temat muzyki, którą chcesz wygenerować, np. akustyczny pop o świętach",
+    "message": "Podaj styl i temat muzyki, którą chcesz wygenerować, np. acoustic pop o wakacjach",
     "description": "Opis parametru 'prompt'"
   },
   "description.lyrics": {
-    "message": "Treść słów",
+    "message": "Treść tekstu",
     "description": "Opis parametru 'lyrics'"
   },
   "description.style": {
-    "message": "Treść stylu utworu",
+    "message": "Treść stylu piosenki",
     "description": "Opis parametru 'style'"
   },
   "description.title": {
-    "message": "Treść tytułu utworu",
+    "message": "Treść tytułu piosenki",
     "description": "Opis parametru 'title'"
   },
   "status.pending": {
@@ -84,59 +92,67 @@
     "description": "Stan oczekiwania zadania"
   },
   "placeholder.prompt": {
-    "message": "Wprowadź podpowiedź do utworu...",
-    "description": "Placeholder do wprowadzenia treści"
+    "message": "Wpisz sugerowane słowa do piosenki...",
+    "description": "Zastępczy tekst do inputu"
   },
   "placeholder.lyrics": {
-    "message": "Wprowadź słowa...",
-    "description": "Placeholder do wprowadzenia słów"
+    "message": "Wpisz tekst...",
+    "description": "Zastępczy tekst do poziomu"
+  },
+  "placeholder.extend.lyrics": {
+    "message": "Wpisz tekst, który należy rozszerzyć...",
+    "description": "Zastępczy tekst do poziomu"
+  },
+  "placeholder.extend.continue_at": {
+    "message": "Wpisz, od której sekundy piosenki chcesz rozszerzyć...",
+    "description": "Zastępczy tekst do poziomu"
   },
   "placeholder.style": {
-    "message": "Wprowadź podpowiedź stylu utworu, np. akustyczny pop",
-    "description": "Placeholder do wprowadzenia stylu"
+    "message": "Wpisz sugerowane słowa do stylu piosenki, np. acoustic pop",
+    "description": "Zastępczy tekst w polu podpowiedzi"
   },
   "placeholder.title": {
-    "message": "Wprowadź podpowiedź tytułu utworu, np. utwór świąteczny",
-    "description": "Placeholder do wprowadzenia tytułu"
+    "message": "Wpisz sugerowane słowa do tytułu piosenki, np. holiday song",
+    "description": "Zastępczy tekst do inputu"
   },
   "placeholder.select": {
     "message": "Wybierz model...",
-    "description": "Placeholder do wybierania"
+    "description": "Zastępczy tekst do inputu"
   },
   "placeholder.position": {
     "message": "Wybierz...",
-    "description": "Placeholder do wybierania"
+    "description": "Zastępczy tekst do inputu"
   },
   "button.generate": {
     "message": "Generuj",
-    "description": "Tekst przycisku generującego"
+    "description": "Tekst przycisku do generowania"
   },
   "message.startingTask": {
-    "message": "Rozpoczynanie zadania...",
-    "description": "Wiadomość na rozpoczęcie zadania generowania muzyki"
+    "message": "Rozpoczynam zadanie...",
+    "description": "Wiadomość przy rozpoczęciu zadania generowania muzyki"
   },
   "message.startTaskSuccess": {
-    "message": "Zadanie generowania muzyki zostało uruchomione pomyślnie",
-    "description": "Wiadomość sukcesu po uruchomieniu zadania generowania muzyki"
+    "message": "Zadanie generowania muzyki zostało pomyślnie uruchomione",
+    "description": "Wiadomość o pomyślnym uruchomieniu zadania generowania muzyki"
   },
   "message.startTaskFailed": {
-    "message": "Nie udało się uruchomić zadania generowania muzyki",
-    "description": "Wiadomość o błędzie, gdy nie udało się uruchomić zadania generowania muzyki"
+    "message": "Uruchomienie zadania generowania muzyki nie powiodło się",
+    "description": "Wiadomość o błędzie przy uruchomieniu zadania generowania muzyki"
   },
   "message.generating": {
     "message": "Generowanie...",
     "description": "Wiadomość podczas generowania muzyki"
   },
   "message.generateFailed": {
-    "message": "Nie udało się wygenerować muzyki",
-    "description": "Wiadomość o błędzie, gdy generowanie muzyki się nie powiodło"
+    "message": "Generowanie muzyki nie powiodło się",
+    "description": "Wiadomość o błędzie podczas generowania muzyki"
   },
   "message.noOperations": {
     "message": "Brak dostępnych operacji",
-    "description": "Wiadomość gdy brak dostępnych operacji"
+    "description": "Wiadomość, gdy nie ma dostępnych operacji"
   },
   "message.noTasks": {
-    "message": "Brak historii zadań, proszę w lewym panelu konfiguracyjnym rozpocząć generowanie muzyki",
-    "description": "Wiadomość gdy brak zadań"
+    "message": "Brak historii zadań, proszę wygenerować muzykę w bocznym panelu konfiguracyjnym",
+    "description": "Wiadomość, gdy nie ma zadań"
   }
 }

@@ -1,19 +1,23 @@
 {
+  "button.suggested": {
+    "message": "推奨",
+    "description": "ボタンのテキスト、推奨は推薦ボタンを表します"
+  },
   "menu.orderList": {
     "message": "注文リスト",
-    "description": "ウェブサイトメニューのテキスト、注文はユーザーがサービスを購入した注文を表します"
+    "description": "ウェブサイトメニューのテキスト、注文はユーザーが購入したサービスの注文を表します"
   },
   "menu.applicationList": {
     "message": "申請リスト",
-    "description": "ウェブサイトメニューのテキスト、申請はユーザーがサービスを利用した申請を表します"
+    "description": "ウェブサイトメニューのテキスト、申請はユーザーがサービスを利用するための申請を表します"
   },
   "menu.userProfile": {
-    "message": "ユーザープロフィール",
-    "description": "ウェブサイトメニューのテキスト、ユーザープロフィールはユーザーの個人情報を表します"
+    "message": "ユーザープロファイル",
+    "description": "ウェブサイトメニューのテキスト、ユーザープロファイルはユーザーの個人情報を表します"
   },
   "menu.idVerify": {
-    "message": "身元確認",
-    "description": "ウェブサイトメニューのテキスト、身元確認はユーザーの身元を確認することを表します"
+    "message": "本人確認",
+    "description": "ウェブサイトメニューのテキスト、本人確認はユーザーの身元の確認を表します"
   },
   "menu.manageApplication": {
     "message": "申請管理",
@@ -21,26 +25,86 @@
   },
   "menu.distributionIndex": {
     "message": "推奨収益",
-    "description": "ウェブサイトメニューのテキスト、推奨収益はユーザーの推奨収益を表します"
+    "description": "ウェブサイトメニューのテキスト、推奨収益はユーザーが推薦することで得られる収益を表します"
   },
   "menu.developerPlatform": {
     "message": "開発者プラットフォーム",
-    "description": "ウェブサイトメニューのテキスト、開発者プラットフォームは開発者のプラットフォームを表します"
+    "description": "ウェブサイトメニューのテキスト、開発者プラットフォームは開発者のためのプラットフォームを表します"
   },
   "menu.usageList": {
     "message": "使用履歴",
     "description": "ウェブサイトメニューのテキスト、使用履歴はユーザーがAPIサービスを利用した履歴を表します"
   },
   "menu.credentialIndex": {
-    "message": "資格情報",
-    "description": "ウェブサイトメニューのテキスト、資格情報はAPIへのアクセス証明を表します"
+    "message": "認証情報",
+    "description": "ウェブサイトメニューのテキスト、認証情報はAPIへのアクセス用の認証情報を表します"
   },
   "menu.manageOrder": {
     "message": "注文管理",
-    "description": "ウェブサイトメニューのテキスト、注文管理はユーザーの注文を管理することを表します。注文はユーザーがサービスを購入した注文を表します"
+    "description": "ウェブサイトメニューのテキスト、注文管理はユーザーの注文を管理することを表します。注文はユーザーが購入したサービスの注文を示します"
   },
   "menu.manageDistributionStatus": {
-    "message": "販売管理",
-    "description": "ウェブサイトメニューのテキスト、販売管理はユーザーの販売状況を管理することを表します。ユーザーの推奨収益に関連します"
+    "message": "流通管理",
+    "description": "ウェブサイトメニューのテキスト、流通管理はユーザーの流通状況を管理することを表します。ユーザーの推奨収益に関連しています"
+  },
+  "message.benefit1": {
+    "message": "専任カスタマーサポート",
+    "description": "ウェブサイトのホームページのテキスト、専任カスタマーサポートはユーザーが専任のカスタマーサポートを受けることができることを示します"
+  },
+  "message.benefit2": {
+    "message": "新機能を優先的に体験",
+    "description": "ウェブサイトのホームページのテキスト、新機能を優先的に体験はユーザーが新機能を優先的に体験できることを示します"
+  },
+  "message.buyExtra": {
+    "message": "購入する",
+    "description": "ウェブサイトのホームページのテキスト、購入はユーザーが額を購入することを示します"
+  },
+  "message.subscribe": {
+    "message": "購読する",
+    "description": "ウェブサイトのホームページのテキスト、購読はユーザーがメンバーシップを購読できることを示します"
+  },
+  "message.doNotWantSubscribe": {
+    "message": "全サイトメンバーシップを購読したくないですか？個別サービスの額を購入することもできます。",
+    "description": "ウェブサイトのホームページのテキスト、購読したくないはユーザーがメンバーシップを購読したくないことを示します"
+  },
+  "message.doNotWantExtra": {
+    "message": "額を購入したくないですか？全サイトメンバーシップを試すこともできます。",
+    "description": "ウェブサイトのホームページのテキスト、購入したくない額はユーザーが額を購入したくないことを示します"
+  },
+  "subscription.3days": {
+    "message": "3日間体験メンバー",
+    "description": "メンバータイプ、3日間体験メンバー"
+  },
+  "subscription.3days.description": {
+    "message": "試用メンバー、短期使用に適しています。",
+    "description": "メンバータイプの説明、短期使用に適しています"
+  },
+  "subscription.weekly": {
+    "message": "週メンバー",
+    "description": "メンバータイプ、週メンバーはユーザーが購入したメンバータイプが週メンバーであることを示します"
+  },
+  "subscription.monthly": {
+    "message": "月メンバー",
+    "description": "メンバータイプ、月メンバーはユーザーが購入したメンバータイプが月メンバーであることを示します"
+  },
+  "subscription.yearly": {
+    "message": "年メンバー",
+    "description": "メンバータイプ、年メンバーはユーザーが購入したメンバータイプが年メンバーであることを示します"
+  },
+  "subscription.weekly.description": {
+    "message": "試用週メンバー、短期使用に適しています。",
+    "description": "メンバータイプの説明、週メンバーはユーザーが購入したメンバータイプが週メンバーであることを示します"
+  },
+  "subscription.monthly.description": {
+    "message": "柔軟な月メンバー、長期使用に適しています。",
+    "description": "メンバータイプの説明、月メンバーはユーザーが購入したメンバータイプが月メンバーであることを示します"
+  },
+  "subscription.yearly.description": {
+    "message": "お得な年メンバー、最もお得な選択。",
+    "description": "メンバータイプの説明、年メンバーはユーザーが購入したメンバータイプが年メンバーであることを示します"
+  },
+  "subscription.introduction": {
+    "message": "メンバーシップを購読し、全サイトのAIサービスをアンロックします。",
+    "description": "メンバー紹介はメンバーについての説明を示します"
   }
 }

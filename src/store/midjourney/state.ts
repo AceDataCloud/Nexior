@@ -5,6 +5,7 @@ export default (): IMidjourneyState => {
   return {
     service: undefined,
     application: undefined,
+    applications: undefined,
     tasks: {
       items: undefined,
       total: undefined
@@ -13,7 +14,7 @@ export default (): IMidjourneyState => {
     preset: {},
     status: {
       getService: Status.None,
-      getApplication: Status.None,
+      getApplications: Status.None,
       getTasks: Status.None
     }
   };

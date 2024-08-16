@@ -9,6 +9,18 @@
       <el-row>
         <el-col :span="24">
           <el-card shadow="hover">
+            <el-row v-show="false">
+              <el-col class="text-center">
+                <el-radio-group v-if="applicationId" v-model="type" size="large" class="mb-4" @change="onChangeType">
+                  <el-radio-button label="Period">
+                    {{ $t('application.type.period') }}
+                  </el-radio-button>
+                  <el-radio-button label="Usage">
+                    {{ $t('application.type.usage') }}
+                  </el-radio-button>
+                </el-radio-group>
+              </el-col>
+            </el-row>
             <el-row>
               <el-col :span="16" :offset="4">
                 <el-skeleton v-if="loading" />
@@ -55,6 +67,13 @@
                       {{ $t('application.button.createOrder') }}
                     </el-button>
                   </el-form-item>
+                  <el-divider border-style="dashed" />
+                  <el-form-item label="">
+                    <span>{{ $t('console.message.doNotWantExtra') }}</span>
+                    <el-button type="primary" class="btn btn-subscribe" round size="small" @click="onSubscribe">
+                      {{ $t('console.message.subscribe') }}
+                    </el-button>
+                  </el-form-item>
                 </el-form>
               </el-col>
             </el-row>
@@ -81,7 +100,7 @@ import {
   ElRadioGroup,
   ElRadioButton
 } from 'element-plus';
-import { ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
+import { ROUTE_CONSOLE_APPLICATION_SUBSCRIBE, ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
 import Price from '@/components/common/Price.vue';
 import { applicationOperator, orderOperator } from '@/operators';
 import { getPriceString } from '@/utils';
@@ -93,6 +112,7 @@ interface IData {
     amount: number | undefined;
     packageId: string | undefined;
   };
+  type: string;
   creating: boolean;
 }
 
@@ -115,6 +135,7 @@ export default defineComponent({
     return {
       application: undefined,
       loading: false,
+      type: 'Usage',
       form: {
         packageId: undefined,
         amount: undefined
@@ -123,6 +144,9 @@ export default defineComponent({
     };
   },
   computed: {
+    applicationId() {
+      return this.$route.params?.id?.toString();
+    },
     id() {
       return this.$route.params?.id?.toString();
     },
@@ -149,6 +173,12 @@ export default defineComponent({
     this.onFetchApplication();
   },
   methods: {
+    onSubscribe() {
+      this.$router.push({
+        name: ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
+        params: this.$route.params
+      });
+    },
     getPriceString,
     onFetchApplication() {
       this.loading = true;
@@ -163,6 +193,13 @@ export default defineComponent({
         .catch(() => {
           this.loading = false;
         });
+    },
+    onChangeType() {
+      console.log('onChangeType', this.type);
+      this.$router.push({
+        name: ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
+        params: this.$route.params
+      });
     },
     onCreateOrder() {
       if (!this.application?.id) {

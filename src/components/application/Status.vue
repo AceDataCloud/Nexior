@@ -8,7 +8,11 @@
       </el-skeleton>
     </div>
     <div v-else-if="application" class="status">
-      <span class="info">
+      <span v-if="application.type === 'Period'" class="info">
+        {{ $t('common.message.expiredAt') }}:
+        {{ $dayjs.format(application.expired_at) }}
+      </span>
+      <span v-if="application.type === 'Usage'" class="info">
         {{ $t('common.message.remainingAmount') }}:
         {{ application?.remaining_amount?.toFixed(6) }}
         {{ $t(`service.unit.` + application?.service?.unit + 's') }}
@@ -49,7 +53,7 @@ import { ElButton, ElMessage, ElSkeleton, ElSkeletonItem } from 'element-plus';
 import ApplicationConfirm from '@/components/application/Confirm.vue';
 import { IApplicationType, IApplication, IApplicationDetailResponse, IService } from '@/models';
 import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
-import { ROUTE_CONSOLE_APPLICATION_BUY } from '@/router';
+import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_APPLICATION_SUBSCRIBE } from '@/router';
 import ApiPrice from '@/components/api/Price.vue';
 
 export interface IData {
@@ -117,7 +121,7 @@ export default defineComponent({
   methods: {
     onBuyMore(application: IApplication) {
       this.$router.push({
-        name: ROUTE_CONSOLE_APPLICATION_BUY,
+        name: ROUTE_CONSOLE_APPLICATION_EXTRA,
         params: {
           id: application.id
         }

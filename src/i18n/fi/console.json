@@ -1,46 +1,110 @@
 {
+  "button.suggested": {
+    "message": "Ehdotettu",
+    "description": "Painike teksti, ehdotettu tarkoittaa ehdotetun painikkeen"
+  },
   "menu.orderList": {
     "message": "Tilauslista",
-    "description": "Verkkosivuston valikossa oleva teksti, tilaus edustaa käyttäjän ostamia palvelutilauksia"
+    "description": "Verkkosivuston valikon teksti, tilaus tarkoittaa käyttäjän ostamien palvelujen tilausta"
   },
   "menu.applicationList": {
-    "message": "Sovelluslista",
-    "description": "Verkkosivuston valikossa oleva teksti, sovellus edustaa käyttäjän käyttöönottamia sovelluksia"
+    "message": "Hakemuslista",
+    "description": "Verkkosivuston valikon teksti, hakemus tarkoittaa käyttäjän palvelujen käyttöä"
   },
   "menu.userProfile": {
     "message": "Käyttäjäprofiili",
-    "description": "Verkkosivuston valikossa oleva teksti, käyttäjäprofiili edustaa käyttäjän henkilökohtaista profiilia"
+    "description": "Verkkosivuston valikon teksti, käyttäjäprofiili tarkoittaa käyttäjän henkilökohtaisia tietoja"
   },
   "menu.idVerify": {
-    "message": "Henkilöllisyyden varmennus",
-    "description": "Verkkosivuston valikossa oleva teksti, henkilöllisyyden varmennus edustaa käyttäjän henkilöllisyyden varmennusta"
+    "message": "Identiteetin vahvistaminen",
+    "description": "Verkkosivuston valikon teksti, identiteetin vahvistaminen tarkoittaa käyttäjän identiteetin vahvistamista"
   },
   "menu.manageApplication": {
-    "message": "Sovelluksen hallinta",
-    "description": "Verkkosivuston valikossa oleva teksti, sovelluksen hallinta edustaa käyttäjän sovellusten hallintaa"
+    "message": "Hakemusten hallinta",
+    "description": "Verkkosivuston valikon teksti, hakemusten hallinta tarkoittaa käyttäjän hakemusten hallintaa"
   },
   "menu.distributionIndex": {
-    "message": "Suositeltu tuotto",
-    "description": "Verkkosivuston valikossa oleva teksti, suositeltu tuotto edustaa käyttäjän suosittelemia tuloja"
+    "message": "Ehdotetut tulot",
+    "description": "Verkkosivuston valikon teksti, ehdotetut tulot tarkoittaa käyttäjän ehdottamien tulojen"
   },
   "menu.developerPlatform": {
     "message": "Kehittäjäalusta",
-    "description": "Verkkosivuston valikossa oleva teksti, kehittäjäalusta edustaa kehittäjien alustaa"
+    "description": "Verkkosivuston valikon teksti, kehittäjäalusta tarkoittaa kehittäjille tarkoitettua alustaa"
   },
   "menu.usageList": {
     "message": "Käyttöhistoria",
-    "description": "Verkkosivuston valikossa oleva teksti, käyttöhistoria edustaa käyttäjän API-palvelun käyttöhistoriaa"
+    "description": "Verkkosivuston valikon teksti, käyttöhistoria tarkoittaa käyttäjän API-palvelun käyttöhistoriaa"
   },
   "menu.credentialIndex": {
-    "message": "Valtuutus",
-    "description": "Verkkosivuston valikossa oleva teksti, valtuutus edustaa API:n käyttövaltuutusta"
+    "message": "Todistukset",
+    "description": "Verkkosivuston valikon teksti, todistukset tarkoittaa API:in pääsyn todistuksia"
   },
   "menu.manageOrder": {
-    "message": "Tilauksen hallinta",
-    "description": "Verkkosivuston valikossa oleva teksti, tilauksen hallinta edustaa käyttäjän tilausten hallintaa, tilaus edustaa käyttäjän ostamia palvelutilauksia"
+    "message": "Tilausten hallinta",
+    "description": "Verkkosivuston valikon teksti, tilausten hallinta tarkoittaa käyttäjän tilausten hallintaa, tilaus tarkoittaa käyttäjän ostamien palvelujen tilausta"
   },
   "menu.manageDistributionStatus": {
     "message": "Jakelun hallinta",
-    "description": "Verkkosivuston valikossa oleva teksti, jakelun hallinta edustaa käyttäjän jakelutilan hallintaa, liittyy käyttäjän suosittelemiin tuloihin"
+    "description": "Verkkosivuston valikon teksti, jakelun hallinta tarkoittaa käyttäjän jakelutilan hallintaa, liittyy käyttäjän ehdottamien tulojen"
+  },
+  "message.benefit1": {
+    "message": "Erityinen asiakaspalvelu tukee kysymyksiä",
+    "description": "Verkkosivuston etusivun teksti, erityinen asiakaspalvelu tukee kysymyksiä tarkoittaa, että käyttäjä voi saada erityisen asiakaspalvelun tukea kysymyksiinsä"
+  },
+  "message.benefit2": {
+    "message": "Etusija uusien ominaisuuksien kokeilussa",
+    "description": "Verkkosivuston etusivun teksti, etusija uusien ominaisuuksien kokeilussa tarkoittaa, että käyttäjä voi kokeilla uusia ominaisuuksia etusijalla"
+  },
+  "message.buyExtra": {
+    "message": "Osta lisää",
+    "description": "Verkkosivuston etusivun teksti, osta lisää tarkoittaa, että käyttäjä voi ostaa lisää käytön mahdollisuuksia"
+  },
+  "message.subscribe": {
+    "message": "Tilaa",
+    "description": "Verkkosivuston etusivun teksti, tilaa jäsenyyksiä tarkoittaa, että käyttäjä voi tilata jäsenyyksiä"
+  },
+  "message.doNotWantSubscribe": {
+    "message": "Et halua tilata koko sivuston jäsenyyttä? Voit myös kokeilla yksittäisten palvelujen ostamista.",
+    "description": "Verkkosivuston etusivun teksti, et halua tilata tarkoittaa, että käyttäjä ei halua tilata jäsenyyttä"
+  },
+  "message.doNotWantExtra": {
+    "message": "Et halua ostaa käytön mahdollisuuksia? Voit myös kokeilla koko sivuston jäsenyyden tilaamista.",
+    "description": "Verkkosivuston etusivun teksti, et halua ostaa käytön mahdollisuuksia tarkoittaa, että käyttäjä ei halua ostaa lisää käytön mahdollisuuksia"
+  },
+  "subscription.3days": {
+    "message": "3 päivän kokeilujäsenyys",
+    "description": "Jäsenyyden tyyppi, 3 päivän kokeilujäsenyys"
+  },
+  "subscription.3days.description": {
+    "message": "Kokeilujäsenyys, sopii lyhytaikaiseen käyttöön.",
+    "description": "Jäsenyyden tyyppi, sopii lyhytaikaiseen käyttöön"
+  },
+  "subscription.weekly": {
+    "message": "Viikkotilaus",
+    "description": "Jäsenyyden tyyppi, viikkotilaus tarkoittaa, että käyttäjän ostama jäsenyyden tyyppi on viikkotilaus"
+  },
+  "subscription.monthly": {
+    "message": "Kuukausitilaus",
+    "description": "Jäsenyyden tyyppi, kuukausitilaus tarkoittaa, että käyttäjän ostama jäsenyyden tyyppi on kuukausitilaus"
+  },
+  "subscription.yearly": {
+    "message": "Vuosijäsenyys",
+    "description": "Jäsenyyden tyyppi, vuosijäsenyys tarkoittaa, että käyttäjän ostama jäsenyyden tyyppi on vuosijäsenyys"
+  },
+  "subscription.weekly.description": {
+    "message": "Kokeiluviikkotilaus, sopii lyhytaikaiseen käyttöön.",
+    "description": "Jäsenyyden tyyppi, viikkotilaus tarkoittaa, että käyttäjän ostama jäsenyyden tyyppi on viikkotilaus"
+  },
+  "subscription.monthly.description": {
+    "message": "Joustava kuukausitilaus, sopii pitkäaikaiseen käyttöön.",
+    "description": "Jäsenyyden tyyppi, kuukausitilaus tarkoittaa, että käyttäjän ostama jäsenyyden tyyppi on kuukausitilaus"
+  },
+  "subscription.yearly.description": {
+    "message": "Erityinen vuosijäsenyys, paras valinta.",
+    "description": "Jäsenyyden tyyppi, vuosijäsenyys tarkoittaa, että käyttäjän ostama jäsenyyden tyyppi on vuosijäsenyys"
+  },
+  "subscription.introduction": {
+    "message": "Tilaa jäsenyys, avaa kaikki AI-palvelut.",
+    "description": "Jäsenyyden esittely, joka kertoo jäsenyydestä"
   }
 }

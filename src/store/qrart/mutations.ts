@@ -4,6 +4,7 @@ import { IQrartState } from './models';
 export const resetAll = (state: IQrartState): void => {
   state.service = undefined;
   state.application = undefined;
+  state.applications = undefined;
   state.config = undefined;
   state.credential = undefined;
   state.tasks = undefined;
@@ -11,6 +12,10 @@ export const resetAll = (state: IQrartState): void => {
 
 export const setService = (state: IQrartState, payload: IService): void => {
   state.service = payload;
+};
+
+export const setApplications = (state: IQrartState, payload: IApplication[]): void => {
+  state.applications = payload;
 };
 
 export const setCredential = (state: IQrartState, payload: ICredential): void => {
@@ -56,6 +61,7 @@ export const setTasks = (state: IQrartState, payload: any): void => {
 export default {
   setTasks,
   setApplication,
+  setApplications,
   setConfig,
   setCredential,
   setService,

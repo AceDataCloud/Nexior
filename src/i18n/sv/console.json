@@ -1,46 +1,110 @@
 {
+  "button.suggested": {
+    "message": "Rekommenderad",
+    "description": "Knapptext, rekommenderad innebär en rekommendationsknapp"
+  },
   "menu.orderList": {
-    "message": "Orderlista",
-    "description": "Text i menyn på webbplatsen, order representerar användarens köp av tjänster"
+    "message": "Beställningslista",
+    "description": "Text i webbplatsmenyn, beställning representerar en beställning av tjänster köpta av användaren"
   },
   "menu.applicationList": {
     "message": "Ansökningslista",
-    "description": "Text i menyn på webbplatsen, ansökan representerar användarens användning av tjänster"
+    "description": "Text i webbplatsmenyn, ansökan representerar en ansökan för att använda tjänster"
   },
   "menu.userProfile": {
     "message": "Användarprofil",
-    "description": "Text i menyn på webbplatsen, användarprofil representerar användarens personliga information"
+    "description": "Text i webbplatsmenyn, användarprofil representerar användarens personliga information"
   },
   "menu.idVerify": {
-    "message": "ID-verifiering",
-    "description": "Text i menyn på webbplatsen, ID-verifiering representerar verifiering av användarens identitet"
+    "message": "Identitetsverifiering",
+    "description": "Text i webbplatsmenyn, identitetsverifiering innebär verifiering av användarens identitet"
   },
   "menu.manageApplication": {
-    "message": "Hantera ansökan",
-    "description": "Text i menyn på webbplatsen, hantera ansökan representerar hantering av användarens ansökan"
+    "message": "Ansökningshantering",
+    "description": "Text i webbplatsmenyn, ansökningshantering representerar hantering av användarens ansökningar"
   },
   "menu.distributionIndex": {
     "message": "Rekommenderad inkomst",
-    "description": "Text i menyn på webbplatsen, rekommenderad inkomst representerar användarens rekommenderade inkomst"
+    "description": "Text i webbplatsmenyn, rekommenderad inkomst representerar den inkomst som användaren får genom rekommendationer"
   },
   "menu.developerPlatform": {
     "message": "Utvecklarplattform",
-    "description": "Text i menyn på webbplatsen, utvecklarplattform representerar utvecklarens plattform"
+    "description": "Text i webbplatsmenyn, utvecklarplattform representerar plattformen för utvecklare"
   },
   "menu.usageList": {
     "message": "Användningshistorik",
-    "description": "Text i menyn på webbplatsen, användningshistorik representerar användarens historik av API-tjänsternas användning"
+    "description": "Text i webbplatsmenyn, användningshistorik representerar historik över användning av API-tjänster"
   },
   "menu.credentialIndex": {
-    "message": "Legitimation",
-    "description": "Text i menyn på webbplatsen, legitimation representerar åtkomstlegitimation för API"
+    "message": "Behörigheter",
+    "description": "Text i webbplatsmenyn, behörigheter representerar autentiseringsuppgifter för att få tillgång till API"
   },
   "menu.manageOrder": {
-    "message": "Orderhantering",
-    "description": "Text i menyn på webbplatsen, orderhantering representerar hantering av användarens order, order representerar användarens köp av tjänster"
+    "message": "Beställningshantering",
+    "description": "Text i webbplatsmenyn, beställningshantering representerar hantering av användarens beställningar, beställning representerar en beställning av tjänster"
   },
   "menu.manageDistributionStatus": {
-    "message": "Hantera distributionsstatus",
-    "description": "Text i menyn på webbplatsen, hantera distributionsstatus representerar hantering av användarens distributionsstatus, relaterat till användarens rekommenderade inkomst"
+    "message": "Distributionshantering",
+    "description": "Text i webbplatsmenyn, distributionshantering representerar hantering av distributionsstatus som rör användarens rekommenderade inkomster"
+  },
+  "message.benefit1": {
+    "message": "Exklusiv kundsupport",
+    "description": "Text på webbplatsens startsida, exklusiv kundsupport innebär att användaren kan få personlig support"
+  },
+  "message.benefit2": {
+    "message": "Prioriterad åtkomst till nya funktioner",
+    "description": "Text på webbplatsens startsida, prioriterad åtkomst till nya funktioner innebär att användaren kan testa nya funktioner tidigare"
+  },
+  "message.buyExtra": {
+    "message": "Köp nu",
+    "description": "Text på webbplatsens startsida, köp innebär att användaren kan köpa kredit"
+  },
+  "message.subscribe": {
+    "message": "Prenumerera",
+    "description": "Text på webbplatsens startsida, prenumerera innebär att användaren kan teckna ett medlemskap"
+  },
+  "message.doNotWantSubscribe": {
+    "message": "Vill du inte prenumerera på allt medlemskap? Du kan också prova att köpa kredit för enstaka tjänster.",
+    "description": "Text på webbplatsens startsida, vill du inte prenumerera innebär att användaren inte vill teckna ett medlemskap"
+  },
+  "message.doNotWantExtra": {
+    "message": "Vill du inte köpa kredit? Du kan också prova att prenumerera på allt medlemskap.",
+    "description": "Text på webbplatsens startsida, vill du inte köpa kredit innebär att användaren inte vill köpa kredit"
+  },
+  "subscription.3days": {
+    "message": "3-dagars upplevelsemedlemskap",
+    "description": "Typ av medlemskap, 3-dagars upplevelsemedlemskap"
+  },
+  "subscription.3days.description": {
+    "message": "Prova medlemskap, lämplig för kortvarig användning.",
+    "description": "Typ av medlemskap, lämplig för kortvarig användning"
+  },
+  "subscription.weekly": {
+    "message": "Veckomedlemskap",
+    "description": "Typ av medlemskap, veckomedlemskap innebär att användaren köpt veckomedlemskap"
+  },
+  "subscription.monthly": {
+    "message": "Månad medlemskap",
+    "description": "Typ av medlemskap, månad medlemskap innebär att användaren köpt månad medlemskap"
+  },
+  "subscription.yearly": {
+    "message": "Årsmedlemskap",
+    "description": "Typ av medlemskap, årsmedlemskap innebär att användaren köpt årsmedlemskap"
+  },
+  "subscription.weekly.description": {
+    "message": "Prova veckomedlemskap, lämplig för kortvarig användning.",
+    "description": "Beskrivning av medlemskap, veckomedlemskap innebär att användaren köpt veckomedlemskap"
+  },
+  "subscription.monthly.description": {
+    "message": "Flexibelt månad medlemskap, lämplig för långvarig användning.",
+    "description": "Beskrivning av medlemskap, månad medlemskap innebär att användaren köpt månad medlemskap"
+  },
+  "subscription.yearly.description": {
+    "message": "Bra årsmedlemskap, det mest kostnadseffektiva valet.",
+    "description": "Beskrivning av medlemskap, årsmedlemskap innebär att användaren köpt årsmedlemskap"
+  },
+  "subscription.introduction": {
+    "message": "Prenumerera, lås upp alla AI-tjänster på webbplatsen.",
+    "description": "Introduktion till medlemskap, beskriver medlemskapets fördelar"
   }
 }

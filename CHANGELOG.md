@@ -1,8 +1,64 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Wed, 14 Aug 2024 08:41:03 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Aug 2024 12:12:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.9.3
+
+Fri, 16 Aug 2024 12:12:10 GMT
+
+### Patches
+
+- change default subscription (office@acedata.cloud)
+
+## 2.9.2
+
+Fri, 16 Aug 2024 08:07:12 GMT
+
+### Patches
+
+- fix application list apply (office@acedata.cloud)
+
+## 2.9.1
+
+Fri, 16 Aug 2024 07:42:29 GMT
+
+### Patches
+
+- fix retrieve task issue (office@acedata.cloud)
+
+## 2.9.0
+
+Thu, 15 Aug 2024 17:54:12 GMT
+
+### Minor changes
+
+- fix chat restart (1348977728@qq.com)
+
+## 2.8.0
+
+Thu, 15 Aug 2024 16:33:11 GMT
+
+### Minor changes
+
+- add subscriptions support (office@acedata.cloud)
+
+## 2.7.0
+
+Thu, 15 Aug 2024 16:11:49 GMT
+
+### Minor changes
+
+- fix chat restart (1348977728@qq.com)
+
+## 2.6.1
+
+Wed, 14 Aug 2024 17:53:13 GMT
+
+### Patches
+
+- fix edit message (office@acedata.cloud)
 
 ## 2.6.0
 

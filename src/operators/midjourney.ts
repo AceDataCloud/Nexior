@@ -28,7 +28,7 @@ class MidjourneyOperator {
   }
 
   async tasks(
-    filter: { ids?: string[]; applicationId?: string; limit?: number; offset?: number },
+    filter: { ids?: string[]; applicationId?: string; userId?: string; limit?: number; offset?: number },
     options: { token: string }
   ): Promise<AxiosResponse<IMidjourneyTasksResponse>> {
     return await axios.post(
@@ -43,6 +43,11 @@ class MidjourneyOperator {
         ...(filter.applicationId
           ? {
               application_id: filter.applicationId
+            }
+          : {}),
+        ...(filter.userId
+          ? {
+              user_id: filter.userId
             }
           : {}),
         ...(filter.limit !== undefined

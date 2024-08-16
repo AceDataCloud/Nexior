@@ -106,13 +106,13 @@ export default defineComponent({
       return this.$store.state.midjourney.preset;
     },
     loading() {
-      return this.$store.state.midjourney.status.getApplication === Status.Request;
+      return this.$store.state.midjourney.status.getApplications === Status.Request;
     },
     initializing() {
-      return this.$store.state.midjourney.status.getApplication === Status.Request;
+      return this.$store.state.midjourney.status.getApplications === Status.Request;
     },
     needApply() {
-      return this.$store.state.midjourney.status.getApplication === Status.Success && !this.application;
+      return this.$store.state.midjourney.status.getApplications === Status.Success && !this.application;
     },
     application() {
       return this.$store.state.midjourney.application;
@@ -221,9 +221,9 @@ export default defineComponent({
       console.debug('end onGetService');
     },
     async onGetApplication() {
-      console.debug('start onGetApplication');
-      await this.$store.dispatch('midjourney/getApplication');
-      console.debug('end onGetApplication');
+      console.debug('start onGetApplications');
+      await this.$store.dispatch('midjourney/getApplications');
+      console.debug('end onGetApplications');
       await this.onGetTasks();
     },
     onApply() {
