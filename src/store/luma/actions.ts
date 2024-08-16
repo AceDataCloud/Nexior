@@ -2,7 +2,7 @@ import { applicationOperator, lumaOperator, serviceOperator } from '@/operators'
 import { ILumaState } from './models';
 import { ActionContext } from 'vuex';
 import { IRootState } from '../common/models';
-import { IApplication, ICredential, ILumaConfig, ILumaTask, IService } from '@/models';
+import { IApplication, ICredential, ILumaConfig, ILumaTask, IService, IApplicationType } from '@/models';
 import { Status } from '@/models/common';
 import { LUMA_SERVICE_ID } from '@/constants';
 
@@ -28,34 +28,39 @@ export const setApplication = ({ commit }: any, payload: IApplication[]) => {
   commit('setApplication', payload);
 };
 
-export const getApplication = async ({
+export const getApplications = async ({
   commit,
   state,
   rootState
-}: ActionContext<ILumaState, IRootState>): Promise<IApplication> => {
-  console.debug('start to get application for luma');
+}: ActionContext<ILumaState, IRootState>): Promise<IApplication[]> => {
+  console.debug('start to get applications for qrart');
   return new Promise((resolve, reject) => {
-    state.status.getApplication = Status.Request;
+    state.status.getApplications = Status.Request;
     applicationOperator
       .getAll({
         user_id: rootState?.user?.id,
         service_id: LUMA_SERVICE_ID
       })
       .then((response) => {
-        console.debug('get application success', response?.data);
-        state.status.getApplication = Status.Success;
-        commit('setApplication', response.data.items[0]);
-        const credential = response.data.items?.[0]?.credentials?.find(
-          (credential) => credential?.host === window.location.origin
-        );
-        console.debug('get credential success', credential);
-        commit('setCredential', credential);
-        resolve(response.data.items[0]);
-        console.debug('save application success', response.data.items[0]);
+        console.debug('get applications success', response?.data);
+        state.status.getApplications = Status.Success;
+        commit('setApplications', response.data.items);
+        // check if there is any application with 'Period' type
+        const application = response.data.items?.find((application) => application?.type === IApplicationType.PERIOD);
+        const application2 = response.data.items?.find((application) => application?.type === IApplicationType.USAGE);
+        if (application && application?.remaining_amount) {
+          console.debug('set application with Period', application);
+          commit('setApplication', application);
+        } else if (application2) {
+          console.debug('set application with Usage', application2);
+          commit('setApplication', application2);
+        }
+        resolve(response.data.items);
+        console.debug('save applications success', response.data.items);
       })
       .catch((error) => {
-        console.error('get application error', error);
-        state.status.getApplication = Status.Error;
+        console.error('get applications error', error);
+        state.status.getApplications = Status.Error;
         reject(error);
       });
   });
@@ -134,7 +139,7 @@ export default {
   setCredential,
   setConfig,
   setApplication,
-  getApplication,
+  getApplications,
   setTasks,
   setTasksItems,
   setTasksTotal,

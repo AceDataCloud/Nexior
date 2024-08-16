@@ -15,7 +15,7 @@ export interface ILumaState {
     | undefined;
   status: {
     getService: Status;
-    getApplication: Status;
+    getApplications: Status;
     getTasks: Status;
   };
 }

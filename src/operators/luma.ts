@@ -23,7 +23,7 @@ class LumaOperator {
   }
 
   async tasks(
-    filter: { ids?: string[]; applicationId?: string; limit?: number; offset?: number },
+    filter: { ids?: string[]; applicationId?: string; userId?: string; limit?: number; offset?: number },
     options: { token: string }
   ): Promise<AxiosResponse<ILumaTasksResponse>> {
     return await axios.post(
@@ -38,6 +38,11 @@ class LumaOperator {
         ...(filter.applicationId
           ? {
               application_id: filter.applicationId
+            }
+          : {}),
+        ...(filter.userId
+          ? {
+              user_id: filter.userId
             }
           : {}),
         ...(filter.limit !== undefined

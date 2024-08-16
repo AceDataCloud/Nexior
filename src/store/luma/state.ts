@@ -10,7 +10,7 @@ export default (): ILumaState => {
     config: undefined,
     status: {
       getService: Status.None,
-      getApplication: Status.None,
+      getApplications: Status.None,
       getTasks: Status.None
     }
   };
