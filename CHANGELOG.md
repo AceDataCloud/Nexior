@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Fri, 16 Aug 2024 12:12:10 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Aug 2024 12:41:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.9.4
+
+Fri, 16 Aug 2024 12:41:20 GMT
+
+### Patches
+
+- change withdrawl text (office@acedata.cloud)
 
 ## 2.9.3
 
