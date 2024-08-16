@@ -1,27 +1,27 @@
 {
   "button.pay": {
-    "message": "دفع",
-    "description": "نص الزر المستخدم لدفع الطلب."
+    "message": "الدفع",
+    "description": "زر نص، يستخدم للدفع للطلب."
   },
   "button.continuePay": {
-    "message": "متابعة الدفع",
-    "description": "نص الزر المستخدم لمتابعة دفع الطلب."
+    "message": "استمرار الدفع",
+    "description": "زر نص، يستخدم للمتابعة في دفع الطلب."
   },
   "button.checkDetail": {
     "message": "عرض التفاصيل",
-    "description": "نص الزر المستخدم لعرض تفاصيل الطلب."
+    "description": "زر نص، يستخدم لعرض تفاصيل الطلب."
   },
   "button.query": {
     "message": "استعلام",
-    "description": "نص الزر المستخدم للاستعلام عن الطلب."
+    "description": "زر نص، يستخدم للاستعلام عن الطلب."
   },
   "button.finish": {
-    "message": "اكمال يدوي",
-    "description": "نص الزر المستخدم لإكمال الطلب يدويًا."
+    "message": "إكمال يدوي",
+    "description": "زر نص، يستخدم لإكمال الطلب يدويًا."
   },
   "button.update": {
     "message": "تحديث",
-    "description": "نص الزر المستخدم لتحديث الطلب."
+    "description": "زر نص، يستخدم لتحديث الطلب."
   },
   "field.id": {
     "message": "رقم الطلب",
@@ -29,11 +29,11 @@
   },
   "field.amount": {
     "message": "المبلغ",
-    "description": "المبلغ النقطي للطلب."
+    "description": "مبلغ نقاط الطلب."
   },
   "field.price": {
     "message": "المبلغ",
-    "description": "المبلغ النقطي للطلب."
+    "description": "مبلغ نقاط الطلب."
   },
   "field.description": {
     "message": "وصف الطلب",
@@ -44,8 +44,8 @@
     "description": "حالة الطلب."
   },
   "field.createdAt": {
-    "message": "تاريخ الإنشاء",
-    "description": "تاريخ إنشاء الطلب."
+    "message": "وقت الإنشاء",
+    "description": "وقت إنشاء الطلب."
   },
   "field.service": {
     "message": "اسم الخدمة",
@@ -61,82 +61,82 @@
   },
   "field.proxy": {
     "message": "وكيل",
-    "description": "الوكيل هو خدمة عبر الإنترنت لنقل البيانات عبر HTTP."
+    "description": "الوكيل هو خدمة عبر الإنترنت تستخدم لنقل البيانات باستخدام وكيل HTTP."
   },
   "message.paidSuccessfully": {
     "message": "تم الدفع بنجاح",
-    "description": "رسالة توضح نجاح عملية الدفع."
+    "description": "رسالة الدفع الناجح."
   },
   "message.orderExpired": {
     "message": "انتهت صلاحية الطلب، يرجى إنشاء طلب جديد للدفع.",
-    "description": "رسالة توضح انتهاء صلاحية الطلب."
+    "description": "رسالة انتهاء صلاحية الطلب."
   },
   "message.createFailed": {
     "message": "فشل الإنشاء",
-    "description": "رسالة توضح فشل عملية الإنشاء."
+    "description": "رسالة فشل الإنشاء."
   },
   "message.wechatPayHelp": {
-    "message": "يرجى فتح WeChat على هاتفك، ومسح الرمز لإكمال الدفع",
-    "description": "رسالة لمساعدة الدفع عبر WeChat."
+    "message": "يرجى فتح WeChat على هاتفك، واستخدام الرمز لإكمال الدفع",
+    "description": "رسالة مساعدة الدفع عبر WeChat."
   },
   "message.free": {
     "message": "مجاني",
-    "description": "رسالة توضح أن الطلب مجاني."
+    "description": "رسالة الطلب المجاني."
   },
   "message.buyInExternalUrl": {
-    "message": "يرجى إكمال الدفع عبر الرابط الخارجي",
-    "description": "رسالة توضح الدفع عبر الرابط الخارجي."
+    "message": "يرجى إكمال الدفع من خلال الرابط الخارجي",
+    "description": "رسالة الدفع عبر الرابط الخارجي."
   },
   "message.updateFailed": {
     "message": "فشل التحديث",
-    "description": "رسالة توضح فشل عملية التحديث."
+    "description": "رسالة فشل التحديث."
   },
   "message.updateSuccessfully": {
     "message": "تم التحديث بنجاح",
-    "description": "رسالة توضح نجاح عملية التحديث."
+    "description": "رسالة التحديث الناجح."
   },
   "message.confirmFinish": {
-    "message": "ستقوم هذه العملية بتعيين الطلب يدويًا إلى حالة الدفع وإكمال معالجته. لا يمكن التراجع عنها. يرجى التأكد من أن العميل قد أكمل الدفع، هل تود المتابعة؟",
-    "description": "رسالة لتأكيد الاكتمال."
+    "message": "ستقوم هذه العملية يدويًا بضبط الطلب على حالة الدفع وإكمال معالجة التوزيع، ولا يمكن التراجع عنها. يرجى التأكد من أن العميل قد أكمل الدفع، هل تريد المتابعة؟",
+    "description": "رسالة تأكيد الإكمال."
   },
   "state.pending": {
     "message": "في انتظار الدفع",
-    "description": "حالة الطلب، مما يدل على أن هذا الطلب لا يزال ينتظر دفع المستخدم."
+    "description": "حالة الطلب، تشير إلى أن الطلب لا يزال في انتظار دفع المستخدم."
   },
   "state.paid": {
-    "message": "مدفوع",
-    "description": "حالة الطلب، مما يدل على أن هذا الطلب قد تم دفعه."
+    "message": "تم الدفع",
+    "description": "حالة الطلب، تشير إلى أن الطلب قد تم دفعه."
   },
   "state.finished": {
     "message": "مكتمل",
-    "description": "حالة الطلب، مما يدل على أن هذا الطلب مكتمل."
+    "description": "حالة الطلب، تشير إلى أن الطلب قد اكتمل."
   },
   "state.expired": {
-    "message": "انتهت مهلة الدفع",
-    "description": "حالة الطلب، مما يدل على أن هذا الطلب قد انتهت صلاحيته."
+    "message": "انتهاء صلاحية الدفع",
+    "description": "حالة الطلب، تشير إلى أن الطلب قد انتهت صلاحيته."
   },
   "state.failed": {
     "message": "فشل الدفع",
-    "description": "حالة الطلب، مما يدل على أن دفع هذا الطلب قد فشل."
+    "description": "حالة الطلب، تشير إلى أن الدفع للطلب قد فشل."
   },
   "title.info": {
     "message": "معلومات الطلب",
-    "description": "عنوان يُستخدم كعنوان للموقع، يدل على معلومات الطلب."
+    "description": "يستخدم كعنوان للموقع، يشير إلى معلومات الطلب."
   },
   "title.wechatPay": {
     "message": "دفع WeChat",
-    "description": "عنوان يُستخدم كعنوان للموقع، يدل على دفع WeChat."
+    "description": "يستخدم كعنوان للموقع، يشير إلى دفع WeChat."
   },
   "title.aliPay": {
-    "message": "علي باي",
-    "description": "عنوان يُستخدم كعنوان للموقع، يدل على دفع علي باي، وهو نوع من الدفع عبر الإنترنت."
+    "message": "دفع Alipay",
+    "description": "يستخدم كعنوان للموقع، يشير إلى دفع Alipay، وهو نوع من الدفع عبر الإنترنت."
   },
   "title.stripe": {
     "message": "Stripe",
-    "description": "عنوان يُستخدم كعنوان للموقع، يدل على دفع Stripe، وهو نوع من الدفع عبر الإنترنت."
+    "description": "يستخدم كعنوان للموقع، يشير إلى دفع Stripe، وهو نوع من الدفع عبر الإنترنت."
   },
   "title.manageOrder": {
-    "message": "إدارة الطلب",
-    "description": "عنوان يُستخدم كعنوان للموقع، يدل على إدارة الطلب."
+    "message": "إدارة الطلبات",
+    "description": "يستخدم كعنوان للموقع، يشير إلى إدارة الطلبات."
   }
 }

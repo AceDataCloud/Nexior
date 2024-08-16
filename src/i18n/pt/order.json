@@ -1,42 +1,42 @@
 {
   "button.pay": {
     "message": "Pagar",
-    "description": "Texto do botão para pagar o pedido."
+    "description": "Botão de texto usado para pagar o pedido."
   },
   "button.continuePay": {
-    "message": "Continuar Pagamento",
-    "description": "Texto do botão para continuar o pagamento do pedido."
+    "message": "Continuar pagamento",
+    "description": "Botão de texto usado para continuar pagando o pedido."
   },
   "button.checkDetail": {
-    "message": "Ver Detalhes",
-    "description": "Texto do botão para visualizar os detalhes do pedido."
+    "message": "Ver detalhes",
+    "description": "Botão de texto usado para ver os detalhes do pedido."
   },
   "button.query": {
     "message": "Consultar",
-    "description": "Texto do botão para consultar o pedido."
+    "description": "Botão de texto usado para consultar o pedido."
   },
   "button.finish": {
-    "message": "Concluir Manualmente",
-    "description": "Texto do botão para concluir o pedido manualmente."
+    "message": "Concluir manualmente",
+    "description": "Botão de texto usado para concluir manualmente o pedido."
   },
   "button.update": {
     "message": "Atualizar",
-    "description": "Texto do botão para atualizar o pedido."
+    "description": "Botão de texto usado para atualizar o pedido."
   },
   "field.id": {
-    "message": "Número do Pedido",
+    "message": "Número do pedido",
     "description": "O número do pedido."
   },
   "field.amount": {
-    "message": "Valor",
-    "description": "O valor dos pontos do pedido."
+    "message": "Quantidade",
+    "description": "A quantidade de pontos do pedido."
   },
   "field.price": {
-    "message": "Valor",
-    "description": "O valor dos pontos do pedido."
+    "message": "Quantidade",
+    "description": "A quantidade de pontos do pedido."
   },
   "field.description": {
-    "message": "Descrição do Pedido",
+    "message": "Descrição do pedido",
     "description": "A descrição do pedido."
   },
   "field.state": {
@@ -44,31 +44,31 @@
     "description": "O estado do pedido."
   },
   "field.createdAt": {
-    "message": "Data de Criação",
+    "message": "Data de criação",
     "description": "A data de criação do pedido."
   },
   "field.service": {
-    "message": "Nome do Serviço",
+    "message": "Nome do serviço",
     "description": "O nome do serviço."
   },
   "field.payWay": {
-    "message": "Método de Pagamento",
+    "message": "Método de pagamento",
     "description": "O método de pagamento do pedido."
   },
   "field.api": {
     "message": "API",
-    "description": "API é um serviço online."
+    "description": "API é um tipo de serviço online."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Proxy é um serviço online para transferência de dados via HTTP."
+    "description": "Proxy é um tipo de serviço online usado para transmitir dados via HTTP."
   },
   "message.paidSuccessfully": {
     "message": "Pagamento realizado com sucesso",
-    "description": "Mensagem para pagamento bem-sucedido."
+    "description": "Mensagem de pagamento realizado com sucesso."
   },
   "message.orderExpired": {
-    "message": "O pedido expirou, crie um novo pedido para efetuar o pagamento.",
+    "message": "Pedido expirou, por favor crie um novo pedido para realizar o pagamento.",
     "description": "Mensagem de pedido expirado."
   },
   "message.createFailed": {
@@ -76,51 +76,51 @@
     "description": "Mensagem de falha na criação."
   },
   "message.wechatPayHelp": {
-    "message": "Por favor, abra o WeChat no celular e escaneie o código para concluir o pagamento",
+    "message": "Por favor, abra o WeChat no telefone e escaneie o código para completar o pagamento.",
     "description": "Mensagem de ajuda para pagamento via WeChat."
   },
   "message.free": {
-    "message": "Grátis",
+    "message": "Gratuito",
     "description": "Mensagem para pedidos gratuitos."
   },
   "message.buyInExternalUrl": {
-    "message": "Por favor, conclua o pagamento no link externo",
-    "description": "Mensagem para pagamento via link externo."
+    "message": "Por favor, complete o pagamento no link externo.",
+    "description": "Mensagem de pagamento em link externo."
   },
   "message.updateFailed": {
     "message": "Falha na atualização",
     "description": "Mensagem de falha na atualização."
   },
   "message.updateSuccessfully": {
-    "message": "Atualização bem-sucedida",
-    "description": "Mensagem de atualização bem-sucedida."
+    "message": "Atualização realizada com sucesso",
+    "description": "Mensagem de atualização realizada com sucesso."
   },
   "message.confirmFinish": {
-    "message": "Esta ação irá definir manualmente o pedido como pago e concluir o processamento, não poderá ser revertida. Por favor, confirme se o cliente terminou o pagamento, deseja continuar?",
+    "message": "Esta ação irá manualmente definir o pedido como pago e concluir o processamento. Não pode ser revertido. Por favor, confirme se o cliente já completou o pagamento, deseja continuar?",
     "description": "Mensagem de confirmação de conclusão."
   },
   "state.pending": {
-    "message": "Pendente de Pagamento",
-    "description": "Estado do pedido que indica que este ainda está aguardando o pagamento do usuário."
+    "message": "Aguardando pagamento",
+    "description": "O estado do pedido, indicando que este pedido ainda está aguardando o pagamento do usuário."
   },
   "state.paid": {
     "message": "Pago",
-    "description": "Estado do pedido que indica que este já foi pago."
+    "description": "O estado do pedido, indicando que este pedido foi pago."
   },
   "state.finished": {
     "message": "Concluído",
-    "description": "Estado do pedido que indica que este já foi concluído."
+    "description": "O estado do pedido, indicando que este pedido foi concluído."
   },
   "state.expired": {
-    "message": "Pagamento Expirado",
-    "description": "Estado do pedido que indica que este já expirou."
+    "message": "Pagamento expirado",
+    "description": "O estado do pedido, indicando que este pedido expirou."
   },
   "state.failed": {
-    "message": "Pagamento Falhou",
-    "description": "Estado do pedido que indica que o pagamento falhou."
+    "message": "Pagamento falhou",
+    "description": "O estado do pedido, indicando que o pagamento deste pedido falhou."
   },
   "title.info": {
-    "message": "Informações do Pedido",
+    "message": "Informações do pedido",
     "description": "Título usado no site, indicando informações do pedido."
   },
   "title.wechatPay": {
@@ -128,7 +128,7 @@
     "description": "Título usado no site, indicando pagamento via WeChat."
   },
   "title.aliPay": {
-    "message": "Pagamento Alipay",
+    "message": "Alipay",
     "description": "Título usado no site, indicando pagamento via Alipay, que é um método de pagamento online."
   },
   "title.stripe": {
@@ -136,7 +136,7 @@
     "description": "Título usado no site, indicando pagamento via Stripe, que é um método de pagamento online."
   },
   "title.manageOrder": {
-    "message": "Gerenciar Pedido",
-    "description": "Título usado no site, indicando gerenciamento de pedidos."
+    "message": "Gerenciar pedido",
+    "description": "Título usado no site, indicando a gestão de pedidos."
   }
 }

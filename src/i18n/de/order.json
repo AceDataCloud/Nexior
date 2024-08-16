@@ -48,11 +48,11 @@
     "description": "订单的创建时间。"
   },
   "field.service": {
-    "message": "Dienstname",
+    "message": "Servicebezeichnung",
     "description": "服务的名称。"
   },
   "field.payWay": {
-    "message": "Zahlungsart",
+    "message": "Zahlungsmethode",
     "description": "订单的支付方式。"
   },
   "field.api": {
@@ -68,7 +68,7 @@
     "description": "成功支付的消息。"
   },
   "message.orderExpired": {
-    "message": "Die Bestellung ist abgelaufen. Bitte erstellen Sie eine neue Bestellung für die Zahlung.",
+    "message": "Bestellung ist abgelaufen, bitte erstellen Sie eine neue Bestellung zur Zahlung.",
     "description": "订单过期的消息。"
   },
   "message.createFailed": {
@@ -76,7 +76,7 @@
     "description": "创建失败的消息。"
   },
   "message.wechatPayHelp": {
-    "message": "Bitte öffnen Sie WeChat auf Ihrem Handy und scannen Sie den Code, um die Zahlung abzuschließen.",
+    "message": "Bitte öffnen Sie WeChat auf Ihrem Telefon und scannen Sie den Code, um die Zahlung abzuschließen.",
     "description": "微信支付帮助的消息。"
   },
   "message.free": {
@@ -96,7 +96,7 @@
     "description": "成功更新的消息。"
   },
   "message.confirmFinish": {
-    "message": "Diese Aktion wird die Bestellung manuell auf Zahlungsstatus setzen und die Verteilung abschließen. Dies kann nicht rückgängig gemacht werden. Bitte bestätigen Sie, dass der Kunde die Zahlung abgeschlossen hat. Möchten Sie fortfahren?",
+    "message": "Diese Aktion setzt die Bestellung manuell auf den Zahlungsstatus und schließt die Verteilung ab, kann nicht rückgängig gemacht werden. Bitte bestätigen Sie, dass der Kunde die Zahlung abgeschlossen hat, möchten Sie fortfahren?",
     "description": "确认完成的消息。"
   },
   "state.pending": {
@@ -124,7 +124,7 @@
     "description": "用作网站标题的标题，表示订单信息。"
   },
   "title.wechatPay": {
-    "message": "WeChat Pay",
+    "message": "WeChat Zahlung",
     "description": "用作网站标题的标题，表示微信支付。"
   },
   "title.aliPay": {
@@ -136,7 +136,7 @@
     "description": "用作网站标题的标题，表示Stripe支付，Stripe支付是一种在线支付。"
   },
   "title.manageOrder": {
-    "message": "Bestellung verwalten",
+    "message": "Bestellungen verwalten",
     "description": "用作网站标题的标题，表示管理订单。"
   }
 }

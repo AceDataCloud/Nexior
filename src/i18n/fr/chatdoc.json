@@ -1,43 +1,43 @@
 {
   "button.uploadDocuments": {
     "message": "Télécharger des documents",
-    "description": "Texte du bouton permettant aux utilisateurs de téléverser des documents"
+    "description": "Bouton texte qui permet à l'utilisateur de télécharger des documents"
   },
   "field.fileName": {
     "message": "Nom du fichier",
-    "description": "Nom du fichier téléversé"
+    "description": "Nom du fichier pour le document téléchargé"
   },
   "field.createdAt": {
-    "message": "Créé le",
-    "description": "Heure de téléversement du document"
+    "message": "Date de création",
+    "description": "Date de téléchargement du document"
   },
   "field.fileExtension": {
     "message": "Type de fichier",
-    "description": "Type de fichier téléversé"
+    "description": "Type de fichier du document téléchargé"
   },
   "field.fileUrl": {
     "message": "Lien du fichier",
-    "description": "Lien vers le fichier téléversé"
+    "description": "Lien du document téléchargé"
   },
   "field.fileSize": {
     "message": "Taille du fichier",
-    "description": "Taille du fichier téléversé"
+    "description": "Taille du document téléchargé"
   },
   "field.state": {
     "message": "État",
     "description": "État de traitement du document"
   },
   "field.stateProcessing": {
-    "message": "En traitement",
-    "description": "Document en cours de traitement"
+    "message": "En cours d'apprentissage",
+    "description": "Le document est en cours de traitement"
   },
   "field.stateCompleted": {
-    "message": "Terminé",
-    "description": "Traitement du document effectué"
+    "message": "Apprentissage terminé",
+    "description": "Le traitement du document a réussi"
   },
   "field.stateFailed": {
-    "message": "Échec",
-    "description": "Traitement du document a échoué"
+    "message": "Échec de l'apprentissage",
+    "description": "Le traitement du document a échoué"
   },
   "field.name": {
     "message": "Nom",
@@ -48,151 +48,151 @@
     "description": "Description du document"
   },
   "message.introductionForKnowledge": {
-    "message": "Les documents peuvent être ajoutés dans la base de connaissances pour être utilisés par le robot lors des réponses.",
-    "description": "Informations d'introduction à la base de connaissances"
+    "message": "Les documents peuvent être ajoutés à la base de connaissances, et le robot peut utiliser les connaissances de la base lors de ses réponses.",
+    "description": "Informations d'introduction pour la base de connaissances"
   },
   "message.introductionForRepository": {
-    "message": "La base de connaissances est une collection de documents où vous pouvez ajouter des fichiers. Le robot répondra en utilisant les documents de la base de connaissances.",
-    "description": "Informations d'introduction à la base de connaissances"
+    "message": "La base de connaissances est un ensemble de documents où vous pouvez ajouter des documents. Le robot répondra à partir des documents de la base de connaissances.",
+    "description": "Informations d'introduction pour la base de connaissances"
   },
   "message.uploadDocumentsExceed": {
-    "message": "Limite de téléchargement de documents dépassée",
-    "description": "Message d'erreur en cas de dépassement de la limite de téléchargement de documents"
+    "message": "Le nombre de documents téléchargés dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre de documents téléchargés dépasse la limite"
   },
   "message.uploadDocumentsError": {
     "message": "Échec du téléchargement du document",
-    "description": "Message d'erreur en cas d'échec de téléchargement de documents"
+    "description": "Message d'erreur lors de l'échec du téléchargement du document"
   },
   "message.uploadDocumentsSuccess": {
-    "message": "Téléchargement du document réussi",
-    "description": "Message de succès en cas de réussite du téléchargement de documents"
+    "message": "Document téléchargé avec succès",
+    "description": "Message de succès lorsque le document a été téléchargé avec succès"
   },
   "message.createDocumentSuccess": {
-    "message": "Le document a été créé avec succès",
-    "description": "Message de succès en cas de création réussie du document"
+    "message": "Document créé avec succès",
+    "description": "Message de succès lorsque le document a été créé avec succès"
   },
   "message.startCreateDocument": {
-    "message": "Début de la création du document...",
-    "description": "Message lors du début de la création du document"
+    "message": "Début de l'apprentissage du document...",
+    "description": "Informations lors du début de l'apprentissage du document"
   },
   "message.createDocumentError": {
-    "message": "Échec de la création du document",
-    "description": "Message d'erreur en cas d'échec de la création du document"
+    "message": "Échec de l'apprentissage du document",
+    "description": "Message d'erreur lors de l'échec de l'apprentissage du document"
   },
   "message.dragOrClickToUpload": {
-    "message": "Faites glisser ou cliquez pour télécharger un document",
-    "description": "Informations pour faire glisser ou cliquer pour télécharger un document"
+    "message": "Glissez ou cliquez pour télécharger le document",
+    "description": "Informations sur le glissement ou le clic pour télécharger le document"
   },
   "message.learningDocument": {
     "message": "En cours d'apprentissage, veuillez patienter...",
-    "description": "Message lors de l'apprentissage d'un document"
+    "description": "Informations lors de l'apprentissage du document"
   },
   "message.startNewChat": {
-    "message": "Commencer une nouvelle discussion",
-    "description": "Informations pour commencer une nouvelle discussion"
+    "message": "Démarrer une nouvelle conversation",
+    "description": "Informations lors du démarrage d'une nouvelle conversation"
   },
   "message.errorApiError": {
     "message": "Échec de la réponse, veuillez réessayer plus tard",
-    "description": "Message d'erreur en cas d'échec de la réponse de l'API"
+    "description": "Message d'erreur lors d'un échec de réponse"
   },
   "message.errorBadRequest": {
-    "message": "Format de contenu de la demande incorrect, veuillez reformuler la question",
-    "description": "Message d'erreur en cas de format de contenu de demande incorrect"
+    "message": "Format de contenu de la demande incorrect, veuillez reformuler votre question",
+    "description": "Message d'erreur lors d'un format de demande incorrect"
   },
   "message.errorNoConversation": {
-    "message": "La conversation n'existe pas ou a expiré, veuillez commencer une nouvelle discussion",
-    "description": "Message d'erreur en cas de conversation inexistante ou expirée"
+    "message": "Le contenu de la conversation n'existe pas ou a expiré, veuillez démarrer une nouvelle conversation",
+    "description": "Message d'erreur lorsque le contenu de la conversation n'existe pas ou a expiré"
   },
   "message.errorContentTooLarge": {
-    "message": "Le contenu de la question est trop long, veuillez raccourcir et réessayer",
-    "description": "Message d'erreur en cas de contenu de question trop long"
+    "message": "Le contenu de la question est trop long, veuillez le raccourcir et réessayer",
+    "description": "Message d'erreur lorsque le contenu de la question est trop long"
   },
   "message.errorTooManyRequests": {
-    "message": "Vos actions sont trop fréquentes, veuillez réessayer plus tard",
-    "description": "Message d'erreur en cas d'actions trop fréquentes"
+    "message": "Votre action est trop fréquente, veuillez réessayer plus tard",
+    "description": "Message d'erreur lors d'actions excessives"
   },
   "message.errorUsedUp": {
-    "message": "Votre forfait a atteint sa limite d'utilisation, veuillez acheter plus de quota pour continuer",
-    "description": "Message d'erreur en cas de quota de forfait épuisé"
+    "message": "Votre quota d'utilisation a atteint la limite, veuillez acheter plus pour continuer",
+    "description": "Message d'erreur lorsque le quota a atteint sa limite"
   },
   "message.errorUnknown": {
-    "message": "Erreur serveur inconnue, veuillez réessayer plus tard ou contacter le service client",
-    "description": "Message d'erreur en cas d'erreur serveur inconnue"
+    "message": "Une erreur serveur inconnue est survenue, veuillez réessayer plus tard ou contacter le service client",
+    "description": "Message d'erreur lors d'une erreur serveur inconnue"
   },
   "message.errorTimeout": {
-    "message": "Délai de réponse dépassé, veuillez réessayer plus tard",
-    "description": "Message d'erreur en cas de délai de réponse dépassé"
+    "message": "Délai d'attente pour la réponse dépassé, veuillez réessayer plus tard",
+    "description": "Message d'erreur lors d'un dépassement de délai d'attente"
   },
   "message.errorNotApplied": {
-    "message": "Vous n'avez pas encore demandé ce service, veuillez demander avant de poser des questions",
-    "description": "Message d'erreur en cas de service non demandé"
+    "message": "Vous n'avez pas encore demandé ce service, veuillez le faire avant de continuer à poser des questions",
+    "description": "Message d'erreur lorsque l'utilisateur n'a pas demandé ce service"
   },
   "message.confirmDelete": {
     "message": "Confirmer la suppression",
     "description": "Informations pour confirmer la suppression"
   },
   "message.howToUse": {
-    "message": "Appuyez sur Shift + Entrée pour insérer un saut de ligne",
-    "description": "Instructions sur comment insérer un saut de ligne"
+    "message": "Appuyez sur Shift+Entrée pour effectuer un saut de ligne",
+    "description": "Informations sur la façon de faire un saut de ligne"
   },
   "message.createRepositorySuccess": {
-    "message": "La base de connaissances a été créée avec succès",
-    "description": "Message de succès en cas de création réussie de la base de connaissances"
+    "message": "Base de connaissances créée avec succès",
+    "description": "Message de succès lors de la création de la base de connaissances"
   },
   "message.createRepositoryFailed": {
     "message": "Échec de la création de la base de connaissances",
-    "description": "Message d'erreur en cas d'échec de la création de la base de connaissances"
+    "description": "Message d'erreur lors de l'échec de création de la base de connaissances"
   },
   "message.deleteRepositorySuccess": {
-    "message": "La base de connaissances a été supprimée avec succès",
-    "description": "Message de succès en cas de suppression réussie de la base de connaissances"
+    "message": "Base de connaissances supprimée avec succès",
+    "description": "Message de succès lors de la suppression de la base de connaissances"
   },
   "message.deleteDocumentSuccess": {
-    "message": "Le document a été supprimé avec succès",
-    "description": "Message de succès en cas de suppression réussie d'un document"
+    "message": "Document supprimé avec succès",
+    "description": "Message de succès lors de la suppression du document"
   },
   "message.currentRepository": {
     "message": "Base de connaissances actuelle",
-    "description": "Informations montrant la base de connaissances actuelle"
+    "description": "Informations affichant la base de connaissances actuelle"
   },
   "message.nameRequired": {
-    "message": "Le nom est obligatoire",
-    "description": "Message d'erreur en cas d'absence de nom"
+    "message": "Le nom ne peut pas être vide",
+    "description": "Message d'erreur lorsque le nom est vide"
   },
   "message.inputRepositoryName": {
     "message": "Nom de la base de connaissances",
-    "description": "Placeholder pour le nom de la base de connaissances"
+    "description": "Espace réservé pour l'entrée du nom de la base de connaissances"
   },
   "message.inputRepositoryDescription": {
-    "message": "Décrivez votre référentiel en une phrase",
-    "description": "placeholder for repository description input"
+    "message": "Décrivez votre dépôt de connaissances en une phrase",
+    "description": "Espace réservé pour la description du dépôt de connaissances"
   },
   "message.supportedFiles": {
     "message": "Types de fichiers pris en charge : .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
-    "description": "information about supported file types"
+    "description": "Informations sur les types de fichiers pris en charge"
   },
   "nav.chat": {
-    "message": "Discussion",
-    "description": "navigation item for Chat"
+    "message": "Chat",
+    "description": "Élément de navigation pour le chat"
   },
   "nav.setting": {
     "message": "Paramètres",
-    "description": "navigation item for Settings"
+    "description": "Élément de navigation pour les paramètres"
   },
   "nav.manage": {
     "message": "Gérer",
-    "description": "navigation item for Management"
+    "description": "Élément de navigation pour la gestion"
   },
   "title.manage": {
-    "message": "Gérer le référentiel",
-    "description": "title for managing repositories"
+    "message": "Gérer le dépôt de connaissances",
+    "description": "Titre pour la gestion du dépôt de connaissances"
   },
   "title.createRepository": {
-    "message": "Créer un référentiel",
-    "description": "title for creating a repository"
+    "message": "Créer un dépôt de connaissances",
+    "description": "Titre pour la création d'un dépôt de connaissances"
   },
   "title.repositories": {
-    "message": "Liste des référentiels",
-    "description": "title for list of repositories"
+    "message": "Liste des dépôts de connaissances",
+    "description": "Titre pour la liste des dépôts de connaissances"
   }
 }

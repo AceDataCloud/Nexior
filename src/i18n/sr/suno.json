@@ -20,7 +20,7 @@
     "description": "Model za generisanje muzike"
   },
   "name.instrumental": {
-    "message": "Bez teksta",
+    "message": "Bez reči",
     "description": "Opis parametra 'instrumental'"
   },
   "model.model3": {
@@ -37,23 +37,23 @@
   },
   "name.prompt": {
     "message": "Opis pesme",
-    "description": "Upit za sadržaj"
+    "description": "Podsticaj za unos sadržaja"
   },
   "name.extend": {
     "message": "Proširi pesmu iz",
-    "description": "Upit za sadržaj"
+    "description": "Podsticaj za unos sadržaja"
   },
   "name.lyrics": {
     "message": "Sadržaj teksta",
-    "description": "Upit za sadržaj teksta"
+    "description": "Podsticaj za unos sadržaja teksta"
   },
   "name.style": {
-    "message": "Muzički stil",
-    "description": "Upit za sadržaj muzičkog stila"
+    "message": "Muzika stil",
+    "description": "Podsticaj za unos sadržaja muzičkog stila"
   },
   "name.title": {
     "message": "Naslov pesme",
-    "description": "Upit za sadržaj naslova pesme"
+    "description": "Podsticaj za unos sadržaja naslova pesme"
   },
   "name.failureReason": {
     "message": "Razlog neuspeha",
@@ -69,15 +69,14 @@
   },
   "name.sunoBot": {
     "message": "Suno Bot",
-    "description": "Naziv Suno generatora"
+    "description": "Ime Suno generatora"
   },
   "description.prompt": {
     "message": "Unesite stil i temu muzike koju želite da generišete, na primer, akustični pop o praznicima",
     "description": "Opis parametra 'prompt'"
   },
   "description.lyrics": {
-    "message": "Sadržaj teksta",
-    "description": "Opis parametra 'lyrics'"
+    "message": "Sadržaj teksta"
   },
   "description.style": {
     "message": "Sadržaj muzičkog stila",
@@ -89,39 +88,39 @@
   },
   "status.pending": {
     "message": "Na čekanju",
-    "description": "Status čekanja zadatka"
+    "description": "Čekajući status zadatka"
   },
   "placeholder.prompt": {
-    "message": "Unesite reči za pesmu...",
-    "description": "Placeholder za unos zvučne podloge"
+    "message": "Unesite reči pesme...",
+    "description": "Zamenski tekst za unos"
   },
   "placeholder.lyrics": {
     "message": "Unesite tekst...",
-    "description": "Placeholder za nivo punjenja"
+    "description": "Zamenski tekst za nivo unosa"
   },
   "placeholder.extend.lyrics": {
     "message": "Unesite tekst koji treba proširiti...",
-    "description": "Placeholder za nivo punjenja"
+    "description": "Zamenski tekst za nivo unosa"
   },
   "placeholder.extend.continue_at": {
-    "message": "Unesite od koje sekunde pesme treba proširiti...",
-    "description": "Placeholder za nivo punjenja"
+    "message": "Unesite od koje sekunde pesme treba nastaviti...",
+    "description": "Zamenski tekst za nivo unosa"
   },
   "placeholder.style": {
-    "message": "Unesite reči za stil pesme koji želite generisati, na primer, akustični pop",
-    "description": "Placeholder tekst u polju za unos"
+    "message": "Unesite reči za stil koju želite da generišete, na primer, akustični pop",
+    "description": "Zamenski tekst za polje unosa"
   },
   "placeholder.title": {
-    "message": "Unesite reči za naslov pesme koji želite generisati, na primer, praznična pesma",
-    "description": "Placeholder za unos semena"
+    "message": "Unesite reči za naslov pesme koju želite da generišete, na primer, pesma o praznicima",
+    "description": "Zamenski tekst za ulaz"
   },
   "placeholder.select": {
-    "message": "Odaberite model...",
-    "description": "Placeholder za izbor lokacije"
+    "message": "Izaberite model...",
+    "description": "Zamenski tekst za ulaz"
   },
   "placeholder.position": {
-    "message": "Odaberite...",
-    "description": "Placeholder za izbor lokacije"
+    "message": "Izaberite...",
+    "description": "Zamenski tekst za ulaz"
   },
   "button.generate": {
     "message": "Generiši",
@@ -129,30 +128,30 @@
   },
   "message.startingTask": {
     "message": "Pokreće se zadatak...",
-    "description": "Poruka kada se pokreće zadatak generisanja muzike"
+    "description": "Poruka pri pokretanju zadatka generisanja muzike"
   },
   "message.startTaskSuccess": {
     "message": "Uspešno pokrenut zadatak generisanja muzike",
-    "description": "Poruka pri uspešnom pokretanju zadatka generisanja muzike"
+    "description": "Poruka uspeha kada se zadatak uspešno pokrene"
   },
   "message.startTaskFailed": {
     "message": "Pokretanje zadatka generisanja muzike nije uspelo",
-    "description": "Poruka o grešci kada pokretanje zadatka generisanja muzike nije uspelo"
+    "description": "Poruka greške kada pokretanje zadatka ne uspe"
   },
   "message.generating": {
     "message": "Generišem...",
-    "description": "Poruka dok se muzika generiše"
+    "description": "Poruka tokom generisanja muzike"
   },
   "message.generateFailed": {
     "message": "Generisanje muzike nije uspelo",
-    "description": "Poruka kada generisanje muzike nije uspelo"
+    "description": "Poruka kada generisanje muzike ne uspe"
   },
   "message.noOperations": {
     "message": "Nema dostupnih operacija",
     "description": "Poruka kada nema dostupnih operacija"
   },
   "message.noTasks": {
-    "message": "Nema istorijskih zadataka, molimo vas da generišete muziku u levom konfiguracionom panelu",
+    "message": "Nema istorije zadataka, molimo vas da generišete muziku u bočnoj traci",
     "description": "Poruka kada nema zadataka"
   }
 }

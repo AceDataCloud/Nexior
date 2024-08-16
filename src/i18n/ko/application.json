@@ -4,8 +4,8 @@
     "description": "서비스의 주기."
   },
   "type.usage": {
-    "message": "사용량",
-    "description": "서비스의 사용량."
+    "message": "할당량",
+    "description": "서비스의 할당량."
   },
   "field.expiredAt": {
     "message": "만료 시간",
@@ -21,7 +21,7 @@
   },
   "button.buyMore": {
     "message": "더 구매하기",
-    "description": "버튼 텍스트, 이 버튼을 클릭하면 더 구매하기 페이지로 이동합니다."
+    "description": "버튼 텍스트, 이 버튼을 클릭하면 더 구매하는 페이지로 이동합니다."
   },
   "button.createOrder": {
     "message": "주문 생성",
@@ -56,8 +56,8 @@
     "description": "신청의 남은 수량."
   },
   "field.usedAmount": {
-    "message": "사용한 수량",
-    "description": "신청의 사용한 수량."
+    "message": "사용된 수량",
+    "description": "신청의 사용된 수량."
   },
   "field.apiKey": {
     "message": "API 키",
@@ -65,7 +65,7 @@
   },
   "field.service": {
     "message": "서비스",
-    "description": "신청의 서비스."
+    "description": "신청한 서비스."
   },
   "field.operation": {
     "message": "작업",
@@ -77,7 +77,7 @@
   },
   "field.traceId": {
     "message": "추적 ID",
-    "description": "API 서비스의 신청의 하나의 API 호출의 추적 ID, 번역하지 말고 '추적 ID'로 유지."
+    "description": "API 서비스의 신청의 하나의 API 호출의 추적 ID, 번역하지 말고 '추적 ID'로 유지하세요."
   },
   "field.shouldPayPrice": {
     "message": "최종 가격",
@@ -85,11 +85,11 @@
   },
   "field.api": {
     "message": "API",
-    "description": "이는 온라인 서비스이며, API를 통해 사용자에게 서비스를 제공합니다."
+    "description": "이것은 온라인 서비스로, API를 통해 사용자에게 서비스를 제공합니다."
   },
   "field.proxy": {
     "message": "프록시",
-    "description": "이는 온라인 서비스이며, HTTP 프록시(데이터 전송을 위한) 통해 사용자에게 서비스를 제공합니다."
+    "description": "이것은 온라인 서비스로, HTTP 프록시(데이터 전송에 사용) 를 통해 사용자에게 서비스를 제공합니다."
   },
   "field.credential": {
     "message": "자격 증명",
@@ -101,7 +101,7 @@
   },
   "field.package": {
     "message": "패키지",
-    "description": "패키지는 서로 다른 가격 패키지를 나타냅니다. 예: 100달러로 10000포인트, 200달러로 20000포인트."
+    "description": "패키지는 서로 다른 가격 패키지를 나타내며, 예를 들어 100달러에 10000포인트를 얻거나 200달러에 20000포인트를 얻을 수 있습니다."
   },
   "field.type": {
     "message": "유형",
@@ -113,66 +113,66 @@
   },
   "field.extraPrice": {
     "message": "추가 가격",
-    "description": "사용자가 신청의 추가 가격을 지불해야 합니다."
+    "description": "사용자가 신청에 대해 지불해야 하는 추가 비용."
   },
   "message.alreadyApplied": {
-    "message": "이미 이 서비스를 신청하셨습니다. 콘솔을 확인하세요.",
-    "description": "사용자가 이미 이 서비스를 신청했을 때 표시되는 메시지."
+    "message": "이미 이 서비스를 신청했습니다. 콘솔을 확인하세요.",
+    "description": "사용자가 이미 이 서비스를 신청했을 때 사용자에게 표시되는 메시지."
   },
   "message.applySuccessfully": {
     "message": "신청 성공",
-    "description": "사용자가 이 서비스를 성공적으로 신청했을 때 표시되는 메시지."
+    "description": "사용자가 성공적으로 이 서비스를 신청했을 때 사용자에게 표시되는 메시지."
   },
   "message.notApplied": {
-    "message": "아직 이 서비스를 신청하지 않으셨습니다. 사용하기 전에 신청하세요.",
-    "description": "사용자가 아직 이 서비스를 신청하지 않았을 때 표시되는 메시지."
+    "message": "아직 이 서비스를 신청하지 않았습니다. 사용 전에 해당 서비스를 신청하세요.",
+    "description": "사용자가 아직 이 서비스를 신청하지 않았을 때 사용자에게 표시되는 메시지."
   },
   "message.yourApplication": {
     "message": "귀하의 신청",
-    "description": "사용자의 신청일 때 표시되는 메시지."
+    "description": "사용자의 신청을 사용자에게 보여줄 때 사용되는 메시지."
   },
   "message.unverified": {
-    "message": "서비스 신청 전에实名认证을 완료해야 합니다.",
-    "description": "사용자가 아직实名认证을 완료하지 않았을 때 표시되는 메시지."
+    "message": "귀하의 서비스 신청을 위해 실명 인증을 완료해야 합니다.",
+    "description": "사용자가 실명 인증을 완료하지 않았을 때 사용자에게 표시되는 메시지."
   },
   "message.goVerify": {
     "message": "실명 인증으로 이동",
-    "description": "사용자가 아직实名认证을 완료하지 않았을 때 표시되는 메시지."
+    "description": "사용자가 실명 인증을 완료하지 않았을 때 사용자에게 표시되는 메시지."
   },
   "message.requiredParameter": {
     "message": "필수 매개변수",
-    "description": "사용자가 필수 매개변수를 입력하지 않았을 때 표시되는 메시지."
+    "description": "사용자가 필수 매개변수를 입력하지 않았을 때 사용자에게 표시되는 메시지."
   },
   "message.example": {
     "message": "예시",
-    "description": "사용자가 필수 매개변수를 입력하지 않았을 때 표시되는 메시지."
+    "description": "사용자가 필수 매개변수를 입력하지 않았을 때 사용자에게 표시되는 메시지."
   },
   "message.createCredentialSuccessfully": {
     "message": "자격 증명 생성 성공",
-    "description": "사용자가 자격 증명을 성공적으로 생성했을 때 표시되는 메시지."
+    "description": "사용자가 자격 증명을 성공적으로 생성했을 때 사용자에게 표시되는 메시지."
   },
   "message.readPolicy": {
     "message": "정책을 읽고 동의합니다.",
-    "description": "사용자가 정책을 읽고 동의했을 때 표시되는 메시지."
+    "description": "사용자가 정책을 읽고 동의했을 때 사용자에게 표시되는 메시지."
   },
   "message.policy": {
     "message": "데이터 기술 서비스 사용 계약",
-    "description": "사용자가 정책을 읽고 동의했을 때 표시되는 메시지."
+    "description": "사용자가 정책을 읽고 동의했을 때 사용자에게 표시되는 메시지."
   },
   "message.notAgreePolicy": {
-    "message": "데이터 기술 서비스 사용 계약에 동의하지 않았습니다.",
-    "description": "사용자가 정책에 동의하지 않았을 때 표시되는 메시지."
+    "message": "아직 데이터 기술 서비스 사용 계약에 동의하지 않았습니다.",
+    "description": "사용자가 정책에 동의하지 않았을 때 사용자에게 표시되는 메시지."
   },
   "message.confirmApplying": {
     "message": "서비스 신청 확인",
-    "description": "사용자가 서비스 신청을 확인할 때 표시되는 메시지."
+    "description": "사용자가 서비스 신청을 확인할 때 사용자에게 표시되는 메시지."
   },
   "message.rotateCredential": {
     "message": "키 재설정",
     "description": "사용자가 키를 재설정할 때 사용자에게 표시되는 메시지입니다."
   },
   "message.rotateCredentialConfirm": {
-    "message": "정말로 키를 재설정하시겠습니까? 재설정 후 복구할 수 없습니다.",
+    "message": "키를 재설정하시겠습니까? 재설정 후에는 복구할 수 없습니다.",
     "description": "사용자가 키 재설정을 확인할 때 사용자에게 표시되는 메시지입니다."
   },
   "message.idDoesNotExist": {
@@ -180,28 +180,28 @@
     "description": "신청이 존재하지 않을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.rotateCredentialSuccessfully": {
-    "message": "키가 성공적으로 재설정되었습니다.",
+    "message": "키 재설정 성공",
     "description": "키가 성공적으로 재설정되었을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.rotateCredentialFailed": {
-    "message": "키 재설정에 실패했습니다. 처리 담당자에게 문의하십시오.",
-    "description": "키 재설정에 실패했을 때 사용자에게 표시되는 메시지입니다."
+    "message": "키 재설정 실패, 처리에 연락하십시오.",
+    "description": "키 재설정이 실패했을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.updateFailed": {
     "message": "수정 실패",
-    "description": "수정에 실패했을 때 사용자에게 표시되는 메시지입니다."
+    "description": "수정이 실패했을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.updateSuccessfully": {
     "message": "수정 성공",
-    "description": "수정에 성공했을 때 사용자에게 표시되는 메시지입니다."
+    "description": "수정이 성공적으로 이루어졌을 때 사용자에게 표시되는 메시지입니다."
   },
   "title.buyService": {
     "message": "서비스 구매",
     "description": "사용자가 서비스를 구매하고자 할 때 페이지 제목입니다."
   },
   "title.applicationRemainingCount": {
-    "message": "수정 가능 수",
-    "description": "사용자가 신청 수를 수정하고자 할 때 페이지 제목입니다."
+    "message": "수정 수량",
+    "description": "사용자가 신청 수량을 수정하고자 할 때 페이지 제목입니다."
   },
   "title.manageApplication": {
     "message": "신청 관리",

@@ -1,27 +1,27 @@
 {
   "button.pay": {
-    "message": "支払い",
-    "description": "注文を支払うためのボタンのテキストです。"
+    "message": "支払う",
+    "description": "ボタンテキストで、注文の支払いに使用します。"
   },
   "button.continuePay": {
     "message": "支払いを続ける",
-    "description": "注文の支払いを続けるためのボタンのテキストです。"
+    "description": "ボタンテキストで、注文の支払いを続けるために使用します。"
   },
   "button.checkDetail": {
-    "message": "詳細を確認する",
-    "description": "注文の詳細を確認するためのボタンのテキストです。"
+    "message": "詳細を確認",
+    "description": "ボタンテキストで、注文の詳細を確認するために使用します。"
   },
   "button.query": {
     "message": "照会",
-    "description": "注文を照会するためのボタンのテキストです。"
+    "description": "ボタンテキストで、注文を照会するために使用します。"
   },
   "button.finish": {
     "message": "手動で完了",
-    "description": "注文を手動で完了するためのボタンのテキストです。"
+    "description": "ボタンテキストで、注文を手動で完了させるために使用します。"
   },
   "button.update": {
     "message": "更新",
-    "description": "注文を更新するためのボタンのテキストです。"
+    "description": "ボタンテキストで、注文を更新するために使用します。"
   },
   "field.id": {
     "message": "注文番号",
@@ -40,12 +40,12 @@
     "description": "注文の説明です。"
   },
   "field.state": {
-    "message": "状態",
-    "description": "注文の状態です。"
+    "message": "ステータス",
+    "description": "注文のステータスです。"
   },
   "field.createdAt": {
-    "message": "作成時間",
-    "description": "注文の作成時間です。"
+    "message": "作成日時",
+    "description": "注文の作成日時です。"
   },
   "field.service": {
     "message": "サービス名",
@@ -57,11 +57,11 @@
   },
   "field.api": {
     "message": "API",
-    "description": "APIはオンラインサービスの一種です。"
+    "description": "APIはオンラインサービスの一つです。"
   },
   "field.proxy": {
     "message": "プロキシ",
-    "description": "プロキシは、データを転送するためのHTTPプロキシを使用したオンラインサービスの一種です。"
+    "description": "プロキシはデータを転送するHTTPプロキシのオンラインサービスです。"
   },
   "message.paidSuccessfully": {
     "message": "支払い成功",
@@ -69,74 +69,74 @@
   },
   "message.orderExpired": {
     "message": "注文は期限切れです。新しい注文を作成して支払ってください。",
-    "description": "注文が期限切れであることを示すメッセージです。"
+    "description": "注文が期限切れになった際のメッセージです。"
   },
   "message.createFailed": {
     "message": "作成に失敗しました",
-    "description": "作成に失敗したことを示すメッセージです。"
+    "description": "作成が失敗した際のメッセージです。"
   },
   "message.wechatPayHelp": {
-    "message": "携帯電話でWeChatを開き、QRコードをスキャンして支払いを完了してください。",
+    "message": "携帯電話でWeChatを開き、QRコードをスキャンして支払いを完了してください",
     "description": "WeChat支払いのヘルプメッセージです。"
   },
   "message.free": {
     "message": "無料",
-    "description": "無料注文のメッセージです。"
+    "description": "無料の注文に関するメッセージです。"
   },
   "message.buyInExternalUrl": {
-    "message": "外部リンクで支払いを完了してください。",
-    "description": "外部リンクでの支払いメッセージです。"
+    "message": "外部リンクで支払いを完了してください",
+    "description": "外部リンクでの支払いに関するメッセージです。"
   },
   "message.updateFailed": {
     "message": "更新に失敗しました",
-    "description": "更新に失敗したことを示すメッセージです。"
+    "description": "更新が失敗した際のメッセージです。"
   },
   "message.updateSuccessfully": {
     "message": "更新成功",
-    "description": "更新が成功したことを示すメッセージです。"
+    "description": "更新が成功した際のメッセージです。"
   },
   "message.confirmFinish": {
-    "message": "この操作により、注文の支払い状態を手動で設定し、配布処理を完了します。元に戻すことはできません。顧客が支払いを完了したことを確認してください。続けてもよろしいですか？",
+    "message": "この操作は注文を支払い状態に設定し、配布処理を完了させます。取り消しはできません。顧客が支払いを完了したことを確認してください。続けますか？",
     "description": "完了を確認するメッセージです。"
   },
   "state.pending": {
     "message": "未払い",
-    "description": "この注文がユーザーの支払いを待機していることを示す注文の状態です。"
+    "description": "注文のステータスであり、この注文はまだユーザーの支払いを待っています。"
   },
   "state.paid": {
     "message": "支払い済み",
-    "description": "この注文が支払い済みであることを示す注文の状態です。"
+    "description": "注文のステータスであり、この注文はすでに支払われています。"
   },
   "state.finished": {
     "message": "完了",
-    "description": "この注文が完了したことを示す注文の状態です。"
+    "description": "注文のステータスであり、この注文はすでに完了しています。"
   },
   "state.expired": {
     "message": "支払いタイムアウト",
-    "description": "この注文が期限切れであることを示す注文の状態です。"
+    "description": "注文のステータスであり、この注文は期限切れになっています。"
   },
   "state.failed": {
     "message": "支払い失敗",
-    "description": "この注文の支払いが失敗したことを示す注文の状態です。"
+    "description": "注文のステータスであり、この注文の支払いが失敗しました。"
   },
   "title.info": {
     "message": "注文情報",
-    "description": "ウェブサイトタイトルとして使用されるタイトルで、注文情報を示します。"
+    "description": "ウェブサイトのタイトルとして使用されるタイトルであり、注文情報を示します。"
   },
   "title.wechatPay": {
     "message": "WeChat支払い",
-    "description": "ウェブサイトタイトルとして使用されるタイトルで、WeChat支払いを示します。"
+    "description": "ウェブサイトのタイトルとして使用されるタイトルであり、WeChat支払いを示します。"
   },
   "title.aliPay": {
-    "message": "アリペイ",
-    "description": "ウェブサイトタイトルとして使用されるタイトルで、アリペイ支払いを示します。アリペイ支払いはオンライン支払いの一種です。"
+    "message": "支付宝",
+    "description": "ウェブサイトのタイトルとして使用されるタイトルであり、支付宝支払いを示します。支付宝支払いはオンライン支払いの一種です。"
   },
   "title.stripe": {
-    "message": "ストライプ",
-    "description": "ウェブサイトタイトルとして使用されるタイトルで、ストライプ支払いを示します。ストライプ支払いはオンライン支払いの一種です。"
+    "message": "Stripe",
+    "description": "ウェブサイトのタイトルとして使用されるタイトルであり、Stripe支払いを示します。Stripe支払いはオンライン支払いの一種です。"
   },
   "title.manageOrder": {
     "message": "注文管理",
-    "description": "ウェブサイトタイトルとして使用されるタイトルで、注文管理を示します。"
+    "description": "ウェブサイトのタイトルとして使用されるタイトルであり、注文管理を示します。"
   }
 }

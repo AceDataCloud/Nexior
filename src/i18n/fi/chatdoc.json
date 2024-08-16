@@ -1,11 +1,11 @@
 {
   "button.uploadDocuments": {
     "message": "Lataa asiakirjat",
-    "description": "Painikkeen teksti, joka mahdollistaa käyttäjien ladata asiakirjoja"
+    "description": "Painikkeen teksti, joka sallii käyttäjän ladata asiakirjoja"
   },
   "field.fileName": {
     "message": "Tiedostonimi",
-    "description": "Ladatun asiakirjan nimi"
+    "description": "Ladattavan asiakirjan tiedostonimi"
   },
   "field.createdAt": {
     "message": "Luontiaika",
@@ -13,30 +13,30 @@
   },
   "field.fileExtension": {
     "message": "Tiedostotyyppi",
-    "description": "Ladatun asiakirjan tyyppi"
+    "description": "Ladattavan asiakirjan tiedostotyyppi"
   },
   "field.fileUrl": {
     "message": "Tiedostolinkki",
-    "description": "Ladatun asiakirjan linkki"
+    "description": "Ladattavan asiakirjan linkki"
   },
   "field.fileSize": {
-    "message": "Tiedostokoko",
-    "description": "Ladatun asiakirjan koko"
+    "message": "Tiedoston koko",
+    "description": "Ladattavan asiakirjan koko"
   },
   "field.state": {
     "message": "Tila",
     "description": "Asiakirjan käsittelytila"
   },
   "field.stateProcessing": {
-    "message": "Käsittelyssä",
-    "description": "Asiakirja on käsittelyssä"
+    "message": "Käsitellään",
+    "description": "Asiakirjaa käsitellään parhaillaan"
   },
   "field.stateCompleted": {
-    "message": "Valmis",
+    "message": "Käsittely valmis",
     "description": "Asiakirjan käsittely onnistui"
   },
   "field.stateFailed": {
-    "message": "Epäonnistui",
+    "message": "Käsittely epäonnistui",
     "description": "Asiakirjan käsittely epäonnistui"
   },
   "field.name": {
@@ -48,151 +48,151 @@
     "description": "Asiakirjan kuvaus"
   },
   "message.introductionForKnowledge": {
-    "message": "Asiakirja voidaan lisätä tietokantaan, robotti voi vastata käyttämällä tietokannassa olevaa tietoa.",
-    "description": "Tietokannan esittelytiedot"
+    "message": "Asiakirja voidaan lisätä tietokantaan, ja robotti voi käyttää tietokannassa olevia tietoja vastatessaan.",
+    "description": "Tietokannan esittelytieto"
   },
   "message.introductionForRepository": {
-    "message": "Tietokanta on asiakirjojen kokoelma, voit lisätä asiakirjoja siihen. Robotti vastaa käyttäen tietokannassa olevia asiakirjoja.",
-    "description": "Tietokannan esittelytiedot"
+    "message": "Tietokanta on asiakirjojen kokoelma, johon voit lisätä asiakirjoja. Robotti vastaa tietokannasta löytyvistä asiakirjoista.",
+    "description": "Tietokannan esittelytieto"
   },
   "message.uploadDocumentsExceed": {
-    "message": "Ladattujen asiakirjojen määrä ylittää rajoituksen",
-    "description": "Virheviesti, kun ladattujen asiakirjojen määrä ylittää rajoituksen"
+    "message": "Ladattavien asiakirjojen määrä ylittää rajan",
+    "description": "Virheilmoitus, kun ladattavien asiakirjojen määrä ylittää rajan"
   },
   "message.uploadDocumentsError": {
-    "message": "Asiakirjojen lataus epäonnistui",
-    "description": "Virheviesti, kun asiakirjojen lataus epäonnistuu"
+    "message": "Asiakirjan lataaminen epäonnistui",
+    "description": "Virheilmoitus, kun asiakirjan lataaminen epäonnistuu"
   },
   "message.uploadDocumentsSuccess": {
-    "message": "Asiakirjojen lataus onnistui",
-    "description": "Onnistumisviesti, kun asiakirjojen lataus onnistuu"
+    "message": "Asiakirjan lataaminen onnistui",
+    "description": "Onnistumisviesti asiakirjan lataamisen jälkeen"
   },
   "message.createDocumentSuccess": {
-    "message": "Asiakirjan luonti onnistui",
-    "description": "Onnistumisviesti, kun asiakirjan luonti onnistuu"
+    "message": "Asiakirja luotiin onnistuneesti",
+    "description": "Onnistumisviesti asiakirjan luomisen jälkeen"
   },
   "message.startCreateDocument": {
-    "message": "Aloita asiakirjan luonti...",
-    "description": "Viesti, kun asiakirjan luonti aloitetaan"
+    "message": "Aloitetaan asiakirjan käsittely...",
+    "description": "Tietoa asiakirjan käsittelyn aloittamisesta"
   },
   "message.createDocumentError": {
-    "message": "Asiakirjan luonti epäonnistui",
-    "description": "Virheviesti, kun asiakirjan luonti epäonnistuu"
+    "message": "Asiakirjan käsittely epäonnistui",
+    "description": "Virheilmoitus, kun asiakirjan käsittely epäonnistuu"
   },
   "message.dragOrClickToUpload": {
-    "message": "Vedä tai klikkaa ladataksesi asiakirjoja",
-    "description": "Tieto viesti, miten asiakirjoja ladataan vetämällä tai klikkaamalla"
+    "message": "Vedä tai napsauta ladataksesi asiakirjat",
+    "description": "Tietoa asiakirjojen lataamisesta"
   },
   "message.learningDocument": {
-    "message": "Opetellaan, odota hetki...",
-    "description": "Viesti asiakirjan opettamisesta"
+    "message": "Käsitellään, odota hetki...",
+    "description": "Tietoa asiakirjan käsittelystä"
   },
   "message.startNewChat": {
     "message": "Aloita uusi keskustelu",
-    "description": "Uuden keskustelun aloittamisviesti"
+    "description": "Tietoa uuden keskustelun aloittamisesta"
   },
   "message.errorApiError": {
     "message": "Vastaus epäonnistui, yritä myöhemmin uudelleen",
-    "description": "Virheviesti, kun vastaus epäonnistuu"
+    "description": "Virheilmoitus, kun vastaus epäonnistuu"
   },
   "message.errorBadRequest": {
-    "message": "Virheellinen pyynnön muoto, ole hyvä ja tee uusi kysely",
-    "description": "Virheilmoitus virheellisestä pyynnön muodosta"
+    "message": "Pyyntömuoto on virheellinen, yritä uudelleen",
+    "description": "Virheilmoitus, kun pyyntömuoto on virheellinen"
   },
   "message.errorNoConversation": {
-    "message": "Keskustelua ei löydy tai se on vanhentunut, aloita uusi keskustelu",
-    "description": "Virheilmoitus, kun keskustelua ei löydy tai se on vanhentunut"
+    "message": "Keskustelun sisältö ei ole olemassa tai se on vanhentunut, aloita uusi keskustelu",
+    "description": "Virheilmoitus, kun keskustelun sisältö ei ole olemassa tai on vanhentunut"
   },
   "message.errorContentTooLarge": {
-    "message": "Kysymyksen sisältö on liian pitkä, lyhennä ja yritä uudelleen",
-    "description": "Virheilmoitus, kun kysymyksen sisältö on liian pitkä"
+    "message": "Kysymys on liian pitkä, lyhennä ja yritä uudelleen",
+    "description": "Virheilmoitus, kun kysymys on liian pitkä"
   },
   "message.errorTooManyRequests": {
-    "message": "Toimintosi on liian tiheää, yritä myöhemmin uudelleen",
+    "message": "Toimintosi ovat liian tiheitä, yritä myöhemmin uudelleen",
     "description": "Virheilmoitus, kun toiminta on liian tiheää"
   },
   "message.errorUsedUp": {
-    "message": "Palvelun käyttökiintiösi on täynnä, osta lisää käyttömahdollisuuksia jatkaaksesi",
-    "description": "Virheilmoitus, kun palvelun käyttökiintiö on täynnä"
+    "message": "Pakettisi käyttöraja on saavutettu, osta lisää käytettävyyttä jatkaaksesi",
+    "description": "Virheilmoitus, kun paketin käyttöraja on saavutettu"
   },
   "message.errorUnknown": {
     "message": "Tuntematon palvelinvirhe, yritä myöhemmin uudelleen tai ota yhteyttä asiakaspalveluun",
-    "description": "Virheilmoitus tuntemattomasta palvelinvirheestä"
+    "description": "Virheilmoitus, kun tapahtuu tuntematon palvelinvirhe"
   },
   "message.errorTimeout": {
-    "message": "Kysymykseen vastaaminen kesti liian kauan, yritä myöhemmin uudelleen",
-    "description": "Virheilmoitus, kun kysymykseen vastaaminen kestää liian kauan"
+    "message": "Vastauksen aikakatkaisu, yritä myöhemmin uudelleen",
+    "description": "Virheilmoitus, kun vastaus aikakatkaistaan"
   },
   "message.errorNotApplied": {
-    "message": "Et ole vielä hakenut tätä palvelua, hae se ja jatka kyselyä",
-    "description": "Virheilmoitus, kun käyttäjä ei ole vielä hakenut palvelua"
+    "message": "Et ole vielä hakenut tätä palvelua, hae ensin ja jatka kysymistä",
+    "description": "Virheilmoitus, kun käyttäjä ei ole hakenut palvelua"
   },
   "message.confirmDelete": {
     "message": "Vahvista poisto",
-    "description": "Poiston vahvistusviesti"
+    "description": "Tieto poiston vahvistamisesta"
   },
   "message.howToUse": {
-    "message": "Paina Shift+Enter tehdäksesi uuden rivin",
-    "description": "Ohjeet rivinvaihtoon"
+    "message": "Paina Shift+Enter vaihtaaksesi riville",
+    "description": "Tietoa rivinvaihdosta"
   },
   "message.createRepositorySuccess": {
-    "message": "Tietokannan luonti onnistui",
-    "description": "Onnistumisviesti, kun tietokannan luonti onnistuu"
+    "message": "Tietokanta luotiin onnistuneesti",
+    "description": "Onnistumisviesti tietokannan luomisen jälkeen"
   },
   "message.createRepositoryFailed": {
-    "message": "Tietokannan luonti epäonnistui",
-    "description": "Virheilmoitus, kun tietokannan luonti epäonnistuu"
+    "message": "Tietokannan luominen epäonnistui",
+    "description": "Virheilmoitus, kun tietokannan luominen epäonnistuu"
   },
   "message.deleteRepositorySuccess": {
     "message": "Tietokannan poisto onnistui",
-    "description": "Onnistumisviesti, kun tietokannan poisto onnistuu"
+    "description": "Onnistumisviesti tietokannan poistamisen jälkeen"
   },
   "message.deleteDocumentSuccess": {
     "message": "Asiakirjan poisto onnistui",
-    "description": "Onnistumisviesti, kun asiakirjan poisto onnistuu"
+    "description": "Onnistumisviesti asiakirjan poistamisen jälkeen"
   },
   "message.currentRepository": {
     "message": "Nykyinen tietokanta",
-    "description": "Näyttää nykyisen tietokannan tiedot"
+    "description": "Tietoa nykyisestä tietokannasta"
   },
   "message.nameRequired": {
-    "message": "Nimi vaaditaan",
-    "description": "Virheilmoitus, kun nimi puuttuu"
+    "message": "Nimi ei voi olla tyhjö",
+    "description": "Virheilmoitus, jos nimi on tyhjö"
   },
   "message.inputRepositoryName": {
-    "message": "Syötä tietokannan nimi",
-    "description": "Tietokannan nimen syöttökentän paikkamerkki"
+    "message": "Tietokannan nimi",
+    "description": "Paikkamerkki tietokannan nimen syöttöön"
   },
   "message.inputRepositoryDescription": {
-    "message": "Kuvaile tietovarastoasi yhdellä lauseella",
-    "description": "Tietovaraston kuvauksen syöttökenttä"
+    "message": "Kuvaile tietokantaasi yhdellä lauseella",
+    "description": "Kuvaus tietokannan syöttöpaikasta"
   },
   "message.supportedFiles": {
     "message": "Tuetut tiedostotyypit: .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
-    "description": "Näyttää tuetut tiedostotyypit"
+    "description": "Tietoa tuetuista tiedostotyypeistä"
   },
   "nav.chat": {
     "message": "Keskustelu",
-    "description": "Keskustelunavigointikohde"
+    "description": "Keskusteluosan navigointikohta"
   },
   "nav.setting": {
     "message": "Asetukset",
-    "description": "Asetustenavigointikohde"
+    "description": "Asetusten navigointikohta"
   },
   "nav.manage": {
-    "message": "Hallinta",
-    "description": "Hallinnanavigointikohde"
+    "message": "Hallitse",
+    "description": "Hallintaosan navigointikohta"
   },
   "title.manage": {
-    "message": "Hallinnoi tietovarastoja",
-    "description": "Tietovarastojen hallinnan otsikko"
+    "message": "Tietokannan hallinta",
+    "description": "Otsikko tietokannan hallintaan"
   },
   "title.createRepository": {
-    "message": "Luo tietovarasto",
-    "description": "Tietovaraston luonnin otsikko"
+    "message": "Luo tietokanta",
+    "description": "Otsikko tietokannan luomiseen"
   },
   "title.repositories": {
-    "message": "Tietovarastojen luettelo",
-    "description": "Tietovarastoluettelon otsikko"
+    "message": "Tietokannan lista",
+    "description": "Otsikko tietokannan listalle"
   }
 }

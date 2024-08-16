@@ -1,7 +1,7 @@
 {
   "entity.requestQueries": {
     "message": "Request Queries",
-    "description": "Query parameters of an HTTP request."
+    "description": "HTTP request query parameters."
   },
   "entity.requestBody": {
     "message": "Request Body",
@@ -17,7 +17,7 @@
   },
   "entity.requestHeader": {
     "message": "Request Header",
-    "description": "The header of an HTTP request, singular form of request headers."
+    "description": "A single HTTP request header."
   },
   "entity.responseHeaders": {
     "message": "Response Headers",
@@ -53,7 +53,7 @@
   },
   "message.free": {
     "message": "Free",
-    "description": "Indicates that the price is free, and no points or currency are required when using the API service."
+    "description": "Indicates the price is free, without any points or currency required to use the API service."
   },
   "message.appliedCount": {
     "message": "Applied Count",
@@ -61,19 +61,19 @@
   },
   "message.firstFree": {
     "message": "First Free",
-    "description": "Indicates the first usage of the API service is free, and no points or currency are required."
+    "description": "Indicates that the first use of the API service is free, with no points or currency required."
   },
   "message.custom": {
-    "message": "Custom",
-    "description": "Indicates a specified price, and points or currency are required when using the API service."
+    "message": "Custom Amount",
+    "description": "Indicates that the price is a specified amount, requiring a certain number of points or currency to use the API service."
   },
   "message.present": {
-    "message": "Present",
-    "description": "Points will be presented to you when using the API service for the first time."
+    "message": "Gift",
+    "description": "We will gift points to you upon your first use of the API service."
   },
   "message.around": {
-    "message": "Approximately",
-    "description": "The price is approximately, the actual price may vary."
+    "message": "Around",
+    "description": "The price is approximately this, actual prices may vary."
   },
   "message.successRate15min": {
     "message": "Real-time Success Rate",
@@ -84,20 +84,20 @@
     "description": "The success rate of the API service."
   },
   "message.xMinutes": {
-    "message": "Time (Minutes)",
+    "message": "Time (minutes)",
     "description": "Time in minutes."
   },
   "message.streamUsage": {
-    "message": "Note: For streaming requests, the above code may not be fully applicable. Please refer to the integration document for modification.",
-    "description": "For streaming requests, the above code may not be fully applicable. Please refer to the integration document for modification."
+    "message": "Note: For streaming requests, the above code may not be fully applicable. Please refer to the integration documentation for modifications.",
+    "description": "For streaming requests, the above code may not be fully applicable. Please refer to the integration documentation for modifications."
   },
   "message.alphaStage": {
-    "message": "This API is in the Alpha stage, which is an early preview version and may have potential instability. The API format may undergo significant changes, and it is not recommended for use in a production environment. The current pricing is relatively low, and there may be significant price adjustments in the future.",
-    "description": "This API is in the Alpha stage, which is an early preview version and may have potential instability. The API format may undergo significant changes, and it is not recommended for use in a production environment. The current pricing is relatively low, and there may be significant price adjustments in the future."
+    "message": "This API is in the Alpha stage, an early preview version that may contain potential instability. The API format may undergo significant changes, and it is not recommended for use in production environments. Current pricing is relatively low, but significant price adjustments may occur in the future.",
+    "description": "This API is in the Alpha stage, an early preview version that may contain potential instability. The API format may undergo significant changes, and it is not recommended for use in production environments. Current pricing is relatively low, but significant price adjustments may occur in the future."
   },
   "message.betaStage": {
-    "message": "This API is in the Beta stage, and the API format will not undergo significant changes, but there may be potential instability. Please use it cautiously in a production environment. The current pricing is relatively low, and there may be moderate price adjustments in the future.",
-    "description": "This API is in the Beta stage, and the API format will not undergo significant changes, but there may be potential instability. Please use it cautiously in a production environment. The current pricing is relatively low, and there may be moderate price adjustments in the future."
+    "message": "This API is in the Beta stage, with little expected change to the API format; however, it may still have potential instability. Please use with caution in production environments. Current pricing is relatively low, and there may be moderate price adjustments in the future.",
+    "description": "This API is in the Beta stage, with little expected change to the API format; however, it may still have potential instability. Please use with caution in production environments. Current pricing is relatively low, and there may be moderate price adjustments in the future."
   },
   "unit.credit": {
     "message": "Credit",
@@ -105,7 +105,7 @@
   },
   "unit.Credit": {
     "message": "Credit",
-    "description": "Credits are the virtual currency used in the API service, in uppercase form."
+    "description": "Credits are the virtual currency used in the API service, in capital form."
   },
   "unit.credits": {
     "message": "Credits",
@@ -113,30 +113,30 @@
   },
   "unit.Credits": {
     "message": "Credits",
-    "description": "Credits are the virtual currency used in the API service, in uppercase and plural form."
+    "description": "Credits are the virtual currency used in the API service, in capital and plural form."
   },
   "unit.call": {
     "message": "Call",
-    "description": "Call represents the number of times the API service has been called."
+    "description": "A call is the number of times the API service has been called."
   },
   "unit.Call": {
     "message": "Call",
-    "description": "Call represents the number of times the API service has been called, in uppercase form."
+    "description": "A call is the number of times the API service has been called, in capital form."
   },
   "unit.calls": {
     "message": "Calls",
-    "description": "Calls represent the number of times the API service has been called, in plural form."
+    "description": "Calls are the number of times the API service has been called, in plural form."
   },
   "unit.Calls": {
     "message": "Calls",
-    "description": "Calls represent the number of times the API service has been called, in uppercase and plural form."
+    "description": "Calls are the number of times the API service has been called, in capital and plural form."
   },
   "unit.MB": {
     "message": "MB",
-    "description": "MB represents megabytes, a unit of digital information storage."
+    "description": "MB stands for megabytes, a unit for digital information storage."
   },
   "unit.GB": {
     "message": "GB",
-    "description": "GB represents gigabytes, a unit of digital information storage."
+    "description": "GB stands for gigabytes, a unit for digital information storage."
   }
 }

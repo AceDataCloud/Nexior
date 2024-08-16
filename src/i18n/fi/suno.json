@@ -1,7 +1,7 @@
 {
   "button.extend": {
-    "message": "Jatka tuotantoa",
-    "description": "Jatka tuotantoa -painikkeen teksti"
+    "message": "Jatka generointia",
+    "description": "Jatka generointia -painikkeen teksti"
   },
   "button.download": {
     "message": "Lataa",
@@ -13,11 +13,11 @@
   },
   "model.model1": {
     "message": "v2",
-    "description": "Malli musiikin tuottamiseen"
+    "description": "Musiikin generoimiseen käytettävä malli"
   },
   "model.model2": {
     "message": "v3",
-    "description": "Malli musiikin tuottamiseen"
+    "description": "Musiikin generoimiseen käytettävä malli"
   },
   "name.instrumental": {
     "message": "Ilman sanoituksia",
@@ -25,35 +25,35 @@
   },
   "model.model3": {
     "message": "v3.5",
-    "description": "Malli musiikin tuottamiseen"
+    "description": "Musiikin generoimiseen käytettävä malli"
   },
   "name.taskId": {
-    "message": "Tehtävä ID",
+    "message": "Tehtävän ID",
     "description": "Tehtävän ID"
   },
   "name.type": {
-    "message": "Mukautettu malli",
-    "description": "Mukautetun mallin nimi"
+    "message": "Mukautettu tila",
+    "description": "Mukautetun tilan nimi"
   },
   "name.prompt": {
     "message": "Kappaleen kuvaus",
-    "description": "Sisältösyötteen kehotus"
+    "description": "Sisällön syöttämiseen käytettävä kehote"
   },
   "name.extend": {
     "message": "Laajenna kappaletta",
-    "description": "Sisältösyötteen kehotus"
+    "description": "Sisällön syöttämiseen käytettävä kehote"
   },
   "name.lyrics": {
-    "message": "Sanoitussisältö",
-    "description": "Sanoitussisällön syötteen kehotus"
+    "message": "Sanoitukset",
+    "description": "Sanoitusten sisällön syöttämiseen käytettävä kehote"
   },
   "name.style": {
     "message": "Kappaleen tyyli",
-    "description": "Kappaleen tyylin sisältösyötteen kehotus"
+    "description": "Kappaleen tyylin sisällön syöttämiseen käytettävä kehote"
   },
   "name.title": {
     "message": "Kappaleen otsikko",
-    "description": "Kappaleen otsikon sisältösyötteen kehotus"
+    "description": "Kappaleen otsikon sisällön syöttämiseen käytettävä kehote"
   },
   "name.failureReason": {
     "message": "Epäonnistumisen syy",
@@ -64,15 +64,15 @@
     "description": "Tehtävän tila"
   },
   "name.traceId": {
-    "message": "Seurantatunnus",
-    "description": "Tehtävän seurantatunnus"
+    "message": "Seuranta-ID",
+    "description": "Tehtävän seuranta-ID"
   },
   "name.sunoBot": {
     "message": "Suno Bot",
-    "description": "Suno-geneeraattorin nimi"
+    "description": "Suno-generoijan nimi"
   },
   "description.prompt": {
-    "message": "Täytä haluamasi musiikin tyyli ja teema, esimerkiksi akustinen pop lomista",
+    "message": "Täytä haluamasi musiikin tyyli ja teema, esimerkiksi akustinen pop jouluhengessä",
     "description": "Parametrin 'prompt' kuvaus"
   },
   "description.lyrics": {
@@ -92,67 +92,67 @@
     "description": "Tehtävän odotustila"
   },
   "placeholder.prompt": {
-    "message": "Syötä kappaleen kehotteet...",
-    "description": "Täydennysäänen syötteen paikkamerkki"
+    "message": "Syötä kappaleen aihe...",
+    "description": "Syöttönäytteen paikkamerkki"
   },
   "placeholder.lyrics": {
     "message": "Syötä sanoitukset...",
-    "description": "Täydennystason paikkamerkki"
+    "description": "Syöttötason paikkamerkki"
   },
   "placeholder.extend.lyrics": {
     "message": "Syötä laajennettavat sanoitukset...",
-    "description": "Täydennystason paikkamerkki"
+    "description": "Syöttötason paikkamerkki"
   },
   "placeholder.extend.continue_at": {
-    "message": "Syötä, mistä kohdasta kappaletta haluat laajentaa...",
-    "description": "Täydennystason paikkamerkki"
+    "message": "Syötä, mistä sekunnista kappaletta laajennetaan...",
+    "description": "Syöttötason paikkamerkki"
   },
   "placeholder.style": {
-    "message": "Syötä haluamasi kappaleen tyylin kehotteet, esimerkiksi akustinen pop",
-    "description": "Kehoitekentän paikkateksti"
+    "message": "Syötä haluamasi kappaleen tyyli, esimerkiksi akustinen pop",
+    "description": "Vihje kentän paikkamerkki"
   },
   "placeholder.title": {
-    "message": "Syötä haluamasi kappaleen otsikon kehotteet, esimerkiksi lomalaulu",
-    "description": "Siemenvirran paikkamerkki"
+    "message": "Syötä haluamasi kappaleen otsikko, esimerkiksi joulukappale",
+    "description": "Siemen syötteen paikkamerkki"
   },
   "placeholder.select": {
     "message": "Valitse malli...",
-    "description": "Sijaintisyötteen paikkamerkki"
+    "description": "Sijainnin syötteen paikkamerkki"
   },
   "placeholder.position": {
     "message": "Valitse...",
-    "description": "Sijaintisyötteen paikkamerkki"
+    "description": "Sijainnin syötteen paikkamerkki"
   },
   "button.generate": {
-    "message": "Tuota",
-    "description": "Tuotepainikkeen teksti"
+    "message": "Generoi",
+    "description": "Generoi -painikkeen teksti"
   },
   "message.startingTask": {
-    "message": "Aloitetaan tehtävää...",
-    "description": "Musiikin tuotantotehtävän alkaessa näkyvä viesti"
+    "message": "Tehtävää käynnistetään...",
+    "description": "Viesti musiikin generaatiotehtävän alussa"
   },
   "message.startTaskSuccess": {
-    "message": "Musiikin tuotantotehtävä käynnistettiin onnistuneesti",
-    "description": "Musiikin tuotantotehtävän onnistuneen käynnistämisen viesti"
+    "message": "Musiikin generoimistehtävä käynnistyi onnistuneesti",
+    "description": "Viesti onnistuneesta musiikin generoimistehtävän käynnistämisestä"
   },
   "message.startTaskFailed": {
-    "message": "Musiikin tuotantotehtävän käynnistäminen epäonnistui",
-    "description": "Musiikin tuotantotehtävän epäonnistuneen käynnistämisen virheviesti"
+    "message": "Musiikin generoimistehtävän käynnistäminen epäonnistui",
+    "description": "Virheviesti musiikin generoimistehtävän käynnistämisen epäonnistuessa"
   },
   "message.generating": {
-    "message": "Tuotetaan...",
-    "description": "Kun musiikkia tuotetaan, näkyvä viesti"
+    "message": "Generoidaan...",
+    "description": "Viesti musiikkia generoitaessa"
   },
   "message.generateFailed": {
-    "message": "Musiikin tuottaminen epäonnistui",
-    "description": "Musiikin tuottamisen epäonnistumisen viesti"
+    "message": "Musiikin generointi epäonnistui",
+    "description": "Viesti, kun musiikin generointi epäonnistuu"
   },
   "message.noOperations": {
     "message": "Ei käytettävissä olevia toimintoja",
-    "description": "Kun ei ole käytettävissä olevia toimintoja, näkyvä viesti"
+    "description": "Viesti, kun käytettävissä ei ole toimintoja"
   },
   "message.noTasks": {
-    "message": "Ei historiallisia tehtäviä, luo musiikkia vasemmalla olevasta asetuspaneelista",
-    "description": "Kun ei ole tehtäviä, näkyvä viesti"
+    "message": "Ei historiallisia tehtäviä, luo musiikkia vasemmanpuoleisesta asetuspaneelista",
+    "description": "Viesti, kun ei ole tehtäviä"
   }
 }

@@ -1,138 +1,138 @@
 {
   "button.uploadDocuments": {
     "message": "Upload Documents",
-    "description": "Button text to allow user to upload documents"
+    "description": "Button text that allows users to upload documents"
   },
   "field.fileName": {
     "message": "File Name",
-    "description": "File name for uploaded document"
+    "description": "The name of the uploaded document"
   },
   "field.createdAt": {
     "message": "Created At",
-    "description": "Time when the document was uploaded"
+    "description": "The time the document was uploaded"
   },
   "field.fileExtension": {
     "message": "File Type",
-    "description": "File type for uploaded document"
+    "description": "The file type of the uploaded document"
   },
   "field.fileUrl": {
     "message": "File Link",
-    "description": "Link for the uploaded document"
+    "description": "The link to the uploaded document"
   },
   "field.fileSize": {
     "message": "File Size",
-    "description": "Size of the uploaded document"
+    "description": "The size of the uploaded document"
   },
   "field.state": {
     "message": "Status",
-    "description": "Status of document processing"
+    "description": "The processing status of the document"
   },
   "field.stateProcessing": {
     "message": "Processing",
-    "description": "Document processing is in progress"
+    "description": "The document is being processed"
   },
   "field.stateCompleted": {
-    "message": "Completed",
-    "description": "Document processing is successful"
+    "message": "Processing Completed",
+    "description": "The document has been processed successfully"
   },
   "field.stateFailed": {
-    "message": "Failed",
-    "description": "Document processing failed"
+    "message": "Processing Failed",
+    "description": "The document processing has failed"
   },
   "field.name": {
     "message": "Name",
-    "description": "Name of the document"
+    "description": "The name of the document"
   },
   "field.description": {
     "message": "Description",
-    "description": "Description of the document"
+    "description": "The description of the document"
   },
   "message.introductionForKnowledge": {
-    "message": "Documents can be added to the knowledge base, and the robot can use the knowledge from the knowledge base when replying.",
+    "message": "Documents can be added to the knowledge base, which can be used by the bot when responding.",
     "description": "Introduction information for the knowledge base"
   },
   "message.introductionForRepository": {
-    "message": "The knowledge base is a collection of documents, and you can add documents to it. When the robot responds, it will reply from the documents in the knowledge base.",
+    "message": "The knowledge base is a collection of documents where you can add documents. The bot will respond from the documents in the knowledge base.",
     "description": "Introduction information for the knowledge base"
   },
   "message.uploadDocumentsExceed": {
-    "message": "Exceeded the limit for uploading documents",
-    "description": "Error message when the limit for uploading documents is exceeded"
+    "message": "Uploaded document count exceeds limit",
+    "description": "Error message when the number of uploaded documents exceeds the limit"
   },
   "message.uploadDocumentsError": {
-    "message": "Failed to upload documents",
-    "description": "Error message when the document upload fails"
+    "message": "Failed to upload document",
+    "description": "Error message when document upload fails"
   },
   "message.uploadDocumentsSuccess": {
     "message": "Document uploaded successfully",
-    "description": "Success message when the document is uploaded successfully"
+    "description": "Success message when document upload succeeds"
   },
   "message.createDocumentSuccess": {
     "message": "Document created successfully",
-    "description": "Success message when the document is created successfully"
+    "description": "Success message when document creation succeeds"
   },
   "message.startCreateDocument": {
-    "message": "Starting to process the document...",
-    "description": "Information when starting to process the document"
+    "message": "Starting document processing...",
+    "description": "Information when starting document processing"
   },
   "message.createDocumentError": {
-    "message": "Failed to process the document",
-    "description": "Error message when the document processing fails"
+    "message": "Failed to process document",
+    "description": "Error message when document processing fails"
   },
   "message.dragOrClickToUpload": {
     "message": "Drag or click to upload documents",
-    "description": "Information for dragging or clicking to upload documents"
+    "description": "Information about dragging or clicking to upload documents"
   },
   "message.learningDocument": {
     "message": "Processing, please wait...",
-    "description": "Information when processing the document"
+    "description": "Information during document processing"
   },
   "message.startNewChat": {
-    "message": "Start a new chat",
-    "description": "Information for starting a new chat"
+    "message": "Start a new conversation",
+    "description": "Information for starting a new conversation"
   },
   "message.errorApiError": {
-    "message": "Request failed, please try again later",
-    "description": "Error message when the request fails"
+    "message": "Response failed, please try again later",
+    "description": "Error message when the response fails"
   },
   "message.errorBadRequest": {
-    "message": "Incorrect request format, please rephrase your question",
-    "description": "Error message when the request format is incorrect"
+    "message": "Request content format is incorrect, please ask again",
+    "description": "Error message when the request content format is incorrect"
   },
   "message.errorNoConversation": {
-    "message": "The conversation content does not exist or has expired, please start a new conversation",
-    "description": "Error message when the conversation content does not exist or has expired"
+    "message": "Conversation does not exist or has expired, please start a new conversation",
+    "description": "Error message when the conversation does not exist or has expired"
   },
   "message.errorContentTooLarge": {
-    "message": "Question content is too long, please shorten and try again",
+    "message": "Question content is too long, please shorten it and try again",
     "description": "Error message when the question content is too long"
   },
   "message.errorTooManyRequests": {
-    "message": "Your operation is too frequent, please try again later",
-    "description": "Error message when the operation is too frequent"
+    "message": "Your actions are too frequent, please try again later",
+    "description": "Error message when actions are too frequent"
   },
   "message.errorUsedUp": {
-    "message": "Your package usage has reached the limit, please purchase more usage to continue",
-    "description": "Error message when the package usage has reached the limit"
+    "message": "You have reached the usage limit of your plan, please purchase more usage to continue",
+    "description": "Error message when the usage limit of the plan is reached"
   },
   "message.errorUnknown": {
-    "message": "Unknown server error occurred, please try again later or contact customer service",
+    "message": "An unknown server error occurred, please try again later or contact customer service",
     "description": "Error message when an unknown server error occurs"
   },
   "message.errorTimeout": {
-    "message": "Answering the question timed out, please try again later",
-    "description": "Error message when the question answering times out"
+    "message": "Response to the question timed out, please try again later",
+    "description": "Error message when responding to a question times out"
   },
   "message.errorNotApplied": {
-    "message": "You have not applied for this service, please apply before continuing to ask",
-    "description": "Error message when the user has not applied for the service"
+    "message": "You have not applied for this service, please apply before proceeding with the question",
+    "description": "Error message when the user has not applied for this service"
   },
   "message.confirmDelete": {
     "message": "Confirm Delete",
-    "description": "Confirmation message for delete action"
+    "description": "Information for confirming deletion"
   },
   "message.howToUse": {
-    "message": "Press Shift+Enter to create a new line",
+    "message": "Press Shift+Enter for a new line",
     "description": "Information on how to create a new line"
   },
   "message.createRepositorySuccess": {
@@ -140,7 +140,7 @@
     "description": "Success message when the knowledge base is created successfully"
   },
   "message.createRepositoryFailed": {
-    "message": "Failed to create the knowledge base",
+    "message": "Failed to create knowledge base",
     "description": "Error message when the knowledge base creation fails"
   },
   "message.deleteRepositorySuccess": {
@@ -153,23 +153,23 @@
   },
   "message.currentRepository": {
     "message": "Current Knowledge Base",
-    "description": "Displays information about the current knowledge base"
+    "description": "Information displaying the current knowledge base"
   },
   "message.nameRequired": {
-    "message": "Name is required",
-    "description": "Error message when the name is required but not provided"
+    "message": "Name cannot be empty",
+    "description": "Error message when the name is empty"
   },
   "message.inputRepositoryName": {
     "message": "Knowledge Base Name",
-    "description": "Input placeholder for the knowledge base name"
+    "description": "Placeholder for inputting the knowledge base name"
   },
   "message.inputRepositoryDescription": {
-    "message": "Describe your repository in one sentence",
-    "description": "Input placeholder for repository description"
+    "message": "Describe your knowledge base in one sentence",
+    "description": "Input placeholder for the knowledge base description"
   },
   "message.supportedFiles": {
     "message": "Supported file types: .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
-    "description": "Information displaying the supported file types"
+    "description": "Information showing the supported file types"
   },
   "nav.chat": {
     "message": "Chat",
@@ -181,18 +181,18 @@
   },
   "nav.manage": {
     "message": "Manage",
-    "description": "Navigation item for management"
+    "description": "Navigation item for manage"
   },
   "title.manage": {
-    "message": "Manage Repository",
-    "description": "Title for managing repository"
+    "message": "Manage Knowledge Base",
+    "description": "Title for managing the knowledge base"
   },
   "title.createRepository": {
-    "message": "Create Repository",
-    "description": "Title for creating a repository"
+    "message": "Create Knowledge Base",
+    "description": "Title for creating a knowledge base"
   },
   "title.repositories": {
-    "message": "Repository List",
-    "description": "Title for the list of repositories"
+    "message": "Knowledge Base List",
+    "description": "Title for the list of knowledge bases"
   }
 }

@@ -1,43 +1,43 @@
 {
   "entity.requestQueries": {
-    "message": "Förfrågningsparametrar",
-    "description": "HTTP-förfrågningens frågeparametrar."
+    "message": "Begäran frågor",
+    "description": "HTTP-begärans frågeparametrar."
   },
   "entity.requestBody": {
-    "message": "Förfrågningskropp",
-    "description": "HTTP-förfrågningens förfrågningskropp."
+    "message": "Begäran kropp",
+    "description": "HTTP-begärans begäran kropp."
   },
   "entity.responseBody": {
-    "message": "Svarsinnehåll",
-    "description": "HTTP-svarets svarsinnehåll."
+    "message": "Svar kropp",
+    "description": "HTTP-svaret svar kropp."
   },
   "entity.requestHeaders": {
-    "message": "Förfrågningshuvuden",
-    "description": "HTTP-förfrågningens förfrågningshuvuden."
+    "message": "Begäran huvuden",
+    "description": "HTTP-begärans huvuden."
   },
   "entity.requestHeader": {
-    "message": "Förfrågningshuvud",
-    "description": "HTTP-förfrågningens förfrågningshuvud, endast i singularform."
+    "message": "Begäran huvud",
+    "description": "HTTP-begärans huvud, endast i singular form."
   },
   "entity.responseHeaders": {
-    "message": "Svarshuvuden",
-    "description": "HTTP-svarets svarshuvuden."
+    "message": "Svar huvuden",
+    "description": "HTTP-svaret huvuden."
   },
   "entity.response": {
     "message": "Svar",
     "description": "HTTP-svar."
   },
   "entity.success": {
-    "message": "Lyckad",
-    "description": "Lyckat svar."
+    "message": "Framgång",
+    "description": "Ett framgångsrikt svar."
   },
   "entity.failure": {
-    "message": "Misslyckad",
-    "description": "Misslyckat svar."
+    "message": "Misslyckande",
+    "description": "Ett misslyckat svar."
   },
   "entity.responseExample": {
     "message": "Exempel",
-    "description": "Exempel på svar."
+    "description": "Ett exempel på svaret."
   },
   "entity.authentication": {
     "message": "Autentisering",
@@ -45,7 +45,7 @@
   },
   "entity.arrayOf": {
     "message": "Array",
-    "description": "Entitetens array."
+    "description": "En array av enheter."
   },
   "entity.apiKey": {
     "message": "API-nyckel",
@@ -53,90 +53,90 @@
   },
   "message.free": {
     "message": "Gratis",
-    "description": "Representerar gratis pris, inga poäng eller valuta behövs för att använda API-tjänsten."
+    "description": "Anger att priset är fritt, ingen kostnad i poäng eller valuta för att använda API-tjänsten."
   },
   "message.appliedCount": {
-    "message": "Tillämpat antal",
-    "description": "Antal gånger API-tjänsten har tillämpats."
+    "message": "Antal ansökningar",
+    "description": "Antalet ansökningar av API-tjänsten."
   },
   "message.firstFree": {
-    "message": "Första gången gratis",
-    "description": "Representerar första gången användning av API-tjänsten är gratis, inga poäng eller valuta behövs."
+    "message": "Första gratis",
+    "description": "Anger att det första användandet av API-tjänsten är gratis, inget behov av att spendera poäng eller valuta."
   },
   "message.custom": {
-    "message": "Anpassad",
-    "description": "Representerar ett specificerat pris, kräver specificerade poäng eller valuta för att använda API-tjänsten."
+    "message": "Ange belopp",
+    "description": "Anger att priset är angivet belopp, nödvändig poäng eller valuta för att använda API-tjänsten."
   },
   "message.present": {
-    "message": "Presentera",
-    "description": "Vi kommer att ge dig poäng när du använder API-tjänsten för första gången."
+    "message": "Gåva",
+    "description": "Vid första användningen av API-tjänsten, kommer vi att ge dig poäng."
   },
   "message.around": {
-    "message": "Ungefär",
-    "description": "Priset är ungefärligt, det verkliga priset kan variera."
+    "message": "Cirka",
+    "description": "Priset är ungefär, det faktiska priset kan variera."
   },
   "message.successRate15min": {
-    "message": "Realtidsframgångsgrad",
-    "description": "API-tjänstens realtidsframgångsgrad under de senaste 15 minuterna."
+    "message": "Realtids framgångsrate",
+    "description": "Realtids framgångsrate för API-tjänsten under de senaste 15 minuterna."
   },
   "message.ySuccessRate": {
-    "message": "Framgångsgrad (100%)",
-    "description": "API-tjänstens framgångsgrad."
+    "message": "Framgångsrate (100 %)",
+    "description": "Framgångsrate för API-tjänsten."
   },
   "message.xMinutes": {
     "message": "Tid (minuter)",
     "description": "Tid (minuter)."
   },
   "message.streamUsage": {
-    "message": "Vänligen observera: För strömanrop kanske ovanstående kod inte är helt tillämplig. Se integrationsdokumentationen för att göra ändringar.",
-    "description": "För strömanrop kanske ovanstående kod inte är helt tillämplig. Se integrationsdokumentationen för att göra ändringar."
+    "message": "Vänligen observera: För strömmande förfrågningar kan ovanstående kod vara ofullständig. Vänligen referera till integrationsdokumentation för att göra ändringar.",
+    "description": "För strömmande förfrågningar kan ovanstående kod vara ofullständig. Vänligen referera till integrationsdokumentation för att göra ändringar."
   },
   "message.alphaStage": {
-    "message": "Denna API är i alfastadiet, vilket är en tidig förhandsversion och kan vara instabil. API-formatet kan genomgå betydande förändringar. Det rekommenderas inte att använda den i produktionsmiljö. Prissättningen är för närvarande relativt låg och kan komma att justeras betydligt i framtiden.",
-    "description": "Denna API är i alfastadiet, vilket är en tidig förhandsversion och kan vara instabil. API-formatet kan genomgå betydande förändringar. Det rekommenderas inte att använda den i produktionsmiljö. Prissättningen är för närvarande relativt låg och kan komma att justeras betydligt i framtiden."
+    "message": "Detta API är i alpha-stadiet, en tidig förhandsgranskning som kan ha potentiell instabilitet. API-formatet kan genomgå betydande förändringar, och det rekommenderas inte för användning i produktionsmiljöer. Den aktuella prissättningen är relativt låg, men kan förändras kraftigt i framtiden.",
+    "description": "Detta API är i alpha-stadiet, en tidig förhandsgranskning som kan ha potentiell instabilitet. API-formatet kan genomgå betydande förändringar, och det rekommenderas inte för användning i produktionsmiljöer. Den aktuella prissättningen är relativt låg, men kan förändras kraftigt i framtiden."
   },
   "message.betaStage": {
-    "message": "Denna API är i betastadiet. API-formatet kommer inte att genomgå stora förändringar, men det kan fortfarande vara instabilt. Använd med försiktighet i produktionsmiljö. Prissättningen är för närvarande relativt låg och kan komma att justeras måttligt i framtiden.",
-    "description": "Denna API är i betastadiet. API-formatet kommer inte att genomgå stora förändringar, men det kan fortfarande vara instabilt. Använd med försiktighet i produktionsmiljö. Prissättningen är för närvarande relativt låg och kan komma att justeras måttligt i framtiden."
+    "message": "Detta API är i beta-stadiet. API-formatet kommer inte att förändras mycket, men det kan finnas potentiell instabilitet. Var försiktig med att använda det i produktionsmiljöer. Den aktuella prissättningen är relativt låg, men kan justeras något i framtiden.",
+    "description": "Detta API är i beta-stadiet. API-formatet kommer inte att förändras mycket, men det kan finnas potentiell instabilitet. Var försiktig med att använda det i produktionsmiljöer. Den aktuella prissättningen är relativt låg, men kan justeras något i framtiden."
   },
   "unit.credit": {
     "message": "Poäng",
-    "description": "Poäng är den virtuella valutan som används i API-tjänsten."
+    "description": "Poäng som används som virtuell valuta i API-tjänsten."
   },
   "unit.Credit": {
     "message": "Poäng",
-    "description": "Poäng är den virtuella valutan som används i API-tjänsten, i versaler."
+    "description": "Poäng som används som virtuell valuta i API-tjänsten, detta är versaler."
   },
   "unit.credits": {
     "message": "Poäng",
-    "description": "Poäng är den virtuella valutan som används i API-tjänsten, i pluralform."
+    "description": "Poäng som används som virtuell valuta i API-tjänsten, detta är pluralform."
   },
   "unit.Credits": {
     "message": "Poäng",
-    "description": "Poäng är den virtuella valutan som används i API-tjänsten, i versaler och pluralform."
+    "description": "Poäng som används som virtuell valuta i API-tjänsten, detta är plural och versaler."
   },
   "unit.call": {
     "message": "Anrop",
-    "description": "Anrop representerar antalet gånger API-tjänsten har anropats."
+    "description": "Anrop som representerar antalet gånger API-tjänsten har anropats."
   },
   "unit.Call": {
     "message": "Anrop",
-    "description": "Anrop representerar antalet gånger API-tjänsten har anropats, i versaler."
+    "description": "Anrop som representerar antalet gånger API-tjänsten har anropats, detta är versaler."
   },
   "unit.calls": {
     "message": "Anrop",
-    "description": "Anrop representerar antalet gånger API-tjänsten har anropats, i pluralform."
+    "description": "Anrop som representerar antalet gånger API-tjänsten har anropats, detta är pluralform."
   },
   "unit.Calls": {
     "message": "Anrop",
-    "description": "Anrop representerar antalet gånger API-tjänsten har anropats, i versaler och pluralform."
+    "description": "Anrop som representerar antalet gånger API-tjänsten har anropats, detta är plural och versaler."
   },
   "unit.MB": {
     "message": "MB",
-    "description": "MB representerar megabyte, en enhet för digital information."
+    "description": "MB står för megabyte, en enhet för lagring av digital information."
   },
   "unit.GB": {
     "message": "GB",
-    "description": "GB representerar gigabyte, en enhet för digital information."
+    "description": "GB står för gigabyte, en enhet för lagring av digital information."
   }
 }

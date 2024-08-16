@@ -1,114 +1,114 @@
 {
   "entity.requestQueries": {
     "message": "URL-parametrar",
-    "description": "Dessa är parametrar som skickas i URL:en. De separeras av '?' och är åtskilda av '&'."
+    "description": "Dessa är parametrar som skickas i URL:en. De separeras med '?' och '&'."
   },
   "entity.requestBody": {
-    "message": "Begäran kropp",
-    "description": "Detta är begäran kroppen. Används vanligtvis för POST- och PUT-begäran."
+    "message": "Begärningskropp",
+    "description": "Detta är kroppsdelen av begäran. Vanligtvis används för POST och PUT-begärningar."
   },
   "entity.responseBody": {
-    "message": "Svarskropp",
-    "description": "Detta är svarskroppen. Vanligtvis presenterad i JSON-format."
+    "message": "Svars kropp",
+    "description": "Detta är kroppsdelen av svaret. Vanligtvis presenteras i JSON-format."
   },
   "entity.requestHeaders": {
-    "message": "Begäranhuvuden",
-    "description": "Dessa är huvuden som skickas i begäran. Används vanligtvis för autentisering."
+    "message": "Begärningshuvuden",
+    "description": "Dessa är huvuddelarna som skickas i begäran. Vanligtvis används för autentisering."
   },
   "entity.requestHeader": {
-    "message": "Begäranhuvud",
-    "description": "Detta är ett huvud som skickas i begäran. Används vanligtvis för autentisering."
+    "message": "Begärningshuvud",
+    "description": "Detta är huvuddelen som skickas i begäran. Vanligtvis används för autentisering."
   },
   "entity.requestQuery": {
-    "message": "URL-parametrar",
-    "description": "Detta är parametrar som skickas i URL:en. Separeras av '?' och är åtskilda av '&'."
+    "message": "URL-parameter",
+    "description": "Detta är en parameter som skickas i URL:en. Separeras med '?' och '&'."
   },
   "entity.responseHeaders": {
     "message": "Svarshuvuden",
-    "description": "Dessa är huvuden som skickas i svaret. Används vanligtvis för autentisering."
+    "description": "Dessa är huvuddelarna som skickas i svaret. Vanligtvis används för autentisering."
   },
   "entity.response": {
     "message": "Svar",
-    "description": "Detta är svaret som returneras från servern."
+    "description": "Detta är svaret som återges från servern."
   },
   "entity.success": {
-    "message": "Lyckad",
-    "description": "Detta är svaret som returneras vid en lyckad begäran."
+    "message": "Framgång",
+    "description": "Detta är svaret som returneras när begäran lyckas."
   },
   "entity.failure": {
-    "message": "Misslyckad",
-    "description": "Detta är svaret som returneras vid en misslyckad begäran."
+    "message": "Misslyckande",
+    "description": "Detta är svaret som returneras när begäran misslyckas."
   },
   "entity.responseExample": {
     "message": "Exempel",
-    "description": "Detta är ett exempel på svaret som returneras från servern."
+    "description": "Detta är ett exempel på svaret som återges från servern."
   },
   "entity.authentication": {
     "message": "Autentisering",
-    "description": "Detta är autentiseringen som krävs för att initiera begäran."
+    "description": "Detta är autentiseringen som krävs för att göra en begäran."
   },
   "message.free": {
     "message": "Gratis",
-    "description": "Indikerar att priset är gratis, inga poäng eller pengar krävs vid användning av API-tjänsten."
+    "description": "Anger att priset är gratis och att ingen kredit eller pengar behövs för att använda API-tjänsten."
   },
   "message.appliedCount": {
-    "message": "Tillämpat antal",
-    "description": "Antalet gånger API-tjänsten har använts."
+    "message": "Ansökningsantal",
+    "description": "Antal gånger API-tjänsten har ansökts om."
   },
   "message.firstFree": {
     "message": "Första gången gratis",
-    "description": "Indikerar att första användningen av API-tjänsten är gratis, inga poäng eller pengar krävs."
+    "description": "Anger att första gången API-tjänsten används är gratis, utan kostnad."
   },
   "message.custom": {
-    "message": "Anpassad",
-    "description": "Indikerar att priset är anpassat, poäng eller pengar krävs vid användning av API-tjänsten."
+    "message": "Specificerat belopp",
+    "description": "Anger att priset har specificerats och att det kräver ett angivet belopp av kredit eller pengar för att använda API-tjänsten."
   },
   "message.present": {
-    "message": "Presentera",
-    "description": "Vid första användningen av API-tjänsten kommer vi att presentera poäng till dig."
+    "message": "Gåva",
+    "description": "Vid första användningen av API-tjänsten kommer vi att ge dig poäng."
   },
   "message.around": {
-    "message": "Ungefär",
-    "description": "Priset är ungefärligt, det verkliga priset kan variera."
+    "message": "Cirka",
+    "description": "Priset är cirka, det faktiska priset kan variera."
   },
   "message.successRate15min": {
-    "message": "Realtidsframgångsgrad",
-    "description": "API-tjänstens realtidsframgångsgrad under de senaste 15 minuterna."
+    "message": "Live framgångsgrad",
+    "description": "Live framgångsgraden för API-tjänsten de senaste 15 minuterna."
   },
   "message.ySuccessRate": {
     "message": "Framgångsgrad (100%)",
-    "description": "API-tjänstens framgångsgrad."
+    "description": "Framgångsgraden för API-tjänsten."
   },
   "message.xMinutes": {
     "message": "Tid (minuter)",
     "description": "Tid, i minuter."
   },
   "message.streamUsage": {
-    "message": "Vänligen observera: För strömbaserade begäranden kan ovanstående kod vara delvis olämplig. Vänligen hänvisa till integrationsdokumentationen för ändringar.",
-    "description": "För strömbaserade begäranden kan ovanstående kod vara delvis olämplig. Vänligen hänvisa till integrationsdokumentationen för ändringar."
+    "message": "Vänligen notera: För strömmande begärningar kan ovanstående kod vara delvis otillämplig. Vänligen se integrationsdokumentationen för ändringar.",
+    "description": "För strömmande begärningar kan ovanstående kod vara delvis otillämplig. Vänligen se integrationsdokumentationen för ändringar."
   },
   "message.alphaStage": {
-    "message": "Denna API är i alfa-stadiet, vilket är en tidig förhandsgranskning och kan vara instabil. API-formatet kan genomgå betydande förändringar och rekommenderas inte för produktionsmiljöer. Nuvarande prissättning är relativt låg och kan genomgå betydande prisjusteringar i framtiden.",
-    "description": "Denna API är i alfa-stadiet, vilket är en tidig förhandsgranskning och kan vara instabil. API-formatet kan genomgå betydande förändringar och rekommenderas inte för produktionsmiljöer. Nuvarande prissättning är relativt låg och kan genomgå betydande prisjusteringar i framtiden."
+    "message": "Denna API är i alpha-stadiet, vilket innebär att det är en tidig förhandsversion som kan ha potentiella instabiliteter, API-formatet kan genomgå stora förändringar, rekommenderas inte för produktionsanvändning. Aktuella priser är relativt låga och kan justeras avsevärt i framtiden.",
+    "description": "Denna API är i alpha-stadiet, vilket innebär att det är en tidig förhandsversion som kan ha potentiella instabiliteter, API-formatet kan genomgå stora förändringar, rekommenderas inte för produktionsanvändning. Aktuella priser är relativt låga och kan justeras avsevärt i framtiden."
   },
   "message.betaStage": {
-    "message": "Denna API är i betastadiet, API-formatet kommer inte att genomgå stora förändringar, men det kan vara instabilt. Använd med försiktighet i produktionsmiljöer. Nuvarande prissättning är relativt låg och kan genomgå måttliga prisjusteringar i framtiden.",
-    "description": "Denna API är i betastadiet, API-formatet kommer inte att genomgå stora förändringar, men det kan vara instabilt. Använd med försiktighet i produktionsmiljöer. Nuvarande prissättning är relativt låg och kan genomgå måttliga prisjusteringar i framtiden."
+    "message": "Denna API är i beta-stadiet, API-formatet kommer inte att ändras mycket, men det kan finnas potentiella instabiliteter, var försiktig med användningen i produktion. Aktuella priser är relativt låga och kan justeras måttligt i framtiden.",
+    "description": "Denna API är i beta-stadiet, API-formatet kommer inte att ändras mycket, men det kan finnas potentiella instabiliteter, var försiktig med användningen i produktion. Aktuella priser är relativt låga och kan justeras måttligt i framtiden."
   },
   "unit.GB": {
     "message": "GB",
-    "description": "Gigabyte, enhet för lagring av digital information"
+    "description": "Gigabyte, en enhet för lagring av digital information."
   },
   "unit.MB": {
     "message": "MB",
-    "description": "Megabyte, enhet för lagring av digital information"
+    "description": "Megabyte, en enhet för lagring av digital information."
   },
   "unit.KB": {
     "message": "KB",
-    "description": "Kilobyte, enhet för lagring av digital information"
+    "description": "Kilobyte, en enhet för lagring av digital information."
   },
   "unit.B": {
     "message": "B",
-    "description": "Byte, enhet för lagring av digital information"
+    "description": "Byte, en enhet för lagring av digital information."
   }
 }

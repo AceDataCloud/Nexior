@@ -1,0 +1,481 @@
+{
+  "name.taskId": {
+    "message": "ID завдання",
+    "description": "Значення ID завдання"
+  },
+  "name.type": {
+    "message": "Тип",
+    "description": "Тип вмісту QR-коду, що генерується, наприклад, 'посилання', 'текст' тощо"
+  },
+  "name.failure": {
+    "message": "Не вдалося",
+    "description": "Статус невдачі завдання"
+  },
+  "name.failureReason": {
+    "message": "Причина невдачі",
+    "description": "Причина невдачі завдання"
+  },
+  "name.status": {
+    "message": "Статус",
+    "description": "Статус завдання"
+  },
+  "name.traceId": {
+    "message": "ID відстеження",
+    "description": "ID відстеження завдання"
+  },
+  "name.size": {
+    "message": "Розмір",
+    "description": "Розмір QR-коду, що генерується"
+  },
+  "name.createdAt": {
+    "message": "Дата створення",
+    "description": "Дата і час генерації QR-коду"
+  },
+  "name.pixelStyle": {
+    "message": "Піксельний стиль",
+    "description": "Піксельний стиль QR-коду, що генерується"
+  },
+  "name.startImageUrl": {
+    "message": "Початкове зображення",
+    "description": "Семя QR-коду, що генерується"
+  },
+  "name.endImageUrl": {
+    "message": "Кінцеве зображення",
+    "description": "Семя QR-коду, що генерується"
+  },
+  "name.paddingLevel": {
+    "message": "Рівень заповнення",
+    "description": "Рівень заповнення QR-коду, що генерується"
+  },
+  "name.paddingNoise": {
+    "message": "Заповнення шуму",
+    "description": "Заповнення шуму QR-коду"
+  },
+  "name.content": {
+    "message": "Вміст",
+    "description": "Вміст QR-коду, що генерується"
+  },
+  "name.ecl": {
+    "message": "Рівень корекції помилок",
+    "description": "Рівень корекції помилок QR-коду, що генерується"
+  },
+  "name.position": {
+    "message": "Позиція",
+    "description": "Позиція QR-коду, що генерується"
+  },
+  "name.prompt": {
+    "message": "Примітка до відео",
+    "description": "Підказка для введення вмісту"
+  },
+  "name.rotate": {
+    "message": "Кут обертання",
+    "description": "Кут обертання QR-коду, що генерується"
+  },
+  "name.enhancement": {
+    "message": "Покращення підказки",
+    "description": "Розширені налаштування QR-коду, що генерується"
+  },
+  "name.loop": {
+    "message": "Циклічне відтворення відео",
+    "description": "Розширені налаштування QR-коду, що генерується"
+  },
+  "name.aspectRatio": {
+    "message": "Співвідношення сторін",
+    "description": "Співвідношення сторін QR-коду, що генерується"
+  },
+  "name.markerShape": {
+    "message": "Форма маркера",
+    "description": "Форма маркера QR-коду, що генерується"
+  },
+  "name.subMarker": {
+    "message": "Підмаркер",
+    "description": "Підмаркер QR-коду, що генерується"
+  },
+  "name.qrw": {
+    "message": "Видимість",
+    "description": "Назва генератора QR-кодів"
+  },
+  "name.steps": {
+    "message": "Кроки генерації",
+    "description": "Кількість кроків для генерування QR-коду"
+  },
+  "name.preset": {
+    "message": "Пресету стиль",
+    "description": "Пресет QR-коду, що генерується"
+  },
+  "name.lumaBot": {
+    "message": "Luma Bot",
+    "description": "Назва генератора Luma відео"
+  },
+  "name.contentImageUrl": {
+    "message": "URL зображення умісту",
+    "description": "URL зображення для QR-коду, що генерується"
+  },
+  "inputWay.input": {
+    "message": "Введіть вміст",
+    "description": "Метод введення"
+  },
+  "inputWay.upload": {
+    "message": "Завантажити QR-код",
+    "description": "Метод введення"
+  },
+  "description.loop": {
+    "message": "Увімкніть циклічне відтворення для створеного відео.",
+    "description": "Опис параметра 'qrw'"
+  },
+  "description.enhancement": {
+    "message": "Якщо ви не впевнені, як написати підказки, увімкніть покращення підказок для введення."
+  },
+  "description.startImageUrl": {
+    "message": "URL початкового зображення, яке буде першим кадром відео.",
+    "description": "Опис параметру 'steps'"
+  },
+  "description.endImageUrl": {
+    "message": "URL кінцевого зображення, яке буде останнім кадром відео.",
+    "description": "Опис параметру 'steps'"
+  },
+  "description.prompt": {
+    "message": "Підказки для генерації відео Luma",
+    "description": "Опис параметру 'prompt'"
+  },
+  "status.pending": {
+    "message": "В очікуванні",
+    "description": "Стан очікування завдання"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Будь ласка, виберіть...",
+    "description": "Плейсголдер для введення шуму заповнення"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Будь ласка, виберіть...",
+    "description": "Плейсголдер для рівня заповнення"
+  },
+  "placeholder.prompt": {
+    "message": "Введіть підказки для стилю відео, наприклад: Астронавти, що пересуваються з космосу до вулкану",
+    "description": "Плейсголдер тексту для підказок"
+  },
+  "placeholder.startImageUrl": {
+    "message": "URL початкового зображення",
+    "description": "Плейсголдер для введення семя"
+  },
+  "placeholder.endImageUrl": {
+    "message": "URL кінцевого зображення",
+    "description": "Плейсголдер для введення семя"
+  },
+  "placeholder.position": {
+    "message": "Будь ласка, виберіть...",
+    "description": "Плейсголдер для введення позиції"
+  },
+  "placeholder.content": {
+    "message": "Введіть вміст QR-коду, наприклад: https://www.google.com",
+    "description": "Плейсголдер тексту для вмісту"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Будь ласка, виберіть...",
+    "description": "Плейсголдер для введення співвідношення сторін"
+  },
+  "placeholder.preset": {
+    "message": "Будь ласка, виберіть...",
+    "description": "Плейсголдер для введення пресету"
+  },
+  "placeholder.markerShape": {
+    "message": "Будь ласка, виберіть...",
+    "description": "Плейсголдер для введення форми маркера"
+  },
+  "placeholder.rotate": {
+    "message": "Будь ласка, виберіть...",
+    "description": "Плейсголдер для введення кута обертання"
+  },
+  "placeholder.subMarker": {
+    "message": "Будь ласка, виберіть...",
+    "description": "Плейсголдер для введення підмаркера"
+  },
+  "button.generate": {
+    "message": "Генерувати",
+    "description": "Текст кнопки для генерації Luma відео"
+  },
+  "button.extend": {
+    "message": "Продовжити генерування",
+    "description": "Текст кнопки для продовження генерації"
+  },
+  "button.uploadQr": {
+    "message": "Завантажити QR-код",
+    "description": "Кнопка для завантаження QR-коду"
+  },
+  "preset.sunset": {
+    "message": "Захід сонця",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.floral": {
+    "message": "Квітковий",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.snowflakes": {
+    "message": "Сніжинки",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.feathers": {
+    "message": "Перо",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.raindrops": {
+    "message": "Краплі дощу",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.ultraRealism": {
+    "message": "Ультрареалізм",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.epicRealms": {
+    "message": "Епічні царства",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.intricateStudio": {
+    "message": "Складна студія",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.symmetricMasterpiece": {
+    "message": "Симетричний шедевр",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.luminousHighway": {
+    "message": "Світловий шлях",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.celestialJourney": {
+    "message": "Небесна подорож",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.neonMech": {
+    "message": "Неоновий механізм",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.etherealLowPoly": {
+    "message": "Ефірний низькополігональний",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.goldenVista": {
+    "message": "Золота панорама",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.cinematicExpanse": {
+    "message": "Кінематографічна простір",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.cinematicWarm": {
+    "message": "Кінематографічне тепло",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.desolateWilderness": {
+    "message": "Пустельна дика природа",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.vibrantPalette": {
+    "message": "Яскрава палітра",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.enigmaticJourney": {
+    "message": "Загадкова подорож",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.timelessCinematic": {
+    "message": "Безсмертний кінематограф",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.regalGalaxy": {
+    "message": "Королівська галактика",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.illustriousCanvas": {
+    "message": "Видатне полотно",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.expressiveMural": {
+    "message": "Виразне муралі",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "preset.sereneHaze": {
+    "message": "Спокійний туман",
+    "description": "Попередній стиль QR-коду для генерації"
+  },
+  "message.uploadQr": {
+    "message": "Завантажте зображення QR-коду, щоб створити художній QR-код, що відповідає вмісту QR-коду",
+    "description": "Опис для завантаження QR-коду"
+  },
+  "message.promptPlaceholder": {
+    "message": "Введіть речення, яке описує зображення для генерації, наприклад: миле котеня. Додаткові параметри замінять параметри за замовчуванням",
+    "description": "Текст-заповнювач у полі підказки"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Максимум можна завантажити 5 зображень",
+    "description": "Повідомлення про помилку, коли кількість завантажених зображень перевищує обмеження"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Зображення успішно завантажені",
+    "description": "Повідомлення про успіх при успішному завантаженні зображень"
+  },
+  "message.uploadReferencesError": {
+    "message": "Не вдалося завантажити зображення, спробуйте ще раз пізніше",
+    "description": "Повідомлення про помилку при невдачі завантаження зображення"
+  },
+  "message.startingTask": {
+    "message": "Запуск завдання...",
+    "description": "Повідомлення на початку малювання завдання"
+  },
+  "message.startTaskSuccess": {
+    "message": "Завдання згенеровано успішно",
+    "description": "Повідомлення про успіх при успішному запуску завдання"
+  },
+  "message.startTaskFailed": {
+    "message": "Не вдалося запустити завдання, будь ласка, зв'яжіться з адміністратором",
+    "description": "Повідомлення про помилку при невдачі запуску завдання"
+  },
+  "message.usedUp": {
+    "message": "Ваші кредити вичерпані, будь ласка, придбайте більше кредитів, щоб продовжити користування",
+    "description": "Повідомлення при вичерпанні"
+  },
+  "message.generating": {
+    "message": "Генерування...",
+    "description": "Повідомлення, коли зображення генерується"
+  },
+  "message.generateFailed": {
+    "message": "Генерування зображення не вдалося",
+    "description": "Повідомлення при невдачі генерування зображення"
+  },
+  "message.noOperations": {
+    "message": "Немає доступних операцій",
+    "description": "Повідомлення, коли немає доступних операцій"
+  },
+  "message.noTasks": {
+    "message": "Немає історії завдань, натисніть ліворуч, щоб згенерувати відео",
+    "description": "Повідомлення, коли немає завдань"
+  },
+  "markerShape.square": {
+    "message": "Квадрат",
+    "description": "Форма маркера для генерації QR-коду"
+  },
+  "markerShape.circle": {
+    "message": "Коло",
+    "description": "Форма маркера для генерації QR-коду"
+  },
+  "markerShape.plus": {
+    "message": "Плюс",
+    "description": "Форма маркера для генерації QR-коду"
+  },
+  "markerShape.box": {
+    "message": "Коробка",
+    "description": "Форма маркера для генерації QR-коду"
+  },
+  "markerShape.octagon": {
+    "message": "Восьмикутник",
+    "description": "Форма маркера для генерації QR-коду"
+  },
+  "markerShape.tinyPlus": {
+    "message": "Маленький плюс",
+    "description": "Форма маркера для генерації QR-коду"
+  },
+  "markerShape.random": {
+    "message": "Випадковий",
+    "description": "Форма маркера для генерації QR-коду"
+  },
+  "subMarker.square": {
+    "message": "Квадрат",
+    "description": "Форма підмаркера для генерації QR-коду"
+  },
+  "subMarker.circle": {
+    "message": "Коло",
+    "description": "Форма підмаркера для генерації QR-коду"
+  },
+  "subMarker.plus": {
+    "message": "Плюс",
+    "description": "Форма підмаркера для генерації QR-коду"
+  },
+  "subMarker.box": {
+    "message": "Коробка",
+    "description": "Форма підмаркера для генерації QR-коду"
+  },
+  "subMarker.random": {
+    "message": "Випадковий",
+    "description": "Форма підмаркера для генерації QR-коду"
+  },
+  "position.center": {
+    "message": "Центр",
+    "description": "Позиція для генерації QR-коду"
+  },
+  "position.topLeft": {
+    "message": "Лівий верхній",
+    "description": "Позиція для генерації QR-коду"
+  },
+  "position.topRight": {
+    "message": "Правий верхній",
+    "description": "Позиція для генерації QR-коду"
+  },
+  "position.bottomLeft": {
+    "message": "Лівий нижній",
+    "description": "Позиція для генерації QR-коду"
+  },
+  "position.bottomRight": {
+    "message": "Правий нижній",
+    "description": "Позиція для генерації QR-коду"
+  },
+  "position.top": {
+    "message": "Верх",
+    "description": "Позиція для генерації QR-коду"
+  },
+  "position.bottom": {
+    "message": "Низ",
+    "description": "Позиція для генерації QR-коду"
+  },
+  "position.left": {
+    "message": "Ліва",
+    "description": "Позиція для генерації QR-коду"
+  },
+  "position.right": {
+    "message": "Права",
+    "description": "Позиція для генерації QR-коду"
+  },
+  "pixelStyle.row": {
+    "message": "Ряд",
+    "description": "Піксельний стиль для генерації QR-коду"
+  },
+  "pixelStyle.column": {
+    "message": "Стовпець",
+    "description": "Піксельний стиль для генерації QR-коду"
+  },
+  "pixelStyle.square": {
+    "message": "Квадрат",
+    "description": "Піксельний стиль для генерації QR-коду"
+  },
+  "pixelStyle.rounded": {
+    "message": "Закруглений",
+    "description": "Піксельний стиль для генерації QR-коду"
+  },
+  "pixelStyle.dot": {
+    "message": "Точка",
+    "description": "Піксельний стиль для генерації QR-коду"
+  },
+  "pixelStyle.squircle": {
+    "message": "Закруглений квадрат",
+    "description": "Піксельний стиль для генерації QR-коду"
+  },
+  "type.text": {
+    "message": "Текст",
+    "description": "Тип змісту для генерації QR-коду"
+  },
+  "type.link": {
+    "message": "Посилання",
+    "description": "Тип змісту для генерації QR-коду"
+  },
+  "type.email": {
+    "message": "Електронна пошта",
+    "description": "Тип змісту для генерації QR-коду"
+  },
+  "type.phone": {
+    "message": "Телефон",
+    "description": "Тип змісту для генерації QR-коду"
+  },
+  "type.sms": {
+    "message": "SMS",
+    "description": "Тип змісту для генерації QR-коду"
+  }
+}

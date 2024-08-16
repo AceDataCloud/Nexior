@@ -1,170 +1,198 @@
 {
   "button.uploadDocuments": {
-    "message": "تحميل المستندات",
-    "description": "نص الزر الذي يسمح للمستخدم بتحميل المستندات"
+    "message": "رفع الوثائق",
+    "description": "نص الزر الذي يسمح للمستخدم برفع الوثائق"
   },
   "field.fileName": {
     "message": "اسم الملف",
-    "description": "اسم الملف المحمل"
+    "description": "اسم الملف الذي يتم رفعه"
   },
   "field.createdAt": {
     "message": "تاريخ الإنشاء",
-    "description": "وقت تحميل المستند"
+    "description": "وقت رفع الوثيقة"
   },
   "field.fileExtension": {
     "message": "نوع الملف",
-    "description": "نوع المستند المحمل"
+    "description": "نوع الملف الذي يتم رفعه"
   },
   "field.fileUrl": {
     "message": "رابط الملف",
-    "description": "رابط المستند المحمل"
+    "description": "رابط الوثيقة المرفوعة"
   },
   "field.fileSize": {
     "message": "حجم الملف",
-    "description": "حجم المستند المحمل"
+    "description": "حجم الوثيقة المرفوعة"
   },
   "field.state": {
     "message": "الحالة",
-    "description": "حالة معالجة المستند"
+    "description": "حالة معالجة الوثيقة"
   },
   "field.stateProcessing": {
-    "message": "قيد التعلم",
-    "description": "جاري معالجة المستند"
+    "message": "قيد المعالجة",
+    "description": "الوثيقة قيد المعالجة"
   },
   "field.stateCompleted": {
-    "message": "اكتمل التعلم",
-    "description": "تمت معالجة المستند بنجاح"
+    "message": "تم الانتهاء",
+    "description": "تم بنجاح معالجة الوثيقة"
   },
   "field.stateFailed": {
-    "message": "فشل التعلم",
-    "description": "فشل معالجة المستند"
+    "message": "فشل المعالجة",
+    "description": "فشل معالجة الوثيقة"
   },
   "field.name": {
     "message": "الاسم",
-    "description": "اسم المستند"
+    "description": "اسم الوثيقة"
   },
   "field.description": {
     "message": "الوصف",
-    "description": "وصف المستند"
+    "description": "وصف الوثيقة"
   },
   "message.introductionForKnowledge": {
-    "message": "يمكن إضافة المستندات إلى قاعدة المعرفة، ويمكن استخدام المستندات في الردود الآلية.",
-    "description": "نص تعريف قاعدة المعرفة"
+    "message": "يمكن إضافة الوثائق إلى قاعدة المعرفة، ليتمكن الروبوت من استخدام المعرفة الموجودة فيها أثناء الرد.",
+    "description": "معلومات تقديم حول قاعدة المعرفة"
   },
   "message.introductionForRepository": {
-    "message": "قاعدة المعرفة هي مجموعة من المستندات يمكنك إضافة المستندات إليها. ستقوم الردود الآلية بالرد باستخدام المستندات في قاعدة المعرفة.",
-    "description": "نص تعريف قاعدة المعرفة"
+    "message": "قاعدة المعرفة هي مجموعة من الوثائق، يمكنك إضافة الوثائق إليها. سيقوم الروبوت بالرد من الوثائق الموجودة في قاعدة المعرفة.",
+    "description": "معلومات تقديم حول قاعدة المعرفة"
   },
   "message.uploadDocumentsExceed": {
-    "message": "تجاوز حد عدد المستندات المسموح به",
-    "description": "رسالة الخطأ التي تظهر عند تجاوز حد عدد المستندات المسموح به"
+    "message": "عدد الوثائق المرفوعة يتجاوز الحد المسموح به",
+    "description": "معلومات خطأ عندما يتجاوز عدد الوثائق المرفوعة الحد"
   },
   "message.uploadDocumentsError": {
-    "message": "فشل تحميل المستندات",
-    "description": "رسالة الخطأ التي تظهر عند فشل تحميل المستندات"
+    "message": "فشل رفع الوثائق",
+    "description": "معلومات خطأ عندما يفشل رفع الوثائق"
   },
   "message.uploadDocumentsSuccess": {
-    "message": "تم تحميل المستند بنجاح",
-    "description": "رسالة النجاح التي تظهر عند نجاح تحميل المستند"
+    "message": "تم رفع الوثائق بنجاح",
+    "description": "معلومات نجاح عند رفع الوثائق بنجاح"
   },
   "message.createDocumentSuccess": {
-    "message": "تم إنشاء المستند بنجاح",
-    "description": "رسالة النجاح التي تظهر عند نجاح إنشاء المستند"
+    "message": "تم إنشاء الوثيقة بنجاح",
+    "description": "معلومات نجاح عند إنشاء الوثيقة بنجاح"
   },
   "message.startCreateDocument": {
-    "message": "بدء تعلم المستند...",
-    "description": "رسالة عند بدء تعلم المستند"
+    "message": "بدء تعلم الوثيقة...",
+    "description": "معلومات عند بدء تعلم الوثيقة"
   },
   "message.createDocumentError": {
-    "message": "فشل تعلم المستند",
-    "description": "رسالة الخطأ التي تظهر عند فشل تعلم المستند"
+    "message": "فشل تعلم الوثيقة",
+    "description": "معلومات خطأ عند الفشل في تعلم الوثيقة"
   },
   "message.dragOrClickToUpload": {
-    "message": "قم بالسحب والإفلات أو النقر لتحميل المستندات",
-    "description": "رسالة عن السحب والإفلات أو النقر لتحميل المستندات"
+    "message": "اسحب أو انقر لرفع الوثائق",
+    "description": "معلومات عند السحب أو النقر لرفع الوثائق"
   },
   "message.learningDocument": {
-    "message": "جاري التعلم، يرجى الانتظار...",
-    "description": "رسالة أثناء تعلم المستند"
+    "message": "قيد التعلم، يرجى الانتظار...",
+    "description": "معلومات عند تعلم الوثيقة"
   },
   "message.startNewChat": {
     "message": "بدء محادثة جديدة",
-    "description": "رسالة بدء محادثة جديدة"
+    "description": "معلومات عند بدء محادثة جديدة"
   },
   "message.errorApiError": {
-    "message": "فشل الاستجابة، يرجى المحاولة لاحقًا",
-    "description": "رسالة الخطأ التي تظهر عند فشل الاستجابة"
+    "message": "فشل الاستجابة، يرجى المحاولة لاحقاً",
+    "description": "معلومات خطأ عند فشل الاستجابة"
   },
   "message.errorBadRequest": {
-    "message": "صيغة المحتوى غير صحيحة، يرجى إعادة طرح السؤال",
-    "description": "رسالة الخطأ التي تظهر عند صيغة المحتوى غير صحيحة"
+    "message": "تنسيق محتوى الطلب غير صحيح، يرجى إعادة السؤال",
+    "description": "معلومات خطأ عند كون محتوى الطلب غير صحيح"
   },
   "message.errorNoConversation": {
-    "message": "لا يوجد محتوى محادثة أو انتهت مدة صلاحيتها، يرجى البدء بمحادثة جديدة",
-    "description": "رسالة الخطأ التي تظهر عند انتهاء محتوى المحادثة أو انتهاء صلاحيتها"
+    "message": "محتوى المحادثة غير موجود أو قد انتهت صلاحيته، يرجى بدء محادثة جديدة",
+    "description": "معلومات خطأ عند عدم وجود محتوى المحادثة"
   },
   "message.errorContentTooLarge": {
-    "message": "محتوى السؤال طويل جدًا، يرجى تقصيره وإعادة المحاولة",
-    "description": "رسالة الخطأ التي تظهر عند محتوى السؤال طويل جدًا"
+    "message": "محتوى السؤال طويل جداً، يرجى تقصيره ثم المحاولة مرة أخرى",
+    "description": "معلومات خطأ عند كون محتوى السؤال طويلاً جداً"
   },
   "message.errorTooManyRequests": {
-    "message": "تمت عملية الطلب بشكل متكرر جدًا، يرجى المحاولة لاحقًا",
-    "description": "رسالة الخطأ التي تظهر عند تكرار عملية الطلب كثيرًا"
+    "message": "تصرفك متكرر جداً، يرجى المحاولة لاحقاً",
+    "description": "معلومات خطأ عند التكرار الزائد في الطلبات"
   },
   "message.errorUsedUp": {
-    "message": "لقد استنفدت حد استخدام الباقة الخاص بك، يرجى شراء المزيد للاستمرار",
-    "description": "رسالة الخطأ التي تظهر عند استنفاد حد استخدام الباقة"
+    "message": "لقد وصلت إلى الحد الأقصى للاستخدام، يرجى شراء المزيد من السعة للمتابعة",
+    "description": "معلومات خطأ عند الوصول إلى الحد الأقصى للاستخدام"
   },
   "message.errorUnknown": {
-    "message": "حدث خطأ غير معروف في الخادم، يرجى المحاولة لاحقًا أو الاتصال بخدمة العملاء",
-    "description": "رسالة الخطأ التي تظهر عند حدوث خطأ غير معروف في الخادم"
+    "message": "حدث خطأ غير معروف في الخادم، يرجى المحاولة لاحقاً أو التواصل مع خدمة العملاء",
+    "description": "معلومات خطأ عند حدوث خطأ غير معروف"
   },
   "message.errorTimeout": {
-    "message": "انتهت مهلة الإجابة على السؤال، يرجى المحاولة لاحقًا",
-    "description": "رسالة الخطأ التي تظهر عند انتهاء مهلة الإجابة على السؤال"
+    "message": "انتهت مهلة الإجابة، يرجى المحاولة لاحقاً",
+    "description": "معلومات خطأ عند انتهاء مهلة الإجابة"
   },
   "message.errorNotApplied": {
-    "message": "لم تقم بتطبيق هذه الخدمة بعد، يرجى تقديم الطلب قبل الاستفسار",
-    "description": "رسالة الخطأ التي تظهر عند عدم تطبيق الخدمة من قبل المستخدم"
+    "message": "لم تقم بتقديم طلب لهذه الخدمة، يرجى التقديم للمتابعة",
+    "description": "معلومات خطأ عند عدم تقديم الطلب"
   },
   "message.confirmDelete": {
     "message": "تأكيد الحذف",
-    "description": "رسالة تأكيد الحذف"
+    "description": "معلومات تأكيد الحذف"
   },
   "message.howToUse": {
-    "message": "استخدم Shift + Enter للانتقال إلى السطر الجديد",
-    "description": "رسالة عن كيفية الانتقال إلى سطر جديد"
+    "message": "اضغط على Shift + Enter لإجراء سطر جديد",
+    "description": "معلومات حول كيفية إجراء سطر جديد"
+  },
+  "message.createRepositorySuccess": {
+    "message": "تم إنشاء قاعدة المعرفة بنجاح",
+    "description": "معلومات نجاح عند إنشاء قاعدة المعرفة بنجاح"
+  },
+  "message.createRepositoryFailed": {
+    "message": "فشل إنشاء قاعدة المعرفة",
+    "description": "معلومات خطأ عند فشل إنشاء قاعدة المعرفة"
+  },
+  "message.deleteRepositorySuccess": {
+    "message": "تم حذف قاعدة المعرفة بنجاح",
+    "description": "معلومات نجاح عند حذف قاعدة المعرفة بنجاح"
+  },
+  "message.deleteDocumentSuccess": {
+    "message": "تم حذف الوثيقة بنجاح",
+    "description": "معلومات نجاح عند حذف الوثيقة بنجاح"
+  },
+  "message.currentRepository": {
+    "message": "قاعدة المعرفة الحالية",
+    "description": "معلومات حول عرض قاعدة المعرفة الحالية"
+  },
+  "message.nameRequired": {
+    "message": "الاسم لا يمكن أن يكون فارغًا",
+    "description": "معلومات خطأ عند كون الاسم فارغًا"
+  },
+  "message.inputRepositoryName": {
+    "message": "اسم قاعدة المعرفة",
+    "description": "نص عنصر الإدخال لاسم قاعدة المعرفة"
   },
   "message.inputRepositoryDescription": {
-    "message": "اكتب وصفًا مختصرًا لمستودع المعرفة الخاص بك",
-    "description": "العبارة التوضيحية لوصف مستودع المعرفة"
+    "message": "وصف مكتبتك بكلمة واحدة",
+    "description": "نص العنصر القابل للإدخال لوصف المكتبة"
   },
   "message.supportedFiles": {
-    "message": "أنواع الملفات المدعومة: .docx، .doc، .pdf، .txt، .csv، .enex، .epub، .eml، .html، .htm، .shtml، .md، .odt، .ppt، .pptx",
-    "description": "عرض معلومات أنواع الملفات المدعومة"
+    "message": "أنواع الملفات المدعومة: .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
+    "description": "معلومات حول أنواع الملفات المدعومة"
   },
   "nav.chat": {
-    "message": "محادثة",
-    "description": "عنصر تنقل للمحادثة"
+    "message": "دردشة",
+    "description": "عنصر التنقل للدردشة"
   },
   "nav.setting": {
-    "message": "الإعدادات",
-    "description": "عنصر تنقل للإعدادات"
+    "message": "إعدادات",
+    "description": "عنصر التنقل للإعدادات"
   },
   "nav.manage": {
     "message": "إدارة",
-    "description": "عنصر تنقل للإدارة"
+    "description": "عنصر التنقل للإدارة"
   },
   "title.manage": {
-    "message": "إدارة مستودع المعرفة",
-    "description": "عنوان إدارة مستودع المعرفة"
+    "message": "إدارة المكتبة",
+    "description": "عنوان إدارة المكتبة"
   },
   "title.createRepository": {
-    "message": "إنشاء مستودع المعرفة",
-    "description": "عنوان إنشاء مستودع المعرفة"
+    "message": "إنشاء مكتبة",
+    "description": "عنوان إنشاء المكتبة"
   },
   "title.repositories": {
-    "message": "قائمة مستودعات المعرفة",
-    "description": "عنوان قائمة مستودعات المعرفة"
+    "message": "قائمة المكتبات",
+    "description": "عنوان قائمة المكتبات"
   }
 }

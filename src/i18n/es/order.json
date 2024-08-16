@@ -25,35 +25,35 @@
   },
   "field.id": {
     "message": "Número de pedido",
-    "description": "El número del pedido."
+    "description": "Número del pedido."
   },
   "field.amount": {
-    "message": "Monto",
-    "description": "El monto de puntos del pedido."
+    "message": "Cantidad",
+    "description": "Cantidad de puntos del pedido."
   },
   "field.price": {
-    "message": "Monto",
-    "description": "El monto de puntos del pedido."
+    "message": "Cantidad",
+    "description": "Cantidad de puntos del pedido."
   },
   "field.description": {
     "message": "Descripción del pedido",
-    "description": "La descripción del pedido."
+    "description": "Descripción del pedido."
   },
   "field.state": {
     "message": "Estado",
-    "description": "El estado del pedido."
+    "description": "Estado del pedido."
   },
   "field.createdAt": {
     "message": "Fecha de creación",
-    "description": "La fecha de creación del pedido."
+    "description": "Fecha de creación del pedido."
   },
   "field.service": {
     "message": "Nombre del servicio",
-    "description": "El nombre del servicio."
+    "description": "Nombre del servicio."
   },
   "field.payWay": {
     "message": "Método de pago",
-    "description": "El método de pago del pedido."
+    "description": "Método de pago del pedido."
   },
   "field.api": {
     "message": "API",
@@ -61,42 +61,42 @@
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Proxy es un servicio en línea para la transmisión de datos mediante un proxy HTTP."
+    "description": "Proxy es un servicio en línea para el transporte de datos mediante HTTP."
   },
   "message.paidSuccessfully": {
-    "message": "Pago exitoso",
+    "message": "Pago realizado con éxito",
     "description": "Mensaje de éxito de pago."
   },
   "message.orderExpired": {
-    "message": "El pedido ha expirado, por favor crea un nuevo pedido para proceder con el pago.",
-    "description": "Mensaje de expiración del pedido."
+    "message": "El pedido ha expirado, por favor crea un nuevo pedido para realizar el pago.",
+    "description": "Mensaje de pedido expirado."
   },
   "message.createFailed": {
     "message": "Error al crear",
-    "description": "Mensaje de error de creación."
+    "description": "Mensaje de error al crear."
   },
   "message.wechatPayHelp": {
-    "message": "Por favor, abre WeChat en tu teléfono y escanea el código para completar el pago.",
-    "description": "Mensaje de ayuda para el pago de WeChat."
+    "message": "Por favor, abre WeChat en tu teléfono y escanea el código para completar el pago",
+    "description": "Mensaje de ayuda para el pago con WeChat."
   },
   "message.free": {
     "message": "Gratis",
-    "description": "Mensaje para pedidos gratuitos."
+    "description": "Mensaje del pedido gratuito."
   },
   "message.buyInExternalUrl": {
-    "message": "Por favor completa el pago en el enlace externo.",
-    "description": "Mensaje para el pago en un enlace externo."
+    "message": "Por favor, completa el pago en el enlace externo",
+    "description": "Mensaje de pago a través de un enlace externo."
   },
   "message.updateFailed": {
-    "message": "Error al actualizar",
-    "description": "Mensaje de error de actualización."
+    "message": "Error de actualización",
+    "description": "Mensaje de error al actualizar."
   },
   "message.updateSuccessfully": {
     "message": "Actualización exitosa",
-    "description": "Mensaje de éxito de actualización."
+    "description": "Mensaje de actualización exitosa."
   },
   "message.confirmFinish": {
-    "message": "Esta operación establecerá manualmente el pedido como pagado y completará el procesamiento de la distribución, y no podrá ser deshecha. Por favor confirma que el cliente ha completado el pago, ¿continuar?",
+    "message": "Esta acción establecerá manualmente el pedido como estado de pago y completará el procesamiento de distribución, no se puede deshacer. Por favor, confirme que el cliente ha completado el pago, ¿desea continuar?",
     "description": "Mensaje de confirmación de finalización."
   },
   "state.pending": {
@@ -105,10 +105,10 @@
   },
   "state.paid": {
     "message": "Pagado",
-    "description": "Estado del pedido que indica que este pedido ha sido pagado."
+    "description": "Estado del pedido que indica que este pedido ya ha sido pagado."
   },
   "state.finished": {
-    "message": "Finalizado",
+    "message": "Completado",
     "description": "Estado del pedido que indica que este pedido ha sido completado."
   },
   "state.expired": {
@@ -117,26 +117,26 @@
   },
   "state.failed": {
     "message": "Pago fallido",
-    "description": "Estado del pedido que indica que este pedido ha fallado en el pago."
+    "description": "Estado del pedido que indica que el pago de este pedido ha fallado."
   },
   "title.info": {
     "message": "Información del pedido",
-    "description": "Título utilizado como título del sitio web, que indica información del pedido."
+    "description": "Título utilizado como título del sitio web, indica información del pedido."
   },
   "title.wechatPay": {
     "message": "Pago WeChat",
-    "description": "Título utilizado como título del sitio web, que indica Pago WeChat."
+    "description": "Título utilizado como título del sitio web, indica pago con WeChat."
   },
   "title.aliPay": {
     "message": "Alipay",
-    "description": "Título utilizado como título del sitio web, que indica el pago de Alipay, que es un método de pago en línea."
+    "description": "Título utilizado como título del sitio web, indica pago con Alipay, Alipay es un método de pago en línea."
   },
   "title.stripe": {
     "message": "Stripe",
-    "description": "Título utilizado como título del sitio web, que indica el pago de Stripe, que es un método de pago en línea."
+    "description": "Título utilizado como título del sitio web, indica pago con Stripe, Stripe es un método de pago en línea."
   },
   "title.manageOrder": {
-    "message": "Gestionar pedidos",
-    "description": "Título utilizado como título del sitio web, que indica la gestión de pedidos."
+    "message": "Gestionar pedido",
+    "description": "Título utilizado como título del sitio web, indica gestión de pedidos."
   }
 }

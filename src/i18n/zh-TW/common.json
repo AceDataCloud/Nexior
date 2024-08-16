@@ -1,15 +1,15 @@
 {
   "button.setup": {
-    "message": "設置",
-    "description": "按鈕文本，用於設置某些內容"
+    "message": "設定",
+    "description": "按鈕文本，用於設定某些內容"
   },
   "button.copy": {
     "message": "複製該消息",
-    "description": "按鈕文本，用於設置某些內容"
+    "description": "按鈕文本，用於設定某些內容"
   },
   "button.restart": {
     "message": "重新生成",
-    "description": "按鈕文本，用於設置某些內容"
+    "description": "按鈕文本，用於設定某些內容"
   },
   "button.preview": {
     "message": "預覽",
@@ -17,6 +17,10 @@
   },
   "button.seeRawImage": {
     "message": "查看原圖",
+    "description": "按鈕文本，用於查看原始圖片"
+  },
+  "button.seeRawVideo": {
+    "message": "查看視頻",
     "description": "按鈕文本，用於查看原始圖片"
   },
   "button.edit": {
@@ -64,8 +68,8 @@
     "description": "按鈕文本，用於觀看某些內容"
   },
   "button.verify": {
-    "message": "實名驗證",
-    "description": "按鈕文本，用於讓用戶進行實名驗證"
+    "message": "實名認證",
+    "description": "按鈕文本，用於讓用戶進行實名認證"
   },
   "button.profile": {
     "message": "個人資料",
@@ -181,7 +185,7 @@
   },
   "entity.updatedAt": {
     "message": "更新时间",
-    "description": "实体更新的时间"
+    "description": "實體更新的時間"
   },
   "entity.order": {
     "message": "訂單",
@@ -216,7 +220,7 @@
     "description": "用於警告用戶的消息"
   },
   "message.info": {
-    "message": "友情提示",
+    "message": "友情提醒",
     "description": "用於顯示信息的消息"
   },
   "message.free": {
@@ -295,6 +299,10 @@
     "message": "Suno",
     "description": "網站導航欄中的文本，用於顯示Suno頁面，請不要翻譯此字段，必須保持為'Suno'"
   },
+  "nav.luma": {
+    "message": "Luma",
+    "description": "網站導航欄中的文本，用於顯示Luma頁面，請不要翻譯此字段，必須保持為'Suno'"
+  },
   "nav.distribution": {
     "message": "推薦收益",
     "description": "網站導航欄中的文本，用於顯示推薦收益頁面"
@@ -308,7 +316,7 @@
     "description": "網站導航欄中的文本，用於顯示站點配置頁面"
   },
   "nav.locale": {
-    "message": "語言設置",
+    "message": "語言設定",
     "description": "網站導航欄中的文本，用於更改語言"
   },
   "nav.support": {
@@ -329,7 +337,7 @@
   },
   "title.placeholderOfInput": {
     "message": "請填寫",
-    "description": "輸入框的佔位符"
+    "description": "輸入框的占位符"
   },
   "title.allApplications": {
     "message": "所有申請",
@@ -340,8 +348,8 @@
     "description": "顯示所有訂單的頁面標題"
   },
   "title.orderInfo": {
-    "message": "訂單資訊",
-    "description": "顯示訂單資訊的頁面標題"
+    "message": "訂單信息",
+    "description": "顯示訂單信息的頁面標題"
   },
   "title.buyMore": {
     "message": "購買更多",
@@ -349,7 +357,7 @@
   },
   "title.distribution": {
     "message": "推薦收益",
-    "description": "顯示推薦收益的頁面標題，表示用戶可以透過邀請他人使用服務來賺錢"
+    "description": "顯示推薦收益的頁面標題，表示用戶可以通過邀請他人使用服務來賺錢"
   },
   "title.site": {
     "message": "站點配置",
@@ -365,26 +373,26 @@
   },
   "title.allUsages": {
     "message": "使用歷史",
-    "description": "顯示API服務所有使用紀錄的頁面標題"
+    "description": "顯示API服務所有使用記錄的頁面標題"
   },
   "title.allCredentials": {
     "message": "憑證",
     "description": "顯示所有憑證的頁面標題，這些憑證用於訪問API"
   },
   "about.title1": {
-    "message": "聯繫我們",
-    "description": "顯示聯繫信息的部分的標題"
+    "message": "聯絡我們",
+    "description": "顯示聯絡信息的部分的標題"
   },
   "about.title2": {
     "message": "資源",
-    "description": "顯示連結的部分的標題"
+    "description": "顯示鏈接的部分的標題"
   },
   "about.title3": {
-    "message": "連結",
+    "message": "鏈接",
     "description": "顯示支持信息的部分的標題"
   },
   "about.address": {
-    "message": "美國 特拉華州 密德爾敦 N Broad St, 201號辦公室",
+    "message": "美國 德拉瓦州 密德爾敦 N Broad St, 201號辦公室",
     "description": "公司的地址"
   },
   "about.email": {
@@ -393,38 +401,38 @@
   },
   "about.link1": {
     "message": "服務",
-    "description": "服務頁面的連結"
+    "description": "服務頁面的鏈接"
   },
   "about.link2": {
     "message": "文檔",
-    "description": "文檔頁面的連結"
+    "description": "文檔頁面的鏈接"
   },
   "about.link3": {
     "message": "控制台",
-    "description": "控制台頁面的連結"
+    "description": "控制台頁面的鏈接"
   },
   "about.link4": {
     "message": "個人資料",
-    "description": "個人資料頁面的連結"
+    "description": "個人資料頁面的鏈接"
   },
   "about.link5": {
     "message": "中心",
-    "description": "中心頁面的連結"
+    "description": "中心頁面的鏈接"
   },
   "about.link6": {
     "message": "推薦收益",
-    "description": "推薦收益頁面的連結"
+    "description": "推薦收益頁面的鏈接"
   },
   "about.link7": {
     "message": "支持",
-    "description": "支持頁面的連結"
+    "description": "支持頁面的鏈接"
   },
   "about.link8": {
     "message": "服務條款",
-    "description": "服務條款頁面的連結"
+    "description": "服務條款頁面的鏈接"
   },
   "about.link9": {
     "message": "隱私政策",
-    "description": "隱私政策頁面的連結"
+    "description": "隱私政策頁面的鏈接"
   }
 }
