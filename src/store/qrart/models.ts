@@ -3,6 +3,7 @@ import { IQrartConfig, IQrartTask } from '@/models';
 
 export interface IQrartState {
   application: IApplication | undefined;
+  applications: IApplication[] | undefined;
   service: IService | undefined;
   credential: ICredential | undefined;
   config: IQrartConfig | undefined;
@@ -15,7 +16,7 @@ export interface IQrartState {
     | undefined;
   status: {
     getService: Status;
-    getApplication: Status;
+    getApplications: Status;
     getTasks: Status;
   };
 }

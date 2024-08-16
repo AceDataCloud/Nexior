@@ -43,7 +43,7 @@
                 </div>
               </el-col>
             </el-row>
-            <el-row v-if="order?.state === OrderState.PAID" class="mb-5">
+            <el-row v-if="order?.state === OrderState.PAID || order?.state === OrderState.FINISHED" class="mb-5">
               <el-col :span="16" :offset="4">
                 <el-divider border-style="dashed" />
                 <el-alert :title="$t('order.message.paidSuccessfully')" type="success" show-icon :closable="false" />
@@ -140,6 +140,7 @@ import WechatPayOrder from '@/components/order/WechatPay.vue';
 import StripePayOrder from '@/components/order/StripePay.vue';
 import { IApplicationType, IOrder, IOrderDetailResponse, OrderState } from '@/models';
 import { getPriceString } from '@/utils';
+import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 
 enum PayWay {
   WechatPay = 'WechatPay',
@@ -163,6 +164,7 @@ export default defineComponent({
   name: 'ConsoleOrderDetail',
   components: {
     ElButton,
+    CopyToClipboard,
     ElRow,
     ElCard,
     ElCol,

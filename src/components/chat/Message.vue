@@ -48,15 +48,29 @@
             @keydown.enter.exact.prevent="sendEdit"
           ></el-input>
           <div class="button-group">
-            <el-button size="small" class="cancel-button" @click="cancelEdit">取消</el-button>
-            <el-button type="primary" size="small" class="send-button" @click="sendEdit">发送</el-button>
+            <el-button size="small" round @click="cancelEdit">{{ $t('common.button.cancel') }}</el-button>
+            <el-button type="primary" size="small" round @click="sendEdit">{{ $t('common.button.confirm') }}</el-button>
           </div>
         </div>
         <answering-mark v-if="message.state === messageState.PENDING" />
       </div>
-
       <div class="operations">
-        <copy-to-clipboard v-if="!Array.isArray(message.content)" :content="message.content!" class="btn-copy" />
+        <copy-to-clipboard
+          v-if="!Array.isArray(message.content) && message.state === messageState.FINISHED"
+          :content="message.content!"
+          class="btn-copy"
+        />
+        <restart-to-generate
+          v-if="
+            !Array.isArray(message.content) &&
+            message.state === messageState.FINISHED &&
+            message.role === 'assistant' &&
+            message === messages[messages.length - 1]
+          "
+          class="btn-restart"
+          :messages="messages"
+          @restart="sendRestart"
+        />
       </div>
     </div>
     <el-alert v-else class="error" :title="errorText" type="error" :closable="false" />
@@ -74,7 +88,8 @@ import { ElAlert, ElButton, ElImage, ElTooltip, ElInput } from 'element-plus';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IApplication, IChatMessage, IChatMessageState } from '@/models';
-import CopyToClipboard from '../common/CopyToClipboard.vue';
+import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
+import RestartToGenerate from './RestartToGenerate.vue';
 import {
   ERROR_CODE_API_ERROR,
   ERROR_CODE_BAD_REQUEST,
@@ -86,7 +101,7 @@ import {
   ERROR_CODE_USED_UP,
   ROLE_ASSISTANT
 } from '@/constants';
-import { ROUTE_CONSOLE_APPLICATION_BUY } from '@/router';
+import { ROUTE_CONSOLE_APPLICATION_EXTRA } from '@/router';
 
 interface IData {
   copied: boolean;
@@ -99,6 +114,7 @@ export default defineComponent({
   name: 'Message',
   components: {
     CopyToClipboard,
+    RestartToGenerate,
     AnsweringMark,
     MarkdownRenderer,
     ElAlert,
@@ -109,6 +125,11 @@ export default defineComponent({
     ElInput
   },
   props: {
+    messages: {
+      type: Array,
+      required: false,
+      default: () => []
+    },
     message: {
       type: Object as () => IChatMessage,
       required: true
@@ -118,7 +139,7 @@ export default defineComponent({
       required: true
     }
   },
-  emits: ['stop', 'update:messages', 'edit'],
+  emits: ['stop', 'edit', 'restart'],
   data(): IData {
     return {
       copied: false,
@@ -166,6 +187,10 @@ export default defineComponent({
     cancelEdit() {
       this.isEditing = false;
     },
+    sendRestart() {
+      // Implement the logic to save the edited content
+      this.$emit('restart', this.message);
+    },
     sendEdit() {
       // Implement the logic to save the edited content
       this.isEditing = false;
@@ -185,7 +210,7 @@ export default defineComponent({
     },
     onBuyMore() {
       this.$router.push({
-        name: ROUTE_CONSOLE_APPLICATION_BUY,
+        name: ROUTE_CONSOLE_APPLICATION_EXTRA,
         params: {
           id: this.application?.id
         }
@@ -270,6 +295,7 @@ export default defineComponent({
         // background-color: var(--el-bg-color-page);
         // color: var(--el-text-color-primary);
         padding: 10px;
+        min-width: 400px;
         width: 100%;
         height: 100%;
         .chat-input {
@@ -282,23 +308,6 @@ export default defineComponent({
           position: absolute;
           bottom: 10px;
           right: 10px;
-          .cancel-button {
-            // background-color: #333;
-            // color: white;
-            background-color: var(--el-bg-color-page);
-            color: var(--el-text-color-primary);
-            border-radius: 20px;
-            // border: none;
-          }
-
-          .send-button {
-            // background-color: white;
-            // color: black;
-            background-color: var(--el-bg-color-page);
-            color: var(--el-text-color-primary);
-            border-radius: 20px;
-            // border: none;
-          }
         }
       }
     }
@@ -329,7 +338,13 @@ export default defineComponent({
   }
 
   .operations {
-    display: block;
+    display: flex; // Use flexbox for better alignment
+    gap: 10px; // Adjust the gap value as needed
+    margin-left: 5px; // Adjust the value as needed
+    .btn-restart {
+      color: var(--el-text-color-regular);
+      font-size: 14px;
+    }
     .btn-copy {
       color: var(--el-text-color-regular);
       font-size: 14px;

@@ -5,12 +5,13 @@ export default (): IQrartState => {
   return {
     service: undefined,
     application: undefined,
+    applications: undefined,
     tasks: undefined,
     credential: undefined,
     config: undefined,
     status: {
       getService: Status.None,
-      getApplication: Status.None,
+      getApplications: Status.None,
       getTasks: Status.None
     }
   };

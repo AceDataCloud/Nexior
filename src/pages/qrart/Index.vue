@@ -67,10 +67,10 @@ export default defineComponent({
       return this.$store.state.qrart.config;
     },
     initializing() {
-      return this.$store.state.qrart.status.getApplication === Status.Request;
+      return this.$store.state.qrart.status.getApplications === Status.Request;
     },
     needApply() {
-      return this.$store.state.qrart.status.getApplication === Status.Success && !this.application;
+      return this.$store.state.qrart.status.getApplications === Status.Success && !this.application;
     },
     application() {
       return this.$store.state.qrart.application;
@@ -97,9 +97,9 @@ export default defineComponent({
       console.debug('end onGetService');
     },
     async onGetApplication() {
-      console.debug('start onGetApplication');
-      await this.$store.dispatch('qrart/getApplication');
-      console.debug('end onGetApplication');
+      console.debug('start onGetApplications');
+      await this.$store.dispatch('qrart/getApplications');
+      console.debug('end onGetApplications');
       await this.onGetTasks();
     },
     onApply() {

@@ -3,6 +3,7 @@ import { IApplication, ICredential, IMidjourneyPreset, IMidjourneyTask, IService
 export interface IMidjourneyState {
   service: IService | undefined;
   application: IApplication | undefined;
+  applications: IApplication[] | undefined;
   tasks:
     | {
         items: IMidjourneyTask[] | undefined;
@@ -13,7 +14,7 @@ export interface IMidjourneyState {
   preset: IMidjourneyPreset;
   status: {
     getService: Status;
-    getApplication: Status;
+    getApplications: Status;
     getTasks: Status;
   };
 }

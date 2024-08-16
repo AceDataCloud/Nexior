@@ -2,13 +2,14 @@ import { IApplication, IChatConversation, IChatModel, ICredential, IService, Sta
 
 export interface IChatState {
   model: IChatModel;
+  applications: IApplication[] | undefined;
   application: IApplication | undefined;
   service: IService | undefined;
   conversations: IChatConversation[] | undefined;
   credential: ICredential | undefined;
   status: {
     getService: Status;
-    getApplication: Status;
+    getApplications: Status;
     getConversations: Status;
   };
 }

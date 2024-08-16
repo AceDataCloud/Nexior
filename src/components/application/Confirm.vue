@@ -36,7 +36,6 @@ import { getBaseUrlPlatform } from '@/utils';
 
 interface IData {
   checked: boolean;
-  showPolicy: boolean;
 }
 
 export default defineComponent({

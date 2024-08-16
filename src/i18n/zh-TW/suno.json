@@ -1,4 +1,8 @@
 {
+  "button.extend": {
+    "message": "繼續生成",
+    "description": "繼續生成按鈕文本"
+  },
   "button.download": {
     "message": "下載",
     "description": "下載按鈕文本"
@@ -35,6 +39,10 @@
     "message": "歌曲描述",
     "description": "內容輸入的提示"
   },
+  "name.extend": {
+    "message": "擴展歌曲來自",
+    "description": "內容輸入的提示"
+  },
   "name.lyrics": {
     "message": "歌詞內容",
     "description": "歌詞內容輸入的提示"
@@ -56,8 +64,8 @@
     "description": "任務的狀態"
   },
   "name.traceId": {
-    "message": "追蹤 ID",
-    "description": "任務的追蹤 ID"
+    "message": "追踪 ID",
+    "description": "任務的追踪 ID"
   },
   "name.sunoBot": {
     "message": "Suno Bot",
@@ -85,27 +93,35 @@
   },
   "placeholder.prompt": {
     "message": "請輸入歌曲提示詞...",
-    "description": "填充噪音輸入的占位符"
+    "description": "填充噪音輸入的佔位符"
   },
   "placeholder.lyrics": {
     "message": "請輸入歌詞...",
-    "description": "填充級別的占位符"
+    "description": "填充級別的佔位符"
+  },
+  "placeholder.extend.lyrics": {
+    "message": "請輸入需要擴展的歌詞...",
+    "description": "填充級別的佔位符"
+  },
+  "placeholder.extend.continue_at": {
+    "message": "請輸入需要從歌曲哪秒進行擴展...",
+    "description": "填充級別的佔位符"
   },
   "placeholder.style": {
     "message": "請輸入要生成的歌曲風格的提示詞，例如 acoustic pop",
-    "description": "提示字段中的占位文本"
+    "description": "提示字段中的佔位文本"
   },
   "placeholder.title": {
     "message": "請輸入要生成的歌曲標題的提示詞，例如 holiday song",
-    "description": "種子輸入的占位符"
+    "description": "種子輸入的佔位符"
   },
   "placeholder.select": {
     "message": "請選擇模型...",
-    "description": "位置輸入的占位符"
+    "description": "位置輸入的佔位符"
   },
   "placeholder.position": {
     "message": "請選擇...",
-    "description": "位置輸入的占位符"
+    "description": "位置輸入的佔位符"
   },
   "button.generate": {
     "message": "生成",
