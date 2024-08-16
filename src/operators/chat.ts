@@ -65,6 +65,7 @@ class ChatOperator {
     filter: {
       ids?: string[];
       applicationId?: string;
+      userId?: string;
     },
     options: IChatConversationOptions
   ): Promise<AxiosResponse<IChatConversationsResponse>> {
@@ -80,6 +81,11 @@ class ChatOperator {
         ...(filter.applicationId
           ? {
               application_id: filter.applicationId
+            }
+          : {}),
+        ...(filter.userId
+          ? {
+              user_id: filter.userId
             }
           : {})
       },

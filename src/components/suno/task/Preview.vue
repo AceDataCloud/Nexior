@@ -34,7 +34,9 @@
         <p class="style">{{ audio?.style }}</p>
       </div>
       <div class="right">
-        <el-button size="small" round @click="onExtend($event, audio)">{{ $t('suno.button.extend') }}</el-button>
+        <el-button v-if="audio?.audio_url && audio?.video_url" size="small" round @click="onExtend($event, audio)">{{
+          $t('suno.button.extend')
+        }}</el-button>
         <el-tooltip effect="dark" :content="$t('suno.button.download')" placement="top">
           <font-awesome-icon
             v-if="audio?.audio_url"

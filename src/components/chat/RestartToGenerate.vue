@@ -37,8 +37,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.icon-check,
-.icon-copy {
+.icon-sync {
   margin-left: 5px;
   cursor: pointer;
   color: inherit;

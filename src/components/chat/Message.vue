@@ -89,7 +89,7 @@ import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IApplication, IChatMessage, IChatMessageState } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import RestartToGenerate from '@/components/common/RestartToGenerate.vue';
+import RestartToGenerate from './RestartToGenerate.vue';
 import {
   ERROR_CODE_API_ERROR,
   ERROR_CODE_BAD_REQUEST,

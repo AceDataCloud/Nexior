@@ -103,7 +103,7 @@ export const getService = async ({ commit, state }: ActionContext<ISunoState, IR
 };
 
 export const getTasks = async (
-  { commit, state }: ActionContext<ISunoState, IRootState>,
+  { commit, state, rootState }: ActionContext<ISunoState, IRootState>,
   { offset, limit }: { offset?: number; limit?: number }
 ): Promise<ISunoTask[]> => {
   return new Promise((resolve, reject) => {
@@ -116,7 +116,7 @@ export const getTasks = async (
     sunoOperator
       .tasks(
         {
-          applicationId: state.application?.id
+          userId: rootState?.user?.id
         },
         {
           token

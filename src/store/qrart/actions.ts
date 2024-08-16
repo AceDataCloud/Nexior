@@ -101,7 +101,7 @@ export const getService = async ({ commit, state }: ActionContext<IQrartState, I
 };
 
 export const getTasks = async (
-  { commit, state }: ActionContext<IQrartState, IRootState>,
+  { commit, state, rootState }: ActionContext<IQrartState, IRootState>,
   { offset, limit }: { offset?: number; limit?: number }
 ): Promise<IQrartTask[]> => {
   return new Promise((resolve, reject) => {
@@ -114,7 +114,7 @@ export const getTasks = async (
     qrartOperator
       .tasks(
         {
-          applicationId: state.application?.id
+          userId: rootState?.user?.id
         },
         {
           token
