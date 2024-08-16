@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Thu, 15 Aug 2024 17:54:12 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Aug 2024 07:42:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.9.1
+
+Fri, 16 Aug 2024 07:42:29 GMT
+
+### Patches
+
+- fix retrieve task issue (office@acedata.cloud)
 
 ## 2.9.0
 
