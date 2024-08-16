@@ -67,7 +67,13 @@
               <el-table-column fixed="right" width="120px">
                 <template #default="scope">
                   <div class="float-right">
-                    <el-button type="primary" round size="small" @click="onBuyMore(scope?.row)">
+                    <el-button
+                      v-if="scope?.row?.type === 'Period' || scope?.row?.type === 'Usage'"
+                      type="primary"
+                      round
+                      size="small"
+                      @click="onBuyMore(scope?.row)"
+                    >
                       {{ $t('application.button.buyMore') }}
                     </el-button>
                   </div>
@@ -94,7 +100,7 @@ import { applicationOperator } from '@/operators';
 import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { ElTable, ElRow, ElCol, ElTableColumn, ElCard, ElButton, ElTag } from 'element-plus';
-import { ROUTE_CONSOLE_APPLICATION_EXTRA } from '@/router/constants';
+import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_APPLICATION_SUBSCRIBE } from '@/router/constants';
 import { IApplication, IApplicationListResponse, IApplicationType, ICredentialType, IService } from '@/models';
 
 interface IData {
@@ -175,9 +181,12 @@ export default defineComponent({
             id: application.id
           }
         });
-      } else {
+      } else if (application.type === IApplicationType.PERIOD) {
         this.$router.push({
-          name: ROUTE_CONSOLE_SUBSCRIPTION_BUY
+          name: ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
+          params: {
+            id: application.id
+          }
         });
       }
     },
