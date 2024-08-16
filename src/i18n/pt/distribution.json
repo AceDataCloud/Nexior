@@ -1,138 +1,138 @@
 {
   "button.detail": {
     "message": "Ver Detalhes",
-    "description": "Texto do botão para visualizar os detalhes do histórico de recomendações do site."
+    "description": "Texto do botão para visualizar os detalhes da história de recomendações do site."
   },
   "button.withdrawal": {
-    "message": "Retirar",
-    "description": "Texto do botão para retirar os ganhos de recomendações do site."
+    "message": "Sacar",
+    "description": "Texto do botão para sacar os ganhos de recomendações do site."
   },
   "button.query": {
     "message": "Consultar",
     "description": "Texto do botão para consultar os ganhos de recomendações do site."
   },
   "field.id": {
-    "message": "ID de Recomendações",
-    "description": "Identificador único de distribuição, onde distribuição refere-se a recomendações do site de serviços de API."
+    "message": "ID da Recomendações",
+    "description": "Identificador único da distribuição, sendo a distribuição as recomendações do site de serviços API."
   },
   "field.percentage": {
-    "message": "Porcentagem de Ganhos por Recomendações",
-    "description": "Porcentagem dos ganhos de recomendações, calculada com base no valor do pedido."
+    "message": "Porcentagem de Ganhos de Recomendações",
+    "description": "A porcentagem dos ganhos de recomendações, calculada com base no valor do pedido."
   },
   "field.price": {
     "message": "Valor do Pedido",
     "description": "Valor do pedido, utilizado para calcular os ganhos de recomendações."
   },
   "field.reward": {
-    "message": "Recompensa por Recomendações",
-    "description": "Ganhos de recomendações, calculados com base no valor do pedido e na porcentagem de ganhos por recomendações."
+    "message": "Recompensa de Recomendações",
+    "description": "Ganhos de recomendações, calculados com base no valor do pedido e na porcentagem de ganhos de recomendações."
   },
   "field.userId": {
     "message": "ID do Usuário",
-    "description": "Identificador único do usuário, onde usuário refere-se aos usuários do site de serviços de API."
+    "description": "Identificador único do usuário, sendo o usuário o cliente do site de serviços API."
   },
   "field.userEmail": {
-    "message": "Email do Usuário",
-    "description": "Email do usuário."
+    "message": "E-mail do Usuário",
+    "description": "O e-mail do usuário."
   },
   "field.createdAt": {
     "message": "Data da Recomendação",
-    "description": "Data em que a recomendação foi criada."
+    "description": "A data em que a recomendação foi criada."
   },
   "field.level": {
     "message": "Nível",
-    "description": "Nível da recomendação, utilizado para calcular os ganhos de recomendações."
+    "description": "O nível da recomendação, utilizado para calcular os ganhos de recomendações."
   },
   "field.threshold": {
-    "message": "Limite de Ganhos por Recomendações",
-    "description": "Limite para os ganhos de recomendações, utilizado para retirar os ganhos."
+    "message": "Limite de Ganhos de Recomendações",
+    "description": "O limite dos ganhos de recomendações, utilizado para sacar os ganhos."
   },
   "field.inviteeId": {
-    "message": "ID do Convidador",
-    "description": "Identificador único do convidador, onde convidador refere-se à pessoa que convida os convidados ao site de serviços de API."
+    "message": "ID do Convidado",
+    "description": "Identificador único do convidador, sendo o convidador a pessoa que convida o usuário para o site de serviços API."
   },
   "field.isVerified": {
     "message": "Verificado",
-    "description": "Marco que indica se o usuário recomendado foi verificado por informações reais."
+    "description": "Sinalizador que indica se o usuário da recomendação passou pela verificação de informações reais."
   },
   "message.deltaPriceForNextLevel": {
     "message": "Diferença para o Próximo Nível",
-    "description": "Diferença entre o valor do pedido atual e o limite do próximo nível."
+    "description": "A diferença entre o valor da atual do pedido e o limite do próximo nível."
   },
   "message.developingWithDrawal": {
-    "message": "Por favor, junte-se ao Discord e consulte o suporte para tratar da retirada, deduzindo os impostos de renda relevantes.",
-    "description": "Mensagem indicando que a funcionalidade de retirada está em desenvolvimento."
+    "message": "Por favor, adicione o suporte ao cliente para tratar saques, os saques estarão sujeitos a impostos sobre a renda.",
+    "description": "Mensagem indicando que a funcionalidade de saque está em desenvolvimento."
   },
   "message.technicalDetail": {
     "message": "Detalhes Técnicos",
-    "description": "Implementação detalhada técnica do sistema de recomendações."
+    "description": "Detalhes técnicos da implementação do sistema de recomendações."
   },
   "message.distributionQrDescription": {
-    "message": "Código QR de Recomendações (idêntico ao conteúdo do link)",
+    "message": "Código QR de Recomendações (mesmo conteúdo que o link)",
     "description": "Descrição do código QR de recomendações."
   },
   "message.distributionLink": {
     "message": "Link de Recomendações",
-    "description": "Link de recomendações, utilizado para vincular clientes como clientes subordinados."
+    "description": "Link de recomendações, utilizado para vincular um cliente como um cliente subordinado."
   },
   "message.updateSuccessfully": {
-    "message": "Atualização Bem-sucedida",
-    "description": "Mensagem que indica que as informações da recomendação foram atualizadas com sucesso."
+    "message": "Atualização Bem-Sucedida",
+    "description": "Mensagem indicando que as informações de recomendações foram atualizadas com sucesso."
   },
   "message.distributionLinkDescription": {
-    "message": "Se o cliente se registrar na plataforma através deste link ou código QR, ele será vinculado permanentemente como seu cliente subordinado, e todas as compras feitas pelo cliente na plataforma serão retornadas à sua conta de acordo com a proporção de distribuição atual.",
+    "message": "Se o cliente se registrar nesta plataforma através deste link ou código QR, ele ficará vinculado permanentemente como seu cliente subordinado, e todas as ordens de compra do cliente nesta plataforma retornarão para sua conta de acordo com a taxa atual de distribuição.",
     "description": "Descrição do link de recomendações."
   },
   "message.distributionLinkDescription2": {
-    "message": "Este link contém seu ID de usuário. Quando o cliente abrir o link, seu ID de usuário será registrado em forma de Cookies no navegador do cliente, com validade de sete dias. Dentro de sete dias, se o cliente se registrar nesta plataforma escaneando o código, seu ID de usuário será enviado ao servidor de registro junto com os Cookies, e o cliente poderá ser vinculado como seu cliente subordinado.",
+    "message": "Este link contém seu ID de usuário. Após abrir o link, seu ID de usuário será registrado na forma de Cookies no navegador do cliente, com validade de sete dias. Dentro de sete dias, se o cliente se registrar nesta plataforma escaneando esse código, seu ID de usuário será enviado ao servidor de registro junto com os Cookies, e o cliente poderá ser vinculado como seu cliente subordinado.",
     "description": "Descrição do link de recomendações."
   },
   "title.price": {
-    "message": "Valor Total do Pedido de Recomendações",
-    "description": "Valor total do pedido de recomendações, utilizado para calcular os ganhos."
+    "message": "Total do Valor das Recomendações",
+    "description": "O valor total das recomendações, utilizado para calcular os ganhos de recomendações."
   },
   "title.reward": {
-    "message": "Total de Recompensas por Recomendações",
-    "description": "Total de recompensas por recomendações, calculadas com base no valor do pedido e na porcentagem de ganhos por recomendações."
+    "message": "Total de Recompensas de Recomendações",
+    "description": "Total de recompensas de recomendações, calculadas com base no valor do pedido e na porcentagem de ganhos de recomendações."
   },
   "title.level": {
     "message": "Nível de Recomendações",
-    "description": "Nível de recomendações, utilizado para calcular os ganhos."
+    "description": "O nível de recomendações, utilizado para calcular os ganhos de recomendações."
   },
   "title.percentage": {
-    "message": "Porcentagem de Ganhos por Recomendações",
-    "description": "Porcentagem de ganhos por recomendações, utilizada para calcular os ganhos."
+    "message": "Porcentagem de Ganhos de Recomendações",
+    "description": "A porcentagem de ganhos de recomendações, utilizada para calcular os ganhos."
   },
   "title.currentLevel": {
     "message": "Nível Atual",
-    "description": "Nível atual de recomendações, utilizado para calcular os ganhos."
+    "description": "O nível atual de recomendações, utilizado para calcular os ganhos de recomendações."
   },
   "title.nextLevel": {
     "message": "Próximo Nível",
-    "description": "Próximo nível de recomendações, utilizado para calcular os ganhos."
+    "description": "O próximo nível de recomendações, utilizado para calcular os ganhos de recomendações."
   },
   "title.currentPercentage": {
-    "message": "Porcentagem Atual de Ganhos por Recomendações",
-    "description": "Porcentagem atual de ganhos por recomendações, utilizada para calcular os ganhos."
+    "message": "Porcentagem Atual de Ganhos de Recomendações",
+    "description": "A porcentagem atual de ganhos de recomendações, utilizada para calcular os ganhos."
   },
   "title.nextPercentage": {
-    "message": "Porcentagem de Ganhos por Recomendações do Próximo Nível",
-    "description": "Porcentagem de ganhos por recomendações do próximo nível, utilizada para calcular os ganhos."
+    "message": "Porcentagem de Ganhos de Recomendações do Próximo Nível",
+    "description": "A porcentagem de ganhos de recomendações do próximo nível, utilizada para calcular os ganhos."
   },
   "title.levelInfo": {
-    "message": "Informações do Nível",
+    "message": "Informações sobre o Nível",
     "description": "Informações sobre o nível de recomendações, utilizadas para calcular os ganhos."
   },
   "title.distributionLink": {
     "message": "Link de Recomendações",
-    "description": "Link de recomendações, utilizado para vincular clientes como clientes subordinados."
+    "description": "Link de recomendações, utilizado para vincular um cliente como um cliente subordinado."
   },
   "title.inviteesCount": {
-    "message": "Número total de convidados",
-    "description": "Número total de convidados, usado para calcular os ganhos de referência."
+    "message": "Total de convidados",
+    "description": "Número total de convidados, usado para calcular os ganhos de indicação."
   },
   "title.manageDistributionStatus": {
-    "message": "Gerenciamento de distribuição",
-    "description": "Gerenciamento do status de referência."
+    "message": "Gestão de Distribuição",
+    "description": "Gerenciamento do status de recomendação."
   }
 }
