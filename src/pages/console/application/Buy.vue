@@ -67,6 +67,13 @@
                       {{ $t('application.button.createOrder') }}
                     </el-button>
                   </el-form-item>
+                  <el-divider border-style="dashed" />
+                  <el-form-item label="">
+                    <span>{{ $t('console.message.doNotWantExtra') }}</span>
+                    <el-button type="primary" class="btn btn-subscribe" round size="small" @click="onSubscribe">
+                      {{ $t('console.message.subscribe') }}
+                    </el-button>
+                  </el-form-item>
                 </el-form>
               </el-col>
             </el-row>
@@ -93,7 +100,7 @@ import {
   ElRadioGroup,
   ElRadioButton
 } from 'element-plus';
-import { ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
+import { ROUTE_CONSOLE_APPLICATION_SUBSCRIBE, ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
 import Price from '@/components/common/Price.vue';
 import { applicationOperator, orderOperator } from '@/operators';
 import { getPriceString } from '@/utils';
@@ -166,6 +173,12 @@ export default defineComponent({
     this.onFetchApplication();
   },
   methods: {
+    onSubscribe() {
+      this.$router.push({
+        name: ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
+        params: this.$route.params
+      });
+    },
     getPriceString,
     onFetchApplication() {
       this.loading = true;
@@ -184,7 +197,7 @@ export default defineComponent({
     onChangeType() {
       console.log('onChangeType', this.type);
       this.$router.push({
-        name: ROUTE_CONSOLE_SUBSCRIPTION_BUY,
+        name: ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
         params: this.$route.params
       });
     },
