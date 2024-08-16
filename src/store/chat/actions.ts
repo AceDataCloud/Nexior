@@ -103,7 +103,8 @@ export const getApplications = async ({
 
 export const getConversations = async ({
   commit,
-  state
+  state,
+  rootState
 }: ActionContext<IChatState, IRootState>): Promise<IChatConversation[]> => {
   return new Promise((resolve, reject) => {
     state.status.getConversations = Status.Request;
@@ -117,7 +118,7 @@ export const getConversations = async ({
     chatOperator
       .getConversations(
         {
-          applicationId: state.application?.id
+          userId: rootState.user?.id
         },
         {
           token

@@ -100,7 +100,7 @@ export const getService = async ({ commit, state }: ActionContext<IMidjourneySta
 };
 
 export const getTasks = async (
-  { commit, state }: ActionContext<IMidjourneyState, IRootState>,
+  { commit, state, rootState }: ActionContext<IMidjourneyState, IRootState>,
   { offset, limit }: { offset?: number; limit?: number }
 ): Promise<IMidjourneyTasksResponse> => {
   return new Promise((resolve, reject) => {
@@ -113,7 +113,7 @@ export const getTasks = async (
     midjourneyOperator
       .tasks(
         {
-          applicationId: state.application?.id,
+          userId: rootState?.user?.id,
           offset,
           limit
         },
