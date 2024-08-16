@@ -1,138 +1,138 @@
 {
   "button.detail": {
     "message": "Zobacz szczegóły",
-    "description": "Przycisk tekstowy do wyświetlania szczegółów historii poleceń na stronie."
+    "description": "Przycisk tekstowy do przeglądania szczegółów rekomendacji na stronie internetowej."
   },
   "button.withdrawal": {
-    "message": "Wypłata",
-    "description": "Przycisk tekstowy do wypłaty zysków z poleceń na stronie."
+    "message": "Wypłać",
+    "description": "Przycisk tekstowy do wypłaty dochodów z rekomendacji na stronie internetowej."
   },
   "button.query": {
     "message": "Zapytanie",
-    "description": "Przycisk tekstowy do sprawdzania zysków z poleceń na stronie."
+    "description": "Przycisk tekstowy do zapytania o dochody z rekomendacji na stronie internetowej."
   },
   "field.id": {
-    "message": "ID polecenia",
-    "description": "Unikalny identyfikator polecenia, które odnosi się do API usług strony."
+    "message": "ID rekomendacji",
+    "description": "Unikalny identyfikator dla dystrybucji, dystrybucja odnosi się do rekomendacji na stronie API."
   },
   "field.percentage": {
-    "message": "Procent zysków z polecenia",
-    "description": "Procent zysków uzyskanych z polecenia, obliczany na podstawie kwoty zamówienia."
+    "message": "Procent dochodów z rekomendacji",
+    "description": "Procent dochodów z rekomendacji, obliczany na podstawie kwoty zamówienia."
   },
   "field.price": {
     "message": "Kwota zamówienia",
-    "description": "Kwota zamówienia wykorzystywana do obliczenia zysków z polecenia."
+    "description": "Kwota zamówienia stosowana do obliczania dochodów z rekomendacji."
   },
   "field.reward": {
-    "message": "Nagroda za polecenie",
-    "description": "Zysk z polecenia, obliczany na podstawie kwoty zamówienia i procentu zysków z polecenia."
+    "message": "Nagroda za rekomendację",
+    "description": "Dochody z rekomendacji, obliczane na podstawie kwoty zamówienia i procentu dochodów z rekomendacji."
   },
   "field.userId": {
     "message": "ID użytkownika",
-    "description": "Unikalny identyfikator użytkownika, który odnosi się do użytkownika API usług strony."
+    "description": "Unikalny identyfikator użytkownika na stronie API."
   },
   "field.userEmail": {
-    "message": "E-mail użytkownika",
-    "description": "E-mail użytkownika."
+    "message": "Email użytkownika",
+    "description": "Email użytkownika"
   },
   "field.createdAt": {
-    "message": "Czas polecenia",
-    "description": "Czas utworzenia polecenia."
+    "message": "Czas rekomendacji",
+    "description": "Czas utworzenia rekomendacji."
   },
   "field.level": {
     "message": "Poziom",
-    "description": "Poziom polecenia wykorzystywany do obliczenia zysków z polecenia."
+    "description": "Poziom rekomendacji stosowany do obliczania dochodów z rekomendacji."
   },
   "field.threshold": {
-    "message": "Próg zysków z polecenia",
-    "description": "Próg wykorzystywany do wypłaty zysków z polecenia."
+    "message": "Próg dochodów z rekomendacji",
+    "description": "Próg dochodów z rekomendacji stosowany do wypłat."
   },
   "field.inviteeId": {
-    "message": "ID zaproszonego",
-    "description": "Unikalny identyfikator zapraszającego, czyli osoba, która zaprosiła nowego użytkownika do API usług strony."
+    "message": "ID zapraszającego",
+    "description": "Unikalny identyfikator zapraszającego, który zaprasza zapraszającego do strony API."
   },
   "field.isVerified": {
-    "message": "Zweryfikowany",
-    "description": "Flaga wskazująca, czy użytkownik polecenia przeszedł weryfikację na podstawie rzeczywistych informacji."
+    "message": "Zweryfikowane",
+    "description": "Flaga wskazująca, czy rekomendujący użytkownik przeszedł weryfikację na podstawie rzeczywistych informacji."
   },
   "message.deltaPriceForNextLevel": {
     "message": "Różnica z następnym poziomem",
     "description": "Różnica między aktualną kwotą zamówienia a progiem następnego poziomu."
   },
   "message.developingWithDrawal": {
-    "message": "Proszę dołączyć do Discord i skontaktować się z zespołem wsparcia w celu przetworzenia wypłaty, która zostanie pomniejszona o odpowiednie podatki dochodowe.",
-    "description": "Wiadomość wskazująca, że opcja wypłaty jest w fazie rozwoju."
+    "message": "Proszę dołączyć do obsługi klienta dotyczącej wypłat, wypłaty będą objęte podatkiem dochodowym.",
+    "description": "Wiadomość wskazująca, że funkcja wypłaty jest w trakcie rozwoju."
   },
   "message.technicalDetail": {
     "message": "Szczegóły techniczne",
-    "description": "Szczegóły techniczne dotyczące systemu poleceń."
+    "description": "Szczegóły techniczne dotyczące systemu rekomendacji."
   },
   "message.distributionQrDescription": {
-    "message": "Kod QR polecenia (taki sam jak treść linku)",
-    "description": "Opis kodu QR polecenia."
+    "message": "Kod QR rekomendacji (taki sam jak zawartość linku)",
+    "description": "Opis kodu QR rekomendacji."
   },
   "message.distributionLink": {
-    "message": "Link referencyjny",
-    "description": "Link referencyjny służący do powiązania klientów jako klientów podrzędnych."
+    "message": "Link rekomendacji",
+    "description": "Link rekomendacji do przypisania klienta jako klienta poniższego poziomu."
   },
   "message.updateSuccessfully": {
     "message": "Aktualizacja zakończona sukcesem",
-    "description": "Wiadomość wskazująca, że informacje o poleceniu zostały pomyślnie zaktualizowane."
+    "description": "Wiadomość wskazująca, że informacja o rekomendacji została pomyślnie zaktualizowana."
   },
   "message.distributionLinkDescription": {
-    "message": "Jeśli klient zarejestruje się na naszej stronie za pomocą tego linku lub kodu QR, klient zostanie na zawsze powiązany jako Twój klient podrzędny, a wszelkie wydatki klienta na tej platformie będą zwracane na Twoje konto zgodnie z aktualnym współczynnikiem dystrybucji.",
-    "description": "Opis linku referencyjnego."
+    "message": "Jeśli klient zarejestruje się na tej platformie poprzez ten link lub kod QR, klient zostanie na stałe przypisany jako Twój klient poniższego poziomu, a wszystkie zamówienia na zakupy tego klienta na tej platformie będą zwracane na Twoje konto na podstawie aktualnego wskaźnika dystrybucji.",
+    "description": "Opis linku rekomendacji."
   },
   "message.distributionLinkDescription2": {
-    "message": "Ten link zawiera Twoje ID użytkownika. Po otwarciu linku, Twoje ID użytkownika zostanie zapisane w plikach cookie przeglądarki klienta na siedem dni. W ciągu tych siedmiu dni, jeśli klient zarejestruje się na tej platformie skanując ten kod, Twoje ID użytkownika zostanie przesłane na serwer rejestracyjny razem z plikami cookie i klient może zostać powiązany jako Twój klient podrzędny.",
-    "description": "Opis linku referencyjnego."
+    "message": "Ten link zawiera Twój ID użytkownika. Po otwarciu linku, Twój ID użytkownika zostanie zapisany w przeglądarce klienta jako ciasteczko, ważne przez siedem dni. W ciągu siedmiu dni, jeśli klient zarejestruje się na tej platformie po zeskanowaniu tego kodu, Twój ID użytkownika zostanie przesłany razem z ciasteczkami na serwer rejestracyjny, a klient może być przypisany jako Twój klient poniższego poziomu.",
+    "description": "Opis linku rekomendacji."
   },
   "title.price": {
-    "message": "Całkowita kwota zamówienia z polecenia",
-    "description": "Całkowita kwota zamówienia z polecenia wykorzystywana do obliczenia zysków z polecenia."
+    "message": "Całkowita kwota zamówienia rekomendacji",
+    "description": "Całkowita kwota zamówienia rekomendacji stosowana do obliczania dochodów z rekomendacji."
   },
   "title.reward": {
-    "message": "Całkowita nagroda za polecenie",
-    "description": "Całkowita nagroda za polecenie, obliczana na podstawie kwoty zamówienia i procentu zysków z polecenia."
+    "message": "Całkowita nagroda za rekomendację",
+    "description": "Całkowita nagroda za rekomendację, obliczana na podstawie kwoty zamówienia i procentu dochodów z rekomendacji."
   },
   "title.level": {
-    "message": "Poziom polecenia",
-    "description": "Poziom polecenia, wykorzystywany do obliczenia zysków z polecenia."
+    "message": "Poziom rekomendacji",
+    "description": "Poziom rekomendacji stosowany do obliczania dochodów z rekomendacji."
   },
   "title.percentage": {
-    "message": "Procent zysków z polecenia",
-    "description": "Procent zysków z polecenia do obliczania zysków z polecenia."
+    "message": "Procent dochodów z rekomendacji",
+    "description": "Procent dochodów z rekomendacji stosowany do obliczania dochodów z rekomendacji."
   },
   "title.currentLevel": {
     "message": "Aktualny poziom",
-    "description": "Aktualny poziom polecenia używany do obliczania zysków z polecenia."
+    "description": "Aktualny poziom rekomendacji stosowany do obliczania dochodów z rekomendacji."
   },
   "title.nextLevel": {
     "message": "Następny poziom",
-    "description": "Następny poziom polecenia do obliczeń zysków z polecenia."
+    "description": "Następny poziom rekomendacji stosowany do obliczania dochodów z rekomendacji."
   },
   "title.currentPercentage": {
-    "message": "Aktualny procent zysków z polecenia",
-    "description": "Aktualny procent zysków z polecenia wykorzystywany do obliczeń zysków z polecenia."
+    "message": "Aktualny procent dochodów z rekomendacji",
+    "description": "Aktualny procent dochodów z rekomendacji stosowany do obliczania dochodów z rekomendacji."
   },
   "title.nextPercentage": {
-    "message": "Następny poziom procentu zysków z polecenia",
-    "description": "Procent zysków z polecenia następnego poziomu do obliczeń."
+    "message": "Procent dochodów z rekomendacji następnego poziomu",
+    "description": "Procent dochodów z rekomendacji na następnym poziomie, stosowany do obliczania dochodów z rekomendacji."
   },
   "title.levelInfo": {
     "message": "Informacje o poziomie",
-    "description": "Informacje na temat poziomu polecenia, wykorzystywane do obliczania zysków z polecenia."
+    "description": "Informacje o poziomie rekomendacji stosowane do obliczania dochodów z rekomendacji."
   },
   "title.distributionLink": {
-    "message": "Link referencyjny",
-    "description": "Link referencyjny do powiązania klientów jako klientów podrzędnych."
+    "message": "Link rekomendacji",
+    "description": "Link rekomendacji do przypisania klienta jako klienta poniższego poziomu."
   },
   "title.inviteesCount": {
-    "message": "Liczba zaproszonych",
-    "description": "Całkowita liczba zaproszonych do obliczenia korzyści z poleceń."
+    "message": "Całkowita liczba zaproszonych",
+    "description": "Całkowita liczba zaproszonych, używana do obliczania zysków z poleceń."
   },
   "title.manageDistributionStatus": {
     "message": "Zarządzanie dystrybucją",
-    "description": "Zarządzanie stanem poleceń."
+    "description": "Zarządzanie stanem polecenia."
   }
 }
