@@ -23,6 +23,7 @@
       </el-tooltip>
     </el-upload>
     <span
+      v-show="!disabled"
       :class="{
         btn: true,
         'btn-send': true,
@@ -31,6 +32,17 @@
       @click="onSubmit"
     >
       <font-awesome-icon icon="fa-solid fa-location-arrow" class="icon icon-send" />
+    </span>
+    <span
+      v-show="disabled"
+      :class="{
+        btn: true,
+        'btn-stop': true,
+        disabled: !disabled
+      }"
+      @click="onStop"
+    >
+      <font-awesome-icon icon="fa-solid fa-stop-circle" class="icon icon-stop" />
     </span>
     <!-- add this textarea -->
     <textarea
@@ -80,7 +92,7 @@ export default defineComponent({
       required: true
     }
   },
-  emits: ['update:question', 'update:references', 'submit'],
+  emits: ['update:question', 'update:references', 'submit', 'stop'],
   data() {
     return {
       inputHeight: '35px', //add inputHeight
@@ -142,6 +154,9 @@ export default defineComponent({
         return;
       }
       this.$emit('submit');
+    },
+    onStop() {
+      this.$emit('stop');
     },
     onExceed() {
       ElMessage.warning(this.$t('chat.message.uploadReferencesExceed'));
@@ -242,6 +257,19 @@ textarea.input:focus {
         cursor: not-allowed;
       }
       .icon-send {
+        font-size: 16px;
+        color: var(--el-text-color-primary);
+      }
+    }
+    &.btn-stop {
+      right: 15px; // Adjust position if needed
+      &.disabled {
+        .icon-stop {
+          color: var(--el-text-color-disabled);
+        }
+        cursor: not-allowed;
+      }
+      .icon-stop {
         font-size: 16px;
         color: var(--el-text-color-primary);
       }

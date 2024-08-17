@@ -35,6 +35,7 @@
           @update:question="question = $event"
           @update:references="references = $event"
           @submit="onSubmit"
+          @stop="onStop"
         />
       </div>
     </template>
@@ -64,6 +65,7 @@ export interface IData {
   references: string[];
   answering: boolean;
   messages: IChatMessage[];
+  canceler: AbortController | undefined;
 }
 
 export default defineComponent({
@@ -82,6 +84,7 @@ export default defineComponent({
       question: '',
       references: [],
       answering: false,
+      canceler: undefined,
       messages:
         this.$store.state.chat.conversations?.find(
           (conversation: IChatConversation) => conversation.id === this.$route.params.id?.toString()
@@ -161,6 +164,10 @@ export default defineComponent({
       this.question = question;
       this.onSubmit();
     },
+    async onStop() {
+      console.log(this.canceler);
+      this.canceler?.abort();
+    },
     async onRestart(targetMessage: IChatMessage) {
       // 1. Clear the following message
       const targetIndex = this.messages.findIndex((message) => message === targetMessage);
@@ -190,6 +197,7 @@ export default defineComponent({
         return;
       }
       let conversationId = this.conversationId;
+      this.canceler = new AbortController();
       chatOperator
         .updateConversation(
           {
@@ -198,7 +206,8 @@ export default defineComponent({
             messages: update_messages
           },
           {
-            token
+            token,
+            signal: this.canceler.signal
           }
         )
         .then(async () => {
@@ -392,6 +401,7 @@ export default defineComponent({
       this.onScrollDown();
       // request server to get answer
       this.answering = true;
+      this.canceler = new AbortController();
       chatOperator
         .chatConversation(
           {
@@ -412,7 +422,8 @@ export default defineComponent({
               };
               conversationId = response?.id;
               this.onScrollDown();
-            }
+            },
+            signal: this.canceler.signal
           }
         )
         .then(async () => {
@@ -422,7 +433,6 @@ export default defineComponent({
             id: conversationId,
             messages: this.messages
           });
-          console.log('messages', JSON.stringify(this.messages));
           this.answering = false;
           if (!this.conversationId) {
             await this.$router.push({
