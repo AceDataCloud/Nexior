@@ -35,12 +35,12 @@ export default defineComponent({
   computed: {
     prompt: {
       get() {
-        return this.$store.state.suno?.config?.prompt;
+        return this.$store.state.luma?.config?.prompt;
       },
       set(val) {
         console.debug('set prompt', val);
-        this.$store.commit('suno/setConfig', {
-          ...this.$store.state.suno?.config,
+        this.$store.commit('luma/setConfig', {
+          ...this.$store.state.luma?.config,
           prompt: val
         });
       }

@@ -199,8 +199,12 @@
     "message": "继续生成",
     "description": "继续生成按钮文本"
   },
-  "button.uploadQr": {
-    "message": "上传二维码",
+  "button.uploadStartImageUrl": {
+    "message": "上传图片",
+    "description": "上传二维码的按钮文本"
+  },
+  "button.uploadEndImageUrl": {
+    "message": "上传图片",
     "description": "上传二维码的按钮文本"
   },
   "preset.sunset": {
@@ -342,6 +346,26 @@
   "message.generateFailed": {
     "message": "生成图像失败",
     "description": "图像生成失败时的消息"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "上传首帧图片数量超过限制",
+    "description": "上传首帧图片数量超过限制时的错误信息"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "上传尾帧图片数量超过限制",
+    "description": "上传首帧图片数量超过限制时的错误信息"
+  },
+  "message.uploadStartImageError": {
+    "message": "上传首帧图片失败",
+    "description": "上传首帧图片失败时的错误信息"
+  },
+  "message.uploadEndImageError": {
+    "message": "上传尾帧图片失败",
+    "description": "上传尾帧图片失败时的错误信息"
+  },
+  "message.uploadDocumentsError": {
+    "message": "上传文档失败",
+    "description": "上传文档失败时的错误信息"
   },
   "message.noOperations": {
     "message": "没有可用操作",
