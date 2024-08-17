@@ -50,9 +50,19 @@ export const getApplications = async ({
         if (application && application?.remaining_amount) {
           console.debug('set application with Period', application);
           commit('setApplication', application);
+          const credential = application?.credentials?.find(
+            (credential) => credential?.host === window.location.origin
+          );
+          console.debug('set credential with Period', application);
+          commit('setCredential', credential);
         } else if (application2) {
           console.debug('set application with Usage', application2);
           commit('setApplication', application2);
+          const credential = application2?.credentials?.find(
+            (credential) => credential?.host === window.location.origin
+          );
+          console.debug('set credential with Usage', application);
+          commit('setCredential', credential);
         }
         resolve(response.data.items);
         console.debug('save applications success', response.data.items);

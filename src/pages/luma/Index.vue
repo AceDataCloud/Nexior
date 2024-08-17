@@ -53,7 +53,7 @@ export default defineComponent({
   },
   computed: {
     loading() {
-      return this.$store.state.luma?.status?.getApplication === Status.Request;
+      return this.$store.state.luma?.status?.getApplications === Status.Request;
     },
     service() {
       return this.$store.state.luma.service;
@@ -65,10 +65,10 @@ export default defineComponent({
       return this.$store.state.luma.config;
     },
     initializing() {
-      return this.$store.state.luma.status.getApplication === Status.Request;
+      return this.$store.state.luma.status.getApplications === Status.Request;
     },
     needApply() {
-      return this.$store.state.luma.status.getApplication === Status.Success && !this.application;
+      return this.$store.state.luma.status.getApplications === Status.Success && !this.application;
     },
     application() {
       return this.$store.state.luma.application;
@@ -96,7 +96,7 @@ export default defineComponent({
     },
     async onGetApplication() {
       console.debug('start onGetApplication');
-      await this.$store.dispatch('luma/getApplication');
+      await this.$store.dispatch('luma/getApplications');
       console.debug('end onGetApplication');
       await this.onGetTasks();
     },

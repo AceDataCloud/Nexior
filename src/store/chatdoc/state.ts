@@ -9,7 +9,7 @@ export default (): IChatdocState => {
     credential: undefined,
     status: {
       getService: Status.None,
-      getApplication: Status.None,
+      getApplications: Status.None,
       getRepositories: Status.None
     }
   };
