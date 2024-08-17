@@ -56,14 +56,17 @@
       </div>
       <div class="operations">
         <copy-to-clipboard
-          v-if="!Array.isArray(message.content) && message.state === messageState.FINISHED"
+          v-if="
+            !Array.isArray(message.content) &&
+            (message.state === messageState.FINISHED || message.state === messageState.FAILED)
+          "
           :content="message.content!"
           class="btn-copy"
         />
         <restart-to-generate
           v-if="
             !Array.isArray(message.content) &&
-            message.state === messageState.FINISHED &&
+            (message.state === messageState.FINISHED || message.state === messageState.FAILED) &&
             message.role === 'assistant' &&
             message === messages[messages.length - 1]
           "
@@ -170,7 +173,7 @@ export default defineComponent({
         case ERROR_CODE_NOT_APPLIED:
           return this.$t('chat.message.errorNotApplied');
         case ERROR_CODE_CANCELED:
-          return this.$t('chat.message.errorCancelled');
+          return undefined; // 不显示错误框
         case ERROR_CODE_UNKNOWN:
         default:
           return this.$t('chat.message.errorUnknown');
