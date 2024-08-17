@@ -15,7 +15,7 @@
             :application="application"
             :need-apply="needApply"
             :service="service"
-            @refresh="$store.dispatch('chatdoc/getApplication')"
+            @refresh="$store.dispatch('chatdoc/getApplications')"
           />
         </div>
         <el-row class="repositories" :gutter="15">
@@ -93,7 +93,7 @@ export default defineComponent({
       return this.$store.state.chatdoc.repositories;
     },
     needApply() {
-      return this.$store.state.chatdoc.status.getApplication === Status.Success && !this.application;
+      return this.$store.state.chatdoc.status.getApplications === Status.Success && !this.application;
     },
     application() {
       return this.$store.state.chatdoc.application;
@@ -102,7 +102,7 @@ export default defineComponent({
       return this.$store.state.chatdoc.service;
     },
     initializing() {
-      return this.$store.state.chatdoc.status.getApplication === Status.Request;
+      return this.$store.state.chatdoc.status.getApplications === Status.Request;
     }
   },
   async mounted() {},

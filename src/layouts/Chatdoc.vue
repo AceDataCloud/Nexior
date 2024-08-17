@@ -101,7 +101,7 @@ export default defineComponent({
       await this.$store.dispatch('chatdoc/getService');
     },
     async onGetApplications() {
-      await this.$store.dispatch('chatdoc/getApplication');
+      await this.$store.dispatch('chatdoc/getApplications');
     },
     async onGetRepositories() {
       await this.$store.dispatch('chatdoc/getRepositories');

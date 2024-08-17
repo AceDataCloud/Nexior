@@ -60,7 +60,7 @@ export default defineComponent({
   },
   computed: {
     loading() {
-      return this.$store.state.suno?.status?.getApplication === Status.Request;
+      return this.$store.state.suno?.status?.getApplications === Status.Request;
     },
     service() {
       return this.$store.state.suno.service;

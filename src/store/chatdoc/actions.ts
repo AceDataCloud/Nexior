@@ -9,7 +9,8 @@ import {
   IChatdocRepository,
   ICredential,
   IService,
-  Status
+  Status,
+  IApplicationType
 } from '@/models';
 import { chatdocOperator, applicationOperator, serviceOperator } from '@/operators';
 import { CHATDOC_SERVICE_ID } from '@/constants';
@@ -32,29 +33,49 @@ export const setRepository = async ({ commit }: any, payload: { repository: ICha
   commit('setRepository', payload);
 };
 
-export const getApplication = async ({
+export const getApplications = async ({
   commit,
-  rootState,
-  state
-}: ActionContext<IChatdocState, IRootState>): Promise<IApplication> => {
-  return new Promise(async (resolve, reject) => {
-    state.status.getApplication = Status.Request;
+  state,
+  rootState
+}: ActionContext<IChatdocState, IRootState>): Promise<IApplication[]> => {
+  console.debug('start to get applications for chatdoc');
+  return new Promise((resolve, reject) => {
+    state.status.getApplications = Status.Request;
     applicationOperator
       .getAll({
         user_id: rootState?.user?.id,
         service_id: CHATDOC_SERVICE_ID
       })
       .then((response) => {
-        state.status.getApplication = Status.Success;
-        commit('setApplication', response.data.items[0]);
-        const credential = response.data.items?.[0]?.credentials?.find(
-          (credential) => credential?.host === window.location.origin
-        );
-        commit('setCredential', credential);
-        resolve(response.data.items[0]);
+        console.debug('get applications success', response?.data);
+        state.status.getApplications = Status.Success;
+        commit('setApplications', response.data.items);
+        // check if there is any application with 'Period' type
+        const application = response.data.items?.find((application) => application?.type === IApplicationType.PERIOD);
+        const application2 = response.data.items?.find((application) => application?.type === IApplicationType.USAGE);
+        if (application && application?.remaining_amount) {
+          console.debug('set application with Period', application);
+          commit('setApplication', application);
+          const credential = application?.credentials?.find(
+            (credential) => credential?.host === window.location.origin
+          );
+          console.debug('set credential with Period', application);
+          commit('setCredential', credential);
+        } else if (application2) {
+          console.debug('set application with Usage', application2);
+          commit('setApplication', application2);
+          const credential = application2?.credentials?.find(
+            (credential) => credential?.host === window.location.origin
+          );
+          console.debug('set credential with Usage', application);
+          commit('setCredential', credential);
+        }
+        resolve(response.data.items);
+        console.debug('save applications success', response.data.items);
       })
       .catch((error) => {
-        state.status.getApplication = Status.Error;
+        console.error('get applications error', error);
+        state.status.getApplications = Status.Error;
         reject(error);
       });
   });
@@ -301,7 +322,7 @@ export default {
   getService,
   createRepository,
   setApplication,
-  getApplication,
+  getApplications,
   getRepositories,
   setCredential,
   deleteRepository,

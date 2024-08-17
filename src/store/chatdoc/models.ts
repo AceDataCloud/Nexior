@@ -7,7 +7,7 @@ export interface IChatdocState {
   credential: ICredential | undefined;
   status: {
     getService: Status;
-    getApplication: Status;
+    getApplications: Status;
     getRepositories: Status;
   };
 }

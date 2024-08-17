@@ -11,7 +11,7 @@
               :application="application"
               :need-apply="needApply"
               :service="service"
-              @refresh="$store.dispatch('chatdoc/getApplication')"
+              @refresh="$store.dispatch('chatdoc/getApplications')"
             />
           </div>
           <div class="dialogue">

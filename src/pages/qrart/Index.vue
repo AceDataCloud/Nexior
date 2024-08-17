@@ -55,7 +55,7 @@ export default defineComponent({
   },
   computed: {
     loading() {
-      return this.$store.state.qrart?.status?.getApplication === Status.Request;
+      return this.$store.state.qrart?.status?.getApplications === Status.Request;
     },
     service() {
       return this.$store.state.qrart.service;

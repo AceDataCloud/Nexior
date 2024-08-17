@@ -51,9 +51,19 @@ export const getApplications = async ({
         if (application && application?.remaining_amount) {
           console.debug('set application with Period', application);
           commit('setApplication', application);
+          const credential = application?.credentials?.find(
+            (credential) => credential?.host === window.location.origin
+          );
+          console.debug('set credential with Period', application);
+          commit('setCredential', credential);
         } else if (application2) {
           console.debug('set application with Usage', application2);
           commit('setApplication', application2);
+          const credential = application2?.credentials?.find(
+            (credential) => credential?.host === window.location.origin
+          );
+          console.debug('set credential with Usage', application);
+          commit('setCredential', credential);
         }
         resolve(response.data.items);
         console.debug('save applications success', response.data.items);
@@ -101,7 +111,7 @@ export const getService = async ({ commit, state }: ActionContext<ILumaState, IR
 };
 
 export const getTasks = async (
-  { commit, state }: ActionContext<ILumaState, IRootState>,
+  { commit, state, rootState }: ActionContext<ILumaState, IRootState>,
   { offset, limit }: { offset?: number; limit?: number }
 ): Promise<ILumaTask[]> => {
   return new Promise((resolve, reject) => {
@@ -114,7 +124,7 @@ export const getTasks = async (
     lumaOperator
       .tasks(
         {
-          applicationId: state.application?.id
+          userId: rootState?.user?.id
         },
         {
           token
