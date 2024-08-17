@@ -58,6 +58,7 @@ export interface IChatConversation {
 export interface IChatConversationOptions {
   stream?: (response: IChatConversationResponse) => void;
   token: string;
+  signal?: AbortController['signal'];
 }
 
 export interface IChatConversationRequest {

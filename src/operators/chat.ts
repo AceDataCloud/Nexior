@@ -21,6 +21,7 @@ class ChatOperator {
         'content-type': 'application/json'
       },
       baseURL: BASE_URL_API,
+      signal: options.signal,
       responseType: 'stream',
       onDownloadProgress: ({ event }: AxiosProgressEvent) => {
         const response = event.target.response;
@@ -134,7 +135,8 @@ class ChatOperator {
           authorization: `Bearer ${options.token}`,
           'x-record-exempt': 'true'
         },
-        baseURL: BASE_URL_API
+        baseURL: BASE_URL_API,
+        signal: options.signal
       }
     );
   }

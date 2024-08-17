@@ -56,14 +56,17 @@
       </div>
       <div class="operations">
         <copy-to-clipboard
-          v-if="!Array.isArray(message.content) && message.state === messageState.FINISHED"
+          v-if="
+            !Array.isArray(message.content) &&
+            (message.state === messageState.FINISHED || message.state === messageState.FAILED)
+          "
           :content="message.content!"
           class="btn-copy"
         />
         <restart-to-generate
           v-if="
             !Array.isArray(message.content) &&
-            message.state === messageState.FINISHED &&
+            (message.state === messageState.FINISHED || message.state === messageState.FAILED) &&
             message.role === 'assistant' &&
             message === messages[messages.length - 1]
           "
@@ -99,6 +102,7 @@ import {
   ERROR_CODE_TOO_MANY_REQUESTS,
   ERROR_CODE_UNKNOWN,
   ERROR_CODE_USED_UP,
+  ERROR_CODE_CANCELED,
   ROLE_ASSISTANT
 } from '@/constants';
 import { ROUTE_CONSOLE_APPLICATION_EXTRA } from '@/router';
@@ -168,6 +172,8 @@ export default defineComponent({
           return this.$t('chat.message.errorContentTooLarge');
         case ERROR_CODE_NOT_APPLIED:
           return this.$t('chat.message.errorNotApplied');
+        case ERROR_CODE_CANCELED:
+          return undefined; // 不显示错误框
         case ERROR_CODE_UNKNOWN:
         default:
           return this.$t('chat.message.errorUnknown');
