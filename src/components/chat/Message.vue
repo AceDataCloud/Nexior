@@ -99,6 +99,7 @@ import {
   ERROR_CODE_TOO_MANY_REQUESTS,
   ERROR_CODE_UNKNOWN,
   ERROR_CODE_USED_UP,
+  ERROR_CODE_CANCELED,
   ROLE_ASSISTANT
 } from '@/constants';
 import { ROUTE_CONSOLE_APPLICATION_EXTRA } from '@/router';
@@ -168,6 +169,8 @@ export default defineComponent({
           return this.$t('chat.message.errorContentTooLarge');
         case ERROR_CODE_NOT_APPLIED:
           return this.$t('chat.message.errorNotApplied');
+        case ERROR_CODE_CANCELED:
+          return this.$t('chat.message.errorCancelled');
         case ERROR_CODE_UNKNOWN:
         default:
           return this.$t('chat.message.errorUnknown');

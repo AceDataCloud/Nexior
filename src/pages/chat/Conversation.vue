@@ -165,8 +165,10 @@ export default defineComponent({
       this.onSubmit();
     },
     async onStop() {
-      console.log(this.canceler);
-      this.canceler?.abort();
+      if (this.canceler) {
+        this.canceler.abort();
+        this.answering = false; // 更新状态
+      }
     },
     async onRestart(targetMessage: IChatMessage) {
       // 1. Clear the following message
