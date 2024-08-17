@@ -44,7 +44,7 @@ export const getApplications = async ({
       .then((response) => {
         console.debug('get applications success', response?.data);
         state.status.getApplications = Status.Success;
-        commit('setApplications', response.data.items);
+        commit('setApplication', response.data.items);
         // check if there is any application with 'Period' type
         const application = response.data.items?.find((application) => application?.type === IApplicationType.PERIOD);
         const application2 = response.data.items?.find((application) => application?.type === IApplicationType.USAGE);
