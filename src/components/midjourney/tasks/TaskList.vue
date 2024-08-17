@@ -61,6 +61,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .description {
+  text-align: center;
   font-size: 14px;
   color: var(--el-text-color-secondary);
 }
