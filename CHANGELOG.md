@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sat, 17 Aug 2024 15:08:37 GMT and should not be manually modified.
+This log was last generated on Sun, 18 Aug 2024 07:18:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.11.0
+
+Sun, 18 Aug 2024 07:18:18 GMT
+
+### Minor changes
+
+- add luma extend and videoplayer (1348977728@qq.com)
 
 ## 2.10.4
 
