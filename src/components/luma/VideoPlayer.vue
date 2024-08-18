@@ -34,7 +34,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .video {
-  max-width: 100%; /* 使播放器自适应父容器宽度 */
-  height: 500px; /* 设置播放器高度 */
+  max-width: 100%;
+  height: 450px;
 }
 </style>

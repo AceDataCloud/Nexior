@@ -23,7 +23,7 @@
         </div>
         <div v-if="modelValue?.response" :class="{ operations: true, 'mt-2': true }">
           <el-tooltip class="box-item" effect="dark" :content="$t('luma.message.extendVideo')" placement="top-start">
-            <el-button type="info" size="small" class="btn-action" @click="onExtend(modelValue?.response.video_id)">
+            <el-button type="info" size="small" class="btn-action" @click="onExtend($event, modelValue?.response)">
               {{ $t('luma.button.extend') }}
             </el-button>
           </el-tooltip>
@@ -86,7 +86,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElImage, ElAlert, ElButton, ElTooltip } from 'element-plus';
-import { ILumaTask } from '@/models';
+import { ILumaTask, ILumaGenerateResponse } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '../VideoPlayer.vue';
@@ -116,8 +116,17 @@ export default defineComponent({
     }
   },
   methods: {
-    onExtend(url: string) {
-      window.open(url, '_blank');
+    onExtend(event: MouseEvent, response: ILumaGenerateResponse) {
+      event.stopPropagation();
+      console.log('on extend');
+      // download url here
+      console.debug('set config', response);
+      this.$store.commit('luma/setConfig', {
+        ...this.$store.state.luma?.config,
+        video_id: response.video_id,
+        prompt: response.prompt,
+        action: 'extend'
+      });
     },
     onReload(event: Event) {
       const target = event.target as HTMLImageElement;

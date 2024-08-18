@@ -1,1 +1,1 @@
-export default ['luma.config', 'luma.credential', 'luma.application', 'luma.tasks'];
+export default ['luma.credential', 'luma.application', 'luma.tasks'];
