@@ -3,7 +3,6 @@
     <vue-plyr :options="options" class="video">
       <video controls crossorigin playsinline :data-poster="modelValue?.response?.thumbnail_url">
         <source size="1080" :src="modelValue?.response?.video_url" type="video/mp4" />
-        <a download="" href="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4"> Download </a>
       </video>
     </vue-plyr>
   </div>
@@ -11,6 +10,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+// @ts-ignore
 import VuePlyr from '@skjnldsv/vue-plyr';
 // @ts-ignore
 import { ILumaTask } from '@/models';
