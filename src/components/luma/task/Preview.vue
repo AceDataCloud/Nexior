@@ -19,24 +19,14 @@
       <!-- Display success message -->
       <div v-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">
         <div class="image-wrapper">
-          <img
-            v-if="modelValue?.response?.thumbnail_url"
-            v-loading="!modelValue?.response?.thumbnail_url"
-            :src="modelValue?.response?.thumbnail_url"
-            class="image mb-3"
-          />
-          <div v-if="modelValue?.response?.video_url" class="play-icon">
-            <font-awesome-icon icon="fa-solid fa-play-circle" />
-          </div>
-          <el-button
-            v-if="modelValue?.response?.video_url"
-            type="info"
-            round
-            class="btn-raw"
-            @click="onOpenUrl(modelValue?.response?.video_url)"
-          >
-            {{ $t('common.button.seeRawVideo') }}
-          </el-button>
+          <VideoPlayer :model-value="modelValue" />
+        </div>
+        <div v-if="modelValue?.response" :class="{ operations: true, 'mt-2': true }">
+          <el-tooltip class="box-item" effect="dark" :content="$t('luma.message.extendVideo')" placement="top-start">
+            <el-button type="info" size="small" class="btn-action" @click="onExtend(modelValue?.response.video_id)">
+              {{ $t('luma.button.extend') }}
+            </el-button>
+          </el-tooltip>
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p class="description">
@@ -95,11 +85,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElAlert, ElButton } from 'element-plus';
+import { ElImage, ElAlert, ElButton, ElTooltip } from 'element-plus';
 import { ILumaTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-
+import VideoPlayer from '../VideoPlayer.vue';
 export default defineComponent({
   name: 'TaskPreview',
   components: {
@@ -107,6 +97,8 @@ export default defineComponent({
     CopyToClipboard,
     FontAwesomeIcon,
     ElAlert,
+    VideoPlayer,
+    ElTooltip,
     ElButton
   },
   props: {
@@ -124,7 +116,7 @@ export default defineComponent({
     }
   },
   methods: {
-    onOpenLink(url: string) {
+    onExtend(url: string) {
       window.open(url, '_blank');
     },
     onReload(event: Event) {
@@ -146,7 +138,7 @@ export default defineComponent({
       // set the new url
       target.src = url.toString();
     },
-    onOpenUrl(url: string) {
+    onOpenVideo(url: string) {
       window.open(url, '_blank');
     },
     onDownload(url: string) {
@@ -261,9 +253,31 @@ $left-width: 70px;
         .btn-raw {
           display: block;
         }
+
         .play-icon {
           display: none;
         }
+      }
+    }
+    .operations {
+      display: flex;
+      justify-content: left;
+      flex-direction: row;
+      width: 100%;
+      align-items: baseline;
+      flex-wrap: wrap;
+      overflow: hidden;
+      text-align: center;
+      color: var(--el-text-color-regular);
+      font-size: 14px;
+      overflow-y: scroll;
+
+      &.full {
+        height: 70px;
+      }
+
+      .btn-action {
+        margin-bottom: 10px;
       }
     }
   }

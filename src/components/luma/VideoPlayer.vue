@@ -1,0 +1,40 @@
+<template>
+  <div>
+    <vue-plyr :options="options" class="video">
+      <video controls crossorigin playsinline :data-poster="modelValue?.response?.thumbnail_url">
+        <source size="1080" :src="modelValue?.response?.video_url" type="video/mp4" />
+        <a download="" href="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4"> Download </a>
+      </video>
+    </vue-plyr>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import VuePlyr from '@skjnldsv/vue-plyr';
+// @ts-ignore
+import { ILumaTask } from '@/models';
+import '@skjnldsv/vue-plyr/dist/vue-plyr.css';
+export default defineComponent({
+  name: 'VideoPlayer',
+  components: { VuePlyr },
+  props: {
+    modelValue: {
+      type: Object as () => ILumaTask | undefined,
+      required: true
+    }
+  },
+  data() {
+    return {
+      options: { quality: { default: '1080p' } }
+    };
+  }
+});
+</script>
+
+<style lang="scss" scoped>
+.video {
+  max-width: 100%; /* 使播放器自适应父容器宽度 */
+  height: 500px; /* 设置播放器高度 */
+}
+</style>
