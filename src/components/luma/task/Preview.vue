@@ -1,7 +1,7 @@
 <template>
   <div class="preview">
     <div class="left">
-      <el-image src="https://cdn.acedata.cloud/bcml67.png" class="avatar" />
+      <el-image src="https://cdn.acedata.cloud/yu04pc.png" class="avatar" />
     </div>
     <div class="main">
       <div class="bot">
@@ -125,7 +125,9 @@ export default defineComponent({
         ...this.$store.state.luma?.config,
         video_id: response.video_id,
         prompt: response.prompt,
-        action: 'extend'
+        action: 'extend',
+        thumbnail_url: response.thumbnail_url,
+        video_url: response.video_url
       });
     },
     onReload(event: Event) {

@@ -1,8 +1,9 @@
 <template>
   <div class="panel">
     <div class="config">
+      <extend-from-input v-if="config?.action === 'extend'" class="mb-4" />
       <prompt-input class="mb-4" />
-      <start-image-url-input class="mb-4" />
+      <start-image-url-input v-if="!config?.action === 'extend'" class="mb-4" />
       <end-image-url-input class="mb-4" />
       <enhancement-selector class="mb-4" />
       <loop-selector class="mb-4" />
@@ -29,6 +30,7 @@ import LoopSelector from './config/LoopSelector.vue';
 import EndImageUrlInput from './config/EndImageUrlInput.vue';
 import StartImageUrlInput from './config/StartImageUrlInput.vue';
 import PromptInput from './config/PromptInput.vue';
+import ExtendFromInput from './config/ExtendFromInput.vue';
 export default defineComponent({
   name: 'PresetPanel',
   components: {
@@ -38,7 +40,8 @@ export default defineComponent({
     EnhancementSelector,
     ElButton,
     FontAwesomeIcon,
-    PromptInput
+    PromptInput,
+    ExtendFromInput
   },
   emits: ['generate'],
   computed: {

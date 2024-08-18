@@ -7,6 +7,7 @@ export interface ILumaConfig {
   end_image_url?: string;
   enhancement?: boolean;
   loop?: boolean;
+  thumbnail_url?: string;
 }
 
 export interface ILumaGenerateRequest {
