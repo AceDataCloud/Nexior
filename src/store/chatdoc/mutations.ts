@@ -13,6 +13,9 @@ export const setService = (state: IChatdocState, payload: IService): void => {
 export const setApplication = (state: IChatdocState, payload: IApplication): void => {
   state.application = payload;
 };
+export const setApplications = (state: IChatdocState, payload: IApplication[]): void => {
+  state.applications = payload;
+};
 
 export const setRepositories = (state: IChatdocState, payload: IChatdocRepository[]): void => {
   const currentRepositories = state.repositories;
@@ -63,6 +66,7 @@ export const setRepository = (state: IChatdocState, payload: IChatdocRepository)
 export default {
   setService,
   setApplication,
+  setApplications,
   setRepositories,
   setRepository,
   setCredential,

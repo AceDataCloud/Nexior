@@ -3,6 +3,7 @@ import { IApplication, IChatdocRepository, ICredential, IService, Status } from 
 export interface IChatdocState {
   service: IService | undefined;
   application: IApplication | undefined;
+  applications: IApplication[] | undefined;
   repositories: IChatdocRepository[] | undefined;
   credential: ICredential | undefined;
   status: {

@@ -3,6 +3,7 @@ import { ILumaConfig, ILumaTask } from '@/models';
 
 export interface ILumaState {
   application: IApplication | undefined;
+  applications: IApplication[] | undefined;
   service: IService | undefined;
   credential: ICredential | undefined;
   config: ILumaConfig | undefined;

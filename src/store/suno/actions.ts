@@ -42,8 +42,8 @@ export const getApplications = async ({
         service_id: SUNO_SERVICE_ID
       })
       .then((response) => {
+        console.debug('get applications success', response?.data);
         state.status.getApplications = Status.Success;
-        commit('setApplications', response.data.items);
         // check if there is any application with 'Period' type
         const application = response.data.items?.find((application) => application?.type === IApplicationType.PERIOD);
         const application2 = response.data.items?.find((application) => application?.type === IApplicationType.USAGE);
@@ -63,9 +63,12 @@ export const getApplications = async ({
           );
           console.debug('set credential with Usage', application);
           commit('setCredential', credential);
+        } else {
+          console.debug('set application with null', response.data.items?.[0]);
+          commit('setApplication', response.data.items?.[0]);
         }
         resolve(response.data.items);
-        console.debug('save applications success', response.data.items);
+        console.debug('save application success', response.data.items[0]);
       })
       .catch((error) => {
         state.status.getApplications = Status.Error;

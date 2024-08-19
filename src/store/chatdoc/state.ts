@@ -5,6 +5,7 @@ export default (): IChatdocState => {
   return {
     service: undefined,
     application: undefined,
+    applications: undefined,
     repositories: undefined,
     credential: undefined,
     status: {

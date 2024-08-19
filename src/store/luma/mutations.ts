@@ -21,6 +21,10 @@ export const setApplication = (state: ILumaState, payload: IApplication): void =
   state.application = payload;
 };
 
+export const setApplications = (state: ILumaState, payload: IApplication[]): void => {
+  state.applications = payload;
+};
+
 export const setConfig = (state: ILumaState, payload: ILumaConfig): void => {
   state.config = payload;
 };
@@ -56,6 +60,7 @@ export const setTasks = (state: ILumaState, payload: any): void => {
 export default {
   setTasks,
   setApplication,
+  setApplications,
   setConfig,
   setCredential,
   setService,

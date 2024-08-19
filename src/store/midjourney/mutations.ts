@@ -11,10 +11,6 @@ export const resetAll = (state: IMidjourneyState): void => {
   };
 };
 
-export const setApplications = (state: IMidjourneyState, payload: IApplication[]): void => {
-  state.applications = payload;
-};
-
 export const setService = (state: IMidjourneyState, payload: IService): void => {
   state.service = payload;
 };
@@ -25,6 +21,10 @@ export const setCredential = (state: IMidjourneyState, payload: ICredential): vo
 
 export const setApplication = (state: IMidjourneyState, payload: IApplication): void => {
   state.application = payload;
+};
+
+export const setApplications = (state: IMidjourneyState, payload: IApplication[]): void => {
+  state.applications = payload;
 };
 
 export const setPreset = (state: IMidjourneyState, payload: IMidjourneyPreset): void => {
