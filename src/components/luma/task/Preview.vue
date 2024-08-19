@@ -14,6 +14,11 @@
         <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
           {{ modelValue?.request?.prompt }}
           <span v-if="!modelValue?.response"> - ({{ $t('luma.status.pending') }}) </span>
+          <span
+            v-if="modelValue?.response?.data?.state === 'processing' || modelValue?.response?.data?.state === 'pending'"
+          >
+            - ({{ $t('luma.status.processing') }})
+          </span>
         </p>
       </div>
       <!-- Display success message -->
@@ -21,7 +26,7 @@
         <div class="image-wrapper">
           <VideoPlayer :model-value="modelValue" />
         </div>
-        <div v-if="modelValue?.response" :class="{ operations: true, 'mt-2': true }">
+        <div v-if="modelValue?.response && !config?.custom" :class="{ operations: true, 'mt-2': true }">
           <el-tooltip class="box-item" effect="dark" :content="$t('luma.message.extendVideo')" placement="top-start">
             <el-button type="info" size="small" class="btn-action" @click="onExtend($event, modelValue?.response)">
               {{ $t('luma.button.extend') }}
@@ -113,13 +118,15 @@ export default defineComponent({
   computed: {
     application() {
       return this.$store.state.luma?.application;
+    },
+    config() {
+      return this.$store.state.luma?.config;
     }
   },
   methods: {
     onExtend(event: MouseEvent, response: ILumaGenerateResponse) {
       event.stopPropagation();
-      console.log('on extend');
-      // download url here
+      // extend url here
       console.debug('set config', response);
       this.$store.commit('luma/setConfig', {
         ...this.$store.state.luma?.config,

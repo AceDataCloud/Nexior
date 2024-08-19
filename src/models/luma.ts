@@ -8,6 +8,7 @@ export interface ILumaConfig {
   enhancement?: boolean;
   loop?: boolean;
   thumbnail_url?: string;
+  custom?: boolean;
 }
 
 export interface ILumaGenerateRequest {
@@ -35,6 +36,10 @@ export interface ILumaGenerateResponse {
   thumbnail_width: number;
   thumbnail_height: number;
   trace_id: string;
+  data?: {
+    video_id?: string;
+    state?: string;
+  };
   error: {
     code?: string;
     message?: string;

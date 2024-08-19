@@ -152,6 +152,9 @@ export default defineComponent({
         })
         .then(() => {
           ElMessage.success(this.$t('luma.message.startTaskSuccess'));
+          this.$store.commit('luma/setConfig', {
+            config: undefined
+          });
         })
         .catch((error) => {
           const response = error?.response?.data;

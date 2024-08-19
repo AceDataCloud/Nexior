@@ -22,6 +22,7 @@ import VuePlyr from '@skjnldsv/vue-plyr';
 // @ts-ignore
 import { ILumaTask } from '@/models';
 import '@skjnldsv/vue-plyr/dist/vue-plyr.css';
+
 export default defineComponent({
   name: 'ExtendFromInput',
   components: { VuePlyr },
@@ -50,15 +51,15 @@ export default defineComponent({
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between; // 添加这行
+    justify-content: space-between;
     position: relative;
     .title {
       font-size: 14px;
       margin-bottom: 10px;
     }
     .input-wrapper {
-      width: 150px; // 根据需要调整宽度
-      margin-left: 30px; // 增加左边距
+      width: 150px;
+      margin-left: 30px;
     }
   }
 }
