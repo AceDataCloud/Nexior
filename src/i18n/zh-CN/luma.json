@@ -39,6 +39,10 @@
     "message": "首帧图片",
     "description": "要生成的 QR 码的种子"
   },
+  "name.videoUrl": {
+    "message": "自定义视频",
+    "description": "要生成的 QR 码的种子"
+  },
   "name.endImageUrl": {
     "message": "尾帧图片",
     "description": "要生成的 QR 码的种子"
@@ -74,6 +78,10 @@
   "name.enhancement": {
     "message": "提示词增强",
     "description": "要生成的 QR 码的高级设置"
+  },
+  "name.custom": {
+    "message": "自定义扩展",
+    "description": "自定义扩展视频"
   },
   "name.extend": {
     "message": "扩展视频来自",
@@ -131,8 +139,16 @@
     "message": "如果您不确定如何书写提示文字，请启用输入提示文字的增强功能。",
     "description": "参数'qrw'的描述"
   },
+  "description.custom": {
+    "message": "如果您想上传自己的视频来扩展视频，请打开此按钮。",
+    "description": "参数'qrw'的描述"
+  },
   "description.startImageUrl": {
     "message": "首帧图像的 URL，它将是生成视频的第一帧。",
+    "description": "参数'steps'的描述"
+  },
+  "description.videoUrl": {
+    "message": "上传自定义扩展的视频URL，它将是扩展视频的视频。",
     "description": "参数'steps'的描述"
   },
   "description.endImageUrl": {
@@ -145,6 +161,10 @@
   },
   "status.pending": {
     "message": "等待中",
+    "description": "任务的等待状态"
+  },
+  "status.processing": {
+    "message": "处理中",
     "description": "任务的等待状态"
   },
   "placeholder.paddingNoise": {
@@ -205,6 +225,10 @@
   },
   "button.uploadStartImageUrl": {
     "message": "上传图片",
+    "description": "上传二维码的按钮文本"
+  },
+  "button.uploadVideoUrl": {
+    "message": "上传视频",
     "description": "上传二维码的按钮文本"
   },
   "button.uploadEndImageUrl": {
@@ -355,6 +379,18 @@
     "message": "生成图像失败",
     "description": "图像生成失败时的消息"
   },
+  "message.uploadVideoExceed": {
+    "message": "上传首帧图片数量超过限制",
+    "description": "上传首帧图片数量超过限制时的错误信息"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "上传文件大小不能超过 10MB!",
+    "description": "上传文件大小不能超过 10MB!时的错误信息"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "上传文件必须是 MP4 格式!",
+    "description": "上传文件必须是 MP4 格式!的错误信息"
+  },
   "message.uploadStartImageExceed": {
     "message": "上传首帧图片数量超过限制",
     "description": "上传首帧图片数量超过限制时的错误信息"
@@ -365,6 +401,10 @@
   },
   "message.uploadStartImageError": {
     "message": "上传首帧图片失败",
+    "description": "上传首帧图片失败时的错误信息"
+  },
+  "message.uploadVideoError": {
+    "message": "上传视频失败",
     "description": "上传首帧图片失败时的错误信息"
   },
   "message.uploadEndImageError": {
