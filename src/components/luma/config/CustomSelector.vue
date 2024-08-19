@@ -28,7 +28,6 @@ export default defineComponent({
           ...this.$store.state.luma?.config,
           custom: val
         });
-        console.log(JSON.stringify(this.$store.state.luma?.config));
       }
     }
   },

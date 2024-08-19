@@ -4,7 +4,6 @@ import { IChatState } from './models';
 export const resetAll = (state: IChatState): void => {
   state.application = undefined;
   state.conversations = undefined;
-  state.applications = undefined;
   state.credential = undefined;
   state.service = undefined;
 };

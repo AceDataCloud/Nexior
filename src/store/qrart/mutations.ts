@@ -4,7 +4,6 @@ import { IQrartState } from './models';
 export const resetAll = (state: IQrartState): void => {
   state.service = undefined;
   state.application = undefined;
-  state.applications = undefined;
   state.config = undefined;
   state.credential = undefined;
   state.tasks = undefined;
