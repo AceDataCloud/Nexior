@@ -7,7 +7,7 @@
       <div class="actions">
         <el-button type="primary" class="btn w-full" round @click="onGenerate">
           <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
-          {{ $t('qrart.button.generate') }}
+          {{ $t('luma.button.generate') }}
         </el-button>
       </div>
     </el-card>

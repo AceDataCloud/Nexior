@@ -1,7 +1,7 @@
 <template>
   <div class="preview">
     <div class="left">
-      <el-image src="https://cdn.acedata.cloud/yu04pc.png" class="avatar" />
+      <el-image src="https://cdn.acedata.cloud/ahjfwi.png" class="avatar" />
     </div>
     <div class="main">
       <div class="bot">
@@ -70,7 +70,14 @@
         </el-alert>
       </div>
       <!-- Display error message -->
-      <div v-if="!modelValue?.response" :class="{ content: true }">
+      <div
+        v-if="
+          !modelValue?.response ||
+          modelValue?.response?.data?.state === 'processing' ||
+          modelValue?.response?.data?.state === 'pending'
+        "
+        :class="{ content: true }"
+      >
         <el-alert :closable="false" class="info">
           <template #template>
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
@@ -182,7 +189,7 @@ $left-width: 70px;
   .left {
     width: $left-width;
     .avatar {
-      background-color: white;
+      background-color: rgb(0, 0, 0);
       padding: 2px;
       width: 50px;
       height: 50px;
