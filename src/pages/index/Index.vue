@@ -178,8 +178,8 @@
       <div class="container">
         <el-row>
           <el-col :md="16" :xs="24" class="preview">
-            <img src="https://cdn.acedata.cloud/gyogar.png" class="image desktop" />
-            <img src="https://cdn.acedata.cloud/5kunm0.png" class="image mobile" />
+            <img src="https://cdn.acedata.cloud/kv4ymv.png" class="image desktop" />
+            <img src="https://cdn.acedata.cloud/7ka313.png" class="image mobile" />
           </el-col>
           <el-col :md="8" :xs="24" class="info">
             <h2 class="title">{{ $t('index.title.luma') }}</h2>
