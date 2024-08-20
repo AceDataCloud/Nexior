@@ -1,31 +1,31 @@
 {
   "button.pay": {
     "message": "Zapłać",
-    "description": "Przycisk, który służy do płatności za zamówienie."
+    "description": "Tekst na przycisku, używany do płatności za zamówienie."
   },
   "button.continuePay": {
     "message": "Kontynuuj płatność",
-    "description": "Przycisk, który służy do kontynuacji płatności za zamówienie."
+    "description": "Tekst na przycisku, używany do kontynuowania płatności za zamówienie."
   },
   "button.checkDetail": {
-    "message": "Sprawdź szczegóły",
-    "description": "Przycisk, który służy do sprawdzenia szczegółów zamówienia."
+    "message": "Zobacz szczegóły",
+    "description": "Tekst na przycisku, używany do przeglądania szczegółów zamówienia."
   },
   "button.query": {
     "message": "Zapytaj",
-    "description": "Przycisk, który służy do zapytania o zamówienie."
+    "description": "Tekst na przycisku, używany do zapytania o zamówienie."
   },
   "button.finish": {
     "message": "Ręczne zakończenie",
-    "description": "Przycisk, który służy do ręcznego zakończenia zamówienia."
+    "description": "Tekst na przycisku, używany do ręcznego zakończenia zamówienia."
   },
   "button.update": {
     "message": "Aktualizuj",
-    "description": "Przycisk, który służy do aktualizacji zamówienia."
+    "description": "Tekst na przycisku, używany do aktualizacji zamówienia."
   },
   "field.id": {
     "message": "Numer zamówienia",
-    "description": "Numer identyfikacyjny zamówienia."
+    "description": "Numer zamówienia."
   },
   "field.amount": {
     "message": "Kwota",
@@ -40,103 +40,103 @@
     "description": "Opis zamówienia."
   },
   "field.state": {
-    "message": "Status",
-    "description": "Status zamówienia."
+    "message": "Stan",
+    "description": "Stan zamówienia."
   },
   "field.createdAt": {
-    "message": "Data utworzenia",
-    "description": "Data utworzenia zamówienia."
+    "message": "Czas utworzenia",
+    "description": "Czas utworzenia zamówienia."
   },
   "field.service": {
     "message": "Nazwa usługi",
     "description": "Nazwa usługi."
   },
   "field.payWay": {
-    "message": "Metoda płatności",
-    "description": "Metoda płatności zamówienia."
+    "message": "Sposób płatności",
+    "description": "Sposób płatności zamówienia."
   },
   "field.api": {
     "message": "API",
-    "description": "API to internetowa usługa."
+    "description": "API jest rodzajem usługi online."
   },
   "field.proxy": {
-    "message": "Serwer proxy",
-    "description": "Serwer proxy to internetowa usługa do przekazywania danych przez HTTP."
+    "message": "Proxy",
+    "description": "Proxy jest rodzajem usługi online, która służy do przesyłania danych przez HTTP."
   },
   "message.paidSuccessfully": {
-    "message": "Płatność zakończona pomyślnie",
-    "description": "Komunikat informujący o pomyślnej płatności."
+    "message": "Płatność pomyślna",
+    "description": "Wiadomość o pomyślnej płatności."
   },
   "message.orderExpired": {
     "message": "Zamówienie wygasło, proszę utworzyć nowe zamówienie do płatności.",
-    "description": "Komunikat o wygaśnięciu zamówienia."
+    "description": "Wiadomość o wygaśnięciu zamówienia."
   },
   "message.createFailed": {
-    "message": "Tworzenie nie powiodło się",
-    "description": "Komunikat informujący o niepowodzeniu w tworzeniu."
+    "message": "Niepowodzenie w tworzeniu",
+    "description": "Wiadomość o niepowodzeniu w tworzeniu."
   },
   "message.wechatPayHelp": {
-    "message": "Proszę otworzyć WeChat na telefonie i zeskanować kod, aby zakończyć płatność.",
-    "description": "Komunikat pomocniczy dotyczący płatności WeChat."
+    "message": "Proszę otworzyć WeChat na telefonie i zeskanować kod QR, aby zakończyć płatność.",
+    "description": "Wiadomość z pomocą dotyczącą płatności WeChat."
   },
   "message.free": {
-    "message": "Darmowe",
-    "description": "Komunikat dotyczący zamówienia darmowego."
+    "message": "Darmowy",
+    "description": "Wiadomość o darmowym zamówieniu."
   },
   "message.buyInExternalUrl": {
-    "message": "Proszę wykonać płatność w zewnętrznym linku.",
-    "description": "Komunikat dotyczący płatności przez zewnętrzny link."
+    "message": "Proszę zakończyć płatność w zewnętrznym linku.",
+    "description": "Wiadomość o płatności przez zewnętrzny link."
   },
   "message.updateFailed": {
-    "message": "Aktualizacja nie powiodła się",
-    "description": "Komunikat informujący o niepowodzeniu w aktualizacji."
+    "message": "Niepowodzenie w aktualizacji",
+    "description": "Wiadomość o niepowodzeniu w aktualizacji."
   },
   "message.updateSuccessfully": {
-    "message": "Aktualizacja zakończona pomyślnie",
-    "description": "Komunikat informujący o pomyślnej aktualizacji."
+    "message": "Aktualizacja pomyślna",
+    "description": "Wiadomość o pomyślnej aktualizacji."
   },
   "message.confirmFinish": {
-    "message": "Ta operacja ręcznie ustawi zamówienie na status płatności i zakończy przetwarzanie, czego nie można cofnąć. Proszę potwierdzić, że klient zakończył płatność, czy kontynuować?",
-    "description": "Komunikat do potwierdzenia zakończenia."
+    "message": "Ta operacja ręcznie ustawi zamówienie w stanie płatności i zakończy obsługę, nie można jej cofnąć. Proszę potwierdzić, że klient zakończył płatność, czy kontynuować?",
+    "description": "Wiadomość o potwierdzeniu zakończenia."
   },
   "state.pending": {
     "message": "Oczekuje na płatność",
-    "description": "Status zamówienia, oznaczający, że zamówienie czeka na płatność od użytkownika."
+    "description": "Stan zamówienia, oznaczający, że to zamówienie czeka na płatność od użytkownika."
   },
   "state.paid": {
     "message": "Zapłacono",
-    "description": "Status zamówienia, oznaczający, że zamówienie zostało opłacone."
+    "description": "Stan zamówienia, oznaczający, że to zamówienie zostało zapłacone."
   },
   "state.finished": {
     "message": "Zakończono",
-    "description": "Status zamówienia, oznaczający, że zamówienie zostało zakończone."
+    "description": "Stan zamówienia, oznaczający, że to zamówienie zostało zakończone."
   },
   "state.expired": {
     "message": "Przekroczono czas płatności",
-    "description": "Status zamówienia, oznaczający, że zamówienie wygasło."
+    "description": "Stan zamówienia, oznaczający, że to zamówienie wygasło."
   },
   "state.failed": {
     "message": "Płatność nie powiodła się",
-    "description": "Status zamówienia, oznaczający, że płatność za zamówienie się nie powiodła."
+    "description": "Stan zamówienia, oznaczający, że płatność za to zamówienie nie powiodła się."
   },
   "title.info": {
     "message": "Informacje o zamówieniu",
-    "description": "Tytuł używany jako tytuł strony internetowej, wskazujący na informacje o zamówieniu."
+    "description": "Tytuł używany na stronie, oznaczający informacje o zamówieniu."
   },
   "title.wechatPay": {
     "message": "Płatność WeChat",
-    "description": "Tytuł używany jako tytuł strony internetowej, wskazujący na płatność WeChat."
+    "description": "Tytuł używany na stronie, oznaczający płatność WeChat."
   },
   "title.aliPay": {
     "message": "Alipay",
-    "description": "Tytuł używany jako tytuł strony internetowej, wskazujący na płatność Alipay, która jest formą płatności online."
+    "description": "Tytuł używany na stronie, oznaczający płatność Alipay, płatność Alipay jest rodzajem płatności online."
   },
   "title.stripe": {
     "message": "Stripe",
-    "description": "Tytuł używany jako tytuł strony internetowej, wskazujący na płatność Stripe, która jest formą płatności online."
+    "description": "Tytuł używany na stronie, oznaczający płatność Stripe, płatność Stripe jest rodzajem płatności online."
   },
   "title.manageOrder": {
     "message": "Zarządzaj zamówieniem",
-    "description": "Tytuł używany jako tytuł strony internetowej, wskazujący na zarządzanie zamówieniem."
+    "description": "Tytuł używany na stronie, oznaczający zarządzanie zamówieniem."
   }
 }

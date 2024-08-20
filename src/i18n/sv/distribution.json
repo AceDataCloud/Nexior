@@ -1,7 +1,7 @@
 {
   "button.detail": {
     "message": "Visa detaljer",
-    "description": "Knapptext för att visa detaljer om webbplatsens rekommendationerhistoria."
+    "description": "Knapptext för att visa rekommendationens historik detaljer på webbplatsen."
   },
   "button.withdrawal": {
     "message": "Uttag",
@@ -9,63 +9,63 @@
   },
   "button.query": {
     "message": "Fråga",
-    "description": "Knapptext för att fråga om rekommendationsintäkterna på webbplatsen."
+    "description": "Knapptext för att kontrollera rekommendationsintäkterna på webbplatsen."
   },
   "field.id": {
-    "message": "Rekommendations ID",
-    "description": "Det unika identifieringsnumret för distribution, som hänvisar till rekommendationer från API-tjänstens webbplats."
+    "message": "Rekommendations-ID",
+    "description": "Det unika identifierare för distributionen, distribution avser rekommendationer från API-tjänstens webbplats."
   },
   "field.percentage": {
     "message": "Rekommendationsintäktsprocent",
-    "description": "Procentandelen av rekommendationsintäkterna, beräknad på orderbeloppet."
+    "description": "Procentandelen av rekommendationsintäkter, beräknas baserat på orderbelopp."
   },
   "field.price": {
     "message": "Orderbelopp",
-    "description": "Orderbeloppet, som används för att beräkna rekommendationsintäkterna."
+    "description": "Orderbeloppet som används för att beräkna rekommendationsintäkterna."
   },
   "field.reward": {
     "message": "Rekommendationsbelöning",
-    "description": "Rekommendationsintäkterna, beräknade på orderbeloppet och rekommendationsintäktsprocenten."
+    "description": "Rekommendationsintäkter, beräknas utifrån orderbelopp och rekommendationsintäktsprocent."
   },
   "field.userId": {
-    "message": "Användar ID",
-    "description": "Det unika identifieringsnumret för användaren, som hänvisar till användarna på API-tjänstens webbplats."
+    "message": "Användar-ID",
+    "description": "Det unika identifierare för användaren, användaren avser användare av API-tjänstens webbplats."
   },
   "field.userEmail": {
     "message": "Användarens e-post",
-    "description": "Användarens e-postadress."
+    "description": "E-postadressen för användaren."
   },
   "field.createdAt": {
     "message": "Rekommendationstid",
-    "description": "Tidpunkten då rekommendationen skapades."
+    "description": "Tiden då rekommendationen skapades."
   },
   "field.level": {
     "message": "Nivå",
-    "description": "Nivån av rekommendationen, som används för att beräkna rekommendationsintäkterna."
+    "description": "Nivån av rekommendationen, används för att beräkna rekommendationsintäkterna."
   },
   "field.threshold": {
     "message": "Rekommendationsintäktsgräns",
-    "description": "Gränsen för rekommendationsintäkterna, som används för att ta ut rekommendationsintäkterna."
+    "description": "Gränsen för rekommendationsintäkterna, används för att ta ut rekommendationsintäkter."
   },
   "field.inviteeId": {
     "message": "Inbjudarens ID",
-    "description": "Det unika identifieringsnumret för inbjudaren, som hänvisar till den som bjuder in en inbjuden till API-tjänstens webbplats."
+    "description": "Det unika identifierare för inbjudaren, inbjudaren avser den som bjuder in inbjuden till API-tjänstens webbplats."
   },
   "field.isVerified": {
     "message": "Verifierad",
-    "description": "Flagga som indikerar om den rekommenderade användaren har verifierats med riktig information."
+    "description": "Flagga som indikerar huruvida rekommenderad användare har verifierats med äkta information."
   },
   "message.deltaPriceForNextLevel": {
-    "message": "Skillnad mot nästa nivå",
-    "description": "Skillnaden mellan det nuvarande orderbeloppet och tröskeln för nästa nivå."
+    "message": "Skillnaden till nästa nivå",
+    "description": "Skillnaden mellan nuvarande orderbelopp och tröskeln för nästa nivå."
   },
   "message.developingWithDrawal": {
-    "message": "Vänligen kontakta kundtjänst för att hantera uttag, uttag kommer att dra av relevant skatt.",
+    "message": "Vänligen anslut till kundsupport för att hantera uttaget, uttaget kommer att beskattas med tillhörande inkomstskatt.",
     "description": "Meddelande som indikerar att uttagsfunktionen är under utveckling."
   },
   "message.technicalDetail": {
     "message": "Tekniska detaljer",
-    "description": "De tekniska detaljer som implementerats i rekommendationssystemet."
+    "description": "De tekniska detaljerna för implementeringen av rekommendationssystemet."
   },
   "message.distributionQrDescription": {
     "message": "Rekommendations QR-kod (samma som länkens innehåll)",
@@ -73,66 +73,66 @@
   },
   "message.distributionLink": {
     "message": "Rekommendationslänk",
-    "description": "Rekommendationslänken som används för att binda kunder som underkunder."
+    "description": "Rekommendationslänken som används för att binda kunder som underordnade kunder."
   },
   "message.updateSuccessfully": {
     "message": "Uppdatering lyckades",
     "description": "Meddelande som indikerar att rekommendationsinformationen har uppdaterats framgångsrikt."
   },
   "message.distributionLinkDescription": {
-    "message": "Om kunden registrerar sig på plattformen via denna länk eller QR-kod, kommer kunden att permanent bindas som din underkunder, och alla kundens inköpsorder på plattformen kommer att återbetalas till ditt konto enligt den aktuella distributionsprocenten.",
+    "message": "Om kunden registrerar sig på plattformen genom denna länk eller QR-kod, kommer kunden att permanent bindas som din underordnade kund, och alla konsumtionsbeställningar från kunden på denna plattform kommer att återbetalas till ditt konto baserat på den nuvarande distributionsfördelningen.",
     "description": "Beskrivning av rekommendationslänken."
   },
   "message.distributionLinkDescription2": {
-    "message": "Denna länk innehåller ditt användar ID. När kunden öppnar länken kommer ditt användar ID att sparas i kundens webbläsare som cookies, giltigt i sju dagar. Inom sju dagar, om kunden registrerar sig på plattformen genom att skanna denna kod, kommer ditt användar ID att laddas upp till registreringsservern tillsammans med cookies, och kunden kan bindas som din underkunder.",
+    "message": "Denna länk innehåller ditt användar-ID. När kunden öppnar länken kommer ditt användar-ID att sparas som cookies i kundens webbläsare i sju dagar. Inom de sju dagarna, om kunden registrerar sig på plattformen genom att skanna den koden, kommer ditt användar-ID att överföras med cookies till registreringsservern, och kunden kan bindas som din underordnade kund.",
     "description": "Beskrivning av rekommendationslänken."
   },
   "title.price": {
-    "message": "Total rekommenderad orderbelopp",
-    "description": "Det totala beloppet av rekommendationsordrarna, som används för att beräkna rekommendationsintäkterna."
+    "message": "Total belopp för rekommendationsbeställningar",
+    "description": "Det totala beloppet för rekommendationsbeställningar, används för att beräkna rekommendationsintäkterna."
   },
   "title.reward": {
-    "message": "Total rekommendationsbelöning",
-    "description": "Total rekommendationsbelöning, beräknad på orderbeloppet och rekommendationsintäktsprocenten."
+    "message": "Totala rekommendationsbelöningar",
+    "description": "Totala rekommendationsbelöningar, beräknas utifrån orderbelopp och rekommendationsintäktsprocent."
   },
   "title.level": {
     "message": "Rekommendationsnivå",
-    "description": "Rekommendationsnivån som används för att beräkna rekommendationsintäkterna."
+    "description": "Rekommendationsnivån, används för att beräkna rekommendationsintäkterna."
   },
   "title.percentage": {
     "message": "Rekommendationsintäktsprocent",
-    "description": "Rekommendationsintäktsprocenten som används för att beräkna rekommendationsintäkterna."
+    "description": "Rekommendationsintäktsprocent, används för att beräkna rekommendationsintäkterna."
   },
   "title.currentLevel": {
-    "message": "Aktuell nivå",
-    "description": "Den aktuella rekommendationsnivån, som används för att beräkna rekommendationsintäkterna."
+    "message": "Nuvarande nivå",
+    "description": "Nuvarande rekommendationsnivå, används för att beräkna rekommendationsintäkterna."
   },
   "title.nextLevel": {
     "message": "Nästa nivå",
-    "description": "Den nästa rekommendationsnivån, som används för att beräkna rekommendationsintäkterna."
+    "description": "Nästa rekommendationsnivå, används för att beräkna rekommendationsintäkterna."
   },
   "title.currentPercentage": {
-    "message": "Aktuell rekommendationsintäktsprocent",
-    "description": "Den aktuella rekommendationsintäktsprocenten, som används för att beräkna rekommendationsintäkterna."
+    "message": "Nuvarande rekommendationsintäktsprocent",
+    "description": "Nuvarande rekommendationsintäktsprocent, används för att beräkna rekommendationsintäkterna."
   },
   "title.nextPercentage": {
     "message": "Rekommendationsintäktsprocent för nästa nivå",
-    "description": "Rekommendationsintäktsprocenten för den nästa nivån, som används för att beräkna rekommendationsintäkterna."
+    "description": "Rekommendationsintäktsprocent för nästa nivå, används för att beräkna rekommendationsintäkterna."
   },
   "title.levelInfo": {
     "message": "Nivåinformation",
-    "description": "Information om rekommendationsnivån, som används för att beräkna rekommendationsintäkterna."
+    "description": "Information om rekommendationsnivåerna, används för att beräkna rekommendationsintäkterna."
   },
   "title.distributionLink": {
     "message": "Rekommendationslänk",
-    "description": "Rekommendationslänk som används för att binda kunder som underkunder."
+    "description": "Rekommendationslänken, används för att binda kunder som underordnade kunder."
   },
   "title.inviteesCount": {
     "message": "Antal inbjudna",
-    "description": "Inbjudnas totala antal, som används för att beräkna rekommendationsintäkter."
+    "description": "Antalet inbjudna, som används för att beräkna rekommendationsvinster."
   },
   "title.manageDistributionStatus": {
-    "message": "Hantera distributionsstatus",
-    "description": "Hanteringen av rekommendationsstatus."
+    "message": "Distribueringshantering",
+    "description": "Hantera rekommendationsstatus."
   }
 }

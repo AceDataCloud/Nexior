@@ -1,142 +1,142 @@
 {
   "button.pay": {
-    "message": "Zahlung",
-    "description": "按钮文本，用于支付订单。"
+    "message": "Zahlen",
+    "description": "Button-Text zum Bezahlen der Bestellung."
   },
   "button.continuePay": {
     "message": "Zahlung fortsetzen",
-    "description": "按钮文本，用于继续支付订单。"
+    "description": "Button-Text zum Fortsetzen der Zahlung der Bestellung."
   },
   "button.checkDetail": {
     "message": "Details anzeigen",
-    "description": "按钮文本，用于查看订单详情。"
+    "description": "Button-Text zum Anzeigen der Bestelldetails."
   },
   "button.query": {
-    "message": "Abfrage",
-    "description": "按钮文本，用于查询订单。"
+    "message": "Abfragen",
+    "description": "Button-Text zum Abfragen der Bestellung."
   },
   "button.finish": {
     "message": "Manuell abschließen",
-    "description": "按钮文本，用于手动完成订单。"
+    "description": "Button-Text zum manuellen Abschluss der Bestellung."
   },
   "button.update": {
     "message": "Aktualisieren",
-    "description": "按钮文本，用于更新订单。"
+    "description": "Button-Text zum Aktualisieren der Bestellung."
   },
   "field.id": {
     "message": "Bestellnummer",
-    "description": "订单的编号。"
+    "description": "Die Nummer der Bestellung."
   },
   "field.amount": {
     "message": "Betrag",
-    "description": "订单的积分金额。"
+    "description": "Der Punktbetrag der Bestellung."
   },
   "field.price": {
     "message": "Betrag",
-    "description": "订单的积分金额。"
+    "description": "Der Punktbetrag der Bestellung."
   },
   "field.description": {
     "message": "Bestellbeschreibung",
-    "description": "订单的描述。"
+    "description": "Die Beschreibung der Bestellung."
   },
   "field.state": {
     "message": "Status",
-    "description": "订单的状态。"
+    "description": "Der Status der Bestellung."
   },
   "field.createdAt": {
     "message": "Erstellungszeit",
-    "description": "订单的创建时间。"
+    "description": "Die Erstellungszeit der Bestellung."
   },
   "field.service": {
     "message": "Dienstname",
-    "description": "服务的名称。"
+    "description": "Der Name des Dienstes."
   },
   "field.payWay": {
-    "message": "Zahlungsart",
-    "description": "订单的支付方式。"
+    "message": "Zahlungsmethode",
+    "description": "Die Zahlungsmethode der Bestellung."
   },
   "field.api": {
     "message": "API",
-    "description": "API是一种在线服务。"
+    "description": "API ist ein Online-Dienst."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "代理是一种在线服务，用于传输数据的HTTP代理。"
+    "description": "Proxy ist ein Online-Dienst zum Übertragen von Daten über einen HTTP-Proxy."
   },
   "message.paidSuccessfully": {
     "message": "Zahlung erfolgreich",
-    "description": "成功支付的消息。"
+    "description": "Nachricht über eine erfolgreich durchgeführte Zahlung."
   },
   "message.orderExpired": {
-    "message": "Die Bestellung ist abgelaufen. Bitte erstellen Sie eine neue Bestellung für die Zahlung.",
-    "description": "订单过期的消息。"
+    "message": "Die Bestellung ist abgelaufen. Bitte erstellen Sie eine neue Bestellung zur Zahlung.",
+    "description": "Nachricht über das Ablaufen der Bestellung."
   },
   "message.createFailed": {
     "message": "Erstellung fehlgeschlagen",
-    "description": "创建失败的消息。"
+    "description": "Nachricht über eine fehlgeschlagene Erstellung."
   },
   "message.wechatPayHelp": {
-    "message": "Bitte öffnen Sie WeChat auf Ihrem Handy und scannen Sie den Code, um die Zahlung abzuschließen.",
-    "description": "微信支付帮助的消息。"
+    "message": "Bitte öffnen Sie WeChat auf Ihrem Telefon und scannen Sie den Code, um die Zahlung abzuschließen.",
+    "description": "Hilfsnachricht zur WeChat-Zahlung."
   },
   "message.free": {
     "message": "Kostenlos",
-    "description": "免费订单的消息。"
+    "description": "Nachricht über eine kostenlose Bestellung."
   },
   "message.buyInExternalUrl": {
     "message": "Bitte schließen Sie die Zahlung über den externen Link ab.",
-    "description": "外部链接支付的消息。"
+    "description": "Nachricht über Zahlungen über externe Links."
   },
   "message.updateFailed": {
     "message": "Aktualisierung fehlgeschlagen",
-    "description": "更新失败的消息。"
+    "description": "Nachricht über eine fehlgeschlagene Aktualisierung."
   },
   "message.updateSuccessfully": {
     "message": "Aktualisierung erfolgreich",
-    "description": "成功更新的消息。"
+    "description": "Nachricht über eine erfolgreich durchgeführte Aktualisierung."
   },
   "message.confirmFinish": {
-    "message": "Diese Aktion wird die Bestellung manuell auf Zahlungsstatus setzen und die Verteilung abschließen. Dies kann nicht rückgängig gemacht werden. Bitte bestätigen Sie, dass der Kunde die Zahlung abgeschlossen hat. Möchten Sie fortfahren?",
-    "description": "确认完成的消息。"
+    "message": "Diese Aktion wird die Bestellung manuell auf den Zahlungsstatus setzen und die Verteilung abschließen, was nicht zurückgenommen werden kann. Bitte bestätigen Sie, dass der Kunde die Zahlung abgeschlossen hat. Soll die Aktion fortgesetzt werden?",
+    "description": "Nachricht zur Bestätigung des Abschlusses."
   },
   "state.pending": {
-    "message": "Ausstehende Zahlung",
-    "description": "订单的状态，表示此订单仍在等待用户支付。"
+    "message": "Ausstehend",
+    "description": "Der Status der Bestellung, der angibt, dass die Bestellung noch auf die Zahlung des Benutzers wartet."
   },
   "state.paid": {
     "message": "Bezahlt",
-    "description": "订单的状态，表示此订单已经支付。"
+    "description": "Der Status der Bestellung, der angibt, dass die Bestellung bereits bezahlt wurde."
   },
   "state.finished": {
     "message": "Abgeschlossen",
-    "description": "订单的状态，表示此订单已经完成。"
+    "description": "Der Status der Bestellung, der angibt, dass die Bestellung bereits abgeschlossen ist."
   },
   "state.expired": {
     "message": "Zahlung abgelaufen",
-    "description": "订单的状态，表示此订单已经过期。"
+    "description": "Der Status der Bestellung, der angibt, dass die Bestellung abgelaufen ist."
   },
   "state.failed": {
     "message": "Zahlung fehlgeschlagen",
-    "description": "订单的状态，表示此订单支付失败。"
+    "description": "Der Status der Bestellung, der angibt, dass die Zahlung fehlgeschlagen ist."
   },
   "title.info": {
     "message": "Bestellinformationen",
-    "description": "用作网站标题的标题，表示订单信息。"
+    "description": "Titel, der als Website-Titel für die Bestellinformationen verwendet wird."
   },
   "title.wechatPay": {
-    "message": "WeChat Pay",
-    "description": "用作网站标题的标题，表示微信支付。"
+    "message": "WeChat-Zahlung",
+    "description": "Titel, der als Website-Titel für die WeChat-Zahlung verwendet wird."
   },
   "title.aliPay": {
     "message": "Alipay",
-    "description": "用作网站标题的标题，表示支付宝支付，支付宝支付是一种在线支付。"
+    "description": "Titel, der als Website-Titel für die Alipay-Zahlung verwendet wird, Alipay ist eine Art der Online-Zahlung."
   },
   "title.stripe": {
     "message": "Stripe",
-    "description": "用作网站标题的标题，表示Stripe支付，Stripe支付是一种在线支付。"
+    "description": "Titel, der als Website-Titel für die Stripe-Zahlung verwendet wird, Stripe ist eine Art der Online-Zahlung."
   },
   "title.manageOrder": {
     "message": "Bestellung verwalten",
-    "description": "用作网站标题的标题，表示管理订单。"
+    "description": "Titel, der als Website-Titel für die Verwaltung von Bestellungen verwendet wird."
   }
 }

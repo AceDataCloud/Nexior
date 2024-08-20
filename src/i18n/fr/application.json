@@ -5,43 +5,43 @@
   },
   "type.usage": {
     "message": "Quota",
-    "description": "Service du quota."
+    "description": "Quota du service."
   },
   "field.expiredAt": {
     "message": "Date d'expiration",
     "description": "Date d'expiration de la demande."
   },
   "button.goDocument": {
-    "message": "Documentation",
-    "description": "Bouton qui redirige vers la page de documentation."
+    "message": "Document",
+    "description": "Texte du bouton, en cliquant sur ce bouton vous serez redirigé vers la page du document."
   },
   "button.goCredentials": {
     "message": "Identifiants",
-    "description": "Bouton qui redirige vers la page des identifiants."
+    "description": "Texte du bouton, en cliquant sur ce bouton vous serez redirigé vers la page des identifiants."
   },
   "button.buyMore": {
     "message": "Acheter plus",
-    "description": "Bouton qui redirige vers la page pour acheter plus."
+    "description": "Texte du bouton, en cliquant sur ce bouton vous serez redirigé vers la page d'achat supplémentaire."
   },
   "button.createOrder": {
     "message": "Créer une commande",
-    "description": "Bouton qui redirige vers la page de création de commande."
+    "description": "Texte du bouton, en cliquant sur ce bouton vous serez redirigé vers la page de création de commande."
   },
   "button.custom": {
     "message": "Personnaliser",
-    "description": "Bouton qui redirige vers la page de personnalisation."
+    "description": "Texte du bouton, en cliquant sur ce bouton vous serez redirigé vers la page de personnalisation."
   },
   "button.query": {
     "message": "Interroger",
-    "description": "Bouton qui redirige vers la page de requête."
+    "description": "Texte du bouton, en cliquant sur ce bouton vous serez redirigé vers la page d'interrogation."
   },
   "button.usage": {
     "message": "Historique d'utilisation",
-    "description": "Bouton qui redirige vers la page d'historique d'utilisation."
+    "description": "Texte du bouton, en cliquant sur ce bouton vous serez redirigé vers la page d'historique d'utilisation."
   },
   "field.application": {
     "message": "Demande",
-    "description": "Service de la demande."
+    "description": "Demande de service."
   },
   "field.status": {
     "message": "Statut",
@@ -65,7 +65,7 @@
   },
   "field.service": {
     "message": "Service",
-    "description": "Service de la demande."
+    "description": "Service demandé."
   },
   "field.operation": {
     "message": "Opération",
@@ -77,7 +77,7 @@
   },
   "field.traceId": {
     "message": "Trace ID",
-    "description": "ID de trace d'un appel API pour la demande de service, ne pas traduire, garder comme 'Trace ID'."
+    "description": "Trace ID d'un appel API pour la demande de service, ne pas traduire, garder comme 'Trace ID'."
   },
   "field.shouldPayPrice": {
     "message": "Prix final",
@@ -85,11 +85,11 @@
   },
   "field.api": {
     "message": "API",
-    "description": "C'est un service en ligne, sous forme d'API fournissant des services aux utilisateurs."
+    "description": "C'est un service en ligne qui fournit des services aux utilisateurs sous forme d'API."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "C'est un service en ligne, sous forme de proxy HTTP (pour le transfert de données) fournissant des services aux utilisateurs."
+    "description": "C'est un service en ligne qui fournit des services aux utilisateurs sous forme de proxy HTTP (pour le transfert de données)."
   },
   "field.credential": {
     "message": "Identifiant",
@@ -101,7 +101,7 @@
   },
   "field.package": {
     "message": "Forfait",
-    "description": "Le forfait représente différents prix, par exemple 100 dollars pour 10000 points, 200 dollars pour 20000 points."
+    "description": "Le forfait indique différents plans tarifaires, par exemple 100 dollars pour 10 000 points, 200 dollars pour 20 000 points."
   },
   "field.type": {
     "message": "Type",
@@ -112,67 +112,67 @@
     "description": "Quantité gratuite de la demande."
   },
   "field.extraPrice": {
-    "message": "Prix supplémentaire",
+    "message": "Prix",
     "description": "Prix supplémentaire que l'utilisateur doit payer pour la demande."
   },
   "message.alreadyApplied": {
-    "message": "Vous avez déjà demandé ce service, veuillez consulter la console",
-    "description": "Message affiché à l'utilisateur quand il a déjà demandé ce service."
+    "message": "Vous avez déjà demandé ce service, veuillez vérifier la console",
+    "description": "Message affiché à l'utilisateur lorsque celui-ci a déjà demandé ce service."
   },
   "message.applySuccessfully": {
     "message": "Demande réussie",
-    "description": "Message affiché à l'utilisateur quand il a réussi à demander ce service."
+    "description": "Message affiché à l'utilisateur lorsque celui-ci a réussi à demander ce service."
   },
   "message.notApplied": {
-    "message": "Vous n'avez pas encore demandé ce service, veuillez le demander avant de l'utiliser",
-    "description": "Message affiché à l'utilisateur quand il n'a pas encore demandé ce service."
+    "message": "Vous n'avez pas encore demandé ce service, veuillez demander ce service avant de l'utiliser",
+    "description": "Message affiché à l'utilisateur lorsqu'il n'a pas encore demandé ce service."
   },
   "message.yourApplication": {
     "message": "Votre demande",
-    "description": "Message affiché à l'utilisateur lors de sa demande."
+    "description": "Message affiché à l'utilisateur concernant sa demande."
   },
   "message.unverified": {
-    "message": "Vous devez compléter la vérification d'identité avant de pouvoir demander ce service",
-    "description": "Message affiché à l'utilisateur quand il n'a pas encore complété la vérification d'identité."
+    "message": "Vous devez finaliser la vérification d'identité avant de pouvoir demander ce service",
+    "description": "Message affiché à l'utilisateur lorsqu'il n'a pas encore terminé la vérification d'identité."
   },
   "message.goVerify": {
     "message": "Aller à la vérification d'identité",
-    "description": "Message affiché à l'utilisateur quand il n'a pas encore complété la vérification d'identité."
+    "description": "Message affiché à l'utilisateur lorsqu'il n'a pas encore terminé la vérification d'identité."
   },
   "message.requiredParameter": {
     "message": "Paramètre requis",
-    "description": "Message affiché à l'utilisateur quand il n'a pas encore entré le paramètre requis."
+    "description": "Message affiché à l'utilisateur lorsqu'il n'a pas encore saisi de paramètre requis."
   },
   "message.example": {
     "message": "Exemple",
-    "description": "Message affiché à l'utilisateur quand il n'a pas encore entré le paramètre requis."
+    "description": "Message affiché à l'utilisateur lorsqu'il n'a pas encore saisi de paramètre requis."
   },
   "message.createCredentialSuccessfully": {
     "message": "Identifiant créé avec succès",
-    "description": "Message affiché à l'utilisateur quand il a réussi à créer un identifiant."
+    "description": "Message affiché à l'utilisateur lorsque celui-ci a réussi à créer un identifiant."
   },
   "message.readPolicy": {
     "message": "J'ai lu et j'accepte",
-    "description": "Message affiché à l'utilisateur quand il a lu et accepté la politique."
+    "description": "Message affiché à l'utilisateur lorsqu'il a lu et accepté la politique."
   },
   "message.policy": {
-    "message": "Accord d'utilisation des services de technologie des données",
-    "description": "Message affiché à l'utilisateur quand il a lu et accepté la politique."
+    "message": "Accord d'utilisation des services techniques des données",
+    "description": "Message affiché à l'utilisateur lorsqu'il a lu et accepté la politique."
   },
   "message.notAgreePolicy": {
-    "message": "Vous n'avez pas accepté l'accord d'utilisation des services de technologie des données",
-    "description": "Message affiché à l'utilisateur quand il n'a pas accepté la politique."
+    "message": "Vous n'avez pas encore accepté l'accord d'utilisation des services techniques des données",
+    "description": "Message affiché à l'utilisateur lorsqu'il n'a pas encore accepté la politique."
   },
   "message.confirmApplying": {
     "message": "Confirmer la demande de service",
-    "description": "Message affiché à l'utilisateur quand il confirme la demande de service."
+    "description": "Message affiché à l'utilisateur lorsqu'il confirme la demande de service."
   },
   "message.rotateCredential": {
     "message": "Réinitialiser la clé",
-    "description": "Message affiché à l'utilisateur lorsqu'il réinitialise la clé."
+    "description": "Message affiché à l'utilisateur lorsque celui-ci réinitialise la clé."
   },
   "message.rotateCredentialConfirm": {
-    "message": "Êtes-vous sûr de vouloir réinitialiser la clé ? Elle ne pourra pas être récupérée après la réinitialisation.",
+    "message": "Êtes-vous sûr de vouloir réinitialiser la clé ? La réinitialisation ne pourra pas être annulée.",
     "description": "Message affiché à l'utilisateur lorsque celui-ci confirme la réinitialisation de la clé."
   },
   "message.idDoesNotExist": {
@@ -193,7 +193,7 @@
   },
   "message.updateSuccessfully": {
     "message": "Modification réussie",
-    "description": "Message affiché à l'utilisateur lorsque la modification est réussie."
+    "description": "Message affiché à l'utilisateur lorsque la modification réussit."
   },
   "title.buyService": {
     "message": "Acheter un service",

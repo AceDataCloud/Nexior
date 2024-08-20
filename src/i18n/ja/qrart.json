@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "タイプ",
-    "description": "生成する QR コードの内容タイプ、例えば'リンク'、'テキスト'など"
+    "description": "生成する QR コードのコンテンツタイプ、例：'リンク'、'テキスト'など"
   },
   "name.failure": {
     "message": "失敗",
@@ -13,11 +13,11 @@
   },
   "name.failureReason": {
     "message": "失敗理由",
-    "description": "タスク失敗の原因"
+    "description": "タスク失敗の理由"
   },
   "name.status": {
-    "message": "状態",
-    "description": "タスクの状態"
+    "message": "ステータス",
+    "description": "タスクのステータス"
   },
   "name.traceId": {
     "message": "トレース ID",
@@ -49,11 +49,11 @@
   },
   "name.content": {
     "message": "コンテンツ",
-    "description": "生成する QR コードのコンテンツ"
+    "description": "生成する QR コードの内容"
   },
   "name.ecl": {
-    "message": "誤り訂正レベル",
-    "description": "生成する QR コードの誤り訂正レベル"
+    "message": "エラーチェックレベル",
+    "description": "生成する QR コードのエラーチェックレベル"
   },
   "name.position": {
     "message": "位置",
@@ -68,8 +68,8 @@
     "description": "生成する QR コードの回転"
   },
   "name.advanced": {
-    "message": "詳細",
-    "description": "生成する QR コードの詳細設定"
+    "message": "高度な設定",
+    "description": "生成する QR コードの高度な設定"
   },
   "name.aspectRatio": {
     "message": "アスペクト比",
@@ -88,7 +88,7 @@
     "description": "QR コードジェネレーターの名前"
   },
   "name.steps": {
-    "message": "生成ステップ",
+    "message": "生成ステップ数",
     "description": "QR コード生成のステップ数"
   },
   "name.preset": {
@@ -101,7 +101,7 @@
   },
   "name.contentImageUrl": {
     "message": "コンテンツ画像リンク",
-    "description": "生成する QR コードのコンテンツ画像の URL"
+    "description": "生成する QR コードのコンテンツ画像 URL"
   },
   "inputWay.input": {
     "message": "入力内容",
@@ -112,12 +112,12 @@
     "description": "入力方式"
   },
   "description.qrw": {
-    "message": "QR コードの可視性、サイズが大きいほど QR コードの可視性が高くなります",
-    "description": "パラメータ 'qrw' の説明"
+    "message": "QR コードの可視性、サイズが大きいほど、QR コードの可視性は高くなります",
+    "description": "パラメータ'qrw'の説明"
   },
   "description.steps": {
-    "message": "QR コード生成のステップ数、ステップ数が多いほど QR コードの可視性が高くなります",
-    "description": "パラメータ 'steps' の説明"
+    "message": "QR コード生成のステップ数、ステップが多いほど、QR コードの可視性は高くなります",
+    "description": "パラメータ'steps'の説明"
   },
   "status.pending": {
     "message": "保留中",
@@ -132,11 +132,11 @@
     "description": "パディングレベルのプレースホルダー"
   },
   "placeholder.prompt": {
-    "message": "生成する QR コードのスタイルのヒントを入力してください。例：flowers",
+    "message": "生成する QR コードスタイルのキーワードを入力してください。例：花",
     "description": "プロンプトフィールドのプレースホルダーテキスト"
   },
   "placeholder.seed": {
-    "message": "シードの範囲は 1 から 9007199254740991 です",
+    "message": "シード範囲は 1 から 9007199254740991 です",
     "description": "シード入力のプレースホルダー"
   },
   "placeholder.position": {
@@ -169,14 +169,14 @@
   },
   "button.generate": {
     "message": "生成",
-    "description": "QR コードを生成するボタンテキスト"
+    "description": "QR コード生成のボタンテキスト"
   },
   "button.uploadQr": {
     "message": "QR コードをアップロード",
     "description": "QR コードをアップロードするボタンテキスト"
   },
   "preset.sunset": {
-    "message": "夕日",
+    "message": "夕焼け",
     "description": "生成する QR コードのプリセットスタイル"
   },
   "preset.floral": {
@@ -184,11 +184,11 @@
     "description": "生成する QR コードのプリセットスタイル"
   },
   "preset.snowflakes": {
-    "message": "雪花",
+    "message": "雪の結晶",
     "description": "生成する QR コードのプリセットスタイル"
   },
   "preset.feathers": {
-    "message": "羽毛",
+    "message": "羽根",
     "description": "生成する QR コードのプリセットスタイル"
   },
   "preset.raindrops": {
@@ -196,216 +196,216 @@
     "description": "生成する QR コードのプリセットスタイル"
   },
   "preset.ultraRealism": {
-    "message": "超リアリズム",
+    "message": "超現実主義",
     "description": "生成する QR コードのプリセットスタイル"
   },
   "preset.epicRealms": {
-    "message": "エピックレルム",
+    "message": "エピックリアルム",
     "description": "生成する QR コードのプリセットスタイル"
   },
   "preset.intricateStudio": {
     "message": "複雑なスタジオ",
-    "description": "生成する QR コードのプリセットスタイル"
+    "description": "生成されるQRコードのプリセットスタイル"
   },
   "preset.symmetricMasterpiece": {
     "message": "対称的な傑作",
-    "description": "生成する QR コードのプリセットスタイル"
+    "description": "生成されるQRコードのプリセットスタイル"
   },
   "preset.luminousHighway": {
-    "message": "光輝く道",
-    "description": "生成する QR コードのプリセットスタイル"
+    "message": "発光する道",
+    "description": "生成されるQRコードのプリセットスタイル"
   },
   "preset.celestialJourney": {
     "message": "天体の旅",
-    "description": "生成する QR コードのプリセットスタイル"
+    "description": "生成されるQRコードのプリセットスタイル"
   },
   "preset.neonMech": {
     "message": "ネオンメカ",
-    "description": "生成する QR コードのプリセットスタイル"
+    "description": "生成されるQRコードのプリセットスタイル"
   },
   "preset.etherealLowPoly": {
-    "message": "空気のようなローポリゴン",
-    "description": "生成する QR コードのプリセットスタイル"
+    "message": "空虚なローポリゴン",
+    "description": "生成されるQRコードのプリセットスタイル"
   },
   "preset.goldenVista": {
-    "message": "黄金の展望",
-    "description": "生成する QR コードのプリセットスタイル"
+    "message": "黄金の景観",
+    "description": "生成されるQRコードのプリセットスタイル"
   },
   "preset.cinematicExpanse": {
-    "message": "映画のような広がり",
-    "description": "生成する QR コードのプリセットスタイル"
+    "message": "映画的な広がり",
+    "description": "生成されるQRコードのプリセットスタイル"
   },
   "preset.cinematicWarm": {
-    "message": "映画のような暖かさ",
-    "description": "生成する QR コードのプリセットスタイル"
+    "message": "映画的な温かさ",
+    "description": "生成されるQRコードのプリセットスタイル"
   },
   "preset.desolateWilderness": {
     "message": "荒涼とした荒野",
-    "description": "生成する QR コードのプリセットスタイル"
+    "description": "生成されるQRコードのプリセットスタイル"
   },
   "preset.vibrantPalette": {
-    "message": "鮮やかなパレット",
-    "description": "生成する QR コードのプリセットスタイル"
+    "message": "活気に満ちたパレット",
+    "description": "生成されるQRコードのプリセットスタイル"
   },
   "preset.enigmaticJourney": {
     "message": "謎めいた旅",
-    "description": "生成する QR コードのプリセットスタイル"
+    "description": "生成されるQRコードのプリセットスタイル"
   },
   "preset.timelessCinematic": {
     "message": "時を超えた映画",
-    "description": "生成する QR コードのプリセットスタイル"
+    "description": "生成されるQRコードのプリセットスタイル"
   },
   "preset.regalGalaxy": {
-    "message": "王家の銀河",
-    "description": "生成する QR コードのプリセットスタイル"
+    "message": "壮麗な銀河",
+    "description": "生成されるQRコードのプリセットスタイル"
   },
   "preset.illustriousCanvas": {
     "message": "著名なキャンバス",
-    "description": "生成する QR コードのプリセットスタイル"
+    "description": "生成されるQRコードのプリセットスタイル"
   },
   "preset.expressiveMural": {
-    "message": "表現豊かな壁画",
-    "description": "生成する QR コードのプリセットスタイル"
+    "message": "表現力豊かな壁画",
+    "description": "生成されるQRコードのプリセットスタイル"
   },
   "preset.sereneHaze": {
-    "message": "穏やかな霞",
-    "description": "生成する QR コードのプリセットスタイル"
+    "message": "穏やかな霧",
+    "description": "生成されるQRコードのプリセットスタイル"
   },
   "message.uploadQr": {
-    "message": "QR コード画像をアップロードすると、QR コードの内容と一致するアート QR コードが生成されます",
-    "description": "QR コードのアップロードの説明"
+    "message": "QRコード画像をアップロードすると、一致するアートQRコードを生成できます",
+    "description": "QRコードをアップロードする際の説明"
   },
   "message.promptPlaceholder": {
-    "message": "生成したい画像を説明する文を入力してください。例：可愛い猫。追加のパラメーターはデフォルトのプリセットパラメーターを上書きします。",
-    "description": "プロンプトフィールドのプレースホルダーテキスト"
+    "message": "生成する画像を説明する文を入力してください。例：可愛い猫。追加パラメータはデフォルトのプリセットパラメータを上書きします",
+    "description": "プロンプトフィールド内のプレースホルダーテキスト"
   },
   "message.uploadReferencesExceed": {
-    "message": "最大で 5 枚の画像をアップロードできます",
-    "description": "アップロードした画像の数が制限を超えたときのエラーメッセージ"
+    "message": "最大5枚の画像をアップロードできます",
+    "description": "アップロードされた画像の数が制限を超えた場合のエラーメッセージ"
   },
   "message.uploadReferencesSuccess": {
     "message": "画像を正常にアップロードしました",
-    "description": "画像が正常にアップロードされたときの成功メッセージ"
+    "description": "画像が正常にアップロードされた際のメッセージ"
   },
   "message.uploadReferencesError": {
     "message": "画像のアップロードに失敗しました。後でもう一度お試しください",
-    "description": "画像のアップロードに失敗したときのエラーメッセージ"
+    "description": "画像のアップロードに失敗した場合のエラーメッセージ"
   },
   "message.startingTask": {
-    "message": "タスクを開始しています...",
+    "message": "タスクを起動しています...",
     "description": "描画タスクが開始されるときのメッセージ"
   },
   "message.startTaskSuccess": {
-    "message": "生成タスクを正常に開始しました",
-    "description": "タスクが正常に開始されたときの成功メッセージ"
+    "message": "生成タスクが正常に開始されました",
+    "description": "タスクが正常に開始されたときのメッセージ"
   },
   "message.startTaskFailed": {
-    "message": "タスクの開始に失敗しました。管理者に連絡してください",
-    "description": "描画タスクの開始に失敗したときのエラーメッセージ"
+    "message": "タスクの開始に失敗しました。管理者にご連絡ください",
+    "description": "描画タスクの開始に失敗した場合のエラーメッセージ"
   },
   "message.usedUp": {
-    "message": "ポイントが使い切れました。続けるには追加のポイントを購入してください",
-    "description": "使い切ったときのメッセージ"
+    "message": "あなたのポイントは使い切りました。購入後に続けて使用してください",
+    "description": "ポイントが使い果たされた時のメッセージ"
   },
   "message.generating": {
     "message": "生成中...",
-    "description": "画像が生成されているときのメッセージ"
+    "description": "画像が生成中の際のメッセージ"
   },
   "message.generateFailed": {
     "message": "画像の生成に失敗しました",
-    "description": "画像の生成に失敗したときのメッセージ"
+    "description": "画像の生成に失敗した場合のメッセージ"
   },
   "message.noOperations": {
     "message": "利用可能な操作はありません",
-    "description": "利用可能な操作がないときのメッセージ"
+    "description": "利用可能な操作がない場合のメッセージ"
   },
   "message.noTasks": {
-    "message": "履歴タスクがありません。下のボタンをクリックして新しい QR コードを生成してください",
-    "description": "タスクがないときのメッセージ"
+    "message": "履歴タスクはありません。下のボタンをクリックして新しいQRコードを生成してください",
+    "description": "タスクがない場合のメッセージ"
   },
   "markerShape.square": {
     "message": "正方形",
-    "description": "QR コードを生成するためのマーカーの形状"
+    "description": "QRコード生成に使用されるマーカーの形状"
   },
   "markerShape.circle": {
     "message": "円形",
-    "description": "QR コードを生成するためのマーカーの形状"
+    "description": "QRコード生成に使用されるマーカーの形状"
   },
   "markerShape.plus": {
-    "message": "加号",
-    "description": "QR コードを生成するためのマーカーの形状"
+    "message": "プラス",
+    "description": "QRコード生成に使用されるマーカーの形状"
   },
   "markerShape.box": {
     "message": "ボックス",
-    "description": "QR コードを生成するためのマーカーの形状"
+    "description": "QRコード生成に使用されるマーカーの形状"
   },
   "markerShape.octagon": {
     "message": "八角形",
-    "description": "QR コードを生成するためのマーカーの形状"
+    "description": "QRコード生成に使用されるマーカーの形状"
   },
   "markerShape.tinyPlus": {
-    "message": "小さな加号",
-    "description": "QR コードを生成するためのマーカーの形状"
+    "message": "小さなプラス",
+    "description": "QRコード生成に使用されるマーカーの形状"
   },
   "markerShape.random": {
     "message": "ランダム",
-    "description": "QR コードを生成するためのマーカーの形状"
+    "description": "QRコード生成に使用されるマーカーの形状"
   },
   "subMarker.square": {
     "message": "正方形",
-    "description": "QR コードを生成するためのサブマーカーの形状"
+    "description": "QRコード生成に使用されるサブマーカーの形状"
   },
   "subMarker.circle": {
     "message": "円形",
-    "description": "QR コードを生成するためのサブマーカーの形状"
+    "description": "QRコード生成に使用されるサブマーカーの形状"
   },
   "subMarker.plus": {
-    "message": "加号",
-    "description": "QR コードを生成するためのサブマーカーの形状"
+    "message": "プラス",
+    "description": "QRコード生成に使用されるサブマーカーの形状"
   },
   "subMarker.box": {
     "message": "ボックス",
-    "description": "QR コードを生成するためのサブマーカーの形状"
+    "description": "QRコード生成に使用されるサブマーカーの形状"
   },
   "subMarker.random": {
     "message": "ランダム",
-    "description": "QR コードを生成するためのサブマーカーの形状"
+    "description": "QRコード生成に使用されるサブマーカーの形状"
   },
   "position.center": {
-    "message": "中央",
-    "description": "QR コードを生成する位置"
+    "message": "中心",
+    "description": "QRコード生成に使用される位置"
   },
   "position.topLeft": {
     "message": "左上",
-    "description": "QR コードを生成する位置"
+    "description": "QRコード生成に使用される位置"
   },
   "position.topRight": {
     "message": "右上",
-    "description": "QR コードを生成する位置"
+    "description": "QRコード生成に使用される位置"
   },
   "position.bottomLeft": {
     "message": "左下",
-    "description": "QRコードを生成するための位置"
+    "description": "QRコードを生成する位置"
   },
   "position.bottomRight": {
     "message": "右下",
-    "description": "QRコードを生成するための位置"
+    "description": "QRコードを生成する位置"
   },
   "position.top": {
     "message": "上",
-    "description": "QRコードを生成するための位置"
+    "description": "QRコードを生成する位置"
   },
   "position.bottom": {
     "message": "下",
-    "description": "QRコードを生成するための位置"
+    "description": "QRコードを生成する位置"
   },
   "position.left": {
     "message": "左",
-    "description": "QRコードを生成するための位置"
+    "description": "QRコードを生成する位置"
   },
   "position.right": {
     "message": "右",
-    "description": "QRコードを生成するための位置"
+    "description": "QRコードを生成する位置"
   },
   "pixelStyle.row": {
     "message": "行",
@@ -420,7 +420,7 @@
     "description": "QRコードのピクセルスタイル"
   },
   "pixelStyle.rounded": {
-    "message": "角丸",
+    "message": "丸み",
     "description": "QRコードのピクセルスタイル"
   },
   "pixelStyle.dot": {
@@ -428,27 +428,27 @@
     "description": "QRコードのピクセルスタイル"
   },
   "pixelStyle.squircle": {
-    "message": "角丸四角形",
+    "message": "丸角四角形",
     "description": "QRコードのピクセルスタイル"
   },
   "type.text": {
     "message": "テキスト",
-    "description": "QRコードのコンテンツタイプ"
+    "description": "QRコードの内容タイプ"
   },
   "type.link": {
     "message": "リンク",
-    "description": "QRコードのコンテンツタイプ"
+    "description": "QRコードの内容タイプ"
   },
   "type.email": {
     "message": "メール",
-    "description": "QRコードのコンテンツタイプ"
+    "description": "QRコードの内容タイプ"
   },
   "type.phone": {
     "message": "電話",
-    "description": "QRコードのコンテンツタイプ"
+    "description": "QRコードの内容タイプ"
   },
   "type.sms": {
     "message": "SMS",
-    "description": "QRコードのコンテンツタイプ"
+    "description": "QRコードの内容タイプ"
   }
 }

@@ -5,11 +5,11 @@
   },
   "name.type": {
     "message": "Tyyppi",
-    "description": "QR-koodin sisällön tyyppi, kuten 'linkki', 'teksti' jne."
+    "description": "QR-koodin sisältötyyppi, kuten 'linkki', 'teksti' jne."
   },
   "name.failure": {
-    "message": "Epäonnistunut",
-    "description": "Tehtävän epäonnistumisen tila"
+    "message": "Epätäsmällisyys",
+    "description": "Tehtävän epäonnistumistila"
   },
   "name.failureReason": {
     "message": "Epäonnistumisen syy",
@@ -28,8 +28,8 @@
     "description": "QR-koodin koko"
   },
   "name.createdAt": {
-    "message": "Luotu",
-    "description": "QR-koodin luomispäivämäärä ja -aika"
+    "message": "Luontiaika",
+    "description": "QR-koodin luontipäivämäärä ja -aika"
   },
   "name.pixelStyle": {
     "message": "Pikselityyli",
@@ -44,27 +44,27 @@
     "description": "QR-koodin täyttötaso"
   },
   "name.paddingNoise": {
-    "message": "Täyttömelu",
-    "description": "QR-koodin täyttömelu"
+    "message": "Täyttöhäly",
+    "description": "QR-koodin täyttöhäly"
   },
   "name.content": {
     "message": "Sisältö",
     "description": "QR-koodin sisältö"
   },
   "name.ecl": {
-    "message": "Virheenkorjaustaso",
-    "description": "QR-koodin virheenkorjaustaso"
+    "message": "Virheentunnistustaso",
+    "description": "QR-koodin virheentunnistustaso"
   },
   "name.position": {
     "message": "Sijainti",
     "description": "QR-koodin sijainti"
   },
   "name.prompt": {
-    "message": "Vihje",
-    "description": "Sisältösyötteen vihje"
+    "message": "Ohje",
+    "description": "Sisällön syöttöohje"
   },
   "name.rotate": {
-    "message": "Kierrä",
+    "message": "Kiertokulma",
     "description": "QR-koodin kierto"
   },
   "name.advanced": {
@@ -72,51 +72,51 @@
     "description": "QR-koodin edistyneet asetukset"
   },
   "name.aspectRatio": {
-    "message": "Leveys-Korkeus-suhde",
-    "description": "QR-koodin leveys-korkeus-suhde"
+    "message": "Suhe",
+    "description": "QR-koodin kuvasuhe"
   },
   "name.markerShape": {
-    "message": "Merkkimuoto",
-    "description": "QR-koodin merkkimuoto"
+    "message": "Merkin muoto",
+    "description": "QR-koodin merkin muoto"
   },
   "name.subMarker": {
-    "message": "Ala-merkit",
-    "description": "QR-koodin ala-merkit"
+    "message": "Alamerkki",
+    "description": "QR-koodin alamerkki"
   },
   "name.qrw": {
     "message": "Näkyvyys",
-    "description": "QR-koodin generaattorin nimi"
+    "description": "QR-koodin generatorin nimi"
   },
   "name.steps": {
-    "message": "Generointivaiheet",
-    "description": "QR-koodin luomiseen tarvittavat vaiheet"
+    "message": "Generointiasteet",
+    "description": "QR-koodin generointivaiheet"
   },
   "name.preset": {
     "message": "Esiasetettu tyyli",
-    "description": "QR-koodin esiasetus"
+    "description": "QR-koodin esiasetetut asetukset"
   },
   "name.qrartBot": {
     "message": "QrArt Bot",
-    "description": "QR-koodin generaattorin nimi"
+    "description": "QR-koodin generatorin nimi"
   },
   "name.contentImageUrl": {
     "message": "Sisältökuvan linkki",
-    "description": "QR-koodin sisältökuvan URL-osoite"
+    "description": "QR-koodin sisältökuvan URL"
   },
   "inputWay.input": {
     "message": "Syötä sisältö",
-    "description": "Syöttötapa"
+    "description": "Syöttötila"
   },
   "inputWay.upload": {
     "message": "Lataa QR-koodi",
-    "description": "Syöttötapa"
+    "description": "Syöttötila"
   },
   "description.qrw": {
-    "message": "QR-koodin näkyvyys, mitä suurempi koko, sitä parempi näkyvyys",
+    "message": "QR-koodin näkyvyys, mitä suurempi, sitä parempi näkyvyys",
     "description": "Parametrin 'qrw' kuvaus"
   },
   "description.steps": {
-    "message": "QR-koodin luomisen vaiheet, mitä enemmän vaiheita, sitä parempi näkyvyys",
+    "message": "QR-koodin generointivaiheet, mitä enemmän vaiheita, sitä parempi näkyvyys",
     "description": "Parametrin 'steps' kuvaus"
   },
   "status.pending": {
@@ -125,330 +125,330 @@
   },
   "placeholder.paddingNoise": {
     "message": "Valitse...",
-    "description": "Täyttömelun syötteen paikallispitkä"
+    "description": "Täyttöhälyn syöttöpaikka"
   },
   "placeholder.paddingLevel": {
     "message": "Valitse...",
-    "description": "Täyttötason paikallispitkä"
+    "description": "Täyttötason syöttöpaikka"
   },
   "placeholder.prompt": {
-    "message": "Syötä QR-koodin tyylivihje, kuten: kukat",
-    "description": "Vihjei kentän paikallispitkä"
+    "message": "Syötä QR-koodin tyyliin liittyvä ohje, esimerkiksi: kukat",
+    "description": "Ohjealueen paikkateksti"
   },
   "placeholder.seed": {
-    "message": "Siemen on välillä 1 - 9007199254740991",
-    "description": "Siemenarvo syötteen paikallispitkä"
+    "message": "Siemenarvo on välillä 1-9007199254740991",
+    "description": "Siemenen syöttöpaikka"
   },
   "placeholder.position": {
     "message": "Valitse...",
-    "description": "Sijainnin syötteen paikallispitkä"
+    "description": "Sijainnin syöttöpaikka"
   },
   "placeholder.content": {
-    "message": "Syötä QR-koodin sisältö, kuten: https://www.google.com",
-    "description": "Sisältökentän paikallispitkä"
+    "message": "Syötä QR-koodin sisältö, esimerkiksi: https://www.google.com",
+    "description": "Sisältöalueen paikkateksti"
   },
   "placeholder.aspectRatio": {
     "message": "Valitse...",
-    "description": "Leveys-korkeus-suhteen syötteen paikallispitkä"
+    "description": "Kuvasuhteen syöttöpaikka"
   },
   "placeholder.preset": {
     "message": "Valitse...",
-    "description": "Esiasetuksen syötteen paikallispitkä"
+    "description": "Esiasetuksen syöttöpaikka"
   },
   "placeholder.markerShape": {
     "message": "Valitse...",
-    "description": "Merkkimuodon syötteen paikallispitkä"
+    "description": "Merkin muodon syöttöpaikka"
   },
   "placeholder.rotate": {
     "message": "Valitse...",
-    "description": "Kierteen syötteen paikallispitkä"
+    "description": "Kierteen syöttöpaikka"
   },
   "placeholder.subMarker": {
     "message": "Valitse...",
-    "description": "Ala-merkkien syötteen paikallispitkä"
+    "description": "Alamerkin syöttöpaikka"
   },
   "button.generate": {
     "message": "Generoi",
-    "description": "QR-koodin generointinappi"
+    "description": "QR-koodin generointinäppäimen teksti"
   },
   "button.uploadQr": {
     "message": "Lataa QR-koodi",
-    "description": "QR-koodin latausnappi"
+    "description": "QR-koodin latausnappula"
   },
   "preset.sunset": {
     "message": "Auringonlasku",
     "description": "QR-koodin esiasetettu tyyli"
   },
   "preset.floral": {
-    "message": "Kukkakuvio",
+    "message": "Kukallinen",
     "description": "QR-koodin esiasetettu tyyli"
   },
   "preset.snowflakes": {
-    "message": "Lumihiutaleet",
+    "message": "Lumiukot",
     "description": "QR-koodin esiasetettu tyyli"
   },
   "preset.feathers": {
-    "message": "Höyhenet",
+    "message": "Sulkia",
     "description": "QR-koodin esiasetettu tyyli"
   },
   "preset.raindrops": {
-    "message": "Sateenpisarat",
+    "message": "Sadekuurot",
     "description": "QR-koodin esiasetettu tyyli"
   },
   "preset.ultraRealism": {
-    "message": "Yliluonnollinen",
+    "message": "Ultra realismi",
     "description": "QR-koodin esiasetettu tyyli"
   },
   "preset.epicRealms": {
-    "message": "Episet valtakunnat",
+    "message": "Eepokset",
     "description": "QR-koodin esiasetettu tyyli"
   },
   "preset.intricateStudio": {
     "message": "Monimutkainen studio",
-    "description": "QR-koodin esiasetustyylien tuottamiseen"
+    "description": "QR-koodin esiasetustyyli, joka luodaan"
   },
   "preset.symmetricMasterpiece": {
-    "message": "Synnynnäinen mestariteos",
-    "description": "QR-koodin esiasetustyylien tuottamiseen"
+    "message": "Syntynyt mestariteos",
+    "description": "QR-koodin esiasetustyyli, joka luodaan"
   },
   "preset.luminousHighway": {
-    "message": "Kirkas tie",
-    "description": "QR-koodin esiasetustyylien tuottamiseen"
+    "message": "Kirkas väylä",
+    "description": "QR-koodin esiasetustyyli, joka luodaan"
   },
   "preset.celestialJourney": {
     "message": "Taivaallinen matka",
-    "description": "QR-koodin esiasetustyylien tuottamiseen"
+    "description": "QR-koodin esiasetustyyli, joka luodaan"
   },
   "preset.neonMech": {
     "message": "Neonmekaniikka",
-    "description": "QR-koodin esiasetustyylien tuottamiseen"
+    "description": "QR-koodin esiasetustyyli, joka luodaan"
   },
   "preset.etherealLowPoly": {
-    "message": "Ethereal alhaisempi monikulmio",
-    "description": "QR-koodin esiasetustyylien tuottamiseen"
+    "message": "Eteerinen matala polygon",
+    "description": "QR-koodin esiasetustyyli, joka luodaan"
   },
   "preset.goldenVista": {
-    "message": "Kultainen näkymä",
-    "description": "QR-koodin esiasetustyylien tuottamiseen"
+    "message": "Kultainen maisema",
+    "description": "QR-koodin esiasetustyyli, joka luodaan"
   },
   "preset.cinematicExpanse": {
-    "message": "Elokuvamaisesti laaja",
-    "description": "QR-koodin esiasetustyylien tuottamiseen"
+    "message": "Elokuvamainen avaruus",
+    "description": "QR-koodin esiasetustyyli, joka luodaan"
   },
   "preset.cinematicWarm": {
     "message": "Elokuvamainen lämpö",
-    "description": "QR-koodin esiasetustyylien tuottamiseen"
+    "description": "QR-koodin esiasetustyyli, joka luodaan"
   },
   "preset.desolateWilderness": {
     "message": "Autio erämaa",
-    "description": "QR-koodin esiasetustyylien tuottamiseen"
+    "description": "QR-koodin esiasetustyyli, joka luodaan"
   },
   "preset.vibrantPalette": {
-    "message": "Värikäs paletti",
-    "description": "QR-koodin esiasetustyylien tuottamiseen"
+    "message": "Elinvoimainen väri",
+    "description": "QR-koodin esiasetustyyli, joka luodaan"
   },
   "preset.enigmaticJourney": {
-    "message": "Arvoituksellinen matka",
-    "description": "QR-koodin esiasetustyylien tuottamiseen"
+    "message": "Salaperäinen matka",
+    "description": "QR-koodin esiasetustyyli, joka luodaan"
   },
   "preset.timelessCinematic": {
-    "message": "Ajattoman elokuvallinen",
-    "description": "QR-koodin esiasetustyylien tuottamiseen"
+    "message": "Aikamatka elokuvassa",
+    "description": "QR-koodin esiasetustyyli, joka luodaan"
   },
   "preset.regalGalaxy": {
-    "message": "Kuningasgalaksi",
-    "description": "QR-koodin esiasetustyylien tuottamiseen"
+    "message": "Kuningas galaksi",
+    "description": "QR-koodin esiasetustyyli, joka luodaan"
   },
   "preset.illustriousCanvas": {
-    "message": "Säihkeä kangas",
-    "description": "QR-koodin esiasetustyylien tuottamiseen"
+    "message": "Kunniallinen kangas",
+    "description": "QR-koodin esiasetustyyli, joka luodaan"
   },
   "preset.expressiveMural": {
-    "message": "Ilmaiseva fresko",
-    "description": "QR-koodin esiasetustyylien tuottamiseen"
+    "message": "Ilmaisuvoimainen seinämaalaus",
+    "description": "QR-koodin esiasetustyyli, joka luodaan"
   },
   "preset.sereneHaze": {
-    "message": "Rauhallinen sumu",
-    "description": "QR-koodin esiasetustyylien tuottamiseen"
+    "message": "Rauhoittava sumu",
+    "description": "QR-koodin esiasetustyyli, joka luodaan"
   },
   "message.uploadQr": {
-    "message": "Lataa QR-koodikuva, joka voi luoda taiteellisia QR-koodeja, jotka vastaavat QR-koodin sisältöä",
-    "description": "QR-koodin lataamisen ohje"
+    "message": "Lataa QR-koodin kuva, joka voi tuottaa taiteellisen QR-koodin vastaamaan QR-koodin sisältöä",
+    "description": "QR-koodin latausohje"
   },
   "message.promptPlaceholder": {
-    "message": "Kirjoita kuvaus, joka määrittelee luotavan kuvan, esimerkiksi: suloinen kissa. Lisäparametrit ohittavat oletusasetukset.",
-    "description": "Kehotuskentän paikkamerkkiteksti"
+    "message": "Syötä kuvausta luotavasta kuvasta, esimerkiksi: suloinen kissa. Lisäparametrit ylittävät oletusarvoiset asetukset",
+    "description": "Paikkamerkintä teksti kehotuskentässä"
   },
   "message.uploadReferencesExceed": {
     "message": "Voit ladata enintään 5 kuvaa",
     "description": "Virheilmoitus, kun ladattujen kuvien määrä ylittää rajan"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Kuva ladattu onnistuneesti",
-    "description": "Onnistumismuoto, kun kuva on ladattu onnistuneesti"
+    "message": "Kuvan lataaminen onnistui",
+    "description": "Onnistumisen ilmoitus, kun kuva on ladattu"
   },
   "message.uploadReferencesError": {
     "message": "Kuvan lataaminen epäonnistui, yritä myöhemmin uudelleen",
-    "description": "Virheilmoitus, kun kuvan lataaminen epäonnistuu"
+    "description": "Virheilmoitus, kun kuvaa ei voida ladata"
   },
   "message.startingTask": {
-    "message": "Aloitetaan tehtävä...",
-    "description": "Viesti, kun piirustustehtävä alkaa"
+    "message": "Aloitetaan tehtävää...",
+    "description": "Viesti piirtotehtävän alkaessa"
   },
   "message.startTaskSuccess": {
-    "message": "Tehtävä aloitettu onnistuneesti",
-    "description": "Onnistumismuoto, kun tehtävä aloitetaan onnistuneesti"
+    "message": "Tehtävä käynnistettiin onnistuneesti",
+    "description": "Onnistumisen ilmoitus, kun tehtävä on käynnistetty"
   },
   "message.startTaskFailed": {
-    "message": "Tehtävän aloittaminen epäonnistui, ota yhteyttä järjestelmänvalvojaan",
-    "description": "Virheilmoitus, kun piirustustehtävän aloittaminen epäonnistuu"
+    "message": "Tehtävän käynnistäminen epäonnistui, ota yhteyttä ylläpitoon",
+    "description": "Virheilmoitus, kun piirtotehtävän käynnistäminen epäonnistuu"
   },
   "message.usedUp": {
-    "message": "Pisteesi on käytetty loppuun, osta lisää pisteitä jatkaaksesi",
+    "message": "Pisteesi on käytetty loppuun, osta lisää pisteitä jatkaaksesi käyttöä",
     "description": "Viesti, kun pisteet on käytetty loppuun"
   },
   "message.generating": {
-    "message": "Generoidaan...",
-    "description": "Viesti, kun kuvaa luodaan"
+    "message": "Luodaan...",
+    "description": "Viesti, kun kuvaa ollaan luomassa"
   },
   "message.generateFailed": {
-    "message": "Kuvan luonti epäonnistui",
-    "description": "Viesti, kun kuvan luonti epäonnistuu"
+    "message": "Kuvan luominen epäonnistui",
+    "description": "Viesti, kun kuvan luominen epäonnistuu"
   },
   "message.noOperations": {
     "message": "Ei käytettävissä olevia toimintoja",
     "description": "Viesti, kun ei ole käytettävissä olevia toimintoja"
   },
   "message.noTasks": {
-    "message": "Ei historiatehtäviä, napsauta alla luodaksesi uuden QR-koodin",
+    "message": "Ei historiallisia tehtäviä, napsauta alla luodaksesi uuden QR-koodin",
     "description": "Viesti, kun ei ole tehtäviä"
   },
   "markerShape.square": {
     "message": "Neliö",
-    "description": "QR-koodin valmistamiseen käytettävä merkki"
+    "description": "QR-koodin merkintämuoto"
   },
   "markerShape.circle": {
     "message": "Ympyrä",
-    "description": "QR-koodin valmistamiseen käytettävä merkki"
+    "description": "QR-koodin merkintämuoto"
   },
   "markerShape.plus": {
-    "message": "Plusmerkki",
-    "description": "QR-koodin valmistamiseen käytettävä merkki"
+    "message": "Plussa",
+    "description": "QR-koodin merkintämuoto"
   },
   "markerShape.box": {
     "message": "Laatikko",
-    "description": "QR-koodin valmistamiseen käytettävä merkki"
+    "description": "QR-koodin merkintämuoto"
   },
   "markerShape.octagon": {
-    "message": "Kasio",
-    "description": "QR-koodin valmistamiseen käytettävä merkki"
+    "message": "Hedelmä",
+    "description": "QR-koodin merkintämuoto"
   },
   "markerShape.tinyPlus": {
-    "message": "Pieni plusmerkki",
-    "description": "QR-koodin valmistamiseen käytettävä merkki"
+    "message": "Pieni plussa",
+    "description": "QR-koodin merkintämuoto"
   },
   "markerShape.random": {
     "message": "Satunnainen",
-    "description": "QR-koodin valmistamiseen käytettävä merkki"
+    "description": "QR-koodin merkintämuoto"
   },
   "subMarker.square": {
     "message": "Neliö",
-    "description": "QR-koodin alamerkin muoto"
+    "description": "QR-koodin alamerkintämuoto"
   },
   "subMarker.circle": {
     "message": "Ympyrä",
-    "description": "QR-koodin alamerkin muoto"
+    "description": "QR-koodin alamerkintämuoto"
   },
   "subMarker.plus": {
-    "message": "Plusmerkki",
-    "description": "QR-koodin alamerkin muoto"
+    "message": "Plussa",
+    "description": "QR-koodin alamerkintämuoto"
   },
   "subMarker.box": {
     "message": "Laatikko",
-    "description": "QR-koodin alamerkin muoto"
+    "description": "QR-koodin alamerkintämuoto"
   },
   "subMarker.random": {
     "message": "Satunnainen",
-    "description": "QR-koodin alamerkin muoto"
+    "description": "QR-koodin alamerkintämuoto"
   },
   "position.center": {
     "message": "Keskellä",
-    "description": "QR-koodin asema"
+    "description": "QR-koodin sijainti"
   },
   "position.topLeft": {
-    "message": "Vasen yläkulma",
-    "description": "QR-koodin asema"
+    "message": "Vasemmassa yläkulmassa",
+    "description": "QR-koodin sijainti"
   },
   "position.topRight": {
-    "message": "Oikea yläkulma",
-    "description": "QR-koodin asema"
+    "message": "Oikeassa yläkulmassa",
+    "description": "QR-koodin sijainti"
   },
   "position.bottomLeft": {
-    "message": "Vasemmalla alhaalla",
-    "description": "QR-koodin genereerimiseen käytettävä sijainti"
+    "message": "Vasen alakulma",
+    "description": "QRCodeen sijoittaminen"
   },
   "position.bottomRight": {
-    "message": "Oikealla alhaalla",
-    "description": "QR-koodin genereerimiseen käytettävä sijainti"
+    "message": "Oikea alakulma",
+    "description": "QRCodeen sijoittaminen"
   },
   "position.top": {
     "message": "Yläosa",
-    "description": "QR-koodin genereerimiseen käytettävä sijainti"
+    "description": "QRCodeen sijoittaminen"
   },
   "position.bottom": {
     "message": "Alaosa",
-    "description": "QR-koodin genereerimiseen käytettävä sijainti"
+    "description": "QRCodeen sijoittaminen"
   },
   "position.left": {
-    "message": "Vasen",
-    "description": "QR-koodin genereerimiseen käytettävä sijainti"
+    "message": "Vasemmalla",
+    "description": "QRCodeen sijoittaminen"
   },
   "position.right": {
-    "message": "Oikea",
-    "description": "QR-koodin genereerimiseen käytettävä sijainti"
+    "message": "Oikealla",
+    "description": "QRCodeen sijoittaminen"
   },
   "pixelStyle.row": {
     "message": "Rivi",
-    "description": "QR-koodin pikselityylin määrittäminen"
+    "description": "QRCodeen liittyvä pikselityyli"
   },
   "pixelStyle.column": {
-    "message": "Sarakkeet",
-    "description": "QR-koodin pikselityylin määrittäminen"
+    "message": "Sarake",
+    "description": "QRCodeen liittyvä pikselityyli"
   },
   "pixelStyle.square": {
     "message": "Neliö",
-    "description": "QR-koodin pikselityylin määrittäminen"
+    "description": "QRCodeen liittyvä pikselityyli"
   },
   "pixelStyle.rounded": {
     "message": "Pyöristetty",
-    "description": "QR-koodin pikselityylin määrittäminen"
+    "description": "QRCodeen liittyvä pikselityyli"
   },
   "pixelStyle.dot": {
     "message": "Piste",
-    "description": "QR-koodin pikselityylin määrittäminen"
+    "description": "QRCodeen liittyvä pikselityyli"
   },
   "pixelStyle.squircle": {
-    "message": "Pyöristetty kulma",
-    "description": "QR-koodin pikselityylin määrittäminen"
+    "message": "Pyöristetty nelikulmio",
+    "description": "QRCodeen liittyvä pikselityyli"
   },
   "type.text": {
     "message": "Teksti",
-    "description": "QR-koodin sisällön tyypin määrittäminen"
+    "description": "QRCodeen liittyvä sisällön tyyppi"
   },
   "type.link": {
     "message": "Linkki",
-    "description": "QR-koodin sisällön tyypin määrittäminen"
+    "description": "QRCodeen liittyvä sisällön tyyppi"
   },
   "type.email": {
     "message": "Sähköposti",
-    "description": "QR-koodin sisällön tyypin määrittäminen"
+    "description": "QRCodeen liittyvä sisällön tyyppi"
   },
   "type.phone": {
     "message": "Puhelin",
-    "description": "QR-koodin sisällön tyypin määrittäminen"
+    "description": "QRCodeen liittyvä sisällön tyyppi"
   },
   "type.sms": {
     "message": "Tekstiviesti",
-    "description": "QR-koodin sisällön tyypin määrittäminen"
+    "description": "QRCodeen liittyvä sisällön tyyppi"
   }
 }
