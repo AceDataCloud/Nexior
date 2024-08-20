@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Tue, 20 Aug 2024 06:42:08 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Aug 2024 09:05:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.11.5
+
+Tue, 20 Aug 2024 09:05:47 GMT
+
+### Patches
+
+- update translate (qicu@microsoft.com)
 
 ## 2.11.4
 
