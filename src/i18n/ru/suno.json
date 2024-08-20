@@ -20,7 +20,7 @@
     "description": "Модель для генерации музыки"
   },
   "name.instrumental": {
-    "message": "Без слов",
+    "message": "Инструментальная",
     "description": "Описание параметра 'instrumental'"
   },
   "model.model3": {
@@ -32,51 +32,51 @@
     "description": "ID задачи"
   },
   "name.type": {
-    "message": "Кастомный режим",
-    "description": "Название кастомного режима"
+    "message": "Пользовательский режим",
+    "description": "Название пользовательского режима"
   },
   "name.prompt": {
     "message": "Описание песни",
-    "description": "Подсказка для ввода содержимого"
+    "description": "Подсказка для ввода содержания"
   },
   "name.extend": {
     "message": "Расширить песню из",
-    "description": "Подсказка для ввода содержимого"
+    "description": "Подсказка для ввода содержания"
   },
   "name.lyrics": {
-    "message": "Содержимое слов",
-    "description": "Подсказка для ввода содержания слов"
+    "message": "Содержимое текста",
+    "description": "Подсказка для ввода текста"
   },
   "name.style": {
     "message": "Стиль песни",
-    "description": "Подсказка для ввода содержания стиля"
+    "description": "Подсказка для ввода стиля песни"
   },
   "name.title": {
     "message": "Название песни",
     "description": "Подсказка для ввода названия песни"
   },
   "name.failureReason": {
-    "message": "Причина сбоя",
-    "description": "Причина сбоя задачи"
+    "message": "Причина неудачи",
+    "description": "Причина неудачи задачи"
   },
   "name.status": {
     "message": "Статус",
     "description": "Статус задачи"
   },
   "name.traceId": {
-    "message": "ID трассировки",
-    "description": "ID трассировки задачи"
+    "message": "ID отслеживания",
+    "description": "ID отслеживания задачи"
   },
   "name.sunoBot": {
     "message": "Suno Bot",
     "description": "Название генератора Suno"
   },
   "description.prompt": {
-    "message": "Укажите стиль и тему музыки, которую хотите сгенерировать, например, acoustic pop о праздниках",
+    "message": "Введите стиль и тему музыки, которую вы хотите сгенерировать, например, acoustic pop о праздниках",
     "description": "Описание параметра 'prompt'"
   },
   "description.lyrics": {
-    "message": "Содержимое слов",
+    "message": "Содержимое текста",
     "description": "Описание параметра 'lyrics'"
   },
   "description.style": {
@@ -88,24 +88,24 @@
     "description": "Описание параметра 'title'"
   },
   "status.pending": {
-    "message": "В ожидании",
-    "description": "Статус ожидания задачи"
+    "message": "Ожидание",
+    "description": "Состояние ожидания задачи"
   },
   "placeholder.prompt": {
     "message": "Введите подсказку для песни...",
-    "description": "Заполнитель для ввода шума"
+    "description": "Место для ввода шума"
   },
   "placeholder.lyrics": {
-    "message": "Введите слова...",
-    "description": "Заполнитель для уровня"
+    "message": "Введите текст...",
+    "description": "Место для ввода текста"
   },
   "placeholder.extend.lyrics": {
-    "message": "Введите слова, которые нужно расширить...",
-    "description": "Заполнитель для уровня"
+    "message": "Введите текст, который нужно расширить...",
+    "description": "Место для ввода текста"
   },
   "placeholder.extend.continue_at": {
-    "message": "Введите, с какой секунды песни нужно продолжить...",
-    "description": "Заполнитель для уровня"
+    "message": "Введите, с какой секунды песни нужно продолжить расширение...",
+    "description": "Место для ввода текста"
   },
   "placeholder.style": {
     "message": "Введите подсказку для стиля песни, например, acoustic pop",
@@ -113,15 +113,15 @@
   },
   "placeholder.title": {
     "message": "Введите подсказку для названия песни, например, holiday song",
-    "description": "Заполнитель для входных данных"
+    "description": "Заполнитель для семени"
   },
   "placeholder.select": {
     "message": "Выберите модель...",
-    "description": "Заполнитель для ввода местоположения"
+    "description": "Место для ввода текста"
   },
   "placeholder.position": {
     "message": "Выберите...",
-    "description": "Заполнитель для ввода местоположения"
+    "description": "Место для ввода текста"
   },
   "button.generate": {
     "message": "Генерировать",
@@ -129,15 +129,15 @@
   },
   "message.startingTask": {
     "message": "Запуск задачи...",
-    "description": "Сообщение при начале задачи генерации музыки"
+    "description": "Сообщение при запуске задачи по генерации музыки"
   },
   "message.startTaskSuccess": {
-    "message": "Задача генерации музыки успешно запущена",
-    "description": "Сообщение при успешном запуске задачи генерации музыки"
+    "message": "Задача по генерации музыки успешно запущена",
+    "description": "Сообщение об успешном запуске задачи по генерации музыки"
   },
   "message.startTaskFailed": {
-    "message": "Не удалось запустить задачу генерации музыки",
-    "description": "Сообщение об ошибке при запуске задачи генерации музыки"
+    "message": "Не удалось запустить задачу по генерации музыки",
+    "description": "Сообщение об ошибке при запуске задачи по генерации музыки"
   },
   "message.generating": {
     "message": "Генерация...",
@@ -145,14 +145,14 @@
   },
   "message.generateFailed": {
     "message": "Не удалось сгенерировать музыку",
-    "description": "Сообщение при сбое генерации музыки"
+    "description": "Сообщение при неудаче генерации музыки"
   },
   "message.noOperations": {
-    "message": "Нет доступных операций",
-    "description": "Сообщение при отсутствии доступных операций"
+    "message": "Нет доступных действий",
+    "description": "Сообщение при отсутствии доступных действий"
   },
   "message.noTasks": {
-    "message": "Нет историй задач, пожалуйста, сгенерируйте музыку в конфигурационной панели слева",
+    "message": "Нет историй задач, пожалуйста, создайте музыку в панели конфигурации слева",
     "description": "Сообщение при отсутствии задач"
   }
 }

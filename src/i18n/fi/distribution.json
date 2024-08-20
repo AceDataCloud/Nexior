@@ -1,71 +1,71 @@
 {
   "button.detail": {
-    "message": "Näytä tiedot",
-    "description": "Painikkeen teksti, jota käytetään verkkosivuston suositushistorian tietojen tarkasteluun."
+    "message": "Näytä yksityiskohdat",
+    "description": "Buttons text used to view the detailed history of recommendations on the website."
   },
   "button.withdrawal": {
-    "message": "Nostaminen",
-    "description": "Painikkeen teksti, jota käytetään verkkosivuston suositustulojen nostamiseen."
+    "message": "Nostaa",
+    "description": "Buttons text used for withdrawing the recommended earnings from the website."
   },
   "button.query": {
-    "message": "Kysely",
-    "description": "Painikkeen teksti, jota käytetään verkkosivuston suositustulojen kyselyyn."
+    "message": "Tarkistaa",
+    "description": "Buttons text used for querying the recommended earnings on the website."
   },
   "field.id": {
     "message": "Suositus ID",
-    "description": "Jakelun ainutlaatuinen tunniste, jakelu viittaa API-palveluverkkosivuston suositteluun."
+    "description": "Jakelun ainutkertainen tunniste, jakelu tarkoittaa suositusta API-palvelusivustolla."
   },
   "field.percentage": {
-    "message": "Suositustulojen prosenttiosuus",
-    "description": "Suositustulojen prosenttiosuus, joka lasketaan tilauksen summasta."
+    "message": "Suositusprosentti",
+    "description": "Suositusprosentti lasketaan tilauksen summasta."
   },
   "field.price": {
     "message": "Tilauksen summa",
-    "description": "Tilauksen summa, jota käytetään suositustulojen laskemiseen."
+    "description": "Tilauksen summa, jota käytetään suositusansioiden laskemiseen."
   },
   "field.reward": {
     "message": "Suosituspalkkio",
-    "description": "Suoritustulo, joka lasketaan tilauksen summan ja suositustulojen prosenttiosuuden mukaan."
+    "description": "Suositusansio, joka lasketaan tilauksen summasta ja suositusprosentista."
   },
   "field.userId": {
-    "message": "Käyttäjä ID",
-    "description": "Käyttäjän ainutlaatuinen tunniste, käyttäjä viittaa API-palveluverkkosivuston käyttäjään."
+    "message": "Käyttäjän ID",
+    "description": "Käyttäjän ainutkertainen tunniste, käyttäjä tarkoittaa API-palvelusivuston käyttäjää."
   },
   "field.userEmail": {
     "message": "Käyttäjän sähköposti",
-    "description": "Käyttäjän sähköposti"
+    "description": "Käyttäjän sähköpostiosoite."
   },
   "field.createdAt": {
     "message": "Suositusaika",
-    "description": "Suosituksen luomisaika."
+    "description": "Aika, jolloin suositus luotiin."
   },
   "field.level": {
     "message": "Taso",
-    "description": "Suosituksen taso, jota käytetään suositustulojen laskemiseen."
+    "description": "Suositustaso, jota käytetään suositusansioiden laskemiseen."
   },
   "field.threshold": {
-    "message": "Suositustulojen kynnys",
-    "description": "Suositustulojen kynnys, jota käytetään nostamaan suositustuloja."
+    "message": "Suositusansioiden raja",
+    "description": "Suositusansioiden raja, jota käytetään suositusansioiden nostamiseen."
   },
   "field.inviteeId": {
     "message": "Kutsujan ID",
-    "description": "Kutsujan ainutlaatuinen tunniste, kutsuja viittaa kutsuneeseen henkilöön API-palveluverkkosivustolla."
+    "description": "Kutsujan ainutkertainen tunniste, kutsuja tarkoittaa sitä, joka kutsuu kutsuttua API-palvelusivustolle."
   },
   "field.isVerified": {
     "message": "Vahvistettu",
-    "description": "Lippu, joka osoittaa, onko suosituskäyttäjä vahvistettu todellisilla tiedoilla."
+    "description": "Lippu, joka osoittaa, onko suosituskäyttäjä vahvistettu oikeilla tiedoilla."
   },
   "message.deltaPriceForNextLevel": {
     "message": "Ero seuraavaan tasoon",
-    "description": "Nykyisen tilauksen summan ja seuraavan tason kynnyksen välinen ero."
+    "description": "Nykyisen tilauksen summa ja seuraavan tason rajan välinen ero."
   },
   "message.developingWithDrawal": {
-    "message": "Liity asiakaspalvelun käsittelyn nostamiseen, nostaminen vähentää asiaankuuluvia tuloveroja.",
+    "message": "Liity lisäämään asiakaspalvelua käsittelemään nostamista, nosto tulee verotettavaksi.",
     "description": "Viesti, joka osoittaa, että nostotoiminto on kehitteillä."
   },
   "message.technicalDetail": {
     "message": "Tekniset yksityiskohdat",
-    "description": "Suositusjärjestelmän tekniset toteutustiedot."
+    "description": "Suositusjärjestelmän teknisten yksityiskohtien toteutus."
   },
   "message.distributionQrDescription": {
     "message": "Suositus QR-koodi (sama kuin linkin sisältö)",
@@ -73,66 +73,66 @@
   },
   "message.distributionLink": {
     "message": "Suosituslinkki",
-    "description": "Suosituslinkki, jota käytetään asiakkaan sitomiseen alempana asiakkaana."
+    "description": "Suosituslinkki, jota käytetään asiakkaan sitomiseen ala-asiakkaaksi."
   },
   "message.updateSuccessfully": {
     "message": "Päivitys onnistui",
     "description": "Viesti, joka osoittaa, että suositustiedot on päivitetty onnistuneesti."
   },
   "message.distributionLinkDescription": {
-    "message": "Jos asiakas rekisteröityy tälle alustalle tämän linkin tai QR-koodin kautta, asiakas sidotaan pysyvästi alemmaksi asiakkaaksi, ja kaikki asiakkaan kulutustilaukset palautetaan tilisi mukaan nykyisen jakeluprosentin mukaan.",
+    "message": "Jos asiakas rekisteröityy tälle alustalle tämän linkin tai QR-koodin kautta, asiakas sidotaan pysyvästi ala-asiakkaaksesi, ja kaikki asiakkaan kulutukset tällä alustalla palautetaan nykyisen jakelusuhteen mukaisesti tilillesi.",
     "description": "Suosituslinkin kuvaus."
   },
   "message.distributionLinkDescription2": {
-    "message": "Tämä linkki sisältää käyttäjä ID:si. Kun asiakas avaa linkin, käyttäjä ID:si tallennetaan asiakasta selaimessa evästeinä, voimassa olevan ajan ollessa seitsemän päivää. Seitsemän päivän sisällä, jos asiakas rekisteröityy tälle alustalle skannaamalla kyseistä koodia, käyttäjä ID:si ladataan yhdessä evästeiden kanssa rekisteröintipalvelimelle, ja asiakas voidaan sitoa alempana asiakkaana.",
+    "message": "Tämä linkki sisältää käyttäjä ID:si. Kun asiakas avaa linkin, käyttäjä ID:si tallennetaan evästeinä asiakkaan selaimeen, voimassa 7 päivää. 7 päivän kuluessa, jos asiakas rekisteröityy tälle alustalle skannaamalla kyseisen koodin, käyttäjä ID:si lähetetään rekisteröintipalvelimelle evästen mukana, ja asiakas voi sidotaan ala-asiakkaaksesi.",
     "description": "Suosituslinkin kuvaus."
   },
   "title.price": {
     "message": "Suositustilausten kokonaismäärä",
-    "description": "Suositustilausten kokonaismäärä, jota käytetään suositustulojen laskemiseen."
+    "description": "Suositustilausten kokonaismäärä, jota käytetään suositusansioiden laskemiseen."
   },
   "title.reward": {
-    "message": "Kokonaisuus suosituspalkkio",
-    "description": "Kokonaisuus suosituspalkkio, joka lasketaan tilauksen summan ja suositustulojen prosenttiosuuden mukaan."
+    "message": "Kokonaispäivä",
+    "description": "Kokonaispäivä, joka lasketaan tilauksen summasta ja suositusprosentista."
   },
   "title.level": {
     "message": "Suositustaso",
-    "description": "Suositustaso, jota käytetään suositustulojen laskemiseen."
+    "description": "Suositustaso, jota käytetään suositusansioiden laskemiseen."
   },
   "title.percentage": {
-    "message": "Suositustulojen prosenttiosuus",
-    "description": "Suositustulojen prosenttiosuus, jota käytetään suositustulojen laskemiseen."
+    "message": "Suositusprosentti",
+    "description": "Suositusprosentti, jota käytetään suositusansioiden laskemiseen."
   },
   "title.currentLevel": {
-    "message": "Nykyinen tason",
-    "description": "Nykyinen suositustaso, jota käytetään suositustulojen laskemiseen."
+    "message": "Nykyinen taso",
+    "description": "Nykyinen suositustaso, jota käytetään suositusansioiden laskemiseen."
   },
   "title.nextLevel": {
     "message": "Seuraava taso",
-    "description": "Seuraava suositustaso, jota käytetään suositustulojen laskemiseen."
+    "description": "Seuraava suositustaso, jota käytetään suositusansioiden laskemiseen."
   },
   "title.currentPercentage": {
-    "message": "Nykyinen suositustulojen prosenttiosuus",
-    "description": "Nykyinen suositustulojen prosenttiosuus, jota käytetään suositustulojen laskemiseen."
+    "message": "Nykyinen suositusprosentti",
+    "description": "Nykyinen suositusprosentti, jota käytetään suositusansioiden laskemiseen."
   },
   "title.nextPercentage": {
-    "message": "Seuraavan tason suositustulojen prosenttiosuus",
-    "description": "Seuraavan tason suositustulojen prosenttiosuus, jota käytetään suositustulojen laskemiseen."
+    "message": "Seuraavan tason suositusprosentti",
+    "description": "Seuraavan tason suositusprosentti, jota käytetään suositusansioiden laskemiseen."
   },
   "title.levelInfo": {
     "message": "Tason tiedot",
-    "description": "Suositustason tiedot, joita käytetään suositustulojen laskemiseen."
+    "description": "Suositustason tiedot, joita käytetään suositusansioiden laskemiseen."
   },
   "title.distributionLink": {
     "message": "Suosituslinkki",
-    "description": "Suosituslinkki, jota käytetään asiakkaan sitomiseen alempana asiakkaana."
+    "description": "Suosituslinkki, jota käytetään asiakkaan sitomiseen ala-asiakkaaksi."
   },
   "title.inviteesCount": {
-    "message": "Kutsuttujen kokonaismäärä",
-    "description": "Kutsuttujen kokonaismäärä, jota käytetään suosittelutulojen laskemiseen."
+    "message": "Kutsujien kokonaismäärä",
+    "description": "Kutsujien kokonaismäärä, jota käytetään suositustulojen laskemiseen."
   },
   "title.manageDistributionStatus": {
     "message": "Jakelun hallinta",
-    "description": "Suosittelu-tilan hallinta."
+    "description": "Suositustilan hallinta."
   }
 }

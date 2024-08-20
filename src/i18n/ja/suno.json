@@ -32,16 +32,16 @@
     "description": "タスクの ID"
   },
   "name.type": {
-    "message": "カスタマイズモード",
-    "description": "カスタマイズモードの名称"
+    "message": "カスタムモード",
+    "description": "カスタムモードの名前"
   },
   "name.prompt": {
     "message": "曲の説明",
-    "description": "内容入力のプロンプト"
+    "description": "コンテンツ入力のプロンプト"
   },
   "name.extend": {
-    "message": "曲を拡張する元",
-    "description": "内容入力のプロンプト"
+    "message": "曲の拡張元",
+    "description": "コンテンツ入力のプロンプト"
   },
   "name.lyrics": {
     "message": "歌詞内容",
@@ -53,26 +53,26 @@
   },
   "name.title": {
     "message": "曲のタイトル",
-    "description": "曲タイトル内容入力のプロンプト"
+    "description": "曲のタイトル内容入力のプロンプト"
   },
   "name.failureReason": {
     "message": "失敗理由",
-    "description": "タスクが失敗した理由"
+    "description": "タスク失敗の理由"
   },
   "name.status": {
-    "message": "状態",
-    "description": "タスクの状態"
+    "message": "ステータス",
+    "description": "タスクのステータス"
   },
   "name.traceId": {
     "message": "トレース ID",
     "description": "タスクのトレース ID"
   },
   "name.sunoBot": {
-    "message": "サノボット",
-    "description": "サノ生成器の名称"
+    "message": "Suno Bot",
+    "description": "Suno生成器の名前"
   },
   "description.prompt": {
-    "message": "生成したい音楽のスタイルとテーマを記入してください。例: 休日に関するアコースティックポップ",
+    "message": "生成したい音楽のスタイルとテーマを入力してください。例：休日に関するアコースティックポップ",
     "description": "パラメーター'prompt'の説明"
   },
   "description.lyrics": {
@@ -88,31 +88,31 @@
     "description": "パラメーター'title'の説明"
   },
   "status.pending": {
-    "message": "待機中",
-    "description": "タスクの待機状態"
+    "message": "保留中",
+    "description": "タスクの保留状態"
   },
   "placeholder.prompt": {
     "message": "曲のプロンプトを入力してください...",
-    "description": "プレースホルダーのノイズ入力"
+    "description": "入力ノイズのプレースホルダー"
   },
   "placeholder.lyrics": {
     "message": "歌詞を入力してください...",
-    "description": "プレースホルダーのレベル"
+    "description": "入力レベルのプレースホルダー"
   },
   "placeholder.extend.lyrics": {
     "message": "拡張が必要な歌詞を入力してください...",
-    "description": "プレースホルダーのレベル"
+    "description": "入力レベルのプレースホルダー"
   },
   "placeholder.extend.continue_at": {
-    "message": "曲のどの秒から拡張するかを入力してください...",
-    "description": "プレースホルダーのレベル"
+    "message": "曲の何秒から拡張するか入力してください...",
+    "description": "入力レベルのプレースホルダー"
   },
   "placeholder.style": {
-    "message": "生成したい曲スタイルのプロンプトを入力してください。例: アコースティックポップ",
-    "description": "プロンプトフィールドのプレースホルダーテキスト"
+    "message": "生成したい曲スタイルのプロンプトワードを入力してください。例：アコースティックポップ",
+    "description": "提示フィールドのプレースホルダー"
   },
   "placeholder.title": {
-    "message": "生成したい曲タイトルのプロンプトを入力してください。例: 休日の歌",
+    "message": "生成したい曲タイトルのプロンプトワードを入力してください。例：ホリデーソング",
     "description": "シード入力のプレースホルダー"
   },
   "placeholder.select": {
@@ -128,31 +128,31 @@
     "description": "生成ボタンのテキスト"
   },
   "message.startingTask": {
-    "message": "タスクを開始しています...",
-    "description": "音楽生成タスクが開始されるときのメッセージ"
+    "message": "タスクを起動しています...",
+    "description": "音楽生成タスク開始時のメッセージ"
   },
   "message.startTaskSuccess": {
-    "message": "音楽生成タスクを成功裏に開始しました",
-    "description": "音楽生成タスクが成功裏に開始された時の成功メッセージ"
+    "message": "音楽生成タスクを正常に起動しました",
+    "description": "音楽生成タスクが成功裏に起動したときのメッセージ"
   },
   "message.startTaskFailed": {
-    "message": "音楽生成タスクの開始に失敗しました",
-    "description": "音楽生成タスクの開始に失敗した時のエラーメッセージ"
+    "message": "音楽生成タスクの起動に失敗しました",
+    "description": "音楽生成タスクの起動に失敗したときのメッセージ"
   },
   "message.generating": {
     "message": "生成中...",
-    "description": "音楽が生成されている時のメッセージ"
+    "description": "音楽が生成されているときのメッセージ"
   },
   "message.generateFailed": {
     "message": "音楽の生成に失敗しました",
-    "description": "音楽生成に失敗した時のメッセージ"
+    "description": "音楽生成に失敗したときのメッセージ"
   },
   "message.noOperations": {
     "message": "利用可能な操作はありません",
-    "description": "利用可能な操作がない時のメッセージ"
+    "description": "利用可能な操作がないときのメッセージ"
   },
   "message.noTasks": {
-    "message": "履歴タスクはありません。左側の設定バーで音楽を生成してください",
-    "description": "タスクがない時のメッセージ"
+    "message": "履歴タスクはありません。左側の構成バーで音楽を生成してください",
+    "description": "タスクがないときのメッセージ"
   }
 }

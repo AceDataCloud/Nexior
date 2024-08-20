@@ -20,7 +20,7 @@
     "description": "음악 생성에 사용되는 모델"
   },
   "name.instrumental": {
-    "message": "가사가 없는",
+    "message": "무가사",
     "description": "매개변수 'instrumental'의 설명"
   },
   "model.model3": {
@@ -32,28 +32,28 @@
     "description": "작업의 ID"
   },
   "name.type": {
-    "message": "커스텀 모드",
-    "description": "커스텀 모드의 이름"
+    "message": "사용자 지정 모드",
+    "description": "사용자 지정 모드의 이름"
   },
   "name.prompt": {
     "message": "노래 설명",
-    "description": "내용 입력의 힌트"
+    "description": "내용 입력의 프롬프트"
   },
   "name.extend": {
     "message": "확장된 노래 출처",
-    "description": "내용 입력의 힌트"
+    "description": "내용 입력의 프롬프트"
   },
   "name.lyrics": {
     "message": "가사 내용",
-    "description": "가사 내용 입력의 힌트"
+    "description": "가사 내용 입력의 프롬프트"
   },
   "name.style": {
     "message": "노래 스타일",
-    "description": "노래 스타일 내용 입력의 힌트"
+    "description": "노래 스타일 내용 입력의 프롬프트"
   },
   "name.title": {
     "message": "노래 제목",
-    "description": "노래 제목 내용 입력의 힌트"
+    "description": "노래 제목 내용 입력의 프롬프트"
   },
   "name.failureReason": {
     "message": "실패 원인",
@@ -68,23 +68,23 @@
     "description": "작업의 추적 ID"
   },
   "name.sunoBot": {
-    "message": "Suno Bot",
+    "message": "Suno 봇",
     "description": "Suno 생성기의 이름"
   },
   "description.prompt": {
-    "message": "생성하고자 하는 음악의 스타일과 주제를 입력하세요, 예: 휴일에 대한 어쿠스틱 팝",
+    "message": "생성하고자 하는 음악의 스타일과 주제를 작성하세요. 예: acoustic pop about the holidays",
     "description": "매개변수 'prompt'의 설명"
   },
   "description.lyrics": {
-    "message": "가사 내용",
+    "message": "가사의 내용",
     "description": "매개변수 'lyrics'의 설명"
   },
   "description.style": {
-    "message": "노래 스타일 내용",
+    "message": "노래 스타일의 내용",
     "description": "매개변수 'style'의 설명"
   },
   "description.title": {
-    "message": "노래 제목 내용",
+    "message": "노래 제목의 내용",
     "description": "매개변수 'title'의 설명"
   },
   "status.pending": {
@@ -92,39 +92,39 @@
     "description": "작업의 대기 상태"
   },
   "placeholder.prompt": {
-    "message": "노래 힌트를 입력하세요...",
-    "description": "내용 입력의 플레이스홀더"
+    "message": "노래의 힌트를 입력하세요...",
+    "description": "입력 필드의 자리 표시자"
   },
   "placeholder.lyrics": {
     "message": "가사를 입력하세요...",
-    "description": "내용 입력의 플레이스홀더"
+    "description": "입력 필드의 자리 표시자"
   },
   "placeholder.extend.lyrics": {
     "message": "확장할 가사를 입력하세요...",
-    "description": "내용 입력의 플레이스홀더"
+    "description": "입력 필드의 자리 표시자"
   },
   "placeholder.extend.continue_at": {
     "message": "어느 초부터 확장할지 입력하세요...",
-    "description": "내용 입력의 플레이스홀더"
+    "description": "입력 필드의 자리 표시자"
   },
   "placeholder.style": {
-    "message": "생성할 노래 스타일 힌트를 입력하세요, 예: 어쿠스틱 팝",
-    "description": "힌트 필드의 플레이스홀더 텍스트"
+    "message": "생성할 노래 스타일의 힌트를 입력하세요. 예: acoustic pop",
+    "description": "입력 필드의 자리 표시자"
   },
   "placeholder.title": {
-    "message": "생성할 노래 제목의 힌트를 입력하세요, 예: 휴일 노래",
-    "description": "시드 입력의 플레이스홀더"
+    "message": "생성할 노래 제목의 힌트를 입력하세요. 예: holiday song",
+    "description": "입력 필드의 자리 표시자"
   },
   "placeholder.select": {
     "message": "모델을 선택하세요...",
-    "description": "위치 입력의 플레이스홀더"
+    "description": "입력 필드의 자리 표시자"
   },
   "placeholder.position": {
     "message": "선택하세요...",
-    "description": "위치 입력의 플레이스홀더"
+    "description": "입력 필드의 자리 표시자"
   },
   "button.generate": {
-    "message": "생성",
+    "message": "생성하기",
     "description": "생성 버튼 텍스트"
   },
   "message.startingTask": {
@@ -132,8 +132,8 @@
     "description": "음악 생성 작업 시작 시의 메시지"
   },
   "message.startTaskSuccess": {
-    "message": "음악 생성 작업 시작 성공",
-    "description": "음악 생성 작업 시작 성공 시의 성공 메시지"
+    "message": "음악 생성 작업이 성공적으로 시작되었습니다.",
+    "description": "음악 생성 작업이 성공적으로 시작되었을 때의 성공 메시지"
   },
   "message.startTaskFailed": {
     "message": "음악 생성 작업 시작 실패",
@@ -148,11 +148,11 @@
     "description": "음악 생성 실패 시의 메시지"
   },
   "message.noOperations": {
-    "message": "사용 가능한 작업이 없습니다",
+    "message": "사용 가능한 작업이 없습니다.",
     "description": "사용 가능한 작업이 없을 때의 메시지"
   },
   "message.noTasks": {
-    "message": "과거 작업이 없습니다, 왼쪽 구성 영역에서 음악을 생성하세요",
+    "message": "히스토리 작업이 없습니다. 왼쪽 구성 창에서 음악을 생성하세요.",
     "description": "작업이 없을 때의 메시지"
   }
 }

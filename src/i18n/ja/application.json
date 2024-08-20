@@ -1,63 +1,63 @@
 {
   "type.period": {
-    "message": "周期",
-    "description": "サービスの周期。"
+    "message": "期間",
+    "description": "サービスの期間。"
   },
   "type.usage": {
-    "message": "使用量",
-    "description": "サービスの使用量。"
+    "message": "使用枠",
+    "description": "サービスの使用枠。"
   },
   "field.expiredAt": {
     "message": "期限",
-    "description": "申請の有効期限。"
+    "description": "申請の期限。"
   },
   "button.goDocument": {
     "message": "ドキュメント",
-    "description": "このボタンをクリックするとドキュメントページに移動します。"
+    "description": "このボタンをクリックすると、ドキュメントページに移動します。"
   },
   "button.goCredentials": {
-    "message": "資格情報",
-    "description": "このボタンをクリックすると資格情報ページに移動します。"
+    "message": "認証情報",
+    "description": "このボタンをクリックすると、認証情報ページに移動します。"
   },
   "button.buyMore": {
     "message": "もっと購入",
-    "description": "このボタンをクリックするともっと購入ページに移動します。"
+    "description": "このボタンをクリックすると、もっと購入ページに移動します。"
   },
   "button.createOrder": {
-    "message": "オーダーを作成",
-    "description": "このボタンをクリックするとオーダー作成ページに移動します。"
+    "message": "注文を作成",
+    "description": "このボタンをクリックすると、注文作成ページに移動します。"
   },
   "button.custom": {
     "message": "カスタマイズ",
-    "description": "このボタンをクリックするとカスタマイズページに移動します。"
+    "description": "このボタンをクリックすると、カスタマイズページに移動します。"
   },
   "button.query": {
-    "message": "クエリ",
-    "description": "このボタンをクリックするとクエリページに移動します。"
+    "message": "照会",
+    "description": "このボタンをクリックすると、照会ページに移動します。"
   },
   "button.usage": {
     "message": "使用履歴",
-    "description": "このボタンをクリックすると使用履歴ページに移動します。"
+    "description": "このボタンをクリックすると、使用履歴ページに移動します。"
   },
   "field.application": {
     "message": "申請",
     "description": "サービスの申請。"
   },
   "field.status": {
-    "message": "ステータス",
-    "description": "申請のステータス。"
+    "message": "状態",
+    "description": "申請の状態。"
   },
   "field.id": {
     "message": "申請ID",
     "description": "申請のID。"
   },
   "field.remainingAmount": {
-    "message": "残り数量",
-    "description": "申請の残り数量。"
+    "message": "残りの数量",
+    "description": "申請の残りの数量。"
   },
   "field.usedAmount": {
-    "message": "使用数量",
-    "description": "申請の使用数量。"
+    "message": "使用済み数量",
+    "description": "申請の使用済み数量。"
   },
   "field.apiKey": {
     "message": "APIキー",
@@ -65,11 +65,11 @@
   },
   "field.service": {
     "message": "サービス",
-    "description": "申請されたサービス。"
+    "description": "申請のサービス。"
   },
   "field.operation": {
     "message": "操作",
-    "description": "申請された操作。"
+    "description": "申請の操作。"
   },
   "field.amount": {
     "message": "数量",
@@ -77,7 +77,7 @@
   },
   "field.traceId": {
     "message": "トレースID",
-    "description": "APIサービスの申請のAPI呼び出しのトレースID。'トレースID'に保つ。"
+    "description": "APIサービスの申請のAPI呼び出しのトレースID。翻訳せずに「トレースID」のままにします。"
   },
   "field.shouldPayPrice": {
     "message": "最終価格",
@@ -85,15 +85,15 @@
   },
   "field.api": {
     "message": "API",
-    "description": "これはオンラインサービスで、APIを通じてユーザーにサービスを提供する形式です。"
+    "description": "これはオンラインサービスで、APIを通じてユーザーにサービスを提供します。"
   },
   "field.proxy": {
     "message": "プロキシ",
-    "description": "これはオンラインサービスで、HTTPプロキシを通じてユーザーにサービスを提供する形式です。"
+    "description": "これはオンラインサービスで、HTTPプロキシ（データの転送に使用）を通じてユーザーにサービスを提供します。"
   },
   "field.credential": {
-    "message": "資格情報",
-    "description": "申請された資格情報。"
+    "message": "認証情報",
+    "description": "申請の認証情報。"
   },
   "field.name": {
     "message": "名前",
@@ -101,7 +101,7 @@
   },
   "field.package": {
     "message": "パッケージ",
-    "description": "パッケージは異なる価格パッケージを示します。例えば、100ドルで10000ポイント、200ドルで20000ポイントを取得できます。"
+    "description": "パッケージは異なる価格プランを示します。例えば、100ドルで10000ポイント、200ドルで20000ポイントを得ることができます。"
   },
   "field.type": {
     "message": "タイプ",
@@ -112,55 +112,55 @@
     "description": "申請の無料数量。"
   },
   "field.extraPrice": {
-    "message": "追加価格",
+    "message": "価格",
     "description": "ユーザーが支払うべき申請の追加価格。"
   },
   "message.alreadyApplied": {
-    "message": "あなたはすでにこのサービスに申請しました。コンソールを確認してください。",
-    "description": "ユーザーがすでにこのサービスに申請したときに表示されるメッセージ。"
+    "message": "このサービスをすでに申し込んでいます。コンソールを確認してください。",
+    "description": "ユーザーがこのサービスをすでに申し込んでいるときにユーザーに表示されるメッセージ。"
   },
   "message.applySuccessfully": {
-    "message": "申請成功",
-    "description": "ユーザーがこのサービスに成功裏に申請したときに表示されるメッセージ。"
+    "message": "申請が成功しました",
+    "description": "ユーザーがこのサービスを成功裏に申請したときに表示されるメッセージ。"
   },
   "message.notApplied": {
-    "message": "あなたはまだこのサービスに申請していません。使用する前に申請してください。",
-    "description": "ユーザーがまだこのサービスに申請していないときに表示されるメッセージ。"
+    "message": "あなたはまだこのサービスを申請していません。使用する前に申し込んでください。",
+    "description": "ユーザーがこのサービスをまだ申請していないときにユーザーに表示されるメッセージ。"
   },
   "message.yourApplication": {
     "message": "あなたの申請",
-    "description": "ユーザーの申請時に表示されるメッセージ。"
+    "description": "ユーザーの申請があるときにユーザーに表示されるメッセージ。"
   },
   "message.unverified": {
-    "message": "あなたはサービスに申請する前に本人確認を完了する必要があります。",
-    "description": "ユーザーが本人確認をまだ完了していないときに表示されるメッセージ。"
+    "message": "このサービスを申し込むには、本人確認を完了する必要があります。",
+    "description": "ユーザーが本人確認を完了していないときに表示されるメッセージ。"
   },
   "message.goVerify": {
-    "message": "本人確認に進む",
-    "description": "ユーザーが本人確認をまだ完了していないときに表示されるメッセージ。"
+    "message": "本人確認に行く",
+    "description": "ユーザーが本人確認を完了していないときに表示されるメッセージ。"
   },
   "message.requiredParameter": {
     "message": "必須パラメータ",
-    "description": "ユーザーが必須パラメータを入力していないときに表示されるメッセージ。"
+    "description": "ユーザーが必須のパラメータを入力していないときに表示されるメッセージ。"
   },
   "message.example": {
     "message": "例",
-    "description": "ユーザーが必須パラメータを入力していないときに表示されるメッセージ。"
+    "description": "ユーザーが必須のパラメータを入力していないときに表示されるメッセージ。"
   },
   "message.createCredentialSuccessfully": {
-    "message": "資格情報の作成に成功しました",
-    "description": "ユーザーが資格情報を成功裏に作成したときに表示されるメッセージ。"
+    "message": "認証情報が正常に作成されました",
+    "description": "ユーザーが認証情報を成功裏に作成したときに表示されるメッセージ。"
   },
   "message.readPolicy": {
     "message": "私はポリシーを読み、同意しました",
-    "description": "ユーザーがポリシーを読み同意したときに表示されるメッセージ。"
+    "description": "ユーザーがポリシーを読み、同意したときに表示されるメッセージ。"
   },
   "message.policy": {
-    "message": "データ技術サービス利用規約",
-    "description": "ユーザーがポリシーを読み同意したときに表示されるメッセージ。"
+    "message": "データ技術サービス使用契約",
+    "description": "ユーザーがポリシーを読み、同意したときに表示されるメッセージ。"
   },
   "message.notAgreePolicy": {
-    "message": "あなたはデータ技術サービス利用規約に同意していません",
+    "message": "あなたはデータ技術サービス使用契約にまだ同意していません。",
     "description": "ユーザーがポリシーに同意していないときに表示されるメッセージ。"
   },
   "message.confirmApplying": {
@@ -172,11 +172,11 @@
     "description": "ユーザーがキーをリセットする際に表示されるメッセージ。"
   },
   "message.rotateCredentialConfirm": {
-    "message": "本当にキーをリセットしますか？リセット後は復元できません。",
+    "message": "本当にキーをリセットしてもよろしいですか？リセット後は復元できません。",
     "description": "ユーザーがキーのリセットを確認する際に表示されるメッセージ。"
   },
   "message.idDoesNotExist": {
-    "message": "申請が存在しません",
+    "message": "申請は存在しません",
     "description": "申請が存在しない場合にユーザーに表示されるメッセージ。"
   },
   "message.rotateCredentialSuccessfully": {
@@ -184,27 +184,27 @@
     "description": "キーのリセットが成功した場合にユーザーに表示されるメッセージ。"
   },
   "message.rotateCredentialFailed": {
-    "message": "キーのリセットに失敗しました。処理に連絡してください。",
-    "description": "キーのリセットに失敗した場合にユーザーに表示されるメッセージ。"
+    "message": "キーのリセットに失敗しました、サポートに連絡してください",
+    "description": "キーのリセットが失敗した場合にユーザーに表示されるメッセージ。"
   },
   "message.updateFailed": {
-    "message": "変更に失敗しました",
-    "description": "変更が失敗した場合にユーザーに表示されるメッセージ。"
+    "message": "更新に失敗しました",
+    "description": "更新に失敗した場合にユーザーに表示されるメッセージ。"
   },
   "message.updateSuccessfully": {
-    "message": "変更が成功しました",
-    "description": "変更が成功した場合にユーザーに表示されるメッセージ。"
+    "message": "更新が成功しました",
+    "description": "更新が成功した場合にユーザーに表示されるメッセージ。"
   },
   "title.buyService": {
-    "message": "サービスの購入",
-    "description": "ユーザーがサービスを購入したいときのページタイトル。"
+    "message": "サービスを購入",
+    "description": "ユーザーがサービスを購入したいときのページのタイトル。"
   },
   "title.applicationRemainingCount": {
-    "message": "変更可能な数",
-    "description": "ユーザーが申請数を変更したいときのページタイトル。"
+    "message": "申請数量",
+    "description": "ユーザーが申請数量を変更したいときのページのタイトル。"
   },
   "title.manageApplication": {
     "message": "申請管理",
-    "description": "ユーザーが申請を管理したいときのページタイトル。"
+    "description": "ユーザーが申請を管理したいときのページのタイトル。"
   }
 }

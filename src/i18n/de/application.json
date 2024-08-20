@@ -1,43 +1,43 @@
 {
   "type.period": {
-    "message": "Periode",
-    "description": "Dienstperiode."
+    "message": "Zeitraum",
+    "description": "Dienstzeitraum."
   },
   "type.usage": {
-    "message": "Kontingent",
-    "description": "Dienstkontingent."
+    "message": "Nutzungsquote",
+    "description": "Dienstnutzungsquote."
   },
   "field.expiredAt": {
     "message": "Ablaufdatum",
-    "description": "Ablaufdatum der Anfrage."
+    "description": "Das Ablaufdatum der Anfrage."
   },
   "button.goDocument": {
     "message": "Dokument",
-    "description": "Schaltflächentext, der beim Klicken auf diese Schaltfläche zur Dokumentationsseite führt."
+    "description": "Button-Text, durch Klicken auf diesen Button wird zur Dokumentationsseite gewechselt."
   },
   "button.goCredentials": {
     "message": "Zugangsdaten",
-    "description": "Schaltflächentext, der beim Klicken auf diese Schaltfläche zur Zugangsdaten-Seite führt."
+    "description": "Button-Text, durch Klicken auf diesen Button wird zur Seite mit den Zugangsdaten gewechselt."
   },
   "button.buyMore": {
     "message": "Mehr kaufen",
-    "description": "Schaltflächentext, der beim Klicken auf diese Schaltfläche zur Seite für den Kauf von mehr führt."
+    "description": "Button-Text, durch Klicken auf diesen Button wird zur Seite für weitere Käufe gewechselt."
   },
   "button.createOrder": {
     "message": "Bestellung erstellen",
-    "description": "Schaltflächentext, der beim Klicken auf diese Schaltfläche zur Seite für die Erstellung einer Bestellung führt."
+    "description": "Button-Text, durch Klicken auf diesen Button wird zur Seite zum Erstellen einer Bestellung gewechselt."
   },
   "button.custom": {
-    "message": "Anpassen",
-    "description": "Schaltflächentext, der beim Klicken auf diese Schaltfläche zur Anpassungsseite führt."
+    "message": "Benutzerdefiniert",
+    "description": "Button-Text, durch Klicken auf diesen Button wird zur benutzerdefinierten Seite gewechselt."
   },
   "button.query": {
-    "message": "Abfrage",
-    "description": "Schaltflächentext, der beim Klicken auf diese Schaltfläche zur Abfrageseite führt."
+    "message": "Abfragen",
+    "description": "Button-Text, durch Klicken auf diesen Button wird zur Abfrageseite gewechselt."
   },
   "button.usage": {
     "message": "Nutzungsprotokoll",
-    "description": "Schaltflächentext, der beim Klicken auf diese Schaltfläche zur Nutzungsprotokoll-Seite führt."
+    "description": "Button-Text, durch Klicken auf diesen Button wird zur Seite mit dem Nutzungsprotokoll gewechselt."
   },
   "field.application": {
     "message": "Antrag",
@@ -45,19 +45,19 @@
   },
   "field.status": {
     "message": "Status",
-    "description": "Status des Antrags."
+    "description": "Status der Anfrage."
   },
   "field.id": {
     "message": "Antrags-ID",
-    "description": "ID des Antrags."
+    "description": "ID der Anfrage."
   },
   "field.remainingAmount": {
-    "message": "Verbleibende Menge",
-    "description": "Verbleibende Menge des Antrags."
+    "message": "Verfügbarer Betrag",
+    "description": "Verfügbarer Betrag für die Anfrage."
   },
   "field.usedAmount": {
-    "message": "Verwendete Menge",
-    "description": "Verwendete Menge des Antrags."
+    "message": "Verbraucht",
+    "description": "Bereits verwendeter Betrag für die Anfrage."
   },
   "field.apiKey": {
     "message": "API-Schlüssel",
@@ -65,23 +65,23 @@
   },
   "field.service": {
     "message": "Dienst",
-    "description": "Dienst des Antrags."
+    "description": "Angeforderter Dienst."
   },
   "field.operation": {
-    "message": "Betrieb",
-    "description": "Betrieb des Antrags."
+    "message": "Aktion",
+    "description": "Durchgeführte Aktion für die Anfrage."
   },
   "field.amount": {
-    "message": "Menge",
-    "description": "Menge des Antrags."
+    "message": "Betrag",
+    "description": "Angeforderter Betrag."
   },
   "field.traceId": {
-    "message": "追踪ID",
-    "description": "API-Dienste-Antrag eines API-Call-Trace-IDs, nicht übersetzen, als '追踪ID' beibehalten."
+    "message": "Verfolgungs-ID",
+    "description": "Verfolgungs-ID für einen API-Aufruf der API-Dienstanfrage, bitte nicht übersetzen, bleibe bei 'Verfolgungs-ID'."
   },
   "field.shouldPayPrice": {
     "message": "Endpreis",
-    "description": "Endpreis des Antrags."
+    "description": "Endpreis der Anfrage."
   },
   "field.api": {
     "message": "API",
@@ -89,34 +89,34 @@
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Dies ist ein Online-Dienst, der in Form eines HTTP-Proxys (für Datenübertragung) bereitgestellt wird."
+    "description": "Dies ist ein Online-Dienst, der in Form eines HTTP-Proxys (zum Übertragen von Daten) bereitgestellt wird."
   },
   "field.credential": {
     "message": "Zugangsdaten",
-    "description": "Zugangsdaten des Antrags."
+    "description": "Angeforderte Zugangsdaten."
   },
   "field.name": {
     "message": "Name",
-    "description": "Name des Antrags."
+    "description": "Name der Anfrage."
   },
   "field.package": {
     "message": "Paket",
-    "description": "Pakete stellen unterschiedliche Preisoptionen dar, z.B. 100 Dollar für 10.000 Punkte, 200 Dollar für 20.000 Punkte."
+    "description": "Paketoptionen für unterschiedliche Preislevel, z.B. 100 USD für 10.000 Punkte, 200 USD für 20.000 Punkte."
   },
   "field.type": {
     "message": "Typ",
-    "description": "Typ des Antrags."
+    "description": "Typ der Anfrage."
   },
   "field.freeAmount": {
-    "message": "Kostenlose Menge",
-    "description": "Kostenlose Menge des Antrags."
+    "message": "Kostenloser Betrag",
+    "description": "Kostenloser Betrag der Anfrage."
   },
   "field.extraPrice": {
     "message": "Zusätzlicher Preis",
-    "description": "Zusätzlicher Preis, den der Benutzer für den Antrag zahlen sollte."
+    "description": "Zusätzlicher Betrag, den der Nutzer zahlen soll."
   },
   "message.alreadyApplied": {
-    "message": "Sie haben bereits diesen Dienst beantragt, bitte prüfen Sie die Konsole.",
+    "message": "Sie haben bereits diesen Dienst beantragt, bitte überprüfen Sie das Dashboard.",
     "description": "Nachricht, die angezeigt wird, wenn der Benutzer diesen Dienst bereits beantragt hat."
   },
   "message.applySuccessfully": {
@@ -124,15 +124,15 @@
     "description": "Nachricht, die angezeigt wird, wenn der Benutzer diesen Dienst erfolgreich beantragt hat."
   },
   "message.notApplied": {
-    "message": "Sie haben diesen Dienst noch nicht beantragt, bitte beantragen Sie diesen Dienst vor der Nutzung.",
+    "message": "Sie haben diesen Dienst noch nicht beantragt, bitte beantragen Sie den Dienst vor der Nutzung.",
     "description": "Nachricht, die angezeigt wird, wenn der Benutzer diesen Dienst noch nicht beantragt hat."
   },
   "message.yourApplication": {
     "message": "Ihr Antrag",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer auf seinen Antrag schaut."
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer seine Anfrage sieht."
   },
   "message.unverified": {
-    "message": "Sie müssen die Identitätsprüfung abschließen, bevor Sie diesen Dienst beantragen können.",
+    "message": "Sie müssen die Identitätsprüfung abgeschlossen haben, um diesen Dienst zu beantragen.",
     "description": "Nachricht, die angezeigt wird, wenn der Benutzer die Identitätsprüfung noch nicht abgeschlossen hat."
   },
   "message.goVerify": {
@@ -141,70 +141,70 @@
   },
   "message.requiredParameter": {
     "message": "Pflichtparameter",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer Pflichtparameter nicht eingegeben hat."
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer keinen Pflichtparameter eingegeben hat."
   },
   "message.example": {
     "message": "Beispiel",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer Pflichtparameter nicht eingegeben hat."
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer keinen Pflichtparameter eingegeben hat."
   },
   "message.createCredentialSuccessfully": {
     "message": "Zugangsdaten erfolgreich erstellt",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer erfolgreich Zugangsdaten erstellt hat."
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer Zugangsdaten erfolgreich erstellt hat."
   },
   "message.readPolicy": {
-    "message": "Ich habe die Bedingungen gelesen und stimme zu",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer die Bedingungen gelesen und zugestimmt hat."
+    "message": "Ich habe die Bedingungen gelesen und akzeptiert",
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer die Bedingungen gelesen und akzeptiert hat."
   },
   "message.policy": {
-    "message": "Nutzungsbedingungen für Datentechnikanbieter",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer die Bedingungen gelesen und zugestimmt hat."
+    "message": "Nutzungsvereinbarung für Daten- und technische Dienstleistungen",
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer die Bedingungen gelesen und akzeptiert hat."
   },
   "message.notAgreePolicy": {
-    "message": "Sie haben den Nutzungsbedingungen für Datentechnikanbieter nicht zugestimmt.",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer den Bedingungen noch nicht zugestimmt hat."
+    "message": "Sie haben den Nutzungsvertrag für Dienste nicht akzeptiert.",
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer den Vertrag nicht akzeptiert hat."
   },
   "message.confirmApplying": {
-    "message": "Antrag auf Dienst bestätigen",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer den Antrag auf Dienst bestätigt."
+    "message": "Dienstantrag bestätigen",
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer den Dienstantrag bestätigt."
   },
   "message.rotateCredential": {
     "message": "Schlüssel zurücksetzen",
-    "description": "Wenn der Benutzer den Schlüssel zurücksetzt, wird diese Nachricht angezeigt."
+    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn der Benutzer den Schlüssel zurücksetzt."
   },
   "message.rotateCredentialConfirm": {
     "message": "Sind Sie sicher, dass Sie den Schlüssel zurücksetzen möchten? Nach dem Zurücksetzen kann er nicht wiederhergestellt werden.",
-    "description": "Wenn der Benutzer den Schlüssel zurücksetzt, wird diese Bestätigungsnachricht angezeigt."
+    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn der Benutzer den Schlüssel zurücksetzen möchte."
   },
   "message.idDoesNotExist": {
     "message": "Antrag existiert nicht",
-    "description": "Wenn der Antrag nicht existiert, wird diese Nachricht angezeigt."
+    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn der Antrag nicht existiert."
   },
   "message.rotateCredentialSuccessfully": {
     "message": "Schlüssel erfolgreich zurückgesetzt",
-    "description": "Wenn der Schlüssel erfolgreich zurückgesetzt wurde, wird diese Nachricht angezeigt."
+    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn der Schlüssel erfolgreich zurückgesetzt wurde."
   },
   "message.rotateCredentialFailed": {
     "message": "Schlüssel zurücksetzen fehlgeschlagen, bitte kontaktieren Sie den Support",
-    "description": "Wenn das Zurücksetzen des Schlüssels fehlschlägt, wird diese Nachricht angezeigt."
+    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn das Zurücksetzen des Schlüssels fehlgeschlagen ist."
   },
   "message.updateFailed": {
     "message": "Änderung fehlgeschlagen",
-    "description": "Wenn die Änderung fehlschlägt, wird diese Nachricht angezeigt."
+    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn die Änderung fehlgeschlagen ist."
   },
   "message.updateSuccessfully": {
     "message": "Änderung erfolgreich",
-    "description": "Wenn die Änderung erfolgreich war, wird diese Nachricht angezeigt."
+    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn die Änderung erfolgreich war."
   },
   "title.buyService": {
-    "message": "Service kaufen",
-    "description": "Der Titel der Seite, wenn der Benutzer einen Service kaufen möchte."
+    "message": "Dienst kaufen",
+    "description": "Titel der Seite, wenn der Benutzer einen Dienst kaufen möchte."
   },
   "title.applicationRemainingCount": {
     "message": "Änderungsanzahl",
-    "description": "Der Titel der Seite, wenn der Benutzer die Anzahl der Anträge ändern möchte."
+    "description": "Titel der Seite, wenn der Benutzer die Anzahl der Anträge ändern möchte."
   },
   "title.manageApplication": {
     "message": "Antragsverwaltung",
-    "description": "Der Titel der Seite, wenn der Benutzer Anträge verwalten möchte."
+    "description": "Titel der Seite, wenn der Benutzer Anträge verwalten möchte."
   }
 }

@@ -1,6 +1,6 @@
 {
   "name.taskId": {
-    "message": "Tehtävän ID",
+    "message": "Tehtävä ID",
     "description": "Tehtävän ID"
   },
   "name.type": {
@@ -8,8 +8,8 @@
     "description": "QR-koodin sisältötyyppi, kuten 'linkki', 'teksti' jne."
   },
   "name.failure": {
-    "message": "Epääntynyt",
-    "description": "Tehtävän epäonnistumistila"
+    "message": "Epäonnistuminen",
+    "description": "Tehtävän epäonnistumisen tila"
   },
   "name.failureReason": {
     "message": "Epäonnistumisen syy",
@@ -28,15 +28,15 @@
     "description": "QR-koodin koko"
   },
   "name.createdAt": {
-    "message": "Luontiaika",
-    "description": "QR-koodin luontipäivämäärä ja aika"
+    "message": "Luontipäivämäärä",
+    "description": "QR-koodin luonti päivämäärä ja aika"
   },
   "name.pixelStyle": {
     "message": "Pikselityyli",
     "description": "QR-koodin pikselityyli"
   },
   "name.startImageUrl": {
-    "message": "Ensimmäinen kuva",
+    "message": "Alkuperäinen kuva",
     "description": "QR-koodin siemen"
   },
   "name.videoUrl": {
@@ -44,16 +44,16 @@
     "description": "QR-koodin siemen"
   },
   "name.endImageUrl": {
-    "message": "Viimeinen kuva",
+    "message": "Loppukuva",
     "description": "QR-koodin siemen"
   },
   "name.paddingLevel": {
-    "message": "Täyttöaste",
-    "description": "QR-koodin täyttöaste"
+    "message": "Täyttötaso",
+    "description": "QR-koodin täyttötaso"
   },
   "name.paddingNoise": {
-    "message": "Täyttökohina",
-    "description": "QR-koodin täyttökohina"
+    "message": "Täyttömelu",
+    "description": "QR-koodin täyttömelu"
   },
   "name.content": {
     "message": "Sisältö",
@@ -69,35 +69,35 @@
   },
   "name.prompt": {
     "message": "Videokehoitus",
-    "description": "Sisäänkirjautumiskehotus"
+    "description": "Sisällön syöttöohje"
   },
   "name.rotate": {
-    "message": "Käännösaste",
+    "message": "Käänn角",
     "description": "QR-koodin käännös"
   },
   "name.enhancement": {
-    "message": "Kehoitusten parannus",
-    "description": "QR-koodin asetusten lisäasetukset"
+    "message": "Vihjeiden parannus",
+    "description": "QR-koodin laajemmat asetukset"
   },
   "name.custom": {
-    "message": "Mukautettu laajennus",
+    "message": "Mukautettu videon laajennus",
     "description": "Mukautettu laajennusvideo"
   },
   "name.extend": {
-    "message": "Laajennusvideo on peräisin",
-    "description": "Sisäänkirjautumiskehotus"
+    "message": "Laajennettu video",
+    "description": "Sisällön syöttöohje"
   },
   "name.loop": {
     "message": "Videon toisto",
-    "description": "QR-koodin lisäasetukset"
+    "description": "QR-koodin laajemmat asetukset"
   },
   "name.aspectRatio": {
-    "message": "Kuvasuhde",
+    "message": "Kuvan kuvasuhde",
     "description": "QR-koodin kuvasuhde"
   },
   "name.markerShape": {
-    "message": "Merkki muoto",
-    "description": "QR-koodin merkkimuoto"
+    "message": "Merkki kuvio",
+    "description": "QR-koodin merkki kuvio"
   },
   "name.subMarker": {
     "message": "Alamerkki",
@@ -108,16 +108,16 @@
     "description": "QR-koodin generaattorin nimi"
   },
   "name.steps": {
-    "message": "Generointivaiheita",
-    "description": "QR-koodin generointivaiheita"
+    "message": "Generointivaiheet",
+    "description": "QR-koodin tuotantovaiheet"
   },
   "name.preset": {
-    "message": "Esiasetustyyli",
+    "message": "Esiasetettu tyyli",
     "description": "QR-koodin esiasetus"
   },
   "name.lumaBot": {
     "message": "Luma Bot",
-    "description": "Luma-videogeneraattorin nimi"
+    "description": "Luma videogeneraattorin nimi"
   },
   "name.contentImageUrl": {
     "message": "Sisältökuvan linkki",
@@ -136,27 +136,27 @@
     "description": "Parametrin 'qrw' kuvaus"
   },
   "description.enhancement": {
-    "message": "Jos et ole varma kuinka kirjoittaa kehotusteksti, ota käyttöön kehotustekstin parannus.",
+    "message": "Jos et ole varma kuinka kirjoittaa vinkkitekstiä, ota käyttöön syöttövihjeiden parannus.",
     "description": "Parametrin 'qrw' kuvaus"
   },
   "description.custom": {
-    "message": "Jos haluat ladata oman videon laajennettavaksi, ota tämä painike käyttöön.",
+    "message": "Jos haluat ladata oman videon videon laajentamiseksi, avaa tämä painike.",
     "description": "Parametrin 'qrw' kuvaus"
   },
   "description.startImageUrl": {
-    "message": "Ensimmäisen kuvan URL, joka on luodun videon ensimmäinen kuva.",
+    "message": "Alkuperäisen kuvan URL, josta tulee videon ensimmäinen ruutu.",
     "description": "Parametrin 'steps' kuvaus"
   },
   "description.videoUrl": {
-    "message": "Lataa mukautetun laajennuksen video URL, joka on laajennettavan videon video.",
+    "message": "Lataa mukautettu laajennettu videon URL, josta tulee laajennuksen video.",
     "description": "Parametrin 'steps' kuvaus"
   },
   "description.endImageUrl": {
-    "message": "Viimeisen kuvan URL, joka on luodun videon viimeinen kuva.",
+    "message": "Loppukuvan URL, josta tulee videon viimeinen ruutu.",
     "description": "Parametrin 'steps' kuvaus"
   },
   "description.prompt": {
-    "message": "Luma-videon kehotusteksti",
+    "message": "Luman videon luomiseen tarvittavat vinkkisanat",
     "description": "Parametrin 'prompt' kuvaus"
   },
   "status.pending": {
@@ -165,314 +165,314 @@
   },
   "status.processing": {
     "message": "Käsittelyssä",
-    "description": "Tehtävän odotustila"
+    "description": "Tehtävän käsittelytila"
   },
   "placeholder.paddingNoise": {
     "message": "Valitse...",
-    "description": "Täyttökohina syötteen paikkamerkki"
+    "description": "Täyttömelun syötteen paikkamerkki"
   },
   "placeholder.paddingLevel": {
     "message": "Valitse...",
-    "description": "Täyttöasteen paikkamerkki"
+    "description": "Täyttötason paikkamerkki"
   },
   "placeholder.prompt": {
-    "message": "Syötä video tyylin kehotusteksti, esimerkiksi: Astronautit kulkevat avaruudesta tulivuorelle",
-    "description": "Kehotuskentän paikkateksti"
+    "message": "Syötä video tyylin vinkkisanat, esim: Astronautit kuljetetaan avaruudesta tulivuorelle",
+    "description": "Vihje-kenttä paikkamerkki"
   },
   "placeholder.startImageUrl": {
-    "message": "Ensimmäisen kuvan linkki",
-    "description": "Siemensyötteen paikkamerkki"
+    "message": "Alkuperäinen kuvatunnus",
+    "description": "Siemen syötteen paikkamerkki"
   },
   "placeholder.endImageUrl": {
-    "message": "Viimeisen kuvan linkki",
-    "description": "Siemensyötteen paikkamerkki"
+    "message": "Loppukuvatunnus",
+    "description": "Siemen syötteen paikkamerkki"
   },
   "placeholder.position": {
     "message": "Valitse...",
-    "description": "Sijaintisyötteen paikkamerkki"
+    "description": "Sijainteellen syötteen paikkamerkki"
   },
   "placeholder.content": {
-    "message": "Syötä QR-koodin sisältö, esimerkiksi: https://www.google.com",
-    "description": "Sisältökentän paikkateksti"
+    "message": "Syötä QR-koodin sisältö, esim: https://www.google.com",
+    "description": "Sisältö-kentän paikkamerkki"
   },
   "placeholder.aspectRatio": {
     "message": "Valitse...",
-    "description": "Leveys-korkeus suhde syötteen placeholder"
+    "description": "Yhdenmukaisuuden syötteen paikkamerkki"
   },
   "placeholder.preset": {
     "message": "Valitse...",
-    "description": "Esiasetus syötteen placeholder"
+    "description": "Esiasetuksen syötteen paikkamerkki"
   },
   "placeholder.markerShape": {
     "message": "Valitse...",
-    "description": "Merkin muoto syötteen placeholder"
+    "description": "Merkinnän muodon syötteen paikkamerkki"
   },
   "placeholder.rotate": {
     "message": "Valitse...",
-    "description": "Kääntö syötteen placeholder"
+    "description": "Kääntämisen syötteen paikkamerkki"
   },
   "placeholder.subMarker": {
     "message": "Valitse...",
-    "description": "Alamerkin syötteen placeholder"
+    "description": "Alamerkin syötteen paikkamerkki"
   },
   "button.generate": {
-    "message": "Tuottaa",
-    "description": "Luma-videon luomisen painikkeen teksti"
+    "message": "Tuota",
+    "description": "Painiketeksti Luma-videon tuottamiseksi"
   },
   "button.extend": {
     "message": "Laajenna videota",
-    "description": "Videon laajentamisen painikkeen teksti"
+    "description": "Videon laajentamisen painiketeksti"
   },
   "button.uploadStartImageUrl": {
     "message": "Lataa kuva",
-    "description": "QR-koodin lataamisen painikkeen teksti"
+    "description": "QR-koodin lataamisen painiketeksti"
   },
   "button.uploadVideoUrl": {
     "message": "Lataa video",
-    "description": "QR-koodin lataamisen painikkeen teksti"
+    "description": "QR-koodin lataamisen painiketeksti"
   },
   "button.uploadEndImageUrl": {
     "message": "Lataa kuva",
-    "description": "QR-koodin lataamisen painikkeen teksti"
+    "description": "QR-koodin lataamisen painiketeksti"
   },
   "preset.sunset": {
     "message": "Auringonlasku",
-    "description": "QR-koodin esiasetustyyli"
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.floral": {
-    "message": "Kukallinen",
-    "description": "QR-koodin esiasetustyyli"
+    "message": "Kukkakuvio",
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.snowflakes": {
-    "message": "Lumiokristallit",
-    "description": "QR-koodin esiasetustyyli"
+    "message": "Lumihiutaleet",
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.feathers": {
-    "message": "Sulkat",
-    "description": "QR-koodin esiasetustyyli"
+    "message": "Höyhenet",
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.raindrops": {
-    "message": "Kastehelmi",
-    "description": "QR-koodin esiasetustyyli"
+    "message": "Vesipisarat",
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.ultraRealism": {
-    "message": "Ylirealismi",
-    "description": "QR-koodin esiasetustyyli"
+    "message": "Ylirealistinen",
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.epicRealms": {
-    "message": "Energinen valtakunta",
-    "description": "QR-koodin esiasetustyyli"
+    "message": "Eeposmaailmat",
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.intricateStudio": {
     "message": "Monimutkainen studio",
-    "description": "QR-koodin esiasetustyyli"
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.symmetricMasterpiece": {
-    "message": "Syntettinen mestariteos",
-    "description": "QR-koodin esiasetustyyli"
+    "message": "Symmetrinen mestariteos",
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.luminousHighway": {
-    "message": "Valoisa tie",
-    "description": "QR-koodin esiasetustyyli"
+    "message": "Hohtava tie",
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.celestialJourney": {
     "message": "Taivaallinen matka",
-    "description": "QR-koodin esiasetustyyli"
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.neonMech": {
-    "message": "Neonmekaniikka",
-    "description": "QR-koodin esiasetustyyli"
+    "message": "Neonkoneet",
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.etherealLowPoly": {
-    "message": "Ilmava alhaispiste",
-    "description": "QR-koodin esiasetustyyli"
+    "message": "Eetterinen matala poly",
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.goldenVista": {
     "message": "Kultainen näkymä",
-    "description": "QR-koodin esiasetustyyli"
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.cinematicExpanse": {
-    "message": "Elokuvamainen avaruus",
-    "description": "QR-koodin esiasetustyyli"
+    "message": "Elokuvamainen laajuus",
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.cinematicWarm": {
     "message": "Elokuvamainen lämpö",
-    "description": "QR-koodin esiasetustyyli"
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.desolateWilderness": {
     "message": "Autio erämaa",
-    "description": "QR-koodin esiasetustyyli"
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.vibrantPalette": {
-    "message": "Elinvoimainen paletti",
-    "description": "QR-koodin esiasetustyyli"
+    "message": "Elinvoimainen väripaletti",
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.enigmaticJourney": {
     "message": "Arvoituksellinen matka",
-    "description": "QR-koodin esiasetustyyli"
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.timelessCinematic": {
-    "message": "Ajaton elokuvamaisuus",
-    "description": "QR-koodin esiasetustyyli"
+    "message": "Ajaton elokuvamaailma",
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.regalGalaxy": {
-    "message": "Kuningaskunta galaksi",
-    "description": "QR-koodin esiasetustyyli"
+    "message": "Kuninkaallinen galaksi",
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.illustriousCanvas": {
-    "message": "Kunniakas kangas",
-    "description": "QR-koodin esiasetustyyli"
+    "message": "Kunnianhimoinen kangas",
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.expressiveMural": {
-    "message": "Ilmaiseva muraali",
-    "description": "QR-koodin esiasetustyyli"
+    "message": "Ilmaiseva seinämaalaus",
+    "description": "Esiasetustyyli QR-koodille"
   },
   "preset.sereneHaze": {
     "message": "Rauhallinen usva",
-    "description": "QR-koodin esiasetustyyli"
+    "description": "Esiasetustyyli QR-koodille"
   },
   "message.uploadQr": {
-    "message": "Lataa QR-koodin kuva, joka voi luoda taiteellisen QR-koodin, joka vastaa QR-koodin sisältöä",
+    "message": "Lataa QR-koodin kuva, voidaan tuottaa taiteellinen QR-koodi, joka vastaa QR-koodin sisältöä",
     "description": "QR-koodin lataamisen ohje"
   },
   "message.promptPlaceholder": {
-    "message": "Kirjoita kuvaus generoitavasta kuvasta, esimerkiksi: suloinen kissa. Lisäparametrit ohittavat oletusasetukset",
-    "description": "Kehotekstikentän placeholder-teksti"
+    "message": "Syötä lause, joka kuvaa luotavaa kuvaa, esimerkiksi: söpö kissa. Lisäparametrit ohittavat oletusasetukset",
+    "description": "Vihje-kentässä käytettävä paikkamerkkiteksti"
   },
   "message.uploadReferencesExceed": {
     "message": "Voit ladata enintään 5 kuvaa",
     "description": "Virheilmoitus, kun ladattujen kuvien määrä ylittää rajan"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Kuvien lataaminen onnistui",
-    "description": "Onnistuessa ladattujen kuvien ilmoitus"
+    "message": "Kuva ladattu onnistuneesti",
+    "description": "Onnistumisviesti, kun kuva on ladattu onnistuneesti"
   },
   "message.uploadReferencesError": {
-    "message": "Kuvien lataaminen epäonnistui, yritä uudelleen myöhemmin",
-    "description": "Virheilmoitus, kun kuvien lataaminen epäonnistuu"
+    "message": "Kuvan lataaminen epäonnistui, yritä uudelleen myöhemmin",
+    "description": "Virheilmoitus, kun kuvan lataaminen epäonnistuu"
   },
   "message.startingTask": {
-    "message": "Aloitetaan tehtävää...",
-    "description": "Viesti, kun piirustustehtävä käynnistetään"
+    "message": "Aloitetaan tehtävä...",
+    "description": "Viesti, kun piirustus on alkamassa"
   },
   "message.startTaskSuccess": {
-    "message": "Tehtävä käynnistetty onnistuneesti",
-    "description": "Onnistuessa tehtävän käynnistämisen ilmoitus"
+    "message": "Tehtävän käynnistäminen onnistui",
+    "description": "Onnistumisviesti, kun tehtävä on käynnistetty onnistuneesti"
   },
   "message.startTaskFailed": {
-    "message": "Tehtävän käynnistäminen epäonnistui, ota yhteys ylläpitoon",
+    "message": "Tehtävän käynnistäminen epäonnistui, ota yhteys ylläpitäjään",
     "description": "Virheilmoitus, kun piirustustehtävän käynnistäminen epäonnistuu"
   },
   "message.usedUp": {
-    "message": "Pisteesi ovat loppuneet, osta lisää pisteitä jatkaaksesi",
-    "description": "Viesti, kun pisteet on käytetty loppuun"
+    "message": "Pisteesi on käytetty loppuun, osta lisää pisteitä jatkaaksesi",
+    "description": "Viesti, kun pisteesi on käytetty loppuun"
   },
   "message.generating": {
-    "message": "Generoidaan...",
-    "description": "Viesti, kun kuvaa generoidaan"
+    "message": "Tuotetaan...",
+    "description": "Viesti, kun kuvaa luodaan"
   },
   "message.extendVideo": {
     "message": "Jatka tämän videon tuottamista",
-    "description": "Viesti, kun kuvaa generoidaan"
+    "description": "Viesti, kun kuvaa luodaan"
   },
   "message.generateFailed": {
-    "message": "Kuvan luonti epäonnistui",
-    "description": "Kuvan generointi epäonnistuu, kun viesti"
+    "message": "Kuvan generointi epäonnistui",
+    "description": "Kuvan generointi epäonnistui -viesti"
   },
   "message.uploadVideoExceed": {
-    "message": "Ladattavien ensimäisten kuvien määrä ylittää rajan",
-    "description": "Ladattavien ensimäisten kuvien määrä ylittää rajan, kun virheilmoitus"
+    "message": "Ladatun ensimmäisen kuvan määrä ylittää rajan",
+    "description": "Ladatun ensimmäisen kuvan määrä ylittää rajan -virheviesti"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Ladattavan tiedoston koko voi olla enintään 10 MB!",
-    "description": "Ladattavan tiedoston koko voi olla enintään 10 MB!, kun virheilmoitus"
+    "message": "Ladatun tiedoston koko ei saa ylittää 10 MB!",
+    "description": "Ladatun tiedoston koko ei saa ylittää 10 MB! -virheviesti"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Ladattavan tiedoston on oltava MP4-muodossa!",
-    "description": "Ladattavan tiedoston on oltava MP4-muodossa!, kun virheilmoitus"
+    "message": "Ladatun tiedoston on oltava MP4-muodossa!",
+    "description": "Ladatun tiedoston on oltava MP4-muodossa! -virheviesti"
   },
   "message.uploadStartImageExceed": {
-    "message": "Ladattavien ensimäisten kuvien määrä ylittää rajan",
-    "description": "Ladattavien ensimäisten kuvien määrä ylittää rajan, kun virheilmoitus"
+    "message": "Ladatun ensimmäisen kuvan määrä ylittää rajan",
+    "description": "Ladatun ensimmäisen kuvan määrä ylittää rajan -virheviesti"
   },
   "message.uploadEndImageExceed": {
-    "message": "Ladattavien lopputekstien määrä ylittää rajan",
-    "description": "Ladattavien lopputekstien määrä ylittää rajan, kun virheilmoitus"
+    "message": "Ladatun viimeisen kuvan määrä ylittää rajan",
+    "description": "Ladatun viimeisen kuvan määrä ylittää rajan -virheviesti"
   },
   "message.uploadStartImageError": {
     "message": "Ensimmäisen kuvan lataaminen epäonnistui",
-    "description": "Ensimmäisen kuvan lataaminen epäonnistuu, kun virheilmoitus"
+    "description": "Ensimmäisen kuvan lataaminen epäonnistui -virheviesti"
   },
   "message.uploadVideoError": {
     "message": "Videon lataaminen epäonnistui",
-    "description": "Ensimmäisen kuvan lataaminen epäonnistuu, kun virheilmoitus"
+    "description": "Videon lataaminen epäonnistui -virheviesti"
   },
   "message.uploadEndImageError": {
     "message": "Viimeisen kuvan lataaminen epäonnistui",
-    "description": "Viimeisen kuvan lataaminen epäonnistuu, kun virheilmoitus"
+    "description": "Viimeisen kuvan lataaminen epäonnistui -virheviesti"
   },
   "message.uploadDocumentsError": {
     "message": "Asiakirjan lataaminen epäonnistui",
-    "description": "Asiakirjan lataaminen epäonnistuu, kun virheilmoitus"
+    "description": "Asiakirjan lataaminen epäonnistui -virheviesti"
   },
   "message.noOperations": {
-    "message": "Ei saatavilla olevia toimintoja",
-    "description": "Ei saatavilla olevaan toimintaan liittyvä viesti"
+    "message": "Ei käytettävissä olevia toimintoja",
+    "description": "Ei käytettävissä olevia toimintoja -viesti"
   },
   "message.noTasks": {
-    "message": "Ei historiallisia tehtäviä, napsauta vasemmalla luodaksesi video",
-    "description": "Ei tehtäviä liittyvä viesti"
+    "message": "Ei historiallisia tehtäviä, napsauta vasemmalla luodaksesi videon",
+    "description": "Ei tehtäviä -viesti"
   },
   "markerShape.square": {
     "message": "Neliö",
-    "description": "QR-koodin luomiseen käytettävä merkki"
+    "description": "QR-koodin luontiin käytettävä merkintämuoto"
   },
   "markerShape.circle": {
     "message": "Ympyrä",
-    "description": "QR-koodin luomiseen käytettävä merkki"
+    "description": "QR-koodin luontiin käytettävä merkintämuoto"
   },
   "markerShape.plus": {
-    "message": "Plussamerkki",
-    "description": "QR-koodin luomiseen käytettävä merkki"
+    "message": "Plusmerkki",
+    "description": "QR-koodin luontiin käytettävä merkintämuoto"
   },
   "markerShape.box": {
     "message": "Laatikko",
-    "description": "QR-koodin luomiseen käytettävä merkki"
+    "description": "QR-koodin luontiin käytettävä merkintämuoto"
   },
   "markerShape.octagon": {
     "message": "Kahdeksankulmainen",
-    "description": "QR-koodin luomiseen käytettävä merkki"
+    "description": "QR-koodin luontiin käytettävä merkintämuoto"
   },
   "markerShape.tinyPlus": {
-    "message": "Pieni plussamerkki",
-    "description": "QR-koodin luomiseen käytettävä merkki"
+    "message": "Pieni plusmerkki",
+    "description": "QR-koodin luontiin käytettävä merkintämuoto"
   },
   "markerShape.random": {
     "message": "Satunnainen",
-    "description": "QR-koodin luomiseen käytettävä merkki"
+    "description": "QR-koodin luontiin käytettävä merkintämuoto"
   },
   "subMarker.square": {
     "message": "Neliö",
-    "description": "QR-koodin alamerkin muoto"
+    "description": "QR-koodin alamerkintämuoto"
   },
   "subMarker.circle": {
     "message": "Ympyrä",
-    "description": "QR-koodin alamerkin muoto"
+    "description": "QR-koodin alamerkintämuoto"
   },
   "subMarker.plus": {
-    "message": "Plussamerkki",
-    "description": "QR-koodin alamerkin muoto"
+    "message": "Plusmerkki",
+    "description": "QR-koodin alamerkintämuoto"
   },
   "subMarker.box": {
     "message": "Laatikko",
-    "description": "QR-koodin alamerkin muoto"
+    "description": "QR-koodin alamerkintämuoto"
   },
   "subMarker.random": {
     "message": "Satunnainen",
-    "description": "QR-koodin alamerkin muoto"
+    "description": "QR-koodin alamerkintämuoto"
   },
   "position.center": {
-    "message": "Keskellä",
+    "message": "Keskipiste",
     "description": "QR-koodin sijainti"
   },
   "position.topLeft": {
@@ -500,11 +500,11 @@
     "description": "QR-koodin sijainti"
   },
   "position.left": {
-    "message": "Vasen puoli",
+    "message": "Vasen",
     "description": "QR-koodin sijainti"
   },
   "position.right": {
-    "message": "Oikea puoli",
+    "message": "Oikea",
     "description": "QR-koodin sijainti"
   },
   "pixelStyle.row": {
@@ -520,7 +520,7 @@
     "description": "QR-koodin pikselityyli"
   },
   "pixelStyle.rounded": {
-    "message": "Pyöristetyt kulmat",
+    "message": "Pyöristetty",
     "description": "QR-koodin pikselityyli"
   },
   "pixelStyle.dot": {
@@ -528,27 +528,27 @@
     "description": "QR-koodin pikselityyli"
   },
   "pixelStyle.squircle": {
-    "message": "Pyöristetty suorakaide",
+    "message": "Pyöristetty suorakulmio",
     "description": "QR-koodin pikselityyli"
   },
   "type.text": {
     "message": "Teksti",
-    "description": "QR-koodin sisältötyyppi"
+    "description": "QR-koodin sisällön tyyppi"
   },
   "type.link": {
     "message": "Linkki",
-    "description": "QR-koodin sisältötyyppi"
+    "description": "QR-koodin sisällön tyyppi"
   },
   "type.email": {
     "message": "Sähköposti",
-    "description": "QR-koodin sisältötyyppi"
+    "description": "QR-koodin sisällön tyyppi"
   },
   "type.phone": {
     "message": "Puhelin",
-    "description": "QR-koodin sisältötyyppi"
+    "description": "QR-koodin sisällön tyyppi"
   },
   "type.sms": {
-    "message": "SMS",
-    "description": "QR-koodin sisältötyyppi"
+    "message": "Tekstiviesti",
+    "description": "QR-koodin sisällön tyyppi"
   }
 }

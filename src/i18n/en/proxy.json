@@ -1,7 +1,7 @@
 {
   "entity.requestQueries": {
     "message": "URL Parameters",
-    "description": "These are the parameters passed in the URL. They are separated by '?' and delimited by '&'."
+    "description": "These are parameters passed in the URL. They are separated by '?' and by '&'."
   },
   "entity.requestBody": {
     "message": "Request Body",
@@ -13,23 +13,23 @@
   },
   "entity.requestHeaders": {
     "message": "Request Headers",
-    "description": "These are the headers passed in the request. Typically used for authentication."
+    "description": "These are headers passed in the request. Typically used for authentication."
   },
   "entity.requestHeader": {
     "message": "Request Header",
-    "description": "This is the header passed in the request. Typically used for authentication."
+    "description": "This is a header passed in the request. Typically used for authentication."
   },
   "entity.requestQuery": {
-    "message": "URL Parameters",
-    "description": "These are the parameters passed in the URL. Separated by '?' and delimited by '&'."
+    "message": "URL Parameter",
+    "description": "This is a parameter passed in the URL. It is separated by '?' and by '&'."
   },
   "entity.responseHeaders": {
     "message": "Response Headers",
-    "description": "These are the headers passed in the response. Typically used for authentication."
+    "description": "These are headers passed in the response. Typically used for authentication."
   },
   "entity.response": {
     "message": "Response",
-    "description": "This is the response returned from the server."
+    "description": "This is the response returned by the server."
   },
   "entity.success": {
     "message": "Success",
@@ -41,15 +41,15 @@
   },
   "entity.responseExample": {
     "message": "Example",
-    "description": "This is an example of the response returned from the server."
+    "description": "This is an example of the response returned by the server."
   },
   "entity.authentication": {
     "message": "Authentication",
-    "description": "This is the authentication required to initiate the request."
+    "description": "This is the authentication needed to make the request."
   },
   "message.free": {
     "message": "Free",
-    "description": "Indicates that the price is free, and no points or money are required when using the API service."
+    "description": "Indicates that the price is free, no points or money are required when using the API services."
   },
   "message.appliedCount": {
     "message": "Applied Count",
@@ -57,15 +57,15 @@
   },
   "message.firstFree": {
     "message": "First Free",
-    "description": "Indicates the first use of the API service is free, and no points or money are required."
+    "description": "Indicates that the first use of the API service is free, no points or money are required."
   },
   "message.custom": {
-    "message": "Custom",
-    "description": "Indicates a specified price, and points or money are required when using the API service."
+    "message": "Specified Amount",
+    "description": "Indicates that the price is specified, points or money are required to use the API services."
   },
   "message.present": {
     "message": "Present",
-    "description": "Points will be presented to you when using the API service for the first time."
+    "description": "When using the API service for the first time, we will present points to you."
   },
   "message.around": {
     "message": "Around",
@@ -81,34 +81,34 @@
   },
   "message.xMinutes": {
     "message": "Time (Minutes)",
-    "description": "Time, in minutes."
+    "description": "Time, measured in minutes."
   },
   "message.streamUsage": {
-    "message": "Note: The above code may not be fully applicable for streaming requests. Please refer to the integration document for modifications.",
-    "description": "For streaming requests, the above code may not be fully applicable. Please refer to the integration document for modifications."
+    "message": "Kind Reminder: For streaming requests, the above code may not be fully applicable. Please refer to the integration documentation for modifications.",
+    "description": "For streaming requests, the above code may not be fully applicable. Please refer to the integration documentation for modifications."
   },
   "message.alphaStage": {
-    "message": "This API is in the Alpha stage, which is an early preview version and may have potential instability. The API format may undergo significant changes, and it is not recommended for use in a production environment. The current pricing is relatively low, and there may be significant price adjustments in the future.",
-    "description": "This API is in the Alpha stage, which is an early preview version and may have potential instability. The API format may undergo significant changes, and it is not recommended for use in a production environment. The current pricing is relatively low, and there may be significant price adjustments in the future."
+    "message": "This API is in the Alpha stage, which is an early preview version that may have potential instability, and the API format may undergo significant changes. It is not recommended for production use. Current pricing is relatively low, and there may be significant price adjustments in the future.",
+    "description": "This API is in the Alpha stage, which is an early preview version that may have potential instability, and the API format may undergo significant changes. It is not recommended for production use. Current pricing is relatively low, and there may be significant price adjustments in the future."
   },
   "message.betaStage": {
-    "message": "This API is in the Beta stage, and the API format will not undergo significant changes, but there may be potential instability. Please use with caution in a production environment. The current pricing is relatively low, and there may be moderate price adjustments in the future.",
-    "description": "This API is in the Beta stage, and the API format will not undergo significant changes, but there may be potential instability. Please use with caution in a production environment. The current pricing is relatively low, and there may be moderate price adjustments in the future."
+    "message": "This API is in the Beta stage, and the API format is not expected to change significantly, but there may be potential instability. Please use caution in production environments. Current pricing is relatively low, and there may be moderate price adjustments in the future.",
+    "description": "This API is in the Beta stage, and the API format is not expected to change significantly, but there may be potential instability. Please use caution in production environments. Current pricing is relatively low, and there may be moderate price adjustments in the future."
   },
   "unit.GB": {
     "message": "GB",
-    "description": "Gigabyte, a unit of digital information storage."
+    "description": "Gigabyte, a unit for digital information storage."
   },
   "unit.MB": {
     "message": "MB",
-    "description": "Megabyte, a unit of digital information storage."
+    "description": "Megabyte, a unit for digital information storage."
   },
   "unit.KB": {
     "message": "KB",
-    "description": "Kilobyte, a unit of digital information storage."
+    "description": "Kilobyte, a unit for digital information storage."
   },
   "unit.B": {
     "message": "B",
-    "description": "Byte, a unit of digital information storage."
+    "description": "Byte, a unit for digital information storage."
   }
 }

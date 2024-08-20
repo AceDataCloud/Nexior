@@ -32,15 +32,15 @@
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "field.admins": {
-    "message": "ID amministratori del sito",
+    "message": "ID degli amministratori del sito",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "field.distributionDefaultInviterId": {
-    "message": "ID invitante predefinito",
+    "message": "ID dell'invitante predefinito",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "field.distributionForceInviterId": {
-    "message": "ID invitante forzato",
+    "message": "ID dell'invitante obbligatorio",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "field.featuresChat": {
@@ -124,7 +124,7 @@
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "title.editDistributionForceInviterId": {
-    "message": "Modifica invitante forzato",
+    "message": "Modifica invitante obbligatorio",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "title.editQR": {
@@ -136,40 +136,40 @@
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "placeholder.title": {
-    "message": "Inserisci titolo del sito",
+    "message": "Inserisci il titolo del sito",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "placeholder.origin": {
-    "message": "Inserisci dominio del sito",
+    "message": "Inserisci il dominio del sito",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "placeholder.editUrl": {
-    "message": "Inserisci collegamento",
+    "message": "Inserisci il collegamento",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "placeholder.description": {
-    "message": "Inserisci descrizione del sito",
+    "message": "Inserisci la descrizione del sito",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "placeholder.keywords": {
-    "message": "Inserisci parole chiave del sito",
+    "message": "Inserisci le parole chiave del sito",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "placeholder.editDistributionDefaultInviterId": {
-    "message": "Inserisci ID invitante predefinito",
+    "message": "Inserisci l'ID dell'invitante predefinito",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "Inserisci ID invitante forzato",
+    "message": "Inserisci l'ID dell'invitante obbligatorio",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "message.uploadImageExceed": {
-    "message": "Dimensione dell'immagine caricata oltre il limite",
-    "description": "Messaggio di avviso per il superamento del limite di upload dell'immagine"
+    "message": "Caricamento immagine oltre il limite",
+    "description": "Messaggio di avviso per caricamento immagine oltre il limite"
   },
   "message.uploadImageError": {
-    "message": "Errore durante il caricamento dell'immagine",
-    "description": "Messaggio di avviso per errore di upload dell'immagine"
+    "message": "Errore nel caricamento dell'immagine",
+    "description": "Messaggio di errore per caricamento immagine"
   },
   "message.editLogoTip": {
     "message": "Dimensioni consigliate: 200*60px",
@@ -185,22 +185,22 @@
   },
   "message.editUrl": {
     "message": "Inserisci il link",
-    "description": "Prompt per inserire un link"
+    "description": "Prompt per inserire il link"
   },
   "message.atLeastOneAdmin": {
-    "message": "Deve rimanere almeno un amministratore",
+    "message": "Mantenere almeno un amministratore",
     "description": "Prompt per mantenere almeno un amministratore"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "ID utente dell'invitante predefinito; se il link di distribuzione non include il parametro inviter_id, viene utilizzato questo ID utente come invitante.",
+    "message": "ID utente dell'invitante predefinito. Se il link di distribuzione non include il parametro inviter_id, verrà utilizzato questo ID utente come invitante.",
     "description": "Prompt per l'ID dell'invitante predefinito"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID utente dell'invitante forzato; se questo ID è impostato, verrà utilizzato come invitante, indipendentemente dal fatto che il link di distribuzione contenga il parametro inviter_id.",
+    "message": "ID utente dell'invitante forzato. Se questo ID è impostato, sarà utilizzato come invitante, indipendentemente dal fatto che il link di distribuzione includa o meno il parametro inviter_id.",
     "description": "Prompt per l'ID dell'invitante forzato"
   },
   "message.originTip": {
-    "message": "Dominio del sito; la configurazione del sito è legata al dominio e non può essere cambiata.",
+    "message": "Dominio del sito. La configurazione del sito è legata al dominio e non può essere cambiata.",
     "description": "Prompt per il dominio del sito"
   },
   "message.titleTip": {
@@ -208,55 +208,55 @@
     "description": "Prompt per il titolo del sito"
   },
   "message.descriptionTip": {
-    "message": "Descrizione del sito, presente nelle informazioni meta del sito, utilizzata per l'ottimizzazione SEO del sito.",
+    "message": "Descrizione del sito, presente nelle meta informazioni del sito, utile per l'ottimizzazione SEO.",
     "description": "Prompt per la descrizione del sito"
   },
   "message.logoTip": {
-    "message": "Logo del sito, mostrato in cima al menu del sito quando il menu è espanso.",
+    "message": "Logo del sito, visualizzato nella parte superiore del menu del sito quando il menu è espanso.",
     "description": "Prompt per il logo del sito"
   },
   "message.faviconTip": {
-    "message": "Favicon del sito, visualizzato nella scheda del browser.",
+    "message": "Favicon del sito, visualizzata nella scheda del browser.",
     "description": "Prompt per il favicon del sito"
   },
   "message.adminsTip": {
-    "message": "ID degli amministratori del sito; di default, l'utente che crea il sito sarà l'amministratore, solo gli amministratori possono gestire il sito.",
+    "message": "ID amministratore del sito. L'utente che crea il sito per la prima volta diventa automaticamente amministratore. Solo gli amministratori del sito possono gestirlo.",
     "description": "Prompt per gli amministratori del sito"
   },
   "message.adminsTip2": {
-    "message": "Puoi aggiungere o rimuovere gli ID degli amministratori qui; puoi controllare gli ID utente su https://auth.acedata.cloud",
+    "message": "Puoi aggiungere o rimuovere gli ID degli amministratori qui. Puoi vedere gli ID utente su https://auth.acedata.cloud",
     "description": "Prompt per gli amministratori del sito"
   },
   "message.keywordsTip": {
-    "message": "Parole chiave del sito, presenti nelle informazioni meta del sito, utilizzate per l'ottimizzazione SEO del sito.",
+    "message": "Parole chiave del sito, presenti nelle meta informazioni del sito, utili per l'ottimizzazione SEO.",
     "description": "Prompt per le parole chiave del sito"
   },
   "message.keywordsTip2": {
-    "message": "Puoi aggiungere o rimuovere le parole chiave del sito qui; più precise sono le parole chiave, migliore sarà l'ottimizzazione SEO.",
+    "message": "Puoi aggiungere o rimuovere le parole chiave del sito qui. Più precise sono le parole chiave, meglio è per l'ottimizzazione SEO.",
     "description": "Prompt per le parole chiave del sito"
   },
   "message.featuresChat": {
-    "message": "Attiva o disattiva il modulo Chat.",
+    "message": "Attiva o disattiva il modulo della funzione Chat.",
     "description": "Descrizione della funzione Chat"
   },
   "message.featuresMidjourney": {
-    "message": "Attiva o disattiva il modulo Midjourney.",
+    "message": "Attiva o disattiva il modulo della funzione Midjourney.",
     "description": "Descrizione della funzione Midjourney"
   },
   "message.featuresChatdoc": {
-    "message": "Attiva o disattiva il modulo Chatdoc.",
+    "message": "Attiva o disattiva il modulo della funzione Chatdoc.",
     "description": "Descrizione della funzione Chatdoc"
   },
   "message.featuresQrart": {
-    "message": "Attiva o disattiva il modulo Qrart.",
+    "message": "Attiva o disattiva il modulo della funzione Qrart.",
     "description": "Descrizione della funzione Qrart"
   },
   "message.featuresSuno": {
-    "message": "Attiva o disattiva il modulo Suno.",
+    "message": "Attiva o disattiva il modulo della funzione Suno.",
     "description": "Descrizione della funzione Suno"
   },
   "message.featuresLuma": {
-    "message": "Attiva o disattiva il modulo Luma.",
+    "message": "Attiva o disattiva il modulo della funzione Luma.",
     "description": "Descrizione della funzione Luma"
   },
   "message.featuresSupport": {
@@ -264,7 +264,7 @@
     "description": "Descrizione della funzione Supporto"
   },
   "message.featuresI18n": {
-    "message": "Attiva o disattiva il supporto multilingue; se disattivato, gli utenti potranno usare solo la lingua predefinita.",
+    "message": "Attiva o disattiva il supporto multilingue. Se disattivato, gli utenti possono usare solo la lingua predefinita.",
     "description": "Descrizione del supporto multilingue"
   },
   "button.upload": {
