@@ -49,7 +49,7 @@
           <el-col
             v-for="(capability, capabilityIndex) in capabilities"
             :key="capabilityIndex"
-            :md="24 / capabilities.length"
+            :md="6"
             :xs="24"
             class="mb-4"
           >
@@ -162,6 +162,31 @@
           <el-col :md="16" :xs="24" class="preview">
             <img src="https://cdn.acedata.cloud/2m8fn.png" class="image desktop" />
             <img src="https://cdn.acedata.cloud/23knvs.png" class="image mobile" />
+          </el-col>
+        </el-row>
+      </div>
+    </div>
+    <div
+      id="luma"
+      class="block"
+      @click="
+        $router.push({
+          path: '/luma'
+        })
+      "
+    >
+      <div class="container">
+        <el-row>
+          <el-col :md="16" :xs="24" class="preview">
+            <img src="https://cdn.acedata.cloud/gyogar.png" class="image desktop" />
+            <img src="https://cdn.acedata.cloud/5kunm0.png" class="image mobile" />
+          </el-col>
+          <el-col :md="8" :xs="24" class="info">
+            <h2 class="title">{{ $t('index.title.luma') }}</h2>
+            <p class="subtitle">{{ $t('index.subtitle.luma') }}</p>
+            <el-button type="primary" round class="btn-try">
+              {{ $t('index.button.try') }}
+            </el-button>
           </el-col>
         </el-row>
       </div>
@@ -285,6 +310,15 @@ export default defineComponent({
                 title: this.$t('index.title.suno'),
                 subtitle: this.$t('index.subtitle.suno'),
                 icon: 'fa-solid fa-music'
+              }
+            ]
+          : []),
+        ...(this.site?.features?.luma?.enabled
+          ? [
+              {
+                title: this.$t('index.title.luma'),
+                subtitle: this.$t('index.subtitle.luma'),
+                icon: 'fa-solid fa-film'
               }
             ]
           : [])

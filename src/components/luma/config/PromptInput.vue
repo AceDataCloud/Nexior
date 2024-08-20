@@ -29,9 +29,6 @@ export default defineComponent({
     ElInput,
     InfoIcon
   },
-  data() {
-    return {};
-  },
   computed: {
     prompt: {
       get() {
@@ -60,11 +57,15 @@ export default defineComponent({
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between; // Add this line to move the icon to the right
     position: relative;
     .title {
       font-size: 14px;
       margin-bottom: 10px;
     }
+  }
+  .info {
+    margin-left: auto; // Ensure the icon stays on the right
   }
 }
 </style>
