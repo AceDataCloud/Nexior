@@ -1,0 +1,554 @@
+{
+  "name.taskId": {
+    "message": "任務 ID",
+    "description": "任務的 ID"
+  },
+  "name.type": {
+    "message": "類型",
+    "description": "要生成的 QR 碼的內容類型，如'連結'、'文本'等"
+  },
+  "name.failure": {
+    "message": "失敗",
+    "description": "任務的失敗狀態"
+  },
+  "name.failureReason": {
+    "message": "失敗原因",
+    "description": "任務失敗的原因"
+  },
+  "name.status": {
+    "message": "狀態",
+    "description": "任務的狀態"
+  },
+  "name.traceId": {
+    "message": "追蹤 ID",
+    "description": "任務的追蹤 ID"
+  },
+  "name.size": {
+    "message": "尺寸",
+    "description": "要生成的 QR 碼的尺寸"
+  },
+  "name.createdAt": {
+    "message": "創建時間",
+    "description": "生成 QR 碼的日期和時間"
+  },
+  "name.pixelStyle": {
+    "message": "像素風格",
+    "description": "要生成的 QR 碼的像素風格"
+  },
+  "name.startImageUrl": {
+    "message": "首幀圖片",
+    "description": "要生成的 QR 碼的種子"
+  },
+  "name.videoUrl": {
+    "message": "自訂影片",
+    "description": "要生成的 QR 碼的種子"
+  },
+  "name.endImageUrl": {
+    "message": "尾幀圖片",
+    "description": "要生成的 QR 碼的種子"
+  },
+  "name.paddingLevel": {
+    "message": "填充級別",
+    "description": "要生成的 QR 碼的填充級別"
+  },
+  "name.paddingNoise": {
+    "message": "填充噪音",
+    "description": "要生成的 QR 碼的填充噪音"
+  },
+  "name.content": {
+    "message": "內容",
+    "description": "要生成的 QR 碼的內容"
+  },
+  "name.ecl": {
+    "message": "糾錯級別",
+    "description": "要生成的 QR 碼的糾錯級別"
+  },
+  "name.position": {
+    "message": "位置",
+    "description": "要生成的 QR 碼的位置"
+  },
+  "name.prompt": {
+    "message": "影片提示",
+    "description": "內容輸入的提示"
+  },
+  "name.rotate": {
+    "message": "旋轉角度",
+    "description": "要生成的 QR 碼的旋轉"
+  },
+  "name.enhancement": {
+    "message": "提示詞增強",
+    "description": "要生成的 QR 碼的高級設置"
+  },
+  "name.custom": {
+    "message": "自訂擴展",
+    "description": "自訂擴展影片"
+  },
+  "name.extend": {
+    "message": "擴展影片來自",
+    "description": "內容輸入的提示"
+  },
+  "name.loop": {
+    "message": "影片循環播放",
+    "description": "要生成的 QR 碼的高級設置"
+  },
+  "name.aspectRatio": {
+    "message": "寬高比",
+    "description": "要生成的 QR 碼的寬高比"
+  },
+  "name.markerShape": {
+    "message": "標記形狀",
+    "description": "要生成的 QR 碼的標記形狀"
+  },
+  "name.subMarker": {
+    "message": "子標記",
+    "description": "要生成的 QR 碼的子標記"
+  },
+  "name.qrw": {
+    "message": "可見度",
+    "description": "QR 碼生成器的名稱"
+  },
+  "name.steps": {
+    "message": "生成步數",
+    "description": "生成 QR 碼的步數"
+  },
+  "name.preset": {
+    "message": "預設風格",
+    "description": "要生成的 QR 碼的預設"
+  },
+  "name.lumaBot": {
+    "message": "Luma Bot",
+    "description": "Luma 影片生成器的名稱"
+  },
+  "name.contentImageUrl": {
+    "message": "內容圖片連結",
+    "description": "要生成的 QR 碼的內容圖片 URL"
+  },
+  "inputWay.input": {
+    "message": "輸入內容",
+    "description": "輸入方式"
+  },
+  "inputWay.upload": {
+    "message": "上傳二維碼",
+    "description": "輸入方式"
+  },
+  "description.loop": {
+    "message": "為生成的影片啟用循環。",
+    "description": "參數'qrw'的描述"
+  },
+  "description.enhancement": {
+    "message": "如果您不確定如何書寫提示文字，請啟用輸入提示文字的增強功能。",
+    "description": "參數'qrw'的描述"
+  },
+  "description.custom": {
+    "message": "如果您想上傳自己的影片來擴展影片，請開啟此按鈕。",
+    "description": "參數'qrw'的描述"
+  },
+  "description.startImageUrl": {
+    "message": "首幀圖像的 URL，它將是生成影片的第一幀。",
+    "description": "參數'steps'的描述"
+  },
+  "description.videoUrl": {
+    "message": "上傳自訂擴展的影片URL，它將是擴展影片的影片。",
+    "description": "參數'steps'的描述"
+  },
+  "description.endImageUrl": {
+    "message": "尾幀圖像的 URL，它將是生成影片的最後一幀。",
+    "description": "參數'steps'的描述"
+  },
+  "description.prompt": {
+    "message": "生成Luma影片的提示詞",
+    "description": "參數'prompt'的描述"
+  },
+  "status.pending": {
+    "message": "等待中",
+    "description": "任務的等待狀態"
+  },
+  "status.processing": {
+    "message": "處理中",
+    "description": "任務的等待狀態"
+  },
+  "placeholder.paddingNoise": {
+    "message": "請選擇...",
+    "description": "填充噪音輸入的佔位符"
+  },
+  "placeholder.paddingLevel": {
+    "message": "請選擇...",
+    "description": "填充級別的佔位符"
+  },
+  "placeholder.prompt": {
+    "message": "輸入要生成的影片風格的提示詞，例如：Astronauts shuttle from space to volcano",
+    "description": "提示字段中的佔位文本"
+  },
+  "placeholder.startImageUrl": {
+    "message": "首幀圖片連結",
+    "description": "種子輸入的佔位符"
+  },
+  "placeholder.endImageUrl": {
+    "message": "尾幀圖片連結",
+    "description": "種子輸入的佔位符"
+  },
+  "placeholder.position": {
+    "message": "請選擇...",
+    "description": "位置輸入的佔位符"
+  },
+  "placeholder.content": {
+    "message": "輸入要生成的 QR 碼的內容，例如：https://www.google.com",
+    "description": "內容字段中的佔位文本"
+  },
+  "placeholder.aspectRatio": {
+    "message": "請選擇...",
+    "description": "寬高比輸入的佔位符"
+  },
+  "placeholder.preset": {
+    "message": "請選擇...",
+    "description": "預設輸入的佔位符"
+  },
+  "placeholder.markerShape": {
+    "message": "請選擇...",
+    "description": "標記形狀輸入的佔位符"
+  },
+  "placeholder.rotate": {
+    "message": "請選擇...",
+    "description": "旋轉輸入的佔位符"
+  },
+  "placeholder.subMarker": {
+    "message": "請選擇...",
+    "description": "子標記輸入的佔位符"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "生成Luma視頻的按鈕文本"
+  },
+  "button.extend": {
+    "message": "擴展視頻",
+    "description": "擴展視頻按鈕文本"
+  },
+  "button.uploadStartImageUrl": {
+    "message": "上傳圖片",
+    "description": "上傳二維碼的按鈕文本"
+  },
+  "button.uploadVideoUrl": {
+    "message": "上傳視頻",
+    "description": "上傳二維碼的按鈕文本"
+  },
+  "button.uploadEndImageUrl": {
+    "message": "上傳圖片",
+    "description": "上傳二維碼的按鈕文本"
+  },
+  "preset.sunset": {
+    "message": "日落",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.floral": {
+    "message": "花卉",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.snowflakes": {
+    "message": "雪花",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.feathers": {
+    "message": "羽毛",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.raindrops": {
+    "message": "雨滴",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.ultraRealism": {
+    "message": "超現實",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.epicRealms": {
+    "message": "史詩王國",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.intricateStudio": {
+    "message": "複雜工作室",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.symmetricMasterpiece": {
+    "message": "對稱傑作",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.luminousHighway": {
+    "message": "發光之路",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.celestialJourney": {
+    "message": "天體之旅",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.neonMech": {
+    "message": "霓虹機械",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.etherealLowPoly": {
+    "message": "空靈低多邊形",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.goldenVista": {
+    "message": "金色景觀",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.cinematicExpanse": {
+    "message": "電影般的廣闊",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.cinematicWarm": {
+    "message": "電影般的溫暖",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.desolateWilderness": {
+    "message": "荒涼荒野",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.vibrantPalette": {
+    "message": "充滿活力的調色板",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.enigmaticJourney": {
+    "message": "神秘之旅",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.timelessCinematic": {
+    "message": "永恆的電影",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.regalGalaxy": {
+    "message": "華麗星系",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.illustriousCanvas": {
+    "message": "傑出畫布",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.expressiveMural": {
+    "message": "富有表現力的壁畫",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "preset.sereneHaze": {
+    "message": "寧靜薄霧",
+    "description": "要生成的 QR 碼的預設風格"
+  },
+  "message.uploadQr": {
+    "message": "上傳二維碼圖片，可生成和二維碼內容一致的藝術二維碼",
+    "description": "上傳二維碼的說明"
+  },
+  "message.promptPlaceholder": {
+    "message": "請輸入描述要生成的圖像的句子，例如：一隻可愛的貓。額外參數將覆蓋默認預設參數",
+    "description": "提示字段中的佔位文本"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "最多可上傳 5 張圖片",
+    "description": "上傳的圖片數量超過限制時的錯誤消息"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "成功上傳圖片",
+    "description": "成功上傳圖片時的成功消息"
+  },
+  "message.uploadReferencesError": {
+    "message": "上傳圖片失敗，請稍後重試",
+    "description": "圖片上傳失敗時的錯誤消息"
+  },
+  "message.startingTask": {
+    "message": "正在啟動任務...",
+    "description": "繪圖任務開始時的消息"
+  },
+  "message.startTaskSuccess": {
+    "message": "成功發起生成任務",
+    "description": "成功啟動任務時的成功消息"
+  },
+  "message.startTaskFailed": {
+    "message": "發起任務失敗，請聯繫管理員",
+    "description": "啟動繪圖任務失敗時的錯誤消息"
+  },
+  "message.usedUp": {
+    "message": "您的積分已用完，請購買更多積分後繼續使用",
+    "description": "已用完時的消息"
+  },
+  "message.generating": {
+    "message": "生成中...",
+    "description": "圖像正在生成時的消息"
+  },
+  "message.extendVideo": {
+    "message": "繼續生成此視頻",
+    "description": "圖像正在生成時的消息"
+  },
+  "message.generateFailed": {
+    "message": "生成圖像失敗",
+    "description": "圖像生成失敗時的消息"
+  },
+  "message.uploadVideoExceed": {
+    "message": "上傳首幀圖片數量超過限制",
+    "description": "上傳首幀圖片數量超過限制時的錯誤信息"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "上傳文件大小不能超過 10MB！",
+    "description": "上傳文件大小不能超過 10MB！時的錯誤信息"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "上傳文件必須是 MP4 格式！",
+    "description": "上傳文件必須是 MP4 格式！的錯誤信息"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "上傳首幀圖片數量超過限制",
+    "description": "上傳首幀圖片數量超過限制時的錯誤信息"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "上傳尾幀圖片數量超過限制",
+    "description": "上傳尾幀圖片數量超過限制時的錯誤信息"
+  },
+  "message.uploadStartImageError": {
+    "message": "上傳首幀圖片失敗",
+    "description": "上傳首幀圖片失敗時的錯誤信息"
+  },
+  "message.uploadVideoError": {
+    "message": "上傳視頻失敗",
+    "description": "上傳視頻失敗時的錯誤信息"
+  },
+  "message.uploadEndImageError": {
+    "message": "上傳尾幀圖片失敗",
+    "description": "上傳尾幀圖片失敗時的錯誤信息"
+  },
+  "message.uploadDocumentsError": {
+    "message": "上傳文檔失敗",
+    "description": "上傳文檔失敗時的錯誤信息"
+  },
+  "message.noOperations": {
+    "message": "沒有可用操作",
+    "description": "沒有可用操作時的消息"
+  },
+  "message.noTasks": {
+    "message": "沒有歷史任務，請點擊左方生成視頻",
+    "description": "沒有任務時的消息"
+  },
+  "markerShape.square": {
+    "message": "正方形",
+    "description": "用於生成QR碼的標記形狀"
+  },
+  "markerShape.circle": {
+    "message": "圓形",
+    "description": "用於生成QR碼的標記形狀"
+  },
+  "markerShape.plus": {
+    "message": "加號",
+    "description": "用於生成QR碼的標記形狀"
+  },
+  "markerShape.box": {
+    "message": "方框",
+    "description": "用於生成QR碼的標記形狀"
+  },
+  "markerShape.octagon": {
+    "message": "八邊形",
+    "description": "用於生成QR碼的標記形狀"
+  },
+  "markerShape.tinyPlus": {
+    "message": "微加號",
+    "description": "用於生成QR碼的標記形狀"
+  },
+  "markerShape.random": {
+    "message": "隨機",
+    "description": "用於生成QR碼的標記形狀"
+  },
+  "subMarker.square": {
+    "message": "正方形",
+    "description": "用於生成QR碼的子標記形狀"
+  },
+  "subMarker.circle": {
+    "message": "圓形",
+    "description": "用於生成QR碼的子標記形狀"
+  },
+  "subMarker.plus": {
+    "message": "加號",
+    "description": "用於生成QR碼的子標記形狀"
+  },
+  "subMarker.box": {
+    "message": "方框",
+    "description": "用於生成QR碼的子標記形狀"
+  },
+  "subMarker.random": {
+    "message": "隨機",
+    "description": "用於生成QR碼的子標記形狀"
+  },
+  "position.center": {
+    "message": "中心",
+    "description": "用於生成QR碼的位置"
+  },
+  "position.topLeft": {
+    "message": "左上",
+    "description": "用於生成QR碼的位置"
+  },
+  "position.topRight": {
+    "message": "右上",
+    "description": "用於生成QR碼的位置"
+  },
+  "position.bottomLeft": {
+    "message": "左下",
+    "description": "用於生成QR碼的位置"
+  },
+  "position.bottomRight": {
+    "message": "右下",
+    "description": "用於生成QR碼的位置"
+  },
+  "position.top": {
+    "message": "頂部",
+    "description": "用於生成QR碼的位置"
+  },
+  "position.bottom": {
+    "message": "底部",
+    "description": "用於生成QR碼的位置"
+  },
+  "position.left": {
+    "message": "左側",
+    "description": "用於生成QR碼的位置"
+  },
+  "position.right": {
+    "message": "右側",
+    "description": "用於生成QR碼的位置"
+  },
+  "pixelStyle.row": {
+    "message": "行",
+    "description": "用於生成QR碼的像素風格"
+  },
+  "pixelStyle.column": {
+    "message": "列",
+    "description": "用於生成QR碼的像素風格"
+  },
+  "pixelStyle.square": {
+    "message": "正方形",
+    "description": "用於生成QR碼的像素風格"
+  },
+  "pixelStyle.rounded": {
+    "message": "圓角",
+    "description": "用於生成QR碼的像素風格"
+  },
+  "pixelStyle.dot": {
+    "message": "點",
+    "description": "用於生成QR碼的像素風格"
+  },
+  "pixelStyle.squircle": {
+    "message": "圓角矩形",
+    "description": "用於生成QR碼的像素風格"
+  },
+  "type.text": {
+    "message": "文本",
+    "description": "用於生成QR碼的內容類型"
+  },
+  "type.link": {
+    "message": "鏈接",
+    "description": "用於生成QR碼的內容類型"
+  },
+  "type.email": {
+    "message": "郵件",
+    "description": "用於生成QR碼的內容類型"
+  },
+  "type.phone": {
+    "message": "電話",
+    "description": "用於生成QR碼的內容類型"
+  },
+  "type.sms": {
+    "message": "短信",
+    "description": "用於生成QR碼的內容類型"
+  }
+}

@@ -32,15 +32,15 @@
     "description": "展示在编辑框的标题"
   },
   "field.admins": {
-    "message": "ID de administradores del sitio",
+    "message": "ID de admin del sitio",
     "description": "展示在编辑框的标题"
   },
   "field.distributionDefaultInviterId": {
-    "message": "ID del invitador predeterminado",
+    "message": "ID del invitador por defecto",
     "description": "展示在编辑框的标题"
   },
   "field.distributionForceInviterId": {
-    "message": "ID del invitador forzado",
+    "message": "ID del invitador obligatorio",
     "description": "展示在编辑框的标题"
   },
   "field.featuresChat": {
@@ -57,6 +57,10 @@
   },
   "field.featuresQrart": {
     "message": "Qrart",
+    "description": "展示在编辑框的标题"
+  },
+  "field.featuresLuma": {
+    "message": "Luma",
     "description": "展示在编辑框的标题"
   },
   "field.featuresSuno": {
@@ -80,83 +84,83 @@
     "description": "展示在编辑框的标题"
   },
   "title.editAdmins": {
-    "message": "Editar administradores",
+    "message": "Editar Administradores",
     "description": "展示在编辑框的标题"
   },
   "title.featuresConfig": {
-    "message": "Configuración de funciones",
+    "message": "Configuración de características",
     "description": "展示在编辑框的标题"
   },
   "title.editTitle": {
-    "message": "Editar título",
+    "message": "Editar Título",
     "description": "展示在编辑框的标题"
   },
   "title.editOrigin": {
-    "message": "Editar dominio",
+    "message": "Editar Dominio",
     "description": "展示在编辑框的标题"
   },
   "title.editKeywords": {
-    "message": "Editar palabras clave",
+    "message": "Editar Palabras Clave",
     "description": "展示在编辑框的标题"
   },
   "title.editLogo": {
-    "message": "Editar logo",
+    "message": "Editar Logo",
     "description": "展示在编辑框的标题"
   },
   "title.editFavicon": {
-    "message": "Editar favicon",
+    "message": "Editar Favicon",
     "description": "展示在编辑框的标题"
   },
   "title.editDescription": {
-    "message": "Editar descripción",
+    "message": "Editar Descripción",
     "description": "展示在编辑框的标题"
   },
   "title.distributionConfig": {
-    "message": "Configuración de distribución",
+    "message": "Configuración de Distribución",
     "description": "展示在编辑框的标题"
   },
   "title.editDistributionDefaultInviterId": {
-    "message": "Editar invitador predeterminado",
+    "message": "Editar Invitador por Defecto",
     "description": "展示在编辑框的标题"
   },
   "title.editDistributionForceInviterId": {
-    "message": "Editar invitador forzado",
+    "message": "Editar Invitador Obligatorio",
     "description": "展示在编辑框的标题"
   },
   "title.editQR": {
-    "message": "Editar código QR",
+    "message": "Editar Código QR",
     "description": "展示在编辑框的标题"
   },
   "title.editUrl": {
-    "message": "Editar enlace",
+    "message": "Editar Enlace",
     "description": "展示在编辑框的标题"
   },
   "placeholder.title": {
-    "message": "Por favor ingrese el título del sitio",
+    "message": "Por favor, introduzca el título del sitio",
     "description": "展示在编辑框的标题"
   },
   "placeholder.origin": {
-    "message": "Por favor ingrese el dominio del sitio",
+    "message": "Por favor, introduzca el dominio del sitio",
     "description": "展示在编辑框的标题"
   },
   "placeholder.editUrl": {
-    "message": "Por favor ingrese el enlace",
+    "message": "Por favor, introduzca el enlace",
     "description": "展示在编辑框的标题"
   },
   "placeholder.description": {
-    "message": "Por favor ingrese la descripción del sitio",
+    "message": "Por favor, introduzca la descripción del sitio",
     "description": "展示在编辑框的标题"
   },
   "placeholder.keywords": {
-    "message": "Por favor ingrese las palabras clave del sitio",
+    "message": "Por favor, introduzca las palabras clave del sitio",
     "description": "展示在编辑框的标题"
   },
   "placeholder.editDistributionDefaultInviterId": {
-    "message": "Por favor ingrese el ID del invitador predeterminado",
+    "message": "Por favor, introduzca el ID del invitador por defecto",
     "description": "展示在编辑框的标题"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "Por favor ingrese el ID del invitador forzado",
+    "message": "Por favor, introduzca el ID del invitador obligatorio",
     "description": "展示在编辑框的标题"
   },
   "message.uploadImageExceed": {
@@ -180,84 +184,88 @@
     "description": "上传图片的提示语言"
   },
   "message.editUrl": {
-    "message": "Por favor ingrese el enlace",
-    "description": "请输入链接的提示"
+    "message": "Por favor, introduce el enlace",
+    "description": "Sugerencia para introducir el enlace"
   },
   "message.atLeastOneAdmin": {
-    "message": "Mantener al menos un administrador",
-    "description": "提示 para mantener al menos un administrador"
+    "message": "Debe haber al menos un administrador",
+    "description": "Sugerencia para mantener al menos un administrador"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "ID de usuario del invitador predeterminado. Si el enlace de distribución no incluye el parámetro inviter_id, se usará este ID de usuario como el invitador.",
-    "description": "提示 para la ID del invitador predeterminado"
+    "message": "ID de usuario del invitador por defecto, si el enlace de distribución no lleva el parámetro inviter_id, se usará este ID de usuario como invitador.",
+    "description": "Sugerencia para el ID del invitador por defecto"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID de usuario del invitador forzado. Si se configura este ID, se usará como invitador sin importar si el enlace de distribución lleva el parámetro inviter_id.",
-    "description": "提示 para la ID del invitador forzado"
+    "message": "ID de usuario del invitador forzado, si se establece este ID, se usará forzosamente como el invitador, independientemente de si el enlace de distribución lleva el parámetro inviter_id.",
+    "description": "Sugerencia para el ID del invitador forzado"
   },
   "message.originTip": {
-    "message": "Dominio del sitio, la configuración del sitio está vinculada al dominio y no se puede cambiar.",
-    "description": "提示 para el dominio del sitio"
+    "message": "Dominio del sitio, la configuración del sitio está vinculada al dominio, el dominio del sitio no se puede cambiar.",
+    "description": "Sugerencia para el dominio del sitio"
   },
   "message.titleTip": {
     "message": "Título del sitio, se muestra en la pestaña del navegador.",
-    "description": "提示 para el título del sitio"
+    "description": "Sugerencia para el título del sitio"
   },
   "message.descriptionTip": {
-    "message": "Descripción del sitio, ubicada en la metainformación del sitio, utilizada para la optimización SEO del sitio.",
-    "description": "提示 para la descripción del sitio"
+    "message": "Descripción del sitio, está en la metainformación del sitio, utilizada para la optimización SEO del sitio.",
+    "description": "Sugerencia para la descripción del sitio"
   },
   "message.logoTip": {
-    "message": "Logo del sitio, se muestra en la parte superior del menú del sitio cuando se expande la barra de menú.",
-    "description": "提示 para el Logo del sitio"
+    "message": "Logo del sitio, se muestra en la parte superior del menú del sitio cuando se expande.",
+    "description": "Sugerencia para el logo del sitio"
   },
   "message.faviconTip": {
     "message": "Favicon del sitio, se muestra en la pestaña del navegador.",
-    "description": "提示 para el Favicon del sitio"
+    "description": "Sugerencia para el favicon del sitio"
   },
   "message.adminsTip": {
-    "message": "ID de administrador del sitio. Por defecto, el primer usuario que crea el sitio será administrador. Solo los administradores del sitio pueden gestionar el sitio.",
-    "description": "提示 para los administradores del sitio"
+    "message": "ID de administrador del sitio, por defecto el usuario que crea el sitio inicialmente se convierte en administrador, solo los administradores del sitio pueden gestionarlo.",
+    "description": "Sugerencia para los administradores del sitio"
   },
   "message.adminsTip2": {
-    "message": "Puede agregar o eliminar ID de administradores aquí. Puede ver los ID de usuario en https://auth.acedata.cloud",
-    "description": "提示 para los administradores del sitio"
+    "message": "Puedes agregar o eliminar ID de administradores aquí, puedes ver el ID de usuario en https://auth.acedata.cloud",
+    "description": "Sugerencia para los administradores del sitio"
   },
   "message.keywordsTip": {
-    "message": "Palabras clave del sitio, ubicadas en la metainformación del sitio, utilizadas para la optimización SEO del sitio.",
-    "description": "提示 para las palabras clave del sitio"
+    "message": "Palabras clave del sitio, están en la metainformación del sitio, utilizadas para la optimización SEO del sitio.",
+    "description": "Sugerencia para las palabras clave del sitio"
   },
   "message.keywordsTip2": {
-    "message": "Puede agregar o eliminar palabras clave del sitio aquí. Cuanto más específicas sean las palabras clave, mejor será para la optimización SEO.",
-    "description": "提示 para las palabras clave del sitio"
+    "message": "Puedes agregar o eliminar palabras clave del sitio aquí, cuanto más precisas sean las palabras clave, más favorecen la optimización SEO.",
+    "description": "Sugerencia para las palabras clave del sitio"
   },
   "message.featuresChat": {
-    "message": "Habilitar o deshabilitar el módulo de funciones de Chat.",
-    "description": "Descripción de la función de Chat"
+    "message": "Activar o desactivar el módulo de funcionalidades de chat.",
+    "description": "Descripción de la funcionalidad del chat"
   },
   "message.featuresMidjourney": {
-    "message": "Habilitar o deshabilitar el módulo de funciones de Midjourney.",
-    "description": "Descripción de la función de Midjourney"
+    "message": "Activar o desactivar el módulo de funcionalidades de Midjourney.",
+    "description": "Descripción de la funcionalidad de Midjourney"
   },
   "message.featuresChatdoc": {
-    "message": "Habilitar o deshabilitar el módulo de funciones de Chatdoc.",
-    "description": "Descripción de la función de Chatdoc"
+    "message": "Activar o desactivar el módulo de funcionalidades de Chatdoc.",
+    "description": "Descripción de la funcionalidad de Chatdoc"
   },
   "message.featuresQrart": {
-    "message": "Habilitar o deshabilitar el módulo de funciones de Qrart.",
-    "description": "Descripción de la función de Qrart"
+    "message": "Activar o desactivar el módulo de funcionalidades de Qrart.",
+    "description": "Descripción de la funcionalidad de Qrart"
   },
   "message.featuresSuno": {
-    "message": "Habilitar o deshabilitar el módulo de funciones de Suno.",
-    "description": "Descripción de la función de Suno"
+    "message": "Activar o desactivar el módulo de funcionalidades de Suno.",
+    "description": "Descripción de la funcionalidad de Suno"
+  },
+  "message.featuresLuma": {
+    "message": "Activar o desactivar el módulo de funcionalidades de Luma.",
+    "description": "Descripción de la funcionalidad de Luma"
   },
   "message.featuresSupport": {
-    "message": "Habilitar o deshabilitar el soporte al cliente.",
-    "description": "Descripción de la función de soporte"
+    "message": "Activar o desactivar el soporte al cliente",
+    "description": "Descripción de la funcionalidad de soporte"
   },
   "message.featuresI18n": {
-    "message": "Habilitar o deshabilitar el soporte multilenguaje. Si se deshabilita, los usuarios solo podrán utilizar el idioma predeterminado.",
-    "description": "Descripción del soporte multilenguaje"
+    "message": "Activar o desactivar el soporte multilingüe, al desactivarlo, los usuarios solo podrán usar el idioma predeterminado.",
+    "description": "Descripción del soporte multilingüe"
   },
   "button.upload": {
     "message": "Subir",
@@ -265,10 +273,10 @@
   },
   "button.enabled": {
     "message": "Habilitado",
-    "description": "Texto del interruptor que indica que está habilitado"
+    "description": "Texto del interruptor, indica que está habilitado"
   },
   "button.disabled": {
     "message": "Deshabilitado",
-    "description": "Texto del interruptor que indica que está deshabilitado"
+    "description": "Texto del interruptor, indica que está deshabilitado"
   }
 }

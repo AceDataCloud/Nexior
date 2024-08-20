@@ -4,16 +4,30 @@
       <logo @click="onHome" />
     </el-col>
     <el-col :md="16" :xs="13">
-      <el-menu :default-active="active" class="el-menu-demo" mode="horizontal" :ellipsis="false" @select="onSelect">
-        <el-menu-item v-if="site?.features?.chat?.enabled" v-t="'index.title.chat'" index="/chat"></el-menu-item>
+      <el-menu :default-active="active" mode="horizontal" :ellipsis="false" @select="onSelect">
+        <el-sub-menu :index="1">
+          <template #title>{{ $t('common.nav.products') }}</template>
+          <el-menu-item v-if="site?.features?.chat?.enabled" v-t="'index.title.chat'" index="/chat"></el-menu-item>
+          <el-menu-item
+            v-if="site?.features?.midjourney?.enabled"
+            v-t="'index.title.midjourney'"
+            index="/midjourney"
+          ></el-menu-item>
+          <el-menu-item v-if="site?.features?.qrart?.enabled" v-t="'index.title.qrart'" index="/qrart"></el-menu-item>
+          <el-menu-item v-if="site?.features?.suno?.enabled" v-t="'index.title.suno'" index="/suno"></el-menu-item>
+          <el-menu-item v-if="site?.features?.luma?.enabled" v-t="'index.title.luma'" index="/luma"></el-menu-item>
+        </el-sub-menu>
         <el-menu-item
-          v-if="site?.features?.midjourney?.enabled"
-          v-t="'index.title.midjourney'"
-          index="/midjourney"
+          v-t="'common.nav.apiPlatform'"
+          @route="undefined"
+          @click="openTab('https://platform.acedata.cloud')"
         ></el-menu-item>
-        <el-menu-item v-if="site?.features?.qrart?.enabled" v-t="'index.title.qrart'" index="/qrart"></el-menu-item>
-        <el-menu-item v-if="site?.features?.suno?.enabled" v-t="'index.title.suno'" index="/suno"></el-menu-item>
-        <el-menu-item v-if="site?.features?.qrart?.enabled" v-t="'index.title.luma'" index="/luma"></el-menu-item>
+        <el-menu-item
+          v-t="'common.nav.support'"
+          @route="undefined"
+          @click="openTab('https://platform.acedata.cloud/support')"
+        ></el-menu-item>
+        <el-menu-item v-t="'common.nav.referral'" index="/distribution"></el-menu-item>
       </el-menu>
     </el-col>
     <el-col :md="4" :xs="11">
@@ -47,7 +61,7 @@ import { defineComponent } from 'vue';
 import defaultAvatar from '@/assets/images/avatar.png';
 import { getBaseUrlAuth } from '@/utils';
 import { ROUTE_AUTH_LOGIN, ROUTE_CONSOLE_ROOT, ROUTE_INDEX } from '@/router';
-import { ElCol, ElRow, ElDropdown, ElMenu, ElMenuItem, ElDropdownItem, ElButton } from 'element-plus';
+import { ElCol, ElRow, ElDropdown, ElMenu, ElSubMenu, ElMenuItem, ElDropdownItem, ElButton } from 'element-plus';
 import DarkSelector from './DarkSelector2.vue';
 import Logo from './Logo.vue';
 
@@ -62,7 +76,8 @@ export default defineComponent({
     ElMenu,
     ElMenuItem,
     ElDropdownItem,
-    ElButton
+    ElButton,
+    ElSubMenu
   },
   data() {
     return {
@@ -71,24 +86,29 @@ export default defineComponent({
   },
   computed: {
     site() {
-      return this.$store.state.site;
+      return this.$store.state?.site;
     },
     dark() {
-      return this.$store.getters.dark;
+      return this.$store.getters?.dark;
     },
     active() {
-      return this.$route.matched[0].path;
+      return this.$route.matched?.[0]?.path;
     },
     user() {
-      return this.$store.getters.user;
+      return this.$store.getters?.user;
     },
     authenticated() {
-      return this.$store.getters.authenticated;
+      return this.$store.getters?.authenticated;
     }
   },
   methods: {
-    onSelect(val: string) {
-      this.$router.push(val);
+    openTab(url: string) {
+      window.open(url, '_blank');
+    },
+    onSelect(val: string | undefined) {
+      if (val) {
+        this.$router.push(val);
+      }
     },
     onHome() {
       this.$router.push({

@@ -1,0 +1,554 @@
+{
+  "name.taskId": {
+    "message": "Aufgaben-ID",
+    "description": "任务的 ID"
+  },
+  "name.type": {
+    "message": "Typ",
+    "description": "要生成的 QR 码的内容类型，如'链接'、'文本'等"
+  },
+  "name.failure": {
+    "message": "Fehler",
+    "description": "任务的失败状态"
+  },
+  "name.failureReason": {
+    "message": "Fehlerursache",
+    "description": "任务失败的原因"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "任务的状态"
+  },
+  "name.traceId": {
+    "message": "Verfolgungs-ID",
+    "description": "任务的追踪 ID"
+  },
+  "name.size": {
+    "message": "Größe",
+    "description": "要生成的 QR 码的尺寸"
+  },
+  "name.createdAt": {
+    "message": "Erstellt am",
+    "description": "生成 QR 码的日期和时间"
+  },
+  "name.pixelStyle": {
+    "message": "Pixel-Stil",
+    "description": "要生成的 QR 码的像素风格"
+  },
+  "name.startImageUrl": {
+    "message": "Startbild",
+    "description": "要生成的 QR 码的种子"
+  },
+  "name.videoUrl": {
+    "message": "Benutzerdefiniertes Video",
+    "description": "要生成的 QR 码的种子"
+  },
+  "name.endImageUrl": {
+    "message": "Endbild",
+    "description": "要生成的 QR 码的种子"
+  },
+  "name.paddingLevel": {
+    "message": "Polsterstärke",
+    "description": "要生成的 QR 码的填充级别"
+  },
+  "name.paddingNoise": {
+    "message": "Polsterausgabe",
+    "description": "要生成的 QR 码的填充噪音"
+  },
+  "name.content": {
+    "message": "Inhalt",
+    "description": "要生成的 QR 码的内容"
+  },
+  "name.ecl": {
+    "message": "Fehlerkorrekturstufe",
+    "description": "要生成的 QR 码的纠错级别"
+  },
+  "name.position": {
+    "message": "Position",
+    "description": "要生成的 QR 码的位置"
+  },
+  "name.prompt": {
+    "message": "Videoaufforderung",
+    "description": "内容输入的提示"
+  },
+  "name.rotate": {
+    "message": "Drehwinkel",
+    "description": "要生成的 QR 码的旋转"
+  },
+  "name.enhancement": {
+    "message": "Aufforderungsverbesserung",
+    "description": "要生成的 QR 码的高级设置"
+  },
+  "name.custom": {
+    "message": "Benutzerdefinierte Erweiterung",
+    "description": "自定义扩展视频"
+  },
+  "name.extend": {
+    "message": "Erweiterung des Videos von",
+    "description": "内容输入的提示"
+  },
+  "name.loop": {
+    "message": "Videowiederholung",
+    "description": "要生成的 QR 码的高级设置"
+  },
+  "name.aspectRatio": {
+    "message": "Seitenverhältnis",
+    "description": "要生成的 QR 码的宽高比"
+  },
+  "name.markerShape": {
+    "message": "Markerform",
+    "description": "要生成的 QR 码的标记形状"
+  },
+  "name.subMarker": {
+    "message": "Untermarker",
+    "description": "要生成的 QR 码的子标记"
+  },
+  "name.qrw": {
+    "message": "Sichtbarkeit",
+    "description": "QR 码生成器的名称"
+  },
+  "name.steps": {
+    "message": "Generierungsschritte",
+    "description": "生成 QR 码的步数"
+  },
+  "name.preset": {
+    "message": "Voreingestellter Stil",
+    "description": "要生成的 QR 码的预设"
+  },
+  "name.lumaBot": {
+    "message": "Luma Bot",
+    "description": "Luma 视频生成器的名称"
+  },
+  "name.contentImageUrl": {
+    "message": "Inhaltsbild-Link",
+    "description": "要生成的 QR 码的内容图片 URL"
+  },
+  "inputWay.input": {
+    "message": "Inhalt eingeben",
+    "description": "输入方式"
+  },
+  "inputWay.upload": {
+    "message": "QR-Code hochladen",
+    "description": "输入方式"
+  },
+  "description.loop": {
+    "message": "Aktivieren Sie die Schleife für das generierte Video.",
+    "description": "参数'qrw'的描述"
+  },
+  "description.enhancement": {
+    "message": "Wenn Sie sich nicht sicher sind, wie Sie die Eingabeaufforderung schreiben sollen, aktivieren Sie die Funktion zur Verbesserung der Eingabeaufforderung.",
+    "description": "参数'qrw'的描述"
+  },
+  "description.custom": {
+    "message": "Wenn Sie Ihr eigenes Video hochladen möchten, um das Video zu erweitern, aktivieren Sie diesen Schalter.",
+    "description": "参数'qrw'的描述"
+  },
+  "description.startImageUrl": {
+    "message": "Die URL des Startbilds, das das erste Bild des generierten Videos sein wird.",
+    "description": "参数'steps'的描述"
+  },
+  "description.videoUrl": {
+    "message": "Laden Sie die URL des benutzerdefinierten Erweiterungsvideos hoch, das das Erweiterungsvideo sein wird.",
+    "description": "参数'steps'的描述"
+  },
+  "description.endImageUrl": {
+    "message": "Die URL des Endbilds, das das letzte Bild des generierten Videos sein wird.",
+    "description": "参数'steps'的描述"
+  },
+  "description.prompt": {
+    "message": "Eingabeaufforderung für die Generierung des Luma-Videos",
+    "description": "参数'prompt'的描述"
+  },
+  "status.pending": {
+    "message": "Ausstehend",
+    "description": "任务的等待状态"
+  },
+  "status.processing": {
+    "message": "Verarbeitung",
+    "description": "任务的等待状态"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Bitte wählen...",
+    "description": "填充噪音输入的占位符"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Bitte wählen...",
+    "description": "填充级别的占位符"
+  },
+  "placeholder.prompt": {
+    "message": "Geben Sie die Stilaufforderung für das zu generierende Video ein, z.B.: Astronauten schuttle aus dem Weltraum zu einem Vulkan",
+    "description": "提示字段中的占位文本"
+  },
+  "placeholder.startImageUrl": {
+    "message": "Link zum Startbild",
+    "description": "种子输入的占位符"
+  },
+  "placeholder.endImageUrl": {
+    "message": "Link zum Endbild",
+    "description": "种子输入的占位符"
+  },
+  "placeholder.position": {
+    "message": "Bitte wählen...",
+    "description": "位置输入的占位符"
+  },
+  "placeholder.content": {
+    "message": "Geben Sie den Inhalt des zu generierenden QR-Codes ein, z.B.: https://www.google.com",
+    "description": "内容字段中的占位文本"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Bitte wählen Sie...",
+    "description": "Platzhalter für das Eingabefeld des Seitenverhältnisses"
+  },
+  "placeholder.preset": {
+    "message": "Bitte wählen Sie...",
+    "description": "Platzhalter für das Eingabefeld der Voreinstellungen"
+  },
+  "placeholder.markerShape": {
+    "message": "Bitte wählen Sie...",
+    "description": "Platzhalter für das Eingabefeld der Markierungsform"
+  },
+  "placeholder.rotate": {
+    "message": "Bitte wählen Sie...",
+    "description": "Platzhalter für das Eingabefeld der Drehung"
+  },
+  "placeholder.subMarker": {
+    "message": "Bitte wählen Sie...",
+    "description": "Platzhalter für das Eingabefeld des Untermarkers"
+  },
+  "button.generate": {
+    "message": "Generieren",
+    "description": "Text des Buttons zum Generieren von Luma-Videos"
+  },
+  "button.extend": {
+    "message": "Video verlängern",
+    "description": "Text des Buttons zum Verlängern des Videos"
+  },
+  "button.uploadStartImageUrl": {
+    "message": "Bild hochladen",
+    "description": "Text des Buttons zum Hochladen von QR-Codes"
+  },
+  "button.uploadVideoUrl": {
+    "message": "Video hochladen",
+    "description": "Text des Buttons zum Hochladen von QR-Codes"
+  },
+  "button.uploadEndImageUrl": {
+    "message": "Bild hochladen",
+    "description": "Text des Buttons zum Hochladen von QR-Codes"
+  },
+  "preset.sunset": {
+    "message": "Sonnenuntergang",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.floral": {
+    "message": "Blumen",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.snowflakes": {
+    "message": "Schneeflocken",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.feathers": {
+    "message": "Feder",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.raindrops": {
+    "message": "Regentropfen",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.ultraRealism": {
+    "message": "Ultra-Realismus",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.epicRealms": {
+    "message": "Epische Reiche",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.intricateStudio": {
+    "message": "Komplexes Studio",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.symmetricMasterpiece": {
+    "message": "Symmetrisches Meisterwerk",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.luminousHighway": {
+    "message": "Leuchtende Straße",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.celestialJourney": {
+    "message": "Himmlische Reise",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.neonMech": {
+    "message": "Neon-Maschine",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.etherealLowPoly": {
+    "message": "Ethereal Low-Poly",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.goldenVista": {
+    "message": "Goldene Aussicht",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.cinematicExpanse": {
+    "message": "Filmische Weite",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.cinematicWarm": {
+    "message": "Filmische Wärme",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.desolateWilderness": {
+    "message": "Öde Wildnis",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.vibrantPalette": {
+    "message": "Lebendige Palette",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.enigmaticJourney": {
+    "message": "Rätselhafte Reise",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.timelessCinematic": {
+    "message": "Zeitloses Kino",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.regalGalaxy": {
+    "message": "Regal-Galaxie",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.illustriousCanvas": {
+    "message": "Berühmte Leinwand",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.expressiveMural": {
+    "message": "Ausdruckstarkes Wandbild",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "preset.sereneHaze": {
+    "message": "Ruhiger Dunst",
+    "description": "Voreingestellte Stil für den zu generierenden QR-Code"
+  },
+  "message.uploadQr": {
+    "message": "Laden Sie das QR-Code-Bild hoch, um ein Kunstwerk zu generieren, das mit dem QR-Code-Inhalt übereinstimmt.",
+    "description": "Anleitung zum Hochladen des QR-Codes"
+  },
+  "message.promptPlaceholder": {
+    "message": "Bitte geben Sie einen Satz zur Beschreibung des zu generierenden Bildes ein, z. B.: Eine süße Katze. Zusätzliche Parameter überschreiben die Standardvorgabewerte.",
+    "description": "Platzhaltertext im Eingabefeld"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Bis zu 5 Bilder können hochgeladen werden",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Bilder das Limit überschreitet"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Bild erfolgreich hochgeladen",
+    "description": "Erfolgsmeldung beim erfolgreichen Hochladen von Bildern"
+  },
+  "message.uploadReferencesError": {
+    "message": "Bild-Upload fehlgeschlagen, bitte versuchen Sie es später erneut",
+    "description": "Fehlermeldung bei fehlgeschlagenem Bild-Upload"
+  },
+  "message.startingTask": {
+    "message": "Starte Aufgabe...",
+    "description": "Nachricht beim Start der Zeichenaufgabe"
+  },
+  "message.startTaskSuccess": {
+    "message": "Generierungsaufgabe erfolgreich eingeleitet",
+    "description": "Erfolgsmeldung beim erfolgreichen Start der Aufgabe"
+  },
+  "message.startTaskFailed": {
+    "message": "Aufgabenstart fehlgeschlagen, bitte kontaktieren Sie den Administrator",
+    "description": "Fehlermeldung beim fehlgeschlagenen Start der Zeichenaufgabe"
+  },
+  "message.usedUp": {
+    "message": "Ihre Punkte sind aufgebraucht, bitte kaufen Sie mehr Punkte, um fortzufahren",
+    "description": "Nachricht bei aufgebrauchten Punkten"
+  },
+  "message.generating": {
+    "message": "Wird generiert...",
+    "description": "Nachricht während der Bildgenerierung"
+  },
+  "message.extendVideo": {
+    "message": "Fahren Sie fort, dieses Video zu generieren",
+    "description": "Nachricht während der Bildgenerierung"
+  },
+  "message.generateFailed": {
+    "message": "Generierung des Bildes fehlgeschlagen",
+    "description": "Nachricht, wenn die Bildgenerierung fehlschlägt"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Die Anzahl der hochgeladenen ersten Bilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen ersten Bilder das Limit überschreitet"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Die hochgeladene Datei darf 10 MB nicht überschreiten!",
+    "description": "Fehlermeldung, wenn die hochgeladene Datei 10 MB überschreitet!"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Die hochgeladene Datei muss im MP4-Format sein!",
+    "description": "Fehlermeldung, wenn die hochgeladene Datei nicht im MP4-Format ist!"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Die Anzahl der hochgeladenen ersten Bilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen ersten Bilder das Limit überschreitet"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Die Anzahl der hochgeladenen letzten Bilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen letzten Bilder das Limit überschreitet"
+  },
+  "message.uploadStartImageError": {
+    "message": "Hochladen des ersten Bildes fehlgeschlagen",
+    "description": "Fehlermeldung, wenn das Hochladen des ersten Bildes fehlschlägt"
+  },
+  "message.uploadVideoError": {
+    "message": "Hochladen des Videos fehlgeschlagen",
+    "description": "Fehlermeldung, wenn das Hochladen des Videos fehlschlägt"
+  },
+  "message.uploadEndImageError": {
+    "message": "Hochladen des letzten Bildes fehlgeschlagen",
+    "description": "Fehlermeldung, wenn das Hochladen des letzten Bildes fehlschlägt"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Hochladen des Dokuments fehlgeschlagen",
+    "description": "Fehlermeldung, wenn das Hochladen des Dokuments fehlschlägt"
+  },
+  "message.noOperations": {
+    "message": "Keine verfügbaren Aktionen",
+    "description": "Nachricht, wenn keine verfügbaren Aktionen vorhanden sind"
+  },
+  "message.noTasks": {
+    "message": "Keine historischen Aufgaben, bitte klicken Sie links, um ein Video zu generieren",
+    "description": "Nachricht, wenn keine Aufgaben vorhanden sind"
+  },
+  "markerShape.square": {
+    "message": "Quadrat",
+    "description": "Markerform zur Generierung von QR-Codes"
+  },
+  "markerShape.circle": {
+    "message": "Kreis",
+    "description": "Markerform zur Generierung von QR-Codes"
+  },
+  "markerShape.plus": {
+    "message": "Pluszeichen",
+    "description": "Markerform zur Generierung von QR-Codes"
+  },
+  "markerShape.box": {
+    "message": "Kasten",
+    "description": "Markerform zur Generierung von QR-Codes"
+  },
+  "markerShape.octagon": {
+    "message": "Achteck",
+    "description": "Markerform zur Generierung von QR-Codes"
+  },
+  "markerShape.tinyPlus": {
+    "message": "Mini-Plus",
+    "description": "Markerform zur Generierung von QR-Codes"
+  },
+  "markerShape.random": {
+    "message": "Zufällig",
+    "description": "Markerform zur Generierung von QR-Codes"
+  },
+  "subMarker.square": {
+    "message": "Quadrat",
+    "description": "Untermarkerform zur Generierung von QR-Codes"
+  },
+  "subMarker.circle": {
+    "message": "Kreis",
+    "description": "Untermarkerform zur Generierung von QR-Codes"
+  },
+  "subMarker.plus": {
+    "message": "Pluszeichen",
+    "description": "Untermarkerform zur Generierung von QR-Codes"
+  },
+  "subMarker.box": {
+    "message": "Kasten",
+    "description": "Untermarkerform zur Generierung von QR-Codes"
+  },
+  "subMarker.random": {
+    "message": "Zufällig",
+    "description": "Untermarkerform zur Generierung von QR-Codes"
+  },
+  "position.center": {
+    "message": "Zentrum",
+    "description": "Position zur Generierung von QR-Codes"
+  },
+  "position.topLeft": {
+    "message": "Oben links",
+    "description": "Position zur Generierung von QR-Codes"
+  },
+  "position.topRight": {
+    "message": "Oben rechts",
+    "description": "Position zur Generierung von QR-Codes"
+  },
+  "position.bottomLeft": {
+    "message": "Unten links",
+    "description": "Position zur Generierung von QR-Codes"
+  },
+  "position.bottomRight": {
+    "message": "Unten rechts",
+    "description": "Position zur Generierung von QR-Codes"
+  },
+  "position.top": {
+    "message": "Oben",
+    "description": "Position zur Generierung von QR-Codes"
+  },
+  "position.bottom": {
+    "message": "Unten",
+    "description": "Position zur Generierung von QR-Codes"
+  },
+  "position.left": {
+    "message": "Links",
+    "description": "Position zur Generierung von QR-Codes"
+  },
+  "position.right": {
+    "message": "Rechts",
+    "description": "Position zur Generierung von QR-Codes"
+  },
+  "pixelStyle.row": {
+    "message": "Reihe",
+    "description": "Pixelstil zur Generierung von QR-Codes"
+  },
+  "pixelStyle.column": {
+    "message": "Spalte",
+    "description": "Pixelstil zur Generierung von QR-Codes"
+  },
+  "pixelStyle.square": {
+    "message": "Quadrat",
+    "description": "Pixelstil zur Generierung von QR-Codes"
+  },
+  "pixelStyle.rounded": {
+    "message": "Abgerundet",
+    "description": "Pixelstil zur Generierung von QR-Codes"
+  },
+  "pixelStyle.dot": {
+    "message": "Punkt",
+    "description": "Pixelstil zur Generierung von QR-Codes"
+  },
+  "pixelStyle.squircle": {
+    "message": "Abgerundetes Rechteck",
+    "description": "Pixelstil zur Generierung von QR-Codes"
+  },
+  "type.text": {
+    "message": "Text",
+    "description": "Inhaltstyp zur Generierung von QR-Codes"
+  },
+  "type.link": {
+    "message": "Link",
+    "description": "Inhaltstyp zur Generierung von QR-Codes"
+  },
+  "type.email": {
+    "message": "E-Mail",
+    "description": "Inhaltstyp zur Generierung von QR-Codes"
+  },
+  "type.phone": {
+    "message": "Telefon",
+    "description": "Inhaltstyp zur Generierung von QR-Codes"
+  },
+  "type.sms": {
+    "message": "SMS",
+    "description": "Inhaltstyp zur Generierung von QR-Codes"
+  }
+}

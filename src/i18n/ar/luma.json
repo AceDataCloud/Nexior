@@ -1,0 +1,554 @@
+{
+  "name.taskId": {
+    "message": "معرف المهمة",
+    "description": "معرف المهمة"
+  },
+  "name.type": {
+    "message": "النوع",
+    "description": "نوع محتوى رمز الاستجابة السريعة المراد إنشاؤه، مثل 'رابط'، 'نص'، إلخ"
+  },
+  "name.failure": {
+    "message": "فشل",
+    "description": "حالة فشل المهمة"
+  },
+  "name.failureReason": {
+    "message": "سبب الفشل",
+    "description": "سبب فشل المهمة"
+  },
+  "name.status": {
+    "message": "الحالة",
+    "description": "حالة المهمة"
+  },
+  "name.traceId": {
+    "message": "معرف التتبع",
+    "description": "معرف التتبع للمهمة"
+  },
+  "name.size": {
+    "message": "الحجم",
+    "description": "حجم رمز الاستجابة السريعة المراد إنشاؤه"
+  },
+  "name.createdAt": {
+    "message": "تاريخ الإنشاء",
+    "description": "تاريخ ووقت إنشاء رمز الاستجابة السريعة"
+  },
+  "name.pixelStyle": {
+    "message": "أسلوب البكسل",
+    "description": "أسلوب البكسل لرمز الاستجابة السريعة المراد إنشاؤه"
+  },
+  "name.startImageUrl": {
+    "message": "صورة البداية",
+    "description": "البذور لرمز الاستجابة السريعة المراد إنشاؤه"
+  },
+  "name.videoUrl": {
+    "message": "فيديو مخصص",
+    "description": "البذور لرمز الاستجابة السريعة المراد إنشاؤه"
+  },
+  "name.endImageUrl": {
+    "message": "صورة النهاية",
+    "description": "البذور لرمز الاستجابة السريعة المراد إنشاؤه"
+  },
+  "name.paddingLevel": {
+    "message": "مستوى التعبئة",
+    "description": "مستوى تعبئة رمز الاستجابة السريعة المراد إنشاؤه"
+  },
+  "name.paddingNoise": {
+    "message": "ضوضاء التعبئة",
+    "description": "ضوضاء التعبئة لرمز الاستجابة السريعة المراد إنشاؤه"
+  },
+  "name.content": {
+    "message": "المحتوى",
+    "description": "المحتوى الذي سيتم إنشاؤه في رمز الاستجابة السريعة"
+  },
+  "name.ecl": {
+    "message": "مستوى التصحيح",
+    "description": "مستوى التصحيح لرمز الاستجابة السريعة المراد إنشاؤه"
+  },
+  "name.position": {
+    "message": "الموقع",
+    "description": "الموقع لرمز الاستجابة السريعة المراد إنشاؤه"
+  },
+  "name.prompt": {
+    "message": "إشارة الفيديو",
+    "description": "إشارة إدخال المحتوى"
+  },
+  "name.rotate": {
+    "message": "زاوية الدوران",
+    "description": "الدوران لرمز الاستجابة السريعة المراد إنشاؤه"
+  },
+  "name.enhancement": {
+    "message": "تحسين إشارة الكلمات",
+    "description": "الإعدادات المتقدمة لرمز الاستجابة السريعة المراد إنشاؤه"
+  },
+  "name.custom": {
+    "message": "تخصيص التمديد",
+    "description": "فيديو تمديد مخصص"
+  },
+  "name.extend": {
+    "message": "فيديو التمديد من",
+    "description": "إشارة إدخال المحتوى"
+  },
+  "name.loop": {
+    "message": "تشغيل الفيديو في حلقة",
+    "description": "الإعدادات المتقدمة لرمز الاستجابة السريعة المراد إنشاؤه"
+  },
+  "name.aspectRatio": {
+    "message": "نسبة العرض إلى الارتفاع",
+    "description": "نسبة العرض إلى الارتفاع لرمز الاستجابة السريعة المراد إنشاؤه"
+  },
+  "name.markerShape": {
+    "message": "شكل العلامة",
+    "description": "شكل العلامة لرمز الاستجابة السريعة المراد إنشاؤه"
+  },
+  "name.subMarker": {
+    "message": "علامة فرعية",
+    "description": "علامة فرعية لرمز الاستجابة السريعة المراد إنشاؤه"
+  },
+  "name.qrw": {
+    "message": "الوضوح",
+    "description": "اسم مُنشئ رمز الاستجابة السريعة"
+  },
+  "name.steps": {
+    "message": "عدد الخطوات في الإنشاء",
+    "description": "عدد الخطوات لإنشاء رمز الاستجابة السريعة"
+  },
+  "name.preset": {
+    "message": "أسلوب مسبق التعيين",
+    "description": "الإعداد المسبق لرمز الاستجابة السريعة المراد إنشاؤه"
+  },
+  "name.lumaBot": {
+    "message": "لومة بوت",
+    "description": "اسم مُنشئ فيديو لومة"
+  },
+  "name.contentImageUrl": {
+    "message": "رابط صورة المحتوى",
+    "description": "رابط صورة المحتوى لرمز الاستجابة السريعة المراد إنشاؤه"
+  },
+  "inputWay.input": {
+    "message": "إدخال المحتوى",
+    "description": "طريقة الإدخال"
+  },
+  "inputWay.upload": {
+    "message": "رفع رمز الاستجابة السريعة",
+    "description": "طريقة الإدخال"
+  },
+  "description.loop": {
+    "message": "تفعيل التكرار للفيديو المُنشأ.",
+    "description": "وصف المعلمة 'qrw'"
+  },
+  "description.enhancement": {
+    "message": "إذا لم تكن متأكدًا من كيفية كتابة إشارة الكلمات، يرجى تفعيل وظيفة تعزيز إشارة إدخال الكلمات.",
+    "description": "وصف المعلمة 'qrw'"
+  },
+  "description.custom": {
+    "message": "إذا كنت تريد رفع فيديو خاص بك لتمديد الفيديو، يرجى تفعيل هذا الزر.",
+    "description": "وصف المعلمة 'qrw'"
+  },
+  "description.startImageUrl": {
+    "message": "رابط صورة البداية، والتي ستكون الإطار الأول للفيديو المُنشأ.",
+    "description": "وصف المعلمة 'steps'"
+  },
+  "description.videoUrl": {
+    "message": "رفع رابط الفيديو المخصص للتوسيع، سيكون الفيديو الموسع.",
+    "description": "وصف المعلمة 'steps'"
+  },
+  "description.endImageUrl": {
+    "message": "رابط صورة النهاية، والتي ستكون الإطار الأخير للفيديو المُنشأ.",
+    "description": "وصف المعلمة 'steps'"
+  },
+  "description.prompt": {
+    "message": "إشارة الكلمات المطلوبة لإنشاء فيديو لومة",
+    "description": "وصف المعلمة 'prompt'"
+  },
+  "status.pending": {
+    "message": "قيد الانتظار",
+    "description": "حالة الانتظار للمهمة"
+  },
+  "status.processing": {
+    "message": "قيد المعالجة",
+    "description": "حالة الانتظار للمهمة"
+  },
+  "placeholder.paddingNoise": {
+    "message": "يرجى الاختيار...",
+    "description": "نص العنصر النائب لمدخل ضوضاء التعبئة"
+  },
+  "placeholder.paddingLevel": {
+    "message": "يرجى الاختيار...",
+    "description": "نص العنصر النائب لمستوى التعبئة"
+  },
+  "placeholder.prompt": {
+    "message": "أدخل إشارة الكلمات لأسلوب الفيديو المراد إنشاؤه، مثل: رواد فضاء يركضون من الفضاء إلى بركان",
+    "description": "نص العنصر النائب في حقل الإشارة"
+  },
+  "placeholder.startImageUrl": {
+    "message": "رابط صورة البداية",
+    "description": "نص العنصر النائب للإدخال الأساسي"
+  },
+  "placeholder.endImageUrl": {
+    "message": "رابط صورة النهاية",
+    "description": "نص العنصر النائب للإدخال الأساسي"
+  },
+  "placeholder.position": {
+    "message": "يرجى الاختيار...",
+    "description": "نص العنصر النائب للإدخال الموقع"
+  },
+  "placeholder.content": {
+    "message": "ادخل محتوى رمز الاستجابة السريعة المراد إنشاؤه، مثل: https://www.google.com",
+    "description": "نص العنصر النائب في حقل المحتوى"
+  },
+  "placeholder.aspectRatio": {
+    "message": "يرجى الاختيار...",
+    "description": "نص العنصر النائب لدخول نسبة العرض إلى الارتفاع"
+  },
+  "placeholder.preset": {
+    "message": "يرجى الاختيار...",
+    "description": "نص العنصر النائب لمدخل الإعدادات المسبقة"
+  },
+  "placeholder.markerShape": {
+    "message": "يرجى الاختيار...",
+    "description": "نص العنصر النائب لشكل العلامة"
+  },
+  "placeholder.rotate": {
+    "message": "يرجى الاختيار...",
+    "description": "نص العنصر النائب لدخول التدوير"
+  },
+  "placeholder.subMarker": {
+    "message": "يرجى الاختيار...",
+    "description": "نص العنصر النائب للعلامة الفرعية"
+  },
+  "button.generate": {
+    "message": "إنشاء",
+    "description": "نص زر لإنشاء فيديو Luma"
+  },
+  "button.extend": {
+    "message": "توسيع الفيديو",
+    "description": "نص زر لتوسيع الفيديو"
+  },
+  "button.uploadStartImageUrl": {
+    "message": "تحميل الصورة",
+    "description": "نص زر لتحميل صورة QR"
+  },
+  "button.uploadVideoUrl": {
+    "message": "تحميل الفيديو",
+    "description": "نص زر لتحميل فيديو QR"
+  },
+  "button.uploadEndImageUrl": {
+    "message": "تحميل الصورة",
+    "description": "نص زر لتحميل صورة QR"
+  },
+  "preset.sunset": {
+    "message": "غروب الشمس",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.floral": {
+    "message": "زهري",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.snowflakes": {
+    "message": "رقائق الثلج",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.feathers": {
+    "message": "ريش",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.raindrops": {
+    "message": "قطرات المطر",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.ultraRealism": {
+    "message": "واقعية فائقة",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.epicRealms": {
+    "message": "ممالك ملحمية",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.intricateStudio": {
+    "message": "استوديو مفصل",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.symmetricMasterpiece": {
+    "message": "تحفة متناظرة",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.luminousHighway": {
+    "message": "طريق مضيء",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.celestialJourney": {
+    "message": "رحلة سماوية",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.neonMech": {
+    "message": "ميكانيك نيون",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.etherealLowPoly": {
+    "message": "شكل منخفض روحاني",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.goldenVista": {
+    "message": "منظر ذهبي",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.cinematicExpanse": {
+    "message": "اتساع سينمائي",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.cinematicWarm": {
+    "message": "دفء سينمائي",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.desolateWilderness": {
+    "message": "برية مقفرة",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.vibrantPalette": {
+    "message": "لوحة نابضة بالحياة",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.enigmaticJourney": {
+    "message": "رحلة غامضة",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.timelessCinematic": {
+    "message": "سينما خالدة",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.regalGalaxy": {
+    "message": "مجموعة ملكية",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.illustriousCanvas": {
+    "message": "قماش بارز",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.expressiveMural": {
+    "message": "جدارية تعبيرية",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "preset.sereneHaze": {
+    "message": "ضباب هادئ",
+    "description": "نمط الإعداد المسبق لإنشاء رمز QR"
+  },
+  "message.uploadQr": {
+    "message": "تحميل صورة QR، يمكن إنشاء رمز فني يتماشى مع محتوى رمز الاستجابة السريعة",
+    "description": "وصف لتحميل رمز السريع"
+  },
+  "message.promptPlaceholder": {
+    "message": "يرجى إدخال جملة تصف الصورة التي ترغب في إنشائها، مثل: قطة لطيفة. ستتجاوز المعلمات الإضافية المعلمات الافتراضية",
+    "description": "نص العنصر النائب لحقل الموجه"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "يمكنك تحميل ما يصل إلى 5 صور",
+    "description": "رسالة خطأ عند تجاوز عدد الصور المسموح بها"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "تم تحميل الصورة بنجاح",
+    "description": "رسالة النجاح عند تحميل الصور بنجاح"
+  },
+  "message.uploadReferencesError": {
+    "message": "فشل تحميل الصورة، يرجى المحاولة لاحقًا",
+    "description": "رسالة خطأ عند فشل تحميل الصورة"
+  },
+  "message.startingTask": {
+    "message": "جارٍ بدء المهمة...",
+    "description": "رسالة عند بدء مهمة الرسم"
+  },
+  "message.startTaskSuccess": {
+    "message": "تم بدء مهمة الإنشاء بنجاح",
+    "description": "رسالة النجاح عند بدء المهمة بنجاح"
+  },
+  "message.startTaskFailed": {
+    "message": "فشل في بدء المهمة، يرجى الاتصال بالمدير",
+    "description": "رسالة خطأ عند فشل بدء مهمة الرسم"
+  },
+  "message.usedUp": {
+    "message": "لقد استنفدت رصيدك، يرجى شراء المزيد من الرصيد للمتابعة",
+    "description": "رسالة عند نفاد الرصيد"
+  },
+  "message.generating": {
+    "message": "جارٍ الإنشاء...",
+    "description": "رسالة عند إنشاء الصورة"
+  },
+  "message.extendVideo": {
+    "message": "تستمر في إنشاء هذا الفيديو",
+    "description": "رسالة عند إنشاء الصورة"
+  },
+  "message.generateFailed": {
+    "message": "فشل في توليد الصورة",
+    "description": "رسالة عند فشل توليد الصورة"
+  },
+  "message.uploadVideoExceed": {
+    "message": "عدد الصور المرفوعة للقطات الأولى يتجاوز الحد",
+    "description": "معلومات خطأ عند تجاوز عدد الصور المرفوعة للقطات الأولى الحد"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "لا يمكن أن يتجاوز حجم الملف المرفوع 10 ميغابايت!",
+    "description": "معلومات خطأ عند تجاوز حجم الملف المرفوع 10 ميغابايت"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "يجب أن يكون الملف المرفوع بتنسيق MP4!",
+    "description": "معلومات خطأ عند عدم مطابقة تنسيق الملف المرفوع ل MP4"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "عدد الصور المرفوعة للقطات الأولى يتجاوز الحد",
+    "description": "معلومات خطأ عند تجاوز عدد الصور المرفوعة للقطات الأولى الحد"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "عدد الصور المرفوعة للقطات الأخيرة يتجاوز الحد",
+    "description": "معلومات خطأ عند تجاوز عدد الصور المرفوعة للقطات الأخيرة الحد"
+  },
+  "message.uploadStartImageError": {
+    "message": "فشل رفع الصورة الأولى",
+    "description": "معلومات خطأ عند فشل رفع الصورة الأولى"
+  },
+  "message.uploadVideoError": {
+    "message": "فشل رفع الفيديو",
+    "description": "معلومات خطأ عند فشل رفع الفيديو"
+  },
+  "message.uploadEndImageError": {
+    "message": "فشل رفع الصورة الأخيرة",
+    "description": "معلومات خطأ عند فشل رفع الصورة الأخيرة"
+  },
+  "message.uploadDocumentsError": {
+    "message": "فشل رفع الوثائق",
+    "description": "معلومات خطأ عند فشل رفع الوثائق"
+  },
+  "message.noOperations": {
+    "message": "لا توجد عمليات متاحة",
+    "description": "رسالة عند عدم وجود عمليات متاحة"
+  },
+  "message.noTasks": {
+    "message": "لا توجد مهام تاريخية، يرجى النقر على الجانب الأيسر لتوليد الفيديو",
+    "description": "رسالة عند عدم وجود مهام"
+  },
+  "markerShape.square": {
+    "message": "مربع",
+    "description": "شكل العلامة المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "markerShape.circle": {
+    "message": "دائرة",
+    "description": "شكل العلامة المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "markerShape.plus": {
+    "message": "زائد",
+    "description": "شكل العلامة المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "markerShape.box": {
+    "message": "خانة",
+    "description": "شكل العلامة المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "markerShape.octagon": {
+    "message": "مثمن",
+    "description": "شكل العلامة المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "markerShape.tinyPlus": {
+    "message": "زائد صغير",
+    "description": "شكل العلامة المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "markerShape.random": {
+    "message": "عشوائي",
+    "description": "شكل العلامة المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "subMarker.square": {
+    "message": "مربع",
+    "description": "شكل العلامة الفرعية المستخدمة في توليد رمز الاستجابة السريعة"
+  },
+  "subMarker.circle": {
+    "message": "دائرة",
+    "description": "شكل العلامة الفرعية المستخدمة في توليد رمز الاستجابة السريعة"
+  },
+  "subMarker.plus": {
+    "message": "زائد",
+    "description": "شكل العلامة الفرعية المستخدمة في توليد رمز الاستجابة السريعة"
+  },
+  "subMarker.box": {
+    "message": "خانة",
+    "description": "شكل العلامة الفرعية المستخدمة في توليد رمز الاستجابة السريعة"
+  },
+  "subMarker.random": {
+    "message": "عشوائي",
+    "description": "شكل العلامة الفرعية المستخدمة في توليد رمز الاستجابة السريعة"
+  },
+  "position.center": {
+    "message": "وسط",
+    "description": "الموقع المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "position.topLeft": {
+    "message": "أعلى يسار",
+    "description": "الموقع المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "position.topRight": {
+    "message": "أعلى يمين",
+    "description": "الموقع المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "position.bottomLeft": {
+    "message": "أسفل يسار",
+    "description": "الموقع المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "position.bottomRight": {
+    "message": "أسفل يمين",
+    "description": "الموقع المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "position.top": {
+    "message": "علوي",
+    "description": "الموقع المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "position.bottom": {
+    "message": "سفلي",
+    "description": "الموقع المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "position.left": {
+    "message": "يسار",
+    "description": "الموقع المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "position.right": {
+    "message": "يمين",
+    "description": "الموقع المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "pixelStyle.row": {
+    "message": "صف",
+    "description": "نمط البكسل المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "pixelStyle.column": {
+    "message": "عمود",
+    "description": "نمط البكسل المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "pixelStyle.square": {
+    "message": "مربع",
+    "description": "نمط البكسل المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "pixelStyle.rounded": {
+    "message": "مستدير الزوايا",
+    "description": "نمط البكسل المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "pixelStyle.dot": {
+    "message": "نقطة",
+    "description": "نمط البكسل المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "pixelStyle.squircle": {
+    "message": "مستطيل دائري الزوايا",
+    "description": "نمط البكسل المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "type.text": {
+    "message": "نص",
+    "description": "نوع المحتوى المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "type.link": {
+    "message": "رابط",
+    "description": "نوع المحتوى المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "type.email": {
+    "message": "بريد إلكتروني",
+    "description": "نوع المحتوى المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "type.phone": {
+    "message": "هاتف",
+    "description": "نوع المحتوى المستخدم في توليد رمز الاستجابة السريعة"
+  },
+  "type.sms": {
+    "message": "رسالة نصية",
+    "description": "نوع المحتوى المستخدم في توليد رمز الاستجابة السريعة"
+  }
+}

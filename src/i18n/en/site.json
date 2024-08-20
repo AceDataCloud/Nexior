@@ -32,7 +32,7 @@
     "description": "Displayed as the title in the editing box"
   },
   "field.admins": {
-    "message": "Site Admin ID",
+    "message": "Site Admin IDs",
     "description": "Displayed as the title in the editing box"
   },
   "field.distributionDefaultInviterId": {
@@ -57,6 +57,10 @@
   },
   "field.featuresQrart": {
     "message": "Qrart",
+    "description": "Displayed as the title in the editing box"
+  },
+  "field.featuresLuma": {
+    "message": "Luma",
     "description": "Displayed as the title in the editing box"
   },
   "field.featuresSuno": {
@@ -133,123 +137,127 @@
   },
   "placeholder.title": {
     "message": "Please enter the site title",
-    "description": "Displayed as the placeholder in the editing box"
+    "description": "Displayed as the title in the editing box"
   },
   "placeholder.origin": {
     "message": "Please enter the site domain",
-    "description": "Displayed as the placeholder in the editing box"
+    "description": "Displayed as the title in the editing box"
   },
   "placeholder.editUrl": {
     "message": "Please enter the link",
-    "description": "Displayed as the placeholder in the editing box"
+    "description": "Displayed as the title in the editing box"
   },
   "placeholder.description": {
     "message": "Please enter the site description",
-    "description": "Displayed as the placeholder in the editing box"
+    "description": "Displayed as the title in the editing box"
   },
   "placeholder.keywords": {
     "message": "Please enter the site keywords",
-    "description": "Displayed as the placeholder in the editing box"
+    "description": "Displayed as the title in the editing box"
   },
   "placeholder.editDistributionDefaultInviterId": {
     "message": "Please enter the default inviter ID",
-    "description": "Displayed as the placeholder in the editing box"
+    "description": "Displayed as the title in the editing box"
   },
   "placeholder.editDistributionForceInviterId": {
     "message": "Please enter the forced inviter ID",
-    "description": "Displayed as the placeholder in the editing box"
+    "description": "Displayed as the title in the editing box"
   },
   "message.uploadImageExceed": {
-    "message": "Image upload exceeds limit",
-    "description": "Prompt for exceeding image upload limit"
+    "message": "Uploaded image exceeds limit",
+    "description": "Notification for exceeding the image upload limit"
   },
   "message.uploadImageError": {
-    "message": "Image upload error",
-    "description": "Prompt for image upload error"
+    "message": "Error uploading image",
+    "description": "Notification for image upload error"
   },
   "message.editLogoTip": {
     "message": "Recommended size: 200*60px",
-    "description": "Tip for uploading image"
+    "description": "Hint for image upload dimensions"
   },
   "message.editQRTip": {
     "message": "Recommended size: 200*200px",
-    "description": "Tip for uploading image"
+    "description": "Hint for image upload dimensions"
   },
   "message.editFaviconTip": {
     "message": "Recommended size: 32*32px",
-    "description": "Tip for uploading image"
+    "description": "Hint for image upload dimensions"
   },
   "message.editUrl": {
-    "message": "Please enter the link",
+    "message": "Enter link",
     "description": "Prompt for entering the link"
   },
   "message.atLeastOneAdmin": {
-    "message": "At least one admin must remain",
-    "description": "Prompt indicating that at least one admin must remain"
+    "message": "At least one admin must be retained",
+    "description": "Prompt indicating at least one admin must be retained"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "The default inviter's user ID. If the distribution link does not carry the inviter_id parameter, this user ID will be used as the inviter by default.",
+    "message": "The user ID of the default inviter. If the distribution link does not carry the inviter_id parameter, this user ID will be used as the inviter by default.",
     "description": "Prompt for the default inviter ID"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "The forced inviter's user ID. If this ID is set, the user ID will be forced to be used as the inviter regardless of whether the distribution link carries the inviter_id parameter.",
+    "message": "The user ID of the forced inviter. If this ID is set, it will be forced to use this user ID as the inviter, regardless of whether the distribution link carries the inviter_id parameter or not.",
     "description": "Prompt for the forced inviter ID"
   },
   "message.originTip": {
-    "message": "Site domain name. Site configuration is bound to the domain name, and the site domain name cannot be changed.",
+    "message": "Site domain name, the site configuration is bound to the domain name, and the site domain name cannot be changed.",
     "description": "Prompt for the site domain name"
   },
   "message.titleTip": {
-    "message": "Site title displayed in the browser tab.",
+    "message": "Site title, displayed in the browser tab.",
     "description": "Prompt for the site title"
   },
   "message.descriptionTip": {
-    "message": "Site description located in the site meta information, used for site SEO optimization.",
+    "message": "Site description, located in the site's metadata for site SEO optimization.",
     "description": "Prompt for the site description"
   },
   "message.logoTip": {
-    "message": "Site logo displayed at the top of the site menu when the menu bar is expanded.",
+    "message": "Site logo, displayed at the top of the site menu when the menu bar is expanded.",
     "description": "Prompt for the site logo"
   },
   "message.faviconTip": {
-    "message": "Site favicon displayed in the browser tab.",
+    "message": "Site favicon, displayed in the browser tab.",
     "description": "Prompt for the site favicon"
   },
   "message.adminsTip": {
-    "message": "Site admin IDs. By default, the user who first creates the site becomes an admin, and only site admins can manage the site.",
-    "description": "Prompt for site admins"
+    "message": "Site admin IDs. The user who creates the site first will be an admin by default. Only site admins can manage the site.",
+    "description": "Prompt for the site admins"
   },
   "message.adminsTip2": {
-    "message": "Admins can be added or removed here. You can view user IDs at https://auth.acedata.cloud",
-    "description": "Prompt for site admins"
+    "message": "You can add or remove admin IDs here. You can visit https://auth.acedata.cloud to view the user IDs.",
+    "description": "Prompt for the site admins"
   },
   "message.keywordsTip": {
-    "message": "Site keywords located in the site meta information, used for site SEO optimization.",
-    "description": "Prompt for site keywords"
+    "message": "Site keywords, located in the site's metadata for site SEO optimization.",
+    "description": "Prompt for the site keywords"
   },
   "message.keywordsTip2": {
-    "message": "Keywords can be added or removed here. The more precise the keywords, the better for SEO optimization.",
-    "description": "Prompt for site keywords"
+    "message": "You can add or remove website keywords here. The more accurate the keywords, the more beneficial they are for SEO optimization.",
+    "description": "Prompt for the site keywords"
   },
   "message.featuresChat": {
-    "message": "Enable or disable the Chat feature module.",
+    "message": "Enable or disable the Chat functionality module.",
     "description": "Description of the Chat feature"
   },
   "message.featuresMidjourney": {
-    "message": "Enable or disable the Midjourney feature module.",
+    "message": "Enable or disable the Midjourney functionality module.",
     "description": "Description of the Midjourney feature"
   },
   "message.featuresChatdoc": {
-    "message": "Enable or disable the Chatdoc feature module.",
+    "message": "Enable or disable the Chatdoc functionality module.",
     "description": "Description of the Chatdoc feature"
   },
   "message.featuresQrart": {
-    "message": "Enable or disable the Qrart feature module.",
+    "message": "Enable or disable the Qrart functionality module.",
     "description": "Description of the Qrart feature"
   },
   "message.featuresSuno": {
-    "message": "Enable or disable the Suno feature module.",
+    "message": "Enable or disable the Suno functionality module.",
     "description": "Description of the Suno feature"
+  },
+  "message.featuresLuma": {
+    "message": "Enable or disable the Luma functionality module.",
+    "description": "Description of the Luma feature"
   },
   "message.featuresSupport": {
     "message": "Enable or disable customer support",
@@ -265,10 +273,10 @@
   },
   "button.enabled": {
     "message": "Enabled",
-    "description": "Toggle text indicating it has been enabled"
+    "description": "Toggle text indicating that it is enabled"
   },
   "button.disabled": {
     "message": "Disabled",
-    "description": "Toggle text indicating it has been disabled"
+    "description": "Toggle text indicating that it is disabled"
   }
 }
