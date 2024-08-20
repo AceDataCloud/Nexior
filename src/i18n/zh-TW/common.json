@@ -19,17 +19,21 @@
     "message": "查看原圖",
     "description": "按鈕文本，用於查看原始圖片"
   },
+  "button.seeRawVideo": {
+    "message": "查看視頻",
+    "description": "按鈕文本，用於查看原始圖片"
+  },
   "button.edit": {
     "message": "編輯",
     "description": "按鈕文本，用於編輯某些內容"
   },
   "button.login": {
-    "message": "登入",
-    "description": "按鈕文本，用於登入"
+    "message": "登錄",
+    "description": "按鈕文本，用於登錄"
   },
   "button.logout": {
-    "message": "登出",
-    "description": "按鈕文本，用於登出"
+    "message": "退出",
+    "description": "按鈕文本，用於退出登錄"
   },
   "button.new": {
     "message": "新建",
@@ -64,8 +68,8 @@
     "description": "按鈕文本，用於觀看某些內容"
   },
   "button.verify": {
-    "message": "實名驗證",
-    "description": "按鈕文本，用於讓用戶進行實名驗證"
+    "message": "實名認證",
+    "description": "按鈕文本，用於讓用戶進行實名認證"
   },
   "button.profile": {
     "message": "個人資料",
@@ -180,8 +184,8 @@
     "description": "實體創建的時間"
   },
   "entity.updatedAt": {
-    "message": "更新时间",
-    "description": "实体更新的时间"
+    "message": "更新時間",
+    "description": "實體更新的時間"
   },
   "entity.order": {
     "message": "訂單",
@@ -216,7 +220,7 @@
     "description": "用於警告用戶的消息"
   },
   "message.info": {
-    "message": "友情提示",
+    "message": "友情提醒",
     "description": "用於顯示信息的消息"
   },
   "message.free": {
@@ -267,6 +271,18 @@
     "message": "我",
     "description": "網站導航欄中的文本，用於顯示個人資料頁面"
   },
+  "nav.products": {
+    "message": "產品",
+    "description": "網站導航欄中的文本，用於顯示產品頁面"
+  },
+  "nav.referral": {
+    "message": "推薦收益",
+    "description": "網站導航欄中的文本，用於顯示推薦頁面"
+  },
+  "nav.apiPlatform": {
+    "message": "API 平台",
+    "description": "網站導航欄中的文本，用於顯示API平台頁面"
+  },
   "nav.document": {
     "message": "文檔",
     "description": "網站導航欄中的文本，用於顯示文檔頁面"
@@ -295,6 +311,10 @@
     "message": "Suno",
     "description": "網站導航欄中的文本，用於顯示Suno頁面，請不要翻譯此字段，必須保持為'Suno'"
   },
+  "nav.luma": {
+    "message": "Luma",
+    "description": "網站導航欄中的文本，用於顯示Luma頁面，請不要翻譯此字段，必須保持為'Suno'"
+  },
   "nav.distribution": {
     "message": "推薦收益",
     "description": "網站導航欄中的文本，用於顯示推薦收益頁面"
@@ -308,7 +328,7 @@
     "description": "網站導航欄中的文本，用於顯示站點配置頁面"
   },
   "nav.locale": {
-    "message": "語言設置",
+    "message": "語言設定",
     "description": "網站導航欄中的文本，用於更改語言"
   },
   "nav.support": {
@@ -345,11 +365,11 @@
   },
   "title.buyMore": {
     "message": "購買更多",
-    "description": "讓用戶購買更多的頁面標題"
+    "description": "讓使用者購買更多的頁面標題"
   },
   "title.distribution": {
     "message": "推薦收益",
-    "description": "顯示推薦收益的頁面標題，表示用戶可以透過邀請他人使用服務來賺錢"
+    "description": "顯示推薦收益的頁面標題，表示使用者可以透過邀請他人使用服務來賺錢"
   },
   "title.site": {
     "message": "站點配置",
@@ -360,12 +380,12 @@
     "description": "顯示推薦歷史的頁面標題"
   },
   "title.invitee": {
-    "message": "邀請者",
-    "description": "顯示邀請者的頁面標題"
+    "message": "被邀請者",
+    "description": "顯示被邀請者的頁面標題"
   },
   "title.allUsages": {
     "message": "使用歷史",
-    "description": "顯示API服務所有使用紀錄的頁面標題"
+    "description": "顯示API服務所有使用記錄的頁面標題"
   },
   "title.allCredentials": {
     "message": "憑證",
@@ -373,7 +393,7 @@
   },
   "about.title1": {
     "message": "聯繫我們",
-    "description": "顯示聯繫信息的部分的標題"
+    "description": "顯示聯繫資訊的部分的標題"
   },
   "about.title2": {
     "message": "資源",
@@ -381,10 +401,10 @@
   },
   "about.title3": {
     "message": "連結",
-    "description": "顯示支持信息的部分的標題"
+    "description": "顯示支援資訊的部分的標題"
   },
   "about.address": {
-    "message": "美國 特拉華州 密德爾敦 N Broad St, 201號辦公室",
+    "message": "美國 德拉瓦州 美德爾敦 N Broad St, 201號辦公室",
     "description": "公司的地址"
   },
   "about.email": {
@@ -396,8 +416,8 @@
     "description": "服務頁面的連結"
   },
   "about.link2": {
-    "message": "文檔",
-    "description": "文檔頁面的連結"
+    "message": "文件",
+    "description": "文件頁面的連結"
   },
   "about.link3": {
     "message": "控制台",
@@ -416,8 +436,8 @@
     "description": "推薦收益頁面的連結"
   },
   "about.link7": {
-    "message": "支持",
-    "description": "支持頁面的連結"
+    "message": "支援",
+    "description": "支援頁面的連結"
   },
   "about.link8": {
     "message": "服務條款",

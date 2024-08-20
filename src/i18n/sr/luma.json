@@ -1,0 +1,554 @@
+{
+  "name.taskId": {
+    "message": "ID zadatka",
+    "description": "ID zadatka"
+  },
+  "name.type": {
+    "message": "Tip",
+    "description": "Tip sadržaja QR koda koji treba generisati, kao što su 'link', 'tekst', itd."
+  },
+  "name.failure": {
+    "message": "Neuspeh",
+    "description": "Status neuspeha zadatka"
+  },
+  "name.failureReason": {
+    "message": "Razlog neuspeha",
+    "description": "Razlog neuspeha zadatka"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Status zadatka"
+  },
+  "name.traceId": {
+    "message": "ID praćenja",
+    "description": "ID praćenja zadatka"
+  },
+  "name.size": {
+    "message": "Veličina",
+    "description": "Veličina QR koda koja treba da se generiše"
+  },
+  "name.createdAt": {
+    "message": "Datum kreiranja",
+    "description": "Datum i vreme generisanja QR koda"
+  },
+  "name.pixelStyle": {
+    "message": "Stil piksela",
+    "description": "Stil piksela QR koda koji treba generisati"
+  },
+  "name.startImageUrl": {
+    "message": "Početna slika",
+    "description": "Semenski element QR koda koji treba generisati"
+  },
+  "name.videoUrl": {
+    "message": "Prilagođeni video",
+    "description": "Semenski element QR koda koji treba generisati"
+  },
+  "name.endImageUrl": {
+    "message": "Završna slika",
+    "description": "Semenski element QR koda koji treba generisati"
+  },
+  "name.paddingLevel": {
+    "message": "Nivo popunjavanja",
+    "description": "Nivo popunjavanja QR koda koji treba generisati"
+  },
+  "name.paddingNoise": {
+    "message": "Šum popunjavanja",
+    "description": "Šum popunjavanja QR koda koji treba generisati"
+  },
+  "name.content": {
+    "message": "Sadržaj",
+    "description": "Sadržaj QR koda koji treba da se generiše"
+  },
+  "name.ecl": {
+    "message": "Nivo korekcije grešaka",
+    "description": "Nivo korekcije grešaka QR koda koji treba da se generiše"
+  },
+  "name.position": {
+    "message": "Pozicija",
+    "description": "Pozicija QR koda koja treba da se generiše"
+  },
+  "name.prompt": {
+    "message": "Video podsticaj",
+    "description": "Podsticaj za unos sadržaja"
+  },
+  "name.rotate": {
+    "message": "Ugao rotacije",
+    "description": "Rotacija QR koda koja treba da se generiše"
+  },
+  "name.enhancement": {
+    "message": "Poboljšanje podsticaja",
+    "description": "Napredna podešavanja QR koda koja treba da se generiše"
+  },
+  "name.custom": {
+    "message": "Prilagođena ekstenzija",
+    "description": "Prilagođena ekstenzija videa"
+  },
+  "name.extend": {
+    "message": "Ekstenzija videa iz",
+    "description": "Podsticaj za unos sadržaja"
+  },
+  "name.loop": {
+    "message": "Petlja za video",
+    "description": "Napredna podešavanja QR koda koja treba da se generiše"
+  },
+  "name.aspectRatio": {
+    "message": "Odnos širine i visine",
+    "description": "Odnos širine i visine QR koda koji treba da se generiše"
+  },
+  "name.markerShape": {
+    "message": "Oblik oznake",
+    "description": "Oblik oznake QR koda koji treba da se generiše"
+  },
+  "name.subMarker": {
+    "message": "Pod oznaka",
+    "description": "Pod oznaka QR koda koji treba da se generiše"
+  },
+  "name.qrw": {
+    "message": "Vidljivost",
+    "description": "Naziv QR generatora"
+  },
+  "name.steps": {
+    "message": "Broj koraka generisanja",
+    "description": "Broj koraka za generisanje QR koda"
+  },
+  "name.preset": {
+    "message": "Predesiniran stil",
+    "description": "Predesiniran QR kod koji treba generisati"
+  },
+  "name.lumaBot": {
+    "message": "Luma Bot",
+    "description": "Naziv Luma generatora videa"
+  },
+  "name.contentImageUrl": {
+    "message": "Link do slike sadržaja",
+    "description": "URL slike sadržaja QR koda koji treba da se generiše"
+  },
+  "inputWay.input": {
+    "message": "Unesite sadržaj",
+    "description": "Način unosa"
+  },
+  "inputWay.upload": {
+    "message": "Otpremi QR kod",
+    "description": "Način unosa"
+  },
+  "description.loop": {
+    "message": "Omogućite petlju za generisani video.",
+    "description": "Opis parametra 'qrw'"
+  },
+  "description.enhancement": {
+    "message": "Ako niste sigurni kako da napišete podsticajne reči, omogućite poboljšanje unosa podsticajnih reči.",
+    "description": "Opis parametra 'qrw'"
+  },
+  "description.custom": {
+    "message": "Ako želite da otpremite svoj video za ekstenziju, uključite ovu opciju.",
+    "description": "Opis parametra 'qrw'"
+  },
+  "description.startImageUrl": {
+    "message": "URL početnog okvira slike koja će biti prvi okvir generisanog videa.",
+    "description": "Opis parametra 'steps'"
+  },
+  "description.videoUrl": {
+    "message": "Otpremite URL prilagođenog videa koji će biti video proširenja.",
+    "description": "Opis parametra 'steps'"
+  },
+  "description.endImageUrl": {
+    "message": "URL završnog okvira slike koja će biti poslednji okvir generisanog videa.",
+    "description": "Opis parametra 'steps'"
+  },
+  "description.prompt": {
+    "message": "Podsticajne reči za generisanje Luma videa",
+    "description": "Opis parametra 'prompt'"
+  },
+  "status.pending": {
+    "message": "Na čekanju",
+    "description": "Status čekanja zadatka"
+  },
+  "status.processing": {
+    "message": "U obradi",
+    "description": "Status čekanja zadatka"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Izaberite...",
+    "description": "Placeholder za unos šuma popunjavanja"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Izaberite...",
+    "description": "Placeholder za nivo popunjavanja"
+  },
+  "placeholder.prompt": {
+    "message": "Unesite podsticajne reči za stil videa koji želite da generišete, na primer: Astronauti se prevoze iz svemira do vulkana",
+    "description": "Placeholder u polju za podsticaj"
+  },
+  "placeholder.startImageUrl": {
+    "message": "Link do početne slike",
+    "description": "Placeholder za semenski unos"
+  },
+  "placeholder.endImageUrl": {
+    "message": "Link do završne slike",
+    "description": "Placeholder za semenski unos"
+  },
+  "placeholder.position": {
+    "message": "Izaberite...",
+    "description": "Placeholder za unos pozicije"
+  },
+  "placeholder.content": {
+    "message": "Unesite sadržaj QR koda koji želite da generišete, na primer: https://www.google.com",
+    "description": "Placeholder u polju za sadržaj"
+  },
+  "placeholder.aspectRatio": {
+    "message": "请选择...",
+    "description": "占位ник za unos proporcija."
+  },
+  "placeholder.preset": {
+    "message": "请选择...",
+    "description": "占位nik za unos unapred podešenih opcija."
+  },
+  "placeholder.markerShape": {
+    "message": "请选择...",
+    "description": "占位nik za unos oblika oznake."
+  },
+  "placeholder.rotate": {
+    "message": "请选择...",
+    "description": "占位nik za unos rotacije."
+  },
+  "placeholder.subMarker": {
+    "message": "请选择...",
+    "description": "占位nik za unos dodatne oznake."
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "Tekst dugmeta za generisanje Luma video."
+  },
+  "button.extend": {
+    "message": "扩展视频",
+    "description": "Tekst dugmeta za proširenje videa."
+  },
+  "button.uploadStartImageUrl": {
+    "message": "上传图片",
+    "description": "Tekst dugmeta za otpremu QR koda."
+  },
+  "button.uploadVideoUrl": {
+    "message": "上传视频",
+    "description": "Tekst dugmeta za otpremu QR koda."
+  },
+  "button.uploadEndImageUrl": {
+    "message": "上传图片",
+    "description": "Tekst dugmeta za otpremu QR koda."
+  },
+  "preset.sunset": {
+    "message": "日落",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.floral": {
+    "message": "花卉",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.snowflakes": {
+    "message": "雪花",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.feathers": {
+    "message": "羽毛",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.raindrops": {
+    "message": "雨滴",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.ultraRealism": {
+    "message": "超现实",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.epicRealms": {
+    "message": "史诗王国",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.intricateStudio": {
+    "message": "复杂工作室",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.symmetricMasterpiece": {
+    "message": "对称杰作",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.luminousHighway": {
+    "message": "发光之路",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.celestialJourney": {
+    "message": "天体之旅",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.neonMech": {
+    "message": "霓虹机械",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.etherealLowPoly": {
+    "message": "空灵低多边形",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.goldenVista": {
+    "message": "金色景观",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.cinematicExpanse": {
+    "message": "电影般的广阔",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.cinematicWarm": {
+    "message": "电影般的温暖",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.desolateWilderness": {
+    "message": "荒凉荒野",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.vibrantPalette": {
+    "message": "充满活力的调色板",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.enigmaticJourney": {
+    "message": "神秘之旅",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.timelessCinematic": {
+    "message": "永恒的电影",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.regalGalaxy": {
+    "message": "华丽星系",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.illustriousCanvas": {
+    "message": "杰出画布",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.expressiveMural": {
+    "message": "富有表现力的壁画",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "preset.sereneHaze": {
+    "message": "宁静薄雾",
+    "description": "Unapred podešen stil QR koda."
+  },
+  "message.uploadQr": {
+    "message": "上传二维码图片，可生成和二维码内容一致的艺术二维码",
+    "description": "Opis za otpremu QR koda."
+  },
+  "message.promptPlaceholder": {
+    "message": "请输入描述要生成的图像的句子，例如：一只可爱的猫。额外参数将覆盖默认预设参数",
+    "description": "占位nik za polje sa pitanjem."
+  },
+  "message.uploadReferencesExceed": {
+    "message": "最多可上传 5 张图片",
+    "description": "Poruka greške kada je prekoračen broj slika za otpremu."
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "成功上传图片",
+    "description": "Poruka uspeha kada je slika uspešno otpremljena."
+  },
+  "message.uploadReferencesError": {
+    "message": "上传图片失败，请稍后重试",
+    "description": "Poruka greške kada otpremanje slike nije uspelo."
+  },
+  "message.startingTask": {
+    "message": "正在启动任务...",
+    "description": "Poruka kada započinje crtačka zadaća."
+  },
+  "message.startTaskSuccess": {
+    "message": "成功发起生成任务",
+    "description": "Poruka uspeha kada je zadatak uspešno pokrenut."
+  },
+  "message.startTaskFailed": {
+    "message": "发起任务失败，请联系管理员",
+    "description": "Poruka greške kada pokretanje crtačke zadaće nije uspelo."
+  },
+  "message.usedUp": {
+    "message": "您的积分已用完，请购买更多积分后继续使用",
+    "description": "Poruka kada su bodovi ispod."
+  },
+  "message.generating": {
+    "message": "生成中...",
+    "description": "Poruka kada se slika generiše."
+  },
+  "message.extendVideo": {
+    "message": "继续生成此视频",
+    "description": "Poruka kada se nastavlja generisanje ovog videa."
+  },
+  "message.generateFailed": {
+    "message": "Generisanje slike nije uspelo",
+    "description": "Poruka kada generisanje slike ne uspe"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Broj učitanih slika prvog okvira premašuje ograničenje",
+    "description": "Informacija o grešci kada broj učitanih slika prvog okvira premašuje ograničenje"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Učitani fajl ne sme biti veći od 10MB!",
+    "description": "Informacija o grešci kada učitani fajl premašuje 10MB"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Učitani fajl mora biti u MP4 formatu!",
+    "description": "Informacija o grešci kada učitani fajl nije u MP4 formatu"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Broj učitanih slika prvog okvira premašuje ograničenje",
+    "description": "Informacija o grešci kada broj učitanih slika prvog okvira premašuje ograničenje"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Broj učitanih slika krajnjeg okvira premašuje ograničenje",
+    "description": "Informacija o grešci kada broj učitanih slika krajnjeg okvira premašuje ograničenje"
+  },
+  "message.uploadStartImageError": {
+    "message": "Učitavanje slike prvog okvira nije uspelo",
+    "description": "Informacija o grešci kada učitavanje slike prvog okvira ne uspe"
+  },
+  "message.uploadVideoError": {
+    "message": "Učitavanje videa nije uspelo",
+    "description": "Informacija o grešci kada učitavanje videa ne uspe"
+  },
+  "message.uploadEndImageError": {
+    "message": "Učitavanje slike krajnjeg okvira nije uspelo",
+    "description": "Informacija o grešci kada učitavanje slike krajnjeg okvira ne uspe"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Učitavanje dokumenata nije uspelo",
+    "description": "Informacija o grešci kada učitavanje dokumenata ne uspe"
+  },
+  "message.noOperations": {
+    "message": "Nema dostupnih operacija",
+    "description": "Poruka kada nema dostupnih operacija"
+  },
+  "message.noTasks": {
+    "message": "Nema istorijskih zadataka, molimo kliknite levo za generisanje videa",
+    "description": "Poruka kada nema zadataka"
+  },
+  "markerShape.square": {
+    "message": "Kvadrat",
+    "description": "Oblik oznake koji se koristi za generisanje QR koda"
+  },
+  "markerShape.circle": {
+    "message": "Krug",
+    "description": "Oblik oznake koji se koristi za generisanje QR koda"
+  },
+  "markerShape.plus": {
+    "message": "Plus",
+    "description": "Oblik oznake koji se koristi za generisanje QR koda"
+  },
+  "markerShape.box": {
+    "message": "Kutija",
+    "description": "Oblik oznake koji se koristi za generisanje QR koda"
+  },
+  "markerShape.octagon": {
+    "message": "Osmerougao",
+    "description": "Oblik oznake koji se koristi za generisanje QR koda"
+  },
+  "markerShape.tinyPlus": {
+    "message": "Mali plus",
+    "description": "Oblik oznake koji se koristi za generisanje QR koda"
+  },
+  "markerShape.random": {
+    "message": "Nasumično",
+    "description": "Oblik oznake koji se koristi za generisanje QR koda"
+  },
+  "subMarker.square": {
+    "message": "Kvadrat",
+    "description": "Oblik podoznake koji se koristi za generisanje QR koda"
+  },
+  "subMarker.circle": {
+    "message": "Krug",
+    "description": "Oblik podoznake koji se koristi za generisanje QR koda"
+  },
+  "subMarker.plus": {
+    "message": "Plus",
+    "description": "Oblik podoznake koji se koristi za generisanje QR koda"
+  },
+  "subMarker.box": {
+    "message": "Kutija",
+    "description": "Oblik podoznake koji se koristi za generisanje QR koda"
+  },
+  "subMarker.random": {
+    "message": "Nasumično",
+    "description": "Oblik podoznake koji se koristi za generisanje QR koda"
+  },
+  "position.center": {
+    "message": "Centar",
+    "description": "Položaj koji se koristi za generisanje QR koda"
+  },
+  "position.topLeft": {
+    "message": "Gore levo",
+    "description": "Položaj koji se koristi za generisanje QR koda"
+  },
+  "position.topRight": {
+    "message": "Gore desno",
+    "description": "Položaj koji se koristi za generisanje QR koda"
+  },
+  "position.bottomLeft": {
+    "message": "Dole levo",
+    "description": "Položaj koji se koristi za generisanje QR koda"
+  },
+  "position.bottomRight": {
+    "message": "Dole desno",
+    "description": "Položaj koji se koristi za generisanje QR koda"
+  },
+  "position.top": {
+    "message": "Gore",
+    "description": "Položaj koji se koristi za generisanje QR koda"
+  },
+  "position.bottom": {
+    "message": "Dole",
+    "description": "Položaj koji se koristi za generisanje QR koda"
+  },
+  "position.left": {
+    "message": "Levo",
+    "description": "Položaj koji se koristi za generisanje QR koda"
+  },
+  "position.right": {
+    "message": "Desno",
+    "description": "Položaj koji se koristi za generisanje QR koda"
+  },
+  "pixelStyle.row": {
+    "message": "Red",
+    "description": "Stil piksela koji se koristi za generisanje QR koda"
+  },
+  "pixelStyle.column": {
+    "message": "Kolona",
+    "description": "Stil piksela koji se koristi za generisanje QR koda"
+  },
+  "pixelStyle.square": {
+    "message": "Kvadrat",
+    "description": "Stil piksela koji se koristi za generisanje QR koda"
+  },
+  "pixelStyle.rounded": {
+    "message": "Zaobljen",
+    "description": "Stil piksela koji se koristi za generisanje QR koda"
+  },
+  "pixelStyle.dot": {
+    "message": "Tačka",
+    "description": "Stil piksela koji se koristi za generisanje QR koda"
+  },
+  "pixelStyle.squircle": {
+    "message": "Zaobljeni kvadrat",
+    "description": "Stil piksela koji se koristi za generisanje QR koda"
+  },
+  "type.text": {
+    "message": "Tekst",
+    "description": "Tip sadržaja koji se koristi za generisanje QR koda"
+  },
+  "type.link": {
+    "message": "Link",
+    "description": "Tip sadržaja koji se koristi za generisanje QR koda"
+  },
+  "type.email": {
+    "message": "Email",
+    "description": "Tip sadržaja koji se koristi za generisanje QR koda"
+  },
+  "type.phone": {
+    "message": "Telefon",
+    "description": "Tip sadržaja koji se koristi za generisanje QR koda"
+  },
+  "type.sms": {
+    "message": "SMS",
+    "description": "Tip sadržaja koji se koristi za generisanje QR koda"
+  }
+}
