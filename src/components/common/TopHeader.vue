@@ -4,7 +4,7 @@
       <logo @click="onHome" />
     </el-col>
     <el-col :md="16" :xs="13">
-      <el-menu :default-active="active" mode="horizontal" :ellipsis="false" @select="onSelect">
+      <el-menu :default-active="active" mode="horizontal" class="menu" :ellipsis="true" @select="onSelect">
         <el-sub-menu :index="1">
           <template #title>{{ $t('common.nav.products') }}</template>
           <el-menu-item v-if="site?.features?.chat?.enabled" v-t="'index.title.chat'" index="/chat"></el-menu-item>
@@ -156,12 +156,14 @@ $height: 60px;
     float: right;
   }
 
-  .el-menu {
+  .el-menu.menu {
     --el-menu-hover-bg-color: var(--el-bg-color);
     --el-menu-active-color: var(--el-color-primary);
     background: none;
     border: none;
     height: $height;
+    min-width: 300px;
+    overflow-x: hidden;
     .el-menu-item {
       height: $height;
       color: inherit !important;

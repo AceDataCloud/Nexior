@@ -64,7 +64,7 @@
         </el-row>
       </div>
     </div>
-    <div id="chat" class="block">
+    <div v-if="site?.features?.chat?.enabled" id="chat" class="block">
       <div class="container">
         <el-row>
           <el-col :md="16" :xs="24" class="preview">
@@ -90,7 +90,7 @@
         </el-row>
       </div>
     </div>
-    <div id="midjourney" class="block">
+    <div v-if="site?.features?.midjourney?.enabled" id="midjourney" class="block">
       <div class="container">
         <el-row>
           <el-col :md="8" :xs="24" class="info">
@@ -116,15 +116,7 @@
         </el-row>
       </div>
     </div>
-    <div
-      id="qrart"
-      class="block"
-      @click="
-        $router.push({
-          path: '/qrart'
-        })
-      "
-    >
+    <div v-if="site?.features?.qrart?.enabled" id="qrart" class="block">
       <div class="container">
         <el-row>
           <el-col :md="16" :xs="24" class="preview">
@@ -134,28 +126,38 @@
           <el-col :md="8" :xs="24" class="info">
             <h2 class="title">{{ $t('index.title.qrart') }}</h2>
             <p class="subtitle">{{ $t('index.subtitle.qrart') }}</p>
-            <el-button type="primary" round class="btn-try">
+            <el-button
+              type="primary"
+              round
+              class="btn-try"
+              @click="
+                $router.push({
+                  path: '/qrart'
+                })
+              "
+            >
               {{ $t('index.button.try') }}
             </el-button>
           </el-col>
         </el-row>
       </div>
     </div>
-    <div
-      id="suno"
-      class="block"
-      @click="
-        $router.push({
-          path: '/suno'
-        })
-      "
-    >
+    <div v-if="site?.features?.suno?.enabled" id="suno" class="block">
       <div class="container">
         <el-row>
           <el-col :md="8" :xs="24" class="info">
             <h2 class="title">{{ $t('index.title.suno') }}</h2>
             <p class="subtitle">{{ $t('index.subtitle.suno') }}</p>
-            <el-button type="primary" round class="btn-try">
+            <el-button
+              type="primary"
+              round
+              class="btn-try"
+              @click="
+                $router.push({
+                  path: '/suno'
+                })
+              "
+            >
               {{ $t('index.button.try') }}
             </el-button>
           </el-col>
@@ -166,15 +168,7 @@
         </el-row>
       </div>
     </div>
-    <div
-      id="luma"
-      class="block"
-      @click="
-        $router.push({
-          path: '/luma'
-        })
-      "
-    >
+    <div v-if="site?.features?.luma?.enabled" id="luma" class="block">
       <div class="container">
         <el-row>
           <el-col :md="16" :xs="24" class="preview">
@@ -184,7 +178,16 @@
           <el-col :md="8" :xs="24" class="info">
             <h2 class="title">{{ $t('index.title.luma') }}</h2>
             <p class="subtitle">{{ $t('index.subtitle.luma') }}</p>
-            <el-button type="primary" round class="btn-try">
+            <el-button
+              type="primary"
+              round
+              class="btn-try"
+              @click="
+                $router.push({
+                  path: '/luma'
+                })
+              "
+            >
               {{ $t('index.button.try') }}
             </el-button>
           </el-col>
@@ -381,7 +384,8 @@ export default defineComponent({
       color: var(--el-text-color-primary);
     }
     .subtitle {
-      font-size: 24px;
+      font-size: 20px;
+      padding: 0 20px;
       color: var(--el-text-color-secondary);
     }
     .btn-try {
@@ -395,7 +399,7 @@ export default defineComponent({
 }
 
 #banner {
-  padding: 100px 0;
+  padding: 50px 0;
   .left {
     .info {
       @media (max-width: 767px) {
@@ -474,14 +478,14 @@ export default defineComponent({
 #introduction,
 #midjourney,
 #suno {
-  background: linear-gradient(90deg, #ebe7ff, #f2faff 53%, #e0f5fe);
+  background: #f5f7fa;
 }
 
 .dark {
   #introduction,
   #midjourney,
   #suno {
-    background-image: linear-gradient(270deg, #277186 0%, #330867 100%);
+    background: #1e1e1e;
   }
 }
 
