@@ -1,26 +1,26 @@
 {
   "entity.requestQueries": {
-    "message": "Consultas de Solicitação",
-    "description": "Parâmetros de consulta da requisição HTTP."
+    "message": "Consultas de solicitação",
+    "description": "Parâmetros de consulta da solicitação HTTP."
   },
   "entity.requestBody": {
-    "message": "Corpo da Solicitação",
-    "description": "Corpo da requisição HTTP."
+    "message": "Corpo da solicitação",
+    "description": "Corpo da solicitação HTTP."
   },
   "entity.responseBody": {
-    "message": "Corpo da Resposta",
+    "message": "Corpo da resposta",
     "description": "Corpo da resposta HTTP."
   },
   "entity.requestHeaders": {
-    "message": "Cabeçalhos de Solicitação",
-    "description": "Cabeçalhos da requisição HTTP."
+    "message": "Cabeçalhos da solicitação",
+    "description": "Cabeçalhos da solicitação HTTP."
   },
   "entity.requestHeader": {
-    "message": "Cabeçalho de Solicitação",
-    "description": "Cabeçalho da requisição HTTP, forma singular do cabeçalho."
+    "message": "Cabeçalho da solicitação",
+    "description": "Cabeçalho da solicitação HTTP, forma singular do cabeçalho."
   },
   "entity.responseHeaders": {
-    "message": "Cabeçalhos de Resposta",
+    "message": "Cabeçalhos da resposta",
     "description": "Cabeçalhos da resposta HTTP."
   },
   "entity.response": {
@@ -29,11 +29,11 @@
   },
   "entity.success": {
     "message": "Sucesso",
-    "description": "Resposta bem-sucedida."
+    "description": "Resposta de sucesso."
   },
   "entity.failure": {
     "message": "Falha",
-    "description": "Resposta com falha."
+    "description": "Resposta de falha."
   },
   "entity.responseExample": {
     "message": "Exemplo",
@@ -45,98 +45,102 @@
   },
   "entity.arrayOf": {
     "message": "Array",
-    "description": "Um array de entidades."
+    "description": "Array de entidades."
   },
   "entity.apiKey": {
     "message": "Chave da API",
-    "description": "Chave para acesso à API."
+    "description": "Chave da API."
   },
   "message.free": {
-    "message": "Grátis",
-    "description": "Indica que o preço é gratuito, sem necessidade de gastar pontos ou moeda ao usar o serviço da API."
+    "message": "Gratuito",
+    "description": "Indica que o preço é gratuito e não requer gasto de créditos ou moeda ao usar o serviço da API."
   },
   "message.appliedCount": {
-    "message": "Número de Solicitações",
-    "description": "Número de vezes que o serviço da API foi solicitado."
+    "message": "Número de aplicações",
+    "description": "Número de vezes que o serviço da API foi aplicado."
   },
   "message.firstFree": {
-    "message": "Primeira vez grátis",
-    "description": "Indica que a primeira utilização do serviço da API é gratuita, sem necessidade de gastar pontos ou moeda."
+    "message": "Primeira vez gratuita",
+    "description": "Indica que a primeira utilização do serviço da API é gratuita, sem custo em créditos ou moeda."
   },
   "message.custom": {
-    "message": "Valor Especificado",
-    "description": "Indica que o preço é um valor especificado, e que é necessário gastar um certo número de pontos ou moeda ao usar o serviço da API."
+    "message": "Valor definido",
+    "description": "Indica que o preço é definido e exige uma quantidade específica de créditos ou moeda ao usar o serviço da API."
   },
   "message.present": {
     "message": "Presente",
-    "description": "Ao usar o serviço da API pela primeira vez, iremos oferecer pontos a você."
+    "description": "Na primeira utilização do serviço da API, iremos dar créditos a você."
   },
   "message.around": {
     "message": "Cerca de",
-    "description": "O preço é aproximadamente, o preço real pode variar."
+    "description": "O preço é aproximadamente, podendo variar."
   },
   "message.successRate15min": {
-    "message": "Taxa de Sucesso em Tempo Real",
-    "description": "A taxa de sucesso em tempo real do serviço da API nos últimos 15 minutos."
+    "message": "Taxa de sucesso em tempo real",
+    "description": "Taxa de sucesso do serviço da API nos últimos 15 minutos."
   },
   "message.ySuccessRate": {
-    "message": "Taxa de Sucesso (100%)",
-    "description": "A taxa de sucesso do serviço da API."
+    "message": "Taxa de sucesso (100%)",
+    "description": "Taxa de sucesso do serviço da API."
   },
   "message.xMinutes": {
     "message": "Tempo (minutos)",
     "description": "Tempo (minutos)."
   },
   "message.streamUsage": {
-    "message": "Dica: Para solicitações em streaming, o código acima pode não se aplicar completamente. Por favor, consulte a documentação de integração para modificações.",
-    "description": "Para solicitações em streaming, o código acima pode não se aplicar completamente. Por favor, consulte a documentação de integração para modificações."
+    "message": "Dica: Para solicitações em streaming, o código acima pode não se aplicar totalmente. Consulte a documentação de integração para ajustes.",
+    "description": "Para solicitações em streaming, o código acima pode não se aplicar totalmente. Consulte a documentação de integração para ajustes."
   },
   "message.alphaStage": {
-    "message": "Esta API está em fase Alpha, é uma versão de pré-visualização inicial, pode haver instabilidades potenciais, o formato da API pode mudar significativamente, não é recomendável o uso em ambientes de produção. O preço atual é relativamente baixo, pode haver ajustes significativos no futuro.",
-    "description": "Esta API está em fase Alpha, é uma versão de pré-visualização inicial, pode haver instabilidades potenciais, o formato da API pode mudar significativamente, não é recomendável o uso em ambientes de produção. O preço atual é relativamente baixo, pode haver ajustes significativos no futuro."
+    "message": "Esta API está em fase Alpha, é uma versão de pré-visualização inicial e pode apresentar instabilidades potenciais. O formato da API pode mudar significativamente, não recomendado para uso em produção. A atual precificação é relativamente baixa, mas pode ter ajustes significativos no futuro.",
+    "description": "Esta API está em fase Alpha, é uma versão de pré-visualização inicial e pode apresentar instabilidades potenciais. O formato da API pode mudar significativamente, não recomendado para uso em produção. A atual precificação é relativamente baixa, mas pode ter ajustes significativos no futuro."
   },
   "message.betaStage": {
-    "message": "Esta API está em fase Beta, o formato da API não mudará significativamente, mas pode haver instabilidades potenciais, use com cautela em ambientes de produção. O preço atual é relativamente baixo, pode haver ajustes moderados no futuro.",
-    "description": "Esta API está em fase Beta, o formato da API não mudará significativamente, mas pode haver instabilidades potenciais, use com cautela em ambientes de produção. O preço atual é relativamente baixo, pode haver ajustes moderados no futuro."
+    "message": "Esta API está em fase Beta, o formato da API não deve mudar muito, mas pode haver instabilidades potenciais, use com cautela em produção. A atual precificação é relativamente baixa, mas pode ter ajustes moderados no futuro.",
+    "description": "Esta API está em fase Beta, o formato da API não deve mudar muito, mas pode haver instabilidades potenciais, use com cautela em produção. A atual precificação é relativamente baixa, mas pode ter ajustes moderados no futuro."
   },
   "unit.credit": {
-    "message": "Ponto",
-    "description": "Ponto é a moeda virtual utilizada nos serviços da API."
+    "message": "Crédito",
+    "description": "Créditos são a moeda virtual usada nos serviços da API."
   },
   "unit.Credit": {
-    "message": "Ponto",
-    "description": "Ponto é a moeda virtual utilizada nos serviços da API, forma em maiúscula."
+    "message": "Crédito",
+    "description": "Créditos são a moeda virtual usada nos serviços da API, esta é a forma maiúscula."
   },
   "unit.credits": {
-    "message": "Pontos",
-    "description": "Ponto é a moeda virtual utilizada nos serviços da API, forma plural."
+    "message": "Créditos",
+    "description": "Créditos são a moeda virtual usada nos serviços da API, esta é a forma plural."
   },
   "unit.Credits": {
-    "message": "Pontos",
-    "description": "Ponto é a moeda virtual utilizada nos serviços da API, forma plural e maiúscula."
+    "message": "Créditos",
+    "description": "Créditos são a moeda virtual usada nos serviços da API, esta é a forma maiúscula e plural."
   },
   "unit.call": {
     "message": "Chamada",
     "description": "Chamada representa o número de vezes que o serviço da API foi chamado."
   },
+  "unit.count": {
+    "message": "vezes",
+    "description": "Vezes representa o número de vezes que o serviço da API foi chamado."
+  },
   "unit.Call": {
     "message": "Chamada",
-    "description": "Chamada representa o número de vezes que o serviço da API foi chamado, forma em maiúscula."
+    "description": "Chamada representa o número de vezes que o serviço da API foi chamado, esta é a forma maiúscula."
   },
   "unit.calls": {
     "message": "Chamadas",
-    "description": "Chamada representa o número de vezes que o serviço da API foi chamado, forma plural."
+    "description": "Chamadas representa o número de vezes que o serviço da API foi chamado, esta é a forma plural."
   },
   "unit.Calls": {
     "message": "Chamadas",
-    "description": "Chamada representa o número de vezes que o serviço da API foi chamado, forma plural e maiúscula."
+    "description": "Chamadas representa o número de vezes que o serviço da API foi chamado, esta é a forma maiúscula e plural."
   },
   "unit.MB": {
     "message": "MB",
-    "description": "MB representa megabyte, uma unidade de armazenamento de informação digital."
+    "description": "MB representa megabytes, uma unidade de armazenamento de informação digital."
   },
   "unit.GB": {
     "message": "GB",
-    "description": "GB representa gigabyte, uma unidade de armazenamento de informação digital."
+    "description": "GB representa gigabytes, uma unidade de armazenamento de informação digital."
   }
 }

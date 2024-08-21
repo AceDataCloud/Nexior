@@ -72,11 +72,24 @@ export interface IApiPrice {
   }[];
 }
 
+export interface IApiEstimationItem {
+  name: string;
+  cost: number;
+  remark: string;
+  comparisons: {
+    target: string;
+    value: number;
+  }[];
+}
+
+export type IApiEstimation = IApiEstimationItem[];
+
 export interface IApi {
   id: string;
   name?: string;
   title?: string;
   definition?: any;
+  estimation?: IApiEstimation;
   introduction?: string;
   price?: IApiPrice;
   tags?: string[];

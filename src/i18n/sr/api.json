@@ -1,7 +1,7 @@
 {
   "entity.requestQueries": {
-    "message": "Upitni parametri",
-    "description": "HTTP upitni parametri."
+    "message": "Upit za zahtev",
+    "description": "HTTP zahtevi za upitne parametre."
   },
   "entity.requestBody": {
     "message": "Telo zahteva",
@@ -17,7 +17,7 @@
   },
   "entity.requestHeader": {
     "message": "Zaglavlje zahteva",
-    "description": "Zaglavlje HTTP zahteva, samo jedan oblik zaglavlja."
+    "description": "Zaglavlje HTTP zahteva, samo jedno zaglavlje."
   },
   "entity.responseHeaders": {
     "message": "Zaglavlja odgovora",
@@ -28,11 +28,11 @@
     "description": "HTTP odgovor."
   },
   "entity.success": {
-    "message": "Uspešno",
+    "message": "Uspeh",
     "description": "Uspešan odgovor."
   },
   "entity.failure": {
-    "message": "Neuspešno",
+    "message": "Neuspeh",
     "description": "Neuspešan odgovor."
   },
   "entity.responseExample": {
@@ -53,83 +53,87 @@
   },
   "message.free": {
     "message": "Besplatno",
-    "description": "Označava da je cena besplatna, nema potrebe za potrošnjom poena ili novca prilikom korišćenja API servisa."
+    "description": "Obeležava cenu kao besplatnu, korišćenje API usluga ne zahtevaju troškove."
   },
   "message.appliedCount": {
     "message": "Broj zahteva",
-    "description": "Broj puta kada je API servis zatražen."
+    "description": "Broj puta kada su zatražene API usluge."
   },
   "message.firstFree": {
     "message": "Prvo besplatno",
-    "description": "Ozjava da je prva upotreba API servisa besplatna, nema potrebe za potrošnjom poena ili novca."
+    "description": "Obeležava prvu upotrebu API usluga kao besplatnu."
   },
   "message.custom": {
     "message": "Specifikovana suma",
-    "description": "Ozvanja da je cena specificirana, potrebno je potrošiti određene poene ili novac prilikom korišćenja API servisa."
+    "description": "Označava da je cena određena i zahteva određene troškove."
   },
   "message.present": {
     "message": "Poklon",
-    "description": "Prilikom prve upotrebe API servisa, poklonićemo vam poene."
+    "description": "Prilikom prve upotrebe API usluga, poklanjamo bodove."
   },
   "message.around": {
     "message": "Otprilike",
     "description": "Cena je otprilike, stvarna cena može varirati."
   },
   "message.successRate15min": {
-    "message": "Uspešnost u realnom vremenu",
-    "description": "Uspešnost API servisa tokom poslednjih 15 minuta."
+    "message": "Stvarna stopa uspeha",
+    "description": "Stvarna stopa uspeha API usluga u poslednjih 15 minuta."
   },
   "message.ySuccessRate": {
-    "message": "Uspešnost (100%)",
-    "description": "Uspešnost API servisa."
+    "message": "Stopa uspeha (100%)",
+    "description": "Stopa uspeha API usluga."
   },
   "message.xMinutes": {
-    "message": "Vreme (minuti)",
-    "description": "Vreme (minuti)."
+    "message": "Vreme (minute)",
+    "description": "Vreme u minutima."
   },
   "message.streamUsage": {
-    "message": "Napomena: U vezi sa stream zahtjevima, navedeni kod možda neće biti u potpunosti primenljiv. Molimo pogledajte dokumentaciju za api.",
-    "description": "U vezi sa stream zahtevima, navedeni kod možda neće biti u potpunosti primenljiv. Molimo pogledajte dokumentaciju za api."
+    "message": "Napomena: Kod za stream zahteve možda nije potpuno primenljiv, molimo pregledajte dokumentaciju za promene.",
+    "description": "Za stream zahteve kod možda nije u potpunosti primenljiv, molimo pregledajte dokumentaciju."
   },
   "message.alphaStage": {
-    "message": "Ovaj API je u Alpha fazi, ovo je rani pregled verzije, mogu postojati potencijalne nestabilnosti, format API-ja se može značajno promeniti, ne preporučuje se korišćenje u produkcionom okruženju. Trenutne cene su relativno niske, u budućnosti mogu doći do značajnih promena cena.",
-    "description": "Ovaj API je u Alpha fazi, ovo je rani pregled verzije, mogu postojati potencijalne nestabilnosti, format API-ja se može značajno promeniti, ne preporučuje se korišćenje u produkcionom okruženju. Trenutne cene su relativno niske, u budućnosti mogu doći do značajnih promena cena."
+    "message": "Ovaj API je u Alpha fazi, rani probni model može biti nestabilan, API format se može značajno promeniti, ne preporučuje se korišćenje u produkcionim okruženjima. Trenutne cene su relativno niske, ali se mogu značajno promeniti.",
+    "description": "Ovaj API je u Alpha fazi, rani probni model može biti nestabilan, API format se može značajno promeniti, ne preporučuje se korišćenje u produkcionim okruženjima."
   },
   "message.betaStage": {
-    "message": "Ovaj API je u Beta fazi, format API-ja neće se mnogo menjati, ali mogu postojati potencijalne nestabilnosti, koristite ga pažljivo u produkcionom okruženju. Trenutne cene su relativno niske, u budućnosti mogu doći do umerenih promena cena.",
-    "description": "Ovaj API je u Beta fazi, format API-ja neće se mnogo menjati, ali mogu postojati potencijalne nestabilnosti, koristite ga pažljivo u produkcionom okruženju. Trenutne cene su relativno niske, u budućnosti mogu doći do umerenih promena cena."
+    "message": "Ovaj API je u Beta fazi, format API-a se neće značajno promeniti, ali može postojati određena nestabilnost, molimo budite oprezni u produkcionim okruženjima. Trenutne cene su relativno niske, ali se mogu umereno promeniti.",
+    "description": "Ovaj API je u Beta fazi, format API-a se neće značajno promeniti, ali može postojati određena nestabilnost."
   },
   "unit.credit": {
-    "message": "Poeni",
-    "description": "Poeni su virtuelna valuta korišćena unutar API servisa."
+    "message": "Bod",
+    "description": "Bodovi su virtuelna valuta korišćena u API uslugama."
   },
   "unit.Credit": {
-    "message": "Poeni",
-    "description": "Poeni su virtuelna valuta korišćena unutar API servisa, ovo je veliko slovo."
+    "message": "Bod",
+    "description": "Bodovi su virtuelna valuta u API uslugama, ovo je veliko slovo."
   },
   "unit.credits": {
-    "message": "Poeni",
-    "description": "Poeni su virtuelna valuta korišćena unutar API servisa, ovo je oblik u množini."
+    "message": "Bodovi",
+    "description": "Bodovi su virtuelna valuta u API uslugama, ovo je oblik množine."
   },
   "unit.Credits": {
-    "message": "Poeni",
-    "description": "Poeni su virtuelna valuta korišćena unutar API servisa, ovo je veliko slovo i u množini."
+    "message": "Bodovi",
+    "description": "Bodovi su virtuelna valuta u API uslugama, ovo je veliko i množinski oblik."
   },
   "unit.call": {
     "message": "Poziv",
-    "description": "Poziv označava broj puta kada je API servis pozvan."
+    "description": "Poziv označava broj poziva API usluga."
+  },
+  "unit.count": {
+    "message": "Put",
+    "description": "Put označava broj poziva API usluga."
   },
   "unit.Call": {
     "message": "Poziv",
-    "description": "Poziv označava broj puta kada je API servis pozvan, ovo je veliko slovo."
+    "description": "Poziv označava broj poziva API usluga, ovo je veliko slovo."
   },
   "unit.calls": {
     "message": "Pozivi",
-    "description": "Poziv označava broj puta kada je API servis pozvan, ovo je oblik u množini."
+    "description": "Pozivi označava broj poziva API usluga, ovo je oblik množine."
   },
   "unit.Calls": {
     "message": "Pozivi",
-    "description": "Poziv označava broj puta kada je API servis pozvan, ovo je veliko slovo i u množini."
+    "description": "Pozivi označava broj poziva API usluga, ovo je veliko i množinski oblik."
   },
   "unit.MB": {
     "message": "MB",
