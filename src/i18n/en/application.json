@@ -1,11 +1,11 @@
 {
   "type.period": {
     "message": "Period",
-    "description": "The period of the service."
+    "description": "Service period."
   },
   "type.usage": {
     "message": "Quota",
-    "description": "The quota of the service."
+    "description": "Service quota."
   },
   "field.expiredAt": {
     "message": "Expiration Time",
@@ -13,31 +13,31 @@
   },
   "button.goDocument": {
     "message": "Document",
-    "description": "Button text that directs the user to the document page."
+    "description": "Button text that takes the user to the documentation page when clicked."
   },
   "button.goCredentials": {
     "message": "Credentials",
-    "description": "Button text that directs the user to the credentials page."
+    "description": "Button text that takes the user to the credentials page when clicked."
   },
   "button.buyMore": {
     "message": "Buy More",
-    "description": "Button text that directs the user to the buy more page."
+    "description": "Button text that takes the user to the page to buy more when clicked."
   },
   "button.createOrder": {
     "message": "Create Order",
-    "description": "Button text that directs the user to the create order page."
+    "description": "Button text that takes the user to the create order page when clicked."
   },
   "button.custom": {
-    "message": "Customize",
-    "description": "Button text that directs the user to the customization page."
+    "message": "Custom",
+    "description": "Button text that takes the user to the customization page when clicked."
   },
   "button.query": {
     "message": "Query",
-    "description": "Button text that directs the user to the query page."
+    "description": "Button text that takes the user to the query page when clicked."
   },
   "button.usage": {
     "message": "Usage Records",
-    "description": "Button text that directs the user to the usage records page."
+    "description": "Button text that takes the user to the usage records page when clicked."
   },
   "field.application": {
     "message": "Application",
@@ -45,11 +45,11 @@
   },
   "field.status": {
     "message": "Status",
-    "description": "The status of the application."
+    "description": "Status of the application."
   },
   "field.id": {
     "message": "Application ID",
-    "description": "The ID of the application."
+    "description": "ID of the application."
   },
   "field.remainingAmount": {
     "message": "Remaining Amount",
@@ -61,23 +61,23 @@
   },
   "field.apiKey": {
     "message": "API Key",
-    "description": "The API key."
+    "description": "API key."
   },
   "field.service": {
     "message": "Service",
-    "description": "The service of the application."
+    "description": "The service applied for."
   },
   "field.operation": {
     "message": "Operation",
-    "description": "The operation of the application."
+    "description": "Operation of the application."
   },
   "field.amount": {
     "message": "Amount",
-    "description": "The amount of the application."
+    "description": "The amount applied for."
   },
   "field.traceId": {
     "message": "Trace ID",
-    "description": "The trace ID of an API call made for the application of the API service; do not translate, keep as 'Trace ID'."
+    "description": "The trace ID of an API call related to the application, do not translate, keep as 'Trace ID'."
   },
   "field.shouldPayPrice": {
     "message": "Final Price",
@@ -85,15 +85,15 @@
   },
   "field.api": {
     "message": "API",
-    "description": "This is an online service that provides services to users via API."
+    "description": "This is an online service provided to users through an API."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "This is an online service that provides services to users via HTTP proxy (used for data transmission)."
+    "description": "This is an online service provided to users through an HTTP proxy (for data transmission)."
   },
   "field.credential": {
-    "message": "Credential",
-    "description": "The credential of the application."
+    "message": "Credentials",
+    "description": "The credentials applied for."
   },
   "field.name": {
     "message": "Name",
@@ -101,11 +101,11 @@
   },
   "field.package": {
     "message": "Package",
-    "description": "The package refers to different pricing plans, such as $100 for 10,000 points, $200 for 20,000 points."
+    "description": "The package represents different pricing plans, for example, $100 for 10,000 points, $200 for 20,000 points."
   },
   "field.type": {
     "message": "Type",
-    "description": "The type of the application."
+    "description": "Type of the application."
   },
   "field.freeAmount": {
     "message": "Free Amount",
@@ -121,35 +121,35 @@
   },
   "message.applySuccessfully": {
     "message": "Application Successful",
-    "description": "Message displayed when the user has successfully applied for this service."
+    "description": "Message displayed when the user successfully applies for this service."
   },
   "message.notApplied": {
-    "message": "You have not applied for this service yet, please apply before using it.",
-    "description": "Message displayed when the user has not yet applied for this service."
+    "message": "You have not applied for this service, please apply for it before use.",
+    "description": "Message displayed when the user has not applied for this service yet."
   },
   "message.yourApplication": {
     "message": "Your Application",
     "description": "Message displayed to the user regarding their application."
   },
   "message.unverified": {
-    "message": "You need to complete real-name authentication before applying for this service.",
-    "description": "Message displayed when the user has not completed real-name authentication."
+    "message": "You need to complete identity verification before applying for this service.",
+    "description": "Message displayed when the user has not completed identity verification."
   },
   "message.goVerify": {
-    "message": "Go to Real-Name Authentication",
-    "description": "Message displayed when the user has not completed real-name authentication."
+    "message": "Go to Identity Verification",
+    "description": "Message displayed when the user has not completed identity verification."
   },
   "message.requiredParameter": {
     "message": "Required Parameter",
-    "description": "Message displayed when the user has not entered the required parameters."
+    "description": "Message displayed when the user has not entered required parameters."
   },
   "message.example": {
     "message": "Example",
-    "description": "Message displayed when the user has not entered the required parameters."
+    "description": "Message displayed when the user has not entered required parameters."
   },
   "message.createCredentialSuccessfully": {
     "message": "Credential Created Successfully",
-    "description": "Message displayed when the user has successfully created credentials."
+    "description": "Message displayed when the user successfully creates credentials."
   },
   "message.readPolicy": {
     "message": "I have read and agree",
@@ -169,42 +169,42 @@
   },
   "message.rotateCredential": {
     "message": "Reset Key",
-    "description": "The message displayed to the user when they reset the key."
+    "description": "Message displayed to the user when they reset the key."
   },
   "message.rotateCredentialConfirm": {
     "message": "Are you sure you want to reset the key? It cannot be recovered after reset.",
-    "description": "The message displayed to the user when they confirm the key reset."
+    "description": "Message displayed to the user when they confirm the key reset."
   },
   "message.idDoesNotExist": {
     "message": "Application does not exist",
-    "description": "The message displayed to the user when the application does not exist."
+    "description": "Message displayed to the user when the application does not exist."
   },
   "message.rotateCredentialSuccessfully": {
     "message": "Key reset successfully",
-    "description": "The message displayed to the user when the key reset is successful."
+    "description": "Message displayed to the user when the key reset is successful."
   },
   "message.rotateCredentialFailed": {
     "message": "Key reset failed, please contact support",
-    "description": "The message displayed to the user when the key reset fails."
+    "description": "Message displayed to the user when the key reset fails."
   },
   "message.updateFailed": {
     "message": "Update failed",
-    "description": "The message displayed to the user when the update fails."
+    "description": "Message displayed to the user when the update fails."
   },
   "message.updateSuccessfully": {
     "message": "Update successful",
-    "description": "The message displayed to the user when the update is successful."
+    "description": "Message displayed to the user when the update is successful."
   },
   "title.buyService": {
-    "message": "Purchase Service",
-    "description": "The title of the page when the user wants to purchase a service."
+    "message": "Buy Service",
+    "description": "Title of the page when the user wants to purchase a service."
   },
   "title.applicationRemainingCount": {
     "message": "Modification Count",
-    "description": "The title of the page when the user wants to modify the application counts."
+    "description": "Title of the page when the user wants to modify the application count."
   },
   "title.manageApplication": {
     "message": "Application Management",
-    "description": "The title of the page when the user wants to manage applications."
+    "description": "Title of the page when the user wants to manage applications."
   }
 }

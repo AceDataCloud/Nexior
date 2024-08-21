@@ -1,58 +1,58 @@
 {
   "button.detail": {
-    "message": "Pogledajte detalje",
-    "description": "Tekst na dugmetu za prikaz preporučenih istorijskih detalja na vebu."
+    "message": "Pogledaj detalje",
+    "description": "Tekst na dugmetu, koji se koristi za prikaz preporučene istorije detalja na sajtu."
   },
   "button.withdrawal": {
-    "message": "Povlačenje",
-    "description": "Tekst na dugmetu za povlačenje preporučenih prihoda na vebu."
+    "message": "Isplata",
+    "description": "Tekst na dugmetu, koji se koristi za isplatu preporučenih zarada na sajtu."
   },
   "button.query": {
     "message": "Upit",
-    "description": "Tekst na dugmetu za pretragu preporučenih prihoda na vebu."
+    "description": "Tekst na dugmetu, koji se koristi za upit o preporučenim zaradama na sajtu."
   },
   "field.id": {
     "message": "Preporuka ID",
-    "description": "Jedinstveni identifikator za distribuciju, distribucija se odnosi na preporuke API servis veba."
+    "description": "Jedinstveni identifikator distribucije, a distribucija se odnosi na preporuke API servisnog sajta."
   },
   "field.percentage": {
-    "message": "Procenat preporučenih prihoda",
-    "description": "Procenat preporučenih prihoda, koji se računa na osnovu iznosa porudžbine."
+    "message": "Procenat preporučene zarade",
+    "description": "Procenat preporučene zarade, izračunat na osnovu iznosa porudžbine."
   },
   "field.price": {
     "message": "Iznos porudžbine",
-    "description": "Iznos porudžbine koji se koristi za izračunavanje preporučenih prihoda."
+    "description": "Iznos porudžbine koji se koristi za izračunavanje preporučene zarade."
   },
   "field.reward": {
     "message": "Preporučena nagrada",
-    "description": "Preporučeni prihodi, izračunati prema iznosu porudžbine i procentu preporučenih prihoda."
+    "description": "Preporučena zarada, izračunata na osnovu iznosa porudžbine i procenta preporučene zarade."
   },
   "field.userId": {
     "message": "Korisnik ID",
-    "description": "Jedinstveni identifikator korisnika, korisnik se odnosi na korisnike API servis veba."
+    "description": "Jedinstveni identifikator korisnika, korisnik se odnosi na korisnike API servisnog sajta."
   },
   "field.userEmail": {
-    "message": "Korisnički email",
-    "description": "Email adresa korisnika."
+    "message": "Korisnik mejl",
+    "description": "Mejl korisnika."
   },
   "field.createdAt": {
-    "message": "Vreme preporučivanja",
+    "message": "Vreme preporuke",
     "description": "Vreme kada je preporuka kreirana."
   },
   "field.level": {
     "message": "Nivo",
-    "description": "Nivo preporuke, koji se koristi za izračunavanje preporučenih prihoda."
+    "description": "Nivo preporuke, koji se koristi za izračunavanje preporučene zarade."
   },
   "field.threshold": {
-    "message": "Prag preporučenih prihoda",
-    "description": "Prag preporučenih prihoda, koji se koristi za povlačenje preporučenih prihoda."
+    "message": "Prag preporučene zarade",
+    "description": "Prag preporučene zarade, koji se koristi za isplatu preporučene zarade."
   },
   "field.inviteeId": {
     "message": "ID pozivatelja",
-    "description": "Jedinstveni identifikator pozivaoca, pozivalac se odnosi na onog ko poziva drugog korisnika na API servis veba."
+    "description": "Jedinstveni identifikator pozivatelja, pozivatelj se odnosi na osobu koja je pozvala pozvanika na API servisni sajt."
   },
   "field.isVerified": {
-    "message": "Verifikovano",
+    "message": "Verifikovan",
     "description": "Oznaka koja označava da li je preporučeni korisnik verifikovan sa stvarnim informacijama."
   },
   "message.deltaPriceForNextLevel": {
@@ -60,76 +60,76 @@
     "description": "Razlika između trenutnog iznosa porudžbine i praga sledećeg nivoa."
   },
   "message.developingWithDrawal": {
-    "message": "Molimo pridružite se dodavanju korisničke podrške za obradu povlačenja, povlačenja će biti oporezovana.",
-    "description": "Poruka koja ukazuje da je funkcija povlačenja u razvoju."
+    "message": "Molimo da kontaktirate korisničku podršku za obradu isplate, isplata će uključivati odgovarajući porez na dohodak.",
+    "description": "Poruka koja označava da je funkcionalnost isplate u razvoju."
   },
   "message.technicalDetail": {
     "message": "Tehnički detalji",
-    "description": "Tehnički detalji implementacije sistema preporuka."
+    "description": "Tehnički detalji implementacije preporučivačkog sistema."
   },
   "message.distributionQrDescription": {
-    "message": "Kôd za preporuku (isto kao sadržaj linka)",
-    "description": "Opis QR koda preporuke."
+    "message": "Preporučeni QR kod (iste informacije kao link)",
+    "description": "Opis preporučenog QR koda."
   },
   "message.distributionLink": {
     "message": "Preporučeni link",
-    "description": "Link za preporučivanje, koji se koristi za povezivanje kupca kao sledećeg kupca."
+    "description": "Preporučeni link, koji se koristi za vezivanje klijenata kao niže klijente."
   },
   "message.updateSuccessfully": {
-    "message": "Ažurirano uspešno",
-    "description": "Poruka koja ukazuje da su preporučene informacije uspešno ažurirane."
+    "message": "Uspešno ažurirano",
+    "description": "Poruka koja označava da su informacije o preporuci uspešno ažurirane."
   },
   "message.distributionLinkDescription": {
-    "message": "Ako se kupac registruje na ovoj platformi putem ovog linka ili QR koda, kupac će trajno biti vezan kao vaš sledeći kupac, a sve potrošnje kupca na ovoj platformi će se prema trenutnim pravilima deliti sa vašim računom.",
+    "message": "Ako se klijent registruje na ovoj platformi putem ovog linka ili QR koda, klijent će trajno biti vezan kao vaš niži klijent, a sve porudžbine koje klijent izvrši na ovoj platformi će biti vraćene na vaš nalog prema trenutnom razmeru distribucije.",
     "description": "Opis preporučenog linka."
   },
   "message.distributionLinkDescription2": {
-    "message": "Ovaj link sadrži vaš korisnički ID. Nakon što kupac otvori link, vaš korisnički ID će biti zabeležen kao kolačić u pretraživaču kupca, na period od sedam dana. U roku od sedam dana, ako se kupac registruje na ovoj platformi skeniranjem ovog koda, vaš korisnički ID će se zajedno sa kolačićem preneti na serversku aplikaciju za registraciju, a kupac može biti vezan kao vaš sledeći kupac.",
+    "message": "Ovaj link sadrži vaš korisnik ID. Kada klijent otvori link, vaš korisnički ID će biti sačuvan u kolačićima u klijentovom pregledaču i važiće sedam dana. Tokom sedam dana, ako klijent registruje ovu platformu skeniranjem koda, vaš korisnički ID će biti postavljen zajedno sa kolačićima na server za registraciju i klijent može biti vezan kao vaš niži klijent.",
     "description": "Opis preporučenog linka."
   },
   "title.price": {
-    "message": "Ukupan iznos preporučenih porudžbina",
-    "description": "Ukupan iznos preporučenih porudžbina, koji se koristi za izračunavanje preporučenih prihoda."
+    "message": "Ukupni iznos preporučene porudžbine",
+    "description": "Ukupni iznos preporučene porudžbine koji se koristi za izračunavanje preporučenih zarada."
   },
   "title.reward": {
     "message": "Ukupna preporučena nagrada",
-    "description": "Ukupna preporučena nagrada, izračunata prema iznosu porudžbine i procentu preporučenih prihoda."
+    "description": "Ukupna preporučena nagrada, izračunata na osnovu iznosa porudžbine i procenta preporučene zarade."
   },
   "title.level": {
-    "message": "Nivo preporuke",
-    "description": "Nivo preporuke, koji se koristi za izračunavanje preporučenih prihoda."
+    "message": "Preporučeni nivo",
+    "description": "Nivo preporuke, koji se koristi za izračunavanje preporučene zarade."
   },
   "title.percentage": {
-    "message": "Procenat preporučenih prihoda",
-    "description": "Procenat preporučenih prihoda, koji se koristi za izračunavanje preporučenih prihoda."
+    "message": "Procenat preporučene zarade",
+    "description": "Procenat preporučene zarade, koji se koristi za izračunavanje preporučene zarade."
   },
   "title.currentLevel": {
     "message": "Trenutni nivo",
-    "description": "Trenutni nivo preporuke, koji se koristi za izračunavanje preporučenih prihoda."
+    "description": "Trenutni nivo preporuke, koji se koristi za izračunavanje preporučene zarade."
   },
   "title.nextLevel": {
     "message": "Sledeći nivo",
-    "description": "Sledeći nivo preporuke, koji se koristi za izračunavanje preporučenih prihoda."
+    "description": "Sledeći nivo preporuke, koji se koristi za izračunavanje preporučene zarade."
   },
   "title.currentPercentage": {
-    "message": "Trenutni procenat preporučenih prihoda",
-    "description": "Trenutni procenat preporučenih prihoda, koji se koristi za izračunavanje preporučenih prihoda."
+    "message": "Trenutni procenat preporučene zarade",
+    "description": "Trenutni procenat preporučene zarade, koji se koristi za izračunavanje preporučene zarade."
   },
   "title.nextPercentage": {
-    "message": "Procenat preporučenih prihoda sledećeg nivoa",
-    "description": "Procenat preporučenih prihoda sledećeg nivoa, koji se koristi za izračunavanje preporučenih prihoda."
+    "message": "Procenat preporučene zarade na sledećem nivou",
+    "description": "Procenat preporučene zarade na sledećem nivou, koji se koristi za izračunavanje preporučene zarade."
   },
   "title.levelInfo": {
     "message": "Informacije o nivou",
-    "description": "Informacije o nivou preporuke, koje se koriste za izračunavanje preporučenih prihoda."
+    "description": "Informacije o nivou preporuke, koje se koriste za izračunavanje preporučene zarade."
   },
   "title.distributionLink": {
     "message": "Preporučeni link",
-    "description": "Preporučeni link, koji se koristi za povezivanje kupca kao sledećeg kupca."
+    "description": "Preporučeni link, koji se koristi za vezivanje klijenata kao niže klijente."
   },
   "title.inviteesCount": {
     "message": "Ukupan broj pozvanih",
-    "description": "Ukupan broj pozvanih osoba, koji se koristi za izračunavanje preporučenih prihoda."
+    "description": "Ukupan broj pozvanih, koristi se za izračunavanje preporuka."
   },
   "title.manageDistributionStatus": {
     "message": "Upravljanje distribucijom",

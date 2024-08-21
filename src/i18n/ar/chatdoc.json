@@ -1,11 +1,11 @@
 {
   "button.uploadDocuments": {
     "message": "رفع المستندات",
-    "description": "زر النص، يسمح للمستخدم برفع المستندات"
+    "description": "نص الزر الذي يسمح للمستخدم برفع المستندات"
   },
   "field.fileName": {
     "message": "اسم الملف",
-    "description": "اسم الملف للمستندات المرفوعة"
+    "description": "اسم الملف للمستند المرفوع"
   },
   "field.createdAt": {
     "message": "تاريخ الإنشاء",
@@ -13,22 +13,22 @@
   },
   "field.fileExtension": {
     "message": "نوع الملف",
-    "description": "نوع الملفات المرفوعة"
+    "description": "نوع الملف للمستند المرفوع"
   },
   "field.fileUrl": {
     "message": "رابط الملف",
-    "description": "الرابط للمستندات المرفوعة"
+    "description": "الرابط للمستند المرفوع"
   },
   "field.fileSize": {
     "message": "حجم الملف",
-    "description": "حجم المستندات المرفوعة"
+    "description": "حجم المستند المرفوع"
   },
   "field.state": {
     "message": "الحالة",
     "description": "حالة معالجة المستند"
   },
   "field.stateProcessing": {
-    "message": "جارٍ المعالجة",
+    "message": "قيد المعالجة",
     "description": "المستند قيد المعالجة"
   },
   "field.stateCompleted": {
@@ -36,7 +36,7 @@
     "description": "تمت معالجة المستند بنجاح"
   },
   "field.stateFailed": {
-    "message": "فشل المعالجة",
+    "message": "فشلت المعالجة",
     "description": "فشلت معالجة المستند"
   },
   "field.name": {
@@ -48,43 +48,43 @@
     "description": "وصف المستند"
   },
   "message.introductionForKnowledge": {
-    "message": "يمكن إضافة المستندات إلى قاعدة المعرفة، ويمكن للروبوت استخدام المعرفة في قاعدة المعرفة عند الرد.",
+    "message": "يمكن إضافة المستندات إلى قاعدة المعرفة، وسيتمكن الروبوت من استخدام المعلومات الموجودة فيها عند الرد.",
     "description": "معلومات مقدمة عن قاعدة المعرفة"
   },
   "message.introductionForRepository": {
-    "message": "قاعدة المعرفة هي مجموعة من المستندات، يمكنك إضافة مستندات إليها. سيرد الروبوت فقط من المستندات في قاعدة المعرفة.",
+    "message": "قاعدة المعرفة هي مجموعة من المستندات، يمكنك إضافة مستندات إليها. سيرد الروبوت بالمعلومات من الوثائق في قاعدة المعرفة.",
     "description": "معلومات مقدمة عن قاعدة المعرفة"
   },
   "message.uploadDocumentsExceed": {
-    "message": "عدد المستندات المرفوعة يتجاوز الحد المسموح به",
-    "description": "معلومات خطأ عندما يتجاوز عدد المستندات المرفوعة الحد المسموح به"
+    "message": "تجاوز عدد المستندات المرفوعة الحد المسموح به",
+    "description": "رسالة خطأ عند تجاوز عدد المستندات المرفوعة الحد المسموح به"
   },
   "message.uploadDocumentsError": {
-    "message": "فشل في رفع المستندات",
-    "description": "معلومات خطأ عند فشل رفع المستندات"
+    "message": "فشل رفع المستندات",
+    "description": "رسالة خطأ عند فشل رفع المستندات"
   },
   "message.uploadDocumentsSuccess": {
     "message": "تم رفع المستندات بنجاح",
-    "description": "معلومات نجاح عند رفع المستندات بنجاح"
+    "description": "رسالة نجاح عند رفع المستندات بنجاح"
   },
   "message.createDocumentSuccess": {
     "message": "تم إنشاء المستند بنجاح",
-    "description": "معلومات نجاح عند إنشاء المستند بنجاح"
+    "description": "رسالة نجاح عند إنشاء المستند بنجاح"
   },
   "message.startCreateDocument": {
     "message": "بدء معالجة المستند...",
     "description": "معلومات عند بدء معالجة المستند"
   },
   "message.createDocumentError": {
-    "message": "فشل في معالجة المستند",
-    "description": "معلومات خطأ عند فشل معالجة المستند"
+    "message": "فشل معالجة المستند",
+    "description": "رسالة خطأ عند فشل معالجة المستند"
   },
   "message.dragOrClickToUpload": {
     "message": "اسحب أو انقر لرفع المستندات",
-    "description": "معلومات عند سحب أو النقر لرفع المستندات"
+    "description": "معلومات لرفع المستندات عن طريق السحب أو النقر"
   },
   "message.learningDocument": {
-    "message": "معالجة المستند، يرجى الانتظار...",
+    "message": "قيد المعالجة، يرجى الانتظار...",
     "description": "معلومات عند معالجة المستند"
   },
   "message.startNewChat": {
@@ -93,106 +93,106 @@
   },
   "message.errorApiError": {
     "message": "فشل في الاستجابة، يرجى المحاولة لاحقًا",
-    "description": "معلومات خطأ عند فشل الاستجابة"
+    "description": "رسالة خطأ عند فشل الاستجابة"
   },
   "message.errorBadRequest": {
-    "message": "تنسيق محتوى الطلب غير صحيح، يرجى إعادة صياغة السؤال",
-    "description": "معلومات خطأ عندما يكون تنسيق محتوى الطلب غير صحيح"
+    "message": "تنسيق محتوى الطلب غير صحيح، يرجى إعادة طرح السؤال",
+    "description": "رسالة خطأ عند عدم صحة تنسيق محتوى الطلب"
   },
   "message.errorNoConversation": {
-    "message": "محتوى المحادثة غير موجود أو قد انتهت صلاحيته، يرجى بدء محادثة جديدة",
-    "description": "معلومات خطأ عندما يكون محتوى المحادثة غير موجود أو قد انتهت صلاحيته"
+    "message": "محتوى المحادثة غير موجود أو منتهي، يرجى بدء محادثة جديدة",
+    "description": "رسالة خطأ عند عدم وجود محتوى مشابه أو انتهائه"
   },
   "message.errorContentTooLarge": {
-    "message": "محتوى السؤال طويل جدًا، يرجى تقصيره ثم المحاولة مرة أخرى",
-    "description": "معلومات خطأ عندما يكون محتوى السؤال طويلًا جدًا"
+    "message": "محتوى السؤال طويل جداً، يرجى تقصيره ثم المحاولة مرة أخرى",
+    "description": "رسالة خطأ عند طول محتوى السؤال"
   },
   "message.errorTooManyRequests": {
-    "message": "إجراءاتك متكررة بشكل مفرط، يرجى المحاولة لاحقًا",
-    "description": "معلومات خطأ عندما تكون الإجراءات متكررة بشكل مفرط"
+    "message": "لقد قمت بعمليات كثيرة جداً، يرجى المحاولة لاحقًا",
+    "description": "رسالة خطأ عند كثرة العمليات"
   },
   "message.errorUsedUp": {
-    "message": "تم الوصول إلى حد استخدام باقتك، يرجى شراء المزيد من الاستخدام للاستمرار",
-    "description": "معلومات خطأ عندما يتم الوصول إلى حد استخدام الباقة"
+    "message": "لقد reached the limit on your plan, please purchase more capacity to continue",
+    "description": "رسالة خطأ عند الوصول إلى حد الاستخدام في الخطة"
   },
   "message.errorUnknown": {
     "message": "حدث خطأ غير معروف في الخادم، يرجى المحاولة لاحقًا أو الاتصال بخدمة العملاء",
-    "description": "معلومات خطأ عندما يحدث خطأ غير معروف في الخادم"
+    "description": "رسالة خطأ عند حدوث خطأ غير معروف في الخادم"
   },
   "message.errorTimeout": {
-    "message": "انتهت المهلة أثناء الإجابة على السؤال، يرجى المحاولة لاحقًا",
-    "description": "معلومات خطأ عندما تنتهي المهلة أثناء الإجابة على السؤال"
+    "message": "انتهت مدة الرد، يرجى المحاولة لاحقًا",
+    "description": "رسالة خطأ عند انتهاء مدة الرد"
   },
   "message.errorNotApplied": {
-    "message": "لم تقدم طلبًا لهذه الخدمة، يرجى تقديم الطلب ثم متابعة السؤال",
-    "description": "معلومات خطأ عندما لم يقدم المستخدم طلبًا لهذه الخدمة"
+    "message": "لم تقم بتقديم طلب لهذه الخدمة، يرجى تقديم طلب ثم المتابعة للسؤال",
+    "description": "رسالة خطأ عند عدم تقديم الطلب للخدمة"
   },
   "message.confirmDelete": {
     "message": "تأكيد الحذف",
-    "description": "معلومات عند تأكيد الحذف"
+    "description": "معلومات لتأكيد الحذف"
   },
   "message.howToUse": {
-    "message": "اضغط على Shift + Enter لإنشاء سطر جديد",
-    "description": "معلومات حول كيفية إنشاء سطر جديد"
+    "message": "اضغط على Shift+Enter لعمل سطر جديد",
+    "description": "معلومات حول كيفية عمل سطر جديد"
   },
   "message.createRepositorySuccess": {
     "message": "تم إنشاء قاعدة المعرفة بنجاح",
-    "description": "معلومات نجاح عند إنشاء قاعدة المعرفة بنجاح"
+    "description": "رسالة نجاح عند إنشاء قاعدة المعرفة بنجاح"
   },
   "message.createRepositoryFailed": {
-    "message": "فشل في إنشاء قاعدة المعرفة",
-    "description": "معلومات خطأ عند فشل إنشاء قاعدة المعرفة"
+    "message": "فشل إنشاء قاعدة المعرفة",
+    "description": "رسالة خطأ عند فشل إنشاء قاعدة المعرفة"
   },
   "message.deleteRepositorySuccess": {
     "message": "تم حذف قاعدة المعرفة بنجاح",
-    "description": "معلومات نجاح عند حذف قاعدة المعرفة بنجاح"
+    "description": "رسالة نجاح عند حذف قاعدة المعرفة بنجاح"
   },
   "message.deleteDocumentSuccess": {
     "message": "تم حذف المستند بنجاح",
-    "description": "معلومات نجاح عند حذف المستند بنجاح"
+    "description": "رسالة نجاح عند حذف المستند بنجاح"
   },
   "message.currentRepository": {
     "message": "قاعدة المعرفة الحالية",
-    "description": "معلومات لعرض قاعدة المعرفة الحالية"
+    "description": "معلومات حول عرض قاعدة المعرفة الحالية"
   },
   "message.nameRequired": {
-    "message": "لا يمكن أن يكون الاسم فارغًا",
-    "description": "معلومات خطأ عندما يكون الاسم فارغًا"
+    "message": "الاسم لا يمكن أن يكون فارغًا",
+    "description": "رسالة خطأ عند كون الاسم فارغًا"
   },
   "message.inputRepositoryName": {
     "message": "اسم قاعدة المعرفة",
-    "description": "نص تلميحي لإدخال اسم قاعدة المعرفة"
+    "description": "نص الموجه لادخال اسم قاعدة المعرفة"
   },
   "message.inputRepositoryDescription": {
-    "message": "وصف مكتبتك المعرفية بجملة واحدة",
-    "description": "مُدخل وصف المكتبة المعرفية"
+    "message": "اكتب وصفًا لمستودع المعرفة الخاص بك",
+    "description": "نص مكان الإدخال لوصف مستودع المعرفة"
   },
   "message.supportedFiles": {
     "message": "أنواع الملفات المدعومة: .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
-    "description": "معلومات حول أنواع الملفات المدعومة"
+    "description": "معلومات عن أنواع الملفات المدعومة"
   },
   "nav.chat": {
     "message": "دردشة",
-    "description": "عنصر تنقل الدردشة"
+    "description": "عنصر تنقل للدردشة"
   },
   "nav.setting": {
-    "message": "الإعدادات",
-    "description": "عنصر التنقل للإعدادات"
+    "message": "إعدادات",
+    "description": "عنصر تنقل للإعدادات"
   },
   "nav.manage": {
     "message": "إدارة",
-    "description": "عنصر تنقل الإدارة"
+    "description": "عنصر تنقل للإدارة"
   },
   "title.manage": {
-    "message": "إدارة المكتبة المعرفية",
-    "description": "عنوان إدارة المكتبة المعرفية"
+    "message": "إدارة مستودع المعرفة",
+    "description": "عنوان إدارة مستودع المعرفة"
   },
   "title.createRepository": {
-    "message": "إنشاء مكتبة معرفية",
-    "description": "عنوان إنشاء المكتبة المعرفية"
+    "message": "إنشاء مستودع معرفة",
+    "description": "عنوان إنشاء مستودع المعرفة"
   },
   "title.repositories": {
-    "message": "قائمة المكتبات المعرفية",
-    "description": "عنوان قائمة المكتبات المعرفية"
+    "message": "قائمة مستودعات المعرفة",
+    "description": "عنوان قائمة مستودعات المعرفة"
   }
 }

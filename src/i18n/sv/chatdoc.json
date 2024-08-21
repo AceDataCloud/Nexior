@@ -1,27 +1,27 @@
 {
   "button.uploadDocuments": {
     "message": "Ladda upp dokument",
-    "description": "Knapptext som tillåter användare att ladda upp dokument"
+    "description": "Knapptext som låter användaren ladda upp dokument"
   },
   "field.fileName": {
     "message": "Filnamn",
-    "description": "Filnamnet på det uppladdade dokumentet"
+    "description": "Filnamn för det uppladdade dokumentet"
   },
   "field.createdAt": {
-    "message": "Skapat datum",
-    "description": "Tidpunkt då dokumentet laddades upp"
+    "message": "Skapat den",
+    "description": "Tidpunkt för dokumentets uppladdning"
   },
   "field.fileExtension": {
     "message": "Filtyp",
-    "description": "Filtypen på det uppladdade dokumentet"
+    "description": "Filtyp för det uppladdade dokumentet"
   },
   "field.fileUrl": {
-    "message": "Filens länk",
-    "description": "Länken till det uppladdade dokumentet"
+    "message": "Fil-URL",
+    "description": "Länk till det uppladdade dokumentet"
   },
   "field.fileSize": {
     "message": "Filstorlek",
-    "description": "Storleken på det uppladdade dokumentet"
+    "description": "Storlek på det uppladdade dokumentet"
   },
   "field.state": {
     "message": "Status",
@@ -29,15 +29,15 @@
   },
   "field.stateProcessing": {
     "message": "Bearbetar",
-    "description": "Dokumentet är under behandling"
+    "description": "Dokumentet är under bearbetning"
   },
   "field.stateCompleted": {
-    "message": "Bearbetning klar",
-    "description": "Dokumentet har behandlats framgångsrikt"
+    "message": "Bearbetning slutförd",
+    "description": "Dokumentbehandlingen lyckades"
   },
   "field.stateFailed": {
     "message": "Bearbetning misslyckades",
-    "description": "Dokumentbehandling misslyckades"
+    "description": "Dokumentbehandlingen misslyckades"
   },
   "field.name": {
     "message": "Namn",
@@ -45,47 +45,47 @@
   },
   "field.description": {
     "message": "Beskrivning",
-    "description": "Beskrivning av dokumentet"
+    "description": "Dokumentets beskrivning"
   },
   "message.introductionForKnowledge": {
-    "message": "Dokumentet kan läggas till i kunskapsbasen, roboten kan använda kunskapen i kunskapsbasen vid svar.",
+    "message": "Dokumentet kan läggas till i kunskapsbasen, roboten kan använda kunskapen i kunskapsbasen när den svarar.",
     "description": "Information om kunskapsbasen"
   },
   "message.introductionForRepository": {
-    "message": "Kunskapsbasen är en samling dokument, du kan lägga till dokument här. Robotens svar kommer att baseras på dokumenten i kunskapsbasen.",
+    "message": "Kunskapsbasen är en samling av dokument, du kan lägga till dokument till den. Robotens svar kommer att baseras på dokumenten i kunskapsbasen.",
     "description": "Information om kunskapsbasen"
   },
   "message.uploadDocumentsExceed": {
-    "message": "Antalet uppladdade dokument överstiger gränsen",
-    "description": "Felmeddelande när antalet uppladdade dokument överstiger gränsen"
+    "message": "Antalet uppladdade dokument överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade dokument överskrider gränsen"
   },
   "message.uploadDocumentsError": {
     "message": "Misslyckades med att ladda upp dokument",
     "description": "Felmeddelande när uppladdningen av dokument misslyckas"
   },
   "message.uploadDocumentsSuccess": {
-    "message": "Dokumentet har laddats upp framgångsrikt",
-    "description": "Framgångsmeddelande när dokumentet har laddats upp framgångsrikt"
+    "message": "Dokumentet har laddats upp",
+    "description": "Informationsmeddelande när dokumentet laddas upp framgångsrikt"
   },
   "message.createDocumentSuccess": {
-    "message": "Dokumentet har skapats framgångsrikt",
-    "description": "Framgångsmeddelande när dokumentet skapas framgångsrikt"
+    "message": "Dokumentet har skapats",
+    "description": "Informationsmeddelande när dokumentet skapas framgångsrikt"
   },
   "message.startCreateDocument": {
-    "message": "Börja behandla dokument...",
-    "description": "Information när dokumentbehandlingen startar"
+    "message": "Startar dokumentbearbetning...",
+    "description": "Information när dokumentbearbetningen startar"
   },
   "message.createDocumentError": {
-    "message": "Bearbetning av dokument misslyckades",
-    "description": "Felmeddelande när dokumentbehandlingen misslyckas"
+    "message": "Misslyckades med att bearbeta dokument",
+    "description": "Felmeddelande när dokumentbearbetningen misslyckas"
   },
   "message.dragOrClickToUpload": {
     "message": "Dra eller klicka för att ladda upp dokument",
-    "description": "Information om att dra eller klicka för att ladda upp dokument"
+    "description": "Information när man drar eller klickar för att ladda upp dokument"
   },
   "message.learningDocument": {
     "message": "Bearbetar, vänligen vänta...",
-    "description": "Information när dokumentet bearbetas"
+    "description": "Information när dokument bearbetas"
   },
   "message.startNewChat": {
     "message": "Starta ny konversation",
@@ -93,63 +93,63 @@
   },
   "message.errorApiError": {
     "message": "Svar misslyckades, vänligen försök igen senare",
-    "description": "Felmeddelande vid svar som misslyckas"
+    "description": "Felmeddelande när svaret misslyckas"
   },
   "message.errorBadRequest": {
-    "message": "Förfrågningsinnehållets format är felaktigt, vänligen ställ frågan igen",
-    "description": "Felmeddelande när förfrågningsinnehållets format är felaktigt"
+    "message": "Felaktigt format på begäran, vänligen försök igen",
+    "description": "Felmeddelande när begärans format är felaktigt"
   },
   "message.errorNoConversation": {
-    "message": "Konversationsinnehållet finns inte eller har löpt ut, vänligen starta en ny konversation",
-    "description": "Felmeddelande när konversationsinnehållet inte finns längre"
+    "message": "Konversationen finns inte eller har gått ut, vänligen starta en ny konversation",
+    "description": "Felmeddelande när konversationen inte finns eller har gått ut"
   },
   "message.errorContentTooLarge": {
-    "message": "Frågan är för lång, vänligen förkorta den och försök igen",
+    "message": "Frågan är för lång, vänligen gör den kortare och försök igen",
     "description": "Felmeddelande när frågan är för lång"
   },
   "message.errorTooManyRequests": {
-    "message": "Du gör för många förfrågningar, vänligen försök igen senare",
-    "description": "Felmeddelande vid för många förfrågningar"
+    "message": "Du gör för många begärningar, vänligen försök igen senare",
+    "description": "Felmeddelande när begärningarna är för många"
   },
   "message.errorUsedUp": {
-    "message": "Din användning av paketet har nått sin gräns, vänligen köp mer för att fortsätta",
-    "description": "Felmeddelande när paketets användning har nått gränsen"
+    "message": "Din användning har nått gränsen, vänligen köp mer för att fortsätta",
+    "description": "Felmeddelande när användningsgränsen har nåtts"
   },
   "message.errorUnknown": {
     "message": "Ett okänt serverfel har inträffat, vänligen försök igen senare eller kontakta supporten",
-    "description": "Felmeddelande vid okänt serverfel"
+    "description": "Felmeddelande vid ett okänt serverfel"
   },
   "message.errorTimeout": {
-    "message": "Svarstiden för frågan överskred gränsen, vänligen försök igen senare",
-    "description": "Felmeddelande när svarstiden överskrids"
+    "message": "Timeout vid svar, vänligen försök igen senare",
+    "description": "Felmeddelande vid timeout av svar"
   },
   "message.errorNotApplied": {
-    "message": "Du har inte ansökt om denna tjänst, vänligen ansök innan du fortsätter",
-    "description": "Felmeddelande när användaren inte har ansökt om tjänsten"
+    "message": "Du har ännu inte ansökt om denna tjänst, vänligen ansök innan du fortsätter",
+    "description": "Felmeddelande vid brist på användaransökan för tjänsten"
   },
   "message.confirmDelete": {
     "message": "Bekräfta borttagning",
-    "description": "Information om bekräftelse av borttagning"
+    "description": "Information för att bekräfta borttagning"
   },
   "message.howToUse": {
-    "message": "Tryck på Shift+Enter för att skapa ny rad",
-    "description": "Information om hur man skapar ny rad"
+    "message": "Tryck på Shift+Enter för att skapa en radbrytning",
+    "description": "Information om hur man gör radbrytningar"
   },
   "message.createRepositorySuccess": {
-    "message": "Kunskapsbasen skapades framgångsrikt",
-    "description": "Framgångsmeddelande när kunskapsbasen skapades"
+    "message": "Kunskapsbasen har skapats",
+    "description": "Informationsmeddelande när kunskapsbasen skapas framgångsrikt"
   },
   "message.createRepositoryFailed": {
     "message": "Kunskapsbasen skapades inte",
-    "description": "Felmeddelande när kunskapsbasen inte skapades"
+    "description": "Felmeddelande vid misslyckande av skapande av kunskapsbasen"
   },
   "message.deleteRepositorySuccess": {
-    "message": "Kunskapsbasen raderades framgångsrikt",
-    "description": "Framgångsmeddelande när kunskapsbasen raderas"
+    "message": "Kunskapsbasen har raderats",
+    "description": "Informationsmeddelande när kunskapsbasen raderas framgångsrikt"
   },
   "message.deleteDocumentSuccess": {
-    "message": "Dokumentet raderades framgångsrikt",
-    "description": "Framgångsmeddelande när dokumentet raderas"
+    "message": "Dokumentet har raderats",
+    "description": "Informationsmeddelande när dokumentet raderas framgångsrikt"
   },
   "message.currentRepository": {
     "message": "Aktuell kunskapsbas",
@@ -161,11 +161,11 @@
   },
   "message.inputRepositoryName": {
     "message": "Namn på kunskapsbas",
-    "description": "Platshållare för inmatning av kunskapsbasens namn"
+    "description": "Platshållare för namn på kunskapsbas"
   },
   "message.inputRepositoryDescription": {
-    "message": "Beskriv ditt kunskapsbibliotek med en mening",
-    "description": "Platsinmatning för beskrivning av kunskapsbibliotek"
+    "message": "Beskriv ditt kunskapsdatabas med en mening",
+    "description": "Platzholder för inmatning av kunskapsdatabasbeskrivning"
   },
   "message.supportedFiles": {
     "message": "Stödda filtyper: .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
@@ -184,15 +184,15 @@
     "description": "Navigationspost för hantering"
   },
   "title.manage": {
-    "message": "Hantera kunskapsbibliotek",
-    "description": "Titel för hantering av kunskapsbibliotek"
+    "message": "Hantera kunskapsdatabas",
+    "description": "Titel för hantering av kunskapsdatabas"
   },
   "title.createRepository": {
-    "message": "Skapa kunskapsbibliotek",
-    "description": "Titel för skapande av kunskapsbibliotek"
+    "message": "Skapa kunskapsdatabas",
+    "description": "Titel för skapande av kunskapsdatabas"
   },
   "title.repositories": {
-    "message": "Lista över kunskapsbibliotek",
-    "description": "Titel för lista över kunskapsbibliotek"
+    "message": "Lista över kunskapsdatabaser",
+    "description": "Titel för lista över kunskapsdatabaser"
   }
 }

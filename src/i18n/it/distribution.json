@@ -1,35 +1,35 @@
 {
   "button.detail": {
     "message": "Visualizza dettagli",
-    "description": "Testo del pulsante per visualizzare i dettagli storici delle raccomandazioni del sito."
+    "description": "Testo del pulsante per visualizzare i dettagli della cronologia delle raccomandazioni del sito."
   },
   "button.withdrawal": {
     "message": "Prelievo",
-    "description": "Testo del pulsante per prelevare i guadagni delle raccomandazioni del sito."
+    "description": "Testo del pulsante per ritirare i guadagni delle raccomandazioni del sito."
   },
   "button.query": {
-    "message": "Consulta",
-    "description": "Testo del pulsante per consultare i guadagni delle raccomandazioni del sito."
+    "message": "Query",
+    "description": "Testo del pulsante per interrogare i guadagni delle raccomandazioni del sito."
   },
   "field.id": {
     "message": "ID raccomandazione",
-    "description": "Identificatore unico per il programma di distribuzione, si riferisce alle raccomandazioni del sito di servizi API."
+    "description": "Identificatore unico per la distribuzione, la distribuzione si riferisce alle raccomandazioni del sito del servizio API."
   },
   "field.percentage": {
-    "message": "Percentuale di guadagno da raccomandazione",
-    "description": "La percentuale di guadagno dalle raccomandazioni, calcolata in base all'importo dell'ordine."
+    "message": "Percentuale di guadagno dalla raccomandazione",
+    "description": "Percentuale di guadagno dalla raccomandazione calcolata in base all'importo dell'ordine."
   },
   "field.price": {
     "message": "Importo dell'ordine",
-    "description": "L'importo dell'ordine, utilizzato per calcolare i guadagni da raccomandazione."
+    "description": "Importo dell'ordine, utilizzato per calcolare i guadagni delle raccomandazioni."
   },
   "field.reward": {
-    "message": "Guadagno da raccomandazione",
-    "description": "Guadagni da raccomandazione, calcolati in base all'importo dell'ordine e alla percentuale di guadagno da raccomandazione."
+    "message": "Ricompensa per la raccomandazione",
+    "description": "Guadagno dalla raccomandazione, calcolato in base all'importo dell'ordine e alla percentuale di guadagno dalla raccomandazione."
   },
   "field.userId": {
     "message": "ID utente",
-    "description": "Identificatore unico dell'utente, si riferisce agli utenti del sito di servizi API."
+    "description": "Identificatore unico per l'utente, l'utente si riferisce all'utente del sito servizio API."
   },
   "field.userEmail": {
     "message": "Email utente",
@@ -37,30 +37,30 @@
   },
   "field.createdAt": {
     "message": "Data di raccomandazione",
-    "description": "Il momento in cui è stata creata la raccomandazione."
+    "description": "Data di creazione della raccomandazione."
   },
   "field.level": {
     "message": "Livello",
-    "description": "Il livello della raccomandazione, utilizzato per calcolare i guadagni da raccomandazione."
+    "description": "Livello della raccomandazione, utilizzato per calcolare i guadagni dalla raccomandazione."
   },
   "field.threshold": {
-    "message": "Soglia di guadagno da raccomandazione",
-    "description": "La soglia di guadagni da raccomandazione, utilizzata per prelevare i guadagni delle raccomandazioni."
+    "message": "Soglia di guadagno dalla raccomandazione",
+    "description": "Soglia di guadagno dalla raccomandazione, utilizzata per ritirare i guadagni delle raccomandazioni."
   },
   "field.inviteeId": {
-    "message": "ID invitato",
-    "description": "Identificatore unico dell'invitante, si riferisce alla persona che invita l'invitato al sito di servizi API."
+    "message": "ID invitante",
+    "description": "Identificatore unico per l'invitante, l'invitante si riferisce a chi ha invitato gli invitati al sito servizio API."
   },
   "field.isVerified": {
     "message": "Verificato",
-    "description": "Flag che indica se l'utente raccomandato ha superato la verifica con informazioni veritiere."
+    "description": "Flag che indica se l'utente raccomandato è stato verificato con informazioni reali."
   },
   "message.deltaPriceForNextLevel": {
-    "message": "Differenza rispetto al livello successivo",
-    "description": "La differenza tra l'importo dell'ordine attuale e la soglia del livello successivo."
+    "message": "Differenza con il livello successivo",
+    "description": "Differenza tra l'importo dell'ordine corrente e la soglia per il livello successivo."
   },
   "message.developingWithDrawal": {
-    "message": "Si prega di contattare il servizio clienti per gestire il prelievo, il prelievo comporterà la detrazione delle imposte sui redditi collegati.",
+    "message": "Si prega di contattare il servizio clienti per gestire il prelievo. I prelievi saranno soggetti a imposta sul reddito.",
     "description": "Messaggio che indica che la funzione di prelievo è in fase di sviluppo."
   },
   "message.technicalDetail": {
@@ -68,71 +68,71 @@
     "description": "Implementazione dei dettagli tecnici del sistema di raccomandazione."
   },
   "message.distributionQrDescription": {
-    "message": "Codice QR di raccomandazione (identico al contenuto del link)",
-    "description": "Descrizione del codice QR di raccomandazione."
+    "message": "Codice QR per la raccomandazione (identico al contenuto del link)",
+    "description": "Descrizione del codice QR per la raccomandazione."
   },
   "message.distributionLink": {
-    "message": "Link di raccomandazione",
-    "description": "Link di raccomandazione, utilizzato per collegare un cliente come cliente subordinato."
+    "message": "Link per la raccomandazione",
+    "description": "Link per la raccomandazione, utilizzato per legare i clienti come sotto-clienti."
   },
   "message.updateSuccessfully": {
     "message": "Aggiornamento avvenuto con successo",
     "description": "Messaggio che indica che le informazioni sulla raccomandazione sono state aggiornate con successo."
   },
   "message.distributionLinkDescription": {
-    "message": "Se un cliente si registra sulla piattaforma tramite questo link o codice QR, sarà legato in modo permanente come suo cliente subordinato, e tutti gli ordini di spesa del cliente sulla piattaforma saranno rimborsati sul suo conto in base alla proporzione di distribuzione attuale.",
-    "description": "Descrizione del link di raccomandazione."
+    "message": "Se un cliente si registra su questa piattaforma tramite questo link o codice QR, sarà legato permanentemente come suo sotto-cliente e tutti gli ordini di consumo del cliente su questa piattaforma restituiranno proporzionalmente il guadagno attuale sul proprio conto.",
+    "description": "Descrizione del link per la raccomandazione."
   },
   "message.distributionLinkDescription2": {
-    "message": "Questo link contiene il tuo ID utente. Dopo che il cliente apre il link, il tuo ID utente verrà memorizzato nel browser del cliente come cookie, valido per sette giorni. Se entro sette giorni il cliente si registra sulla piattaforma scansionando il codice, il tuo ID utente verrà caricato sul server di registrazione insieme ai cookie, permettendo al cliente di essere legato come tuo cliente subordinato.",
-    "description": "Descrizione del link di raccomandazione."
+    "message": "Questo link contiene il tuo ID utente. Dopo che un cliente apre il link, il tuo ID utente sarà registrato nel browser del cliente come cookie, valido per sette giorni. Se entro sette giorni il cliente si registra su questa piattaforma scansionando il codice, il tuo ID utente sarà caricato insieme ai cookie sul server di registrazione, e il cliente potrà essere legato come tuo sotto-cliente.",
+    "description": "Descrizione del link per la raccomandazione."
   },
   "title.price": {
-    "message": "Importo totale dell'ordine di raccomandazione",
-    "description": "L'importo totale degli ordini di raccomandazione, utilizzato per calcolare i guadagni da raccomandazione."
+    "message": "Importo totale degli ordini raccomandati",
+    "description": "Importo totale degli ordini raccomandati, utilizzato per calcolare i guadagni dalla raccomandazione."
   },
   "title.reward": {
-    "message": "Totale guadagno da raccomandazione",
-    "description": "Guadagno totale da raccomandazione, calcolato in base all'importo dell'ordine e alla percentuale di guadagno da raccomandazione."
+    "message": "Guadagno totale per la raccomandazione",
+    "description": "Guadagno totale dalla raccomandazione, calcolato in base all'importo dell'ordine e alla percentuale di guadagno dalla raccomandazione."
   },
   "title.level": {
     "message": "Livello di raccomandazione",
-    "description": "Il livello di raccomandazione, utilizzato per calcolare i guadagni da raccomandazione."
+    "description": "Livello di raccomandazione, utilizzato per calcolare i guadagni dalla raccomandazione."
   },
   "title.percentage": {
-    "message": "Percentuale di guadagno da raccomandazione",
-    "description": "Percentuale di guadagni da raccomandazione, utilizzata per calcolare i guadagni da raccomandazione."
+    "message": "Percentuale di guadagno dalla raccomandazione",
+    "description": "Percentuale di guadagno dalla raccomandazione, utilizzata per calcolare i guadagni dalla raccomandazione."
   },
   "title.currentLevel": {
     "message": "Livello attuale",
-    "description": "Livello di raccomandazione attuale, utilizzato per calcolare i guadagni da raccomandazione."
+    "description": "Livello di raccomandazione attuale, utilizzato per calcolare i guadagni dalla raccomandazione."
   },
   "title.nextLevel": {
-    "message": "Prossimo livello",
-    "description": "Il prossimo livello di raccomandazione, utilizzato per calcolare i guadagni da raccomandazione."
+    "message": "Livello successivo",
+    "description": "Prossimo livello di raccomandazione, utilizzato per calcolare i guadagni dalla raccomandazione."
   },
   "title.currentPercentage": {
-    "message": "Percentuale attuale di guadagni da raccomandazione",
-    "description": "Percentuale di guadagni da raccomandazione attuale, utilizzata per calcolare i guadagni da raccomandazione."
+    "message": "Percentuale di guadagno attuale",
+    "description": "Percentuale di guadagno attuale dalla raccomandazione, utilizzata per calcolare i guadagni dalla raccomandazione."
   },
   "title.nextPercentage": {
-    "message": "Percentuale di guadagni da raccomandazione del prossimo livello",
-    "description": "Percentuale di guadagni da raccomandazione del livello successivo, utilizzata per calcolare i guadagni da raccomandazione."
+    "message": "Percentuale di guadagno della raccomandazione per il livello successivo",
+    "description": "Percentuale di guadagno per il livello successivo, utilizzata per calcolare i guadagni dalla raccomandazione."
   },
   "title.levelInfo": {
     "message": "Informazioni sul livello",
-    "description": "Informazioni sul livello di raccomandazione, utilizzate per calcolare i guadagni da raccomandazione."
+    "description": "Informazioni sul livello di raccomandazione, utilizzate per calcolare i guadagni dalla raccomandazione."
   },
   "title.distributionLink": {
-    "message": "Link di raccomandazione",
-    "description": "Link di raccomandazione, utilizzato per collegare un cliente come cliente subordinato."
+    "message": "Link per la raccomandazione",
+    "description": "Link per la raccomandazione, utilizzato per legare i clienti come sotto-clienti."
   },
   "title.inviteesCount": {
     "message": "Numero totale di invitati",
-    "description": "Il numero totale di invitati, utilizzato per calcolare i guadagni da referral."
+    "description": "Il numero totale di invitati, utilizzato per calcolare i profitti delle raccomandazioni."
   },
   "title.manageDistributionStatus": {
-    "message": "Gestione distribuzione",
-    "description": "La gestione dello stato di referral."
+    "message": "Gestione della distribuzione",
+    "description": "La gestione dello stato delle raccomandazioni."
   }
 }

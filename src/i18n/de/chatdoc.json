@@ -8,168 +8,168 @@
     "description": "Der Dateiname des hochgeladenen Dokuments"
   },
   "field.createdAt": {
-    "message": "Erstellungsdatum",
-    "description": "Datum des Dokumenten-Uploads"
+    "message": "Erstellungszeit",
+    "description": "Zeitpunkt, an dem das Dokument hochgeladen wurde"
   },
   "field.fileExtension": {
     "message": "Dateityp",
-    "description": "Dateityp des hochgeladenen Dokuments"
+    "description": "Der Dateityp des hochgeladenen Dokuments"
   },
   "field.fileUrl": {
-    "message": "Dateilink",
-    "description": "Link zum hochgeladenen Dokument"
+    "message": "Datei-Link",
+    "description": "Der Link zum hochgeladenen Dokument"
   },
   "field.fileSize": {
     "message": "Dateigröße",
-    "description": "Größe des hochgeladenen Dokuments"
+    "description": "Die Größe des hochgeladenen Dokuments"
   },
   "field.state": {
     "message": "Status",
-    "description": "Verarbeitungsstatus des Dokuments"
+    "description": "Der Verarbeitungsstatus des Dokuments"
   },
   "field.stateProcessing": {
     "message": "Wird bearbeitet",
-    "description": "Dokument wird gerade bearbeitet"
+    "description": "Dokument wird verarbeitet"
   },
   "field.stateCompleted": {
     "message": "Bearbeitung abgeschlossen",
-    "description": "Dokument wurde erfolgreich verarbeitet"
+    "description": "Die Verarbeitung des Dokuments war erfolgreich"
   },
   "field.stateFailed": {
-    "message": "Bearbeitung fehlgeschlagen",
-    "description": "Dokument konnte nicht verarbeitet werden"
+    "message": "Verarbeitung fehlgeschlagen",
+    "description": "Die Verarbeitung des Dokuments ist fehlgeschlagen"
   },
   "field.name": {
     "message": "Name",
-    "description": "Name des Dokuments"
+    "description": "Der Name des Dokuments"
   },
   "field.description": {
     "message": "Beschreibung",
-    "description": "Beschreibung des Dokuments"
+    "description": "Die Beschreibung des Dokuments"
   },
   "message.introductionForKnowledge": {
-    "message": "Dokumente können zur Wissensdatenbank hinzugefügt werden, die der Bot beim Antworten verwenden kann.",
-    "description": "Einführung in die Wissensdatenbank"
+    "message": "Dokumente können zur Wissensdatenbank hinzugefügt werden, die Roboterantworten können auf Wissen aus der Wissensdatenbank zurückgreifen.",
+    "description": "Einführungstext zur Wissensdatenbank"
   },
   "message.introductionForRepository": {
-    "message": "Die Wissensdatenbank ist eine Sammlung von Dokumenten, die Sie hinzufügen können. Der Bot wird seine Antworten aus den Dokumenten in der Wissensdatenbank beziehen.",
-    "description": "Einführung in die Wissensdatenbank"
+    "message": "Die Wissensdatenbank ist eine Sammlung von Dokumenten, zu der Sie Dokumente hinzufügen können. Roboterantworten werden aus den Dokumenten in der Wissensdatenbank generiert.",
+    "description": "Einführungstext zur Wissensdatenbank"
   },
   "message.uploadDocumentsExceed": {
-    "message": "Anzahl der hochgeladenen Dokumente überschreitet das Limit",
+    "message": "Die Anzahl der hochgeladenen Dokumente überschreitet das Limit",
     "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Dokumente das Limit überschreitet"
   },
   "message.uploadDocumentsError": {
-    "message": "Hochladen der Dokumente fehlgeschlagen",
+    "message": "Fehler beim Hochladen der Dokumente",
     "description": "Fehlermeldung, wenn das Hochladen der Dokumente fehlschlägt"
   },
   "message.uploadDocumentsSuccess": {
     "message": "Dokumente erfolgreich hochgeladen",
-    "description": "Erfolgsnachricht, wenn Dokumente erfolgreich hochgeladen werden"
+    "description": "Erfolgsnachricht, wenn das Hochladen der Dokumente erfolgreich war"
   },
   "message.createDocumentSuccess": {
     "message": "Dokument erfolgreich erstellt",
-    "description": "Erfolgsnachricht, wenn ein Dokument erfolgreich erstellt wird"
+    "description": "Erfolgsnachricht, wenn das Dokument erfolgreich erstellt wurde"
   },
   "message.startCreateDocument": {
-    "message": "Dokument wird bearbeitet...",
-    "description": "Nachricht, wenn die Bearbeitung eines Dokuments beginnt"
+    "message": "Dokumentenbearbeitung beginnt...",
+    "description": "Nachricht, wenn die Dokumentenbearbeitung startet"
   },
   "message.createDocumentError": {
-    "message": "Bearbeitung des Dokuments fehlgeschlagen",
-    "description": "Fehlermeldung, wenn die Bearbeitung eines Dokuments fehlschlägt"
+    "message": "Fehler beim Erstellen des Dokuments",
+    "description": "Fehlermeldung, wenn die Dokumentenbearbeitung fehlschlägt"
   },
   "message.dragOrClickToUpload": {
-    "message": "Ziehen oder klicken Sie, um Dokumente hochzuladen",
-    "description": "Nachricht zum Hochladen eines Dokuments per Ziehen oder Klicken"
+    "message": "Ziehen oder Klicken, um Dokumente hochzuladen",
+    "description": "Nachricht zum Hochladen von Dokumenten"
   },
   "message.learningDocument": {
     "message": "Wird bearbeitet, bitte warten...",
-    "description": "Nachricht, während das Dokument bearbeitet wird"
+    "description": "Nachricht während der Dokumentenbearbeitung"
   },
   "message.startNewChat": {
-    "message": "Neuen Chat starten",
-    "description": "Nachricht, um einen neuen Chat zu starten"
+    "message": "Neuen Chat beginnen",
+    "description": "Nachricht zum Start eines neuen Chats"
   },
   "message.errorApiError": {
     "message": "Antwort fehlgeschlagen, bitte später erneut versuchen",
     "description": "Fehlermeldung bei einer fehlgeschlagenen Antwort"
   },
   "message.errorBadRequest": {
-    "message": "Anfrageinhalt ist nicht korrekt, bitte neu eingeben",
-    "description": "Fehlermeldung bei falschem Anfrageinhalt"
+    "message": "Die Anfrageformatierung ist nicht korrekt, bitte erneut fragen",
+    "description": "Fehlermeldung bei falschem Anfrageformat"
   },
   "message.errorNoConversation": {
-    "message": "Der Gesprächsinhalt existiert nicht oder ist abgelaufen, bitte starten Sie einen neuen Chat",
-    "description": "Fehlermeldung, wenn der Gesprächsinhalt nicht existiert oder abgelaufen ist"
+    "message": "Konversation existiert nicht oder ist abgelaufen, bitte neuen Chat beginnen",
+    "description": "Fehlermeldung bei nicht existierender oder abgelaufener Konversation"
   },
   "message.errorContentTooLarge": {
     "message": "Die Anfrage ist zu lang, bitte kürzen und erneut versuchen",
-    "description": "Fehlermeldung bei zu langem Anfrageinhalt"
+    "description": "Fehlermeldung bei zu umfangreicher Anfrage"
   },
   "message.errorTooManyRequests": {
-    "message": "Ihre Aktionen waren zu häufig, bitte später erneut versuchen",
-    "description": "Fehlermeldung bei zu häufigen Aktionen"
+    "message": "Ihre Anfragen sind zu häufig, bitte später erneut versuchen",
+    "description": "Fehlermeldung bei zu häufigen Anfragen"
   },
   "message.errorUsedUp": {
-    "message": "Ihr Paket ist erschöpft, bitte kaufen Sie mehr Kontingent, um fortzufahren",
-    "description": "Fehlermeldung, wenn das Kontingent erschöpft ist"
+    "message": "Ihr Nutzungskontingent ist erschöpft, bitte kaufen Sie mehr Volumen, um fortzufahren",
+    "description": "Fehlermeldung bei erschöpftem Nutzungskontingent"
   },
   "message.errorUnknown": {
-    "message": "Ein unbekannter Serverfehler ist aufgetreten, bitte später erneut versuchen oder den Support kontaktieren",
-    "description": "Fehlermeldung bei einem unbekannten Serverfehler"
+    "message": "Ein unbekannter Serverfehler ist aufgetreten, bitte später erneut versuchen oder den Kundenservice kontaktieren",
+    "description": "Fehlermeldung bei unbekanntem Serverfehler"
   },
   "message.errorTimeout": {
-    "message": "Die Beantwortung der Anfrage hat zu lange gedauert, bitte später erneut versuchen",
-    "description": "Fehlermeldung bei Zeitüberschreitung der Anfrage"
+    "message": "Die Antwort auf die Anfrage hat zu lange gedauert, bitte später erneut versuchen",
+    "description": "Fehlermeldung bei Timeout der Anfrage"
   },
   "message.errorNotApplied": {
     "message": "Sie haben diesen Dienst noch nicht beantragt, bitte beantragen Sie ihn, um fortzufahren",
-    "description": "Fehlermeldung, wenn der Benutzer diesen Dienst noch nicht beantragt hat"
+    "description": "Fehlermeldung, wenn der Nutzer den Dienst nicht beantragt hat"
   },
   "message.confirmDelete": {
     "message": "Löschen bestätigen",
-    "description": "Nachricht zur Bestätigung des Löschvorgangs"
+    "description": "Nachricht zur Bestätigung des Löschens"
   },
   "message.howToUse": {
-    "message": "Drücken Sie Shift+Enter für einen Zeilenumbruch",
-    "description": "Informationen zum Zeilenumbruch"
+    "message": "Drücken Sie Shift+Enter, um einen Zeilenumbruch zu machen",
+    "description": "Nachricht zum Zeilenumbruch"
   },
   "message.createRepositorySuccess": {
     "message": "Wissensdatenbank erfolgreich erstellt",
-    "description": "Erfolgsnachricht, wenn die Wissensdatenbank erfolgreich erstellt wird"
+    "description": "Erfolgsnachricht bei erfolgreicher Erstellung der Wissensdatenbank"
   },
   "message.createRepositoryFailed": {
-    "message": "Erstellung der Wissensdatenbank fehlgeschlagen",
-    "description": "Fehlermeldung, wenn die Erstellung der Wissensdatenbank fehlschlägt"
+    "message": "Fehler bei der Erstellung der Wissensdatenbank",
+    "description": "Fehlermeldung bei fehlgeschlagener Erstellung der Wissensdatenbank"
   },
   "message.deleteRepositorySuccess": {
     "message": "Wissensdatenbank erfolgreich gelöscht",
-    "description": "Erfolgsnachricht, wenn die Wissensdatenbank erfolgreich gelöscht wird"
+    "description": "Erfolgsnachricht bei erfolgreicher Löschung der Wissensdatenbank"
   },
   "message.deleteDocumentSuccess": {
     "message": "Dokument erfolgreich gelöscht",
-    "description": "Erfolgsnachricht, wenn das Dokument erfolgreich gelöscht wird"
+    "description": "Erfolgsnachricht bei erfolgreicher Löschung des Dokuments"
   },
   "message.currentRepository": {
     "message": "Aktuelle Wissensdatenbank",
-    "description": "Informationen zur aktuellen Wissensdatenbank"
+    "description": "Information zur aktuellen Wissensdatenbank"
   },
   "message.nameRequired": {
-    "message": "Name darf nicht leer sein",
+    "message": "Der Name darf nicht leer sein",
     "description": "Fehlermeldung, wenn der Name leer ist"
   },
   "message.inputRepositoryName": {
-    "message": "Name der Wissensdatenbank",
-    "description": "Platzhalter für die Eingabe des Namens der Wissensdatenbank"
+    "message": "Wissensdatenbank Name",
+    "description": "Platzhalter für die Eingabe des Wissensdatenbanknamens"
   },
   "message.inputRepositoryDescription": {
     "message": "Beschreiben Sie Ihr Wissensrepository in einem Satz",
-    "description": "Wissensrepository-Beschreibungseingabeplatzhalter"
+    "description": "Platzhalter für die Beschreibung des Wissensrepositorys"
   },
   "message.supportedFiles": {
     "message": "Unterstützte Dateitypen: .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
-    "description": "Informationen über unterstützte Dateitypen anzeigen"
+    "description": "Anzeige der unterstützten Dateitypen"
   },
   "nav.chat": {
     "message": "Chat",
@@ -185,11 +185,11 @@
   },
   "title.manage": {
     "message": "Wissensrepository verwalten",
-    "description": "Titel für die Verwaltung des Wissensrepository"
+    "description": "Titel zur Verwaltung des Wissensrepositorys"
   },
   "title.createRepository": {
     "message": "Wissensrepository erstellen",
-    "description": "Titel für die Erstellung eines Wissensrepository"
+    "description": "Titel zur Erstellung eines Wissensrepositorys"
   },
   "title.repositories": {
     "message": "Liste der Wissensrepositorys",
