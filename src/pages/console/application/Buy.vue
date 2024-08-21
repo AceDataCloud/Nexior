@@ -28,12 +28,20 @@
                   <el-form-item :label="$t('application.field.service')">
                     {{ application?.service?.title }}
                   </el-form-item>
-                  <el-form-item :label="$t('application.field.package')">
+                  <el-form-item :label="$t('application.field.package')" class="mb-0">
                     <el-radio-group v-if="packages" v-model="form.packageId">
                       <el-radio-button v-for="(pkg, pkgIndex) in packages" :key="pkgIndex" :label="pkg.id" class="mb-2">
                         {{ pkg.amount }} {{ $t(`service.unit.${application?.service?.unit}s`) }}
                       </el-radio-button>
                     </el-radio-group>
+                  </el-form-item>
+                  <el-form-item
+                    v-if="
+                      application?.service?.apis &&
+                      application?.service?.apis?.map((api) => api?.estimation).filter((x) => !!x)?.length > 0
+                    "
+                  >
+                    <service-estimation v-if="application?.service" :service="application.service" :package="package" />
                   </el-form-item>
                   <el-form-item :label="$t('service.field.price')">
                     <price :price="package?.price" />
@@ -104,6 +112,7 @@ import { ROUTE_CONSOLE_APPLICATION_SUBSCRIBE, ROUTE_CONSOLE_ORDER_DETAIL } from 
 import Price from '@/components/common/Price.vue';
 import { applicationOperator, orderOperator } from '@/operators';
 import { getPriceString } from '@/utils';
+import ServiceEstimation from '@/components/service/Estimation.vue';
 
 interface IData {
   application: IApplication | undefined;
@@ -129,7 +138,8 @@ export default defineComponent({
     ElDivider,
     ElRadioGroup,
     ElRadioButton,
-    Price
+    Price,
+    ServiceEstimation
   },
   data(): IData {
     return {
