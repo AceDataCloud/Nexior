@@ -1,19 +1,19 @@
 {
   "button.uploadDocuments": {
     "message": "Carica documenti",
-    "description": "Testo nel pulsante che consente all'utente di caricare documenti"
+    "description": "Testo del pulsante che consente all'utente di caricare documenti"
   },
   "field.fileName": {
     "message": "Nome file",
-    "description": "Nome del file del documento caricato"
+    "description": "Nome del file dei documenti caricati"
   },
   "field.createdAt": {
     "message": "Data di creazione",
-    "description": "Data di caricamento del documento"
+    "description": "Data e ora di caricamento del documento"
   },
   "field.fileExtension": {
     "message": "Tipo di file",
-    "description": "Tipo di file del documento caricato"
+    "description": "Tipo di file dei documenti caricati"
   },
   "field.fileUrl": {
     "message": "Collegamento al file",
@@ -29,11 +29,11 @@
   },
   "field.stateProcessing": {
     "message": "In elaborazione",
-    "description": "Il documento è attualmente in elaborazione"
+    "description": "Documento attualmente in elaborazione"
   },
   "field.stateCompleted": {
     "message": "Elaborazione completata",
-    "description": "Elaborazione del documento avvenuta con successo"
+    "description": "Elaborazione del documento riuscita"
   },
   "field.stateFailed": {
     "message": "Elaborazione fallita",
@@ -48,124 +48,124 @@
     "description": "Descrizione del documento"
   },
   "message.introductionForKnowledge": {
-    "message": "I documenti possono essere aggiunti al knowledge base, e possono essere utilizzati dalle risposte del robot.",
-    "description": "Informazioni introduttive sulla knowledge base"
+    "message": "I documenti possono essere aggiunti alla conoscenza, il robot può utilizzare le informazioni presenti in essa per rispondere.",
+    "description": "Informazioni introduttive sulla conoscenza"
   },
   "message.introductionForRepository": {
-    "message": "La knowledge base è una raccolta di documenti in cui puoi aggiungere documenti. Il robot risponderà utilizzando i documenti presenti nella knowledge base.",
-    "description": "Informazioni introduttive sulla knowledge base"
+    "message": "La conoscenza è una raccolta di documenti, puoi aggiungere documenti a essa. Il robot risponderà attingendo dai documenti presenti nella conoscenza.",
+    "description": "Informazioni introduttive sulla conoscenza"
   },
   "message.uploadDocumentsExceed": {
     "message": "Numero di documenti caricati superiore al limite",
-    "description": "Informativa di errore quando il numero di documenti caricati supera il limite"
+    "description": "Informazioni di errore quando il numero di documenti caricati supera il limite"
   },
   "message.uploadDocumentsError": {
-    "message": "Caricamento documento fallito",
-    "description": "Informativa di errore quando il caricamento di un documento fallisce"
+    "message": "Caricamento documenti non riuscito",
+    "description": "Informazioni di errore quando il caricamento dei documenti fallisce"
   },
   "message.uploadDocumentsSuccess": {
-    "message": "Documento caricato con successo",
-    "description": "Informativa di successo quando il documento viene caricato con successo"
+    "message": "Documenti caricati con successo",
+    "description": "Informazioni di successo quando il caricamento dei documenti riesce"
   },
   "message.createDocumentSuccess": {
     "message": "Documento creato con successo",
-    "description": "Informativa di successo quando il documento viene creato con successo"
+    "description": "Informazioni di successo quando il documento viene creato con successo"
   },
   "message.startCreateDocument": {
-    "message": "Inizio elaborazione del documento...",
-    "description": "Informativa quando inizia l'elaborazione del documento"
+    "message": "Inizio dell'elaborazione del documento...",
+    "description": "Informazioni all'inizio dell'elaborazione del documento"
   },
   "message.createDocumentError": {
-    "message": "Elaborazione del documento fallita",
-    "description": "Informativa di errore quando l'elaborazione del documento fallisce"
+    "message": "Creazione documento non riuscita",
+    "description": "Informazioni di errore quando la creazione del documento fallisce"
   },
   "message.dragOrClickToUpload": {
-    "message": "Trascina o clicca per caricare documenti",
-    "description": "Informativa per trascinare o cliccare per caricare documenti"
+    "message": "Trascina o fai clic per caricare documenti",
+    "description": "Informazioni su come caricare documenti"
   },
   "message.learningDocument": {
-    "message": "In elaborazione, attendere prego...",
-    "description": "Informativa durante l'elaborazione del documento"
+    "message": "In elaborazione, attendere...",
+    "description": "Informazioni durante l'elaborazione del documento"
   },
   "message.startNewChat": {
     "message": "Inizia una nuova conversazione",
-    "description": "Informativa quando inizia una nuova conversazione"
+    "description": "Informazioni per iniziare una nuova conversazione"
   },
   "message.errorApiError": {
-    "message": "Risposta fallita, riprova più tardi",
-    "description": "Informativa di errore quando la risposta fallisce"
+    "message": "Risposta non riuscita, riprova più tardi",
+    "description": "Informazioni di errore quando la risposta fallisce"
   },
   "message.errorBadRequest": {
-    "message": "Formato della richiesta non corretto, riprova",
-    "description": "Informativa di errore quando il formato della richiesta non è corretto"
+    "message": "Formato del contenuto della richiesta non valido, riprova",
+    "description": "Informazioni di errore quando il formato della richiesta è errato"
   },
   "message.errorNoConversation": {
-    "message": "Il contenuto della conversazione non esiste o è scaduto, inizia una nuova conversazione",
-    "description": "Informativa di errore quando il contenuto della conversazione non esiste o è scaduto"
+    "message": "Conversazione non esistente o scaduta, inizia una nuova conversazione",
+    "description": "Informazioni di errore quando la conversazione non esiste o è scaduta"
   },
   "message.errorContentTooLarge": {
     "message": "Il contenuto della domanda è troppo lungo, accorcia e riprova",
-    "description": "Informativa di errore quando il contenuto della domanda è troppo lungo"
+    "description": "Informazioni di errore quando il contenuto della domanda è troppo lungo"
   },
   "message.errorTooManyRequests": {
     "message": "Le tue richieste sono troppo frequenti, riprova più tardi",
-    "description": "Informativa di errore quando le richieste sono troppo frequenti"
+    "description": "Informazioni di errore quando ci sono troppe richieste"
   },
   "message.errorUsedUp": {
-    "message": "Hai raggiunto il limite di utilizzo del tuo piano, acquista altro utilizzo per continuare",
-    "description": "Informativa di errore quando il limite di utilizzo del piano è stato raggiunto"
+    "message": "Hai raggiunto il limite di utilizzo del tuo piano, acquista più disponibilità per continuare",
+    "description": "Informazioni di errore quando si raggiunge il limite di utilizzo del piano"
   },
   "message.errorUnknown": {
-    "message": "Si è verificato un errore server sconosciuto, riprova più tardi o contatta l'assistenza clienti",
-    "description": "Informativa di errore quando si verifica un errore server sconosciuto"
+    "message": "Si è verificato un errore sconosciuto del server, riprova più tardi o contatta il supporto",
+    "description": "Informazioni di errore quando si verifica un errore sconosciuto"
   },
   "message.errorTimeout": {
-    "message": "Tempo di attesa per la risposta scaduto, riprova più tardi",
-    "description": "Informativa di errore quando il tempo di attesa per la risposta scade"
+    "message": "Tempo scaduto per ricevere una risposta, riprova più tardi",
+    "description": "Informazioni di errore quando il tempo di attesa scade"
   },
   "message.errorNotApplied": {
-    "message": "Non hai ancora richiesto questo servizio, richiedi per continuare con le domande",
-    "description": "Informativa di errore quando l'utente non ha ancora richiesto questo servizio"
+    "message": "Non hai ancora richiesto questo servizio, richiedi prima di continuare a fare domande",
+    "description": "Informazioni di errore quando l'utente non ha richiesto il servizio"
   },
   "message.confirmDelete": {
     "message": "Conferma eliminazione",
-    "description": "Informativa per confermare l'eliminazione"
+    "description": "Informazioni per confermare l'eliminazione"
   },
   "message.howToUse": {
     "message": "Premi Shift+Enter per andare a capo",
-    "description": "Informativa su come andare a capo"
+    "description": "Informazioni su come andare a capo"
   },
   "message.createRepositorySuccess": {
-    "message": "Knowledge base creata con successo",
-    "description": "Informativa di successo quando la knowledge base viene creata con successo"
+    "message": "Conoscenza creata con successo",
+    "description": "Informazioni di successo quando la conoscenza viene creata con successo"
   },
   "message.createRepositoryFailed": {
-    "message": "Creazione della knowledge base fallita",
-    "description": "Informativa di errore quando la creazione della knowledge base fallisce"
+    "message": "Creazione della conoscenza non riuscita",
+    "description": "Informazioni di errore quando la creazione della conoscenza fallisce"
   },
   "message.deleteRepositorySuccess": {
-    "message": "Knowledge base eliminata con successo",
-    "description": "Informativa di successo quando la knowledge base viene eliminata con successo"
+    "message": "Conoscenza eliminata con successo",
+    "description": "Informazioni di successo quando la conoscenza viene eliminata con successo"
   },
   "message.deleteDocumentSuccess": {
     "message": "Documento eliminato con successo",
-    "description": "Informativa di successo quando il documento viene eliminato con successo"
+    "description": "Informazioni di successo quando il documento viene eliminato con successo"
   },
   "message.currentRepository": {
-    "message": "Knowledge base attuale",
-    "description": "Informativa per mostrare la knowledge base attuale"
+    "message": "Conoscenza attuale",
+    "description": "Informazioni per mostrare la conoscenza attuale"
   },
   "message.nameRequired": {
     "message": "Il nome non può essere vuoto",
-    "description": "Informativa di errore quando il nome è vuoto"
+    "description": "Informazioni di errore quando il nome è vuoto"
   },
   "message.inputRepositoryName": {
-    "message": "Nome della knowledge base",
-    "description": "Segnaposto per l'input del nome della knowledge base"
+    "message": "Nome della conoscenza",
+    "description": "Segnaposto per l'input del nome della conoscenza"
   },
   "message.inputRepositoryDescription": {
-    "message": "Descrivi il tuo knowledge base in una frase",
-    "description": "Segnaposto per la descrizione del knowledge base"
+    "message": "Descrivi il tuo repository in una frase",
+    "description": "Placeholder per la descrizione del repository"
   },
   "message.supportedFiles": {
     "message": "Tipi di file supportati: .docx, .doc, .pdf, .txt, .csv, .enex, .epub, .eml, .html, .htm, .shtml, .md, .odt, .ppt, .pptx",
@@ -180,19 +180,19 @@
     "description": "Voce di navigazione per le impostazioni"
   },
   "nav.manage": {
-    "message": "Gestione",
+    "message": "Gestisci",
     "description": "Voce di navigazione per la gestione"
   },
   "title.manage": {
-    "message": "Gestisci il knowledge base",
-    "description": "Titolo per la gestione del knowledge base"
+    "message": "Gestisci il repository",
+    "description": "Titolo per la gestione del repository"
   },
   "title.createRepository": {
-    "message": "Crea un knowledge base",
-    "description": "Titolo per la creazione del knowledge base"
+    "message": "Crea un repository",
+    "description": "Titolo per la creazione del repository"
   },
   "title.repositories": {
-    "message": "Elenco dei knowledge base",
-    "description": "Titolo per l'elenco dei knowledge base"
+    "message": "Elenco dei repository",
+    "description": "Titolo per l'elenco dei repository"
   }
 }

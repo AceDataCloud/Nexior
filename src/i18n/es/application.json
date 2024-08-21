@@ -1,47 +1,47 @@
 {
   "type.period": {
     "message": "Período",
-    "description": "Servicio de período."
+    "description": "Servicio del período."
   },
   "type.usage": {
-    "message": "Límite",
-    "description": "Límite del servicio."
+    "message": "Cuota",
+    "description": "Cuota del servicio."
   },
   "field.expiredAt": {
-    "message": "Fecha de caducidad",
-    "description": "Fecha de caducidad de la solicitud."
+    "message": "Fecha de expiración",
+    "description": "Fecha de expiración de la solicitud."
   },
   "button.goDocument": {
     "message": "Documentación",
-    "description": "Texto del botón, al hacer clic en este botón se dirigirá a la página de documentación."
+    "description": "Texto del botón, al hacer clic en este botón se irá a la página de documentación."
   },
   "button.goCredentials": {
     "message": "Credenciales",
-    "description": "Texto del botón, al hacer clic en este botón se dirigirá a la página de credenciales."
+    "description": "Texto del botón, al hacer clic en este botón se irá a la página de credenciales."
   },
   "button.buyMore": {
     "message": "Comprar más",
-    "description": "Texto del botón, al hacer clic en este botón se dirigirá a la página de compra de más."
+    "description": "Texto del botón, al hacer clic en este botón se irá a la página de compra de más."
   },
   "button.createOrder": {
-    "message": "Crear pedido",
-    "description": "Texto del botón, al hacer clic en este botón se dirigirá a la página de creación de pedidos."
+    "message": "Crear orden",
+    "description": "Texto del botón, al hacer clic en este botón se irá a la página de creación de orden."
   },
   "button.custom": {
     "message": "Personalizar",
-    "description": "Texto del botón, al hacer clic en este botón se dirigirá a la página de personalización."
+    "description": "Texto del botón, al hacer clic en este botón se irá a la página de personalización."
   },
   "button.query": {
-    "message": "Consulta",
-    "description": "Texto del botón, al hacer clic en este botón se dirigirá a la página de consulta."
+    "message": "Consultar",
+    "description": "Texto del botón, al hacer clic en este botón se irá a la página de consulta."
   },
   "button.usage": {
-    "message": "Historial de uso",
-    "description": "Texto del botón, al hacer clic en este botón se dirigirá a la página de historial de uso."
+    "message": "Registro de uso",
+    "description": "Texto del botón, al hacer clic en este botón se irá a la página del registro de uso."
   },
   "field.application": {
     "message": "Solicitud",
-    "description": "Solicitud del servicio."
+    "description": "Solicitud de servicio."
   },
   "field.status": {
     "message": "Estado",
@@ -65,7 +65,7 @@
   },
   "field.service": {
     "message": "Servicio",
-    "description": "Servicio de la solicitud."
+    "description": "Servicio solicitado."
   },
   "field.operation": {
     "message": "Operación",
@@ -73,11 +73,11 @@
   },
   "field.amount": {
     "message": "Cantidad",
-    "description": "Cantidad de la solicitud."
+    "description": "Cantidad solicitada."
   },
   "field.traceId": {
-    "message": "Trace ID",
-    "description": "El Trace ID de una llamada API de la solicitud del servicio API, no traducir, mantener como 'Trace ID'."
+    "message": "ID de seguimiento",
+    "description": "ID de seguimiento de una llamada API de la solicitud de servicio de API, no traducir, mantener como 'ID de seguimiento'."
   },
   "field.shouldPayPrice": {
     "message": "Precio final",
@@ -85,11 +85,11 @@
   },
   "field.api": {
     "message": "API",
-    "description": "Este es un servicio en línea que se ofrece a través de API a los usuarios."
+    "description": "Este es un servicio en línea que ofrece servicios a los usuarios a través de una API."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Este es un servicio en línea que se ofrece a los usuarios a través de HTTP proxy (para la transmisión de datos)."
+    "description": "Este es un servicio en línea que ofrece servicios a los usuarios a través de un proxy HTTP (para la transmisión de datos)."
   },
   "field.credential": {
     "message": "Credencial",
@@ -101,7 +101,7 @@
   },
   "field.package": {
     "message": "Paquete",
-    "description": "El paquete representa diferentes ofertas de precios, como 100 dólares por 10,000 puntos, 200 dólares por 20,000 puntos."
+    "description": "El paquete representa diferentes precios, como 100 dólares por 10,000 puntos, 200 dólares por 20,000 puntos."
   },
   "field.type": {
     "message": "Tipo",
@@ -116,36 +116,36 @@
     "description": "Precio adicional que el usuario debe pagar por la solicitud."
   },
   "message.alreadyApplied": {
-    "message": "Ya ha solicitado este servicio, por favor verifique en el panel de control.",
+    "message": "Ya has solicitado este servicio, por favor revisa el panel de control",
     "description": "Mensaje mostrado al usuario cuando ya ha solicitado este servicio."
   },
   "message.applySuccessfully": {
     "message": "Solicitud exitosa",
-    "description": "Mensaje mostrado al usuario cuando ha solicitado este servicio con éxito."
+    "description": "Mensaje mostrado al usuario cuando la solicitud de este servicio ha sido exitosa."
   },
   "message.notApplied": {
-    "message": "No ha solicitado este servicio, por favor solicite el servicio antes de usarlo.",
+    "message": "No has solicitado este servicio, por favor solicita el servicio antes de usarlo",
     "description": "Mensaje mostrado al usuario cuando aún no ha solicitado este servicio."
   },
   "message.yourApplication": {
-    "message": "Su solicitud",
-    "description": "Mensaje mostrado al usuario con respecto a su solicitud."
+    "message": "Tu solicitud",
+    "description": "Mensaje mostrado al usuario cuando su solicitud está presente."
   },
   "message.unverified": {
-    "message": "Debe completar la verificación de identidad para poder solicitar este servicio.",
-    "description": "Mensaje mostrado al usuario cuando aún no ha completado la verificación de identidad."
+    "message": "Necesitas completar la verificación de identidad antes de solicitar este servicio",
+    "description": "Mensaje mostrado al usuario cuando no ha completado la verificación de identidad."
   },
   "message.goVerify": {
-    "message": "Ir a verificación de identidad",
-    "description": "Mensaje mostrado al usuario cuando aún no ha completado la verificación de identidad."
+    "message": "Ir a verificar identidad",
+    "description": "Mensaje mostrado al usuario cuando no ha completado la verificación de identidad."
   },
   "message.requiredParameter": {
-    "message": "Parámetro obligatorio",
-    "description": "Mensaje mostrado al usuario cuando no ha ingresado un parámetro obligatorio."
+    "message": "Parámetro requerido",
+    "description": "Mensaje mostrado al usuario cuando no ha ingresado un parámetro requerido."
   },
   "message.example": {
     "message": "Ejemplo",
-    "description": "Mensaje mostrado al usuario cuando no ha ingresado un parámetro obligatorio."
+    "description": "Mensaje mostrado al usuario cuando no ha ingresado un parámetro requerido."
   },
   "message.createCredentialSuccessfully": {
     "message": "Credencial creada con éxito",
@@ -156,12 +156,12 @@
     "description": "Mensaje mostrado al usuario cuando ha leído y aceptado la política."
   },
   "message.policy": {
-    "message": "Acuerdo de servicio de tecnología de datos",
+    "message": "Acuerdo de uso del servicio de tecnología de datos",
     "description": "Mensaje mostrado al usuario cuando ha leído y aceptado la política."
   },
   "message.notAgreePolicy": {
-    "message": "No ha aceptado el acuerdo de servicio de tecnología de datos.",
-    "description": "Mensaje mostrado al usuario cuando aún no ha aceptado la política."
+    "message": "No has aceptado el acuerdo de uso del servicio de tecnología de datos",
+    "description": "Mensaje mostrado al usuario cuando no ha aceptado la política."
   },
   "message.confirmApplying": {
     "message": "Confirmar solicitud de servicio",
@@ -169,42 +169,42 @@
   },
   "message.rotateCredential": {
     "message": "Restablecer clave",
-    "description": "Cuando el usuario restablece la clave, se muestra un mensaje al usuario."
+    "description": "Mensaje mostrado al usuario cuando restablece la clave."
   },
   "message.rotateCredentialConfirm": {
-    "message": "¿Está seguro de que quiere restablecer la clave? Después de restablecer, no podrá recuperarla.",
-    "description": "Cuando el usuario confirma el restablecimiento de la clave, se muestra un mensaje al usuario."
+    "message": "¿Está seguro de que desea restablecer la clave? No se podrá recuperar una vez restablecida.",
+    "description": "Mensaje mostrado al usuario cuando confirma el restablecimiento de la clave."
   },
   "message.idDoesNotExist": {
     "message": "La solicitud no existe",
-    "description": "Cuando la solicitud no existe, se muestra un mensaje al usuario."
+    "description": "Mensaje mostrado al usuario cuando la solicitud no existe."
   },
   "message.rotateCredentialSuccessfully": {
     "message": "Clave restablecida con éxito",
-    "description": "Cuando la clave se restablece con éxito, se muestra un mensaje al usuario."
+    "description": "Mensaje mostrado al usuario cuando el restablecimiento de la clave es exitoso."
   },
   "message.rotateCredentialFailed": {
     "message": "Error al restablecer la clave, por favor contacte con soporte",
-    "description": "Cuando el restablecimiento de la clave falla, se muestra un mensaje al usuario."
+    "description": "Mensaje mostrado al usuario cuando el restablecimiento de la clave falla."
   },
   "message.updateFailed": {
-    "message": "Error de actualización",
-    "description": "Cuando la actualización falla, se muestra un mensaje al usuario."
+    "message": "Error al modificar",
+    "description": "Mensaje mostrado al usuario cuando la modificación falla."
   },
   "message.updateSuccessfully": {
-    "message": "Actualización exitosa",
-    "description": "Cuando la actualización se realiza con éxito, se muestra un mensaje al usuario."
+    "message": "Modificación exitosa",
+    "description": "Mensaje mostrado al usuario cuando la modificación es exitosa."
   },
   "title.buyService": {
     "message": "Comprar servicio",
-    "description": "Título de la página cuando el usuario quiere comprar un servicio."
+    "description": "Título de la página cuando el usuario desea comprar un servicio."
   },
   "title.applicationRemainingCount": {
-    "message": "Cantidad a modificar",
-    "description": "Título de la página cuando el usuario quiere modificar la cantidad de solicitudes."
+    "message": "Cantidad de modificaciones",
+    "description": "Título de la página cuando el usuario desea modificar la cantidad de solicitudes."
   },
   "title.manageApplication": {
     "message": "Gestión de solicitudes",
-    "description": "Título de la página cuando el usuario quiere gestionar solicitudes."
+    "description": "Título de la página cuando el usuario desea gestionar solicitudes."
   }
 }

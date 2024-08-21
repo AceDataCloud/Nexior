@@ -13,19 +13,19 @@
   },
   "model.model1": {
     "message": "v2",
-    "description": "音楽生成に使用されるモデル"
+    "description": "音楽生成に使うモデル"
   },
   "model.model2": {
     "message": "v3",
-    "description": "音楽生成に使用されるモデル"
+    "description": "音楽生成に使うモデル"
   },
   "name.instrumental": {
     "message": "インストゥルメンタル",
-    "description": "パラメーター'instrumental'の説明"
+    "description": "パラメータ'instrumental'の説明"
   },
   "model.model3": {
     "message": "v3.5",
-    "description": "音楽生成に使用されるモデル"
+    "description": "音楽生成に使うモデル"
   },
   "name.taskId": {
     "message": "タスク ID",
@@ -37,11 +37,11 @@
   },
   "name.prompt": {
     "message": "曲の説明",
-    "description": "コンテンツ入力のプロンプト"
+    "description": "内容入力のプロンプト"
   },
   "name.extend": {
-    "message": "曲の拡張元",
-    "description": "コンテンツ入力のプロンプト"
+    "message": "拡張する曲の出所",
+    "description": "内容入力のプロンプト"
   },
   "name.lyrics": {
     "message": "歌詞内容",
@@ -49,7 +49,7 @@
   },
   "name.style": {
     "message": "曲のスタイル",
-    "description": "曲スタイル内容入力のプロンプト"
+    "description": "曲のスタイル内容入力のプロンプト"
   },
   "name.title": {
     "message": "曲のタイトル",
@@ -72,47 +72,47 @@
     "description": "Suno生成器の名前"
   },
   "description.prompt": {
-    "message": "生成したい音楽のスタイルとテーマを入力してください。例：休日に関するアコースティックポップ",
-    "description": "パラメーター'prompt'の説明"
+    "message": "生成したい音楽のスタイルとテーマを入力してください。たとえば、ホリデーに関するアコースティックポップ",
+    "description": "パラメータ'prompt'の説明"
   },
   "description.lyrics": {
     "message": "歌詞の内容",
-    "description": "パラメーター'lyrics'の説明"
+    "description": "パラメータ'lyrics'の説明"
   },
   "description.style": {
-    "message": "曲スタイルの内容",
-    "description": "パラメーター'style'の説明"
+    "message": "曲のスタイルの内容",
+    "description": "パラメータ'style'の説明"
   },
   "description.title": {
-    "message": "曲タイトルの内容",
-    "description": "パラメーター'title'の説明"
+    "message": "曲のタイトルの内容",
+    "description": "パラメータ'title'の説明"
   },
   "status.pending": {
-    "message": "保留中",
-    "description": "タスクの保留状態"
+    "message": "待機中",
+    "description": "タスクの待機状態"
   },
   "placeholder.prompt": {
     "message": "曲のプロンプトを入力してください...",
-    "description": "入力ノイズのプレースホルダー"
+    "description": "入力フィールドのプレースホルダー"
   },
   "placeholder.lyrics": {
     "message": "歌詞を入力してください...",
     "description": "入力レベルのプレースホルダー"
   },
   "placeholder.extend.lyrics": {
-    "message": "拡張が必要な歌詞を入力してください...",
+    "message": "拡張する必要がある歌詞を入力してください...",
     "description": "入力レベルのプレースホルダー"
   },
   "placeholder.extend.continue_at": {
-    "message": "曲の何秒から拡張するか入力してください...",
+    "message": "どの秒から曲を拡張するかを入力してください...",
     "description": "入力レベルのプレースホルダー"
   },
   "placeholder.style": {
-    "message": "生成したい曲スタイルのプロンプトワードを入力してください。例：アコースティックポップ",
-    "description": "提示フィールドのプレースホルダー"
+    "message": "生成したい曲のスタイルのプロンプトを入力してください。たとえば、アコースティックポップ",
+    "description": "プロンプトフィールドのプレースホルダーテキスト"
   },
   "placeholder.title": {
-    "message": "生成したい曲タイトルのプロンプトワードを入力してください。例：ホリデーソング",
+    "message": "生成したい曲のタイトルのプロンプトを入力してください。たとえば、ホリデーソング",
     "description": "シード入力のプレースホルダー"
   },
   "placeholder.select": {
@@ -132,27 +132,27 @@
     "description": "音楽生成タスク開始時のメッセージ"
   },
   "message.startTaskSuccess": {
-    "message": "音楽生成タスクを正常に起動しました",
-    "description": "音楽生成タスクが成功裏に起動したときのメッセージ"
+    "message": "音楽生成タスクの起動に成功しました",
+    "description": "音楽生成タスクの起動に成功した時のメッセージ"
   },
   "message.startTaskFailed": {
     "message": "音楽生成タスクの起動に失敗しました",
-    "description": "音楽生成タスクの起動に失敗したときのメッセージ"
+    "description": "音楽生成タスクの起動に失敗した時のエラーメッセージ"
   },
   "message.generating": {
     "message": "生成中...",
-    "description": "音楽が生成されているときのメッセージ"
+    "description": "音楽が生成されている時のメッセージ"
   },
   "message.generateFailed": {
     "message": "音楽の生成に失敗しました",
-    "description": "音楽生成に失敗したときのメッセージ"
+    "description": "音楽生成に失敗した時のメッセージ"
   },
   "message.noOperations": {
     "message": "利用可能な操作はありません",
-    "description": "利用可能な操作がないときのメッセージ"
+    "description": "利用可能な操作がない時のメッセージ"
   },
   "message.noTasks": {
-    "message": "履歴タスクはありません。左側の構成バーで音楽を生成してください",
-    "description": "タスクがないときのメッセージ"
+    "message": "履歴タスクはありません。左側の設定パネルで音楽を生成してください",
+    "description": "タスクがない時のメッセージ"
   }
 }

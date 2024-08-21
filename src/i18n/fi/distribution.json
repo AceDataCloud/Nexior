@@ -1,131 +1,131 @@
 {
   "button.detail": {
-    "message": "Näytä yksityiskohdat",
-    "description": "Buttons text used to view the detailed history of recommendations on the website."
+    "message": "Näytä tarkemmat tiedot",
+    "description": "Button text for viewing detailed history of recommendations on the site."
   },
   "button.withdrawal": {
     "message": "Nostaa",
-    "description": "Buttons text used for withdrawing the recommended earnings from the website."
+    "description": "Button text for withdrawing recommended earnings from the site."
   },
   "button.query": {
-    "message": "Tarkistaa",
-    "description": "Buttons text used for querying the recommended earnings on the website."
+    "message": "Kysy",
+    "description": "Button text for querying recommended earnings on the site."
   },
   "field.id": {
     "message": "Suositus ID",
-    "description": "Jakelun ainutkertainen tunniste, jakelu tarkoittaa suositusta API-palvelusivustolla."
+    "description": "A unique identifier for the referral, referring to the recommendation of the API service site."
   },
   "field.percentage": {
     "message": "Suositusprosentti",
-    "description": "Suositusprosentti lasketaan tilauksen summasta."
+    "description": "The percentage of the recommended earnings, calculated based on the order amount."
   },
   "field.price": {
-    "message": "Tilauksen summa",
-    "description": "Tilauksen summa, jota käytetään suositusansioiden laskemiseen."
+    "message": "Tilauksen määrä",
+    "description": "The order amount used to calculate recommended earnings."
   },
   "field.reward": {
     "message": "Suosituspalkkio",
-    "description": "Suositusansio, joka lasketaan tilauksen summasta ja suositusprosentista."
+    "description": "Recommended earnings calculated based on the order amount and recommendation percentage."
   },
   "field.userId": {
-    "message": "Käyttäjän ID",
-    "description": "Käyttäjän ainutkertainen tunniste, käyttäjä tarkoittaa API-palvelusivuston käyttäjää."
+    "message": "Käyttäjä ID",
+    "description": "A unique identifier for the user, referring to the user of the API service site."
   },
   "field.userEmail": {
     "message": "Käyttäjän sähköposti",
-    "description": "Käyttäjän sähköpostiosoite."
+    "description": "The email of the user."
   },
   "field.createdAt": {
     "message": "Suositusaika",
-    "description": "Aika, jolloin suositus luotiin."
+    "description": "The time when the recommendation was created."
   },
   "field.level": {
     "message": "Taso",
-    "description": "Suositustaso, jota käytetään suositusansioiden laskemiseen."
+    "description": "The level of the recommendation used to calculate recommended earnings."
   },
   "field.threshold": {
-    "message": "Suositusansioiden raja",
-    "description": "Suositusansioiden raja, jota käytetään suositusansioiden nostamiseen."
+    "message": "Suositusraja",
+    "description": "The threshold for recommended earnings used for withdrawing."
   },
   "field.inviteeId": {
     "message": "Kutsujan ID",
-    "description": "Kutsujan ainutkertainen tunniste, kutsuja tarkoittaa sitä, joka kutsuu kutsuttua API-palvelusivustolle."
+    "description": "A unique identifier for the inviter referring to the person inviting others to the API service site."
   },
   "field.isVerified": {
     "message": "Vahvistettu",
-    "description": "Lippu, joka osoittaa, onko suosituskäyttäjä vahvistettu oikeilla tiedoilla."
+    "description": "A flag indicating whether the recommended user has passed verification with real information."
   },
   "message.deltaPriceForNextLevel": {
-    "message": "Ero seuraavaan tasoon",
-    "description": "Nykyisen tilauksen summa ja seuraavan tason rajan välinen ero."
+    "message": "Erotus seuraavaan tasoon",
+    "description": "The difference between the current order amount and the threshold for the next level."
   },
   "message.developingWithDrawal": {
-    "message": "Liity lisäämään asiakaspalvelua käsittelemään nostamista, nosto tulee verotettavaksi.",
-    "description": "Viesti, joka osoittaa, että nostotoiminto on kehitteillä."
+    "message": "Liity asiakaspalveluun käsittelemään nostoa, nostoihin peritään liittyviä tuloveroja.",
+    "description": "A message indicating that the withdrawal function is under development."
   },
   "message.technicalDetail": {
-    "message": "Tekniset yksityiskohdat",
-    "description": "Suositusjärjestelmän teknisten yksityiskohtien toteutus."
+    "message": "Tekniset tiedot",
+    "description": "Technical details of the referral system's implementation."
   },
   "message.distributionQrDescription": {
     "message": "Suositus QR-koodi (sama kuin linkin sisältö)",
-    "description": "Suositus QR-koodin kuvaus."
+    "description": "Description of the referral QR code."
   },
   "message.distributionLink": {
     "message": "Suosituslinkki",
-    "description": "Suosituslinkki, jota käytetään asiakkaan sitomiseen ala-asiakkaaksi."
+    "description": "Referral link used to bind customers as lower-level customers."
   },
   "message.updateSuccessfully": {
     "message": "Päivitys onnistui",
-    "description": "Viesti, joka osoittaa, että suositustiedot on päivitetty onnistuneesti."
+    "description": "A message indicating that the referral information has been successfully updated."
   },
   "message.distributionLinkDescription": {
-    "message": "Jos asiakas rekisteröityy tälle alustalle tämän linkin tai QR-koodin kautta, asiakas sidotaan pysyvästi ala-asiakkaaksesi, ja kaikki asiakkaan kulutukset tällä alustalla palautetaan nykyisen jakelusuhteen mukaisesti tilillesi.",
-    "description": "Suosituslinkin kuvaus."
+    "message": "Jos asiakas rekisteröityy tälle alustalle tämän linkin tai QR-koodin kautta, asiakas sidotaan pysyvästi alaiseksi asiakkaaksesi ja asiakkaan kaikki kulutukset tämän alustan kautta palautetaan tilillesi nykyisen jakosuhteen mukaan.",
+    "description": "Description of the referral link."
   },
   "message.distributionLinkDescription2": {
-    "message": "Tämä linkki sisältää käyttäjä ID:si. Kun asiakas avaa linkin, käyttäjä ID:si tallennetaan evästeinä asiakkaan selaimeen, voimassa 7 päivää. 7 päivän kuluessa, jos asiakas rekisteröityy tälle alustalle skannaamalla kyseisen koodin, käyttäjä ID:si lähetetään rekisteröintipalvelimelle evästen mukana, ja asiakas voi sidotaan ala-asiakkaaksesi.",
-    "description": "Suosituslinkin kuvaus."
+    "message": "Tämä linkki sisältää käyttäjä-ID:si. Kun asiakas avaa linkin, käyttäjä-ID:si tallennetaan evästeinä asiakkaan selaimeen, voimassa seitsemän päivää. Seitsemän päivän sisällä, jos asiakas rekisteröityy tälle alustalle skannaamalla koodin, käyttäjä-ID:si ladataan rekisteröintipalvelimelle evästeiden kanssa, ja asiakas voidaan sitoa alaiseksi asiakkaaksesi.",
+    "description": "Description of the referral link."
   },
   "title.price": {
     "message": "Suositustilausten kokonaismäärä",
-    "description": "Suositustilausten kokonaismäärä, jota käytetään suositusansioiden laskemiseen."
+    "description": "The total amount of referral orders used to calculate recommended earnings."
   },
   "title.reward": {
-    "message": "Kokonaispäivä",
-    "description": "Kokonaispäivä, joka lasketaan tilauksen summasta ja suositusprosentista."
+    "message": "Kokonaispalkkaus",
+    "description": "Total referral reward calculated based on the order amount and recommendation percentage."
   },
   "title.level": {
     "message": "Suositustaso",
-    "description": "Suositustaso, jota käytetään suositusansioiden laskemiseen."
+    "description": "The referral level used to calculate recommended earnings."
   },
   "title.percentage": {
     "message": "Suositusprosentti",
-    "description": "Suositusprosentti, jota käytetään suositusansioiden laskemiseen."
+    "description": "The recommendation percentage used to calculate recommended earnings."
   },
   "title.currentLevel": {
     "message": "Nykyinen taso",
-    "description": "Nykyinen suositustaso, jota käytetään suositusansioiden laskemiseen."
+    "description": "The current referral level used to calculate recommended earnings."
   },
   "title.nextLevel": {
     "message": "Seuraava taso",
-    "description": "Seuraava suositustaso, jota käytetään suositusansioiden laskemiseen."
+    "description": "The next referral level used to calculate recommended earnings."
   },
   "title.currentPercentage": {
     "message": "Nykyinen suositusprosentti",
-    "description": "Nykyinen suositusprosentti, jota käytetään suositusansioiden laskemiseen."
+    "description": "The current referral percentage used to calculate recommended earnings."
   },
   "title.nextPercentage": {
     "message": "Seuraavan tason suositusprosentti",
-    "description": "Seuraavan tason suositusprosentti, jota käytetään suositusansioiden laskemiseen."
+    "description": "The referral percentage of the next level used to calculate recommended earnings."
   },
   "title.levelInfo": {
-    "message": "Tason tiedot",
-    "description": "Suositustason tiedot, joita käytetään suositusansioiden laskemiseen."
+    "message": "Taso tiedot",
+    "description": "Information about the referral level used to calculate recommended earnings."
   },
   "title.distributionLink": {
     "message": "Suosituslinkki",
-    "description": "Suosituslinkki, jota käytetään asiakkaan sitomiseen ala-asiakkaaksi."
+    "description": "Referral link used to bind customers as lower-level customers."
   },
   "title.inviteesCount": {
     "message": "Kutsujien kokonaismäärä",

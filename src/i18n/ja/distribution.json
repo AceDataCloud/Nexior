@@ -1,66 +1,66 @@
 {
   "button.detail": {
     "message": "詳細を見る",
-    "description": "ボタンテキスト、ウェブサイトの推薦履歴の詳細を表示するために使用します。"
+    "description": "ウェブサイトの推薦履歴の詳細を表示するためのボタンテキスト。"
   },
   "button.withdrawal": {
     "message": "引き出し",
-    "description": "ボタンテキスト、ウェブサイトの推薦収益を引き出すために使用します。"
+    "description": "ウェブサイトの推薦収益を引き出すためのボタンテキスト。"
   },
   "button.query": {
     "message": "照会",
-    "description": "ボタンテキスト、ウェブサイトの推薦収益を照会するために使用します。"
+    "description": "ウェブサイトの推薦収益を照会するためのボタンテキスト。"
   },
   "field.id": {
-    "message": "推薦 ID",
-    "description": "流通の唯一識別子、流通は API サービスサイトの推薦を指します。"
+    "message": "推薦ID",
+    "description": "ディストリビューションのユニークな識別子、ディストリビューションはAPIサービスウェブサイトの推薦を指す。"
   },
   "field.percentage": {
-    "message": "推薦収益の割合",
-    "description": "推薦収益の割合、注文金額に基づいて計算されます。"
+    "message": "推薦収益率",
+    "description": "注文金額に基づいて計算される推薦収益のパーセンテージ。"
   },
   "field.price": {
     "message": "注文金額",
-    "description": "注文金額、推薦収益を計算するために使用します。"
+    "description": "推薦収益を計算するための注文金額。"
   },
   "field.reward": {
     "message": "推薦報酬",
-    "description": "注文金額と推薦収益の割合に基づいて計算される推薦収益。"
+    "description": "注文金額と推薦収益率に基づいて計算される推薦収益。"
   },
   "field.userId": {
-    "message": "ユーザー ID",
-    "description": "ユーザーの唯一識別子、ユーザーは API サービスサイトのユーザーを指します。"
+    "message": "ユーザーID",
+    "description": "ユーザーのユニークな識別子、ユーザーはAPIサービスウェブサイトのユーザーを指す。"
   },
   "field.userEmail": {
-    "message": "ユーザーのメールアドレス",
+    "message": "ユーザーメールアドレス",
     "description": "ユーザーのメールアドレス"
   },
   "field.createdAt": {
-    "message": "推薦時間",
+    "message": "推薦日時",
     "description": "推薦が作成された時間。"
   },
   "field.level": {
     "message": "レベル",
-    "description": "推薦のレベル、推薦収益を計算するために使用します。"
+    "description": "推薦のレベル、推薦収益を計算するために使用される。"
   },
   "field.threshold": {
     "message": "推薦収益の閾値",
-    "description": "推薦収益の閾値、推薦収益を引き出すために使用します。"
+    "description": "推薦収益の閾値、推薦収益を引き出すために使用される。"
   },
   "field.inviteeId": {
-    "message": "招待者 ID",
-    "description": "招待者の唯一識別子、招待者は API サービスサイトに被招待者を招待する人物を指します。"
+    "message": "招待者ID",
+    "description": "招待者のユニークな識別子、招待者は被招待者をAPIサービスウェブサイトに招待する人。"
   },
   "field.isVerified": {
     "message": "確認済み",
-    "description": "フラグ、推薦ユーザーが実際の情報確認を通過したかどうかを示します。"
+    "description": "推薦ユーザーが実際の情報を通じて確認されているかどうかを示すフラグ。"
   },
   "message.deltaPriceForNextLevel": {
     "message": "次のレベルとの差額",
     "description": "現在の注文金額と次のレベルの閾値との間の差額。"
   },
   "message.developingWithDrawal": {
-    "message": "カスタマーサービスに追加して引き出しを処理するようにしてください。引き出しには関連する所得税が差し引かれます。",
+    "message": "カスタマーサービスに引き出しを処理するように参加してください。引き出しには関連する所得税が引かれます。",
     "description": "引き出し機能が開発中であることを示すメッセージ。"
   },
   "message.technicalDetail": {
@@ -68,71 +68,71 @@
     "description": "推薦システムの技術的詳細の実装。"
   },
   "message.distributionQrDescription": {
-    "message": "推薦 QR コード（リンク内容と同じ）",
-    "description": "推薦 QR コードの説明。"
+    "message": "推薦QRコード（リンク内容と同じ）",
+    "description": "推薦QRコードの説明。"
   },
   "message.distributionLink": {
     "message": "推薦リンク",
-    "description": "顧客を下位顧客としてバインドするための推薦リンク。"
+    "description": "顧客を下級顧客としてバインドするための推薦リンク。"
   },
   "message.updateSuccessfully": {
     "message": "更新成功",
     "description": "推薦情報が正常に更新されたことを示すメッセージ。"
   },
   "message.distributionLinkDescription": {
-    "message": "このリンクまたは QR コードを通じて顧客がこのプラットフォームに登録すると、顧客は永久にあなたの下位顧客としてバインドされ、顧客のこのプラットフォームでのすべての消費注文は現在の流通比率に基づいてあなたのアカウントに返還されます。",
+    "message": "顧客がこのリンクまたはQRコードを通じてこのプラットフォームに登録すると、顧客は永続的にあなたの下級顧客としてバインドされ、顧客がこのプラットフォームで行うすべての消費注文は、現在の分配比率に基づいてあなたのアカウントに返還されます。",
     "description": "推薦リンクの説明。"
   },
   "message.distributionLinkDescription2": {
-    "message": "このリンクにはあなたのユーザー ID が含まれています。顧客がリンクを開くと、あなたのユーザー ID は Cookies の形式で顧客のブラウザに記録され、有効期限は7日です。7日以内に顧客がこのコードをスキャンしてこのプラットフォームに登録すると、あなたのユーザー ID は Cookies と共に登録サーバーにアップロードされ、顧客はあなたの下流顧客としてバインドされます。",
+    "message": "このリンクにはあなたのユーザーIDが含まれています。顧客がリンクを開くと、あなたのユーザーIDはCookiesの形式で顧客のブラウザに記録され、七日間有効です。七日以内に、顧客がこのコードをスキャンしてプラットフォームに登録すると、あなたのユーザーIDはCookiesと共に登録サーバーにアップロードされ、顧客はあなたの下流顧客としてバインドされることができます。",
     "description": "推薦リンクの説明。"
   },
   "title.price": {
-    "message": "推薦注文の総額",
-    "description": "推薦注文の総額、推薦収益を計算するために使用します。"
+    "message": "推薦注文総額",
+    "description": "推薦注文の総額、推薦収益を計算するために使用される。"
   },
   "title.reward": {
     "message": "総推薦報酬",
-    "description": "総推薦報酬、注文金額と推薦収益の割合に基づいて計算されます。"
+    "description": "総推薦報酬、注文金額と推薦収益率に基づいて計算される。"
   },
   "title.level": {
     "message": "推薦レベル",
-    "description": "推薦レベル、推薦収益を計算するために使用します。"
+    "description": "推薦レベル、推薦収益を計算するために使用される。"
   },
   "title.percentage": {
-    "message": "推薦収益の割合",
-    "description": "推薦収益の割合、推薦収益を計算するために使用します。"
+    "message": "推薦収益率",
+    "description": "推薦収益率、推薦収益を計算するために使用される。"
   },
   "title.currentLevel": {
     "message": "現在のレベル",
-    "description": "現在の推薦レベル、推薦収益を計算するために使用します。"
+    "description": "現在の推薦レベル、推薦収益を計算するために使用される。"
   },
   "title.nextLevel": {
     "message": "次のレベル",
-    "description": "次の推薦レベル、推薦収益を計算するために使用します。"
+    "description": "次の推薦レベル、推薦収益を計算するために使用される。"
   },
   "title.currentPercentage": {
-    "message": "現在の推薦収益の割合",
-    "description": "現在の推薦収益の割合、推薦収益を計算するために使用します。"
+    "message": "現在の推薦収益率",
+    "description": "現在の推薦収益率、推薦収益を計算するために使用される。"
   },
   "title.nextPercentage": {
-    "message": "次のレベルの推薦収益の割合",
-    "description": "次のレベルの推薦収益の割合、推薦収益を計算するために使用します。"
+    "message": "次のレベルの推薦収益率",
+    "description": "次のレベルの推薦収益率、推薦収益を計算するために使用される。"
   },
   "title.levelInfo": {
     "message": "レベル情報",
-    "description": "推薦レベルの情報、推薦収益を計算するために使用します。"
+    "description": "推薦レベルの情報、推薦収益を計算するために使用される。"
   },
   "title.distributionLink": {
     "message": "推薦リンク",
-    "description": "顧客を下位顧客としてバインドするための推薦リンク。"
+    "description": "顧客を下級顧客としてバインドするための推薦リンク。"
   },
   "title.inviteesCount": {
-    "message": "招待者の総数",
-    "description": "招待者の総数、推薦利益を計算するために使用されます。"
+    "message": "招待者総数",
+    "description": "招待者の総数で、紹介収益を計算するために使用されます。"
   },
   "title.manageDistributionStatus": {
     "message": "分配管理",
-    "description": "推薦状態の管理。"
+    "description": "紹介状態の管理。"
   }
 }

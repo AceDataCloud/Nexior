@@ -5,15 +5,15 @@
   },
   "name.type": {
     "message": "유형",
-    "description": "생성할 QR 코드의 내용 유형, 예: '링크', '텍스트' 등"
+    "description": "생성할 QR 코드의 콘텐츠 유형, 예: '링크', '텍스트' 등"
   },
   "name.failure": {
     "message": "실패",
     "description": "작업의 실패 상태"
   },
   "name.failureReason": {
-    "message": "실패 원인",
-    "description": "작업 실패의 원인"
+    "message": "실패 이유",
+    "description": "작업 실패의 이유"
   },
   "name.status": {
     "message": "상태",
@@ -29,7 +29,7 @@
   },
   "name.createdAt": {
     "message": "생성 시간",
-    "description": "QR 코드를 생성한 날짜와 시간"
+    "description": "QR 코드가 생성된 날짜 및 시간"
   },
   "name.pixelStyle": {
     "message": "픽셀 스타일",
@@ -61,7 +61,7 @@
   },
   "name.prompt": {
     "message": "프롬프트",
-    "description": "내용 입력의 프롬프트"
+    "description": "내용 입력을 위한 프롬프트"
   },
   "name.rotate": {
     "message": "회전 각도",
@@ -72,16 +72,16 @@
     "description": "생성할 QR 코드의 고급 설정"
   },
   "name.aspectRatio": {
-    "message": "종횡비",
-    "description": "생성할 QR 코드의 종횡비"
+    "message": "가로세로 비율",
+    "description": "생성할 QR 코드의 가로세로 비율"
   },
   "name.markerShape": {
     "message": "마커 모양",
     "description": "생성할 QR 코드의 마커 모양"
   },
   "name.subMarker": {
-    "message": "서브 마커",
-    "description": "생성할 QR 코드의 서브 마커"
+    "message": "하위 마커",
+    "description": "생성할 QR 코드의 하위 마커"
   },
   "name.qrw": {
     "message": "가시성",
@@ -112,12 +112,12 @@
     "description": "입력 방식"
   },
   "description.qrw": {
-    "message": "QR 코드 가시성, 크기가 클수록 QR 코드의 가시성이 높아집니다",
-    "description": "매개변수 'qrw'의 설명"
+    "message": "QR 코드의 가시성, 크기가 클수록 QR 코드의 가시성이 높아집니다.",
+    "description": "'qrw' 파라미터의 설명"
   },
   "description.steps": {
-    "message": "QR 코드를 생성하는 단계 수, 단계 수가 많을수록 QR 코드의 가시성이 높아집니다",
-    "description": "매개변수 'steps'의 설명"
+    "message": "QR 코드 생성 단계 수, 단계 수가 많을수록 QR 코드의 가시성이 높아집니다.",
+    "description": "'steps' 파라미터의 설명"
   },
   "status.pending": {
     "message": "대기 중",
@@ -132,11 +132,11 @@
     "description": "패딩 레벨의 자리 표시자"
   },
   "placeholder.prompt": {
-    "message": "생성할 QR 코드 스타일에 대한 프롬프트 예: flowers",
+    "message": "생성할 QR 코드 스타일의 힌트를 입력하세요. 예: flowers",
     "description": "프롬프트 필드의 자리 표시 텍스트"
   },
   "placeholder.seed": {
-    "message": "시드 범위는 1에서 9007199254740991입니다",
+    "message": "시드는 1부터 9007199254740991까지입니다.",
     "description": "시드 입력의 자리 표시자"
   },
   "placeholder.position": {
@@ -144,12 +144,12 @@
     "description": "위치 입력의 자리 표시자"
   },
   "placeholder.content": {
-    "message": "생성할 QR 코드의 내용을 입력하세요, 예: https://www.google.com",
+    "message": "생성할 QR 코드의 내용을 입력하세요. 예: https://www.google.com",
     "description": "내용 필드의 자리 표시 텍스트"
   },
   "placeholder.aspectRatio": {
     "message": "선택하세요...",
-    "description": "종횡비 입력의 자리 표시자"
+    "description": "가로세로 비율 입력의 자리 표시자"
   },
   "placeholder.preset": {
     "message": "선택하세요...",
@@ -165,15 +165,15 @@
   },
   "placeholder.subMarker": {
     "message": "선택하세요...",
-    "description": "서브 마커 입력의 자리 표시자"
+    "description": "하위 마커 입력의 자리 표시자"
   },
   "button.generate": {
     "message": "생성",
-    "description": "QR 코드를 생성하는 버튼 텍스트"
+    "description": "QR 코드 생성 버튼 텍스트"
   },
   "button.uploadQr": {
     "message": "QR 코드 업로드",
-    "description": "QR 코드를 업로드하는 버튼 텍스트"
+    "description": "QR 코드 업로드 버튼 텍스트"
   },
   "preset.sunset": {
     "message": "일몰",
@@ -200,83 +200,83 @@
     "description": "생성할 QR 코드의 프리셋 스타일"
   },
   "preset.epicRealms": {
-    "message": "서사 왕국",
+    "message": "서사적인 영토",
     "description": "생성할 QR 코드의 프리셋 스타일"
   },
   "preset.intricateStudio": {
     "message": "복잡한 스튜디오",
-    "description": "생성할 QR 코드의 프리셋 스타일"
+    "description": "생성을 위한 QR 코드의 미리 설정된 스타일"
   },
   "preset.symmetricMasterpiece": {
     "message": "대칭 걸작",
-    "description": "생성할 QR 코드의 프리셋 스타일"
+    "description": "생성을 위한 QR 코드의 미리 설정된 스타일"
   },
   "preset.luminousHighway": {
-    "message": "빛나는 고속도로",
-    "description": "생성할 QR 코드의 프리셋 스타일"
+    "message": "발광 도로",
+    "description": "생성을 위한 QR 코드의 미리 설정된 스타일"
   },
   "preset.celestialJourney": {
     "message": "천체 여행",
-    "description": "생성할 QR 코드의 프리셋 스타일"
+    "description": "생성을 위한 QR 코드의 미리 설정된 스타일"
   },
   "preset.neonMech": {
-    "message": "네온 기계",
-    "description": "생성할 QR 코드의 프리셋 스타일"
+    "message": "네온 메카",
+    "description": "생성을 위한 QR 코드의 미리 설정된 스타일"
   },
   "preset.etherealLowPoly": {
-    "message": "공허한 저다각형",
-    "description": "생성할 QR 코드의 프리셋 스타일"
+    "message": "공상적인 저다각형",
+    "description": "생성을 위한 QR 코드의 미리 설정된 스타일"
   },
   "preset.goldenVista": {
-    "message": "황금 경관",
-    "description": "생성할 QR 코드의 프리셋 스타일"
+    "message": "금빛 풍경",
+    "description": "생성을 위한 QR 코드의 미리 설정된 스타일"
   },
   "preset.cinematicExpanse": {
     "message": "영화 같은 광활함",
-    "description": "생성할 QR 코드의 프리셋 스타일"
+    "description": "생성을 위한 QR 코드의 미리 설정된 스타일"
   },
   "preset.cinematicWarm": {
     "message": "영화 같은 따뜻함",
-    "description": "생성할 QR 코드의 프리셋 스타일"
+    "description": "생성을 위한 QR 코드의 미리 설정된 스타일"
   },
   "preset.desolateWilderness": {
     "message": "황량한 황야",
-    "description": "생성할 QR 코드의 프리셋 스타일"
+    "description": "생성을 위한 QR 코드의 미리 설정된 스타일"
   },
   "preset.vibrantPalette": {
-    "message": "생동감 있는 팔레트",
-    "description": "생성할 QR 코드의 프리셋 스타일"
+    "message": "생기 넘치는 팔레트",
+    "description": "생성을 위한 QR 코드의 미리 설정된 스타일"
   },
   "preset.enigmaticJourney": {
     "message": "신비한 여행",
-    "description": "생성할 QR 코드의 프리셋 스타일"
+    "description": "생성을 위한 QR 코드의 미리 설정된 스타일"
   },
   "preset.timelessCinematic": {
     "message": "시간을 초월한 영화",
-    "description": "생성할 QR 코드의 프리셋 스타일"
+    "description": "생성을 위한 QR 코드의 미리 설정된 스타일"
   },
   "preset.regalGalaxy": {
-    "message": "화려한 은하",
-    "description": "생성할 QR 코드의 프리셋 스타일"
+    "message": "황후의 은하",
+    "description": "생성을 위한 QR 코드의 미리 설정된 스타일"
   },
   "preset.illustriousCanvas": {
-    "message": "저명한 캔버스",
-    "description": "생성할 QR 코드의 프리셋 스타일"
+    "message": "눈부신 캔버스",
+    "description": "생성을 위한 QR 코드의 미리 설정된 스타일"
   },
   "preset.expressiveMural": {
     "message": "표현력이 풍부한 벽화",
-    "description": "생성할 QR 코드의 프리셋 스타일"
+    "description": "생성을 위한 QR 코드의 미리 설정된 스타일"
   },
   "preset.sereneHaze": {
-    "message": "고요한 안개",
-    "description": "생성할 QR 코드의 프리셋 스타일"
+    "message": "평온한 안개",
+    "description": "생성을 위한 QR 코드의 미리 설정된 스타일"
   },
   "message.uploadQr": {
-    "message": "QR 코드 이미지를 업로드하면 QR 코드 내용과 일치하는 아트 QR 코드가 생성됩니다.",
+    "message": "QR 코드 이미지를 업로드하여 QR 코드 내용과 일치하는 아트 QR 코드를 생성할 수 있습니다.",
     "description": "QR 코드 업로드에 대한 설명"
   },
   "message.promptPlaceholder": {
-    "message": "생성할 이미지에 대한 설명 문장을 입력하세요. 예: 귀여운 고양이. 추가 매개변수는 기본 프리셋 매개변수를 대체합니다.",
+    "message": "생성할 이미지에 대한 설명을 입력하세요. 예: 귀여운 고양이. 추가 매개변수는 기본 설정 매개변수를 덮어씁니다.",
     "description": "프롬프트 필드의 자리 표시자 텍스트"
   },
   "message.uploadReferencesExceed": {
@@ -285,42 +285,42 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "이미지 업로드에 성공했습니다.",
-    "description": "이미지 업로드 성공 시의 성공 메시지"
+    "description": "이미지 업로드에 성공했을 때의 성공 메시지"
   },
   "message.uploadReferencesError": {
-    "message": "이미지 업로드에 실패했습니다. 나중에 다시 시도하세요.",
-    "description": "이미지 업로드 실패 시의 오류 메시지"
+    "message": "이미지 업로드에 실패했습니다. 나중에 다시 시도하십시오.",
+    "description": "이미지 업로드에 실패했을 때의 오류 메시지"
   },
   "message.startingTask": {
     "message": "작업 시작 중...",
-    "description": "그림 작업을 시작할 때의 메시지"
+    "description": "그림 작업이 시작될 때의 메시지"
   },
   "message.startTaskSuccess": {
-    "message": "생성 작업을 성공적으로 시작했습니다.",
+    "message": "생성 작업이 성공적으로 시작되었습니다.",
     "description": "작업 시작에 성공했을 때의 성공 메시지"
   },
   "message.startTaskFailed": {
-    "message": "작업 시작에 실패했습니다. 관리자에게 문의하세요.",
-    "description": "그림 작업 시작 실패 시의 오류 메시지"
+    "message": "작업 시작에 실패했습니다. 관리자에게 문의하십시오.",
+    "description": "그림 작업 시작에 실패했을 때의 오류 메시지"
   },
   "message.usedUp": {
-    "message": "포인트가 소진되었습니다. 더 많은 포인트를 구매하여 계속 사용하세요.",
-    "description": "소진되었을 때의 메시지"
+    "message": "포인트가 모두 소진되었습니다. 추가 포인트를 구매한 후 계속 사용하십시오.",
+    "description": "모두 사용했을 때의 메시지"
   },
   "message.generating": {
     "message": "생성 중...",
-    "description": "이미지를 생성하는 동안의 메시지"
+    "description": "이미지가 생성될 때의 메시지"
   },
   "message.generateFailed": {
-    "message": "이미지 생성 실패",
-    "description": "이미지 생성 실패 시의 메시지"
+    "message": "이미지 생성에 실패했습니다.",
+    "description": "이미지 생성에 실패했을 때의 메시지"
   },
   "message.noOperations": {
     "message": "사용 가능한 작업이 없습니다.",
     "description": "사용 가능한 작업이 없을 때의 메시지"
   },
   "message.noTasks": {
-    "message": "히스토리 작업이 없습니다. 아래 버튼을 클릭하여 새 QR 코드를 생성하세요.",
+    "message": "히스토리 작업이 없습니다. 아래에서 새로운 QR 코드를 생성하십시오.",
     "description": "작업이 없을 때의 메시지"
   },
   "markerShape.square": {
@@ -332,7 +332,7 @@
     "description": "QR 코드를 생성하는 데 사용되는 마커 모양"
   },
   "markerShape.plus": {
-    "message": "더하기 기호",
+    "message": "더하기",
     "description": "QR 코드를 생성하는 데 사용되는 마커 모양"
   },
   "markerShape.box": {
@@ -344,7 +344,7 @@
     "description": "QR 코드를 생성하는 데 사용되는 마커 모양"
   },
   "markerShape.tinyPlus": {
-    "message": "작은 더하기 기호",
+    "message": "작은 더하기",
     "description": "QR 코드를 생성하는 데 사용되는 마커 모양"
   },
   "markerShape.random": {
@@ -353,23 +353,23 @@
   },
   "subMarker.square": {
     "message": "정사각형",
-    "description": "QR 코드를 생성하는 데 사용되는 서브 마커 모양"
+    "description": "QR 코드를 생성하는 데 사용되는 하위 마커 모양"
   },
   "subMarker.circle": {
     "message": "원형",
-    "description": "QR 코드를 생성하는 데 사용되는 서브 마커 모양"
+    "description": "QR 코드를 생성하는 데 사용되는 하위 마커 모양"
   },
   "subMarker.plus": {
-    "message": "더하기 기호",
-    "description": "QR 코드를 생성하는 데 사용되는 서브 마커 모양"
+    "message": "더하기",
+    "description": "QR 코드를 생성하는 데 사용되는 하위 마커 모양"
   },
   "subMarker.box": {
     "message": "상자",
-    "description": "QR 코드를 생성하는 데 사용되는 서브 마커 모양"
+    "description": "QR 코드를 생성하는 데 사용되는 하위 마커 모양"
   },
   "subMarker.random": {
     "message": "무작위",
-    "description": "QR 코드를 생성하는 데 사용되는 서브 마커 모양"
+    "description": "QR 코드를 생성하는 데 사용되는 하위 마커 모양"
   },
   "position.center": {
     "message": "중앙",
@@ -433,22 +433,22 @@
   },
   "type.text": {
     "message": "텍스트",
-    "description": "QR 코드의 콘텐츠 유형"
+    "description": "QR 코드의 내용 유형"
   },
   "type.link": {
     "message": "링크",
-    "description": "QR 코드의 콘텐츠 유형"
+    "description": "QR 코드의 내용 유형"
   },
   "type.email": {
     "message": "이메일",
-    "description": "QR 코드의 콘텐츠 유형"
+    "description": "QR 코드의 내용 유형"
   },
   "type.phone": {
     "message": "전화",
-    "description": "QR 코드의 콘텐츠 유형"
+    "description": "QR 코드의 내용 유형"
   },
   "type.sms": {
-    "message": "문자",
-    "description": "QR 코드의 콘텐츠 유형"
+    "message": "문자 메시지",
+    "description": "QR 코드의 내용 유형"
   }
 }

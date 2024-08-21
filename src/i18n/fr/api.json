@@ -4,24 +4,24 @@
     "description": "Paramètres de requête pour une requête HTTP."
   },
   "entity.requestBody": {
-    "message": "Corps de la requête",
-    "description": "Corps de la requête HTTP."
+    "message": "Corps de requête",
+    "description": "Corps de la requête pour une requête HTTP."
   },
   "entity.responseBody": {
-    "message": "Corps de la réponse",
-    "description": "Corps de la réponse HTTP."
+    "message": "Corps de réponse",
+    "description": "Corps de la réponse pour une réponse HTTP."
   },
   "entity.requestHeaders": {
     "message": "En-têtes de requête",
-    "description": "En-têtes de la requête HTTP."
+    "description": "En-têtes de la requête pour une requête HTTP."
   },
   "entity.requestHeader": {
     "message": "En-tête de requête",
-    "description": "En-tête de la requête HTTP, forme unique de l’en-tête."
+    "description": "En-tête d'une requête HTTP, forme au singulier."
   },
   "entity.responseHeaders": {
     "message": "En-têtes de réponse",
-    "description": "En-têtes de la réponse HTTP."
+    "description": "En-têtes de la réponse pour une réponse HTTP."
   },
   "entity.response": {
     "message": "Réponse",
@@ -45,7 +45,7 @@
   },
   "entity.arrayOf": {
     "message": "Tableau",
-    "description": "Tableau d'entités."
+    "description": "Un tableau d'entités."
   },
   "entity.apiKey": {
     "message": "Clé API",
@@ -53,7 +53,7 @@
   },
   "message.free": {
     "message": "Gratuit",
-    "description": "Indique que le prix est gratuit, aucune dépense de points ou de monnaie n'est requise pour utiliser le service API."
+    "description": "Indique que le prix est gratuit, sans frais de points ou de monnaie pour utiliser le service API."
   },
   "message.appliedCount": {
     "message": "Nombre de demandes",
@@ -61,86 +61,86 @@
   },
   "message.firstFree": {
     "message": "Première utilisation gratuite",
-    "description": "Indique que la première utilisation du service API est gratuite, sans dépense de points ou de monnaie."
+    "description": "Indique que la première utilisation du service API est gratuite, sans frais de points ou de monnaie."
   },
   "message.custom": {
-    "message": "Montant spécifié",
-    "description": "Indique que le prix est spécifié, des points ou de la monnaie sont requis lors de l'utilisation du service API."
+    "message": "Montant personnalisé",
+    "description": "Indique que le prix est un montant spécifié, avec un coût en points ou en monnaie pour utiliser le service API."
   },
   "message.present": {
-    "message": "Cadeau",
-    "description": "Lors de la première utilisation du service API, nous vous offrirons des points."
+    "message": "Offert",
+    "description": "Lors de la première utilisation du service API, nous vous offrons des points."
   },
   "message.around": {
     "message": "Environ",
     "description": "Le prix est approximatif, le prix réel peut varier."
   },
   "message.successRate15min": {
-    "message": "Taux de succès en temps réel",
-    "description": "Taux de succès du service API au cours des 15 dernières minutes."
+    "message": "Taux de réussite en temps réel",
+    "description": "Taux de réussite en temps réel du service API au cours des 15 dernières minutes."
   },
   "message.ySuccessRate": {
-    "message": "Taux de succès (100%)",
-    "description": "Taux de succès du service API."
+    "message": "Taux de réussite (100%)",
+    "description": "Taux de réussite du service API."
   },
   "message.xMinutes": {
     "message": "Temps (minutes)",
-    "description": "Temps (minutes)."
+    "description": "Temps (en minutes)."
   },
   "message.streamUsage": {
-    "message": "Avertissement : Pour les requêtes en continu, le code ci-dessus peut ne pas s'appliquer complètement. Veuillez vous référer à la documentation d'intégration pour les modifications.",
-    "description": "Pour les requêtes en continu, le code ci-dessus peut ne pas s'appliquer complètement. Veuillez vous référer à la documentation d'intégration pour les modifications."
+    "message": "Remarque : pour les requêtes en continu, le code ci-dessus peut ne pas être entièrement applicable. Veuillez vous référer à la documentation d'intégration pour les modifications.",
+    "description": "Pour les requêtes en continu, le code ci-dessus peut ne pas être entièrement applicable. Veuillez vous référer à la documentation d'intégration pour les modifications."
   },
   "message.alphaStage": {
-    "message": "Cette API est en phase Alpha, c'est une version de prévisualisation précoce, elle peut présenter une instabilité potentielle, le format de l'API peut subir des changements importants, il n'est pas recommandé de l'utiliser en production. Les prix actuels sont relativement bas, des ajustements de prix significatifs peuvent survenir à l'avenir.",
-    "description": "Cette API est en phase Alpha, c'est une version de prévisualisation précoce, elle peut présenter une instabilité potentielle, le format de l'API peut subir des changements importants, il n'est pas recommandé de l'utiliser en production. Les prix actuels sont relativement bas, des ajustements de prix significatifs peuvent survenir à l'avenir."
+    "message": "Cette API est en phase Alpha, c'est une version préliminaire qui peut présenter des instabilités potentielles, le format de l'API pourrait changer de manière significative, il n'est pas recommandé de l'utiliser en production. Le tarif actuel est relativement bas, mais il peut subir des ajustements significatifs à l'avenir.",
+    "description": "Cette API est en phase Alpha, c'est une version préliminaire qui peut présenter des instabilités potentielles, le format de l'API pourrait changer de manière significative, il n'est pas recommandé de l'utiliser en production. Le tarif actuel est relativement bas, mais il peut subir des ajustements significatifs à l'avenir."
   },
   "message.betaStage": {
-    "message": "Cette API est en phase Bêta, le format de l'API ne subira pas de changements majeurs, mais elle peut présenter une instabilité potentielle, utilisez-la avec précaution en production. Les prix actuels sont relativement bas, des ajustements de prix modérés peuvent survenir à l'avenir.",
-    "description": "Cette API est en phase Bêta, le format de l'API ne subira pas de changements majeurs, mais elle peut présenter une instabilité potentielle, utilisez-la avec précaution en production. Les prix actuels sont relativement bas, des ajustements de prix modérés peuvent survenir à l'avenir."
+    "message": "Cette API est en phase Bêta, le format de l'API ne changera pas de manière significative, mais il peut présenter des instabilités potentielles. Utilisez-la avec prudence en production. Le tarif actuel est relativement bas, mais des ajustements modérés du tarif peuvent se produire à l'avenir.",
+    "description": "Cette API est en phase Bêta, le format de l'API ne changera pas de manière significative, mais il peut présenter des instabilités potentielles. Utilisez-la avec prudence en production. Le tarif actuel est relativement bas, mais des ajustements modérés du tarif peuvent se produire à l'avenir."
   },
   "unit.credit": {
-    "message": "Crédit",
-    "description": "Le crédit est une monnaie virtuelle utilisée dans le service API."
+    "message": "Point",
+    "description": "Le point est la monnaie virtuelle utilisée dans le service API."
   },
   "unit.Credit": {
-    "message": "Crédit",
-    "description": "Le crédit est une monnaie virtuelle utilisée dans le service API, c'est la forme en majuscules."
+    "message": "Point",
+    "description": "Le point est la monnaie virtuelle utilisée dans le service API, forme en majuscule."
   },
   "unit.credits": {
-    "message": "Crédits",
-    "description": "Crédit est une monnaie virtuelle utilisée dans le service API, c'est la forme plurielle."
+    "message": "Points",
+    "description": "Points est la monnaie virtuelle utilisée dans le service API, forme plurielle."
   },
   "unit.Credits": {
-    "message": "Crédits",
-    "description": "Crédit est une monnaie virtuelle utilisée dans le service API, c'est la forme en majuscules et plurielle."
+    "message": "Points",
+    "description": "Points est la monnaie virtuelle utilisée dans le service API, forme en majuscule et plurielle."
   },
   "unit.call": {
     "message": "Appel",
-    "description": "L'appel indique le nombre de fois que le service API a été appelé."
+    "description": "L'appel représente le nombre de fois que le service API a été appelé."
   },
   "unit.count": {
     "message": "Fois",
-    "description": "Fois indique le nombre de fois que le service API a été appelé."
+    "description": "Fois représente le nombre de fois que le service API a été appelé."
   },
   "unit.Call": {
     "message": "Appel",
-    "description": "L'appel indique le nombre de fois que le service API a été appelé, c'est la forme en majuscules."
+    "description": "L'appel représente le nombre de fois que le service API a été appelé, forme en majuscule."
   },
   "unit.calls": {
     "message": "Appels",
-    "description": "Appel indique le nombre de fois que le service API a été appelé, c'est la forme plurielle."
+    "description": "L'appel représente le nombre de fois que le service API a été appelé, forme plurielle."
   },
   "unit.Calls": {
     "message": "Appels",
-    "description": "Appel indique le nombre de fois que le service API a été appelé, c'est la forme en majuscules et plurielle."
+    "description": "L'appel représente le nombre de fois que le service API a été appelé, forme en majuscule et plurielle."
   },
   "unit.MB": {
     "message": "Mo",
-    "description": "Mo désigne le mégaoctet, une unité de stockage d'informations numériques."
+    "description": "Mo représente mégaoctets, une unité de stockage d'information numérique."
   },
   "unit.GB": {
     "message": "Go",
-    "description": "Go désigne le gigaoctet, une unité de stockage d'informations numériques."
+    "description": "Go représente gigaoctets, une unité de stockage d'information numérique."
   }
 }
