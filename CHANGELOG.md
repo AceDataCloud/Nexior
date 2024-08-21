@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Tue, 20 Aug 2024 09:21:59 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Aug 2024 02:46:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.11.7
+
+Wed, 21 Aug 2024 02:46:21 GMT
+
+### Patches
+
+- update navbar and index bg color (office@acedata.cloud)
 
 ## 2.11.6
 
