@@ -13,31 +13,102 @@ class ChatOperator {
   async chatConversation(
     data: IChatConversationRequest,
     options: IChatConversationOptions
-  ): Promise<AxiosResponse<IChatConversationResponse>> {
-    return await axios.post('/aichat/conversations', data, {
-      headers: {
-        authorization: `Bearer ${options.token}`,
-        accept: 'application/x-ndjson',
-        'content-type': 'application/json'
-      },
-      baseURL: BASE_URL_API,
-      signal: options.signal,
-      responseType: 'stream',
-      onDownloadProgress: ({ event }: AxiosProgressEvent) => {
-        const response = event.target.response;
-        const lines = response.split('\r\n').filter((line: string) => !!line);
-        const lastLine = lines[lines.length - 1];
-        if (lastLine) {
-          try {
-            const jsonData = JSON.parse(lastLine);
-            if (options?.stream) {
-              options?.stream(jsonData as IChatConversationResponse);
-            }
-          } catch (e) {
-            console.error(e);
+  ): Promise<IChatConversationResponse> {
+    return new Promise((resolve, reject) => {
+      let finalAnswer = '';
+      let id: string | undefined = undefined;
+      fetch(`${BASE_URL_API}/aichat/conversations`, {
+        method: 'POST',
+        headers: {
+          authorization: `Bearer ${options.token}`,
+          'Content-Type': 'application/json',
+          Accept: 'text/event-stream'
+        },
+        body: JSON.stringify(data)
+      })
+        .then((response) => {
+          if (!response?.body) {
+            throw new Error('ReadableStream not yet supported in this browser.');
           }
-        }
-      }
+          const reader = response?.body?.getReader();
+          const decoder = new TextDecoder();
+
+          return new ReadableStream({
+            start(controller) {
+              const push = () => {
+                reader.read().then(({ done, value }) => {
+                  if (done) {
+                    controller.close();
+                    return;
+                  }
+                  controller.enqueue(decoder.decode(value, { stream: true }));
+                  push();
+                });
+              };
+              push();
+            }
+          });
+        })
+        .then((stream) => {
+          const linesStream = stream.pipeThrough(
+            new TransformStream({
+              transform(chunk, controller) {
+                chunk.split('\n').forEach((line: string) => {
+                  if (line.trim()) {
+                    controller.enqueue(line);
+                  }
+                });
+              }
+            })
+          );
+
+          const reader = linesStream.getReader();
+          reader.read().then(function processText({ done, value }) {
+            if (done) {
+              console.log('Stream complete');
+              return;
+            }
+            console.debug('Received message:', value);
+            if (value.startsWith('data: ')) {
+              const subValue = value.substring(6);
+              if (subValue === '[DONE]') {
+                console.log('finalAnswer', finalAnswer);
+                console.log('Stream complete');
+                if (options?.stream) {
+                  options?.stream({
+                    answer: finalAnswer,
+                    delta_answer: '',
+                    id
+                  });
+                }
+                resolve({
+                  answer: finalAnswer as string,
+                  delta_answer: ''
+                });
+              } else {
+                const json = JSON.parse(value.substring(6));
+                if (json.delta_answer) {
+                  finalAnswer += json.delta_answer;
+                }
+                if (json.id) {
+                  id = json.id;
+                }
+                if (options?.stream) {
+                  options?.stream({
+                    answer: finalAnswer,
+                    delta_answer: json.delta_answer,
+                    id
+                  });
+                }
+              }
+            }
+            reader.read().then(processText);
+          });
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          reject(error);
+        });
     });
   }
 
