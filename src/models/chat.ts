@@ -1,10 +1,13 @@
-import { ROLE_ASSISTANT, ROLE_SYSTEM, ROLE_USER } from '@/constants';
 import {
+  ROLE_ASSISTANT,
+  ROLE_SYSTEM,
+  ROLE_USER,
   CHAT_MODEL_NAME_GPT_3_5,
   CHAT_MODEL_NAME_GPT_3_5_BROWSING,
   CHAT_MODEL_NAME_GPT_4,
   CHAT_MODEL_NAME_GPT_4_BROWSING,
-  CHAT_MODEL_NAME_GPT_4_VISION
+  CHAT_MODEL_NAME_GPT_4_VISION,
+  CHAT_MODEL_NAME_GPT_4_ALL
 } from '@/constants';
 
 export type IChatModelName =
@@ -12,7 +15,8 @@ export type IChatModelName =
   | typeof CHAT_MODEL_NAME_GPT_3_5_BROWSING
   | typeof CHAT_MODEL_NAME_GPT_4
   | typeof CHAT_MODEL_NAME_GPT_4_BROWSING
-  | typeof CHAT_MODEL_NAME_GPT_4_VISION;
+  | typeof CHAT_MODEL_NAME_GPT_4_VISION
+  | typeof CHAT_MODEL_NAME_GPT_4_ALL;
 
 export interface IChatModel {
   name: IChatModelName;

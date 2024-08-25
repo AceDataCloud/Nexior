@@ -58,6 +58,7 @@ import Layout from '@/layouts/Chat.vue';
 import { isJSONString } from '@/utils/is';
 import { chatOperator } from '@/operators';
 import ApplicationStatus from '@/components/application/Status.vue';
+import { CHAT_MODEL_GPT_4_ALL, CHAT_MODEL_GPT_4_VISION } from '@/constants';
 
 export interface IData {
   drawer: boolean;
@@ -343,10 +344,17 @@ export default defineComponent({
           text: this.question
         });
         for (let i = 0; i < this.references.length; i++) {
-          content.push({
-            type: 'image_url',
-            image_url: this.references[i]
-          });
+          if (this.model.name === CHAT_MODEL_GPT_4_VISION.name) {
+            content.push({
+              type: 'image_url',
+              image_url: this.references[i]
+            });
+          } else if (this.model.name === CHAT_MODEL_GPT_4_ALL.name) {
+            content.push({
+              type: 'file_url',
+              image_url: this.references[i]
+            });
+          }
         }
         this.messages.push({
           // @ts-ignore
