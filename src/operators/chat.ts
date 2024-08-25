@@ -63,12 +63,26 @@ class ChatOperator {
           );
 
           const reader = linesStream.getReader();
+          let accumulatedData = '';
+          let updateTimeout: number | null = null;
+
           reader.read().then(function processText({ done, value }) {
             if (done) {
               console.log('Stream complete');
+              if (options?.stream) {
+                options?.stream({
+                  answer: finalAnswer,
+                  delta_answer: '',
+                  id
+                });
+              }
+              resolve({
+                answer: finalAnswer as string,
+                delta_answer: ''
+              });
               return;
             }
-            console.debug('Received message:', value);
+
             if (value.startsWith('data: ')) {
               const subValue = value.substring(6);
               if (subValue === '[DONE]') {
@@ -86,22 +100,32 @@ class ChatOperator {
                   delta_answer: ''
                 });
               } else {
-                const json = JSON.parse(value.substring(6));
+                const json = JSON.parse(subValue);
                 if (json.delta_answer) {
                   finalAnswer += json.delta_answer;
                 }
                 if (json.id) {
                   id = json.id;
                 }
-                if (options?.stream) {
-                  options?.stream({
-                    answer: finalAnswer,
-                    delta_answer: json.delta_answer,
-                    id
-                  });
+
+                accumulatedData += json.delta_answer || '';
+
+                if (!updateTimeout) {
+                  updateTimeout = window.setTimeout(() => {
+                    if (options?.stream) {
+                      options?.stream({
+                        answer: finalAnswer,
+                        delta_answer: accumulatedData,
+                        id
+                      });
+                    }
+                    accumulatedData = '';
+                    updateTimeout = null;
+                  }, 0);
                 }
               }
             }
+
             reader.read().then(processText);
           });
         })
