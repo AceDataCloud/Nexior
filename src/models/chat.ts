@@ -39,7 +39,8 @@ export enum IChatMessageState {
 export interface IChatMessageContentItem {
   type: string;
   text?: string;
-  image_url?: { url: string };
+  image_url?: { url: string } | string;
+  file_url?: { url: string } | string;
 }
 
 export interface IChatMessage {

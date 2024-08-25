@@ -26,7 +26,6 @@
           />
         </div>
       </div>
-
       <div class="bottom">
         <input-box
           :disabled="answering"
@@ -182,8 +181,37 @@ export default defineComponent({
         updatedMessages = this.messages.slice(0, targetIndex - 1);
         this.messages = this.messages.slice(0, targetIndex);
         // @ts-ignore
-        this.question = problemMessage.content;
+        this.references = [];
+        if (typeof problemMessage.content === 'string') {
+          this.question = problemMessage.content;
+        } else if (Array.isArray(problemMessage.content)) {
+          for (let i = 0; i < problemMessage?.content.length; i++) {
+            if (problemMessage.content[i].type === 'image_url') {
+              if (typeof problemMessage?.content?.[i]?.image_url === 'string') {
+                // @ts-ignore
+                this.references.push(problemMessage?.content?.[i]?.image_url);
+              } else {
+                // @ts-ignore
+                this.references.push(problemMessage?.content?.[i]?.image_url?.url);
+              }
+            }
+            if (problemMessage.content[i].type === 'file_url') {
+              if (typeof problemMessage?.content?.[i]?.file_url === 'string') {
+                // @ts-ignore
+                this.references.push(problemMessage?.content?.[i]?.file_url);
+              } else {
+                // @ts-ignore
+                this.references.push(problemMessage?.content?.[i]?.file_url?.url);
+              }
+            }
+            if (problemMessage.content[i].type === 'text') {
+              // @ts-ignore
+              this.question = problemMessage.content[i].text;
+            }
+          }
+        }
       }
+      console.debug('onRestart!', this.question, JSON.stringify(this.references));
       // 2. Update the messages
       const token = this.credential?.token;
       const question = this.question;
@@ -352,7 +380,7 @@ export default defineComponent({
           } else if (this.model.name === CHAT_MODEL_GPT_4_ALL.name) {
             content.push({
               type: 'file_url',
-              image_url: this.references[i]
+              file_url: this.references[i]
             });
           }
         }

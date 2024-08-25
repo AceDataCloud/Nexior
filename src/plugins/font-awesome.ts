@@ -6,7 +6,8 @@ import {
   faComment as faRegularComment,
   faSun as faRegularSun,
   faMessage as faRegularMessage,
-  faClock as faRegularClock
+  faClock as faRegularClock,
+  faFile as faRegularFile
 } from '@fortawesome/free-regular-svg-icons';
 import { faDiscord as faBrandsDiscord, faWeixin as faBrandsWeixin } from '@fortawesome/free-brands-svg-icons';
 import {
@@ -78,6 +79,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 // add icons
 library.add(faSolidStopCircle);
+library.add(faRegularFile);
 library.add(faSolidPlayCircle);
 library.add(faSolidFilm);
 library.add(faSolidMusic);

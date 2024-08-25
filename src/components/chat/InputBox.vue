@@ -61,7 +61,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-// import { ElInput, ElMessage, ElTooltip, ElUpload } from 'element-plus';
 import { ElMessage, ElTooltip, ElUpload } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IChatModel } from '@/models';
@@ -71,7 +70,6 @@ import { CHAT_MODEL_GPT_4_ALL, CHAT_MODEL_GPT_4_VISION } from '@/constants';
 export default defineComponent({
   name: 'InputBox',
   components: {
-    // ElInput,
     ElTooltip,
     FontAwesomeIcon,
     ElUpload
@@ -201,7 +199,7 @@ textarea.input:focus {
   .el-upload-list {
     position: absolute;
     width: 400px;
-    bottom: 45px;
+    bottom: 55px;
   }
 
   .el-textarea.is-disabled .el-textarea__inner {
