@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sun, 25 Aug 2024 04:21:24 GMT and should not be manually modified.
+This log was last generated on Sun, 25 Aug 2024 05:58:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.11.13
+
+Sun, 25 Aug 2024 05:58:27 GMT
+
+### Patches
+
+- add gpt all experience (office@acedata.cloud)
 
 ## 2.11.12
 
