@@ -1,10 +1,10 @@
-import { CHAT_MODEL_GPT_3_5 } from '@/constants';
+import { CHAT_MODEL_GPT_4 } from '@/constants';
 import { IChatState } from './models';
 import { Status } from '@/models';
 
 export default (): IChatState => {
   return {
-    model: CHAT_MODEL_GPT_3_5,
+    model: CHAT_MODEL_GPT_4,
     applications: undefined,
     application: undefined,
     conversations: undefined,
