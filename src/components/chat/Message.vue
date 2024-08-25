@@ -323,6 +323,7 @@ export default defineComponent({
     padding: 8px;
     width: 100%;
     max-width: 800px;
+    margin-bottom: 10px;
     .image {
       max-width: 100%;
       max-height: 300px;
@@ -347,12 +348,11 @@ export default defineComponent({
     display: flex; // Use flexbox for better alignment
     gap: 10px; // Adjust the gap value as needed
     margin-left: 5px; // Adjust the value as needed
+    color: var(--el-text-color-regular);
     .btn-restart {
-      color: var(--el-text-color-regular);
       font-size: 14px;
     }
     .btn-copy {
-      color: var(--el-text-color-regular);
       font-size: 14px;
     }
   }

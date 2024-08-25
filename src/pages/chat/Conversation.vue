@@ -167,21 +167,21 @@ export default defineComponent({
     async onStop() {
       if (this.canceler) {
         this.canceler.abort();
-        this.answering = false; // 更新状态
+        this.answering = false;
       }
     },
     async onRestart(targetMessage: IChatMessage) {
       // 1. Clear the following message
       const targetIndex = this.messages.findIndex((message) => message === targetMessage);
-      const problem_message = this.messages[targetIndex - 1];
+      const problemMessage = this.messages[targetIndex - 1];
       // @ts-ignore
-      let update_messages = [];
+      let updatedMessages = [];
       if (targetIndex !== -1) {
         // @ts-ignore
-        update_messages = this.messages.slice(0, targetIndex - 1);
+        updatedMessages = this.messages.slice(0, targetIndex - 1);
         this.messages = this.messages.slice(0, targetIndex);
         // @ts-ignore
-        this.question = problem_message.content;
+        this.question = problemMessage.content;
       }
       // 2. Update the messages
       const token = this.credential?.token;
@@ -205,7 +205,7 @@ export default defineComponent({
           {
             id: this.conversationId,
             // @ts-ignore
-            messages: update_messages
+            messages: updatedMessages
           },
           {
             token,
@@ -417,10 +417,12 @@ export default defineComponent({
             token,
             stream: (response: IChatConversationResponse) => {
               console.debug('stream response', response);
+              const lastMessage = this.messages[this.messages.length - 1];
               this.messages[this.messages.length - 1] = {
                 role: ROLE_ASSISTANT,
                 content: response.answer,
-                state: IChatMessageState.ANSWERING
+                state:
+                  lastMessage?.state !== IChatMessageState.FINISHED ? IChatMessageState.ANSWERING : lastMessage?.state
               };
               conversationId = response?.id;
               this.onScrollDown();
@@ -431,6 +433,7 @@ export default defineComponent({
         .then(async () => {
           console.debug('finished fetch answer', this.messages);
           this.messages[this.messages.length - 1].state = IChatMessageState.FINISHED;
+          console.debug('finished fetch answer', JSON.stringify(this.messages));
           await this.$store.dispatch('chat/setConversation', {
             id: conversationId,
             messages: this.messages
