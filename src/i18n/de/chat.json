@@ -5,7 +5,7 @@
   },
   "model.35Standard": {
     "message": "3.5 Standard",
-    "description": "Name des Dienstmodells, das GPT 3.5 Basis ist"
+    "description": "Name des Modells für den Dienst, also GPT 3.5 Basis"
   },
   "model.35StandardDescription": {
     "message": "Geeignet für alltägliche Aufgaben.",
@@ -13,7 +13,7 @@
   },
   "model.35Browsing": {
     "message": "3.5 Browsing",
-    "description": "Name des Dienstmodells, das GPT 3.5 Browsing ist"
+    "description": "Name des Modells für den Dienst, also GPT 3.5 Browsing"
   },
   "model.35BrowsingDescription": {
     "message": "Kann Informationen in Echtzeit abrufen.",
@@ -21,7 +21,7 @@
   },
   "model.4Standard": {
     "message": "4.0 Standard",
-    "description": "Name des Dienstmodells, das GPT 4.0 Standard ist"
+    "description": "Name des Modells für den Dienst, also GPT 4.0 Standard"
   },
   "model.4StandardDescription": {
     "message": "Ein leistungsstärkeres Modell, geeignet für komplexe Aufgaben.",
@@ -29,7 +29,7 @@
   },
   "model.4Browsing": {
     "message": "4.0 Browsing",
-    "description": "Name des Dienstmodells, das GPT 4.0 Browsing ist"
+    "description": "Name des Modells für den Dienst, also GPT 4.0 Browsing"
   },
   "model.4BrowsingDescription": {
     "message": "Leistungsstark und kann Informationen in Echtzeit abrufen.",
@@ -37,107 +37,115 @@
   },
   "model.4Vision": {
     "message": "4.0 Vision",
-    "description": "Name des Dienstmodells, das GPT 4.0 Vision ist"
+    "description": "Name des Modells für den Dienst, also GPT 4.0 Vision"
+  },
+  "model.4All": {
+    "message": "4.0 Alleskönner",
+    "description": "Name des Modells für den Dienst, also GPT 4.0 All"
   },
   "model.4VisionDescription": {
     "message": "Kann Bilder analysieren.",
     "description": "Beschreibung des 4.0 Vision-Modells"
   },
+  "model.4AllDescription": {
+    "message": "Alleskönner-Modell",
+    "description": "Beschreibung des 4.0 Alleskönner-Modells"
+  },
   "message.startNewChat": {
     "message": "Neuen Chat starten",
-    "description": "Nachricht auf der Webseite, die den Benutzer auffordert, einen neuen Chat zu starten"
+    "description": "Nachricht auf der Webseite, die den Benutzern mitteilt, einen neuen Chat zu beginnen"
   },
   "message.uploadFile": {
     "message": "Datei hochladen",
-    "description": "Nachricht auf der Webseite, die den Benutzer auffordert, eine Datei hochzuladen"
+    "description": "Nachricht auf der Webseite, die den Benutzern mitteilt, eine Datei hochzuladen"
   },
   "message.noToken": {
-    "message": "Bitte beantragen Sie den entsprechenden Dienst zuerst",
-    "description": "Nachricht auf der Webseite, die den Benutzer auffordert, den entsprechenden Dienst zuerst zu beantragen"
+    "message": "Bitte beantragen Sie zuerst den entsprechenden Dienst",
+    "description": "Nachricht auf der Webseite, die den Benutzern mitteilt, zuerst den entsprechenden Dienst zu beantragen"
   },
   "message.newMessagePlaceholder": {
     "message": "Bitte geben Sie Ihre Frage ein...",
-    "description": "Platzhalter auf der Webseite, der den Benutzer auffordert, eine Frage einzugeben"
+    "description": "Platzhalter auf der Webseite, der den Benutzern mitteilt, eine Frage einzugeben"
   },
   "message.noInput": {
     "message": "Die Frage darf nicht leer sein",
-    "description": "Nachricht auf der Webseite, die den Benutzer darüber informiert, dass die Frage nicht leer sein darf"
+    "description": "Nachricht auf der Webseite, die den Benutzern mitteilt, dass die Frage nicht leer sein darf"
   },
   "message.uploadReferencesExceed": {
-    "message": "Es kann maximal 1 Datei hochgeladen werden",
-    "description": "Nachricht auf der Webseite, die den Benutzer darüber informiert, dass maximal 1 Datei hochgeladen werden kann"
+    "message": "Es kann nur 1 Datei hochgeladen werden",
+    "description": "Nachricht auf der Webseite, die den Benutzern mitteilt, dass nur 1 Datei hochgeladen werden darf"
   },
   "message.uploadReferencesError": {
     "message": "Datei-Upload fehlgeschlagen, bitte später erneut versuchen",
-    "description": "Nachricht auf der Webseite, die den Benutzer darüber informiert, dass der Datei-Upload fehlgeschlagen ist, bitte später erneut versuchen"
+    "description": "Nachricht auf der Webseite, die den Benutzern mitteilt, dass der Datei-Upload fehlgeschlagen ist, bitte später erneut versuchen"
   },
   "message.notApplied": {
-    "message": "Sie haben diesen Dienst noch nicht beantragt, bitte beantragen Sie ihn zuerst",
-    "description": "Nachricht auf der Webseite, die den Benutzer darüber informiert, dass er diesen Dienst noch nicht beantragt hat, bitte zuerst beantragen"
+    "message": "Sie haben diesen Dienst noch nicht beantragt, bitte zuerst beantragen",
+    "description": "Nachricht auf der Webseite, die den Benutzern mitteilt, dass sie diesen Dienst noch nicht beantragt haben, bitte zuerst beantragen"
   },
   "message.tryForFree": {
     "message": "Kostenlos testen",
-    "description": "Nachricht auf der Webseite, die den Benutzer darüber informiert, dass er es kostenlos testen kann"
+    "description": "Nachricht auf der Webseite, die den Benutzern mitteilt, dass sie kostenlos testen können"
   },
   "message.question1": {
     "message": "Trainingsplan erstellen",
-    "description": "Beispielhafte Frage zum Start des Chats, die den Benutzer auffordert, einen JavaScript-Code auszugeben, der 'Hello World' anzeigt"
+    "description": "Beispielfrage zum Start des Chats, die den Benutzer auffordert, einen JavaScript-Code zu schreiben, der 'Hello World' ausgibt"
   },
   "message.question2": {
     "message": "Persönliche Webseite erstellen",
-    "description": "Beispielhafte Frage zum Start des Chats, die den Benutzer auffordert, Mike eine E-Mail zu schreiben und ihm mitzuteilen, dass er gerade umgezogen ist"
+    "description": "Beispielfrage zum Start des Chats, die den Benutzer auffordert, Mike eine E-Mail zu schreiben und ihm zu sagen, dass ich umgezogen bin"
   },
   "message.question3": {
-    "message": "Interessante Programmier spiele entwerfen",
-    "description": "Beispielhafte Frage zum Start des Chats, die den Benutzer auffordert, die grundlegenden Prinzipien der Quantenberechnung einfach zu erklären"
+    "message": "Interessante Programmier Spiele entwerfen",
+    "description": "Beispielfrage zum Start des Chats, die den Benutzer auffordert, die grundlegenden Prinzipien der Quantenberechnung in einfachen Worten zu erklären"
   },
   "message.question4": {
     "message": "Seoul wie ein Einheimischer erleben",
-    "description": "Beispielhafte Frage zum Start des Chats, die den Benutzer auffordert, zu erklären, welchen Einfluss die virtuelle Realität auf die Kunstproduktion hat"
+    "description": "Beispielfrage zum Start des Chats, die den Benutzer auffordert, zu erklären, welchen Einfluss die virtuelle Realität auf die Kunstproduktion hat"
   },
   "message.errorApiError": {
     "message": "Antwort fehlgeschlagen, bitte später erneut versuchen",
-    "description": "Nachricht auf der Webseite, die den Benutzer darüber informiert, dass die Antwort fehlgeschlagen ist, bitte später erneut versuchen"
+    "description": "Nachricht auf der Webseite, die den Benutzern mitteilt, dass die Antwort fehlgeschlagen ist, bitte später erneut versuchen"
   },
   "message.errorBadRequest": {
-    "message": "Der Anfrageinhalt ist nicht zulässig, bitte erneut fragen",
-    "description": "Nachricht auf der Webseite, die den Benutzer darüber informiert, dass der Anfrageinhalt nicht zulässig ist, bitte erneut fragen"
+    "message": "Anfrageinhalt nicht standardkonform, bitte erneut fragen",
+    "description": "Nachricht auf der Webseite, die den Benutzern mitteilt, dass der Anfrageinhalt nicht standardkonform ist, bitte erneut fragen"
   },
   "message.errorNoConversation": {
-    "message": "Das Gespräch existiert nicht oder ist abgelaufen, bitte starten Sie einen neuen Chat",
-    "description": "Nachricht auf der Webseite, die den Benutzer darüber informiert, dass das Gespräch nicht existiert oder abgelaufen ist, bitte einen neuen Chat starten"
+    "message": "Unterhaltung existiert nicht oder ist abgelaufen, bitte neuen Chat starten",
+    "description": "Nachricht auf der Webseite, die den Benutzern mitteilt, dass die Unterhaltung nicht existiert oder abgelaufen ist, bitte neuen Chat starten"
   },
   "message.errorContentTooLarge": {
-    "message": "Die Frage ist zu lang, bitte kürzen Sie sie und versuchen Sie es erneut",
-    "description": "Nachricht auf der Webseite, die den Benutzer darüber informiert, dass die Frage zu lang ist, bitte kürzen und erneut versuchen"
+    "message": "Frageinhalt zu lang, bitte kürzen und erneut versuchen",
+    "description": "Nachricht auf der Webseite, die den Benutzern mitteilt, dass der Frageinhalt zu lang ist, bitte kürzen und erneut versuchen"
   },
   "message.errorTooManyRequests": {
     "message": "Ihre Anfragen sind zu häufig, bitte später erneut versuchen",
-    "description": "Nachricht auf der Webseite, die den Benutzer darüber informiert, dass seine Anfragen zu häufig sind, bitte später erneut versuchen"
+    "description": "Nachricht auf der Webseite, die den Benutzern mitteilt, dass ihre Anfragen zu häufig sind, bitte später erneut versuchen"
   },
   "message.errorUsedUp": {
-    "message": "Sie haben Ihre Kontingente aufgebraucht, bitte kaufen Sie weitere Kontingente, um fortzufahren",
-    "description": "Nachricht auf der Webseite, die den Benutzer darüber informiert, dass er seine Kontingente aufgebraucht hat, bitte weitere Kontingente kaufen, um fortzufahren"
+    "message": "Sie haben Ihr Kontingent aufgebraucht, bitte kaufen Sie weitere, um fortzufahren",
+    "description": "Nachricht auf der Webseite, die den Benutzern mitteilt, dass sie ihr Kontingent aufgebraucht haben, bitte kaufen Sie weitere, um fortzufahren"
   },
   "message.errorUnknown": {
-    "message": "Ein unbekannter Fehler ist aufgetreten, bitte später erneut versuchen oder den Kundenservice kontaktieren",
-    "description": "Nachricht auf der Webseite, die den Benutzer darüber informiert, dass ein unbekannter Fehler aufgetreten ist, bitte später erneut versuchen oder den Kundenservice kontaktieren"
+    "message": "Unbekannter Fehler auf dem Server, bitte später erneut versuchen oder den Kundendienst kontaktieren",
+    "description": "Nachricht auf der Webseite, die den Benutzern mitteilt, dass ein unbekannter Fehler auf dem Server aufgetreten ist, bitte später erneut versuchen oder den Kundendienst kontaktieren"
   },
   "message.errorTimeout": {
-    "message": "Die Beantwortung der Frage hat zu lange gedauert, bitte später erneut versuchen",
-    "description": "Nachricht auf der Webseite, die den Benutzer darüber informiert, dass das Beantworten der Frage zu lange gedauert hat, bitte später erneut versuchen"
+    "message": "Die Antwort hat zu lange gedauert, bitte versuchen Sie es später erneut.",
+    "description": "Nachricht auf der Webseite, die den Benutzern mitteilt, dass die Antwort zu lange gedauert hat, bitte versuchen Sie es später erneut."
   },
   "message.errorNotApplied": {
-    "message": "Sie haben diesen Dienst noch nicht beantragt, bitte beantragen Sie ihn zuerst, bevor Sie weiterfragen.",
-    "description": "Nachricht auf der Webseite, die den Benutzer darüber informiert, dass er diesen Dienst noch nicht beantragt hat und dies vor dem Weiterfragen tun muss."
+    "message": "Sie haben diesen Service noch nicht beantragt, bitte beantragen Sie ihn zuerst, bevor Sie fortfahren.",
+    "description": "Nachricht auf der Webseite, die den Benutzern mitteilt, dass sie diesen Service noch nicht beantragt haben, bitte beantragen Sie ihn zuerst, bevor Sie fortfahren."
   },
   "message.confirmDelete": {
     "message": "Löschen bestätigen",
-    "description": "Nachricht auf der Webseite, die den Benutzer auffordert, das Löschen zu bestätigen."
+    "description": "Nachricht auf der Webseite, die den Benutzern mitteilt, dass sie das Löschen bestätigen sollen."
   },
   "message.howToUse": {
-    "message": "KI kann Fehler machen, bitte überprüfen Sie wichtige Informationen.",
-    "description": "Nachricht auf der Webseite, die den Benutzer warnt, dass die KI Fehler machen könnte, und ihn auffordert, wichtige Informationen zu überprüfen."
+    "message": "Die KI kann fehlerhaft sein, bitte überprüfen Sie wichtige Informationen.",
+    "description": "Nachricht auf der Webseite, die den Benutzern mitteilt, dass die KI fehlerhaft sein kann, bitte überprüfen Sie wichtige Informationen."
   },
   "title.chat": {
     "message": "KI-Chat",
@@ -148,39 +156,39 @@
     "description": "Titel der Webseite, d.h. Beispiel."
   },
   "title.capabilities": {
-    "message": "Fähigkeiten",
-    "description": "Titel der Webseite, d.h. Fähigkeiten."
+    "message": "Funktionen",
+    "description": "Titel der Webseite, d.h. Funktionen."
   },
   "title.limitations": {
     "message": "Einschränkungen",
-    "description": "Titel auf der Webseite, der darauf hinweist, dass dieser Abschnitt technische Einschränkungen des Dienstes behandelt."
+    "description": "Titel auf der Webseite, das auf technische Einschränkungen des Services hinweist."
   },
   "title.complexQuestion": {
     "message": "Komplexe Fragen beantworten",
-    "description": "Titel auf der Webseite, der darauf hinweist, dass dieser Abschnitt die Fähigkeit des Dienstes behandelt, komplexe Fragen zu beantworten."
+    "description": "Titel auf der Webseite, das auf die Fähigkeit des Services hinweist, komplexe Fragen zu beantworten."
   },
   "title.professionalQuestion": {
-    "message": "Professionelle Fragen konsultieren",
-    "description": "Titel auf der Webseite, der darauf hinweist, dass dieser Abschnitt die Fähigkeit des Dienstes behandelt, professionelle Fragen zu konsultieren."
+    "message": "Professionelle Fragen beraten",
+    "description": "Titel auf der Webseite, das auf die Fähigkeit des Services hinweist, professionelle Fragen zu beraten."
   },
   "title.getTips": {
     "message": "Inspiration und Ideen erhalten",
-    "description": "Titel auf der Webseite, der darauf hinweist, dass dieser Abschnitt die Fähigkeit des Dienstes behandelt, Inspiration und Ideen zu erhalten."
+    "description": "Titel auf der Webseite, das auf die Fähigkeit des Services hinweist, Inspiration und Ideen zu erhalten."
   },
   "group.today": {
     "message": "Heute",
-    "description": "Name der Gruppierung auf der Webseite, d.h. Heute."
+    "description": "Gruppenname auf der Webseite, d.h. Heute."
   },
   "group.yesterday": {
     "message": "Gestern",
-    "description": "Name der Gruppierung auf der Webseite, d.h. Gestern."
+    "description": "Gruppenname auf der Webseite, d.h. Gestern."
   },
   "group.thisWeek": {
     "message": "Diese Woche",
-    "description": "Name der Gruppierung auf der Webseite, d.h. Diese Woche."
+    "description": "Gruppenname auf der Webseite, d.h. Diese Woche."
   },
   "group.earlier": {
     "message": "Früher",
-    "description": "Name der Gruppierung auf der Webseite, d.h. Früher."
+    "description": "Gruppenname auf der Webseite, d.h. Früher."
   }
 }

@@ -1,7 +1,7 @@
 {
   "button.edit": {
-    "message": "編輯消息",
-    "description": "編輯發送的消息"
+    "message": "編輯訊息",
+    "description": "編輯發送的訊息"
   },
   "model.35Standard": {
     "message": "3.5 標準",
@@ -12,11 +12,11 @@
     "description": "3.5 標準模型的描述"
   },
   "model.35Browsing": {
-    "message": "3.5 連網",
-    "description": "服務的模型名稱，即 GPT 3.5 連網"
+    "message": "3.5 聯網",
+    "description": "服務的模型名稱，即 GPT 3.5 聯網"
   },
   "model.35BrowsingDescription": {
-    "message": "可以即時檢索信息。",
+    "message": "可以實時檢索資訊。",
     "description": "3.5 瀏覽模型的描述"
   },
   "model.4Standard": {
@@ -28,32 +28,40 @@
     "description": "4.0 標準模型的描述"
   },
   "model.4Browsing": {
-    "message": "4.0 連網",
-    "description": "服務的模型名稱，即 GPT 4.0 連網"
+    "message": "4.0 聯網",
+    "description": "服務的模型名稱，即 GPT 4.0 聯網"
   },
   "model.4BrowsingDescription": {
-    "message": "強大且能即時檢索信息。",
+    "message": "強大且實時檢索資訊。",
     "description": "4.0 瀏覽模型的描述"
   },
   "model.4Vision": {
     "message": "4.0 視覺",
     "description": "服務的模型名稱，即 GPT 4.0 視覺"
   },
+  "model.4All": {
+    "message": "4.0 全能",
+    "description": "服務的模型名稱，即 GPT 4.0 All"
+  },
   "model.4VisionDescription": {
-    "message": "可以分析圖像。",
+    "message": "可以分析影像。",
     "description": "4.0 視覺模型的描述"
+  },
+  "model.4AllDescription": {
+    "message": "全能模型",
+    "description": "4.0 全能模型的描述"
   },
   "message.startNewChat": {
     "message": "開始新對話",
-    "description": "網頁中的消息，告訴用戶開始新對話"
+    "description": "網頁中的訊息，告訴用戶開始新對話"
   },
   "message.uploadFile": {
-    "message": "上傳文件",
-    "description": "網頁中的消息，告訴用戶上傳文件"
+    "message": "上傳檔案",
+    "description": "網頁中的訊息，告訴用戶上傳檔案"
   },
   "message.noToken": {
     "message": "請先申請相應服務",
-    "description": "網頁中的消息，告訴用戶先申請相應服務"
+    "description": "網頁中的訊息，告訴用戶先申請相應服務"
   },
   "message.newMessagePlaceholder": {
     "message": "請輸入您的問題...",
@@ -61,23 +69,23 @@
   },
   "message.noInput": {
     "message": "問題不能为空",
-    "description": "網頁中的消息，告訴用戶問題不能为空"
+    "description": "網頁中的訊息，告訴用戶問題不能为空"
   },
   "message.uploadReferencesExceed": {
-    "message": "最多只能上傳 1 個文件",
-    "description": "網頁中的消息，告訴用戶最多只能上傳 1 個文件"
+    "message": "最多只能上傳 1 個檔案",
+    "description": "網頁中的訊息，告訴用戶最多只能上傳 1 個檔案"
   },
   "message.uploadReferencesError": {
-    "message": "文件上傳失敗，請稍後重試",
-    "description": "網頁中的消息，告訴用戶文件上傳失敗，請稍後重試"
+    "message": "檔案上傳失敗，請稍後重試",
+    "description": "網頁中的訊息，告訴用戶檔案上傳失敗，請稍後重試"
   },
   "message.notApplied": {
     "message": "您尚未申請此服務，請先申請",
-    "description": "網頁中的消息，告訴用戶您尚未申請此服務，請先申請"
+    "description": "網頁中的訊息，告訴用戶您尚未申請此服務，請先申請"
   },
   "message.tryForFree": {
     "message": "免費試用",
-    "description": "網頁中的消息，告訴用戶免費試用"
+    "description": "網頁中的訊息，告訴用戶免費試用"
   },
   "message.question1": {
     "message": "創建訓練計畫",
@@ -97,31 +105,31 @@
   },
   "message.errorApiError": {
     "message": "回答失敗，請稍後重試",
-    "description": "網頁中的消息，告訴用戶回答失敗，請稍後重試"
+    "description": "網頁中的訊息，告訴用戶回答失敗，請稍後重試"
   },
   "message.errorBadRequest": {
     "message": "請求內容不規範，請重新提問",
-    "description": "網頁中的消息，告訴用戶請求內容不規範，請重新提問"
+    "description": "網頁中的訊息，告訴用戶請求內容不規範，請重新提問"
   },
   "message.errorNoConversation": {
     "message": "對話不存在或已過期，請開始新對話",
-    "description": "網頁中的消息，告訴用戶對話不存在或已過期，請開始新對話"
+    "description": "網頁中的訊息，告訴用戶對話不存在或已過期，請開始新對話"
   },
   "message.errorContentTooLarge": {
     "message": "問題內容過長，請縮短後重試",
-    "description": "網頁中的消息，告訴用戶問題內容過長，請縮短後重試"
+    "description": "網頁中的訊息，告訴用戶問題內容過長，請縮短後重試"
   },
   "message.errorTooManyRequests": {
     "message": "您的操作過於頻繁，請稍後重試",
-    "description": "網頁中的消息，告訴用戶您的操作過於頻繁，請稍後重試"
+    "description": "網頁中的訊息，告訴用戶您的操作過於頻繁，請稍後重試"
   },
   "message.errorUsedUp": {
     "message": "您已用完套餐次數，請購買更多次數繼續使用",
-    "description": "網頁中的消息，告訴用戶您已用完套餐次數，請購買更多次數繼續使用"
+    "description": "網頁中的訊息，告訴用戶您已用完套餐次數，請購買更多次數繼續使用"
   },
   "message.errorUnknown": {
-    "message": "伺服器發生未知錯誤，請稍後重試或聯繫客服",
-    "description": "網頁中的消息，告訴用戶伺服器發生未知錯誤，請稍後重試或聯繫客服"
+    "message": "伺服器發生未知錯誤，請稍後重試或聯絡客服",
+    "description": "網頁中的訊息，告訴用戶伺服器發生未知錯誤，請稍後重試或聯絡客服"
   },
   "message.errorTimeout": {
     "message": "回答問題超時，請稍後重試",

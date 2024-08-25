@@ -10,6 +10,7 @@ export const CHAT_MODEL_NAME_GPT_3_5_BROWSING = 'gpt-3.5-browsing';
 export const CHAT_MODEL_NAME_GPT_4 = 'gpt-4';
 export const CHAT_MODEL_NAME_GPT_4_BROWSING = 'gpt-4-browsing';
 export const CHAT_MODEL_NAME_GPT_4_VISION = 'gpt-4-vision';
+export const CHAT_MODEL_NAME_GPT_4_ALL = 'gpt-4-all';
 
 export const CHAT_SERVICE_ID = 'b1fbcc32-e218-4253-9dc3-4fe600a1bfb9';
 
@@ -41,4 +42,10 @@ export const CHAT_MODEL_GPT_4_VISION: IChatModel = {
   name: CHAT_MODEL_NAME_GPT_4_VISION,
   getDisplayName: () => i18n.global.t('chat.model.4Vision'),
   getDescription: () => i18n.global.t('chat.model.4VisionDescription')
+};
+
+export const CHAT_MODEL_GPT_4_ALL: IChatModel = {
+  name: CHAT_MODEL_NAME_GPT_4_ALL,
+  getDisplayName: () => i18n.global.t('chat.model.4All'),
+  getDescription: () => i18n.global.t('chat.model.4AllDescription')
 };

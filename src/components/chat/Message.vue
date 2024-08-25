@@ -18,7 +18,7 @@
       <div class="content">
         <div class="edit-left">
           <el-tooltip
-            v-if="message.role === 'user' && !isEditing"
+            v-if="message.role === 'user' && !isEditing && !Array.isArray(message.content)"
             effect="dark"
             :content="$t('chat.button.edit')"
             placement="bottom"
@@ -36,6 +36,14 @@
                 fit="cover"
                 class="image"
               />
+              <span v-if="item.type === 'file_url'" class="file">
+                <font-awesome-icon icon="fa-regular fa-file" class="icon icon-file" />
+                {{
+                  typeof item?.file_url === 'string'
+                    ? item.file_url?.split('/')?.slice(-1)?.[0]
+                    : item.file_url?.url?.split('/')?.slice(-1)?.[0]
+                }}
+              </span>
               <markdown-renderer v-if="item.type === 'text'" :key="index" :content="item.text" />
             </div>
           </div>
@@ -330,6 +338,16 @@ export default defineComponent({
       margin: 5px 0;
       border-radius: 10px;
     }
+    .file {
+      display: block;
+      margin: 5px 0;
+      border-radius: 10px;
+      padding: 5px 10px;
+      background-color: var(--el-bg-color);
+      color: var(--el-text-color-regular);
+      border: 1px solid var(--el-border-color);
+      font-size: 14px;
+    }
     .edit-area {
       width: 100%;
       min-height: 100px;
@@ -341,6 +359,11 @@ export default defineComponent({
       display: flex;
       justify-content: flex-end;
       gap: 10px;
+    }
+    .icon-edit {
+      font-size: 14px;
+      cursor: pointer;
+      color: var(--el-text-color-regular);
     }
   }
 

@@ -61,17 +61,15 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-// import { ElInput, ElMessage, ElTooltip, ElUpload } from 'element-plus';
 import { ElMessage, ElTooltip, ElUpload } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IChatModel } from '@/models';
 import { getBaseUrlPlatform } from '@/utils';
-import { CHAT_MODEL_GPT_4_VISION } from '@/constants';
+import { CHAT_MODEL_GPT_4_ALL, CHAT_MODEL_GPT_4_VISION } from '@/constants';
 
 export default defineComponent({
   name: 'InputBox',
   components: {
-    // ElInput,
     ElTooltip,
     FontAwesomeIcon,
     ElUpload
@@ -112,7 +110,7 @@ export default defineComponent({
       return this.fileList.map((file: UploadFile) => file?.response?.file_url);
     },
     canUpload() {
-      return [CHAT_MODEL_GPT_4_VISION.name].includes(this.model.name);
+      return [CHAT_MODEL_GPT_4_VISION.name, CHAT_MODEL_GPT_4_ALL.name].includes(this.model.name);
     },
     model(): IChatModel {
       return this.$store.state.chat.model;
@@ -201,7 +199,7 @@ textarea.input:focus {
   .el-upload-list {
     position: absolute;
     width: 400px;
-    bottom: 45px;
+    bottom: 55px;
   }
 
   .el-textarea.is-disabled .el-textarea__inner {
