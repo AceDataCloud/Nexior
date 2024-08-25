@@ -1,4 +1,4 @@
-import axios, { AxiosProgressEvent, AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import {
   IChatConversation,
   IChatConversationAction,
