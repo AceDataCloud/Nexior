@@ -5,7 +5,7 @@ import store from '@/store';
 import { IToken } from '@/models';
 import psl from 'psl';
 import { BASE_HOST_HUB, LOCALE_CURRENCY_MAPPING } from '@/constants';
-import { isSubOfficial, isWechatBrowser } from './is';
+import { isOfficial, isSubOfficial, isWechatBrowser } from './is';
 
 export const getDomain = (host: string = window.location.hostname) => {
   const parsed = psl.parse(host);
@@ -205,7 +205,7 @@ export const initializeExchangeRate = async () => {
 };
 
 export const initializeRedirect = async () => {
-  if (!isSubOfficial() && isWechatBrowser()) {
+  if (isOfficial() && !isSubOfficial() && isWechatBrowser()) {
     console.debug('redirect to sub domain with prefix');
     // redirect from hub.acedata.cloud to dynamic date like 20240802.hub.acedata.cloud
     const date = new Date().toISOString().split('T')[0].replace(/-/g, '');
