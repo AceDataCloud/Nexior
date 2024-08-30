@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Fri, 30 Aug 2024 17:05:12 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Aug 2024 17:27:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.11.15
+
+Fri, 30 Aug 2024 17:27:31 GMT
+
+### Patches
+
+- fix is wechat browser (office@acedata.cloud)
 
 ## 2.11.14
 
