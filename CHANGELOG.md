@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sun, 25 Aug 2024 05:58:27 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Aug 2024 17:05:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.11.14
+
+Fri, 30 Aug 2024 17:05:12 GMT
+
+### Patches
+
+- Add support for redirect to sub offcial (office@acedata.cloud)
 
 ## 2.11.13
 
