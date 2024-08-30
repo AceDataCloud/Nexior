@@ -17,7 +17,8 @@ export const isJSONString = (str: string): boolean => {
  * Check if the string is wechat browser
  */
 export const isWechatBrowser = (): boolean => {
-  return /micromessenger/i.test(navigator.userAgent);
+  const ua = navigator.userAgent.toLowerCase();
+  return ua.includes('micromessenger');
 };
 
 /**
