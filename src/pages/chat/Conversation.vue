@@ -26,7 +26,6 @@
           />
         </div>
       </div>
-
       <div class="bottom">
         <input-box
           :disabled="answering"
@@ -58,6 +57,7 @@ import Layout from '@/layouts/Chat.vue';
 import { isJSONString } from '@/utils/is';
 import { chatOperator } from '@/operators';
 import ApplicationStatus from '@/components/application/Status.vue';
+import { CHAT_MODEL_GPT_4_ALL, CHAT_MODEL_GPT_4_VISION } from '@/constants';
 
 export interface IData {
   drawer: boolean;
@@ -181,8 +181,37 @@ export default defineComponent({
         updatedMessages = this.messages.slice(0, targetIndex - 1);
         this.messages = this.messages.slice(0, targetIndex);
         // @ts-ignore
-        this.question = problemMessage.content;
+        this.references = [];
+        if (typeof problemMessage.content === 'string') {
+          this.question = problemMessage.content;
+        } else if (Array.isArray(problemMessage.content)) {
+          for (let i = 0; i < problemMessage?.content.length; i++) {
+            if (problemMessage.content[i].type === 'image_url') {
+              if (typeof problemMessage?.content?.[i]?.image_url === 'string') {
+                // @ts-ignore
+                this.references.push(problemMessage?.content?.[i]?.image_url);
+              } else {
+                // @ts-ignore
+                this.references.push(problemMessage?.content?.[i]?.image_url?.url);
+              }
+            }
+            if (problemMessage.content[i].type === 'file_url') {
+              if (typeof problemMessage?.content?.[i]?.file_url === 'string') {
+                // @ts-ignore
+                this.references.push(problemMessage?.content?.[i]?.file_url);
+              } else {
+                // @ts-ignore
+                this.references.push(problemMessage?.content?.[i]?.file_url?.url);
+              }
+            }
+            if (problemMessage.content[i].type === 'text') {
+              // @ts-ignore
+              this.question = problemMessage.content[i].text;
+            }
+          }
+        }
       }
+      console.debug('onRestart!', this.question, JSON.stringify(this.references));
       // 2. Update the messages
       const token = this.credential?.token;
       const question = this.question;
@@ -343,10 +372,17 @@ export default defineComponent({
           text: this.question
         });
         for (let i = 0; i < this.references.length; i++) {
-          content.push({
-            type: 'image_url',
-            image_url: this.references[i]
-          });
+          if (this.model.name === CHAT_MODEL_GPT_4_VISION.name) {
+            content.push({
+              type: 'image_url',
+              image_url: this.references[i]
+            });
+          } else if (this.model.name === CHAT_MODEL_GPT_4_ALL.name) {
+            content.push({
+              type: 'file_url',
+              file_url: this.references[i]
+            });
+          }
         }
         this.messages.push({
           // @ts-ignore

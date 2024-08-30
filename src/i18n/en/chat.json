@@ -5,7 +5,7 @@
   },
   "model.35Standard": {
     "message": "3.5 Standard",
-    "description": "The name of the model for the service, specifically GPT 3.5 Base"
+    "description": "The model name for the service, i.e. GPT 3.5 Base"
   },
   "model.35StandardDescription": {
     "message": "Suitable for everyday tasks.",
@@ -13,15 +13,15 @@
   },
   "model.35Browsing": {
     "message": "3.5 Browsing",
-    "description": "The name of the model for the service, specifically GPT 3.5 Browsing"
+    "description": "The model name for the service, i.e. GPT 3.5 Browsing"
   },
   "model.35BrowsingDescription": {
-    "message": "Can retrieve information in real time.",
+    "message": "Can retrieve information in real-time.",
     "description": "Description of the 3.5 Browsing model"
   },
   "model.4Standard": {
     "message": "4.0 Standard",
-    "description": "The name of the model for the service, specifically GPT 4.0 Standard"
+    "description": "The model name for the service, i.e. GPT 4.0 Standard"
   },
   "model.4StandardDescription": {
     "message": "A more powerful model, suitable for complex tasks.",
@@ -29,158 +29,166 @@
   },
   "model.4Browsing": {
     "message": "4.0 Browsing",
-    "description": "The name of the model for the service, specifically GPT 4.0 Browsing"
+    "description": "The model name for the service, i.e. GPT 4.0 Browsing"
   },
   "model.4BrowsingDescription": {
-    "message": "Powerful and retrieves information in real time.",
+    "message": "Powerful and retrieves information in real-time.",
     "description": "Description of the 4.0 Browsing model"
   },
   "model.4Vision": {
     "message": "4.0 Vision",
-    "description": "The name of the model for the service, specifically GPT 4.0 Vision"
+    "description": "The model name for the service, i.e. GPT 4.0 Vision"
+  },
+  "model.4All": {
+    "message": "4.0 All-in-One",
+    "description": "The model name for the service, i.e. GPT 4.0 All"
   },
   "model.4VisionDescription": {
     "message": "Can analyze images.",
     "description": "Description of the 4.0 Vision model"
   },
+  "model.4AllDescription": {
+    "message": "Universal model",
+    "description": "Description of the 4.0 All-in-One model"
+  },
   "message.startNewChat": {
     "message": "Start New Conversation",
-    "description": "Message on the webpage informing users to start a new conversation"
+    "description": "Message on the webpage that informs the user to start a new conversation"
   },
   "message.uploadFile": {
     "message": "Upload File",
-    "description": "Message on the webpage informing users to upload a file"
+    "description": "Message on the webpage instructing the user to upload a file"
   },
   "message.noToken": {
-    "message": "Please apply for the corresponding service",
-    "description": "Message on the webpage informing users to apply for the corresponding service first"
+    "message": "Please apply for the corresponding service first",
+    "description": "Message on the webpage that informs the user to apply for the corresponding service first"
   },
   "message.newMessagePlaceholder": {
     "message": "Please enter your question...",
-    "description": "Placeholder on the webpage informing users to enter their question"
+    "description": "Placeholder on the webpage that tells users to input a question"
   },
   "message.noInput": {
     "message": "The question cannot be empty",
-    "description": "Message on the webpage informing users that the question cannot be empty"
+    "description": "Message on the webpage that informs the user that the question cannot be empty"
   },
   "message.uploadReferencesExceed": {
-    "message": "You can only upload 1 file at most",
-    "description": "Message on the webpage informing users that they can only upload 1 file at most"
+    "message": "You can upload a maximum of 1 file",
+    "description": "Message on the webpage that informs the user that they can upload a maximum of 1 file"
   },
   "message.uploadReferencesError": {
     "message": "File upload failed, please try again later",
-    "description": "Message on the webpage informing users that the file upload failed, please try again later"
+    "description": "Message on the webpage that informs the user that the file upload failed and to try again later"
   },
   "message.notApplied": {
-    "message": "You have not yet applied for this service, please apply first",
-    "description": "Message on the webpage informing users that they have not yet applied for this service, please apply first"
+    "message": "You have not applied for this service, please apply first",
+    "description": "Message on the webpage that informs the user they have not applied for the service and need to do so"
   },
   "message.tryForFree": {
     "message": "Try for Free",
-    "description": "Message on the webpage informing users about a free trial"
+    "description": "Message on the webpage prompting the user to try for free"
   },
   "message.question1": {
     "message": "Create a training plan",
-    "description": "Example question to start a conversation, asking the user to write a piece of JavaScript code that outputs Hello World"
+    "description": "Sample question to start a conversation, asking the user to write a JavaScript code that outputs Hello World"
   },
   "message.question2": {
-    "message": "Make a personal webpage",
-    "description": "Example question to start a conversation, asking the user to write an email to Mike to inform him that I just moved"
+    "message": "Create a personal webpage",
+    "description": "Sample question to start a conversation, asking the user to write an email to Mike informing him that they just moved"
   },
   "message.question3": {
     "message": "Design an interesting programming game",
-    "description": "Example question to start a conversation, asking the user to explain the basic principles of quantum computing in simple language"
+    "description": "Sample question to start a conversation, asking the user to explain the basic principles of quantum computing in simple language"
   },
   "message.question4": {
     "message": "Experience Seoul like a local",
-    "description": "Example question to start a conversation, asking the user to explain the impact of virtual reality on artistic creation"
+    "description": "Sample question to start a conversation, asking the user to explain the impact of virtual reality on artistic creation"
   },
   "message.errorApiError": {
-    "message": "Response failed, please try again later",
-    "description": "Message on the webpage informing users that the response failed, please try again later"
+    "message": "Answer failed, please try again later",
+    "description": "Message on the webpage that informs the user that the answer failed and to try again later"
   },
   "message.errorBadRequest": {
-    "message": "The request is invalid, please ask again",
-    "description": "Message on the webpage informing users that the request is invalid, please ask again"
+    "message": "Request content is not valid, please rephrase your question",
+    "description": "Message on the webpage that informs the user that the request content is not valid and to rephrase their question"
   },
   "message.errorNoConversation": {
     "message": "Conversation does not exist or has expired, please start a new conversation",
-    "description": "Message on the webpage informing users that the conversation does not exist or has expired, please start a new conversation"
+    "description": "Message on the webpage that informs the user that the conversation does not exist or has expired and to start a new one"
   },
   "message.errorContentTooLarge": {
     "message": "The question content is too long, please shorten it and try again",
-    "description": "Message on the webpage informing users that the question content is too long, please shorten it and try again"
+    "description": "Message on the webpage that informs the user that the question content is too long and to shorten it"
   },
   "message.errorTooManyRequests": {
     "message": "Your actions are too frequent, please try again later",
-    "description": "Message on the webpage informing users that their actions are too frequent, please try again later"
+    "description": "Message on the webpage that informs the user that their actions are too frequent and to try again later"
   },
   "message.errorUsedUp": {
-    "message": "You have exhausted your allotted usage, please purchase more usages to continue",
-    "description": "Message on the webpage informing users that they have exhausted their allotted usage, please purchase more usages to continue"
+    "message": "You have used up your package number, please purchase more to continue using",
+    "description": "Message on the webpage that informs the user that they have used up their package number and to purchase more"
   },
   "message.errorUnknown": {
-    "message": "An unknown server error occurred, please try again later or contact customer service",
-    "description": "Message on the webpage informing users that an unknown server error occurred, please try again later or contact customer service"
+    "message": "An unknown error occurred on the server, please try again later or contact customer service",
+    "description": "Message on the webpage that informs the user that an unknown server error occurred and to try again later or contact customer service"
   },
   "message.errorTimeout": {
-    "message": "Answering the question timed out, please try again later",
-    "description": "Message on the webpage informing users that answering the question timed out, please try again later"
+    "message": "Response timed out, please try again later",
+    "description": "Message in the webpage informing the user that the response timed out, please try again later"
   },
   "message.errorNotApplied": {
-    "message": "You have not applied for this service yet. Please apply first before continuing to ask questions.",
-    "description": "A message on the webpage informing the user that they have not applied for this service yet and need to apply before continuing to ask questions."
+    "message": "You have not applied for this service, please apply first before continuing to ask questions",
+    "description": "Message in the webpage informing the user that they have not applied for this service and should apply first before continuing to ask questions"
   },
   "message.confirmDelete": {
-    "message": "Confirm Delete",
-    "description": "A message on the webpage asking the user to confirm deletion."
+    "message": "Confirm deletion",
+    "description": "Message in the webpage informing the user to confirm deletion"
   },
   "message.howToUse": {
-    "message": "AI may make mistakes. Please verify important information.",
-    "description": "A message on the webpage informing the user that AI may make mistakes and they should verify important information."
+    "message": "AI may make mistakes, please check important information.",
+    "description": "Message in the webpage informing the user that AI may make mistakes and they should check important information"
   },
   "title.chat": {
     "message": "AI Chat",
-    "description": "The title of the webpage, which refers to AI chat."
+    "description": "Title of the webpage, which is AI Chat"
   },
   "title.example": {
     "message": "Example",
-    "description": "The title of the webpage, which refers to an example."
+    "description": "Title of the webpage, which is Example"
   },
   "title.capabilities": {
     "message": "Capabilities",
-    "description": "The title of the webpage, which refers to capabilities."
+    "description": "Title of the webpage, which is Capabilities"
   },
   "title.limitations": {
     "message": "Limitations",
-    "description": "The title on the webpage indicating that this section is about the technical limitations of the service."
+    "description": "Title in the webpage indicating that this section is about the technical limitations of the service"
   },
   "title.complexQuestion": {
     "message": "Answering Complex Questions",
-    "description": "The title on the webpage indicating that this section is about the service's ability to answer complex questions."
+    "description": "Title in the webpage indicating that this section is about the service's ability to answer complex questions"
   },
   "title.professionalQuestion": {
     "message": "Consulting Professional Questions",
-    "description": "The title on the webpage indicating that this section is about the service's ability to consult on professional questions."
+    "description": "Title in the webpage indicating that this section is about the service's ability to consult on professional questions"
   },
   "title.getTips": {
     "message": "Get Inspiration and Ideas",
-    "description": "The title on the webpage indicating that this section is about the service's ability to provide inspiration and ideas."
+    "description": "Title in the webpage indicating that this section is about the service's ability to get inspiration and ideas"
   },
   "group.today": {
     "message": "Today",
-    "description": "A group name on the webpage, which refers to today."
+    "description": "Grouping name in the webpage, which is Today"
   },
   "group.yesterday": {
     "message": "Yesterday",
-    "description": "A group name on the webpage, which refers to yesterday."
+    "description": "Grouping name in the webpage, which is Yesterday"
   },
   "group.thisWeek": {
     "message": "This Week",
-    "description": "A group name on the webpage, which refers to this week."
+    "description": "Grouping name in the webpage, which is This Week"
   },
   "group.earlier": {
     "message": "Earlier",
-    "description": "A group name on the webpage, which refers to earlier."
+    "description": "Grouping name in the webpage, which is Earlier"
   }
 }

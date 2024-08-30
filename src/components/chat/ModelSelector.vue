@@ -40,7 +40,8 @@ import {
   CHAT_MODEL_GPT_3_5_BROWSING,
   CHAT_MODEL_GPT_4,
   CHAT_MODEL_GPT_4_BROWSING,
-  CHAT_MODEL_GPT_4_VISION
+  CHAT_MODEL_GPT_4_VISION,
+  CHAT_MODEL_GPT_4_ALL
 } from '@/constants';
 
 export default defineComponent({
@@ -79,6 +80,11 @@ export default defineComponent({
           icon: 'fa-solid fa-wand-magic-sparkles',
           color: '#ce65e6',
           model: CHAT_MODEL_GPT_4_VISION
+        },
+        {
+          icon: 'fa-solid fa-wand-magic-sparkles',
+          color: '#ce65e6',
+          model: CHAT_MODEL_GPT_4_ALL
         }
       ]
     };
@@ -91,7 +97,8 @@ export default defineComponent({
         CHAT_MODEL_GPT_3_5_BROWSING,
         CHAT_MODEL_GPT_4,
         CHAT_MODEL_GPT_4_BROWSING,
-        CHAT_MODEL_GPT_4_VISION
+        CHAT_MODEL_GPT_4_VISION,
+        CHAT_MODEL_GPT_4_ALL
       ].find((model) => model.name === modelName);
       return model;
     }
