@@ -19,11 +19,13 @@ import {
   initializeSite,
   initializeTitle,
   initializeCurrency,
-  initializeExchangeRate
+  initializeExchangeRate,
+  initializeRedirect
 } from './utils/initializer';
 
 const main = async () => {
   // async and need to await
+  await initializeRedirect();
   await initializeCookies();
   await initializeToken();
   await initializeUser();
