@@ -4,7 +4,8 @@ import { getLocale } from '@/i18n';
 import store from '@/store';
 import { IToken } from '@/models';
 import psl from 'psl';
-import { LOCALE_CURRENCY_MAPPING } from '@/constants';
+import { BASE_HOST_HUB, LOCALE_CURRENCY_MAPPING } from '@/constants';
+import { isSubOfficial, isWechatBrowser } from './is';
 
 export const getDomain = (host: string = window.location.hostname) => {
   const parsed = psl.parse(host);
@@ -201,4 +202,15 @@ export const initializeExchangeRate = async () => {
   const payload = { source, target };
   console.debug('initialize exchange rate', payload);
   await store.dispatch('getExchangeRate', payload);
+};
+
+export const initializeRedirect = async () => {
+  if (!isSubOfficial() && isWechatBrowser()) {
+    console.debug('redirect to sub domain with prefix');
+    // redirect from hub.acedata.cloud to dynamic date like 20240802.hub.acedata.cloud
+    const date = new Date().toISOString().split('T')[0].replace(/-/g, '');
+    const newUrl = window.location.href.replace(BASE_HOST_HUB, `${date}.${BASE_HOST_HUB}`);
+    console.debug('redirect to', newUrl);
+    window.location.href = newUrl;
+  }
 };

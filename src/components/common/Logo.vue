@@ -4,7 +4,8 @@
 
 <script lang="ts">
 import { getCookie } from 'typescript-cookie';
-import { BASE_URL_HUB } from '@/constants';
+import { BASE_HOST_HUB } from '@/constants';
+import { isOfficial } from '@/utils';
 
 export default {
   emits: ['click'],
@@ -14,7 +15,7 @@ export default {
       url2: 'https://cdn.acedata.cloud/logo2.png/thumb_450x_',
       dark: getCookie('THEME') === 'dark',
       url: '',
-      isOfficial: window.location.origin === BASE_URL_HUB,
+      isOfficial: isOfficial(),
       interval: undefined as number | undefined
     };
   },

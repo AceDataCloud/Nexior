@@ -33,7 +33,8 @@ import {
   ROUTE_INDEX
 } from '@/router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { BASE_URL_HUB } from '@/constants';
+import { BASE_HOST_HUB } from '@/constants';
+import { isOfficial } from '@/utils';
 
 interface ILink {
   key: string;
@@ -51,7 +52,7 @@ export default defineComponent({
   },
   computed: {
     isOfficial() {
-      return window.location.origin === BASE_URL_HUB;
+      return isOfficial();
     },
     active() {
       return this.$route.matched[0].path;
