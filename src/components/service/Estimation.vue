@@ -4,6 +4,14 @@
       <div v-for="(item, itemIndex) in api?.estimation" :key="itemIndex" class="items">
         <p v-if="package?.amount && item?.cost" class="item">
           ≈ {{ item.name }} {{ Math.round(package.amount / item.cost) }} {{ $t('api.unit.count') }}
+          <span v-if="package.price > 0">
+            -
+            {{
+              getPriceString({ value: package.price / (package.amount / item.cost), fractionDigits: 3 }) +
+              ' / ' +
+              $t(`api.unit.count`)
+            }}
+          </span>
           <span v-if="item.remark"> ({{ item.remark }}) </span>
           <span v-if="item?.comparisons?.length > 0"> - </span>
           <span v-for="(comparison, comparisonIndex) in item?.comparisons" :key="comparisonIndex" class="comparison">
@@ -25,6 +33,7 @@
 <script lang="ts">
 import { IService, IPackage } from '@/operators';
 import { defineComponent } from 'vue';
+import { getPriceString } from '@/utils';
 
 export default defineComponent({
   name: 'ServiceEstimation',
@@ -38,6 +47,9 @@ export default defineComponent({
       type: Object as () => IPackage | undefined,
       required: true
     }
+  },
+  methods: {
+    getPriceString
   }
 });
 </script>
