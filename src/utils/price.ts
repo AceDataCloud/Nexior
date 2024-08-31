@@ -28,8 +28,12 @@ export const getPrice = (payload: { value: number; currency?: string }) => {
   };
 };
 
-export const getPriceString = (payload: { value: number | undefined; defaultValue?: number | undefined }) => {
-  let { value, defaultValue } = payload;
+export const getPriceString = (payload: {
+  value: number | undefined;
+  defaultValue?: number | undefined;
+  fractionDigits?: number | undefined;
+}) => {
+  let { value, defaultValue, fractionDigits = 2 } = payload;
   if (value === undefined) {
     value = defaultValue;
   }
@@ -39,5 +43,5 @@ export const getPriceString = (payload: { value: number | undefined; defaultValu
   const price = getPrice({
     value
   });
-  return `${price.label}${price.value?.toFixed(2)}`;
+  return `${price.label}${price.value?.toFixed(fractionDigits)}`;
 };
