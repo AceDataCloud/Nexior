@@ -35,10 +35,12 @@
         <el-button type="primary" class="float-right" size="small" round @click="onLogin">{{
           $t('common.button.login')
         }}</el-button>
+        <language-selector class="locale float-right mr-4" />
         <dark-selector class="float-right mr-4" />
       </div>
       <div v-else class="float-right">
         <dark-selector />
+        <language-selector class="locale" />
         <div class="console" @click="onConsole">
           {{ $t('common.button.console') }}
         </div>
@@ -63,6 +65,7 @@ import { getBaseUrlAuth } from '@/utils';
 import { ROUTE_AUTH_LOGIN, ROUTE_CONSOLE_ROOT, ROUTE_INDEX } from '@/router';
 import { ElCol, ElRow, ElDropdown, ElMenu, ElSubMenu, ElMenuItem, ElDropdownItem, ElButton } from 'element-plus';
 import DarkSelector from './DarkSelector2.vue';
+import LanguageSelector from './LanguageSelector.vue';
 import Logo from './Logo.vue';
 
 export default defineComponent({
@@ -77,7 +80,8 @@ export default defineComponent({
     ElMenuItem,
     ElDropdownItem,
     ElButton,
-    ElSubMenu
+    ElSubMenu,
+    LanguageSelector
   },
   data() {
     return {
@@ -197,6 +201,7 @@ $height: 60px;
   .locale {
     cursor: pointer;
     display: inline-block;
+    margin-left: 10px; // Add left margin if needed
   }
 }
 @media only screen and (max-width: 768px) {
