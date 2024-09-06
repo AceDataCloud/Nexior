@@ -32,6 +32,16 @@
               {{ $t('luma.button.extend') }}
             </el-button>
           </el-tooltip>
+          <el-tooltip class="box-item" effect="dark" :content="$t('luma.message.downloadVideo')" placement="top-start">
+            <el-button
+              type="info"
+              size="small"
+              class="btn-action"
+              @click="onDownload($event, modelValue?.response?.video_url)"
+            >
+              {{ $t('luma.button.download') }}
+            </el-button>
+          </el-tooltip>
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p class="description">
@@ -144,6 +154,12 @@ export default defineComponent({
         video_url: response.video_url
       });
     },
+    onDownload(event: MouseEvent, video_url: string) {
+      event.stopPropagation();
+      console.log('on download');
+      // download url here
+      window.open(video_url, '_blank');
+    },
     onReload(event: Event) {
       const target = event.target as HTMLImageElement;
       // append a random url query to existing url query, to force reload the image
@@ -165,13 +181,6 @@ export default defineComponent({
     },
     onOpenVideo(url: string) {
       window.open(url, '_blank');
-    },
-    onDownload(url: string) {
-      // download image using javascript
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = url.split('/').pop() as string;
-      link.click();
     }
   }
 });
