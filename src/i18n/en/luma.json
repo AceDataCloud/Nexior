@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "Type",
-    "description": "The content type of the QR code to be generated, such as 'link', 'text', etc."
+    "description": "The content type of the generated QR code, such as 'link', 'text', etc."
   },
   "name.failure": {
     "message": "Failure",
@@ -28,7 +28,7 @@
     "description": "The size of the QR code to be generated"
   },
   "name.createdAt": {
-    "message": "Creation Time",
+    "message": "Created At",
     "description": "The date and time when the QR code was generated"
   },
   "name.pixelStyle": {
@@ -37,15 +37,15 @@
   },
   "name.startImageUrl": {
     "message": "Start Frame Image",
-    "description": "The seed for generating the QR code"
+    "description": "The seed for the QR code to be generated"
   },
   "name.videoUrl": {
     "message": "Custom Video",
-    "description": "The seed for generating the QR code"
+    "description": "The seed for the QR code to be generated"
   },
   "name.endImageUrl": {
     "message": "End Frame Image",
-    "description": "The seed for generating the QR code"
+    "description": "The seed for the QR code to be generated"
   },
   "name.paddingLevel": {
     "message": "Padding Level",
@@ -69,7 +69,7 @@
   },
   "name.prompt": {
     "message": "Video Prompt",
-    "description": "The prompt for content input"
+    "description": "Prompt for inputting content"
   },
   "name.rotate": {
     "message": "Rotation Angle",
@@ -81,14 +81,14 @@
   },
   "name.custom": {
     "message": "Custom Video Extension",
-    "description": "Custom extension video"
+    "description": "Custom extended video"
   },
   "name.extend": {
     "message": "Extend Video From",
-    "description": "The prompt for content input"
+    "description": "Prompt for inputting content"
   },
   "name.loop": {
-    "message": "Video Loop",
+    "message": "Video Looping",
     "description": "Advanced settings for the QR code to be generated"
   },
   "name.aspectRatio": {
@@ -120,7 +120,7 @@
     "description": "The name of the Luma video generator"
   },
   "name.contentImageUrl": {
-    "message": "Content Image Link",
+    "message": "Content Image URL",
     "description": "The content image URL of the QR code to be generated"
   },
   "inputWay.input": {
@@ -136,36 +136,36 @@
     "description": "Description of the parameter 'qrw'"
   },
   "description.enhancement": {
-    "message": "If you are unsure how to write prompt text, enable the enhancement for input prompt text.",
+    "message": "Enable the enhancement for input prompts if you're unsure how to write prompt text.",
     "description": "Description of the parameter 'qrw'"
   },
   "description.custom": {
-    "message": "If you want to upload your own video to extend the video, please enable this button.",
+    "message": "Enable this button if you want to upload your own video to extend the video.",
     "description": "Description of the parameter 'qrw'"
   },
   "description.startImageUrl": {
-    "message": "The URL of the start frame image, which will be the first frame of the generated video.",
+    "message": "URL of the start frame image, which will be the first frame of the generated video.",
     "description": "Description of the parameter 'steps'"
   },
   "description.videoUrl": {
-    "message": "Upload the URL of the custom extended video, which will be the video for the extended video.",
+    "message": "Upload the URL of the custom extended video, which will be the video for extension.",
     "description": "Description of the parameter 'steps'"
   },
   "description.endImageUrl": {
-    "message": "The URL of the end frame image, which will be the last frame of the generated video.",
+    "message": "URL of the end frame image, which will be the last frame of the generated video.",
     "description": "Description of the parameter 'steps'"
   },
   "description.prompt": {
-    "message": "Prompt words for generating Luma video",
+    "message": "Prompt text for generating Luma videos",
     "description": "Description of the parameter 'prompt'"
   },
   "status.pending": {
     "message": "Pending",
-    "description": "The waiting status of the task"
+    "description": "The pending status of the task"
   },
   "status.processing": {
     "message": "Processing",
-    "description": "The waiting status of the task"
+    "description": "The processing status of the task"
   },
   "placeholder.paddingNoise": {
     "message": "Please select...",
@@ -176,15 +176,15 @@
     "description": "Placeholder for padding level"
   },
   "placeholder.prompt": {
-    "message": "Enter prompt words for the style of the video to be generated, e.g.: Astronauts shuttle from space to volcano",
+    "message": "Enter the prompt text for the style of the video to be generated, e.g. Astronauts shuttle from space to volcano",
     "description": "Placeholder text in the prompt field"
   },
   "placeholder.startImageUrl": {
-    "message": "Start Frame Image Link",
+    "message": "Start Frame Image URL",
     "description": "Placeholder for seed input"
   },
   "placeholder.endImageUrl": {
-    "message": "End Frame Image Link",
+    "message": "End Frame Image URL",
     "description": "Placeholder for seed input"
   },
   "placeholder.position": {
@@ -192,28 +192,28 @@
     "description": "Placeholder for position input"
   },
   "placeholder.content": {
-    "message": "Enter the content of the QR code to be generated, e.g.: https://www.google.com",
+    "message": "Enter the content for the QR code to be generated, e.g. https://www.google.com",
     "description": "Placeholder text in the content field"
   },
   "placeholder.aspectRatio": {
     "message": "Please select...",
-    "description": "Placeholder for the aspect ratio input"
+    "description": "Placeholder for aspect ratio input"
   },
   "placeholder.preset": {
     "message": "Please select...",
-    "description": "Placeholder for the preset input"
+    "description": "Placeholder for preset input"
   },
   "placeholder.markerShape": {
     "message": "Please select...",
-    "description": "Placeholder for the marker shape input"
+    "description": "Placeholder for marker shape input"
   },
   "placeholder.rotate": {
     "message": "Please select...",
-    "description": "Placeholder for the rotate input"
+    "description": "Placeholder for rotate input"
   },
   "placeholder.subMarker": {
     "message": "Please select...",
-    "description": "Placeholder for the sub-marker input"
+    "description": "Placeholder for sub-marker input"
   },
   "button.generate": {
     "message": "Generate",
@@ -223,17 +223,21 @@
     "message": "Extend Video",
     "description": "Button text to extend video"
   },
+  "button.download": {
+    "message": "Download Video",
+    "description": "Button text to download video"
+  },
   "button.uploadStartImageUrl": {
     "message": "Upload Image",
-    "description": "Button text to upload QR code"
+    "description": "Button text to upload a QR code image"
   },
   "button.uploadVideoUrl": {
     "message": "Upload Video",
-    "description": "Button text to upload QR code"
+    "description": "Button text to upload a QR code video"
   },
   "button.uploadEndImageUrl": {
     "message": "Upload Image",
-    "description": "Button text to upload QR code"
+    "description": "Button text to upload a QR code image"
   },
   "preset.sunset": {
     "message": "Sunset",
@@ -296,7 +300,7 @@
     "description": "Preset style for generating QR code"
   },
   "preset.cinematicWarm": {
-    "message": "Cinematic Warm",
+    "message": "Cinematic Warmth",
     "description": "Preset style for generating QR code"
   },
   "preset.desolateWilderness": {
@@ -332,20 +336,20 @@
     "description": "Preset style for generating QR code"
   },
   "message.uploadQr": {
-    "message": "Upload QR code image, to create an artistic QR code that matches the QR code content",
-    "description": "Instruction for uploading QR code"
+    "message": "Upload QR code image to generate an artistic QR code that matches the QR content",
+    "description": "Instructions for uploading QR code"
   },
   "message.promptPlaceholder": {
-    "message": "Please enter a sentence describing the image to generate, for example: a cute cat. Additional parameters will override the default preset parameters",
-    "description": "Placeholder text in the prompt field"
+    "message": "Please enter a sentence describing the image to generate, e.g., a cute cat. Additional parameters will override default preset parameters.",
+    "description": "Placeholder text in prompt field"
   },
   "message.uploadReferencesExceed": {
-    "message": "A maximum of 5 images can be uploaded",
-    "description": "Error message when the number of uploaded images exceeds the limit"
+    "message": "You can upload up to 5 images",
+    "description": "Error message when the uploaded image count exceeds the limit"
   },
   "message.uploadReferencesSuccess": {
     "message": "Image uploaded successfully",
-    "description": "Success message when the image is uploaded successfully"
+    "description": "Success message when an image is uploaded successfully"
   },
   "message.uploadReferencesError": {
     "message": "Image upload failed, please try again later",
@@ -357,27 +361,31 @@
   },
   "message.startTaskSuccess": {
     "message": "Task initiated successfully",
-    "description": "Success message when the task is started successfully"
+    "description": "Success message when task is started successfully"
   },
   "message.startTaskFailed": {
-    "message": "Task initiation failed, please contact the administrator",
-    "description": "Error message when starting drawing task fails"
+    "message": "Failed to initiate task, please contact the administrator",
+    "description": "Error message when drawing task initiation fails"
   },
   "message.usedUp": {
-    "message": "Your credits have been exhausted, please purchase more credits to continue",
+    "message": "Your credits are exhausted, please purchase more credits to continue using",
     "description": "Message when credits are used up"
   },
   "message.generating": {
     "message": "Generating...",
     "description": "Message when the image is being generated"
   },
+  "message.downloadVideo": {
+    "message": "Download this video",
+    "description": "Message displayed while the image is being generated"
+  },
   "message.extendVideo": {
     "message": "Continue generating this video",
-    "description": "Message when the image is being generated"
+    "description": "Message displayed while the image is being generated"
   },
   "message.generateFailed": {
     "message": "Image generation failed",
-    "description": "Message when image generation fails"
+    "description": "Message displayed when image generation fails"
   },
   "message.uploadVideoExceed": {
     "message": "The number of uploaded first frame images exceeds the limit",
@@ -385,11 +393,11 @@
   },
   "message.uploadVideoSizeExceed": {
     "message": "Uploaded file size cannot exceed 10MB!",
-    "description": "Error message when uploaded file size cannot exceed 10MB!"
+    "description": "Error message when uploaded file size exceeds 10MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Uploaded file must be in MP4 format!",
-    "description": "Error message when uploaded file must be in MP4 format!"
+    "description": "Error message when uploaded file is not in MP4 format!"
   },
   "message.uploadStartImageExceed": {
     "message": "The number of uploaded first frame images exceeds the limit",
@@ -400,28 +408,28 @@
     "description": "Error message when the number of uploaded last frame images exceeds the limit"
   },
   "message.uploadStartImageError": {
-    "message": "Failed to upload the first frame image",
-    "description": "Error message when uploading the first frame image fails"
+    "message": "Failed to upload first frame image",
+    "description": "Error message when failed to upload the first frame image"
   },
   "message.uploadVideoError": {
     "message": "Failed to upload video",
-    "description": "Error message when uploading the first frame image fails"
+    "description": "Error message when failed to upload the video"
   },
   "message.uploadEndImageError": {
-    "message": "Failed to upload the last frame image",
-    "description": "Error message when uploading the last frame image fails"
+    "message": "Failed to upload last frame image",
+    "description": "Error message when failed to upload the last frame image"
   },
   "message.uploadDocumentsError": {
     "message": "Failed to upload document",
-    "description": "Error message when uploading a document fails"
+    "description": "Error message when failed to upload the document"
   },
   "message.noOperations": {
     "message": "No available operations",
-    "description": "Message when there are no available operations"
+    "description": "Message displayed when there are no available operations"
   },
   "message.noTasks": {
-    "message": "No historical tasks, please click to generate video on the left",
-    "description": "Message when there are no tasks"
+    "message": "No history tasks, please click on the left to generate video",
+    "description": "Message displayed when there are no tasks"
   },
   "markerShape.square": {
     "message": "Square",
@@ -453,23 +461,23 @@
   },
   "subMarker.square": {
     "message": "Square",
-    "description": "Sub-marker shape used for generating QR codes"
+    "description": "Sub marker shape used for generating QR codes"
   },
   "subMarker.circle": {
     "message": "Circle",
-    "description": "Sub-marker shape used for generating QR codes"
+    "description": "Sub marker shape used for generating QR codes"
   },
   "subMarker.plus": {
     "message": "Plus",
-    "description": "Sub-marker shape used for generating QR codes"
+    "description": "Sub marker shape used for generating QR codes"
   },
   "subMarker.box": {
     "message": "Box",
-    "description": "Sub-marker shape used for generating QR codes"
+    "description": "Sub marker shape used for generating QR codes"
   },
   "subMarker.random": {
     "message": "Random",
-    "description": "Sub-marker shape used for generating QR codes"
+    "description": "Sub marker shape used for generating QR codes"
   },
   "position.center": {
     "message": "Center",
