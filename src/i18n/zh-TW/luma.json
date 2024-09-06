@@ -40,7 +40,7 @@
     "description": "要生成的 QR 碼的種子"
   },
   "name.videoUrl": {
-    "message": "自定義視頻",
+    "message": "自訂影片",
     "description": "要生成的 QR 碼的種子"
   },
   "name.endImageUrl": {
@@ -68,7 +68,7 @@
     "description": "要生成的 QR 碼的位置"
   },
   "name.prompt": {
-    "message": "視頻提示",
+    "message": "影片提示",
     "description": "內容輸入的提示"
   },
   "name.rotate": {
@@ -80,15 +80,15 @@
     "description": "要生成的 QR 碼的高級設置"
   },
   "name.custom": {
-    "message": "自定義視頻擴展",
-    "description": "自定義擴展視頻"
+    "message": "自訂影片擴展",
+    "description": "自訂擴展影片"
   },
   "name.extend": {
-    "message": "擴展視頻來自",
+    "message": "擴展影片來自",
     "description": "內容輸入的提示"
   },
   "name.loop": {
-    "message": "視頻循環播放",
+    "message": "影片循環播放",
     "description": "要生成的 QR 碼的高級設置"
   },
   "name.aspectRatio": {
@@ -117,10 +117,10 @@
   },
   "name.lumaBot": {
     "message": "Luma Bot",
-    "description": "Luma 視頻生成器的名稱"
+    "description": "Luma 影片生成器的名稱"
   },
   "name.contentImageUrl": {
-    "message": "內容圖片鏈接",
+    "message": "內容圖片連結",
     "description": "要生成的 QR 碼的內容圖片 URL"
   },
   "inputWay.input": {
@@ -128,11 +128,11 @@
     "description": "輸入方式"
   },
   "inputWay.upload": {
-    "message": "上傳二維碼",
+    "message": "上傳QR碼",
     "description": "輸入方式"
   },
   "description.loop": {
-    "message": "為生成的視頻啟用循環。",
+    "message": "為生成的影片啟用循環。",
     "description": "參數'qrw'的描述"
   },
   "description.enhancement": {
@@ -140,23 +140,23 @@
     "description": "參數'qrw'的描述"
   },
   "description.custom": {
-    "message": "如果您想上傳自己的視頻來擴展視頻，請打開此按鈕。",
+    "message": "如果您想上傳自己的影片來擴展影片，請打開此按鈕。",
     "description": "參數'qrw'的描述"
   },
   "description.startImageUrl": {
-    "message": "首幀圖像的 URL，它將是生成視頻的第一幀。",
+    "message": "首幀圖像的 URL，它將是生成影片的第一幀。",
     "description": "參數'steps'的描述"
   },
   "description.videoUrl": {
-    "message": "上傳自定義擴展的視頻 URL，它將是擴展視頻的視頻。",
+    "message": "上傳自訂擴展的影片URL，它將是擴展影片的影片。",
     "description": "參數'steps'的描述"
   },
   "description.endImageUrl": {
-    "message": "尾幀圖像的 URL，它將是生成視頻的最後一幀。",
+    "message": "尾幀圖像的 URL，它將是生成影片的最後一幀。",
     "description": "參數'steps'的描述"
   },
   "description.prompt": {
-    "message": "生成 Luma 視頻的提示詞",
+    "message": "生成Luma影片的提示詞",
     "description": "參數'prompt'的描述"
   },
   "status.pending": {
@@ -176,15 +176,15 @@
     "description": "填充級別的佔位符"
   },
   "placeholder.prompt": {
-    "message": "輸入要生成的視頻風格的提示詞，例如：Astronauts shuttle from space to volcano",
+    "message": "輸入要生成的影片風格的提示詞，例如：宇航員從太空穿梭到火山",
     "description": "提示字段中的佔位文本"
   },
   "placeholder.startImageUrl": {
-    "message": "首幀圖片鏈接",
+    "message": "首幀圖片連結",
     "description": "種子輸入的佔位符"
   },
   "placeholder.endImageUrl": {
-    "message": "尾幀圖片鏈接",
+    "message": "尾幀圖片連結",
     "description": "種子輸入的佔位符"
   },
   "placeholder.position": {
@@ -192,7 +192,7 @@
     "description": "位置輸入的佔位符"
   },
   "placeholder.content": {
-    "message": "輸入要生成的 QR 碼的內容，例如：https://www.google.com",
+    "message": "輸入要生成的 QR 碼的內容，例如： https://www.google.com",
     "description": "內容字段中的佔位文本"
   },
   "placeholder.aspectRatio": {
@@ -222,6 +222,10 @@
   "button.extend": {
     "message": "擴展視頻",
     "description": "擴展視頻按鈕文本"
+  },
+  "button.download": {
+    "message": "下載視頻",
+    "description": "下載視頻按鈕文本"
   },
   "button.uploadStartImageUrl": {
     "message": "上傳圖片",
@@ -268,7 +272,7 @@
     "description": "要生成的 QR 碼的預設風格"
   },
   "preset.symmetricMasterpiece": {
-    "message": "對稱杰作",
+    "message": "對稱傑作",
     "description": "要生成的 QR 碼的預設風格"
   },
   "preset.luminousHighway": {
@@ -320,7 +324,7 @@
     "description": "要生成的 QR 碼的預設風格"
   },
   "preset.illustriousCanvas": {
-    "message": "杰出畫布",
+    "message": "傑出畫布",
     "description": "要生成的 QR 碼的預設風格"
   },
   "preset.expressiveMural": {
@@ -371,6 +375,10 @@
     "message": "生成中...",
     "description": "圖像正在生成時的消息"
   },
+  "message.downloadVideo": {
+    "message": "下載此視頻",
+    "description": "圖像正在生成時的消息"
+  },
   "message.extendVideo": {
     "message": "繼續生成此視頻",
     "description": "圖像正在生成時的消息"
@@ -384,12 +392,12 @@
     "description": "上傳首幀圖片數量超過限制時的錯誤信息"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "上傳檔案大小不能超過 10MB!",
-    "description": "上傳檔案大小不能超過 10MB!時的錯誤信息"
+    "message": "上傳文件大小不能超過 10MB!",
+    "description": "上傳文件大小不能超過 10MB!時的錯誤信息"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "上傳檔案必須是 MP4 格式!",
-    "description": "上傳檔案必須是 MP4 格式!的錯誤信息"
+    "message": "上傳文件必須是 MP4 格式!",
+    "description": "上傳文件必須是 MP4 格式!的錯誤信息"
   },
   "message.uploadStartImageExceed": {
     "message": "上傳首幀圖片數量超過限制",
@@ -548,7 +556,7 @@
     "description": "用於生成QR碼的內容類型"
   },
   "type.sms": {
-    "message": "簡訊",
+    "message": "短信",
     "description": "用於生成QR碼的內容類型"
   }
 }
