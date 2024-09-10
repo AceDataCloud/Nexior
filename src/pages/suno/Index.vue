@@ -168,7 +168,7 @@ export default defineComponent({
         console.error('no token specified');
         return;
       }
-      ElMessage.success(this.$t('suno.message.startingTask'));
+      ElMessage.info(this.$t('suno.message.startingTask'));
       sunoOperator
         .audio(request, {
           token
