@@ -168,7 +168,7 @@ export default defineComponent({
         console.error('no token specified');
         return;
       }
-      ElMessage.success(this.$t('suno.message.startingTask'));
+      ElMessage.info(this.$t('suno.message.startingTask'));
       sunoOperator
         .audio(request, {
           token
@@ -176,8 +176,8 @@ export default defineComponent({
         .then(() => {
           ElMessage.success(this.$t('suno.message.startTaskSuccess'));
         })
-        .catch(() => {
-          ElMessage.error(this.$t('suno.message.startTaskFailed'));
+        .catch((error) => {
+          ElMessage.error(error?.response?.data?.error?.message || this.$t('suno.message.startTaskFailed'));
         })
         .finally(async () => {
           await this.onGetTasks();
