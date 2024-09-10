@@ -176,8 +176,8 @@ export default defineComponent({
         .then(() => {
           ElMessage.success(this.$t('suno.message.startTaskSuccess'));
         })
-        .catch(() => {
-          ElMessage.error(this.$t('suno.message.startTaskFailed'));
+        .catch((error) => {
+          ElMessage.error(error.respnse.data.error.message);
         })
         .finally(async () => {
           await this.onGetTasks();

@@ -10,7 +10,7 @@
       type="textarea"
       class="style"
       :placeholder="$t('suno.placeholder.style')"
-      :maxlength="300"
+      :maxlength="120"
       show-word-limit
     />
   </div>
