@@ -15,7 +15,11 @@
           {{ modelValue?.request?.prompt }}
           <span v-if="!modelValue?.response"> - ({{ $t('luma.status.pending') }}) </span>
           <span
-            v-if="modelValue?.response?.data?.state === 'processing' || modelValue?.response?.data?.state === 'pending'"
+            v-if="
+              modelValue?.response?.data?.state === 'processing' ||
+              modelValue?.response?.data?.state === 'pending' ||
+              modelValue?.response?.data?.state === 'completed'
+            "
           >
             - ({{ $t('luma.status.processing') }})
           </span>
