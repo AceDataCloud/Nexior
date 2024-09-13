@@ -31,6 +31,9 @@
                   <el-form-item :label="$t('application.field.package')" class="mb-0">
                     <el-radio-group v-if="packages" v-model="form.packageId">
                       <el-radio-button v-for="(pkg, pkgIndex) in packages" :key="pkgIndex" :label="pkg.id" class="mb-2">
+                        <span v-show="pkgIndex !== 0" class="corner">
+                          {{ getDiscount(pkg) }}
+                        </span>
                         {{ pkg.amount }} {{ $t(`service.unit.${application?.service?.unit}s`) }}
                       </el-radio-button>
                     </el-radio-group>
@@ -122,6 +125,7 @@ interface IData {
     packageId: string | undefined;
   };
   type: string;
+  lang: string;
   creating: boolean;
 }
 
@@ -143,6 +147,7 @@ export default defineComponent({
   },
   data(): IData {
     return {
+      lang: this.$i18n.locale,
       application: undefined,
       loading: false,
       type: 'Usage',
@@ -183,6 +188,22 @@ export default defineComponent({
     this.onFetchApplication();
   },
   methods: {
+    getDiscount(pkg: any) {
+      if (this.packages && this.packages.length > 0) {
+        if (this.lang?.startsWith('zh')) {
+          return (
+            // @ts-ignore
+            ((10 * pkg?.price) / pkg?.amount / (this.packages[0].price / this.packages[0]?.amount))?.toFixed(1) + '折'
+          );
+        } else {
+          return (
+            Math.round(100 - (100 * pkg?.price) / pkg?.amount / (this.packages[0].price / this.packages[0]?.amount)) +
+            '% OFF'
+          );
+        }
+      }
+      return '';
+    },
     onSubscribe() {
       this.$router.push({
         name: ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
@@ -253,6 +274,26 @@ export default defineComponent({
   font-weight: bold;
   margin-bottom: 20px;
   color: var(--el-text-color-primary);
+}
+
+.el-form {
+  .el-radio-group {
+    .el-radio-button {
+      position: relative;
+      .corner {
+        position: absolute;
+        top: -13px;
+        right: 0px;
+        font-size: 12px;
+        border: 1px solid #ff7200;
+        color: #ff7200;
+        background-color: #ffe8d5;
+        border-radius: 3px;
+        padding: 2px 5px;
+        z-index: 1000;
+      }
+    }
+  }
 }
 
 .panel {
