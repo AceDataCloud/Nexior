@@ -24,6 +24,7 @@ class ChatOperator {
           'Content-Type': 'application/json',
           Accept: 'text/event-stream'
         },
+        signal: options.signal,
         body: JSON.stringify(data)
       })
         .then((response) => {
