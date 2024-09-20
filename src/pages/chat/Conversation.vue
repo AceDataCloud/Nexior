@@ -228,7 +228,6 @@ export default defineComponent({
         return;
       }
       let conversationId = this.conversationId;
-      this.canceler = new AbortController();
       chatOperator
         .updateConversation(
           {
@@ -237,8 +236,7 @@ export default defineComponent({
             messages: updatedMessages
           },
           {
-            token,
-            signal: this.canceler.signal
+            token
           }
         )
         .then(async () => {
