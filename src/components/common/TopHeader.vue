@@ -17,16 +17,6 @@
           <el-menu-item v-if="site?.features?.suno?.enabled" v-t="'index.title.suno'" index="/suno"></el-menu-item>
           <el-menu-item v-if="site?.features?.luma?.enabled" v-t="'index.title.luma'" index="/luma"></el-menu-item>
         </el-sub-menu>
-        <el-menu-item
-          v-t="'common.nav.apiPlatform'"
-          @route="undefined"
-          @click="openTab('https://platform.acedata.cloud')"
-        ></el-menu-item>
-        <el-menu-item
-          v-t="'common.nav.support'"
-          @route="undefined"
-          @click="openTab('https://platform.acedata.cloud/support')"
-        ></el-menu-item>
         <el-menu-item v-t="'common.nav.referral'" index="/distribution"></el-menu-item>
       </el-menu>
     </el-col>
