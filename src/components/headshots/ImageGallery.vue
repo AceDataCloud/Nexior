@@ -2,7 +2,7 @@
   <div class="image-gallery">
     <div v-for="(image, index) in images" :key="index" class="image-container">
       <img :src="image.image_url" alt="Image" />
-      <button class="view-button" @click="viewImage(image.image_url)">View Image</button>
+      <button class="view-button" @click="viewImage(image.image_url)">{{ $t('headshots.button.viewImage') }}</button>
     </div>
   </div>
 </template>
