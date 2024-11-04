@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Fri, 20 Sep 2024 03:23:51 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Nov 2024 09:44:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.11.24
+
+Mon, 04 Nov 2024 09:44:43 GMT
+
+### Patches
+
+- add headshots ux (1348977728@qq.com)
 
 ## 2.11.23
 
