@@ -5,52 +5,35 @@
     </div>
     <div class="main">
       <div class="bot">
-        {{ $t('luma.name.lumaBot') }}
+        {{ $t('headshots.name.headshotsBot') }}
         <span class="datetime">
           {{ $dayjs.format('' + new Date(parseFloat(modelValue?.created_at || '') * 1000)) }}
         </span>
       </div>
       <div class="info">
-        <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
-          {{ modelValue?.request?.prompt }}
-          <span v-if="!modelValue?.response"> - ({{ $t('luma.status.pending') }}) </span>
-          <span
+        <p v-if="modelValue?.request?.template" class="prompt mt-2">
+          {{ modelValue?.request?.template }}
+          <span v-if="!modelValue?.response"> - ({{ $t('headshots.status.pending') }}) </span>
+          <!-- <span
             v-if="
               modelValue?.response?.data?.state === 'processing' ||
               modelValue?.response?.data?.state === 'pending' ||
               modelValue?.response?.data?.state === 'completed'
             "
           >
-            - ({{ $t('luma.status.processing') }})
-          </span>
+            - ({{ $t('headshots.status.processing') }})
+          </span> -->
         </p>
       </div>
       <!-- Display success message -->
       <div v-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">
         <div class="image-wrapper">
-          <VideoPlayer :model-value="modelValue" />
-        </div>
-        <div v-if="modelValue?.response && !config?.custom" :class="{ operations: true, 'mt-2': true }">
-          <el-tooltip class="box-item" effect="dark" :content="$t('luma.message.extendVideo')" placement="top-start">
-            <el-button type="info" size="small" class="btn-action" @click="onExtend($event, modelValue?.response)">
-              {{ $t('luma.button.extend') }}
-            </el-button>
-          </el-tooltip>
-          <el-tooltip class="box-item" effect="dark" :content="$t('luma.message.downloadVideo')" placement="top-start">
-            <el-button
-              type="info"
-              size="small"
-              class="btn-action"
-              @click="onDownload($event, modelValue?.response?.video_url)"
-            >
-              {{ $t('luma.button.download') }}
-            </el-button>
-          </el-tooltip>
+          <image-gallery :model-value="modelValue" />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p class="description">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
-            {{ $t('luma.name.taskId') }}:
+            {{ $t('headshots.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
           </p>
@@ -61,45 +44,38 @@
         <el-alert :closable="false" class="failure">
           <template #template>
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
-            {{ $t('luma.name.failure') }}
+            {{ $t('headshots.name.failure') }}
           </template>
           <p class="description">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
-            {{ $t('luma.name.taskId') }}:
+            {{ $t('headshots.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
           </p>
           <p class="description">
             <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
-            {{ $t('luma.name.failureReason') }}:
+            {{ $t('headshots.name.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
             <copy-to-clipboard :content="modelValue?.response?.error?.message!" class="btn-copy" />
           </p>
           <p class="description">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
-            {{ $t('luma.name.traceId') }}:
+            {{ $t('headshots.name.traceId') }}:
             {{ modelValue?.response?.trace_id }}
             <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy" />
           </p>
         </el-alert>
       </div>
       <!-- Display error message -->
-      <div
-        v-if="
-          !modelValue?.response ||
-          modelValue?.response?.data?.state === 'processing' ||
-          modelValue?.response?.data?.state === 'pending'
-        "
-        :class="{ content: true }"
-      >
+      <div v-if="!modelValue?.response" :class="{ content: true }">
         <el-alert :closable="false" class="info">
           <template #template>
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
-            {{ $t('luma.name.failure') }}
+            {{ $t('headshots.name.failure') }}
           </template>
           <p class="description">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
-            {{ $t('luma.name.taskId') }}:
+            {{ $t('headshots.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
           </p>
@@ -111,11 +87,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElAlert, ElButton, ElTooltip } from 'element-plus';
-import { ILumaTask, ILumaGenerateResponse } from '@/models';
+import { ElImage, ElAlert } from 'element-plus';
+import { IHeadshotsTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import VideoPlayer from '../VideoPlayer.vue';
+import ImageGallery from '../ImageGallery.vue';
 export default defineComponent({
   name: 'TaskPreview',
   components: {
@@ -123,13 +99,11 @@ export default defineComponent({
     CopyToClipboard,
     FontAwesomeIcon,
     ElAlert,
-    VideoPlayer,
-    ElTooltip,
-    ElButton
+    ImageGallery
   },
   props: {
     modelValue: {
-      type: Object as () => ILumaTask | undefined,
+      type: Object as () => IHeadshotsTask | undefined,
       required: true
     }
   },
@@ -138,26 +112,13 @@ export default defineComponent({
   },
   computed: {
     application() {
-      return this.$store.state.luma?.application;
+      return this.$store.state.headshots?.application;
     },
     config() {
-      return this.$store.state.luma?.config;
+      return this.$store.state.headshots?.config;
     }
   },
   methods: {
-    onExtend(event: MouseEvent, response: ILumaGenerateResponse) {
-      event.stopPropagation();
-      // extend url here
-      console.debug('set config', response);
-      this.$store.commit('luma/setConfig', {
-        ...this.$store.state.luma?.config,
-        video_id: response.video_id,
-        prompt: response.prompt,
-        action: 'extend',
-        thumbnail_url: response.thumbnail_url,
-        video_url: response.video_url
-      });
-    },
     onDownload(event: MouseEvent, video_url: string) {
       event.stopPropagation();
       console.log('on download');

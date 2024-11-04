@@ -1,7 +1,7 @@
 <template>
   <layout>
     <template #config>
-      <config-panel @generate="onGenerateVideo" />
+      <config-panel @generate="onGeneratePicture" />
     </template>
     <template #result>
       <application-status
@@ -20,25 +20,25 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Layout from '@/layouts/Luma.vue';
-import ConfigPanel from '@/components/luma/ConfigPanel.vue';
-import { applicationOperator, lumaOperator } from '@/operators';
-import { IApplicationDetailResponse, ILumaGenerateRequest, Status } from '@/models';
+import Layout from '@/layouts/Headshots.vue';
+import ConfigPanel from '@/components/headshots/ConfigPanel.vue';
+import { applicationOperator, headshotsOperator } from '@/operators';
+import { IApplicationDetailResponse, IHeadshotsGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP } from '@/constants';
 import ApplicationStatus from '@/components/application/Status.vue';
-import RecentPanel from '@/components/luma/RecentPanel.vue';
-import { ILumaTask } from '@/models';
+import RecentPanel from '@/components/headshots/RecentPanel.vue';
+import { IHeadshotsTask } from '@/models';
 
-const CALLBACK_URL = 'https://webhook.acedata.cloud/luma';
+const CALLBACK_URL = 'https://webhook.acedata.cloud/headshots';
 
 interface IData {
-  task: ILumaTask | undefined;
+  task: IHeadshotsTask | undefined;
   job: number;
 }
 
 export default defineComponent({
-  name: 'LumaIndex',
+  name: 'HeadshotsIndex',
   components: {
     ConfigPanel,
     Layout,
@@ -53,25 +53,25 @@ export default defineComponent({
   },
   computed: {
     loading() {
-      return this.$store.state.luma?.status?.getApplications === Status.Request;
+      return this.$store.state.headshots?.status?.getApplications === Status.Request;
     },
     service() {
-      return this.$store.state.luma.service;
+      return this.$store.state.headshots.service;
     },
     credential() {
-      return this.$store.state.luma.credential;
+      return this.$store.state.headshots.credential;
     },
     config() {
-      return this.$store.state.luma.config;
+      return this.$store.state.headshots.config;
     },
     initializing() {
-      return this.$store.state.luma.status.getApplications === Status.Request;
+      return this.$store.state.headshots.status.getApplications === Status.Request;
     },
     needApply() {
-      return this.$store.state.luma.status.getApplications === Status.Success && !this.application;
+      return this.$store.state.headshots.status.getApplications === Status.Success && !this.application;
     },
     application() {
-      return this.$store.state.luma.application;
+      return this.$store.state.headshots.application;
     }
   },
   async mounted() {
@@ -91,12 +91,12 @@ export default defineComponent({
   methods: {
     async onGetService() {
       console.debug('start onGetService');
-      await this.$store.dispatch('luma/getService');
+      await this.$store.dispatch('headshots/getService');
       console.debug('end onGetService');
     },
     async onGetApplication() {
       console.debug('start onGetApplication');
-      await this.$store.dispatch('luma/getApplications');
+      await this.$store.dispatch('headshots/getApplications');
       console.debug('end onGetApplication');
       await this.onGetTasks();
     },
@@ -130,38 +130,38 @@ export default defineComponent({
         console.debug('loading');
         return;
       }
-      await this.$store.dispatch('luma/getTasks', {
+      await this.$store.dispatch('headshots/getTasks', {
         limit: 30,
         offset: 0
       });
     },
-    async onGenerateVideo() {
+    async onGeneratePicture() {
       const request = {
         ...this.config,
         callback_url: CALLBACK_URL
-      } as ILumaGenerateRequest;
+      } as IHeadshotsGenerateRequest;
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');
         return;
       }
-      ElMessage.info(this.$t('luma.message.startingTask'));
-      lumaOperator
+      ElMessage.info(this.$t('headshots.message.startingTask'));
+      headshotsOperator
         .generate(request, {
           token
         })
         .then(() => {
-          ElMessage.success(this.$t('luma.message.startTaskSuccess'));
-          this.$store.commit('luma/setConfig', {
+          ElMessage.success(this.$t('headshots.message.startTaskSuccess'));
+          this.$store.commit('headshots/setConfig', {
             config: undefined
           });
         })
         .catch((error) => {
           const response = error?.response?.data;
           if (response?.error?.code === ERROR_CODE_USED_UP) {
-            ElMessage.error(this.$t('luma.message.usedUp'));
+            ElMessage.error(this.$t('headshots.message.usedUp'));
           } else {
-            ElMessage.error(this.$t('luma.message.startTaskFailed'));
+            ElMessage.error(this.$t('headshots.message.startTaskFailed'));
           }
         })
         .finally(async () => {

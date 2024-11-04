@@ -1,0 +1,195 @@
+{
+  "name.taskId": {
+    "message": "任务 ID",
+    "description": "任务的 ID"
+  },
+  "name.mode": {
+    "message": "生成速度",
+    "description": "速度参数的名称，用于设置生成图像的速度"
+  },
+  "name.type": {
+    "message": "类型",
+    "description": "要生成的 QR 码的内容类型，如'链接'、'文本'等"
+  },
+  "name.failure": {
+    "message": "失败",
+    "description": "任务的失败状态"
+  },
+  "name.failureReason": {
+    "message": "失败原因",
+    "description": "任务失败的原因"
+  },
+  "name.status": {
+    "message": "状态",
+    "description": "任务的状态"
+  },
+  "name.traceId": {
+    "message": "追踪 ID",
+    "description": "任务的追踪 ID"
+  },
+  "name.size": {
+    "message": "尺寸",
+    "description": "要生成的 QR 码的尺寸"
+  },
+  "name.createdAt": {
+    "message": "创建时间",
+    "description": "生成 QR 码的日期和时间"
+  },
+  "name.endImageUrls": {
+    "message": "人像图片",
+    "description": "要生成的 QR 码的种子"
+  },
+  "description.endImageUrls": {
+    "message": "根据此人像图片生成对应的证件照",
+    "description": "要生成的 QR 码的种子"
+  },
+  "name.content": {
+    "message": "内容",
+    "description": "要生成的 QR 码的内容"
+  },
+
+  "field.elements": {
+    "message": "证件照风格",
+    "description": "用于生成图像的绘画风格"
+  },
+  "name.headshotsBot": {
+    "message": "Headshots Bot",
+    "description": "Headshots 证件照生成的名称"
+  },
+  "name.contentImageUrl": {
+    "message": "内容图片链接",
+    "description": "要生成的 QR 码的内容图片 URL"
+  },
+  "inputWay.input": {
+    "message": "输入内容",
+    "description": "输入方式"
+  },
+
+  "status.pending": {
+    "message": "等待中",
+    "description": "任务的等待状态"
+  },
+  "status.processing": {
+    "message": "处理中",
+    "description": "任务的等待状态"
+  },
+  "placeholder.paddingNoise": {
+    "message": "请选择...",
+    "description": "填充噪音输入的占位符"
+  },
+  "placeholder.paddingLevel": {
+    "message": "请选择...",
+    "description": "填充级别的占位符"
+  },
+  "placeholder.prompt": {
+    "message": "输入要生成的视频风格的提示词，例如：Astronauts shuttle from space to volcano",
+    "description": "提示字段中的占位文本"
+  },
+  "button.fast": {
+    "message": "快速",
+    "description": "按钮文本，允许用户将'快速模式'设置为快速以生成图像，必须翻译为'快速模式'"
+  },
+  "button.relax": {
+    "message": "慢速",
+    "description": "按钮文本，允许用户将'慢速模式'设置为放松以生成图像，必须翻译为'慢速模式'"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "生成Headshots证件照 的按钮文本"
+  },
+
+  "button.download": {
+    "message": "下载视频",
+    "description": "下载视频按钮文本"
+  },
+  "button.uploadImageUrls": {
+    "message": "上传人像图片",
+    "description": "上传人像图片的按钮文本"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "最多可上传 5 张图片",
+    "description": "上传的图片数量超过限制时的错误消息"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "成功上传图片",
+    "description": "成功上传图片时的成功消息"
+  },
+  "message.uploadReferencesError": {
+    "message": "上传图片失败，请稍后重试",
+    "description": "图片上传失败时的错误消息"
+  },
+  "message.startingTask": {
+    "message": "正在启动任务...",
+    "description": "绘图任务开始时的消息"
+  },
+  "message.startTaskSuccess": {
+    "message": "成功发起生成任务",
+    "description": "成功启动任务时的成功消息"
+  },
+  "message.startTaskFailed": {
+    "message": "发起任务失败，请联系管理员",
+    "description": "启动绘图任务失败时的错误消息"
+  },
+  "message.usedUp": {
+    "message": "您的积分已用完，请购买更多积分后继续使用",
+    "description": "已用完时的消息"
+  },
+  "message.generating": {
+    "message": "生成中...",
+    "description": "图像正在生成时的消息"
+  },
+  "message.downloadVideo": {
+    "message": "下载此视频",
+    "description": "图像正在生成时的消息"
+  },
+
+  "message.generateFailed": {
+    "message": "生成图像失败",
+    "description": "图像生成失败时的消息"
+  },
+
+  "message.noOperations": {
+    "message": "没有可用操作",
+    "description": "没有可用操作时的消息"
+  },
+  "message.noTasks": {
+    "message": "没有历史任务，请点击左方生成视频",
+    "description": "没有任务时的消息"
+  },
+  "styleCategory.styles": {
+    "message": "证件照风格",
+    "description": "用于描述和生成图像的类别词，生成的图像应包括此标签的类别"
+  },
+  "styleTag.malePportrait": {
+    "message": "男形象照",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.malePportrait2": {
+    "message": "男形象照2",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.kindergarten": {
+    "message": "幼儿园入园照",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.logoTshirt": {
+    "message": "企业LogoT恤照",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.wedding": {
+    "message": "结婚登记照",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.businessPphoto": {
+    "message": "商务风写真",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.bobSuit": {
+    "message": "黑西装波波头",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.femalePortrait": {
+    "message": "女性形象照",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  }
+}

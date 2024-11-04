@@ -1,61 +1,54 @@
-export interface ILumaConfig {
-  action?: string;
-  video_id?: string;
-  prompt?: string;
-  video_url?: string;
-  start_image_url?: string;
-  end_image_url?: string;
-  enhancement?: boolean;
-  loop?: boolean;
-  thumbnail_url?: string;
-  custom?: boolean;
+export interface Picture {
+  id?: string;
+  audio_url?: string;
+  created_at?: string;
+}
+// Submitted payload
+export interface IHeadshotsConfig {
+  mode?: string;
+  template?: string;
+  image_urls?: string[];
+}
+export interface IHeadshotsGenerateRequest {
+  mode?: string;
+  template?: string;
+  image_urls?: string[];
 }
 
-export interface ILumaGenerateRequest {
-  action?: string;
-  video_id?: string;
-  prompt?: string;
-  video_url?: string;
-  start_image_url?: string;
-  end_image_url?: string;
-  enhancement?: boolean;
-  loop?: boolean;
-  callback_url?: string;
+export interface IHeadshotsPicture {
+  id?: string;
+  image_url?: string;
+  template?: number;
 }
 
-export interface ILumaGenerateResponse {
-  success: boolean;
+export interface IHeadshotsGenerateResponse {
+  success?: boolean;
   task_id: string;
-  video_id: string;
-  prompt: string;
-  video_url: string;
-  video_height: number;
-  video_width: number;
-  state: string;
-  thumbnail_url: string;
-  thumbnail_width: number;
-  thumbnail_height: number;
   trace_id: string;
-  data?: {
-    video_id?: string;
-    state?: string;
-  };
-  error: {
+  error?: {
     code?: string;
     message?: string;
   };
+  data?: IHeadshotsPicture[];
 }
 
-export interface ILumaTask {
+export interface IHeadshotsTask {
+  map(arg0: (song: any) => any): any;
   id: string;
+  _id: string;
+  api_id?: string;
+  application_id?: string;
   created_at?: string;
-  request?: ILumaGenerateRequest;
-  response?: ILumaGenerateResponse;
+  credential_id?: string;
+  trace_id?: string;
+  user_id?: string;
+  request?: IHeadshotsGenerateRequest;
+  response?: IHeadshotsGenerateResponse;
 }
 
-export type ILumaTaskResponse = ILumaTask;
+export type IHeadshotsTaskResponse = IHeadshotsTask;
 
-export interface ILumaTasksResponse {
+export interface IHeadshotsTasksResponse {
   count: number;
-  items: ILumaTask[];
+  items: IHeadshotsTask[];
 }

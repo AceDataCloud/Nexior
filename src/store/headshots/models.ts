@@ -1,17 +1,17 @@
 import { IApplication, ICredential, IService, Status } from '@/models';
-import { ILumaConfig, ILumaTask } from '@/models';
+import { IHeadshotsConfig, IHeadshotsTask } from '@/models';
 
-export interface ILumaState {
+export interface IHeadshotsState {
   application: IApplication | undefined;
   applications: IApplication[] | undefined;
   service: IService | undefined;
   credential: ICredential | undefined;
-  config: ILumaConfig | undefined;
+  config: IHeadshotsConfig | undefined;
   tasks:
     | {
-        items: ILumaTask[] | undefined;
+        items: IHeadshotsTask[] | undefined;
         total: number | undefined;
-        active: ILumaTask | undefined;
+        active: IHeadshotsTask | undefined;
       }
     | undefined;
   status: {

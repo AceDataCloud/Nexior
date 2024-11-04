@@ -1,7 +1,7 @@
-import { IApplication, ICredential, ILumaConfig, ILumaTask, IService } from '@/models';
-import { ILumaState } from './models';
+import { IApplication, ICredential, IHeadshotsConfig, IHeadshotsTask, IService } from '@/models';
+import { IHeadshotsState } from './models';
 
-export const resetAll = (state: ILumaState): void => {
+export const resetAll = (state: IHeadshotsState): void => {
   state.service = undefined;
   state.application = undefined;
   state.config = undefined;
@@ -9,27 +9,27 @@ export const resetAll = (state: ILumaState): void => {
   state.tasks = undefined;
 };
 
-export const setService = (state: ILumaState, payload: IService): void => {
+export const setService = (state: IHeadshotsState, payload: IService): void => {
   state.service = payload;
 };
 
-export const setCredential = (state: ILumaState, payload: ICredential): void => {
+export const setCredential = (state: IHeadshotsState, payload: ICredential): void => {
   state.credential = payload;
 };
 
-export const setApplication = (state: ILumaState, payload: IApplication): void => {
+export const setApplication = (state: IHeadshotsState, payload: IApplication): void => {
   state.application = payload;
 };
 
-export const setApplications = (state: ILumaState, payload: IApplication[]): void => {
+export const setApplications = (state: IHeadshotsState, payload: IApplication[]): void => {
   state.applications = payload;
 };
 
-export const setConfig = (state: ILumaState, payload: ILumaConfig): void => {
+export const setConfig = (state: IHeadshotsState, payload: IHeadshotsConfig): void => {
   state.config = payload;
 };
 
-export const setTasksItems = (state: ILumaState, payload: ILumaTask[]): void => {
+export const setTasksItems = (state: IHeadshotsState, payload: IHeadshotsTask[]): void => {
   const newPayload = {
     ...state.tasks,
     items: payload
@@ -37,7 +37,7 @@ export const setTasksItems = (state: ILumaState, payload: ILumaTask[]): void => 
   state.tasks = newPayload;
 };
 
-export const setTasksTotal = (state: ILumaState, payload: number): void => {
+export const setTasksTotal = (state: IHeadshotsState, payload: number): void => {
   const newPayload = {
     ...state.tasks,
     total: payload
@@ -45,7 +45,7 @@ export const setTasksTotal = (state: ILumaState, payload: number): void => {
   state.tasks = newPayload;
 };
 
-export const setTasksActive = (state: ILumaState, payload: ILumaTask): void => {
+export const setTasksActive = (state: IHeadshotsState, payload: IHeadshotsTask): void => {
   const newPayload = {
     ...state.tasks,
     active: payload
@@ -53,7 +53,7 @@ export const setTasksActive = (state: ILumaState, payload: ILumaTask): void => {
   state.tasks = newPayload;
 };
 
-export const setTasks = (state: ILumaState, payload: any): void => {
+export const setTasks = (state: IHeadshotsState, payload: any): void => {
   state.tasks = payload;
 };
 

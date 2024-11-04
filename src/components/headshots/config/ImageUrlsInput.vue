@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('luma.name.endImageUrl') }}</h2>
+    <h2 class="title">{{ $t('headshots.name.endImageUrls') }}</h2>
     <div class="upload-wrapper">
       <el-upload
         v-model:file-list="fileList"
@@ -9,17 +9,17 @@
         class="value"
         :show-file-list="true"
         :limit="1"
-        :multiple="false"
+        :multiple="true"
         :action="uploadUrl"
         :on-exceed="onExceed"
         :on-error="onError"
         :on-success="onSuccess"
         :headers="headers"
       >
-        <el-button size="small" type="primary" round>{{ $t('luma.button.uploadEndImageUrl') }}</el-button>
+        <el-button size="small" type="primary" round>{{ $t('headshots.button.uploadImageUrls') }}</el-button>
       </el-upload>
     </div>
-    <info-icon :content="$t('luma.description.endImageUrl')" class="info" />
+    <info-icon :content="$t('headshots.description.endImageUrls')" class="info" />
   </div>
 </template>
 
@@ -36,7 +36,7 @@ interface IData {
 }
 
 export default defineComponent({
-  name: 'ContentInput',
+  name: 'ImageUrlsInput',
   components: {
     ElUpload,
     ElButton,
@@ -60,13 +60,13 @@ export default defineComponent({
     },
     value: {
       get() {
-        return this.$store.state.luma?.config?.end_image_url;
+        return this.$store.state.headshots?.config?.image_urls;
       },
       set(val: string) {
-        const url = this.urls?.[0];
-        this.$store.commit('luma/setConfig', {
-          ...this.$store.state.luma?.config,
-          end_image_url: url
+        const url = this.urls;
+        this.$store.commit('headshots/setConfig', {
+          ...this.$store.state.headshots?.config,
+          image_urls: url
         });
       }
     }
@@ -75,24 +75,24 @@ export default defineComponent({
     if (!this.value) {
       this.value = undefined;
     }
-    this.onSetEndImageUrl();
+    this.onSetImageUrls();
   },
   methods: {
     onExceed() {
-      ElMessage.warning(this.$t('luma.message.uploadEndImageExceed'));
+      ElMessage.warning(this.$t('headshots.message.uploadImageExceed'));
     },
     onError() {
-      ElMessage.error(this.$t('luma.message.uploadEndImageError'));
+      ElMessage.error(this.$t('headshots.message.uploadImageError'));
     },
-    onSetEndImageUrl() {
-      const url = this.urls?.[0];
-      this.$store.commit('luma/setConfig', {
-        ...this.$store.state.luma?.config,
-        end_image_url: url
+    onSetImageUrls() {
+      const urls = this.urls;
+      this.$store.commit('headshots/setConfig', {
+        ...this.$store.state.headshots?.config,
+        image_urls: urls
       });
     },
     async onSuccess() {
-      this.onSetEndImageUrl();
+      this.onSetImageUrls();
     }
   }
 });

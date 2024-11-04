@@ -1,14 +1,14 @@
 import { Module } from 'vuex';
-import { ILumaState } from './models';
+import { IHeadshotsState } from './models';
 import actions from './actions';
 import mutations from './mutations';
 import state from './state';
 
-export const luma: Module<ILumaState, any> = {
+export const headshots: Module<IHeadshotsState, any> = {
   namespaced: true,
   state,
   mutations,
   actions
 };
 
-export default luma;
+export default headshots;

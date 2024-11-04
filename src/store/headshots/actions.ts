@@ -1,12 +1,12 @@
-import { applicationOperator, lumaOperator, serviceOperator } from '@/operators';
-import { ILumaState } from './models';
+import { applicationOperator, headshotsOperator, serviceOperator } from '@/operators';
+import { IHeadshotsState } from './models';
 import { ActionContext } from 'vuex';
 import { IRootState } from '../common/models';
-import { IApplication, ICredential, ILumaConfig, ILumaTask, IService, IApplicationType } from '@/models';
+import { IApplication, ICredential, IHeadshotsConfig, IHeadshotsTask, IService, IApplicationType } from '@/models';
 import { Status } from '@/models/common';
-import { LUMA_SERVICE_ID } from '@/constants';
+import { HEADSHOTS_SERVICE_ID } from '@/constants';
 
-export const resetAll = ({ commit }: ActionContext<ILumaState, IRootState>): void => {
+export const resetAll = ({ commit }: ActionContext<IHeadshotsState, IRootState>): void => {
   commit('resetAll');
 };
 
@@ -15,7 +15,7 @@ export const setCredential = async ({ commit }: any, payload: ICredential): Prom
   commit('setCredential', payload);
 };
 
-export const setConfig = ({ commit }: any, payload: ILumaConfig) => {
+export const setConfig = ({ commit }: any, payload: IHeadshotsConfig) => {
   commit('setConfig', payload);
 };
 
@@ -32,14 +32,14 @@ export const getApplications = async ({
   commit,
   state,
   rootState
-}: ActionContext<ILumaState, IRootState>): Promise<IApplication[]> => {
-  console.debug('start to get applications for luma');
+}: ActionContext<IHeadshotsState, IRootState>): Promise<IApplication[]> => {
+  console.debug('start to get applications for headshots');
   return new Promise((resolve, reject) => {
     state.status.getApplications = Status.Request;
     applicationOperator
       .getAll({
         user_id: rootState?.user?.id,
-        service_id: LUMA_SERVICE_ID
+        service_id: HEADSHOTS_SERVICE_ID
       })
       .then((response) => {
         console.debug('get applications success', response?.data);
@@ -81,7 +81,7 @@ export const setTasks = ({ commit }: any, payload: any) => {
   commit('setTasks', payload);
 };
 
-export const setTasksItems = ({ commit }: any, payload: ILumaTask[]) => {
+export const setTasksItems = ({ commit }: any, payload: IHeadshotsTask[]) => {
   commit('setTasksItems', payload);
 };
 
@@ -89,16 +89,16 @@ export const setTasksTotal = ({ commit }: any, payload: number) => {
   commit('setTasksTotal', payload);
 };
 
-export const setTasksActive = ({ commit }: any, payload: ILumaTask) => {
+export const setTasksActive = ({ commit }: any, payload: IHeadshotsTask) => {
   commit('setTasksActive', payload);
 };
 
-export const getService = async ({ commit, state }: ActionContext<ILumaState, IRootState>): Promise<IService> => {
+export const getService = async ({ commit, state }: ActionContext<IHeadshotsState, IRootState>): Promise<IService> => {
   return new Promise((resolve, reject) => {
-    console.debug('start to get service for luma');
+    console.debug('start to get service for headshots');
     state.status.getService = Status.Request;
     serviceOperator
-      .get(LUMA_SERVICE_ID)
+      .get(HEADSHOTS_SERVICE_ID)
       .then((response) => {
         state.status.getService = Status.Success;
         commit('setService', response.data);
@@ -112,9 +112,9 @@ export const getService = async ({ commit, state }: ActionContext<ILumaState, IR
 };
 
 export const getTasks = async (
-  { commit, state, rootState }: ActionContext<ILumaState, IRootState>,
+  { commit, state, rootState }: ActionContext<IHeadshotsState, IRootState>,
   { offset, limit }: { offset?: number; limit?: number }
-): Promise<ILumaTask[]> => {
+): Promise<IHeadshotsTask[]> => {
   return new Promise((resolve, reject) => {
     console.debug('start to get tasks', offset, limit);
     const credential = state.credential;
@@ -122,7 +122,7 @@ export const getTasks = async (
     if (!token) {
       return reject('no token');
     }
-    lumaOperator
+    headshotsOperator
       .tasks(
         {
           userId: rootState?.user?.id

@@ -1,1 +1,1 @@
-export default ['luma.credential', 'luma.application', 'luma.tasks'];
+export default ['headshots.credential', 'headshots.application', 'headshots.tasks'];

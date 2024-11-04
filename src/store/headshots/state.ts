@@ -1,7 +1,7 @@
-import { ILumaState } from './models';
+import { IHeadshotsState } from './models';
 import { Status } from '@/models';
 
-export default (): ILumaState => {
+export default (): IHeadshotsState => {
   return {
     service: undefined,
     application: undefined,

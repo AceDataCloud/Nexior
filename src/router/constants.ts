@@ -16,6 +16,9 @@ export const ROUTE_QRART_HISTORY = 'qrart-history';
 export const ROUTE_LUMA_INDEX = 'luma-index';
 export const ROUTE_LUMA_HISTORY = 'luma-history';
 
+export const ROUTE_HEADSHOTS_INDEX = 'headshots-index';
+export const ROUTE_HEADSHOTS_HISTORY = 'headshots-history';
+
 export const ROUTE_CHATDOC_INDEX = 'chatdoc-index';
 export const ROUTE_CHATDOC_CONVERSATION = 'chatdoc-conversation';
 export const ROUTE_CHATDOC_CONVERSATION_NEW = 'chatdoc-conversation-new';

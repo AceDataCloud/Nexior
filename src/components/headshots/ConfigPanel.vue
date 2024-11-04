@@ -1,28 +1,13 @@
 <template>
   <div class="panel">
     <div class="config">
-      <extend-from-input v-if="config?.video_id || config?.video_url" class="mb-4" />
-      <prompt-input class="mb-4" />
-      <custom-selector v-if="!config?.video_id" class="mb-4" />
-      <upload-video v-if="config?.custom" class="mb-4" />
-      <start-image-url-input v-if="!(config?.video_id || config?.video_url) && !config?.custom" class="mb-4" />
-      <end-image-url-input class="mb-4" />
-      <enhancement-selector class="mb-4" />
-      <loop-selector class="mb-4" />
+      <elements-selector class="mb-4" />
+      <mode-selector class="mb-4" />
+      <image-urls-input class="mb-4" />
       <div class="actions">
-        <el-button
-          v-if="config?.video_url !== undefined || config?.custom"
-          type="primary"
-          class="btn w-full"
-          round
-          @click="onGenerate"
-        >
+        <el-button type="primary" class="btn w-full" round @click="onGenerate">
           <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
-          {{ $t('luma.button.extend') }}
-        </el-button>
-        <el-button v-else type="primary" class="btn w-full" round @click="onGenerate">
-          <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
-          {{ $t('luma.button.generate') }}
+          {{ $t('headshots.button.generate') }}
         </el-button>
       </div>
     </div>
@@ -33,33 +18,23 @@
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import EnhancementSelector from './config/EnhancementSelector.vue';
-import CustomSelector from './config/CustomSelector.vue';
-import LoopSelector from './config/LoopSelector.vue';
-import EndImageUrlInput from './config/EndImageUrlInput.vue';
-import StartImageUrlInput from './config/StartImageUrlInput.vue';
+import ImageUrlsInput from './config/ImageUrlsInput.vue';
 // @ts-ignore
-import UploadVideo from './config/UploadVideo.vue';
-import PromptInput from './config/PromptInput.vue';
-import ExtendFromInput from './config/ExtendFromInput.vue';
+import ModeSelector from './config/ModeSelector.vue';
+import ElementsSelector from './config/ElementsSelector.vue';
 export default defineComponent({
   name: 'PresetPanel',
   components: {
-    LoopSelector,
-    StartImageUrlInput,
-    EndImageUrlInput,
-    EnhancementSelector,
+    ModeSelector,
+    ImageUrlsInput,
     ElButton,
     FontAwesomeIcon,
-    PromptInput,
-    ExtendFromInput,
-    CustomSelector,
-    UploadVideo
+    ElementsSelector
   },
   emits: ['generate'],
   computed: {
     config() {
-      return this.$store.state.luma?.config;
+      return this.$store.state.headshots?.config;
     }
   },
   methods: {

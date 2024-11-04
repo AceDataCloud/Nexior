@@ -111,6 +111,8 @@ import {
   ROUTE_QRART_HISTORY,
   ROUTE_LUMA_INDEX,
   ROUTE_LUMA_HISTORY,
+  ROUTE_HEADSHOTS_INDEX,
+  ROUTE_HEADSHOTS_HISTORY,
   ROUTE_SUNO_INDEX,
   ROUTE_SUNO_HISTORY,
   ROUTE_SITE_INDEX
@@ -147,6 +149,7 @@ export default defineComponent({
   computed: {
     links() {
       const result = [];
+      // Add chat's leftmost icon
       if (this.$store?.state?.site?.features?.chat?.enabled) {
         result.push({
           route: {
@@ -157,6 +160,7 @@ export default defineComponent({
           routes: [ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW]
         });
       }
+      // Add midjourney's leftmost icon
       if (this.$store?.state?.site?.features?.midjourney?.enabled) {
         result.push({
           route: {
@@ -167,7 +171,7 @@ export default defineComponent({
           routes: [ROUTE_MIDJOURNEY_INDEX]
         });
       }
-
+      // Add chatdoc's leftmost icon
       /*
       if (this.$store?.state?.site?.features?.chatdoc?.enabled) {
         result.push({
@@ -180,7 +184,7 @@ export default defineComponent({
         });
       }
       */
-
+      // Add qrart's leftmost icon
       if (this.$store?.state?.site?.features?.qrart?.enabled) {
         result.push({
           route: {
@@ -211,6 +215,17 @@ export default defineComponent({
           displayName: this.$t('common.nav.luma'),
           icon: 'fa-solid fa-film',
           routes: [ROUTE_LUMA_INDEX, ROUTE_LUMA_HISTORY]
+        });
+      }
+      // Add headshots's leftmost icon
+      if (this.$store?.state?.site?.features?.headshots?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_HEADSHOTS_INDEX
+          },
+          displayName: this.$t('common.nav.headshots'),
+          icon: 'fa-solid fa-id-card',
+          routes: [ROUTE_HEADSHOTS_INDEX, ROUTE_HEADSHOTS_HISTORY]
         });
       }
 
