@@ -11,6 +11,7 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 import { faDiscord as faBrandsDiscord, faWeixin as faBrandsWeixin } from '@fortawesome/free-brands-svg-icons';
 import {
+  faIdCard as faSolidIdCard,
   faStopCircle as faSolidStopCircle,
   faPlayCircle as faSolidPlayCircle,
   faDownload as faSolidDownload,
@@ -78,6 +79,7 @@ import {
   faAngleDown as faSolidAngleDown
 } from '@fortawesome/free-solid-svg-icons';
 // add icons
+library.add(faSolidIdCard);
 library.add(faSolidStopCircle);
 library.add(faRegularFile);
 library.add(faSolidPlayCircle);

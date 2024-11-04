@@ -13,6 +13,7 @@ export * from './service';
 export * from './credential';
 export * from './qrart';
 export * from './luma';
+export * from './headshots';
 export * from './suno';
 export * from './site';
 export * from './exchange';
