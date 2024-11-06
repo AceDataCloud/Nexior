@@ -1,158 +1,166 @@
 {
   "button.extend": {
-    "message": "Fortsätt generera",
-    "description": "Text på knappen för att fortsätta generera"
+    "message": "Fortsätt生成",
+    "description": "Fortsätt生成按钮文本"
   },
   "button.download": {
     "message": "Ladda ner",
-    "description": "Text på nedladdningsknappen"
+    "description": "下载按钮文本"
   },
   "button.video": {
     "message": "Video",
-    "description": "Text på videoknappen"
+    "description": "视频按钮文本"
+  },
+  "button.download_video": {
+    "message": "Ladda ner video",
+    "description": "下载视频按钮文本"
+  },
+  "button.download_audio": {
+    "message": "Ladda ner musik",
+    "description": "下载音乐按钮文本"
   },
   "model.model1": {
     "message": "v2",
-    "description": "Modell för att generera musik"
+    "description": "用于生成音乐的模型"
   },
   "model.model2": {
     "message": "v3",
-    "description": "Modell för att generera musik"
+    "description": "用于生成音乐的模型"
   },
   "name.instrumental": {
     "message": "Instrumental",
-    "description": "Beskrivning av parametern 'instrumental'"
+    "description": "参数'instrumental'的描述"
   },
   "model.model3": {
     "message": "v3.5",
-    "description": "Modell för att generera musik"
+    "description": "用于生成音乐的模型"
   },
   "name.taskId": {
     "message": "Uppgift ID",
-    "description": "ID för uppgiften"
+    "description": "任务的 ID"
   },
   "name.type": {
     "message": "Anpassad läge",
-    "description": "Namn på det anpassade läget"
+    "description": "定制模式的名称"
   },
   "name.prompt": {
-    "message": "Låtbeskrivning",
-    "description": "Prompt för innehållsinput"
+    "message": "Sångbeskrivning",
+    "description": "内容输入的提示"
   },
   "name.extend": {
-    "message": "Utöka låt från",
-    "description": "Prompt för innehållsinput"
+    "message": "Utöka sång från",
+    "description": "内容输入的提示"
   },
   "name.lyrics": {
     "message": "Textinnehåll",
-    "description": "Prompt för textinnehållsinput"
+    "description": "歌词内容输入的提示"
   },
   "name.style": {
-    "message": "Låtstil",
-    "description": "Prompt för låtstilens innehåll"
+    "message": "Sångstil",
+    "description": "歌曲风格内容输入的提示"
   },
   "name.title": {
-    "message": "Låtens titel",
-    "description": "Prompt för låtens titelens innehåll"
+    "message": "Sångtitel",
+    "description": "歌曲标题内容输入的提示"
   },
   "name.failureReason": {
-    "message": "Orsak till misslyckande",
-    "description": "Anledningen till att uppgiften misslyckades"
+    "message": "Orsak till fel",
+    "description": "任务失败的原因"
   },
   "name.status": {
     "message": "Status",
-    "description": "Status för uppgiften"
+    "description": "任务的状态"
   },
   "name.traceId": {
-    "message": "Spårnings ID",
-    "description": "Spårnings ID för uppgiften"
+    "message": "Spårnings-ID",
+    "description": "任务的追踪 ID"
   },
   "name.sunoBot": {
     "message": "Suno Bot",
-    "description": "Namn på Suno-generatorn"
+    "description": "Suno生成器的名称"
   },
   "description.prompt": {
-    "message": "Fyll i stilen och temat för musiken du vill generera, till exempel akustisk pop om helgdagar",
-    "description": "Beskrivning av parametern 'prompt'"
+    "message": "Fyll i den stil och tema för den musik du vill generera, till exempel acoustic pop om högtider",
+    "description": "参数'prompt'的描述"
   },
   "description.lyrics": {
     "message": "Innehållet i texten",
-    "description": "Beskrivning av parametern 'lyrics'"
+    "description": "参数'lyrics'的描述"
   },
   "description.style": {
-    "message": "Innehållet i låtstilen",
-    "description": "Beskrivning av parametern 'style'"
+    "message": "Innehållet i sångstilen",
+    "description": "参数'style'的描述"
   },
   "description.title": {
-    "message": "Innehållet i låtens titel",
-    "description": "Beskrivning av parametern 'title'"
+    "message": "Innehållet i sångtiteln",
+    "description": "参数'title'的描述"
   },
   "status.pending": {
     "message": "Väntar",
-    "description": "Uppgiftens väntande status"
+    "description": "任务的等待状态"
   },
   "placeholder.prompt": {
-    "message": "Ange låtens prompt...",
-    "description": "Platzhalter för inmatning av ljud"
+    "message": "Ange sångens nyckelord...",
+    "description": "填充噪音输入的占位符"
   },
   "placeholder.lyrics": {
     "message": "Ange text...",
-    "description": "Platzhalter för textnivå"
+    "description": "填充级别的占位符"
   },
   "placeholder.extend.lyrics": {
-    "message": "Ange text som ska utökas...",
-    "description": "Platzhalter för textnivå"
+    "message": "Ange texten som behöver utökas...",
+    "description": "填充级别的占位符"
   },
   "placeholder.extend.continue_at": {
-    "message": "Ange från vilken sekund i låten som ska utökas...",
-    "description": "Platzhalter för textnivå"
+    "message": "Ange från vilken sekund sången ska utökas...",
+    "description": "填充级别的占位符"
   },
   "placeholder.style": {
-    "message": "Ange ett nyckelord för låtstilen som ska genereras, till exempel akustisk pop",
-    "description": "Platzhalter-text i fält för hint"
+    "message": "Ange nyckelord för den sångstil du vill generera, till exempel acoustic pop",
+    "description": "提示字段中的占位文本"
   },
   "placeholder.title": {
-    "message": "Ange ett nyckelord för låtens titel som ska genereras, till exempel helglåt",
-    "description": "Platzhalter för fröinmatning"
+    "message": "Ange nyckelord för sångtiteln, till exempel holiday song",
+    "description": "种子输入的占位符"
   },
   "placeholder.select": {
     "message": "Välj modell...",
-    "description": "Platzhalter för platshållarinmatning"
+    "description": "位置输入的占位符"
   },
   "placeholder.position": {
     "message": "Välj...",
-    "description": "Platzhalter för platshållarinmatning"
+    "description": "位置输入的占位符"
   },
   "button.generate": {
     "message": "Generera",
-    "description": "Text på knappen för att generera"
+    "description": "生成按钮文本"
   },
   "message.startingTask": {
-    "message": "Startar uppgiften...",
-    "description": "Meddelelse ved starten af musikgenereringsopgaven"
+    "message": "Startar uppgift...",
+    "description": "音乐生成任务开始时的消息"
   },
   "message.startTaskSuccess": {
-    "message": "Musikgenereringsuppgiften startade framgångsrikt",
-    "description": "Framgångsmeddelande när musikgenereringsuppgiften startas framgångsrikt"
+    "message": "Uppgiften för musikgenerering startades framgångsrikt",
+    "description": "成功启动音乐生成任务时的成功消息"
   },
   "message.startTaskFailed": {
-    "message": "Misslyckades med att starta musikgenereringsuppgiften",
-    "description": "Felmeddelande när musikgenereringsuppgiften misslyckas med att starta"
+    "message": "Misslyckades med att starta musikgenereringuppgift",
+    "description": "启动音乐生成任务失败时的错误消息"
   },
   "message.generating": {
     "message": "Genererar...",
-    "description": "Meddelande när musiken genereras"
+    "description": "音乐正在生成时的消息"
   },
   "message.generateFailed": {
     "message": "Misslyckades med att generera musik",
-    "description": "Meddelande när musikgenerering misslyckas"
+    "description": "音乐生成失败时的消息"
   },
   "message.noOperations": {
     "message": "Inga tillgängliga operationer",
-    "description": "Meddelande när inga operationer är tillgängliga"
+    "description": "没有可用操作时的消息"
   },
   "message.noTasks": {
-    "message": "Inga historiska uppgifter, vänligen konfigurera musikgenerering i den vänstra panelen",
-    "description": "Meddelande när inga uppgifter finns"
+    "message": "Inga historiska uppgifter, vänligen konfigurera musiken till vänster",
+    "description": "没有任务时的消息"
   }
 }
