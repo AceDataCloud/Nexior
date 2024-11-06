@@ -56,7 +56,10 @@ export default defineComponent({
     },
     urls(): string[] {
       // @ts-ignore
-      return this.fileList.map((file: UploadFile) => file?.response?.file_url);
+      return this.fileList.map((file: UploadFile) => {
+        const url = file?.response?.file_url;
+        return url.replace('https://cdn.acedata.cloud', 'https://acedata-cdn.zhishuyun.com');
+      });
     },
     value: {
       get() {

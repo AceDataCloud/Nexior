@@ -10,7 +10,7 @@ import { BASE_URL_API } from '@/constants';
 class HeadshotsOperator {
   async task(id: string, options: { token: string }): Promise<AxiosResponse<IHeadshotsTaskResponse>> {
     return await axios.post(
-      `/luma/tasks`,
+      `/headshots/tasks`,
       {
         action: 'retrieve',
         id: id
@@ -32,7 +32,7 @@ class HeadshotsOperator {
     options: { token: string }
   ): Promise<AxiosResponse<IHeadshotsTasksResponse>> {
     return await axios.post(
-      `/luma/tasks`,
+      `/headshots/tasks`,
       {
         action: 'retrieve_batch',
         ...(filter.ids
@@ -79,7 +79,7 @@ class HeadshotsOperator {
       token: string;
     }
   ): Promise<AxiosResponse<IHeadshotsGenerateResponse>> {
-    return await axios.post('/luma/videos', data, {
+    return await axios.post('/headshots/generate', data, {
       headers: {
         authorization: `Bearer ${options.token}`,
         'content-type': 'application/json',
