@@ -1,0 +1,194 @@
+{
+  "name.taskId": {
+    "message": "ID zadania",
+    "description": "ID zadania"
+  },
+  "name.mode": {
+    "message": "Prędkość generowania",
+    "description": "Nazwa parametru prędkości, używanego do ustawienia prędkości generowania obrazu"
+  },
+  "name.type": {
+    "message": "Typ",
+    "description": "Typ treści QR kodu, np. 'link', 'tekst' itp."
+  },
+  "name.failure": {
+    "message": "Niepowodzenie",
+    "description": "Stan niepowodzenia zadania"
+  },
+  "name.failureReason": {
+    "message": "Przyczyna niepowodzenia",
+    "description": "Przyczyna niepowodzenia zadania"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Stan zadania"
+  },
+  "name.traceId": {
+    "message": "ID śledzenia",
+    "description": "ID śledzenia zadania"
+  },
+  "name.size": {
+    "message": "Rozmiar",
+    "description": "Rozmiar QR kodu do generacji"
+  },
+  "name.createdAt": {
+    "message": "Data utworzenia",
+    "description": "Data i czas utworzenia QR kodu"
+  },
+  "name.endImageUrls": {
+    "message": "Obrazy portretowe",
+    "description": "Ziarno do wygenerowania QR kodu"
+  },
+  "description.endImageUrls": {
+    "message": "Wygeneruj odpowiednie zdjęcie legitymacyjne na podstawie tego obrazu portretowego",
+    "description": "Ziarno do wygenerowania QR kodu"
+  },
+  "name.content": {
+    "message": "Treść",
+    "description": "Treść QR kodu do wygenerowania"
+  },
+  "field.elements": {
+    "message": "Styl zdjęcia legitymacyjnego",
+    "description": "Styl malarski używany do generacji obrazu"
+  },
+  "name.headshotsBot": {
+    "message": "Bot Zdjęć Legitymacyjnych",
+    "description": "Nazwa generacji zdjęć legitymacyjnych"
+  },
+  "name.contentImageUrl": {
+    "message": "Link do obrazu treści",
+    "description": "URL z obrazem treści QR kodu do wygenerowania"
+  },
+  "inputWay.input": {
+    "message": "Wprowadź treść",
+    "description": "Metoda wprowadzania"
+  },
+  "status.pending": {
+    "message": "Oczekiwanie",
+    "description": "Stan oczekiwania zadania"
+  },
+  "status.processing": {
+    "message": "W przetwarzaniu",
+    "description": "Stan oczekiwania zadania"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Wybierz...",
+    "description": "Zastępczy tekst dla wprowadzania szumów"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Wybierz...",
+    "description": "Zastępczy tekst dla poziomu wypełnienia"
+  },
+  "placeholder.prompt": {
+    "message": "Wprowadź frazę do wygenerowania stylu wideo, np.: Astronauci z promu kosmicznego do wulkanu",
+    "description": "Zastępczy tekst w polu podpowiedzi"
+  },
+  "button.fast": {
+    "message": "Szybki",
+    "description": "Tekst przycisku, który pozwala użytkownikowi ustawić 'tryb szybki', aby generować obraz, musi być przetłumaczony jako 'Szybki tryb'"
+  },
+  "button.relax": {
+    "message": "Wolny",
+    "description": "Tekst przycisku, który pozwala użytkownikowi ustawić 'tryb wolny', aby generować obraz, musi być przetłumaczony jako 'Wolny tryb'"
+  },
+  "button.generate": {
+    "message": "Generuj",
+    "description": "Tekst przycisku do generacji zdjęć legitymacyjnych"
+  },
+  "button.viewImage": {
+    "message": "Zobacz oryginał",
+    "description": "Tekst przycisku do generacji zdjęć legitymacyjnych"
+  },
+  "button.download": {
+    "message": "Pobierz wideo",
+    "description": "Tekst przycisku do pobierania wideo"
+  },
+  "button.uploadImageUrls": {
+    "message": "Prześlij obrazy portretowe",
+    "description": "Tekst przycisku do przesyłania obrazów portretowych"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Można przesłać maksymalnie 5 zdjęć",
+    "description": "Komunikat o błędzie, gdy liczba przesyłanych zdjęć przekracza limit"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Pomyślnie przesłano zdjęcia",
+    "description": "Komunikat o sukcesie, gdy zdjęcia zostały pomyślnie przesłane"
+  },
+  "message.uploadReferencesError": {
+    "message": "Nie udało się przesłać zdjęć, spróbuj ponownie później",
+    "description": "Komunikat o błędzie, gdy przesyłanie zdjęć nie powiodło się"
+  },
+  "message.startingTask": {
+    "message": "Uruchamianie zadania...",
+    "description": "Komunikat przy rozpoczęciu zadania rysowania"
+  },
+  "message.startTaskSuccess": {
+    "message": "Pomyślnie uruchomiono zadanie generacji",
+    "description": "Komunikat o sukcesie przy rozpoczęciu zadania"
+  },
+  "message.startTaskFailed": {
+    "message": "Nie udało się uruchomić zadania, skontaktuj się z administratorem",
+    "description": "Komunikat o błędzie, gdy uruchomienie zadania rysowania się nie powiodło"
+  },
+  "message.usedUp": {
+    "message": "Twoje punkty zostały wyczerpane, proszę kupić więcej punktów, aby kontynuować użytkowanie",
+    "description": "Komunikat o wyczerpaniu punktów"
+  },
+  "message.generating": {
+    "message": "Generowanie...",
+    "description": "Komunikat, gdy obraz jest w trakcie generacji"
+  },
+  "message.downloadVideo": {
+    "message": "Pobierz to wideo",
+    "description": "Komunikat, gdy obraz jest w trakcie generacji"
+  },
+  "message.generateFailed": {
+    "message": "Nie udało się wygenerować obrazu",
+    "description": "Komunikat, gdy generacja obrazu się nie powiodła"
+  },
+  "message.noOperations": {
+    "message": "Brak dostępnych operacji",
+    "description": "Komunikat, gdy brak dostępnych operacji"
+  },
+  "message.noTasks": {
+    "message": "Brak historii zadań, kliknij po lewej, aby wygenerować wideo",
+    "description": "Komunikat, gdy brak zadań"
+  },
+  "styleCategory.styles": {
+    "message": "Styl zdjęcia legitymacyjnego",
+    "description": "Termin używany do opisu i generacji obrazu, generowany obraz powinien zawierać ten termin"
+  },
+  "styleTag.malePportrait": {
+    "message": "Męski portret",
+    "description": "Termin stylu używany do opisu i generacji obrazu, generowany obraz powinien zawierać ten termin"
+  },
+  "styleTag.malePportrait2": {
+    "message": "Męski portret 2",
+    "description": "Termin stylu używany do opisu i generacji obrazu, generowany obraz powinien zawierać ten termin"
+  },
+  "styleTag.kindergarten": {
+    "message": "Zdjęcie przedszkolne",
+    "description": "Termin stylu używany do opisu i generacji obrazu, generowany obraz powinien zawierać ten termin"
+  },
+  "styleTag.logoTshirt": {
+    "message": "Koszulka z logo firmy",
+    "description": "Słowo opisowe używane do opisania i wygenerowania stylu obrazu, wygenerowany obraz powinien zawierać styl tej etykiety"
+  },
+  "styleTag.wedding": {
+    "message": "Zdjęcie rejestracyjne ślubu",
+    "description": "Słowo opisowe używane do opisania i wygenerowania stylu obrazu, wygenerowany obraz powinien zawierać styl tej etykiety"
+  },
+  "styleTag.businessPphoto": {
+    "message": "Zdjęcie w stylu biznesowym",
+    "description": "Słowo opisowe używane do opisania i wygenerowania stylu obrazu, wygenerowany obraz powinien zawierać styl tej etykiety"
+  },
+  "styleTag.bobSuit": {
+    "message": "Czarny garnitur i bob",
+    "description": "Słowo opisowe używane do opisania i wygenerowania stylu obrazu, wygenerowany obraz powinien zawierać styl tej etykiety"
+  },
+  "styleTag.femalePortrait": {
+    "message": "Portret kobiecy",
+    "description": "Słowo opisowe używane do opisania i wygenerowania stylu obrazu, wygenerowany obraz powinien zawierać styl tej etykiety"
+  }
+}

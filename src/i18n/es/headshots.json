@@ -1,0 +1,194 @@
+{
+  "name.taskId": {
+    "message": "ID de tarea",
+    "description": "ID de la tarea"
+  },
+  "name.mode": {
+    "message": "Velocidad de generación",
+    "description": "Nombre del parámetro de velocidad que se utiliza para establecer la velocidad de generación de imágenes"
+  },
+  "name.type": {
+    "message": "Tipo",
+    "description": "Tipo de contenido del código QR a generar, como 'enlace', 'texto', etc."
+  },
+  "name.failure": {
+    "message": "Fallido",
+    "description": "Estado de fallo de la tarea"
+  },
+  "name.failureReason": {
+    "message": "Razón del fallo",
+    "description": "Razón por la que la tarea ha fallado"
+  },
+  "name.status": {
+    "message": "Estado",
+    "description": "Estado de la tarea"
+  },
+  "name.traceId": {
+    "message": "ID de seguimiento",
+    "description": "ID de seguimiento de la tarea"
+  },
+  "name.size": {
+    "message": "Tamaño",
+    "description": "Tamaño del código QR a generar"
+  },
+  "name.createdAt": {
+    "message": "Fecha de creación",
+    "description": "Fecha y hora en que se generó el código QR"
+  },
+  "name.endImageUrls": {
+    "message": "Imagen de retrato",
+    "description": "Semilla para generar el código QR"
+  },
+  "description.endImageUrls": {
+    "message": "Generar la foto de identificación correspondiente a partir de esta imagen de retrato",
+    "description": "Semilla para generar el código QR"
+  },
+  "name.content": {
+    "message": "Contenido",
+    "description": "Contenido del código QR a generar"
+  },
+  "field.elements": {
+    "message": "Estilo de foto de identificación",
+    "description": "Estilo de pintura utilizado para generar la imagen"
+  },
+  "name.headshotsBot": {
+    "message": "Bot de fotos de identificación",
+    "description": "Nombre del generador de fotos de identificación"
+  },
+  "name.contentImageUrl": {
+    "message": "Enlace de la imagen del contenido",
+    "description": "URL de la imagen del contenido del código QR a generar"
+  },
+  "inputWay.input": {
+    "message": "Introducir contenido",
+    "description": "Método de entrada"
+  },
+  "status.pending": {
+    "message": "Pendiente",
+    "description": "Estado de espera de la tarea"
+  },
+  "status.processing": {
+    "message": "Procesando",
+    "description": "Estado de espera de la tarea"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Por favor elija...",
+    "description": "Marcador de posición para la entrada de ruido de relleno"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Por favor elija...",
+    "description": "Marcador de posición para el nivel de relleno"
+  },
+  "placeholder.prompt": {
+    "message": "Introduzca las palabras clave para el estilo de video a generar, por ejemplo: Astronautas que se trasladan del espacio a un volcán",
+    "description": "Texto de marcador de posición en el campo de aviso"
+  },
+  "button.fast": {
+    "message": "Modo rápido",
+    "description": "Texto del botón que permite al usuario establecer el 'modo rápido' para generar la imagen, debe traducirse como 'Modo rápido'"
+  },
+  "button.relax": {
+    "message": "Modo lento",
+    "description": "Texto del botón que permite al usuario establecer el 'modo lento' para relajar la generación de la imagen, debe traducirse como 'Modo lento'"
+  },
+  "button.generate": {
+    "message": "Generar",
+    "description": "Texto del botón para generar la foto de identificación"
+  },
+  "button.viewImage": {
+    "message": "Ver imagen original",
+    "description": "Texto del botón para generar la foto de identificación"
+  },
+  "button.download": {
+    "message": "Descargar video",
+    "description": "Texto del botón para descargar el video"
+  },
+  "button.uploadImageUrls": {
+    "message": "Subir imagen de retrato",
+    "description": "Texto del botón para subir la imagen de retrato"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Se pueden subir hasta 5 imágenes",
+    "description": "Mensaje de error cuando el número de imágenes subidas excede el límite"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Imágenes subidas con éxito",
+    "description": "Mensaje de éxito cuando las imágenes se han subido con éxito"
+  },
+  "message.uploadReferencesError": {
+    "message": "Error al subir la imagen, por favor, inténtelo de nuevo más tarde",
+    "description": "Mensaje de error cuando la subida de imágenes falla"
+  },
+  "message.startingTask": {
+    "message": "Iniciando tarea...",
+    "description": "Mensaje al comenzar la tarea de generación"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tarea de generación iniciada con éxito",
+    "description": "Mensaje de éxito al iniciar la tarea"
+  },
+  "message.startTaskFailed": {
+    "message": "Error al iniciar la tarea, por favor contacte a un administrador",
+    "description": "Mensaje de error al fallar al iniciar la tarea de generación"
+  },
+  "message.usedUp": {
+    "message": "Se han agotado sus créditos, por favor compre más créditos para continuar usando",
+    "description": "Mensaje cuando se han agotado los créditos"
+  },
+  "message.generating": {
+    "message": "Generando...",
+    "description": "Mensaje cuando la imagen se está generando"
+  },
+  "message.downloadVideo": {
+    "message": "Descargar este video",
+    "description": "Mensaje cuando la imagen se está generando"
+  },
+  "message.generateFailed": {
+    "message": "Error al generar la imagen",
+    "description": "Mensaje cuando falla la generación de la imagen"
+  },
+  "message.noOperations": {
+    "message": "No hay operaciones disponibles",
+    "description": "Mensaje cuando no hay operaciones disponibles"
+  },
+  "message.noTasks": {
+    "message": "No hay tareas históricas, por favor haga clic en la izquierda para generar video",
+    "description": "Mensaje cuando no hay tareas"
+  },
+  "styleCategory.styles": {
+    "message": "Estilo de foto de identificación",
+    "description": "Palabra de categoría utilizada para describir y generar imágenes, las imágenes generadas deben incluir la categoría de esta etiqueta"
+  },
+  "styleTag.malePportrait": {
+    "message": "Retrato masculino",
+    "description": "Palabra de estilo utilizada para describir y generar imágenes, las imágenes generadas deben incluir el estilo de esta etiqueta"
+  },
+  "styleTag.malePportrait2": {
+    "message": "Retrato masculino 2",
+    "description": "Palabra de estilo utilizada para describir y generar imágenes, las imágenes generadas deben incluir el estilo de esta etiqueta"
+  },
+  "styleTag.kindergarten": {
+    "message": "Foto de ingreso a jardín de infancia",
+    "description": "Palabra de estilo utilizada para describir y generar imágenes, las imágenes generadas deben incluir el estilo de esta etiqueta"
+  },
+  "styleTag.logoTshirt": {
+    "message": "Foto de camiseta con logo empresarial",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.wedding": {
+    "message": "Foto de registro de matrimonio",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.businessPphoto": {
+    "message": "Retrato empresarial",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.bobSuit": {
+    "message": "Traje negro con peinado bob",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.femalePortrait": {
+    "message": "Retrato femenino",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "name.taskId": {
+    "message": "Aufgaben-ID",
+    "description": "任务的 ID"
+  },
+  "name.mode": {
+    "message": "Generierungsgeschwindigkeit",
+    "description": "速度参数的名称，用于设置生成图像的速度"
+  },
+  "name.type": {
+    "message": "Typ",
+    "description": "要生成的 QR 码的内容类型，如'链接'、'文本'等"
+  },
+  "name.failure": {
+    "message": "Fehler",
+    "description": "任务的失败状态"
+  },
+  "name.failureReason": {
+    "message": "Fehlerursache",
+    "description": "任务失败的原因"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "任务的状态"
+  },
+  "name.traceId": {
+    "message": "Verfolgungs-ID",
+    "description": "任务的追踪 ID"
+  },
+  "name.size": {
+    "message": "Größe",
+    "description": "要生成的 QR 码的尺寸"
+  },
+  "name.createdAt": {
+    "message": "Erstellungsdatum",
+    "description": "生成 QR 码的日期和时间"
+  },
+  "name.endImageUrls": {
+    "message": "Porträtbilder",
+    "description": "要生成的 QR 码的种子"
+  },
+  "description.endImageUrls": {
+    "message": "Generierung entsprechender Ausweiskarten basierend auf diesem Porträtbild",
+    "description": "要生成的 QR 码的种子"
+  },
+  "name.content": {
+    "message": "Inhalt",
+    "description": "要生成的 QR 码的内容"
+  },
+  "field.elements": {
+    "message": "Ausweisfoto-Stil",
+    "description": "用于生成图像的绘画风格"
+  },
+  "name.headshotsBot": {
+    "message": "Headshots Bot",
+    "description": "Headshots 证件照生成的名称"
+  },
+  "name.contentImageUrl": {
+    "message": "Inhaltsbild-URL",
+    "description": "要生成的 QR 码的内容图片 URL"
+  },
+  "inputWay.input": {
+    "message": "Inhalt eingeben",
+    "description": "输入方式"
+  },
+  "status.pending": {
+    "message": "Warten",
+    "description": "任务的等待状态"
+  },
+  "status.processing": {
+    "message": "Wird verarbeitet",
+    "description": "任务的等待状态"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Bitte auswählen...",
+    "description": "填充噪音输入的占位符"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Bitte auswählen...",
+    "description": "填充级别的占位符"
+  },
+  "placeholder.prompt": {
+    "message": "Geben Sie die Eingabeaufforderung für den zu generierenden Video-Stil ein, z. B.: Astronauten schuttle vom Weltraum zum Vulkan",
+    "description": "提示字段中的占位文本"
+  },
+  "button.fast": {
+    "message": "Schnellmodus",
+    "description": "按钮文本，允许用户将'快速模式'设置为快速以生成图像，必须翻译为'快速模式'"
+  },
+  "button.relax": {
+    "message": "Langsammodus",
+    "description": "按钮文本，允许用户将'慢速模式'设置为放松以生成图像，必须翻译为'慢速模式'"
+  },
+  "button.generate": {
+    "message": "Generieren",
+    "description": "生成Headshots证件照 的按钮文本"
+  },
+  "button.viewImage": {
+    "message": "Ursprungsbild ansehen",
+    "description": "生成Headshots证件照 的按钮文本"
+  },
+  "button.download": {
+    "message": "Video herunterladen",
+    "description": "下载视频按钮文本"
+  },
+  "button.uploadImageUrls": {
+    "message": "Porträtbilder hochladen",
+    "description": "上传人像图片的按钮文本"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Maximal können 5 Bilder hochgeladen werden",
+    "description": "上传的图片数量超过限制时的错误消息"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Bilder erfolgreich hochgeladen",
+    "description": "成功上传图片时的成功消息"
+  },
+  "message.uploadReferencesError": {
+    "message": "Hochladen des Bildes fehlgeschlagen, bitte später erneut versuchen",
+    "description": "图片上传失败时的错误消息"
+  },
+  "message.startingTask": {
+    "message": "Starte Aufgabe...",
+    "description": "绘图任务开始时的消息"
+  },
+  "message.startTaskSuccess": {
+    "message": "Aufgabenerstellung erfolgreich",
+    "description": "成功启动任务时的成功消息"
+  },
+  "message.startTaskFailed": {
+    "message": "Aufgabenerstellung fehlgeschlagen, bitte kontaktieren Sie den Administrator",
+    "description": "启动绘图任务失败时的错误消息"
+  },
+  "message.usedUp": {
+    "message": "Ihre Punkte sind aufgebraucht, bitte kaufen Sie mehr Punkte, um fortzufahren",
+    "description": "已用完时的消息"
+  },
+  "message.generating": {
+    "message": "Wird generiert...",
+    "description": "图像正在生成时的消息"
+  },
+  "message.downloadVideo": {
+    "message": "Laden Sie dieses Video herunter",
+    "description": "图像正在生成时的消息"
+  },
+  "message.generateFailed": {
+    "message": "Bildgenerierung fehlgeschlagen",
+    "description": "图像生成失败时的消息"
+  },
+  "message.noOperations": {
+    "message": "Keine verfügbaren Operationen",
+    "description": "没有可用操作时的消息"
+  },
+  "message.noTasks": {
+    "message": "Keine historischen Aufgaben, bitte klicken Sie links, um ein Video zu generieren",
+    "description": "没有任务时的消息"
+  },
+  "styleCategory.styles": {
+    "message": "Ausweisfoto-Stil",
+    "description": "用于描述和生成图像的类别词，生成的图像应包括此标签的类别"
+  },
+  "styleTag.malePportrait": {
+    "message": "Männliches Portrait",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.malePportrait2": {
+    "message": "Männliches Portrait 2",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.kindergarten": {
+    "message": "Kindergartenaufnahme",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.logoTshirt": {
+    "message": "Firmenlogo T-Shirt Foto",
+    "description": "Wird verwendet, um den Stilbegriff zur Beschreibung und Generierung von Bildern zu definieren. Das generierte Bild sollte diesen Stil enthalten."
+  },
+  "styleTag.wedding": {
+    "message": "Hochzeitsregistrierungsfoto",
+    "description": "Wird verwendet, um den Stilbegriff zur Beschreibung und Generierung von Bildern zu definieren. Das generierte Bild sollte diesen Stil enthalten."
+  },
+  "styleTag.businessPphoto": {
+    "message": "Business Stil Porträt",
+    "description": "Wird verwendet, um den Stilbegriff zur Beschreibung und Generierung von Bildern zu definieren. Das generierte Bild sollte diesen Stil enthalten."
+  },
+  "styleTag.bobSuit": {
+    "message": "Schwarzer Anzug mit Bob Frisur",
+    "description": "Wird verwendet, um den Stilbegriff zur Beschreibung und Generierung von Bildern zu definieren. Das generierte Bild sollte diesen Stil enthalten."
+  },
+  "styleTag.femalePortrait": {
+    "message": "Weibliches Porträt",
+    "description": "Wird verwendet, um den Stilbegriff zur Beschreibung und Generierung von Bildern zu definieren. Das generierte Bild sollte diesen Stil enthalten."
+  }
+}

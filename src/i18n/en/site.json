@@ -63,6 +63,10 @@
     "message": "Luma",
     "description": "Displayed as the title in the editing box"
   },
+  "field.featuresHeadshots": {
+    "message": "AI Headshots",
+    "description": "Displayed as the title in the editing box"
+  },
   "field.featuresSuno": {
     "message": "Suno",
     "description": "Displayed as the title in the editing box"
@@ -136,11 +140,11 @@
     "description": "Displayed as the title in the editing box"
   },
   "placeholder.title": {
-    "message": "Please enter site title",
+    "message": "Please enter the site title",
     "description": "Displayed as the title in the editing box"
   },
   "placeholder.origin": {
-    "message": "Please enter site domain",
+    "message": "Please enter the site domain",
     "description": "Displayed as the title in the editing box"
   },
   "placeholder.editUrl": {
@@ -148,92 +152,92 @@
     "description": "Displayed as the title in the editing box"
   },
   "placeholder.description": {
-    "message": "Please enter site description",
+    "message": "Please enter the site description",
     "description": "Displayed as the title in the editing box"
   },
   "placeholder.keywords": {
-    "message": "Please enter site keywords",
+    "message": "Please enter the site keywords",
     "description": "Displayed as the title in the editing box"
   },
   "placeholder.editDistributionDefaultInviterId": {
-    "message": "Please enter default inviter ID",
+    "message": "Please enter the default inviter ID",
     "description": "Displayed as the title in the editing box"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "Please enter forced inviter ID",
+    "message": "Please enter the forced inviter ID",
     "description": "Displayed as the title in the editing box"
   },
   "message.uploadImageExceed": {
     "message": "Uploaded image exceeds limit",
-    "description": "Warning for uploading images that exceed the limit"
+    "description": "Prompt for exceeding the upload image limit"
   },
   "message.uploadImageError": {
     "message": "Error uploading image",
-    "description": "Warning for errors during image uploading"
+    "description": "Prompt for error in uploading image"
   },
   "message.editLogoTip": {
     "message": "Recommended size: 200*60px",
-    "description": "Instructions for uploading images"
+    "description": "Language for uploading image prompt"
   },
   "message.editQRTip": {
     "message": "Recommended size: 200*200px",
-    "description": "Instructions for uploading images"
+    "description": "Language for uploading image prompt"
   },
   "message.editFaviconTip": {
-    "message": "Recommended size: 32*32px",
-    "description": "Instructions for uploading images"
+    "message": "Suggested size: 32x32px",
+    "description": "Tip for uploading images"
   },
   "message.editUrl": {
-    "message": "Please enter the link",
+    "message": "Please enter a link",
     "description": "Prompt for entering a link"
   },
   "message.atLeastOneAdmin": {
-    "message": "At least one admin must be retained",
-    "description": "Prompt to ensure at least one admin is retained"
+    "message": "At least one administrator must be retained",
+    "description": "Tip to retain at least one administrator"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "Default inviter's user ID. If the distribution link does not carry the inviter_id parameter, this user ID will be used as the inviter by default.",
-    "description": "Prompt for the default inviter ID"
+    "message": "The default inviter's user ID. If the distribution link does not carry the inviter_id parameter, this user ID will be used as the inviter by default.",
+    "description": "Tip for the default inviter ID"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "Forced inviter's user ID. If this ID is set, this user ID will be enforced as the inviter regardless of whether the distribution link carries the inviter_id parameter.",
-    "description": "Prompt for the forced inviter ID"
+    "message": "The forced inviter's user ID. If this ID is set, it will be used as the inviter regardless of whether the distribution link carries the inviter_id parameter.",
+    "description": "Tip for the forced inviter ID"
   },
   "message.originTip": {
-    "message": "Site domain name, the site configuration is bound to the domain name and cannot be changed.",
-    "description": "Prompt for the site domain name"
+    "message": "Site domain name. The site configuration is bound to the domain name and cannot be changed.",
+    "description": "Tip for the site domain name"
   },
   "message.titleTip": {
-    "message": "Site title, displayed on the browser tab.",
-    "description": "Prompt for the site title"
+    "message": "Site title, displayed in the browser tab.",
+    "description": "Tip for the site title"
   },
   "message.descriptionTip": {
-    "message": "Site description, located in the site meta information, used for site SEO optimization.",
-    "description": "Prompt for the site description"
+    "message": "Site description, located in the site's meta information, used for site SEO optimization.",
+    "description": "Tip for the site description"
   },
   "message.logoTip": {
-    "message": "Site Logo, displayed at the top of the site menu when the menu bar is expanded.",
-    "description": "Prompt for the site Logo"
+    "message": "Site logo, displayed at the top of the site menu when the menu bar is expanded.",
+    "description": "Tip for the site logo"
   },
   "message.faviconTip": {
-    "message": "Site Favicon, displayed on the browser tab.",
-    "description": "Prompt for the site Favicon"
+    "message": "Site favicon, displayed in the browser tab.",
+    "description": "Tip for the site favicon"
   },
   "message.adminsTip": {
-    "message": "Site admin IDs. By default, the user who first creates the site will become the admin. Only site admins can manage the site.",
-    "description": "Prompt for site admins"
+    "message": "Site administrator IDs. By default, the user who first creates the site will become an administrator. Only site administrators can manage the site.",
+    "description": "Tip for site administrators"
   },
   "message.adminsTip2": {
-    "message": "You can add or remove admin IDs here. You can check user IDs at https://auth.acedata.cloud",
-    "description": "Prompt for site admins"
+    "message": "You can add or remove administrator IDs here. You can check user IDs at https://auth.acedata.cloud",
+    "description": "Tip for site administrators"
   },
   "message.keywordsTip": {
-    "message": "Site keywords, located in the site meta information, used for site SEO optimization.",
-    "description": "Prompt for site keywords"
+    "message": "Site keywords, located in the site's meta information, used for site SEO optimization.",
+    "description": "Tip for site keywords"
   },
   "message.keywordsTip2": {
     "message": "You can add or remove website keywords here. The more precise the keywords, the more beneficial for SEO optimization.",
-    "description": "Prompt for site keywords"
+    "description": "Tip for site keywords"
   },
   "message.featuresChat": {
     "message": "Enable or disable the Chat feature module.",
@@ -259,12 +263,16 @@
     "message": "Enable or disable the Luma feature module.",
     "description": "Description of the Luma feature"
   },
+  "message.featuresHeadshots": {
+    "message": "Enable or disable the AI ID photo feature module.",
+    "description": "Description of the AI ID photo feature"
+  },
   "message.featuresSupport": {
     "message": "Enable or disable customer support",
     "description": "Description of the Support feature"
   },
   "message.featuresI18n": {
-    "message": "Enable or disable multilingual support. When disabled, users can only use the default language.",
+    "message": "Enable or disable multilingual support. If disabled, users can only use the default language.",
     "description": "Description of multilingual support"
   },
   "button.upload": {
@@ -273,10 +281,10 @@
   },
   "button.enabled": {
     "message": "Enabled",
-    "description": "Switch text indicating that it is enabled"
+    "description": "Switch text indicating it is enabled"
   },
   "button.disabled": {
     "message": "Disabled",
-    "description": "Switch text indicating that it is disabled"
+    "description": "Switch text indicating it is disabled"
   }
 }

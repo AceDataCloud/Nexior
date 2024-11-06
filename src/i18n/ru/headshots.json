@@ -1,0 +1,194 @@
+{
+  "name.taskId": {
+    "message": "Идентификатор задачи",
+    "description": "任务的 ID"
+  },
+  "name.mode": {
+    "message": "Скорость генерации",
+    "description": "速度参数的名称，用于设置生成图像的速度"
+  },
+  "name.type": {
+    "message": "Тип",
+    "description": "要生成的 QR 码的内容类型，如'链接'、'文本'等"
+  },
+  "name.failure": {
+    "message": "Ошибка",
+    "description": "任务的失败状态"
+  },
+  "name.failureReason": {
+    "message": "Причина ошибки",
+    "description": "任务失败的原因"
+  },
+  "name.status": {
+    "message": "Статус",
+    "description": "任务的状态"
+  },
+  "name.traceId": {
+    "message": "Идентификатор отслеживания",
+    "description": "任务的追踪 ID"
+  },
+  "name.size": {
+    "message": "Размер",
+    "description": "要生成的 QR 码的尺寸"
+  },
+  "name.createdAt": {
+    "message": "Дата создания",
+    "description": "生成 QR 码的日期和时间"
+  },
+  "name.endImageUrls": {
+    "message": "Изображение для портрета",
+    "description": "要生成的 QR 码的种子"
+  },
+  "description.endImageUrls": {
+    "message": "Сгенерируйте соответствующее удостоверение на основе этого изображения",
+    "description": "要生成的 QR 码的种子"
+  },
+  "name.content": {
+    "message": "Содержимое",
+    "description": "要生成的 QR 码的内容"
+  },
+  "field.elements": {
+    "message": "Стиль удостоверения",
+    "description": "用于生成图像的绘画风格"
+  },
+  "name.headshotsBot": {
+    "message": "Бот для портретов",
+    "description": "Headshots 证件照生成的名称"
+  },
+  "name.contentImageUrl": {
+    "message": "Ссылка на изображение содержимого",
+    "description": "要生成的 QR 码的内容图片 URL"
+  },
+  "inputWay.input": {
+    "message": "Введите содержимое",
+    "description": "输入方式"
+  },
+  "status.pending": {
+    "message": "В ожидании",
+    "description": "任务的等待状态"
+  },
+  "status.processing": {
+    "message": "Обрабатывается",
+    "description": "任务的等待状态"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Пожалуйста, выберите...",
+    "description": "填充噪音输入的占位符"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Пожалуйста, выберите...",
+    "description": "填充级别的占位符"
+  },
+  "placeholder.prompt": {
+    "message": "Введите подсказку для стиля видео, например: Астронавты летят из космоса к вулкану",
+    "description": "提示字段中的占位文本"
+  },
+  "button.fast": {
+    "message": "Быстро",
+    "description": "按钮文本，允许用户将'快速模式'设置为快速以生成图像，必须翻译为'快速模式'"
+  },
+  "button.relax": {
+    "message": "Медленно",
+    "description": "按钮文本，允许用户将'慢速模式'设置为放松以生成图像，必须翻译为'慢速模式'"
+  },
+  "button.generate": {
+    "message": "Сгенерировать",
+    "description": "生成Headshots证件照 的按钮文本"
+  },
+  "button.viewImage": {
+    "message": "Просмотреть оригинал",
+    "description": "生成Headshots证件照 的按钮文本"
+  },
+  "button.download": {
+    "message": "Скачать видео",
+    "description": "下载视频按钮文本"
+  },
+  "button.uploadImageUrls": {
+    "message": "Загрузить изображения портретов",
+    "description": "上传人像图片的按钮文本"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Максимум можно загрузить 5 изображений",
+    "description": "上传的图片数量超过限制时的错误消息"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Изображения успешно загружены",
+    "description": "成功上传图片时的成功消息"
+  },
+  "message.uploadReferencesError": {
+    "message": "Ошибка загрузки изображения, пожалуйста, попробуйте позже",
+    "description": "图片上传失败时的错误消息"
+  },
+  "message.startingTask": {
+    "message": "Запуск задачи...",
+    "description": "绘图任务开始时的消息"
+  },
+  "message.startTaskSuccess": {
+    "message": "Задача успешно запущена",
+    "description": "成功启动任务时的成功消息"
+  },
+  "message.startTaskFailed": {
+    "message": "Не удалось запустить задачу, пожалуйста, свяжитесь с администратором",
+    "description": "启动绘图任务失败时的错误消息"
+  },
+  "message.usedUp": {
+    "message": "Ваши кредиты исчерпаны, пожалуйста, купите больше кредитов для продолжения использования",
+    "description": "已用完时的消息"
+  },
+  "message.generating": {
+    "message": "Генерация...",
+    "description": "图像正在生成时的消息"
+  },
+  "message.downloadVideo": {
+    "message": "Скачать это видео",
+    "description": "图像正在生成时的消息"
+  },
+  "message.generateFailed": {
+    "message": "Не удалось сгенерировать изображение",
+    "description": "图像生成失败时的消息"
+  },
+  "message.noOperations": {
+    "message": "Нет доступных операций",
+    "description": "没有可用操作时的消息"
+  },
+  "message.noTasks": {
+    "message": "Нет историй задач, пожалуйста, нажмите слева для генерации видео",
+    "description": "没有任务时的消息"
+  },
+  "styleCategory.styles": {
+    "message": "Стиль удостоверения",
+    "description": "用于描述和生成图像的类别词，生成的图像应包括此标签的类别"
+  },
+  "styleTag.malePportrait": {
+    "message": "Мужской портрет",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.malePportrait2": {
+    "message": "Мужской портрет 2",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.kindergarten": {
+    "message": "Детский сад",
+    "description": "用于描述和生成图像的风格词，生成的图像应包括此标签的风格"
+  },
+  "styleTag.logoTshirt": {
+    "message": "Футболка с логотипом компании",
+    "description": "Используется для описания и генерации стиля изображений, сгенерированные изображения должны включать стиль этой метки"
+  },
+  "styleTag.wedding": {
+    "message": "Свадебная фотография",
+    "description": "Используется для описания и генерации стиля изображений, сгенерированные изображения должны включать стиль этой метки"
+  },
+  "styleTag.businessPphoto": {
+    "message": "Деловой портрет",
+    "description": "Используется для описания и генерации стиля изображений, сгенерированные изображения должны включать стиль этой метки"
+  },
+  "styleTag.bobSuit": {
+    "message": "Чёрный костюм с каре",
+    "description": "Используется для описания и генерации стиля изображений, сгенерированные изображения должны включать стиль этой метки"
+  },
+  "styleTag.femalePortrait": {
+    "message": "Портрет женщины",
+    "description": "Используется для описания и генерации стиля изображений, сгенерированные изображения должны включать стиль этой метки"
+  }
+}
