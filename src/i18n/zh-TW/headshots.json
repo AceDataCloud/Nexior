@@ -1,0 +1,194 @@
+{
+  "name.taskId": {
+    "message": "任務 ID",
+    "description": "任務的 ID"
+  },
+  "name.mode": {
+    "message": "生成速度",
+    "description": "速度參數的名稱，用於設定生成圖像的速度"
+  },
+  "name.type": {
+    "message": "類型",
+    "description": "要生成的 QR 碼的內容類型，如'鏈接'、'文本'等"
+  },
+  "name.failure": {
+    "message": "失敗",
+    "description": "任務的失敗狀態"
+  },
+  "name.failureReason": {
+    "message": "失敗原因",
+    "description": "任務失敗的原因"
+  },
+  "name.status": {
+    "message": "狀態",
+    "description": "任務的狀態"
+  },
+  "name.traceId": {
+    "message": "追蹤 ID",
+    "description": "任務的追蹤 ID"
+  },
+  "name.size": {
+    "message": "尺寸",
+    "description": "要生成的 QR 碼的尺寸"
+  },
+  "name.createdAt": {
+    "message": "創建時間",
+    "description": "生成 QR 碼的日期和時間"
+  },
+  "name.endImageUrls": {
+    "message": "人像圖片",
+    "description": "要生成的 QR 碼的種子"
+  },
+  "description.endImageUrls": {
+    "message": "根據此人像圖片生成對應的證件照",
+    "description": "要生成的 QR 碼的種子"
+  },
+  "name.content": {
+    "message": "內容",
+    "description": "要生成的 QR 碼的內容"
+  },
+  "field.elements": {
+    "message": "證件照風格",
+    "description": "用於生成圖像的繪畫風格"
+  },
+  "name.headshotsBot": {
+    "message": "人像生成機器人",
+    "description": "Headshots 證件照生成的名稱"
+  },
+  "name.contentImageUrl": {
+    "message": "內容圖片鏈接",
+    "description": "要生成的 QR 碼的內容圖片 URL"
+  },
+  "inputWay.input": {
+    "message": "輸入內容",
+    "description": "輸入方式"
+  },
+  "status.pending": {
+    "message": "等待中",
+    "description": "任務的等待狀態"
+  },
+  "status.processing": {
+    "message": "處理中",
+    "description": "任務的處理狀態"
+  },
+  "placeholder.paddingNoise": {
+    "message": "請選擇...",
+    "description": "填充噪音輸入的佔位符"
+  },
+  "placeholder.paddingLevel": {
+    "message": "請選擇...",
+    "description": "填充級別的佔位符"
+  },
+  "placeholder.prompt": {
+    "message": "輸入要生成的視頻風格的提示詞，例如：太空人從太空到火山的接駁",
+    "description": "提示字段中的佔位文本"
+  },
+  "button.fast": {
+    "message": "快速模式",
+    "description": "按鈕文本，允許用戶將'快速模式'設置為快速以生成圖像，必須翻譯為'快速模式'"
+  },
+  "button.relax": {
+    "message": "慢速模式",
+    "description": "按鈕文本，允許用戶將'慢速模式'設置為放鬆以生成圖像，必須翻譯為'慢速模式'"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "生成Headshots證件照的按鈕文本"
+  },
+  "button.viewImage": {
+    "message": "查看原圖",
+    "description": "生成Headshots證件照的按鈕文本"
+  },
+  "button.download": {
+    "message": "下載視頻",
+    "description": "下載視頻按鈕文本"
+  },
+  "button.uploadImageUrls": {
+    "message": "上傳人像圖片",
+    "description": "上傳人像圖片的按鈕文本"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "最多可上傳 5 張圖片",
+    "description": "上傳的圖片數量超過限制時的錯誤消息"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "成功上傳圖片",
+    "description": "成功上傳圖片時的成功消息"
+  },
+  "message.uploadReferencesError": {
+    "message": "上傳圖片失敗，請稍後重試",
+    "description": "圖片上傳失敗時的錯誤消息"
+  },
+  "message.startingTask": {
+    "message": "正在啟動任務...",
+    "description": "繪圖任務開始時的消息"
+  },
+  "message.startTaskSuccess": {
+    "message": "成功發起生成任務",
+    "description": "成功啟動任務時的成功消息"
+  },
+  "message.startTaskFailed": {
+    "message": "發起任務失敗，請聯繫管理員",
+    "description": "啟動繪圖任務失敗時的錯誤消息"
+  },
+  "message.usedUp": {
+    "message": "您的積分已用完，請購買更多積分後繼續使用",
+    "description": "已用完時的消息"
+  },
+  "message.generating": {
+    "message": "生成中...",
+    "description": "圖像正在生成時的消息"
+  },
+  "message.downloadVideo": {
+    "message": "下載此視頻",
+    "description": "圖像正在生成時的消息"
+  },
+  "message.generateFailed": {
+    "message": "生成圖像失敗",
+    "description": "圖像生成失敗時的消息"
+  },
+  "message.noOperations": {
+    "message": "沒有可用操作",
+    "description": "沒有可用操作時的消息"
+  },
+  "message.noTasks": {
+    "message": "沒有歷史任務，請點擊左方生成視頻",
+    "description": "沒有任務時的消息"
+  },
+  "styleCategory.styles": {
+    "message": "證件照風格",
+    "description": "用於描述和生成圖像的類別詞，生成的圖像應包括此標籤的類別"
+  },
+  "styleTag.malePportrait": {
+    "message": "男形象照",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包括此標籤的風格"
+  },
+  "styleTag.malePportrait2": {
+    "message": "男形象照2",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包括此標籤的風格"
+  },
+  "styleTag.kindergarten": {
+    "message": "幼兒園入園照",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包括此標籤的風格"
+  },
+  "styleTag.logoTshirt": {
+    "message": "企業LogoT恤照",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包括此標籤的風格"
+  },
+  "styleTag.wedding": {
+    "message": "結婚登記照",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包括此標籤的風格"
+  },
+  "styleTag.businessPphoto": {
+    "message": "商務風寫真",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包括此標籤的風格"
+  },
+  "styleTag.bobSuit": {
+    "message": "黑西裝波波頭",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包括此標籤的風格"
+  },
+  "styleTag.femalePortrait": {
+    "message": "女性形象照",
+    "description": "用於描述和生成圖像的風格詞，生成的圖像應包括此標籤的風格"
+  }
+}

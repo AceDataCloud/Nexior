@@ -1,0 +1,194 @@
+{
+  "name.taskId": {
+    "message": "Uppgifts-ID",
+    "description": "Uppgiftens ID"
+  },
+  "name.mode": {
+    "message": "Genereringshastighet",
+    "description": "Namn på hastighetsparametern för att ställa in hastigheten för att generera bilden"
+  },
+  "name.type": {
+    "message": "Typ",
+    "description": "Innehållstypen för den QR-kod som ska genereras, t.ex. 'länk', 'text' osv."
+  },
+  "name.failure": {
+    "message": "Misslyckades",
+    "description": "Uppgiftens misslyckade status"
+  },
+  "name.failureReason": {
+    "message": "Misslyckandets orsak",
+    "description": "Orsaken till att uppgiften misslyckades"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Uppgiftens status"
+  },
+  "name.traceId": {
+    "message": "Spårnings-ID",
+    "description": "Uppgiftens spårnings-ID"
+  },
+  "name.size": {
+    "message": "Storlek",
+    "description": "Storleken på den QR-kod som ska genereras"
+  },
+  "name.createdAt": {
+    "message": "Skapad",
+    "description": "Datum och tid för genereringen av QR-koden"
+  },
+  "name.endImageUrls": {
+    "message": "Porträttbilder",
+    "description": "Fröet för den QR-kod som ska genereras"
+  },
+  "description.endImageUrls": {
+    "message": "Generera motsvarande ID-foto baserat på detta porträttfoto",
+    "description": "Fröet för den QR-kod som ska genereras"
+  },
+  "name.content": {
+    "message": "Innehåll",
+    "description": "Innehållet i den QR-kod som ska genereras"
+  },
+  "field.elements": {
+    "message": "ID-foto stil",
+    "description": "Målarstilen som används för att generera bilden"
+  },
+  "name.headshotsBot": {
+    "message": "Headshots Bot",
+    "description": "Namnet för genereringen av ID-foton"
+  },
+  "name.contentImageUrl": {
+    "message": "Länk till innehållsbild",
+    "description": "Innehållsbildens URL för den QR-kod som ska genereras"
+  },
+  "inputWay.input": {
+    "message": "Ange innehåll",
+    "description": "Metod för inmatning"
+  },
+  "status.pending": {
+    "message": "I kö",
+    "description": "Uppgiftens väntande status"
+  },
+  "status.processing": {
+    "message": "Bearbetar",
+    "description": "Uppgiftens väntande status"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för inmatning av fyllnadsbrus"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för fyllnadsnivå"
+  },
+  "placeholder.prompt": {
+    "message": "Ange nyckelord för den videostil som ska genereras, t.ex.: Astronauter som färdas från rymden till vulkanen",
+    "description": "Platshållartext i prompt-fältet"
+  },
+  "button.fast": {
+    "message": "Snabbt",
+    "description": "Knapptext som tillåter användaren att ställa in 'snabb läge' för att generera bilden, ska översättas till 'Snabbt läge'"
+  },
+  "button.relax": {
+    "message": "Långsamt",
+    "description": "Knapptext som tillåter användaren att ställa in 'långsam läge' för att generera bilden, ska översättas till 'Långsamt läge'"
+  },
+  "button.generate": {
+    "message": "Generera",
+    "description": "Knapptext för att generera ID-foton"
+  },
+  "button.viewImage": {
+    "message": "Visa originalbild",
+    "description": "Knapptext för att visa ID-foton"
+  },
+  "button.download": {
+    "message": "Ladda ner video",
+    "description": "Knapptext för att ladda ner video"
+  },
+  "button.uploadImageUrls": {
+    "message": "Ladda upp porträttbilder",
+    "description": "Knapptext för att ladda upp porträttbilder"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Maximalt kan 5 bilder laddas upp",
+    "description": "Felmeddelande när antalet uppladdade bilder överskrider gränsen"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Bilder uppladdade framgångsrikt",
+    "description": "Framgångsmeddelande när bilder har laddats upp"
+  },
+  "message.uploadReferencesError": {
+    "message": "Uppladdning av bilder misslyckades, försök igen senare",
+    "description": "Felmeddelande när bilduppladdning misslyckas"
+  },
+  "message.startingTask": {
+    "message": "Startar uppgift...",
+    "description": "Meddelande när ritningsuppgiften startar"
+  },
+  "message.startTaskSuccess": {
+    "message": "Uppgift för generering startad framgångsrikt",
+    "description": "Framgångsmeddelande när uppgiften startas"
+  },
+  "message.startTaskFailed": {
+    "message": "Misslyckades med att starta uppgiften, vänligen kontakta administratören",
+    "description": "Felmeddelande när ritningsuppgiften inte kan startas"
+  },
+  "message.usedUp": {
+    "message": "Dina poäng är slut, vänligen köp fler poäng för att fortsätta använda",
+    "description": "Meddelande när poängen är slut"
+  },
+  "message.generating": {
+    "message": "Genererar...",
+    "description": "Meddelande när bilden genereras"
+  },
+  "message.downloadVideo": {
+    "message": "Ladda ner denna video",
+    "description": "Meddelande när bilden genereras"
+  },
+  "message.generateFailed": {
+    "message": "Generering av bilden misslyckades",
+    "description": "Meddelande när bildgenereringen misslyckas"
+  },
+  "message.noOperations": {
+    "message": "Inga tillgängliga operationer",
+    "description": "Meddelande när det inte finns några tillgängliga operationer"
+  },
+  "message.noTasks": {
+    "message": "Inga historiska uppgifter, vänligen klicka på vänster sida för att generera video",
+    "description": "Meddelande när det inte finns några uppgifter"
+  },
+  "styleCategory.styles": {
+    "message": "ID-foto stil",
+    "description": "Kategorisk term som används för att beskriva och generera bilder, den genererade bilden bör inkludera denna kategoris etikett"
+  },
+  "styleTag.malePportrait": {
+    "message": "Manligt porträtt",
+    "description": "Stilterm som används för att beskriva och generera bilder, den genererade bilden bör innehålla denna stil"
+  },
+  "styleTag.malePportrait2": {
+    "message": "Manligt porträtt 2",
+    "description": "Stilterm som används för att beskriva och generera bilder, den genererade bilden bör innehålla denna stil"
+  },
+  "styleTag.kindergarten": {
+    "message": "Dagis inskrivningsbild",
+    "description": "Stilterm som används för att beskriva och generera bilder, den genererade bilden bör innehålla denna stil"
+  },
+  "styleTag.logoTshirt": {
+    "message": "Företagslogo T-shirt foto",
+    "description": "Används för att beskriva och generera en stil för bilden, den genererade bilden ska inkludera stilen av denna etikett"
+  },
+  "styleTag.wedding": {
+    "message": "Bröllopsregistreringsfoto",
+    "description": "Används för att beskriva och generera en stil för bilden, den genererade bilden ska inkludera stilen av denna etikett"
+  },
+  "styleTag.businessPphoto": {
+    "message": "Affärsporträtt",
+    "description": "Används för att beskriva och generera en stil för bilden, den genererade bilden ska inkludera stilen av denna etikett"
+  },
+  "styleTag.bobSuit": {
+    "message": "Svart kostym med bob frisyr",
+    "description": "Används för att beskriva och generera en stil för bilden, den genererade bilden ska inkludera stilen av denna etikett"
+  },
+  "styleTag.femalePortrait": {
+    "message": "Kvinnoporträtt",
+    "description": "Används för att beskriva och generera en stil för bilden, den genererade bilden ska inkludera stilen av denna etikett"
+  }
+}

@@ -63,6 +63,10 @@
     "message": "Luma",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
+  "field.featuresHeadshots": {
+    "message": "AI fotografije",
+    "description": "Prikazuje se kao naslov u okviru za uređivanje"
+  },
   "field.featuresSuno": {
     "message": "Suno",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
@@ -76,11 +80,11 @@
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "title.basicConfig": {
-    "message": "Osnovna konfiguracija",
+    "message": "Osnovne postavke",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "title.seoConfig": {
-    "message": "SEO konfiguracija",
+    "message": "SEO postavke",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "title.editAdmins": {
@@ -88,7 +92,7 @@
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "title.featuresConfig": {
-    "message": "Konfiguracija funkcija",
+    "message": "Postavke funkcija",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "title.editTitle": {
@@ -116,7 +120,7 @@
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "title.distributionConfig": {
-    "message": "Konfiguracija distribucije",
+    "message": "Postavke distribucije",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "title.editDistributionDefaultInviterId": {
@@ -164,119 +168,123 @@
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "message.uploadImageExceed": {
-    "message": "Prekoračena granica za upload slike",
-    "description": "Poruka upozorenja kada je prekoračena granica za upload slike"
+    "message": "Prekoračen limit za upload slika",
+    "description": "Poruka o prekoračenju limita za upload slika"
   },
   "message.uploadImageError": {
-    "message": "Greška prilikom upload-a slike",
-    "description": "Poruka upozorenja kada dođe do greške prilikom upload-a slike"
+    "message": "Greška prilikom upload-a slika",
+    "description": "Poruka o grešci prilikom upload-a slika"
   },
   "message.editLogoTip": {
     "message": "Preporučena dimenzija: 200*60px",
-    "description": "Poruka koja se prikazuje kao uputstvo za upload slike"
+    "description": "Jezik o preporuci za upload slika"
   },
   "message.editQRTip": {
     "message": "Preporučena dimenzija: 200*200px",
-    "description": "Poruka koja se prikazuje kao uputstvo za upload slike"
+    "description": "Jezik o preporuci za upload slika"
   },
   "message.editFaviconTip": {
     "message": "Preporučena dimenzija: 32*32px",
-    "description": "Poruka koja se prikazuje kao uputstvo za upload slike"
+    "description": "Uputstvo za upload slike"
   },
   "message.editUrl": {
-    "message": "Унесите линк",
-    "description": "提示 за уношење линка"
+    "message": "Unesite link",
+    "description": "Uputstvo za unos linka"
   },
   "message.atLeastOneAdmin": {
-    "message": "Мора да постоји најмање један администратор",
-    "description": "提示 да мора да постоји најмање један администратор"
+    "message": "Morate zadržati barem jednog administratora",
+    "description": "Uputstvo za zadržavanje barem jednog administratora"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "ID корисника по подразумеваном позиватеља. Ако дистрибутивна линк не садржи параметар inviter_id, аутоматски се користи овај ID као позиватељ.",
-    "description": "提示 за ID позиватеља по подразумеваној вредности"
+    "message": "Podrazumevani ID korisnika koji šalje poziv, ako distribucioni link ne sadrži inviter_id parametar, koristiće se ovaj ID kao pozivalac.",
+    "description": "Uputstvo za podrazumevani ID pozivaoca"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID корисника принудног позиватеља. Ако је овај ID постављен, без обзира на то да ли дистрибутивна линк садржи параметар inviter_id, принудно се користи овај ID као позиватељ.",
-    "description": "提示 за принудни ID позиватеља"
+    "message": "ID korisnika koji se obavezno poziva, ako je ovaj ID postavljen, koristiti će se bez obzira na to da li distribucioni link sadrži inviter_id parametar.",
+    "description": "Uputstvo za obavezni ID pozivaoca"
   },
   "message.originTip": {
-    "message": "Домен сајта, конфигурација сајта је повезана са доменом и не може се променити.",
-    "description": "提示 за домен сајта"
+    "message": "Domen sajta, konfiguracija sajta je vezana za domen, domen sajta se ne može menjati.",
+    "description": "Uputstvo za domen sajta"
   },
   "message.titleTip": {
-    "message": "Наслов сајта, приказује се на картицама прегледача.",
-    "description": "提示 за наслов сајта"
+    "message": "Naslov sajta, prikazuje se na kartici pretraživača.",
+    "description": "Uputstvo za naslov sajta"
   },
   "message.descriptionTip": {
-    "message": "Опис сајта, налази се у мета информацијама сајта и користи се за оптимизацију SEO.",
-    "description": "提示 за опис сајта"
+    "message": "Opis sajta, nalazi se u metapodacima sajta, koristi se za SEO optimizaciju.",
+    "description": "Uputstvo za opis sajta"
   },
   "message.logoTip": {
-    "message": "Лого сајта, приказује се на врху менија када се мени прошири.",
-    "description": "提示 за лого сајта"
+    "message": "Logo sajta, prikazuje se na vrhu menija kada je meni otvoren.",
+    "description": "Uputstvo za logo sajta"
   },
   "message.faviconTip": {
-    "message": "Favicon сајта, приказује се на картицама прегледача.",
-    "description": "提示 за favicon сајта"
+    "message": "Favicon sajta, prikazuje se na kartici pretraživača.",
+    "description": "Uputstvo za favicon sajta"
   },
   "message.adminsTip": {
-    "message": "ID администраторовa сајта. По подразумеваној вредности, први корисник који креира сајт постаје администратор. Само администратори могу управљати сајтом.",
-    "description": "提示 за администраторе сајта"
+    "message": "ID administratore sajta, podrazumevano, korisnik koji prvi put kreira sajt postaje administrator, samo administratori mogu upravljati sajtom.",
+    "description": "Uputstvo za administratore sajta"
   },
   "message.adminsTip2": {
-    "message": "Можете додавати или уклонити администраторе овде. Можете посетити https://auth.acedata.cloud за преглед ID корисника.",
-    "description": "提示 за администраторе сајта"
+    "message": "Ovde možete dodavati ili uklanjati ID-eve administratora, možete pogledati ID korisnika na https://auth.acedata.cloud",
+    "description": "Uputstvo za administratore sajta"
   },
   "message.keywordsTip": {
-    "message": "Кључне речи сајта, налазе се у мета информацијама сајта и користе се за оптимизацију SEO.",
-    "description": "提示 за кључне речи сајта"
+    "message": "Ključne reči sajta, nalaze se u metapodacima sajta, koriste se za SEO optimizaciju.",
+    "description": "Uputstvo za ključne reči sajta"
   },
   "message.keywordsTip2": {
-    "message": "Можете додавати или уклонити кључне речи овде. Што су кључне речи прецизније, то је боља оптимизација за SEO.",
-    "description": "提示 за кључне речи сајта"
+    "message": "Ovde možete dodavati ili uklanjati ključne reči sajta, što preciznije ključne reči bolje za SEO optimizaciju.",
+    "description": "Uputstvo za ključne reči sajta"
   },
   "message.featuresChat": {
-    "message": "Укључите или искључите модул функције Чат.",
-    "description": "描述 функције Чат"
+    "message": "Uključite ili isključite Chat funkcionalnost.",
+    "description": "Opis Chat funkcionalnosti"
   },
   "message.featuresMidjourney": {
-    "message": "Укључите или искључите модул функције Мидјурни.",
-    "description": "描述 функције Мидјурни"
+    "message": "Uključite ili isključite Midjourney funkcionalnost.",
+    "description": "Opis Midjourney funkcionalnosti"
   },
   "message.featuresChatdoc": {
-    "message": "Укључите или искључите модул функције Чатдок.",
-    "description": "描述 функције Чатдок"
+    "message": "Uključite ili isključite Chatdoc funkcionalnost.",
+    "description": "Opis Chatdoc funkcionalnosti"
   },
   "message.featuresQrart": {
-    "message": "Укључите или искључите модул функције Qrart.",
-    "description": "描述 функције Qrart"
+    "message": "Uključite ili isključite Qrart funkcionalnost.",
+    "description": "Opis Qrart funkcionalnosti"
   },
   "message.featuresSuno": {
-    "message": "Укључите или искључите модул функције Суну.",
-    "description": "描述 функције Суна"
+    "message": "Uključite ili isključite Suno funkcionalnost.",
+    "description": "Opis Suno funkcionalnosti"
   },
   "message.featuresLuma": {
-    "message": "Укључите или искључите модул функције Лума.",
-    "description": "描述 функције Лума"
+    "message": "Uključite ili isključite Luma funkcionalnost.",
+    "description": "Opis Luma funkcionalnosti"
+  },
+  "message.featuresHeadshots": {
+    "message": "Uključite ili isključite AI ID fotografije funkcionalnost.",
+    "description": "Opis AI ID fotografije funkcionalnosti"
   },
   "message.featuresSupport": {
-    "message": "Укључите или искључите корисничку подршку",
-    "description": "描述 функције подршке"
+    "message": "Uključite ili isključite podršku korisnicima",
+    "description": "Opis podrške"
   },
   "message.featuresI18n": {
-    "message": "Укључите или искључите аудио-визуелну подршку. Када је искључена, корисници могу користити само подешени језик.",
-    "description": "描述 функције вишезначне подршке"
+    "message": "Uključite ili isključite višelingu podršku, nakon isključivanja, korisnici mogu koristiti samo podrazumevani jezik.",
+    "description": "Opis višelinge podrške"
   },
   "button.upload": {
-    "message": "Отпреми",
-    "description": "Отпреми"
+    "message": "Otpremi",
+    "description": "Otpremanje"
   },
   "button.enabled": {
-    "message": "Омогућено",
-    "description": "Текст прекидача, означава да је омогућено"
+    "message": "Omogućeno",
+    "description": "Tekst prekidača, što znači da je omogućeno"
   },
   "button.disabled": {
-    "message": "Искључено",
-    "description": "Текст прекидача, означава да је искључено"
+    "message": "Onemogućeno",
+    "description": "Tekst prekidača, što znači da je onemogućeno"
   }
 }

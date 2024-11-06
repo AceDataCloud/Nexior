@@ -1,0 +1,194 @@
+{
+  "name.taskId": {
+    "message": "タスク ID",
+    "description": "タスクの ID"
+  },
+  "name.mode": {
+    "message": "生成速度",
+    "description": "速度パラメータの名前で、生成された画像の速度を設定するために使用されます。"
+  },
+  "name.type": {
+    "message": "タイプ",
+    "description": "生成する QR コードの内容タイプ、例えば 'リンク'、'テキスト' など"
+  },
+  "name.failure": {
+    "message": "失敗",
+    "description": "タスクの失敗状態"
+  },
+  "name.failureReason": {
+    "message": "失敗理由",
+    "description": "タスクが失敗した理由"
+  },
+  "name.status": {
+    "message": "ステータス",
+    "description": "タスクの状態"
+  },
+  "name.traceId": {
+    "message": "トレース ID",
+    "description": "タスクのトレース ID"
+  },
+  "name.size": {
+    "message": "サイズ",
+    "description": "生成する QR コードのサイズ"
+  },
+  "name.createdAt": {
+    "message": "作成日時",
+    "description": "QR コードが生成された日付と時刻"
+  },
+  "name.endImageUrls": {
+    "message": "肖像画像",
+    "description": "生成する QR コードの種"
+  },
+  "description.endImageUrls": {
+    "message": "この肖像画像に基づいて対応する証明写真を生成します",
+    "description": "生成する QR コードの種"
+  },
+  "name.content": {
+    "message": "内容",
+    "description": "生成する QR コードの内容"
+  },
+  "field.elements": {
+    "message": "証明写真スタイル",
+    "description": "画像生成に使用される絵画スタイル"
+  },
+  "name.headshotsBot": {
+    "message": "ヘッドショットボット",
+    "description": "ヘッドショット証明写真生成の名前"
+  },
+  "name.contentImageUrl": {
+    "message": "内容画像リンク",
+    "description": "生成する QR コードの内容画像 URL"
+  },
+  "inputWay.input": {
+    "message": "内容を入力",
+    "description": "入力方法"
+  },
+  "status.pending": {
+    "message": "保留中",
+    "description": "タスクの保留状態"
+  },
+  "status.processing": {
+    "message": "処理中",
+    "description": "タスクの処理状態"
+  },
+  "placeholder.paddingNoise": {
+    "message": "選択してください...",
+    "description": "ノイズ入力のプレースホルダー"
+  },
+  "placeholder.paddingLevel": {
+    "message": "選択してください...",
+    "description": "パディングレベルのプレースホルダー"
+  },
+  "placeholder.prompt": {
+    "message": "生成する動画スタイルのヒントを入力してください。例：宇宙から火山への宇宙飛行士のシャトル",
+    "description": "プロンプトフィールド内のプレースホルダーテキスト"
+  },
+  "button.fast": {
+    "message": "高速モード",
+    "description": "ボタンのテキストで、ユーザーが'高速モード'を設定して画像を迅速に生成できるようにします。"
+  },
+  "button.relax": {
+    "message": "慢速モード",
+    "description": "ボタンのテキストで、ユーザーが'慢速モード'を設定して画像をリラックスして生成できるようにします。"
+  },
+  "button.generate": {
+    "message": "生成する",
+    "description": "ヘッドショット証明写真を生成するためのボタンのテキスト"
+  },
+  "button.viewImage": {
+    "message": "原画像を表示",
+    "description": "ヘッドショット証明写真を生成するためのボタンのテキスト"
+  },
+  "button.download": {
+    "message": "動画をダウンロード",
+    "description": "動画ダウンロードボタンのテキスト"
+  },
+  "button.uploadImageUrls": {
+    "message": "肖像画像をアップロード",
+    "description": "肖像画像をアップロードするためのボタンのテキスト"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "最大5枚の画像をアップロードできます",
+    "description": "アップロードされた画像数が制限を超えたときのエラーメッセージ"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "画像を正常にアップロードしました",
+    "description": "画像が正常にアップロードされたときの成功メッセージ"
+  },
+  "message.uploadReferencesError": {
+    "message": "画像のアップロードに失敗しました。後でもう一度お試しください。",
+    "description": "画像アップロードに失敗したときのエラーメッセージ"
+  },
+  "message.startingTask": {
+    "message": "タスクを開始しています...",
+    "description": "描画タスクが始まるときのメッセージ"
+  },
+  "message.startTaskSuccess": {
+    "message": "生成タスクを正常に発起しました",
+    "description": "タスクを正常に開始したときの成功メッセージ"
+  },
+  "message.startTaskFailed": {
+    "message": "タスクの発起に失敗しました。管理者に連絡してください。",
+    "description": "描画タスクの開始に失敗したときのエラーメッセージ"
+  },
+  "message.usedUp": {
+    "message": "ポイントが使い果たされました。続行するには、さらにポイントを購入してください。",
+    "description": "使い果たされたときのメッセージ"
+  },
+  "message.generating": {
+    "message": "生成中...",
+    "description": "画像が生成されている間のメッセージ"
+  },
+  "message.downloadVideo": {
+    "message": "この動画をダウンロード",
+    "description": "画像が生成されている間のメッセージ"
+  },
+  "message.generateFailed": {
+    "message": "画像生成に失敗しました",
+    "description": "画像生成に失敗したときのメッセージ"
+  },
+  "message.noOperations": {
+    "message": "利用可能な操作がありません",
+    "description": "操作が利用できないときのメッセージ"
+  },
+  "message.noTasks": {
+    "message": "履歴タスクはありません。左側をクリックして動画を生成してください。",
+    "description": "タスクがないときのメッセージ"
+  },
+  "styleCategory.styles": {
+    "message": "証明写真スタイル",
+    "description": "画像を説明および生成するためのカテゴリ用語、生成された画像にはこのラベルのカテゴリが含まれる必要があります"
+  },
+  "styleTag.malePportrait": {
+    "message": "男性ポートレート",
+    "description": "画像を説明し生成するためのスタイル用語、生成された画像にはこのラベルのスタイルが含まれる必要があります"
+  },
+  "styleTag.malePportrait2": {
+    "message": "男性ポートレート2",
+    "description": "画像を説明し生成するためのスタイル用語、生成された画像にはこのラベルのスタイルが含まれる必要があります"
+  },
+  "styleTag.kindergarten": {
+    "message": "幼稚園入園写真",
+    "description": "画像を説明し生成するためのスタイル用語、生成された画像にはこのラベルのスタイルが含まれる必要があります"
+  },
+  "styleTag.logoTshirt": {
+    "message": "企業のロゴTシャツ写真",
+    "description": "画像を説明し生成するためのスタイルワード、生成された画像にはこのタグのスタイルが含まれるべきです"
+  },
+  "styleTag.wedding": {
+    "message": "結婚登録写真",
+    "description": "画像を説明し生成するためのスタイルワード、生成された画像にはこのタグのスタイルが含まれるべきです"
+  },
+  "styleTag.businessPphoto": {
+    "message": "ビジネス風写真",
+    "description": "画像を説明し生成するためのスタイルワード、生成された画像にはこのタグのスタイルが含まれるべきです"
+  },
+  "styleTag.bobSuit": {
+    "message": "黒いスーツのボブヘア",
+    "description": "画像を説明し生成するためのスタイルワード、生成された画像にはこのタグのスタイルが含まれるべきです"
+  },
+  "styleTag.femalePortrait": {
+    "message": "女性ポートレート写真",
+    "description": "画像を説明し生成するためのスタイルワード、生成された画像にはこのタグのスタイルが含まれるべきです"
+  }
+}

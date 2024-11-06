@@ -1,0 +1,194 @@
+{
+  "name.taskId": {
+    "message": "작업 ID",
+    "description": "작업의 ID"
+  },
+  "name.mode": {
+    "message": "생성 속도",
+    "description": "이미지 생성을 위한 속도를 설정하는 매개변수의 이름"
+  },
+  "name.type": {
+    "message": "유형",
+    "description": "생성할 QR 코드의 내용 유형, 예: '링크', '텍스트' 등"
+  },
+  "name.failure": {
+    "message": "실패",
+    "description": "작업의 실패 상태"
+  },
+  "name.failureReason": {
+    "message": "실패 원인",
+    "description": "작업 실패의 이유"
+  },
+  "name.status": {
+    "message": "상태",
+    "description": "작업의 상태"
+  },
+  "name.traceId": {
+    "message": "추적 ID",
+    "description": "작업의 추적 ID"
+  },
+  "name.size": {
+    "message": "크기",
+    "description": "생성할 QR 코드의 크기"
+  },
+  "name.createdAt": {
+    "message": "생성 일시",
+    "description": "QR 코드가 생성된 날짜와 시간"
+  },
+  "name.endImageUrls": {
+    "message": "인물 사진",
+    "description": "생성할 QR 코드의 시드"
+  },
+  "description.endImageUrls": {
+    "message": "이 인물 사진을 기반으로 해당 증명사진 생성",
+    "description": "생성할 QR 코드의 시드"
+  },
+  "name.content": {
+    "message": "내용",
+    "description": "생성할 QR 코드의 내용"
+  },
+  "field.elements": {
+    "message": "증명사진 스타일",
+    "description": "이미지를 생성하는 데 사용되는 화풍"
+  },
+  "name.headshotsBot": {
+    "message": "헤드샷 봇",
+    "description": "헤드샷 증명사진 생성의 이름"
+  },
+  "name.contentImageUrl": {
+    "message": "내용 이미지 링크",
+    "description": "생성할 QR 코드의 내용 이미지 URL"
+  },
+  "inputWay.input": {
+    "message": "내용 입력",
+    "description": "입력 방식"
+  },
+  "status.pending": {
+    "message": "대기 중",
+    "description": "작업의 대기 상태"
+  },
+  "status.processing": {
+    "message": "처리 중",
+    "description": "작업의 처리 상태"
+  },
+  "placeholder.paddingNoise": {
+    "message": "선택해 주세요...",
+    "description": "채우기 노이즈 입력의 자리 표시자"
+  },
+  "placeholder.paddingLevel": {
+    "message": "선택해 주세요...",
+    "description": "채우기 수준의 자리 표시자"
+  },
+  "placeholder.prompt": {
+    "message": "생성할 비디오 스타일을 위한 프롬프트 입력, 예: 우주에서 화산으로 셔틀하는 우주비행사들",
+    "description": "프롬프트 필드의 자리 표시 텍스트"
+  },
+  "button.fast": {
+    "message": "빠른 모드",
+    "description": "버튼 텍스트, 사용자가 이미지를 생성하기 위해 '빠른 모드'로 설정할 수 있게 해 줌"
+  },
+  "button.relax": {
+    "message": "느린 모드",
+    "description": "버튼 텍스트, 사용자가 이미지를 생성하기 위해 '느린 모드'로 설정할 수 있게 해 줌"
+  },
+  "button.generate": {
+    "message": "생성",
+    "description": "헤드샷 증명사진 생성을 위한 버튼 텍스트"
+  },
+  "button.viewImage": {
+    "message": "원본 이미지 보기",
+    "description": "헤드샷 증명사진 생성을 위한 버튼 텍스트"
+  },
+  "button.download": {
+    "message": "비디오 다운로드",
+    "description": "비디오 다운로드 버튼 텍스트"
+  },
+  "button.uploadImageUrls": {
+    "message": "인물 사진 업로드",
+    "description": "인물 사진 업로드 버튼 텍스트"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "최대 5장까지 업로드 가능합니다",
+    "description": "업로드된 이미지 수가 한도를 초과할 때의 오류 메시지"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "이미지를 성공적으로 업로드했습니다",
+    "description": "이미지를 성공적으로 업로드했을 때의 성공 메시지"
+  },
+  "message.uploadReferencesError": {
+    "message": "이미지 업로드에 실패했습니다. 나중에 다시 시도해 주세요",
+    "description": "이미지 업로드 실패 시의 오류 메시지"
+  },
+  "message.startingTask": {
+    "message": "작업 시작 중...",
+    "description": "그리기 작업 시작 시의 메시지"
+  },
+  "message.startTaskSuccess": {
+    "message": "생성 작업이 성공적으로 시작되었습니다",
+    "description": "작업이 성공적으로 시작되었을 때의 성공 메시지"
+  },
+  "message.startTaskFailed": {
+    "message": "작업 시작에 실패했습니다. 관리자에게 문의해 주세요",
+    "description": "그리기 작업 시작 실패 시의 오류 메시지"
+  },
+  "message.usedUp": {
+    "message": "포인트가 소진되었습니다. 더 많은 포인트를 구매한 후 계속 사용해 주세요",
+    "description": "포인트가 소진되었을 때의 메시지"
+  },
+  "message.generating": {
+    "message": "생성 중입니다...",
+    "description": "이미지가 생성되는 동안의 메시지"
+  },
+  "message.downloadVideo": {
+    "message": "이 비디오 다운로드",
+    "description": "이미지 생성 중의 메시지"
+  },
+  "message.generateFailed": {
+    "message": "이미지 생성에 실패했습니다",
+    "description": "이미지 생성 실패 시의 메시지"
+  },
+  "message.noOperations": {
+    "message": "사용 가능한 작업이 없습니다",
+    "description": "사용 가능한 작업이 없을 때의 메시지"
+  },
+  "message.noTasks": {
+    "message": "이력에 작업이 없습니다. 왼쪽에서 비디오 생성을 클릭하세요",
+    "description": "작업이 없을 때의 메시지"
+  },
+  "styleCategory.styles": {
+    "message": "증명사진 스타일",
+    "description": "이미지를 설명하고 생성하는 데 사용되는 카테고리 용어, 생성된 이미지는 이 태그의 카테고리를 포함해야 함"
+  },
+  "styleTag.malePportrait": {
+    "message": "남성 초상화",
+    "description": "이미지를 설명하고 생성하는 데 사용되는 스타일 용어, 생성된 이미지는 이 태그의 스타일을 포함해야 함"
+  },
+  "styleTag.malePportrait2": {
+    "message": "남성 초상화 2",
+    "description": "이미지를 설명하고 생성하는 데 사용되는 스타일 용어, 생성된 이미지는 이 태그의 스타일을 포함해야 함"
+  },
+  "styleTag.kindergarten": {
+    "message": "유치원 입학 사진",
+    "description": "이미지를 설명하고 생성하는 데 사용되는 스타일 용어, 생성된 이미지는 이 태그의 스타일을 포함해야 함"
+  },
+  "styleTag.logoTshirt": {
+    "message": "기업 로고 티셔츠 사진",
+    "description": "이미지를 설명하고 생성하는 스타일 단어로, 생성된 이미지는 이 태그의 스타일을 포함해야 합니다."
+  },
+  "styleTag.wedding": {
+    "message": "결혼 등록 사진",
+    "description": "이미지를 설명하고 생성하는 스타일 단어로, 생성된 이미지는 이 태그의 스타일을 포함해야 합니다."
+  },
+  "styleTag.businessPphoto": {
+    "message": "비즈니스 프로필 사진",
+    "description": "이미지를 설명하고 생성하는 스타일 단어로, 생성된 이미지는 이 태그의 스타일을 포함해야 합니다."
+  },
+  "styleTag.bobSuit": {
+    "message": "검은색 정장과 보브 헤어",
+    "description": "이미지를 설명하고 생성하는 스타일 단어로, 생성된 이미지는 이 태그의 스타일을 포함해야 합니다."
+  },
+  "styleTag.femalePortrait": {
+    "message": "여성 초상 사진",
+    "description": "이미지를 설명하고 생성하는 스타일 단어로, 생성된 이미지는 이 태그의 스타일을 포함해야 합니다."
+  }
+}
