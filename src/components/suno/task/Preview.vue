@@ -37,14 +37,6 @@
         <el-button v-if="audio?.audio_url && audio?.video_url" size="small" round @click="onExtend($event, audio)">{{
           $t('suno.button.extend')
         }}</el-button>
-        <el-tooltip effect="dark" :content="$t('suno.button.download')" placement="top">
-          <font-awesome-icon
-            v-if="audio?.audio_url"
-            icon="fa-solid fa-download"
-            class="icon icon-download"
-            @click="onDownload($event, audio?.audio_url)"
-          />
-        </el-tooltip>
         <el-tooltip effect="dark" :content="$t('suno.button.video')" placement="top">
           <font-awesome-icon
             v-if="audio?.video_url"
@@ -53,6 +45,27 @@
             @click="onPreview($event, audio?.video_url)"
           />
         </el-tooltip>
+        <el-dropdown>
+          <span class="el-dropdown-link">
+            <el-tooltip effect="dark" :content="$t('suno.button.download')" placement="top">
+              <font-awesome-icon
+                v-if="audio?.audio_url || audio?.video_url"
+                icon="fa-solid fa-download"
+                class="icon icon-download"
+              />
+            </el-tooltip>
+          </span>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item v-if="audio?.video_url" @click="onDownload($event, audio?.video_url)">
+                {{ $t('suno.button.download_video') }}
+              </el-dropdown-item>
+              <el-dropdown-item v-if="audio?.audio_url" @click="onDownload($event, audio?.audio_url)">
+                {{ $t('suno.button.download_audio') }}
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
       </div>
     </div>
   </div>
@@ -62,9 +75,10 @@
 import { defineComponent } from 'vue';
 import { useFormatDuring } from '@/utils/number';
 import { ISunoAudio, ISunoTask } from '@/models';
-import { ElImage, ElIcon, ElTooltip, ElButton } from 'element-plus';
+import { ElImage, ElIcon, ElTooltip, ElButton, ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus';
 import { VideoPlay, VideoPause } from '@element-plus/icons-vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { saveAs } from 'file-saver';
 
 export default defineComponent({
   name: 'TaskPreview',
@@ -75,7 +89,10 @@ export default defineComponent({
     ElButton,
     FontAwesomeIcon,
     VideoPlay,
-    VideoPause
+    VideoPause,
+    ElDropdown,
+    ElDropdownMenu,
+    ElDropdownItem
   },
   props: {
     modelValue: {
@@ -153,13 +170,26 @@ export default defineComponent({
     },
     onDownload(event: MouseEvent, audioUrl: string) {
       event.stopPropagation();
-      console.log('on download');
+      console.log('on download', audioUrl);
+      // 使用 URL 对象解析
+      const parsedUrl = new URL(audioUrl);
+
+      // 获取路径名
+      const pathname = parsedUrl.pathname;
+      // 提取文件名
+      const filename = pathname.substring(pathname.lastIndexOf('/') + 1);
+      console.log('on preview', filename);
+      fetch(audioUrl)
+        .then((response) => response.blob())
+        .then((blob) => {
+          saveAs(blob, filename);
+        });
       // download url here
-      window.open(audioUrl, '_blank');
+      // window.open(audioUrl, '_blank');
     },
     onPreview(event: MouseEvent, videoUrl: string) {
       event.stopPropagation();
-      console.log('on preview');
+      console.log('on preview', videoUrl);
       // preview url here
       window.open(videoUrl, '_blank');
     }
