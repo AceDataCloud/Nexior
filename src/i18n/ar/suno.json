@@ -1,7 +1,7 @@
 {
   "button.extend": {
-    "message": "تابع التوليد",
-    "description": "نص زر تابع التوليد"
+    "message": "استمرار في التوليد",
+    "description": "نص زر الاستمرار في التوليد"
   },
   "button.download": {
     "message": "تنزيل",
@@ -10,6 +10,14 @@
   "button.video": {
     "message": "فيديو",
     "description": "نص زر الفيديو"
+  },
+  "button.download_video": {
+    "message": "تنزيل الفيديو",
+    "description": "نص زر تنزيل الفيديو"
+  },
+  "button.download_audio": {
+    "message": "تحميل الموسيقى",
+    "description": "نص زر تحميل الموسيقى"
   },
   "model.model1": {
     "message": "v2",
@@ -37,23 +45,23 @@
   },
   "name.prompt": {
     "message": "وصف الأغنية",
-    "description": "نص الإدخال للمحتوى"
+    "description": "نص المدخلات"
   },
   "name.extend": {
-    "message": "توسيع الأغنية من",
-    "description": "نص الإدخال للمحتوى"
+    "message": "تمديد الأغنية من",
+    "description": "نص المدخلات"
   },
   "name.lyrics": {
     "message": "محتوى الكلمات",
-    "description": "نص الإدخال لمحتوى الكلمات"
+    "description": "نص المدخلات لمحتوى الكلمات"
   },
   "name.style": {
     "message": "أسلوب الأغنية",
-    "description": "نص الإدخال لمحتوى أسلوب الأغنية"
+    "description": "نص المدخلات لأسلوب الأغنية"
   },
   "name.title": {
     "message": "عنوان الأغنية",
-    "description": "نص الإدخال لمحتوى عنوان الأغنية"
+    "description": "نص المدخلات لعنوان الأغنية"
   },
   "name.failureReason": {
     "message": "سبب الفشل",
@@ -65,14 +73,14 @@
   },
   "name.traceId": {
     "message": "معرف التتبع",
-    "description": "معرف التتبع للمهمة"
+    "description": "معرف تتبع المهمة"
   },
   "name.sunoBot": {
     "message": "روبوت سونو",
     "description": "اسم مولد سونو"
   },
   "description.prompt": {
-    "message": "أدخل الأسلوب والموضوع الذي ترغب في توليد الموسيقى حوله، مثل بوب أكوستيك عن العطلات",
+    "message": "املأ أسلوب وموضوع الموسيقى التي تريد إنشاؤها، مثل البوب الصوتي عن الإجازات",
     "description": "وصف المعامل 'prompt'"
   },
   "description.lyrics": {
@@ -88,40 +96,40 @@
     "description": "وصف المعامل 'title'"
   },
   "status.pending": {
-    "message": "قيد الانتظار",
-    "description": "حالة الانتظار للمهمة"
+    "message": "في الانتظار",
+    "description": "حالة انتظار المهمة"
   },
   "placeholder.prompt": {
     "message": "يرجى إدخال كلمات الأغنية...",
-    "description": "نص مكان الإدخال لشوائب الضوضاء"
+    "description": "نص العنصر النائب لمدخلات الضجيج"
   },
   "placeholder.lyrics": {
     "message": "يرجى إدخال الكلمات...",
-    "description": "نص مكان الإدخال لمستوى النمذجة"
+    "description": "نص العنصر النائب لمستوى التعبئة"
   },
   "placeholder.extend.lyrics": {
-    "message": "يرجى إدخال الكلمات التي تحتاج إلى توسيع...",
-    "description": "نص مكان الإدخال لمستوى النمذجة"
+    "message": "يرجى إدخال الكلمات التي تحتاج إلى التمديد...",
+    "description": "نص العنصر النائب لمستوى التعبئة"
   },
   "placeholder.extend.continue_at": {
-    "message": "يرجى إدخال من أي ثانية ترغب في توسيع الأغنية...",
-    "description": "نص مكان الإدخال لمستوى النمذجة"
+    "message": "يرجى إدخال الوقت الذي تحتاج إلى التمديد من الأغنية...",
+    "description": "نص العنصر النائب لمستوى التعبئة"
   },
   "placeholder.style": {
-    "message": "يرجى إدخال كلمات المظهر للأغنية، مثل بوب أكوستيك",
-    "description": "نص مكان الإدخال في حقل الإدخال"
+    "message": "يرجى إدخال كلمات أسلوب الأغنية المراد توليدها، مثل البوب الصوتي",
+    "description": "نص العنصر النائب في حقل الإرشاد"
   },
   "placeholder.title": {
-    "message": "يرجى إدخال كلمات عنوان الأغنية، مثل أغنية العطلات",
-    "description": "نص مكان الإدخال للقيمة الابتدائية"
+    "message": "يرجى إدخال كلمات عنوان الأغنية المراد توليدها، مثل أغنية العطلة",
+    "description": "نص العنصر النائب لإدخالات البذور"
   },
   "placeholder.select": {
     "message": "يرجى اختيار النموذج...",
-    "description": "نص مكان الإدخال للموقع"
+    "description": "نص العنصر النائب لإدخالات الموضع"
   },
   "placeholder.position": {
     "message": "يرجى الاختيار...",
-    "description": "نص مكان الإدخال للموقع"
+    "description": "نص العنصر النائب لإدخالات الموضع"
   },
   "button.generate": {
     "message": "توليد",
@@ -133,15 +141,15 @@
   },
   "message.startTaskSuccess": {
     "message": "تم بدء مهمة توليد الموسيقى بنجاح",
-    "description": "رسالة نجاح عند بدء مهمة توليد الموسيقى بنجاح"
+    "description": "رسالة النجاح عند بدء مهمة توليد الموسيقى بنجاح"
   },
   "message.startTaskFailed": {
     "message": "فشل بدء مهمة توليد الموسيقى",
-    "description": "رسالة خطأ عند فشل بدء مهمة توليد الموسيقى"
+    "description": "رسالة الخطأ عند فشل بدء مهمة توليد الموسيقى"
   },
   "message.generating": {
     "message": "جارٍ التوليد...",
-    "description": "رسالة أثناء توليد الموسيقى"
+    "description": "رسالة عندما تكون الموسيقى قيد التوليد"
   },
   "message.generateFailed": {
     "message": "فشل توليد الموسيقى",
@@ -149,10 +157,10 @@
   },
   "message.noOperations": {
     "message": "لا توجد عمليات متاحة",
-    "description": "رسالة عندما لا توجد عمليات متاحة"
+    "description": "رسالة عند عدم وجود عمليات متاحة"
   },
   "message.noTasks": {
-    "message": "لا توجد مهام تاريخية، يرجى توليد الموسيقى في الشريط الجانبي الأيسر",
+    "message": "لا توجد مهام تاريخية، يرجى توليد الموسيقى من الشريط الجانبي الأيسر",
     "description": "رسالة عند عدم وجود مهام"
   }
 }

@@ -1,7 +1,7 @@
 {
   "button.extend": {
-    "message": "Fortfahren mit der Generierung",
-    "description": "Text des Fortfahren mit der Generierung-Buttons"
+    "message": "Weiter generieren",
+    "description": "Text des Weiter-generieren-Buttons"
   },
   "button.download": {
     "message": "Herunterladen",
@@ -11,21 +11,29 @@
     "message": "Video",
     "description": "Text des Video-Buttons"
   },
+  "button.download_video": {
+    "message": "Video herunterladen",
+    "description": "Text des Video-herunterladen-Buttons"
+  },
+  "button.download_audio": {
+    "message": "Musik herunterladen",
+    "description": "Text des Musik-herunterladen-Buttons"
+  },
   "model.model1": {
     "message": "v2",
-    "description": "Modell zur Generierung von Musik"
+    "description": "Modell zur Musikgenerierung"
   },
   "model.model2": {
     "message": "v3",
-    "description": "Modell zur Generierung von Musik"
+    "description": "Modell zur Musikgenerierung"
   },
   "name.instrumental": {
-    "message": "Instrumental",
+    "message": "Ohne Text",
     "description": "Beschreibung des Parameters 'instrumental'"
   },
   "model.model3": {
     "message": "v3.5",
-    "description": "Modell zur Generierung von Musik"
+    "description": "Modell zur Musikgenerierung"
   },
   "name.taskId": {
     "message": "Aufgaben-ID",
@@ -69,14 +77,14 @@
   },
   "name.sunoBot": {
     "message": "Suno Bot",
-    "description": "Name des Suno Generators"
+    "description": "Name des Suno-Generators"
   },
   "description.prompt": {
     "message": "Geben Sie den Stil und das Thema der Musik an, die Sie generieren möchten, z.B. akustischer Pop über die Feiertage",
     "description": "Beschreibung des Parameters 'prompt'"
   },
   "description.lyrics": {
-    "message": "Inhalt der Texte",
+    "message": "Inhalt des Textes",
     "description": "Beschreibung des Parameters 'lyrics'"
   },
   "description.style": {
@@ -88,40 +96,40 @@
     "description": "Beschreibung des Parameters 'title'"
   },
   "status.pending": {
-    "message": "Wartend",
-    "description": "Wartezustand der Aufgabe"
+    "message": "Warten",
+    "description": "Wartestatus der Aufgabe"
   },
   "placeholder.prompt": {
-    "message": "Bitte Songprompt eingeben...",
-    "description": "Platzhalter für die Eingabe des Prompts"
+    "message": "Bitte geben Sie die Songaufforderung ein...",
+    "description": "Platzhalter für die Eingabe"
   },
   "placeholder.lyrics": {
-    "message": "Bitte Text eingeben...",
-    "description": "Platzhalter für die Eingabe der Textinhalte"
+    "message": "Bitte geben Sie den Text ein...",
+    "description": "Platzhalter für den Textinhalt"
   },
   "placeholder.extend.lyrics": {
-    "message": "Bitte die zu erweiternden Texte eingeben...",
-    "description": "Platzhalter für die Eingabe der Textinhalte"
+    "message": "Bitte geben Sie den zu erweiternden Text ein...",
+    "description": "Platzhalter für den Textinhalt"
   },
   "placeholder.extend.continue_at": {
-    "message": "Bitte geben Sie an, von welcher Sekunde des Songs Sie erweitern möchten...",
-    "description": "Platzhalter für die Eingabe der Erweiterung"
+    "message": "Bitte geben Sie die Sekunde ein, ab der der Song erweitert werden soll...",
+    "description": "Platzhalter für die Eingabe"
   },
   "placeholder.style": {
-    "message": "Bitte eingeben, welche Stilrichtung des Songs generiert werden soll, z.B. akustischer Pop",
-    "description": "Platzhaltertext im Eingabefeld"
+    "message": "Bitte geben Sie die Hinweise zum Songstil ein, z.B. akustischer Pop",
+    "description": "Platzhaltertext im Hinweisfeld"
   },
   "placeholder.title": {
-    "message": "Bitte den Titel des zu generierenden Songs eingeben, z.B. Feiertagslied",
-    "description": "Platzhalter für die Eingabe des Titels"
+    "message": "Bitte geben Sie die Hinweise zum Songtitel ein, z.B. Feiertagslied",
+    "description": "Platzhalter für die Seed-Eingabe"
   },
   "placeholder.select": {
-    "message": "Bitte Modell auswählen...",
-    "description": "Platzhalter für die Eingabe der Modellwahl"
+    "message": "Bitte modell auswählen...",
+    "description": "Platzhalter für die Eingabe"
   },
   "placeholder.position": {
     "message": "Bitte auswählen...",
-    "description": "Platzhalter für die Eingabe der Auswahl"
+    "description": "Platzhalter für die Eingabe"
   },
   "button.generate": {
     "message": "Generieren",
@@ -129,30 +137,30 @@
   },
   "message.startingTask": {
     "message": "Starte Aufgabe...",
-    "description": "Nachricht, wenn die Musikgenerierungsaufgabe gestartet wird"
+    "description": "Nachricht beim Starten der Musikgenerierungsaufgabe"
   },
   "message.startTaskSuccess": {
     "message": "Musikgenerierungsaufgabe erfolgreich gestartet",
-    "description": "Nachricht bei erfolgreichem Start der Musikgenerierungsaufgabe"
+    "description": "Nachricht beim Erfolg des Startes der Musikgenerierungsaufgabe"
   },
   "message.startTaskFailed": {
     "message": "Start der Musikgenerierungsaufgabe fehlgeschlagen",
-    "description": "Nachricht im Fehlerfall beim Start der Musikgenerierungsaufgabe"
+    "description": "Fehlermeldung beim Scheitern des Starts der Musikgenerierungsaufgabe"
   },
   "message.generating": {
-    "message": "Generiere...",
-    "description": "Nachricht während die Musik generiert wird"
+    "message": "Wird generiert...",
+    "description": "Nachricht während der Musikgenerierung"
   },
   "message.generateFailed": {
     "message": "Musikgenerierung fehlgeschlagen",
-    "description": "Nachricht, wenn die Musikgenerierung fehlschlägt"
+    "description": "Nachricht beim Scheitern der Musikgenerierung"
   },
   "message.noOperations": {
     "message": "Keine verfügbaren Operationen",
-    "description": "Nachricht, wenn keine Operationen verfügbar sind"
+    "description": "Nachricht, wenn keine verfügbaren Operationen vorhanden sind"
   },
   "message.noTasks": {
-    "message": "Keine vergangenen Aufgaben, bitte Musik im linken Konfigurationsbereich generieren",
+    "message": "Keine historischen Aufgaben, bitte Musik in der Konfigurationsleiste auf der linken Seite generieren",
     "description": "Nachricht, wenn keine Aufgaben vorhanden sind"
   }
 }
