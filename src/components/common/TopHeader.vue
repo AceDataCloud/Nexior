@@ -16,6 +16,11 @@
           <el-menu-item v-if="site?.features?.qrart?.enabled" v-t="'index.title.qrart'" index="/qrart"></el-menu-item>
           <el-menu-item v-if="site?.features?.suno?.enabled" v-t="'index.title.suno'" index="/suno"></el-menu-item>
           <el-menu-item v-if="site?.features?.luma?.enabled" v-t="'index.title.luma'" index="/luma"></el-menu-item>
+          <el-menu-item
+            v-if="site?.features?.headshots?.enabled"
+            v-t="'index.title.headshots'"
+            index="/headshots"
+          ></el-menu-item>
         </el-sub-menu>
         <el-menu-item
           v-t="'common.nav.apiPlatform'"
