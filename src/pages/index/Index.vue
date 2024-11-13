@@ -194,6 +194,32 @@
         </el-row>
       </div>
     </div>
+    <div v-if="site?.features?.headshots?.enabled" id="headshots" class="block">
+      <div class="container">
+        <el-row>
+          <el-col :md="8" :xs="24" class="info">
+            <h2 class="title">{{ $t('index.title.headshots') }}</h2>
+            <p class="subtitle">{{ $t('index.subtitle.headshots') }}</p>
+            <el-button
+              type="primary"
+              round
+              class="btn-try"
+              @click="
+                $router.push({
+                  path: '/headshots'
+                })
+              "
+            >
+              {{ $t('index.button.try') }}
+            </el-button>
+          </el-col>
+          <el-col :md="16" :xs="24" class="preview">
+            <img src="https://cdn.acedata.cloud/zlyshj.png" class="image desktop" />
+            <img src="https://cdn.acedata.cloud/8as0cx.png" class="image mobile" />
+          </el-col>
+        </el-row>
+      </div>
+    </div>
     <div id="comments">
       <div class="container">
         <el-row class="mb-6">
@@ -322,6 +348,15 @@ export default defineComponent({
                 title: this.$t('index.title.luma'),
                 subtitle: this.$t('index.subtitle.luma'),
                 icon: 'fa-solid fa-film'
+              }
+            ]
+          : []),
+        ...(this.site?.features?.headshots?.enabled
+          ? [
+              {
+                title: this.$t('index.title.headshots'),
+                subtitle: this.$t('index.subtitle.headshots'),
+                icon: 'fa-solid fa-id-card'
               }
             ]
           : [])
