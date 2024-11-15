@@ -23,6 +23,7 @@ export interface IHeadshotsPicture {
 
 export interface IHeadshotsGenerateResponse {
   success?: boolean;
+  status?: string;
   task_id: string;
   trace_id: string;
   error?: {

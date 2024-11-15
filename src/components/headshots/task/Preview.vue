@@ -14,15 +14,7 @@
         <p v-if="modelValue?.request?.template" class="prompt mt-2">
           {{ modelValue?.request?.template }}
           <span v-if="!modelValue?.response"> - ({{ $t('headshots.status.pending') }}) </span>
-          <!-- <span
-            v-if="
-              modelValue?.response?.data?.state === 'processing' ||
-              modelValue?.response?.data?.state === 'pending' ||
-              modelValue?.response?.data?.state === 'completed'
-            "
-          >
-            - ({{ $t('headshots.status.processing') }})
-          </span> -->
+          <span v-if="modelValue?.response?.status === 'unknown'"> - ({{ $t('headshots.status.processing') }}) </span>
         </p>
       </div>
       <!-- Display success message -->
@@ -68,6 +60,20 @@
       </div>
       <!-- Display error message -->
       <div v-if="!modelValue?.response" :class="{ content: true }">
+        <el-alert :closable="false" class="info">
+          <template #template>
+            <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
+            {{ $t('headshots.name.failure') }}
+          </template>
+          <p class="description">
+            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            {{ $t('headshots.name.taskId') }}:
+            {{ modelValue?.id }}
+            <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
+          </p>
+        </el-alert>
+      </div>
+      <div v-if="modelValue?.response?.status === 'unknown'" :class="{ content: true }">
         <el-alert :closable="false" class="info">
           <template #template>
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
@@ -163,7 +169,7 @@ $left-width: 70px;
   .left {
     width: $left-width;
     .avatar {
-      background-color: rgb(0, 0, 0);
+      background-color: rgb(64, 119, 188);
       padding: 2px;
       width: 50px;
       height: 50px;
