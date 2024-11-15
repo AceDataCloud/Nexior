@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Thu, 14 Nov 2024 02:55:22 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Nov 2024 06:49:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.11.31
+
+Fri, 15 Nov 2024 06:49:39 GMT
+
+### Patches
+
+- fix drawai reveal (1348977728@qq.com)
 
 ## 2.11.30
 
