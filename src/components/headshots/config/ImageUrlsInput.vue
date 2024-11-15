@@ -8,7 +8,7 @@
         name="file"
         class="value"
         :show-file-list="true"
-        :limit="1"
+        :limit="2"
         :multiple="true"
         :action="uploadUrl"
         :on-exceed="onExceed"
