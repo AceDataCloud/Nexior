@@ -21,19 +21,23 @@
   },
   "model.model1": {
     "message": "v2",
-    "description": "Model used for music generation"
+    "description": "Model used to generate music"
   },
   "model.model2": {
     "message": "v3",
-    "description": "Model used for music generation"
+    "description": "Model used to generate music"
   },
   "name.instrumental": {
     "message": "Instrumental",
-    "description": "Description of the parameter 'instrumental'"
+    "description": "Description for the parameter 'instrumental'"
   },
   "model.model3": {
     "message": "v3.5",
-    "description": "Model used for music generation"
+    "description": "Model used to generate music"
+  },
+  "model.model4": {
+    "message": "v4.0",
+    "description": "Model used to generate music"
   },
   "name.taskId": {
     "message": "Task ID",
@@ -45,23 +49,23 @@
   },
   "name.prompt": {
     "message": "Song Description",
-    "description": "Prompt for the content input"
+    "description": "Prompt for content input"
   },
   "name.extend": {
     "message": "Extend Song From",
-    "description": "Prompt for the content input"
+    "description": "Prompt for content input"
   },
   "name.lyrics": {
     "message": "Lyrics Content",
-    "description": "Prompt for the lyrics content input"
+    "description": "Prompt for lyrics content input"
   },
   "name.style": {
     "message": "Song Style",
-    "description": "Prompt for the song style content input"
+    "description": "Prompt for song style content input"
   },
   "name.title": {
     "message": "Song Title",
-    "description": "Prompt for the song title content input"
+    "description": "Prompt for song title content input"
   },
   "name.failureReason": {
     "message": "Failure Reason",
@@ -80,76 +84,76 @@
     "description": "Name of the Suno generator"
   },
   "description.prompt": {
-    "message": "Fill in the style and theme of the music you want to generate, e.g., acoustic pop about the holidays",
-    "description": "Description of the parameter 'prompt'"
+    "message": "Enter the style and theme of the music you want to generate, e.g., acoustic pop about the holidays",
+    "description": "Description for the parameter 'prompt'"
   },
   "description.lyrics": {
     "message": "Content of the lyrics",
-    "description": "Description of the parameter 'lyrics'"
+    "description": "Description for the parameter 'lyrics'"
   },
   "description.style": {
     "message": "Content of the song style",
-    "description": "Description of the parameter 'style'"
+    "description": "Description for the parameter 'style'"
   },
   "description.title": {
     "message": "Content of the song title",
-    "description": "Description of the parameter 'title'"
+    "description": "Description for the parameter 'title'"
   },
   "status.pending": {
     "message": "Pending",
     "description": "Waiting status of the task"
   },
   "placeholder.prompt": {
-    "message": "Please enter song prompt...",
-    "description": "Placeholder for the prompt input"
+    "message": "Enter song prompt...",
+    "description": "Placeholder for noise input"
   },
   "placeholder.lyrics": {
-    "message": "Please enter lyrics...",
-    "description": "Placeholder for the lyrics input"
+    "message": "Enter lyrics...",
+    "description": "Placeholder for lyrics input"
   },
   "placeholder.extend.lyrics": {
-    "message": "Please enter the lyrics to be extended...",
-    "description": "Placeholder for the lyrics input"
+    "message": "Enter lyrics to extend...",
+    "description": "Placeholder for extended lyrics input"
   },
   "placeholder.extend.continue_at": {
-    "message": "Please enter the second to continue extending the song from...",
-    "description": "Placeholder for the input level"
+    "message": "Enter seconds to continue extending the song from...",
+    "description": "Placeholder for input on where to extend the song"
   },
   "placeholder.style": {
-    "message": "Please enter the prompt for the song style to generate, e.g., acoustic pop",
+    "message": "Enter prompt for the style of the song to be generated, e.g., acoustic pop",
     "description": "Placeholder text in the prompt field"
   },
   "placeholder.title": {
-    "message": "Please enter the prompt for the song title to generate, e.g., holiday song",
-    "description": "Placeholder for the seed input"
+    "message": "Enter prompt for the song title to be generated, e.g., holiday song",
+    "description": "Placeholder for seed input"
   },
   "placeholder.select": {
-    "message": "Please select a model...",
-    "description": "Placeholder for the position input"
+    "message": "Select a model...",
+    "description": "Placeholder for model selection input"
   },
   "placeholder.position": {
-    "message": "Please select...",
-    "description": "Placeholder for the position input"
+    "message": "Select...",
+    "description": "Placeholder for position selection input"
   },
   "button.generate": {
     "message": "Generate",
     "description": "Text for the generate button"
   },
   "message.startingTask": {
-    "message": "Starting the task...",
-    "description": "Message when music generation task starts"
+    "message": "Starting task...",
+    "description": "Message when starting the music generation task"
   },
   "message.startTaskSuccess": {
-    "message": "Successfully started music generation task",
-    "description": "Success message when music generation task starts successfully"
+    "message": "Music generation task started successfully",
+    "description": "Success message when the music generation task starts successfully"
   },
   "message.startTaskFailed": {
     "message": "Failed to start music generation task",
-    "description": "Error message when starting music generation task fails"
+    "description": "Error message when failing to start the music generation task"
   },
   "message.generating": {
     "message": "Generating...",
-    "description": "Message when music is being generated"
+    "description": "Message while music is being generated"
   },
   "message.generateFailed": {
     "message": "Failed to generate music",
@@ -157,10 +161,10 @@
   },
   "message.noOperations": {
     "message": "No available operations",
-    "description": "Message when no operations are available"
+    "description": "Message when there are no available operations"
   },
   "message.noTasks": {
-    "message": "No historical tasks, please generate music in the configuration panel on the left",
+    "message": "No historical tasks, please generate music from the configuration panel on the left",
     "description": "Message when there are no tasks"
   }
 }

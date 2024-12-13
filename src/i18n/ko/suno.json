@@ -21,34 +21,38 @@
   },
   "model.model1": {
     "message": "v2",
-    "description": "음악 생성을 위한 모델"
+    "description": "음악 생성에 사용되는 모델"
   },
   "model.model2": {
     "message": "v3",
-    "description": "음악 생성을 위한 모델"
+    "description": "음악 생성에 사용되는 모델"
   },
   "name.instrumental": {
-    "message": "가사가 없음",
+    "message": "가사 없음",
     "description": "매개변수 'instrumental'의 설명"
   },
   "model.model3": {
     "message": "v3.5",
-    "description": "음악 생성을 위한 모델"
+    "description": "음악 생성에 사용되는 모델"
+  },
+  "model.model4": {
+    "message": "v4.0",
+    "description": "음악 생성에 사용되는 모델"
   },
   "name.taskId": {
     "message": "작업 ID",
     "description": "작업의 ID"
   },
   "name.type": {
-    "message": "커스터마이징 모드",
-    "description": "커스터마이징 모드의 이름"
+    "message": "커스터마이즈 모드",
+    "description": "커스터마이즈 모드의 이름"
   },
   "name.prompt": {
     "message": "곡 설명",
     "description": "내용 입력의 프롬프트"
   },
   "name.extend": {
-    "message": "곡을 확장하는 데 사용",
+    "message": "확장할 곡 출처",
     "description": "내용 입력의 프롬프트"
   },
   "name.lyrics": {
@@ -64,8 +68,8 @@
     "description": "곡 제목 내용 입력의 프롬프트"
   },
   "name.failureReason": {
-    "message": "실패 원인",
-    "description": "작업 실패의 원인"
+    "message": "실패 사유",
+    "description": "작업 실패의 이유"
   },
   "name.status": {
     "message": "상태",
@@ -76,11 +80,11 @@
     "description": "작업의 추적 ID"
   },
   "name.sunoBot": {
-    "message": "Suno Bot",
+    "message": "Suno 봇",
     "description": "Suno 생성기의 이름"
   },
   "description.prompt": {
-    "message": "생성하고 싶은 음악의 스타일과 주제를 입력하세요, 예: 휴일에 관한 어쿠스틱 팝",
+    "message": "생성하고 싶은 음악의 스타일과 주제를 입력하세요. 예: acoustic pop about the holidays",
     "description": "매개변수 'prompt'의 설명"
   },
   "description.lyrics": {
@@ -112,15 +116,15 @@
     "description": "입력 필드의 자리 표시자"
   },
   "placeholder.extend.continue_at": {
-    "message": "어디서부터 확장할지 초 세기를 입력하세요...",
+    "message": "확장을 시작할 곡의 초를 입력하세요...",
     "description": "입력 필드의 자리 표시자"
   },
   "placeholder.style": {
-    "message": "생성할 곡의 스타일 프롬프트를 입력하세요, 예: 어쿠스틱 팝",
-    "description": "프롬프트 필드의 자리 표시자"
+    "message": "생성할 곡 스타일의 프롬프트를 입력하세요. 예: acoustic pop",
+    "description": "입력 필드의 자리 표시자"
   },
   "placeholder.title": {
-    "message": "생성할 곡 제목 프롬프트를 입력하세요, 예: 휴일 노래",
+    "message": "생성할 곡 제목의 프롬프트를 입력하세요. 예: holiday song",
     "description": "입력 필드의 자리 표시자"
   },
   "placeholder.select": {
@@ -140,27 +144,27 @@
     "description": "음악 생성 작업 시작 시의 메시지"
   },
   "message.startTaskSuccess": {
-    "message": "음악 생성 작업을 성공적으로 시작했습니다",
+    "message": "음악 생성 작업을 성공적으로 시작했습니다.",
     "description": "음악 생성 작업을 성공적으로 시작했을 때의 메시지"
   },
   "message.startTaskFailed": {
     "message": "음악 생성 작업 시작 실패",
-    "description": "음악 생성 작업 시작이 실패했을 때의 오류 메시지"
+    "description": "음악 생성 작업 시작 실패 시의 오류 메시지"
   },
   "message.generating": {
     "message": "생성 중...",
-    "description": "음악이 생성되는 중일 때의 메시지"
+    "description": "음악 생성 중 시의 메시지"
   },
   "message.generateFailed": {
     "message": "음악 생성 실패",
-    "description": "음악 생성이 실패했을 때의 메시지"
+    "description": "음악 생성 실패 시의 메시지"
   },
   "message.noOperations": {
-    "message": "사용 가능한 작업이 없음",
+    "message": "사용 가능한 작업이 없습니다.",
     "description": "사용 가능한 작업이 없을 때의 메시지"
   },
   "message.noTasks": {
-    "message": "기록된 작업이 없습니다. 왼쪽 구성 패널에서 음악을 생성하세요",
+    "message": "히스토리 작업이 없습니다. 왼쪽 구성 패널에서 음악을 생성하세요.",
     "description": "작업이 없을 때의 메시지"
   }
 }
