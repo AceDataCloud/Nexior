@@ -152,7 +152,7 @@ export default defineComponent({
 .pane {
   display: flex;
   flex-direction: row;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   height: auto;
