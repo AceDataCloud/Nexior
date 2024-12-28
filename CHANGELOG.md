@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sat, 28 Dec 2024 06:05:38 GMT and should not be manually modified.
+This log was last generated on Sat, 28 Dec 2024 16:44:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.11.36
+
+Sat, 28 Dec 2024 16:44:41 GMT
+
+### Patches
+
+- add dynamic services (germey@acedata.cloud)
 
 ## 2.11.35
 
