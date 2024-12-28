@@ -103,6 +103,7 @@ import { SUNO_SERVICE_ID } from '@/constants/suno';
 import { QRART_SERVICE_ID } from '@/constants/qrart';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
+import { HEADSHOTS_SERVICE_ID, LUMA_SERVICE_ID } from '@/constants';
 
 interface ISubscription {
   name: string;
@@ -147,6 +148,9 @@ export default defineComponent({
     };
   },
   computed: {
+    site() {
+      return this.$store.getters.site;
+    },
     applicationId() {
       return this.$route.params?.id?.toString();
     },
@@ -173,7 +177,9 @@ export default defineComponent({
         }
       ];
       for (const item of items) {
+        console.log('item', item);
         const pkgs = this.getPackages(item.duration);
+        console.log('pkgs', pkgs);
         if (pkgs) {
           item.price = pkgs.reduce((acc, pkg) => acc + pkg.price, 0);
         }
@@ -192,7 +198,26 @@ export default defineComponent({
       return items;
     },
     serviceIds(): string[] {
-      return [CHAT_SERVICE_ID, MIDJOURNEY_SERVICE_ID, SUNO_SERVICE_ID, QRART_SERVICE_ID];
+      let result = [];
+      const features = this.$store.getters.site.features;
+      console.log('features', features);
+      const keys = Object.keys(features) || [];
+      for (const key of keys) {
+        if (features[key] && features[key].enabled && features[key].service_id) {
+          result.push(features[key].service_id);
+        }
+      }
+      if (result.length > 0) {
+        return result;
+      }
+      return [
+        CHAT_SERVICE_ID,
+        MIDJOURNEY_SERVICE_ID,
+        SUNO_SERVICE_ID,
+        QRART_SERVICE_ID,
+        LUMA_SERVICE_ID,
+        HEADSHOTS_SERVICE_ID
+      ];
     },
     applicationIds(): string[] {
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
@@ -263,6 +288,7 @@ export default defineComponent({
         id: this.serviceIds
       });
       this.services = data.items;
+      console.log('services', this.services);
     },
     async onFetchApplications() {
       const { data } = await applicationOperator.getAll({
