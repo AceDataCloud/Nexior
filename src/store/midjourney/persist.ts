@@ -1,5 +1,5 @@
 export default [
-  'midjourney.preset',
+  'midjourney.config',
   'midjourney.credential',
   'midjourney.mode',
   'midjourney.application',

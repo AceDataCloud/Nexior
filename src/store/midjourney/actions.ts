@@ -6,7 +6,7 @@ import {
   IApplication,
   IApplicationType,
   ICredential,
-  IMidjourneyPreset,
+  IMidjourneyConfig,
   IMidjourneyTask,
   IMidjourneyTasksResponse,
   IService
@@ -23,8 +23,8 @@ export const setCredential = async ({ commit }: any, payload: ICredential): Prom
   commit('setCredential', payload);
 };
 
-export const setPreset = ({ commit }: any, payload: IMidjourneyPreset) => {
-  commit('setPreset', payload);
+export const setConfig = ({ commit }: any, payload: IMidjourneyConfig) => {
+  commit('setConfig', payload);
 };
 
 export const setMode = ({ commit }: any, payload: string) => {
@@ -149,7 +149,7 @@ export default {
   getService,
   resetAll,
   setCredential,
-  setPreset,
+  setConfig,
   setMode,
   setApplication,
   getApplications,

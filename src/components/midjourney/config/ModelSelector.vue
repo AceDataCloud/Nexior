@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h2 class="title">{{ $t('midjourney.name.model') }}</h2>
+    <div class="flex justify-start items-center">
+      <span class="text-sm font-bold">{{ $t('midjourney.name.model') }}</span>
+      <info-icon :content="$t('midjourney.description.model')" />
+    </div>
     <div class="items">
       <div
         v-for="(option, optionKey) in options"
@@ -20,11 +23,13 @@
 <script>
 import { defineComponent } from 'vue';
 import { ElImage } from 'element-plus';
+import InfoIcon from '@/components/common/InfoIcon.vue';
 
 export default defineComponent({
   name: 'ModelSelector',
   components: {
-    ElImage
+    ElImage,
+    InfoIcon
   },
   data() {
     return {
@@ -48,12 +53,11 @@ export default defineComponent({
     },
     value: {
       get() {
-        return this.$store.state.midjourney.preset?.model;
+        return this.$store.state.midjourney.config.model;
       },
       set(val) {
-        console.debug('set model', val);
-        this.$store.commit('midjourney/setPreset', {
-          ...this.$store.state.midjourney.preset,
+        this.$store.commit('midjourney/setConfig', {
+          ...this.$store.state.midjourney.config,
           model: val
         });
       }
@@ -79,7 +83,7 @@ export default defineComponent({
   justify-content: space-between;
 
   .item {
-    width: 115px;
+    width: 130px;
     height: 60px;
     border: 2px solid var(--el-border-color);
     display: flex;

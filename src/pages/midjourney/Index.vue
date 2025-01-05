@@ -1,7 +1,7 @@
 <template>
   <layout>
     <template #presets>
-      <preset-panel />
+      <config-panel @generate="onGenerate" />
     </template>
     <template #operation>
       <div class="top">
@@ -14,22 +14,6 @@
         />
         <task-list @custom="onCustom" />
       </div>
-      <div class="bottom">
-        <el-card v-show="operating" class="operations">
-          <reference-image class="mb-4" @change="references = $event" />
-          <elements-selector v-model="elements" :advanced="preset?.advanced" class="mb-4" />
-          <ignore-selector v-if="preset?.advanced" v-model="ignore" />
-        </el-card>
-        <input-box
-          :prompt="prompt"
-          class="mb-4"
-          @open-panel="operating = true"
-          @close-panel="operating = false"
-          @toggle-panel="operating = !operating"
-          @update:prompt="prompt = $event"
-          @submit="onGenerate"
-        />
-      </div>
     </template>
   </layout>
 </template>
@@ -37,11 +21,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Midjourney.vue';
-import PresetPanel from '@/components/midjourney/PresetPanel.vue';
-import ElementsSelector from '@/components/midjourney/ElementsSelector.vue';
-import IgnoreSelector from '@/components/midjourney/IgnoreSelector.vue';
+import ConfigPanel from '@/components/midjourney/ConfigPanel.vue';
 import { ElMessage, ElCard } from 'element-plus';
-import ReferenceImage from '@/components/midjourney/ReferenceImage.vue';
 import { applicationOperator, midjourneyOperator } from '@/operators';
 import ApplicationStatus from '@/components/application/Status.vue';
 import TaskList from '@/components/midjourney/tasks/TaskList.vue';
@@ -56,13 +37,8 @@ import {
   MIDJOURNEY_DEFAULT_MODE,
   MIDJOURNEY_DEFAULT_QUALITY
 } from '@/constants';
-import InputBox from '@/components/midjourney/InputBox.vue';
 
 interface IData {
-  prompt: string;
-  elements: string[];
-  ignore: string;
-  references: string[];
   operating: boolean;
   job: number;
 }
@@ -72,22 +48,13 @@ const CALLBACK_URL = 'https://webhook.acedata.cloud/midjourney';
 export default defineComponent({
   name: 'MidjourneyIndex',
   components: {
-    ElCard,
-    ReferenceImage,
-    PresetPanel,
-    InputBox,
-    ElementsSelector,
-    IgnoreSelector,
+    ConfigPanel,
     ApplicationStatus,
     TaskList,
     Layout
   },
   data(): IData {
     return {
-      prompt: '',
-      elements: [],
-      ignore: '',
-      references: [],
       operating: false,
       job: 0
     };
@@ -102,8 +69,8 @@ export default defineComponent({
     credential() {
       return this.$store.state.midjourney.credential;
     },
-    preset() {
-      return this.$store.state.midjourney.preset;
+    config() {
+      return this.$store.state.midjourney.config;
     },
     loading() {
       return this.$store.state.midjourney.status.getApplications === Status.Request;
@@ -119,75 +86,75 @@ export default defineComponent({
     },
     finalPrompt(): string {
       let content = '';
-      if (this.references.length > 0) {
-        content += `${this.references.join(' ')} `;
+      if (this.config.references && this.config.references?.length > 0) {
+        content += `${this.config.references.join(' ')} `;
       }
-      if (this.prompt) {
-        content += this.prompt;
+      if (this.config.prompt) {
+        content += this.config.prompt;
       }
-      if (this.elements.length > 0) {
-        content += ',' + this.elements.join(',');
+      if (this.config.elements && this.config.elements.length > 0) {
+        content += ',' + this.config.elements.map((item) => item.value).join(',');
       }
-      if (this.preset?.model && !content.includes(`--${this.preset.model}`)) {
-        content += ` --${this.preset.model}`;
+      if (this.config?.model && !content.includes(`--${this.config.model}`)) {
+        content += ` --${this.config.model}`;
       }
-      if (this.preset?.version && !content.includes(`--version `) && !content.includes(`--v `)) {
-        content += ` --version ${this.preset.version}`;
+      if (this.config?.version && !content.includes(`--version `) && !content.includes(`--v `)) {
+        content += ` --version ${this.config.version}`;
       }
-      if (this.preset?.chaos && this.preset?.advanced && !content.includes(`--chaos `)) {
-        content += ` --chaos ${this.preset.chaos}`;
+      if (this.config?.chaos && this.config?.advanced && !content.includes(`--chaos `)) {
+        content += ` --chaos ${this.config.chaos}`;
       }
       if (
-        this.preset?.quality &&
+        this.config?.quality &&
         !content.includes(`--quality `) &&
         !content.includes(`--q `) &&
-        this.preset?.quality !== MIDJOURNEY_DEFAULT_QUALITY
+        this.config?.quality !== MIDJOURNEY_DEFAULT_QUALITY
       ) {
-        content += ` --quality ${this.preset.quality}`;
+        content += ` --quality ${this.config.quality}`;
       }
       if (
-        this.preset?.ratio &&
+        this.config?.ratio &&
         !content.includes(`--aspect `) &&
         !content.includes(`--ar `) &&
-        this.preset?.ratio !== MIDJOURNEY_DEFAULT_RATIO
+        this.config?.ratio !== MIDJOURNEY_DEFAULT_RATIO
       ) {
-        content += ` --aspect ${this.preset.ratio}`;
+        content += ` --aspect ${this.config.ratio}`;
       }
       if (
-        this.preset?.stylize &&
+        this.config?.stylize &&
         !content.includes(`--stylize `) &&
         !content.includes(`--s `) &&
-        this.preset?.advanced &&
-        this.preset?.stylize !== MIDJOURNEY_DEFAULT_STYLIZE
+        this.config?.advanced &&
+        this.config?.stylize !== MIDJOURNEY_DEFAULT_STYLIZE
       ) {
-        content += ` --stylize ${this.preset?.stylize}`;
+        content += ` --stylize ${this.config?.stylize}`;
       }
       if (
-        this.preset?.weird &&
+        this.config?.weird &&
         !content.includes(`--weird `) &&
         !content.includes(`--w `) &&
-        this.preset?.advanced &&
-        this.preset?.weird !== MIDJOURNEY_DEFAULT_WIRED
+        this.config?.advanced &&
+        this.config?.weird !== MIDJOURNEY_DEFAULT_WIRED
       ) {
-        content += ` --weird ${this.preset.weird}`;
+        content += ` --weird ${this.config.weird}`;
       }
-      if (this.ignore && !content.includes(`--no `)) {
-        content += ` --no ${this.ignore}`;
+      if (this.config.ignore && !content.includes(`--no `)) {
+        content += ` --no ${this.config.ignore}`;
       }
       if (
-        this.preset?.iw &&
+        this.config?.iw &&
         !content.includes(`--iw `) &&
-        this.preset?.advanced &&
-        this.preset?.iw !== MIDJOURNEY_DEFAULT_IMAGE_WEIGHT
+        this.config?.advanced &&
+        this.config?.iw !== MIDJOURNEY_DEFAULT_IMAGE_WEIGHT
       ) {
-        content += ` --iw ${this.preset.iw}`;
+        content += ` --iw ${this.config.iw}`;
       }
-      if (this.preset?.style && this.preset?.advanced && !content.includes(`--style`)) {
-        content += ` --style ${this.preset?.style}`;
+      if (this.config?.style && this.config?.advanced && !content.includes(`--style`)) {
+        content += ` --style ${this.config?.style}`;
       }
       // remove `--fast`, `--relax`, `--turbo`
       content = content.replace(/--(fast|relax|turbo) /g, '');
-      return this.prompt || this.references?.length > 0 ? content : '';
+      return this.config.prompt || (this.config.references && this.config.references?.length > 0) ? content : '';
     }
   },
   watch: {
@@ -280,16 +247,13 @@ export default defineComponent({
     },
     async onGenerate() {
       const request = {
-        mode: this.preset?.mode || MIDJOURNEY_DEFAULT_MODE,
+        mode: this.config?.mode || MIDJOURNEY_DEFAULT_MODE,
         prompt: this.finalPrompt,
         action: MidjourneyImagineAction.GENERATE,
-        translation: this.preset?.translation,
+        translation: this.config?.translation,
         callback_url: CALLBACK_URL
       };
       await this.onStartTask(request);
-      this.prompt = '';
-      this.elements = [];
-      this.references = [];
     },
     async onScrollDown() {
       setTimeout(() => {

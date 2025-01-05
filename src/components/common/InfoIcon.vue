@@ -26,7 +26,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .icon {
-  display: block;
+  display: inline-block;
   width: 20px;
   border: 3px solid #aaa;
   border-radius: 50%;

@@ -1,5 +1,6 @@
-export interface IMidjourneyPreset {
+export interface IMidjourneyConfig {
   mode?: string;
+  prompt?: string;
   model?: string;
   ratio?: string;
   version?: string;
@@ -9,8 +10,11 @@ export interface IMidjourneyPreset {
   quality?: string;
   weird?: number;
   iw?: number;
+  ignore?: string;
   style?: string;
+  references?: string[];
   translation?: boolean;
+  elements?: any[];
 }
 
 export enum MidjourneyImagineAction {

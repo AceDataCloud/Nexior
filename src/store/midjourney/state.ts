@@ -11,7 +11,7 @@ export default (): IMidjourneyState => {
       total: undefined
     },
     credential: undefined,
-    preset: {},
+    config: {},
     status: {
       getService: Status.None,
       getApplications: Status.None,

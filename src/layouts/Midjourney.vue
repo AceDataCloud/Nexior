@@ -61,7 +61,7 @@ export default defineComponent({
     display: none;
   }
   .presets {
-    width: 260px;
+    width: 300px;
     height: 100%;
     overflow-y: scroll;
   }

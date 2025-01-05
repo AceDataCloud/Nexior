@@ -1,7 +1,7 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('midjourney.name.mode') }}</h2>
-    <el-radio-group v-model="value" size="small" class="mode">
+    <h2 class="title">{{ $t('midjourney.name.quality') }}</h2>
+    <el-radio-group v-model="value" size="small" class="quality">
       <el-radio-button v-for="item in options" :key="item.value" :label="item.value">
         {{ item.label }}
       </el-radio-button>
@@ -12,11 +12,10 @@
 <script>
 import { defineComponent } from 'vue';
 import { ElRadioButton, ElRadioGroup } from 'element-plus';
-
-export const DEFAULT_MODE = 'fast';
+import { MIDJOURNEY_DEFAULT_QUALITY } from '@/constants';
 
 export default defineComponent({
-  name: 'ModeSelector',
+  name: 'QualitySelector',
   components: {
     ElRadioButton,
     ElRadioGroup
@@ -25,16 +24,16 @@ export default defineComponent({
     return {
       options: [
         {
-          label: this.$t('midjourney.button.fast'),
-          value: 'fast'
+          label: this.$t('midjourney.button.low'),
+          value: '.25'
         },
         {
-          label: this.$t('midjourney.button.relax'),
-          value: 'relax'
+          label: this.$t('midjourney.button.medium'),
+          value: '.5'
         },
         {
-          label: this.$t('midjourney.button.turbo'),
-          value: 'turbo'
+          label: this.$t('midjourney.button.high'),
+          value: '1'
         }
       ]
     };
@@ -42,20 +41,19 @@ export default defineComponent({
   computed: {
     value: {
       get() {
-        return this.$store.state.midjourney.preset?.mode;
+        return this.$store.state.midjourney.config.quality;
       },
       set(val) {
-        console.debug('set mode', val);
-        this.$store.commit('midjourney/setPreset', {
-          ...this.$store.state.midjourney.preset,
-          mode: val
+        this.$store.commit('midjourney/setConfig', {
+          ...this.$store.state.midjourney.config,
+          quality: val
         });
       }
     }
   },
   mounted() {
     if (!this.value) {
-      this.value = DEFAULT_MODE;
+      this.value = MIDJOURNEY_DEFAULT_QUALITY;
     }
   }
 });
@@ -66,6 +64,7 @@ export default defineComponent({
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 
   .title {
     font-size: 14px;
@@ -79,7 +78,7 @@ export default defineComponent({
 </style>
 
 <style lang="scss">
-.mode {
+.quality {
   .el-radio-button--small .el-radio-button__inner {
     padding: 8px 11px;
   }
