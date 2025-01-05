@@ -27,10 +27,10 @@ export default defineComponent({
   },
   computed: {
     model() {
-      return this.$store.state.midjourney.preset?.model;
+      return this.$store.state.midjourney.config.model;
     },
     options() {
-      if (this.model === 'niji') {
+      if (this.model?.includes('niji')) {
         return [
           {
             value: 'cute',
@@ -60,12 +60,11 @@ export default defineComponent({
     },
     value: {
       get() {
-        return this.$store.state.midjourney.preset?.style;
+        return this.$store.state.midjourney.config.style;
       },
       set(val) {
-        console.debug('set style', val);
-        this.$store.commit('midjourney/setPreset', {
-          ...this.$store.state.midjourney.preset,
+        this.$store.commit('midjourney/setConfig', {
+          ...this.$store.state.midjourney.config,
           style: val
         });
       }

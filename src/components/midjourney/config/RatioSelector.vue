@@ -67,12 +67,12 @@ export default defineComponent({
     },
     value: {
       get() {
-        return this.$store.state.midjourney.preset?.ratio;
+        return this.$store.state.midjourney.config.ratio;
       },
       set(val) {
         console.debug('set ratio', val);
-        this.$store.commit('midjourney/setPreset', {
-          ...this.$store.state.midjourney.preset,
+        this.$store.commit('midjourney/setConfig', {
+          ...this.$store.state.midjourney.config,
           ratio: val
         });
       }
@@ -98,7 +98,7 @@ export default defineComponent({
   justify-content: space-between;
 
   .item {
-    width: 40px;
+    width: 48px;
     height: 60px;
     border: 1px solid var(--el-border-color);
     display: flex;

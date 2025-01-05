@@ -22,12 +22,11 @@ export default defineComponent({
   computed: {
     value: {
       get() {
-        return this.$store.state.midjourney.preset?.translation;
+        return this.$store.state.midjourney.config.translation;
       },
       set(val) {
-        console.debug('set translation', val);
-        this.$store.commit('midjourney/setPreset', {
-          ...this.$store.state.midjourney.preset,
+        this.$store.commit('midjourney/setConfig', {
+          ...this.$store.state.midjourney.config,
           translation: val
         });
       }

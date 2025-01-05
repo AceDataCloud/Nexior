@@ -19,12 +19,12 @@ export default defineComponent({
   computed: {
     value: {
       get() {
-        return this.$store.state.midjourney.preset?.advanced;
+        return this.$store.state.midjourney.config.advanced;
       },
       set(val) {
         console.debug('set advanced', val);
-        this.$store.commit('midjourney/setPreset', {
-          ...this.$store.state.midjourney.preset,
+        this.$store.commit('midjourney/setConfig', {
+          ...this.$store.state.midjourney.config,
           advanced: val
         });
       }

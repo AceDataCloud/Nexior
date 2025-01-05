@@ -1,4 +1,4 @@
-import { IApplication, ICredential, IMidjourneyPreset, IMidjourneyTask, IService, Status } from '@/models';
+import { IApplication, ICredential, IMidjourneyConfig, IMidjourneyTask, IService, Status } from '@/models';
 
 export interface IMidjourneyState {
   service: IService | undefined;
@@ -11,7 +11,7 @@ export interface IMidjourneyState {
       }
     | undefined;
   credential: ICredential | undefined;
-  preset: IMidjourneyPreset;
+  config: IMidjourneyConfig;
   status: {
     getService: Status;
     getApplications: Status;

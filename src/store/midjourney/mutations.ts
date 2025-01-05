@@ -1,10 +1,10 @@
-import { IApplication, ICredential, IMidjourneyPreset, IService } from '@/models';
+import { IApplication, ICredential, IMidjourneyConfig, IService } from '@/models';
 import { IMidjourneyState } from './models';
 
 export const resetAll = (state: IMidjourneyState): void => {
   state.application = undefined;
   state.applications = undefined;
-  state.preset = {};
+  state.config = {};
   state.tasks = {
     items: undefined,
     total: undefined
@@ -27,8 +27,8 @@ export const setApplications = (state: IMidjourneyState, payload: IApplication[]
   state.applications = payload;
 };
 
-export const setPreset = (state: IMidjourneyState, payload: IMidjourneyPreset): void => {
-  state.preset = payload;
+export const setConfig = (state: IMidjourneyState, payload: IMidjourneyConfig): void => {
+  state.config = payload;
 };
 
 export const setTasks = (state: IMidjourneyState, payload: any): void => {
@@ -38,7 +38,7 @@ export const setTasks = (state: IMidjourneyState, payload: any): void => {
 export default {
   setApplication,
   setApplications,
-  setPreset,
+  setConfig,
   setCredential,
   setService,
   setTasks,

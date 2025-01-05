@@ -1,36 +1,62 @@
 <!-- eslint-disable vue/no-use-v-if-with-v-for -->
 <template>
-  <div class="field">
-    <h2 class="title">{{ $t('midjourney.field.elements') }}</h2>
-    <el-tabs v-model="tab">
-      <el-tab-pane
-        v-for="(element, elementKey) in elements"
-        :key="elementKey"
-        :label="element.displayName"
-        :name="elementKey"
-        class="pane"
+  <div>
+    <div class="flex justify-between">
+      <div class="flex justify-start items-center">
+        <span class="text-sm font-bold">{{ $t('midjourney.field.elements') }}</span>
+        <info-icon :content="$t('midjourney.description.elements')" />
+      </div>
+      <div class="flex justify-end items-center">
+        <el-button round type="primary" size="small" @click="choosing = true">
+          {{ $t('midjourney.button.select') }}
+        </el-button>
+      </div>
+    </div>
+    <div>
+      <el-tag
+        v-for="(tag, index) in value"
+        :key="index"
+        closable
+        effect="dark"
+        round
+        class="mr-1 mb-1"
+        @close="onToggle(tag)"
       >
-        <div
-          v-for="(item, itemKey) in element.items"
-          :key="itemKey"
-          :class="{
-            hidden: !advanced && item?.advanced,
-            item: true,
-            active: value.includes(item.value)
-          }"
-          @click="onToggle(item.value)"
+        {{ tag.label }}
+      </el-tag>
+    </div>
+    <el-dialog v-model="choosing" width="70%">
+      <el-tabs v-model="tab">
+        <el-tab-pane
+          v-for="(element, elementKey) in elements"
+          :key="elementKey"
+          :label="element.displayName"
+          :name="elementKey"
+          class="pane"
         >
-          <el-image :src="item.image" fit="fill" class="preview" />
-          <span class="name">{{ item.label }}</span>
-        </div>
-      </el-tab-pane>
-    </el-tabs>
+          <div
+            v-for="(item, itemKey) in element.items"
+            :key="itemKey"
+            :class="{
+              hidden: item?.advanced,
+              item: true,
+              active: value.includes(item)
+            }"
+            @click="onToggle(item)"
+          >
+            <el-image :src="item.image" fit="fill" class="preview" />
+            <span class="name">{{ item.label }}</span>
+          </div>
+        </el-tab-pane>
+      </el-tabs>
+    </el-dialog>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElTabs, ElTabPane, ElImage } from 'element-plus';
+import { ElTabs, ElTabPane, ElImage, ElDialog, ElButton, ElTag } from 'element-plus';
+import InfoIcon from '@/components/common/InfoIcon.vue';
 
 interface IElementItem {
   image: string;
@@ -46,32 +72,26 @@ interface IElement {
 
 interface IData {
   tab: string;
-  value: string[];
+  choosing: boolean;
   elements: Record<string, IElement>;
 }
 
 export default defineComponent({
-  name: 'StylizeSelector',
+  name: 'ElementsSelector',
   components: {
     ElTabs,
+    ElTag,
     ElTabPane,
-    ElImage
-  },
-  props: {
-    modelValue: {
-      type: Object as () => string[],
-      required: true
-    },
-    advanced: {
-      type: Boolean,
-      default: false
-    }
+    ElImage,
+    ElDialog,
+    ElButton,
+    InfoIcon
   },
   emits: ['update:modelValue'],
   data(): IData {
     return {
       tab: 'styles',
-      value: this.modelValue,
+      choosing: false,
       elements: {
         styles: {
           displayName: this.$t('midjourney.styleCategory.styles'),
@@ -2083,32 +2103,25 @@ export default defineComponent({
       }
     };
   },
-  watch: {
-    modelValue(val) {
-      this.value = val;
-    },
+  computed: {
     value: {
-      handler(val) {
-        this.$emit('update:modelValue', val);
+      get() {
+        return this.$store.state.midjourney.config.elements || [];
       },
-      deep: true
+      set(val: string[]) {
+        this.$store.commit('midjourney/setConfig', {
+          ...this.$store.state.midjourney.config,
+          elements: val
+        });
+      }
     }
-  },
-  mounted() {
-    if (!this.value) {
-      this.value = [];
-    }
-    this.$emit('update:modelValue', this.value);
   },
   methods: {
-    onToggle(value: string) {
-      if (this.value.includes(value)) {
-        this.value.splice(this.value.indexOf(value), 1);
-        this.$emit('update:modelValue', this.value);
-        return;
+    onToggle(item: any) {
+      if (this.value.includes(item)) {
+        this.value = this.value.filter((v) => v !== item);
       } else {
-        this.value.push(value);
-        this.$emit('update:modelValue', this.value);
+        this.value.push(item);
       }
     }
   }
@@ -2124,11 +2137,11 @@ export default defineComponent({
   display: flex;
   flex-direction: row;
   justify-content: left;
-  align-items: center;
-  flex-wrap: wrap;
+  align-items: flex-start;
   height: auto;
-  max-height: 220px;
-  overflow-y: scroll;
+  flex-wrap: wrap;
+  height: 230px;
+  overflow-y: auto;
   .item {
     $height: 100px;
     $width: 100px;
@@ -2141,7 +2154,6 @@ export default defineComponent({
     border-style: solid;
     border-color: var(--el-border-color);
     border-radius: 5px;
-    overflow: hidden;
     cursor: pointer;
 
     &.hidden {
@@ -2153,8 +2165,8 @@ export default defineComponent({
     }
 
     .preview {
-      width: $height;
-      height: $width;
+      width: $height - 8px;
+      height: $width - 8px;
     }
     .name {
       position: absolute;

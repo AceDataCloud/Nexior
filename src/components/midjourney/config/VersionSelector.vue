@@ -11,7 +11,7 @@
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
 
-const DEFAULT_VERSION = '6.0';
+const DEFAULT_VERSION = '6.1';
 
 export default defineComponent({
   name: 'VersionSelector',
@@ -71,12 +71,11 @@ export default defineComponent({
   computed: {
     value: {
       get() {
-        return this.$store.state.midjourney.preset?.version;
+        return this.$store.state.midjourney.config.version;
       },
       set(val) {
-        console.debug('set version', val);
-        this.$store.commit('midjourney/setPreset', {
-          ...this.$store.state.midjourney.preset,
+        this.$store.commit('midjourney/setConfig', {
+          ...this.$store.state.midjourney.config,
           version: val
         });
       }
@@ -95,6 +94,7 @@ export default defineComponent({
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 
   .title {
     font-size: 14px;
@@ -102,7 +102,7 @@ export default defineComponent({
     width: 30%;
   }
   .value {
-    flex: 1;
+    width: 80px;
   }
 }
 </style>

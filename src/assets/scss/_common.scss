@@ -44,19 +44,26 @@ html.dark,
   }
 
   .el-radio-group {
-    --el-border-radius-base: 15px;
+    --el-border-radius-base: 5px;
+  }
+
+  .el-slider {
+    --el-slider-button-wrapper-size: 14px;
+    --el-slider-button-wrapper-offset: -9px;
+    --el-slider-height: 6px;
+    --el-slider-button-size: 18px;
   }
 
   .el-textarea {
-    border-radius: 10px;
+    border-radius: 5px;
     textarea {
-      border-radius: 10px;
+      border-radius: 5px;
     }
   }
 
   .el-input {
     .el-input__wrapper {
-      border-radius: 10px;
+      border-radius: 5px;
       width: 100%;
       &.is-focus {
         box-shadow: 0 0 0 1px var(--el-input-border-color, var(--el-border-color)) inset;
