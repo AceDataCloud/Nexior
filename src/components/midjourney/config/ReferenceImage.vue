@@ -1,29 +1,28 @@
 <template>
-  <div>
+  <div class="relative">
     <div class="flex justify-between">
       <div class="flex justify-start items-center">
         <span class="text-sm font-bold">{{ $t('midjourney.name.referenceImage') }}</span>
         <info-icon :content="$t('midjourney.description.uploadReferences')" />
       </div>
     </div>
-    <div>
-      <el-upload
-        v-model:file-list="fileList"
-        name="file"
-        :limit="5"
-        :multiple="true"
-        :action="uploadUrl"
-        list-type="picture"
-        :on-exceed="onExceed"
-        :on-error="onError"
-        :headers="headers"
-      >
-        <el-button round type="primary" size="small" class="btn btn-upload">
-          <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-2" />
-          {{ $t('midjourney.button.uploadReferences') }}
-        </el-button>
-      </el-upload>
-    </div>
+    <el-upload
+      v-model:file-list="fileList"
+      name="file"
+      :limit="5"
+      class="upload-wrapper"
+      :multiple="true"
+      :action="uploadUrl"
+      list-type="picture"
+      :on-exceed="onExceed"
+      :on-error="onError"
+      :headers="headers"
+    >
+      <el-button round type="primary" size="small" class="btn btn-upload">
+        <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
+        {{ $t('midjourney.button.uploadReferences') }}
+      </el-button>
+    </el-upload>
   </div>
 </template>
 
@@ -100,13 +99,20 @@ export default defineComponent({
   margin-bottom: 0;
   width: 30%;
 }
-.prompt {
-  color: #333;
-  font-size: 16px;
-  flex: 1;
-}
-
 .btn.btn-upload {
-  border-radius: 20px;
+  position: absolute;
+  top: 5px;
+  right: 0;
+}
+</style>
+
+<style lang="scss">
+.upload-wrapper {
+  height: auto;
+  display: flex;
+  .el-upload-list {
+    margin: 0;
+    width: 100%;
+  }
 }
 </style>

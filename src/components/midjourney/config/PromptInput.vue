@@ -7,6 +7,7 @@
     <el-input
       v-model="prompt"
       :rows="3"
+      resize="none"
       type="textarea"
       class="prompt"
       :placeholder="$t('midjourney.placeholder.prompt')"

@@ -7,11 +7,21 @@
         <info-icon :content="$t('midjourney.description.elements')" />
       </div>
       <div class="flex justify-end items-center">
-        <el-button type="primary" size="small" @click="choosing = true">{{ $t('midjourney.button.select') }}</el-button>
+        <el-button round type="primary" size="small" @click="choosing = true">
+          {{ $t('midjourney.button.select') }}
+        </el-button>
       </div>
     </div>
     <div>
-      <el-tag v-for="(tag, index) in value" :key="index" closable class="mr-1 mb-1" @close="onToggle(tag)">
+      <el-tag
+        v-for="(tag, index) in value"
+        :key="index"
+        closable
+        effect="dark"
+        round
+        class="mr-1 mb-1"
+        @close="onToggle(tag)"
+      >
         {{ tag.label }}
       </el-tag>
     </div>

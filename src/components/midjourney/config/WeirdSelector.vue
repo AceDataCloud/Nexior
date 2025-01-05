@@ -1,15 +1,17 @@
 <template>
-  <div class="flex justify-between">
-    <div class="flex justify-start items-center">
-      <span class="text-sm font-bold">{{ $t('midjourney.name.weird') }}</span>
-      <info-icon :content="$t('midjourney.description.weird')" />
+  <div>
+    <div class="flex justify-between">
+      <div class="flex justify-start items-center">
+        <span class="text-sm font-bold">{{ $t('midjourney.name.weird') }}</span>
+        <info-icon :content="$t('midjourney.description.weird')" />
+      </div>
+      <div class="flex justify-end items-center">
+        <el-input-number v-model="value" size="small" controls-position="right" />
+      </div>
     </div>
-    <div class="flex justify-end items-center">
-      <el-input-number v-model="value" size="small" controls-position="right" />
+    <div class="w-full">
+      <el-slider v-model="value" :min="0" :max="1000" :step="1" />
     </div>
-  </div>
-  <div class="pl-1 pr-1">
-    <el-slider v-model="value" :min="0" :max="1000" :step="1" />
   </div>
 </template>
 

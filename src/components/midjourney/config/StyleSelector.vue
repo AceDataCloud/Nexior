@@ -30,7 +30,7 @@ export default defineComponent({
       return this.$store.state.midjourney.config.model;
     },
     options() {
-      if (this.model === 'niji') {
+      if (this.model?.includes('niji')) {
         return [
           {
             value: 'cute',

@@ -240,7 +240,7 @@ export default defineComponent({
       const request = {
         image_id: payload.image_id,
         action: payload.action,
-        mode: this.preset?.mode || MIDJOURNEY_DEFAULT_MODE,
+        mode: this.config?.mode || MIDJOURNEY_DEFAULT_MODE,
         callback_url: CALLBACK_URL
       };
       this.onStartTask(request);
