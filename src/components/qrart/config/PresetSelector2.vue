@@ -194,8 +194,6 @@ export default defineComponent({
     flex-direction: row;
     justify-content: left;
     align-items: center;
-    flex-wrap: wrap;
-    height: auto;
     max-height: 210px;
     overflow-y: scroll;
 
@@ -203,8 +201,8 @@ export default defineComponent({
       justify-content: center;
     }
     .item {
-      $height: 100px;
-      $width: 100px;
+      $height: 60px;
+      $width: 60px;
       position: relative;
       width: $width;
       height: $height;
@@ -214,7 +212,7 @@ export default defineComponent({
       border-style: solid;
       border-color: var(--el-border-color);
       border-radius: 5px;
-      overflow: hidden;
+      overflow: initial;
       cursor: pointer;
 
       &.hidden {
@@ -226,8 +224,8 @@ export default defineComponent({
       }
 
       .preview {
-        width: $height;
-        height: $width;
+        width: $height - 8px;
+        height: $width - 8px;
       }
       .name {
         position: absolute;

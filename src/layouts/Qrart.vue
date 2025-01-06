@@ -43,8 +43,6 @@ export default defineComponent({
   .config {
     width: 300px;
     height: 100%;
-    overflow-y: scroll;
-    border-right: 1px solid var(--el-border-color);
   }
 
   .result {

@@ -1,7 +1,14 @@
 <template>
   <div class="field">
     <h2 class="title">{{ $t('qrart.name.prompt') }}</h2>
-    <el-input v-model="value" :rows="3" type="textarea" class="prompt" :placeholder="$t('qrart.placeholder.prompt')" />
+    <el-input
+      v-model="value"
+      :rows="3"
+      type="textarea"
+      class="prompt"
+      :placeholder="$t('qrart.placeholder.prompt')"
+      resize="none"
+    />
   </div>
 </template>
 
