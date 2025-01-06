@@ -1,7 +1,7 @@
 <template>
   <layout>
     <template #config>
-      <config-panel />
+      <config-panel @generate="onGenerate" />
     </template>
     <template #result>
       <application-status
@@ -13,7 +13,6 @@
         @refresh="onGetApplication"
       />
       <recent-panel class="panel recent" />
-      <operation-panel class="panel operation" @generate="onGenerate" />
     </template>
   </layout>
 </template>
@@ -27,7 +26,6 @@ import { IApplicationDetailResponse, IQrartGenerateRequest, Status } from '@/mod
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP } from '@/constants';
 import ApplicationStatus from '@/components/application/Status.vue';
-import OperationPanel from '@/components/qrart/OperationPanel.vue';
 import RecentPanel from '@/components/qrart/RecentPanel.vue';
 import { IQrartTask } from '@/models';
 
@@ -44,8 +42,7 @@ export default defineComponent({
     ConfigPanel,
     Layout,
     ApplicationStatus,
-    RecentPanel,
-    OperationPanel
+    RecentPanel
   },
   data(): IData {
     return {

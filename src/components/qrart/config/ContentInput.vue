@@ -1,10 +1,16 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('qrart.name.content') }}</h2>
-    <el-radio-group v-model="inputWay" class="mb-4">
-      <el-radio-button label="input">{{ $t('qrart.inputWay.input') }} </el-radio-button>
-      <el-radio-button label="upload">{{ $t('qrart.inputWay.upload') }} </el-radio-button>
-    </el-radio-group>
+    <div class="flex justify-between items-center mb-4">
+      <div>
+        <span>{{ $t('qrart.name.content') }}</span>
+      </div>
+      <div class="flex items-center">
+        <el-radio-group v-model="inputWay">
+          <el-radio-button label="input">{{ $t('qrart.inputWay.input') }} </el-radio-button>
+          <el-radio-button label="upload">{{ $t('qrart.inputWay.upload') }} </el-radio-button>
+        </el-radio-group>
+      </div>
+    </div>
     <el-input
       v-if="inputWay == 'input'"
       v-model="value"
@@ -26,7 +32,7 @@
       :on-success="onSuccess"
       :headers="headers"
     >
-      <el-button type="primary" round>{{ $t('qrart.button.uploadQr') }}</el-button>
+      <el-button size="small" type="primary" round>{{ $t('qrart.button.uploadQr') }}</el-button>
     </el-upload>
     <p v-if="inputWay == 'upload'" class="description">
       {{ $t('qrart.message.uploadQr') }}
