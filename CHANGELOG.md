@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Mon, 06 Jan 2025 17:08:58 GMT and should not be manually modified.
+This log was last generated on Sun, 12 Jan 2025 16:04:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.12.2
+
+Sun, 12 Jan 2025 16:04:23 GMT
+
+### Patches
+
+- add baidu stat (office@acedata.cloud)
 
 ## 2.12.1
 
