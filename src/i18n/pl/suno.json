@@ -1,11 +1,15 @@
 {
   "button.extend": {
     "message": "Kontynuuj generowanie",
-    "description": "Tekst przycisku kontynuacji generowania"
+    "description": "Tekst przycisku do kontynuowania generowania"
   },
   "button.download": {
     "message": "Pobierz",
-    "description": "Tekst przycisku pobierania"
+    "description": "Tekst przycisku do pobierania"
+  },
+  "button.uploadAudios": {
+    "message": "Prześlij",
+    "description": "Tekst przycisku, który umożliwia użytkownikowi przesłanie referencji"
   },
   "button.video": {
     "message": "Wideo",
@@ -13,31 +17,35 @@
   },
   "button.download_video": {
     "message": "Pobierz wideo",
-    "description": "Tekst przycisku pobierania wideo"
+    "description": "Tekst przycisku do pobierania wideo"
   },
   "button.download_audio": {
     "message": "Pobierz muzykę",
-    "description": "Tekst przycisku pobierania muzyki"
+    "description": "Tekst przycisku do pobierania muzyki"
   },
   "model.model1": {
     "message": "v2",
-    "description": "Model używany do generowania muzyki"
+    "description": "Model do generowania muzyki"
   },
   "model.model2": {
     "message": "v3",
-    "description": "Model używany do generowania muzyki"
+    "description": "Model do generowania muzyki"
   },
   "name.instrumental": {
     "message": "Bez tekstu",
     "description": "Opis parametru 'instrumental'"
   },
+  "name.referenceAudios": {
+    "message": "Prześlij muzykę referencyjną",
+    "description": "Nazwa muzyki referencyjnej"
+  },
   "model.model3": {
     "message": "v3.5",
-    "description": "Model używany do generowania muzyki"
+    "description": "Model do generowania muzyki"
   },
   "model.model4": {
     "message": "v4.0",
-    "description": "Model używany do generowania muzyki"
+    "description": "Model do generowania muzyki"
   },
   "name.taskId": {
     "message": "ID zadania",
@@ -48,11 +56,11 @@
     "description": "Nazwa trybu dostosowanego"
   },
   "name.prompt": {
-    "message": "Opis utworu",
+    "message": "Opis piosenki",
     "description": "Podpowiedź do wprowadzenia treści"
   },
   "name.extend": {
-    "message": "Rozszerz utwór z",
+    "message": "Rozszerz piosenkę z",
     "description": "Podpowiedź do wprowadzenia treści"
   },
   "name.lyrics": {
@@ -60,12 +68,12 @@
     "description": "Podpowiedź do wprowadzenia treści tekstu"
   },
   "name.style": {
-    "message": "Styl utworu",
-    "description": "Podpowiedź do wprowadzenia treści stylu utworu"
+    "message": "Styl piosenki",
+    "description": "Podpowiedź do wprowadzenia treści stylu"
   },
   "name.title": {
-    "message": "Tytuł utworu",
-    "description": "Podpowiedź do wprowadzenia tytułu utworu"
+    "message": "Tytuł piosenki",
+    "description": "Podpowiedź do wprowadzenia treści tytułu"
   },
   "name.failureReason": {
     "message": "Powód niepowodzenia",
@@ -84,7 +92,7 @@
     "description": "Nazwa generatora Suno"
   },
   "description.prompt": {
-    "message": "Podaj styl i temat muzyki, którą chcesz wygenerować, na przykład akustyczny pop o wakacjach",
+    "message": "Wpisz styl i temat muzyki, którą chcesz wygenerować, np. acoustic pop o wakacjach",
     "description": "Opis parametru 'prompt'"
   },
   "description.lyrics": {
@@ -92,60 +100,76 @@
     "description": "Opis parametru 'lyrics'"
   },
   "description.style": {
-    "message": "Treść stylu utworu",
+    "message": "Treść stylu piosenki",
     "description": "Opis parametru 'style'"
   },
   "description.title": {
-    "message": "Treść tytułu utworu",
+    "message": "Treść tytułu piosenki",
     "description": "Opis parametru 'title'"
   },
+  "description.uploadAudios": {
+    "message": "Prześlij muzykę jako referencję do generowania, proces przesyłania wymaga chwili oczekiwania, po pomyślnym wygenerowaniu można dalej generować na podstawie przesyłanej muzyki",
+    "description": "Opis parametru referencyjnego przesyłania"
+  },
   "status.pending": {
-    "message": "Oczekiwanie",
+    "message": "Oczekujące",
     "description": "Stan oczekiwania zadania"
   },
   "placeholder.prompt": {
-    "message": "Wprowadź słowa kluczowe utworu...",
-    "description": "Miejsce na wprowadzenie tekstu"
+    "message": "Wpisz hasło do piosenki...",
+    "description": "Zamiennik dla pola wejściowego hałasu"
   },
   "placeholder.lyrics": {
-    "message": "Wprowadź tekst...",
-    "description": "Miejsce na wprowadzenie tekstu"
+    "message": "Wpisz tekst...",
+    "description": "Zamiennik dla poziomu tekstu"
   },
   "placeholder.extend.lyrics": {
-    "message": "Wprowadź tekst, który chcesz rozszerzyć...",
-    "description": "Miejsce na wprowadzenie tekstu"
+    "message": "Wpisz tekst do rozszerzenia...",
+    "description": "Zamiennik dla poziomu tekstu"
   },
   "placeholder.extend.continue_at": {
-    "message": "Wprowadź, od której sekundy utworu chcesz rozszerzyć...",
-    "description": "Miejsce na wprowadzenie tekstu"
+    "message": "Wpisz z którego momentu piosenki chcesz rozszerzać...",
+    "description": "Zamiennik dla poziomu tekstu"
   },
   "placeholder.style": {
-    "message": "Wprowadź słowa kluczowe stylu utworu, na przykład akustyczny pop",
-    "description": "Tekst zastępczy w polu podpowiedzi"
+    "message": "Wpisz hasło do stylu piosenki, np. acoustic pop",
+    "description": "Zamiennik w polu podpowiedzi"
   },
   "placeholder.title": {
-    "message": "Wprowadź słowa kluczowe tytułu utworu, na przykład utwór wakacyjny",
-    "description": "Miejsce na wprowadzenie tekstu"
+    "message": "Wpisz hasło do tytułu piosenki, np. holiday song",
+    "description": "Zamiennik dla wejścia nasion"
   },
   "placeholder.select": {
     "message": "Wybierz model...",
-    "description": "Miejsce na wprowadzenie tekstu"
+    "description": "Zamiennik dla pola wejściowego"
   },
   "placeholder.position": {
     "message": "Wybierz...",
-    "description": "Miejsce na wprowadzenie tekstu"
+    "description": "Zamiennik dla pola wejściowego"
   },
   "button.generate": {
     "message": "Generuj",
-    "description": "Tekst przycisku generowania"
+    "description": "Tekst przycisku do generowania"
   },
   "message.startingTask": {
-    "message": "Uruchamianie zadania...",
+    "message": "Rozpoczynam zadanie...",
+    "description": "Wiadomość na początku zadania generowania muzyki"
+  },
+  "message.startingUploadAudio": {
+    "message": "Przesyłam muzykę dostosowaną...",
     "description": "Wiadomość na początku zadania generowania muzyki"
   },
   "message.startTaskSuccess": {
-    "message": "Zadanie generowania muzyki zostało uruchomione pomyślnie",
-    "description": "Wiadomość o pomyślnym uruchomieniu zadania generowania muzyki"
+    "message": "Pomyślnie uruchomiono zadanie generowania muzyki",
+    "description": "Wiadomość o sukcesie podczas uruchamiania zadania generowania muzyki"
+  },
+  "message.startUploadAudioSuccess": {
+    "message": "Pomyślnie przesłano dostosowaną muzykę",
+    "description": "Wiadomość o sukcesie podczas uruchamiania zadania generowania muzyki"
+  },
+  "message.startUploadAudioFailed": {
+    "message": "Nie udało się przesłać dostosowanej muzyki",
+    "description": "Wiadomość o błędzie podczas uruchamiania zadania generowania muzyki"
   },
   "message.startTaskFailed": {
     "message": "Nie udało się uruchomić zadania generowania muzyki",
@@ -157,14 +181,14 @@
   },
   "message.generateFailed": {
     "message": "Nie udało się wygenerować muzyki",
-    "description": "Wiadomość, gdy generowanie muzyki nie powiodło się"
+    "description": "Wiadomość o niepowodzeniu generowania muzyki"
   },
   "message.noOperations": {
     "message": "Brak dostępnych operacji",
-    "description": "Wiadomość, gdy brak dostępnych operacji"
+    "description": "Wiadomość, gdy nie ma dostępnych operacji"
   },
   "message.noTasks": {
-    "message": "Brak zadań historycznych, wygeneruj muzykę w lewym panelu konfiguracyjnym",
-    "description": "Wiadomość, gdy brak zadań"
+    "message": "Brak historycznych zadań, proszę wygenerować muzykę w lewym panelu konfiguracyjnym",
+    "description": "Komunikat, gdy nie ma zadań"
   }
 }

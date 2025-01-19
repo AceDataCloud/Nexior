@@ -1,23 +1,27 @@
 {
   "button.extend": {
-    "message": "Fortsetzen",
-    "description": "Text des Fortsetzen-Buttons"
+    "message": "Weiter Generieren",
+    "description": "Text für den Weiter Generieren Button"
   },
   "button.download": {
     "message": "Herunterladen",
-    "description": "Text des Herunterladen-Buttons"
+    "description": "Text für den Herunterladen Button"
+  },
+  "button.uploadAudios": {
+    "message": "Hochladen",
+    "description": "Button-Text, der dem Benutzer erlaubt, Referenzen hochzuladen"
   },
   "button.video": {
     "message": "Video",
-    "description": "Text des Video-Buttons"
+    "description": "Text für den Video Button"
   },
   "button.download_video": {
-    "message": "Video herunterladen",
-    "description": "Text des Video herunterladen-Buttons"
+    "message": "Video Herunterladen",
+    "description": "Text für den Video Herunterladen Button"
   },
   "button.download_audio": {
-    "message": "Musik herunterladen",
-    "description": "Text des Musik herunterladen-Buttons"
+    "message": "Musik Herunterladen",
+    "description": "Text für den Musik Herunterladen Button"
   },
   "model.model1": {
     "message": "v2",
@@ -30,6 +34,10 @@
   "name.instrumental": {
     "message": "Instrumental",
     "description": "Beschreibung des Parameters 'instrumental'"
+  },
+  "name.referenceAudios": {
+    "message": "Referenzmusik Hochladen",
+    "description": "Name der Referenzmusik"
   },
   "model.model3": {
     "message": "v3.5",
@@ -49,46 +57,46 @@
   },
   "name.prompt": {
     "message": "Songbeschreibung",
-    "description": "Hinweis für die Eingabe des Inhalts"
+    "description": "Eingabeaufforderung für den Inhalt"
   },
   "name.extend": {
-    "message": "Erweiterung des Songs von",
-    "description": "Hinweis für die Eingabe des Inhalts"
+    "message": "Erweiterte Lieder von",
+    "description": "Eingabeaufforderung für den Inhalt"
   },
   "name.lyrics": {
-    "message": "Lyric-Inhalt",
-    "description": "Hinweis für die Eingabe des Lyrics Inhalts"
+    "message": "Textinhalt",
+    "description": "Eingabeaufforderung für den Textinhalt"
   },
   "name.style": {
     "message": "Songstil",
-    "description": "Hinweis für die Eingabe des Songstil Inhalts"
+    "description": "Eingabeaufforderung für den Songstil"
   },
   "name.title": {
     "message": "Songtitel",
-    "description": "Hinweis für die Eingabe des Songtitels Inhalts"
+    "description": "Eingabeaufforderung für den Songtitel"
   },
   "name.failureReason": {
-    "message": "Fehlergrund",
-    "description": "Grund für das Scheitern der Aufgabe"
+    "message": "Fehlerursache",
+    "description": "Grund für den Fehler der Aufgabe"
   },
   "name.status": {
     "message": "Status",
     "description": "Status der Aufgabe"
   },
   "name.traceId": {
-    "message": "Trace-ID",
-    "description": "Trace-ID der Aufgabe"
+    "message": "Verfolgungs-ID",
+    "description": "Verfolgungs-ID der Aufgabe"
   },
   "name.sunoBot": {
     "message": "Suno Bot",
     "description": "Name des Suno Generators"
   },
   "description.prompt": {
-    "message": "Geben Sie den Stil und das Thema der Musik ein, die Sie generieren möchten, z.B. akustischer Pop über Feiertage",
+    "message": "Geben Sie den Stil und das Thema der Musik an, die Sie generieren möchten, z.B. akustischer Pop über die Feiertage",
     "description": "Beschreibung des Parameters 'prompt'"
   },
   "description.lyrics": {
-    "message": "Inhalt der Lyrics",
+    "message": "Inhalt des Textes",
     "description": "Beschreibung des Parameters 'lyrics'"
   },
   "description.style": {
@@ -99,72 +107,88 @@
     "message": "Inhalt des Songtitels",
     "description": "Beschreibung des Parameters 'title'"
   },
+  "description.uploadAudios": {
+    "message": "Laden Sie Musik als Referenz für die Generierung hoch. Der Upload dauert eine Weile. Nach erfolgreichem Generieren können Sie basierend auf der hochgeladenen Musik generieren.",
+    "description": "Beschreibung des Hochladen von Referenzparametern"
+  },
   "status.pending": {
     "message": "Warten",
     "description": "Wartezustand der Aufgabe"
   },
   "placeholder.prompt": {
-    "message": "Bitte geben Sie das Songprompt ein...",
-    "description": "Platzhalter für Eingaben"
+    "message": "Bitte geben Sie das Liedthema ein...",
+    "description": "Platzhalter für die Eingabeaufforderung"
   },
   "placeholder.lyrics": {
-    "message": "Bitte geben Sie die Lyrics ein...",
-    "description": "Platzhalter für die Level-Eingabe"
+    "message": "Bitte geben Sie den Text ein...",
+    "description": "Platzhalter für den Textinhalt"
   },
   "placeholder.extend.lyrics": {
-    "message": "Bitte geben Sie die zu erweiternden Lyrics ein...",
-    "description": "Platzhalter für die Level-Eingabe"
+    "message": "Bitte geben Sie den zu erweiternden Text ein...",
+    "description": "Platzhalter für den Textinhalt"
   },
   "placeholder.extend.continue_at": {
-    "message": "Bitte geben Sie ein, ab welcher Sekunde des Songs Sie erweitern möchten...",
-    "description": "Platzhalter für die Level-Eingabe"
+    "message": "Bitte geben Sie an, ab welcher Sekunde des Songs Sie erweitern möchten...",
+    "description": "Platzhalter für die Erweiterung"
   },
   "placeholder.style": {
-    "message": "Bitte geben Sie das Stichwort für den Songstil ein, den Sie generieren möchten, z.B. akustischer Pop",
-    "description": "Platzhaltertext im Eingabefeld"
+    "message": "Bitte geben Sie das Thema des zu generierenden Songstils ein, z.B. akustischer Pop",
+    "description": "Platzhalter im Eingabefeld"
   },
   "placeholder.title": {
-    "message": "Bitte geben Sie das Stichwort für den Songtitel ein, den Sie generieren möchten, z.B. Feiertagslied",
-    "description": "Platzhalter für die Seed-Eingabe"
+    "message": "Bitte geben Sie das Thema des zu generierenden Songtitels ein, z.B. Feiertagslied",
+    "description": "Platzhalter für das Titel-Input"
   },
   "placeholder.select": {
-    "message": "Bitte wählen Sie ein Modell...",
-    "description": "Platzhalter für die Positionsauswahl"
+    "message": "Bitte Modell auswählen...",
+    "description": "Platzhalter für die Auswahl des Modells"
   },
   "placeholder.position": {
-    "message": "Bitte wählen Sie...",
-    "description": "Platzhalter für die Positionsauswahl"
+    "message": "Bitte auswählen...",
+    "description": "Platzhalter für die Position"
   },
   "button.generate": {
     "message": "Generieren",
-    "description": "Text des Generieren-Buttons"
+    "description": "Text für den Generieren Button"
   },
   "message.startingTask": {
-    "message": "Aufgabe wird gestartet...",
-    "description": "Nachricht, wenn die Musikgenerierung beginnt"
+    "message": "Starte Aufgabe...",
+    "description": "Nachricht, wenn die Musikgenerierungsaufgabe gestartet wird"
+  },
+  "message.startingUploadAudio": {
+    "message": "Lade benutzerdefinierte Musik hoch...",
+    "description": "Nachricht, wenn die Musikgenerierungsaufgabe gestartet wird"
   },
   "message.startTaskSuccess": {
     "message": "Musikgenerierungsaufgabe erfolgreich gestartet",
-    "description": "Nachricht bei erfolgreichem Start der Musikgenerierungsaufgabe"
+    "description": "Erfolgsnachricht, wenn die Musikgenerierungsaufgabe erfolgreich gestartet wurde"
+  },
+  "message.startUploadAudioSuccess": {
+    "message": "Benutzerdefinierte Musik erfolgreich hochgeladen",
+    "description": "Erfolgsnachricht, wenn die Musikgenerierungsaufgabe erfolgreich gestartet wurde"
+  },
+  "message.startUploadAudioFailed": {
+    "message": "Hochladen der benutzerdefinierten Musik fehlgeschlagen",
+    "description": "Fehlermeldung bei einem Fehler in der Musikgenerierungsaufgabe"
   },
   "message.startTaskFailed": {
-    "message": "Start der Musikgenerierungsaufgabe fehlgeschlagen",
-    "description": "Nachricht im Fehlerfall beim Start der Musikgenerierungsaufgabe"
+    "message": "Starten der Musikgenerierungsaufgabe fehlgeschlagen",
+    "description": "Fehlermeldung bei einem Fehler in der Musikgenerierungsaufgabe"
   },
   "message.generating": {
     "message": "Wird generiert...",
-    "description": "Nachricht, während die Musik generiert wird"
+    "description": "Nachricht während die Musik generiert wird"
   },
   "message.generateFailed": {
     "message": "Musikgenerierung fehlgeschlagen",
-    "description": "Nachricht bei einem Misserfolg der Musikgenerierung"
+    "description": "Nachricht bei einem Fehler in der Musikgenerierung"
   },
   "message.noOperations": {
     "message": "Keine verfügbaren Operationen",
-    "description": "Nachricht, wenn keine verfügbaren Operationen vorhanden sind"
+    "description": "Nachricht, wenn keine Operationen verfügbar sind"
   },
   "message.noTasks": {
-    "message": "Keine historischen Aufgaben, bitte generieren Sie Musik im linken Konfigurationsbereich",
-    "description": "Nachricht, wenn keine Aufgaben vorhanden sind"
+    "message": "Keine historischen Aufgaben, bitte generieren Sie Musik im linken Konfigurationsbereich.",
+    "description": "Nachricht, wenn keine Aufgaben vorhanden sind."
   }
 }

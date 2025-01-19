@@ -1,170 +1,194 @@
 {
   "button.extend": {
     "message": "Fortsätt generera",
-    "description": "Text i knappen för att fortsätta generera"
+    "description": "Text på knappen för att fortsätta generera"
   },
   "button.download": {
     "message": "Ladda ner",
-    "description": "Text i knappen för att ladda ner"
+    "description": "Text på knappen för att ladda ner"
+  },
+  "button.uploadAudios": {
+    "message": "Ladda upp",
+    "description": "Text på knappen som tillåter användaren att ladda upp referens"
   },
   "button.video": {
     "message": "Video",
-    "description": "Text i videoknappen"
+    "description": "Text på videoknappen"
   },
   "button.download_video": {
     "message": "Ladda ner video",
-    "description": "Text i knappen för att ladda ner video"
+    "description": "Text på knappen för att ladda ner video"
   },
   "button.download_audio": {
     "message": "Ladda ner musik",
-    "description": "Text i knappen för att ladda ner musik"
+    "description": "Text på knappen för att ladda ner musik"
   },
   "model.model1": {
     "message": "v2",
-    "description": "Modell för att generera musik"
+    "description": "Modell för musikproduktion"
   },
   "model.model2": {
     "message": "v3",
-    "description": "Modell för att generera musik"
+    "description": "Modell för musikproduktion"
   },
   "name.instrumental": {
     "message": "Ingen text",
-    "description": "Beskrivning av parametern 'instrumental'"
+    "description": "Beskrivning för parametern 'instrumental'"
+  },
+  "name.referenceAudios": {
+    "message": "Ladda upp referensmusik",
+    "description": "Namn på referensmusiken"
   },
   "model.model3": {
     "message": "v3.5",
-    "description": "Modell för att generera musik"
+    "description": "Modell för musikproduktion"
   },
   "model.model4": {
     "message": "v4.0",
-    "description": "Modell för att generera musik"
+    "description": "Modell för musikproduktion"
   },
   "name.taskId": {
-    "message": "Uppgift ID",
+    "message": "Uppgifts-ID",
     "description": "ID för uppgiften"
   },
   "name.type": {
-    "message": "Anpassat läge",
-    "description": "Namn för det anpassade läget"
+    "message": "Anpassad modul",
+    "description": "Namn för anpassad modul"
   },
   "name.prompt": {
     "message": "Sångbeskrivning",
-    "description": "Prompt för att mata in innehåll"
+    "description": "Prompt för innehållsinmatning"
   },
   "name.extend": {
-    "message": "Utvidga sång från",
-    "description": "Prompt för att mata in innehåll"
+    "message": "Förläng sången från",
+    "description": "Prompt för innehållsinmatning"
   },
   "name.lyrics": {
     "message": "Textinnehåll",
-    "description": "Prompt för att mata in textinnehåll"
+    "description": "Prompt för textinnehållsinmatning"
   },
   "name.style": {
     "message": "Sångstil",
-    "description": "Prompt för att mata in sångstil"
+    "description": "Prompt för sångstilsinmatning"
   },
   "name.title": {
     "message": "Sångtitel",
-    "description": "Prompt för att mata in sångtitel"
+    "description": "Prompt för sångtitelsinmatning"
   },
   "name.failureReason": {
-    "message": "Misslyckande orsak",
-    "description": "Orsaken till uppgiftens misslyckande"
+    "message": "Fel orsak",
+    "description": "Orsaken till att uppgiften misslyckades"
   },
   "name.status": {
     "message": "Status",
-    "description": "Status för uppgiften"
+    "description": "Uppgiftens status"
   },
   "name.traceId": {
-    "message": "Spårnings ID",
-    "description": "Spårnings ID för uppgiften"
+    "message": "Spårnings-ID",
+    "description": "Uppgiftens spårnings-ID"
   },
   "name.sunoBot": {
     "message": "Suno Bot",
-    "description": "Namnet på Suno-generatorn"
+    "description": "Namn på Suno generator"
   },
   "description.prompt": {
-    "message": "Fyll i stilen och temat du vill generera musik i, till exempel akustisk pop om helgdagar",
-    "description": "Beskrivning av parametern 'prompt'"
+    "message": "Fyll i stil och tema för musiken du vill generera, till exempel acoustic pop om helgdagar",
+    "description": "Beskrivning för parametern 'prompt'"
   },
   "description.lyrics": {
     "message": "Innehållet i texten",
-    "description": "Beskrivning av parametern 'lyrics'"
+    "description": "Beskrivning för parametern 'lyrics'"
   },
   "description.style": {
     "message": "Innehållet i sångstilen",
-    "description": "Beskrivning av parametern 'style'"
+    "description": "Beskrivning för parametern 'style'"
   },
   "description.title": {
     "message": "Innehållet i sångtiteln",
-    "description": "Beskrivning av parametern 'title'"
+    "description": "Beskrivning för parametern 'title'"
+  },
+  "description.uploadAudios": {
+    "message": "Ladda upp musik som referens för generering, laddningen kan ta ett tag, när den har lyckats kan du generera baserat på den uppladdade musiken",
+    "description": "Beskrivning för uppladdningsreferensparametern"
   },
   "status.pending": {
-    "message": "Väntar",
+    "message": "I väntan",
     "description": "Uppgiftens väntande status"
   },
   "placeholder.prompt": {
-    "message": "Ange sångprompt...",
-    "description": "Platshållare för inmatningsfält"
+    "message": "Ange sångens ledtråd...",
+    "description": "Platsinnehåll för ledande text"
   },
   "placeholder.lyrics": {
     "message": "Ange text...",
-    "description": "Platshållare för inmatningsfält"
+    "description": "Platsinnehåll för text"
   },
   "placeholder.extend.lyrics": {
-    "message": "Ange text som behöver utvidgas...",
-    "description": "Platshållare för inmatningsfält"
+    "message": "Ange text som ska förlängas...",
+    "description": "Platsinnehåll för text"
   },
   "placeholder.extend.continue_at": {
-    "message": "Ange vilken sekund av sången som ska fortsättas från...",
-    "description": "Platshållare för inmatningsfält"
+    "message": "Ange var i sången som ska förlängas...",
+    "description": "Platsinnehåll för text"
   },
   "placeholder.style": {
-    "message": "Ange prompt för sångstilen som ska genereras, till exempel akustisk pop",
-    "description": "Platshållare i promptfält"
+    "message": "Ange ledtrådar för sångstilen som ska genereras, till exempel acoustic pop",
+    "description": "Platsinnehåll för ledande text"
   },
   "placeholder.title": {
-    "message": "Ange prompt för sångtitel som ska genereras, till exempel helgsang",
-    "description": "Platshållare för inmatning"
+    "message": "Ange ledtrådar för sångtiteln som ska genereras, till exempel holiday song",
+    "description": "Platsinnehåll för sångtitel"
   },
   "placeholder.select": {
-    "message": "Välj modell...",
-    "description": "Platshållare för inmatning"
+    "message": "Vänligen välj modell...",
+    "description": "Platsinnehåll för positionsval"
   },
   "placeholder.position": {
-    "message": "Välj...",
-    "description": "Platshållare för inmatning"
+    "message": "Vänligen välj...",
+    "description": "Platsinnehåll för positionsval"
   },
   "button.generate": {
     "message": "Generera",
-    "description": "Text i knappen för att generera"
+    "description": "Text på knappen för att generera"
   },
   "message.startingTask": {
-    "message": "Startar uppgift...",
+    "message": "Startar uppgiften...",
+    "description": "Meddelande när musikgenereringsuppgiften startar"
+  },
+  "message.startingUploadAudio": {
+    "message": "Laddar upp anpassad musik...",
     "description": "Meddelande när musikgenereringsuppgiften startar"
   },
   "message.startTaskSuccess": {
-    "message": "Musikgenereringsuppgift startad framgångsrikt",
-    "description": "Meddelande vid framgångsrik start av musikgenereringsuppgift"
+    "message": "Musikgenereringsuppgiften har startats framgångsrikt",
+    "description": "Meddelande när musikgenereringsuppgiften startar framgångsrikt"
+  },
+  "message.startUploadAudioSuccess": {
+    "message": "Anpassad musik har laddats upp framgångsrikt",
+    "description": "Meddelande när musikgenereringsuppgiften startar framgångsrikt"
+  },
+  "message.startUploadAudioFailed": {
+    "message": "Misslyckades med att ladda upp anpassad musik",
+    "description": "Meddelande när musikgenereringsuppgiften misslyckas"
   },
   "message.startTaskFailed": {
-    "message": "Misslyckades med att starta musikgenereringsuppgift",
-    "description": "Meddelande vid misslyckande av att starta musikgenereringsuppgift"
+    "message": "Misslyckades med att starta musikgenereringsuppgiften",
+    "description": "Meddelande när musikgenereringsuppgiften misslyckas"
   },
   "message.generating": {
     "message": "Genererar...",
-    "description": "Meddelande när musiken genereras"
+    "description": "Meddelande när musiken håller på att skapas"
   },
   "message.generateFailed": {
-    "message": "Misslyckades med att generera musik",
-    "description": "Meddelande vid misslyckande av musikgenerering"
+    "message": "Misslyckades med att generera musiken",
+    "description": "Meddelande när musikgenereringen misslyckas"
   },
   "message.noOperations": {
     "message": "Inga tillgängliga operationer",
     "description": "Meddelande när det inte finns några tillgängliga operationer"
   },
   "message.noTasks": {
-    "message": "Inga historiska uppgifter, vänligen generera musik i den vänstra konfigurationspanelen",
+    "message": "Inga historiska uppgifter, vänligen skapa musik i konfigurationsfältet till vänster",
     "description": "Meddelande när det inte finns några uppgifter"
   }
 }

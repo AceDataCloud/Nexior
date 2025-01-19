@@ -7,6 +7,10 @@
     "message": "下载",
     "description": "下载按钮文本"
   },
+  "button.uploadAudios": {
+    "message": "上传",
+    "description": "按钮文本，允许用户上传参考"
+  },
   "button.video": {
     "message": "视频",
     "description": "视频按钮文本"
@@ -30,6 +34,10 @@
   "name.instrumental": {
     "message": "无歌词",
     "description": "参数'instrumental'的描述"
+  },
+  "name.referenceAudios": {
+    "message": "上传参考音乐",
+    "description": "参考音乐的名称"
   },
   "model.model3": {
     "message": "v3.5",
@@ -99,6 +107,10 @@
     "message": "歌曲标题的内容",
     "description": "参数'title'的描述"
   },
+  "description.uploadAudios": {
+    "message": "上传音乐作为生成的参考，上传的过程需要等待一会，生成成功后便可根据上传的音乐进行生成",
+    "description": "上传参考参数的描述"
+  },
   "status.pending": {
     "message": "等待中",
     "description": "任务的等待状态"
@@ -143,9 +155,21 @@
     "message": "正在启动任务...",
     "description": "音乐生成任务开始时的消息"
   },
+  "message.startingUploadAudio": {
+    "message": "正在上传自定义音乐...",
+    "description": "音乐生成任务开始时的消息"
+  },
   "message.startTaskSuccess": {
     "message": "成功启动音乐生成任务",
     "description": "成功启动音乐生成任务时的成功消息"
+  },
+  "message.startUploadAudioSuccess": {
+    "message": "成功上传自定义音乐",
+    "description": "成功启动音乐生成任务时的成功消息"
+  },
+  "message.startUploadAudioFailed": {
+    "message": "上传自定义音乐失败",
+    "description": "启动音乐生成任务失败时的错误消息"
   },
   "message.startTaskFailed": {
     "message": "启动音乐生成任务失败",

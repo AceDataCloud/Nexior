@@ -2,7 +2,7 @@
   <div class="panel">
     <div class="config">
       <type-selector class="mb-4" />
-      <instrument-switch class="mb-4 instrument" />
+      <upload-audio class="mb-4" />
       <prompt-input v-if="!config?.custom" class="mb-4" />
       <lyric-input v-if="config?.custom && !config.instrumental" class="mb-4" />
       <style-input v-if="config?.custom" class="mb-4" />
@@ -26,12 +26,12 @@
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
 import TypeSelector from './config/TypeSelector.vue';
+import UploadAudio from './config/UploadAudio.vue';
 import PromptInput from './config/PromptInput.vue';
 import LyricInput from './config/LyricInput.vue';
 import StyleInput from './config/StyleInput.vue';
 import TitleInput from './config/TitleInput.vue';
 import ExtendFromInput from './config/ExtendFromInput.vue';
-import InstrumentSwitch from './config/InstrumentSwitch.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default defineComponent({
@@ -40,10 +40,10 @@ export default defineComponent({
     TypeSelector,
     PromptInput,
     LyricInput,
-    InstrumentSwitch,
     StyleInput,
     TitleInput,
     ExtendFromInput,
+    UploadAudio,
     FontAwesomeIcon,
     ElButton
   },
@@ -72,12 +72,6 @@ export default defineComponent({
     height: calc(100% - 50px);
     flex: 1;
     position: relative;
-    .instrument {
-      position: absolute;
-      top: 50px;
-      right: -10px;
-      z-index: 1000;
-    }
   }
   .actions {
     height: 50px;
