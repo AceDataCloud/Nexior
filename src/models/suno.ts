@@ -81,6 +81,10 @@ export interface ISunoLyricRequest {
   prompt?: string;
 }
 
+export interface ISunoUploadRequest {
+  audio_url?: string;
+}
+
 export interface ISunoAudio {
   id?: string;
   lyric?: string;
@@ -104,6 +108,10 @@ export interface ISunoAudioLyric {
   title?: string;
 }
 
+export interface ISunoUploadAudio {
+  audio_id?: string;
+}
+
 export interface ISunoAudioResponse {
   success?: boolean;
   task_id: string;
@@ -114,6 +122,12 @@ export interface ISunoLyricResponse {
   success?: boolean;
   task_id: string;
   data: ISunoAudioLyric;
+}
+
+export interface ISunoUploadResponse {
+  success?: boolean;
+  task_id: string;
+  data: ISunoUploadAudio;
 }
 
 export interface ISunoTask {
