@@ -87,6 +87,7 @@ export interface ISunoUploadRequest {
 
 export interface ISunoAudio {
   id?: string;
+  action?: string;
   lyric?: string;
   volume?: number;
   progress?: number;

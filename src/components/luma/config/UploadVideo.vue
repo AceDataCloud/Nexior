@@ -76,7 +76,7 @@ export default defineComponent({
     if (!this.value) {
       this.value = undefined;
     }
-    this.onSetVideoUrl();
+    // this.onSetVideoUrl();
   },
   methods: {
     onExceed() {

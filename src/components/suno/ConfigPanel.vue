@@ -8,6 +8,7 @@
       <style-input v-if="config?.custom" class="mb-4" />
       <title-input v-if="config?.custom" class="mb-4" />
       <extend-from-input v-if="config?.action === 'extend'" class="mb-4" />
+      <cover-from-input v-if="config?.action === 'cover'" class="mb-4" />
       <div class="actions">
         <el-button v-if="config?.action !== 'extend'" type="primary" class="btn w-full" round @click="onGenerate">
           <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
@@ -32,6 +33,7 @@ import LyricInput from './config/LyricInput.vue';
 import StyleInput from './config/StyleInput.vue';
 import TitleInput from './config/TitleInput.vue';
 import ExtendFromInput from './config/ExtendFromInput.vue';
+import CoverFromInput from './config/CoverFromInput.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default defineComponent({
@@ -43,6 +45,7 @@ export default defineComponent({
     StyleInput,
     TitleInput,
     ExtendFromInput,
+    CoverFromInput,
     UploadAudio,
     FontAwesomeIcon,
     ElButton
