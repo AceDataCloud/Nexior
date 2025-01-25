@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Mon, 20 Jan 2025 05:09:59 GMT and should not be manually modified.
+This log was last generated on Sat, 25 Jan 2025 13:01:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.12.4
+
+Sat, 25 Jan 2025 13:01:15 GMT
+
+### Patches
+
+- add cover stems concat (1348977728@qq.com)
 
 ## 2.12.3
 
