@@ -66,6 +66,30 @@
             </el-dropdown-menu>
           </template>
         </el-dropdown>
+        <el-dropdown>
+          <span class="el-dropdown-link">
+            <el-tooltip effect="dark" :content="$t('suno.button.more')" placement="top">
+              <font-awesome-icon
+                v-if="audio?.audio_url || audio?.video_url"
+                icon="fa-solid fa-ellipsis"
+                class="icon icon-ellipsis"
+              />
+            </el-tooltip>
+          </span>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item v-if="audio?.video_url" @click="onGetStems($event, audio?.id)">
+                {{ $t('suno.button.get_stems') }}
+              </el-dropdown-item>
+              <el-dropdown-item v-if="audio?.action === 'extend'" @click="onCover($event, audio)">
+                {{ $t('suno.button.cover_music') }}
+              </el-dropdown-item>
+              <el-dropdown-item v-if="audio?.action === 'extend'" @click="onConcatMusic($event, audio?.id)">
+                {{ $t('suno.button.concat_music') }}
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
       </div>
     </div>
   </div>
@@ -75,10 +99,23 @@
 import { defineComponent } from 'vue';
 import { useFormatDuring } from '@/utils/number';
 import { ISunoAudio, ISunoTask } from '@/models';
-import { ElImage, ElIcon, ElTooltip, ElButton, ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus';
+import {
+  ElImage,
+  ElIcon,
+  ElTooltip,
+  ElButton,
+  ElDropdown,
+  ElDropdownMenu,
+  ElDropdownItem,
+  ElMessage
+} from 'element-plus';
 import { VideoPlay, VideoPause } from '@element-plus/icons-vue';
+import { ISunoAudioRequest, Status } from '@/models';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { saveAs } from 'file-saver';
+import { sunoOperator } from '@/operators';
+
+const CALLBACK_URL = 'https://webhook.acedata.cloud/suno';
 
 export default defineComponent({
   name: 'TaskPreview',
@@ -104,14 +141,29 @@ export default defineComponent({
     return {};
   },
   computed: {
+    loading() {
+      return this.$store.state.suno?.status?.getApplications === Status.Request;
+    },
+    credential() {
+      return this.$store.state.suno.credential;
+    },
+    config() {
+      return this.$store.state.suno.config;
+    },
     task() {
       return this.$store.state.suno?.tasks;
     },
     audios(): ISunoAudio[] {
       let result: ISunoAudio[] = [];
+      // @ts-ignore
+      const action = this.modelValue?.request?.action;
       if (Array.isArray(this.modelValue?.response?.data)) {
         this.modelValue?.response?.data?.forEach((item: any) => {
           let audio = item as ISunoAudio;
+          // Add the action field to the audio object
+          if (action) {
+            audio.action = action;
+          }
           result.push(audio);
         });
       }
@@ -192,6 +244,79 @@ export default defineComponent({
       console.log('on preview', videoUrl);
       // preview url here
       window.open(videoUrl, '_blank');
+    },
+    async onGetStems(event: MouseEvent, audioId: string) {
+      event.stopPropagation();
+      console.log('on get stems', audioId);
+
+      await this.onGenerateAudioUrl('stems', audioId);
+    },
+    onCover(event: MouseEvent, audio: ISunoAudio) {
+      event.stopPropagation();
+      console.log('on cover');
+      // download url here
+      console.debug('set config', audio);
+      this.$store.commit('suno/setConfig', {
+        ...this.$store.state.suno?.config,
+        model: audio.model,
+        custom: true,
+        instrumental: false,
+        style: audio.style,
+        action: 'cover',
+        audio: audio,
+        audio_id: audio.id
+      });
+    },
+    async onConcatMusic(event: MouseEvent, audioId: string) {
+      event.stopPropagation();
+      console.log('on get concat', audioId);
+      await this.onGenerateAudioUrl('concat', audioId);
+    },
+    async onGenerateAudioUrl(action: string, audioId: string) {
+      const request = {
+        action,
+        audio_id: audioId,
+        callback_url: CALLBACK_URL
+      } as ISunoAudioRequest;
+      const token = this.credential?.token;
+      if (!token) {
+        console.error('no token specified');
+        return;
+      }
+      ElMessage.info(this.$t('suno.message.startingTask'));
+      sunoOperator
+        .audio(request, {
+          token
+        })
+        .then(() => {
+          ElMessage.success(this.$t('suno.message.startTaskSuccess'));
+        })
+        .catch((error) => {
+          ElMessage.error(error?.response?.data?.error?.message || this.$t('suno.message.startTaskFailed'));
+        })
+        .finally(async () => {
+          await this.onGetTasks();
+          await this.onScrollDown();
+        });
+    },
+    async onScrollDown() {
+      setTimeout(() => {
+        // scroll to bottom for `.recent`
+        const el = document.querySelector('.recent');
+        if (el) {
+          el.scrollTop = el.scrollHeight;
+        }
+      }, 1000);
+    },
+    async onGetTasks() {
+      if (this.loading) {
+        console.debug('loading');
+        return;
+      }
+      await this.$store.dispatch('suno/getTasks', {
+        limit: 30,
+        offset: 0
+      });
     }
   }
 });
