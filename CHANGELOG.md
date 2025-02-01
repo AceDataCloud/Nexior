@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sat, 25 Jan 2025 13:01:15 GMT and should not be manually modified.
+This log was last generated on Sat, 01 Feb 2025 05:33:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.13.0
+
+Sat, 01 Feb 2025 05:33:24 GMT
+
+### Minor changes
+
+- add tracker for fingerprint (germey@acedata.cloud)
 
 ## 2.12.4
 
