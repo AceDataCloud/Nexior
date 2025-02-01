@@ -20,10 +20,15 @@ export const site = (state: IRootState): any => {
   return state.site;
 };
 
+export const fingerprint = (state: IRootState): any => {
+  return state.fingerprint;
+};
+
 export default {
   authenticated,
   user,
   token,
   site,
+  fingerprint,
   setting
 };

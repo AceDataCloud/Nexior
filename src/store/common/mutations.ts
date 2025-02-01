@@ -22,6 +22,10 @@ export const setAuth = (state: IRootState, payload: any): void => {
   };
 };
 
+export const setFingerprint = (state: IRootState, payload: any): void => {
+  state.fingerprint = payload;
+};
+
 export const resetToken = (state: IRootState): void => {
   state.token = {};
 };
@@ -59,6 +63,7 @@ export default {
   setCurrency,
   setExchange,
   resetUser,
+  setFingerprint,
   setToken,
   resetToken,
   resetSite
