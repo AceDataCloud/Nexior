@@ -1,10 +1,11 @@
 import { ActionContext } from 'vuex';
-import { IRootState } from '../common/models';
+import { IRootState } from './models';
 import { userOperator, oauthOperator, siteOperator, exchangeOperator } from '@/operators';
 import { IToken, IUser } from '@/models';
 import { getSiteOrigin } from '@/utils/site';
 import { loginRedirect } from '@/utils';
 import { SURFACE_ANDROID, SURFACE_IOS } from '@/constants';
+import FingerprintJS from '@fingerprintjs/fingerprintjs';
 
 export const resetAll = ({ commit }: ActionContext<IRootState, IRootState>) => {
   commit('resetToken');
@@ -39,6 +40,10 @@ export const setExchange = ({ commit }: ActionContext<IRootState, IRootState>, p
   commit('setExchange', payload);
 };
 
+export const setFingerprint = ({ commit }: ActionContext<IRootState, IRootState>, payload: any) => {
+  commit('setFingerprint', payload);
+};
+
 export const getUser = async ({ commit }: ActionContext<IRootState, IRootState>): Promise<IUser> => {
   console.debug('start to get user');
   try {
@@ -50,6 +55,15 @@ export const getUser = async ({ commit }: ActionContext<IRootState, IRootState>)
   } catch (error) {
     console.error('get user failed', error);
   }
+};
+
+export const getFingerprint = async ({ commit }: ActionContext<IRootState, IRootState>) => {
+  const fp = await FingerprintJS.load();
+  const result = await fp.get();
+  const visitorId = result.visitorId;
+  console.debug('visitorId', visitorId);
+  commit('setFingerprint', visitorId);
+  return visitorId;
 };
 
 export const getToken = async ({ commit }: ActionContext<IRootState, IRootState>, code: string): Promise<IToken> => {
@@ -155,8 +169,10 @@ export default {
   resetUser,
   resetSite,
   setToken,
+  setFingerprint,
   setCurrency,
   setUser,
+  getFingerprint,
   getExchangeRate,
   getToken,
   getUser,
