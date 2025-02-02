@@ -48,19 +48,23 @@
     "description": "편집 상자에 표시되는 제목"
   },
   "field.featuresMidjourney": {
-    "message": "미드저니",
+    "message": "Midjourney",
     "description": "편집 상자에 표시되는 제목"
   },
   "field.featuresChatdoc": {
-    "message": "채팅문서",
+    "message": "Chatdoc",
     "description": "편집 상자에 표시되는 제목"
   },
   "field.featuresQrart": {
-    "message": "QR 아트",
+    "message": "Qrart",
     "description": "편집 상자에 표시되는 제목"
   },
   "field.featuresLuma": {
-    "message": "루마",
+    "message": "Luma",
+    "description": "편집 상자에 표시되는 제목"
+  },
+  "field.featuresPika": {
+    "message": "Pika",
     "description": "편집 상자에 표시되는 제목"
   },
   "field.featuresHeadshots": {
@@ -68,7 +72,7 @@
     "description": "편집 상자에 표시되는 제목"
   },
   "field.featuresSuno": {
-    "message": "수노",
+    "message": "Suno",
     "description": "편집 상자에 표시되는 제목"
   },
   "field.featuresSupport": {
@@ -168,112 +172,116 @@
     "description": "편집 상자에 표시되는 제목"
   },
   "message.uploadImageExceed": {
-    "message": "업로드된 이미지가 제한을 초과했습니다",
-    "description": "업로드된 이미지가 제한을 초과했음을 알리는 메시지"
+    "message": "업로드 이미지가 제한을 초과했습니다",
+    "description": "업로드 이미지가 제한을 초과했을 때의 알림"
   },
   "message.uploadImageError": {
-    "message": "업로드된 이미지 오류",
-    "description": "업로드된 이미지에 오류가 발생했음을 알리는 메시지"
+    "message": "업로드 이미지 오류",
+    "description": "업로드 이미지에서 오류가 발생했을 때의 알림"
   },
   "message.editLogoTip": {
     "message": "권장 크기: 200*60px",
-    "description": "업로드된 이미지에 대한 팁"
+    "description": "업로드 이미지에 대한 안내 메시지"
   },
   "message.editQRTip": {
     "message": "권장 크기: 200*200px",
-    "description": "업로드된 이미지에 대한 팁"
+    "description": "업로드 이미지에 대한 안내 메시지"
   },
   "message.editFaviconTip": {
-    "message": "권장 크기: 32*32픽셀",
-    "description": "업로드 이미지의提示语言"
+    "message": "추천 크기: 32*32px",
+    "description": "업로드 이미지의 팁 언어"
   },
   "message.editUrl": {
     "message": "링크를 입력하세요",
-    "description": "링크 입력提示"
+    "description": "링크를 입력하라는 팁"
   },
   "message.atLeastOneAdmin": {
-    "message": "최소한 한 명의 관리자를 유지해야 합니다",
-    "description": "최소한 한 명의 관리자를 유지提示"
+    "message": "최소한 한 명의 관리자를 남겨야 합니다",
+    "description": "최소한 한 명의 관리자를 남겨야 한다는 팁"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "기본 초대자의 사용자 ID, 분배 링크가 inviter_id 매개변수를 포함하지 않으면, 기본적으로 이 사용자 ID가 초대자로 사용됩니다.",
-    "description": "기본 초대자 ID提示"
+    "message": "기본 초대자의 사용자 ID, 유통 링크에 inviter_id 매개변수가 없는 경우 이 사용자 ID를 기본 초대자로 사용합니다.",
+    "description": "기본 초대자 ID의 팁"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "강제 초대자의 사용자 ID, 이 ID가 설정되면, 분배 링크가 inviter_id 매개변수를 포함하든 상관없이 이 사용자 ID를 초대자로 강제 사용합니다.",
-    "description": "강제 초대자 ID提示"
+    "message": "강제 초대자의 사용자 ID, 이 ID가 설정되면 유통 링크에 inviter_id 매개변수가 있든 없든 이 사용자 ID를 강제로 초대자로 사용합니다.",
+    "description": "강제 초대자 ID의 팁"
   },
   "message.originTip": {
-    "message": "사이트 도메인, 사이트 구성은 도메인에 바인딩되며, 사이트 도메인은 변경할 수 없습니다.",
-    "description": "사이트 도메인提示"
+    "message": "사이트 도메인, 사이트 구성은 도메인에 바인딩되어 있으며, 사이트 도메인은 변경할 수 없습니다.",
+    "description": "사이트 도메인의 팁"
   },
   "message.titleTip": {
     "message": "사이트 제목, 브라우저 탭에 표시됩니다.",
-    "description": "사이트 제목提示"
+    "description": "사이트 제목의 팁"
   },
   "message.descriptionTip": {
-    "message": "사이트 설명, 사이트 메타 정보에 위치하며, 사이트 SEO 최적화에 사용됩니다.",
-    "description": "사이트 설명提示"
+    "message": "사이트 설명, 사이트 메타 정보에 위치하며, 사이트 SEO 최적화를 위해 사용됩니다.",
+    "description": "사이트 설명의 팁"
   },
   "message.logoTip": {
-    "message": "사이트 로고, 메뉴가 펼쳐질 때 사이트 메뉴 상단에 표시됩니다.",
-    "description": "사이트 로고提示"
+    "message": "사이트 로고, 메뉴 바가 펼쳐질 때 사이트 메뉴 상단에 표시됩니다.",
+    "description": "사이트 로고의 팁"
   },
   "message.faviconTip": {
     "message": "사이트 파비콘, 브라우저 탭에 표시됩니다.",
-    "description": "사이트 파비콘提示"
+    "description": "사이트 파비콘의 팁"
   },
   "message.adminsTip": {
-    "message": "사이트 관리자 ID, 기본적으로 사이트를 처음 생성한 사용자가 관리자이며, 오직 사이트 관리자만 사이트를 관리할 수 있습니다.",
-    "description": "사이트 관리자提示"
+    "message": "사이트 관리자 ID, 기본적으로 사이트를 처음 만든 사용자가 관리자가 되며, 사이트 관리자는 사이트를 관리할 수 있습니다.",
+    "description": "사이트 관리자의 팁"
   },
   "message.adminsTip2": {
-    "message": "여기에서 관리자 ID를 추가하거나 삭제할 수 있으며, https://auth.acedata.cloud 에서 사용자 ID를 확인할 수 있습니다.",
-    "description": "사이트 관리자提示"
+    "message": "여기에서 관리자 ID를 추가하거나 삭제할 수 있습니다. 사용자 ID는 https://auth.acedata.cloud에서 확인하십시오.",
+    "description": "사이트 관리자의 팁"
   },
   "message.keywordsTip": {
-    "message": "사이트 키워드, 사이트 메타 정보에 위치하며, 사이트 SEO 최적화에 사용됩니다.",
-    "description": "사이트 키워드提示"
+    "message": "사이트 키워드, 사이트 메타 정보에 위치하며, 사이트 SEO 최적화를 위해 사용됩니다.",
+    "description": "사이트 키워드의 팁"
   },
   "message.keywordsTip2": {
-    "message": "여기에서 웹사이트 키워드를 추가하거나 삭제할 수 있으며, 키워드가 정확할수록 SEO 최적화에 유리합니다.",
-    "description": "사이트 키워드提示"
+    "message": "여기에서 웹사이트 키워드를 추가하거나 삭제할 수 있습니다. 키워드가 정확할수록 SEO 최적화에 유리합니다.",
+    "description": "사이트 키워드의 팁"
   },
   "message.featuresChat": {
-    "message": "Chat 기능 모듈을 켜거나 끄십시오.",
-    "description": "Chat 기능描述"
+    "message": "채팅 기능 모듈을 활성화 또는 비활성화합니다.",
+    "description": "채팅 기능의 설명"
   },
   "message.featuresMidjourney": {
-    "message": "Midjourney 기능 모듈을 켜거나 끄십시오.",
-    "description": "Midjourney 기능描述"
+    "message": "Midjourney 기능 모듈을 활성화 또는 비활성화합니다.",
+    "description": "Midjourney 기능의 설명"
   },
   "message.featuresChatdoc": {
-    "message": "Chatdoc 기능 모듈을 켜거나 끄십시오.",
-    "description": "Chatdoc 기능描述"
+    "message": "Chatdoc 기능 모듈을 활성화 또는 비활성화합니다.",
+    "description": "Chatdoc 기능의 설명"
   },
   "message.featuresQrart": {
-    "message": "Qrart 기능 모듈을 켜거나 끄십시오.",
-    "description": "Qrart 기능描述"
+    "message": "Qrart 기능 모듈을 활성화 또는 비활성화합니다.",
+    "description": "Qrart 기능의 설명"
   },
   "message.featuresSuno": {
-    "message": "Suno 기능 모듈을 켜거나 끄십시오.",
-    "description": "Suno 기능描述"
+    "message": "Suno 기능 모듈을 활성화 또는 비활성화합니다.",
+    "description": "Suno 기능의 설명"
   },
   "message.featuresLuma": {
-    "message": "Luma 기능 모듈을 켜거나 끄십시오.",
-    "description": "Luma 기능描述"
+    "message": "Luma 기능 모듈을 활성화 또는 비활성화합니다.",
+    "description": "Luma 기능의 설명"
+  },
+  "message.featuresPika": {
+    "message": "Pika 기능 모듈을 활성화 또는 비활성화합니다.",
+    "description": "Pika 기능의 설명"
   },
   "message.featuresHeadshots": {
-    "message": "AI 증명사진 기능 모듈을 켜거나 끄십시오.",
-    "description": "AI 증명사진 기능描述"
+    "message": "AI 신분증 사진 기능 모듈을 활성화 또는 비활성화합니다.",
+    "description": "AI 신분증 사진 기능의 설명"
   },
   "message.featuresSupport": {
-    "message": "고객 지원 켜기 또는 끄기",
-    "description": "Support 기능描述"
+    "message": "고객 지원을 활성화 또는 비활성화합니다.",
+    "description": "지원 기능의 설명"
   },
   "message.featuresI18n": {
-    "message": "다국어 지원 켜기 또는 끄기, 끄면 사용자는 기본 언어만 사용할 수 있습니다.",
-    "description": "다국어 지원描述"
+    "message": "다국어 지원을 활성화 또는 비활성화합니다. 비활성화 시 사용자는 기본 언어만 사용할 수 있습니다.",
+    "description": "다국어 지원의 설명"
   },
   "button.upload": {
     "message": "업로드",
@@ -281,10 +289,10 @@
   },
   "button.enabled": {
     "message": "활성화됨",
-    "description": "스위치 텍스트, 활성화되었음을 나타냄"
+    "description": "스위치 텍스트, 활성화되었음을 표시"
   },
   "button.disabled": {
     "message": "비활성화됨",
-    "description": "스위치 텍스트, 비활성화되었음을 나타냄"
+    "description": "스위치 텍스트, 비활성화되었음을 표시"
   }
 }

@@ -111,6 +111,8 @@ import {
   ROUTE_QRART_HISTORY,
   ROUTE_LUMA_INDEX,
   ROUTE_LUMA_HISTORY,
+  ROUTE_PIKA_INDEX,
+  ROUTE_PIKA_HISTORY,
   ROUTE_HEADSHOTS_INDEX,
   ROUTE_HEADSHOTS_HISTORY,
   ROUTE_SUNO_INDEX,
@@ -226,6 +228,17 @@ export default defineComponent({
           displayName: this.$t('common.nav.headshots'),
           icon: 'fa-solid fa-id-card',
           routes: [ROUTE_HEADSHOTS_INDEX, ROUTE_HEADSHOTS_HISTORY]
+        });
+      }
+      // Add pika's leftmost icon
+      if (this.$store?.state?.site?.features?.pika?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_PIKA_INDEX
+          },
+          displayName: this.$t('common.nav.pika'),
+          icon: 'fa-solid fa-film',
+          routes: [ROUTE_PIKA_INDEX, ROUTE_PIKA_HISTORY]
         });
       }
 

@@ -180,6 +180,7 @@
                   'qrart',
                   'suno',
                   'luma',
+                  'pika',
                   'headshots',
                   'support'
                 ]"
