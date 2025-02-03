@@ -5,9 +5,11 @@ import chatdocState from '../chatdoc/state';
 import qrartState from '../qrart/state';
 import lumaState from '../luma/state';
 import sunoState from '../suno/state';
+import headshotsState from '../headshots/state';
 
 export default (): IRootState => {
   return {
+    fingerprint: undefined,
     currency: 'usd',
     exchange: undefined,
     user: {},
@@ -27,6 +29,7 @@ export default (): IRootState => {
     midjourney: midjourneyState(),
     qrart: qrartState(),
     luma: lumaState(),
-    suno: sunoState()
+    suno: sunoState(),
+    headshots: headshotsState()
   };
 };

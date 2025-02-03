@@ -16,6 +16,7 @@ export interface ICommonState {
   setting?: ISetting;
   site?: ISite;
   currency: string;
+  fingerprint?: string;
   auth: {
     flow: 'popup' | 'redirect';
     visible: boolean;

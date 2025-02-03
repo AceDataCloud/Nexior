@@ -214,3 +214,7 @@ export const initializeRedirect = async () => {
     window.location.href = newUrl;
   }
 };
+
+export const initializeFingerprint = async () => {
+  await store.dispatch('getFingerprint');
+};

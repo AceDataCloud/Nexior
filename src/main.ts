@@ -20,7 +20,8 @@ import {
   initializeTitle,
   initializeCurrency,
   initializeExchangeRate,
-  initializeRedirect
+  initializeRedirect,
+  initializeFingerprint
 } from './utils/initializer';
 
 const main = async () => {
@@ -38,6 +39,7 @@ const main = async () => {
   initializeDescription();
   initializeKeywords();
   initializeFavicon();
+  initializeFingerprint();
 
   const app = createApp(App);
 
