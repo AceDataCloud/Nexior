@@ -113,6 +113,8 @@ import {
   ROUTE_LUMA_HISTORY,
   ROUTE_PIKA_INDEX,
   ROUTE_PIKA_HISTORY,
+  ROUTE_HAILUO_INDEX,
+  ROUTE_HAILUO_HISTORY,
   ROUTE_HEADSHOTS_INDEX,
   ROUTE_HEADSHOTS_HISTORY,
   ROUTE_SUNO_INDEX,
@@ -239,6 +241,17 @@ export default defineComponent({
           displayName: this.$t('common.nav.pika'),
           icon: 'fa-solid fa-film',
           routes: [ROUTE_PIKA_INDEX, ROUTE_PIKA_HISTORY]
+        });
+      }
+      // Add hailuo's leftmost icon
+      if (this.$store?.state?.site?.features?.hailuo?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_HAILUO_INDEX
+          },
+          displayName: this.$t('common.nav.hailuo'),
+          icon: 'fa-solid fa-film',
+          routes: [ROUTE_HAILUO_INDEX, ROUTE_HAILUO_HISTORY]
         });
       }
 

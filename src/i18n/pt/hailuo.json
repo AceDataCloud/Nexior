@@ -1,0 +1,234 @@
+{
+  "name.taskId": {
+    "message": "ID da tarefa",
+    "description": "ID da tarefa"
+  },
+  "name.type": {
+    "message": "Tipo",
+    "description": "Tipo de conteúdo para gerar o vídeo Hailuo, como 'link', 'texto', etc."
+  },
+  "name.failure": {
+    "message": "Falha",
+    "description": "Estado de falha da tarefa"
+  },
+  "name.failureReason": {
+    "message": "Razão da falha",
+    "description": "Razão pela qual a tarefa falhou"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Estado da tarefa"
+  },
+  "name.traceId": {
+    "message": "ID de rastreamento",
+    "description": "ID de rastreamento da tarefa"
+  },
+  "name.createdAt": {
+    "message": "Data de criação",
+    "description": "Data e hora em que o vídeo Hailuo foi gerado"
+  },
+  "name.imageUrl": {
+    "message": "Imagem de referência",
+    "description": "Imagem de referência para o vídeo a ser gerado"
+  },
+  "name.videoUrl": {
+    "message": "Vídeo personalizado",
+    "description": "Vídeo personalizado"
+  },
+  "name.prompt": {
+    "message": "Prompt do vídeo",
+    "description": "Prompt para entrada de conteúdo"
+  },
+  "name.ingredients": {
+    "message": "Vídeo com várias imagens",
+    "description": "Vídeo personalizado expandido"
+  },
+  "name.model": {
+    "message": "Modelo",
+    "description": "Versão do modelo utilizada para gerar o vídeo"
+  },
+  "name.startImageUrl": {
+    "message": "Imagem de início",
+    "description": "Semente para gerar o código QR"
+  },
+  "name.ingredientsModel": {
+    "message": "Modelo de ingredientes",
+    "description": "Versão do modelo utilizada para gerar o vídeo"
+  },
+  "name.hailuoBot": {
+    "message": "Hailuo Bot",
+    "description": "Nome do gerador de vídeos Hailuo"
+  },
+  "description.ingredients": {
+    "message": "Se você deseja enviar várias imagens para gerar seu próprio vídeo, ative este botão.",
+    "description": "Descrição do parâmetro 'ingredients'"
+  },
+  "description.startImageUrl": {
+    "message": "URL da imagem de início, que será o primeiro quadro do vídeo gerado.",
+    "description": "Descrição do parâmetro 'startImageUrl'"
+  },
+  "description.prompt": {
+    "message": "Palavras-chave para gerar um vídeo Hailuo",
+    "description": "Descrição do parâmetro 'prompt'"
+  },
+  "status.pending": {
+    "message": "Aguardando",
+    "description": "Estado de espera da tarefa"
+  },
+  "status.processing": {
+    "message": "Processando",
+    "description": "Estado de processamento da tarefa"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Selecione...",
+    "description": "Placeholder para entrada de ruído de preenchimento"
+  },
+  "placeholder.select": {
+    "message": "Selecione",
+    "description": "Texto de placeholder no campo de seleção"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Selecione...",
+    "description": "Placeholder para nível de preenchimento"
+  },
+  "placeholder.prompt": {
+    "message": "Digite a prompt para o estilo do vídeo a ser gerado, ex: raiva",
+    "description": "Texto de placeholder no campo de prompt"
+  },
+  "placeholder.position": {
+    "message": "Selecione...",
+    "description": "Placeholder para entrada de posição"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Selecione...",
+    "description": "Placeholder para entrada de relação de aspecto"
+  },
+  "placeholder.preset": {
+    "message": "Selecione...",
+    "description": "Placeholder para entrada de preset"
+  },
+  "placeholder.markerShape": {
+    "message": "Selecione...",
+    "description": "Placeholder para entrada de forma do marcador"
+  },
+  "placeholder.rotate": {
+    "message": "Selecione...",
+    "description": "Placeholder para entrada de rotação"
+  },
+  "placeholder.subMarker": {
+    "message": "Selecione...",
+    "description": "Placeholder para entrada de sub-marcador"
+  },
+  "button.model1": {
+    "message": "Vídeo gerado por texto",
+    "description": "Texto do botão para gerar vídeo Hailuo"
+  },
+  "button.model2": {
+    "message": "Vídeo gerado por imagem",
+    "description": "Texto do botão para gerar vídeo Hailuo"
+  },
+  "button.generate": {
+    "message": "Gerar",
+    "description": "Texto do botão para gerar vídeo Hailuo"
+  },
+  "button.extend": {
+    "message": "Expandir vídeo",
+    "description": "Texto do botão para expandir vídeo"
+  },
+  "button.download": {
+    "message": "Baixar vídeo",
+    "description": "Texto do botão para baixar vídeo"
+  },
+  "button.uploadStartImageUrl": {
+    "message": "Enviar imagem",
+    "description": "Texto do botão para enviar imagem do código QR"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "É possível enviar no máximo 5 imagens",
+    "description": "Mensagem de erro quando a quantidade de imagens enviadas excede o limite"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Imagens enviadas com sucesso",
+    "description": "Mensagem de sucesso ao enviar imagens"
+  },
+  "message.uploadReferencesError": {
+    "message": "Falha ao enviar imagem, por favor, tente novamente mais tarde",
+    "description": "Mensagem de erro ao falhar no envio de imagens"
+  },
+  "message.startingTask": {
+    "message": "Iniciando tarefa...",
+    "description": "Mensagem ao iniciar a tarefa de desenho"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tarefa de geração iniciada com sucesso",
+    "description": "Mensagem de sucesso ao iniciar a tarefa"
+  },
+  "message.startTaskFailed": {
+    "message": "Falha ao iniciar tarefa, por favor, contate o administrador",
+    "description": "Mensagem de erro ao falhar ao iniciar a tarefa de desenho"
+  },
+  "message.usedUp": {
+    "message": "Seus créditos foram esgotados, por favor, compre mais créditos para continuar usando",
+    "description": "Mensagem quando os créditos se esgotam"
+  },
+  "message.generating": {
+    "message": "Gerando...",
+    "description": "Mensagem enquanto a imagem está sendo gerada"
+  },
+  "message.downloadVideo": {
+    "message": "Baixar este vídeo",
+    "description": "Mensagem enquanto a imagem está sendo gerada"
+  },
+  "message.extendVideo": {
+    "message": "Continuar gerando este vídeo",
+    "description": "Mensagem enquanto a imagem está sendo gerada"
+  },
+  "message.generateFailed": {
+    "message": "Falha ao gerar imagem",
+    "description": "Mensagem quando a geração da imagem falha"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Número de imagens da primeira cena excede o limite",
+    "description": "Mensagem de erro quando o número de imagens da primeira cena excede o limite"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "O tamanho do arquivo enviado não pode exceder 10MB!",
+    "description": "Mensagem de erro quando o tamanho do arquivo enviado não pode exceder 10MB!"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "O arquivo enviado deve estar no formato MP4!",
+    "description": "Mensagem de erro quando o arquivo enviado não está no formato MP4!"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Número de imagens da primeira cena excede o limite",
+    "description": "Mensagem de erro quando o número de imagens da primeira cena excede o limite"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Número de imagens da última cena excede o limite",
+    "description": "Mensagem de erro quando o número de imagens da última cena excede o limite"
+  },
+  "message.uploadStartImageError": {
+    "message": "Falha ao enviar a imagem da primeira cena",
+    "description": "Mensagem de erro quando há falha ao enviar a imagem da primeira cena"
+  },
+  "message.uploadVideoError": {
+    "message": "Falha ao enviar o vídeo",
+    "description": "Mensagem de erro quando há falha ao enviar o vídeo"
+  },
+  "message.uploadEndImageError": {
+    "message": "Falha ao enviar a imagem da última cena",
+    "description": "Mensagem de erro quando há falha ao enviar a imagem da última cena"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Falha ao enviar o documento",
+    "description": "Mensagem de erro quando há falha ao enviar o documento"
+  },
+  "message.noOperations": {
+    "message": "Nenhuma operação disponível",
+    "description": "Mensagem quando não há operações disponíveis"
+  },
+  "message.noTasks": {
+    "message": "Nenhuma tarefa histórica, por favor clique à esquerda para gerar vídeo",
+    "description": "Mensagem quando não há tarefas"
+  }
+}

@@ -1,0 +1,234 @@
+{
+  "name.taskId": {
+    "message": "작업 ID",
+    "description": "작업의 ID"
+  },
+  "name.type": {
+    "message": "유형",
+    "description": "생성할 Hailuo 비디오의 콘텐츠 유형, 예: '링크', '텍스트' 등"
+  },
+  "name.failure": {
+    "message": "실패",
+    "description": "작업의 실패 상태"
+  },
+  "name.failureReason": {
+    "message": "실패 원인",
+    "description": "작업 실패의 원인"
+  },
+  "name.status": {
+    "message": "상태",
+    "description": "작업의 상태"
+  },
+  "name.traceId": {
+    "message": "추적 ID",
+    "description": "작업의 추적 ID"
+  },
+  "name.createdAt": {
+    "message": "생성 시간",
+    "description": "Hailuo 비디오가 생성된 날짜와 시간"
+  },
+  "name.imageUrl": {
+    "message": "참조 이미지",
+    "description": "생성할 비디오의 참조 이미지"
+  },
+  "name.videoUrl": {
+    "message": "맞춤 비디오",
+    "description": "맞춤 비디오"
+  },
+  "name.prompt": {
+    "message": "비디오 프롬프트",
+    "description": "콘텐츠 입력의 프롬프트"
+  },
+  "name.ingredients": {
+    "message": "다양한 이미지 생성 비디오",
+    "description": "맞춤형 확장 비디오"
+  },
+  "name.model": {
+    "message": "모델",
+    "description": "비디오 생성에 사용되는 모델 버전"
+  },
+  "name.startImageUrl": {
+    "message": "첫 프레임 이미지",
+    "description": "생성할 QR 코드의 시드"
+  },
+  "name.ingredientsModel": {
+    "message": "성분 모델",
+    "description": "비디오 생성에 사용되는 모델 버전"
+  },
+  "name.hailuoBot": {
+    "message": "Hailuo 봇",
+    "description": "Hailuo 비디오 생성기의 이름"
+  },
+  "description.ingredients": {
+    "message": "비디오를 생성하기 위해 여러 이미지를 업로드하려면 이 버튼을 활성화하세요.",
+    "description": "매개변수 'ingredients'의 설명"
+  },
+  "description.startImageUrl": {
+    "message": "첫 프레임 이미지의 URL로, 생성할 비디오의 첫 번째 프레임이 됩니다.",
+    "description": "매개변수 'startImageUrl'의 설명"
+  },
+  "description.prompt": {
+    "message": "Hailuo 비디오를 생성하기 위한 프롬프트 키워드",
+    "description": "매개변수 'prompt'의 설명"
+  },
+  "status.pending": {
+    "message": "대기 중",
+    "description": "작업의 대기 상태"
+  },
+  "status.processing": {
+    "message": "처리 중",
+    "description": "작업의 처리 상태"
+  },
+  "placeholder.paddingNoise": {
+    "message": "선택하세요...",
+    "description": "패딩 노이즈 입력의 자리 표시자"
+  },
+  "placeholder.select": {
+    "message": "선택",
+    "description": "선택 필드의 자리 표시 텍스트"
+  },
+  "placeholder.paddingLevel": {
+    "message": "선택하세요...",
+    "description": "패딩 수준의 자리 표시자"
+  },
+  "placeholder.prompt": {
+    "message": "생성할 비디오 스타일의 프롬프트를 입력하세요, 예: 화기",
+    "description": "프롬프트 필드의 자리 표시 텍스트"
+  },
+  "placeholder.position": {
+    "message": "선택하세요...",
+    "description": "위치 입력의 자리 표시자"
+  },
+  "placeholder.aspectRatio": {
+    "message": "선택하세요...",
+    "description": "종횡비 입력의 자리 표시자"
+  },
+  "placeholder.preset": {
+    "message": "선택하세요...",
+    "description": "프리셋 입력의 자리 표시자"
+  },
+  "placeholder.markerShape": {
+    "message": "선택하세요...",
+    "description": "마커 모양 입력의 자리 표시자"
+  },
+  "placeholder.rotate": {
+    "message": "선택하세요...",
+    "description": "회전 입력의 자리 표시자"
+  },
+  "placeholder.subMarker": {
+    "message": "선택하세요...",
+    "description": "하위 마커 입력의 자리 표시자"
+  },
+  "button.model1": {
+    "message": "텍스트 생성 비디오",
+    "description": "Hailuo 비디오 생성을 위한 버튼 텍스트"
+  },
+  "button.model2": {
+    "message": "이미지 생성 비디오",
+    "description": "Hailuo 비디오 생성을 위한 버튼 텍스트"
+  },
+  "button.generate": {
+    "message": "생성",
+    "description": "Hailuo 비디오 생성을 위한 버튼 텍스트"
+  },
+  "button.extend": {
+    "message": "비디오 확장",
+    "description": "비디오 확장 버튼 텍스트"
+  },
+  "button.download": {
+    "message": "비디오 다운로드",
+    "description": "비디오 다운로드 버튼 텍스트"
+  },
+  "button.uploadStartImageUrl": {
+    "message": "이미지 업로드",
+    "description": "QR 코드 업로드 버튼 텍스트"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "최대 5장의 이미지를 업로드할 수 있습니다.",
+    "description": "업로드된 이미지 수가 제한을 초과할 때의 오류 메시지"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "이미지 업로드 성공",
+    "description": "이미지 업로드에 성공했을 때의 성공 메시지"
+  },
+  "message.uploadReferencesError": {
+    "message": "이미지 업로드 실패, 잠시 후 다시 시도하세요",
+    "description": "이미지 업로드 실패 시의 오류 메시지"
+  },
+  "message.startingTask": {
+    "message": "작업 시작 중...",
+    "description": "그림 작업 시작 시의 메시지"
+  },
+  "message.startTaskSuccess": {
+    "message": "생성 작업 성공적으로 시작됨",
+    "description": "작업이 성공적으로 시작될 때의 성공 메시지"
+  },
+  "message.startTaskFailed": {
+    "message": "작업 시작 실패, 관리자에게 문의하세요",
+    "description": "그림 작업 시작에 실패할 때의 오류 메시지"
+  },
+  "message.usedUp": {
+    "message": "포인트가 소진되었습니다, 추가 포인트를 구매한 후 계속 사용하세요",
+    "description": "소진되었을 때의 메시지"
+  },
+  "message.generating": {
+    "message": "생성 중...",
+    "description": "이미지가 생성 중일 때의 메시지"
+  },
+  "message.downloadVideo": {
+    "message": "이 비디오 다운로드",
+    "description": "이미지가 생성 중일 때의 메시지"
+  },
+  "message.extendVideo": {
+    "message": "이 비디오 계속 생성",
+    "description": "이미지가 생성 중일 때의 메시지"
+  },
+  "message.generateFailed": {
+    "message": "이미지 생성 실패",
+    "description": "이미지 생성 실패 시의 메시지"
+  },
+  "message.uploadVideoExceed": {
+    "message": "업로드할 첫 번째 프레임 이미지 수가 제한을 초과했습니다.",
+    "description": "업로드할 첫 번째 프레임 이미지 수가 제한을 초과했을 때의 오류 정보"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "업로드 파일 크기는 10MB를 넘을 수 없습니다!",
+    "description": "업로드 파일 크기가 10MB를 넘을 수 없을 때의 오류 정보"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "업로드 파일은 MP4 형식이어야 합니다!",
+    "description": "업로드 파일이 MP4 형식이 아닐 때의 오류 정보"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "업로드할 첫 번째 프레임 이미지 수가 제한을 초과했습니다.",
+    "description": "업로드할 첫 번째 프레임 이미지 수가 제한을 초과했을 때의 오류 정보"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "업로드할 마지막 프레임 이미지 수가 제한을 초과했습니다.",
+    "description": "업로드할 마지막 프레임 이미지 수가 제한을 초과했을 때의 오류 정보"
+  },
+  "message.uploadStartImageError": {
+    "message": "첫 번째 프레임 이미지 업로드 실패",
+    "description": "첫 번째 프레임 이미지 업로드에 실패했을 때의 오류 정보"
+  },
+  "message.uploadVideoError": {
+    "message": "비디오 업로드 실패",
+    "description": "비디오 업로드에 실패했을 때의 오류 정보"
+  },
+  "message.uploadEndImageError": {
+    "message": "마지막 프레임 이미지 업로드 실패",
+    "description": "마지막 프레임 이미지 업로드에 실패했을 때의 오류 정보"
+  },
+  "message.uploadDocumentsError": {
+    "message": "문서 업로드 실패",
+    "description": "문서 업로드에 실패했을 때의 오류 정보"
+  },
+  "message.noOperations": {
+    "message": "사용 가능한 작업이 없습니다.",
+    "description": "사용 가능한 작업이 없을 때의 메시지"
+  },
+  "message.noTasks": {
+    "message": "이전 작업이 없습니다. 왼쪽에서 비디오 생성을 클릭하세요.",
+    "description": "작업이 없을 때의 메시지"
+  }
+}

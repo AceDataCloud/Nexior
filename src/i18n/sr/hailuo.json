@@ -1,0 +1,234 @@
+{
+  "name.taskId": {
+    "message": "ID zadatka",
+    "description": "ID zadatka"
+  },
+  "name.type": {
+    "message": "Tip",
+    "description": "Tip sadržaja Hailuo video koji se generiše, kao što su 'link', 'tekst', itd."
+  },
+  "name.failure": {
+    "message": "Neuspeh",
+    "description": "Status neuspeha zadatka"
+  },
+  "name.failureReason": {
+    "message": "Razlog neuspeha",
+    "description": "Razlog neuspeha zadatka"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Status zadatka"
+  },
+  "name.traceId": {
+    "message": "ID praćenja",
+    "description": "ID praćenja zadatka"
+  },
+  "name.createdAt": {
+    "message": "Vreme kreiranja",
+    "description": "Datum i vreme generisanja Hailuo videa"
+  },
+  "name.imageUrl": {
+    "message": "Referentna slika",
+    "description": "Referentna slika za video koji se generiše"
+  },
+  "name.videoUrl": {
+    "message": "Prilagođeni video",
+    "description": "Prilagođeni video"
+  },
+  "name.prompt": {
+    "message": "Video prompt",
+    "description": "Prompt za unos sadržaja"
+  },
+  "name.ingredients": {
+    "message": "Video sa više slika",
+    "description": "Prilagođeni prošireni video"
+  },
+  "name.model": {
+    "message": "Model",
+    "description": "Verzija modela korišćenog za generisanje videa"
+  },
+  "name.startImageUrl": {
+    "message": "Prva slika",
+    "description": "Semenski QR kod za generisanje"
+  },
+  "name.ingredientsModel": {
+    "message": "Model sastojaka",
+    "description": "Verzija modela korišćenog za generisanje videa"
+  },
+  "name.hailuoBot": {
+    "message": "Hailuo Bot",
+    "description": "Ime Hailuo generatora videa"
+  },
+  "description.ingredients": {
+    "message": "Ako želite da otpremite više slika kako biste generisali svoj video, otvorite ovu dugmad.",
+    "description": "Opis parametra 'ingredients'"
+  },
+  "description.startImageUrl": {
+    "message": "URL prve slike koja će biti prva slika generisanog videa.",
+    "description": "Opis parametra 'startImageUrl'"
+  },
+  "description.prompt": {
+    "message": "Prompt reči za generisanje Hailuo videa",
+    "description": "Opis parametra 'prompt'"
+  },
+  "status.pending": {
+    "message": "Na čekanju",
+    "description": "Status čekanja zadatka"
+  },
+  "status.processing": {
+    "message": "Obrada",
+    "description": "Status obrade zadatka"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Izaberite...",
+    "description": "Učitavanje buke placeholder"
+  },
+  "placeholder.select": {
+    "message": "Izaberi",
+    "description": "Placeholder za izabrano polje"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Izaberite...",
+    "description": "Placeholder za nivo popunjavanja"
+  },
+  "placeholder.prompt": {
+    "message": "Unesite reči za stil videa koji želite da generišete, na primer: raspoloženje",
+    "description": "Placeholder za prompt polje"
+  },
+  "placeholder.position": {
+    "message": "Izaberite...",
+    "description": "Placeholder za ulaz pozicije"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Izaberite...",
+    "description": "Placeholder za unos odnosa širine i visine"
+  },
+  "placeholder.preset": {
+    "message": "Izaberite...",
+    "description": "Placeholder za unapred podešene vrednosti"
+  },
+  "placeholder.markerShape": {
+    "message": "Izaberite...",
+    "description": "Placeholder za oblik markera"
+  },
+  "placeholder.rotate": {
+    "message": "Izaberite...",
+    "description": "Placeholder za unos rotacije"
+  },
+  "placeholder.subMarker": {
+    "message": "Izaberite...",
+    "description": "Placeholder za podmarker"
+  },
+  "button.model1": {
+    "message": "Tekst u video",
+    "description": "Tekst dugmeta za generisanje Hailuo videa"
+  },
+  "button.model2": {
+    "message": "Slika u video",
+    "description": "Tekst dugmeta za generisanje Hailuo videa"
+  },
+  "button.generate": {
+    "message": "Generiši",
+    "description": "Tekst dugmeta za generisanje Hailuo videa"
+  },
+  "button.extend": {
+    "message": "Proširi video",
+    "description": "Tekst dugmeta za proširenje videa"
+  },
+  "button.download": {
+    "message": "Preuzmi video",
+    "description": "Tekst dugmeta za preuzimanje videa"
+  },
+  "button.uploadStartImageUrl": {
+    "message": "Otpremi sliku",
+    "description": "Tekst dugmeta za otpremu QR koda"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Možete otpremiti najviše 5 slika",
+    "description": "Poruka o grešci kada je broj otpremljenih slika premašio ograničenje"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Uspešno ste otpremili slike",
+    "description": "Poruka o uspehu kada su slike uspešno otpremljene"
+  },
+  "message.uploadReferencesError": {
+    "message": "Nepotpun uspon slika, molimo pokušajte ponovo kasnije",
+    "description": "Poruka o grešci kada otpremanje slika nije uspelo"
+  },
+  "message.startingTask": {
+    "message": "Pokreće zadatak...",
+    "description": "Poruka koja se prikazuje kada započinje zadatak"
+  },
+  "message.startTaskSuccess": {
+    "message": "Uspešno pokrenut zadatak za generisanje",
+    "description": "Poruka o uspehu kada je zadatak uspešno pokrenut"
+  },
+  "message.startTaskFailed": {
+    "message": "Pokretanje zadatka nije uspelo, molimo kontaktirajte administratora",
+    "description": "Poruka o grešci kada pokretanje zadatka nije uspelo"
+  },
+  "message.usedUp": {
+    "message": "Vaši bodovi su potrošeni, molimo kupite više bodova kako biste nastavili korišćenje",
+    "description": "Poruka koja se prikazuje kada su bodovi potrošeni"
+  },
+  "message.generating": {
+    "message": "Generiše se...",
+    "description": "Poruka koja se prikazuje tokom generisanja slike"
+  },
+  "message.downloadVideo": {
+    "message": "Preuzmite ovaj video",
+    "description": "Poruka tokom generisanja slike"
+  },
+  "message.extendVideo": {
+    "message": "Nastavite generisanje ovog videa",
+    "description": "Poruka tokom generisanja slike"
+  },
+  "message.generateFailed": {
+    "message": "Generisanje slike nije uspelo",
+    "description": "Poruka koja se prikazuje kada generisanje slike nije uspelo"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Broj slika za prvi okvir koji se učitava premašuje ograničenje",
+    "description": "Greška kada broj slika za prvi okvir koji se učitava premašuje ograničenje"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Veličina učitanog fajla ne može preći 10MB!",
+    "description": "Greška kada veličina učitanog fajla ne može preći 10MB!"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Učitani fajl mora biti u MP4 formatu!",
+    "description": "Greška kada učitani fajl mora biti u MP4 formatu!"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Broj slika za prvi okvir koji se učitava premašuje ograničenje",
+    "description": "Greška kada broj slika za prvi okvir koji se učitava premašuje ograničenje"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Broj slika za završni okvir koji se učitava premašuje ograničenje",
+    "description": "Greška kada broj slika za završni okvir koji se učitava premašuje ograničenje"
+  },
+  "message.uploadStartImageError": {
+    "message": "Učitavanje slike za prvi okvir nije uspelo",
+    "description": "Greška kada učitavanje slike za prvi okvir nije uspelo"
+  },
+  "message.uploadVideoError": {
+    "message": "Učitavanje videa nije uspelo",
+    "description": "Greška kada učitavanje videa nije uspelo"
+  },
+  "message.uploadEndImageError": {
+    "message": "Učitavanje slike za završni okvir nije uspelo",
+    "description": "Greška kada učitavanje slike za završni okvir nije uspelo"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Učitavanje dokumenata nije uspelo",
+    "description": "Greška kada učitavanje dokumenata nije uspelo"
+  },
+  "message.noOperations": {
+    "message": "Nema dostupnih operacija",
+    "description": "Poruka kada nema dostupnih operacija"
+  },
+  "message.noTasks": {
+    "message": "Nema istorijskih zadataka, molimo kliknite levo za generisanje videa",
+    "description": "Poruka kada nema zadataka"
+  }
+}

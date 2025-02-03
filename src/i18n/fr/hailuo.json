@@ -1,0 +1,234 @@
+{
+  "name.taskId": {
+    "message": "ID de tâche",
+    "description": "ID de la tâche"
+  },
+  "name.type": {
+    "message": "Type",
+    "description": "Type de contenu du vidéo Hailuo à générer, comme 'lien', 'texte', etc."
+  },
+  "name.failure": {
+    "message": "Échec",
+    "description": "État d'échec de la tâche"
+  },
+  "name.failureReason": {
+    "message": "Raison de l'échec",
+    "description": "Raison de l'échec de la tâche"
+  },
+  "name.status": {
+    "message": "Statut",
+    "description": "Statut de la tâche"
+  },
+  "name.traceId": {
+    "message": "ID de suivi",
+    "description": "ID de suivi de la tâche"
+  },
+  "name.createdAt": {
+    "message": "Date de création",
+    "description": "Date et heure de création du vidéo Hailuo"
+  },
+  "name.imageUrl": {
+    "message": "Image de référence",
+    "description": "Image de référence pour le vidéo à générer"
+  },
+  "name.videoUrl": {
+    "message": "Vidéo personnalisée",
+    "description": "Vidéo personnalisée"
+  },
+  "name.prompt": {
+    "message": "Invite vidéo",
+    "description": "Invite pour l'entrée de contenu"
+  },
+  "name.ingredients": {
+    "message": "Vidéo à partir de plusieurs images",
+    "description": "Vidéo personnalisée avec élargissement"
+  },
+  "name.model": {
+    "message": "Modèle",
+    "description": "Version du modèle utilisée pour générer la vidéo"
+  },
+  "name.startImageUrl": {
+    "message": "Image de première frame",
+    "description": "Graine pour le code QR à générer"
+  },
+  "name.ingredientsModel": {
+    "message": "Modèle d'ingrédients",
+    "description": "Version du modèle utilisée pour générer la vidéo"
+  },
+  "name.hailuoBot": {
+    "message": "Hailuo Bot",
+    "description": "Nom du générateur de vidéo Hailuo"
+  },
+  "description.ingredients": {
+    "message": "Si vous souhaitez télécharger plusieurs images pour générer votre vidéo, veuillez activer ce bouton.",
+    "description": "Description du paramètre 'ingredients'"
+  },
+  "description.startImageUrl": {
+    "message": "URL de l'image de première frame, qui sera la première frame de la vidéo générée.",
+    "description": "Description du paramètre 'startImageUrl'"
+  },
+  "description.prompt": {
+    "message": "Mots d'invite pour générer le vidéo Hailuo",
+    "description": "Description du paramètre 'prompt'"
+  },
+  "status.pending": {
+    "message": "En attente",
+    "description": "État d'attente de la tâche"
+  },
+  "status.processing": {
+    "message": "En cours de traitement",
+    "description": "État d'attente de la tâche"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Veuillez sélectionner...",
+    "description": "Espace réservé pour l'entrée de bruit de remplissage"
+  },
+  "placeholder.select": {
+    "message": "Sélectionner",
+    "description": "Texte d'espace réservé dans le champ de sélection"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Veuillez sélectionner...",
+    "description": "Espace réservé pour le niveau de remplissage"
+  },
+  "placeholder.prompt": {
+    "message": "Entrez des mots d'invite pour le style de vidéo à générer, par exemple : colère",
+    "description": "Texte d'espace réservé dans le champ d'invite"
+  },
+  "placeholder.position": {
+    "message": "Veuillez sélectionner...",
+    "description": "Espace réservé pour l'entrée de position"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Veuillez sélectionner...",
+    "description": "Espace réservé pour l'entrée du rapport d'aspect"
+  },
+  "placeholder.preset": {
+    "message": "Veuillez sélectionner...",
+    "description": "Espace réservé pour l'entrée des préréglages"
+  },
+  "placeholder.markerShape": {
+    "message": "Veuillez sélectionner...",
+    "description": "Espace réservé pour l'entrée de la forme du marqueur"
+  },
+  "placeholder.rotate": {
+    "message": "Veuillez sélectionner...",
+    "description": "Espace réservé pour l'entrée de rotation"
+  },
+  "placeholder.subMarker": {
+    "message": "Veuillez sélectionner...",
+    "description": "Espace réservé pour l'entrée du sous-marqueur"
+  },
+  "button.model1": {
+    "message": "Vidéo à partir de texte",
+    "description": "Texte du bouton pour générer le vidéo Hailuo"
+  },
+  "button.model2": {
+    "message": "Vidéo à partir d'image",
+    "description": "Texte du bouton pour générer le vidéo Hailuo"
+  },
+  "button.generate": {
+    "message": "Générer",
+    "description": "Texte du bouton pour générer le vidéo Hailuo"
+  },
+  "button.extend": {
+    "message": "Étendre le vidéo",
+    "description": "Texte du bouton pour étendre la vidéo"
+  },
+  "button.download": {
+    "message": "Télécharger la vidéo",
+    "description": "Texte du bouton pour télécharger la vidéo"
+  },
+  "button.uploadStartImageUrl": {
+    "message": "Télécharger l'image",
+    "description": "Texte du bouton pour télécharger le code QR"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Vous pouvez télécharger jusqu'à 5 images",
+    "description": "Message d'erreur lorsque le nombre d'images téléchargées dépasse la limite"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Images téléchargées avec succès",
+    "description": "Message de succès lors du téléchargement réussi des images"
+  },
+  "message.uploadReferencesError": {
+    "message": "Échec du téléchargement des images, veuillez réessayer plus tard",
+    "description": "Message d'erreur lorsque le téléchargement des images échoue"
+  },
+  "message.startingTask": {
+    "message": "Démarrage de la tâche...",
+    "description": "Message au début de la tâche de dessin"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tâche de génération lancée avec succès",
+    "description": "Message de succès lors du démarrage réussi de la tâche"
+  },
+  "message.startTaskFailed": {
+    "message": "Échec du démarrage de la tâche, veuillez contacter l'administrateur",
+    "description": "Message d'erreur lors de l'échec du démarrage de la tâche de dessin"
+  },
+  "message.usedUp": {
+    "message": "Votre solde de points est épuisé, veuillez acheter plus de points pour continuer à utiliser",
+    "description": "Message lorsque le solde est épuisé"
+  },
+  "message.generating": {
+    "message": "Génération en cours...",
+    "description": "Message lors de la génération de l'image"
+  },
+  "message.downloadVideo": {
+    "message": "Télécharger cette vidéo",
+    "description": "Message lors de la génération de l'image"
+  },
+  "message.extendVideo": {
+    "message": "Continuer la génération de cette vidéo",
+    "description": "Message lors de la génération de l'image"
+  },
+  "message.generateFailed": {
+    "message": "Échec de la génération de l'image",
+    "description": "Message lors de l'échec de la génération d'image"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Le nombre d'images de la première image téléchargées dépasse la limite",
+    "description": "Erreur lorsque le nombre d'images de la première image téléchargées dépasse la limite"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "La taille du fichier téléchargé ne doit pas dépasser 10 Mo !",
+    "description": "Erreur lorsque la taille du fichier téléchargé dépasse 10 Mo !"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Le fichier téléchargé doit être au format MP4 !",
+    "description": "Erreur lorsque le fichier téléchargé n'est pas au format MP4 !"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Le nombre d'images de la première image téléchargées dépasse la limite",
+    "description": "Erreur lorsque le nombre d'images de la première image téléchargées dépasse la limite"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Le nombre d'images de la dernière image téléchargées dépasse la limite",
+    "description": "Erreur lorsque le nombre d'images de la dernière image téléchargées dépasse la limite"
+  },
+  "message.uploadStartImageError": {
+    "message": "Échec du téléchargement de la première image",
+    "description": "Erreur lors de l'échec du téléchargement de la première image"
+  },
+  "message.uploadVideoError": {
+    "message": "Échec du téléchargement de la vidéo",
+    "description": "Erreur lors de l'échec du téléchargement de la vidéo"
+  },
+  "message.uploadEndImageError": {
+    "message": "Échec du téléchargement de la dernière image",
+    "description": "Erreur lors de l'échec du téléchargement de la dernière image"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Échec du téléchargement du document",
+    "description": "Erreur lors de l'échec du téléchargement du document"
+  },
+  "message.noOperations": {
+    "message": "Aucune opération disponible",
+    "description": "Message lorsque aucune opération n'est disponible"
+  },
+  "message.noTasks": {
+    "message": "Aucune tâche historique, veuillez cliquer sur le bouton de génération de vidéo à gauche",
+    "description": "Message lorsque aucune tâche n'est présente"
+  }
+}

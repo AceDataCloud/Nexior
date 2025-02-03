@@ -1,0 +1,234 @@
+{
+  "name.taskId": {
+    "message": "タスク ID",
+    "description": "タスクの ID"
+  },
+  "name.type": {
+    "message": "タイプ",
+    "description": "生成するHailuo動画のコンテンツタイプ、例えば「リンク」や「テキスト」など"
+  },
+  "name.failure": {
+    "message": "失敗",
+    "description": "タスクの失敗状態"
+  },
+  "name.failureReason": {
+    "message": "失敗理由",
+    "description": "タスク失敗の理由"
+  },
+  "name.status": {
+    "message": "ステータス",
+    "description": "タスクのステータス"
+  },
+  "name.traceId": {
+    "message": "トレース ID",
+    "description": "タスクのトレース ID"
+  },
+  "name.createdAt": {
+    "message": "作成日時",
+    "description": "Hailuo動画生成の日付と時間"
+  },
+  "name.imageUrl": {
+    "message": "参照画像",
+    "description": "生成する動画の参照画像"
+  },
+  "name.videoUrl": {
+    "message": "カスタム動画",
+    "description": "カスタム動画"
+  },
+  "name.prompt": {
+    "message": "動画プロンプト",
+    "description": "コンテンツ入力のプロンプト"
+  },
+  "name.ingredients": {
+    "message": "複数画像作成動画",
+    "description": "カスタム拡張動画"
+  },
+  "name.model": {
+    "message": "モデル",
+    "description": "動画生成に使用するモデルのバージョン"
+  },
+  "name.startImageUrl": {
+    "message": "初フレーム画像",
+    "description": "生成するQRコードの種"
+  },
+  "name.ingredientsModel": {
+    "message": "成分モデル",
+    "description": "動画生成に使用するモデルのバージョン"
+  },
+  "name.hailuoBot": {
+    "message": "Hailuo Bot",
+    "description": "Hailuo動画生成器の名称"
+  },
+  "description.ingredients": {
+    "message": "複数の画像をアップロードして独自の動画を生成したい場合は、このボタンをオンにしてください。",
+    "description": "パラメーター 'ingredients' の説明"
+  },
+  "description.startImageUrl": {
+    "message": "初フレーム画像の URL、それが生成動画の最初のフレームになります。",
+    "description": "パラメーター 'startImageUrl' の説明"
+  },
+  "description.prompt": {
+    "message": "Hailuo動画生成のためのプロンプト",
+    "description": "パラメーター 'prompt' の説明"
+  },
+  "status.pending": {
+    "message": "保留中",
+    "description": "タスクの保留状態"
+  },
+  "status.processing": {
+    "message": "処理中",
+    "description": "タスクの処理中状態"
+  },
+  "placeholder.paddingNoise": {
+    "message": "選択してください...",
+    "description": "パディングノイズ入力のプレースホルダ"
+  },
+  "placeholder.select": {
+    "message": "選択",
+    "description": "選択フィールドのプレースホルダ"
+  },
+  "placeholder.paddingLevel": {
+    "message": "選択してください...",
+    "description": "パディングレベルのプレースホルダ"
+  },
+  "placeholder.prompt": {
+    "message": "生成する動画スタイルのプロンプトを入力してください、例えば：火気",
+    "description": "プロンプトフィールドのプレースホルダ"
+  },
+  "placeholder.position": {
+    "message": "選択してください...",
+    "description": "位置入力のプレースホルダ"
+  },
+  "placeholder.aspectRatio": {
+    "message": "選択してください...",
+    "description": "アスペクト比入力のプレースホルダ"
+  },
+  "placeholder.preset": {
+    "message": "選択してください...",
+    "description": "プリセット入力のプレースホルダ"
+  },
+  "placeholder.markerShape": {
+    "message": "選択してください...",
+    "description": "マーカー形状入力のプレースホルダ"
+  },
+  "placeholder.rotate": {
+    "message": "選択してください...",
+    "description": "回転入力のプレースホルダ"
+  },
+  "placeholder.subMarker": {
+    "message": "選択してください...",
+    "description": "サブマーカー入力のプレースホルダ"
+  },
+  "button.model1": {
+    "message": "文生成動画",
+    "description": "Hailuo動画生成のボタンテキスト"
+  },
+  "button.model2": {
+    "message": "画像生成動画",
+    "description": "Hailuo動画生成のボタンテキスト"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "Hailuo動画生成のボタンテキスト"
+  },
+  "button.extend": {
+    "message": "動画拡張",
+    "description": "動画拡張のボタンテキスト"
+  },
+  "button.download": {
+    "message": "動画をダウンロード",
+    "description": "動画ダウンロードのボタンテキスト"
+  },
+  "button.uploadStartImageUrl": {
+    "message": "画像をアップロード",
+    "description": "QRコードのアップロードボタンテキスト"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "最大で5枚の画像をアップロードできます",
+    "description": "アップロードされた画像の数が制限を超えたときのエラーメッセージ"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "画像のアップロードに成功しました",
+    "description": "画像が正常にアップロードされたときの成功メッセージ"
+  },
+  "message.uploadReferencesError": {
+    "message": "画像のアップロードに失敗しました、後でもう一度お試しください",
+    "description": "画像アップロードに失敗したときのエラーメッセージ"
+  },
+  "message.startingTask": {
+    "message": "タスクを開始しています...",
+    "description": "描画タスク開始時のメッセージ"
+  },
+  "message.startTaskSuccess": {
+    "message": "生成タスクを正常に開始しました",
+    "description": "タスクが正常に開始されたときの成功メッセージ"
+  },
+  "message.startTaskFailed": {
+    "message": "タスクの開始に失敗しました、管理者に連絡してください",
+    "description": "描画タスクの開始に失敗したときのエラーメッセージ"
+  },
+  "message.usedUp": {
+    "message": "ポイントが使い切られました、さらにポイントを購入してから続行してください",
+    "description": "ポイントが使い切られたときのメッセージ"
+  },
+  "message.generating": {
+    "message": "生成中...",
+    "description": "画像が生成されているときのメッセージ"
+  },
+  "message.downloadVideo": {
+    "message": "この動画をダウンロード",
+    "description": "画像が生成されているときのメッセージ"
+  },
+  "message.extendVideo": {
+    "message": "この動画の生成を続ける",
+    "description": "画像が生成されているときのメッセージ"
+  },
+  "message.generateFailed": {
+    "message": "画像生成に失敗しました",
+    "description": "画像生成に失敗したときのメッセージ"
+  },
+  "message.uploadVideoExceed": {
+    "message": "アップロードする最初のフレーム画像の数が制限を超えています",
+    "description": "アップロードする最初のフレーム画像の数が制限を超えています時のエラーメッセージ"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "アップロードファイルのサイズは 10MB を超えてはいけません！",
+    "description": "アップロードファイルのサイズは 10MB を超えてはいけません！時のエラーメッセージ"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "アップロードファイルは MP4 形式でなければなりません！",
+    "description": "アップロードファイルは MP4 形式でなければなりません！のエラーメッセージ"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "アップロードする最初のフレーム画像の数が制限を超えています",
+    "description": "アップロードする最初のフレーム画像の数が制限を超えています時のエラーメッセージ"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "アップロードする最終フレーム画像の数が制限を超えています",
+    "description": "アップロードする最初のフレーム画像の数が制限を超えています時のエラーメッセージ"
+  },
+  "message.uploadStartImageError": {
+    "message": "最初のフレーム画像のアップロードに失敗しました",
+    "description": "最初のフレーム画像のアップロードに失敗した時のエラーメッセージ"
+  },
+  "message.uploadVideoError": {
+    "message": "動画のアップロードに失敗しました",
+    "description": "最初のフレーム画像のアップロードに失敗した時のエラーメッセージ"
+  },
+  "message.uploadEndImageError": {
+    "message": "最終フレーム画像のアップロードに失敗しました",
+    "description": "最終フレーム画像のアップロードに失敗した時のエラーメッセージ"
+  },
+  "message.uploadDocumentsError": {
+    "message": "文書のアップロードに失敗しました",
+    "description": "文書のアップロードに失敗した時のエラーメッセージ"
+  },
+  "message.noOperations": {
+    "message": "利用可能な操作はありません",
+    "description": "利用可能な操作がない時のメッセージ"
+  },
+  "message.noTasks": {
+    "message": "履歴タスクはありません。左側のボタンをクリックして動画を生成してください",
+    "description": "タスクがない時のメッセージ"
+  }
+}
