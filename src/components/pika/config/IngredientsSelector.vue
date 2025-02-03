@@ -34,7 +34,8 @@ export default defineComponent({
         }
         this.$store.commit('pika/setConfig', {
           ...this.$store.state.pika?.config,
-          ingredients: val
+          ingredients: val,
+          model: '2.0'
         });
       }
     }
