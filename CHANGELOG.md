@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sat, 01 Feb 2025 05:33:24 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Feb 2025 04:39:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.13.1
+
+Mon, 03 Feb 2025 04:39:27 GMT
+
+### Patches
+
+- add pika (1348977728@qq.com)
 
 ## 2.13.0
 
