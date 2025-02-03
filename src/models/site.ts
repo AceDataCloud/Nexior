@@ -4,6 +4,7 @@ export interface ISiteFeatures {
   chatdoc?: any;
   qrart?: any;
   luma?: any;
+  pika?: any;
   headshots?: any;
   suno?: any;
   support?: any;

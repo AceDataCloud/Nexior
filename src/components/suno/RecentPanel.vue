@@ -23,6 +23,7 @@
     <div v-else-if="tasks?.items?.length && tasks?.items?.length > 0" class="tasks">
       <task-preview v-for="(task, taskId) in tasks?.items" :key="taskId" :model-value="task" class="preview" />
     </div>
+    {{ tasks?.items }}
     <p v-if="tasks?.items?.length === 0" class="description">
       {{ $t('suno.message.noTasks') }}
     </p>

@@ -32,7 +32,14 @@ class SunoOperator {
   }
 
   async tasks(
-    filter: { ids?: string[]; applicationId?: string; userId?: string; limit?: number; offset?: number },
+    filter: {
+      ids?: string[];
+      applicationId?: string;
+      userId?: string;
+      type?: string;
+      limit?: number;
+      offset?: number;
+    },
     options: { token: string }
   ): Promise<AxiosResponse<ISunoTasksResponse>> {
     return await axios.post(
@@ -47,6 +54,11 @@ class SunoOperator {
         ...(filter.userId
           ? {
               user_id: filter.userId
+            }
+          : {}),
+        ...(filter.type
+          ? {
+              type: filter.type
             }
           : {}),
         ...(filter.applicationId

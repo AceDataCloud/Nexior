@@ -7,6 +7,7 @@ import distribution from './distribution';
 import chatdoc from './chatdoc';
 import qrart from './qrart';
 import luma from './luma';
+import pika from './pika';
 import headshots from './headshots';
 import suno from './suno';
 import site from './site';
@@ -34,6 +35,7 @@ const routes = [
   chat,
   qrart,
   luma,
+  pika,
   headshots,
   suno,
   midjourney,
