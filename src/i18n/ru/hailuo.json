@@ -1,0 +1,234 @@
+{
+  "name.taskId": {
+    "message": "ID задачи",
+    "description": "ID задачи"
+  },
+  "name.type": {
+    "message": "Тип",
+    "description": "Тип контента Hailuo видео, например, 'ссылка', 'текст' и т.д."
+  },
+  "name.failure": {
+    "message": "Ошибка",
+    "description": "Состояние ошибки задачи"
+  },
+  "name.failureReason": {
+    "message": "Причина ошибки",
+    "description": "Причина, по которой задача не удалась"
+  },
+  "name.status": {
+    "message": "Статус",
+    "description": "Статус задачи"
+  },
+  "name.traceId": {
+    "message": "ID отслеживания",
+    "description": "ID отслеживания задачи"
+  },
+  "name.createdAt": {
+    "message": "Дата создания",
+    "description": "Дата и время создания Hailuo видео"
+  },
+  "name.imageUrl": {
+    "message": "Изображение для справки",
+    "description": "Изображение для справки, используемое для генерации видео"
+  },
+  "name.videoUrl": {
+    "message": "Пользовательское видео",
+    "description": "Пользовательское видео"
+  },
+  "name.prompt": {
+    "message": "Промт видео",
+    "description": "Подсказка для ввода содержания"
+  },
+  "name.ingredients": {
+    "message": "Создание видео из нескольких изображений",
+    "description": "Пользовательское расширенное видео"
+  },
+  "name.model": {
+    "message": "Модель",
+    "description": "Версия модели, используемая для генерации видео"
+  },
+  "name.startImageUrl": {
+    "message": "Изображение первого кадра",
+    "description": "Семя QR кода, которое будет сгенерировано в видео"
+  },
+  "name.ingredientsModel": {
+    "message": "Модель ингредиентов",
+    "description": "Версия модели, используемая для генерации видео"
+  },
+  "name.hailuoBot": {
+    "message": "Hailuo Bot",
+    "description": "Название генератора Hailuo видео"
+  },
+  "description.ingredients": {
+    "message": "Если вы хотите загрузить несколько изображений для генерации своего видео, нажмите эту кнопку.",
+    "description": "Описание параметра 'ingredients'"
+  },
+  "description.startImageUrl": {
+    "message": "URL изображения первого кадра, который станет первым кадром сгенерированного видео.",
+    "description": "Описание параметра 'startImageUrl'"
+  },
+  "description.prompt": {
+    "message": "Подсказка для генерации Hailuo видео",
+    "description": "Описание параметра 'prompt'"
+  },
+  "status.pending": {
+    "message": "Ожидание",
+    "description": "Состояние ожидания задачи"
+  },
+  "status.processing": {
+    "message": "Обработка",
+    "description": "Состояние обработки задачи"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода шума заполнения"
+  },
+  "placeholder.select": {
+    "message": "Выбрать",
+    "description": "Заполнитель для поля выбора"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для уровня заполнения"
+  },
+  "placeholder.prompt": {
+    "message": "Введите подсказку для стиля генерируемого видео, например: огонь",
+    "description": "Заполнитель для поля подсказки"
+  },
+  "placeholder.position": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода позиции"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода соотношения сторон"
+  },
+  "placeholder.preset": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода предустановки"
+  },
+  "placeholder.markerShape": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода формы маркера"
+  },
+  "placeholder.rotate": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода вращения"
+  },
+  "placeholder.subMarker": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода подмаркера"
+  },
+  "button.model1": {
+    "message": "Генерация видео из текста",
+    "description": "Текст кнопки для генерации Hailuo видео"
+  },
+  "button.model2": {
+    "message": "Генерация видео из изображения",
+    "description": "Текст кнопки для генерации Hailuo видео"
+  },
+  "button.generate": {
+    "message": "Сгенерировать",
+    "description": "Текст кнопки для генерации Hailuo видео"
+  },
+  "button.extend": {
+    "message": "Расширить видео",
+    "description": "Текст кнопки для расширения видео"
+  },
+  "button.download": {
+    "message": "Скачать видео",
+    "description": "Текст кнопки для скачивания видео"
+  },
+  "button.uploadStartImageUrl": {
+    "message": "Загрузить изображение",
+    "description": "Текст кнопки для загрузки QR кода"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Можно загрузить не более 5 изображений",
+    "description": "Сообщение об ошибке, когда количество загруженных изображений превышает лимит"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Изображение успешно загружено",
+    "description": "Сообщение о успешной загрузке изображения"
+  },
+  "message.uploadReferencesError": {
+    "message": "Ошибка загрузки изображения, пожалуйста, попробуйте позже",
+    "description": "Сообщение об ошибке при неудачной загрузке изображения"
+  },
+  "message.startingTask": {
+    "message": "Запуск задачи...",
+    "description": "Сообщение при начале задания"
+  },
+  "message.startTaskSuccess": {
+    "message": "Задача успешно инициирована",
+    "description": "Сообщение об успешном запуске задачи"
+  },
+  "message.startTaskFailed": {
+    "message": "Не удалось инициировать задачу, пожалуйста, свяжитесь с администратором",
+    "description": "Сообщение об ошибке при неудачном запуске задания"
+  },
+  "message.usedUp": {
+    "message": "Ваши баллы исчерпаны, пожалуйста, купите больше баллов для продолжения использования",
+    "description": "Сообщение при исчерпании"
+  },
+  "message.generating": {
+    "message": "Генерация...",
+    "description": "Сообщение при генерации изображения"
+  },
+  "message.downloadVideo": {
+    "message": "Скачать это видео",
+    "description": "Сообщение при генерации изображения"
+  },
+  "message.extendVideo": {
+    "message": "Продолжить генерацию этого видео",
+    "description": "Сообщение при генерации изображения"
+  },
+  "message.generateFailed": {
+    "message": "Создание изображения не удалось",
+    "description": "Сообщение при неудачной генерации изображения"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Количество загружаемых изображений первых кадров превышает лимит",
+    "description": "Ошибка, когда количество загружаемых изображений первых кадров превышает лимит"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Размер загружаемого файла не может превышать 10 МБ!",
+    "description": "Ошибка, когда размер загружаемого файла не может превышать 10 МБ!"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Загружаемый файл должен быть в формате MP4!",
+    "description": "Ошибка, когда загружаемый файл должен быть в формате MP4!"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Количество загружаемых изображений первых кадров превышает лимит",
+    "description": "Ошибка, когда количество загружаемых изображений первых кадров превышает лимит"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Количество загружаемых изображений последних кадров превышает лимит",
+    "description": "Ошибка, когда количество загружаемых изображений последних кадров превышает лимит"
+  },
+  "message.uploadStartImageError": {
+    "message": "Ошибка загрузки изображения первых кадров",
+    "description": "Ошибка, когда произошла ошибка при загрузке изображения первых кадров"
+  },
+  "message.uploadVideoError": {
+    "message": "Ошибка загрузки видео",
+    "description": "Ошибка, когда произошла ошибка при загрузке видео"
+  },
+  "message.uploadEndImageError": {
+    "message": "Ошибка загрузки изображения последних кадров",
+    "description": "Ошибка, когда произошла ошибка при загрузке изображения последних кадров"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Ошибка загрузки документа",
+    "description": "Ошибка, когда произошла ошибка при загрузке документа"
+  },
+  "message.noOperations": {
+    "message": "Нет доступных операций",
+    "description": "Сообщение, когда нет доступных операций"
+  },
+  "message.noTasks": {
+    "message": "Нет исторических задач, пожалуйста, нажмите на кнопку генерации видео слева",
+    "description": "Сообщение, когда нет задач"
+  }
+}

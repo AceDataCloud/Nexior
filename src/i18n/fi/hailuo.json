@@ -1,0 +1,234 @@
+{
+  "name.taskId": {
+    "message": "Tehtävän ID",
+    "description": "Tehtävän ID"
+  },
+  "name.type": {
+    "message": "Tyyppi",
+    "description": "Hailuo-videon sisällön tyyppi, kuten 'linkki', 'teksti' jne."
+  },
+  "name.failure": {
+    "message": "Epätäydellinen",
+    "description": "Tehtävän epäonnistumisen tila"
+  },
+  "name.failureReason": {
+    "message": "Epäonnistumisen syy",
+    "description": "Tehtävän epäonnistumisen syy"
+  },
+  "name.status": {
+    "message": "Tila",
+    "description": "Tehtävän tila"
+  },
+  "name.traceId": {
+    "message": "Seurantatunnus",
+    "description": "Tehtävän seurantatunnus"
+  },
+  "name.createdAt": {
+    "message": "Luotu",
+    "description": "Hailuo-videon luontipäivämäärä ja -aika"
+  },
+  "name.imageUrl": {
+    "message": "Viittauskuva",
+    "description": "Viittauskuva, jota käytetään videon luomiseen"
+  },
+  "name.videoUrl": {
+    "message": "Mukautettu video",
+    "description": "Mukautettu video"
+  },
+  "name.prompt": {
+    "message": "Videon ohje",
+    "description": "Sisältösyötteen ohje"
+  },
+  "name.ingredients": {
+    "message": "Monikuvavideo",
+    "description": "Mukautettu laajennettu video"
+  },
+  "name.model": {
+    "message": "Malli",
+    "description": "Videon luomisessa käytettävä malliversio"
+  },
+  "name.startImageUrl": {
+    "message": "Aloituskuva",
+    "description": "Generoitavan QR-koodin alkuperä"
+  },
+  "name.ingredientsModel": {
+    "message": "Ainesosamalli",
+    "description": "Videon luomisessa käytettävä malliversio"
+  },
+  "name.hailuoBot": {
+    "message": "Hailuo Bot",
+    "description": "Hailuo-videogeneraattorin nimi"
+  },
+  "description.ingredients": {
+    "message": "Jos haluat ladata useita kuvia luodaksesi oman videosi, avaa tämä painike.",
+    "description": "Parametrin 'ingredients' kuvaus"
+  },
+  "description.startImageUrl": {
+    "message": "Aloituskuvan URL, joka tulee olemaan luodun videon ensimmäinen kuva.",
+    "description": "Parametrin 'startImageUrl' kuvaus"
+  },
+  "description.prompt": {
+    "message": "Hailuo-videon luomiseen käytettävät hakusanat",
+    "description": "Parametrin 'prompt' kuvaus"
+  },
+  "status.pending": {
+    "message": "Odottaa",
+    "description": "Tehtävän odotustila"
+  },
+  "status.processing": {
+    "message": "Käsittelyssä",
+    "description": "Tehtävän käsittelytila"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Valitse...",
+    "description": "Täyteäänin syötteen paikka"
+  },
+  "placeholder.select": {
+    "message": "Valitse",
+    "description": "Valintakentän paikka"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Valitse...",
+    "description": "Täytemelun paikka"
+  },
+  "placeholder.prompt": {
+    "message": "Syötä videon tyylin hakusanat, esimerkiksi: tulinen",
+    "description": "Hakukentän paikka"
+  },
+  "placeholder.position": {
+    "message": "Valitse...",
+    "description": "Sijaintisyötteen paikka"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Valitse...",
+    "description": "Leveys-korkeus-suhteen syötteen paikka"
+  },
+  "placeholder.preset": {
+    "message": "Valitse...",
+    "description": "Esiasetuksen syötteen paikka"
+  },
+  "placeholder.markerShape": {
+    "message": "Valitse...",
+    "description": "Merkinnän muodon syötteen paikka"
+  },
+  "placeholder.rotate": {
+    "message": "Valitse...",
+    "description": "Kääntösyötteen paikka"
+  },
+  "placeholder.subMarker": {
+    "message": "Valitse...",
+    "description": "Alamerkin syötteen paikka"
+  },
+  "button.model1": {
+    "message": "Tekstistä video",
+    "description": "Hailuo-videon luomispainikkeen teksti"
+  },
+  "button.model2": {
+    "message": "Kuvista video",
+    "description": "Hailuo-videon luomispainikkeen teksti"
+  },
+  "button.generate": {
+    "message": "Luo",
+    "description": "Hailuo-videon luomispainikkeen teksti"
+  },
+  "button.extend": {
+    "message": "Laajenna videota",
+    "description": "Videon laajennuspainikkeen teksti"
+  },
+  "button.download": {
+    "message": "Lataa video",
+    "description": "Videon latauspainikkeen teksti"
+  },
+  "button.uploadStartImageUrl": {
+    "message": "Lataa kuva",
+    "description": "QR-koodin latauspainikkeen teksti"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Voit ladata enintään 5 kuvaa",
+    "description": "Virhesanoma, kun ladattujen kuvien määrä ylittää rajan"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Kuvien lataaminen onnistui",
+    "description": "Onnistumisanoma, kun kuvien lataaminen onnistuu"
+  },
+  "message.uploadReferencesError": {
+    "message": "Kuvien lataaminen epäonnistui, yritä myöhemmin uudelleen",
+    "description": "Virhesanoma kuvan lataamisen epäonnistuessa"
+  },
+  "message.startingTask": {
+    "message": "Aloitetaan tehtävää...",
+    "description": "Viesti, kun piirustustehtävä aloitetaan"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tehtävä aloitettiin onnistuneesti",
+    "description": "Onnistumisanoma, kun tehtävä on käynnistetty"
+  },
+  "message.startTaskFailed": {
+    "message": "Tehtävän käynnistäminen epäonnistui, ota yhteyttä ylläpitoon",
+    "description": "Virhesanoma piirustustehtävän käynnistämisen epäonnistuessa"
+  },
+  "message.usedUp": {
+    "message": "Pisteesi on käytetty loppuun, osta lisää pisteitä jatkaaksesi käyttöä",
+    "description": "Viesti, kun pisteet on käytetty loppuun"
+  },
+  "message.generating": {
+    "message": "Generoidaan...",
+    "description": "Viesti, kun kuvaa luodaan"
+  },
+  "message.downloadVideo": {
+    "message": "Lataa tämä video",
+    "description": "Viesti, kun kuvaa luodaan"
+  },
+  "message.extendVideo": {
+    "message": "Jatka tämän videon luomista",
+    "description": "Viesti, kun kuvaa luodaan"
+  },
+  "message.generateFailed": {
+    "message": "Kuvan luominen epäonnistui",
+    "description": "Viesti, kun kuvan luominen epäonnistuu"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Lähetyksen ensikuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun lähetyksen ensikuvien määrä ylittää rajan"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Lähetettävän tiedoston koko ei saa ylittää 10MB!",
+    "description": "Virheilmoitus, kun lähettävä tiedoston koko ei saa ylittää 10MB!"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Lähetettävän tiedoston on oltava MP4-muotoinen!",
+    "description": "Virheilmoitus, kun lähetettävän tiedoston on oltava MP4-muotoinen!"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Lähetyksen ensikuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun lähetyksen ensikuvien määrä ylittää rajan"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Lähetyksen viimeisten kuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun lähetyksen viimeisten kuvien määrä ylittää rajan"
+  },
+  "message.uploadStartImageError": {
+    "message": "Lähetyksen ensikuvien lähetys epäonnistui",
+    "description": "Virheilmoitus, kun lähetyksen ensikuvien lähetys epäonnistuu"
+  },
+  "message.uploadVideoError": {
+    "message": "Videon lähetys epäonnistui",
+    "description": "Virheilmoitus, kun videon lähetys epäonnistuu"
+  },
+  "message.uploadEndImageError": {
+    "message": "Lähetyksen viimeisten kuvien lähetys epäonnistui",
+    "description": "Virheilmoitus, kun lähetyksen viimeisten kuvien lähetys epäonnistuu"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Asiakirjan lähetys epäonnistui",
+    "description": "Virheilmoitus, kun asiakirjan lähetys epäonnistuu"
+  },
+  "message.noOperations": {
+    "message": "Ei saatavilla olevia toimintoja",
+    "description": "Viesti, kun ei ole saatavilla olevia toimintoja"
+  },
+  "message.noTasks": {
+    "message": "Ei historian tehtäviä, napsauta vasemmalla videoiden tuottamiseksi",
+    "description": "Viesti, kun ei ole tehtäviä"
+  }
+}

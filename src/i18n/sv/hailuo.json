@@ -1,0 +1,234 @@
+{
+  "name.taskId": {
+    "message": "Uppgift ID",
+    "description": "Uppgiftens ID"
+  },
+  "name.type": {
+    "message": "Typ",
+    "description": "Innehålletypen för den Hailuo-video som ska genereras, som 'länk', 'text', etc."
+  },
+  "name.failure": {
+    "message": "Misslyckande",
+    "description": "Uppgiftens misslyckandestatus"
+  },
+  "name.failureReason": {
+    "message": "Orsak till misslyckande",
+    "description": "Orsaken till att uppgiften misslyckades"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Uppgiftens status"
+  },
+  "name.traceId": {
+    "message": "Spårnings-ID",
+    "description": "Uppgiftens spårnings-ID"
+  },
+  "name.createdAt": {
+    "message": "Skapat den",
+    "description": "Datum och tid för att generera Hailuo-videon"
+  },
+  "name.imageUrl": {
+    "message": "Referensbild",
+    "description": "Referensbilden för videon som ska genereras"
+  },
+  "name.videoUrl": {
+    "message": "Anpassad video",
+    "description": "Anpassad video"
+  },
+  "name.prompt": {
+    "message": "Videoprompt",
+    "description": "Prompten för innehållsinmatning"
+  },
+  "name.ingredients": {
+    "message": "Flera bilder för att skapa video",
+    "description": "Anpassad utökad video"
+  },
+  "name.model": {
+    "message": "Modell",
+    "description": "Modellversionen som används för att generera videon"
+  },
+  "name.startImageUrl": {
+    "message": "Första bild",
+    "description": "Fröet för den QR-kod som ska genereras"
+  },
+  "name.ingredientsModel": {
+    "message": "Innehållsmodell",
+    "description": "Modellversionen som används för att generera videon"
+  },
+  "name.hailuoBot": {
+    "message": "Hailuo Bot",
+    "description": "Namnet på Hailuo-videogeneratorn"
+  },
+  "description.ingredients": {
+    "message": "Om du vill ladda upp flera bilder för att generera din egen video, vänligen aktivera denna knapp.",
+    "description": "Beskrivning av parametern 'ingredients'"
+  },
+  "description.startImageUrl": {
+    "message": "URL:en för första bilden, som blir den första ramen i den genererade videon.",
+    "description": "Beskrivning av parametern 'startImageUrl'"
+  },
+  "description.prompt": {
+    "message": "Promptord för att generera Hailuo-videon",
+    "description": "Beskrivning av parametern 'prompt'"
+  },
+  "status.pending": {
+    "message": "I väntan",
+    "description": "Uppgiftens väntandestatus"
+  },
+  "status.processing": {
+    "message": "Behandlas",
+    "description": "Uppgiftens behandlingsstatus"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för inmatning av utfyllnadsbrus"
+  },
+  "placeholder.select": {
+    "message": "Välj",
+    "description": "Platshållartext i urvalsfältet"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för utfyllnadsgrad"
+  },
+  "placeholder.prompt": {
+    "message": "Ange promptord för den stil av video som ska genereras, t.ex.: ilska",
+    "description": "Platshållartext i promptfältet"
+  },
+  "placeholder.position": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för inmatning av position"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för inmatning av bildförhållande"
+  },
+  "placeholder.preset": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för inmatning av förinställning"
+  },
+  "placeholder.markerShape": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för inmatning av markörform"
+  },
+  "placeholder.rotate": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för inmatning av rotation"
+  },
+  "placeholder.subMarker": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för inmatning av under-markör"
+  },
+  "button.model1": {
+    "message": "Text till video",
+    "description": "Knapptext för att generera Hailuo-video"
+  },
+  "button.model2": {
+    "message": "Bild till video",
+    "description": "Knapptext för att generera Hailuo-video"
+  },
+  "button.generate": {
+    "message": "Generera",
+    "description": "Knapptext för att generera Hailuo-video"
+  },
+  "button.extend": {
+    "message": "Utvidga video",
+    "description": "Knapptext för att utvidga video"
+  },
+  "button.download": {
+    "message": "Ladda ner video",
+    "description": "Knapptext för att ladda ner video"
+  },
+  "button.uploadStartImageUrl": {
+    "message": "Ladda upp bild",
+    "description": "Knapptext för att ladda upp QR-kod"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Maximalt 5 bilder kan laddas upp",
+    "description": "Felmeddelande när antalet uppladdade bilder överskrider gränsen"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Bilder laddades upp framgångsrikt",
+    "description": "Framgångsmeddelande när bilder laddas upp framgångsrikt"
+  },
+  "message.uploadReferencesError": {
+    "message": "Det gick inte att ladda upp bilden, vänligen försök igen senare",
+    "description": "Felmeddelande vid misslyckad bilduppladdning"
+  },
+  "message.startingTask": {
+    "message": "Startar uppgiften...",
+    "description": "Meddelande när ritningsuppgiften startar"
+  },
+  "message.startTaskSuccess": {
+    "message": "Uppgiften har startats framgångsrikt",
+    "description": "Framgångsmeddelande när uppgiften startas framgångsrikt"
+  },
+  "message.startTaskFailed": {
+    "message": "Misslyckades med att starta uppgiften, vänligen kontakta administratören",
+    "description": "Felmeddelande vid misslyckande av att starta ritningsuppgiften"
+  },
+  "message.usedUp": {
+    "message": "Dina poäng är slut, vänligen köp fler poäng för att fortsätta använda",
+    "description": "Meddelande när poängen har tagit slut"
+  },
+  "message.generating": {
+    "message": "Genererar...",
+    "description": "Meddelande när bilden genereras"
+  },
+  "message.downloadVideo": {
+    "message": "Ladda ner denna video",
+    "description": "Meddelande när bilden genereras"
+  },
+  "message.extendVideo": {
+    "message": "Fortsätt generera denna video",
+    "description": "Meddelande när bilden genereras"
+  },
+  "message.generateFailed": {
+    "message": "Misslyckades med att generera bilden",
+    "description": "Meddelande vid misslyckande av bildgenerering"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Antalet uppladdade första bildbilder överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade första bildbilder överskrider gränsen"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Uppladdningsfilens storlek får inte överstiga 10 MB!",
+    "description": "Felmeddelande när uppladdningsfilens storlek inte får överstiga 10 MB!"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Uppladdad fil måste vara i MP4-format!",
+    "description": "Felmeddelande när den uppladdade filen måste vara i MP4-format!"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Antalet uppladdade första bildbilder överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade första bildbilder överskrider gränsen"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Antalet uppladdade sista bildbilder överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade sista bildbilder överskrider gränsen"
+  },
+  "message.uploadStartImageError": {
+    "message": "Misslyckades med att ladda upp första bildbild",
+    "description": "Felmeddelande när uppladdningen av första bildbilden misslyckas"
+  },
+  "message.uploadVideoError": {
+    "message": "Misslyckades med att ladda upp video",
+    "description": "Felmeddelande när uppladdningen av video misslyckas"
+  },
+  "message.uploadEndImageError": {
+    "message": "Misslyckades med att ladda upp sista bildbild",
+    "description": "Felmeddelande när uppladdningen av sista bildbilden misslyckas"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Misslyckades med att ladda upp dokument",
+    "description": "Felmeddelande när uppladdningen av dokument misslyckas"
+  },
+  "message.noOperations": {
+    "message": "Inga tillgängliga åtgärder",
+    "description": "Meddelande när det inte finns några tillgängliga åtgärder"
+  },
+  "message.noTasks": {
+    "message": "Inga historiska uppgifter, vänligen klicka på \"Skapa video\" till vänster",
+    "description": "Meddelande när det inte finns några uppgifter"
+  }
+}

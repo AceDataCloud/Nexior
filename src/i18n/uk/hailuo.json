@@ -1,0 +1,234 @@
+{
+  "name.taskId": {
+    "message": "ID завдання",
+    "description": "ID завдання"
+  },
+  "name.type": {
+    "message": "Тип",
+    "description": "Тип контенту Hailuo відео, наприклад, 'посилання', 'текст' тощо"
+  },
+  "name.failure": {
+    "message": "Збій",
+    "description": "Стан збою завдання"
+  },
+  "name.failureReason": {
+    "message": "Причина збою",
+    "description": "Причина збою завдання"
+  },
+  "name.status": {
+    "message": "Статус",
+    "description": "Статус завдання"
+  },
+  "name.traceId": {
+    "message": "ID відстеження",
+    "description": "ID відстеження завдання"
+  },
+  "name.createdAt": {
+    "message": "Час створення",
+    "description": "Дата та час створення Hailuo відео"
+  },
+  "name.imageUrl": {
+    "message": "Зразкове зображення",
+    "description": "Зразкове зображення для відео"
+  },
+  "name.videoUrl": {
+    "message": "Користувацьке відео",
+    "description": "Користувацьке відео"
+  },
+  "name.prompt": {
+    "message": "Підказка відео",
+    "description": "Підказка для введення контенту"
+  },
+  "name.ingredients": {
+    "message": "Створення відео з декількома зображеннями",
+    "description": "Користувацьке розширене відео"
+  },
+  "name.model": {
+    "message": "Модель",
+    "description": "Версія моделі, яка використовується для створення відео"
+  },
+  "name.startImageUrl": {
+    "message": "Зображення першого кадру",
+    "description": "Насіння QR-коду, який буде створено"
+  },
+  "name.ingredientsModel": {
+    "message": "Інгредієнтна модель",
+    "description": "Версія моделі, яка використовується для створення відео"
+  },
+  "name.hailuoBot": {
+    "message": "Hailuo Bot",
+    "description": "Назва генератора Hailuo відео"
+  },
+  "description.ingredients": {
+    "message": "Якщо ви хочете завантажити кілька зображень для створення свого відео, будь ласка, активуйте цю кнопку.",
+    "description": "Опис параметра 'ingredients'"
+  },
+  "description.startImageUrl": {
+    "message": "URL зображення першого кадру, яке буде першим кадром відео.",
+    "description": "Опис параметра 'startImageUrl'"
+  },
+  "description.prompt": {
+    "message": "Підказка для створення Hailuo відео",
+    "description": "Опис параметра 'prompt'"
+  },
+  "status.pending": {
+    "message": "В очікуванні",
+    "description": "Стан очікування завдання"
+  },
+  "status.processing": {
+    "message": "В обробці",
+    "description": "Стан обробки завдання"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Будь ласка, виберіть...",
+    "description": "Заповнення шумом"
+  },
+  "placeholder.select": {
+    "message": "Вибрати",
+    "description": "Заповнювальний текст у полі вибору"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Будь ласка, виберіть...",
+    "description": "Заповнення рівня"
+  },
+  "placeholder.prompt": {
+    "message": "Введіть підказку для стилю відео, наприклад: гнів",
+    "description": "Заповнювальний текст у полі підказки"
+  },
+  "placeholder.position": {
+    "message": "Будь ласка, виберіть...",
+    "description": "Заповнення для позиції"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Будь ласка, виберіть...",
+    "description": "Заповнення для співвідношення сторін"
+  },
+  "placeholder.preset": {
+    "message": "Будь ласка, виберіть...",
+    "description": "Заповнення для пресету"
+  },
+  "placeholder.markerShape": {
+    "message": "Будь ласка, виберіть...",
+    "description": "Заповнення для форми маркера"
+  },
+  "placeholder.rotate": {
+    "message": "Будь ласка, виберіть...",
+    "description": "Заповнення для обертання"
+  },
+  "placeholder.subMarker": {
+    "message": "Будь ласка, виберіть...",
+    "description": "Заповнення для підмаркера"
+  },
+  "button.model1": {
+    "message": "Відео з тексту",
+    "description": "Текст кнопки для створення Hailuo відео"
+  },
+  "button.model2": {
+    "message": "Відео з зображень",
+    "description": "Текст кнопки для створення Hailuo відео"
+  },
+  "button.generate": {
+    "message": "Генерувати",
+    "description": "Текст кнопки для створення Hailuo відео"
+  },
+  "button.extend": {
+    "message": "Розширити відео",
+    "description": "Текст кнопки для розширення відео"
+  },
+  "button.download": {
+    "message": "Завантажити відео",
+    "description": "Текст кнопки для завантаження відео"
+  },
+  "button.uploadStartImageUrl": {
+    "message": "Завантажити зображення",
+    "description": "Текст кнопки для завантаження QR-коду"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Можна завантажити максимум 5 зображень",
+    "description": "Повідомлення про помилку, коли кількість завантажених зображень перевищує обмеження"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Зображення успішно завантажено",
+    "description": "Повідомлення про успіх при успішному завантаженні зображень"
+  },
+  "message.uploadReferencesError": {
+    "message": "Не вдалося завантажити зображення, будь ласка, спробуйте знову пізніше",
+    "description": "Повідомлення про помилку, коли завантаження зображень не вдалося"
+  },
+  "message.startingTask": {
+    "message": "Запуск завдання...",
+    "description": "Повідомлення про початок завдання малювання"
+  },
+  "message.startTaskSuccess": {
+    "message": "Завдання успішно розпочато",
+    "description": "Повідомлення про успіх при успішному запуску завдання"
+  },
+  "message.startTaskFailed": {
+    "message": "Не вдалося запустити завдання, будь ласка, зверніться до адміністратора",
+    "description": "Повідомлення про помилку при невдачі запуску завдання малювання"
+  },
+  "message.usedUp": {
+    "message": "Ваші бали вичерпані, будь ласка, купіть більше балів, щоб продовжити використання",
+    "description": "Повідомлення при вичерпанні балів"
+  },
+  "message.generating": {
+    "message": "Генерація триває...",
+    "description": "Повідомлення під час генерації зображення"
+  },
+  "message.downloadVideo": {
+    "message": "Завантажити це відео",
+    "description": "Повідомлення під час генерації зображення"
+  },
+  "message.extendVideo": {
+    "message": "Продовжити генерацію цього відео",
+    "description": "Повідомлення під час генерації зображення"
+  },
+  "message.generateFailed": {
+    "message": "Не вдалося згенерувати зображення",
+    "description": "Повідомлення про невдачу при створенні зображення"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Кількість завантажених зображень першого кадру перевищує обмеження",
+    "description": "Помилка, коли кількість завантажених зображень першого кадру перевищує обмеження"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Розмір завантажуваного файлу не може перевищувати 10 МБ!",
+    "description": "Помилка, коли розмір завантажуваного файлу не може перевищувати 10 МБ!"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Завантажений файл повинен бути у форматі MP4!",
+    "description": "Помилка, коли завантажений файл повинен бути у форматі MP4!"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Кількість завантажених зображень першого кадру перевищує обмеження",
+    "description": "Помилка, коли кількість завантажених зображень першого кадру перевищує обмеження"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Кількість завантажених зображень останнього кадру перевищує обмеження",
+    "description": "Помилка, коли кількість завантажених зображень останнього кадру перевищує обмеження"
+  },
+  "message.uploadStartImageError": {
+    "message": "Не вдалося завантажити зображення першого кадру",
+    "description": "Помилка, коли не вдалося завантажити зображення першого кадру"
+  },
+  "message.uploadVideoError": {
+    "message": "Не вдалося завантажити відео",
+    "description": "Помилка, коли не вдалося завантажити відео"
+  },
+  "message.uploadEndImageError": {
+    "message": "Не вдалося завантажити зображення останнього кадру",
+    "description": "Помилка, коли не вдалося завантажити зображення останнього кадру"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Не вдалося завантажити документ",
+    "description": "Помилка, коли не вдалося завантажити документ"
+  },
+  "message.noOperations": {
+    "message": "Немає доступних операцій",
+    "description": "Повідомлення, коли немає доступних операцій"
+  },
+  "message.noTasks": {
+    "message": "Немає історичних завдань, будь ласка, натисніть зліва для створення відео",
+    "description": "Повідомлення, коли немає завдань"
+  }
+}

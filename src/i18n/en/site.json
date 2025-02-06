@@ -67,8 +67,12 @@
     "message": "Pika",
     "description": "Displayed as the title in the editing box"
   },
+  "field.featuresHailuo": {
+    "message": "Hailuo",
+    "description": "Displayed as the title in the editing box"
+  },
   "field.featuresHeadshots": {
-    "message": "AI Headshots",
+    "message": "AI Profile Photos",
     "description": "Displayed as the title in the editing box"
   },
   "field.featuresSuno": {
@@ -80,7 +84,7 @@
     "description": "Displayed as the title in the editing box"
   },
   "field.featuresI18n": {
-    "message": "Multilingual Support",
+    "message": "Multi-language Support",
     "description": "Displayed as the title in the editing box"
   },
   "title.basicConfig": {
@@ -173,106 +177,110 @@
   },
   "message.uploadImageExceed": {
     "message": "Uploaded image exceeds limit",
-    "description": "Prompt for exceeding image upload limit"
+    "description": "Prompt indicating the uploaded image exceeds limit"
   },
   "message.uploadImageError": {
     "message": "Error uploading image",
-    "description": "Prompt for image upload error"
+    "description": "Prompt indicating the error in uploading image"
   },
   "message.editLogoTip": {
-    "message": "Suggested size: 200*60px",
-    "description": "Guidance language for image upload"
+    "message": "Recommended size: 200*60px",
+    "description": "Language for upload image prompt"
   },
   "message.editQRTip": {
-    "message": "Suggested size: 200*200px",
-    "description": "Guidance language for image upload"
+    "message": "Recommended size: 200*200px",
+    "description": "Upload image prompt language"
   },
   "message.editFaviconTip": {
     "message": "Recommended size: 32*32px",
-    "description": "Tip language for uploading images"
+    "description": "Upload image prompt language"
   },
   "message.editUrl": {
     "message": "Please enter the link",
-    "description": "Prompt for entering a link"
+    "description": "Prompt to enter the link"
   },
   "message.atLeastOneAdmin": {
-    "message": "At least one admin must be retained",
-    "description": "Tip about retaining at least one admin"
+    "message": "At least one administrator must be retained",
+    "description": "Prompt about retaining at least one administrator"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "The user ID of the default inviter. If the distribution link does not carry the inviter_id parameter, this user ID will be used as the inviter by default.",
-    "description": "Tip for the default inviter ID"
+    "message": "The user ID of the default inviter; if the distribution link does not carry the inviter_id parameter, this user ID will be used as the inviter by default.",
+    "description": "Prompt for the default inviter ID"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "The user ID of the forced inviter. If this ID is set, this user ID will be used as the inviter regardless of whether the distribution link carries the inviter_id parameter.",
-    "description": "Tip for the forced inviter ID"
+    "message": "The user ID of the forced inviter; if this ID is set, this user ID will be used as the inviter regardless of whether the distribution link carries the inviter_id parameter.",
+    "description": "Prompt for the forced inviter ID"
   },
   "message.originTip": {
-    "message": "Site domain name, the site configuration is bound to the domain name and cannot be changed.",
-    "description": "Tip for the site domain name"
+    "message": "Site domain name; site configuration is bound to the domain name, and the site domain name cannot be changed.",
+    "description": "Prompt for the site domain name"
   },
   "message.titleTip": {
-    "message": "Site title, displayed in the browser tab.",
-    "description": "Tip for the site title"
+    "message": "Site title displayed in the browser tab.",
+    "description": "Prompt for the site title"
   },
   "message.descriptionTip": {
-    "message": "Site description, located in the site metadata, used for site SEO optimization.",
-    "description": "Tip for the site description"
+    "message": "Site description located in the site metadata, used for site SEO optimization.",
+    "description": "Prompt for the site description"
   },
   "message.logoTip": {
-    "message": "Site logo, displayed at the top of the site menu when the menu bar expands.",
-    "description": "Tip for the site logo"
+    "message": "Site logo displayed at the top of the site menu when the menu bar is expanded.",
+    "description": "Prompt for the site logo"
   },
   "message.faviconTip": {
-    "message": "Site favicon, displayed in the browser tab.",
-    "description": "Tip for the site favicon"
+    "message": "Site favicon displayed in the browser tab.",
+    "description": "Prompt for the site favicon"
   },
   "message.adminsTip": {
-    "message": "Site admin IDs; by default, the user who first creates the site will become an admin. Only site admins can manage the site.",
-    "description": "Tip for site admins"
+    "message": "Site administrator ID; the user who first creates the site will become the administrator by default, and only site administrators can manage the site.",
+    "description": "Prompt for site administrators"
   },
   "message.adminsTip2": {
-    "message": "You can add or remove admin IDs here. You can check user IDs at https://auth.acedata.cloud",
-    "description": "Tip for site admins"
+    "message": "Administrators' IDs can be added or removed here; you can view user IDs at https://auth.acedata.cloud",
+    "description": "Prompt for site administrators"
   },
   "message.keywordsTip": {
-    "message": "Site keywords, located in the site metadata, used for site SEO optimization.",
-    "description": "Tip for site keywords"
+    "message": "Site keywords located in the site metadata, used for site SEO optimization.",
+    "description": "Prompt for site keywords"
   },
   "message.keywordsTip2": {
-    "message": "You can add or remove website keywords here. The more precise the keywords, the more beneficial they are for SEO optimization.",
-    "description": "Tip for site keywords"
+    "message": "Website keywords can be added or removed here; the more precise the keywords, the more beneficial they are for SEO optimization.",
+    "description": "Prompt for site keywords"
   },
   "message.featuresChat": {
-    "message": "Enable or disable the Chat feature module.",
+    "message": "Enable or disable the Chat functionality module.",
     "description": "Description of the Chat feature"
   },
   "message.featuresMidjourney": {
-    "message": "Enable or disable the Midjourney feature module.",
+    "message": "Enable or disable the Midjourney functionality module.",
     "description": "Description of the Midjourney feature"
   },
   "message.featuresChatdoc": {
-    "message": "Enable or disable the Chatdoc feature module.",
+    "message": "Enable or disable the Chatdoc functionality module.",
     "description": "Description of the Chatdoc feature"
   },
   "message.featuresQrart": {
-    "message": "Enable or disable the Qrart feature module.",
+    "message": "Enable or disable the Qrart functionality module.",
     "description": "Description of the Qrart feature"
   },
   "message.featuresSuno": {
-    "message": "Enable or disable the Suno feature module.",
+    "message": "Enable or disable the Suno functionality module.",
     "description": "Description of the Suno feature"
   },
   "message.featuresLuma": {
-    "message": "Enable or disable the Luma feature module.",
+    "message": "Enable or disable the Luma functionality module.",
     "description": "Description of the Luma feature"
   },
   "message.featuresPika": {
-    "message": "Enable or disable the Pika feature module.",
+    "message": "Enable or disable the Pika functionality module.",
     "description": "Description of the Pika feature"
   },
+  "message.featuresHailuo": {
+    "message": "Enable or disable the Hailuo functionality module.",
+    "description": "Description of the Hailuo feature"
+  },
   "message.featuresHeadshots": {
-    "message": "Enable or disable the AI ID photo feature module.",
+    "message": "Enable or disable the AI ID photo functionality module.",
     "description": "Description of the AI ID photo feature"
   },
   "message.featuresSupport": {
@@ -280,7 +288,7 @@
     "description": "Description of the Support feature"
   },
   "message.featuresI18n": {
-    "message": "Enable or disable multilingual support. When disabled, users can only use the default language.",
+    "message": "Enable or disable multilingual support; if disabled, users can only use the default language.",
     "description": "Description of multilingual support"
   },
   "button.upload": {
@@ -289,10 +297,10 @@
   },
   "button.enabled": {
     "message": "Enabled",
-    "description": "Toggle text indicating it has been enabled"
+    "description": "Switch text indicating it has been enabled"
   },
   "button.disabled": {
     "message": "Disabled",
-    "description": "Toggle text indicating it has been disabled"
+    "description": "Switch text indicating it has been disabled"
   }
 }

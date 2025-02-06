@@ -14,6 +14,7 @@ export * from './credential';
 export * from './qrart';
 export * from './luma';
 export * from './pika';
+export * from './hailuo';
 export * from './headshots';
 export * from './site';
 export * from './suno';

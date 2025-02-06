@@ -1,0 +1,234 @@
+{
+  "name.taskId": {
+    "message": "Task ID",
+    "description": "The ID of the task"
+  },
+  "name.type": {
+    "message": "Type",
+    "description": "The content type of the Hailuo video to be generated, such as 'link', 'text', etc."
+  },
+  "name.failure": {
+    "message": "Failure",
+    "description": "The failure status of the task"
+  },
+  "name.failureReason": {
+    "message": "Failure Reason",
+    "description": "The reason for the task failure"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "The status of the task"
+  },
+  "name.traceId": {
+    "message": "Trace ID",
+    "description": "The trace ID of the task"
+  },
+  "name.createdAt": {
+    "message": "Created At",
+    "description": "The date and time when the Hailuo video was generated"
+  },
+  "name.imageUrl": {
+    "message": "Reference Image",
+    "description": "The reference image for the video to be generated"
+  },
+  "name.videoUrl": {
+    "message": "Custom Video",
+    "description": "Custom video"
+  },
+  "name.prompt": {
+    "message": "Video Prompt",
+    "description": "The prompt for content input"
+  },
+  "name.ingredients": {
+    "message": "Multiple Image Creation Video",
+    "description": "Custom extended video"
+  },
+  "name.model": {
+    "message": "Model",
+    "description": "The model version used to generate the video"
+  },
+  "name.startImageUrl": {
+    "message": "Initial Frame Image",
+    "description": "The seed for generating the QR code"
+  },
+  "name.ingredientsModel": {
+    "message": "Ingredients Model",
+    "description": "The model version used to generate the video"
+  },
+  "name.hailuoBot": {
+    "message": "Hailuo Bot",
+    "description": "The name of the Hailuo video generator"
+  },
+  "description.ingredients": {
+    "message": "If you want to upload multiple images to generate your own video, please turn on this button.",
+    "description": "Description of the parameter 'ingredients'"
+  },
+  "description.startImageUrl": {
+    "message": "The URL of the initial frame image, which will be the first frame of the generated video.",
+    "description": "Description of the parameter 'startImageUrl'"
+  },
+  "description.prompt": {
+    "message": "The prompt words for generating Hailuo videos",
+    "description": "Description of the parameter 'prompt'"
+  },
+  "status.pending": {
+    "message": "Pending",
+    "description": "The pending status of the task"
+  },
+  "status.processing": {
+    "message": "Processing",
+    "description": "The processing status of the task"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Please select...",
+    "description": "Placeholder for padding noise input"
+  },
+  "placeholder.select": {
+    "message": "Select",
+    "description": "Placeholder text in the select field"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Please select...",
+    "description": "Placeholder for padding level"
+  },
+  "placeholder.prompt": {
+    "message": "Enter the prompt words for the video style to be generated, e.g., fiery",
+    "description": "Placeholder text in the prompt field"
+  },
+  "placeholder.position": {
+    "message": "Please select...",
+    "description": "Placeholder for position input"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Please select...",
+    "description": "Placeholder for aspect ratio input"
+  },
+  "placeholder.preset": {
+    "message": "Please select...",
+    "description": "Placeholder for preset input"
+  },
+  "placeholder.markerShape": {
+    "message": "Please select...",
+    "description": "Placeholder for marker shape input"
+  },
+  "placeholder.rotate": {
+    "message": "Please select...",
+    "description": "Placeholder for rotation input"
+  },
+  "placeholder.subMarker": {
+    "message": "Please select...",
+    "description": "Placeholder for sub-marker input"
+  },
+  "button.model1": {
+    "message": "Text to Video",
+    "description": "Button text for generating Hailuo video"
+  },
+  "button.model2": {
+    "message": "Image to Video",
+    "description": "Button text for generating Hailuo video"
+  },
+  "button.generate": {
+    "message": "Generate",
+    "description": "Button text for generating Hailuo video"
+  },
+  "button.extend": {
+    "message": "Extend Video",
+    "description": "Button text for extending video"
+  },
+  "button.download": {
+    "message": "Download Video",
+    "description": "Button text for downloading video"
+  },
+  "button.uploadStartImageUrl": {
+    "message": "Upload Image",
+    "description": "Button text for uploading QR code"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "You can upload up to 5 images",
+    "description": "Error message when the number of uploaded images exceeds the limit"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Images uploaded successfully",
+    "description": "Success message when images are uploaded successfully"
+  },
+  "message.uploadReferencesError": {
+    "message": "Failed to upload images, please try again later",
+    "description": "Error message when image upload fails"
+  },
+  "message.startingTask": {
+    "message": "Starting task...",
+    "description": "Message at the start of the drawing task"
+  },
+  "message.startTaskSuccess": {
+    "message": "Successfully initiated the generation task",
+    "description": "Success message when the task is successfully started"
+  },
+  "message.startTaskFailed": {
+    "message": "Task initiation failed, please contact the administrator",
+    "description": "Error message when task initiation fails"
+  },
+  "message.usedUp": {
+    "message": "Your credits are exhausted, please purchase more credits to continue using",
+    "description": "Message when credits are exhausted"
+  },
+  "message.generating": {
+    "message": "Generating...",
+    "description": "Message when the image is being generated"
+  },
+  "message.downloadVideo": {
+    "message": "Download this video",
+    "description": "Message when the image is being generated"
+  },
+  "message.extendVideo": {
+    "message": "Continue generating this video",
+    "description": "Message when the image is being generated"
+  },
+  "message.generateFailed": {
+    "message": "Failed to generate the image",
+    "description": "Message when image generation fails"
+  },
+  "message.uploadVideoExceed": {
+    "message": "The number of uploaded first frame images exceeds the limit",
+    "description": "Error message when the number of uploaded first frame images exceeds the limit"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "The uploaded file size must not exceed 10MB!",
+    "description": "Error message when the uploaded file size exceeds 10MB!"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "The uploaded file must be in MP4 format!",
+    "description": "Error message when the uploaded file is not in MP4 format!"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "The number of uploaded first frame images exceeds the limit",
+    "description": "Error message when the number of uploaded first frame images exceeds the limit"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "The number of uploaded last frame images exceeds the limit",
+    "description": "Error message when the number of uploaded last frame images exceeds the limit"
+  },
+  "message.uploadStartImageError": {
+    "message": "Failed to upload first frame image",
+    "description": "Error message when failing to upload the first frame image"
+  },
+  "message.uploadVideoError": {
+    "message": "Failed to upload video",
+    "description": "Error message when failing to upload the video"
+  },
+  "message.uploadEndImageError": {
+    "message": "Failed to upload last frame image",
+    "description": "Error message when failing to upload the last frame image"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Failed to upload document",
+    "description": "Error message when failing to upload a document"
+  },
+  "message.noOperations": {
+    "message": "No available operations",
+    "description": "Message when there are no available operations"
+  },
+  "message.noTasks": {
+    "message": "No historical tasks, please click on the left to generate a video",
+    "description": "Message when there are no tasks"
+  }
+}

@@ -1,0 +1,234 @@
+{
+  "name.taskId": {
+    "message": "ID zadania",
+    "description": "ID zadania"
+  },
+  "name.type": {
+    "message": "Typ",
+    "description": "Typ zawartości filmu Hailuo do wygenerowania, np. 'link', 'tekst' itp."
+  },
+  "name.failure": {
+    "message": "Niepowodzenie",
+    "description": "Stan niepowodzenia zadania"
+  },
+  "name.failureReason": {
+    "message": "Powód niepowodzenia",
+    "description": "Powód niepowodzenia zadania"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Status zadania"
+  },
+  "name.traceId": {
+    "message": "ID śledzenia",
+    "description": "ID śledzenia zadania"
+  },
+  "name.createdAt": {
+    "message": "Data utworzenia",
+    "description": "Data i czas utworzenia filmu Hailuo"
+  },
+  "name.imageUrl": {
+    "message": "Referencyjny obrazek",
+    "description": "Referencyjny obrazek do generowanego filmu"
+  },
+  "name.videoUrl": {
+    "message": "Niestandardowy film",
+    "description": "Niestandardowy film"
+  },
+  "name.prompt": {
+    "message": "Podpowiedź wideo",
+    "description": "Podpowiedź wejściowa treści"
+  },
+  "name.ingredients": {
+    "message": "Film z wieloma obrazkami",
+    "description": "Niestandardowy rozwinięty film"
+  },
+  "name.model": {
+    "message": "Model",
+    "description": "Wersja modelu używana do generowania filmu"
+  },
+  "name.startImageUrl": {
+    "message": "Obrazek pierwszej klatki",
+    "description": "Ziarno kodu QR do wygenerowania"
+  },
+  "name.ingredientsModel": {
+    "message": "Model składników",
+    "description": "Wersja modelu używana do generowania filmu"
+  },
+  "name.hailuoBot": {
+    "message": "Hailuo Bot",
+    "description": "Nazwa generatora filmów Hailuo"
+  },
+  "description.ingredients": {
+    "message": "Jeśli chcesz przesłać wiele obrazków, aby wygenerować swój film, włącz ten przycisk.",
+    "description": "Opis parametru 'ingredients'"
+  },
+  "description.startImageUrl": {
+    "message": "URL obrazka pierwszej klatki, która będzie pierwszą klatką wygenerowanego filmu.",
+    "description": "Opis parametru 'startImageUrl'"
+  },
+  "description.prompt": {
+    "message": "Słowa kluczowe do generowania filmu Hailuo",
+    "description": "Opis parametru 'prompt'"
+  },
+  "status.pending": {
+    "message": "Oczekiwanie",
+    "description": "Stan oczekiwania zadania"
+  },
+  "status.processing": {
+    "message": "W trakcie przetwarzania",
+    "description": "Stan przetwarzania zadania"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Wybierz...",
+    "description": "Placeholder dla wejścia hałasu wypełniającego"
+  },
+  "placeholder.select": {
+    "message": "Wybierz",
+    "description": "Placeholder w polu wyboru"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Wybierz...",
+    "description": "Placeholder dla poziomu wypełnienia"
+  },
+  "placeholder.prompt": {
+    "message": "Wprowadź słowa kluczowe dla stylu wideo, np. ogień",
+    "description": "Placeholder w polu podpowiedzi"
+  },
+  "placeholder.position": {
+    "message": "Wybierz...",
+    "description": "Placeholder dla pozycji wejścia"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Wybierz...",
+    "description": "Placeholder dla wskaźnika proporcji"
+  },
+  "placeholder.preset": {
+    "message": "Wybierz...",
+    "description": "Placeholder dla wejścia z ustawieniem wstępnym"
+  },
+  "placeholder.markerShape": {
+    "message": "Wybierz...",
+    "description": "Placeholder dla kształtu znacznika"
+  },
+  "placeholder.rotate": {
+    "message": "Wybierz...",
+    "description": "Placeholder dla rotacji"
+  },
+  "placeholder.subMarker": {
+    "message": "Wybierz...",
+    "description": "Placeholder dla podznacznika"
+  },
+  "button.model1": {
+    "message": "Film tekstowy",
+    "description": "Tekst przycisku do generowania filmu Hailuo"
+  },
+  "button.model2": {
+    "message": "Film obrazkowy",
+    "description": "Tekst przycisku do generowania filmu Hailuo"
+  },
+  "button.generate": {
+    "message": "Generuj",
+    "description": "Tekst przycisku do generowania filmu Hailuo"
+  },
+  "button.extend": {
+    "message": "Rozwiń film",
+    "description": "Tekst przycisku do rozwijania filmu"
+  },
+  "button.download": {
+    "message": "Pobierz film",
+    "description": "Tekst przycisku do pobierania filmu"
+  },
+  "button.uploadStartImageUrl": {
+    "message": "Prześlij obrazek",
+    "description": "Tekst przycisku do przesyłania kodu QR"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Można przesłać maksymalnie 5 obrazków",
+    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazków przekracza limit"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Obrazki zostały pomyślnie przesłane",
+    "description": "Komunikat sukcesu przy pomyślnym przesłaniu obrazków"
+  },
+  "message.uploadReferencesError": {
+    "message": "Przesyłanie obrazków nie powiodło się, spróbuj ponownie później",
+    "description": "Komunikat o błędzie przy nieudanym przesyłaniu obrazków"
+  },
+  "message.startingTask": {
+    "message": "Rozpoczynanie zadania...",
+    "description": "Komunikat na początku zadania rysowania"
+  },
+  "message.startTaskSuccess": {
+    "message": "Zadanie generowania zostało pomyślnie zainicjowane",
+    "description": "Komunikat sukcesu przy pomyślnym uruchomieniu zadania"
+  },
+  "message.startTaskFailed": {
+    "message": "Nie udało się zainicjować zadania, proszę skontaktować się z administratorem",
+    "description": "Komunikat o błędzie przy nieudanym uruchomieniu zadania rysowania"
+  },
+  "message.usedUp": {
+    "message": "Twoje punkty zostały wykorzystane, kup więcej punktów, aby kontynuować",
+    "description": "Komunikat, gdy punkty zostały wyczerpane"
+  },
+  "message.generating": {
+    "message": "Generowanie...",
+    "description": "Komunikat podczas generowania obrazu"
+  },
+  "message.downloadVideo": {
+    "message": "Pobierz ten film",
+    "description": "Komunikat podczas generowania obrazu"
+  },
+  "message.extendVideo": {
+    "message": "Kontynuuj generowanie tego filmu",
+    "description": "Komunikat podczas generowania obrazu"
+  },
+  "message.generateFailed": {
+    "message": "Generowanie obrazu nie powiodło się",
+    "description": "Komunikat przy nieudanym generowaniu obrazu"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Liczba przesyłanych obrazów pierwszej klatki przekracza limit",
+    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazów pierwszej klatki przekracza limit"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Rozmiar przesyłanego pliku nie może przekraczać 10 MB!",
+    "description": "Komunikat o błędzie, gdy rozmiar przesyłanego pliku nie może przekraczać 10 MB!"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Przesyłany plik musi być w formacie MP4!",
+    "description": "Komunikat o błędzie, gdy przesyłany plik musi być w formacie MP4!"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Liczba przesyłanych obrazów pierwszej klatki przekracza limit",
+    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazów pierwszej klatki przekracza limit"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Liczba przesyłanych obrazów ostatniej klatki przekracza limit",
+    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazów ostatniej klatki przekracza limit"
+  },
+  "message.uploadStartImageError": {
+    "message": "Nie udało się przesłać obrazu pierwszej klatki",
+    "description": "Komunikat o błędzie, gdy nie udało się przesłać obrazu pierwszej klatki"
+  },
+  "message.uploadVideoError": {
+    "message": "Nie udało się przesłać wideo",
+    "description": "Komunikat o błędzie, gdy nie udało się przesłać obrazu pierwszej klatki"
+  },
+  "message.uploadEndImageError": {
+    "message": "Nie udało się przesłać obrazu ostatniej klatki",
+    "description": "Komunikat o błędzie, gdy nie udało się przesłać obrazu ostatniej klatki"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Nie udało się przesłać dokumentu",
+    "description": "Komunikat o błędzie, gdy nie udało się przesłać dokumentu"
+  },
+  "message.noOperations": {
+    "message": "Brak dostępnych operacji",
+    "description": "Komunikat, gdy nie ma dostępnych operacji"
+  },
+  "message.noTasks": {
+    "message": "Brak historii zadań, kliknij po lewej, aby wygenerować wideo",
+    "description": "Komunikat, gdy nie ma zadań"
+  }
+}

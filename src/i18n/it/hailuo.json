@@ -1,0 +1,234 @@
+{
+  "name.taskId": {
+    "message": "ID compito",
+    "description": "ID del compito"
+  },
+  "name.type": {
+    "message": "Tipo",
+    "description": "Il tipo di contenuto del video Hailuo da generare, come 'link', 'testo', ecc."
+  },
+  "name.failure": {
+    "message": "Fallimento",
+    "description": "Stato di fallimento del compito"
+  },
+  "name.failureReason": {
+    "message": "Motivo del fallimento",
+    "description": "Il motivo per cui il compito è fallito"
+  },
+  "name.status": {
+    "message": "Stato",
+    "description": "Stato del compito"
+  },
+  "name.traceId": {
+    "message": "ID tracciamento",
+    "description": "ID tracciamento del compito"
+  },
+  "name.createdAt": {
+    "message": "Data di creazione",
+    "description": "Data e ora di generazione del video Hailuo"
+  },
+  "name.imageUrl": {
+    "message": "Immagine di riferimento",
+    "description": "Immagine di riferimento per il video da generare"
+  },
+  "name.videoUrl": {
+    "message": "Video personalizzato",
+    "description": "Video personalizzato"
+  },
+  "name.prompt": {
+    "message": "Prompt video",
+    "description": "Il prompt per l'input del contenuto"
+  },
+  "name.ingredients": {
+    "message": "Video creato con più immagini",
+    "description": "Video personalizzato espanso"
+  },
+  "name.model": {
+    "message": "Modello",
+    "description": "Versione del modello utilizzato per generare il video"
+  },
+  "name.startImageUrl": {
+    "message": "Immagine iniziale",
+    "description": "Il seme per il QR code da generare"
+  },
+  "name.ingredientsModel": {
+    "message": "Modello ingredienti",
+    "description": "Versione del modello utilizzato per generare il video"
+  },
+  "name.hailuoBot": {
+    "message": "Hailuo Bot",
+    "description": "Nome del generatore di video Hailuo"
+  },
+  "description.ingredients": {
+    "message": "Se vuoi caricare più immagini per generare il tuo video, attiva questo pulsante.",
+    "description": "Descrizione del parametro 'ingredients'"
+  },
+  "description.startImageUrl": {
+    "message": "URL dell'immagine iniziale, che sarà il primo fotogramma del video generato.",
+    "description": "Descrizione del parametro 'startImageUrl'"
+  },
+  "description.prompt": {
+    "message": "Parole chiave per generare un video Hailuo",
+    "description": "Descrizione del parametro 'prompt'"
+  },
+  "status.pending": {
+    "message": "In attesa",
+    "description": "Stato di attesa del compito"
+  },
+  "status.processing": {
+    "message": "In elaborazione",
+    "description": "Stato di attesa del compito"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Seleziona...",
+    "description": "Segnaposto per l'input del rumore di riempimento"
+  },
+  "placeholder.select": {
+    "message": "Seleziona",
+    "description": "Testo segnaposto nel campo di selezione"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Seleziona...",
+    "description": "Segnaposto per il livello di riempimento"
+  },
+  "placeholder.prompt": {
+    "message": "Inserisci le parole chiave per lo stile del video da generare, ad esempio: rabbia",
+    "description": "Testo segnaposto nel campo del prompt"
+  },
+  "placeholder.position": {
+    "message": "Seleziona...",
+    "description": "Segnaposto per l'input della posizione"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Seleziona...",
+    "description": "Segnaposto per l'input del rapporto d'aspetto"
+  },
+  "placeholder.preset": {
+    "message": "Seleziona...",
+    "description": "Segnaposto per l'input del preset"
+  },
+  "placeholder.markerShape": {
+    "message": "Seleziona...",
+    "description": "Segnaposto per l'input della forma del marcatore"
+  },
+  "placeholder.rotate": {
+    "message": "Seleziona...",
+    "description": "Segnaposto per l'input della rotazione"
+  },
+  "placeholder.subMarker": {
+    "message": "Seleziona...",
+    "description": "Segnaposto per l'input del sottomarker"
+  },
+  "button.model1": {
+    "message": "Video da testo",
+    "description": "Testo del pulsante per generare un video Hailuo"
+  },
+  "button.model2": {
+    "message": "Video da immagine",
+    "description": "Testo del pulsante per generare un video Hailuo"
+  },
+  "button.generate": {
+    "message": "Genera",
+    "description": "Testo del pulsante per generare un video Hailuo"
+  },
+  "button.extend": {
+    "message": "Espandi video",
+    "description": "Testo del pulsante per espandere il video"
+  },
+  "button.download": {
+    "message": "Scarica video",
+    "description": "Testo del pulsante per scaricare il video"
+  },
+  "button.uploadStartImageUrl": {
+    "message": "Carica immagine",
+    "description": "Testo del pulsante per caricare il codice QR"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Massimo 5 immagini possono essere caricate",
+    "description": "Messaggio di errore quando il numero di immagini caricate supera il limite"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Immagini caricate con successo",
+    "description": "Messaggio di successo quando le immagini sono caricate con successo"
+  },
+  "message.uploadReferencesError": {
+    "message": "Caricamento delle immagini fallito, riprova più tardi",
+    "description": "Messaggio di errore quando il caricamento delle immagini fallisce"
+  },
+  "message.startingTask": {
+    "message": "Inizializzazione del compito...",
+    "description": "Messaggio all'inizio del compito di disegno"
+  },
+  "message.startTaskSuccess": {
+    "message": "Compito di generazione avviato con successo",
+    "description": "Messaggio di successo quando il compito è avviato con successo"
+  },
+  "message.startTaskFailed": {
+    "message": "Avvio del compito fallito, contattare l'amministratore",
+    "description": "Messaggio di errore quando l'avvio del compito di disegno fallisce"
+  },
+  "message.usedUp": {
+    "message": "I tuoi punti sono esauriti, acquista più punti per continuare a utilizzare",
+    "description": "Messaggio quando i punti sono esauriti"
+  },
+  "message.generating": {
+    "message": "Generando...",
+    "description": "Messaggio mentre l'immagine è in fase di generazione"
+  },
+  "message.downloadVideo": {
+    "message": "Scarica questo video",
+    "description": "Messaggio mentre l'immagine è in fase di generazione"
+  },
+  "message.extendVideo": {
+    "message": "Continua a generare questo video",
+    "description": "Messaggio mentre l'immagine è in fase di generazione"
+  },
+  "message.generateFailed": {
+    "message": "Generazione dell'immagine fallita",
+    "description": "Messaggio quando la generazione dell'immagine fallisce"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Il numero di immagini della prima inquadratura caricate supera il limite",
+    "description": "Messaggio di errore quando il numero di immagini della prima inquadratura caricate supera il limite"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "La dimensione del file caricato non può superare i 10 MB!",
+    "description": "Messaggio di errore quando la dimensione del file caricato non può superare i 10 MB!"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Il file caricato deve essere in formato MP4!",
+    "description": "Messaggio di errore quando il file caricato deve essere in formato MP4!"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Il numero di immagini della prima inquadratura caricate supera il limite",
+    "description": "Messaggio di errore quando il numero di immagini della prima inquadratura caricate supera il limite"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Il numero di immagini dell'ultima inquadratura caricate supera il limite",
+    "description": "Messaggio di errore quando il numero di immagini dell'ultima inquadratura caricate supera il limite"
+  },
+  "message.uploadStartImageError": {
+    "message": "Caricamento dell'immagine della prima inquadratura non riuscito",
+    "description": "Messaggio di errore quando il caricamento dell'immagine della prima inquadratura non riesce"
+  },
+  "message.uploadVideoError": {
+    "message": "Caricamento del video non riuscito",
+    "description": "Messaggio di errore quando il caricamento dell'immagine della prima inquadratura non riesce"
+  },
+  "message.uploadEndImageError": {
+    "message": "Caricamento dell'immagine dell'ultima inquadratura non riuscito",
+    "description": "Messaggio di errore quando il caricamento dell'immagine dell'ultima inquadratura non riesce"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Caricamento del documento non riuscito",
+    "description": "Messaggio di errore quando il caricamento del documento non riesce"
+  },
+  "message.noOperations": {
+    "message": "Nessuna operazione disponibile",
+    "description": "Messaggio quando non ci sono operazioni disponibili"
+  },
+  "message.noTasks": {
+    "message": "Nessun compito storico, fai clic sulla generazione video a sinistra",
+    "description": "Messaggio quando non ci sono compiti"
+  }
+}
