@@ -134,7 +134,7 @@ export interface ISunoUploadResponse {
 export interface ISunoTask {
   map(arg0: (song: any) => any): any;
   id: string;
-  created_at?: string;
+  created_at?: number;
   request?: ISunoAudioRequest | ISunoLyricRequest;
   response?: ISunoAudioResponse | ISunoLyricResponse;
 }

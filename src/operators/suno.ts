@@ -39,6 +39,8 @@ class SunoOperator {
       type?: string;
       limit?: number;
       offset?: number;
+      createdAtMax?: number;
+      createdAtMin?: number;
     },
     options: { token: string }
   ): Promise<AxiosResponse<ISunoTasksResponse>> {
@@ -74,6 +76,16 @@ class SunoOperator {
         ...(filter.offset !== undefined
           ? {
               offset: filter.offset
+            }
+          : {}),
+        ...(filter.createdAtMax !== undefined
+          ? {
+              created_at_max: filter.createdAtMax
+            }
+          : {}),
+        ...(filter.createdAtMin !== undefined
+          ? {
+              created_at_min: filter.createdAtMin
             }
           : {})
       },

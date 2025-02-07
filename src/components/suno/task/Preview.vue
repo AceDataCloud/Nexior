@@ -167,7 +167,6 @@ export default defineComponent({
           result.push(audio);
         });
       }
-      console.log('audios', result);
       return result;
     },
     application() {
