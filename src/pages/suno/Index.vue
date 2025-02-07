@@ -12,7 +12,7 @@
         class="mb-4"
         @refresh="onGetApplication"
       />
-      <recent-panel class="panel recent" />
+      <recent-panel class="panel recent" @reach-top="onReachTop" />
     </template>
     <template #preview>
       <preview-panel />
@@ -90,7 +90,7 @@ export default defineComponent({
         // scroll down if new tasks are added
         if (value?.items?.length > oldValue?.items?.length) {
           console.debug('new tasks detected');
-          this.onScrollDown();
+          // this.onScrollDown();
         }
       },
       deep: true
@@ -101,7 +101,7 @@ export default defineComponent({
     await this.onGetApplication();
     await this.onScrollDown();
     await this.onGetTasks();
-    await this.onScrollDown();
+    // await this.onScrollDown();
     // @ts-ignore
     this.job = setInterval(() => {
       this.onGetTasks();
@@ -112,6 +112,12 @@ export default defineComponent({
     clearInterval(this.timer);
   },
   methods: {
+    async onReachTop() {
+      console.debug('reached top');
+      await this.onGetTasks({
+        createdAtMax: this.tasks?.items?.[0]?.created_at
+      });
+    },
     async onGetService() {
       console.debug('start onGetService');
       await this.$store.dispatch('suno/getService');
@@ -148,14 +154,18 @@ export default defineComponent({
         }
       }, 1000);
     },
-    async onGetTasks() {
+    async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number }) {
       if (this.loading) {
         console.debug('loading');
         return;
       }
+      console.debug('start onGetTasks', payload);
+      const { limit = 5, createdAtMin, createdAtMax } = payload || {};
+      console.debug('limit', limit, 'createdAtMin', createdAtMin, 'createdAtMax', createdAtMax);
       await this.$store.dispatch('suno/getTasks', {
-        limit: 30,
-        offset: 0
+        limit,
+        createdAtMin,
+        createdAtMax
       });
     },
     async onGenerateAudio() {
@@ -180,8 +190,10 @@ export default defineComponent({
           ElMessage.error(error?.response?.data?.error?.message || this.$t('suno.message.startTaskFailed'));
         })
         .finally(async () => {
-          await this.onGetTasks();
-          await this.onScrollDown();
+          setTimeout(async () => {
+            await this.onGetTasks();
+            await this.onScrollDown();
+          }, 1000);
         });
     }
   }

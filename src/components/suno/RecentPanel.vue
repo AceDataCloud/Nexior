@@ -1,5 +1,5 @@
 <template>
-  <div class="panel recent">
+  <div ref="panel" class="panel recent" @scroll="onHandleScroll">
     <div v-if="tasks?.items === undefined" class="tasks">
       <div v-for="_ in 3" :key="_" class="task placeholder">
         <div class="left">
@@ -23,7 +23,6 @@
     <div v-else-if="tasks?.items?.length && tasks?.items?.length > 0" class="tasks">
       <task-preview v-for="(task, taskId) in tasks?.items" :key="taskId" :model-value="task" class="preview" />
     </div>
-    {{ tasks?.items }}
     <p v-if="tasks?.items?.length === 0" class="description">
       {{ $t('suno.message.noTasks') }}
     </p>
@@ -49,6 +48,7 @@ export default defineComponent({
     ElSkeletonItem,
     Player
   },
+  emits: ['reach-top'],
   data() {
     return {
       job: 0
@@ -59,8 +59,16 @@ export default defineComponent({
       // reverse the order of the tasks.items
       return {
         ...this.$store.state.suno?.tasks,
-        items: this.$store.state.suno?.tasks?.items?.slice().reverse()
+        items: this.$store.state.suno?.tasks?.items?.slice()
       };
+    }
+  },
+  methods: {
+    onHandleScroll() {
+      const el = this.$refs.panel as HTMLElement;
+      if (el.scrollTop === 0) {
+        this.$emit('reach-top');
+      }
     }
   }
 });
@@ -71,8 +79,6 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: center;
-  // justify-content: center;
-  // height: 100%;
   &.recent {
     width: 100%;
     height: 100%;
