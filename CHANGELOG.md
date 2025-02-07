@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Thu, 06 Feb 2025 11:07:29 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Feb 2025 15:53:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.13.3
+
+Fri, 07 Feb 2025 15:53:17 GMT
+
+### Patches
+
+- add pagination for suno (office@acedata.cloud)
 
 ## 2.13.2
 
