@@ -21,7 +21,7 @@
   <div v-else-if="tasks && tasks?.length === 0">
     <p class="p-5 description">{{ $t('midjourney.message.noTasks') }}</p>
   </div>
-  <div v-else-if="tasks.length > 0" class="tasks">
+  <div v-else-if="tasks.length > 0" ref="panel" class="tasks" @scroll="onHandleScroll">
     <div v-for="(task, taskKey) in tasks" :key="taskKey" class="task">
       <task-item :full="false" :model-value="task" @custom="$emit('custom', $event)" />
     </div>
@@ -41,7 +41,7 @@ export default defineComponent({
     ElSkeleton,
     ElSkeletonItem
   },
-  emits: ['update:modelValue', 'custom', 'refresh'],
+  emits: ['update:modelValue', 'custom', 'refresh', 'reach-top'],
   data() {
     return {
       job: 0
@@ -54,6 +54,16 @@ export default defineComponent({
     },
     application() {
       return this.$store.state.midjourney.application;
+    }
+  },
+  methods: {
+    onHandleScroll() {
+      const el = this.$refs.panel as HTMLElement;
+      console.log('onHandleScroll  ', el.scrollTop);
+      if (el.scrollTop === 0) {
+        console.log('reach-top reach-top');
+        this.$emit('reach-top');
+      }
     }
   }
 });

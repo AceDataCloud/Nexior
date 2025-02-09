@@ -149,8 +149,10 @@ export default defineComponent({
       setTimeout(() => {
         // scroll to bottom for `.recent`
         const el = document.querySelector('.recent');
+        console.log('onScrollDown  ', el, el.scrollTop, el.scrollHeight);
         if (el) {
           el.scrollTop = el.scrollHeight;
+          console.log('onScrollDown  ', el.scrollTop, el.scrollHeight);
         }
       }, 1000);
     },
