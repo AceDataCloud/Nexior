@@ -27,9 +27,13 @@
             <span v-else-if="conversation?.editing">
               <el-input v-model="conversation.title" @keydown.enter="onConfirm(conversation)" />
             </span>
-            <span v-else-if="conversation?.title || conversation?.messages">{{
-              conversation?.title || conversation?.messages[conversation?.messages.length - 1]?.content
-            }}</span>
+            <span v-else-if="conversation?.title || conversation?.messages">
+              {{
+                conversation?.title ||
+                conversation?.messages?.[conversation?.messages.length - 1]?.content ||
+                conversation?.messages?.[0]?.content
+              }}
+            </span>
           </div>
           <div class="operations">
             <font-awesome-icon
@@ -152,7 +156,7 @@ export default defineComponent({
         console.error('Token is not found');
         return;
       }
-      if (conversation?.deleting) {
+      if (conversation?.deleting && conversation.id) {
         await chatOperator.deleteConversation(conversation.id, {
           token
         });

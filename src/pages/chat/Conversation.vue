@@ -9,25 +9,8 @@
         :service="service"
         @refresh="$store.dispatch('chat/getApplications')"
       />
-      <div v-if="messages.length === 0" class="dialogue empty">
-        <div class="composer">
-          <input-box
-            :disabled="answering"
-            :question="question"
-            :references="references"
-            @update:question="question = $event"
-            @update:reason="reason = $event"
-            @update:search="search = $event"
-            @update:references="references = $event"
-            @submit="onSubmit"
-            @stop="onStop"
-          />
-          <suggestion @draft="onDraft" />
-        </div>
-        <disclaimer class="disclaimer" />
-      </div>
-      <div v-else class="dialogue">
-        <div class="messages">
+      <div :class="{ dialogue: true, empty: messages.length === 0 }">
+        <div v-if="messages.length > 0" class="messages">
           <message
             v-for="(message, messageIndex) in messages"
             :key="messageIndex"
@@ -46,13 +29,15 @@
             :disabled="answering"
             :question="question"
             :references="references"
+            @update:question="question = $event"
             @update:reason="reason = $event"
             @update:search="search = $event"
-            @update:question="question = $event"
             @update:references="references = $event"
             @submit="onSubmit"
             @stop="onStop"
           />
+          <disclaimer class="disclaimer" />
+          <suggestion v-if="messages.length === 0" @draft="onDraft" />
         </div>
       </div>
     </template>
@@ -71,6 +56,7 @@ import {
   CHAT_MODEL_GROUP_CHATGPT,
   CHAT_MODEL_GROUP_DEEPSEEK,
   CHAT_MODEL_O1,
+  CHAT_MODEL_O1_MINI,
   CHAT_MODELS,
   ROLE_ASSISTANT,
   ROLE_USER
@@ -175,6 +161,13 @@ export default defineComponent({
         await this.$store.dispatch('chat/setModel', model);
       }
     },
+    // async references(val) {
+    //   console.log('references changed', val);
+    //   const model = await this.getModelByAction();
+    //   if (model) {
+    //     await this.$store.dispatch('chat/setModel', model);
+    //   }
+    // },
     async reason() {
       console.log('reason changed', this.reason);
       const model = await this.getModelByAction();
@@ -196,13 +189,23 @@ export default defineComponent({
         this.$store.dispatch('chat/setModel', val);
       }
     },
-    conversationId(val: string) {
+    async conversationId(val: string) {
       if (!val) {
         this.messages = [];
       } else {
         this.messages =
           this.conversations?.find((conversation: IChatConversation) => conversation.id === val)?.messages || [];
         this.onScrollDown();
+      }
+      console.log('reason changed', this.reason);
+      const model = await this.getModelByConversation();
+      if (model) {
+        await this.$store.dispatch('chat/setModel', model);
+      }
+      const modelGroup = await this.getModelGroup();
+      if (modelGroup) {
+        console.log('set model group', modelGroup);
+        await this.$store.dispatch('chat/setModelGroup', modelGroup);
       }
     }
   },
@@ -238,7 +241,7 @@ export default defineComponent({
     async getModelByAction() {
       if (this.modelGroup.name === CHAT_MODEL_GROUP_CHATGPT.name) {
         if (this.reason) {
-          return CHAT_MODEL_O1;
+          return CHAT_MODEL_O1_MINI;
         } else if (this.search) {
           return CHAT_MODEL_GPT_4_BROWSING;
         } else if (this.references.length > 0) {
@@ -473,11 +476,6 @@ export default defineComponent({
         name: ROUTE_CHAT_CONVERSATION_NEW
       });
     },
-    // async onModelChanged() {
-    //   await this.onCreateNewConversation();
-    //   await this.$store.dispatch('chat/getApplications');
-    // },
-    // Send a message
     async onSubmit() {
       if (this.references.length > 0) {
         let content = [];
@@ -589,7 +587,7 @@ export default defineComponent({
             messages: this.messages
           });
           this.answering = false;
-          if (!this.conversationId) {
+          if (conversationId) {
             await this.$router.push({
               name: ROUTE_CHAT_CONVERSATION,
               params: {
@@ -662,10 +660,8 @@ export default defineComponent({
   position: relative;
   padding: 0 calc(50% - 400px);
   .disclaimer {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
     font-size: 12px;
   }
   &.empty {
@@ -681,6 +677,7 @@ export default defineComponent({
   .messages {
     padding-top: 10px;
     flex: 1;
+    // overflow-y: scroll;
     .message {
       margin-bottom: 15px;
     }
