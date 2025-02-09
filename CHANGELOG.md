@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Fri, 07 Feb 2025 15:53:17 GMT and should not be manually modified.
+This log was last generated on Sun, 09 Feb 2025 16:33:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.14.0
+
+Sun, 09 Feb 2025 16:33:37 GMT
+
+### Minor changes
+
+- add deepseek model (office@acedata.cloud)
 
 ## 2.13.3
 
