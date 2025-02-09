@@ -2,7 +2,6 @@
   <layout>
     <template #chat>
       <model-selector class="selector" @select="onCreateNewConversation" />
-      {{ model }}
       <application-status
         :initializing="initializing"
         :application="application"
