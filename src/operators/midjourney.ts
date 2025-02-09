@@ -28,7 +28,16 @@ class MidjourneyOperator {
   }
 
   async tasks(
-    filter: { ids?: string[]; applicationId?: string; userId?: string; limit?: number; offset?: number },
+    filter: {
+      ids?: string[];
+      applicationId?: string;
+      userId?: string;
+      type?: string;
+      limit?: number;
+      offset?: number;
+      createdAtMax?: number;
+      createdAtMin?: number;
+    },
     options: { token: string }
   ): Promise<AxiosResponse<IMidjourneyTasksResponse>> {
     return await axios.post(
@@ -50,6 +59,11 @@ class MidjourneyOperator {
               user_id: filter.userId
             }
           : {}),
+        ...(filter.type
+          ? {
+              type: filter.type
+            }
+          : {}),
         ...(filter.limit !== undefined
           ? {
               limit: filter.limit
@@ -58,6 +72,16 @@ class MidjourneyOperator {
         ...(filter.offset !== undefined
           ? {
               offset: filter.offset
+            }
+          : {}),
+        ...(filter.createdAtMax !== undefined
+          ? {
+              created_at_max: filter.createdAtMax
+            }
+          : {}),
+        ...(filter.createdAtMin !== undefined
+          ? {
+              created_at_min: filter.createdAtMin
             }
           : {})
       },

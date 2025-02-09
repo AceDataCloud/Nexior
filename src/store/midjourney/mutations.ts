@@ -1,4 +1,4 @@
-import { IApplication, ICredential, IMidjourneyConfig, IService } from '@/models';
+import { IApplication, ICredential, IMidjourneyConfig, IService, IMidjourneyTask } from '@/models';
 import { IMidjourneyState } from './models';
 
 export const resetAll = (state: IMidjourneyState): void => {
@@ -9,6 +9,22 @@ export const resetAll = (state: IMidjourneyState): void => {
     items: undefined,
     total: undefined
   };
+};
+
+export const setTasksItems = (state: IMidjourneyState, payload: IMidjourneyTask[]): void => {
+  const newPayload = {
+    ...state.tasks,
+    items: payload
+  } as typeof state.tasks;
+  state.tasks = newPayload;
+};
+
+export const setTasksTotal = (state: IMidjourneyState, payload: number): void => {
+  const newPayload = {
+    ...state.tasks,
+    total: payload
+  } as typeof state.tasks;
+  state.tasks = newPayload;
 };
 
 export const setService = (state: IMidjourneyState, payload: IService): void => {
@@ -39,6 +55,8 @@ export default {
   setApplication,
   setApplications,
   setConfig,
+  setTasksItems,
+  setTasksTotal,
   setCredential,
   setService,
   setTasks,

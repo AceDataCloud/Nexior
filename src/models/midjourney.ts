@@ -91,7 +91,7 @@ export interface IMidjourneyDescribeResponse {
 export interface IMidjourneyImagineTask {
   id: string;
   type: 'imagine';
-  created_at?: string;
+  created_at?: number;
   request?: IMidjourneyImagineRequest;
   response?: IMidjourneyImagineResponse;
   state?: MidjourneyImagineState;
@@ -100,7 +100,7 @@ export interface IMidjourneyImagineTask {
 export interface IMidjourneyDescribeTask {
   id: string;
   type: 'describe';
-  created_at?: string;
+  created_at?: number;
   request?: IMidjourneyDescribeRequest;
   response?: IMidjourneyDescribeResponse;
 }

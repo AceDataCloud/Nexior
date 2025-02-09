@@ -13,9 +13,18 @@ import {
 } from '@/models';
 import { Status } from '@/models/common';
 import { MIDJOURNEY_SERVICE_ID } from '@/constants';
+import { mergeAndSortLists } from '@/utils/merge';
 
 export const resetAll = ({ commit }: ActionContext<IMidjourneyState, IRootState>): void => {
   commit('resetAll');
+};
+
+export const setTasksItems = ({ commit }: any, payload: IMidjourneyTask[]) => {
+  commit('setTasksItems', payload);
+};
+
+export const setTasksTotal = ({ commit }: any, payload: number) => {
+  commit('setTasksTotal', payload);
 };
 
 export const setCredential = async ({ commit }: any, payload: ICredential): Promise<void> => {
@@ -113,10 +122,15 @@ export const getService = async ({ commit, state }: ActionContext<IMidjourneySta
 
 export const getTasks = async (
   { commit, state, rootState }: ActionContext<IMidjourneyState, IRootState>,
-  { offset, limit }: { offset?: number; limit?: number }
-): Promise<IMidjourneyTasksResponse> => {
+  {
+    offset,
+    limit,
+    createdAtMin,
+    createdAtMax
+  }: { offset?: number; limit?: number; createdAtMin?: number; createdAtMax?: number }
+): Promise<IMidjourneyTask[]> => {
   return new Promise((resolve, reject) => {
-    console.debug('start to get tasks', offset, limit);
+    console.debug('start to get tasks', offset, limit, createdAtMax, createdAtMin);
     const credential = state.credential;
     const token = credential?.token;
     if (!token) {
@@ -126,17 +140,26 @@ export const getTasks = async (
       .tasks(
         {
           userId: rootState?.user?.id,
-          offset,
-          limit
+          createdAtMin,
+          createdAtMax,
+          type: 'imagine'
         },
         {
           token
         }
       )
       .then((response) => {
-        console.debug('get tasks success', response.data);
-        commit('setTasks', response.data);
-        resolve(response.data);
+        console.debug('get imagine tasks success', response.data.items);
+        // merge with existing tasks
+        const existingItems = state?.tasks?.items || [];
+        console.debug('existing items', existingItems);
+        const newItems = response.data.items || [];
+        console.debug('new items', newItems);
+        // sort and de-duplicate using created_at
+        const mergedItems = mergeAndSortLists(existingItems, newItems);
+        commit('setTasksItems', mergedItems);
+        commit('setTasksTotal', response.data.count);
+        resolve(response.data.items);
       })
       .catch((error) => {
         return reject(error);

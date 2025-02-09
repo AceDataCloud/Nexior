@@ -66,6 +66,7 @@ export default defineComponent({
   methods: {
     onHandleScroll() {
       const el = this.$refs.panel as HTMLElement;
+      console.log('reach-top reach-top reach-top');
       if (el.scrollTop === 0) {
         this.$emit('reach-top');
       }
