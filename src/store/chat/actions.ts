@@ -2,7 +2,16 @@ import { applicationOperator, chatOperator, serviceOperator } from '@/operators'
 import { IRootState } from '../common/models';
 import { ActionContext } from 'vuex';
 import { IChatState } from './models';
-import { IApplication, IApplicationType, IChatConversation, IChatModel, ICredential, IService, Status } from '@/models';
+import {
+  IApplication,
+  IApplicationType,
+  IChatConversation,
+  IChatModel,
+  IChatModelGroup,
+  ICredential,
+  IService,
+  Status
+} from '@/models';
 import { CHAT_SERVICE_ID } from '@/constants';
 
 export const resetAll = ({ commit }: ActionContext<IChatState, IRootState>): void => {
@@ -11,6 +20,10 @@ export const resetAll = ({ commit }: ActionContext<IChatState, IRootState>): voi
 
 export const setModel = async ({ commit }: any, payload: IChatModel): Promise<void> => {
   commit('setModel', payload);
+};
+
+export const setModelGroup = async ({ commit }: any, payload: IChatModelGroup): Promise<void> => {
+  commit('setModelGroup', payload);
 };
 
 export const setApplication = async ({ commit }: any, payload: IApplication): Promise<void> => {
@@ -153,6 +166,7 @@ export const getConversations = async ({
 export default {
   resetAll,
   setModel,
+  setModelGroup,
   getService,
   setService,
   setCredential,
