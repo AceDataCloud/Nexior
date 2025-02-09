@@ -48,7 +48,6 @@ export default defineComponent({
     width: 250px;
     height: 100%;
     overflow-y: scroll;
-    border-right: 1px solid var(--el-border-color);
   }
 
   .chat {

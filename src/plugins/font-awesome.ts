@@ -5,6 +5,7 @@ import {
   faPaperPlane as faRegularPaperPlane,
   faComment as faRegularComment,
   faSun as faRegularSun,
+  faLightbulb as faRegularLightbulb,
   faMessage as faRegularMessage,
   faClock as faRegularClock,
   faFile as faRegularFile
@@ -43,6 +44,7 @@ import {
   faUpload as faSolidUpload,
   faMagic as faSolidMagic,
   faInfo as faSolidInfo,
+  faGlobe as faSolidGlobe,
   faStop as faSolidStop,
   faWandMagicSparkles as faSolidWandMagicSparkles,
   faPalette as faSolidPalette,
@@ -81,6 +83,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 // add icons
 library.add(faSolidEllipsis);
+library.add(faSolidGlobe);
+library.add(faRegularLightbulb);
 library.add(faSolidIdCard);
 library.add(faSolidStopCircle);
 library.add(faRegularFile);

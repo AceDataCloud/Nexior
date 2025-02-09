@@ -14,93 +14,46 @@ class ChatOperator {
     data: IChatConversationRequest,
     options: IChatConversationOptions
   ): Promise<IChatConversationResponse> {
-    return new Promise((resolve, reject) => {
-      let finalAnswer = '';
-      let id: string | undefined = undefined;
-      fetch(`${BASE_URL_API}/aichat/conversations`, {
-        method: 'POST',
-        headers: {
-          authorization: `Bearer ${options.token}`,
-          'Content-Type': 'application/json',
-          Accept: 'text/event-stream'
-        },
-        signal: options.signal,
-        body: JSON.stringify(data)
-      })
-        .then((response) => {
-          if (!response?.body) {
-            throw new Error('ReadableStream not yet supported in this browser.');
-          }
-          const reader = response?.body?.getReader();
-          const decoder = new TextDecoder();
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await fetch(`${BASE_URL_API}/aichat/conversations`, {
+          method: 'POST',
+          headers: {
+            authorization: `Bearer ${options.token}`,
+            'Content-Type': 'application/json',
+            Accept: 'text/event-stream'
+          },
+          signal: options.signal,
+          body: JSON.stringify(data)
+        });
 
-          return new ReadableStream({
-            start(controller) {
-              const push = () => {
-                reader.read().then(({ done, value }) => {
-                  if (done) {
-                    controller.close();
-                    return;
-                  }
-                  controller.enqueue(decoder.decode(value, { stream: true }));
-                  push();
-                });
-              };
-              push();
-            }
-          });
-        })
-        .then((stream) => {
-          const linesStream = stream.pipeThrough(
-            new TransformStream({
-              transform(chunk, controller) {
-                chunk.split('\n').forEach((line: string) => {
-                  if (line.trim()) {
-                    controller.enqueue(line);
-                  }
-                });
-              }
-            })
-          );
+        if (!response.body) throw new Error('ReadableStream not supported.');
 
-          const reader = linesStream.getReader();
-          let accumulatedData = '';
-          let updateTimeout: number | null = null;
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let finalAnswer = '';
+        let id: string | undefined;
+        let buffer = '';
 
-          reader.read().then(function processText({ done, value }) {
-            if (done) {
-              console.log('Stream complete');
-              if (options?.stream) {
-                options?.stream({
-                  answer: finalAnswer,
-                  delta_answer: '',
-                  id
-                });
-              }
-              resolve({
-                answer: finalAnswer as string,
-                delta_answer: ''
-              });
-              return;
-            }
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, { stream: true });
 
-            if (value.startsWith('data: ')) {
-              const subValue = value.substring(6);
+          const lines = buffer.split('\n');
+          buffer = lines.pop() || '';
+
+          for (const line of lines) {
+            const trimmedLine = line.trim();
+            if (!trimmedLine) continue;
+
+            if (trimmedLine.startsWith('data: ')) {
+              const subValue = trimmedLine.substring(6).trim();
               if (subValue === '[DONE]') {
-                console.log('finalAnswer', finalAnswer);
-                console.log('Stream complete');
-                if (options?.stream) {
-                  options?.stream({
-                    answer: finalAnswer,
-                    delta_answer: '',
-                    id
-                  });
-                }
-                resolve({
-                  answer: finalAnswer as string,
-                  delta_answer: ''
-                });
-              } else {
+                resolve({ answer: finalAnswer, delta_answer: '' });
+                return;
+              }
+              try {
                 const json = JSON.parse(subValue);
                 if (json.delta_answer) {
                   finalAnswer += json.delta_answer;
@@ -108,54 +61,25 @@ class ChatOperator {
                 if (json.id) {
                   id = json.id;
                 }
-
-                accumulatedData += json.delta_answer || '';
-
-                if (!updateTimeout) {
-                  updateTimeout = window.setTimeout(() => {
-                    if (options?.stream) {
-                      options?.stream({
-                        answer: finalAnswer,
-                        delta_answer: accumulatedData,
-                        id
-                      });
-                    }
-                    accumulatedData = '';
-                    updateTimeout = null;
-                  }, 0);
+                if (options?.stream) {
+                  options.stream({
+                    answer: finalAnswer,
+                    delta_answer: json.delta_answer || '',
+                    id
+                  });
                 }
+              } catch (err) {
+                console.error('JSON parse error:', err);
               }
             }
-
-            reader.read().then(processText);
-          });
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-          reject(error);
-        });
-    });
-  }
-
-  async getConversation(
-    id: string | undefined,
-    options: IChatConversationOptions
-  ): Promise<AxiosResponse<IChatConversation>> {
-    return await axios.post(
-      `/aichat/conversations`,
-      {
-        action: IChatConversationAction.RETRIEVE,
-        id: id
-      },
-      {
-        headers: {
-          'content-type': 'application/json',
-          authorization: `Bearer ${options.token}`,
-          'x-record-exempt': 'true'
-        },
-        baseURL: BASE_URL_API
+          }
+        }
+        resolve({ answer: finalAnswer, delta_answer: '' });
+      } catch (error) {
+        console.error('Error:', error);
+        reject(error);
       }
-    );
+    });
   }
 
   async getConversations(

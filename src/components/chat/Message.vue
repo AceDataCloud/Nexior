@@ -7,12 +7,7 @@
     :role="message.role"
   >
     <div class="author">
-      <el-image
-        v-if="message.role === 'assistant'"
-        src="https://cdn.acedata.cloud/7dljuv.png"
-        fit="cover"
-        class="avatar"
-      />
+      <el-image v-if="message.role === 'assistant'" :src="modelGroup.icon" fit="cover" class="avatar" />
     </div>
     <div v-if="!errorText" class="main">
       <div class="content">
@@ -161,6 +156,9 @@ export default defineComponent({
     };
   },
   computed: {
+    modelGroup() {
+      return this.$store.state.chat.modelGroup;
+    },
     errorText() {
       if (!this.message.error || !this.message.error?.code) {
         return undefined;
@@ -328,7 +326,7 @@ export default defineComponent({
   }
   .content {
     border-radius: 20px;
-    padding: 8px;
+    padding: 8px 12px;
     width: 100%;
     max-width: 800px;
     margin-bottom: 10px;

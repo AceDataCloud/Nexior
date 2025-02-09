@@ -1,7 +1,8 @@
 <template>
   <layout>
     <template #chat>
-      <model-selector class="selector" />
+      <model-selector class="selector" @select="onCreateNewConversation" />
+      {{ model }}
       <application-status
         :initializing="initializing"
         :application="application"
@@ -9,9 +10,25 @@
         :service="service"
         @refresh="$store.dispatch('chat/getApplications')"
       />
-      <div class="dialogue">
-        <introduction v-if="messages.length === 0" @draft="onDraft" />
-        <div v-else class="messages">
+      <div v-if="messages.length === 0" class="dialogue empty">
+        <div class="composer">
+          <input-box
+            :disabled="answering"
+            :question="question"
+            :references="references"
+            @update:question="question = $event"
+            @update:reason="reason = $event"
+            @update:search="search = $event"
+            @update:references="references = $event"
+            @submit="onSubmit"
+            @stop="onStop"
+          />
+          <suggestion @draft="onDraft" />
+        </div>
+        <disclaimer class="disclaimer" />
+      </div>
+      <div v-else class="dialogue">
+        <div class="messages">
           <message
             v-for="(message, messageIndex) in messages"
             :key="messageIndex"
@@ -25,17 +42,19 @@
             @restart="onRestart"
           />
         </div>
-      </div>
-      <div class="bottom">
-        <input-box
-          :disabled="answering"
-          :question="question"
-          :references="references"
-          @update:question="question = $event"
-          @update:references="references = $event"
-          @submit="onSubmit"
-          @stop="onStop"
-        />
+        <div class="composer">
+          <input-box
+            :disabled="answering"
+            :question="question"
+            :references="references"
+            @update:reason="reason = $event"
+            @update:search="search = $event"
+            @update:question="question = $event"
+            @update:references="references = $event"
+            @submit="onSubmit"
+            @stop="onStop"
+          />
+        </div>
       </div>
     </template>
   </layout>
@@ -45,14 +64,33 @@
 import axios from 'axios';
 import { defineComponent } from 'vue';
 import Message from '@/components/chat/Message.vue';
-import { ROLE_ASSISTANT, ROLE_USER } from '@/constants';
-import { IChatModel, IChatMessageState, IChatConversationResponse, IChatConversation, IChatMessage } from '@/models';
+import {
+  CHAT_MODEL_DEEPSEEK_CHAT,
+  CHAT_MODEL_DEEPSEEK_REASONER,
+  CHAT_MODEL_GPT_4_BROWSING,
+  CHAT_MODEL_GPT_4O,
+  CHAT_MODEL_GROUP_CHATGPT,
+  CHAT_MODEL_GROUP_DEEPSEEK,
+  CHAT_MODEL_O1,
+  CHAT_MODELS,
+  ROLE_ASSISTANT,
+  ROLE_USER
+} from '@/constants';
+import {
+  IChatModel,
+  IChatMessageState,
+  IChatConversationResponse,
+  IChatConversation,
+  IChatMessage,
+  IChatModelGroup
+} from '@/models';
 import InputBox from '@/components/chat/InputBox.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router';
 import { Status } from '@/models';
-import Introduction from '@/components/chat/Introduction.vue';
+import Suggestion from '@/components/chat/Suggestion.vue';
+import Disclaimer from '@/components/chat/Disclaimer.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isJSONString } from '@/utils/is';
 import { chatOperator } from '@/operators';
@@ -62,6 +100,8 @@ import { CHAT_MODEL_GPT_4_ALL, CHAT_MODEL_GPT_4_VISION } from '@/constants';
 export interface IData {
   drawer: boolean;
   question: string;
+  search: boolean;
+  reason: boolean;
   references: string[];
   answering: boolean;
   messages: IChatMessage[];
@@ -72,7 +112,8 @@ export default defineComponent({
   name: 'ChatConversation',
   components: {
     InputBox,
-    Introduction,
+    Disclaimer,
+    Suggestion,
     ModelSelector,
     Message,
     ApplicationStatus,
@@ -83,6 +124,8 @@ export default defineComponent({
       drawer: false,
       question: '',
       references: [],
+      search: false,
+      reason: false,
       answering: false,
       canceler: undefined,
       messages:
@@ -92,6 +135,9 @@ export default defineComponent({
     };
   },
   computed: {
+    modelGroup() {
+      return this.$store.state.chat.modelGroup;
+    },
     model() {
       return this.$store.state.chat.model;
     },
@@ -123,9 +169,32 @@ export default defineComponent({
     }
   },
   watch: {
+    async search(val) {
+      console.log('search changed', val);
+      const model = await this.getModelByAction();
+      if (model) {
+        await this.$store.dispatch('chat/setModel', model);
+      }
+    },
+    async reason() {
+      console.log('reason changed', this.reason);
+      const model = await this.getModelByAction();
+      if (model) {
+        await this.$store.dispatch('chat/setModel', model);
+      }
+    },
+    async modelGroup(val: IChatModelGroup) {
+      console.log('modelGroup changed', val);
+      const model = await this.getModelByAction();
+      if (model) {
+        console.log('set model', model);
+        await this.$store.dispatch('chat/setModel', model);
+      }
+    },
     model(val: IChatModel) {
+      console.log('model changed', val);
       if (val) {
-        this.onModelChanged();
+        this.$store.dispatch('chat/setModel', val);
       }
     },
     conversationId(val: string) {
@@ -143,8 +212,55 @@ export default defineComponent({
     await this.onGetApplication();
     await this.onGetConversations();
     await this.onScrollDown();
+
+    // initialize model
+    const model = await this.getModel();
+    if (model) {
+      console.log('set model', model);
+      await this.$store.dispatch('chat/setModel', model);
+    }
+    // initialize model group
+    const modelGroup = await this.getModelGroup();
+    if (modelGroup) {
+      console.log('set model group', modelGroup);
+      await this.$store.dispatch('chat/setModelGroup', modelGroup);
+    }
   },
   methods: {
+    async getModel() {
+      return (await this.getModelByConversation()) || (await this.getModelByAction());
+    },
+    async getModelByConversation() {
+      if (this.conversationId && this.conversation?.model) {
+        const modelName = this.conversation.model;
+        return CHAT_MODELS.find((model: IChatModel) => model.name === modelName);
+      }
+    },
+    async getModelByAction() {
+      if (this.modelGroup.name === CHAT_MODEL_GROUP_CHATGPT.name) {
+        if (this.reason) {
+          return CHAT_MODEL_O1;
+        } else if (this.search) {
+          return CHAT_MODEL_GPT_4_BROWSING;
+        } else if (this.references.length > 0) {
+          return CHAT_MODEL_GPT_4_ALL;
+        }
+        return CHAT_MODEL_GPT_4O;
+      } else if (this.modelGroup.name === CHAT_MODEL_GROUP_DEEPSEEK.name) {
+        if (this.reason) {
+          return CHAT_MODEL_DEEPSEEK_REASONER;
+        }
+        return CHAT_MODEL_DEEPSEEK_CHAT;
+      }
+    },
+    async getModelGroup() {
+      const currentModel = this.model;
+      if (CHAT_MODEL_GROUP_CHATGPT.models.map((item) => item.name).includes(currentModel.name)) {
+        return CHAT_MODEL_GROUP_CHATGPT;
+      } else if (CHAT_MODEL_GROUP_DEEPSEEK.models.map((item) => item.name).includes(currentModel.name)) {
+        return CHAT_MODEL_GROUP_DEEPSEEK;
+      }
+    },
     async onGetService() {
       console.debug('start onGetService');
       await this.$store.dispatch('chat/getService');
@@ -353,14 +469,15 @@ export default defineComponent({
         });
     },
     async onCreateNewConversation() {
+      console.log('onCreateNewConversation');
       await this.$router.push({
         name: ROUTE_CHAT_CONVERSATION_NEW
       });
     },
-    async onModelChanged() {
-      await this.onCreateNewConversation();
-      await this.$store.dispatch('chat/getApplications');
-    },
+    // async onModelChanged() {
+    //   await this.onCreateNewConversation();
+    //   await this.$store.dispatch('chat/getApplications');
+    // },
     // Send a message
     async onSubmit() {
       if (this.references.length > 0) {
@@ -538,16 +655,39 @@ export default defineComponent({
 }
 
 .dialogue {
+  display: flex;
+  flex-direction: column;
   flex: 1;
   width: 100%;
   overflow-y: auto;
   position: relative;
   padding: 0 calc(50% - 400px);
+  .disclaimer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+  }
+  &.empty {
+    position: relative;
+    .composer {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
   .messages {
     padding-top: 10px;
+    flex: 1;
     .message {
       margin-bottom: 15px;
     }
+  }
+  .composer {
+    height: fit-content;
   }
 }
 

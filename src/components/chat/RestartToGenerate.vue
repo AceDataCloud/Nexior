@@ -1,5 +1,5 @@
 <template>
-  <el-tooltip effect="dark" :content="$t('common.button.restart')" placement="top-start">
+  <el-tooltip effect="dark" :content="$t('common.button.restart')" placement="bottom">
     <font-awesome-icon icon="fa-solid fa-sync" class="icon-sync" @click="onRestart" />
   </el-tooltip>
 </template>

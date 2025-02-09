@@ -1,7 +1,8 @@
-import { IApplication, IChatConversation, IChatModel, ICredential, IService, Status } from '@/models';
+import { IApplication, IChatConversation, IChatModel, IChatModelGroup, ICredential, IService, Status } from '@/models';
 
 export interface IChatState {
   model: IChatModel;
+  modelGroup: IChatModelGroup;
   applications: IApplication[] | undefined;
   application: IApplication | undefined;
   service: IService | undefined;

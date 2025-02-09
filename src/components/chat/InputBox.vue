@@ -9,19 +9,27 @@
       :disabled="!canUpload"
       name="file"
       :show-file-list="true"
-      :limit="1"
+      :limit="10"
       :multiple="false"
       :action="uploadUrl"
       :on-exceed="onExceed"
       :on-error="onError"
       :headers="headers"
     >
-      <el-tooltip class="box-item" effect="dark" :content="$t('chat.message.uploadFile')" placement="top">
+      <el-tooltip class="box-item" effect="dark" :content="$t('chat.message.uploadFile')" placement="bottom">
         <span class="btn btn-upload">
-          <font-awesome-icon icon="fa-solid fa-paperclip" class="icon icon-attachment" />
+          <font-awesome-icon icon="fa-solid fa-plus" class="icon icon-attachment" />
         </span>
       </el-tooltip>
     </el-upload>
+    <span :class="{ btn: true, 'btn-search': true, active: search, disabled: !canSearch }" @click="search = !search">
+      <font-awesome-icon icon="fa-solid fa-globe" class="icon icon-search" />
+      {{ $t('chat.button.search') }}
+    </span>
+    <span :class="{ btn: true, 'btn-reason': true, active: reason, disabled: !canReason }" @click="reason = !reason">
+      <font-awesome-icon icon="fa-regular fa-lightbulb" class="icon icon-reason" />
+      {{ $t('chat.button.thinkDeeper') }}
+    </span>
     <span
       v-show="!disabled"
       :class="{
@@ -42,7 +50,7 @@
       }"
       @click="onStop"
     >
-      <font-awesome-icon icon="fa-solid fa-stop-circle" class="icon icon-stop" />
+      <font-awesome-icon icon="fa-solid fa-stop" class="icon icon-stop" />
     </span>
     <!-- add this textarea -->
     <textarea
@@ -56,7 +64,6 @@
       @input="adjustTextareaHeight"
     ></textarea>
   </div>
-  <p class="info">{{ $t('chat.message.howToUse') }}</p>
 </template>
 
 <script lang="ts">
@@ -65,7 +72,6 @@ import { ElMessage, ElTooltip, ElUpload } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IChatModel } from '@/models';
 import { getBaseUrlPlatform } from '@/utils';
-import { CHAT_MODEL_GPT_4_ALL, CHAT_MODEL_GPT_4_VISION } from '@/constants';
 
 export default defineComponent({
   name: 'InputBox',
@@ -90,12 +96,14 @@ export default defineComponent({
       required: true
     }
   },
-  emits: ['update:question', 'update:references', 'submit', 'stop'],
+  emits: ['update:question', 'update:references', 'submit', 'stop', 'update:search', 'update:reason'],
   data() {
     return {
       inputHeight: '35px', //add inputHeight
       questionValue: this.question,
       fileList: [],
+      search: false,
+      reason: false,
       uploadUrl: getBaseUrlPlatform() + '/api/v1/files/'
     };
   },
@@ -110,7 +118,13 @@ export default defineComponent({
       return this.fileList.map((file: UploadFile) => file?.response?.file_url);
     },
     canUpload() {
-      return [CHAT_MODEL_GPT_4_VISION.name, CHAT_MODEL_GPT_4_ALL.name].includes(this.model.name);
+      return !this.search && !this.reason;
+    },
+    canSearch() {
+      return !this.reason && !this.urls.length;
+    },
+    canReason() {
+      return !this.search && !this.urls.length;
     },
     model(): IChatModel {
       return this.$store.state.chat.model;
@@ -119,6 +133,12 @@ export default defineComponent({
   watch: {
     urls(val) {
       this.$emit('update:references', val);
+    },
+    search(val: boolean) {
+      this.$emit('update:search', val);
+    },
+    reason(val: boolean) {
+      this.$emit('update:reason', val);
     },
     questionValue(val: string) {
       this.$emit('update:question', val);
@@ -169,15 +189,14 @@ export default defineComponent({
 <style lang="scss">
 textarea.input {
   font-size: 14px;
-  min-height: 35px;
-  max-height: 350px;
+  min-height: 55px;
+  max-height: 150px;
   border: none;
   background: none;
   box-shadow: none;
   resize: none;
   line-height: 25px;
   width: calc(100% - 80px);
-  margin-left: 30px;
   font-family: var(--el-font-family);
   padding-top: 6px;
 }
@@ -198,8 +217,8 @@ textarea.input:focus {
   }
   .el-upload-list {
     position: absolute;
-    width: 400px;
-    bottom: 55px;
+    width: 100%;
+    bottom: 135px;
   }
 
   .el-textarea.is-disabled .el-textarea__inner {
@@ -215,7 +234,7 @@ textarea.input:focus {
   margin: auto;
   position: relative;
   border-radius: 20px;
-  background: var(--el-bg-color-page);
+  border: 1px solid var(--el-border-color-lighter);
   padding: 5px;
   .upload {
     display: inline-block;
@@ -230,57 +249,95 @@ textarea.input:focus {
   }
   .input {
     border: none;
-    width: calc(100% - 80px);
-    margin-left: 35px;
+    width: calc(100% - 16px);
+    margin-left: 8px;
+    margin-top: 5px;
+    font-size: 16px;
+    margin-bottom: 50px;
   }
   .btn {
     display: block;
     z-index: 100;
     cursor: pointer;
-    bottom: 15px;
+    border: 1px solid var(--el-border-color-lighter);
+    width: fit-content;
     position: absolute;
+    bottom: 15px;
+    height: 36px;
+    line-height: 36px;
+    user-select: none;
+    &.disabled {
+      cursor: not-allowed;
+      pointer-events: none;
+      color: var(--el-text-color-disabled) !important;
+    }
     &.btn-upload {
       left: 15px;
+      border-radius: 50%;
+      width: 36px;
+      text-align: center;
+      color: var(--el-text-color-secondary);
       .icon-attachment {
         font-size: 16px;
         color: var(--el-text-color-primary);
       }
     }
-    &.btn-send {
-      right: 15px;
-      &.disabled {
-        .icon-send {
-          color: var(--el-text-color-disabled);
-        }
-        cursor: not-allowed;
+    &.btn-search {
+      left: 60px;
+      color: var(--el-text-color-primary);
+      border-radius: 20px;
+      padding: 0 10px;
+      font-size: 16px;
+      &.active {
+        border: 1px solid var(--el-color-primary);
+        color: var(--el-color-primary);
       }
-      .icon-send {
+      .icon-search {
         font-size: 16px;
-        color: var(--el-text-color-primary);
+      }
+    }
+    &.btn-reason {
+      left: 145px;
+      color: var(--el-text-color-primary);
+      border-radius: 20px;
+      padding: 0 10px;
+      font-size: 16px;
+      &.active {
+        border: 1px solid var(--el-color-primary);
+        color: var(--el-color-primary);
+      }
+      .icon-reason {
+        font-size: 16px;
+      }
+    }
+    &.btn-send {
+      bottom: 15px;
+      right: 15px;
+      border-radius: 50%;
+      width: 36px;
+      text-align: center;
+      background-color: var(--el-color-black);
+      color: var(--el-color-white);
+      font-size: 16px;
+      &.disabled {
+        display: none;
+        cursor: not-allowed;
       }
     }
     &.btn-stop {
-      right: 15px; // Adjust position if needed
+      bottom: 15px;
+      right: 15px;
+      border-radius: 50%;
+      width: 36px;
+      text-align: center;
+      background-color: var(--el-color-black);
+      color: var(--el-color-white);
+      font-size: 16px;
       &.disabled {
-        .icon-stop {
-          color: var(--el-text-color-disabled);
-        }
+        display: none;
         cursor: not-allowed;
-      }
-      .icon-stop {
-        font-size: 16px;
-        color: var(--el-text-color-primary);
       }
     }
   }
-}
-
-.info {
-  display: block;
-  font-size: 12px;
-  color: var(--el-text-color-secondary);
-  margin-top: 5px;
-  text-align: center;
-  margin-bottom: 0;
 }
 </style>

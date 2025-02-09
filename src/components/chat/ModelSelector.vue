@@ -1,26 +1,22 @@
 <template>
   <div class="selector">
     <el-dropdown trigger="click" popper-class="popper">
-      <div>
-        <span class="name">{{ model?.getDisplayName() }}</span>
+      <div class="flex align-center justify-center">
+        <span class="name">{{ modelGroup?.getDisplayName() }}</span>
         <span class="angle">
           <font-awesome-icon icon="fa-solid fa-angle-down" />
         </span>
       </div>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item
-            v-for="(option, optionKey) in options"
-            :key="optionKey"
-            @click="onCommandChange(option.model)"
-          >
+          <el-dropdown-item v-for="(option, optionKey) in options" :key="optionKey" @click="onCommandChange(option)">
             <div class="item">
-              <div class="icon" :style="{ color: option.color }">
-                <font-awesome-icon :icon="option.icon" />
+              <div class="icon">
+                <img :src="option.icon" />
               </div>
               <div class="info">
-                <p class="name">{{ option.model.getDisplayName() }}</p>
-                <p class="description">{{ option.model.getDescription() }}</p>
+                <p class="name">{{ option.getDisplayName() }}</p>
+                <p class="description">{{ option.getDescription() }}</p>
               </div>
             </div>
           </el-dropdown-item>
@@ -34,15 +30,12 @@
 import { defineComponent } from 'vue';
 import { ElDropdown, ElDropdownItem, ElDropdownMenu } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { IChatModel } from '@/models';
-import {
-  CHAT_MODEL_GPT_3_5,
-  CHAT_MODEL_GPT_3_5_BROWSING,
-  CHAT_MODEL_GPT_4,
-  CHAT_MODEL_GPT_4_BROWSING,
-  CHAT_MODEL_GPT_4_VISION,
-  CHAT_MODEL_GPT_4_ALL
-} from '@/constants';
+import { IChatModelGroup } from '@/models';
+import { CHAT_MODEL_GROUP_CHATGPT, CHAT_MODEL_GROUP_DEEPSEEK } from '@/constants';
+
+interface IData {
+  options: IChatModelGroup[];
+}
 
 export default defineComponent({
   name: 'ModelSelector',
@@ -53,60 +46,20 @@ export default defineComponent({
     FontAwesomeIcon
   },
   emits: ['update:modelValue', 'select'],
-  data() {
+  data(): IData {
     return {
-      options: [
-        {
-          icon: 'fa-solid fa-bolt',
-          color: '#ff9900',
-          model: CHAT_MODEL_GPT_3_5
-        },
-        {
-          icon: 'fa-solid fa-bolt',
-          color: '#ff9900',
-          model: CHAT_MODEL_GPT_3_5_BROWSING
-        },
-        {
-          icon: 'fa-solid fa-wand-magic-sparkles',
-          color: '#ce65e6',
-          model: CHAT_MODEL_GPT_4
-        },
-        {
-          icon: 'fa-solid fa-wand-magic-sparkles',
-          color: '#ce65e6',
-          model: CHAT_MODEL_GPT_4_BROWSING
-        },
-        {
-          icon: 'fa-solid fa-wand-magic-sparkles',
-          color: '#ce65e6',
-          model: CHAT_MODEL_GPT_4_VISION
-        },
-        {
-          icon: 'fa-solid fa-wand-magic-sparkles',
-          color: '#ce65e6',
-          model: CHAT_MODEL_GPT_4_ALL
-        }
-      ]
+      options: [CHAT_MODEL_GROUP_CHATGPT, CHAT_MODEL_GROUP_DEEPSEEK]
     };
   },
   computed: {
-    model() {
-      const modelName = this.$store.state.chat.model.name;
-      const model = [
-        CHAT_MODEL_GPT_3_5,
-        CHAT_MODEL_GPT_3_5_BROWSING,
-        CHAT_MODEL_GPT_4,
-        CHAT_MODEL_GPT_4_BROWSING,
-        CHAT_MODEL_GPT_4_VISION,
-        CHAT_MODEL_GPT_4_ALL
-      ].find((model) => model.name === modelName);
-      return model;
+    modelGroup() {
+      return this.$store.state.chat.modelGroup;
     }
   },
   methods: {
-    onCommandChange(command: IChatModel) {
-      this.$emit('select', command);
-      this.$store.dispatch('chat/setModel', command);
+    onCommandChange(modelGroup: IChatModelGroup) {
+      this.$emit('select', modelGroup);
+      this.$store.dispatch('chat/setModelGroup', modelGroup);
     }
   }
 });
@@ -142,19 +95,17 @@ export default defineComponent({
   flex-direction: row;
 
   .icon {
-    width: 15px;
     display: flex;
-    align-items: flex-start;
     justify-content: center;
-    margin-right: 5px;
-    margin-top: 3px;
-    &.base {
-      color: #ff9900;
-    }
-    &.plus {
-      color: #ce65e6;
+    align-items: center;
+    margin-right: 10px;
+    img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
     }
   }
+
   .info {
     width: calc(100% - 15px);
     .name {

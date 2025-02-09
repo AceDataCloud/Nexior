@@ -190,10 +190,8 @@ export default defineComponent({
   padding: 10px;
   width: 250px;
   height: 100%;
-
-  @media (max-width: 767px) {
-    border-right: none;
-  }
+  background-color: var(--el-bg-color-page);
+  border-right: none;
 
   .conversations {
     width: 100%;
