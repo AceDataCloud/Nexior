@@ -17,7 +17,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { color } from '@codemirror/theme-one-dark';
 
 export default defineComponent({
   name: 'ConversationIntroductionItem',
@@ -47,7 +46,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .item {
-  height: 100px;
+  height: 80px;
   font-size: 14px;
   background-color: var(--el-color-color);
   color: var(--el-text-color-primary);

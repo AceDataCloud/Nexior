@@ -1,8 +1,8 @@
 <template>
-  <div class="introduction">
+  <div class="suggestion">
     <el-row class="items" justify="center" :gutter="15">
-      <el-col v-for="(item, itemKey) in items" :key="itemKey" :md="6" :sm="12" :xs="12">
-        <introduction-item
+      <el-col v-for="(item, itemKey) in items" :key="itemKey" :md="8" :sm="12" :xs="12">
+        <suggestion-item
           :content="item.content"
           :icon="item.icon"
           :color="item.color"
@@ -16,13 +16,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import IntroductionItem from './IntroductionItem.vue';
+import SuggestionItem from './SuggestionItem.vue';
 import { ElRow, ElCol } from 'element-plus';
 
 export default defineComponent({
-  name: 'ConversationIntroduction',
+  name: 'Suggestion',
   components: {
-    IntroductionItem,
+    SuggestionItem,
     ElRow,
     ElCol
   },
@@ -49,8 +49,30 @@ export default defineComponent({
           icon: 'fa-solid fa-plane-departure',
           content: this.$t('chat.message.question4'),
           color: 'rgb(237, 98, 98)'
+        },
+        {
+          icon: 'fa-solid fa-bolt',
+          content: this.$t('chat.message.question5'),
+          color: 'rgb(203, 139, 208)'
+        },
+        {
+          icon: 'fa-solid fa-diamond',
+          content: this.$t('chat.message.question6'),
+          color: 'rgb(118, 208, 235)'
+        },
+        {
+          icon: 'fa-solid fa-fire',
+          content: this.$t('chat.message.question7'),
+          color: 'rgb(226, 197, 65)'
+        },
+        {
+          icon: 'fa-solid fa-magic',
+          content: this.$t('chat.message.question8'),
+          color: 'rgb(237, 98, 98)'
         }
-      ].sort(() => Math.random() - 0.5)
+      ]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3)
     };
   },
   computed: {}
@@ -58,28 +80,16 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.introduction {
-  width: 100%;
-  height: 100%;
-  flex: 1;
+.suggestion {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 150px;
+  width: 100%;
 
   .items {
     max-width: 800px;
     width: 100%;
-    margin: auto;
-  }
-}
-
-@media (max-width: 767px) {
-  .introduction {
-    position: relative;
-    top: initial;
-    left: initial;
-    transform: initial;
-    width: 90%;
     margin: auto;
   }
 }

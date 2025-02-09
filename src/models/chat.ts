@@ -7,7 +7,13 @@ import {
   CHAT_MODEL_NAME_GPT_4,
   CHAT_MODEL_NAME_GPT_4_BROWSING,
   CHAT_MODEL_NAME_GPT_4_VISION,
-  CHAT_MODEL_NAME_GPT_4_ALL
+  CHAT_MODEL_NAME_GPT_4_ALL,
+  CHAT_MODEL_NAME_GPT_4O,
+  CHAT_MODEL_NAME_O1,
+  CHAT_MODEL_NAME_O1_MINI,
+  CHAT_MODEL_NAME_O3_MINI,
+  CHAT_MODEL_NAME_DEEPSEEK_CHAT,
+  CHAT_MODEL_NAME_DEEPSEEK_REASONER
 } from '@/constants';
 
 export type IChatModelName =
@@ -16,12 +22,27 @@ export type IChatModelName =
   | typeof CHAT_MODEL_NAME_GPT_4
   | typeof CHAT_MODEL_NAME_GPT_4_BROWSING
   | typeof CHAT_MODEL_NAME_GPT_4_VISION
-  | typeof CHAT_MODEL_NAME_GPT_4_ALL;
+  | typeof CHAT_MODEL_NAME_GPT_4_ALL
+  | typeof CHAT_MODEL_NAME_GPT_4O
+  | typeof CHAT_MODEL_NAME_DEEPSEEK_CHAT
+  | typeof CHAT_MODEL_NAME_DEEPSEEK_REASONER
+  | typeof CHAT_MODEL_NAME_O1
+  | typeof CHAT_MODEL_NAME_O1_MINI
+  | typeof CHAT_MODEL_NAME_O3_MINI;
 
 export interface IChatModel {
   name: IChatModelName;
+  icon: string;
   getDisplayName: () => string;
   getDescription: () => string;
+}
+
+export interface IChatModelGroup {
+  name: 'chatgpt' | 'deepseek';
+  icon: string;
+  getDisplayName: () => string;
+  getDescription: () => string;
+  models: IChatModel[];
 }
 
 interface IError {
@@ -52,6 +73,7 @@ export interface IChatMessage {
 
 export interface IChatConversation {
   id?: string;
+  model?: string;
   messages?: IChatMessage[];
   title?: string;
   deleting?: boolean;
