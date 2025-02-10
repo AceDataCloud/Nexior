@@ -5,6 +5,7 @@ import { IRootState } from '../common/models';
 import { IApplication, ICredential, IHailuoConfig, IHailuoTask, IService, IApplicationType } from '@/models';
 import { Status } from '@/models/common';
 import { HAILUO_SERVICE_ID } from '@/constants';
+import { mergeAndSortLists } from '@/utils/merge';
 
 export const resetAll = ({ commit }: ActionContext<IHailuoState, IRootState>): void => {
   commit('resetAll');
@@ -113,7 +114,12 @@ export const getService = async ({ commit, state }: ActionContext<IHailuoState, 
 
 export const getTasks = async (
   { commit, state, rootState }: ActionContext<IHailuoState, IRootState>,
-  { offset, limit }: { offset?: number; limit?: number }
+  {
+    offset,
+    limit,
+    createdAtMin,
+    createdAtMax
+  }: { offset?: number; limit?: number; createdAtMin?: number; createdAtMax?: number }
 ): Promise<IHailuoTask[]> => {
   return new Promise((resolve, reject) => {
     console.debug('start to get tasks', offset, limit);
@@ -126,6 +132,8 @@ export const getTasks = async (
       .tasks(
         {
           userId: rootState?.user?.id,
+          createdAtMin,
+          createdAtMax,
           type: 'videos'
         },
         {
@@ -133,8 +141,15 @@ export const getTasks = async (
         }
       )
       .then((response) => {
-        console.debug('get imagine tasks success', response.data.items);
-        commit('setTasksItems', response.data.items);
+        console.debug('get videos tasks success', response.data.items);
+        // merge with existing tasks
+        const existingItems = state?.tasks?.items || [];
+        console.debug('existing items', existingItems);
+        const newItems = response.data.items || [];
+        console.debug('new items', newItems);
+        // sort and de-duplicate using created_at
+        const mergedItems = mergeAndSortLists(existingItems, newItems);
+        commit('setTasksItems', mergedItems);
         commit('setTasksTotal', response.data.count);
         resolve(response.data.items);
       })

@@ -35,7 +35,7 @@ export interface IHailuoGenerateResponse {
 
 export interface IHailuoTask {
   id: string;
-  created_at?: string;
+  created_at?: number;
   request?: IHailuoGenerateRequest;
   response?: IHailuoGenerateResponse;
 }
