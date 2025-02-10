@@ -137,7 +137,6 @@ export default defineComponent({
           result.push(audio);
         });
       }
-      console.log('videos', result);
       return result;
     }
   },
