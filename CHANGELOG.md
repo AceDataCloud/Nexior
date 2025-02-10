@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sun, 09 Feb 2025 18:33:48 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Feb 2025 14:21:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.14.3
+
+Mon, 10 Feb 2025 14:21:28 GMT
+
+### Patches
+
+- add pika hailuo pagination (1348977728@qq.com)
 
 ## 2.14.2
 
