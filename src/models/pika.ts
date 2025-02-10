@@ -43,7 +43,7 @@ export interface IPikaGenerateResponse {
 
 export interface IPikaTask {
   id: string;
-  created_at?: string;
+  created_at?: number;
   request?: IPikaGenerateRequest;
   response?: IPikaGenerateResponse;
 }
