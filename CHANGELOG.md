@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Mon, 10 Feb 2025 14:21:28 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Feb 2025 14:21:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.14.4
+
+Tue, 11 Feb 2025 14:21:11 GMT
+
+### Patches
+
+- update player slider style (office@acedata.cloud)
+- update deepseek experience (office@acedata.cloud)
 
 ## 2.14.3
 
