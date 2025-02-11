@@ -57,7 +57,7 @@ const onSliderChange = (val: number) =>
     }
 
     .el-slider__button-wrapper {
-      @apply opacity-0 transition-opacity;
+      // @apply opacity-0 transition-opacity;
       width: 10px;
       height: 10px;
       top: -10.5px;
@@ -65,14 +65,14 @@ const onSliderChange = (val: number) =>
 
     &:hover {
       .el-slider__button-wrapper {
-        @apply opacity-100;
+        // @apply opacity-100;
       }
     }
 
     .el-slider__button {
       width: 8px;
       height: 8px;
-      @apply bg-emerald-400;
+      // @apply bg-emerald-400;
     }
   }
 }
