@@ -58,7 +58,7 @@ export interface IQrartGenerateResponse {
 
 export interface IQrartTask {
   id: string;
-  created_at?: string;
+  created_at?: number;
   request?: IQrartGenerateRequest;
   response?: IQrartGenerateResponse;
 }

@@ -141,19 +141,19 @@ export default defineComponent({
     }
   },
   methods: {
-    onExtend(event: MouseEvent, response: IPikaGenerateResponse) {
-      event.stopPropagation();
-      // extend url here
-      console.debug('set config', response);
-      this.$store.commit('pika/setConfig', {
-        ...this.$store.state.pika?.config,
-        video_id: response.video_id,
-        prompt: response.prompt,
-        action: 'extend',
-        thumbnail_url: response.thumbnail_url,
-        video_url: response.video_url
-      });
-    },
+    // onExtend(event: MouseEvent, response: IPikaGenerateResponse) {
+    //   event.stopPropagation();
+    //   // extend url here
+    //   console.debug('set config', response);
+    //   this.$store.commit('pika/setConfig', {
+    //     ...this.$store.state.pika?.config,
+    //     video_id: response.video_id,
+    //     prompt: response.prompt,
+    //     action: 'extend',
+    //     thumbnail_url: response.thumbnail_url,
+    //     video_url: response.video_url
+    //   });
+    // },
     onDownload(event: MouseEvent, video_url: string) {
       event.stopPropagation();
       console.log('on download');

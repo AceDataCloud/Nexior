@@ -39,7 +39,7 @@ export interface IHeadshotsTask {
   _id: string;
   api_id?: string;
   application_id?: string;
-  created_at?: string;
+  created_at?: number;
   credential_id?: string;
   trace_id?: string;
   user_id?: string;

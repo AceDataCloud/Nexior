@@ -5,6 +5,7 @@ import { IRootState } from '../common/models';
 import { IApplication, IApplicationType, ICredential, IQrartConfig, IQrartTask, IService } from '@/models';
 import { Status } from '@/models/common';
 import { QRART_SERVICE_ID } from '@/constants';
+import { mergeAndSortLists } from '@/utils/merge';
 
 export const resetAll = ({ commit }: ActionContext<IQrartState, IRootState>): void => {
   commit('resetAll');
@@ -113,7 +114,12 @@ export const getService = async ({ commit, state }: ActionContext<IQrartState, I
 
 export const getTasks = async (
   { commit, state, rootState }: ActionContext<IQrartState, IRootState>,
-  { offset, limit }: { offset?: number; limit?: number }
+  {
+    offset,
+    limit,
+    createdAtMin,
+    createdAtMax
+  }: { offset?: number; limit?: number; createdAtMin?: number; createdAtMax?: number }
 ): Promise<IQrartTask[]> => {
   return new Promise((resolve, reject) => {
     console.debug('start to get tasks', offset, limit);
@@ -125,15 +131,24 @@ export const getTasks = async (
     qrartOperator
       .tasks(
         {
-          userId: rootState?.user?.id
+          userId: rootState?.user?.id,
+          createdAtMin,
+          createdAtMax
         },
         {
           token
         }
       )
       .then((response) => {
-        console.debug('get imagine tasks success', response.data.items);
-        commit('setTasksItems', response.data.items);
+        console.debug('get qrart tasks success', response.data.items);
+        // merge with existing tasks
+        const existingItems = state?.tasks?.items || [];
+        console.debug('existing items', existingItems);
+        const newItems = response.data.items || [];
+        console.debug('new items', newItems);
+        // sort and de-duplicate using created_at
+        const mergedItems = mergeAndSortLists(existingItems, newItems);
+        commit('setTasksItems', mergedItems);
         commit('setTasksTotal', response.data.count);
         resolve(response.data.items);
       })

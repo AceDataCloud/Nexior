@@ -12,7 +12,7 @@
         class="mb-4"
         @refresh="onGetApplication"
       />
-      <recent-panel class="panel recent" />
+      <recent-panel class="panel recent" @reach-top="onReachTop" />
     </template>
   </layout>
 </template>
@@ -34,6 +34,7 @@ const CALLBACK_URL = 'https://webhook.acedata.cloud/qrart';
 interface IData {
   task: IQrartTask | undefined;
   job: number;
+  timer: NodeJS.Timer;
 }
 
 export default defineComponent({
@@ -47,7 +48,9 @@ export default defineComponent({
   data(): IData {
     return {
       task: undefined,
-      job: 0
+      job: 0,
+      // @ts-ignore
+      timer: undefined
     };
   },
   computed: {
@@ -71,6 +74,21 @@ export default defineComponent({
     },
     application() {
       return this.$store.state.qrart.application;
+    },
+    tasks() {
+      return this.$store.state.qrart.tasks;
+    }
+  },
+  watch: {
+    tasks: {
+      handler(value, oldValue) {
+        // scroll down if new tasks are added
+        if (value?.items?.length > oldValue?.items?.length) {
+          console.debug('new tasks detected');
+          // this.onScrollDown();
+        }
+      },
+      deep: true
     }
   },
   async mounted() {
@@ -78,7 +96,7 @@ export default defineComponent({
     await this.onGetApplication();
     await this.onScrollDown();
     await this.onGetTasks();
-    await this.onScrollDown();
+    // await this.onScrollDown();
     // @ts-ignore
     this.job = setInterval(() => {
       this.onGetTasks();
@@ -86,8 +104,15 @@ export default defineComponent({
   },
   async unmounted() {
     clearInterval(this.job);
+    clearInterval(this.timer);
   },
   methods: {
+    async onReachTop() {
+      console.debug('reached top');
+      await this.onGetTasks({
+        createdAtMax: this.tasks?.items?.[0]?.created_at
+      });
+    },
     async onGetService() {
       console.debug('start onGetService');
       await this.$store.dispatch('qrart/getService');
@@ -124,14 +149,18 @@ export default defineComponent({
         }
       }, 500);
     },
-    async onGetTasks() {
+    async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number }) {
       if (this.loading) {
         console.debug('loading');
         return;
       }
+      console.debug('start onGetTasks', payload);
+      const { limit = 5, createdAtMin, createdAtMax } = payload || {};
+      console.debug('limit', limit, 'createdAtMin', createdAtMin, 'createdAtMax', createdAtMax);
       await this.$store.dispatch('qrart/getTasks', {
-        limit: 30,
-        offset: 0
+        limit,
+        createdAtMin,
+        createdAtMax
       });
     },
     async onGenerate() {
@@ -181,8 +210,10 @@ export default defineComponent({
           }
         })
         .finally(async () => {
-          await this.onGetTasks();
-          await this.onScrollDown();
+          setTimeout(async () => {
+            await this.onGetTasks();
+            await this.onScrollDown();
+          }, 1000);
         });
     }
   }
