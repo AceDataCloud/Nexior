@@ -26,12 +26,17 @@
         </div>
         <div class="composer">
           <input-box
+            v-model:is-search-active="isSearchActive"
+            v-model:is-reason-active="isReasonActive"
+            v-model:is-search-enabled="isSearchEnabled"
+            v-model:is-reason-enabled="isReasonEnabled"
+            v-model:is-upload-enabled="isUploadEnabled"
             :disabled="answering"
             :question="question"
             :references="references"
+            :upload="upload"
             @update:question="question = $event"
-            @update:reason="reason = $event"
-            @update:search="search = $event"
+            @update:upload="upload = $event"
             @update:references="references = $event"
             @submit="onSubmit"
             @stop="onStop"
@@ -55,7 +60,6 @@ import {
   CHAT_MODEL_GPT_4O,
   CHAT_MODEL_GROUP_CHATGPT,
   CHAT_MODEL_GROUP_DEEPSEEK,
-  CHAT_MODEL_O1,
   CHAT_MODEL_O1_MINI,
   CHAT_MODELS,
   ROLE_ASSISTANT,
@@ -85,8 +89,12 @@ import { CHAT_MODEL_GPT_4_ALL, CHAT_MODEL_GPT_4_VISION } from '@/constants';
 export interface IData {
   drawer: boolean;
   question: string;
-  search: boolean;
-  reason: boolean;
+  upload: boolean;
+  isSearchActive: boolean;
+  isReasonActive: boolean;
+  isSearchEnabled: boolean;
+  isReasonEnabled: boolean;
+  isUploadEnabled: boolean;
   references: string[];
   answering: boolean;
   messages: IChatMessage[];
@@ -109,8 +117,12 @@ export default defineComponent({
       drawer: false,
       question: '',
       references: [],
-      search: false,
-      reason: false,
+      upload: false,
+      isSearchActive: false,
+      isReasonActive: false,
+      isSearchEnabled: true,
+      isReasonEnabled: true,
+      isUploadEnabled: true,
       answering: false,
       canceler: undefined,
       messages:
@@ -154,7 +166,7 @@ export default defineComponent({
     }
   },
   watch: {
-    async search(val) {
+    async isSearchActive(val) {
       console.log('search changed', val);
       const model = await this.getModelByAction();
       if (model) {
@@ -168,8 +180,8 @@ export default defineComponent({
     //     await this.$store.dispatch('chat/setModel', model);
     //   }
     // },
-    async reason() {
-      console.log('reason changed', this.reason);
+    async isReasonActive(val) {
+      console.log('reason changed', val);
       const model = await this.getModelByAction();
       if (model) {
         await this.$store.dispatch('chat/setModel', model);
@@ -181,6 +193,9 @@ export default defineComponent({
       if (model) {
         console.log('set model', model);
         await this.$store.dispatch('chat/setModel', model);
+      }
+      if (val.name === CHAT_MODEL_GROUP_DEEPSEEK.name) {
+        this.upload = false;
       }
     },
     model(val: IChatModel) {
@@ -197,7 +212,6 @@ export default defineComponent({
           this.conversations?.find((conversation: IChatConversation) => conversation.id === val)?.messages || [];
         this.onScrollDown();
       }
-      console.log('reason changed', this.reason);
       const model = await this.getModelByConversation();
       if (model) {
         await this.$store.dispatch('chat/setModel', model);
@@ -240,16 +254,16 @@ export default defineComponent({
     },
     async getModelByAction() {
       if (this.modelGroup.name === CHAT_MODEL_GROUP_CHATGPT.name) {
-        if (this.reason) {
+        if (this.isReasonActive) {
           return CHAT_MODEL_O1_MINI;
-        } else if (this.search) {
+        } else if (this.isSearchActive) {
           return CHAT_MODEL_GPT_4_BROWSING;
         } else if (this.references.length > 0) {
           return CHAT_MODEL_GPT_4_ALL;
         }
         return CHAT_MODEL_GPT_4O;
       } else if (this.modelGroup.name === CHAT_MODEL_GROUP_DEEPSEEK.name) {
-        if (this.reason) {
+        if (this.isReasonActive) {
           return CHAT_MODEL_DEEPSEEK_REASONER;
         }
         return CHAT_MODEL_DEEPSEEK_CHAT;
@@ -446,7 +460,6 @@ export default defineComponent({
           if (this.messages && this.messages.length > 0) {
             this.messages[this.messages.length - 1].state = IChatMessageState.FAILED;
           }
-          console.error(error);
           if (axios.isCancel(error)) {
             this.messages[this.messages.length - 1].error = {
               code: ERROR_CODE_CANCELED
@@ -573,7 +586,7 @@ export default defineComponent({
                   lastMessage?.state !== IChatMessageState.FINISHED ? IChatMessageState.ANSWERING : lastMessage?.state
               };
               conversationId = response?.id;
-              this.onScrollDown();
+              //this.onScrollDown();
             },
             signal: this.canceler.signal
           }

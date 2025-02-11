@@ -1,35 +1,43 @@
 <template>
   <div class="input-box">
-    <el-upload
-      v-model:file-list="fileList"
-      :class="{
-        upload: true,
-        disabled: !canUpload
-      }"
-      :disabled="!canUpload"
-      name="file"
-      :show-file-list="true"
-      :limit="10"
-      :multiple="false"
-      :action="uploadUrl"
-      :on-exceed="onExceed"
-      :on-error="onError"
-      :headers="headers"
-    >
-      <el-tooltip class="box-item" effect="dark" :content="$t('chat.message.uploadFile')" placement="bottom">
-        <span class="btn btn-upload">
-          <font-awesome-icon icon="fa-solid fa-plus" class="icon icon-attachment" />
-        </span>
-      </el-tooltip>
-    </el-upload>
-    <span :class="{ btn: true, 'btn-search': true, active: search, disabled: !canSearch }" @click="search = !search">
-      <font-awesome-icon icon="fa-solid fa-globe" class="icon icon-search" />
-      {{ $t('chat.button.search') }}
-    </span>
-    <span :class="{ btn: true, 'btn-reason': true, active: reason, disabled: !canReason }" @click="reason = !reason">
-      <font-awesome-icon icon="fa-regular fa-lightbulb" class="icon icon-reason" />
-      {{ $t('chat.button.thinkDeeper') }}
-    </span>
+    <div class="tools">
+      <el-upload
+        v-model:file-list="fileList"
+        :class="{
+          upload: true,
+          disabled: !_isUploadEnabled
+        }"
+        :disabled="!_isUploadEnabled"
+        name="file"
+        :show-file-list="true"
+        :limit="10"
+        :multiple="false"
+        :action="uploadUrl"
+        :on-exceed="onExceed"
+        :on-error="onError"
+        :headers="headers"
+      >
+        <el-tooltip class="box-item" effect="dark" :content="$t('chat.message.uploadFile')" placement="bottom">
+          <span :class="{ btn: true, 'btn-upload': true, disabled: !_isUploadEnabled }">
+            <font-awesome-icon icon="fa-solid fa-plus" class="icon icon-attachment" />
+          </span>
+        </el-tooltip>
+      </el-upload>
+      <span
+        :class="{ btn: true, 'btn-search': true, active: _isSearchActive, disabled: !isSearchEnabled }"
+        @click="_isSearchActive = !_isSearchActive"
+      >
+        <font-awesome-icon icon="fa-solid fa-globe" class="icon icon-search" />
+        {{ $t('chat.button.search') }}
+      </span>
+      <span
+        :class="{ btn: true, 'btn-reason': true, active: _isReasonActive, disabled: !isReasonEnabled }"
+        @click="_isReasonActive = !_isReasonActive"
+      >
+        <font-awesome-icon icon="fa-regular fa-lightbulb" class="icon icon-reason" />
+        {{ $t('chat.button.thinkDeeper') }}
+      </span>
+    </div>
     <span
       v-show="!disabled"
       :class="{
@@ -72,6 +80,7 @@ import { ElMessage, ElTooltip, ElUpload } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IChatModel } from '@/models';
 import { getBaseUrlPlatform } from '@/utils';
+import { CHAT_MODEL_GROUP_DEEPSEEK } from '@/constants';
 
 export default defineComponent({
   name: 'InputBox',
@@ -94,20 +103,60 @@ export default defineComponent({
     question: {
       type: String,
       required: true
+    },
+    isSearchEnabled: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
+    isReasonEnabled: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
+    isUploadEnabled: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
+    isSearchActive: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    isReasonActive: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
-  emits: ['update:question', 'update:references', 'submit', 'stop', 'update:search', 'update:reason'],
+  emits: [
+    'update:question',
+    'update:references',
+    'submit',
+    'stop',
+    'update:isSearchActive',
+    'update:isReasonActive',
+    'update:isUploadEnabled',
+    'update:isSearchEnabled',
+    'update:isReasonEnabled'
+  ],
   data() {
     return {
       inputHeight: '35px', //add inputHeight
       questionValue: this.question,
       fileList: [],
-      search: false,
-      reason: false,
+      // eslint-disable-next-line vue/no-reserved-keys
+      _isSearchActive: this.isSearchActive,
+      // eslint-disable-next-line vue/no-reserved-keys
+      _isReasonActive: this.isReasonActive,
       uploadUrl: getBaseUrlPlatform() + '/api/v1/files/'
     };
   },
   computed: {
+    modelGroup() {
+      return this.$store.state.chat.modelGroup;
+    },
     headers() {
       return {
         Authorization: `Bearer ${this.$store.state.token.access}`
@@ -117,14 +166,14 @@ export default defineComponent({
       // @ts-ignore
       return this.fileList.map((file: UploadFile) => file?.response?.file_url);
     },
-    canUpload() {
-      return !this.search && !this.reason;
+    _isUploadEnabled() {
+      return !this._isSearchActive && !this._isReasonActive && this.modelGroup.name !== CHAT_MODEL_GROUP_DEEPSEEK.name;
     },
-    canSearch() {
-      return !this.reason && !this.urls.length;
+    _isSearchEnabled() {
+      return !this._isReasonActive && !this.urls.length;
     },
-    canReason() {
-      return !this.search && !this.urls.length;
+    _isReasonEnabled() {
+      return !this._isSearchActive && !this.urls.length;
     },
     model(): IChatModel {
       return this.$store.state.chat.model;
@@ -134,11 +183,20 @@ export default defineComponent({
     urls(val) {
       this.$emit('update:references', val);
     },
-    search(val: boolean) {
-      this.$emit('update:search', val);
+    _isUploadEnabled(val: boolean) {
+      this.$emit('update:isUploadEnabled', val);
     },
-    reason(val: boolean) {
-      this.$emit('update:reason', val);
+    _isSearchEnabled(val: boolean) {
+      this.$emit('update:isSearchEnabled', val);
+    },
+    _isReasonEnabled(val: boolean) {
+      this.$emit('update:isReasonEnabled', val);
+    },
+    _isSearchActive(val: boolean) {
+      this.$emit('update:isSearchActive', val);
+    },
+    _isReasonActive(val: boolean) {
+      this.$emit('update:isReasonActive', val);
     },
     questionValue(val: string) {
       this.$emit('update:question', val);
@@ -146,6 +204,16 @@ export default defineComponent({
     question(val: string) {
       if (val !== this.questionValue) {
         this.questionValue = val;
+      }
+    },
+    isReasonActive(val: boolean) {
+      if (val !== this._isReasonActive) {
+        this._isReasonActive = val;
+      }
+    },
+    isSearchActive(val: boolean) {
+      if (val !== this._isSearchActive) {
+        this._isSearchActive = val;
       }
     },
     references(val: string[]) {
@@ -241,8 +309,10 @@ textarea.input:focus {
     &.disabled {
       .btn-upload {
         cursor: not-allowed;
+        pointer-events: none;
+        color: var(--el-text-color-disabled) !important;
         .icon-attachment {
-          color: var(--el-text-color-disabled);
+          color: var(--el-text-color-disabled) !important;
         }
       }
     }
@@ -255,88 +325,82 @@ textarea.input:focus {
     font-size: 16px;
     margin-bottom: 50px;
   }
-  .btn {
-    display: block;
-    z-index: 100;
-    cursor: pointer;
-    border: 1px solid var(--el-border-color-lighter);
-    width: fit-content;
+  .tools {
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    .btn {
+      display: block;
+      margin-right: 10px;
+      z-index: 100;
+      cursor: pointer;
+      border: 1px solid var(--el-border-color-lighter);
+      width: fit-content;
+      height: 36px;
+      line-height: 36px;
+      user-select: none;
+      &.disabled {
+        cursor: not-allowed;
+        pointer-events: none;
+        color: var(--el-text-color-disabled) !important;
+      }
+      &.btn-upload {
+        border-radius: 50%;
+        width: 36px;
+        text-align: center;
+        color: var(--el-text-color-secondary);
+        .icon-attachment {
+          font-size: 16px;
+          color: var(--el-text-color-primary);
+        }
+      }
+      &.btn-search {
+        color: var(--el-text-color-primary);
+        border-radius: 20px;
+        padding: 0 10px;
+        font-size: 16px;
+        &.active {
+          border: 1px solid var(--el-color-primary);
+          color: var(--el-color-primary);
+        }
+        .icon-search {
+          font-size: 16px;
+        }
+      }
+      &.btn-reason {
+        color: var(--el-text-color-primary);
+        border-radius: 20px;
+        padding: 0 10px;
+        font-size: 16px;
+        &.active {
+          border: 1px solid var(--el-color-primary);
+          color: var(--el-color-primary);
+        }
+        .icon-reason {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  .btn-send,
+  .btn-stop {
     position: absolute;
     bottom: 15px;
+    right: 15px;
+    border-radius: 50%;
+    width: 36px;
     height: 36px;
     line-height: 36px;
-    user-select: none;
+    text-align: center;
+    background-color: var(--el-color-black);
+    color: var(--el-color-white);
+    font-size: 16px;
     &.disabled {
+      display: none;
       cursor: not-allowed;
-      pointer-events: none;
-      color: var(--el-text-color-disabled) !important;
-    }
-    &.btn-upload {
-      left: 15px;
-      border-radius: 50%;
-      width: 36px;
-      text-align: center;
-      color: var(--el-text-color-secondary);
-      .icon-attachment {
-        font-size: 16px;
-        color: var(--el-text-color-primary);
-      }
-    }
-    &.btn-search {
-      left: 60px;
-      color: var(--el-text-color-primary);
-      border-radius: 20px;
-      padding: 0 10px;
-      font-size: 16px;
-      &.active {
-        border: 1px solid var(--el-color-primary);
-        color: var(--el-color-primary);
-      }
-      .icon-search {
-        font-size: 16px;
-      }
-    }
-    &.btn-reason {
-      left: 145px;
-      color: var(--el-text-color-primary);
-      border-radius: 20px;
-      padding: 0 10px;
-      font-size: 16px;
-      &.active {
-        border: 1px solid var(--el-color-primary);
-        color: var(--el-color-primary);
-      }
-      .icon-reason {
-        font-size: 16px;
-      }
-    }
-    &.btn-send {
-      bottom: 15px;
-      right: 15px;
-      border-radius: 50%;
-      width: 36px;
-      text-align: center;
-      background-color: var(--el-color-black);
-      color: var(--el-color-white);
-      font-size: 16px;
-      &.disabled {
-        display: none;
-        cursor: not-allowed;
-      }
-    }
-    &.btn-stop {
-      bottom: 15px;
-      right: 15px;
-      border-radius: 50%;
-      width: 36px;
-      text-align: center;
-      background-color: var(--el-color-black);
-      color: var(--el-color-white);
-      font-size: 16px;
-      &.disabled {
-        display: none;
-        cursor: not-allowed;
-      }
     }
   }
 }

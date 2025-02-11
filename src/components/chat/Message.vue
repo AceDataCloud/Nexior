@@ -48,11 +48,11 @@
             v-model="questionValue"
             type="textarea"
             class="chat-input"
-            @keydown.enter.exact.prevent="sendEdit"
+            @keydown.enter.exact.prevent="onEdit"
           ></el-input>
           <div class="button-group">
             <el-button size="small" round @click="cancelEdit">{{ $t('common.button.cancel') }}</el-button>
-            <el-button type="primary" size="small" round @click="sendEdit">{{ $t('common.button.confirm') }}</el-button>
+            <el-button type="primary" size="small" round @click="onEdit">{{ $t('common.button.confirm') }}</el-button>
           </div>
         </div>
         <answering-mark v-if="message.state === messageState.PENDING" />
@@ -75,7 +75,7 @@
           "
           class="btn-restart"
           :messages="messages"
-          @restart="sendRestart"
+          @restart="onRestart"
         />
       </div>
     </div>
@@ -199,11 +199,11 @@ export default defineComponent({
     cancelEdit() {
       this.isEditing = false;
     },
-    sendRestart() {
+    onRestart() {
       // Implement the logic to save the edited content
       this.$emit('restart', this.message);
     },
-    sendEdit() {
+    onEdit() {
       // Implement the logic to save the edited content
       this.isEditing = false;
       this.onSubmit();
