@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Tue, 11 Feb 2025 14:21:11 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Feb 2025 13:53:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.14.5
+
+Wed, 12 Feb 2025 13:53:57 GMT
+
+### Patches
+
+- add drawai qrart pagination (1348977728@qq.com)
 
 ## 2.14.4
 
