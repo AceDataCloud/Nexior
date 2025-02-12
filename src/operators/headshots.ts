@@ -28,7 +28,15 @@ class HeadshotsOperator {
   }
 
   async tasks(
-    filter: { ids?: string[]; applicationId?: string; userId?: string; limit?: number; offset?: number },
+    filter: {
+      ids?: string[];
+      applicationId?: string;
+      userId?: string;
+      limit?: number;
+      offset?: number;
+      createdAtMax?: number;
+      createdAtMin?: number;
+    },
     options: { token: string }
   ): Promise<AxiosResponse<IHeadshotsTasksResponse>> {
     return await axios.post(
@@ -58,6 +66,16 @@ class HeadshotsOperator {
         ...(filter.offset !== undefined
           ? {
               offset: filter.offset
+            }
+          : {}),
+        ...(filter.createdAtMax !== undefined
+          ? {
+              created_at_max: filter.createdAtMax
+            }
+          : {}),
+        ...(filter.createdAtMin !== undefined
+          ? {
+              created_at_min: filter.createdAtMin
             }
           : {})
       },

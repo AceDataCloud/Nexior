@@ -23,7 +23,15 @@ class QrartOperator {
   }
 
   async tasks(
-    filter: { ids?: string[]; applicationId?: string; userId?: string; limit?: number; offset?: number },
+    filter: {
+      ids?: string[];
+      applicationId?: string;
+      userId?: string;
+      limit?: number;
+      offset?: number;
+      createdAtMax?: number;
+      createdAtMin?: number;
+    },
     options: { token: string }
   ): Promise<AxiosResponse<IQrartTasksResponse>> {
     return await axios.post(
@@ -53,6 +61,16 @@ class QrartOperator {
         ...(filter.offset !== undefined
           ? {
               offset: filter.offset
+            }
+          : {}),
+        ...(filter.createdAtMax !== undefined
+          ? {
+              created_at_max: filter.createdAtMax
+            }
+          : {}),
+        ...(filter.createdAtMin !== undefined
+          ? {
+              created_at_min: filter.createdAtMin
             }
           : {})
       },
