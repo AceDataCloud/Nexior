@@ -48,7 +48,7 @@ export interface ILumaGenerateResponse {
 
 export interface ILumaTask {
   id: string;
-  created_at?: string;
+  created_at?: number;
   request?: ILumaGenerateRequest;
   response?: ILumaGenerateResponse;
 }

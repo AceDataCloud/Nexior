@@ -1,5 +1,5 @@
 <template>
-  <div class="panel recent">
+  <div ref="panel" class="panel recent" @scroll="onHandleScroll">
     <div v-if="tasks?.items === undefined" class="tasks">
       <div v-for="_ in 3" :key="_" class="task placeholder">
         <div class="left">
@@ -40,6 +40,7 @@ export default defineComponent({
     ElSkeleton,
     ElSkeletonItem
   },
+  emits: ['reach-top'],
   data() {
     return {
       job: 0
@@ -52,6 +53,15 @@ export default defineComponent({
         ...this.$store.state.luma?.tasks,
         items: this.$store.state.luma?.tasks?.items?.slice().reverse()
       };
+    }
+  },
+  methods: {
+    onHandleScroll() {
+      const el = this.$refs.panel as HTMLElement;
+      console.log('reach-top reach-top reach-top');
+      if (el.scrollTop === 0) {
+        this.$emit('reach-top');
+      }
     }
   }
 });
