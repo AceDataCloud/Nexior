@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sat, 15 Feb 2025 14:41:39 GMT and should not be manually modified.
+This log was last generated on Sat, 15 Feb 2025 15:37:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.14.7
+
+Sat, 15 Feb 2025 15:37:49 GMT
+
+### Patches
+
+- git left chat panel style (office@acedata.cloud)
 
 ## 2.14.6
 
