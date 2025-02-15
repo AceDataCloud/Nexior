@@ -16,7 +16,7 @@
               </div>
               <div class="text-left">
                 <p class="description">{{ $t('distribution.title.price') }}</p>
-                <p class="value">${{ distributionStatus?.price?.toFixed(2) }}</p>
+                <p class="value">{{ getPriceString({ value: distributionStatus?.price }) }}</p>
               </div>
               <el-button type="primary" round size="small" class="btn" @click="goHistory"
                 >{{ $t('distribution.button.detail') }}
@@ -33,7 +33,7 @@
               </div>
               <div class="text-left">
                 <p class="description">{{ $t('distribution.title.reward') }}</p>
-                <p class="value">${{ distributionStatus?.reward?.toFixed(2) }}</p>
+                <p class="value">{{ getPriceString({ value: distributionStatus?.reward }) }}</p>
               </div>
               <el-tooltip effect="dark" :content="$t('distribution.message.developingWithDrawal')" placement="top">
                 <el-button type="primary" round size="small" class="btn"
@@ -198,6 +198,7 @@ import { userOperator } from '@/operators';
 import QrCode from 'vue-qrcode';
 import { ROUTE_DISTRIBUTION_HISTORY, ROUTE_DISTRIBUTION_INVITEES } from '@/router';
 import { IDistributionLevel, IDistributionStatus, IUser } from '@/models';
+import { getPriceString } from '@/utils';
 
 interface IData {
   invitees: IUser[];
@@ -264,6 +265,7 @@ export default defineComponent({
     this.onGenerateDistributionLink();
   },
   methods: {
+    getPriceString,
     goHistory() {
       this.$router.push({
         name: ROUTE_DISTRIBUTION_HISTORY
@@ -307,7 +309,7 @@ export default defineComponent({
       const link = `${origin}?inviter_id=${this.$store.getters.user.id}`;
       try {
         const url = (await shortUrlOperator.create(link))?.data?.data?.url;
-        this.distributionLink = url || link;
+        this.distributionLink = (url || link).replace('surl.id', 'share.acedata.cloud');
       } catch (error) {
         this.distributionLink = link;
       }
