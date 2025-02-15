@@ -194,7 +194,6 @@ export default defineComponent({
   padding: 10px;
   width: 250px;
   height: 100%;
-  background-color: var(--el-bg-color-page);
   border-right: none;
 
   .conversations {
