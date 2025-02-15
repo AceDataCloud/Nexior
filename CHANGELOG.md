@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Wed, 12 Feb 2025 13:53:57 GMT and should not be manually modified.
+This log was last generated on Sat, 15 Feb 2025 14:41:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.14.6
+
+Sat, 15 Feb 2025 14:41:39 GMT
+
+### Patches
+
+- fix the price display for distribution (office@acedata.cloud)
 
 ## 2.14.5
 
