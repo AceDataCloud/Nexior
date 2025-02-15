@@ -64,7 +64,6 @@ export default defineComponent({
     position: relative;
     .title {
       font-size: 14px;
-      margin-bottom: 10px;
     }
   }
 }

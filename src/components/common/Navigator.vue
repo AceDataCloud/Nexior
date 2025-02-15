@@ -170,7 +170,7 @@ export default defineComponent({
           route: {
             name: ROUTE_MIDJOURNEY_INDEX
           },
-          displayName: this.$t('common.nav.midjourney'),
+          displayName: this.$t('common.nav.image'),
           icon: 'fa-solid fa-palette',
           routes: [ROUTE_MIDJOURNEY_INDEX]
         });
@@ -205,20 +205,35 @@ export default defineComponent({
           route: {
             name: ROUTE_SUNO_INDEX
           },
-          displayName: this.$t('common.nav.suno'),
+          displayName: this.$t('common.nav.music'),
           icon: 'fa-solid fa-music',
           routes: [ROUTE_SUNO_INDEX, ROUTE_SUNO_HISTORY]
         });
       }
-      // Add luma's leftmost icon
-      if (this.$store?.state?.site?.features?.luma?.enabled) {
+      // Add luma, pika, hailuo's leftmost icon
+      if (
+        this.$store?.state?.site?.features?.luma?.enabled ||
+        this.$store?.state?.site?.features?.pika?.enabled ||
+        this.$store?.state?.site?.features?.hailuo?.enabled
+      ) {
         result.push({
           route: {
-            name: ROUTE_LUMA_INDEX
+            name: this.$store?.state?.site?.features?.luma?.enabled
+              ? ROUTE_LUMA_INDEX
+              : this.$store?.state?.site?.features?.pika?.enabled
+              ? ROUTE_PIKA_INDEX
+              : ROUTE_HAILUO_INDEX
           },
-          displayName: this.$t('common.nav.luma'),
+          displayName: this.$t('common.nav.video'),
           icon: 'fa-solid fa-film',
-          routes: [ROUTE_LUMA_INDEX, ROUTE_LUMA_HISTORY]
+          routes: [
+            ROUTE_LUMA_INDEX,
+            ROUTE_LUMA_HISTORY,
+            ROUTE_PIKA_INDEX,
+            ROUTE_PIKA_HISTORY,
+            ROUTE_HAILUO_INDEX,
+            ROUTE_HAILUO_HISTORY
+          ]
         });
       }
       // Add headshots's leftmost icon
@@ -230,28 +245,6 @@ export default defineComponent({
           displayName: this.$t('common.nav.headshots'),
           icon: 'fa-solid fa-id-card',
           routes: [ROUTE_HEADSHOTS_INDEX, ROUTE_HEADSHOTS_HISTORY]
-        });
-      }
-      // Add pika's leftmost icon
-      if (this.$store?.state?.site?.features?.pika?.enabled) {
-        result.push({
-          route: {
-            name: ROUTE_PIKA_INDEX
-          },
-          displayName: this.$t('common.nav.pika'),
-          icon: 'fa-solid fa-film',
-          routes: [ROUTE_PIKA_INDEX, ROUTE_PIKA_HISTORY]
-        });
-      }
-      // Add hailuo's leftmost icon
-      if (this.$store?.state?.site?.features?.hailuo?.enabled) {
-        result.push({
-          route: {
-            name: ROUTE_HAILUO_INDEX
-          },
-          displayName: this.$t('common.nav.hailuo'),
-          icon: 'fa-solid fa-film',
-          routes: [ROUTE_HAILUO_INDEX, ROUTE_HAILUO_HISTORY]
         });
       }
 
