@@ -18,7 +18,6 @@
       <div class="flex gap-1">
         <mode-selector />
         <el-button type="primary" class="btn w-full" round @click="$emit('generate')">
-          <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
           {{ $t('midjourney.button.generate') }}
         </el-button>
       </div>
@@ -42,12 +41,10 @@ import ModeSelector from './config/ModeSelector2.vue';
 import PromptInput from './config/PromptInput.vue';
 import ReferenceImage from './config/ReferenceImage.vue';
 import { ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default defineComponent({
   name: 'ConfigPanel',
   components: {
-    FontAwesomeIcon,
     ElButton,
     PromptInput,
     ModeSelector,
