@@ -9,22 +9,10 @@
       <el-row>
         <el-col :span="24">
           <el-card shadow="hover" class="card">
-            <el-row v-show="false">
-              <el-col class="text-center">
-                <el-radio-group v-if="applicationId" v-model="type" size="large" class="mb-4" @change="onChangeType">
-                  <el-radio-button label="Period">
-                    {{ $t('application.type.period') }}
-                  </el-radio-button>
-                  <el-radio-button label="Usage">
-                    {{ $t('application.type.usage') }}
-                  </el-radio-button>
-                </el-radio-group>
-              </el-col>
-            </el-row>
             <el-row>
               <el-col :span="16" :offset="4">
                 <p class="introduction">
-                  {{ $t('console.subscription.introduction') }}
+                  {{ $t('console.subscription.title') }}
                 </p>
                 <el-skeleton v-if="loading" />
                 <el-row v-else :gutter="15" class="subscriptions">
@@ -84,26 +72,11 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { IService, IApplication, IApplicationType, IOrderDetailResponse, IPackageType, IPackage } from '@/models';
-import {
-  ElRow,
-  ElCol,
-  ElCard,
-  ElSkeleton,
-  ElMessage,
-  ElButton,
-  ElTag,
-  ElRadioGroup,
-  ElRadioButton
-} from 'element-plus';
+import { ElRow, ElCol, ElCard, ElSkeleton, ElMessage, ElButton, ElTag } from 'element-plus';
 import { applicationOperator, orderOperator, serviceOperator } from '@/operators';
 import { getPriceString } from '@/utils';
-import { CHAT_SERVICE_ID } from '@/constants/chat';
-import { MIDJOURNEY_SERVICE_ID } from '@/constants/midjourney';
-import { SUNO_SERVICE_ID } from '@/constants/suno';
-import { QRART_SERVICE_ID } from '@/constants/qrart';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
-import { HEADSHOTS_SERVICE_ID, LUMA_SERVICE_ID } from '@/constants';
 
 interface ISubscription {
   name: string;
@@ -116,7 +89,8 @@ interface ISubscription {
 }
 
 interface IData {
-  applications: IApplication[];
+  application: IApplication | undefined;
+  application2: IApplication | undefined;
   services: IService[];
   type: string;
   loading: boolean;
@@ -131,16 +105,16 @@ export default defineComponent({
     ElRow,
     ElTag,
     ElCol,
-    ElRadioGroup,
-    ElRadioButton,
     ElCard,
     FontAwesomeIcon,
     ElButton
   },
   data(): IData {
     return {
-      applications: [],
-      type: 'Period',
+      application: undefined,
+      // the application which used for subscription
+      application2: undefined,
+      type: IApplicationType.PERIOD,
       services: [],
       loading: false,
       creating: false,
@@ -197,40 +171,21 @@ export default defineComponent({
       }
       return items;
     },
-    serviceIds(): string[] {
-      let result = [];
-      const features = this.$store.getters.site.features;
-      console.log('features', features);
-      const keys = Object.keys(features) || [];
-      for (const key of keys) {
-        if (features[key] && features[key].enabled && features[key].service_id) {
-          result.push(features[key].service_id);
-        }
-      }
-      if (result.length > 0) {
-        return result;
-      }
-      return [
-        CHAT_SERVICE_ID,
-        MIDJOURNEY_SERVICE_ID,
-        SUNO_SERVICE_ID,
-        QRART_SERVICE_ID,
-        LUMA_SERVICE_ID,
-        HEADSHOTS_SERVICE_ID
-      ];
+    service() {
+      return this.application?.service;
     },
-    applicationIds(): string[] {
-      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      const sortedApplications = this.applications.sort(
-        (a, b) => this.serviceIds.indexOf(a.service_id!) - this.serviceIds.indexOf(b.service_id!)
-      );
-      return sortedApplications.map((application) => application.id) as string[];
+    serviceIds(): string[] {
+      if (!this.application || !this.application.service) {
+        return [];
+      }
+      return [this.application.service.id];
     }
   },
   async mounted() {
     this.loading = true;
-    await this.onFetchServices();
-    await this.onFetchApplications();
+    await this.onFetchApplication();
+    // fetch the real period application
+    await this.onFetchApplication2();
     await this.onCreateApplications();
     this.loading = false;
     this.subscription = this.subscriptions[2];
@@ -247,10 +202,12 @@ export default defineComponent({
     },
     getPackages(duration: number): IPackage[] {
       let result = [];
+      if (!this.service) {
+        return [];
+      }
+      const services = [this.service];
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      const sortedServices = this.services.sort(
-        (a, b) => this.serviceIds.indexOf(a.id) - this.serviceIds.indexOf(b.id)
-      );
+      const sortedServices = services.sort((a, b) => this.serviceIds.indexOf(a.id) - this.serviceIds.indexOf(b.id));
       for (const service of sortedServices) {
         const packages = service.packages;
         const target = packages?.find((p) => p.type === IPackageType.PERIOD && p.duration === duration);
@@ -261,11 +218,10 @@ export default defineComponent({
       return result;
     },
     async onCreateApplications() {
-      // check applications id related to service id
-      const serviceIdsFromApplications = this.applications.map((application) => application.service_id);
-      const serviceIds = this.serviceIds;
-      const missingServiceIds = serviceIds.filter((serviceId) => !serviceIdsFromApplications.includes(serviceId));
-      console.log('missingServiceIds', missingServiceIds);
+      const missingServiceIds = [];
+      if (!this.application2) {
+        missingServiceIds.push(this.application?.service?.id!);
+      }
       if (missingServiceIds.length > 0) {
         for (const serviceId of missingServiceIds) {
           await applicationOperator.create({
@@ -273,7 +229,7 @@ export default defineComponent({
             type: IApplicationType.PERIOD
           });
         }
-        await this.onFetchApplications();
+        await this.onFetchApplication2();
       }
     },
     onChangeType() {
@@ -288,9 +244,14 @@ export default defineComponent({
         id: this.serviceIds
       });
       this.services = data.items;
-      console.log('services', this.services);
+      console.debug('services', this.services);
     },
-    async onFetchApplications() {
+    async onFetchApplication() {
+      const { data } = await applicationOperator.get(this.applicationId);
+      this.application = data;
+      console.debug('application', this.application);
+    },
+    async onFetchApplication2() {
       const { data } = await applicationOperator.getAll({
         limit: 100,
         offset: 0,
@@ -299,16 +260,22 @@ export default defineComponent({
         service_id: this.serviceIds,
         type: IApplicationType.PERIOD
       });
-      this.applications = data.items;
+      this.application2 = data.items?.[0];
+      console.debug('application2', this.application2);
     },
     onCreateOrder(subscription: ISubscription) {
       this.subscription = subscription;
       this.creating = true;
+      if (!this.application2 || !this.application2.id) {
+        ElMessage.error(this.$t('console.message.applicationNotFound'));
+        this.creating = false;
+        return;
+      }
       orderOperator
         .create({
-          application_ids: this.applicationIds,
+          application_ids: [this.application2.id],
           package_ids: this.getPackages(subscription.duration).map((p) => p.id),
-          description: this.$store.state?.site?.title + ' - ' + subscription.label
+          description: this.service?.title + ' - ' + subscription.label
         })
         .then(({ data: data }: { data: IOrderDetailResponse }) => {
           this.creating = false;

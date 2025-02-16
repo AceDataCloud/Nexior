@@ -100,8 +100,8 @@ import { applicationOperator } from '@/operators';
 import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { ElTable, ElRow, ElCol, ElTableColumn, ElCard, ElButton, ElTag } from 'element-plus';
-import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_APPLICATION_SUBSCRIBE } from '@/router/constants';
-import { IApplication, IApplicationListResponse, IApplicationType, ICredentialType, IService } from '@/models';
+import { ROUTE_CONSOLE_APPLICATION_SUBSCRIBE } from '@/router/constants';
+import { IApplication, IApplicationListResponse, ICredentialType, IService } from '@/models';
 
 interface IData {
   applications: IApplication[];
@@ -174,21 +174,12 @@ export default defineComponent({
   },
   methods: {
     onBuyMore(application: IApplication) {
-      if (application.type === IApplicationType.USAGE) {
-        this.$router.push({
-          name: ROUTE_CONSOLE_APPLICATION_EXTRA,
-          params: {
-            id: application.id
-          }
-        });
-      } else if (application.type === IApplicationType.PERIOD) {
-        this.$router.push({
-          name: ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
-          params: {
-            id: application.id
-          }
-        });
-      }
+      this.$router.push({
+        name: ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
+        params: {
+          id: application.id
+        }
+      });
     },
     onPageChange(page: number) {
       this.$router.push({
