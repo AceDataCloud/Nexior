@@ -6,6 +6,7 @@ import chatdoc from './chatdoc';
 import qrart from './qrart';
 import luma from './luma';
 import pika from './pika';
+import flux from './flux';
 import hailuo from './hailuo';
 import headshots from './headshots';
 import suno from './suno';
@@ -16,6 +17,7 @@ import persistChatdoc from './chatdoc/persist';
 import persistQrart from './qrart/persist';
 import persistLuma from './luma/persist';
 import persistPika from './pika/persist';
+import persistFlux from './flux/persist';
 import persistHailuo from './hailuo/persist';
 import persistHeadshots from './headshots/persist';
 import persistSuno from './suno/persist';
@@ -29,6 +31,7 @@ const store = createStore({
     qrart: qrart,
     luma: luma,
     pika: pika,
+    flux: flux,
     hailuo: hailuo,
     headshots: headshots,
     suno: suno,
@@ -44,6 +47,7 @@ const store = createStore({
         ...persistQrart,
         ...persistLuma,
         ...persistPika,
+        ...persistFlux,
         ...persistHailuo,
         ...persistHeadshots,
         ...persistSuno

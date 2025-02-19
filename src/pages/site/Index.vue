@@ -181,6 +181,7 @@
                   'suno',
                   'luma',
                   'pika',
+                  'flux',
                   'hailuo',
                   'headshots',
                   'support'
