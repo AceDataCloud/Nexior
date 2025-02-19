@@ -1,0 +1,222 @@
+{
+  "name.taskId": {
+    "message": "Task ID",
+    "description": "The ID of the task"
+  },
+  "name.type": {
+    "message": "Type",
+    "description": "The content type of the Flux image to be generated, such as 'link', 'text', etc."
+  },
+  "name.failure": {
+    "message": "Failure",
+    "description": "The failure status of the task"
+  },
+  "name.failureReason": {
+    "message": "Failure Reason",
+    "description": "The reason for task failure"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "The status of the task"
+  },
+  "name.traceId": {
+    "message": "Trace ID",
+    "description": "The trace ID of the task"
+  },
+  "name.createdAt": {
+    "message": "Created At",
+    "description": "The date and time of Flux image generation"
+  },
+  "name.numbers": {
+    "message": "Image Quantity",
+    "description": "The number of images to be generated"
+  },
+  "name.quality": {
+    "message": "Image Quality",
+    "description": "The quality of the image"
+  },
+  "name.prompt": {
+    "message": "Image Prompt",
+    "description": "The input prompt for the content"
+  },
+  "name.ratio": {
+    "message": "Ratio",
+    "description": "The name of the ratio parameter"
+  },
+  "name.model": {
+    "message": "Model Version",
+    "description": "The version of the model used to generate the image"
+  },
+  "name.fluxBot": {
+    "message": "Flux Bot",
+    "description": "The name of the Flux image generator"
+  },
+  "description.numbers": {
+    "message": "Specifies the number of images to be generated, with a range of values: 1-4.",
+    "description": "Description for the 'numbers' parameter"
+  },
+  "description.quality": {
+    "message": "Specifies the quality of the image to be generated, with a range of values: 1-100.",
+    "description": "Description for the 'quality' parameter"
+  },
+  "description.prompt": {
+    "message": "The prompt for generating Flux images.",
+    "description": "Description for the 'prompt' parameter"
+  },
+  "status.pending": {
+    "message": "Pending",
+    "description": "The waiting status of the task"
+  },
+  "status.processing": {
+    "message": "Processing",
+    "description": "The processing status of the task"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Please select...",
+    "description": "Placeholder for padding noise input"
+  },
+  "placeholder.select": {
+    "message": "Select",
+    "description": "Placeholder text in a dropdown field"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Please select...",
+    "description": "Placeholder for padding level input"
+  },
+  "placeholder.prompt": {
+    "message": "Enter a prompt describing the style of the image to be generated, e.g., a white siamese cat",
+    "description": "Placeholder text in the prompt input field"
+  },
+  "placeholder.position": {
+    "message": "Please select...",
+    "description": "Placeholder for position input"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Please select...",
+    "description": "Placeholder for aspect ratio input"
+  },
+  "placeholder.preset": {
+    "message": "Please select...",
+    "description": "Placeholder for preset input"
+  },
+  "placeholder.markerShape": {
+    "message": "Please select...",
+    "description": "Placeholder for marker shape input"
+  },
+  "placeholder.rotate": {
+    "message": "Please select...",
+    "description": "Placeholder for rotation input"
+  },
+  "placeholder.subMarker": {
+    "message": "Please select...",
+    "description": "Placeholder for sub-marker input"
+  },
+  "button.generate": {
+    "message": "Generate",
+    "description": "Button text for generating Flux images"
+  },
+  "button.extend": {
+    "message": "Extend Image",
+    "description": "Button text for extending images"
+  },
+  "button.viewImage": {
+    "message": "View Original",
+    "description": "Button text for viewing the original Flux image"
+  },
+  "button.download": {
+    "message": "Download Image",
+    "description": "Button text for downloading images"
+  },
+  "message.downloadImage": {
+    "message": "Open image in a new window",
+    "description": "Message for opening images in a new window"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "You can upload up to 5 images.",
+    "description": "Error message when the number of uploaded images exceeds the limit"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Images uploaded successfully.",
+    "description": "Success message when images are successfully uploaded"
+  },
+  "message.uploadReferencesError": {
+    "message": "Failed to upload images. Please try again later.",
+    "description": "Error message when images fail to upload"
+  },
+  "message.startingTask": {
+    "message": "Starting task...",
+    "description": "Message when a drawing task is starting"
+  },
+  "message.startTaskSuccess": {
+    "message": "Successfully initiated the generation task.",
+    "description": "Success message when a task is successfully started"
+  },
+  "message.startTaskFailed": {
+    "message": "Failed to initiate the task. Please contact the administrator.",
+    "description": "Error message when starting a drawing task fails"
+  },
+  "message.usedUp": {
+    "message": "Your credits are used up. Please purchase more credits to continue.",
+    "description": "Message displayed when the user's credits are depleted"
+  },
+  "message.generating": {
+    "message": "Generating...",
+    "description": "Message displayed while an image is being generated"
+  },
+  "message.downloadVideo": {
+    "message": "Download this image",
+    "description": "Message during image generation"
+  },
+  "message.extendVideo": {
+    "message": "Continue generating this image",
+    "description": "Message during image generation"
+  },
+  "message.generateFailed": {
+    "message": "Failed to generate the image.",
+    "description": "Message when image generation fails"
+  },
+  "message.uploadVideoExceed": {
+    "message": "The number of keyframe images uploaded exceeds the limit.",
+    "description": "Error message when the number of uploaded keyframe images exceeds the limit"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Uploaded file size must not exceed 10MB!",
+    "description": "Error message when the uploaded file size exceeds 10MB"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Uploaded file must be in MP4 format!",
+    "description": "Error message when the uploaded file is not in MP4 format"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "The number of start frame images uploaded exceeds the limit",
+    "description": "Error message when the number of start frame images uploaded exceeds the limit"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "The number of end frame images uploaded exceeds the limit",
+    "description": "Error message when the number of end frame images uploaded exceeds the limit"
+  },
+  "message.uploadStartImageError": {
+    "message": "Failed to upload start frame image",
+    "description": "Error message when the start frame image upload fails"
+  },
+  "message.uploadVideoError": {
+    "message": "Failed to upload image",
+    "description": "Error message when the start frame image upload fails"
+  },
+  "message.uploadEndImageError": {
+    "message": "Failed to upload end frame image",
+    "description": "Error message when the end frame image upload fails"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Failed to upload document",
+    "description": "Error message when document upload fails"
+  },
+  "message.noOperations": {
+    "message": "No operations available",
+    "description": "Message when no operations are available"
+  },
+  "message.noTasks": {
+    "message": "No historical tasks available, please click left to generate image",
+    "description": "Message when there are no tasks"
+  }
+}

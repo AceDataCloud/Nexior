@@ -1,0 +1,222 @@
+{
+  "name.taskId": {
+    "message": "ID zadatka",
+    "description": "ID zadatka"
+  },
+  "name.type": {
+    "message": "Tip",
+    "description": "Tip sadržaja za Flux sliku koja se generiše, kao što su 'link', 'tekst', itd."
+  },
+  "name.failure": {
+    "message": "Neuspeh",
+    "description": "Stanje neuspeha zadatka"
+  },
+  "name.failureReason": {
+    "message": "Razlog neuspeha",
+    "description": "Razlog neuspeha zadatka"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Status zadatka"
+  },
+  "name.traceId": {
+    "message": "ID praćenja",
+    "description": "ID praćenja zadatka"
+  },
+  "name.createdAt": {
+    "message": "Vreme kreiranja",
+    "description": "Datum i vreme kreiranja Flux slike"
+  },
+  "name.numbers": {
+    "message": "Broj slika",
+    "description": "Broj slika koje treba generisati"
+  },
+  "name.quality": {
+    "message": "Kvalitet slike",
+    "description": "Kvalitet slike"
+  },
+  "name.prompt": {
+    "message": "Uputstvo za sliku",
+    "description": "Uputstvo za unos sadržaja"
+  },
+  "name.ratio": {
+    "message": "Proporcija",
+    "description": "Naziv parametra proporcije"
+  },
+  "name.model": {
+    "message": "Verzija modela",
+    "description": "Verzija modela koja se koristi za generisanje slike"
+  },
+  "name.fluxBot": {
+    "message": "Flux Bot",
+    "description": "Naziv Flux generatora slika"
+  },
+  "description.numbers": {
+    "message": "Odredite broj slika koje će biti generisane, opseg vrednosti: 1-4.",
+    "description": "Opis parametra 'numbers'"
+  },
+  "description.quality": {
+    "message": "Odredite kvalitet slika koje će biti generisane, opseg vrednosti: 1-100.",
+    "description": "Opis parametra 'quality'"
+  },
+  "description.prompt": {
+    "message": "Uputstvo za generisanje Flux slike",
+    "description": "Opis parametra 'prompt'"
+  },
+  "status.pending": {
+    "message": "Na čekanju",
+    "description": "Stanje čekanja zadatka"
+  },
+  "status.processing": {
+    "message": "Obrada",
+    "description": "Stanje obrade zadatka"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Izaberite...",
+    "description": "Rezervirani tekst za unos šuma popunjavanja"
+  },
+  "placeholder.select": {
+    "message": "Izaberite",
+    "description": "Rezervirani tekst u polju za izbor"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Izaberite...",
+    "description": "Rezervirani tekst za nivo popunjavanja"
+  },
+  "placeholder.prompt": {
+    "message": "Unesite uputstvo za stil slike koje treba generisati, na primer: beli sijamski mačak",
+    "description": "Rezervirani tekst u polju za uputstvo"
+  },
+  "placeholder.position": {
+    "message": "Izaberite...",
+    "description": "Rezervirani tekst za unos pozicije"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Izaberite...",
+    "description": "Rezervirani tekst za unos odnosa širine i visine"
+  },
+  "placeholder.preset": {
+    "message": "Izaberite...",
+    "description": "Rezervirani tekst za unos unapred podešenih vrednosti"
+  },
+  "placeholder.markerShape": {
+    "message": "Izaberite...",
+    "description": "Rezervirani tekst za unos oblika markera"
+  },
+  "placeholder.rotate": {
+    "message": "Izaberite...",
+    "description": "Rezervirani tekst za unos rotacije"
+  },
+  "placeholder.subMarker": {
+    "message": "Izaberite...",
+    "description": "Rezervirani tekst za unos podmarkera"
+  },
+  "button.generate": {
+    "message": "Generiši",
+    "description": "Tekst na dugmetu koje generiše Flux slike"
+  },
+  "button.extend": {
+    "message": "Proširi slike",
+    "description": "Tekst na dugmetu za proširenje slike"
+  },
+  "button.viewImage": {
+    "message": "Pogledaj originalnu sliku",
+    "description": "Tekst na dugmetu za pregled generisane Flux slike"
+  },
+  "button.download": {
+    "message": "Preuzmi sliku",
+    "description": "Tekst na dugmetu za preuzimanje slike"
+  },
+  "message.downloadImage": {
+    "message": "Otvorite sliku u novom prozoru",
+    "description": "Otvorite sliku u novom prozoru"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Možete otpremiti najviše 5 slika",
+    "description": "Greška kada broj otpremljenih slika premašuje ograničenje"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Uspešno otpremljena slika",
+    "description": "Poruka uspeha kada je slika uspešno otpremljena"
+  },
+  "message.uploadReferencesError": {
+    "message": "Neuspešno otpremanje slike, pokušajte ponovo kasnije",
+    "description": "Greška prilikom neuspešnog otpremanja slike"
+  },
+  "message.startingTask": {
+    "message": "Pokretanje zadatka...",
+    "description": "Poruka kada zadatak crtanja počinje"
+  },
+  "message.startTaskSuccess": {
+    "message": "Uspešno pokretanje generisanja zadatka",
+    "description": "Poruka uspeha kada je zadatak uspešno pokrenut"
+  },
+  "message.startTaskFailed": {
+    "message": "Neuspešno pokretanje zadatka, kontaktirajte administratora",
+    "description": "Greška prilikom neuspešnog pokretanja zadatka crtanja"
+  },
+  "message.usedUp": {
+    "message": "Vaši bodovi su potrošeni, kupite još bodova da biste nastavili koristiti",
+    "description": "Poruka kada su bodovi potrošeni"
+  },
+  "message.generating": {
+    "message": "Generisanje...",
+    "description": "Poruka dok se slika generiše"
+  },
+  "message.downloadVideo": {
+    "message": "Preuzmite ovu sliku",
+    "description": "Poruka dok se slika generiše"
+  },
+  "message.extendVideo": {
+    "message": "Nastavite generisanje ove slike",
+    "description": "Poruka dok se slika generiše"
+  },
+  "message.generateFailed": {
+    "message": "Neuspešno generisanje slike",
+    "description": "Poruka kada generisanje slike nije uspelo"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Broj otpremanja početnih slika premašuje ograničenje",
+    "description": "Greška kada broj otpremanja početnih slika premašuje ograničenje"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Veličina otpremanja ne sme premašiti 10MB!",
+    "description": "Greška kada veličina otpremanja ne sme premašiti 10MB!"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Otpremljeni fajl mora biti u MP4 formatu!",
+    "description": "Greška kada otpremljeni fajl mora biti u MP4 formatu!"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Број отпремљених почетних слика превазилази ограничење",
+    "description": "Грешка која се појављује када број отпремљених почетних слика превазилази ограничење"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Број отпремљених завршних слика превазилази ограничење",
+    "description": "Грешка која се појављује када број отпремљених завршних слика превазилази ограничење"
+  },
+  "message.uploadStartImageError": {
+    "message": "Неуспешно отпремање почетних слика",
+    "description": "Грешка која се појављује када отпремање почетних слика не успе"
+  },
+  "message.uploadVideoError": {
+    "message": "Неуспешно отпремање слика",
+    "description": "Грешка која се појављује када отпремање почетних слика не успе"
+  },
+  "message.uploadEndImageError": {
+    "message": "Неуспешно отпремање завршних слика",
+    "description": "Грешка која се појављује када отпремање завршних слика не успе"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Неуспешно отпремање докумената",
+    "description": "Грешка која се појављује када отпремање докумената не успе"
+  },
+  "message.noOperations": {
+    "message": "Нема доступних операција",
+    "description": "Порука која се приказује када нема доступних операција"
+  },
+  "message.noTasks": {
+    "message": "Нема историјских задатака, молимо кликните лево за генерисање слике",
+    "description": "Порука која се приказује када нема задатака"
+  }
+}

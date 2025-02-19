@@ -1,0 +1,222 @@
+{
+  "name.taskId": {
+    "message": "작업 ID",
+    "description": "작업의 ID"
+  },
+  "name.type": {
+    "message": "유형",
+    "description": "생성할 Flux 이미지의 콘텐츠 유형, 예: '링크', '텍스트' 등"
+  },
+  "name.failure": {
+    "message": "실패",
+    "description": "작업의 실패 상태"
+  },
+  "name.failureReason": {
+    "message": "실패 사유",
+    "description": "작업 실패의 이유"
+  },
+  "name.status": {
+    "message": "상태",
+    "description": "작업의 상태"
+  },
+  "name.traceId": {
+    "message": "추적 ID",
+    "description": "작업의 추적 ID"
+  },
+  "name.createdAt": {
+    "message": "생성 시간",
+    "description": "Flux 이미지를 생성한 날짜와 시간"
+  },
+  "name.numbers": {
+    "message": "이미지 수량",
+    "description": "생성할 이미지 수량"
+  },
+  "name.quality": {
+    "message": "이미지 품질",
+    "description": "이미지 품질"
+  },
+  "name.prompt": {
+    "message": "이미지 프롬프트",
+    "description": "콘텐츠 입력용 프롬프트"
+  },
+  "name.ratio": {
+    "message": "비율",
+    "description": "비율을 나타내는 파라미터의 이름"
+  },
+  "name.model": {
+    "message": "모델 버전",
+    "description": "이미지 생성을 위한 모델 버전"
+  },
+  "name.fluxBot": {
+    "message": "Flux Bot",
+    "description": "Flux 이미지 생성기의 이름"
+  },
+  "description.numbers": {
+    "message": "생성할 이미지 수를 지정합니다. 값의 범위는 1-4입니다.",
+    "description": "'numbers' 파라미터의 설명"
+  },
+  "description.quality": {
+    "message": "생성할 이미지의 품질을 지정합니다. 값의 범위는 1-100입니다.",
+    "description": "'quality' 파라미터의 설명"
+  },
+  "description.prompt": {
+    "message": "Flux 이미지를 생성하기 위한 프롬프트 문구",
+    "description": "'prompt' 파라미터의 설명"
+  },
+  "status.pending": {
+    "message": "대기 중",
+    "description": "작업의 대기 상태"
+  },
+  "status.processing": {
+    "message": "처리 중",
+    "description": "작업의 처리 상태"
+  },
+  "placeholder.paddingNoise": {
+    "message": "선택하세요...",
+    "description": "노이즈 입력 필드의 자리 표시 텍스트"
+  },
+  "placeholder.select": {
+    "message": "선택",
+    "description": "선택 필드에서의 자리 표시 텍스트"
+  },
+  "placeholder.paddingLevel": {
+    "message": "선택하세요...",
+    "description": "패딩 레벨의 자리 표시 텍스트"
+  },
+  "placeholder.prompt": {
+    "message": "생성할 이미지 스타일의 프롬프트를 입력하세요. 예: a white siamese cat",
+    "description": "프롬프트 필드의 자리 표시 텍스트"
+  },
+  "placeholder.position": {
+    "message": "선택하세요...",
+    "description": "위치 입력 필드의 자리 표시 텍스트"
+  },
+  "placeholder.aspectRatio": {
+    "message": "선택하세요...",
+    "description": "가로 세로 비율 입력의 자리 표시 텍스트"
+  },
+  "placeholder.preset": {
+    "message": "선택하세요...",
+    "description": "사전 설정 입력의 자리 표시 텍스트"
+  },
+  "placeholder.markerShape": {
+    "message": "선택하세요...",
+    "description": "마커 모양 입력의 자리 표시 텍스트"
+  },
+  "placeholder.rotate": {
+    "message": "선택하세요...",
+    "description": "회전 입력 필드의 자리 표시 텍스트"
+  },
+  "placeholder.subMarker": {
+    "message": "선택하세요...",
+    "description": "서브 마커 입력 필드의 자리 표시 텍스트"
+  },
+  "button.generate": {
+    "message": "생성",
+    "description": "Flux 이미지를 생성하는 버튼 텍스트"
+  },
+  "button.extend": {
+    "message": "이미지 확장",
+    "description": "이미지 확장 버튼 텍스트"
+  },
+  "button.viewImage": {
+    "message": "원본 이미지 보기",
+    "description": "Flux 이미지를 보는 버튼 텍스트"
+  },
+  "button.download": {
+    "message": "이미지 다운로드",
+    "description": "이미지 다운로드 버튼 텍스트"
+  },
+  "message.downloadImage": {
+    "message": "이미지를 새 창에서 열기",
+    "description": "이미지를 새 창에서 여는 동작"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "최대 5장의 이미지만 업로드할 수 있습니다",
+    "description": "이미지 업로드 한도를 초과했을 때 표시되는 오류 메시지"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "이미지 업로드 성공",
+    "description": "이미지 업로드가 성공했을 때 표시되는 메시지"
+  },
+  "message.uploadReferencesError": {
+    "message": "이미지 업로드 실패, 나중에 다시 시도하세요",
+    "description": "이미지 업로드 실패 시 표시되는 오류 메시지"
+  },
+  "message.startingTask": {
+    "message": "작업을 시작 중...",
+    "description": "작업 시작시의 메시지"
+  },
+  "message.startTaskSuccess": {
+    "message": "생성 작업 시작 성공",
+    "description": "작업 시작 성공 시 표시되는 메시지"
+  },
+  "message.startTaskFailed": {
+    "message": "작업 시작 실패, 관리자에게 문의하세요",
+    "description": "작업 시작 실패 시 표시되는 오류 메시지"
+  },
+  "message.usedUp": {
+    "message": "잔여 포인트가 모두 소진되었습니다. 추가 포인트를 구매 후 이용해주세요",
+    "description": "포인트 소진 시 표시되는 메시지"
+  },
+  "message.generating": {
+    "message": "이미지를 생성 중입니다...",
+    "description": "이미지가 생성 중일 때 표시되는 메시지"
+  },
+  "message.downloadVideo": {
+    "message": "이 이미지를 다운로드",
+    "description": "이미지가 생성 중일 때의 메시지"
+  },
+  "message.extendVideo": {
+    "message": "이 이미지를 계속 생성",
+    "description": "이미지가 생성 중일 때의 메시지"
+  },
+  "message.generateFailed": {
+    "message": "이미지 생성 실패",
+    "description": "이미지 생성 실패 시의 메시지"
+  },
+  "message.uploadVideoExceed": {
+    "message": "업로드한 첫 프레임 이미지 수가 제한을 초과했습니다",
+    "description": "첫 프레임 이미지 업로드 수 제한 초과 시의 오류"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "업로드 파일은 10MB를 초과할 수 없습니다!",
+    "description": "업로드 파일 크기가 10MB를 초과했을 때의 오류 메시지"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "업로드 파일은 MP4 형식이어야 합니다!",
+    "description": "업로드 파일의 형식이 MP4가 아닌 경우의 오류 메시지"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "업로드한 첫 프레임 이미지 수가 제한을 초과했습니다.",
+    "description": "첫 프레임 이미지 수가 제한을 초과했을 때 표시되는 오류 메시지"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "업로드한 마지막 프레임 이미지 수가 제한을 초과했습니다.",
+    "description": "마지막 프레임 이미지 수가 제한을 초과했을 때 표시되는 오류 메시지"
+  },
+  "message.uploadStartImageError": {
+    "message": "첫 프레임 이미지 업로드에 실패했습니다.",
+    "description": "첫 프레임 이미지 업로드에 실패했을 때 표시되는 오류 메시지"
+  },
+  "message.uploadVideoError": {
+    "message": "이미지 업로드에 실패했습니다.",
+    "description": "첫 프레임 이미지 업로드에 실패했을 때 표시되는 오류 메시지"
+  },
+  "message.uploadEndImageError": {
+    "message": "마지막 프레임 이미지 업로드에 실패했습니다.",
+    "description": "마지막 프레임 이미지 업로드에 실패했을 때 표시되는 오류 메시지"
+  },
+  "message.uploadDocumentsError": {
+    "message": "문서 업로드에 실패했습니다.",
+    "description": "문서 업로드에 실패했을 때 표시되는 오류 메시지"
+  },
+  "message.noOperations": {
+    "message": "사용 가능한 작업이 없습니다.",
+    "description": "사용 가능한 작업이 없을 때 표시되는 메시지"
+  },
+  "message.noTasks": {
+    "message": "이전 작업이 없습니다. 왼쪽에서 이미지를 생성해 주세요.",
+    "description": "작업이 없을 때 표시되는 메시지"
+  }
+}

@@ -1,0 +1,222 @@
+{
+  "name.taskId": {
+    "message": "ID de tâche",
+    "description": "ID de la tâche"
+  },
+  "name.type": {
+    "message": "Type",
+    "description": "Type de contenu de l'image Flux à générer, comme 'lien', 'texte', etc."
+  },
+  "name.failure": {
+    "message": "Échec",
+    "description": "État d'échec de la tâche"
+  },
+  "name.failureReason": {
+    "message": "Raison de l'échec",
+    "description": "Raison de l'échec de la tâche"
+  },
+  "name.status": {
+    "message": "Statut",
+    "description": "Statut de la tâche"
+  },
+  "name.traceId": {
+    "message": "ID de trace",
+    "description": "ID de trace de la tâche"
+  },
+  "name.createdAt": {
+    "message": "Créé le",
+    "description": "Date et heure de création de l'image Flux"
+  },
+  "name.numbers": {
+    "message": "Nombre d'images",
+    "description": "Nombre d'images à générer"
+  },
+  "name.quality": {
+    "message": "Qualité de l'image",
+    "description": "Qualité de l'image"
+  },
+  "name.prompt": {
+    "message": "Prompt d'image",
+    "description": "Prompt pour l'entrée de contenu"
+  },
+  "name.ratio": {
+    "message": "Proportion",
+    "description": "Nom du paramètre de proportion"
+  },
+  "name.model": {
+    "message": "Version du modèle",
+    "description": "Version du modèle utilisée pour générer l'image"
+  },
+  "name.fluxBot": {
+    "message": "Flux Bot",
+    "description": "Nom du générateur d'images Flux"
+  },
+  "description.numbers": {
+    "message": "Spécifiez le nombre d'images à générer, plage de valeurs : 1-4.",
+    "description": "Description du paramètre 'numbers'"
+  },
+  "description.quality": {
+    "message": "Spécifiez la qualité des images à générer, plage de valeurs : 1-100.",
+    "description": "Description du paramètre 'quality'"
+  },
+  "description.prompt": {
+    "message": "Prompt pour générer des images Flux.",
+    "description": "Description du paramètre 'prompt'"
+  },
+  "status.pending": {
+    "message": "En attente",
+    "description": "Statut d'attente de la tâche"
+  },
+  "status.processing": {
+    "message": "En cours de traitement",
+    "description": "Statut de la tâche en cours de traitement"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Veuillez sélectionner...",
+    "description": "Placeholder pour le bruit de remplissage"
+  },
+  "placeholder.select": {
+    "message": "Sélectionner",
+    "description": "Texte du placeholder dans le champ de sélection"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Veuillez sélectionner...",
+    "description": "Placeholder pour le niveau de remplissage"
+  },
+  "placeholder.prompt": {
+    "message": "Saisissez un prompt pour le style d'image à générer, par exemple : un chat siamois blanc",
+    "description": "Texte du placeholder dans le champ 'prompt'"
+  },
+  "placeholder.position": {
+    "message": "Veuillez sélectionner...",
+    "description": "Placeholder pour l'entrée de position"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Veuillez sélectionner...",
+    "description": "Placeholder pour le ratio largeur/hauteur"
+  },
+  "placeholder.preset": {
+    "message": "Veuillez sélectionner...",
+    "description": "Placeholder pour l'entrée de préréglage"
+  },
+  "placeholder.markerShape": {
+    "message": "Veuillez sélectionner...",
+    "description": "Placeholder pour la forme du marqueur"
+  },
+  "placeholder.rotate": {
+    "message": "Veuillez sélectionner...",
+    "description": "Placeholder pour l'entrée de rotation"
+  },
+  "placeholder.subMarker": {
+    "message": "Veuillez sélectionner...",
+    "description": "Placeholder pour l'entrée de sous-marqueur"
+  },
+  "button.generate": {
+    "message": "Générer",
+    "description": "Texte du bouton pour générer des images Flux"
+  },
+  "button.extend": {
+    "message": "Étendre l'image",
+    "description": "Texte du bouton pour étendre une image"
+  },
+  "button.viewImage": {
+    "message": "Voir l'image originale",
+    "description": "Texte du bouton pour voir l'image Flux générée"
+  },
+  "button.download": {
+    "message": "Télécharger l'image",
+    "description": "Texte du bouton pour télécharger une image"
+  },
+  "message.downloadImage": {
+    "message": "Ouvrir l'image dans une nouvelle fenêtre",
+    "description": "Ouvrir l'image dans une nouvelle fenêtre"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Vous pouvez télécharger jusqu'à 5 images",
+    "description": "Message d'erreur lorsque le nombre d'images téléchargées dépasse la limite"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Images téléchargées avec succès",
+    "description": "Message de succès lors du téléchargement d'images"
+  },
+  "message.uploadReferencesError": {
+    "message": "Échec du téléchargement des images, veuillez réessayer plus tard",
+    "description": "Message d'erreur lors de l'échec du téléchargement d'images"
+  },
+  "message.startingTask": {
+    "message": "Démarrage de la tâche...",
+    "description": "Message affiché lors du démarrage de la tâche de dessin"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tâche de génération lancée avec succès",
+    "description": "Message de succès lors du lancement de la tâche"
+  },
+  "message.startTaskFailed": {
+    "message": "Échec du lancement de la tâche, veuillez contacter l'administrateur",
+    "description": "Message d'erreur lors de l'échec du démarrage de la tâche de dessin"
+  },
+  "message.usedUp": {
+    "message": "Vos crédits sont épuisés, veuillez acheter plus de crédits pour continuer à utiliser",
+    "description": "Message affiché lorsque les crédits sont épuisés"
+  },
+  "message.generating": {
+    "message": "Génération en cours...",
+    "description": "Message affiché lors de la génération de l'image"
+  },
+  "message.downloadVideo": {
+    "message": "Télécharger cette image",
+    "description": "Message affiché lors de la génération de l'image"
+  },
+  "message.extendVideo": {
+    "message": "Continuer à générer cette image",
+    "description": "Message affiché lors de la génération de l'image"
+  },
+  "message.generateFailed": {
+    "message": "Échec de la génération de l'image",
+    "description": "Message affiché lors de l'échec de la génération de l'image"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Nombre d'images du premier cadre téléchargées dépassant la limite",
+    "description": "Message d'erreur lorsque le nombre d'images du premier cadre téléchargées dépasse la limite"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "La taille du fichier téléchargé ne doit pas dépasser 10 Mo !",
+    "description": "Message d'erreur lorsque la taille du fichier téléchargé dépasse 10 Mo"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Le fichier téléchargé doit être au format MP4 !",
+    "description": "Message d'erreur lorsque le fichier téléchargé n'est pas au format MP4"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Le nombre d'images de début téléchargées dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de début téléchargées dépasse la limite"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Le nombre d'images de fin téléchargées dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de fin téléchargées dépasse la limite"
+  },
+  "message.uploadStartImageError": {
+    "message": "Échec du téléchargement de l'image de début",
+    "description": "Message d'erreur lorsque le téléchargement de l'image de début échoue"
+  },
+  "message.uploadVideoError": {
+    "message": "Échec du téléchargement de l'image",
+    "description": "Message d'erreur lorsque le téléchargement de l'image de début échoue"
+  },
+  "message.uploadEndImageError": {
+    "message": "Échec du téléchargement de l'image de fin",
+    "description": "Message d'erreur lorsque le téléchargement de l'image de fin échoue"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Échec du téléchargement des documents",
+    "description": "Message d'erreur lorsque le téléchargement des documents échoue"
+  },
+  "message.noOperations": {
+    "message": "Aucune opération disponible",
+    "description": "Message lorsqu'il n'y a pas d'opérations disponibles"
+  },
+  "message.noTasks": {
+    "message": "Aucune tâche historique, veuillez cliquer sur la gauche pour générer une image",
+    "description": "Message lorsqu'il n'y a pas de tâches"
+  }
+}

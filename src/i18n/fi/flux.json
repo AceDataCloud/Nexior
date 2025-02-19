@@ -1,0 +1,222 @@
+{
+  "name.taskId": {
+    "message": "Tehtävän ID",
+    "description": "Tehtävän tunniste"
+  },
+  "name.type": {
+    "message": "Tyyppi",
+    "description": "Flux-kuvan sisältötyyppi, kuten 'linkki', 'teksti' jne."
+  },
+  "name.failure": {
+    "message": "Epäonnistui",
+    "description": "Tehtävän epäonnistunut tila"
+  },
+  "name.failureReason": {
+    "message": "Epäonnistumisen syy",
+    "description": "Syy, miksi tehtävä epäonnistui"
+  },
+  "name.status": {
+    "message": "Tila",
+    "description": "Tehtävän tila"
+  },
+  "name.traceId": {
+    "message": "Jäljityksen ID",
+    "description": "Tehtävän jäljityksen tunniste"
+  },
+  "name.createdAt": {
+    "message": "Luontiaika",
+    "description": "Flux-kuvan luomisen päivämäärä ja aika"
+  },
+  "name.numbers": {
+    "message": "Kuvamäärä",
+    "description": "Luotavien kuvien määrä"
+  },
+  "name.quality": {
+    "message": "Kuvan laatu",
+    "description": "Kuvan laatu"
+  },
+  "name.prompt": {
+    "message": "Kuvavihje",
+    "description": "Sisällön syötteen vihje"
+  },
+  "name.ratio": {
+    "message": "Kuvasuhde",
+    "description": "Kuvasuhteen parametri"
+  },
+  "name.model": {
+    "message": "Malliversio",
+    "description": "Tuotannossa käytettävä malliversio"
+  },
+  "name.fluxBot": {
+    "message": "Flux Bot",
+    "description": "Flux-kuvageneraattorin nimi"
+  },
+  "description.numbers": {
+    "message": "Määritä luotavien kuvien määrä, arvo välillä: 1-4.",
+    "description": "Parameterin 'numbers' kuvaus"
+  },
+  "description.quality": {
+    "message": "Määritä luotavien kuvien laatu, arvo välillä: 1-100.",
+    "description": "Parameterin 'quality' kuvaus"
+  },
+  "description.prompt": {
+    "message": "Flux-kuvien luomiseen käytettävä vihjeteksti",
+    "description": "Parameterin 'prompt' kuvaus"
+  },
+  "status.pending": {
+    "message": "Odottamassa",
+    "description": "Tehtävän odotustila"
+  },
+  "status.processing": {
+    "message": "Käsitellään",
+    "description": "Tehtävän käsittelytila"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Valitse...",
+    "description": "Täytemelun syöttökentän paikkateksti"
+  },
+  "placeholder.select": {
+    "message": "Valitse",
+    "description": "Valintakentän paikkateksti"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Valitse...",
+    "description": "Täytetason syöttökentän paikkateksti"
+  },
+  "placeholder.prompt": {
+    "message": "Syötä vihje, esim. valkoinen siamilaissusi",
+    "description": "Vihjesyötteen paikkateksti"
+  },
+  "placeholder.position": {
+    "message": "Valitse...",
+    "description": "Asemoinnin paikkateksti"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Valitse...",
+    "description": "Kuvasuhteen syöttökentän paikkateksti"
+  },
+  "placeholder.preset": {
+    "message": "Valitse...",
+    "description": "Esiasetusten syöttökentän paikkateksti"
+  },
+  "placeholder.markerShape": {
+    "message": "Valitse...",
+    "description": "Merkinkuvien syöttökentän paikkateksti"
+  },
+  "placeholder.rotate": {
+    "message": "Valitse...",
+    "description": "Kiertämisen syöttökentän paikkateksti"
+  },
+  "placeholder.subMarker": {
+    "message": "Valitse...",
+    "description": "Alamerkkien syöttökentän paikkateksti"
+  },
+  "button.generate": {
+    "message": "Luo",
+    "description": "Flux-kuvien luomisen painikkeen teksti"
+  },
+  "button.extend": {
+    "message": "Laajenna kuvaa",
+    "description": "Kuvan laajentamisen painikkeen teksti"
+  },
+  "button.viewImage": {
+    "message": "Näytä alkuperäinen kuva",
+    "description": "Flux-kuvien katselun painikkeen teksti"
+  },
+  "button.download": {
+    "message": "Lataa kuva",
+    "description": "Kuvan lataamisen painikkeen teksti"
+  },
+  "message.downloadImage": {
+    "message": "Avaa kuva uudessa ikkunassa",
+    "description": "Viesti uuden ikkunan avaamisesta kuvalle"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Voit ladata korkeintaan 5 kuvaa",
+    "description": "Virheviesti, kun ladattujen kuvien määrä ylittää rajan"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Kuvat ladattu onnistuneesti",
+    "description": "Onnistumisviesti, kun kuvat on ladattu onnistuneesti"
+  },
+  "message.uploadReferencesError": {
+    "message": "Kuvien lataus epäonnistui, yritä myöhemmin uudelleen",
+    "description": "Virheviesti, kun kuvien lataus epäonnistuu"
+  },
+  "message.startingTask": {
+    "message": "Tehtävää käynnistetään...",
+    "description": "Viesti, kun piirtotehtävä aloitetaan"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tehtävä käynnistetty onnistuneesti",
+    "description": "Onnistumisviesti, kun tehtävä on käynnistetty onnistuneesti"
+  },
+  "message.startTaskFailed": {
+    "message": "Tehtävän käynnistäminen epäonnistui, ota yhteyttä ylläpitäjään",
+    "description": "Virheviesti, kun piirtotehtävän käynnistäminen epäonnistuu"
+  },
+  "message.usedUp": {
+    "message": "Pisteesi ovat loppuneet, osta lisää käyttääksesi palvelua",
+    "description": "Viesti, kun pisteet ovat loppuneet"
+  },
+  "message.generating": {
+    "message": "Luodaan...",
+    "description": "Viesti, kun kuvaa luodaan"
+  },
+  "message.downloadVideo": {
+    "message": "Lataa tämä kuva",
+    "description": "Viesti, kun kuva on ladattavissa"
+  },
+  "message.extendVideo": {
+    "message": "Jatka tämän kuvan luomista",
+    "description": "Viesti, kun kuva on jatkettavissa"
+  },
+  "message.generateFailed": {
+    "message": "Kuvan luominen epäonnistui",
+    "description": "Viesti, kun kuvan luominen epäonnistuu"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Ladattujen esikatselukuvien määrä on ylittänyt rajan",
+    "description": "Virheviesti, kun ladattujen esikatselukuvien määrä ylittää rajan"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Ladattavan tiedoston koko ei saa ylittää 10MB!",
+    "description": "Virheviesti, kun tiedoston koko ylittää 10MB"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Ladattavan tiedoston on oltava MP4-muodossa!",
+    "description": "Virheviesti, kun ladattava tiedosto ei ole MP4-formaatissa"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Ladattujen aloituskehyskuvien määrä ylittää rajan",
+    "description": "Virhesanoma, kun ladattujen aloituskehyskuvien määrä ylittää rajan"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Ladattujen loppukehyskuvien määrä ylittää rajan",
+    "description": "Virhesanoma, kun ladattujen loppukehyskuvien määrä ylittää rajan"
+  },
+  "message.uploadStartImageError": {
+    "message": "Aloituskehyskuvan lataus epäonnistui",
+    "description": "Virhesanoma, kun aloituskehyskuvan lataus epäonnistuu"
+  },
+  "message.uploadVideoError": {
+    "message": "Kuvan lataus epäonnistui",
+    "description": "Virhesanoma, kun kuvan lataus epäonnistuu"
+  },
+  "message.uploadEndImageError": {
+    "message": "Loppukehyskuvan lataus epäonnistui",
+    "description": "Virhesanoma, kun loppukehyskuvan lataus epäonnistuu"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Asiakirjojen lataus epäonnistui",
+    "description": "Virhesanoma, kun asiakirjojen lataus epäonnistuu"
+  },
+  "message.noOperations": {
+    "message": "Ei käytettävissä olevia toimintoja",
+    "description": "Viesti, kun ei ole käytettävissä olevia toimintoja"
+  },
+  "message.noTasks": {
+    "message": "Ei ole historiatehtäviä, napsauta vasemmalta luodaksesi kuvan",
+    "description": "Viesti, kun ei ole tehtäviä"
+  }
+}
