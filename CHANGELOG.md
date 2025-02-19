@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sun, 16 Feb 2025 16:26:21 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Feb 2025 15:02:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.15.3
+
+Wed, 19 Feb 2025 15:02:25 GMT
+
+### Patches
+
+- add flux (1348977728@qq.com)
 
 ## 2.15.2
 
