@@ -1,0 +1,214 @@
+{
+  "name.taskId": {
+    "message": "Uppgift ID",
+    "description": "Uppgiftens ID"
+  },
+  "name.type": {
+    "message": "Typ",
+    "description": "Innehållstypen för den FLux-bild som ska genereras, t.ex. 'länk', 'text', etc."
+  },
+  "name.failure": {
+    "message": "Misslyckande",
+    "description": "Uppgiftens felstatus"
+  },
+  "name.failureReason": {
+    "message": "Orsak till misslyckande",
+    "description": "Orsaken till att uppgiften misslyckades"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Uppgiftens status"
+  },
+  "name.traceId": {
+    "message": "Spårnings-ID",
+    "description": "Uppgiftens spårnings-ID"
+  },
+  "name.createdAt": {
+    "message": "Skapat vid",
+    "description": "Datum och tidpunkt då Flux-bilden genererades"
+  },
+  "name.numbers": {
+    "message": "Antal bilder",
+    "description": "Antalet bilder som ska genereras"
+  },
+  "name.quality": {
+    "message": "Bildkvalitet",
+    "description": "Bildkvaliteten"
+  },
+  "name.prompt": {
+    "message": "Bildprompt",
+    "description": "Innehållsingångsprompten"
+  },
+  "name.ratio": {
+    "message": "Förhållande",
+    "description": "Namnet på förhållandeparameter"
+  },
+  "name.model": {
+    "message": "Modellversion",
+    "description": "Modellversionen som används för att generera bilden"
+  },
+  "name.fluxBot": {
+    "message": "Flux Bot",
+    "description": "Namnet på Flux-bildgeneratorn"
+  },
+  "description.numbers": {
+    "message": "Ange antalet bilder som ska genereras, värdeintervallet är: 1-4.",
+    "description": "Beskrivningen av parameter 'numbers'"
+  },
+  "description.quality": {
+    "message": "Ange bildens kvalitet, värdeintervallet är: 1-100.",
+    "description": "Beskrivningen av parameter 'quality'"
+  },
+  "description.prompt": {
+    "message": "Prompt för att generera Flux-bild",
+    "description": "Beskrivningen av parameter 'prompt'"
+  },
+  "status.pending": {
+    "message": "Väntande",
+    "description": "Uppgiftens väntestatus"
+  },
+  "status.processing": {
+    "message": "Bearbetning",
+    "description": "Uppgiftens bearbetningsstatus"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Välj...",
+    "description": "Platsreserv för fyllnadsbrus"
+  },
+  "placeholder.select": {
+    "message": "Välj",
+    "description": "Platsreserv i valet fältet"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Välj...",
+    "description": "Platsreserv för fyllnadsnivån"
+  },
+  "placeholder.prompt": {
+    "message": "Ange bildstilens prompt, t.ex.: en vit siamesisk katt",
+    "description": "Platsreserv i promptfältet"
+  },
+  "placeholder.position": {
+    "message": "Välj...",
+    "description": "Platsreserv för positionens ingång"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Välj...",
+    "description": "Platsreserv för bildförhållande"
+  },
+  "placeholder.preset": {
+    "message": "Välj...",
+    "description": "Platsreserv för förinställningar"
+  },
+  "placeholder.markerShape": {
+    "message": "Välj...",
+    "description": "Platsreserv för markörens form"
+  },
+  "placeholder.rotate": {
+    "message": "Välj...",
+    "description": "Platsreserv för rotation"
+  },
+  "placeholder.subMarker": {
+    "message": "Välj...",
+    "description": "Platsreserv för undermarkör"
+  },
+  "button.generate": {
+    "message": "Generera",
+    "description": "Knapptext för att generera Flux-bild"
+  },
+  "button.extend": {
+    "message": "Utöka bild",
+    "description": "Knapptext för att utöka bild"
+  },
+  "button.viewImage": {
+    "message": "Visa originalbilden",
+    "description": "Knapptext för att visa den genererade Flux-bilden"
+  },
+  "button.download": {
+    "message": "Ladda ner bild",
+    "description": "Knapptext för att ladda ner bild"
+  },
+  "message.downloadImage": {
+    "message": "Öppna bild i nytt fönster",
+    "description": "Öppna bild i nytt fönster"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Maximalt antal bilder att ladda upp är 5",
+    "description": "Felmeddelande när antalet uppladdade bilder överstiger gränsen"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Bilder uppladdade framgångsrikt",
+    "description": "Framgångsmeddelande när bilder har laddats upp framgångsrikt"
+  },
+  "message.uploadReferencesError": {
+    "message": "Misslyckades med att ladda upp bild, försök igen senare",
+    "description": "Felmeddelande vid misslyckad bilduppladdning"
+  },
+  "message.startingTask": {
+    "message": "Startar uppgiften...",
+    "description": "Meddelande när ritningsuppgiften startar"
+  },
+  "message.startTaskSuccess": {
+    "message": "Uppgift för att generera initiativ startade framgångsrikt",
+    "description": "Framgångsmeddelande när uppgiften starter framgångsrikt"
+  },
+  "message.startTaskFailed": {
+    "message": "Misslyckades med att initiera uppgift, kontakta administratören",
+    "description": "Felmeddelande vid misslyckad start av ritningsuppgift"
+  },
+  "message.usedUp": {
+    "message": "Dina poäng är slut, köp fler poäng för att fortsätta använda",
+    "description": "Meddelande när poängen är slut"
+  },
+  "message.generating": {
+    "message": "Genererar...",
+    "description": "Meddelande när bild genereras"
+  },
+  "message.downloadVideo": {
+    "message": "Ladda ner den här bilden",
+    "description": "Meddelande när bild genereras"
+  },
+  "message.extendVideo": {
+    "message": "Fortsätt generera den här bilden",
+    "description": "Meddelande när bild genereras"
+  },
+  "message.generateFailed": {
+    "message": "Misslyckades med att generera bild",
+    "description": "Meddelande när bild generering misslyckas"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Antal uppladdade första ramar överstiger gränsen",
+    "description": "Felmeddelande när antalet uppladdade första ramar överstiger gränsen"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Storleken på den uppladdade filen får inte överstiga 10MB!",
+    "description": "Felmeddelande vid filstorlek som överstiger 10MB!gränsen"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Den uppladdade filen måste vara i MP4-format!",
+    "description": "Felmeddelande vid felaktigt filformat, filen måste vara i MP4-format!"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Antalet uppladdade startbilder överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade startbilder överskrider gränsen"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Antalet uppladdade slutbilder överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade slutbilder överskrider gränsen"
+  },
+  "message.uploadStartImageError": {
+    "message": "Misslyckades med att ladda upp startbild",
+    "description": "Felmeddelande vid misslyckad uppladdning av startbild"
+  },
+  "message.uploadVideoError": {
+    "message": "Misslyckades med att ladda upp bild",
+    "description": "Felmeddelande vid misslyckad uppladdning av startbild"
+  },
+  "message.uploadEndImageError": {
+    "message": "Misslyckades med att ladda upp slutbild",
+    "description": "Felmeddelande vid misslyckad uppladdning av slutbild"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Misslyckades med att ladda upp dokument",
+    "description": "Felmeddelande vid misslyckad uppladdning av dokument"
+  }
+}

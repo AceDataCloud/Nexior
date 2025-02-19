@@ -1,0 +1,222 @@
+{
+  "name.taskId": {
+    "message": "معرف المهمة",
+    "description": "معرف المهمة"
+  },
+  "name.type": {
+    "message": "النوع",
+    "description": "نوع محتوى الصورة المراد إنشاؤها بواسطة FLux، مثل 'رابط'، 'نص' إلخ"
+  },
+  "name.failure": {
+    "message": "فشل",
+    "description": "حالة فشل المهمة"
+  },
+  "name.failureReason": {
+    "message": "سبب الفشل",
+    "description": "سبب فشل المهمة"
+  },
+  "name.status": {
+    "message": "حالة",
+    "description": "حالة المهمة"
+  },
+  "name.traceId": {
+    "message": "معرف التتبع",
+    "description": "معرف التتبع للمهمة"
+  },
+  "name.createdAt": {
+    "message": "وقت الإنشاء",
+    "description": "تاريخ ووقت إنشاء صورة Flux"
+  },
+  "name.numbers": {
+    "message": "عدد الصور",
+    "description": "عدد الصور المراد إنشاؤها"
+  },
+  "name.quality": {
+    "message": "جودة الصور",
+    "description": "جودة الصور"
+  },
+  "name.prompt": {
+    "message": "موجه الصورة",
+    "description": "نص إدخال الموجه لإنشاء الصورة"
+  },
+  "name.ratio": {
+    "message": "النسبة",
+    "description": "اسم معلمة النسبة"
+  },
+  "name.model": {
+    "message": "إصدار النموذج",
+    "description": "إصدار النموذج المستخدم لإنشاء الصورة"
+  },
+  "name.fluxBot": {
+    "message": "Flux Bot",
+    "description": "اسم منشئ صور Flux"
+  },
+  "description.numbers": {
+    "message": "يحدد عدد الصور المراد إنشاؤها، يتراوح القيم بين: 1-4.",
+    "description": "وصف البارامتر 'numbers'"
+  },
+  "description.quality": {
+    "message": "يحدد جودة الصور المراد إنشاؤها، يتراوح القيم بين: 1-100.",
+    "description": "وصف البارامتر 'quality'"
+  },
+  "description.prompt": {
+    "message": "موجه النص لإنشاء صورة Flux",
+    "description": "وصف البارامتر 'prompt'"
+  },
+  "status.pending": {
+    "message": "قيد الانتظار",
+    "description": "حالة انتظار المهمة"
+  },
+  "status.processing": {
+    "message": "قيد المعالجة",
+    "description": "حالة معالجة المهمة"
+  },
+  "placeholder.paddingNoise": {
+    "message": "الرجاء الاختيار...",
+    "description": "النص المحتجز لإدخال ضوضاء التعبئة"
+  },
+  "placeholder.select": {
+    "message": "اختيار",
+    "description": "النص المحتجز في حقل الاختيار"
+  },
+  "placeholder.paddingLevel": {
+    "message": "الرجاء الاختيار...",
+    "description": "النص المحتجز لمستوى التعبئة"
+  },
+  "placeholder.prompt": {
+    "message": "إدخال النصوص الموجهة لأنماط الصور المراد إنشاؤها، مثل: a white siamese cat",
+    "description": "النص المحتجز في حقل الموجه"
+  },
+  "placeholder.position": {
+    "message": "الرجاء الاختيار...",
+    "description": "النص المحتجز لإدخال الموقع"
+  },
+  "placeholder.aspectRatio": {
+    "message": "الرجاء الاختيار...",
+    "description": "النص المحتجز لإدخال نسبة العرض إلى الارتفاع"
+  },
+  "placeholder.preset": {
+    "message": "الرجاء الاختيار...",
+    "description": "النص المحتجز لإدخال الإعداد المسبق"
+  },
+  "placeholder.markerShape": {
+    "message": "الرجاء الاختيار...",
+    "description": "النص المحتجز لإدخال شكل العلامة"
+  },
+  "placeholder.rotate": {
+    "message": "الرجاء الاختيار...",
+    "description": "النص المحتجز لإدخال التدوير"
+  },
+  "placeholder.subMarker": {
+    "message": "الرجاء الاختيار...",
+    "description": "النص المحتجز لإدخال العلامة الفرعية"
+  },
+  "button.generate": {
+    "message": "إنشاء",
+    "description": "نص زر إنشاء صور Flux"
+  },
+  "button.extend": {
+    "message": "توسيع الصورة",
+    "description": "نص زر توسيع الصورة"
+  },
+  "button.viewImage": {
+    "message": "عرض الصورة الأصلية",
+    "description": "نص زر عرض الصورة الأصلية لـ Flux"
+  },
+  "button.download": {
+    "message": "تحميل الصورة",
+    "description": "نص زر تحميل الصورة"
+  },
+  "message.downloadImage": {
+    "message": "فتح نافذة جديدة للصورة",
+    "description": "فتح نافذة جديدة للصورة"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "يمكن تحميل ما يصل إلى 5 صور كحد أقصى",
+    "description": "رسالة الخطأ عند تجاوز عدد الصور المحملة الحد الأقصى"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "نجح تحميل الصورة",
+    "description": "رسالة النجاح عند تحميل الصورة بنجاح"
+  },
+  "message.uploadReferencesError": {
+    "message": "فشل في تحميل الصورة، الرجاء المحاولة لاحقاً",
+    "description": "رسالة الخطأ عند فشل تحميل الصورة"
+  },
+  "message.startingTask": {
+    "message": "جاري بدء المهمة...",
+    "description": "رسالة بداية بدء مهمة الرسم"
+  },
+  "message.startTaskSuccess": {
+    "message": "تم إرسال مهمة الإنشاء بنجاح",
+    "description": "رسالة النجاح عند بدء المهمة بنجاح"
+  },
+  "message.startTaskFailed": {
+    "message": "فشل في بدء المهمة، يرجى الاتصال بالمسؤول",
+    "description": "رسالة الخطأ عند فشل بدء مهمة الرسم"
+  },
+  "message.usedUp": {
+    "message": "نفذت نقاطك، يرجى شراء المزيد من النقاط للاستمرار في الاستخدام",
+    "description": "رسالة عند نفاذ النقاط"
+  },
+  "message.generating": {
+    "message": "جاري الإنشاء...",
+    "description": "رسالة عند إنشاء الصورة"
+  },
+  "message.downloadVideo": {
+    "message": "تحميل هذه الصورة",
+    "description": "رسالة عند تحميل الصورة"
+  },
+  "message.extendVideo": {
+    "message": "استمرار إنشاء هذه الصورة",
+    "description": "رسالة عند استمرار إنشاء الصورة"
+  },
+  "message.generateFailed": {
+    "message": "فشل في إنشاء الصورة",
+    "description": "رسالة عند فشل إنشاء الصورة"
+  },
+  "message.uploadVideoExceed": {
+    "message": "عدد الصور للصور الأولية المحملة تجاوز الحد الأقصى",
+    "description": "رسالة الخطأ عند تجاوز عدد الصور الأولية المحملة الحد الأقصى"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "حجم الملف المحمل لا يمكن أن يتجاوز 10 ميغابايت!",
+    "description": "رسالة الخطأ عند تجاوز حجم الملف المحمل 10 ميغابايت"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "يجب أن يكون الملف المحمل بتنسيق MP4!",
+    "description": "رسالة الخطأ عند فشل تحميل الملف بغير تنسيق MP4"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "تجاوز عدد الصور الإطارية الأولى المسموح بها",
+    "description": "رسالة خطأ عند تجاوز عدد الصور الإطارية الأولى المسموح به"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "تجاوز عدد الصور الإطارية الأخيرة المسموح بها",
+    "description": "رسالة خطأ عند تجاوز عدد الصور الإطارية الأخيرة المسموح به"
+  },
+  "message.uploadStartImageError": {
+    "message": "فشل في تحميل الصورة الإطارية الأولى",
+    "description": "رسالة خطأ عند فشل تحميل الصورة الإطارية الأولى"
+  },
+  "message.uploadVideoError": {
+    "message": "فشل في تحميل الصورة",
+    "description": "رسالة خطأ عند فشل تحميل الصورة الإطارية الأولى"
+  },
+  "message.uploadEndImageError": {
+    "message": "فشل في تحميل الصورة الإطارية الأخيرة",
+    "description": "رسالة خطأ عند فشل تحميل الصورة الإطارية الأخيرة"
+  },
+  "message.uploadDocumentsError": {
+    "message": "فشل في تحميل الوثائق",
+    "description": "رسالة خطأ عند فشل تحميل الوثائق"
+  },
+  "message.noOperations": {
+    "message": "لا توجد عمليات متاحة",
+    "description": "رسالة عند عدم وجود عمليات متاحة"
+  },
+  "message.noTasks": {
+    "message": "لا توجد مهام سابقة، الرجاء النقر على الجهة اليسرى لتوليد صورة",
+    "description": "رسالة عند عدم وجود مهام"
+  }
+}

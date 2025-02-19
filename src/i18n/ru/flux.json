@@ -1,0 +1,222 @@
+{
+  "name.taskId": {
+    "message": "ID задания",
+    "description": "ID задачи"
+  },
+  "name.type": {
+    "message": "Тип",
+    "description": "Тип контента для создания Flux изображения, например, 'ссылка', 'текст' и т.д."
+  },
+  "name.failure": {
+    "message": "Неудача",
+    "description": "Статус неудачи задачи"
+  },
+  "name.failureReason": {
+    "message": "Причина неудачи",
+    "description": "Причина неудачи задачи"
+  },
+  "name.status": {
+    "message": "Статус",
+    "description": "Статус задачи"
+  },
+  "name.traceId": {
+    "message": "ID отслеживания",
+    "description": "ID отслеживания задачи"
+  },
+  "name.createdAt": {
+    "message": "Время создания",
+    "description": "Дата и время создания Flux изображения"
+  },
+  "name.numbers": {
+    "message": "Количество изображений",
+    "description": "Количество изображений, которые нужно создать"
+  },
+  "name.quality": {
+    "message": "Качество изображения",
+    "description": "Качество изображения"
+  },
+  "name.prompt": {
+    "message": "Подсказка изображения",
+    "description": "Подсказка для вводимого содержимого"
+  },
+  "name.ratio": {
+    "message": "Соотношение",
+    "description": "Название параметра соотношения"
+  },
+  "name.model": {
+    "message": "Версия модели",
+    "description": "Версия модели, используемая для генерации изображений"
+  },
+  "name.fluxBot": {
+    "message": "Flux Бот",
+    "description": "Название генератора Flux изображений"
+  },
+  "description.numbers": {
+    "message": "Укажите количество изображений, которые нужно создать, диапазон значений: 1-4.",
+    "description": "Описание параметра 'numbers'"
+  },
+  "description.quality": {
+    "message": "Укажите качество изображения, диапазон значений: 1-100.",
+    "description": "Описание параметра 'quality'"
+  },
+  "description.prompt": {
+    "message": "Подсказка для генерации Flux изображения",
+    "description": "Описание параметра 'prompt'"
+  },
+  "status.pending": {
+    "message": "Ожидание",
+    "description": "Статус ожидания задачи"
+  },
+  "status.processing": {
+    "message": "Обработка",
+    "description": "Статус обработки задачи"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода шума"
+  },
+  "placeholder.select": {
+    "message": "Выбрать",
+    "description": "Текст заполнителя в поле выбора"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для уровня заполнения"
+  },
+  "placeholder.prompt": {
+    "message": "Введите подсказку для стиля изображения, например: белая сиамская кошка",
+    "description": "Текст заполнителя в поле подсказки"
+  },
+  "placeholder.position": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для позиции"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для соотношения сторон"
+  },
+  "placeholder.preset": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для пресета"
+  },
+  "placeholder.markerShape": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для формы маркера"
+  },
+  "placeholder.rotate": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для поворота"
+  },
+  "placeholder.subMarker": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для субмаркеру"
+  },
+  "button.generate": {
+    "message": "Создать",
+    "description": "Текст кнопки для генерации Flux изображения"
+  },
+  "button.extend": {
+    "message": "Расширить изображение",
+    "description": "Текст кнопки для расширения изображения"
+  },
+  "button.viewImage": {
+    "message": "Просмотреть изображение",
+    "description": "Текст кнопки для просмотра оригинального Flux изображения"
+  },
+  "button.download": {
+    "message": "Скачать изображение",
+    "description": "Текст кнопки для скачивания изображения"
+  },
+  "message.downloadImage": {
+    "message": "Открыть изображение в новом окне",
+    "description": "Открытие изображения в новом окне"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Можно загрузить не более 5 изображений",
+    "description": "Сообщение об ошибке, если количество загруженных изображений превышает ограничение"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Изображение успешно загружено",
+    "description": "Сообщение об успешной загрузке изображения"
+  },
+  "message.uploadReferencesError": {
+    "message": "Ошибка загрузки изображения, повторите попытку позже",
+    "description": "Сообщение об ошибке при неудачной загрузке изображения"
+  },
+  "message.startingTask": {
+    "message": "Запуск задачи...",
+    "description": "Сообщение при старте задачи рисования"
+  },
+  "message.startTaskSuccess": {
+    "message": "Задача успешно запущена",
+    "description": "Сообщение об успешном запуске задачи"
+  },
+  "message.startTaskFailed": {
+    "message": "Ошибка запуска задачи, свяжитесь с администратором",
+    "description": "Сообщение об ошибке при неудачном запуске задачи рисования"
+  },
+  "message.usedUp": {
+    "message": "Ваши очки заканчиваются, чтобы продолжить, купите дополнительные",
+    "description": "Сообщение, когда очки закончились"
+  },
+  "message.generating": {
+    "message": "Генерация...",
+    "description": "Сообщение во время генерации изображения"
+  },
+  "message.downloadVideo": {
+    "message": "Скачать это изображение",
+    "description": "Сообщение о загрузке изображения во время генерации"
+  },
+  "message.extendVideo": {
+    "message": "Продолжить генерацию этого изображения",
+    "description": "Сообщение о продолжении генерации изображения"
+  },
+  "message.generateFailed": {
+    "message": "Ошибка генерации изображения",
+    "description": "Сообщение об ошибке, когда генерация изображения не удалась"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Количество загружаемых первых кадров изображения превышает ограничение",
+    "description": "Сообщение об ошибке, когда количество загружаемых первых кадров превышает ограничение"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Размер файла для загрузки не должен превышать 10MB!",
+    "description": "Сообщение об ошибке, если размер загружаемого файла превышает 10MB"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Загружаемый файл должен быть в формате MP4!",
+    "description": "Сообщение об ошибке, если загружаемый файл не в формате MP4"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Количество первых изображений, превышает лимит",
+    "description": "Сообщение об ошибке, когда количество загружаемых первых изображений превышает лимит"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Количество последних изображений, превышает лимит",
+    "description": "Сообщение об ошибке, когда количество загружаемых последних изображений превышает лимит"
+  },
+  "message.uploadStartImageError": {
+    "message": "Не удалось загрузить первое изображение",
+    "description": "Сообщение об ошибке, когда не удалось загрузить первое изображение"
+  },
+  "message.uploadVideoError": {
+    "message": "Не удалось загрузить изображение",
+    "description": "Сообщение об ошибке, когда не удалось загрузить изображение"
+  },
+  "message.uploadEndImageError": {
+    "message": "Не удалось загрузить последнее изображение",
+    "description": "Сообщение об ошибке, когда не удалось загрузить последнее изображение"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Не удалось загрузить документ",
+    "description": "Сообщение об ошибке, когда не удалось загрузить документ"
+  },
+  "message.noOperations": {
+    "message": "Нет доступных операций",
+    "description": "Сообщение, когда нет доступных операций"
+  },
+  "message.noTasks": {
+    "message": "Нет исторических задач, нажмите слева, чтобы создать изображение",
+    "description": "Сообщение, когда нет задач"
+  }
+}

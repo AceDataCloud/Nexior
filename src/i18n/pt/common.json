@@ -1,274 +1,426 @@
 {
   "button.setup": {
     "message": "Configurar",
-    "description": "Texto do botão para configurar algo"
+    "description": "Texto do botão usado para configurar algo"
   },
   "button.copy": {
     "message": "Copiar",
-    "description": "Texto do botão para copiar algo"
+    "description": "Texto do botão usado para copiar algo"
   },
   "button.restart": {
     "message": "Reiniciar",
-    "description": "Texto do botão para reiniciar algo"
+    "description": "Texto do botão usado para reiniciar algo"
   },
   "button.preview": {
     "message": "Visualizar",
-    "description": "Texto do botão para visualizar um arquivo via URL"
+    "description": "Texto do botão usado para abrir a visualização de um arquivo por URL"
   },
   "button.seeRawImage": {
-    "message": "Ver imagem original",
-    "description": "Texto do botão para ver a imagem original"
+    "message": "Ver Imagem Original",
+    "description": "Texto do botão usado para visualizar a imagem original"
   },
   "button.seeRawVideo": {
-    "message": "Ver vídeo",
-    "description": "Texto do botão para ver o vídeo original"
+    "message": "Ver Vídeo",
+    "description": "Texto do botão usado para visualizar o vídeo original"
   },
   "button.edit": {
     "message": "Editar",
-    "description": "Texto do botão para editar algo"
+    "description": "Texto do botão usado para editar algo"
   },
   "button.login": {
     "message": "Entrar",
-    "description": "Texto do botão para fazer login"
+    "description": "Texto do botão usado para fazer login"
+  },
+  "button.logout": {
+    "message": "Sair",
+    "description": "Texto do botão usado para sair da conta"
+  },
+  "button.new": {
+    "message": "Novo",
+    "description": "Texto do botão usado para criar um novo projeto"
+  },
+  "button.delete": {
+    "message": "Excluir",
+    "description": "Texto do botão usado para excluir algo"
+  },
+  "button.confirm": {
+    "message": "Confirmar",
+    "description": "Texto do botão usado para confirmar algo"
+  },
+  "button.cancel": {
+    "message": "Cancelar",
+    "description": "Texto do botão usado para cancelar alguma ação"
+  },
+  "button.alert": {
+    "message": "Alerta",
+    "description": "Texto do botão usado para alertar algo"
+  },
+  "button.info": {
+    "message": "Informação",
+    "description": "Texto do botão usado para mostrar uma informação"
+  },
+  "button.publish": {
+    "message": "Publicar",
+    "description": "Texto do botão usado para publicar algo"
+  },
+  "button.watch": {
+    "message": "Assistir",
+    "description": "Texto do botão usado para assistir algo"
+  },
+  "button.verify": {
+    "message": "Verificar Identidade",
+    "description": "Texto do botão usado para realizar a verificação de identidade do usuário"
+  },
+  "button.profile": {
+    "message": "Perfil",
+    "description": "Texto do botão usado para mostrar o perfil do usuário"
+  },
+  "button.console": {
+    "message": "Console",
+    "description": "Texto do botão usado para mostrar a página do console para controlar algo na web"
+  },
+  "button.learn": {
+    "message": "Aprender",
+    "description": "Texto do botão usado para oferecer aprendizado ao usuário sobre algo"
+  },
+  "button.buy": {
+    "message": "Comprar",
+    "description": "Texto do botão usado para realizar a compra de algo"
+  },
+  "button.try": {
+    "message": "Experimentar",
+    "description": "Texto do botão usado para permitir ao usuário tentar algo"
+  },
+  "button.startForFree": {
+    "message": "Começar de Graça",
+    "description": "Texto do botão usado para permitir ao usuário começar a usar gratuitamente"
+  },
+  "button.apply": {
+    "message": "Inscrever-se",
+    "description": "Texto do botão usado para inscrever-se em serviços de API"
+  },
+  "button.refresh": {
+    "message": "Atualizar",
+    "description": "Texto do botão usado para atualizar a página"
+  },
+  "button.pay": {
+    "message": "Pagar",
+    "description": "Texto do botão usado para efetuar o pagamento de um serviço"
+  },
+  "button.repay": {
+    "message": "Continuar Pagamento",
+    "description": "Texto do botão usado para prosseguir com o pagamento de um serviço"
+  },
+  "button.applied": {
+    "message": "Inscrito",
+    "description": "Texto do botão usado para mostrar que o usuário já se inscreveu no serviço"
+  },
+  "button.acquire": {
+    "message": "Obter",
+    "description": "Texto do botão usado para permitir ao usuário obter tokens ou chaves de API"
+  },
+  "button.fillExample": {
+    "message": "Preencher Exemplo",
+    "description": "Texto do botão usado para permitir ao usuário preencher dados de exemplo"
+  },
+  "button.buyMore": {
+    "message": "Comprar Mais",
+    "description": "Texto do botão usado para permitir ao usuário comprar conteúdos adicionais"
+  },
+  "button.update": {
+    "message": "Atualizar",
+    "description": "Texto do botão usado para atualizar algo"
+  },
+  "button.view": {
+    "message": "Ver",
+    "description": "Texto do botão usado para visualizar algo"
+  },
+  "button.create": {
+    "message": "Criar",
+    "description": "Texto do botão usado para criar algo"
+  },
+  "button.referralEarnings": {
+    "message": "Ganhos por Indicação",
+    "description": "Texto do botão usado para mostrar os ganhos por indicação, significando que o usuário pode ganhar dinheiro ao convidar outros para usar o serviço"
+  },
+  "button.finish": {
+    "message": "Finalizar",
+    "description": "Texto do botão usado para finalizar algo"
+  },
+  "entity.website": {
+    "message": "Ace Data Cloud",
+    "description": "Nome do site, não traduzir, manter como 'Ace Data Cloud'"
+  },
+  "entity.copyright": {
+    "message": "Direitos Autorais",
+    "description": "Texto usado para exibir informações sobre direitos autorais"
+  },
+  "entity.platform": {
+    "message": "Plataforma",
+    "description": "Texto que indica que se trata de uma plataforma de serviços de API"
+  },
+  "entity.title": {
+    "message": "Título",
+    "description": "Título da entidade"
+  },
+  "entity.icon": {
+    "message": "Ícone",
+    "description": "Ícone da entidade"
+  },
+  "entity.status": {
+    "message": "Status",
+    "description": "Status da entidade"
+  },
+  "entity.operation": {
+    "message": "Operação",
+    "description": "Operação da entidade"
+  },
+  "entity.description": {
+    "message": "Descrição",
+    "description": "Descrição da entidade"
   },
   "entity.createdAt": {
-    "message": "Data de criação",
-    "description": "Entidade criada em"
+    "message": "Data de Criação",
+    "description": "Data em que a entidade foi criada"
   },
   "entity.updatedAt": {
-    "message": "Data de atualização",
-    "description": "Entidade atualizada em"
+    "message": "Data de Atualização",
+    "description": "Data em que a entidade foi atualizada"
   },
   "entity.order": {
     "message": "Pedido",
-    "description": "Pedido da entidade, que inclui valor e informações do serviço, e o usuário precisa pagar por ele"
+    "description": "Pedido da entidade, que inclui informações de valor e serviço, o qual o usuário precisa pagar"
   },
   "message.usedAmount": {
-    "message": "Valor utilizado",
-    "description": "Usado para exibir o valor de serviço já consumido"
+    "message": "Quantia Usada",
+    "description": "Exibir o montante do serviço já utilizado"
   },
   "message.remainingAmount": {
-    "message": "Valor restante",
-    "description": "Usado para exibir o valor de serviço restante"
+    "message": "Quantia Restante",
+    "description": "Exibir o montante remanescente do serviço"
   },
   "message.copied": {
-    "message": "Copiado com sucesso",
+    "message": "Copiado com Sucesso",
     "description": "Mensagem exibida quando o conteúdo é copiado com sucesso"
   },
   "message.restart": {
-    "message": "Regerar",
-    "description": "Mensagem exibida quando o conteúdo é reprocessado"
+    "message": "Regenerar",
+    "description": "Mensagem para mostrar que o conteúdo foi copiado com sucesso"
   },
   "message.confirmDelete": {
-    "message": "Tem certeza que deseja excluir?",
-    "description": "Mensagem de confirmação para deletar algum conteúdo"
+    "message": "Tem certeza que deseja deletar?",
+    "description": "Mensagem para confirmar se o usuário deseja deletar algo"
   },
   "message.expiredAt": {
-    "message": "Data de expiração",
-    "description": "Usado para exibir o tempo de expiração do serviço"
+    "message": "Data de Expiração",
+    "description": "Exibir a data de expiração do serviço"
   },
   "message.alert": {
-    "message": "Aviso",
+    "message": "Alerta",
     "description": "Mensagem para alertar o usuário"
   },
   "message.info": {
-    "message": "Dica",
-    "description": "Mensagem para exibir informações úteis"
+    "message": "Informação",
+    "description": "Mensagem para mostrar informações"
   },
   "message.free": {
     "message": "Gratuito",
-    "description": "Mensagem para exibir quando o serviço é gratuito, sem custo para o usuário"
+    "description": "Mensagem para mostrar que o serviço é gratuito, indicando que o usuário não precisa pagar"
   },
   "message.startPrice": {
-    "message": "Preço inicial",
-    "description": "Mensagem exibida para mostrar o preço mínimo do serviço"
+    "message": "Preço Inicial",
+    "description": "Mensagem para mostrar o menor preço do serviço"
   },
   "message.joinDiscord": {
-    "message": "Junte-se ao Discord",
-    "description": "Mensagem para convidar o usuário a se juntar ao canal Discord"
+    "message": "Entrar no Discord",
+    "description": "Mensagem para convidar o usuário a entrar no canal Discord"
   },
   "message.addWeChat": {
-    "message": "Adicionar WeChat",
+    "message": "Adicionar no WeChat",
     "description": "Mensagem para convidar o usuário a adicionar no WeChat"
   },
   "message.serviceTech": {
-    "message": "Suporte técnico",
-    "description": "Mensagem para exibir informações de suporte técnico"
+    "message": "Suporte Técnico",
+    "description": "Mensagem para mostrar suporte técnico ao serviço"
   },
   "message.businessCooperation": {
-    "message": "Cooperação comercial",
-    "description": "Mensagem para exibir informações sobre cooperação de negócios"
+    "message": "Cooperação Comercial",
+    "description": "Mensagem para mostrar cooperação comercial"
   },
   "message.noData": {
-    "message": "Sem dados",
-    "description": "Mensagem exibida quando não há dados na tabela ou lista"
+    "message": "Sem Dados",
+    "description": "Mensagem para mostrar que não há dados em uma tabela ou lista"
   },
   "nav.home": {
-    "message": "Página inicial",
-    "description": "Texto no menu de navegação para exibir a página inicial"
+    "message": "Início",
+    "description": "Texto na barra de navegação do site para mostrar a página inicial"
   },
   "nav.content": {
     "message": "Conteúdo",
-    "description": "Texto no menu de navegação para exibir a página de conteúdo"
+    "description": "Texto na barra de navegação do site para mostrar a página de conteúdo"
   },
   "nav.category": {
-    "message": "Categorias",
-    "description": "Texto no menu de navegação para exibir a página de categorias"
+    "message": "Categoria",
+    "description": "Texto na barra de navegação do site para mostrar a página de categoria"
   },
   "nav.service": {
-    "message": "Serviços",
-    "description": "Texto no menu de navegação para exibir a página de serviços"
+    "message": "Serviço",
+    "description": "Texto na barra de navegação do site para mostrar a página de serviço"
   },
   "nav.profile": {
-    "message": "Meu perfil",
-    "description": "Texto no menu de navegação para exibir a página de perfil do usuário"
+    "message": "Perfil",
+    "description": "Texto na barra de navegação do site para mostrar a página de perfil"
   },
   "nav.products": {
     "message": "Produtos",
-    "description": "Texto no menu de navegação para exibir a página de produtos"
+    "description": "Texto na barra de navegação do site para mostrar a página de produtos"
   },
   "nav.referral": {
-    "message": "Receitas de recomendação",
-    "description": "Texto no menu de navegação para exibir a página de receitas de recomendação"
+    "message": "Indicações",
+    "description": "Texto na barra de navegação do site para mostrar a página de indicações"
   },
   "nav.apiPlatform": {
     "message": "Plataforma API",
-    "description": "Texto no menu de navegação para exibir a página da plataforma API"
+    "description": "Texto na barra de navegação do site para mostrar a página da plataforma API"
   },
   "nav.document": {
     "message": "Documentos",
-    "description": "Texto no menu de navegação para exibir a página de documentos"
+    "description": "Texto na barra de navegação do site para mostrar a página de documentos"
   },
   "nav.console": {
     "message": "Console",
-    "description": "Texto no menu de navegação para exibir a página do console"
+    "description": "Texto na barra de navegação do site para mostrar a página do console"
   },
   "nav.chat": {
     "message": "Chat",
-    "description": "Texto no menu de navegação para exibir a página de chat. Não deve ser traduzido, deve permanecer como 'Chat'"
+    "description": "Texto na barra de navegação do site para mostrar a página de chat, não traduzir, deve permanecer como 'Chat'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "Texto no menu de navegação para exibir a página do Midjourney. Não deve ser traduzido, deve permanecer como 'Midjourney'"
+    "description": "Texto na barra de navegação do site para mostrar a página do Midjourney, não traduzir, deve permanecer como 'Midjourney'"
   },
   "nav.chatdoc": {
     "message": "ChatDoc",
-    "description": "Texto no menu de navegação para exibir a página do ChatDoc. Não deve ser traduzido, deve permanecer como 'Chatdoc'"
+    "description": "Texto na barra de navegação do site para mostrar a página do ChatDoc, não traduzir, deve permanecer como 'Chatdoc'"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Texto no menu de navegação para exibir a página de QRArt. Não deve ser traduzido, deve permanecer como 'QRArt'"
+    "description": "Texto na barra de navegação do site para mostrar a página do QRArt, não traduzir, deve permanecer como 'QRArt'"
   },
   "nav.suno": {
     "message": "Suno",
-    "description": "Texto no menu de navegação para exibir a página do Suno. Não deve ser traduzido, deve permanecer como 'Suno'"
+    "description": "Texto na barra de navegação do site para mostrar a página do Suno, não traduzir, deve permanecer como 'Suno'"
+  },
+  "nav.flux": {
+    "message": "Flux",
+    "description": "Texto na barra de navegação do site para mostrar a página do Flux, não traduzir, deve permanecer como 'Flux'"
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "Texto no menu de navegação para exibir a página do Luma. Não deve ser traduzido, deve permanecer como 'Luma'"
+    "description": "Texto na barra de navegação do site para mostrar a página do Luma, não traduzir, deve permanecer como 'Luma'"
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "Texto no menu de navegação para exibir a página do Pika. Não deve ser traduzido, deve permanecer como 'Pika'"
+    "description": "Texto na barra de navegação do site para mostrar a página do Pika, não traduzir, deve permanecer como 'Pika'"
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "Texto no menu de navegação para exibir a página do Hailuo. Não deve ser traduzido, deve permanecer como 'Hailuo'"
+    "description": "Texto na barra de navegação do site para mostrar a página do Hailuo, não traduzir, deve permanecer como 'Hailuo'"
   },
   "nav.image": {
-    "message": "Imagens",
-    "description": "Texto no menu de navegação para exibir a página de imagens"
+    "message": "Imagem",
+    "description": "Texto na barra de navegação do site para mostrar a página de imagem"
   },
   "nav.music": {
     "message": "Música",
-    "description": "Texto no menu de navegação para exibir a página de música"
+    "description": "Texto na barra de navegação do site para exibir a página de música"
   },
   "nav.video": {
     "message": "Vídeo",
-    "description": "Texto na barra de navegação do site, usado para exibir a página de vídeo"
+    "description": "Texto na barra de navegação do site para exibir a página de vídeo"
   },
   "nav.distribution": {
-    "message": "Rendimento por recomendação",
-    "description": "Texto na barra de navegação do site, usado para exibir a página de rendimento por recomendação"
+    "message": "Ganhos de Indicação",
+    "description": "Texto na barra de navegação do site para exibir a página de ganhos de indicação"
   },
   "nav.logOut": {
     "message": "Sair",
-    "description": "Texto na barra de navegação do site, usado para sair da conta"
+    "description": "Texto na barra de navegação do site para sair da conta"
   },
   "nav.site": {
-    "message": "Configuração do site",
-    "description": "Texto na barra de navegação do site, usado para exibir a página de configuração do site"
+    "message": "Configuração do Site",
+    "description": "Texto na barra de navegação do site para exibir a página de configuração do site"
   },
   "nav.headshots": {
-    "message": "Foto de identificação AI",
-    "description": "Texto na barra de navegação do site, usado para exibir a página de configuração do site"
+    "message": "Foto de Identidade AI",
+    "description": "Texto na barra de navegação do site para exibir a página de configuração do site"
   },
   "nav.locale": {
-    "message": "Configurações de idioma",
-    "description": "Texto na barra de navegação do site, usado para alterar o idioma"
+    "message": "Configurações de Idioma",
+    "description": "Texto na barra de navegação do site para alterar o idioma"
   },
   "nav.support": {
-    "message": "Suporte ao cliente",
-    "description": "Texto na barra de navegação do site, usado para exibir a página de suporte"
+    "message": "Suporte ao Cliente",
+    "description": "Texto na barra de navegação do site para exibir a página de suporte"
   },
   "nav.darkMode": {
-    "message": "Modo escuro",
-    "description": "Texto na barra de navegação do site, usado para alternar para o tema escuro"
+    "message": "Modo Escuro",
+    "description": "Texto na barra de navegação do site para alternar para o tema escuro"
   },
   "title.alert": {
     "message": "Alerta",
     "description": "Título da mensagem de alerta"
   },
   "title.placeholderOfSelect": {
-    "message": "Selecione",
-    "description": "Texto de espaço reservado na caixa de seleção"
+    "message": "Por favor, selecione",
+    "description": "Texto de espaço reservado para o campo de seleção"
   },
   "title.placeholderOfInput": {
-    "message": "Preencha",
-    "description": "Texto de espaço reservado na caixa de entrada"
+    "message": "Por favor, preencha",
+    "description": "Texto de espaço reservado para o campo de entrada"
   },
   "title.allApplications": {
-    "message": "Todas as solicitações",
-    "description": "Título da página que exibe todas as solicitações"
+    "message": "Todas as Aplicações",
+    "description": "Título da página que exibe todas as aplicações"
   },
   "title.allOrders": {
-    "message": "Todos os pedidos",
+    "message": "Todos os Pedidos",
     "description": "Título da página que exibe todos os pedidos"
   },
   "title.orderInfo": {
-    "message": "Informações do pedido",
-    "description": "Título da página que exibe as informações do pedido"
+    "message": "Informações do Pedido",
+    "description": "Título da página que exibe informações do pedido"
   },
   "title.buyMore": {
-    "message": "Comprar mais",
-    "description": "Título da página que permite ao usuário comprar mais"
+    "message": "Comprar Mais",
+    "description": "Título da página para incentivar o usuário a comprar mais"
   },
   "title.distribution": {
-    "message": "Rendimento por recomendação",
-    "description": "Título da página que exibe o rendimento por recomendação, onde o usuário pode ganhar dinheiro convidando outras pessoas a usar o serviço"
+    "message": "Ganhos de Indicação",
+    "description": "Título da página que exibe os ganhos de indicação, indicando que o usuário pode ganhar dinheiro convidando outras pessoas a usar o serviço"
   },
   "title.site": {
-    "message": "Configuração do site",
+    "message": "Configuração do Site",
     "description": "Título da página que exibe a configuração do site"
   },
   "title.distributionHistory": {
-    "message": "Histórico de recomendações",
-    "description": "Título da página que exibe o histórico de recomendações"
+    "message": "Histórico de Indicações",
+    "description": "Título da página que exibe o histórico de indicações"
   },
   "title.invitee": {
     "message": "Convidado",
-    "description": "Título da página que exibe as informações sobre os convidados"
+    "description": "Título da página que exibe o convidado"
   },
   "title.allUsages": {
-    "message": "Histórico de uso",
-    "description": "Título da página que exibe todos os registros de uso da API"
+    "message": "Histórico de Uso",
+    "description": "Título da página que exibe todos os registros de uso do serviço API"
   },
   "title.allCredentials": {
     "message": "Credenciais",
-    "description": "Título da página que exibe todas as credenciais, que são usadas para acessar a API"
+    "description": "Título da página que exibe todas as credenciais usadas para acessar a API"
   },
   "about.title1": {
-    "message": "Entre em contato",
+    "message": "Fale Conosco",
     "description": "Título da seção que exibe informações de contato"
   },
   "about.title2": {
@@ -280,12 +432,12 @@
     "description": "Título da seção que exibe informações de suporte"
   },
   "about.address": {
-    "message": "EUA, Delaware, Middletown, N Broad St, escritório 201",
+    "message": "Rua N Broad, 201, Escritório, Middletown, Delaware, EUA",
     "description": "Endereço da empresa"
   },
   "about.email": {
     "message": "office@acedata.cloud",
-    "description": "E-mail da empresa"
+    "description": "Email da empresa"
   },
   "about.link1": {
     "message": "Serviços",
@@ -297,30 +449,30 @@
   },
   "about.link3": {
     "message": "Console",
-    "description": "Link para a página do console"
+    "description": "Link para a página de console"
   },
   "about.link4": {
     "message": "Perfil",
     "description": "Link para a página de perfil"
   },
   "about.link5": {
-    "message": "Central",
+    "message": "Centro",
     "description": "Link para a página central"
   },
   "about.link6": {
-    "message": "Rendimento por recomendação",
-    "description": "Link para a página de rendimento por recomendação"
+    "message": "Ganhos de Indicação",
+    "description": "Link para a página de ganhos de indicação"
   },
   "about.link7": {
     "message": "Suporte",
     "description": "Link para a página de suporte"
   },
   "about.link8": {
-    "message": "Termos de serviço",
+    "message": "Termos de Serviço",
     "description": "Link para a página de termos de serviço"
   },
   "about.link9": {
-    "message": "Política de privacidade",
+    "message": "Política de Privacidade",
     "description": "Link para a página de política de privacidade"
   }
 }

@@ -1,0 +1,222 @@
+{
+  "name.taskId": {
+    "message": "ID zadania",
+    "description": "ID zadania"
+  },
+  "name.type": {
+    "message": "Typ",
+    "description": "Typ treści obrazu Flux do wygenerowania, np. 'link', 'tekst' itp."
+  },
+  "name.failure": {
+    "message": "Niepowodzenie",
+    "description": "Status niepowodzenia zadania"
+  },
+  "name.failureReason": {
+    "message": "Powód niepowodzenia",
+    "description": "Powód niepowodzenia zadania"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Status zadania"
+  },
+  "name.traceId": {
+    "message": "ID śledzenia",
+    "description": "ID śledzenia zadania"
+  },
+  "name.createdAt": {
+    "message": "Data utworzenia",
+    "description": "Data i godzina wygenerowania obrazu Flux"
+  },
+  "name.numbers": {
+    "message": "Liczba obrazów",
+    "description": "Liczba obrazów do wygenerowania"
+  },
+  "name.quality": {
+    "message": "Jakość obrazu",
+    "description": "Jakość obrazu"
+  },
+  "name.prompt": {
+    "message": "Wskazówka obrazu",
+    "description": "Wskazówka do wprowadzenia treści"
+  },
+  "name.ratio": {
+    "message": "Proporcje",
+    "description": "Nazwa parametru proporcji"
+  },
+  "name.model": {
+    "message": "Wersja modelu",
+    "description": "Wersja modelu używana do generowania obrazu"
+  },
+  "name.fluxBot": {
+    "message": "Flux Bot",
+    "description": "Nazwa generatora obrazów Flux"
+  },
+  "description.numbers": {
+    "message": "Określ liczbę obrazów do wygenerowania, zakres wartości: 1-4.",
+    "description": "Opis parametru 'numbers'"
+  },
+  "description.quality": {
+    "message": "Określ jakość obrazów do wygenerowania, zakres wartości: 1-100.",
+    "description": "Opis parametru 'quality'"
+  },
+  "description.prompt": {
+    "message": "Wskazówki dotyczące generowania obrazu Flux",
+    "description": "Opis parametru 'prompt'"
+  },
+  "status.pending": {
+    "message": "Oczekuje",
+    "description": "Status oczekiwania zadania"
+  },
+  "status.processing": {
+    "message": "Przetwarzanie",
+    "description": "Status przetwarzania zadania"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Proszę wybrać...",
+    "description": "Symbol zastępczy dla wejścia szumu wypełnienia"
+  },
+  "placeholder.select": {
+    "message": "Wybierz",
+    "description": "Tekst zastępczy w polu wyboru"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Proszę wybrać...",
+    "description": "Symbol zastępczy dla poziomu wypełnienia"
+  },
+  "placeholder.prompt": {
+    "message": "Wpisz wskazówkę dotyczącą stylu obrazu do wygenerowania, na przykład: biały syjamski kot",
+    "description": "Tekst zastępczy w polu wskazówki"
+  },
+  "placeholder.position": {
+    "message": "Proszę wybrać...",
+    "description": "Symbol zastępczy dla wejścia pozycji"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Proszę wybrać...",
+    "description": "Symbol zastępczy dla proporcji szerokości i wysokości"
+  },
+  "placeholder.preset": {
+    "message": "Proszę wybrać...",
+    "description": "Symbol zastępczy dla ustawień wstępnych"
+  },
+  "placeholder.markerShape": {
+    "message": "Proszę wybrać...",
+    "description": "Symbol zastępczy dla kształtu znacznika"
+  },
+  "placeholder.rotate": {
+    "message": "Proszę wybrać...",
+    "description": "Symbol zastępczy dla wejścia obrotu"
+  },
+  "placeholder.subMarker": {
+    "message": "Proszę wybrać...",
+    "description": "Symbol zastępczy dla podznacznika"
+  },
+  "button.generate": {
+    "message": "Generuj",
+    "description": "Tekst przycisku do generowania obrazów Flux"
+  },
+  "button.extend": {
+    "message": "Rozszerz obraz",
+    "description": "Tekst przycisku do rozszerzania obrazu"
+  },
+  "button.viewImage": {
+    "message": "Wyświetl oryginalny obraz",
+    "description": "Tekst przycisku do wyświetlania oryginalnego obrazu Flux"
+  },
+  "button.download": {
+    "message": "Pobierz obraz",
+    "description": "Tekst przycisku do pobierania obrazu"
+  },
+  "message.downloadImage": {
+    "message": "Otwórz obraz w nowym oknie",
+    "description": "Otwórz obraz w nowym oknie"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Maksymalnie można przesłać 5 obrazów",
+    "description": "Wiadomość o błędzie wyświetlana, gdy liczba przesłanych obrazów przekracza limit"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Pomyślnie przesłano obrazy",
+    "description": "Wiadomość o sukcesie po pomyślnym przesłaniu obrazów"
+  },
+  "message.uploadReferencesError": {
+    "message": "Nie udało się przesłać obrazów, spróbuj ponownie później",
+    "description": "Wiadomość o błędzie wyświetlana podczas nieudanej próby przesłania obrazów"
+  },
+  "message.startingTask": {
+    "message": "Uruchamianie zadania...",
+    "description": "Wiadomość wyświetlana podczas uruchamiania zadania rysowania"
+  },
+  "message.startTaskSuccess": {
+    "message": "Pomyślnie uruchomiono zadanie generowania",
+    "description": "Wiadomość o sukcesie po pomyślnym uruchomieniu zadania"
+  },
+  "message.startTaskFailed": {
+    "message": "Uruchomienie zadania nie powiodło się, skontaktuj się z administratorem",
+    "description": "Wiadomość o błędzie po nieudanej próbie uruchomienia zadania rysowania"
+  },
+  "message.usedUp": {
+    "message": "Twoje punkty zostały wykorzystane, kup więcej punktów, aby kontynuować",
+    "description": "Wiadomość wyświetlana po wykorzystaniu wszystkich dostępnych punktów"
+  },
+  "message.generating": {
+    "message": "Generowanie...",
+    "description": "Wiadomość wyświetlana podczas generowania obrazu"
+  },
+  "message.downloadVideo": {
+    "message": "Pobierz ten obraz",
+    "description": "Wiadomość wyświetlana podczas generowania obrazu"
+  },
+  "message.extendVideo": {
+    "message": "Kontynuuj generowanie tego obrazu",
+    "description": "Wiadomość wyświetlana podczas generowania obrazu"
+  },
+  "message.generateFailed": {
+    "message": "Nie udało się wygenerować obrazu",
+    "description": "Wiadomość wyświetlana w przypadku nieudanego generowania obrazu"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Liczba przesłanych pierwszych klatek przekracza limit",
+    "description": "Wiadomość o błędzie wyświetlana, gdy liczba przesłanych pierwszych klatek przekracza limit"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Rozmiar przesłanego pliku nie może przekraczać 10MB!",
+    "description": "Wiadomość o błędzie wyświetlana, gdy rozmiar przesłanego pliku przekracza 10MB"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Przesłany plik musi być w formacie MP4!",
+    "description": "Wiadomość o błędzie wyświetlana, gdy format przesłanego pliku jest niezgodny"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Liczba przesłanych początkowych obrazów przekracza limit",
+    "description": "Komunikat o błędzie, gdy liczba przesłanych początkowych obrazów przekracza limit"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Liczba przesłanych końcowych obrazów przekracza limit",
+    "description": "Komunikat o błędzie, gdy liczba przesłanych końcowych obrazów przekracza limit"
+  },
+  "message.uploadStartImageError": {
+    "message": "Nie udało się przesłać początkowego obrazu",
+    "description": "Komunikat o błędzie, gdy nie udało się przesłać początkowego obrazu"
+  },
+  "message.uploadVideoError": {
+    "message": "Nie udało się przesłać obrazu",
+    "description": "Komunikat o błędzie, gdy nie udało się przesłać początkowego obrazu"
+  },
+  "message.uploadEndImageError": {
+    "message": "Nie udało się przesłać końcowego obrazu",
+    "description": "Komunikat o błędzie, gdy nie udało się przesłać końcowego obrazu"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Nie udało się przesłać dokumentu",
+    "description": "Komunikat o błędzie, gdy nie udało się przesłać dokumentu"
+  },
+  "message.noOperations": {
+    "message": "Brak dostępnych operacji",
+    "description": "Komunikat, gdy brak dostępnych operacji"
+  },
+  "message.noTasks": {
+    "message": "Brak historii zadań, kliknij po lewej stronie, aby wygenerować obraz",
+    "description": "Komunikat, gdy brak historii zadań"
+  }
+}
