@@ -1,7 +1,7 @@
 <template>
   <div v-for="(image, imageIndex) in images" :key="imageIndex" class="preview">
     <div class="left">
-      <el-image src="https://cdn.acedata.cloud/i80tgn.png" class="avatar" />
+      <el-image src="https://cdn.acedata.cloud/ogm2oa.png" class="avatar" />
     </div>
     <div class="main">
       <div class="bot">
