@@ -19,6 +19,9 @@ export const ROUTE_LUMA_HISTORY = 'luma-history';
 export const ROUTE_PIKA_INDEX = 'pika-index';
 export const ROUTE_PIKA_HISTORY = 'pika-history';
 
+export const ROUTE_FLUX_INDEX = 'flux-index';
+export const ROUTE_FLUX_HISTORY = 'flux-history';
+
 export const ROUTE_HAILUO_INDEX = 'hailuo-index';
 export const ROUTE_HAILUO_HISTORY = 'hailuo-history';
 
