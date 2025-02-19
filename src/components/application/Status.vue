@@ -53,7 +53,7 @@ import { ElButton, ElMessage, ElSkeleton, ElSkeletonItem } from 'element-plus';
 import ApplicationConfirm from '@/components/application/Confirm.vue';
 import { IApplicationType, IApplication, IApplicationDetailResponse, IService } from '@/models';
 import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
-import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_APPLICATION_SUBSCRIBE } from '@/router';
+import { ROUTE_CONSOLE_APPLICATION_SUBSCRIBE } from '@/router';
 import ApiPrice from '@/components/api/Price.vue';
 
 export interface IData {
@@ -121,7 +121,7 @@ export default defineComponent({
   methods: {
     onBuyMore(application: IApplication) {
       this.$router.push({
-        name: ROUTE_CONSOLE_APPLICATION_EXTRA,
+        name: ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
         params: {
           id: application.id
         }

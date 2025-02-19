@@ -150,7 +150,7 @@ export default defineComponent({
       lang: this.$i18n.locale,
       application: undefined,
       loading: false,
-      type: 'Usage',
+      type: IPackageType.USAGE,
       form: {
         packageId: undefined,
         amount: undefined
@@ -226,7 +226,6 @@ export default defineComponent({
         });
     },
     onChangeType() {
-      console.log('onChangeType', this.type);
       this.$router.push({
         name: ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
         params: this.$route.params

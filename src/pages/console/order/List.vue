@@ -35,7 +35,7 @@
                     <el-tag type="success" class="mx-1" effect="dark">{{ $t('order.state.finished') }}</el-tag>
                   </span>
                   <span v-else-if="scope.row.state === OrderState?.EXPIRED" class="state state-expired">
-                    <el-tag type="warning" class="mx-1" effect="dark">{{ $t('order.state.expired') }}</el-tag>
+                    <el-tag type="danger" class="mx-1" effect="dark">{{ $t('order.state.expired') }}</el-tag>
                   </span>
                   <span v-else-if="scope.row.state === OrderState?.FAILED" class="state state-failed">
                     <el-tag type="danger" class="mx-1" effect="dark"> {{ $t('order.state.failed') }}</el-tag>
@@ -56,7 +56,11 @@
                 <template #default="scope">
                   <div class="float-right">
                     <el-button
-                      v-if="scope.row.state !== OrderState.PAID || scope.row.state !== OrderState.FINISHED"
+                      v-if="
+                        scope.row.state !== OrderState.PAID &&
+                        scope.row.state !== OrderState.FINISHED &&
+                        scope.row.state !== OrderState.EXPIRED
+                      "
                       type="primary"
                       size="small"
                       round
