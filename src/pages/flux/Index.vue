@@ -7,10 +7,12 @@
       <application-status
         :initializing="initializing"
         :application="application"
+        :applications="applications"
         :service="service"
         :need-apply="needApply"
         class="mb-4"
         @refresh="onGetApplication"
+        @select="$store.dispatch('flux/setApplication', $event)"
       />
       <recent-panel class="panel recent" @reach-top="onReachTop" />
       <!-- <operation-panel class="panel operation" @generate="onGenerate" /> -->
@@ -75,6 +77,9 @@ export default defineComponent({
     },
     application() {
       return this.$store.state.flux?.application;
+    },
+    applications() {
+      return this.$store.state.flux?.applications;
     },
     tasks() {
       return this.$store.state.flux?.tasks;

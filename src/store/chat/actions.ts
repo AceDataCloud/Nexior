@@ -29,6 +29,8 @@ export const setModelGroup = async ({ commit }: any, payload: IChatModelGroup): 
 export const setApplication = async ({ commit }: any, payload: IApplication): Promise<void> => {
   console.debug('set application', payload);
   commit('setApplication', payload);
+  const credential = payload?.credentials?.find((credential) => credential?.host === window.location.origin);
+  commit('setCredential', credential);
 };
 
 export const setApplications = async ({ commit }: any, payload: IApplication[]): Promise<void> => {
