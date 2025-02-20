@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Thu, 20 Feb 2025 14:24:59 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Feb 2025 15:29:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.16.0
+
+Thu, 20 Feb 2025 15:29:50 GMT
+
+### Minor changes
+
+- add applictions selection (office@acedata.cloud)
 
 ## 2.15.6
 
