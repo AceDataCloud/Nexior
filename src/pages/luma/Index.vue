@@ -7,10 +7,12 @@
       <application-status
         :initializing="initializing"
         :application="application"
+        :applications="applications"
         :service="service"
         :need-apply="needApply"
         class="mb-4"
         @refresh="onGetApplication"
+        @select="$store.dispatch('luma/setApplication', $event)"
       />
       <recent-panel class="panel recent" />
       <!-- <operation-panel class="panel operation" @generate="onGenerate" /> -->
@@ -72,6 +74,9 @@ export default defineComponent({
     },
     application() {
       return this.$store.state.luma.application;
+    },
+    applications() {
+      return this.$store.state.luma.applications;
     }
   },
   async mounted() {

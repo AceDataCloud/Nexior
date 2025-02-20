@@ -26,10 +26,10 @@
               </el-table-column>
               <el-table-column :label="$t('application.field.type')" width="80px">
                 <template #default="scope">
-                  <el-tag v-if="scope.row?.type === 'Period'" type="success">
+                  <el-tag v-if="scope.row?.type === 'Period'" type="success" effect="dark">
                     {{ $t('application.type.period') }}
                   </el-tag>
-                  <el-tag v-if="scope.row?.type === 'Usage'" type="primary">
+                  <el-tag v-if="scope.row?.type === 'Usage'" effect="dark">
                     {{ $t('application.type.usage') }}
                   </el-tag>
                 </template>

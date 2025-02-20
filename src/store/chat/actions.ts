@@ -29,6 +29,13 @@ export const setModelGroup = async ({ commit }: any, payload: IChatModelGroup): 
 export const setApplication = async ({ commit }: any, payload: IApplication): Promise<void> => {
   console.debug('set application', payload);
   commit('setApplication', payload);
+  const credential = payload?.credentials?.find((credential) => credential?.host === window.location.origin);
+  commit('setCredential', credential);
+};
+
+export const setApplications = async ({ commit }: any, payload: IApplication[]): Promise<void> => {
+  console.debug('set applications', payload);
+  commit('setApplications', payload);
 };
 
 export const setService = async ({ commit }: any, payload: IService): Promise<void> => {
@@ -93,6 +100,7 @@ export const getApplications = async ({
       .then((response) => {
         console.debug('get applications success', response?.data);
         state.status.getApplications = Status.Success;
+        commit('setApplications', response.data.items);
         // check if there is any application with 'Period' type
         const application = response.data.items?.find((application) => application?.type === IApplicationType.PERIOD);
         const application2 = response.data.items?.find((application) => application?.type === IApplicationType.USAGE);
@@ -171,6 +179,7 @@ export default {
   setService,
   setCredential,
   setApplication,
+  setApplications,
   getApplications,
   setConversation,
   setConversations,
