@@ -32,7 +32,11 @@
           @route="undefined"
           @click="openTab('https://platform.acedata.cloud/support')"
         ></el-menu-item>
-        <el-menu-item v-t="'common.nav.referral'" index="/distribution"></el-menu-item>
+        <el-menu-item
+          v-t="'common.nav.referral'"
+          @route="undefined"
+          @click="openTab('https://platform.acedata.cloud/earning')"
+        ></el-menu-item>
       </el-menu>
     </el-col>
     <el-col :md="4" :xs="11">
@@ -178,10 +182,10 @@ $height: 60px;
       color: inherit !important;
       &.is-active {
         color: inherit !important;
-        border-bottom: 2px solid var(--el-color-primary);
+        border-bottom: none !important;
       }
       &:hover {
-        border-bottom: 2px solid var(--el-color-primary);
+        border-bottom: 2px solid var(--el-color-primary) !important;
       }
     }
   }
