@@ -8,15 +8,21 @@
       </el-skeleton>
     </div>
     <div v-else-if="application" class="status">
-      <span v-if="application.type === 'Period'" class="info">
-        {{ $t('common.message.expiredAt') }}:
-        {{ $dayjs.format(application.expired_at) }}
-      </span>
-      <span v-if="application.type === 'Usage'" class="info">
-        {{ $t('common.message.remainingAmount') }}:
-        {{ application?.remaining_amount?.toFixed(6) }}
-        {{ $t(`service.unit.` + application?.service?.unit + 's') }}
-      </span>
+      <el-dropdown @command="onSelectApplication">
+        <span class="el-dropdown-link">
+          <application-info :application="application" />
+          <el-icon v-if="applications && applications.length > 0" class="el-icon--right">
+            <arrow-down />
+          </el-icon>
+        </span>
+        <template #dropdown>
+          <el-dropdown-menu v-if="applications && applications.length > 0">
+            <el-dropdown-item v-for="(app, index) in applications" :key="index" :command="app">
+              <application-info :application="app" :show-type="true" :show-id="true" />
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
       <span class="actions">
         <el-button round size="small" type="primary" class="mr-1" @click="onBuyMore(application)">{{
           $t('common.button.buyMore')
@@ -49,12 +55,23 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { applicationOperator, credentialOperator } from '@/operators';
-import { ElButton, ElMessage, ElSkeleton, ElSkeletonItem } from 'element-plus';
+import {
+  ElButton,
+  ElMessage,
+  ElSkeleton,
+  ElSkeletonItem,
+  ElDropdown,
+  ElDropdownItem,
+  ElIcon,
+  ElDropdownMenu
+} from 'element-plus';
 import ApplicationConfirm from '@/components/application/Confirm.vue';
 import { IApplicationType, IApplication, IApplicationDetailResponse, IService } from '@/models';
 import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
 import { ROUTE_CONSOLE_APPLICATION_SUBSCRIBE } from '@/router';
 import ApiPrice from '@/components/api/Price.vue';
+import { ArrowDown } from '@element-plus/icons-vue';
+import ApplicationInfo from './Info.vue';
 
 export interface IData {
   confirming: boolean;
@@ -63,11 +80,27 @@ export interface IData {
 
 export default defineComponent({
   name: 'ApplicationStatus',
-  components: { ElButton, ApplicationConfirm, ElSkeleton, ElSkeletonItem, ApiPrice },
+  components: {
+    ElButton,
+    ApplicationInfo,
+    ApplicationConfirm,
+    ElSkeleton,
+    ElSkeletonItem,
+    ApiPrice,
+    ElDropdown,
+    ElDropdownMenu,
+    ElDropdownItem,
+    ArrowDown,
+    ElIcon
+  },
   props: {
     application: {
       type: Object as () => IApplication | undefined,
       required: true
+    },
+    applications: {
+      type: Array as () => IApplication[] | undefined,
+      default: undefined
     },
     initializing: {
       type: Boolean,
@@ -86,7 +119,7 @@ export default defineComponent({
       default: false
     }
   },
-  emits: ['apply', 'refresh', 'applied', 'update:application'],
+  emits: ['apply', 'refresh', 'applied', 'update:application', 'select'],
   data(): IData {
     return {
       confirming: this.needApply,
@@ -143,6 +176,9 @@ export default defineComponent({
           this.$emit('applied');
         });
     },
+    onSelectApplication(application: IApplication) {
+      this.$emit('select', application);
+    },
     onApply() {
       applicationOperator
         .create({
@@ -175,12 +211,15 @@ export default defineComponent({
   display: block;
   width: fit-content;
   margin: auto;
+  .el-icon {
+    position: relative;
+    top: 0.2em;
+  }
+  .el-dropdown {
+    line-height: 20px;
+  }
 }
-.info {
-  font-size: 12px;
-  color: var(--el-text-color-secondary);
-  text-align: center;
-}
+
 .actions {
   margin: 0 5px;
   display: inline-block;

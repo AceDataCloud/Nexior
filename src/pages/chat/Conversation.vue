@@ -5,8 +5,10 @@
       <application-status
         :initializing="initializing"
         :application="application"
+        :applications="applications"
         :need-apply="needApply"
         :service="service"
+        @select="$store.dispatch('chat/setApplication', $event)"
         @refresh="$store.dispatch('chat/getApplications')"
       />
       <div :class="{ dialogue: true, empty: messages.length === 0 }">
@@ -152,6 +154,9 @@ export default defineComponent({
     application() {
       return this.$store.state.chat.application;
     },
+    applications() {
+      return this.$store.state.chat.applications;
+    },
     credential() {
       return this.$store.state.chat?.credential;
     },
@@ -173,13 +178,6 @@ export default defineComponent({
         await this.$store.dispatch('chat/setModel', model);
       }
     },
-    // async references(val) {
-    //   console.log('references changed', val);
-    //   const model = await this.getModelByAction();
-    //   if (model) {
-    //     await this.$store.dispatch('chat/setModel', model);
-    //   }
-    // },
     async isReasonActive(val) {
       console.log('reason changed', val);
       const model = await this.getModelByAction();
@@ -385,7 +383,10 @@ export default defineComponent({
           if (this.messages && this.messages.length > 0) {
             this.messages[this.messages.length - 1].state = IChatMessageState.FAILED;
           }
-          console.error(error);
+          if (error.name === 'AbortError') {
+            console.error('aborted');
+            return;
+          }
           if (axios.isCancel(error)) {
             this.messages[this.messages.length - 1].error = {
               code: ERROR_CODE_CANCELED
@@ -460,6 +461,10 @@ export default defineComponent({
           if (this.messages && this.messages.length > 0) {
             this.messages[this.messages.length - 1].state = IChatMessageState.FAILED;
           }
+          if (error.name === 'AbortError') {
+            console.error('aborted');
+            return;
+          }
           if (axios.isCancel(error)) {
             this.messages[this.messages.length - 1].error = {
               code: ERROR_CODE_CANCELED
@@ -469,7 +474,6 @@ export default defineComponent({
             if (isJSONString(data)) {
               data = JSON.parse(data);
             }
-            console.debug('error', data);
             if (this.messages && this.messages.length > 0) {
               this.messages[this.messages.length - 1].error = data.error;
             }
@@ -615,6 +619,10 @@ export default defineComponent({
         .catch((error) => {
           if (this.messages && this.messages.length > 0) {
             this.messages[this.messages.length - 1].state = IChatMessageState.FAILED;
+          }
+          if (error.name === 'AbortError') {
+            console.error('aborted');
+            return;
           }
           console.error(error);
           if (axios.isCancel(error)) {
