@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Thu, 20 Feb 2025 15:29:50 GMT and should not be manually modified.
+This log was last generated on Sat, 22 Feb 2025 14:48:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.16.1
+
+Sat, 22 Feb 2025 14:48:43 GMT
+
+### Patches
+
+- add luma pagination (1348977728@qq.com)
 
 ## 2.16.0
 
