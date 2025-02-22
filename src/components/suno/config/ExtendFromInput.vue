@@ -1,7 +1,7 @@
 <template>
   <div class="field">
     <div class="box">
-      <h2 class="title">{{ $t('suno.name.extend') }}</h2>
+      <h2 class="title font-bold">{{ $t('suno.name.extend') }}</h2>
       <div class="input-wrapper">
         <el-input-number
           v-model="value"

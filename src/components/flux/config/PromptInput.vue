@@ -1,7 +1,7 @@
 <template>
   <div class="field">
     <div class="box">
-      <h2 class="title">{{ $t('flux.name.prompt') }}</h2>
+      <h2 class="title font-bold">{{ $t('flux.name.prompt') }}</h2>
       <info-icon :content="$t('flux.description.prompt')" class="info" />
     </div>
     <el-input

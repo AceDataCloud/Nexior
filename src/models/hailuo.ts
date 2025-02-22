@@ -27,6 +27,10 @@ export interface IHailuoGenerateResponse {
   task_id: string;
   trace_id: string;
   data?: IHailuoVideo[];
+  video_id?: string;
+  prompt?: string;
+  thumbnail_url?: string;
+  video_url?: string;
   error?: {
     code?: string;
     message?: string;

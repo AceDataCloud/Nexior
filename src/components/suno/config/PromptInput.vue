@@ -2,7 +2,7 @@
   <div class="field">
     <div class="box">
       <div class="title-info">
-        <h2 class="title">{{ $t('suno.name.prompt') }}</h2>
+        <h2 class="title font-bold">{{ $t('suno.name.prompt') }}</h2>
         <info-icon :content="$t('suno.description.prompt')" class="info" />
       </div>
       <div class="instrumental">

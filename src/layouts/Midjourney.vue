@@ -66,7 +66,8 @@ export default defineComponent({
   .presets {
     width: 300px;
     height: 100%;
-    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
   }
   .operation {
     flex: 1;

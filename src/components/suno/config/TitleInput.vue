@@ -1,7 +1,7 @@
 <template>
   <div class="field">
     <div class="title-container">
-      <h2 class="title">{{ $t('suno.name.title') }}</h2>
+      <h2 class="title font-bold">{{ $t('suno.name.title') }}</h2>
       <info-icon :content="$t('suno.description.title')" class="info" />
     </div>
     <el-input

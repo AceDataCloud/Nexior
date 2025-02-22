@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('luma.name.loop') }}</h2>
+    <h2 class="title font-bold">{{ $t('luma.name.loop') }}</h2>
     <el-switch v-model="value" class="value" />
     <info-icon :content="$t('luma.description.loop')" class="info" />
   </div>

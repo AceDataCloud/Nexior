@@ -1,7 +1,7 @@
 <template>
   <div class="field">
     <div class="box">
-      <h2 class="title">{{ $t('luma.name.prompt') }}</h2>
+      <h2 class="title font-bold">{{ $t('luma.name.prompt') }}</h2>
       <info-icon :content="$t('luma.description.prompt')" class="info" />
     </div>
     <el-input

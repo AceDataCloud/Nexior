@@ -37,5 +37,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 .el-menu {
   justify-content: center;
+  height: 40px;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('qrart.name.prompt') }}</h2>
+    <span class="text-sm font-bold block mb-2">{{ $t('qrart.name.prompt') }}</span>
     <el-input
       v-model="value"
       :rows="3"

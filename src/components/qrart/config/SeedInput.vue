@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('qrart.name.seed') }}</h2>
+    <span class="text-sm font-bold block mb-2">{{ $t('qrart.name.seed') }}</span>
     <el-input v-model="value" class="value" :placeholder="$t('qrart.placeholder.seed')" />
   </div>
 </template>

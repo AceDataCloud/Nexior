@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('headshots.name.mode') }}</h2>
+    <h2 class="title font-bold">{{ $t('headshots.name.mode') }}</h2>
     <el-radio-group v-model="value" size="small" class="mode">
       <el-radio-button v-for="item in options" :key="item.value" :label="item.value">
         {{ item.label }}

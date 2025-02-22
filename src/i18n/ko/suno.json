@@ -8,36 +8,36 @@
     "description": "다운로드 버튼 텍스트"
   },
   "button.more": {
-    "message": "추가 작업",
+    "message": "더 많은 작업",
     "description": "다운로드 버튼 텍스트"
   },
   "button.uploadAudios": {
     "message": "업로드",
-    "description": "사용자가 참고 자료를 업로드할 수 있게 해주는 버튼 텍스트"
+    "description": "버튼 텍스트, 사용자가 참조를 업로드할 수 있도록 허용"
   },
   "button.video": {
-    "message": "동영상",
-    "description": "동영상 버튼 텍스트"
+    "message": "비디오",
+    "description": "비디오 버튼 텍스트"
   },
   "button.download_video": {
-    "message": "동영상 다운로드",
-    "description": "동영상 다운로드 버튼 텍스트"
+    "message": "비디오 다운로드",
+    "description": "비디오 다운로드 버튼 텍스트"
   },
   "button.get_stems": {
     "message": "음성 분리",
-    "description": "다운로드 동영상 버튼 텍스트"
+    "description": "비디오 다운로드 버튼 텍스트"
   },
   "button.cover_music": {
     "message": "음악 커버",
-    "description": "다운로드 동영상 버튼 텍스트"
+    "description": "비디오 다운로드 버튼 텍스트"
   },
   "button.concat_music": {
-    "message": "음악 결합",
-    "description": "다운로드 동영상 버튼 텍스트"
+    "message": "음악 연결",
+    "description": "비디오 다운로드 버튼 텍스트"
   },
   "button.download_audio": {
     "message": "음악 다운로드",
-    "description": "다운로드 음악 버튼 텍스트"
+    "description": "음악 다운로드 버튼 텍스트"
   },
   "model.model1": {
     "message": "v2",
@@ -48,12 +48,12 @@
     "description": "음악 생성을 위한 모델"
   },
   "name.instrumental": {
-    "message": "가사 없음",
+    "message": "무반주",
     "description": "매개변수 'instrumental'의 설명"
   },
   "name.referenceAudios": {
-    "message": "참고 음악 업로드",
-    "description": "참고 음악의 이름"
+    "message": "참조 음악",
+    "description": "참조 음악의 이름"
   },
   "model.model3": {
     "message": "v3.5",
@@ -68,19 +68,19 @@
     "description": "작업의 ID"
   },
   "name.type": {
-    "message": "맞춤형 모드",
-    "description": "맞춤형 모드의 이름"
+    "message": "맞춤 모드",
+    "description": "맞춤 모드의 이름"
   },
   "name.prompt": {
-    "message": "곡 설명",
+    "message": "노래 설명",
     "description": "내용 입력의 프롬프트"
   },
   "name.extend": {
-    "message": "확장된 곡 출처",
+    "message": "노래 확장 출처",
     "description": "내용 입력의 프롬프트"
   },
   "name.cover": {
-    "message": "음악 표지 곡 출처",
+    "message": "음악 커버 출처",
     "description": "내용 입력의 프롬프트"
   },
   "name.lyrics": {
@@ -88,16 +88,16 @@
     "description": "가사 내용 입력의 프롬프트"
   },
   "name.style": {
-    "message": "곡 스타일",
-    "description": "곡 스타일 내용 입력의 프롬프트"
+    "message": "노래 스타일",
+    "description": "노래 스타일 내용 입력의 프롬프트"
   },
   "name.title": {
-    "message": "곡 제목",
-    "description": "곡 제목 내용 입력의 프롬프트"
+    "message": "노래 제목",
+    "description": "노래 제목 내용 입력의 프롬프트"
   },
   "name.failureReason": {
-    "message": "실패 사유",
-    "description": "작업 실패의 원인"
+    "message": "실패 이유",
+    "description": "작업 실패의 이유"
   },
   "name.status": {
     "message": "상태",
@@ -108,11 +108,11 @@
     "description": "작업의 추적 ID"
   },
   "name.sunoBot": {
-    "message": "Suno Bot",
+    "message": "Suno 봇",
     "description": "Suno 생성기의 이름"
   },
   "description.prompt": {
-    "message": "생성하고자 하는 음악의 스타일과 주제를 입력하세요, 예: holiday에 대한 acoustic pop",
+    "message": "생성하고자 하는 음악의 스타일과 주제를 입력하세요, 예: acoustic pop about the holidays",
     "description": "매개변수 'prompt'의 설명"
   },
   "description.lyrics": {
@@ -120,52 +120,52 @@
     "description": "매개변수 'lyrics'의 설명"
   },
   "description.style": {
-    "message": "곡 스타일의 내용",
+    "message": "노래 스타일의 내용",
     "description": "매개변수 'style'의 설명"
   },
   "description.title": {
-    "message": "곡 제목의 내용",
+    "message": "노래 제목의 내용",
     "description": "매개변수 'title'의 설명"
   },
   "description.uploadAudios": {
-    "message": "생성의 참고 자료로 음악을 업로드합니다. 업로드 과정에서 잠시 기다려야 하며, 생성이 성공하면 업로드된 음악을 기반으로 생성할 수 있습니다.",
-    "description": "업로드 참고 매개변수의 설명"
+    "message": "생성의 참조로 음악을 업로드하세요. 업로드 과정은 잠시 기다려야 하며, 성공적으로 생성되면 업로드한 음악을 기반으로 생성할 수 있습니다.",
+    "description": "업로드 참조 매개변수의 설명"
   },
   "status.pending": {
     "message": "대기 중",
     "description": "작업의 대기 상태"
   },
   "placeholder.prompt": {
-    "message": "곡의 프롬프트를 입력하세요...",
-    "description": "프롬프트 입력의 자리 표시자"
+    "message": "노래 프롬프트를 입력하세요...",
+    "description": "노이즈 입력의 자리 표시자"
   },
   "placeholder.lyrics": {
     "message": "가사를 입력하세요...",
-    "description": "가사 입력의 자리 표시자"
+    "description": "레벨의 자리 표시자"
   },
   "placeholder.extend.lyrics": {
     "message": "확장할 가사를 입력하세요...",
-    "description": "가사 입력의 자리 표시자"
+    "description": "레벨의 자리 표시자"
   },
   "placeholder.extend.continue_at": {
-    "message": "어디서부터 곡을 확장할지 입력하세요...",
-    "description": "시간 입력의 자리 표시자"
+    "message": "노래의 몇 초부터 확장할지 입력하세요...",
+    "description": "레벨의 자리 표시자"
   },
   "placeholder.style": {
-    "message": "생성할 곡 스타일의 프롬프트를 입력하세요, 예: acoustic pop",
-    "description": "입력 필드의 자리 표시자"
+    "message": "생성할 노래 스타일의 프롬프트를 입력하세요, 예: acoustic pop",
+    "description": "프롬프트 필드의 자리 표시 텍스트"
   },
   "placeholder.title": {
-    "message": "생성할 곡 제목의 프롬프트를 입력하세요, 예: holiday song",
-    "description": "입력 필드의 자리 표시자"
+    "message": "생성할 노래 제목의 프롬프트를 입력하세요, 예: holiday song",
+    "description": "시드 입력의 자리 표시자"
   },
   "placeholder.select": {
     "message": "모델을 선택하세요...",
-    "description": "입력 필드의 자리 표시자"
+    "description": "위치 입력의 자리 표시자"
   },
   "placeholder.position": {
     "message": "선택하세요...",
-    "description": "입력 필드의 자리 표시자"
+    "description": "위치 입력의 자리 표시자"
   },
   "button.generate": {
     "message": "생성",
@@ -176,7 +176,7 @@
     "description": "음악 생성 작업 시작 시의 메시지"
   },
   "message.startingUploadAudio": {
-    "message": "사용자 정의 음악을 업로드 하는 중...",
+    "message": "사용자 정의 음악을 업로드하는 중...",
     "description": "음악 생성 작업 시작 시의 메시지"
   },
   "message.uploadReferencesExceed": {
@@ -192,7 +192,7 @@
     "description": "음악 생성 작업을 성공적으로 시작했을 때의 성공 메시지"
   },
   "message.startUploadAudioSuccess": {
-    "message": "사용자 정의 음악을 성공적으로 업로드했습니다",
+    "message": "사용자 정의 음악 업로드 성공",
     "description": "성공적으로 음악 생성 작업을 시작했을 때의 성공 메시지"
   },
   "message.startUploadAudioFailed": {
@@ -201,22 +201,22 @@
   },
   "message.startTaskFailed": {
     "message": "음악 생성 작업 시작 실패",
-    "description": "음악 생성 작업 시작 실패 시의 오류 메시지"
+    "description": "음악 생성 작업 시작에 실패했을 때의 오류 메시지"
   },
   "message.generating": {
     "message": "생성 중...",
-    "description": "음악이 생성되고 있을 때의 메시지"
+    "description": "음악이 생성 중일 때의 메시지"
   },
   "message.generateFailed": {
     "message": "음악 생성 실패",
-    "description": "음악 생성이 실패했을 때의 메시지"
+    "description": "음악 생성에 실패했을 때의 메시지"
   },
   "message.noOperations": {
-    "message": "사용 가능한 작업이 없습니다",
+    "message": "사용 가능한 작업 없음",
     "description": "사용 가능한 작업이 없을 때의 메시지"
   },
   "message.noTasks": {
-    "message": "역사적인 작업이 없습니다. 왼쪽 설정 패널에서 음악을 생성하세요",
+    "message": "기록된 작업이 없습니다. 왼쪽 설정 패널에서 음악을 생성하세요.",
     "description": "작업이 없을 때의 메시지"
   }
 }

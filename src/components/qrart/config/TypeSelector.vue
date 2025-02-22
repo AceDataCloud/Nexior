@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('qrart.name.type') }}</h2>
+    <span class="text-sm font-bold title">{{ $t('qrart.name.type') }}</span>
     <el-select v-model="value" class="value" :placeholder="$t('qrart.placeholder.select')">
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </el-select>

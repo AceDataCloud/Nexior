@@ -76,6 +76,8 @@ export default defineComponent({
   padding: 15px;
   display: flex;
   flex-direction: column;
+  flex: 1;
+  height: calc(100% - 40px);
   .config {
     width: 100%;
     height: calc(100% - 50px);

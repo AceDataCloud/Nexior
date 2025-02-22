@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('qrart.name.rawurl') }}</h2>
+    <span class="text-sm font-bold block mb-2">{{ $t('qrart.name.rawurl') }}</span>
     <el-switch v-model="value" class="value" />
   </div>
 </template>

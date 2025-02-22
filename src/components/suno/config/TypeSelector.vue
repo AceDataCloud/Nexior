@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('suno.name.type') }}</h2>
+    <h2 class="title font-bold">{{ $t('suno.name.type') }}</h2>
     <el-switch v-model="custom" class="value" />
     <el-select v-model="model" class="value" :placeholder="$t('suno.placeholder.select')">
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
