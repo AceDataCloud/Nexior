@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('hailuo.name.startImageUrl') }}</h2>
+    <h2 class="title font-bold">{{ $t('hailuo.name.startImageUrl') }}</h2>
     <div class="upload-wrapper">
       <el-upload
         v-model:file-list="fileList"

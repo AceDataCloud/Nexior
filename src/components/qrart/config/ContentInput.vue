@@ -1,9 +1,7 @@
 <template>
   <div class="field">
     <div class="flex justify-between items-center mb-4">
-      <div>
-        <span>{{ $t('qrart.name.content') }}</span>
-      </div>
+      <span class="text-sm font-bold title">{{ $t('qrart.name.content') }}</span>
       <div class="flex items-center">
         <el-radio-group v-model="inputWay">
           <el-radio-button label="input">{{ $t('qrart.inputWay.input') }} </el-radio-button>

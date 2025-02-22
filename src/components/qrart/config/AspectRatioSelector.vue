@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="title">{{ $t('qrart.name.aspectRatio') }}</h2>
+    <span class="text-sm font-bold block mb-2">{{ $t('qrart.name.aspectRatio') }}</span>
     <div class="items">
       <div
         v-for="(option, optionKey) in options"

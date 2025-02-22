@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('qrart.name.advanced') }}</h2>
+    <span class="title font-bold">{{ $t('qrart.name.advanced') }}</span>
     <el-switch v-model="value" class="value" />
   </div>
 </template>

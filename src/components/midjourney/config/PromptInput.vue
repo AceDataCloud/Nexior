@@ -1,7 +1,7 @@
 <template>
   <div class="field">
     <div class="box">
-      <h2 class="title">{{ $t('midjourney.name.prompt') }}</h2>
+      <span class="text-sm font-bold">{{ $t('midjourney.name.prompt') }}</span>
       <info-icon :content="$t('midjourney.description.prompt')" class="info" />
     </div>
     <el-input

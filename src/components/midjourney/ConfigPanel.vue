@@ -1,5 +1,5 @@
 <template>
-  <div class="panel flex flex-col h-full">
+  <div class="panel flex flex-col">
     <div class="flex-1 overflow-y-scroll p-4">
       <model-selector class="mb-2" />
       <prompt-input class="mb-2" />
@@ -72,5 +72,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .panel {
   border-right: 1px solid var(--el-border-color);
+  flex: 1;
+  height: calc(100% - 40px);
 }
 </style>

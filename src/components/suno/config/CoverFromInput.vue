@@ -1,10 +1,10 @@
 <template>
   <div class="field">
     <div class="box">
-      <h2 class="title">{{ $t('suno.name.cover') }}</h2>
+      <h2 class="title font-bold">{{ $t('suno.name.cover') }}</h2>
     </div>
     <div class="task">
-      <div class="audio" @click="onClick(audio)">
+      <div v-if="audio" class="audio" @click="onClick(audio)">
         <div v-loading="!audio?.audio_url || !audio?.video_url" class="left">
           <el-image :src="audio?.image_url" class="cover" fit="cover" />
           <div

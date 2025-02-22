@@ -1,7 +1,7 @@
 <template>
   <div class="field">
     <div class="box">
-      <h2 class="title">{{ $t('luma.name.extend') }}</h2>
+      <h2 class="title font-bold">{{ $t('luma.name.extend') }}</h2>
     </div>
     <div class="task">
       <div>

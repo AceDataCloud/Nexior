@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('pika.name.imageUrl') }}</h2>
+    <h2 class="title font-bold">{{ $t('pika.name.imageUrl') }}</h2>
     <div class="upload-wrapper">
       <el-upload
         v-model:file-list="fileList"

@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('pika.name.ingredients') }}</h2>
+    <h2 class="title font-bold">{{ $t('pika.name.ingredients') }}</h2>
     <el-switch v-model="value" class="value" />
     <info-icon :content="$t('pika.description.ingredients')" class="info" />
   </div>

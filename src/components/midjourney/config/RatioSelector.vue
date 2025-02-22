@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="title">{{ $t('midjourney.name.ratio') }}</h2>
+    <span class="text-sm font-bold mb-2 block">{{ $t('midjourney.name.ratio') }}</span>
     <div class="items">
       <div
         v-for="(option, optionKey) in options"

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="title">{{ $t('flux.name.ratio') }}</h2>
+    <h2 class="title font-bold">{{ $t('flux.name.ratio') }}</h2>
     <div class="items">
       <div
         v-for="(option, optionKey) in options"

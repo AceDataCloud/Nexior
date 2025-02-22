@@ -333,6 +333,11 @@ $left-width: 70px;
   .failure {
     background: var(--el-fill-color-light);
     width: 100%;
+    .el-alert__content {
+      p {
+        margin-bottom: 10px;
+      }
+    }
   }
 }
 </style>

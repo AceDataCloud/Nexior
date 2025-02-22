@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('pika.name.effect') }}</h2>
+    <h2 class="title font-bold">{{ $t('pika.name.effect') }}</h2>
     <el-select v-model="value" class="value" :placeholder="$t('pika.placeholder.select')" clearable>
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
         <span class="float-left">{{ item.label }}</span>

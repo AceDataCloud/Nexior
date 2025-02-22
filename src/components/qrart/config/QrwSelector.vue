@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('qrart.name.qrw') }}</h2>
+    <span class="text-sm font-bold title mb-2">{{ $t('qrart.name.qrw') }}</span>
     <el-slider v-model="value" :min="1.5" :max="3" :step="0.1" class="value" />
     <info-icon :content="$t('qrart.description.qrw')" class="info" />
   </div>

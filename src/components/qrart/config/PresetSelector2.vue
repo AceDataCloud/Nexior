@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <h2 class="title">{{ $t('qrart.name.preset') }}</h2>
+    <span class="text-sm font-bold block mb-2">{{ $t('qrart.name.preset') }}</span>
     <div class="pane">
       <div
         v-for="(option, optionKey) in options"
