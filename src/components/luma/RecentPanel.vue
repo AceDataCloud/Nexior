@@ -51,7 +51,7 @@ export default defineComponent({
       // reverse the order of the tasks.items
       return {
         ...this.$store.state.luma?.tasks,
-        items: this.$store.state.luma?.tasks?.items?.slice().reverse()
+        items: this.$store.state.luma?.tasks?.items?.slice()
       };
     }
   },
