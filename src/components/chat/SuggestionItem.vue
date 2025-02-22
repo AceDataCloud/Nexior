@@ -39,14 +39,13 @@ export default defineComponent({
   },
   data() {
     return {};
-  },
-  computed: {}
+  }
 });
 </script>
 
 <style lang="scss" scoped>
 .item {
-  height: 80px;
+  // height: 80px;
   font-size: 14px;
   background-color: var(--el-color-color);
   color: var(--el-text-color-primary);

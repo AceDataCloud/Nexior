@@ -25,8 +25,14 @@ export const setService = async ({ commit }: any, payload: IService): Promise<vo
   commit('setService', payload);
 };
 
-export const setApplication = ({ commit }: any, payload: IApplication[]) => {
+export const setApplication = ({ commit }: any, payload: IApplication) => {
   commit('setApplication', payload);
+  const credential = payload?.credentials?.find((credential) => credential?.host === window.location.origin);
+  commit('setCredential', credential);
+};
+
+export const setApplications = ({ commit }: any, payload: IApplication[]) => {
+  commit('setApplications', payload);
 };
 
 export const getApplications = async ({
@@ -45,6 +51,7 @@ export const getApplications = async ({
       .then((response) => {
         console.debug('get applications success', response?.data);
         state.status.getApplications = Status.Success;
+        commit('setApplications', response.data.items);
         // check if there is any application with 'Period' type
         const application = response.data.items?.find((application) => application?.type === IApplicationType.PERIOD);
         const application2 = response.data.items?.find((application) => application?.type === IApplicationType.USAGE);
@@ -170,6 +177,7 @@ export default {
   setCredential,
   setConfig,
   setApplication,
+  setApplications,
   getApplications,
   setTasks,
   setTasksItems,

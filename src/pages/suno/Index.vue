@@ -7,10 +7,12 @@
       <application-status
         :initializing="initializing"
         :application="application"
+        :applications="applications"
         :service="service"
         :need-apply="needApply"
         class="mb-4"
         @refresh="onGetApplication"
+        @select="$store.dispatch('suno/setApplication', $event)"
       />
       <recent-panel class="panel recent" @reach-top="onReachTop" />
     </template>
@@ -82,6 +84,9 @@ export default defineComponent({
     },
     tasks() {
       return this.$store.state.suno.tasks;
+    },
+    applications() {
+      return this.$store.state.suno.applications;
     }
   },
   watch: {

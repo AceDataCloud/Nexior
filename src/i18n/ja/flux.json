@@ -1,0 +1,222 @@
+{
+  "name.taskId": {
+    "message": "タスク ID",
+    "description": "タスクの ID"
+  },
+  "name.type": {
+    "message": "タイプ",
+    "description": "生成するFLux画像の内容の種類。例：'リンク', 'テキスト'など"
+  },
+  "name.failure": {
+    "message": "失敗",
+    "description": "タスクの失敗状態"
+  },
+  "name.failureReason": {
+    "message": "失敗理由",
+    "description": "タスクが失敗した理由"
+  },
+  "name.status": {
+    "message": "ステータス",
+    "description": "タスクの状態"
+  },
+  "name.traceId": {
+    "message": "トレース ID",
+    "description": "タスクのトレース ID"
+  },
+  "name.createdAt": {
+    "message": "作成日時",
+    "description": "Flux画像が生成された日付と時間"
+  },
+  "name.numbers": {
+    "message": "画像数",
+    "description": "生成する画像の数"
+  },
+  "name.quality": {
+    "message": "画像品質",
+    "description": "画像の品質"
+  },
+  "name.prompt": {
+    "message": "イメージプロンプト",
+    "description": "コンテンツ入力のプロンプト"
+  },
+  "name.ratio": {
+    "message": "比率",
+    "description": "比率パラメータの名称"
+  },
+  "name.model": {
+    "message": "モデルバージョン",
+    "description": "画像生成に用いるモデルバージョン"
+  },
+  "name.fluxBot": {
+    "message": "Flux Bot",
+    "description": "Flux画像生成器の名称"
+  },
+  "description.numbers": {
+    "message": "生成する画像の数を指定。値の範囲は1〜4。",
+    "description": "パラメータ'numbers'の説明"
+  },
+  "description.quality": {
+    "message": "生成する画像の品質を指定。値の範囲は1〜100。",
+    "description": "パラメータ'quality'の説明"
+  },
+  "description.prompt": {
+    "message": "Flux画像を生成するためのプロンプト",
+    "description": "パラメータ'prompt'の説明"
+  },
+  "status.pending": {
+    "message": "保留中",
+    "description": "タスクの待機状態"
+  },
+  "status.processing": {
+    "message": "処理中",
+    "description": "タスクの進行中の状態"
+  },
+  "placeholder.paddingNoise": {
+    "message": "選択してください...",
+    "description": "パディングノイズ入力のプレースホルダ"
+  },
+  "placeholder.select": {
+    "message": "選択",
+    "description": "選択フィールド内のプレースホルダテキスト"
+  },
+  "placeholder.paddingLevel": {
+    "message": "選択してください...",
+    "description": "パディングレベルのプレースホルダ"
+  },
+  "placeholder.prompt": {
+    "message": "生成する画像スタイルのプロンプトを入力してください。例：a white siamese cat",
+    "description": "プロンプトフィールドのプレースホルダテキスト"
+  },
+  "placeholder.position": {
+    "message": "選択してください...",
+    "description": "位置入力のプレースホルダ"
+  },
+  "placeholder.aspectRatio": {
+    "message": "選択してください...",
+    "description": "アスペクト比入力のプレースホルダ"
+  },
+  "placeholder.preset": {
+    "message": "選択してください...",
+    "description": "プリセット入力のプレースホルダ"
+  },
+  "placeholder.markerShape": {
+    "message": "選択してください...",
+    "description": "マーカー形状入力のプレースホルダ"
+  },
+  "placeholder.rotate": {
+    "message": "選択してください...",
+    "description": "回転入力のプレースホルダ"
+  },
+  "placeholder.subMarker": {
+    "message": "選択してください...",
+    "description": "サブマーカー入力のプレースホルダ"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "Flux画像を生成するボタンテキスト"
+  },
+  "button.extend": {
+    "message": "画像を拡張",
+    "description": "画像を拡張するボタンテキスト"
+  },
+  "button.viewImage": {
+    "message": "元の画像を表示",
+    "description": "生成したFlux画像を表示するボタンテキスト"
+  },
+  "button.download": {
+    "message": "画像をダウンロード",
+    "description": "画像をダウンロードするボタンテキスト"
+  },
+  "message.downloadImage": {
+    "message": "新しいウィンドウで画像を開く",
+    "description": "画像を新しいウィンドウで開く"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "最大5枚の画像をアップロードできます",
+    "description": "アップロードされた画像数が制限を超えたときのエラーメッセージ"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "画像のアップロードに成功しました",
+    "description": "画像が成功裏にアップロードされたときの成功メッセージ"
+  },
+  "message.uploadReferencesError": {
+    "message": "画像のアップロードに失敗しました。後でもう一度お試しください",
+    "description": "画像アップロードが失敗した際のエラーメッセージ"
+  },
+  "message.startingTask": {
+    "message": "タスクを開始しています...",
+    "description": "描画タスクの開始時のメッセージ"
+  },
+  "message.startTaskSuccess": {
+    "message": "生成タスクを正常に開始しました",
+    "description": "タスクが正常に開始された時の成功メッセージ"
+  },
+  "message.startTaskFailed": {
+    "message": "タスクの開始に失敗しました。管理者に連絡してください",
+    "description": "描画タスクの開始が失敗した際のエラーメッセージ"
+  },
+  "message.usedUp": {
+    "message": "クレジットが尽きました。追加のクレジットを購入後、続行してください",
+    "description": "クレジットが尽きた際のメッセージ"
+  },
+  "message.generating": {
+    "message": "生成中...",
+    "description": "画像が生成中の際のメッセージ"
+  },
+  "message.downloadVideo": {
+    "message": "この画像をダウンロード",
+    "description": "画像が生成中の際のメッセージ"
+  },
+  "message.extendVideo": {
+    "message": "この画像を生成し続ける",
+    "description": "画像が生成中の際のメッセージ"
+  },
+  "message.generateFailed": {
+    "message": "画像の生成に失敗しました",
+    "description": "画像生成が失敗した際のメッセージ"
+  },
+  "message.uploadVideoExceed": {
+    "message": "アップロードされた初フレーム画像の数が制限を超えています",
+    "description": "初フレーム画像のアップロード数が制限を超えた際のエラーメッセージ"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "アップロードファイルのサイズは10MBを超えてはなりません!",
+    "description": "アップロードファイルのサイズが10MBを超えた際のエラーメッセージ"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "アップロードファイルはMP4形式でなければなりません!",
+    "description": "アップロードファイルがMP4形式でないときのエラーメッセージ"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "アップロードされた開始フレーム画像の数が制限を超えています",
+    "description": "開始フレーム画像のアップロード数が制限を超えた場合のエラーメッセージ"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "アップロードされた終了フレーム画像の数が制限を超えています",
+    "description": "終了フレーム画像のアップロード数が制限を超えた場合のエラーメッセージ"
+  },
+  "message.uploadStartImageError": {
+    "message": "開始フレーム画像のアップロードに失敗しました",
+    "description": "開始フレーム画像のアップロードが失敗した場合のエラーメッセージ"
+  },
+  "message.uploadVideoError": {
+    "message": "画像のアップロードに失敗しました",
+    "description": "開始フレーム画像のアップロードが失敗した場合のエラーメッセージ"
+  },
+  "message.uploadEndImageError": {
+    "message": "終了フレーム画像のアップロードに失敗しました",
+    "description": "終了フレーム画像のアップロードが失敗した場合のエラーメッセージ"
+  },
+  "message.uploadDocumentsError": {
+    "message": "ドキュメントのアップロードに失敗しました",
+    "description": "ドキュメントのアップロードが失敗した場合のエラーメッセージ"
+  },
+  "message.noOperations": {
+    "message": "利用可能な操作はありません",
+    "description": "利用可能な操作がない場合のメッセージ"
+  },
+  "message.noTasks": {
+    "message": "履歴タスクがありません。左側から画像を生成してください。",
+    "description": "タスクがない場合のメッセージ"
+  }
+}

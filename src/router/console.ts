@@ -6,7 +6,6 @@ import {
   ROUTE_CONSOLE_ORDER_LIST,
   ROUTE_CONSOLE_ROOT,
   ROUTE_CONSOLE_SUBSCRIPTION,
-  ROUTE_CONSOLE_SUBSCRIPTION_BUY,
   ROUTE_CONSOLE_USAGE_LIST
 } from './constants';
 
@@ -42,17 +41,12 @@ export default {
     {
       path: 'applications/:id/extra',
       name: ROUTE_CONSOLE_APPLICATION_EXTRA,
-      component: () => import('@/pages/console/application/Buy.vue')
+      component: () => import('@/pages/console/application/Extra.vue')
     },
     {
       path: 'applications/:id/subscribe',
       name: ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
-      component: () => import('@/pages/console/subscription/Buy.vue')
-    },
-    {
-      path: 'subscriptions',
-      name: ROUTE_CONSOLE_SUBSCRIPTION,
-      component: () => import('@/pages/console/subscription/Buy.vue')
+      component: () => import('@/pages/console/application/Subscribe.vue')
     },
     {
       path: 'usages',

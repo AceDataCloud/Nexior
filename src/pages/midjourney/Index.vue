@@ -8,9 +8,11 @@
         <application-status
           :initializing="initializing"
           :application="application"
+          :applications="applications"
           :service="service"
           :need-apply="needApply"
           @refresh="onGetApplication"
+          @select="$store.dispatch('midjourney/setApplication', $event)"
         />
         <task-list @custom="onCustom" @reach-top="onReachTop" />
       </div>
@@ -86,6 +88,9 @@ export default defineComponent({
     },
     application() {
       return this.$store.state.midjourney.application;
+    },
+    applications() {
+      return this.$store.state.midjourney.applications;
     },
     finalPrompt(): string {
       let content = '';

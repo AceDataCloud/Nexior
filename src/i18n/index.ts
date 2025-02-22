@@ -73,6 +73,7 @@ export const loadLocaleMessages = async (i18n: I18n, locale: string) => {
     'qrart',
     'luma',
     'pika',
+    'flux',
     'hailuo',
     'headshots',
     'suno',

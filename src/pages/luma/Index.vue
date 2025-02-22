@@ -7,10 +7,12 @@
       <application-status
         :initializing="initializing"
         :application="application"
+        :applications="applications"
         :service="service"
         :need-apply="needApply"
         class="mb-4"
         @refresh="onGetApplication"
+        @select="$store.dispatch('luma/setApplication', $event)"
       />
       <recent-panel class="panel recent" @reach-top="onReachTop" />
       <!-- <operation-panel class="panel operation" @generate="onGenerate" /> -->

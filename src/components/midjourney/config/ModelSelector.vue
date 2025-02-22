@@ -104,6 +104,7 @@ export default defineComponent({
       color: white;
       position: absolute;
       text-align: center;
+      top: 12px;
     }
 
     &.active {

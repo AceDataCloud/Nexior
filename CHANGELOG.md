@@ -1,8 +1,88 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Wed, 12 Feb 2025 13:53:57 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Feb 2025 15:29:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.16.0
+
+Thu, 20 Feb 2025 15:29:50 GMT
+
+### Minor changes
+
+- add applictions selection (office@acedata.cloud)
+
+## 2.15.6
+
+Thu, 20 Feb 2025 14:24:59 GMT
+
+### Patches
+
+- fix ux styles for index (office@acedata.cloud)
+
+## 2.15.5
+
+Wed, 19 Feb 2025 16:35:02 GMT
+
+### Patches
+
+- change flux logo (office@acedata.cloud)
+
+## 2.15.4
+
+Wed, 19 Feb 2025 16:24:16 GMT
+
+### Patches
+
+- update translations (office@acedata.cloud)
+
+## 2.15.3
+
+Wed, 19 Feb 2025 15:02:25 GMT
+
+### Patches
+
+- add flux (1348977728@qq.com)
+
+## 2.15.2
+
+Sun, 16 Feb 2025 16:26:21 GMT
+
+### Patches
+
+- change subscription behavior better (office@acedata.cloud)
+
+## 2.15.1
+
+Sun, 16 Feb 2025 14:56:40 GMT
+
+### Patches
+
+- fix order state  (office@acedata.cloud)
+
+## 2.15.0
+
+Sat, 15 Feb 2025 16:33:38 GMT
+
+### Minor changes
+
+- update unifity entry (office@acedata.cloud)
+
+## 2.14.7
+
+Sat, 15 Feb 2025 15:37:49 GMT
+
+### Patches
+
+- git left chat panel style (office@acedata.cloud)
+
+## 2.14.6
+
+Sat, 15 Feb 2025 14:41:39 GMT
+
+### Patches
+
+- fix the price display for distribution (office@acedata.cloud)
 
 ## 2.14.5
 

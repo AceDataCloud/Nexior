@@ -31,32 +31,32 @@ export default defineComponent({
         {
           value: '1:1',
           label: '1:1',
-          width: 15,
-          height: 15
+          width: 20,
+          height: 20
         },
         {
           value: '4:3',
           label: '4:3',
-          width: 16,
-          height: 12
+          width: 20,
+          height: 15
         },
         {
           value: '3:4',
           label: '3:4',
-          width: 12,
-          height: 16
+          width: 15,
+          height: 20
         },
         {
           value: '16:9',
           label: '16:9',
-          width: 16,
-          height: 9
+          width: 25,
+          height: 13
         },
         {
           value: '9:16',
           label: '9:16',
-          width: 9,
-          height: 16
+          width: 13,
+          height: 25
         }
       ]
     };
@@ -99,8 +99,8 @@ export default defineComponent({
 
   .item {
     width: 48px;
-    height: 60px;
-    border: 1px solid var(--el-border-color);
+    height: 65px;
+    border: 2px solid var(--el-border-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -117,7 +117,7 @@ export default defineComponent({
       justify-content: center;
 
       .rect {
-        border: 1px solid var(--el-border-color);
+        border: 2px solid var(--el-border-color);
         width: 20px;
         height: 20px;
         border-radius: 2px;

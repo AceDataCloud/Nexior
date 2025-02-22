@@ -53,7 +53,7 @@
             :xs="24"
             class="mb-4"
           >
-            <el-card class="info text-center" shadow="hover">
+            <el-card class="info text-center" shadow="hover" @click="onClickCapability(capability)">
               <div class="icon-wrapper">
                 <font-awesome-icon :icon="capability.icon" class="icon" />
               </div>
@@ -311,7 +311,8 @@ export default defineComponent({
               {
                 title: this.$t('index.title.chat'),
                 subtitle: this.$t('index.subtitle.chat'),
-                icon: 'fa-regular fa-comment'
+                icon: 'fa-regular fa-comment',
+                path: '/chat'
               }
             ]
           : []),
@@ -320,7 +321,8 @@ export default defineComponent({
               {
                 title: this.$t('index.title.midjourney'),
                 subtitle: this.$t('index.subtitle.midjourney'),
-                icon: 'fa-solid fa-palette'
+                icon: 'fa-solid fa-palette',
+                path: '/midjourney'
               }
             ]
           : []),
@@ -329,7 +331,8 @@ export default defineComponent({
               {
                 title: this.$t('index.title.qrart'),
                 subtitle: this.$t('index.subtitle.qrart'),
-                icon: 'fa-solid fa-qrcode'
+                icon: 'fa-solid fa-qrcode',
+                path: '/qrart'
               }
             ]
           : []),
@@ -338,7 +341,8 @@ export default defineComponent({
               {
                 title: this.$t('index.title.suno'),
                 subtitle: this.$t('index.subtitle.suno'),
-                icon: 'fa-solid fa-music'
+                icon: 'fa-solid fa-music',
+                path: '/suno'
               }
             ]
           : []),
@@ -347,7 +351,8 @@ export default defineComponent({
               {
                 title: this.$t('index.title.luma'),
                 subtitle: this.$t('index.subtitle.luma'),
-                icon: 'fa-solid fa-film'
+                icon: 'fa-solid fa-film',
+                path: '/luma'
               }
             ]
           : []),
@@ -356,7 +361,8 @@ export default defineComponent({
               {
                 title: this.$t('index.title.headshots'),
                 subtitle: this.$t('index.subtitle.headshots'),
-                icon: 'fa-solid fa-id-card'
+                icon: 'fa-solid fa-id-card',
+                path: '/headshots'
               }
             ]
           : [])
@@ -364,7 +370,11 @@ export default defineComponent({
     }
   },
   mounted() {},
-  methods: {}
+  methods: {
+    onClickCapability(capability: any) {
+      this.$router.push(capability.path);
+    }
+  }
 });
 </script>
 
@@ -422,6 +432,7 @@ export default defineComponent({
       font-size: 20px;
       padding: 0 20px;
       color: var(--el-text-color-secondary);
+      margin-bottom: 20px;
     }
     .btn-try {
       padding: 25px 62px;
@@ -483,6 +494,9 @@ export default defineComponent({
   padding: 100px 0;
   @media (max-width: 767px) {
     padding: 100px 20px;
+  }
+  .container {
+    cursor: pointer;
   }
   .info {
     .title {
