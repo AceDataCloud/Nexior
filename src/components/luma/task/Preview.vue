@@ -14,13 +14,7 @@
         <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
           {{ modelValue?.request?.prompt }}
           <span v-if="!modelValue?.response"> - ({{ $t('luma.status.pending') }}) </span>
-          <span
-            v-if="
-              modelValue?.response?.data?.state === 'processing' ||
-              modelValue?.response?.data?.state === 'pending' ||
-              modelValue?.response?.data?.state === 'completed'
-            "
-          >
+          <span v-if="modelValue?.response?.state === 'processing' || modelValue?.response?.state === 'pending'">
             - ({{ $t('luma.status.processing') }})
           </span>
         </p>
@@ -57,7 +51,10 @@
         </el-alert>
       </div>
       <!-- Display error message -->
-      <div v-if="modelValue?.response?.success === false" :class="{ content: true }">
+      <div
+        v-if="modelValue?.response?.state === 'failed' || modelValue?.response?.success === false"
+        :class="{ content: true }"
+      >
         <el-alert :closable="false" class="failure">
           <template #template>
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
@@ -78,7 +75,7 @@
           <p class="description">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
             {{ $t('luma.name.traceId') }}:
-            {{ modelValue?.response?.trace_id }}
+            {{ modelValue?.trace_id }}
             <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy" />
           </p>
         </el-alert>
