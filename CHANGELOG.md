@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sat, 22 Feb 2025 14:48:43 GMT and should not be manually modified.
+This log was last generated on Sat, 22 Feb 2025 18:51:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.16.2
+
+Sat, 22 Feb 2025 18:51:41 GMT
+
+### Patches
+
+- fix styles (office@acedata.cloud)
 
 ## 2.16.1
 
