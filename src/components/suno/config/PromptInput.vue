@@ -52,6 +52,18 @@ export default defineComponent({
           prompt: val
         });
       }
+    },
+    instrumental: {
+      get() {
+        return this.$store.state.suno?.config?.instrumental;
+      },
+      set(val) {
+        console.debug('set instrumental', val);
+        this.$store.commit('suno/setConfig', {
+          ...this.$store.state.suno?.config,
+          instrumental: val
+        });
+      }
     }
   },
   mounted() {
