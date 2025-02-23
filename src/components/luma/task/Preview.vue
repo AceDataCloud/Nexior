@@ -84,8 +84,8 @@
       <div
         v-if="
           !modelValue?.response ||
-          modelValue?.response?.data?.state === 'processing' ||
-          modelValue?.response?.data?.state === 'pending'
+          modelValue?.response?.state === 'processing' ||
+          modelValue?.response?.state === 'pending'
         "
         :class="{ content: true }"
       >
