@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sun, 23 Feb 2025 12:36:49 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Feb 2025 17:26:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.17.0
+
+Wed, 26 Feb 2025 17:26:59 GMT
+
+### Minor changes
+
+- add grok support  (office@acedata.cloud)
 
 ## 2.16.3
 
