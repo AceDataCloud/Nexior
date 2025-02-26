@@ -30,7 +30,9 @@
           <input-box
             v-model:is-search-active="isSearchActive"
             v-model:is-reason-active="isReasonActive"
+            v-model:is-deepsearch-active="isDeepsearchActive"
             v-model:is-search-enabled="isSearchEnabled"
+            v-model:is-deepsearch-enabled="isDeepsearchEnabled"
             v-model:is-reason-enabled="isReasonEnabled"
             v-model:is-upload-enabled="isUploadEnabled"
             :disabled="answering"
@@ -60,8 +62,12 @@ import {
   CHAT_MODEL_DEEPSEEK_REASONER,
   CHAT_MODEL_GPT_4_BROWSING,
   CHAT_MODEL_GPT_4O,
+  CHAT_MODEL_GROK_3,
+  CHAT_MODEL_GROK_3_DEEPSEARCH,
+  CHAT_MODEL_GROK_3_REASONER,
   CHAT_MODEL_GROUP_CHATGPT,
   CHAT_MODEL_GROUP_DEEPSEEK,
+  CHAT_MODEL_GROUP_GROK,
   CHAT_MODEL_O1_MINI,
   CHAT_MODELS,
   ROLE_ASSISTANT,
@@ -93,8 +99,10 @@ export interface IData {
   question: string;
   upload: boolean;
   isSearchActive: boolean;
+  isDeepsearchActive: boolean;
   isReasonActive: boolean;
   isSearchEnabled: boolean;
+  isDeepsearchEnabled: boolean;
   isReasonEnabled: boolean;
   isUploadEnabled: boolean;
   references: string[];
@@ -122,9 +130,11 @@ export default defineComponent({
       upload: false,
       isSearchActive: false,
       isReasonActive: false,
+      isDeepsearchActive: false,
       isSearchEnabled: true,
       isReasonEnabled: true,
       isUploadEnabled: true,
+      isDeepsearchEnabled: true,
       answering: false,
       canceler: undefined,
       messages:
@@ -180,6 +190,13 @@ export default defineComponent({
     },
     async isReasonActive(val) {
       console.log('reason changed', val);
+      const model = await this.getModelByAction();
+      if (model) {
+        await this.$store.dispatch('chat/setModel', model);
+      }
+    },
+    async isDeepsearchActive(val) {
+      console.log('deepsearch changed', val);
       const model = await this.getModelByAction();
       if (model) {
         await this.$store.dispatch('chat/setModel', model);
@@ -265,6 +282,13 @@ export default defineComponent({
           return CHAT_MODEL_DEEPSEEK_REASONER;
         }
         return CHAT_MODEL_DEEPSEEK_CHAT;
+      } else if (this.modelGroup.name === CHAT_MODEL_GROUP_GROK.name) {
+        if (this.isReasonActive) {
+          return CHAT_MODEL_GROK_3_REASONER;
+        } else if (this.isDeepsearchActive) {
+          return CHAT_MODEL_GROK_3_DEEPSEARCH;
+        }
+        return CHAT_MODEL_GROK_3;
       }
     },
     async getModelGroup() {
@@ -273,6 +297,8 @@ export default defineComponent({
         return CHAT_MODEL_GROUP_CHATGPT;
       } else if (CHAT_MODEL_GROUP_DEEPSEEK.models.map((item) => item.name).includes(currentModel.name)) {
         return CHAT_MODEL_GROUP_DEEPSEEK;
+      } else if (CHAT_MODEL_GROUP_GROK.models.map((item) => item.name).includes(currentModel.name)) {
+        return CHAT_MODEL_GROUP_GROK;
       }
     },
     async onGetService() {
