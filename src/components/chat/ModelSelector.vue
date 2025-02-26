@@ -31,7 +31,7 @@ import { defineComponent } from 'vue';
 import { ElDropdown, ElDropdownItem, ElDropdownMenu } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IChatModelGroup } from '@/models';
-import { CHAT_MODEL_GROUP_CHATGPT, CHAT_MODEL_GROUP_DEEPSEEK } from '@/constants';
+import { CHAT_MODEL_GROUP_CHATGPT, CHAT_MODEL_GROUP_DEEPSEEK, CHAT_MODEL_GROUP_GROK } from '@/constants';
 
 interface IData {
   options: IChatModelGroup[];
@@ -48,7 +48,7 @@ export default defineComponent({
   emits: ['update:modelValue', 'select'],
   data(): IData {
     return {
-      options: [CHAT_MODEL_GROUP_CHATGPT, CHAT_MODEL_GROUP_DEEPSEEK]
+      options: [CHAT_MODEL_GROUP_CHATGPT, CHAT_MODEL_GROUP_DEEPSEEK, CHAT_MODEL_GROUP_GROK]
     };
   },
   computed: {

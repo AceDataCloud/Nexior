@@ -24,15 +24,36 @@
         </el-tooltip>
       </el-upload>
       <span
+        v-if="['chatgpt'].includes(modelGroup.name)"
         :class="{ btn: true, 'btn-search': true, active: _isSearchActive, disabled: !isSearchEnabled }"
-        @click="_isSearchActive = !_isSearchActive"
+        @click="
+          _isSearchActive = !_isSearchActive;
+          _isReasonActive = false;
+          _isDeepsearchActive = false;
+        "
       >
         <font-awesome-icon icon="fa-solid fa-globe" class="icon icon-search" />
         {{ $t('chat.button.search') }}
       </span>
       <span
+        v-if="['grok'].includes(modelGroup.name)"
+        :class="{ btn: true, 'btn-deepsearch': true, active: _isDeepsearchActive, disabled: !isDeepsearchEnabled }"
+        @click="
+          _isDeepsearchActive = !_isDeepsearchActive;
+          _isReasonActive = false;
+          _isSearchActive = false;
+        "
+      >
+        <font-awesome-icon icon="fa-solid fa-globe" class="icon icon-deepsearch" />
+        {{ $t('chat.button.deepsearch') }}
+      </span>
+      <span
+        v-if="['chatgpt', 'grok', 'deepseek'].includes(modelGroup.name)"
         :class="{ btn: true, 'btn-reason': true, active: _isReasonActive, disabled: !isReasonEnabled }"
-        @click="_isReasonActive = !_isReasonActive"
+        @click="
+          _isReasonActive = !_isReasonActive;
+          _isDeepsearchActive = false;
+        "
       >
         <font-awesome-icon icon="fa-regular fa-lightbulb" class="icon icon-reason" />
         {{ $t('chat.button.thinkDeeper') }}
@@ -80,7 +101,7 @@ import { ElMessage, ElTooltip, ElUpload } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IChatModel } from '@/models';
 import { getBaseUrlPlatform } from '@/utils';
-import { CHAT_MODEL_GROUP_DEEPSEEK } from '@/constants';
+import { CHAT_MODEL_GROUP_DEEPSEEK, CHAT_MODEL_GROUP_GROK } from '@/constants';
 
 export default defineComponent({
   name: 'InputBox',
@@ -109,6 +130,11 @@ export default defineComponent({
       required: false,
       default: true
     },
+    isDeepsearchEnabled: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
     isReasonEnabled: {
       type: Boolean,
       required: false,
@@ -120,6 +146,11 @@ export default defineComponent({
       default: true
     },
     isSearchActive: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    isDeepsearchActive: {
       type: Boolean,
       required: false,
       default: false
@@ -139,7 +170,9 @@ export default defineComponent({
     'update:isReasonActive',
     'update:isUploadEnabled',
     'update:isSearchEnabled',
-    'update:isReasonEnabled'
+    'update:isReasonEnabled',
+    'update:isDeepsearchEnabled',
+    'update:isDeepsearchActive'
   ],
   data() {
     return {
@@ -150,6 +183,8 @@ export default defineComponent({
       _isSearchActive: this.isSearchActive,
       // eslint-disable-next-line vue/no-reserved-keys
       _isReasonActive: this.isReasonActive,
+      // eslint-disable-next-line vue/no-reserved-keys
+      _isDeepsearchActive: this.isDeepsearchActive,
       uploadUrl: getBaseUrlPlatform() + '/api/v1/files/'
     };
   },
@@ -167,19 +202,32 @@ export default defineComponent({
       return this.fileList.map((file: UploadFile) => file?.response?.file_url);
     },
     _isUploadEnabled() {
-      return !this._isSearchActive && !this._isReasonActive && this.modelGroup.name !== CHAT_MODEL_GROUP_DEEPSEEK.name;
+      return (
+        !this._isSearchActive &&
+        !this._isReasonActive &&
+        this.modelGroup.name !== CHAT_MODEL_GROUP_DEEPSEEK.name &&
+        this.modelGroup.name !== CHAT_MODEL_GROUP_GROK.name
+      );
     },
     _isSearchEnabled() {
-      return !this._isReasonActive && !this.urls.length;
+      return !this._isReasonActive && !this.isDeepsearchActive && !this.urls.length;
+    },
+    _isDeepsearchEnabled() {
+      return !this._isReasonActive && !this._isSearchActive && !this.urls.length;
     },
     _isReasonEnabled() {
-      return !this._isSearchActive && !this.urls.length;
+      return !this._isSearchActive && !this.isDeepsearchActive && !this.urls.length;
     },
     model(): IChatModel {
       return this.$store.state.chat.model;
     }
   },
   watch: {
+    modelGroup() {
+      this._isReasonActive = false;
+      this._isSearchActive = false;
+      this._isDeepsearchActive = false;
+    },
     urls(val) {
       this.$emit('update:references', val);
     },
@@ -189,11 +237,18 @@ export default defineComponent({
     _isSearchEnabled(val: boolean) {
       this.$emit('update:isSearchEnabled', val);
     },
+    _isDeepsearchEnabled(val: boolean) {
+      this.$emit('update:isDeepsearchEnabled', val);
+    },
     _isReasonEnabled(val: boolean) {
       this.$emit('update:isReasonEnabled', val);
     },
     _isSearchActive(val: boolean) {
       this.$emit('update:isSearchActive', val);
+    },
+    _isDeepsearchActive(val: boolean) {
+      console.log('deepsearch', val);
+      this.$emit('update:isDeepsearchActive', val);
     },
     _isReasonActive(val: boolean) {
       this.$emit('update:isReasonActive', val);
@@ -214,6 +269,11 @@ export default defineComponent({
     isSearchActive(val: boolean) {
       if (val !== this._isSearchActive) {
         this._isSearchActive = val;
+      }
+    },
+    isDeepsearchActive(val: boolean) {
+      if (val !== this._isDeepsearchActive) {
+        this._isDeepsearchActive = val;
       }
     },
     references(val: string[]) {
@@ -380,6 +440,19 @@ textarea.input:focus {
           color: var(--el-color-primary);
         }
         .icon-reason {
+          font-size: 16px;
+        }
+      }
+      &.btn-deepsearch {
+        color: var(--el-text-color-primary);
+        border-radius: 20px;
+        padding: 0 10px;
+        font-size: 16px;
+        &.active {
+          border: 1px solid var(--el-color-primary);
+          color: var(--el-color-primary);
+        }
+        .icon-deepsearch {
           font-size: 16px;
         }
       }

@@ -13,7 +13,10 @@ import {
   CHAT_MODEL_NAME_O1_MINI,
   CHAT_MODEL_NAME_O3_MINI,
   CHAT_MODEL_NAME_DEEPSEEK_CHAT,
-  CHAT_MODEL_NAME_DEEPSEEK_REASONER
+  CHAT_MODEL_NAME_DEEPSEEK_REASONER,
+  CHAT_MODEL_NAME_GROK_3,
+  CHAT_MODEL_NAME_GROK_3_REASONER,
+  CHAT_MODEL_NAME_GROK_3_DEEPSEARCH
 } from '@/constants';
 
 export type IChatModelName =
@@ -26,6 +29,9 @@ export type IChatModelName =
   | typeof CHAT_MODEL_NAME_GPT_4O
   | typeof CHAT_MODEL_NAME_DEEPSEEK_CHAT
   | typeof CHAT_MODEL_NAME_DEEPSEEK_REASONER
+  | typeof CHAT_MODEL_NAME_GROK_3
+  | typeof CHAT_MODEL_NAME_GROK_3_REASONER
+  | typeof CHAT_MODEL_NAME_GROK_3_DEEPSEARCH
   | typeof CHAT_MODEL_NAME_O1
   | typeof CHAT_MODEL_NAME_O1_MINI
   | typeof CHAT_MODEL_NAME_O3_MINI;
@@ -38,7 +44,7 @@ export interface IChatModel {
 }
 
 export interface IChatModelGroup {
-  name: 'chatgpt' | 'deepseek';
+  name: 'chatgpt' | 'deepseek' | 'grok';
   icon: string;
   getDisplayName: () => string;
   getDescription: () => string;
