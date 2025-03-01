@@ -1,7 +1,4 @@
 {
   "version": 2,
-  "routes": [{ "handle": "filesystem" }, { "src": "/(.*)", "dest": "/index.html" }],
-  "engines": {
-    "node": "18.x"
-  }
+  "routes": [{ "handle": "filesystem" }, { "src": "/(.*)", "dest": "/index.html" }]
 }
