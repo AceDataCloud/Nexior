@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Wed, 26 Feb 2025 17:26:59 GMT and should not be manually modified.
+This log was last generated on Sat, 01 Mar 2025 18:29:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.17.1
+
+Sat, 01 Mar 2025 18:29:40 GMT
+
+### Patches
+
+- update and fix translate of chat (office@acedata.cloud)
 
 ## 2.17.0
 
