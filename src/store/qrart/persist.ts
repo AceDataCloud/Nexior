@@ -1,1 +1,1 @@
-export default ['qrart.config', 'qrart.credential', 'qrart.application'];
+export default ['qrart.config', 'qrart.credential', 'qrart.application', 'qrart.applications'];

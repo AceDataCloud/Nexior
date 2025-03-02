@@ -9,19 +9,36 @@ import {
   IChatdocRepository,
   ICredential,
   IService,
-  Status,
-  IApplicationType
+  Status
 } from '@/models';
-import { chatdocOperator, applicationOperator, serviceOperator } from '@/operators';
+import { chatdocOperator, applicationOperator, serviceOperator, credentialOperator } from '@/operators';
 import { CHATDOC_SERVICE_ID } from '@/constants';
+import { getFinalApplication } from '@/utils';
 
-export const setApplication = async ({ commit }: any, payload: IApplication): Promise<void> => {
-  commit('setApplication', payload);
+export const resetAll = ({ commit }: ActionContext<IChatdocState, IRootState>): void => {
+  commit('resetAll');
 };
 
-export const setCredential = async ({ commit }: any, payload: ICredential): Promise<void> => {
-  console.debug('set credential', payload);
-  commit('setCredential', payload);
+export const setApplication = async ({ commit, dispatch }: any, payload: IApplication): Promise<void> => {
+  console.debug('set application', payload);
+  commit('setApplication', payload);
+  if (!payload) {
+    console.debug('application is null, return');
+    return;
+  }
+  const credential = payload?.credentials?.find((credential) => credential?.host === window.location.origin);
+  if (credential) {
+    console.debug('credential exists, set credential', credential);
+    commit('setCredential', credential);
+  } else {
+    console.debug('credential not exists, start to create credential for application', payload);
+    await dispatch('createCredential');
+  }
+};
+
+export const setApplications = async ({ commit }: any, payload: IApplication[]): Promise<void> => {
+  console.debug('set applications', payload);
+  commit('setApplications', payload);
 };
 
 export const setService = async ({ commit }: any, payload: IService): Promise<void> => {
@@ -29,61 +46,76 @@ export const setService = async ({ commit }: any, payload: IService): Promise<vo
   commit('setService', payload);
 };
 
-export const setRepository = async ({ commit }: any, payload: { repository: IChatdocRepository }): Promise<void> => {
-  commit('setRepository', payload);
+export const setCredential = async ({ commit }: any, payload: ICredential): Promise<void> => {
+  console.debug('set credential', payload);
+  commit('setCredential', payload);
+};
+
+export const createCredential = async ({ commit, state }: any): Promise<ICredential | undefined> => {
+  const application = state.application;
+  console.debug('prepare to create credential for application', application);
+  if (!application) {
+    console.error('Application not found');
+    return undefined;
+  }
+  console.debug('creating create credential for application', application);
+  const { data: credential } = await credentialOperator.create({
+    application_id: application?.id,
+    host: window.location.origin
+  });
+  console.debug('created credential success', credential);
+  commit('setCredential', credential);
+  console.debug('end createCredential');
+  return credential;
+};
+
+export const getService = async ({
+  commit,
+  state
+}: ActionContext<IChatdocState, IRootState>): Promise<IService | undefined> => {
+  state.status.getService = Status.Request;
+  try {
+    const { data: service } = await serviceOperator.get(CHATDOC_SERVICE_ID);
+    state.status.getService = Status.Success;
+    commit('setService', service);
+    return service;
+  } catch (error) {
+    state.status.getService = Status.Error;
+    commit('setService', undefined);
+  }
 };
 
 export const getApplications = async ({
   commit,
   state,
   rootState
-}: ActionContext<IChatdocState, IRootState>): Promise<IApplication[]> => {
-  console.debug('start to get applications for chatdoc');
-  return new Promise((resolve, reject) => {
-    state.status.getApplications = Status.Request;
-    applicationOperator
-      .getAll({
-        user_id: rootState?.user?.id,
-        service_id: CHATDOC_SERVICE_ID
-      })
-      .then((response) => {
-        console.debug('get applications success', response?.data);
-        state.status.getApplications = Status.Success;
-        // check if there is any application with 'Period' type
-        const application = response.data.items?.find((application) => application?.type === IApplicationType.PERIOD);
-        const application2 = response.data.items?.find((application) => application?.type === IApplicationType.USAGE);
-        if (application && application?.remaining_amount) {
-          console.debug('set application with Period', application);
-          commit('setApplication', application);
-          const credential = application?.credentials?.find(
-            (credential) => credential?.host === window.location.origin
-          );
-          console.debug('set credential with Period', application);
-          commit('setCredential', credential);
-        } else if (application2) {
-          console.debug('set application with Usage', application2);
-          commit('setApplication', application2);
-          const credential = application2?.credentials?.find(
-            (credential) => credential?.host === window.location.origin
-          );
-          console.debug('set credential with Usage', application);
-          commit('setCredential', credential);
-        } else {
-          console.debug('set application with null', response.data.items?.[0]);
-          commit('setApplication', response.data.items?.[0]);
-        }
-        resolve(response.data.items);
-        console.debug('save application success', response.data.items[0]);
-      })
-      .catch((error) => {
-        state.status.getApplications = Status.Error;
-        reject(error);
-      });
-  });
-};
-
-export const resetAll = ({ commit }: ActionContext<IChatdocState, IRootState>): void => {
-  commit('resetAll');
+}: ActionContext<IChatdocState, IRootState>): Promise<IApplication[] | undefined> => {
+  console.debug('start to get applications for chat');
+  state.status.getApplications = Status.Request;
+  const currentApplication = state.application;
+  console.debug('current application', currentApplication);
+  try {
+    const { data: applications } = await applicationOperator.getAll({
+      user_id: rootState?.user?.id,
+      service_id: CHATDOC_SERVICE_ID
+    });
+    state.status.getApplications = Status.Success;
+    commit('setApplications', applications.items);
+    const finalApplication = getFinalApplication(applications.items, currentApplication);
+    if (finalApplication) {
+      console.debug('set final application', finalApplication, finalApplication?.type);
+      commit('setApplication', finalApplication);
+    } else {
+      console.debug('set application undefined', undefined);
+      commit('setApplication', undefined);
+    }
+    return applications.items;
+  } catch (error) {
+    console.error('get applications failed', error);
+    state.status.getApplications = Status.Error;
+    commit('setApplications', undefined);
+    commit('setApplication', undefined);
+  }
 };
 
 export const getRepositories = async ({
@@ -150,24 +182,6 @@ export const deleteDocument = async (
   ).data;
   console.debug('delete document success', document);
   return document;
-};
-
-export const getService = async ({ commit, state }: ActionContext<IChatdocState, IRootState>): Promise<IService> => {
-  return new Promise(async (resolve, reject) => {
-    console.debug('start to get service for chatdoc');
-    state.status.getService = Status.Request;
-    serviceOperator
-      .get(CHATDOC_SERVICE_ID)
-      .then((response) => {
-        state.status.getService = Status.Success;
-        commit('setService', response.data);
-        resolve(response.data);
-      })
-      .catch((error) => {
-        state.status.getService = Status.Error;
-        reject(error);
-      });
-  });
 };
 
 export const createRepository = async (
@@ -317,7 +331,12 @@ export const getRepository = async (
   return repository;
 };
 
+export const setRepository = async ({ commit }: any, payload: { repository: IChatdocRepository }): Promise<void> => {
+  commit('setRepository', payload);
+};
+
 export default {
+  createCredential,
   setService,
   setConversation,
   getService,

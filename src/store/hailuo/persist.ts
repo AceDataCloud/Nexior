@@ -1,1 +1,1 @@
-export default ['hailuo.credential', 'hailuo.application'];
+export default ['hailuo.credential', 'hailuo.application', 'hailuo.applications'];

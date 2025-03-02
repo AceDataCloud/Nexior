@@ -1,1 +1,1 @@
-export default ['luma.credential', 'luma.application'];
+export default ['luma.credential', 'luma.application', 'luma.applications'];
