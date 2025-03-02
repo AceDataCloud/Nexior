@@ -1,6 +1,6 @@
 # 利用 Vercel 快速搭建 Nexior AI 平台
 
-[Nexior](https://github.com/AceDataCloud/Nexior) 是 GitHub 上的一个开源项目，利用它我们可以一键部署自己的 AI 应用站点，包括 AI 问答、Midjourney 绘画、知识库问答、艺术二维码等应用，无需自己开发 AI 系统、无需采购 AI 账号、无需关心 API 支持、无需配置支付系统，零启动成本，无风险通过 AI 赚取收益。
+[Nexior](https://github.com/AceDataCloud/Nexior) 是 GitHub 上的一个开源项目，利用它我们可以一键部署自己的 AI 应用站点，包括 AI 聊天、Midjourney 绘画、知识库问答、艺术二维码等应用，无需自己开发 AI 系统、无需采购 AI 账号、无需关心 API 支持、无需配置支付系统，零启动成本，无风险通过 AI 赚取收益。
 
 本文章会介绍 Nexior 项目在 Vercel 上的部署流程，无需任何编程技巧即可几分钟部署一套属于自己的 AI 站点，并轻松利用该站点获取收益。
 

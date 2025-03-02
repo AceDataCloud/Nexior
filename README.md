@@ -2,11 +2,13 @@
 
 <h1 align="center">Nexior</h1>
 
-Deploy your own AI application site in minutes, including applications such as AIChat, Midjourney, QRArt, Suno, etc. No development experience required, no need to purchase AI accounts, no need to worry about API support, and no need to configure payment systems. Zero startup costs, zero risk, earn revenue through AI.
+Deploy your own AI System in minutes, including applications such as AI Chat (ChatGPT, DeepSeek, Grok), AI Image (Midjourney, Flux, QRArt), AI Music (Suno), AI Video (Luma, Pika, Hailuo), etc. No development experience required, no need to purchase AI accounts, no need to worry about API support, and no need to configure payment systems. Zero startup costs, zero risk, earn revenue through AI.
 
-一键部署属于你的 AI 应用站点，包括 AI 问答、Midjourney 绘画、艺术二维码、Suno 音乐等应用，无需任何开发经验、无需采购 AI 账号、无需关心 API 支持、无需配置支付系统。零启动成本，零风险通过 AI 赚取收益。
+一键部署属于你的 AI 应用，包括 AI 聊天 (ChatGPT, DeepSeek, Grok), AI 图片 (Midjourney, Flux, QRArt), AI 音乐 (Suno), AI 视频 (Luma, Pika, Hailuo) 等，无需任何开发经验、无需采购 AI 账号、无需关心 API 支持、无需配置支付系统。零启动成本，零风险通过 AI 赚取收益。
 
 ---
+
+Try Online: [https://hub.acedata.cloud](https://hub.acedata.cloud)
 
 One click to deploy to Vercel：
 
@@ -16,24 +18,18 @@ One click to deploy to Vercel：
 
 ## Features
 
-- An integrated system offering one-stop services including GPT, Midjourney, ChatDoc, QrArt applications, and more.
-- No need to set up GPT, Midjourney service APIs yourself, ready to use out of the box.
-- Supports GPT 3.5/4.0, browsing, vision model, with free trials available.
-- Supports fast, slow, and turbo mode for Midjourney, with free trials.
-- Supports artistic QR code generation and free trials.
-- Supports Suno music generation and free trials.
+- An integrated system offering all-in-one services including AI Chat (ChatGPT, DeepSeek, Grok), AI Image (Midjourney, Flux, QRArt), AI Music (Suno), AI Video (Luma, Pika, Hailuo), etc
+- No need to set up API service by yourself, ready to use out of the box.
+- Supports all capabilities with free trials.
 - Out-of-the-box support for payment and referral systems, enabling profit generation without any additional configuration.
 - Out-of-the-box user system support, allowing for email login and registration without extra configuration.
 - Completely open source and free, under the MIT license, with simple configuration and the ability to deploy directly as your own system.
 
 ---
 
-- 集成 GPT 问答、Midjourney 绘画、文档问答、艺术二维码等一站式服务的系统
-- 无需自行搭建 GPT 问答、Midjourney 服务 API，开箱即用。
-- 支持 GPT 3.5/4.0、联网版、图像版问答，免费体验。
-- 支持 Midjourney 快速、慢速、极速版多通道绘图，免费体验。
-- 支持艺术二维码的自定义生成，免费体验。
-- 支持 Suno 音乐最新模型的生成，免费体验。
+- 集成 AI 聊天 (ChatGPT, DeepSeek, Grok), AI 图片 (Midjourney, Flux, QRArt), AI 音乐 (Suno), AI 视频 (Luma, Pika, Hailuo) 的系统。
+- 无需自行搭建 API 服务，开箱即用。
+- 支持所有功能免费注册体验。
 - 开箱支持支付和分销系统，无需任何额外配置即可赚取收益。
 - 开箱支持用户系统，支持邮箱登录和注册，无需额外配置。
 - 完全开源免费，采用 MIT 协议，配置简单，可直接部署为您自己的系统。
