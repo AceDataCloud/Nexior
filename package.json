@@ -1,7 +1,7 @@
 {
   "name": "@acedatacloud/nexior",
   "version": "2.17.1",
-  "author": "Germey Technology <dev@germey.tech>",
+  "author": "Ace Data Cloud <office@acedata.cloud>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AceDataCloud/Nexior.git"
@@ -11,12 +11,12 @@
   ],
   "scripts": {
     "start": "vite --host",
-    "build": "yarn build:web",
+    "build": "npm run build:web",
     "build:web": "cross-env VITE_SURFACE=web vite build --mode development",
     "build:android": "cross-env VITE_SURFACE=android vite build --mode development",
     "build:ios": "cross-env VITE_SURFACE=ios vite build --mode development",
-    "pack:android": "yarn build:android && npx cap copy android",
-    "pack:ios": "yarn build:ios && npx cap copy ios",
+    "pack:android": "npm run build:android && npx cap copy android",
+    "pack:ios": "npm run build:ios && npx cap copy ios",
     "serve": "vite preview",
     "translate": "transmart",
     "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
@@ -115,5 +115,8 @@
     "url": "https://github.com/AceDataCloud/Nexior/issues"
   },
   "homepage": "https://github.com/AceDataCloud/Nexior#readme",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": "20.x"
+  }
 }
