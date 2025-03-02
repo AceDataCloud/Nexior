@@ -78,6 +78,9 @@ export default defineComponent({
     application() {
       return this.$store.state.luma.application;
     },
+    applications() {
+      return this.$store.state.luma.applications;
+    },
     tasks() {
       return this.$store.state.luma.tasks;
     }

@@ -1,1 +1,1 @@
-export default ['flux.credential', 'flux.application'];
+export default ['flux.credential', 'flux.application', 'flux.applications'];

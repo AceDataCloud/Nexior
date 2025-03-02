@@ -44,7 +44,7 @@ export const setFingerprint = ({ commit }: ActionContext<IRootState, IRootState>
   commit('setFingerprint', payload);
 };
 
-export const getUser = async ({ commit }: ActionContext<IRootState, IRootState>): Promise<IUser> => {
+export const getUser = async ({ commit }: ActionContext<IRootState, IRootState>): Promise<IUser | undefined> => {
   console.debug('start to get user');
   try {
     commit('resetUser');
@@ -54,6 +54,7 @@ export const getUser = async ({ commit }: ActionContext<IRootState, IRootState>)
     return user;
   } catch (error) {
     console.error('get user failed', error);
+    return undefined;
   }
 };
 

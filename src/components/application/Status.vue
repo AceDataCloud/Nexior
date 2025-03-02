@@ -11,7 +11,7 @@
       <el-dropdown @command="onSelectApplication">
         <span class="el-dropdown-link">
           <application-info :application="application" />
-          <el-icon v-if="applications && applications.length > 0" class="el-icon--right">
+          <el-icon v-if="applications && applications.length > 0" class="el-icon--right ml-0">
             <arrow-down />
           </el-icon>
         </span>
@@ -139,16 +139,6 @@ export default defineComponent({
       if (val) {
         this.confirming = val;
       }
-    }
-  },
-  mounted() {
-    // check if the credential is created
-    if (
-      this.application &&
-      !this.application?.credentials?.find((credential) => credential.host === window.location.origin)
-    ) {
-      console.debug('create extra credential');
-      this.onCreateCredential(this.application);
     }
   },
   methods: {

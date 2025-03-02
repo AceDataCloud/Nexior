@@ -1,1 +1,1 @@
-export default ['pika.credential', 'pika.application'];
+export default ['pika.credential', 'pika.application', 'pika.applications'];
