@@ -2,6 +2,9 @@
   <div class="selector">
     <el-dropdown trigger="click" popper-class="popper">
       <div class="flex align-center justify-center">
+        <span class="icon">
+          <img :src="modelGroup.icon" />
+        </span>
         <span class="name">{{ modelGroup?.getDisplayName() }}</span>
         <span class="angle">
           <font-awesome-icon icon="fa-solid fa-angle-down" />
@@ -90,15 +93,23 @@ export default defineComponent({
   }
 }
 
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+  img {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+  }
+}
+
 .item {
   display: flex;
   flex-direction: row;
 
   .icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 10px;
     img {
       width: 30px;
       height: 30px;
