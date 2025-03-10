@@ -9,6 +9,9 @@
     <el-menu-item v-if="site?.features?.hailuo?.enabled" index="/hailuo" @click="$router.push('/hailuo')">
       {{ $t('common.nav.hailuo') }}
     </el-menu-item>
+    <el-menu-item v-if="site?.features?.kling?.enabled" index="/kling" @click="$router.push('/kling')">
+      {{ $t('common.nav.kling') }}
+    </el-menu-item>
   </el-menu>
 </template>
 

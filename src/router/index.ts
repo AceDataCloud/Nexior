@@ -8,6 +8,7 @@ import chatdoc from './chatdoc';
 import qrart from './qrart';
 import luma from './luma';
 import pika from './pika';
+import kling from './kling';
 import flux from './flux';
 import hailuo from './hailuo';
 import headshots from './headshots';
@@ -38,6 +39,7 @@ const routes = [
   qrart,
   luma,
   pika,
+  kling,
   flux,
   hailuo,
   headshots,

@@ -1,0 +1,286 @@
+{
+  "name.taskId": {
+    "message": "任务 ID",
+    "description": "任务的 ID"
+  },
+  "name.type": {
+    "message": "类型",
+    "description": "要生成的 Kling视频的内容类型，如'链接'、'文本'等"
+  },
+  "name.failure": {
+    "message": "失败",
+    "description": "任务的失败状态"
+  },
+  "name.failureReason": {
+    "message": "失败原因",
+    "description": "任务失败的原因"
+  },
+  "name.status": {
+    "message": "状态",
+    "description": "任务的状态"
+  },
+  "name.traceId": {
+    "message": "追踪 ID",
+    "description": "任务的追踪 ID"
+  },
+  "name.createdAt": {
+    "message": "创建时间",
+    "description": "生成 Kling 视频的日期和时间"
+  },
+  "name.cfgScale": {
+    "message": "自由度",
+    "description": "要生成的视频的参考图片"
+  },
+  "name.startImage": {
+    "message": "首帧参考图片",
+    "description": "要生成的视频的参考图片"
+  },
+  "name.negativePrompt": {
+    "message": "负向提示词",
+    "description": "生成视频的负向文本提示"
+  },
+  "name.endImage": {
+    "message": "尾帧参考图片",
+    "description": "要生成的视频的参考图片"
+  },
+  "name.videoUrl": {
+    "message": "自定义视频",
+    "description": "自定义视频"
+  },
+  "name.prompt": {
+    "message": "视频提示",
+    "description": "内容输入的提示"
+  },
+  "name.duration": {
+    "message": "视频时长",
+    "description": "视频的时长"
+  },
+  "name.ingredients": {
+    "message": "多图创建视频",
+    "description": "自定义扩展视频"
+  },
+  "name.model": {
+    "message": "模型版本",
+    "description": "要生成视频所采用的模型版本"
+  },
+  "name.ratio": {
+    "message": "视频比例",
+    "description": "要生成视频所采用的视频比例"
+  },
+  "name.mode": {
+    "message": "视频模式",
+    "description": "要生成视频所采用的模式"
+  },
+  "name.effect": {
+    "message": "视频效果",
+    "description": "风格参数的名称，用于在不同版本或风格的模型之间切换"
+  },
+  "name.ingredientsModel": {
+    "message": "成分模型",
+    "description": "要生成视频所采用的模型版本"
+  },
+  "name.klingBot": {
+    "message": "Kling Bot",
+    "description": "Kling 视频生成器的名称"
+  },
+  "description.ingredients": {
+    "message": "如果您想上传多张图片来生成自己的视频，请打开此按钮。",
+    "description": "参数'ingredients'的描述"
+  },
+  "description.imageUrl": {
+    "message": "在多图创建视频的任务重，它必须上传多张图片。",
+    "description": "参数'imageUrl'的描述"
+  },
+  "description.prompt": {
+    "message": "生成Kling视频的提示词",
+    "description": "参数'prompt'的描述"
+  },
+  "description.negativePrompt": {
+    "message": "负向文本提示，可选，不能超过200个字符",
+    "description": "参数'prompt'的描述"
+  },
+  "description.uploadStartImage": {
+    "message": "上传首帧图像作为生成的参考，最后的视频会参考首帧生成",
+    "description": "上传参考参数的描述"
+  },
+  "description.uploadEndImage": {
+    "message": "上传首帧图像作为生成的参考，最后的视频会参考首帧生成",
+    "description": "上传参考参数的描述"
+  },
+  "description.cfgScale": {
+    "message": "生成视频的自由度，可选[0,1]。值越大，相关性越强，",
+    "description": "上传参考参数的描述"
+  },
+  "status.pending": {
+    "message": "等待中",
+    "description": "任务的等待状态"
+  },
+  "status.processing": {
+    "message": "处理中",
+    "description": "任务的等待状态"
+  },
+  "placeholder.paddingNoise": {
+    "message": "请选择...",
+    "description": "填充噪音输入的占位符"
+  },
+  "placeholder.select": {
+    "message": "选择",
+    "description": "选择字段中的占位文本"
+  },
+  "placeholder.paddingLevel": {
+    "message": "请选择...",
+    "description": "填充级别的占位符"
+  },
+  "placeholder.prompt": {
+    "message": "输入要生成的视频风格的提示词，例如：moving",
+    "description": "提示字段中的占位文本"
+  },
+  "placeholder.negativePrompt": {
+    "message": "输入要生成的视频风格的负向提示词，不超过200字符",
+    "description": "提示字段中的占位文本"
+  },
+  "placeholder.position": {
+    "message": "请选择...",
+    "description": "位置输入的占位符"
+  },
+  "placeholder.aspectRatio": {
+    "message": "请选择...",
+    "description": "宽高比输入的占位符"
+  },
+  "placeholder.preset": {
+    "message": "请选择...",
+    "description": "预设输入的占位符"
+  },
+  "placeholder.markerShape": {
+    "message": "请选择...",
+    "description": "标记形状输入的占位符"
+  },
+  "placeholder.rotate": {
+    "message": "请选择...",
+    "description": "旋转输入的占位符"
+  },
+  "placeholder.subMarker": {
+    "message": "请选择...",
+    "description": "子标记输入的占位符"
+  },
+  "button.precise": {
+    "message": "精确",
+    "description": "生成Kling视频的按钮文本"
+  },
+  "button.creative": {
+    "message": "创意",
+    "description": "生成Kling视频的按钮文本"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "生成Kling视频的按钮文本"
+  },
+  "button.extend": {
+    "message": "扩展视频",
+    "description": "扩展视频按钮文本"
+  },
+  "button.download": {
+    "message": "下载视频",
+    "description": "下载视频按钮文本"
+  },
+  "button.uploadImageUrl": {
+    "message": "上传图片",
+    "description": "上传图片的按钮文本"
+  },
+  "button.uploadVideoUrl": {
+    "message": "上传视频",
+    "description": "上传视频的按钮文本"
+  },
+  "button.uploadReferences": {
+    "message": "上传",
+    "description": "按钮文本，允许用户上传参考"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "最多可上传 1 张图片",
+    "description": "上传的图片数量超过限制时的错误消息"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "成功上传图片",
+    "description": "成功上传图片时的成功消息"
+  },
+  "message.uploadReferencesError": {
+    "message": "上传图片失败，请稍后重试",
+    "description": "图片上传失败时的错误消息"
+  },
+  "message.startingTask": {
+    "message": "正在启动任务...",
+    "description": "绘图任务开始时的消息"
+  },
+  "message.startTaskSuccess": {
+    "message": "成功发起生成任务",
+    "description": "成功启动任务时的成功消息"
+  },
+  "message.startTaskFailed": {
+    "message": "发起任务失败，请联系管理员",
+    "description": "启动绘图任务失败时的错误消息"
+  },
+  "message.usedUp": {
+    "message": "您的积分已用完，请购买更多积分后继续使用",
+    "description": "已用完时的消息"
+  },
+  "message.generating": {
+    "message": "生成中...",
+    "description": "图像正在生成时的消息"
+  },
+  "message.downloadVideo": {
+    "message": "下载此视频",
+    "description": "图像正在生成时的消息"
+  },
+  "message.extendVideo": {
+    "message": "继续生成此视频",
+    "description": "图像正在生成时的消息"
+  },
+  "message.generateFailed": {
+    "message": "生成图像失败",
+    "description": "图像生成失败时的消息"
+  },
+  "message.uploadVideoExceed": {
+    "message": "上传首帧图片数量超过限制",
+    "description": "上传首帧图片数量超过限制时的错误信息"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "上传文件大小不能超过 10MB!",
+    "description": "上传文件大小不能超过 10MB!时的错误信息"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "上传文件必须是 MP4 格式!",
+    "description": "上传文件必须是 MP4 格式!的错误信息"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "上传首帧图片数量超过限制",
+    "description": "上传首帧图片数量超过限制时的错误信息"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "上传尾帧图片数量超过限制",
+    "description": "上传首帧图片数量超过限制时的错误信息"
+  },
+  "message.uploadStartImageError": {
+    "message": "上传首帧图片失败",
+    "description": "上传首帧图片失败时的错误信息"
+  },
+  "message.uploadVideoError": {
+    "message": "上传视频失败",
+    "description": "上传首帧图片失败时的错误信息"
+  },
+  "message.uploadEndImageError": {
+    "message": "上传尾帧图片失败",
+    "description": "上传尾帧图片失败时的错误信息"
+  },
+  "message.uploadDocumentsError": {
+    "message": "上传文档失败",
+    "description": "上传文档失败时的错误信息"
+  },
+  "message.noOperations": {
+    "message": "没有可用操作",
+    "description": "没有可用操作时的消息"
+  },
+  "message.noTasks": {
+    "message": "没有历史任务，请点击左方生成视频",
+    "description": "没有任务时的消息"
+  }
+}
