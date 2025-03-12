@@ -181,6 +181,7 @@
                   'suno',
                   'luma',
                   'pika',
+                  'kling',
                   'flux',
                   'hailuo',
                   'headshots',

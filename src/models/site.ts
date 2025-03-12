@@ -5,6 +5,7 @@ export interface ISiteFeatures {
   qrart?: any;
   luma?: any;
   pika?: any;
+  kling?: any;
   hailuo?: any;
   headshots?: any;
   suno?: any;

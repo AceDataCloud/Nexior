@@ -5,6 +5,7 @@ import { IChatdocState } from '../chatdoc/models';
 import { IQrartState } from '../qrart/models';
 import { ILumaState } from '../luma/models';
 import { IPikaState } from '../pika/models';
+import { IKlingState } from '../kling/models';
 import { IFluxState } from '../flux/models';
 import { IHailuoState } from '../hailuo/models';
 import { IHeadshotsState } from '../headshots/models';
@@ -37,6 +38,7 @@ export interface IRootState extends ICommonState {
   qrart: IQrartState;
   luma: ILumaState;
   pika: IPikaState;
+  kling: IKlingState;
   flux: IFluxState;
   hailuo: IHailuoState;
   headshots: IHeadshotsState;
