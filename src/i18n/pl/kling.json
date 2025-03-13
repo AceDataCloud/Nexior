@@ -1,0 +1,286 @@
+{
+  "name.taskId": {
+    "message": "ID zadania",
+    "description": "ID zadania"
+  },
+  "name.type": {
+    "message": "Typ",
+    "description": "Typ treści Kling wideo do wygenerowania, np. 'link', 'tekst' itp."
+  },
+  "name.failure": {
+    "message": "Niepowodzenie",
+    "description": "Status niepowodzenia zadania"
+  },
+  "name.failureReason": {
+    "message": "Powód niepowodzenia",
+    "description": "Powód niepowodzenia zadania"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Status zadania"
+  },
+  "name.traceId": {
+    "message": "ID śledzenia",
+    "description": "ID śledzenia zadania"
+  },
+  "name.createdAt": {
+    "message": "Data utworzenia",
+    "description": "Data i czas wygenerowania Kling wideo"
+  },
+  "name.cfgScale": {
+    "message": "Skala CFG",
+    "description": "Obraz referencyjny dla wideo do wygenerowania"
+  },
+  "name.startImage": {
+    "message": "Obraz początkowy",
+    "description": "Obraz referencyjny dla wideo do wygenerowania"
+  },
+  "name.negativePrompt": {
+    "message": "Negatywna podpowiedź",
+    "description": "Negatywna tekstowa podpowiedź do wygenerowania wideo"
+  },
+  "name.endImage": {
+    "message": "Obraz końcowy",
+    "description": "Obraz referencyjny dla wideo do wygenerowania"
+  },
+  "name.videoUrl": {
+    "message": "Własne wideo",
+    "description": "Własne wideo"
+  },
+  "name.prompt": {
+    "message": "Podpowiedź wideo",
+    "description": "Podpowiedź dla wprowadzenia treści"
+  },
+  "name.duration": {
+    "message": "Długość wideo",
+    "description": "Długość wideo"
+  },
+  "name.ingredients": {
+    "message": "Tworzenie wideo z wielu obrazów",
+    "description": "Rozszerzenie własnego wideo"
+  },
+  "name.model": {
+    "message": "Wersja modelu",
+    "description": "Wersja modelu używana do wygenerowania wideo"
+  },
+  "name.ratio": {
+    "message": "Proporcje wideo",
+    "description": "Proporcje wideo używane do wygenerowania wideo"
+  },
+  "name.mode": {
+    "message": "Tryb wideo",
+    "description": "Tryb używany do wygenerowania wideo"
+  },
+  "name.effect": {
+    "message": "Efekt wideo",
+    "description": "Nazwa parametru stylu, używana do przełączania między różnymi wersjami lub stylami modelu"
+  },
+  "name.ingredientsModel": {
+    "message": "Model składników",
+    "description": "Wersja modelu używana do wygenerowania wideo"
+  },
+  "name.klingBot": {
+    "message": "Kling Bot",
+    "description": "Nazwa generatora Kling wideo"
+  },
+  "description.ingredients": {
+    "message": "Jeśli chcesz przesłać wiele obrazów, aby wygenerować własne wideo, włącz ten przycisk.",
+    "description": "Opis parametru 'ingredients'"
+  },
+  "description.imageUrl": {
+    "message": "W zadaniu tworzenia wideo z wielu obrazów, musisz przesłać wiele obrazów.",
+    "description": "Opis parametru 'imageUrl'"
+  },
+  "description.prompt": {
+    "message": "Podpowiedź do wygenerowania Kling wideo",
+    "description": "Opis parametru 'prompt'"
+  },
+  "description.negativePrompt": {
+    "message": "Negatywna tekstowa podpowiedź, opcjonalna, nie może przekraczać 200 znaków",
+    "description": "Opis parametru 'prompt'"
+  },
+  "description.uploadStartImage": {
+    "message": "Prześlij obraz początkowy jako referencję do wygenerowania, końcowe wideo będzie odnosić się do obrazu początkowego",
+    "description": "Opis parametru przesyłania referencji"
+  },
+  "description.uploadEndImage": {
+    "message": "Prześlij obraz początkowy jako referencję do wygenerowania, końcowe wideo będzie odnosić się do obrazu początkowego",
+    "description": "Opis parametru przesyłania referencji"
+  },
+  "description.cfgScale": {
+    "message": "Skala CFG dla wygenerowania wideo, opcjonalna [0,1]. Im większa wartość, tym większa korelacja.",
+    "description": "Opis parametru przesyłania referencji"
+  },
+  "status.pending": {
+    "message": "Oczekujące",
+    "description": "Status oczekiwania zadania"
+  },
+  "status.processing": {
+    "message": "Przetwarzanie",
+    "description": "Status oczekiwania zadania"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Proszę wybrać...",
+    "description": "Placeholder dla wprowadzenia szumu wypełniającego"
+  },
+  "placeholder.select": {
+    "message": "Wybierz",
+    "description": "Placeholder tekstu w polu wyboru"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Proszę wybrać...",
+    "description": "Placeholder dla poziomu wypełnienia"
+  },
+  "placeholder.prompt": {
+    "message": "Wprowadź podpowiedź dla stylu wideo do wygenerowania, np.: ruchome",
+    "description": "Placeholder tekstu w polu podpowiedzi"
+  },
+  "placeholder.negativePrompt": {
+    "message": "Wprowadź negatywną podpowiedź dla stylu wideo do wygenerowania, nie więcej niż 200 znaków",
+    "description": "Placeholder tekstu w polu podpowiedzi"
+  },
+  "placeholder.position": {
+    "message": "Proszę wybrać...",
+    "description": "Placeholder dla wprowadzenia pozycji"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Proszę wybrać...",
+    "description": "Placeholder dla wprowadzenia proporcji"
+  },
+  "placeholder.preset": {
+    "message": "Proszę wybrać...",
+    "description": "Placeholder dla wprowadzenia ustawień wstępnych"
+  },
+  "placeholder.markerShape": {
+    "message": "Proszę wybrać...",
+    "description": "Placeholder dla wprowadzenia kształtu znacznika"
+  },
+  "placeholder.rotate": {
+    "message": "Proszę wybrać...",
+    "description": "Placeholder dla wprowadzenia obrotu"
+  },
+  "placeholder.subMarker": {
+    "message": "Proszę wybrać...",
+    "description": "Placeholder dla wprowadzenia podznacznika"
+  },
+  "button.precise": {
+    "message": "Dokładne",
+    "description": "Tekst przycisku do wygenerowania Kling wideo"
+  },
+  "button.creative": {
+    "message": "Kreatywne",
+    "description": "Tekst przycisku do wygenerowania Kling wideo"
+  },
+  "button.generate": {
+    "message": "Generuj",
+    "description": "Tekst przycisku do wygenerowania Kling wideo"
+  },
+  "button.extend": {
+    "message": "Rozszerz wideo",
+    "description": "Tekst przycisku do rozszerzenia wideo"
+  },
+  "button.download": {
+    "message": "Pobierz wideo",
+    "description": "Tekst przycisku do pobrania wideo"
+  },
+  "button.uploadImageUrl": {
+    "message": "Prześlij obraz",
+    "description": "Przycisk do przesyłania obrazu"
+  },
+  "button.uploadVideoUrl": {
+    "message": "Prześlij wideo",
+    "description": "Przycisk do przesyłania wideo"
+  },
+  "button.uploadReferences": {
+    "message": "Prześlij",
+    "description": "Przycisk, który pozwala użytkownikowi przesłać odniesienia"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Można przesłać maksymalnie 1 obraz",
+    "description": "Komunikat o błędzie, gdy liczba przesłanych obrazów przekracza limit"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Obraz przesłany pomyślnie",
+    "description": "Komunikat o sukcesie po pomyślnym przesłaniu obrazu"
+  },
+  "message.uploadReferencesError": {
+    "message": "Nie udało się przesłać obrazu, spróbuj ponownie później",
+    "description": "Komunikat o błędzie, gdy przesyłanie obrazu nie powiodło się"
+  },
+  "message.startingTask": {
+    "message": "Rozpoczynanie zadania...",
+    "description": "Komunikat, gdy rozpoczyna się zadanie rysowania"
+  },
+  "message.startTaskSuccess": {
+    "message": "Pomyślnie rozpoczęto zadanie generowania",
+    "description": "Komunikat o sukcesie po pomyślnym rozpoczęciu zadania"
+  },
+  "message.startTaskFailed": {
+    "message": "Nie udało się rozpocząć zadania, skontaktuj się z administratorem",
+    "description": "Komunikat o błędzie, gdy uruchomienie zadania rysowania nie powiodło się"
+  },
+  "message.usedUp": {
+    "message": "Wykorzystano wszystkie punkty, kup więcej, aby kontynuować",
+    "description": "Komunikat, gdy punkty zostały wykorzystane"
+  },
+  "message.generating": {
+    "message": "Generowanie...",
+    "description": "Komunikat, gdy obraz jest generowany"
+  },
+  "message.downloadVideo": {
+    "message": "Pobierz ten film",
+    "description": "Komunikat, gdy obraz jest generowany"
+  },
+  "message.extendVideo": {
+    "message": "Kontynuuj generowanie tego filmu",
+    "description": "Komunikat, gdy obraz jest generowany"
+  },
+  "message.generateFailed": {
+    "message": "Nie udało się wygenerować obrazu",
+    "description": "Komunikat o błędzie, gdy generowanie obrazu nie powiodło się"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Liczba przesłanych obrazów pierwszej klatki przekracza limit",
+    "description": "Komunikat o błędzie, gdy liczba przesłanych obrazów pierwszej klatki przekracza limit"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Rozmiar przesłanego pliku nie może przekraczać 10MB!",
+    "description": "Komunikat o błędzie, gdy rozmiar przesłanego pliku przekracza 10MB"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Przesłany plik musi być w formacie MP4!",
+    "description": "Komunikat o błędzie, gdy przesłany plik nie jest w formacie MP4"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Liczba przesłanych obrazów pierwszej klatki przekracza limit",
+    "description": "Komunikat o błędzie, gdy liczba przesłanych obrazów pierwszej klatki przekracza limit"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Liczba przesłanych obrazów ostatniej klatki przekracza limit",
+    "description": "Komunikat o błędzie, gdy liczba przesłanych obrazów ostatniej klatki przekracza limit"
+  },
+  "message.uploadStartImageError": {
+    "message": "Nie udało się przesłać obrazu pierwszej klatki",
+    "description": "Komunikat o błędzie, gdy przesyłanie obrazu pierwszej klatki nie powiodło się"
+  },
+  "message.uploadVideoError": {
+    "message": "Nie udało się przesłać wideo",
+    "description": "Komunikat o błędzie, gdy przesyłanie wideo nie powiodło się"
+  },
+  "message.uploadEndImageError": {
+    "message": "Nie udało się przesłać obrazu ostatniej klatki",
+    "description": "Komunikat o błędzie, gdy przesyłanie obrazu ostatniej klatki nie powiodło się"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Nie udało się przesłać dokumentu",
+    "description": "Komunikat o błędzie, gdy przesyłanie dokumentu nie powiodło się"
+  },
+  "message.noOperations": {
+    "message": "Brak dostępnych operacji",
+    "description": "Komunikat, gdy brak dostępnych operacji"
+  },
+  "message.noTasks": {
+    "message": "Brak historii zadań, kliknij po lewej, aby wygenerować wideo",
+    "description": "Komunikat, gdy brak zadań"
+  }
+}

@@ -40,7 +40,7 @@
     "description": "Title displayed in the edit box"
   },
   "field.distributionForceInviterId": {
-    "message": "Force Inviter ID",
+    "message": "Forced Inviter ID",
     "description": "Title displayed in the edit box"
   },
   "field.featuresChat": {
@@ -65,6 +65,10 @@
   },
   "field.featuresPika": {
     "message": "Pika",
+    "description": "Title displayed in the edit box"
+  },
+  "field.featuresKling": {
+    "message": "Kling",
     "description": "Title displayed in the edit box"
   },
   "field.featuresHailuo": {
@@ -104,7 +108,7 @@
     "description": "Title displayed in the edit box"
   },
   "title.featuresConfig": {
-    "message": "Features Configuration",
+    "message": "Feature Configuration",
     "description": "Title displayed in the edit box"
   },
   "title.editTitle": {
@@ -140,7 +144,7 @@
     "description": "Title displayed in the edit box"
   },
   "title.editDistributionForceInviterId": {
-    "message": "Edit Force Inviter",
+    "message": "Edit Forced Inviter",
     "description": "Title displayed in the edit box"
   },
   "title.editQR": {
@@ -152,72 +156,72 @@
     "description": "Title displayed in the edit box"
   },
   "placeholder.title": {
-    "message": "Please enter site title",
+    "message": "Please enter the site title",
     "description": "Title displayed in the edit box"
   },
   "placeholder.origin": {
-    "message": "Please enter site domain",
+    "message": "Please enter the site domain",
     "description": "Title displayed in the edit box"
   },
   "placeholder.editUrl": {
-    "message": "Please enter link",
+    "message": "Please enter the link",
     "description": "Title displayed in the edit box"
   },
   "placeholder.description": {
-    "message": "Please enter site description",
+    "message": "Please enter the site description",
     "description": "Title displayed in the edit box"
   },
   "placeholder.keywords": {
-    "message": "Please enter site keywords",
+    "message": "Please enter the site keywords",
     "description": "Title displayed in the edit box"
   },
   "placeholder.editDistributionDefaultInviterId": {
-    "message": "Please enter default inviter ID",
+    "message": "Please enter the default inviter ID",
     "description": "Title displayed in the edit box"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "Please enter force inviter ID",
+    "message": "Please enter the forced inviter ID",
     "description": "Title displayed in the edit box"
   },
   "message.uploadImageExceed": {
-    "message": "Uploaded image exceeds limit",
-    "description": "Notification when uploaded image exceeds limit"
+    "message": "Uploaded image exceeds the limit",
+    "description": "Prompt when uploaded image exceeds the limit"
   },
   "message.uploadImageError": {
-    "message": "Upload image error",
-    "description": "Notification for errors during image upload"
+    "message": "Upload Image Error",
+    "description": "Error message when uploading an image"
   },
   "message.editLogoTip": {
     "message": "Recommended size: 200*60px",
-    "description": "Tip for uploading images"
+    "description": "Tip for uploading an image"
   },
   "message.editQRTip": {
     "message": "Recommended size: 200*200px",
-    "description": "Tip for uploading images"
+    "description": "Tip for uploading an image"
   },
   "message.editFaviconTip": {
     "message": "Recommended size: 32*32px",
-    "description": "Tip for uploading images"
+    "description": "Tip for uploading an image"
   },
   "message.editUrl": {
-    "message": "Please enter a URL",
-    "description": "Prompt to enter a URL"
+    "message": "Please enter the link",
+    "description": "Prompt for entering a link"
   },
   "message.atLeastOneAdmin": {
-    "message": "Keep at least one admin",
-    "description": "Prompt to keep at least one admin"
+    "message": "At least one admin must remain",
+    "description": "Message to ensure at least one admin remains"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "Default inviter's user ID. If the distribution link does not carry the inviter_id parameter, the default user ID is used as the inviter.",
+    "message": "Default inviter's user ID, if the distribution link does not carry the inviter_id parameter, the user ID will be used as the inviter by default.",
     "description": "Tip for default inviter ID"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "Forced inviter's user ID. If this ID is set, it is used as the inviter regardless of the presence of the inviter_id parameter in the distribution link.",
+    "message": "Forced inviter's user ID, if this ID is set, regardless of whether the distribution link carries the inviter_id parameter, the user ID will be forced as the inviter.",
     "description": "Tip for forced inviter ID"
   },
   "message.originTip": {
-    "message": "Site domain name, bound to site configuration. Cannot be changed.",
-    "description": "Tip for site domain name"
+    "message": "Site domain, site configuration is bound to the domain, and the site domain cannot be changed.",
+    "description": "Tip for site domain"
   },
   "message.titleTip": {
     "message": "Site title, displayed in the browser tab.",
@@ -228,7 +232,7 @@
     "description": "Tip for site description"
   },
   "message.logoTip": {
-    "message": "Site logo, displayed at the top of the site menu when the menu bar is expanded.",
+    "message": "Site logo, displayed at the top of the site menu when the menu is expanded.",
     "description": "Tip for site logo"
   },
   "message.faviconTip": {
@@ -236,11 +240,11 @@
     "description": "Tip for site favicon"
   },
   "message.adminsTip": {
-    "message": "Site admin ID. The user who creates the site initially becomes the admin by default. Only site admins can manage the site.",
+    "message": "Site admin ID, by default, the user who first creates the site will become the admin. Only site admins can manage the site.",
     "description": "Tip for site admin"
   },
   "message.adminsTip2": {
-    "message": "Admins can be added or removed here. Visit https://auth.acedata.cloud for user ID.",
+    "message": "Admin IDs can be added or removed here, user IDs can be viewed at https://auth.acedata.cloud",
     "description": "Tip for site admin"
   },
   "message.keywordsTip": {
@@ -248,67 +252,71 @@
     "description": "Tip for site keywords"
   },
   "message.keywordsTip2": {
-    "message": "Keywords can be added or removed here. More precise keywords are better for SEO optimization.",
+    "message": "Site keywords can be added or removed here. The more precise the keywords, the better for SEO optimization.",
     "description": "Tip for site keywords"
   },
   "message.featuresChat": {
-    "message": "Enable or disable the Chat feature module.",
-    "description": "Description for Chat feature"
+    "message": "Turn Chat feature module on or off.",
+    "description": "Description of the Chat feature"
   },
   "message.featuresMidjourney": {
-    "message": "Enable or disable the Midjourney feature module.",
-    "description": "Description for Midjourney feature"
+    "message": "Turn Midjourney feature module on or off.",
+    "description": "Description of the Midjourney feature"
   },
   "message.featuresChatdoc": {
-    "message": "Enable or disable the Chatdoc feature module.",
-    "description": "Description for Chatdoc feature"
+    "message": "Turn Chatdoc feature module on or off.",
+    "description": "Description of the Chatdoc feature"
   },
   "message.featuresQrart": {
-    "message": "Enable or disable the Qrart feature module.",
-    "description": "Description for Qrart feature"
+    "message": "Turn Qrart feature module on or off.",
+    "description": "Description of the Qrart feature"
   },
   "message.featuresSuno": {
-    "message": "Enable or disable the Suno feature module.",
-    "description": "Description for Suno feature"
+    "message": "Turn Suno feature module on or off.",
+    "description": "Description of the Suno feature"
   },
   "message.featuresFlux": {
-    "message": "Enable or disable the FLux feature module.",
-    "description": "Description for FLux feature"
+    "message": "Turn Flux feature module on or off.",
+    "description": "Description of the Flux feature"
   },
   "message.featuresLuma": {
-    "message": "Enable or disable the Luma feature module.",
-    "description": "Description for Luma feature"
+    "message": "Turn Luma feature module on or off.",
+    "description": "Description of the Luma feature"
   },
   "message.featuresPika": {
-    "message": "Enable or disable the Pika feature module.",
-    "description": "Description for Pika feature"
+    "message": "Turn Pika feature module on or off.",
+    "description": "Description of the Pika feature"
+  },
+  "message.featuresKling": {
+    "message": "Turn Kling feature module on or off.",
+    "description": "Description of the Kling feature"
   },
   "message.featuresHailuo": {
-    "message": "Enable or disable the Hailuo feature module.",
-    "description": "Description for Hailuo feature"
+    "message": "Turn Hailuo feature module on or off.",
+    "description": "Description of the Hailuo feature"
   },
   "message.featuresHeadshots": {
-    "message": "Enable or disable the AI Headshot feature module.",
-    "description": "Description for AI Headshot feature"
+    "message": "Turn AI ID Photo feature module on or off.",
+    "description": "Description of the AI ID Photo feature"
   },
   "message.featuresSupport": {
-    "message": "Enable or disable customer support.",
-    "description": "Description for support feature"
+    "message": "Turn customer support on or off.",
+    "description": "Description of the Support feature"
   },
   "message.featuresI18n": {
-    "message": "Enable or disable multilingual support. If disabled, users can only use the default language.",
-    "description": "Description for multilingual support"
+    "message": "Turn multilingual support on or off. When turned off, users can only use the default language.",
+    "description": "Description of the multilingual support feature"
   },
   "button.upload": {
     "message": "Upload",
-    "description": "Upload"
+    "description": "Upload button"
   },
   "button.enabled": {
     "message": "Enabled",
-    "description": "Switch text indicating enabled"
+    "description": "Toggle text indicating that the feature is enabled"
   },
   "button.disabled": {
     "message": "Disabled",
-    "description": "Switch text indicating disabled"
+    "description": "Toggle text indicating that the feature is disabled"
   }
 }

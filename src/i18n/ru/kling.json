@@ -1,0 +1,286 @@
+{
+  "name.taskId": {
+    "message": "ID задачи",
+    "description": "ID задачи"
+  },
+  "name.type": {
+    "message": "Тип",
+    "description": "Тип контента Kling видео, например, 'ссылка', 'текст' и т.д."
+  },
+  "name.failure": {
+    "message": "Неудача",
+    "description": "Статус неудачи задачи"
+  },
+  "name.failureReason": {
+    "message": "Причина неудачи",
+    "description": "Причина неудачи задачи"
+  },
+  "name.status": {
+    "message": "Статус",
+    "description": "Статус задачи"
+  },
+  "name.traceId": {
+    "message": "ID отслеживания",
+    "description": "ID отслеживания задачи"
+  },
+  "name.createdAt": {
+    "message": "Время создания",
+    "description": "Дата и время создания Kling видео"
+  },
+  "name.cfgScale": {
+    "message": "Степень свободы",
+    "description": "Справочное изображение для создаваемого видео"
+  },
+  "name.startImage": {
+    "message": "Референсное изображение начального кадра",
+    "description": "Справочное изображение для создаваемого видео"
+  },
+  "name.negativePrompt": {
+    "message": "Отрицательная подсказка",
+    "description": "Отрицательная текстовая подсказка для создания видео"
+  },
+  "name.endImage": {
+    "message": "Референсное изображение конечного кадра",
+    "description": "Справочное изображение для создаваемого видео"
+  },
+  "name.videoUrl": {
+    "message": "Пользовательское видео",
+    "description": "Пользовательское видео"
+  },
+  "name.prompt": {
+    "message": "Подсказка для видео",
+    "description": "Подсказка для ввода контента"
+  },
+  "name.duration": {
+    "message": "Длительность видео",
+    "description": "Длительность видео"
+  },
+  "name.ingredients": {
+    "message": "Создание видео из нескольких изображений",
+    "description": "Пользовательское расширение видео"
+  },
+  "name.model": {
+    "message": "Версия модели",
+    "description": "Версия модели, используемая для создания видео"
+  },
+  "name.ratio": {
+    "message": "Соотношение видео",
+    "description": "Соотношение видео, используемое для создания видео"
+  },
+  "name.mode": {
+    "message": "Режим видео",
+    "description": "Режим, используемый для создания видео"
+  },
+  "name.effect": {
+    "message": "Эффект видео",
+    "description": "Название параметра стиля для переключения между различными версиями или стилями модели"
+  },
+  "name.ingredientsModel": {
+    "message": "Модель ингредиентов",
+    "description": "Версия модели, используемая для создания видео"
+  },
+  "name.klingBot": {
+    "message": "Kling Bot",
+    "description": "Название генератора Kling видео"
+  },
+  "description.ingredients": {
+    "message": "Если вы хотите загрузить несколько изображений для создания собственного видео, включите эту кнопку.",
+    "description": "Описание параметра 'ingredients'"
+  },
+  "description.imageUrl": {
+    "message": "В задаче создания видео из нескольких изображений необходимо загрузить несколько изображений.",
+    "description": "Описание параметра 'imageUrl'"
+  },
+  "description.prompt": {
+    "message": "Подсказка для создания Kling видео",
+    "description": "Описание параметра 'prompt'"
+  },
+  "description.negativePrompt": {
+    "message": "Отрицательная текстовая подсказка, необязательно, не более 200 символов",
+    "description": "Описание параметра 'prompt'"
+  },
+  "description.uploadStartImage": {
+    "message": "Загрузите изображение начального кадра в качестве справочного для создания, итоговое видео будет ссылаться на начальный кадр",
+    "description": "Описание параметра загрузки справочного"
+  },
+  "description.uploadEndImage": {
+    "message": "Загрузите изображение начального кадра в качестве справочного для создания, итоговое видео будет ссылаться на начальный кадр",
+    "description": "Описание параметра загрузки справочного"
+  },
+  "description.cfgScale": {
+    "message": "Степень свободы для создания видео, опционально [0,1]. Чем больше значение, тем сильнее корреляция.",
+    "description": "Описание параметра загрузки справочного"
+  },
+  "status.pending": {
+    "message": "В ожидании",
+    "description": "Статус ожидания задачи"
+  },
+  "status.processing": {
+    "message": "В обработке",
+    "description": "Статус ожидания задачи"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода шума заполнения"
+  },
+  "placeholder.select": {
+    "message": "Выбрать",
+    "description": "Заполнитель в поле выбора"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для уровня заполнения"
+  },
+  "placeholder.prompt": {
+    "message": "Введите подсказку для стиля создаваемого видео, например: moving",
+    "description": "Заполнитель в поле подсказки"
+  },
+  "placeholder.negativePrompt": {
+    "message": "Введите отрицательную подсказку для стиля создаваемого видео, не более 200 символов",
+    "description": "Заполнитель в поле подсказки"
+  },
+  "placeholder.position": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода позиции"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода соотношения сторон"
+  },
+  "placeholder.preset": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода пресета"
+  },
+  "placeholder.markerShape": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода формы маркера"
+  },
+  "placeholder.rotate": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода вращения"
+  },
+  "placeholder.subMarker": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода подмаркера"
+  },
+  "button.precise": {
+    "message": "Точный",
+    "description": "Текст кнопки для создания Kling видео"
+  },
+  "button.creative": {
+    "message": "Креативный",
+    "description": "Текст кнопки для создания Kling видео"
+  },
+  "button.generate": {
+    "message": "Создать",
+    "description": "Текст кнопки для создания Kling видео"
+  },
+  "button.extend": {
+    "message": "Расширить видео",
+    "description": "Текст кнопки для расширения видео"
+  },
+  "button.download": {
+    "message": "Скачать видео",
+    "description": "Текст кнопки для скачивания видео"
+  },
+  "button.uploadImageUrl": {
+    "message": "Загрузить изображение",
+    "description": "Текст кнопки для загрузки изображения"
+  },
+  "button.uploadVideoUrl": {
+    "message": "Загрузить видео",
+    "description": "Текст кнопки для загрузки видео"
+  },
+  "button.uploadReferences": {
+    "message": "Загрузить",
+    "description": "Текст кнопки, позволяющий пользователю загружать ссылки"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Можно загрузить не более 1 изображения",
+    "description": "Сообщение об ошибке при превышении лимита количества изображений для загрузки"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Изображение успешно загружено",
+    "description": "Сообщение об успешной загрузке изображения"
+  },
+  "message.uploadReferencesError": {
+    "message": "Не удалось загрузить изображение, попробуйте позже",
+    "description": "Сообщение об ошибке при неудачной загрузке изображения"
+  },
+  "message.startingTask": {
+    "message": "Запуск задачи...",
+    "description": "Сообщение при начале задачи создания изображения"
+  },
+  "message.startTaskSuccess": {
+    "message": "Задача успешно инициирована",
+    "description": "Сообщение об успешном запуске задачи"
+  },
+  "message.startTaskFailed": {
+    "message": "Не удалось инициировать задачу, обратитесь к администратору",
+    "description": "Сообщение об ошибке при неудачном запуске задачи создания изображения"
+  },
+  "message.usedUp": {
+    "message": "Ваши баллы израсходованы, пожалуйста, приобретите дополнительные баллы для продолжения использования",
+    "description": "Сообщение о том, что баллы исчерпаны"
+  },
+  "message.generating": {
+    "message": "Создание...",
+    "description": "Сообщение, отображаемое во время создания изображения"
+  },
+  "message.downloadVideo": {
+    "message": "Скачать это видео",
+    "description": "Сообщение, отображаемое во время создания изображения"
+  },
+  "message.extendVideo": {
+    "message": "Продолжить создание этого видео",
+    "description": "Сообщение, отображаемое во время создания изображения"
+  },
+  "message.generateFailed": {
+    "message": "Не удалось создать изображение",
+    "description": "Сообщение об ошибке при неудачном создании изображения"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Количество загружаемых первых кадров превышает ограничение",
+    "description": "Сообщение об ошибке при превышении лимита загружаемых первых кадров"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Размер загружаемого файла не должен превышать 10MB!",
+    "description": "Сообщение об ошибке при превышении размера загружаемого файла"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Загружаемый файл должен быть в формате MP4!",
+    "description": "Сообщение об ошибке, если загружаемый файл не в формате MP4"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Количество загружаемых первых кадров превышает ограничение",
+    "description": "Сообщение об ошибке при превышении лимита загружаемых первых кадров"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Количество загружаемых последних кадров превышает ограничение",
+    "description": "Сообщение об ошибке при превышении лимита загружаемых последних кадров"
+  },
+  "message.uploadStartImageError": {
+    "message": "Не удалось загрузить первый кадр",
+    "description": "Сообщение об ошибке при неудачной загрузке первого кадра"
+  },
+  "message.uploadVideoError": {
+    "message": "Не удалось загрузить видео",
+    "description": "Сообщение об ошибке при неудачной загрузке первого кадра"
+  },
+  "message.uploadEndImageError": {
+    "message": "Не удалось загрузить последний кадр",
+    "description": "Сообщение об ошибке при неудачной загрузке последнего кадра"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Не удалось загрузить документы",
+    "description": "Сообщение об ошибке при неудачной загрузке документов"
+  },
+  "message.noOperations": {
+    "message": "Нет доступных операций",
+    "description": "Сообщение о том, что нет доступных операций"
+  },
+  "message.noTasks": {
+    "message": "Нет исторических задач, нажмите слева, чтобы создать видео",
+    "description": "Сообщение о том, что нет задач"
+  }
+}
