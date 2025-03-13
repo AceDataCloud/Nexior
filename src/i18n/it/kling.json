@@ -1,0 +1,190 @@
+{
+  "name.taskId": {
+    "message": "ID attività",
+    "description": "ID dell'attività"
+  },
+  "name.type": {
+    "message": "Tipo",
+    "description": "Tipo di contenuto del video Kling da generare, come 'link', 'testo', ecc."
+  },
+  "name.failure": {
+    "message": "Fallito",
+    "description": "Stato di fallimento dell'attività"
+  },
+  "name.failureReason": {
+    "message": "Motivo del fallimento",
+    "description": "Motivo per cui l'attività è fallita"
+  },
+  "name.status": {
+    "message": "Stato",
+    "description": "Stato dell'attività"
+  },
+  "name.traceId": {
+    "message": "ID di tracciamento",
+    "description": "ID di tracciamento dell'attività"
+  },
+  "name.createdAt": {
+    "message": "Data di creazione",
+    "description": "Data e ora di creazione del video Kling"
+  },
+  "name.cfgScale": {
+    "message": "Libertà",
+    "description": "Immagine di riferimento per il video da generare"
+  },
+  "name.startImage": {
+    "message": "Immagine di riferimento iniziale",
+    "description": "Immagine di riferimento per il video da generare"
+  },
+  "name.negativePrompt": {
+    "message": "Prompt negativo",
+    "description": "Testo del prompt negativo per generare il video"
+  },
+  "name.endImage": {
+    "message": "Immagine di riferimento finale",
+    "description": "Immagine di riferimento per il video da generare"
+  },
+  "name.videoUrl": {
+    "message": "Video personalizzato",
+    "description": "Video personalizzato"
+  },
+  "name.prompt": {
+    "message": "Prompt video",
+    "description": "Prompt per il contenuto da inserire"
+  },
+  "name.duration": {
+    "message": "Durata del video",
+    "description": "Durata del video"
+  },
+  "name.ingredients": {
+    "message": "Creazione video con più immagini",
+    "description": "Video personalizzato esteso"
+  },
+  "name.model": {
+    "message": "Versione del modello",
+    "description": "Versione del modello utilizzata per generare il video"
+  },
+  "name.ratio": {
+    "message": "Rapporto del video",
+    "description": "Rapporto video utilizzato per generare il video"
+  },
+  "name.mode": {
+    "message": "Modalità video",
+    "description": "Modalità utilizzata per generare il video"
+  },
+  "name.effect": {
+    "message": "Effetto video",
+    "description": "Nome del parametro di stile utilizzato per passare tra modelli o stili diversi"
+  },
+  "name.ingredientsModel": {
+    "message": "Modello degli ingredienti",
+    "description": "Versione del modello utilizzata per generare il video"
+  },
+  "name.klingBot": {
+    "message": "Kling Bot",
+    "description": "Nome del generatore di video Kling"
+  },
+  "description.ingredients": {
+    "message": "Se desideri caricare più immagini per creare il tuo video, attiva questa opzione.",
+    "description": "Descrizione del parametro 'ingredients'"
+  },
+  "description.imageUrl": {
+    "message": "Nel compito di creazione video con più immagini, devi caricare più immagini.",
+    "description": "Descrizione del parametro 'imageUrl'"
+  },
+  "description.prompt": {
+    "message": "Parole chiave del prompt per generare il video Kling",
+    "description": "Descrizione del parametro 'prompt'"
+  },
+  "description.negativePrompt": {
+    "message": "Testo del prompt negativo, opzionale, non deve superare i 200 caratteri",
+    "description": "Descrizione del parametro 'negativePrompt'"
+  },
+  "description.uploadStartImage": {
+    "message": "Carica un'immagine iniziale come riferimento per la generazione, il video finale si baserà sull'immagine iniziale",
+    "description": "Descrizione del parametro di caricamento dell'immagine di riferimento"
+  },
+  "description.uploadEndImage": {
+    "message": "Carica un'immagine finale come riferimento per la generazione, il video finale si baserà sull'immagine finale",
+    "description": "Descrizione del parametro di caricamento dell'immagine di riferimento"
+  },
+  "description.cfgScale": {
+    "message": "Libertà nella generazione del video, opzionale [0,1]. Maggiore è il valore, più forte è la correlazione.",
+    "description": "Descrizione del parametro di caricamento dell'immagine di riferimento"
+  },
+  "status.pending": {
+    "message": "In attesa",
+    "description": "Stato di attesa dell'attività"
+  },
+  "status.processing": {
+    "message": "In elaborazione",
+    "description": "Stato di elaborazione dell'attività"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Seleziona...",
+    "description": "Segnaposto per l'input di rumore di riempimento"
+  },
+  "placeholder.select": {
+    "message": "Seleziona",
+    "description": "Segnaposto per il testo nel campo di selezione"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Seleziona...",
+    "description": "Segnaposto per il livello di riempimento"
+  },
+  "placeholder.prompt": {
+    "message": "Inserisci il prompt per il tipo di video da generare, ad esempio: moving",
+    "description": "Segnaposto per il testo nel campo di prompt"
+  },
+  "placeholder.negativePrompt": {
+    "message": "Inserisci il prompt negativo per il tipo di video da generare, massimo 200 caratteri",
+    "description": "Segnaposto per il testo nel campo di prompt negativo"
+  },
+  "placeholder.position": {
+    "message": "Seleziona...",
+    "description": "Segnaposto per l'input della posizione"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Seleziona...",
+    "description": "Segnaposto per l'input del rapporto di aspetto"
+  },
+  "placeholder.preset": {
+    "message": "Seleziona...",
+    "description": "Segnaposto per l'input delle impostazioni predefinite"
+  },
+  "placeholder.markerShape": {
+    "message": "Seleziona...",
+    "description": "Segnaposto per l'input della forma del marcatore"
+  },
+  "placeholder.rotate": {
+    "message": "Seleziona...",
+    "description": "Segnaposto per l'input di rotazione"
+  },
+  "placeholder.subMarker": {
+    "message": "Seleziona...",
+    "description": "Segnaposto per l'input del sottosegnale"
+  },
+  "button.precise": {
+    "message": "Preciso",
+    "description": "Testo del pulsante per generare il video Kling"
+  },
+  "button.creative": {
+    "message": "Creativo",
+    "description": "Testo del pulsante per generare il video Kling"
+  },
+  "button.generate": {
+    "message": "Genera",
+    "description": "Testo del pulsante per generare il video Kling"
+  },
+  "button.extend": {
+    "message": "Estendi video",
+    "description": "Testo del pulsante per estendere il video"
+  },
+  "button.download": {
+    "message": "Scarica video",
+    "description": "Testo del pulsante per scaricare il video"
+  },
+  "button.uploadImageUrl": {
+    "message": "Carica immagine",
+    "description": "Testo del pulsante per caricare un'immagine"
+  }
+}

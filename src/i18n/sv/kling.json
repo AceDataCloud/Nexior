@@ -1,0 +1,286 @@
+{
+  "name.taskId": {
+    "message": "Uppgifts-ID",
+    "description": "Uppgiftens ID"
+  },
+  "name.type": {
+    "message": "Typ",
+    "description": "Typ av innehåll för Kling-videon som ska genereras, såsom 'länk', 'text' etc."
+  },
+  "name.failure": {
+    "message": "Misslyckande",
+    "description": "Uppgiftens misslyckandestatus"
+  },
+  "name.failureReason": {
+    "message": "Orsak till misslyckande",
+    "description": "Anledningen till att uppgiften misslyckades"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Uppgiftens status"
+  },
+  "name.traceId": {
+    "message": "Spårnings-ID",
+    "description": "Uppgiftens spårnings-ID"
+  },
+  "name.createdAt": {
+    "message": "Skapad tid",
+    "description": "Datum och tid för när Kling-videon genererades"
+  },
+  "name.cfgScale": {
+    "message": "Frihetsgrad",
+    "description": "Referensbild för videon som ska genereras"
+  },
+  "name.startImage": {
+    "message": "Startbild",
+    "description": "Referensbild för videon som ska genereras"
+  },
+  "name.negativePrompt": {
+    "message": "Negativ prompt",
+    "description": "Negativ textprompt för att generera videon"
+  },
+  "name.endImage": {
+    "message": "Slutbild",
+    "description": "Referensbild för videon som ska genereras"
+  },
+  "name.videoUrl": {
+    "message": "Anpassad video",
+    "description": "Anpassad video"
+  },
+  "name.prompt": {
+    "message": "Videoprompt",
+    "description": "Prompt för innehållsinmatning"
+  },
+  "name.duration": {
+    "message": "Videolängd",
+    "description": "Längden på videon"
+  },
+  "name.ingredients": {
+    "message": "Flera bilder skapar video",
+    "description": "Anpassad utökad video"
+  },
+  "name.model": {
+    "message": "Modellversion",
+    "description": "Modellversion som används för att generera videon"
+  },
+  "name.ratio": {
+    "message": "Videoförhållande",
+    "description": "Videoförhållande som används för att generera videon"
+  },
+  "name.mode": {
+    "message": "Videoläge",
+    "description": "Läge som används för att generera videon"
+  },
+  "name.effect": {
+    "message": "Videoeffekt",
+    "description": "Namn på stilparametern för att växla mellan olika versioner eller stilar av modellen"
+  },
+  "name.ingredientsModel": {
+    "message": "Ingrediensmodell",
+    "description": "Modellversion som används för att generera videon"
+  },
+  "name.klingBot": {
+    "message": "Kling Bot",
+    "description": "Namn på Kling-videogeneratorn"
+  },
+  "description.ingredients": {
+    "message": "Om du vill ladda upp flera bilder för att skapa din egen video, aktivera den här knappen.",
+    "description": "Beskrivning av parametern 'ingredients'"
+  },
+  "description.imageUrl": {
+    "message": "I uppgiften för att skapa video med flera bilder måste flera bilder laddas upp.",
+    "description": "Beskrivning av parametern 'imageUrl'"
+  },
+  "description.prompt": {
+    "message": "Prompt för att generera Kling-video",
+    "description": "Beskrivning av parametern 'prompt'"
+  },
+  "description.negativePrompt": {
+    "message": "Negativ textprompt, valfri, får inte överstiga 200 tecken",
+    "description": "Beskrivning av parametern 'prompt'"
+  },
+  "description.uploadStartImage": {
+    "message": "Ladda upp startbild som referens för generering, den slutliga videon kommer att referera till startbilden",
+    "description": "Beskrivning av referensuppladdningsparametern"
+  },
+  "description.uploadEndImage": {
+    "message": "Ladda upp startbild som referens för generering, den slutliga videon kommer att referera till startbilden",
+    "description": "Beskrivning av referensuppladdningsparametern"
+  },
+  "description.cfgScale": {
+    "message": "Frihetsgrad för att generera video, valfri [0,1]. Ju större värde, desto starkare korrelation.",
+    "description": "Beskrivning av referensuppladdningsparametern"
+  },
+  "status.pending": {
+    "message": "Väntar",
+    "description": "Uppgiftens väntestatus"
+  },
+  "status.processing": {
+    "message": "Bearbetar",
+    "description": "Uppgiftens väntestatus"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för fyllnadsbrus"
+  },
+  "placeholder.select": {
+    "message": "Välj",
+    "description": "Platshållartext i valfältet"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för fyllnadsnivå"
+  },
+  "placeholder.prompt": {
+    "message": "Ange prompt för videostil som ska genereras, t.ex.: moving",
+    "description": "Platshållartext i promptfältet"
+  },
+  "placeholder.negativePrompt": {
+    "message": "Ange negativ prompt för videostil som ska genereras, inte mer än 200 tecken",
+    "description": "Platshållartext i promptfältet"
+  },
+  "placeholder.position": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för positionsinmatning"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för bildförhållande"
+  },
+  "placeholder.preset": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för förinställning"
+  },
+  "placeholder.markerShape": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för markörform"
+  },
+  "placeholder.rotate": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för rotation"
+  },
+  "placeholder.subMarker": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för undermarkör"
+  },
+  "button.precise": {
+    "message": "Exakt",
+    "description": "Knapptext för att generera Kling-video"
+  },
+  "button.creative": {
+    "message": "Kreativ",
+    "description": "Knapptext för att generera Kling-video"
+  },
+  "button.generate": {
+    "message": "Generera",
+    "description": "Knapptext för att generera Kling-video"
+  },
+  "button.extend": {
+    "message": "Utöka video",
+    "description": "Knapptext för att utöka video"
+  },
+  "button.download": {
+    "message": "Ladda ner video",
+    "description": "Knapptext för att ladda ner video"
+  },
+  "button.uploadImageUrl": {
+    "message": "Ladda upp bild",
+    "description": "Knapptext för att ladda upp bild"
+  },
+  "button.uploadVideoUrl": {
+    "message": "Ladda upp video",
+    "description": "Knapptext för att ladda upp video"
+  },
+  "button.uploadReferences": {
+    "message": "Ladda upp",
+    "description": "Knapptext som tillåter användaren att ladda upp referenser"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Du kan ladda upp högst 1 bild",
+    "description": "Felmeddelande när antalet uppladdade bilder överskrider gränsen"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Bild uppladdad framgångsrikt",
+    "description": "Framgångsmeddelande när en bild har laddats upp framgångsrikt"
+  },
+  "message.uploadReferencesError": {
+    "message": "Misslyckades med att ladda upp bild, försök igen senare",
+    "description": "Felmeddelande när bilduppladdning misslyckas"
+  },
+  "message.startingTask": {
+    "message": "Startar uppgift...",
+    "description": "Meddelande när en ritningsuppgift startar"
+  },
+  "message.startTaskSuccess": {
+    "message": "Uppgift startad framgångsrikt",
+    "description": "Framgångsmeddelande när en uppgift har startats framgångsrikt"
+  },
+  "message.startTaskFailed": {
+    "message": "Misslyckades med att starta uppgift, kontakta administratören",
+    "description": "Felmeddelande när start av ritningsuppgift misslyckas"
+  },
+  "message.usedUp": {
+    "message": "Dina poäng är slut, köp fler poäng för att fortsätta använda",
+    "description": "Meddelande när poängen är slut"
+  },
+  "message.generating": {
+    "message": "Genererar...",
+    "description": "Meddelande när en bild genereras"
+  },
+  "message.downloadVideo": {
+    "message": "Ladda ner denna video",
+    "description": "Meddelande när en bild genereras"
+  },
+  "message.extendVideo": {
+    "message": "Fortsätt generera denna video",
+    "description": "Meddelande när en bild genereras"
+  },
+  "message.generateFailed": {
+    "message": "Misslyckades med att generera bild",
+    "description": "Meddelande när bildgenerering misslyckas"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Antalet uppladdade startbilder överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade startbilder överskrider gränsen"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Uppladdad filstorlek får inte överstiga 10MB!",
+    "description": "Felmeddelande när uppladdad filstorlek överstiger 10MB!"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Uppladdad fil måste vara i MP4-format!",
+    "description": "Felmeddelande när uppladdad fil inte är i MP4-format!"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Antalet uppladdade startbilder överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade startbilder överskrider gränsen"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Antalet uppladdade slutbilder överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade slutbilder överskrider gränsen"
+  },
+  "message.uploadStartImageError": {
+    "message": "Misslyckades med att ladda upp startbild",
+    "description": "Felmeddelande när uppladdning av startbild misslyckas"
+  },
+  "message.uploadVideoError": {
+    "message": "Misslyckades med att ladda upp video",
+    "description": "Felmeddelande när uppladdning av startbild misslyckas"
+  },
+  "message.uploadEndImageError": {
+    "message": "Misslyckades med att ladda upp slutbild",
+    "description": "Felmeddelande när uppladdning av slutbild misslyckas"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Misslyckades med att ladda upp dokument",
+    "description": "Felmeddelande när uppladdning av dokument misslyckas"
+  },
+  "message.noOperations": {
+    "message": "Inga tillgängliga operationer",
+    "description": "Meddelande när inga operationer är tillgängliga"
+  },
+  "message.noTasks": {
+    "message": "Inga historiska uppgifter, klicka till vänster för att generera video",
+    "description": "Meddelande när inga uppgifter finns"
+  }
+}

@@ -1,0 +1,286 @@
+{
+  "name.taskId": {
+    "message": "ID de tarea",
+    "description": "ID de la tarea"
+  },
+  "name.type": {
+    "message": "Tipo",
+    "description": "Tipo de contenido del video Kling a generar, como 'enlace', 'texto', etc."
+  },
+  "name.failure": {
+    "message": "Fallo",
+    "description": "Estado de fallo de la tarea"
+  },
+  "name.failureReason": {
+    "message": "Razón del fallo",
+    "description": "Razón del fallo de la tarea"
+  },
+  "name.status": {
+    "message": "Estado",
+    "description": "Estado de la tarea"
+  },
+  "name.traceId": {
+    "message": "ID de seguimiento",
+    "description": "ID de seguimiento de la tarea"
+  },
+  "name.createdAt": {
+    "message": "Fecha de creación",
+    "description": "Fecha y hora de generación del video Kling"
+  },
+  "name.cfgScale": {
+    "message": "Grado de libertad",
+    "description": "Imagen de referencia para el video a generar"
+  },
+  "name.startImage": {
+    "message": "Imagen de referencia inicial",
+    "description": "Imagen de referencia para el video a generar"
+  },
+  "name.negativePrompt": {
+    "message": "Palabras clave negativas",
+    "description": "Texto de sugerencia negativa para generar el video"
+  },
+  "name.endImage": {
+    "message": "Imagen de referencia final",
+    "description": "Imagen de referencia para el video a generar"
+  },
+  "name.videoUrl": {
+    "message": "Video personalizado",
+    "description": "Video personalizado"
+  },
+  "name.prompt": {
+    "message": "Sugerencia de video",
+    "description": "Sugerencia para la entrada de contenido"
+  },
+  "name.duration": {
+    "message": "Duración del video",
+    "description": "Duración del video"
+  },
+  "name.ingredients": {
+    "message": "Crear video con múltiples imágenes",
+    "description": "Extensión de video personalizada"
+  },
+  "name.model": {
+    "message": "Versión del modelo",
+    "description": "Versión del modelo utilizada para generar el video"
+  },
+  "name.ratio": {
+    "message": "Proporción del video",
+    "description": "Proporción del video utilizada para generar el video"
+  },
+  "name.mode": {
+    "message": "Modo de video",
+    "description": "Modo utilizado para generar el video"
+  },
+  "name.effect": {
+    "message": "Efecto de video",
+    "description": "Nombre del parámetro de estilo, utilizado para cambiar entre diferentes versiones o estilos del modelo"
+  },
+  "name.ingredientsModel": {
+    "message": "Modelo de ingredientes",
+    "description": "Versión del modelo utilizada para generar el video"
+  },
+  "name.klingBot": {
+    "message": "Kling Bot",
+    "description": "Nombre del generador de videos Kling"
+  },
+  "description.ingredients": {
+    "message": "Si desea subir múltiples imágenes para generar su propio video, active este botón.",
+    "description": "Descripción del parámetro 'ingredients'"
+  },
+  "description.imageUrl": {
+    "message": "En la tarea de crear video con múltiples imágenes, se deben subir múltiples imágenes.",
+    "description": "Descripción del parámetro 'imageUrl'"
+  },
+  "description.prompt": {
+    "message": "Palabras clave para generar el video Kling",
+    "description": "Descripción del parámetro 'prompt'"
+  },
+  "description.negativePrompt": {
+    "message": "Texto de sugerencia negativa, opcional, no debe exceder 200 caracteres",
+    "description": "Descripción del parámetro 'prompt'"
+  },
+  "description.uploadStartImage": {
+    "message": "Suba la imagen inicial como referencia para la generación, el video final se basará en la imagen inicial",
+    "description": "Descripción del parámetro de referencia de carga"
+  },
+  "description.uploadEndImage": {
+    "message": "Suba la imagen inicial como referencia para la generación, el video final se basará en la imagen inicial",
+    "description": "Descripción del parámetro de referencia de carga"
+  },
+  "description.cfgScale": {
+    "message": "Grado de libertad para generar el video, opcional [0,1]. Cuanto mayor sea el valor, mayor será la correlación.",
+    "description": "Descripción del parámetro de referencia de carga"
+  },
+  "status.pending": {
+    "message": "Pendiente",
+    "description": "Estado de espera de la tarea"
+  },
+  "status.processing": {
+    "message": "Procesando",
+    "description": "Estado de espera de la tarea"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Por favor seleccione...",
+    "description": "Marcador de posición para la entrada de ruido de relleno"
+  },
+  "placeholder.select": {
+    "message": "Seleccionar",
+    "description": "Texto de marcador de posición en el campo de selección"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Por favor seleccione...",
+    "description": "Marcador de posición para el nivel de relleno"
+  },
+  "placeholder.prompt": {
+    "message": "Ingrese las palabras clave para el estilo de video a generar, por ejemplo: moving",
+    "description": "Texto de marcador de posición en el campo de sugerencia"
+  },
+  "placeholder.negativePrompt": {
+    "message": "Ingrese las palabras clave negativas para el estilo de video a generar, no más de 200 caracteres",
+    "description": "Texto de marcador de posición en el campo de sugerencia"
+  },
+  "placeholder.position": {
+    "message": "Por favor seleccione...",
+    "description": "Marcador de posición para la entrada de posición"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Por favor seleccione...",
+    "description": "Marcador de posición para la entrada de relación de aspecto"
+  },
+  "placeholder.preset": {
+    "message": "Por favor seleccione...",
+    "description": "Marcador de posición para la entrada de preajuste"
+  },
+  "placeholder.markerShape": {
+    "message": "Por favor seleccione...",
+    "description": "Marcador de posición para la entrada de forma de marcador"
+  },
+  "placeholder.rotate": {
+    "message": "Por favor seleccione...",
+    "description": "Marcador de posición para la entrada de rotación"
+  },
+  "placeholder.subMarker": {
+    "message": "Por favor seleccione...",
+    "description": "Marcador de posición para la entrada de sub-marcador"
+  },
+  "button.precise": {
+    "message": "Preciso",
+    "description": "Texto del botón para generar video Kling"
+  },
+  "button.creative": {
+    "message": "Creativo",
+    "description": "Texto del botón para generar video Kling"
+  },
+  "button.generate": {
+    "message": "Generar",
+    "description": "Texto del botón para generar video Kling"
+  },
+  "button.extend": {
+    "message": "Extender video",
+    "description": "Texto del botón para extender video"
+  },
+  "button.download": {
+    "message": "Descargar video",
+    "description": "Texto del botón para descargar video"
+  },
+  "button.uploadImageUrl": {
+    "message": "Subir imagen",
+    "description": "Texto del botón para subir una imagen"
+  },
+  "button.uploadVideoUrl": {
+    "message": "Subir video",
+    "description": "Texto del botón para subir un video"
+  },
+  "button.uploadReferences": {
+    "message": "Subir",
+    "description": "Texto del botón que permite al usuario subir referencias"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Se puede subir como máximo 1 imagen",
+    "description": "Mensaje de error cuando la cantidad de imágenes subidas supera el límite"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Imagen subida con éxito",
+    "description": "Mensaje de éxito cuando una imagen se sube con éxito"
+  },
+  "message.uploadReferencesError": {
+    "message": "Error al subir la imagen, por favor intente de nuevo más tarde",
+    "description": "Mensaje de error cuando falla la subida de una imagen"
+  },
+  "message.startingTask": {
+    "message": "Iniciando tarea...",
+    "description": "Mensaje al comenzarse una tarea de dibujo"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tarea de generación iniciada con éxito",
+    "description": "Mensaje de éxito al iniciar una tarea con éxito"
+  },
+  "message.startTaskFailed": {
+    "message": "Error al iniciar la tarea, por favor contacte al administrador",
+    "description": "Mensaje de error cuando falla la iniciación de una tarea de dibujo"
+  },
+  "message.usedUp": {
+    "message": "Se han agotado sus créditos, por favor compre más créditos para continuar usando",
+    "description": "Mensaje cuando se han agotado los créditos"
+  },
+  "message.generating": {
+    "message": "Generando...",
+    "description": "Mensaje cuando la imagen está siendo generada"
+  },
+  "message.downloadVideo": {
+    "message": "Descargar este video",
+    "description": "Mensaje cuando la imagen está siendo generada"
+  },
+  "message.extendVideo": {
+    "message": "Continuar generando este video",
+    "description": "Mensaje cuando la imagen está siendo generada"
+  },
+  "message.generateFailed": {
+    "message": "Error al generar imagen",
+    "description": "Mensaje cuando la generación de imagen ha fallado"
+  },
+  "message.uploadVideoExceed": {
+    "message": "El número de imágenes del cuadro inicial subidas excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes del cuadro inicial subidas excede el límite"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "¡El tamaño del archivo subido no puede superar los 10MB!",
+    "description": "Mensaje de error cuando el tamaño del archivo subido supera los 10MB"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "¡El archivo subido debe estar en formato MP4!",
+    "description": "Mensaje de error cuando el archivo subido no está en formato MP4"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "El número de imágenes del cuadro inicial subidas excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes del cuadro inicial subidas excede el límite"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "El número de imágenes del cuadro final subidas excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes del cuadro final subidas excede el límite"
+  },
+  "message.uploadStartImageError": {
+    "message": "Error al subir la imagen del cuadro inicial",
+    "description": "Mensaje de error cuando falla la subida de la imagen del cuadro inicial"
+  },
+  "message.uploadVideoError": {
+    "message": "Error al subir el video",
+    "description": "Mensaje de error cuando falla la subida de la imagen del cuadro inicial"
+  },
+  "message.uploadEndImageError": {
+    "message": "Error al subir la imagen del cuadro final",
+    "description": "Mensaje de error cuando falla la subida de la imagen del cuadro final"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Error al subir documentos",
+    "description": "Mensaje de error cuando falla la subida de documentos"
+  },
+  "message.noOperations": {
+    "message": "No hay operaciones disponibles",
+    "description": "Mensaje cuando no hay operaciones disponibles"
+  },
+  "message.noTasks": {
+    "message": "No hay tareas históricas, por favor haga clic a la izquierda para generar un video",
+    "description": "Mensaje cuando no hay tareas disponibles"
+  }
+}
