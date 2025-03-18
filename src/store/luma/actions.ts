@@ -99,7 +99,6 @@ export const getApplications = async ({
     const finalApplication = getFinalApplication(applications.items, currentApplication);
     if (finalApplication) {
       console.debug('set final application', finalApplication, finalApplication?.type);
-      commit('setApplication', finalApplication);
       await dispatch('setApplication', finalApplication);
     } else {
       console.debug('set application undefined', undefined);
