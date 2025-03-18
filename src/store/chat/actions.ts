@@ -78,6 +78,7 @@ export const getService = async ({
 
 export const getApplications = async ({
   commit,
+  dispatch,
   state,
   rootState
 }: ActionContext<IChatState, IRootState>): Promise<IApplication[] | undefined> => {
@@ -96,12 +97,7 @@ export const getApplications = async ({
     if (finalApplication) {
       console.debug('set final application', finalApplication, finalApplication?.type);
       commit('setApplication', finalApplication);
-      // @ts-ignore
-      if (finalApplication?.credentials.length > 0) {
-        // @ts-ignore
-        const credential = finalApplication?.credentials[0];
-        commit('setCredential', credential);
-      }
+      await dispatch('setApplication', finalApplication);
     } else {
       console.debug('set application undefined', undefined);
       commit('setApplication', undefined);
