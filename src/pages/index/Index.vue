@@ -220,7 +220,7 @@
         </el-row>
       </div>
     </div>
-    <div id="comments">
+    <div v-if="false" id="comments">
       <div class="container">
         <el-row class="mb-6">
           <el-col :span="24">
