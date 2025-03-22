@@ -84,6 +84,7 @@ export default defineComponent({
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
 
   .item {
     width: 48px;
@@ -94,6 +95,7 @@ export default defineComponent({
     align-items: center;
     cursor: pointer;
     border-radius: 5px;
+    margin-right: 30px;
 
     .preview {
       margin-top: 8px;

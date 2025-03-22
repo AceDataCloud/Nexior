@@ -80,6 +80,7 @@ export const getService = async ({
 
 export const getApplications = async ({
   commit,
+  dispatch,
   state,
   rootState
 }: ActionContext<IPikaState, IRootState>): Promise<IApplication[] | undefined> => {
@@ -97,7 +98,7 @@ export const getApplications = async ({
     const finalApplication = getFinalApplication(applications.items, currentApplication);
     if (finalApplication) {
       console.debug('set final application', finalApplication, finalApplication?.type);
-      commit('setApplication', finalApplication);
+      await dispatch('setApplication', finalApplication);
     } else {
       console.debug('set application undefined', undefined);
       commit('setApplication', undefined);
