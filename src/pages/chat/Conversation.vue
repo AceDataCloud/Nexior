@@ -55,7 +55,7 @@
 
 <script lang="ts">
 import axios from 'axios';
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import Message from '@/components/chat/Message.vue';
 import {
   CHAT_MODEL_DEEPSEEK_CHAT,
@@ -89,10 +89,10 @@ import { Status } from '@/models';
 import Suggestion from '@/components/chat/Suggestion.vue';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
 import Layout from '@/layouts/Chat.vue';
-import { isJSONString } from '@/utils/is';
+import { isImageUrl, isJSONString } from '@/utils/is';
 import { chatOperator } from '@/operators';
 import ApplicationStatus from '@/components/application/Status.vue';
-import { CHAT_MODEL_GPT_4_ALL, CHAT_MODEL_GPT_4_VISION } from '@/constants';
+import { CHAT_MODEL_GPT_4_ALL } from '@/constants';
 
 export interface IData {
   drawer: boolean;
@@ -181,6 +181,13 @@ export default defineComponent({
     }
   },
   watch: {
+    async references(val) {
+      console.log('references changed', val);
+      const model = await this.getModelByAction();
+      if (model) {
+        await this.$store.dispatch('chat/setModel', model);
+      }
+    },
     async isSearchActive(val) {
       console.log('search changed', val);
       const model = await this.getModelByAction();
@@ -527,12 +534,12 @@ export default defineComponent({
           text: this.question
         });
         for (let i = 0; i < this.references.length; i++) {
-          if (this.model.name === CHAT_MODEL_GPT_4_VISION.name) {
+          if (isImageUrl(this.references[i])) {
             content.push({
               type: 'image_url',
               image_url: this.references[i]
             });
-          } else if (this.model.name === CHAT_MODEL_GPT_4_ALL.name) {
+          } else {
             content.push({
               type: 'file_url',
               file_url: this.references[i]
