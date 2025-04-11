@@ -30,15 +30,15 @@ export default defineComponent({
       options: [
         {
           value: 'kling-v1',
-          label: 'kling-v1'
+          label: 'V1'
         },
         {
           value: 'kling-v1-5',
-          label: 'kling-v1-5'
+          label: 'V1.5'
         },
         {
           value: 'kling-v1-6',
-          label: 'kling-v1-6'
+          label: 'V1.6'
         }
       ]
     };
