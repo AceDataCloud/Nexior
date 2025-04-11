@@ -34,3 +34,10 @@ export const isOfficial = (): boolean => {
 export const isSubOfficial = (): boolean => {
   return isOfficial() && window.location.host !== BASE_HOST_HUB;
 };
+
+/**
+ * is image url
+ */
+export function isImageUrl(url: string): boolean {
+  return /\.(jpg|jpeg|png|gif|bmp|webp|svg|tiff?)$/i.test(url);
+}

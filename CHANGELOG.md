@@ -1,8 +1,32 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Thu, 13 Mar 2025 15:20:15 GMT and should not be manually modified.
+This log was last generated on Sat, 05 Apr 2025 09:19:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.18.6
+
+Sat, 05 Apr 2025 09:19:30 GMT
+
+### Patches
+
+- add mj v7 support (germey@acedata.cloud)
+
+## 2.18.5
+
+Fri, 04 Apr 2025 17:48:54 GMT
+
+### Patches
+
+- add image generation (germey@acedata.cloud)
+
+## 2.18.4
+
+Sat, 22 Mar 2025 15:02:24 GMT
+
+### Patches
+
+- remove comments (office@acedata.cloud)
 
 ## 2.18.3
 
