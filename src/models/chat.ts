@@ -41,6 +41,11 @@ export interface IChatModel {
   icon: string;
   getDisplayName: () => string;
   getDescription: () => string;
+  isSearchSupported?: boolean;
+  isImageSupported?: boolean;
+  isFileSupported?: boolean;
+  isReasoningSupported?: boolean;
+  isDeepSearchSupported?: boolean;
 }
 
 export interface IChatModelGroup {

@@ -2,15 +2,6 @@
   <layout>
     <template #chat>
       <model-selector class="selector" @select="onCreateNewConversation" />
-      <application-status
-        :initializing="initializing"
-        :application="application"
-        :applications="applications"
-        :need-apply="needApply"
-        :service="service"
-        @select="$store.dispatch('chat/setApplication', $event)"
-        @refresh="$store.dispatch('chat/getApplications')"
-      />
       <div :class="{ dialogue: true, empty: messages.length === 0 }">
         <div v-if="messages.length > 0" class="messages">
           <message
@@ -27,26 +18,14 @@
           />
         </div>
         <div class="composer">
-          <input-box
-            v-model:is-search-active="isSearchActive"
-            v-model:is-reason-active="isReasonActive"
-            v-model:is-deepsearch-active="isDeepsearchActive"
-            v-model:is-search-enabled="isSearchEnabled"
-            v-model:is-deepsearch-enabled="isDeepsearchEnabled"
-            v-model:is-reason-enabled="isReasonEnabled"
-            v-model:is-upload-enabled="isUploadEnabled"
+          <composer
+            v-model:question="question"
+            v-model:references="references"
             :disabled="answering"
-            :question="question"
-            :references="references"
-            :upload="upload"
-            @update:question="question = $event"
-            @update:upload="upload = $event"
-            @update:references="references = $event"
             @submit="onSubmit"
             @stop="onStop"
           />
           <disclaimer class="disclaimer" />
-          <suggestion v-if="messages.length === 0" @draft="onDraft" />
         </div>
       </div>
     </template>
@@ -57,54 +36,23 @@
 import axios from 'axios';
 import { defineComponent, ref } from 'vue';
 import Message from '@/components/chat/Message.vue';
-import {
-  CHAT_MODEL_DEEPSEEK_CHAT,
-  CHAT_MODEL_DEEPSEEK_REASONER,
-  CHAT_MODEL_GPT_4_BROWSING,
-  CHAT_MODEL_GPT_4O,
-  CHAT_MODEL_GROK_3,
-  CHAT_MODEL_GROK_3_DEEPSEARCH,
-  CHAT_MODEL_GROK_3_REASONER,
-  CHAT_MODEL_GROUP_CHATGPT,
-  CHAT_MODEL_GROUP_DEEPSEEK,
-  CHAT_MODEL_GROUP_GROK,
-  CHAT_MODEL_O1_MINI,
-  CHAT_MODELS,
-  ROLE_ASSISTANT,
-  ROLE_USER
-} from '@/constants';
-import {
-  IChatModel,
-  IChatMessageState,
-  IChatConversationResponse,
-  IChatConversation,
-  IChatMessage,
-  IChatModelGroup
-} from '@/models';
-import InputBox from '@/components/chat/InputBox.vue';
+import { ROLE_ASSISTANT, ROLE_USER } from '@/constants';
+import { IChatMessageState, IChatConversationResponse, IChatConversation, IChatMessage } from '@/models';
+import Composer from '@/components/chat/Composer.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router';
 import { Status } from '@/models';
-import Suggestion from '@/components/chat/Suggestion.vue';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl, isJSONString } from '@/utils/is';
 import { chatOperator } from '@/operators';
-import ApplicationStatus from '@/components/application/Status.vue';
 import { CHAT_MODEL_GPT_4_ALL } from '@/constants';
 
 export interface IData {
   drawer: boolean;
   question: string;
   upload: boolean;
-  isSearchActive: boolean;
-  isDeepsearchActive: boolean;
-  isReasonActive: boolean;
-  isSearchEnabled: boolean;
-  isDeepsearchEnabled: boolean;
-  isReasonEnabled: boolean;
-  isUploadEnabled: boolean;
   references: string[];
   answering: boolean;
   messages: IChatMessage[];
@@ -114,12 +62,10 @@ export interface IData {
 export default defineComponent({
   name: 'ChatConversation',
   components: {
-    InputBox,
+    Composer,
     Disclaimer,
-    Suggestion,
     ModelSelector,
     Message,
-    ApplicationStatus,
     Layout
   },
   data(): IData {
@@ -128,13 +74,6 @@ export default defineComponent({
       question: '',
       references: [],
       upload: false,
-      isSearchActive: false,
-      isReasonActive: false,
-      isDeepsearchActive: false,
-      isSearchEnabled: true,
-      isReasonEnabled: true,
-      isUploadEnabled: true,
-      isDeepsearchEnabled: true,
       answering: false,
       canceler: undefined,
       messages:
@@ -183,48 +122,6 @@ export default defineComponent({
   watch: {
     async references(val) {
       console.log('references changed', val);
-      const model = await this.getModelByAction();
-      if (model) {
-        await this.$store.dispatch('chat/setModel', model);
-      }
-    },
-    async isSearchActive(val) {
-      console.log('search changed', val);
-      const model = await this.getModelByAction();
-      if (model) {
-        await this.$store.dispatch('chat/setModel', model);
-      }
-    },
-    async isReasonActive(val) {
-      console.log('reason changed', val);
-      const model = await this.getModelByAction();
-      if (model) {
-        await this.$store.dispatch('chat/setModel', model);
-      }
-    },
-    async isDeepsearchActive(val) {
-      console.log('deepsearch changed', val);
-      const model = await this.getModelByAction();
-      if (model) {
-        await this.$store.dispatch('chat/setModel', model);
-      }
-    },
-    async modelGroup(val: IChatModelGroup) {
-      console.log('modelGroup changed', val);
-      const model = await this.getModelByAction();
-      if (model) {
-        console.log('set model', model);
-        await this.$store.dispatch('chat/setModel', model);
-      }
-      if (val.name === CHAT_MODEL_GROUP_DEEPSEEK.name) {
-        this.upload = false;
-      }
-    },
-    model(val: IChatModel) {
-      console.log('model changed', val);
-      if (val) {
-        this.$store.dispatch('chat/setModel', val);
-      }
     },
     async conversationId(val: string) {
       if (!val) {
@@ -234,15 +131,6 @@ export default defineComponent({
           this.conversations?.find((conversation: IChatConversation) => conversation.id === val)?.messages || [];
         this.onScrollDown();
       }
-      const model = await this.getModelByConversation();
-      if (model) {
-        await this.$store.dispatch('chat/setModel', model);
-      }
-      const modelGroup = await this.getModelGroup();
-      if (modelGroup) {
-        console.log('set model group', modelGroup);
-        await this.$store.dispatch('chat/setModelGroup', modelGroup);
-      }
     }
   },
   async mounted() {
@@ -250,64 +138,8 @@ export default defineComponent({
     await this.onGetApplication();
     await this.onGetConversations();
     await this.onScrollDown();
-
-    // initialize model
-    const model = await this.getModel();
-    if (model) {
-      console.log('set model', model);
-      await this.$store.dispatch('chat/setModel', model);
-    }
-    // initialize model group
-    const modelGroup = await this.getModelGroup();
-    if (modelGroup) {
-      console.log('set model group', modelGroup);
-      await this.$store.dispatch('chat/setModelGroup', modelGroup);
-    }
   },
   methods: {
-    async getModel() {
-      return (await this.getModelByConversation()) || (await this.getModelByAction());
-    },
-    async getModelByConversation() {
-      if (this.conversationId && this.conversation?.model) {
-        const modelName = this.conversation.model;
-        return CHAT_MODELS.find((model: IChatModel) => model.name === modelName);
-      }
-    },
-    async getModelByAction() {
-      if (this.modelGroup.name === CHAT_MODEL_GROUP_CHATGPT.name) {
-        if (this.isReasonActive) {
-          return CHAT_MODEL_O1_MINI;
-        } else if (this.isSearchActive) {
-          return CHAT_MODEL_GPT_4_BROWSING;
-        } else if (this.references.length > 0) {
-          return CHAT_MODEL_GPT_4_ALL;
-        }
-        return CHAT_MODEL_GPT_4O;
-      } else if (this.modelGroup.name === CHAT_MODEL_GROUP_DEEPSEEK.name) {
-        if (this.isReasonActive) {
-          return CHAT_MODEL_DEEPSEEK_REASONER;
-        }
-        return CHAT_MODEL_DEEPSEEK_CHAT;
-      } else if (this.modelGroup.name === CHAT_MODEL_GROUP_GROK.name) {
-        if (this.isReasonActive) {
-          return CHAT_MODEL_GROK_3_REASONER;
-        } else if (this.isDeepsearchActive) {
-          return CHAT_MODEL_GROK_3_DEEPSEARCH;
-        }
-        return CHAT_MODEL_GROK_3;
-      }
-    },
-    async getModelGroup() {
-      const currentModel = this.model;
-      if (CHAT_MODEL_GROUP_CHATGPT.models.map((item) => item.name).includes(currentModel.name)) {
-        return CHAT_MODEL_GROUP_CHATGPT;
-      } else if (CHAT_MODEL_GROUP_DEEPSEEK.models.map((item) => item.name).includes(currentModel.name)) {
-        return CHAT_MODEL_GROUP_DEEPSEEK;
-      } else if (CHAT_MODEL_GROUP_GROK.models.map((item) => item.name).includes(currentModel.name)) {
-        return CHAT_MODEL_GROUP_GROK;
-      }
-    },
     async onGetService() {
       console.debug('start onGetService');
       await this.$store.dispatch('chat/getService');
@@ -692,6 +524,7 @@ export default defineComponent({
   position: absolute;
   left: 10px;
   top: 10px;
+  z-index: 100;
 }
 .setting {
   position: absolute;

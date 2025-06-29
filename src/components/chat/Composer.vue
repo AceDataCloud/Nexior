@@ -5,9 +5,9 @@
         v-model:file-list="fileList"
         :class="{
           upload: true,
-          disabled: !_isUploadEnabled
+          disabled: !model.isFileSupported || disabled
         }"
-        :disabled="!_isUploadEnabled"
+        :disabled="!model.isFileSupported || disabled"
         name="file"
         :show-file-list="true"
         :limit="10"
@@ -18,46 +18,11 @@
         :headers="headers"
       >
         <el-tooltip class="box-item" effect="dark" :content="$t('chat.message.uploadFile')" placement="bottom">
-          <span :class="{ btn: true, 'btn-upload': true, disabled: !_isUploadEnabled }">
+          <span :class="{ btn: true, 'btn-upload': true, disabled: !model.isFileSupported || disabled }">
             <font-awesome-icon icon="fa-solid fa-plus" class="icon icon-attachment" />
           </span>
         </el-tooltip>
       </el-upload>
-      <span
-        v-if="['chatgpt'].includes(modelGroup.name)"
-        :class="{ btn: true, 'btn-search': true, active: _isSearchActive, disabled: !isSearchEnabled }"
-        @click="
-          _isSearchActive = !_isSearchActive;
-          _isReasonActive = false;
-          _isDeepsearchActive = false;
-        "
-      >
-        <font-awesome-icon icon="fa-solid fa-globe" class="icon icon-search" />
-        {{ $t('chat.button.search') }}
-      </span>
-      <span
-        v-if="['grok'].includes(modelGroup.name)"
-        :class="{ btn: true, 'btn-deepsearch': true, active: _isDeepsearchActive, disabled: !isDeepsearchEnabled }"
-        @click="
-          _isDeepsearchActive = !_isDeepsearchActive;
-          _isReasonActive = false;
-          _isSearchActive = false;
-        "
-      >
-        <font-awesome-icon icon="fa-solid fa-globe" class="icon icon-deepsearch" />
-        {{ $t('chat.button.deepsearch') }}
-      </span>
-      <span
-        v-if="['chatgpt', 'grok', 'deepseek'].includes(modelGroup.name)"
-        :class="{ btn: true, 'btn-reason': true, active: _isReasonActive, disabled: !isReasonEnabled }"
-        @click="
-          _isReasonActive = !_isReasonActive;
-          _isDeepsearchActive = false;
-        "
-      >
-        <font-awesome-icon icon="fa-regular fa-lightbulb" class="icon icon-reason" />
-        {{ $t('chat.button.thinkDeeper') }}
-      </span>
     </div>
     <span
       v-show="!disabled"
@@ -101,10 +66,9 @@ import { ElMessage, ElTooltip, ElUpload } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IChatModel } from '@/models';
 import { getBaseUrlPlatform } from '@/utils';
-import { CHAT_MODEL_GROUP_DEEPSEEK, CHAT_MODEL_GROUP_GROK } from '@/constants';
 
 export default defineComponent({
-  name: 'InputBox',
+  name: 'Composer',
   components: {
     ElTooltip,
     FontAwesomeIcon,
@@ -124,71 +88,21 @@ export default defineComponent({
     question: {
       type: String,
       required: true
-    },
-    isSearchEnabled: {
-      type: Boolean,
-      required: false,
-      default: true
-    },
-    isDeepsearchEnabled: {
-      type: Boolean,
-      required: false,
-      default: true
-    },
-    isReasonEnabled: {
-      type: Boolean,
-      required: false,
-      default: true
-    },
-    isUploadEnabled: {
-      type: Boolean,
-      required: false,
-      default: true
-    },
-    isSearchActive: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
-    isDeepsearchActive: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
-    isReasonActive: {
-      type: Boolean,
-      required: false,
-      default: false
     }
   },
-  emits: [
-    'update:question',
-    'update:references',
-    'submit',
-    'stop',
-    'update:isSearchActive',
-    'update:isReasonActive',
-    'update:isUploadEnabled',
-    'update:isSearchEnabled',
-    'update:isReasonEnabled',
-    'update:isDeepsearchEnabled',
-    'update:isDeepsearchActive'
-  ],
+  emits: ['update:question', 'update:references', 'submit', 'stop'],
   data() {
     return {
-      inputHeight: '35px', //add inputHeight
+      inputHeight: '35px',
       questionValue: this.question,
       fileList: [],
-      // eslint-disable-next-line vue/no-reserved-keys
-      _isSearchActive: this.isSearchActive,
-      // eslint-disable-next-line vue/no-reserved-keys
-      _isReasonActive: this.isReasonActive,
-      // eslint-disable-next-line vue/no-reserved-keys
-      _isDeepsearchActive: this.isDeepsearchActive,
       uploadUrl: getBaseUrlPlatform() + '/api/v1/files/'
     };
   },
   computed: {
+    model(): IChatModel {
+      return this.$store.state.chat.model;
+    },
     modelGroup() {
       return this.$store.state.chat.modelGroup;
     },
@@ -200,58 +114,11 @@ export default defineComponent({
     urls(): string[] {
       // @ts-ignore
       return this.fileList.map((file: UploadFile) => file?.response?.file_url);
-    },
-    _isUploadEnabled() {
-      return (
-        !this._isSearchActive &&
-        !this._isReasonActive &&
-        this.modelGroup.name !== CHAT_MODEL_GROUP_DEEPSEEK.name &&
-        this.modelGroup.name !== CHAT_MODEL_GROUP_GROK.name
-      );
-    },
-    _isSearchEnabled() {
-      return !this._isReasonActive && !this.isDeepsearchActive && !this.urls.length;
-    },
-    _isDeepsearchEnabled() {
-      return !this._isReasonActive && !this._isSearchActive && !this.urls.length;
-    },
-    _isReasonEnabled() {
-      return !this._isSearchActive && !this.isDeepsearchActive && !this.urls.length;
-    },
-    model(): IChatModel {
-      return this.$store.state.chat.model;
     }
   },
   watch: {
-    modelGroup() {
-      this._isReasonActive = false;
-      this._isSearchActive = false;
-      this._isDeepsearchActive = false;
-    },
     urls(val) {
       this.$emit('update:references', val);
-    },
-    _isUploadEnabled(val: boolean) {
-      this.$emit('update:isUploadEnabled', val);
-    },
-    _isSearchEnabled(val: boolean) {
-      this.$emit('update:isSearchEnabled', val);
-    },
-    _isDeepsearchEnabled(val: boolean) {
-      this.$emit('update:isDeepsearchEnabled', val);
-    },
-    _isReasonEnabled(val: boolean) {
-      this.$emit('update:isReasonEnabled', val);
-    },
-    _isSearchActive(val: boolean) {
-      this.$emit('update:isSearchActive', val);
-    },
-    _isDeepsearchActive(val: boolean) {
-      console.log('deepsearch', val);
-      this.$emit('update:isDeepsearchActive', val);
-    },
-    _isReasonActive(val: boolean) {
-      this.$emit('update:isReasonActive', val);
     },
     questionValue(val: string) {
       this.$emit('update:question', val);
@@ -259,21 +126,6 @@ export default defineComponent({
     question(val: string) {
       if (val !== this.questionValue) {
         this.questionValue = val;
-      }
-    },
-    isReasonActive(val: boolean) {
-      if (val !== this._isReasonActive) {
-        this._isReasonActive = val;
-      }
-    },
-    isSearchActive(val: boolean) {
-      if (val !== this._isSearchActive) {
-        this._isSearchActive = val;
-      }
-    },
-    isDeepsearchActive(val: boolean) {
-      if (val !== this._isDeepsearchActive) {
-        this._isDeepsearchActive = val;
       }
     },
     references(val: string[]) {
