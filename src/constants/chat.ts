@@ -137,18 +137,7 @@ export const CHAT_MODEL_GROUP_CHATGPT: IChatModelGroup = {
   name: 'chatgpt',
   getDisplayName: () => i18n.global.t('chat.modelGroup.chatgpt'),
   getDescription: () => i18n.global.t('chat.modelGroup.chatgptDescription'),
-  models: [
-    CHAT_MODEL_GPT_3_5,
-    CHAT_MODEL_GPT_3_5_BROWSING,
-    CHAT_MODEL_GPT_4,
-    CHAT_MODEL_GPT_4_BROWSING,
-    CHAT_MODEL_GPT_4_VISION,
-    CHAT_MODEL_GPT_4_ALL,
-    CHAT_MODEL_GPT_4O,
-    CHAT_MODEL_O1,
-    CHAT_MODEL_O1_MINI,
-    CHAT_MODEL_O3_MINI
-  ]
+  models: [CHAT_MODEL_GPT_4_ALL, CHAT_MODEL_GPT_4O, CHAT_MODEL_O1, CHAT_MODEL_O3_MINI]
 };
 
 export const CHAT_MODEL_GROUP_DEEPSEEK: IChatModelGroup = {
