@@ -29,21 +29,24 @@
         </div>
       </div>
     </transition>
+    <user-setting v-model:visible="showSetting" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import UserAvatar from '@/components/user/Avatar.vue';
+import UserSetting from '@/components/user/Setting.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CONSOLE_ROOT } from '@/router';
 
 export default defineComponent({
   name: 'UserCenter',
-  components: { UserAvatar, FontAwesomeIcon },
+  components: { UserAvatar, UserSetting, FontAwesomeIcon },
   data() {
     return {
-      showMenu: false
+      showMenu: false,
+      showSetting: false
     };
   },
   computed: {
@@ -74,7 +77,7 @@ export default defineComponent({
       console.log('点击自定义');
     },
     onSettings() {
-      console.log('点击设置');
+      this.showSetting = true;
     },
     onHelp() {
       console.log('点击帮助');
