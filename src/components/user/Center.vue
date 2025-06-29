@@ -1,33 +1,33 @@
 <template>
   <div class="relative inline-block text-left">
     <div @click="toggleMenu">
-      <user-avatar class="w-10 h-10 cursor-pointer" />
+      <user-avatar class="cursor-pointer" />
     </div>
     <transition name="fade">
-      <div
-        v-if="showMenu"
-        class="absolute right-0 mt-2 min-w-[220px] rounded-2xl bg-white shadow-xl ring-1 ring-black ring-opacity-5 z-50 p-2"
-      >
-        <div class="px-4 py-2 text-sm font-medium text-gray-900 border-b">
-          {{ user?.email || '未登录用户' }}
+      <el-card v-if="showMenu" class="absolute right-0 mt-2 min-w-[220px] z-50 p-0">
+        <div v-if="user.email" class="px-4 py-2 text-sm font-medium">
+          {{ user?.email }}
         </div>
+        <el-divider v-if="user.email" class="mb-1 mt-1" />
         <div class="py-1">
-          <button
-            class="block w-full px-4 py-2 text-left text-sm text-gray-800 rounded-lg hover:bg-gray-100"
-            @click="onSettings"
-          >
-            <font-awesome-icon icon="fa-solid fa-cog" class="mr-1 text-gray-600" />
-            {{ $t('common.button.setup') }}
+          <button class="block w-full px-4 py-2 text-left text-sm rounded-lg" @click="onSettings">
+            <font-awesome-icon icon="fa-solid fa-cog" class="mr-1" />
+            {{ $t('common.nav.setting') }}
           </button>
-          <button
-            class="block w-full px-4 py-2 text-left text-sm text-gray-800 rounded-lg hover:bg-gray-100"
-            @click="onLogout"
-          >
-            <font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket" class="mr-1 text-gray-600" />
+          <button class="block w-full px-4 py-2 text-left text-sm rounded-lg" @click="onDistribution">
+            <font-awesome-icon icon="fa-solid fa-coins" class="mr-1" />
+            {{ $t('common.nav.distribution') }}
+          </button>
+          <button class="block w-full px-4 py-2 text-left text-sm rounded-lg" @click="onConsole">
+            <font-awesome-icon icon="fa-solid fa-compass" class="mr-1" />
+            {{ $t('common.nav.console') }}
+          </button>
+          <button class="block w-full px-4 py-2 text-left text-sm rounded-lg" @click="onLogout">
+            <font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket" class="mr-1" />
             {{ $t('common.nav.logOut') }}
           </button>
         </div>
-      </div>
+      </el-card>
     </transition>
     <user-setting v-model:visible="showSetting" />
   </div>
@@ -38,11 +38,12 @@ import { defineComponent } from 'vue';
 import UserAvatar from '@/components/user/Avatar.vue';
 import UserSetting from '@/components/user/Setting.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_CONSOLE_ROOT } from '@/router';
+import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX } from '@/router';
+import { ElDivider, ElCard } from 'element-plus';
 
 export default defineComponent({
   name: 'UserCenter',
-  components: { UserAvatar, UserSetting, FontAwesomeIcon },
+  components: { UserAvatar, UserSetting, FontAwesomeIcon, ElDivider, ElCard },
   data() {
     return {
       showMenu: false,
@@ -53,6 +54,12 @@ export default defineComponent({
     user() {
       return this.$store.getters?.user;
     }
+  },
+  mounted() {
+    document.addEventListener('click', this.closeMenu);
+  },
+  unmounted() {
+    document.removeEventListener('click', this.closeMenu);
   },
   methods: {
     toggleMenu() {
@@ -70,17 +77,13 @@ export default defineComponent({
     onConsole() {
       this.$router.push({ name: ROUTE_CONSOLE_ROOT });
     },
-    onUpgrade() {
-      console.log('点击升级套餐');
-    },
-    onCustomize() {
-      console.log('点击自定义');
+    onDistribution() {
+      this.$router.push({
+        name: ROUTE_DISTRIBUTION_INDEX
+      });
     },
     onSettings() {
       this.showSetting = true;
-    },
-    onHelp() {
-      console.log('点击帮助');
     }
   }
 });
