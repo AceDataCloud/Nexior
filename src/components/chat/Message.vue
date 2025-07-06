@@ -11,16 +11,6 @@
     </div>
     <div v-if="!errorText" class="main">
       <div class="content">
-        <div class="edit-left">
-          <el-tooltip
-            v-if="message.role === 'user' && !isEditing && !Array.isArray(message.content)"
-            effect="dark"
-            :content="$t('chat.button.edit')"
-            placement="bottom"
-          >
-            <font-awesome-icon icon="fa-solid fa-edit" class="icon icon-edit" @click="startEditing" />
-          </el-tooltip>
-        </div>
         <div v-if="!isEditing" class="message-content">
           <markdown-renderer v-if="!Array.isArray(message.content)" :content="message?.content" />
           <div v-else>
@@ -43,21 +33,28 @@
             </div>
           </div>
         </div>
-        <div v-else class="chat-container">
+        <div v-else class="edits">
           <el-input
             v-model="questionValue"
             type="textarea"
-            class="chat-input"
+            class="mb-2"
             @keydown.enter.exact.prevent="onEdit"
           ></el-input>
-          <div class="button-group">
-            <el-button size="small" round @click="cancelEdit">{{ $t('common.button.cancel') }}</el-button>
-            <el-button type="primary" size="small" round @click="onEdit">{{ $t('common.button.confirm') }}</el-button>
+          <div class="flex justify-end">
+            <el-button round @click="cancelEdit">{{ $t('common.button.cancel') }}</el-button>
+            <el-button type="primary" class="btn-confirm" round @click="onEdit">{{
+              $t('common.button.confirm')
+            }}</el-button>
           </div>
         </div>
         <answering-mark v-if="message.state === messageState.PENDING" />
       </div>
       <div class="operations">
+        <edit-message
+          v-if="message.role === 'user' && !isEditing && !Array.isArray(message.content)"
+          class="btn-edit"
+          @click="startEditing"
+        />
         <copy-to-clipboard
           v-if="
             !Array.isArray(message.content) &&
@@ -96,6 +93,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IApplication, IChatMessage, IChatMessageState } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import RestartToGenerate from './RestartToGenerate.vue';
+import EditMessage from './EditMessage.vue';
 import {
   ERROR_CODE_API_ERROR,
   ERROR_CODE_BAD_REQUEST,
@@ -120,6 +118,7 @@ interface IData {
 export default defineComponent({
   name: 'Message',
   components: {
+    EditMessage,
     CopyToClipboard,
     RestartToGenerate,
     AnsweringMark,
@@ -127,7 +126,6 @@ export default defineComponent({
     ElAlert,
     ElButton,
     ElImage,
-    ElTooltip,
     FontAwesomeIcon,
     ElInput
   },
@@ -179,7 +177,7 @@ export default defineComponent({
         case ERROR_CODE_NOT_APPLIED:
           return this.$t('chat.message.errorNotApplied');
         case ERROR_CODE_CANCELED:
-          return undefined; // 不显示错误框
+          return undefined;
         case ERROR_CODE_UNKNOWN:
         default:
           return this.$t('chat.message.errorUnknown');
@@ -200,11 +198,9 @@ export default defineComponent({
       this.isEditing = false;
     },
     onRestart() {
-      // Implement the logic to save the edited content
       this.$emit('restart', this.message);
     },
     onEdit() {
-      // Implement the logic to save the edited content
       this.isEditing = false;
       this.onSubmit();
     },
@@ -297,39 +293,26 @@ export default defineComponent({
       text-align: left;
       max-width: 100%;
       position: relative;
-      .edit-left {
-        position: absolute;
-        left: -25px; /* Adjust as needed */
-        top: 50%;
-        transform: translateY(-50%);
-      }
-      .chat-container {
-        // background-color: var(--el-bg-color-page);
-        // color: var(--el-text-color-primary);
-        padding: 10px;
-        min-width: 400px;
+      .edits {
+        background-color: var(--el-bg-color-page);
+        padding: 0;
+        min-width: 500px;
         width: 100%;
         height: 100%;
-        .chat-input {
-          // background-color: var(--el-bg-color-page);
-          // color: var(--el-text-color-primary);
-          padding-bottom: 30px; /* 为按钮预留空间 */
-        }
-
-        .button-group {
-          position: absolute;
-          bottom: 10px;
-          right: 10px;
+        font-size: 16px;
+        .btn-confirm {
+          background-color: var(--el-color-black);
+          border-color: var(--el-color-black);
         }
       }
     }
   }
   .content {
     border-radius: 20px;
-    padding: 8px 12px;
+    padding: 8px 15px;
     width: 100%;
     max-width: 800px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     .image {
       max-width: 100%;
       max-height: 300px;
@@ -358,23 +341,51 @@ export default defineComponent({
       justify-content: flex-end;
       gap: 10px;
     }
-    .icon-edit {
-      font-size: 14px;
-      cursor: pointer;
-      color: var(--el-text-color-regular);
-    }
   }
 
   .operations {
-    display: flex; // Use flexbox for better alignment
-    gap: 10px; // Adjust the gap value as needed
-    margin-left: 5px; // Adjust the value as needed
+    display: flex;
+    gap: 10px;
+    margin-left: 5px;
     color: var(--el-text-color-regular);
+    .btn-edit {
+      visibility: hidden;
+    }
     .btn-restart {
-      font-size: 14px;
+      font-size: 12px;
     }
     .btn-copy {
-      font-size: 14px;
+      font-size: 12px;
+    }
+  }
+
+  &:hover {
+    .operations {
+      .btn-edit {
+        visibility: visible;
+      }
+    }
+  }
+}
+</style>
+
+<style lang="scss">
+.message {
+  &.user {
+    .content {
+      .edits {
+        textarea {
+          outline: none;
+          box-shadow: none;
+          border-radius: 0;
+          resize: none;
+          font-size: 16px;
+          border-color: var(--el-bg-color-page);
+          resize: none;
+          background-color: var(--el-bg-color-page);
+          color: var(--el-text-color-primary);
+        }
+      }
     }
   }
 }
