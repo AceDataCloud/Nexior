@@ -1,7 +1,7 @@
 <template>
   <layout>
     <template #chat>
-      <model-selector class="selector" @select="onCreateNewConversation" />
+      <model-selector class="selector" />
       <div :class="{ dialogue: true, empty: messages.length === 0 }">
         <div v-if="messages.length > 0" class="messages">
           <message
@@ -47,7 +47,6 @@ import Disclaimer from '@/components/chat/Disclaimer.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl, isJSONString } from '@/utils/is';
 import { chatOperator } from '@/operators';
-import { CHAT_MODEL_GPT_4_ALL } from '@/constants';
 
 export interface IData {
   drawer: boolean;
@@ -123,6 +122,12 @@ export default defineComponent({
     async references(val) {
       console.log('references changed', val);
     },
+    async modelGroup(val) {
+      console.debug('modelGroup changed', val);
+      if (val) {
+        this.onCreateNewConversation();
+      }
+    },
     async conversationId(val: string) {
       if (!val) {
         this.messages = [];
@@ -137,7 +142,6 @@ export default defineComponent({
     await this.onGetService();
     await this.onGetApplication();
     await this.onGetConversations();
-    await this.onScrollDown();
   },
   methods: {
     async onGetService() {
@@ -242,37 +246,10 @@ export default defineComponent({
           console.debug('finished update conversation', this.messages);
           // 3. Send restart questions
           console.debug('onRestart', this.question);
-          await this.onFetchAnswer();
+          await this.onRequest();
         })
         .catch((error) => {
-          if (this.messages && this.messages.length > 0) {
-            this.messages[this.messages.length - 1].state = IChatMessageState.FAILED;
-          }
-          if (error.name === 'AbortError') {
-            console.error('aborted');
-            return;
-          }
-          if (axios.isCancel(error)) {
-            this.messages[this.messages.length - 1].error = {
-              code: ERROR_CODE_CANCELED
-            };
-          } else if (error?.response?.data) {
-            let data = error?.response?.data;
-            if (isJSONString(data)) {
-              data = JSON.parse(data);
-            }
-            console.debug('error', data);
-            if (this.messages && this.messages.length > 0) {
-              this.messages[this.messages.length - 1].error = data.error;
-            }
-          } else {
-            if (this.messages && this.messages.length > 0) {
-              this.messages[this.messages.length - 1].error = {
-                code: ERROR_CODE_UNKNOWN
-              };
-            }
-          }
-          this.answering = false;
+          this.handleRequestError(error);
         });
     },
     async onEdit(targetMessage: IChatMessage, questionValue: string) {
@@ -314,42 +291,15 @@ export default defineComponent({
           });
           console.debug('finished update conversation', this.messages);
           // 3. Send edited questions
-
           this.messages.push({
             content: this.question,
             role: ROLE_USER
           });
           console.debug('onEdit', this.question);
-          await this.onFetchAnswer();
+          await this.onRequest();
         })
         .catch((error) => {
-          if (this.messages && this.messages.length > 0) {
-            this.messages[this.messages.length - 1].state = IChatMessageState.FAILED;
-          }
-          if (error.name === 'AbortError') {
-            console.error('aborted');
-            return;
-          }
-          if (axios.isCancel(error)) {
-            this.messages[this.messages.length - 1].error = {
-              code: ERROR_CODE_CANCELED
-            };
-          } else if (error?.response?.data) {
-            let data = error?.response?.data;
-            if (isJSONString(data)) {
-              data = JSON.parse(data);
-            }
-            if (this.messages && this.messages.length > 0) {
-              this.messages[this.messages.length - 1].error = data.error;
-            }
-          } else {
-            if (this.messages && this.messages.length > 0) {
-              this.messages[this.messages.length - 1].error = {
-                code: ERROR_CODE_UNKNOWN
-              };
-            }
-          }
-          this.answering = false;
+          this.handleRequestError(error);
         });
     },
     async onCreateNewConversation() {
@@ -390,20 +340,10 @@ export default defineComponent({
         });
       }
       console.debug('onSubmit', this.question, this.references);
-      await this.onFetchAnswer();
-    },
-    // Swipe the message to the bottom
-    async onScrollDown() {
-      setTimeout(() => {
-        const container = document.querySelector('.dialogue') as HTMLDivElement;
-        if (!container || !this.messages || this.messages.length === 0) {
-          return;
-        }
-        container.scrollTop = container?.scrollHeight;
-      }, 0);
+      await this.onRequest();
     },
     // Get answers to questions
-    async onFetchAnswer() {
+    async onRequest() {
       console.debug('start to get answer', this.messages);
       const token = this.credential?.token;
       const question = this.question;
@@ -455,7 +395,6 @@ export default defineComponent({
                   lastMessage?.state !== IChatMessageState.FINISHED ? IChatMessageState.ANSWERING : lastMessage?.state
               };
               conversationId = response?.id;
-              //this.onScrollDown();
             },
             signal: this.canceler.signal
           }
@@ -482,36 +421,49 @@ export default defineComponent({
           await this.$store.dispatch('chat/getApplications');
         })
         .catch((error) => {
-          if (this.messages && this.messages.length > 0) {
-            this.messages[this.messages.length - 1].state = IChatMessageState.FAILED;
-          }
-          if (error.name === 'AbortError') {
-            console.error('aborted');
-            return;
-          }
-          console.error(error);
-          if (axios.isCancel(error)) {
-            this.messages[this.messages.length - 1].error = {
-              code: ERROR_CODE_CANCELED
-            };
-          } else if (error?.response?.data) {
-            let data = error?.response?.data;
-            if (isJSONString(data)) {
-              data = JSON.parse(data);
-            }
-            console.debug('error', data);
-            if (this.messages && this.messages.length > 0) {
-              this.messages[this.messages.length - 1].error = data.error;
-            }
-          } else {
-            if (this.messages && this.messages.length > 0) {
-              this.messages[this.messages.length - 1].error = {
-                code: ERROR_CODE_UNKNOWN
-              };
-            }
-          }
-          this.answering = false;
+          this.handleRequestError(error);
         });
+    },
+    async handleRequestError(error: any) {
+      if (this.messages && this.messages.length > 0) {
+        this.messages[this.messages.length - 1].state = IChatMessageState.FAILED;
+      }
+      if (error.name === 'AbortError') {
+        console.error('aborted');
+        return;
+      }
+      console.error(error);
+      if (axios.isCancel(error)) {
+        this.messages[this.messages.length - 1].error = {
+          code: ERROR_CODE_CANCELED
+        };
+      } else if (error?.response?.data) {
+        let data = error?.response?.data;
+        if (isJSONString(data)) {
+          data = JSON.parse(data);
+        }
+        console.debug('error', data);
+        if (this.messages && this.messages.length > 0) {
+          this.messages[this.messages.length - 1].error = data.error;
+        }
+      } else {
+        if (this.messages && this.messages.length > 0) {
+          this.messages[this.messages.length - 1].error = {
+            code: ERROR_CODE_UNKNOWN
+          };
+        }
+      }
+      this.answering = false;
+    },
+    // Swipe the message to the bottom
+    async onScrollDown() {
+      setTimeout(() => {
+        const container = document.querySelector('.dialogue') as HTMLDivElement;
+        if (!container || !this.messages || this.messages.length === 0) {
+          return;
+        }
+        container.scrollTop = container?.scrollHeight;
+      }, 0);
     }
   }
 });
@@ -541,11 +493,10 @@ export default defineComponent({
 .dialogue {
   display: flex;
   flex-direction: column;
-  flex: 1;
   width: 100%;
+  height: 100%;
   overflow-y: auto;
   position: relative;
-  padding: 0 calc(50% - 400px);
   .disclaimer {
     width: 100%;
     text-align: center;
@@ -563,8 +514,9 @@ export default defineComponent({
   }
   .messages {
     padding-top: 10px;
+    padding: 0 calc(50% - 400px);
     flex: 1;
-    // overflow-y: scroll;
+    overflow-y: scroll;
     .message {
       margin-bottom: 15px;
     }

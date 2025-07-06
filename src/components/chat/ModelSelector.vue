@@ -1,7 +1,7 @@
 <template>
   <div class="selector">
     <el-dropdown trigger="click" popper-class="popper">
-      <div class="flex justify-center">
+      <div class="flex justify-center mr-1">
         <span class="icon">
           <img :src="modelGroup.icon" />
         </span>
@@ -27,7 +27,7 @@
       </template>
     </el-dropdown>
     <el-dropdown trigger="click" popper-class="popper">
-      <div class="flex align-center justify-center">
+      <div class="flex justify-center">
         <span class="name">{{ model?.getDisplayName() }}</span>
         <span class="angle">
           <font-awesome-icon icon="fa-solid fa-angle-down" />
@@ -97,7 +97,16 @@ export default defineComponent({
   },
   mounted() {
     if (!this.modelGroup) {
+      console.debug('ModelSelector mounted, setting default model group');
       this.$store.dispatch('chat/setModelGroup', CHAT_MODEL_GROUP_CHATGPT);
+    } else {
+      // renew models if modelGroup is already set
+      console.debug('ModelSelector mounted, checking model group');
+      const modelGroups = [CHAT_MODEL_GROUP_CHATGPT, CHAT_MODEL_GROUP_DEEPSEEK, CHAT_MODEL_GROUP_GROK];
+      const foundGroup = modelGroups.find((group) => group.name === this.modelGroup.name);
+      if (foundGroup) {
+        this.$store.dispatch('chat/setModelGroup', foundGroup);
+      }
     }
   },
   methods: {
