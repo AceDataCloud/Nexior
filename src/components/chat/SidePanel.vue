@@ -18,7 +18,7 @@
           v-for="(conversation, conversationIndex) in conversations"
           :key="conversationIndex"
           :class="{ conversation: true, active: conversation.id === conversationId }"
-          @click="onClick(conversation.id)"
+          @click="onClickConversation(conversation.id)"
         >
           <div class="title">
             <span v-if="conversation?.deleting">
@@ -87,9 +87,10 @@ export default defineComponent({
     ElSkeleton
   },
   props: {},
-  emits: ['click'],
+  emits: ['change-conversation'],
   computed: {
     conversationId() {
+      console.debug('conversationId in side', this.$route.params?.id);
       return this.$route.params?.id?.toString();
     },
     conversationGroups() {
@@ -146,9 +147,8 @@ export default defineComponent({
   },
   methods: {
     async onNewConversation() {
-      this.$router.push({
-        name: ROUTE_CHAT_CONVERSATION_NEW
-      });
+      console.debug('onNewConversation from side panel');
+      this.$emit('change-conversation', undefined);
     },
     async onConfirm(conversation: IChatConversation) {
       const token = this.token;
@@ -170,17 +170,9 @@ export default defineComponent({
         conversation.editing = true;
       }
     },
-    onClick(id: string) {
-      if (!id) {
-        return;
-      }
-      this.$router.push({
-        name: ROUTE_CHAT_CONVERSATION,
-        params: {
-          id
-        }
-      });
-      this.$emit('click', id);
+    onClickConversation(id?: string) {
+      console.debug('onClickConversation in side panel', id);
+      this.$emit('change-conversation', id);
     }
   }
 });

@@ -1,7 +1,7 @@
 <template>
-  <layout>
+  <layout @change-conversation="onChangeConversation($event)">
     <template #chat>
-      <model-selector class="selector" />
+      <model-selector class="selector" @model-group-changed="onChangeConversation(undefined)" />
       <div :class="{ dialogue: true, empty: messages.length === 0 }">
         <div v-if="messages.length > 0" class="messages">
           <message
@@ -18,13 +18,7 @@
           />
         </div>
         <div class="composer">
-          <composer
-            v-model:question="question"
-            v-model:references="references"
-            :disabled="answering"
-            @submit="onSubmit"
-            @stop="onStop"
-          />
+          <composer v-model:question="question" :disabled="answering" @submit="onSubmit" @stop="onStop" />
           <disclaimer class="disclaimer" />
         </div>
       </div>
@@ -36,7 +30,7 @@
 import axios from 'axios';
 import { defineComponent, ref } from 'vue';
 import Message from '@/components/chat/Message.vue';
-import { ROLE_ASSISTANT, ROLE_USER } from '@/constants';
+import { CHAT_MODEL_GROUPS, CHAT_MODELS, ROLE_ASSISTANT, ROLE_USER } from '@/constants';
 import { IChatMessageState, IChatConversationResponse, IChatConversation, IChatMessage } from '@/models';
 import Composer from '@/components/chat/Composer.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
@@ -124,18 +118,9 @@ export default defineComponent({
     },
     async modelGroup(val) {
       console.debug('modelGroup changed', val);
-      if (val) {
-        this.onCreateNewConversation();
-      }
     },
-    async conversationId(val: string) {
-      if (!val) {
-        this.messages = [];
-      } else {
-        this.messages =
-          this.conversations?.find((conversation: IChatConversation) => conversation.id === val)?.messages || [];
-        this.onScrollDown();
-      }
+    async conversationId(val) {
+      console.debug('conversationId changed', val);
     }
   },
   async mounted() {
@@ -302,11 +287,41 @@ export default defineComponent({
           this.handleRequestError(error);
         });
     },
-    async onCreateNewConversation() {
-      console.log('onCreateNewConversation');
-      await this.$router.push({
+    async onNewConversation() {
+      this.$router.push({
         name: ROUTE_CHAT_CONVERSATION_NEW
       });
+      this.messages = [];
+      this.question = '';
+      this.references = [];
+    },
+    async onRestoreConversation(id: string) {
+      this.$router.push({
+        name: ROUTE_CHAT_CONVERSATION,
+        params: {
+          id
+        }
+      });
+      const conversation = this.conversations?.find((conversation: IChatConversation) => conversation.id === id);
+      // change the model and model group
+      const model = conversation?.model;
+      console.debug('conversation model', model);
+      const targetModel = CHAT_MODELS.find((m) => m.name === model);
+      console.debug('target model', targetModel);
+      const targetModelGroup = CHAT_MODEL_GROUPS.find((g) => g.name === targetModel?.modelGroup);
+      console.debug('target model group', targetModelGroup);
+      this.$store.dispatch('chat/setModelGroup', targetModelGroup);
+      this.$store.dispatch('chat/setModel', targetModel);
+      this.messages = conversation?.messages || [];
+      this.onScrollDown();
+    },
+    async onChangeConversation(id?: string) {
+      console.log('onChangeConversation in conversation', id);
+      if (!id) {
+        this.onNewConversation();
+      } else {
+        this.onRestoreConversation(id);
+      }
     },
     async onSubmit() {
       if (this.references.length > 0) {
@@ -458,7 +473,7 @@ export default defineComponent({
     // Swipe the message to the bottom
     async onScrollDown() {
       setTimeout(() => {
-        const container = document.querySelector('.dialogue') as HTMLDivElement;
+        const container = document.querySelector('.messages') as HTMLDivElement;
         if (!container || !this.messages || this.messages.length === 0) {
           return;
         }

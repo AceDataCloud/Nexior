@@ -72,7 +72,7 @@ export default defineComponent({
     ElDropdownItem,
     FontAwesomeIcon
   },
-  emits: ['update:modelValue', 'select'],
+  emits: ['update:modelValue', 'select', 'model-group-changed', 'model-changed'],
   data(): IData {
     return {
       options: [CHAT_MODEL_GROUP_CHATGPT, CHAT_MODEL_GROUP_DEEPSEEK, CHAT_MODEL_GROUP_GROK]
@@ -112,9 +112,11 @@ export default defineComponent({
   methods: {
     onModelGroupChange(modelGroup: IChatModelGroup) {
       this.$store.dispatch('chat/setModelGroup', modelGroup);
+      this.$emit('model-group-changed', modelGroup);
     },
     onModelChange(model: IChatModelGroup['models'][number]) {
       this.$store.dispatch('chat/setModel', model);
+      this.$emit('model-changed', model);
     }
   }
 });

@@ -39,6 +39,7 @@ export type IChatModelName =
 export interface IChatModel {
   name: IChatModelName;
   icon: string;
+  modelGroup?: 'chatgpt' | 'deepseek' | 'grok';
   getDisplayName: () => string;
   getDescription: () => string;
   isSearchSupported?: boolean;
