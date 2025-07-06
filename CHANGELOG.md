@@ -1,8 +1,20 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sat, 05 Apr 2025 09:19:30 GMT and should not be manually modified.
+This log was last generated on Sun, 29 Jun 2025 15:11:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.19.0
+
+Sun, 29 Jun 2025 15:11:11 GMT
+
+### Minor changes
+
+- add user center (office@acedata.cloud)
+
+### Patches
+
+- fix credential error (1348977728@qq.com)
 
 ## 2.18.6
 
