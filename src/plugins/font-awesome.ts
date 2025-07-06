@@ -7,6 +7,7 @@ import {
   faSun as faRegularSun,
   faLightbulb as faRegularLightbulb,
   faMessage as faRegularMessage,
+  faFileAlt as faRegularFileAlt,
   faClock as faRegularClock,
   faFile as faRegularFile
 } from '@fortawesome/free-regular-svg-icons';
@@ -89,6 +90,7 @@ library.add(faSolidIdCard);
 library.add(faSolidStopCircle);
 library.add(faRegularFile);
 library.add(faSolidPlayCircle);
+library.add(faRegularFileAlt);
 library.add(faSolidFilm);
 library.add(faSolidMusic);
 library.add(faRegularCopy);

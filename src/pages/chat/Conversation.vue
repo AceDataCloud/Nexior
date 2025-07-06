@@ -1,16 +1,7 @@
 <template>
-  <layout>
+  <layout @change-conversation="onChangeConversation($event)">
     <template #chat>
-      <model-selector class="selector" @select="onCreateNewConversation" />
-      <application-status
-        :initializing="initializing"
-        :application="application"
-        :applications="applications"
-        :need-apply="needApply"
-        :service="service"
-        @select="$store.dispatch('chat/setApplication', $event)"
-        @refresh="$store.dispatch('chat/getApplications')"
-      />
+      <model-selector class="selector" @model-group-changed="onChangeConversation(undefined)" />
       <div :class="{ dialogue: true, empty: messages.length === 0 }">
         <div v-if="messages.length > 0" class="messages">
           <message
@@ -27,26 +18,15 @@
           />
         </div>
         <div class="composer">
-          <input-box
-            v-model:is-search-active="isSearchActive"
-            v-model:is-reason-active="isReasonActive"
-            v-model:is-deepsearch-active="isDeepsearchActive"
-            v-model:is-search-enabled="isSearchEnabled"
-            v-model:is-deepsearch-enabled="isDeepsearchEnabled"
-            v-model:is-reason-enabled="isReasonEnabled"
-            v-model:is-upload-enabled="isUploadEnabled"
+          <composer
+            v-model:question="question"
             :disabled="answering"
-            :question="question"
             :references="references"
-            :upload="upload"
-            @update:question="question = $event"
-            @update:upload="upload = $event"
             @update:references="references = $event"
             @submit="onSubmit"
             @stop="onStop"
           />
           <disclaimer class="disclaimer" />
-          <suggestion v-if="messages.length === 0" @draft="onDraft" />
         </div>
       </div>
     </template>
@@ -57,54 +37,22 @@
 import axios from 'axios';
 import { defineComponent, ref } from 'vue';
 import Message from '@/components/chat/Message.vue';
-import {
-  CHAT_MODEL_DEEPSEEK_CHAT,
-  CHAT_MODEL_DEEPSEEK_REASONER,
-  CHAT_MODEL_GPT_4_BROWSING,
-  CHAT_MODEL_GPT_4O,
-  CHAT_MODEL_GROK_3,
-  CHAT_MODEL_GROK_3_DEEPSEARCH,
-  CHAT_MODEL_GROK_3_REASONER,
-  CHAT_MODEL_GROUP_CHATGPT,
-  CHAT_MODEL_GROUP_DEEPSEEK,
-  CHAT_MODEL_GROUP_GROK,
-  CHAT_MODEL_O1_MINI,
-  CHAT_MODELS,
-  ROLE_ASSISTANT,
-  ROLE_USER
-} from '@/constants';
-import {
-  IChatModel,
-  IChatMessageState,
-  IChatConversationResponse,
-  IChatConversation,
-  IChatMessage,
-  IChatModelGroup
-} from '@/models';
-import InputBox from '@/components/chat/InputBox.vue';
+import { CHAT_MODEL_GROUPS, CHAT_MODELS, ROLE_ASSISTANT, ROLE_USER } from '@/constants';
+import { IChatMessageState, IChatConversationResponse, IChatConversation, IChatMessage } from '@/models';
+import Composer from '@/components/chat/Composer.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router';
 import { Status } from '@/models';
-import Suggestion from '@/components/chat/Suggestion.vue';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl, isJSONString } from '@/utils/is';
 import { chatOperator } from '@/operators';
-import ApplicationStatus from '@/components/application/Status.vue';
-import { CHAT_MODEL_GPT_4_ALL } from '@/constants';
 
 export interface IData {
   drawer: boolean;
   question: string;
   upload: boolean;
-  isSearchActive: boolean;
-  isDeepsearchActive: boolean;
-  isReasonActive: boolean;
-  isSearchEnabled: boolean;
-  isDeepsearchEnabled: boolean;
-  isReasonEnabled: boolean;
-  isUploadEnabled: boolean;
   references: string[];
   answering: boolean;
   messages: IChatMessage[];
@@ -114,12 +62,10 @@ export interface IData {
 export default defineComponent({
   name: 'ChatConversation',
   components: {
-    InputBox,
+    Composer,
     Disclaimer,
-    Suggestion,
     ModelSelector,
     Message,
-    ApplicationStatus,
     Layout
   },
   data(): IData {
@@ -128,13 +74,6 @@ export default defineComponent({
       question: '',
       references: [],
       upload: false,
-      isSearchActive: false,
-      isReasonActive: false,
-      isDeepsearchActive: false,
-      isSearchEnabled: true,
-      isReasonEnabled: true,
-      isUploadEnabled: true,
-      isDeepsearchEnabled: true,
       answering: false,
       canceler: undefined,
       messages:
@@ -183,131 +122,20 @@ export default defineComponent({
   watch: {
     async references(val) {
       console.log('references changed', val);
-      const model = await this.getModelByAction();
-      if (model) {
-        await this.$store.dispatch('chat/setModel', model);
-      }
     },
-    async isSearchActive(val) {
-      console.log('search changed', val);
-      const model = await this.getModelByAction();
-      if (model) {
-        await this.$store.dispatch('chat/setModel', model);
-      }
+    async modelGroup(val) {
+      console.debug('modelGroup changed', val);
     },
-    async isReasonActive(val) {
-      console.log('reason changed', val);
-      const model = await this.getModelByAction();
-      if (model) {
-        await this.$store.dispatch('chat/setModel', model);
-      }
-    },
-    async isDeepsearchActive(val) {
-      console.log('deepsearch changed', val);
-      const model = await this.getModelByAction();
-      if (model) {
-        await this.$store.dispatch('chat/setModel', model);
-      }
-    },
-    async modelGroup(val: IChatModelGroup) {
-      console.log('modelGroup changed', val);
-      const model = await this.getModelByAction();
-      if (model) {
-        console.log('set model', model);
-        await this.$store.dispatch('chat/setModel', model);
-      }
-      if (val.name === CHAT_MODEL_GROUP_DEEPSEEK.name) {
-        this.upload = false;
-      }
-    },
-    model(val: IChatModel) {
-      console.log('model changed', val);
-      if (val) {
-        this.$store.dispatch('chat/setModel', val);
-      }
-    },
-    async conversationId(val: string) {
-      if (!val) {
-        this.messages = [];
-      } else {
-        this.messages =
-          this.conversations?.find((conversation: IChatConversation) => conversation.id === val)?.messages || [];
-        this.onScrollDown();
-      }
-      const model = await this.getModelByConversation();
-      if (model) {
-        await this.$store.dispatch('chat/setModel', model);
-      }
-      const modelGroup = await this.getModelGroup();
-      if (modelGroup) {
-        console.log('set model group', modelGroup);
-        await this.$store.dispatch('chat/setModelGroup', modelGroup);
-      }
+    async conversationId(val) {
+      console.debug('conversationId changed', val);
     }
   },
   async mounted() {
     await this.onGetService();
     await this.onGetApplication();
     await this.onGetConversations();
-    await this.onScrollDown();
-
-    // initialize model
-    const model = await this.getModel();
-    if (model) {
-      console.log('set model', model);
-      await this.$store.dispatch('chat/setModel', model);
-    }
-    // initialize model group
-    const modelGroup = await this.getModelGroup();
-    if (modelGroup) {
-      console.log('set model group', modelGroup);
-      await this.$store.dispatch('chat/setModelGroup', modelGroup);
-    }
   },
   methods: {
-    async getModel() {
-      return (await this.getModelByConversation()) || (await this.getModelByAction());
-    },
-    async getModelByConversation() {
-      if (this.conversationId && this.conversation?.model) {
-        const modelName = this.conversation.model;
-        return CHAT_MODELS.find((model: IChatModel) => model.name === modelName);
-      }
-    },
-    async getModelByAction() {
-      if (this.modelGroup.name === CHAT_MODEL_GROUP_CHATGPT.name) {
-        if (this.isReasonActive) {
-          return CHAT_MODEL_O1_MINI;
-        } else if (this.isSearchActive) {
-          return CHAT_MODEL_GPT_4_BROWSING;
-        } else if (this.references.length > 0) {
-          return CHAT_MODEL_GPT_4_ALL;
-        }
-        return CHAT_MODEL_GPT_4O;
-      } else if (this.modelGroup.name === CHAT_MODEL_GROUP_DEEPSEEK.name) {
-        if (this.isReasonActive) {
-          return CHAT_MODEL_DEEPSEEK_REASONER;
-        }
-        return CHAT_MODEL_DEEPSEEK_CHAT;
-      } else if (this.modelGroup.name === CHAT_MODEL_GROUP_GROK.name) {
-        if (this.isReasonActive) {
-          return CHAT_MODEL_GROK_3_REASONER;
-        } else if (this.isDeepsearchActive) {
-          return CHAT_MODEL_GROK_3_DEEPSEARCH;
-        }
-        return CHAT_MODEL_GROK_3;
-      }
-    },
-    async getModelGroup() {
-      const currentModel = this.model;
-      if (CHAT_MODEL_GROUP_CHATGPT.models.map((item) => item.name).includes(currentModel.name)) {
-        return CHAT_MODEL_GROUP_CHATGPT;
-      } else if (CHAT_MODEL_GROUP_DEEPSEEK.models.map((item) => item.name).includes(currentModel.name)) {
-        return CHAT_MODEL_GROUP_DEEPSEEK;
-      } else if (CHAT_MODEL_GROUP_GROK.models.map((item) => item.name).includes(currentModel.name)) {
-        return CHAT_MODEL_GROUP_GROK;
-      }
-    },
     async onGetService() {
       console.debug('start onGetService');
       await this.$store.dispatch('chat/getService');
@@ -410,37 +238,10 @@ export default defineComponent({
           console.debug('finished update conversation', this.messages);
           // 3. Send restart questions
           console.debug('onRestart', this.question);
-          await this.onFetchAnswer();
+          await this.onRequest();
         })
         .catch((error) => {
-          if (this.messages && this.messages.length > 0) {
-            this.messages[this.messages.length - 1].state = IChatMessageState.FAILED;
-          }
-          if (error.name === 'AbortError') {
-            console.error('aborted');
-            return;
-          }
-          if (axios.isCancel(error)) {
-            this.messages[this.messages.length - 1].error = {
-              code: ERROR_CODE_CANCELED
-            };
-          } else if (error?.response?.data) {
-            let data = error?.response?.data;
-            if (isJSONString(data)) {
-              data = JSON.parse(data);
-            }
-            console.debug('error', data);
-            if (this.messages && this.messages.length > 0) {
-              this.messages[this.messages.length - 1].error = data.error;
-            }
-          } else {
-            if (this.messages && this.messages.length > 0) {
-              this.messages[this.messages.length - 1].error = {
-                code: ERROR_CODE_UNKNOWN
-              };
-            }
-          }
-          this.answering = false;
+          this.handleRequestError(error);
         });
     },
     async onEdit(targetMessage: IChatMessage, questionValue: string) {
@@ -482,49 +283,52 @@ export default defineComponent({
           });
           console.debug('finished update conversation', this.messages);
           // 3. Send edited questions
-
           this.messages.push({
             content: this.question,
             role: ROLE_USER
           });
           console.debug('onEdit', this.question);
-          await this.onFetchAnswer();
+          await this.onRequest();
         })
         .catch((error) => {
-          if (this.messages && this.messages.length > 0) {
-            this.messages[this.messages.length - 1].state = IChatMessageState.FAILED;
-          }
-          if (error.name === 'AbortError') {
-            console.error('aborted');
-            return;
-          }
-          if (axios.isCancel(error)) {
-            this.messages[this.messages.length - 1].error = {
-              code: ERROR_CODE_CANCELED
-            };
-          } else if (error?.response?.data) {
-            let data = error?.response?.data;
-            if (isJSONString(data)) {
-              data = JSON.parse(data);
-            }
-            if (this.messages && this.messages.length > 0) {
-              this.messages[this.messages.length - 1].error = data.error;
-            }
-          } else {
-            if (this.messages && this.messages.length > 0) {
-              this.messages[this.messages.length - 1].error = {
-                code: ERROR_CODE_UNKNOWN
-              };
-            }
-          }
-          this.answering = false;
+          this.handleRequestError(error);
         });
     },
-    async onCreateNewConversation() {
-      console.log('onCreateNewConversation');
-      await this.$router.push({
+    async onNewConversation() {
+      this.$router.push({
         name: ROUTE_CHAT_CONVERSATION_NEW
       });
+      this.messages = [];
+      this.question = '';
+      this.references = [];
+    },
+    async onRestoreConversation(id: string) {
+      this.$router.push({
+        name: ROUTE_CHAT_CONVERSATION,
+        params: {
+          id
+        }
+      });
+      const conversation = this.conversations?.find((conversation: IChatConversation) => conversation.id === id);
+      // change the model and model group
+      const model = conversation?.model;
+      console.debug('conversation model', model);
+      const targetModel = CHAT_MODELS.find((m) => m.name === model);
+      console.debug('target model', targetModel);
+      const targetModelGroup = CHAT_MODEL_GROUPS.find((g) => g.name === targetModel?.modelGroup);
+      console.debug('target model group', targetModelGroup);
+      this.$store.dispatch('chat/setModelGroup', targetModelGroup);
+      this.$store.dispatch('chat/setModel', targetModel);
+      this.messages = conversation?.messages || [];
+      this.onScrollDown();
+    },
+    async onChangeConversation(id?: string) {
+      console.log('onChangeConversation in conversation', id);
+      if (!id) {
+        this.onNewConversation();
+      } else {
+        this.onRestoreConversation(id);
+      }
     },
     async onSubmit() {
       if (this.references.length > 0) {
@@ -558,20 +362,10 @@ export default defineComponent({
         });
       }
       console.debug('onSubmit', this.question, this.references);
-      await this.onFetchAnswer();
-    },
-    // Swipe the message to the bottom
-    async onScrollDown() {
-      setTimeout(() => {
-        const container = document.querySelector('.dialogue') as HTMLDivElement;
-        if (!container || !this.messages || this.messages.length === 0) {
-          return;
-        }
-        container.scrollTop = container?.scrollHeight;
-      }, 0);
+      await this.onRequest();
     },
     // Get answers to questions
-    async onFetchAnswer() {
+    async onRequest() {
       console.debug('start to get answer', this.messages);
       const token = this.credential?.token;
       const question = this.question;
@@ -623,7 +417,6 @@ export default defineComponent({
                   lastMessage?.state !== IChatMessageState.FINISHED ? IChatMessageState.ANSWERING : lastMessage?.state
               };
               conversationId = response?.id;
-              //this.onScrollDown();
             },
             signal: this.canceler.signal
           }
@@ -650,36 +443,49 @@ export default defineComponent({
           await this.$store.dispatch('chat/getApplications');
         })
         .catch((error) => {
-          if (this.messages && this.messages.length > 0) {
-            this.messages[this.messages.length - 1].state = IChatMessageState.FAILED;
-          }
-          if (error.name === 'AbortError') {
-            console.error('aborted');
-            return;
-          }
-          console.error(error);
-          if (axios.isCancel(error)) {
-            this.messages[this.messages.length - 1].error = {
-              code: ERROR_CODE_CANCELED
-            };
-          } else if (error?.response?.data) {
-            let data = error?.response?.data;
-            if (isJSONString(data)) {
-              data = JSON.parse(data);
-            }
-            console.debug('error', data);
-            if (this.messages && this.messages.length > 0) {
-              this.messages[this.messages.length - 1].error = data.error;
-            }
-          } else {
-            if (this.messages && this.messages.length > 0) {
-              this.messages[this.messages.length - 1].error = {
-                code: ERROR_CODE_UNKNOWN
-              };
-            }
-          }
-          this.answering = false;
+          this.handleRequestError(error);
         });
+    },
+    async handleRequestError(error: any) {
+      if (this.messages && this.messages.length > 0) {
+        this.messages[this.messages.length - 1].state = IChatMessageState.FAILED;
+      }
+      if (error.name === 'AbortError') {
+        console.error('aborted');
+        return;
+      }
+      console.error(error);
+      if (axios.isCancel(error)) {
+        this.messages[this.messages.length - 1].error = {
+          code: ERROR_CODE_CANCELED
+        };
+      } else if (error?.response?.data) {
+        let data = error?.response?.data;
+        if (isJSONString(data)) {
+          data = JSON.parse(data);
+        }
+        console.debug('error', data);
+        if (this.messages && this.messages.length > 0) {
+          this.messages[this.messages.length - 1].error = data.error;
+        }
+      } else {
+        if (this.messages && this.messages.length > 0) {
+          this.messages[this.messages.length - 1].error = {
+            code: ERROR_CODE_UNKNOWN
+          };
+        }
+      }
+      this.answering = false;
+    },
+    // Swipe the message to the bottom
+    async onScrollDown() {
+      setTimeout(() => {
+        const container = document.querySelector('.messages') as HTMLDivElement;
+        if (!container || !this.messages || this.messages.length === 0) {
+          return;
+        }
+        container.scrollTop = container?.scrollHeight;
+      }, 0);
     }
   }
 });
@@ -692,6 +498,7 @@ export default defineComponent({
   position: absolute;
   left: 10px;
   top: 10px;
+  z-index: 100;
 }
 .setting {
   position: absolute;
@@ -708,11 +515,10 @@ export default defineComponent({
 .dialogue {
   display: flex;
   flex-direction: column;
-  flex: 1;
   width: 100%;
+  height: 100%;
   overflow-y: auto;
   position: relative;
-  padding: 0 calc(50% - 400px);
   .disclaimer {
     width: 100%;
     text-align: center;
@@ -730,8 +536,9 @@ export default defineComponent({
   }
   .messages {
     padding-top: 10px;
+    padding: 0 calc(50% - 400px);
     flex: 1;
-    // overflow-y: scroll;
+    overflow-y: scroll;
     .message {
       margin-bottom: 15px;
     }

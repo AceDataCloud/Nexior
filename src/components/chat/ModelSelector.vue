@@ -1,7 +1,7 @@
 <template>
   <div class="selector">
     <el-dropdown trigger="click" popper-class="popper">
-      <div class="flex align-center justify-center">
+      <div class="flex justify-center mr-1">
         <span class="icon">
           <img :src="modelGroup.icon" />
         </span>
@@ -12,7 +12,7 @@
       </div>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item v-for="(option, optionKey) in options" :key="optionKey" @click="onCommandChange(option)">
+          <el-dropdown-item v-for="(option, optionKey) in options" :key="optionKey" @click="onModelGroupChange(option)">
             <div class="item">
               <div class="icon">
                 <img :src="option.icon" />
@@ -20,6 +20,30 @@
               <div class="info">
                 <p class="name">{{ option.getDisplayName() }}</p>
                 <p class="description">{{ option.getDescription() }}</p>
+              </div>
+            </div>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </template>
+    </el-dropdown>
+    <el-dropdown trigger="click" popper-class="popper">
+      <div class="flex justify-center">
+        <span class="name">{{ model?.getDisplayName() }}</span>
+        <span class="angle">
+          <font-awesome-icon icon="fa-solid fa-angle-down" />
+        </span>
+      </div>
+      <template #dropdown>
+        <el-dropdown-menu v-if="modelGroup && modelGroup.models">
+          <el-dropdown-item
+            v-for="(option, optionKey) in modelGroup.models"
+            :key="optionKey"
+            @click="onModelChange(option)"
+          >
+            <div class="item">
+              <div class="info">
+                <p v-if="option.getDisplayName" class="name">{{ option.getDisplayName() }}</p>
+                <p v-if="option.getDescription" class="description">{{ option.getDescription() }}</p>
               </div>
             </div>
           </el-dropdown-item>
@@ -48,7 +72,7 @@ export default defineComponent({
     ElDropdownItem,
     FontAwesomeIcon
   },
-  emits: ['update:modelValue', 'select'],
+  emits: ['update:modelValue', 'select', 'model-group-changed', 'model-changed'],
   data(): IData {
     return {
       options: [CHAT_MODEL_GROUP_CHATGPT, CHAT_MODEL_GROUP_DEEPSEEK, CHAT_MODEL_GROUP_GROK]
@@ -56,13 +80,43 @@ export default defineComponent({
   },
   computed: {
     modelGroup() {
+      console.log('modelGroup', this.$store.state.chat.modelGroup);
       return this.$store.state.chat.modelGroup;
+    },
+    model() {
+      console.log('model', this.$store.state.chat.model);
+      return this.$store.state.chat.model;
+    }
+  },
+  watch: {
+    // set first model when modelGroup changes
+    modelGroup(newValue: IChatModelGroup) {
+      console.debug('ModelSelector modelGroup changed', newValue);
+      this.$store.dispatch('chat/setModel', newValue.models[0]);
+    }
+  },
+  mounted() {
+    if (!this.modelGroup) {
+      console.debug('ModelSelector mounted, setting default model group');
+      this.$store.dispatch('chat/setModelGroup', CHAT_MODEL_GROUP_CHATGPT);
+    } else {
+      // renew models if modelGroup is already set
+      console.debug('ModelSelector mounted, checking model group');
+      const modelGroups = [CHAT_MODEL_GROUP_CHATGPT, CHAT_MODEL_GROUP_DEEPSEEK, CHAT_MODEL_GROUP_GROK];
+      const foundGroup = modelGroups.find((group) => group.name === this.modelGroup.name);
+      if (foundGroup) {
+        this.$store.dispatch('chat/setModelGroup', foundGroup);
+      }
     }
   },
   methods: {
-    onCommandChange(modelGroup: IChatModelGroup) {
-      this.$emit('select', modelGroup);
+    onModelGroupChange(modelGroup: IChatModelGroup) {
       this.$store.dispatch('chat/setModelGroup', modelGroup);
+      this.$emit('model-group-changed', modelGroup);
+    },
+    onModelChange(model: IChatModelGroup['models'][number]) {
+      this.$store.dispatch('chat/setModel', model);
+      this.$emit('model-changed', model);
     }
   }
 });
@@ -89,7 +143,7 @@ export default defineComponent({
   }
   .angle {
     display: inline-block;
-    max-width: 5px;
+    width: 15px;
   }
 }
 

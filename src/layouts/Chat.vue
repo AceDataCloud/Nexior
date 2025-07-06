@@ -2,7 +2,7 @@
   <div class="main">
     <div class="side">
       <slot name="side">
-        <side-panel />
+        <side-panel @change-conversation="onChangeConversation" />
       </slot>
     </div>
     <div class="chat">
@@ -24,6 +24,7 @@ import UserCenter from '@/components/user/Center.vue';
 import SidePanel from '@/components/chat/SidePanel.vue';
 import { ElDrawer, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { on } from 'events';
 
 export default defineComponent({
   name: 'LayoutChat',
@@ -34,10 +35,17 @@ export default defineComponent({
     ElButton,
     FontAwesomeIcon
   },
+  emits: ['change-conversation'],
   data() {
     return {
       drawer: false
     };
+  },
+  methods: {
+    onChangeConversation(id?: string) {
+      console.debug('onChangeConversation in layout', id);
+      this.$emit('change-conversation', id);
+    }
   }
 });
 </script>

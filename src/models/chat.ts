@@ -2,11 +2,6 @@ import {
   ROLE_ASSISTANT,
   ROLE_SYSTEM,
   ROLE_USER,
-  CHAT_MODEL_NAME_GPT_3_5,
-  CHAT_MODEL_NAME_GPT_3_5_BROWSING,
-  CHAT_MODEL_NAME_GPT_4,
-  CHAT_MODEL_NAME_GPT_4_BROWSING,
-  CHAT_MODEL_NAME_GPT_4_VISION,
   CHAT_MODEL_NAME_GPT_4_ALL,
   CHAT_MODEL_NAME_GPT_4O,
   CHAT_MODEL_NAME_O1,
@@ -20,11 +15,6 @@ import {
 } from '@/constants';
 
 export type IChatModelName =
-  | typeof CHAT_MODEL_NAME_GPT_3_5
-  | typeof CHAT_MODEL_NAME_GPT_3_5_BROWSING
-  | typeof CHAT_MODEL_NAME_GPT_4
-  | typeof CHAT_MODEL_NAME_GPT_4_BROWSING
-  | typeof CHAT_MODEL_NAME_GPT_4_VISION
   | typeof CHAT_MODEL_NAME_GPT_4_ALL
   | typeof CHAT_MODEL_NAME_GPT_4O
   | typeof CHAT_MODEL_NAME_DEEPSEEK_CHAT
@@ -39,8 +29,14 @@ export type IChatModelName =
 export interface IChatModel {
   name: IChatModelName;
   icon: string;
+  modelGroup?: 'chatgpt' | 'deepseek' | 'grok';
   getDisplayName: () => string;
   getDescription: () => string;
+  isSearchSupported?: boolean;
+  isImageSupported?: boolean;
+  isFileSupported?: boolean;
+  isReasoningSupported?: boolean;
+  isDeepSearchSupported?: boolean;
 }
 
 export interface IChatModelGroup {
