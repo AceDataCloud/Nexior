@@ -8,6 +8,7 @@ import './assets/css/tailwind.css';
 import 'mac-scrollbar/dist/mac-scrollbar.css';
 import dayjs from './plugins/dayjs';
 import './plugins/font-awesome';
+import { MotionPlugin } from '@vueuse/motion';
 import { vLoading } from 'element-plus';
 import {
   initializeCookies,
@@ -46,10 +47,12 @@ const main = async () => {
   app.use(router);
   app.use(store);
   app.use(i18n);
+  app.use(MotionPlugin);
   app.use(dayjs, {
     formatString: 'YYYY-MM-DD HH:mm:ss'
   });
   app.directive('loading', vLoading);
+  // app.use(createMotionPlugin());
   app.mount('#app');
   console.debug('app mounted');
 

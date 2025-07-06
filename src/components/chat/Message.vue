@@ -10,7 +10,19 @@
       <el-image v-if="message.role === 'assistant'" :src="modelGroup.icon" fit="cover" class="avatar" />
     </div>
     <div v-if="!errorText" class="main">
-      <div class="content">
+      <div
+        v-motion
+        :initial="{ opacity: 0, y: 5 }"
+        :enter="{ opacity: 1, y: 0, scale: 1 }"
+        :delay="200"
+        :duration="300"
+        :layout="true"
+        :transition="{
+          enter: { delay: 0.2, duration: 0.5 },
+          layout: { duration: 0.3, easing: 'ease-in-out' }
+        }"
+        class="content"
+      >
         <div v-if="!isEditing" class="message-content">
           <markdown-renderer v-if="!Array.isArray(message.content)" :content="message?.content" />
           <div v-else>
