@@ -8,7 +8,7 @@
           type="circle"
           :stroke-width="3"
           :percentage="percentage"
-          :width="30"
+          :width="25"
         />
       </div>
     </div>
@@ -44,7 +44,8 @@ export default defineComponent({
     },
     closable: {
       type: Boolean,
-      required: false
+      required: false,
+      default: true
     }
   },
   emits: ['remove'],
@@ -66,6 +67,16 @@ export default defineComponent({
   align-items: center;
   justify-content: flex-start;
   background-color: var(--el-bg-color);
+  .el-progress {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25px;
+    height: 25px;
+    z-index: 10;
+    margin: auto;
+  }
   .left {
     height: 50px;
     width: 50px;
