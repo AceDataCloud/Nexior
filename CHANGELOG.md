@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sun, 29 Jun 2025 15:11:11 GMT and should not be manually modified.
+This log was last generated on Sun, 06 Jul 2025 17:09:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.20.0
+
+Sun, 06 Jul 2025 17:09:22 GMT
+
+### Minor changes
+
+- refactor chat (office@acedata.cloud)
 
 ## 2.19.0
 
