@@ -1,5 +1,5 @@
 <template>
-  <div class="input-box">
+  <div class="composer">
     <div class="tools">
       <el-upload
         v-model:file-list="fileList"
@@ -9,14 +9,30 @@
         }"
         :disabled="!model.isFileSupported || disabled"
         name="file"
-        :show-file-list="true"
         :limit="10"
-        :multiple="false"
+        :multiple="true"
         :action="uploadUrl"
+        list-type="picture"
         :on-exceed="onExceed"
         :on-error="onError"
+        :on-progress="onProgress"
         :headers="headers"
       >
+        <template #file="{ file }">
+          <image-preview
+            v-if="isImageUrl(file.name)"
+            :url="file.url || file.response?.file_url"
+            :name="file.name"
+            :percentage="file.percentage"
+            @remove="fileList.splice(fileList.indexOf(file), 1)"
+          />
+          <file-preview
+            v-else
+            :name="file.name"
+            :percentage="file.percentage"
+            @remove="fileList.splice(fileList.indexOf(file), 1)"
+          />
+        </template>
         <el-tooltip class="box-item" effect="dark" :content="$t('chat.message.uploadFile')" placement="bottom">
           <span :class="{ btn: true, 'btn-upload': true, disabled: !model.isFileSupported || disabled }">
             <font-awesome-icon icon="fa-solid fa-plus" class="icon icon-attachment" />
@@ -46,7 +62,6 @@
     >
       <font-awesome-icon icon="fa-solid fa-stop" class="icon icon-stop" />
     </span>
-    <!-- add this textarea -->
     <textarea
       ref="textarea"
       v-model="questionValue"
@@ -62,14 +77,18 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElMessage, ElTooltip, ElUpload } from 'element-plus';
+import { ElMessage, ElTooltip, ElUpload, UploadFile, UploadFiles, UploadProgressEvent } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IChatModel } from '@/models';
-import { getBaseUrlPlatform } from '@/utils';
+import { getBaseUrlPlatform, isImageUrl } from '@/utils';
+import FilePreview from './FilePreview.vue';
+import ImagePreview from './ImagePreview.vue';
 
 export default defineComponent({
   name: 'Composer',
   components: {
+    FilePreview,
+    ImagePreview,
     ElTooltip,
     FontAwesomeIcon,
     ElUpload
@@ -95,7 +114,7 @@ export default defineComponent({
     return {
       inputHeight: '35px',
       questionValue: this.question,
-      fileList: [],
+      fileList: [] as UploadFile[],
       uploadUrl: getBaseUrlPlatform() + '/api/v1/files/'
     };
   },
@@ -118,7 +137,10 @@ export default defineComponent({
   },
   watch: {
     urls(val) {
-      this.$emit('update:references', val);
+      console.debug('File URLs:', val);
+      if (val.length > 0) {
+        this.$emit('update:references', val);
+      }
     },
     questionValue(val: string) {
       this.$emit('update:question', val);
@@ -129,12 +151,14 @@ export default defineComponent({
       }
     },
     references(val: string[]) {
+      console.debug('References updated:', val);
       if (val.length === 0) {
         this.fileList = [];
       }
     }
   },
   methods: {
+    isImageUrl,
     // add textarea method
     adjustTextareaHeight() {
       this.$nextTick(() => {
@@ -155,6 +179,9 @@ export default defineComponent({
     },
     onStop() {
       this.$emit('stop');
+    },
+    onProgress(evt: UploadProgressEvent, uploadFile: UploadFile, uploadFiles: UploadFiles) {
+      console.debug('File upload progress:', uploadFile.name, evt.loaded, evt.total);
     },
     onExceed() {
       ElMessage.warning(this.$t('chat.message.uploadReferencesExceed'));
@@ -183,7 +210,7 @@ textarea.input {
 textarea.input:focus {
   outline: none;
 }
-.input-box {
+.composer {
   position: relative;
   .input {
     textarea {
@@ -197,8 +224,28 @@ textarea.input:focus {
   }
   .el-upload-list {
     position: absolute;
-    width: 100%;
-    bottom: 135px;
+    bottom: -5px;
+    left: 50px;
+    height: 50px;
+    width: 700px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 5px;
+    overflow-y: scroll;
+    flex-wrap: wrap;
+    .el-upload-list__item {
+      margin: 0;
+      width: fit-content;
+      height: 50px;
+      padding: 0;
+      border-radius: 10px;
+      position: relative;
+    }
   }
 
   .el-textarea.is-disabled .el-textarea__inner {
@@ -208,7 +255,7 @@ textarea.input:focus {
 </style>
 
 <style lang="scss" scoped>
-.input-box {
+.composer {
   width: 100%;
   max-width: 800px;
   margin: auto;
@@ -267,45 +314,6 @@ textarea.input:focus {
         .icon-attachment {
           font-size: 16px;
           color: var(--el-text-color-primary);
-        }
-      }
-      &.btn-search {
-        color: var(--el-text-color-primary);
-        border-radius: 20px;
-        padding: 0 10px;
-        font-size: 16px;
-        &.active {
-          border: 1px solid var(--el-color-primary);
-          color: var(--el-color-primary);
-        }
-        .icon-search {
-          font-size: 16px;
-        }
-      }
-      &.btn-reason {
-        color: var(--el-text-color-primary);
-        border-radius: 20px;
-        padding: 0 10px;
-        font-size: 16px;
-        &.active {
-          border: 1px solid var(--el-color-primary);
-          color: var(--el-color-primary);
-        }
-        .icon-reason {
-          font-size: 16px;
-        }
-      }
-      &.btn-deepsearch {
-        color: var(--el-text-color-primary);
-        border-radius: 20px;
-        padding: 0 10px;
-        font-size: 16px;
-        &.active {
-          border: 1px solid var(--el-color-primary);
-          color: var(--el-color-primary);
-        }
-        .icon-deepsearch {
-          font-size: 16px;
         }
       }
     }

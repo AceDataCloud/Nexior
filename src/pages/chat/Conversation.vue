@@ -18,7 +18,14 @@
           />
         </div>
         <div class="composer">
-          <composer v-model:question="question" :disabled="answering" @submit="onSubmit" @stop="onStop" />
+          <composer
+            v-model:question="question"
+            :disabled="answering"
+            :references="references"
+            @update:references="references = $event"
+            @submit="onSubmit"
+            @stop="onStop"
+          />
           <disclaimer class="disclaimer" />
         </div>
       </div>

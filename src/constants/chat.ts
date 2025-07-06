@@ -26,6 +26,7 @@ export const CHAT_MODEL_GPT_4_ALL: IChatModel = {
   name: CHAT_MODEL_NAME_GPT_4_ALL,
   icon: CHAT_MODEL_ICON_OPENAI,
   modelGroup: 'chatgpt',
+  isFileSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.4All'),
   getDescription: () => i18n.global.t('chat.model.4AllDescription')
 };
@@ -34,6 +35,7 @@ export const CHAT_MODEL_GPT_4O: IChatModel = {
   name: CHAT_MODEL_NAME_GPT_4O,
   icon: CHAT_MODEL_ICON_OPENAI,
   modelGroup: 'chatgpt',
+  isFileSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.4O'),
   getDescription: () => i18n.global.t('chat.model.4ODescription')
 };

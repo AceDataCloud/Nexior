@@ -39,5 +39,5 @@ export const isSubOfficial = (): boolean => {
  * is image url
  */
 export function isImageUrl(url: string): boolean {
-  return /\.(jpg|jpeg|png|gif|bmp|webp|svg|tiff?)$/i.test(url);
+  return /\.(jpg|jpeg|png|gif|bmp|webp|svg|tiff|ico|heic?)$/i.test(url.toLowerCase());
 }
