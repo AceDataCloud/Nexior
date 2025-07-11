@@ -1,5 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import {
+  ApiError,
+  BaseError,
   IChatConversation,
   IChatConversationAction,
   IChatConversationOptions,
@@ -7,7 +9,7 @@ import {
   IChatConversationResponse,
   IChatConversationsResponse
 } from '@/models';
-import { BASE_URL_API } from '@/constants';
+import { BASE_URL_API, ERROR_CODE_API_ERROR } from '@/constants';
 
 class ChatOperator {
   async chatConversation(
@@ -27,7 +29,19 @@ class ChatOperator {
           body: JSON.stringify(data)
         });
 
-        if (!response.body) throw new Error('ReadableStream not supported.');
+        // check response status
+        if (!response.ok) {
+          const errorText = await response.text();
+          const status = response.status;
+          const errorJson = errorText ? JSON.parse(errorText) : {};
+          const errorMessage = errorJson?.error?.message || 'An error occurred';
+          const errorCode = errorJson?.error?.code || ERROR_CODE_API_ERROR;
+          console.error('Error message:', errorMessage, 'Error code:', errorCode);
+          reject(new BaseError(status, errorCode, errorMessage));
+          return;
+        }
+
+        if (!response.body) throw new ApiError('ReadableStream not supported.');
 
         const reader = response.body.getReader();
         const decoder = new TextDecoder();

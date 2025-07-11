@@ -17,7 +17,7 @@
             @restart="onRestart"
           />
         </div>
-        <div class="composer">
+        <div class="starter">
           <composer
             v-model:question="question"
             :disabled="answering"
@@ -38,7 +38,7 @@ import axios from 'axios';
 import { defineComponent, ref } from 'vue';
 import Message from '@/components/chat/Message.vue';
 import { CHAT_MODEL_GROUPS, CHAT_MODELS, ROLE_ASSISTANT, ROLE_USER } from '@/constants';
-import { IChatMessageState, IChatConversationResponse, IChatConversation, IChatMessage } from '@/models';
+import { IChatMessageState, IChatConversationResponse, IChatConversation, IChatMessage, BaseError } from '@/models';
 import Composer from '@/components/chat/Composer.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
@@ -447,27 +447,23 @@ export default defineComponent({
         });
     },
     async handleRequestError(error: any) {
+      console.error('error happened', error);
       if (this.messages && this.messages.length > 0) {
         this.messages[this.messages.length - 1].state = IChatMessageState.FAILED;
       }
       if (error.name === 'AbortError') {
         console.error('aborted');
         return;
-      }
-      console.error(error);
-      if (axios.isCancel(error)) {
+      } else if (error instanceof BaseError) {
+        console.debug('BaseError', error);
+        this.messages[this.messages.length - 1].error = {
+          code: error.code,
+          message: error.detail
+        };
+      } else if (axios.isCancel(error)) {
         this.messages[this.messages.length - 1].error = {
           code: ERROR_CODE_CANCELED
         };
-      } else if (error?.response?.data) {
-        let data = error?.response?.data;
-        if (isJSONString(data)) {
-          data = JSON.parse(data);
-        }
-        console.debug('error', data);
-        if (this.messages && this.messages.length > 0) {
-          this.messages[this.messages.length - 1].error = data.error;
-        }
       } else {
         if (this.messages && this.messages.length > 0) {
           this.messages[this.messages.length - 1].error = {
@@ -526,7 +522,7 @@ export default defineComponent({
   }
   &.empty {
     position: relative;
-    .composer {
+    .starter {
       position: absolute;
       width: 100%;
       top: 50%;
@@ -543,7 +539,7 @@ export default defineComponent({
       margin-bottom: 15px;
     }
   }
-  .composer {
+  .starter {
     height: fit-content;
   }
 }
