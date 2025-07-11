@@ -1,5 +1,5 @@
 <template>
-  <div class="relative inline-block text-left">
+  <div class="center">
     <div @click="toggleMenu">
       <user-avatar class="cursor-pointer" />
     </div>

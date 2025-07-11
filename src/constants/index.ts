@@ -1,4 +1,5 @@
 export * from './errorCode';
+export * from './errorStatus';
 export * from './endpoint';
 export * from './action';
 export * from './chat';

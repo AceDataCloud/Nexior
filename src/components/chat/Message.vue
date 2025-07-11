@@ -171,8 +171,12 @@ export default defineComponent({
       return this.$store.state.chat.modelGroup;
     },
     errorText() {
+      console.debug('error', this.message.error);
       if (!this.message.error || !this.message.error?.code) {
         return undefined;
+      }
+      if (this.message.error?.message) {
+        return this.message.error.message;
       }
       switch (this.message.error?.code) {
         case ERROR_CODE_USED_UP:

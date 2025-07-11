@@ -1,0 +1,7 @@
+export const ERROR_STATUS_BAD_REQUEST = 400;
+export const ERROR_STATUS_FORBIDDEN = 403;
+export const ERROR_STATUS_TOO_MANY_REQUESTS = 429;
+export const ERROR_STATUS_NOT_FOUND = 404;
+export const ERROR_STATUS_API_ERROR = 500;
+export const ERROR_STATUS_TIMEOUT = 504;
+export const ERROR_STATUS_BUSY = 500;

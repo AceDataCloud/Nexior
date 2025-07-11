@@ -21,3 +21,4 @@ export * from './headshots';
 export * from './suno';
 export * from './site';
 export * from './exchange';
+export * from './error';
