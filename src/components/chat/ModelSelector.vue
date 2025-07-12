@@ -122,13 +122,6 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
-.popper {
-  border-radius: 20px;
-  overflow: hidden;
-}
-</style>
-
 <style lang="scss" scoped>
 .selector {
   cursor: pointer;

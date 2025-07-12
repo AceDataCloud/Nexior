@@ -1,34 +1,32 @@
 <template>
   <div class="center">
-    <div @click="toggleMenu">
+    <el-dropdown trigger="click">
       <user-avatar class="cursor-pointer" />
-    </div>
-    <transition name="fade">
-      <el-card v-if="showMenu" class="absolute right-0 mt-2 min-w-[220px] z-50 p-0">
-        <div v-if="user.email" class="px-4 py-2 text-sm font-medium">
+      <template #dropdown>
+        <div v-if="user.email" class="px-4 py-4 text-sm font-medium">
           {{ user?.email }}
         </div>
         <el-divider v-if="user.email" class="mb-1 mt-1" />
-        <div class="py-1">
-          <button class="block w-full px-4 py-2 text-left text-sm rounded-lg" @click="onSettings">
+        <el-dropdown-menu>
+          <el-dropdown-item class="py-2" @click="onSettings">
             <font-awesome-icon icon="fa-solid fa-cog" class="mr-1" />
             {{ $t('common.nav.setting') }}
-          </button>
-          <button class="block w-full px-4 py-2 text-left text-sm rounded-lg" @click="onDistribution">
+          </el-dropdown-item>
+          <el-dropdown-item class="py-2" @click="onDistribution">
             <font-awesome-icon icon="fa-solid fa-coins" class="mr-1" />
             {{ $t('common.nav.distribution') }}
-          </button>
-          <button class="block w-full px-4 py-2 text-left text-sm rounded-lg" @click="onConsole">
+          </el-dropdown-item>
+          <el-dropdown-item class="py-2" @click="onConsole">
             <font-awesome-icon icon="fa-solid fa-compass" class="mr-1" />
             {{ $t('common.nav.console') }}
-          </button>
-          <button class="block w-full px-4 py-2 text-left text-sm rounded-lg" @click="onLogout">
+          </el-dropdown-item>
+          <el-dropdown-item class="py-2" @click="onLogout">
             <font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket" class="mr-1" />
             {{ $t('common.nav.logOut') }}
-          </button>
-        </div>
-      </el-card>
-    </transition>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </template>
+    </el-dropdown>
     <user-setting v-model:visible="showSetting" />
   </div>
 </template>
@@ -40,10 +38,19 @@ import UserSetting from '@/components/user/Setting.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX } from '@/router';
 import { ElDivider, ElCard } from 'element-plus';
+import { ElDropdownMenu, ElDropdownItem, ElDropdown } from 'element-plus';
 
 export default defineComponent({
   name: 'UserCenter',
-  components: { UserAvatar, UserSetting, FontAwesomeIcon, ElDivider, ElCard },
+  components: {
+    UserAvatar,
+    UserSetting,
+    FontAwesomeIcon,
+    ElDivider,
+    ElDropdownMenu,
+    ElDropdownItem,
+    ElDropdown
+  },
   data() {
     return {
       showMenu: false,
@@ -88,14 +95,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>

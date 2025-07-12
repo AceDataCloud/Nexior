@@ -27,71 +27,89 @@ html.dark,
   width: 100%;
   height: 100%;
   overflow: auto;
+}
 
-  .el-main {
-    padding: 0 !important;
+.el-popper {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.el-main {
+  padding: 0 !important;
+}
+
+.el-dropdown-menu {
+  padding: 10px;
+  .el-dropdown-menu__item {
+    border-radius: 15px;
+    color: var(--el-text-color-primary);
   }
+}
 
-  .el-card {
-    word-wrap: break-word;
-    border-radius: 1rem;
-    border: none;
-    --el-card-padding: 15px;
-  }
+.el-dropdown__popper {
+  --el-dropdown-menuItem-hover-fill: var(--el-bg-color-page);
+  --el-dropdown-menuItem-hover-color: var(--el-text-color-primary);
+}
 
-  .el-breadcrumb__inner a,
-  .el-breadcrumb__inner.is-link {
-    color: var(--el-text-color-regular);
-  }
+.el-card {
+  word-wrap: break-word;
+  border-radius: 1rem;
+  border: none;
+  --el-card-padding: 10px;
+}
 
-  .el-radio-group {
-    --el-border-radius-base: 5px;
-  }
+.el-breadcrumb__inner a,
+.el-breadcrumb__inner.is-link {
+  color: var(--el-text-color-regular);
+}
 
-  .el-slider {
-    --el-slider-button-wrapper-size: 14px;
-    --el-slider-button-wrapper-offset: -9px;
-    --el-slider-height: 6px;
-    --el-slider-button-size: 18px;
-  }
+.el-radio-group {
+  --el-border-radius-base: 5px;
+}
 
-  .el-textarea {
+.el-slider {
+  --el-slider-button-wrapper-size: 14px;
+  --el-slider-button-wrapper-offset: -9px;
+  --el-slider-height: 6px;
+  --el-slider-button-size: 18px;
+}
+
+.el-textarea {
+  border-radius: 5px;
+  textarea {
     border-radius: 5px;
-    textarea {
-      border-radius: 5px;
+  }
+}
+
+.el-input {
+  .el-input__wrapper {
+    border-radius: 5px;
+    width: 100%;
+    &.is-focus {
+      box-shadow: 0 0 0 1px var(--el-input-border-color, var(--el-border-color)) inset;
+    }
+    textarea:focus,
+    input:focus {
+      outline: none;
     }
   }
+}
 
-  .el-input {
-    .el-input__wrapper {
-      border-radius: 5px;
-      width: 100%;
-      &.is-focus {
-        box-shadow: 0 0 0 1px var(--el-input-border-color, var(--el-border-color)) inset;
-      }
-      textarea:focus,
-      input:focus {
-        outline: none;
-      }
-    }
-  }
+.el-dialog {
+  border-radius: 1rem;
+}
 
-  .el-dialog {
-    border-radius: 1rem;
+.v-codemirror {
+  .cm-editor {
+    border-radius: 10px;
+    overflow: hidden;
   }
+}
 
-  .v-codemirror {
-    .cm-editor {
-      border-radius: 10px;
-      overflow: hidden;
-    }
-  }
+.el-table__header {
+  width: 100% !important;
+}
 
-  .el-table__header {
-    width: 100% !important;
-  }
-
-  .el-table__body {
-    width: 100% !important;
-  }
+.el-table__body {
+  width: 100% !important;
 }
