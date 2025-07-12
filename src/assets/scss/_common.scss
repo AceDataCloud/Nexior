@@ -38,6 +38,10 @@ html.dark,
   padding: 0 !important;
 }
 
+.el-dropdown {
+  color: var(--el-text-color-primary);
+}
+
 .el-dropdown-menu {
   padding: 10px;
   .el-dropdown-menu__item {
@@ -46,9 +50,21 @@ html.dark,
   }
 }
 
+.el-form-item__label {
+  color: var(--el-text-color-primary);
+}
+
 .el-dropdown__popper {
   --el-dropdown-menuItem-hover-fill: var(--el-bg-color-page);
   --el-dropdown-menuItem-hover-color: var(--el-text-color-primary);
+}
+
+.el-menu-item {
+  height: initial;
+  line-height: inherit;
+  --el-menu-hover-bg-color: var(--el-bg-color-page);
+  border-radius: 15px;
+  color: var(--el-text-color-primary);
 }
 
 .el-card {
@@ -60,7 +76,7 @@ html.dark,
 
 .el-breadcrumb__inner a,
 .el-breadcrumb__inner.is-link {
-  color: var(--el-text-color-regular);
+  color: var(--el-text-color-primary);
 }
 
 .el-radio-group {
@@ -97,6 +113,9 @@ html.dark,
 
 .el-dialog {
   border-radius: 1rem;
+  .el-dialog__body {
+    color: var(--el-text-color-primary);
+  }
 }
 
 .v-codemirror {

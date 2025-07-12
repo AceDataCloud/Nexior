@@ -57,16 +57,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style scoped>
-.el-dropdown-link {
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-  color: var(--el-text-color-primary);
-  font-weight: 500;
-}
-.el-icon--right {
-  margin-left: 4px;
-}
-</style>

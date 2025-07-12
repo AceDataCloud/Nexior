@@ -135,7 +135,7 @@ export default defineComponent({
   }
   .form {
     .logo {
-      max-width: 200px;
+      max-width: 150px;
     }
     .tip {
       color: var(--el-text-color-secondary);

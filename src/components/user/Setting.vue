@@ -1,21 +1,19 @@
 <template>
   <el-dialog :model-value="visible" @close="onClose">
     <div class="flex settings">
-      <aside class="w-56 border-r">
-        <nav class="flex flex-col p-2 space-y-1">
-          <button
+      <aside class="w-40 h-full border-r">
+        <el-menu class="border-r-0">
+          <el-menu-item
             v-for="(item, index) in navItems"
             :key="index"
-            :class="[
-              'flex items-center px-4 py-2 text-sm rounded-lg cursor-pointer',
-              activeTab === item.key ? 'active' : ''
-            ]"
+            :index="item.key"
+            :class="['flex items-center px-2 cursor-pointer py-2', activeTab === item.key ? 'active' : '']"
             @click="activeTab = item.key"
           >
             <font-awesome-icon :icon="item.icon" class="mr-2" />
             {{ item.label }}
-          </button>
-        </nav>
+          </el-menu-item>
+        </el-menu>
       </aside>
       <main class="flex-1 p-6 overflow-y-auto">
         <div v-if="activeTab === 'general'">
@@ -40,7 +38,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElDialog } from 'element-plus';
+import { ElDialog, ElMenu, ElMenuItem, ElDropdownMenu, ElDropdownItem, ElSubMenu } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faCog, faBell, faUserShield, faMagic, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
 import GeneralSetting from '@/components/setting/General.vue';
@@ -53,6 +51,8 @@ export default defineComponent({
   name: 'UserSetting',
   components: {
     ElDialog,
+    ElMenu,
+    ElMenuItem,
     FontAwesomeIcon,
     GeneralSetting,
     SiteSetting,
