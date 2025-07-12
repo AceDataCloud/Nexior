@@ -2,6 +2,7 @@ export interface ISiteFeatures {
   chat?: any;
   midjourney?: any;
   chatdoc?: any;
+  flux?: any;
   qrart?: any;
   luma?: any;
   pika?: any;

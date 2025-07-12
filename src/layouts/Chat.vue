@@ -8,7 +8,6 @@
     <div class="chat">
       <slot name="chat" />
     </div>
-    <user-center class="absolute right-2 top-2" />
     <el-button round class="menu" @click="drawer = true">
       <font-awesome-icon icon="fa-solid fa-bars" class="icon-menu" />
     </el-button>
@@ -20,18 +19,15 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import UserCenter from '@/components/user/Center.vue';
 import SidePanel from '@/components/chat/SidePanel.vue';
 import { ElDrawer, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { on } from 'events';
 
 export default defineComponent({
   name: 'LayoutChat',
   components: {
     SidePanel,
     ElDrawer,
-    UserCenter,
     ElButton,
     FontAwesomeIcon
   },

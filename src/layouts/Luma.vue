@@ -1,7 +1,6 @@
 <template>
   <div class="main">
     <div class="config">
-      <video-navigator />
       <slot name="config" />
     </div>
     <div class="result">
@@ -27,8 +26,7 @@ export default defineComponent({
   components: {
     ElDrawer,
     ElButton,
-    FontAwesomeIcon,
-    VideoNavigator
+    FontAwesomeIcon
   },
   data() {
     return {
