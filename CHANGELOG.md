@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sat, 12 Jul 2025 14:37:30 GMT and should not be manually modified.
+This log was last generated on Sat, 12 Jul 2025 16:18:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 2.20.3
+
+Sat, 12 Jul 2025 16:18:36 GMT
+
+### Patches
+
+- fix setting style (cqc@cuiqingcai.com)
 
 ## 2.20.2
 
