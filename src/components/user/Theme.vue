@@ -68,18 +68,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style scoped lang="scss">
-.demonstration {
-  margin-right: 8px;
-  cursor: pointer;
-  color: var(--el-text-color-regular);
-}
-.el-dropdown-link {
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-  color: var(--el-text-color-primary);
-  font-weight: 500;
-}
-</style>

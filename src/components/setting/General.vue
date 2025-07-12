@@ -1,10 +1,10 @@
 <template>
   <div class="flex justify-between items-center mb-4">
-    <label class="block mb-2 text-sm font-medium">{{ $t('common.settings.theme') }}</label>
+    <label class="block mb-2 text-sm">{{ $t('common.settings.theme') }}</label>
     <theme-switcher />
   </div>
   <div class="flex justify-between items-center mb-4">
-    <label class="block mb-2 text-sm font-medium">{{ $t('common.settings.language') }}</label>
+    <label class="block mb-2 text-sm">{{ $t('common.settings.language') }}</label>
     <locale-switcher />
   </div>
 </template>
