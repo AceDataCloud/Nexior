@@ -325,7 +325,7 @@ export default defineComponent({
     }
   }
   .content {
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 8px 15px;
     width: 100%;
     max-width: 800px;
