@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sat, 12 Jul 2025 16:18:36 GMT and should not be manually modified.
+This log was last generated on Sun, 13 Jul 2025 07:46:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 3.0.0
+
+Sun, 13 Jul 2025 07:46:14 GMT
+
+### Major changes
+
+- refactor navigator  (cqc@cuiqingcai.com)
 
 ## 2.20.3
 
