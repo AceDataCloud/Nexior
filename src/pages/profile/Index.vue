@@ -24,7 +24,6 @@
       </a>
     </div>
     <locale-selector :visible="operating.locale == true" @close="operating.locale = false" />
-    <dark-selector :visible="operating.dark == true" @close="operating.dark = false" />
     <help-dialog :visible="operating.help == true" @close="operating.help = false" />
   </div>
 </template>
@@ -43,7 +42,6 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlAuth, getBaseUrlPlatform } from '@/utils';
 import LocaleSelector from '@/components/common/LocaleSelector.vue';
-import DarkSelector from '@/components/common/DarkSelector.vue';
 import HelpDialog from '@/components/common/HelpDialog.vue';
 
 interface ILink {
@@ -61,8 +59,7 @@ export default defineComponent({
     ElImage,
     HelpDialog,
     FontAwesomeIcon,
-    LocaleSelector,
-    DarkSelector
+    LocaleSelector
   },
   data() {
     return {
