@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sun, 13 Jul 2025 10:08:48 GMT and should not be manually modified.
+This log was last generated on Sun, 13 Jul 2025 10:23:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 3.2.1
+
+Sun, 13 Jul 2025 10:23:44 GMT
+
+### Patches
+
+- fix theme init failed issue (cqc@cuiqingcai.com)
 
 ## 3.2.0
 
