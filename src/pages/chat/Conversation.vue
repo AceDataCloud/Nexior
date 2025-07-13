@@ -45,7 +45,7 @@ import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from 
 import { Status } from '@/models';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
 import Layout from '@/layouts/Chat.vue';
-import { isImageUrl, isJSONString } from '@/utils/is';
+import { isImageUrl } from '@/utils/is';
 import { chatOperator } from '@/operators';
 
 export interface IData {
