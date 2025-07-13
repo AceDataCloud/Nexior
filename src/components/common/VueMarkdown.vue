@@ -19,7 +19,7 @@ export default defineComponent({
     }
   },
   setup(props, { attrs }) {
-    const md = new MarkdownIt(props.options).use(katex as any, {
+    const md = new MarkdownIt({ ...props.options, html: true }).use(katex as any, {
       delimiters: 'all',
       throwOnError: false,
       errorColor: '#cc0000',
@@ -28,7 +28,10 @@ export default defineComponent({
 
     const content = computed(() => {
       const src = props.source;
-      return md?.render(src);
+      return md
+        ?.render(src)
+        .replace(/<think>/g, `<div class="think">`)
+        .replace(/<\/think>/g, `</div>`);
     });
 
     return () =>
