@@ -78,6 +78,7 @@ export default defineComponent({
         return this.$store.state.midjourney.config.references || [];
       },
       set(val: string[]) {
+        console.debug('Setting references:', val);
         this.$store.commit('midjourney/setConfig', {
           ...this.$store.state.midjourney.config,
           references: val
@@ -88,6 +89,7 @@ export default defineComponent({
   watch: {
     urls: {
       handler(val) {
+        console.debug('URLs changed:', val);
         this.$emit('change', val);
       }
     }
