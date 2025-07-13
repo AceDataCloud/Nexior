@@ -85,12 +85,13 @@ export default defineComponent({
   .item {
     width: 130px;
     height: 60px;
-    border: 2px solid var(--el-border-color);
+    border: 1px solid var(--el-border-color);
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    border-radius: 5px;
+    overflow: hidden;
+    border-radius: var(--el-border-radius-base);
     position: relative;
 
     .image {

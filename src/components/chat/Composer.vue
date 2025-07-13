@@ -81,8 +81,8 @@ import { ElMessage, ElTooltip, ElUpload, UploadFile, UploadFiles, UploadProgress
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IChatModel } from '@/models';
 import { getBaseUrlPlatform, isImageUrl } from '@/utils';
-import FilePreview from './FilePreview.vue';
-import ImagePreview from './ImagePreview.vue';
+import FilePreview from '@/components/common/FilePreview.vue';
+import ImagePreview from '@/components/common/ImagePreview.vue';
 
 export default defineComponent({
   name: 'Composer',

@@ -3,19 +3,8 @@
     <template #presets>
       <config-panel @generate="onGenerate" />
     </template>
-    <template #operation>
-      <div class="top">
-        <application-status
-          :initializing="initializing"
-          :application="application"
-          :applications="applications"
-          :service="service"
-          :need-apply="needApply"
-          @refresh="onGetApplication"
-          @select="$store.dispatch('midjourney/setApplication', $event)"
-        />
-        <task-list @custom="onCustom" @reach-top="onReachTop" />
-      </div>
+    <template #results>
+      <task-list @custom="onCustom" @reach-top="onReachTop" />
     </template>
   </layout>
 </template>
@@ -26,7 +15,6 @@ import Layout from '@/layouts/Midjourney.vue';
 import ConfigPanel from '@/components/midjourney/ConfigPanel.vue';
 import { ElMessage, ElCard } from 'element-plus';
 import { applicationOperator, midjourneyOperator } from '@/operators';
-import ApplicationStatus from '@/components/application/Status.vue';
 import TaskList from '@/components/midjourney/tasks/TaskList.vue';
 import { ERROR_CODE_DUPLICATION, ERROR_CODE_FORBIDDEN, ERROR_CODE_USED_UP } from '@/constants/errorCode';
 import { Status } from '@/models';
@@ -52,7 +40,6 @@ export default defineComponent({
   name: 'MidjourneyIndex',
   components: {
     ConfigPanel,
-    ApplicationStatus,
     TaskList,
     Layout
   },
@@ -308,30 +295,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.top {
-  flex: 1;
-  height: calc(100% - 50px);
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 10px;
-}
-.bottom {
-  height: 50px;
-  width: 100%;
-  position: relative;
-  .btn {
-    height: 40px;
-    width: 100%;
-  }
-  .operations {
-    position: absolute;
-    width: 100%;
-    max-height: 650px;
-    bottom: 60px;
-    left: 0;
-  }
-}
-</style>

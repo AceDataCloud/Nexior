@@ -1,7 +1,7 @@
 <template>
   <div v-if="modelValue?.type === 'imagine'" class="item">
     <div class="left">
-      <el-image src="https://cdn.acedata.cloud/05daz4.png" class="avatar" />
+      <el-image src="https://cdn.acedata.cloud/wto43b.png" class="avatar" />
     </div>
     <div class="preview">
       <div class="bot">
@@ -270,12 +270,11 @@ $left-width: 70px;
   .left {
     width: $left-width;
     .avatar {
-      background-color: white;
-      padding: 8px;
       width: 50px;
       height: 50px;
       margin: 10px;
       border-radius: 50%;
+      border: 1px solid var(--el-border-color);
     }
   }
   .preview {
@@ -351,9 +350,11 @@ $left-width: 70px;
         width: fit-content;
         min-height: 50px;
         min-width: 100px;
+        margin-bottom: 15px;
         .image {
           max-height: 400px;
           max-width: 300px;
+          border-radius: 10px;
         }
         .btn-raw {
           position: absolute;
@@ -405,18 +406,20 @@ $left-width: 70px;
       width: 100%;
       align-items: baseline;
       flex-wrap: wrap;
+      margin-bottom: 15px;
       overflow: hidden;
       text-align: center;
       color: var(--el-text-color-regular);
       font-size: 14px;
       overflow-y: scroll;
+      gap: 10px;
 
       &.full {
         height: 70px;
       }
 
       .btn-action {
-        margin-bottom: 10px;
+        margin-left: 0;
       }
     }
   }

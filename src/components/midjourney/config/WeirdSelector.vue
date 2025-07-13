@@ -6,7 +6,7 @@
         <info-icon :content="$t('midjourney.description.weird')" />
       </div>
       <div class="flex justify-end items-center">
-        <el-input-number v-model="value" size="small" controls-position="right" />
+        <el-input-number v-model="value" controls-position="right" />
       </div>
     </div>
     <div class="w-full">
