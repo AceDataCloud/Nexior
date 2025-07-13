@@ -14,6 +14,7 @@ import {
   initializeCookies,
   initializeDescription,
   initializeFavicon,
+  initializeTheme,
   initializeToken,
   initializeUser,
   initializeKeywords,
@@ -35,6 +36,7 @@ const main = async () => {
 
   // non-async and no need to await
   initializeCurrency();
+  initializeTheme();
   initializeExchangeRate();
   initializeTitle();
   initializeDescription();
