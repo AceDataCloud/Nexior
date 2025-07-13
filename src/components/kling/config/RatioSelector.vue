@@ -83,19 +83,18 @@ export default defineComponent({
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 10px;
 
   .item {
     width: 48px;
     height: 65px;
-    border: 2px solid var(--el-border-color);
+    border: 1px solid var(--el-border-color);
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    border-radius: 5px;
-    margin-right: 30px;
+    border-radius: 10px;
 
     .preview {
       margin-top: 8px;
@@ -107,7 +106,7 @@ export default defineComponent({
       justify-content: center;
 
       .rect {
-        border: 2px solid var(--el-border-color);
+        border: 1px solid var(--el-border-color);
         width: 20px;
         height: 20px;
         border-radius: 2px;

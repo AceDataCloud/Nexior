@@ -1,21 +1,10 @@
 <template>
   <layout>
     <template #config>
-      <config-panel @generate="onGenerateVideo" />
+      <config-panel @generate="onGenerate" />
     </template>
     <template #result>
-      <application-status
-        :initializing="initializing"
-        :application="application"
-        :applications="applications"
-        :service="service"
-        :need-apply="needApply"
-        class="mb-4"
-        @refresh="onGetApplication"
-        @select="$store.dispatch('flux/setApplication', $event)"
-      />
       <recent-panel class="panel recent" @reach-top="onReachTop" />
-      <!-- <operation-panel class="panel operation" @generate="onGenerate" /> -->
     </template>
   </layout>
 </template>
@@ -28,7 +17,6 @@ import { applicationOperator, fluxOperator } from '@/operators';
 import { IApplicationDetailResponse, IFluxGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP } from '@/constants';
-import ApplicationStatus from '@/components/application/Status.vue';
 import RecentPanel from '@/components/flux/RecentPanel.vue';
 import { IFluxTask } from '@/models';
 
@@ -45,7 +33,6 @@ export default defineComponent({
   components: {
     ConfigPanel,
     Layout,
-    ApplicationStatus,
     RecentPanel
   },
   data(): IData {
@@ -102,7 +89,7 @@ export default defineComponent({
     await this.onGetApplication();
     await this.onScrollDown();
     await this.onGetTasks();
-    // await this.onScrollDown();
+    await this.onScrollDown();
     // @ts-ignore
     this.job = setInterval(() => {
       this.onGetTasks();
@@ -169,7 +156,7 @@ export default defineComponent({
         createdAtMax
       });
     },
-    async onGenerateVideo() {
+    async onGenerate() {
       const request = {
         ...this.config,
         callback_url: CALLBACK_URL

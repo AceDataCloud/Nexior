@@ -105,9 +105,9 @@ export default defineComponent({
 
 .items {
   display: grid;
-  grid-template-columns: repeat(5, 48px); // 固定每行5列
-  gap: 8px; // 元素间距
-  justify-content: start; // 左对齐
+  grid-template-columns: repeat(5, 48px);
+  gap: 8px;
+  justify-content: start;
 
   .item {
     width: 48px;

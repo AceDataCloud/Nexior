@@ -1,7 +1,7 @@
 <template>
   <div v-for="(video, videoIndex) in videos" :key="videoIndex" class="preview">
     <div class="left">
-      <el-image src="https://cdn.acedata.cloud/4tfwwz.png" class="avatar" />
+      <el-image src="https://cdn.acedata.cloud/0qg4gp.png" class="avatar" />
     </div>
     <div class="main">
       <div class="bot">
@@ -208,12 +208,11 @@ $left-width: 70px;
   .left {
     width: $left-width;
     .avatar {
-      background-color: rgb(85, 131, 186);
-      padding: 2px;
       width: 50px;
       height: 50px;
       margin: 10px;
       border-radius: 50%;
+      border: 1px solid var(--el-border-color);
     }
   }
 

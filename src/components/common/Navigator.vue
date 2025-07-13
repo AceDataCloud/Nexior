@@ -47,7 +47,9 @@ import {
   ROUTE_DEEPSEEK_CONVERSATION_NEW,
   ROUTE_DEEPSEEK_CONVERSATION,
   ROUTE_GROK_CONVERSATION_NEW,
-  ROUTE_GROK_CONVERSATION
+  ROUTE_GROK_CONVERSATION,
+  ROUTE_KLING_INDEX,
+  ROUTE_KLING_HISTORY
 } from '@/router/constants';
 import LogoTiny from './LogoTiny.vue';
 import UserCenter from '@/components/user/Center.vue';
@@ -140,7 +142,6 @@ export default defineComponent({
       //       name: ROUTE_QRART_INDEX
       //     },
       //     displayName: this.$t('common.nav.qrart'),
-      //     icon: 'fa-solid fa-qrcode',
       //     routes: [ROUTE_QRART_INDEX, ROUTE_QRART_HISTORY]
       //   });
       // }
@@ -167,16 +168,16 @@ export default defineComponent({
         });
       }
       // Add pika's leftmost icon
-      if (this.$store?.state?.site?.features?.pika?.enabled) {
-        result.push({
-          route: {
-            name: ROUTE_PIKA_INDEX
-          },
-          displayName: this.$t('common.nav.pika'),
-          logo: 'https://cdn.acedata.cloud/i80tgn.png',
-          routes: [ROUTE_PIKA_INDEX, ROUTE_PIKA_HISTORY]
-        });
-      }
+      // if (this.$store?.state?.site?.features?.pika?.enabled) {
+      //   result.push({
+      //     route: {
+      //       name: ROUTE_PIKA_INDEX
+      //     },
+      //     displayName: this.$t('common.nav.pika'),
+      //     logo: 'https://cdn.acedata.cloud/i80tgn.png',
+      //     routes: [ROUTE_PIKA_INDEX, ROUTE_PIKA_HISTORY]
+      //   });
+      // }
       // Add hailuo's leftmost icon
       if (this.$store?.state?.site?.features?.hailuo?.enabled) {
         result.push({
@@ -184,22 +185,32 @@ export default defineComponent({
             name: ROUTE_HAILUO_INDEX
           },
           displayName: this.$t('common.nav.hailuo'),
-          icon: 'fa-solid fa-film',
-          logo: 'https://cdn.acedata.cloud/4tfwwz.png',
+          logo: 'https://cdn.acedata.cloud/0qg4gp.png',
           routes: [ROUTE_HAILUO_INDEX, ROUTE_HAILUO_HISTORY]
         });
       }
-      // Add headshots's leftmost icon
-      if (this.$store?.state?.site?.features?.headshots?.enabled) {
+      // Add kling's leftmost icon
+      if (this.$store?.state?.site?.features?.kling?.enabled) {
         result.push({
           route: {
-            name: ROUTE_HEADSHOTS_INDEX
+            name: ROUTE_KLING_INDEX
           },
-          displayName: this.$t('common.nav.headshots'),
-          icon: 'fa-solid fa-id-card',
-          routes: [ROUTE_HEADSHOTS_INDEX, ROUTE_HEADSHOTS_HISTORY]
+          displayName: this.$t('common.nav.kling'),
+          logo: 'https://cdn.acedata.cloud/qpbbbb.jpg',
+          routes: [ROUTE_KLING_INDEX, ROUTE_KLING_HISTORY]
         });
       }
+      // Add headshots's leftmost icon
+      // if (this.$store?.state?.site?.features?.headshots?.enabled) {
+      //   result.push({
+      //     route: {
+      //       name: ROUTE_HEADSHOTS_INDEX
+      //     },
+      //     displayName: this.$t('common.nav.headshots'),
+      //     icon: 'fa-solid fa-id-card',
+      //     routes: [ROUTE_HEADSHOTS_INDEX, ROUTE_HEADSHOTS_HISTORY]
+      //   });
+      // }
       if (this.direction === 'row') {
         result.push({
           route: {

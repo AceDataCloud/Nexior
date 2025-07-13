@@ -1,7 +1,7 @@
 <template>
   <div class="preview">
     <div class="left">
-      <el-image src="https://cdn.acedata.cloud/gtt64b.png" class="avatar" />
+      <el-image src="https://cdn.acedata.cloud/qpbbbb.jpg" class="avatar" />
     </div>
     <div class="main">
       <div class="bot">
@@ -198,8 +198,6 @@ $left-width: 70px;
   .left {
     width: $left-width;
     .avatar {
-      background-color: rgb(34, 34, 34);
-      padding: 2px;
       width: 50px;
       height: 50px;
       margin: 10px;

@@ -80,8 +80,9 @@ export default defineComponent({
     margin: 0;
     width: 30%;
   }
+
   .value {
-    width: 80px;
+    width: 120px;
   }
 }
 </style>
