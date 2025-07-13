@@ -14,7 +14,9 @@
         </el-tooltip>
       </div>
     </div>
-    <user-center class="center" />
+    <div class="bottom">
+      <user-center />
+    </div>
   </div>
 </template>
 
@@ -39,7 +41,13 @@ import {
   ROUTE_HEADSHOTS_HISTORY,
   ROUTE_SUNO_INDEX,
   ROUTE_SUNO_HISTORY,
-  ROUTE_FLUX_INDEX
+  ROUTE_FLUX_INDEX,
+  ROUTE_CHATGPT_CONVERSATION_NEW,
+  ROUTE_CHATGPT_CONVERSATION,
+  ROUTE_DEEPSEEK_CONVERSATION_NEW,
+  ROUTE_DEEPSEEK_CONVERSATION,
+  ROUTE_GROK_CONVERSATION_NEW,
+  ROUTE_GROK_CONVERSATION
 } from '@/router/constants';
 import LogoTiny from './LogoTiny.vue';
 import UserCenter from '@/components/user/Center.vue';
@@ -70,15 +78,37 @@ export default defineComponent({
   computed: {
     links() {
       const result = [];
-      // Add chat's leftmost icon
-      if (this.$store?.state?.site?.features?.chat?.enabled) {
+      // Add chatgpt's leftmost icon
+      if (this.$store?.state?.site?.features?.chatgpt?.enabled) {
         result.push({
           route: {
-            name: ROUTE_CHAT_CONVERSATION_NEW
+            name: ROUTE_CHATGPT_CONVERSATION_NEW
           },
           displayName: this.$t('common.nav.chatgpt'),
           logo: 'https://cdn.acedata.cloud/7dljuv.png',
-          routes: [ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW]
+          routes: [ROUTE_CHATGPT_CONVERSATION, ROUTE_CHATGPT_CONVERSATION_NEW]
+        });
+      }
+      // Add deepseek's leftmost icon
+      if (this.$store?.state?.site?.features?.deepseek?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_DEEPSEEK_CONVERSATION_NEW
+          },
+          displayName: this.$t('common.nav.deepseek'),
+          logo: 'https://cdn.acedata.cloud/bc71ae.png',
+          routes: [ROUTE_DEEPSEEK_CONVERSATION, ROUTE_DEEPSEEK_CONVERSATION_NEW]
+        });
+      }
+      // Add grok's leftmost icon
+      if (this.$store?.state?.site?.features?.grok?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_GROK_CONVERSATION_NEW
+          },
+          displayName: this.$t('common.nav.grok'),
+          logo: 'https://cdn.acedata.cloud/p1ge98.png',
+          routes: [ROUTE_GROK_CONVERSATION, ROUTE_GROK_CONVERSATION_NEW]
         });
       }
       // Add midjourney's leftmost icon
@@ -88,7 +118,7 @@ export default defineComponent({
             name: ROUTE_MIDJOURNEY_INDEX
           },
           displayName: this.$t('common.nav.midjourney'),
-          logo: 'https://cdn.acedata.cloud/05daz4.png',
+          logo: 'https://cdn.acedata.cloud/wto43b.png',
           routes: [ROUTE_MIDJOURNEY_INDEX]
         });
       }
@@ -202,13 +232,6 @@ export default defineComponent({
   align-items: center;
   position: relative;
 
-  .center {
-    position: absolute;
-    left: 50%;
-    bottom: 10px;
-    transform: translateX(-50%);
-  }
-
   &[direction='row'] {
     flex-direction: row;
     padding-top: 10px;
@@ -290,8 +313,8 @@ export default defineComponent({
         .avatar {
           display: block;
           margin: auto;
-          width: 40px;
-          height: 40px;
+          width: 35px;
+          height: 35px;
           border-radius: 50%;
           cursor: pointer;
           border: 1px solid var(--el-border-color);
@@ -299,9 +322,14 @@ export default defineComponent({
       }
     }
     .bottom {
-      display: block;
       position: absolute;
       bottom: 0;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      justify-content: flex-end;
+      align-items: center;
+      padding-bottom: 10px;
     }
   }
 }

@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router';
 import auth from './auth';
 import console from './console';
 import chat from './chat';
+import grok from './grok';
+import deepseek from './deepseek';
+import chatgpt from './chatgpt';
 import midjourney from './midjourney';
 import distribution from './distribution';
 import chatdoc from './chatdoc';
@@ -16,26 +19,22 @@ import suno from './suno';
 import site from './site';
 import profile from './profile';
 
-import { ROUTE_INDEX } from './constants';
+import { ROUTE_CHATGPT_CONVERSATION_NEW } from './constants';
 import { DEFAULT_LOCALE, setI18nLanguage } from '@/i18n';
 import { getCookie } from 'typescript-cookie';
 
 const routes = [
   {
     path: '/',
-    component: () => import('@/layouts/Index.vue'),
-    children: [
-      {
-        path: '',
-        name: ROUTE_INDEX,
-        component: () => import('@/pages/index/Index.vue')
-      }
-    ]
+    redirect: { name: ROUTE_CHATGPT_CONVERSATION_NEW }
   },
   console,
   chatdoc,
   auth,
   chat,
+  chatgpt,
+  grok,
+  deepseek,
   qrart,
   luma,
   pika,

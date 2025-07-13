@@ -1,5 +1,7 @@
 export interface ISiteFeatures {
-  chat?: any;
+  chatgpt?: any;
+  deepseek?: any;
+  grok?: any;
   midjourney?: any;
   chatdoc?: any;
   flux?: any;
