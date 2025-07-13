@@ -71,7 +71,7 @@
             {{ modelValue?.response?.error?.message }}
             <copy-to-clipboard :content="modelValue?.response?.error?.message!" class="btn-copy" />
           </p>
-          <p class="description">
+          <p v-if="modelValue?.response?.trace_id" class="description">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
             {{ $t('kling.name.traceId') }}:
             {{ modelValue?.response?.trace_id }}
@@ -98,6 +98,12 @@
             {{ $t('kling.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
+          </p>
+          <p v-if="modelValue?.response?.trace_id" class="description">
+            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            {{ $t('kling.name.traceId') }}:
+            {{ modelValue?.response?.trace_id }}
+            <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy" />
           </p>
         </el-alert>
       </div>

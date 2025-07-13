@@ -5,8 +5,8 @@
       <model-selector class="mb-4" />
       <mode-selector class="mb-4" />
       <ratio-selector class="mb-4" />
-      <start-image class="mb-4" />
-      <end-image class="mb-4" />
+      <start-image class="mb-2" />
+      <end-image class="mb-2" />
       <cfg-scale-selector class="mb-4" />
       <duration-selector class="mb-4" />
       <negative-prompt-input class="mb-4" />
