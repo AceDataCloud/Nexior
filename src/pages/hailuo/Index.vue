@@ -1,21 +1,10 @@
 <template>
   <layout>
     <template #config>
-      <config-panel @generate="onGenerateVideo" />
+      <config-panel @generate="onGenerate" />
     </template>
     <template #result>
-      <application-status
-        :initializing="initializing"
-        :application="application"
-        :applications="applications"
-        :service="service"
-        :need-apply="needApply"
-        class="mb-4"
-        @refresh="onGetApplication"
-        @select="$store.dispatch('hailuo/setApplication', $event)"
-      />
       <recent-panel class="panel recent" @reach-top="onReachTop" />
-      <!-- <operation-panel class="panel operation" @generate="onGenerate" /> -->
     </template>
   </layout>
 </template>
@@ -28,7 +17,6 @@ import { applicationOperator, hailuoOperator } from '@/operators';
 import { IApplicationDetailResponse, IHailuoGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP } from '@/constants';
-import ApplicationStatus from '@/components/application/Status.vue';
 import RecentPanel from '@/components/hailuo/RecentPanel.vue';
 import { IHailuoTask } from '@/models';
 
@@ -45,7 +33,6 @@ export default defineComponent({
   components: {
     ConfigPanel,
     Layout,
-    ApplicationStatus,
     RecentPanel
   },
   data(): IData {
@@ -169,7 +156,7 @@ export default defineComponent({
         createdAtMax
       });
     },
-    async onGenerateVideo() {
+    async onGenerate() {
       const request = {
         ...this.config,
         callback_url: CALLBACK_URL

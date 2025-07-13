@@ -29,9 +29,7 @@ import { ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ModelSelector from './config/ModelSelector.vue';
 import PromptInput from './config/PromptInput.vue';
-// import RatioSelector from './config/RatioSelector.vue';
-// import NumbersSelector from './config/NumbersSelector.vue';
-// import QualitySelector from './config/QualitySelector.vue';
+
 export default defineComponent({
   name: 'PresetPanel',
   components: {

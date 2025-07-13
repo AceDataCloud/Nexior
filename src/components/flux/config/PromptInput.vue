@@ -57,7 +57,7 @@ export default defineComponent({
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between; // Add this line to move the icon to the right
+    justify-content: space-between;
     position: relative;
     .title {
       font-size: 14px;
@@ -65,7 +65,10 @@ export default defineComponent({
     }
   }
   .info {
-    margin-left: auto; // Ensure the icon stays on the right
+    margin-left: auto;
+  }
+  .prompt {
+    resize: none;
   }
 }
 </style>

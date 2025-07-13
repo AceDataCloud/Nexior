@@ -4,16 +4,6 @@
       <config-panel @generate="onGenerateAudio" />
     </template>
     <template #result>
-      <application-status
-        :initializing="initializing"
-        :application="application"
-        :applications="applications"
-        :service="service"
-        :need-apply="needApply"
-        class="mb-4"
-        @refresh="onGetApplication"
-        @select="$store.dispatch('suno/setApplication', $event)"
-      />
       <recent-panel class="panel recent" @reach-top="onReachTop" />
     </template>
     <template #preview>
@@ -28,7 +18,6 @@ import Layout from '@/layouts/Suno.vue';
 import { applicationOperator, sunoOperator } from '@/operators';
 import { IApplicationDetailResponse, ISunoAudioRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import ApplicationStatus from '@/components/application/Status.vue';
 import { ISunoTask } from '@/models';
 import { ERROR_CODE_DUPLICATION } from '@/constants';
 import ConfigPanel from '@/components/suno/ConfigPanel.vue';
@@ -47,7 +36,6 @@ export default defineComponent({
   name: 'SunoIndex',
   components: {
     Layout,
-    ApplicationStatus,
     ConfigPanel,
     RecentPanel,
     PreviewPanel

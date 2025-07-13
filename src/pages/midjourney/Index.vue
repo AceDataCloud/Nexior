@@ -1,6 +1,6 @@
 <template>
   <layout>
-    <template #presets>
+    <template #config>
       <config-panel @generate="onGenerate" />
     </template>
     <template #results>

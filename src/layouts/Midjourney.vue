@@ -1,7 +1,7 @@
 <template>
   <div class="main">
-    <div class="presets">
-      <slot name="presets" />
+    <div class="config">
+      <slot name="config" />
     </div>
     <div class="results">
       <slot name="results" />
@@ -10,7 +10,7 @@
       <font-awesome-icon icon="fa-solid fa-gear" class="icon-menu" />
     </el-button>
     <el-drawer v-model="drawer" :with-header="false" size="300px" class="drawer">
-      <slot name="presets" />
+      <slot name="config" />
     </el-drawer>
   </div>
 </template>
@@ -60,7 +60,7 @@ export default defineComponent({
   .menu2 {
     display: none;
   }
-  .presets {
+  .config {
     width: 300px;
     height: 100%;
     display: flex;
@@ -77,7 +77,7 @@ export default defineComponent({
 @media screen and (min-width: 768px) and (max-width: 1060px) {
   .main {
     position: relative;
-    .presets {
+    .config {
       display: none;
     }
     .menu {
@@ -93,7 +93,7 @@ export default defineComponent({
 @media (max-width: 767px) {
   .main {
     position: relative;
-    .presets {
+    .config {
       display: none;
     }
     .results {
