@@ -7,3 +7,4 @@ export * from './login';
 export * from './site';
 export * from './price';
 export * from './application';
+export * from './theme';

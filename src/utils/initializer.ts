@@ -1,6 +1,7 @@
 import { getCookie, setCookie } from 'typescript-cookie';
 import favicon from '@/assets/images/favicon.ico';
 import { getLocale } from '@/i18n';
+import { applyTheme } from './theme';
 import store from '@/store';
 import { IToken } from '@/models';
 import psl from 'psl';
@@ -163,6 +164,15 @@ export const initializeToken = async () => {
     const token = await store.dispatch('getToken', code);
     console.debug('success get token', token);
   }
+};
+
+/**
+ * Initialize theme
+ */
+export const initializeTheme = async () => {
+  const theme = getCookie('THEME') || 'light';
+  console.debug('initialize theme', theme);
+  applyTheme(theme);
 };
 
 /**
