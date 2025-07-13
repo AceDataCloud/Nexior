@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sun, 13 Jul 2025 16:06:27 GMT and should not be manually modified.
+This log was last generated on Sun, 13 Jul 2025 17:02:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 3.4.1
+
+Sun, 13 Jul 2025 17:02:33 GMT
+
+### Patches
+
+- add suno 4.5 model (office@acedata.cloud)
 
 ## 3.4.0
 
