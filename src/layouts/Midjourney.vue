@@ -1,7 +1,6 @@
 <template>
   <div class="main">
     <div class="presets">
-      <image-navigator />
       <slot name="presets" />
     </div>
     <div class="operation">
@@ -20,15 +19,13 @@
 import { defineComponent } from 'vue';
 import { ElDrawer, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import ImageNavigator from '@/components/common/ImageNavigator.vue';
 
 export default defineComponent({
   name: 'LayoutMidjourney',
   components: {
     ElDrawer,
     ElButton,
-    FontAwesomeIcon,
-    ImageNavigator
+    FontAwesomeIcon
   },
   data() {
     return {

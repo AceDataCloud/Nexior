@@ -74,7 +74,6 @@
 import { defineComponent } from 'vue';
 import { ElSkeleton, ElInput } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router/constants';
 import { chatOperator } from '@/operators';
 import { IChatConversation } from '@/models';
 import { Status } from '@/models';
@@ -89,12 +88,23 @@ export default defineComponent({
   props: {},
   emits: ['change-conversation'],
   computed: {
+    modelGroup() {
+      return this.$store.state.chat.modelGroup;
+    },
     conversationId() {
       console.debug('conversationId in side', this.$route.params?.id);
       return this.$route.params?.id?.toString();
     },
     conversationGroups() {
-      const conversations = this.$store.state.chat.conversations;
+      let conversations = this.$store.state.chat.conversations;
+      console.debug('conversations', conversations);
+      console.debug('modelGroup', this.modelGroup);
+      // filter by model group
+      conversations = conversations?.filter(
+        (conversation: IChatConversation) =>
+          conversation.model && this.modelGroup.models?.map((item) => item.name as string)?.includes(conversation.model)
+      );
+      console.debug('filtered conversations', conversations);
       // split our 4 groups according to the `updated_at` field, to 'today', 'yesterday', 'this week', 'earlier'.
       // if (conversations) {
       const today = new Date();
@@ -107,7 +117,7 @@ export default defineComponent({
       earlier.setDate(earlier.getDate() - 7);
       const groups = conversations?.reduce(
         (acc, conversation: IChatConversation) => {
-          const updatedAt = new Date(conversation.updated_at * 1000);
+          const updatedAt = new Date(conversation.updated_at! * 1000);
           if (updatedAt >= today) {
             (acc.today as IChatConversation[]).push(conversation);
           } else if (updatedAt >= yesterday) {
@@ -123,15 +133,15 @@ export default defineComponent({
       ) as Record<string, IChatConversation[]>;
       // sort every group by `updated_at` field.
       return {
-        ...(groups?.today?.length > 0 ? { today: groups?.today?.sort((a, b) => b.updated_at - a.updated_at) } : {}),
+        ...(groups?.today?.length > 0 ? { today: groups?.today?.sort((a, b) => b.updated_at! - a.updated_at!) } : {}),
         ...(groups?.yesterday?.length > 0
-          ? { yesterday: groups?.yesterday?.sort((a, b) => b.updated_at - a.updated_at) }
+          ? { yesterday: groups?.yesterday?.sort((a, b) => b.updated_at! - a.updated_at!) }
           : {}),
         ...(groups?.thisWeek?.length > 0
-          ? { thisWeek: groups?.thisWeek?.sort((a, b) => b.updated_at - a.updated_at) }
+          ? { thisWeek: groups?.thisWeek?.sort((a, b) => b.updated_at! - a.updated_at!) }
           : {}),
         ...(groups?.earlier?.length > 0
-          ? { earlier: groups?.earlier?.sort((a, b) => b.updated_at - a.updated_at) }
+          ? { earlier: groups?.earlier?.sort((a, b) => b.updated_at! - a.updated_at!) }
           : {})
       };
     },

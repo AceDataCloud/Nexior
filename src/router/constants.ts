@@ -8,6 +8,15 @@ export const ROUTE_SITE_INDEX = 'site-index';
 export const ROUTE_CHAT_CONVERSATION = 'chat-conversation';
 export const ROUTE_CHAT_CONVERSATION_NEW = 'chat-conversation-new';
 
+export const ROUTE_CHATGPT_CONVERSATION = 'chatgpt-conversation';
+export const ROUTE_CHATGPT_CONVERSATION_NEW = 'chatgpt-conversation-new';
+
+export const ROUTE_DEEPSEEK_CONVERSATION = 'deepseek-conversation';
+export const ROUTE_DEEPSEEK_CONVERSATION_NEW = 'deepseek-conversation-new';
+
+export const ROUTE_GROK_CONVERSATION = 'grok-conversation';
+export const ROUTE_GROK_CONVERSATION_NEW = 'grok-conversation-new';
+
 export const ROUTE_MIDJOURNEY_INDEX = 'midjourney-index';
 
 export const ROUTE_QRART_INDEX = 'qrart-index';

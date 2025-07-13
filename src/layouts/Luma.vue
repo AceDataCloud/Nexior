@@ -1,7 +1,6 @@
 <template>
   <div class="main">
     <div class="config">
-      <video-navigator />
       <slot name="config" />
     </div>
     <div class="result">
@@ -20,15 +19,13 @@
 import { defineComponent } from 'vue';
 import { ElDrawer, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import VideoNavigator from '@/components/common/VideoNavigator.vue';
 
 export default defineComponent({
   name: 'LayoutLuma',
   components: {
     ElDrawer,
     ElButton,
-    FontAwesomeIcon,
-    VideoNavigator
+    FontAwesomeIcon
   },
   data() {
     return {

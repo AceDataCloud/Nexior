@@ -27,8 +27,8 @@
         </el-dropdown-menu>
       </template>
     </el-dropdown>
-    <user-setting v-model:visible="showSetting" />
   </div>
+  <user-setting v-model:visible="showSetting" />
 </template>
 
 <script lang="ts">

@@ -35,14 +35,13 @@
 
 <script lang="ts">
 import axios from 'axios';
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
 import Message from '@/components/chat/Message.vue';
 import { CHAT_MODEL_GROUPS, CHAT_MODELS, ROLE_ASSISTANT, ROLE_USER } from '@/constants';
 import { IChatMessageState, IChatConversationResponse, IChatConversation, IChatMessage, BaseError } from '@/models';
 import Composer from '@/components/chat/Composer.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
-import { ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW } from '@/router';
 import { Status } from '@/models';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
 import Layout from '@/layouts/Chat.vue';
@@ -296,19 +295,20 @@ export default defineComponent({
     },
     async onNewConversation() {
       this.$router.push({
-        name: ROUTE_CHAT_CONVERSATION_NEW
+        params: {
+          id: ''
+        }
       });
       this.messages = [];
       this.question = '';
       this.references = [];
     },
     async onRestoreConversation(id: string) {
-      this.$router.push({
-        name: ROUTE_CHAT_CONVERSATION,
-        params: {
-          id
-        }
-      });
+      console.debug('onRestoreConversation id', id);
+      console.debug('onRestoreConversation route', this.$route);
+      const newRoute = this.$router.resolve({ path: this.$route.path, params: { id } });
+      console.debug('onRestoreConversation newRoute', newRoute);
+      this.$router.push(newRoute);
       const conversation = this.conversations?.find((conversation: IChatConversation) => conversation.id === id);
       // change the model and model group
       const model = conversation?.model;
@@ -432,7 +432,6 @@ export default defineComponent({
           this.answering = false;
           if (conversationId) {
             await this.$router.push({
-              name: ROUTE_CHAT_CONVERSATION,
               params: {
                 id: conversationId
               }

@@ -23,8 +23,10 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .avatar {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
+  max-width: initial;
+  max-height: initial;
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;

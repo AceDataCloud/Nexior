@@ -10,26 +10,19 @@
         :class="{link: true, active: link.routes.includes($route.name as string)}"
       >
         <el-tooltip v-if="direction === 'column'" effect="dark" :content="link.displayName" placement="right">
-          <el-button
-            :class="{button: true, active: link.routes.includes($route.name as string)}"
-            @click="$router.push(link.route)"
-          >
-            <font-awesome-icon :icon="link.icon" />
-          </el-button>
+          <el-image v-if="link.logo" :src="link.logo" class="avatar" @click="$router.push(link.route)" />
         </el-tooltip>
-        <div v-else class="cursor-pointer" @click="$router.push(link.route)">
-          <font-awesome-icon :icon="link.icon" />
-          <p class="description">{{ link.displayName }}</p>
-        </div>
       </div>
+    </div>
+    <div class="bottom">
+      <user-center />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton, ElTooltip } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { ElTooltip, ElImage } from 'element-plus';
 import {
   ROUTE_CHAT_CONVERSATION,
   ROUTE_CHAT_CONVERSATION_NEW,
@@ -38,8 +31,6 @@ import {
   ROUTE_DISTRIBUTION_INDEX,
   ROUTE_INDEX,
   ROUTE_MIDJOURNEY_INDEX,
-  ROUTE_QRART_INDEX,
-  ROUTE_QRART_HISTORY,
   ROUTE_LUMA_INDEX,
   ROUTE_LUMA_HISTORY,
   ROUTE_PIKA_INDEX,
@@ -50,18 +41,24 @@ import {
   ROUTE_HEADSHOTS_HISTORY,
   ROUTE_SUNO_INDEX,
   ROUTE_SUNO_HISTORY,
-  ROUTE_SITE_INDEX
+  ROUTE_FLUX_INDEX,
+  ROUTE_CHATGPT_CONVERSATION_NEW,
+  ROUTE_CHATGPT_CONVERSATION,
+  ROUTE_DEEPSEEK_CONVERSATION_NEW,
+  ROUTE_DEEPSEEK_CONVERSATION,
+  ROUTE_GROK_CONVERSATION_NEW,
+  ROUTE_GROK_CONVERSATION
 } from '@/router/constants';
 import LogoTiny from './LogoTiny.vue';
-import HelpEntry from '@/components/common/HelpEntry.vue';
+import UserCenter from '@/components/user/Center.vue';
 
 export default defineComponent({
   name: 'Navigator',
   components: {
-    ElButton,
+    ElImage,
     LogoTiny,
     ElTooltip,
-    FontAwesomeIcon
+    UserCenter
   },
   props: {
     direction: {
@@ -81,15 +78,37 @@ export default defineComponent({
   computed: {
     links() {
       const result = [];
-      // Add chat's leftmost icon
-      if (this.$store?.state?.site?.features?.chat?.enabled) {
+      // Add chatgpt's leftmost icon
+      if (this.$store?.state?.site?.features?.chatgpt?.enabled) {
         result.push({
           route: {
-            name: ROUTE_CHAT_CONVERSATION_NEW
+            name: ROUTE_CHATGPT_CONVERSATION_NEW
           },
-          displayName: this.$t('common.nav.chat'),
-          icon: 'fa-regular fa-comment',
-          routes: [ROUTE_CHAT_CONVERSATION, ROUTE_CHAT_CONVERSATION_NEW]
+          displayName: this.$t('common.nav.chatgpt'),
+          logo: 'https://cdn.acedata.cloud/7dljuv.png',
+          routes: [ROUTE_CHATGPT_CONVERSATION, ROUTE_CHATGPT_CONVERSATION_NEW]
+        });
+      }
+      // Add deepseek's leftmost icon
+      if (this.$store?.state?.site?.features?.deepseek?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_DEEPSEEK_CONVERSATION_NEW
+          },
+          displayName: this.$t('common.nav.deepseek'),
+          logo: 'https://cdn.acedata.cloud/bc71ae.png',
+          routes: [ROUTE_DEEPSEEK_CONVERSATION, ROUTE_DEEPSEEK_CONVERSATION_NEW]
+        });
+      }
+      // Add grok's leftmost icon
+      if (this.$store?.state?.site?.features?.grok?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_GROK_CONVERSATION_NEW
+          },
+          displayName: this.$t('common.nav.grok'),
+          logo: 'https://cdn.acedata.cloud/p1ge98.png',
+          routes: [ROUTE_GROK_CONVERSATION, ROUTE_GROK_CONVERSATION_NEW]
         });
       }
       // Add midjourney's leftmost icon
@@ -98,70 +117,76 @@ export default defineComponent({
           route: {
             name: ROUTE_MIDJOURNEY_INDEX
           },
-          displayName: this.$t('common.nav.image'),
-          icon: 'fa-solid fa-palette',
+          displayName: this.$t('common.nav.midjourney'),
+          logo: 'https://cdn.acedata.cloud/wto43b.png',
           routes: [ROUTE_MIDJOURNEY_INDEX]
         });
       }
-      // Add chatdoc's leftmost icon
-      /*
-      if (this.$store?.state?.site?.features?.chatdoc?.enabled) {
+      // Add flux's leftmost icon
+      if (this.$store?.state?.site?.features?.flux?.enabled) {
         result.push({
           route: {
-            name: ROUTE_CHATDOC_INDEX
+            name: ROUTE_FLUX_INDEX
           },
-          displayName: this.$t('common.nav.chatdoc'),
-          icon: 'fa-solid fa-file-lines',
-          routes: [ROUTE_CHATDOC_INDEX, ROUTE_CHATDOC_CONVERSATION, ROUTE_CHATDOC_MANAGE, ROUTE_CHATDOC_SETTING]
+          displayName: this.$t('common.nav.flux'),
+          logo: 'https://cdn.acedata.cloud/ogm2oa.png',
+          routes: [ROUTE_FLUX_INDEX]
         });
       }
-      */
       // Add qrart's leftmost icon
-      if (this.$store?.state?.site?.features?.qrart?.enabled) {
-        result.push({
-          route: {
-            name: ROUTE_QRART_INDEX
-          },
-          displayName: this.$t('common.nav.qrart'),
-          icon: 'fa-solid fa-qrcode',
-          routes: [ROUTE_QRART_INDEX, ROUTE_QRART_HISTORY]
-        });
-      }
+      // if (this.$store?.state?.site?.features?.qrart?.enabled) {
+      //   result.push({
+      //     route: {
+      //       name: ROUTE_QRART_INDEX
+      //     },
+      //     displayName: this.$t('common.nav.qrart'),
+      //     icon: 'fa-solid fa-qrcode',
+      //     routes: [ROUTE_QRART_INDEX, ROUTE_QRART_HISTORY]
+      //   });
+      // }
       // Add suno's leftmost icon
       if (this.$store?.state?.site?.features?.suno?.enabled) {
         result.push({
           route: {
             name: ROUTE_SUNO_INDEX
           },
-          displayName: this.$t('common.nav.music'),
-          icon: 'fa-solid fa-music',
+          displayName: this.$t('common.nav.suno'),
+          logo: 'https://cdn.acedata.cloud/l3ffw7.jpg',
           routes: [ROUTE_SUNO_INDEX, ROUTE_SUNO_HISTORY]
         });
       }
-      // Add luma, pika, hailuo's leftmost icon
-      if (
-        this.$store?.state?.site?.features?.luma?.enabled ||
-        this.$store?.state?.site?.features?.pika?.enabled ||
-        this.$store?.state?.site?.features?.hailuo?.enabled
-      ) {
+      // Add luma's leftmost icon
+      if (this.$store?.state?.site?.features?.luma?.enabled) {
         result.push({
           route: {
-            name: this.$store?.state?.site?.features?.luma?.enabled
-              ? ROUTE_LUMA_INDEX
-              : this.$store?.state?.site?.features?.pika?.enabled
-              ? ROUTE_PIKA_INDEX
-              : ROUTE_HAILUO_INDEX
+            name: ROUTE_LUMA_INDEX
           },
-          displayName: this.$t('common.nav.video'),
+          displayName: this.$t('common.nav.luma'),
+          logo: 'https://cdn.acedata.cloud/ahjfwi.png',
+          routes: [ROUTE_LUMA_INDEX, ROUTE_LUMA_HISTORY]
+        });
+      }
+      // Add pika's leftmost icon
+      if (this.$store?.state?.site?.features?.pika?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_PIKA_INDEX
+          },
+          displayName: this.$t('common.nav.pika'),
+          logo: 'https://cdn.acedata.cloud/i80tgn.png',
+          routes: [ROUTE_PIKA_INDEX, ROUTE_PIKA_HISTORY]
+        });
+      }
+      // Add hailuo's leftmost icon
+      if (this.$store?.state?.site?.features?.hailuo?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_HAILUO_INDEX
+          },
+          displayName: this.$t('common.nav.hailuo'),
           icon: 'fa-solid fa-film',
-          routes: [
-            ROUTE_LUMA_INDEX,
-            ROUTE_LUMA_HISTORY,
-            ROUTE_PIKA_INDEX,
-            ROUTE_PIKA_HISTORY,
-            ROUTE_HAILUO_INDEX,
-            ROUTE_HAILUO_HISTORY
-          ]
+          logo: 'https://cdn.acedata.cloud/4tfwwz.png',
+          routes: [ROUTE_HAILUO_INDEX, ROUTE_HAILUO_HISTORY]
         });
       }
       // Add headshots's leftmost icon
@@ -175,7 +200,6 @@ export default defineComponent({
           routes: [ROUTE_HEADSHOTS_INDEX, ROUTE_HEADSHOTS_HISTORY]
         });
       }
-
       if (this.direction === 'row') {
         result.push({
           route: {
@@ -190,24 +214,6 @@ export default defineComponent({
     },
     authenticated() {
       return !!this.$store.state.token.access;
-    },
-    showSite() {
-      return this.$store?.state?.site?.admins?.includes(this.$store.getters.user?.id);
-    },
-    showSupport() {
-      return (
-        this.$store?.state?.site?.features?.support?.enabled &&
-        (this.$store?.state?.site?.features?.support?.discord?.enabled ||
-          this.$store?.state?.site?.features?.support?.wechat?.enabled)
-      );
-    },
-    showDistribution() {
-      return (
-        // if forcedInviterId is set, only the forced inviter can see the distribution menu
-        // if forcedInviterId is not set, everyone can see the distribution menu
-        !this.$store?.state?.site?.distribution?.force_inviter_id ||
-        this.$store.getters.user?.id === this.$store?.state?.site?.distribution?.force_inviter_id
-      );
     }
   },
   methods: {
@@ -215,22 +221,6 @@ export default defineComponent({
       this.$router.push({
         name: ROUTE_INDEX
       });
-    },
-    onSite() {
-      this.$router.push({
-        name: ROUTE_SITE_INDEX
-      });
-    },
-    onDistribution() {
-      this.$router.push({
-        name: ROUTE_DISTRIBUTION_INDEX
-      });
-    },
-    async onLogout() {
-      await this.$store.dispatch('logout');
-    },
-    onConsole() {
-      this.$router.push({ name: ROUTE_CONSOLE_ROOT });
     }
   }
 });
@@ -241,6 +231,7 @@ export default defineComponent({
   display: flex;
   align-items: center;
   position: relative;
+
   &[direction='row'] {
     flex-direction: row;
     padding-top: 10px;
@@ -316,28 +307,29 @@ export default defineComponent({
       padding-top: 10px;
       min-width: 60px;
       .link {
-        width: 40px;
+        width: 100%;
         height: 40px;
-        margin: 0 10px 10px 10px;
-        .button {
-          width: 40px;
-          height: 40px;
-          border-radius: 10px;
-          border: none;
-          color: var(--el-text-color-primary);
-          background-color: var(--el-bg-color-page);
-          &.active,
-          &:hover,
-          &:focus {
-            color: var(--el-button-active-text-color);
-          }
+        margin-bottom: 10px;
+        .avatar {
+          display: block;
+          margin: auto;
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          cursor: pointer;
+          border: 1px solid var(--el-border-color);
         }
       }
     }
     .bottom {
-      display: block;
       position: absolute;
       bottom: 0;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      justify-content: flex-end;
+      align-items: center;
+      padding-bottom: 10px;
     }
   }
 }

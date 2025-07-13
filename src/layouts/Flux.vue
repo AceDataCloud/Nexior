@@ -1,7 +1,6 @@
 <template>
   <div class="main">
     <div class="config">
-      <image-navigator />
       <slot name="config" />
     </div>
     <div class="result">
@@ -20,15 +19,13 @@
 import { defineComponent } from 'vue';
 import { ElDrawer, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import ImageNavigator from '@/components/common/ImageNavigator.vue';
 
 export default defineComponent({
   name: 'LayoutFlux',
   components: {
     ElDrawer,
     ElButton,
-    FontAwesomeIcon,
-    ImageNavigator
+    FontAwesomeIcon
   },
   data() {
     return {
