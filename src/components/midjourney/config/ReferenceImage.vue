@@ -12,12 +12,20 @@
       :limit="5"
       class="upload-wrapper"
       :multiple="true"
-      :action="uploadUrl"
       list-type="picture"
+      :action="uploadUrl"
       :on-exceed="onExceed"
       :on-error="onError"
       :headers="headers"
     >
+      <template #file="{ file }">
+        <image-preview
+          :url="file.url || file.response?.file_url"
+          :name="file.name"
+          :percentage="file.percentage"
+          @remove="fileList.splice(fileList.indexOf(file), 1)"
+        />
+      </template>
       <el-button round type="primary" size="small" class="btn btn-upload">
         <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
         {{ $t('midjourney.button.uploadReferences') }}
@@ -32,6 +40,7 @@ import { ElUpload, ElButton, UploadFiles, UploadFile, ElMessage } from 'element-
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
+import ImagePreview from '@/components/common/ImagePreview.vue';
 
 interface IData {
   fileList: UploadFiles;
@@ -44,7 +53,8 @@ export default defineComponent({
     ElUpload,
     ElButton,
     InfoIcon,
-    FontAwesomeIcon
+    FontAwesomeIcon,
+    ImagePreview
   },
   emits: ['change'],
   data(): IData {
@@ -68,6 +78,7 @@ export default defineComponent({
         return this.$store.state.midjourney.config.references || [];
       },
       set(val: string[]) {
+        console.debug('Setting references:', val);
         this.$store.commit('midjourney/setConfig', {
           ...this.$store.state.midjourney.config,
           references: val
@@ -78,6 +89,7 @@ export default defineComponent({
   watch: {
     urls: {
       handler(val) {
+        console.debug('URLs changed:', val);
         this.$emit('change', val);
       }
     }

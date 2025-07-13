@@ -8,11 +8,12 @@
       <version-selector class="mb-4" />
       <reference-image class="mb-2" />
       <elements-selector class="mb-2" />
-      <stylize-selector class="mb-2" />
-      <weird-selector class="mb-2" />
-      <chaos-selector class="mb-2" />
-      <image-weight-selector class="mb-2" />
-      <style-selector class="mb-2" />
+      <advanced-selector class="mb-2" />
+      <stylize-selector v-show="config.advanced" class="mb-2" />
+      <weird-selector v-show="config.advanced" class="mb-2" />
+      <chaos-selector v-show="config.advanced" class="mb-2" />
+      <image-weight-selector v-show="config.advanced" class="mb-2" />
+      <style-selector v-show="config.advanced" class="mb-2" />
     </div>
     <div class="h-12 px-4">
       <div class="flex gap-1">
@@ -28,6 +29,7 @@
 <script>
 import { defineComponent } from 'vue';
 import RatioSelector from './config/RatioSelector.vue';
+import AdvancedSelector from './config/AdvancedSelector.vue';
 import VersionSelector from './config/VersionSelector.vue';
 import StylizeSelector from './config/StylizeSelector.vue';
 import ChaosSelector from './config/ChaosSelector.vue';
@@ -55,6 +57,7 @@ export default defineComponent({
     RatioSelector,
     VersionSelector,
     StylizeSelector,
+    AdvancedSelector,
     ChaosSelector,
     WeirdSelector,
     ImageWeightSelector,

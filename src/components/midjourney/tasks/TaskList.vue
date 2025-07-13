@@ -32,7 +32,6 @@
 import { defineComponent } from 'vue';
 import TaskItem from './TaskItem.vue';
 import { ElSkeleton, ElSkeletonItem } from 'element-plus';
-import { Status } from '@/models';
 
 export default defineComponent({
   name: 'TaskList',
@@ -77,6 +76,7 @@ export default defineComponent({
 }
 
 .tasks {
+  padding: 0 10px;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;

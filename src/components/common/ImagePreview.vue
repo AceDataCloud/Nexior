@@ -53,6 +53,8 @@ export default defineComponent({
   width: 50px;
   height: 50px;
   position: relative;
+  border-radius: var(--el-border-radius-base);
+  overflow: hidden;
   .close {
     position: absolute;
     cursor: pointer;
@@ -81,6 +83,8 @@ export default defineComponent({
   }
   img {
     object-fit: cover;
+    width: 100%;
+    height: 100%;
   }
 }
 </style>

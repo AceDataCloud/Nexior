@@ -17,6 +17,7 @@ html.dark,
   --el-color-primary-light-8: #d4e3e7;
   --el-color-primary-light-9: #e9f1f3;
   --el-color-primary-dark-2: #1f5a6b;
+  --el-border-radius-base: 10px;
 }
 
 * {
@@ -40,6 +41,27 @@ html.dark,
 
 .el-dropdown {
   color: var(--el-text-color-primary);
+}
+
+.el-upload-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: auto;
+  gap: 5px;
+  overflow-y: scroll;
+  flex-wrap: wrap;
+  .el-upload-list__item {
+    margin: 0;
+    width: fit-content;
+    height: 50px;
+    padding: 0;
+    border-radius: 10px;
+    position: relative;
+  }
 }
 
 .el-dropdown-menu {
@@ -91,15 +113,15 @@ html.dark,
 }
 
 .el-textarea {
-  border-radius: 5px;
-  textarea {
-    border-radius: 5px;
+  border-radius: 10px;
+  .el-textarea__inner {
+    border-radius: 10px;
   }
 }
 
 .el-input {
   .el-input__wrapper {
-    border-radius: 5px;
+    border-radius: 10px;
     width: 100%;
     &.is-focus {
       box-shadow: 0 0 0 1px var(--el-input-border-color, var(--el-border-color)) inset;
@@ -112,10 +134,14 @@ html.dark,
 }
 
 .el-dialog {
-  border-radius: 1rem;
+  border-radius: 15px;
   .el-dialog__body {
     color: var(--el-text-color-primary);
   }
+}
+
+.el-radio-group {
+  --el-border-radius-base: 10px;
 }
 
 .v-codemirror {

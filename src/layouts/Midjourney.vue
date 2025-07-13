@@ -3,8 +3,8 @@
     <div class="presets">
       <slot name="presets" />
     </div>
-    <div class="operation">
-      <slot name="operation" />
+    <div class="results">
+      <slot name="results" />
     </div>
     <el-button round class="menu" @click="drawer = true">
       <font-awesome-icon icon="fa-solid fa-gear" class="icon-menu" />
@@ -66,11 +66,9 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
   }
-  .operation {
+  .results {
     flex: 1;
-    padding: 15px;
     height: 100%;
-    overflow-x: scroll;
     display: flex;
     flex-direction: column;
   }

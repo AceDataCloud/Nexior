@@ -98,15 +98,13 @@
 import { defineComponent } from 'vue';
 import AnsweringMark from './AnsweringMark.vue';
 import copy from 'copy-to-clipboard';
-import { ElAlert, ElButton, ElImage, ElTooltip, ElInput } from 'element-plus';
+import { ElAlert, ElButton, ElImage, ElInput } from 'element-plus';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IApplication, IChatMessage, IChatMessageState } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import RestartToGenerate from './RestartToGenerate.vue';
 import EditMessage from './EditMessage.vue';
-import FilePreview from './FilePreview.vue';
-import ImagePreview from './ImagePreview.vue';
+import FilePreview from '@/components/common/FilePreview.vue';
 import {
   ERROR_CODE_API_ERROR,
   ERROR_CODE_BAD_REQUEST,
