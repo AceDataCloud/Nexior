@@ -1,26 +1,39 @@
 <template>
-  <div class="field">
-    <h2 class="title font-bold">{{ $t('hailuo.name.startImageUrl') }}</h2>
-    <div class="upload-wrapper">
-      <el-upload
-        v-model:file-list="fileList"
-        accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
-        name="file"
-        class="value"
-        :show-file-list="true"
-        :limit="1"
-        :multiple="false"
-        :action="uploadUrl"
-        :on-exceed="onExceed"
-        :on-error="onError"
-        :on-remove="onRemove"
-        :on-success="onSuccess"
-        :headers="headers"
-      >
-        <el-button size="small" type="primary" round>{{ $t('hailuo.button.uploadStartImageUrl') }}</el-button>
-      </el-upload>
+  <div class="relative">
+    <div class="flex justify-between">
+      <div class="flex justify-start items-center">
+        <span class="text-sm font-bold">{{ $t('hailuo.name.startImageUrl') }}</span>
+        <info-icon :content="$t('hailuo.description.startImageUrl')" class="info" />
+      </div>
     </div>
-    <info-icon :content="$t('hailuo.description.startImageUrl')" class="info" />
+    <el-upload
+      v-model:file-list="fileList"
+      accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
+      name="file"
+      class="upload-wrapper"
+      :show-file-list="true"
+      :limit="1"
+      :multiple="false"
+      list-type="picture"
+      :action="uploadUrl"
+      :on-exceed="onExceed"
+      :on-error="onError"
+      :on-remove="onRemove"
+      :on-success="onSuccess"
+      :headers="headers"
+    >
+      <template #file="{ file }">
+        <image-preview
+          :url="file.url || file.response?.file_url"
+          :name="file.name"
+          :percentage="file.percentage"
+          @remove="fileList.splice(fileList.indexOf(file), 1)"
+        />
+      </template>
+      <el-button size="small" type="primary" class="btn btn-upload" round>{{
+        $t('hailuo.button.uploadStartImageUrl')
+      }}</el-button>
+    </el-upload>
   </div>
 </template>
 
@@ -29,6 +42,8 @@ import { defineComponent } from 'vue';
 import { ElButton, ElUpload, ElMessage, UploadFiles } from 'element-plus';
 import { getBaseUrlPlatform } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
+import ImagePreview from '@/components/common/ImagePreview.vue';
+
 export const DEFAULT_CONTENT = '';
 
 interface IData {
@@ -41,7 +56,8 @@ export default defineComponent({
   components: {
     ElUpload,
     ElButton,
-    InfoIcon
+    InfoIcon,
+    ImagePreview
   },
   data(): IData {
     return {
@@ -103,25 +119,14 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.field {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between; // Distribute space evenly
-  .title {
-    font-size: 14px;
-    margin: 0;
-    width: 30%;
-  }
-  .value {
-    flex: 1;
-    margin-left: 60px; // Adjust this value as needed
-  }
-  .upload-wrapper {
-    transform: translate(-26px, 5px); // Move left and down
-  }
-  .info {
-    margin-left: auto; // Pushes the info icon to the right
-  }
+.title {
+  font-size: 14px;
+  margin-bottom: 0;
+  width: 30%;
+}
+.btn.btn-upload {
+  position: absolute;
+  top: 5px;
+  right: 0;
 }
 </style>

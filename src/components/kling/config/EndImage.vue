@@ -19,6 +19,14 @@
       :on-success="onSuccess"
       :headers="headers"
     >
+      <template #file="{ file }">
+        <image-preview
+          :url="file.url || file.response?.file_url"
+          :name="file.name"
+          :percentage="file.percentage"
+          @remove="fileList.splice(fileList.indexOf(file), 1)"
+        />
+      </template>
       <el-button round type="primary" size="small" class="btn btn-upload">
         <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
         {{ $t('kling.button.uploadReferences') }}
@@ -33,6 +41,7 @@ import { ElUpload, ElButton, UploadFiles, UploadFile, ElMessage } from 'element-
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
+import ImagePreview from '@/components/common/ImagePreview.vue';
 
 interface IData {
   fileList: UploadFiles;
@@ -44,6 +53,7 @@ export default defineComponent({
   components: {
     ElUpload,
     ElButton,
+    ImagePreview,
     InfoIcon,
     FontAwesomeIcon
   },
@@ -112,16 +122,5 @@ export default defineComponent({
   position: absolute;
   top: 5px;
   right: 0;
-}
-</style>
-
-<style lang="scss">
-.upload-wrapper {
-  height: auto;
-  display: flex;
-  .el-upload-list {
-    margin: 0;
-    width: 100%;
-  }
 }
 </style>
