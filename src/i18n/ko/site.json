@@ -47,32 +47,44 @@
     "message": "채팅",
     "description": "편집 상자에 표시되는 제목"
   },
+  "field.featuresGrok": {
+    "message": "Grok",
+    "description": "편집 상자에 표시되는 제목"
+  },
+  "field.featuresDeepseek": {
+    "message": "Deepseek",
+    "description": "편집 상자에 표시되는 제목"
+  },
+  "field.featuresChatgpt": {
+    "message": "ChatGPT",
+    "description": "편집 상자에 표시되는 제목"
+  },
   "field.featuresMidjourney": {
-    "message": "미드저니",
+    "message": "Midjourney",
     "description": "편집 상자에 표시되는 제목"
   },
   "field.featuresChatdoc": {
-    "message": "챗독",
+    "message": "Chatdoc",
     "description": "편집 상자에 표시되는 제목"
   },
   "field.featuresQrart": {
-    "message": "큐아트",
+    "message": "Qrart",
     "description": "편집 상자에 표시되는 제목"
   },
   "field.featuresLuma": {
-    "message": "루마",
+    "message": "Luma",
     "description": "편집 상자에 표시되는 제목"
   },
   "field.featuresPika": {
-    "message": "피카",
+    "message": "Pika",
     "description": "편집 상자에 표시되는 제목"
   },
   "field.featuresKling": {
-    "message": "클링",
+    "message": "Kling",
     "description": "편집 상자에 표시되는 제목"
   },
   "field.featuresHailuo": {
-    "message": "하이루오",
+    "message": "Hailuo",
     "description": "편집 상자에 표시되는 제목"
   },
   "field.featuresHeadshots": {
@@ -80,11 +92,11 @@
     "description": "편집 상자에 표시되는 제목"
   },
   "field.featuresSuno": {
-    "message": "수노",
+    "message": "Suno",
     "description": "편집 상자에 표시되는 제목"
   },
   "field.featuresFlux": {
-    "message": "플럭스",
+    "message": "Flux",
     "description": "편집 상자에 표시되는 제목"
   },
   "field.featuresSupport": {
@@ -185,7 +197,7 @@
   },
   "message.uploadImageExceed": {
     "message": "업로드한 이미지가 제한을 초과했습니다",
-    "description": "업로드 이미지가 제한을 초과했을 때의 알림"
+    "description": "업로드한 이미지가 제한을 초과했을 때의 알림"
   },
   "message.uploadImageError": {
     "message": "이미지 업로드 오류",
@@ -193,71 +205,83 @@
   },
   "message.editLogoTip": {
     "message": "권장 크기: 200*60px",
-    "description": "이미지 업로드에 대한 안내"
+    "description": "이미지 업로드에 대한 안내 문구"
   },
   "message.editQRTip": {
     "message": "권장 크기: 200*200px",
-    "description": "이미지 업로드에 대한 안내"
+    "description": "이미지 업로드에 대한 안내 문구"
   },
   "message.editFaviconTip": {
     "message": "권장 크기: 32*32px",
-    "description": "이미지 업로드에 대한 안내"
+    "description": "이미지 업로드에 대한 안내 문구"
   },
   "message.editUrl": {
     "message": "링크를 입력하세요",
-    "description": "링크 입력에 대한 안내"
+    "description": "링크를 입력하라는 안내"
   },
   "message.atLeastOneAdmin": {
-    "message": "최소한 한 명의 관리자를 유지하세요",
-    "description": "최소한 한 명의 관리자를 유지해야 한다는 알림"
+    "message": "최소한 한 명의 관리자를 유지해야 합니다",
+    "description": "최소한 한 명의 관리자를 유지해야 한다는 안내"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "초대자의 사용자 ID를 기본값으로 설정합니다. 만약 분배 링크에 inviter_id 파라미터가 포함되어 있지 않다면, 이 사용자 ID가 초대자로 사용됩니다.",
+    "message": "기본 초대자의 사용자 ID. 분배 링크에 inviter_id 매개변수가 없으면 이 사용자 ID가 기본 초대자로 사용됩니다.",
     "description": "기본 초대자 ID에 대한 안내"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "초대자의 사용자 ID를 강제로 설정합니다. 이 ID가 설정되면, 분배 링크에 inviter_id 파라미터가 있어도 무조건 이 사용자 ID가 초대자로 사용됩니다.",
+    "message": "강제 초대자의 사용자 ID. 이 ID가 설정되면, 분배 링크에 inviter_id 매개변수가 있든 없든 이 사용자 ID가 강제로 초대자로 사용됩니다.",
     "description": "강제 초대자 ID에 대한 안내"
   },
   "message.originTip": {
-    "message": "사이트 도메인, 사이트 설정과 도메인을 연동하며, 사이트 도메인은 변경할 수 없습니다.",
+    "message": "사이트 도메인. 사이트 구성은 도메인에 바인딩되며, 사이트 도메인은 변경할 수 없습니다.",
     "description": "사이트 도메인에 대한 안내"
   },
   "message.titleTip": {
-    "message": "사이트 제목, 브라우저 탭에 표시됩니다.",
+    "message": "사이트 제목. 브라우저 탭에 표시됩니다.",
     "description": "사이트 제목에 대한 안내"
   },
   "message.descriptionTip": {
-    "message": "사이트 설명, 사이트 메타 정보에 위치하며 사이트 SEO 최적화를 위해 사용됩니다.",
+    "message": "사이트 설명. 사이트 메타 정보에 위치하며, 사이트 SEO 최적화에 사용됩니다.",
     "description": "사이트 설명에 대한 안내"
   },
   "message.logoTip": {
-    "message": "사이트 로고, 메뉴가 확장될 때 사이트 메뉴 상단에 표시됩니다.",
+    "message": "사이트 로고. 메뉴 바가 펼쳐질 때 사이트 메뉴 상단에 표시됩니다.",
     "description": "사이트 로고에 대한 안내"
   },
   "message.faviconTip": {
-    "message": "사이트 파비콘, 브라우저 탭에 표시됩니다.",
+    "message": "사이트 파비콘. 브라우저 탭에 표시됩니다.",
     "description": "사이트 파비콘에 대한 안내"
   },
   "message.adminsTip": {
-    "message": "사이트 관리자 ID, 기본적으로 처음 사이트를 생성한 사용자가 관리자가 되며, 관리자는 사이트를 관리할 수 있습니다.",
+    "message": "사이트 관리자 ID. 기본적으로 사이트를 처음 생성한 사용자가 관리자가 되며, 사이트 관리자만 사이트를 관리할 수 있습니다.",
     "description": "사이트 관리자에 대한 안내"
   },
   "message.adminsTip2": {
-    "message": "여기서 관리자 ID를 추가하거나 삭제할 수 있습니다. https://auth.acedata.cloud 에서 사용자 ID를 확인할 수 있습니다.",
-    "description": "사이트 관리자에 대한 추가 안내"
+    "message": "여기에서 관리자 ID를 추가하거나 삭제할 수 있으며, https://auth.acedata.cloud에서 사용자 ID를 확인할 수 있습니다.",
+    "description": "사이트 관리자에 대한 안내"
   },
   "message.keywordsTip": {
-    "message": "사이트 키워드, 사이트 메타 정보에 위치하며 사이트 SEO 최적화를 위해 사용됩니다.",
+    "message": "사이트 키워드. 사이트 메타 정보에 위치하며, 사이트 SEO 최적화에 사용됩니다.",
     "description": "사이트 키워드에 대한 안내"
   },
   "message.keywordsTip2": {
-    "message": "여기서 사이트 키워드를 추가하거나 삭제할 수 있습니다. 키워드가 정밀할수록 SEO 최적화에 유리합니다.",
-    "description": "사이트 키워드에 대한 추가 안내"
+    "message": "여기에서 웹사이트 키워드를 추가하거나 삭제할 수 있으며, 키워드가 정확할수록 SEO 최적화에 유리합니다.",
+    "description": "사이트 키워드에 대한 안내"
   },
   "message.featuresChat": {
-    "message": "Chat 기능 모듈을 켜거나 끕니다.",
-    "description": "Chat 기능에 대한 설명"
+    "message": "채팅 기능 모듈을 켜거나 끕니다.",
+    "description": "채팅 기능에 대한 설명"
+  },
+  "message.featuresGrok": {
+    "message": "Grok 기능 모듈을 켜거나 끕니다.",
+    "description": "Grok 기능에 대한 설명"
+  },
+  "message.featuresDeepseek": {
+    "message": "Deepseek 기능 모듈을 켜거나 끕니다.",
+    "description": "Deepseek 기능에 대한 설명"
+  },
+  "message.featuresChatgpt": {
+    "message": "ChatGPT 기능 모듈을 켜거나 끕니다.",
+    "description": "ChatGPT 기능에 대한 설명"
   },
   "message.featuresMidjourney": {
     "message": "Midjourney 기능 모듈을 켜거나 끕니다.",
@@ -300,7 +324,7 @@
     "description": "AI 증명사진 기능에 대한 설명"
   },
   "message.featuresSupport": {
-    "message": "고객 지원 기능을 켜거나 끕니다.",
+    "message": "고객 지원을 켜거나 끕니다.",
     "description": "지원 기능에 대한 설명"
   },
   "message.featuresI18n": {
@@ -312,11 +336,11 @@
     "description": "업로드"
   },
   "button.enabled": {
-    "message": "켜짐",
-    "description": "활성화 상태를 표시하는 텍스트"
+    "message": "활성화됨",
+    "description": "스위치 텍스트, 활성화되었음을 나타냄"
   },
   "button.disabled": {
-    "message": "꺼짐",
-    "description": "비활성화 상태를 표시하는 텍스트"
+    "message": "비활성화됨",
+    "description": "스위치 텍스트로, 비활성화 상태를 나타냅니다."
   }
 }

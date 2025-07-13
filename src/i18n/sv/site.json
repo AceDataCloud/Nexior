@@ -4,11 +4,11 @@
     "description": "Visas som titeln i redigeringsrutan"
   },
   "field.origin": {
-    "message": "Webbplatsens domän",
+    "message": "Webbplatsens domännamn",
     "description": "Visas som titeln i redigeringsrutan"
   },
   "field.description": {
-    "message": "Webbplatsbeskrivning",
+    "message": "Webbplatsens beskrivning",
     "description": "Visas som titeln i redigeringsrutan"
   },
   "field.keywords": {
@@ -32,19 +32,31 @@
     "description": "Visas som titeln i redigeringsrutan"
   },
   "field.admins": {
-    "message": "Webbplatsadministratörens ID",
+    "message": "Webbplatsens administratörs-ID",
     "description": "Visas som titeln i redigeringsrutan"
   },
   "field.distributionDefaultInviterId": {
-    "message": "Standardinbjudarens ID",
+    "message": "Standardinbjudar-ID",
     "description": "Visas som titeln i redigeringsrutan"
   },
   "field.distributionForceInviterId": {
-    "message": "Tvingad inbjudarens ID",
+    "message": "Tvingad inbjudar-ID",
     "description": "Visas som titeln i redigeringsrutan"
   },
   "field.featuresChat": {
     "message": "Chat",
+    "description": "Visas som titeln i redigeringsrutan"
+  },
+  "field.featuresGrok": {
+    "message": "Grok",
+    "description": "Visas som titeln i redigeringsrutan"
+  },
+  "field.featuresDeepseek": {
+    "message": "Deepseek",
+    "description": "Visas som titeln i redigeringsrutan"
+  },
+  "field.featuresChatgpt": {
+    "message": "ChatGPT",
     "description": "Visas som titeln i redigeringsrutan"
   },
   "field.featuresMidjourney": {
@@ -76,7 +88,7 @@
     "description": "Visas som titeln i redigeringsrutan"
   },
   "field.featuresHeadshots": {
-    "message": "AI-passfoton",
+    "message": "AI ID-foto",
     "description": "Visas som titeln i redigeringsrutan"
   },
   "field.featuresSuno": {
@@ -96,7 +108,7 @@
     "description": "Visas som titeln i redigeringsrutan"
   },
   "title.basicConfig": {
-    "message": "Grundläggande konfiguration",
+    "message": "Grundkonfiguration",
     "description": "Visas som titeln i redigeringsrutan"
   },
   "title.seoConfig": {
@@ -116,7 +128,7 @@
     "description": "Visas som titeln i redigeringsrutan"
   },
   "title.editOrigin": {
-    "message": "Redigera domän",
+    "message": "Redigera domännamn",
     "description": "Visas som titeln i redigeringsrutan"
   },
   "title.editKeywords": {
@@ -160,7 +172,7 @@
     "description": "Visas som titeln i redigeringsrutan"
   },
   "placeholder.origin": {
-    "message": "Ange webbplatsens domän",
+    "message": "Ange webbplatsens domännamn",
     "description": "Visas som titeln i redigeringsrutan"
   },
   "placeholder.editUrl": {
@@ -168,7 +180,7 @@
     "description": "Visas som titeln i redigeringsrutan"
   },
   "placeholder.description": {
-    "message": "Ange webbplatsbeskrivning",
+    "message": "Ange webbplatsens beskrivning",
     "description": "Visas som titeln i redigeringsrutan"
   },
   "placeholder.keywords": {
@@ -176,135 +188,147 @@
     "description": "Visas som titeln i redigeringsrutan"
   },
   "placeholder.editDistributionDefaultInviterId": {
-    "message": "Ange standardinbjudarens ID",
+    "message": "Ange standardinbjudar-ID",
     "description": "Visas som titeln i redigeringsrutan"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "Ange tvingad inbjudarens ID",
-    "description": "Visas som titeln i redigeringsrutan"
+    "message": "Ange tvingande inbjudar-ID",
+    "description": "Visas som titel i redigeringsrutan"
   },
   "message.uploadImageExceed": {
     "message": "Uppladdad bild överskrider gränsen",
-    "description": "Meddelande om att uppladdad bild överskrider gränsen"
+    "description": "Meddelande om att den uppladdade bilden överskrider gränsen"
   },
   "message.uploadImageError": {
     "message": "Fel vid uppladdning av bild",
-    "description": "Felmeddelande vid uppladdning av bild"
+    "description": "Meddelande om fel vid uppladdning av bild"
   },
   "message.editLogoTip": {
     "message": "Rekommenderad storlek: 200*60px",
-    "description": "Tips för uppladdning av bild"
+    "description": "Språk för meddelande vid uppladdning av bild"
   },
   "message.editQRTip": {
     "message": "Rekommenderad storlek: 200*200px",
-    "description": "Tips för uppladdning av bild"
+    "description": "Språk för meddelande vid uppladdning av bild"
   },
   "message.editFaviconTip": {
     "message": "Rekommenderad storlek: 32*32px",
-    "description": "Tips för uppladdning av bild"
+    "description": "Språk för meddelande vid uppladdning av bild"
   },
   "message.editUrl": {
-    "message": "Vänligen ange länk",
-    "description": "Tips för att ange länk"
+    "message": "Ange länk",
+    "description": "Meddelande för att ange länk"
   },
   "message.atLeastOneAdmin": {
-    "message": "Behåll minst en administratör",
-    "description": "Tips för att behålla minst en administratör"
+    "message": "Minst en administratör måste finnas kvar",
+    "description": "Meddelande om att minst en administratör måste finnas kvar"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "Standardanvändar-ID för inbjudare, om distributionslänken inte innehåller inviter_id-parametern, används detta användar-ID som standard för inbjudaren.",
-    "description": "Tips för standardinbjudarens ID"
+    "message": "Standardinbjudarens användar-ID. Om distributionslänken inte innehåller inviter_id-parametern, används detta användar-ID som inbjudare som standard.",
+    "description": "Meddelande om standardinbjudar-ID"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "Tvingat användar-ID för inbjudare, om detta ID är inställt, används det alltid som inbjudarens ID oavsett om distributionslänken innehåller inviter_id-parametern eller inte.",
-    "description": "Tips för tvingat inbjudarens ID"
+    "message": "Tvingande inbjudarens användar-ID. Om detta ID är inställt, används detta användar-ID som inbjudare oavsett om distributionslänken innehåller inviter_id-parametern.",
+    "description": "Meddelande om tvingande inbjudar-ID"
   },
   "message.originTip": {
-    "message": "Webbplatsens domännamn, webbplatskonfigurationen är bunden till domännamnet och kan inte ändras.",
-    "description": "Tips för webbplatsens domännamn"
+    "message": "Webbplatsens domännamn, webbplatskonfigurationen är kopplad till domännamnet och kan inte ändras.",
+    "description": "Meddelande om webbplatsens domännamn"
   },
   "message.titleTip": {
     "message": "Webbplatsens titel, visas i webbläsarens flik.",
-    "description": "Tips för webbplatsens titel"
+    "description": "Meddelande om webbplatsens titel"
   },
   "message.descriptionTip": {
-    "message": "Webbplatsens beskrivning, finns i webbplatsens metainformation och används för SEO-optimering.",
-    "description": "Tips för webbplatsens beskrivning"
+    "message": "Webbplatsens beskrivning, finns i webbplatsens metadata och används för SEO-optimering.",
+    "description": "Meddelande om webbplatsens beskrivning"
   },
   "message.logoTip": {
-    "message": "Webbplatsens logotyp, visas högst upp i menyn när menyraden är utökad.",
-    "description": "Tips för webbplatsens logotyp"
+    "message": "Webbplatsens logotyp, visas högst upp i webbplatsens meny när menyn är utökad.",
+    "description": "Meddelande om webbplatsens logotyp"
   },
   "message.faviconTip": {
     "message": "Webbplatsens favicon, visas i webbläsarens flik.",
-    "description": "Tips för webbplatsens favicon"
+    "description": "Meddelande om webbplatsens favicon"
   },
   "message.adminsTip": {
-    "message": "Webbplatsens administratörs-ID, användaren som först skapar webbplatsen blir som standard administratör. Endast administratörer kan hantera webbplatsen.",
-    "description": "Tips för webbplatsens administratörer"
+    "message": "Webbplatsens administratörs-ID. Som standard blir den första användaren som skapar webbplatsen administratör. Endast webbplatsens administratörer kan hantera webbplatsen.",
+    "description": "Meddelande om webbplatsens administratörer"
   },
   "message.adminsTip2": {
-    "message": "Här kan du lägga till eller ta bort administratörs-ID. Besök https://auth.acedata.cloud för att se användar-ID.",
-    "description": "Tips för webbplatsens administratörer"
+    "message": "Kan här lägga till eller ta bort administratörs-ID. Du kan se användar-ID på https://auth.acedata.cloud",
+    "description": "Meddelande om webbplatsens administratörer"
   },
   "message.keywordsTip": {
-    "message": "Webbplatsens nyckelord, finns i webbplatsens metainformation och används för SEO-optimering.",
-    "description": "Tips för webbplatsens nyckelord"
+    "message": "Webbplatsens nyckelord, finns i webbplatsens metadata och används för SEO-optimering.",
+    "description": "Meddelande om webbplatsens nyckelord"
   },
   "message.keywordsTip2": {
-    "message": "Här kan du lägga till eller ta bort webbplatsens nyckelord. Ju mer precisa nyckelorden är, desto bättre för SEO-optimering.",
-    "description": "Tips för webbplatsens nyckelord"
+    "message": "Kan här lägga till eller ta bort webbplatsens nyckelord. Ju mer precisa nyckelord, desto bättre för SEO-optimering.",
+    "description": "Meddelande om webbplatsens nyckelord"
   },
   "message.featuresChat": {
-    "message": "Aktivera eller inaktivera Chat-funktionsmodulen.",
+    "message": "Aktivera eller inaktivera Chat-funktionalitet.",
     "description": "Beskrivning av Chat-funktionen"
   },
+  "message.featuresGrok": {
+    "message": "Aktivera eller inaktivera Grok-funktionalitet.",
+    "description": "Beskrivning av Grok-funktionen"
+  },
+  "message.featuresDeepseek": {
+    "message": "Aktivera eller inaktivera Deepseek-funktionalitet.",
+    "description": "Beskrivning av Deepseek-funktionen"
+  },
+  "message.featuresChatgpt": {
+    "message": "Aktivera eller inaktivera ChatGPT-funktionalitet.",
+    "description": "Beskrivning av ChatGPT-funktionen"
+  },
   "message.featuresMidjourney": {
-    "message": "Aktivera eller inaktivera Midjourney-funktionsmodulen.",
+    "message": "Aktivera eller inaktivera Midjourney-funktionalitet.",
     "description": "Beskrivning av Midjourney-funktionen"
   },
   "message.featuresChatdoc": {
-    "message": "Aktivera eller inaktivera Chatdoc-funktionsmodulen.",
+    "message": "Aktivera eller inaktivera Chatdoc-funktionalitet.",
     "description": "Beskrivning av Chatdoc-funktionen"
   },
   "message.featuresQrart": {
-    "message": "Aktivera eller inaktivera Qrart-funktionsmodulen.",
+    "message": "Aktivera eller inaktivera Qrart-funktionalitet.",
     "description": "Beskrivning av Qrart-funktionen"
   },
   "message.featuresSuno": {
-    "message": "Aktivera eller inaktivera Suno-funktionsmodulen.",
+    "message": "Aktivera eller inaktivera Suno-funktionalitet.",
     "description": "Beskrivning av Suno-funktionen"
   },
   "message.featuresFlux": {
-    "message": "Aktivera eller inaktivera FLux-funktionsmodulen.",
+    "message": "Aktivera eller inaktivera FLux-funktionalitet.",
     "description": "Beskrivning av FLux-funktionen"
   },
   "message.featuresLuma": {
-    "message": "Aktivera eller inaktivera Luma-funktionsmodulen.",
+    "message": "Aktivera eller inaktivera Luma-funktionalitet.",
     "description": "Beskrivning av Luma-funktionen"
   },
   "message.featuresPika": {
-    "message": "Aktivera eller inaktivera Pika-funktionsmodulen.",
+    "message": "Aktivera eller inaktivera Pika-funktionalitet.",
     "description": "Beskrivning av Pika-funktionen"
   },
   "message.featuresKling": {
-    "message": "Aktivera eller inaktivera Kling-funktionsmodulen.",
+    "message": "Aktivera eller inaktivera Kling-funktionalitet.",
     "description": "Beskrivning av Kling-funktionen"
   },
   "message.featuresHailuo": {
-    "message": "Aktivera eller inaktivera Hailuo-funktionsmodulen.",
+    "message": "Aktivera eller inaktivera Hailuo-funktionalitet.",
     "description": "Beskrivning av Hailuo-funktionen"
   },
   "message.featuresHeadshots": {
-    "message": "Aktivera eller inaktivera AI-passfoton-funktionsmodulen.",
-    "description": "Beskrivning av AI-passfoton-funktionen"
+    "message": "Aktivera eller inaktivera AI-ID-foto-funktionalitet.",
+    "description": "Beskrivning av AI-ID-foto-funktionen"
   },
   "message.featuresSupport": {
     "message": "Aktivera eller inaktivera kundsupport",
     "description": "Beskrivning av Support-funktionen"
   },
   "message.featuresI18n": {
-    "message": "Aktivera eller inaktivera flerspråkigt stöd, när det är inaktiverat kan användare endast använda standardspråket.",
+    "message": "Aktivera eller inaktivera flerspråkigt stöd. När det är avstängt kan användare endast använda standardspråket.",
     "description": "Beskrivning av flerspråkigt stöd"
   },
   "button.upload": {
@@ -313,10 +337,10 @@
   },
   "button.enabled": {
     "message": "Aktiverad",
-    "description": "Text på strömbrytare, indikerar att det är aktiverat"
+    "description": "Text på knappen som indikerar att den är aktiverad"
   },
   "button.disabled": {
     "message": "Inaktiverad",
-    "description": "Text på strömbrytare, indikerar att det är inaktiverat"
+    "description": "Text på knappen som indikerar att den har inaktiverats"
   }
 }

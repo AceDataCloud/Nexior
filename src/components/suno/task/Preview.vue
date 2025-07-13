@@ -1,7 +1,7 @@
 <template>
   <div class="task">
     <div v-for="(audio, audioIndex) in audios" :key="audioIndex" class="audio" @click="onClick(audio)">
-      <div v-loading="!audio?.audio_url || !audio?.video_url" class="left">
+      <div v-loading="!audio?.audio_url" class="left">
         <el-image :src="audio?.image_url" class="cover" fit="cover" />
         <div
           v-if="
@@ -34,7 +34,7 @@
         <p class="style">{{ audio?.style }}</p>
       </div>
       <div class="right">
-        <el-button v-if="audio?.audio_url && audio?.video_url" size="small" round @click="onExtend($event, audio)">{{
+        <el-button v-if="audio?.audio_url" size="small" round @click="onExtend($event, audio)">{{
           $t('suno.button.extend')
         }}</el-button>
         <el-tooltip effect="dark" :content="$t('suno.button.video')" placement="top">
@@ -78,10 +78,10 @@
           </span>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item v-if="audio?.video_url" @click="onGetStems($event, audio?.id)">
+              <el-dropdown-item @click="onGetStems($event, audio?.id)">
                 {{ $t('suno.button.get_stems') }}
               </el-dropdown-item>
-              <el-dropdown-item v-if="audio?.action === 'extend'" @click="onCover($event, audio)">
+              <el-dropdown-item @click="onCover($event, audio)">
                 {{ $t('suno.button.cover_music') }}
               </el-dropdown-item>
               <el-dropdown-item v-if="audio?.action === 'extend'" @click="onConcatMusic($event, audio?.id)">
