@@ -2,6 +2,8 @@
 import type { PropType } from 'vue';
 import { defineComponent, computed, h } from 'vue';
 import MarkdownIt, { Options as MarkdownItOptions } from 'markdown-it';
+import 'katex/dist/katex.min.css';
+import { katex } from '@mdit/plugin-katex';
 
 export default defineComponent({
   name: 'VueMarkdown',
@@ -17,7 +19,13 @@ export default defineComponent({
     }
   },
   setup(props, { attrs }) {
-    const md = new MarkdownIt(props.options);
+    const md = new MarkdownIt(props.options).use(katex as any, {
+      delimiters: 'all',
+      throwOnError: false,
+      errorColor: '#cc0000',
+      mathFence: true
+    });
+
     const content = computed(() => {
       const src = props.source;
       return md?.render(src);

@@ -48,8 +48,6 @@
         <dark-selector class="float-right mr-4" />
       </div>
       <div v-else class="float-right">
-        <dark-selector />
-        <language-selector class="locale" />
         <div class="console" @click="onConsole">
           {{ $t('common.button.console') }}
         </div>
@@ -73,8 +71,6 @@ import defaultAvatar from '@/assets/images/avatar.png';
 import { getBaseUrlAuth } from '@/utils';
 import { ROUTE_AUTH_LOGIN, ROUTE_CONSOLE_ROOT, ROUTE_INDEX } from '@/router';
 import { ElCol, ElRow, ElDropdown, ElMenu, ElSubMenu, ElMenuItem, ElDropdownItem, ElButton } from 'element-plus';
-import DarkSelector from './DarkSelector2.vue';
-import LanguageSelector from './LanguageSelector.vue';
 import Logo from './Logo.vue';
 
 export default defineComponent({
@@ -83,14 +79,12 @@ export default defineComponent({
     ElCol,
     Logo,
     ElRow,
-    DarkSelector,
     ElDropdown,
     ElMenu,
     ElMenuItem,
     ElDropdownItem,
     ElButton,
-    ElSubMenu,
-    LanguageSelector
+    ElSubMenu
   },
   data() {
     return {
