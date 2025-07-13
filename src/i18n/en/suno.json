@@ -1,7 +1,7 @@
 {
   "button.extend": {
-    "message": "Continue Generation",
-    "description": "Text for the continue generation button"
+    "message": "Continue Generating",
+    "description": "Text for the continue generating button"
   },
   "button.download": {
     "message": "Download",
@@ -13,7 +13,7 @@
   },
   "button.uploadAudios": {
     "message": "Upload",
-    "description": "Button text that allows users to upload references"
+    "description": "Text for the button that allows users to upload references"
   },
   "button.video": {
     "message": "Video",
@@ -24,8 +24,8 @@
     "description": "Text for the download video button"
   },
   "button.get_stems": {
-    "message": "Separate Tracks",
-    "description": "Text for the separate tracks button"
+    "message": "Stem Separation",
+    "description": "Text for the stem separation button"
   },
   "button.cover_music": {
     "message": "Cover Music",
@@ -53,7 +53,7 @@
   },
   "name.referenceAudios": {
     "message": "Reference Music",
-    "description": "Name for reference music"
+    "description": "Name for the reference music"
   },
   "model.model3": {
     "message": "v3.5",
@@ -63,13 +63,17 @@
     "message": "v4.0",
     "description": "Model used for generating music"
   },
+  "model.model45": {
+    "message": "v4.5",
+    "description": "Model used for generating music"
+  },
   "name.taskId": {
     "message": "Task ID",
     "description": "ID of the task"
   },
   "name.type": {
-    "message": "Customization Mode",
-    "description": "Name of the customization mode"
+    "message": "Custom Mode",
+    "description": "Name for the custom mode"
   },
   "name.prompt": {
     "message": "Song Description",
@@ -113,59 +117,59 @@
   },
   "description.prompt": {
     "message": "Fill in the style and theme of the music you want to generate, e.g., acoustic pop about the holidays",
-    "description": "Description of the 'prompt' parameter"
+    "description": "Description for the 'prompt' parameter"
   },
   "description.lyrics": {
     "message": "Content of the lyrics",
-    "description": "Description of the 'lyrics' parameter"
+    "description": "Description for the 'lyrics' parameter"
   },
   "description.style": {
     "message": "Content of the song style",
-    "description": "Description of the 'style' parameter"
+    "description": "Description for the 'style' parameter"
   },
   "description.title": {
     "message": "Content of the song title",
-    "description": "Description of the 'title' parameter"
+    "description": "Description for the 'title' parameter"
   },
   "description.uploadAudios": {
-    "message": "Upload music as a reference for generation. It may take some time to upload; once successful, it can be used for further generation based on the uploaded music",
-    "description": "Description of the upload reference parameter"
+    "message": "Upload music as a reference for generation; the upload process may take some time, and generation can proceed based on the uploaded music once successful.",
+    "description": "Description for the upload reference parameter"
   },
   "status.pending": {
     "message": "Pending",
-    "description": "Pending status of the task"
+    "description": "Waiting status of the task"
   },
   "placeholder.prompt": {
-    "message": "Please enter song prompts...",
-    "description": "Placeholder text for noise input"
+    "message": "Please enter song prompt...",
+    "description": "Placeholder text for the prompt input"
   },
   "placeholder.lyrics": {
     "message": "Please enter lyrics...",
-    "description": "Placeholder text for level input"
+    "description": "Placeholder text for the lyrics input"
   },
   "placeholder.extend.lyrics": {
-    "message": "Please enter lyrics to extend...",
-    "description": "Placeholder text for level input"
+    "message": "Please enter the lyrics to be extended...",
+    "description": "Placeholder text for the lyrics extension input"
   },
   "placeholder.extend.continue_at": {
-    "message": "Please enter the second from where to extend the song...",
-    "description": "Placeholder text for level input"
+    "message": "Please enter the second from which to continue the song...",
+    "description": "Placeholder text for the continuation input"
   },
   "placeholder.style": {
-    "message": "Please enter the song style prompts, e.g., acoustic pop",
+    "message": "Please enter the prompt for the song style to be generated, e.g., acoustic pop",
     "description": "Placeholder text in the prompt field"
   },
   "placeholder.title": {
-    "message": "Please enter the song title prompts, e.g., holiday song",
-    "description": "Placeholder text for seed input"
+    "message": "Please enter the prompt for the song title to be generated, e.g., holiday song",
+    "description": "Placeholder text for the seed input"
   },
   "placeholder.select": {
     "message": "Please select a model...",
-    "description": "Placeholder text for position input"
+    "description": "Placeholder text for the selection input"
   },
   "placeholder.position": {
     "message": "Please select...",
-    "description": "Placeholder text for position input"
+    "description": "Placeholder text for the position input"
   },
   "button.generate": {
     "message": "Generate",
@@ -173,47 +177,47 @@
   },
   "message.startingTask": {
     "message": "Starting task...",
-    "description": "Message shown when the music generation task starts"
+    "description": "Message when the music generation task starts"
   },
   "message.startingUploadAudio": {
     "message": "Uploading custom music...",
-    "description": "Message shown when the music generation task starts"
+    "description": "Message when the music generation task starts"
   },
   "message.uploadReferencesExceed": {
-    "message": "Uploaded music exceeds the maximum quantity",
-    "description": "Error message shown when uploaded music exceeds the maximum quantity"
+    "message": "Uploaded music exceeds the maximum number",
+    "description": "Error message when uploaded music exceeds the maximum number"
   },
   "message.uploadReferencesError": {
     "message": "Failed to upload music",
-    "description": "Error message shown when uploading music fails"
+    "description": "Error message when music upload fails"
   },
   "message.startTaskSuccess": {
-    "message": "Successfully started the music generation task",
-    "description": "Success message shown when the music generation task is successfully started"
+    "message": "Successfully started music generation task",
+    "description": "Success message when the music generation task is successfully started"
   },
   "message.startUploadAudioSuccess": {
     "message": "Successfully uploaded custom music",
-    "description": "Success message when a music generation task is successfully started"
+    "description": "Success message when the custom music is successfully uploaded"
   },
   "message.startUploadAudioFailed": {
     "message": "Failed to upload custom music",
-    "description": "Error message when starting a music generation task fails"
+    "description": "Error message when the music generation task fails to start"
   },
   "message.startTaskFailed": {
     "message": "Failed to start music generation task",
-    "description": "Error message when starting a music generation task fails"
+    "description": "Error message when the music generation task fails to start"
   },
   "message.generating": {
     "message": "Generating...",
-    "description": "Message when music is being generated"
+    "description": "Message when the music is being generated"
   },
   "message.generateFailed": {
     "message": "Failed to generate music",
-    "description": "Message when music generation fails"
+    "description": "Message when the music generation fails"
   },
   "message.noOperations": {
-    "message": "No operations available",
-    "description": "Message when no operations are available"
+    "message": "No available operations",
+    "description": "Message when there are no available operations"
   },
   "message.noTasks": {
     "message": "No historical tasks, please generate music in the configuration panel on the left",

@@ -1,19 +1,19 @@
 {
   "button.extend": {
-    "message": "استمر في التوليد",
-    "description": "نص زر الاستمرار في التوليد"
+    "message": "استمرار في التوليد",
+    "description": "نص زر استمرار في التوليد"
   },
   "button.download": {
     "message": "تحميل",
     "description": "نص زر التحميل"
   },
   "button.more": {
-    "message": "المزيد من العمليات",
-    "description": "نص زر التحميل"
+    "message": "المزيد من الخيارات",
+    "description": "نص زر المزيد من الخيارات"
   },
   "button.uploadAudios": {
     "message": "رفع",
-    "description": "نص الزر الذي يسمح للمستخدم برفع المرجع"
+    "description": "نص الزر الذي يسمح للمستخدم برفع مرجع"
   },
   "button.video": {
     "message": "فيديو",
@@ -24,16 +24,16 @@
     "description": "نص زر تحميل الفيديو"
   },
   "button.get_stems": {
-    "message": "فصل المسارات",
-    "description": "نص زر تحميل الفيديو"
+    "message": "فصل الأصوات",
+    "description": "نص زر فصل الأصوات"
   },
   "button.cover_music": {
-    "message": "نسخة الموسيقى",
-    "description": "نص زر تحميل الفيديو"
+    "message": "نسخة موسيقية",
+    "description": "نص زر النسخة الموسيقية"
   },
   "button.concat_music": {
     "message": "دمج الموسيقى",
-    "description": "نص زر تحميل الفيديو"
+    "description": "نص زر دمج الموسيقى"
   },
   "button.download_audio": {
     "message": "تحميل الموسيقى",
@@ -41,59 +41,63 @@
   },
   "model.model1": {
     "message": "v2",
-    "description": "النموذج المستخدم في توليد الموسيقى"
+    "description": "النموذج المستخدم لتوليد الموسيقى"
   },
   "model.model2": {
     "message": "v3",
-    "description": "النموذج المستخدم في توليد الموسيقى"
+    "description": "النموذج المستخدم لتوليد الموسيقى"
   },
   "name.instrumental": {
     "message": "بدون كلمات",
-    "description": "وصف للمعامل 'instrumental'"
+    "description": "وصف المعامل 'instrumental'"
   },
   "name.referenceAudios": {
-    "message": "الموسيقى المرجعية",
+    "message": "موسيقى مرجعية",
     "description": "اسم الموسيقى المرجعية"
   },
   "model.model3": {
     "message": "v3.5",
-    "description": "النموذج المستخدم في توليد الموسيقى"
+    "description": "النموذج المستخدم لتوليد الموسيقى"
   },
   "model.model4": {
     "message": "v4.0",
-    "description": "النموذج المستخدم في توليد الموسيقى"
+    "description": "النموذج المستخدم لتوليد الموسيقى"
+  },
+  "model.model45": {
+    "message": "v4.5",
+    "description": "النموذج المستخدم لتوليد الموسيقى"
   },
   "name.taskId": {
     "message": "معرف المهمة",
     "description": "معرف المهمة"
   },
   "name.type": {
-    "message": "وضع التخصيص",
-    "description": "اسم وضع التخصيص"
+    "message": "وضع مخصص",
+    "description": "اسم الوضع المخصص"
   },
   "name.prompt": {
     "message": "وصف الأغنية",
-    "description": "تلميح إدخال المحتوى"
+    "description": "نص الإدخال للمحتوى"
   },
   "name.extend": {
-    "message": "تمديد الأغنية من",
-    "description": "تلميح إدخال المحتوى"
+    "message": "توسيع الأغنية من",
+    "description": "نص الإدخال للمحتوى"
   },
   "name.cover": {
-    "message": "نسخة الأغنية الموسيقية من",
-    "description": "تلميح إدخال المحتوى"
+    "message": "نسخة الأغنية من",
+    "description": "نص الإدخال للمحتوى"
   },
   "name.lyrics": {
     "message": "محتوى الكلمات",
-    "description": "تلميح إدخال محتوى الكلمات"
+    "description": "نص الإدخال لمحتوى الكلمات"
   },
   "name.style": {
     "message": "أسلوب الأغنية",
-    "description": "تلميح إدخال محتوى أسلوب الأغنية"
+    "description": "نص الإدخال لمحتوى أسلوب الأغنية"
   },
   "name.title": {
     "message": "عنوان الأغنية",
-    "description": "تلميح إدخال محتوى عنوان الأغنية"
+    "description": "نص الإدخال لمحتوى عنوان الأغنية"
   },
   "name.failureReason": {
     "message": "سبب الفشل",
@@ -108,104 +112,104 @@
     "description": "معرف تتبع المهمة"
   },
   "name.sunoBot": {
-    "message": "Suno Bot",
-    "description": "اسم مولد Suno"
+    "message": "روبوت سونو",
+    "description": "اسم مولد سونو"
   },
   "description.prompt": {
-    "message": "املأ نمط الموسيقى والموضوع الذي ترغب في توليده، مثل pop عن الأعياد",
-    "description": "وصف للمعامل 'prompt'"
+    "message": "املأ أسلوب وموضوع الموسيقى التي تريد توليدها، مثل البوب الصوتي عن العطلات",
+    "description": "وصف المعامل 'prompt'"
   },
   "description.lyrics": {
     "message": "محتوى الكلمات",
-    "description": "وصف للمعامل 'lyrics'"
+    "description": "وصف المعامل 'lyrics'"
   },
   "description.style": {
     "message": "محتوى أسلوب الأغنية",
-    "description": "وصف للمعامل 'style'"
+    "description": "وصف المعامل 'style'"
   },
   "description.title": {
     "message": "محتوى عنوان الأغنية",
-    "description": "وصف للمعامل 'title'"
+    "description": "وصف المعامل 'title'"
   },
   "description.uploadAudios": {
-    "message": "ارفع الموسيقى كمرجع للتوليد، وقد يستغرق عملية الرفع بعض الوقت، وعند النجاح يمكنك التوليد بناءً على الموسيقى المرفوعة",
-    "description": "وصف معامل رفع المراجع"
+    "message": "رفع الموسيقى كمرجع للتوليد، عملية الرفع تحتاج إلى الانتظار قليلاً، بعد نجاح التوليد يمكنك التوليد بناءً على الموسيقى المرفوعة",
+    "description": "وصف المعامل لرفع المرجع"
   },
   "status.pending": {
-    "message": "قيد الانتظار",
-    "description": "حالة انتظار المهمة"
+    "message": "في الانتظار",
+    "description": "حالة الانتظار للمهمة"
   },
   "placeholder.prompt": {
-    "message": "يرجى إدخال تلميح الأغنية...",
-    "description": "نص بديل لإدخال الضجيج"
+    "message": "أدخل كلمات الأغنية...",
+    "description": "نص العنصر النائب لإدخال الكلمات"
   },
   "placeholder.lyrics": {
-    "message": "يرجى إدخال الكلمات...",
-    "description": "نص بديل لمستوى التعبئة"
+    "message": "أدخل الكلمات...",
+    "description": "نص العنصر النائب لمستوى الكلمات"
   },
   "placeholder.extend.lyrics": {
-    "message": "يرجى إدخال الكلمات المراد تمديدها...",
-    "description": "نص بديل لمستوى التعبئة"
+    "message": "أدخل الكلمات التي تحتاج إلى توسيع...",
+    "description": "نص العنصر النائب لمستوى الكلمات"
   },
   "placeholder.extend.continue_at": {
-    "message": "يرجى إدخال من أي ثانية يجب تمديد الأغنية...",
-    "description": "نص بديل لمستوى التعبئة"
+    "message": "أدخل من أي ثانية تحتاج إلى توسيع الأغنية...",
+    "description": "نص العنصر النائب لمستوى الكلمات"
   },
   "placeholder.style": {
-    "message": "يرجى إدخال تلميح لنمط الأغنية الذي ترغب في توليده، مثل pop",
-    "description": "نص بديل في حقل التلميح"
+    "message": "أدخل كلمات أسلوب الأغنية التي تريد توليدها، مثل البوب الصوتي",
+    "description": "نص العنصر النائب في حقل الإدخال"
   },
   "placeholder.title": {
-    "message": "يرجى إدخال تلميح لعنوان الأغنية الذي ترغب في توليده، مثل أغنية عطلة",
-    "description": "نص بديل لإدخال البذور"
+    "message": "أدخل كلمات عنوان الأغنية التي تريد توليدها، مثل أغنية العطلة",
+    "description": "نص العنصر النائب لإدخال البذور"
   },
   "placeholder.select": {
-    "message": "يرجى اختيار النموذج...",
-    "description": "نص بديل لإدخال الموقع"
+    "message": "اختر النموذج...",
+    "description": "نص العنصر النائب لإدخال الموقع"
   },
   "placeholder.position": {
-    "message": "يرجى الاختيار...",
-    "description": "نص بديل لإدخال الموقع"
+    "message": "اختر...",
+    "description": "نص العنصر النائب لإدخال الموقع"
   },
   "button.generate": {
     "message": "توليد",
     "description": "نص زر التوليد"
   },
   "message.startingTask": {
-    "message": "يتم بدء المهمة...",
+    "message": "جارٍ بدء المهمة...",
     "description": "رسالة عند بدء مهمة توليد الموسيقى"
   },
   "message.startingUploadAudio": {
-    "message": "يتم رفع الموسيقى المخصصة...",
+    "message": "جارٍ رفع الموسيقى المخصصة...",
     "description": "رسالة عند بدء مهمة توليد الموسيقى"
   },
   "message.uploadReferencesExceed": {
-    "message": "عدد الموسيقى المرفوعة يتجاوز الحد الأقصى",
+    "message": "تجاوز عدد الموسيقى المرفوعة الحد الأقصى",
     "description": "رسالة خطأ عند تجاوز عدد الموسيقى المرفوعة الحد الأقصى"
   },
   "message.uploadReferencesError": {
-    "message": "فشل في رفع الموسيقى",
+    "message": "فشل رفع الموسيقى",
     "description": "رسالة خطأ عند فشل رفع الموسيقى"
   },
   "message.startTaskSuccess": {
     "message": "تم بدء مهمة توليد الموسيقى بنجاح",
-    "description": "رسالة نجاح عند بدء مهمة توليد الموسيقى بنجاح"
+    "description": "رسالة النجاح عند بدء مهمة توليد الموسيقى بنجاح"
   },
   "message.startUploadAudioSuccess": {
     "message": "تم رفع الموسيقى المخصصة بنجاح",
-    "description": "رسالة نجاح عند بدء مهمة توليد الموسيقى بنجاح"
+    "description": "رسالة النجاح عند رفع الموسيقى المخصصة بنجاح"
   },
   "message.startUploadAudioFailed": {
     "message": "فشل في رفع الموسيقى المخصصة",
-    "description": "رسالة خطأ عند فشل بدء مهمة توليد الموسيقى"
+    "description": "رسالة الخطأ عند فشل بدء مهمة توليد الموسيقى"
   },
   "message.startTaskFailed": {
     "message": "فشل في بدء مهمة توليد الموسيقى",
-    "description": "رسالة خطأ عند فشل بدء مهمة توليد الموسيقى"
+    "description": "رسالة الخطأ عند فشل بدء مهمة توليد الموسيقى"
   },
   "message.generating": {
-    "message": "جاري التوليد...",
-    "description": "رسالة عند توليد الموسيقى"
+    "message": "جارٍ التوليد...",
+    "description": "رسالة أثناء توليد الموسيقى"
   },
   "message.generateFailed": {
     "message": "فشل في توليد الموسيقى",
@@ -213,10 +217,10 @@
   },
   "message.noOperations": {
     "message": "لا توجد عمليات متاحة",
-    "description": "رسالة عند عدم توفر عمليات"
+    "description": "رسالة عند عدم وجود عمليات متاحة"
   },
   "message.noTasks": {
-    "message": "لا توجد مهام سابقة، يرجى توليد الموسيقى من شريط التكوين الموجود على اليسار",
+    "message": "لا توجد مهام تاريخية، يرجى توليد الموسيقى من الشريط الجانبي الأيسر",
     "description": "رسالة عند عدم وجود مهام"
   }
 }

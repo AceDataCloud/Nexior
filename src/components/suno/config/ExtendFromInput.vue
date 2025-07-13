@@ -15,8 +15,8 @@
       </div>
     </div>
     <div class="task">
-      <div class="audio" @click="onClick(audio)">
-        <div v-loading="!audio?.audio_url || !audio?.video_url" class="left">
+      <div v-if="audio" class="audio" @click="onClick(audio)">
+        <div v-loading="!audio?.audio_url" class="left">
           <el-image :src="audio?.image_url" class="cover" fit="cover" />
           <div
             v-if="
@@ -144,8 +144,9 @@ export default defineComponent({
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between; // 添加这行
+    justify-content: space-between;
     position: relative;
+    margin-bottom: 10px;
     .title {
       font-size: 14px;
       margin-bottom: 10px;

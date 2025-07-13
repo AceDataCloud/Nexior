@@ -32,19 +32,31 @@
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.admins": {
-    "message": "Sivuston ylläpitäjän ID",
+    "message": "Sivuston ylläpitäjien ID",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.distributionDefaultInviterId": {
-    "message": "Oletuskutsujan ID",
+    "message": "Oletus kutsujan ID",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.distributionForceInviterId": {
-    "message": "Pakotetun kutsujan ID",
+    "message": "Pakotettu kutsujan ID",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.featuresChat": {
     "message": "Chat",
+    "description": "Näytetään muokkausruudun otsikkona"
+  },
+  "field.featuresGrok": {
+    "message": "Grok",
+    "description": "Näytetään muokkausruudun otsikkona"
+  },
+  "field.featuresDeepseek": {
+    "message": "Deepseek",
+    "description": "Näytetään muokkausruudun otsikkona"
+  },
+  "field.featuresChatgpt": {
+    "message": "ChatGPT",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.featuresMidjourney": {
@@ -76,7 +88,7 @@
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.featuresHeadshots": {
-    "message": "AI-passikuva",
+    "message": "AI-passikuvat",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.featuresSuno": {
@@ -140,11 +152,11 @@
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "title.editDistributionDefaultInviterId": {
-    "message": "Muokkaa oletuskutsujaa",
+    "message": "Muokkaa oletuskutsujan ID:tä",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "title.editDistributionForceInviterId": {
-    "message": "Muokkaa pakotettua kutsujaa",
+    "message": "Muokkaa pakotetun kutsujan ID:tä",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "title.editQR": {
@@ -184,139 +196,151 @@
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "message.uploadImageExceed": {
-    "message": "Ladattu kuva ylittää rajoituksen",
-    "description": "Ilmoitus, kun ladattu kuva ylittää rajoituksen"
+    "message": "Kuvan lataus ylittää rajan",
+    "description": "Kuvan lataus ylittää rajan ilmoitus"
   },
   "message.uploadImageError": {
     "message": "Kuvan latausvirhe",
-    "description": "Kuvan latausvirheen ilmoitus"
+    "description": "Kuvan latausvirhe ilmoitus"
   },
   "message.editLogoTip": {
     "message": "Suositeltu koko: 200*60px",
-    "description": "Kuvan latauksen vihje"
+    "description": "Kuvan lataamisen ohje"
   },
   "message.editQRTip": {
     "message": "Suositeltu koko: 200*200px",
-    "description": "Kuvan latauksen vihje"
+    "description": "Kuvan lataamisen ohje"
   },
   "message.editFaviconTip": {
     "message": "Suositeltu koko: 32*32px",
-    "description": "Kuvan latauksen vihje"
+    "description": "Kuvan lataamisen ohje"
   },
   "message.editUrl": {
     "message": "Syötä linkki",
-    "description": "Linkin syöttämisen vihje"
+    "description": "Linkin syöttämisen ohje"
   },
   "message.atLeastOneAdmin": {
-    "message": "Pidä vähintään yksi ylläpitäjä",
-    "description": "Vähintään yhden ylläpitäjän säilyttämisen vihje"
+    "message": "Vähintään yksi ylläpitäjä on säilytettävä",
+    "description": "Vähintään yksi ylläpitäjä säilyttämisen ilmoitus"
   },
   "message.distributionDefaultInviterIdTip": {
     "message": "Oletuskutsujan käyttäjä ID, jos jakolinkki ei sisällä inviter_id-parametria, käytetään oletuksena tätä käyttäjä ID:tä kutsujana.",
-    "description": "Oletuskutsujan ID:n vihje"
+    "description": "Oletuskutsujan ID:n ohje"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "Pakotetun kutsujan käyttäjä ID, jos tämä ID on asetettu, käytetään sitä kutsujana riippumatta siitä, sisältääkö jakolinkki inviter_id-parametria.",
-    "description": "Pakotetun kutsujan ID:n vihje"
+    "message": "Pakotetun kutsujan käyttäjä ID, jos tämä ID on asetettu, käytetään tätä käyttäjä ID:tä kutsujana riippumatta siitä, sisältääkö jakolinkki inviter_id-parametrin.",
+    "description": "Pakotetun kutsujan ID:n ohje"
   },
   "message.originTip": {
-    "message": "Sivuston verkkotunnus, sivuston asetukset sidotaan verkkotunnukseen, eikä verkkotunnusta voi muuttaa.",
-    "description": "Sivuston verkkotunnuksen vihje"
+    "message": "Sivuston verkkotunnus, sivuston asetukset on sidottu verkkotunnukseen, verkkotunnusta ei voi muuttaa.",
+    "description": "Sivuston verkkotunnuksen ohje"
   },
   "message.titleTip": {
-    "message": "Sivuston otsikko, näkyy selaimen välilehdessä.",
-    "description": "Sivuston otsikon vihje"
+    "message": "Sivuston otsikko, näytetään selaimen välilehdessä.",
+    "description": "Sivuston otsikon ohje"
   },
   "message.descriptionTip": {
-    "message": "Sivuston kuvaus, sijaitsee sivuston metatiedoissa ja käytetään sivuston SEO-optimointiin.",
-    "description": "Sivuston kuvauksen vihje"
+    "message": "Sivuston kuvaus, sijaitsee sivuston metatiedoissa, käytetään sivuston SEO-optimointiin.",
+    "description": "Sivuston kuvauksen ohje"
   },
   "message.logoTip": {
-    "message": "Sivuston logo, näkyy sivuston valikon yläosassa, kun valikkopalkki on laajennettu.",
-    "description": "Sivuston logon vihje"
+    "message": "Sivuston logo, näytetään sivuston valikon yläosassa, kun valikkopalkki avataan.",
+    "description": "Sivuston logon ohje"
   },
   "message.faviconTip": {
-    "message": "Sivuston favicon, näkyy selaimen välilehdessä.",
-    "description": "Sivuston faviconin vihje"
+    "message": "Sivuston favicon, näytetään selaimen välilehdessä.",
+    "description": "Sivuston faviconin ohje"
   },
   "message.adminsTip": {
-    "message": "Sivuston ylläpitäjän ID, oletuksena ensimmäinen sivuston luonut käyttäjä tulee ylläpitäjäksi, vain sivuston ylläpitäjä voi hallita sivustoa.",
-    "description": "Sivuston ylläpitäjän vihje"
+    "message": "Sivuston ylläpitäjän ID, oletuksena ensimmäisenä sivuston luonut käyttäjä tulee ylläpitäjäksi, vain sivuston ylläpitäjät voivat hallita sivustoa.",
+    "description": "Sivuston ylläpitäjän ohje"
   },
   "message.adminsTip2": {
-    "message": "Voit lisätä tai poistaa ylläpitäjän ID:tä täällä, voit tarkistaa käyttäjä ID:n osoitteesta https://auth.acedata.cloud",
-    "description": "Sivuston ylläpitäjän vihje"
+    "message": "Voit lisätä tai poistaa ylläpitäjän ID:tä täältä, voit tarkistaa käyttäjä ID:n osoitteesta https://auth.acedata.cloud",
+    "description": "Sivuston ylläpitäjän ohje"
   },
   "message.keywordsTip": {
-    "message": "Sivuston avainsanat, sijaitsevat sivuston metatiedoissa ja käytetään sivuston SEO-optimointiin.",
-    "description": "Sivuston avainsanojen vihje"
+    "message": "Sivuston avainsanat, sijaitsee sivuston metatiedoissa, käytetään sivuston SEO-optimointiin.",
+    "description": "Sivuston avainsanojen ohje"
   },
   "message.keywordsTip2": {
-    "message": "Voit lisätä tai poistaa sivuston avainsanoja täällä, mitä tarkempia avainsanat ovat, sitä parempi SEO-optimointi.",
-    "description": "Sivuston avainsanojen vihje"
+    "message": "Voit lisätä tai poistaa verkkosivuston avainsanoja täältä, mitä tarkempia avainsanoja, sitä parempi SEO-optimointi.",
+    "description": "Sivuston avainsanojen ohje"
   },
   "message.featuresChat": {
-    "message": "Avaa tai sulje Chat-toimintomoduuli.",
+    "message": "Ota käyttöön tai poista käytöstä Chat-toimintomoduuli.",
     "description": "Chat-toiminnon kuvaus"
   },
+  "message.featuresGrok": {
+    "message": "Ota käyttöön tai poista käytöstä Grok-toimintomoduuli.",
+    "description": "Grok-toiminnon kuvaus"
+  },
+  "message.featuresDeepseek": {
+    "message": "Ota käyttöön tai poista käytöstä Deepseek-toimintomoduuli.",
+    "description": "Deepseek-toiminnon kuvaus"
+  },
+  "message.featuresChatgpt": {
+    "message": "Ota käyttöön tai poista käytöstä ChatGPT-toimintomoduuli.",
+    "description": "ChatGPT-toiminnon kuvaus"
+  },
   "message.featuresMidjourney": {
-    "message": "Avaa tai sulje Midjourney-toimintomoduuli.",
+    "message": "Ota käyttöön tai poista käytöstä Midjourney-toimintomoduuli.",
     "description": "Midjourney-toiminnon kuvaus"
   },
   "message.featuresChatdoc": {
-    "message": "Avaa tai sulje Chatdoc-toimintomoduuli.",
+    "message": "Ota käyttöön tai poista käytöstä Chatdoc-toimintomoduuli.",
     "description": "Chatdoc-toiminnon kuvaus"
   },
   "message.featuresQrart": {
-    "message": "Avaa tai sulje Qrart-toimintomoduuli.",
+    "message": "Ota käyttöön tai poista käytöstä Qrart-toimintomoduuli.",
     "description": "Qrart-toiminnon kuvaus"
   },
   "message.featuresSuno": {
-    "message": "Avaa tai sulje Suno-toimintomoduuli.",
+    "message": "Ota käyttöön tai poista käytöstä Suno-toimintomoduuli.",
     "description": "Suno-toiminnon kuvaus"
   },
   "message.featuresFlux": {
-    "message": "Avaa tai sulje FLux-toimintomoduuli.",
+    "message": "Ota käyttöön tai poista käytöstä FLux-toimintomoduuli.",
     "description": "FLux-toiminnon kuvaus"
   },
   "message.featuresLuma": {
-    "message": "Avaa tai sulje Luma-toimintomoduuli.",
+    "message": "Ota käyttöön tai poista käytöstä Luma-toimintomoduuli.",
     "description": "Luma-toiminnon kuvaus"
   },
   "message.featuresPika": {
-    "message": "Avaa tai sulje Pika-toimintomoduuli.",
+    "message": "Ota käyttöön tai poista käytöstä Pika-toimintomoduuli.",
     "description": "Pika-toiminnon kuvaus"
   },
   "message.featuresKling": {
-    "message": "Avaa tai sulje Kling-toimintomoduuli.",
+    "message": "Ota käyttöön tai poista käytöstä Kling-toimintomoduuli.",
     "description": "Kling-toiminnon kuvaus"
   },
   "message.featuresHailuo": {
-    "message": "Avaa tai sulje Hailuo-toimintomoduuli.",
+    "message": "Ota käyttöön tai poista käytöstä Hailuo-toimintomoduuli.",
     "description": "Hailuo-toiminnon kuvaus"
   },
   "message.featuresHeadshots": {
-    "message": "Avaa tai sulje AI-passikuvat toimintomoduuli.",
-    "description": "AI-passikuvat toiminnon kuvaus"
+    "message": "Ota käyttöön tai poista käytöstä AI-asiakirjakuvatoimintomoduuli.",
+    "description": "AI-asiakirjakuvatoiminnon kuvaus"
   },
   "message.featuresSupport": {
-    "message": "Avaa tai sulje asiakastuki",
-    "description": "Support-toiminnon kuvaus"
+    "message": "Ota käyttöön tai poista käytöstä asiakastuki",
+    "description": "Tuen kuvaus"
   },
   "message.featuresI18n": {
-    "message": "Avaa tai sulje monikielinen tuki, kun se on suljettu, käyttäjä voi käyttää vain oletuskieltä.",
+    "message": "Ota käyttöön tai poista käytöstä monikielinen tuki, kun se on pois päältä, käyttäjät voivat käyttää vain oletuskieltä.",
     "description": "Monikielisen tuen kuvaus"
   },
   "button.upload": {
     "message": "Lataa",
-    "description": "Lataa"
+    "description": "Lataus"
   },
   "button.enabled": {
-    "message": "Käytössä",
-    "description": "Kytkimen teksti, joka osoittaa, että se on käytössä"
+    "message": "Otetaan käyttöön",
+    "description": "Kytkin teksti, joka osoittaa, että se on otettu käyttöön"
   },
   "button.disabled": {
-    "message": "Ei käytössä",
-    "description": "Kytkimen teksti, joka osoittaa, että se ei ole käytössä"
+    "message": "Poistettu käytöstä",
+    "description": "Kytkimen teksti, joka osoittaa, että se on poistettu käytöstä"
   }
 }

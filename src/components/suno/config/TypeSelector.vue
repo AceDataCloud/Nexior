@@ -45,6 +45,10 @@ export default defineComponent({
         {
           label: this.$t('suno.model.model4'),
           value: 'chirp-v4'
+        },
+        {
+          label: this.$t('suno.model.model45'),
+          value: 'chirp-v4-5'
         }
       ]
     };
