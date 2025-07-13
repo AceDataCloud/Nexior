@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sun, 13 Jul 2025 15:24:48 GMT and should not be manually modified.
+This log was last generated on Sun, 13 Jul 2025 16:06:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 3.4.0
+
+Sun, 13 Jul 2025 16:06:27 GMT
+
+### Minor changes
+
+- add thinking support in chat (office@acedata.cloud)
 
 ## 3.3.0
 
