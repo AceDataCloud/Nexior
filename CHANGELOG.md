@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sun, 13 Jul 2025 17:55:22 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Jul 2025 15:24:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 3.4.3
+
+Fri, 18 Jul 2025 15:24:13 GMT
+
+### Patches
+
+- add change log (office@acedata.cloud)
 
 ## 3.4.2
 
