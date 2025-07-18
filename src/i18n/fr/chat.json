@@ -5,7 +5,7 @@
   },
   "button.deepsearch": {
     "message": "Recherche approfondie",
-    "description": "Bouton de recherche approfondie"
+    "description": "Bouton pour la recherche approfondie"
   },
   "button.search": {
     "message": "Recherche",
@@ -51,13 +51,9 @@
     "message": "gpt-4-all",
     "description": "Nom du modèle du service, c'est-à-dire GPT 4.0 All"
   },
-  "model.4VisionDescription": {
-    "message": "Modèle polyvalent, connecté, capable de traiter des images",
-    "description": "Description du modèle visuel 4.0"
-  },
   "model.4AllDescription": {
     "message": "Modèle polyvalent",
-    "description": "Description du modèle 4.0 polyvalent"
+    "description": "Description du modèle polyvalent 4.0"
   },
   "model.deepseekChat": {
     "message": "3.0 Standard",
@@ -72,7 +68,7 @@
     "description": "Nom du modèle du service, c'est-à-dire DeepSeek Raisonneur"
   },
   "model.deepseekReasonerDescription": {
-    "message": "Convient pour le raisonnement et la réflexion approfondie",
+    "message": "Convient pour le raisonnement et les questions de réflexion approfondie",
     "description": "Description du modèle DeepSeek Raisonneur"
   },
   "model.grok3": {
@@ -88,7 +84,7 @@
     "description": "Nom du modèle du service, c'est-à-dire Grok3 Raisonneur"
   },
   "model.grok3ReasonerDescription": {
-    "message": "Convient pour le raisonnement et la réflexion approfondie",
+    "message": "Convient pour le raisonnement et les questions de réflexion approfondie",
     "description": "Description du modèle Grok3 Raisonneur"
   },
   "model.grok3Deepsearch": {
@@ -152,8 +148,8 @@
     "description": "Message sur la page web, informant l'utilisateur que le téléchargement du fichier a échoué, veuillez réessayer plus tard"
   },
   "message.notApplied": {
-    "message": "Vous n'avez pas encore demandé ce service, veuillez d'abord demander",
-    "description": "Message sur la page web, informant l'utilisateur qu'il n'a pas encore demandé ce service, veuillez d'abord demander"
+    "message": "Vous n'avez pas encore demandé ce service, veuillez d'abord le demander",
+    "description": "Message sur la page web, informant l'utilisateur qu'il n'a pas encore demandé ce service, veuillez d'abord le demander"
   },
   "message.tryForFree": {
     "message": "Essai gratuit",
@@ -165,7 +161,7 @@
   },
   "message.question2": {
     "message": "Créer une page personnelle",
-    "description": "Exemple de question pour commencer une conversation, demandant à l'utilisateur d'écrire un e-mail à Mike pour lui dire que je viens de déménager"
+    "description": "Exemple de question pour commencer la conversation, demandant à l'utilisateur d'écrire un e-mail à Mike pour lui dire que je viens de déménager"
   },
   "message.question3": {
     "message": "Concevoir des jeux de programmation intéressants",
@@ -196,8 +192,8 @@
     "description": "Message sur la page, informant l'utilisateur que la réponse a échoué, veuillez réessayer plus tard"
   },
   "message.errorBadRequest": {
-    "message": "Le contenu de la demande est incorrect, veuillez reformuler votre question",
-    "description": "Message sur la page, informant l'utilisateur que le contenu de la demande est incorrect, veuillez reformuler votre question"
+    "message": "Le contenu de la demande n'est pas conforme, veuillez reformuler votre question",
+    "description": "Message sur la page, informant l'utilisateur que le contenu de la demande n'est pas conforme, veuillez reformuler votre question"
   },
   "message.errorNoConversation": {
     "message": "La conversation n'existe pas ou a expiré, veuillez commencer une nouvelle conversation",
@@ -212,8 +208,8 @@
     "description": "Message sur la page, informant l'utilisateur que ses actions sont trop fréquentes, veuillez réessayer plus tard"
   },
   "message.errorUsedUp": {
-    "message": "Vous avez épuisé le nombre de demandes, veuillez acheter plus de demandes pour continuer",
-    "description": "Message sur la page, informant l'utilisateur qu'il a épuisé le nombre de demandes, veuillez acheter plus de demandes pour continuer"
+    "message": "Vous avez épuisé le nombre de requêtes, veuillez acheter plus de requêtes pour continuer à utiliser",
+    "description": "Message sur la page, informant l'utilisateur qu'il a épuisé le nombre de requêtes, veuillez acheter plus de requêtes pour continuer à utiliser"
   },
   "message.errorUnknown": {
     "message": "Erreur inconnue du serveur, veuillez réessayer plus tard ou contacter le support",
@@ -224,20 +220,20 @@
     "description": "Message sur la page, informant l'utilisateur que le délai d'attente pour la réponse a été dépassé, veuillez réessayer plus tard"
   },
   "message.errorNotApplied": {
-    "message": "Vous n'avez pas encore demandé ce service, veuillez d'abord faire une demande avant de continuer",
-    "description": "Message sur la page, informant l'utilisateur qu'il n'a pas encore demandé ce service, veuillez d'abord faire une demande avant de continuer"
+    "message": "Vous n'avez pas encore demandé ce service, veuillez d'abord faire une demande avant de continuer à poser des questions",
+    "description": "Message sur la page, informant l'utilisateur qu'il n'a pas encore demandé ce service, veuillez d'abord faire une demande avant de continuer à poser des questions"
   },
   "message.confirmDelete": {
     "message": "Confirmer la suppression",
     "description": "Message sur la page, informant l'utilisateur de confirmer la suppression"
   },
   "message.howToUse": {
-    "message": "L'IA peut faire des erreurs, veuillez vérifier les informations importantes.",
-    "description": "Message sur la page, informant l'utilisateur que l'IA peut faire des erreurs, veuillez vérifier les informations importantes"
+    "message": "L'IA peut se tromper, veuillez vérifier les informations importantes.",
+    "description": "Message sur la page, informant l'utilisateur que l'IA peut se tromper, veuillez vérifier les informations importantes"
   },
   "title.chat": {
     "message": "Chat IA",
-    "description": "Titre de la page, c'est-à-dire Chat IA"
+    "description": "Titre de la page, c'est-à-dire le chat IA"
   },
   "title.example": {
     "message": "Exemple",

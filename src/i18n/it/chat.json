@@ -51,10 +51,6 @@
     "message": "gpt-4-all",
     "description": "Nome del modello del servizio, ovvero GPT 4.0 All"
   },
-  "model.4VisionDescription": {
-    "message": "Modello universale, connettibile, in grado di elaborare immagini",
-    "description": "Descrizione del modello visivo 4.0"
-  },
   "model.4AllDescription": {
     "message": "Modello universale",
     "description": "Descrizione del modello universale 4.0"
@@ -72,7 +68,7 @@
     "description": "Nome del modello del servizio, ovvero DeepSeek Reasoner"
   },
   "model.deepseekReasonerDescription": {
-    "message": "Adatto per ragionamenti e domande di pensiero profondo",
+    "message": "Adatto per ragionamenti e domande profonde",
     "description": "Descrizione del modello DeepSeek Reasoner"
   },
   "model.grok3": {
@@ -88,7 +84,7 @@
     "description": "Nome del modello del servizio, ovvero Grok3 Reasoner"
   },
   "model.grok3ReasonerDescription": {
-    "message": "Adatto per ragionamenti e domande di pensiero profondo",
+    "message": "Adatto per ragionamenti e domande profonde",
     "description": "Descrizione del modello Grok3 Reasoner"
   },
   "model.grok3Deepsearch": {
@@ -132,7 +128,7 @@
     "description": "Messaggio nella pagina web che informa l'utente di caricare un file"
   },
   "message.noToken": {
-    "message": "Si prega di richiedere prima il servizio corrispondente",
+    "message": "Si prega di richiedere il servizio corrispondente",
     "description": "Messaggio nella pagina web che informa l'utente di richiedere prima il servizio corrispondente"
   },
   "message.newMessagePlaceholder": {
@@ -149,11 +145,11 @@
   },
   "message.uploadReferencesError": {
     "message": "Caricamento del file fallito, riprova più tardi",
-    "description": "Messaggio nella pagina web che informa l'utente che il caricamento del file è fallito, riprovare più tardi"
+    "description": "Messaggio nella pagina web che informa l'utente che il caricamento del file è fallito, riprova più tardi"
   },
   "message.notApplied": {
-    "message": "Non hai ancora richiesto questo servizio, si prega di richiedere prima",
-    "description": "Messaggio nella pagina web che informa l'utente che non ha ancora richiesto questo servizio, si prega di richiedere prima"
+    "message": "Non hai ancora richiesto questo servizio, per favore richiedilo prima",
+    "description": "Messaggio nella pagina web che informa l'utente che non ha ancora richiesto questo servizio, per favore richiedilo prima"
   },
   "message.tryForFree": {
     "message": "Prova gratuita",
@@ -161,35 +157,35 @@
   },
   "message.question1": {
     "message": "Crea un piano di allenamento",
-    "description": "Domanda di esempio per iniziare una conversazione, chiedendo all'utente di scrivere un codice JavaScript che restituisca 'Hello World'"
+    "description": "Domanda di esempio per iniziare la conversazione, chiedendo all'utente di scrivere un codice JavaScript che restituisca 'Hello World'"
   },
   "message.question2": {
-    "message": "Scrivere una pagina web personale",
-    "description": "Esempio di domanda per iniziare una conversazione, chiedendo all'utente di scrivere un'email a Mike per informarlo che si è appena trasferito"
+    "message": "Crea una pagina web personale",
+    "description": "Domanda di esempio per iniziare la conversazione, chiedendo all'utente di scrivere un'email a Mike per informarlo che si è appena trasferito"
   },
   "message.question3": {
-    "message": "Progettare giochi di programmazione interessanti",
-    "description": "Esempio di domanda per iniziare una conversazione, chiedendo all'utente di spiegare i principi fondamentali del calcolo quantistico in linguaggio semplice"
+    "message": "Progetta giochi di programmazione interessanti",
+    "description": "Inizia una conversazione con un esempio di domanda, chiedendo all'utente di spiegare i principi fondamentali del calcolo quantistico in linguaggio semplice"
   },
   "message.question4": {
-    "message": "Vivere Seul come un locale",
-    "description": "Esempio di domanda per iniziare una conversazione, chiedendo all'utente di spiegare l'impatto della realtà virtuale sulla creazione artistica"
+    "message": "Vivi Seul come un locale",
+    "description": "Inizia una conversazione con un esempio di domanda, chiedendo all'utente di spiegare quale impatto ha avuto la realtà virtuale sulla creazione artistica"
   },
   "message.question5": {
-    "message": "Qual è più grande, 9.8 o 9.11?",
-    "description": "Esempio di domanda per iniziare una conversazione, chiedendo di confrontare la grandezza di due numeri"
+    "message": "Chi è più grande, 9.8 o 9.11?",
+    "description": "Inizia una conversazione con un esempio di domanda, chiedendo di confrontare la grandezza di due numeri"
   },
   "message.question6": {
     "message": "Qual è l'impatto dell'IA sul futuro?",
-    "description": "Esempio di domanda per iniziare una conversazione, chiedendo quale sia l'impatto dell'IA sul futuro"
+    "description": "Inizia una conversazione con un esempio di domanda, chiedendo quale impatto ha l'IA sul futuro"
   },
   "message.question7": {
     "message": "Come migliorare l'efficienza di apprendimento?",
-    "description": "Esempio di domanda per iniziare una conversazione, chiedendo come migliorare la propria efficienza di apprendimento"
+    "description": "Inizia una conversazione con un esempio di domanda, chiedendo come migliorare la propria efficienza di apprendimento"
   },
   "message.question8": {
     "message": "Come migliorare la concentrazione?",
-    "description": "Esempio di domanda per iniziare una conversazione, chiedendo come migliorare la propria concentrazione"
+    "description": "Inizia una conversazione con un esempio di domanda, chiedendo come migliorare la propria concentrazione"
   },
   "message.errorApiError": {
     "message": "Risposta fallita, riprova più tardi",
@@ -216,8 +212,8 @@
     "description": "Messaggio nella pagina web che informa l'utente che ha esaurito il numero di utilizzi, acquistare più utilizzi per continuare"
   },
   "message.errorUnknown": {
-    "message": "Si è verificato un errore sconosciuto del server, riprova più tardi o contatta il supporto",
-    "description": "Messaggio nella pagina web che informa l'utente che si è verificato un errore sconosciuto del server, riprovare più tardi o contattare il supporto"
+    "message": "Si è verificato un errore sconosciuto sul server, riprova più tardi o contatta il supporto",
+    "description": "Messaggio nella pagina web che informa l'utente che si è verificato un errore sconosciuto sul server, riprovare più tardi o contattare il supporto"
   },
   "message.errorTimeout": {
     "message": "Tempo scaduto per la risposta, riprova più tardi",
@@ -260,7 +256,7 @@
     "description": "Titolo nella pagina web che indica che questa parte riguarda la capacità del servizio di consultare domande professionali"
   },
   "title.getTips": {
-    "message": "Ottenere ispirazione e idee",
+    "message": "Ottieni ispirazione e idee",
     "description": "Titolo nella pagina web che indica che questa parte riguarda la capacità del servizio di ottenere ispirazione e idee"
   },
   "group.today": {
