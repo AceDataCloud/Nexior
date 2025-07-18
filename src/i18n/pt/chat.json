@@ -51,13 +51,9 @@
     "message": "gpt-4-all",
     "description": "Nome do modelo do serviço, ou seja, GPT 4.0 All"
   },
-  "model.4VisionDescription": {
-    "message": "Modelo versátil, pode se conectar à internet e processar imagens",
-    "description": "Descrição do modelo 4.0 visual"
-  },
   "model.4AllDescription": {
     "message": "Modelo versátil",
-    "description": "Descrição do modelo 4.0 All"
+    "description": "Descrição do modelo 4.0 versátil"
   },
   "model.deepseekChat": {
     "message": "3.0 Padrão",
@@ -69,11 +65,11 @@
   },
   "model.deepseekReasoner": {
     "message": "R1 Inferência",
-    "description": "Nome do modelo do serviço, ou seja, DeepSeek Inferência"
+    "description": "Nome do modelo do serviço, ou seja, DeepSeek Reasoner"
   },
   "model.deepseekReasonerDescription": {
     "message": "Adequado para inferência e questões de pensamento profundo",
-    "description": "Descrição do modelo DeepSeek Inferência"
+    "description": "Descrição do modelo DeepSeek Reasoner"
   },
   "model.grok3": {
     "message": "grok-3",
@@ -85,19 +81,19 @@
   },
   "model.grok3Reasoner": {
     "message": "grok-3 Inferência",
-    "description": "Nome do modelo do serviço, ou seja, Grok3 Inferência"
+    "description": "Nome do modelo do serviço, ou seja, Grok3 Reasoner"
   },
   "model.grok3ReasonerDescription": {
     "message": "Adequado para inferência e questões de pensamento profundo",
-    "description": "Descrição do modelo Grok3 Inferência"
+    "description": "Descrição do modelo Grok3 Reasoner"
   },
   "model.grok3Deepsearch": {
     "message": "grok-3 Pesquisa Profunda",
-    "description": "Nome do modelo do serviço, ou seja, Grok3 Pesquisa Profunda"
+    "description": "Nome do modelo do serviço, ou seja, Grok3 Deepsearch"
   },
   "model.grok3DeepsearchDescription": {
     "message": "Adequado para pesquisa profunda e questões complexas",
-    "description": "Descrição do modelo Grok3 Pesquisa Profunda"
+    "description": "Descrição do modelo Grok3 Deepsearch"
   },
   "model.o1": {
     "message": "o1",
@@ -160,80 +156,80 @@
     "description": "Mensagem na página que informa ao usuário sobre a experiência gratuita"
   },
   "message.question1": {
-    "message": "Criar plano de treinamento",
-    "description": "Exemplo de pergunta para iniciar a conversa, pedindo ao usuário para escrever um código JavaScript que exiba 'Hello World'"
+    "message": "Criar um plano de treinamento",
+    "description": "Exemplo de pergunta para iniciar a conversa, pedindo ao usuário para escrever um código JavaScript que imprima Hello World"
   },
   "message.question2": {
     "message": "Fazer uma página pessoal",
-    "description": "Início de uma conversa com uma pergunta de exemplo, pedindo ao usuário para escrever um e-mail para Mike, informando que acabei de me mudar"
+    "description": "Exemplo de pergunta para iniciar a conversa, pedindo ao usuário para escrever um e-mail para Mike, informando que ele acabou de se mudar"
   },
   "message.question3": {
-    "message": "Projetar jogos de programação interessantes",
-    "description": "Início de uma conversa com uma pergunta de exemplo, pedindo ao usuário para explicar os princípios básicos da computação quântica em linguagem simples"
+    "message": "Desenhe jogos de programação interessantes",
+    "description": "Exemplo de pergunta para iniciar uma conversa, pedindo ao usuário para explicar os princípios básicos da computação quântica em linguagem simples"
   },
   "message.question4": {
-    "message": "Viver Seul como um local",
-    "description": "Início de uma conversa com uma pergunta de exemplo, pedindo ao usuário para explicar o impacto da realidade virtual na criação artística"
+    "message": "Experimente Seul como um local",
+    "description": "Exemplo de pergunta para iniciar uma conversa, pedindo ao usuário para explicar o impacto da realidade virtual na criação artística"
   },
   "message.question5": {
     "message": "Qual é maior, 9.8 ou 9.11?",
-    "description": "Início de uma conversa com uma pergunta de exemplo, pedindo para comparar o tamanho de dois números"
+    "description": "Exemplo de pergunta para iniciar uma conversa, pedindo para comparar o tamanho de dois números"
   },
   "message.question6": {
     "message": "Qual é o impacto da IA no futuro?",
-    "description": "Início de uma conversa com uma pergunta de exemplo, qual é o impacto da IA no futuro?"
+    "description": "Exemplo de pergunta para iniciar uma conversa, perguntando sobre o impacto da IA no futuro"
   },
   "message.question7": {
     "message": "Como melhorar a eficiência de aprendizado?",
-    "description": "Início de uma conversa com uma pergunta de exemplo, como melhorar a própria eficiência de aprendizado?"
+    "description": "Exemplo de pergunta para iniciar uma conversa, perguntando como melhorar a própria eficiência de aprendizado"
   },
   "message.question8": {
     "message": "Como aumentar a concentração?",
-    "description": "Início de uma conversa com uma pergunta de exemplo, como aumentar a própria concentração?"
+    "description": "Exemplo de pergunta para iniciar uma conversa, perguntando como aumentar a própria concentração"
   },
   "message.errorApiError": {
-    "message": "Resposta falhou, por favor tente novamente mais tarde",
-    "description": "Mensagem na página, informando ao usuário que a resposta falhou, por favor tente novamente mais tarde"
+    "message": "Falha na resposta, por favor, tente novamente mais tarde",
+    "description": "Mensagem na página informando ao usuário que a resposta falhou, por favor, tente novamente mais tarde"
   },
   "message.errorBadRequest": {
-    "message": "Conteúdo da solicitação não está conforme, por favor reformule a pergunta",
-    "description": "Mensagem na página, informando ao usuário que o conteúdo da solicitação não está conforme, por favor reformule a pergunta"
+    "message": "Conteúdo da solicitação não está em conformidade, por favor, reformule a pergunta",
+    "description": "Mensagem na página informando ao usuário que o conteúdo da solicitação não está em conformidade, por favor, reformule a pergunta"
   },
   "message.errorNoConversation": {
-    "message": "A conversa não existe ou expirou, por favor inicie uma nova conversa",
-    "description": "Mensagem na página, informando ao usuário que a conversa não existe ou expirou, por favor inicie uma nova conversa"
+    "message": "A conversa não existe ou expirou, por favor, inicie uma nova conversa",
+    "description": "Mensagem na página informando ao usuário que a conversa não existe ou expirou, por favor, inicie uma nova conversa"
   },
   "message.errorContentTooLarge": {
-    "message": "O conteúdo da pergunta é muito longo, por favor encurte e tente novamente",
-    "description": "Mensagem na página, informando ao usuário que o conteúdo da pergunta é muito longo, por favor encurte e tente novamente"
+    "message": "O conteúdo da pergunta é muito longo, por favor, encurte e tente novamente",
+    "description": "Mensagem na página informando ao usuário que o conteúdo da pergunta é muito longo, por favor, encurte e tente novamente"
   },
   "message.errorTooManyRequests": {
-    "message": "Suas ações estão muito frequentes, por favor tente novamente mais tarde",
-    "description": "Mensagem na página, informando ao usuário que suas ações estão muito frequentes, por favor tente novamente mais tarde"
+    "message": "Suas ações estão muito frequentes, por favor, tente novamente mais tarde",
+    "description": "Mensagem na página informando ao usuário que suas ações estão muito frequentes, por favor, tente novamente mais tarde"
   },
   "message.errorUsedUp": {
-    "message": "Você esgotou o número de tentativas, por favor compre mais para continuar usando",
-    "description": "Mensagem na página, informando ao usuário que ele esgotou o número de tentativas, por favor compre mais para continuar usando"
+    "message": "Você esgotou suas tentativas, por favor, compre mais para continuar usando",
+    "description": "Mensagem na página informando ao usuário que ele esgotou suas tentativas, por favor, compre mais para continuar usando"
   },
   "message.errorUnknown": {
-    "message": "Ocorreu um erro desconhecido no servidor, por favor tente novamente mais tarde ou entre em contato com o suporte",
-    "description": "Mensagem na página, informando ao usuário que ocorreu um erro desconhecido no servidor, por favor tente novamente mais tarde ou entre em contato com o suporte"
+    "message": "Ocorreu um erro desconhecido no servidor, por favor, tente novamente mais tarde ou entre em contato com o suporte",
+    "description": "Mensagem na página informando ao usuário que ocorreu um erro desconhecido no servidor, por favor, tente novamente mais tarde ou entre em contato com o suporte"
   },
   "message.errorTimeout": {
-    "message": "O tempo para responder a pergunta expirou, por favor tente novamente mais tarde",
-    "description": "Mensagem na página, informando ao usuário que o tempo para responder a pergunta expirou, por favor tente novamente mais tarde"
+    "message": "Tempo limite para responder a pergunta, por favor, tente novamente mais tarde",
+    "description": "Mensagem na página informando ao usuário que o tempo limite para responder a pergunta foi atingido, por favor, tente novamente mais tarde"
   },
   "message.errorNotApplied": {
-    "message": "Você ainda não solicitou este serviço, por favor solicite antes de continuar a perguntar",
-    "description": "Mensagem na página, informando ao usuário que ele ainda não solicitou este serviço, por favor solicite antes de continuar a perguntar"
+    "message": "Você ainda não solicitou este serviço, por favor, solicite antes de continuar a perguntar",
+    "description": "Mensagem na página informando ao usuário que ele ainda não solicitou este serviço, por favor, solicite antes de continuar a perguntar"
   },
   "message.confirmDelete": {
     "message": "Confirmar exclusão",
-    "description": "Mensagem na página, informando ao usuário para confirmar a exclusão"
+    "description": "Mensagem na página informando ao usuário para confirmar a exclusão"
   },
   "message.howToUse": {
-    "message": "A IA pode cometer erros, por favor verifique informações importantes.",
-    "description": "Mensagem na página, informando ao usuário que a IA pode cometer erros, por favor verifique informações importantes"
+    "message": "A IA pode cometer erros, por favor, verifique informações importantes.",
+    "description": "Mensagem na página informando ao usuário que a IA pode cometer erros, por favor, verifique informações importantes"
   },
   "title.chat": {
     "message": "Chat com IA",
@@ -252,8 +248,8 @@
     "description": "Título na página, indicando que esta parte é sobre as limitações técnicas do serviço"
   },
   "title.complexQuestion": {
-    "message": "Responder perguntas complexas",
-    "description": "Título na página, indicando que esta parte é sobre a capacidade do serviço de responder perguntas complexas"
+    "message": "Responder a perguntas complexas",
+    "description": "Título na página, indicando que esta parte é sobre a capacidade do serviço de responder a perguntas complexas"
   },
   "title.professionalQuestion": {
     "message": "Consultar questões profissionais",
