@@ -96,6 +96,12 @@
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
           </p>
           <p class="description">
+            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            {{ $t('midjourney.field.traceId') }}:
+            {{ modelValue?.trace_id }}
+            <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy" />
+          </p>
+          <p class="description">
             <font-awesome-icon icon="fa-solid fa-image" class="mr-1" />
             {{ $t('midjourney.field.imageId') }}:
             {{ modelValue?.response?.image_id }}
@@ -124,6 +130,7 @@ import { ElImage, ElButton, ElTooltip, ElAlert } from 'element-plus';
 import { IMidjourneyTask, MidjourneyImagineAction, MidjourneyImagineState } from '@/models';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
+import { Check } from '@element-plus/icons-vue';
 
 interface IData {
   midjourneyImagineState: typeof MidjourneyImagineState;
@@ -348,12 +355,12 @@ $left-width: 70px;
       .image-wrapper {
         position: relative;
         width: fit-content;
-        min-height: 50px;
-        min-width: 100px;
         margin-bottom: 15px;
         .image {
           max-height: 400px;
           max-width: 300px;
+          min-height: 200px;
+          min-width: 200px;
           border-radius: 10px;
         }
         .btn-raw {

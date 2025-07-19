@@ -5,7 +5,7 @@
   },
   "button.copy": {
     "message": "نسخ",
-    "description": "نص الزر، يستخدم لإعداد بعض المحتويات"
+    "description": "نص الزر، يستخدم لإعداد بعض المحت(contents)"
   },
   "button.restart": {
     "message": "إعادة توليد",
@@ -64,7 +64,7 @@
     "description": "نص الزر، يستخدم لنشر بعض المحتويات"
   },
   "button.watch": {
-    "message": "مشاهدة",
+    "message": "شاهد",
     "description": "نص الزر، يستخدم لمشاهدة بعض المحتويات"
   },
   "button.verify": {
@@ -147,24 +147,32 @@
     "message": "إنهاء",
     "description": "نص الزر، يستخدم لإنهاء بعض المحتويات"
   },
+  "entity.id": {
+    "message": "معرف",
+    "description": "يستخدم لعرض المعرف الفريد للكيان"
+  },
+  "entity.type": {
+    "message": "نوع",
+    "description": "يستخدم لعرض نوع الكيان"
+  },
   "entity.website": {
     "message": "Ace Data Cloud",
     "description": "اسم الموقع، لا حاجة للترجمة، احتفظ به كـ 'Ace Data Cloud'"
   },
   "entity.copyright": {
     "message": "حقوق الطبع والنشر",
-    "description": "نص لعرض معلومات حقوق الطبع والنشر"
+    "description": "يستخدم لعرض نص معلومات حقوق الطبع والنشر"
   },
   "entity.platform": {
-    "message": "المنصة",
+    "message": "منصة",
     "description": "نص يشير إلى أن هذه هي منصة خدمة API"
   },
   "entity.title": {
-    "message": "العنوان",
+    "message": "عنوان",
     "description": "عنوان الكيان"
   },
   "entity.icon": {
-    "message": "الأيقونة",
+    "message": "أيقونة",
     "description": "أيقونة الكيان"
   },
   "entity.status": {
@@ -181,23 +189,23 @@
   },
   "entity.createdAt": {
     "message": "تاريخ الإنشاء",
-    "description": "وقت إنشاء الكيان"
+    "description": "تاريخ إنشاء الكيان"
   },
   "entity.updatedAt": {
     "message": "تاريخ التحديث",
-    "description": "وقت تحديث الكيان"
+    "description": "تاريخ تحديث الكيان"
   },
   "entity.order": {
     "message": "الطلب",
-    "description": "طلب الكيان، يحتوي الطلب على المبلغ ومعلومات الخدمة، يحتاج المستخدم لدفعه"
+    "description": "طلب الكيان، الطلب يحتوي على المبلغ ومعلومات الخدمة، يحتاج المستخدم لدفعه"
   },
   "message.usedAmount": {
     "message": "المبلغ المستخدم",
-    "description": "يستخدم لعرض المبلغ المستخدم من الخدمة"
+    "description": "يستخدم لعرض المبلغ المستخدم للخدمة"
   },
   "message.remainingAmount": {
     "message": "المبلغ المتبقي",
-    "description": "يستخدم لعرض المبلغ المتبقي من الخدمة"
+    "description": "يستخدم لعرض المبلغ المتبقي للخدمة"
   },
   "message.copied": {
     "message": "تم النسخ بنجاح",
@@ -217,11 +225,11 @@
   },
   "message.alert": {
     "message": "تحذير",
-    "description": "يستخدم لعرض رسالة تحذير للمستخدم"
+    "description": "يستخدم لتحذير المستخدم"
   },
   "message.info": {
     "message": "تنبيه ودي",
-    "description": "يستخدم لعرض رسالة معلومات"
+    "description": "يستخدم لعرض معلومات"
   },
   "message.free": {
     "message": "مجاني",
@@ -233,11 +241,11 @@
   },
   "message.joinDiscord": {
     "message": "انضم إلى Discord",
-    "description": "يستخدم لدعوة المستخدم للانضمام إلى قناة Discord"
+    "description": "يستخدم لجعل المستخدم ينضم إلى قناة Discord"
   },
   "message.addWeChat": {
     "message": "أضف WeChat",
-    "description": "يستخدم لدعوة المستخدم لإضافة WeChat"
+    "description": "يستخدم لجعل المستخدم يضيف WeChat"
   },
   "message.serviceTech": {
     "message": "الدعم الفني",
@@ -296,8 +304,8 @@
     "description": "نص في شريط التنقل بالموقع، يستخدم لعرض صفحة ChatGPT، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'ChatGPT'"
   },
   "nav.deepseek": {
-    "message": "Deepspeak",
-    "description": "نص في شريط التنقل بالموقع، يستخدم لعرض صفحة Deepspeak، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'Deepspeak'"
+    "message": "DeepSeek",
+    "description": "نص في شريط التنقل بالموقع، يستخدم لعرض صفحة DeepSeek، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'DeepSeek'"
   },
   "nav.grok": {
     "message": "Grok",
@@ -325,7 +333,7 @@
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "نص في شريط التنقل بالموقع، يستخدم لعرض صفحة Flux، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'Flux'"
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة Flux، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Flux'"
   },
   "nav.luma": {
     "message": "Luma",
@@ -372,7 +380,7 @@
     "description": "نص في شريط التنقل بالموقع، لعرض صفحة الإعدادات"
   },
   "nav.headshots": {
-    "message": "صور هوية AI",
+    "message": "صور الهوية AI",
     "description": "نص في شريط التنقل بالموقع، لعرض صفحة إعدادات الموقع"
   },
   "nav.locale": {
@@ -401,55 +409,55 @@
   },
   "title.allApplications": {
     "message": "جميع الطلبات",
-    "description": "عنوان الصفحة لعرض جميع الطلبات"
+    "description": "عنوان الصفحة التي تعرض جميع الطلبات"
   },
   "title.allOrders": {
     "message": "جميع الطلبات",
-    "description": "عنوان الصفحة لعرض جميع الطلبات"
+    "description": "عنوان الصفحة التي تعرض جميع الطلبات"
   },
   "title.orderInfo": {
     "message": "معلومات الطلب",
-    "description": "عنوان الصفحة لعرض معلومات الطلب"
+    "description": "عنوان الصفحة التي تعرض معلومات الطلب"
   },
   "title.buyMore": {
     "message": "شراء المزيد",
-    "description": "عنوان الصفحة لتمكين المستخدم من شراء المزيد"
+    "description": "عنوان الصفحة التي تسمح للمستخدم بشراء المزيد"
   },
   "title.distribution": {
     "message": "عائدات التوصية",
-    "description": "عنوان الصفحة لعرض عائدات التوصية، مما يدل على أن المستخدم يمكنه كسب المال من خلال دعوة الآخرين لاستخدام الخدمة"
+    "description": "عنوان الصفحة التي تعرض عائدات التوصية، تشير إلى أن المستخدم يمكنه كسب المال من خلال دعوة الآخرين لاستخدام الخدمة"
   },
   "title.site": {
     "message": "إعدادات الموقع",
-    "description": "عنوان الصفحة لعرض إعدادات الموقع"
+    "description": "عنوان الصفحة التي تعرض إعدادات الموقع"
   },
   "title.distributionHistory": {
     "message": "تاريخ التوصية",
-    "description": "عنوان الصفحة لعرض تاريخ التوصية"
+    "description": "عنوان الصفحة التي تعرض تاريخ التوصية"
   },
   "title.invitee": {
     "message": "المدعو",
-    "description": "عنوان الصفحة لعرض المدعو"
+    "description": "عنوان الصفحة التي تعرض المدعو"
   },
   "title.allUsages": {
     "message": "تاريخ الاستخدام",
-    "description": "عنوان الصفحة لعرض جميع سجلات استخدام خدمة API"
+    "description": "عنوان الصفحة التي تعرض جميع سجلات استخدام خدمة API"
   },
   "title.allCredentials": {
     "message": "المصادقات",
-    "description": "عنوان الصفحة لعرض جميع المصادقات، والتي تستخدم للوصول إلى API"
+    "description": "عنوان الصفحة التي تعرض جميع المصادقات، والتي تستخدم للوصول إلى API"
   },
   "about.title1": {
     "message": "اتصل بنا",
-    "description": "عنوان قسم عرض معلومات الاتصال"
+    "description": "عنوان الجزء الذي يعرض معلومات الاتصال"
   },
   "about.title2": {
     "message": "الموارد",
-    "description": "عنوان قسم عرض الروابط"
+    "description": "عنوان الجزء الذي يعرض الروابط"
   },
   "about.title3": {
     "message": "الروابط",
-    "description": "عنوان قسم عرض معلومات الدعم"
+    "description": "عنوان الجزء الذي يعرض معلومات الدعم"
   },
   "about.address": {
     "message": "الولايات المتحدة، ولاية ديلاوير، مدينة ميدلتون، مكتب رقم 201، شارع نورث برود",
@@ -496,16 +504,16 @@
     "description": "رابط صفحة سياسة الخصوصية"
   },
   "theme.light": {
-    "message": "ثيم فاتح",
-    "description": "اسم الثيم الفاتح"
+    "message": "فاتح",
+    "description": "اسم السمة الفاتحة"
   },
   "theme.dark": {
-    "message": "ثيم داكن",
-    "description": "اسم الثيم الداكن"
+    "message": "داكن",
+    "description": "اسم السمة الداكنة"
   },
   "theme.system": {
     "message": "نظام",
-    "description": "اسم ثيم النظام، يشير إلى التبديل التلقائي للثيم بناءً على إعدادات النظام"
+    "description": "اسم السمة النظامية، تشير إلى التبديل التلقائي للسمة بناءً على إعدادات النظام"
   },
   "settings.general": {
     "message": "الإعدادات العامة",
@@ -516,8 +524,8 @@
     "description": "عنوان قسم إعدادات اللغة في صفحة الإعدادات"
   },
   "settings.theme": {
-    "message": "الثيم",
-    "description": "عنوان قسم إعدادات الثيم في صفحة الإعدادات"
+    "message": "السمة",
+    "description": "عنوان قسم إعدادات السمة في صفحة الإعدادات"
   },
   "settings.seo": {
     "message": "إعدادات SEO",

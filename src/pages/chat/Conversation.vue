@@ -518,6 +518,7 @@ export default defineComponent({
     width: 100%;
     text-align: center;
     font-size: 12px;
+    margin: 5px 0;
   }
   &.empty {
     position: relative;

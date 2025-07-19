@@ -3,7 +3,8 @@ import { ROUTE_HAILUO_INDEX } from './constants';
 export default {
   path: '/hailuo',
   meta: {
-    auth: true
+    auth: true,
+    appName: 'hailuo'
   },
   component: () => import('@/layouts/Main.vue'),
   children: [

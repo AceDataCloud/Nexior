@@ -9,7 +9,8 @@ import {
 export default {
   path: '/chatdoc',
   meta: {
-    auth: true
+    auth: true,
+    appName: 'chatdoc'
   },
   component: () => import('@/layouts/Main.vue'),
   children: [

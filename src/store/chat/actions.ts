@@ -13,6 +13,7 @@ export const resetAll = ({ commit }: ActionContext<IChatState, IRootState>): voi
 export const setApplication = async ({ commit, dispatch }: any, payload: IApplication): Promise<void> => {
   console.debug('set application', payload);
   commit('setApplication', payload);
+  console.debug('application is set');
   if (!payload) {
     console.debug('application is null, return');
     return;
@@ -91,12 +92,15 @@ export const getApplications = async ({
       user_id: rootState?.user?.id,
       service_id: CHAT_SERVICE_ID
     });
+    console.debug('get applications success', applications);
     state.status.getApplications = Status.Success;
     commit('setApplications', applications.items);
+    console.debug('set applications', applications.items);
     const finalApplication = getFinalApplication(applications.items, currentApplication);
+    console.debug('final application', finalApplication);
     if (finalApplication) {
       console.debug('set final application', finalApplication, finalApplication?.type);
-      await dispatch('setApplication', finalApplication);
+      commit('setApplication', finalApplication);
     } else {
       console.debug('set application undefined', undefined);
       commit('setApplication', undefined);

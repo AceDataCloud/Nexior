@@ -29,6 +29,14 @@ export default defineComponent({
     authPopup() {
       return this.$store.state.auth.flow === 'popup' && this.$store.state.auth.visible;
     }
+  },
+  mounted() {
+    const authenticated = !!this.$store.state.token.access && !!this.$store.state.user?.id;
+    console.debug('App mounted, authenticated:', authenticated);
+    if (!authenticated) {
+      this.$store.dispatch('logout');
+      this.$store.dispatch('login');
+    }
   }
 });
 </script>

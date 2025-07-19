@@ -1,43 +1,47 @@
 {
   "type.period": {
     "message": "Period",
-    "description": "Period服务。"
+    "description": "Period usluge."
   },
   "type.usage": {
     "message": "Količina",
     "description": "Količina usluge."
   },
   "field.expiredAt": {
-    "message": "Vrijeme isteka",
-    "description": "Vrijeme isteka zahteva."
+    "message": "Datum isteka",
+    "description": "Datum isteka zahteva."
   },
   "button.goDocument": {
     "message": "Dokumentacija",
-    "description": "Tekst dugmeta, klikom na ovo dugme će se otvoriti stranica sa dokumentacijom."
+    "description": "Tekst na dugmetu, klikom na ovo dugme korisnik će biti preusmeren na stranicu sa dokumentacijom."
   },
   "button.goCredentials": {
     "message": "Akreditivi",
-    "description": "Tekst dugmeta, klikom na ovo dugme će se otvoriti stranica sa akreditivima."
+    "description": "Tekst na dugmetu, klikom na ovo dugme korisnik će biti preusmeren na stranicu sa akreditivima."
   },
   "button.buyMore": {
     "message": "Kupite više",
-    "description": "Tekst dugmeta, klikom na ovo dugme će se otvoriti stranica za kupovinu više."
+    "description": "Tekst na dugmetu, klikom na ovo dugme korisnik će biti preusmeren na stranicu za kupovinu više."
   },
   "button.createOrder": {
-    "message": "Kreirajte narudžbu",
-    "description": "Tekst dugmeta, klikom na ovo dugme će se otvoriti stranica za kreiranje narudžbe."
+    "message": "Kreiraj narudžbinu",
+    "description": "Tekst na dugmetu, klikom na ovo dugme korisnik će biti preusmeren na stranicu za kreiranje narudžbine."
   },
   "button.custom": {
-    "message": "Prilagođeno",
-    "description": "Tekst dugmeta, klikom na ovo dugme će se otvoriti stranica za prilagodbu."
+    "message": "Prilagodi",
+    "description": "Tekst na dugmetu, klikom na ovo dugme korisnik će biti preusmeren na stranicu za prilagođavanje."
   },
   "button.query": {
     "message": "Upit",
-    "description": "Tekst dugmeta, klikom na ovo dugme će se otvoriti stranica za upite."
+    "description": "Tekst na dugmetu, klikom na ovo dugme korisnik će biti preusmeren na stranicu za upit."
   },
   "button.usage": {
-    "message": "Zapis o upotrebi",
-    "description": "Tekst dugmeta, klikom na ovo dugme će se otvoriti stranica sa zapisima o upotrebi."
+    "message": "Istorija korišćenja",
+    "description": "Tekst na dugmetu, klikom na ovo dugme korisnik će biti preusmeren na stranicu sa istorijom korišćenja."
+  },
+  "field.serviceName": {
+    "message": "Naziv usluge",
+    "description": "Naziv usluge."
   },
   "field.application": {
     "message": "Zahtev",
@@ -48,7 +52,7 @@
     "description": "Status zahteva."
   },
   "field.id": {
-    "message": "ID Zahteva",
+    "message": "ID zahteva",
     "description": "ID zahteva."
   },
   "field.remainingAmount": {
@@ -56,32 +60,32 @@
     "description": "Preostala količina zahteva."
   },
   "field.usedAmount": {
-    "message": "Količina korišćena",
-    "description": "Količina koja je već korišćena u zahtevu."
+    "message": "Iskorišćena količina",
+    "description": "Iskorišćena količina zahteva."
   },
   "field.apiKey": {
-    "message": "API Ključ",
+    "message": "API ključ",
     "description": "API ključ."
   },
   "field.service": {
     "message": "Usluga",
-    "description": "Usluga koja se zahteva."
+    "description": "Usluga zahteva."
   },
   "field.operation": {
     "message": "Operacija",
-    "description": "Operacija vezana za zahtev."
+    "description": "Operacija zahteva."
   },
   "field.amount": {
     "message": "Količina",
-    "description": "Količina koja se zahteva."
+    "description": "Količina zahteva."
   },
   "field.traceId": {
-    "message": "Praćenje ID",
-    "description": "Praćenje ID jednog API poziva vezanog za uslugu, nemojte prevoditi, zadržite kao 'Praćenje ID'."
+    "message": "Trace ID",
+    "description": "Trace ID jednog API poziva za zahtev usluge, ne prevoditi, ostaviti kao 'Trace ID'."
   },
   "field.shouldPayPrice": {
-    "message": "Finalna cena",
-    "description": "Finalna cena zahteva."
+    "message": "Konačna cena",
+    "description": "Konačna cena zahteva."
   },
   "field.api": {
     "message": "API",
@@ -93,15 +97,15 @@
   },
   "field.credential": {
     "message": "Akreditiv",
-    "description": "Akreditivi u zahtevu."
+    "description": "Akreditiv zahteva."
   },
   "field.name": {
     "message": "Ime",
     "description": "Ime zahteva."
   },
   "field.package": {
-    "message": "Paketa",
-    "description": "Paket predstavlja različite pakete cena, na primer, 100 dolara za 10000 bodova, 200 dolara za 20000 bodova."
+    "message": "Paket",
+    "description": "Paket predstavlja različite cenovne pakete, kao što su 100 dolara za 10,000 bodova, 200 dolara za 20,000 bodova."
   },
   "field.type": {
     "message": "Tip",
@@ -109,90 +113,94 @@
   },
   "field.freeAmount": {
     "message": "Besplatna količina",
-    "description": "Besplatna količina u zahtevu."
+    "description": "Besplatna količina zahteva."
   },
   "field.extraPrice": {
     "message": "Dodatna cena",
-    "description": "Dodatna cena koju korisnik treba da plati u zahtevu."
+    "description": "Dodatna cena koju korisnik treba da plati za zahtev."
   },
   "message.alreadyApplied": {
-    "message": "Već ste podneli zahtev za ovu uslugu, molimo proverite konzolu",
-    "description": "Poruka koja se prikazuje kada je korisnik već podneo zahtev za ovu uslugu."
+    "message": "Već ste podneli zahtev za ovu uslugu, molimo proverite konzolu.",
+    "description": "Poruka koja se prikazuje korisniku kada je već podneo zahtev za ovu uslugu."
   },
   "message.applySuccessfully": {
     "message": "Zahtev je uspešno podnet",
-    "description": "Poruka koja se prikazuje kada je korisnik uspešno podneo zahtev za ovu uslugu."
+    "description": "Poruka koja se prikazuje korisniku kada je uspešno podneo zahtev za ovu uslugu."
   },
   "message.notApplied": {
-    "message": "Još niste podneli zahtev za ovu uslugu, molimo podnesite zahtev pre korišćenja",
-    "description": "Poruka koja se prikazuje kada korisnik još nije podneo zahtev za ovu uslugu."
+    "message": "Još niste podneli zahtev za ovu uslugu, molimo podnesite zahtev pre korišćenja.",
+    "description": "Poruka koja se prikazuje korisniku kada još nije podneo zahtev za ovu uslugu."
   },
   "message.yourApplication": {
     "message": "Vaš zahtev",
-    "description": "Poruka koja se prikazuje kada korisnik pregleda svoj zahtev."
+    "description": "Poruka koja se prikazuje korisniku kada je u pitanju njegov zahtev."
   },
   "message.unverified": {
-    "message": "Morate završiti verifikaciju identiteta pre nego što podnesete zahtev za ovu uslugu",
-    "description": "Poruka koja se prikazuje kada korisnik nije završio verifikaciju identiteta."
+    "message": "Morate završiti verifikaciju identiteta pre nego što podnesete zahtev za ovu uslugu.",
+    "description": "Poruka koja se prikazuje korisniku kada nije završio verifikaciju identiteta."
   },
   "message.goVerify": {
     "message": "Idite na verifikaciju identiteta",
-    "description": "Poruka koja se prikazuje kada korisnik nije završio verifikaciju identiteta."
+    "description": "Poruka koja se prikazuje korisniku kada nije završio verifikaciju identiteta."
   },
   "message.requiredParameter": {
     "message": "Obavezni parametar",
-    "description": "Poruka koja se prikazuje kada korisnik nije uneo obavezni parametar."
+    "description": "Poruka koja se prikazuje korisniku kada nije uneo obavezni parametar."
   },
   "message.example": {
     "message": "Primer",
-    "description": "Poruka koja se prikazuje kao primer korisniku."
+    "description": "Poruka koja se prikazuje korisniku kada nije uneo obavezni parametar."
+  },
+  "message.applicationSelection": {
+    "message": "U nastavku su paketi koje trenutno imate ili ste kupili, možete izabrati jedan paket da nastavite korišćenje usluge.",
+    "description": "Poruka koja se prikazuje korisniku kada treba da izabere jedan zahtev."
   },
   "message.createCredentialSuccessfully": {
-    "message": "Uspešno ste kreirali akreditiv",
-    "description": "Poruka koja se prikazuje kada je korisnik uspešno kreirao akreditiv."
+    "message": "Akreditiv je uspešno kreiran",
+    "description": "Poruka koja se prikazuje korisniku kada je uspešno kreirao akreditiv."
   },
   "message.readPolicy": {
-    "message": "Pročitao sam i slažem se",
-    "description": "Poruka koja se prikazuje kada je korisnik pročitao i saglasio se sa politikom."
+    "message": "Pročitao/la sam i slažem se",
+    "description": "Poruka koja se prikazuje korisniku kada je pročitao i saglasan je sa politikom."
   },
   "message.policy": {
-    "message": "Ugovor o korišćenju podataka i tehnologija usluga",
-    "description": "Poruka koja se prikazuje kada je korisnik pročitao i saglasio se sa politikom."
+    "message": "Ugovor o korišćenju usluga podataka i tehnologije",
+    "description": "Poruka koja se prikazuje korisniku kada je pročitao i saglasan je sa politikom."
   },
   "message.notAgreePolicy": {
-    "message": "Još niste saglasni sa ugovorom o korišćenju podataka i tehnologija usluga",
-    "description": "Poruka koja se prikazuje kada korisnik nije saglasan sa politikom."
+    "message": "Niste se saglasili sa ugovorom o korišćenju usluga podataka",
+    "description": "Poruka koja se prikazuje korisniku kada se korisnik nije saglasio sa politikom."
   },
   "message.confirmApplying": {
-    "message": "Potvrda zahteva za uslugu",
-    "description": "Poruka koja se prikazuje kada korisnik potvrđuje zahtev za uslugu."
+    "message": "Potvrdi zahtev za uslugu",
+    "description": "Poruka koja se prikazuje korisniku kada korisnik potvrdi zahtev za uslugu."
   },
   "message.rotateCredential": {
-    "message": "Ponovno postavljanje ključa",
-    "description": "Poruka koja se prikazuje korisniku kada korisnik ponovo postavlja ključ."
+    "message": "Resetuj ključ",
+    "description": "Poruka koja se prikazuje korisniku kada korisnik resetuje ključ."
   },
   "message.rotateCredentialConfirm": {
-    "message": "Da li ste sigurni da želite da ponovo postavite ključ? Posle ponovnog postavljanja neće biti moguće oporaviti.",
-    "description": "Poruka koja se prikazuje korisniku kada korisnik potvrdi ponovno postavljanje ključa."
+    "message": "Da li ste sigurni da želite da resetujete ključ? Nakon resetovanja, neće moći da se vrati.",
+    "description": "Poruka koja se prikazuje korisniku kada korisnik potvrdi resetovanje ključa."
   },
   "message.idDoesNotExist": {
     "message": "Zahtev ne postoji",
     "description": "Poruka koja se prikazuje korisniku kada zahtev ne postoji."
   },
   "message.rotateCredentialSuccessfully": {
-    "message": "Ključ je uspešno ponovo postavljen",
-    "description": "Poruka koja se prikazuje korisniku kada je ključ uspešno ponovo postavljen."
+    "message": "Ključ je uspešno resetovan",
+    "description": "Poruka koja se prikazuje korisniku kada je ključ uspešno resetovan."
   },
   "message.rotateCredentialFailed": {
-    "message": "Ponovno postavljanje ključa nije uspelo, molimo kontaktirajte podršku",
-    "description": "Poruka koja se prikazuje korisniku kada ponovo postavljanje ključa nije uspelo."
+    "message": "Resetovanje ključa nije uspelo, molimo kontaktirajte podršku",
+    "description": "Poruka koja se prikazuje korisniku kada resetovanje ključa nije uspelo."
   },
   "message.updateFailed": {
     "message": "Izmena nije uspela",
     "description": "Poruka koja se prikazuje korisniku kada izmena nije uspela."
   },
   "message.updateSuccessfully": {
-    "message": "Izmena uspešna",
+    "message": "Izmena je uspešna",
     "description": "Poruka koja se prikazuje korisniku kada je izmena uspešna."
   },
   "title.buyService": {
@@ -200,7 +208,7 @@
     "description": "Naslov stranice kada korisnik želi da kupi uslugu."
   },
   "title.applicationRemainingCount": {
-    "message": "Preostali broj izmena",
+    "message": "Izmena broja",
     "description": "Naslov stranice kada korisnik želi da izmeni broj zahteva."
   },
   "title.manageApplication": {

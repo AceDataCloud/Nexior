@@ -145,10 +145,12 @@ export const login = async ({ state, commit }: ActionContext<IRootState, IRootSt
       flow: 'popup',
       visible: true
     });
+    console.debug('login popup');
   } else {
     commit('setAuth', {
       flow: 'redirect'
     });
+    console.debug('login redirect');
     loginRedirect({ redirect: window.location.pathname, site });
   }
 };
@@ -158,7 +160,14 @@ export const logout = async ({ dispatch }: ActionContext<IRootState, IRootState>
   await dispatch('chat/resetAll');
   await dispatch('midjourney/resetAll');
   await dispatch('chatdoc/resetAll');
+  await dispatch('flux/resetAll');
+  await dispatch('hailuo/resetAll');
+  await dispatch('headshots/resetAll');
+  await dispatch('kling/resetAll');
+  await dispatch('luma/resetAll');
+  await dispatch('pika/resetAll');
   await dispatch('qrart/resetAll');
+  await dispatch('suno/resetAll');
   await dispatch('login');
 };
 

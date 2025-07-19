@@ -3,7 +3,8 @@ import { ROUTE_KLING_INDEX } from './constants';
 export default {
   path: '/kling',
   meta: {
-    auth: true
+    auth: true,
+    appName: 'kling'
   },
   component: () => import('@/layouts/Main.vue'),
   children: [

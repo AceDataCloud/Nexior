@@ -49,15 +49,21 @@ export function getFinalApplication(
   applications: IApplication[],
   currentApplication?: IApplication
 ): IApplication | undefined {
-  if (currentApplication && isApplicationUsable(currentApplication)) {
+  if (
+    currentApplication &&
+    isApplicationUsable(currentApplication) &&
+    applications?.some((app) => app.id === currentApplication.id)
+  ) {
     console.debug('current application is usable', currentApplication);
     return currentApplication;
   }
   console.debug('get final application from applications', applications);
   // check if there is any application with 'Period' type firstly, if yes, use it
   const application = applications?.find((application) => application?.type === IApplicationType.PERIOD);
+  console.debug('application with Period type', application);
   // else use the application with 'Usage' type
   const application2 = applications?.find((application) => application?.type === IApplicationType.USAGE);
+  console.debug('application with Usage type', application2);
   const finalApplication = application && isApplicationUsable(application) ? application : application2;
   console.debug('final application', finalApplication);
   return finalApplication;

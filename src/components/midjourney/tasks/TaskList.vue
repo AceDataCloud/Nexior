@@ -76,7 +76,7 @@ export default defineComponent({
 }
 
 .tasks {
-  padding: 0 10px;
+  padding: 10px;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;

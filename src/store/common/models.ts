@@ -31,7 +31,7 @@ export interface ICommonState {
     | undefined;
 }
 
-export interface IRootState extends ICommonState {
+export interface IAppState {
   midjourney: IMidjourneyState;
   chat: IChatState;
   chatdoc: IChatdocState;
@@ -44,3 +44,5 @@ export interface IRootState extends ICommonState {
   headshots: IHeadshotsState;
   suno: ISunoState;
 }
+
+export interface IRootState extends ICommonState, IAppState {}

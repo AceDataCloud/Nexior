@@ -92,6 +92,7 @@ export interface IMidjourneyImagineTask {
   id: string;
   type: 'imagine';
   created_at?: number;
+  trace_id?: string;
   request?: IMidjourneyImagineRequest;
   response?: IMidjourneyImagineResponse;
   state?: MidjourneyImagineState;
