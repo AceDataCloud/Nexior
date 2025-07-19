@@ -10,7 +10,7 @@
         <el-col :span="24">
           <el-card shadow="hover" class="card">
             <el-row>
-              <el-col :span="16" :offset="4">
+              <el-col class="max-w-4xl mx-auto">
                 <p class="introduction">
                   {{ $t('console.subscription.title') }}
                 </p>

@@ -37,12 +37,6 @@ export const ROUTE_HAILUO_HISTORY = 'hailuo-history';
 export const ROUTE_HEADSHOTS_INDEX = 'headshots-index';
 export const ROUTE_HEADSHOTS_HISTORY = 'headshots-history';
 
-export const ROUTE_CHATDOC_INDEX = 'chatdoc-index';
-export const ROUTE_CHATDOC_CONVERSATION = 'chatdoc-conversation';
-export const ROUTE_CHATDOC_CONVERSATION_NEW = 'chatdoc-conversation-new';
-export const ROUTE_CHATDOC_SETTING = 'chatdoc-setting';
-export const ROUTE_CHATDOC_MANAGE = 'chatdoc-knowledge';
-
 export const ROUTE_SUNO_INDEX = 'suno-index';
 export const ROUTE_SUNO_HISTORY = 'suno-history';
 

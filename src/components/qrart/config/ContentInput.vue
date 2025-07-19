@@ -98,10 +98,10 @@ export default defineComponent({
   },
   methods: {
     onExceed() {
-      ElMessage.warning(this.$t('chatdoc.message.uploadDocumentsExceed'));
+      ElMessage.warning(this.$t('qrart.message.uploadDocumentsExceed'));
     },
     onError() {
-      ElMessage.error(this.$t('chatdoc.message.uploadDocumentsError'));
+      ElMessage.error(this.$t('qrart.message.uploadDocumentsError'));
     },
     onSetContentImageUrl() {
       const url = this.urls?.[0];

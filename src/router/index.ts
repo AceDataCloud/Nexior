@@ -6,7 +6,6 @@ import deepseek from './deepseek';
 import chatgpt from './chatgpt';
 import midjourney from './midjourney';
 import distribution from './distribution';
-import chatdoc from './chatdoc';
 import qrart from './qrart';
 import luma from './luma';
 import pika from './pika';
@@ -28,7 +27,6 @@ const routes = [
     redirect: { name: ROUTE_CHATGPT_CONVERSATION_NEW }
   },
   console,
-  chatdoc,
   auth,
   chatgpt,
   grok,

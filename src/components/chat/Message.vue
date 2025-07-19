@@ -14,12 +14,12 @@
         v-motion
         :initial="{ opacity: 0, y: 5 }"
         :enter="{ opacity: 1, y: 0, scale: 1 }"
-        :delay="200"
-        :duration="300"
+        :delay="300"
+        :duration="400"
         :layout="true"
         :transition="{
-          enter: { delay: 0.2, duration: 0.5 },
-          layout: { duration: 0.3, easing: 'ease-in-out' }
+          enter: { delay: 0.3, duration: 0.5 },
+          layout: { duration: 0.4, easing: 'ease-in-out' }
         }"
         class="content"
       >

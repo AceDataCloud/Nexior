@@ -7,7 +7,6 @@ export * from './usage';
 export * from './api';
 export * from './order';
 export * from './distribution';
-export * from './chatdoc';
 export * from './auth';
 export * from './service';
 export * from './credential';

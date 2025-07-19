@@ -1,7 +1,6 @@
 import { ISite, IToken, IUser } from '@/models';
 import { IMidjourneyState } from '../midjourney/models';
 import { IChatState } from '../chat/models';
-import { IChatdocState } from '../chatdoc/models';
 import { IQrartState } from '../qrart/models';
 import { ILumaState } from '../luma/models';
 import { IPikaState } from '../pika/models';
@@ -34,7 +33,6 @@ export interface ICommonState {
 export interface IAppState {
   midjourney: IMidjourneyState;
   chat: IChatState;
-  chatdoc: IChatdocState;
   qrart: IQrartState;
   luma: ILumaState;
   pika: IPikaState;
