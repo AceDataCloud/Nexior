@@ -18,7 +18,7 @@
       </div>
       <!-- Display success message -->
       <div v-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">
-        <div class="flex justify-start items-center gap-4">
+        <div class="flex justify-start items-center gap-4 w-full overflow-x-auto">
           <image-wrapper
             v-for="(image, imageIndex) in images"
             :key="imageIndex"
