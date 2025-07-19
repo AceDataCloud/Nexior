@@ -239,7 +239,7 @@ export default defineComponent({
   &[direction='row'] {
     flex-direction: row;
     padding-top: 10px;
-    border-top: 1px solid var(--el-border-color-lighter);
+    border-top: 1px solid var(--el-border-color);
     .chevron,
     .logo {
       display: none;
@@ -321,7 +321,7 @@ export default defineComponent({
           height: 35px;
           border-radius: 50%;
           cursor: pointer;
-          border: 1px solid var(--el-border-color);
+          border: 1px solid var(--el-border-color-lighter);
         }
       }
     }

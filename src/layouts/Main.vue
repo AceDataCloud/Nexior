@@ -14,6 +14,7 @@
       :need-apply="needApply"
       @select="$store.dispatch(`${appName}/setApplication`, $event)"
       @refresh="$store.dispatch(`${appName}/getApplications`)"
+      @apply="onApply"
     />
   </div>
 </template>
@@ -22,8 +23,11 @@
 import { defineComponent } from 'vue';
 import Navigator from '@/components/common/Navigator.vue';
 import ApplicationStatus from '@/components/application/Status.vue';
-import { Status } from '@/models';
+import { IApplicationDetailResponse, Status } from '@/models';
 import { IAppState } from '@/store/common/models';
+import { ElMessage } from 'element-plus';
+import { applicationOperator } from '@/operators';
+import { ERROR_CODE_DUPLICATION } from '@/constants';
 
 export default defineComponent({
   name: 'LayoutMain',
@@ -63,6 +67,24 @@ export default defineComponent({
     window.addEventListener('resize', () => {
       this.mobile = window.innerWidth < 768;
     });
+  },
+  methods: {
+    onApply() {
+      applicationOperator
+        .create({
+          // @ts-ignore
+          application: this.application
+        })
+        .then(({ data: data }: { data: IApplicationDetailResponse }) => {
+          this.application = data;
+          ElMessage.success(this.$t('application.message.applySuccessfully'));
+        })
+        .catch((error) => {
+          if (error?.response?.data?.code === ERROR_CODE_DUPLICATION) {
+            ElMessage.error(this.$t('application.message.alreadyApplied'));
+          }
+        });
+    }
   }
 });
 </script>

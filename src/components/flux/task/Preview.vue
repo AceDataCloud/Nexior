@@ -7,7 +7,7 @@
       <div class="bot">
         {{ $t('flux.name.fluxBot') }}
         <span class="datetime">
-          {{ $dayjs.format('' + new Date(parseFloat(modelValue?.created_at || '') * 1000)) }}
+          {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
       </div>
       <div class="info">
@@ -212,25 +212,6 @@ $left-width: 70px;
         }
       }
     }
-  }
-}
-</style>
-
-<style lang="scss">
-.preview {
-  .image.error {
-    background: var(--el-bg-color-page);
-    .image-slot {
-      font-size: 14px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
-  .failure {
-    background: var(--el-fill-color-light);
-    width: 100%;
   }
 }
 </style>

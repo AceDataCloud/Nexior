@@ -25,7 +25,7 @@
   },
   "name.createdAt": {
     "message": "Fecha de creación",
-    "description": "Fecha y hora en que se generó el video Hailuo"
+    "description": "Fecha y hora de generación del video Hailuo"
   },
   "name.imageUrl": {
     "message": "Imagen de referencia",
@@ -36,19 +36,19 @@
     "description": "Video personalizado"
   },
   "name.prompt": {
-    "message": "Indicación de video",
-    "description": "Indicación para la entrada de contenido"
+    "message": "Sugerencia de video",
+    "description": "Sugerencia para la entrada de contenido"
   },
   "name.ingredients": {
-    "message": "Video creado con múltiples imágenes",
-    "description": "Video extendido personalizado"
+    "message": "Crear video con múltiples imágenes",
+    "description": "Video personalizado extendido"
   },
   "name.model": {
     "message": "Modelo",
     "description": "Versión del modelo utilizada para generar el video"
   },
   "name.startImageUrl": {
-    "message": "Imagen inicial",
+    "message": "Imagen de inicio",
     "description": "Semilla para el código QR a generar"
   },
   "name.ingredientsModel": {
@@ -60,15 +60,15 @@
     "description": "Nombre del generador de videos Hailuo"
   },
   "description.ingredients": {
-    "message": "Si desea subir varias imágenes para generar su video, por favor active este botón.",
+    "message": "Si desea subir múltiples imágenes para generar su propio video, active este botón.",
     "description": "Descripción del parámetro 'ingredients'"
   },
   "description.startImageUrl": {
-    "message": "URL de la imagen inicial, que será el primer fotograma del video generado.",
+    "message": "Imagen de inicio, que será el primer fotograma del video generado.",
     "description": "Descripción del parámetro 'startImageUrl'"
   },
   "description.prompt": {
-    "message": "Palabras clave para generar un video Hailuo",
+    "message": "Palabras clave para generar el video Hailuo",
     "description": "Descripción del parámetro 'prompt'"
   },
   "status.pending": {
@@ -92,8 +92,8 @@
     "description": "Marcador de posición para el nivel de relleno"
   },
   "placeholder.prompt": {
-    "message": "Introduzca palabras clave para el estilo del video a generar, por ejemplo: ira",
-    "description": "Texto de marcador de posición en el campo de indicación"
+    "message": "Ingrese las palabras clave para el estilo del video a generar, por ejemplo: ira",
+    "description": "Texto de marcador de posición en el campo de sugerencia"
   },
   "placeholder.position": {
     "message": "Por favor seleccione...",
@@ -117,43 +117,43 @@
   },
   "placeholder.subMarker": {
     "message": "Por favor seleccione...",
-    "description": "Marcador de posición para la entrada de submarcador"
+    "description": "Marcador de posición para la entrada de sub-marcador"
   },
   "button.model1": {
-    "message": "Video basado en texto",
-    "description": "Texto del botón para generar un video Hailuo"
+    "message": "Video de texto",
+    "description": "Texto del botón para generar video Hailuo"
   },
   "button.model2": {
-    "message": "Video basado en imágenes",
-    "description": "Texto del botón para generar un video Hailuo"
+    "message": "Video de imagen",
+    "description": "Texto del botón para generar video Hailuo"
   },
   "button.generate": {
     "message": "Generar",
-    "description": "Texto del botón para generar un video Hailuo"
+    "description": "Texto del botón para generar video Hailuo"
   },
   "button.extend": {
     "message": "Extender video",
-    "description": "Texto del botón para extender el video"
+    "description": "Texto del botón para extender video"
   },
   "button.download": {
     "message": "Descargar video",
-    "description": "Texto del botón para descargar el video"
+    "description": "Texto del botón para descargar video"
   },
   "button.uploadStartImageUrl": {
     "message": "Subir imagen",
     "description": "Texto del botón para subir el código QR"
   },
   "message.uploadReferencesExceed": {
-    "message": "Se pueden subir hasta 5 imágenes como máximo",
+    "message": "Se pueden subir hasta 5 imágenes",
     "description": "Mensaje de error cuando se excede el límite de imágenes subidas"
   },
   "message.uploadReferencesSuccess": {
     "message": "Imágenes subidas con éxito",
-    "description": "Mensaje de éxito cuando las imágenes se han subido correctamente"
+    "description": "Mensaje de éxito cuando las imágenes se suben correctamente"
   },
   "message.uploadReferencesError": {
-    "message": "Error al subir la imagen, por favor intente de nuevo más tarde",
-    "description": "Mensaje de error cuando la carga de imágenes falla"
+    "message": "Error al subir imágenes, por favor intente de nuevo más tarde",
+    "description": "Mensaje de error cuando la subida de imágenes falla"
   },
   "message.startingTask": {
     "message": "Iniciando tarea...",
@@ -161,27 +161,27 @@
   },
   "message.startTaskSuccess": {
     "message": "Tarea de generación iniciada con éxito",
-    "description": "Mensaje de éxito cuando se inicia la tarea correctamente"
+    "description": "Mensaje de éxito al iniciar la tarea"
   },
   "message.startTaskFailed": {
     "message": "Error al iniciar la tarea, por favor contacte al administrador",
-    "description": "Mensaje de error cuando falla el inicio de la tarea de dibujo"
+    "description": "Mensaje de error al fallar al iniciar la tarea de dibujo"
   },
   "message.usedUp": {
-    "message": "Se han agotado sus créditos, por favor compre más créditos para continuar usando",
+    "message": "Sus créditos se han agotado, por favor compre más créditos para continuar usando",
     "description": "Mensaje cuando se han agotado los créditos"
   },
   "message.generating": {
     "message": "Generando...",
-    "description": "Mensaje mientras la imagen se está generando"
+    "description": "Mensaje mientras se genera la imagen"
   },
   "message.downloadVideo": {
     "message": "Descargar este video",
-    "description": "Mensaje mientras la imagen se está generando"
+    "description": "Mensaje mientras se genera la imagen"
   },
   "message.extendVideo": {
     "message": "Continuar generando este video",
-    "description": "Mensaje mientras la imagen se está generando"
+    "description": "Mensaje mientras se genera la imagen"
   },
   "message.generateFailed": {
     "message": "Error al generar la imagen",
@@ -192,8 +192,8 @@
     "description": "Mensaje de error cuando la cantidad de imágenes de la primera fotograma subidas excede el límite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "¡El tamaño del archivo subido no puede exceder los 10 MB!",
-    "description": "Mensaje de error cuando el tamaño del archivo subido no puede exceder los 10 MB!"
+    "message": "¡El tamaño del archivo subido no puede exceder 10 MB!",
+    "description": "Mensaje de error cuando el tamaño del archivo subido no puede exceder 10 MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "¡El archivo subido debe estar en formato MP4!",
@@ -213,7 +213,7 @@
   },
   "message.uploadVideoError": {
     "message": "Error al subir el video",
-    "description": "Mensaje de error cuando falla la subida de la imagen de la primera fotograma"
+    "description": "Mensaje de error cuando falla la subida del video"
   },
   "message.uploadEndImageError": {
     "message": "Error al subir la imagen de la última fotograma",
@@ -228,7 +228,7 @@
     "description": "Mensaje cuando no hay operaciones disponibles"
   },
   "message.noTasks": {
-    "message": "No hay tareas históricas, por favor haga clic en generar video a la izquierda",
+    "message": "No hay tareas históricas, por favor haga clic en el botón de generar video a la izquierda",
     "description": "Mensaje cuando no hay tareas"
   }
 }

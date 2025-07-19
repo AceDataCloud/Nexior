@@ -4,7 +4,7 @@
       <config-panel @generate="onGenerate" />
     </template>
     <template #result>
-      <recent-panel class="panel recent" @reach-top="onReachTop" />
+      <recent-panel @reach-top="onReachTop" />
     </template>
   </layout>
 </template>
@@ -13,10 +13,10 @@
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Hailuo.vue';
 import ConfigPanel from '@/components/hailuo/ConfigPanel.vue';
-import { applicationOperator, hailuoOperator } from '@/operators';
-import { IApplicationDetailResponse, IHailuoGenerateRequest, Status } from '@/models';
+import { hailuoOperator } from '@/operators';
+import { IHailuoGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP } from '@/constants';
+import { ERROR_CODE_USED_UP } from '@/constants';
 import RecentPanel from '@/components/hailuo/RecentPanel.vue';
 import { IHailuoTask } from '@/models';
 
@@ -47,26 +47,14 @@ export default defineComponent({
     loading() {
       return this.$store.state.hailuo?.status?.getApplications === Status.Request;
     },
-    service() {
-      return this.$store.state.hailuo.service;
-    },
     credential() {
       return this.$store.state.hailuo.credential;
     },
     config() {
       return this.$store.state.hailuo.config;
     },
-    initializing() {
-      return this.$store.state.hailuo.status.getApplications === Status.Request;
-    },
-    needApply() {
-      return this.$store.state.hailuo.status.getApplications === Status.Success && !this.application;
-    },
     application() {
       return this.$store.state.hailuo.application;
-    },
-    applications() {
-      return this.$store.state.hailuo.applications;
     },
     tasks() {
       return this.$store.state.hailuo.tasks;
@@ -117,26 +105,9 @@ export default defineComponent({
       console.debug('end onGetApplication');
       await this.onGetTasks();
     },
-    onApply() {
-      applicationOperator
-        .create({
-          // @ts-ignore
-          application: this.application
-        })
-        .then(({ data: data }: { data: IApplicationDetailResponse }) => {
-          this.application = data;
-          ElMessage.success(this.$t('application.message.applySuccessfully'));
-        })
-        .catch((error) => {
-          if (error?.response?.data?.code === ERROR_CODE_DUPLICATION) {
-            ElMessage.error(this.$t('application.message.alreadyApplied'));
-          }
-        });
-    },
     async onScrollDown() {
       setTimeout(() => {
-        // scroll to bottom for `.recent`
-        const el = document.querySelector('.recent');
+        const el = document.querySelector('.tasks');
         if (el) {
           el.scrollTop = el.scrollHeight;
         }
@@ -173,9 +144,6 @@ export default defineComponent({
         })
         .then(() => {
           ElMessage.success(this.$t('hailuo.message.startTaskSuccess'));
-          this.$store.commit('hailuo/setConfig', {
-            config: undefined
-          });
         })
         .catch((error) => {
           const response = error?.response?.data;
@@ -195,27 +163,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.status {
-  margin-bottom: 10px;
-}
-
-.panel {
-  &.detail {
-    width: 100%;
-    flex: 1;
-    overflow-y: scroll;
-  }
-  &.recent {
-    height: 100%;
-    width: 100%;
-    margin-bottom: 10px;
-    position: relative;
-    justify-content: initial;
-  }
-  &.operation {
-    position: relative;
-  }
-}
-</style>

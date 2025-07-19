@@ -7,7 +7,7 @@
       <div class="bot">
         {{ $t('kling.name.klingBot') }}
         <span class="datetime">
-          {{ $dayjs.format('' + new Date(parseFloat(modelValue?.created_at || '') * 1000)) }}
+          {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
       </div>
       <div class="info">
@@ -28,12 +28,13 @@
       </div>
       <!-- Display success message -->
       <div v-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">
-        <div class="image-wrapper">
-          <VideoPlayer :model-value="modelValue?.response" />
+        <div class="mb-4">
+          <video-player :model-value="modelValue?.response" />
         </div>
         <div v-if="modelValue?.response.success" :class="{ operations: true, 'mt-2': true }">
           <el-tooltip class="box-item" effect="dark" :content="$t('kling.message.downloadVideo')" placement="top-start">
             <el-button
+              v-if="modelValue?.response.video_url"
               type="info"
               size="small"
               class="btn-action"
@@ -44,11 +45,16 @@
           </el-tooltip>
         </div>
         <el-alert :closable="false" class="mt-2 success">
-          <p class="description">
+          <p class="mb-2">
+            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            {{ $t('kling.name.model') }}:
+            {{ modelValue?.request?.model }}
+          </p>
+          <p class="mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('kling.name.taskId') }}:
             {{ modelValue?.id }}
-            <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
+            <copy-to-clipboard :content="modelValue?.id!" />
           </p>
         </el-alert>
       </div>
@@ -59,51 +65,44 @@
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
             {{ $t('kling.name.failure') }}
           </template>
-          <p class="description">
+          <p class="mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('kling.name.taskId') }}:
             {{ modelValue?.id }}
-            <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
+            <copy-to-clipboard :content="modelValue?.id!" />
           </p>
-          <p class="description">
+          <p class="mb-2">
             <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
             {{ $t('kling.name.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
-            <copy-to-clipboard :content="modelValue?.response?.error?.message!" class="btn-copy" />
+            <copy-to-clipboard :content="modelValue?.response?.error?.message!" />
           </p>
-          <p v-if="modelValue?.response?.trace_id" class="description">
+          <p v-if="modelValue?.response?.trace_id" class="mb-2">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
             {{ $t('kling.name.traceId') }}:
             {{ modelValue?.response?.trace_id }}
-            <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy" />
+            <copy-to-clipboard :content="modelValue?.response?.trace_id" />
           </p>
         </el-alert>
       </div>
       <!-- Display error message -->
-      <div
-        v-if="
-          !modelValue?.response ||
-          modelValue?.response?.state === 'processing' ||
-          modelValue?.response?.state === 'pending'
-        "
-        :class="{ content: true }"
-      >
+      <div v-if="modelValue?.response?.success === undefined" :class="{ content: true }">
         <el-alert :closable="false" class="info">
           <template #template>
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
             {{ $t('kling.name.failure') }}
           </template>
-          <p class="description">
+          <p class="mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('kling.name.taskId') }}:
             {{ modelValue?.id }}
-            <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
+            <copy-to-clipboard :content="modelValue?.id!" />
           </p>
-          <p v-if="modelValue?.response?.trace_id" class="description">
+          <p v-if="modelValue?.response?.trace_id" class="mb-2">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
             {{ $t('kling.name.traceId') }}:
             {{ modelValue?.response?.trace_id }}
-            <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy" />
+            <copy-to-clipboard :content="modelValue?.response?.trace_id" />
           </p>
         </el-alert>
       </div>
@@ -117,7 +116,8 @@ import { ElImage, ElAlert, ElButton, ElTooltip } from 'element-plus';
 import { IKlingTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import VideoPlayer from '../VideoPlayer.vue';
+import VideoPlayer from '@/components/common/VideoPlayer.vue';
+
 export default defineComponent({
   name: 'TaskPreview',
   components: {
@@ -147,43 +147,11 @@ export default defineComponent({
     }
   },
   methods: {
-    // onExtend(event: MouseEvent, response: IKlingGenerateResponse) {
-    //   event.stopPropagation();
-    //   // extend url here
-    //   console.debug('set config', response);
-    //   this.$store.commit('kling/setConfig', {
-    //     ...this.$store.state.kling?.config,
-    //     video_id: response.video_id,
-    //     prompt: response.prompt,
-    //     action: 'extend',
-    //     thumbnail_url: response.thumbnail_url,
-    //     video_url: response.video_url
-    //   });
-    // },
     onDownload(event: MouseEvent, video_url: string) {
       event.stopPropagation();
       console.log('on download');
       // download url here
       window.open(video_url, '_blank');
-    },
-    onReload(event: Event) {
-      const target = event.target as HTMLImageElement;
-      // append a random url query to existing url query, to force reload the image
-      // extract exiting url query
-      const url = new URL(target.src);
-      // extract `retry` query
-      const retry = url.searchParams.get('retry');
-      if (!retry) {
-        // if no retry query, set it as random string
-        url.searchParams.set('retry', '1');
-      } else if (parseInt(retry) < 2) {
-        // if retry < 3, increase it by 1
-        url.searchParams.set('retry', (parseInt(retry) + 1).toString());
-      } else {
-        return;
-      }
-      // set the new url
-      target.src = url.toString();
     },
     onOpenVideo(url: string) {
       window.open(url, '_blank');

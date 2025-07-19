@@ -4,8 +4,8 @@
     "description": "معرف المهمة"
   },
   "name.type": {
-    "message": "نوع",
-    "description": "نوع محتوى الفيديو الذي سيتم إنشاؤه، مثل 'رابط'، 'نص'، إلخ"
+    "message": "النوع",
+    "description": "نوع محتوى فيديو Hailuo الذي سيتم إنشاؤه، مثل 'رابط'، 'نص'، إلخ"
   },
   "name.failure": {
     "message": "فشل",
@@ -20,8 +20,8 @@
     "description": "حالة المهمة"
   },
   "name.traceId": {
-    "message": "معرف التعقب",
-    "description": "معرف التعقب للمهمة"
+    "message": "معرف التتبع",
+    "description": "معرف التتبع للمهمة"
   },
   "name.createdAt": {
     "message": "تاريخ الإنشاء",
@@ -36,11 +36,11 @@
     "description": "فيديو مخصص"
   },
   "name.prompt": {
-    "message": "تحفيز الفيديو",
-    "description": "إدخال المحتوى"
+    "message": "إشارة الفيديو",
+    "description": "إشارة إدخال المحتوى"
   },
   "name.ingredients": {
-    "message": "فيديو إنشاء متعدد الصور",
+    "message": "إنشاء فيديو متعدد الصور",
     "description": "فيديو موسع مخصص"
   },
   "name.model": {
@@ -49,7 +49,7 @@
   },
   "name.startImageUrl": {
     "message": "صورة الإطار الأول",
-    "description": "بذور رمز الاستجابة السريعة التي سيتم إنشاؤها"
+    "description": "البذور لرمز الاستجابة السريعة الذي سيتم إنشاؤه"
   },
   "name.ingredientsModel": {
     "message": "نموذج المكونات",
@@ -61,22 +61,22 @@
   },
   "description.ingredients": {
     "message": "إذا كنت ترغب في تحميل صور متعددة لإنشاء فيديو خاص بك، يرجى تفعيل هذا الزر.",
-    "description": "وصف معلمة 'ingredients'"
+    "description": "وصف المعامل 'ingredients'"
   },
   "description.startImageUrl": {
-    "message": "رابط صورة الإطار الأول، والتي ستكون الإطار الأول للفيديو المولد.",
-    "description": "وصف معلمة 'startImageUrl'"
+    "message": "صورة الإطار الأول، ستكون الإطار الأول للفيديو الذي سيتم إنشاؤه.",
+    "description": "وصف المعامل 'startImageUrl'"
   },
   "description.prompt": {
-    "message": "كلمات التحفيز لإنشاء فيديو Hailuo",
-    "description": "وصف معلمة 'prompt'"
+    "message": "إشارة الكلمات لإنشاء فيديو Hailuo",
+    "description": "وصف المعامل 'prompt'"
   },
   "status.pending": {
-    "message": "انتظار",
+    "message": "في الانتظار",
     "description": "حالة انتظار المهمة"
   },
   "status.processing": {
-    "message": "قيد المعالجة",
+    "message": "يتم المعالجة",
     "description": "حالة انتظار المهمة"
   },
   "placeholder.paddingNoise": {
@@ -84,7 +84,7 @@
     "description": "نص العنصر النائب لإدخال ضوضاء التعبئة"
   },
   "placeholder.select": {
-    "message": "اختيار",
+    "message": "اختر",
     "description": "نص العنصر النائب في حقل الاختيار"
   },
   "placeholder.paddingLevel": {
@@ -92,8 +92,8 @@
     "description": "نص العنصر النائب لمستوى التعبئة"
   },
   "placeholder.prompt": {
-    "message": "أدخل كلمات التحفيز لنمط الفيديو المولد، مثل: نيران",
-    "description": "نص العنصر النائب في حقل التحفيز"
+    "message": "أدخل إشارة الكلمات لنمط الفيديو الذي تريد إنشاؤه، مثل: الغضب",
+    "description": "نص العنصر النائب في حقل الإشارة"
   },
   "placeholder.position": {
     "message": "يرجى الاختيار...",
@@ -105,7 +105,7 @@
   },
   "placeholder.preset": {
     "message": "يرجى الاختيار...",
-    "description": "نص العنصر النائب للإعدادات المسبقة"
+    "description": "نص العنصر النائب لإدخال الإعدادات المسبقة"
   },
   "placeholder.markerShape": {
     "message": "يرجى الاختيار...",
@@ -113,54 +113,54 @@
   },
   "placeholder.rotate": {
     "message": "يرجى الاختيار...",
-    "description": "نص العنصر النائب لإدخال الدوران"
+    "description": "نص العنصر النائب لإدخال التدوير"
   },
   "placeholder.subMarker": {
     "message": "يرجى الاختيار...",
-    "description": "نص العنصر النائب لإدخال علامة فرعية"
+    "description": "نص العنصر النائب لإدخال العلامة الفرعية"
   },
   "button.model1": {
     "message": "فيديو نصي",
-    "description": "نص زر إنشاء فيديو Hailuo"
+    "description": "نص زر لإنشاء فيديو Hailuo"
   },
   "button.model2": {
-    "message": "فيديو بصري",
-    "description": "نص زر إنشاء فيديو Hailuo"
+    "message": "فيديو صوري",
+    "description": "نص زر لإنشاء فيديو Hailuo"
   },
   "button.generate": {
     "message": "إنشاء",
-    "description": "نص زر إنشاء فيديو Hailuo"
+    "description": "نص زر لإنشاء فيديو Hailuo"
   },
   "button.extend": {
     "message": "توسيع الفيديو",
-    "description": "نص زر توسيع الفيديو"
+    "description": "نص زر لتوسيع الفيديو"
   },
   "button.download": {
     "message": "تحميل الفيديو",
-    "description": "نص زر تحميل الفيديو"
+    "description": "نص زر لتحميل الفيديو"
   },
   "button.uploadStartImageUrl": {
     "message": "تحميل الصورة",
-    "description": "نص زر تحميل رمز الاستجابة السريعة"
+    "description": "نص زر لتحميل رمز الاستجابة السريعة"
   },
   "message.uploadReferencesExceed": {
     "message": "يمكنك تحميل ما يصل إلى 5 صور",
-    "description": "رسالة خطأ عندما يتجاوز عدد الصور المحملة الحد المسموح به"
+    "description": "رسالة خطأ عند تجاوز عدد الصور المحملة للحد"
   },
   "message.uploadReferencesSuccess": {
-    "message": "تم تحميل الصورة بنجاح",
-    "description": "رسالة نجاح عند تحميل الصورة بنجاح"
+    "message": "تم تحميل الصور بنجاح",
+    "description": "رسالة نجاح عند تحميل الصور بنجاح"
   },
   "message.uploadReferencesError": {
-    "message": "فشل تحميل الصورة، يرجى المحاولة مرة أخرى لاحقًا",
-    "description": "رسالة خطأ عند فشل تحميل الصورة"
+    "message": "فشل تحميل الصور، يرجى المحاولة مرة أخرى لاحقًا",
+    "description": "رسالة خطأ عند فشل تحميل الصور"
   },
   "message.startingTask": {
     "message": "جارٍ بدء المهمة...",
     "description": "رسالة عند بدء مهمة الرسم"
   },
   "message.startTaskSuccess": {
-    "message": "تم بدء مهمة生成 بنجاح",
+    "message": "تم بدء مهمة الإنشاء بنجاح",
     "description": "رسالة نجاح عند بدء المهمة بنجاح"
   },
   "message.startTaskFailed": {
@@ -180,7 +180,7 @@
     "description": "رسالة عند إنشاء الصورة"
   },
   "message.extendVideo": {
-    "message": "متابعة إنشاء هذا الفيديو",
+    "message": "استمر في إنشاء هذا الفيديو",
     "description": "رسالة عند إنشاء الصورة"
   },
   "message.generateFailed": {
@@ -188,36 +188,36 @@
     "description": "رسالة عند فشل إنشاء الصورة"
   },
   "message.uploadVideoExceed": {
-    "message": "عدد الصور المرفوعة لأولى الإطارات يتجاوز الحد المسموح به",
-    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة لأولى الإطارات الحد المسموح به"
+    "message": "عدد الصور الأولى المرفوعة يتجاوز الحد المسموح به",
+    "description": "رسالة خطأ عند تجاوز عدد الصور الأولى المرفوعة الحد المسموح به"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "لا يمكن أن يتجاوز حجم الملف المرفوع 10 ميغابايت!",
-    "description": "رسالة خطأ عند تجاوز حجم الملف المرفوع 10 ميغابايت!"
+    "message": "لا يمكن أن يتجاوز حجم الملف المرفوع 10 ميجابايت!",
+    "description": "رسالة خطأ عند تجاوز حجم الملف المرفوع 10 ميجابايت!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "يجب أن يكون الملف المرفوع بتنسيق MP4!",
     "description": "رسالة خطأ عند عدم كون الملف المرفوع بتنسيق MP4!"
   },
   "message.uploadStartImageExceed": {
-    "message": "عدد الصور المرفوعة لأولى الإطارات يتجاوز الحد المسموح به",
-    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة لأولى الإطارات الحد المسموح به"
+    "message": "عدد الصور الأولى المرفوعة يتجاوز الحد المسموح به",
+    "description": "رسالة خطأ عند تجاوز عدد الصور الأولى المرفوعة الحد المسموح به"
   },
   "message.uploadEndImageExceed": {
-    "message": "عدد الصور المرفوعة لآخر الإطارات يتجاوز الحد المسموح به",
-    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة لآخر الإطارات الحد المسموح به"
+    "message": "عدد الصور النهائية المرفوعة يتجاوز الحد المسموح به",
+    "description": "رسالة خطأ عند تجاوز عدد الصور النهائية المرفوعة الحد المسموح به"
   },
   "message.uploadStartImageError": {
-    "message": "فشل في رفع صورة الإطار الأول",
-    "description": "رسالة خطأ عند فشل رفع صورة الإطار الأول"
+    "message": "فشل في رفع الصورة الأولى",
+    "description": "رسالة خطأ عند فشل رفع الصورة الأولى"
   },
   "message.uploadVideoError": {
     "message": "فشل في رفع الفيديو",
     "description": "رسالة خطأ عند فشل رفع الفيديو"
   },
   "message.uploadEndImageError": {
-    "message": "فشل في رفع صورة الإطار الأخير",
-    "description": "رسالة خطأ عند فشل رفع صورة الإطار الأخير"
+    "message": "فشل في رفع الصورة النهائية",
+    "description": "رسالة خطأ عند فشل رفع الصورة النهائية"
   },
   "message.uploadDocumentsError": {
     "message": "فشل في رفع الوثائق",
@@ -228,7 +228,7 @@
     "description": "رسالة عند عدم وجود عمليات متاحة"
   },
   "message.noTasks": {
-    "message": "لا توجد مهام تاريخية، يرجى النقر على زر إنشاء الفيديو على الجانب الأيسر",
+    "message": "لا توجد مهام تاريخية، يرجى النقر على الجهة اليسرى لإنشاء فيديو",
     "description": "رسالة عند عدم وجود مهام"
   }
 }
