@@ -197,22 +197,6 @@ export default defineComponent({
       console.debug('end onGetApplications');
       await this.onGetTasks();
     },
-    onApply() {
-      applicationOperator
-        .create({
-          // @ts-ignore
-          application: this.application
-        })
-        .then(({ data: data }: { data: IApplicationDetailResponse }) => {
-          this.application = data;
-          ElMessage.success(this.$t('application.message.applySuccessfully'));
-        })
-        .catch((error) => {
-          if (error?.response?.data?.code === ERROR_CODE_DUPLICATION) {
-            ElMessage.error(this.$t('application.message.alreadyApplied'));
-          }
-        });
-    },
     async onStartTask(request: IMidjourneyImagineRequest) {
       const token = this.credential?.token;
       if (!token) {

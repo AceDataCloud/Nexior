@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <vue-plyr :options="options" class="video">
-      <video controls crossorigin playsinline>
+  <div class="video">
+    <vue-plyr :options="options">
+      <video controls crossorigin="anonymous" playsinline>
         <source size="1080" :src="modelValue?.video_url" type="video/mp4" />
       </video>
     </vue-plyr>
@@ -15,6 +15,7 @@ import VuePlyr from '@skjnldsv/vue-plyr';
 // @ts-ignore
 import { IKlingVideo } from '@/models';
 import '@skjnldsv/vue-plyr/dist/vue-plyr.css';
+
 export default defineComponent({
   name: 'VideoPlayer',
   components: { VuePlyr },
@@ -35,6 +36,14 @@ export default defineComponent({
 <style lang="scss" scoped>
 .video {
   max-width: 100%;
-  height: 450px;
+  max-height: 450px;
+  width: 800px;
+  border-radius: 15px;
+  overflow: hidden;
+  .plyr--video,
+  video {
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>

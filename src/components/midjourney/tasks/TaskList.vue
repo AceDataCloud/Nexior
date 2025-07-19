@@ -3,7 +3,7 @@
     <bot-placeholder />
   </div>
   <div v-else-if="tasks && tasks?.length === 0">
-    <p class="p-5 description">{{ $t('midjourney.message.noTasks') }}</p>
+    <no-tasks />
   </div>
   <div v-else-if="tasks.length > 0" ref="panel" class="tasks" @scroll="onHandleScroll">
     <div v-for="(task, taskKey) in tasks" :key="taskKey" class="task">
@@ -15,14 +15,15 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import TaskItem from './TaskItem.vue';
-import { ElSkeleton, ElSkeletonItem } from 'element-plus';
 import BotPlaceholder from '@/components/common/BotPlaceholder.vue';
+import NoTasks from '@/components/common/NoTasks.vue';
 
 export default defineComponent({
   name: 'TaskList',
   components: {
     TaskItem,
-    BotPlaceholder
+    BotPlaceholder,
+    NoTasks
   },
   emits: ['update:modelValue', 'custom', 'refresh', 'reach-top'],
   data() {

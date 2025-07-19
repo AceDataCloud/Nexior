@@ -88,7 +88,7 @@ export default defineComponent({
 
   .item {
     width: 48px;
-    height: 65px;
+    height: 70px;
     border: 1px solid var(--el-border-color);
     display: flex;
     flex-direction: column;
@@ -100,6 +100,7 @@ export default defineComponent({
       margin-top: 8px;
       width: 30px;
       height: 30px;
+      margin-bottom: 4px;
       display: flex;
       flex-direction: row;
       align-items: center;

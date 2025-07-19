@@ -1,25 +1,27 @@
 <template>
-  <div v-if="tasks?.items === undefined" class="tasks">
+  <div v-if="tasks?.items === undefined">
     <bot-placeholder />
   </div>
-  <div v-else-if="tasks?.items?.length && tasks?.items?.length > 0" class="tasks">
+  <div v-else-if="tasks?.items?.length && tasks?.items?.length > 0" class="h-full w-full overflow-y-auto">
     <task-preview v-for="(task, taskIndex) in tasks?.items" :key="taskIndex" :model-value="task" />
   </div>
-  <p v-if="tasks?.items?.length === 0" class="description">
-    {{ $t('flux.message.noTasks') }}
-  </p>
+  <div v-if="tasks?.items?.length === 0">
+    <no-tasks />
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import TaskPreview from './task/Preview.vue';
 import BotPlaceholder from '../common/BotPlaceholder.vue';
+import NoTasks from '@/components/common/NoTasks.vue';
 
 export default defineComponent({
   name: 'RecentPanel',
   components: {
     TaskPreview,
-    BotPlaceholder
+    BotPlaceholder,
+    NoTasks
   },
   emits: ['reach-top'],
   data() {
@@ -47,23 +49,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.description {
-  text-align: left;
-  font-size: 14px;
-  color: var(--el-text-color-secondary);
-}
-
-.tasks {
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-  .task {
-    margin-bottom: 15px;
-    width: 100%;
-    height: fit-content;
-    text-align: left;
-  }
-}
-</style>
