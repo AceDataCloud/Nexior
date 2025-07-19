@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sat, 19 Jul 2025 11:20:48 GMT and should not be manually modified.
+This log was last generated on Sat, 19 Jul 2025 15:03:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 3.8.1
+
+Sat, 19 Jul 2025 15:03:42 GMT
+
+### Patches
+
+- fix luma style (cqc@cuiqingcai.com)
 
 ## 3.8.0
 
