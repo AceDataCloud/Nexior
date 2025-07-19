@@ -9,6 +9,7 @@
     <el-upload
       v-model:file-list="fileList"
       name="file"
+      accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
       :limit="5"
       class="upload-wrapper"
       :multiple="false"

@@ -29,7 +29,7 @@
   },
   "button.login": {
     "message": "Kirjaudu sisään",
-    "description": "Painikkeen teksti, jota käytetään sisäänkirjautumiseen"
+    "description": "Painikkeen teksti, jota käytetään kirjautumiseen"
   },
   "button.logout": {
     "message": "Kirjaudu ulos",
@@ -53,7 +53,7 @@
   },
   "button.alert": {
     "message": "Varoitus",
-    "description": "Painikkeen teksti, jota käytetään varoittamiseen jostakin asiasta"
+    "description": "Painikkeen teksti, jota käytetään varoittamiseen joistakin asioista"
   },
   "button.info": {
     "message": "Tietoa",
@@ -80,16 +80,16 @@
     "description": "Painikkeen teksti, jota käytetään konsolisivun näyttämiseen verkkosivustolla"
   },
   "button.learn": {
-    "message": "Opi",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän opettamiseen jostakin asiasta"
+    "message": "Opettele",
+    "description": "Painikkeen teksti, jota käytetään käyttäjän opettamiseen"
   },
   "button.buy": {
     "message": "Osta",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän ostamiseen jostakin asiasta"
+    "description": "Painikkeen teksti, jota käytetään käyttäjän ostamiseen"
   },
   "button.try": {
     "message": "Kokeile",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän kokeilemaan jotakin"
+    "description": "Painikkeen teksti, jota käytetään käyttäjän kokeiluun"
   },
   "button.startForFree": {
     "message": "Aloita ilmaiseksi",
@@ -125,7 +125,7 @@
   },
   "button.buyMore": {
     "message": "Osta lisää",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän ostamaan lisää sisältöä"
+    "description": "Painikkeen teksti, jota käytetään käyttäjän ostamiseen lisää sisältöä"
   },
   "button.update": {
     "message": "Päivitä",
@@ -145,7 +145,7 @@
   },
   "button.finish": {
     "message": "Valmis",
-    "description": "Painikkeen teksti, jota käytetään joidenkin asioiden viimeistelemiseen"
+    "description": "Painikkeen teksti, jota käytetään joidenkin asioiden loppuunsaattamiseen"
   },
   "entity.id": {
     "message": "ID",
@@ -196,7 +196,7 @@
     "description": "Entiteetin päivitysaika"
   },
   "entity.order": {
-    "message": "Tilauksen",
+    "message": "Tilaus",
     "description": "Entiteetin tilaus, tilaus sisältää summan, palvelutiedot, käyttäjän on maksettava siitä"
   },
   "message.usedAmount": {
@@ -217,19 +217,19 @@
   },
   "message.confirmDelete": {
     "message": "Haluatko varmasti poistaa?",
-    "description": "Vahvistaa käyttäjän haluavanko poistaa tiettyä sisältöä"
+    "description": "Vahvistaa käyttäjän halua poistaa tietty sisältö"
   },
   "message.expiredAt": {
-    "message": "Voimassaoloaika",
-    "description": "Näyttää palvelun voimassaoloajan"
+    "message": "Vanhentumisaika",
+    "description": "Näyttää palvelun vanhentumisajan"
   },
   "message.alert": {
     "message": "Varoitus",
-    "description": "Viestit käyttäjälle varoittamiseksi"
+    "description": "Viestit käyttäjän varoittamiseksi"
   },
   "message.info": {
     "message": "Ystävällinen muistutus",
-    "description": "Näyttää tietoviestin"
+    "description": "Näyttää tiedot viestinä"
   },
   "message.free": {
     "message": "Ilmainen",
@@ -237,15 +237,15 @@
   },
   "message.startPrice": {
     "message": "Alkaen hinta",
-    "description": "Näyttää palvelun alhaisimman hinnan"
+    "description": "Näyttää palvelun alhaisimman hinnan viestinä"
   },
   "message.joinDiscord": {
     "message": "Liity Discordiin",
-    "description": "Kutsuu käyttäjää liittymään Discord-kanavalle"
+    "description": "Viestit käyttäjälle liittyä Discord-kanavaan"
   },
   "message.addWeChat": {
     "message": "Lisää WeChat",
-    "description": "Kutsuu käyttäjää lisäämään WeChat"
+    "description": "Viestit käyttäjälle lisätä WeChat"
   },
   "message.serviceTech": {
     "message": "Tekninen tuki",
@@ -319,13 +319,9 @@
     "message": "Midjourney",
     "description": "Verkkosivuston navigointipalkin teksti, joka näyttää Midjourney-sivun, älä käännä tätä kenttää, se on säilytettävä 'Midjourney'"
   },
-  "nav.chatdoc": {
-    "message": "ChatDoc",
-    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää chat-dokumenttisivun, älä käännä tätä kenttää, se on säilytettävä 'Chatdoc'"
-  },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää QR-taide-sivun, älä käännä tätä kenttää, se on säilytettävä 'QRArt'"
+    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää QRArt-sivun, älä käännä tätä kenttää, se on säilytettävä 'QRArt'"
   },
   "nav.suno": {
     "message": "Suno",
@@ -333,175 +329,175 @@
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää Flux-sivun, älä käännä tätä kenttää, se on pidettävä 'Flux'"
+    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää Flux-sivun, älä käännä tätä kenttää, se on säilytettävä 'Flux'"
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää Luma-sivun, älä käännä tätä kenttää, se on pidettävä 'Luma'"
+    "description": "网站导航栏中的文本，用于显示Luma页面，请不要翻译此字段，必须保持为'Luma'"
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää Pika-sivun, älä käännä tätä kenttää, se on pidettävä 'Pika'"
+    "description": "网站导航栏中的文本，用于显示Pika页面，请不要翻译此字段，必须保持为'Pika'"
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää Kling-sivun, älä käännä tätä kenttää, se on pidettävä 'Kling'"
+    "description": "网站导航栏中的文本，用于显示Kling页面，请不要翻译此字段，必须保持为'Kling'"
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää Hailuo-sivun, älä käännä tätä kenttää, se on pidettävä 'Hailuo'"
+    "description": "网站导航栏中的文本，用于显示Hailuo页面，请不要翻译此字段，必须保持为'Hailuo'"
   },
   "nav.image": {
-    "message": "Kuva",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää kuvasivun"
+    "message": "Kuvat",
+    "description": "网站导航栏中的文本，用于显示图片页面"
   },
   "nav.music": {
     "message": "Musiikki",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää musiikkisivun"
+    "description": "网站导航栏中的文本，用于显示音乐页面"
   },
   "nav.video": {
     "message": "Video",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää videosivun"
+    "description": "网站导航栏中的文本，用于显示视频页面"
   },
   "nav.distribution": {
     "message": "Suositustulot",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää suositustulosivun"
+    "description": "网站导航栏中的文本，用于显示推荐收益页面"
   },
   "nav.logOut": {
     "message": "Kirjaudu ulos",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka käytetään uloskirjautumiseen"
+    "description": "网站导航栏中的文本，用于退出登录"
   },
   "nav.site": {
     "message": "Sivuston asetukset",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää sivuston asetussivun"
+    "description": "网站导航栏中的文本，用于显示站点配置页面"
   },
   "nav.setting": {
     "message": "Asetukset",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää asetussivun"
+    "description": "网站导航栏中的文本，用于显示设置页面"
   },
   "nav.headshots": {
-    "message": "AI-profiilikuva",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää sivuston asetussivun"
+    "message": "AI-passikuvat",
+    "description": "网站导航栏中的文本，用于显示站点配置页面"
   },
   "nav.locale": {
     "message": "Kieliasetukset",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka käytetään kielen vaihtamiseen"
+    "description": "网站导航栏中的文本，用于更改语言"
   },
   "nav.support": {
     "message": "Asiakastuki",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää tukisivun"
+    "description": "网站导航栏中的文本，用于显示支持页面"
   },
   "nav.darkMode": {
     "message": "Tumma tila",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka käytetään siirtymiseen tummaan teemoihin"
+    "description": "网站导航栏中的文本，用于切换到深色主题"
   },
   "title.alert": {
-    "message": "Hälytys",
-    "description": "Hälytysviestin otsikko"
+    "message": "Ilmoitus",
+    "description": "警报消息的标题"
   },
   "title.placeholderOfSelect": {
     "message": "Valitse",
-    "description": "Valintakentän paikkamerkki"
+    "description": "选择输入框的占位符"
   },
   "title.placeholderOfInput": {
     "message": "Täytä",
-    "description": "Syöttökentän paikkamerkki"
+    "description": "输入框的占位符"
   },
   "title.allApplications": {
     "message": "Kaikki hakemukset",
-    "description": "Sivun otsikko, joka näyttää kaikki hakemukset"
+    "description": "显示所有申请的页面标题"
   },
   "title.allOrders": {
     "message": "Kaikki tilaukset",
-    "description": "Sivun otsikko, joka näyttää kaikki tilaukset"
+    "description": "显示所有订单的页面标题"
   },
   "title.orderInfo": {
     "message": "Tilaustiedot",
-    "description": "Sivun otsikko, joka näyttää tilaustiedot"
+    "description": "显示订单信息的页面标题"
   },
   "title.buyMore": {
     "message": "Osta lisää",
-    "description": "Sivun otsikko, joka kannustaa käyttäjää ostamaan lisää"
+    "description": "让用户购买更多的页面标题"
   },
   "title.distribution": {
     "message": "Suositustulot",
-    "description": "Sivun otsikko, joka näyttää suositustulot, tarkoittaen, että käyttäjä voi ansaita kutsumalla muita käyttämään palvelua"
+    "description": "显示推荐收益的页面标题，表示用户可以通过邀请他人使用服务来赚钱"
   },
   "title.site": {
     "message": "Sivuston asetukset",
-    "description": "Sivun otsikko, joka näyttää sivuston asetukset"
+    "description": "显示站点配置的页面标题"
   },
   "title.distributionHistory": {
     "message": "Suositushistoria",
-    "description": "Sivun otsikko, joka näyttää suositushistorian"
+    "description": "显示推荐历史的页面标题"
   },
   "title.invitee": {
     "message": "Kutsuja",
-    "description": "Sivun otsikko, joka näyttää kutsujan"
+    "description": "显示邀请者的页面标题"
   },
   "title.allUsages": {
     "message": "Käyttöhistoria",
-    "description": "Sivun otsikko, joka näyttää kaikki API-palvelun käyttörekisterit"
+    "description": "显示API服务所有使用记录的页面标题"
   },
   "title.allCredentials": {
-    "message": "Todistukset",
-    "description": "Sivun otsikko, joka näyttää kaikki todistukset, joita käytetään API:in pääsyyn"
+    "message": "Tunnistetiedot",
+    "description": "显示所有凭证的页面标题，这些凭证用于访问API"
   },
   "about.title1": {
     "message": "Ota yhteyttä",
-    "description": "Osa, joka näyttää yhteystiedot"
+    "description": "显示联系信息的部分的标题"
   },
   "about.title2": {
     "message": "Resurssit",
-    "description": "Osa, joka näyttää linkit"
+    "description": "显示链接的部分的标题"
   },
   "about.title3": {
     "message": "Linkit",
-    "description": "Osa, joka näyttää tukitiedot"
+    "description": "显示支持信息的部分的标题"
   },
   "about.address": {
     "message": "Yhdysvallat, Delaware, Middletown, N Broad St, toimisto 201",
-    "description": "Yrityksen osoite"
+    "description": "公司的地址"
   },
   "about.email": {
     "message": "office@acedata.cloud",
-    "description": "Yrityksen sähköposti"
+    "description": "公司的电子邮件"
   },
   "about.link1": {
     "message": "Palvelut",
-    "description": "Linkki palvelusivulle"
+    "description": "服务页面的链接"
   },
   "about.link2": {
     "message": "Dokumentaatio",
-    "description": "Linkki dokumentaatiosivulle"
+    "description": "文档页面的链接"
   },
   "about.link3": {
     "message": "Ohjauspaneeli",
-    "description": "Linkki ohjauspaneelisivulle"
+    "description": "控制台页面的链接"
   },
   "about.link4": {
     "message": "Profiili",
-    "description": "Linkki profiilisivulle"
+    "description": "个人资料页面的链接"
   },
   "about.link5": {
     "message": "Keskus",
-    "description": "Linkki keskussivulle"
+    "description": "中心页面的链接"
   },
   "about.link6": {
     "message": "Suositustulot",
-    "description": "Linkki suositustulosivulle"
+    "description": "推荐收益页面的链接"
   },
   "about.link7": {
     "message": "Tuki",
-    "description": "Linkki tukisivulle"
+    "description": "支持页面的链接"
   },
   "about.link8": {
     "message": "Palveluehdot",
-    "description": "Palveluehtojen sivun linkki"
+    "description": "服务条款页面的链接"
   },
   "about.link9": {
     "message": "Tietosuojakäytäntö",
-    "description": "Tietosuojakäytännön sivun linkki"
+    "description": "隐私政策页面的链接"
   },
   "theme.light": {
     "message": "Vaalea",
@@ -517,30 +513,30 @@
   },
   "settings.general": {
     "message": "Yleiset asetukset",
-    "description": "Asetussivun yleiset asetukset -osion otsikko"
+    "description": "Asetussivun yleisten asetusten osion otsikko"
   },
   "settings.language": {
     "message": "Kieli",
-    "description": "Asetussivun kieliasetukset -osion otsikko"
+    "description": "Asetussivun kieliasetusten osion otsikko"
   },
   "settings.theme": {
     "message": "Teema",
-    "description": "Asetussivun teema-asetukset -osion otsikko"
+    "description": "Asetussivun teema-asetusten osion otsikko"
   },
   "settings.seo": {
     "message": "SEO-asetukset",
-    "description": "Asetussivun SEO-asetukset -osion otsikko"
+    "description": "Asetussivun SEO-asetusten osion otsikko"
   },
   "settings.site": {
     "message": "Sivuston asetukset",
-    "description": "Asetussivun sivuston asetukset -osion otsikko"
+    "description": "Asetussivun sivuston asetusten osion otsikko"
   },
   "settings.distribution": {
     "message": "Jakeluasetukset",
-    "description": "Asetussivun jakeluasetukset -osion otsikko"
+    "description": "Asetussivun jakeluasetusten osion otsikko"
   },
   "settings.function": {
     "message": "Toiminta-asetukset",
-    "description": "Asetussivun toiminta-asetukset -osion otsikko"
+    "description": "Asetussivun toiminta-asetusten osion otsikko"
   }
 }

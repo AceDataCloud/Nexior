@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "Tipo",
-    "description": "Tipo de conteúdo para gerar o vídeo Hailuo, como 'link', 'texto', etc."
+    "description": "Tipo de conteúdo do vídeo Hailuo a ser gerado, como 'link', 'texto', etc."
   },
   "name.failure": {
     "message": "Falha",
@@ -24,7 +24,7 @@
     "description": "ID de rastreamento da tarefa"
   },
   "name.createdAt": {
-    "message": "Data de criação",
+    "message": "Criado em",
     "description": "Data e hora em que o vídeo Hailuo foi gerado"
   },
   "name.imageUrl": {
@@ -37,10 +37,10 @@
   },
   "name.prompt": {
     "message": "Prompt do vídeo",
-    "description": "Prompt para entrada de conteúdo"
+    "description": "Prompt de entrada de conteúdo"
   },
   "name.ingredients": {
-    "message": "Vídeo com várias imagens",
+    "message": "Vídeo criado a partir de várias imagens",
     "description": "Vídeo personalizado expandido"
   },
   "name.model": {
@@ -48,7 +48,7 @@
     "description": "Versão do modelo utilizada para gerar o vídeo"
   },
   "name.startImageUrl": {
-    "message": "Imagem de início",
+    "message": "Imagem inicial",
     "description": "Semente para gerar o código QR"
   },
   "name.ingredientsModel": {
@@ -64,27 +64,27 @@
     "description": "Descrição do parâmetro 'ingredients'"
   },
   "description.startImageUrl": {
-    "message": "URL da imagem de início, que será o primeiro quadro do vídeo gerado.",
+    "message": "Imagem inicial, que será o primeiro quadro do vídeo gerado.",
     "description": "Descrição do parâmetro 'startImageUrl'"
   },
   "description.prompt": {
-    "message": "Palavras-chave para gerar um vídeo Hailuo",
+    "message": "Palavras-chave para gerar o vídeo Hailuo",
     "description": "Descrição do parâmetro 'prompt'"
   },
   "status.pending": {
-    "message": "Aguardando",
+    "message": "Pendente",
     "description": "Estado de espera da tarefa"
   },
   "status.processing": {
     "message": "Processando",
-    "description": "Estado de processamento da tarefa"
+    "description": "Estado de espera da tarefa"
   },
   "placeholder.paddingNoise": {
     "message": "Selecione...",
     "description": "Placeholder para entrada de ruído de preenchimento"
   },
   "placeholder.select": {
-    "message": "Selecione",
+    "message": "Selecionar",
     "description": "Texto de placeholder no campo de seleção"
   },
   "placeholder.paddingLevel": {
@@ -92,7 +92,7 @@
     "description": "Placeholder para nível de preenchimento"
   },
   "placeholder.prompt": {
-    "message": "Digite a prompt para o estilo do vídeo a ser gerado, ex: raiva",
+    "message": "Insira as palavras-chave para o estilo do vídeo a ser gerado, por exemplo: raiva",
     "description": "Texto de placeholder no campo de prompt"
   },
   "placeholder.position": {
@@ -101,15 +101,15 @@
   },
   "placeholder.aspectRatio": {
     "message": "Selecione...",
-    "description": "Placeholder para entrada de relação de aspecto"
+    "description": "Placeholder para entrada de proporção"
   },
   "placeholder.preset": {
     "message": "Selecione...",
-    "description": "Placeholder para entrada de preset"
+    "description": "Placeholder para entrada de predefinição"
   },
   "placeholder.markerShape": {
     "message": "Selecione...",
-    "description": "Placeholder para entrada de forma do marcador"
+    "description": "Placeholder para entrada de forma de marcador"
   },
   "placeholder.rotate": {
     "message": "Selecione...",
@@ -141,19 +141,19 @@
   },
   "button.uploadStartImageUrl": {
     "message": "Enviar imagem",
-    "description": "Texto do botão para enviar imagem do código QR"
+    "description": "Texto do botão para enviar código QR"
   },
   "message.uploadReferencesExceed": {
-    "message": "É possível enviar no máximo 5 imagens",
-    "description": "Mensagem de erro quando a quantidade de imagens enviadas excede o limite"
+    "message": "Você pode enviar no máximo 5 imagens",
+    "description": "Mensagem de erro quando o número de imagens enviadas excede o limite"
   },
   "message.uploadReferencesSuccess": {
     "message": "Imagens enviadas com sucesso",
-    "description": "Mensagem de sucesso ao enviar imagens"
+    "description": "Mensagem de sucesso ao enviar imagens com sucesso"
   },
   "message.uploadReferencesError": {
-    "message": "Falha ao enviar imagem, por favor, tente novamente mais tarde",
-    "description": "Mensagem de erro ao falhar no envio de imagens"
+    "message": "Falha ao enviar imagens, por favor, tente novamente mais tarde",
+    "description": "Mensagem de erro quando o envio de imagens falha"
   },
   "message.startingTask": {
     "message": "Iniciando tarefa...",
@@ -161,14 +161,14 @@
   },
   "message.startTaskSuccess": {
     "message": "Tarefa de geração iniciada com sucesso",
-    "description": "Mensagem de sucesso ao iniciar a tarefa"
+    "description": "Mensagem de sucesso ao iniciar a tarefa com sucesso"
   },
   "message.startTaskFailed": {
-    "message": "Falha ao iniciar tarefa, por favor, contate o administrador",
+    "message": "Falha ao iniciar a tarefa, por favor, contate o administrador",
     "description": "Mensagem de erro ao falhar ao iniciar a tarefa de desenho"
   },
   "message.usedUp": {
-    "message": "Seus créditos foram esgotados, por favor, compre mais créditos para continuar usando",
+    "message": "Seus créditos acabaram, por favor, compre mais créditos para continuar usando",
     "description": "Mensagem quando os créditos se esgotam"
   },
   "message.generating": {
@@ -184,44 +184,44 @@
     "description": "Mensagem enquanto a imagem está sendo gerada"
   },
   "message.generateFailed": {
-    "message": "Falha ao gerar imagem",
+    "message": "Falha ao gerar a imagem",
     "description": "Mensagem quando a geração da imagem falha"
   },
   "message.uploadVideoExceed": {
-    "message": "Número de imagens da primeira cena excede o limite",
-    "description": "Mensagem de erro quando o número de imagens da primeira cena excede o limite"
+    "message": "O número de imagens da primeira cena carregadas excede o limite",
+    "description": "Mensagem de erro quando o número de imagens da primeira cena carregadas excede o limite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "O tamanho do arquivo enviado não pode exceder 10MB!",
-    "description": "Mensagem de erro quando o tamanho do arquivo enviado não pode exceder 10MB!"
+    "message": "O tamanho do arquivo carregado não pode exceder 10MB!",
+    "description": "Mensagem de erro quando o tamanho do arquivo carregado não pode exceder 10MB!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "O arquivo enviado deve estar no formato MP4!",
-    "description": "Mensagem de erro quando o arquivo enviado não está no formato MP4!"
+    "message": "O arquivo carregado deve estar no formato MP4!",
+    "description": "Mensagem de erro quando o arquivo carregado deve estar no formato MP4!"
   },
   "message.uploadStartImageExceed": {
-    "message": "Número de imagens da primeira cena excede o limite",
-    "description": "Mensagem de erro quando o número de imagens da primeira cena excede o limite"
+    "message": "O número de imagens da primeira cena carregadas excede o limite",
+    "description": "Mensagem de erro quando o número de imagens da primeira cena carregadas excede o limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Número de imagens da última cena excede o limite",
-    "description": "Mensagem de erro quando o número de imagens da última cena excede o limite"
+    "message": "O número de imagens da última cena carregadas excede o limite",
+    "description": "Mensagem de erro quando o número de imagens da última cena carregadas excede o limite"
   },
   "message.uploadStartImageError": {
-    "message": "Falha ao enviar a imagem da primeira cena",
-    "description": "Mensagem de erro quando há falha ao enviar a imagem da primeira cena"
+    "message": "Falha ao carregar a imagem da primeira cena",
+    "description": "Mensagem de erro quando falha ao carregar a imagem da primeira cena"
   },
   "message.uploadVideoError": {
-    "message": "Falha ao enviar o vídeo",
-    "description": "Mensagem de erro quando há falha ao enviar o vídeo"
+    "message": "Falha ao carregar o vídeo",
+    "description": "Mensagem de erro quando falha ao carregar a imagem da primeira cena"
   },
   "message.uploadEndImageError": {
-    "message": "Falha ao enviar a imagem da última cena",
-    "description": "Mensagem de erro quando há falha ao enviar a imagem da última cena"
+    "message": "Falha ao carregar a imagem da última cena",
+    "description": "Mensagem de erro quando falha ao carregar a imagem da última cena"
   },
   "message.uploadDocumentsError": {
-    "message": "Falha ao enviar o documento",
-    "description": "Mensagem de erro quando há falha ao enviar o documento"
+    "message": "Falha ao carregar o documento",
+    "description": "Mensagem de erro quando falha ao carregar o documento"
   },
   "message.noOperations": {
     "message": "Nenhuma operação disponível",

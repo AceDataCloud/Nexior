@@ -35,15 +35,15 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .video {
-  max-width: 100%;
+  max-width: 800px;
   max-height: 450px;
-  width: 800px;
   border-radius: 15px;
   overflow: hidden;
   .plyr--video,
   video {
     width: 100%;
     height: 100%;
+    aspect-ratio: 16 / 9;
   }
 }
 </style>

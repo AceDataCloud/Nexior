@@ -40,7 +40,7 @@
     "description": "The prompt for content input"
   },
   "name.ingredients": {
-    "message": "Multiple Image Creation Video",
+    "message": "Multi-Image Video Creation",
     "description": "Custom extended video"
   },
   "name.model": {
@@ -48,8 +48,8 @@
     "description": "The model version used to generate the video"
   },
   "name.startImageUrl": {
-    "message": "Initial Frame Image",
-    "description": "The seed for generating the QR code"
+    "message": "First Frame Image",
+    "description": "The seed for the QR code to be generated"
   },
   "name.ingredientsModel": {
     "message": "Ingredients Model",
@@ -61,19 +61,19 @@
   },
   "description.ingredients": {
     "message": "If you want to upload multiple images to generate your own video, please turn on this button.",
-    "description": "Description of the parameter 'ingredients'"
+    "description": "Description of the 'ingredients' parameter"
   },
   "description.startImageUrl": {
-    "message": "The URL of the initial frame image, which will be the first frame of the generated video.",
-    "description": "Description of the parameter 'startImageUrl'"
+    "message": "The first frame image, which will be the first frame of the generated video.",
+    "description": "Description of the 'startImageUrl' parameter"
   },
   "description.prompt": {
     "message": "The prompt words for generating Hailuo videos",
-    "description": "Description of the parameter 'prompt'"
+    "description": "Description of the 'prompt' parameter"
   },
   "status.pending": {
     "message": "Pending",
-    "description": "The pending status of the task"
+    "description": "The waiting status of the task"
   },
   "status.processing": {
     "message": "Processing",
@@ -85,14 +85,14 @@
   },
   "placeholder.select": {
     "message": "Select",
-    "description": "Placeholder text in the select field"
+    "description": "Placeholder text in the selection field"
   },
   "placeholder.paddingLevel": {
     "message": "Please select...",
     "description": "Placeholder for padding level"
   },
   "placeholder.prompt": {
-    "message": "Enter the prompt words for the video style to be generated, e.g., fiery",
+    "message": "Enter the prompt words for the video style to be generated, e.g., 'Fire'",
     "description": "Placeholder text in the prompt field"
   },
   "placeholder.position": {
@@ -152,24 +152,24 @@
     "description": "Success message when images are uploaded successfully"
   },
   "message.uploadReferencesError": {
-    "message": "Failed to upload images, please try again later",
+    "message": "Image upload failed, please try again later",
     "description": "Error message when image upload fails"
   },
   "message.startingTask": {
     "message": "Starting task...",
-    "description": "Message at the start of the drawing task"
+    "description": "Message when the drawing task starts"
   },
   "message.startTaskSuccess": {
-    "message": "Successfully initiated the generation task",
+    "message": "Task initiated successfully",
     "description": "Success message when the task is successfully started"
   },
   "message.startTaskFailed": {
-    "message": "Task initiation failed, please contact the administrator",
-    "description": "Error message when task initiation fails"
+    "message": "Failed to initiate task, please contact the administrator",
+    "description": "Error message when starting the drawing task fails"
   },
   "message.usedUp": {
     "message": "Your credits are exhausted, please purchase more credits to continue using",
-    "description": "Message when credits are exhausted"
+    "description": "Message when credits are used up"
   },
   "message.generating": {
     "message": "Generating...",
@@ -184,7 +184,7 @@
     "description": "Message when the image is being generated"
   },
   "message.generateFailed": {
-    "message": "Failed to generate the image",
+    "message": "Image generation failed",
     "description": "Message when image generation fails"
   },
   "message.uploadVideoExceed": {
@@ -192,12 +192,12 @@
     "description": "Error message when the number of uploaded first frame images exceeds the limit"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "The uploaded file size must not exceed 10MB!",
-    "description": "Error message when the uploaded file size exceeds 10MB!"
+    "message": "The uploaded file size cannot exceed 10MB!",
+    "description": "Error message when the uploaded file size cannot exceed 10MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "The uploaded file must be in MP4 format!",
-    "description": "Error message when the uploaded file is not in MP4 format!"
+    "description": "Error message when the uploaded file must be in MP4 format!"
   },
   "message.uploadStartImageExceed": {
     "message": "The number of uploaded first frame images exceeds the limit",
@@ -208,20 +208,20 @@
     "description": "Error message when the number of uploaded last frame images exceeds the limit"
   },
   "message.uploadStartImageError": {
-    "message": "Failed to upload first frame image",
+    "message": "Failed to upload the first frame image",
     "description": "Error message when failing to upload the first frame image"
   },
   "message.uploadVideoError": {
-    "message": "Failed to upload video",
+    "message": "Failed to upload the video",
     "description": "Error message when failing to upload the video"
   },
   "message.uploadEndImageError": {
-    "message": "Failed to upload last frame image",
+    "message": "Failed to upload the last frame image",
     "description": "Error message when failing to upload the last frame image"
   },
   "message.uploadDocumentsError": {
-    "message": "Failed to upload document",
-    "description": "Error message when failing to upload a document"
+    "message": "Failed to upload the document",
+    "description": "Error message when failing to upload the document"
   },
   "message.noOperations": {
     "message": "No available operations",

@@ -3,7 +3,7 @@
     <div class="config">
       <prompt-input class="mb-4" />
       <model-selector class="mb-4" />
-      <start-image-url-input v-if="config?.model === 'minimax-i2v'" class="mb-4" />
+      <start-image-url-input v-if="config?.model === 'minimax-i2v'" class="mb-2" />
       <div class="actions">
         <el-button
           v-if="config?.video_url !== undefined || config?.custom"

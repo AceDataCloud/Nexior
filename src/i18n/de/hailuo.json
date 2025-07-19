@@ -1,19 +1,19 @@
 {
   "name.taskId": {
     "message": "Aufgaben-ID",
-    "description": "ID der Aufgabe"
+    "description": "Die ID der Aufgabe"
   },
   "name.type": {
     "message": "Typ",
-    "description": "Der Inhaltstyp des zu erzeugenden Hailuo-Videos, z.B. 'Link', 'Text' usw."
+    "description": "Der Inhaltstyp des zu generierenden Hailuo-Videos, wie 'Link', 'Text' usw."
   },
   "name.failure": {
-    "message": "Fehlgeschlagen",
-    "description": "Der Status des Aufgabenfehlers"
+    "message": "Fehler",
+    "description": "Der Fehlerstatus der Aufgabe"
   },
   "name.failureReason": {
-    "message": "Fehlergrund",
-    "description": "Der Grund für den Fehler der Aufgabe"
+    "message": "Fehlerursache",
+    "description": "Der Grund für das Scheitern der Aufgabe"
   },
   "name.status": {
     "message": "Status",
@@ -25,207 +25,207 @@
   },
   "name.createdAt": {
     "message": "Erstellt am",
-    "description": "Das Datum und die Uhrzeit der Erstellung des Hailuo-Videos"
+    "description": "Das Datum und die Uhrzeit, an dem das Hailuo-Video generiert wurde"
   },
   "name.imageUrl": {
     "message": "Referenzbild",
-    "description": "Das Referenzbild für das zu erzeugende Video"
+    "description": "Das Referenzbild für das zu generierende Video"
   },
   "name.videoUrl": {
     "message": "Benutzerdefiniertes Video",
     "description": "Benutzerdefiniertes Video"
   },
   "name.prompt": {
-    "message": "Videoprompt",
-    "description": "Der Prompt für die Inhaltseingabe"
+    "message": "Videoaufforderung",
+    "description": "Die Eingabeaufforderung für den Inhalt"
   },
   "name.ingredients": {
-    "message": "Erstelle Video aus mehreren Bildern",
+    "message": "Mehrere Bilder erstellen",
     "description": "Benutzerdefiniertes erweitertes Video"
   },
   "name.model": {
     "message": "Modell",
-    "description": "Die Modellversion, die zur Erstellung des Videos verwendet wird"
+    "description": "Die Modellversion, die zur Generierung des Videos verwendet wird"
   },
   "name.startImageUrl": {
-    "message": "Erstes Bild",
-    "description": "Der Samen für den zu erzeugenden QR-Code"
+    "message": "Startbild",
+    "description": "Der Seed für den zu generierenden QR-Code"
   },
   "name.ingredientsModel": {
     "message": "Zutatenmodell",
-    "description": "Die Modellversion, die zur Erstellung des Videos verwendet wird"
+    "description": "Die Modellversion, die zur Generierung des Videos verwendet wird"
   },
   "name.hailuoBot": {
     "message": "Hailuo Bot",
     "description": "Der Name des Hailuo-Videogenerators"
   },
   "description.ingredients": {
-    "message": "Wenn Sie mehrere Bilder hochladen möchten, um Ihr eigenes Video zu erstellen, aktivieren Sie diesen Schalter.",
-    "description": "Beschreibung des Parameters 'ingredients'"
+    "message": "Wenn Sie mehrere Bilder hochladen möchten, um Ihr eigenes Video zu erstellen, aktivieren Sie diese Schaltfläche.",
+    "description": "Die Beschreibung des Parameters 'ingredients'"
   },
   "description.startImageUrl": {
-    "message": "Die URL des ersten Bildes, das die erste Frame des erzeugten Videos sein wird.",
-    "description": "Beschreibung des Parameters 'startImageUrl'"
+    "message": "Das Startbild, das der erste Frame des generierten Videos sein wird.",
+    "description": "Die Beschreibung des Parameters 'startImageUrl'"
   },
   "description.prompt": {
-    "message": "Promptwörter für die Erstellung von Hailuo-Videos",
-    "description": "Beschreibung des Parameters 'prompt'"
+    "message": "Die Eingabeaufforderung zur Generierung des Hailuo-Videos",
+    "description": "Die Beschreibung des Parameters 'prompt'"
   },
   "status.pending": {
-    "message": "Ausstehend",
+    "message": "Warten",
     "description": "Der Wartezustand der Aufgabe"
   },
   "status.processing": {
-    "message": "Wird verarbeitet",
-    "description": "Der Verarbeitungszustand der Aufgabe"
+    "message": "Wird bearbeitet",
+    "description": "Der Bearbeitungszustand der Aufgabe"
   },
   "placeholder.paddingNoise": {
-    "message": "Bitte wählen...",
-    "description": "Platzhalter für die Rauschfütterung"
+    "message": "Bitte auswählen...",
+    "description": "Platzhalter für die Eingabe von Füllrauschen"
   },
   "placeholder.select": {
     "message": "Auswählen",
-    "description": "PlatzhaltertText im Auswahlfeld"
+    "description": "Platzhaltertext im Auswahlfeld"
   },
   "placeholder.paddingLevel": {
-    "message": "Bitte wählen...",
-    "description": "Platzhalter für die Füllstärke"
+    "message": "Bitte auswählen...",
+    "description": "Platzhalter für das Füllniveau"
   },
   "placeholder.prompt": {
-    "message": "Geben Sie das Promptwort für den Video stil ein, z.B.: Wut",
-    "description": "Platzhaltertext im Promptfeld"
+    "message": "Geben Sie die Eingabeaufforderung für den Video-Stil ein, z. B.: Wut",
+    "description": "Platzhaltertext im Eingabefeld für die Aufforderung"
   },
   "placeholder.position": {
-    "message": "Bitte wählen...",
-    "description": "Platzhalter für die Positionseingabe"
+    "message": "Bitte auswählen...",
+    "description": "Platzhalter für die Eingabe der Position"
   },
   "placeholder.aspectRatio": {
-    "message": "Bitte wählen...",
+    "message": "Bitte auswählen...",
     "description": "Platzhalter für die Eingabe des Seitenverhältnisses"
   },
   "placeholder.preset": {
-    "message": "Bitte wählen...",
-    "description": "Platzhalter für die Voreinstellungseingabe"
+    "message": "Bitte auswählen...",
+    "description": "Platzhalter für die Eingabe der Voreinstellung"
   },
   "placeholder.markerShape": {
-    "message": "Bitte wählen...",
-    "description": "Platzhalter für die Markierungsform"
+    "message": "Bitte auswählen...",
+    "description": "Platzhalter für die Eingabe der Markierungsform"
   },
   "placeholder.rotate": {
-    "message": "Bitte wählen...",
-    "description": "Platzhalter für die Rotierungseingabe"
+    "message": "Bitte auswählen...",
+    "description": "Platzhalter für die Eingabe der Drehung"
   },
   "placeholder.subMarker": {
-    "message": "Bitte wählen...",
-    "description": "Platzhalter für die Untermarkierungseingabe"
+    "message": "Bitte auswählen...",
+    "description": "Platzhalter für die Eingabe des Untermarkierungs"
   },
   "button.model1": {
-    "message": "Text-to-Video",
-    "description": "Buttontext für die Erstellung eines Hailuo-Videos"
+    "message": "Text-zu-Video",
+    "description": "Der Text der Schaltfläche zur Generierung des Hailuo-Videos"
   },
   "button.model2": {
     "message": "Bild-zu-Video",
-    "description": "Buttontext für die Erstellung eines Hailuo-Videos"
+    "description": "Der Text der Schaltfläche zur Generierung des Hailuo-Videos"
   },
   "button.generate": {
     "message": "Generieren",
-    "description": "Buttontext zur Erstellung eines Hailuo-Videos"
+    "description": "Der Text der Schaltfläche zur Generierung des Hailuo-Videos"
   },
   "button.extend": {
     "message": "Video erweitern",
-    "description": "Buttontext zum Erweitern des Videos"
+    "description": "Der Text der Schaltfläche zum Erweitern des Videos"
   },
   "button.download": {
     "message": "Video herunterladen",
-    "description": "Buttontext zum Herunterladen des Videos"
+    "description": "Der Text der Schaltfläche zum Herunterladen des Videos"
   },
   "button.uploadStartImageUrl": {
     "message": "Bild hochladen",
-    "description": "Buttontext zum Hochladen des QR-Codes"
+    "description": "Der Text der Schaltfläche zum Hochladen des QR-Codes"
   },
   "message.uploadReferencesExceed": {
     "message": "Maximal 5 Bilder können hochgeladen werden",
-    "description": "Fehlermeldung, wenn die hochgeladenen Bilder die Begrenzung überschreiten"
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Bilder das Limit überschreitet"
   },
   "message.uploadReferencesSuccess": {
     "message": "Bilder erfolgreich hochgeladen",
-    "description": "Erfolgreiche Meldung beim Hochladen von Bildern"
+    "description": "Erfolgsmeldung, wenn Bilder erfolgreich hochgeladen wurden"
   },
   "message.uploadReferencesError": {
-    "message": "Fehler beim Hochladen des Bildes, bitte erneut versuchen",
-    "description": "Fehlermeldung bei Fehlschlägen beim Hochladen von Bildern"
+    "message": "Hochladen der Bilder fehlgeschlagen, bitte später erneut versuchen",
+    "description": "Fehlermeldung, wenn das Hochladen der Bilder fehlschlägt"
   },
   "message.startingTask": {
-    "message": "Aufgabe wird gestartet...",
-    "description": "Nachricht beim Start der Zeichnungsaufgabe"
+    "message": "Starte Aufgabe...",
+    "description": "Nachricht, wenn die Zeichnungsaufgabe beginnt"
   },
   "message.startTaskSuccess": {
-    "message": "Erstellung der Generierungsaufgabe erfolgreich",
-    "description": "Erfolgreiche Meldung beim Start der Aufgabe"
+    "message": "Generierungsaufgabe erfolgreich gestartet",
+    "description": "Erfolgsmeldung, wenn die Aufgabe erfolgreich gestartet wurde"
   },
   "message.startTaskFailed": {
-    "message": "Start der Aufgabe gescheitert, bitte den Administrator kontaktieren",
-    "description": "Fehlermeldung beim Start der Zeichnungsaufgabe"
+    "message": "Aufgabenstart fehlgeschlagen, bitte kontaktieren Sie den Administrator",
+    "description": "Fehlermeldung, wenn der Start der Zeichnungsaufgabe fehlschlägt"
   },
   "message.usedUp": {
-    "message": "Ihr Guthaben ist aufgebraucht, bitte kaufen Sie mehr Punkte um weiter zu nutzen",
-    "description": "Nachricht wenn das Guthaben aufgebraucht ist"
+    "message": "Ihr Guthaben ist aufgebraucht, bitte kaufen Sie mehr Guthaben, um fortzufahren",
+    "description": "Nachricht, wenn das Guthaben aufgebraucht ist"
   },
   "message.generating": {
     "message": "Wird generiert...",
-    "description": "Nachricht während das Bild generiert wird"
+    "description": "Nachricht, während das Bild generiert wird"
   },
   "message.downloadVideo": {
     "message": "Dieses Video herunterladen",
-    "description": "Nachricht während das Bild generiert wird"
+    "description": "Nachricht, während das Bild generiert wird"
   },
   "message.extendVideo": {
-    "message": "Dieses Video weiter generieren",
-    "description": "Nachricht während das Bild generiert wird"
+    "message": "Fortfahren mit der Generierung dieses Videos",
+    "description": "Nachricht, während das Bild generiert wird"
   },
   "message.generateFailed": {
     "message": "Bildgenerierung fehlgeschlagen",
-    "description": "Nachricht bei Misserfolg der Bildgenerierung"
+    "description": "Nachricht, wenn die Bildgenerierung fehlschlägt"
   },
   "message.uploadVideoExceed": {
-    "message": "Die Anzahl der hochgeladenen ersten Frame-Bilder hat das Limit überschritten",
+    "message": "Die Anzahl der hochgeladenen ersten Frame-Bilder überschreitet das Limit",
     "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen ersten Frame-Bilder das Limit überschreitet"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Die hochgeladene Datei darf 10 MB nicht überschreiten!",
-    "description": "Fehlermeldung, wenn die Größe der hochgeladenen Datei 10 MB überschreitet!"
+    "message": "Die hochgeladene Dateigröße darf 10 MB nicht überschreiten!",
+    "description": "Fehlermeldung, wenn die hochgeladene Dateigröße 10 MB überschreitet!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Die hochgeladene Datei muss im MP4-Format sein!",
     "description": "Fehlermeldung, wenn die hochgeladene Datei nicht im MP4-Format ist!"
   },
   "message.uploadStartImageExceed": {
-    "message": "Die Anzahl der hochgeladenen ersten Frame-Bilder hat das Limit überschritten",
+    "message": "Die Anzahl der hochgeladenen ersten Frame-Bilder überschreitet das Limit",
     "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen ersten Frame-Bilder das Limit überschreitet"
   },
   "message.uploadEndImageExceed": {
-    "message": "Die Anzahl der hochgeladenen letzten Frame-Bilder hat das Limit überschritten",
+    "message": "Die Anzahl der hochgeladenen letzten Frame-Bilder überschreitet das Limit",
     "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen letzten Frame-Bilder das Limit überschreitet"
   },
   "message.uploadStartImageError": {
-    "message": "Das Hochladen des ersten Frame-Bildes ist fehlgeschlagen",
+    "message": "Fehler beim Hochladen des ersten Frame-Bildes",
     "description": "Fehlermeldung, wenn das Hochladen des ersten Frame-Bildes fehlschlägt"
   },
   "message.uploadVideoError": {
-    "message": "Das Hochladen des Videos ist fehlgeschlagen",
+    "message": "Fehler beim Hochladen des Videos",
     "description": "Fehlermeldung, wenn das Hochladen des Videos fehlschlägt"
   },
   "message.uploadEndImageError": {
-    "message": "Das Hochladen des letzten Frame-Bildes ist fehlgeschlagen",
+    "message": "Fehler beim Hochladen des letzten Frame-Bildes",
     "description": "Fehlermeldung, wenn das Hochladen des letzten Frame-Bildes fehlschlägt"
   },
   "message.uploadDocumentsError": {
-    "message": "Das Hochladen des Dokuments ist fehlgeschlagen",
+    "message": "Fehler beim Hochladen des Dokuments",
     "description": "Fehlermeldung, wenn das Hochladen des Dokuments fehlschlägt"
   },
   "message.noOperations": {
-    "message": "Keine verfügbaren Aktionen",
-    "description": "Nachricht, wenn keine verfügbaren Aktionen vorhanden sind"
+    "message": "Keine verfügbaren Operationen",
+    "description": "Nachricht, wenn keine verfügbaren Operationen vorhanden sind"
   },
   "message.noTasks": {
     "message": "Keine historischen Aufgaben, bitte klicken Sie links auf 'Video generieren'",
