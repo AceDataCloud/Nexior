@@ -4,7 +4,7 @@
       <config-panel @generate="onGenerate" />
     </template>
     <template #result>
-      <recent-panel class="panel recent" @reach-top="onReachTop" />
+      <recent-panel @reach-top="onReachTop" />
     </template>
   </layout>
 </template>
@@ -47,26 +47,14 @@ export default defineComponent({
     loading() {
       return this.$store.state.flux?.status?.getApplications === Status.Request;
     },
-    service() {
-      return this.$store.state.flux?.service;
-    },
     credential() {
       return this.$store.state.flux?.credential;
     },
     config() {
       return this.$store.state.flux?.config;
     },
-    initializing() {
-      return this.$store.state.flux?.status?.getApplications === Status.Request;
-    },
-    needApply() {
-      return this.$store.state.flux?.status?.getApplications === Status.Success && !this.application;
-    },
     application() {
       return this.$store.state.flux?.application;
-    },
-    applications() {
-      return this.$store.state.flux?.applications;
     },
     tasks() {
       return this.$store.state.flux?.tasks;
@@ -135,12 +123,12 @@ export default defineComponent({
     },
     async onScrollDown() {
       setTimeout(() => {
-        // scroll to bottom for `.recent`
-        const el = document.querySelector('.recent');
+        // scroll to bottom for `.tasks`
+        const el = document.querySelector('.tasks');
         if (el) {
           el.scrollTop = el.scrollHeight;
         }
-      }, 500);
+      }, 1000);
     },
     async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number }) {
       if (this.loading) {
@@ -173,16 +161,13 @@ export default defineComponent({
         })
         .then(() => {
           ElMessage.success(this.$t('flux.message.startTaskSuccess'));
-          this.$store.commit('flux/setConfig', {
-            config: undefined
-          });
         })
         .catch((error) => {
           const response = error?.response?.data;
           if (response?.error?.code === ERROR_CODE_USED_UP) {
             ElMessage.error(this.$t('flux.message.usedUp'));
           } else {
-            ElMessage.error(this.$t('flux.message.startTaskFailed'));
+            ElMessage.error(this.$t('flux.message.startTaskFailed') + response?.error?.message);
           }
         })
         .finally(async () => {
@@ -195,27 +180,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.status {
-  margin-bottom: 10px;
-}
-
-.panel {
-  &.detail {
-    width: 100%;
-    flex: 1;
-    overflow-y: scroll;
-  }
-  &.recent {
-    height: 100%;
-    width: 100%;
-    margin-bottom: 10px;
-    position: relative;
-    justify-content: initial;
-  }
-  &.operation {
-    position: relative;
-  }
-}
-</style>

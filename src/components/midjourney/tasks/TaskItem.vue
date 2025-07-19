@@ -50,24 +50,12 @@
       </div>
       <!-- response success -->
       <div v-if="modelValue?.response?.success === true" :class="{ content: true, full: full }">
-        <div class="image-wrapper">
-          <img
-            v-if="modelValue?.response?.image_url"
-            :src="modelValue?.response?.image_url"
-            :preview-src-list="[modelValue?.response?.raw_image_url as string]"
-            class="image"
-            @error="onReload($event)"
-          />
-          <el-button
-            v-if="modelValue?.response?.image_url"
-            type="info"
-            round
-            class="btn-raw"
-            @click="onOpenUrl(modelValue?.response?.raw_image_url)"
-          >
-            {{ $t('common.button.seeRawImage') }}
-          </el-button>
-        </div>
+        <image-wrapper
+          v-if="modelValue?.response?.raw_image_url"
+          :src="modelValue?.response?.image_url"
+          :raw-src="modelValue?.response?.raw_image_url"
+          class="image"
+        />
         <div v-if="modelValue?.response?.actions" :class="{ operations: true, full, 'mt-2': true }">
           <el-tooltip
             v-for="(action, actionKey) in modelValue?.response?.actions"
@@ -130,6 +118,7 @@ import { ElImage, ElButton, ElTooltip, ElAlert } from 'element-plus';
 import { IMidjourneyTask, MidjourneyImagineAction, MidjourneyImagineState } from '@/models';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
+import ImageWrapper from '@/components/common/ImageWrapper.vue';
 
 interface IData {
   midjourneyImagineState: typeof MidjourneyImagineState;
@@ -141,6 +130,7 @@ export default defineComponent({
   name: 'TaskPreview',
   components: {
     ElImage,
+    ImageWrapper,
     ElButton,
     FontAwesomeIcon,
     ElTooltip,
@@ -227,25 +217,6 @@ export default defineComponent({
     }
   },
   methods: {
-    onReload(event: Event) {
-      const target = event.target as HTMLImageElement;
-      // append a random url query to existing url query, to force reload the image
-      // extract exiting url query
-      const url = new URL(target.src);
-      // extract `retry` query
-      const retry = url.searchParams.get('retry');
-      if (!retry) {
-        // if no retry query, set it as random string
-        url.searchParams.set('retry', '1');
-      } else if (parseInt(retry) < 2) {
-        // if retry < 3, increase it by 1
-        url.searchParams.set('retry', (parseInt(retry) + 1).toString());
-      } else {
-        return;
-      }
-      // set the new url
-      target.src = url.toString();
-    },
     onCustom(action: string) {
       if (this.modelValue?.type === 'imagine') {
         this.$emit('custom', {
@@ -253,9 +224,6 @@ export default defineComponent({
           image_id: this.modelValue?.response?.image_id
         });
       }
-    },
-    onOpenUrl(url: string) {
-      window.open(url, '_blank');
     },
     onDownload(url: string) {
       // download image using javascript
@@ -349,34 +317,6 @@ $left-width: 70px;
         align-items: center;
         .image {
           min-height: 200px;
-        }
-      }
-      .image-wrapper {
-        position: relative;
-        width: fit-content;
-        margin-bottom: 15px;
-        .image {
-          max-height: 400px;
-          max-width: 300px;
-          min-height: 200px;
-          min-width: 200px;
-          border-radius: 10px;
-        }
-        .btn-raw {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          z-index: 1000;
-          display: none;
-        }
-        &:hover {
-          .image {
-            filter: brightness(0.6);
-          }
-          .btn-raw {
-            display: block;
-          }
         }
       }
       .progress {

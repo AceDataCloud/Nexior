@@ -3,18 +3,9 @@
     <div class="config">
       <prompt-input class="mb-4" />
       <model-selector class="mb-4" />
+      <count-selector class="mb-4" />
       <div class="actions">
-        <el-button
-          v-if="config?.video_url !== undefined || config?.custom"
-          type="primary"
-          class="btn w-full"
-          round
-          @click="onGenerate"
-        >
-          <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
-          {{ $t('flux.button.extend') }}
-        </el-button>
-        <el-button v-else type="primary" class="btn w-full" round @click="onGenerate">
+        <el-button type="primary" class="btn w-full" round @click="onGenerate">
           <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
           {{ $t('flux.button.generate') }}
         </el-button>
@@ -28,6 +19,7 @@ import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ModelSelector from './config/ModelSelector.vue';
+import CountSelector from './config/CountSelector.vue';
 import PromptInput from './config/PromptInput.vue';
 
 export default defineComponent({
@@ -36,7 +28,8 @@ export default defineComponent({
     ElButton,
     FontAwesomeIcon,
     PromptInput,
-    ModelSelector
+    ModelSelector,
+    CountSelector
   },
   emits: ['generate'],
   computed: {

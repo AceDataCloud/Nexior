@@ -1,5 +1,6 @@
 export interface IFluxConfig {
   action?: string;
+  count?: number;
   prompt?: string;
   model?: string;
   callback_url?: string;
