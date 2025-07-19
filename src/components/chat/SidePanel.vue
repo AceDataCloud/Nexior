@@ -95,7 +95,7 @@ export default defineComponent({
       console.debug('conversationId in side', this.$route.params?.id);
       return this.$route.params?.id?.toString();
     },
-    conversationGroups() {
+    conversations() {
       let conversations = this.$store.state.chat.conversations;
       console.debug('conversations', conversations);
       console.debug('modelGroup', this.modelGroup);
@@ -105,8 +105,10 @@ export default defineComponent({
           conversation.model && this.modelGroup.models?.map((item) => item.name as string)?.includes(conversation.model)
       );
       console.debug('filtered conversations', conversations);
+      return conversations;
+    },
+    conversationGroups() {
       // split our 4 groups according to the `updated_at` field, to 'today', 'yesterday', 'this week', 'earlier'.
-      // if (conversations) {
       const today = new Date();
       today.setHours(0, 0, 0, 0);
       const yesterday = new Date(today);
@@ -115,7 +117,7 @@ export default defineComponent({
       thisWeek.setDate(thisWeek.getDate() - today.getDay());
       const earlier = new Date(thisWeek);
       earlier.setDate(earlier.getDate() - 7);
-      const groups = conversations?.reduce(
+      const groups = this.conversations?.reduce(
         (acc, conversation: IChatConversation) => {
           const updatedAt = new Date(conversation.updated_at! * 1000);
           if (updatedAt >= today) {
@@ -153,6 +155,15 @@ export default defineComponent({
     },
     token() {
       return this.$store.state.chat?.credential?.token;
+    }
+  },
+  watch: {
+    modelGroup() {
+      console.debug('modelGroup changed, refreshing conversations');
+      const firstConversation = this.conversations?.[0];
+      if (firstConversation) {
+        this.$emit('change-conversation', firstConversation.id);
+      }
     }
   },
   methods: {

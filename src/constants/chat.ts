@@ -16,15 +16,15 @@ export const CHAT_MODEL_NAME_GROK_3 = 'grok-3';
 export const CHAT_MODEL_NAME_GROK_3_REASONER = 'grok-3-reasoning';
 export const CHAT_MODEL_NAME_GROK_3_DEEPSEARCH = 'grok-3-deepsearch';
 
-export const CHAT_MODEL_ICON_OPENAI = 'https://cdn.acedata.cloud/7dljuv.png';
+export const CHAT_MODEL_ICON_CHATGPT = 'https://cdn.acedata.cloud/7dljuv.png';
 export const CHAT_MODEL_ICON_GROK = 'https://cdn.acedata.cloud/p1ge98.png';
-export const CHAT_MODEL_ICON_DEEPSEEK = 'https://cdn.acedata.cloud/bc71ae.png';
+export const CHAT_MODEL_ICON_DEEPSEEK = 'https://cdn.acedata.cloud/4rb23t.jpg';
 
 export const CHAT_SERVICE_ID = 'b1fbcc32-e218-4253-9dc3-4fe600a1bfb9';
 
 export const CHAT_MODEL_GPT_4_ALL: IChatModel = {
   name: CHAT_MODEL_NAME_GPT_4_ALL,
-  icon: CHAT_MODEL_ICON_OPENAI,
+  icon: CHAT_MODEL_ICON_CHATGPT,
   modelGroup: 'chatgpt',
   isFileSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.4All'),
@@ -33,7 +33,7 @@ export const CHAT_MODEL_GPT_4_ALL: IChatModel = {
 
 export const CHAT_MODEL_GPT_4O: IChatModel = {
   name: CHAT_MODEL_NAME_GPT_4O,
-  icon: CHAT_MODEL_ICON_OPENAI,
+  icon: CHAT_MODEL_ICON_CHATGPT,
   modelGroup: 'chatgpt',
   isFileSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.4O'),
@@ -58,7 +58,7 @@ export const CHAT_MODEL_DEEPSEEK_REASONER: IChatModel = {
 
 export const CHAT_MODEL_O1: IChatModel = {
   name: CHAT_MODEL_NAME_O1,
-  icon: CHAT_MODEL_ICON_OPENAI,
+  icon: CHAT_MODEL_ICON_CHATGPT,
   modelGroup: 'chatgpt',
   getDisplayName: () => i18n.global.t('chat.model.o1'),
   getDescription: () => i18n.global.t('chat.model.o1Description')
@@ -66,7 +66,7 @@ export const CHAT_MODEL_O1: IChatModel = {
 
 export const CHAT_MODEL_O1_MINI: IChatModel = {
   name: CHAT_MODEL_NAME_O1_MINI,
-  icon: CHAT_MODEL_ICON_OPENAI,
+  icon: CHAT_MODEL_ICON_CHATGPT,
   modelGroup: 'chatgpt',
   getDisplayName: () => i18n.global.t('chat.model.o1Mini'),
   getDescription: () => i18n.global.t('chat.model.o1MiniDescription')
@@ -74,7 +74,7 @@ export const CHAT_MODEL_O1_MINI: IChatModel = {
 
 export const CHAT_MODEL_O3_MINI: IChatModel = {
   name: CHAT_MODEL_NAME_O3_MINI,
-  icon: CHAT_MODEL_ICON_OPENAI,
+  icon: CHAT_MODEL_ICON_CHATGPT,
   modelGroup: 'chatgpt',
   getDisplayName: () => i18n.global.t('chat.model.o3Mini'),
   getDescription: () => i18n.global.t('chat.model.o3MiniDescription')
@@ -105,7 +105,7 @@ export const CHAT_MODEL_GROK_3_DEEPSEARCH: IChatModel = {
 };
 
 export const CHAT_MODEL_GROUP_CHATGPT: IChatModelGroup = {
-  icon: CHAT_MODEL_ICON_OPENAI,
+  icon: CHAT_MODEL_ICON_CHATGPT,
   name: 'chatgpt',
   getDisplayName: () => i18n.global.t('chat.modelGroup.chatgpt'),
   getDescription: () => i18n.global.t('chat.modelGroup.chatgptDescription'),
