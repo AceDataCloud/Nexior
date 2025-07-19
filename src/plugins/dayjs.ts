@@ -12,8 +12,8 @@ interface IOptions {
 export default {
   install: (app: App, options: IOptions) => {
     app.config.globalProperties.$dayjs = {
-      format(v: string, formatString: string = '') {
-        return dayjs(v).format(formatString || options.formatString);
+      format(v: string | undefined, formatString?: string) {
+        return v ? dayjs(v).format(formatString || options.formatString) : '';
       }
     };
   }

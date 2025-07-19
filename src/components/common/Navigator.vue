@@ -43,6 +43,7 @@ import {
   ROUTE_KLING_INDEX,
   ROUTE_KLING_HISTORY
 } from '@/router/constants';
+import { CHAT_MODEL_ICON_CHATGPT, CHAT_MODEL_ICON_DEEPSEEK, CHAT_MODEL_ICON_GROK } from '@/constants/chat';
 import LogoTiny from './LogoTiny.vue';
 import UserCenter from '@/components/user/Center.vue';
 
@@ -79,7 +80,7 @@ export default defineComponent({
             name: ROUTE_CHATGPT_CONVERSATION_NEW
           },
           displayName: this.$t('common.nav.chatgpt'),
-          logo: 'https://cdn.acedata.cloud/7dljuv.png',
+          logo: CHAT_MODEL_ICON_CHATGPT,
           routes: [ROUTE_CHATGPT_CONVERSATION, ROUTE_CHATGPT_CONVERSATION_NEW]
         });
       }
@@ -90,7 +91,7 @@ export default defineComponent({
             name: ROUTE_DEEPSEEK_CONVERSATION_NEW
           },
           displayName: this.$t('common.nav.deepseek'),
-          logo: 'https://cdn.acedata.cloud/4rb23t.jpg',
+          logo: CHAT_MODEL_ICON_DEEPSEEK,
           routes: [ROUTE_DEEPSEEK_CONVERSATION, ROUTE_DEEPSEEK_CONVERSATION_NEW]
         });
       }
@@ -101,7 +102,7 @@ export default defineComponent({
             name: ROUTE_GROK_CONVERSATION_NEW
           },
           displayName: this.$t('common.nav.grok'),
-          logo: 'https://cdn.acedata.cloud/p1ge98.png',
+          logo: CHAT_MODEL_ICON_GROK,
           routes: [ROUTE_GROK_CONVERSATION, ROUTE_GROK_CONVERSATION_NEW]
         });
       }

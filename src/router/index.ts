@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import auth from './auth';
 import console from './console';
-import chat from './chat';
 import grok from './grok';
 import deepseek from './deepseek';
 import chatgpt from './chatgpt';
@@ -31,7 +30,6 @@ const routes = [
   console,
   chatdoc,
   auth,
-  chat,
   chatgpt,
   grok,
   deepseek,

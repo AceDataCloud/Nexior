@@ -170,7 +170,7 @@ export const initializeToken = async () => {
  * Initialize theme
  */
 export const initializeTheme = async () => {
-  const theme = getCookie('THEME') || 'light';
+  const theme = getCookie('THEME') || 'dark';
   console.debug('initialize theme', theme);
   applyTheme(theme);
 };

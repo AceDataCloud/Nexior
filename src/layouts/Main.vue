@@ -44,13 +44,13 @@ export default defineComponent({
       return this.$store.state[this.appName]?.status.getApplications === Status.Request;
     },
     needApply() {
-      return this.$store.state[this.appName].status.getApplications === Status.Success && !this.application;
+      return this.$store.state[this.appName]?.status.getApplications === Status.Success && !this.application;
     },
     application() {
-      return this.$store.state[this.appName].application;
+      return this.$store.state[this.appName]?.application;
     },
     applications() {
-      return this.$store.state[this.appName].applications;
+      return this.$store.state[this.appName]?.applications;
     },
     loading() {
       return this.$store.state[this.appName]?.status?.getApplications === Status.Request;
