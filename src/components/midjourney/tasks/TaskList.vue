@@ -1,22 +1,6 @@
 <template>
   <div v-if="tasks === undefined" class="tasks">
-    <div v-for="_ in 3" :key="_" class="task placeholder">
-      <div class="left">
-        <el-skeleton animated>
-          <template #template>
-            <el-skeleton-item variant="image" class="avatar" />
-          </template>
-        </el-skeleton>
-      </div>
-      <div class="main">
-        <el-skeleton animated>
-          <template #template>
-            <el-skeleton-item variant="p" class="title" />
-            <el-skeleton-item variant="image" class="icon" />
-          </template>
-        </el-skeleton>
-      </div>
-    </div>
+    <bot-placeholder />
   </div>
   <div v-else-if="tasks && tasks?.length === 0">
     <p class="p-5 description">{{ $t('midjourney.message.noTasks') }}</p>
@@ -32,13 +16,13 @@
 import { defineComponent } from 'vue';
 import TaskItem from './TaskItem.vue';
 import { ElSkeleton, ElSkeletonItem } from 'element-plus';
+import BotPlaceholder from '@/components/common/BotPlaceholder.vue';
 
 export default defineComponent({
   name: 'TaskList',
   components: {
     TaskItem,
-    ElSkeleton,
-    ElSkeletonItem
+    BotPlaceholder
   },
   emits: ['update:modelValue', 'custom', 'refresh', 'reach-top'],
   data() {

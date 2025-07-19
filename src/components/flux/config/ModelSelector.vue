@@ -29,10 +29,6 @@ export default defineComponent({
     return {
       options: [
         {
-          value: 'flux',
-          label: 'flux'
-        },
-        {
           value: 'flux-schnell',
           label: 'flux-schnell'
         },
@@ -43,6 +39,22 @@ export default defineComponent({
         {
           value: 'flux-pro',
           label: 'flux-pro'
+        },
+        {
+          value: 'flux-pro-1.1',
+          label: 'flux-pro-1.1'
+        },
+        {
+          value: 'flux-pro-1.1-ultra',
+          label: 'flux-pro-1.1-ultra'
+        },
+        {
+          value: 'flux-kontext-pro',
+          label: 'flux-kontext-pro'
+        },
+        {
+          value: 'flux-kontext-max',
+          label: 'flux-kontext-max'
         }
       ]
     };
@@ -82,7 +94,7 @@ export default defineComponent({
   }
 
   .value {
-    width: 120px;
+    width: 160px;
   }
 }
 </style>

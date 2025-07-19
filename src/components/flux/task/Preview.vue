@@ -1,5 +1,5 @@
 <template>
-  <div v-for="(image, imageIndex) in images" :key="imageIndex" class="preview">
+  <div class="preview">
     <div class="left">
       <el-image src="https://cdn.acedata.cloud/ogm2oa.png" class="avatar" />
     </div>
@@ -14,29 +14,30 @@
         <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
           {{ modelValue?.request?.prompt }}
           <span v-if="!modelValue?.response"> - ({{ $t('flux.status.pending') }}) </span>
-          <span v-if="image?.state === 'processing' || image?.state === 'pending' || image?.state === 'completed'">
-            - ({{ $t('flux.status.processing') }})
-          </span>
         </p>
       </div>
       <!-- Display success message -->
       <div v-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">
-        <div class="image-wrapper">
-          <image-gallery :model-value="image" />
-        </div>
-        <div v-if="image" :class="{ operations: true, 'mt-2': true }">
-          <el-tooltip class="box-item" effect="dark" :content="$t('flux.message.downloadImage')" placement="top-start">
-            <el-button type="info" size="small" class="btn-action" @click="onDownload($event, image?.image_url)">
-              {{ $t('flux.button.download') }}
-            </el-button>
-          </el-tooltip>
+        <div class="flex justify-start items-center gap-4">
+          <image-wrapper
+            v-for="(image, imageIndex) in images"
+            :key="imageIndex"
+            :src="image?.image_url!"
+            :raw-src="image?.image_url!"
+            :model-value="image"
+          />
         </div>
         <el-alert :closable="false" class="mt-2 success">
-          <p class="description">
+          <p class="mb-2">
+            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            {{ $t('flux.name.model') }}:
+            {{ modelValue?.request?.model }}
+          </p>
+          <p class="mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('flux.name.taskId') }}:
             {{ modelValue?.id }}
-            <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
+            <copy-to-clipboard :content="modelValue?.id!" class="btn-copy inline-block" />
           </p>
         </el-alert>
       </div>
@@ -47,19 +48,19 @@
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
             {{ $t('flux.name.failure') }}
           </template>
-          <p class="description">
+          <p class="mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('flux.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
           </p>
-          <p class="description">
+          <p class="mb-4">
             <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
             {{ $t('flux.name.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
             <copy-to-clipboard :content="modelValue?.response?.error?.message!" class="btn-copy" />
           </p>
-          <p class="description">
+          <p class="mb-2">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
             {{ $t('flux.name.traceId') }}:
             {{ modelValue?.response?.trace_id }}
@@ -67,17 +68,13 @@
           </p>
         </el-alert>
       </div>
-      <!-- Display error message -->
-      <div
-        v-if="!modelValue?.response || image?.state === 'processing' || image?.state === 'pending'"
-        :class="{ content: true }"
-      >
+      <div v-if="!modelValue?.response" :class="{ content: true }">
         <el-alert :closable="false" class="info">
           <template #template>
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
             {{ $t('flux.name.failure') }}
           </template>
-          <p class="description">
+          <p class="mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('flux.name.taskId') }}:
             {{ modelValue?.id }}
@@ -95,7 +92,7 @@ import { ElImage, ElAlert, ElButton, ElTooltip } from 'element-plus';
 import { IFluxTask, IFluxImage } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import ImageGallery from '../ImageGallery.vue';
+import ImageWrapper from '@/components/common/ImageWrapper.vue';
 
 export default defineComponent({
   name: 'TaskPreview',
@@ -104,9 +101,7 @@ export default defineComponent({
     CopyToClipboard,
     FontAwesomeIcon,
     ElAlert,
-    ElTooltip,
-    ElButton,
-    ImageGallery
+    ImageWrapper
   },
   props: {
     modelValue: {
@@ -167,8 +162,6 @@ $left-width: 70px;
   .left {
     width: $left-width;
     .avatar {
-      background-color: rgb(34, 34, 34);
-      padding: 2px;
       width: 50px;
       height: 50px;
       margin: 10px;
@@ -217,70 +210,6 @@ $left-width: 70px;
         &.info {
           border-color: var(--el-color-info);
         }
-      }
-    }
-
-    .image-wrapper {
-      position: relative;
-      width: fit-content;
-      min-height: 50px;
-      min-width: 100px;
-      .image {
-        max-height: 400px;
-        max-width: 500px;
-        display: block;
-        width: fit-content;
-      }
-      .btn-raw {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 1000;
-        display: none;
-      }
-      .play-icon {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 48px;
-        color: white;
-        z-index: 500;
-        pointer-events: none; /* Ensure the icon doesn't interfere with hover */
-      }
-      &:hover {
-        .image {
-          filter: brightness(0.6);
-        }
-        .btn-raw {
-          display: block;
-        }
-
-        .play-icon {
-          display: none;
-        }
-      }
-    }
-    .operations {
-      display: flex;
-      justify-content: left;
-      flex-direction: row;
-      width: 100%;
-      align-items: baseline;
-      flex-wrap: wrap;
-      overflow: hidden;
-      text-align: center;
-      color: var(--el-text-color-regular);
-      font-size: 14px;
-      overflow-y: scroll;
-
-      &.full {
-        height: 70px;
-      }
-
-      .btn-action {
-        margin-bottom: 10px;
       }
     }
   }
