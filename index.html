@@ -19,7 +19,7 @@
   </head>
   <body>
     <div id="app">
-      <div class="lds-ellipsis">
+      <div class="loading">
         <div></div>
         <div></div>
         <div></div>
@@ -29,11 +29,11 @@
     <script type="module" src="/src/main.ts"></script>
   </body>
   <style>
-    .lds-ellipsis,
-    .lds-ellipsis div {
+    .loading,
+    .loading div {
       box-sizing: border-box;
     }
-    .lds-ellipsis {
+    .loading {
       display: inline-block;
       position: relative;
       width: 80px;
@@ -43,7 +43,7 @@
       left: 50%;
       transform: translate(-50%, -50%) scale(1);
     }
-    .lds-ellipsis div {
+    .loading div {
       position: absolute;
       top: 33.33333px;
       width: 13.33333px;
@@ -52,23 +52,23 @@
       background-color: #277186;
       animation-timing-function: cubic-bezier(0, 1, 1, 0);
     }
-    .lds-ellipsis div:nth-child(1) {
+    .loading div:nth-child(1) {
       left: 8px;
-      animation: lds-ellipsis1 0.6s infinite;
+      animation: loading1 0.6s infinite;
     }
-    .lds-ellipsis div:nth-child(2) {
+    .loading div:nth-child(2) {
       left: 8px;
-      animation: lds-ellipsis2 0.6s infinite;
+      animation: loading2 0.6s infinite;
     }
-    .lds-ellipsis div:nth-child(3) {
+    .loading div:nth-child(3) {
       left: 32px;
-      animation: lds-ellipsis2 0.6s infinite;
+      animation: loading2 0.6s infinite;
     }
-    .lds-ellipsis div:nth-child(4) {
+    .loading div:nth-child(4) {
       left: 56px;
-      animation: lds-ellipsis3 0.6s infinite;
+      animation: loading3 0.6s infinite;
     }
-    @keyframes lds-ellipsis1 {
+    @keyframes loading1 {
       0% {
         transform: scale(0);
       }
@@ -76,7 +76,7 @@
         transform: scale(1);
       }
     }
-    @keyframes lds-ellipsis3 {
+    @keyframes loading3 {
       0% {
         transform: scale(1);
       }
@@ -84,7 +84,7 @@
         transform: scale(0);
       }
     }
-    @keyframes lds-ellipsis2 {
+    @keyframes loading2 {
       0% {
         transform: translate(0, 0);
       }

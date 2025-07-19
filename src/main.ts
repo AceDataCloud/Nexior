@@ -54,7 +54,6 @@ const main = async () => {
     formatString: 'YYYY-MM-DD HH:mm:ss'
   });
   app.directive('loading', vLoading);
-  // app.use(createMotionPlugin());
   app.mount('#app');
   console.debug('app mounted');
 

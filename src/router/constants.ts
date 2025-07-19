@@ -5,9 +5,6 @@ export const ROUTE_AUTH_CALLBACK = 'auth-callback';
 
 export const ROUTE_SITE_INDEX = 'site-index';
 
-export const ROUTE_CHAT_CONVERSATION = 'chat-conversation';
-export const ROUTE_CHAT_CONVERSATION_NEW = 'chat-conversation-new';
-
 export const ROUTE_CHATGPT_CONVERSATION = 'chatgpt-conversation';
 export const ROUTE_CHATGPT_CONVERSATION_NEW = 'chatgpt-conversation-new';
 

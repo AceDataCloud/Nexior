@@ -9,19 +9,19 @@
         <el-divider v-if="user.email" class="mb-1 mt-1" />
         <el-dropdown-menu>
           <el-dropdown-item class="py-2" @click="onSettings">
-            <font-awesome-icon icon="fa-solid fa-cog" class="mr-1" />
+            <font-awesome-icon icon="fa-solid fa-cog" class="mr-2" />
             {{ $t('common.nav.setting') }}
           </el-dropdown-item>
           <el-dropdown-item class="py-2" @click="onDistribution">
-            <font-awesome-icon icon="fa-solid fa-coins" class="mr-1" />
+            <font-awesome-icon icon="fa-solid fa-coins" class="mr-2" />
             {{ $t('common.nav.distribution') }}
           </el-dropdown-item>
           <el-dropdown-item class="py-2" @click="onConsole">
-            <font-awesome-icon icon="fa-solid fa-compass" class="mr-1" />
+            <font-awesome-icon icon="fa-solid fa-compass" class="mr-2" />
             {{ $t('common.nav.console') }}
           </el-dropdown-item>
           <el-dropdown-item class="py-2" @click="onLogout">
-            <font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket" class="mr-1" />
+            <font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket" class="mr-2" />
             {{ $t('common.nav.logOut') }}
           </el-dropdown-item>
         </el-dropdown-menu>

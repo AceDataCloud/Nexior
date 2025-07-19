@@ -11,6 +11,7 @@
       name="file"
       :limit="5"
       class="upload-wrapper"
+      accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
       :multiple="true"
       list-type="picture"
       :action="uploadUrl"
@@ -72,25 +73,16 @@ export default defineComponent({
     urls() {
       // @ts-ignore
       return this.fileList.map((file: UploadFile) => file?.response?.file_url);
-    },
-    value: {
-      get() {
-        return this.$store.state.midjourney.config.references || [];
-      },
-      set(val: string[]) {
-        console.debug('Setting references:', val);
-        this.$store.commit('midjourney/setConfig', {
-          ...this.$store.state.midjourney.config,
-          references: val
-        });
-      }
     }
   },
   watch: {
     urls: {
       handler(val) {
         console.debug('URLs changed:', val);
-        this.$emit('change', val);
+        this.$store.commit('midjourney/setConfig', {
+          ...this.$store.state.midjourney.config,
+          references: val
+        });
       }
     }
   },
