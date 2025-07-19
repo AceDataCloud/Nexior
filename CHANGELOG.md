@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sat, 19 Jul 2025 04:31:33 GMT and should not be manually modified.
+This log was last generated on Sat, 19 Jul 2025 05:32:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 3.5.2
+
+Sat, 19 Jul 2025 05:32:30 GMT
+
+### Patches
+
+- fix mj upload error (office@acedata.cloud)
 
 ## 3.5.1
 
