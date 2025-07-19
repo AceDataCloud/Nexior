@@ -21,8 +21,8 @@
       </div>
       <!-- Display success message -->
       <div v-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">
-        <div class="mb-4">
-          <video-player :model-value="video" />
+        <div v-if="video?.video_url" class="mb-4">
+          <video-player :src="video?.video_url" />
         </div>
         <div v-if="video" :class="{ operations: true, 'mt-2': true }">
           <el-tooltip

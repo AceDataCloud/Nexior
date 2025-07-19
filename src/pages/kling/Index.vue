@@ -16,7 +16,7 @@ import ConfigPanel from '@/components/kling/ConfigPanel.vue';
 import { klingOperator } from '@/operators';
 import { IKlingGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP } from '@/constants';
+import { ERROR_CODE_USED_UP } from '@/constants';
 import RecentPanel from '@/components/kling/RecentPanel.vue';
 import { IKlingTask } from '@/models';
 

@@ -2,7 +2,7 @@
   <div class="video">
     <vue-plyr :options="options">
       <video controls crossorigin="anonymous" playsinline>
-        <source size="1080" :src="modelValue?.video_url" type="video/mp4" />
+        <source size="1080" :src="src" type="video/mp4" />
       </video>
     </vue-plyr>
   </div>
@@ -13,15 +13,14 @@ import { defineComponent } from 'vue';
 // @ts-ignore
 import VuePlyr from '@skjnldsv/vue-plyr';
 // @ts-ignore
-import { IKlingVideo } from '@/models';
 import '@skjnldsv/vue-plyr/dist/vue-plyr.css';
 
 export default defineComponent({
   name: 'VideoPlayer',
   components: { VuePlyr },
   props: {
-    modelValue: {
-      type: Object as () => IKlingVideo | undefined,
+    src: {
+      type: String,
       required: true
     }
   },

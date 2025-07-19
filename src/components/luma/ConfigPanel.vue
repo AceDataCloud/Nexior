@@ -5,8 +5,8 @@
       <prompt-input class="mb-4" />
       <custom-selector v-if="!config?.video_id" class="mb-4" />
       <upload-video v-if="config?.custom" class="mb-4" />
-      <start-image-url-input v-if="!(config?.video_id || config?.video_url) && !config?.custom" class="mb-4" />
-      <end-image-url-input class="mb-4" />
+      <start-image-input v-if="!(config?.video_id || config?.video_url) && !config?.custom" class="mb-4" />
+      <end-image-input class="mb-4" />
       <enhancement-selector class="mb-4" />
       <loop-selector class="mb-4" />
       <div class="actions">
@@ -36,18 +36,19 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import EnhancementSelector from './config/EnhancementSelector.vue';
 import CustomSelector from './config/CustomSelector.vue';
 import LoopSelector from './config/LoopSelector.vue';
-import EndImageUrlInput from './config/EndImageUrlInput.vue';
-import StartImageUrlInput from './config/StartImageUrlInput.vue';
+import EndImageInput from './config/EndImageInput.vue';
+import StartImageInput from './config/StartImageInput.vue';
 // @ts-ignore
 import UploadVideo from './config/UploadVideo.vue';
 import PromptInput from './config/PromptInput.vue';
 import ExtendFromInput from './config/ExtendFromInput.vue';
+
 export default defineComponent({
   name: 'PresetPanel',
   components: {
     LoopSelector,
-    StartImageUrlInput,
-    EndImageUrlInput,
+    StartImageInput,
+    EndImageInput,
     EnhancementSelector,
     ElButton,
     FontAwesomeIcon,

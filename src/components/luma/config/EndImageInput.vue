@@ -2,27 +2,26 @@
   <div class="relative">
     <div class="flex justify-between">
       <div class="flex justify-start items-center">
-        <span class="text-sm font-bold">{{ $t('luma.name.videoUrl') }}</span>
-        <info-icon :content="$t('luma.description.videoUrl')" />
+        <span class="text-sm font-bold">{{ $t('luma.name.endImageUrl') }}</span>
+        <info-icon :content="$t('luma.description.endImageUrl')" />
       </div>
     </div>
     <el-upload
       v-model:file-list="fileList"
-      accept=".mp4"
       name="file"
-      class="value"
-      :show-file-list="true"
-      :limit="1"
+      accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
+      :limit="5"
+      class="upload-wrapper"
       :multiple="false"
       :action="uploadUrl"
-      :before-upload="beforeUpload"
+      list-type="picture"
       :on-exceed="onExceed"
       :on-error="onError"
       :on-success="onSuccess"
       :headers="headers"
     >
       <template #file="{ file }">
-        <file-preview
+        <image-preview
           :url="file.url || file.response?.file_url"
           :name="file.name"
           :percentage="file.percentage"
@@ -31,7 +30,7 @@
       </template>
       <el-button round type="primary" size="small" class="btn btn-upload">
         <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
-        {{ $t('luma.button.uploadVideoUrl') }}
+        {{ $t('luma.button.uploadEndImageUrl') }}
       </el-button>
     </el-upload>
   </div>
@@ -39,13 +38,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton, ElUpload, ElMessage, UploadFiles } from 'element-plus';
+import { ElUpload, ElButton, UploadFiles, UploadFile, ElMessage } from 'element-plus';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-import FilePreview from '@/components/common/FilePreview.vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-
-export const DEFAULT_CONTENT = '';
+import ImagePreview from '@/components/common/ImagePreview.vue';
 
 interface IData {
   fileList: UploadFiles;
@@ -53,12 +50,12 @@ interface IData {
 }
 
 export default defineComponent({
-  name: 'UploadVideo',
+  name: 'EndImage',
   components: {
     ElUpload,
     ElButton,
+    ImagePreview,
     InfoIcon,
-    FilePreview,
     FontAwesomeIcon
   },
   data(): IData {
@@ -73,60 +70,39 @@ export default defineComponent({
         Authorization: `Bearer ${this.$store.state.token.access}`
       };
     },
-    urls(): string[] {
+    urls() {
       // @ts-ignore
       return this.fileList.map((file: UploadFile) => file?.response?.file_url);
     },
     value: {
       get() {
-        return this.$store.state.luma?.config?.video_url;
+        return this.$store.state?.luma?.config?.start_image_url;
       },
-      set() {
-        const url = this.urls?.[0];
-        this.$store.commit('luma/setConfig', {
-          ...this.$store.state.luma?.config,
-          video_url: url
-        });
-      }
+      set() {}
     }
   },
   mounted() {
     if (!this.value) {
       this.value = undefined;
     }
-    // this.onSetVideoUrl();
+    this.onSetEndImageUrl();
   },
   methods: {
     onExceed() {
-      ElMessage.warning(this.$t('luma.message.uploadVideoExceed'));
+      ElMessage.warning(this.$t('luma.message.uploadReferencesExceed'));
     },
     onError() {
-      ElMessage.error(this.$t('luma.message.uploadVideoError'));
+      ElMessage.error(this.$t('luma.message.uploadReferencesError'));
     },
-    beforeUpload(file: File) {
-      const isMP4 = file.type === 'video/mp4';
-      const isLt10M = file.size / 1024 / 1024 < 10;
-
-      if (!isMP4) {
-        ElMessage.error(this.$t('luma.message.uploadVideoTypeFailed'));
-        return false;
-      }
-      if (!isLt10M) {
-        ElMessage.error(this.$t('luma.message.uploadVideoSizeExceed'));
-        return false;
-      }
-      return true;
-    },
-    onSetVideoUrl() {
+    onSetEndImageUrl() {
       const url = this.urls?.[0];
       this.$store.commit('luma/setConfig', {
         ...this.$store.state.luma?.config,
-        video_url: url,
-        action: 'extend'
+        end_image_url: url
       });
     },
     async onSuccess() {
-      this.onSetVideoUrl();
+      this.onSetEndImageUrl();
     }
   }
 });

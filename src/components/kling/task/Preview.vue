@@ -28,8 +28,8 @@
       </div>
       <!-- Display success message -->
       <div v-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">
-        <div class="mb-4">
-          <video-player :model-value="modelValue?.response" />
+        <div v-if="modelValue?.response.video_url" class="mb-4">
+          <video-player :src="modelValue?.response.video_url" />
         </div>
         <div v-if="modelValue?.response.success" :class="{ operations: true, 'mt-2': true }">
           <el-tooltip class="box-item" effect="dark" :content="$t('kling.message.downloadVideo')" placement="top-start">

@@ -1,8 +1,14 @@
 <template>
-  <div class="field">
-    <h2 class="title font-bold">{{ $t('luma.name.enhancement') }}</h2>
-    <el-switch v-model="value" class="value" />
-    <info-icon :content="$t('luma.description.enhancement')" class="info" />
+  <div class="relative">
+    <div class="flex justify-between">
+      <div class="flex justify-start items-center">
+        <span class="text-sm font-bold">{{ $t('luma.name.enhancement') }}</span>
+        <info-icon :content="$t('luma.description.enhancement')" />
+      </div>
+      <div class="flex justify-end items-center">
+        <el-switch v-model="value" class="value" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -38,21 +44,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.field {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  .title {
-    font-size: 14px;
-    margin: 0;
-    width: 30%;
-  }
-  .value {
-    flex: 1;
-    margin-left: 60px; // Adjust this value as needed
-  }
-}
-</style>

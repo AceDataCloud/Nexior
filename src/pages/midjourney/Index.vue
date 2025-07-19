@@ -55,9 +55,6 @@ export default defineComponent({
     tasks() {
       return this.$store.state.midjourney.tasks;
     },
-    service() {
-      return this.$store.state.midjourney.service;
-    },
     credential() {
       return this.$store.state.midjourney.credential;
     },
@@ -67,17 +64,8 @@ export default defineComponent({
     loading() {
       return this.$store.state.midjourney.status.getApplications === Status.Request;
     },
-    initializing() {
-      return this.$store.state.midjourney.status.getApplications === Status.Request;
-    },
-    needApply() {
-      return this.$store.state.midjourney.status.getApplications === Status.Success && !this.application;
-    },
     application() {
       return this.$store.state.midjourney.application;
-    },
-    applications() {
-      return this.$store.state.midjourney.applications;
     },
     finalPrompt(): string {
       let content = '';
@@ -181,7 +169,6 @@ export default defineComponent({
   },
   methods: {
     async onReachTop() {
-      console.debug('ddasdasdreached top');
       await this.onGetTasks({
         createdAtMax: this.tasks?.items?.[0]?.created_at
       });
@@ -248,11 +235,9 @@ export default defineComponent({
       await this.onStartTask(request);
     },
     async onScrollDown() {
-      await this.$nextTick(); // 确保 DOM 更新完成后再执行滚动操作
+      await this.$nextTick();
       setTimeout(() => {
-        // scroll to bottom for `.tasks`
         const el = document.querySelector('.tasks');
-
         if (el) {
           el.scrollTop = el.scrollHeight;
         }

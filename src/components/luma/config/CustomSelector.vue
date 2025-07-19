@@ -1,8 +1,14 @@
 <template>
-  <div class="field">
-    <h2 class="title font-bold">{{ $t('luma.name.custom') }}</h2>
-    <el-switch v-model="value" class="value" />
-    <info-icon :content="$t('luma.description.custom')" class="info" />
+  <div class="relative">
+    <div class="flex justify-between">
+      <div class="flex justify-start items-center">
+        <span class="text-sm font-bold">{{ $t('luma.name.custom') }}</span>
+        <info-icon :content="$t('luma.description.custom')" />
+      </div>
+      <div class="flex justify-end items-center">
+        <el-switch v-model="value" class="value" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -11,6 +17,7 @@ import { defineComponent } from 'vue';
 import { ElSwitch } from 'element-plus';
 import { LUMA_DEFAULT_CUSTOM } from '@/constants';
 import InfoIcon from '@/components/common/InfoIcon.vue';
+
 export default defineComponent({
   name: 'CustomSelector',
   components: {
@@ -38,21 +45,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.field {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  .title {
-    font-size: 14px;
-    margin: 0;
-    width: 30%;
-  }
-  .value {
-    flex: 1;
-    margin-left: 60px; // Adjust this value as needed
-  }
-}
-</style>
