@@ -159,7 +159,6 @@ export const logout = async ({ dispatch }: ActionContext<IRootState, IRootState>
   await dispatch('resetAll');
   await dispatch('chat/resetAll');
   await dispatch('midjourney/resetAll');
-  await dispatch('chatdoc/resetAll');
   await dispatch('flux/resetAll');
   await dispatch('hailuo/resetAll');
   await dispatch('headshots/resetAll');

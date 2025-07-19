@@ -1,7 +1,6 @@
 import { IRootState } from './models';
 import chatState from '../chat/state';
 import midjourneyState from '../midjourney/state';
-import chatdocState from '../chatdoc/state';
 import qrartState from '../qrart/state';
 import lumaState from '../luma/state';
 import pikaState from '../pika/state';
@@ -28,7 +27,6 @@ export default (): IRootState => {
     },
     setting: {},
     site: {},
-    chatdoc: chatdocState(),
     chat: chatState(),
     midjourney: midjourneyState(),
     qrart: qrartState(),

@@ -90,8 +90,7 @@ export const loadLocaleMessages = async (i18n: I18n, locale: string) => {
     'user',
     'site',
     'chat',
-    'midjourney',
-    'chatdoc'
+    'midjourney'
   ];
 
   const promises = names.map((name) => loadLocalResource(name, locale));

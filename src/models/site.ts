@@ -3,7 +3,6 @@ export interface ISiteFeatures {
   deepseek?: any;
   grok?: any;
   midjourney?: any;
-  chatdoc?: any;
   flux?: any;
   qrart?: any;
   luma?: any;

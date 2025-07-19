@@ -305,10 +305,7 @@ export default defineComponent({
     },
     async onRestoreConversation(id: string) {
       console.debug('onRestoreConversation id', id);
-      console.debug('onRestoreConversation route', this.$route);
-      const newRoute = this.$router.resolve({ path: this.$route.path, params: { id } });
-      console.debug('onRestoreConversation newRoute', newRoute);
-      this.$router.push(newRoute);
+      this.$router.push({ ...this.$route, params: { id } });
       const conversation = this.conversations?.find((conversation: IChatConversation) => conversation.id === id);
       // change the model and model group
       const model = conversation?.model;
@@ -324,6 +321,9 @@ export default defineComponent({
     },
     async onChangeConversation(id?: string) {
       console.log('onChangeConversation in conversation', id);
+      // stop the current request
+      await this.onStop();
+      // if id is undefined, create a new conversation
       if (!id) {
         this.onNewConversation();
       } else {

@@ -1,6 +1,6 @@
 <template>
   <div class="element">
-    <el-dialog v-model="showInfo" width="500px">
+    <el-dialog v-model="showInfo" width="600px">
       <div v-if="initializing && application === undefined">
         <el-skeleton :rows="1" class="text-center">
           <template #template>
@@ -24,10 +24,10 @@
           >
             <el-icon class="icon"><check /></el-icon>
             <application-info :application="app" :show-type="true" :show-id="true" />
+            <el-button round type="primary" @click.stop="onBuyMore(application)">{{
+              $t('common.button.buyMore')
+            }}</el-button>
           </div>
-        </div>
-        <div class="text-center">
-          <el-button round type="primary" @click="onBuyMore(application)">{{ $t('common.button.buyMore') }}</el-button>
         </div>
         <span class="actions">
           <api-price
@@ -145,12 +145,14 @@ export default defineComponent({
   },
   methods: {
     onBuyMore(application: IApplication) {
-      this.$router.push({
+      // open in new tab for this url
+      const url = this.$router.resolve({
         name: ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
         params: {
           id: application.id
         }
-      });
+      }).href;
+      window.open(url, '_blank');
     },
     onCreateCredential(application: IApplication | undefined) {
       credentialOperator
