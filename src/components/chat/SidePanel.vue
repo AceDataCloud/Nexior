@@ -10,12 +10,12 @@
           {{ $t('chat.message.startNewChat') }}
         </div>
       </div>
-      <div v-for="(conversations, groupKey) in conversationGroups" :key="groupKey" class="group">
+      <div v-for="(group, groupKey) in conversationGroups" :key="groupKey" class="group">
         <div class="key">
           {{ $t(`chat.group.${groupKey}`) }}
         </div>
         <div
-          v-for="(conversation, conversationIndex) in conversations"
+          v-for="(conversation, conversationIndex) in group"
           :key="conversationIndex"
           :class="{ conversation: true, active: conversation.id === conversationId }"
           @click="onClickConversation(conversation.id)"
