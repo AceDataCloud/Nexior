@@ -180,7 +180,7 @@ export default defineComponent({
     onStop() {
       this.$emit('stop');
     },
-    onProgress(evt: UploadProgressEvent, uploadFile: UploadFile, uploadFiles: UploadFiles) {
+    onProgress(evt: UploadProgressEvent, uploadFile: UploadFile) {
       console.debug('File upload progress:', uploadFile.name, evt.loaded, evt.total);
     },
     onExceed() {

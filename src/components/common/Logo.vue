@@ -4,7 +4,6 @@
 
 <script lang="ts">
 import { getCookie } from 'typescript-cookie';
-import { BASE_HOST_HUB } from '@/constants';
 import { isOfficial } from '@/utils';
 
 export default {

@@ -24,7 +24,7 @@ export default defineComponent({
   },
   emits: ['update:show'],
   watch: {
-    show(val, oldVal) {
+    show(val) {
       if (val) {
         setTimeout(() => {
           this.$emit('update:show', false);

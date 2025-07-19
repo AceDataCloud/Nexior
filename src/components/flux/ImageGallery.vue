@@ -1,8 +1,8 @@
 <template>
   <div class="image-gallery">
     <div class="image-container">
-      <img :src="modelValue.image_url" alt="Image" />
-      <button class="view-button" @click="viewImage(modelValue.image_url)">
+      <img :src="modelValue?.image_url" alt="Image" />
+      <button v-if="modelValue?.image_url" class="view-button" @click="viewImage(modelValue.image_url)">
         {{ $t('flux.button.viewImage') }}
       </button>
     </div>
@@ -10,16 +10,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
+import { defineComponent } from 'vue';
 import { IFluxImage } from '@/models';
-interface IDataItem {
-  image_url: string;
-  // Add other properties if necessary
-}
-
-interface IResponse {
-  data: IDataItem[];
-}
 
 export default defineComponent({
   name: 'ImageGallery',
@@ -29,7 +21,7 @@ export default defineComponent({
       required: true
     }
   },
-  setup(props) {
+  setup() {
     // Computed property to extract the first two images
 
     // Method to handle the "View Image" button click

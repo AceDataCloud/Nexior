@@ -113,14 +113,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import {
-  IApi,
-  IApplication,
-  IApplicationListResponse,
-  IApiUsage,
-  IApiUsageListResponse,
-  ICredentialType
-} from '@/models';
+import { IApplication, IApplicationListResponse, IApiUsage, IApiUsageListResponse, ICredentialType } from '@/models';
 import Pagination from '@/components/common/Pagination.vue';
 import { ElTable, ElRow, ElCol, ElTableColumn, ElCard, ElTag, ElSelect, ElOption } from 'element-plus';
 import { apiUsageOperator, applicationOperator } from '@/operators';

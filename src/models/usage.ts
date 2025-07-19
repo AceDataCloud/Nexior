@@ -1,4 +1,3 @@
-import { IApi } from './api';
 import { IService } from './service';
 
 export interface IApiUsage {

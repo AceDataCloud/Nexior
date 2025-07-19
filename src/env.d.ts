@@ -13,6 +13,3 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, {}>;
   export default component;
 }
-
-// declare config object
-declare const config: any;

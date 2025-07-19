@@ -67,7 +67,7 @@ export default defineComponent({
         'text-align': 'center'
       };
     },
-    spanMethod({ row, column, rowIndex, columnIndex }: SpanMethodProps) {
+    spanMethod({ rowIndex, columnIndex }: SpanMethodProps) {
       if (this.spans) {
         for (const span of this.spans) {
           if (rowIndex === span[0] && columnIndex === span[1]) {

@@ -40,7 +40,6 @@ import {
   ERROR_CODE_USED_UP,
   ROLE_ASSISTANT
 } from '@/constants';
-import message from '@/i18n/zh/common/message';
 
 interface IData {
   copied: boolean;

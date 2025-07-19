@@ -79,7 +79,6 @@ export const getService = async ({
 
 export const getApplications = async ({
   commit,
-  dispatch,
   state,
   rootState
 }: ActionContext<IChatState, IRootState>): Promise<IApplication[] | undefined> => {
