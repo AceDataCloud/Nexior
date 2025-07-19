@@ -3,7 +3,8 @@ import { ROUTE_QRART_INDEX } from './constants';
 export default {
   path: '/qrart',
   meta: {
-    auth: true
+    auth: true,
+    appName: 'qrart'
   },
   component: () => import('@/layouts/Main.vue'),
   children: [

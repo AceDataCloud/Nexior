@@ -1,6 +1,6 @@
 <template>
   <el-tooltip v-if="!copied" effect="dark" :content="$t('common.button.copy')" placement="bottom">
-    <font-awesome-icon icon="fa-regular fa-copy" class="icon-copy" @click="onCopy"
+    <font-awesome-icon icon="fa-regular fa-copy" class="icon-copy" @click.stop="onCopy"
   /></el-tooltip>
   <el-tooltip v-else :visible="copied" effect="dark" :content="$t('common.message.copied')" placement="bottom">
     <font-awesome-icon icon="fa-solid fa-check" class="icon-check" />

@@ -96,7 +96,7 @@
     "description": "按钮文本，用于让用户免费开始使用"
   },
   "button.apply": {
-    "message": "Anwenden",
+    "message": "Beantragen",
     "description": "按钮文本，用于让用户申请API服务"
   },
   "button.refresh": {
@@ -108,11 +108,11 @@
     "description": "按钮文本，用于让用户支付服务费用"
   },
   "button.repay": {
-    "message": "Weiter bezahlen",
+    "message": "Weiterzahlen",
     "description": "按钮文本，用于让用户继续支付服务费用"
   },
   "button.applied": {
-    "message": "Angefordert",
+    "message": "Beantragt",
     "description": "按钮文本，用于显示用户已经申请了该服务"
   },
   "button.acquire": {
@@ -147,6 +147,14 @@
     "message": "Fertigstellen",
     "description": "按钮文本，用于完成某些内容"
   },
+  "entity.id": {
+    "message": "ID",
+    "description": "用于显示实体的唯一标识符"
+  },
+  "entity.type": {
+    "message": "Typ",
+    "description": "用于显示实体的类型"
+  },
   "entity.website": {
     "message": "Ace Data Cloud",
     "description": "网站名称，无需翻译，保持为'Ace Data Cloud'"
@@ -169,22 +177,22 @@
   },
   "entity.status": {
     "message": "Status",
-    "description": "实体的状态"
+    "description": "Der Status des Entitäts"
   },
   "entity.operation": {
     "message": "Operation",
-    "description": "实体的操作"
+    "description": "Die Operation der Entität"
   },
   "entity.description": {
     "message": "Beschreibung",
-    "description": "实体的描述"
+    "description": "Die Beschreibung der Entität"
   },
   "entity.createdAt": {
-    "message": "Erstellungszeit",
+    "message": "Erstellt am",
     "description": "Die Zeit, zu der die Entität erstellt wurde"
   },
   "entity.updatedAt": {
-    "message": "Aktualisierungszeit",
+    "message": "Aktualisiert am",
     "description": "Die Zeit, zu der die Entität aktualisiert wurde"
   },
   "entity.order": {
@@ -193,63 +201,63 @@
   },
   "message.usedAmount": {
     "message": "Verwendeter Betrag",
-    "description": "Zum Anzeigen des bereits verwendeten Betrags für den Service"
+    "description": "Zur Anzeige des bereits verwendeten Betrags für den Service"
   },
   "message.remainingAmount": {
     "message": "Verbleibender Betrag",
-    "description": "Zum Anzeigen des verbleibenden Betrags für den Service"
+    "description": "Zur Anzeige des verbleibenden Betrags für den Service"
   },
   "message.copied": {
     "message": "Erfolgreich kopiert",
-    "description": "Zum Anzeigen der Nachricht, dass der Inhalt erfolgreich kopiert wurde"
+    "description": "Zur Anzeige der Nachricht, dass der Inhalt erfolgreich kopiert wurde"
   },
   "message.restart": {
     "message": "Neu generieren",
-    "description": "Zum Anzeigen der Nachricht, dass der Inhalt erfolgreich kopiert wurde"
+    "description": "Zur Anzeige der Nachricht, dass der Inhalt erfolgreich kopiert wurde"
   },
   "message.confirmDelete": {
     "message": "Möchten Sie wirklich löschen?",
-    "description": "Zum Bestätigen, ob der Benutzer bestimmte Inhalte löschen möchte"
+    "description": "Zur Bestätigung, ob der Benutzer bestimmte Inhalte löschen möchte"
   },
   "message.expiredAt": {
-    "message": "Ablaufzeit",
-    "description": "Zum Anzeigen der Ablaufzeit des Services"
+    "message": "Ablaufdatum",
+    "description": "Zur Anzeige des Ablaufdatums des Services"
   },
   "message.alert": {
     "message": "Warnung",
-    "description": "Zum Warnen des Benutzers"
+    "description": "Zur Warnung des Benutzers"
   },
   "message.info": {
     "message": "Freundliche Erinnerung",
-    "description": "Zum Anzeigen von Informationen"
+    "description": "Zur Anzeige von Informationen"
   },
   "message.free": {
     "message": "Kostenlos",
-    "description": "Zum Anzeigen der Nachricht, dass der Service kostenlos ist, was bedeutet, dass der Benutzer nicht bezahlen muss"
+    "description": "Zur Anzeige der Nachricht, dass der Service kostenlos ist, was bedeutet, dass der Benutzer nicht bezahlen muss"
   },
   "message.startPrice": {
     "message": "Startpreis",
-    "description": "Zum Anzeigen des niedrigsten Preises für den Service"
+    "description": "Zur Anzeige des niedrigsten Preises für den Service"
   },
   "message.joinDiscord": {
     "message": "Discord beitreten",
-    "description": "Zum Einladen des Benutzers, dem Discord-Kanal beizutreten"
+    "description": "Zur Aufforderung an den Benutzer, dem Discord-Kanal beizutreten"
   },
   "message.addWeChat": {
     "message": "WeChat hinzufügen",
-    "description": "Zum Einladen des Benutzers, WeChat hinzuzufügen"
+    "description": "Zur Aufforderung an den Benutzer, WeChat hinzuzufügen"
   },
   "message.serviceTech": {
     "message": "Technischer Support",
-    "description": "Zum Anzeigen der technischen Unterstützung für den Service"
+    "description": "Zur Anzeige der technischen Unterstützung des Services"
   },
   "message.businessCooperation": {
     "message": "Geschäftliche Zusammenarbeit",
-    "description": "Zum Anzeigen der geschäftlichen Zusammenarbeit"
+    "description": "Zur Anzeige der geschäftlichen Zusammenarbeit"
   },
   "message.noData": {
     "message": "Keine Daten",
-    "description": "Zum Anzeigen der Nachricht, dass keine Daten in der Tabelle oder Liste vorhanden sind"
+    "description": "Zur Anzeige der Nachricht, dass in der Tabelle oder Liste keine Daten vorhanden sind"
   },
   "nav.home": {
     "message": "Startseite",
@@ -276,7 +284,7 @@
     "description": "Text in der Navigationsleiste der Website, um die Produktseite anzuzeigen"
   },
   "nav.referral": {
-    "message": "Empfehlungserträge",
+    "message": "Empfehlungsgewinne",
     "description": "Text in der Navigationsleiste der Website, um die Empfehlungsseite anzuzeigen"
   },
   "nav.apiPlatform": {
@@ -293,39 +301,39 @@
   },
   "nav.chatgpt": {
     "message": "ChatGPT",
-    "description": "Text in der Navigationsleiste der Website, um die ChatGPT-Seite anzuzeigen, bitte diesen Schlüssel nicht übersetzen, muss 'ChatGPT' bleiben"
+    "description": "Text in der Navigationsleiste der Website, um die ChatGPT-Seite anzuzeigen, bitte diesen Schlüssel nicht übersetzen, muss als 'ChatGPT' beibehalten werden"
   },
   "nav.deepseek": {
     "message": "DeepSeek",
-    "description": "Text in der Navigationsleiste der Website, um die DeepSeek-Seite anzuzeigen, bitte diesen Schlüssel nicht übersetzen, muss 'DeepSeek' bleiben"
+    "description": "Text in der Navigationsleiste der Website, um die DeepSeek-Seite anzuzeigen, bitte diesen Schlüssel nicht übersetzen, muss als 'DeepSeek' beibehalten werden"
   },
   "nav.grok": {
     "message": "Grok",
-    "description": "Text in der Navigationsleiste der Website, um die Grok-Seite anzuzeigen, bitte diesen Schlüssel nicht übersetzen, muss 'Grok' bleiben"
+    "description": "Text in der Navigationsleiste der Website, um die Grok-Seite anzuzeigen, bitte diesen Schlüssel nicht übersetzen, muss als 'Grok' beibehalten werden"
   },
   "nav.chat": {
     "message": "Chat",
-    "description": "Text in der Navigationsleiste der Website, um die Chat-Seite anzuzeigen, bitte diesen Schlüssel nicht übersetzen, muss 'Chat' bleiben"
+    "description": "Text in der Navigationsleiste der Website, um die Chat-Seite anzuzeigen, bitte diesen Schlüssel nicht übersetzen, muss als 'Chat' beibehalten werden"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "Text in der Navigationsleiste der Website, um die Midjourney-Seite anzuzeigen, bitte diesen Schlüssel nicht übersetzen, muss 'Midjourney' bleiben"
+    "description": "Text in der Navigationsleiste der Website, um die Midjourney-Seite anzuzeigen, bitte diesen Schlüssel nicht übersetzen, muss als 'Midjourney' beibehalten werden"
   },
   "nav.chatdoc": {
     "message": "ChatDoc",
-    "description": "Text in der Navigationsleiste der Website, um die ChatDoc-Seite anzuzeigen, bitte diesen Schlüssel nicht übersetzen, muss 'Chatdoc' bleiben"
+    "description": "Text in der Navigationsleiste der Website, um die ChatDoc-Seite anzuzeigen, bitte diesen Schlüssel nicht übersetzen, muss als 'Chatdoc' beibehalten werden"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Text in der Navigationsleiste der Website, um die QRArt-Seite anzuzeigen, bitte diesen Schlüssel nicht übersetzen, muss 'QRArt' bleiben"
+    "description": "Text in der Navigationsleiste der Website, um die QRArt-Seite anzuzeigen, bitte diesen Schlüssel nicht übersetzen, muss als 'QRArt' beibehalten werden"
   },
   "nav.suno": {
     "message": "Suno",
-    "description": "Text in der Navigationsleiste der Website, um die Suno-Seite anzuzeigen, bitte diesen Schlüssel nicht übersetzen, muss 'Suno' bleiben"
+    "description": "Text in der Navigationsleiste der Website, um die Suno-Seite anzuzeigen, bitte diesen Schlüssel nicht übersetzen, muss als 'Suno' beibehalten werden"
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "Text in der Navigationsleiste der Website, um die Flux-Seite anzuzeigen, bitte diesen Schlüssel nicht übersetzen, muss 'Flux' bleiben"
+    "description": "Text in der Navigationsleiste der Website, um die Flux-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'Flux' beibehalten werden"
   },
   "nav.luma": {
     "message": "Luma",
@@ -372,7 +380,7 @@
     "description": "Text in der Navigationsleiste der Website, um die Einstellungsseite anzuzeigen"
   },
   "nav.headshots": {
-    "message": "AI-Passfoto",
+    "message": "AI-Porträt",
     "description": "Text in der Navigationsleiste der Website, um die Seite für die Site-Konfiguration anzuzeigen"
   },
   "nav.locale": {
@@ -432,8 +440,8 @@
     "description": "Titel der Seite, die den Einladenden anzeigt"
   },
   "title.allUsages": {
-    "message": "Nutzungshistorie",
-    "description": "Titel der Seite, die alle Nutzungshistorien des API-Dienstes anzeigt"
+    "message": "Nutzungsverlauf",
+    "description": "Titel der Seite, die alle Nutzungsaufzeichnungen des API-Dienstes anzeigt"
   },
   "title.allCredentials": {
     "message": "Zugangsdaten",
@@ -496,43 +504,43 @@
     "description": "Link zur Seite der Datenschutzrichtlinie"
   },
   "theme.light": {
-    "message": "Helles Thema",
-    "description": "Der Name des hellen Themas"
+    "message": "Helles Design",
+    "description": "Name des hellen Designs"
   },
   "theme.dark": {
-    "message": "Dunkles Thema",
-    "description": "Der Name des dunklen Themas"
+    "message": "Dunkles Design",
+    "description": "Name des dunklen Designs"
   },
   "theme.system": {
     "message": "System",
-    "description": "Der Name des Systemthemas, das anzeigt, dass das Thema automatisch basierend auf den Systemeinstellungen gewechselt wird"
+    "description": "Name des Systemdesigns, das anzeigt, dass das Design automatisch basierend auf den Systemeinstellungen gewechselt wird"
   },
   "settings.general": {
     "message": "Allgemeine Einstellungen",
-    "description": "Der Titel des Abschnitts für allgemeine Einstellungen auf der Einstellungsseite"
+    "description": "Titel des Abschnitts für allgemeine Einstellungen auf der Einstellungsseite"
   },
   "settings.language": {
     "message": "Sprache",
-    "description": "Der Titel des Abschnitts für Spracheinstellungen auf der Einstellungsseite"
+    "description": "Titel des Abschnitts für Spracheinstellungen auf der Einstellungsseite"
   },
   "settings.theme": {
-    "message": "Thema",
-    "description": "Der Titel des Abschnitts für Themaeinstellungen auf der Einstellungsseite"
+    "message": "Design",
+    "description": "Titel des Abschnitts für Design-Einstellungen auf der Einstellungsseite"
   },
   "settings.seo": {
     "message": "SEO-Einstellungen",
-    "description": "Der Titel des Abschnitts für SEO-Einstellungen auf der Einstellungsseite"
+    "description": "Titel des Abschnitts für SEO-Einstellungen auf der Einstellungsseite"
   },
   "settings.site": {
     "message": "Website-Einstellungen",
-    "description": "Der Titel des Abschnitts für Website-Einstellungen auf der Einstellungsseite"
+    "description": "Titel des Abschnitts für Website-Einstellungen auf der Einstellungsseite"
   },
   "settings.distribution": {
     "message": "Verteilungseinstellungen",
-    "description": "Der Titel des Abschnitts für Verteilungseinstellungen auf der Einstellungsseite"
+    "description": "Titel des Abschnitts für Verteilungseinstellungen auf der Einstellungsseite"
   },
   "settings.function": {
     "message": "Funktionseinstellungen",
-    "description": "Der Titel des Abschnitts für Funktionseinstellungen auf der Einstellungsseite"
+    "description": "Titel des Abschnitts für Funktionseinstellungen auf der Einstellungsseite"
   }
 }

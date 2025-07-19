@@ -98,7 +98,7 @@ export default defineComponent({
             name: ROUTE_DEEPSEEK_CONVERSATION_NEW
           },
           displayName: this.$t('common.nav.deepseek'),
-          logo: 'https://cdn.acedata.cloud/bc71ae.png',
+          logo: 'https://cdn.acedata.cloud/4rb23t.jpg',
           routes: [ROUTE_DEEPSEEK_CONVERSATION, ROUTE_DEEPSEEK_CONVERSATION_NEW]
         });
       }
@@ -246,7 +246,7 @@ export default defineComponent({
   &[direction='row'] {
     flex-direction: row;
     padding-top: 10px;
-    border-top: 1px solid var(--el-border-color);
+    border-top: 1px solid var(--el-border-color-lighter);
     .chevron,
     .logo {
       display: none;

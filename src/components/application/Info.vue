@@ -1,32 +1,42 @@
 <template>
-  <span v-if="application.type === 'Period'" class="info">
-    <el-tag v-if="showType" type="primary" class="mr-1" effect="dark">
-      {{ $t('application.type.period') }}
-    </el-tag>
-    {{ $t('common.message.expiredAt') }}:
-    {{ $dayjs.format(application.expired_at) }}
-    <p v-if="showId" class="subtitle">ID: {{ application.id }}</p>
-  </span>
-  <span v-if="application.type === 'Usage'" type="success" class="info" effect="dark">
-    <el-tag v-if="showType" class="mr-1">
-      {{ $t('application.type.usage') }}
-    </el-tag>
-    {{ $t('common.message.remainingAmount') }}:
-    {{ application?.remaining_amount?.toFixed(6) }}
-    {{ $t(`service.unit.` + application?.service?.unit + 's') }}
-    <p v-if="showId" class="subtitle">ID: {{ application.id }}</p>
-  </span>
+  <el-descriptions :column="1" class="flex flex-col">
+    <el-descriptions-item :label="$t('application.field.serviceName')">{{
+      application.service?.title
+    }}</el-descriptions-item>
+    <el-descriptions-item :label="$t('application.field.id')">
+      <span>{{ application.id }}</span>
+      <copy-to-clipboard v-if="application.id" :content="application.id" />
+    </el-descriptions-item>
+    <el-descriptions-item :label="$t('application.field.type')">
+      <el-tag v-if="application.type === 'Period'" effect="dark" round>
+        {{ $t('application.type.period') }}
+      </el-tag>
+      <el-tag v-if="application.type === 'Usage'" effect="dark" round>
+        {{ $t('application.type.usage') }}
+      </el-tag>
+    </el-descriptions-item>
+    <el-descriptions-item v-if="application.type === 'Period'" :label="$t('application.field.expiredAt')">
+      {{ $dayjs.format(application.expired_at) }}
+    </el-descriptions-item>
+    <el-descriptions-item :label="$t('application.field.remainingAmount')">
+      {{ application?.remaining_amount?.toFixed(6) }} {{ $t(`service.unit.` + application?.service?.unit + 's') }}
+    </el-descriptions-item>
+  </el-descriptions>
 </template>
 
 <script lang="ts">
 import { IApplication } from '@/models';
 import { defineComponent } from 'vue';
-import { ElTag } from 'element-plus';
+import { ElTag, ElDescriptions, ElDescriptionsItem } from 'element-plus';
+import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 
 export default defineComponent({
   name: 'ApplicationInfo',
   components: {
-    ElTag
+    ElTag,
+    CopyToClipboard,
+    ElDescriptions,
+    ElDescriptionsItem
   },
   props: {
     application: {

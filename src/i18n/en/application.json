@@ -1,11 +1,11 @@
 {
   "type.period": {
     "message": "Period",
-    "description": "Service period."
+    "description": "The period of the service."
   },
   "type.usage": {
     "message": "Quota",
-    "description": "Service quota."
+    "description": "The quota of the service."
   },
   "field.expiredAt": {
     "message": "Expiration Time",
@@ -13,7 +13,7 @@
   },
   "button.goDocument": {
     "message": "Document",
-    "description": "Button text that takes the user to the documentation page when clicked."
+    "description": "Button text that takes the user to the document page when clicked."
   },
   "button.goCredentials": {
     "message": "Credentials",
@@ -21,7 +21,7 @@
   },
   "button.buyMore": {
     "message": "Buy More",
-    "description": "Button text that takes the user to the page to buy more when clicked."
+    "description": "Button text that takes the user to the buy more page when clicked."
   },
   "button.createOrder": {
     "message": "Create Order",
@@ -29,7 +29,7 @@
   },
   "button.custom": {
     "message": "Custom",
-    "description": "Button text that takes the user to the customization page when clicked."
+    "description": "Button text that takes the user to the custom page when clicked."
   },
   "button.query": {
     "message": "Query",
@@ -39,29 +39,33 @@
     "message": "Usage Records",
     "description": "Button text that takes the user to the usage records page when clicked."
   },
+  "field.serviceName": {
+    "message": "Service Name",
+    "description": "The name of the service."
+  },
   "field.application": {
     "message": "Application",
     "description": "The application for the service."
   },
   "field.status": {
     "message": "Status",
-    "description": "Status of the application."
+    "description": "The status of the application."
   },
   "field.id": {
     "message": "Application ID",
-    "description": "ID of the application."
+    "description": "The ID of the application."
   },
   "field.remainingAmount": {
-    "message": "Remaining Amount",
-    "description": "The remaining amount of the application."
+    "message": "Remaining Quota",
+    "description": "The remaining quota of the application."
   },
   "field.usedAmount": {
-    "message": "Used Amount",
-    "description": "The used amount of the application."
+    "message": "Used Quota",
+    "description": "The used quota of the application."
   },
   "field.apiKey": {
     "message": "API Key",
-    "description": "API key."
+    "description": "The API key."
   },
   "field.service": {
     "message": "Service",
@@ -69,7 +73,7 @@
   },
   "field.operation": {
     "message": "Operation",
-    "description": "Operation of the application."
+    "description": "The operation of the application."
   },
   "field.amount": {
     "message": "Amount",
@@ -77,7 +81,7 @@
   },
   "field.traceId": {
     "message": "Trace ID",
-    "description": "The trace ID of an API call related to the application, do not translate, keep as 'Trace ID'."
+    "description": "The trace ID of an API call for the application, do not translate, keep as 'Trace ID'."
   },
   "field.shouldPayPrice": {
     "message": "Final Price",
@@ -85,15 +89,15 @@
   },
   "field.api": {
     "message": "API",
-    "description": "This is an online service provided to users through an API."
+    "description": "This is an online service that provides services to users via API."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "This is an online service provided to users through an HTTP proxy (for data transmission)."
+    "description": "This is an online service that provides services to users via HTTP proxy (for data transmission)."
   },
   "field.credential": {
-    "message": "Credentials",
-    "description": "The credentials applied for."
+    "message": "Credential",
+    "description": "The credential applied for."
   },
   "field.name": {
     "message": "Name",
@@ -101,78 +105,82 @@
   },
   "field.package": {
     "message": "Package",
-    "description": "The package represents different pricing plans, for example, $100 for 10,000 points, $200 for 20,000 points."
+    "description": "The package represents different pricing packages, such as $100 for 10,000 points, $200 for 20,000 points."
   },
   "field.type": {
     "message": "Type",
-    "description": "Type of the application."
+    "description": "The type of the application."
   },
   "field.freeAmount": {
     "message": "Free Amount",
-    "description": "The free amount of the application."
+    "description": "The free amount applied for."
   },
   "field.extraPrice": {
     "message": "Price",
-    "description": "The additional price the user should pay for the application."
+    "description": "The additional price that the user should pay for the application."
   },
   "message.alreadyApplied": {
     "message": "You have already applied for this service, please check the console.",
-    "description": "Message displayed when the user has already applied for this service."
+    "description": "Message displayed to the user when they have already applied for this service."
   },
   "message.applySuccessfully": {
     "message": "Application Successful",
-    "description": "Message displayed when the user successfully applies for this service."
+    "description": "Message displayed to the user when they have successfully applied for this service."
   },
   "message.notApplied": {
-    "message": "You have not applied for this service, please apply for it before use.",
-    "description": "Message displayed when the user has not applied for this service yet."
+    "message": "You have not applied for this service yet, please apply for the service before using it.",
+    "description": "Message displayed to the user when they have not applied for this service yet."
   },
   "message.yourApplication": {
     "message": "Your Application",
     "description": "Message displayed to the user regarding their application."
   },
   "message.unverified": {
-    "message": "You need to complete identity verification before applying for this service.",
-    "description": "Message displayed when the user has not completed identity verification."
+    "message": "You need to complete real-name verification before you can apply for this service.",
+    "description": "Message displayed to the user when they have not completed real-name verification."
   },
   "message.goVerify": {
-    "message": "Go to Identity Verification",
-    "description": "Message displayed when the user has not completed identity verification."
+    "message": "Go to Real-name Verification",
+    "description": "Message displayed to the user when they have not completed real-name verification."
   },
   "message.requiredParameter": {
     "message": "Required Parameter",
-    "description": "Message displayed when the user has not entered required parameters."
+    "description": "Message displayed to the user when they have not entered a required parameter."
   },
   "message.example": {
     "message": "Example",
-    "description": "Message displayed when the user has not entered required parameters."
+    "description": "Message displayed to the user when they have not entered a required parameter."
+  },
+  "message.applicationSelection": {
+    "message": "The following are the packages you currently applied for or purchased, you can choose any package to continue using the service.",
+    "description": "Message displayed to the user when they need to select an application."
   },
   "message.createCredentialSuccessfully": {
     "message": "Credential Created Successfully",
-    "description": "Message displayed when the user successfully creates credentials."
+    "description": "Message displayed to the user when they have successfully created a credential."
   },
   "message.readPolicy": {
     "message": "I have read and agree",
-    "description": "Message displayed when the user has read and agreed to the policy."
+    "description": "Message displayed to the user when they have read and agreed to the policy."
   },
   "message.policy": {
     "message": "Data Technology Service Usage Agreement",
-    "description": "Message displayed when the user has read and agreed to the policy."
+    "description": "Message displayed to the user when they have read and agreed to the policy."
   },
   "message.notAgreePolicy": {
-    "message": "You have not agreed to the Data Technology Service Usage Agreement.",
-    "description": "Message displayed when the user has not agreed to the policy."
+    "message": "You have not agreed to the Data Technology Service Usage Agreement",
+    "description": "Message displayed to the user when they have not agreed to the policy."
   },
   "message.confirmApplying": {
     "message": "Confirm Service Application",
-    "description": "Message displayed when the user confirms the service application."
+    "description": "Message displayed to the user when they confirm the service application."
   },
   "message.rotateCredential": {
     "message": "Reset Key",
     "description": "Message displayed to the user when they reset the key."
   },
   "message.rotateCredentialConfirm": {
-    "message": "Are you sure you want to reset the key? It cannot be recovered after reset.",
+    "message": "Are you sure you want to reset the key? It cannot be recovered after resetting.",
     "description": "Message displayed to the user when they confirm the key reset."
   },
   "message.idDoesNotExist": {
@@ -196,7 +204,7 @@
     "description": "Message displayed to the user when the update is successful."
   },
   "title.buyService": {
-    "message": "Buy Service",
+    "message": "Purchase Service",
     "description": "Title of the page when the user wants to purchase a service."
   },
   "title.applicationRemainingCount": {

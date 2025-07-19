@@ -4,7 +4,8 @@ import { ROUTE_GROK_CONVERSATION, ROUTE_GROK_CONVERSATION_NEW } from './constant
 export default {
   path: '/grok',
   meta: {
-    modelGroup: CHAT_MODEL_GROUP_GROK
+    modelGroup: CHAT_MODEL_GROUP_GROK,
+    appName: 'chat'
   },
   component: () => import('@/layouts/Main.vue'),
   children: [

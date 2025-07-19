@@ -3,7 +3,8 @@ import { ROUTE_MIDJOURNEY_INDEX } from './constants';
 export default {
   path: '/midjourney',
   meta: {
-    auth: true
+    auth: true,
+    appName: 'midjourney'
   },
   component: () => import('@/layouts/Main.vue'),
   children: [

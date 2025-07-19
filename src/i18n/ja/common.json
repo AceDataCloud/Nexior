@@ -77,7 +77,7 @@
   },
   "button.console": {
     "message": "コンソール",
-    "description": "ボタンのテキスト、特定の内容を制御するためのコンソールページを表示するために使用されます"
+    "description": "ボタンのテキスト、ウェブページ内の特定の内容を制御するためのコンソールページを表示するために使用されます"
   },
   "button.learn": {
     "message": "学ぶ",
@@ -147,9 +147,17 @@
     "message": "完了",
     "description": "ボタンのテキスト、特定の内容を完了するために使用されます"
   },
+  "entity.id": {
+    "message": "ID",
+    "description": "エンティティの一意の識別子を表示するために使用されます"
+  },
+  "entity.type": {
+    "message": "タイプ",
+    "description": "エンティティのタイプを表示するために使用されます"
+  },
   "entity.website": {
     "message": "Ace Data Cloud",
-    "description": "ウェブサイトの名前、翻訳不要で'Ace Data Cloud'のままにします"
+    "description": "ウェブサイト名、翻訳不要で'Ace Data Cloud'のままにします"
   },
   "entity.copyright": {
     "message": "著作権",
@@ -181,15 +189,15 @@
   },
   "entity.createdAt": {
     "message": "作成日時",
-    "description": "エンティティ作成の時間"
+    "description": "エンティティ作成の日時"
   },
   "entity.updatedAt": {
     "message": "更新日時",
-    "description": "エンティティ更新の時間"
+    "description": "エンティティ更新の日時"
   },
   "entity.order": {
     "message": "注文",
-    "description": "エンティティの注文、注文には金額、サービス情報が含まれ、ユーザーはその支払いを行う必要があります"
+    "description": "エンティティの注文、注文には金額やサービス情報が含まれ、ユーザーは支払う必要があります"
   },
   "message.usedAmount": {
     "message": "使用済み金額",
@@ -212,8 +220,8 @@
     "description": "ユーザーが特定の内容を削除するかどうかを確認するメッセージ"
   },
   "message.expiredAt": {
-    "message": "有効期限",
-    "description": "サービスの有効期限を表示するためのもの"
+    "message": "期限",
+    "description": "サービスの期限を表示するためのもの"
   },
   "message.alert": {
     "message": "警告",
@@ -225,7 +233,7 @@
   },
   "message.free": {
     "message": "無料",
-    "description": "サービスが無料であることを示すメッセージ、ユーザーは支払いを行う必要がないことを示す"
+    "description": "サービスが無料であることを示すメッセージ、ユーザーは支払う必要がないことを示す"
   },
   "message.startPrice": {
     "message": "最低価格",
@@ -253,167 +261,167 @@
   },
   "nav.home": {
     "message": "ホーム",
-    "description": "ウェブサイトのナビゲーションバーのテキスト、ホームページを表示するためのもの"
+    "description": "ウェブサイトのナビゲーションバーのテキスト、ホームページを表示するため"
   },
   "nav.content": {
     "message": "コンテンツ",
-    "description": "ウェブサイトのナビゲーションバーのテキスト、コンテンツページを表示するためのもの"
+    "description": "ウェブサイトのナビゲーションバーのテキスト、コンテンツページを表示するため"
   },
   "nav.category": {
     "message": "カテゴリ",
-    "description": "ウェブサイトのナビゲーションバーのテキスト、カテゴリページを表示するためのもの"
+    "description": "ウェブサイトのナビゲーションバーのテキスト、カテゴリページを表示するため"
   },
   "nav.service": {
     "message": "サービス",
-    "description": "ウェブサイトのナビゲーションバーのテキスト、サービスページを表示するためのもの"
+    "description": "ウェブサイトのナビゲーションバーのテキスト、サービスページを表示するため"
   },
   "nav.profile": {
-    "message": "プロフィール",
-    "description": "ウェブサイトのナビゲーションバーのテキスト、プロフィールページを表示するためのもの"
+    "message": "私",
+    "description": "ウェブサイトのナビゲーションバーのテキスト、プロフィールページを表示するため"
   },
   "nav.products": {
     "message": "製品",
-    "description": "ウェブサイトのナビゲーションバーのテキスト、製品ページを表示するためのもの"
+    "description": "ウェブサイトのナビゲーションバーのテキスト、製品ページを表示するため"
   },
   "nav.referral": {
-    "message": "紹介報酬",
-    "description": "ウェブサイトのナビゲーションバーのテキスト、紹介ページを表示するためのもの"
+    "message": "紹介収益",
+    "description": "ウェブサイトのナビゲーションバーのテキスト、紹介ページを表示するため"
   },
   "nav.apiPlatform": {
     "message": "APIプラットフォーム",
-    "description": "ウェブサイトのナビゲーションバーのテキスト、APIプラットフォームページを表示するためのもの"
+    "description": "ウェブサイトのナビゲーションバーのテキスト、APIプラットフォームページを表示するため"
   },
   "nav.document": {
     "message": "ドキュメント",
-    "description": "ウェブサイトのナビゲーションバーのテキスト、ドキュメントページを表示するためのもの"
+    "description": "ウェブサイトのナビゲーションバーのテキスト、ドキュメントページを表示するため"
   },
   "nav.console": {
     "message": "コンソール",
-    "description": "ウェブサイトのナビゲーションバーのテキスト、コンソールページを表示するためのもの"
+    "description": "ウェブサイトのナビゲーションバーのテキスト、コンソールページを表示するため"
   },
   "nav.chatgpt": {
     "message": "ChatGPT",
-    "description": "ウェブサイトのナビゲーションバーのテキスト、ChatGPTページを表示するためのもの。翻訳しないでください。このフィールドは'ChatGPT'のままにしてください。"
+    "description": "ウェブサイトのナビゲーションバーのテキスト、ChatGPTページを表示するため、このフィールドは翻訳しないでください、'ChatGPT'のままにしてください"
   },
   "nav.deepseek": {
-    "message": "Deepspeak",
-    "description": "ウェブサイトのナビゲーションバーのテキスト、Deepspeakページを表示するためのもの。翻訳しないでください。このフィールドは'Deepspeak'のままにしてください。"
+    "message": "DeepSeek",
+    "description": "ウェブサイトのナビゲーションバーのテキスト、DeepSeekページを表示するため、このフィールドは翻訳しないでください、'DeepSeek'のままにしてください"
   },
   "nav.grok": {
     "message": "Grok",
-    "description": "ウェブサイトのナビゲーションバーのテキスト、Grokページを表示するためのもの。翻訳しないでください。このフィールドは'Grok'のままにしてください。"
+    "description": "ウェブサイトのナビゲーションバーのテキスト、Grokページを表示するため、このフィールドは翻訳しないでください、'Grok'のままにしてください"
   },
   "nav.chat": {
-    "message": "Chat",
-    "description": "ウェブサイトのナビゲーションバーのテキスト、チャットページを表示するためのもの。翻訳しないでください。このフィールドは'Chat'のままにしてください。"
+    "message": "チャット",
+    "description": "ウェブサイトのナビゲーションバーのテキスト、チャットページを表示するため、このフィールドは翻訳しないでください、'Chat'のままにしてください"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "ウェブサイトのナビゲーションバーのテキスト、Midjourneyページを表示するためのもの。翻訳しないでください。このフィールドは'Midjourney'のままにしてください。"
+    "description": "ウェブサイトのナビゲーションバーのテキスト、Midjourneyページを表示するため、このフィールドは翻訳しないでください、'Midjourney'のままにしてください"
   },
   "nav.chatdoc": {
     "message": "ChatDoc",
-    "description": "ウェブサイトのナビゲーションバーのテキスト、チャットドキュメントページを表示するためのもの。翻訳しないでください。このフィールドは'Chatdoc'のままにしてください。"
+    "description": "ウェブサイトのナビゲーションバーのテキスト、チャットドキュメントページを表示するため、このフィールドは翻訳しないでください、'Chatdoc'のままにしてください"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "ウェブサイトのナビゲーションバーのテキスト、QRアートページを表示するためのもの。翻訳しないでください。このフィールドは'QRArt'のままにしてください。"
+    "description": "ウェブサイトのナビゲーションバーのテキスト、QRアートページを表示するため、このフィールドは翻訳しないでください、'QRArt'のままにしてください"
   },
   "nav.suno": {
     "message": "Suno",
-    "description": "ウェブサイトのナビゲーションバーのテキスト、Sunoページを表示するためのもの。翻訳しないでください。このフィールドは'Suno'のままにしてください。"
+    "description": "ウェブサイトのナビゲーションバーのテキスト、Sunoページを表示するため、このフィールドは翻訳しないでください、'Suno'のままにしてください"
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "ウェブサイトのナビゲーションバーのテキスト、Fluxページを表示するためのもの。翻訳しないでください。このフィールドは'Flux'のままにしてください。"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、Fluxページを表示します。このフィールドは翻訳しないでください。'Flux'のままにしてください。"
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、Lumaページを表示するためのものです。このフィールドは翻訳しないでください。'Luma'のままにしてください。"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、Lumaページを表示します。このフィールドは翻訳しないでください。'Luma'のままにしてください。"
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、Pikaページを表示するためのものです。このフィールドは翻訳しないでください。'Pika'のままにしてください。"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、Pikaページを表示します。このフィールドは翻訳しないでください。'Pika'のままにしてください。"
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、Klingページを表示するためのものです。このフィールドは翻訳しないでください。'Kling'のままにしてください。"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、Klingページを表示します。このフィールドは翻訳しないでください。'Kling'のままにしてください。"
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、Hailuoページを表示するためのものです。このフィールドは翻訳しないでください。'Hailuo'のままにしてください。"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、Hailuoページを表示します。このフィールドは翻訳しないでください。'Hailuo'のままにしてください。"
   },
   "nav.image": {
     "message": "画像",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、画像ページを表示するためのものです。"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、画像ページを表示します。"
   },
   "nav.music": {
     "message": "音楽",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、音楽ページを表示するためのものです。"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、音楽ページを表示します。"
   },
   "nav.video": {
     "message": "動画",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、動画ページを表示するためのものです。"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、動画ページを表示します。"
   },
   "nav.distribution": {
     "message": "推薦収益",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、推薦収益ページを表示するためのものです。"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、推薦収益ページを表示します。"
   },
   "nav.logOut": {
     "message": "ログアウト",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、ログアウトするためのものです。"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、ログアウトします。"
   },
   "nav.site": {
     "message": "サイト設定",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、サイト設定ページを表示するためのものです。"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、サイト設定ページを表示します。"
   },
   "nav.setting": {
     "message": "設定",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、設定ページを表示するためのものです。"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、設定ページを表示します。"
   },
   "nav.headshots": {
     "message": "AI証明写真",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、サイト設定ページを表示するためのものです。"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、サイト設定ページを表示します。"
   },
   "nav.locale": {
     "message": "言語設定",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、言語を変更するためのものです。"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、言語を変更します。"
   },
   "nav.support": {
     "message": "カスタマーサポート",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、サポートページを表示するためのものです。"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、サポートページを表示します。"
   },
   "nav.darkMode": {
     "message": "ダークモード",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、ダークテーマに切り替えるためのものです。"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、ダークテーマに切り替えます。"
   },
   "title.alert": {
     "message": "アラート",
-    "description": "アラートメッセージのタイトルです。"
+    "description": "アラートメッセージのタイトル。"
   },
   "title.placeholderOfSelect": {
     "message": "選択してください",
-    "description": "選択入力ボックスのプレースホルダーです。"
+    "description": "選択入力ボックスのプレースホルダー。"
   },
   "title.placeholderOfInput": {
     "message": "入力してください",
-    "description": "入力ボックスのプレースホルダーです。"
+    "description": "入力ボックスのプレースホルダー。"
   },
   "title.allApplications": {
     "message": "すべての申請",
-    "description": "すべての申請を表示するページのタイトルです。"
+    "description": "すべての申請を表示するページのタイトル。"
   },
   "title.allOrders": {
     "message": "すべての注文",
-    "description": "すべての注文を表示するページのタイトルです。"
+    "description": "すべての注文を表示するページのタイトル。"
   },
   "title.orderInfo": {
     "message": "注文情報",
-    "description": "注文情報を表示するページのタイトルです。"
+    "description": "注文情報を表示するページのタイトル。"
   },
   "title.buyMore": {
     "message": "もっと購入",
-    "description": "ユーザーにもっと購入させるためのページのタイトルです。"
+    "description": "ユーザーにもっと購入させるページのタイトル。"
   },
   "title.distribution": {
     "message": "推薦収益",
@@ -421,79 +429,79 @@
   },
   "title.site": {
     "message": "サイト設定",
-    "description": "サイト設定を表示するページのタイトルです。"
+    "description": "サイト設定を表示するページのタイトル。"
   },
   "title.distributionHistory": {
     "message": "推薦履歴",
-    "description": "推薦履歴を表示するページのタイトルです。"
+    "description": "推薦履歴を表示するページのタイトル。"
   },
   "title.invitee": {
     "message": "招待者",
-    "description": "招待者を表示するページのタイトルです。"
+    "description": "招待者を表示するページのタイトル。"
   },
   "title.allUsages": {
     "message": "使用履歴",
-    "description": "APIサービスのすべての使用記録を表示するページのタイトルです。"
+    "description": "APIサービスのすべての使用記録を表示するページのタイトル。"
   },
   "title.allCredentials": {
     "message": "認証情報",
-    "description": "APIにアクセスするためのすべての認証情報を表示するページのタイトルです。"
+    "description": "APIにアクセスするためのすべての認証情報を表示するページのタイトル。"
   },
   "about.title1": {
     "message": "お問い合わせ",
-    "description": "連絡先情報を表示するセクションのタイトルです。"
+    "description": "連絡先情報のセクションのタイトル。"
   },
   "about.title2": {
     "message": "リソース",
-    "description": "リンクを表示するセクションのタイトルです。"
+    "description": "リンクのセクションのタイトル。"
   },
   "about.title3": {
     "message": "リンク",
-    "description": "サポート情報を表示するセクションのタイトルです。"
+    "description": "サポート情報のセクションのタイトル。"
   },
   "about.address": {
     "message": "アメリカ デラウェア州 ミドルタウン N Broad St, 201号室",
-    "description": "会社の住所です。"
+    "description": "会社の住所。"
   },
   "about.email": {
     "message": "office@acedata.cloud",
-    "description": "会社の電子メールです。"
+    "description": "会社の電子メール。"
   },
   "about.link1": {
     "message": "サービス",
-    "description": "サービスページへのリンクです。"
+    "description": "サービスページのリンク。"
   },
   "about.link2": {
     "message": "ドキュメント",
-    "description": "ドキュメントページへのリンクです。"
+    "description": "ドキュメントページのリンク。"
   },
   "about.link3": {
     "message": "コンソール",
-    "description": "コンソールページへのリンクです。"
+    "description": "コンソールページのリンク。"
   },
   "about.link4": {
     "message": "プロフィール",
-    "description": "プロフィールページへのリンクです。"
+    "description": "プロフィールページのリンク。"
   },
   "about.link5": {
     "message": "センター",
-    "description": "センターページへのリンクです。"
+    "description": "センターページのリンク。"
   },
   "about.link6": {
     "message": "推薦収益",
-    "description": "推薦収益ページへのリンクです。"
+    "description": "推薦収益ページのリンク。"
   },
   "about.link7": {
     "message": "サポート",
-    "description": "サポートページへのリンクです。"
+    "description": "サポートページのリンク。"
   },
   "about.link8": {
     "message": "利用規約",
-    "description": "利用規約ページへのリンクです。"
+    "description": "サービス条項ページのリンク"
   },
   "about.link9": {
     "message": "プライバシーポリシー",
-    "description": "プライバシーポリシーページへのリンクです。"
+    "description": "プライバシーポリシーページのリンク"
   },
   "theme.light": {
     "message": "ライトテーマ",
@@ -505,7 +513,7 @@
   },
   "theme.system": {
     "message": "システム",
-    "description": "システムテーマの名称、システム設定に基づいて自動的にテーマを切り替えることを示す"
+    "description": "システム設定に基づいて自動的にテーマを切り替えることを示す名称"
   },
   "settings.general": {
     "message": "一般設定",

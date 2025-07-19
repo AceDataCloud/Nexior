@@ -3,7 +3,8 @@ import { ROUTE_PIKA_INDEX } from './constants';
 export default {
   path: '/pika',
   meta: {
-    auth: true
+    auth: true,
+    appName: 'pika'
   },
   component: () => import('@/layouts/Main.vue'),
   children: [

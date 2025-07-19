@@ -44,6 +44,7 @@
             }"
             @click="onToggle(item)"
           >
+            <el-icon class="icon"><check /></el-icon>
             <el-image :src="item.image" fit="fill" class="preview" />
             <span class="name">{{ item.label }}</span>
           </div>
@@ -55,8 +56,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElTabs, ElTabPane, ElImage, ElDialog, ElButton, ElTag } from 'element-plus';
+import { ElTabs, ElTabPane, ElImage, ElDialog, ElButton, ElTag, ElIcon } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
+import { Check } from '@element-plus/icons-vue';
 
 interface IElementItem {
   image: string;
@@ -79,8 +81,10 @@ interface IData {
 export default defineComponent({
   name: 'ElementsSelector',
   components: {
+    Check,
     ElTabs,
     ElTag,
+    ElIcon,
     ElTabPane,
     ElImage,
     ElDialog,
@@ -2142,19 +2146,33 @@ export default defineComponent({
   flex-wrap: wrap;
   height: 230px;
   overflow-y: auto;
+  gap: 10px;
   .item {
     $height: 100px;
     $width: 100px;
     position: relative;
     width: $width;
     height: $height;
-    margin-right: 8px;
-    margin-bottom: 8px;
-    border-width: 3px;
+    border-width: 1px;
     border-style: solid;
     border-color: var(--el-border-color);
-    border-radius: 5px;
+    border-radius: 10px;
+    overflow: hidden;
     cursor: pointer;
+
+    .icon {
+      position: absolute;
+      visibility: hidden;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 100;
+      color: var(--el-color-white);
+      font-size: 20px;
+      background-color: var(--el-color-primary);
+      border-radius: 50%;
+      padding: 5px;
+    }
 
     &.hidden {
       display: none;
@@ -2162,11 +2180,14 @@ export default defineComponent({
 
     &.active {
       border-color: var(--el-color-primary);
+      .icon {
+        visibility: visible;
+      }
     }
 
     .preview {
-      width: $height - 8px;
-      height: $width - 8px;
+      width: $height;
+      height: $width;
     }
     .name {
       position: absolute;
@@ -2174,7 +2195,8 @@ export default defineComponent({
       left: 0;
       right: 0;
       width: $width;
-      background-color: rgba(0, 0, 0, 0.5);
+      text-overflow: ellipsis;
+      background-color: rgba(0, 0, 0, 0.8);
       color: white;
       font-size: 10px;
       text-align: center;

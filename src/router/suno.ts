@@ -3,7 +3,8 @@ import { ROUTE_SUNO_INDEX } from './constants';
 export default {
   path: '/suno',
   meta: {
-    auth: true
+    auth: true,
+    appName: 'suno'
   },
   component: () => import('@/layouts/Main.vue'),
   children: [

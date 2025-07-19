@@ -4,7 +4,8 @@ import { ROUTE_CHATGPT_CONVERSATION, ROUTE_CHATGPT_CONVERSATION_NEW } from './co
 export default {
   path: '/chatgpt',
   meta: {
-    modelGroup: CHAT_MODEL_GROUP_CHATGPT
+    modelGroup: CHAT_MODEL_GROUP_CHATGPT,
+    appName: 'chat'
   },
   component: () => import('@/layouts/Main.vue'),
   children: [

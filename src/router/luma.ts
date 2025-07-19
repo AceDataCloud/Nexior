@@ -3,7 +3,8 @@ import { ROUTE_LUMA_INDEX } from './constants';
 export default {
   path: '/luma',
   meta: {
-    auth: true
+    auth: true,
+    appName: 'luma'
   },
   component: () => import('@/layouts/Main.vue'),
   children: [

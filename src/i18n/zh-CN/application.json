@@ -7,6 +7,7 @@
     "message": "额度",
     "description": "服务的额度。"
   },
+
   "field.expiredAt": {
     "message": "过期时间",
     "description": "申请的过期时间。"
@@ -39,6 +40,10 @@
     "message": "使用记录",
     "description": "按钮文本，点击此按钮将转到使用记录页面。"
   },
+  "field.serviceName": {
+    "message": "服务名称",
+    "description": "服务的名称。"
+  },
   "field.application": {
     "message": "申请",
     "description": "服务的申请。"
@@ -52,12 +57,12 @@
     "description": "申请的ID。"
   },
   "field.remainingAmount": {
-    "message": "剩余数量",
-    "description": "申请的剩余数量。"
+    "message": "剩余额度",
+    "description": "申请的剩余额度。"
   },
   "field.usedAmount": {
-    "message": "已使用数量",
-    "description": "申请的已使用数量。"
+    "message": "已使用额度",
+    "description": "申请的已使用额度。"
   },
   "field.apiKey": {
     "message": "API密钥",
@@ -146,6 +151,10 @@
   "message.example": {
     "message": "示例",
     "description": "当用户尚未输入必填参数时向用户显示的消息。"
+  },
+  "message.applicationSelection": {
+    "message": "以下是您当前申请或购买的套餐，您可以任选一个套餐来继续使用服务。",
+    "description": "当用户需要选择一个申请时向用户显示的消息。"
   },
   "message.createCredentialSuccessfully": {
     "message": "成功创建凭据",

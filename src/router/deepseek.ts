@@ -4,7 +4,8 @@ import { ROUTE_DEEPSEEK_CONVERSATION, ROUTE_DEEPSEEK_CONVERSATION_NEW } from './
 export default {
   path: '/deepseek',
   meta: {
-    modelGroup: CHAT_MODEL_GROUP_DEEPSEEK
+    modelGroup: CHAT_MODEL_GROUP_DEEPSEEK,
+    appName: 'chat'
   },
   component: () => import('@/layouts/Main.vue'),
   children: [

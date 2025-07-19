@@ -3,7 +3,8 @@ import { ROUTE_FLUX_INDEX } from './constants';
 export default {
   path: '/flux',
   meta: {
-    auth: true
+    auth: true,
+    appName: 'flux'
   },
   component: () => import('@/layouts/Main.vue'),
   children: [
