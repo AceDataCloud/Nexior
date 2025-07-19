@@ -75,7 +75,7 @@ export default defineComponent({
       get() {
         return this.$store.state.suno?.config?.audio_id;
       },
-      set(val: string[]) {}
+      set() {}
     }
   },
   watch: {

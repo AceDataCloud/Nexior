@@ -33,7 +33,6 @@ import {
   ROUTE_INDEX
 } from '@/router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { BASE_HOST_HUB } from '@/constants';
 import { isOfficial } from '@/utils';
 
 interface ILink {

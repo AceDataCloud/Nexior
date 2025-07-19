@@ -130,7 +130,6 @@ import { ElImage, ElButton, ElTooltip, ElAlert } from 'element-plus';
 import { IMidjourneyTask, MidjourneyImagineAction, MidjourneyImagineState } from '@/models';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { Check } from '@element-plus/icons-vue';
 
 interface IData {
   midjourneyImagineState: typeof MidjourneyImagineState;

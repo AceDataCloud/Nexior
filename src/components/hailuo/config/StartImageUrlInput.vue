@@ -79,7 +79,7 @@ export default defineComponent({
       get() {
         return this.$store.state.hailuo?.config?.first_image_url;
       },
-      set(val: string) {
+      set() {
         const url = this.urls?.[0];
         this.$store.commit('hailuo/setConfig', {
           ...this.$store.state.hailuo?.config,

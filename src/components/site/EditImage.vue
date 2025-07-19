@@ -39,7 +39,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElDialog, ElButton, ElIcon, ElMessage, ElUpload, UploadFiles, UploadFile } from 'element-plus';
+import { ElDialog, ElButton, ElIcon, ElMessage, ElUpload, UploadFile } from 'element-plus';
 import { Edit } from '@element-plus/icons-vue';
 import { getBaseUrlPlatform } from '@/utils';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';

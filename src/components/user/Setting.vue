@@ -38,7 +38,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElDialog, ElMenu, ElMenuItem, ElDropdownMenu, ElDropdownItem, ElSubMenu } from 'element-plus';
+import { ElDialog, ElMenu, ElMenuItem } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faCog, faBell, faUserShield, faMagic, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
 import GeneralSetting from '@/components/setting/General.vue';

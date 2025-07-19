@@ -62,7 +62,7 @@ export default defineComponent({
       get() {
         return this.$store.state.luma?.config?.end_image_url;
       },
-      set(val: string) {
+      set() {
         const url = this.urls?.[0];
         this.$store.commit('luma/setConfig', {
           ...this.$store.state.luma?.config,

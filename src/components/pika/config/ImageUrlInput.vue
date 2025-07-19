@@ -63,11 +63,11 @@ export default defineComponent({
       get() {
         return this.$store.state.pika?.config?.image_url;
       },
-      set(val: string) {
+      set() {
         const url = this.urls?.[0];
         this.$store.commit('pika/setConfig', {
           ...this.$store.state.pika?.config,
-          image_url: this.urls
+          image_url: url
         });
       }
     }

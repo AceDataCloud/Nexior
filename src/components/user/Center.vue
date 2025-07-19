@@ -37,7 +37,7 @@ import UserAvatar from '@/components/user/Avatar.vue';
 import UserSetting from '@/components/user/Setting.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX } from '@/router';
-import { ElDivider, ElCard } from 'element-plus';
+import { ElDivider } from 'element-plus';
 import { ElDropdownMenu, ElDropdownItem, ElDropdown } from 'element-plus';
 
 export default defineComponent({

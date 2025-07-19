@@ -34,12 +34,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElRow, ElCol, ElCard, ElForm, ElFormItem, ElImage, ElDivider, ElSwitch } from 'element-plus';
+import { ElForm, ElFormItem } from 'element-plus';
 import EditText from '@/components/site/EditText.vue';
-import EditImage from '@/components/site/EditImage.vue';
 import EditArray from '@/components/site/EditArray.vue';
 import { siteOperator } from '@/operators';
-import site from '@/router/site';
 
 export default defineComponent({
   name: 'SettingSeo',

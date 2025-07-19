@@ -3,6 +3,7 @@ import { nextTick } from 'vue';
 import axios from 'axios';
 
 declare namespace Intl {
+  // eslint-disable-next-line no-unused-vars
   function getCanonicalLocales(locales: string | string[] | undefined): string[];
 }
 

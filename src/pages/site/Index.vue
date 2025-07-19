@@ -322,7 +322,6 @@ import EditText from '@/components/site/EditText.vue';
 import EditImage from '@/components/site/EditImage.vue';
 import EditArray from '@/components/site/EditArray.vue';
 import { siteOperator } from '@/operators';
-import site from '@/router/site';
 
 export default defineComponent({
   name: 'SiteIndex',

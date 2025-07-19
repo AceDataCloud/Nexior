@@ -2,7 +2,9 @@
   <div class="image-gallery">
     <div v-for="(image, index) in images" :key="index" class="image-container">
       <img :src="image.image_url" alt="Image" />
-      <button class="view-button" @click="viewImage(image.image_url)">{{ $t('headshots.button.viewImage') }}</button>
+      <button v-if="image.image_url" class="view-button" @click="viewImage(image.image_url)">
+        {{ $t('headshots.button.viewImage') }}
+      </button>
     </div>
   </div>
 </template>
@@ -10,14 +12,6 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import { IHeadshotsTask } from '@/models';
-interface IDataItem {
-  image_url: string;
-  // Add other properties if necessary
-}
-
-interface IResponse {
-  data: IDataItem[];
-}
 
 export default defineComponent({
   name: 'ImageGallery',

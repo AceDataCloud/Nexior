@@ -46,7 +46,6 @@ import { defineComponent } from 'vue';
 import { ElForm, ElFormItem } from 'element-plus';
 import EditText from '@/components/site/EditText.vue';
 import { siteOperator } from '@/operators';
-import site from '@/router/site';
 
 export default defineComponent({
   name: 'SiteIndex',
