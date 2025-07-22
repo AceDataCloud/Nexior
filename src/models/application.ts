@@ -6,9 +6,15 @@ export enum IApplicationType {
   PERIOD = 'Period'
 }
 
+export enum IApplicationScope {
+  INDIVIDUAL = 'Individual',
+  GLOBAL = 'Global'
+}
+
 export interface IApplication {
   id?: string;
   type?: IApplicationType;
+  scope?: IApplicationScope;
   service_id?: string;
   service?: IService;
   user_id?: string;

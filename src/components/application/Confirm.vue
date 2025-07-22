@@ -7,14 +7,6 @@
     @close="$emit('update:visible', false)"
   >
     <div class="content">
-      <el-descriptions :column="1">
-        <el-descriptions-item :label="$t('application.field.name')">
-          {{ service?.title }}
-        </el-descriptions-item>
-        <el-descriptions-item :label="$t('application.field.freeAmount')">
-          <span> {{ service?.free_amount }} {{ $t(`service.unit.${service?.unit}`) }} </span>
-        </el-descriptions-item>
-      </el-descriptions>
       <el-divider class="my-2" />
       <div class="policy">
         <el-checkbox v-model="checked" size="large" class="policy-checkbox" />
@@ -42,17 +34,11 @@ export default defineComponent({
   name: 'ApplicationConfirm',
   components: {
     ElDialog,
-    ElDescriptions,
-    ElDescriptionsItem,
     ElDivider,
     ElCheckbox,
     ElButton
   },
   props: {
-    service: {
-      type: Object as () => IService,
-      required: true
-    },
     visible: {
       type: Boolean,
       required: false,

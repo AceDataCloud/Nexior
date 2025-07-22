@@ -1,6 +1,12 @@
 import { AxiosResponse } from 'axios';
 import { httpClient } from './common';
-import { IApplication, IApplicationDetailResponse, IApplicationListResponse, IApplicationType } from '@/models';
+import {
+  IApplication,
+  IApplicationDetailResponse,
+  IApplicationListResponse,
+  IApplicationScope,
+  IApplicationType
+} from '@/models';
 
 export interface IApplicationQuery {
   user_id?: string;
@@ -9,6 +15,7 @@ export interface IApplicationQuery {
   type?: IApplicationType | IApplicationType[];
   service_id?: string | string[];
   ordering?: string;
+  scope?: IApplicationScope | IApplicationScope[];
 }
 
 class ApplicationOperator {

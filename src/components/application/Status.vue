@@ -1,5 +1,5 @@
 <template>
-  <div class="element">
+  <div class="status">
     <el-dialog v-model="showInfo" width="600px">
       <div v-if="initializing && application === undefined">
         <el-skeleton :rows="1" class="text-center">
@@ -43,21 +43,7 @@
         <font-awesome-icon icon="fa-solid fa-wallet" class="icon" />
       </el-button>
     </el-tooltip>
-    <div v-if="needApply && service" class="text-center info">
-      <span class="mr-2">{{ $t('chat.message.notApplied') }}</span>
-      <span>
-        <el-button round type="primary" class="btn btn-apply" size="small" @click="confirming = true">
-          {{ $t('common.button.apply') }}
-        </el-button>
-      </span>
-      <span class="ml-1">{{ $t('chat.message.tryForFree') }}</span>
-      <application-confirm
-        v-if="service && authenticated"
-        v-model.visible="confirming"
-        :service="service"
-        @apply="onApply"
-      />
-    </div>
+    <application-confirm v-model.visible="applying" @apply="onApply" />
   </div>
 </template>
 
@@ -66,7 +52,7 @@ import { defineComponent } from 'vue';
 import { applicationOperator, credentialOperator } from '@/operators';
 import { ElButton, ElMessage, ElSkeleton, ElSkeletonItem, ElIcon, ElDialog } from 'element-plus';
 import ApplicationConfirm from '@/components/application/Confirm.vue';
-import { IApplicationType, IApplication, IApplicationDetailResponse, IService } from '@/models';
+import { IApplicationType, IApplication, IApplicationDetailResponse, IService, IApplicationScope } from '@/models';
 import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
 import { ROUTE_CONSOLE_APPLICATION_SUBSCRIBE } from '@/router';
 import ApiPrice from '@/components/api/Price.vue';
@@ -76,7 +62,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export interface IData {
   showInfo: boolean;
-  confirming: boolean;
+  applying: boolean;
   applicationType: typeof IApplicationType;
 }
 
@@ -114,17 +100,13 @@ export default defineComponent({
     service: {
       type: Object as () => IService | undefined,
       required: true
-    },
-    needApply: {
-      type: Boolean,
-      default: false
     }
   },
   emits: ['apply', 'refresh', 'applied', 'update:application', 'select'],
   data(): IData {
     return {
       showInfo: false,
-      confirming: this.needApply,
+      applying: false,
       applicationType: IApplicationType
     };
   },
@@ -136,14 +118,31 @@ export default defineComponent({
       return this.$store.state.user;
     }
   },
-  watch: {
-    needApply(val) {
-      if (val) {
-        this.confirming = val;
-      }
-    }
+  mounted() {
+    this.onGetGlobalApplications();
   },
   methods: {
+    onGetGlobalApplications() {
+      applicationOperator
+        .getAll({
+          limit: 100,
+          offset: 0,
+          user_id: this.user?.id,
+          ordering: '-created_at',
+          type: IApplicationType.USAGE,
+          scope: IApplicationScope.GLOBAL
+        })
+        .then(({ data }) => {
+          console.debug('Global applications fetched:', data);
+          if (data && data.count > 0) {
+            this.applying = true;
+          }
+        })
+        .catch((error) => {
+          ElMessage.error(this.$t('application.message.fetchFailed'));
+          console.error(error);
+        });
+    },
     onBuyMore(application: IApplication) {
       // open in new tab for this url
       const url = this.$router.resolve({
@@ -164,7 +163,7 @@ export default defineComponent({
           setTimeout(() => {
             this.$emit('refresh');
           }, 2000);
-          this.confirming = false;
+          this.applying = false;
         })
         .finally(() => {
           this.$emit('applied');
@@ -176,7 +175,9 @@ export default defineComponent({
     onApply() {
       applicationOperator
         .create({
-          service_id: this.service?.id
+          type: IApplicationType.USAGE,
+          scope: IApplicationScope.GLOBAL,
+          user_id: this.user?.id
         })
         .then(({ data: data }: { data: IApplicationDetailResponse }) => {
           ElMessage.success(this.$t('application.message.applySuccessfully'));
@@ -186,7 +187,7 @@ export default defineComponent({
           if (error?.response?.data?.code === ERROR_CODE_DUPLICATION) {
             ElMessage.error(this.$t('application.message.alreadyApplied'));
           }
-          this.confirming = false;
+          this.applying = false;
         });
     }
   }
@@ -194,26 +195,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.element {
-  margin-bottom: 10px;
-}
-.shimmer {
-  width: 300px;
-  margin: auto;
-}
-.status {
-  display: block;
-  width: fit-content;
-  margin: auto;
-  .el-icon {
-    position: relative;
-    top: 0.2em;
-  }
-  .el-dropdown {
-    line-height: 20px;
-  }
-}
-
 .applications {
   .item {
     cursor: pointer;
