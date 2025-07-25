@@ -54,7 +54,9 @@ export default defineComponent({
       return this.$store.state[this.appName]?.application;
     },
     applications() {
-      return this.$store.state[this.appName]?.applications;
+      const individualApplications = this.$store.state[this.appName]?.applications ?? [];
+      const globalApplications = this.$store.state.applications ?? [];
+      return individualApplications.concat(globalApplications);
     },
     loading() {
       return this.$store.state[this.appName]?.status?.getApplications === Status.Request;

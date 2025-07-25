@@ -49,6 +49,7 @@ export function getFinalApplication(
   applications: IApplication[],
   currentApplication?: IApplication
 ): IApplication | undefined {
+  console.debug('start to execute getFinalApplication', applications, currentApplication);
   if (
     currentApplication &&
     isApplicationUsable(currentApplication) &&

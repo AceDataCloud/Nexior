@@ -9,7 +9,7 @@ import { highlight } from '@/utils';
 import 'highlight.js/styles/night-owl.css';
 
 export default defineComponent({
-  name: 'ApiCode',
+  name: 'MarkdownRenderer',
   directives: {
     highlight
   },

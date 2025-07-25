@@ -49,8 +49,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { applicationOperator, credentialOperator } from '@/operators';
-import { ElButton, ElMessage, ElSkeleton, ElSkeletonItem, ElIcon, ElDialog } from 'element-plus';
+import { applicationOperator } from '@/operators';
+import { ElButton, ElMessage, ElSkeleton, ElSkeletonItem, ElIcon, ElDialog, ElTooltip } from 'element-plus';
 import ApplicationConfirm from '@/components/application/Confirm.vue';
 import { IApplicationType, IApplication, IApplicationDetailResponse, IService, IApplicationScope } from '@/models';
 import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
@@ -76,6 +76,7 @@ export default defineComponent({
     ApplicationInfo,
     ApplicationConfirm,
     ElSkeleton,
+    ElTooltip,
     ElSkeletonItem,
     ApiPrice,
     ElIcon
@@ -123,25 +124,7 @@ export default defineComponent({
   },
   methods: {
     onGetGlobalApplications() {
-      applicationOperator
-        .getAll({
-          limit: 100,
-          offset: 0,
-          user_id: this.user?.id,
-          ordering: '-created_at',
-          type: IApplicationType.USAGE,
-          scope: IApplicationScope.GLOBAL
-        })
-        .then(({ data }) => {
-          console.debug('Global applications fetched:', data);
-          if (data && data.count > 0) {
-            this.applying = true;
-          }
-        })
-        .catch((error) => {
-          ElMessage.error(this.$t('application.message.fetchFailed'));
-          console.error(error);
-        });
+      this.$store.dispatch('getApplications');
     },
     onBuyMore(application: IApplication) {
       // open in new tab for this url
@@ -152,22 +135,6 @@ export default defineComponent({
         }
       }).href;
       window.open(url, '_blank');
-    },
-    onCreateCredential(application: IApplication | undefined) {
-      credentialOperator
-        .create({
-          application_id: application?.id,
-          host: window.location.origin
-        })
-        .then(() => {
-          setTimeout(() => {
-            this.$emit('refresh');
-          }, 2000);
-          this.applying = false;
-        })
-        .finally(() => {
-          this.$emit('applied');
-        });
     },
     onSelectApplication(application: IApplication) {
       this.$emit('select', application);
@@ -181,7 +148,7 @@ export default defineComponent({
         })
         .then(({ data: data }: { data: IApplicationDetailResponse }) => {
           ElMessage.success(this.$t('application.message.applySuccessfully'));
-          this.onCreateCredential(data);
+          this.$store.dispatch('createCredential');
         })
         .catch((error) => {
           if (error?.response?.data?.code === ERROR_CODE_DUPLICATION) {
@@ -209,9 +176,6 @@ export default defineComponent({
       .icon {
         visibility: visible;
       }
-    }
-    &:hover {
-      background-color: var(--el-bg-color-page);
     }
     display: flex;
     align-items: center;

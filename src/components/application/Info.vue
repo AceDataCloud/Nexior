@@ -19,7 +19,8 @@
       {{ $dayjs.format(application.expired_at) }}
     </el-descriptions-item>
     <el-descriptions-item :label="$t('application.field.remainingAmount')">
-      {{ application?.remaining_amount?.toFixed(6) }} {{ $t(`service.unit.` + application?.service?.unit + 's') }}
+      {{ application?.remaining_amount?.toFixed(6) }}
+      {{ $t(`service.unit.` + (application?.service?.unit || 'credit') + 's') }}
     </el-descriptions-item>
   </el-descriptions>
 </template>
