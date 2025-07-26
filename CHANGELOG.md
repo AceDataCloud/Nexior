@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sat, 19 Jul 2025 15:03:42 GMT and should not be manually modified.
+This log was last generated on Sat, 26 Jul 2025 14:32:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 3.9.0
+
+Sat, 26 Jul 2025 14:32:44 GMT
+
+### Minor changes
+
+- use global application (office@acedata.cloud)
 
 ## 3.8.1
 
