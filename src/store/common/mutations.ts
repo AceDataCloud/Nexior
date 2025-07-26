@@ -1,4 +1,4 @@
-import { IUser } from '@/models';
+import { IApplication, IUser } from '@/models';
 import { IRootState } from './models';
 
 export const setUser = (state: IRootState, payload: IUser): void => {
@@ -56,6 +56,11 @@ export const setCurrency = (state: IRootState, payload: string): void => {
   state.currency = payload;
 };
 
+export const setApplications = (state: IRootState, payload: IApplication[]): void => {
+  console.debug('set applications for global', payload);
+  state.applications = payload;
+};
+
 export default {
   setUser,
   setSite,
@@ -66,5 +71,6 @@ export default {
   setFingerprint,
   setToken,
   resetToken,
-  resetSite
+  resetSite,
+  setApplications
 };

@@ -1,4 +1,4 @@
-import { IApplication, IApplicationType } from '@/models';
+import { IApplication, IApplicationScope, IApplicationType } from '@/models';
 
 /**
  * Get is application expired
@@ -32,7 +32,11 @@ export function isApplicationExhausted(application: IApplication) {
  * @param application
  * @returns boolean
  */
-export function isApplicationUsable(application: IApplication) {
+export function isApplicationUsable(application: IApplication | undefined): boolean {
+  if (!application) {
+    console.debug('application is undefined, return false');
+    return false;
+  }
   const isExhausted = isApplicationExhausted(application);
   const isExpired = isApplicationExpired(application);
   console.debug('is application exhausted', isExhausted);
@@ -49,6 +53,7 @@ export function getFinalApplication(
   applications: IApplication[],
   currentApplication?: IApplication
 ): IApplication | undefined {
+  console.debug('start to execute getFinalApplication', applications, currentApplication);
   if (
     currentApplication &&
     isApplicationUsable(currentApplication) &&
@@ -58,13 +63,42 @@ export function getFinalApplication(
     return currentApplication;
   }
   console.debug('get final application from applications', applications);
-  // check if there is any application with 'Period' type firstly, if yes, use it
-  const application = applications?.find((application) => application?.type === IApplicationType.PERIOD);
-  console.debug('application with Period type', application);
-  // else use the application with 'Usage' type
-  const application2 = applications?.find((application) => application?.type === IApplicationType.USAGE);
-  console.debug('application with Usage type', application2);
-  const finalApplication = application && isApplicationUsable(application) ? application : application2;
-  console.debug('final application', finalApplication);
-  return finalApplication;
+  // check if there is any application with 'Global' scope and 'Period' type, if yes, use it
+  const application1 = applications?.find(
+    (application) => application.scope === IApplicationScope.GLOBAL && application.type === IApplicationType.PERIOD
+  );
+  console.debug('application1', application1);
+  if (isApplicationUsable(application1)) {
+    console.debug('application with global scope and Period type', application1);
+    return application1;
+  }
+  // check if there is any application with 'Global' scope and 'Usage' type, if yes, use it
+  const application2 = applications?.find(
+    (application) => application.scope === IApplicationScope.GLOBAL && application.type === IApplicationType.USAGE
+  );
+  console.debug('application2', application2);
+  if (isApplicationUsable(application2)) {
+    console.debug('application with global scope and Usage type', application2);
+    return application2;
+  }
+  // check if there is any application with 'Period' type, if yes, use it
+  const application3 = applications?.find(
+    (application) =>
+      (application.scope === IApplicationScope.INDIVIDUAL && application?.type) === IApplicationType.PERIOD
+  );
+  console.debug('application3', application3);
+  if (isApplicationUsable(application3)) {
+    console.debug('application with Period type', application3);
+    return application3;
+  }
+  // check if there is any application with 'Usage' type, if yes, use it
+  const application4 = applications?.find(
+    (application) =>
+      (application.scope === IApplicationScope.INDIVIDUAL && application?.type) === IApplicationType.USAGE
+  );
+  console.debug('application4', application4);
+  if (isApplicationUsable(application4)) {
+    console.debug('application with Usage type', application4);
+    return application4;
+  }
 }

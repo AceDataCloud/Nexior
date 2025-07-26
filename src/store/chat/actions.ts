@@ -29,12 +29,12 @@ export const setApplication = async ({ commit, dispatch }: any, payload: IApplic
 };
 
 export const setApplications = async ({ commit }: any, payload: IApplication[]): Promise<void> => {
-  console.debug('set applications', payload);
+  console.debug('set applications for chat', payload);
   commit('setApplications', payload);
 };
 
 export const setService = async ({ commit }: any, payload: IService): Promise<void> => {
-  console.debug('set service', payload);
+  console.debug('set service for chat', payload);
   commit('setService', payload);
 };
 
@@ -45,12 +45,12 @@ export const setCredential = async ({ commit }: any, payload: ICredential): Prom
 
 export const createCredential = async ({ commit, state }: any): Promise<ICredential | undefined> => {
   const application = state.application;
-  console.debug('prepare to create credential for application', application);
+  console.debug('prepare to create credential for application for chat', application);
   if (!application) {
     console.error('Application not found');
     return undefined;
   }
-  console.debug('creating create credential for application', application);
+  console.debug('creating create credential for application for chat', application);
   const { data: credential } = await credentialOperator.create({
     application_id: application?.id,
     host: window.location.origin
@@ -84,29 +84,18 @@ export const getApplications = async ({
 }: ActionContext<IChatState, IRootState>): Promise<IApplication[] | undefined> => {
   console.debug('start to get applications for chat');
   state.status.getApplications = Status.Request;
-  const currentApplication = state.application;
-  console.debug('current application', currentApplication);
   try {
     const { data: applications } = await applicationOperator.getAll({
       user_id: rootState?.user?.id,
       service_id: CHAT_SERVICE_ID
     });
-    console.debug('get applications success', applications);
+    console.debug('get applications success for chat', applications);
     state.status.getApplications = Status.Success;
     commit('setApplications', applications.items);
-    console.debug('set applications', applications.items);
-    const finalApplication = getFinalApplication(applications.items, currentApplication);
-    console.debug('final application', finalApplication);
-    if (finalApplication) {
-      console.debug('set final application', finalApplication, finalApplication?.type);
-      commit('setApplication', finalApplication);
-    } else {
-      console.debug('set application undefined', undefined);
-      commit('setApplication', undefined);
-    }
+    console.debug('set applications for chat', applications.items);
     return applications.items;
   } catch (error) {
-    console.error('get applications failed', error);
+    console.error('get applications failed for chat', error);
     state.status.getApplications = Status.Error;
     commit('setApplications', undefined);
     commit('setApplication', undefined);

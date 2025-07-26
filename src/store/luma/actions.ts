@@ -6,7 +6,6 @@ import { IApplication, ICredential, ILumaConfig, ILumaTask, IService } from '@/m
 import { Status } from '@/models/common';
 import { LUMA_SERVICE_ID } from '@/constants';
 import { mergeAndSortLists } from '@/utils/merge';
-import { getFinalApplication } from '@/utils';
 
 export const resetAll = ({ commit }: ActionContext<ILumaState, IRootState>): void => {
   commit('resetAll');
@@ -96,14 +95,6 @@ export const getApplications = async ({
     state.status.getApplications = Status.Success;
     console.debug('get applications success', applications.items);
     commit('setApplications', applications.items);
-    const finalApplication = getFinalApplication(applications.items, currentApplication);
-    if (finalApplication) {
-      console.debug('set final application', finalApplication, finalApplication?.type);
-      await dispatch('setApplication', finalApplication);
-    } else {
-      console.debug('set application undefined', undefined);
-      commit('setApplication', undefined);
-    }
     return applications.items;
   } catch (error) {
     console.error('get applications failed', error);

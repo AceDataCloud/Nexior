@@ -1,6 +1,6 @@
 <template>
   <el-descriptions :column="1" class="flex flex-col">
-    <el-descriptions-item :label="$t('application.field.serviceName')">{{
+    <el-descriptions-item v-if="application.scope === 'Individual'" :label="$t('application.field.serviceName')">{{
       application.service?.title
     }}</el-descriptions-item>
     <el-descriptions-item :label="$t('application.field.id')">
@@ -19,7 +19,8 @@
       {{ $dayjs.format(application.expired_at) }}
     </el-descriptions-item>
     <el-descriptions-item :label="$t('application.field.remainingAmount')">
-      {{ application?.remaining_amount?.toFixed(6) }} {{ $t(`service.unit.` + application?.service?.unit + 's') }}
+      {{ application?.remaining_amount?.toFixed(6) }}
+      {{ $t(`service.unit.` + (application?.service?.unit || 'credit') + 's') }}
     </el-descriptions-item>
   </el-descriptions>
 </template>

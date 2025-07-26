@@ -6,7 +6,6 @@ import { IApplication, ICredential, IHailuoConfig, IHailuoTask, IService } from 
 import { Status } from '@/models/common';
 import { HAILUO_SERVICE_ID } from '@/constants';
 import { mergeAndSortLists } from '@/utils/merge';
-import { getFinalApplication } from '@/utils';
 
 export const resetAll = ({ commit }: ActionContext<IHailuoState, IRootState>): void => {
   commit('resetAll');
@@ -95,14 +94,6 @@ export const getApplications = async ({
     });
     state.status.getApplications = Status.Success;
     commit('setApplications', applications.items);
-    const finalApplication = getFinalApplication(applications.items, currentApplication);
-    if (finalApplication) {
-      console.debug('set final application', finalApplication, finalApplication?.type);
-      await dispatch('setApplication', finalApplication);
-    } else {
-      console.debug('set application undefined', undefined);
-      commit('setApplication', undefined);
-    }
     return applications.items;
   } catch (error) {
     console.error('get applications failed', error);

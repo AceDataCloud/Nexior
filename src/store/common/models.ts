@@ -1,4 +1,4 @@
-import { ISite, IToken, IUser } from '@/models';
+import { IApplication, ICredential, ISite, IToken, IUser, Status } from '@/models';
 import { IMidjourneyState } from '../midjourney/models';
 import { IChatState } from '../chat/models';
 import { IQrartState } from '../qrart/models';
@@ -28,6 +28,12 @@ export interface ICommonState {
         [key: string]: number;
       }
     | undefined;
+  applications: IApplication[] | undefined;
+  status: {
+    getService: Status | undefined;
+    getApplications: Status | undefined;
+    getTasks: Status | undefined;
+  };
 }
 
 export interface IAppState {

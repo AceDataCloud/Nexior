@@ -12,6 +12,7 @@ import headshotsState from '../headshots/state';
 
 export default (): IRootState => {
   return {
+    applications: [],
     fingerprint: undefined,
     currency: 'usd',
     exchange: undefined,
@@ -24,6 +25,11 @@ export default (): IRootState => {
       access: undefined,
       refresh: undefined,
       expiration: undefined
+    },
+    status: {
+      getService: undefined,
+      getApplications: undefined,
+      getTasks: undefined
     },
     setting: {},
     site: {},

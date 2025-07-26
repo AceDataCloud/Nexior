@@ -1,7 +1,14 @@
 import { ActionContext } from 'vuex';
 import { IRootState } from './models';
-import { userOperator, oauthOperator, siteOperator, exchangeOperator } from '@/operators';
-import { IToken, IUser } from '@/models';
+import {
+  userOperator,
+  oauthOperator,
+  siteOperator,
+  exchangeOperator,
+  applicationOperator,
+  credentialOperator
+} from '@/operators';
+import { IApplication, IApplicationScope, IApplicationType, ICredential, IToken, IUser, Status } from '@/models';
 import { getSiteOrigin } from '@/utils/site';
 import { loginRedirect } from '@/utils';
 import { SURFACE_ANDROID, SURFACE_IOS } from '@/constants';
@@ -138,6 +145,56 @@ export const getSite = async ({ state, commit }: ActionContext<IRootState, IRoot
   }
 };
 
+export const setApplications = async ({ commit }: any, payload: IApplication[]): Promise<void> => {
+  console.debug('set applications', payload);
+  commit('setApplications', payload);
+};
+
+export const getApplications = async ({
+  commit,
+  state,
+  rootState
+}: ActionContext<IRootState, IRootState>): Promise<IApplication[] | undefined> => {
+  console.debug('start to get applications for global');
+  state.status.getApplications = Status.Request;
+  try {
+    const { data: applications } = await applicationOperator.getAll({
+      limit: 100,
+      offset: 0,
+      user_id: rootState?.user?.id,
+      ordering: '-created_at',
+      type: IApplicationType.USAGE,
+      scope: IApplicationScope.GLOBAL
+    });
+    console.debug('global applications from online', applications);
+    state.status.getApplications = Status.Success;
+    commit('setApplications', applications.items);
+    return applications.items;
+  } catch (error) {
+    console.error('get applications failed for global', error);
+    state.status.getApplications = Status.Error;
+    commit('setApplications', undefined);
+  }
+};
+
+export const createCredential = async ({ commit, state }: any): Promise<ICredential | undefined> => {
+  const application = state.application;
+  console.debug('prepare to create credential for application', application);
+  if (!application) {
+    console.error('Application not found');
+    return undefined;
+  }
+  console.debug('creating create credential for application', application);
+  const { data: credential } = await credentialOperator.create({
+    application_id: application?.id,
+    host: window.location.origin
+  });
+  console.debug('created credential success', credential);
+  commit('setCredential', credential);
+  console.debug('end createCredential');
+  return credential;
+};
+
 export const login = async ({ state, commit }: ActionContext<IRootState, IRootState>) => {
   const site = state?.site?.origin;
   if (import.meta.env.VITE_SURFACE === SURFACE_IOS || import.meta.env.VITE_SURFACE === SURFACE_ANDROID) {
@@ -187,5 +244,8 @@ export default {
   getUser,
   initializeSite,
   getSite,
-  setExchange
+  setExchange,
+  setApplications,
+  getApplications,
+  createCredential
 };

@@ -1,3 +1,4 @@
+import { IPackage } from './api';
 import { ICredential } from './credential';
 import { IService } from './service';
 
@@ -6,9 +7,16 @@ export enum IApplicationType {
   PERIOD = 'Period'
 }
 
+export enum IApplicationScope {
+  INDIVIDUAL = 'Individual',
+  GLOBAL = 'Global'
+}
+
 export interface IApplication {
   id?: string;
+  packages?: IPackage[];
   type?: IApplicationType;
+  scope?: IApplicationScope;
   service_id?: string;
   service?: IService;
   user_id?: string;

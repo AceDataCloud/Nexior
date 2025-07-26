@@ -212,14 +212,14 @@ export default defineComponent({
       if (application.remaining_amount === undefined || application.remaining_amount === null) {
         return '';
       }
-      const unit = this.$t(`service.unit.${application?.service?.unit}s`);
+      const unit = this.$t(`service.unit.${application?.service?.unit || 'credit'}s`);
       return `${application.remaining_amount?.toFixed(6)} ${unit}`;
     },
     getUsedAmount(application: IApplication) {
       if (application.used_amount === undefined || application.used_amount === null) {
         return '';
       }
-      const unit = this.$t(`service.unit.${application?.service?.unit}s`);
+      const unit = this.$t(`service.unit.${application?.service?.unit || 'credit'}s`);
       return `${application.used_amount?.toFixed(6)} ${unit}`;
     }
   }

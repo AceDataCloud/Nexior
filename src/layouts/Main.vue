@@ -7,15 +7,12 @@
       class="fixed right-2 top-2"
       :application="application"
       :applications="applications"
-      :initializing="initializing"
       :show-price="false"
       :authenticated="!!$store.state.token.access"
       :service="service"
-      :need-apply="needApply"
       @select="$store.dispatch(`${appName}/setApplication`, $event)"
-      @refresh="$store.dispatch(`${appName}/getApplications`)"
-      @apply="onApply"
     />
+    <application-confirm v-model.visible="applying" @apply="onApply" />
   </div>
 </template>
 
@@ -23,20 +20,24 @@
 import { defineComponent } from 'vue';
 import Navigator from '@/components/common/Navigator.vue';
 import ApplicationStatus from '@/components/application/Status.vue';
-import { IApplicationDetailResponse, Status } from '@/models';
+import { IApplicationDetailResponse, IApplicationScope, IApplicationType, Status } from '@/models';
 import { IAppState } from '@/store/common/models';
 import { ElMessage } from 'element-plus';
 import { applicationOperator } from '@/operators';
 import { ERROR_CODE_DUPLICATION } from '@/constants';
+import ApplicationConfirm from '@/components/application/Confirm.vue';
+import { getFinalApplication } from '@/utils';
 
 export default defineComponent({
   name: 'LayoutMain',
   components: {
     Navigator,
-    ApplicationStatus
+    ApplicationStatus,
+    ApplicationConfirm
   },
   data() {
     return {
+      applying: false,
       mobile: window.innerWidth < 768
     };
   },
@@ -44,17 +45,17 @@ export default defineComponent({
     appName(): keyof IAppState {
       return this.$route.meta.appName as keyof IAppState;
     },
-    initializing() {
-      return this.$store.state[this.appName]?.status.getApplications === Status.Request;
-    },
-    needApply() {
-      return this.$store.state[this.appName]?.status.getApplications === Status.Success && !this.application;
-    },
     application() {
+      // Global application and individual application can be used here
       return this.$store.state[this.appName]?.application;
     },
     applications() {
-      return this.$store.state[this.appName]?.applications;
+      // Combine individual and global applications
+      const individualApplications = this.$store.state[this.appName]?.applications ?? [];
+      console.debug('individualApplications', individualApplications);
+      const globalApplications = this.$store.state.applications ?? [];
+      console.debug('globalApplications', globalApplications);
+      return globalApplications.concat(individualApplications);
     },
     loading() {
       return this.$store.state[this.appName]?.status?.getApplications === Status.Request;
@@ -63,21 +64,55 @@ export default defineComponent({
       return this.$store.state[this.appName]?.service;
     }
   },
+  watch: {
+    appName() {
+      this.onInitialize();
+    }
+  },
   mounted() {
+    // Fetch applications when the component is mounted
+    this.onInitialize();
+    // Update mobile state on resize
     window.addEventListener('resize', () => {
       this.mobile = window.innerWidth < 768;
     });
   },
   methods: {
+    async onInitialize() {
+      console.debug('Fetching all individual and global applications for', this.appName);
+      Promise.all([
+        this.$store.dispatch('getApplications'),
+        this.$store.dispatch(`${this.appName}/getApplications`)
+      ]).finally(() => {
+        console.debug('Fetched all applications', this.applications);
+        // Check if we need to apply for a global application
+        if (this.$store.state.applications?.length === 0) {
+          // If no global applications exist, we need to apply
+          this.applying = true;
+        }
+        // set the application if it exists
+        const currentApplication = this.$store.state[this.appName]?.application;
+        console.debug('current application', currentApplication);
+        const finalApplication = getFinalApplication(this.applications, currentApplication);
+        console.debug('final application', finalApplication);
+        if (finalApplication) {
+          console.debug('set final application', finalApplication, finalApplication?.type);
+          this.$store.dispatch(`${this.appName}/setApplication`, finalApplication);
+        }
+      });
+    },
     onApply() {
+      // Only can apply for global application, not individual application
       applicationOperator
         .create({
-          // @ts-ignore
-          application: this.application
+          type: IApplicationType.USAGE,
+          scope: IApplicationScope.GLOBAL,
+          user_id: this.$store.getters.user.id
         })
         .then(({ data: data }: { data: IApplicationDetailResponse }) => {
-          this.application = data;
+          // this.application = data;
           ElMessage.success(this.$t('application.message.applySuccessfully'));
+          this.onInitialize();
         })
         .catch((error) => {
           if (error?.response?.data?.code === ERROR_CODE_DUPLICATION) {
