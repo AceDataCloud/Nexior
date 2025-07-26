@@ -1,14 +1,7 @@
 <template>
   <div class="status">
     <el-dialog v-model="showInfo" width="600px">
-      <div v-if="initializing && application === undefined">
-        <el-skeleton :rows="1" class="text-center">
-          <template #template>
-            <el-skeleton-item variant="p" class="shimmer" />
-          </template>
-        </el-skeleton>
-      </div>
-      <div v-else-if="application" class="status">
+      <div v-if="application">
         <p class="text-left mb-4">
           {{ $t('application.message.applicationSelection') }}
         </p>
@@ -38,23 +31,17 @@
         </span>
       </div>
     </el-dialog>
-    <el-tooltip effect="dark" placement="top-start">
-      <el-button circle @click="showInfo = true">
-        <font-awesome-icon icon="fa-solid fa-wallet" class="icon" />
-      </el-button>
-    </el-tooltip>
-    <application-confirm v-model.visible="applying" @apply="onApply" />
+    <el-button circle @click="showInfo = true">
+      <font-awesome-icon icon="fa-solid fa-wallet" class="icon" />
+    </el-button>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { applicationOperator } from '@/operators';
-import { ElButton, ElMessage, ElSkeleton, ElSkeletonItem, ElIcon, ElDialog, ElTooltip } from 'element-plus';
-import ApplicationConfirm from '@/components/application/Confirm.vue';
-import { IApplicationType, IApplication, IApplicationDetailResponse, IService, IApplicationScope } from '@/models';
-import { ERROR_CODE_DUPLICATION } from '@/constants/errorCode';
-import { ROUTE_CONSOLE_APPLICATION_SUBSCRIBE } from '@/router';
+import { ElButton, ElIcon, ElDialog, ElTooltip } from 'element-plus';
+import { IApplicationType, IApplication, IService } from '@/models';
+import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_APPLICATION_SUBSCRIBE } from '@/router';
 import ApiPrice from '@/components/api/Price.vue';
 import { Check } from '@element-plus/icons-vue';
 import ApplicationInfo from './Info.vue';
@@ -62,7 +49,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export interface IData {
   showInfo: boolean;
-  applying: boolean;
   applicationType: typeof IApplicationType;
 }
 
@@ -74,10 +60,6 @@ export default defineComponent({
     ElDialog,
     FontAwesomeIcon,
     ApplicationInfo,
-    ApplicationConfirm,
-    ElSkeleton,
-    ElTooltip,
-    ElSkeletonItem,
     ApiPrice,
     ElIcon
   },
@@ -90,10 +72,6 @@ export default defineComponent({
       type: Array as () => IApplication[] | undefined,
       default: undefined
     },
-    initializing: {
-      type: Boolean,
-      default: false
-    },
     showPrice: {
       type: Boolean,
       default: true
@@ -103,11 +81,10 @@ export default defineComponent({
       required: true
     }
   },
-  emits: ['apply', 'refresh', 'applied', 'update:application', 'select'],
+  emits: ['select'],
   data(): IData {
     return {
       showInfo: false,
-      applying: false,
       applicationType: IApplicationType
     };
   },
@@ -119,17 +96,11 @@ export default defineComponent({
       return this.$store.state.user;
     }
   },
-  mounted() {
-    this.onGetGlobalApplications();
-  },
   methods: {
-    onGetGlobalApplications() {
-      this.$store.dispatch('getApplications');
-    },
     onBuyMore(application: IApplication) {
       // open in new tab for this url
       const url = this.$router.resolve({
-        name: ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
+        name: ROUTE_CONSOLE_APPLICATION_EXTRA,
         params: {
           id: application.id
         }
@@ -138,24 +109,6 @@ export default defineComponent({
     },
     onSelectApplication(application: IApplication) {
       this.$emit('select', application);
-    },
-    onApply() {
-      applicationOperator
-        .create({
-          type: IApplicationType.USAGE,
-          scope: IApplicationScope.GLOBAL,
-          user_id: this.user?.id
-        })
-        .then(({ data: data }: { data: IApplicationDetailResponse }) => {
-          ElMessage.success(this.$t('application.message.applySuccessfully'));
-          this.$store.dispatch('createCredential');
-        })
-        .catch((error) => {
-          if (error?.response?.data?.code === ERROR_CODE_DUPLICATION) {
-            ElMessage.error(this.$t('application.message.alreadyApplied'));
-          }
-          this.applying = false;
-        });
     }
   }
 });
@@ -179,7 +132,7 @@ export default defineComponent({
     }
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
     .icon {
       color: var(--el-color-white);
       font-size: 20px;

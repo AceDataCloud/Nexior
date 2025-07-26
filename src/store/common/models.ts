@@ -28,9 +28,7 @@ export interface ICommonState {
         [key: string]: number;
       }
     | undefined;
-  application: IApplication | undefined;
   applications: IApplication[] | undefined;
-  credential: ICredential | undefined;
   status: {
     getService: Status | undefined;
     getApplications: Status | undefined;

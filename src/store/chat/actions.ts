@@ -84,8 +84,6 @@ export const getApplications = async ({
 }: ActionContext<IChatState, IRootState>): Promise<IApplication[] | undefined> => {
   console.debug('start to get applications for chat');
   state.status.getApplications = Status.Request;
-  const currentApplication = state.application;
-  console.debug('current application', currentApplication);
   try {
     const { data: applications } = await applicationOperator.getAll({
       user_id: rootState?.user?.id,
@@ -95,15 +93,6 @@ export const getApplications = async ({
     state.status.getApplications = Status.Success;
     commit('setApplications', applications.items);
     console.debug('set applications for chat', applications.items);
-    const finalApplication = getFinalApplication(applications.items, currentApplication);
-    console.debug('final application for chat', finalApplication);
-    if (finalApplication) {
-      console.debug('set final application for chat', finalApplication, finalApplication?.type);
-      commit('setApplication', finalApplication);
-    } else {
-      console.debug('set application undefined for chat', undefined);
-      commit('setApplication', undefined);
-    }
     return applications.items;
   } catch (error) {
     console.error('get applications failed for chat', error);

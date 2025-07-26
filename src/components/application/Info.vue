@@ -1,6 +1,6 @@
 <template>
   <el-descriptions :column="1" class="flex flex-col">
-    <el-descriptions-item :label="$t('application.field.serviceName')">{{
+    <el-descriptions-item v-if="application.scope === 'Individual'" :label="$t('application.field.serviceName')">{{
       application.service?.title
     }}</el-descriptions-item>
     <el-descriptions-item :label="$t('application.field.id')">

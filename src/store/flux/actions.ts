@@ -6,7 +6,6 @@ import { IApplication, ICredential, IFluxConfig, IFluxTask, IService } from '@/m
 import { Status } from '@/models/common';
 import { FLUX_SERVICE_ID } from '@/constants';
 import { mergeAndSortLists } from '@/utils/merge';
-import { getFinalApplication } from '@/utils';
 
 export const resetAll = ({ commit }: ActionContext<IFluxState, IRootState>): void => {
   commit('resetAll');
@@ -86,8 +85,6 @@ export const getApplications = async ({
 }: ActionContext<IFluxState, IRootState>): Promise<IApplication[] | undefined> => {
   console.debug('start to get applications for chat');
   state.status.getApplications = Status.Request;
-  const currentApplication = state.application;
-  console.debug('current application', currentApplication);
   try {
     const { data: applications } = await applicationOperator.getAll({
       user_id: rootState?.user?.id,
@@ -95,14 +92,6 @@ export const getApplications = async ({
     });
     state.status.getApplications = Status.Success;
     commit('setApplications', applications.items);
-    const finalApplication = getFinalApplication(applications.items, currentApplication);
-    if (finalApplication) {
-      console.debug('set final application', finalApplication, finalApplication?.type);
-      await dispatch('setApplication', finalApplication);
-    } else {
-      console.debug('set application undefined', undefined);
-      commit('setApplication', undefined);
-    }
     return applications.items;
   } catch (error) {
     console.error('get applications failed', error);

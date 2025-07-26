@@ -1,4 +1,4 @@
-import { IApplication, ICredential, IUser } from '@/models';
+import { IApplication, IUser } from '@/models';
 import { IRootState } from './models';
 
 export const setUser = (state: IRootState, payload: IUser): void => {
@@ -56,15 +56,6 @@ export const setCurrency = (state: IRootState, payload: string): void => {
   state.currency = payload;
 };
 
-export const setCredential = (state: IRootState, payload: ICredential): void => {
-  state.credential = payload;
-};
-
-export const setApplication = (state: IRootState, payload: IApplication): void => {
-  console.debug('set application for global', payload);
-  state.application = payload;
-};
-
 export const setApplications = (state: IRootState, payload: IApplication[]): void => {
   console.debug('set applications for global', payload);
   state.applications = payload;
@@ -81,7 +72,5 @@ export default {
   setToken,
   resetToken,
   resetSite,
-  setCredential,
-  setApplication,
   setApplications
 };

@@ -10,7 +10,7 @@ import {
 } from '@/operators';
 import { IApplication, IApplicationScope, IApplicationType, ICredential, IToken, IUser, Status } from '@/models';
 import { getSiteOrigin } from '@/utils/site';
-import { getFinalApplication, loginRedirect } from '@/utils';
+import { loginRedirect } from '@/utils';
 import { SURFACE_ANDROID, SURFACE_IOS } from '@/constants';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
 
@@ -145,24 +145,6 @@ export const getSite = async ({ state, commit }: ActionContext<IRootState, IRoot
   }
 };
 
-export const setApplication = async ({ commit, dispatch }: any, payload: IApplication): Promise<void> => {
-  console.debug('set application', payload);
-  commit('setApplication', payload);
-  console.debug('application is set');
-  if (!payload) {
-    console.debug('application is null, return');
-    return;
-  }
-  const credential = payload?.credentials?.find((credential) => credential?.host === window.location.origin);
-  if (credential) {
-    console.debug('credential exists, set credential', credential);
-    commit('setCredential', credential);
-  } else {
-    console.debug('credential not exists, start to create credential for application', payload);
-    await dispatch('createCredential');
-  }
-};
-
 export const setApplications = async ({ commit }: any, payload: IApplication[]): Promise<void> => {
   console.debug('set applications', payload);
   commit('setApplications', payload);
@@ -170,14 +152,11 @@ export const setApplications = async ({ commit }: any, payload: IApplication[]):
 
 export const getApplications = async ({
   commit,
-  dispatch,
   state,
   rootState
 }: ActionContext<IRootState, IRootState>): Promise<IApplication[] | undefined> => {
   console.debug('start to get applications for global');
   state.status.getApplications = Status.Request;
-  const currentApplication = state.application;
-  console.debug('current application', currentApplication);
   try {
     const { data: applications } = await applicationOperator.getAll({
       limit: 100,
@@ -190,20 +169,11 @@ export const getApplications = async ({
     console.debug('global applications from online', applications);
     state.status.getApplications = Status.Success;
     commit('setApplications', applications.items);
-    const finalApplication = getFinalApplication(applications.items, currentApplication);
-    if (finalApplication) {
-      console.debug('set final application for global', finalApplication, finalApplication?.type);
-      await dispatch('setApplication', finalApplication);
-    } else {
-      console.debug('set application undefined for global', undefined);
-      commit('setApplication', undefined);
-    }
     return applications.items;
   } catch (error) {
     console.error('get applications failed for global', error);
     state.status.getApplications = Status.Error;
     commit('setApplications', undefined);
-    commit('setApplication', undefined);
   }
 };
 
@@ -275,7 +245,6 @@ export default {
   initializeSite,
   getSite,
   setExchange,
-  setApplication,
   setApplications,
   getApplications,
   createCredential
