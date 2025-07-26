@@ -7,7 +7,6 @@
     "message": "额度",
     "description": "服务的额度。"
   },
-
   "field.expiredAt": {
     "message": "过期时间",
     "description": "申请的过期时间。"
@@ -80,6 +79,10 @@
     "message": "数量",
     "description": "申请的数量。"
   },
+  "field.scope": {
+    "message": "范围",
+    "description": "申请的范围。"
+  },
   "field.traceId": {
     "message": "跟踪ID",
     "description": "API服务的申请的一个API调用的跟踪ID，不要翻译，保持为'跟踪ID'。"
@@ -131,6 +134,10 @@
   "message.notApplied": {
     "message": "您尚未申请此服务，请在使用之前申请该服务",
     "description": "当用户尚未申请此服务时向用户显示的消息。"
+  },
+  "message.globalBalanceBuyDescription": {
+    "message": "本次充值的积分为通用余额，可以用于任意服务。",
+    "description": "当用户充值通用余额时向用户显示的消息。"
   },
   "message.yourApplication": {
     "message": "您的申请",
@@ -207,6 +214,10 @@
   "title.buyService": {
     "message": "购买服务",
     "description": "当用户想要购买服务时页面的标题。"
+  },
+  "title.globalBuy": {
+    "message": "通用余额充值",
+    "description": "当用户想要充值通用余额时页面的标题。"
   },
   "title.applicationRemainingCount": {
     "message": "修改数量",

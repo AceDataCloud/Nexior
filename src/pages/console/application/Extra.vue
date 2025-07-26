@@ -9,24 +9,19 @@
       <el-row>
         <el-col :span="24">
           <el-card shadow="hover">
-            <el-row v-show="false">
-              <el-col class="text-center">
-                <el-radio-group v-if="applicationId" v-model="type" size="large" class="mb-4" @change="onChangeType">
-                  <el-radio-button label="Period">
-                    {{ $t('application.type.period') }}
-                  </el-radio-button>
-                  <el-radio-button label="Usage">
-                    {{ $t('application.type.usage') }}
-                  </el-radio-button>
-                </el-radio-group>
-              </el-col>
-            </el-row>
             <el-row>
               <el-col :span="16" :offset="4">
                 <el-skeleton v-if="loading" />
                 <el-form v-else-if="application" label-width="100px">
-                  <el-form-item :label="$t('application.field.service')">
+                  <div v-if="!application?.service">
+                    <p class="description">{{ $t('application.message.globalBalanceBuyDescription') }}</p>
+                    <el-divider border-style="dashed" />
+                  </div>
+                  <el-form-item v-if="application?.service" :label="$t('application.field.service')">
                     {{ application?.service?.title }}
+                  </el-form-item>
+                  <el-form-item v-else :label="$t('application.field.scope')">
+                    {{ $t('application.title.globalBuy') }}
                   </el-form-item>
                   <el-form-item :label="$t('application.field.package')" class="mb-0">
                     <el-radio-group v-if="packages" v-model="form.packageId">
@@ -34,7 +29,7 @@
                         <span v-show="pkgIndex !== 0" class="corner">
                           {{ getDiscount(pkg) }}
                         </span>
-                        {{ pkg.amount }} {{ $t(`service.unit.${application?.service?.unit}s`) }}
+                        {{ pkg.amount }} {{ $t(`service.unit.${application?.service?.unit || 'credit'}s`) }}
                       </el-radio-button>
                     </el-radio-group>
                   </el-form-item>
@@ -52,7 +47,7 @@
                       >({{
                         getPriceString({ value: package?.price / package?.amount }) +
                         ' / ' +
-                        $t(`service.unit.${application?.service?.unit}`)
+                        $t(`service.unit.${application?.service?.unit || 'credits'}`)
                       }})
                     </span>
                   </el-form-item>
@@ -79,7 +74,7 @@
                     </el-button>
                   </el-form-item>
                   <el-divider border-style="dashed" />
-                  <el-form-item label="">
+                  <el-form-item v-show="false" label="">
                     <span>{{ $t('console.message.doNotWantExtra') }}</span>
                     <el-button type="primary" class="btn btn-subscribe" round size="small" @click="onSubscribe">
                       {{ $t('console.message.subscribe') }}
@@ -172,7 +167,11 @@ export default defineComponent({
       return 0;
     },
     packages() {
-      return this.application?.service?.packages?.filter((pkg) => pkg.type === IPackageType.USAGE);
+      return (
+        this.application?.packages
+          ?.filter((pkg) => pkg.type === IPackageType.USAGE)
+          .sort((a, b) => a.amount - b.amount) || []
+      );
     },
     package() {
       if (this.packages && this.form.packageId) {
@@ -246,7 +245,13 @@ export default defineComponent({
                 package_id: this.package.id
               }
             : {}),
-          description: `${this.application?.service?.title} x ${this.package?.amount} ${unit}`
+          description: this.application?.service
+            ? `${this.application?.service?.title} x ${this.package?.amount} ${unit}`
+            : this.$t('application.title.globalBuy') +
+              ' - ' +
+              this.package?.amount +
+              ' ' +
+              this.$t('service.unit.credits')
         })
         .then(({ data: data }: { data: IOrderDetailResponse }) => {
           this.creating = false;

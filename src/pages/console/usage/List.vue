@@ -16,13 +16,13 @@
             clearable
             @change="onApplicationChange"
           >
-            <el-option v-for="item in applications" :key="item.id" :label="item.service?.title" :value="item?.id" />
+            <el-option v-for="item in applications" :key="item.id" :label="item.service?.title" :value="item?.id!" />
           </el-select>
         </el-col>
         <el-col :md="8" :sm="12" class="mb-4">
           <span class="inline-block mr-3"> {{ $t('usage.field.api') }} </span>
           <el-select v-model="apiId" :placeholder="$t('usage.field.api')" clearable @change="onApiChange">
-            <el-option v-for="item in apis" :key="item?.id" :label="item?.title" :value="item?.id" />
+            <el-option v-for="item in apis" :key="item?.id" :label="item?.title" :value="item?.id!" />
           </el-select>
         </el-col>
       </el-row>
@@ -221,21 +221,21 @@ export default defineComponent({
       if (apiUsage.remaining_amount === undefined || apiUsage.remaining_amount === null) {
         return '';
       }
-      const unit = this.$t(`service.unit.${apiUsage?.service?.unit}s`);
+      const unit = this.$t(`service.unit.${apiUsage?.service?.unit || 'credit'}s`);
       return `${apiUsage.remaining_amount?.toFixed(6)} ${unit}`;
     },
     getUsedAmount(apiUsage: IApiUsage) {
       if (apiUsage.used_amount === undefined || apiUsage.used_amount === null) {
         return '';
       }
-      const unit = this.$t(`service.unit.${apiUsage?.service?.unit}s`);
+      const unit = this.$t(`service.unit.${apiUsage?.service?.unit || 'credit'}s`);
       return `${apiUsage.used_amount?.toFixed(6)} ${unit}`;
     },
     getDeductedAmount(apiUsage: IApiUsage) {
       if (apiUsage?.deducted_amount === undefined || apiUsage?.deducted_amount === null) {
         return '';
       }
-      const unit = this.$t(`service.unit.${apiUsage?.service?.unit}s`);
+      const unit = this.$t(`service.unit.${apiUsage?.service?.unit || 'credit'}s`);
       return `${apiUsage.deducted_amount?.toFixed(6)} ${unit}`;
     },
     onFetchApplications() {

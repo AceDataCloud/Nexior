@@ -1,3 +1,4 @@
+import { IPackage } from './api';
 import { ICredential } from './credential';
 import { IService } from './service';
 
@@ -13,6 +14,7 @@ export enum IApplicationScope {
 
 export interface IApplication {
   id?: string;
+  packages?: IPackage[];
   type?: IApplicationType;
   scope?: IApplicationScope;
   service_id?: string;
