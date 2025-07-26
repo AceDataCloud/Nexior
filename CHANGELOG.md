@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sat, 26 Jul 2025 16:12:09 GMT and should not be manually modified.
+This log was last generated on Sat, 26 Jul 2025 18:15:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 3.9.2
+
+Sat, 26 Jul 2025 18:15:17 GMT
+
+### Patches
+
+- fix name (cqc@cuiqingcai.com)
+-  refine console (cqc@cuiqingcai.com)
 
 ## 3.9.1
 
