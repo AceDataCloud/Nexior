@@ -1,8 +1,8 @@
 <template>
   <div :direction="direction" class="navigator">
     <div class="top">
-      <div v-if="direction === 'column'">
-        <logo-tiny @click="onHome" />
+      <div class="w-full flex justify-center">
+        <logo v-if="direction === 'column'" @click.stop="onHome" />
       </div>
       <div
         v-for="(link, linkIndex) in links"
@@ -44,14 +44,14 @@ import {
   ROUTE_KLING_HISTORY
 } from '@/router/constants';
 import { CHAT_MODEL_ICON_CHATGPT, CHAT_MODEL_ICON_DEEPSEEK, CHAT_MODEL_ICON_GROK } from '@/constants/chat';
-import LogoTiny from './LogoTiny.vue';
+import Logo from './Logo.vue';
 import UserCenter from '@/components/user/Center.vue';
 
 export default defineComponent({
   name: 'Navigator',
   components: {
     ElImage,
-    LogoTiny,
+    Logo,
     ElTooltip,
     UserCenter
   },
@@ -267,53 +267,21 @@ export default defineComponent({
   }
   &[direction='column'] {
     flex-direction: column;
-    .el-menu {
-      width: 150px;
-      border-right: none;
-      background: none;
-      .el-menu-item {
-        height: 50px;
-        color: var(--el-text-color-primary);
-        &.active,
-        &:hover,
-        &:focus {
-          background-color: var(--el-button-hover-bg-color);
-          color: var(--el-color-primary);
-        }
-      }
-    }
 
-    .chevron {
-      position: absolute;
-      right: -12px;
-      top: 50%;
-      transform: translateY(-50%) scale(0.8);
-      z-index: 10;
-    }
-
-    .logo {
-      width: 80%;
-      max-height: 50px;
-      cursor: pointer;
-      margin: 10px auto 20px auto;
-      display: block;
-      &.tiny {
-        margin: 0 auto 10px auto;
-        width: 40px;
-        height: 40px;
-      }
-    }
-
-    .top,
-    .bottom {
+    .top {
+      flex: 1;
       display: flex;
       flex-direction: column;
       padding-top: 10px;
-      min-width: 60px;
+      width: 60px;
+      gap: 15px;
+      .logo {
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+      }
       .link {
         width: 100%;
-        height: 40px;
-        margin-bottom: 10px;
         .avatar {
           display: block;
           margin: auto;
@@ -325,9 +293,9 @@ export default defineComponent({
         }
       }
     }
+
     .bottom {
-      position: absolute;
-      bottom: 0;
+      height: 50px;
       display: flex;
       flex-direction: column;
       width: 100%;

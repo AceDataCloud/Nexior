@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper console">
     <div class="main">
       <side-panel class="side" />
       <router-view class="panel" />
@@ -41,6 +41,7 @@ export default defineComponent({
 
   .navigator {
     height: 100%;
+    width: 60px;
     border-right: 1px solid var(--el-border-color);
   }
 
@@ -50,6 +51,17 @@ export default defineComponent({
     flex: 1;
     display: flex;
     flex-direction: row;
+    .side {
+      width: 200px;
+      height: 100%;
+    }
+    .panel {
+      width: calc(100% - 200px);
+      height: 100%;
+      padding: 30px;
+      background-color: var(--el-bg-color-page);
+      overflow: hidden;
+    }
   }
 }
 
@@ -74,6 +86,37 @@ export default defineComponent({
         width: 100%;
         height: 100%;
       }
+    }
+  }
+}
+</style>
+
+<style lang="scss">
+.wrapper.console {
+  .panel {
+    .title {
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: var(--el-text-color-primary);
+    }
+
+    .el-table {
+      max-height: calc(100vh - 250px);
+      margin-bottom: 50px;
+      overflow-y: scroll;
+    }
+  }
+
+  .pagination {
+    margin: auto;
+    width: fit-content;
+  }
+
+  @media (max-width: 767px) {
+    .panel {
+      width: 100%;
+      height: 100%;
     }
   }
 }

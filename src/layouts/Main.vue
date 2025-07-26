@@ -131,10 +131,13 @@ export default defineComponent({
   display: flex;
   flex-direction: row-reverse;
   overflow: hidden;
+
   .navigator {
     height: 100%;
+    width: 60px;
     border-right: 1px solid var(--el-border-color);
   }
+
   .main {
     height: 100%;
     width: calc(100% - 60px);

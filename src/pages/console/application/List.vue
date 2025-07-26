@@ -16,7 +16,7 @@
               table-layout="fixed"
               :empty-text="$t('common.message.noData')"
             >
-              <el-table-column prop="id" :label="$t('application.field.id')" width="280px" class-name="text-center">
+              <el-table-column prop="id" :label="$t('application.field.id')" width="190px" class-name="text-center">
                 <template #default="scope">
                   <span>{{ scope.row.id }}</span>
                   <span class="copy">
@@ -26,10 +26,10 @@
               </el-table-column>
               <el-table-column :label="$t('application.field.type')" width="80px">
                 <template #default="scope">
-                  <el-tag v-if="scope.row?.type === 'Period'" type="success" effect="dark">
+                  <el-tag v-if="scope.row?.type === 'Period'" type="success" effect="dark" round>
                     {{ $t('application.type.period') }}
                   </el-tag>
-                  <el-tag v-if="scope.row?.type === 'Usage'" effect="dark">
+                  <el-tag v-if="scope.row?.type === 'Usage'" effect="dark" round>
                     {{ $t('application.type.usage') }}
                   </el-tag>
                 </template>
@@ -42,7 +42,7 @@
               <el-table-column
                 prop="remaining_amount"
                 :label="$t('application.field.remainingAmount')"
-                width="160px"
+                width="140px"
                 class-name="text-center"
               >
                 <template #default="scope">
@@ -52,14 +52,14 @@
               <el-table-column
                 prop="used_amount"
                 :label="$t('application.field.usedAmount')"
-                width="160px"
+                width="140px"
                 class-name="text-center"
               >
                 <template #default="scope">
                   <span>{{ getUsedAmount(scope.row) }}</span>
                 </template>
               </el-table-column>
-              <el-table-column :label="$t('application.field.expiredAt')" width="200px">
+              <el-table-column :label="$t('application.field.expiredAt')" width="170px">
                 <template #default="scope">
                   <span v-if="scope.row.expired_at" class="expired-at">{{ $dayjs.format(scope.row.expired_at) }}</span>
                 </template>
@@ -84,7 +84,7 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col>
+        <el-col :span="24">
           <div class="pagination">
             <pagination :current-page="page" :page-size="limit" :total="total" @change="onPageChange"> </pagination>
           </div>
@@ -100,7 +100,7 @@ import { applicationOperator } from '@/operators';
 import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { ElTable, ElRow, ElCol, ElTableColumn, ElCard, ElButton, ElTag } from 'element-plus';
-import { ROUTE_CONSOLE_APPLICATION_SUBSCRIBE } from '@/router/constants';
+import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_APPLICATION_SUBSCRIBE } from '@/router/constants';
 import { IApplication, IApplicationListResponse, ICredentialType, IService } from '@/models';
 
 interface IData {
@@ -139,7 +139,7 @@ export default defineComponent({
       loading: false,
       total: undefined,
       buying: false,
-      limit: 10,
+      limit: 12,
       form: {
         amount: 1
       },
@@ -175,7 +175,7 @@ export default defineComponent({
   methods: {
     onBuyMore(application: IApplication) {
       this.$router.push({
-        name: ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
+        name: ROUTE_CONSOLE_APPLICATION_EXTRA,
         params: {
           id: application.id
         }
@@ -225,37 +225,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.panel {
-  padding: 30px;
-  width: calc(100% - 200px);
-  background-color: var(--el-bg-color-page);
-
-  .title {
-    font-size: 26px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: var(--el-text-color-primary);
-  }
-  .el-table {
-    min-height: calc(100vh - 350px);
-    margin-bottom: 50px;
-    .el-button {
-      border-radius: 20px;
-    }
-  }
-}
-
-.pagination {
-  margin: auto;
-  width: fit-content;
-}
-
-@media (max-width: 767px) {
-  .panel {
-    width: 100%;
-    height: 100%;
-  }
-}
-</style>

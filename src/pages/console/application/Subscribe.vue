@@ -296,19 +296,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.title {
-  font-size: 26px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: var(--el-text-color-primary);
-}
-
 .panel {
-  padding: 30px;
-  overflow: scroll;
-  width: calc(100% - 200px);
-  background-color: var(--el-bg-color-page);
-
   .card {
     padding: 50px 0 100px 0;
     cursor: pointer;
@@ -375,17 +363,6 @@ export default defineComponent({
 
   .extra {
     font-size: 14px;
-  }
-}
-
-.pagination {
-  float: right;
-}
-
-@media (max-width: 767px) {
-  .panel {
-    width: 100%;
-    height: 100%;
   }
 }
 </style>

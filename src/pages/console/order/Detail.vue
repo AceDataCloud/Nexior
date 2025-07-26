@@ -29,6 +29,7 @@
                     <el-descriptions-item v-if="order?.pay_way" :label="$t('order.field.payWay')">
                       <span v-if="order?.pay_way === PayWay.WechatPay">{{ $t('order.title.wechatPay') }}</span>
                       <span v-if="order?.pay_way === PayWay.Stripe">{{ $t('order.title.stripe') }}</span>
+                      <span v-if="order?.pay_way === PayWay.AliPay">{{ $t('order.title.aliPay') }}</span>
                     </el-descriptions-item>
                     <el-descriptions-item :label="$t('order.field.createdAt')">
                       {{ $dayjs.format(order?.created_at) }}
@@ -72,7 +73,6 @@
                     <span class="payname">{{ $t('order.title.wechatPay') }}</span>
                   </div>
                   <div
-                    v-if="false"
                     :class="{
                       payway: true,
                       alipay: true,
@@ -111,15 +111,30 @@
           </el-card>
         </el-col>
       </el-row>
+      <el-row>
+        <el-col :span="24">
+          <wechat-pay-order
+            v-if="order && payWay === PayWay.WechatPay"
+            v-model="order"
+            :visible="paying"
+            @hide="paying = false"
+          />
+          <stripe-pay-order
+            v-if="order && payWay === PayWay.Stripe"
+            v-model="order"
+            :visible="paying"
+            @hide="paying = false"
+          />
+          <alipay-pay-order
+            v-if="order && payWay === PayWay.AliPay"
+            v-model="order"
+            :visible="paying"
+            @hide="paying = false"
+          />
+        </el-col>
+      </el-row>
     </el-col>
   </el-row>
-  <wechat-pay-order
-    v-if="order && payWay === PayWay.WechatPay"
-    v-model="order"
-    :visible="paying"
-    @hide="paying = false"
-  />
-  <stripe-pay-order v-if="order && payWay === PayWay.Stripe" v-model="order" :visible="paying" @hide="paying = false" />
 </template>
 
 <script lang="ts">
@@ -138,6 +153,7 @@ import {
 } from 'element-plus';
 import WechatPayOrder from '@/components/order/WechatPay.vue';
 import StripePayOrder from '@/components/order/StripePay.vue';
+import AlipayPayOrder from '@/components/order/AliPay.vue';
 import { IApplicationType, IOrder, IOrderDetailResponse, OrderState } from '@/models';
 import { getPriceString } from '@/utils';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
@@ -174,7 +190,8 @@ export default defineComponent({
     ElDescriptions,
     ElDescriptionsItem,
     WechatPayOrder,
-    StripePayOrder
+    StripePayOrder,
+    AlipayPayOrder
   },
   data(): IData {
     return {
@@ -258,110 +275,100 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.title {
-  font-size: 26px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: var(--el-text-color-primary);
+.el-card {
+  min-height: 500px;
 }
-
-.panel {
-  padding: 30px;
-  width: calc(100% - 200px);
-  background-color: var(--el-bg-color-page);
-  .el-card {
-    min-height: 500px;
+.order {
+  padding-top: 50px;
+  .price {
+    font-size: 20px;
+    font-weight: bold;
+    &.unfree {
+      color: #ff5441;
+    }
+    &.free {
+      color: #29c287;
+    }
   }
-  .order {
-    padding-top: 50px;
-    .price {
-      font-size: 20px;
-      font-weight: bold;
-      &.unfree {
-        color: #ff5441;
-      }
-      &.free {
-        color: #29c287;
+}
+.payways {
+  overflow: hidden;
+  .payway {
+    cursor: pointer;
+    font-size: 14px;
+    float: left;
+    width: 120px;
+    line-height: 40px;
+    text-align: center;
+    height: 40px;
+    border: 2px solid var(--el-border-color);
+    &:first-child {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+    &:last-child {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    &:not(:last-child) {
+      border-right: none;
+    }
+    &.active {
+      border-top: 2px solid var(--el-color-primary);
+      border-right: 2px solid var(--el-color-primary);
+      border-bottom: 2px solid var(--el-color-primary);
+      border-left: 2px solid var(--el-color-primary);
+      & + .payway {
+        border-left: none;
       }
     }
   }
-  .payways {
-    overflow: hidden;
-    .payway {
-      cursor: pointer;
-      font-size: 14px;
-      float: left;
-      width: 120px;
-      line-height: 40px;
-      text-align: center;
-      height: 40px;
-      border: 2px solid var(--el-border-color);
-      &:first-child {
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-      }
-      &:last-child {
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
-      }
-      &:not(:last-child) {
-        border-right: none;
-      }
-      &.active {
-        border-top: 2px solid var(--el-color-primary);
-        border-right: 2px solid var(--el-color-primary);
-        border-bottom: 2px solid var(--el-color-primary);
-        border-left: 2px solid var(--el-color-primary);
-        & + .payway {
-          border-left: none;
-        }
-      }
-    }
 
-    .payname {
-      display: inline-block;
-      font-size: 12px;
-      margin-left: 5px;
+  .payname {
+    display: inline-block;
+    font-size: 12px;
+    margin-left: 5px;
+    position: relative;
+    top: -2px;
+  }
+
+  .payicon {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    display: inline-block;
+    &.wechatpay {
       position: relative;
-      top: -2px;
+      top: 3px;
+      width: 22px;
+      height: 19px;
+      background-image: url(//midas.gtimg.cn/enterprise/images/ep_new_sprites@2x.png);
+      background-repeat: no-repeat;
+      background-size: 60px 250px;
+      background-position: 0 -50px;
     }
-
-    .payicon {
-      width: 20px;
-      height: 20px;
-      margin-top: 2px;
-      display: inline-block;
-      &.wechatpay {
-        position: relative;
-        top: 3px;
-        width: 22px;
-        height: 19px;
-        background-image: url(//midas.gtimg.cn/enterprise/images/ep_new_sprites@2x.png);
-        background-repeat: no-repeat;
-        background-size: 60px 250px;
-        background-position: 0 -50px;
-      }
-      &.stripe {
-        position: relative;
-        top: 3px;
-        width: 22px;
-        height: 18px;
-        background-image: url(//cdn.acedata.cloud/2023-08-27-164440.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-      }
+    &.stripe {
+      position: relative;
+      top: 3px;
+      width: 22px;
+      height: 18px;
+      background-image: url(//cdn.acedata.cloud/2023-08-27-164440.png);
+      background-size: contain;
+      background-repeat: no-repeat;
     }
-  }
-
-  .btn-pay {
-    width: 150px;
+    &.alipay {
+      position: relative;
+      top: 3px;
+      width: 22px;
+      height: 18px;
+      background-image: url(//cdn.acedata.cloud/alipay.webp);
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
   }
 }
 
-@media (max-width: 767px) {
-  .panel {
-    width: 100%;
-    height: 100%;
-  }
+.btn-pay {
+  width: 150px;
 }
 </style>
