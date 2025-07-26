@@ -306,7 +306,7 @@ export default defineComponent({
 .panel {
   padding: 30px;
   overflow: scroll;
-  width: calc(100% - 300px);
+  width: calc(100% - 200px);
   background-color: var(--el-bg-color-page);
 
   .card {

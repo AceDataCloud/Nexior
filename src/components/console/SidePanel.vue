@@ -105,7 +105,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-$width: 300px;
+$width: 200px;
 $padding-left: 10px;
 .side-panel {
   padding-left: $padding-left;

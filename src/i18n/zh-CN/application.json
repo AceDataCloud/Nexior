@@ -123,6 +123,7 @@
     "message": "价格",
     "description": "用户应支付的申请的额外价格。"
   },
+
   "message.alreadyApplied": {
     "message": "您已经申请了此服务，请查看控制台",
     "description": "当用户已经申请了此服务时向用户显示的消息。"
@@ -211,6 +212,10 @@
     "message": "修改成功",
     "description": "当修改成功时向用户显示的消息。"
   },
+  "message.neverExpire": {
+    "message": "永不过期",
+    "description": "当申请永不过期时向用户显示的消息。"
+  },
   "title.buyService": {
     "message": "购买服务",
     "description": "当用户想要购买服务时页面的标题。"
@@ -226,5 +231,13 @@
   "title.manageApplication": {
     "message": "申请管理",
     "description": "当用户想要管理申请时页面的标题。"
+  },
+  "title.applicationBalance": {
+    "message": "专属积分 - {service}",
+    "description": "当用户查看申请余额时向用户显示的消息。"
+  },
+  "title.globalBalance": {
+    "message": "通用余额",
+    "description": "当用户查看通用余额时向用户显示的消息。"
   }
 }

@@ -1,34 +1,22 @@
 <template>
   <div class="status">
-    <el-dialog v-model="showInfo" width="600px">
+    <el-dialog v-model="showInfo">
       <div v-if="application">
-        <p class="text-left mb-4">
+        <p class="text-center mb-4">
           {{ $t('application.message.applicationSelection') }}
         </p>
-        <div class="applications flex flex-col gap-2 mb-6">
-          <div
+        <div class="flex flex-col gap-4 mb-6 justify-center items-center overflow-y-auto">
+          <application-info
             v-for="(app, index) in applications"
             :key="index"
             :class="{
               item: true,
               active: application?.id === app.id
             }"
+            :application="app"
             @click="onSelectApplication(app)"
-          >
-            <el-icon class="icon"><check /></el-icon>
-            <application-info :application="app" :show-type="true" :show-id="true" />
-            <el-button round type="primary" @click.stop="onBuyMore(application)">{{
-              $t('common.button.buyMore')
-            }}</el-button>
-          </div>
-        </div>
-        <span class="actions">
-          <api-price
-            v-if="showPrice && application?.service?.apis?.[0]?.price"
-            class="price inline-block"
-            :price="application?.service?.apis?.[0]?.price"
           />
-        </span>
+        </div>
       </div>
     </el-dialog>
     <el-button circle @click="showInfo = true">
@@ -39,11 +27,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton, ElIcon, ElDialog, ElTooltip } from 'element-plus';
+import { ElButton, ElDialog } from 'element-plus';
 import { IApplicationType, IApplication, IService } from '@/models';
 import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_APPLICATION_SUBSCRIBE } from '@/router';
-import ApiPrice from '@/components/api/Price.vue';
-import { Check } from '@element-plus/icons-vue';
 import ApplicationInfo from './Info.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -56,12 +42,9 @@ export default defineComponent({
   name: 'ApplicationStatus',
   components: {
     ElButton,
-    Check,
     ElDialog,
     FontAwesomeIcon,
-    ApplicationInfo,
-    ApiPrice,
-    ElIcon
+    ApplicationInfo
   },
   props: {
     application: {
@@ -113,49 +96,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.applications {
-  .item {
-    cursor: pointer;
-    padding: 20px;
-    background-color: var(--el-bg-color);
-    border-radius: 15px;
-    border: 1px solid var(--el-border-color-lighter);
-    .icon {
-      visibility: hidden;
-    }
-    &.active {
-      .icon {
-        visibility: visible;
-      }
-    }
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    .icon {
-      color: var(--el-color-white);
-      font-size: 20px;
-      background-color: var(--el-color-primary);
-      border-radius: 50%;
-      padding: 5px;
-    }
-  }
-}
-
-.actions {
-  margin: 0 5px;
-  display: inline-block;
-  @media (max-width: 767px) {
-    display: block;
-    margin: 5px auto 0 auto;
-    width: fit-content;
-  }
-  .el-button {
-    border-radius: 20px;
-  }
-}
-.btn-apply {
-  border-radius: 20px;
-}
-</style>
