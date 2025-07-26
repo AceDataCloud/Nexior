@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sat, 26 Jul 2025 14:32:44 GMT and should not be manually modified.
+This log was last generated on Sat, 26 Jul 2025 16:12:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 3.9.1
+
+Sat, 26 Jul 2025 16:12:09 GMT
+
+### Patches
+
+- update wallet ux (cqc@cuiqingcai.com)
 
 ## 3.9.0
 
