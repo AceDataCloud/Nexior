@@ -26,12 +26,12 @@
     </div>
     <div class="flex flex-col justify-center align-middle gap-2">
       <div class="flex">
-        <el-button size="small" round @click="onGoUsage">
+        <el-button size="small" round @click.stop="onGoUsage">
           {{ $t('application.button.usage') }}
         </el-button>
       </div>
       <div class="flex">
-        <el-button type="primary" round size="small" @click="onBuyMore">
+        <el-button type="primary" round size="small" @click.stop="onBuyMore">
           {{ $t('application.button.buyMore') }}
         </el-button>
       </div>

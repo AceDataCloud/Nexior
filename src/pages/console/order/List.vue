@@ -10,7 +10,7 @@
         <el-col :span="24">
           <el-card shadow="hover">
             <el-table v-loading="loading" :data="orders" stripe>
-              <el-table-column prop="id" :label="$t('order.field.id')" class-name="text-center" width="350px">
+              <el-table-column prop="id" :label="$t('order.field.id')" class-name="text-center" width="190px">
                 <template #default="scope">
                   <span class="key">{{ scope.row.id }}</span>
                   <span class="copy">
@@ -26,19 +26,19 @@
               <el-table-column prop="state" :label="$t('order.field.state')" class-name="text-center" width="150px">
                 <template #default="scope">
                   <span v-if="scope.row.state === OrderState?.PENDING">
-                    <el-tag type="info" class="mx-1" effect="dark">{{ $t('order.state.pending') }}</el-tag>
+                    <el-tag type="info" class="mx-1" effect="dark" round>{{ $t('order.state.pending') }}</el-tag>
                   </span>
                   <span v-else-if="scope.row.state === OrderState?.PAID" class="state state-paid">
-                    <el-tag type="success" class="mx-1" effect="dark">{{ $t('order.state.paid') }}</el-tag>
+                    <el-tag type="success" class="mx-1" effect="dark" round>{{ $t('order.state.paid') }}</el-tag>
                   </span>
                   <span v-else-if="scope.row.state === OrderState?.FINISHED" class="state state-finished">
-                    <el-tag type="success" class="mx-1" effect="dark">{{ $t('order.state.finished') }}</el-tag>
+                    <el-tag type="success" class="mx-1" effect="dark" round>{{ $t('order.state.finished') }}</el-tag>
                   </span>
                   <span v-else-if="scope.row.state === OrderState?.EXPIRED" class="state state-expired">
-                    <el-tag type="danger" class="mx-1" effect="dark">{{ $t('order.state.expired') }}</el-tag>
+                    <el-tag type="danger" class="mx-1" effect="dark" round>{{ $t('order.state.expired') }}</el-tag>
                   </span>
                   <span v-else-if="scope.row.state === OrderState?.FAILED" class="state state-failed">
-                    <el-tag type="danger" class="mx-1" effect="dark"> {{ $t('order.state.failed') }}</el-tag>
+                    <el-tag type="danger" class="mx-1" effect="dark" round> {{ $t('order.state.failed') }}</el-tag>
                   </span>
                 </template>
               </el-table-column>
@@ -197,37 +197,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.panel {
-  padding: 30px;
-  width: calc(100% - 200px);
-  background-color: var(--el-bg-color-page);
-
-  .title {
-    font-size: 26px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: var(--el-text-color-primary);
-  }
-  .el-table {
-    height: calc(100vh - 350px);
-    margin-bottom: 50px;
-    .el-button {
-      border-radius: 20px;
-    }
-  }
-}
-
-.pagination {
-  margin: auto;
-  width: fit-content;
-}
-
-@media (max-width: 767px) {
-  .panel {
-    width: 100%;
-    height: 100%;
-  }
-}
-</style>

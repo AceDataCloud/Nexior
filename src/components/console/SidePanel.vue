@@ -1,5 +1,5 @@
 <template>
-  <div class="side-panel">
+  <div class="side">
     <div class="links">
       <a
         v-for="(link, linkIndex) in links"
@@ -107,29 +107,26 @@ export default defineComponent({
 <style lang="scss" scoped>
 $width: 200px;
 $padding-left: 10px;
-.side-panel {
+.side {
   padding-left: $padding-left;
   width: $width;
   padding-top: 50px;
   height: 100%;
 }
 
-.logo {
-  width: 100%;
-  cursor: pointer;
-  margin-bottom: 30px;
-}
-
 .links {
-  width: $width;
+  width: $width - $padding-left;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 5px;
   .link {
     $height: 40px;
     height: $height;
     display: block;
-    width: calc(100% - #{$padding-left});
+    width: 100%;
     border-radius: 6px;
     cursor: pointer;
-    margin-bottom: 5px;
     position: relative;
     color: var(--el-text-color-primary);
     line-height: $height;

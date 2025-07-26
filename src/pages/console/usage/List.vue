@@ -36,46 +36,33 @@
               table-layout="fixed"
               :empty-text="$t('common.message.noData')"
             >
-              <el-table-column :label="$t('application.field.name')" width="160px">
+              <el-table-column :label="$t('application.field.name')" width="140px">
                 <template #default="scope">
                   <span>{{ scope.row?.api?.title }}</span>
                 </template>
               </el-table-column>
-              <el-table-column :label="$t('usage.field.statusCode')" width="120px">
+              <el-table-column :label="$t('usage.field.statusCode')" width="80px">
                 <template #default="scope">
                   <span>{{ scope.row.status_code }}</span>
                 </template>
               </el-table-column>
               <el-table-column
-                prop="remaining_amount"
-                :label="$t('usage.field.remainingAmount')"
-                width="160px"
-                class-name="text-center"
-              >
-                <template #default="scope">
-                  <span>{{ getRemainingAmount(scope.row) }}</span>
-                </template>
-              </el-table-column>
-              <el-table-column
                 prop="deducted_amount"
                 :label="$t('usage.field.deductedAmount')"
-                width="150px"
+                width="130px"
                 class-name="text-center"
               >
                 <template #default="scope">
                   <span>{{ getDeductedAmount(scope.row) }}</span>
                 </template>
               </el-table-column>
-              <el-table-column
-                prop="metadata"
-                :label="$t('usage.field.metadata')"
-                width="200px"
-                class-name="text-center"
-              >
+              <el-table-column prop="metadata" width="350px" :label="$t('usage.field.metadata')">
                 <template #default="scope">
-                  <el-tag v-for="(name, key) in scope.row.metadata" :key="key" class="mb-2">
-                    {{ key }}: {{ name }}
-                  </el-tag>
+                  <div class="flex flex-wrap gap-2 justify-start">
+                    <div v-for="(name, key) in scope.row.metadata" :key="key" class="inline-block">
+                      <el-tag round> {{ key }}: {{ name }} </el-tag>
+                    </div>
+                  </div>
                 </template>
               </el-table-column>
               <el-table-column
@@ -278,27 +265,8 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .panel {
-  padding: 30px;
-  width: calc(100% - 200px);
-  background-color: var(--el-bg-color-page);
-
-  .title {
-    font-size: 26px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: var(--el-text-color-primary);
-  }
   .el-table {
-    height: calc(100vh - 430px);
-    margin-bottom: 50px;
-    .el-button {
-      border-radius: 20px;
-    }
+    height: calc(100vh - 300px) !important;
   }
-}
-
-.pagination {
-  margin: auto;
-  width: fit-content;
 }
 </style>

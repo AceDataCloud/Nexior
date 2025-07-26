@@ -13,10 +13,6 @@
               <el-col :span="16" :offset="4">
                 <el-skeleton v-if="loading" />
                 <el-form v-else-if="application" label-width="100px">
-                  <div v-if="!application?.service">
-                    <p class="description">{{ $t('application.message.globalBalanceBuyDescription') }}</p>
-                    <el-divider border-style="dashed" />
-                  </div>
                   <el-form-item v-if="application?.service" :label="$t('application.field.service')">
                     {{ application?.service?.title }}
                   </el-form-item>
@@ -273,13 +269,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.title {
-  font-size: 26px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: var(--el-text-color-primary);
-}
-
 .el-form {
   .el-radio-group {
     .el-radio-button {
@@ -301,10 +290,6 @@ export default defineComponent({
 }
 
 .panel {
-  padding: 30px;
-  width: calc(100% - 200px);
-  background-color: var(--el-bg-color-page);
-
   .el-card {
     padding: 50px 0;
     .price {
@@ -317,17 +302,6 @@ export default defineComponent({
         color: #29c287;
       }
     }
-  }
-}
-
-.pagination {
-  float: right;
-}
-
-@media (max-width: 767px) {
-  .panel {
-    width: 100%;
-    height: 100%;
   }
 }
 </style>
