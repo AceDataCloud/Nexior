@@ -23,9 +23,9 @@
     <div v-else-if="tasks?.items?.length && tasks?.items?.length > 0" class="tasks">
       <task-preview v-for="(task, taskId) in tasks?.items" :key="taskId" :model-value="task" class="preview" />
     </div>
-    <p v-if="tasks?.items?.length === 0" class="description">
-      {{ $t('suno.message.noTasks') }}
-    </p>
+    <div v-if="tasks?.items?.length === 0" class="w-full h-full flex items-center justify-center">
+      <no-tasks />
+    </div>
   </div>
   <div v-show="!!$store?.state?.suno?.audio?.object" class="flex-1 flex flex-col">
     <div class="h-20">
@@ -39,6 +39,7 @@ import { defineComponent } from 'vue';
 import TaskPreview from './task/Preview.vue';
 import Player from '@/components/suno/player/Player.vue';
 import { ElSkeleton, ElSkeletonItem } from 'element-plus';
+import NoTasks from '@/components/common/NoTasks.vue';
 
 export default defineComponent({
   name: 'RecentPanel',
@@ -46,7 +47,8 @@ export default defineComponent({
     TaskPreview,
     ElSkeleton,
     ElSkeletonItem,
-    Player
+    Player,
+    NoTasks
   },
   emits: ['reach-top'],
   data() {

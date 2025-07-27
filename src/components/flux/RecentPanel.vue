@@ -5,7 +5,7 @@
   <div v-else-if="tasks?.items?.length && tasks?.items?.length > 0" class="tasks h-full w-full overflow-y-auto">
     <task-preview v-for="(task, taskIndex) in tasks?.items" :key="taskIndex" :model-value="task" />
   </div>
-  <div v-if="tasks?.items?.length === 0">
+  <div v-if="tasks?.items?.length === 0" class="w-full h-full flex items-center justify-center">
     <no-tasks />
   </div>
 </template>

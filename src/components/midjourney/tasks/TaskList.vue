@@ -2,7 +2,7 @@
   <div v-if="tasks === undefined" class="tasks">
     <bot-placeholder />
   </div>
-  <div v-else-if="tasks && tasks?.length === 0">
+  <div v-else-if="tasks && tasks?.length === 0" class="w-full h-full flex items-center justify-center">
     <no-tasks />
   </div>
   <div v-else-if="tasks.length > 0" ref="panel" class="tasks" @scroll="onHandleScroll">
