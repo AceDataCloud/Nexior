@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 27 Jul 2025 07:10:11 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 27 Jul 2025 10:58:46 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.10.1
+
+Sun, 27 Jul 2025 10:58:46 GMT
+
+### Patches
+
+- refine i18n support (cqc@cuiqingcai.com)
 
 ## 3.10.0
 
