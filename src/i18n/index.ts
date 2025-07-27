@@ -1,56 +1,16 @@
-import { createI18n, I18n } from 'vue-i18n';
-import { nextTick } from 'vue';
+import { createI18n } from 'vue-i18n';
+import { I18N_DEFAULT_LOCALE, I18N_SCOPES, I18N_SUPPORTED_LOCALES } from '@/constants/i18n';
 import axios from 'axios';
+import { nextTick } from 'vue';
 
-declare namespace Intl {
-  // eslint-disable-next-line no-unused-vars
-  function getCanonicalLocales(locales: string | string[] | undefined): string[];
-}
-
-export const DEFAULT_LOCALE = 'en';
-
-export const SUPPORTED_LOCALES = [
-  { value: 'en', label: 'English' },
-  { value: 'de', label: 'Deutsch' },
-  { value: 'pt', label: 'Português' },
-  { value: 'es', label: 'Español' },
-  { value: 'fr', label: 'Français' },
-  { value: 'zh-CN', label: '简体中文' },
-  { value: 'zh-TW', label: '繁體中文' },
-  { value: 'it', label: 'Italiano' },
-  { value: 'ko', label: '한국어' },
-  { value: 'ja', label: '日本語' },
-  { value: 'ru', label: 'Русский' },
-  { value: 'pl', label: 'Polski' },
-  { value: 'fi', label: 'Suomi' },
-  { value: 'sv', label: 'Svenska' },
-  { value: 'el', label: 'Ελληνικά' },
-  { value: 'uk', label: 'Українська' },
-  { value: 'ar', label: 'العربية' },
-  { value: 'sr', label: 'Српски' }
-];
-
-export const setupI18n = () => {
-  // @ts-ignore
-  const i18n: I18n = createI18n({});
-  return i18n;
-};
-
-export const i18n = setupI18n();
-
-export const loadLocalResource = async (name: string, locale: string) => {
-  try {
-    const module = await import(`./${locale}/${name}.json`);
-    return module.default;
-  } catch (error) {
-    const module = await import(`./${DEFAULT_LOCALE}/${name}.json`);
-    return module.default;
-  }
-};
+export const i18n = createI18n({
+  legacy: true
+});
 
 export const getLocale = (lang?: string): string => {
   const canonicalLang = Intl.getCanonicalLocales(lang || navigator.language)?.[0];
-  const supportedLocales = SUPPORTED_LOCALES.map((locale) => locale.value);
+  console.debug('canonicalLang', canonicalLang);
+  const supportedLocales = I18N_SUPPORTED_LOCALES.map((locale) => locale.value);
   // if the canonical language is supported, use it
   if (canonicalLang && supportedLocales.includes(canonicalLang)) {
     console.debug('canonicalLang', canonicalLang);
@@ -63,41 +23,35 @@ export const getLocale = (lang?: string): string => {
       return canonicalLangPrefix;
     }
   }
-  return DEFAULT_LOCALE;
+  return I18N_DEFAULT_LOCALE;
 };
 
-export const loadLocaleMessages = async (i18n: I18n, locale: string) => {
-  const names = [
-    'index',
-    'api',
-    'application',
-    'qrart',
-    'luma',
-    'pika',
-    'kling',
-    'flux',
-    'hailuo',
-    'headshots',
-    'suno',
-    'common',
-    'console',
-    'credential',
-    'distribution',
-    'order',
-    'proxy',
-    'service',
-    'usage',
-    'user',
-    'site',
-    'chat',
-    'midjourney'
-  ];
+const messageLoaders = import.meta.glob('./**/*.json');
 
-  const promises = names.map((name) => loadLocalResource(name, locale));
+export const loadLocaleResource = async (name: string, locale: string) => {
+  console.debug('loadLocaleResource', name, locale);
+  const path = `./${locale}/${name}.json`;
+  const loader = messageLoaders[path];
+  if (!loader) {
+    console.warn(`[i18n] Missing translation file: ${path}`);
+    return;
+  }
+
+  const module: any = await loader();
+  console.debug('loaded module', module);
+  if (!module.default) {
+    console.warn(`[i18n] Missing default export in translation file: ${path}`);
+    return;
+  }
+  return module.default;
+};
+
+export const loadLocaleMessages = async (locale: string) => {
+  const promises = I18N_SCOPES.map((name) => loadLocaleResource(name, locale));
   const resources = await Promise.all(promises);
 
   const messages: any = {};
-  names.forEach((name, index) => {
+  I18N_SCOPES.forEach((name, index) => {
     const resource = resources[index];
     for (const key in resource) {
       if (resource.hasOwnProperty(key)) {
@@ -116,7 +70,7 @@ export const loadLocaleMessages = async (i18n: I18n, locale: string) => {
 export const setI18nLanguage = async (locale: string) => {
   // load locale messages
   if (!i18n.global.availableLocales.includes(locale)) {
-    await loadLocaleMessages(i18n, locale);
+    await loadLocaleMessages(locale);
   }
 
   // set global locale

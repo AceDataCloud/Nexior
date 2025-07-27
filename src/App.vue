@@ -10,7 +10,7 @@
 import { defineComponent } from 'vue';
 import { ElConfigProvider, ElTag } from 'element-plus';
 import AuthPanel from './components/common/AuthPanel.vue';
-import locale from 'element-plus/dist/locale/zh-cn.mjs';
+import locale from 'element-plus/es/locale/lang/en';
 import { isTest } from '@/constants/endpoint';
 
 export default defineComponent({

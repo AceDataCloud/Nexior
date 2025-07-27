@@ -41,7 +41,6 @@ import {
 } from '@/router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlAuth, getBaseUrlPlatform } from '@/utils';
-import LocaleSelector from '@/components/common/LocaleSelector.vue';
 import HelpDialog from '@/components/common/HelpDialog.vue';
 
 interface ILink {
@@ -58,8 +57,7 @@ export default defineComponent({
   components: {
     ElImage,
     HelpDialog,
-    FontAwesomeIcon,
-    LocaleSelector
+    FontAwesomeIcon
   },
   data() {
     return {

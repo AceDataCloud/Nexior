@@ -18,12 +18,13 @@
 import { defineComponent } from 'vue';
 import { ElDropdown, ElDropdownMenu, ElDropdownItem, ElIcon } from 'element-plus';
 import { ArrowDown } from '@element-plus/icons-vue';
-import { SUPPORTED_LOCALES, setI18nLanguage } from '@/i18n';
 import { setCookie } from 'typescript-cookie';
 import { getDomain } from '@/utils/initializer';
+import { I18N_SUPPORTED_LOCALES } from '@/constants/i18n';
+import { setI18nLanguage } from '@/i18n';
 
 export default defineComponent({
-  name: 'LocaleSelector',
+  name: 'Locale',
   components: {
     ElDropdown,
     ElDropdownMenu,
@@ -33,7 +34,7 @@ export default defineComponent({
   },
   data() {
     return {
-      locales: SUPPORTED_LOCALES
+      locales: I18N_SUPPORTED_LOCALES
     };
   },
   computed: {
