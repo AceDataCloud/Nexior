@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 27 Jul 2025 13:01:06 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 27 Jul 2025 16:50:06 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.10.4
+
+Sun, 27 Jul 2025 16:50:06 GMT
+
+### Patches
+
+- add empty task list (cqc@cuiqingcai.com)
 
 ## 3.10.3
 
