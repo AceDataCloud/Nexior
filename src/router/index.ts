@@ -18,8 +18,9 @@ import site from './site';
 import profile from './profile';
 
 import { ROUTE_CHATGPT_CONVERSATION_NEW } from './constants';
-import { DEFAULT_LOCALE, setI18nLanguage } from '@/i18n';
 import { getCookie } from 'typescript-cookie';
+import { I18N_DEFAULT_LOCALE } from '@/constants/i18n';
+import { getLocale, setI18nLanguage } from '@/i18n';
 
 const routes = [
   {
@@ -51,7 +52,7 @@ const router = createRouter({
 });
 
 router.beforeEach(async (_to, _from, next) => {
-  const locale = getCookie('LOCALE') || DEFAULT_LOCALE;
+  const locale = getLocale(getCookie('LOCALE') || I18N_DEFAULT_LOCALE);
   await setI18nLanguage(locale);
   return next();
 });

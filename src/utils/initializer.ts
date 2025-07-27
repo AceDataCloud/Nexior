@@ -1,12 +1,12 @@
 import { getCookie, setCookie } from 'typescript-cookie';
 import favicon from '@/assets/images/favicon.ico';
-import { getLocale } from '@/i18n';
 import { applyTheme } from './theme';
 import store from '@/store';
 import { IToken } from '@/models';
 import { parse } from 'psl';
 import { BASE_HOST_HUB, LOCALE_CURRENCY_MAPPING } from '@/constants';
 import { isOfficial, isSubOfficial, isWechatBrowser } from './is';
+import { getLocale } from '@/i18n';
 
 export const getDomain = (host: string = window.location.hostname) => {
   const parsed = parse(host);

@@ -3,7 +3,14 @@
     <el-row class="paycodes">
       <el-col :span="12">
         <div class="paycode wechat">
-          <qr-code v-if="modelValue?.pay_url" :value="modelValue?.pay_url" :size="200" class="qrcode m-auto" />
+          <qr-code
+            v-if="modelValue?.pay_url"
+            :value="modelValue?.pay_url"
+            :size="200"
+            class="qrcode m-auto"
+            type="image/png"
+            :color="{ dark: '#000000', light: '#ffffff' }"
+          />
           <p class="help-text">{{ $t('order.message.wechatPayHelp') }}</p>
         </div>
       </el-col>

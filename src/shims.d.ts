@@ -6,7 +6,7 @@
 
 import { ComponentCustomProperties } from 'vue';
 import { Router } from 'vue-router';
-import { I18n } from 'vue-i18n';
+import { I18n, VueI18n } from 'vue-i18n';
 import { Store } from 'vuex';
 import { IRootState } from './store/common/models';
 import type { Router, RouteLocationNormalizedLoaded } from 'vue-router';
@@ -17,10 +17,7 @@ declare module '*.ico';
 declare module '*.css';
 declare module '*.scss';
 declare module '*.png';
-declare module '*.tpl' {
-  const value: string;
-  export default value;
-}
+declare module '*.tpl';
 
 declare module '*.vue' {
   import { DefineComponent } from 'vue';
@@ -28,9 +25,14 @@ declare module '*.vue' {
   export default component;
 }
 
+// declare namespace Intl {
+//   function getCanonicalLocales(locales: string | string[] | undefined): string[];
+// }
+
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
-    $t: (key: string, ...args: unknown[]) => string;
+    $t: VueI18n['t'];
+    $i18n: VueI18n;
     $store: Store<IRootState>;
     $router: Router;
     $route: RouteLocationNormalizedLoaded;

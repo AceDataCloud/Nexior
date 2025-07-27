@@ -305,7 +305,6 @@ export default defineComponent({
     },
     async onRestoreConversation(id: string) {
       console.debug('onRestoreConversation id', id);
-      this.$router.push({ ...this.$route, params: { id } });
       const conversation = this.conversations?.find((conversation: IChatConversation) => conversation.id === id);
       // change the model and model group
       const model = conversation?.model;

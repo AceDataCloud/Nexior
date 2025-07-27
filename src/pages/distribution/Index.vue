@@ -152,6 +152,8 @@
                   :size="180"
                   :margin="2"
                   class="block mb-2 ml-auto mr-auto"
+                  type="image/png"
+                  :color="{ dark: '#000000', light: '#ffffff' }"
                 />
                 <p class="mt-0">
                   {{ $t('distribution.message.distributionQrDescription') }}
