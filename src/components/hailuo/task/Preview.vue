@@ -43,13 +43,13 @@
           </el-tooltip>
         </div>
         <el-alert :closable="false" class="mt-2 success">
-          <p v-if="modelValue?.request?.model" class="mb-2">
+          <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
             {{ $t('hailuo.name.model') }}:
             {{ modelValue?.request?.model }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
-          <p class="mb-2">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('hailuo.name.taskId') }}:
             {{ modelValue?.id }}
@@ -64,19 +64,19 @@
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
             {{ $t('hailuo.name.failure') }}
           </template>
-          <p class="mb-2">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('hailuo.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
-          <p class="mb-2">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
             {{ $t('hailuo.name.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
             <copy-to-clipboard :content="modelValue?.response?.error?.message!" />
           </p>
-          <p class="mb-2">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
             {{ $t('hailuo.name.traceId') }}:
             {{ modelValue?.response?.trace_id }}
@@ -91,7 +91,7 @@
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
             {{ $t('hailuo.name.failure') }}
           </template>
-          <p class="mb-2">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('hailuo.name.taskId') }}:
             {{ modelValue?.id }}
@@ -189,7 +189,7 @@ $left-width: 70px;
 
     .info {
       .prompt {
-        font-size: 14px;
+        font-size: 16px;
         font-weight: bold;
         color: var(--el-text-color-regular);
         margin-bottom: 10px;
