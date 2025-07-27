@@ -28,12 +28,12 @@
           />
         </div>
         <el-alert :closable="false" class="mt-2 success">
-          <p class="mb-2">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
             {{ $t('flux.name.model') }}:
             {{ modelValue?.request?.model }}
           </p>
-          <p class="mb-2">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('flux.name.taskId') }}:
             {{ modelValue?.id }}
@@ -48,19 +48,19 @@
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
             {{ $t('flux.name.failure') }}
           </template>
-          <p class="mb-2">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('flux.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
           </p>
-          <p class="mb-4">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
             {{ $t('flux.name.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
             <copy-to-clipboard :content="modelValue?.response?.error?.message!" class="btn-copy" />
           </p>
-          <p class="mb-2">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
             {{ $t('flux.name.traceId') }}:
             {{ modelValue?.response?.trace_id }}
@@ -74,7 +74,7 @@
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
             {{ $t('flux.name.failure') }}
           </template>
-          <p class="mb-2">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('flux.name.taskId') }}:
             {{ modelValue?.id }}
@@ -158,7 +158,7 @@ $left-width: 70px;
   text-align: left;
   display: flex;
   flex-direction: row;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   .left {
     width: $left-width;
     .avatar {
@@ -190,10 +190,10 @@ $left-width: 70px;
 
     .info {
       .prompt {
-        font-size: 14px;
+        font-size: 16px;
         font-weight: bold;
         color: var(--el-text-color-regular);
-        margin-bottom: 10px;
+        margin-bottom: 15px;
       }
     }
 

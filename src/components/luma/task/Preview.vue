@@ -42,7 +42,7 @@
           </el-tooltip>
         </div>
         <el-alert :closable="false" class="mt-2 success">
-          <p class="mb-2">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('luma.name.taskId') }}:
             {{ modelValue?.id }}
@@ -60,19 +60,19 @@
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
             {{ $t('luma.name.failure') }}
           </template>
-          <p class="mb-2">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('luma.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
-          <p class="mb-2">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
             {{ $t('luma.name.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
             <copy-to-clipboard :content="modelValue?.response?.error?.message!" />
           </p>
-          <p class="mb-2">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
             {{ $t('luma.name.traceId') }}:
             {{ modelValue?.trace_id }}
@@ -94,7 +94,7 @@
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
             {{ $t('luma.name.failure') }}
           </template>
-          <p class="description">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('luma.name.taskId') }}:
             {{ modelValue?.id }}

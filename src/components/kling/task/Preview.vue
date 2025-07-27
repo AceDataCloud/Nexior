@@ -45,12 +45,12 @@
           </el-tooltip>
         </div>
         <el-alert :closable="false" class="mt-2 success">
-          <p class="mb-2">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
             {{ $t('kling.name.model') }}:
             {{ modelValue?.request?.model }}
           </p>
-          <p class="mb-2">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('kling.name.taskId') }}:
             {{ modelValue?.id }}
@@ -65,19 +65,19 @@
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
             {{ $t('kling.name.failure') }}
           </template>
-          <p class="mb-2">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('kling.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
-          <p class="mb-2">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
             {{ $t('kling.name.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
             <copy-to-clipboard :content="modelValue?.response?.error?.message!" />
           </p>
-          <p v-if="modelValue?.response?.trace_id" class="mb-2">
+          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
             {{ $t('kling.name.traceId') }}:
             {{ modelValue?.response?.trace_id }}
@@ -92,13 +92,13 @@
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
             {{ $t('kling.name.failure') }}
           </template>
-          <p class="mb-2">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('kling.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
-          <p v-if="modelValue?.response?.trace_id" class="mb-2">
+          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
             {{ $t('kling.name.traceId') }}:
             {{ modelValue?.response?.trace_id }}
@@ -200,7 +200,7 @@ $left-width: 70px;
 
     .info {
       .prompt {
-        font-size: 14px;
+        font-size: 16px;
         font-weight: bold;
         color: var(--el-text-color-regular);
         margin-bottom: 10px;
@@ -223,48 +223,6 @@ $left-width: 70px;
       }
     }
 
-    .image-wrapper {
-      position: relative;
-      width: fit-content;
-      min-height: 50px;
-      min-width: 100px;
-      .image {
-        max-height: 400px;
-        max-width: 500px;
-        display: block;
-        width: fit-content;
-      }
-      .btn-raw {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 1000;
-        display: none;
-      }
-      .play-icon {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 48px;
-        color: white;
-        z-index: 500;
-        pointer-events: none; /* Ensure the icon doesn't interfere with hover */
-      }
-      &:hover {
-        .image {
-          filter: brightness(0.6);
-        }
-        .btn-raw {
-          display: block;
-        }
-
-        .play-icon {
-          display: none;
-        }
-      }
-    }
     .operations {
       display: flex;
       justify-content: left;

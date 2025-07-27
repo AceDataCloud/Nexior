@@ -28,23 +28,23 @@
       <!-- response error -->
       <div v-if="modelValue?.response?.success === false" :class="{ content: true, full: full, failed: true }">
         <el-alert :closable="false" class="failure">
-          <p class="description">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('midjourney.field.taskId') }}:
             {{ modelValue?.id }}
-            <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
+            <copy-to-clipboard :content="modelValue?.id!" />
           </p>
-          <p class="description">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
             {{ $t('midjourney.field.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
-            <copy-to-clipboard :content="modelValue?.response?.error?.message!" class="btn-copy" />
+            <copy-to-clipboard :content="modelValue?.response?.error?.message!" />
           </p>
-          <p class="description">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
             {{ $t('midjourney.field.traceId') }}:
             {{ modelValue?.response?.trace_id }}
-            <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy" />
+            <copy-to-clipboard :content="modelValue?.response?.trace_id" />
           </p>
         </el-alert>
       </div>
@@ -77,34 +77,34 @@
           </el-tooltip>
         </div>
         <el-alert :closable="false" class="mt-2 success">
-          <p class="description">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('midjourney.field.taskId') }}:
             {{ modelValue?.id }}
-            <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
+            <copy-to-clipboard :content="modelValue?.id!" />
           </p>
-          <p class="description">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
             {{ $t('midjourney.field.traceId') }}:
             {{ modelValue?.trace_id }}
-            <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy" />
+            <copy-to-clipboard :content="modelValue?.trace_id" />
           </p>
-          <p class="description">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-image" class="mr-1" />
             {{ $t('midjourney.field.imageId') }}:
             {{ modelValue?.response?.image_id }}
-            <copy-to-clipboard :content="modelValue?.response?.image_id" class="btn-copy" />
+            <copy-to-clipboard :content="modelValue?.response?.image_id" />
           </p>
         </el-alert>
       </div>
       <!-- response pending -->
       <div v-if="!modelValue?.response">
         <el-alert :closable="false" class="mt-2 info">
-          <p class="description">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('midjourney.field.taskId') }}:
             {{ modelValue?.id }}
-            <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
+            <copy-to-clipboard :content="modelValue?.id!" />
           </p>
         </el-alert>
       </div>

@@ -22,7 +22,7 @@
     <div v-else-if="tasks?.items?.length && tasks?.items?.length > 0" class="tasks">
       <task-preview v-for="(task, taskIndex) in tasks?.items" :key="taskIndex" :model-value="task" class="preview" />
     </div>
-    <p v-if="tasks?.items?.length === 0" class="description">
+    <p v-if="tasks?.items?.length === 0" class="w-full h-full flex items-center justify-center">
       {{ $t('pika.message.noTasks') }}
     </p>
   </div>
