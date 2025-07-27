@@ -22,9 +22,7 @@ export default defineComponent({
       required: false,
       default: ''
     }
-  },
-  data() {},
-  watch: {}
+  }
 });
 </script>
 
