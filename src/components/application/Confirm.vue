@@ -2,11 +2,14 @@
   <el-dialog
     :model-value="visible"
     width="500px"
-    :title="$t('application.message.confirmApplying')"
+    :title="$t('application.message.welcome')"
     center
     @close="$emit('update:visible', false)"
   >
     <div class="content">
+      <p class="my-4">
+        {{ $t('application.message.notApplied') }}
+      </p>
       <el-divider class="my-2" />
       <div class="policy">
         <el-checkbox v-model="checked" size="large" class="policy-checkbox" />
@@ -15,7 +18,7 @@
           &nbsp;{{ $t('application.message.policy') }}
         </a>
       </div>
-      <el-button round type="primary" @click="onApply">{{ $t('common.button.apply') }}</el-button>
+      <el-button round type="primary" @click="onApply">{{ $t('common.button.start') }}</el-button>
     </div>
   </el-dialog>
 </template>

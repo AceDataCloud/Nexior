@@ -1,15 +1,15 @@
 {
   "type.period": {
     "message": "Period",
-    "description": "Tjänstens period."
+    "description": "Tidsperioden för tjänsten."
   },
   "type.usage": {
     "message": "Användning",
-    "description": "Tjänstens användning."
+    "description": "Tjänstens användningskvot."
   },
   "field.expiredAt": {
     "message": "Utgångsdatum",
-    "description": "Datum för ansökans utgång."
+    "description": "Utgångsdatum för ansökan."
   },
   "button.goDocument": {
     "message": "Dokument",
@@ -56,12 +56,12 @@
     "description": "Ansökans ID."
   },
   "field.remainingAmount": {
-    "message": "Återstående belopp",
-    "description": "Ansökans återstående belopp."
+    "message": "Återstående kvot",
+    "description": "Ansökans återstående kvot."
   },
   "field.usedAmount": {
-    "message": "Använt belopp",
-    "description": "Ansökans använda belopp."
+    "message": "Använd kvot",
+    "description": "Ansökans använda kvot."
   },
   "field.apiKey": {
     "message": "API-nyckel",
@@ -69,27 +69,27 @@
   },
   "field.service": {
     "message": "Tjänst",
-    "description": "Ansökans tjänst."
+    "description": "Den tjänst som ansökan avser."
   },
   "field.operation": {
     "message": "Operation",
-    "description": "Ansökans operation."
+    "description": "Den operation som ansökan avser."
   },
   "field.amount": {
-    "message": "Belopp",
-    "description": "Ansökans belopp."
+    "message": "Mängd",
+    "description": "Den mängd som ansökan avser."
   },
   "field.scope": {
     "message": "Omfattning",
-    "description": "Ansökans omfattning."
+    "description": "Den omfattning som ansökan avser."
   },
   "field.traceId": {
     "message": "Spårnings-ID",
-    "description": "Spårnings-ID för ett API-anrop i ansökan, håll som 'Spårnings-ID'."
+    "description": "Spårnings-ID för ett API-anrop i ansökan, håll det som 'Spårnings-ID'."
   },
   "field.shouldPayPrice": {
     "message": "Slutpris",
-    "description": "Ansökans slutpris."
+    "description": "Den slutliga kostnaden för ansökan."
   },
   "field.api": {
     "message": "API",
@@ -101,142 +101,142 @@
   },
   "field.credential": {
     "message": "Referens",
-    "description": "Ansökans referens."
+    "description": "Referensen för ansökan."
   },
   "field.name": {
     "message": "Namn",
-    "description": "Ansökans namn."
+    "description": "Namnet på ansökan."
   },
   "field.package": {
     "message": "Paket",
-    "description": "Paketet representerar olika prispaket, till exempel 100 dollar ger 10000 poäng, 200 dollar ger 20000 poäng."
+    "description": "Paketet representerar olika prispaket, till exempel 100 dollar ger 10 000 poäng, 200 dollar ger 20 000 poäng."
   },
   "field.type": {
     "message": "Typ",
-    "description": "Ansökans typ."
+    "description": "Typen av ansökan."
   },
   "field.freeAmount": {
-    "message": "Gratis belopp",
-    "description": "Ansökans gratis belopp."
+    "message": "Gratis mängd",
+    "description": "Den gratis mängd som ansökan avser."
   },
   "field.extraPrice": {
     "message": "Extra pris",
     "description": "Det extra pris som användaren ska betala för ansökan."
   },
   "message.alreadyApplied": {
-    "message": "Du har redan ansökt om denna tjänst, vänligen kontrollera konsolen",
-    "description": "Meddelande som visas när användaren redan har ansökt om denna tjänst."
+    "message": "Du har redan ansökt om denna tjänst, vänligen kontrollera kontrollpanelen.",
+    "description": "Meddelande som visas för användaren när de redan har ansökt om denna tjänst."
   },
   "message.applySuccessfully": {
     "message": "Ansökan lyckades",
-    "description": "Meddelande som visas när användaren framgångsrikt har ansökt om denna tjänst."
+    "description": "Meddelande som visas för användaren när de framgångsrikt har ansökt om denna tjänst."
   },
   "message.notApplied": {
-    "message": "Du har inte ansökt om denna tjänst, vänligen ansök om tjänsten innan du använder den",
-    "description": "Meddelande som visas när användaren inte har ansökt om denna tjänst."
+    "message": "Välkommen att använda våra tjänster, vi ger dig en gratis testkvot, klicka på knappen nedan för att börja omedelbart.",
+    "description": "Meddelande som visas för användaren när de ännu inte har ansökt om denna tjänst."
   },
   "message.globalBalanceBuyDescription": {
-    "message": "Denna uppladdning ger poäng som är ett globalt saldo och kan användas för valfri tjänst.",
-    "description": "Meddelande som visas när användaren laddar upp globalt saldo."
+    "message": "Denna insättning ger poäng som är allmänna saldon och kan användas för valfri tjänst.",
+    "description": "Meddelande som visas för användaren när de sätter in allmänna saldon."
   },
   "message.yourApplication": {
     "message": "Din ansökan",
-    "description": "Meddelande som visas när användarens ansökan är aktuell."
+    "description": "Meddelande som visas för användaren när de har en ansökan."
   },
   "message.unverified": {
-    "message": "Du måste slutföra identitetsverifiering innan du kan ansöka om denna tjänst",
-    "description": "Meddelande som visas när användaren inte har slutfört identitetsverifiering."
+    "message": "Du måste slutföra din verkliga identitetsverifiering innan du kan ansöka om denna tjänst.",
+    "description": "Meddelande som visas för användaren när de ännu inte har slutfört sin verkliga identitetsverifiering."
   },
   "message.goVerify": {
-    "message": "Gå till identitetsverifiering",
-    "description": "Meddelande som visas när användaren inte har slutfört identitetsverifiering."
+    "message": "Gå till verklig identitetsverifiering",
+    "description": "Meddelande som visas för användaren när de ännu inte har slutfört sin verkliga identitetsverifiering."
   },
   "message.requiredParameter": {
     "message": "Obligatorisk parameter",
-    "description": "Meddelande som visas när användaren inte har angett obligatoriska parametrar."
+    "description": "Meddelande som visas för användaren när de ännu inte har angett obligatoriska parametrar."
   },
   "message.example": {
     "message": "Exempel",
-    "description": "Meddelande som visas när användaren inte har angett obligatoriska parametrar."
+    "description": "Meddelande som visas för användaren när de ännu inte har angett obligatoriska parametrar."
   },
   "message.applicationSelection": {
     "message": "Här är de paket du för närvarande har ansökt om eller köpt, du kan välja ett paket för att fortsätta använda tjänsten.",
-    "description": "Meddelande som visas när användaren behöver välja en ansökan."
+    "description": "Meddelande som visas för användaren när de behöver välja en ansökan."
   },
   "message.createCredentialSuccessfully": {
-    "message": "Referens skapad framgångsrikt",
-    "description": "Meddelande som visas när användaren framgångsrikt har skapat en referens."
+    "message": "Credential skapad framgångsrikt",
+    "description": "När användaren framgångsrikt skapar en credential visas detta meddelande."
   },
   "message.readPolicy": {
     "message": "Jag har läst och godkänt",
-    "description": "När användaren har läst och godkänt policyn visas detta meddelande för användaren."
+    "description": "När användaren har läst och godkänt policyn visas detta meddelande."
   },
   "message.policy": {
-    "message": "Användarvillkor för datatekniktjänster",
-    "description": "När användaren har läst och godkänt policyn visas detta meddelande för användaren."
+    "message": "Användarvillkor för datatekniska tjänster",
+    "description": "När användaren har läst och godkänt policyn visas detta meddelande."
   },
   "message.notAgreePolicy": {
-    "message": "Du har inte godkänt användarvillkoren för datatekniktjänster",
-    "description": "När användaren inte har godkänt policyn visas detta meddelande för användaren."
+    "message": "Du har inte godkänt användarvillkoren för datatekniska tjänster",
+    "description": "När användaren inte har godkänt policyn visas detta meddelande."
   },
-  "message.confirmApplying": {
-    "message": "Bekräfta tjänans ansökan",
-    "description": "När användaren bekräftar tjänans ansökan visas detta meddelande för användaren."
+  "message.welcome": {
+    "message": "Välkommen",
+    "description": "När användaren bekräftar tjänsteansökan visas detta meddelande."
   },
   "message.rotateCredential": {
     "message": "Återställ nyckel",
-    "description": "När användaren återställer nyckeln visas detta meddelande för användaren."
+    "description": "När användaren återställer nyckeln visas detta meddelande."
   },
   "message.rotateCredentialConfirm": {
     "message": "Är du säker på att du vill återställa nyckeln? Återställningen kan inte återställas.",
-    "description": "När användaren bekräftar återställningen av nyckeln visas detta meddelande för användaren."
+    "description": "När användaren bekräftar återställningen av nyckeln visas detta meddelande."
   },
   "message.idDoesNotExist": {
     "message": "Ansökan finns inte",
-    "description": "När ansökan inte finns visas detta meddelande för användaren."
+    "description": "När ansökan inte finns visas detta meddelande."
   },
   "message.rotateCredentialSuccessfully": {
     "message": "Nyckeln har återställts framgångsrikt",
-    "description": "När nyckeln har återställts framgångsrikt visas detta meddelande för användaren."
+    "description": "När nyckeln har återställts framgångsrikt visas detta meddelande."
   },
   "message.rotateCredentialFailed": {
     "message": "Återställning av nyckel misslyckades, vänligen kontakta support",
-    "description": "När återställningen av nyckeln misslyckas visas detta meddelande för användaren."
+    "description": "När återställningen av nyckeln misslyckas visas detta meddelande."
   },
   "message.updateFailed": {
-    "message": "Ändring misslyckades",
-    "description": "När ändringen misslyckas visas detta meddelande för användaren."
+    "message": "Uppdatering misslyckades",
+    "description": "När uppdateringen misslyckas visas detta meddelande."
   },
   "message.updateSuccessfully": {
-    "message": "Ändring lyckades",
-    "description": "När ändringen lyckas visas detta meddelande för användaren."
+    "message": "Uppdatering lyckades",
+    "description": "När uppdateringen lyckas visas detta meddelande."
   },
   "message.neverExpire": {
     "message": "Aldrig utgången",
-    "description": "När ansökan aldrig går ut visas detta meddelande för användaren."
+    "description": "När ansökan aldrig går ut visas detta meddelande."
   },
   "title.buyService": {
     "message": "Köp tjänst",
-    "description": "När användaren vill köpa en tjänst visas detta som sidans titel."
+    "description": "Titeln på sidan när användaren vill köpa en tjänst."
   },
   "title.globalBuy": {
     "message": "Allmän saldo påfyllning",
-    "description": "När användaren vill fylla på sitt allmänna saldo visas detta som sidans titel."
+    "description": "Titeln på sidan när användaren vill fylla på sitt allmänna saldo."
   },
   "title.applicationRemainingCount": {
     "message": "Ändra antal",
-    "description": "När användaren vill ändra antalet ansökningar visas detta som sidans titel."
+    "description": "Titeln på sidan när användaren vill ändra antalet ansökningar."
   },
   "title.manageApplication": {
     "message": "Ansökningshantering",
-    "description": "När användaren vill hantera ansökningar visas detta som sidans titel."
+    "description": "Titeln på sidan när användaren vill hantera ansökningar."
   },
   "title.applicationBalance": {
     "message": "Exklusiv poäng - {service}",
-    "description": "När användaren ser ansökningsbalansen visas detta meddelande för användaren."
+    "description": "När användaren ser ansökningsbalansen visas detta meddelande."
   },
   "title.globalBalance": {
     "message": "Allmänt saldo",
-    "description": "När användaren ser sitt allmänna saldo visas detta meddelande för användaren."
+    "description": "När användaren ser sitt allmänna saldo visas detta meddelande."
   }
 }

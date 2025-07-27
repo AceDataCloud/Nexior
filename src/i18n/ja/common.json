@@ -3,13 +3,17 @@
     "message": "設定",
     "description": "ボタンのテキスト、特定の内容を設定するために使用されます"
   },
+  "button.start": {
+    "message": "開始",
+    "description": "ボタンのテキスト、特定の操作を開始するために使用されます"
+  },
   "button.copy": {
     "message": "コピー",
-    "description": "ボタンのテキスト、特定の内容をコピーするために使用されます"
+    "description": "ボタンのテキスト、特定の内容を設定するために使用されます"
   },
   "button.restart": {
     "message": "再生成",
-    "description": "ボタンのテキスト、特定の内容を再生成するために使用されます"
+    "description": "ボタンのテキスト、特定の内容を設定するために使用されます"
   },
   "button.preview": {
     "message": "プレビュー",
@@ -21,7 +25,7 @@
   },
   "button.seeRawVideo": {
     "message": "動画を見る",
-    "description": "ボタンのテキスト、原始的な動画を表示するために使用されます"
+    "description": "ボタンのテキスト、原始的な画像を表示するために使用されます"
   },
   "button.edit": {
     "message": "編集",
@@ -33,7 +37,7 @@
   },
   "button.logout": {
     "message": "ログアウト",
-    "description": "ボタンのテキスト、ログアウトするために使用されます"
+    "description": "ボタンのテキスト、ログインを終了するために使用されます"
   },
   "button.new": {
     "message": "新規作成",
@@ -73,7 +77,7 @@
   },
   "button.profile": {
     "message": "プロフィール",
-    "description": "ボタンのテキスト、ユーザーのプロフィールを表示するために使用されます"
+    "description": "ボタンのテキスト、プロフィールを表示するために使用されます"
   },
   "button.console": {
     "message": "コンソール",
@@ -92,7 +96,7 @@
     "description": "ボタンのテキスト、ユーザーに特定の内容を試させるために使用されます"
   },
   "button.startForFree": {
-    "message": "無料で始める",
+    "message": "無料で開始",
     "description": "ボタンのテキスト、ユーザーに無料で使用を開始させるために使用されます"
   },
   "button.apply": {
@@ -165,7 +169,7 @@
   },
   "entity.platform": {
     "message": "プラットフォーム",
-    "description": "これはAPIサービスのプラットフォームであることを示すテキスト"
+    "description": "これはAPIサービスのプラットフォームを示すテキスト"
   },
   "entity.title": {
     "message": "タイトル",
@@ -197,7 +201,7 @@
   },
   "entity.order": {
     "message": "注文",
-    "description": "エンティティの注文、注文には金額、サービス情報が含まれ、ユーザーはその支払いを行う必要があります"
+    "description": "エンティティの注文、注文には金額、サービス情報が含まれ、ユーザーは支払う必要があります"
   },
   "message.usedAmount": {
     "message": "使用済み金額",
@@ -217,11 +221,11 @@
   },
   "message.confirmDelete": {
     "message": "本当に削除しますか？",
-    "description": "ユーザーが特定の内容を削除するかどうかを確認するためのメッセージ"
+    "description": "ユーザーが特定の内容を削除するかどうかを確認するメッセージ"
   },
   "message.expiredAt": {
-    "message": "期限",
-    "description": "サービスの期限を表示するためのもの"
+    "message": "有効期限",
+    "description": "サービスの有効期限を表示するためのもの"
   },
   "message.alert": {
     "message": "警告",
@@ -233,7 +237,7 @@
   },
   "message.free": {
     "message": "無料",
-    "description": "サービスが無料であることを示すメッセージ、ユーザーは支払いを行う必要がないことを示す"
+    "description": "サービスが無料であることを示すメッセージ、ユーザーは支払う必要がないことを示す"
   },
   "message.startPrice": {
     "message": "最低価格",
@@ -284,7 +288,7 @@
     "description": "ウェブサイトのナビゲーションバーのテキスト、製品ページを表示するためのもの"
   },
   "nav.referral": {
-    "message": "紹介収益",
+    "message": "紹介報酬",
     "description": "ウェブサイトのナビゲーションバーのテキスト、紹介ページを表示するためのもの"
   },
   "nav.apiPlatform": {
@@ -333,63 +337,63 @@
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、Lumaページを表示するためのものです。このフィールドは翻訳しないでください。'Luma'のままにしてください。"
+    "description": "ウェブサイトのナビゲーションバーのテキストで、Lumaページを表示するためのものです。このフィールドは翻訳しないでください。'Luma'のままにしてください。"
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、Pikaページを表示するためのものです。このフィールドは翻訳しないでください。'Pika'のままにしてください。"
+    "description": "ウェブサイトのナビゲーションバーのテキストで、Pikaページを表示するためのものです。このフィールドは翻訳しないでください。'Pika'のままにしてください。"
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、Klingページを表示するためのものです。このフィールドは翻訳しないでください。'Kling'のままにしてください。"
+    "description": "ウェブサイトのナビゲーションバーのテキストで、Klingページを表示するためのものです。このフィールドは翻訳しないでください。'Kling'のままにしてください。"
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、Hailuoページを表示するためのものです。このフィールドは翻訳しないでください。'Hailuo'のままにしてください。"
+    "description": "ウェブサイトのナビゲーションバーのテキストで、Hailuoページを表示するためのものです。このフィールドは翻訳しないでください。'Hailuo'のままにしてください。"
   },
   "nav.image": {
     "message": "画像",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、画像ページを表示するためのものです。"
+    "description": "ウェブサイトのナビゲーションバーのテキストで、画像ページを表示するためのものです。"
   },
   "nav.music": {
     "message": "音楽",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、音楽ページを表示するためのものです。"
+    "description": "ウェブサイトのナビゲーションバーのテキストで、音楽ページを表示するためのものです。"
   },
   "nav.video": {
     "message": "動画",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、動画ページを表示するためのものです。"
+    "description": "ウェブサイトのナビゲーションバーのテキストで、動画ページを表示するためのものです。"
   },
   "nav.distribution": {
-    "message": "推薦収益",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、推薦収益ページを表示するためのものです。"
+    "message": "推奨収益",
+    "description": "ウェブサイトのナビゲーションバーのテキストで、推奨収益ページを表示するためのものです。"
   },
   "nav.logOut": {
     "message": "ログアウト",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、ログアウトするためのものです。"
+    "description": "ウェブサイトのナビゲーションバーのテキストで、ログアウトするためのものです。"
   },
   "nav.site": {
     "message": "サイト設定",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、サイト設定ページを表示するためのものです。"
+    "description": "ウェブサイトのナビゲーションバーのテキストで、サイト設定ページを表示するためのものです。"
   },
   "nav.setting": {
     "message": "設定",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、設定ページを表示するためのものです。"
+    "description": "ウェブサイトのナビゲーションバーのテキストで、設定ページを表示するためのものです。"
   },
   "nav.headshots": {
     "message": "AI証明写真",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、サイト設定ページを表示するためのものです。"
+    "description": "ウェブサイトのナビゲーションバーのテキストで、サイト設定ページを表示するためのものです。"
   },
   "nav.locale": {
     "message": "言語設定",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、言語を変更するためのものです。"
+    "description": "ウェブサイトのナビゲーションバーのテキストで、言語を変更するためのものです。"
   },
   "nav.support": {
     "message": "カスタマーサポート",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、サポートページを表示するためのものです。"
+    "description": "ウェブサイトのナビゲーションバーのテキストで、サポートページを表示するためのものです。"
   },
   "nav.darkMode": {
     "message": "ダークモード",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、ダークテーマに切り替えるためのものです。"
+    "description": "ウェブサイトのナビゲーションバーのテキストで、ダークテーマに切り替えるためのものです。"
   },
   "title.alert": {
     "message": "アラート",
@@ -420,16 +424,16 @@
     "description": "ユーザーにもっと購入させるためのページのタイトルです。"
   },
   "title.distribution": {
-    "message": "推薦収益",
-    "description": "推薦収益を表示するページのタイトルで、ユーザーが他の人を招待してサービスを利用させることでお金を稼げることを示します。"
+    "message": "推奨収益",
+    "description": "推奨収益を表示するページのタイトルで、ユーザーが他の人を招待してサービスを利用させることでお金を稼げることを示します。"
   },
   "title.site": {
     "message": "サイト設定",
     "description": "サイト設定を表示するページのタイトルです。"
   },
   "title.distributionHistory": {
-    "message": "推薦履歴",
-    "description": "推薦履歴を表示するページのタイトルです。"
+    "message": "推奨履歴",
+    "description": "推奨履歴を表示するページのタイトルです。"
   },
   "title.invitee": {
     "message": "招待者",
@@ -440,20 +444,20 @@
     "description": "APIサービスのすべての使用記録を表示するページのタイトルです。"
   },
   "title.allCredentials": {
-    "message": "認証情報",
-    "description": "APIにアクセスするためのすべての認証情報を表示するページのタイトルです。"
+    "message": "資格情報",
+    "description": "APIにアクセスするためのすべての資格情報を表示するページのタイトルです。"
   },
   "about.title1": {
     "message": "お問い合わせ",
-    "description": "連絡先情報を表示するセクションのタイトルです。"
+    "description": "連絡先情報のセクションのタイトルです。"
   },
   "about.title2": {
     "message": "リソース",
-    "description": "リンクを表示するセクションのタイトルです。"
+    "description": "リンクのセクションのタイトルです。"
   },
   "about.title3": {
     "message": "リンク",
-    "description": "サポート情報を表示するセクションのタイトルです。"
+    "description": "サポート情報のセクションのタイトルです。"
   },
   "about.address": {
     "message": "アメリカ デラウェア州 ミドルタウン N Broad St, 201号室",
@@ -484,8 +488,8 @@
     "description": "センターページへのリンクです。"
   },
   "about.link6": {
-    "message": "推薦収益",
-    "description": "推薦収益ページへのリンクです。"
+    "message": "推奨収益",
+    "description": "推奨収益ページへのリンクです。"
   },
   "about.link7": {
     "message": "サポート",
