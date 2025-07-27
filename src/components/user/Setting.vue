@@ -1,13 +1,16 @@
 <template>
   <el-dialog :model-value="visible" @close="onClose">
-    <div class="flex settings">
-      <aside class="w-40 h-full border-r">
+    <div class="flex settings h-[460px]">
+      <aside class="h-full border-r">
         <el-menu class="border-r-0">
           <el-menu-item
             v-for="(item, index) in navItems"
             :key="index"
             :index="item.key"
-            :class="['flex items-center px-2 cursor-pointer py-2', activeTab === item.key ? 'active' : '']"
+            :class="[
+              'flex w-[160px] truncate items-center px-2 cursor-pointer py-2',
+              activeTab === item.key ? 'active' : ''
+            ]"
             @click="activeTab = item.key"
           >
             <font-awesome-icon :icon="item.icon" class="mr-2" />
@@ -70,17 +73,19 @@ export default defineComponent({
   data() {
     return {
       activeTab: 'general',
-      showSuggestions: true,
-      navItems: [
+      showSuggestions: true
+    };
+  },
+  computed: {
+    navItems() {
+      return [
         { key: 'general', label: this.$t('common.settings.general'), icon: faCog },
         { key: 'site', label: this.$t('common.settings.site'), icon: faBell },
         { key: 'seo', label: this.$t('common.settings.seo'), icon: faUserShield },
         { key: 'distribution', label: this.$t('common.settings.distribution'), icon: faMoneyBill },
         { key: 'function', label: this.$t('common.settings.function'), icon: faMagic }
-      ]
-    };
-  },
-  computed: {
+      ];
+    },
     currentTabTitle() {
       const current = this.navItems.find((item) => item.key === this.activeTab);
       return current ? current.label : '';
@@ -96,9 +101,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style scoped>
-.settings {
-  height: 460px;
-}
-</style>
