@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-This log was last generated on Sat, 26 Jul 2025 18:15:17 GMT and should not be manually modified.
+<!-- This log was last generated on Sun, 27 Jul 2025 07:10:11 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.10.0
+
+Sun, 27 Jul 2025 07:10:11 GMT
+
+### Minor changes
+
+- upgrade libs (cqc@cuiqingcai.com)
 
 ## 3.9.2
 
