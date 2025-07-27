@@ -1,8 +1,8 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import router from './router/index';
-import store from './store/index';
-import i18n from './i18n/index';
+import router from './router';
+import store from './store';
+import i18n from './i18n';
 import './assets/scss/style.scss';
 import './assets/css/tailwind.css';
 import 'mac-scrollbar/dist/mac-scrollbar.css';

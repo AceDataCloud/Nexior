@@ -26,12 +26,12 @@
     </div>
     <div class="flex flex-col justify-center align-middle gap-2">
       <div class="flex">
-        <el-button size="small" round @click.stop="onGoUsage">
+        <el-button size="small" round @click.stop="$emit('usage', application)">
           {{ $t('application.button.usage') }}
         </el-button>
       </div>
       <div class="flex">
-        <el-button type="primary" round size="small" @click.stop="onBuyMore">
+        <el-button type="primary" round size="small" @click.stop="$emit('buy', application)">
           {{ $t('application.button.buyMore') }}
         </el-button>
       </div>
@@ -44,7 +44,6 @@ import { IApplication } from '@/models';
 import { defineComponent } from 'vue';
 import { ElButton, ElIcon } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_USAGE_LIST } from '@/router';
 import { Check } from '@element-plus/icons-vue';
 
 export default defineComponent({
@@ -69,26 +68,7 @@ export default defineComponent({
       default: false
     }
   },
-  methods: {
-    onGoUsage() {
-      this.$router.push({
-        name: ROUTE_CONSOLE_USAGE_LIST,
-        query: {
-          application_id: this.application.id
-        }
-      });
-    },
-    onBuyMore() {
-      // open in new tab for this url
-      const url = this.$router.resolve({
-        name: ROUTE_CONSOLE_APPLICATION_EXTRA,
-        params: {
-          id: this.application.id
-        }
-      }).href;
-      window.open(url, '_blank');
-    }
-  }
+  emits: ['buy', 'usage']
 });
 </script>
 

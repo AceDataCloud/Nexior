@@ -21,7 +21,8 @@ export default defineComponent({
   props: {
     modelValue: {
       type: Object as () => ILumaTask | undefined,
-      required: true
+      required: false,
+      default: undefined
     }
   },
   data() {

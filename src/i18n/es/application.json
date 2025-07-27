@@ -79,9 +79,13 @@
     "message": "Cantidad",
     "description": "Cantidad de la solicitud."
   },
+  "field.scope": {
+    "message": "Alcance",
+    "description": "Alcance de la solicitud."
+  },
   "field.traceId": {
-    "message": "跟踪ID",
-    "description": "API服务的申请的一个API调用的跟踪ID，不要翻译，保持为'跟踪ID'。"
+    "message": "ID de seguimiento",
+    "description": "ID de seguimiento de una llamada API de la solicitud del servicio, no traducir, mantener como 'ID de seguimiento'."
   },
   "field.shouldPayPrice": {
     "message": "Precio final",
@@ -89,7 +93,7 @@
   },
   "field.api": {
     "message": "API",
-    "description": "Este es un servicio en línea que proporciona servicios a los usuarios a través de API."
+    "description": "Este es un servicio en línea que proporciona servicios a los usuarios a través de una API."
   },
   "field.proxy": {
     "message": "Proxy",
@@ -128,12 +132,16 @@
     "description": "Mensaje mostrado al usuario cuando ha solicitado este servicio con éxito."
   },
   "message.notApplied": {
-    "message": "No ha solicitado este servicio, por favor solicite el servicio antes de usarlo",
+    "message": "Aún no ha solicitado este servicio, por favor solicite el servicio antes de usarlo",
     "description": "Mensaje mostrado al usuario cuando aún no ha solicitado este servicio."
+  },
+  "message.globalBalanceBuyDescription": {
+    "message": "Los puntos de esta recarga son saldo global, que se puede usar para cualquier servicio.",
+    "description": "Mensaje mostrado al usuario cuando recarga saldo global."
   },
   "message.yourApplication": {
     "message": "Su solicitud",
-    "description": "Mensaje mostrado al usuario durante su solicitud."
+    "description": "Mensaje mostrado al usuario sobre su solicitud."
   },
   "message.unverified": {
     "message": "Necesita completar la verificación de identidad antes de poder solicitar este servicio",
@@ -168,8 +176,8 @@
     "description": "Mensaje mostrado al usuario cuando ha leído y aceptado la política."
   },
   "message.notAgreePolicy": {
-    "message": "No has aceptado el acuerdo de uso de servicios tecnológicos de datos",
-    "description": "Mensaje mostrado al usuario cuando aún no ha aceptado la política."
+    "message": "No ha aceptado el acuerdo de uso de servicios tecnológicos de datos",
+    "description": "Mensaje mostrado al usuario cuando no ha aceptado la política."
   },
   "message.confirmApplying": {
     "message": "Confirmar solicitud de servicio",
@@ -180,7 +188,7 @@
     "description": "Mensaje mostrado al usuario cuando restablece la clave."
   },
   "message.rotateCredentialConfirm": {
-    "message": "¿Estás seguro de que deseas restablecer la clave? No se podrá recuperar después del restablecimiento",
+    "message": "¿Está seguro de que desea restablecer la clave? No se podrá recuperar después de restablecer.",
     "description": "Mensaje mostrado al usuario cuando confirma el restablecimiento de la clave."
   },
   "message.idDoesNotExist": {
@@ -192,8 +200,8 @@
     "description": "Mensaje mostrado al usuario cuando la clave se restablece con éxito."
   },
   "message.rotateCredentialFailed": {
-    "message": "Error al restablecer la clave, por favor contacta al soporte",
-    "description": "Mensaje mostrado al usuario cuando falla el restablecimiento de la clave."
+    "message": "Error al restablecer la clave, por favor contacte al soporte",
+    "description": "Mensaje mostrado al usuario cuando el restablecimiento de la clave falla."
   },
   "message.updateFailed": {
     "message": "Error al modificar",
@@ -203,16 +211,32 @@
     "message": "Modificación exitosa",
     "description": "Mensaje mostrado al usuario cuando la modificación se realiza con éxito."
   },
+  "message.neverExpire": {
+    "message": "Nunca expira",
+    "description": "Mensaje mostrado al usuario cuando la solicitud nunca expira."
+  },
   "title.buyService": {
     "message": "Comprar servicio",
     "description": "Título de la página cuando el usuario desea comprar un servicio."
   },
+  "title.globalBuy": {
+    "message": "Recarga de saldo general",
+    "description": "Título de la página cuando el usuario desea recargar el saldo general."
+  },
   "title.applicationRemainingCount": {
-    "message": "Cantidad de modificaciones",
+    "message": "Modificar cantidad",
     "description": "Título de la página cuando el usuario desea modificar la cantidad de solicitudes."
   },
   "title.manageApplication": {
     "message": "Gestión de solicitudes",
     "description": "Título de la página cuando el usuario desea gestionar solicitudes."
+  },
+  "title.applicationBalance": {
+    "message": "Puntos exclusivos - {service}",
+    "description": "Mensaje mostrado al usuario cuando visualiza el saldo de la solicitud."
+  },
+  "title.globalBalance": {
+    "message": "Saldo general",
+    "description": "Mensaje mostrado al usuario cuando visualiza el saldo general."
   }
 }

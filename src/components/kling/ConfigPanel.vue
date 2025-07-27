@@ -30,7 +30,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -43,8 +43,9 @@ import EndImage from './config/EndImage.vue';
 import CfgScaleSelector from './config/CfgScaleSelector.vue';
 import PromptInput from './config/PromptInput.vue';
 import NegativePromptInput from './config/NegativePromptInput.vue';
+
 export default defineComponent({
-  name: 'PresetPanel',
+  name: 'ConfigPanel',
   components: {
     ElButton,
     FontAwesomeIcon,

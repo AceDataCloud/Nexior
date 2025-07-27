@@ -36,7 +36,7 @@ export const setupI18n = () => {
   return i18n;
 };
 
-export const i18n: I18n = setupI18n();
+export const i18n = setupI18n();
 
 export const loadLocalResource = async (name: string, locale: string) => {
   try {

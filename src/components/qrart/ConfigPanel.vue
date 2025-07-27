@@ -28,7 +28,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import TypeSelector from './config/TypeSelector.vue';
 import AspectRatioSelector from './config/AspectRatioSelector.vue';

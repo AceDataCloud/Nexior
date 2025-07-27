@@ -60,7 +60,19 @@
         </div>
         <answering-mark v-if="message.state === messageState.PENDING" />
       </div>
-      <div class="operations">
+      <div
+        v-motion
+        :initial="{ opacity: 0, y: 5 }"
+        :enter="{ opacity: 1, y: 0, scale: 1 }"
+        :delay="300"
+        :duration="400"
+        :layout="true"
+        :transition="{
+          enter: { delay: 0.3, duration: 0.5 },
+          layout: { duration: 0.4, easing: 'ease-in-out' }
+        }"
+        class="operations"
+      >
         <edit-message
           v-if="message.role === 'user' && !isEditing && !Array.isArray(message.content)"
           class="btn-edit"

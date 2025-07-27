@@ -15,7 +15,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSlider, ElInputNumber } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
@@ -31,9 +31,9 @@ export default defineComponent({
   computed: {
     value: {
       get() {
-        return this.$store.state.flux.config.quality;
+        return this.$store.state.flux.config?.quality;
       },
-      set(val) {
+      set(val: string) {
         console.debug('set quality', val);
         this.$store.commit('flux/setConfig', {
           ...this.$store.state.flux.config,

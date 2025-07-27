@@ -11,7 +11,7 @@ export interface IQrartConfig {
   advanced?: boolean;
   rawurl?: boolean;
   padding_level?: number;
-  aspect_ratio?: number;
+  aspect_ratio?: string;
   position?: string;
   pixel_style?: string;
   marker_shape?: string;

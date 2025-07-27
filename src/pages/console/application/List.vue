@@ -100,7 +100,7 @@ import { applicationOperator } from '@/operators';
 import Pagination from '@/components/common/Pagination.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { ElTable, ElRow, ElCol, ElTableColumn, ElCard, ElButton, ElTag } from 'element-plus';
-import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_APPLICATION_SUBSCRIBE } from '@/router/constants';
+import { ROUTE_CONSOLE_APPLICATION_EXTRA } from '@/router/constants';
 import { IApplication, IApplicationListResponse, ICredentialType, IService } from '@/models';
 
 interface IData {

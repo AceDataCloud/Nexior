@@ -29,7 +29,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -44,7 +44,7 @@ import PromptInput from './config/PromptInput.vue';
 import ExtendFromInput from './config/ExtendFromInput.vue';
 
 export default defineComponent({
-  name: 'PresetPanel',
+  name: 'ConfigPanel',
   components: {
     LoopSelector,
     StartImageInput,

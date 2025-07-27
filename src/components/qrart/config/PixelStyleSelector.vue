@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { QRART_DEFAULT_PIXEL_STYLE } from '@/constants';
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
@@ -53,7 +53,7 @@ export default defineComponent({
       get() {
         return this.$store.state.qrart?.config?.pixel_style;
       },
-      set(val) {
+      set(val: string) {
         console.debug('set pixel_style', val);
         this.$store.commit('qrart/setConfig', {
           ...this.$store.state.qrart?.config,

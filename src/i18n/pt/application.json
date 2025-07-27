@@ -79,6 +79,10 @@
     "message": "Quantidade",
     "description": "Quantidade do pedido."
   },
+  "field.scope": {
+    "message": "Escopo",
+    "description": "Escopo do pedido."
+  },
   "field.traceId": {
     "message": "跟踪ID",
     "description": "ID de rastreamento de uma chamada API do pedido do serviço, não traduza, mantenha como '跟踪ID'."
@@ -131,9 +135,13 @@
     "message": "Você ainda não solicitou este serviço, por favor solicite antes de usar",
     "description": "Mensagem exibida ao usuário quando ele ainda não solicitou este serviço."
   },
+  "message.globalBalanceBuyDescription": {
+    "message": "Os pontos recarregados são um saldo global, que pode ser usado para qualquer serviço.",
+    "description": "Mensagem exibida ao usuário quando ele recarrega o saldo global."
+  },
   "message.yourApplication": {
     "message": "Sua solicitação",
-    "description": "Mensagem exibida ao usuário durante a solicitação."
+    "description": "Mensagem exibida ao usuário quando ele está em sua solicitação."
   },
   "message.unverified": {
     "message": "Você precisa completar a verificação de identidade antes de solicitar este serviço",
@@ -160,15 +168,15 @@
     "description": "Mensagem exibida ao usuário quando ele cria uma credencial com sucesso."
   },
   "message.readPolicy": {
-    "message": "Li e concordo",
+    "message": "Eu li e concordo",
     "description": "Mensagem exibida ao usuário quando ele leu e concordou com a política."
   },
   "message.policy": {
-    "message": "Acordo de uso do serviço de tecnologia de dados",
+    "message": "Acordo de Uso dos Serviços de Tecnologia de Dados",
     "description": "Mensagem exibida ao usuário quando ele leu e concordou com a política."
   },
   "message.notAgreePolicy": {
-    "message": "Você ainda não concordou com o contrato de uso dos serviços de tecnologia de dados",
+    "message": "Você ainda não concordou com o Acordo de Uso dos Serviços de Tecnologia de Dados",
     "description": "Mensagem exibida ao usuário quando ele ainda não concordou com a política."
   },
   "message.confirmApplying": {
@@ -196,16 +204,24 @@
     "description": "Mensagem exibida ao usuário quando a redefinição da chave falha."
   },
   "message.updateFailed": {
-    "message": "Falha na modificação",
-    "description": "Mensagem exibida ao usuário quando a modificação falha."
+    "message": "Atualização falhou",
+    "description": "Mensagem exibida ao usuário quando a atualização falha."
   },
   "message.updateSuccessfully": {
-    "message": "Modificação bem-sucedida",
-    "description": "Mensagem exibida ao usuário quando a modificação é bem-sucedida."
+    "message": "Atualização bem-sucedida",
+    "description": "Mensagem exibida ao usuário quando a atualização é bem-sucedida."
+  },
+  "message.neverExpire": {
+    "message": "Nunca expira",
+    "description": "Mensagem exibida ao usuário quando a solicitação nunca expira."
   },
   "title.buyService": {
     "message": "Comprar serviço",
     "description": "Título da página quando o usuário deseja comprar um serviço."
+  },
+  "title.globalBuy": {
+    "message": "Recarga de saldo geral",
+    "description": "Título da página quando o usuário deseja recarregar o saldo geral."
   },
   "title.applicationRemainingCount": {
     "message": "Quantidade de modificações",
@@ -214,5 +230,13 @@
   "title.manageApplication": {
     "message": "Gerenciamento de solicitações",
     "description": "Título da página quando o usuário deseja gerenciar solicitações."
+  },
+  "title.applicationBalance": {
+    "message": "Pontos exclusivos - {service}",
+    "description": "Mensagem exibida ao usuário quando ele visualiza o saldo da solicitação."
+  },
+  "title.globalBalance": {
+    "message": "Saldo geral",
+    "description": "Mensagem exibida ao usuário quando ele visualiza o saldo geral."
   }
 }

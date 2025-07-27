@@ -3,7 +3,9 @@ export interface IKlingConfig {
   mode?: string;
   model?: string;
   video_id?: string;
+  video_url?: string;
   prompt?: string;
+  custom?: boolean;
   start_image_url?: string;
   end_image_url?: string;
   negative_prompt?: string;

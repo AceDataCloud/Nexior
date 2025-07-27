@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElInput } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
@@ -34,7 +34,7 @@ export default defineComponent({
       get() {
         return this.$store.state.kling?.config?.negative_prompt;
       },
-      set(val) {
+      set(val: string) {
         console.debug('set prompt', val);
         this.$store.commit('kling/setConfig', {
           ...this.$store.state.kling?.config,
@@ -44,8 +44,8 @@ export default defineComponent({
     }
   },
   mounted() {
-    if (!this.value) {
-      this.value = DEFAULT_NEGATIVE_PROMPT;
+    if (!this.prompt) {
+      this.prompt = DEFAULT_NEGATIVE_PROMPT;
     }
   }
 });

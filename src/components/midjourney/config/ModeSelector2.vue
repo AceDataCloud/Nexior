@@ -37,7 +37,7 @@
   </el-dropdown>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElDropdown, ElDropdownItem, ElButton, ElIcon } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -87,7 +87,7 @@ export default defineComponent({
       get() {
         return this.$store.state.midjourney.config.mode;
       },
-      set(val) {
+      set(val: string) {
         this.$store.commit('midjourney/setConfig', {
           ...this.$store.state.midjourney.config,
           mode: val
@@ -101,7 +101,7 @@ export default defineComponent({
     }
   },
   methods: {
-    onCommand(command) {
+    onCommand(command: string) {
       console.log('command', command);
       this.value = command;
     }

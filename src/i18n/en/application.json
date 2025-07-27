@@ -79,6 +79,10 @@
     "message": "Amount",
     "description": "The amount applied for."
   },
+  "field.scope": {
+    "message": "Scope",
+    "description": "The scope of the application."
+  },
   "field.traceId": {
     "message": "Trace ID",
     "description": "The trace ID of an API call for the application, do not translate, keep as 'Trace ID'."
@@ -97,7 +101,7 @@
   },
   "field.credential": {
     "message": "Credential",
-    "description": "The credential applied for."
+    "description": "The credential of the application."
   },
   "field.name": {
     "message": "Name",
@@ -113,11 +117,11 @@
   },
   "field.freeAmount": {
     "message": "Free Amount",
-    "description": "The free amount applied for."
+    "description": "The free amount of the application."
   },
   "field.extraPrice": {
     "message": "Price",
-    "description": "The additional price that the user should pay for the application."
+    "description": "The additional price the user should pay for the application."
   },
   "message.alreadyApplied": {
     "message": "You have already applied for this service, please check the console.",
@@ -125,11 +129,15 @@
   },
   "message.applySuccessfully": {
     "message": "Application Successful",
-    "description": "Message displayed to the user when they have successfully applied for this service."
+    "description": "Message displayed to the user when they successfully apply for this service."
   },
   "message.notApplied": {
-    "message": "You have not applied for this service yet, please apply for the service before using it.",
-    "description": "Message displayed to the user when they have not applied for this service yet."
+    "message": "You have not applied for this service yet, please apply for the service before use.",
+    "description": "Message displayed to the user when they have not applied for this service."
+  },
+  "message.globalBalanceBuyDescription": {
+    "message": "The points from this recharge are universal balance and can be used for any service.",
+    "description": "Message displayed to the user when they recharge universal balance."
   },
   "message.yourApplication": {
     "message": "Your Application",
@@ -145,11 +153,11 @@
   },
   "message.requiredParameter": {
     "message": "Required Parameter",
-    "description": "Message displayed to the user when they have not entered a required parameter."
+    "description": "Message displayed to the user when they have not entered required parameters."
   },
   "message.example": {
     "message": "Example",
-    "description": "Message displayed to the user when they have not entered a required parameter."
+    "description": "Message displayed to the user when they have not entered required parameters."
   },
   "message.applicationSelection": {
     "message": "The following are the packages you currently applied for or purchased, you can choose any package to continue using the service.",
@@ -157,7 +165,7 @@
   },
   "message.createCredentialSuccessfully": {
     "message": "Credential Created Successfully",
-    "description": "Message displayed to the user when they have successfully created a credential."
+    "description": "Message displayed to the user when they successfully create a credential."
   },
   "message.readPolicy": {
     "message": "I have read and agree",
@@ -203,16 +211,32 @@
     "message": "Update successful",
     "description": "Message displayed to the user when the update is successful."
   },
+  "message.neverExpire": {
+    "message": "Never expires",
+    "description": "Message displayed to the user when the application never expires."
+  },
   "title.buyService": {
     "message": "Purchase Service",
     "description": "Title of the page when the user wants to purchase a service."
   },
+  "title.globalBuy": {
+    "message": "Universal Balance Recharge",
+    "description": "Title of the page when the user wants to recharge their universal balance."
+  },
   "title.applicationRemainingCount": {
-    "message": "Modification Count",
-    "description": "Title of the page when the user wants to modify the application count."
+    "message": "Modify Quantity",
+    "description": "Title of the page when the user wants to modify the application quantity."
   },
   "title.manageApplication": {
     "message": "Application Management",
     "description": "Title of the page when the user wants to manage applications."
+  },
+  "title.applicationBalance": {
+    "message": "Exclusive Points - {service}",
+    "description": "Message displayed to the user when they view the application balance."
+  },
+  "title.globalBalance": {
+    "message": "Universal Balance",
+    "description": "Message displayed to the user when they view the universal balance."
   }
 }

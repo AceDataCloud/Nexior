@@ -19,7 +19,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { QRART_DEFAULT_ASPECT_RATIO } from '@/constants';
 
@@ -63,13 +63,13 @@ export default defineComponent({
   },
   computed: {
     active() {
-      return this.options.findIndex((option) => option.value === this.value) || 0;
+      return this.options.findIndex((option) => option.value === String(this.value)) || 0;
     },
     value: {
       get() {
         return this.$store.state.qrart?.config?.aspect_ratio;
       },
-      set(val) {
+      set(val: string) {
         console.debug('set aspect ratio', val);
         this.$store.commit('qrart/setConfig', {
           ...this.$store.state.qrart?.config,

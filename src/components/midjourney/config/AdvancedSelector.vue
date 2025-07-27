@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSwitch } from 'element-plus';
 
@@ -21,7 +21,7 @@ export default defineComponent({
       get() {
         return this.$store.state.midjourney.config.advanced;
       },
-      set(val) {
+      set(val: boolean) {
         console.debug('set advanced', val);
         this.$store.commit('midjourney/setConfig', {
           ...this.$store.state.midjourney.config,

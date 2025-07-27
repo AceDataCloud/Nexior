@@ -7,7 +7,7 @@
       <div class="bot">
         {{ $t('pika.name.pikaBot') }}
         <span class="datetime">
-          {{ $dayjs.format('' + new Date(parseFloat(modelValue?.created_at || '') * 1000)) }}
+          {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
       </div>
       <div class="info">
@@ -26,7 +26,13 @@
         </div>
         <div v-if="video" :class="{ operations: true, 'mt-2': true }">
           <el-tooltip class="box-item" effect="dark" :content="$t('pika.message.downloadVideo')" placement="top-start">
-            <el-button type="info" size="small" class="btn-action" @click="onDownload($event, video?.video_url)">
+            <el-button
+              v-if="video?.video_url"
+              type="info"
+              size="small"
+              class="btn-action"
+              @click="onDownload(video?.video_url)"
+            >
               {{ $t('pika.button.download') }}
             </el-button>
           </el-tooltip>
@@ -154,8 +160,7 @@ export default defineComponent({
     //     video_url: response.video_url
     //   });
     // },
-    onDownload(event: MouseEvent, video_url: string) {
-      event.stopPropagation();
+    onDownload(video_url: string) {
       console.log('on download');
       // download url here
       window.open(video_url, '_blank');

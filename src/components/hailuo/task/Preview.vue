@@ -36,7 +36,7 @@
               type="info"
               size="small"
               class="mb-2"
-              @click.stop="onDownload($event, video?.video_url)"
+              @click.stop="onDownload(video?.video_url)"
             >
               {{ $t('hailuo.button.download') }}
             </el-button>
@@ -140,9 +140,9 @@ export default defineComponent({
     }
   },
   methods: {
-    onDownload(event: MouseEvent, video_url: string) {
-      console.debug('on download hailuo video', video_url);
-      window.open(video_url, '_blank');
+    onDownload(videoUrl: string) {
+      console.debug('on download hailuo video', videoUrl);
+      window.open(videoUrl, '_blank');
     }
   }
 });

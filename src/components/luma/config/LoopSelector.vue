@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSwitch } from 'element-plus';
 import { LUMA_DEFAULT_LOOP } from '@/constants';
@@ -29,7 +29,7 @@ export default defineComponent({
       get() {
         return this.$store.state.luma?.config?.loop;
       },
-      set(val) {
+      set(val: boolean) {
         console.debug('set loop', val);
         this.$store.commit('luma/setConfig', {
           ...this.$store.state.luma?.config,

@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { QRART_DEFAULT_SUB_MARKER } from '@/constants';
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
@@ -49,7 +49,7 @@ export default defineComponent({
       get() {
         return this.$store.state.qrart?.config?.sub_marker;
       },
-      set(val) {
+      set(val: string) {
         console.debug('set sub_marker', val);
         this.$store.commit('qrart/setConfig', {
           ...this.$store.state.qrart?.config,

@@ -2,7 +2,9 @@ export interface IFluxConfig {
   action?: string;
   count?: number;
   prompt?: string;
+  aspect_ratio?: string;
   model?: string;
+  quality?: number;
   callback_url?: string;
 }
 

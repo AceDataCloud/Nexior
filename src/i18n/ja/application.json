@@ -79,6 +79,10 @@
     "message": "数量",
     "description": "申請の数量。"
   },
+  "field.scope": {
+    "message": "範囲",
+    "description": "申請の範囲。"
+  },
   "field.traceId": {
     "message": "トレースID",
     "description": "APIサービスの申請のAPI呼び出しのトレースID、翻訳せずに'トレースID'のままにしてください。"
@@ -93,7 +97,7 @@
   },
   "field.proxy": {
     "message": "プロキシ",
-    "description": "これはオンラインサービスで、HTTPプロキシ（データ転送用）を通じてユーザーにサービスを提供します。"
+    "description": "これはオンラインサービスで、HTTPプロキシを通じてユーザーにサービスを提供します。"
   },
   "field.credential": {
     "message": "認証情報",
@@ -116,20 +120,24 @@
     "description": "申請の無料数量。"
   },
   "field.extraPrice": {
-    "message": "追加料金",
-    "description": "ユーザーが支払うべき申請の追加料金。"
+    "message": "追加価格",
+    "description": "ユーザーが支払うべき申請の追加価格。"
   },
   "message.alreadyApplied": {
     "message": "このサービスはすでに申請されています。コンソールを確認してください。",
-    "description": "ユーザーがこのサービスをすでに申請したときに表示されるメッセージ。"
+    "description": "ユーザーがこのサービスをすでに申請した場合に表示されるメッセージ。"
   },
   "message.applySuccessfully": {
     "message": "申請成功",
-    "description": "ユーザーがこのサービスを成功裏に申請したときに表示されるメッセージ。"
+    "description": "ユーザーがこのサービスを成功裏に申請した場合に表示されるメッセージ。"
   },
   "message.notApplied": {
     "message": "このサービスはまだ申請されていません。使用する前に申請してください。",
-    "description": "ユーザーがこのサービスをまだ申請していないときに表示されるメッセージ。"
+    "description": "ユーザーがこのサービスをまだ申請していない場合に表示されるメッセージ。"
+  },
+  "message.globalBalanceBuyDescription": {
+    "message": "今回のチャージのポイントは共通残高で、任意のサービスに使用できます。",
+    "description": "ユーザーが共通残高をチャージした場合に表示されるメッセージ。"
   },
   "message.yourApplication": {
     "message": "あなたの申請",
@@ -137,75 +145,83 @@
   },
   "message.unverified": {
     "message": "このサービスを申請するには、本人確認を完了する必要があります。",
-    "description": "ユーザーが本人確認をまだ完了していないときに表示されるメッセージ。"
+    "description": "ユーザーが本人確認をまだ完了していない場合に表示されるメッセージ。"
   },
   "message.goVerify": {
     "message": "本人確認へ進む",
-    "description": "ユーザーが本人確認をまだ完了していないときに表示されるメッセージ。"
+    "description": "ユーザーが本人確認をまだ完了していない場合に表示されるメッセージ。"
   },
   "message.requiredParameter": {
     "message": "必須パラメータ",
-    "description": "ユーザーが必須パラメータを入力していないときに表示されるメッセージ。"
+    "description": "ユーザーが必須パラメータを入力していない場合に表示されるメッセージ。"
   },
   "message.example": {
     "message": "例",
-    "description": "ユーザーが必須パラメータを入力していないときに表示されるメッセージ。"
+    "description": "ユーザーが必須パラメータを入力していない場合に表示されるメッセージ。"
   },
   "message.applicationSelection": {
     "message": "以下は現在申請または購入しているパッケージです。サービスを続けるために任意のパッケージを選択できます。",
-    "description": "ユーザーが申請を選択する必要があるときに表示されるメッセージ。"
+    "description": "ユーザーが申請を選択する必要がある場合に表示されるメッセージ。"
   },
   "message.createCredentialSuccessfully": {
     "message": "認証情報の作成に成功しました",
-    "description": "ユーザーが認証情報を成功裏に作成したときに表示されるメッセージ。"
+    "description": "ユーザーが認証情報を成功裏に作成した場合に表示されるメッセージ。"
   },
   "message.readPolicy": {
     "message": "私はポリシーを読み、同意しました",
-    "description": "ユーザーがポリシーを読み、同意したときに表示されるメッセージ。"
+    "description": "ユーザーがポリシーを読み、同意したときにユーザーに表示されるメッセージ。"
   },
   "message.policy": {
-    "message": "データ技術サービス利用規約",
-    "description": "ユーザーがポリシーを読み、同意したときに表示されるメッセージ。"
+    "message": "データ技術サービス利用契約",
+    "description": "ユーザーがポリシーを読み、同意したときにユーザーに表示されるメッセージ。"
   },
   "message.notAgreePolicy": {
     "message": "データ技術サービス利用契約に同意していません",
-    "description": "ユーザーがポリシーに同意していない場合に表示されるメッセージ。"
+    "description": "ユーザーがポリシーに同意していないときにユーザーに表示されるメッセージ。"
   },
   "message.confirmApplying": {
     "message": "サービス申請を確認",
-    "description": "ユーザーがサービス申請を確認する際に表示されるメッセージ。"
+    "description": "ユーザーがサービス申請を確認したときにユーザーに表示されるメッセージ。"
   },
   "message.rotateCredential": {
     "message": "キーをリセット",
-    "description": "ユーザーがキーをリセットする際に表示されるメッセージ。"
+    "description": "ユーザーがキーをリセットしたときにユーザーに表示されるメッセージ。"
   },
   "message.rotateCredentialConfirm": {
     "message": "本当にキーをリセットしますか？リセット後は復元できません",
-    "description": "ユーザーがキーのリセットを確認する際に表示されるメッセージ。"
+    "description": "ユーザーがキーのリセットを確認したときにユーザーに表示されるメッセージ。"
   },
   "message.idDoesNotExist": {
-    "message": "申請が存在しません",
-    "description": "申請が存在しない場合に表示されるメッセージ。"
+    "message": "申請は存在しません",
+    "description": "申請が存在しないときにユーザーに表示されるメッセージ。"
   },
   "message.rotateCredentialSuccessfully": {
     "message": "キーのリセットに成功しました",
-    "description": "キーのリセットが成功した場合に表示されるメッセージ。"
+    "description": "キーのリセットが成功したときにユーザーに表示されるメッセージ。"
   },
   "message.rotateCredentialFailed": {
     "message": "キーのリセットに失敗しました。処理に連絡してください",
-    "description": "キーのリセットに失敗した場合に表示されるメッセージ。"
+    "description": "キーのリセットに失敗したときにユーザーに表示されるメッセージ。"
   },
   "message.updateFailed": {
     "message": "変更に失敗しました",
-    "description": "変更に失敗した場合に表示されるメッセージ。"
+    "description": "変更に失敗したときにユーザーに表示されるメッセージ。"
   },
   "message.updateSuccessfully": {
     "message": "変更に成功しました",
-    "description": "変更が成功した場合に表示されるメッセージ。"
+    "description": "変更に成功したときにユーザーに表示されるメッセージ。"
+  },
+  "message.neverExpire": {
+    "message": "永遠に期限切れになりません",
+    "description": "申請が永遠に期限切れにならないときにユーザーに表示されるメッセージ。"
   },
   "title.buyService": {
     "message": "サービスを購入",
     "description": "ユーザーがサービスを購入したいときのページのタイトル。"
+  },
+  "title.globalBuy": {
+    "message": "共通残高のチャージ",
+    "description": "ユーザーが共通残高をチャージしたいときのページのタイトル。"
   },
   "title.applicationRemainingCount": {
     "message": "変更数量",
@@ -214,5 +230,13 @@
   "title.manageApplication": {
     "message": "申請管理",
     "description": "ユーザーが申請を管理したいときのページのタイトル。"
+  },
+  "title.applicationBalance": {
+    "message": "専用ポイント - {service}",
+    "description": "ユーザーが申請残高を確認しているときにユーザーに表示されるメッセージ。"
+  },
+  "title.globalBalance": {
+    "message": "共通残高",
+    "description": "ユーザーが共通残高を確認しているときにユーザーに表示されるメッセージ。"
   }
 }

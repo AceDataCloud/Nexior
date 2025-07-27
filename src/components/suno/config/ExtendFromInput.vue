@@ -99,7 +99,11 @@ export default defineComponent({
     }
   },
   methods: {
-    handleChange(val: number) {
+    handleChange(val: number | undefined) {
+      if (val === undefined) {
+        this.value = undefined;
+        return;
+      }
       if (val < 0) {
         this.value = 0;
         // @ts-ignore

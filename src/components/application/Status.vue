@@ -1,6 +1,6 @@
 <template>
   <div class="status">
-    <el-dialog v-model="showInfo">
+    <el-dialog v-model="visible" class="mt-12" width="600px">
       <div v-if="application">
         <p class="text-center mb-4">
           {{ $t('application.message.applicationSelection') }}
@@ -15,11 +15,13 @@
             }"
             :application="app"
             @click="onSelectApplication(app)"
+            @usage="onGoUsage(app)"
+            @buy="onBuyMore(app)"
           />
         </div>
       </div>
     </el-dialog>
-    <el-button circle @click="showInfo = true">
+    <el-button circle @click="visible = true">
       <font-awesome-icon icon="fa-solid fa-wallet" class="icon" />
     </el-button>
   </div>
@@ -29,12 +31,12 @@
 import { defineComponent } from 'vue';
 import { ElButton, ElDialog } from 'element-plus';
 import { IApplicationType, IApplication, IService } from '@/models';
-import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_APPLICATION_SUBSCRIBE } from '@/router';
+import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_USAGE_LIST } from '@/router';
 import ApplicationInfo from './Info.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export interface IData {
-  showInfo: boolean;
+  visible: boolean;
   applicationType: typeof IApplicationType;
 }
 
@@ -55,10 +57,6 @@ export default defineComponent({
       type: Array as () => IApplication[] | undefined,
       default: undefined
     },
-    showPrice: {
-      type: Boolean,
-      default: true
-    },
     service: {
       type: Object as () => IService | undefined,
       required: true
@@ -67,7 +65,7 @@ export default defineComponent({
   emits: ['select'],
   data(): IData {
     return {
-      showInfo: false,
+      visible: false,
       applicationType: IApplicationType
     };
   },
@@ -80,6 +78,15 @@ export default defineComponent({
     }
   },
   methods: {
+    onGoUsage(application: IApplication) {
+      const url = this.$router.resolve({
+        name: ROUTE_CONSOLE_USAGE_LIST,
+        query: {
+          application_id: application.id
+        }
+      });
+      window.open(url.href, '_blank');
+    },
     onBuyMore(application: IApplication) {
       // open in new tab for this url
       const url = this.$router.resolve({

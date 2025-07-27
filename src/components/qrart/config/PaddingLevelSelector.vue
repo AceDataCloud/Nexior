@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { QRART_DEFAULT_PADDING_LEVEL } from '@/constants';
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
@@ -53,7 +53,7 @@ export default defineComponent({
       get() {
         return this.$store.state.qrart?.config?.padding_level;
       },
-      set(val) {
+      set(val: number) {
         console.debug('set padding_level', val);
         this.$store.commit('qrart/setConfig', {
           ...this.$store.state.qrart?.config,

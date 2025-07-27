@@ -36,7 +36,7 @@ const CALLBACK_URL = 'https://webhook.acedata.cloud/qrart';
 interface IData {
   task: IQrartTask | undefined;
   job: number;
-  timer: NodeJS.Timer;
+  timer: any;
 }
 
 export default defineComponent({

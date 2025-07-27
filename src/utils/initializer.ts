@@ -4,16 +4,16 @@ import { getLocale } from '@/i18n';
 import { applyTheme } from './theme';
 import store from '@/store';
 import { IToken } from '@/models';
-import psl from 'psl';
+import { parse } from 'psl';
 import { BASE_HOST_HUB, LOCALE_CURRENCY_MAPPING } from '@/constants';
 import { isOfficial, isSubOfficial, isWechatBrowser } from './is';
 
 export const getDomain = (host: string = window.location.hostname) => {
-  const parsed = psl.parse(host);
-  if (parsed.error) {
+  const parsed = parse(host);
+  if ('error' in parsed && parsed.error) {
     return host;
   }
-  if (!parsed.listed) {
+  if (!('listed' in parsed) || !parsed.listed) {
     return host;
   }
   if (parsed.domain === host) {

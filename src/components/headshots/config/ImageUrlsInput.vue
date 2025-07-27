@@ -64,7 +64,7 @@ export default defineComponent({
       get() {
         return this.$store.state.headshots?.config?.image_urls;
       },
-      set(val: string) {
+      set() {
         const url = this.urls;
         this.$store.commit('headshots/setConfig', {
           ...this.$store.state.headshots?.config,

@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { OpticalDisk } from '@/assets/img';
+import OpticalDisk from '@/assets/images/disk.png';
 import { computed, watch } from 'vue';
 import { useStore } from 'vuex';
 

@@ -6,7 +6,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSwitch } from 'element-plus';
 import { PIKA_DEFAULT_INGREDIENTS } from '@/constants';
@@ -22,7 +22,7 @@ export default defineComponent({
       get() {
         return this.$store.state.pika?.config?.ingredients;
       },
-      set(val) {
+      set(val: string) {
         console.debug('set ingredients', val);
         if (!val) {
           this.$store.commit('pika/setConfig', {

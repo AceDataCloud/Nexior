@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElRadioButton, ElRadioGroup } from 'element-plus';
 import { PIKA_DEFAULT_INGREDIENTS_MODEL } from '@/constants';
@@ -39,7 +39,7 @@ export default defineComponent({
       get() {
         return this.$store.state.pika?.config?.ingredients_mode;
       },
-      set(val) {
+      set(val: string) {
         this.$store.commit('pika/setConfig', {
           ...this.$store.state.pika?.config,
           ingredients_mode: val

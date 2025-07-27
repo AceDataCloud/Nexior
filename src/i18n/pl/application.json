@@ -1,19 +1,19 @@
 {
   "type.period": {
     "message": "Okres",
-    "description": "Okres usługi."
+    "description": "Usługa okresu."
   },
   "type.usage": {
     "message": "Limit",
     "description": "Limit usługi."
   },
   "field.expiredAt": {
-    "message": "Czas wygaśnięcia",
-    "description": "Czas wygaśnięcia wniosku."
+    "message": "Data wygaśnięcia",
+    "description": "Data wygaśnięcia wniosku."
   },
   "button.goDocument": {
     "message": "Dokument",
-    "description": "Tekst przycisku, klikając ten przycisk przejdziesz do strony dokumentacji."
+    "description": "Tekst przycisku, klikając ten przycisk przejdziesz do strony dokumentu."
   },
   "button.goCredentials": {
     "message": "Poświadczenia",
@@ -79,9 +79,13 @@
     "message": "Ilość",
     "description": "Ilość wniosku."
   },
+  "field.scope": {
+    "message": "Zakres",
+    "description": "Zakres wniosku."
+  },
   "field.traceId": {
     "message": "ID śledzenia",
-    "description": "ID śledzenia jednego wywołania API wniosku o usługę, nie tłumaczyć, pozostawić jako 'ID śledzenia'."
+    "description": "ID śledzenia jednego wywołania API wniosku, nie tłumaczyć, pozostawić jako 'ID śledzenia'."
   },
   "field.shouldPayPrice": {
     "message": "Ostateczna cena",
@@ -89,11 +93,11 @@
   },
   "field.api": {
     "message": "API",
-    "description": "To jest usługa online, która dostarcza usługi użytkownikowi za pośrednictwem API."
+    "description": "To jest usługa online, która dostarcza usługi użytkownikom za pośrednictwem API."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "To jest usługa online, która dostarcza usługi użytkownikowi za pośrednictwem proxy HTTP (do przesyłania danych)."
+    "description": "To jest usługa online, która dostarcza usługi użytkownikom za pośrednictwem proxy HTTP (do przesyłania danych)."
   },
   "field.credential": {
     "message": "Poświadczenie",
@@ -105,7 +109,7 @@
   },
   "field.package": {
     "message": "Pakiet",
-    "description": "Pakiet oznacza różne plany cenowe, na przykład 100 dolarów za 10000 punktów, 200 dolarów za 20000 punktów."
+    "description": "Pakiet oznacza różne pakiety cenowe, na przykład 100 dolarów za 10000 punktów, 200 dolarów za 20000 punktów."
   },
   "field.type": {
     "message": "Typ",
@@ -113,7 +117,7 @@
   },
   "field.freeAmount": {
     "message": "Ilość darmowa",
-    "description": "Ilość darmowa wniosku."
+    "description": "Darmowa ilość wniosku."
   },
   "field.extraPrice": {
     "message": "Cena",
@@ -131,17 +135,21 @@
     "message": "Nie złożyłeś jeszcze wniosku o tę usługę, proszę złożyć wniosek przed użyciem",
     "description": "Wiadomość wyświetlana użytkownikowi, gdy jeszcze nie złożył wniosku o tę usługę."
   },
+  "message.globalBalanceBuyDescription": {
+    "message": "Punkty doładowania są ogólnym saldem, które można wykorzystać do dowolnej usługi.",
+    "description": "Wiadomość wyświetlana użytkownikowi, gdy doładowuje ogólne saldo."
+  },
   "message.yourApplication": {
     "message": "Twój wniosek",
     "description": "Wiadomość wyświetlana użytkownikowi, gdy jest w trakcie składania wniosku."
   },
   "message.unverified": {
     "message": "Musisz ukończyć weryfikację tożsamości, aby móc złożyć wniosek o tę usługę",
-    "description": "Wiadomość wyświetlana użytkownikowi, gdy nie ukończył jeszcze weryfikacji tożsamości."
+    "description": "Wiadomość wyświetlana użytkownikowi, gdy jeszcze nie ukończył weryfikacji tożsamości."
   },
   "message.goVerify": {
     "message": "Przejdź do weryfikacji tożsamości",
-    "description": "Wiadomość wyświetlana użytkownikowi, gdy nie ukończył jeszcze weryfikacji tożsamości."
+    "description": "Wiadomość wyświetlana użytkownikowi, gdy jeszcze nie ukończył weryfikacji tożsamości."
   },
   "message.requiredParameter": {
     "message": "Wymagany parametr",
@@ -152,7 +160,7 @@
     "description": "Wiadomość wyświetlana użytkownikowi, gdy nie wprowadził wymaganych parametrów."
   },
   "message.applicationSelection": {
-    "message": "Poniżej znajdują się aktualne pakiety, które złożyłeś lub kupiłeś, możesz wybrać jeden z nich, aby kontynuować korzystanie z usługi.",
+    "message": "Poniżej znajdują się aktualne pakiety, które złożyłeś lub kupiłeś, możesz wybrać dowolny pakiet, aby kontynuować korzystanie z usługi.",
     "description": "Wiadomość wyświetlana użytkownikowi, gdy musi wybrać jeden z wniosków."
   },
   "message.createCredentialSuccessfully": {
@@ -161,15 +169,15 @@
   },
   "message.readPolicy": {
     "message": "Przeczytałem i zgadzam się",
-    "description": "Wiadomość wyświetlana użytkownikowi, gdy przeczytał i zgodził się na politykę."
+    "description": "Gdy użytkownik przeczytał i zgadza się z polityką, wyświetlana jest ta wiadomość."
   },
   "message.policy": {
     "message": "Umowa o korzystanie z usług technologii danych",
-    "description": "Wiadomość wyświetlana użytkownikowi, gdy przeczytał i zgodził się na politykę."
+    "description": "Gdy użytkownik przeczytał i zgadza się z polityką, wyświetlana jest ta wiadomość."
   },
   "message.notAgreePolicy": {
     "message": "Nie zgodziłeś się na umowę o korzystanie z usług technologii danych",
-    "description": "Gdy użytkownik nie zgodził się na politykę, wyświetlana jest ta wiadomość."
+    "description": "Gdy użytkownik nie zgodził się z polityką, wyświetlana jest ta wiadomość."
   },
   "message.confirmApplying": {
     "message": "Potwierdź wniosek o usługę",
@@ -180,7 +188,7 @@
     "description": "Gdy użytkownik resetuje klucz, wyświetlana jest ta wiadomość."
   },
   "message.rotateCredentialConfirm": {
-    "message": "Czy na pewno chcesz zresetować klucz? Po zresetowaniu nie będzie można go przywrócić",
+    "message": "Czy na pewno chcesz zresetować klucz? Po resecie nie będzie można go odzyskać",
     "description": "Gdy użytkownik potwierdza reset klucza, wyświetlana jest ta wiadomość."
   },
   "message.idDoesNotExist": {
@@ -192,8 +200,8 @@
     "description": "Gdy klucz został pomyślnie zresetowany, wyświetlana jest ta wiadomość."
   },
   "message.rotateCredentialFailed": {
-    "message": "Resetowanie klucza nie powiodło się, skontaktuj się z obsługą",
-    "description": "Gdy resetowanie klucza nie powiodło się, wyświetlana jest ta wiadomość."
+    "message": "Reset klucza nie powiódł się, skontaktuj się z obsługą",
+    "description": "Gdy reset klucza nie powiódł się, wyświetlana jest ta wiadomość."
   },
   "message.updateFailed": {
     "message": "Aktualizacja nie powiodła się",
@@ -203,16 +211,32 @@
     "message": "Aktualizacja powiodła się",
     "description": "Gdy aktualizacja powiodła się, wyświetlana jest ta wiadomość."
   },
+  "message.neverExpire": {
+    "message": "Nigdy nie wygasa",
+    "description": "Gdy wniosek nigdy nie wygasa, wyświetlana jest ta wiadomość."
+  },
   "title.buyService": {
     "message": "Zakup usługi",
-    "description": "Tytuł strony, gdy użytkownik chce kupić usługę."
+    "description": "Gdy użytkownik chce kupić usługę, tytuł strony."
+  },
+  "title.globalBuy": {
+    "message": "Doładowanie salda ogólnego",
+    "description": "Gdy użytkownik chce doładować saldo ogólne, tytuł strony."
   },
   "title.applicationRemainingCount": {
-    "message": "Liczba zmian",
-    "description": "Tytuł strony, gdy użytkownik chce zmienić liczbę wniosków."
+    "message": "Liczba do zmiany",
+    "description": "Gdy użytkownik chce zmienić liczbę wniosków, tytuł strony."
   },
   "title.manageApplication": {
     "message": "Zarządzanie wnioskami",
-    "description": "Tytuł strony, gdy użytkownik chce zarządzać wnioskami."
+    "description": "Gdy użytkownik chce zarządzać wnioskami, tytuł strony."
+  },
+  "title.applicationBalance": {
+    "message": "Punkty dedykowane - {service}",
+    "description": "Gdy użytkownik przegląda saldo wniosków, wyświetlana jest ta wiadomość."
+  },
+  "title.globalBalance": {
+    "message": "Saldo ogólne",
+    "description": "Gdy użytkownik przegląda saldo ogólne, wyświetlana jest ta wiadomość."
   }
 }

@@ -19,7 +19,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { MIDJOURNEY_DEFAULT_RATIO } from '@/constants';
 
@@ -69,7 +69,7 @@ export default defineComponent({
       get() {
         return this.$store.state.midjourney.config.ratio;
       },
-      set(val) {
+      set(val: string) {
         console.debug('set ratio', val);
         this.$store.commit('midjourney/setConfig', {
           ...this.$store.state.midjourney.config,

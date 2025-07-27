@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElInput } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
@@ -37,7 +37,7 @@ export default defineComponent({
       get() {
         return this.$store.state.suno?.config?.title;
       },
-      set(val) {
+      set(val: string) {
         console.debug('set title', val);
         this.$store.commit('suno/setConfig', {
           ...this.$store.state.suno?.config,
@@ -49,18 +49,13 @@ export default defineComponent({
       get() {
         return this.$store.state.suno?.config?.instrumental;
       },
-      set(val) {
+      set(val: boolean) {
         console.debug('set instrumental', val);
         this.$store.commit('suno/setConfig', {
           ...this.$store.state.suno?.config,
           instrumental: val
         });
       }
-    }
-  },
-  mounted() {
-    if (!this.value) {
-      this.value = DEFAULT_PROMPT;
     }
   }
 });

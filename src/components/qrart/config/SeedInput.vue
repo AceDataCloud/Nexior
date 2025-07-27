@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElInput } from 'element-plus';
 
@@ -22,7 +22,7 @@ export default defineComponent({
       get() {
         return this.$store.state.qrart?.config?.seed;
       },
-      set(val) {
+      set(val: string) {
         console.debug('set seed', val);
         this.$store.commit('qrart/setConfig', {
           ...this.$store.state.qrart?.config,

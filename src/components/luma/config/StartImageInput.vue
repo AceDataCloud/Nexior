@@ -22,7 +22,8 @@
     >
       <template #file="{ file }">
         <image-preview
-          :url="file.url || file.response?.file_url"
+          v-if="file.percentage != undefined"
+          :url="file.url || (file.response as any).file_url"
           :name="file.name"
           :percentage="file.percentage"
           @remove="fileList.splice(fileList.indexOf(file), 1)"

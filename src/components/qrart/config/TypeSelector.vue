@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
 import { QRART_DEFAULT_TYPE } from '@/constants';
@@ -56,7 +56,7 @@ export default defineComponent({
       get() {
         return this.$store.state.qrart?.config?.type;
       },
-      set(val) {
+      set(val: string) {
         console.debug('set type', val);
         this.$store.commit('qrart/setConfig', {
           ...this.$store.state.qrart?.config,

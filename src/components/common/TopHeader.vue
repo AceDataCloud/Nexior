@@ -5,9 +5,9 @@
     </el-col>
     <el-col :md="16" :xs="13">
       <el-menu :default-active="active" mode="horizontal" class="menu" :ellipsis="true" @select="onSelect">
-        <el-sub-menu :index="1">
+        <el-sub-menu :index="products">
           <template #title>{{ $t('common.nav.products') }}</template>
-          <el-menu-item v-if="site?.features?.chat?.enabled" v-t="'index.title.chat'" index="/chat"></el-menu-item>
+          <el-menu-item v-if="site?.features?.chatgpt?.enabled" v-t="'index.title.chat'" index="/chat"></el-menu-item>
           <el-menu-item
             v-if="site?.features?.midjourney?.enabled"
             v-t="'index.title.midjourney'"
@@ -88,7 +88,8 @@ export default defineComponent({
   },
   data() {
     return {
-      defaultAvatar
+      defaultAvatar,
+      products: 'chat'
     };
   },
   computed: {

@@ -19,7 +19,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { KLING_DEFAULT_ASPECT_RATIO } from '@/constants';
 
@@ -57,7 +57,7 @@ export default defineComponent({
       get() {
         return this.$store.state?.kling?.config?.aspect_ratio;
       },
-      set(val) {
+      set(val: string) {
         console.debug('set ratio', val);
         this.$store.commit('kling/setConfig', {
           ...this.$store.state?.kling?.config,

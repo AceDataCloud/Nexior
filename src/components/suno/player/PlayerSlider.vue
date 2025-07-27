@@ -33,7 +33,7 @@ const duration = computed({
 });
 
 const onSliderInput = () => {};
-const onSliderChange = (val: number) =>
+const onSliderChange = (val: any) =>
   store.dispatch('suno/setAudio', {
     ...store.state.suno.audio,
     progress: val

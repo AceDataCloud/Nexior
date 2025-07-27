@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSwitch } from 'element-plus';
 import { LUMA_DEFAULT_ENHANCEMENT } from '@/constants';
@@ -28,7 +28,7 @@ export default defineComponent({
       get() {
         return this.$store.state.luma?.config?.enhancement;
       },
-      set(val) {
+      set(val: boolean) {
         console.debug('set enhancement', val);
         this.$store.commit('luma/setConfig', {
           ...this.$store.state.luma?.config,

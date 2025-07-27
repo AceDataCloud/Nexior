@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElRadioButton, ElRadioGroup } from 'element-plus';
 import { MIDJOURNEY_DEFAULT_QUALITY } from '@/constants';
@@ -43,7 +43,7 @@ export default defineComponent({
       get() {
         return this.$store.state.midjourney.config.quality;
       },
-      set(val) {
+      set(val: string) {
         this.$store.commit('midjourney/setConfig', {
           ...this.$store.state.midjourney.config,
           quality: val

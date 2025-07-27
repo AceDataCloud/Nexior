@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { QRART_DEFAULT_ROTATE } from '@/constants';
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
@@ -45,7 +45,7 @@ export default defineComponent({
       get() {
         return this.$store.state.qrart?.config?.rotate;
       },
-      set(val) {
+      set(val: number) {
         console.debug('set rotate', val);
         this.$store.commit('qrart/setConfig', {
           ...this.$store.state.qrart?.config,

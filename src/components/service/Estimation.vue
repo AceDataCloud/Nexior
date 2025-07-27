@@ -31,9 +31,9 @@
 </template>
 
 <script lang="ts">
-import { IService, IPackage } from '@/operators';
 import { defineComponent } from 'vue';
 import { getPriceString } from '@/utils';
+import { IPackage, IService } from '@/models';
 
 export default defineComponent({
   name: 'ServiceEstimation',
