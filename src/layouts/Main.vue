@@ -112,6 +112,7 @@ export default defineComponent({
         .then(() => {
           ElMessage.success(this.$t('application.message.applySuccessfully'));
           this.onInitialize();
+          this.applying = false;
         })
         .catch((error) => {
           if (error?.response?.data?.code === ERROR_CODE_DUPLICATION) {

@@ -84,8 +84,8 @@
     "description": "Ambito della richiesta."
   },
   "field.traceId": {
-    "message": "Trace ID",
-    "description": "Trace ID di una chiamata API della richiesta del servizio API, non tradurre, mantenere come 'Trace ID'."
+    "message": "ID di tracciamento",
+    "description": "ID di tracciamento di una chiamata API della richiesta del servizio, non tradurre, mantenere come 'ID di tracciamento'."
   },
   "field.shouldPayPrice": {
     "message": "Prezzo finale",
@@ -109,7 +109,7 @@
   },
   "field.package": {
     "message": "Pacchetto",
-    "description": "Il pacchetto rappresenta diversi pacchetti di prezzo, ad esempio 100 dollari per 10000 punti, 200 dollari per 20000 punti."
+    "description": "Il pacchetto rappresenta diverse offerte di prezzo, ad esempio 100 dollari per 10.000 punti, 200 dollari per 20.000 punti."
   },
   "field.type": {
     "message": "Tipo",
@@ -132,7 +132,7 @@
     "description": "Messaggio mostrato all'utente quando ha effettuato con successo la richiesta di questo servizio."
   },
   "message.notApplied": {
-    "message": "Non hai ancora richiesto questo servizio, per favore richiedilo prima di utilizzarlo",
+    "message": "Benvenuto nel nostro servizio, ti offriamo una quota di prova gratuita, clicca il pulsante qui sotto per iniziare subito.",
     "description": "Messaggio mostrato all'utente quando non ha ancora richiesto questo servizio."
   },
   "message.globalBalanceBuyDescription": {
@@ -141,15 +141,15 @@
   },
   "message.yourApplication": {
     "message": "La tua richiesta",
-    "description": "Messaggio mostrato all'utente durante la richiesta."
+    "description": "Messaggio mostrato all'utente riguardo alla sua richiesta."
   },
   "message.unverified": {
     "message": "Devi completare la verifica dell'identità prima di poter richiedere questo servizio",
-    "description": "Messaggio mostrato all'utente quando non ha completato la verifica dell'identità."
+    "description": "Messaggio mostrato all'utente quando non ha ancora completato la verifica dell'identità."
   },
   "message.goVerify": {
     "message": "Vai alla verifica dell'identità",
-    "description": "Messaggio mostrato all'utente quando non ha completato la verifica dell'identità."
+    "description": "Messaggio mostrato all'utente quando non ha ancora completato la verifica dell'identità."
   },
   "message.requiredParameter": {
     "message": "Parametro obbligatorio",
@@ -160,83 +160,83 @@
     "description": "Messaggio mostrato all'utente quando non ha inserito i parametri obbligatori."
   },
   "message.applicationSelection": {
-    "message": "Di seguito sono elencati i pacchetti che hai attualmente richiesto o acquistato, puoi scegliere uno qualsiasi di essi per continuare a utilizzare il servizio.",
+    "message": "Di seguito sono elencati i pacchetti che hai attualmente richiesto o acquistato, puoi scegliere uno di essi per continuare a utilizzare il servizio.",
     "description": "Messaggio mostrato all'utente quando deve selezionare una richiesta."
   },
   "message.createCredentialSuccessfully": {
     "message": "Credenziali create con successo",
-    "description": "Messaggio mostrato all'utente quando ha creato con successo le credenziali."
+    "description": "Quando l'utente crea con successo le credenziali, viene mostrato un messaggio all'utente."
   },
   "message.readPolicy": {
     "message": "Ho letto e accetto",
-    "description": "Messaggio mostrato all'utente quando ha letto e accettato la politica."
+    "description": "Quando l'utente ha letto e accettato la politica, viene mostrato un messaggio all'utente."
   },
   "message.policy": {
     "message": "Accordo di utilizzo dei servizi tecnologici dei dati",
-    "description": "Messaggio mostrato all'utente quando ha letto e accettato la politica."
+    "description": "Quando l'utente ha letto e accettato la politica, viene mostrato un messaggio all'utente."
   },
   "message.notAgreePolicy": {
     "message": "Non hai ancora accettato l'accordo di utilizzo dei servizi tecnologici dei dati",
-    "description": "Messaggio mostrato all'utente quando non ha ancora accettato la politica."
+    "description": "Quando l'utente non ha ancora accettato la politica, viene mostrato un messaggio all'utente."
   },
-  "message.confirmApplying": {
-    "message": "Conferma la richiesta di servizio",
-    "description": "Messaggio mostrato all'utente quando conferma la richiesta di servizio."
+  "message.welcome": {
+    "message": "Benvenuto",
+    "description": "Quando l'utente conferma la richiesta di servizio, viene mostrato un messaggio all'utente."
   },
   "message.rotateCredential": {
     "message": "Reimposta la chiave",
-    "description": "Messaggio mostrato all'utente quando reimposta la chiave."
+    "description": "Quando l'utente reimposta la chiave, viene mostrato un messaggio all'utente."
   },
   "message.rotateCredentialConfirm": {
     "message": "Sei sicuro di voler reimpostare la chiave? Dopo la reimpostazione non sarà possibile recuperarla",
-    "description": "Messaggio mostrato all'utente quando conferma la reimpostazione della chiave."
+    "description": "Quando l'utente conferma la reimpostazione della chiave, viene mostrato un messaggio all'utente."
   },
   "message.idDoesNotExist": {
     "message": "La richiesta non esiste",
-    "description": "Messaggio mostrato all'utente quando la richiesta non esiste."
+    "description": "Quando la richiesta non esiste, viene mostrato un messaggio all'utente."
   },
   "message.rotateCredentialSuccessfully": {
     "message": "Reimpostazione della chiave riuscita",
-    "description": "Messaggio mostrato all'utente quando la reimpostazione della chiave ha avuto successo."
+    "description": "Quando la reimpostazione della chiave ha successo, viene mostrato un messaggio all'utente."
   },
   "message.rotateCredentialFailed": {
     "message": "Reimpostazione della chiave fallita, contattare il supporto",
-    "description": "Messaggio mostrato all'utente quando la reimpostazione della chiave fallisce."
+    "description": "Quando la reimpostazione della chiave fallisce, viene mostrato un messaggio all'utente."
   },
   "message.updateFailed": {
     "message": "Modifica fallita",
-    "description": "Messaggio mostrato all'utente quando la modifica fallisce."
+    "description": "Quando la modifica fallisce, viene mostrato un messaggio all'utente."
   },
   "message.updateSuccessfully": {
     "message": "Modifica riuscita",
-    "description": "Messaggio mostrato all'utente quando la modifica ha successo."
+    "description": "Quando la modifica ha successo, viene mostrato un messaggio all'utente."
   },
   "message.neverExpire": {
-    "message": "Mai scadere",
-    "description": "Messaggio mostrato all'utente quando la richiesta non scade mai."
+    "message": "Mai in scadenza",
+    "description": "Quando la richiesta non scade mai, viene mostrato un messaggio all'utente."
   },
   "title.buyService": {
     "message": "Acquista servizio",
-    "description": "Titolo della pagina quando l'utente desidera acquistare un servizio."
+    "description": "Quando l'utente desidera acquistare un servizio, il titolo della pagina."
   },
   "title.globalBuy": {
     "message": "Ricarica saldo generale",
-    "description": "Titolo della pagina quando l'utente desidera ricaricare il saldo generale."
+    "description": "Quando l'utente desidera ricaricare il saldo generale, il titolo della pagina."
   },
   "title.applicationRemainingCount": {
     "message": "Modifica quantità",
-    "description": "Titolo della pagina quando l'utente desidera modificare la quantità della richiesta."
+    "description": "Quando l'utente desidera modificare la quantità della richiesta, il titolo della pagina."
   },
   "title.manageApplication": {
     "message": "Gestione delle richieste",
-    "description": "Titolo della pagina quando l'utente desidera gestire le richieste."
+    "description": "Quando l'utente desidera gestire le richieste, il titolo della pagina."
   },
   "title.applicationBalance": {
     "message": "Punti esclusivi - {service}",
-    "description": "Messaggio mostrato all'utente quando visualizza il saldo della richiesta."
+    "description": "Quando l'utente visualizza il saldo della richiesta, viene mostrato un messaggio all'utente."
   },
   "title.globalBalance": {
     "message": "Saldo generale",
-    "description": "Messaggio mostrato all'utente quando visualizza il saldo generale."
+    "description": "Quando l'utente visualizza il saldo generale, viene mostrato un messaggio all'utente."
   }
 }

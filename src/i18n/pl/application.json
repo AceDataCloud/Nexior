@@ -13,7 +13,7 @@
   },
   "button.goDocument": {
     "message": "Dokument",
-    "description": "Tekst przycisku, klikając ten przycisk przejdziesz do strony dokumentu."
+    "description": "Tekst przycisku, klikając ten przycisk przejdziesz do strony dokumentacji."
   },
   "button.goCredentials": {
     "message": "Poświadczenia",
@@ -85,7 +85,7 @@
   },
   "field.traceId": {
     "message": "ID śledzenia",
-    "description": "ID śledzenia jednego wywołania API wniosku, nie tłumaczyć, pozostawić jako 'ID śledzenia'."
+    "description": "ID śledzenia jednego wywołania API wniosku o usługę, nie tłumaczyć, pozostawić jako 'ID śledzenia'."
   },
   "field.shouldPayPrice": {
     "message": "Ostateczna cena",
@@ -93,11 +93,11 @@
   },
   "field.api": {
     "message": "API",
-    "description": "To jest usługa online, która dostarcza usługi użytkownikom za pośrednictwem API."
+    "description": "To jest usługa online, która dostarcza usługi użytkownikowi za pośrednictwem API."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "To jest usługa online, która dostarcza usługi użytkownikom za pośrednictwem proxy HTTP (do przesyłania danych)."
+    "description": "To jest usługa online, która dostarcza usługi użytkownikowi za pośrednictwem proxy HTTP (do przesyłania danych)."
   },
   "field.credential": {
     "message": "Poświadczenie",
@@ -132,7 +132,7 @@
     "description": "Wiadomość wyświetlana użytkownikowi, gdy pomyślnie złożył wniosek o tę usługę."
   },
   "message.notApplied": {
-    "message": "Nie złożyłeś jeszcze wniosku o tę usługę, proszę złożyć wniosek przed użyciem",
+    "message": "Witamy w korzystaniu z naszych usług, oferujemy Ci darmowy limit próbny, kliknij przycisk poniżej, aby rozpocząć.",
     "description": "Wiadomość wyświetlana użytkownikowi, gdy jeszcze nie złożył wniosku o tę usługę."
   },
   "message.globalBalanceBuyDescription": {
@@ -153,34 +153,34 @@
   },
   "message.requiredParameter": {
     "message": "Wymagany parametr",
-    "description": "Wiadomość wyświetlana użytkownikowi, gdy nie wprowadził wymaganych parametrów."
+    "description": "Wiadomość wyświetlana użytkownikowi, gdy jeszcze nie wprowadził wymaganych parametrów."
   },
   "message.example": {
     "message": "Przykład",
-    "description": "Wiadomość wyświetlana użytkownikowi, gdy nie wprowadził wymaganych parametrów."
+    "description": "Wiadomość wyświetlana użytkownikowi, gdy jeszcze nie wprowadził wymaganych parametrów."
   },
   "message.applicationSelection": {
-    "message": "Poniżej znajdują się aktualne pakiety, które złożyłeś lub kupiłeś, możesz wybrać dowolny pakiet, aby kontynuować korzystanie z usługi.",
-    "description": "Wiadomość wyświetlana użytkownikowi, gdy musi wybrać jeden z wniosków."
+    "message": "Poniżej znajdują się aktualne wnioski lub zakupione pakiety, możesz wybrać jeden z nich, aby kontynuować korzystanie z usługi.",
+    "description": "Wiadomość wyświetlana użytkownikowi, gdy musi wybrać wniosek."
   },
   "message.createCredentialSuccessfully": {
     "message": "Pomyślnie utworzono poświadczenie",
-    "description": "Wiadomość wyświetlana użytkownikowi, gdy pomyślnie utworzył poświadczenie."
+    "description": "Gdy użytkownik pomyślnie utworzy poświadczenie, wyświetlana jest ta wiadomość."
   },
   "message.readPolicy": {
     "message": "Przeczytałem i zgadzam się",
-    "description": "Gdy użytkownik przeczytał i zgadza się z polityką, wyświetlana jest ta wiadomość."
+    "description": "Gdy użytkownik przeczytał i zgodził się na politykę, wyświetlana jest ta wiadomość."
   },
   "message.policy": {
     "message": "Umowa o korzystanie z usług technologii danych",
-    "description": "Gdy użytkownik przeczytał i zgadza się z polityką, wyświetlana jest ta wiadomość."
+    "description": "Gdy użytkownik przeczytał i zgodził się na politykę, wyświetlana jest ta wiadomość."
   },
   "message.notAgreePolicy": {
     "message": "Nie zgodziłeś się na umowę o korzystanie z usług technologii danych",
-    "description": "Gdy użytkownik nie zgodził się z polityką, wyświetlana jest ta wiadomość."
+    "description": "Gdy użytkownik nie zgodził się na politykę, wyświetlana jest ta wiadomość."
   },
-  "message.confirmApplying": {
-    "message": "Potwierdź wniosek o usługę",
+  "message.welcome": {
+    "message": "Witamy",
     "description": "Gdy użytkownik potwierdza wniosek o usługę, wyświetlana jest ta wiadomość."
   },
   "message.rotateCredential": {
@@ -196,7 +196,7 @@
     "description": "Gdy wniosek nie istnieje, wyświetlana jest ta wiadomość."
   },
   "message.rotateCredentialSuccessfully": {
-    "message": "Klucz został pomyślnie zresetowany",
+    "message": "Pomyślnie zresetowano klucz",
     "description": "Gdy klucz został pomyślnie zresetowany, wyświetlana jest ta wiadomość."
   },
   "message.rotateCredentialFailed": {
@@ -217,19 +217,19 @@
   },
   "title.buyService": {
     "message": "Zakup usługi",
-    "description": "Gdy użytkownik chce kupić usługę, tytuł strony."
+    "description": "Tytuł strony, gdy użytkownik chce zakupić usługę."
   },
   "title.globalBuy": {
     "message": "Doładowanie salda ogólnego",
-    "description": "Gdy użytkownik chce doładować saldo ogólne, tytuł strony."
+    "description": "Tytuł strony, gdy użytkownik chce doładować saldo ogólne."
   },
   "title.applicationRemainingCount": {
     "message": "Liczba do zmiany",
-    "description": "Gdy użytkownik chce zmienić liczbę wniosków, tytuł strony."
+    "description": "Tytuł strony, gdy użytkownik chce zmienić liczbę wniosków."
   },
   "title.manageApplication": {
     "message": "Zarządzanie wnioskami",
-    "description": "Gdy użytkownik chce zarządzać wnioskami, tytuł strony."
+    "description": "Tytuł strony, gdy użytkownik chce zarządzać wnioskami."
   },
   "title.applicationBalance": {
     "message": "Punkty dedykowane - {service}",

@@ -25,7 +25,7 @@
   },
   "button.createOrder": {
     "message": "Luo tilaus",
-    "description": "Painikkeen teksti, napsauttamalla tätä painiketta siirrytään tilauksen luontisivulle."
+    "description": "Painikkeen teksti, napsauttamalla tätä painiketta siirrytään tilauksen luomissivulle."
   },
   "button.custom": {
     "message": "Mukautettu",
@@ -96,8 +96,8 @@
     "description": "Tämä on verkkopalvelu, joka tarjoaa palveluja käyttäjille API:n kautta."
   },
   "field.proxy": {
-    "message": "Välimies",
-    "description": "Tämä on verkkopalvelu, joka tarjoaa palveluja käyttäjille HTTP-välimiehen kautta (tietojen siirtoon)."
+    "message": "Välimuisti",
+    "description": "Tämä on verkkopalvelu, joka tarjoaa palveluja käyttäjille HTTP-välimuistin kautta (tietojen siirtoon)."
   },
   "field.credential": {
     "message": "Todistus",
@@ -121,7 +121,7 @@
   },
   "field.extraPrice": {
     "message": "Hinta",
-    "description": "Käyttäjän maksama hakemuksen ylimääräinen hinta."
+    "description": "Käyttäjän maksettava hakemuksen ylimääräinen hinta."
   },
   "message.alreadyApplied": {
     "message": "Olette jo hakenut tätä palvelua, tarkistakaa ohjauspaneeli",
@@ -132,7 +132,7 @@
     "description": "Viesti, joka näytetään käyttäjälle, kun hän on onnistuneesti hakenut tätä palvelua."
   },
   "message.notApplied": {
-    "message": "Et ole vielä hakenut tätä palvelua, hae palvelua ennen käyttöä",
+    "message": "Tervetuloa käyttämään palveluitamme, tarjoamme teille ilmaisen kokeilukäyttöoikeuden, napsauttakaa alla olevaa painiketta aloittaaksenne heti.",
     "description": "Viesti, joka näytetään käyttäjälle, kun hän ei ole vielä hakenut tätä palvelua."
   },
   "message.globalBalanceBuyDescription": {
@@ -144,7 +144,7 @@
     "description": "Viesti, joka näytetään käyttäjälle hänen hakemuksensa yhteydessä."
   },
   "message.unverified": {
-    "message": "Sinun on suoritettava henkilöllisyyden vahvistaminen ennen kuin voit hakea tätä palvelua",
+    "message": "Teidän on suoritettava henkilöllisyyden vahvistaminen ennen kuin voitte hakea tätä palvelua",
     "description": "Viesti, joka näytetään käyttäjälle, kun hän ei ole vielä suorittanut henkilöllisyyden vahvistamista."
   },
   "message.goVerify": {
@@ -153,67 +153,67 @@
   },
   "message.requiredParameter": {
     "message": "Pakollinen parametri",
-    "description": "Viesti, joka näytetään käyttäjälle, kun hän ei ole syöttänyt pakollista parametria."
+    "description": "Viesti, joka näytetään käyttäjälle, kun hän ei ole vielä syöttänyt pakollista parametria."
   },
   "message.example": {
     "message": "Esimerkki",
-    "description": "Viesti, joka näytetään käyttäjälle, kun hän ei ole syöttänyt pakollista parametria."
+    "description": "Viesti, joka näytetään käyttäjälle, kun hän ei ole vielä syöttänyt pakollista parametria."
   },
   "message.applicationSelection": {
     "message": "Alla on nykyiset hakemuksenne tai ostamanne paketit, voitte valita minkä tahansa paketin jatkaaksenne palvelun käyttöä.",
     "description": "Viesti, joka näytetään käyttäjälle, kun hänen on valittava hakemus."
   },
   "message.createCredentialSuccessfully": {
-    "message": "Todistus luotiin onnistuneesti",
-    "description": "Viesti, joka näytetään käyttäjälle, kun hän on onnistuneesti luonut todistuksen."
+    "message": "Viaton onnistui luomaan tunnistetiedot",
+    "description": "Kun käyttäjä on onnistuneesti luonut tunnistetiedot, näytetään käyttäjälle viesti."
   },
   "message.readPolicy": {
     "message": "Olen lukenut ja hyväksynyt",
-    "description": "Kun käyttäjä on lukenut ja hyväksynyt politiikan, näytetään käyttäjälle tämä viesti."
+    "description": "Kun käyttäjä on lukenut ja hyväksynyt käytännön, näytetään käyttäjälle viesti."
   },
   "message.policy": {
     "message": "Tietotekniikkapalveluiden käyttöehto",
-    "description": "Kun käyttäjä on lukenut ja hyväksynyt politiikan, näytetään käyttäjälle tämä viesti."
+    "description": "Kun käyttäjä on lukenut ja hyväksynyt käytännön, näytetään käyttäjälle viesti."
   },
   "message.notAgreePolicy": {
-    "message": "Et ole vielä hyväksynyt tietotekniikkapalveluiden käyttöehtoa",
-    "description": "Kun käyttäjä ei ole vielä hyväksynyt politiikkaa, näytetään käyttäjälle tämä viesti."
+    "message": "Et ole vielä hyväksynyt tietotekniikkapalveluiden käyttöehtoja",
+    "description": "Kun käyttäjä ei ole vielä hyväksynyt käytäntöä, näytetään käyttäjälle viesti."
   },
-  "message.confirmApplying": {
-    "message": "Vahvista palveluhakemus",
-    "description": "Kun käyttäjä vahvistaa palveluhakemuksen, näytetään käyttäjälle tämä viesti."
+  "message.welcome": {
+    "message": "Tervetuloa",
+    "description": "Kun käyttäjä vahvistaa palveluhakemuksen, näytetään käyttäjälle viesti."
   },
   "message.rotateCredential": {
     "message": "Nollaa avain",
-    "description": "Kun käyttäjä nollaa avaimen, näytetään käyttäjälle tämä viesti."
+    "description": "Kun käyttäjä nollaa avaimen, näytetään käyttäjälle viesti."
   },
   "message.rotateCredentialConfirm": {
-    "message": "Oletko varma, että haluat nollata avaimen? Nollauksen jälkeen sitä ei voi palauttaa",
-    "description": "Kun käyttäjä vahvistaa avaimen nollaamisen, näytetään käyttäjälle tämä viesti."
+    "message": "Haluatko varmasti nollata avaimen? Nollauksen jälkeen sitä ei voi palauttaa",
+    "description": "Kun käyttäjä vahvistaa avaimen nollaamisen, näytetään käyttäjälle viesti."
   },
   "message.idDoesNotExist": {
     "message": "Hakemusta ei ole olemassa",
-    "description": "Kun hakemusta ei ole olemassa, näytetään käyttäjälle tämä viesti."
+    "description": "Kun hakemusta ei ole olemassa, näytetään käyttäjälle viesti."
   },
   "message.rotateCredentialSuccessfully": {
     "message": "Avaimen nollaus onnistui",
-    "description": "Kun avaimen nollaus onnistuu, näytetään käyttäjälle tämä viesti."
+    "description": "Kun avaimen nollaus onnistuu, näytetään käyttäjälle viesti."
   },
   "message.rotateCredentialFailed": {
     "message": "Avaimen nollaus epäonnistui, ota yhteyttä tukeen",
-    "description": "Kun avaimen nollaus epäonnistuu, näytetään käyttäjälle tämä viesti."
+    "description": "Kun avaimen nollaus epäonnistuu, näytetään käyttäjälle viesti."
   },
   "message.updateFailed": {
     "message": "Päivitys epäonnistui",
-    "description": "Kun päivitys epäonnistuu, näytetään käyttäjälle tämä viesti."
+    "description": "Kun päivitys epäonnistuu, näytetään käyttäjälle viesti."
   },
   "message.updateSuccessfully": {
     "message": "Päivitys onnistui",
-    "description": "Kun päivitys onnistuu, näytetään käyttäjälle tämä viesti."
+    "description": "Kun päivitys onnistuu, näytetään käyttäjälle viesti."
   },
   "message.neverExpire": {
     "message": "Ei koskaan vanhene",
-    "description": "Kun hakemus ei koskaan vanhene, näytetään käyttäjälle tämä viesti."
+    "description": "Kun hakemus ei koskaan vanhene, näytetään käyttäjälle viesti."
   },
   "title.buyService": {
     "message": "Osta palvelu",
@@ -233,10 +233,10 @@
   },
   "title.applicationBalance": {
     "message": "Erityiset pisteet - {service}",
-    "description": "Kun käyttäjä tarkastelee hakemuksen saldoa, näytetään käyttäjälle tämä viesti."
+    "description": "Kun käyttäjä tarkastelee hakemuksen saldoa, näytetään käyttäjälle viesti."
   },
   "title.globalBalance": {
     "message": "Yleinen saldo",
-    "description": "Kun käyttäjä tarkastelee yleistä saldoa, näytetään käyttäjälle tämä viesti."
+    "description": "Kun käyttäjä tarkastelee yleistä saldoa, näytetään käyttäjälle viesti."
   }
 }
