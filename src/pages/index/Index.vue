@@ -64,7 +64,7 @@
         </el-row>
       </div>
     </div>
-    <div v-if="site?.features?.chat?.enabled" id="chat" class="block">
+    <div v-if="site?.features?.chatgpt?.enabled" id="chat" class="block">
       <div class="container">
         <el-row>
           <el-col :md="16" :xs="24" class="preview">
@@ -306,7 +306,7 @@ export default defineComponent({
     },
     capabilities() {
       return [
-        ...(this.site?.features?.chat?.enabled
+        ...(this.site?.features?.chatgpt?.enabled
           ? [
               {
                 title: this.$t('index.title.chat'),

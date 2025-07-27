@@ -8,17 +8,7 @@
       <image-url-input v-if="config?.ingredients" class="mb-4" />
       <ingredients-model-selector v-if="config?.ingredients" class="mb-4" />
       <div class="actions">
-        <el-button
-          v-if="config?.video_url !== undefined || config?.custom"
-          type="primary"
-          class="btn w-full"
-          round
-          @click="onGenerate"
-        >
-          <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
-          {{ $t('pika.button.extend') }}
-        </el-button>
-        <el-button v-else type="primary" class="btn w-full" round @click="onGenerate">
+        <el-button type="primary" class="btn w-full" round @click="onGenerate">
           <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
           {{ $t('pika.button.generate') }}
         </el-button>
@@ -27,7 +17,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';

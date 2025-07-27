@@ -57,7 +57,7 @@
                 {{ task?.response?.image_width }} x {{ task?.response?.image_height }}
               </el-descriptions-item>
               <el-descriptions-item v-if="task?.created_at" :label="$t('qrart.name.createdAt')">
-                {{ $dayjs.format('' + new Date(parseFloat(task?.created_at) * 1000)) }}
+                {{ $dayjs.format('' + new Date(parseFloat(task?.created_at.toString()) * 1000)) }}
               </el-descriptions-item>
               <el-descriptions-item :label="$t('qrart.name.seed')">
                 {{ task?.request?.seed || task?.response?.seed }}

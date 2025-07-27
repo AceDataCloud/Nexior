@@ -5,9 +5,10 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSwitch } from 'element-plus';
+import { QRART_DEFAULT_RAWURL } from '@/constants';
 
 export default defineComponent({
   name: 'RawurlSelector',
@@ -19,7 +20,7 @@ export default defineComponent({
       get() {
         return this.$store.state.qrart?.config?.rawurl;
       },
-      set(val) {
+      set(val: boolean) {
         console.debug('set rawurl', val);
         this.$store.commit('qrart/setConfig', {
           ...this.$store.state.qrart?.config,

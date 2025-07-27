@@ -20,7 +20,7 @@
 import { defineComponent } from 'vue';
 import Navigator from '@/components/common/Navigator.vue';
 import ApplicationStatus from '@/components/application/Status.vue';
-import { IApplicationDetailResponse, IApplicationScope, IApplicationType, Status } from '@/models';
+import { IApplicationScope, IApplicationType, Status } from '@/models';
 import { IAppState } from '@/store/common/models';
 import { ElMessage } from 'element-plus';
 import { applicationOperator } from '@/operators';
@@ -109,8 +109,7 @@ export default defineComponent({
           scope: IApplicationScope.GLOBAL,
           user_id: this.$store.getters.user.id
         })
-        .then(({ data: data }: { data: IApplicationDetailResponse }) => {
-          // this.application = data;
+        .then(() => {
           ElMessage.success(this.$t('application.message.applySuccessfully'));
           this.onInitialize();
         })

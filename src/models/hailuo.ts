@@ -2,6 +2,8 @@ export interface IHailuoConfig {
   action?: string;
   prompt?: string;
   model?: string;
+  custom?: boolean;
+  video_url?: string;
   first_image_url?: string;
   callback_url?: string;
 }

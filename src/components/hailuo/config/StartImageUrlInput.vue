@@ -23,22 +23,23 @@
     >
       <template #file="{ file }">
         <image-preview
-          :url="file.url || file.response?.file_url"
+          v-if="file.url && file.percentage !== undefined"
+          :url="file.url"
           :name="file.name"
           :percentage="file.percentage"
           @remove="fileList.splice(fileList.indexOf(file), 1)"
         />
       </template>
-      <el-button size="small" type="primary" class="btn btn-upload" round>{{
-        $t('hailuo.button.uploadStartImageUrl')
-      }}</el-button>
+      <el-button size="small" type="primary" class="btn btn-upload" round>
+        {{ $t('hailuo.button.uploadStartImageUrl') }}
+      </el-button>
     </el-upload>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton, ElUpload, ElMessage, UploadFiles } from 'element-plus';
+import { ElButton, ElUpload, ElMessage, UploadFiles, UploadFile } from 'element-plus';
 import { getBaseUrlPlatform } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
@@ -71,8 +72,7 @@ export default defineComponent({
       };
     },
     urls(): string[] {
-      // @ts-ignore
-      return this.fileList.map((file: UploadFile) => file?.response?.file_url);
+      return this.fileList.map((file: UploadFile) => file.url).filter((url: string | undefined) => url !== undefined);
     },
     value: {
       get() {

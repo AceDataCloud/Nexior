@@ -25,7 +25,7 @@ const CALLBACK_URL = 'https://webhook.acedata.cloud/kling';
 interface IData {
   task: IKlingTask | undefined;
   job: number;
-  timer: NodeJS.Timer;
+  timer: any;
 }
 
 export default defineComponent({

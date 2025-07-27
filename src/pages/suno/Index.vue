@@ -29,7 +29,7 @@ const CALLBACK_URL = 'https://webhook.acedata.cloud/suno';
 interface IData {
   task: ISunoTask | undefined;
   job: number;
-  timer: NodeJS.Timer;
+  timer: any;
 }
 
 export default defineComponent({

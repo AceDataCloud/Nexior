@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
 import { PIKA_DEFAULT_MODEL } from '@/constants';
@@ -44,7 +44,7 @@ export default defineComponent({
       get() {
         return this.$store.state.pika?.config?.model;
       },
-      set(val) {
+      set(val: string) {
         this.$store.commit('pika/setConfig', {
           ...this.$store.state.pika.config,
           model: val

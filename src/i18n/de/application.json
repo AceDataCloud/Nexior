@@ -37,7 +37,7 @@
   },
   "button.usage": {
     "message": "Nutzungsprotokoll",
-    "description": "Button-Text, der beim Klicken auf diesen Button zur Seite mit dem Nutzungsprotokoll führt."
+    "description": "Button-Text, der beim Klicken auf diesen Button zur Seite für das Nutzungsprotokoll führt."
   },
   "field.serviceName": {
     "message": "Dienstname",
@@ -79,9 +79,13 @@
     "message": "Menge",
     "description": "Die Menge des Antrags."
   },
+  "field.scope": {
+    "message": "Bereich",
+    "description": "Der Bereich des Antrags."
+  },
   "field.traceId": {
     "message": "Trace-ID",
-    "description": "Die Trace-ID eines API-Aufrufs des Antrags im API-Dienst, nicht übersetzen, als 'Trace-ID' beibehalten."
+    "description": "Die Trace-ID eines API-Aufrufs des Antrags, nicht übersetzen, als 'Trace-ID' beibehalten."
   },
   "field.shouldPayPrice": {
     "message": "Endpreis",
@@ -105,7 +109,7 @@
   },
   "field.package": {
     "message": "Paket",
-    "description": "Das Paket stellt verschiedene Preispakete dar, z.B. 100 Dollar für 10.000 Punkte, 200 Dollar für 20.000 Punkte."
+    "description": "Pakete stellen verschiedene Preispakete dar, z.B. 100 Dollar für 10.000 Punkte, 200 Dollar für 20.000 Punkte."
   },
   "field.type": {
     "message": "Typ",
@@ -131,9 +135,13 @@
     "message": "Sie haben diesen Dienst noch nicht beantragt, bitte beantragen Sie den Dienst vor der Nutzung.",
     "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er diesen Dienst noch nicht beantragt hat."
   },
+  "message.globalBalanceBuyDescription": {
+    "message": "Die Punkte dieser Aufladung sind ein allgemeines Guthaben und können für jeden Dienst verwendet werden.",
+    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er ein allgemeines Guthaben auflädt."
+  },
   "message.yourApplication": {
     "message": "Ihr Antrag",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn es um seinen Antrag geht."
+    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er einen Antrag stellt."
   },
   "message.unverified": {
     "message": "Sie müssen die Identitätsprüfung abschließen, bevor Sie diesen Dienst beantragen können.",
@@ -144,12 +152,12 @@
     "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er die Identitätsprüfung noch nicht abgeschlossen hat."
   },
   "message.requiredParameter": {
-    "message": "Erforderlicher Parameter",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er den erforderlichen Parameter noch nicht eingegeben hat."
+    "message": "Pflichtparameter",
+    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er Pflichtparameter noch nicht eingegeben hat."
   },
   "message.example": {
     "message": "Beispiel",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er den erforderlichen Parameter noch nicht eingegeben hat."
+    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er Pflichtparameter noch nicht eingegeben hat."
   },
   "message.applicationSelection": {
     "message": "Hier sind die Pakete, die Sie derzeit beantragt oder gekauft haben. Sie können eines der Pakete auswählen, um den Dienst weiterhin zu nutzen.",
@@ -157,62 +165,78 @@
   },
   "message.createCredentialSuccessfully": {
     "message": "Zugangsdaten erfolgreich erstellt",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er die Zugangsdaten erfolgreich erstellt hat."
+    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er erfolgreich Zugangsdaten erstellt hat."
   },
   "message.readPolicy": {
     "message": "Ich habe die Bedingungen gelesen und stimme zu",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er die Bedingungen gelesen und zugestimmt hat."
+    "description": "Wenn der Benutzer die Bedingungen gelesen und zugestimmt hat, wird diese Nachricht angezeigt."
   },
   "message.policy": {
-    "message": "Nutzungsbedingungen für Daten- und Technologiedienste",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er die Bedingungen gelesen und zugestimmt hat."
+    "message": "Nutzungsvereinbarung für Datentechnologiedienste",
+    "description": "Wenn der Benutzer die Bedingungen gelesen und zugestimmt hat, wird diese Nachricht angezeigt."
   },
   "message.notAgreePolicy": {
-    "message": "Sie haben der Nutzungsvereinbarung für Daten- und Technologiedienste noch nicht zugestimmt",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er der Richtlinie noch nicht zugestimmt hat."
+    "message": "Sie haben der Nutzungsvereinbarung für Datentechnologiedienste noch nicht zugestimmt",
+    "description": "Wenn der Benutzer den Bedingungen noch nicht zugestimmt hat, wird diese Nachricht angezeigt."
   },
   "message.confirmApplying": {
-    "message": "Dienstantrag bestätigen",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er den Dienstantrag bestätigt."
+    "message": "Antrag auf Dienstleistung bestätigen",
+    "description": "Wenn der Benutzer den Antrag auf Dienstleistung bestätigt, wird diese Nachricht angezeigt."
   },
   "message.rotateCredential": {
     "message": "Schlüssel zurücksetzen",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er den Schlüssel zurücksetzt."
+    "description": "Wenn der Benutzer den Schlüssel zurücksetzt, wird diese Nachricht angezeigt."
   },
   "message.rotateCredentialConfirm": {
     "message": "Sind Sie sicher, dass Sie den Schlüssel zurücksetzen möchten? Nach dem Zurücksetzen kann er nicht wiederhergestellt werden.",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er den Schlüssel zurücksetzen bestätigt."
+    "description": "Wenn der Benutzer den Schlüssel zurücksetzen bestätigt, wird diese Nachricht angezeigt."
   },
   "message.idDoesNotExist": {
     "message": "Antrag existiert nicht",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn der Antrag nicht existiert."
+    "description": "Wenn der Antrag nicht existiert, wird diese Nachricht angezeigt."
   },
   "message.rotateCredentialSuccessfully": {
     "message": "Schlüssel erfolgreich zurückgesetzt",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn der Schlüssel erfolgreich zurückgesetzt wurde."
+    "description": "Wenn der Schlüssel erfolgreich zurückgesetzt wurde, wird diese Nachricht angezeigt."
   },
   "message.rotateCredentialFailed": {
     "message": "Schlüssel zurücksetzen fehlgeschlagen, bitte kontaktieren Sie den Support",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn das Zurücksetzen des Schlüssels fehlgeschlagen ist."
+    "description": "Wenn das Zurücksetzen des Schlüssels fehlgeschlagen ist, wird diese Nachricht angezeigt."
   },
   "message.updateFailed": {
     "message": "Änderung fehlgeschlagen",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn die Änderung fehlgeschlagen ist."
+    "description": "Wenn die Änderung fehlgeschlagen ist, wird diese Nachricht angezeigt."
   },
   "message.updateSuccessfully": {
     "message": "Änderung erfolgreich",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn die Änderung erfolgreich war."
+    "description": "Wenn die Änderung erfolgreich war, wird diese Nachricht angezeigt."
+  },
+  "message.neverExpire": {
+    "message": "Nie ablaufen",
+    "description": "Wenn der Antrag nie abläuft, wird diese Nachricht angezeigt."
   },
   "title.buyService": {
-    "message": "Dienst kaufen",
-    "description": "Titel der Seite, wenn der Benutzer einen Dienst kaufen möchte."
+    "message": "Dienstleistung kaufen",
+    "description": "Wenn der Benutzer eine Dienstleistung kaufen möchte, wird dieser Titel angezeigt."
+  },
+  "title.globalBuy": {
+    "message": "Allgemeines Guthaben aufladen",
+    "description": "Wenn der Benutzer das allgemeine Guthaben aufladen möchte, wird dieser Titel angezeigt."
   },
   "title.applicationRemainingCount": {
     "message": "Anzahl der Änderungen",
-    "description": "Titel der Seite, wenn der Benutzer die Anzahl der Anträge ändern möchte."
+    "description": "Wenn der Benutzer die Anzahl der Anträge ändern möchte, wird dieser Titel angezeigt."
   },
   "title.manageApplication": {
     "message": "Antragsverwaltung",
-    "description": "Titel der Seite, wenn der Benutzer Anträge verwalten möchte."
+    "description": "Wenn der Benutzer Anträge verwalten möchte, wird dieser Titel angezeigt."
+  },
+  "title.applicationBalance": {
+    "message": "Exklusive Punkte - {service}",
+    "description": "Wenn der Benutzer den Antragssaldo einsehen möchte, wird diese Nachricht angezeigt."
+  },
+  "title.globalBalance": {
+    "message": "Allgemeines Guthaben",
+    "description": "Wenn der Benutzer das allgemeine Guthaben einsehen möchte, wird diese Nachricht angezeigt."
   }
 }

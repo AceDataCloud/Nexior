@@ -23,7 +23,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
 import TypeSelector from './config/TypeSelector.vue';

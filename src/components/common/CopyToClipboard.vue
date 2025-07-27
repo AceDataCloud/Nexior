@@ -21,8 +21,9 @@ export default defineComponent({
   },
   props: {
     content: {
-      type: String,
-      required: true
+      type: [String, Number],
+      required: false,
+      default: ''
     }
   },
   data() {
@@ -32,7 +33,10 @@ export default defineComponent({
   },
   methods: {
     onCopy() {
-      copy(this.content, {
+      if (!this.content) {
+        return;
+      }
+      copy(this.content.toString(), {
         debug: true
       });
       this.copied = true;

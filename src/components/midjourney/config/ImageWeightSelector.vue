@@ -15,7 +15,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSlider } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
@@ -32,7 +32,7 @@ export default defineComponent({
       get() {
         return this.$store.state.midjourney.config.iw;
       },
-      set(val) {
+      set(val: number) {
         console.debug('set iw', val);
         this.$store.commit('midjourney/setConfig', {
           ...this.$store.state.midjourney.config,

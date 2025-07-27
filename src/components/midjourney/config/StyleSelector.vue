@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
 
@@ -62,7 +62,7 @@ export default defineComponent({
       get() {
         return this.$store.state.midjourney.config.style;
       },
-      set(val) {
+      set(val: string) {
         this.$store.commit('midjourney/setConfig', {
           ...this.$store.state.midjourney.config,
           style: val

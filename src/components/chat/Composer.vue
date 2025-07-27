@@ -21,7 +21,7 @@
         <template #file="{ file }">
           <image-preview
             v-if="isImageUrl(file.name)"
-            :url="file.url || file.response?.file_url"
+            :url="file.url || (file.response as any)?.file_url"
             :name="file.name"
             :percentage="file.percentage"
             @remove="fileList.splice(fileList.indexOf(file), 1)"
@@ -77,7 +77,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElMessage, ElTooltip, ElUpload, UploadFile, UploadFiles, UploadProgressEvent } from 'element-plus';
+import { ElMessage, ElTooltip, ElUpload, UploadFile, UploadProgressEvent } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IChatModel } from '@/models';
 import { getBaseUrlPlatform, isImageUrl } from '@/utils';

@@ -6,7 +6,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { ElSlider } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import { QRART_DEFAULT_STEPS } from '@/constants';
@@ -23,7 +23,7 @@ export default defineComponent({
       get() {
         return this.$store.state.qrart?.config?.steps || QRART_DEFAULT_STEPS;
       },
-      set(val) {
+      set(val: number) {
         console.debug('set steps', val);
         this.$store.commit('qrart/setConfig', {
           ...this.$store.state.qrart?.config,

@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { QRART_DEFAULT_MARKER_SHAPE } from '@/constants';
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
@@ -57,7 +57,7 @@ export default defineComponent({
       get() {
         return this.$store.state.qrart?.config?.marker_shape;
       },
-      set(val) {
+      set(val: string) {
         console.debug('set marker_shape', val);
         this.$store.commit('qrart/setConfig', {
           ...this.$store.state.qrart?.config,

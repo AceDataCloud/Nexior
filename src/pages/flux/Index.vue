@@ -13,10 +13,10 @@
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Flux.vue';
 import ConfigPanel from '@/components/flux/ConfigPanel.vue';
-import { applicationOperator, fluxOperator } from '@/operators';
-import { IApplicationDetailResponse, IFluxGenerateRequest, Status } from '@/models';
+import { fluxOperator } from '@/operators';
+import { IFluxGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP } from '@/constants';
+import { ERROR_CODE_USED_UP } from '@/constants';
 import RecentPanel from '@/components/flux/RecentPanel.vue';
 import { IFluxTask } from '@/models';
 
@@ -25,7 +25,7 @@ const CALLBACK_URL = 'https://webhook.acedata.cloud/flux';
 interface IData {
   task: IFluxTask | undefined;
   job: number;
-  timer: NodeJS.Timer;
+  timer: any;
 }
 
 export default defineComponent({

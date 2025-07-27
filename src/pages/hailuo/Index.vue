@@ -25,7 +25,7 @@ const CALLBACK_URL = 'https://webhook.acedata.cloud/hailuo';
 interface IData {
   task: IHailuoTask | undefined;
   job: number;
-  timer: NodeJS.Timer;
+  timer: any;
 }
 
 export default defineComponent({

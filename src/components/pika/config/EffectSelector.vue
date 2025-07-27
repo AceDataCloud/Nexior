@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
 
@@ -84,16 +84,14 @@ export default defineComponent({
       get() {
         return this.$store.state.pika?.config?.effect;
       },
-      set(val) {
+      set(val: string) {
         this.$store.commit('pika/setConfig', {
           ...this.$store.state.pika?.config,
           effect: val
         });
       }
     }
-  },
-  watch: {},
-  mounted() {}
+  }
 });
 </script>
 

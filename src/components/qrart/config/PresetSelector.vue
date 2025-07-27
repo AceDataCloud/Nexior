@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { QRART_DEFAULT_PRESET } from '@/constants';
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
@@ -125,8 +125,8 @@ export default defineComponent({
       get() {
         return this.$store.state.qrart?.config?.preset;
       },
-      set(val) {
-        console.debug('set qrw', val);
+      set(val: string) {
+        console.debug('set qrart preset', val);
         this.$store.commit('qrart/setConfig', {
           ...this.$store.state.qrart?.config,
           preset: val

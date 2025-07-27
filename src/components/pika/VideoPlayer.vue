@@ -1,7 +1,7 @@
 <template>
   <div>
     <vue-plyr :options="options" class="video">
-      <video controls crossorigin playsinline :data-poster="modelValue?.image_url">
+      <video controls crossorigin="" playsinline :data-poster="modelValue?.image_url">
         <source size="1080" :src="modelValue?.video_url" type="video/mp4" />
       </video>
     </vue-plyr>

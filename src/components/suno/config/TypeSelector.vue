@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption, ElSwitch } from 'element-plus';
 import { SUNO_DEFAULT_MODEL } from '@/constants';
@@ -58,7 +58,7 @@ export default defineComponent({
       get() {
         return this.$store.state.suno?.config?.custom;
       },
-      set(val) {
+      set(val: string) {
         console.debug('set custom', val);
         this.$store.commit('suno/setConfig', {
           ...this.$store.state.suno?.config,
@@ -70,7 +70,7 @@ export default defineComponent({
       get() {
         return this.$store.state.suno?.config?.model;
       },
-      set(val) {
+      set(val: string) {
         console.debug('set model', val);
         this.$store.commit('suno/setConfig', {
           ...this.$store.state.suno?.config,

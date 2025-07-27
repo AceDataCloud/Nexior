@@ -19,7 +19,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { FLUX_DEFAULT_ASPECT_RATIO } from '@/constants';
 
@@ -81,7 +81,7 @@ export default defineComponent({
       get() {
         return this.$store.state.flux?.config?.aspect_ratio;
       },
-      set(val) {
+      set(val: string) {
         console.debug('set ratio', val);
         this.$store.commit('flux/setConfig', {
           ...this.$store.state.flux.config,

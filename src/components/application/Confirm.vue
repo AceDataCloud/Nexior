@@ -22,8 +22,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElDialog, ElDescriptions, ElDescriptionsItem, ElDivider, ElCheckbox, ElButton, ElMessage } from 'element-plus';
-import { IService } from '@/models';
+import { ElDialog, ElDivider, ElCheckbox, ElButton, ElMessage } from 'element-plus';
 import { getBaseUrlPlatform } from '@/utils';
 
 interface IData {

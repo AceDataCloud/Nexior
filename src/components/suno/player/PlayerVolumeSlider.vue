@@ -46,7 +46,7 @@ const muted = computed({
 
 const toggleMuted = () => store.dispatch('suno/toggleMuted');
 
-const setVolume = (value: number) => store.dispatch('suno/setVolume', value);
+const setVolume = (value: any) => store.dispatch('suno/setVolume', value);
 </script>
 <style lang="scss">
 .el-popover.el-popper {

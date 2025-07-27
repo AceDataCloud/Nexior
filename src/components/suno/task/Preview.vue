@@ -78,13 +78,13 @@
           </span>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item @click="onGetStems($event, audio?.id)">
+              <el-dropdown-item v-if="audio.id" @click="onGetStems(audio.id)">
                 {{ $t('suno.button.get_stems') }}
               </el-dropdown-item>
-              <el-dropdown-item @click="onCover($event, audio)">
+              <el-dropdown-item @click="onCover(audio)">
                 {{ $t('suno.button.cover_music') }}
               </el-dropdown-item>
-              <el-dropdown-item v-if="audio?.action === 'extend'" @click="onConcatMusic($event, audio?.id)">
+              <el-dropdown-item v-if="audio?.id && audio?.action === 'extend'" @click="onConcatMusic(audio?.id)">
                 {{ $t('suno.button.concat_music') }}
               </el-dropdown-item>
             </el-dropdown-menu>
@@ -244,14 +244,10 @@ export default defineComponent({
       // preview url here
       window.open(videoUrl, '_blank');
     },
-    async onGetStems(event: MouseEvent, audioId: string) {
-      event.stopPropagation();
-      console.log('on get stems', audioId);
-
+    async onGetStems(audioId: string) {
       await this.onGenerateAudioUrl('stems', audioId);
     },
-    onCover(event: MouseEvent, audio: ISunoAudio) {
-      event.stopPropagation();
+    onCover(audio: ISunoAudio) {
       console.log('on cover');
       // download url here
       console.debug('set config', audio);
@@ -266,9 +262,7 @@ export default defineComponent({
         audio_id: audio.id
       });
     },
-    async onConcatMusic(event: MouseEvent, audioId: string) {
-      event.stopPropagation();
-      console.log('on get concat', audioId);
+    async onConcatMusic(audioId: string) {
       await this.onGenerateAudioUrl('concat', audioId);
     },
     async onGenerateAudioUrl(action: string, audioId: string) {

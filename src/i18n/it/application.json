@@ -32,8 +32,8 @@
     "description": "Testo del pulsante, cliccando su questo pulsante si verrà reindirizzati alla pagina di personalizzazione."
   },
   "button.query": {
-    "message": "Consulta",
-    "description": "Testo del pulsante, cliccando su questo pulsante si verrà reindirizzati alla pagina di consultazione."
+    "message": "Richiesta",
+    "description": "Testo del pulsante, cliccando su questo pulsante si verrà reindirizzati alla pagina di richiesta."
   },
   "button.usage": {
     "message": "Registro utilizzo",
@@ -79,9 +79,13 @@
     "message": "Quantità",
     "description": "Quantità della richiesta."
   },
+  "field.scope": {
+    "message": "Ambito",
+    "description": "Ambito della richiesta."
+  },
   "field.traceId": {
     "message": "Trace ID",
-    "description": "Trace ID di una chiamata API della richiesta del servizio, non tradurre, mantenere come 'Trace ID'."
+    "description": "Trace ID di una chiamata API della richiesta del servizio API, non tradurre, mantenere come 'Trace ID'."
   },
   "field.shouldPayPrice": {
     "message": "Prezzo finale",
@@ -96,8 +100,8 @@
     "description": "Questo è un servizio online che fornisce servizi agli utenti tramite un proxy HTTP (per il trasferimento dei dati)."
   },
   "field.credential": {
-    "message": "Credenziale",
-    "description": "Credenziale della richiesta."
+    "message": "Credenziali",
+    "description": "Credenziali della richiesta."
   },
   "field.name": {
     "message": "Nome",
@@ -105,7 +109,7 @@
   },
   "field.package": {
     "message": "Pacchetto",
-    "description": "Il pacchetto rappresenta diverse offerte di prezzo, ad esempio 100 dollari per 10.000 punti, 200 dollari per 20.000 punti."
+    "description": "Il pacchetto rappresenta diversi pacchetti di prezzo, ad esempio 100 dollari per 10000 punti, 200 dollari per 20000 punti."
   },
   "field.type": {
     "message": "Tipo",
@@ -131,9 +135,13 @@
     "message": "Non hai ancora richiesto questo servizio, per favore richiedilo prima di utilizzarlo",
     "description": "Messaggio mostrato all'utente quando non ha ancora richiesto questo servizio."
   },
+  "message.globalBalanceBuyDescription": {
+    "message": "I punti ricaricati sono un saldo universale, utilizzabile per qualsiasi servizio.",
+    "description": "Messaggio mostrato all'utente quando ricarica il saldo universale."
+  },
   "message.yourApplication": {
     "message": "La tua richiesta",
-    "description": "Messaggio mostrato all'utente durante la sua richiesta."
+    "description": "Messaggio mostrato all'utente durante la richiesta."
   },
   "message.unverified": {
     "message": "Devi completare la verifica dell'identità prima di poter richiedere questo servizio",
@@ -145,19 +153,19 @@
   },
   "message.requiredParameter": {
     "message": "Parametro obbligatorio",
-    "description": "Messaggio mostrato all'utente quando non ha inserito un parametro obbligatorio."
+    "description": "Messaggio mostrato all'utente quando non ha inserito i parametri obbligatori."
   },
   "message.example": {
     "message": "Esempio",
-    "description": "Messaggio mostrato all'utente quando non ha inserito un parametro obbligatorio."
+    "description": "Messaggio mostrato all'utente quando non ha inserito i parametri obbligatori."
   },
   "message.applicationSelection": {
-    "message": "Di seguito sono elencati i pacchetti che hai attualmente richiesto o acquistato, puoi scegliere uno di essi per continuare a utilizzare il servizio.",
+    "message": "Di seguito sono elencati i pacchetti che hai attualmente richiesto o acquistato, puoi scegliere uno qualsiasi di essi per continuare a utilizzare il servizio.",
     "description": "Messaggio mostrato all'utente quando deve selezionare una richiesta."
   },
   "message.createCredentialSuccessfully": {
-    "message": "Credenziale creata con successo",
-    "description": "Messaggio mostrato all'utente quando ha creato con successo una credenziale."
+    "message": "Credenziali create con successo",
+    "description": "Messaggio mostrato all'utente quando ha creato con successo le credenziali."
   },
   "message.readPolicy": {
     "message": "Ho letto e accetto",
@@ -168,7 +176,7 @@
     "description": "Messaggio mostrato all'utente quando ha letto e accettato la politica."
   },
   "message.notAgreePolicy": {
-    "message": "Non hai ancora accettato il contratto di utilizzo dei servizi tecnologici dei dati",
+    "message": "Non hai ancora accettato l'accordo di utilizzo dei servizi tecnologici dei dati",
     "description": "Messaggio mostrato all'utente quando non ha ancora accettato la politica."
   },
   "message.confirmApplying": {
@@ -189,7 +197,7 @@
   },
   "message.rotateCredentialSuccessfully": {
     "message": "Reimpostazione della chiave riuscita",
-    "description": "Messaggio mostrato all'utente quando la reimpostazione della chiave ha successo."
+    "description": "Messaggio mostrato all'utente quando la reimpostazione della chiave ha avuto successo."
   },
   "message.rotateCredentialFailed": {
     "message": "Reimpostazione della chiave fallita, contattare il supporto",
@@ -203,16 +211,32 @@
     "message": "Modifica riuscita",
     "description": "Messaggio mostrato all'utente quando la modifica ha successo."
   },
+  "message.neverExpire": {
+    "message": "Mai scadere",
+    "description": "Messaggio mostrato all'utente quando la richiesta non scade mai."
+  },
   "title.buyService": {
     "message": "Acquista servizio",
     "description": "Titolo della pagina quando l'utente desidera acquistare un servizio."
   },
+  "title.globalBuy": {
+    "message": "Ricarica saldo generale",
+    "description": "Titolo della pagina quando l'utente desidera ricaricare il saldo generale."
+  },
   "title.applicationRemainingCount": {
-    "message": "Numero di modifiche",
-    "description": "Titolo della pagina quando l'utente desidera modificare il numero di richieste."
+    "message": "Modifica quantità",
+    "description": "Titolo della pagina quando l'utente desidera modificare la quantità della richiesta."
   },
   "title.manageApplication": {
     "message": "Gestione delle richieste",
     "description": "Titolo della pagina quando l'utente desidera gestire le richieste."
+  },
+  "title.applicationBalance": {
+    "message": "Punti esclusivi - {service}",
+    "description": "Messaggio mostrato all'utente quando visualizza il saldo della richiesta."
+  },
+  "title.globalBalance": {
+    "message": "Saldo generale",
+    "description": "Messaggio mostrato all'utente quando visualizza il saldo generale."
   }
 }

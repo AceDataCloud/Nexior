@@ -14,11 +14,11 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Midjourney.vue';
 import ConfigPanel from '@/components/midjourney/ConfigPanel.vue';
 import { ElMessage } from 'element-plus';
-import { applicationOperator, midjourneyOperator } from '@/operators';
+import { midjourneyOperator } from '@/operators';
 import TaskList from '@/components/midjourney/tasks/TaskList.vue';
-import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP } from '@/constants/errorCode';
+import { ERROR_CODE_USED_UP } from '@/constants/errorCode';
 import { Status } from '@/models';
-import { IMidjourneyImagineRequest, IApplicationDetailResponse, MidjourneyImagineAction } from '@/models';
+import { IMidjourneyImagineRequest, MidjourneyImagineAction } from '@/models';
 import {
   MIDJOURNEY_DEFAULT_IMAGE_WEIGHT,
   MIDJOURNEY_DEFAULT_RATIO,
@@ -31,7 +31,7 @@ import {
 interface IData {
   operating: boolean;
   job: number;
-  timer: NodeJS.Timer;
+  timer: any;
 }
 
 const CALLBACK_URL = 'https://webhook.acedata.cloud/midjourney';

@@ -7,7 +7,7 @@
       <div class="bot">
         {{ $t('headshots.name.headshotsBot') }}
         <span class="datetime">
-          {{ $dayjs.format('' + new Date(parseFloat(modelValue?.created_at || '') * 1000)) }}
+          {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
       </div>
       <div class="info">

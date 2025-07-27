@@ -37,7 +37,7 @@ const CALLBACK_URL = 'https://webhook.acedata.cloud/headshots';
 interface IData {
   task: IHeadshotsTask | undefined;
   job: number;
-  timer: NodeJS.Timer;
+  timer: any;
 }
 
 export default defineComponent({

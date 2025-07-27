@@ -1,4 +1,4 @@
-import { IApplication, ICredential, ISite, IToken, IUser, Status } from '@/models';
+import { IApplication, ISite, IToken, IUser, Status } from '@/models';
 import { IMidjourneyState } from '../midjourney/models';
 import { IChatState } from '../chat/models';
 import { IQrartState } from '../qrart/models';

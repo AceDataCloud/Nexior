@@ -74,7 +74,7 @@ export const getFingerprint = async ({ commit }: ActionContext<IRootState, IRoot
   return visitorId;
 };
 
-export const getToken = async ({ commit }: ActionContext<IRootState, IRootState>, code: string): Promise<IToken> => {
+export const getToken = async ({ commit }: ActionContext<IRootState, IRootState>, code: string) => {
   console.debug('start to get token using code', code);
   try {
     commit('resetToken');

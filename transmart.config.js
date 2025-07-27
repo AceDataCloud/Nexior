@@ -9,9 +9,9 @@ module.exports = {
   openAIApiUrlPath: '/openai/chat/completions',
   modelContextLimit: 3000,
   additionalReqBodyParams: {
-    // response_format: {
-    //   type: 'json_object'
-    // }
+    response_format: {
+      type: 'json_object'
+    }
   },
   systemPromptTemplate: ({ languageName, context }) => {
     return (

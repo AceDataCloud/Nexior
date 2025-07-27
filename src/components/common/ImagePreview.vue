@@ -36,7 +36,8 @@ export default defineComponent({
     },
     percentage: {
       type: Number,
-      required: true
+      required: false,
+      default: undefined
     },
     closable: {
       type: Boolean,

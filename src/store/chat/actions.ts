@@ -4,7 +4,6 @@ import { ActionContext } from 'vuex';
 import { IChatState } from './models';
 import { IApplication, IChatConversation, IChatModel, IChatModelGroup, ICredential, IService, Status } from '@/models';
 import { CHAT_SERVICE_ID } from '@/constants';
-import { getFinalApplication } from '@/utils';
 
 export const resetAll = ({ commit }: ActionContext<IChatState, IRootState>): void => {
   commit('resetAll');

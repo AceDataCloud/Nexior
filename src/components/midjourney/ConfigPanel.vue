@@ -26,7 +26,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import RatioSelector from './config/RatioSelector.vue';
 import AdvancedSelector from './config/AdvancedSelector.vue';

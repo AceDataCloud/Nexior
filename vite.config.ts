@@ -1,7 +1,6 @@
-import { ConfigEnv, defineConfig, loadEnv } from 'vite';
+import { type ConfigEnv, defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import replace from '@rollup/plugin-replace';
-import { string } from 'rollup-plugin-string';
 import * as path from 'path';
 
 export default defineConfig((config: ConfigEnv) => {
@@ -35,9 +34,6 @@ export default defineConfig((config: ConfigEnv) => {
     },
     plugins: [
       vue(),
-      string({
-        include: ['**/*.md', '**/*.tpl', '**/*.theme']
-      }),
       replace({
         preventAssignment: true
       })
@@ -45,31 +41,6 @@ export default defineConfig((config: ConfigEnv) => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src')
-      }
-    },
-    build: {
-      sourcemap: false,
-      rollupOptions: {
-        output: {
-          manualChunks(id) {
-            if (id.includes('node_modules')) {
-              const modules = [
-                '@vue',
-                'element-plus',
-                'axios',
-                'highlight.js',
-                'mustache',
-                'markdown',
-                'fortawesome',
-                'qrcode',
-                'vue-dark-switch',
-                'chart.js'
-              ];
-              const chunk = modules.find((module) => id.includes(module));
-              return chunk ? `vendor-${chunk}` : 'vendor-others';
-            }
-          }
-        }
       }
     }
   };

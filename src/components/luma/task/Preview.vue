@@ -35,7 +35,7 @@
               type="info"
               size="small"
               class="btn-action"
-              @click.stop="onDownload($event, modelValue?.response?.video_url)"
+              @click.stop="onDownload(modelValue?.response?.video_url)"
             >
               {{ $t('luma.button.download') }}
             </el-button>
@@ -143,7 +143,7 @@ export default defineComponent({
     }
   },
   methods: {
-    onExtend(event: MouseEvent, response: ILumaGenerateResponse) {
+    onExtend(_event: MouseEvent, response: ILumaGenerateResponse) {
       // extend url here
       console.debug('set config', response);
       this.$store.commit('luma/setConfig', {
@@ -155,7 +155,7 @@ export default defineComponent({
         video_url: response.video_url
       });
     },
-    onDownload(event: MouseEvent, video_url: string) {
+    onDownload(video_url: string) {
       // download url here
       window.open(video_url, '_blank');
     }
