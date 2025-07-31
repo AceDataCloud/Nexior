@@ -121,7 +121,7 @@
   },
   "button.acquire": {
     "message": "Απόκτηση",
-    "description": "Κείμενο κουμπιού, που χρησιμοποιείται για να επιτρέψει στους χρήστες να αποκτήσουν το token ή το κλειδί υπηρεσιών API"
+    "description": "Κείμενο κουμπιού, που χρησιμοποιείται για να επιτρέψει στους χρήστες να αποκτήσουν το token ή το κλειδί υπηρεσίας API"
   },
   "button.fillExample": {
     "message": "Συμπλήρωση παραδείγματος",
@@ -165,11 +165,11 @@
   },
   "entity.copyright": {
     "message": "Πνευματικά δικαιώματα",
-    "description": "Κείμενο που χρησιμοποιείται για να εμφανίσει πληροφορίες πνευματικών δικαιωμάτων"
+    "description": "Χρησιμοποιείται για να εμφανίσει το κείμενο πληροφοριών πνευματικών δικαιωμάτων"
   },
   "entity.platform": {
     "message": "Πλατφόρμα",
-    "description": "Κείμενο που υποδεικνύει ότι αυτή είναι η πλατφόρμα υπηρεσιών API"
+    "description": "Κείμενο που υποδεικνύει ότι αυτή είναι η πλατφόρμα υπηρεσίας API"
   },
   "entity.title": {
     "message": "Τίτλος",
@@ -203,9 +203,13 @@
     "message": "Παραγγελία",
     "description": "Η παραγγελία της οντότητας, η παραγγελία περιλαμβάνει ποσό, πληροφορίες υπηρεσίας, ο χρήστης πρέπει να πληρώσει γι' αυτό"
   },
+  "message.noTasks": {
+    "message": "Δεν υπάρχουν ιστορικά καθήκοντα, παρακαλώ ξεκινήστε ένα νέο καθήκον～",
+    "description": "Μήνυμα όταν δεν υπάρχουν καθήκοντα"
+  },
   "message.usedAmount": {
-    "message": "Χρησιμοποιηθέν Ποσό",
-    "description": "Χρησιμοποιείται για να εμφανίσει το ποσό που έχει χρησιμοποιηθεί από την υπηρεσία"
+    "message": "Χρηματικό Ποσό που Χρησιμοποιήθηκε",
+    "description": "Χρησιμοποιείται για να εμφανίσει το ποσό που έχει χρησιμοποιηθεί για την υπηρεσία"
   },
   "message.remainingAmount": {
     "message": "Υπόλοιπο Ποσό",
@@ -216,8 +220,8 @@
     "description": "Χρησιμοποιείται για να εμφανίσει μήνυμα ότι το περιεχόμενο έχει αντιγραφεί με επιτυχία"
   },
   "message.restart": {
-    "message": "Επαναδημιουργία",
-    "description": "Χρησιμοποιείται για να εμφανίσει μήνυμα ότι το περιεχόμενο έχει αντιγραφεί με επιτυχία"
+    "message": "Αναδημιουργία",
+    "description": "Χρησιμοποιείται για να εμφανίσει μήνυμα ότι το περιεχόμενο έχει αναδημιουργηθεί"
   },
   "message.confirmDelete": {
     "message": "Είστε σίγουροι ότι θέλετε να διαγράψετε;",
@@ -331,216 +335,220 @@
     "message": "Suno",
     "description": "Κείμενο στη γραμμή πλοήγησης του ιστότοπου, χρησιμοποιείται για να εμφανίσει τη σελίδα Suno, παρακαλώ μην μεταφράσετε αυτό το πεδίο, πρέπει να παραμείνει ως 'Suno'"
   },
+  "nav.pixverse": {
+    "message": "Pixverse",
+    "description": "Website navigation text for displaying the Pixverse page, do not translate this field, must remain as 'Pixverse'"
+  },
   "nav.flux": {
     "message": "Flux",
-    "description": "Κείμενο στη γραμμή πλοήγησης του ιστότοπου, χρησιμοποιείται για να εμφανίσει τη σελίδα Flux, παρακαλώ μην μεταφράσετε αυτό το πεδίο, πρέπει να παραμείνει ως 'Flux'"
+    "description": "Website navigation text for displaying the Flux page, do not translate this field, must remain as 'Flux'"
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "Το κείμενο στη γραμμή πλοήγησης του ιστότοπου που χρησιμοποιείται για να εμφανίσει τη σελίδα Luma, παρακαλώ μην μεταφράσετε αυτό το πεδίο, πρέπει να παραμείνει ως 'Luma'"
+    "description": "Website navigation text for displaying the Luma page, do not translate this field, must remain as 'Luma'"
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "Το κείμενο στη γραμμή πλοήγησης του ιστότοπου που χρησιμοποιείται για να εμφανίσει τη σελίδα Pika, παρακαλώ μην μεταφράσετε αυτό το πεδίο, πρέπει να παραμείνει ως 'Pika'"
+    "description": "Website navigation text for displaying the Pika page, do not translate this field, must remain as 'Pika'"
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "Το κείμενο στη γραμμή πλοήγησης του ιστότοπου που χρησιμοποιείται για να εμφανίσει τη σελίδα Kling, παρακαλώ μην μεταφράσετε αυτό το πεδίο, πρέπει να παραμείνει ως 'Kling'"
+    "description": "Website navigation text for displaying the Kling page, do not translate this field, must remain as 'Kling'"
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "Το κείμενο στη γραμμή πλοήγησης του ιστότοπου που χρησιμοποιείται για να εμφανίσει τη σελίδα Hailuo, παρακαλώ μην μεταφράσετε αυτό το πεδίο, πρέπει να παραμείνει ως 'Hailuo'"
+    "description": "Website navigation text for displaying the Hailuo page, do not translate this field, must remain as 'Hailuo'"
   },
   "nav.image": {
     "message": "Εικόνα",
-    "description": "Το κείμενο στη γραμμή πλοήγησης του ιστότοπου που χρησιμοποιείται για να εμφανίσει τη σελίδα εικόνας"
+    "description": "Website navigation text for displaying the image page"
   },
   "nav.music": {
     "message": "Μουσική",
-    "description": "Το κείμενο στη γραμμή πλοήγησης του ιστότοπου που χρησιμοποιείται για να εμφανίσει τη σελίδα μουσικής"
+    "description": "Website navigation text for displaying the music page"
   },
   "nav.video": {
     "message": "Βίντεο",
-    "description": "Το κείμενο στη γραμμή πλοήγησης του ιστότοπου που χρησιμοποιείται για να εμφανίσει τη σελίδα βίντεο"
+    "description": "Website navigation text for displaying the video page"
   },
   "nav.distribution": {
     "message": "Συνιστώμενα κέρδη",
-    "description": "Το κείμενο στη γραμμή πλοήγησης του ιστότοπου που χρησιμοποιείται για να εμφανίσει τη σελίδα συνιστώμενων κερδών"
+    "description": "Website navigation text for displaying the recommended earnings page"
   },
   "nav.logOut": {
     "message": "Αποσύνδεση",
-    "description": "Το κείμενο στη γραμμή πλοήγησης του ιστότοπου που χρησιμοποιείται για να αποσυνδεθεί ο χρήστης"
+    "description": "Website navigation text for logging out"
   },
   "nav.site": {
     "message": "Ρυθμίσεις ιστότοπου",
-    "description": "Το κείμενο στη γραμμή πλοήγησης του ιστότοπου που χρησιμοποιείται για να εμφανίσει τη σελίδα ρυθμίσεων ιστότοπου"
+    "description": "Website navigation text for displaying the site configuration page"
   },
   "nav.setting": {
     "message": "Ρυθμίσεις",
-    "description": "Το κείμενο στη γραμμή πλοήγησης του ιστότοπου που χρησιμοποιείται για να εμφανίσει τη σελίδα ρυθμίσεων"
+    "description": "Website navigation text for displaying the settings page"
   },
   "nav.headshots": {
     "message": "AI Ταυτότητα",
-    "description": "Το κείμενο στη γραμμή πλοήγησης του ιστότοπου που χρησιμοποιείται για να εμφανίσει τη σελίδα ρυθμίσεων ιστότοπου"
+    "description": "Website navigation text for displaying the site configuration page"
   },
   "nav.locale": {
     "message": "Ρυθμίσεις γλώσσας",
-    "description": "Το κείμενο στη γραμμή πλοήγησης του ιστότοπου που χρησιμοποιείται για να αλλάξει η γλώσσα"
+    "description": "Website navigation text for changing the language"
   },
   "nav.support": {
     "message": "Υποστήριξη πελατών",
-    "description": "Το κείμενο στη γραμμή πλοήγησης του ιστότοπου που χρησιμοποιείται για να εμφανίσει τη σελίδα υποστήριξης"
+    "description": "Website navigation text for displaying the support page"
   },
   "nav.darkMode": {
     "message": "Σκοτεινός τρόπος",
-    "description": "Το κείμενο στη γραμμή πλοήγησης του ιστότοπου που χρησιμοποιείται για να αλλάξει σε σκοτεινή θεματολογία"
+    "description": "Website navigation text for switching to dark theme"
   },
   "title.alert": {
     "message": "Ειδοποίηση",
-    "description": "Ο τίτλος του μηνύματος ειδοποίησης"
+    "description": "Title of the alert message"
   },
   "title.placeholderOfSelect": {
     "message": "Παρακαλώ επιλέξτε",
-    "description": "Το placeholder του πεδίου επιλογής"
+    "description": "Placeholder for the select input"
   },
   "title.placeholderOfInput": {
     "message": "Παρακαλώ συμπληρώστε",
-    "description": "Το placeholder του πεδίου εισαγωγής"
+    "description": "Placeholder for the input field"
   },
   "title.allApplications": {
     "message": "Όλες οι αιτήσεις",
-    "description": "Ο τίτλος της σελίδας που εμφανίζει όλες τις αιτήσεις"
+    "description": "Title of the page displaying all applications"
   },
   "title.allOrders": {
     "message": "Όλες οι παραγγελίες",
-    "description": "Ο τίτλος της σελίδας που εμφανίζει όλες τις παραγγελίες"
+    "description": "Title of the page displaying all orders"
   },
   "title.orderInfo": {
     "message": "Πληροφορίες παραγγελίας",
-    "description": "Ο τίτλος της σελίδας που εμφανίζει πληροφορίες παραγγελίας"
+    "description": "Title of the page displaying order information"
   },
   "title.buyMore": {
     "message": "Αγοράστε περισσότερα",
-    "description": "Ο τίτλος της σελίδας που επιτρέπει στους χρήστες να αγοράσουν περισσότερα"
+    "description": "Title of the page encouraging users to buy more"
   },
   "title.distribution": {
     "message": "Συνιστώμενα κέρδη",
-    "description": "Ο τίτλος της σελίδας που εμφανίζει τα συνιστώμενα κέρδη, υποδεικνύοντας ότι οι χρήστες μπορούν να κερδίσουν χρήματα προσκαλώντας άλλους να χρησιμοποιήσουν την υπηρεσία"
+    "description": "Title of the page displaying recommended earnings, indicating that users can earn by inviting others to use the service"
   },
   "title.site": {
     "message": "Ρυθμίσεις ιστότοπου",
-    "description": "Ο τίτλος της σελίδας που εμφανίζει τις ρυθμίσεις ιστότοπου"
+    "description": "Title of the page displaying site configuration"
   },
   "title.distributionHistory": {
     "message": "Ιστορικό συστάσεων",
-    "description": "Ο τίτλος της σελίδας που εμφανίζει το ιστορικό συστάσεων"
+    "description": "Title of the page displaying recommendation history"
   },
   "title.invitee": {
     "message": "Προσκεκλημένος",
-    "description": "Ο τίτλος της σελίδας που εμφανίζει τον προσκεκλημένο"
+    "description": "Title of the page displaying invitee information"
   },
   "title.allUsages": {
     "message": "Ιστορικό χρήσης",
-    "description": "Ο τίτλος της σελίδας που εμφανίζει όλα τα αρχεία χρήσης της υπηρεσίας API"
+    "description": "Title of the page displaying all usage records of the API service"
   },
   "title.allCredentials": {
-    "message": "Πιστοποιητικά",
-    "description": "Ο τίτλος της σελίδας που εμφανίζει όλα τα πιστοποιητικά που χρησιμοποιούνται για την πρόσβαση στο API"
+    "message": "Διαπιστευτήρια",
+    "description": "Title of the page displaying all credentials used to access the API"
   },
   "about.title1": {
     "message": "Επικοινωνήστε μαζί μας",
-    "description": "Ο τίτλος της ενότητας που εμφανίζει τις πληροφορίες επικοινωνίας"
+    "description": "Title of the section displaying contact information"
   },
   "about.title2": {
     "message": "Πόροι",
-    "description": "Ο τίτλος της ενότητας που εμφανίζει τους συνδέσμους"
+    "description": "Title of the section displaying links"
   },
   "about.title3": {
     "message": "Σύνδεσμοι",
-    "description": "Ο τίτλος της ενότητας που εμφανίζει τις πληροφορίες υποστήριξης"
+    "description": "Title of the section displaying support information"
   },
   "about.address": {
     "message": "ΗΠΑ, Πολιτεία του Ντελαγουέρ, Μίντλταουν, N Broad St, Γραφείο 201",
-    "description": "Η διεύθυνση της εταιρείας"
+    "description": "Company address"
   },
   "about.email": {
     "message": "office@acedata.cloud",
-    "description": "Η ηλεκτρονική διεύθυνση της εταιρείας"
+    "description": "Company email"
   },
   "about.link1": {
     "message": "Υπηρεσίες",
-    "description": "Ο σύνδεσμος προς τη σελίδα υπηρεσιών"
+    "description": "Link to the services page"
   },
   "about.link2": {
     "message": "Έγγραφα",
-    "description": "Ο σύνδεσμος προς τη σελίδα εγγράφων"
+    "description": "Link to the documentation page"
   },
   "about.link3": {
     "message": "Κονσόλα",
-    "description": "Ο σύνδεσμος προς τη σελίδα κονσόλας"
+    "description": "Link to the console page"
   },
   "about.link4": {
     "message": "Προφίλ",
-    "description": "Ο σύνδεσμος προς τη σελίδα προφίλ"
+    "description": "Link to the profile page"
   },
   "about.link5": {
     "message": "Κέντρο",
-    "description": "Ο σύνδεσμος προς τη σελίδα κέντρου"
+    "description": "Link to the center page"
   },
   "about.link6": {
-    "message": "Συνιστώμενα κέρδη",
-    "description": "Ο σύνδεσμος προς τη σελίδα συνιστώμενων κερδών"
+    "message": "Συνιστώμενα Έσοδα",
+    "description": "Σύνδεσμος για τη σελίδα συνιστώμενων εσόδων"
   },
   "about.link7": {
     "message": "Υποστήριξη",
-    "description": "Ο σύνδεσμος προς τη σελίδα υποστήριξης"
+    "description": "Σύνδεσμος για τη σελίδα υποστήριξης"
   },
   "about.link8": {
-    "message": "Όροι υπηρεσίας",
-    "description": "Ο σύνδεσμος προς τη σελίδα όρων υπηρεσίας"
+    "message": "Όροι Υπηρεσίας",
+    "description": "Σύνδεσμος για τη σελίδα όρων υπηρεσίας"
   },
   "about.link9": {
-    "message": "Πολιτική απορρήτου",
-    "description": "Ο σύνδεσμος προς τη σελίδα πολιτικής απορρήτου"
+    "message": "Πολιτική Απορρήτου",
+    "description": "Σύνδεσμος για τη σελίδα πολιτικής απορρήτου"
   },
   "theme.light": {
-    "message": "Ανοιχτό θέμα",
-    "description": "Το όνομα του ανοιχτού θέματος"
+    "message": "Ανοιχτό Χρώμα",
+    "description": "Όνομα του ανοιχτού χρώματος θέματος"
   },
   "theme.dark": {
-    "message": "Σκοτεινό θέμα",
-    "description": "Το όνομα του σκοτεινού θέματος"
+    "message": "Σκοτεινό Χρώμα",
+    "description": "Όνομα του σκοτεινού χρώματος θέματος"
   },
   "theme.system": {
     "message": "Σύστημα",
-    "description": "Το όνομα του θέματος συστήματος, που υποδηλώνει αυτόματη εναλλαγή θεμάτων σύμφωνα με τις ρυθμίσεις του συστήματος"
+    "description": "Όνομα του θέματος συστήματος, που υποδηλώνει αυτόματη εναλλαγή θεμάτων σύμφωνα με τις ρυθμίσεις του συστήματος"
   },
   "settings.general": {
-    "message": "Γενικές ρυθμίσεις",
-    "description": "Ο τίτλος της ενότητας γενικών ρυθμίσεων στη σελίδα ρυθμίσεων"
+    "message": "Γενικές Ρυθμίσεις",
+    "description": "Τίτλος της ενότητας γενικών ρυθμίσεων στη σελίδα ρυθμίσεων"
   },
   "settings.language": {
     "message": "Γλώσσα",
-    "description": "Ο τίτλος της ενότητας ρυθμίσεων γλώσσας στη σελίδα ρυθμίσεων"
+    "description": "Τίτλος της ενότητας ρυθμίσεων γλώσσας στη σελίδα ρυθμίσεων"
   },
   "settings.theme": {
     "message": "Θέμα",
-    "description": "Ο τίτλος της ενότητας ρυθμίσεων θέματος στη σελίδα ρυθμίσεων"
+    "description": "Τίτλος της ενότητας ρυθμίσεων θέματος στη σελίδα ρυθμίσεων"
   },
   "settings.seo": {
     "message": "Ρυθμίσεις SEO",
-    "description": "Ο τίτλος της ενότητας ρυθμίσεων SEO στη σελίδα ρυθμίσεων"
+    "description": "Τίτλος της ενότητας ρυθμίσεων SEO στη σελίδα ρυθμίσεων"
   },
   "settings.site": {
-    "message": "Ρυθμίσεις ιστότοπου",
-    "description": "Ο τίτλος της ενότητας ρυθμίσεων ιστότοπου στη σελίδα ρυθμίσεων"
+    "message": "Ρυθμίσεις Ιστοσελίδας",
+    "description": "Τίτλος της ενότητας ρυθμίσεων ιστοσελίδας στη σελίδα ρυθμίσεων"
   },
   "settings.distribution": {
-    "message": "Ρυθμίσεις διανομής",
-    "description": "Ο τίτλος της ενότητας ρυθμίσεων διανομής στη σελίδα ρυθμίσεων"
+    "message": "Ρυθμίσεις Διανομής",
+    "description": "Τίτλος της ενότητας ρυθμίσεων διανομής στη σελίδα ρυθμίσεων"
   },
   "settings.function": {
-    "message": "Ρυθμίσεις λειτουργίας",
-    "description": "Ο τίτλος της ενότητας ρυθμίσεων λειτουργίας στη σελίδα ρυθμίσεων"
+    "message": "Ρυθμίσεις Λειτουργιών",
+    "description": "Τίτλος της ενότητας ρυθμίσεων λειτουργιών στη σελίδα ρυθμίσεων"
   }
 }

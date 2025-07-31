@@ -1,0 +1,274 @@
+{
+  "name.taskId": {
+    "message": "ID de tâche",
+    "description": "ID de la tâche"
+  },
+  "name.type": {
+    "message": "Type",
+    "description": "Type de contenu du vidéo Pixverse à générer, comme 'lien', 'texte', etc."
+  },
+  "name.failure": {
+    "message": "Échec",
+    "description": "État d'échec de la tâche"
+  },
+  "name.failureReason": {
+    "message": "Raison de l'échec",
+    "description": "Raison de l'échec de la tâche"
+  },
+  "name.status": {
+    "message": "Statut",
+    "description": "Statut de la tâche"
+  },
+  "name.traceId": {
+    "message": "ID de traçage",
+    "description": "ID de traçage de la tâche"
+  },
+  "name.createdAt": {
+    "message": "Date de création",
+    "description": "Date et heure de génération de la vidéo Pixverse"
+  },
+  "name.style": {
+    "message": "Style",
+    "description": "Style de la vidéo à générer"
+  },
+  "name.motion": {
+    "message": "Mode vidéo",
+    "description": "Mode de la vidéo à générer"
+  },
+  "name.quality": {
+    "message": "Qualité vidéo",
+    "description": "Qualité de la vidéo à générer"
+  },
+  "name.startImage": {
+    "message": "Image de référence de la première image",
+    "description": "Image de référence pour la vidéo à générer"
+  },
+  "name.videoUrl": {
+    "message": "Vidéo personnalisée",
+    "description": "Vidéo personnalisée"
+  },
+  "name.prompt": {
+    "message": "Invite vidéo",
+    "description": "Invite pour l'entrée de contenu"
+  },
+  "name.duration": {
+    "message": "Durée vidéo",
+    "description": "Durée de la vidéo"
+  },
+  "name.model": {
+    "message": "Version du modèle",
+    "description": "Version du modèle utilisée pour générer la vidéo"
+  },
+  "name.seed": {
+    "message": "Graine",
+    "description": "Graine aléatoire pour générer la vidéo"
+  },
+  "name.mode": {
+    "message": "Mode vidéo",
+    "description": "Mode utilisé pour générer la vidéo"
+  },
+  "name.effect": {
+    "message": "Effet vidéo",
+    "description": "Nom du paramètre de style utilisé pour passer d'une version ou d'un style de modèle à un autre"
+  },
+  "name.ingredientsModel": {
+    "message": "Modèle d'ingrédients",
+    "description": "Version du modèle utilisée pour générer la vidéo"
+  },
+  "name.pixverseBot": {
+    "message": "Pixverse Bot",
+    "description": "Nom du générateur de vidéos Pixverse"
+  },
+  "description.ingredients": {
+    "message": "Si vous souhaitez télécharger plusieurs images pour générer votre propre vidéo, veuillez activer ce bouton.",
+    "description": "Description du paramètre 'ingredients'"
+  },
+  "description.imageUrl": {
+    "message": "Dans la tâche de création de vidéo à plusieurs images, il doit télécharger plusieurs images.",
+    "description": "Description du paramètre 'imageUrl'"
+  },
+  "description.prompt": {
+    "message": "Mots d'invite pour générer une vidéo Pixverse",
+    "description": "Description du paramètre 'prompt'"
+  },
+  "description.negativePrompt": {
+    "message": "Invite de texte négatif, optionnelle, ne dépassant pas 200 caractères",
+    "description": "Description du paramètre 'prompt'"
+  },
+  "description.uploadStartImage": {
+    "message": "Téléchargez l'image de la première image comme référence pour la génération, la vidéo finale se basera sur la première image",
+    "description": "Description du paramètre de référence de téléchargement"
+  },
+  "description.uploadEndImage": {
+    "message": "Téléchargez l'image de la première image comme référence pour la génération, la vidéo finale se basera sur la première image",
+    "description": "Description du paramètre de référence de téléchargement"
+  },
+  "description.seed": {
+    "message": "Valeur de la graine pour générer la vidéo. Si non définie, une graine aléatoire sera utilisée.",
+    "description": "Description du paramètre de référence de téléchargement"
+  },
+  "status.pending": {
+    "message": "En attente",
+    "description": "État d'attente de la tâche"
+  },
+  "status.processing": {
+    "message": "En cours de traitement",
+    "description": "État d'attente de la tâche"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Veuillez sélectionner...",
+    "description": "Espace réservé pour l'entrée de bruit de remplissage"
+  },
+  "placeholder.select": {
+    "message": "Sélectionner",
+    "description": "Texte d'espace réservé dans le champ de sélection"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Veuillez sélectionner...",
+    "description": "Espace réservé pour le niveau de remplissage"
+  },
+  "placeholder.prompt": {
+    "message": "Entrez les mots d'invite pour le style de vidéo à générer, par exemple : quiver",
+    "description": "Texte d'espace réservé dans le champ d'invite"
+  },
+  "placeholder.negativePrompt": {
+    "message": "Entrez les mots d'invite négatifs pour le style de vidéo à générer, ne dépassant pas 200 caractères",
+    "description": "Texte d'espace réservé dans le champ d'invite"
+  },
+  "placeholder.position": {
+    "message": "Veuillez sélectionner...",
+    "description": "Espace réservé pour l'entrée de position"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Veuillez sélectionner...",
+    "description": "Espace réservé pour l'entrée de rapport d'aspect"
+  },
+  "placeholder.preset": {
+    "message": "Veuillez sélectionner...",
+    "description": "Espace réservé pour l'entrée de préréglage"
+  },
+  "placeholder.markerShape": {
+    "message": "Veuillez sélectionner...",
+    "description": "Espace réservé pour l'entrée de forme de marqueur"
+  },
+  "placeholder.rotate": {
+    "message": "Veuillez sélectionner...",
+    "description": "Espace réservé pour l'entrée de rotation"
+  },
+  "placeholder.subMarker": {
+    "message": "Veuillez sélectionner...",
+    "description": "Espace réservé pour l'entrée de sous-marqueur"
+  },
+  "button.generate": {
+    "message": "Générer",
+    "description": "Texte du bouton pour générer une vidéo Pixverse"
+  },
+  "button.extend": {
+    "message": "Étendre la vidéo",
+    "description": "Texte du bouton pour étendre la vidéo"
+  },
+  "button.download": {
+    "message": "Télécharger la vidéo",
+    "description": "Texte du bouton pour télécharger la vidéo"
+  },
+  "button.uploadImageUrl": {
+    "message": "Télécharger l'image",
+    "description": "Texte du bouton pour télécharger une image"
+  },
+  "button.uploadVideoUrl": {
+    "message": "Télécharger la vidéo",
+    "description": "Texte du bouton pour télécharger une vidéo"
+  },
+  "button.uploadReferences": {
+    "message": "Télécharger",
+    "description": "Texte du bouton permettant à l'utilisateur de télécharger des références"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Vous pouvez télécharger au maximum 1 image",
+    "description": "Message d'erreur lorsque le nombre d'images téléchargées dépasse la limite"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Image téléchargée avec succès",
+    "description": "Message de succès lorsque l'image est téléchargée avec succès"
+  },
+  "message.uploadReferencesError": {
+    "message": "Échec du téléchargement de l'image, veuillez réessayer plus tard",
+    "description": "Message d'erreur lorsque le téléchargement de l'image échoue"
+  },
+  "message.startingTask": {
+    "message": "Démarrage de la tâche...",
+    "description": "Message au début de la tâche de dessin"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tâche de génération lancée avec succès",
+    "description": "Message de succès lorsque la tâche est lancée avec succès"
+  },
+  "message.startTaskFailed": {
+    "message": "Échec du lancement de la tâche, veuillez contacter l'administrateur",
+    "description": "Message d'erreur lorsque le lancement de la tâche de dessin échoue"
+  },
+  "message.usedUp": {
+    "message": "Vos crédits sont épuisés, veuillez acheter plus de crédits pour continuer",
+    "description": "Message lorsque les crédits sont épuisés"
+  },
+  "message.generating": {
+    "message": "Génération en cours...",
+    "description": "Message lorsque l'image est en cours de génération"
+  },
+  "message.downloadVideo": {
+    "message": "Télécharger cette vidéo",
+    "description": "Message lorsque l'image est en cours de génération"
+  },
+  "message.extendVideo": {
+    "message": "Continuer à générer cette vidéo",
+    "description": "Message lorsque l'image est en cours de génération"
+  },
+  "message.generateFailed": {
+    "message": "Échec de la génération de l'image",
+    "description": "Message lorsque la génération de l'image échoue"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Le nombre d'images de la première image téléchargées dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de la première image téléchargées dépasse la limite"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "La taille du fichier téléchargé ne peut pas dépasser 10 Mo !",
+    "description": "Message d'erreur lorsque la taille du fichier téléchargé dépasse 10 Mo !"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Le fichier téléchargé doit être au format MP4 !",
+    "description": "Message d'erreur lorsque le fichier téléchargé n'est pas au format MP4 !"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Le nombre d'images de la première image téléchargées dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de la première image téléchargées dépasse la limite"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Le nombre d'images de la dernière image téléchargées dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de la dernière image téléchargées dépasse la limite"
+  },
+  "message.uploadStartImageError": {
+    "message": "Échec du téléchargement de la première image",
+    "description": "Message d'erreur lorsque le téléchargement de la première image échoue"
+  },
+  "message.uploadVideoError": {
+    "message": "Échec du téléchargement de la vidéo",
+    "description": "Message d'erreur lorsque le téléchargement de la première image échoue"
+  },
+  "message.uploadEndImageError": {
+    "message": "Échec du téléchargement de la dernière image",
+    "description": "Message d'erreur lorsque le téléchargement de la dernière image échoue"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Échec du téléchargement du document",
+    "description": "Message d'erreur lorsque le téléchargement du document échoue"
+  },
+  "message.noOperations": {
+    "message": "Aucune opération disponible",
+    "description": "Message lorsque aucune opération n'est disponible"
+  },
+  "message.noTasks": {
+    "message": "Aucune tâche historique, veuillez cliquer sur le bouton à gauche pour générer une vidéo",
+    "description": "Message lorsque aucune tâche n'est disponible"
+  }
+}

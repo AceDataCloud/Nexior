@@ -9,22 +9,22 @@
   },
   "button.copy": {
     "message": "Copiar",
-    "description": "Texto do botão usado para configurar algo"
+    "description": "Texto do botão usado para copiar algo"
   },
   "button.restart": {
     "message": "Regerar",
-    "description": "Texto do botão usado para configurar algo"
+    "description": "Texto do botão usado para regenerar algo"
   },
   "button.preview": {
     "message": "Pré-visualizar",
-    "description": "Texto do botão usado para abrir a pré-visualização de um arquivo via URL"
+    "description": "Texto do botão usado para abrir uma pré-visualização de um arquivo via URL"
   },
   "button.seeRawImage": {
-    "message": "Ver Imagem Original",
+    "message": "Ver imagem original",
     "description": "Texto do botão usado para ver a imagem original"
   },
   "button.seeRawVideo": {
-    "message": "Ver Vídeo Original",
+    "message": "Ver vídeo original",
     "description": "Texto do botão usado para ver o vídeo original"
   },
   "button.edit": {
@@ -37,11 +37,11 @@
   },
   "button.logout": {
     "message": "Sair",
-    "description": "Texto do botão usado para sair do login"
+    "description": "Texto do botão usado para sair da conta"
   },
   "button.new": {
     "message": "Novo",
-    "description": "Texto do botão usado para criar um novo projeto"
+    "description": "Texto do botão usado para criar um novo item"
   },
   "button.delete": {
     "message": "Excluir",
@@ -72,7 +72,7 @@
     "description": "Texto do botão usado para assistir a algo"
   },
   "button.verify": {
-    "message": "Verificação de Identidade",
+    "message": "Verificação de identidade",
     "description": "Texto do botão usado para permitir que o usuário faça a verificação de identidade"
   },
   "button.profile": {
@@ -96,11 +96,11 @@
     "description": "Texto do botão usado para permitir que o usuário tente algo"
   },
   "button.startForFree": {
-    "message": "Começar Grátis",
+    "message": "Começar grátis",
     "description": "Texto do botão usado para permitir que o usuário comece a usar gratuitamente"
   },
   "button.apply": {
-    "message": "Aplicar",
+    "message": "Solicitar",
     "description": "Texto do botão usado para permitir que o usuário solicite serviços de API"
   },
   "button.refresh": {
@@ -112,7 +112,7 @@
     "description": "Texto do botão usado para permitir que o usuário pague pelos serviços"
   },
   "button.repay": {
-    "message": "Continuar Pagamento",
+    "message": "Continuar pagamento",
     "description": "Texto do botão usado para permitir que o usuário continue o pagamento pelos serviços"
   },
   "button.applied": {
@@ -124,11 +124,11 @@
     "description": "Texto do botão usado para permitir que o usuário obtenha um token ou chave de serviço de API"
   },
   "button.fillExample": {
-    "message": "Preencher Exemplo",
+    "message": "Preencher exemplo",
     "description": "Texto do botão usado para permitir que o usuário preencha dados de exemplo"
   },
   "button.buyMore": {
-    "message": "Comprar Mais",
+    "message": "Comprar mais",
     "description": "Texto do botão usado para permitir que o usuário compre mais conteúdo"
   },
   "button.update": {
@@ -144,8 +144,8 @@
     "description": "Texto do botão usado para criar algo"
   },
   "button.referralEarnings": {
-    "message": "Ganhos de Referência",
-    "description": "Texto do botão usado para mostrar os ganhos de referência, indicando que o usuário pode ganhar dinheiro ao convidar outros a usar o serviço"
+    "message": "Ganhos de indicação",
+    "description": "Texto do botão usado para mostrar os ganhos de indicação, indicando que o usuário pode ganhar dinheiro ao convidar outras pessoas para usar o serviço"
   },
   "button.finish": {
     "message": "Concluir",
@@ -164,7 +164,7 @@
     "description": "Nome do site, não precisa ser traduzido, mantenha como 'Ace Data Cloud'"
   },
   "entity.copyright": {
-    "message": "Direitos Autorais",
+    "message": "Direitos autorais",
     "description": "Texto usado para exibir informações de direitos autorais"
   },
   "entity.platform": {
@@ -203,6 +203,10 @@
     "message": "Pedido",
     "description": "Pedido da entidade, que inclui valor e informações do serviço, que o usuário precisa pagar"
   },
+  "message.noTasks": {
+    "message": "Não há tarefas históricas, por favor, comece uma nova tarefa～",
+    "description": "Mensagem quando não há tarefas"
+  },
   "message.usedAmount": {
     "message": "Valor Usado",
     "description": "Usado para mostrar o valor já utilizado do serviço"
@@ -213,15 +217,15 @@
   },
   "message.copied": {
     "message": "Copiado com Sucesso",
-    "description": "Usado para mostrar uma mensagem de que o conteúdo foi copiado com sucesso"
+    "description": "Usado para mostrar a mensagem de que o conteúdo foi copiado com sucesso"
   },
   "message.restart": {
     "message": "Regerar",
-    "description": "Usado para mostrar uma mensagem de que o conteúdo foi copiado com sucesso"
+    "description": "Usado para mostrar a mensagem de que o conteúdo foi copiado com sucesso"
   },
   "message.confirmDelete": {
-    "message": "Você tem certeza que deseja deletar?",
-    "description": "Usado para confirmar se o usuário deseja deletar algum conteúdo"
+    "message": "Tem certeza de que deseja excluir?",
+    "description": "Usado para confirmar se o usuário deseja excluir algum conteúdo"
   },
   "message.expiredAt": {
     "message": "Data de Expiração",
@@ -232,7 +236,7 @@
     "description": "Usado para mensagens de alerta ao usuário"
   },
   "message.info": {
-    "message": "Dica",
+    "message": "Lembrete Amigável",
     "description": "Usado para mostrar mensagens informativas"
   },
   "message.free": {
@@ -288,7 +292,7 @@
     "description": "Texto na barra de navegação do site, usado para mostrar a página de produtos"
   },
   "nav.referral": {
-    "message": "Renda de Indicação",
+    "message": "Rendimento de Indicação",
     "description": "Texto na barra de navegação do site, usado para mostrar a página de indicações"
   },
   "nav.apiPlatform": {
@@ -331,9 +335,13 @@
     "message": "Suno",
     "description": "Texto na barra de navegação do site, usado para mostrar a página do Suno, não deve ser traduzido, deve permanecer como 'Suno'"
   },
+  "nav.pixverse": {
+    "message": "Pixverse",
+    "description": "Texto na barra de navegação do site para exibir a página Pixverse, não deve ser traduzido, deve permanecer como 'Pixverse'"
+  },
   "nav.flux": {
     "message": "Flux",
-    "description": "Texto na barra de navegação do site, usado para mostrar a página do Flux, não deve ser traduzido, deve permanecer como 'Flux'"
+    "description": "Texto na barra de navegação do site para exibir a página Flux, não deve ser traduzido, deve permanecer como 'Flux'"
   },
   "nav.luma": {
     "message": "Luma",
@@ -417,7 +425,7 @@
   },
   "title.orderInfo": {
     "message": "Informações do Pedido",
-    "description": "Título da página que exibe as informações do pedido"
+    "description": "Título da página que exibe informações do pedido"
   },
   "title.buyMore": {
     "message": "Comprar Mais",
@@ -425,7 +433,7 @@
   },
   "title.distribution": {
     "message": "Rendimentos de Recomendação",
-    "description": "Título da página que exibe os rendimentos de recomendação, indicando que o usuário pode ganhar dinheiro convidando outras pessoas a usar o serviço"
+    "description": "Título da página que exibe rendimentos de recomendação, indicando que o usuário pode ganhar dinheiro convidando outras pessoas a usar o serviço"
   },
   "title.site": {
     "message": "Configuração do Site",
@@ -449,15 +457,15 @@
   },
   "about.title1": {
     "message": "Entre em Contato",
-    "description": "Título da seção que exibe as informações de contato"
+    "description": "Título da seção que exibe informações de contato"
   },
   "about.title2": {
     "message": "Recursos",
-    "description": "Título da seção que exibe os links"
+    "description": "Título da seção que exibe links"
   },
   "about.title3": {
     "message": "Links",
-    "description": "Título da seção que exibe as informações de suporte"
+    "description": "Título da seção que exibe informações de suporte"
   },
   "about.address": {
     "message": "Estados Unidos, Delaware, Middletown, N Broad St, Escritório 201",
@@ -488,8 +496,8 @@
     "description": "Link para a página central"
   },
   "about.link6": {
-    "message": "Rendimentos de Recomendação",
-    "description": "Link para a página de rendimentos de recomendação"
+    "message": "Rendimento de Recomendações",
+    "description": "Link para a página de rendimento de recomendações"
   },
   "about.link7": {
     "message": "Suporte",
@@ -512,7 +520,7 @@
     "description": "Nome do tema escuro"
   },
   "theme.system": {
-    "message": "Sistema",
+    "message": "Tema do Sistema",
     "description": "Nome do tema do sistema, indicando que o tema muda automaticamente de acordo com as configurações do sistema"
   },
   "settings.general": {

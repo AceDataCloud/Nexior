@@ -75,6 +75,10 @@
     "message": "Luma",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
+  "field.featuresPixverse": {
+    "message": "Pixverse",
+    "description": "Prikazuje se kao naslov u okviru za uređivanje"
+  },
   "field.featuresPika": {
     "message": "Pika",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
@@ -88,7 +92,7 @@
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "field.featuresHeadshots": {
-    "message": "AI identifikacione fotografije",
+    "message": "AI fotografije",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "field.featuresSuno": {
@@ -224,12 +228,12 @@
     "description": "Poruka koja se prikazuje kada je potrebno zadržati barem jednog administratora"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "ID korisnika koji je podrazumevani pozivalac. Ako distribucioni link ne sadrži parametar inviter_id, koristiće se ovaj ID kao pozivalac.",
-    "description": "Uputstvo za podrazumevani ID pozivaoca"
+    "message": "ID korisnika podrazumevanog pozivaoca. Ako distribucioni link ne sadrži parametar inviter_id, koristiće se ovaj ID kao pozivalac.",
+    "description": "Uputstvo za ID podrazumevanog pozivaoca"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID korisnika koji je obavezni pozivalac. Ako je ovaj ID postavljen, bez obzira na to da li distribucioni link sadrži parametar inviter_id, koristiće se ovaj ID kao pozivalac.",
-    "description": "Uputstvo za obavezni ID pozivaoca"
+    "message": "ID korisnika obaveznog pozivaoca. Ako je ovaj ID postavljen, bez obzira na to da li distribucioni link sadrži parametar inviter_id, koristiće se ovaj ID kao pozivalac.",
+    "description": "Uputstvo za ID obaveznog pozivaoca"
   },
   "message.originTip": {
     "message": "Domen sajta, konfiguracija sajta je vezana za domen, domen sajta se ne može menjati.",
@@ -240,7 +244,7 @@
     "description": "Uputstvo za naslov sajta"
   },
   "message.descriptionTip": {
-    "message": "Opis sajta, nalazi se u metapodacima sajta, koristi se za SEO optimizaciju.",
+    "message": "Opis sajta, nalazi se u metapodacima sajta, koristi se za SEO optimizaciju sajta.",
     "description": "Uputstvo za opis sajta"
   },
   "message.logoTip": {
@@ -252,15 +256,15 @@
     "description": "Uputstvo za favicon sajta"
   },
   "message.adminsTip": {
-    "message": "ID administratora sajta, podrazumevano, prvi korisnik koji kreira sajt postaje administrator, samo administratori mogu upravljati sajtom.",
+    "message": "ID administratora sajta, podrazumevano, prvi korisnik koji kreira sajt postaje administrator, samo administratori sajta mogu upravljati sajtom.",
     "description": "Uputstvo za administratore sajta"
   },
   "message.adminsTip2": {
-    "message": "Ovde možete dodavati ili uklanjati ID-ove administratora, možete posetiti https://auth.acedata.cloud da biste videli ID korisnika",
+    "message": "Ovde možete dodavati ili uklanjati ID administratora, možete posetiti https://auth.acedata.cloud da biste videli ID korisnika",
     "description": "Uputstvo za administratore sajta"
   },
   "message.keywordsTip": {
-    "message": "Ključne reči sajta, nalaze se u metapodacima sajta, koriste se za SEO optimizaciju.",
+    "message": "Ključne reči sajta, nalaze se u metapodacima sajta, koriste se za SEO optimizaciju sajta.",
     "description": "Uputstvo za ključne reči sajta"
   },
   "message.keywordsTip2": {
@@ -299,6 +303,10 @@
     "message": "Uključite ili isključite Suno funkcionalnost.",
     "description": "Opis Suno funkcionalnosti"
   },
+  "message.featuresPixverse": {
+    "message": "Uključite ili isključite Pixverse funkcionalnost.",
+    "description": "Opis Pixverse funkcionalnosti"
+  },
   "message.featuresFlux": {
     "message": "Uključite ili isključite FLux funkcionalnost.",
     "description": "Opis FLux funkcionalnosti"
@@ -328,12 +336,12 @@
     "description": "Opis funkcionalnosti podrške"
   },
   "message.featuresI18n": {
-    "message": "Uključite ili isključite podršku za više jezika, kada je isključena, korisnici mogu koristiti samo podrazumevani jezik.",
+    "message": "Uključite ili isključite podršku za više jezika. Kada je isključena, korisnici mogu koristiti samo podrazumevani jezik.",
     "description": "Opis podrške za više jezika"
   },
   "button.upload": {
-    "message": "Upload",
-    "description": "Upload"
+    "message": "Otpremi",
+    "description": "Otpremi"
   },
   "button.enabled": {
     "message": "Omogućeno",
@@ -341,6 +349,6 @@
   },
   "button.disabled": {
     "message": "Onemogućeno",
-    "description": "Tekst na dugmetu koji označava da je onemogućeno"
+    "description": "Tekst prekidača koji označava da je onemogućeno"
   }
 }

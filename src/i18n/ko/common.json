@@ -17,15 +17,15 @@
   },
   "button.preview": {
     "message": "미리보기",
-    "description": "버튼 텍스트, URL을 통해 특정 파일의 미리보기를 열기 위해 사용"
+    "description": "버튼 텍스트, URL을 통해 특정 파일의 미리보기를 여는 데 사용"
   },
   "button.seeRawImage": {
     "message": "원본 이미지 보기",
-    "description": "버튼 텍스트, 원본 이미지를 보기 위해 사용"
+    "description": "버튼 텍스트, 원본 이미지를 보는 데 사용"
   },
   "button.seeRawVideo": {
     "message": "비디오 보기",
-    "description": "버튼 텍스트, 원본 이미지를 보기 위해 사용"
+    "description": "버튼 텍스트, 원본 이미지를 보는 데 사용"
   },
   "button.edit": {
     "message": "편집",
@@ -41,7 +41,7 @@
   },
   "button.new": {
     "message": "새로 만들기",
-    "description": "버튼 텍스트, 새 프로젝트를 생성하는 데 사용"
+    "description": "버튼 텍스트, 새 프로젝트를 만드는 데 사용"
   },
   "button.delete": {
     "message": "삭제",
@@ -77,11 +77,11 @@
   },
   "button.profile": {
     "message": "프로필",
-    "description": "버튼 텍스트, 개인 프로필을 표시하는 데 사용"
+    "description": "버튼 텍스트, 프로필을 표시하는 데 사용"
   },
   "button.console": {
     "message": "콘솔",
-    "description": "버튼 텍스트, 웹 페이지의 특정 내용을 제어하기 위해 콘솔 페이지를 표시하는 데 사용"
+    "description": "버튼 텍스트, 웹 페이지의 특정 내용을 제어하기 위한 콘솔 페이지를 표시하는 데 사용"
   },
   "button.learn": {
     "message": "학습",
@@ -117,7 +117,7 @@
   },
   "button.applied": {
     "message": "신청 완료",
-    "description": "버튼 텍스트, 사용자가 해당 서비스를 신청했음을 표시하는 데 사용"
+    "description": "버튼 텍스트, 사용자가 이미 해당 서비스를 신청했음을 표시하는 데 사용"
   },
   "button.acquire": {
     "message": "획득",
@@ -137,7 +137,7 @@
   },
   "button.view": {
     "message": "보기",
-    "description": "버튼 텍스트, 특정 내용을 보기 위해 사용"
+    "description": "버튼 텍스트, 특정 내용을 보는 데 사용"
   },
   "button.create": {
     "message": "생성",
@@ -177,31 +177,35 @@
   },
   "entity.icon": {
     "message": "아이콘",
-    "description": "실체의 아이콘"
+    "description": "엔티티의 아이콘"
   },
   "entity.status": {
     "message": "상태",
-    "description": "실체의 상태"
+    "description": "엔티티의 상태"
   },
   "entity.operation": {
     "message": "작업",
-    "description": "실체의 작업"
+    "description": "엔티티의 작업"
   },
   "entity.description": {
     "message": "설명",
-    "description": "실체의 설명"
+    "description": "엔티티의 설명"
   },
   "entity.createdAt": {
     "message": "생성 시간",
-    "description": "실체 생성의 시간"
+    "description": "엔티티 생성의 시간"
   },
   "entity.updatedAt": {
     "message": "업데이트 시간",
-    "description": "실체 업데이트의 시간"
+    "description": "엔티티 업데이트의 시간"
   },
   "entity.order": {
     "message": "주문",
-    "description": "실체의 주문, 주문에는 금액, 서비스 정보가 포함되며, 사용자는 이를 위해 비용을 지불해야 함"
+    "description": "엔티티의 주문, 주문은 금액과 서비스 정보를 포함하며, 사용자가 비용을 지불해야 함"
+  },
+  "message.noTasks": {
+    "message": "이력 작업이 없습니다. 새로운 작업을 시작하세요～",
+    "description": "작업이 없을 때의 메시지"
   },
   "message.usedAmount": {
     "message": "사용된 금액",
@@ -220,7 +224,7 @@
     "description": "내용이 성공적으로 복사되었음을 표시하는 메시지"
   },
   "message.confirmDelete": {
-    "message": "정말로 삭제하시겠습니까?",
+    "message": "정말 삭제하시겠습니까?",
     "description": "사용자가 특정 내용을 삭제할 것인지 확인하는 메시지"
   },
   "message.expiredAt": {
@@ -240,7 +244,7 @@
     "description": "서비스가 무료임을 표시하는 메시지, 사용자가 비용을 지불할 필요가 없음을 나타냄"
   },
   "message.startPrice": {
-    "message": "시작 가격",
+    "message": "최저가",
     "description": "서비스의 최저 가격을 표시하는 메시지"
   },
   "message.joinDiscord": {
@@ -261,7 +265,7 @@
   },
   "message.noData": {
     "message": "데이터 없음",
-    "description": "표 또는 목록에 데이터가 없음을 표시하는 메시지"
+    "description": "표나 목록에 데이터가 없음을 표시하는 메시지"
   },
   "nav.home": {
     "message": "홈",
@@ -316,7 +320,7 @@
     "description": "웹사이트 내비게이션 바의 텍스트, Grok 페이지를 표시하는 데 사용, 이 필드는 번역하지 말고 'Grok'로 유지해야 함"
   },
   "nav.chat": {
-    "message": "채팅",
+    "message": "Chat",
     "description": "웹사이트 내비게이션 바의 텍스트, 채팅 페이지를 표시하는 데 사용, 이 필드는 번역하지 말고 'Chat'로 유지해야 함"
   },
   "nav.midjourney": {
@@ -331,9 +335,13 @@
     "message": "Suno",
     "description": "웹사이트 내비게이션 바의 텍스트, Suno 페이지를 표시하는 데 사용, 이 필드는 번역하지 말고 'Suno'로 유지해야 함"
   },
+  "nav.pixverse": {
+    "message": "Pixverse",
+    "description": "웹사이트 내비게이션 바의 텍스트로, Pixverse 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 마십시오. 'Pixverse'로 유지해야 합니다."
+  },
   "nav.flux": {
     "message": "Flux",
-    "description": "웹사이트 내비게이션 바의 텍스트, Flux 페이지를 표시하는 데 사용, 이 필드는 번역하지 말고 'Flux'로 유지해야 함"
+    "description": "웹사이트 내비게이션 바의 텍스트로, Flux 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 마십시오. 'Flux'로 유지해야 합니다."
   },
   "nav.luma": {
     "message": "Luma",
@@ -437,7 +445,7 @@
   },
   "title.invitee": {
     "message": "초대자",
-    "description": "초대자를 표시하는 페이지 제목입니다."
+    "description": "초대자의 페이지 제목입니다."
   },
   "title.allUsages": {
     "message": "사용 기록",
@@ -448,16 +456,16 @@
     "description": "API에 접근하는 데 사용되는 모든 자격 증명을 표시하는 페이지 제목입니다."
   },
   "about.title1": {
-    "message": "연락하기",
-    "description": "연락 정보 부분의 제목입니다."
+    "message": "연락처",
+    "description": "연락처 정보를 표시하는 부분의 제목입니다."
   },
   "about.title2": {
     "message": "리소스",
-    "description": "링크 부분의 제목입니다."
+    "description": "링크를 표시하는 부분의 제목입니다."
   },
   "about.title3": {
     "message": "링크",
-    "description": "지원 정보 부분의 제목입니다."
+    "description": "지원 정보를 표시하는 부분의 제목입니다."
   },
   "about.address": {
     "message": "미국 델라웨어주 미들타운 N Broad St, 201호",
@@ -489,19 +497,19 @@
   },
   "about.link6": {
     "message": "추천 수익",
-    "description": "추천 수익 페이지의 링크입니다."
+    "description": "추천 수익 페이지의 링크"
   },
   "about.link7": {
     "message": "지원",
-    "description": "지원 페이지의 링크입니다."
+    "description": "지원 페이지의 링크"
   },
   "about.link8": {
     "message": "서비스 약관",
-    "description": "서비스 약관 페이지의 링크입니다."
+    "description": "서비스 약관 페이지의 링크"
   },
   "about.link9": {
     "message": "개인정보 처리방침",
-    "description": "개인정보 처리방침 페이지의 링크입니다."
+    "description": "개인정보 처리방침 페이지의 링크"
   },
   "theme.light": {
     "message": "밝은 색",
@@ -513,7 +521,7 @@
   },
   "theme.system": {
     "message": "시스템",
-    "description": "시스템 설정에 따라 자동으로 테마를 전환하는 시스템 테마의 이름"
+    "description": "시스템 테마의 이름, 시스템 설정에 따라 자동으로 테마를 전환함을 나타냄"
   },
   "settings.general": {
     "message": "일반 설정",

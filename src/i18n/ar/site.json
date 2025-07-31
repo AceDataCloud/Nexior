@@ -75,6 +75,10 @@
     "message": "لما",
     "description": "عرض في مربع التحرير"
   },
+  "field.featuresPixverse": {
+    "message": "بيكسفيرس",
+    "description": "عرض في مربع التحرير"
+  },
   "field.featuresPika": {
     "message": "بيكا",
     "description": "عرض في مربع التحرير"
@@ -112,7 +116,7 @@
     "description": "عرض في مربع التحرير"
   },
   "title.seoConfig": {
-    "message": "إعدادات تحسين محركات البحث",
+    "message": "إعدادات SEO",
     "description": "عرض في مربع التحرير"
   },
   "title.editAdmins": {
@@ -184,15 +188,15 @@
     "description": "عرض في مربع التحرير"
   },
   "placeholder.keywords": {
-    "message": "يرجى إدخال كلمات مفتاحية للموقع",
+    "message": "يرجى إدخال الكلمات المفتاحية للموقع",
     "description": "عرض في مربع التحرير"
   },
   "placeholder.editDistributionDefaultInviterId": {
     "message": "يرجى إدخال معرف المدعو الافتراضي",
-    "description": "عرض في مربع التحرير"
+    "description": "عرض في عنوان مربع التحرير"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "الرجاء إدخال معرف المدعو الإجباري",
+    "message": "يرجى إدخال معرف المدعو الإجباري",
     "description": "عرض في عنوان مربع التحرير"
   },
   "message.uploadImageExceed": {
@@ -204,132 +208,136 @@
     "description": "إشعار بخطأ في رفع الصورة"
   },
   "message.editLogoTip": {
-    "message": "الأبعاد المقترحة: 200*60 بكسل",
+    "message": "الأبعاد الموصى بها: 200*60 بكسل",
     "description": "لغة إشعار رفع الصورة"
   },
   "message.editQRTip": {
-    "message": "الأبعاد المقترحة: 200*200 بكسل",
+    "message": "الأبعاد الموصى بها: 200*200 بكسل",
     "description": "لغة إشعار رفع الصورة"
   },
   "message.editFaviconTip": {
-    "message": "الأبعاد المقترحة: 32*32 بكسل",
+    "message": "الأبعاد الموصى بها: 32*32 بكسل",
     "description": "لغة إشعار رفع الصورة"
   },
   "message.editUrl": {
-    "message": "الرجاء إدخال الرابط",
-    "description": "إشعار إدخال الرابط"
+    "message": "يرجى إدخال الرابط",
+    "description": "إشعار بإدخال الرابط"
   },
   "message.atLeastOneAdmin": {
     "message": "يجب الاحتفاظ بمدير واحد على الأقل",
-    "description": "إشعار الاحتفاظ بمدير واحد على الأقل"
+    "description": "إشعار بضرورة الاحتفاظ بمدير واحد على الأقل"
   },
   "message.distributionDefaultInviterIdTip": {
     "message": "معرف المستخدم للمدعو الافتراضي، إذا لم يحمل رابط التوزيع مع معلمة inviter_id، فسيتم استخدام هذا المعرف كمدعو افتراضي.",
-    "description": "إشعار معرف المدعو الافتراضي"
+    "description": "إشعار بمعرف المدعو الافتراضي"
   },
   "message.distributionForceInviterIdTip": {
     "message": "معرف المستخدم للمدعو الإجباري، إذا تم تعيين هذا المعرف، فسيتم استخدامه كمدعو بغض النظر عما إذا كان رابط التوزيع يحمل معلمة inviter_id.",
-    "description": "إشعار معرف المدعو الإجباري"
+    "description": "إشعار بمعرف المدعو الإجباري"
   },
   "message.originTip": {
     "message": "اسم نطاق الموقع، يتم ربط إعدادات الموقع باسم النطاق، ولا يمكن تغيير اسم نطاق الموقع.",
-    "description": "إشعار اسم نطاق الموقع"
+    "description": "إشعار باسم نطاق الموقع"
   },
   "message.titleTip": {
     "message": "عنوان الموقع، يظهر في علامة تبويب المتصفح.",
-    "description": "إشعار عنوان الموقع"
+    "description": "إشعار بعنوان الموقع"
   },
   "message.descriptionTip": {
     "message": "وصف الموقع، موجود في معلومات الميتا الخاصة بالموقع، يستخدم لتحسين SEO للموقع.",
-    "description": "إشعار وصف الموقع"
+    "description": "إشعار بوصف الموقع"
   },
   "message.logoTip": {
     "message": "شعار الموقع، يظهر في أعلى قائمة الموقع عند توسيع شريط القوائم.",
-    "description": "إشعار شعار الموقع"
+    "description": "إشعار بشعار الموقع"
   },
   "message.faviconTip": {
     "message": "فافيكون الموقع، يظهر في علامة تبويب المتصفح.",
-    "description": "إشعار فافيكون الموقع"
+    "description": "إشعار بفافيكون الموقع"
   },
   "message.adminsTip": {
     "message": "معرفات مديري الموقع، المستخدم الذي ينشئ الموقع لأول مرة يصبح مديرًا بشكل افتراضي، فقط مديري الموقع يمكنهم إدارة الموقع.",
-    "description": "إشعار مديري الموقع"
+    "description": "إشعار بمديري الموقع"
   },
   "message.adminsTip2": {
     "message": "يمكنك إضافة أو حذف معرفات المديرين هنا، يمكنك زيارة https://auth.acedata.cloud لرؤية معرفات المستخدمين",
-    "description": "إشعار مديري الموقع"
+    "description": "إشعار بمديري الموقع"
   },
   "message.keywordsTip": {
     "message": "كلمات مفتاحية للموقع، موجودة في معلومات الميتا الخاصة بالموقع، تستخدم لتحسين SEO للموقع.",
-    "description": "إشعار كلمات مفتاحية للموقع"
+    "description": "إشعار بكلمات مفتاحية للموقع"
   },
   "message.keywordsTip2": {
-    "message": "يمكنك إضافة أو حذف كلمات مفتاحية للموقع هنا، كلما كانت الكلمات المفتاحية أكثر دقة، كان ذلك أفضل لتحسين SEO.",
-    "description": "إشعار كلمات مفتاحية للموقع"
+    "message": "يمكنك إضافة أو حذف كلمات مفتاحية للموقع هنا، كلما كانت الكلمات المفتاحية أكثر دقة، كانت أفضل لتحسين SEO.",
+    "description": "إشعار بكلمات مفتاحية للموقع"
   },
   "message.featuresChat": {
     "message": "فتح أو إغلاق وحدة وظيفة الدردشة.",
-    "description": "وصف وظيفة الدردشة"
+    "description": "وصف لوظيفة الدردشة"
   },
   "message.featuresGrok": {
     "message": "فتح أو إغلاق وحدة وظيفة Grok.",
-    "description": "وصف وظيفة Grok"
+    "description": "وصف لوظيفة Grok"
   },
   "message.featuresDeepseek": {
     "message": "فتح أو إغلاق وحدة وظيفة Deepseek.",
-    "description": "وصف وظيفة Deepseek"
+    "description": "وصف لوظيفة Deepseek"
   },
   "message.featuresChatgpt": {
     "message": "فتح أو إغلاق وحدة وظيفة ChatGPT.",
-    "description": "وصف وظيفة ChatGPT"
+    "description": "وصف لوظيفة ChatGPT"
   },
   "message.featuresMidjourney": {
     "message": "فتح أو إغلاق وحدة وظيفة Midjourney.",
-    "description": "وصف وظيفة Midjourney"
+    "description": "وصف لوظيفة Midjourney"
   },
   "message.featuresChatdoc": {
     "message": "فتح أو إغلاق وحدة وظيفة Chatdoc.",
-    "description": "وصف وظيفة Chatdoc"
+    "description": "وصف لوظيفة Chatdoc"
   },
   "message.featuresQrart": {
     "message": "فتح أو إغلاق وحدة وظيفة Qrart.",
-    "description": "وصف وظيفة Qrart"
+    "description": "وصف لوظيفة Qrart"
   },
   "message.featuresSuno": {
     "message": "فتح أو إغلاق وحدة وظيفة Suno.",
-    "description": "وصف وظيفة Suno"
+    "description": "وصف لوظيفة Suno"
+  },
+  "message.featuresPixverse": {
+    "message": "فتح أو إغلاق وحدة وظيفة Pixverse.",
+    "description": "وصف لوظيفة Pixverse"
   },
   "message.featuresFlux": {
     "message": "فتح أو إغلاق وحدة وظيفة FLux.",
-    "description": "وصف وظيفة FLux"
+    "description": "وصف لوظيفة FLux"
   },
   "message.featuresLuma": {
     "message": "فتح أو إغلاق وحدة وظيفة Luma.",
-    "description": "وصف وظيفة Luma"
+    "description": "وصف لوظيفة Luma"
   },
   "message.featuresPika": {
     "message": "فتح أو إغلاق وحدة وظيفة Pika.",
-    "description": "وصف وظيفة Pika"
+    "description": "وصف لوظيفة Pika"
   },
   "message.featuresKling": {
     "message": "فتح أو إغلاق وحدة وظيفة Kling.",
-    "description": "وصف وظيفة Kling"
+    "description": "وصف لوظيفة Kling"
   },
   "message.featuresHailuo": {
     "message": "فتح أو إغلاق وحدة وظيفة Hailuo.",
-    "description": "وصف وظيفة Hailuo"
+    "description": "وصف لوظيفة Hailuo"
   },
   "message.featuresHeadshots": {
     "message": "فتح أو إغلاق وحدة وظيفة صور الهوية AI.",
-    "description": "وصف وظيفة صور الهوية AI"
+    "description": "وصف لوظيفة صور الهوية AI"
   },
   "message.featuresSupport": {
-    "message": "فتح أو إغلاق دعم خدمة العملاء",
-    "description": "وصف وظيفة الدعم"
+    "message": "فتح أو إغلاق دعم العملاء",
+    "description": "وصف لوظيفة الدعم"
   },
   "message.featuresI18n": {
-    "message": "فتح أو إغلاق دعم متعدد اللغات، بعد الإغلاق، يمكن للمستخدمين استخدام اللغة الافتراضية فقط.",
-    "description": "وصف دعم متعدد اللغات"
+    "message": "قم بفتح أو إغلاق دعم اللغات المتعددة، عند الإغلاق، يمكن للمستخدمين استخدام اللغة الافتراضية فقط.",
+    "description": "وصف دعم اللغات المتعددة"
   },
   "button.upload": {
     "message": "رفع",
@@ -337,10 +345,10 @@
   },
   "button.enabled": {
     "message": "مفعل",
-    "description": "نص الزر، يشير إلى أنه تم تفعيله"
+    "description": "نص التبديل، يشير إلى أنه تم التفعيل"
   },
   "button.disabled": {
     "message": "معطل",
-    "description": "نص الزر، يشير إلى أنه تم تعطيله"
+    "description": "نص التبديل، يشير إلى أنه تم التعطيل"
   }
 }

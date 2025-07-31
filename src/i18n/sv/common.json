@@ -92,8 +92,8 @@
     "description": "Knapptext för att låta användaren köpa vissa saker"
   },
   "button.try": {
-    "message": "Prova",
-    "description": "Knapptext för att låta användaren prova vissa saker"
+    "message": "Försök",
+    "description": "Knapptext för att låta användaren försöka med vissa saker"
   },
   "button.startForFree": {
     "message": "Börja gratis",
@@ -101,7 +101,7 @@
   },
   "button.apply": {
     "message": "Ansök",
-    "description": "Knapptext för att låta användaren ansöka om API-tjänst"
+    "description": "Knapptext för att låta användaren ansöka om API-tjänster"
   },
   "button.refresh": {
     "message": "Uppdatera",
@@ -109,11 +109,11 @@
   },
   "button.pay": {
     "message": "Betala",
-    "description": "Knapptext för att låta användaren betala för tjänsten"
+    "description": "Knapptext för att låta användaren betala för tjänster"
   },
   "button.repay": {
     "message": "Fortsätt betala",
-    "description": "Knapptext för att låta användaren fortsätta betala för tjänsten"
+    "description": "Knapptext för att låta användaren fortsätta betala för tjänster"
   },
   "button.applied": {
     "message": "Ansökt",
@@ -201,7 +201,11 @@
   },
   "entity.order": {
     "message": "Beställning",
-    "description": "Entitetens beställning, som innehåller belopp och tjänsteinformation, som användaren behöver betala för"
+    "description": "Entitetens beställning, beställningen innehåller belopp, tjänsteinformation, användaren behöver betala för den"
+  },
+  "message.noTasks": {
+    "message": "Inga historiska uppgifter, vänligen starta en ny uppgift～",
+    "description": "Meddelande när det inte finns några uppgifter"
   },
   "message.usedAmount": {
     "message": "Använt belopp",
@@ -216,7 +220,7 @@
     "description": "Används för att visa meddelandet att innehållet har kopierats framgångsrikt"
   },
   "message.restart": {
-    "message": "Återställ",
+    "message": "Återgenerera",
     "description": "Används för att visa meddelandet att innehållet har kopierats framgångsrikt"
   },
   "message.confirmDelete": {
@@ -245,23 +249,23 @@
   },
   "message.joinDiscord": {
     "message": "Gå med i Discord",
-    "description": "Används för att uppmana användaren att gå med i Discord-kanalen"
+    "description": "Används för att låta användaren gå med i Discord-kanalen"
   },
   "message.addWeChat": {
     "message": "Lägg till WeChat",
-    "description": "Används för att uppmana användaren att lägga till WeChat"
+    "description": "Används för att låta användaren lägga till WeChat"
   },
   "message.serviceTech": {
     "message": "Teknisk support",
-    "description": "Används för att visa meddelande om teknisk support för tjänsten"
+    "description": "Används för att visa meddelandet om teknisk support för tjänsten"
   },
   "message.businessCooperation": {
     "message": "Affärssamarbete",
-    "description": "Används för att visa meddelande om affärssamarbete"
+    "description": "Används för att visa meddelandet om affärssamarbete"
   },
   "message.noData": {
     "message": "Ingen data",
-    "description": "Används för att visa meddelande när det inte finns någon data i tabellen eller listan"
+    "description": "Används för att visa meddelandet när det inte finns någon data i tabellen eller listan"
   },
   "nav.home": {
     "message": "Hem",
@@ -280,7 +284,7 @@
     "description": "Text i webbplatsens navigeringsfält för att visa tjänstesidan"
   },
   "nav.profile": {
-    "message": "Min profil",
+    "message": "Jag",
     "description": "Text i webbplatsens navigeringsfält för att visa profilsidan"
   },
   "nav.products": {
@@ -305,95 +309,99 @@
   },
   "nav.chatgpt": {
     "message": "ChatGPT",
-    "description": "Text i webbplatsens navigeringsfält för att visa ChatGPT-sidan, får inte översättas, måste förbli 'ChatGPT'"
+    "description": "Text i webbplatsens navigeringsfält för att visa ChatGPT-sidan, vänligen översätt inte detta fält, det måste förbli 'ChatGPT'"
   },
   "nav.deepseek": {
     "message": "DeepSeek",
-    "description": "Text i webbplatsens navigeringsfält för att visa DeepSeek-sidan, får inte översättas, måste förbli 'DeepSeek'"
+    "description": "Text i webbplatsens navigeringsfält för att visa DeepSeek-sidan, vänligen översätt inte detta fält, det måste förbli 'DeepSeek'"
   },
   "nav.grok": {
     "message": "Grok",
-    "description": "Text i webbplatsens navigeringsfält för att visa Grok-sidan, får inte översättas, måste förbli 'Grok'"
+    "description": "Text i webbplatsens navigeringsfält för att visa Grok-sidan, vänligen översätt inte detta fält, det måste förbli 'Grok'"
   },
   "nav.chat": {
     "message": "Chat",
-    "description": "Text i webbplatsens navigeringsfält för att visa chatt-sidan, får inte översättas, måste förbli 'Chat'"
+    "description": "Text i webbplatsens navigeringsfält för att visa chatt-sidan, vänligen översätt inte detta fält, det måste förbli 'Chat'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "Text i webbplatsens navigeringsfält för att visa Midjourney-sidan, får inte översättas, måste förbli 'Midjourney'"
+    "description": "Text i webbplatsens navigeringsfält för att visa Midjourney-sidan, vänligen översätt inte detta fält, det måste förbli 'Midjourney'"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Text i webbplatsens navigeringsfält för att visa QRArt-sidan, får inte översättas, måste förbli 'QRArt'"
+    "description": "Text i webbplatsens navigeringsfält för att visa QRArt-sidan, vänligen översätt inte detta fält, det måste förbli 'QRArt'"
   },
   "nav.suno": {
     "message": "Suno",
-    "description": "Text i webbplatsens navigeringsfält för att visa Suno-sidan, får inte översättas, måste förbli 'Suno'"
+    "description": "Text i webbplatsens navigeringsfält för att visa Suno-sidan, vänligen översätt inte detta fält, det måste förbli 'Suno'"
+  },
+  "nav.pixverse": {
+    "message": "Pixverse",
+    "description": "Text in website navigation bar to display the Pixverse page, must remain as 'Pixverse'"
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "Text i webbplatsens navigeringsfält för att visa Flux-sidan, får inte översättas, måste förbli 'Flux'"
+    "description": "Text in website navigation bar to display the Flux page, must remain as 'Flux'"
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "Text in the website navigation bar to display the Luma page, must remain as 'Luma'"
+    "description": "Text in website navigation bar to display the Luma page, must remain as 'Luma'"
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "Text in the website navigation bar to display the Pika page, must remain as 'Pika'"
+    "description": "Text in website navigation bar to display the Pika page, must remain as 'Pika'"
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "Text in the website navigation bar to display the Kling page, must remain as 'Kling'"
+    "description": "Text in website navigation bar to display the Kling page, must remain as 'Kling'"
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "Text in the website navigation bar to display the Hailuo page, must remain as 'Hailuo'"
+    "description": "Text in website navigation bar to display the Hailuo page, must remain as 'Hailuo'"
   },
   "nav.image": {
     "message": "Bild",
-    "description": "Text in the website navigation bar to display the image page"
+    "description": "Text in website navigation bar to display the image page"
   },
   "nav.music": {
     "message": "Musik",
-    "description": "Text in the website navigation bar to display the music page"
+    "description": "Text in website navigation bar to display the music page"
   },
   "nav.video": {
     "message": "Video",
-    "description": "Text in the website navigation bar to display the video page"
+    "description": "Text in website navigation bar to display the video page"
   },
   "nav.distribution": {
     "message": "Rekommenderad inkomst",
-    "description": "Text in the website navigation bar to display the recommended income page"
+    "description": "Text in website navigation bar to display the recommended income page"
   },
   "nav.logOut": {
     "message": "Logga ut",
-    "description": "Text in the website navigation bar to log out"
+    "description": "Text in website navigation bar to log out"
   },
   "nav.site": {
     "message": "Webbplatsinställningar",
-    "description": "Text in the website navigation bar to display the site configuration page"
+    "description": "Text in website navigation bar to display the site configuration page"
   },
   "nav.setting": {
     "message": "Inställningar",
-    "description": "Text in the website navigation bar to display the settings page"
+    "description": "Text in website navigation bar to display the settings page"
   },
   "nav.headshots": {
     "message": "AI ID-foto",
-    "description": "Text in the website navigation bar to display the site configuration page"
+    "description": "Text in website navigation bar to display the site configuration page"
   },
   "nav.locale": {
     "message": "Språkinställningar",
-    "description": "Text in the website navigation bar to change the language"
+    "description": "Text in website navigation bar to change the language"
   },
   "nav.support": {
     "message": "Kundsupport",
-    "description": "Text in the website navigation bar to display the support page"
+    "description": "Text in website navigation bar to display the support page"
   },
   "nav.darkMode": {
     "message": "Mörkt läge",
-    "description": "Text in the website navigation bar to switch to dark theme"
+    "description": "Text in website navigation bar to switch to dark theme"
   },
   "title.alert": {
     "message": "Varning",
@@ -401,7 +409,7 @@
   },
   "title.placeholderOfSelect": {
     "message": "Vänligen välj",
-    "description": "Placeholder for the selection input box"
+    "description": "Placeholder for the select input box"
   },
   "title.placeholderOfInput": {
     "message": "Vänligen fyll i",
@@ -421,11 +429,11 @@
   },
   "title.buyMore": {
     "message": "Köp mer",
-    "description": "Title of the page allowing users to buy more"
+    "description": "Title of the page encouraging users to buy more"
   },
   "title.distribution": {
     "message": "Rekommenderad inkomst",
-    "description": "Title of the page displaying recommended income, indicating that users can earn by inviting others to use the service"
+    "description": "Title of the page displaying recommended income, indicating users can earn by inviting others to use the service"
   },
   "title.site": {
     "message": "Webbplatsinställningar",
@@ -437,7 +445,7 @@
   },
   "title.invitee": {
     "message": "Inbjuden",
-    "description": "Title of the page displaying the invitee"
+    "description": "Title of the page displaying invitee information"
   },
   "title.allUsages": {
     "message": "Användningshistorik",
@@ -488,59 +496,59 @@
     "description": "Link to the center page"
   },
   "about.link6": {
-    "message": "Rekommenderad inkomst",
-    "description": "Link to the recommended income page"
+    "message": "Rekommenderad avkastning",
+    "description": "Länk till sidan för rekommenderad avkastning"
   },
   "about.link7": {
     "message": "Support",
-    "description": "Link to the support page"
+    "description": "Länk till supportsidan"
   },
   "about.link8": {
     "message": "Användarvillkor",
-    "description": "Link to the terms of service page"
+    "description": "Länk till sidan för användarvillkor"
   },
   "about.link9": {
     "message": "Integritetspolicy",
-    "description": "Link to the privacy policy page"
+    "description": "Länk till sidan för integritetspolicy"
   },
   "theme.light": {
-    "message": "Ljus",
-    "description": "Namnet på det ljusa temat"
+    "message": "Ljust tema",
+    "description": "Namn på det ljusa temat"
   },
   "theme.dark": {
-    "message": "Mörk",
-    "description": "Namnet på det mörka temat"
+    "message": "Mörkt tema",
+    "description": "Namn på det mörka temat"
   },
   "theme.system": {
     "message": "System",
-    "description": "Namnet på systemtemat, vilket innebär att temat automatiskt växlar beroende på systeminställningarna"
+    "description": "Namn på systemtemat, vilket innebär att temat automatiskt växlar baserat på systeminställningarna"
   },
   "settings.general": {
     "message": "Allmänna inställningar",
-    "description": "Rubriken för den allmänna inställningsdelen på inställningssidan"
+    "description": "Rubrik för avsnittet om allmänna inställningar på inställningssidan"
   },
   "settings.language": {
     "message": "Språk",
-    "description": "Rubriken för språkinställningsdelen på inställningssidan"
+    "description": "Rubrik för avsnittet om språkinställningar på inställningssidan"
   },
   "settings.theme": {
     "message": "Tema",
-    "description": "Rubriken för temainställningsdelen på inställningssidan"
+    "description": "Rubrik för avsnittet om tema-inställningar på inställningssidan"
   },
   "settings.seo": {
     "message": "SEO-inställningar",
-    "description": "Rubriken för SEO-inställningsdelen på inställningssidan"
+    "description": "Rubrik för avsnittet om SEO-inställningar på inställningssidan"
   },
   "settings.site": {
     "message": "Webbplatsinställningar",
-    "description": "Rubriken för webbplatsinställningsdelen på inställningssidan"
+    "description": "Rubrik för avsnittet om webbplatsinställningar på inställningssidan"
   },
   "settings.distribution": {
     "message": "Distribueringsinställningar",
-    "description": "Rubriken för distribueringsinställningsdelen på inställningssidan"
+    "description": "Rubrik för avsnittet om distribueringsinställningar på inställningssidan"
   },
   "settings.function": {
     "message": "Funktionsinställningar",
-    "description": "Rubriken för funktionsinställningsdelen på inställningssidan"
+    "description": "Rubrik för avsnittet om funktionsinställningar på inställningssidan"
   }
 }

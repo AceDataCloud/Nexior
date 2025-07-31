@@ -75,6 +75,10 @@
     "message": "Luma",
     "description": "Affiché comme titre dans la zone d'édition"
   },
+  "field.featuresPixverse": {
+    "message": "Pixverse",
+    "description": "Affiché comme titre dans la zone d'édition"
+  },
   "field.featuresPika": {
     "message": "Pika",
     "description": "Affiché comme titre dans la zone d'édition"
@@ -192,8 +196,8 @@
     "description": "Affiché comme titre dans la zone d'édition"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "Veuillez entrer l'ID de l'inviteur forcé",
-    "description": "Texte affiché dans le titre de la zone d'édition"
+    "message": "Veuillez entrer l'ID de l'inviteur obligatoire",
+    "description": "Affiché comme titre dans la zone d'édition"
   },
   "message.uploadImageExceed": {
     "message": "L'image téléchargée dépasse la limite",
@@ -201,7 +205,7 @@
   },
   "message.uploadImageError": {
     "message": "Erreur de téléchargement de l'image",
-    "description": "Alerte en cas d'erreur lors du téléchargement de l'image"
+    "description": "Alerte en cas d'erreur de téléchargement de l'image"
   },
   "message.editLogoTip": {
     "message": "Taille recommandée : 200*60px",
@@ -224,15 +228,15 @@
     "description": "Alerte pour conserver au moins un administrateur"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "ID utilisateur de l'inviteur par défaut. Si le lien de distribution ne contient pas le paramètre inviter_id, cet ID utilisateur sera utilisé par défaut comme invitateur.",
-    "description": "Alerte pour l'ID de l'invitateur par défaut"
+    "message": "L'ID utilisateur de l'inviteur par défaut. Si le lien de distribution ne contient pas le paramètre inviter_id, cet ID utilisateur sera utilisé par défaut comme invitateur.",
+    "description": "Alerte pour l'ID de l'inviteur par défaut"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID utilisateur de l'inviteur forcé. Si cet ID est défini, il sera utilisé comme invitateur, que le lien de distribution contienne ou non le paramètre inviter_id.",
-    "description": "Alerte pour l'ID de l'invitateur forcé"
+    "message": "L'ID utilisateur de l'inviteur obligatoire. Si cet ID est défini, il sera utilisé comme invitateur, que le lien de distribution contienne ou non le paramètre inviter_id.",
+    "description": "Alerte pour l'ID de l'inviteur obligatoire"
   },
   "message.originTip": {
-    "message": "Nom de domaine du site, la configuration du site est liée au nom de domaine et ne peut pas être modifiée.",
+    "message": "Nom de domaine du site, la configuration du site est liée au nom de domaine, le nom de domaine du site ne peut pas être modifié.",
     "description": "Alerte pour le nom de domaine du site"
   },
   "message.titleTip": {
@@ -240,7 +244,7 @@
     "description": "Alerte pour le titre du site"
   },
   "message.descriptionTip": {
-    "message": "Description du site, située dans les métadonnées du site, utilisée pour l'optimisation SEO.",
+    "message": "Description du site, située dans les métadonnées du site, utilisée pour l'optimisation SEO du site.",
     "description": "Alerte pour la description du site"
   },
   "message.logoTip": {
@@ -252,19 +256,19 @@
     "description": "Alerte pour le favicon du site"
   },
   "message.adminsTip": {
-    "message": "ID des administrateurs du site. Par défaut, l'utilisateur qui crée le site pour la première fois devient administrateur. Seuls les administrateurs du site peuvent gérer le site.",
+    "message": "ID des administrateurs du site, par défaut, l'utilisateur qui crée le site pour la première fois devient administrateur, seuls les administrateurs du site peuvent gérer le site.",
     "description": "Alerte pour les administrateurs du site"
   },
   "message.adminsTip2": {
-    "message": "Vous pouvez ajouter ou supprimer des ID d'administrateurs ici. Vous pouvez consulter les ID d'utilisateur sur https://auth.acedata.cloud",
+    "message": "Vous pouvez ajouter ou supprimer des ID d'administrateurs ici, vous pouvez consulter les ID d'utilisateur sur https://auth.acedata.cloud",
     "description": "Alerte pour les administrateurs du site"
   },
   "message.keywordsTip": {
-    "message": "Mots-clés du site, situés dans les métadonnées du site, utilisés pour l'optimisation SEO.",
+    "message": "Mots-clés du site, situés dans les métadonnées du site, utilisés pour l'optimisation SEO du site.",
     "description": "Alerte pour les mots-clés du site"
   },
   "message.keywordsTip2": {
-    "message": "Vous pouvez ajouter ou supprimer des mots-clés du site ici. Plus les mots-clés sont précis, mieux c'est pour l'optimisation SEO.",
+    "message": "Vous pouvez ajouter ou supprimer des mots-clés du site ici, plus les mots-clés sont précis, mieux c'est pour l'optimisation SEO.",
     "description": "Alerte pour les mots-clés du site"
   },
   "message.featuresChat": {
@@ -299,6 +303,10 @@
     "message": "Activer ou désactiver le module de fonction Suno.",
     "description": "Description de la fonction Suno"
   },
+  "message.featuresPixverse": {
+    "message": "Activer ou désactiver le module de fonction Pixverse.",
+    "description": "Description de la fonction Pixverse"
+  },
   "message.featuresFlux": {
     "message": "Activer ou désactiver le module de fonction FLux.",
     "description": "Description de la fonction FLux"
@@ -328,7 +336,7 @@
     "description": "Description de la fonction Support"
   },
   "message.featuresI18n": {
-    "message": "Activer ou désactiver le support multilingue. Une fois désactivé, les utilisateurs ne pourront utiliser que la langue par défaut.",
+    "message": "Activer ou désactiver le support multilingue. Une fois désactivé, l'utilisateur ne peut utiliser que la langue par défaut.",
     "description": "Description du support multilingue"
   },
   "button.upload": {
@@ -337,10 +345,10 @@
   },
   "button.enabled": {
     "message": "Activé",
-    "description": "Texte du commutateur indiquant qu'il est activé"
+    "description": "Texte du commutateur indiquant que c'est activé"
   },
   "button.disabled": {
     "message": "Désactivé",
-    "description": "Texte du bouton, indiquant qu'il est désactivé"
+    "description": "Texte du commutateur indiquant que c'est désactivé"
   }
 }
