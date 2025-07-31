@@ -11,13 +11,14 @@
         </span>
       </div>
       <div class="info">
-        <p v-if="modelValue?.request?.prompt && modelValue?.response?.data" class="prompt mt-2">
+        <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
           {{ modelValue?.request?.prompt }}
           <span v-if="!modelValue?.response"> - ({{ $t('pixverse.status.pending') }}) </span>
           <span
             v-if="
-              modelValue?.response?.data[0]?.state === 'processing' ||
-              modelValue?.response?.data[0]?.state === 'pending'
+              modelValue?.response?.data &&
+              (modelValue?.response?.data[0]?.state === 'processing' ||
+                modelValue?.response?.data[0]?.state === 'pending')
             "
           >
             - ({{ $t('pixverse.status.processing') }})
@@ -66,38 +67,17 @@
       </div>
       <!-- Display error message -->
       <div v-if="modelValue?.response?.success === false" :class="{ content: true }">
-        <el-alert :closable="false" class="failure">
+        <el-alert :closable="false" class="info">
           <template #template>
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
             {{ $t('pixverse.name.failure') }}
           </template>
-          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
-            {{ $t('pixverse.name.taskId') }}:
-            {{ modelValue?.id }}
-            <copy-to-clipboard :content="modelValue?.id!" />
-          </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
             {{ $t('pixverse.name.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
             <copy-to-clipboard :content="modelValue?.response?.error?.message!" />
           </p>
-          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
-            {{ $t('pixverse.name.traceId') }}:
-            {{ modelValue?.response?.trace_id }}
-            <copy-to-clipboard :content="modelValue?.response?.trace_id" />
-          </p>
-        </el-alert>
-      </div>
-      <!-- Display error message -->
-      <div v-if="modelValue?.response?.success === undefined" :class="{ content: true }">
-        <el-alert :closable="false" class="info">
-          <template #template>
-            <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
-            {{ $t('pixverse.name.failure') }}
-          </template>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('pixverse.name.taskId') }}:
