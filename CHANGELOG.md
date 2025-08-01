@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 27 Jul 2025 16:50:06 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 01 Aug 2025 01:51:39 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.11.0
+
+Fri, 01 Aug 2025 01:51:39 GMT
+
+### Minor changes
+
+- add pixverse (1348977728@qq.com)
 
 ## 3.10.4
 
