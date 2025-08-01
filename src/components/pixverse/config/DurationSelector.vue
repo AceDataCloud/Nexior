@@ -30,11 +30,11 @@ export default defineComponent({
       options: [
         {
           value: 5,
-          label: '5秒'
+          label: '5s'
         },
         {
           value: 8,
-          label: '8秒'
+          label: '8s'
         }
       ]
     };

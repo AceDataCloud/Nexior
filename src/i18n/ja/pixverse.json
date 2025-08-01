@@ -17,7 +17,7 @@
   },
   "name.status": {
     "message": "ステータス",
-    "description": "タスクのステータス"
+    "description": "タスクの状態"
   },
   "name.traceId": {
     "message": "トレース ID",
@@ -31,8 +31,36 @@
     "message": "スタイル",
     "description": "生成するビデオのスタイル"
   },
+  "name.style1": {
+    "message": "サイバーパンク",
+    "description": "生成するビデオのスタイル"
+  },
+  "name.style2": {
+    "message": "アニメ",
+    "description": "生成するビデオのスタイル"
+  },
+  "name.style3": {
+    "message": "マンガ",
+    "description": "生成するビデオのスタイル"
+  },
+  "name.style4": {
+    "message": "クレイ",
+    "description": "生成するビデオのスタイル"
+  },
+  "name.style5": {
+    "message": "3D アニメーション",
+    "description": "生成するビデオのスタイル"
+  },
   "name.motion": {
     "message": "ビデオモード",
+    "description": "生成するビデオのモード"
+  },
+  "name.motion1": {
+    "message": "標準",
+    "description": "生成するビデオのモード"
+  },
+  "name.motion2": {
+    "message": "高速",
     "description": "生成するビデオのモード"
   },
   "name.quality": {
@@ -161,30 +189,30 @@
   },
   "button.generate": {
     "message": "生成",
-    "description": "Pixverse ビデオ生成のボタンテキスト"
+    "description": "Pixverseビデオを生成するためのボタンテキスト"
   },
   "button.extend": {
     "message": "ビデオを拡張",
-    "description": "ビデオ拡張ボタンテキスト"
+    "description": "ビデオを拡張するためのボタンテキスト"
   },
   "button.download": {
     "message": "ビデオをダウンロード",
-    "description": "ビデオダウンロードボタンテキスト"
+    "description": "ビデオをダウンロードするためのボタンテキスト"
   },
   "button.uploadImageUrl": {
     "message": "画像をアップロード",
-    "description": "画像アップロードのボタンテキスト"
+    "description": "画像をアップロードするためのボタンテキスト"
   },
   "button.uploadVideoUrl": {
     "message": "ビデオをアップロード",
-    "description": "ビデオアップロードのボタンテキスト"
+    "description": "ビデオをアップロードするためのボタンテキスト"
   },
   "button.uploadReferences": {
     "message": "アップロード",
     "description": "ユーザーが参照をアップロードできるボタンテキスト"
   },
   "message.uploadReferencesExceed": {
-    "message": "最大 1 枚の画像をアップロードできます",
+    "message": "最大1枚の画像をアップロードできます",
     "description": "アップロードされた画像の数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadReferencesSuccess": {
@@ -192,23 +220,23 @@
     "description": "画像のアップロードが成功したときの成功メッセージ"
   },
   "message.uploadReferencesError": {
-    "message": "画像のアップロードに失敗しました。後でもう一度お試しください",
+    "message": "画像のアップロードに失敗しました。後で再試行してください",
     "description": "画像のアップロードに失敗したときのエラーメッセージ"
   },
   "message.startingTask": {
     "message": "タスクを開始しています...",
-    "description": "描画タスクが始まるときのメッセージ"
+    "description": "描画タスクが開始されるときのメッセージ"
   },
   "message.startTaskSuccess": {
-    "message": "生成タスクを正常に開始しました",
-    "description": "タスクが正常に開始されたときの成功メッセージ"
+    "message": "生成タスクの発起に成功しました",
+    "description": "タスクの開始に成功したときの成功メッセージ"
   },
   "message.startTaskFailed": {
-    "message": "タスクの開始に失敗しました。管理者に連絡してください",
+    "message": "タスクの発起に失敗しました。管理者に連絡してください",
     "description": "描画タスクの開始に失敗したときのエラーメッセージ"
   },
   "message.usedUp": {
-    "message": "ポイントが使い切れました。追加のポイントを購入して続行してください",
+    "message": "ポイントが使い切れました。追加のポイントを購入してから続行してください",
     "description": "使い切ったときのメッセージ"
   },
   "message.generating": {
@@ -216,11 +244,11 @@
     "description": "画像が生成されているときのメッセージ"
   },
   "message.downloadVideo": {
-    "message": "この動画をダウンロード",
+    "message": "このビデオをダウンロード",
     "description": "画像が生成されているときのメッセージ"
   },
   "message.extendVideo": {
-    "message": "この動画の生成を続ける",
+    "message": "このビデオの生成を続ける",
     "description": "画像が生成されているときのメッセージ"
   },
   "message.generateFailed": {
@@ -228,32 +256,32 @@
     "description": "画像の生成に失敗したときのメッセージ"
   },
   "message.uploadVideoExceed": {
-    "message": "アップロードできる最初のフレーム画像の数が制限を超えています",
-    "description": "アップロードできる最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
+    "message": "アップロード可能な最初のフレーム画像の数が制限を超えています",
+    "description": "最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "アップロードファイルのサイズは 10MB を超えてはいけません！",
-    "description": "アップロードファイルのサイズが 10MB を超えたときのエラーメッセージ"
+    "message": "アップロードファイルのサイズは10MBを超えてはいけません！",
+    "description": "アップロードファイルのサイズが10MBを超えたときのエラーメッセージ"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "アップロードファイルは MP4 形式でなければなりません！",
-    "description": "アップロードファイルが MP4 形式でないときのエラーメッセージ"
+    "message": "アップロードファイルはMP4形式でなければなりません！",
+    "description": "アップロードファイルがMP4形式でないときのエラーメッセージ"
   },
   "message.uploadStartImageExceed": {
-    "message": "アップロードできる最初のフレーム画像の数が制限を超えています",
-    "description": "アップロードできる最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
+    "message": "アップロード可能な最初のフレーム画像の数が制限を超えています",
+    "description": "最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadEndImageExceed": {
-    "message": "アップロードできる最後のフレーム画像の数が制限を超えています",
-    "description": "アップロードできる最後のフレーム画像の数が制限を超えたときのエラーメッセージ"
+    "message": "アップロード可能な最後のフレーム画像の数が制限を超えています",
+    "description": "最後のフレーム画像の数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadStartImageError": {
     "message": "最初のフレーム画像のアップロードに失敗しました",
     "description": "最初のフレーム画像のアップロードに失敗したときのエラーメッセージ"
   },
   "message.uploadVideoError": {
-    "message": "動画のアップロードに失敗しました",
-    "description": "最初のフレーム画像のアップロードに失敗したときのエラーメッセージ"
+    "message": "ビデオのアップロードに失敗しました",
+    "description": "ビデオのアップロードに失敗したときのエラーメッセージ"
   },
   "message.uploadEndImageError": {
     "message": "最後のフレーム画像のアップロードに失敗しました",
@@ -268,7 +296,7 @@
     "description": "利用可能な操作がないときのメッセージ"
   },
   "message.noTasks": {
-    "message": "履歴タスクはありません。左側のボタンをクリックして動画を生成してください",
+    "message": "履歴タスクはありません。左側のビデオ生成をクリックしてください",
     "description": "タスクがないときのメッセージ"
   }
 }

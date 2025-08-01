@@ -17,7 +17,7 @@
   },
   "name.status": {
     "message": "Status",
-    "description": "Status da tarefa"
+    "description": "Estado da tarefa"
   },
   "name.traceId": {
     "message": "ID de Rastreamento",
@@ -31,8 +31,36 @@
     "message": "Estilo",
     "description": "Estilo do vídeo a ser gerado"
   },
+  "name.style1": {
+    "message": "Cyberpunk",
+    "description": "Estilo do vídeo a ser gerado"
+  },
+  "name.style2": {
+    "message": "Anime",
+    "description": "Estilo do vídeo a ser gerado"
+  },
+  "name.style3": {
+    "message": "Quadrinhos",
+    "description": "Estilo do vídeo a ser gerado"
+  },
+  "name.style4": {
+    "message": "Argila",
+    "description": "Estilo do vídeo a ser gerado"
+  },
+  "name.style5": {
+    "message": "Animação 3D",
+    "description": "Estilo do vídeo a ser gerado"
+  },
   "name.motion": {
     "message": "Modo de Vídeo",
+    "description": "Modo do vídeo a ser gerado"
+  },
+  "name.motion1": {
+    "message": "Padrão",
+    "description": "Modo do vídeo a ser gerado"
+  },
+  "name.motion2": {
+    "message": "Rápido",
     "description": "Modo do vídeo a ser gerado"
   },
   "name.quality": {
@@ -69,7 +97,7 @@
   },
   "name.effect": {
     "message": "Efeito do Vídeo",
-    "description": "Nome do parâmetro de estilo usado para alternar entre diferentes versões ou estilos de modelo"
+    "description": "Nome do parâmetro de estilo, usado para alternar entre diferentes versões ou estilos de modelo"
   },
   "name.ingredientsModel": {
     "message": "Modelo de Ingredientes",
@@ -84,7 +112,7 @@
     "description": "Descrição do parâmetro 'ingredients'"
   },
   "description.imageUrl": {
-    "message": "Na tarefa de criar vídeo com várias imagens, é necessário enviar várias imagens.",
+    "message": "Na tarefa de criação de vídeo com várias imagens, deve-se enviar várias imagens.",
     "description": "Descrição do parâmetro 'imageUrl'"
   },
   "description.prompt": {
@@ -100,7 +128,7 @@
     "description": "Descrição do parâmetro de upload de referência"
   },
   "description.uploadEndImage": {
-    "message": "Envie a imagem de referência final para a geração, o vídeo final será gerado com base na imagem inicial",
+    "message": "Envie a imagem de referência final para a geração, o vídeo final será gerado com base na imagem final",
     "description": "Descrição do parâmetro de upload de referência"
   },
   "description.seed": {
@@ -113,7 +141,7 @@
   },
   "status.processing": {
     "message": "Processando",
-    "description": "Estado de processamento da tarefa"
+    "description": "Estado de espera da tarefa"
   },
   "placeholder.paddingNoise": {
     "message": "Selecione...",
@@ -132,7 +160,7 @@
     "description": "Texto de placeholder no campo de prompt"
   },
   "placeholder.negativePrompt": {
-    "message": "Insira as palavras-chave negativas para o estilo do vídeo a ser gerado, não excedendo 200 caracteres",
+    "message": "Insira as palavras-chave negativas para o estilo do vídeo a ser gerado, não exceda 200 caracteres",
     "description": "Texto de placeholder no campo de prompt"
   },
   "placeholder.position": {
@@ -161,39 +189,39 @@
   },
   "button.generate": {
     "message": "Gerar",
-    "description": "Texto do botão para gerar vídeos Pixverse"
+    "description": "Texto do botão para gerar vídeos do Pixverse"
   },
   "button.extend": {
-    "message": "Expandir Vídeo",
+    "message": "Expandir vídeo",
     "description": "Texto do botão para expandir o vídeo"
   },
   "button.download": {
-    "message": "Baixar Vídeo",
+    "message": "Baixar vídeo",
     "description": "Texto do botão para baixar o vídeo"
   },
   "button.uploadImageUrl": {
-    "message": "Enviar Imagem",
-    "description": "Texto do botão para enviar imagem"
+    "message": "Enviar imagem",
+    "description": "Texto do botão para enviar uma imagem"
   },
   "button.uploadVideoUrl": {
-    "message": "Enviar Vídeo",
-    "description": "Texto do botão para enviar vídeo"
+    "message": "Enviar vídeo",
+    "description": "Texto do botão para enviar um vídeo"
   },
   "button.uploadReferences": {
     "message": "Enviar",
     "description": "Texto do botão que permite ao usuário enviar referências"
   },
   "message.uploadReferencesExceed": {
-    "message": "É possível fazer o upload de no máximo 1 imagem",
-    "description": "Mensagem de erro quando o número de imagens carregadas excede o limite"
+    "message": "Você pode enviar no máximo 1 imagem",
+    "description": "Mensagem de erro quando o número de imagens enviadas excede o limite"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Imagem carregada com sucesso",
-    "description": "Mensagem de sucesso ao carregar a imagem com sucesso"
+    "message": "Imagem enviada com sucesso",
+    "description": "Mensagem de sucesso quando a imagem é enviada com sucesso"
   },
   "message.uploadReferencesError": {
-    "message": "Falha ao carregar a imagem, por favor tente novamente mais tarde",
-    "description": "Mensagem de erro quando o upload da imagem falha"
+    "message": "Falha ao enviar a imagem, por favor, tente novamente mais tarde",
+    "description": "Mensagem de erro quando a imagem falha ao ser enviada"
   },
   "message.startingTask": {
     "message": "Iniciando tarefa...",
@@ -201,15 +229,15 @@
   },
   "message.startTaskSuccess": {
     "message": "Tarefa de geração iniciada com sucesso",
-    "description": "Mensagem de sucesso ao iniciar a tarefa"
+    "description": "Mensagem de sucesso quando a tarefa é iniciada com sucesso"
   },
   "message.startTaskFailed": {
-    "message": "Falha ao iniciar a tarefa, por favor contate o administrador",
-    "description": "Mensagem de erro quando a tarefa de desenho falha ao iniciar"
+    "message": "Falha ao iniciar a tarefa, por favor, contate o administrador",
+    "description": "Mensagem de erro quando a tarefa de desenho falha ao ser iniciada"
   },
   "message.usedUp": {
-    "message": "Seus pontos acabaram, por favor compre mais pontos para continuar usando",
-    "description": "Mensagem quando os pontos se esgotaram"
+    "message": "Seus pontos acabaram, por favor, compre mais pontos para continuar usando",
+    "description": "Mensagem quando os pontos se esgotam"
   },
   "message.generating": {
     "message": "Gerando...",
@@ -248,27 +276,27 @@
     "description": "Mensagem de erro quando o número de imagens da última frame excede o limite"
   },
   "message.uploadStartImageError": {
-    "message": "Falha ao carregar a imagem da primeira frame",
-    "description": "Mensagem de erro quando falha ao carregar a imagem da primeira frame"
+    "message": "Falha ao enviar a imagem da primeira frame",
+    "description": "Mensagem de erro quando a imagem da primeira frame falha ao ser enviada"
   },
   "message.uploadVideoError": {
-    "message": "Falha ao carregar o vídeo",
-    "description": "Mensagem de erro quando falha ao carregar a imagem da primeira frame"
+    "message": "Falha ao enviar o vídeo",
+    "description": "Mensagem de erro quando a imagem da primeira frame falha ao ser enviada"
   },
   "message.uploadEndImageError": {
-    "message": "Falha ao carregar a imagem da última frame",
-    "description": "Mensagem de erro quando falha ao carregar a imagem da última frame"
+    "message": "Falha ao enviar a imagem da última frame",
+    "description": "Mensagem de erro quando a imagem da última frame falha ao ser enviada"
   },
   "message.uploadDocumentsError": {
-    "message": "Falha ao carregar o documento",
-    "description": "Mensagem de erro quando falha ao carregar o documento"
+    "message": "Falha ao enviar o documento",
+    "description": "Mensagem de erro quando o documento falha ao ser enviado"
   },
   "message.noOperations": {
     "message": "Nenhuma operação disponível",
     "description": "Mensagem quando não há operações disponíveis"
   },
   "message.noTasks": {
-    "message": "Nenhuma tarefa histórica, por favor clique à esquerda para gerar vídeo",
+    "message": "Nenhuma tarefa histórica, por favor, clique à esquerda para gerar vídeo",
     "description": "Mensagem quando não há tarefas"
   }
 }

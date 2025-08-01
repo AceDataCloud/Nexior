@@ -30,23 +30,23 @@ export default defineComponent({
       options: [
         {
           value: 'cyberpunk',
-          label: 'cyberpunk'
+          label: this.$t('pixverse.name.style1')
         },
         {
           value: 'anime',
-          label: 'anime'
+          label: this.$t('pixverse.name.style2')
         },
         {
           value: 'comic',
-          label: 'comic'
+          label: this.$t('pixverse.name.style3')
         },
         {
           value: 'clay',
-          label: 'clay'
+          label: this.$t('pixverse.name.style4')
         },
         {
           value: '3d_animation',
-          label: '3d_animation'
+          label: this.$t('pixverse.name.style5')
         }
       ]
     };

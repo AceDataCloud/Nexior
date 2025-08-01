@@ -1,7 +1,7 @@
 {
   "name.taskId": {
     "message": "Aufgaben-ID",
-    "description": "Die ID der Aufgabe"
+    "description": "ID der Aufgabe"
   },
   "name.type": {
     "message": "Typ",
@@ -31,8 +31,36 @@
     "message": "Stil",
     "description": "Der Stil des zu generierenden Videos"
   },
+  "name.style1": {
+    "message": "Cyberpunk",
+    "description": "Der Stil des zu generierenden Videos"
+  },
+  "name.style2": {
+    "message": "Anime",
+    "description": "Der Stil des zu generierenden Videos"
+  },
+  "name.style3": {
+    "message": "Comic",
+    "description": "Der Stil des zu generierenden Videos"
+  },
+  "name.style4": {
+    "message": "Knetmasse",
+    "description": "Der Stil des zu generierenden Videos"
+  },
+  "name.style5": {
+    "message": "3D-Animation",
+    "description": "Der Stil des zu generierenden Videos"
+  },
   "name.motion": {
     "message": "Videomodus",
+    "description": "Der Modus des zu generierenden Videos"
+  },
+  "name.motion1": {
+    "message": "Standard",
+    "description": "Der Modus des zu generierenden Videos"
+  },
+  "name.motion2": {
+    "message": "Schnell",
     "description": "Der Modus des zu generierenden Videos"
   },
   "name.quality": {
@@ -40,7 +68,7 @@
     "description": "Die Qualität des zu generierenden Videos"
   },
   "name.startImage": {
-    "message": "Startbild Referenz",
+    "message": "Referenzbild für den ersten Frame",
     "description": "Das Referenzbild für das zu generierende Video"
   },
   "name.videoUrl": {
@@ -57,7 +85,7 @@
   },
   "name.model": {
     "message": "Modellversion",
-    "description": "Die Modellversion, die zur Generierung des Videos verwendet wird"
+    "description": "Die Modellversion, die für die Generierung des Videos verwendet wird"
   },
   "name.seed": {
     "message": "Saat",
@@ -65,7 +93,7 @@
   },
   "name.mode": {
     "message": "Videomodus",
-    "description": "Der Modus, der zur Generierung des Videos verwendet wird"
+    "description": "Der Modus, der für die Generierung des Videos verwendet wird"
   },
   "name.effect": {
     "message": "Videoeffekt",
@@ -73,7 +101,7 @@
   },
   "name.ingredientsModel": {
     "message": "Zutatenmodell",
-    "description": "Die Modellversion, die zur Generierung des Videos verwendet wird"
+    "description": "Die Modellversion, die für die Generierung des Videos verwendet wird"
   },
   "name.pixverseBot": {
     "message": "Pixverse Bot",
@@ -81,31 +109,31 @@
   },
   "description.ingredients": {
     "message": "Wenn Sie mehrere Bilder hochladen möchten, um Ihr eigenes Video zu erstellen, aktivieren Sie diese Schaltfläche.",
-    "description": "Die Beschreibung des Parameters 'ingredients'"
+    "description": "Beschreibung des Parameters 'ingredients'"
   },
   "description.imageUrl": {
-    "message": "Bei der Erstellung eines Videos mit mehreren Bildern müssen mehrere Bilder hochgeladen werden.",
-    "description": "Die Beschreibung des Parameters 'imageUrl'"
+    "message": "Bei der Erstellung eines Videos mit mehreren Bildern muss eine Vielzahl von Bildern hochgeladen werden.",
+    "description": "Beschreibung des Parameters 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Die Eingabeaufforderung zur Generierung von Pixverse-Videos",
-    "description": "Die Beschreibung des Parameters 'prompt'"
+    "message": "Die Eingabeaufforderung für die Generierung von Pixverse-Videos",
+    "description": "Beschreibung des Parameters 'prompt'"
   },
   "description.negativePrompt": {
     "message": "Negativer Textprompt, optional, nicht mehr als 200 Zeichen",
-    "description": "Die Beschreibung des Parameters 'negativePrompt'"
+    "description": "Beschreibung des Parameters 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Laden Sie das Startbild als Referenz hoch, das endgültige Video wird auf dem Startbild basieren.",
-    "description": "Die Beschreibung des Upload-Referenzparameters"
+    "message": "Laden Sie das Bild des ersten Frames als Referenz hoch, das endgültige Video wird sich auf den ersten Frame beziehen.",
+    "description": "Beschreibung des Hochladeparameters"
   },
   "description.uploadEndImage": {
-    "message": "Laden Sie das Endbild als Referenz hoch, das endgültige Video wird auf dem Endbild basieren.",
-    "description": "Die Beschreibung des Upload-Referenzparameters"
+    "message": "Laden Sie das Bild des ersten Frames als Referenz hoch, das endgültige Video wird sich auf den ersten Frame beziehen.",
+    "description": "Beschreibung des Hochladeparameters"
   },
   "description.seed": {
     "message": "Der Saatwert für die Videoerstellung. Wenn nicht festgelegt, wird ein zufälliger Wert verwendet.",
-    "description": "Die Beschreibung des Upload-Referenzparameters"
+    "description": "Beschreibung des Hochladeparameters"
   },
   "status.pending": {
     "message": "Ausstehend",
@@ -116,7 +144,7 @@
     "description": "Der Bearbeitungsstatus der Aufgabe"
   },
   "placeholder.paddingNoise": {
-    "message": "Bitte wählen...",
+    "message": "Bitte auswählen...",
     "description": "Platzhalter für die Eingabe von Füllrauschen"
   },
   "placeholder.select": {
@@ -124,7 +152,7 @@
     "description": "Platzhaltertext im Auswahlfeld"
   },
   "placeholder.paddingLevel": {
-    "message": "Bitte wählen...",
+    "message": "Bitte auswählen...",
     "description": "Platzhalter für das Füllniveau"
   },
   "placeholder.prompt": {
@@ -136,68 +164,68 @@
     "description": "Platzhaltertext im Eingabefeld"
   },
   "placeholder.position": {
-    "message": "Bitte wählen...",
+    "message": "Bitte auswählen...",
     "description": "Platzhalter für die Positionseingabe"
   },
   "placeholder.aspectRatio": {
-    "message": "Bitte wählen...",
+    "message": "Bitte auswählen...",
     "description": "Platzhalter für das Seitenverhältnis"
   },
   "placeholder.preset": {
-    "message": "Bitte wählen...",
+    "message": "Bitte auswählen...",
     "description": "Platzhalter für die Voreinstellung"
   },
   "placeholder.markerShape": {
-    "message": "Bitte wählen...",
+    "message": "Bitte auswählen...",
     "description": "Platzhalter für die Eingabe der Markierungsform"
   },
   "placeholder.rotate": {
-    "message": "Bitte wählen...",
-    "description": "Platzhalter für die Rotationsangabe"
+    "message": "Bitte auswählen...",
+    "description": "Platzhalter für die Eingabe der Rotation"
   },
   "placeholder.subMarker": {
-    "message": "Bitte wählen...",
-    "description": "Platzhalter für die Eingabe des Untermarkierungsfeldes"
+    "message": "Bitte auswählen...",
+    "description": "Platzhalter für die Eingabe des Untermarkierungs"
   },
   "button.generate": {
     "message": "Generieren",
-    "description": "Der Text des Buttons zur Generierung von Pixverse-Videos"
+    "description": "Button-Text zum Generieren von Pixverse-Videos"
   },
   "button.extend": {
     "message": "Video erweitern",
-    "description": "Der Text des Buttons zum Erweitern des Videos"
+    "description": "Button-Text zum Erweitern des Videos"
   },
   "button.download": {
     "message": "Video herunterladen",
-    "description": "Der Text des Buttons zum Herunterladen des Videos"
+    "description": "Button-Text zum Herunterladen des Videos"
   },
   "button.uploadImageUrl": {
     "message": "Bild hochladen",
-    "description": "Der Text des Buttons zum Hochladen von Bildern"
+    "description": "Button-Text zum Hochladen eines Bildes"
   },
   "button.uploadVideoUrl": {
     "message": "Video hochladen",
-    "description": "Der Text des Buttons zum Hochladen von Videos"
+    "description": "Button-Text zum Hochladen eines Videos"
   },
   "button.uploadReferences": {
     "message": "Hochladen",
-    "description": "Der Text des Buttons, der es dem Benutzer ermöglicht, Referenzen hochzuladen"
+    "description": "Button-Text, der es dem Benutzer ermöglicht, Referenzen hochzuladen"
   },
   "message.uploadReferencesExceed": {
-    "message": "Maximal 1 Bild hochladen",
+    "message": "Maximal 1 Bild kann hochgeladen werden",
     "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Bilder das Limit überschreitet"
   },
   "message.uploadReferencesSuccess": {
     "message": "Bild erfolgreich hochgeladen",
-    "description": "Erfolgsmeldung, wenn das Bild erfolgreich hochgeladen wurde"
+    "description": "Erfolgsmeldung, wenn ein Bild erfolgreich hochgeladen wurde"
   },
   "message.uploadReferencesError": {
     "message": "Bild hochladen fehlgeschlagen, bitte später erneut versuchen",
-    "description": "Fehlermeldung, wenn das Bild hochladen fehlgeschlagen ist"
+    "description": "Fehlermeldung, wenn das Hochladen eines Bildes fehlschlägt"
   },
   "message.startingTask": {
     "message": "Starte Aufgabe...",
-    "description": "Meldung, wenn die Zeichnungsaufgabe beginnt"
+    "description": "Nachricht, wenn die Zeichnungsaufgabe beginnt"
   },
   "message.startTaskSuccess": {
     "message": "Aufgabe erfolgreich gestartet",
@@ -205,31 +233,31 @@
   },
   "message.startTaskFailed": {
     "message": "Aufgabe konnte nicht gestartet werden, bitte kontaktieren Sie den Administrator",
-    "description": "Fehlermeldung, wenn das Starten der Zeichnungsaufgabe fehlgeschlagen ist"
+    "description": "Fehlermeldung, wenn das Starten der Zeichnungsaufgabe fehlschlägt"
   },
   "message.usedUp": {
     "message": "Ihr Guthaben ist aufgebraucht, bitte kaufen Sie mehr Guthaben, um fortzufahren",
-    "description": "Meldung, wenn das Guthaben aufgebraucht ist"
+    "description": "Nachricht, wenn das Guthaben aufgebraucht ist"
   },
   "message.generating": {
     "message": "Wird generiert...",
-    "description": "Meldung, wenn das Bild generiert wird"
+    "description": "Nachricht, wenn das Bild generiert wird"
   },
   "message.downloadVideo": {
     "message": "Dieses Video herunterladen",
-    "description": "Meldung, wenn das Bild generiert wird"
+    "description": "Nachricht, wenn das Bild generiert wird"
   },
   "message.extendVideo": {
-    "message": "Fortfahren mit der Generierung dieses Videos",
-    "description": "Meldung, wenn das Bild generiert wird"
+    "message": "Dieses Video weiter generieren",
+    "description": "Nachricht, wenn das Bild generiert wird"
   },
   "message.generateFailed": {
     "message": "Bildgenerierung fehlgeschlagen",
-    "description": "Meldung, wenn die Bildgenerierung fehlgeschlagen ist"
+    "description": "Nachricht, wenn die Bildgenerierung fehlschlägt"
   },
   "message.uploadVideoExceed": {
-    "message": "Anzahl der hochgeladenen ersten Bilder überschreitet das Limit",
-    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen ersten Bilder das Limit überschreitet"
+    "message": "Die Anzahl der hochgeladenen Erstbildbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Erstbildbilder das Limit überschreitet"
   },
   "message.uploadVideoSizeExceed": {
     "message": "Die hochgeladene Dateigröße darf 10 MB nicht überschreiten!",
@@ -240,35 +268,35 @@
     "description": "Fehlermeldung, wenn die hochgeladene Datei nicht im MP4-Format ist"
   },
   "message.uploadStartImageExceed": {
-    "message": "Anzahl der hochgeladenen ersten Bilder überschreitet das Limit",
-    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen ersten Bilder das Limit überschreitet"
+    "message": "Die Anzahl der hochgeladenen Erstbildbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Erstbildbilder das Limit überschreitet"
   },
   "message.uploadEndImageExceed": {
-    "message": "Anzahl der hochgeladenen letzten Bilder überschreitet das Limit",
-    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen letzten Bilder das Limit überschreitet"
+    "message": "Die Anzahl der hochgeladenen Endbildbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Endbildbilder das Limit überschreitet"
   },
   "message.uploadStartImageError": {
-    "message": "Hochladen des ersten Bildes fehlgeschlagen",
-    "description": "Fehlermeldung, wenn das Hochladen des ersten Bildes fehlgeschlagen ist"
+    "message": "Hochladen des Erstbildes fehlgeschlagen",
+    "description": "Fehlermeldung, wenn das Hochladen des Erstbildes fehlschlägt"
   },
   "message.uploadVideoError": {
     "message": "Hochladen des Videos fehlgeschlagen",
-    "description": "Fehlermeldung, wenn das Hochladen des Videos fehlgeschlagen ist"
+    "description": "Fehlermeldung, wenn das Hochladen des Videos fehlschlägt"
   },
   "message.uploadEndImageError": {
-    "message": "Hochladen des letzten Bildes fehlgeschlagen",
-    "description": "Fehlermeldung, wenn das Hochladen des letzten Bildes fehlgeschlagen ist"
+    "message": "Hochladen des Endbildes fehlgeschlagen",
+    "description": "Fehlermeldung, wenn das Hochladen des Endbildes fehlschlägt"
   },
   "message.uploadDocumentsError": {
     "message": "Hochladen des Dokuments fehlgeschlagen",
-    "description": "Fehlermeldung, wenn das Hochladen des Dokuments fehlgeschlagen ist"
+    "description": "Fehlermeldung, wenn das Hochladen des Dokuments fehlschlägt"
   },
   "message.noOperations": {
     "message": "Keine verfügbaren Operationen",
-    "description": "Meldung, wenn keine verfügbaren Operationen vorhanden sind"
+    "description": "Nachricht, wenn keine verfügbaren Operationen vorhanden sind"
   },
   "message.noTasks": {
-    "message": "Keine historischen Aufgaben, bitte klicken Sie links auf 'Video generieren'",
-    "description": "Meldung, wenn keine Aufgaben vorhanden sind"
+    "message": "Keine historischen Aufgaben, bitte klicken Sie links auf Video generieren",
+    "description": "Nachricht, wenn keine Aufgaben vorhanden sind"
   }
 }

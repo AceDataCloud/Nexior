@@ -8,7 +8,7 @@
     "description": "Tipo di contenuto del video Pixverse da generare, come 'link', 'testo', ecc."
   },
   "name.failure": {
-    "message": "Fallimento",
+    "message": "Fallito",
     "description": "Stato di fallimento dell'attività"
   },
   "name.failureReason": {
@@ -31,8 +31,36 @@
     "message": "Stile",
     "description": "Stile del video da generare"
   },
+  "name.style1": {
+    "message": "Cyberpunk",
+    "description": "Stile del video da generare"
+  },
+  "name.style2": {
+    "message": "Anime",
+    "description": "Stile del video da generare"
+  },
+  "name.style3": {
+    "message": "Fumetto",
+    "description": "Stile del video da generare"
+  },
+  "name.style4": {
+    "message": "Argilla",
+    "description": "Stile del video da generare"
+  },
+  "name.style5": {
+    "message": "Animazione 3D",
+    "description": "Stile del video da generare"
+  },
   "name.motion": {
     "message": "Modalità video",
+    "description": "Modalità del video da generare"
+  },
+  "name.motion1": {
+    "message": "Standard",
+    "description": "Modalità del video da generare"
+  },
+  "name.motion2": {
+    "message": "Veloce",
     "description": "Modalità del video da generare"
   },
   "name.quality": {
@@ -69,7 +97,7 @@
   },
   "name.effect": {
     "message": "Effetto video",
-    "description": "Nome del parametro di stile, utilizzato per passare tra diverse versioni o stili di modello"
+    "description": "Nome del parametro di stile, utilizzato per passare tra diverse versioni o stili del modello"
   },
   "name.ingredientsModel": {
     "message": "Modello ingredienti",
@@ -96,11 +124,11 @@
     "description": "Descrizione del parametro 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Carica l'immagine di riferimento iniziale per la generazione, il video finale si baserà sull'immagine iniziale",
+    "message": "Carica l'immagine di riferimento iniziale per la generazione, il video finale si baserà sull'immagine iniziale.",
     "description": "Descrizione del parametro di caricamento di riferimento"
   },
   "description.uploadEndImage": {
-    "message": "Carica l'immagine di riferimento finale per la generazione, il video finale si baserà sull'immagine finale",
+    "message": "Carica l'immagine di riferimento finale per la generazione, il video finale si baserà sull'immagine finale.",
     "description": "Descrizione del parametro di caricamento di riferimento"
   },
   "description.seed": {
@@ -161,7 +189,7 @@
   },
   "button.generate": {
     "message": "Genera",
-    "description": "Testo del pulsante per generare video Pixverse"
+    "description": "Testo del pulsante per generare un video Pixverse"
   },
   "button.extend": {
     "message": "Estendi video",
@@ -192,7 +220,7 @@
     "description": "Messaggio di successo quando l'immagine è stata caricata con successo"
   },
   "message.uploadReferencesError": {
-    "message": "Caricamento dell'immagine fallito, riprova più tardi",
+    "message": "Caricamento immagine fallito, riprova più tardi",
     "description": "Messaggio di errore quando il caricamento dell'immagine fallisce"
   },
   "message.startingTask": {
@@ -208,8 +236,8 @@
     "description": "Messaggio di errore quando l'avvio del compito di disegno fallisce"
   },
   "message.usedUp": {
-    "message": "I tuoi punti sono esauriti, acquista più punti per continuare a utilizzare",
-    "description": "Messaggio quando i punti sono esauriti"
+    "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare a utilizzare",
+    "description": "Messaggio quando i crediti sono esauriti"
   },
   "message.generating": {
     "message": "Generazione in corso...",
@@ -224,7 +252,7 @@
     "description": "Messaggio mentre l'immagine viene generata"
   },
   "message.generateFailed": {
-    "message": "Generazione dell'immagine fallita",
+    "message": "Generazione immagine fallita",
     "description": "Messaggio quando la generazione dell'immagine fallisce"
   },
   "message.uploadVideoExceed": {
@@ -248,20 +276,20 @@
     "description": "Messaggio di errore quando il numero di immagini dell'ultima cornice caricate supera il limite"
   },
   "message.uploadStartImageError": {
-    "message": "Caricamento dell'immagine della prima cornice fallito",
+    "message": "Caricamento immagine della prima cornice fallito",
     "description": "Messaggio di errore quando il caricamento dell'immagine della prima cornice fallisce"
   },
   "message.uploadVideoError": {
-    "message": "Caricamento del video fallito",
-    "description": "Messaggio di errore quando il caricamento dell'immagine della prima cornice fallisce"
+    "message": "Caricamento video fallito",
+    "description": "Messaggio di errore quando il caricamento del video fallisce"
   },
   "message.uploadEndImageError": {
-    "message": "Caricamento dell'immagine dell'ultima cornice fallito",
+    "message": "Caricamento immagine dell'ultima cornice fallito",
     "description": "Messaggio di errore quando il caricamento dell'immagine dell'ultima cornice fallisce"
   },
   "message.uploadDocumentsError": {
-    "message": "Caricamento del documento fallito",
-    "description": "Messaggio di errore quando il caricamento del documento fallisce"
+    "message": "Caricamento documenti fallito",
+    "description": "Messaggio di errore quando il caricamento dei documenti fallisce"
   },
   "message.noOperations": {
     "message": "Nessuna operazione disponibile",

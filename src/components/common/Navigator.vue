@@ -202,7 +202,7 @@ export default defineComponent({
             name: ROUTE_PIXVERSE_INDEX
           },
           displayName: this.$t('common.nav.pixverse'),
-          logo: 'https://cdn.acedata.cloud/pdqnrf.png',
+          logo: 'https://cdn.acedata.cloud/viy61r.jpg',
           routes: [ROUTE_PIXVERSE_INDEX, ROUTE_PIXVERSE_HISTORY]
         });
       }

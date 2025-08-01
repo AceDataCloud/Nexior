@@ -20,8 +20,8 @@
     "description": "Statut de la tâche"
   },
   "name.traceId": {
-    "message": "ID de traçage",
-    "description": "ID de traçage de la tâche"
+    "message": "ID de suivi",
+    "description": "ID de suivi de la tâche"
   },
   "name.createdAt": {
     "message": "Date de création",
@@ -31,8 +31,36 @@
     "message": "Style",
     "description": "Style de la vidéo à générer"
   },
+  "name.style1": {
+    "message": "Cyberpunk",
+    "description": "Style de la vidéo à générer"
+  },
+  "name.style2": {
+    "message": "Anime",
+    "description": "Style de la vidéo à générer"
+  },
+  "name.style3": {
+    "message": "Bande dessinée",
+    "description": "Style de la vidéo à générer"
+  },
+  "name.style4": {
+    "message": "Argile",
+    "description": "Style de la vidéo à générer"
+  },
+  "name.style5": {
+    "message": "Animation 3D",
+    "description": "Style de la vidéo à générer"
+  },
   "name.motion": {
     "message": "Mode vidéo",
+    "description": "Mode de la vidéo à générer"
+  },
+  "name.motion1": {
+    "message": "Standard",
+    "description": "Mode de la vidéo à générer"
+  },
+  "name.motion2": {
+    "message": "Rapide",
     "description": "Mode de la vidéo à générer"
   },
   "name.quality": {
@@ -92,20 +120,20 @@
     "description": "Description du paramètre 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "Invite de texte négatif, optionnelle, ne dépassant pas 200 caractères",
-    "description": "Description du paramètre 'prompt'"
+    "message": "Texte d'invite négatif, optionnel, ne dépassant pas 200 caractères",
+    "description": "Description du paramètre 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Téléchargez l'image de la première image comme référence pour la génération, la vidéo finale se basera sur la première image",
-    "description": "Description du paramètre de référence de téléchargement"
+    "message": "Téléchargez l'image de la première image comme référence pour la génération, la vidéo finale se basera sur la première image.",
+    "description": "Description du paramètre de téléchargement de référence"
   },
   "description.uploadEndImage": {
-    "message": "Téléchargez l'image de la première image comme référence pour la génération, la vidéo finale se basera sur la première image",
-    "description": "Description du paramètre de référence de téléchargement"
+    "message": "Téléchargez l'image de la première image comme référence pour la génération, la vidéo finale se basera sur la première image.",
+    "description": "Description du paramètre de téléchargement de référence"
   },
   "description.seed": {
     "message": "Valeur de la graine pour générer la vidéo. Si non définie, une graine aléatoire sera utilisée.",
-    "description": "Description du paramètre de référence de téléchargement"
+    "description": "Description du paramètre de téléchargement de référence"
   },
   "status.pending": {
     "message": "En attente",
@@ -172,11 +200,11 @@
     "description": "Texte du bouton pour télécharger la vidéo"
   },
   "button.uploadImageUrl": {
-    "message": "Télécharger l'image",
+    "message": "Télécharger une image",
     "description": "Texte du bouton pour télécharger une image"
   },
   "button.uploadVideoUrl": {
-    "message": "Télécharger la vidéo",
+    "message": "Télécharger une vidéo",
     "description": "Texte du bouton pour télécharger une vidéo"
   },
   "button.uploadReferences": {
@@ -268,7 +296,7 @@
     "description": "Message lorsque aucune opération n'est disponible"
   },
   "message.noTasks": {
-    "message": "Aucune tâche historique, veuillez cliquer sur le bouton à gauche pour générer une vidéo",
+    "message": "Aucune tâche historique, veuillez cliquer à gauche pour générer une vidéo",
     "description": "Message lorsque aucune tâche n'est disponible"
   }
 }

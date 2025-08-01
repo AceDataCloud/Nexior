@@ -29,11 +29,11 @@ export default defineComponent({
       options: [
         {
           value: 'normal',
-          label: '标准'
+          label: this.$t('pixverse.name.motion1')
         },
         {
           value: 'fast',
-          label: '快速'
+          label: this.$t('pixverse.name.motion2')
         }
       ]
     };

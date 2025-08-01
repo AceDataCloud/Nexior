@@ -31,8 +31,36 @@
     "message": "Style",
     "description": "The style of the video to be generated"
   },
+  "name.style1": {
+    "message": "Cyberpunk",
+    "description": "The style of the video to be generated"
+  },
+  "name.style2": {
+    "message": "Anime",
+    "description": "The style of the video to be generated"
+  },
+  "name.style3": {
+    "message": "Comic",
+    "description": "The style of the video to be generated"
+  },
+  "name.style4": {
+    "message": "Clay",
+    "description": "The style of the video to be generated"
+  },
+  "name.style5": {
+    "message": "3D Animation",
+    "description": "The style of the video to be generated"
+  },
   "name.motion": {
     "message": "Video Mode",
+    "description": "The mode of the video to be generated"
+  },
+  "name.motion1": {
+    "message": "Standard",
+    "description": "The mode of the video to be generated"
+  },
+  "name.motion2": {
+    "message": "Fast",
     "description": "The mode of the video to be generated"
   },
   "name.quality": {
@@ -40,7 +68,7 @@
     "description": "The quality of the video to be generated"
   },
   "name.startImage": {
-    "message": "Start Frame Reference Image",
+    "message": "First Frame Reference Image",
     "description": "The reference image for the video to be generated"
   },
   "name.videoUrl": {
@@ -84,7 +112,7 @@
     "description": "Description of the 'ingredients' parameter"
   },
   "description.imageUrl": {
-    "message": "In the multi-image video creation task, it must upload multiple images.",
+    "message": "In the task of creating a video with multiple images, it must upload multiple images.",
     "description": "Description of the 'imageUrl' parameter"
   },
   "description.prompt": {
@@ -96,11 +124,11 @@
     "description": "Description of the 'negativePrompt' parameter"
   },
   "description.uploadStartImage": {
-    "message": "Upload the start frame image as a reference for generation; the final video will reference the start frame for generation.",
+    "message": "Upload the first frame image as a reference for generation; the final video will reference the first frame for generation.",
     "description": "Description of the upload reference parameter"
   },
   "description.uploadEndImage": {
-    "message": "Upload the end frame image as a reference for generation; the final video will reference the end frame for generation.",
+    "message": "Upload the first frame image as a reference for generation; the final video will reference the first frame for generation.",
     "description": "Description of the upload reference parameter"
   },
   "description.seed": {
@@ -161,7 +189,7 @@
   },
   "button.generate": {
     "message": "Generate",
-    "description": "Button text for generating Pixverse videos"
+    "description": "Button text for generating Pixverse video"
   },
   "button.extend": {
     "message": "Extend Video",
@@ -181,7 +209,7 @@
   },
   "button.uploadReferences": {
     "message": "Upload",
-    "description": "Button text that allows the user to upload references"
+    "description": "Button text that allows users to upload references"
   },
   "message.uploadReferencesExceed": {
     "message": "You can upload a maximum of 1 image",
@@ -192,7 +220,7 @@
     "description": "Success message when an image is uploaded successfully"
   },
   "message.uploadReferencesError": {
-    "message": "Image upload failed, please try again later",
+    "message": "Failed to upload image, please try again later",
     "description": "Error message when image upload fails"
   },
   "message.startingTask": {
@@ -201,7 +229,7 @@
   },
   "message.startTaskSuccess": {
     "message": "Task initiated successfully",
-    "description": "Success message when the task is successfully started"
+    "description": "Success message when the task is started successfully"
   },
   "message.startTaskFailed": {
     "message": "Failed to initiate task, please contact the administrator",
@@ -224,7 +252,7 @@
     "description": "Message when the image is being generated"
   },
   "message.generateFailed": {
-    "message": "Image generation failed",
+    "message": "Failed to generate image",
     "description": "Message when image generation fails"
   },
   "message.uploadVideoExceed": {

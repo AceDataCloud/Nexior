@@ -8,8 +8,8 @@
     "description": "Pixverse-videon sisältötyyppi, kuten 'linkki', 'teksti' jne."
   },
   "name.failure": {
-    "message": "Epätosi",
-    "description": "Tehtävän epäonnistumisen tila"
+    "message": "Epäonnistuminen",
+    "description": "Tehtävän epäonnistumistila"
   },
   "name.failureReason": {
     "message": "Epäonnistumisen syy",
@@ -25,14 +25,42 @@
   },
   "name.createdAt": {
     "message": "Luontiaika",
-    "description": "Päivämäärä ja aika, jolloin Pixverse-video luotiin"
+    "description": "Pixverse-videon luontipäivämäärä ja -aika"
   },
   "name.style": {
     "message": "Tyyli",
     "description": "Luotavan videon tyyli"
   },
+  "name.style1": {
+    "message": "Kyberpunk",
+    "description": "Luotavan videon tyyli"
+  },
+  "name.style2": {
+    "message": "Anime",
+    "description": "Luotavan videon tyyli"
+  },
+  "name.style3": {
+    "message": "Sarjakuva",
+    "description": "Luotavan videon tyyli"
+  },
+  "name.style4": {
+    "message": "Savi",
+    "description": "Luotavan videon tyyli"
+  },
+  "name.style5": {
+    "message": "Kolmiulotteinen animaatio",
+    "description": "Luotavan videon tyyli"
+  },
   "name.motion": {
     "message": "Videotila",
+    "description": "Luotavan videon tila"
+  },
+  "name.motion1": {
+    "message": "Normaali",
+    "description": "Luotavan videon tila"
+  },
+  "name.motion2": {
+    "message": "Nopea",
     "description": "Luotavan videon tila"
   },
   "name.quality": {
@@ -49,7 +77,7 @@
   },
   "name.prompt": {
     "message": "Videon kehotus",
-    "description": "Sisällön syöttökehotus"
+    "description": "Sisältösyötteen kehotus"
   },
   "name.duration": {
     "message": "Videon kesto",
@@ -61,7 +89,7 @@
   },
   "name.seed": {
     "message": "Siemen",
-    "description": "Luotavan videon satunnainen siemen"
+    "description": "Videon luomiseen käytettävä satunnainen siemen"
   },
   "name.mode": {
     "message": "Videotila",
@@ -84,11 +112,11 @@
     "description": "Parametrin 'ingredients' kuvaus"
   },
   "description.imageUrl": {
-    "message": "Monikuvavideon luontitehtävässä on ladattava useita kuvia.",
+    "message": "Usean kuvan luomistehtävässä on ladattava useita kuvia.",
     "description": "Parametrin 'imageUrl' kuvaus"
   },
   "description.prompt": {
-    "message": "Pixverse-videon luontikehotus",
+    "message": "Pixverse-videon luomiseen käytettävä kehotus",
     "description": "Parametrin 'prompt' kuvaus"
   },
   "description.negativePrompt": {
@@ -96,15 +124,15 @@
     "description": "Parametrin 'prompt' kuvaus"
   },
   "description.uploadStartImage": {
-    "message": "Lataa ensimmäinen kehyskuva viitteeksi, viimeinen video perustuu ensimmäiseen kehykseen",
+    "message": "Lataa ensimmäinen kehyskuva viitteeksi, viimeinen video perustuu ensimmäiseen kehykseen.",
     "description": "Latausviiteparametrin kuvaus"
   },
   "description.uploadEndImage": {
-    "message": "Lataa ensimmäinen kehyskuva viitteeksi, viimeinen video perustuu ensimmäiseen kehykseen",
+    "message": "Lataa viimeinen kehyskuva viitteeksi, viimeinen video perustuu viimeiseen kehykseen.",
     "description": "Latausviiteparametrin kuvaus"
   },
   "description.seed": {
-    "message": "Luotavan videon siemenarvo. Jos ei aseteta, käytetään satunnaista siementä.",
+    "message": "Videon siemenarvo. Jos ei aseteta, käytetään satunnaista siementä.",
     "description": "Latausviiteparametrin kuvaus"
   },
   "status.pending": {
@@ -117,7 +145,7 @@
   },
   "placeholder.paddingNoise": {
     "message": "Valitse...",
-    "description": "Täyttömelun syötteen paikkamerkki"
+    "description": "Täyteäänisyys syötteen paikkamerkki"
   },
   "placeholder.select": {
     "message": "Valitse",
@@ -125,19 +153,19 @@
   },
   "placeholder.paddingLevel": {
     "message": "Valitse...",
-    "description": "Täyttötason paikkamerkki"
+    "description": "Täyteasteen paikkamerkki"
   },
   "placeholder.prompt": {
     "message": "Syötä luotavan videon tyylin kehotus, esim. quiver",
-    "description": "Kehotusalueen paikkamerkki"
+    "description": "Kehotuskentän paikkamerkki"
   },
   "placeholder.negativePrompt": {
     "message": "Syötä luotavan videon tyylin negatiivinen kehotus, enintään 200 merkkiä",
-    "description": "Kehotusalueen paikkamerkki"
+    "description": "Kehotuskentän paikkamerkki"
   },
   "placeholder.position": {
     "message": "Valitse...",
-    "description": "Sijainnin syötteen paikkamerkki"
+    "description": "Sijaintisyötteen paikkamerkki"
   },
   "placeholder.aspectRatio": {
     "message": "Valitse...",
@@ -160,51 +188,51 @@
     "description": "Alamerkin syötteen paikkamerkki"
   },
   "button.generate": {
-    "message": "Luo",
-    "description": "Pixverse-videon luontipainikkeen teksti"
+    "message": "Generoi",
+    "description": "Pixverse-videon luomisen painikkeen teksti"
   },
   "button.extend": {
     "message": "Laajenna videota",
-    "description": "Videon laajentamispainikkeen teksti"
+    "description": "Videon laajentamisen painikkeen teksti"
   },
   "button.download": {
     "message": "Lataa video",
-    "description": "Videon latauspainikkeen teksti"
+    "description": "Videon lataamisen painikkeen teksti"
   },
   "button.uploadImageUrl": {
     "message": "Lataa kuva",
-    "description": "Kuvan latauspainikkeen teksti"
+    "description": "Kuvan lataamisen painikkeen teksti"
   },
   "button.uploadVideoUrl": {
     "message": "Lataa video",
-    "description": "Videon latauspainikkeen teksti"
+    "description": "Videon lataamisen painikkeen teksti"
   },
   "button.uploadReferences": {
     "message": "Lataa",
-    "description": "Painikkeen teksti, joka sallii käyttäjän ladata viitteitä"
+    "description": "Painikkeen teksti, joka sallii käyttäjän ladata viittauksia"
   },
   "message.uploadReferencesExceed": {
     "message": "Voit ladata enintään 1 kuva",
     "description": "Virheilmoitus, kun ladattujen kuvien määrä ylittää rajan"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Kuvan lataaminen onnistui",
-    "description": "Onnistuneen kuvan lataamisen onnistumisviesti"
+    "message": "Kuva ladattu onnistuneesti",
+    "description": "Onnistuneen kuvien lataamisen onnistumisviesti"
   },
   "message.uploadReferencesError": {
-    "message": "Kuvan lataaminen epäonnistui, yritä myöhemmin uudelleen",
+    "message": "Kuvan lataaminen epäonnistui, yritä uudelleen myöhemmin",
     "description": "Virheilmoitus, kun kuvan lataaminen epäonnistuu"
   },
   "message.startingTask": {
-    "message": "Tehtävää käynnistetään...",
+    "message": "Aloitetaan tehtävä...",
     "description": "Viesti, kun piirustustehtävä alkaa"
   },
   "message.startTaskSuccess": {
-    "message": "Tehtävän käynnistäminen onnistui",
+    "message": "Tehtävä käynnistetty onnistuneesti",
     "description": "Onnistuneen tehtävän käynnistämisen onnistumisviesti"
   },
   "message.startTaskFailed": {
-    "message": "Tehtävän käynnistäminen epäonnistui, ota yhteyttä ylläpitoon",
+    "message": "Tehtävän käynnistäminen epäonnistui, ota yhteyttä ylläpitäjään",
     "description": "Virheilmoitus, kun piirustustehtävän käynnistäminen epäonnistuu"
   },
   "message.usedUp": {
@@ -224,12 +252,12 @@
     "description": "Viesti, kun kuvaa generoidaan"
   },
   "message.generateFailed": {
-    "message": "Kuvan generoiminen epäonnistui",
-    "description": "Viesti, kun kuvan generoiminen epäonnistuu"
+    "message": "Kuvan generointi epäonnistui",
+    "description": "Viesti, kun kuvan generointi epäonnistuu"
   },
   "message.uploadVideoExceed": {
-    "message": "Ladattujen ensimmäisten kehysten määrä ylittää rajan",
-    "description": "Virheilmoitus, kun ladattujen ensimmäisten kehysten määrä ylittää rajan"
+    "message": "Ladattujen ensimmäisten kuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun ladattujen ensimmäisten kuvien määrä ylittää rajan"
   },
   "message.uploadVideoSizeExceed": {
     "message": "Ladattavan tiedoston koko ei saa ylittää 10MB!",
@@ -240,24 +268,24 @@
     "description": "Virheilmoitus, kun ladattavan tiedoston on oltava MP4-muodossa!"
   },
   "message.uploadStartImageExceed": {
-    "message": "Ladattujen ensimmäisten kehysten määrä ylittää rajan",
-    "description": "Virheilmoitus, kun ladattujen ensimmäisten kehysten määrä ylittää rajan"
+    "message": "Ladattujen ensimmäisten kuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun ladattujen ensimmäisten kuvien määrä ylittää rajan"
   },
   "message.uploadEndImageExceed": {
-    "message": "Ladattujen viimeisten kehysten määrä ylittää rajan",
-    "description": "Virheilmoitus, kun ladattujen viimeisten kehysten määrä ylittää rajan"
+    "message": "Ladattujen viimeisten kuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun ladattujen viimeisten kuvien määrä ylittää rajan"
   },
   "message.uploadStartImageError": {
-    "message": "Ensimmäisten kehysten lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun ensimmäisten kehysten lataaminen epäonnistuu"
+    "message": "Ensimmäisten kuvien lataaminen epäonnistui",
+    "description": "Virheilmoitus, kun ensimmäisten kuvien lataaminen epäonnistuu"
   },
   "message.uploadVideoError": {
     "message": "Videon lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun ensimmäisten kehysten lataaminen epäonnistuu"
+    "description": "Virheilmoitus, kun ensimmäisten kuvien lataaminen epäonnistuu"
   },
   "message.uploadEndImageError": {
-    "message": "Viimeisten kehysten lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun viimeisten kehysten lataaminen epäonnistuu"
+    "message": "Viimeisten kuvien lataaminen epäonnistui",
+    "description": "Virheilmoitus, kun viimeisten kuvien lataaminen epäonnistuu"
   },
   "message.uploadDocumentsError": {
     "message": "Asiakirjan lataaminen epäonnistui",
