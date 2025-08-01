@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 01 Aug 2025 01:51:39 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 01 Aug 2025 12:29:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.11.1
+
+Fri, 01 Aug 2025 12:29:33 GMT
+
+### Patches
+
+- fix setting and pix bugs (cqc@cuiqingcai.com)
 
 ## 3.11.0
 
