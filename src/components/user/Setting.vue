@@ -9,7 +9,8 @@
             :index="item.key"
             :class="[
               'flex w-[160px] truncate items-center px-2 cursor-pointer py-2',
-              activeTab === item.key ? 'active' : ''
+              activeTab === item.key ? 'active' : '',
+              item.visible ? '' : 'hidden'
             ]"
             @click="activeTab = item.key"
           >
@@ -22,7 +23,7 @@
         <div v-if="activeTab === 'general'">
           <general-setting />
         </div>
-        <div v-else-if="activeTab === 'site' && isSiteAdmin">
+        <div v-else-if="activeTab === 'site'">
           <site-setting />
         </div>
         <div v-else-if="activeTab === 'seo' && isSiteAdmin">
@@ -79,14 +80,20 @@ export default defineComponent({
   computed: {
     navItems() {
       return [
-        { key: 'general', label: this.$t('common.settings.general'), icon: faCog },
-        { key: 'site', label: this.$t('common.settings.site'), icon: faBell },
-        { key: 'seo', label: this.$t('common.settings.seo'), icon: faUserShield },
-        { key: 'distribution', label: this.$t('common.settings.distribution'), icon: faMoneyBill },
-        { key: 'function', label: this.$t('common.settings.function'), icon: faMagic }
+        { key: 'general', label: this.$t('common.settings.general'), icon: faCog, visible: true },
+        { key: 'site', label: this.$t('common.settings.site'), icon: faBell, visible: this.isSiteAdmin },
+        { key: 'seo', label: this.$t('common.settings.seo'), icon: faUserShield, visible: this.isSiteAdmin },
+        {
+          key: 'distribution',
+          label: this.$t('common.settings.distribution'),
+          icon: faMoneyBill,
+          visible: this.isSiteAdmin
+        },
+        { key: 'function', label: this.$t('common.settings.function'), icon: faMagic, visible: this.isSiteAdmin }
       ];
     },
     currentTabTitle() {
+      console.debug('activeTab', this.activeTab);
       const current = this.navItems.find((item) => item.key === this.activeTab);
       return current ? current.label : '';
     },
