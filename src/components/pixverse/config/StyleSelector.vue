@@ -10,7 +10,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
-import { PIXVERSE_DEFAULT_MODEL } from '@/constants';
+import { PIXVERSE_DEFAULT_STYLE } from '@/constants';
 
 export default defineComponent({
   name: 'StyleSelector',
@@ -66,7 +66,7 @@ export default defineComponent({
   },
   mounted() {
     if (!this.value) {
-      this.value = PIXVERSE_DEFAULT_MODEL;
+      this.value = PIXVERSE_DEFAULT_STYLE;
     }
   }
 });
