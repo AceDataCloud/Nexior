@@ -1,0 +1,302 @@
+{
+  "name.taskId": {
+    "message": "ID задачи",
+    "description": "ID задачи"
+  },
+  "name.type": {
+    "message": "Тип",
+    "description": "Тип контента видео Pixverse, например, 'ссылка', 'текст' и т.д."
+  },
+  "name.failure": {
+    "message": "Ошибка",
+    "description": "Статус ошибки задачи"
+  },
+  "name.failureReason": {
+    "message": "Причина ошибки",
+    "description": "Причина ошибки задачи"
+  },
+  "name.status": {
+    "message": "Статус",
+    "description": "Статус задачи"
+  },
+  "name.traceId": {
+    "message": "ID отслеживания",
+    "description": "ID отслеживания задачи"
+  },
+  "name.createdAt": {
+    "message": "Дата создания",
+    "description": "Дата и время создания видео Pixverse"
+  },
+  "name.style": {
+    "message": "Стиль",
+    "description": "Стиль видео, которое нужно сгенерировать"
+  },
+  "name.style1": {
+    "message": "Киберпанк",
+    "description": "Стиль видео, которое нужно сгенерировать"
+  },
+  "name.style2": {
+    "message": "Аниме",
+    "description": "Стиль видео, которое нужно сгенерировать"
+  },
+  "name.style3": {
+    "message": "Комикс",
+    "description": "Стиль видео, которое нужно сгенерировать"
+  },
+  "name.style4": {
+    "message": "Глина",
+    "description": "Стиль видео, которое нужно сгенерировать"
+  },
+  "name.style5": {
+    "message": "3D анимация",
+    "description": "Стиль видео, которое нужно сгенерировать"
+  },
+  "name.motion": {
+    "message": "Режим видео",
+    "description": "Режим видео, которое нужно сгенерировать"
+  },
+  "name.motion1": {
+    "message": "Стандартный",
+    "description": "Режим видео, которое нужно сгенерировать"
+  },
+  "name.motion2": {
+    "message": "Быстрый",
+    "description": "Режим видео, которое нужно сгенерировать"
+  },
+  "name.quality": {
+    "message": "Качество видео",
+    "description": "Качество видео, которое нужно сгенерировать"
+  },
+  "name.startImage": {
+    "message": "Изображение первой рамки",
+    "description": "Ссылка на изображение для видео"
+  },
+  "name.videoUrl": {
+    "message": "Пользовательское видео",
+    "description": "Пользовательское видео"
+  },
+  "name.prompt": {
+    "message": "Подсказка для видео",
+    "description": "Подсказка для ввода контента"
+  },
+  "name.duration": {
+    "message": "Длительность видео",
+    "description": "Длительность видео"
+  },
+  "name.model": {
+    "message": "Версия модели",
+    "description": "Версия модели, используемая для генерации видео"
+  },
+  "name.seed": {
+    "message": "Сид",
+    "description": "Случайное значение для генерации видео"
+  },
+  "name.mode": {
+    "message": "Режим видео",
+    "description": "Режим, используемый для генерации видео"
+  },
+  "name.effect": {
+    "message": "Эффект видео",
+    "description": "Название параметра стиля, используемого для переключения между различными версиями или стилями модели"
+  },
+  "name.ingredientsModel": {
+    "message": "Модель ингредиентов",
+    "description": "Версия модели, используемая для генерации видео"
+  },
+  "name.pixverseBot": {
+    "message": "Pixverse Bot",
+    "description": "Название генератора видео Pixverse"
+  },
+  "description.ingredients": {
+    "message": "Если вы хотите загрузить несколько изображений для генерации собственного видео, активируйте эту кнопку.",
+    "description": "Описание параметра 'ingredients'"
+  },
+  "description.imageUrl": {
+    "message": "В задаче создания видео с несколькими изображениями необходимо загрузить несколько изображений.",
+    "description": "Описание параметра 'imageUrl'"
+  },
+  "description.prompt": {
+    "message": "Подсказка для генерации видео Pixverse",
+    "description": "Описание параметра 'prompt'"
+  },
+  "description.negativePrompt": {
+    "message": "Отрицательная текстовая подсказка, необязательная, не более 200 символов",
+    "description": "Описание параметра 'negativePrompt'"
+  },
+  "description.uploadStartImage": {
+    "message": "Загрузите изображение первой рамки в качестве ссылки для генерации, финальное видео будет ссылаться на первую рамку.",
+    "description": "Описание параметра загрузки ссылки"
+  },
+  "description.uploadEndImage": {
+    "message": "Загрузите изображение последней рамки в качестве ссылки для генерации, финальное видео будет ссылаться на последнюю рамку.",
+    "description": "Описание параметра загрузки ссылки"
+  },
+  "description.seed": {
+    "message": "Значение сид для генерации видео. Если не установлено, будет использоваться случайный сид.",
+    "description": "Описание параметра загрузки ссылки"
+  },
+  "status.pending": {
+    "message": "В ожидании",
+    "description": "Статус ожидания задачи"
+  },
+  "status.processing": {
+    "message": "В процессе",
+    "description": "Статус обработки задачи"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода шума заполнения"
+  },
+  "placeholder.select": {
+    "message": "Выбрать",
+    "description": "Заполнитель для поля выбора"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для уровня заполнения"
+  },
+  "placeholder.prompt": {
+    "message": "Введите подсказку для стиля видео, например: quiver",
+    "description": "Заполнитель для поля подсказки"
+  },
+  "placeholder.negativePrompt": {
+    "message": "Введите отрицательную подсказку для стиля видео, не более 200 символов",
+    "description": "Заполнитель для поля подсказки"
+  },
+  "placeholder.position": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода позиции"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода соотношения сторон"
+  },
+  "placeholder.preset": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода предустановки"
+  },
+  "placeholder.markerShape": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода формы маркера"
+  },
+  "placeholder.rotate": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода вращения"
+  },
+  "placeholder.subMarker": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода подмаркера"
+  },
+  "button.generate": {
+    "message": "Сгенерировать",
+    "description": "Текст кнопки для генерации видео Pixverse"
+  },
+  "button.extend": {
+    "message": "Продлить видео",
+    "description": "Текст кнопки для продления видео"
+  },
+  "button.download": {
+    "message": "Скачать видео",
+    "description": "Текст кнопки для скачивания видео"
+  },
+  "button.uploadImageUrl": {
+    "message": "Загрузить изображение",
+    "description": "Текст кнопки для загрузки изображения"
+  },
+  "button.uploadVideoUrl": {
+    "message": "Загрузить видео",
+    "description": "Текст кнопки для загрузки видео"
+  },
+  "button.uploadReferences": {
+    "message": "Загрузить",
+    "description": "Текст кнопки, позволяющий пользователю загрузить ссылки"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Можно загрузить не более 1 изображения",
+    "description": "Сообщение об ошибке, когда количество загружаемых изображений превышает лимит"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Изображение успешно загружено",
+    "description": "Сообщение об успешной загрузке изображения"
+  },
+  "message.uploadReferencesError": {
+    "message": "Не удалось загрузить изображение, пожалуйста, попробуйте позже",
+    "description": "Сообщение об ошибке при неудачной загрузке изображения"
+  },
+  "message.startingTask": {
+    "message": "Запуск задачи...",
+    "description": "Сообщение при начале задачи рисования"
+  },
+  "message.startTaskSuccess": {
+    "message": "Задача на генерацию успешно запущена",
+    "description": "Сообщение об успешном запуске задачи"
+  },
+  "message.startTaskFailed": {
+    "message": "Не удалось запустить задачу, пожалуйста, свяжитесь с администратором",
+    "description": "Сообщение об ошибке при неудачном запуске задачи рисования"
+  },
+  "message.usedUp": {
+    "message": "Ваши баллы исчерпаны, пожалуйста, купите больше баллов для продолжения использования",
+    "description": "Сообщение при исчерпании баллов"
+  },
+  "message.generating": {
+    "message": "Генерация...",
+    "description": "Сообщение во время генерации изображения"
+  },
+  "message.downloadVideo": {
+    "message": "Скачать это видео",
+    "description": "Сообщение во время генерации изображения"
+  },
+  "message.extendVideo": {
+    "message": "Продолжить генерацию этого видео",
+    "description": "Сообщение во время генерации изображения"
+  },
+  "message.generateFailed": {
+    "message": "Не удалось сгенерировать изображение",
+    "description": "Сообщение при неудачной генерации изображения"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Количество загружаемых изображений для первого кадра превышает лимит",
+    "description": "Сообщение об ошибке при превышении лимита загружаемых изображений для первого кадра"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Размер загружаемого файла не должен превышать 10 МБ!",
+    "description": "Сообщение об ошибке при превышении размера загружаемого файла"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Загружаемый файл должен быть в формате MP4!",
+    "description": "Сообщение об ошибке при неправильном формате загружаемого файла"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Количество загружаемых изображений для первого кадра превышает лимит",
+    "description": "Сообщение об ошибке при превышении лимита загружаемых изображений для первого кадра"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Количество загружаемых изображений для последнего кадра превышает лимит",
+    "description": "Сообщение об ошибке при превышении лимита загружаемых изображений для последнего кадра"
+  },
+  "message.uploadStartImageError": {
+    "message": "Не удалось загрузить изображение для первого кадра",
+    "description": "Сообщение об ошибке при неудачной загрузке изображения для первого кадра"
+  },
+  "message.uploadVideoError": {
+    "message": "Не удалось загрузить видео",
+    "description": "Сообщение об ошибке при неудачной загрузке видео"
+  },
+  "message.uploadEndImageError": {
+    "message": "Не удалось загрузить изображение для последнего кадра",
+    "description": "Сообщение об ошибке при неудачной загрузке изображения для последнего кадра"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Не удалось загрузить документ",
+    "description": "Сообщение об ошибке при неудачной загрузке документа"
+  },
+  "message.noOperations": {
+    "message": "Нет доступных операций",
+    "description": "Сообщение при отсутствии доступных операций"
+  },
+  "message.noTasks": {
+    "message": "Нет историй задач, пожалуйста, нажмите слева для генерации видео",
+    "description": "Сообщение при отсутствии задач"
+  }
+}

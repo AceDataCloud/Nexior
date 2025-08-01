@@ -117,7 +117,7 @@
   },
   "button.applied": {
     "message": "Richiesta inviata",
-    "description": "Testo del pulsante, utilizzato per visualizzare che l'utente ha già richiesto il servizio"
+    "description": "Testo del pulsante, utilizzato per mostrare che l'utente ha già richiesto il servizio"
   },
   "button.acquire": {
     "message": "Ottieni",
@@ -203,45 +203,49 @@
     "message": "Ordine",
     "description": "L'ordine dell'entità, l'ordine include importo, informazioni sul servizio, l'utente deve pagare per esso"
   },
+  "message.noTasks": {
+    "message": "Nessun compito storico, inizia un nuovo compito～",
+    "description": "Messaggio quando non ci sono compiti"
+  },
   "message.usedAmount": {
     "message": "Importo utilizzato",
-    "description": "Utilizzato per visualizzare l'importo del servizio già utilizzato"
+    "description": "Utilizzato per mostrare l'importo del servizio già utilizzato"
   },
   "message.remainingAmount": {
     "message": "Importo rimanente",
-    "description": "Utilizzato per visualizzare l'importo rimanente del servizio"
+    "description": "Utilizzato per mostrare l'importo rimanente del servizio"
   },
   "message.copied": {
     "message": "Copiato con successo",
-    "description": "Utilizzato per visualizzare il messaggio che il contenuto è stato copiato con successo"
+    "description": "Utilizzato per mostrare il messaggio che il contenuto è stato copiato con successo"
   },
   "message.restart": {
     "message": "Rigenera",
-    "description": "Utilizzato per visualizzare il messaggio che il contenuto è stato copiato con successo"
+    "description": "Utilizzato per mostrare il messaggio che il contenuto è stato copiato con successo"
   },
   "message.confirmDelete": {
     "message": "Sei sicuro di voler eliminare?",
-    "description": "Utilizzato per confermare se l'utente desidera eliminare determinati contenuti"
+    "description": "Utilizzato per confermare se l'utente desidera eliminare qualcosa"
   },
   "message.expiredAt": {
     "message": "Data di scadenza",
-    "description": "Utilizzato per visualizzare la data di scadenza del servizio"
+    "description": "Utilizzato per mostrare la data di scadenza del servizio"
   },
   "message.alert": {
     "message": "Avviso",
     "description": "Utilizzato per avvisare l'utente"
   },
   "message.info": {
-    "message": "Promemoria",
-    "description": "Utilizzato per visualizzare un messaggio informativo"
+    "message": "Promemoria amichevole",
+    "description": "Utilizzato per mostrare informazioni"
   },
   "message.free": {
     "message": "Gratuito",
-    "description": "Utilizzato per visualizzare un messaggio che indica che il servizio è gratuito, l'utente non deve pagare"
+    "description": "Utilizzato per mostrare che il servizio è gratuito, indicando che l'utente non deve pagare"
   },
   "message.startPrice": {
     "message": "Prezzo di partenza",
-    "description": "Utilizzato per visualizzare il prezzo minimo del servizio"
+    "description": "Utilizzato per mostrare il prezzo minimo del servizio"
   },
   "message.joinDiscord": {
     "message": "Unisciti a Discord",
@@ -253,147 +257,151 @@
   },
   "message.serviceTech": {
     "message": "Supporto tecnico",
-    "description": "Utilizzato per visualizzare un messaggio di supporto tecnico del servizio"
+    "description": "Utilizzato per mostrare il supporto tecnico del servizio"
   },
   "message.businessCooperation": {
     "message": "Cooperazione commerciale",
-    "description": "Utilizzato per visualizzare un messaggio di cooperazione commerciale"
+    "description": "Utilizzato per mostrare la cooperazione commerciale"
   },
   "message.noData": {
     "message": "Nessun dato",
-    "description": "Utilizzato per visualizzare un messaggio che indica che non ci sono dati nella tabella o nell'elenco"
+    "description": "Utilizzato per mostrare un messaggio quando non ci sono dati in una tabella o in un elenco"
   },
   "nav.home": {
     "message": "Home",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la home page"
+    "description": "Testo nella barra di navigazione del sito, utilizzato per mostrare la home page"
   },
   "nav.content": {
     "message": "Contenuto",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina dei contenuti"
+    "description": "Testo nella barra di navigazione del sito, utilizzato per mostrare la pagina dei contenuti"
   },
   "nav.category": {
     "message": "Categoria",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina delle categorie"
+    "description": "Testo nella barra di navigazione del sito, utilizzato per mostrare la pagina delle categorie"
   },
   "nav.service": {
     "message": "Servizio",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina dei servizi"
+    "description": "Testo nella barra di navigazione del sito, utilizzato per mostrare la pagina dei servizi"
   },
   "nav.profile": {
-    "message": "Il mio profilo",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina del profilo personale"
+    "message": "Io",
+    "description": "Testo nella barra di navigazione del sito, utilizzato per mostrare la pagina del profilo"
   },
   "nav.products": {
     "message": "Prodotti",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina dei prodotti"
+    "description": "Testo nella barra di navigazione del sito, utilizzato per mostrare la pagina dei prodotti"
   },
   "nav.referral": {
     "message": "Guadagni da referral",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina dei referral"
+    "description": "Testo nella barra di navigazione del sito, utilizzato per mostrare la pagina dei referral"
   },
   "nav.apiPlatform": {
     "message": "Piattaforma API",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina della piattaforma API"
+    "description": "Testo nella barra di navigazione del sito, utilizzato per mostrare la pagina della piattaforma API"
   },
   "nav.document": {
     "message": "Documentazione",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina della documentazione"
+    "description": "Testo nella barra di navigazione del sito, utilizzato per mostrare la pagina della documentazione"
   },
   "nav.console": {
     "message": "Console",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina della console"
+    "description": "Testo nella barra di navigazione del sito, utilizzato per mostrare la pagina della console"
   },
   "nav.chatgpt": {
     "message": "ChatGPT",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina di ChatGPT, non tradurre questo campo, deve rimanere 'ChatGPT'"
+    "description": "Testo nella barra di navigazione del sito, utilizzato per mostrare la pagina di ChatGPT, non tradurre questo campo, deve rimanere 'ChatGPT'"
   },
   "nav.deepseek": {
     "message": "DeepSeek",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina di DeepSeek, non tradurre questo campo, deve rimanere 'DeepSeek'"
+    "description": "Testo nella barra di navigazione del sito, utilizzato per mostrare la pagina di DeepSeek, non tradurre questo campo, deve rimanere 'DeepSeek'"
   },
   "nav.grok": {
     "message": "Grok",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina di Grok, non tradurre questo campo, deve rimanere 'Grok'"
+    "description": "Testo nella barra di navigazione del sito, utilizzato per mostrare la pagina di Grok, non tradurre questo campo, deve rimanere 'Grok'"
   },
   "nav.chat": {
     "message": "Chat",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina di chat, non tradurre questo campo, deve rimanere 'Chat'"
+    "description": "Testo nella barra di navigazione del sito, utilizzato per mostrare la pagina di chat, non tradurre questo campo, deve rimanere 'Chat'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina di Midjourney, non tradurre questo campo, deve rimanere 'Midjourney'"
+    "description": "Testo nella barra di navigazione del sito, utilizzato per mostrare la pagina di Midjourney, non tradurre questo campo, deve rimanere 'Midjourney'"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina di arte QR, non tradurre questo campo, deve rimanere 'QRArt'"
+    "description": "Testo nella barra di navigazione del sito, utilizzato per mostrare la pagina dell'arte QR, non tradurre questo campo, deve rimanere 'QRArt'"
   },
   "nav.suno": {
     "message": "Suno",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina di Suno, non tradurre questo campo, deve rimanere 'Suno'"
+    "description": "Testo nella barra di navigazione del sito, utilizzato per mostrare la pagina di Suno, non tradurre questo campo, deve rimanere 'Suno'"
+  },
+  "nav.pixverse": {
+    "message": "Pixverse",
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina Pixverse, non tradurre questo campo, deve rimanere 'Pixverse'"
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina di Flux, non tradurre questo campo, deve rimanere 'Flux'"
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina Flux, non tradurre questo campo, deve rimanere 'Flux'"
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina Luma, non tradurre questo campo, deve rimanere 'Luma'"
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina Luma, non tradurre questo campo, deve rimanere 'Luma'"
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina Pika, non tradurre questo campo, deve rimanere 'Pika'"
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina Pika, non tradurre questo campo, deve rimanere 'Pika'"
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina Kling, non tradurre questo campo, deve rimanere 'Kling'"
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina Kling, non tradurre questo campo, deve rimanere 'Kling'"
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina Hailuo, non tradurre questo campo, deve rimanere 'Hailuo'"
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina Hailuo, non tradurre questo campo, deve rimanere 'Hailuo'"
   },
   "nav.image": {
-    "message": "Immagine",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina delle immagini"
+    "message": "Immagini",
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina delle immagini"
   },
   "nav.music": {
     "message": "Musica",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina della musica"
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina della musica"
   },
   "nav.video": {
     "message": "Video",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina dei video"
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina dei video"
   },
   "nav.distribution": {
-    "message": "Guadagni da raccomandazione",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina dei guadagni da raccomandazione"
+    "message": "Guadagni da referral",
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina dei guadagni da referral"
   },
   "nav.logOut": {
-    "message": "Disconnetti",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per disconnettersi"
+    "message": "Disconnettersi",
+    "description": "Testo nella barra di navigazione del sito per disconnettersi"
   },
   "nav.site": {
     "message": "Configurazione del sito",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina di configurazione del sito"
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina di configurazione del sito"
   },
   "nav.setting": {
     "message": "Impostazioni",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina delle impostazioni"
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina delle impostazioni"
   },
   "nav.headshots": {
     "message": "Foto identificative AI",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina di configurazione del sito"
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina di configurazione del sito"
   },
   "nav.locale": {
     "message": "Impostazioni lingua",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per cambiare lingua"
+    "description": "Testo nella barra di navigazione del sito per cambiare lingua"
   },
   "nav.support": {
     "message": "Supporto clienti",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per visualizzare la pagina di supporto"
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina di supporto"
   },
   "nav.darkMode": {
     "message": "Modalità scura",
-    "description": "Testo nella barra di navigazione del sito, utilizzato per passare al tema scuro"
+    "description": "Testo nella barra di navigazione del sito per passare al tema scuro"
   },
   "title.alert": {
     "message": "Avviso",
@@ -424,16 +432,16 @@
     "description": "Titolo della pagina che invita l'utente ad acquistare di più"
   },
   "title.distribution": {
-    "message": "Guadagni da raccomandazione",
-    "description": "Titolo della pagina che mostra i guadagni da raccomandazione, indica che l'utente può guadagnare invitando altri a utilizzare il servizio"
+    "message": "Guadagni da referral",
+    "description": "Titolo della pagina che mostra i guadagni da referral, indicando che l'utente può guadagnare invitando altri a utilizzare il servizio"
   },
   "title.site": {
     "message": "Configurazione del sito",
     "description": "Titolo della pagina che mostra la configurazione del sito"
   },
   "title.distributionHistory": {
-    "message": "Storia delle raccomandazioni",
-    "description": "Titolo della pagina che mostra la storia delle raccomandazioni"
+    "message": "Storia dei referral",
+    "description": "Titolo della pagina che mostra la storia dei referral"
   },
   "title.invitee": {
     "message": "Invitato",
@@ -488,8 +496,8 @@
     "description": "Link alla pagina del centro"
   },
   "about.link6": {
-    "message": "Guadagni da raccomandazione",
-    "description": "Link alla pagina dei guadagni da raccomandazione"
+    "message": "Guadagni da referral",
+    "description": "Link alla pagina dei guadagni da referral"
   },
   "about.link7": {
     "message": "Supporto",
@@ -504,11 +512,11 @@
     "description": "Link alla pagina della politica sulla privacy"
   },
   "theme.light": {
-    "message": "Tema chiaro",
+    "message": "Chiaro",
     "description": "Nome del tema chiaro"
   },
   "theme.dark": {
-    "message": "Tema scuro",
+    "message": "Scuro",
     "description": "Nome del tema scuro"
   },
   "theme.system": {

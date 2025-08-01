@@ -101,7 +101,7 @@
   },
   "button.apply": {
     "message": "Aplikuj",
-    "description": "Przycisk tekstowy do umożliwienia użytkownikowi aplikowania o usługę API"
+    "description": "Przycisk tekstowy do umożliwienia użytkownikowi aplikacji o usługę API"
   },
   "button.refresh": {
     "message": "Odśwież",
@@ -120,12 +120,12 @@
     "description": "Przycisk tekstowy do wyświetlania, że użytkownik złożył wniosek o tę usługę"
   },
   "button.acquire": {
-    "message": "Zdobądź",
+    "message": "Uzyskaj",
     "description": "Przycisk tekstowy do umożliwienia użytkownikowi uzyskania tokena lub klucza do usługi API"
   },
   "button.fillExample": {
     "message": "Wypełnij przykład",
-    "description": "Przycisk tekstowy do umożliwienia użytkownikowi wypełnienia przykładowych danych"
+    "description": "Przycisk tekstowy do umożliwienia użytkownikowi wypełnienia danych przykładowych"
   },
   "button.buyMore": {
     "message": "Kup więcej",
@@ -177,31 +177,35 @@
   },
   "entity.icon": {
     "message": "Ikona",
-    "description": "Ikona jednostki"
+    "description": "Ikona encji"
   },
   "entity.status": {
     "message": "Status",
-    "description": "Status jednostki"
+    "description": "Status encji"
   },
   "entity.operation": {
     "message": "Operacja",
-    "description": "Operacja jednostki"
+    "description": "Operacja encji"
   },
   "entity.description": {
     "message": "Opis",
-    "description": "Opis jednostki"
+    "description": "Opis encji"
   },
   "entity.createdAt": {
     "message": "Data utworzenia",
-    "description": "Czas utworzenia jednostki"
+    "description": "Czas utworzenia encji"
   },
   "entity.updatedAt": {
     "message": "Data aktualizacji",
-    "description": "Czas aktualizacji jednostki"
+    "description": "Czas aktualizacji encji"
   },
   "entity.order": {
     "message": "Zamówienie",
-    "description": "Zamówienie jednostki, które zawiera kwotę, informacje o usłudze, za którą użytkownik musi zapłacić"
+    "description": "Zamówienie encji, które zawiera kwotę, informacje o usłudze, za którą użytkownik musi zapłacić"
+  },
+  "message.noTasks": {
+    "message": "Brak historii zadań, rozpocznij nowe zadanie～",
+    "description": "Wiadomość, gdy nie ma zadań"
   },
   "message.usedAmount": {
     "message": "Użyta kwota",
@@ -213,11 +217,11 @@
   },
   "message.copied": {
     "message": "Skopiowano pomyślnie",
-    "description": "Służy do wyświetlania komunikatu o pomyślnym skopiowaniu treści"
+    "description": "Służy do wyświetlania wiadomości o pomyślnym skopiowaniu treści"
   },
   "message.restart": {
-    "message": "Ponownie wygeneruj",
-    "description": "Służy do wyświetlania komunikatu o ponownym wygenerowaniu treści"
+    "message": "Ponownie generuj",
+    "description": "Służy do wyświetlania wiadomości o ponownym generowaniu treści"
   },
   "message.confirmDelete": {
     "message": "Czy na pewno chcesz usunąć?",
@@ -237,7 +241,7 @@
   },
   "message.free": {
     "message": "Darmowe",
-    "description": "Służy do wyświetlania komunikatu o darmowej usłudze, co oznacza, że użytkownik nie musi płacić"
+    "description": "Służy do wyświetlania wiadomości o darmowej usłudze, co oznacza, że użytkownik nie musi płacić"
   },
   "message.startPrice": {
     "message": "Cena początkowa",
@@ -245,95 +249,99 @@
   },
   "message.joinDiscord": {
     "message": "Dołącz do Discorda",
-    "description": "Służy do zapraszania użytkowników do dołączenia do kanału Discord"
+    "description": "Służy do zapraszania użytkownika do dołączenia do kanału Discord"
   },
   "message.addWeChat": {
     "message": "Dodaj WeChat",
-    "description": "Służy do zapraszania użytkowników do dodania WeChat"
+    "description": "Służy do zapraszania użytkownika do dodania WeChat"
   },
   "message.serviceTech": {
     "message": "Wsparcie techniczne",
-    "description": "Służy do wyświetlania komunikatu o wsparciu technicznym usługi"
+    "description": "Służy do wyświetlania wiadomości o wsparciu technicznym usługi"
   },
   "message.businessCooperation": {
     "message": "Współpraca biznesowa",
-    "description": "Służy do wyświetlania komunikatu o współpracy biznesowej"
+    "description": "Służy do wyświetlania wiadomości o współpracy biznesowej"
   },
   "message.noData": {
     "message": "Brak danych",
-    "description": "Służy do wyświetlania komunikatu, że w tabeli lub liście nie ma danych"
+    "description": "Służy do wyświetlania wiadomości, gdy w tabeli lub liście nie ma danych"
   },
   "nav.home": {
     "message": "Strona główna",
-    "description": "Tekst w nawigacji strony, który wyświetla stronę główną"
+    "description": "Tekst w nawigacji strony, używany do wyświetlania strony głównej"
   },
   "nav.content": {
     "message": "Treść",
-    "description": "Tekst w nawigacji strony, który wyświetla stronę treści"
+    "description": "Tekst w nawigacji strony, używany do wyświetlania strony z treścią"
   },
   "nav.category": {
     "message": "Kategoria",
-    "description": "Tekst w nawigacji strony, który wyświetla stronę kategorii"
+    "description": "Tekst w nawigacji strony, używany do wyświetlania strony kategorii"
   },
   "nav.service": {
     "message": "Usługi",
-    "description": "Tekst w nawigacji strony, który wyświetla stronę usług"
+    "description": "Tekst w nawigacji strony, używany do wyświetlania strony usług"
   },
   "nav.profile": {
     "message": "Ja",
-    "description": "Tekst w nawigacji strony, który wyświetla stronę profilu"
+    "description": "Tekst w nawigacji strony, używany do wyświetlania strony profilu"
   },
   "nav.products": {
     "message": "Produkty",
-    "description": "Tekst w nawigacji strony, który wyświetla stronę produktów"
+    "description": "Tekst w nawigacji strony, używany do wyświetlania strony produktów"
   },
   "nav.referral": {
     "message": "Zyski z polecenia",
-    "description": "Tekst w nawigacji strony, który wyświetla stronę poleceń"
+    "description": "Tekst w nawigacji strony, używany do wyświetlania strony poleceń"
   },
   "nav.apiPlatform": {
     "message": "Platforma API",
-    "description": "Tekst w nawigacji strony, który wyświetla stronę platformy API"
+    "description": "Tekst w nawigacji strony, używany do wyświetlania strony platformy API"
   },
   "nav.document": {
     "message": "Dokumentacja",
-    "description": "Tekst w nawigacji strony, który wyświetla stronę dokumentacji"
+    "description": "Tekst w nawigacji strony, używany do wyświetlania strony dokumentacji"
   },
   "nav.console": {
     "message": "Konsola",
-    "description": "Tekst w nawigacji strony, który wyświetla stronę konsoli"
+    "description": "Tekst w nawigacji strony, używany do wyświetlania strony konsoli"
   },
   "nav.chatgpt": {
     "message": "ChatGPT",
-    "description": "Tekst w nawigacji strony, który wyświetla stronę ChatGPT, proszę nie tłumaczyć tego pola, musi pozostać 'ChatGPT'"
+    "description": "Tekst w nawigacji strony, używany do wyświetlania strony ChatGPT, nie tłumacz tego pola, musi pozostać jako 'ChatGPT'"
   },
   "nav.deepseek": {
     "message": "DeepSeek",
-    "description": "Tekst w nawigacji strony, który wyświetla stronę DeepSeek, proszę nie tłumaczyć tego pola, musi pozostać 'DeepSeek'"
+    "description": "Tekst w nawigacji strony, używany do wyświetlania strony DeepSeek, nie tłumacz tego pola, musi pozostać jako 'DeepSeek'"
   },
   "nav.grok": {
     "message": "Grok",
-    "description": "Tekst w nawigacji strony, który wyświetla stronę Grok, proszę nie tłumaczyć tego pola, musi pozostać 'Grok'"
+    "description": "Tekst w nawigacji strony, używany do wyświetlania strony Grok, nie tłumacz tego pola, musi pozostać jako 'Grok'"
   },
   "nav.chat": {
     "message": "Czat",
-    "description": "Tekst w nawigacji strony, który wyświetla stronę czatu, proszę nie tłumaczyć tego pola, musi pozostać 'Chat'"
+    "description": "Tekst w nawigacji strony, używany do wyświetlania strony czatu, nie tłumacz tego pola, musi pozostać jako 'Chat'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "Tekst w nawigacji strony, który wyświetla stronę Midjourney, proszę nie tłumaczyć tego pola, musi pozostać 'Midjourney'"
+    "description": "Tekst w nawigacji strony, używany do wyświetlania strony Midjourney, nie tłumacz tego pola, musi pozostać jako 'Midjourney'"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Tekst w nawigacji strony, który wyświetla stronę sztuki 2D, proszę nie tłumaczyć tego pola, musi pozostać 'QRArt'"
+    "description": "Tekst w nawigacji strony, używany do wyświetlania strony sztuki 2D, nie tłumacz tego pola, musi pozostać jako 'QRArt'"
   },
   "nav.suno": {
     "message": "Suno",
-    "description": "Tekst w nawigacji strony, który wyświetla stronę Suno, proszę nie tłumaczyć tego pola, musi pozostać 'Suno'"
+    "description": "Tekst w nawigacji strony, używany do wyświetlania strony Suno, nie tłumacz tego pola, musi pozostać jako 'Suno'"
+  },
+  "nav.pixverse": {
+    "message": "Pixverse",
+    "description": "Tekst w pasku nawigacyjnym strony, który wyświetla stronę Pixverse, nie tłumaczyć tego pola, musi pozostać jako 'Pixverse'"
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "Tekst w nawigacji strony, który wyświetla stronę Flux, proszę nie tłumaczyć tego pola, musi pozostać 'Flux'"
+    "description": "Tekst w pasku nawigacyjnym strony, który wyświetla stronę Flux, nie tłumaczyć tego pola, musi pozostać jako 'Flux'"
   },
   "nav.luma": {
     "message": "Luma",
@@ -364,8 +372,8 @@
     "description": "Tekst w pasku nawigacyjnym strony, który wyświetla stronę wideo"
   },
   "nav.distribution": {
-    "message": "Zyski z polecenia",
-    "description": "Tekst w pasku nawigacyjnym strony, który wyświetla stronę zysków z polecenia"
+    "message": "Zyski z poleceń",
+    "description": "Tekst w pasku nawigacyjnym strony, który wyświetla stronę zysków z poleceń"
   },
   "nav.logOut": {
     "message": "Wyloguj się",
@@ -380,7 +388,7 @@
     "description": "Tekst w pasku nawigacyjnym strony, który wyświetla stronę ustawień"
   },
   "nav.headshots": {
-    "message": "AI Zdjęcia",
+    "message": "AI Zdjęcia tożsamości",
     "description": "Tekst w pasku nawigacyjnym strony, który wyświetla stronę konfiguracji witryny"
   },
   "nav.locale": {
@@ -405,7 +413,7 @@
   },
   "title.placeholderOfInput": {
     "message": "Proszę wpisać",
-    "description": "Placeholder dla pola wejściowego"
+    "description": "Placeholder dla pola tekstowego"
   },
   "title.allApplications": {
     "message": "Wszystkie aplikacje",
@@ -421,11 +429,11 @@
   },
   "title.buyMore": {
     "message": "Kup więcej",
-    "description": "Tytuł strony, która pozwala użytkownikowi kupić więcej"
+    "description": "Tytuł strony, która zachęca użytkownika do zakupu więcej"
   },
   "title.distribution": {
-    "message": "Zyski z polecenia",
-    "description": "Tytuł strony wyświetlającej zyski z polecenia, wskazujący, że użytkownik może zarabiać, zapraszając innych do korzystania z usługi"
+    "message": "Zyski z poleceń",
+    "description": "Tytuł strony wyświetlającej zyski z poleceń, wskazujący, że użytkownik może zarabiać, zapraszając innych do korzystania z usługi"
   },
   "title.site": {
     "message": "Konfiguracja witryny",
@@ -488,8 +496,8 @@
     "description": "Link do strony centrum"
   },
   "about.link6": {
-    "message": "Zyski z polecenia",
-    "description": "Link do strony zysków z polecenia"
+    "message": "Zalecane zyski",
+    "description": "Link do strony z zalecanymi zyskami"
   },
   "about.link7": {
     "message": "Wsparcie",
@@ -497,11 +505,11 @@
   },
   "about.link8": {
     "message": "Warunki usługi",
-    "description": "Link do strony warunków usługi"
+    "description": "Link do strony z warunkami usługi"
   },
   "about.link9": {
     "message": "Polityka prywatności",
-    "description": "Link do strony polityki prywatności"
+    "description": "Link do strony z polityką prywatności"
   },
   "theme.light": {
     "message": "Jasny",

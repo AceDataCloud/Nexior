@@ -41,7 +41,9 @@ import {
   ROUTE_GROK_CONVERSATION_NEW,
   ROUTE_GROK_CONVERSATION,
   ROUTE_KLING_INDEX,
-  ROUTE_KLING_HISTORY
+  ROUTE_KLING_HISTORY,
+  ROUTE_PIXVERSE_INDEX,
+  ROUTE_PIXVERSE_HISTORY
 } from '@/router/constants';
 import { CHAT_MODEL_ICON_CHATGPT, CHAT_MODEL_ICON_DEEPSEEK, CHAT_MODEL_ICON_GROK } from '@/constants/chat';
 import Logo from './Logo.vue';
@@ -191,6 +193,17 @@ export default defineComponent({
           displayName: this.$t('common.nav.kling'),
           logo: 'https://cdn.acedata.cloud/qpbbbb.jpg',
           routes: [ROUTE_KLING_INDEX, ROUTE_KLING_HISTORY]
+        });
+      }
+      // Add pixverse's leftmost icon
+      if (this.$store?.state?.site?.features?.pixverse?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_PIXVERSE_INDEX
+          },
+          displayName: this.$t('common.nav.pixverse'),
+          logo: 'https://cdn.acedata.cloud/viy61r.jpg',
+          routes: [ROUTE_PIXVERSE_INDEX, ROUTE_PIXVERSE_HISTORY]
         });
       }
       // Add headshots's leftmost icon

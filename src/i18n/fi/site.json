@@ -32,15 +32,15 @@
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.admins": {
-    "message": "Sivuston ylläpitäjien ID",
+    "message": "Sivuston ylläpitäjän ID",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.distributionDefaultInviterId": {
-    "message": "Oletus kutsujan ID",
+    "message": "Oletus kutsuja ID",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.distributionForceInviterId": {
-    "message": "Pakotettu kutsujan ID",
+    "message": "Pakotettu kutsuja ID",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.featuresChat": {
@@ -73,6 +73,10 @@
   },
   "field.featuresLuma": {
     "message": "Luma",
+    "description": "Näytetään muokkausruudun otsikkona"
+  },
+  "field.featuresPixverse": {
+    "message": "Pixverse",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.featuresPika": {
@@ -152,11 +156,11 @@
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "title.editDistributionDefaultInviterId": {
-    "message": "Muokkaa oletuskutsujan ID:tä",
+    "message": "Muokkaa oletuskutsujaa",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "title.editDistributionForceInviterId": {
-    "message": "Muokkaa pakotetun kutsujan ID:tä",
+    "message": "Muokkaa pakotettua kutsujaa",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "title.editQR": {
@@ -188,11 +192,11 @@
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "placeholder.editDistributionDefaultInviterId": {
-    "message": "Syötä oletuskutsujan ID",
+    "message": "Syötä oletus kutsujan ID",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "Syötä pakotetun kutsujan ID",
+    "message": "Syötä pakollinen kutsujan ID",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "message.uploadImageExceed": {
@@ -228,8 +232,8 @@
     "description": "Oletuskutsujan ID:n ohje"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "Pakotetun kutsujan käyttäjä ID, jos tämä ID on asetettu, käytetään tätä käyttäjä ID:tä kutsujana riippumatta siitä, sisältääkö jakolinkki inviter_id-parametrin.",
-    "description": "Pakotetun kutsujan ID:n ohje"
+    "message": "Pakollisen kutsujan käyttäjä ID, jos tämä ID on asetettu, käytetään tätä käyttäjä ID:tä kutsujana riippumatta siitä, sisältääkö jakolinkki inviter_id-parametrin.",
+    "description": "Pakollisen kutsujan ID:n ohje"
   },
   "message.originTip": {
     "message": "Sivuston verkkotunnus, sivuston asetukset on sidottu verkkotunnukseen, verkkotunnusta ei voi muuttaa.",
@@ -252,7 +256,7 @@
     "description": "Sivuston faviconin ohje"
   },
   "message.adminsTip": {
-    "message": "Sivuston ylläpitäjän ID, oletuksena ensimmäisenä sivuston luonut käyttäjä tulee ylläpitäjäksi, vain sivuston ylläpitäjät voivat hallita sivustoa.",
+    "message": "Sivuston ylläpitäjän ID, oletuksena ensimmäisenä sivuston luoneesta käyttäjästä tulee ylläpitäjä, vain sivuston ylläpitäjät voivat hallita sivustoa.",
     "description": "Sivuston ylläpitäjän ohje"
   },
   "message.adminsTip2": {
@@ -268,79 +272,83 @@
     "description": "Sivuston avainsanojen ohje"
   },
   "message.featuresChat": {
-    "message": "Ota käyttöön tai poista käytöstä Chat-toimintomoduuli.",
+    "message": "Avaa tai sulje Chat-toimintomoduuli.",
     "description": "Chat-toiminnon kuvaus"
   },
   "message.featuresGrok": {
-    "message": "Ota käyttöön tai poista käytöstä Grok-toimintomoduuli.",
+    "message": "Avaa tai sulje Grok-toimintomoduuli.",
     "description": "Grok-toiminnon kuvaus"
   },
   "message.featuresDeepseek": {
-    "message": "Ota käyttöön tai poista käytöstä Deepseek-toimintomoduuli.",
+    "message": "Avaa tai sulje Deepseek-toimintomoduuli.",
     "description": "Deepseek-toiminnon kuvaus"
   },
   "message.featuresChatgpt": {
-    "message": "Ota käyttöön tai poista käytöstä ChatGPT-toimintomoduuli.",
+    "message": "Avaa tai sulje ChatGPT-toimintomoduuli.",
     "description": "ChatGPT-toiminnon kuvaus"
   },
   "message.featuresMidjourney": {
-    "message": "Ota käyttöön tai poista käytöstä Midjourney-toimintomoduuli.",
+    "message": "Avaa tai sulje Midjourney-toimintomoduuli.",
     "description": "Midjourney-toiminnon kuvaus"
   },
   "message.featuresChatdoc": {
-    "message": "Ota käyttöön tai poista käytöstä Chatdoc-toimintomoduuli.",
+    "message": "Avaa tai sulje Chatdoc-toimintomoduuli.",
     "description": "Chatdoc-toiminnon kuvaus"
   },
   "message.featuresQrart": {
-    "message": "Ota käyttöön tai poista käytöstä Qrart-toimintomoduuli.",
+    "message": "Avaa tai sulje Qrart-toimintomoduuli.",
     "description": "Qrart-toiminnon kuvaus"
   },
   "message.featuresSuno": {
-    "message": "Ota käyttöön tai poista käytöstä Suno-toimintomoduuli.",
+    "message": "Avaa tai sulje Suno-toimintomoduuli.",
     "description": "Suno-toiminnon kuvaus"
   },
+  "message.featuresPixverse": {
+    "message": "Avaa tai sulje Pixverse-toimintomoduuli.",
+    "description": "Pixverse-toiminnon kuvaus"
+  },
   "message.featuresFlux": {
-    "message": "Ota käyttöön tai poista käytöstä FLux-toimintomoduuli.",
+    "message": "Avaa tai sulje FLux-toimintomoduuli.",
     "description": "FLux-toiminnon kuvaus"
   },
   "message.featuresLuma": {
-    "message": "Ota käyttöön tai poista käytöstä Luma-toimintomoduuli.",
+    "message": "Avaa tai sulje Luma-toimintomoduuli.",
     "description": "Luma-toiminnon kuvaus"
   },
   "message.featuresPika": {
-    "message": "Ota käyttöön tai poista käytöstä Pika-toimintomoduuli.",
+    "message": "Avaa tai sulje Pika-toimintomoduuli.",
     "description": "Pika-toiminnon kuvaus"
   },
   "message.featuresKling": {
-    "message": "Ota käyttöön tai poista käytöstä Kling-toimintomoduuli.",
+    "message": "Avaa tai sulje Kling-toimintomoduuli.",
     "description": "Kling-toiminnon kuvaus"
   },
   "message.featuresHailuo": {
-    "message": "Ota käyttöön tai poista käytöstä Hailuo-toimintomoduuli.",
+    "message": "Avaa tai sulje Hailuo-toimintomoduuli.",
     "description": "Hailuo-toiminnon kuvaus"
   },
   "message.featuresHeadshots": {
-    "message": "Ota käyttöön tai poista käytöstä AI-asiakirjakuvatoimintomoduuli.",
+    "message": "Avaa tai sulje AI-asiakirjakuvatoimintomoduuli.",
     "description": "AI-asiakirjakuvatoiminnon kuvaus"
   },
   "message.featuresSupport": {
-    "message": "Ota käyttöön tai poista käytöstä asiakastuki",
+    "message": "Avaa tai sulje asiakastuki",
     "description": "Tuen kuvaus"
   },
   "message.featuresI18n": {
-    "message": "Ota käyttöön tai poista käytöstä monikielinen tuki, kun se on pois päältä, käyttäjät voivat käyttää vain oletuskieltä.",
+    "message": "Ota käyttöön tai poista käytöstä monikielinen tuki, kun se on pois päältä, käyttäjä voi käyttää vain oletuskieltä.",
     "description": "Monikielisen tuen kuvaus"
   },
   "button.upload": {
     "message": "Lataa",
-    "description": "Lataus"
+    "description": "Lataa"
   },
   "button.enabled": {
-    "message": "Otetaan käyttöön",
-    "description": "Kytkin teksti, joka osoittaa, että se on otettu käyttöön"
+    "message": "Oma käytössä",
+    "description": "Kytkimen teksti, joka osoittaa, että se on käytössä"
   },
   "button.disabled": {
-    "message": "Poistettu käytöstä",
-    "description": "Kytkimen teksti, joka osoittaa, että se on poistettu käytöstä"
+    "message": "Poissa käytöstä",
+    "description": "Kytkimen teksti, joka osoittaa, että se on pois käytöstä"
   }
 }

@@ -20,11 +20,11 @@
     "description": "按钮文本，用于通过URL打开预览某个文件"
   },
   "button.seeRawImage": {
-    "message": "Originalbild anzeigen",
+    "message": "Originalbild ansehen",
     "description": "按钮文本，用于查看原始图片"
   },
   "button.seeRawVideo": {
-    "message": "Video anzeigen",
+    "message": "Video ansehen",
     "description": "按钮文本，用于查看原始图片"
   },
   "button.edit": {
@@ -136,7 +136,7 @@
     "description": "按钮文本，用于更新某些内容"
   },
   "button.view": {
-    "message": "Anzeigen",
+    "message": "Ansehen",
     "description": "按钮文本，用于查看某些内容"
   },
   "button.create": {
@@ -201,67 +201,71 @@
   },
   "entity.order": {
     "message": "Bestellung",
-    "description": "Die Bestellung der Entität, die Betrag und Dienstleistungsinformationen enthält, für die der Benutzer bezahlen muss"
+    "description": "Die Bestellung der Entität, die Betrag und Serviceinformationen enthält, für die der Benutzer bezahlen muss"
+  },
+  "message.noTasks": {
+    "message": "Keine historischen Aufgaben, bitte starten Sie eine neue Aufgabe～",
+    "description": "Nachricht, wenn keine Aufgaben vorhanden sind"
   },
   "message.usedAmount": {
     "message": "Verwendeter Betrag",
-    "description": "Zum Anzeigen des bereits verwendeten Betrags für den Dienst"
+    "description": "Zur Anzeige des bereits verwendeten Betrags für den Service"
   },
   "message.remainingAmount": {
     "message": "Verbleibender Betrag",
-    "description": "Zum Anzeigen des verbleibenden Betrags für den Dienst"
+    "description": "Zur Anzeige des verbleibenden Betrags für den Service"
   },
   "message.copied": {
     "message": "Erfolgreich kopiert",
-    "description": "Zum Anzeigen der Nachricht, dass der Inhalt erfolgreich kopiert wurde"
+    "description": "Nachricht zur Anzeige, dass der Inhalt erfolgreich kopiert wurde"
   },
   "message.restart": {
     "message": "Neu generieren",
-    "description": "Zum Anzeigen der Nachricht, dass der Inhalt erfolgreich kopiert wurde"
+    "description": "Nachricht zur Anzeige, dass der Inhalt erfolgreich kopiert wurde"
   },
   "message.confirmDelete": {
     "message": "Möchten Sie wirklich löschen?",
-    "description": "Zum Bestätigen, ob der Benutzer bestimmte Inhalte löschen möchte"
+    "description": "Nachricht zur Bestätigung, ob der Benutzer etwas löschen möchte"
   },
   "message.expiredAt": {
     "message": "Ablaufdatum",
-    "description": "Zum Anzeigen des Ablaufdatums des Dienstes"
+    "description": "Zur Anzeige des Ablaufdatums des Services"
   },
   "message.alert": {
     "message": "Warnung",
-    "description": "Zum Warnen des Benutzers"
+    "description": "Nachricht zur Warnung des Benutzers"
   },
   "message.info": {
     "message": "Freundliche Erinnerung",
-    "description": "Zum Anzeigen von Informationen"
+    "description": "Nachricht zur Anzeige von Informationen"
   },
   "message.free": {
     "message": "Kostenlos",
-    "description": "Zum Anzeigen der Nachricht, dass der Dienst kostenlos ist, was bedeutet, dass der Benutzer nicht bezahlen muss"
+    "description": "Nachricht zur Anzeige, dass der Service kostenlos ist, was bedeutet, dass der Benutzer nicht bezahlen muss"
   },
   "message.startPrice": {
     "message": "Startpreis",
-    "description": "Zum Anzeigen des niedrigsten Preises für den Dienst"
+    "description": "Nachricht zur Anzeige des niedrigsten Preises für den Service"
   },
   "message.joinDiscord": {
     "message": "Discord beitreten",
-    "description": "Zum Einladen des Benutzers, dem Discord-Kanal beizutreten"
+    "description": "Nachricht, um den Benutzer dazu zu bringen, dem Discord-Kanal beizutreten"
   },
   "message.addWeChat": {
     "message": "WeChat hinzufügen",
-    "description": "Zum Einladen des Benutzers, WeChat hinzuzufügen"
+    "description": "Nachricht, um den Benutzer dazu zu bringen, WeChat hinzuzufügen"
   },
   "message.serviceTech": {
     "message": "Technischer Support",
-    "description": "Zum Anzeigen der technischen Unterstützung des Dienstes"
+    "description": "Nachricht zur Anzeige des technischen Supports für den Service"
   },
   "message.businessCooperation": {
     "message": "Geschäftliche Zusammenarbeit",
-    "description": "Zum Anzeigen der geschäftlichen Zusammenarbeit"
+    "description": "Nachricht zur Anzeige der geschäftlichen Zusammenarbeit"
   },
   "message.noData": {
     "message": "Keine Daten",
-    "description": "Zum Anzeigen der Nachricht, dass keine Daten in der Tabelle oder Liste vorhanden sind"
+    "description": "Nachricht zur Anzeige, dass in der Tabelle oder Liste keine Daten vorhanden sind"
   },
   "nav.home": {
     "message": "Startseite",
@@ -276,8 +280,8 @@
     "description": "Text in der Navigationsleiste der Website, um die Kategorieseite anzuzeigen"
   },
   "nav.service": {
-    "message": "Dienstleistungen",
-    "description": "Text in der Navigationsleiste der Website, um die Dienstleistungsseite anzuzeigen"
+    "message": "Dienst",
+    "description": "Text in der Navigationsleiste der Website, um die Dienstseite anzuzeigen"
   },
   "nav.profile": {
     "message": "Ich",
@@ -331,9 +335,13 @@
     "message": "Suno",
     "description": "Text in der Navigationsleiste der Website, um die Suno-Seite anzuzeigen, bitte diesen Schlüssel nicht übersetzen, muss als 'Suno' beibehalten werden"
   },
+  "nav.pixverse": {
+    "message": "Pixverse",
+    "description": "Text in der Navigationsleiste der Website, um die Pixverse-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'Pixverse' beibehalten werden"
+  },
   "nav.flux": {
     "message": "Flux",
-    "description": "Text in der Navigationsleiste der Website, um die Flux-Seite anzuzeigen, bitte diesen Schlüssel nicht übersetzen, muss als 'Flux' beibehalten werden"
+    "description": "Text in der Navigationsleiste der Website, um die Flux-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'Flux' beibehalten werden"
   },
   "nav.luma": {
     "message": "Luma",
@@ -380,7 +388,7 @@
     "description": "Text in der Navigationsleiste der Website, um die Einstellungsseite anzuzeigen"
   },
   "nav.headshots": {
-    "message": "AI-Passfoto",
+    "message": "AI-Porträt",
     "description": "Text in der Navigationsleiste der Website, um die Seite für die Site-Konfiguration anzuzeigen"
   },
   "nav.locale": {
@@ -408,8 +416,8 @@
     "description": "Platzhalter für das Eingabefeld"
   },
   "title.allApplications": {
-    "message": "Alle Anwendungen",
-    "description": "Titel der Seite, die alle Anwendungen anzeigt"
+    "message": "Alle Anträge",
+    "description": "Titel der Seite, die alle Anträge anzeigt"
   },
   "title.allOrders": {
     "message": "Alle Bestellungen",
@@ -449,7 +457,7 @@
   },
   "about.title1": {
     "message": "Kontaktieren Sie uns",
-    "description": "Titel des Abschnitts, der die Kontaktdaten anzeigt"
+    "description": "Titel des Abschnitts, der die Kontaktinformationen anzeigt"
   },
   "about.title2": {
     "message": "Ressourcen",
@@ -489,58 +497,58 @@
   },
   "about.link6": {
     "message": "Empfohlene Einnahmen",
-    "description": "Link zur Seite für empfohlene Einnahmen"
+    "description": "Link zur Seite über empfohlene Einnahmen"
   },
   "about.link7": {
     "message": "Unterstützung",
-    "description": "Link zur Support-Seite"
+    "description": "Link zur Unterstützungsseite"
   },
   "about.link8": {
     "message": "Nutzungsbedingungen",
-    "description": "Link zur Seite der Nutzungsbedingungen"
+    "description": "Link zur Seite mit den Nutzungsbedingungen"
   },
   "about.link9": {
     "message": "Datenschutzrichtlinie",
-    "description": "Link zur Seite der Datenschutzrichtlinie"
+    "description": "Link zur Seite mit der Datenschutzrichtlinie"
   },
   "theme.light": {
     "message": "Helles Thema",
-    "description": "Der Name des hellen Themas"
+    "description": "Name des hellen Themas"
   },
   "theme.dark": {
     "message": "Dunkles Thema",
-    "description": "Der Name des dunklen Themas"
+    "description": "Name des dunklen Themas"
   },
   "theme.system": {
     "message": "System",
-    "description": "Der Name des Systemthemas, das anzeigt, dass das Thema automatisch basierend auf den Systemeinstellungen gewechselt wird"
+    "description": "Name des Systemthemas, das anzeigt, dass das Thema basierend auf den Systemeinstellungen automatisch gewechselt wird"
   },
   "settings.general": {
     "message": "Allgemeine Einstellungen",
-    "description": "Der Titel des Abschnitts für allgemeine Einstellungen auf der Einstellungsseite"
+    "description": "Titel des Abschnitts für allgemeine Einstellungen auf der Einstellungsseite"
   },
   "settings.language": {
     "message": "Sprache",
-    "description": "Der Titel des Abschnitts für Spracheinstellungen auf der Einstellungsseite"
+    "description": "Titel des Abschnitts für Spracheinstellungen auf der Einstellungsseite"
   },
   "settings.theme": {
     "message": "Thema",
-    "description": "Der Titel des Abschnitts für Themaeinstellungen auf der Einstellungsseite"
+    "description": "Titel des Abschnitts für Themaeinstellungen auf der Einstellungsseite"
   },
   "settings.seo": {
     "message": "SEO-Einstellungen",
-    "description": "Der Titel des Abschnitts für SEO-Einstellungen auf der Einstellungsseite"
+    "description": "Titel des Abschnitts für SEO-Einstellungen auf der Einstellungsseite"
   },
   "settings.site": {
-    "message": "Website-Einstellungen",
-    "description": "Der Titel des Abschnitts für Website-Einstellungen auf der Einstellungsseite"
+    "message": "Site-Einstellungen",
+    "description": "Titel des Abschnitts für Site-Einstellungen auf der Einstellungsseite"
   },
   "settings.distribution": {
     "message": "Verteilungseinstellungen",
-    "description": "Der Titel des Abschnitts für Verteilungseinstellungen auf der Einstellungsseite"
+    "description": "Titel des Abschnitts für Verteilungseinstellungen auf der Einstellungsseite"
   },
   "settings.function": {
     "message": "Funktionseinstellungen",
-    "description": "Der Titel des Abschnitts für Funktionseinstellungen auf der Einstellungsseite"
+    "description": "Titel des Abschnitts für Funktionseinstellungen auf der Einstellungsseite"
   }
 }

@@ -11,6 +11,7 @@
         'luma',
         'pika',
         'kling',
+        'pixverse',
         'flux',
         'hailuo',
         'headshots'

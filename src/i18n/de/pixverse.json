@@ -1,0 +1,302 @@
+{
+  "name.taskId": {
+    "message": "Aufgaben-ID",
+    "description": "ID der Aufgabe"
+  },
+  "name.type": {
+    "message": "Typ",
+    "description": "Der Inhaltstyp des zu generierenden Pixverse-Videos, wie 'Link', 'Text' usw."
+  },
+  "name.failure": {
+    "message": "Fehler",
+    "description": "Der Fehlerstatus der Aufgabe"
+  },
+  "name.failureReason": {
+    "message": "Fehlerursache",
+    "description": "Der Grund für das Scheitern der Aufgabe"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Der Status der Aufgabe"
+  },
+  "name.traceId": {
+    "message": "Verfolgungs-ID",
+    "description": "Die Verfolgungs-ID der Aufgabe"
+  },
+  "name.createdAt": {
+    "message": "Erstellt am",
+    "description": "Datum und Uhrzeit der Erstellung des Pixverse-Videos"
+  },
+  "name.style": {
+    "message": "Stil",
+    "description": "Der Stil des zu generierenden Videos"
+  },
+  "name.style1": {
+    "message": "Cyberpunk",
+    "description": "Der Stil des zu generierenden Videos"
+  },
+  "name.style2": {
+    "message": "Anime",
+    "description": "Der Stil des zu generierenden Videos"
+  },
+  "name.style3": {
+    "message": "Comic",
+    "description": "Der Stil des zu generierenden Videos"
+  },
+  "name.style4": {
+    "message": "Knetmasse",
+    "description": "Der Stil des zu generierenden Videos"
+  },
+  "name.style5": {
+    "message": "3D-Animation",
+    "description": "Der Stil des zu generierenden Videos"
+  },
+  "name.motion": {
+    "message": "Videomodus",
+    "description": "Der Modus des zu generierenden Videos"
+  },
+  "name.motion1": {
+    "message": "Standard",
+    "description": "Der Modus des zu generierenden Videos"
+  },
+  "name.motion2": {
+    "message": "Schnell",
+    "description": "Der Modus des zu generierenden Videos"
+  },
+  "name.quality": {
+    "message": "Videoqualität",
+    "description": "Die Qualität des zu generierenden Videos"
+  },
+  "name.startImage": {
+    "message": "Referenzbild für den ersten Frame",
+    "description": "Das Referenzbild für das zu generierende Video"
+  },
+  "name.videoUrl": {
+    "message": "Benutzerdefiniertes Video",
+    "description": "Benutzerdefiniertes Video"
+  },
+  "name.prompt": {
+    "message": "Videoaufforderung",
+    "description": "Die Eingabeaufforderung für den Inhalt"
+  },
+  "name.duration": {
+    "message": "Videodauer",
+    "description": "Die Dauer des Videos"
+  },
+  "name.model": {
+    "message": "Modellversion",
+    "description": "Die Modellversion, die für die Generierung des Videos verwendet wird"
+  },
+  "name.seed": {
+    "message": "Saat",
+    "description": "Der Zufallswert für die Videoerstellung"
+  },
+  "name.mode": {
+    "message": "Videomodus",
+    "description": "Der Modus, der für die Generierung des Videos verwendet wird"
+  },
+  "name.effect": {
+    "message": "Videoeffekt",
+    "description": "Der Name des Stilparameters, um zwischen verschiedenen Versionen oder Stilen des Modells zu wechseln"
+  },
+  "name.ingredientsModel": {
+    "message": "Zutatenmodell",
+    "description": "Die Modellversion, die für die Generierung des Videos verwendet wird"
+  },
+  "name.pixverseBot": {
+    "message": "Pixverse Bot",
+    "description": "Der Name des Pixverse-Videogenerators"
+  },
+  "description.ingredients": {
+    "message": "Wenn Sie mehrere Bilder hochladen möchten, um Ihr eigenes Video zu erstellen, aktivieren Sie diese Schaltfläche.",
+    "description": "Beschreibung des Parameters 'ingredients'"
+  },
+  "description.imageUrl": {
+    "message": "Bei der Erstellung eines Videos mit mehreren Bildern muss eine Vielzahl von Bildern hochgeladen werden.",
+    "description": "Beschreibung des Parameters 'imageUrl'"
+  },
+  "description.prompt": {
+    "message": "Die Eingabeaufforderung für die Generierung von Pixverse-Videos",
+    "description": "Beschreibung des Parameters 'prompt'"
+  },
+  "description.negativePrompt": {
+    "message": "Negativer Textprompt, optional, nicht mehr als 200 Zeichen",
+    "description": "Beschreibung des Parameters 'negativePrompt'"
+  },
+  "description.uploadStartImage": {
+    "message": "Laden Sie das Bild des ersten Frames als Referenz hoch, das endgültige Video wird sich auf den ersten Frame beziehen.",
+    "description": "Beschreibung des Hochladeparameters"
+  },
+  "description.uploadEndImage": {
+    "message": "Laden Sie das Bild des ersten Frames als Referenz hoch, das endgültige Video wird sich auf den ersten Frame beziehen.",
+    "description": "Beschreibung des Hochladeparameters"
+  },
+  "description.seed": {
+    "message": "Der Saatwert für die Videoerstellung. Wenn nicht festgelegt, wird ein zufälliger Wert verwendet.",
+    "description": "Beschreibung des Hochladeparameters"
+  },
+  "status.pending": {
+    "message": "Ausstehend",
+    "description": "Der Wartestatus der Aufgabe"
+  },
+  "status.processing": {
+    "message": "Wird bearbeitet",
+    "description": "Der Bearbeitungsstatus der Aufgabe"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Bitte auswählen...",
+    "description": "Platzhalter für die Eingabe von Füllrauschen"
+  },
+  "placeholder.select": {
+    "message": "Auswählen",
+    "description": "Platzhaltertext im Auswahlfeld"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Bitte auswählen...",
+    "description": "Platzhalter für das Füllniveau"
+  },
+  "placeholder.prompt": {
+    "message": "Geben Sie die Eingabeaufforderung für den Stil des zu generierenden Videos ein, z. B.: quiver",
+    "description": "Platzhaltertext im Eingabefeld"
+  },
+  "placeholder.negativePrompt": {
+    "message": "Geben Sie die negative Eingabeaufforderung für den Stil des zu generierenden Videos ein, nicht mehr als 200 Zeichen",
+    "description": "Platzhaltertext im Eingabefeld"
+  },
+  "placeholder.position": {
+    "message": "Bitte auswählen...",
+    "description": "Platzhalter für die Positionseingabe"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Bitte auswählen...",
+    "description": "Platzhalter für das Seitenverhältnis"
+  },
+  "placeholder.preset": {
+    "message": "Bitte auswählen...",
+    "description": "Platzhalter für die Voreinstellung"
+  },
+  "placeholder.markerShape": {
+    "message": "Bitte auswählen...",
+    "description": "Platzhalter für die Eingabe der Markierungsform"
+  },
+  "placeholder.rotate": {
+    "message": "Bitte auswählen...",
+    "description": "Platzhalter für die Eingabe der Rotation"
+  },
+  "placeholder.subMarker": {
+    "message": "Bitte auswählen...",
+    "description": "Platzhalter für die Eingabe des Untermarkierungs"
+  },
+  "button.generate": {
+    "message": "Generieren",
+    "description": "Button-Text zum Generieren von Pixverse-Videos"
+  },
+  "button.extend": {
+    "message": "Video erweitern",
+    "description": "Button-Text zum Erweitern des Videos"
+  },
+  "button.download": {
+    "message": "Video herunterladen",
+    "description": "Button-Text zum Herunterladen des Videos"
+  },
+  "button.uploadImageUrl": {
+    "message": "Bild hochladen",
+    "description": "Button-Text zum Hochladen eines Bildes"
+  },
+  "button.uploadVideoUrl": {
+    "message": "Video hochladen",
+    "description": "Button-Text zum Hochladen eines Videos"
+  },
+  "button.uploadReferences": {
+    "message": "Hochladen",
+    "description": "Button-Text, der es dem Benutzer ermöglicht, Referenzen hochzuladen"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Maximal 1 Bild kann hochgeladen werden",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Bilder das Limit überschreitet"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Bild erfolgreich hochgeladen",
+    "description": "Erfolgsmeldung, wenn ein Bild erfolgreich hochgeladen wurde"
+  },
+  "message.uploadReferencesError": {
+    "message": "Bild hochladen fehlgeschlagen, bitte später erneut versuchen",
+    "description": "Fehlermeldung, wenn das Hochladen eines Bildes fehlschlägt"
+  },
+  "message.startingTask": {
+    "message": "Starte Aufgabe...",
+    "description": "Nachricht, wenn die Zeichnungsaufgabe beginnt"
+  },
+  "message.startTaskSuccess": {
+    "message": "Aufgabe erfolgreich gestartet",
+    "description": "Erfolgsmeldung, wenn die Aufgabe erfolgreich gestartet wurde"
+  },
+  "message.startTaskFailed": {
+    "message": "Aufgabe konnte nicht gestartet werden, bitte kontaktieren Sie den Administrator",
+    "description": "Fehlermeldung, wenn das Starten der Zeichnungsaufgabe fehlschlägt"
+  },
+  "message.usedUp": {
+    "message": "Ihr Guthaben ist aufgebraucht, bitte kaufen Sie mehr Guthaben, um fortzufahren",
+    "description": "Nachricht, wenn das Guthaben aufgebraucht ist"
+  },
+  "message.generating": {
+    "message": "Wird generiert...",
+    "description": "Nachricht, wenn das Bild generiert wird"
+  },
+  "message.downloadVideo": {
+    "message": "Dieses Video herunterladen",
+    "description": "Nachricht, wenn das Bild generiert wird"
+  },
+  "message.extendVideo": {
+    "message": "Dieses Video weiter generieren",
+    "description": "Nachricht, wenn das Bild generiert wird"
+  },
+  "message.generateFailed": {
+    "message": "Bildgenerierung fehlgeschlagen",
+    "description": "Nachricht, wenn die Bildgenerierung fehlschlägt"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Die Anzahl der hochgeladenen Erstbildbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Erstbildbilder das Limit überschreitet"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Die hochgeladene Dateigröße darf 10 MB nicht überschreiten!",
+    "description": "Fehlermeldung, wenn die hochgeladene Dateigröße 10 MB überschreitet"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Die hochgeladene Datei muss im MP4-Format sein!",
+    "description": "Fehlermeldung, wenn die hochgeladene Datei nicht im MP4-Format ist"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "Die Anzahl der hochgeladenen Erstbildbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Erstbildbilder das Limit überschreitet"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Die Anzahl der hochgeladenen Endbildbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Endbildbilder das Limit überschreitet"
+  },
+  "message.uploadStartImageError": {
+    "message": "Hochladen des Erstbildes fehlgeschlagen",
+    "description": "Fehlermeldung, wenn das Hochladen des Erstbildes fehlschlägt"
+  },
+  "message.uploadVideoError": {
+    "message": "Hochladen des Videos fehlgeschlagen",
+    "description": "Fehlermeldung, wenn das Hochladen des Videos fehlschlägt"
+  },
+  "message.uploadEndImageError": {
+    "message": "Hochladen des Endbildes fehlgeschlagen",
+    "description": "Fehlermeldung, wenn das Hochladen des Endbildes fehlschlägt"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Hochladen des Dokuments fehlgeschlagen",
+    "description": "Fehlermeldung, wenn das Hochladen des Dokuments fehlschlägt"
+  },
+  "message.noOperations": {
+    "message": "Keine verfügbaren Operationen",
+    "description": "Nachricht, wenn keine verfügbaren Operationen vorhanden sind"
+  },
+  "message.noTasks": {
+    "message": "Keine historischen Aufgaben, bitte klicken Sie links auf Video generieren",
+    "description": "Nachricht, wenn keine Aufgaben vorhanden sind"
+  }
+}

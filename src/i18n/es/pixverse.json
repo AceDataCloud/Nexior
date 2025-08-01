@@ -1,0 +1,302 @@
+{
+  "name.taskId": {
+    "message": "ID de tarea",
+    "description": "ID de la tarea"
+  },
+  "name.type": {
+    "message": "Tipo",
+    "description": "Tipo de contenido del video Pixverse a generar, como 'enlace', 'texto', etc."
+  },
+  "name.failure": {
+    "message": "Fallo",
+    "description": "Estado de fallo de la tarea"
+  },
+  "name.failureReason": {
+    "message": "Razón del fallo",
+    "description": "Razón del fallo de la tarea"
+  },
+  "name.status": {
+    "message": "Estado",
+    "description": "Estado de la tarea"
+  },
+  "name.traceId": {
+    "message": "ID de seguimiento",
+    "description": "ID de seguimiento de la tarea"
+  },
+  "name.createdAt": {
+    "message": "Fecha de creación",
+    "description": "Fecha y hora en que se generó el video Pixverse"
+  },
+  "name.style": {
+    "message": "Estilo",
+    "description": "Estilo del video a generar"
+  },
+  "name.style1": {
+    "message": "Ciberpunk",
+    "description": "Estilo del video a generar"
+  },
+  "name.style2": {
+    "message": "Anime",
+    "description": "Estilo del video a generar"
+  },
+  "name.style3": {
+    "message": "Cómic",
+    "description": "Estilo del video a generar"
+  },
+  "name.style4": {
+    "message": "Arcilla",
+    "description": "Estilo del video a generar"
+  },
+  "name.style5": {
+    "message": "Animación 3D",
+    "description": "Estilo del video a generar"
+  },
+  "name.motion": {
+    "message": "Modo de video",
+    "description": "Modo del video a generar"
+  },
+  "name.motion1": {
+    "message": "Estándar",
+    "description": "Modo del video a generar"
+  },
+  "name.motion2": {
+    "message": "Rápido",
+    "description": "Modo del video a generar"
+  },
+  "name.quality": {
+    "message": "Calidad del video",
+    "description": "Calidad del video a generar"
+  },
+  "name.startImage": {
+    "message": "Imagen de referencia inicial",
+    "description": "Imagen de referencia para el video a generar"
+  },
+  "name.videoUrl": {
+    "message": "Video personalizado",
+    "description": "Video personalizado"
+  },
+  "name.prompt": {
+    "message": "Sugerencia de video",
+    "description": "Sugerencia para la entrada de contenido"
+  },
+  "name.duration": {
+    "message": "Duración del video",
+    "description": "Duración del video"
+  },
+  "name.model": {
+    "message": "Versión del modelo",
+    "description": "Versión del modelo utilizada para generar el video"
+  },
+  "name.seed": {
+    "message": "Semilla",
+    "description": "Semilla aleatoria para generar el video"
+  },
+  "name.mode": {
+    "message": "Modo de video",
+    "description": "Modo utilizado para generar el video"
+  },
+  "name.effect": {
+    "message": "Efecto de video",
+    "description": "Nombre del parámetro de estilo, utilizado para alternar entre diferentes versiones o estilos de modelo"
+  },
+  "name.ingredientsModel": {
+    "message": "Modelo de ingredientes",
+    "description": "Versión del modelo utilizada para generar el video"
+  },
+  "name.pixverseBot": {
+    "message": "Pixverse Bot",
+    "description": "Nombre del generador de videos Pixverse"
+  },
+  "description.ingredients": {
+    "message": "Si desea subir varias imágenes para generar su propio video, active este botón.",
+    "description": "Descripción del parámetro 'ingredients'"
+  },
+  "description.imageUrl": {
+    "message": "En la tarea de creación de video con múltiples imágenes, debe subir varias imágenes.",
+    "description": "Descripción del parámetro 'imageUrl'"
+  },
+  "description.prompt": {
+    "message": "Palabras clave para generar videos Pixverse",
+    "description": "Descripción del parámetro 'prompt'"
+  },
+  "description.negativePrompt": {
+    "message": "Texto de sugerencia negativa, opcional, no puede exceder 200 caracteres",
+    "description": "Descripción del parámetro 'negativePrompt'"
+  },
+  "description.uploadStartImage": {
+    "message": "Suba la imagen de referencia inicial para la generación, el video final se generará en base a la imagen inicial",
+    "description": "Descripción del parámetro de referencia de carga"
+  },
+  "description.uploadEndImage": {
+    "message": "Suba la imagen de referencia final para la generación, el video final se generará en base a la imagen final",
+    "description": "Descripción del parámetro de referencia de carga"
+  },
+  "description.seed": {
+    "message": "Valor de semilla para generar el video. Si no se establece, se utilizará una semilla aleatoria.",
+    "description": "Descripción del parámetro de referencia de carga"
+  },
+  "status.pending": {
+    "message": "Pendiente",
+    "description": "Estado de espera de la tarea"
+  },
+  "status.processing": {
+    "message": "Procesando",
+    "description": "Estado de espera de la tarea"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Seleccione...",
+    "description": "Marcador de entrada para ruido de relleno"
+  },
+  "placeholder.select": {
+    "message": "Seleccionar",
+    "description": "Texto de marcador en el campo de selección"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Seleccione...",
+    "description": "Marcador de entrada para nivel de relleno"
+  },
+  "placeholder.prompt": {
+    "message": "Ingrese las palabras clave para el estilo del video a generar, por ejemplo: quiver",
+    "description": "Texto de marcador en el campo de sugerencia"
+  },
+  "placeholder.negativePrompt": {
+    "message": "Ingrese las palabras clave negativas para el estilo del video a generar, no exceda 200 caracteres",
+    "description": "Texto de marcador en el campo de sugerencia"
+  },
+  "placeholder.position": {
+    "message": "Seleccione...",
+    "description": "Marcador de entrada para posición"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Seleccione...",
+    "description": "Marcador de entrada para relación de aspecto"
+  },
+  "placeholder.preset": {
+    "message": "Seleccione...",
+    "description": "Marcador de entrada para preajuste"
+  },
+  "placeholder.markerShape": {
+    "message": "Seleccione...",
+    "description": "Marcador de entrada para forma de marcador"
+  },
+  "placeholder.rotate": {
+    "message": "Seleccione...",
+    "description": "Marcador de entrada para rotación"
+  },
+  "placeholder.subMarker": {
+    "message": "Seleccione...",
+    "description": "Marcador de entrada para sub-marcador"
+  },
+  "button.generate": {
+    "message": "Generar",
+    "description": "Texto del botón para generar un video de Pixverse"
+  },
+  "button.extend": {
+    "message": "Extender video",
+    "description": "Texto del botón para extender el video"
+  },
+  "button.download": {
+    "message": "Descargar video",
+    "description": "Texto del botón para descargar el video"
+  },
+  "button.uploadImageUrl": {
+    "message": "Subir imagen",
+    "description": "Texto del botón para subir una imagen"
+  },
+  "button.uploadVideoUrl": {
+    "message": "Subir video",
+    "description": "Texto del botón para subir un video"
+  },
+  "button.uploadReferences": {
+    "message": "Subir",
+    "description": "Texto del botón que permite al usuario subir referencias"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Se puede subir un máximo de 1 imagen",
+    "description": "Mensaje de error cuando la cantidad de imágenes subidas excede el límite"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Imagen subida con éxito",
+    "description": "Mensaje de éxito cuando la imagen se sube correctamente"
+  },
+  "message.uploadReferencesError": {
+    "message": "Error al subir la imagen, por favor intente de nuevo más tarde",
+    "description": "Mensaje de error cuando la subida de la imagen falla"
+  },
+  "message.startingTask": {
+    "message": "Iniciando tarea...",
+    "description": "Mensaje al comenzar la tarea de dibujo"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tarea de generación iniciada con éxito",
+    "description": "Mensaje de éxito al iniciar la tarea"
+  },
+  "message.startTaskFailed": {
+    "message": "Error al iniciar la tarea, por favor contacte al administrador",
+    "description": "Mensaje de error al fallar al iniciar la tarea de dibujo"
+  },
+  "message.usedUp": {
+    "message": "Sus créditos se han agotado, por favor compre más créditos para continuar",
+    "description": "Mensaje cuando se han agotado los créditos"
+  },
+  "message.generating": {
+    "message": "Generando...",
+    "description": "Mensaje mientras se está generando la imagen"
+  },
+  "message.downloadVideo": {
+    "message": "Descargar este video",
+    "description": "Mensaje mientras se está generando la imagen"
+  },
+  "message.extendVideo": {
+    "message": "Continuar generando este video",
+    "description": "Mensaje mientras se está generando la imagen"
+  },
+  "message.generateFailed": {
+    "message": "Error al generar la imagen",
+    "description": "Mensaje cuando la generación de la imagen falla"
+  },
+  "message.uploadVideoExceed": {
+    "message": "La cantidad de imágenes de la primera trama subidas excede el límite",
+    "description": "Mensaje de error cuando la cantidad de imágenes de la primera trama subidas excede el límite"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "¡El tamaño del archivo subido no puede exceder 10MB!",
+    "description": "Mensaje de error cuando el tamaño del archivo subido excede 10MB"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "¡El archivo subido debe estar en formato MP4!",
+    "description": "Mensaje de error cuando el archivo subido no está en formato MP4"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "La cantidad de imágenes de la primera trama subidas excede el límite",
+    "description": "Mensaje de error cuando la cantidad de imágenes de la primera trama subidas excede el límite"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "La cantidad de imágenes de la última trama subidas excede el límite",
+    "description": "Mensaje de error cuando la cantidad de imágenes de la última trama subidas excede el límite"
+  },
+  "message.uploadStartImageError": {
+    "message": "Error al subir la imagen de la primera trama",
+    "description": "Mensaje de error cuando falla la subida de la imagen de la primera trama"
+  },
+  "message.uploadVideoError": {
+    "message": "Error al subir el video",
+    "description": "Mensaje de error cuando falla la subida de la imagen de la primera trama"
+  },
+  "message.uploadEndImageError": {
+    "message": "Error al subir la imagen de la última trama",
+    "description": "Mensaje de error cuando falla la subida de la imagen de la última trama"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Error al subir documentos",
+    "description": "Mensaje de error cuando falla la subida de documentos"
+  },
+  "message.noOperations": {
+    "message": "No hay operaciones disponibles",
+    "description": "Mensaje cuando no hay operaciones disponibles"
+  },
+  "message.noTasks": {
+    "message": "No hay tareas históricas, por favor haga clic en el botón de generar video a la izquierda",
+    "description": "Mensaje cuando no hay tareas"
+  }
+}

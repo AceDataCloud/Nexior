@@ -5,6 +5,7 @@ import { IQrartState } from '../qrart/models';
 import { ILumaState } from '../luma/models';
 import { IPikaState } from '../pika/models';
 import { IKlingState } from '../kling/models';
+import { IPixverseState } from '../pixverse/models';
 import { IFluxState } from '../flux/models';
 import { IHailuoState } from '../hailuo/models';
 import { IHeadshotsState } from '../headshots/models';
@@ -43,6 +44,7 @@ export interface IAppState {
   luma: ILumaState;
   pika: IPikaState;
   kling: IKlingState;
+  pixverse: IPixverseState;
   flux: IFluxState;
   hailuo: IHailuoState;
   headshots: IHeadshotsState;

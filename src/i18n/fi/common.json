@@ -149,11 +149,11 @@
   },
   "button.finish": {
     "message": "Valmis",
-    "description": "Painikkeen teksti, jota käytetään joidenkin asioiden viimeistelemiseen"
+    "description": "Painikkeen teksti, jota käytetään joidenkin asioiden loppuunsaattamiseen"
   },
   "entity.id": {
     "message": "ID",
-    "description": "Käytetään näyttämään entiteetin ainutlaatuinen tunniste"
+    "description": "Käytetään näyttämään entiteetin ainutkertainen tunniste"
   },
   "entity.type": {
     "message": "Tyyppi",
@@ -203,6 +203,10 @@
     "message": "Tilaus",
     "description": "Entiteetin tilaus, tilaus sisältää summan, palvelutiedot, käyttäjän on maksettava siitä"
   },
+  "message.noTasks": {
+    "message": "Ei historiallisia tehtäviä, aloita uusi tehtävä～",
+    "description": "Viesti, kun ei ole tehtäviä"
+  },
   "message.usedAmount": {
     "message": "Käytetty summa",
     "description": "Näyttää käytetyn summan palvelusta"
@@ -213,15 +217,15 @@
   },
   "message.copied": {
     "message": "Kopioitu onnistuneesti",
-    "description": "Näyttää viestin, että sisältö on kopioitu onnistuneesti"
+    "description": "Viesti, joka ilmoittaa, että sisältö on kopioitu onnistuneesti"
   },
   "message.restart": {
     "message": "Uudelleenluonti",
-    "description": "Näyttää viestin, että sisältö on kopioitu onnistuneesti"
+    "description": "Viesti, joka ilmoittaa, että sisältö on kopioitu onnistuneesti"
   },
   "message.confirmDelete": {
     "message": "Haluatko varmasti poistaa?",
-    "description": "Vahvistaa käyttäjän halua poistaa tietty sisältö"
+    "description": "Viesti, joka vahvistaa käyttäjän haluavan poistaa tiettyä sisältöä"
   },
   "message.expiredAt": {
     "message": "Vanhentumisaika",
@@ -229,39 +233,39 @@
   },
   "message.alert": {
     "message": "Varoitus",
-    "description": "Varoittaa käyttäjää"
+    "description": "Viesti, joka varoittaa käyttäjää"
   },
   "message.info": {
     "message": "Ystävällinen muistutus",
-    "description": "Näyttää tietoa"
+    "description": "Viesti, joka näyttää tietoa"
   },
   "message.free": {
     "message": "Ilmainen",
-    "description": "Näyttää viestin, että palvelu on ilmainen, käyttäjän ei tarvitse maksaa"
+    "description": "Viesti, joka ilmoittaa, että palvelu on ilmainen, käyttäjän ei tarvitse maksaa"
   },
   "message.startPrice": {
     "message": "Alkaen hinta",
-    "description": "Näyttää palvelun alhaisimman hinnan"
+    "description": "Viesti, joka näyttää palvelun alhaisimman hinnan"
   },
   "message.joinDiscord": {
     "message": "Liity Discordiin",
-    "description": "Kutsuu käyttäjää liittymään Discord-kanavaan"
+    "description": "Viesti, joka kehottaa käyttäjää liittymään Discord-kanavalle"
   },
   "message.addWeChat": {
     "message": "Lisää WeChat",
-    "description": "Kutsuu käyttäjää lisäämään WeChat"
+    "description": "Viesti, joka kehottaa käyttäjää lisäämään WeChatin"
   },
   "message.serviceTech": {
     "message": "Tekninen tuki",
-    "description": "Näyttää palvelun teknisen tuen"
+    "description": "Viesti, joka näyttää palvelun teknisen tuen"
   },
   "message.businessCooperation": {
     "message": "Liiketoimintayhteistyö",
-    "description": "Näyttää liiketoimintayhteistyön"
+    "description": "Viesti, joka näyttää liiketoimintayhteistyön"
   },
   "message.noData": {
     "message": "Ei tietoja",
-    "description": "Näyttää viestin, että taulukossa tai luettelossa ei ole tietoja"
+    "description": "Viesti, joka näyttää, että taulukossa tai luettelossa ei ole tietoja"
   },
   "nav.home": {
     "message": "Etusivu",
@@ -300,8 +304,8 @@
     "description": "Verkkosivuston navigointipalkin teksti, joka näyttää dokumenttisivun"
   },
   "nav.console": {
-    "message": "Konsoli",
-    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää konsolisivun"
+    "message": "Ohjauspaneeli",
+    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää ohjauspaneelisivun"
   },
   "nav.chatgpt": {
     "message": "ChatGPT",
@@ -331,9 +335,13 @@
     "message": "Suno",
     "description": "Verkkosivuston navigointipalkin teksti, joka näyttää Suno-sivun, älä käännä tätä kenttää, se on säilytettävä 'Suno'"
   },
+  "nav.pixverse": {
+    "message": "Pixverse",
+    "description": "网站导航栏中的文本，用于显示Pixverse页面，请不要翻译此字段，必须保持为'Pixverse'"
+  },
   "nav.flux": {
     "message": "Flux",
-    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää Flux-sivun, älä käännä tätä kenttää, se on säilytettävä 'Flux'"
+    "description": "网站导航栏中的文本，用于显示Flux页面，请不要翻译此字段，必须保持为'Flux'"
   },
   "nav.luma": {
     "message": "Luma",
@@ -380,7 +388,7 @@
     "description": "网站导航栏中的文本，用于显示设置页面"
   },
   "nav.headshots": {
-    "message": "AI-profiilikuva",
+    "message": "AI-passikuvat",
     "description": "网站导航栏中的文本，用于显示站点配置页面"
   },
   "nav.locale": {
@@ -396,7 +404,7 @@
     "description": "网站导航栏中的文本，用于切换到深色主题"
   },
   "title.alert": {
-    "message": "Ilmoitus",
+    "message": "Hälytys",
     "description": "警报消息的标题"
   },
   "title.placeholderOfSelect": {
@@ -444,7 +452,7 @@
     "description": "显示API服务所有使用记录的页面标题"
   },
   "title.allCredentials": {
-    "message": "Tunnistetiedot",
+    "message": "Todistukset",
     "description": "显示所有凭证的页面标题，这些凭证用于访问API"
   },
   "about.title1": {
@@ -489,19 +497,19 @@
   },
   "about.link6": {
     "message": "Suositustulot",
-    "description": "推荐收益页面的链接"
+    "description": "Suositustulot-sivun linkki"
   },
   "about.link7": {
     "message": "Tuki",
-    "description": "支持页面的链接"
+    "description": "Tuki-sivun linkki"
   },
   "about.link8": {
-    "message": "Palveluehdot",
-    "description": "服务条款页面的链接"
+    "message": "Käyttöehdot",
+    "description": "Käyttöehdot-sivun linkki"
   },
   "about.link9": {
     "message": "Tietosuojakäytäntö",
-    "description": "隐私政策页面的链接"
+    "description": "Tietosuojakäytäntö-sivun linkki"
   },
   "theme.light": {
     "message": "Vaalea",
@@ -517,30 +525,30 @@
   },
   "settings.general": {
     "message": "Yleiset asetukset",
-    "description": "Asetussivun yleisten asetusten osion otsikko"
+    "description": "Asetussivun yleiset asetukset -osion otsikko"
   },
   "settings.language": {
     "message": "Kieli",
-    "description": "Asetussivun kieliasetusten osion otsikko"
+    "description": "Asetussivun kieliasetukset -osion otsikko"
   },
   "settings.theme": {
     "message": "Teema",
-    "description": "Asetussivun teema-asetusten osion otsikko"
+    "description": "Asetussivun teema-asetukset -osion otsikko"
   },
   "settings.seo": {
     "message": "SEO-asetukset",
-    "description": "Asetussivun SEO-asetusten osion otsikko"
+    "description": "Asetussivun SEO-asetukset -osion otsikko"
   },
   "settings.site": {
     "message": "Sivuston asetukset",
-    "description": "Asetussivun sivuston asetusten osion otsikko"
+    "description": "Asetussivun sivuston asetukset -osion otsikko"
   },
   "settings.distribution": {
     "message": "Jakeluasetukset",
-    "description": "Asetussivun jakeluasetusten osion otsikko"
+    "description": "Asetussivun jakeluasetukset -osion otsikko"
   },
   "settings.function": {
     "message": "Toiminta-asetukset",
-    "description": "Asetussivun toiminta-asetusten osion otsikko"
+    "description": "Asetussivun toiminta-asetukset -osion otsikko"
   }
 }

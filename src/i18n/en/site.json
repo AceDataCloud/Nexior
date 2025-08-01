@@ -75,6 +75,10 @@
     "message": "Luma",
     "description": "Displayed as the title in the editing box"
   },
+  "field.featuresPixverse": {
+    "message": "Pixverse",
+    "description": "Displayed as the title in the editing box"
+  },
   "field.featuresPika": {
     "message": "Pika",
     "description": "Displayed as the title in the editing box"
@@ -189,7 +193,7 @@
   },
   "placeholder.editDistributionDefaultInviterId": {
     "message": "Please enter the default inviter ID",
-    "description": "Displayed as the title in the editing box"
+    "description": "Displayed as the title in the edit box"
   },
   "placeholder.editDistributionForceInviterId": {
     "message": "Please enter the forced inviter ID",
@@ -197,11 +201,11 @@
   },
   "message.uploadImageExceed": {
     "message": "Image upload exceeds the limit",
-    "description": "Prompt indicating that the image upload exceeds the limit"
+    "description": "Prompt for exceeding image upload limit"
   },
   "message.uploadImageError": {
-    "message": "Image upload error",
-    "description": "Prompt indicating an error during image upload"
+    "message": "Error uploading image",
+    "description": "Prompt for image upload error"
   },
   "message.editLogoTip": {
     "message": "Recommended size: 200*60px",
@@ -221,35 +225,35 @@
   },
   "message.atLeastOneAdmin": {
     "message": "At least one administrator must be retained",
-    "description": "Prompt indicating that at least one administrator must be retained"
+    "description": "Prompt for retaining at least one administrator"
   },
   "message.distributionDefaultInviterIdTip": {
     "message": "The user ID of the default inviter. If the distribution link does not carry the inviter_id parameter, this user ID will be used as the inviter by default.",
-    "description": "Prompt for the default inviter ID"
+    "description": "Prompt for default inviter ID"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "The user ID of the forced inviter. If this ID is set, it will be forced to use this user ID as the inviter regardless of whether the distribution link carries the inviter_id parameter.",
-    "description": "Prompt for the forced inviter ID"
+    "message": "The user ID of the forced inviter. If this ID is set, it will be used as the inviter regardless of whether the distribution link carries the inviter_id parameter.",
+    "description": "Prompt for forced inviter ID"
   },
   "message.originTip": {
     "message": "Site domain name, site configuration is bound to the domain name, and the site domain name cannot be changed.",
-    "description": "Prompt for the site domain name"
+    "description": "Prompt for site domain name"
   },
   "message.titleTip": {
     "message": "Site title, displayed in the browser tab.",
-    "description": "Prompt for the site title"
+    "description": "Prompt for site title"
   },
   "message.descriptionTip": {
     "message": "Site description, located in the site metadata, used for site SEO optimization.",
-    "description": "Prompt for the site description"
+    "description": "Prompt for site description"
   },
   "message.logoTip": {
     "message": "Site logo, displayed at the top of the site menu when the menu bar is expanded.",
-    "description": "Prompt for the site logo"
+    "description": "Prompt for site logo"
   },
   "message.faviconTip": {
     "message": "Site favicon, displayed in the browser tab.",
-    "description": "Prompt for the site favicon"
+    "description": "Prompt for site favicon"
   },
   "message.adminsTip": {
     "message": "Site administrator ID. By default, the user who first creates the site will become the administrator. Only site administrators can manage the site.",
@@ -299,6 +303,10 @@
     "message": "Enable or disable the Suno feature module.",
     "description": "Description of the Suno feature"
   },
+  "message.featuresPixverse": {
+    "message": "Enable or disable the Pixverse feature module.",
+    "description": "Description of the Pixverse feature"
+  },
   "message.featuresFlux": {
     "message": "Enable or disable the FLux feature module.",
     "description": "Description of the FLux feature"
@@ -337,10 +345,10 @@
   },
   "button.enabled": {
     "message": "Enabled",
-    "description": "Switch text indicating that it has been enabled"
+    "description": "Toggle text indicating that it is enabled"
   },
   "button.disabled": {
     "message": "Disabled",
-    "description": "Text for the switch indicating that it is disabled"
+    "description": "Toggle text indicating that it is disabled"
   }
 }

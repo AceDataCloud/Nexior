@@ -203,13 +203,17 @@
     "message": "Order",
     "description": "The order of the entity, which includes amount and service information that the user needs to pay for"
   },
+  "message.noTasks": {
+    "message": "No historical tasks, please start a new task～",
+    "description": "Message when there are no tasks"
+  },
   "message.usedAmount": {
     "message": "Used Amount",
     "description": "Used to display the amount of service that has been used"
   },
   "message.remainingAmount": {
     "message": "Remaining Amount",
-    "description": "Used to display the remaining amount of the service"
+    "description": "Used to display the remaining amount of service"
   },
   "message.copied": {
     "message": "Successfully Copied",
@@ -221,47 +225,47 @@
   },
   "message.confirmDelete": {
     "message": "Are you sure you want to delete?",
-    "description": "Used to confirm whether the user wants to delete certain content"
+    "description": "Message to confirm if the user wants to delete certain content"
   },
   "message.expiredAt": {
     "message": "Expiration Time",
     "description": "Used to display the expiration time of the service"
   },
   "message.alert": {
-    "message": "Alert",
-    "description": "Used to warn the user"
+    "message": "Warning",
+    "description": "Message to warn the user"
   },
   "message.info": {
     "message": "Friendly Reminder",
-    "description": "Used to display informational messages"
+    "description": "Message to display information"
   },
   "message.free": {
     "message": "Free",
-    "description": "Used to display a message indicating that the service is free and the user does not need to pay"
+    "description": "Message to indicate that the service is free, meaning the user does not need to pay"
   },
   "message.startPrice": {
     "message": "Starting Price",
-    "description": "Used to display the minimum price of the service"
+    "description": "Message to display the minimum price of the service"
   },
   "message.joinDiscord": {
     "message": "Join Discord",
-    "description": "Used to prompt the user to join the Discord channel"
+    "description": "Message to let users join the Discord channel"
   },
   "message.addWeChat": {
     "message": "Add WeChat",
-    "description": "Used to prompt the user to add WeChat"
+    "description": "Message to let users add WeChat"
   },
   "message.serviceTech": {
     "message": "Technical Support",
-    "description": "Used to display messages about technical support for the service"
+    "description": "Message to display technical support for the service"
   },
   "message.businessCooperation": {
     "message": "Business Cooperation",
-    "description": "Used to display messages about business cooperation"
+    "description": "Message to display business cooperation"
   },
   "message.noData": {
     "message": "No Data",
-    "description": "Used to display a message indicating that there is no data in a table or list"
+    "description": "Message to display when there is no data in a table or list"
   },
   "nav.home": {
     "message": "Home",
@@ -280,7 +284,7 @@
     "description": "Text in the website navigation bar to display the service page"
   },
   "nav.profile": {
-    "message": "Me",
+    "message": "Profile",
     "description": "Text in the website navigation bar to display the profile page"
   },
   "nav.products": {
@@ -305,51 +309,55 @@
   },
   "nav.chatgpt": {
     "message": "ChatGPT",
-    "description": "Text in the website navigation bar to display the ChatGPT page, do not translate this field, must remain as 'ChatGPT'"
+    "description": "Text in the website navigation bar to display the ChatGPT page, must remain as 'ChatGPT'"
   },
   "nav.deepseek": {
     "message": "DeepSeek",
-    "description": "Text in the website navigation bar to display the DeepSeek page, do not translate this field, must remain as 'DeepSeek'"
+    "description": "Text in the website navigation bar to display the DeepSeek page, must remain as 'DeepSeek'"
   },
   "nav.grok": {
     "message": "Grok",
-    "description": "Text in the website navigation bar to display the Grok page, do not translate this field, must remain as 'Grok'"
+    "description": "Text in the website navigation bar to display the Grok page, must remain as 'Grok'"
   },
   "nav.chat": {
     "message": "Chat",
-    "description": "Text in the website navigation bar to display the chat page, do not translate this field, must remain as 'Chat'"
+    "description": "Text in the website navigation bar to display the chat page, must remain as 'Chat'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "Text in the website navigation bar to display the Midjourney page, do not translate this field, must remain as 'Midjourney'"
+    "description": "Text in the website navigation bar to display the Midjourney page, must remain as 'Midjourney'"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Text in the website navigation bar to display the QRArt page, do not translate this field, must remain as 'QRArt'"
+    "description": "Text in the website navigation bar to display the QRArt page, must remain as 'QRArt'"
   },
   "nav.suno": {
     "message": "Suno",
-    "description": "Text in the website navigation bar to display the Suno page, do not translate this field, must remain as 'Suno'"
+    "description": "Text in the website navigation bar to display the Suno page, must remain as 'Suno'"
+  },
+  "nav.pixverse": {
+    "message": "Pixverse",
+    "description": "Text in the website navigation bar to display the Pixverse page, must remain as 'Pixverse'"
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "Text in the website navigation bar to display the Flux page, do not translate this field, must remain as 'Flux'"
+    "description": "Text in the website navigation bar to display the Flux page, must remain as 'Flux'"
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "Text in the website navigation bar to display the Luma page, please do not translate this field, must remain as 'Luma'"
+    "description": "Text in the website navigation bar to display the Luma page, must remain as 'Luma'"
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "Text in the website navigation bar to display the Pika page, please do not translate this field, must remain as 'Pika'"
+    "description": "Text in the website navigation bar to display the Pika page, must remain as 'Pika'"
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "Text in the website navigation bar to display the Kling page, please do not translate this field, must remain as 'Kling'"
+    "description": "Text in the website navigation bar to display the Kling page, must remain as 'Kling'"
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "Text in the website navigation bar to display the Hailuo page, please do not translate this field, must remain as 'Hailuo'"
+    "description": "Text in the website navigation bar to display the Hailuo page, must remain as 'Hailuo'"
   },
   "nav.image": {
     "message": "Image",
@@ -425,7 +433,7 @@
   },
   "title.distribution": {
     "message": "Referral Earnings",
-    "description": "Title of the page displaying referral earnings, indicating that users can earn money by inviting others to use the service"
+    "description": "Title of the page displaying referral earnings, indicating that users can earn by inviting others to use the service"
   },
   "title.site": {
     "message": "Site Configuration",
@@ -436,8 +444,8 @@
     "description": "Title of the page displaying referral history"
   },
   "title.invitee": {
-    "message": "Invitee",
-    "description": "Title of the page displaying invitees"
+    "message": "Inviter",
+    "description": "Title of the page displaying the inviter"
   },
   "title.allUsages": {
     "message": "Usage History",
@@ -505,42 +513,42 @@
   },
   "theme.light": {
     "message": "Light",
-    "description": "The name of the light theme"
+    "description": "Name of the light theme"
   },
   "theme.dark": {
     "message": "Dark",
-    "description": "The name of the dark theme"
+    "description": "Name of the dark theme"
   },
   "theme.system": {
     "message": "System",
-    "description": "The name of the system theme, indicating automatic switching based on system settings"
+    "description": "Name of the system theme, indicating automatic switching based on system settings"
   },
   "settings.general": {
     "message": "General Settings",
-    "description": "The title of the general settings section in the settings page"
+    "description": "Title of the general settings section in the settings page"
   },
   "settings.language": {
     "message": "Language",
-    "description": "The title of the language settings section in the settings page"
+    "description": "Title of the language settings section in the settings page"
   },
   "settings.theme": {
     "message": "Theme",
-    "description": "The title of the theme settings section in the settings page"
+    "description": "Title of the theme settings section in the settings page"
   },
   "settings.seo": {
     "message": "SEO Settings",
-    "description": "The title of the SEO settings section in the settings page"
+    "description": "Title of the SEO settings section in the settings page"
   },
   "settings.site": {
     "message": "Site Settings",
-    "description": "The title of the site settings section in the settings page"
+    "description": "Title of the site settings section in the settings page"
   },
   "settings.distribution": {
     "message": "Distribution Settings",
-    "description": "The title of the distribution settings section in the settings page"
+    "description": "Title of the distribution settings section in the settings page"
   },
   "settings.function": {
     "message": "Function Settings",
-    "description": "The title of the function settings section in the settings page"
+    "description": "Title of the function settings section in the settings page"
   }
 }

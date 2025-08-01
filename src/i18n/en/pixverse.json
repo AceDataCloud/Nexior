@@ -1,0 +1,302 @@
+{
+  "name.taskId": {
+    "message": "Task ID",
+    "description": "The ID of the task"
+  },
+  "name.type": {
+    "message": "Type",
+    "description": "The content type of the Pixverse video to be generated, such as 'link', 'text', etc."
+  },
+  "name.failure": {
+    "message": "Failure",
+    "description": "The failure status of the task"
+  },
+  "name.failureReason": {
+    "message": "Failure Reason",
+    "description": "The reason for the task's failure"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "The status of the task"
+  },
+  "name.traceId": {
+    "message": "Trace ID",
+    "description": "The trace ID of the task"
+  },
+  "name.createdAt": {
+    "message": "Created At",
+    "description": "The date and time when the Pixverse video was generated"
+  },
+  "name.style": {
+    "message": "Style",
+    "description": "The style of the video to be generated"
+  },
+  "name.style1": {
+    "message": "Cyberpunk",
+    "description": "The style of the video to be generated"
+  },
+  "name.style2": {
+    "message": "Anime",
+    "description": "The style of the video to be generated"
+  },
+  "name.style3": {
+    "message": "Comic",
+    "description": "The style of the video to be generated"
+  },
+  "name.style4": {
+    "message": "Clay",
+    "description": "The style of the video to be generated"
+  },
+  "name.style5": {
+    "message": "3D Animation",
+    "description": "The style of the video to be generated"
+  },
+  "name.motion": {
+    "message": "Video Mode",
+    "description": "The mode of the video to be generated"
+  },
+  "name.motion1": {
+    "message": "Standard",
+    "description": "The mode of the video to be generated"
+  },
+  "name.motion2": {
+    "message": "Fast",
+    "description": "The mode of the video to be generated"
+  },
+  "name.quality": {
+    "message": "Video Quality",
+    "description": "The quality of the video to be generated"
+  },
+  "name.startImage": {
+    "message": "First Frame Reference Image",
+    "description": "The reference image for the video to be generated"
+  },
+  "name.videoUrl": {
+    "message": "Custom Video",
+    "description": "Custom video"
+  },
+  "name.prompt": {
+    "message": "Video Prompt",
+    "description": "The prompt for content input"
+  },
+  "name.duration": {
+    "message": "Video Duration",
+    "description": "The duration of the video"
+  },
+  "name.model": {
+    "message": "Model Version",
+    "description": "The model version used to generate the video"
+  },
+  "name.seed": {
+    "message": "Seed",
+    "description": "The random seed for generating the video"
+  },
+  "name.mode": {
+    "message": "Video Mode",
+    "description": "The mode used to generate the video"
+  },
+  "name.effect": {
+    "message": "Video Effect",
+    "description": "The name of the style parameter used to switch between different versions or styles of the model"
+  },
+  "name.ingredientsModel": {
+    "message": "Ingredients Model",
+    "description": "The model version used to generate the video"
+  },
+  "name.pixverseBot": {
+    "message": "Pixverse Bot",
+    "description": "The name of the Pixverse video generator"
+  },
+  "description.ingredients": {
+    "message": "If you want to upload multiple images to generate your own video, please turn on this button.",
+    "description": "Description of the 'ingredients' parameter"
+  },
+  "description.imageUrl": {
+    "message": "In the task of creating a video with multiple images, it must upload multiple images.",
+    "description": "Description of the 'imageUrl' parameter"
+  },
+  "description.prompt": {
+    "message": "The prompt words for generating Pixverse videos",
+    "description": "Description of the 'prompt' parameter"
+  },
+  "description.negativePrompt": {
+    "message": "Negative text prompt, optional, cannot exceed 200 characters",
+    "description": "Description of the 'negativePrompt' parameter"
+  },
+  "description.uploadStartImage": {
+    "message": "Upload the first frame image as a reference for generation; the final video will reference the first frame for generation.",
+    "description": "Description of the upload reference parameter"
+  },
+  "description.uploadEndImage": {
+    "message": "Upload the first frame image as a reference for generation; the final video will reference the first frame for generation.",
+    "description": "Description of the upload reference parameter"
+  },
+  "description.seed": {
+    "message": "The seed value for generating the video. If not set, a random seed will be used.",
+    "description": "Description of the upload reference parameter"
+  },
+  "status.pending": {
+    "message": "Pending",
+    "description": "The waiting status of the task"
+  },
+  "status.processing": {
+    "message": "Processing",
+    "description": "The processing status of the task"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Please select...",
+    "description": "Placeholder for padding noise input"
+  },
+  "placeholder.select": {
+    "message": "Select",
+    "description": "Placeholder text in the selection field"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Please select...",
+    "description": "Placeholder for padding level"
+  },
+  "placeholder.prompt": {
+    "message": "Enter the prompt words for the style of the video to be generated, e.g., quiver",
+    "description": "Placeholder text in the prompt field"
+  },
+  "placeholder.negativePrompt": {
+    "message": "Enter the negative prompt words for the style of the video to be generated, no more than 200 characters",
+    "description": "Placeholder text in the prompt field"
+  },
+  "placeholder.position": {
+    "message": "Please select...",
+    "description": "Placeholder for position input"
+  },
+  "placeholder.aspectRatio": {
+    "message": "Please select...",
+    "description": "Placeholder for aspect ratio input"
+  },
+  "placeholder.preset": {
+    "message": "Please select...",
+    "description": "Placeholder for preset input"
+  },
+  "placeholder.markerShape": {
+    "message": "Please select...",
+    "description": "Placeholder for marker shape input"
+  },
+  "placeholder.rotate": {
+    "message": "Please select...",
+    "description": "Placeholder for rotation input"
+  },
+  "placeholder.subMarker": {
+    "message": "Please select...",
+    "description": "Placeholder for sub-marker input"
+  },
+  "button.generate": {
+    "message": "Generate",
+    "description": "Button text for generating Pixverse video"
+  },
+  "button.extend": {
+    "message": "Extend Video",
+    "description": "Button text for extending the video"
+  },
+  "button.download": {
+    "message": "Download Video",
+    "description": "Button text for downloading the video"
+  },
+  "button.uploadImageUrl": {
+    "message": "Upload Image",
+    "description": "Button text for uploading an image"
+  },
+  "button.uploadVideoUrl": {
+    "message": "Upload Video",
+    "description": "Button text for uploading a video"
+  },
+  "button.uploadReferences": {
+    "message": "Upload",
+    "description": "Button text that allows users to upload references"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "You can upload a maximum of 1 image",
+    "description": "Error message when the number of uploaded images exceeds the limit"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Image uploaded successfully",
+    "description": "Success message when an image is uploaded successfully"
+  },
+  "message.uploadReferencesError": {
+    "message": "Failed to upload image, please try again later",
+    "description": "Error message when image upload fails"
+  },
+  "message.startingTask": {
+    "message": "Starting task...",
+    "description": "Message when the drawing task starts"
+  },
+  "message.startTaskSuccess": {
+    "message": "Task initiated successfully",
+    "description": "Success message when the task is started successfully"
+  },
+  "message.startTaskFailed": {
+    "message": "Failed to initiate task, please contact the administrator",
+    "description": "Error message when starting the drawing task fails"
+  },
+  "message.usedUp": {
+    "message": "Your credits are exhausted, please purchase more credits to continue",
+    "description": "Message when credits are used up"
+  },
+  "message.generating": {
+    "message": "Generating...",
+    "description": "Message when the image is being generated"
+  },
+  "message.downloadVideo": {
+    "message": "Download this video",
+    "description": "Message when the image is being generated"
+  },
+  "message.extendVideo": {
+    "message": "Continue generating this video",
+    "description": "Message when the image is being generated"
+  },
+  "message.generateFailed": {
+    "message": "Failed to generate image",
+    "description": "Message when image generation fails"
+  },
+  "message.uploadVideoExceed": {
+    "message": "The number of uploaded first frame images exceeds the limit",
+    "description": "Error message when the number of uploaded first frame images exceeds the limit"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Uploaded file size cannot exceed 10MB!",
+    "description": "Error message when the uploaded file size exceeds 10MB!"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Uploaded file must be in MP4 format!",
+    "description": "Error message when the uploaded file is not in MP4 format!"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "The number of uploaded first frame images exceeds the limit",
+    "description": "Error message when the number of uploaded first frame images exceeds the limit"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "The number of uploaded last frame images exceeds the limit",
+    "description": "Error message when the number of uploaded last frame images exceeds the limit"
+  },
+  "message.uploadStartImageError": {
+    "message": "Failed to upload first frame image",
+    "description": "Error message when uploading the first frame image fails"
+  },
+  "message.uploadVideoError": {
+    "message": "Failed to upload video",
+    "description": "Error message when uploading the first frame image fails"
+  },
+  "message.uploadEndImageError": {
+    "message": "Failed to upload last frame image",
+    "description": "Error message when uploading the last frame image fails"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Failed to upload document",
+    "description": "Error message when uploading a document fails"
+  },
+  "message.noOperations": {
+    "message": "No available operations",
+    "description": "Message when there are no available operations"
+  },
+  "message.noTasks": {
+    "message": "No historical tasks, please click on the left to generate a video",
+    "description": "Message when there are no tasks"
+  }
+}
