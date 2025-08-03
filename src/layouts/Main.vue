@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent } from 'vue';
 import Navigator from '@/components/common/Navigator.vue';
 import ApplicationStatus from '@/components/application/Status.vue';
 import { IApplicationScope, IApplicationType, Status } from '@/models';
@@ -35,8 +35,14 @@ export default defineComponent({
     ApplicationStatus,
     ApplicationConfirm
   },
+  provide() {
+    return {
+      initialized: computed(() => this.initialized)
+    };
+  },
   data() {
     return {
+      initialized: false,
       applying: false,
       mobile: window.innerWidth < 768
     };
@@ -66,19 +72,20 @@ export default defineComponent({
   },
   watch: {
     appName() {
-      this.onInitialize();
+      this.initialize();
     }
   },
   mounted() {
     // Fetch applications when the component is mounted
-    this.onInitialize();
+    this.initialize();
     // Update mobile state on resize
     window.addEventListener('resize', () => {
       this.mobile = window.innerWidth < 768;
     });
   },
   methods: {
-    async onInitialize() {
+    async initialize() {
+      this.initialized = false;
       console.debug('Fetching all individual and global applications for', this.appName);
       Promise.all([
         this.$store.dispatch('getApplications'),
@@ -99,6 +106,7 @@ export default defineComponent({
           console.debug('set final application', finalApplication, finalApplication?.type);
           this.$store.dispatch(`${this.appName}/setApplication`, finalApplication);
         }
+        this.initialized = true;
       });
     },
     onApply() {
@@ -111,7 +119,7 @@ export default defineComponent({
         })
         .then(() => {
           ElMessage.success(this.$t('application.message.applySuccessfully'));
-          this.onInitialize();
+          this.initialize();
           this.applying = false;
         })
         .catch((error) => {

@@ -25,7 +25,6 @@ const CALLBACK_URL = 'https://webhook.acedata.cloud/hailuo';
 interface IData {
   task: IHailuoTask | undefined;
   job: number;
-  timer: any;
 }
 
 export default defineComponent({
@@ -35,6 +34,7 @@ export default defineComponent({
     Layout,
     RecentPanel
   },
+  inject: ['initialized'],
   data(): IData {
     return {
       task: undefined,
@@ -70,22 +70,26 @@ export default defineComponent({
         }
       },
       deep: true
+    },
+    initialized: {
+      async handler(newValue) {
+        if (newValue) {
+          console.debug('layout initialized');
+          await this.onGetTasks();
+          await this.onScrollDown();
+          this.job = setInterval(() => {
+            this.onGetTasks();
+          }, 5000);
+        }
+      },
+      immediate: true
     }
   },
   async mounted() {
     await this.onGetService();
-    await this.onGetApplication();
-    await this.onScrollDown();
-    await this.onGetTasks();
-    await this.onScrollDown();
-    // @ts-ignore
-    this.job = setInterval(() => {
-      this.onGetTasks();
-    }, 5000);
   },
   async unmounted() {
     clearInterval(this.job);
-    clearInterval(this.timer);
   },
   methods: {
     async onReachTop() {
