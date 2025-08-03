@@ -20,7 +20,7 @@
     "description": "Name des Modells des Dienstes, d.h. GPT"
   },
   "modelGroup.chatgptDescription": {
-    "message": "Ein KI-Modell, das von OpenAI entwickelt wurde",
+    "message": "AI-Modell entwickelt von OpenAI",
     "description": "Beschreibung des ChatGPT-Modells"
   },
   "modelGroup.deepseek": {
@@ -28,7 +28,7 @@
     "description": "Name des Modells des Dienstes, d.h. DeepSeek"
   },
   "modelGroup.deepseekDescription": {
-    "message": "Ein KI-Modell, das von der DeepSeek Company entwickelt wurde",
+    "message": "AI-Modell entwickelt von DeepSeek",
     "description": "Beschreibung des DeepSeek-Modells"
   },
   "modelGroup.grok": {
@@ -36,12 +36,28 @@
     "description": "Name des Modells des Dienstes, d.h. Grok"
   },
   "modelGroup.grokDescription": {
-    "message": "Ein KI-Modell, das von xAI entwickelt wurde",
+    "message": "AI-Modell entwickelt von xAI",
     "description": "Beschreibung des Grok3-Modells"
   },
   "model.4O": {
     "message": "gpt-4o",
     "description": "Name des Modells des Dienstes, d.h. GPT 4.0 Vision"
+  },
+  "model.4OMini": {
+    "message": "gpt-4o-mini",
+    "description": "Name des Modells des Dienstes, d.h. GPT 4.0 Mini"
+  },
+  "model.4OMiniDescription": {
+    "message": "Leichter und schnelleres Modell",
+    "description": "Beschreibung des 4.0 Mini-Modells"
+  },
+  "model.4OImage": {
+    "message": "gpt-4o-image",
+    "description": "Name des Modells des Dienstes, d.h. GPT 4.0 Vision"
+  },
+  "model.4OImageDescription": {
+    "message": "Unterstützt die Bildgenerierung",
+    "description": "Beschreibung des 4.0 Vision-Modells"
   },
   "model.4ODescription": {
     "message": "Geeignet für die meisten Aufgaben",
@@ -111,13 +127,21 @@
     "message": "Schnellere Durchführung von Schlussfolgerungsaufgaben.",
     "description": "Beschreibung des O1-Mini-Modells"
   },
-  "model.o3Mini": {
-    "message": "o3-mini",
-    "description": "Name des Modells des Dienstes, d.h. O3-Mini"
+  "model.o3": {
+    "message": "o3",
+    "description": "Name des Modells des Dienstes, d.h. O3"
   },
-  "model.o3MiniDescription": {
+  "model.o3Description": {
     "message": "Geeignet für fortgeschrittene Schlussfolgerungsaufgaben",
-    "description": "Beschreibung des O3-Mini-Modells"
+    "description": "Beschreibung des O3-Modells"
+  },
+  "model.o4Mini": {
+    "message": "o4-mini",
+    "description": "Name des Modells des Dienstes, d.h. O4-Mini"
+  },
+  "model.o4MiniDescription": {
+    "message": "Stark in Codierung und visueller Schlussfolgerung",
+    "description": "Beschreibung des O4-Modells"
   },
   "message.startNewChat": {
     "message": "Neuen Chat starten",
@@ -137,11 +161,11 @@
   },
   "message.noInput": {
     "message": "Die Frage darf nicht leer sein",
-    "description": "Nachricht auf der Webseite, die den Benutzer auffordert, dass die Frage nicht leer sein darf"
+    "description": "Nachricht auf der Webseite, die den Benutzer darauf hinweist, dass die Frage nicht leer sein darf"
   },
   "message.uploadReferencesExceed": {
     "message": "Es kann maximal 1 Datei hochgeladen werden",
-    "description": "Nachricht auf der Webseite, die den Benutzer darüber informiert, dass maximal 1 Datei hochgeladen werden kann"
+    "description": "Nachricht auf der Webseite, die den Benutzer darauf hinweist, dass maximal 1 Datei hochgeladen werden kann"
   },
   "message.uploadReferencesError": {
     "message": "Datei-Upload fehlgeschlagen, bitte später erneut versuchen",
@@ -149,26 +173,26 @@
   },
   "message.notApplied": {
     "message": "Sie haben diesen Dienst noch nicht beantragt, bitte beantragen Sie ihn zuerst",
-    "description": "Nachricht auf der Webseite, die den Benutzer darüber informiert, dass er diesen Dienst noch nicht beantragt hat, bitte zuerst beantragen"
+    "description": "Webseitenmeldung, die den Benutzer informiert, dass er diesen Dienst noch nicht beantragt hat, bitte beantragen Sie ihn zuerst"
   },
   "message.tryForFree": {
-    "message": "Kostenlos testen",
-    "description": "Nachricht auf der Webseite, die den Benutzer darüber informiert, dass er kostenlos testen kann"
+    "message": "Kostenlose Testversion",
+    "description": "Webseitenmeldung, die den Benutzer über die kostenlose Testversion informiert"
   },
   "message.question1": {
     "message": "Trainingsplan erstellen",
-    "description": "Beispielhafte Frage zum Start des Chats, die den Benutzer auffordert, einen JavaScript-Code zu schreiben, der 'Hello World' ausgibt"
+    "description": "Beispielfrage zum Start des Gesprächs, die den Benutzer auffordert, einen JavaScript-Code zu schreiben, der 'Hello World' ausgibt"
   },
   "message.question2": {
     "message": "Persönliche Webseite erstellen",
-    "description": "Beispielhafte Frage zum Start des Chats, die den Benutzer auffordert, Mike eine E-Mail zu schreiben und ihm mitzuteilen, dass er gerade umgezogen ist"
+    "description": "Beispielfrage zum Start des Gesprächs, die den Benutzer auffordert, Mike eine E-Mail zu schreiben und ihm mitzuteilen, dass er gerade umgezogen ist"
   },
   "message.question3": {
-    "message": "Gestalte interessante Programmier-Spiele",
+    "message": "Interessante Programmier-Spiele entwerfen",
     "description": "Beispielfrage zum Start des Gesprächs, die den Benutzer auffordert, die grundlegenden Prinzipien der Quantenberechnung in einfacher Sprache zu erklären"
   },
   "message.question4": {
-    "message": "Erlebe Seoul wie ein Einheimischer",
+    "message": "Seoul wie ein Einheimischer erleben",
     "description": "Beispielfrage zum Start des Gesprächs, die den Benutzer auffordert, zu erklären, welchen Einfluss virtuelle Realität auf die Kunstproduktion hat"
   },
   "message.question5": {
@@ -180,56 +204,60 @@
     "description": "Beispielfrage zum Start des Gesprächs, die fragt, welchen Einfluss KI auf die Zukunft hat"
   },
   "message.question7": {
-    "message": "Wie kann ich meine Lerneffizienz steigern?",
-    "description": "Beispielfrage zum Start des Gesprächs, die fragt, wie man die eigene Lerneffizienz steigern kann"
+    "message": "Wie kann ich meine Lernfähigkeit verbessern?",
+    "description": "Beispielfrage zum Start des Gesprächs, die fragt, wie man die eigene Lernfähigkeit verbessern kann"
   },
   "message.question8": {
-    "message": "Wie kann ich meine Konzentration verbessern?",
-    "description": "Beispielfrage zum Start des Gesprächs, die fragt, wie man die eigene Konzentration verbessern kann"
+    "message": "Wie kann ich meine Konzentration steigern?",
+    "description": "Beispielfrage zum Start des Gesprächs, die fragt, wie man die eigene Konzentration steigern kann"
   },
   "message.errorApiError": {
-    "message": "Antwort fehlgeschlagen, bitte später erneut versuchen",
-    "description": "Nachricht auf der Webseite, die den Benutzer informiert, dass die Antwort fehlgeschlagen ist, bitte später erneut versuchen"
+    "message": "Antwort fehlgeschlagen, bitte versuchen Sie es später erneut",
+    "description": "Webseitenmeldung, die den Benutzer informiert, dass die Antwort fehlgeschlagen ist, bitte versuchen Sie es später erneut"
   },
   "message.errorBadRequest": {
-    "message": "Anfrageinhalt ist nicht korrekt, bitte erneut fragen",
-    "description": "Nachricht auf der Webseite, die den Benutzer informiert, dass der Anfrageinhalt nicht korrekt ist, bitte erneut fragen"
+    "message": "Anfrageinhalt ist nicht korrekt, bitte stellen Sie die Frage erneut",
+    "description": "Webseitenmeldung, die den Benutzer informiert, dass der Anfrageinhalt nicht korrekt ist, bitte stellen Sie die Frage erneut"
   },
   "message.errorNoConversation": {
-    "message": "Gespräch existiert nicht oder ist abgelaufen, bitte ein neues Gespräch beginnen",
-    "description": "Nachricht auf der Webseite, die den Benutzer informiert, dass das Gespräch nicht existiert oder abgelaufen ist, bitte ein neues Gespräch beginnen"
+    "message": "Gespräch existiert nicht oder ist abgelaufen, bitte beginnen Sie ein neues Gespräch",
+    "description": "Webseitenmeldung, die den Benutzer informiert, dass das Gespräch nicht existiert oder abgelaufen ist, bitte beginnen Sie ein neues Gespräch"
   },
   "message.errorContentTooLarge": {
-    "message": "Frageinhalt ist zu lang, bitte kürzen und erneut versuchen",
-    "description": "Nachricht auf der Webseite, die den Benutzer informiert, dass der Frageinhalt zu lang ist, bitte kürzen und erneut versuchen"
+    "message": "Frageinhalt ist zu lang, bitte kürzen Sie ihn und versuchen Sie es erneut",
+    "description": "Webseitenmeldung, die den Benutzer informiert, dass der Frageinhalt zu lang ist, bitte kürzen Sie ihn und versuchen Sie es erneut"
   },
   "message.errorTooManyRequests": {
-    "message": "Ihre Aktionen sind zu häufig, bitte später erneut versuchen",
-    "description": "Nachricht auf der Webseite, die den Benutzer informiert, dass seine Aktionen zu häufig sind, bitte später erneut versuchen"
+    "message": "Ihre Anfragen sind zu häufig, bitte versuchen Sie es später erneut",
+    "description": "Webseitenmeldung, die den Benutzer informiert, dass seine Anfragen zu häufig sind, bitte versuchen Sie es später erneut"
+  },
+  "message.errorBusy": {
+    "message": "Server ist beschäftigt, bitte versuchen Sie es später erneut",
+    "description": "Webseitenmeldung, die den Benutzer informiert, dass der Server beschäftigt ist, bitte versuchen Sie es später erneut"
   },
   "message.errorUsedUp": {
-    "message": "Sie haben Ihre Kontingentnummer aufgebraucht, bitte kaufen Sie mehr, um fortzufahren",
-    "description": "Nachricht auf der Webseite, die den Benutzer informiert, dass er seine Kontingentnummer aufgebraucht hat, bitte kaufen Sie mehr, um fortzufahren"
+    "message": "Sie haben Ihre Kontingentanzahl aufgebraucht, bitte kaufen Sie mehr, um fortzufahren",
+    "description": "Webseitenmeldung, die den Benutzer informiert, dass er seine Kontingentanzahl aufgebraucht hat, bitte kaufen Sie mehr, um fortzufahren"
   },
   "message.errorUnknown": {
-    "message": "Unbekannter Serverfehler, bitte später erneut versuchen oder den Kundenservice kontaktieren",
-    "description": "Nachricht auf der Webseite, die den Benutzer informiert, dass ein unbekannter Serverfehler aufgetreten ist, bitte später erneut versuchen oder den Kundenservice kontaktieren"
+    "message": "Ein unbekannter Fehler ist auf dem Server aufgetreten, bitte versuchen Sie es später erneut oder kontaktieren Sie den Kundenservice",
+    "description": "Webseitenmeldung, die den Benutzer informiert, dass ein unbekannter Fehler auf dem Server aufgetreten ist, bitte versuchen Sie es später erneut oder kontaktieren Sie den Kundenservice"
   },
   "message.errorTimeout": {
-    "message": "Antwortzeitüberschreitung, bitte später erneut versuchen",
-    "description": "Nachricht auf der Webseite, die den Benutzer informiert, dass die Antwortzeit überschritten wurde, bitte später erneut versuchen"
+    "message": "Antwort auf die Frage hat zu lange gedauert, bitte versuchen Sie es später erneut",
+    "description": "Webseitenmeldung, die den Benutzer informiert, dass die Antwort auf die Frage zu lange gedauert hat, bitte versuchen Sie es später erneut"
   },
   "message.errorNotApplied": {
-    "message": "Sie haben diesen Dienst noch nicht beantragt, bitte beantragen Sie ihn zuerst, bevor Sie weiterfragen",
-    "description": "Nachricht auf der Webseite, die den Benutzer informiert, dass er diesen Dienst noch nicht beantragt hat, bitte beantragen Sie ihn zuerst, bevor Sie weiterfragen"
+    "message": "Sie haben diesen Dienst noch nicht beantragt, bitte beantragen Sie ihn zuerst, bevor Sie weitere Fragen stellen",
+    "description": "Webseitenmeldung, die den Benutzer informiert, dass er diesen Dienst noch nicht beantragt hat, bitte beantragen Sie ihn zuerst, bevor Sie weitere Fragen stellen"
   },
   "message.confirmDelete": {
     "message": "Löschen bestätigen",
-    "description": "Nachricht auf der Webseite, die den Benutzer auffordert, das Löschen zu bestätigen"
+    "description": "Webseitenmeldung, die den Benutzer auffordert, das Löschen zu bestätigen"
   },
   "message.howToUse": {
     "message": "KI kann Fehler machen, bitte überprüfen Sie wichtige Informationen.",
-    "description": "Nachricht auf der Webseite, die den Benutzer informiert, dass KI Fehler machen kann, bitte überprüfen Sie wichtige Informationen"
+    "description": "Webseitenmeldung, die den Benutzer informiert, dass KI Fehler machen kann, bitte überprüfen Sie wichtige Informationen"
   },
   "title.chat": {
     "message": "KI-Chat",
@@ -240,39 +268,39 @@
     "description": "Titel der Webseite, d.h. Beispiel"
   },
   "title.capabilities": {
-    "message": "Fähigkeiten",
-    "description": "Titel der Webseite, d.h. Fähigkeiten"
+    "message": "Funktionen",
+    "description": "Titel der Webseite, d.h. Funktionen"
   },
   "title.limitations": {
     "message": "Einschränkungen",
-    "description": "Titel auf der Webseite, der darauf hinweist, dass dieser Abschnitt technische Einschränkungen des Dienstes behandelt"
+    "description": "Titel auf der Webseite, der darauf hinweist, dass dieser Abschnitt über die technischen Einschränkungen des Dienstes handelt"
   },
   "title.complexQuestion": {
     "message": "Komplexe Fragen beantworten",
-    "description": "Titel auf der Webseite, der darauf hinweist, dass dieser Abschnitt die Fähigkeit des Dienstes behandelt, komplexe Fragen zu beantworten"
+    "description": "Titel auf der Webseite, der darauf hinweist, dass dieser Abschnitt über die Fähigkeit des Dienstes handelt, komplexe Fragen zu beantworten"
   },
   "title.professionalQuestion": {
     "message": "Fachliche Fragen konsultieren",
-    "description": "Titel auf der Webseite, der darauf hinweist, dass dieser Abschnitt die Fähigkeit des Dienstes behandelt, fachliche Fragen zu konsultieren"
+    "description": "Titel auf der Webseite, der darauf hinweist, dass dieser Abschnitt über die Fähigkeit des Dienstes handelt, fachliche Fragen zu konsultieren"
   },
   "title.getTips": {
     "message": "Inspiration und Ideen erhalten",
-    "description": "Titel auf der Webseite, der darauf hinweist, dass dieser Abschnitt die Fähigkeit des Dienstes behandelt, Inspiration und Ideen zu erhalten"
+    "description": "Webseitentitel, der darauf hinweist, dass dieser Abschnitt über die Fähigkeit handelt, Inspiration und Ideen zu erhalten"
   },
   "group.today": {
     "message": "Heute",
-    "description": "Gruppenname auf der Webseite, d.h. Heute"
+    "description": "Webseiten-Gruppenname, d.h. Heute"
   },
   "group.yesterday": {
     "message": "Gestern",
-    "description": "Gruppenname auf der Webseite, d.h. Gestern"
+    "description": "Webseiten-Gruppenname, d.h. Gestern"
   },
   "group.thisWeek": {
     "message": "Diese Woche",
-    "description": "Gruppenname auf der Webseite, d.h. Diese Woche"
+    "description": "Webseiten-Gruppenname, d.h. Diese Woche"
   },
   "group.earlier": {
     "message": "Früher",
-    "description": "Gruppenname auf der Webseite, d.h. Früher"
+    "description": "Webseiten-Gruppenname, d.h. Früher"
   }
 }

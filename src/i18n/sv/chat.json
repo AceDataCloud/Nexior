@@ -43,6 +43,22 @@
     "message": "gpt-4o",
     "description": "Modellnamnet för tjänsten, det vill säga GPT 4.0 Vision"
   },
+  "model.4OMini": {
+    "message": "gpt-4o-mini",
+    "description": "Modellnamnet för tjänsten, det vill säga GPT 4.0 Mini"
+  },
+  "model.4OMiniDescription": {
+    "message": "Lättare och snabbare modell",
+    "description": "Beskrivning av 4.0 Mini-modellen"
+  },
+  "model.4OImage": {
+    "message": "gpt-4o-image",
+    "description": "Modellnamnet för tjänsten, det vill säga GPT 4.0 Vision"
+  },
+  "model.4OImageDescription": {
+    "message": "Stöder bildgenerering",
+    "description": "Beskrivning av 4.0 Vision-modellen"
+  },
   "model.4ODescription": {
     "message": "Lämplig för de flesta uppgifter",
     "description": "Beskrivning av 4.0 Vision-modellen"
@@ -53,7 +69,7 @@
   },
   "model.4AllDescription": {
     "message": "Allroundmodell",
-    "description": "Beskrivning av 4.0 Allround-modellen"
+    "description": "Beskrivning av 4.0 Allroundmodellen"
   },
   "model.deepseekChat": {
     "message": "3.0 Standard",
@@ -92,7 +108,7 @@
     "description": "Modellnamnet för tjänsten, det vill säga Grok3 Djupforskning"
   },
   "model.grok3DeepsearchDescription": {
-    "message": "Lämplig för djup forskning och komplexa frågor",
+    "message": "Lämplig för djupforskning och komplexa frågor",
     "description": "Beskrivning av Grok3 Djupforskning-modellen"
   },
   "model.o1": {
@@ -111,13 +127,21 @@
     "message": "Snabbare resonemangsuppgifter.",
     "description": "Beskrivning av O1-Mini-modellen"
   },
-  "model.o3Mini": {
-    "message": "o3-mini",
-    "description": "Modellnamnet för tjänsten, det vill säga O3-Mini"
+  "model.o3": {
+    "message": "o3",
+    "description": "Modellnamnet för tjänsten, det vill säga O3"
   },
-  "model.o3MiniDescription": {
+  "model.o3Description": {
     "message": "Lämplig för mer avancerade resonemangsuppgifter",
-    "description": "Beskrivning av O3-Mini-modellen"
+    "description": "Beskrivning av O3-modellen"
+  },
+  "model.o4Mini": {
+    "message": "o4-mini",
+    "description": "Modellnamnet för tjänsten, det vill säga O4-Mini"
+  },
+  "model.o4MiniDescription": {
+    "message": "Bra på kodning och visuell resonemang",
+    "description": "Beskrivning av O4-modellen"
   },
   "message.startNewChat": {
     "message": "Börja ny konversation",
@@ -128,20 +152,20 @@
     "description": "Meddelande på webbsidan som informerar användaren om att ladda upp en fil"
   },
   "message.noToken": {
-    "message": "Vänligen ansök om den aktuella tjänsten först",
-    "description": "Meddelande på webbsidan som informerar användaren om att ansöka om den aktuella tjänsten först"
+    "message": "Vänligen ansök om relevant tjänst först",
+    "description": "Meddelande på webbsidan som informerar användaren om att ansöka om relevant tjänst först"
   },
   "message.newMessagePlaceholder": {
     "message": "Skriv ditt fråga...",
     "description": "Platsinnehavare på webbsidan som informerar användaren om att skriva en fråga"
   },
   "message.noInput": {
-    "message": "Frågan kan inte vara tom",
-    "description": "Meddelande på webbsidan som informerar användaren om att frågan inte kan vara tom"
+    "message": "Frågan får inte vara tom",
+    "description": "Meddelande på webbsidan som informerar användaren om att frågan inte får vara tom"
   },
   "message.uploadReferencesExceed": {
     "message": "Du kan bara ladda upp 1 fil",
-    "description": "Meddelande på webbsidan som informerar användaren om att de kan ladda upp högst 1 fil"
+    "description": "Meddelande på webbsidan som informerar användaren om att du bara kan ladda upp 1 fil"
   },
   "message.uploadReferencesError": {
     "message": "Filuppladdning misslyckades, försök igen senare",
@@ -149,130 +173,134 @@
   },
   "message.notApplied": {
     "message": "Du har ännu inte ansökt om denna tjänst, vänligen ansök först",
-    "description": "Meddelande på webbsidan som informerar användaren om att de ännu inte har ansökt om denna tjänst, vänligen ansök först"
+    "description": "Meddelande på webbsidan som informerar användaren att de ännu inte har ansökt om denna tjänst, vänligen ansök först"
   },
   "message.tryForFree": {
     "message": "Prova gratis",
     "description": "Meddelande på webbsidan som informerar användaren om att de kan prova gratis"
   },
   "message.question1": {
-    "message": "Skapa träningsprogram",
-    "description": "Exempel på fråga för att starta en konversation, be användaren skriva en JavaScript-kod som skriver ut Hello World"
+    "message": "Skapa en träningsplan",
+    "description": "Exempel på en fråga för att starta en konversation, be användaren skriva en JavaScript-kod som skriver ut Hello World"
   },
   "message.question2": {
-    "message": "Gör en personlig webbsida",
-    "description": "Exempel på fråga för att starta en konversation, be användaren skriva ett e-postmeddelande till Mike och berätta att de just har flyttat"
+    "message": "Skriv en personlig webbsida",
+    "description": "Exempel på en fråga för att starta en konversation, be användaren skriva ett e-postmeddelande till Mike och berätta att de just har flyttat"
   },
   "message.question3": {
-    "message": "Designa intressanta programmeringsspel",
-    "description": "Exempel på en fråga för att inleda en konversation, där användaren ombeds att förklara de grundläggande principerna för kvantdatorer med enkla ord."
+    "message": "Designa roliga programmeringsspel",
+    "description": "Exempel på en fråga för att starta en konversation, be användaren förklara de grundläggande principerna för kvantdatorer med enkla ord"
   },
   "message.question4": {
     "message": "Upplev Seoul som en lokal",
-    "description": "Exempel på en fråga för att inleda en konversation, där användaren ombeds att förklara vilken påverkan virtuell verklighet har haft på konstskapande."
+    "description": "Exempel på en fråga för att starta en konversation, be användaren förklara vilken påverkan virtuell verklighet har haft på konstskapande"
   },
   "message.question5": {
     "message": "Vilket är större, 9.8 eller 9.11?",
-    "description": "Exempel på en fråga för att inleda en konversation, där man ombeds att jämföra storleken på två tal."
+    "description": "Exempel på en fråga för att starta en konversation, be jämföra storleken på två nummer"
   },
   "message.question6": {
     "message": "Vilken påverkan har AI på framtiden?",
-    "description": "Exempel på en fråga för att inleda en konversation, där man ombeds att diskutera AI:s påverkan på framtiden."
+    "description": "Exempel på en fråga för att starta en konversation, vilken påverkan har AI på framtiden?"
   },
   "message.question7": {
-    "message": "Hur kan man öka sin inlärningseffektivitet?",
-    "description": "Exempel på en fråga för att inleda en konversation, där man ombeds att diskutera hur man kan förbättra sin inlärningseffektivitet."
+    "message": "Hur kan jag förbättra min inlärningseffektivitet?",
+    "description": "Exempel på en fråga för att starta en konversation, hur kan jag förbättra min inlärningseffektivitet?"
   },
   "message.question8": {
-    "message": "Hur kan man öka sin koncentration?",
-    "description": "Exempel på en fråga för att inleda en konversation, där man ombeds att diskutera hur man kan förbättra sin koncentration."
+    "message": "Hur kan jag förbättra min koncentration?",
+    "description": "Exempel på en fråga för att starta en konversation, hur kan jag förbättra min koncentration?"
   },
   "message.errorApiError": {
-    "message": "Svar misslyckades, försök igen senare",
-    "description": "Meddelande på webbsidan som informerar användaren om att svaret misslyckades, försök igen senare."
+    "message": "Svaret misslyckades, försök igen senare",
+    "description": "Meddelande på webbsidan som informerar användaren att svaret misslyckades, försök igen senare"
   },
   "message.errorBadRequest": {
-    "message": "Begäran är ogiltig, vänligen ställ om frågan",
-    "description": "Meddelande på webbsidan som informerar användaren om att begäran är ogiltig, vänligen ställ om frågan."
+    "message": "Begäran är ogiltig, vänligen ställ frågan igen",
+    "description": "Meddelande på webbsidan som informerar användaren att begäran är ogiltig, vänligen ställ frågan igen"
   },
   "message.errorNoConversation": {
-    "message": "Konversationen finns inte eller har löpt ut, vänligen starta en ny konversation",
-    "description": "Meddelande på webbsidan som informerar användaren om att konversationen inte finns eller har löpt ut, vänligen starta en ny konversation."
+    "message": "Konversationen finns inte eller har gått ut, vänligen starta en ny konversation",
+    "description": "Meddelande på webbsidan som informerar användaren att konversationen inte finns eller har gått ut, vänligen starta en ny konversation"
   },
   "message.errorContentTooLarge": {
     "message": "Frågan är för lång, vänligen förkorta den och försök igen",
-    "description": "Meddelande på webbsidan som informerar användaren om att frågan är för lång, vänligen förkorta den och försök igen."
+    "description": "Meddelande på webbsidan som informerar användaren att frågan är för lång, vänligen förkorta den och försök igen"
   },
   "message.errorTooManyRequests": {
     "message": "Dina åtgärder är för frekventa, vänligen försök igen senare",
-    "description": "Meddelande på webbsidan som informerar användaren om att deras åtgärder är för frekventa, vänligen försök igen senare."
+    "description": "Meddelande på webbsidan som informerar användaren att deras åtgärder är för frekventa, vänligen försök igen senare"
+  },
+  "message.errorBusy": {
+    "message": "Servern är upptagen, vänligen försök igen senare",
+    "description": "Meddelande på webbsidan som informerar användaren att servern är upptagen, vänligen försök igen senare"
   },
   "message.errorUsedUp": {
-    "message": "Du har använt upp dina paket, vänligen köp fler för att fortsätta använda tjänsten",
-    "description": "Meddelande på webbsidan som informerar användaren om att de har använt upp sina paket, vänligen köp fler för att fortsätta använda tjänsten."
+    "message": "Du har använt upp dina paket, vänligen köp fler för att fortsätta använda",
+    "description": "Meddelande på webbsidan som informerar användaren att de har använt upp sina paket, vänligen köp fler för att fortsätta använda"
   },
   "message.errorUnknown": {
-    "message": "Ett okänt serverfel har inträffat, vänligen försök igen senare eller kontakta kundtjänst",
-    "description": "Meddelande på webbsidan som informerar användaren om att ett okänt serverfel har inträffat, vänligen försök igen senare eller kontakta kundtjänst."
+    "message": "Ett okänt fel har inträffat på servern, vänligen försök igen senare eller kontakta kundtjänst",
+    "description": "Meddelande på webbsidan som informerar användaren att ett okänt fel har inträffat på servern, vänligen försök igen senare eller kontakta kundtjänst"
   },
   "message.errorTimeout": {
-    "message": "Svar på frågan tog för lång tid, vänligen försök igen senare",
-    "description": "Meddelande på webbsidan som informerar användaren om att svaret på frågan tog för lång tid, vänligen försök igen senare."
+    "message": "Frågan tog för lång tid, vänligen försök igen senare",
+    "description": "Meddelande på webbsidan som informerar användaren att frågan tog för lång tid, vänligen försök igen senare"
   },
   "message.errorNotApplied": {
     "message": "Du har ännu inte ansökt om denna tjänst, vänligen ansök först innan du fortsätter ställa frågor",
-    "description": "Meddelande på webbsidan som informerar användaren om att de ännu inte har ansökt om denna tjänst, vänligen ansök först innan du fortsätter ställa frågor."
+    "description": "Meddelande på webbsidan som informerar användaren att de ännu inte har ansökt om denna tjänst, vänligen ansök först innan du fortsätter ställa frågor"
   },
   "message.confirmDelete": {
     "message": "Bekräfta radering",
-    "description": "Meddelande på webbsidan som informerar användaren om att de ska bekräfta raderingen."
+    "description": "Meddelande på webbsidan som informerar användaren att de ska bekräfta raderingen"
   },
   "message.howToUse": {
     "message": "AI kan göra misstag, vänligen kontrollera viktig information.",
-    "description": "Meddelande på webbsidan som informerar användaren om att AI kan göra misstag, vänligen kontrollera viktig information."
+    "description": "Meddelande på webbsidan som informerar användaren att AI kan göra misstag, vänligen kontrollera viktig information"
   },
   "title.chat": {
     "message": "AI Chatt",
-    "description": "Webbsidans titel, det vill säga AI Chatt."
+    "description": "Webbsidans titel, det vill säga AI Chatt"
   },
   "title.example": {
     "message": "Exempel",
-    "description": "Webbsidans titel, det vill säga Exempel."
+    "description": "Webbsidans titel, det vill säga Exempel"
   },
   "title.capabilities": {
     "message": "Funktioner",
-    "description": "Webbsidans titel, det vill säga Funktioner."
+    "description": "Webbsidans titel, det vill säga Funktioner"
   },
   "title.limitations": {
     "message": "Begränsningar",
-    "description": "Webbsidans titel som anger att denna del handlar om tjänstens tekniska begränsningar."
+    "description": "Webbsidans titel som anger att denna del handlar om tjänstens tekniska begränsningar"
   },
   "title.complexQuestion": {
     "message": "Svara på komplexa frågor",
-    "description": "Webbsidans titel som anger att denna del handlar om tjänstens förmåga att svara på komplexa frågor."
+    "description": "Webbsidans titel som anger att denna del handlar om tjänstens förmåga att svara på komplexa frågor"
   },
   "title.professionalQuestion": {
     "message": "Konsultera professionella frågor",
-    "description": "Webbsidans titel som anger att denna del handlar om tjänstens förmåga att konsultera professionella frågor."
+    "description": "Webbsidans titel som anger att denna del handlar om tjänstens förmåga att konsultera professionella frågor"
   },
   "title.getTips": {
     "message": "Få inspiration och idéer",
-    "description": "Webbsidans titel som anger att denna del handlar om tjänstens förmåga att få inspiration och idéer."
+    "description": "Webbsidans titel som anger att denna del handlar om tjänsten att få inspiration och idéer"
   },
   "group.today": {
     "message": "Idag",
-    "description": "Webbsidans gruppnamn, det vill säga Idag."
+    "description": "Webbsidans gruppnamn, det vill säga Idag"
   },
   "group.yesterday": {
     "message": "Igår",
-    "description": "Webbsidans gruppnamn, det vill säga Igår."
+    "description": "Webbsidans gruppnamn, det vill säga Igår"
   },
   "group.thisWeek": {
     "message": "Denna vecka",
-    "description": "Webbsidans gruppnamn, det vill säga Denna vecka."
+    "description": "Webbsidans gruppnamn, det vill säga Denna vecka"
   },
   "group.earlier": {
     "message": "Tidigare",
-    "description": "Webbsidans gruppnamn, det vill säga Tidigare."
+    "description": "Webbsidans gruppnamn, det vill säga Tidigare"
   }
 }

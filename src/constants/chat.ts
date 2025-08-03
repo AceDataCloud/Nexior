@@ -7,9 +7,12 @@ export const ROLE_USER = 'user';
 
 export const CHAT_MODEL_NAME_GPT_4_ALL = 'gpt-4-all';
 export const CHAT_MODEL_NAME_GPT_4O = 'gpt-4o';
+export const CHAT_MODEL_NAME_GPT_4O_MINI = 'gpt-4o-mini';
+export const CHAT_MODEL_NAME_GPT_4O_IMAGE = 'gpt-4o-image';
 export const CHAT_MODEL_NAME_O1 = 'o1';
 export const CHAT_MODEL_NAME_O1_MINI = 'o1-mini';
-export const CHAT_MODEL_NAME_O3_MINI = 'o3-mini';
+export const CHAT_MODEL_NAME_O3 = 'o3';
+export const CHAT_MODEL_NAME_O4_MINI = 'o4-mini';
 export const CHAT_MODEL_NAME_DEEPSEEK_CHAT = 'deepseek-v3';
 export const CHAT_MODEL_NAME_DEEPSEEK_REASONER = 'deepseek-r1';
 export const CHAT_MODEL_NAME_GROK_3 = 'grok-3';
@@ -27,6 +30,7 @@ export const CHAT_MODEL_GPT_4_ALL: IChatModel = {
   icon: CHAT_MODEL_ICON_CHATGPT,
   modelGroup: 'chatgpt',
   isFileSupported: true,
+  isImageSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.4All'),
   getDescription: () => i18n.global.t('chat.model.4AllDescription')
 };
@@ -35,9 +39,70 @@ export const CHAT_MODEL_GPT_4O: IChatModel = {
   name: CHAT_MODEL_NAME_GPT_4O,
   icon: CHAT_MODEL_ICON_CHATGPT,
   modelGroup: 'chatgpt',
-  isFileSupported: true,
+  isFileSupported: false,
+  isImageSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.4O'),
   getDescription: () => i18n.global.t('chat.model.4ODescription')
+};
+
+export const CHAT_MODEL_GPT_4O_MINI: IChatModel = {
+  name: CHAT_MODEL_NAME_GPT_4O_MINI,
+  icon: CHAT_MODEL_ICON_CHATGPT,
+  modelGroup: 'chatgpt',
+  isFileSupported: false,
+  isImageSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.4OMini'),
+  getDescription: () => i18n.global.t('chat.model.4OMiniDescription')
+};
+
+export const CHAT_MODEL_GPT_4O_IMAGE: IChatModel = {
+  name: CHAT_MODEL_NAME_GPT_4O_IMAGE,
+  icon: CHAT_MODEL_ICON_CHATGPT,
+  modelGroup: 'chatgpt',
+  isFileSupported: false,
+  isImageSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.4OImage'),
+  getDescription: () => i18n.global.t('chat.model.4OImageDescription')
+};
+
+export const CHAT_MODEL_O1: IChatModel = {
+  name: CHAT_MODEL_NAME_O1,
+  icon: CHAT_MODEL_ICON_CHATGPT,
+  modelGroup: 'chatgpt',
+  isFileSupported: true,
+  isImageSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.o1'),
+  getDescription: () => i18n.global.t('chat.model.o1Description')
+};
+
+export const CHAT_MODEL_O1_MINI: IChatModel = {
+  name: CHAT_MODEL_NAME_O1_MINI,
+  icon: CHAT_MODEL_ICON_CHATGPT,
+  modelGroup: 'chatgpt',
+  isFileSupported: true,
+  isImageSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.o1Mini'),
+  getDescription: () => i18n.global.t('chat.model.o1MiniDescription')
+};
+
+export const CHAT_MODEL_O3: IChatModel = {
+  name: CHAT_MODEL_NAME_O3,
+  icon: CHAT_MODEL_ICON_CHATGPT,
+  modelGroup: 'chatgpt',
+  isFileSupported: true,
+  isImageSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.o3'),
+  getDescription: () => i18n.global.t('chat.model.o3Description')
+};
+
+export const CHAT_MODEL_O4_MINI: IChatModel = {
+  name: CHAT_MODEL_NAME_O4_MINI,
+  icon: CHAT_MODEL_ICON_CHATGPT,
+  modelGroup: 'chatgpt',
+  isFileSupported: true,
+  isImageSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.o4Mini'),
+  getDescription: () => i18n.global.t('chat.model.o4MiniDescription')
 };
 
 export const CHAT_MODEL_DEEPSEEK_CHAT: IChatModel = {
@@ -54,30 +119,6 @@ export const CHAT_MODEL_DEEPSEEK_REASONER: IChatModel = {
   modelGroup: 'deepseek',
   getDisplayName: () => i18n.global.t('chat.model.deepseekReasoner'),
   getDescription: () => i18n.global.t('chat.model.deepseekReasonerDescription')
-};
-
-export const CHAT_MODEL_O1: IChatModel = {
-  name: CHAT_MODEL_NAME_O1,
-  icon: CHAT_MODEL_ICON_CHATGPT,
-  modelGroup: 'chatgpt',
-  getDisplayName: () => i18n.global.t('chat.model.o1'),
-  getDescription: () => i18n.global.t('chat.model.o1Description')
-};
-
-export const CHAT_MODEL_O1_MINI: IChatModel = {
-  name: CHAT_MODEL_NAME_O1_MINI,
-  icon: CHAT_MODEL_ICON_CHATGPT,
-  modelGroup: 'chatgpt',
-  getDisplayName: () => i18n.global.t('chat.model.o1Mini'),
-  getDescription: () => i18n.global.t('chat.model.o1MiniDescription')
-};
-
-export const CHAT_MODEL_O3_MINI: IChatModel = {
-  name: CHAT_MODEL_NAME_O3_MINI,
-  icon: CHAT_MODEL_ICON_CHATGPT,
-  modelGroup: 'chatgpt',
-  getDisplayName: () => i18n.global.t('chat.model.o3Mini'),
-  getDescription: () => i18n.global.t('chat.model.o3MiniDescription')
 };
 
 export const CHAT_MODEL_GROK_3: IChatModel = {
@@ -109,7 +150,14 @@ export const CHAT_MODEL_GROUP_CHATGPT: IChatModelGroup = {
   name: 'chatgpt',
   getDisplayName: () => i18n.global.t('chat.modelGroup.chatgpt'),
   getDescription: () => i18n.global.t('chat.modelGroup.chatgptDescription'),
-  models: [CHAT_MODEL_GPT_4O, CHAT_MODEL_GPT_4_ALL, CHAT_MODEL_O1, CHAT_MODEL_O3_MINI]
+  models: [
+    CHAT_MODEL_GPT_4O,
+    CHAT_MODEL_GPT_4_ALL,
+    CHAT_MODEL_GPT_4O_MINI,
+    CHAT_MODEL_GPT_4O_IMAGE,
+    CHAT_MODEL_O3,
+    CHAT_MODEL_O4_MINI
+  ]
 };
 
 export const CHAT_MODEL_GROUP_DEEPSEEK: IChatModelGroup = {
@@ -131,9 +179,10 @@ export const CHAT_MODEL_GROUP_GROK: IChatModelGroup = {
 export const CHAT_MODELS: IChatModel[] = [
   CHAT_MODEL_GPT_4O,
   CHAT_MODEL_GPT_4_ALL,
-  CHAT_MODEL_O1,
-  CHAT_MODEL_O1_MINI,
-  CHAT_MODEL_O3_MINI,
+  CHAT_MODEL_GPT_4O_MINI,
+  CHAT_MODEL_GPT_4O_IMAGE,
+  CHAT_MODEL_O3,
+  CHAT_MODEL_O4_MINI,
   CHAT_MODEL_DEEPSEEK_CHAT,
   CHAT_MODEL_DEEPSEEK_REASONER,
   CHAT_MODEL_GROK_3,
