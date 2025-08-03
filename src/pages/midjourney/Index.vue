@@ -31,7 +31,6 @@ import {
 interface IData {
   operating: boolean;
   job: number;
-  timer: any;
 }
 
 const CALLBACK_URL = 'https://webhook.acedata.cloud/midjourney';
@@ -43,12 +42,11 @@ export default defineComponent({
     TaskList,
     Layout
   },
+  inject: ['initialized'],
   data(): IData {
     return {
       operating: false,
-      job: 0,
-      // @ts-ignore
-      timer: undefined
+      job: 0
     };
   },
   computed: {
@@ -150,22 +148,26 @@ export default defineComponent({
         }
       },
       deep: true
+    },
+    initialized: {
+      async handler(newValue) {
+        if (newValue) {
+          console.debug('layout initialized');
+          await this.onGetTasks();
+          await this.onScrollDown();
+          this.job = setInterval(() => {
+            this.onGetTasks();
+          }, 5000);
+        }
+      },
+      immediate: true
     }
   },
   async mounted() {
     await this.onGetService();
-    await this.onGetApplication();
-    await this.onScrollDown();
-    await this.onGetTasks();
-    // await this.onScrollDown();
-    // @ts-ignore
-    this.job = setInterval(() => {
-      this.onGetTasks();
-    }, 5000);
   },
   async unmounted() {
     clearInterval(this.job);
-    clearInterval(this.timer);
   },
   methods: {
     async onReachTop() {
