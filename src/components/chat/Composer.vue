@@ -5,9 +5,10 @@
         v-model:file-list="fileList"
         :class="{
           upload: true,
-          disabled: !model.isFileSupported || disabled
+          disabled: (!isFileSupported && !isImageSupported) || answering
         }"
-        :disabled="!model.isFileSupported || disabled"
+        :accept="extensions"
+        :disabled="(!isFileSupported && !isImageSupported) || answering"
         name="file"
         :limit="10"
         :multiple="true"
@@ -34,38 +35,41 @@
           />
         </template>
         <el-tooltip class="box-item" effect="dark" :content="$t('chat.message.uploadFile')" placement="bottom">
-          <span :class="{ btn: true, 'btn-upload': true, disabled: !model.isFileSupported || disabled }">
+          <span
+            :class="{ btn: true, 'btn-upload': true, disabled: (!isFileSupported && !isImageSupported) || answering }"
+          >
             <font-awesome-icon icon="fa-solid fa-plus" class="icon icon-attachment" />
           </span>
         </el-tooltip>
       </el-upload>
     </div>
-    <span
-      v-show="!disabled"
+    <el-button
+      :disabled="answering || !questionValue || uploading"
+      type="primary"
       :class="{
         btn: true,
-        'btn-send': true,
-        disabled: !questionValue
+        'btn-send': true
       }"
       @click="onSubmit"
     >
-      <font-awesome-icon icon="fa-solid fa-location-arrow" class="icon icon-send" />
-    </span>
-    <span
-      v-show="disabled"
+      <font-awesome-icon icon="fa-solid fa-arrow-up" class="icon icon-send" />
+    </el-button>
+    <el-button
+      v-show="answering"
+      :disabled="!answering"
+      type="primary"
       :class="{
         btn: true,
-        'btn-stop': true,
-        disabled: !disabled
+        'btn-stop': true
       }"
       @click="onStop"
     >
       <font-awesome-icon icon="fa-solid fa-stop" class="icon icon-stop" />
-    </span>
+    </el-button>
     <textarea
       ref="textarea"
       v-model="questionValue"
-      :disabled="disabled"
+      :disabled="answering"
       class="input"
       :placeholder="$t('chat.message.newMessagePlaceholder')"
       :style="{ height: inputHeight }"
@@ -77,7 +81,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElMessage, ElTooltip, ElUpload, UploadFile, UploadProgressEvent } from 'element-plus';
+import { ElMessage, ElTooltip, ElUpload, UploadFile, UploadProgressEvent, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IChatModel } from '@/models';
 import { getBaseUrlPlatform, isImageUrl } from '@/utils';
@@ -91,10 +95,11 @@ export default defineComponent({
     ImagePreview,
     ElTooltip,
     FontAwesomeIcon,
-    ElUpload
+    ElUpload,
+    ElButton
   },
   props: {
-    disabled: {
+    answering: {
       type: Boolean,
       required: false,
       default: false
@@ -125,6 +130,12 @@ export default defineComponent({
     modelGroup() {
       return this.$store.state.chat.modelGroup;
     },
+    isFileSupported() {
+      return this.model?.isFileSupported;
+    },
+    isImageSupported() {
+      return this.model?.isImageSupported;
+    },
     headers() {
       return {
         Authorization: `Bearer ${this.$store.state.token.access}`
@@ -133,6 +144,18 @@ export default defineComponent({
     urls(): string[] {
       // @ts-ignore
       return this.fileList.map((file: UploadFile) => file?.response?.file_url);
+    },
+    uploading() {
+      // if at least file is uploading, return true
+      return !!this.fileList.find(
+        (file) => file.percentage !== undefined && file.percentage >= 0 && file.percentage < 100
+      );
+    },
+    extensions() {
+      if (this.isFileSupported === false && this.isImageSupported === true) {
+        return '.png,.jpg,.jpeg,.gif,.bmp,.webp,.svg,.tiff,.ico,.heic';
+      }
+      return undefined;
     }
   },
   watch: {
@@ -155,6 +178,11 @@ export default defineComponent({
       if (val.length === 0) {
         this.fileList = [];
       }
+    },
+    isFileSupported(val, oldVal) {
+      if (oldVal && !val) {
+        this.fileList = [];
+      }
     }
   },
   methods: {
@@ -172,7 +200,7 @@ export default defineComponent({
       });
     },
     onSubmit() {
-      if (!this.question) {
+      if (!this.question || this.uploading) {
         return;
       }
       this.$emit('submit');
@@ -180,8 +208,8 @@ export default defineComponent({
     onStop() {
       this.$emit('stop');
     },
-    onProgress(evt: UploadProgressEvent, uploadFile: UploadFile) {
-      console.debug('File upload progress:', uploadFile.name, evt.loaded, evt.total);
+    onProgress(event: UploadProgressEvent, uploadFile: UploadFile) {
+      console.debug('File upload progress:', uploadFile.name, event.loaded, event.total, uploadFile.percentage);
     },
     onExceed() {
       ElMessage.warning(this.$t('chat.message.uploadReferencesExceed'));
@@ -301,11 +329,6 @@ textarea.input:focus {
       height: 36px;
       line-height: 36px;
       user-select: none;
-      &.disabled {
-        cursor: not-allowed;
-        pointer-events: none;
-        color: var(--el-text-color-disabled) !important;
-      }
       &.btn-upload {
         border-radius: 50%;
         width: 36px;
@@ -320,6 +343,19 @@ textarea.input:focus {
   }
   .btn-send,
   .btn-stop {
+    --el-button-bg-color: var(--el-color-black);
+    --el-button-border-color: var(--el-color-black);
+    --el-button-outline-color: var(--el-color-info);
+    --el-button-active-color: var(--el-color-info);
+    --el-button-hover-text-color: var(--el-color-white);
+    --el-button-hover-link-text-color: var(--el-color-info);
+    --el-button-hover-bg-color: var(--el-color-info);
+    --el-button-hover-border-color: var(--el-color-info);
+    --el-button-active-bg-color: var(--el-color-info);
+    --el-button-active-border-color: var(--el-color-info);
+    --el-button-disabled-text-color: var(--el-color-white);
+    --el-button-disabled-bg-color: var(--el-color-info);
+    --el-button-disabled-border-color: var(--el-color-info);
     position: absolute;
     bottom: 15px;
     right: 15px;
@@ -328,13 +364,9 @@ textarea.input:focus {
     height: 36px;
     line-height: 36px;
     text-align: center;
-    background-color: var(--el-color-black);
-    color: var(--el-color-white);
+    // background-color: var(--el-color-black);
+    // color: var(--el-color-white);
     font-size: 16px;
-    &.disabled {
-      display: none;
-      cursor: not-allowed;
-    }
   }
 }
 </style>

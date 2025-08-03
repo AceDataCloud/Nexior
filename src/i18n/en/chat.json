@@ -43,6 +43,22 @@
     "message": "gpt-4o",
     "description": "The name of the service model, i.e., GPT 4.0 Vision"
   },
+  "model.4OMini": {
+    "message": "gpt-4o-mini",
+    "description": "The name of the service model, i.e., GPT 4.0 Mini"
+  },
+  "model.4OMiniDescription": {
+    "message": "Lighter and faster model",
+    "description": "Description of the 4.0 Mini model"
+  },
+  "model.4OImage": {
+    "message": "gpt-4o-image",
+    "description": "The name of the service model, i.e., GPT 4.0 Vision"
+  },
+  "model.4OImageDescription": {
+    "message": "Supports image generation",
+    "description": "Description of the 4.0 Vision model"
+  },
   "model.4ODescription": {
     "message": "Suitable for most tasks",
     "description": "Description of the 4.0 Vision model"
@@ -111,13 +127,21 @@
     "message": "Faster reasoning tasks.",
     "description": "Description of the O1-Mini model"
   },
-  "model.o3Mini": {
-    "message": "o3-mini",
-    "description": "The name of the service model, i.e., O3-Mini"
+  "model.o3": {
+    "message": "o3",
+    "description": "The name of the service model, i.e., O3"
   },
-  "model.o3MiniDescription": {
+  "model.o3Description": {
     "message": "Suitable for more advanced reasoning tasks",
-    "description": "Description of the O3-Mini model"
+    "description": "Description of the O3 model"
+  },
+  "model.o4Mini": {
+    "message": "o4-mini",
+    "description": "The name of the service model, i.e., O4-Mini"
+  },
+  "model.o4MiniDescription": {
+    "message": "Good at coding and visual reasoning",
+    "description": "Description of the O4 model"
   },
   "message.startNewChat": {
     "message": "Start New Chat",
@@ -149,11 +173,11 @@
   },
   "message.notApplied": {
     "message": "You have not applied for this service, please apply first",
-    "description": "Message on the webpage telling the user that they have not applied for this service, please apply first"
+    "description": "Message on the webpage informing the user that they have not applied for this service, please apply first"
   },
   "message.tryForFree": {
-    "message": "Try for Free",
-    "description": "Message on the webpage telling the user to try for free"
+    "message": "Try for free",
+    "description": "Message on the webpage informing the user about a free trial"
   },
   "message.question1": {
     "message": "Create a training plan",
@@ -164,36 +188,36 @@
     "description": "Example question to start a conversation, asking the user to write an email to Mike telling him that I just moved"
   },
   "message.question3": {
-    "message": "Design interesting programming games",
-    "description": "An example question to start a conversation, asking the user to explain the basic principles of quantum computing in simple language"
+    "message": "Design an interesting programming game",
+    "description": "Example question to start a conversation, asking the user to explain the basic principles of quantum computing in simple language"
   },
   "message.question4": {
     "message": "Experience Seoul like a local",
-    "description": "An example question to start a conversation, asking the user to explain the impact of virtual reality on artistic creation"
+    "description": "Example question to start a conversation, asking the user to explain the impact of virtual reality on artistic creation"
   },
   "message.question5": {
     "message": "Which is larger, 9.8 or 9.11?",
-    "description": "An example question to start a conversation, asking to compare the sizes of two numbers"
+    "description": "Example question to start a conversation, asking to compare the size of two numbers"
   },
   "message.question6": {
     "message": "What impact does AI have on the future?",
-    "description": "An example question to start a conversation, asking what impact AI has on the future"
+    "description": "Example question to start a conversation, asking what impact AI has on the future"
   },
   "message.question7": {
     "message": "How to improve learning efficiency?",
-    "description": "An example question to start a conversation, asking how to improve one's learning efficiency"
+    "description": "Example question to start a conversation, asking how to improve one's learning efficiency"
   },
   "message.question8": {
     "message": "How to improve concentration?",
-    "description": "An example question to start a conversation, asking how to improve one's concentration"
+    "description": "Example question to start a conversation, asking how to improve one's concentration"
   },
   "message.errorApiError": {
     "message": "Response failed, please try again later",
     "description": "Message on the webpage informing the user that the response failed, please try again later"
   },
   "message.errorBadRequest": {
-    "message": "Request content is not valid, please rephrase your question",
-    "description": "Message on the webpage informing the user that the request content is not valid, please rephrase your question"
+    "message": "Request content is not valid, please ask again",
+    "description": "Message on the webpage informing the user that the request content is not valid, please ask again"
   },
   "message.errorNoConversation": {
     "message": "Conversation does not exist or has expired, please start a new conversation",
@@ -206,6 +230,10 @@
   "message.errorTooManyRequests": {
     "message": "Your actions are too frequent, please try again later",
     "description": "Message on the webpage informing the user that their actions are too frequent, please try again later"
+  },
+  "message.errorBusy": {
+    "message": "Server is busy, please try again later",
+    "description": "Message on the webpage informing the user that the server is busy, please try again later"
   },
   "message.errorUsedUp": {
     "message": "You have used up your package quota, please purchase more to continue using",
@@ -220,8 +248,8 @@
     "description": "Message on the webpage informing the user that answering the question timed out, please try again later"
   },
   "message.errorNotApplied": {
-    "message": "You have not applied for this service, please apply first before continuing to ask questions",
-    "description": "Message on the webpage informing the user that they have not applied for this service, please apply first before continuing to ask questions"
+    "message": "You have not applied for this service, please apply first before continuing to ask",
+    "description": "Message on the webpage informing the user that they have not applied for this service, please apply first before continuing to ask"
   },
   "message.confirmDelete": {
     "message": "Confirm deletion",
@@ -233,46 +261,46 @@
   },
   "title.chat": {
     "message": "AI Chat",
-    "description": "The title of the webpage, which is AI Chat"
+    "description": "Title of the webpage, which is AI Chat"
   },
   "title.example": {
     "message": "Example",
-    "description": "The title of the webpage, which is Example"
+    "description": "Title of the webpage, which is Example"
   },
   "title.capabilities": {
     "message": "Capabilities",
-    "description": "The title of the webpage, which is Capabilities"
+    "description": "Title of the webpage, which is Capabilities"
   },
   "title.limitations": {
     "message": "Limitations",
-    "description": "The title on the webpage indicating that this section is about the technical limitations of the service"
+    "description": "Title on the webpage indicating that this section is about the technical limitations of the service"
   },
   "title.complexQuestion": {
     "message": "Answering complex questions",
-    "description": "The title on the webpage indicating that this section is about the service's ability to answer complex questions"
+    "description": "Title on the webpage indicating that this section is about the service's ability to answer complex questions"
   },
   "title.professionalQuestion": {
     "message": "Consulting professional questions",
-    "description": "The title on the webpage indicating that this section is about the service's ability to consult on professional questions"
+    "description": "Title on the webpage indicating that this section is about the service's ability to consult on professional questions"
   },
   "title.getTips": {
-    "message": "Get inspiration and ideas",
-    "description": "The title on the webpage indicating that this section is about the service's ability to get inspiration and ideas"
+    "message": "Get Inspiration and Ideas",
+    "description": "The title in the webpage indicating that this section is about the ability to obtain inspiration and ideas."
   },
   "group.today": {
     "message": "Today",
-    "description": "The name of the grouping on the webpage, which is Today"
+    "description": "The group name in the webpage, which is Today."
   },
   "group.yesterday": {
     "message": "Yesterday",
-    "description": "The name of the grouping on the webpage, which is Yesterday"
+    "description": "The group name in the webpage, which is Yesterday."
   },
   "group.thisWeek": {
-    "message": "This week",
-    "description": "The name of the grouping on the webpage, which is This week"
+    "message": "This Week",
+    "description": "The group name in the webpage, which is This Week."
   },
   "group.earlier": {
     "message": "Earlier",
-    "description": "The name of the grouping on the webpage, which is Earlier"
+    "description": "The group name in the webpage, which is Earlier."
   }
 }

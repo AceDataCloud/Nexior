@@ -42,6 +42,7 @@ import {
   faCircleInfo as faSolidCircleInfo,
   faMicrophone as faSolidMicrophone,
   faArrowLeft as faSolidArrowLeft,
+  faArrowUp as faSolidArrowUp,
   faUpload as faSolidUpload,
   faMagic as faSolidMagic,
   faInfo as faSolidInfo,
@@ -90,6 +91,7 @@ library.add(faSolidIdCard);
 library.add(faSolidStopCircle);
 library.add(faRegularFile);
 library.add(faSolidPlayCircle);
+library.add(faSolidArrowUp);
 library.add(faRegularFileAlt);
 library.add(faSolidFilm);
 library.add(faSolidMusic);

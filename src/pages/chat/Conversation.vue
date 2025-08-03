@@ -20,7 +20,7 @@
         <div class="starter">
           <composer
             v-model:question="question"
-            :disabled="answering"
+            :answering="answering"
             :references="references"
             @update:references="references = $event"
             @submit="onSubmit"

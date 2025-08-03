@@ -43,6 +43,22 @@
     "message": "gpt-4o",
     "description": "服务的模型名称，即 GPT 4.0 视觉"
   },
+  "model.4OMini": {
+    "message": "gpt-4o-mini",
+    "description": "服务的模型名称，即 GPT 4.0 Mini"
+  },
+  "model.4OMiniDescription": {
+    "message": "更轻更快的模型",
+    "description": "4.0 Mini 模型的描述"
+  },
+  "model.4OImage": {
+    "message": "gpt-4o-image",
+    "description": "服务的模型名称，即 GPT 4.0 视觉"
+  },
+  "model.4OImageDescription": {
+    "message": "支持图像生成",
+    "description": "4.0 视觉模型的描述"
+  },
   "model.4ODescription": {
     "message": "适用于绝大多数任务",
     "description": "4.0 视觉模型的描述"
@@ -111,13 +127,21 @@
     "message": "更快速进行推理任务。",
     "description": "O1-Mini 模型的描述"
   },
-  "model.o3Mini": {
-    "message": "o3-mini",
-    "description": "服务的模型名称，即 O3-Mini"
+  "model.o3": {
+    "message": "o3",
+    "description": "服务的模型名称，即 O3"
   },
-  "model.o3MiniDescription": {
+  "model.o3Description": {
     "message": "适用于更高级推理任务",
-    "description": "O3-Mini 模型的描述"
+    "description": "O3 模型的描述"
+  },
+  "model.o4Mini": {
+    "message": "o4-mini",
+    "description": "服务的模型名称，即 O4-Mini"
+  },
+  "model.o4MiniDescription": {
+    "message": "擅长编码和视觉推理",
+    "description": "O4 模型的描述"
   },
   "message.startNewChat": {
     "message": "开始新对话",
@@ -206,6 +230,10 @@
   "message.errorTooManyRequests": {
     "message": "您的操作过于频繁，请稍后重试",
     "description": "网页中的消息，告诉用户您的操作过于频繁，请稍后重试"
+  },
+  "message.errorBusy": {
+    "message": "服务器繁忙，请稍后重试",
+    "description": "网页中的消息，告诉用户服务器繁忙，请稍后重试"
   },
   "message.errorUsedUp": {
     "message": "您已用完套餐次数，请购买更多次数继续使用",
