@@ -1443,6 +1443,14 @@
     "message": "普通",
     "description": "按钮文本，表示'低'图片质量"
   },
+  "button.uploadImageUrl": {
+    "message": "上传图片",
+    "description": "上传图片的按钮文本"
+  },
+  "button.extend": {
+    "message": "扩展",
+    "description": "按钮文本，表示扩展视频"
+  },
   "button.medium": {
     "message": "清晰",
     "description": "按钮文本，表示'中'图片质量"
@@ -1514,6 +1522,10 @@
   "field.imageId": {
     "message": "图像ID",
     "description": "图像ID"
+  },
+  "field.videoId": {
+    "message": "视频ID",
+    "description": "视频ID"
   },
   "field.finalPrompt": {
     "message": "最终提示",
@@ -1602,6 +1614,10 @@
   "description.weird": {
     "message": "--weird，探索具有实验性质的不寻常审美风格，范围为0-3000，默认为0",
     "description": "怪异参数的描述"
+  },
+  "description.imageUrl": {
+    "message": "在创建视频的任务中，它必须上传一张图片。",
+    "description": "参数'imageUrl'的描述"
   },
   "description.translation": {
     "message": "在生成过程中启用自动翻译，非中文内容将自动翻译为Midjourney的英文输入",
@@ -1744,7 +1760,7 @@
     "description": "重做放大 4 倍按钮的描述"
   },
   "message.promptPlaceholder": {
-    "message": "请输入一句话描述您想生成的图像，例如：一只可爱的猫。额外的参数将覆盖默认预设参数",
+    "message": "请输入一句话描述您想生成的图像或视频，例如：一只可爱的猫。额外的参数将覆盖默认预设参数",
     "description": "提示字段中的占位文本"
   },
   "message.uploadReferencesExceed": {
@@ -1767,13 +1783,29 @@
     "message": "成功开始绘图任务",
     "description": "成功开始绘图任务时的成功消息"
   },
+  "message.startVideosTaskSuccess": {
+    "message": "成功开始视频生成任务",
+    "description": "成功开始视频生成任务时的成功消息"
+  },
   "message.startTaskFailed": {
     "message": "无法开始绘图任务，请联系管理员",
     "description": "无法开始绘图任务时的错误消息"
   },
+  "message.startVideosTaskFailed": {
+    "message": "无法开始视频生成任务，请联系管理员",
+    "description": "无法开始视频生成任务时的错误消息"
+  },
   "message.generating": {
     "message": "生成中...",
     "description": "图像生成中的消息"
+  },
+  "message.uploadStartImageExceed": {
+    "message": "上传首帧图片数量超过限制",
+    "description": "上传首帧图片数量超过限制时的错误信息"
+  },
+  "message.uploadStartImageError": {
+    "message": "上传首帧图片失败",
+    "description": "上传首帧图片失败时的错误信息"
   },
   "message.noOperations": {
     "message": "无可用操作",
@@ -1802,6 +1834,14 @@
   "name.referenceImage": {
     "message": "参考图",
     "description": "参考图像的名称"
+  },
+  "name.imageUrl": {
+    "message": "首帧图片",
+    "description": "首帧图片的名称"
+  },
+  "name.isVideos": {
+    "message": "视频生成",
+    "description": "视频生成的开关"
   },
   "name.midjourneyBot": {
     "message": "Midjourney Bot",
@@ -1916,7 +1956,7 @@
     "description": "原始参数的名称，用于启用 Midjourney 模型"
   },
   "placeholder.prompt": {
-    "message": "输入一句话描述您想生成的图像，例如：一只可爱的猫。额外的参数将覆盖默认预设参数",
+    "message": "输入一句话描述您想生成的图像或视频，例如：一只可爱的猫。额外的参数将覆盖默认预设参数",
     "description": "提示字段中的占位文本"
   },
   "placeholder.ignore": {

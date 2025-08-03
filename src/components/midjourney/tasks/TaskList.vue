@@ -6,7 +6,13 @@
     <no-tasks />
   </div>
   <div v-else-if="tasks.length > 0" ref="panel" class="p-2 flex flex-col overflow-y-auto" @scroll="onHandleScroll">
-    <task-item v-for="(task, taskKey) in tasks" :key="taskKey" :model-value="task" @custom="$emit('custom', $event)" />
+    <task-item
+      v-for="(task, taskKey) in tasks"
+      :key="taskKey"
+      :model-value="task"
+      @extend="$emit('extend', $event)"
+      @custom="$emit('custom', $event)"
+    />
   </div>
 </template>
 
@@ -23,7 +29,7 @@ export default defineComponent({
     BotPlaceholder,
     NoTasks
   },
-  emits: ['custom', 'reach-top'],
+  emits: ['custom', 'extend', 'reach-top'],
   data() {
     return {
       job: 0

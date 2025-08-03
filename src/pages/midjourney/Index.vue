@@ -18,7 +18,7 @@ import { midjourneyOperator } from '@/operators';
 import TaskList from '@/components/midjourney/tasks/TaskList.vue';
 import { ERROR_CODE_USED_UP } from '@/constants/errorCode';
 import { Status } from '@/models';
-import { IMidjourneyImagineRequest, MidjourneyImagineAction } from '@/models';
+import { IMidjourneyImagineRequest, IMidjourneyVideosRequest, MidjourneyImagineAction } from '@/models';
 import {
   MIDJOURNEY_DEFAULT_IMAGE_WEIGHT,
   MIDJOURNEY_DEFAULT_RATIO,
@@ -215,6 +215,37 @@ export default defineComponent({
           // await this.onScrollDown();
         });
     },
+    async onStartVideosTask(request: IMidjourneyVideosRequest) {
+      const token = this.credential?.token;
+      if (!token) {
+        console.error('no token specified');
+        return;
+      }
+      ElMessage.info(this.$t('midjourney.message.startingTask'));
+      midjourneyOperator
+        .videos(request, {
+          token
+        })
+        .then(() => {
+          ElMessage.success(this.$t('midjourney.message.startVideosTaskSuccess'));
+        })
+        .catch((error) => {
+          const response = error?.response?.data;
+          if (response?.error?.code === ERROR_CODE_USED_UP) {
+            ElMessage.error(this.$t('midjourney.message.usedUp'));
+          } else {
+            ElMessage.error(this.$t('midjourney.message.startVideosTaskFailed'));
+          }
+        })
+        .finally(async () => {
+          setTimeout(async () => {
+            await this.onGetTasks();
+            await this.onScrollDown();
+          }, 1000);
+          // await this.onGetTasks();
+          // await this.onScrollDown();
+        });
+    },
     async onCustom(payload: { image_id: string; action: MidjourneyImagineAction }) {
       const request = {
         image_id: payload.image_id,
@@ -225,14 +256,27 @@ export default defineComponent({
       this.onStartTask(request);
     },
     async onGenerate() {
-      const request = {
-        mode: this.config?.mode || MIDJOURNEY_DEFAULT_MODE,
-        prompt: this.finalPrompt,
-        action: MidjourneyImagineAction.GENERATE,
-        translation: this.config?.translation,
-        callback_url: CALLBACK_URL
-      };
-      await this.onStartTask(request);
+      if (this.config?.is_videos) {
+        const request = {
+          video_id: this.config?.video_id,
+          image_url: this.config?.image_url,
+          action: this.config?.action,
+          prompt: this.config?.prompt,
+          mode: this.config?.mode || MIDJOURNEY_DEFAULT_MODE,
+          callback_url: CALLBACK_URL
+        };
+        // @ts-ignore
+        await this.onStartVideosTask(request);
+      } else {
+        const request = {
+          mode: this.config?.mode || MIDJOURNEY_DEFAULT_MODE,
+          prompt: this.finalPrompt,
+          action: MidjourneyImagineAction.GENERATE,
+          translation: this.config?.translation,
+          callback_url: CALLBACK_URL
+        };
+        await this.onStartTask(request);
+      }
     },
     async onScrollDown() {
       await this.$nextTick();
