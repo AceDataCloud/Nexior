@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 03 Aug 2025 14:37:59 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 03 Aug 2025 15:59:11 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.13.0
+
+Sun, 03 Aug 2025 15:59:11 GMT
+
+### Minor changes
+
+- add mj videos (1348977728@qq.com)
 
 ## 3.12.1
 
