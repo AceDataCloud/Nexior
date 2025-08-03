@@ -1,6 +1,10 @@
 export interface IMidjourneyConfig {
   mode?: string;
   prompt?: string;
+  action?: string;
+  video_id?: string;
+  image_url?: string;
+  is_videos?: boolean;
   model?: string;
   ratio?: string;
   version?: string;
@@ -46,6 +50,10 @@ export enum MidjourneyImagineAction {
   REDO_UPSCALE_SUBTLE = 'redo_upscale_subtle',
   REDO_UPSCALE_CREATIVE = 'redo_upscale_creative'
 }
+export enum MidjourneyVideosAction {
+  GENERATE = 'generate',
+  EXTEND = 'extend'
+}
 
 export enum MidjourneyImagineState {
   PENDING = 'pending',
@@ -60,6 +68,16 @@ export interface IMidjourneyImagineRequest {
   prompt?: string;
   image_id?: string;
   translation?: boolean;
+  callback_url?: string;
+  application_id?: string;
+}
+
+export interface IMidjourneyVideosRequest {
+  action?: MidjourneyVideosAction;
+  mode?: string;
+  prompt?: string;
+  video_id?: string;
+  image_url?: string;
   callback_url?: string;
   application_id?: string;
 }
@@ -84,6 +102,22 @@ export interface IMidjourneyImagineResponse {
   success?: boolean;
 }
 
+export interface IMidjourneyVideosResponse {
+  task_id: string;
+  type: 'videos';
+  progress?: number;
+  image_width?: number;
+  image_height?: number;
+  video_id?: string;
+  trace_id: string;
+  video_urls?: string[];
+  error?: {
+    code?: string;
+    message?: string;
+  };
+  success?: boolean;
+}
+
 export interface IMidjourneyDescribeResponse {
   descriptions: string[];
 }
@@ -97,6 +131,15 @@ export interface IMidjourneyImagineTask {
   response?: IMidjourneyImagineResponse;
   state?: MidjourneyImagineState;
 }
+export interface IMidjourneyVideosTask {
+  id: string;
+  type: 'videos';
+  created_at?: number;
+  trace_id?: string;
+  request?: IMidjourneyVideosRequest;
+  response?: IMidjourneyVideosResponse;
+  state?: MidjourneyImagineState;
+}
 
 export interface IMidjourneyDescribeTask {
   id: string;
@@ -106,7 +149,7 @@ export interface IMidjourneyDescribeTask {
   response?: IMidjourneyDescribeResponse;
 }
 
-export type IMidjourneyTask = IMidjourneyImagineTask | IMidjourneyDescribeTask;
+export type IMidjourneyTask = IMidjourneyImagineTask | IMidjourneyDescribeTask | IMidjourneyVideosTask;
 
 export type IMidjourneyTaskResponse = IMidjourneyTask;
 

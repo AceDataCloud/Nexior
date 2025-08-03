@@ -1,7 +1,9 @@
 import axios, { AxiosResponse } from 'axios';
 import {
   IMidjourneyImagineRequest,
+  IMidjourneyVideosRequest,
   IMidjourneyImagineResponse,
+  IMidjourneyVideosResponse,
   IMidjourneyTaskResponse,
   IMidjourneyTasksResponse
 } from '@/models';
@@ -104,6 +106,22 @@ class MidjourneyOperator {
     }
   ): Promise<AxiosResponse<IMidjourneyImagineResponse>> {
     return await axios.post('/midjourney/imagine', data, {
+      headers: {
+        authorization: `Bearer ${options.token}`,
+        'content-type': 'application/json',
+        accept: 'application/x-ndjson'
+      },
+      baseURL: BASE_URL_API
+    });
+  }
+
+  async videos(
+    data: IMidjourneyVideosRequest,
+    options: {
+      token: string;
+    }
+  ): Promise<AxiosResponse<IMidjourneyVideosResponse>> {
+    return await axios.post('/midjourney/videos', data, {
       headers: {
         authorization: `Bearer ${options.token}`,
         'content-type': 'application/json',

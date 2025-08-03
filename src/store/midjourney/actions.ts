@@ -143,8 +143,7 @@ export const getTasks = async (
         {
           userId: rootState?.user?.id,
           createdAtMin,
-          createdAtMax,
-          type: 'imagine'
+          createdAtMax
         },
         {
           token

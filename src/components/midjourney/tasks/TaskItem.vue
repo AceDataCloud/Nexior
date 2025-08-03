@@ -110,16 +110,124 @@
       </div>
     </div>
   </div>
+  <div v-if="modelValue?.type === 'videos'" class="item">
+    <div class="left">
+      <el-image src="https://cdn.acedata.cloud/wto43b.png" class="avatar" />
+    </div>
+    <div class="preview">
+      <div class="bot">
+        {{ $t('midjourney.name.midjourneyBot') }}
+        <span class="datetime">
+          {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
+        </span>
+      </div>
+      <div class="info">
+        <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
+          {{ modelValue?.request?.prompt }}
+          <span v-if="!modelValue?.response"> - ({{ $t('midjourney.status.pending') }}) </span>
+          <span v-if="modelValue?.response?.progress !== undefined && modelValue?.response?.progress !== 100">
+            - ({{ modelValue?.response?.progress }}%)
+          </span>
+          <span>({{ modelValue?.request?.mode }})</span>
+        </p>
+        <p v-if="modelValue?.request?.video_id" class="prompt mt-2">
+          {{ modelValue?.request?.video_id }} - {{ modelValue?.request?.action }}
+          <span v-if="!modelValue?.response"> - ({{ $t('midjourney.status.pending') }}) </span>
+          <span>({{ modelValue?.request?.mode }})</span>
+        </p>
+      </div>
+      <!-- response error -->
+      <div v-if="modelValue?.response?.success === false" :class="{ content: true, full: full, failed: true }">
+        <el-alert :closable="false" class="failure">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            {{ $t('midjourney.field.taskId') }}:
+            {{ modelValue?.id }}
+            <copy-to-clipboard :content="modelValue?.id!" />
+          </p>
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
+            {{ $t('midjourney.field.failureReason') }}:
+            {{ modelValue?.response?.error?.message }}
+            <copy-to-clipboard :content="modelValue?.response?.error?.message!" />
+          </p>
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
+            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            {{ $t('midjourney.field.traceId') }}:
+            {{ modelValue?.response?.trace_id }}
+            <copy-to-clipboard :content="modelValue?.response?.trace_id" />
+          </p>
+        </el-alert>
+      </div>
+      <!-- response success -->
+      <div v-if="modelValue?.response?.success === true" :class="{ content: true, full: full }">
+        <div v-if="modelValue?.response.video_urls" class="mb-4">
+          <video-player :src="modelValue?.response.video_urls[0]" />
+        </div>
+        <div
+          v-if="modelValue?.response && modelValue?.response?.video_urls"
+          :class="{ operations: true, 'mt-2': true, 'mb-4': true }"
+        >
+          <el-tooltip class="box-item" effect="dark" :content="$t('luma.message.extendVideo')" placement="top-start">
+            <el-button type="info" size="small" class="btn-action" @click.stop="onExtend($event, modelValue?.response)">
+              {{ $t('midjourney.button.extend') }}
+            </el-button>
+          </el-tooltip>
+          <el-tooltip class="box-item" effect="dark" :content="$t('luma.message.downloadVideo')" placement="top-start">
+            <el-button
+              type="info"
+              size="small"
+              class="btn-action"
+              @click.stop="onDownload(modelValue.response.video_urls[0])"
+            >
+              {{ $t('midjourney.button.download') }}
+            </el-button>
+          </el-tooltip>
+        </div>
+        <el-alert :closable="false" class="mt-2 success">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            {{ $t('midjourney.field.taskId') }}:
+            {{ modelValue?.id }}
+            <copy-to-clipboard :content="modelValue?.id!" />
+          </p>
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            {{ $t('midjourney.field.traceId') }}:
+            {{ modelValue?.trace_id }}
+            <copy-to-clipboard :content="modelValue?.trace_id" />
+          </p>
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
+            <font-awesome-icon icon="fa-solid fa-image" class="mr-1" />
+            {{ $t('midjourney.field.videoId') }}:
+            {{ modelValue?.response?.video_id }}
+            <copy-to-clipboard :content="modelValue?.response?.video_id" />
+          </p>
+        </el-alert>
+      </div>
+      <!-- response pending -->
+      <div v-if="!modelValue?.response">
+        <el-alert :closable="false" class="mt-2 info">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
+            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            {{ $t('midjourney.field.taskId') }}:
+            {{ modelValue?.id }}
+            <copy-to-clipboard :content="modelValue?.id!" />
+          </p>
+        </el-alert>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElImage, ElButton, ElTooltip, ElAlert } from 'element-plus';
-import { IMidjourneyTask, MidjourneyImagineAction, MidjourneyImagineState } from '@/models';
+import { IMidjourneyTask, MidjourneyImagineAction, MidjourneyImagineState, IMidjourneyVideosResponse } from '@/models';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import ImageWrapper from '@/components/common/ImageWrapper.vue';
-
+import VideoPlayer from '@/components/common/VideoPlayer.vue';
 interface IData {
   midjourneyImagineState: typeof MidjourneyImagineState;
   actionMapping: Record<MidjourneyImagineAction, string>;
@@ -135,7 +243,8 @@ export default defineComponent({
     FontAwesomeIcon,
     ElTooltip,
     ElAlert,
-    CopyToClipboard
+    CopyToClipboard,
+    VideoPlayer
   },
   props: {
     modelValue: {
@@ -214,6 +323,9 @@ export default defineComponent({
   computed: {
     application() {
       return this.$store.state.midjourney.application;
+    },
+    config() {
+      return this.$store.state.midjourney?.config;
     }
   },
   methods: {
@@ -224,6 +336,16 @@ export default defineComponent({
           image_id: this.modelValue?.response?.image_id
         });
       }
+    },
+    onExtend(_event: MouseEvent, response: IMidjourneyVideosResponse) {
+      // extend url here
+      console.debug('set config', response);
+      this.$store.commit('midjourney/setConfig', {
+        ...this.$store.state.midjourney?.config,
+        video_id: response.video_id,
+        action: 'extend',
+        is_videos: true
+      });
     },
     onDownload(url: string) {
       // download image using javascript
