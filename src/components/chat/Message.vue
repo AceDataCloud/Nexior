@@ -127,7 +127,8 @@ import {
   ERROR_CODE_UNKNOWN,
   ERROR_CODE_USED_UP,
   ERROR_CODE_CANCELED,
-  ROLE_ASSISTANT
+  ROLE_ASSISTANT,
+  ERROR_CODE_BUSY
 } from '@/constants';
 import { ROUTE_CONSOLE_APPLICATION_EXTRA } from '@/router';
 
@@ -197,10 +198,12 @@ export default defineComponent({
           return this.$t('chat.message.errorBadRequest');
         case ERROR_CODE_TIMEOUT:
           return this.$t('chat.message.errorTimeout');
-        case ERROR_CODE_TOO_MANY_REQUESTS:
-          return this.$t('chat.message.errorTooManyRequests');
+        case ERROR_CODE_BUSY:
+          return this.$t('chat.message.errorBusy');
         case ERROR_CODE_CONTENT_TOO_LARGE:
           return this.$t('chat.message.errorContentTooLarge');
+        case ERROR_CODE_TOO_MANY_REQUESTS:
+          return this.$t('chat.message.errorTooManyRequests');
         case ERROR_CODE_NOT_APPLIED:
           return this.$t('chat.message.errorNotApplied');
         case ERROR_CODE_CANCELED:
@@ -258,10 +261,9 @@ export default defineComponent({
 <style lang="scss" scoped>
 .error {
   width: fit-content;
-  padding: 10px 5px 8px 5px;
+  padding: 10px 10px 8px 10px;
   height: 45px;
-  border-radius: 10px;
-  border-bottom-left-radius: 0;
+  border-radius: 15px;
 }
 
 .btn-buy {

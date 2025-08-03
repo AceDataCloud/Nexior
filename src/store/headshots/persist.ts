@@ -1,1 +1,1 @@
-export default ['headshots.credential', 'headshots.application', 'headshots.applications'];
+export default ['headshots.credential', 'headshots.application', 'headshots.applications', 'headshots.tasks'];

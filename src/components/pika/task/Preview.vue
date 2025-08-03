@@ -322,27 +322,3 @@ $left-width: 70px;
   }
 }
 </style>
-
-<style lang="scss">
-.preview {
-  .image.error {
-    background: var(--el-bg-color-page);
-    .image-slot {
-      font-size: 14px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
-  .failure {
-    background: var(--el-fill-color-light);
-    width: 100%;
-    .el-alert__content {
-      p {
-        margin-bottom: 10px;
-      }
-    }
-  }
-}
-</style>

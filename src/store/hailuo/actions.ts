@@ -134,6 +134,7 @@ export const getTasks = async (
   return new Promise((resolve, reject) => {
     console.debug('start to get tasks', offset, limit);
     const credential = state.credential;
+    console.debug('current credential', credential);
     const token = credential?.token;
     if (!token) {
       return reject('no token');

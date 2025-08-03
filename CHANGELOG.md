@@ -1,8 +1,24 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 01 Aug 2025 12:29:33 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 03 Aug 2025 14:37:59 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.12.1
+
+Sun, 03 Aug 2025 14:37:59 GMT
+
+### Patches
+
+- fix video style and bugs (office@acedata.cloud)
+
+## 3.12.0
+
+Sun, 03 Aug 2025 13:52:32 GMT
+
+### Minor changes
+
+- add new model for chat (office@acedata.cloud)
 
 ## 3.11.1
 
