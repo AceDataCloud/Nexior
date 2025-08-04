@@ -1,6 +1,6 @@
 <template>
   <div class="status">
-    <el-dialog v-model="visible" class="mt-12" width="600px">
+    <el-dialog v-model="visible" class="mt-12" width="450px">
       <div v-if="application">
         <p class="text-center mb-4">
           {{ $t('application.message.applicationSelection') }}
@@ -21,7 +21,7 @@
         </div>
       </div>
     </el-dialog>
-    <el-button circle @click="visible = true">
+    <el-button circle class="entry" @click="visible = true">
       <font-awesome-icon icon="fa-solid fa-wallet" class="icon" />
     </el-button>
   </div>
@@ -103,3 +103,9 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.entry {
+  background-color: var(--el-color-black);
+}
+</style>

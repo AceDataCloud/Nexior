@@ -334,6 +334,11 @@ export default defineComponent({
           border-color: var(--el-color-black);
         }
       }
+      @media (max-width: 767px) {
+        .edits {
+          min-width: 350px;
+        }
+      }
     }
   }
   .content {

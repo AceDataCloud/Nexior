@@ -4,7 +4,7 @@
       <config-panel @generate="onGenerate" />
     </template>
     <template #result>
-      <recent-panel @reach-top="onReachTop" />
+      <recent-panel @reach-top="onReachTop" @extend="$emit('extend')" />
     </template>
   </layout>
 </template>
@@ -35,6 +35,7 @@ export default defineComponent({
     RecentPanel
   },
   inject: ['initialized'],
+  emits: ['extend'],
   data(): IData {
     return {
       task: undefined,

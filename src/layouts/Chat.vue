@@ -9,10 +9,10 @@
       <slot name="chat" />
     </div>
     <el-button round class="menu" @click="drawer = true">
-      <font-awesome-icon icon="fa-solid fa-bars" class="icon-menu" />
+      <font-awesome-icon icon="fa-solid fa-bars" />
     </el-button>
-    <el-drawer v-model="drawer" :with-header="false" size="290px" class="drawer">
-      <side-panel />
+    <el-drawer v-model="drawer" direction="ltr" :with-header="false" size="290px">
+      <side-panel @change-conversation="onChangeConversation" />
     </el-drawer>
   </div>
 </template>
@@ -75,18 +75,21 @@ export default defineComponent({
 }
 
 @media (max-width: 767px) {
-  .side {
-    display: none;
-  }
-  .chat {
-    width: 100%;
-  }
-  .menu {
-    display: block;
-    position: fixed;
-    right: 20px;
-    top: 20px;
-    z-index: 2000;
+  .main {
+    .side {
+      display: none;
+    }
+    .chat {
+      width: 100%;
+      padding: 50px 15px 0 10px;
+    }
+    .menu {
+      display: block;
+      position: fixed;
+      left: 20px;
+      top: 50px;
+      z-index: 2000;
+    }
   }
 }
 </style>

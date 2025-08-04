@@ -1,7 +1,7 @@
 <template>
   <div :direction="direction" class="navigator">
     <div class="top">
-      <div class="w-full flex justify-center">
+      <div class="w-full flex justify-center brand">
         <logo v-if="direction === 'column'" @click.stop="onHome" />
       </div>
       <div
@@ -9,7 +9,7 @@
         :key="linkIndex"
         :class="{link: true, active: link.routes.includes($route.name as string)}"
       >
-        <el-tooltip v-if="direction === 'column'" effect="dark" :content="link.displayName" placement="right">
+        <el-tooltip effect="dark" :content="link.displayName" :placement="direction === 'row' ? 'top' : 'right'">
           <el-image v-if="link.logo" :src="link.logo" class="avatar" @click="$router.push(link.route)" />
         </el-tooltip>
       </div>
@@ -249,12 +249,22 @@ export default defineComponent({
   align-items: center;
   position: relative;
 
+  .top {
+    .avatar {
+      display: block;
+      margin: auto;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 1px solid var(--el-border-color-lighter);
+    }
+  }
+
   &[direction='row'] {
     flex-direction: row;
-    padding-top: 10px;
     border-top: 1px solid var(--el-border-color);
-    .chevron,
-    .logo {
+    .brand {
       display: none;
     }
     .top {
@@ -280,7 +290,6 @@ export default defineComponent({
   }
   &[direction='column'] {
     flex-direction: column;
-
     .top {
       flex: 1;
       display: flex;
@@ -295,15 +304,6 @@ export default defineComponent({
       }
       .link {
         width: 100%;
-        .avatar {
-          display: block;
-          margin: auto;
-          width: 35px;
-          height: 35px;
-          border-radius: 50%;
-          cursor: pointer;
-          border: 1px solid var(--el-border-color-lighter);
-        }
       }
     }
 

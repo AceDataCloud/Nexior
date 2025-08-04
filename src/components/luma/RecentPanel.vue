@@ -3,7 +3,12 @@
     <bot-placeholder />
   </div>
   <div v-else-if="tasks?.items?.length && tasks?.items?.length > 0" class="tasks w-full h-full overflow-y-auto">
-    <task-preview v-for="(task, taskIndex) in tasks?.items" :key="taskIndex" :model-value="task" />
+    <task-preview
+      v-for="(task, taskIndex) in tasks?.items"
+      :key="taskIndex"
+      :model-value="task"
+      @extend="$emit('extend')"
+    />
   </div>
   <div v-if="tasks?.items?.length === 0" class="w-full h-full flex items-center justify-center">
     <no-tasks />
@@ -23,7 +28,7 @@ export default defineComponent({
     TaskPreview,
     NoTasks
   },
-  emits: ['reach-top'],
+  emits: ['reach-top', 'extend'],
   data() {
     return {
       job: 0
