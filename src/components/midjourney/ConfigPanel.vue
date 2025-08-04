@@ -84,7 +84,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .panel {
-  border-right: 1px solid var(--el-border-color);
   flex: 1;
   height: calc(100% - 40px);
 }

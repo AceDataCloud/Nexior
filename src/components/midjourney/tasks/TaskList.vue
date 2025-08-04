@@ -5,7 +5,12 @@
   <div v-else-if="tasks && tasks?.length === 0" class="w-full h-full flex items-center justify-center">
     <no-tasks />
   </div>
-  <div v-else-if="tasks.length > 0" ref="panel" class="p-2 flex flex-col overflow-y-auto" @scroll="onHandleScroll">
+  <div
+    v-else-if="tasks.length > 0"
+    ref="panel"
+    class="p-2 h-full flex flex-col overflow-y-auto"
+    @scroll="onHandleScroll"
+  >
     <task-item
       v-for="(task, taskKey) in tasks"
       :key="taskKey"

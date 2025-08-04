@@ -7,9 +7,9 @@
       <slot name="results" />
     </div>
     <el-button round class="menu" @click="drawer = true">
-      <font-awesome-icon icon="fa-solid fa-gear" class="icon-menu" />
+      <font-awesome-icon icon="fa-solid fa-magic" class="icon-menu" />
     </el-button>
-    <el-drawer v-model="drawer" :with-header="false" size="300px" class="drawer">
+    <el-drawer v-model="drawer" direction="ltr" :with-header="false" size="350px" class="drawer">
       <slot name="config" />
     </el-drawer>
   </div>
@@ -35,19 +35,6 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
-.drawer2 {
-  .el-drawer__header {
-    margin-bottom: 0;
-  }
-  .el-drawer__body {
-    .tasks {
-      padding-top: 0;
-    }
-  }
-}
-</style>
-
 <style lang="scss" scoped>
 .main {
   flex: 1;
@@ -57,36 +44,18 @@ export default defineComponent({
   .menu {
     display: none;
   }
-  .menu2 {
-    display: none;
-  }
   .config {
     width: 300px;
     height: 100%;
     display: flex;
     flex-direction: column;
+    border-right: 1px solid var(--el-border-color);
   }
   .results {
     flex: 1;
     height: 100%;
     display: flex;
     flex-direction: column;
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1060px) {
-  .main {
-    position: relative;
-    .config {
-      display: none;
-    }
-    .menu {
-      display: block;
-      position: absolute;
-      left: 20px;
-      top: 20px;
-      z-index: 1000;
-    }
   }
 }
 
@@ -97,7 +66,7 @@ export default defineComponent({
       display: none;
     }
     .results {
-      display: none;
+      display: block;
     }
     .menu {
       display: block;
@@ -105,6 +74,7 @@ export default defineComponent({
       left: 15px;
       top: 15px;
       z-index: 1000;
+      background-color: var(--el-color-black);
     }
   }
 }

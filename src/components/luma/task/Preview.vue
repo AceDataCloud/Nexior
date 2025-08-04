@@ -131,6 +131,7 @@ export default defineComponent({
       required: true
     }
   },
+  emits: ['extend'],
   data() {
     return {};
   },
@@ -154,6 +155,7 @@ export default defineComponent({
         thumbnail_url: response.thumbnail_url,
         video_url: response.video_url
       });
+      this.$emit('extend');
     },
     onDownload(video_url: string) {
       // download url here
