@@ -8,8 +8,8 @@
     "description": "Pixverse-videon sisältötyyppi, kuten 'linkki', 'teksti' jne."
   },
   "name.failure": {
-    "message": "Epätosi",
-    "description": "Tehtävän epäonnistumisen tila"
+    "message": "Epäonnistuminen",
+    "description": "Tehtävän epäonnistumistila"
   },
   "name.failureReason": {
     "message": "Epäonnistumisen syy",
@@ -48,7 +48,7 @@
     "description": "Luotavan videon tyyli"
   },
   "name.style5": {
-    "message": "Kolmiulotteinen animaatio",
+    "message": "3D-animaatio",
     "description": "Luotavan videon tyyli"
   },
   "name.style6": {
@@ -75,6 +75,10 @@
     "message": "Ensimmäinen viitekuva",
     "description": "Luotavan videon viitekuva"
   },
+  "name.aspectRatio": {
+    "message": "Kuvasuhde",
+    "description": "Luotavan videon kuvasuhde"
+  },
   "name.videoUrl": {
     "message": "Mukautettu video",
     "description": "Mukautettu video"
@@ -89,7 +93,7 @@
   },
   "name.model": {
     "message": "Malliversio",
-    "description": "Luotavan videon malliversio"
+    "description": "Luotavassa videossa käytettävä malliversio"
   },
   "name.seed": {
     "message": "Siemen",
@@ -97,7 +101,7 @@
   },
   "name.mode": {
     "message": "Videotila",
-    "description": "Luotavan videon tila"
+    "description": "Luotavassa videossa käytettävä tila"
   },
   "name.effect": {
     "message": "Videotehoste",
@@ -105,18 +109,18 @@
   },
   "name.ingredientsModel": {
     "message": "Ainesosamalli",
-    "description": "Luotavan videon malliversio"
+    "description": "Luotavassa videossa käytettävä malliversio"
   },
   "name.pixverseBot": {
     "message": "Pixverse Bot",
     "description": "Pixverse-videon luontityökalun nimi"
   },
   "description.ingredients": {
-    "message": "Jos haluat ladata useita kuvia luodaksesi oman videon, avaa tämä painike.",
+    "message": "Jos haluat ladata useita kuvia luodaksesi oman videon, ota tämä painike käyttöön.",
     "description": "Parametrin 'ingredients' kuvaus"
   },
   "description.imageUrl": {
-    "message": "Monikuvatehtävän luomiseksi on ladattava useita kuvia.",
+    "message": "Monikuvatehtävän yhteydessä on ladattava useita kuvia.",
     "description": "Parametrin 'imageUrl' kuvaus"
   },
   "description.prompt": {
@@ -125,14 +129,14 @@
   },
   "description.negativePrompt": {
     "message": "Negatiivinen tekstikehotus, valinnainen, enintään 200 merkkiä",
-    "description": "Parametrin 'prompt' kuvaus"
+    "description": "Parametrin 'negativePrompt' kuvaus"
   },
   "description.uploadStartImage": {
-    "message": "Lataa ensimmäinen kehyskuva viitteeksi, lopullinen video perustuu ensimmäiseen kehykseen.",
+    "message": "Lataa ensimmäinen kuva viitteeksi, viimeinen video perustuu ensimmäiseen kuvaan",
     "description": "Latausviiteparametrin kuvaus"
   },
   "description.uploadEndImage": {
-    "message": "Lataa viimeinen kehyskuva viitteeksi, lopullinen video perustuu viimeiseen kehykseen.",
+    "message": "Lataa viimeinen kuva viitteeksi, viimeinen video perustuu viimeiseen kuvaan",
     "description": "Latausviiteparametrin kuvaus"
   },
   "description.seed": {
@@ -153,7 +157,7 @@
   },
   "placeholder.select": {
     "message": "Valitse",
-    "description": "Valintakentän paikkateksti"
+    "description": "Valintakentän paikkamerkki"
   },
   "placeholder.paddingLevel": {
     "message": "Valitse...",
@@ -161,19 +165,19 @@
   },
   "placeholder.prompt": {
     "message": "Syötä luotavan videon tyylin kehotus, esim. quiver",
-    "description": "Kehotuskentän paikkateksti"
+    "description": "Kehotuskentän paikkamerkki"
   },
   "placeholder.negativePrompt": {
     "message": "Syötä luotavan videon tyylin negatiivinen kehotus, enintään 200 merkkiä",
-    "description": "Kehotuskentän paikkateksti"
+    "description": "Kehotuskentän paikkamerkki"
   },
   "placeholder.position": {
     "message": "Valitse...",
-    "description": "Sijaintisyötteen paikkamerkki"
+    "description": "Sijainnin syötteen paikkamerkki"
   },
   "placeholder.aspectRatio": {
     "message": "Valitse...",
-    "description": "Leveys-korkeus-suhteen syötteen paikkamerkki"
+    "description": "Kuvasuhteen syötteen paikkamerkki"
   },
   "placeholder.preset": {
     "message": "Valitse...",
@@ -185,7 +189,7 @@
   },
   "placeholder.rotate": {
     "message": "Valitse...",
-    "description": "Kääntösyötteen paikkamerkki"
+    "description": "Käännä syötteen paikkamerkki"
   },
   "placeholder.subMarker": {
     "message": "Valitse...",
@@ -221,7 +225,7 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Kuva ladattu onnistuneesti",
-    "description": "Onnistuneen kuvan lataamisen onnistumisviesti"
+    "description": "Onnistuneen kuvien lataamisen onnistumisviesti"
   },
   "message.uploadReferencesError": {
     "message": "Kuvan lataaminen epäonnistui, yritä uudelleen myöhemmin",
@@ -260,8 +264,8 @@
     "description": "Viesti, kun kuvan tuottaminen epäonnistuu"
   },
   "message.uploadVideoExceed": {
-    "message": "Ladattujen ensimmäisten kuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun ladattujen ensimmäisten kuvien määrä ylittää rajan"
+    "message": "Ladattujen ensimmäisten kehysten kuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun ladattujen ensimmäisten kehysten kuvien määrä ylittää rajan"
   },
   "message.uploadVideoSizeExceed": {
     "message": "Ladattavan tiedoston koko ei saa ylittää 10MB!",
@@ -272,24 +276,24 @@
     "description": "Virheilmoitus, kun ladattavan tiedoston on oltava MP4-muodossa!"
   },
   "message.uploadStartImageExceed": {
-    "message": "Ladattujen ensimmäisten kuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun ladattujen ensimmäisten kuvien määrä ylittää rajan"
+    "message": "Ladattujen ensimmäisten kehysten kuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun ladattujen ensimmäisten kehysten kuvien määrä ylittää rajan"
   },
   "message.uploadEndImageExceed": {
-    "message": "Ladattujen viimeisten kuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun ladattujen viimeisten kuvien määrä ylittää rajan"
+    "message": "Ladattujen viimeisten kehysten kuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun ladattujen viimeisten kehysten kuvien määrä ylittää rajan"
   },
   "message.uploadStartImageError": {
-    "message": "Ensimmäisten kuvien lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun ensimmäisten kuvien lataaminen epäonnistuu"
+    "message": "Ensimmäisten kehysten kuvan lataaminen epäonnistui",
+    "description": "Virheilmoitus, kun ensimmäisten kehysten kuvan lataaminen epäonnistuu"
   },
   "message.uploadVideoError": {
     "message": "Videon lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun ensimmäisten kuvien lataaminen epäonnistuu"
+    "description": "Virheilmoitus, kun ensimmäisten kehysten kuvan lataaminen epäonnistuu"
   },
   "message.uploadEndImageError": {
-    "message": "Viimeisten kuvien lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun viimeisten kuvien lataaminen epäonnistuu"
+    "message": "Viimeisten kehysten kuvan lataaminen epäonnistui",
+    "description": "Virheilmoitus, kun viimeisten kehysten kuvan lataaminen epäonnistuu"
   },
   "message.uploadDocumentsError": {
     "message": "Asiakirjan lataaminen epäonnistui",

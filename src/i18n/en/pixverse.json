@@ -75,6 +75,10 @@
     "message": "First Frame Reference Image",
     "description": "The reference image for the video to be generated"
   },
+  "name.aspectRatio": {
+    "message": "Aspect Ratio",
+    "description": "The aspect ratio of the video to be generated"
+  },
   "name.videoUrl": {
     "message": "Custom Video",
     "description": "Custom video"
@@ -116,7 +120,7 @@
     "description": "Description of the 'ingredients' parameter"
   },
   "description.imageUrl": {
-    "message": "In the multi-image video creation task, it must upload multiple images.",
+    "message": "In the task of creating a video with multiple images, it must upload multiple images.",
     "description": "Description of the 'imageUrl' parameter"
   },
   "description.prompt": {
@@ -185,7 +189,7 @@
   },
   "placeholder.rotate": {
     "message": "Please select...",
-    "description": "Placeholder for rotation input"
+    "description": "Placeholder for rotating input"
   },
   "placeholder.subMarker": {
     "message": "Please select...",
@@ -233,7 +237,7 @@
   },
   "message.startTaskSuccess": {
     "message": "Task initiated successfully",
-    "description": "Success message when the task is successfully started"
+    "description": "Success message when a task is successfully started"
   },
   "message.startTaskFailed": {
     "message": "Failed to initiate task, please contact the administrator",

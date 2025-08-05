@@ -75,13 +75,17 @@
     "message": "Immagine di riferimento iniziale",
     "description": "Immagine di riferimento per il video da generare"
   },
+  "name.aspectRatio": {
+    "message": "Rapporto d'aspetto",
+    "description": "Rapporto d'aspetto del video da generare"
+  },
   "name.videoUrl": {
     "message": "Video personalizzato",
     "description": "Video personalizzato"
   },
   "name.prompt": {
     "message": "Suggerimento video",
-    "description": "Suggerimento per l'input del contenuto"
+    "description": "Suggerimento per l'input di contenuto"
   },
   "name.duration": {
     "message": "Durata video",
@@ -93,7 +97,7 @@
   },
   "name.seed": {
     "message": "Seed",
-    "description": "Seed casuale per generare il video"
+    "description": "Seed casuale per la generazione del video"
   },
   "name.mode": {
     "message": "Modalità video",
@@ -101,7 +105,7 @@
   },
   "name.effect": {
     "message": "Effetto video",
-    "description": "Nome del parametro di stile, utilizzato per passare tra diverse versioni o stili del modello"
+    "description": "Nome del parametro di stile, utilizzato per passare tra diverse versioni o stili di modello"
   },
   "name.ingredientsModel": {
     "message": "Modello ingredienti",
@@ -116,7 +120,7 @@
     "description": "Descrizione del parametro 'ingredients'"
   },
   "description.imageUrl": {
-    "message": "Nel compito di creazione video multiplo, è necessario caricare più immagini.",
+    "message": "Nel compito di creazione video con più immagini, è necessario caricare più immagini.",
     "description": "Descrizione del parametro 'imageUrl'"
   },
   "description.prompt": {
@@ -124,20 +128,20 @@
     "description": "Descrizione del parametro 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "Suggerimento di testo negativo, facoltativo, non può superare i 200 caratteri",
+    "message": "Suggerimento di testo negativo, facoltativo, non deve superare i 200 caratteri",
     "description": "Descrizione del parametro 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Carica l'immagine di riferimento iniziale per la generazione, il video finale si baserà sull'immagine iniziale.",
-    "description": "Descrizione del parametro di caricamento di riferimento"
+    "message": "Carica l'immagine di riferimento iniziale per la generazione, il video finale farà riferimento all'immagine iniziale.",
+    "description": "Descrizione del parametro di riferimento per il caricamento"
   },
   "description.uploadEndImage": {
-    "message": "Carica l'immagine di riferimento finale per la generazione, il video finale si baserà sull'immagine finale.",
-    "description": "Descrizione del parametro di caricamento di riferimento"
+    "message": "Carica l'immagine di riferimento finale per la generazione, il video finale farà riferimento all'immagine finale.",
+    "description": "Descrizione del parametro di riferimento per il caricamento"
   },
   "description.seed": {
-    "message": "Valore del seed per generare il video. Se non impostato, verrà utilizzato un seed casuale.",
-    "description": "Descrizione del parametro di caricamento di riferimento"
+    "message": "Valore del seed per la generazione del video. Se non impostato, verrà utilizzato un seed casuale.",
+    "description": "Descrizione del parametro di riferimento per il caricamento"
   },
   "status.pending": {
     "message": "In attesa",
@@ -149,7 +153,7 @@
   },
   "placeholder.paddingNoise": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input del rumore di riempimento"
+    "description": "Segnaposto per l'input di rumore di riempimento"
   },
   "placeholder.select": {
     "message": "Seleziona",
@@ -169,7 +173,7 @@
   },
   "placeholder.position": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input della posizione"
+    "description": "Segnaposto per l'input di posizione"
   },
   "placeholder.aspectRatio": {
     "message": "Seleziona...",
@@ -177,7 +181,7 @@
   },
   "placeholder.preset": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input del preset"
+    "description": "Segnaposto per l'input preimpostato"
   },
   "placeholder.markerShape": {
     "message": "Seleziona...",
@@ -185,11 +189,11 @@
   },
   "placeholder.rotate": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input della rotazione"
+    "description": "Segnaposto per l'input di rotazione"
   },
   "placeholder.subMarker": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input del sottotitolo"
+    "description": "Segnaposto per l'input di sottomarker"
   },
   "button.generate": {
     "message": "Genera",
@@ -245,22 +249,22 @@
   },
   "message.generating": {
     "message": "Generazione in corso...",
-    "description": "Messaggio mentre l'immagine viene generata"
+    "description": "Messaggio durante la generazione dell'immagine"
   },
   "message.downloadVideo": {
     "message": "Scarica questo video",
-    "description": "Messaggio mentre l'immagine viene generata"
+    "description": "Messaggio durante la generazione dell'immagine"
   },
   "message.extendVideo": {
     "message": "Continua a generare questo video",
-    "description": "Messaggio mentre l'immagine viene generata"
+    "description": "Messaggio durante la generazione dell'immagine"
   },
   "message.generateFailed": {
-    "message": "Generazione immagine fallita",
+    "message": "Generazione dell'immagine fallita",
     "description": "Messaggio quando la generazione dell'immagine fallisce"
   },
   "message.uploadVideoExceed": {
-    "message": "Numero di immagini della prima cornice caricate supera il limite",
+    "message": "Numero di immagini della prima cornice caricate oltre il limite",
     "description": "Messaggio di errore quando il numero di immagini della prima cornice caricate supera il limite"
   },
   "message.uploadVideoSizeExceed": {
@@ -272,23 +276,23 @@
     "description": "Messaggio di errore quando il file caricato non è in formato MP4!"
   },
   "message.uploadStartImageExceed": {
-    "message": "Numero di immagini della prima cornice caricate supera il limite",
+    "message": "Numero di immagini della prima cornice caricate oltre il limite",
     "description": "Messaggio di errore quando il numero di immagini della prima cornice caricate supera il limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Numero di immagini dell'ultima cornice caricate supera il limite",
+    "message": "Numero di immagini dell'ultima cornice caricate oltre il limite",
     "description": "Messaggio di errore quando il numero di immagini dell'ultima cornice caricate supera il limite"
   },
   "message.uploadStartImageError": {
-    "message": "Caricamento immagine della prima cornice fallito",
+    "message": "Caricamento dell'immagine della prima cornice fallito",
     "description": "Messaggio di errore quando il caricamento dell'immagine della prima cornice fallisce"
   },
   "message.uploadVideoError": {
     "message": "Caricamento video fallito",
-    "description": "Messaggio di errore quando il caricamento del video fallisce"
+    "description": "Messaggio di errore quando il caricamento dell'immagine della prima cornice fallisce"
   },
   "message.uploadEndImageError": {
-    "message": "Caricamento immagine dell'ultima cornice fallito",
+    "message": "Caricamento dell'immagine dell'ultima cornice fallito",
     "description": "Messaggio di errore quando il caricamento dell'immagine dell'ultima cornice fallisce"
   },
   "message.uploadDocumentsError": {

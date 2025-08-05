@@ -1,7 +1,7 @@
 <template>
   <div class="field">
     <h2 class="title font-bold">{{ $t('kling.name.mode') }}</h2>
-    <el-select v-model="value" class="value" :placeholder="$t('kling.placeholder.select')">
+    <el-select v-model="value" class="value" :placeholder="$t('kling.placeholder.select')" :clearable="true">
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </el-select>
   </div>
@@ -30,11 +30,11 @@ export default defineComponent({
       options: [
         {
           value: 'std',
-          label: '标准'
+          label: this.$t('kling.name.modeStd')
         },
         {
           value: 'pro',
-          label: '高速'
+          label: this.$t('kling.name.modePro')
         }
       ]
     };

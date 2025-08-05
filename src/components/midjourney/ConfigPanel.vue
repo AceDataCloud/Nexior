@@ -9,7 +9,6 @@
       <ratio-selector v-if="!config.is_videos" class="mb-4" />
       <quality-selector v-if="!config.is_videos" class="mb-4" />
       <version-selector v-if="!config.is_videos" class="mb-4" />
-      <reference-image v-if="!config.is_videos" class="mb-2" />
       <elements-selector v-if="!config.is_videos" class="mb-2" />
       <advanced-selector v-if="!config.is_videos" class="mb-2" />
       <stylize-selector v-show="config.advanced" class="mb-2" />

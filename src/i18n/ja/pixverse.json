@@ -75,6 +75,10 @@
     "message": "初フレーム参照画像",
     "description": "生成するビデオの参照画像"
   },
+  "name.aspectRatio": {
+    "message": "アスペクト比",
+    "description": "生成するビデオのアスペクト比"
+  },
   "name.videoUrl": {
     "message": "カスタムビデオ",
     "description": "カスタムビデオ"
@@ -93,7 +97,7 @@
   },
   "name.seed": {
     "message": "シード",
-    "description": "ビデオ生成のランダムシード"
+    "description": "生成ビデオのランダムシード"
   },
   "name.mode": {
     "message": "ビデオモード",
@@ -189,7 +193,7 @@
   },
   "placeholder.subMarker": {
     "message": "選択してください...",
-    "description": "子マーカー入力のプレースホルダー"
+    "description": "サブマーカー入力のプレースホルダー"
   },
   "button.generate": {
     "message": "生成",
@@ -213,7 +217,7 @@
   },
   "button.uploadReferences": {
     "message": "アップロード",
-    "description": "ユーザーが参照をアップロードできるボタンテキスト"
+    "description": "ユーザーが参考をアップロードできるボタンテキスト"
   },
   "message.uploadReferencesExceed": {
     "message": "最大1枚の画像をアップロードできます",
@@ -232,15 +236,15 @@
     "description": "描画タスクが開始されるときのメッセージ"
   },
   "message.startTaskSuccess": {
-    "message": "生成タスクを正常に開始しました",
-    "description": "タスクが正常に開始されたときの成功メッセージ"
+    "message": "生成タスクの発起に成功しました",
+    "description": "タスクの起動に成功したときの成功メッセージ"
   },
   "message.startTaskFailed": {
-    "message": "タスクの開始に失敗しました。管理者に連絡してください",
-    "description": "描画タスクの開始に失敗したときのエラーメッセージ"
+    "message": "タスクの発起に失敗しました。管理者に連絡してください",
+    "description": "描画タスクの起動に失敗したときのエラーメッセージ"
   },
   "message.usedUp": {
-    "message": "ポイントが使い切れました。追加のポイントを購入して続行してください",
+    "message": "ポイントが使い切れました。さらにポイントを購入して続行してください",
     "description": "使い切ったときのメッセージ"
   },
   "message.generating": {
@@ -257,11 +261,11 @@
   },
   "message.generateFailed": {
     "message": "画像の生成に失敗しました",
-    "description": "画像の生成に失敗したときのメッセージ"
+    "description": "画像生成に失敗したときのメッセージ"
   },
   "message.uploadVideoExceed": {
     "message": "アップロードする最初のフレーム画像の数が制限を超えています",
-    "description": "アップロードする最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
+    "description": "最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadVideoSizeExceed": {
     "message": "アップロードファイルのサイズは10MBを超えてはいけません！",
@@ -273,11 +277,11 @@
   },
   "message.uploadStartImageExceed": {
     "message": "アップロードする最初のフレーム画像の数が制限を超えています",
-    "description": "アップロードする最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
+    "description": "最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadEndImageExceed": {
     "message": "アップロードする最後のフレーム画像の数が制限を超えています",
-    "description": "アップロードする最後のフレーム画像の数が制限を超えたときのエラーメッセージ"
+    "description": "最後のフレーム画像の数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadStartImageError": {
     "message": "最初のフレーム画像のアップロードに失敗しました",
@@ -285,7 +289,7 @@
   },
   "message.uploadVideoError": {
     "message": "ビデオのアップロードに失敗しました",
-    "description": "最初のフレーム画像のアップロードに失敗したときのエラーメッセージ"
+    "description": "ビデオのアップロードに失敗したときのエラーメッセージ"
   },
   "message.uploadEndImageError": {
     "message": "最後のフレーム画像のアップロードに失敗しました",
