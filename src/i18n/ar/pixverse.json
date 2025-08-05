@@ -51,6 +51,10 @@
     "message": "رسوم متحركة ثلاثية الأبعاد",
     "description": "أسلوب الفيديو المراد إنشاؤه"
   },
+  "name.style6": {
+    "message": "واقعي",
+    "description": "أسلوب الفيديو المراد إنشاؤه"
+  },
   "name.motion": {
     "message": "نمط الفيديو",
     "description": "نمط الفيديو المراد إنشاؤه"
@@ -120,7 +124,7 @@
     "description": "وصف المعامل 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "نص تحفيزي سلبي، اختياري، لا يتجاوز 200 حرف",
+    "message": "تحفيز نص سلبي، اختياري، لا يتجاوز 200 حرف",
     "description": "وصف المعامل 'prompt'"
   },
   "description.uploadStartImage": {
@@ -181,7 +185,7 @@
   },
   "placeholder.rotate": {
     "message": "يرجى الاختيار...",
-    "description": "نص العنصر النائب لإدخال الدوران"
+    "description": "نص العنصر النائب لإدخال التدوير"
   },
   "placeholder.subMarker": {
     "message": "يرجى الاختيار...",
@@ -189,27 +193,27 @@
   },
   "button.generate": {
     "message": "إنشاء",
-    "description": "نص زر لإنشاء فيديو Pixverse"
+    "description": "نص زر إنشاء فيديو Pixverse"
   },
   "button.extend": {
     "message": "تمديد الفيديو",
-    "description": "نص زر لتمديد الفيديو"
+    "description": "نص زر تمديد الفيديو"
   },
   "button.download": {
     "message": "تحميل الفيديو",
-    "description": "نص زر لتحميل الفيديو"
+    "description": "نص زر تحميل الفيديو"
   },
   "button.uploadImageUrl": {
     "message": "رفع صورة",
-    "description": "نص زر لرفع صورة"
+    "description": "نص زر رفع صورة"
   },
   "button.uploadVideoUrl": {
     "message": "رفع فيديو",
-    "description": "نص زر لرفع فيديو"
+    "description": "نص زر رفع فيديو"
   },
   "button.uploadReferences": {
     "message": "رفع",
-    "description": "نص زر يسمح للمستخدم برفع المراجع"
+    "description": "نص الزر الذي يسمح للمستخدم برفع المراجع"
   },
   "message.uploadReferencesExceed": {
     "message": "يمكنك رفع صورة واحدة كحد أقصى",
@@ -220,7 +224,7 @@
     "description": "رسالة نجاح عند رفع الصورة بنجاح"
   },
   "message.uploadReferencesError": {
-    "message": "فشل في رفع الصورة، يرجى المحاولة لاحقًا",
+    "message": "فشل رفع الصورة، يرجى المحاولة لاحقًا",
     "description": "رسالة خطأ عند فشل رفع الصورة"
   },
   "message.startingTask": {
@@ -232,7 +236,7 @@
     "description": "رسالة نجاح عند بدء المهمة بنجاح"
   },
   "message.startTaskFailed": {
-    "message": "فشل في بدء المهمة، يرجى الاتصال بالمسؤول",
+    "message": "فشل بدء المهمة، يرجى الاتصال بالمسؤول",
     "description": "رسالة خطأ عند فشل بدء مهمة الرسم"
   },
   "message.usedUp": {
@@ -248,11 +252,11 @@
     "description": "رسالة عند إنشاء الصورة"
   },
   "message.extendVideo": {
-    "message": "استمرار إنشاء هذا الفيديو",
+    "message": "استمر في إنشاء هذا الفيديو",
     "description": "رسالة عند إنشاء الصورة"
   },
   "message.generateFailed": {
-    "message": "فشل في إنشاء الصورة",
+    "message": "فشل إنشاء الصورة",
     "description": "رسالة عند فشل إنشاء الصورة"
   },
   "message.uploadVideoExceed": {
@@ -261,11 +265,11 @@
   },
   "message.uploadVideoSizeExceed": {
     "message": "يجب ألا يتجاوز حجم الملف المرفوع 10 ميغابايت!",
-    "description": "رسالة خطأ عند تجاوز حجم الملف المرفوع 10 ميغابايت"
+    "description": "رسالة خطأ عند تجاوز حجم الملف المرفوع 10 ميغابايت!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "يجب أن يكون الملف المرفوع بتنسيق MP4!",
-    "description": "رسالة خطأ عند عدم كون الملف المرفوع بتنسيق MP4"
+    "description": "رسالة خطأ عند عدم كون الملف المرفوع بتنسيق MP4!"
   },
   "message.uploadStartImageExceed": {
     "message": "عدد الصور المرفوعة للإطار الأول تجاوز الحد المسموح به",
@@ -276,19 +280,19 @@
     "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة للإطار الأخير للحد المسموح به"
   },
   "message.uploadStartImageError": {
-    "message": "فشل في رفع الصورة للإطار الأول",
+    "message": "فشل رفع الصورة للإطار الأول",
     "description": "رسالة خطأ عند فشل رفع الصورة للإطار الأول"
   },
   "message.uploadVideoError": {
-    "message": "فشل في رفع الفيديو",
+    "message": "فشل رفع الفيديو",
     "description": "رسالة خطأ عند فشل رفع الفيديو"
   },
   "message.uploadEndImageError": {
-    "message": "فشل في رفع الصورة للإطار الأخير",
+    "message": "فشل رفع الصورة للإطار الأخير",
     "description": "رسالة خطأ عند فشل رفع الصورة للإطار الأخير"
   },
   "message.uploadDocumentsError": {
-    "message": "فشل في رفع المستندات",
+    "message": "فشل رفع المستندات",
     "description": "رسالة خطأ عند فشل رفع المستندات"
   },
   "message.noOperations": {

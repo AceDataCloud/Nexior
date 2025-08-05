@@ -33,7 +33,7 @@ export default defineComponent({
         return this.$store.state?.pixverse?.config?.seed;
       },
       set(val: string) {
-        console.debug('set cfg_scale', val);
+        console.debug('set seed', val);
         this.$store.commit('pixverse/setConfig', {
           ...this.$store.state?.pixverse?.config,
           seed: val

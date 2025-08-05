@@ -20,8 +20,8 @@
     "description": "Statut de la tâche"
   },
   "name.traceId": {
-    "message": "ID de suivi",
-    "description": "ID de suivi de la tâche"
+    "message": "ID de traçage",
+    "description": "ID de traçage de la tâche"
   },
   "name.createdAt": {
     "message": "Date de création",
@@ -49,6 +49,10 @@
   },
   "name.style5": {
     "message": "Animation 3D",
+    "description": "Style de la vidéo à générer"
+  },
+  "name.style6": {
+    "message": "Réaliste",
     "description": "Style de la vidéo à générer"
   },
   "name.motion": {
@@ -120,20 +124,20 @@
     "description": "Description du paramètre 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "Texte d'invite négatif, optionnel, ne dépassant pas 200 caractères",
+    "message": "Invite de texte négatif, optionnelle, ne dépassant pas 200 caractères",
     "description": "Description du paramètre 'negativePrompt'"
   },
   "description.uploadStartImage": {
     "message": "Téléchargez l'image de la première image comme référence pour la génération, la vidéo finale se basera sur la première image.",
-    "description": "Description du paramètre de téléchargement de référence"
+    "description": "Description du paramètre de référence de téléchargement"
   },
   "description.uploadEndImage": {
     "message": "Téléchargez l'image de la première image comme référence pour la génération, la vidéo finale se basera sur la première image.",
-    "description": "Description du paramètre de téléchargement de référence"
+    "description": "Description du paramètre de référence de téléchargement"
   },
   "description.seed": {
     "message": "Valeur de la graine pour générer la vidéo. Si non définie, une graine aléatoire sera utilisée.",
-    "description": "Description du paramètre de téléchargement de référence"
+    "description": "Description du paramètre de référence de téléchargement"
   },
   "status.pending": {
     "message": "En attente",
@@ -185,7 +189,7 @@
   },
   "placeholder.subMarker": {
     "message": "Veuillez sélectionner...",
-    "description": "Espace réservé pour l'entrée de sous-marqueur"
+    "description": "Espace réservé pour l'entrée de sous-marque"
   },
   "button.generate": {
     "message": "Générer",
@@ -200,11 +204,11 @@
     "description": "Texte du bouton pour télécharger la vidéo"
   },
   "button.uploadImageUrl": {
-    "message": "Télécharger une image",
+    "message": "Télécharger l'image",
     "description": "Texte du bouton pour télécharger une image"
   },
   "button.uploadVideoUrl": {
-    "message": "Télécharger une vidéo",
+    "message": "Télécharger la vidéo",
     "description": "Texte du bouton pour télécharger une vidéo"
   },
   "button.uploadReferences": {
@@ -217,11 +221,11 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Image téléchargée avec succès",
-    "description": "Message de succès lorsque l'image est téléchargée avec succès"
+    "description": "Message de succès lors du téléchargement réussi d'une image"
   },
   "message.uploadReferencesError": {
     "message": "Échec du téléchargement de l'image, veuillez réessayer plus tard",
-    "description": "Message d'erreur lorsque le téléchargement de l'image échoue"
+    "description": "Message d'erreur lors de l'échec du téléchargement de l'image"
   },
   "message.startingTask": {
     "message": "Démarrage de la tâche...",
@@ -229,11 +233,11 @@
   },
   "message.startTaskSuccess": {
     "message": "Tâche de génération lancée avec succès",
-    "description": "Message de succès lorsque la tâche est lancée avec succès"
+    "description": "Message de succès lors du démarrage réussi d'une tâche"
   },
   "message.startTaskFailed": {
     "message": "Échec du lancement de la tâche, veuillez contacter l'administrateur",
-    "description": "Message d'erreur lorsque le lancement de la tâche de dessin échoue"
+    "description": "Message d'erreur lors de l'échec du démarrage de la tâche de dessin"
   },
   "message.usedUp": {
     "message": "Vos crédits sont épuisés, veuillez acheter plus de crédits pour continuer",
@@ -277,26 +281,26 @@
   },
   "message.uploadStartImageError": {
     "message": "Échec du téléchargement de la première image",
-    "description": "Message d'erreur lorsque le téléchargement de la première image échoue"
+    "description": "Message d'erreur lors de l'échec du téléchargement de la première image"
   },
   "message.uploadVideoError": {
     "message": "Échec du téléchargement de la vidéo",
-    "description": "Message d'erreur lorsque le téléchargement de la première image échoue"
+    "description": "Message d'erreur lors de l'échec du téléchargement de la vidéo"
   },
   "message.uploadEndImageError": {
     "message": "Échec du téléchargement de la dernière image",
-    "description": "Message d'erreur lorsque le téléchargement de la dernière image échoue"
+    "description": "Message d'erreur lors de l'échec du téléchargement de la dernière image"
   },
   "message.uploadDocumentsError": {
     "message": "Échec du téléchargement du document",
-    "description": "Message d'erreur lorsque le téléchargement du document échoue"
+    "description": "Message d'erreur lors de l'échec du téléchargement du document"
   },
   "message.noOperations": {
     "message": "Aucune opération disponible",
-    "description": "Message lorsque aucune opération n'est disponible"
+    "description": "Message lorsqu'il n'y a aucune opération disponible"
   },
   "message.noTasks": {
     "message": "Aucune tâche historique, veuillez cliquer à gauche pour générer une vidéo",
-    "description": "Message lorsque aucune tâche n'est disponible"
+    "description": "Message lorsqu'il n'y a aucune tâche"
   }
 }

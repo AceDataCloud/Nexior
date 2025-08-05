@@ -47,6 +47,10 @@ export default defineComponent({
         {
           value: '3d_animation',
           label: this.$t('pixverse.name.style5')
+        },
+        {
+          value: 'realistic',
+          label: this.$t('pixverse.name.style6')
         }
       ]
     };
@@ -85,7 +89,7 @@ export default defineComponent({
     width: 30%;
   }
   .value {
-    width: 80px;
+    width: 120px;
   }
 }
 </style>

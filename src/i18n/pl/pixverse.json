@@ -51,6 +51,10 @@
     "message": "Animacja 3D",
     "description": "Styl wideo, które ma być generowane"
   },
+  "name.style6": {
+    "message": "Realistyczny",
+    "description": "Styl wideo, które ma być generowane"
+  },
   "name.motion": {
     "message": "Tryb wideo",
     "description": "Tryb wideo, które ma być generowane"
@@ -68,7 +72,7 @@
     "description": "Jakość wideo, które ma być generowane"
   },
   "name.startImage": {
-    "message": "Obraz referencyjny klatki początkowej",
+    "message": "Obraz referencyjny pierwszej klatki",
     "description": "Obraz referencyjny wideo, które ma być generowane"
   },
   "name.videoUrl": {
@@ -116,7 +120,7 @@
     "description": "Opis parametru 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Podpowiedzi do generowania wideo Pixverse",
+    "message": "Podpowiedź do generowania wideo Pixverse",
     "description": "Opis parametru 'prompt'"
   },
   "description.negativePrompt": {
@@ -124,11 +128,11 @@
     "description": "Opis parametru 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Prześlij obraz klatki początkowej jako referencję do generowania, ostatnie wideo będzie odnosić się do klatki początkowej.",
+    "message": "Prześlij obraz pierwszej klatki jako referencję, ostatnie wideo będzie odnosić się do pierwszej klatki",
     "description": "Opis parametru przesyłania referencji"
   },
   "description.uploadEndImage": {
-    "message": "Prześlij obraz klatki końcowej jako referencję do generowania, ostatnie wideo będzie odnosić się do klatki końcowej.",
+    "message": "Prześlij obraz ostatniej klatki jako referencję, ostatnie wideo będzie odnosić się do ostatniej klatki",
     "description": "Opis parametru przesyłania referencji"
   },
   "description.seed": {
@@ -145,7 +149,7 @@
   },
   "placeholder.paddingNoise": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wprowadzenia szumów wypełniających"
+    "description": "Placeholder dla wejścia szumów wypełniających"
   },
   "placeholder.select": {
     "message": "Wybierz",
@@ -156,7 +160,7 @@
     "description": "Placeholder dla poziomu wypełnienia"
   },
   "placeholder.prompt": {
-    "message": "Wprowadź podpowiedź dla stylu wideo, np.: quiver",
+    "message": "Wprowadź podpowiedź dla stylu wideo, np. quiver",
     "description": "Placeholder dla pola podpowiedzi"
   },
   "placeholder.negativePrompt": {
@@ -165,27 +169,27 @@
   },
   "placeholder.position": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wprowadzenia pozycji"
+    "description": "Placeholder dla wejścia pozycji"
   },
   "placeholder.aspectRatio": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wprowadzenia proporcji"
+    "description": "Placeholder dla wejścia proporcji"
   },
   "placeholder.preset": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wprowadzenia presetów"
+    "description": "Placeholder dla wejścia presetów"
   },
   "placeholder.markerShape": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wprowadzenia kształtu znacznika"
+    "description": "Placeholder dla wejścia kształtu znacznika"
   },
   "placeholder.rotate": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wprowadzenia obrotu"
+    "description": "Placeholder dla wejścia obrotu"
   },
   "placeholder.subMarker": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wprowadzenia podznacznika"
+    "description": "Placeholder dla wprowadzenia subznaku"
   },
   "button.generate": {
     "message": "Generuj",
@@ -212,12 +216,12 @@
     "description": "Tekst przycisku, który pozwala użytkownikowi przesłać odniesienia"
   },
   "message.uploadReferencesExceed": {
-    "message": "Można przesłać maksymalnie 1 obraz",
+    "message": "Możesz przesłać maksymalnie 1 obraz",
     "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazów przekracza limit"
   },
   "message.uploadReferencesSuccess": {
     "message": "Obraz przesłany pomyślnie",
-    "description": "Komunikat o sukcesie, gdy obraz został pomyślnie przesłany"
+    "description": "Komunikat o sukcesie, gdy obraz został przesłany pomyślnie"
   },
   "message.uploadReferencesError": {
     "message": "Nie udało się przesłać obrazu, spróbuj ponownie później",
@@ -228,7 +232,7 @@
     "description": "Komunikat na początku zadania rysowania"
   },
   "message.startTaskSuccess": {
-    "message": "Zadanie generowania uruchomione pomyślnie",
+    "message": "Zadanie generowania zostało pomyślnie uruchomione",
     "description": "Komunikat o sukcesie, gdy zadanie zostało pomyślnie uruchomione"
   },
   "message.startTaskFailed": {
@@ -236,20 +240,20 @@
     "description": "Komunikat o błędzie, gdy uruchomienie zadania rysowania nie powiodło się"
   },
   "message.usedUp": {
-    "message": "Twoje punkty zostały wyczerpane, proszę kupić więcej punktów, aby kontynuować",
+    "message": "Twoje punkty zostały wyczerpane, kup więcej punktów, aby kontynuować",
     "description": "Komunikat, gdy punkty zostały wyczerpane"
   },
   "message.generating": {
     "message": "Generowanie...",
-    "description": "Komunikat, gdy obraz jest w trakcie generowania"
+    "description": "Komunikat podczas generowania obrazu"
   },
   "message.downloadVideo": {
     "message": "Pobierz to wideo",
-    "description": "Komunikat, gdy obraz jest w trakcie generowania"
+    "description": "Komunikat podczas generowania obrazu"
   },
   "message.extendVideo": {
     "message": "Kontynuuj generowanie tego wideo",
-    "description": "Komunikat, gdy obraz jest w trakcie generowania"
+    "description": "Komunikat podczas generowania obrazu"
   },
   "message.generateFailed": {
     "message": "Nie udało się wygenerować obrazu",
