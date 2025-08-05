@@ -75,6 +75,10 @@
     "message": "صورة الإطار الأول المرجعية",
     "description": "صورة مرجعية للفيديو المراد إنشاؤه"
   },
+  "name.aspectRatio": {
+    "message": "نسبة العرض إلى الارتفاع",
+    "description": "نسبة العرض إلى الارتفاع للفيديو المراد إنشاؤه"
+  },
   "name.videoUrl": {
     "message": "فيديو مخصص",
     "description": "فيديو مخصص"
@@ -124,7 +128,7 @@
     "description": "وصف المعامل 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "تحفيز نص سلبي، اختياري، لا يتجاوز 200 حرف",
+    "message": "نص تحفيزي سلبي، اختياري، لا يتجاوز 200 حرف",
     "description": "وصف المعامل 'prompt'"
   },
   "description.uploadStartImage": {
@@ -144,12 +148,12 @@
     "description": "حالة انتظار المهمة"
   },
   "status.processing": {
-    "message": "يتم المعالجة",
+    "message": "قيد المعالجة",
     "description": "حالة انتظار المهمة"
   },
   "placeholder.paddingNoise": {
     "message": "يرجى الاختيار...",
-    "description": "نص العنصر النائب لإدخال ضوضاء التعبئة"
+    "description": "نص العنصر النائب لإدخال ضوضاء الحشو"
   },
   "placeholder.select": {
     "message": "اختر",
@@ -157,7 +161,7 @@
   },
   "placeholder.paddingLevel": {
     "message": "يرجى الاختيار...",
-    "description": "نص العنصر النائب لمستوى التعبئة"
+    "description": "نص العنصر النائب لمستوى الحشو"
   },
   "placeholder.prompt": {
     "message": "أدخل كلمات التحفيز لنمط الفيديو المراد إنشاؤه، مثل: quiver",
@@ -204,12 +208,12 @@
     "description": "نص زر تحميل الفيديو"
   },
   "button.uploadImageUrl": {
-    "message": "رفع صورة",
-    "description": "نص زر رفع صورة"
+    "message": "رفع الصورة",
+    "description": "نص زر رفع الصورة"
   },
   "button.uploadVideoUrl": {
-    "message": "رفع فيديو",
-    "description": "نص زر رفع فيديو"
+    "message": "رفع الفيديو",
+    "description": "نص زر رفع الفيديو"
   },
   "button.uploadReferences": {
     "message": "رفع",
@@ -252,7 +256,7 @@
     "description": "رسالة عند إنشاء الصورة"
   },
   "message.extendVideo": {
-    "message": "استمر في إنشاء هذا الفيديو",
+    "message": "استمرار إنشاء هذا الفيديو",
     "description": "رسالة عند إنشاء الصورة"
   },
   "message.generateFailed": {

@@ -75,6 +75,10 @@
     "message": "首帧参考图片",
     "description": "要生成的视频的参考图片"
   },
+  "name.aspectRatio": {
+    "message": "宽高比",
+    "description": "要生成的视频的宽高比"
+  },
   "name.videoUrl": {
     "message": "自定义视频",
     "description": "自定义视频"
@@ -125,7 +129,7 @@
   },
   "description.negativePrompt": {
     "message": "负向文本提示，可选，不能超过200个字符",
-    "description": "参数'prompt'的描述"
+    "description": "参数'negativePrompt'的描述"
   },
   "description.uploadStartImage": {
     "message": "上传首帧图像作为生成的参考，最后的视频会参考首帧生成",
@@ -249,11 +253,11 @@
   },
   "message.downloadVideo": {
     "message": "下载此视频",
-    "description": "下载视频时的消息"
+    "description": "图像正在生成时的消息"
   },
   "message.extendVideo": {
     "message": "继续生成此视频",
-    "description": "继续生成视频时的消息"
+    "description": "图像正在生成时的消息"
   },
   "message.generateFailed": {
     "message": "生成图像失败",

@@ -75,6 +75,10 @@
     "message": "첫 프레임 참조 이미지",
     "description": "생성할 비디오의 참조 이미지"
   },
+  "name.aspectRatio": {
+    "message": "종횡비",
+    "description": "생성할 비디오의 종횡비"
+  },
   "name.videoUrl": {
     "message": "사용자 정의 비디오",
     "description": "사용자 정의 비디오"
@@ -89,7 +93,7 @@
   },
   "name.model": {
     "message": "모델 버전",
-    "description": "비디오 생성을 위해 사용되는 모델 버전"
+    "description": "생성할 비디오에 사용되는 모델 버전"
   },
   "name.seed": {
     "message": "시드",
@@ -97,7 +101,7 @@
   },
   "name.mode": {
     "message": "비디오 모드",
-    "description": "비디오 생성을 위해 사용되는 모드"
+    "description": "생성할 비디오에 사용되는 모드"
   },
   "name.effect": {
     "message": "비디오 효과",
@@ -105,7 +109,7 @@
   },
   "name.ingredientsModel": {
     "message": "성분 모델",
-    "description": "비디오 생성을 위해 사용되는 모델 버전"
+    "description": "생성할 비디오에 사용되는 모델 버전"
   },
   "name.pixverseBot": {
     "message": "Pixverse 봇",
@@ -116,7 +120,7 @@
     "description": "매개변수 'ingredients'의 설명"
   },
   "description.imageUrl": {
-    "message": "다중 이미지로 비디오를 생성하는 작업에서는 여러 이미지를 업로드해야 합니다.",
+    "message": "여러 이미지를 업로드해야 하는 비디오 생성 작업입니다.",
     "description": "매개변수 'imageUrl'의 설명"
   },
   "description.prompt": {
@@ -124,7 +128,7 @@
     "description": "매개변수 'prompt'의 설명"
   },
   "description.negativePrompt": {
-    "message": "부정적 텍스트 프롬프트, 선택 사항, 200자 이내",
+    "message": "부정적인 텍스트 프롬프트, 선택 사항, 200자 이내",
     "description": "매개변수 'negativePrompt'의 설명"
   },
   "description.uploadStartImage": {
@@ -136,7 +140,7 @@
     "description": "업로드 참조 매개변수의 설명"
   },
   "description.seed": {
-    "message": "비디오 생성을 위한 시드 값. 설정하지 않으면 랜덤 시드가 사용됩니다.",
+    "message": "비디오 생성을 위한 시드 값입니다. 설정하지 않으면 랜덤 시드가 사용됩니다.",
     "description": "업로드 참조 매개변수의 설명"
   },
   "status.pending": {
@@ -153,19 +157,19 @@
   },
   "placeholder.select": {
     "message": "선택",
-    "description": "선택 필드의 자리 표시 텍스트"
+    "description": "선택 필드의 자리 표시자 텍스트"
   },
   "placeholder.paddingLevel": {
     "message": "선택하세요...",
     "description": "패딩 수준의 자리 표시자"
   },
   "placeholder.prompt": {
-    "message": "생성할 비디오 스타일의 프롬프트를 입력하세요, 예: quiver",
-    "description": "프롬프트 필드의 자리 표시 텍스트"
+    "message": "생성할 비디오 스타일의 프롬프트를 입력하세요. 예: quiver",
+    "description": "프롬프트 필드의 자리 표시자 텍스트"
   },
   "placeholder.negativePrompt": {
-    "message": "생성할 비디오 스타일의 부정적 프롬프트를 입력하세요, 200자 이내",
-    "description": "프롬프트 필드의 자리 표시 텍스트"
+    "message": "생성할 비디오 스타일의 부정적인 프롬프트를 입력하세요. 200자 이내",
+    "description": "프롬프트 필드의 자리 표시자 텍스트"
   },
   "placeholder.position": {
     "message": "선택하세요...",
@@ -173,7 +177,7 @@
   },
   "placeholder.aspectRatio": {
     "message": "선택하세요...",
-    "description": "가로 세로 비율 입력의 자리 표시자"
+    "description": "종횡비 입력의 자리 표시자"
   },
   "placeholder.preset": {
     "message": "선택하세요...",
@@ -189,7 +193,7 @@
   },
   "placeholder.subMarker": {
     "message": "선택하세요...",
-    "description": "자식 마커 입력의 자리 표시자"
+    "description": "하위 마커 입력의 자리 표시자"
   },
   "button.generate": {
     "message": "생성",
@@ -229,15 +233,15 @@
   },
   "message.startingTask": {
     "message": "작업 시작 중...",
-    "description": "그림 작업이 시작될 때의 메시지"
+    "description": "그리기 작업이 시작될 때의 메시지"
   },
   "message.startTaskSuccess": {
-    "message": "생성 작업이 성공적으로 시작되었습니다",
-    "description": "작업이 성공적으로 시작되었을 때의 성공 메시지"
+    "message": "생성 작업 시작 성공",
+    "description": "작업 시작이 성공했을 때의 성공 메시지"
   },
   "message.startTaskFailed": {
     "message": "작업 시작 실패, 관리자에게 문의하세요",
-    "description": "그림 작업 시작 실패 시의 오류 메시지"
+    "description": "그리기 작업 시작 실패 시의 오류 메시지"
   },
   "message.usedUp": {
     "message": "포인트가 소진되었습니다. 더 많은 포인트를 구매한 후 계속 사용하세요",
@@ -300,7 +304,7 @@
     "description": "사용 가능한 작업이 없을 때의 메시지"
   },
   "message.noTasks": {
-    "message": "이력 작업이 없습니다. 왼쪽에서 비디오 생성 버튼을 클릭하세요",
+    "message": "역사적 작업이 없습니다. 왼쪽에서 비디오 생성 버튼을 클릭하세요",
     "description": "작업이 없을 때의 메시지"
   }
 }

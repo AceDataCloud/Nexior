@@ -24,7 +24,7 @@
     "description": "ID de rastreamento da tarefa"
   },
   "name.createdAt": {
-    "message": "Data de criação",
+    "message": "Criado em",
     "description": "Data e hora em que o vídeo Pixverse foi gerado"
   },
   "name.style": {
@@ -75,6 +75,10 @@
     "message": "Imagem de referência inicial",
     "description": "Imagem de referência para o vídeo a ser gerado"
   },
+  "name.aspectRatio": {
+    "message": "Proporção",
+    "description": "Proporção do vídeo a ser gerado"
+  },
   "name.videoUrl": {
     "message": "Vídeo personalizado",
     "description": "Vídeo personalizado"
@@ -116,7 +120,7 @@
     "description": "Descrição do parâmetro 'ingredients'"
   },
   "description.imageUrl": {
-    "message": "Na tarefa de criar vídeo com várias imagens, é necessário enviar várias imagens.",
+    "message": "Na tarefa de criação de vídeo com várias imagens, deve-se enviar várias imagens.",
     "description": "Descrição do parâmetro 'imageUrl'"
   },
   "description.prompt": {
@@ -124,7 +128,7 @@
     "description": "Descrição do parâmetro 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "Texto de prompt negativo, opcional, não pode exceder 200 caracteres",
+    "message": "Prompt de texto negativo, opcional, não pode exceder 200 caracteres",
     "description": "Descrição do parâmetro 'negativePrompt'"
   },
   "description.uploadStartImage": {
@@ -132,11 +136,11 @@
     "description": "Descrição do parâmetro de upload de referência"
   },
   "description.uploadEndImage": {
-    "message": "Envie a imagem de referência final para que o vídeo final seja gerado com base na imagem inicial",
+    "message": "Envie a imagem de referência final para que o vídeo final seja gerado com base na imagem final",
     "description": "Descrição do parâmetro de upload de referência"
   },
   "description.seed": {
-    "message": "Valor da semente para gerar o vídeo. Se não definido, uma semente aleatória será usada.",
+    "message": "Valor da semente para gerar o vídeo. Se não definido, será usada uma semente aleatória.",
     "description": "Descrição do parâmetro de upload de referência"
   },
   "status.pending": {
@@ -153,7 +157,7 @@
   },
   "placeholder.select": {
     "message": "Selecionar",
-    "description": "Texto de placeholder no campo de seleção"
+    "description": "Texto de espaço reservado no campo de seleção"
   },
   "placeholder.paddingLevel": {
     "message": "Selecione...",
@@ -161,11 +165,11 @@
   },
   "placeholder.prompt": {
     "message": "Insira as palavras-chave para o estilo do vídeo a ser gerado, por exemplo: quiver",
-    "description": "Texto de placeholder no campo de prompt"
+    "description": "Texto de espaço reservado no campo de prompt"
   },
   "placeholder.negativePrompt": {
     "message": "Insira as palavras-chave negativas para o estilo do vídeo a ser gerado, não excedendo 200 caracteres",
-    "description": "Texto de placeholder no campo de prompt"
+    "description": "Texto de espaço reservado no campo de prompt"
   },
   "placeholder.position": {
     "message": "Selecione...",
@@ -185,31 +189,31 @@
   },
   "placeholder.rotate": {
     "message": "Selecione...",
-    "description": "Placeholder para entrada de rotação"
+    "description": "Placeholder para a entrada de rotação"
   },
   "placeholder.subMarker": {
-    "message": "Por favor, selecione...",
+    "message": "Selecione...",
     "description": "Placeholder para a entrada de sub-marcador"
   },
   "button.generate": {
     "message": "Gerar",
-    "description": "Texto do botão para gerar vídeos do Pixverse"
+    "description": "Texto do botão para gerar vídeo do Pixverse"
   },
   "button.extend": {
     "message": "Expandir vídeo",
-    "description": "Texto do botão para expandir o vídeo"
+    "description": "Texto do botão para expandir vídeo"
   },
   "button.download": {
     "message": "Baixar vídeo",
-    "description": "Texto do botão para baixar o vídeo"
+    "description": "Texto do botão para baixar vídeo"
   },
   "button.uploadImageUrl": {
     "message": "Enviar imagem",
-    "description": "Texto do botão para enviar uma imagem"
+    "description": "Texto do botão para enviar imagem"
   },
   "button.uploadVideoUrl": {
     "message": "Enviar vídeo",
-    "description": "Texto do botão para enviar um vídeo"
+    "description": "Texto do botão para enviar vídeo"
   },
   "button.uploadReferences": {
     "message": "Enviar",
@@ -221,10 +225,10 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Imagem enviada com sucesso",
-    "description": "Mensagem de sucesso ao enviar uma imagem com sucesso"
+    "description": "Mensagem de sucesso quando a imagem é enviada com sucesso"
   },
   "message.uploadReferencesError": {
-    "message": "Falha ao enviar a imagem, por favor, tente novamente mais tarde",
+    "message": "Falha ao enviar imagem, por favor tente novamente mais tarde",
     "description": "Mensagem de erro quando a imagem falha ao ser enviada"
   },
   "message.startingTask": {
@@ -233,14 +237,14 @@
   },
   "message.startTaskSuccess": {
     "message": "Tarefa de geração iniciada com sucesso",
-    "description": "Mensagem de sucesso ao iniciar a tarefa com sucesso"
+    "description": "Mensagem de sucesso quando a tarefa é iniciada com sucesso"
   },
   "message.startTaskFailed": {
-    "message": "Falha ao iniciar a tarefa, por favor, contate o administrador",
+    "message": "Falha ao iniciar a tarefa, por favor contate o administrador",
     "description": "Mensagem de erro quando a tarefa de desenho falha ao ser iniciada"
   },
   "message.usedUp": {
-    "message": "Seus pontos acabaram, por favor, compre mais pontos para continuar usando",
+    "message": "Seus pontos acabaram, por favor compre mais pontos para continuar usando",
     "description": "Mensagem quando os pontos se esgotaram"
   },
   "message.generating": {
@@ -256,7 +260,7 @@
     "description": "Mensagem quando a imagem está sendo gerada"
   },
   "message.generateFailed": {
-    "message": "Falha ao gerar a imagem",
+    "message": "Falha ao gerar imagem",
     "description": "Mensagem quando a geração da imagem falha"
   },
   "message.uploadVideoExceed": {
@@ -280,27 +284,27 @@
     "description": "Mensagem de erro quando o número de imagens da última frame excede o limite"
   },
   "message.uploadStartImageError": {
-    "message": "Falha ao enviar a imagem da primeira frame",
+    "message": "Falha ao enviar imagem da primeira frame",
     "description": "Mensagem de erro quando a imagem da primeira frame falha ao ser enviada"
   },
   "message.uploadVideoError": {
-    "message": "Falha ao enviar o vídeo",
+    "message": "Falha ao enviar vídeo",
     "description": "Mensagem de erro quando a imagem da primeira frame falha ao ser enviada"
   },
   "message.uploadEndImageError": {
-    "message": "Falha ao enviar a imagem da última frame",
+    "message": "Falha ao enviar imagem da última frame",
     "description": "Mensagem de erro quando a imagem da última frame falha ao ser enviada"
   },
   "message.uploadDocumentsError": {
-    "message": "Falha ao enviar o documento",
-    "description": "Mensagem de erro quando o envio do documento falha"
+    "message": "Falha ao enviar documento",
+    "description": "Mensagem de erro quando o documento falha ao ser enviado"
   },
   "message.noOperations": {
     "message": "Nenhuma operação disponível",
     "description": "Mensagem quando não há operações disponíveis"
   },
   "message.noTasks": {
-    "message": "Nenhuma tarefa histórica, por favor, clique à esquerda para gerar vídeo",
+    "message": "Nenhuma tarefa histórica, por favor clique à esquerda para gerar vídeo",
     "description": "Mensagem quando não há tarefas"
   }
 }

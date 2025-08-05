@@ -75,6 +75,10 @@
     "message": "Image de référence de la première image",
     "description": "Image de référence pour la vidéo à générer"
   },
+  "name.aspectRatio": {
+    "message": "Ratio d'aspect",
+    "description": "Ratio d'aspect de la vidéo à générer"
+  },
   "name.videoUrl": {
     "message": "Vidéo personnalisée",
     "description": "Vidéo personnalisée"
@@ -124,20 +128,20 @@
     "description": "Description du paramètre 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "Invite de texte négatif, optionnelle, ne dépassant pas 200 caractères",
+    "message": "Texte d'invite négatif, optionnel, ne dépassant pas 200 caractères",
     "description": "Description du paramètre 'negativePrompt'"
   },
   "description.uploadStartImage": {
     "message": "Téléchargez l'image de la première image comme référence pour la génération, la vidéo finale se basera sur la première image.",
-    "description": "Description du paramètre de référence de téléchargement"
+    "description": "Description du paramètre de téléchargement de référence"
   },
   "description.uploadEndImage": {
     "message": "Téléchargez l'image de la première image comme référence pour la génération, la vidéo finale se basera sur la première image.",
-    "description": "Description du paramètre de référence de téléchargement"
+    "description": "Description du paramètre de téléchargement de référence"
   },
   "description.seed": {
     "message": "Valeur de la graine pour générer la vidéo. Si non définie, une graine aléatoire sera utilisée.",
-    "description": "Description du paramètre de référence de téléchargement"
+    "description": "Description du paramètre de téléchargement de référence"
   },
   "status.pending": {
     "message": "En attente",
@@ -173,7 +177,7 @@
   },
   "placeholder.aspectRatio": {
     "message": "Veuillez sélectionner...",
-    "description": "Espace réservé pour l'entrée de rapport d'aspect"
+    "description": "Espace réservé pour l'entrée de ratio d'aspect"
   },
   "placeholder.preset": {
     "message": "Veuillez sélectionner...",
@@ -185,11 +189,11 @@
   },
   "placeholder.rotate": {
     "message": "Veuillez sélectionner...",
-    "description": "Espace réservé pour l'entrée de rotation"
+    "description": "Placeholder pour l'entrée de rotation"
   },
   "placeholder.subMarker": {
     "message": "Veuillez sélectionner...",
-    "description": "Espace réservé pour l'entrée de sous-marque"
+    "description": "Placeholder pour l'entrée de sous-marqueur"
   },
   "button.generate": {
     "message": "Générer",
@@ -245,19 +249,19 @@
   },
   "message.generating": {
     "message": "Génération en cours...",
-    "description": "Message lorsque l'image est en cours de génération"
+    "description": "Message pendant que l'image est en cours de génération"
   },
   "message.downloadVideo": {
     "message": "Télécharger cette vidéo",
-    "description": "Message lorsque l'image est en cours de génération"
+    "description": "Message pendant que l'image est en cours de génération"
   },
   "message.extendVideo": {
     "message": "Continuer à générer cette vidéo",
-    "description": "Message lorsque l'image est en cours de génération"
+    "description": "Message pendant que l'image est en cours de génération"
   },
   "message.generateFailed": {
     "message": "Échec de la génération de l'image",
-    "description": "Message lorsque la génération de l'image échoue"
+    "description": "Message lors de l'échec de la génération de l'image"
   },
   "message.uploadVideoExceed": {
     "message": "Le nombre d'images de la première image téléchargées dépasse la limite",
@@ -297,10 +301,10 @@
   },
   "message.noOperations": {
     "message": "Aucune opération disponible",
-    "description": "Message lorsqu'il n'y a aucune opération disponible"
+    "description": "Message lorsqu'il n'y a pas d'opérations disponibles"
   },
   "message.noTasks": {
     "message": "Aucune tâche historique, veuillez cliquer à gauche pour générer une vidéo",
-    "description": "Message lorsqu'il n'y a aucune tâche"
+    "description": "Message lorsqu'il n'y a pas de tâches"
   }
 }

@@ -9,6 +9,7 @@ export interface IPixverseConfig {
   image_url?: string;
   duration?: number;
   seed?: number;
+  aspect_ratio?: string;
   callback_url?: string;
 }
 

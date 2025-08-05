@@ -4,6 +4,7 @@
       <prompt-input class="mb-4" />
       <model-selector class="mb-4" />
       <style-selector class="mb-4" />
+      <ratio-selector class="mb-4" />
       <motion-selector class="mb-4" />
       <quality-selector class="mb-4" />
       <start-image class="mb-2" />
@@ -29,6 +30,7 @@ import MotionSelector from './config/MotionSelector.vue';
 import StyleSelector from './config/StyleSelector.vue';
 import SeedSelector from './config/SeedSelector.vue';
 import DurationSelector from './config/DurationSelector.vue';
+import RatioSelector from './config/RatioSelector.vue';
 import StartImage from './config/StartImage.vue';
 import PromptInput from './config/PromptInput.vue';
 
@@ -44,7 +46,8 @@ export default defineComponent({
     StyleSelector,
     DurationSelector,
     StartImage,
-    SeedSelector
+    SeedSelector,
+    RatioSelector
   },
   emits: ['generate'],
   computed: {

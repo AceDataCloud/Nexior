@@ -72,8 +72,12 @@
     "description": "Jakość wideo, które ma być generowane"
   },
   "name.startImage": {
-    "message": "Obraz referencyjny pierwszej klatki",
+    "message": "Obraz referencyjny klatki początkowej",
     "description": "Obraz referencyjny wideo, które ma być generowane"
+  },
+  "name.aspectRatio": {
+    "message": "Proporcje",
+    "description": "Proporcje wideo, które ma być generowane"
   },
   "name.videoUrl": {
     "message": "Niestandardowe wideo",
@@ -120,7 +124,7 @@
     "description": "Opis parametru 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Podpowiedź do generowania wideo Pixverse",
+    "message": "Podpowiedzi do generowania wideo Pixverse",
     "description": "Opis parametru 'prompt'"
   },
   "description.negativePrompt": {
@@ -128,11 +132,11 @@
     "description": "Opis parametru 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Prześlij obraz pierwszej klatki jako referencję, ostatnie wideo będzie odnosić się do pierwszej klatki",
+    "message": "Prześlij obraz klatki początkowej jako referencję, ostatnie wideo będzie odnosić się do klatki początkowej",
     "description": "Opis parametru przesyłania referencji"
   },
   "description.uploadEndImage": {
-    "message": "Prześlij obraz ostatniej klatki jako referencję, ostatnie wideo będzie odnosić się do ostatniej klatki",
+    "message": "Prześlij obraz klatki końcowej jako referencję, ostatnie wideo będzie odnosić się do klatki końcowej",
     "description": "Opis parametru przesyłania referencji"
   },
   "description.seed": {
@@ -149,7 +153,7 @@
   },
   "placeholder.paddingNoise": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wejścia szumów wypełniających"
+    "description": "Placeholder dla wprowadzenia szumów wypełniających"
   },
   "placeholder.select": {
     "message": "Wybierz",
@@ -160,7 +164,7 @@
     "description": "Placeholder dla poziomu wypełnienia"
   },
   "placeholder.prompt": {
-    "message": "Wprowadź podpowiedź dla stylu wideo, np. quiver",
+    "message": "Wprowadź podpowiedź dla stylu wideo, które ma być generowane, np. quiver",
     "description": "Placeholder dla pola podpowiedzi"
   },
   "placeholder.negativePrompt": {
@@ -169,19 +173,19 @@
   },
   "placeholder.position": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wejścia pozycji"
+    "description": "Placeholder dla wprowadzenia pozycji"
   },
   "placeholder.aspectRatio": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wejścia proporcji"
+    "description": "Placeholder dla wprowadzenia proporcji"
   },
   "placeholder.preset": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wejścia presetów"
+    "description": "Placeholder dla wprowadzenia presetów"
   },
   "placeholder.markerShape": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wejścia kształtu znacznika"
+    "description": "Placeholder dla wprowadzenia kształtu znacznika"
   },
   "placeholder.rotate": {
     "message": "Wybierz...",
@@ -189,7 +193,7 @@
   },
   "placeholder.subMarker": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wprowadzenia subznaku"
+    "description": "Placeholder dla wejścia podznaku"
   },
   "button.generate": {
     "message": "Generuj",
@@ -240,7 +244,7 @@
     "description": "Komunikat o błędzie, gdy uruchomienie zadania rysowania nie powiodło się"
   },
   "message.usedUp": {
-    "message": "Twoje punkty zostały wyczerpane, kup więcej punktów, aby kontynuować",
+    "message": "Twoje punkty zostały wyczerpane, proszę kupić więcej punktów, aby kontynuować",
     "description": "Komunikat, gdy punkty zostały wyczerpane"
   },
   "message.generating": {
