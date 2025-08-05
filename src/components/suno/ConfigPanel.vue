@@ -1,6 +1,6 @@
 <template>
-  <div class="panel">
-    <div class="config">
+  <div class="flex flex-col h-full">
+    <div class="flex-1 overflow-y-auto p-[15px]">
       <type-selector class="mb-4" />
       <upload-audio class="mb-4" />
       <prompt-input v-if="!config?.custom" class="mb-4" />
@@ -9,16 +9,17 @@
       <title-input v-if="config?.custom" class="mb-4" />
       <extend-from-input v-if="config?.action === 'extend'" class="mb-4" />
       <cover-from-input v-if="config?.action === 'cover'" class="mb-4" />
-      <div class="actions">
-        <el-button v-if="config?.action !== 'extend'" type="primary" class="btn w-full" round @click="onGenerate">
-          <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
-          {{ $t('suno.button.generate') }}
-        </el-button>
-        <el-button v-else type="primary" class="btn w-full" round @click="onGenerate">
-          <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
-          {{ $t('suno.button.extend') }}
-        </el-button>
-      </div>
+    </div>
+    <div class="flex flex-col items-center justify-center px-[15px] pb-[15px]">
+      <consumption :value="consumption" :service="service" />
+      <el-button v-if="config?.action !== 'extend'" type="primary" class="btn w-full" round @click="onGenerate">
+        <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
+        {{ $t('suno.button.generate') }}
+      </el-button>
+      <el-button v-else type="primary" class="btn w-full" round @click="onGenerate">
+        <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
+        {{ $t('suno.button.extend') }}
+      </el-button>
     </div>
   </div>
 </template>
@@ -35,6 +36,8 @@ import TitleInput from './config/TitleInput.vue';
 import ExtendFromInput from './config/ExtendFromInput.vue';
 import CoverFromInput from './config/CoverFromInput.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import Consumption from '../common/Consumption.vue';
+import { getConsumption } from '@/utils';
 
 export default defineComponent({
   name: 'PresetPanel',
@@ -48,12 +51,19 @@ export default defineComponent({
     CoverFromInput,
     UploadAudio,
     FontAwesomeIcon,
-    ElButton
+    ElButton,
+    Consumption
   },
   emits: ['generate'],
   computed: {
     config() {
       return this.$store.state.suno?.config;
+    },
+    consumption() {
+      return getConsumption(this.config, this.service?.metadata?.price);
+    },
+    service() {
+      return this.$store.state.suno?.service;
     }
   },
   methods: {
