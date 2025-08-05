@@ -10,6 +10,7 @@ export interface IService {
   applied_count?: number;
   applied?: boolean;
   tags?: string[];
+  metadata?: any;
   thumbnail?: string;
   introduction?: string;
   apis?: IApi[];

@@ -1,5 +1,6 @@
 import { CURRENCY_LABEL_MAPPING } from '@/constants/mapping';
 import store from '@/store';
+import jsonLogic from 'json-logic-js';
 
 /**
  * Input a value and target currency (e.g. cny), return the price which the current locale
@@ -44,4 +45,17 @@ export const getPriceString = (payload: {
     value
   });
   return `${price.label}${price.value?.toFixed(fractionDigits)}`;
+};
+
+export const getConsumption = (payload: any, rules: any): number | undefined => {
+  if (!rules || !Array.isArray(rules)) {
+    return undefined;
+  }
+  for (const rule of rules) {
+    const conditions = rule.conditions;
+    if (jsonLogic.apply(conditions, payload)) {
+      return jsonLogic.apply(rule.consumption) as number;
+    }
+  }
+  return 0;
 };
