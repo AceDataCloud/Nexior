@@ -29,20 +29,16 @@ export default defineComponent({
     return {
       options: [
         {
-          value: 'v3',
-          label: 'V3'
-        },
-        {
           value: 'v3.5',
-          label: 'V3-5'
+          label: 'v3.5'
         },
         {
-          value: 'v2',
-          label: 'V2'
+          value: 'v4',
+          label: 'v4'
         },
         {
           value: 'v4.5',
-          label: 'V4-5'
+          label: 'v4.5'
         }
       ]
     };

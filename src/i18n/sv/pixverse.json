@@ -51,6 +51,10 @@
     "message": "3D-animation",
     "description": "Stilen för den video som ska genereras"
   },
+  "name.style6": {
+    "message": "Realistisk",
+    "description": "Stilen för den video som ska genereras"
+  },
   "name.motion": {
     "message": "Videoläge",
     "description": "Läget för den video som ska genereras"
@@ -124,11 +128,11 @@
     "description": "Beskrivning av parametern 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Ladda upp första bildrutan som referens, den slutliga videon kommer att referera till första bildrutan för att genereras",
+    "message": "Ladda upp första bildrutan som referens för genereringen, den slutliga videon kommer att referera till första bildrutan.",
     "description": "Beskrivning av parametern för att ladda upp referens"
   },
   "description.uploadEndImage": {
-    "message": "Ladda upp sista bildrutan som referens, den slutliga videon kommer att referera till sista bildrutan för att genereras",
+    "message": "Ladda upp sista bildrutan som referens för genereringen, den slutliga videon kommer att referera till sista bildrutan.",
     "description": "Beskrivning av parametern för att ladda upp referens"
   },
   "description.seed": {
@@ -149,7 +153,7 @@
   },
   "placeholder.select": {
     "message": "Välj",
-    "description": "Platshållare för valfältet"
+    "description": "Platshållartext i urvalsfältet"
   },
   "placeholder.paddingLevel": {
     "message": "Vänligen välj...",
@@ -157,15 +161,15 @@
   },
   "placeholder.prompt": {
     "message": "Skriv in promptord för den stil av video som ska genereras, till exempel: quiver",
-    "description": "Platshållare för promptfältet"
+    "description": "Platshållartext i promptfältet"
   },
   "placeholder.negativePrompt": {
-    "message": "Skriv in negativa promptord för den stil av video som ska genereras, högst 200 tecken",
-    "description": "Platshållare för promptfältet"
+    "message": "Skriv in negativ promptord för den stil av video som ska genereras, högst 200 tecken",
+    "description": "Platshållartext i promptfältet"
   },
   "placeholder.position": {
     "message": "Vänligen välj...",
-    "description": "Platshållare för positionsinmatning"
+    "description": "Platshållare för positioninmatning"
   },
   "placeholder.aspectRatio": {
     "message": "Vänligen välj...",
@@ -185,7 +189,7 @@
   },
   "placeholder.subMarker": {
     "message": "Vänligen välj...",
-    "description": "Platshållare för inmatning av undermarkör"
+    "description": "Platsinnehavare för underetikettens inmatning"
   },
   "button.generate": {
     "message": "Generera",
@@ -217,22 +221,22 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Bild uppladdad framgångsrikt",
-    "description": "Framgångsmeddelande när bilden har laddats upp"
+    "description": "Framgångsmeddelande när bild har laddats upp framgångsrikt"
   },
   "message.uploadReferencesError": {
     "message": "Misslyckades med att ladda upp bild, försök igen senare",
-    "description": "Felmeddelande när bilduppladdningen misslyckas"
+    "description": "Felmeddelande när bilduppladdning misslyckas"
   },
   "message.startingTask": {
     "message": "Startar uppgiften...",
     "description": "Meddelande när ritningsuppgiften startar"
   },
   "message.startTaskSuccess": {
-    "message": "Uppgiftsgenerering initierad framgångsrikt",
+    "message": "Uppgift har startats framgångsrikt",
     "description": "Framgångsmeddelande när uppgiften har startats"
   },
   "message.startTaskFailed": {
-    "message": "Misslyckades med att initiera uppgiften, vänligen kontakta administratören",
+    "message": "Misslyckades med att starta uppgiften, vänligen kontakta administratören",
     "description": "Felmeddelande när ritningsuppgiften misslyckas"
   },
   "message.usedUp": {

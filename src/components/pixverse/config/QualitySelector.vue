@@ -10,6 +10,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
+import { PIXVERSE_DEFAULT_QUALITY } from '@/constants';
 
 export default defineComponent({
   name: 'QualitySelector',
@@ -61,7 +62,7 @@ export default defineComponent({
   },
   mounted() {
     if (!this.value) {
-      this.value = '';
+      this.value = PIXVERSE_DEFAULT_QUALITY;
     }
   }
 });

@@ -25,7 +25,7 @@
   },
   "name.createdAt": {
     "message": "Fecha de creación",
-    "description": "Fecha y hora en que se generó el video Pixverse"
+    "description": "Fecha y hora de generación del video Pixverse"
   },
   "name.style": {
     "message": "Estilo",
@@ -49,6 +49,10 @@
   },
   "name.style5": {
     "message": "Animación 3D",
+    "description": "Estilo del video a generar"
+  },
+  "name.style6": {
+    "message": "Realista",
     "description": "Estilo del video a generar"
   },
   "name.motion": {
@@ -97,14 +101,14 @@
   },
   "name.effect": {
     "message": "Efecto de video",
-    "description": "Nombre del parámetro de estilo, utilizado para alternar entre diferentes versiones o estilos de modelo"
+    "description": "Nombre del parámetro de estilo, utilizado para cambiar entre diferentes versiones o estilos de modelo"
   },
   "name.ingredientsModel": {
     "message": "Modelo de ingredientes",
     "description": "Versión del modelo utilizada para generar el video"
   },
   "name.pixverseBot": {
-    "message": "Pixverse Bot",
+    "message": "Bot de Pixverse",
     "description": "Nombre del generador de videos Pixverse"
   },
   "description.ingredients": {
@@ -116,11 +120,11 @@
     "description": "Descripción del parámetro 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Palabras clave para generar videos Pixverse",
+    "message": "Palabras clave para generar videos de Pixverse",
     "description": "Descripción del parámetro 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "Texto de sugerencia negativa, opcional, no puede exceder 200 caracteres",
+    "message": "Sugerencia de texto negativa, opcional, no puede exceder 200 caracteres",
     "description": "Descripción del parámetro 'negativePrompt'"
   },
   "description.uploadStartImage": {
@@ -184,8 +188,8 @@
     "description": "Marcador de entrada para rotación"
   },
   "placeholder.subMarker": {
-    "message": "Seleccione...",
-    "description": "Marcador de entrada para sub-marcador"
+    "message": "Por favor seleccione...",
+    "description": "Placeholder para la entrada de submarcador"
   },
   "button.generate": {
     "message": "Generar",
@@ -229,15 +233,15 @@
   },
   "message.startTaskSuccess": {
     "message": "Tarea de generación iniciada con éxito",
-    "description": "Mensaje de éxito al iniciar la tarea"
+    "description": "Mensaje de éxito al iniciar la tarea correctamente"
   },
   "message.startTaskFailed": {
     "message": "Error al iniciar la tarea, por favor contacte al administrador",
     "description": "Mensaje de error al fallar al iniciar la tarea de dibujo"
   },
   "message.usedUp": {
-    "message": "Sus créditos se han agotado, por favor compre más créditos para continuar",
-    "description": "Mensaje cuando se han agotado los créditos"
+    "message": "Sus puntos se han agotado, por favor compre más puntos para continuar",
+    "description": "Mensaje cuando se han agotado los puntos"
   },
   "message.generating": {
     "message": "Generando...",
@@ -277,26 +281,26 @@
   },
   "message.uploadStartImageError": {
     "message": "Error al subir la imagen de la primera trama",
-    "description": "Mensaje de error cuando falla la subida de la imagen de la primera trama"
+    "description": "Mensaje de error cuando la subida de la imagen de la primera trama falla"
   },
   "message.uploadVideoError": {
     "message": "Error al subir el video",
-    "description": "Mensaje de error cuando falla la subida de la imagen de la primera trama"
+    "description": "Mensaje de error cuando la subida de la imagen de la primera trama falla"
   },
   "message.uploadEndImageError": {
     "message": "Error al subir la imagen de la última trama",
-    "description": "Mensaje de error cuando falla la subida de la imagen de la última trama"
+    "description": "Mensaje de error cuando la subida de la imagen de la última trama falla"
   },
   "message.uploadDocumentsError": {
-    "message": "Error al subir documentos",
-    "description": "Mensaje de error cuando falla la subida de documentos"
+    "message": "Error al subir el documento",
+    "description": "Mensaje de error cuando la subida del documento falla"
   },
   "message.noOperations": {
     "message": "No hay operaciones disponibles",
     "description": "Mensaje cuando no hay operaciones disponibles"
   },
   "message.noTasks": {
-    "message": "No hay tareas históricas, por favor haga clic en el botón de generar video a la izquierda",
+    "message": "No hay tareas históricas, por favor haga clic en el video de generación a la izquierda",
     "description": "Mensaje cuando no hay tareas"
   }
 }

@@ -51,6 +51,10 @@
     "message": "3D 애니메이션",
     "description": "생성할 비디오의 스타일"
   },
+  "name.style6": {
+    "message": "리얼리즘",
+    "description": "생성할 비디오의 스타일"
+  },
   "name.motion": {
     "message": "비디오 모드",
     "description": "생성할 비디오의 모드"
@@ -112,7 +116,7 @@
     "description": "매개변수 'ingredients'의 설명"
   },
   "description.imageUrl": {
-    "message": "여러 이미지를 업로드해야 하는 비디오 생성 작업입니다.",
+    "message": "다중 이미지로 비디오를 생성하는 작업에서는 여러 이미지를 업로드해야 합니다.",
     "description": "매개변수 'imageUrl'의 설명"
   },
   "description.prompt": {
@@ -120,19 +124,19 @@
     "description": "매개변수 'prompt'의 설명"
   },
   "description.negativePrompt": {
-    "message": "부정적인 텍스트 프롬프트, 선택 사항, 200자 이내",
-    "description": "매개변수 'prompt'의 설명"
+    "message": "부정적 텍스트 프롬프트, 선택 사항, 200자 이내",
+    "description": "매개변수 'negativePrompt'의 설명"
   },
   "description.uploadStartImage": {
     "message": "생성의 참조로 첫 프레임 이미지를 업로드하세요. 최종 비디오는 첫 프레임을 참조하여 생성됩니다.",
     "description": "업로드 참조 매개변수의 설명"
   },
   "description.uploadEndImage": {
-    "message": "생성의 참조로 첫 프레임 이미지를 업로드하세요. 최종 비디오는 첫 프레임을 참조하여 생성됩니다.",
+    "message": "생성의 참조로 마지막 프레임 이미지를 업로드하세요. 최종 비디오는 마지막 프레임을 참조하여 생성됩니다.",
     "description": "업로드 참조 매개변수의 설명"
   },
   "description.seed": {
-    "message": "비디오 생성을 위한 시드 값입니다. 설정하지 않으면 랜덤 시드가 사용됩니다.",
+    "message": "비디오 생성을 위한 시드 값. 설정하지 않으면 랜덤 시드가 사용됩니다.",
     "description": "업로드 참조 매개변수의 설명"
   },
   "status.pending": {
@@ -156,11 +160,11 @@
     "description": "패딩 수준의 자리 표시자"
   },
   "placeholder.prompt": {
-    "message": "생성할 비디오 스타일의 프롬프트를 입력하세요. 예: quiver",
+    "message": "생성할 비디오 스타일의 프롬프트를 입력하세요, 예: quiver",
     "description": "프롬프트 필드의 자리 표시 텍스트"
   },
   "placeholder.negativePrompt": {
-    "message": "생성할 비디오 스타일의 부정적인 프롬프트를 입력하세요. 200자 이내",
+    "message": "생성할 비디오 스타일의 부정적 프롬프트를 입력하세요, 200자 이내",
     "description": "프롬프트 필드의 자리 표시 텍스트"
   },
   "placeholder.position": {
@@ -185,7 +189,7 @@
   },
   "placeholder.subMarker": {
     "message": "선택하세요...",
-    "description": "서브 마커 입력의 자리 표시자"
+    "description": "자식 마커 입력의 자리 표시자"
   },
   "button.generate": {
     "message": "생성",
@@ -220,7 +224,7 @@
     "description": "이미지 업로드가 성공했을 때의 성공 메시지"
   },
   "message.uploadReferencesError": {
-    "message": "이미지 업로드 실패, 나중에 다시 시도해 주세요",
+    "message": "이미지 업로드 실패, 나중에 다시 시도하세요",
     "description": "이미지 업로드 실패 시의 오류 메시지"
   },
   "message.startingTask": {
@@ -232,11 +236,11 @@
     "description": "작업이 성공적으로 시작되었을 때의 성공 메시지"
   },
   "message.startTaskFailed": {
-    "message": "작업 시작 실패, 관리자에게 문의해 주세요",
+    "message": "작업 시작 실패, 관리자에게 문의하세요",
     "description": "그림 작업 시작 실패 시의 오류 메시지"
   },
   "message.usedUp": {
-    "message": "포인트가 소진되었습니다. 더 많은 포인트를 구매한 후 계속 사용해 주세요",
+    "message": "포인트가 소진되었습니다. 더 많은 포인트를 구매한 후 계속 사용하세요",
     "description": "소진되었을 때의 메시지"
   },
   "message.generating": {
@@ -261,11 +265,11 @@
   },
   "message.uploadVideoSizeExceed": {
     "message": "업로드 파일 크기는 10MB를 초과할 수 없습니다!",
-    "description": "업로드 파일 크기가 10MB를 초과할 때의 오류 메시지"
+    "description": "업로드 파일 크기가 10MB를 초과할 수 없을 때의 오류 메시지"
   },
   "message.uploadVideoTypeFailed": {
     "message": "업로드 파일은 MP4 형식이어야 합니다!",
-    "description": "업로드 파일이 MP4 형식이 아닐 때의 오류 메시지"
+    "description": "업로드 파일이 MP4 형식이어야 할 때의 오류 메시지"
   },
   "message.uploadStartImageExceed": {
     "message": "첫 번째 프레임 이미지 수가 제한을 초과했습니다",
