@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 05 Aug 2025 05:59:24 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 05 Aug 2025 13:40:51 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.15.0
+
+Tue, 05 Aug 2025 13:40:51 GMT
+
+### Minor changes
+
+- fix options for kling and pix (cqc@cuiqingcai.com)
 
 ## 3.14.1
 
