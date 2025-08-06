@@ -52,10 +52,7 @@ jobs:
 
       - name: Get Build Number
         run: |
-          BUILD_NUMBER=$(echo $BUILD_NUMBER)
-          BUILD_DATE=$(date +'%Y%m%d')
-          BUILD_TAG="${BUILD_DATE}.${BUILD_NUMBER}"
-          echo "BUILD_NUMBER=${BUILD_TAG}" >> $GITHUB_ENV
+          echo $BUILD_NUMBER
 
       - name: Build Docker images
         run: docker-compose build

@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 05 Aug 2025 13:40:51 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 05 Aug 2025 16:52:12 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.16.0
+
+Tue, 05 Aug 2025 16:52:12 GMT
+
+### Minor changes
+
+- add price support (cqc@cuiqingcai.com)
 
 ## 3.15.0
 
