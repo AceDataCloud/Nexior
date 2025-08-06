@@ -51,6 +51,8 @@ export const getConsumption = (payload: any, rules: any): number | undefined => 
   if (!rules || !Array.isArray(rules)) {
     return undefined;
   }
+  console.debug('payload', payload);
+  console.debug('rules', rules);
   for (const rule of rules) {
     const conditions = rule.conditions;
     if (jsonLogic.apply(conditions, payload)) {
