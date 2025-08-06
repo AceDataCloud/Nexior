@@ -1,7 +1,1 @@
-export default [
-  'pixverse.config',
-  'pixverse.credential',
-  'pixverse.application',
-  'pixverse.applications',
-  'pixverse.tasks'
-];
+export default ['pixverse.credential', 'pixverse.application', 'pixverse.applications', 'pixverse.tasks'];
