@@ -8,6 +8,7 @@ export interface ISiteFeatures {
   luma?: any;
   pika?: any;
   kling?: any;
+  veo?: any;
   pixverse?: any;
   hailuo?: any;
   headshots?: any;

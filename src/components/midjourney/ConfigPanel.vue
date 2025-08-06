@@ -2,6 +2,7 @@
   <div class="flex flex-col h-full">
     <div class="flex-1 overflow-y-auto p-[15px]">
       <is-videos-selector class="mb-2" />
+      <video-from-input v-show="config?.action === 'extend'" class="mb-4" />
       <model-selector v-if="!config.is_videos" class="mb-2" />
       <prompt-input class="mb-2" />
       <image-url-input v-if="config.is_videos" class="mb-2" />
@@ -45,6 +46,7 @@ import ModelSelector from './config/ModelSelector.vue';
 import QualitySelector from './config/QualitySelector.vue';
 import ImageWeightSelector from './config/ImageWeightSelector.vue';
 import WeirdSelector from './config/WeirdSelector.vue';
+import VideoFromInput from './config/VideoFromInput.vue';
 import StyleSelector from './config/StyleSelector.vue';
 import ElementsSelector from './config/ElementsSelector.vue';
 import ModeSelector from './config/ModeSelector2.vue';
@@ -74,7 +76,8 @@ export default defineComponent({
     ReferenceImage,
     IsVideosSelector,
     ImageUrlInput,
-    Consumption
+    Consumption,
+    VideoFromInput
   },
   emits: ['generate'],
   computed: {

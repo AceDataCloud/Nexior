@@ -28,6 +28,9 @@ export const ROUTE_PIKA_HISTORY = 'pika-history';
 export const ROUTE_KLING_INDEX = 'kling-index';
 export const ROUTE_KLING_HISTORY = 'kling-history';
 
+export const ROUTE_VEO_INDEX = 'veo-index';
+export const ROUTE_VEO_HISTORY = 'veo-history';
+
 export const ROUTE_PIXVERSE_INDEX = 'pixverse-index';
 export const ROUTE_PIXVERSE_HISTORY = 'pixverse-history';
 

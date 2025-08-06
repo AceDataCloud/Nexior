@@ -10,6 +10,7 @@ import qrart from './qrart';
 import luma from './luma';
 import pika from './pika';
 import kling from './kling';
+import veo from './veo';
 import pixverse from './pixverse';
 import flux from './flux';
 import hailuo from './hailuo';
@@ -37,6 +38,7 @@ const routes = [
   luma,
   pika,
   kling,
+  veo,
   pixverse,
   flux,
   hailuo,
