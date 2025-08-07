@@ -344,7 +344,7 @@ export default defineComponent({
         ...this.$store.state.midjourney?.config,
         video_id: response.video_id,
         // @ts-ignore
-        video_url: response.video_urls[0],
+        video_url: response.video_urls?.[0],
         action: 'extend',
         is_videos: true
       });

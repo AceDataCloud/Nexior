@@ -35,7 +35,7 @@ export default defineComponent({
           label: this.$t('veo.button.action2')
         },
         {
-          value: 'get_1080p',
+          value: 'get1080p',
           label: this.$t('veo.button.action3')
         }
       ];

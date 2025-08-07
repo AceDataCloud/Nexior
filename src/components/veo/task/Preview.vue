@@ -1,7 +1,7 @@
 <template>
   <div class="preview">
     <div class="left">
-      <el-image src="https://cdn.acedata.cloud/qpbbbb.jpg" class="avatar" />
+      <el-image src="https://cdn.acedata.cloud/pqer4t.png" class="avatar" />
     </div>
     <div class="main">
       <div class="bot">
@@ -161,10 +161,10 @@ export default defineComponent({
       this.$store.commit('veo/setConfig', {
         ...this.$store.state.veo?.config,
         // @ts-ignore
-        video_id: response?.data[0]?.id,
+        video_id: response?.data?.[0]?.id,
         // @ts-ignore
         video_url: response?.data[0]?.video_url,
-        action: 'get_1080p'
+        action: 'get1080p'
       });
     },
     onDownload(event: MouseEvent, video_url: string) {
