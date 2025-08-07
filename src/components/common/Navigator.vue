@@ -204,7 +204,7 @@ export default defineComponent({
             name: ROUTE_VEO_INDEX
           },
           displayName: this.$t('common.nav.veo'),
-          logo: 'https://cdn.acedata.cloud/pqer4t.png',
+          logo: 'https://cdn.acedata.cloud/8nxyy9.jpg',
           routes: [ROUTE_VEO_INDEX, ROUTE_VEO_HISTORY]
         });
       }

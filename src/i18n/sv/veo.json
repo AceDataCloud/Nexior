@@ -33,11 +33,15 @@
   },
   "name.createdAt": {
     "message": "Skapat den",
-    "description": "Datum och tid för när Kling-videon genererades"
+    "description": "Datum och tid för generering av Kling-video"
   },
   "name.startEndImage": {
     "message": "Referensbilder för start och slut",
     "description": "Referensbilder för den video som ska genereras"
+  },
+  "name.action": {
+    "message": "Åtgärd",
+    "description": "Lista över tillgängliga åtgärder"
   },
   "name.action3": {
     "message": "Hämta 1080p-video från",
@@ -52,7 +56,7 @@
     "description": "Modellversionen som används för att generera videon"
   },
   "name.veoBot": {
-    "message": "Veo Bot",
+    "message": "Google Veo Bot",
     "description": "Namn på Veo videogenerator"
   },
   "description.imageUrl": {
@@ -64,7 +68,7 @@
     "description": "Beskrivning av parametern 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Array av referensbildlänkar, den första är startbilden, följt av slutbilden",
+    "message": "Array av referensbildlänkar, den första är startbilden, den andra är slutbilden",
     "description": "Beskrivning av parametern 'image_url'"
   },
   "status.pending": {
@@ -140,12 +144,12 @@
     "description": "Felmeddelande när bilduppladdning misslyckas"
   },
   "message.startingTask": {
-    "message": "Startar uppgiften...",
+    "message": "Startar uppgift...",
     "description": "Meddelande när ritningsuppgiften startar"
   },
   "message.startTaskSuccess": {
-    "message": "Uppgiftsgenerering lyckades",
-    "description": "Framgångsmeddelande när uppgiften startas framgångsrikt"
+    "message": "Uppgift för generering har startats framgångsrikt",
+    "description": "Framgångsmeddelande när uppgiften har startats"
   },
   "message.startTaskFailed": {
     "message": "Misslyckades med att starta uppgiften, vänligen kontakta administratören",

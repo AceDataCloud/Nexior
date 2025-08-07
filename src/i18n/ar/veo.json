@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "النوع",
-    "description": "نوع المحتوى الذي سيتم إنتاج فيديو Kling له، مثل 'رابط'، 'نص'، إلخ"
+    "description": "نوع محتوى الفيديو الذي سيتم إنشاؤه، مثل 'رابط'، 'نص'، إلخ"
   },
   "name.modeStd": {
     "message": "قياسي",
@@ -37,11 +37,15 @@
   },
   "name.startEndImage": {
     "message": "صور الإطار الأول والأخير المرجعية",
-    "description": "صور مرجعية للفيديو الذي سيتم إنتاجه"
+    "description": "صور مرجعية للفيديو الذي سيتم إنشاؤه"
+  },
+  "name.action": {
+    "message": "الإجراء",
+    "description": "قائمة الإجراءات المتاحة"
   },
   "name.action3": {
     "message": "الحصول على فيديو بدقة 1080p من",
-    "description": "صور مرجعية للفيديو الذي سيتم إنتاجه"
+    "description": "صور مرجعية للفيديو الذي سيتم إنشاؤه"
   },
   "name.prompt": {
     "message": "موجه الفيديو",
@@ -49,10 +53,10 @@
   },
   "name.model": {
     "message": "إصدار النموذج",
-    "description": "إصدار النموذج المستخدم لإنتاج الفيديو"
+    "description": "إصدار النموذج المستخدم لإنشاء الفيديو"
   },
   "name.veoBot": {
-    "message": "روبوت Veo",
+    "message": "روبوت Google Veo",
     "description": "اسم مولد فيديو Veo"
   },
   "description.imageUrl": {
@@ -72,7 +76,7 @@
     "description": "حالة انتظار المهمة"
   },
   "status.processing": {
-    "message": "قيد المعالجة",
+    "message": "يتم المعالجة",
     "description": "حالة انتظار المهمة"
   },
   "placeholder.paddingNoise": {
@@ -88,7 +92,7 @@
     "description": "نص العنصر النائب لمستوى التعبئة"
   },
   "placeholder.prompt": {
-    "message": "أدخل الكلمات الموجهة لنمط الفيديو الذي تريد إنتاجه، مثل: متحرك",
+    "message": "أدخل الكلمات الموجهة لنمط الفيديو الذي سيتم إنشاؤه، مثل: متحرك",
     "description": "نص العنصر النائب في حقل الموجه"
   },
   "placeholder.position": {
@@ -128,15 +132,15 @@
     "description": "نص الزر الذي يسمح للمستخدم بتحميل المراجع"
   },
   "message.uploadReferencesExceed": {
-    "message": "يمكنك تحميل ما يصل إلى صورتين",
-    "description": "رسالة خطأ عند تجاوز عدد الصور المحملة للحد المسموح به"
+    "message": "يمكن تحميل ما يصل إلى 2 صورة",
+    "description": "رسالة خطأ عند تجاوز عدد الصور المحملة للحد"
   },
   "message.uploadReferencesSuccess": {
     "message": "تم تحميل الصورة بنجاح",
     "description": "رسالة نجاح عند تحميل الصورة بنجاح"
   },
   "message.uploadReferencesError": {
-    "message": "فشل تحميل الصورة، يرجى المحاولة لاحقًا",
+    "message": "فشل تحميل الصورة، يرجى المحاولة مرة أخرى لاحقًا",
     "description": "رسالة خطأ عند فشل تحميل الصورة"
   },
   "message.startingTask": {
@@ -144,7 +148,7 @@
     "description": "رسالة عند بدء مهمة الرسم"
   },
   "message.startTaskSuccess": {
-    "message": "تم بدء مهمة الإنتاج بنجاح",
+    "message": "تم بدء مهمة الإنشاء بنجاح",
     "description": "رسالة نجاح عند بدء المهمة بنجاح"
   },
   "message.startTaskFailed": {
@@ -168,12 +172,12 @@
     "description": "رسالة عند فشل إنشاء الصورة"
   },
   "message.uploadVideoExceed": {
-    "message": "عدد الصور المرفوعة للإطار الأول تجاوز الحد المسموح به",
-    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة للإطار الأول للحد المسموح به"
+    "message": "عدد الصور المحملة للإطار الأول تجاوز الحد",
+    "description": "رسالة خطأ عند تجاوز عدد الصور المحملة للإطار الأول للحد"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "يجب ألا يتجاوز حجم الملف المحمل 10 ميغابايت!",
-    "description": "رسالة خطأ عند تجاوز حجم الملف المحمل 10 ميغابايت!"
+    "message": "لا يمكن أن يتجاوز حجم الملف المحمل 10 ميجابايت!",
+    "description": "رسالة خطأ عند تجاوز حجم الملف المحمل 10 ميجابايت!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "يجب أن يكون الملف المحمل بتنسيق MP4!",
