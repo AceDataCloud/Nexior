@@ -13,7 +13,7 @@
   },
   "name.modePro": {
     "message": "Visok kvalitet",
-    "description": "Režim visokog kvaliteta Kling videa"
+    "description": "Visokokvalitetni režim Kling videa"
   },
   "name.failure": {
     "message": "Neuspeh",
@@ -39,6 +39,10 @@
     "message": "Referentne slike početnog i završnog okvira",
     "description": "Referentne slike za video koji treba generisati"
   },
+  "name.action": {
+    "message": "Akcija",
+    "description": "Lista dostupnih akcija"
+  },
   "name.action3": {
     "message": "Preuzmi 1080p video",
     "description": "Referentne slike za video koji treba generisati"
@@ -52,7 +56,7 @@
     "description": "Verzija modela koja se koristi za generisanje videa"
   },
   "name.veoBot": {
-    "message": "Veo Bot",
+    "message": "Google Veo Bot",
     "description": "Ime Veo generatora videa"
   },
   "description.imageUrl": {
@@ -77,7 +81,7 @@
   },
   "placeholder.paddingNoise": {
     "message": "Molimo izaberite...",
-    "description": "Placeholder za unos popunjavajuće buke"
+    "description": "Placeholder za unos šuma popunjavanja"
   },
   "placeholder.select": {
     "message": "Izaberi",
@@ -85,7 +89,7 @@
   },
   "placeholder.paddingLevel": {
     "message": "Molimo izaberite...",
-    "description": "Placeholder za nivo popunjenja"
+    "description": "Placeholder za nivo popunjavanja"
   },
   "placeholder.prompt": {
     "message": "Unesite prompt za stil videa koji želite generisati, na primer: pokretni",
@@ -100,11 +104,11 @@
     "description": "Tekst dugmeta za generisanje Veo videa"
   },
   "button.action1": {
-    "message": "Generiši video",
+    "message": "Generiši video iz teksta",
     "description": "Tekst dugmeta za generisanje Veo videa"
   },
   "button.action2": {
-    "message": "Generiši video iz slika",
+    "message": "Generiši video iz slike",
     "description": "Tekst dugmeta za generisanje Veo videa"
   },
   "button.action3": {
@@ -116,8 +120,8 @@
     "description": "Tekst dugmeta za preuzimanje videa"
   },
   "button.uploadImageUrl": {
-    "message": "Otpremi slike",
-    "description": "Tekst dugmeta za otpremanje slika"
+    "message": "Otpremi sliku",
+    "description": "Tekst dugmeta za otpremanje slike"
   },
   "button.uploadVideoUrl": {
     "message": "Otpremi video",
@@ -129,15 +133,15 @@
   },
   "message.uploadReferencesExceed": {
     "message": "Možete otpremiti najviše 2 slike",
-    "description": "Poruka o grešci kada je broj otpremljenih slika premašio limit"
+    "description": "Poruka greške kada je broj otpremljenih slika premašio limit"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Uspešno otpremljene slike",
-    "description": "Poruka o uspehu kada su slike uspešno otpremljene"
+    "message": "Uspešno otpremljena slika",
+    "description": "Poruka uspeha kada je slika uspešno otpremljena"
   },
   "message.uploadReferencesError": {
-    "message": "Neuspelo otpremanje slika, molimo pokušajte ponovo kasnije",
-    "description": "Poruka o grešci kada otpremanje slika nije uspelo"
+    "message": "Neuspelo otpremanje slike, molimo pokušajte ponovo kasnije",
+    "description": "Poruka greške kada otpremanje slike nije uspelo"
   },
   "message.startingTask": {
     "message": "Pokreće se zadatak...",
@@ -145,11 +149,11 @@
   },
   "message.startTaskSuccess": {
     "message": "Uspešno pokrenut zadatak za generisanje",
-    "description": "Poruka o uspehu kada je zadatak uspešno pokrenut"
+    "description": "Poruka uspeha kada je zadatak uspešno pokrenut"
   },
   "message.startTaskFailed": {
-    "message": "Neuspelo pokretanje zadatka, molimo kontaktirajte administratora",
-    "description": "Poruka o grešci kada pokretanje zadatka za crtanje nije uspelo"
+    "message": "Pokretanje zadatka nije uspelo, molimo kontaktirajte administratora",
+    "description": "Poruka greške kada pokretanje zadatka za crtanje nije uspelo"
   },
   "message.usedUp": {
     "message": "Vaši bodovi su potrošeni, molimo kupite više bodova da biste nastavili sa korišćenjem",
@@ -164,20 +168,20 @@
     "description": "Poruka kada se slika generiše"
   },
   "message.generateFailed": {
-    "message": "Neuspelo generisanje videa",
+    "message": "Generisanje videa nije uspelo",
     "description": "Poruka kada generisanje slike nije uspelo"
   },
   "message.uploadVideoExceed": {
     "message": "Broj otpremljenih slika početnog okvira premašuje limit",
-    "description": "Poruka o grešci kada broj otpremljenih slika početnog okvira premašuje limit"
+    "description": "Poruka greške kada broj otpremljenih slika početnog okvira premašuje limit"
   },
   "message.uploadVideoSizeExceed": {
     "message": "Veličina otpremljenog fajla ne može biti veća od 10MB!",
-    "description": "Poruka o grešci kada veličina otpremljenog fajla premašuje 10MB!"
+    "description": "Poruka greške kada veličina otpremljenog fajla premašuje 10MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Otpremani fajl mora biti u MP4 formatu!",
-    "description": "Poruka o grešci kada otpremani fajl nije u MP4 formatu!"
+    "description": "Poruka greške kada otpremani fajl nije u MP4 formatu!"
   },
   "message.uploadStartEndImageExceed": {
     "message": "Broj slika za početni kadar premašuje ograničenje",
@@ -188,20 +192,20 @@
     "description": "Greška kada broj slika za završni kadar premašuje ograničenje"
   },
   "message.uploadStartImageError": {
-    "message": "Greška pri upload-u slike za početni kadar",
-    "description": "Greška kada upload slike za početni kadar ne uspe"
+    "message": "Greška prilikom učitavanja slike za početni kadar",
+    "description": "Greška kada učitavanje slike za početni kadar ne uspe"
   },
   "message.uploadVideoError": {
-    "message": "Greška pri upload-u videa",
-    "description": "Greška kada upload slike za početni kadar ne uspe"
+    "message": "Greška prilikom učitavanja videa",
+    "description": "Greška kada učitavanje videa ne uspe"
   },
   "message.uploadEndImageError": {
-    "message": "Greška pri upload-u slike za završni kadar",
-    "description": "Greška kada upload slike za završni kadar ne uspe"
+    "message": "Greška prilikom učitavanja slike za završni kadar",
+    "description": "Greška kada učitavanje slike za završni kadar ne uspe"
   },
   "message.uploadDocumentsError": {
-    "message": "Greška pri upload-u dokumenata",
-    "description": "Greška kada upload dokumenata ne uspe"
+    "message": "Greška prilikom učitavanja dokumenata",
+    "description": "Greška kada učitavanje dokumenata ne uspe"
   },
   "message.noOperations": {
     "message": "Nema dostupnih operacija",

@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <h2 class="title font-bold">{{ $t('veo.name.model') }}</h2>
+    <h2 class="title font-bold">{{ $t('veo.name.action') }}</h2>
     <el-select v-model="value" class="value" :placeholder="$t('veo.placeholder.select')" clearable>
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
         <span class="float-left">{{ item.label }}</span>

@@ -39,6 +39,10 @@
     "message": "Imágenes de referencia de inicio y fin",
     "description": "Imágenes de referencia para el video a generar"
   },
+  "name.action": {
+    "message": "Acción",
+    "description": "Lista de acciones disponibles"
+  },
   "name.action3": {
     "message": "Obtener video en 1080p",
     "description": "Imágenes de referencia para el video a generar"
@@ -52,7 +56,7 @@
     "description": "Versión del modelo utilizada para generar el video"
   },
   "name.veoBot": {
-    "message": "Veo Bot",
+    "message": "Google Veo Bot",
     "description": "Nombre del generador de videos Veo"
   },
   "description.imageUrl": {
@@ -64,7 +68,7 @@
     "description": "Descripción del parámetro 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Array de enlaces de imágenes de referencia, el primero es la imagen de inicio y el segundo es la imagen de fin",
+    "message": "Array de enlaces de imágenes de referencia, la primera es la imagen del primer fotograma, seguida de la imagen del último fotograma",
     "description": "Descripción del parámetro 'image_url'"
   },
   "status.pending": {
@@ -72,11 +76,11 @@
     "description": "Estado de espera de la tarea"
   },
   "status.processing": {
-    "message": "En proceso",
-    "description": "Estado de espera de la tarea"
+    "message": "Procesando",
+    "description": "Estado de procesamiento de la tarea"
   },
   "placeholder.paddingNoise": {
-    "message": "Por favor seleccione...",
+    "message": "Seleccione...",
     "description": "Marcador de posición para la entrada de ruido de relleno"
   },
   "placeholder.select": {
@@ -84,7 +88,7 @@
     "description": "Texto de marcador de posición en el campo de selección"
   },
   "placeholder.paddingLevel": {
-    "message": "Por favor seleccione...",
+    "message": "Seleccione...",
     "description": "Marcador de posición para el nivel de relleno"
   },
   "placeholder.prompt": {
@@ -92,7 +96,7 @@
     "description": "Texto de marcador de posición en el campo de sugerencia"
   },
   "placeholder.position": {
-    "message": "Por favor seleccione...",
+    "message": "Seleccione...",
     "description": "Marcador de posición para la entrada de posición"
   },
   "button.generate": {
@@ -152,8 +156,8 @@
     "description": "Mensaje de error al fallar al iniciar la tarea de dibujo"
   },
   "message.usedUp": {
-    "message": "Sus puntos se han agotado, por favor compre más puntos para continuar usando",
-    "description": "Mensaje cuando se han agotado los puntos"
+    "message": "Sus créditos se han agotado, por favor compre más créditos para continuar usando",
+    "description": "Mensaje cuando se han agotado los créditos"
   },
   "message.generating": {
     "message": "Generando...",
@@ -168,8 +172,8 @@
     "description": "Mensaje cuando la generación de la imagen falla"
   },
   "message.uploadVideoExceed": {
-    "message": "Se ha excedido el límite de imágenes de la primera imagen subidas",
-    "description": "Mensaje de error cuando se excede el límite de imágenes de la primera imagen subidas"
+    "message": "Se ha excedido el límite de imágenes del primer fotograma subidas",
+    "description": "Mensaje de error cuando se excede el límite de imágenes del primer fotograma"
   },
   "message.uploadVideoSizeExceed": {
     "message": "¡El tamaño del archivo subido no puede exceder los 10 MB!",
@@ -193,7 +197,7 @@
   },
   "message.uploadVideoError": {
     "message": "Error al subir el video",
-    "description": "Mensaje de error cuando falla la subida del video"
+    "description": "Mensaje de error cuando falla la subida de la imagen de inicio"
   },
   "message.uploadEndImageError": {
     "message": "Error al subir la imagen final",

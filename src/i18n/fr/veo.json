@@ -39,6 +39,10 @@
     "message": "Images de référence de début et de fin",
     "description": "Images de référence pour le vidéo à générer"
   },
+  "name.action": {
+    "message": "Actions",
+    "description": "Liste des actions disponibles"
+  },
   "name.action3": {
     "message": "Obtenir la vidéo en 1080p",
     "description": "Images de référence pour le vidéo à générer"
@@ -52,11 +56,11 @@
     "description": "Version du modèle utilisée pour générer le vidéo"
   },
   "name.veoBot": {
-    "message": "Veo Bot",
-    "description": "Nom du générateur de vidéos Veo"
+    "message": "Google Veo Bot",
+    "description": "Nom du générateur de vidéo Veo"
   },
   "description.imageUrl": {
-    "message": "Dans la tâche de création de vidéo à partir de plusieurs images, il faut télécharger plusieurs images.",
+    "message": "Dans la tâche de création de vidéo avec plusieurs images, il faut télécharger plusieurs images.",
     "description": "Description du paramètre 'imageUrl'"
   },
   "description.prompt": {
@@ -100,11 +104,11 @@
     "description": "Texte du bouton pour générer le vidéo Veo"
   },
   "button.action1": {
-    "message": "Générer vidéo",
+    "message": "Vidéo générée par texte",
     "description": "Texte du bouton pour générer le vidéo Veo"
   },
   "button.action2": {
-    "message": "Générer vidéo à partir d'images",
+    "message": "Vidéo générée par image",
     "description": "Texte du bouton pour générer le vidéo Veo"
   },
   "button.action3": {
@@ -137,7 +141,7 @@
   },
   "message.uploadReferencesError": {
     "message": "Échec du téléchargement des images, veuillez réessayer plus tard",
-    "description": "Message d'erreur lors de l'échec du téléchargement des images"
+    "description": "Message d'erreur lors de l'échec du téléchargement d'images"
   },
   "message.startingTask": {
     "message": "Démarrage de la tâche...",
@@ -152,8 +156,8 @@
     "description": "Message d'erreur lors de l'échec du démarrage de la tâche de dessin"
   },
   "message.usedUp": {
-    "message": "Votre crédit est épuisé, veuillez acheter plus de crédits pour continuer à utiliser",
-    "description": "Message lorsque le crédit est épuisé"
+    "message": "Vos crédits sont épuisés, veuillez acheter plus de crédits pour continuer",
+    "description": "Message lorsque les crédits sont épuisés"
   },
   "message.generating": {
     "message": "Génération en cours...",
@@ -180,12 +184,12 @@
     "description": "Message d'erreur lorsque le fichier téléchargé n'est pas au format MP4 !"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "Le nombre d'images de la première image téléchargée dépasse la limite",
-    "description": "Message d'erreur lorsque le nombre d'images de la première image téléchargée dépasse la limite"
+    "message": "Le nombre d'images de la première image téléchargées dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de la première image téléchargées dépasse la limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Le nombre d'images de la dernière image téléchargée dépasse la limite",
-    "description": "Message d'erreur lorsque le nombre d'images de la première image téléchargée dépasse la limite"
+    "message": "Le nombre d'images de la dernière image téléchargées dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de la première image téléchargées dépasse la limite"
   },
   "message.uploadStartImageError": {
     "message": "Échec du téléchargement de la première image",

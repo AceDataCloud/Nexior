@@ -12,8 +12,8 @@
     "description": "Der Standardmodus des Kling-Videos"
   },
   "name.modePro": {
-    "message": "Hochwertig",
-    "description": "Der Hochwertigkeitsmodus des Kling-Videos"
+    "message": "Hohe Qualität",
+    "description": "Der Hochqualitätsmodus des Kling-Videos"
   },
   "name.failure": {
     "message": "Fehler",
@@ -32,12 +32,16 @@
     "description": "Die Verfolgungs-ID der Aufgabe"
   },
   "name.createdAt": {
-    "message": "Erstellungszeit",
+    "message": "Erstellt am",
     "description": "Datum und Uhrzeit der Erstellung des Kling-Videos"
   },
   "name.startEndImage": {
     "message": "Referenzbilder für Anfang und Ende",
     "description": "Referenzbilder für das zu generierende Video"
+  },
+  "name.action": {
+    "message": "Aktion",
+    "description": "Liste der verfügbaren Aktionen"
   },
   "name.action3": {
     "message": "1080p-Video abrufen",
@@ -52,11 +56,11 @@
     "description": "Die Modellversion, die zur Generierung des Videos verwendet wird"
   },
   "name.veoBot": {
-    "message": "Veo Bot",
+    "message": "Google Veo Bot",
     "description": "Der Name des Veo-Videogenerators"
   },
   "description.imageUrl": {
-    "message": "Bei der Erstellung eines Videos mit mehreren Bildern müssen mehrere Bilder hochgeladen werden.",
+    "message": "Bei der Erstellung eines Videos mit mehreren Bildern muss eine Vielzahl von Bildern hochgeladen werden.",
     "description": "Beschreibung des Parameters 'imageUrl'"
   },
   "description.prompt": {
@@ -64,7 +68,7 @@
     "description": "Beschreibung des Parameters 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Array von Referenzbild-Links, das erste ist das Anfangsbild, das zweite das Endbild",
+    "message": "Array von Links zu Referenzbildern, das erste ist das Anfangsbild, das zweite das Endbild",
     "description": "Beschreibung des Parameters 'image_url'"
   },
   "status.pending": {
@@ -93,7 +97,7 @@
   },
   "placeholder.position": {
     "message": "Bitte auswählen...",
-    "description": "Platzhalter für die Eingabe der Position"
+    "description": "Platzhalter für die Positionseingabe"
   },
   "button.generate": {
     "message": "Generieren",
@@ -141,15 +145,15 @@
   },
   "message.startingTask": {
     "message": "Starte Aufgabe...",
-    "description": "Nachricht beim Starten der Zeichnungsaufgabe"
+    "description": "Nachricht, wenn die Zeichnungsaufgabe beginnt"
   },
   "message.startTaskSuccess": {
     "message": "Generierungsaufgabe erfolgreich gestartet",
-    "description": "Erfolgsmeldung beim erfolgreichen Start der Aufgabe"
+    "description": "Erfolgsmeldung, wenn die Aufgabe erfolgreich gestartet wurde"
   },
   "message.startTaskFailed": {
     "message": "Start der Aufgabe fehlgeschlagen, bitte kontaktieren Sie den Administrator",
-    "description": "Fehlermeldung beim Fehlschlagen des Starts der Zeichnungsaufgabe"
+    "description": "Fehlermeldung, wenn das Starten der Zeichnungsaufgabe fehlschlägt"
   },
   "message.usedUp": {
     "message": "Ihr Guthaben ist aufgebraucht, bitte kaufen Sie mehr Guthaben, um fortzufahren",
@@ -157,15 +161,15 @@
   },
   "message.generating": {
     "message": "Wird generiert...",
-    "description": "Nachricht während der Generierung des Bildes"
+    "description": "Nachricht, während das Bild generiert wird"
   },
   "message.downloadVideo": {
     "message": "Dieses Video herunterladen",
-    "description": "Nachricht während der Generierung des Bildes"
+    "description": "Nachricht, während das Bild generiert wird"
   },
   "message.generateFailed": {
     "message": "Generierung des Videos fehlgeschlagen",
-    "description": "Nachricht beim Fehlschlagen der Bildgenerierung"
+    "description": "Nachricht, wenn die Bildgenerierung fehlschlägt"
   },
   "message.uploadVideoExceed": {
     "message": "Die Anzahl der hochgeladenen Anfangsbildbilder überschreitet das Limit",
