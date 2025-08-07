@@ -1,1 +1,1 @@
-export default ['hailuo.config', 'hailuo.credential', 'hailuo.application', 'hailuo.applications', 'hailuo.tasks'];
+export default ['hailuo.credential', 'hailuo.application', 'hailuo.applications', 'hailuo.tasks'];
