@@ -11,7 +11,6 @@
         </span>
       </div>
       <div class="info">
-        {{ modelValue?.response?.data }}
         <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
           {{ modelValue?.request?.prompt }}
           <span v-if="!modelValue?.response"> - ({{ $t('veo.status.pending') }}) </span>
