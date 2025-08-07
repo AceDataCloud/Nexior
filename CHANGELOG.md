@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 06 Aug 2025 17:27:32 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 07 Aug 2025 10:43:45 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.17.0
+
+Thu, 07 Aug 2025 10:43:45 GMT
+
+### Minor changes
+
+- add veo (1348977728@qq.com)
 
 ## 3.16.1
 
