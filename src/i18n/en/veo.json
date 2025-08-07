@@ -1,0 +1,214 @@
+{
+  "name.taskId": {
+    "message": "Task ID",
+    "description": "The ID of the task"
+  },
+  "name.type": {
+    "message": "Type",
+    "description": "The content type of the Kling video to be generated, such as 'link', 'text', etc."
+  },
+  "name.modeStd": {
+    "message": "Standard",
+    "description": "The standard mode of the Kling video"
+  },
+  "name.modePro": {
+    "message": "High Quality",
+    "description": "The high-quality mode of the Kling video"
+  },
+  "name.failure": {
+    "message": "Failure",
+    "description": "The failure status of the task"
+  },
+  "name.failureReason": {
+    "message": "Failure Reason",
+    "description": "The reason for the task failure"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "The status of the task"
+  },
+  "name.traceId": {
+    "message": "Trace ID",
+    "description": "The trace ID of the task"
+  },
+  "name.createdAt": {
+    "message": "Created At",
+    "description": "The date and time when the Kling video was generated"
+  },
+  "name.startEndImage": {
+    "message": "Start and End Frame Reference Images",
+    "description": "Reference images for the video to be generated"
+  },
+  "name.action3": {
+    "message": "Get 1080p Video From",
+    "description": "Reference images for the video to be generated"
+  },
+  "name.prompt": {
+    "message": "Video Prompt",
+    "description": "The prompt for content input"
+  },
+  "name.model": {
+    "message": "Model Version",
+    "description": "The model version used to generate the video"
+  },
+  "name.veoBot": {
+    "message": "Veo Bot",
+    "description": "The name of the Veo video generator"
+  },
+  "description.imageUrl": {
+    "message": "In multi-image video creation tasks, multiple images must be uploaded.",
+    "description": "Description of the 'imageUrl' parameter"
+  },
+  "description.prompt": {
+    "message": "The prompt words for generating Veo videos",
+    "description": "Description of the 'prompt' parameter"
+  },
+  "description.uploadStartEndImage": {
+    "message": "Array of reference image links, the first is the start frame, followed by the end frame image",
+    "description": "Description of the 'image_url' parameter"
+  },
+  "status.pending": {
+    "message": "Pending",
+    "description": "The waiting status of the task"
+  },
+  "status.processing": {
+    "message": "Processing",
+    "description": "The processing status of the task"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Please select...",
+    "description": "Placeholder for padding noise input"
+  },
+  "placeholder.select": {
+    "message": "Select",
+    "description": "Placeholder text in the selection field"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Please select...",
+    "description": "Placeholder for padding level"
+  },
+  "placeholder.prompt": {
+    "message": "Enter the prompt words for the video style to be generated, e.g., moving",
+    "description": "Placeholder text in the prompt field"
+  },
+  "placeholder.position": {
+    "message": "Please select...",
+    "description": "Placeholder for position input"
+  },
+  "button.generate": {
+    "message": "Generate",
+    "description": "Button text to generate Veo video"
+  },
+  "button.action1": {
+    "message": "Text to Video",
+    "description": "Button text to generate Veo video"
+  },
+  "button.action2": {
+    "message": "Image to Video",
+    "description": "Button text to generate Veo video"
+  },
+  "button.action3": {
+    "message": "Get 1080p",
+    "description": "Button text to generate Veo video"
+  },
+  "button.download": {
+    "message": "Download Video",
+    "description": "Button text to download video"
+  },
+  "button.uploadImageUrl": {
+    "message": "Upload Image",
+    "description": "Button text to upload image"
+  },
+  "button.uploadVideoUrl": {
+    "message": "Upload Video",
+    "description": "Button text to upload video"
+  },
+  "button.uploadReferences": {
+    "message": "Upload",
+    "description": "Button text that allows users to upload references"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "You can upload a maximum of 2 images",
+    "description": "Error message when the number of uploaded images exceeds the limit"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Images uploaded successfully",
+    "description": "Success message when images are uploaded successfully"
+  },
+  "message.uploadReferencesError": {
+    "message": "Image upload failed, please try again later",
+    "description": "Error message when image upload fails"
+  },
+  "message.startingTask": {
+    "message": "Starting task...",
+    "description": "Message when the drawing task starts"
+  },
+  "message.startTaskSuccess": {
+    "message": "Task initiated successfully",
+    "description": "Success message when the task is successfully started"
+  },
+  "message.startTaskFailed": {
+    "message": "Failed to initiate task, please contact the administrator",
+    "description": "Error message when starting the drawing task fails"
+  },
+  "message.usedUp": {
+    "message": "Your credits are exhausted, please purchase more credits to continue using",
+    "description": "Message when credits are exhausted"
+  },
+  "message.generating": {
+    "message": "Generating...",
+    "description": "Message when the image is being generated"
+  },
+  "message.downloadVideo": {
+    "message": "Download this video",
+    "description": "Message when the image is being generated"
+  },
+  "message.generateFailed": {
+    "message": "Video generation failed",
+    "description": "Message when image generation fails"
+  },
+  "message.uploadVideoExceed": {
+    "message": "The number of uploaded start frame images exceeds the limit",
+    "description": "Error message when the number of uploaded start frame images exceeds the limit"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Uploaded file size must not exceed 10MB!",
+    "description": "Error message when the uploaded file size exceeds 10MB!"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Uploaded file must be in MP4 format!",
+    "description": "Error message when the uploaded file must be in MP4 format!"
+  },
+  "message.uploadStartEndImageExceed": {
+    "message": "The number of uploaded start frame images exceeds the limit",
+    "description": "Error message when the number of uploaded start frame images exceeds the limit"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "The number of uploaded end frame images exceeds the limit",
+    "description": "Error message when the number of uploaded end frame images exceeds the limit"
+  },
+  "message.uploadStartImageError": {
+    "message": "Failed to upload start frame image",
+    "description": "Error message when failing to upload the start frame image"
+  },
+  "message.uploadVideoError": {
+    "message": "Failed to upload video",
+    "description": "Error message when failing to upload the video"
+  },
+  "message.uploadEndImageError": {
+    "message": "Failed to upload end frame image",
+    "description": "Error message when failing to upload the end frame image"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Failed to upload document",
+    "description": "Error message when failing to upload the document"
+  },
+  "message.noOperations": {
+    "message": "No available operations",
+    "description": "Message when there are no available operations"
+  },
+  "message.noTasks": {
+    "message": "No historical tasks, please click on the left to generate a video",
+    "description": "Message when there are no tasks"
+  }
+}

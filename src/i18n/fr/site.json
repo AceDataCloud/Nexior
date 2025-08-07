@@ -47,6 +47,10 @@
     "message": "Chat",
     "description": "Affiché comme titre dans la zone d'édition"
   },
+  "field.featuresVeo": {
+    "message": "Veo",
+    "description": "Affiché comme titre dans la zone d'édition"
+  },
   "field.featuresGrok": {
     "message": "Grok",
     "description": "Affiché comme titre dans la zone d'édition"
@@ -189,15 +193,15 @@
   },
   "placeholder.keywords": {
     "message": "Veuillez entrer les mots-clés du site",
-    "description": "Affiché comme titre dans la zone d'édition"
+    "description": "Texte affiché dans le titre de la zone d'édition"
   },
   "placeholder.editDistributionDefaultInviterId": {
     "message": "Veuillez entrer l'ID de l'inviteur par défaut",
-    "description": "Affiché comme titre dans la zone d'édition"
+    "description": "Texte affiché dans le titre de la zone d'édition"
   },
   "placeholder.editDistributionForceInviterId": {
     "message": "Veuillez entrer l'ID de l'inviteur obligatoire",
-    "description": "Affiché comme titre dans la zone d'édition"
+    "description": "Texte affiché dans le titre de la zone d'édition"
   },
   "message.uploadImageExceed": {
     "message": "L'image téléchargée dépasse la limite",
@@ -228,15 +232,15 @@
     "description": "Alerte pour conserver au moins un administrateur"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "L'ID utilisateur de l'inviteur par défaut. Si le lien de distribution ne contient pas le paramètre inviter_id, cet ID utilisateur sera utilisé par défaut comme invitateur.",
+    "message": "ID utilisateur de l'inviteur par défaut. Si le lien de distribution ne contient pas le paramètre inviter_id, cet ID utilisateur sera utilisé par défaut comme invitateur.",
     "description": "Alerte pour l'ID de l'inviteur par défaut"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "L'ID utilisateur de l'inviteur obligatoire. Si cet ID est défini, il sera utilisé comme invitateur, que le lien de distribution contienne ou non le paramètre inviter_id.",
+    "message": "ID utilisateur de l'inviteur obligatoire. Si cet ID est défini, quel que soit le lien de distribution, cet ID utilisateur sera utilisé comme invitateur.",
     "description": "Alerte pour l'ID de l'inviteur obligatoire"
   },
   "message.originTip": {
-    "message": "Nom de domaine du site, la configuration du site est liée au nom de domaine, le nom de domaine du site ne peut pas être modifié.",
+    "message": "Nom de domaine du site. La configuration du site est liée au nom de domaine et ne peut pas être modifiée.",
     "description": "Alerte pour le nom de domaine du site"
   },
   "message.titleTip": {
@@ -256,11 +260,11 @@
     "description": "Alerte pour le favicon du site"
   },
   "message.adminsTip": {
-    "message": "ID des administrateurs du site, par défaut, l'utilisateur qui crée le site pour la première fois devient administrateur, seuls les administrateurs du site peuvent gérer le site.",
+    "message": "ID des administrateurs du site. Par défaut, l'utilisateur qui crée le site pour la première fois devient administrateur. Seuls les administrateurs du site peuvent gérer le site.",
     "description": "Alerte pour les administrateurs du site"
   },
   "message.adminsTip2": {
-    "message": "Vous pouvez ajouter ou supprimer des ID d'administrateurs ici, vous pouvez consulter les ID d'utilisateur sur https://auth.acedata.cloud",
+    "message": "Vous pouvez ajouter ou supprimer des ID d'administrateurs ici. Vous pouvez consulter les ID d'utilisateur sur https://auth.acedata.cloud",
     "description": "Alerte pour les administrateurs du site"
   },
   "message.keywordsTip": {
@@ -268,7 +272,7 @@
     "description": "Alerte pour les mots-clés du site"
   },
   "message.keywordsTip2": {
-    "message": "Vous pouvez ajouter ou supprimer des mots-clés du site ici, plus les mots-clés sont précis, mieux c'est pour l'optimisation SEO.",
+    "message": "Vous pouvez ajouter ou supprimer des mots-clés du site ici. Plus les mots-clés sont précis, mieux c'est pour l'optimisation SEO.",
     "description": "Alerte pour les mots-clés du site"
   },
   "message.featuresChat": {
@@ -298,6 +302,10 @@
   "message.featuresQrart": {
     "message": "Activer ou désactiver le module de fonction Qrart.",
     "description": "Description de la fonction Qrart"
+  },
+  "message.featuresVeo": {
+    "message": "Activer ou désactiver le module de fonction Veo.",
+    "description": "Description de la fonction Veo"
   },
   "message.featuresSuno": {
     "message": "Activer ou désactiver le module de fonction Suno.",
@@ -333,10 +341,10 @@
   },
   "message.featuresSupport": {
     "message": "Activer ou désactiver le support client",
-    "description": "Description de la fonction Support"
+    "description": "Description de la fonctionnalité de support"
   },
   "message.featuresI18n": {
-    "message": "Activer ou désactiver le support multilingue. Une fois désactivé, l'utilisateur ne peut utiliser que la langue par défaut.",
+    "message": "Activer ou désactiver le support multilingue. Une fois désactivé, l'utilisateur ne pourra utiliser que la langue par défaut.",
     "description": "Description du support multilingue"
   },
   "button.upload": {

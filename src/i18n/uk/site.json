@@ -47,6 +47,10 @@
     "message": "Чат",
     "description": "Відображається в полі редагування заголовка"
   },
+  "field.featuresVeo": {
+    "message": "Veo",
+    "description": "Відображається в полі редагування заголовка"
+  },
   "field.featuresGrok": {
     "message": "Grok",
     "description": "Відображається в полі редагування заголовка"
@@ -92,7 +96,7 @@
     "description": "Відображається в полі редагування заголовка"
   },
   "field.featuresHeadshots": {
-    "message": "AI портрети",
+    "message": "AI фото на документи",
     "description": "Відображається в полі редагування заголовка"
   },
   "field.featuresSuno": {
@@ -189,151 +193,155 @@
   },
   "placeholder.keywords": {
     "message": "Введіть ключові слова сайту",
-    "description": "Відображається в полі редагування заголовка"
+    "description": "Текст, що відображається в заголовку редактора"
   },
   "placeholder.editDistributionDefaultInviterId": {
-    "message": "Введіть ID запрошувача за замовчуванням",
-    "description": "展示在编辑框的标题"
+    "message": "Введіть ID за замовчуванням запрошувача",
+    "description": "Текст, що відображається в заголовку редактора"
   },
   "placeholder.editDistributionForceInviterId": {
     "message": "Введіть ID обов'язкового запрошувача",
-    "description": "展示在编辑框的标题"
+    "description": "Текст, що відображається в заголовку редактора"
   },
   "message.uploadImageExceed": {
     "message": "Завантажене зображення перевищує обмеження",
-    "description": "上传图片超过限制的提示"
+    "description": "Повідомлення про перевищення обмеження при завантаженні зображення"
   },
   "message.uploadImageError": {
     "message": "Помилка завантаження зображення",
-    "description": "上传图片错误的提示"
+    "description": "Повідомлення про помилку при завантаженні зображення"
   },
   "message.editLogoTip": {
     "message": "Рекомендований розмір: 200*60px",
-    "description": "上传图片的提示语言"
+    "description": "Мова підказки для завантаження зображення"
   },
   "message.editQRTip": {
     "message": "Рекомендований розмір: 200*200px",
-    "description": "上传图片的提示语言"
+    "description": "Мова підказки для завантаження зображення"
   },
   "message.editFaviconTip": {
     "message": "Рекомендований розмір: 32*32px",
-    "description": "上传图片的提示语言"
+    "description": "Мова підказки для завантаження зображення"
   },
   "message.editUrl": {
     "message": "Введіть посилання",
-    "description": "请输入链接的提示"
+    "description": "Підказка для введення посилання"
   },
   "message.atLeastOneAdmin": {
     "message": "Принаймні один адміністратор має залишитися",
-    "description": "至少保留一个管理员的提示"
+    "description": "Підказка про необхідність залишити принаймні одного адміністратора"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "ID користувача запрошувача за замовчуванням. Якщо посилання на розподіл не містить параметра inviter_id, то за замовчуванням використовується цей ID користувача як запрошувач.",
-    "description": "默认邀请人ID的提示"
+    "message": "ID користувача за замовчуванням запрошувача. Якщо посилання на розподіл не містить параметра inviter_id, то за замовчуванням використовується цей ID як запрошувач.",
+    "description": "Підказка про ID запрошувача за замовчуванням"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID користувача обов'язкового запрошувача. Якщо цей ID встановлено, незалежно від того, чи містить посилання на розподіл параметр inviter_id, обов'язково використовується цей ID користувача як запрошувач.",
-    "description": "强制邀请人ID的提示"
+    "message": "ID користувача обов'язкового запрошувача. Якщо цей ID встановлено, незалежно від того, чи містить посилання на розподіл параметр inviter_id, обов'язково використовується цей ID як запрошувач.",
+    "description": "Підказка про ID обов'язкового запрошувача"
   },
   "message.originTip": {
-    "message": "Домен сайту, конфігурація сайту прив'язана до домену, домен сайту не може бути змінений.",
-    "description": "站点域名的提示"
+    "message": "Домен сайту, конфігурація сайту прив'язана до домену, домен сайту не можна змінити.",
+    "description": "Підказка про домен сайту"
   },
   "message.titleTip": {
-    "message": "Назва сайту, відображається на вкладці браузера.",
-    "description": "站点标题的提示"
+    "message": "Заголовок сайту, відображається на вкладці браузера.",
+    "description": "Підказка про заголовок сайту"
   },
   "message.descriptionTip": {
     "message": "Опис сайту, розташований у метаданих сайту, використовується для SEO оптимізації сайту.",
-    "description": "站点描述的提示"
+    "description": "Підказка про опис сайту"
   },
   "message.logoTip": {
     "message": "Логотип сайту, відображається у верхній частині меню сайту, коли меню розгорнуте.",
-    "description": "站点 Logo 的提示"
+    "description": "Підказка про логотип сайту"
   },
   "message.faviconTip": {
     "message": "Favicon сайту, відображається на вкладці браузера.",
-    "description": "站点 Favicon 的提示"
+    "description": "Підказка про Favicon сайту"
   },
   "message.adminsTip": {
-    "message": "ID адміністраторів сайту, за замовчуванням перший користувач, який створює цей сайт, стає адміністратором, тільки адміністратори сайту можуть керувати сайтом.",
-    "description": "站点管理员的提示"
+    "message": "ID адміністраторів сайту, за замовчуванням перший користувач, який створює сайт, стає адміністратором, тільки адміністратори сайту можуть керувати сайтом.",
+    "description": "Підказка про адміністраторів сайту"
   },
   "message.adminsTip2": {
     "message": "Тут можна додавати або видаляти ID адміністраторів, можна переглянути ID користувачів на https://auth.acedata.cloud",
-    "description": "站点管理员的提示"
+    "description": "Підказка про адміністраторів сайту"
   },
   "message.keywordsTip": {
     "message": "Ключові слова сайту, розташовані у метаданих сайту, використовуються для SEO оптимізації сайту.",
-    "description": "站点关键词的提示"
+    "description": "Підказка про ключові слова сайту"
   },
   "message.keywordsTip2": {
     "message": "Тут можна додавати або видаляти ключові слова сайту, чим точніші ключові слова, тим краще для SEO оптимізації.",
-    "description": "站点关键词的提示"
+    "description": "Підказка про ключові слова сайту"
   },
   "message.featuresChat": {
     "message": "Увімкнути або вимкнути модуль функції Chat.",
-    "description": "Chat 功能的描述"
+    "description": "Опис функції Chat"
   },
   "message.featuresGrok": {
     "message": "Увімкнути або вимкнути модуль функції Grok.",
-    "description": "Grok 功能的描述"
+    "description": "Опис функції Grok"
   },
   "message.featuresDeepseek": {
     "message": "Увімкнути або вимкнути модуль функції Deepseek.",
-    "description": "Deepseek 功能的描述"
+    "description": "Опис функції Deepseek"
   },
   "message.featuresChatgpt": {
     "message": "Увімкнути або вимкнути модуль функції ChatGPT.",
-    "description": "ChatGPT 功能的描述"
+    "description": "Опис функції ChatGPT"
   },
   "message.featuresMidjourney": {
     "message": "Увімкнути або вимкнути модуль функції Midjourney.",
-    "description": "Midjourney 功能的描述"
+    "description": "Опис функції Midjourney"
   },
   "message.featuresChatdoc": {
     "message": "Увімкнути або вимкнути модуль функції Chatdoc.",
-    "description": "Chatdoc 功能的描述"
+    "description": "Опис функції Chatdoc"
   },
   "message.featuresQrart": {
     "message": "Увімкнути або вимкнути модуль функції Qrart.",
-    "description": "Qrart 功能的描述"
+    "description": "Опис функції Qrart"
+  },
+  "message.featuresVeo": {
+    "message": "Увімкнути або вимкнути модуль функції Veo.",
+    "description": "Опис функції Veo"
   },
   "message.featuresSuno": {
     "message": "Увімкнути або вимкнути модуль функції Suno.",
-    "description": "Suno 功能的描述"
+    "description": "Опис функції Suno"
   },
   "message.featuresPixverse": {
     "message": "Увімкнути або вимкнути модуль функції Pixverse.",
-    "description": "Pixverse 功能的描述"
+    "description": "Опис функції Pixverse"
   },
   "message.featuresFlux": {
     "message": "Увімкнути або вимкнути модуль функції FLux.",
-    "description": "FLux 功能的描述"
+    "description": "Опис функції FLux"
   },
   "message.featuresLuma": {
     "message": "Увімкнути або вимкнути модуль функції Luma.",
-    "description": "Luma 功能的描述"
+    "description": "Опис функції Luma"
   },
   "message.featuresPika": {
     "message": "Увімкнути або вимкнути модуль функції Pika.",
-    "description": "Pika 功能的描述"
+    "description": "Опис функції Pika"
   },
   "message.featuresKling": {
     "message": "Увімкнути або вимкнути модуль функції Kling.",
-    "description": "Kling 功能的描述"
+    "description": "Опис функції Kling"
   },
   "message.featuresHailuo": {
     "message": "Увімкнути або вимкнути модуль функції Hailuo.",
-    "description": "Hailuo 功能的描述"
+    "description": "Опис функції Hailuo"
   },
   "message.featuresHeadshots": {
     "message": "Увімкнути або вимкнути модуль функції AI документальних фото.",
-    "description": "AI证件照 功能的描述"
+    "description": "Опис функції AI документальних фото"
   },
   "message.featuresSupport": {
     "message": "Увімкнути або вимкнути підтримку клієнтів",
-    "description": "Support 功能的描述"
+    "description": "Опис функції підтримки"
   },
   "message.featuresI18n": {
     "message": "Увімкнути або вимкнути підтримку багатомовності, після вимкнення користувач зможе використовувати лише мову за замовчуванням.",

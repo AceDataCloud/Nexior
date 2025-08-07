@@ -1,0 +1,214 @@
+{
+  "name.taskId": {
+    "message": "ID de tarea",
+    "description": "ID de la tarea"
+  },
+  "name.type": {
+    "message": "Tipo",
+    "description": "Tipo de contenido del video Kling a generar, como 'enlace', 'texto', etc."
+  },
+  "name.modeStd": {
+    "message": "Estándar",
+    "description": "Modo estándar del video Kling"
+  },
+  "name.modePro": {
+    "message": "Alta calidad",
+    "description": "Modo de alta calidad del video Kling"
+  },
+  "name.failure": {
+    "message": "Fallo",
+    "description": "Estado de fallo de la tarea"
+  },
+  "name.failureReason": {
+    "message": "Razón del fallo",
+    "description": "Razón del fallo de la tarea"
+  },
+  "name.status": {
+    "message": "Estado",
+    "description": "Estado de la tarea"
+  },
+  "name.traceId": {
+    "message": "ID de seguimiento",
+    "description": "ID de seguimiento de la tarea"
+  },
+  "name.createdAt": {
+    "message": "Fecha de creación",
+    "description": "Fecha y hora en que se generó el video Kling"
+  },
+  "name.startEndImage": {
+    "message": "Imágenes de referencia de inicio y fin",
+    "description": "Imágenes de referencia para el video a generar"
+  },
+  "name.action3": {
+    "message": "Obtener video en 1080p",
+    "description": "Imágenes de referencia para el video a generar"
+  },
+  "name.prompt": {
+    "message": "Sugerencia de video",
+    "description": "Sugerencia para la entrada de contenido"
+  },
+  "name.model": {
+    "message": "Versión del modelo",
+    "description": "Versión del modelo utilizada para generar el video"
+  },
+  "name.veoBot": {
+    "message": "Veo Bot",
+    "description": "Nombre del generador de videos Veo"
+  },
+  "description.imageUrl": {
+    "message": "En la tarea de crear un video con múltiples imágenes, se deben subir varias imágenes.",
+    "description": "Descripción del parámetro 'imageUrl'"
+  },
+  "description.prompt": {
+    "message": "Palabras clave para generar el video Veo",
+    "description": "Descripción del parámetro 'prompt'"
+  },
+  "description.uploadStartEndImage": {
+    "message": "Array de enlaces de imágenes de referencia, el primero es la imagen de inicio y el segundo es la imagen de fin",
+    "description": "Descripción del parámetro 'image_url'"
+  },
+  "status.pending": {
+    "message": "Pendiente",
+    "description": "Estado de espera de la tarea"
+  },
+  "status.processing": {
+    "message": "En proceso",
+    "description": "Estado de espera de la tarea"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Por favor seleccione...",
+    "description": "Marcador de posición para la entrada de ruido de relleno"
+  },
+  "placeholder.select": {
+    "message": "Seleccionar",
+    "description": "Texto de marcador de posición en el campo de selección"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Por favor seleccione...",
+    "description": "Marcador de posición para el nivel de relleno"
+  },
+  "placeholder.prompt": {
+    "message": "Ingrese las palabras clave para el estilo del video a generar, por ejemplo: en movimiento",
+    "description": "Texto de marcador de posición en el campo de sugerencia"
+  },
+  "placeholder.position": {
+    "message": "Por favor seleccione...",
+    "description": "Marcador de posición para la entrada de posición"
+  },
+  "button.generate": {
+    "message": "Generar",
+    "description": "Texto del botón para generar el video Veo"
+  },
+  "button.action1": {
+    "message": "Generar video de texto",
+    "description": "Texto del botón para generar el video Veo"
+  },
+  "button.action2": {
+    "message": "Generar video de imagen",
+    "description": "Texto del botón para generar el video Veo"
+  },
+  "button.action3": {
+    "message": "Obtener 1080p",
+    "description": "Texto del botón para generar el video Veo"
+  },
+  "button.download": {
+    "message": "Descargar video",
+    "description": "Texto del botón para descargar el video"
+  },
+  "button.uploadImageUrl": {
+    "message": "Subir imagen",
+    "description": "Texto del botón para subir imágenes"
+  },
+  "button.uploadVideoUrl": {
+    "message": "Subir video",
+    "description": "Texto del botón para subir videos"
+  },
+  "button.uploadReferences": {
+    "message": "Subir",
+    "description": "Texto del botón que permite al usuario subir referencias"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Se pueden subir un máximo de 2 imágenes",
+    "description": "Mensaje de error cuando se excede el límite de imágenes subidas"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Imágenes subidas con éxito",
+    "description": "Mensaje de éxito cuando las imágenes se suben correctamente"
+  },
+  "message.uploadReferencesError": {
+    "message": "Error al subir imágenes, por favor intente de nuevo más tarde",
+    "description": "Mensaje de error cuando la subida de imágenes falla"
+  },
+  "message.startingTask": {
+    "message": "Iniciando tarea...",
+    "description": "Mensaje al comenzar la tarea de dibujo"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tarea de generación iniciada con éxito",
+    "description": "Mensaje de éxito al iniciar la tarea"
+  },
+  "message.startTaskFailed": {
+    "message": "Error al iniciar la tarea, por favor contacte al administrador",
+    "description": "Mensaje de error al fallar al iniciar la tarea de dibujo"
+  },
+  "message.usedUp": {
+    "message": "Sus puntos se han agotado, por favor compre más puntos para continuar usando",
+    "description": "Mensaje cuando se han agotado los puntos"
+  },
+  "message.generating": {
+    "message": "Generando...",
+    "description": "Mensaje mientras se genera la imagen"
+  },
+  "message.downloadVideo": {
+    "message": "Descargar este video",
+    "description": "Mensaje mientras se genera la imagen"
+  },
+  "message.generateFailed": {
+    "message": "Error al generar el video",
+    "description": "Mensaje cuando la generación de la imagen falla"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Se ha excedido el límite de imágenes de la primera imagen subidas",
+    "description": "Mensaje de error cuando se excede el límite de imágenes de la primera imagen subidas"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "¡El tamaño del archivo subido no puede exceder los 10 MB!",
+    "description": "Mensaje de error cuando el tamaño del archivo subido excede los 10 MB"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "¡El archivo subido debe estar en formato MP4!",
+    "description": "Mensaje de error cuando el archivo subido no está en formato MP4"
+  },
+  "message.uploadStartEndImageExceed": {
+    "message": "La cantidad de imágenes de inicio excede el límite",
+    "description": "Mensaje de error cuando la cantidad de imágenes de inicio excede el límite"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "La cantidad de imágenes finales excede el límite",
+    "description": "Mensaje de error cuando la cantidad de imágenes finales excede el límite"
+  },
+  "message.uploadStartImageError": {
+    "message": "Error al subir la imagen de inicio",
+    "description": "Mensaje de error cuando falla la subida de la imagen de inicio"
+  },
+  "message.uploadVideoError": {
+    "message": "Error al subir el video",
+    "description": "Mensaje de error cuando falla la subida del video"
+  },
+  "message.uploadEndImageError": {
+    "message": "Error al subir la imagen final",
+    "description": "Mensaje de error cuando falla la subida de la imagen final"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Error al subir el documento",
+    "description": "Mensaje de error cuando falla la subida del documento"
+  },
+  "message.noOperations": {
+    "message": "No hay operaciones disponibles",
+    "description": "Mensaje cuando no hay operaciones disponibles"
+  },
+  "message.noTasks": {
+    "message": "No hay tareas históricas, por favor haga clic en el lado izquierdo para generar video",
+    "description": "Mensaje cuando no hay tareas"
+  }
+}

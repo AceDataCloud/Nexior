@@ -73,7 +73,11 @@
   },
   "name.startImage": {
     "message": "Referentna slika prve sličice",
-    "description": "Referentna slika za video koji treba generisati"
+    "description": "Referentna slika za generisanje videa"
+  },
+  "name.aspectRatio": {
+    "message": "Odnos širine i visine",
+    "description": "Odnos širine i visine videa koji treba generisati"
   },
   "name.videoUrl": {
     "message": "Prilagođeni video",
@@ -92,7 +96,7 @@
     "description": "Verzija modela koja se koristi za generisanje videa"
   },
   "name.seed": {
-    "message": "Semenski",
+    "message": "Seme",
     "description": "Nasumično seme za generisanje videa"
   },
   "name.mode": {
@@ -109,14 +113,14 @@
   },
   "name.pixverseBot": {
     "message": "Pixverse Bot",
-    "description": "Naziv Pixverse generatora videa"
+    "description": "Ime Pixverse generatora videa"
   },
   "description.ingredients": {
     "message": "Ako želite da otpremite više slika za generisanje svog videa, uključite ovu opciju.",
     "description": "Opis parametra 'ingredients'"
   },
   "description.imageUrl": {
-    "message": "U zadatku za kreiranje videa sa više slika, potrebno je otpremiti više slika.",
+    "message": "U zadatku za kreiranje videa sa više slika, mora se otpremiti više slika.",
     "description": "Opis parametra 'imageUrl'"
   },
   "description.prompt": {
@@ -125,7 +129,7 @@
   },
   "description.negativePrompt": {
     "message": "Negativni tekstualni uputstvo, opcionalno, ne sme preći 200 karaktera",
-    "description": "Opis parametra 'negativePrompt'"
+    "description": "Opis parametra 'prompt'"
   },
   "description.uploadStartImage": {
     "message": "Otpremite sliku prve sličice kao referencu, konačni video će se oslanjati na prvu sličicu za generisanje",
@@ -164,7 +168,7 @@
     "description": "Placeholder za uputstvo"
   },
   "placeholder.negativePrompt": {
-    "message": "Unesite negativno uputstvo za stil videa koje ne prelazi 200 karaktera",
+    "message": "Unesite negativno uputstvo za stil videa, ne više od 200 karaktera",
     "description": "Placeholder za negativno uputstvo"
   },
   "placeholder.position": {
@@ -184,8 +188,8 @@
     "description": "Placeholder za unos oblika oznake"
   },
   "placeholder.rotate": {
-    "message": "Izaberite...",
-    "description": "Placeholder za unos rotacije"
+    "message": "Изаберите...",
+    "description": "Плочица за унос ротације"
   },
   "placeholder.subMarker": {
     "message": "Изаберите...",
@@ -220,7 +224,7 @@
     "description": "Порука о грешци када број отпремљених слика пређе лимит"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Успешно отпремљена слика",
+    "message": "Слика успешно отпремљена",
     "description": "Порука о успеху када је слика успешно отпремљена"
   },
   "message.uploadReferencesError": {
@@ -240,8 +244,8 @@
     "description": "Порука о грешци када покретање задатка цртања не успе"
   },
   "message.usedUp": {
-    "message": "Ваши поени су исцрпљени, купите више поена да бисте наставили",
-    "description": "Порука када су поени исцрпљени"
+    "message": "Ваши поени су истрошени, купите више поена да бисте наставили",
+    "description": "Порука када су поени истрошени"
   },
   "message.generating": {
     "message": "Генерише се...",
@@ -264,7 +268,7 @@
     "description": "Порука о грешци када број отпремљених слика прве слике пређе лимит"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Величина отпремљеног фајла не може бити већа од 10MB!",
+    "message": "Величина отпремљеног фајла не може прећи 10MB!",
     "description": "Порука о грешци када величина отпремљеног фајла пређе 10MB!"
   },
   "message.uploadVideoTypeFailed": {
@@ -300,7 +304,7 @@
     "description": "Порука када нема доступних операција"
   },
   "message.noTasks": {
-    "message": "Нема историје задатака, кликните лево да генеришете видео",
+    "message": "Нема историје задатака, кликните лево за генерисање видеа",
     "description": "Порука када нема задатака"
   }
 }

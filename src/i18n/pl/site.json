@@ -47,6 +47,10 @@
     "message": "Czat",
     "description": "Wyświetlane w polu edycji tytuł"
   },
+  "field.featuresVeo": {
+    "message": "Veo",
+    "description": "Wyświetlane w polu edycji tytuł"
+  },
   "field.featuresGrok": {
     "message": "Grok",
     "description": "Wyświetlane w polu edycji tytuł"
@@ -92,7 +96,7 @@
     "description": "Wyświetlane w polu edycji tytuł"
   },
   "field.featuresHeadshots": {
-    "message": "AI zdjęcia identyfikacyjne",
+    "message": "Zdjęcia AI",
     "description": "Wyświetlane w polu edycji tytuł"
   },
   "field.featuresSuno": {
@@ -189,15 +193,15 @@
   },
   "placeholder.keywords": {
     "message": "Wprowadź słowa kluczowe witryny",
-    "description": "Wyświetlane w polu edycji tytuł"
+    "description": "Wyświetlane w tytule pola edycji"
   },
   "placeholder.editDistributionDefaultInviterId": {
     "message": "Wprowadź domyślne ID zapraszającego",
-    "description": "Wyświetlane w tytule edytora"
+    "description": "Wyświetlane w tytule pola edycji"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "Wprowadź wymuszone ID zapraszającego",
-    "description": "Wyświetlane w tytule edytora"
+    "message": "Wprowadź ID zapraszającego z wymuszeniem",
+    "description": "Wyświetlane w tytule pola edycji"
   },
   "message.uploadImageExceed": {
     "message": "Przekroczono limit przesyłania obrazu",
@@ -224,16 +228,16 @@
     "description": "Wskazówka do wprowadzenia linku"
   },
   "message.atLeastOneAdmin": {
-    "message": "Musisz zachować przynajmniej jednego administratora",
-    "description": "Powiadomienie o konieczności posiadania przynajmniej jednego administratora"
+    "message": "Zachowaj przynajmniej jednego administratora",
+    "description": "Powiadomienie o konieczności zachowania przynajmniej jednego administratora"
   },
   "message.distributionDefaultInviterIdTip": {
     "message": "ID użytkownika domyślnego zapraszającego. Jeśli link dystrybucji nie zawiera parametru inviter_id, domyślnie używane jest to ID jako zapraszający.",
     "description": "Wskazówka dotycząca domyślnego ID zapraszającego"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID użytkownika wymuszonego zapraszającego. Jeśli to ID jest ustawione, niezależnie od tego, czy link dystrybucji zawiera parametr inviter_id, to ID będzie używane jako zapraszający.",
-    "description": "Wskazówka dotycząca wymuszonego ID zapraszającego"
+    "message": "ID użytkownika zapraszającego z wymuszeniem. Jeśli to ID jest ustawione, niezależnie od tego, czy link dystrybucji zawiera parametr inviter_id, to ID będzie używane jako zapraszający.",
+    "description": "Wskazówka dotycząca ID zapraszającego z wymuszeniem"
   },
   "message.originTip": {
     "message": "Domena witryny, konfiguracja witryny jest powiązana z domeną, domena witryny nie może być zmieniana.",
@@ -253,14 +257,14 @@
   },
   "message.faviconTip": {
     "message": "Favicon witryny, wyświetlany na karcie przeglądarki.",
-    "description": "Wskazówka dotycząca faviconu witryny"
+    "description": "Wskazówka dotycząca favicon witryny"
   },
   "message.adminsTip": {
     "message": "ID administratora witryny, domyślnie pierwszym użytkownikiem, który utworzy tę witrynę, będzie administrator. Tylko administratorzy witryny mogą zarządzać witryną.",
     "description": "Wskazówka dotycząca administratorów witryny"
   },
   "message.adminsTip2": {
-    "message": "Możesz tutaj dodawać lub usuwać ID administratorów, ID użytkowników można zobaczyć na https://auth.acedata.cloud",
+    "message": "Można tutaj dodawać lub usuwać ID administratorów, ID użytkowników można sprawdzić na https://auth.acedata.cloud",
     "description": "Wskazówka dotycząca administratorów witryny"
   },
   "message.keywordsTip": {
@@ -268,7 +272,7 @@
     "description": "Wskazówka dotycząca słów kluczowych witryny"
   },
   "message.keywordsTip2": {
-    "message": "Możesz tutaj dodawać lub usuwać słowa kluczowe witryny. Im bardziej precyzyjne słowa kluczowe, tym lepsza optymalizacja SEO.",
+    "message": "Można tutaj dodawać lub usuwać słowa kluczowe witryny. Im bardziej precyzyjne słowa kluczowe, tym lepsza optymalizacja SEO.",
     "description": "Wskazówka dotycząca słów kluczowych witryny"
   },
   "message.featuresChat": {
@@ -298,6 +302,10 @@
   "message.featuresQrart": {
     "message": "Włącz lub wyłącz moduł funkcji Qrart.",
     "description": "Opis funkcji Qrart"
+  },
+  "message.featuresVeo": {
+    "message": "Włącz lub wyłącz moduł funkcji Veo.",
+    "description": "Opis funkcji Veo"
   },
   "message.featuresSuno": {
     "message": "Włącz lub wyłącz moduł funkcji Suno.",
@@ -336,7 +344,7 @@
     "description": "Opis funkcji wsparcia"
   },
   "message.featuresI18n": {
-    "message": "Włącz lub wyłącz wsparcie dla wielu języków, po wyłączeniu użytkownik może korzystać tylko z domyślnego języka.",
+    "message": "Włącz lub wyłącz wsparcie dla wielu języków. Po wyłączeniu użytkownik może korzystać tylko z domyślnego języka.",
     "description": "Opis wsparcia dla wielu języków"
   },
   "button.upload": {

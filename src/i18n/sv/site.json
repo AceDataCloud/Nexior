@@ -4,7 +4,7 @@
     "description": "Visas i redigeringsrutan som titeln"
   },
   "field.origin": {
-    "message": "Webbplatsens domännamn",
+    "message": "Webbplatsens domän",
     "description": "Visas i redigeringsrutan som titeln"
   },
   "field.description": {
@@ -45,6 +45,10 @@
   },
   "field.featuresChat": {
     "message": "Chat",
+    "description": "Visas i redigeringsrutan som titeln"
+  },
+  "field.featuresVeo": {
+    "message": "Veo",
     "description": "Visas i redigeringsrutan som titeln"
   },
   "field.featuresGrok": {
@@ -132,7 +136,7 @@
     "description": "Visas i redigeringsrutan som titeln"
   },
   "title.editOrigin": {
-    "message": "Redigera domännamn",
+    "message": "Redigera domän",
     "description": "Visas i redigeringsrutan som titeln"
   },
   "title.editKeywords": {
@@ -176,7 +180,7 @@
     "description": "Visas i redigeringsrutan som titeln"
   },
   "placeholder.origin": {
-    "message": "Ange webbplatsens domännamn",
+    "message": "Ange webbplatsens domän",
     "description": "Visas i redigeringsrutan som titeln"
   },
   "placeholder.editUrl": {
@@ -189,7 +193,7 @@
   },
   "placeholder.keywords": {
     "message": "Ange webbplatsens nyckelord",
-    "description": "Visas i redigeringsrutan som titeln"
+    "description": "Visas som rubrik i redigeringsrutan"
   },
   "placeholder.editDistributionDefaultInviterId": {
     "message": "Ange standardinbjudarens ID",
@@ -228,7 +232,7 @@
     "description": "Meddelande för att behålla minst en administratör"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "Standardinbjudarens användar-ID. Om distributionslänken inte innehåller inviter_id-parametern används detta användar-ID som inbjudare som standard.",
+    "message": "Standardinbjudarens användar-ID. Om distributionslänken inte innehåller inviter_id-parametern, används detta användar-ID som inbjudare som standard.",
     "description": "Meddelande om standardinbjudarens ID"
   },
   "message.distributionForceInviterIdTip": {
@@ -236,7 +240,7 @@
     "description": "Meddelande om tvingad inbjudarens ID"
   },
   "message.originTip": {
-    "message": "Webbplatsens domännamn. Webbplatskonfigurationen är kopplad till domännamnet och kan inte ändras.",
+    "message": "Webbplatsens domännamn, webbplatskonfigurationen är kopplad till domännamnet och kan inte ändras.",
     "description": "Meddelande om webbplatsens domännamn"
   },
   "message.titleTip": {
@@ -244,7 +248,7 @@
     "description": "Meddelande om webbplatsens titel"
   },
   "message.descriptionTip": {
-    "message": "Webbplatsens beskrivning, finns i webbplatsens metadata, används för SEO-optimering.",
+    "message": "Webbplatsens beskrivning, finns i webbplatsens metadata och används för SEO-optimering.",
     "description": "Meddelande om webbplatsens beskrivning"
   },
   "message.logoTip": {
@@ -264,7 +268,7 @@
     "description": "Meddelande om webbplatsens administratörer"
   },
   "message.keywordsTip": {
-    "message": "Webbplatsens nyckelord, finns i webbplatsens metadata, används för SEO-optimering.",
+    "message": "Webbplatsens nyckelord, finns i webbplatsens metadata och används för SEO-optimering.",
     "description": "Meddelande om webbplatsens nyckelord"
   },
   "message.keywordsTip2": {
@@ -299,6 +303,10 @@
     "message": "Aktivera eller inaktivera Qrart-funktionalitet.",
     "description": "Beskrivning av Qrart-funktionen"
   },
+  "message.featuresVeo": {
+    "message": "Aktivera eller inaktivera Veo-funktionalitet.",
+    "description": "Beskrivning av Veo-funktionen"
+  },
   "message.featuresSuno": {
     "message": "Aktivera eller inaktivera Suno-funktionalitet.",
     "description": "Beskrivning av Suno-funktionen"
@@ -328,12 +336,12 @@
     "description": "Beskrivning av Hailuo-funktionen"
   },
   "message.featuresHeadshots": {
-    "message": "Aktivera eller inaktivera AI-ID-foto-funktionalitet.",
-    "description": "Beskrivning av AI-ID-foto-funktionen"
+    "message": "Aktivera eller inaktivera AI ID-foto-funktionalitet.",
+    "description": "Beskrivning av AI ID-foto-funktionen"
   },
   "message.featuresSupport": {
     "message": "Aktivera eller inaktivera kundsupport",
-    "description": "Beskrivning av Support-funktionen"
+    "description": "Support-funktionens beskrivning"
   },
   "message.featuresI18n": {
     "message": "Aktivera eller inaktivera flerspråkigt stöd. När det är inaktiverat kan användaren endast använda standardspråket.",
@@ -345,10 +353,10 @@
   },
   "button.enabled": {
     "message": "Aktiverad",
-    "description": "Text på knappen som indikerar att det är aktiverat"
+    "description": "Text på knappen som indikerar att den är aktiverad"
   },
   "button.disabled": {
     "message": "Inaktiverad",
-    "description": "Text på knappen som indikerar att det är inaktiverat"
+    "description": "Text på knappen som indikerar att den är inaktiverad"
   }
 }

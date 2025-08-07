@@ -1,0 +1,214 @@
+{
+  "name.taskId": {
+    "message": "タスク ID",
+    "description": "タスクの ID"
+  },
+  "name.type": {
+    "message": "タイプ",
+    "description": "生成する Kling ビデオのコンテンツタイプ、例えば 'リンク'、'テキスト' など"
+  },
+  "name.modeStd": {
+    "message": "標準",
+    "description": "Kling ビデオの標準モード"
+  },
+  "name.modePro": {
+    "message": "高品質",
+    "description": "Kling ビデオの高品質モード"
+  },
+  "name.failure": {
+    "message": "失敗",
+    "description": "タスクの失敗状態"
+  },
+  "name.failureReason": {
+    "message": "失敗理由",
+    "description": "タスク失敗の理由"
+  },
+  "name.status": {
+    "message": "状態",
+    "description": "タスクの状態"
+  },
+  "name.traceId": {
+    "message": "トレース ID",
+    "description": "タスクのトレース ID"
+  },
+  "name.createdAt": {
+    "message": "作成日時",
+    "description": "Kling ビデオ生成の日付と時間"
+  },
+  "name.startEndImage": {
+    "message": "開始・終了フレーム参照画像",
+    "description": "生成するビデオの参照画像"
+  },
+  "name.action3": {
+    "message": "1080p のビデオを取得",
+    "description": "生成するビデオの参照画像"
+  },
+  "name.prompt": {
+    "message": "ビデオプロンプト",
+    "description": "コンテンツ入力のプロンプト"
+  },
+  "name.model": {
+    "message": "モデルバージョン",
+    "description": "生成ビデオに使用されるモデルバージョン"
+  },
+  "name.veoBot": {
+    "message": "Veo ボット",
+    "description": "Veo ビデオ生成器の名称"
+  },
+  "description.imageUrl": {
+    "message": "複数の画像をアップロードする必要があるタスクの説明です。",
+    "description": "パラメータ 'imageUrl' の説明"
+  },
+  "description.prompt": {
+    "message": "Veo ビデオ生成のためのプロンプト",
+    "description": "パラメータ 'prompt' の説明"
+  },
+  "description.uploadStartEndImage": {
+    "message": "参照画像リンクの配列、最初が開始フレーム、次が終了フレーム画像",
+    "description": "パラメータ 'image_url' の説明"
+  },
+  "status.pending": {
+    "message": "保留中",
+    "description": "タスクの保留状態"
+  },
+  "status.processing": {
+    "message": "処理中",
+    "description": "タスクの処理状態"
+  },
+  "placeholder.paddingNoise": {
+    "message": "選択してください...",
+    "description": "パディングノイズ入力のプレースホルダー"
+  },
+  "placeholder.select": {
+    "message": "選択",
+    "description": "選択フィールドのプレースホルダーテキスト"
+  },
+  "placeholder.paddingLevel": {
+    "message": "選択してください...",
+    "description": "パディングレベルのプレースホルダー"
+  },
+  "placeholder.prompt": {
+    "message": "生成するビデオスタイルのプロンプトを入力してください。例：moving",
+    "description": "プロンプトフィールドのプレースホルダーテキスト"
+  },
+  "placeholder.position": {
+    "message": "選択してください...",
+    "description": "位置入力のプレースホルダー"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "Veo ビデオ生成のボタンテキスト"
+  },
+  "button.action1": {
+    "message": "テキストからビデオ生成",
+    "description": "Veo ビデオ生成のボタンテキスト"
+  },
+  "button.action2": {
+    "message": "画像からビデオ生成",
+    "description": "Veo ビデオ生成のボタンテキスト"
+  },
+  "button.action3": {
+    "message": "1080p を取得",
+    "description": "Veo ビデオ生成のボタンテキスト"
+  },
+  "button.download": {
+    "message": "ビデオをダウンロード",
+    "description": "ビデオダウンロードボタンのテキスト"
+  },
+  "button.uploadImageUrl": {
+    "message": "画像をアップロード",
+    "description": "画像アップロードのボタンテキスト"
+  },
+  "button.uploadVideoUrl": {
+    "message": "ビデオをアップロード",
+    "description": "ビデオアップロードのボタンテキスト"
+  },
+  "button.uploadReferences": {
+    "message": "アップロード",
+    "description": "ユーザーが参照をアップロードできるボタンテキスト"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "最大 2 枚の画像をアップロードできます",
+    "description": "アップロードされた画像の数が制限を超えたときのエラーメッセージ"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "画像のアップロードに成功しました",
+    "description": "画像のアップロードが成功したときのメッセージ"
+  },
+  "message.uploadReferencesError": {
+    "message": "画像のアップロードに失敗しました。後で再試行してください",
+    "description": "画像アップロードに失敗したときのエラーメッセージ"
+  },
+  "message.startingTask": {
+    "message": "タスクを開始しています...",
+    "description": "描画タスク開始時のメッセージ"
+  },
+  "message.startTaskSuccess": {
+    "message": "生成タスクを正常に開始しました",
+    "description": "タスクが正常に開始されたときのメッセージ"
+  },
+  "message.startTaskFailed": {
+    "message": "タスクの開始に失敗しました。管理者に連絡してください",
+    "description": "描画タスクの開始に失敗したときのエラーメッセージ"
+  },
+  "message.usedUp": {
+    "message": "ポイントが使い切れました。続行するには追加のポイントを購入してください",
+    "description": "使い切ったときのメッセージ"
+  },
+  "message.generating": {
+    "message": "生成中...",
+    "description": "画像が生成中のときのメッセージ"
+  },
+  "message.downloadVideo": {
+    "message": "このビデオをダウンロード",
+    "description": "画像が生成中のときのメッセージ"
+  },
+  "message.generateFailed": {
+    "message": "ビデオ生成に失敗しました",
+    "description": "画像生成に失敗したときのメッセージ"
+  },
+  "message.uploadVideoExceed": {
+    "message": "開始フレーム画像のアップロード数が制限を超えました",
+    "description": "開始フレーム画像のアップロード数が制限を超えたときのエラーメッセージ"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "アップロードファイルのサイズは 10MB を超えてはいけません！",
+    "description": "アップロードファイルのサイズが 10MB を超えたときのエラーメッセージ"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "アップロードファイルは MP4 形式でなければなりません！",
+    "description": "アップロードファイルが MP4 形式でないときのエラーメッセージ"
+  },
+  "message.uploadStartEndImageExceed": {
+    "message": "最初のフレーム画像の数が制限を超えています",
+    "description": "最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "最後のフレーム画像の数が制限を超えています",
+    "description": "最後のフレーム画像の数が制限を超えたときのエラーメッセージ"
+  },
+  "message.uploadStartImageError": {
+    "message": "最初のフレーム画像のアップロードに失敗しました",
+    "description": "最初のフレーム画像のアップロードに失敗したときのエラーメッセージ"
+  },
+  "message.uploadVideoError": {
+    "message": "ビデオのアップロードに失敗しました",
+    "description": "ビデオのアップロードに失敗したときのエラーメッセージ"
+  },
+  "message.uploadEndImageError": {
+    "message": "最後のフレーム画像のアップロードに失敗しました",
+    "description": "最後のフレーム画像のアップロードに失敗したときのエラーメッセージ"
+  },
+  "message.uploadDocumentsError": {
+    "message": "文書のアップロードに失敗しました",
+    "description": "文書のアップロードに失敗したときのエラーメッセージ"
+  },
+  "message.noOperations": {
+    "message": "利用可能な操作はありません",
+    "description": "利用可能な操作がないときのメッセージ"
+  },
+  "message.noTasks": {
+    "message": "履歴タスクはありません。左側のボタンをクリックしてビデオを生成してください",
+    "description": "タスクがないときのメッセージ"
+  }
+}
