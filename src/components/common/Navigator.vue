@@ -43,7 +43,9 @@ import {
   ROUTE_KLING_INDEX,
   ROUTE_KLING_HISTORY,
   ROUTE_PIXVERSE_INDEX,
-  ROUTE_PIXVERSE_HISTORY
+  ROUTE_PIXVERSE_HISTORY,
+  ROUTE_VEO_INDEX,
+  ROUTE_VEO_HISTORY
 } from '@/router/constants';
 import { CHAT_MODEL_ICON_CHATGPT, CHAT_MODEL_ICON_DEEPSEEK, CHAT_MODEL_ICON_GROK } from '@/constants/chat';
 import Logo from './Logo.vue';
@@ -193,6 +195,17 @@ export default defineComponent({
           displayName: this.$t('common.nav.kling'),
           logo: 'https://cdn.acedata.cloud/qpbbbb.jpg',
           routes: [ROUTE_KLING_INDEX, ROUTE_KLING_HISTORY]
+        });
+      }
+      // Add veo's leftmost icon
+      if (this.$store?.state?.site?.features?.veo?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_VEO_INDEX
+          },
+          displayName: this.$t('common.nav.veo'),
+          logo: 'https://cdn.acedata.cloud/pqer4t.png',
+          routes: [ROUTE_VEO_INDEX, ROUTE_VEO_HISTORY]
         });
       }
       // Add pixverse's leftmost icon

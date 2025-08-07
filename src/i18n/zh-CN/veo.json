@@ -1,0 +1,216 @@
+{
+  "name.taskId": {
+    "message": "任务 ID",
+    "description": "任务的 ID"
+  },
+  "name.type": {
+    "message": "类型",
+    "description": "要生成的 Kling视频的内容类型，如'链接'、'文本'等"
+  },
+  "name.modeStd": {
+    "message": "标准",
+    "description": "Kling视频的标准模式"
+  },
+  "name.modePro": {
+    "message": "高品质",
+    "description": "Kling视频的高品质模式"
+  },
+  "name.failure": {
+    "message": "失败",
+    "description": "任务的失败状态"
+  },
+  "name.failureReason": {
+    "message": "失败原因",
+    "description": "任务失败的原因"
+  },
+  "name.status": {
+    "message": "状态",
+    "description": "任务的状态"
+  },
+  "name.traceId": {
+    "message": "追踪 ID",
+    "description": "任务的追踪 ID"
+  },
+  "name.createdAt": {
+    "message": "创建时间",
+    "description": "生成 Kling 视频的日期和时间"
+  },
+
+  "name.startEndImage": {
+    "message": "首尾帧参考图片",
+    "description": "要生成的视频的参考图片"
+  },
+  "name.action3": {
+    "message": "获取1080p的视频来自",
+    "description": "要生成的视频的参考图片"
+  },
+  "name.prompt": {
+    "message": "视频提示",
+    "description": "内容输入的提示"
+  },
+
+  "name.model": {
+    "message": "模型版本",
+    "description": "要生成视频所采用的模型版本"
+  },
+  "name.veoBot": {
+    "message": "Veo Bot",
+    "description": "Veo 视频生成器的名称"
+  },
+  "description.imageUrl": {
+    "message": "在多图创建视频的任务重，它必须上传多张图片。",
+    "description": "参数'imageUrl'的描述"
+  },
+  "description.prompt": {
+    "message": "生成Veo视频的提示词",
+    "description": "参数'prompt'的描述"
+  },
+  "description.uploadStartEndImage": {
+    "message": "参考图片链接数组，第一个是首帧，其次是尾帧图片",
+    "description": "参数'image_url'的描述"
+  },
+  "status.pending": {
+    "message": "等待中",
+    "description": "任务的等待状态"
+  },
+  "status.processing": {
+    "message": "处理中",
+    "description": "任务的等待状态"
+  },
+  "placeholder.paddingNoise": {
+    "message": "请选择...",
+    "description": "填充噪音输入的占位符"
+  },
+  "placeholder.select": {
+    "message": "选择",
+    "description": "选择字段中的占位文本"
+  },
+  "placeholder.paddingLevel": {
+    "message": "请选择...",
+    "description": "填充级别的占位符"
+  },
+  "placeholder.prompt": {
+    "message": "输入要生成的视频风格的提示词，例如：moving",
+    "description": "提示字段中的占位文本"
+  },
+  "placeholder.position": {
+    "message": "请选择...",
+    "description": "位置输入的占位符"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "生成Veo视频的按钮文本"
+  },
+  "button.action1": {
+    "message": "文生视频",
+    "description": "生成Veo视频的按钮文本"
+  },
+  "button.action2": {
+    "message": "图生视频",
+    "description": "生成Veo视频的按钮文本"
+  },
+  "button.action3": {
+    "message": "获取1080p",
+    "description": "生成Veo视频的按钮文本"
+  },
+  "button.download": {
+    "message": "下载视频",
+    "description": "下载视频按钮文本"
+  },
+  "button.uploadImageUrl": {
+    "message": "上传图片",
+    "description": "上传图片的按钮文本"
+  },
+  "button.uploadVideoUrl": {
+    "message": "上传视频",
+    "description": "上传视频的按钮文本"
+  },
+  "button.uploadReferences": {
+    "message": "上传",
+    "description": "按钮文本，允许用户上传参考"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "最多可上传 2 张图片",
+    "description": "上传的图片数量超过限制时的错误消息"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "成功上传图片",
+    "description": "成功上传图片时的成功消息"
+  },
+  "message.uploadReferencesError": {
+    "message": "上传图片失败，请稍后重试",
+    "description": "图片上传失败时的错误消息"
+  },
+  "message.startingTask": {
+    "message": "正在启动任务...",
+    "description": "绘图任务开始时的消息"
+  },
+  "message.startTaskSuccess": {
+    "message": "成功发起生成任务",
+    "description": "成功启动任务时的成功消息"
+  },
+  "message.startTaskFailed": {
+    "message": "发起任务失败，请联系管理员",
+    "description": "启动绘图任务失败时的错误消息"
+  },
+  "message.usedUp": {
+    "message": "您的积分已用完，请购买更多积分后继续使用",
+    "description": "已用完时的消息"
+  },
+  "message.generating": {
+    "message": "生成中...",
+    "description": "图像正在生成时的消息"
+  },
+  "message.downloadVideo": {
+    "message": "下载此视频",
+    "description": "图像正在生成时的消息"
+  },
+  "message.generateFailed": {
+    "message": "生成视频失败",
+    "description": "图像生成失败时的消息"
+  },
+  "message.uploadVideoExceed": {
+    "message": "上传首帧图片数量超过限制",
+    "description": "上传首帧图片数量超过限制时的错误信息"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "上传文件大小不能超过 10MB!",
+    "description": "上传文件大小不能超过 10MB!时的错误信息"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "上传文件必须是 MP4 格式!",
+    "description": "上传文件必须是 MP4 格式!的错误信息"
+  },
+  "message.uploadStartEndImageExceed": {
+    "message": "上传首帧图片数量超过限制",
+    "description": "上传首帧图片数量超过限制时的错误信息"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "上传尾帧图片数量超过限制",
+    "description": "上传首帧图片数量超过限制时的错误信息"
+  },
+  "message.uploadStartImageError": {
+    "message": "上传首帧图片失败",
+    "description": "上传首帧图片失败时的错误信息"
+  },
+  "message.uploadVideoError": {
+    "message": "上传视频失败",
+    "description": "上传首帧图片失败时的错误信息"
+  },
+  "message.uploadEndImageError": {
+    "message": "上传尾帧图片失败",
+    "description": "上传尾帧图片失败时的错误信息"
+  },
+  "message.uploadDocumentsError": {
+    "message": "上传文档失败",
+    "description": "上传文档失败时的错误信息"
+  },
+  "message.noOperations": {
+    "message": "没有可用操作",
+    "description": "没有可用操作时的消息"
+  },
+  "message.noTasks": {
+    "message": "没有历史任务，请点击左方生成视频",
+    "description": "没有任务时的消息"
+  }
+}

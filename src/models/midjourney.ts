@@ -3,6 +3,7 @@ export interface IMidjourneyConfig {
   prompt?: string;
   action?: string;
   video_id?: string;
+  video_url?: string;
   image_url?: string;
   is_videos?: boolean;
   model?: string;

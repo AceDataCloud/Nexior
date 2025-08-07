@@ -8,6 +8,7 @@ export * from './qrart';
 export * from './luma';
 export * from './pika';
 export * from './kling';
+export * from './veo';
 export * from './pixverse';
 export * from './flux';
 export * from './hailuo';

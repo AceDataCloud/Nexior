@@ -47,6 +47,10 @@
     "message": "チャット",
     "description": "編集ボックスに表示されるタイトル"
   },
+  "field.featuresVeo": {
+    "message": "Veo",
+    "description": "編集ボックスに表示されるタイトル"
+  },
   "field.featuresGrok": {
     "message": "Grok",
     "description": "編集ボックスに表示されるタイトル"
@@ -188,11 +192,11 @@
     "description": "編集ボックスに表示されるタイトル"
   },
   "placeholder.keywords": {
-    "message": "サイトキーワードを入力してください",
+    "message": "サイトのキーワードを入力してください",
     "description": "編集ボックスに表示されるタイトル"
   },
   "placeholder.editDistributionDefaultInviterId": {
-    "message": "デフォルト招待者IDを入力してください",
+    "message": "デフォルトの招待者IDを入力してください",
     "description": "編集ボックスに表示されるタイトル"
   },
   "placeholder.editDistributionForceInviterId": {
@@ -201,11 +205,11 @@
   },
   "message.uploadImageExceed": {
     "message": "アップロード画像が制限を超えました",
-    "description": "アップロード画像が制限を超えた際の通知"
+    "description": "アップロード画像が制限を超えた場合のメッセージ"
   },
   "message.uploadImageError": {
     "message": "画像のアップロードエラー",
-    "description": "画像のアップロードエラーの通知"
+    "description": "画像のアップロードエラーのメッセージ"
   },
   "message.editLogoTip": {
     "message": "推奨サイズ：200*60px",
@@ -225,51 +229,51 @@
   },
   "message.atLeastOneAdmin": {
     "message": "少なくとも1人の管理者を保持してください",
-    "description": "少なくとも1人の管理者を保持する際の通知"
+    "description": "少なくとも1人の管理者を保持するためのメッセージ"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "デフォルト招待者のユーザーID。分配リンクがinviter_idパラメータを持たない場合、このユーザーIDが招待者として使用されます。",
-    "description": "デフォルト招待者IDのヒント"
+    "message": "デフォルトの招待者のユーザーID。分配リンクがinviter_idパラメータを持たない場合、このユーザーIDが招待者として使用されます。",
+    "description": "デフォルトの招待者IDに関するヒント"
   },
   "message.distributionForceInviterIdTip": {
     "message": "強制招待者のユーザーID。このIDが設定されている場合、分配リンクがinviter_idパラメータを持っていても、このユーザーIDが招待者として強制的に使用されます。",
-    "description": "強制招待者IDのヒント"
+    "description": "強制招待者IDに関するヒント"
   },
   "message.originTip": {
-    "message": "サイトのドメイン名。サイトの設定はドメインにバインドされ、サイトのドメイン名は変更できません。",
-    "description": "サイトのドメイン名のヒント"
+    "message": "サイトのドメイン。サイトの設定はドメインにバインドされており、サイトのドメインは変更できません。",
+    "description": "サイトのドメインに関するヒント"
   },
   "message.titleTip": {
     "message": "サイトのタイトル。ブラウザのタブに表示されます。",
-    "description": "サイトのタイトルのヒント"
+    "description": "サイトのタイトルに関するヒント"
   },
   "message.descriptionTip": {
     "message": "サイトの説明。サイトのメタ情報にあり、サイトのSEO最適化に使用されます。",
-    "description": "サイトの説明のヒント"
+    "description": "サイトの説明に関するヒント"
   },
   "message.logoTip": {
     "message": "サイトのロゴ。メニューが展開されたとき、サイトメニューの上部に表示されます。",
-    "description": "サイトのロゴのヒント"
+    "description": "サイトのロゴに関するヒント"
   },
   "message.faviconTip": {
     "message": "サイトのファビコン。ブラウザのタブに表示されます。",
-    "description": "サイトのファビコンのヒント"
+    "description": "サイトのファビコンに関するヒント"
   },
   "message.adminsTip": {
-    "message": "サイト管理者ID。デフォルトでは、最初にこのサイトを作成したユーザーが管理者になります。サイトの管理者のみがサイトを管理できます。",
-    "description": "サイト管理者のヒント"
+    "message": "サイトの管理者ID。デフォルトでは、最初にこのサイトを作成したユーザーが管理者になります。サイトの管理者のみがサイトを管理できます。",
+    "description": "サイトの管理者に関するヒント"
   },
   "message.adminsTip2": {
     "message": "ここで管理者IDを追加または削除できます。ユーザーIDは https://auth.acedata.cloud で確認できます。",
-    "description": "サイト管理者のヒント"
+    "description": "サイトの管理者に関するヒント"
   },
   "message.keywordsTip": {
     "message": "サイトのキーワード。サイトのメタ情報にあり、サイトのSEO最適化に使用されます。",
-    "description": "サイトのキーワードのヒント"
+    "description": "サイトのキーワードに関するヒント"
   },
   "message.keywordsTip2": {
     "message": "ここでサイトのキーワードを追加または削除できます。キーワードが正確であるほど、SEO最適化に有利です。",
-    "description": "サイトのキーワードのヒント"
+    "description": "サイトのキーワードに関するヒント"
   },
   "message.featuresChat": {
     "message": "チャット機能モジュールをオンまたはオフにします。",
@@ -298,6 +302,10 @@
   "message.featuresQrart": {
     "message": "Qrart機能モジュールをオンまたはオフにします。",
     "description": "Qrart機能の説明"
+  },
+  "message.featuresVeo": {
+    "message": "Veo機能モジュールをオンまたはオフにします。",
+    "description": "Veo機能の説明"
   },
   "message.featuresSuno": {
     "message": "Suno機能モジュールをオンまたはオフにします。",
@@ -332,11 +340,11 @@
     "description": "AI証明写真機能の説明"
   },
   "message.featuresSupport": {
-    "message": "カスタマーサポートをオンまたはオフにします。",
-    "description": "サポート機能の説明"
+    "message": "カスタマーサポートをオンまたはオフにする",
+    "description": "Support 機能の説明"
   },
   "message.featuresI18n": {
-    "message": "多言語サポートをオンまたはオフにします。オフにすると、ユーザーはデフォルト言語のみを使用できます。",
+    "message": "多言語サポートをオンまたはオフにする。オフにすると、ユーザーはデフォルト言語のみを使用できます。",
     "description": "多言語サポートの説明"
   },
   "button.upload": {
@@ -345,10 +353,10 @@
   },
   "button.enabled": {
     "message": "有効",
-    "description": "スイッチのテキスト、有効になっていることを示します"
+    "description": "スイッチのテキスト、有効になっていることを示す"
   },
   "button.disabled": {
     "message": "無効",
-    "description": "スイッチのテキスト、無効になっていることを示します"
+    "description": "スイッチのテキスト、無効になっていることを示す"
   }
 }

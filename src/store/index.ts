@@ -6,6 +6,7 @@ import qrart from './qrart';
 import luma from './luma';
 import pika from './pika';
 import kling from './kling';
+import veo from './veo';
 import pixverse from './pixverse';
 import flux from './flux';
 import hailuo from './hailuo';
@@ -18,6 +19,7 @@ import persistQrart from './qrart/persist';
 import persistLuma from './luma/persist';
 import persistPika from './pika/persist';
 import persistKling from './kling/persist';
+import persistVeo from './veo/persist';
 import persistPixverse from './pixverse/persist';
 import persistFlux from './flux/persist';
 import persistHailuo from './hailuo/persist';
@@ -34,6 +36,7 @@ const store = createStore({
     luma: luma,
     pika: pika,
     kling: kling,
+    veo: veo,
     pixverse: pixverse,
     flux: flux,
     hailuo: hailuo,
@@ -50,6 +53,7 @@ const store = createStore({
         ...persistLuma,
         ...persistPika,
         ...persistKling,
+        ...persistVeo,
         ...persistPixverse,
         ...persistFlux,
         ...persistHailuo,

@@ -47,6 +47,10 @@
     "message": "Chat",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
+  "field.featuresVeo": {
+    "message": "Veo",
+    "description": "Prikazuje se kao naslov u okviru za uređivanje"
+  },
   "field.featuresGrok": {
     "message": "Grok",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
@@ -92,7 +96,7 @@
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "field.featuresHeadshots": {
-    "message": "AI fotografije",
+    "message": "AI identifikacione fotografije",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "field.featuresSuno": {
@@ -200,24 +204,24 @@
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "message.uploadImageExceed": {
-    "message": "Prekoračen limit za upload slika",
-    "description": "Poruka koja se prikazuje kada je prekoračen limit za upload slika"
+    "message": "Prekoračena granica za upload slika",
+    "description": "Poruka o prekoračenju granice za upload slika"
   },
   "message.uploadImageError": {
     "message": "Greška prilikom upload-a slike",
-    "description": "Poruka koja se prikazuje kada dođe do greške prilikom upload-a slike"
+    "description": "Poruka o grešci prilikom upload-a slike"
   },
   "message.editLogoTip": {
     "message": "Preporučena veličina: 200*60px",
-    "description": "Jezik uputstva za upload slike"
+    "description": "Jezik uputstva za upload slika"
   },
   "message.editQRTip": {
     "message": "Preporučena veličina: 200*200px",
-    "description": "Jezik uputstva za upload slike"
+    "description": "Jezik uputstva za upload slika"
   },
   "message.editFaviconTip": {
     "message": "Preporučena veličina: 32*32px",
-    "description": "Jezik uputstva za upload slike"
+    "description": "Jezik uputstva za upload slika"
   },
   "message.editUrl": {
     "message": "Unesite link",
@@ -225,7 +229,7 @@
   },
   "message.atLeastOneAdmin": {
     "message": "Morate zadržati barem jednog administratora",
-    "description": "Poruka koja se prikazuje kada je potrebno zadržati barem jednog administratora"
+    "description": "Poruka o potrebi za barem jednim administratorom"
   },
   "message.distributionDefaultInviterIdTip": {
     "message": "ID korisnika podrazumevanog pozivaoca. Ako distribucioni link ne sadrži parametar inviter_id, koristiće se ovaj ID kao pozivalac.",
@@ -260,7 +264,7 @@
     "description": "Uputstvo za administratore sajta"
   },
   "message.adminsTip2": {
-    "message": "Ovde možete dodavati ili uklanjati ID administratora, možete posetiti https://auth.acedata.cloud da biste videli ID korisnika",
+    "message": "Ovde možete dodavati ili uklanjati ID-ove administratora, ID korisnika možete videti na https://auth.acedata.cloud",
     "description": "Uputstvo za administratore sajta"
   },
   "message.keywordsTip": {
@@ -268,7 +272,7 @@
     "description": "Uputstvo za ključne reči sajta"
   },
   "message.keywordsTip2": {
-    "message": "Ovde možete dodavati ili uklanjati ključne reči sajta, što su ključne reči preciznije, to je bolje za SEO optimizaciju.",
+    "message": "Ovde možete dodavati ili uklanjati ključne reči sajta, što preciznije ključne reči, to je bolje za SEO optimizaciju.",
     "description": "Uputstvo za ključne reči sajta"
   },
   "message.featuresChat": {
@@ -298,6 +302,10 @@
   "message.featuresQrart": {
     "message": "Uključite ili isključite Qrart funkcionalnost.",
     "description": "Opis Qrart funkcionalnosti"
+  },
+  "message.featuresVeo": {
+    "message": "Uključite ili isključite Veo funkcionalnost.",
+    "description": "Opis Veo funkcionalnosti"
   },
   "message.featuresSuno": {
     "message": "Uključite ili isključite Suno funkcionalnost.",
@@ -332,11 +340,11 @@
     "description": "Opis AI identifikacionih fotografija funkcionalnosti"
   },
   "message.featuresSupport": {
-    "message": "Uključite ili isključite korisničku podršku",
-    "description": "Opis funkcionalnosti podrške"
+    "message": "Uključi ili isključi podršku za korisnički servis",
+    "description": "Opis funkcije podrške"
   },
   "message.featuresI18n": {
-    "message": "Uključite ili isključite podršku za više jezika. Kada je isključena, korisnici mogu koristiti samo podrazumevani jezik.",
+    "message": "Uključi ili isključi podršku za više jezika. Kada je isključena, korisnici mogu koristiti samo podrazumevani jezik.",
     "description": "Opis podrške za više jezika"
   },
   "button.upload": {

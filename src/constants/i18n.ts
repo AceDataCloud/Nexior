@@ -29,6 +29,7 @@ export const I18N_SCOPES = [
   'luma',
   'pika',
   'kling',
+  'veo',
   'pixverse',
   'flux',
   'hailuo',

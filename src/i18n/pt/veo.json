@@ -1,0 +1,214 @@
+{
+  "name.taskId": {
+    "message": "ID da tarefa",
+    "description": "ID da tarefa"
+  },
+  "name.type": {
+    "message": "Tipo",
+    "description": "Tipo de conteúdo do vídeo Kling a ser gerado, como 'link', 'texto', etc."
+  },
+  "name.modeStd": {
+    "message": "Padrão",
+    "description": "Modo padrão do vídeo Kling"
+  },
+  "name.modePro": {
+    "message": "Alta qualidade",
+    "description": "Modo de alta qualidade do vídeo Kling"
+  },
+  "name.failure": {
+    "message": "Falha",
+    "description": "Estado de falha da tarefa"
+  },
+  "name.failureReason": {
+    "message": "Razão da falha",
+    "description": "Razão pela qual a tarefa falhou"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Status da tarefa"
+  },
+  "name.traceId": {
+    "message": "ID de rastreamento",
+    "description": "ID de rastreamento da tarefa"
+  },
+  "name.createdAt": {
+    "message": "Data de criação",
+    "description": "Data e hora em que o vídeo Kling foi gerado"
+  },
+  "name.startEndImage": {
+    "message": "Imagens de referência do início e do fim",
+    "description": "Imagens de referência para o vídeo a ser gerado"
+  },
+  "name.action3": {
+    "message": "Obter vídeo em 1080p",
+    "description": "Imagens de referência para o vídeo a ser gerado"
+  },
+  "name.prompt": {
+    "message": "Prompt do vídeo",
+    "description": "Prompt de entrada de conteúdo"
+  },
+  "name.model": {
+    "message": "Versão do modelo",
+    "description": "Versão do modelo utilizada para gerar o vídeo"
+  },
+  "name.veoBot": {
+    "message": "Veo Bot",
+    "description": "Nome do gerador de vídeos Veo"
+  },
+  "description.imageUrl": {
+    "message": "Na tarefa de criar vídeos com várias imagens, é necessário fazer o upload de várias imagens.",
+    "description": "Descrição do parâmetro 'imageUrl'"
+  },
+  "description.prompt": {
+    "message": "Palavras-chave para gerar vídeos Veo",
+    "description": "Descrição do parâmetro 'prompt'"
+  },
+  "description.uploadStartEndImage": {
+    "message": "Array de links de imagens de referência, a primeira é a imagem do início e a segunda é a imagem do fim",
+    "description": "Descrição do parâmetro 'image_url'"
+  },
+  "status.pending": {
+    "message": "Pendente",
+    "description": "Estado de espera da tarefa"
+  },
+  "status.processing": {
+    "message": "Processando",
+    "description": "Estado de espera da tarefa"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Selecione...",
+    "description": "Placeholder para entrada de ruído de preenchimento"
+  },
+  "placeholder.select": {
+    "message": "Selecionar",
+    "description": "Texto de placeholder no campo de seleção"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Selecione...",
+    "description": "Placeholder para nível de preenchimento"
+  },
+  "placeholder.prompt": {
+    "message": "Insira as palavras-chave para o estilo do vídeo a ser gerado, por exemplo: moving",
+    "description": "Texto de placeholder no campo de prompt"
+  },
+  "placeholder.position": {
+    "message": "Selecione...",
+    "description": "Placeholder para entrada de posição"
+  },
+  "button.generate": {
+    "message": "Gerar",
+    "description": "Texto do botão para gerar vídeos Veo"
+  },
+  "button.action1": {
+    "message": "Vídeo de texto",
+    "description": "Texto do botão para gerar vídeos Veo"
+  },
+  "button.action2": {
+    "message": "Vídeo de imagem",
+    "description": "Texto do botão para gerar vídeos Veo"
+  },
+  "button.action3": {
+    "message": "Obter 1080p",
+    "description": "Texto do botão para gerar vídeos Veo"
+  },
+  "button.download": {
+    "message": "Baixar vídeo",
+    "description": "Texto do botão para baixar vídeo"
+  },
+  "button.uploadImageUrl": {
+    "message": "Fazer upload de imagem",
+    "description": "Texto do botão para fazer upload de imagem"
+  },
+  "button.uploadVideoUrl": {
+    "message": "Fazer upload de vídeo",
+    "description": "Texto do botão para fazer upload de vídeo"
+  },
+  "button.uploadReferences": {
+    "message": "Fazer upload",
+    "description": "Texto do botão que permite ao usuário fazer upload de referências"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "É possível fazer upload de no máximo 2 imagens",
+    "description": "Mensagem de erro quando o número de imagens carregadas excede o limite"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Imagens carregadas com sucesso",
+    "description": "Mensagem de sucesso ao carregar imagens com sucesso"
+  },
+  "message.uploadReferencesError": {
+    "message": "Falha ao carregar imagens, por favor, tente novamente mais tarde",
+    "description": "Mensagem de erro quando o upload de imagens falha"
+  },
+  "message.startingTask": {
+    "message": "Iniciando tarefa...",
+    "description": "Mensagem ao iniciar a tarefa de desenho"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tarefa de geração iniciada com sucesso",
+    "description": "Mensagem de sucesso ao iniciar a tarefa"
+  },
+  "message.startTaskFailed": {
+    "message": "Falha ao iniciar a tarefa, por favor, entre em contato com o administrador",
+    "description": "Mensagem de erro ao falhar ao iniciar a tarefa de desenho"
+  },
+  "message.usedUp": {
+    "message": "Seus créditos acabaram, por favor, compre mais créditos para continuar usando",
+    "description": "Mensagem quando os créditos se esgotam"
+  },
+  "message.generating": {
+    "message": "Gerando...",
+    "description": "Mensagem enquanto a imagem está sendo gerada"
+  },
+  "message.downloadVideo": {
+    "message": "Baixar este vídeo",
+    "description": "Mensagem enquanto a imagem está sendo gerada"
+  },
+  "message.generateFailed": {
+    "message": "Falha ao gerar vídeo",
+    "description": "Mensagem quando a geração da imagem falha"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Número de imagens do quadro inicial carregadas excede o limite",
+    "description": "Mensagem de erro quando o número de imagens do quadro inicial carregadas excede o limite"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "O tamanho do arquivo carregado não pode exceder 10MB!",
+    "description": "Mensagem de erro quando o tamanho do arquivo carregado excede 10MB!"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "O arquivo carregado deve estar no formato MP4!",
+    "description": "Mensagem de erro quando o arquivo carregado não está no formato MP4!"
+  },
+  "message.uploadStartEndImageExceed": {
+    "message": "O número de imagens da primeira e última quadro excede o limite",
+    "description": "Mensagem de erro quando o número de imagens da primeira e última quadro excede o limite"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "O número de imagens da última quadro excede o limite",
+    "description": "Mensagem de erro quando o número de imagens da última quadro excede o limite"
+  },
+  "message.uploadStartImageError": {
+    "message": "Falha ao enviar a imagem da primeira quadro",
+    "description": "Mensagem de erro quando falha ao enviar a imagem da primeira quadro"
+  },
+  "message.uploadVideoError": {
+    "message": "Falha ao enviar o vídeo",
+    "description": "Mensagem de erro quando falha ao enviar o vídeo"
+  },
+  "message.uploadEndImageError": {
+    "message": "Falha ao enviar a imagem da última quadro",
+    "description": "Mensagem de erro quando falha ao enviar a imagem da última quadro"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Falha ao enviar o documento",
+    "description": "Mensagem de erro quando falha ao enviar o documento"
+  },
+  "message.noOperations": {
+    "message": "Nenhuma operação disponível",
+    "description": "Mensagem quando não há operações disponíveis"
+  },
+  "message.noTasks": {
+    "message": "Nenhuma tarefa histórica, por favor clique à esquerda para gerar vídeo",
+    "description": "Mensagem quando não há tarefas"
+  }
+}
