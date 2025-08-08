@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 07 Aug 2025 17:53:06 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 08 Aug 2025 18:43:14 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.17.2
+
+Fri, 08 Aug 2025 18:43:14 GMT
+
+### Patches
+
+- add gpt 5 model (cqc@cuiqingcai.com)
 
 ## 3.17.1
 
