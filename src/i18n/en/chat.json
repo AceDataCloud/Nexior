@@ -39,6 +39,22 @@
     "message": "AI model developed by xAI",
     "description": "Description of the Grok3 model"
   },
+  "model.5": {
+    "message": "gpt-5",
+    "description": "The name of the service model, i.e., GPT 5"
+  },
+  "model.5Description": {
+    "message": "The most advanced model currently",
+    "description": "Description of the GPT 5 model"
+  },
+  "model.5Mini": {
+    "message": "gpt-5-mini",
+    "description": "The name of the service model, i.e., GPT 5 Mini"
+  },
+  "model.5MiniDescription": {
+    "message": "A faster and lighter version of the GPT 5 model",
+    "description": "Description of the GPT 5 Mini model"
+  },
   "model.4O": {
     "message": "gpt-4o",
     "description": "The name of the service model, i.e., GPT 4.0 Vision"
@@ -48,7 +64,7 @@
     "description": "The name of the service model, i.e., GPT 4.0 Mini"
   },
   "model.4OMiniDescription": {
-    "message": "Lighter and faster model",
+    "message": "A lighter and faster model",
     "description": "Description of the 4.0 Mini model"
   },
   "model.4OImage": {
@@ -60,7 +76,7 @@
     "description": "Description of the 4.0 Vision model"
   },
   "model.4ODescription": {
-    "message": "Suitable for most tasks",
+    "message": "Suitable for the vast majority of tasks",
     "description": "Description of the 4.0 Vision model"
   },
   "model.4All": {
@@ -68,8 +84,8 @@
     "description": "The name of the service model, i.e., GPT 4.0 All"
   },
   "model.4AllDescription": {
-    "message": "All-purpose model",
-    "description": "Description of the 4.0 All-purpose model"
+    "message": "Universal model",
+    "description": "Description of the 4.0 Universal model"
   },
   "model.deepseekChat": {
     "message": "3.0 Standard",
@@ -145,31 +161,31 @@
   },
   "message.startNewChat": {
     "message": "Start New Chat",
-    "description": "Message on the webpage telling the user to start a new chat"
+    "description": "Message on the webpage informing the user to start a new chat"
   },
   "message.uploadFile": {
     "message": "Upload File",
-    "description": "Message on the webpage telling the user to upload a file"
+    "description": "Message on the webpage informing the user to upload a file"
   },
   "message.noToken": {
     "message": "Please apply for the corresponding service first",
-    "description": "Message on the webpage telling the user to apply for the corresponding service first"
+    "description": "Message on the webpage informing the user to apply for the corresponding service first"
   },
   "message.newMessagePlaceholder": {
     "message": "Please enter your question...",
-    "description": "Placeholder on the webpage telling the user to input a question"
+    "description": "Placeholder on the webpage informing the user to input a question"
   },
   "message.noInput": {
     "message": "Question cannot be empty",
-    "description": "Message on the webpage telling the user that the question cannot be empty"
+    "description": "Message on the webpage informing the user that the question cannot be empty"
   },
   "message.uploadReferencesExceed": {
     "message": "You can upload a maximum of 1 file",
-    "description": "Message on the webpage telling the user that they can upload a maximum of 1 file"
+    "description": "Message on the webpage informing the user that they can upload a maximum of 1 file"
   },
   "message.uploadReferencesError": {
     "message": "File upload failed, please try again later",
-    "description": "Message on the webpage telling the user that the file upload failed, please try again later"
+    "description": "Message on the webpage informing the user that the file upload failed, please try again later"
   },
   "message.notApplied": {
     "message": "You have not applied for this service, please apply first",
@@ -197,7 +213,7 @@
   },
   "message.question5": {
     "message": "Which is larger, 9.8 or 9.11?",
-    "description": "Example question to start a conversation, asking to compare the size of two numbers"
+    "description": "Example question to start a conversation, asking to compare the sizes of two numbers"
   },
   "message.question6": {
     "message": "What impact does AI have on the future?",
@@ -216,8 +232,8 @@
     "description": "Message on the webpage informing the user that the response failed, please try again later"
   },
   "message.errorBadRequest": {
-    "message": "Request content is not valid, please ask again",
-    "description": "Message on the webpage informing the user that the request content is not valid, please ask again"
+    "message": "Request content is not valid, please rephrase your question",
+    "description": "Message on the webpage informing the user that the request content is not valid, please rephrase your question"
   },
   "message.errorNoConversation": {
     "message": "Conversation does not exist or has expired, please start a new conversation",
@@ -244,12 +260,12 @@
     "description": "Message on the webpage informing the user that an unknown error occurred on the server, please try again later or contact customer service"
   },
   "message.errorTimeout": {
-    "message": "Answering the question timed out, please try again later",
-    "description": "Message on the webpage informing the user that answering the question timed out, please try again later"
+    "message": "Response to the question timed out, please try again later",
+    "description": "Message on the webpage informing the user that the response to the question timed out, please try again later"
   },
   "message.errorNotApplied": {
-    "message": "You have not applied for this service, please apply first before continuing to ask",
-    "description": "Message on the webpage informing the user that they have not applied for this service, please apply first before continuing to ask"
+    "message": "You have not applied for this service, please apply first before continuing to ask questions",
+    "description": "Message on the webpage informing the user that they have not applied for this service, please apply first before continuing to ask questions"
   },
   "message.confirmDelete": {
     "message": "Confirm deletion",
@@ -280,27 +296,27 @@
     "description": "Title on the webpage indicating that this section is about the service's ability to answer complex questions"
   },
   "title.professionalQuestion": {
-    "message": "Consulting professional questions",
-    "description": "Title on the webpage indicating that this section is about the service's ability to consult on professional questions"
+    "message": "Consulting Professional Questions",
+    "description": "Title in the webpage indicating that this section is about the ability to consult on professional questions."
   },
   "title.getTips": {
     "message": "Get Inspiration and Ideas",
-    "description": "The title in the webpage indicating that this section is about the ability to obtain inspiration and ideas."
+    "description": "Title in the webpage indicating that this section is about the ability to obtain inspiration and ideas."
   },
   "group.today": {
     "message": "Today",
-    "description": "The group name in the webpage, which is Today."
+    "description": "Group name in the webpage, which is Today."
   },
   "group.yesterday": {
     "message": "Yesterday",
-    "description": "The group name in the webpage, which is Yesterday."
+    "description": "Group name in the webpage, which is Yesterday."
   },
   "group.thisWeek": {
     "message": "This Week",
-    "description": "The group name in the webpage, which is This Week."
+    "description": "Group name in the webpage, which is This Week."
   },
   "group.earlier": {
     "message": "Earlier",
-    "description": "The group name in the webpage, which is Earlier."
+    "description": "Group name in the webpage, which is Earlier."
   }
 }

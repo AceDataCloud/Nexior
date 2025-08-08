@@ -12,8 +12,8 @@
     "description": "زر البحث"
   },
   "button.edit": {
-    "message": "تحرير الرسالة",
-    "description": "تحرير الرسالة المرسلة"
+    "message": "تعديل الرسالة",
+    "description": "تعديل الرسالة المرسلة"
   },
   "modelGroup.chatgpt": {
     "message": "ChatGPT",
@@ -38,6 +38,22 @@
   "modelGroup.grokDescription": {
     "message": "نموذج الذكاء الاصطناعي الذي طورته شركة xAI",
     "description": "وصف نموذج Grok3"
+  },
+  "model.5": {
+    "message": "gpt-5",
+    "description": "اسم النموذج للخدمة، أي GPT 5"
+  },
+  "model.5Description": {
+    "message": "النموذج الأكثر تقدمًا حاليًا",
+    "description": "وصف نموذج GPT 5"
+  },
+  "model.5Mini": {
+    "message": "gpt-5-mini",
+    "description": "اسم النموذج للخدمة، أي GPT 5 Mini"
+  },
+  "model.5MiniDescription": {
+    "message": "نموذج GPT 5 أسرع وأخف",
+    "description": "وصف نموذج GPT 5 Mini"
   },
   "model.4O": {
     "message": "gpt-4o",
@@ -84,7 +100,7 @@
     "description": "اسم النموذج للخدمة، أي استدلال DeepSeek"
   },
   "model.deepseekReasonerDescription": {
-    "message": "مناسب للاستدلال والتفكير العميق",
+    "message": "مناسب للاستدلال والأسئلة العميقة",
     "description": "وصف نموذج استدلال DeepSeek"
   },
   "model.grok3": {
@@ -100,7 +116,7 @@
     "description": "اسم النموذج للخدمة، أي استدلال Grok3"
   },
   "model.grok3ReasonerDescription": {
-    "message": "مناسب للاستدلال والتفكير العميق",
+    "message": "مناسب للاستدلال والأسئلة العميقة",
     "description": "وصف نموذج استدلال Grok3"
   },
   "model.grok3Deepsearch": {
@@ -108,7 +124,7 @@
     "description": "اسم النموذج للخدمة، أي Grok3 بحث عميق"
   },
   "model.grok3DeepsearchDescription": {
-    "message": "مناسب للبحث العميق والمشاكل المعقدة",
+    "message": "مناسب للبحث العميق والأسئلة المعقدة",
     "description": "وصف نموذج Grok3 بحث عميق"
   },
   "model.o1": {
@@ -120,7 +136,7 @@
     "description": "وصف نموذج O1"
   },
   "model.o1Mini": {
-    "message": "ChatGPT - o1-mini استدلال",
+    "message": "ChatGPT - استدلال o1-mini",
     "description": "اسم النموذج للخدمة، أي O1-Mini"
   },
   "model.o1MiniDescription": {
@@ -140,7 +156,7 @@
     "description": "اسم النموذج للخدمة، أي O4-Mini"
   },
   "model.o4MiniDescription": {
-    "message": "بارع في الترميز والاستدلال البصري",
+    "message": "بارع في الاستدلال البرمجي والبصري",
     "description": "وصف نموذج O4"
   },
   "message.startNewChat": {
@@ -164,15 +180,15 @@
     "description": "رسالة على الويب تخبر المستخدم أن السؤال لا يمكن أن يكون فارغًا"
   },
   "message.uploadReferencesExceed": {
-    "message": "يمكنك رفع ملف واحد فقط كحد أقصى",
-    "description": "رسالة على الويب تخبر المستخدم أنه يمكن رفع ملف واحد فقط كحد أقصى"
+    "message": "يمكنك تحميل ملف واحد فقط كحد أقصى",
+    "description": "网页中的消息，告诉用户最多只能上传 1 个文件"
   },
   "message.uploadReferencesError": {
-    "message": "فشل رفع الملف، يرجى المحاولة مرة أخرى لاحقًا",
-    "description": "رسالة على الويب تخبر المستخدم أن رفع الملف فشل، يرجى المحاولة مرة أخرى لاحقًا"
+    "message": "فشل تحميل الملف، يرجى المحاولة لاحقًا",
+    "description": "网页中的消息，告诉用户文件上传失败，请稍后重试"
   },
   "message.notApplied": {
-    "message": "لم تقم بتقديم طلب لهذه الخدمة، يرجى التقديم أولاً",
+    "message": "لم تقم بالتقدم لهذه الخدمة، يرجى التقدم أولاً",
     "description": "网页中的消息，告诉用户您尚未申请此服务，请先申请"
   },
   "message.tryForFree": {
@@ -184,7 +200,7 @@
     "description": "开始对话的示例问题，要求用户编写一段输出 Hello World 的 JavaScript 代码"
   },
   "message.question2": {
-    "message": "كتابة صفحة شخصية",
+    "message": "إنشاء صفحة ويب شخصية",
     "description": "开始对话的示例问题，要求用户给 Mike 写封电子邮件，告诉他我刚搬家"
   },
   "message.question3": {
@@ -248,7 +264,7 @@
     "description": "网页中的消息，告诉用户回答问题超时，请稍后重试"
   },
   "message.errorNotApplied": {
-    "message": "لم تقم بتقديم طلب لهذه الخدمة، يرجى التقديم أولاً قبل متابعة السؤال",
+    "message": "لم تقم بالتقدم لهذه الخدمة، يرجى التقدم أولاً قبل متابعة السؤال",
     "description": "网页中的消息，告诉用户您尚未申请此服务，请先申请再继续提问"
   },
   "message.confirmDelete": {
@@ -280,12 +296,12 @@
     "description": "网页中的标题，指出这部分内容是关于服务回答复杂问题的能力"
   },
   "title.professionalQuestion": {
-    "message": "استشارة الأسئلة المهنية",
-    "description": "网页中的标题，指出这部分内容是关于服务咨询专业问题的能力"
+    "message": "استشارة مسائل مهنية",
+    "description": "عنوان في الصفحة يشير إلى أن هذا الجزء يتعلق بقدرة الخدمة على استشارة مسائل مهنية"
   },
   "title.getTips": {
-    "message": "احصل على الإلهام والأفكار",
-    "description": "عنوان في الصفحة يشير إلى أن هذا الجزء يتعلق بقدرة الخدمة على الحصول على الإلهام والأفكار"
+    "message": "الحصول على إلهام وأفكار",
+    "description": "عنوان في الصفحة يشير إلى أن هذا الجزء يتعلق بقدرة الخدمة على الحصول على إلهام وأفكار"
   },
   "group.today": {
     "message": "اليوم",
