@@ -5,6 +5,8 @@ export const ROLE_SYSTEM = 'system';
 export const ROLE_ASSISTANT = 'assistant';
 export const ROLE_USER = 'user';
 
+export const CHAT_MODEL_NAME_GPT_5 = 'gpt-5';
+export const CHAT_MODEL_NAME_GPT_5_MINI = 'gpt-5-mini';
 export const CHAT_MODEL_NAME_GPT_4_ALL = 'gpt-4-all';
 export const CHAT_MODEL_NAME_GPT_4O = 'gpt-4o';
 export const CHAT_MODEL_NAME_GPT_4O_MINI = 'gpt-4o-mini';
@@ -33,6 +35,26 @@ export const CHAT_MODEL_GPT_4_ALL: IChatModel = {
   isImageSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.4All'),
   getDescription: () => i18n.global.t('chat.model.4AllDescription')
+};
+
+export const CHAT_MODEL_GPT_5: IChatModel = {
+  name: CHAT_MODEL_NAME_GPT_5,
+  icon: CHAT_MODEL_ICON_CHATGPT,
+  modelGroup: 'chatgpt',
+  isFileSupported: true,
+  isImageSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.5'),
+  getDescription: () => i18n.global.t('chat.model.5Description')
+};
+
+export const CHAT_MODEL_GPT_5_MINI: IChatModel = {
+  name: CHAT_MODEL_NAME_GPT_5_MINI,
+  icon: CHAT_MODEL_ICON_CHATGPT,
+  modelGroup: 'chatgpt',
+  isFileSupported: true,
+  isImageSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.5Mini'),
+  getDescription: () => i18n.global.t('chat.model.5MiniDescription')
 };
 
 export const CHAT_MODEL_GPT_4O: IChatModel = {
@@ -151,9 +173,10 @@ export const CHAT_MODEL_GROUP_CHATGPT: IChatModelGroup = {
   getDisplayName: () => i18n.global.t('chat.modelGroup.chatgpt'),
   getDescription: () => i18n.global.t('chat.modelGroup.chatgptDescription'),
   models: [
+    CHAT_MODEL_GPT_5,
+    CHAT_MODEL_GPT_5_MINI,
     CHAT_MODEL_GPT_4O,
     CHAT_MODEL_GPT_4_ALL,
-    CHAT_MODEL_GPT_4O_MINI,
     CHAT_MODEL_GPT_4O_IMAGE,
     CHAT_MODEL_O3,
     CHAT_MODEL_O4_MINI
@@ -177,9 +200,10 @@ export const CHAT_MODEL_GROUP_GROK: IChatModelGroup = {
 };
 
 export const CHAT_MODELS: IChatModel[] = [
+  CHAT_MODEL_GPT_5,
+  CHAT_MODEL_GPT_5_MINI,
   CHAT_MODEL_GPT_4O,
   CHAT_MODEL_GPT_4_ALL,
-  CHAT_MODEL_GPT_4O_MINI,
   CHAT_MODEL_GPT_4O_IMAGE,
   CHAT_MODEL_O3,
   CHAT_MODEL_O4_MINI,

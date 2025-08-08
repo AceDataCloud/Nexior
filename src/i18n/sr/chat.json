@@ -39,6 +39,22 @@
     "message": "AI model razvijen od strane xAI",
     "description": "Opis Grok3 modela"
   },
+  "model.5": {
+    "message": "gpt-5",
+    "description": "Naziv modela usluge, tj. GPT 5"
+  },
+  "model.5Description": {
+    "message": "Trenutno najnapredniji model",
+    "description": "Opis GPT 5 modela"
+  },
+  "model.5Mini": {
+    "message": "gpt-5-mini",
+    "description": "Naziv modela usluge, tj. GPT 5 Mini"
+  },
+  "model.5MiniDescription": {
+    "message": "Brži i lakši GPT 5 model",
+    "description": "Opis GPT 5 Mini modela"
+  },
   "model.4O": {
     "message": "gpt-4o",
     "description": "Naziv modela usluge, tj. GPT 4.0 vizualni"
@@ -80,12 +96,12 @@
     "description": "Opis DeepSeek chat modela"
   },
   "model.deepseekReasoner": {
-    "message": "R1 rezonovanje",
-    "description": "Naziv modela usluge, tj. DeepSeek rezonovanje"
+    "message": "R1 rezonator",
+    "description": "Naziv modela usluge, tj. DeepSeek rezonator"
   },
   "model.deepseekReasonerDescription": {
     "message": "Pogodan za rezonovanje i duboko razmišljanje",
-    "description": "Opis DeepSeek rezonovanje modela"
+    "description": "Opis DeepSeek rezonator modela"
   },
   "model.grok3": {
     "message": "grok-3",
@@ -96,12 +112,12 @@
     "description": "Opis Grok3 modela"
   },
   "model.grok3Reasoner": {
-    "message": "grok-3 rezonovanje",
-    "description": "Naziv modela usluge, tj. Grok3 rezonovanje"
+    "message": "grok-3 rezonator",
+    "description": "Naziv modela usluge, tj. Grok3 rezonator"
   },
   "model.grok3ReasonerDescription": {
     "message": "Pogodan za rezonovanje i duboko razmišljanje",
-    "description": "Opis Grok3 rezonovanje modela"
+    "description": "Opis Grok3 rezonator modela"
   },
   "model.grok3Deepsearch": {
     "message": "grok-3 duboka istraživanja",
@@ -109,7 +125,7 @@
   },
   "model.grok3DeepsearchDescription": {
     "message": "Pogodan za duboka istraživanja i složene probleme",
-    "description": "Opis Grok3 duboka istraživanja modela"
+    "description": "Opis Grok3 dubokih istraživanja modela"
   },
   "model.o1": {
     "message": "o1",
@@ -120,11 +136,11 @@
     "description": "Opis O1 modela"
   },
   "model.o1Mini": {
-    "message": "ChatGPT - o1-mini rezonovanje",
+    "message": "ChatGPT - o1-mini rezonator",
     "description": "Naziv modela usluge, tj. O1-Mini"
   },
   "model.o1MiniDescription": {
-    "message": "Brže izvršavanje zadataka rezonovanja.",
+    "message": "Brže obavljanje zadataka rezonovanja.",
     "description": "Opis O1-Mini modela"
   },
   "model.o3": {
@@ -164,12 +180,12 @@
     "description": "Poruka na vebu koja obaveštava korisnika da pitanje ne može biti prazno"
   },
   "message.uploadReferencesExceed": {
-    "message": "Možete otpremiti najviše 1 datoteku",
-    "description": "Poruka na vebu koja obaveštava korisnika da može otpremiti najviše 1 datoteku"
+    "message": "Možete da otpremite najviše 1 datoteku",
+    "description": "Poruka na vebu koja obaveštava korisnika da može da otpremi najviše 1 datoteku"
   },
   "message.uploadReferencesError": {
-    "message": "Otpremanje datoteke nije uspelo, pokušajte ponovo kasnije",
-    "description": "Poruka na vebu koja obaveštava korisnika da otpremanje datoteke nije uspelo, pokušajte ponovo kasnije"
+    "message": "Otpremanje datoteke nije uspelo, molimo pokušajte ponovo kasnije",
+    "description": "Poruka na vebu koja obaveštava korisnika da otpremanje datoteke nije uspelo, molimo pokušajte ponovo kasnije"
   },
   "message.notApplied": {
     "message": "Još niste aplicirali za ovu uslugu, molimo vas da prvo aplicirate",
@@ -180,19 +196,19 @@
     "description": "Poruka na vebu koja obaveštava korisnika o besplatnom probanju"
   },
   "message.question1": {
-    "message": "Kreiraj plan obuke",
+    "message": "Kreirajte plan obuke",
     "description": "Primer pitanja za započinjanje razgovora, traži od korisnika da napiše JavaScript kod koji ispisuje Hello World"
   },
   "message.question2": {
-    "message": "Napravi ličnu veb stranicu",
+    "message": "Napravite ličnu veb stranicu",
     "description": "Primer pitanja za započinjanje razgovora, traži od korisnika da napiše e-mail Mike-u i obavesti ga da se upravo preselio"
   },
   "message.question3": {
-    "message": "Dizajniraj zanimljive programske igre",
+    "message": "Dizajnirajte zanimljive programske igre",
     "description": "Primer pitanja za započinjanje razgovora, traži od korisnika da jednostavnim jezikom objasni osnovne principe kvantnog računarstva"
   },
   "message.question4": {
-    "message": "Iskustvo Seula kao lokalac",
+    "message": "Iskusite Seul kao lokalac",
     "description": "Primer pitanja za započinjanje razgovora, traži od korisnika da objasni kakav uticaj ima virtuelna stvarnost na umetničko stvaralaštvo"
   },
   "message.question5": {
@@ -216,8 +232,8 @@
     "description": "Poruka na vebu koja obaveštava korisnika da odgovor nije uspeo, molimo pokušajte ponovo kasnije"
   },
   "message.errorBadRequest": {
-    "message": "Sadržaj zahteva nije validan, molimo ponovo postavite pitanje",
-    "description": "Poruka na vebu koja obaveštava korisnika da sadržaj zahteva nije validan, molimo ponovo postavite pitanje"
+    "message": "Sadržaj zahteva nije ispravan, molimo ponovo postavite pitanje",
+    "description": "Poruka na vebu koja obaveštava korisnika da sadržaj zahteva nije ispravan, molimo ponovo postavite pitanje"
   },
   "message.errorNoConversation": {
     "message": "Razgovor ne postoji ili je istekao, molimo započnite novi razgovor",
@@ -228,8 +244,8 @@
     "description": "Poruka na vebu koja obaveštava korisnika da je sadržaj pitanja predug, molimo skratite i pokušajte ponovo"
   },
   "message.errorTooManyRequests": {
-    "message": "Vaša aktivnost je previše učestala, molimo pokušajte ponovo kasnije",
-    "description": "Poruka na vebu koja obaveštava korisnika da je njegova aktivnost previše učestala, molimo pokušajte ponovo kasnije"
+    "message": "Vaša akcija je previše učestala, molimo pokušajte ponovo kasnije",
+    "description": "Poruka na vebu koja obaveštava korisnika da je njegova akcija previše učestala, molimo pokušajte ponovo kasnije"
   },
   "message.errorBusy": {
     "message": "Server je zauzet, molimo pokušajte ponovo kasnije",
@@ -252,7 +268,7 @@
     "description": "Poruka na vebu koja obaveštava korisnika da još nije aplicirao za ovu uslugu, molimo vas da prvo aplicirate pre nego što nastavite sa pitanjima"
   },
   "message.confirmDelete": {
-    "message": "Potvrdi brisanje",
+    "message": "Potvrdite brisanje",
     "description": "Poruka na vebu koja obaveštava korisnika da potvrdi brisanje"
   },
   "message.howToUse": {
@@ -261,7 +277,7 @@
   },
   "title.chat": {
     "message": "AI Čat",
-    "description": "Naslov veba, tj. AI Čat"
+    "description": "Naslov veba, tj. AI čat"
   },
   "title.example": {
     "message": "Primer",
@@ -273,19 +289,19 @@
   },
   "title.limitations": {
     "message": "Ograničenja",
-    "description": "Naslov na vebu koji ukazuje da se ovaj deo sadržaja odnosi na tehnička ograničenja usluge"
+    "description": "Naslov na vebu koji ukazuje da se ovaj deo odnosi na tehnička ograničenja usluge"
   },
   "title.complexQuestion": {
     "message": "Odgovaranje na složena pitanja",
-    "description": "Naslov na vebu koji ukazuje da se ovaj deo sadržaja odnosi na sposobnost usluge da odgovara na složena pitanja"
+    "description": "Naslov na vebu koji ukazuje da se ovaj deo odnosi na sposobnost usluge da odgovara na složena pitanja"
   },
   "title.professionalQuestion": {
-    "message": "Konsultovanje profesionalnih pitanja",
-    "description": "Naslov na vebu koji ukazuje da se ovaj deo sadržaja odnosi na sposobnost usluge da konsultuje profesionalna pitanja"
+    "message": "Konsultacije o profesionalnim pitanjima",
+    "description": "Naslov na veb stranici koji ukazuje da je ovaj deo sadržaja o sposobnosti pružanja konsultacija o profesionalnim pitanjima"
   },
   "title.getTips": {
     "message": "Dobijanje inspiracije i ideja",
-    "description": "Naslov na veb stranici koji ukazuje da je ovaj deo sadržaja o sposobnosti usluge da dobije inspiraciju i ideje"
+    "description": "Naslov na veb stranici koji ukazuje da je ovaj deo sadržaja o sposobnosti pružanja inspiracije i ideja"
   },
   "group.today": {
     "message": "Danas",
