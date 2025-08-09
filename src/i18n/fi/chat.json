@@ -39,6 +39,14 @@
     "message": "xAI:n kehittämä AI-malli",
     "description": "Grok3-mallin kuvaus"
   },
+  "model.5All": {
+    "message": "gpt-5",
+    "description": "Palvelun mallin nimi, eli GPT 5 All"
+  },
+  "model.5AllDescription": {
+    "message": "Tällä hetkellä edistynein malli",
+    "description": "GPT 5 -mallin kuvaus"
+  },
   "model.5": {
     "message": "gpt-5",
     "description": "Palvelun mallin nimi, eli GPT 5"
@@ -79,6 +87,14 @@
     "message": "Soveltuu suurimpaan osaan tehtävistä",
     "description": "4.0 visuaalisen mallin kuvaus"
   },
+  "model.4OAll": {
+    "message": "gpt-4o",
+    "description": "Palvelun mallin nimi, eli GPT 4O All"
+  },
+  "model.4OAllDescription": {
+    "message": "Monipuolinen malli",
+    "description": "4O monipuolisen mallin kuvaus"
+  },
   "model.4All": {
     "message": "gpt-4-all",
     "description": "Palvelun mallin nimi, eli GPT 4.0 All"
@@ -102,6 +118,14 @@
   "model.deepseekReasonerDescription": {
     "message": "Soveltuu päättelyyn ja syvälliseen ajatteluun",
     "description": "DeepSeek päättely -mallin kuvaus"
+  },
+  "model.grok4": {
+    "message": "grok-4",
+    "description": "Palvelun mallin nimi"
+  },
+  "model.grok4Description": {
+    "message": "Edistynein malli",
+    "description": "Grok4-mallin kuvaus"
   },
   "model.grok3": {
     "message": "grok-3",
@@ -141,7 +165,7 @@
   },
   "model.o1MiniDescription": {
     "message": "Nopeampi päättelytehtävissä.",
-    "description": "O1-Mini -mallin kuvaus"
+    "description": "O1-Mini-mallin kuvaus"
   },
   "model.o3": {
     "message": "o3",
@@ -165,11 +189,11 @@
   },
   "message.uploadFile": {
     "message": "Lataa tiedosto",
-    "description": "Verkkosivun viesti, joka kertoo käyttäjälle ladata tiedosto"
+    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle tiedoston lataamisesta"
   },
   "message.noToken": {
     "message": "Hae ensin tarvittava palvelu",
-    "description": "Verkkosivun viesti, joka kertoo käyttäjälle hakea ensin tarvittava palvelu"
+    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle, että hänen on ensin haettava tarvittava palvelu"
   },
   "message.newMessagePlaceholder": {
     "message": "Syötä kysymyksesi...",
@@ -177,11 +201,11 @@
   },
   "message.noInput": {
     "message": "Kysymys ei voi olla tyhjää",
-    "description": "Verkkosivun viesti, joka kertoo käyttäjälle, että kysymys ei voi olla tyhjää"
+    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle, että kysymys ei voi olla tyhjää"
   },
   "message.uploadReferencesExceed": {
     "message": "Voit ladata enintään 1 tiedoston",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle, että voit ladata enintään 1 tiedoston"
+    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle, että hän voi ladata enintään 1 tiedoston"
   },
   "message.uploadReferencesError": {
     "message": "Tiedoston lataaminen epäonnistui, yritä myöhemmin uudelleen",
@@ -189,11 +213,11 @@
   },
   "message.notApplied": {
     "message": "Et ole vielä hakenut tätä palvelua, hae ensin",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle, että et ole vielä hakenut tätä palvelua, hae ensin"
+    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle, että hän ei ole vielä hakenut tätä palvelua, hae ensin"
   },
   "message.tryForFree": {
-    "message": "Kokeile ilmaiseksi",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle kokeile ilmaiseksi"
+    "message": "Ilmainen kokeilu",
+    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle ilmaisesta kokeilusta"
   },
   "message.question1": {
     "message": "Luo harjoitusohjelma",
@@ -201,7 +225,7 @@
   },
   "message.question2": {
     "message": "Tee henkilökohtainen verkkosivusto",
-    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyydetään käyttäjää kirjoittamaan Mike:lle sähköposti, jossa kerrotaan, että olen juuri muuttanut"
+    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyydetään käyttäjää kirjoittamaan Mike:lle sähköposti, jossa kerrotaan, että hän on juuri muuttanut"
   },
   "message.question3": {
     "message": "Suunnittele mielenkiintoisia ohjelmointipelejä",
@@ -245,15 +269,15 @@
   },
   "message.errorTooManyRequests": {
     "message": "Toimintosi ovat liian tiheitä, yritä myöhemmin uudelleen",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle, että toimintosi ovat liian tiheitä, yritä myöhemmin uudelleen"
+    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle, että hänen toimintonsa ovat liian tiheitä, yritä myöhemmin uudelleen"
   },
   "message.errorBusy": {
     "message": "Palvelin on kiireinen, yritä myöhemmin uudelleen",
     "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle, että palvelin on kiireinen, yritä myöhemmin uudelleen"
   },
   "message.errorUsedUp": {
-    "message": "Olet käyttänyt kaikki pakettisi kerrat, osta lisää kertoja jatkaaksesi käyttöä",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle, että olet käyttänyt kaikki pakettisi kerrat, osta lisää kertoja jatkaaksesi käyttöä"
+    "message": "Olet käyttänyt kaikki pakettisi, osta lisää jatkaaksesi käyttöä",
+    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle, että hän on käyttänyt kaikki pakettinsa, osta lisää jatkaaksesi käyttöä"
   },
   "message.errorUnknown": {
     "message": "Palvelimella tapahtui tuntematon virhe, yritä myöhemmin uudelleen tai ota yhteyttä asiakaspalveluun",
@@ -265,7 +289,7 @@
   },
   "message.errorNotApplied": {
     "message": "Et ole vielä hakenut tätä palvelua, hae ensin ja jatka kysymistä",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle, että et ole vielä hakenut tätä palvelua, hae ensin ja jatka kysymistä"
+    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle, että hän ei ole vielä hakenut tätä palvelua, hae ensin ja jatka kysymistä"
   },
   "message.confirmDelete": {
     "message": "Vahvista poisto",
@@ -296,12 +320,12 @@
     "description": "Verkkosivun otsikko, joka osoittaa, että tämä osa sisältöä käsittelee palvelun kykyä vastata monimutkaisiin kysymyksiin"
   },
   "title.professionalQuestion": {
-    "message": "Konsultoi ammatillisia kysymyksiä",
-    "description": "Verkkosivun otsikko, joka osoittaa, että tämä osa sisältöä koskee palvelun konsultointikykyä ammatillisiin kysymyksiin"
+    "message": "Konsultointi ammatillisissa kysymyksissä",
+    "description": "Verkkosivun otsikko, joka osoittaa, että tämä osa sisältöä käsittelee palvelun kykyä konsultoida ammatillisissa kysymyksissä"
   },
   "title.getTips": {
-    "message": "Hanki inspiraatiota ja ideoita",
-    "description": "Verkkosivun otsikko, joka osoittaa, että tämä osa sisältöä koskee palvelun kykyä hankkia inspiraatiota ja ideoita"
+    "message": "Inspiraation ja ideoiden saaminen",
+    "description": "Verkkosivun otsikko, joka osoittaa, että tämä osa sisältöä käsittelee palvelun kykyä saada inspiraatiota ja ideoita"
   },
   "group.today": {
     "message": "Tänään",

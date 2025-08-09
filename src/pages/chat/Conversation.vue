@@ -315,6 +315,8 @@ export default defineComponent({
       console.debug('target model group', targetModelGroup);
       this.$store.dispatch('chat/setModelGroup', targetModelGroup);
       this.$store.dispatch('chat/setModel', targetModel);
+      console.debug('conversation', conversation);
+      console.debug('conversation messages', this.messages);
       this.messages = conversation?.messages || [];
       this.onScrollDown();
     },

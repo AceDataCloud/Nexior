@@ -16,17 +16,23 @@ import {
   CHAT_MODEL_NAME_GROK_3_REASONER,
   CHAT_MODEL_NAME_GROK_3_DEEPSEARCH,
   CHAT_MODEL_NAME_GPT_5,
-  CHAT_MODEL_NAME_GPT_5_MINI
+  CHAT_MODEL_NAME_GPT_5_MINI,
+  CHAT_MODEL_NAME_GPT_5_ALL,
+  CHAT_MODEL_NAME_GPT_4O_ALL,
+  CHAT_MODEL_NAME_GROK_4
 } from '@/constants';
 
 export type IChatModelName =
   | typeof CHAT_MODEL_NAME_GPT_5
+  | typeof CHAT_MODEL_NAME_GPT_5_ALL
   | typeof CHAT_MODEL_NAME_GPT_5_MINI
+  | typeof CHAT_MODEL_NAME_GPT_4O_ALL
   | typeof CHAT_MODEL_NAME_GPT_4_ALL
   | typeof CHAT_MODEL_NAME_GPT_4O
   | typeof CHAT_MODEL_NAME_GPT_4O_MINI
   | typeof CHAT_MODEL_NAME_DEEPSEEK_CHAT
   | typeof CHAT_MODEL_NAME_DEEPSEEK_REASONER
+  | typeof CHAT_MODEL_NAME_GROK_4
   | typeof CHAT_MODEL_NAME_GROK_3
   | typeof CHAT_MODEL_NAME_GROK_3_REASONER
   | typeof CHAT_MODEL_NAME_GROK_3_DEEPSEARCH
@@ -38,6 +44,7 @@ export type IChatModelName =
   | typeof CHAT_MODEL_NAME_O3;
 
 export interface IChatModel {
+  enabled?: boolean;
   name: IChatModelName;
   icon: string;
   modelGroup?: 'chatgpt' | 'deepseek' | 'grok';

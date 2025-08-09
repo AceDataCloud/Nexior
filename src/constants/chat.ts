@@ -5,8 +5,10 @@ export const ROLE_SYSTEM = 'system';
 export const ROLE_ASSISTANT = 'assistant';
 export const ROLE_USER = 'user';
 
+export const CHAT_MODEL_NAME_GPT_5_ALL = 'gpt-5-all';
 export const CHAT_MODEL_NAME_GPT_5 = 'gpt-5';
 export const CHAT_MODEL_NAME_GPT_5_MINI = 'gpt-5-mini';
+export const CHAT_MODEL_NAME_GPT_4O_ALL = 'gpt-4o-all';
 export const CHAT_MODEL_NAME_GPT_4_ALL = 'gpt-4-all';
 export const CHAT_MODEL_NAME_GPT_4O = 'gpt-4o';
 export const CHAT_MODEL_NAME_GPT_4O_MINI = 'gpt-4o-mini';
@@ -17,6 +19,7 @@ export const CHAT_MODEL_NAME_O3 = 'o3';
 export const CHAT_MODEL_NAME_O4_MINI = 'o4-mini';
 export const CHAT_MODEL_NAME_DEEPSEEK_CHAT = 'deepseek-v3';
 export const CHAT_MODEL_NAME_DEEPSEEK_REASONER = 'deepseek-r1';
+export const CHAT_MODEL_NAME_GROK_4 = 'grok-4';
 export const CHAT_MODEL_NAME_GROK_3 = 'grok-3';
 export const CHAT_MODEL_NAME_GROK_3_REASONER = 'grok-3-reasoning';
 export const CHAT_MODEL_NAME_GROK_3_DEEPSEARCH = 'grok-3-deepsearch';
@@ -27,14 +30,15 @@ export const CHAT_MODEL_ICON_DEEPSEEK = 'https://cdn.acedata.cloud/4rb23t.jpg';
 
 export const CHAT_SERVICE_ID = 'b1fbcc32-e218-4253-9dc3-4fe600a1bfb9';
 
-export const CHAT_MODEL_GPT_4_ALL: IChatModel = {
-  name: CHAT_MODEL_NAME_GPT_4_ALL,
+export const CHAT_MODEL_GPT_5_ALL: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_GPT_5_ALL,
   icon: CHAT_MODEL_ICON_CHATGPT,
   modelGroup: 'chatgpt',
   isFileSupported: true,
   isImageSupported: true,
-  getDisplayName: () => i18n.global.t('chat.model.4All'),
-  getDescription: () => i18n.global.t('chat.model.4AllDescription')
+  getDisplayName: () => i18n.global.t('chat.model.5All'),
+  getDescription: () => i18n.global.t('chat.model.5AllDescription')
 };
 
 export const CHAT_MODEL_GPT_5: IChatModel = {
@@ -55,6 +59,27 @@ export const CHAT_MODEL_GPT_5_MINI: IChatModel = {
   isImageSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.5Mini'),
   getDescription: () => i18n.global.t('chat.model.5MiniDescription')
+};
+
+export const CHAT_MODEL_GPT_4O_ALL: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_GPT_4O_ALL,
+  icon: CHAT_MODEL_ICON_CHATGPT,
+  modelGroup: 'chatgpt',
+  isFileSupported: true,
+  isImageSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.4OAll'),
+  getDescription: () => i18n.global.t('chat.model.4OAllDescription')
+};
+
+export const CHAT_MODEL_GPT_4_ALL: IChatModel = {
+  name: CHAT_MODEL_NAME_GPT_4_ALL,
+  icon: CHAT_MODEL_ICON_CHATGPT,
+  modelGroup: 'chatgpt',
+  isFileSupported: true,
+  isImageSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.4All'),
+  getDescription: () => i18n.global.t('chat.model.4AllDescription')
 };
 
 export const CHAT_MODEL_GPT_4O: IChatModel = {
@@ -108,6 +133,7 @@ export const CHAT_MODEL_O1_MINI: IChatModel = {
 };
 
 export const CHAT_MODEL_O3: IChatModel = {
+  enabled: true,
   name: CHAT_MODEL_NAME_O3,
   icon: CHAT_MODEL_ICON_CHATGPT,
   modelGroup: 'chatgpt',
@@ -118,6 +144,7 @@ export const CHAT_MODEL_O3: IChatModel = {
 };
 
 export const CHAT_MODEL_O4_MINI: IChatModel = {
+  enabled: true,
   name: CHAT_MODEL_NAME_O4_MINI,
   icon: CHAT_MODEL_ICON_CHATGPT,
   modelGroup: 'chatgpt',
@@ -128,6 +155,7 @@ export const CHAT_MODEL_O4_MINI: IChatModel = {
 };
 
 export const CHAT_MODEL_DEEPSEEK_CHAT: IChatModel = {
+  enabled: true,
   name: CHAT_MODEL_NAME_DEEPSEEK_CHAT,
   icon: CHAT_MODEL_ICON_DEEPSEEK,
   modelGroup: 'deepseek',
@@ -136,6 +164,7 @@ export const CHAT_MODEL_DEEPSEEK_CHAT: IChatModel = {
 };
 
 export const CHAT_MODEL_DEEPSEEK_REASONER: IChatModel = {
+  enabled: true,
   name: CHAT_MODEL_NAME_DEEPSEEK_REASONER,
   icon: CHAT_MODEL_ICON_DEEPSEEK,
   modelGroup: 'deepseek',
@@ -143,7 +172,17 @@ export const CHAT_MODEL_DEEPSEEK_REASONER: IChatModel = {
   getDescription: () => i18n.global.t('chat.model.deepseekReasonerDescription')
 };
 
+export const CHAT_MODEL_GROK_4: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_GROK_4,
+  icon: CHAT_MODEL_ICON_GROK,
+  modelGroup: 'grok',
+  getDisplayName: () => i18n.global.t('chat.model.grok4'),
+  getDescription: () => i18n.global.t('chat.model.grok4Description')
+};
+
 export const CHAT_MODEL_GROK_3: IChatModel = {
+  enabled: true,
   name: CHAT_MODEL_NAME_GROK_3,
   icon: CHAT_MODEL_ICON_GROK,
   modelGroup: 'grok',
@@ -152,6 +191,7 @@ export const CHAT_MODEL_GROK_3: IChatModel = {
 };
 
 export const CHAT_MODEL_GROK_3_REASONER: IChatModel = {
+  enabled: true,
   name: CHAT_MODEL_NAME_GROK_3_REASONER,
   icon: CHAT_MODEL_ICON_GROK,
   modelGroup: 'grok',
@@ -160,6 +200,7 @@ export const CHAT_MODEL_GROK_3_REASONER: IChatModel = {
 };
 
 export const CHAT_MODEL_GROK_3_DEEPSEARCH: IChatModel = {
+  enabled: true,
   name: CHAT_MODEL_NAME_GROK_3_DEEPSEARCH,
   icon: CHAT_MODEL_ICON_GROK,
   modelGroup: 'grok',
@@ -173,13 +214,17 @@ export const CHAT_MODEL_GROUP_CHATGPT: IChatModelGroup = {
   getDisplayName: () => i18n.global.t('chat.modelGroup.chatgpt'),
   getDescription: () => i18n.global.t('chat.modelGroup.chatgptDescription'),
   models: [
+    CHAT_MODEL_GPT_5_ALL,
     CHAT_MODEL_GPT_5,
     CHAT_MODEL_GPT_5_MINI,
     CHAT_MODEL_GPT_4O,
+    CHAT_MODEL_GPT_4O_MINI,
+    CHAT_MODEL_GPT_4O_ALL,
     CHAT_MODEL_GPT_4_ALL,
     CHAT_MODEL_GPT_4O_IMAGE,
     CHAT_MODEL_O3,
-    CHAT_MODEL_O4_MINI
+    CHAT_MODEL_O4_MINI,
+    CHAT_MODEL_O1_MINI
   ]
 };
 
@@ -196,19 +241,23 @@ export const CHAT_MODEL_GROUP_GROK: IChatModelGroup = {
   name: 'grok',
   getDisplayName: () => i18n.global.t('chat.modelGroup.grok'),
   getDescription: () => i18n.global.t('chat.modelGroup.grokDescription'),
-  models: [CHAT_MODEL_GROK_3, CHAT_MODEL_GROK_3_REASONER, CHAT_MODEL_GROK_3_DEEPSEARCH]
+  models: [CHAT_MODEL_GROK_4, CHAT_MODEL_GROK_3, CHAT_MODEL_GROK_3_REASONER, CHAT_MODEL_GROK_3_DEEPSEARCH]
 };
 
 export const CHAT_MODELS: IChatModel[] = [
+  CHAT_MODEL_GPT_5_ALL,
   CHAT_MODEL_GPT_5,
   CHAT_MODEL_GPT_5_MINI,
   CHAT_MODEL_GPT_4O,
+  CHAT_MODEL_GPT_4O_ALL,
   CHAT_MODEL_GPT_4_ALL,
+  CHAT_MODEL_GPT_4O_MINI,
   CHAT_MODEL_GPT_4O_IMAGE,
   CHAT_MODEL_O3,
   CHAT_MODEL_O4_MINI,
   CHAT_MODEL_DEEPSEEK_CHAT,
   CHAT_MODEL_DEEPSEEK_REASONER,
+  CHAT_MODEL_GROK_4,
   CHAT_MODEL_GROK_3,
   CHAT_MODEL_GROK_3_REASONER,
   CHAT_MODEL_GROK_3_DEEPSEARCH
