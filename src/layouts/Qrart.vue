@@ -6,8 +6,8 @@
     <div class="result">
       <slot name="result" />
     </div>
-    <el-button round class="menu" @click="drawer = true">
-      <font-awesome-icon icon="fa-solid fa-gear" class="icon-menu" />
+    <el-button circle class="menu" @click="drawer = true">
+      <font-awesome-icon icon="fa-solid fa-gear" />
     </el-button>
     <el-drawer v-model="drawer" :with-header="false" size="340px" class="drawer">
       <slot name="config" />
@@ -69,10 +69,10 @@ export default defineComponent({
   }
   .menu {
     display: block;
-    position: fixed;
-    left: 15px;
-    top: 15px;
-    z-index: 2000;
+    position: absolute;
+    right: 8px;
+    top: 45px;
+    z-index: 1000;
   }
 }
 </style>

@@ -118,7 +118,7 @@ export default defineComponent({
   data() {
     return {
       inputHeight: '35px',
-      questionValue: this.question,
+      questionValue: this.question || '',
       fileList: [] as UploadFile[],
       uploadUrl: getBaseUrlPlatform() + '/api/v1/files/'
     };

@@ -39,6 +39,30 @@
     "message": "Model AI opracowany przez firmę xAI",
     "description": "Opis modelu Grok3"
   },
+  "model.5All": {
+    "message": "gpt-5",
+    "description": "Nazwa modelu usługi, czyli GPT 5 All"
+  },
+  "model.5AllDescription": {
+    "message": "Obecnie najnowocześniejszy model",
+    "description": "Opis modelu GPT 5"
+  },
+  "model.5": {
+    "message": "gpt-5",
+    "description": "Nazwa modelu usługi, czyli GPT 5"
+  },
+  "model.5Description": {
+    "message": "Obecnie najnowocześniejszy model",
+    "description": "Opis modelu GPT 5"
+  },
+  "model.5Mini": {
+    "message": "gpt-5-mini",
+    "description": "Nazwa modelu usługi, czyli GPT 5 Mini"
+  },
+  "model.5MiniDescription": {
+    "message": "Szybszy i lżejszy model GPT 5",
+    "description": "Opis modelu GPT 5 Mini"
+  },
   "model.4O": {
     "message": "gpt-4o",
     "description": "Nazwa modelu usługi, czyli GPT 4.0 wizualny"
@@ -57,19 +81,27 @@
   },
   "model.4OImageDescription": {
     "message": "Obsługuje generowanie obrazów",
-    "description": "Opis modelu 4.0 wizualnego"
+    "description": "Opis modelu wizualnego 4.0"
   },
   "model.4ODescription": {
     "message": "Odpowiedni do większości zadań",
-    "description": "Opis modelu 4.0 wizualnego"
+    "description": "Opis modelu wizualnego 4.0"
+  },
+  "model.4OAll": {
+    "message": "gpt-4o",
+    "description": "Nazwa modelu usługi, czyli GPT 4O All"
+  },
+  "model.4OAllDescription": {
+    "message": "Wszechstronny model",
+    "description": "Opis modelu 4O wszechstronnego"
   },
   "model.4All": {
     "message": "gpt-4-all",
     "description": "Nazwa modelu usługi, czyli GPT 4.0 All"
   },
   "model.4AllDescription": {
-    "message": "Uniwersalny model",
-    "description": "Opis modelu 4.0 uniwersalnego"
+    "message": "Wszechstronny model",
+    "description": "Opis modelu 4.0 wszechstronnego"
   },
   "model.deepseekChat": {
     "message": "3.0 standard",
@@ -86,6 +118,14 @@
   "model.deepseekReasonerDescription": {
     "message": "Odpowiedni do wnioskowania i głębokiego myślenia",
     "description": "Opis modelu wnioskowania DeepSeek"
+  },
+  "model.grok4": {
+    "message": "grok-4",
+    "description": "Nazwa modelu usługi"
+  },
+  "model.grok4Description": {
+    "message": "Najnowocześniejszy model",
+    "description": "Opis modelu Grok4"
   },
   "model.grok3": {
     "message": "grok-3",
@@ -152,12 +192,12 @@
     "description": "Wiadomość na stronie, informująca użytkownika o przesłaniu pliku"
   },
   "message.noToken": {
-    "message": "Proszę najpierw złożyć wniosek o odpowiednią usługę",
-    "description": "Wiadomość na stronie, informująca użytkownika o konieczności złożenia wniosku o odpowiednią usługę"
+    "message": "Proszę najpierw ubiegać się o odpowiednią usługę",
+    "description": "Wiadomość na stronie, informująca użytkownika, aby najpierw ubiegał się o odpowiednią usługę"
   },
   "message.newMessagePlaceholder": {
-    "message": "Wpisz swoje pytanie...",
-    "description": "Znak zastępczy na stronie, informujący użytkownika o wpisaniu pytania"
+    "message": "Proszę wpisać swoje pytanie...",
+    "description": "Placeholder na stronie, informujący użytkownika o wpisaniu pytania"
   },
   "message.noInput": {
     "message": "Pytanie nie może być puste",
@@ -172,8 +212,8 @@
     "description": "Wiadomość na stronie, informująca użytkownika, że przesyłanie pliku nie powiodło się, spróbuj ponownie później"
   },
   "message.notApplied": {
-    "message": "Nie złożyłeś jeszcze wniosku o tę usługę, proszę najpierw złożyć wniosek",
-    "description": "Wiadomość na stronie, informująca użytkownika, że nie złożył jeszcze wniosku o tę usługę, proszę najpierw złożyć wniosek"
+    "message": "Nie ubiegałeś się jeszcze o tę usługę, proszę najpierw ubiegać się",
+    "description": "Wiadomość na stronie, informująca użytkownika, że nie ubiegał się jeszcze o tę usługę, proszę najpierw ubiegać się"
   },
   "message.tryForFree": {
     "message": "Wypróbuj za darmo",
@@ -181,39 +221,39 @@
   },
   "message.question1": {
     "message": "Stwórz plan treningowy",
-    "description": "Przykładowe pytanie na rozpoczęcie rozmowy, proszące użytkownika o napisanie kodu JavaScript, który wyświetli Hello World"
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, proszące użytkownika o napisanie kodu JavaScript, który wyświetli Hello World"
   },
   "message.question2": {
-    "message": "Napisz e-mail do Mike'a",
-    "description": "Przykładowe pytanie na rozpoczęcie rozmowy, proszące użytkownika o napisanie e-maila do Mike'a, informując go, że właśnie się przeprowadziłeś"
+    "message": "Stwórz osobistą stronę internetową",
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, proszące użytkownika o napisanie e-maila do Mike'a, informującego go, że właśnie się przeprowadziłeś"
   },
   "message.question3": {
     "message": "Zaprojektuj interesującą grę programistyczną",
-    "description": "Przykładowe pytanie na rozpoczęcie rozmowy, proszące użytkownika o wyjaśnienie podstawowych zasad obliczeń kwantowych w prostych słowach"
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, proszące użytkownika o wyjaśnienie podstawowych zasad obliczeń kwantowych w prostych słowach"
   },
   "message.question4": {
     "message": "Doświadcz Seulu jak miejscowy",
-    "description": "Przykładowe pytanie na rozpoczęcie rozmowy, proszące użytkownika o wyjaśnienie, jaki wpływ ma wirtualna rzeczywistość na tworzenie sztuki"
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, proszące użytkownika o wyjaśnienie, jaki wpływ ma wirtualna rzeczywistość na twórczość artystyczną"
   },
   "message.question5": {
     "message": "Które jest większe: 9.8 czy 9.11?",
-    "description": "Przykładowe pytanie na rozpoczęcie rozmowy, proszące o porównanie dwóch liczb"
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, proszące o porównanie dwóch liczb"
   },
   "message.question6": {
     "message": "Jaki wpływ ma AI na przyszłość?",
-    "description": "Przykładowe pytanie na rozpoczęcie rozmowy, pytające o wpływ AI na przyszłość"
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, pytające o wpływ AI na przyszłość"
   },
   "message.question7": {
     "message": "Jak poprawić efektywność nauki?",
-    "description": "Przykładowe pytanie na rozpoczęcie rozmowy, pytające, jak poprawić swoją efektywność nauki"
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, pytające, jak poprawić swoją efektywność nauki"
   },
   "message.question8": {
-    "message": "Jak zwiększyć koncentrację?",
-    "description": "Przykładowe pytanie na rozpoczęcie rozmowy, pytające, jak zwiększyć swoją koncentrację"
+    "message": "Jak poprawić koncentrację?",
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, pytające, jak poprawić swoją koncentrację"
   },
   "message.errorApiError": {
-    "message": "Nie udało się odpowiedzieć, spróbuj ponownie później",
-    "description": "Wiadomość na stronie, informująca użytkownika, że nie udało się odpowiedzieć, spróbuj ponownie później"
+    "message": "Odpowiedź nie powiodła się, spróbuj ponownie później",
+    "description": "Wiadomość na stronie, informująca użytkownika, że odpowiedź nie powiodła się, spróbuj ponownie później"
   },
   "message.errorBadRequest": {
     "message": "Treść żądania jest nieprawidłowa, proszę zadać pytanie ponownie",
@@ -248,8 +288,8 @@
     "description": "Wiadomość na stronie, informująca użytkownika, że przekroczono czas oczekiwania na odpowiedź, spróbuj ponownie później"
   },
   "message.errorNotApplied": {
-    "message": "Nie złożyłeś jeszcze wniosku o tę usługę, proszę najpierw złożyć wniosek, a następnie kontynuować zadawanie pytań",
-    "description": "Wiadomość na stronie, informująca użytkownika, że nie złożył jeszcze wniosku o tę usługę, proszę najpierw złożyć wniosek, a następnie kontynuować zadawanie pytań"
+    "message": "Nie ubiegałeś się jeszcze o tę usługę, proszę najpierw ubiegać się, a następnie kontynuować pytanie",
+    "description": "Wiadomość na stronie, informująca użytkownika, że nie ubiegał się jeszcze o tę usługę, proszę najpierw ubiegać się, a następnie kontynuować pytanie"
   },
   "message.confirmDelete": {
     "message": "Potwierdź usunięcie",
@@ -261,15 +301,15 @@
   },
   "title.chat": {
     "message": "Czat AI",
-    "description": "Tytuł strony, czyli czat AI"
+    "description": "Tytuł strony, czyli Czat AI"
   },
   "title.example": {
     "message": "Przykład",
-    "description": "Tytuł strony, czyli przykład"
+    "description": "Tytuł strony, czyli Przykład"
   },
   "title.capabilities": {
     "message": "Funkcje",
-    "description": "Tytuł strony, czyli funkcje"
+    "description": "Tytuł strony, czyli Funkcje"
   },
   "title.limitations": {
     "message": "Ograniczenia",
@@ -284,12 +324,12 @@
     "description": "Tytuł na stronie, wskazujący, że ta część dotyczy zdolności usługi do konsultacji w sprawie pytań profesjonalnych"
   },
   "title.getTips": {
-    "message": "Zdobądź inspiracje i pomysły",
-    "description": "Tytuł na stronie, wskazujący, że ta część treści dotyczy możliwości uzyskania inspiracji i pomysłów"
+    "message": "Uzyskiwanie inspiracji i pomysłów",
+    "description": "Tytuł na stronie, wskazujący, że ta część dotyczy zdolności usługi do uzyskiwania inspiracji i pomysłów"
   },
   "group.today": {
-    "message": "Dzisiaj",
-    "description": "Nazwa grupy na stronie, czyli Dzisiaj"
+    "message": "Dziś",
+    "description": "Nazwa grupy na stronie, czyli Dziś"
   },
   "group.yesterday": {
     "message": "Wczoraj",

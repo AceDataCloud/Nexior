@@ -1,31 +1,5 @@
 <template>
   <div class="selector">
-    <el-dropdown v-show="false" trigger="click" popper-class="popper">
-      <div class="flex justify-center mr-1">
-        <span class="icon">
-          <img :src="modelGroup.icon" />
-        </span>
-        <span class="name">{{ modelGroup?.getDisplayName() }}</span>
-        <span class="angle">
-          <font-awesome-icon icon="fa-solid fa-angle-down" />
-        </span>
-      </div>
-      <template #dropdown>
-        <el-dropdown-menu>
-          <el-dropdown-item v-for="(option, optionKey) in options" :key="optionKey" @click="onModelGroupChange(option)">
-            <div class="item">
-              <div class="icon">
-                <img :src="option.icon" />
-              </div>
-              <div class="info">
-                <p class="name">{{ option.getDisplayName() }}</p>
-                <p class="description">{{ option.getDescription() }}</p>
-              </div>
-            </div>
-          </el-dropdown-item>
-        </el-dropdown-menu>
-      </template>
-    </el-dropdown>
     <el-dropdown trigger="click" popper-class="popper">
       <div class="flex justify-center">
         <span class="name">{{ model?.getDisplayName() }}</span>
@@ -34,16 +8,16 @@
         </span>
       </div>
       <template #dropdown>
-        <el-dropdown-menu v-if="modelGroup && modelGroup.models">
+        <el-dropdown-menu v-if="modelGroup && modelGroup?.models">
           <el-dropdown-item
-            v-for="(option, optionKey) in modelGroup.models"
+            v-for="(option, optionKey) in modelGroup?.models?.filter((m) => m.enabled)"
             :key="optionKey"
             @click="onModelChange(option)"
           >
             <div class="item">
               <div class="info">
-                <p v-if="option.getDisplayName" class="name">{{ option.getDisplayName() }}</p>
-                <p v-if="option.getDescription" class="description">{{ option.getDescription() }}</p>
+                <p v-if="option?.getDisplayName" class="name">{{ option?.getDisplayName() }}</p>
+                <p v-if="option?.getDescription" class="description">{{ option?.getDescription() }}</p>
               </div>
             </div>
           </el-dropdown-item>

@@ -102,7 +102,8 @@ export default defineComponent({
       // filter by model group
       conversations = conversations?.filter(
         (conversation: IChatConversation) =>
-          conversation.model && this.modelGroup.models?.map((item) => item.name as string)?.includes(conversation.model)
+          conversation?.model &&
+          this.modelGroup?.models?.map((item) => item.name as string)?.includes(conversation?.model)
       );
       console.debug('filtered conversations', conversations);
       return conversations;

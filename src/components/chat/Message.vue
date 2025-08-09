@@ -7,7 +7,7 @@
     :role="message.role"
   >
     <div class="author">
-      <el-image v-if="message.role === 'assistant'" :src="modelGroup.icon" fit="cover" class="avatar" />
+      <el-image v-if="message.role === 'assistant'" :src="modelGroup?.icon" fit="cover" class="avatar" />
     </div>
     <div v-if="!errorText" class="main">
       <div

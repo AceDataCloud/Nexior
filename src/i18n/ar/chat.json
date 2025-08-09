@@ -39,6 +39,30 @@
     "message": "نموذج الذكاء الاصطناعي الذي طورته شركة xAI",
     "description": "وصف نموذج Grok3"
   },
+  "model.5All": {
+    "message": "gpt-5",
+    "description": "اسم النموذج للخدمة، أي GPT 5 All"
+  },
+  "model.5AllDescription": {
+    "message": "النموذج الأكثر تقدمًا حاليًا",
+    "description": "وصف نموذج GPT 5"
+  },
+  "model.5": {
+    "message": "gpt-5",
+    "description": "اسم النموذج للخدمة، أي GPT 5"
+  },
+  "model.5Description": {
+    "message": "النموذج الأكثر تقدمًا حاليًا",
+    "description": "وصف نموذج GPT 5"
+  },
+  "model.5Mini": {
+    "message": "gpt-5-mini",
+    "description": "اسم النموذج للخدمة، أي GPT 5 Mini"
+  },
+  "model.5MiniDescription": {
+    "message": "نموذج GPT 5 أسرع وأخف",
+    "description": "وصف نموذج GPT 5 Mini"
+  },
   "model.4O": {
     "message": "gpt-4o",
     "description": "اسم النموذج للخدمة، أي GPT 4.0 بصري"
@@ -63,13 +87,21 @@
     "message": "مناسب لمعظم المهام",
     "description": "وصف نموذج 4.0 بصري"
   },
+  "model.4OAll": {
+    "message": "gpt-4o",
+    "description": "اسم النموذج للخدمة، أي GPT 4O All"
+  },
+  "model.4OAllDescription": {
+    "message": "نموذج شامل",
+    "description": "وصف نموذج 4O الشامل"
+  },
   "model.4All": {
     "message": "gpt-4-all",
     "description": "اسم النموذج للخدمة، أي GPT 4.0 All"
   },
   "model.4AllDescription": {
     "message": "نموذج شامل",
-    "description": "وصف نموذج 4.0 شامل"
+    "description": "وصف نموذج 4.0 الشامل"
   },
   "model.deepseekChat": {
     "message": "3.0 قياسي",
@@ -84,8 +116,16 @@
     "description": "اسم النموذج للخدمة، أي استدلال DeepSeek"
   },
   "model.deepseekReasonerDescription": {
-    "message": "مناسب للاستدلال والتفكير العميق",
+    "message": "مناسب للاستدلال والتفكير العميق في المشكلات",
     "description": "وصف نموذج استدلال DeepSeek"
+  },
+  "model.grok4": {
+    "message": "grok-4",
+    "description": "اسم النموذج للخدمة"
+  },
+  "model.grok4Description": {
+    "message": "نموذج متقدم",
+    "description": "وصف نموذج Grok4"
   },
   "model.grok3": {
     "message": "grok-3",
@@ -100,16 +140,16 @@
     "description": "اسم النموذج للخدمة، أي استدلال Grok3"
   },
   "model.grok3ReasonerDescription": {
-    "message": "مناسب للاستدلال والتفكير العميق",
+    "message": "مناسب للاستدلال والتفكير العميق في المشكلات",
     "description": "وصف نموذج استدلال Grok3"
   },
   "model.grok3Deepsearch": {
     "message": "grok-3 بحث عميق",
-    "description": "اسم النموذج للخدمة، أي Grok3 بحث عميق"
+    "description": "اسم النموذج للخدمة، أي بحث عميق Grok3"
   },
   "model.grok3DeepsearchDescription": {
-    "message": "مناسب للبحث العميق والمشاكل المعقدة",
-    "description": "وصف نموذج Grok3 بحث عميق"
+    "message": "مناسب للبحث العميق والمشكلات المعقدة",
+    "description": "وصف نموذج بحث Grok3 العميق"
   },
   "model.o1": {
     "message": "o1",
@@ -120,11 +160,11 @@
     "description": "وصف نموذج O1"
   },
   "model.o1Mini": {
-    "message": "ChatGPT - o1-mini استدلال",
+    "message": "ChatGPT - استدلال o1-mini",
     "description": "اسم النموذج للخدمة، أي O1-Mini"
   },
   "model.o1MiniDescription": {
-    "message": "لإجراء مهام الاستدلال بشكل أسرع.",
+    "message": "لإجراء مهام استدلال أسرع.",
     "description": "وصف نموذج O1-Mini"
   },
   "model.o3": {
@@ -140,39 +180,39 @@
     "description": "اسم النموذج للخدمة، أي O4-Mini"
   },
   "model.o4MiniDescription": {
-    "message": "بارع في الترميز والاستدلال البصري",
+    "message": "بارع في الاستدلال البرمجي والبصري",
     "description": "وصف نموذج O4"
   },
   "message.startNewChat": {
     "message": "ابدأ محادثة جديدة",
-    "description": "رسالة على الويب تخبر المستخدم ببدء محادثة جديدة"
+    "description": "رسالة في الصفحة تخبر المستخدم ببدء محادثة جديدة"
   },
   "message.uploadFile": {
     "message": "رفع ملف",
-    "description": "رسالة على الويب تخبر المستخدم برفع ملف"
+    "description": "网页中的消息，告诉用户上传文件"
   },
   "message.noToken": {
     "message": "يرجى التقدم بطلب للحصول على الخدمة المناسبة أولاً",
-    "description": "رسالة على الويب تخبر المستخدم بالتقدم بطلب للحصول على الخدمة المناسبة أولاً"
+    "description": "网页中的消息，告诉用户先申请相应服务"
   },
   "message.newMessagePlaceholder": {
     "message": "يرجى إدخال سؤالك...",
-    "description": "نص مكان على الويب يخبر المستخدم بإدخال السؤال"
+    "description": "网页中的占位符，告诉用户输入问题"
   },
   "message.noInput": {
     "message": "لا يمكن أن يكون السؤال فارغًا",
-    "description": "رسالة على الويب تخبر المستخدم أن السؤال لا يمكن أن يكون فارغًا"
+    "description": "网页中的消息，告诉用户问题不能为空"
   },
   "message.uploadReferencesExceed": {
     "message": "يمكنك رفع ملف واحد فقط كحد أقصى",
-    "description": "رسالة على الويب تخبر المستخدم أنه يمكن رفع ملف واحد فقط كحد أقصى"
+    "description": "网页中的消息，告诉用户最多只能上传 1 个文件"
   },
   "message.uploadReferencesError": {
-    "message": "فشل رفع الملف، يرجى المحاولة مرة أخرى لاحقًا",
-    "description": "رسالة على الويب تخبر المستخدم أن رفع الملف فشل، يرجى المحاولة مرة أخرى لاحقًا"
+    "message": "فشل رفع الملف، يرجى المحاولة لاحقًا",
+    "description": "网页中的消息，告诉用户文件上传失败，请稍后重试"
   },
   "message.notApplied": {
-    "message": "لم تقم بتقديم طلب لهذه الخدمة، يرجى التقديم أولاً",
+    "message": "لم تتقدم بطلب للحصول على هذه الخدمة بعد، يرجى التقدم أولاً",
     "description": "网页中的消息，告诉用户您尚未申请此服务，请先申请"
   },
   "message.tryForFree": {
@@ -184,7 +224,7 @@
     "description": "开始对话的示例问题，要求用户编写一段输出 Hello World 的 JavaScript 代码"
   },
   "message.question2": {
-    "message": "كتابة صفحة شخصية",
+    "message": "إنشاء صفحة ويب شخصية",
     "description": "开始对话的示例问题，要求用户给 Mike 写封电子邮件，告诉他我刚搬家"
   },
   "message.question3": {
@@ -224,7 +264,7 @@
     "description": "网页中的消息，告诉用户对话不存在或已过期，请开始新对话"
   },
   "message.errorContentTooLarge": {
-    "message": "محتوى السؤال طويل جدًا، يرجى تقصيره والمحاولة مرة أخرى",
+    "message": "محتوى السؤال طويل جدًا، يرجى تقصيره ثم المحاولة مرة أخرى",
     "description": "网页中的消息，告诉用户问题内容过长，请缩短后重试"
   },
   "message.errorTooManyRequests": {
@@ -248,7 +288,7 @@
     "description": "网页中的消息，告诉用户回答问题超时，请稍后重试"
   },
   "message.errorNotApplied": {
-    "message": "لم تقم بتقديم طلب لهذه الخدمة، يرجى التقديم أولاً قبل متابعة السؤال",
+    "message": "لم تتقدم بطلب للحصول على هذه الخدمة بعد، يرجى التقدم أولاً ثم متابعة السؤال",
     "description": "网页中的消息，告诉用户您尚未申请此服务，请先申请再继续提问"
   },
   "message.confirmDelete": {
@@ -261,31 +301,31 @@
   },
   "title.chat": {
     "message": "دردشة الذكاء الاصطناعي",
-    "description": "网页的标题，即 AI 聊天"
+    "description": "عنوان الصفحة، أي دردشة الذكاء الاصطناعي"
   },
   "title.example": {
     "message": "مثال",
-    "description": "网页的标题，即 示例"
+    "description": "عنوان الصفحة، أي مثال"
   },
   "title.capabilities": {
     "message": "القدرات",
-    "description": "网页的标题，即 功能"
+    "description": "عنوان الصفحة، أي القدرات"
   },
   "title.limitations": {
     "message": "القيود",
-    "description": "网页中的标题，指出这部分内容是关于服务的技术限制"
+    "description": "عنوان في الصفحة، يشير إلى أن هذا الجزء يتعلق بالقيود التقنية للخدمة"
   },
   "title.complexQuestion": {
     "message": "الإجابة على الأسئلة المعقدة",
-    "description": "网页中的标题，指出这部分内容是关于服务回答复杂问题的能力"
+    "description": "عنوان في الصفحة، يشير إلى أن هذا الجزء يتعلق بقدرة الخدمة على الإجابة على الأسئلة المعقدة"
   },
   "title.professionalQuestion": {
     "message": "استشارة الأسئلة المهنية",
-    "description": "网页中的标题，指出这部分内容是关于服务咨询专业问题的能力"
+    "description": "عنوان في الصفحة، يشير إلى أن هذا الجزء يتعلق بقدرة الخدمة على استشارة الأسئلة المهنية"
   },
   "title.getTips": {
-    "message": "احصل على الإلهام والأفكار",
-    "description": "عنوان في الصفحة يشير إلى أن هذا الجزء يتعلق بقدرة الخدمة على الحصول على الإلهام والأفكار"
+    "message": "الحصول على الإلهام والأفكار",
+    "description": "عنوان في الصفحة، يشير إلى أن هذا الجزء يتعلق بقدرة الخدمة على الحصول على الإلهام والأفكار"
   },
   "group.today": {
     "message": "اليوم",

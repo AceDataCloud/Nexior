@@ -103,9 +103,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.entry {
-  background-color: var(--el-color-black);
-}
-</style>
