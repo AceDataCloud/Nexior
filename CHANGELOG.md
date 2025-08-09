@@ -138,7 +138,7 @@ Sun, 27 Jul 2025 12:30:39 GMT
 
 ### Patches
 
-- add i18n for element  (cqc@cuiqingcai.com)
+- add i18n for element (cqc@cuiqingcai.com)
 
 ## 3.10.1
 
@@ -163,7 +163,7 @@ Sat, 26 Jul 2025 18:15:17 GMT
 ### Patches
 
 - fix name (cqc@cuiqingcai.com)
--  refine console (cqc@cuiqingcai.com)
+- refine console (cqc@cuiqingcai.com)
 
 ## 3.9.1
 
@@ -319,7 +319,7 @@ Sun, 13 Jul 2025 07:46:14 GMT
 
 ### Major changes
 
-- refactor navigator  (cqc@cuiqingcai.com)
+- refactor navigator (cqc@cuiqingcai.com)
 
 ## 2.20.3
 
@@ -444,7 +444,7 @@ Wed, 26 Feb 2025 17:26:59 GMT
 
 ### Minor changes
 
-- add grok support  (office@acedata.cloud)
+- add grok support (office@acedata.cloud)
 
 ## 2.16.3
 
@@ -524,7 +524,7 @@ Sun, 16 Feb 2025 14:56:40 GMT
 
 ### Patches
 
-- fix order state  (office@acedata.cloud)
+- fix order state (office@acedata.cloud)
 
 ## 2.15.0
 
@@ -1270,7 +1270,7 @@ Thu, 04 Jul 2024 03:37:16 GMT
 
 ### Patches
 
--  fix for logout (office@acedata.cloud)
+- fix for logout (office@acedata.cloud)
 
 ## 1.10.1
 
