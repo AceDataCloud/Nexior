@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 09 Aug 2025 17:19:51 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 10 Aug 2025 06:21:09 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.17.4
+
+Sun, 10 Aug 2025 06:21:09 GMT
+
+### Patches
+
+- update gpt45 (cqc@cuiqingcai.com)
 
 ## 3.17.3
 
