@@ -20,6 +20,7 @@ export interface IMidjourneyConfig {
   references?: string[];
   translation?: boolean;
   elements?: any[];
+  active_tab?: string;
 }
 
 export enum MidjourneyImagineAction {

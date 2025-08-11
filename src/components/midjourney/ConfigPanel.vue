@@ -1,22 +1,34 @@
 <template>
   <div class="flex flex-col h-full">
     <div class="flex-1 overflow-y-auto p-[15px]">
-      <is-videos-selector class="mb-2" />
-      <video-from-input v-show="config?.action === 'extend'" class="mb-4" />
-      <model-selector v-if="!config.is_videos" class="mb-2" />
-      <prompt-input class="mb-2" />
-      <image-url-input v-if="config.is_videos" class="mb-2" />
-      <reference-image v-if="!config.is_videos" class="mb-2" />
-      <ratio-selector v-if="!config.is_videos" class="mb-4" />
-      <quality-selector v-if="!config.is_videos" class="mb-4" />
-      <version-selector v-if="!config.is_videos" class="mb-4" />
-      <elements-selector v-if="!config.is_videos" class="mb-2" />
-      <advanced-selector v-if="!config.is_videos" class="mb-2" />
-      <stylize-selector v-show="config.advanced" class="mb-2" />
-      <weird-selector v-show="config.advanced" class="mb-2" />
-      <chaos-selector v-show="config.advanced" class="mb-2" />
-      <image-weight-selector v-show="config.advanced" class="mb-2" />
-      <style-selector v-show="config.advanced" class="mb-2" />
+      <el-tabs v-model="active_tab" class="demo-tabs" stretch>
+        <el-tab-pane :label="$t('midjourney.tab.images')" name="image">
+          <div class="pt-2">
+            <model-selector class="mb-2" />
+            <reference-image class="mb-2" />
+            <ratio-selector class="mb-4" />
+            <quality-selector class="mb-4" />
+            <version-selector class="mb-4" />
+            <elements-selector class="mb-2" />
+            <advanced-selector class="mb-2" />
+            <div v-show="config?.advanced">
+              <stylize-selector class="mb-2" />
+              <weird-selector class="mb-2" />
+              <chaos-selector class="mb-2" />
+              <image-weight-selector class="mb-2" />
+              <style-selector class="mb-2" />
+            </div>
+          </div>
+        </el-tab-pane>
+
+        <el-tab-pane :label="$t('midjourney.tab.videos')" name="video">
+          <div class="pt-2">
+            <video-from-input v-show="config?.action === 'extend'" class="mb-4" />
+            <image-url-input class="mb-2" />
+          </div>
+        </el-tab-pane>
+      </el-tabs>
+      <prompt-input class="mb-4" />
     </div>
     <div class="flex flex-col px-[15px] pb-[15px]">
       <consumption :value="consumption" :service="service" />
@@ -37,7 +49,6 @@
 import { defineComponent } from 'vue';
 import RatioSelector from './config/RatioSelector.vue';
 import AdvancedSelector from './config/AdvancedSelector.vue';
-import IsVideosSelector from './config/IsVideosSelector.vue';
 import VersionSelector from './config/VersionSelector.vue';
 import ImageUrlInput from './config/ImageUrlInput.vue';
 import StylizeSelector from './config/StylizeSelector.vue';
@@ -52,7 +63,7 @@ import ElementsSelector from './config/ElementsSelector.vue';
 import ModeSelector from './config/ModeSelector2.vue';
 import PromptInput from './config/PromptInput.vue';
 import ReferenceImage from './config/ReferenceImage.vue';
-import { ElButton } from 'element-plus';
+import { ElButton, ElTabs, ElTabPane } from 'element-plus';
 import Consumption from '../common/Consumption.vue';
 import { getConsumption } from '@/utils';
 
@@ -74,15 +85,28 @@ export default defineComponent({
     WeirdSelector,
     ImageWeightSelector,
     ReferenceImage,
-    IsVideosSelector,
     ImageUrlInput,
     Consumption,
-    VideoFromInput
+    VideoFromInput,
+    ElTabs,
+    ElTabPane
   },
   emits: ['generate'],
   computed: {
     config() {
       return this.$store.state.midjourney.config;
+    },
+    active_tab: {
+      get() {
+        return this.$store.state.midjourney.config.active_tab || 'image';
+      },
+      set(val: string) {
+        console.debug('set active_tab', val);
+        this.$store.commit('midjourney/setConfig', {
+          ...this.$store.state.midjourney.config,
+          active_tab: val
+        });
+      }
     },
     consumption() {
       return getConsumption(this.config, this.service?.metadata?.price);
