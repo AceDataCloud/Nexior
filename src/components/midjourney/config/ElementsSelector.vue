@@ -44,7 +44,6 @@
             }"
             @click="onToggle(item)"
           >
-            {{ value.includes(item) }}
             <el-icon class="icon"><check /></el-icon>
             <el-image :src="item.image" fit="fill" class="preview" />
             <span class="name">{{ item.label }}</span>
