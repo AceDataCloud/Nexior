@@ -273,11 +273,16 @@
               class="flex items-start mb-3"
             >
               <div v-if="description !== ''">
-                <span
-                  class="flex-shrink-0 inline-flex items-center justify-center w-5 h-5 bg-[#3574F0] text-white text-xs font-bold rounded-sm mr-3 mt-0.5"
+                <!-- 使用 el-tag 美化序号 -->
+                <el-tag
+                  effect="dark"
+                  color="#3574F0"
+                  size="small"
+                  type="primary"
+                  class="flex-shrink-0 font-bold mr-3 mt-0.5 border-0"
                 >
                   {{ index + 1 }}
-                </span>
+                </el-tag>
                 <span class="text-sm text-[var(--el-text-color-primary)]">
                   {{ description }}
                 </span>
@@ -325,7 +330,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElButton, ElTooltip, ElAlert } from 'element-plus';
+import { ElImage, ElButton, ElTooltip, ElAlert, ElTag } from 'element-plus';
 import { IMidjourneyTask, MidjourneyImagineAction, MidjourneyImagineState, IMidjourneyVideosResponse } from '@/models';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
@@ -346,6 +351,7 @@ export default defineComponent({
     FontAwesomeIcon,
     ElTooltip,
     ElAlert,
+    ElTag,
     CopyToClipboard,
     VideoPlayer
   },
