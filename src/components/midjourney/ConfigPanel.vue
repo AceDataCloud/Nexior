@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col h-full">
     <div class="flex-1 overflow-y-auto p-[15px]">
-      <el-tabs v-model="active_tab" class="demo-tabs" stretch>
+      <el-tabs v-model="activeTab" class="demo-tabs" stretch>
         <el-tab-pane :label="$t('midjourney.tab.images')" name="image">
           <div class="pt-2">
             <model-selector class="mb-2" />
@@ -96,7 +96,7 @@ export default defineComponent({
     config() {
       return this.$store.state.midjourney.config;
     },
-    active_tab: {
+    activeTab: {
       get() {
         return this.$store.state.midjourney.config.active_tab || 'image';
       },
