@@ -122,6 +122,10 @@ export interface IMidjourneyVideosResponse {
 
 export interface IMidjourneyDescribeResponse {
   descriptions: string[];
+  error?: {
+    code?: string;
+    message?: string;
+  };
 }
 
 export interface IMidjourneyImagineTask {
@@ -149,6 +153,7 @@ export interface IMidjourneyDescribeTask {
   created_at?: number;
   request?: IMidjourneyDescribeRequest;
   response?: IMidjourneyDescribeResponse;
+  trace_id?: string;
 }
 
 export type IMidjourneyTask = IMidjourneyImagineTask | IMidjourneyDescribeTask | IMidjourneyVideosTask;
