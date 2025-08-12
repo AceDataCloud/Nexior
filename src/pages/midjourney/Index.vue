@@ -18,7 +18,12 @@ import { midjourneyOperator } from '@/operators';
 import TaskList from '@/components/midjourney/tasks/TaskList.vue';
 import { ERROR_CODE_USED_UP } from '@/constants/errorCode';
 import { Status } from '@/models';
-import { IMidjourneyImagineRequest, IMidjourneyVideosRequest, MidjourneyImagineAction } from '@/models';
+import {
+  IMidjourneyImagineRequest,
+  IMidjourneyVideosRequest,
+  MidjourneyImagineAction,
+  IMidjourneyDescribeRequest
+} from '@/models';
 import {
   MIDJOURNEY_DEFAULT_IMAGE_WEIGHT,
   MIDJOURNEY_DEFAULT_RATIO,
@@ -248,6 +253,37 @@ export default defineComponent({
           // await this.onScrollDown();
         });
     },
+    async onStartDescribeTask(request: IMidjourneyDescribeRequest) {
+      const token = this.credential?.token;
+      if (!token) {
+        console.error('no token specified');
+        return;
+      }
+      ElMessage.info(this.$t('midjourney.message.startingTask'));
+      midjourneyOperator
+        .describe(request, {
+          token
+        })
+        .then(() => {
+          ElMessage.success(this.$t('midjourney.message.startDescribeTaskSuccess'));
+        })
+        .catch((error) => {
+          const response = error?.response?.data;
+          if (response?.error?.code === ERROR_CODE_USED_UP) {
+            ElMessage.error(this.$t('midjourney.message.usedUp'));
+          } else {
+            ElMessage.error(this.$t('midjourney.message.startVideosTaskFailed'));
+          }
+        })
+        .finally(async () => {
+          setTimeout(async () => {
+            await this.onGetTasks();
+            await this.onScrollDown();
+          }, 1000);
+          // await this.onGetTasks();
+          // await this.onScrollDown();
+        });
+    },
     async onCustom(payload: { image_id: string; action: MidjourneyImagineAction }) {
       const request = {
         image_id: payload.image_id,
@@ -258,7 +294,7 @@ export default defineComponent({
       this.onStartTask(request);
     },
     async onGenerate() {
-      if (this.config?.is_videos) {
+      if (this.config?.active_tab === 'video') {
         const request = {
           video_id: this.config?.video_id,
           image_url: this.config?.image_url,
@@ -269,7 +305,7 @@ export default defineComponent({
         };
         // @ts-ignore
         await this.onStartVideosTask(request);
-      } else {
+      } else if (this.config?.active_tab === 'image') {
         const request = {
           mode: this.config?.mode || MIDJOURNEY_DEFAULT_MODE,
           prompt: this.finalPrompt,
@@ -278,6 +314,13 @@ export default defineComponent({
           callback_url: CALLBACK_URL
         };
         await this.onStartTask(request);
+      } else if (this.config?.active_tab === 'describe') {
+        const request = {
+          image_url: this.config?.image_url,
+          callback_url: CALLBACK_URL
+        };
+        // @ts-ignore
+        await this.onStartDescribeTask(request);
       }
     },
     async onScrollDown() {

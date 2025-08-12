@@ -1619,6 +1619,10 @@
     "message": "在创建视频的任务中，它必须上传一张图片。",
     "description": "参数'imageUrl'的描述"
   },
+  "description.imageUrl2": {
+    "message": "在创建描述图片的任务中，它必须上传一张图片。",
+    "description": "参数'imageUrl'的描述"
+  },
   "description.translation": {
     "message": "在生成过程中启用自动翻译，非中文内容将自动翻译为Midjourney的英文输入",
     "description": "翻译参数的描述"
@@ -1787,6 +1791,10 @@
     "message": "成功开始视频生成任务",
     "description": "成功开始视频生成任务时的成功消息"
   },
+  "message.startDescribeTaskSuccess": {
+    "message": "成功开始图像描述生成任务",
+    "description": "成功开始图像描述生成任务时的成功消息"
+  },
   "message.startTaskFailed": {
     "message": "无法开始绘图任务，请联系管理员",
     "description": "无法开始绘图任务时的错误消息"
@@ -1794,6 +1802,10 @@
   "message.startVideosTaskFailed": {
     "message": "无法开始视频生成任务，请联系管理员",
     "description": "无法开始视频生成任务时的错误消息"
+  },
+  "message.startDescribeTaskFailed": {
+    "message": "无法开始图像描述生成任务，请联系管理员",
+    "description": "无法开始图像描述生成任务时的错误消息"
   },
   "message.generating": {
     "message": "生成中...",
@@ -1831,8 +1843,20 @@
     "message": "Niji",
     "description": "用于动漫风格图像生成的模型名称，请不要翻译，保持为'Niji'"
   },
+  "tab.images": {
+    "message": "图像生成",
+    "description": "图像生成的名称"
+  },
+  "tab.videos": {
+    "message": "视频生成",
+    "description": "视频生成的名称"
+  },
+  "tab.describe": {
+    "message": "图生文",
+    "description": "图生文的名称"
+  },
   "name.referenceImage": {
-    "message": "参考图",
+    "message": "参考图片",
     "description": "参考图像的名称"
   },
   "name.extend": {
@@ -1842,6 +1866,10 @@
   "name.imageUrl": {
     "message": "首帧图片",
     "description": "首帧图片的名称"
+  },
+  "name.imageUrl2": {
+    "message": "图片",
+    "description": "图片的名称"
   },
   "name.isVideos": {
     "message": "视频生成",
@@ -1973,6 +2001,14 @@
   },
   "status.pending": {
     "message": "等待中",
+    "description": "任务的某种状态 - 尚未开始"
+  },
+  "status.describePending": {
+    "message": "获取该图片描述中",
+    "description": "任务的某种状态 - 尚未开始"
+  },
+  "status.describeComplete": {
+    "message": "获取该图片描述完成",
     "description": "任务的某种状态 - 尚未开始"
   }
 }

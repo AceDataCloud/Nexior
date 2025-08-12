@@ -218,11 +218,119 @@
       </div>
     </div>
   </div>
+  <div v-if="modelValue?.type === 'describe'" class="item">
+    <div class="left">
+      <el-image src="https://cdn.acedata.cloud/wto43b.png" class="avatar" />
+    </div>
+    <div class="preview">
+      <div class="bot">
+        {{ $t('midjourney.name.midjourneyBot') }}
+        <span class="datetime">
+          {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
+        </span>
+      </div>
+      <div class="info">
+        <p v-if="modelValue?.request?.image_url" class="prompt mt-2">
+          {{ modelValue?.request?.image_url }}
+          <span v-if="!modelValue?.response?.descriptions"> - ({{ $t('midjourney.status.describePending') }}) </span>
+          <span v-if="modelValue?.response?.descriptions"> - ({{ $t('midjourney.status.describeComplete') }}) </span>
+        </p>
+      </div>
+      <!-- response error -->
+      <div
+        v-if="modelValue?.response && !modelValue?.response?.descriptions"
+        :class="{ content: true, full: full, failed: true }"
+      >
+        <el-alert :closable="false" class="failure">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            {{ $t('midjourney.field.taskId') }}:
+            {{ modelValue?.id }}
+            <copy-to-clipboard :content="modelValue?.id!" />
+          </p>
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
+            {{ $t('midjourney.field.failureReason') }}:
+            {{ modelValue?.response?.error?.message }}
+            <copy-to-clipboard :content="modelValue?.response?.error?.message!" />
+          </p>
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
+            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            {{ $t('midjourney.field.traceId') }}:
+            {{ modelValue?.trace_id }}
+            <copy-to-clipboard :content="modelValue?.trace_id" />
+          </p>
+        </el-alert>
+      </div>
+      <!-- response success -->
+      <div v-if="modelValue?.response?.descriptions" :class="{ content: true, full: full }">
+        <div class="mb-4">
+          <!-- 描述列表 -->
+          <div class="mb-4">
+            <div
+              v-for="(description, index) in modelValue.response.descriptions"
+              :key="index"
+              class="flex items-start mb-3"
+            >
+              <div v-if="description !== ''">
+                <!-- 使用 el-tag 美化序号 -->
+                <el-tag
+                  effect="dark"
+                  color="#3574F0"
+                  size="small"
+                  type="primary"
+                  class="flex-shrink-0 font-bold mr-3 mt-0.5 border-0"
+                >
+                  {{ index + 1 }}
+                </el-tag>
+                <span class="text-sm text-[var(--el-text-color-primary)]">
+                  {{ description }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 参考图片 -->
+          <image-wrapper
+            v-if="modelValue?.request?.image_url"
+            :src="modelValue?.request?.image_url"
+            :raw-src="modelValue?.request?.image_url"
+            class="image w-full rounded-lg"
+          />
+        </div>
+        <el-alert :closable="false" class="mt-2 success">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            {{ $t('midjourney.field.taskId') }}:
+            {{ modelValue?.id }}
+            <copy-to-clipboard :content="modelValue?.id!" />
+          </p>
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            {{ $t('midjourney.field.traceId') }}:
+            {{ modelValue?.trace_id }}
+            <copy-to-clipboard :content="modelValue?.trace_id" />
+          </p>
+        </el-alert>
+      </div>
+      <!-- response pending -->
+      <div v-if="!modelValue?.response">
+        <el-alert :closable="false" class="mt-2 info">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
+            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            {{ $t('midjourney.field.taskId') }}:
+            {{ modelValue?.id }}
+            <copy-to-clipboard :content="modelValue?.id!" />
+          </p>
+        </el-alert>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElButton, ElTooltip, ElAlert } from 'element-plus';
+import { ElImage, ElButton, ElTooltip, ElAlert, ElTag } from 'element-plus';
 import { IMidjourneyTask, MidjourneyImagineAction, MidjourneyImagineState, IMidjourneyVideosResponse } from '@/models';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
@@ -243,6 +351,7 @@ export default defineComponent({
     FontAwesomeIcon,
     ElTooltip,
     ElAlert,
+    ElTag,
     CopyToClipboard,
     VideoPlayer
   },

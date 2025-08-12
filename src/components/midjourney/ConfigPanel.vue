@@ -18,6 +18,7 @@
               <image-weight-selector class="mb-2" />
               <style-selector class="mb-2" />
             </div>
+            <prompt-input class="mb-4" />
           </div>
         </el-tab-pane>
 
@@ -25,15 +26,20 @@
           <div class="pt-2">
             <video-from-input v-show="config?.action === 'extend'" class="mb-4" />
             <image-url-input class="mb-2" />
+            <prompt-input class="mb-4" />
+          </div>
+        </el-tab-pane>
+        <el-tab-pane :label="$t('midjourney.tab.describe')" name="describe">
+          <div class="pt-2">
+            <image-url-input2 class="mb-2" />
           </div>
         </el-tab-pane>
       </el-tabs>
-      <prompt-input class="mb-4" />
     </div>
     <div class="flex flex-col px-[15px] pb-[15px]">
       <consumption :value="consumption" :service="service" />
       <div class="flex gap-1">
-        <mode-selector />
+        <mode-selector v-if="activeTab !== 'describe'" />
         <el-button v-if="config.action === 'extend'" type="primary" class="btn w-full" round @click="$emit('generate')">
           {{ $t('midjourney.button.extend') }}
         </el-button>
@@ -51,6 +57,7 @@ import RatioSelector from './config/RatioSelector.vue';
 import AdvancedSelector from './config/AdvancedSelector.vue';
 import VersionSelector from './config/VersionSelector.vue';
 import ImageUrlInput from './config/ImageUrlInput.vue';
+import ImageUrlInput2 from './config/ImageUrlInput2.vue';
 import StylizeSelector from './config/StylizeSelector.vue';
 import ChaosSelector from './config/ChaosSelector.vue';
 import ModelSelector from './config/ModelSelector.vue';
@@ -86,6 +93,7 @@ export default defineComponent({
     ImageWeightSelector,
     ReferenceImage,
     ImageUrlInput,
+    ImageUrlInput2,
     Consumption,
     VideoFromInput,
     ElTabs,

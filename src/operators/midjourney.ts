@@ -5,7 +5,9 @@ import {
   IMidjourneyImagineResponse,
   IMidjourneyVideosResponse,
   IMidjourneyTaskResponse,
-  IMidjourneyTasksResponse
+  IMidjourneyTasksResponse,
+  IMidjourneyDescribeResponse,
+  IMidjourneyDescribeRequest
 } from '@/models';
 import { BASE_URL_API } from '@/constants';
 
@@ -122,6 +124,22 @@ class MidjourneyOperator {
     }
   ): Promise<AxiosResponse<IMidjourneyVideosResponse>> {
     return await axios.post('/midjourney/videos', data, {
+      headers: {
+        authorization: `Bearer ${options.token}`,
+        'content-type': 'application/json',
+        accept: 'application/x-ndjson'
+      },
+      baseURL: BASE_URL_API
+    });
+  }
+
+  async describe(
+    data: IMidjourneyDescribeRequest,
+    options: {
+      token: string;
+    }
+  ): Promise<AxiosResponse<IMidjourneyDescribeResponse>> {
+    return await axios.post('/midjourney/describe', data, {
       headers: {
         authorization: `Bearer ${options.token}`,
         'content-type': 'application/json',
