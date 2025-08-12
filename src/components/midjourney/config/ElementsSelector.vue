@@ -2126,6 +2126,10 @@ export default defineComponent({
         this.value = this.value.filter((v) => v !== item);
       } else {
         this.value.push(item);
+        this.$store.commit('midjourney/setConfig', {
+          ...this.$store.state.midjourney.config,
+          elements: this.value
+        });
       }
     }
   }

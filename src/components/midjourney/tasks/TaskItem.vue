@@ -346,6 +346,7 @@ export default defineComponent({
         // @ts-ignore
         video_url: response.video_urls?.[0],
         action: 'extend',
+        active_tab: 'video',
         is_videos: true
       });
     },
