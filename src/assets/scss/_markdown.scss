@@ -2,7 +2,6 @@
   ul {
     list-style: initial;
   }
-
   ol {
     list-style: decimal;
   }
@@ -44,24 +43,12 @@
   background-color: var(--el-color-info-light-2) !important;
 }
 
-pre {
-  position: relative;
+.markdown-body pre {
+  color: var(--el-text-color-regular) !important;
 }
 
-pre button {
-  color: #adb5bd;
-  box-sizing: border-box;
-  transition: 0.2s ease-out;
-  cursor: pointer;
-  user-select: none;
-  background: rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(0, 0, 0, 0);
-  padding: 5px 10px;
-  font-size: 0.8em;
-  position: absolute;
-  top: 0;
-  right: 0;
-  border-radius: 0 0.15rem;
+pre {
+  position: relative;
 }
 
 .markdown-body hr {

@@ -1,6 +1,6 @@
 <template>
-  <el-dialog :model-value="visible" @close="onClose">
-    <div class="flex settings h-[460px]">
+  <el-dialog class="min-w-[450px]" :model-value="visible" @close="onClose">
+    <div class="flex settings h-[450px]">
       <aside class="h-full border-r">
         <el-menu class="border-r-0">
           <el-menu-item

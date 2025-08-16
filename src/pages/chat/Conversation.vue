@@ -204,7 +204,7 @@ export default defineComponent({
       console.debug('onRestart!', this.question, JSON.stringify(this.references));
       // 2. Update the messages
       const token = this.credential?.token;
-      const question = this.question;
+      const question = this.question.trim();
       // reset question and references
       if (!token || !question) {
         console.error('no token or endpoint or question');
@@ -336,7 +336,7 @@ export default defineComponent({
         let content = [];
         content.push({
           type: 'text',
-          text: this.question
+          text: this.question.trim()
         });
         for (let i = 0; i < this.references.length; i++) {
           if (isImageUrl(this.references[i])) {
@@ -358,7 +358,7 @@ export default defineComponent({
         });
       } else {
         this.messages.push({
-          content: this.question,
+          content: this.question.trim(),
           role: ROLE_USER
         });
       }
@@ -369,7 +369,7 @@ export default defineComponent({
     async onRequest() {
       console.debug('start to get answer', this.messages);
       const token = this.credential?.token;
-      const question = this.question;
+      const question = this.question.trim();
       const references = this.references;
       console.debug('validated', question, references);
       // reset question and references

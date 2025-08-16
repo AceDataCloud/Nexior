@@ -9,7 +9,7 @@
       <el-row>
         <el-col :span="24">
           <el-card shadow="hover">
-            <el-table v-loading="loading" :data="orders" stripe>
+            <el-table v-loading="loading" :data="orders" stripe class="!h-[calc(100vh-250px)]">
               <el-table-column prop="id" :label="$t('order.field.id')" class-name="text-center" width="190px">
                 <template #default="scope">
                   <span class="key">{{ scope.row.id }}</span>

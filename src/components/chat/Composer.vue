@@ -166,7 +166,7 @@ export default defineComponent({
       }
     },
     questionValue(val: string) {
-      this.$emit('update:question', val);
+      this.$emit('update:question', val.trim());
     },
     question(val: string) {
       if (val !== this.questionValue) {

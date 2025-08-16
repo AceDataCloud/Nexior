@@ -24,7 +24,10 @@
         class="content"
       >
         <div v-if="!isEditing" class="message-content">
-          <markdown-renderer v-if="!Array.isArray(message.content)" :content="message?.content" />
+          <div v-if="!Array.isArray(message.content)">
+            <markdown-renderer v-if="message.role === 'assistant'" :content="message?.content" />
+            <pre v-else class="whitespace-pre-wrap break-words w-fit max-w-full py-1">{{ message.content }}</pre>
+          </div>
           <div v-else>
             <div v-for="(item, index) in message.content" :key="index">
               <img
@@ -40,7 +43,10 @@
                 :closable="false"
                 class="mt-2"
               />
-              <markdown-renderer v-if="item.type === 'text'" :key="index" :content="item.text" />
+              <div v-if="item.type === 'text'">
+                <markdown-renderer v-if="message.role === 'assistant'" :content="item.text" />
+                <pre v-else class="whitespace-pre-wrap break-words w-fit max-w-full py-1">{{ item.text?.trim() }}</pre>
+              </div>
             </div>
           </div>
         </div>
@@ -318,10 +324,9 @@ export default defineComponent({
     .content {
       background-color: var(--el-bg-color-page);
       color: var(--el-text-color-primary);
-      width: fit-content;
-      text-align: left;
-      max-width: 100%;
       position: relative;
+      width: fit-content;
+      max-width: 90%;
       .edits {
         background-color: var(--el-bg-color-page);
         padding: 0;
