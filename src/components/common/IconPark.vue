@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import type { Icon } from '@icon-park/vue-next/lib/runtime';
-
+// @ts-ignore
 defineProps<{
   icon: Icon;
   theme?: 'outline' | 'filled' | 'two-tone' | 'multi-color';
