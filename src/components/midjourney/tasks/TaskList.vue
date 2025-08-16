@@ -12,8 +12,8 @@
     @scroll="onHandleScroll"
   >
     <task-item
-      v-for="(task, taskKey) in tasks"
-      :key="taskKey"
+      v-for="task in tasks"
+      :key="task.id"
       :model-value="task"
       @extend="$emit('extend', $event)"
       @custom="$emit('custom', $event)"

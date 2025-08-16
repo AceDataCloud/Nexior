@@ -1,8 +1,8 @@
 <template>
   <div class="task">
-    <div v-for="(audio, audioIndex) in audios" :key="audioIndex" class="audio" @click="onClick(audio)">
+    <div v-for="audio in audios" :key="audio.id" class="audio" @click.stop="onClick(audio)">
       <div v-loading="!audio?.audio_url" class="left">
-        <el-image :src="audio?.image_url" class="cover" fit="cover" />
+        <el-image :src="audio?.image_url" class="cover" fit="cover" lazy />
         <div
           v-if="
             audio?.audio_url &&
@@ -10,7 +10,7 @@
             $store.state?.suno?.audio?.state === 'playing'
           "
           class="overlay"
-          @click="onPause(audio)"
+          @click.stop="onPause(audio)"
         >
           <el-icon><video-pause /></el-icon>
         </div>
@@ -21,7 +21,7 @@
               ($store.state?.suno?.audio?.id === audio.id && $store.state?.suno?.audio?.state === 'paused'))
           "
           class="overlay"
-          @click="onPlay(audio)"
+          @click.stop="onPlay(audio)"
         >
           <el-icon><video-play /></el-icon>
         </div>
@@ -34,7 +34,7 @@
         <p class="style">{{ audio?.style }}</p>
       </div>
       <div class="right">
-        <el-button v-if="audio?.audio_url" size="small" round @click="onExtend($event, audio)">{{
+        <el-button v-if="audio?.audio_url" size="small" round @click.stop="onExtend($event, audio)">{{
           $t('suno.button.extend')
         }}</el-button>
         <el-tooltip effect="dark" :content="$t('suno.button.video')" placement="top">
@@ -57,10 +57,10 @@
           </span>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item v-if="audio?.video_url" @click="onDownload($event, audio?.video_url)">
+              <el-dropdown-item v-if="audio?.video_url" @click.stop="onDownload($event, audio?.video_url)">
                 {{ $t('suno.button.download_video') }}
               </el-dropdown-item>
-              <el-dropdown-item v-if="audio?.audio_url" @click="onDownload($event, audio?.audio_url)">
+              <el-dropdown-item v-if="audio?.audio_url" @click.stop="onDownload($event, audio?.audio_url)">
                 {{ $t('suno.button.download_audio') }}
               </el-dropdown-item>
             </el-dropdown-menu>
@@ -78,13 +78,13 @@
           </span>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item v-if="audio.id" @click="onGetStems(audio.id)">
+              <el-dropdown-item v-if="audio.id" @click.stop="onGetStems(audio.id)">
                 {{ $t('suno.button.get_stems') }}
               </el-dropdown-item>
-              <el-dropdown-item @click="onCover(audio)">
+              <el-dropdown-item @click.stop="onCover(audio)">
                 {{ $t('suno.button.cover_music') }}
               </el-dropdown-item>
-              <el-dropdown-item v-if="audio?.id && audio?.action === 'extend'" @click="onConcatMusic(audio?.id)">
+              <el-dropdown-item v-if="audio?.id && audio?.action === 'extend'" @click.stop="onConcatMusic(audio?.id)">
                 {{ $t('suno.button.concat_music') }}
               </el-dropdown-item>
             </el-dropdown-menu>
@@ -154,20 +154,10 @@ export default defineComponent({
       return this.$store.state.suno?.tasks;
     },
     audios(): ISunoAudio[] {
-      let result: ISunoAudio[] = [];
+      const data = (this.modelValue?.response?.data ?? []) as ISunoAudio[];
       // @ts-ignore
-      const action = this.modelValue?.request?.action;
-      if (Array.isArray(this.modelValue?.response?.data)) {
-        this.modelValue?.response?.data?.forEach((item: any) => {
-          let audio = item as ISunoAudio;
-          // Add the action field to the audio object
-          if (action) {
-            audio.action = action;
-          }
-          result.push(audio);
-        });
-      }
-      return result;
+      const action = this.modelValue?.request?.action as ISunoAudio['action'] | undefined;
+      return action ? data.map((a) => ({ ...a, action })) : data;
     },
     application() {
       return this.$store.state.suno?.application;
@@ -222,12 +212,8 @@ export default defineComponent({
     onDownload(event: MouseEvent, audioUrl: string) {
       event.stopPropagation();
       console.log('on download', audioUrl);
-      // 使用 URL 对象解析
       const parsedUrl = new URL(audioUrl);
-
-      // 获取路径名
       const pathname = parsedUrl.pathname;
-      // 提取文件名
       const filename = pathname.substring(pathname.lastIndexOf('/') + 1);
       console.log('on preview', filename);
       fetch(audioUrl)
@@ -294,8 +280,7 @@ export default defineComponent({
     },
     async onScrollDown() {
       setTimeout(() => {
-        // scroll to bottom for `.recent`
-        const el = document.querySelector('.recent');
+        const el = document.querySelector('.tasks');
         if (el) {
           el.scrollTop = el.scrollHeight;
         }
@@ -319,6 +304,7 @@ export default defineComponent({
 .task {
   display: flex;
   flex-direction: column;
+  cursor: pointer;
   .audio {
     display: flex;
     margin-bottom: 10px;
