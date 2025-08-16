@@ -1,8 +1,20 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 16 Aug 2025 09:33:50 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 16 Aug 2025 17:21:42 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.18.0
+
+Sat, 16 Aug 2025 17:21:42 GMT
+
+### Minor changes
+
+- add adapt to mobile (office@acedata.cloud)
+
+### Patches
+
+- fix pipline (office@acedata.cloud)
 
 ## 3.17.7
 
