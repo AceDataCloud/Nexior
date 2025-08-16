@@ -9,7 +9,7 @@
         <el-input-number v-model="value" size="small" controls-position="right" />
       </div>
     </div>
-    <div class="w-full">
+    <div class="w-full px-2">
       <el-slider v-model="value" :min="0" :max="2" :step="0.1" />
     </div>
   </div>

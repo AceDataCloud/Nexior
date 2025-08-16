@@ -1,6 +1,6 @@
 <template>
   <div class="video">
-    <vue-plyr :options="options">
+    <vue-plyr :options="mergedOptions">
       <video controls crossorigin="anonymous" playsinline>
         <source size="1080" :src="src" type="video/mp4" />
       </video>
@@ -22,11 +22,32 @@ export default defineComponent({
     src: {
       type: String,
       required: true
+    },
+    options: {
+      type: Object,
+      required: false,
+      default: () => ({})
     }
   },
   data() {
     return {
-      options: { quality: { default: '1080p' } }
+      mergedOptions: {
+        controls: [
+          'play-large',
+          'play',
+          'progress',
+          'current-time',
+          'mute',
+          'volume',
+          'captions',
+          'settings',
+          'pip',
+          'fullscreen'
+        ],
+        iconUrl: 'https://cdn.acedata.cloud/7jq4t0.svg',
+        quality: { default: '1080p', ...this.options.quality },
+        ...this.options
+      }
     };
   }
 });

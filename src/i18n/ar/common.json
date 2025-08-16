@@ -11,13 +11,17 @@
     "message": "نسخ",
     "description": "نص الزر، يستخدم لإعداد بعض المحتويات"
   },
+  "button.copied": {
+    "message": "تم النسخ",
+    "description": "نص الزر، يستخدم للإشارة إلى أن المحتوى قد تم نسخه"
+  },
   "button.restart": {
     "message": "إعادة توليد",
     "description": "نص الزر، يستخدم لإعداد بعض المحتويات"
   },
   "button.preview": {
     "message": "معاينة",
-    "description": "نص الزر، يستخدم لفتح معاينة لملف معين عبر URL"
+    "description": "نص الزر، يستخدم لفتح معاينة لملف ما عبر URL"
   },
   "button.seeRawImage": {
     "message": "عرض الصورة الأصلية",
@@ -40,7 +44,7 @@
     "description": "نص الزر، يستخدم لتسجيل الخروج"
   },
   "button.new": {
-    "message": "إنشاء جديد",
+    "message": "جديد",
     "description": "نص الزر، يستخدم لإنشاء مشروع جديد"
   },
   "button.delete": {
@@ -161,22 +165,22 @@
   },
   "entity.website": {
     "message": "Ace Data Cloud",
-    "description": "اسم الموقع، لا حاجة للترجمة، احتفظ به كـ 'Ace Data Cloud'"
+    "description": "اسم الموقع، لا حاجة للترجمة، يبقى كما هو 'Ace Data Cloud'"
   },
   "entity.copyright": {
     "message": "حقوق الطبع والنشر",
     "description": "يستخدم لعرض نص معلومات حقوق الطبع والنشر"
   },
   "entity.platform": {
-    "message": "منصة",
+    "message": "المنصة",
     "description": "نص يشير إلى أن هذه هي منصة خدمة API"
   },
   "entity.title": {
-    "message": "عنوان",
+    "message": "العنوان",
     "description": "عنوان الكيان"
   },
   "entity.icon": {
-    "message": "أيقونة",
+    "message": "الأيقونة",
     "description": "أيقونة الكيان"
   },
   "entity.status": {
@@ -184,7 +188,7 @@
     "description": "حالة الكيان"
   },
   "entity.operation": {
-    "message": "عملية",
+    "message": "العملية",
     "description": "عملية الكيان"
   },
   "entity.description": {
@@ -200,7 +204,7 @@
     "description": "تاريخ تحديث الكيان"
   },
   "entity.order": {
-    "message": "طلب",
+    "message": "الطلب",
     "description": "طلب الكيان، الطلب يحتوي على المبلغ ومعلومات الخدمة، يحتاج المستخدم لدفعه"
   },
   "message.noTasks": {
@@ -217,11 +221,11 @@
   },
   "message.copied": {
     "message": "تم النسخ بنجاح",
-    "description": "يستخدم لعرض رسالة نجاح النسخ"
+    "description": "يستخدم لعرض رسالة نجاح نسخ المحتوى"
   },
   "message.restart": {
     "message": "إعادة التوليد",
-    "description": "يستخدم لعرض رسالة إعادة التوليد"
+    "description": "يستخدم لعرض رسالة إعادة توليد المحتوى"
   },
   "message.confirmDelete": {
     "message": "هل أنت متأكد أنك تريد الحذف؟",
@@ -236,12 +240,12 @@
     "description": "يستخدم لتحذير المستخدم"
   },
   "message.info": {
-    "message": "تذكير ودي",
+    "message": "تنبيه ودي",
     "description": "يستخدم لعرض معلومات"
   },
   "message.free": {
     "message": "مجاني",
-    "description": "يستخدم لعرض رسالة تفيد بأن الخدمة مجانية، مما يعني أن المستخدم ليس بحاجة للدفع"
+    "description": "يستخدم لعرض رسالة تفيد بأن الخدمة مجانية، مما يعني أن المستخدم لا يحتاج للدفع"
   },
   "message.startPrice": {
     "message": "سعر البداية",
@@ -249,11 +253,11 @@
   },
   "message.joinDiscord": {
     "message": "انضم إلى Discord",
-    "description": "يستخدم لدعوة المستخدم للانضمام إلى قناة Discord"
+    "description": "يستخدم لجعل المستخدم ينضم إلى قناة Discord"
   },
   "message.addWeChat": {
-    "message": "إضافة WeChat",
-    "description": "يستخدم لدعوة المستخدم لإضافة WeChat"
+    "message": "أضف WeChat",
+    "description": "يستخدم لجعل المستخدم يضيف WeChat"
   },
   "message.serviceTech": {
     "message": "الدعم الفني",
@@ -268,7 +272,7 @@
     "description": "يستخدم لعرض رسالة عدم وجود بيانات في الجدول أو القائمة"
   },
   "nav.home": {
-    "message": "الرئيسية",
+    "message": "الصفحة الرئيسية",
     "description": "نص في شريط التنقل بالموقع، يستخدم لعرض الصفحة الرئيسية"
   },
   "nav.content": {
@@ -284,7 +288,7 @@
     "description": "نص في شريط التنقل بالموقع، يستخدم لعرض صفحة الخدمة"
   },
   "nav.profile": {
-    "message": "أنا",
+    "message": "ملفي الشخصي",
     "description": "نص في شريط التنقل بالموقع، يستخدم لعرض صفحة الملف الشخصي"
   },
   "nav.products": {
@@ -304,8 +308,8 @@
     "description": "نص في شريط التنقل بالموقع، يستخدم لعرض صفحة الوثائق"
   },
   "nav.console": {
-    "message": "وحدة التحكم",
-    "description": "نص في شريط التنقل بالموقع، يستخدم لعرض صفحة وحدة التحكم"
+    "message": "لوحة التحكم",
+    "description": "نص في شريط التنقل بالموقع، يستخدم لعرض صفحة لوحة التحكم"
   },
   "nav.chatgpt": {
     "message": "ChatGPT",
@@ -320,12 +324,12 @@
     "description": "نص في شريط التنقل بالموقع، يستخدم لعرض صفحة Grok، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'Grok'"
   },
   "nav.chat": {
-    "message": "دردشة",
+    "message": "الدردشة",
     "description": "نص في شريط التنقل بالموقع، يستخدم لعرض صفحة الدردشة، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'Chat'"
   },
   "nav.veo": {
     "message": "Veo",
-    "description": "نص في شريط التنقل بالموقع، يستخدم لعرض صفحة Veo، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'Veo'"
+    "description": "نص في شريط التنقل بالموقع، يستخدم لعرض صفحة الدردشة، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'Veo'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
@@ -333,7 +337,7 @@
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "نص في شريط التنقل بالموقع، يستخدم لعرض صفحة QRArt، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'QRArt'"
+    "description": "النص في شريط التنقل بالموقع، لعرض صفحة الفن ثنائي الأبعاد، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'QRArt'"
   },
   "nav.suno": {
     "message": "Suno",
@@ -365,7 +369,7 @@
   },
   "nav.image": {
     "message": "صورة",
-    "description": "النص في شريط التنقل بالموقع، لعرض صفحة الصورة"
+    "description": "النص في شريط التنقل بالموقع، لعرض صفحة الصور"
   },
   "nav.music": {
     "message": "موسيقى",
@@ -413,51 +417,51 @@
   },
   "title.placeholderOfSelect": {
     "message": "يرجى الاختيار",
-    "description": "نص العنصر النائب في حقل الاختيار"
+    "description": "نص العنصر النائب في مربع الاختيار"
   },
   "title.placeholderOfInput": {
     "message": "يرجى الإدخال",
-    "description": "نص العنصر النائب في حقل الإدخال"
+    "description": "نص العنصر النائب في مربع الإدخال"
   },
   "title.allApplications": {
     "message": "جميع الطلبات",
-    "description": "عنوان صفحة عرض جميع الطلبات"
+    "description": "عنوان الصفحة التي تعرض جميع الطلبات"
   },
   "title.allOrders": {
     "message": "جميع الطلبات",
-    "description": "عنوان صفحة عرض جميع الطلبات"
+    "description": "عنوان الصفحة التي تعرض جميع الطلبات"
   },
   "title.orderInfo": {
     "message": "معلومات الطلب",
-    "description": "عنوان صفحة عرض معلومات الطلب"
+    "description": "عنوان الصفحة التي تعرض معلومات الطلب"
   },
   "title.buyMore": {
     "message": "شراء المزيد",
-    "description": "عنوان صفحة تشجع المستخدم على شراء المزيد"
+    "description": "عنوان الصفحة التي تسمح للمستخدم بشراء المزيد"
   },
   "title.distribution": {
     "message": "عائدات التوصية",
-    "description": "عنوان صفحة عرض عائدات التوصية، تشير إلى أن المستخدم يمكنه كسب المال من خلال دعوة الآخرين لاستخدام الخدمة"
+    "description": "عنوان الصفحة التي تعرض عائدات التوصية، تشير إلى أن المستخدم يمكنه كسب المال من خلال دعوة الآخرين لاستخدام الخدمة"
   },
   "title.site": {
     "message": "إعدادات الموقع",
-    "description": "عنوان صفحة عرض إعدادات الموقع"
+    "description": "عنوان الصفحة التي تعرض إعدادات الموقع"
   },
   "title.distributionHistory": {
     "message": "تاريخ التوصية",
-    "description": "عنوان صفحة عرض تاريخ التوصية"
+    "description": "عنوان الصفحة التي تعرض تاريخ التوصية"
   },
   "title.invitee": {
     "message": "المدعو",
-    "description": "عنوان صفحة عرض المدعو"
+    "description": "عنوان الصفحة التي تعرض المدعو"
   },
   "title.allUsages": {
     "message": "تاريخ الاستخدام",
-    "description": "عنوان صفحة عرض جميع سجلات استخدام خدمة API"
+    "description": "عنوان الصفحة التي تعرض جميع سجلات استخدام خدمة API"
   },
   "title.allCredentials": {
-    "message": "الاعتمادات",
-    "description": "عنوان صفحة عرض جميع الاعتمادات، هذه الاعتمادات تستخدم للوصول إلى API"
+    "message": "المصادقات",
+    "description": "عنوان الصفحة التي تعرض جميع المصادقات، هذه المصادقات تستخدم للوصول إلى API"
   },
   "about.title1": {
     "message": "اتصل بنا",
@@ -472,7 +476,7 @@
     "description": "عنوان قسم عرض معلومات الدعم"
   },
   "about.address": {
-    "message": "الولايات المتحدة الأمريكية، ولاية ديلاوير، مدينة ميدلتون، مكتب رقم 201، شارع نورث برود",
+    "message": "الولايات المتحدة، ولاية ديلاوير، مدينة ميدلتون، مكتب رقم 201، شارع نورث برود",
     "description": "عنوان الشركة"
   },
   "about.email": {
@@ -484,8 +488,8 @@
     "description": "رابط صفحة الخدمات"
   },
   "about.link2": {
-    "message": "الوثائق",
-    "description": "رابط صفحة الوثائق"
+    "message": "المستندات",
+    "description": "رابط صفحة المستندات"
   },
   "about.link3": {
     "message": "لوحة التحكم",
@@ -500,8 +504,8 @@
     "description": "رابط صفحة المركز"
   },
   "about.link6": {
-    "message": "عائدات التوصية",
-    "description": "رابط صفحة عائدات التوصية"
+    "message": "الإيرادات الموصى بها",
+    "description": "رابط صفحة الإيرادات الموصى بها"
   },
   "about.link7": {
     "message": "الدعم",
@@ -525,7 +529,7 @@
   },
   "theme.system": {
     "message": "نظام",
-    "description": "اسم السمة النظامية، تشير إلى التبديل التلقائي للسمة بناءً على إعدادات النظام"
+    "description": "اسم سمة النظام، مما يعني التبديل التلقائي للسمة بناءً على إعدادات النظام"
   },
   "settings.general": {
     "message": "الإعدادات العامة",

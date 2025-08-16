@@ -1763,6 +1763,10 @@
     "message": "重做放大 4 倍",
     "description": "重做放大 4 倍按钮的描述"
   },
+  "message.imageUrlRequired": {
+    "message": "请上传图片",
+    "description": "首帧图片缺失时的错误消息"
+  },
   "message.promptPlaceholder": {
     "message": "请输入一句话描述您想生成的图像或视频，例如：一只可爱的猫。额外的参数将覆盖默认预设参数",
     "description": "提示字段中的占位文本"
@@ -1795,16 +1799,20 @@
     "message": "成功开始图像描述生成任务",
     "description": "成功开始图像描述生成任务时的成功消息"
   },
+  "message.promptRequired": {
+    "message": "请填写提示词",
+    "description": "提示词缺失时的错误消息"
+  },
   "message.startTaskFailed": {
-    "message": "无法开始绘图任务，请联系管理员",
+    "message": "无法开始绘图任务",
     "description": "无法开始绘图任务时的错误消息"
   },
   "message.startVideosTaskFailed": {
-    "message": "无法开始视频生成任务，请联系管理员",
+    "message": "无法开始视频生成任务",
     "description": "无法开始视频生成任务时的错误消息"
   },
   "message.startDescribeTaskFailed": {
-    "message": "无法开始图像描述生成任务，请联系管理员",
+    "message": "无法开始图像描述生成任务",
     "description": "无法开始图像描述生成任务时的错误消息"
   },
   "message.generating": {
@@ -1852,8 +1860,8 @@
     "description": "视频生成的名称"
   },
   "tab.describe": {
-    "message": "图生文",
-    "description": "图生文的名称"
+    "message": "图像描述",
+    "description": "图像描述的名称"
   },
   "name.referenceImage": {
     "message": "参考图片",

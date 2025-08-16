@@ -7,9 +7,9 @@
       class="control"
       @click="togglePlay"
     />
-    <el-popover placement="top" width="50px">
+    <el-popover placement="top" width="50px" trigger="click">
       <template #reference>
-        <icon-park :icon="VolumeSmall" size="20" :stroke-width="3" class="hover-text" />
+        <icon-park :icon="VolumeSmall" size="20" :stroke-width="2" class="hover-text" />
       </template>
       <player-volume-slider />
     </el-popover>

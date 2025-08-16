@@ -11,6 +11,10 @@
     "message": "Kopioi",
     "description": "Painikkeen teksti, jota käytetään joidenkin asioiden asettamiseen"
   },
+  "button.copied": {
+    "message": "Kopioitu",
+    "description": "Painikkeen teksti, jota käytetään osoittamaan, että sisältö on kopioitu"
+  },
   "button.restart": {
     "message": "Uudelleenluo",
     "description": "Painikkeen teksti, jota käytetään joidenkin asioiden asettamiseen"
@@ -57,7 +61,7 @@
   },
   "button.alert": {
     "message": "Varoitus",
-    "description": "Painikkeen teksti, jota käytetään joidenkin asioiden varoittamiseen"
+    "description": "Painikkeen teksti, jota käytetään varoittamaan joistakin asioista"
   },
   "button.info": {
     "message": "Tietoa",
@@ -72,19 +76,19 @@
     "description": "Painikkeen teksti, jota käytetään joidenkin asioiden katsomiseen"
   },
   "button.verify": {
-    "message": "Vahvista henkilöllisyys",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän henkilöllisyyden vahvistamiseen"
+    "message": "Tunnistautuminen",
+    "description": "Painikkeen teksti, jota käytetään käyttäjän tunnistautumiseen"
   },
   "button.profile": {
     "message": "Profiili",
-    "description": "Painikkeen teksti, jota käytetään käyttäjäprofiilin näyttämiseen"
+    "description": "Painikkeen teksti, jota käytetään henkilökohtaisten tietojen näyttämiseen"
   },
   "button.console": {
     "message": "Konsoli",
     "description": "Painikkeen teksti, jota käytetään konsolisivun näyttämiseen verkkosivustolla"
   },
   "button.learn": {
-    "message": "Opettele",
+    "message": "Opi",
     "description": "Painikkeen teksti, jota käytetään käyttäjän opettamiseen"
   },
   "button.buy": {
@@ -129,7 +133,7 @@
   },
   "button.buyMore": {
     "message": "Osta lisää",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän ostamiseen lisää sisältöä"
+    "description": "Painikkeen teksti, jota käytetään käyttäjän lisäämään ostamiseen"
   },
   "button.update": {
     "message": "Päivitä",
@@ -201,7 +205,7 @@
   },
   "entity.order": {
     "message": "Tilaus",
-    "description": "Entiteetin tilaus, tilaus sisältää summan, palvelutiedot, käyttäjän on maksettava siitä"
+    "description": "Entiteetin tilaus, joka sisältää summan ja palvelutiedot, joita käyttäjän on maksettava"
   },
   "message.noTasks": {
     "message": "Ei historiallisia tehtäviä, aloita uusi tehtävä～",
@@ -225,11 +229,11 @@
   },
   "message.confirmDelete": {
     "message": "Haluatko varmasti poistaa?",
-    "description": "Viesti, joka vahvistaa käyttäjän haluavan poistaa tiettyä sisältöä"
+    "description": "Viesti, joka vahvistaa, haluaako käyttäjä poistaa jotain"
   },
   "message.expiredAt": {
-    "message": "Vanhentumisaika",
-    "description": "Näyttää palvelun vanhentumisajan"
+    "message": "Erääntymisaika",
+    "description": "Näyttää palvelun erääntymisajan"
   },
   "message.alert": {
     "message": "Varoitus",
@@ -241,11 +245,11 @@
   },
   "message.free": {
     "message": "Ilmainen",
-    "description": "Viesti, joka ilmoittaa, että palvelu on ilmainen, käyttäjän ei tarvitse maksaa"
+    "description": "Viesti, joka ilmoittaa, että palvelu on ilmainen, mikä tarkoittaa, että käyttäjän ei tarvitse maksaa"
   },
   "message.startPrice": {
     "message": "Alkaen hinta",
-    "description": "Viesti, joka näyttää palvelun alhaisimman hinnan"
+    "description": "Viesti, joka näyttää palvelun vähimmäishinnan"
   },
   "message.joinDiscord": {
     "message": "Liity Discordiin",
@@ -253,7 +257,7 @@
   },
   "message.addWeChat": {
     "message": "Lisää WeChat",
-    "description": "Viesti, joka kehottaa käyttäjää lisäämään WeChat"
+    "description": "Viesti, joka kehottaa käyttäjää lisäämään WeChatin"
   },
   "message.serviceTech": {
     "message": "Tekninen tuki",
@@ -333,7 +337,7 @@
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää QR-taide-sivun, älä käännä tätä kenttää, se on säilytettävä 'QRArt'"
+    "description": "网站导航栏中的文本，用于显示二维艺术页面，请不要翻译此字段，必须保持为'QRArt'"
   },
   "nav.suno": {
     "message": "Suno",
@@ -484,12 +488,12 @@
     "description": "服务页面的链接"
   },
   "about.link2": {
-    "message": "Dokumentaatio",
-    "description": "文档页面的链接"
+    "message": "Dokumentti",
+    "description": "Dokumenttisivun linkki"
   },
   "about.link3": {
-    "message": "Ohjauspaneeli",
-    "description": "控制台页面的链接"
+    "message": "Konsoli",
+    "description": "Konsolisivun linkki"
   },
   "about.link4": {
     "message": "Profiili",
@@ -501,19 +505,19 @@
   },
   "about.link6": {
     "message": "Suositustulot",
-    "description": "Suositustulojen sivun linkki"
+    "description": "Suositustulossivun linkki"
   },
   "about.link7": {
     "message": "Tuki",
     "description": "Tukisivun linkki"
   },
   "about.link8": {
-    "message": "Palveluehdot",
-    "description": "Palveluehtosivun linkki"
+    "message": "Käyttöehdot",
+    "description": "Käyttöehdot-sivun linkki"
   },
   "about.link9": {
     "message": "Tietosuojakäytäntö",
-    "description": "Tietosuojakäytännön sivun linkki"
+    "description": "Tietosuojakäytäntö-sivun linkki"
   },
   "theme.light": {
     "message": "Vaalea",

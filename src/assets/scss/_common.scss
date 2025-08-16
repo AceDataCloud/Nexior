@@ -35,6 +35,10 @@ html.dark,
   overflow: hidden;
 }
 
+.el-popover.el-popper {
+  border-radius: 20px;
+}
+
 .el-main {
   padding: 0 !important;
 }
@@ -110,10 +114,13 @@ html.dark,
 }
 
 .el-slider {
-  --el-slider-button-wrapper-size: 14px;
-  --el-slider-button-wrapper-offset: -9px;
+  --el-slider-button-wrapper-size: 12px;
+  --el-slider-button-wrapper-offset: -8px;
   --el-slider-height: 6px;
-  --el-slider-button-size: 18px;
+  --el-slider-button-size: 12px;
+  &.is-vertical {
+    --el-slider-button-wrapper-offset: -3px;
+  }
 }
 
 .el-textarea {

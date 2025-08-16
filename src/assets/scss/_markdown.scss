@@ -13,6 +13,15 @@
   background-color: #253238 !important;
 }
 
+.markdown-body blockquote {
+  color: var(--el-text-color-regular) !important;
+  font-size: 14px !important;
+}
+
+.markdown-body a {
+  color: var(--el-color-primary) !important;
+}
+
 .markdown-body pre code {
   color: white;
 }
@@ -60,7 +69,6 @@ pre button {
 }
 
 .markdown-body .think {
-  // white-space: pre-wrap;
   line-height: inherit;
   border-left: 3px solid var(--el-border-color);
   padding-left: 10px;

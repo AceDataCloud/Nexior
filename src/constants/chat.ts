@@ -31,7 +31,7 @@ export const CHAT_MODEL_ICON_DEEPSEEK = 'https://cdn.acedata.cloud/4rb23t.jpg';
 export const CHAT_SERVICE_ID = 'b1fbcc32-e218-4253-9dc3-4fe600a1bfb9';
 
 export const CHAT_MODEL_GPT_5_ALL: IChatModel = {
-  enabled: false,
+  enabled: true,
   name: CHAT_MODEL_NAME_GPT_5_ALL,
   icon: CHAT_MODEL_ICON_CHATGPT,
   modelGroup: 'chatgpt',
@@ -42,7 +42,7 @@ export const CHAT_MODEL_GPT_5_ALL: IChatModel = {
 };
 
 export const CHAT_MODEL_GPT_5: IChatModel = {
-  enabled: true,
+  enabled: false,
   name: CHAT_MODEL_NAME_GPT_5,
   icon: CHAT_MODEL_ICON_CHATGPT,
   modelGroup: 'chatgpt',

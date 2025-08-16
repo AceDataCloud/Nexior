@@ -1,10 +1,11 @@
 <template>
   <div class="flex flex-col h-full">
     <div class="flex-1 overflow-y-auto p-[15px]">
-      <el-tabs v-model="activeTab" class="demo-tabs" stretch>
-        <el-tab-pane :label="$t('midjourney.tab.images')" name="image">
+      <el-tabs v-model="type" class="demo-tabs" stretch>
+        <el-tab-pane :label="$t('midjourney.tab.images')" name="imagine">
           <div class="pt-2">
             <model-selector class="mb-2" />
+            <prompt-input class="mb-4" />
             <reference-image class="mb-2" />
             <ratio-selector class="mb-4" />
             <quality-selector class="mb-4" />
@@ -18,11 +19,9 @@
               <image-weight-selector class="mb-2" />
               <style-selector class="mb-2" />
             </div>
-            <prompt-input class="mb-4" />
           </div>
         </el-tab-pane>
-
-        <el-tab-pane :label="$t('midjourney.tab.videos')" name="video">
+        <el-tab-pane :label="$t('midjourney.tab.videos')" name="videos">
           <div class="pt-2">
             <video-from-input v-show="config?.action === 'extend'" class="mb-4" />
             <image-url-input class="mb-2" />
@@ -39,7 +38,7 @@
     <div class="flex flex-col px-[15px] pb-[15px]">
       <consumption :value="consumption" :service="service" />
       <div class="flex gap-1">
-        <mode-selector v-if="activeTab !== 'describe'" />
+        <mode-selector v-if="type !== 'describe'" />
         <el-button v-if="config.action === 'extend'" type="primary" class="btn w-full" round @click="$emit('generate')">
           {{ $t('midjourney.button.extend') }}
         </el-button>
@@ -73,6 +72,7 @@ import ReferenceImage from './config/ReferenceImage.vue';
 import { ElButton, ElTabs, ElTabPane } from 'element-plus';
 import Consumption from '../common/Consumption.vue';
 import { getConsumption } from '@/utils';
+import { MIDJOURNEY_DEFAULT_TYPE } from '@/constants';
 
 export default defineComponent({
   name: 'ConfigPanel',
@@ -104,15 +104,15 @@ export default defineComponent({
     config() {
       return this.$store.state.midjourney.config;
     },
-    activeTab: {
+    type: {
       get() {
-        return this.$store.state.midjourney.config.active_tab || 'image';
+        return this.$store.state.midjourney.config.type || MIDJOURNEY_DEFAULT_TYPE;
       },
       set(val: string) {
-        console.debug('set active_tab', val);
+        console.debug('set type', val);
         this.$store.commit('midjourney/setConfig', {
           ...this.$store.state.midjourney.config,
-          active_tab: val
+          type: val
         });
       }
     },
@@ -121,6 +121,11 @@ export default defineComponent({
     },
     service() {
       return this.$store.state.midjourney?.service;
+    }
+  },
+  mounted() {
+    if (!this.config.type) {
+      this.type = MIDJOURNEY_DEFAULT_TYPE;
     }
   }
 });

@@ -162,9 +162,8 @@ export default defineComponent({
     modelGroup() {
       console.debug('modelGroup changed, refreshing conversations');
       const firstConversation = this.conversations?.[0];
-      if (firstConversation) {
-        this.$emit('change-conversation', firstConversation.id);
-      }
+      // will create new conversation once no conversation
+      this.$emit('change-conversation', firstConversation?.id);
     }
   },
   methods: {
