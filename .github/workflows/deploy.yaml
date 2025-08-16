@@ -11,6 +11,17 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
+      - name: Generate Build Number
+        uses: einaregilsson/build-number@v2
+        with:
+          token: ${{ secrets.github_token }}
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+
+      - name: Get Build Number
+        run: |
+          echo $BUILD_NUMBER
+
       - name: Checkout
         uses: actions/checkout@master
 
@@ -42,17 +53,6 @@ jobs:
         run: |
           kubectl get nodes
           kubectl get svc -n acedatacloud-test
-
-      - name: Generate Build Number
-        uses: einaregilsson/build-number@v2
-        with:
-          token: ${{ secrets.github_token }}
-        env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-
-      - name: Get Build Number
-        run: |
-          echo $BUILD_NUMBER
 
       - name: Build Docker images
         run: docker-compose build
