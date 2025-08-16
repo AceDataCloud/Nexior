@@ -48,6 +48,7 @@ export const getPriceString = (payload: {
 };
 
 export const getConsumption = (payload: any, rules: any): number | undefined => {
+  console.debug('getConsumption payload', payload, rules);
   if (!rules || !Array.isArray(rules)) {
     return undefined;
   }

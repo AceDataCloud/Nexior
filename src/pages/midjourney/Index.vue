@@ -17,7 +17,7 @@ import { ElMessage } from 'element-plus';
 import { midjourneyOperator } from '@/operators';
 import TaskList from '@/components/midjourney/tasks/TaskList.vue';
 import { ERROR_CODE_USED_UP } from '@/constants/errorCode';
-import { Status } from '@/models';
+import { MidjourneyVideosAction, Status } from '@/models';
 import {
   IMidjourneyImagineRequest,
   IMidjourneyVideosRequest,
@@ -191,10 +191,14 @@ export default defineComponent({
       console.debug('end onGetApplications');
       await this.onGetTasks();
     },
-    async onStartTask(request: IMidjourneyImagineRequest) {
+    async onStartImagineTask(request: IMidjourneyImagineRequest) {
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');
+        return;
+      }
+      if (!request.prompt && request.action === MidjourneyImagineAction.GENERATE) {
+        ElMessage.error(this.$t('midjourney.message.promptRequired'));
         return;
       }
       ElMessage.info(this.$t('midjourney.message.startingTask'));
@@ -210,7 +214,7 @@ export default defineComponent({
           if (response?.error?.code === ERROR_CODE_USED_UP) {
             ElMessage.error(this.$t('midjourney.message.usedUp'));
           } else {
-            ElMessage.error(this.$t('midjourney.message.startTaskFailed'));
+            ElMessage.error(this.$t('midjourney.message.startTaskFailed') + error.response?.data?.error?.message);
           }
         })
         .finally(async () => {
@@ -218,14 +222,16 @@ export default defineComponent({
             await this.onGetTasks();
             await this.onScrollDown();
           }, 1000);
-          // await this.onGetTasks();
-          // await this.onScrollDown();
         });
     },
     async onStartVideosTask(request: IMidjourneyVideosRequest) {
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');
+        return;
+      }
+      if (!request.prompt) {
+        ElMessage.error(this.$t('midjourney.message.promptRequired'));
         return;
       }
       ElMessage.info(this.$t('midjourney.message.startingTask'));
@@ -241,7 +247,7 @@ export default defineComponent({
           if (response?.error?.code === ERROR_CODE_USED_UP) {
             ElMessage.error(this.$t('midjourney.message.usedUp'));
           } else {
-            ElMessage.error(this.$t('midjourney.message.startVideosTaskFailed'));
+            ElMessage.error(this.$t('midjourney.message.startVideosTaskFailed') + error.response?.data?.error?.message);
           }
         })
         .finally(async () => {
@@ -249,8 +255,6 @@ export default defineComponent({
             await this.onGetTasks();
             await this.onScrollDown();
           }, 1000);
-          // await this.onGetTasks();
-          // await this.onScrollDown();
         });
     },
     async onStartDescribeTask(request: IMidjourneyDescribeRequest) {
@@ -272,7 +276,9 @@ export default defineComponent({
           if (response?.error?.code === ERROR_CODE_USED_UP) {
             ElMessage.error(this.$t('midjourney.message.usedUp'));
           } else {
-            ElMessage.error(this.$t('midjourney.message.startVideosTaskFailed'));
+            ElMessage.error(
+              this.$t('midjourney.message.startDescribeTaskFailed') + error.response?.data?.error?.message
+            );
           }
         })
         .finally(async () => {
@@ -280,8 +286,6 @@ export default defineComponent({
             await this.onGetTasks();
             await this.onScrollDown();
           }, 1000);
-          // await this.onGetTasks();
-          // await this.onScrollDown();
         });
     },
     async onCustom(payload: { image_id: string; action: MidjourneyImagineAction }) {
@@ -291,21 +295,21 @@ export default defineComponent({
         mode: this.config?.mode || MIDJOURNEY_DEFAULT_MODE,
         callback_url: CALLBACK_URL
       };
-      this.onStartTask(request);
+      this.onStartImagineTask(request);
     },
     async onGenerate() {
-      if (this.config?.active_tab === 'video') {
+      console.debug('onGenerate', this.config);
+      if (this.config?.type === 'videos') {
         const request = {
           video_id: this.config?.video_id,
           image_url: this.config?.image_url,
-          action: this.config?.action,
+          action: this.config?.action as MidjourneyVideosAction,
           prompt: this.config?.prompt,
           mode: this.config?.mode || MIDJOURNEY_DEFAULT_MODE,
           callback_url: CALLBACK_URL
         };
-        // @ts-ignore
         await this.onStartVideosTask(request);
-      } else if (this.config?.active_tab === 'image') {
+      } else if (this.config?.type === 'imagine') {
         const request = {
           mode: this.config?.mode || MIDJOURNEY_DEFAULT_MODE,
           prompt: this.finalPrompt,
@@ -313,13 +317,16 @@ export default defineComponent({
           translation: this.config?.translation,
           callback_url: CALLBACK_URL
         };
-        await this.onStartTask(request);
-      } else if (this.config?.active_tab === 'describe') {
+        await this.onStartImagineTask(request);
+      } else if (this.config?.type === 'describe') {
+        if (!this.config?.image_url) {
+          ElMessage.error(this.$t('midjourney.message.imageUrlRequired'));
+          return;
+        }
         const request = {
           image_url: this.config?.image_url,
           callback_url: CALLBACK_URL
         };
-        // @ts-ignore
         await this.onStartDescribeTask(request);
       }
     },

@@ -11,20 +11,24 @@
     "message": "Copiar",
     "description": "Texto do botão usado para configurar algo"
   },
+  "button.copied": {
+    "message": "Copiado",
+    "description": "Texto do botão usado para indicar que o conteúdo foi copiado"
+  },
   "button.restart": {
-    "message": "Regerar",
+    "message": "Regenerar",
     "description": "Texto do botão usado para configurar algo"
   },
   "button.preview": {
     "message": "Pré-visualizar",
-    "description": "Texto do botão usado para abrir a pré-visualização de um arquivo via URL"
+    "description": "Texto do botão usado para abrir uma pré-visualização de um arquivo via URL"
   },
   "button.seeRawImage": {
     "message": "Ver Imagem Original",
     "description": "Texto do botão usado para ver a imagem original"
   },
   "button.seeRawVideo": {
-    "message": "Ver Vídeo Original",
+    "message": "Ver Vídeo",
     "description": "Texto do botão usado para ver o vídeo original"
   },
   "button.edit": {
@@ -109,15 +113,15 @@
   },
   "button.pay": {
     "message": "Pagar",
-    "description": "Texto do botão usado para permitir que o usuário pague pelos serviços"
+    "description": "Texto do botão usado para permitir que o usuário pague pela taxa de serviço"
   },
   "button.repay": {
     "message": "Continuar Pagamento",
-    "description": "Texto do botão usado para permitir que o usuário continue o pagamento pelos serviços"
+    "description": "Texto do botão usado para permitir que o usuário continue pagando pela taxa de serviço"
   },
   "button.applied": {
     "message": "Solicitado",
-    "description": "Texto do botão usado para mostrar que o usuário já solicitou o serviço"
+    "description": "Texto do botão usado para indicar que o usuário já solicitou o serviço"
   },
   "button.acquire": {
     "message": "Obter",
@@ -145,7 +149,7 @@
   },
   "button.referralEarnings": {
     "message": "Ganhos de Referência",
-    "description": "Texto do botão usado para mostrar os ganhos de referência, indicando que o usuário pode ganhar dinheiro ao convidar outros a usar o serviço"
+    "description": "Texto do botão usado para exibir ganhos de referência, indicando que o usuário pode ganhar dinheiro ao convidar outros a usar o serviço"
   },
   "button.finish": {
     "message": "Concluir",
@@ -164,12 +168,12 @@
     "description": "Nome do site, não precisa ser traduzido, mantenha como 'Ace Data Cloud'"
   },
   "entity.copyright": {
-    "message": "Copyright",
-    "description": "Texto usado para exibir informações de copyright"
+    "message": "Direitos Autorais",
+    "description": "Texto usado para exibir informações de direitos autorais"
   },
   "entity.platform": {
     "message": "Plataforma",
-    "description": "Texto que indica que esta é a plataforma do serviço de API"
+    "description": "Texto que indica que esta é a plataforma do serviço API"
   },
   "entity.title": {
     "message": "Título",
@@ -192,31 +196,31 @@
     "description": "Descrição da entidade"
   },
   "entity.createdAt": {
-    "message": "Data de Criação",
-    "description": "Data em que a entidade foi criada"
+    "message": "Criado em",
+    "description": "Data de criação da entidade"
   },
   "entity.updatedAt": {
-    "message": "Data de Atualização",
-    "description": "Data em que a entidade foi atualizada"
+    "message": "Atualizado em",
+    "description": "Data de atualização da entidade"
   },
   "entity.order": {
     "message": "Pedido",
-    "description": "Pedido da entidade, que inclui valor e informações do serviço, que o usuário precisa pagar"
+    "description": "Pedido da entidade, que inclui valor, informações do serviço, que o usuário precisa pagar"
   },
   "message.noTasks": {
-    "message": "Não há tarefas históricas, por favor, comece uma nova tarefa～",
+    "message": "Não há tarefas históricas, por favor, inicie uma nova tarefa～",
     "description": "Mensagem quando não há tarefas"
   },
   "message.usedAmount": {
-    "message": "Valor Utilizado",
+    "message": "Valor utilizado",
     "description": "Usado para mostrar o valor já utilizado do serviço"
   },
   "message.remainingAmount": {
-    "message": "Valor Restante",
+    "message": "Valor restante",
     "description": "Usado para mostrar o valor restante do serviço"
   },
   "message.copied": {
-    "message": "Copiado com Sucesso",
+    "message": "Copiado com sucesso",
     "description": "Usado para mostrar a mensagem de que o conteúdo foi copiado com sucesso"
   },
   "message.restart": {
@@ -225,47 +229,47 @@
   },
   "message.confirmDelete": {
     "message": "Tem certeza de que deseja excluir?",
-    "description": "Usado para confirmar se o usuário deseja excluir algum conteúdo"
+    "description": "Mensagem para confirmar se o usuário deseja excluir algum conteúdo"
   },
   "message.expiredAt": {
-    "message": "Data de Expiração",
+    "message": "Data de expiração",
     "description": "Usado para mostrar a data de expiração do serviço"
   },
   "message.alert": {
     "message": "Alerta",
-    "description": "Usado para mensagens de alerta ao usuário"
+    "description": "Mensagem para alertar o usuário"
   },
   "message.info": {
-    "message": "Lembrete Amigável",
-    "description": "Usado para mostrar mensagens informativas"
+    "message": "Lembrete amigável",
+    "description": "Mensagem para mostrar informações"
   },
   "message.free": {
     "message": "Gratuito",
-    "description": "Usado para mostrar que o serviço é gratuito, indicando que o usuário não precisa pagar"
+    "description": "Mensagem para mostrar que o serviço é gratuito, indicando que o usuário não precisa pagar"
   },
   "message.startPrice": {
-    "message": "Preço Inicial",
-    "description": "Usado para mostrar a mensagem do preço mínimo do serviço"
+    "message": "Preço inicial",
+    "description": "Mensagem para mostrar o preço mínimo do serviço"
   },
   "message.joinDiscord": {
     "message": "Junte-se ao Discord",
-    "description": "Usado para convidar o usuário a se juntar ao canal do Discord"
+    "description": "Mensagem para convidar o usuário a se juntar ao canal do Discord"
   },
   "message.addWeChat": {
     "message": "Adicionar WeChat",
-    "description": "Usado para convidar o usuário a adicionar o WeChat"
+    "description": "Mensagem para convidar o usuário a adicionar o WeChat"
   },
   "message.serviceTech": {
-    "message": "Suporte Técnico",
-    "description": "Usado para mostrar mensagens de suporte técnico do serviço"
+    "message": "Suporte técnico",
+    "description": "Mensagem para mostrar o suporte técnico do serviço"
   },
   "message.businessCooperation": {
-    "message": "Cooperação Empresarial",
-    "description": "Usado para mostrar mensagens sobre cooperação empresarial"
+    "message": "Cooperação comercial",
+    "description": "Mensagem para mostrar a cooperação comercial"
   },
   "message.noData": {
-    "message": "Sem Dados",
-    "description": "Usado para mostrar mensagens quando não há dados em uma tabela ou lista"
+    "message": "Sem dados",
+    "description": "Mensagem para mostrar que não há dados na tabela ou lista"
   },
   "nav.home": {
     "message": "Início",
@@ -277,14 +281,14 @@
   },
   "nav.category": {
     "message": "Categoria",
-    "description": "Texto na barra de navegação do site, usado para mostrar a página de categorias"
+    "description": "Texto na barra de navegação do site, usado para mostrar a página de categoria"
   },
   "nav.service": {
     "message": "Serviço",
-    "description": "Texto na barra de navegação do site, usado para mostrar a página de serviços"
+    "description": "Texto na barra de navegação do site, usado para mostrar a página de serviço"
   },
   "nav.profile": {
-    "message": "Meu Perfil",
+    "message": "Meu perfil",
     "description": "Texto na barra de navegação do site, usado para mostrar a página de perfil"
   },
   "nav.products": {
@@ -292,8 +296,8 @@
     "description": "Texto na barra de navegação do site, usado para mostrar a página de produtos"
   },
   "nav.referral": {
-    "message": "Rendimento de Indicação",
-    "description": "Texto na barra de navegação do site, usado para mostrar a página de indicações"
+    "message": "Rendimento de referência",
+    "description": "Texto na barra de navegação do site, usado para mostrar a página de referência"
   },
   "nav.apiPlatform": {
     "message": "Plataforma API",
@@ -333,79 +337,79 @@
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Texto na barra de navegação do site, usado para mostrar a página de arte QR, não deve ser traduzido, deve permanecer como 'QRArt'"
+    "description": "Texto na barra de navegação do site, usado para exibir a página de arte em 2D, não deve ser traduzido, deve permanecer como 'QRArt'"
   },
   "nav.suno": {
     "message": "Suno",
-    "description": "Texto na barra de navegação do site para exibir a página do Suno, não traduza este campo, deve permanecer como 'Suno'"
+    "description": "Texto na barra de navegação do site, usado para exibir a página do Suno, não deve ser traduzido, deve permanecer como 'Suno'"
   },
   "nav.pixverse": {
     "message": "Pixverse",
-    "description": "Texto na barra de navegação do site para exibir a página do Pixverse, não traduza este campo, deve permanecer como 'Pixverse'"
+    "description": "Texto na barra de navegação do site, usado para exibir a página do Pixverse, não deve ser traduzido, deve permanecer como 'Pixverse'"
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "Texto na barra de navegação do site para exibir a página do Flux, não traduza este campo, deve permanecer como 'Flux'"
+    "description": "Texto na barra de navegação do site, usado para exibir a página do Flux, não deve ser traduzido, deve permanecer como 'Flux'"
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "Texto na barra de navegação do site para exibir a página do Luma, não traduza este campo, deve permanecer como 'Luma'"
+    "description": "Texto na barra de navegação do site, usado para exibir a página do Luma, não deve ser traduzido, deve permanecer como 'Luma'"
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "Texto na barra de navegação do site para exibir a página do Pika, não traduza este campo, deve permanecer como 'Pika'"
+    "description": "Texto na barra de navegação do site, usado para exibir a página do Pika, não deve ser traduzido, deve permanecer como 'Pika'"
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "Texto na barra de navegação do site para exibir a página do Kling, não traduza este campo, deve permanecer como 'Kling'"
+    "description": "Texto na barra de navegação do site, usado para exibir a página do Kling, não deve ser traduzido, deve permanecer como 'Kling'"
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "Texto na barra de navegação do site para exibir a página do Hailuo, não traduza este campo, deve permanecer como 'Hailuo'"
+    "description": "Texto na barra de navegação do site, usado para exibir a página do Hailuo, não deve ser traduzido, deve permanecer como 'Hailuo'"
   },
   "nav.image": {
     "message": "Imagem",
-    "description": "Texto na barra de navegação do site para exibir a página de imagens"
+    "description": "Texto na barra de navegação do site, usado para exibir a página de imagens"
   },
   "nav.music": {
     "message": "Música",
-    "description": "Texto na barra de navegação do site para exibir a página de música"
+    "description": "Texto na barra de navegação do site, usado para exibir a página de música"
   },
   "nav.video": {
     "message": "Vídeo",
-    "description": "Texto na barra de navegação do site para exibir a página de vídeo"
+    "description": "Texto na barra de navegação do site, usado para exibir a página de vídeo"
   },
   "nav.distribution": {
     "message": "Rendimentos de Recomendação",
-    "description": "Texto na barra de navegação do site para exibir a página de rendimentos de recomendação"
+    "description": "Texto na barra de navegação do site, usado para exibir a página de rendimentos de recomendação"
   },
   "nav.logOut": {
     "message": "Sair",
-    "description": "Texto na barra de navegação do site para sair da conta"
+    "description": "Texto na barra de navegação do site, usado para sair da conta"
   },
   "nav.site": {
     "message": "Configuração do Site",
-    "description": "Texto na barra de navegação do site para exibir a página de configuração do site"
+    "description": "Texto na barra de navegação do site, usado para exibir a página de configuração do site"
   },
   "nav.setting": {
     "message": "Configurações",
-    "description": "Texto na barra de navegação do site para exibir a página de configurações"
+    "description": "Texto na barra de navegação do site, usado para exibir a página de configurações"
   },
   "nav.headshots": {
     "message": "Foto de Identidade AI",
-    "description": "Texto na barra de navegação do site para exibir a página de configuração do site"
+    "description": "Texto na barra de navegação do site, usado para exibir a página de configuração do site"
   },
   "nav.locale": {
     "message": "Configurações de Idioma",
-    "description": "Texto na barra de navegação do site para alterar o idioma"
+    "description": "Texto na barra de navegação do site, usado para alterar o idioma"
   },
   "nav.support": {
     "message": "Suporte ao Cliente",
-    "description": "Texto na barra de navegação do site para exibir a página de suporte"
+    "description": "Texto na barra de navegação do site, usado para exibir a página de suporte"
   },
   "nav.darkMode": {
     "message": "Modo Escuro",
-    "description": "Texto na barra de navegação do site para alternar para o tema escuro"
+    "description": "Texto na barra de navegação do site, usado para alternar para o tema escuro"
   },
   "title.alert": {
     "message": "Alerta",
@@ -496,12 +500,12 @@
     "description": "Link para a página de perfil"
   },
   "about.link5": {
-    "message": "Centro",
-    "description": "Link para a página do centro"
+    "message": "Central",
+    "description": "Link para a página central"
   },
   "about.link6": {
-    "message": "Rendimentos de Recomendações",
-    "description": "Link para a página de rendimentos de recomendações"
+    "message": "Rendimentos de Referência",
+    "description": "Link para a página de rendimentos de referência"
   },
   "about.link7": {
     "message": "Suporte",
@@ -516,11 +520,11 @@
     "description": "Link para a página de política de privacidade"
   },
   "theme.light": {
-    "message": "Tema Claro",
+    "message": "Claro",
     "description": "Nome do tema claro"
   },
   "theme.dark": {
-    "message": "Tema Escuro",
+    "message": "Escuro",
     "description": "Nome do tema escuro"
   },
   "theme.system": {

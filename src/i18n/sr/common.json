@@ -11,6 +11,10 @@
     "message": "Kopiraj",
     "description": "Tekst na dugmetu, koji se koristi za podešavanje nekih stvari"
   },
+  "button.copied": {
+    "message": "Kopirano",
+    "description": "Tekst na dugmetu, koji se koristi za označavanje da je sadržaj kopiran"
+  },
   "button.restart": {
     "message": "Ponovno generisanje",
     "description": "Tekst na dugmetu, koji se koristi za podešavanje nekih stvari"
@@ -20,12 +24,12 @@
     "description": "Tekst na dugmetu, koji se koristi za otvaranje pregleda nekog fajla putem URL-a"
   },
   "button.seeRawImage": {
-    "message": "Pogledaj izvorni prikaz",
-    "description": "Tekst na dugmetu, koji se koristi za pregled originalne slike"
+    "message": "Pogledaj izvornu sliku",
+    "description": "Tekst na dugmetu, koji se koristi za pregled izvorne slike"
   },
   "button.seeRawVideo": {
     "message": "Pogledaj video",
-    "description": "Tekst na dugmetu, koji se koristi za pregled originalnog videa"
+    "description": "Tekst na dugmetu, koji se koristi za pregled izvorne slike"
   },
   "button.edit": {
     "message": "Uredi",
@@ -81,7 +85,7 @@
   },
   "button.console": {
     "message": "Konzola",
-    "description": "Tekst na dugmetu, koji se koristi za prikazivanje stranice konzole za kontrolu nekih stvari na vebu"
+    "description": "Tekst na dugmetu, koji se koristi za prikazivanje stranice konzole za kontrolu nekih sadržaja na vebu"
   },
   "button.learn": {
     "message": "Uči",
@@ -93,7 +97,7 @@
   },
   "button.try": {
     "message": "Pokušaj",
-    "description": "Tekst na dugmetu, koji se koristi za omogućavanje korisniku da pokuša neke stvari"
+    "description": "Tekst na dugmetu, koji se koristi za omogućavanje korisniku da proba neke stvari"
   },
   "button.startForFree": {
     "message": "Započni besplatno",
@@ -117,7 +121,7 @@
   },
   "button.applied": {
     "message": "Prijavljeno",
-    "description": "Tekst na dugmetu, koji se koristi za prikazivanje da je korisnik već prijavio ovu uslugu"
+    "description": "Tekst na dugmetu, koji se koristi za prikazivanje da je korisnik već prijavio tu uslugu"
   },
   "button.acquire": {
     "message": "Dobij",
@@ -145,7 +149,7 @@
   },
   "button.referralEarnings": {
     "message": "Preporučena zarada",
-    "description": "Tekst na dugmetu, koji se koristi za prikazivanje preporučene zarade, što znači da korisnik može zaraditi pozivanjem drugih da koriste uslugu"
+    "description": "Tekst na dugmetu, koji se koristi za prikazivanje preporučene zarade, što znači da korisnik može zaraditi novac pozivajući druge da koriste uslugu"
   },
   "button.finish": {
     "message": "Završi",
@@ -161,15 +165,15 @@
   },
   "entity.website": {
     "message": "Ace Data Cloud",
-    "description": "Naziv sajta, ne treba prevoditi, ostaviti kao 'Ace Data Cloud'"
+    "description": "Ime sajta, ne zahteva prevođenje, ostaje 'Ace Data Cloud'"
   },
   "entity.copyright": {
     "message": "Autorska prava",
-    "description": "Koristi se za prikazivanje informacija o autorskim pravima"
+    "description": "Koristi se za prikazivanje teksta o autorskim pravima"
   },
   "entity.platform": {
     "message": "Platforma",
-    "description": "Tekst koji označava da je ovo platforma za API uslugu"
+    "description": "Tekst koji označava da je ovo platforma API usluge"
   },
   "entity.title": {
     "message": "Naslov",
@@ -209,19 +213,19 @@
   },
   "message.usedAmount": {
     "message": "Iskorišćen iznos",
-    "description": "Koristi se za prikaz iznosa koji je usluga već iskoristila"
+    "description": "Koristi se za prikazivanje iznosa koji je usluga već iskoristila"
   },
   "message.remainingAmount": {
     "message": "Preostali iznos",
-    "description": "Koristi se za prikaz preostalog iznosa usluge"
+    "description": "Koristi se za prikazivanje preostalog iznosa usluge"
   },
   "message.copied": {
     "message": "Uspešno kopirano",
-    "description": "Koristi se za prikaz poruke da je sadržaj uspešno kopiran"
+    "description": "Koristi se za prikazivanje poruke da je sadržaj uspešno kopiran"
   },
   "message.restart": {
     "message": "Ponovo generiši",
-    "description": "Koristi se za prikaz poruke da je sadržaj uspešno kopiran"
+    "description": "Koristi se za prikazivanje poruke da je sadržaj uspešno kopiran"
   },
   "message.confirmDelete": {
     "message": "Da li ste sigurni da želite da obrišete?",
@@ -229,7 +233,7 @@
   },
   "message.expiredAt": {
     "message": "Datum isteka",
-    "description": "Koristi se za prikaz datuma isteka usluge"
+    "description": "Koristi se za prikazivanje datuma isteka usluge"
   },
   "message.alert": {
     "message": "Upozorenje",
@@ -237,131 +241,131 @@
   },
   "message.info": {
     "message": "Prijateljska napomena",
-    "description": "Koristi se za prikaz informacija"
+    "description": "Koristi se za prikazivanje informacija"
   },
   "message.free": {
     "message": "Besplatno",
-    "description": "Koristi se za prikaz poruke da je usluga besplatna, što znači da korisnik ne mora da plaća"
+    "description": "Koristi se za prikazivanje poruke da je usluga besplatna, što znači da korisnik ne mora da plaća"
   },
   "message.startPrice": {
     "message": "Početna cena",
-    "description": "Koristi se za prikaz najniže cene usluge"
+    "description": "Koristi se za prikazivanje najniže cene usluge"
   },
   "message.joinDiscord": {
-    "message": "Pridružite se Discord-u",
-    "description": "Koristi se za poziv korisnika da se pridruži Discord kanalu"
+    "message": "Pridruži se Discord-u",
+    "description": "Koristi se za pozivanje korisnika da se pridruži Discord kanalu"
   },
   "message.addWeChat": {
-    "message": "Dodajte WeChat",
-    "description": "Koristi se za poziv korisnika da doda WeChat"
+    "message": "Dodaj WeChat",
+    "description": "Koristi se za pozivanje korisnika da doda WeChat"
   },
   "message.serviceTech": {
     "message": "Tehnička podrška",
-    "description": "Koristi se za prikaz poruke o tehničkoj podršci usluge"
+    "description": "Koristi se za prikazivanje poruke o tehničkoj podršci usluge"
   },
   "message.businessCooperation": {
     "message": "Poslovna saradnja",
-    "description": "Koristi se za prikaz poruke o poslovnoj saradnji"
+    "description": "Koristi se za prikazivanje poruke o poslovnoj saradnji"
   },
   "message.noData": {
     "message": "Nema podataka",
-    "description": "Koristi se za prikaz poruke kada u tabeli ili listi nema podataka"
+    "description": "Koristi se za prikazivanje poruke kada u tabeli ili listi nema podataka"
   },
   "nav.home": {
     "message": "Početna stranica",
-    "description": "Tekst u navigacionoj traci sajta, koristi se za prikaz početne stranice"
+    "description": "Tekst u navigacionoj traci sajta, koristi se za prikazivanje početne stranice"
   },
   "nav.content": {
     "message": "Sadržaj",
-    "description": "Tekst u navigacionoj traci sajta, koristi se za prikaz stranice sa sadržajem"
+    "description": "Tekst u navigacionoj traci sajta, koristi se za prikazivanje stranice sa sadržajem"
   },
   "nav.category": {
     "message": "Kategorija",
-    "description": "Tekst u navigacionoj traci sajta, koristi se za prikaz stranice sa kategorijama"
+    "description": "Tekst u navigacionoj traci sajta, koristi se za prikazivanje stranice sa kategorijama"
   },
   "nav.service": {
     "message": "Usluge",
-    "description": "Tekst u navigacionoj traci sajta, koristi se za prikaz stranice sa uslugama"
+    "description": "Tekst u navigacionoj traci sajta, koristi se za prikazivanje stranice sa uslugama"
   },
   "nav.profile": {
     "message": "Moj profil",
-    "description": "Tekst u navigacionoj traci sajta, koristi se za prikaz stranice sa ličnim podacima"
+    "description": "Tekst u navigacionoj traci sajta, koristi se za prikazivanje stranice sa ličnim podacima"
   },
   "nav.products": {
     "message": "Proizvodi",
-    "description": "Tekst u navigacionoj traci sajta, koristi se za prikaz stranice sa proizvodima"
+    "description": "Tekst u navigacionoj traci sajta, koristi se za prikazivanje stranice sa proizvodima"
   },
   "nav.referral": {
     "message": "Preporučeni prihodi",
-    "description": "Tekst u navigacionoj traci sajta, koristi se za prikaz stranice sa preporukama"
+    "description": "Tekst u navigacionoj traci sajta, koristi se za prikazivanje stranice sa preporukama"
   },
   "nav.apiPlatform": {
-    "message": "API platforma",
-    "description": "Tekst u navigacionoj traci sajta, koristi se za prikaz stranice API platforme"
+    "message": "API Platforma",
+    "description": "Tekst u navigacionoj traci sajta, koristi se za prikazivanje stranice API platforme"
   },
   "nav.document": {
     "message": "Dokumentacija",
-    "description": "Tekst u navigacionoj traci sajta, koristi se za prikaz stranice sa dokumentacijom"
+    "description": "Tekst u navigacionoj traci sajta, koristi se za prikazivanje stranice sa dokumentacijom"
   },
   "nav.console": {
     "message": "Konzola",
-    "description": "Tekst u navigacionoj traci sajta, koristi se za prikaz stranice konzole"
+    "description": "Tekst u navigacionoj traci sajta, koristi se za prikazivanje stranice sa konzolom"
   },
   "nav.chatgpt": {
     "message": "ChatGPT",
-    "description": "Tekst u navigacionoj traci sajta, koristi se za prikaz stranice ChatGPT, ne prevoditi ovo polje, mora ostati 'ChatGPT'"
+    "description": "Tekst u navigacionoj traci sajta, koristi se za prikazivanje stranice ChatGPT, ne prevoditi ovo polje, mora ostati 'ChatGPT'"
   },
   "nav.deepseek": {
     "message": "DeepSeek",
-    "description": "Tekst u navigacionoj traci sajta, koristi se za prikaz stranice DeepSeek, ne prevoditi ovo polje, mora ostati 'DeepSeek'"
+    "description": "Tekst u navigacionoj traci sajta, koristi se za prikazivanje stranice DeepSeek, ne prevoditi ovo polje, mora ostati 'DeepSeek'"
   },
   "nav.grok": {
     "message": "Grok",
-    "description": "Tekst u navigacionoj traci sajta, koristi se za prikaz stranice Grok, ne prevoditi ovo polje, mora ostati 'Grok'"
+    "description": "Tekst u navigacionoj traci sajta, koristi se za prikazivanje stranice Grok, ne prevoditi ovo polje, mora ostati 'Grok'"
   },
   "nav.chat": {
     "message": "Chat",
-    "description": "Tekst u navigacionoj traci sajta, koristi se za prikaz stranice za chat, ne prevoditi ovo polje, mora ostati 'Chat'"
+    "description": "Tekst u navigacionoj traci sajta, koristi se za prikazivanje stranice za chat, ne prevoditi ovo polje, mora ostati 'Chat'"
   },
   "nav.veo": {
     "message": "Veo",
-    "description": "Tekst u navigacionoj traci sajta, koristi se za prikaz stranice za chat, ne prevoditi ovo polje, mora ostati 'Veo'"
+    "description": "Tekst u navigacionoj traci sajta, koristi se za prikazivanje stranice za chat, ne prevoditi ovo polje, mora ostati 'Veo'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "Tekst u navigacionoj traci sajta, koristi se za prikaz stranice Midjourney, ne prevoditi ovo polje, mora ostati 'Midjourney'"
+    "description": "Tekst u navigacionoj traci sajta, koristi se za prikazivanje stranice Midjourney, ne prevoditi ovo polje, mora ostati 'Midjourney'"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Tekst u navigacionoj traci sajta, koristi se za prikaz stranice sa QR umetnošću, ne prevoditi ovo polje, mora ostati 'QRArt'"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu za dvodimenzionalnu umetnost, ne prevoditi ovo polje, mora ostati 'QRArt'"
   },
   "nav.suno": {
     "message": "Suno",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje Suno stranicu, ne prevoditi, mora ostati 'Suno'"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje Suno stranicu, ne prevoditi ovo polje, mora ostati 'Suno'"
   },
   "nav.pixverse": {
     "message": "Pixverse",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje Pixverse stranicu, ne prevoditi, mora ostati 'Pixverse'"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje Pixverse stranicu, ne prevoditi ovo polje, mora ostati 'Pixverse'"
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje Flux stranicu, ne prevoditi, mora ostati 'Flux'"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje Flux stranicu, ne prevoditi ovo polje, mora ostati 'Flux'"
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje Luma stranicu, ne prevoditi, mora ostati 'Luma'"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje Luma stranicu, ne prevoditi ovo polje, mora ostati 'Luma'"
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje Pika stranicu, ne prevoditi, mora ostati 'Pika'"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje Pika stranicu, ne prevoditi ovo polje, mora ostati 'Pika'"
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje Kling stranicu, ne prevoditi, mora ostati 'Kling'"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje Kling stranicu, ne prevoditi ovo polje, mora ostati 'Kling'"
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje Hailuo stranicu, ne prevoditi, mora ostati 'Hailuo'"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje Hailuo stranicu, ne prevoditi ovo polje, mora ostati 'Hailuo'"
   },
   "nav.image": {
     "message": "Slika",
@@ -389,7 +393,7 @@
   },
   "nav.setting": {
     "message": "Podešavanja",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu sa podešavanjima"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu za podešavanja"
   },
   "nav.headshots": {
     "message": "AI identifikacione fotografije",
@@ -401,7 +405,7 @@
   },
   "nav.support": {
     "message": "Korisnička podrška",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu sa podrškom"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu za podršku"
   },
   "nav.darkMode": {
     "message": "Tamni režim",
@@ -485,11 +489,11 @@
   },
   "about.link2": {
     "message": "Dokumentacija",
-    "description": "Link ka stranici sa dokumentacijom"
+    "description": "Link ka stranici dokumentacije"
   },
   "about.link3": {
     "message": "Konzola",
-    "description": "Link ka stranici sa konzolom"
+    "description": "Link ka stranici konzole"
   },
   "about.link4": {
     "message": "Profil",

@@ -11,6 +11,10 @@
     "message": "Kopieren",
     "description": "按钮文本，用于设置某些内容"
   },
+  "button.copied": {
+    "message": "Kopiert",
+    "description": "按钮文本，用于表示内容已复制"
+  },
   "button.restart": {
     "message": "Neu generieren",
     "description": "按钮文本，用于设置某些内容"
@@ -100,7 +104,7 @@
     "description": "按钮文本，用于让用户免费开始使用"
   },
   "button.apply": {
-    "message": "Anwenden",
+    "message": "Beantragen",
     "description": "按钮文本，用于让用户申请API服务"
   },
   "button.refresh": {
@@ -116,7 +120,7 @@
     "description": "按钮文本，用于让用户继续支付服务费用"
   },
   "button.applied": {
-    "message": "Angewendet",
+    "message": "Beantragt",
     "description": "按钮文本，用于显示用户已经申请了该服务"
   },
   "button.acquire": {
@@ -169,11 +173,11 @@
   },
   "entity.platform": {
     "message": "Plattform",
-    "description": "指示这是API服务的平台的文本"
+    "description": "Text, der angibt, dass dies die Plattform des API-Dienstes ist"
   },
   "entity.title": {
     "message": "Titel",
-    "description": "实体的标题"
+    "description": "Der Titel der Entität"
   },
   "entity.icon": {
     "message": "Symbol",
@@ -201,7 +205,7 @@
   },
   "entity.order": {
     "message": "Bestellung",
-    "description": "Die Bestellung der Entität, die Betrag und Serviceinformationen enthält, für die der Benutzer bezahlen muss"
+    "description": "Die Bestellung der Entität, die Betrag und Dienstleistungsinformationen enthält, für die der Benutzer bezahlen muss"
   },
   "message.noTasks": {
     "message": "Keine historischen Aufgaben, bitte starten Sie eine neue Aufgabe～",
@@ -209,11 +213,11 @@
   },
   "message.usedAmount": {
     "message": "Verwendeter Betrag",
-    "description": "Zur Anzeige des bereits verwendeten Betrags für den Service"
+    "description": "Zur Anzeige des bereits verwendeten Betrags für den Dienst"
   },
   "message.remainingAmount": {
     "message": "Verbleibender Betrag",
-    "description": "Zur Anzeige des verbleibenden Betrags für den Service"
+    "description": "Zur Anzeige des verbleibenden Betrags für den Dienst"
   },
   "message.copied": {
     "message": "Erfolgreich kopiert",
@@ -229,7 +233,7 @@
   },
   "message.expiredAt": {
     "message": "Ablaufdatum",
-    "description": "Zur Anzeige des Ablaufdatums des Services"
+    "description": "Zur Anzeige des Ablaufdatums des Dienstes"
   },
   "message.alert": {
     "message": "Warnung",
@@ -241,23 +245,23 @@
   },
   "message.free": {
     "message": "Kostenlos",
-    "description": "Nachricht zur Anzeige, dass der Service kostenlos ist, was bedeutet, dass der Benutzer nicht bezahlen muss"
+    "description": "Nachricht zur Anzeige, dass der Dienst kostenlos ist, was bedeutet, dass der Benutzer nicht bezahlen muss"
   },
   "message.startPrice": {
     "message": "Startpreis",
-    "description": "Nachricht zur Anzeige des niedrigsten Preises für den Service"
+    "description": "Nachricht zur Anzeige des niedrigsten Preises für den Dienst"
   },
   "message.joinDiscord": {
     "message": "Discord beitreten",
-    "description": "Nachricht, um den Benutzer dazu zu bringen, dem Discord-Kanal beizutreten"
+    "description": "Nachricht, um den Benutzer einzuladen, dem Discord-Kanal beizutreten"
   },
   "message.addWeChat": {
     "message": "WeChat hinzufügen",
-    "description": "Nachricht, um den Benutzer dazu zu bringen, WeChat hinzuzufügen"
+    "description": "Nachricht, um den Benutzer einzuladen, WeChat hinzuzufügen"
   },
   "message.serviceTech": {
     "message": "Technischer Support",
-    "description": "Nachricht zur Anzeige des technischen Supports für den Service"
+    "description": "Nachricht zur Anzeige des technischen Supports für den Dienst"
   },
   "message.businessCooperation": {
     "message": "Geschäftliche Zusammenarbeit",
@@ -281,7 +285,7 @@
   },
   "nav.service": {
     "message": "Dienst",
-    "description": "Text in der Navigationsleiste der Website, um die Dienstseite anzuzeigen"
+    "description": "Text in der Navigationsleiste der Website, um die Dienstleistungsseite anzuzeigen"
   },
   "nav.profile": {
     "message": "Ich",
@@ -333,7 +337,7 @@
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Text in der Navigationsleiste der Website, um die QRArt-Seite anzuzeigen, bitte diesen Schlüssel nicht übersetzen, muss als 'QRArt' beibehalten werden"
+    "description": "Text in der Navigationsleiste der Website, um die Seite für zweidimensionale Kunst anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'QRArt' beibehalten werden"
   },
   "nav.suno": {
     "message": "Suno",
@@ -392,8 +396,8 @@
     "description": "Text in der Navigationsleiste der Website, um die Einstellungsseite anzuzeigen"
   },
   "nav.headshots": {
-    "message": "AI-Porträt",
-    "description": "Text in der Navigationsleiste der Website, um die Seite für AI-Porträts anzuzeigen"
+    "message": "AI-Passfoto",
+    "description": "Text in der Navigationsleiste der Website, um die Seite für die Site-Konfiguration anzuzeigen"
   },
   "nav.locale": {
     "message": "Spracheinstellungen",
@@ -401,7 +405,7 @@
   },
   "nav.support": {
     "message": "Kundensupport",
-    "description": "Text in der Navigationsleiste der Website, um die Unterstützungsseite anzuzeigen"
+    "description": "Text in der Navigationsleiste der Website, um die Support-Seite anzuzeigen"
   },
   "nav.darkMode": {
     "message": "Dunkelmodus",
@@ -501,7 +505,7 @@
   },
   "about.link6": {
     "message": "Empfohlene Einnahmen",
-    "description": "Link zur Seite über empfohlene Einnahmen"
+    "description": "Link zur Seite für empfohlene Einnahmen"
   },
   "about.link7": {
     "message": "Unterstützung",
@@ -509,11 +513,11 @@
   },
   "about.link8": {
     "message": "Nutzungsbedingungen",
-    "description": "Link zur Seite über die Nutzungsbedingungen"
+    "description": "Link zur Seite mit den Nutzungsbedingungen"
   },
   "about.link9": {
     "message": "Datenschutzrichtlinie",
-    "description": "Link zur Seite über die Datenschutzrichtlinie"
+    "description": "Link zur Datenschutzrichtlinienseite"
   },
   "theme.light": {
     "message": "Helles Thema",
@@ -525,7 +529,7 @@
   },
   "theme.system": {
     "message": "System",
-    "description": "Name des Systemthemas, das anzeigt, dass das Thema basierend auf den Systemeinstellungen automatisch gewechselt wird"
+    "description": "Name des Systemthemas, das anzeigt, dass das Thema automatisch basierend auf den Systemeinstellungen gewechselt wird"
   },
   "settings.general": {
     "message": "Allgemeine Einstellungen",

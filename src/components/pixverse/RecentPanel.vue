@@ -2,7 +2,7 @@
   <div v-if="tasks?.items === undefined">
     <bot-placeholder />
   </div>
-  <div v-else-if="tasks?.items?.length && tasks?.items?.length > 0" class="h-full w-full overflow-y-auto">
+  <div v-else-if="tasks?.items?.length && tasks?.items?.length > 0" class="h-full w-full overflow-y-auto tasks">
     <task-preview v-for="(task, taskIndex) in tasks?.items" :key="taskIndex" :model-value="task" />
   </div>
   <div v-if="tasks?.items?.length === 0" class="w-full h-full flex items-center justify-center">

@@ -4,7 +4,7 @@
       <span class="text-sm font-bold">{{ $t('midjourney.name.extend') }}</span>
     </div>
     <div>
-      <video-player v-if="config?.video_url" :src="config?.video_url" />
+      <video-player v-if="config?.video_url" :src="config?.video_url" :options="options" />
     </div>
   </div>
 </template>
@@ -27,7 +27,9 @@ export default defineComponent({
   },
   data() {
     return {
-      options: { quality: { default: '1080p' } }
+      options: {
+        controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'captions', 'settings', 'fullscreen']
+      }
     };
   },
   computed: {

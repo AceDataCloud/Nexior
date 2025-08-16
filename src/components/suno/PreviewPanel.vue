@@ -14,7 +14,7 @@
       <div class="content">
         <div class="artist">
           <el-avatar :size="30" :src="audio?.image_url"></el-avatar>
-          <span>{{ audio?.prompt }}</span>
+          <span>{{ audio?.title }}</span>
         </div>
         <p class="style">{{ audio?.style }}</p>
         <p class="time">{{ $dayjs.format(audio?.created_at) }}</p>

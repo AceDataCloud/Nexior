@@ -11,7 +11,7 @@
         </span>
       </div>
       <div class="info">
-        <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
+        <p v-if="modelValue?.request?.prompt" class="prompt">
           {{ modelValue?.request?.prompt }}
           <span v-if="!modelValue?.response"> - ({{ $t('midjourney.status.pending') }}) </span>
           <span v-if="modelValue?.response?.progress !== undefined && modelValue?.response?.progress !== 100">
@@ -19,7 +19,7 @@
           </span>
           <span>({{ modelValue?.request?.mode }})</span>
         </p>
-        <p v-if="modelValue?.request?.image_id" class="prompt mt-2">
+        <p v-if="modelValue?.request?.image_id" class="prompt">
           {{ modelValue?.request?.image_id }} - {{ modelValue?.request?.action }}
           <span v-if="!modelValue?.response"> - ({{ $t('midjourney.status.pending') }}) </span>
           <span>({{ modelValue?.request?.mode }})</span>
@@ -56,7 +56,7 @@
           :raw-src="modelValue?.response?.raw_image_url"
           class="image"
         />
-        <div v-if="modelValue?.response?.actions" :class="{ operations: true, full, 'mt-2': true }">
+        <div v-if="modelValue?.response?.actions" :class="{ operations: true, full }">
           <el-tooltip
             v-for="(action, actionKey) in modelValue?.response?.actions"
             :key="actionKey"
@@ -122,7 +122,7 @@
         </span>
       </div>
       <div class="info">
-        <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
+        <p v-if="modelValue?.request?.prompt" class="prompt">
           {{ modelValue?.request?.prompt }}
           <span v-if="!modelValue?.response"> - ({{ $t('midjourney.status.pending') }}) </span>
           <span v-if="modelValue?.response?.progress !== undefined && modelValue?.response?.progress !== 100">
@@ -130,7 +130,7 @@
           </span>
           <span>({{ modelValue?.request?.mode }})</span>
         </p>
-        <p v-if="modelValue?.request?.video_id" class="prompt mt-2">
+        <p v-if="modelValue?.request?.video_id" class="prompt">
           {{ modelValue?.request?.video_id }} - {{ modelValue?.request?.action }}
           <span v-if="!modelValue?.response"> - ({{ $t('midjourney.status.pending') }}) </span>
           <span>({{ modelValue?.request?.mode }})</span>
@@ -207,7 +207,7 @@
       </div>
       <!-- response pending -->
       <div v-if="!modelValue?.response">
-        <el-alert :closable="false" class="mt-2 info">
+        <el-alert :closable="false" class="info">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('midjourney.field.taskId') }}:
@@ -230,7 +230,7 @@
         </span>
       </div>
       <div class="info">
-        <p v-if="modelValue?.request?.image_url" class="prompt mt-2">
+        <p v-if="modelValue?.request?.image_url" class="prompt">
           {{ modelValue?.request?.image_url }}
           <span v-if="!modelValue?.response?.descriptions"> - ({{ $t('midjourney.status.describePending') }}) </span>
           <span v-if="modelValue?.response?.descriptions"> - ({{ $t('midjourney.status.describeComplete') }}) </span>
@@ -262,35 +262,21 @@
           </p>
         </el-alert>
       </div>
-      <!-- response success -->
       <div v-if="modelValue?.response?.descriptions" :class="{ content: true, full: full }">
-        <div class="mb-4">
-          <!-- 描述列表 -->
-          <div class="mb-4">
-            <div
-              v-for="(description, index) in modelValue.response.descriptions"
-              :key="index"
-              class="flex items-start mb-3"
-            >
+        <div class="mb-2">
+          <div class="mb-2">
+            <div v-for="(description, index) in modelValue.response.descriptions" :key="index" class="flex items-start">
               <div v-if="description !== ''">
-                <!-- 使用 el-tag 美化序号 -->
-                <el-tag
-                  effect="dark"
-                  color="#3574F0"
-                  size="small"
-                  type="primary"
-                  class="flex-shrink-0 font-bold mr-3 mt-0.5 border-0"
-                >
+                <el-tag effect="dark" size="small" type="primary" round class="mr-1">
                   {{ index + 1 }}
                 </el-tag>
                 <span class="text-sm text-[var(--el-text-color-primary)]">
                   {{ description }}
+                  <copy-to-clipboard :content="description" />
                 </span>
               </div>
             </div>
           </div>
-
-          <!-- 参考图片 -->
           <image-wrapper
             v-if="modelValue?.request?.image_url"
             :src="modelValue?.request?.image_url"
@@ -298,7 +284,7 @@
             class="image w-full rounded-lg"
           />
         </div>
-        <el-alert :closable="false" class="mt-2 success">
+        <el-alert :closable="false" class="success">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('midjourney.field.taskId') }}:
@@ -315,7 +301,7 @@
       </div>
       <!-- response pending -->
       <div v-if="!modelValue?.response">
-        <el-alert :closable="false" class="mt-2 info">
+        <el-alert :closable="false" class="info">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('midjourney.field.taskId') }}:
@@ -496,7 +482,7 @@ $left-width: 70px;
       font-size: 16px;
       font-weight: bold;
       color: rgb(46, 204, 113);
-      margin-bottom: 0;
+      margin-bottom: 10px;
       margin-top: 0;
       .datetime {
         font-size: 12px;

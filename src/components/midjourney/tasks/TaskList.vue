@@ -8,7 +8,7 @@
   <div
     v-else-if="tasks.length > 0"
     ref="panel"
-    class="p-2 h-full flex flex-col overflow-y-auto"
+    class="p-2 py-3 h-full flex flex-col overflow-y-auto tasks"
     @scroll="onHandleScroll"
   >
     <task-item
@@ -52,7 +52,6 @@ export default defineComponent({
   methods: {
     onHandleScroll() {
       const el = this.$refs.panel as HTMLElement;
-      console.log('onHandleScroll  ', el.scrollTop);
       if (el.scrollTop === 0) {
         console.log('reach-top reach-top');
         this.$emit('reach-top');
