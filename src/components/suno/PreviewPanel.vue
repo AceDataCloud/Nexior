@@ -31,7 +31,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElScrollbar, ElAvatar, ElIcon } from 'element-plus';
+import { ElImage, ElAvatar, ElIcon } from 'element-plus';
 import { Picture as IconPicture } from '@element-plus/icons-vue';
 
 export default defineComponent({
