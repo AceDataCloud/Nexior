@@ -536,12 +536,24 @@ export default defineComponent({
     padding: 0 calc(50% - 400px);
     flex: 1;
     overflow-y: scroll;
+    @media (max-width: 1159px) {
+      width: 100%;
+      padding: 0 15px;
+    }
+    .setting {
+      display: none;
+    }
     .message {
       margin-bottom: 15px;
     }
   }
   .starter {
     height: fit-content;
+    overflow: hidden;
+    @media (max-width: 1159px) {
+      width: 100%;
+      padding: 0 15px;
+    }
   }
 }
 
