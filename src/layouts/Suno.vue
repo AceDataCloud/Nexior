@@ -55,7 +55,6 @@ export default defineComponent({
 
   .result {
     height: 100%;
-    padding: 15px;
     flex: 1;
     width: calc(100% - 600px);
     height: 100%;

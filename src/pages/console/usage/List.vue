@@ -8,8 +8,8 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :md="8" :sm="12" class="mb-4">
-          <span class="inline-block mr-3"> {{ $t('usage.field.application') }} </span>
+        <el-col :md="8" :sm="12" class="flex items-center px-2 mb-4">
+          <span class="inline-block mr-3 text-sm w-10"> {{ $t('usage.field.application') }} </span>
           <el-select
             v-model="applicationId"
             :placeholder="$t('usage.field.application')"
@@ -19,8 +19,8 @@
             <el-option v-for="item in applications" :key="item.id" :label="item.service?.title" :value="item?.id!" />
           </el-select>
         </el-col>
-        <el-col :md="8" :sm="12" class="mb-4">
-          <span class="inline-block mr-3"> {{ $t('usage.field.api') }} </span>
+        <el-col :md="8" :sm="12" class="flex items-center px-2 mb-4">
+          <span class="inline-block mr-3 text-sm w-10"> {{ $t('usage.field.api') }} </span>
           <el-select v-model="apiId" :placeholder="$t('usage.field.api')" clearable @change="onApiChange">
             <el-option v-for="item in apis" :key="item?.id" :label="item?.title" :value="item?.id!" />
           </el-select>
@@ -34,6 +34,7 @@
               :data="apiUsages"
               stripe
               table-layout="fixed"
+              class="!h-[calc(100vh-350px)]"
               :empty-text="$t('common.message.noData')"
             >
               <el-table-column :label="$t('application.field.name')" width="140px">
@@ -262,11 +263,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.panel {
-  .el-table {
-    height: calc(100vh - 300px) !important;
-  }
-}
-</style>

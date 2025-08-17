@@ -13,6 +13,7 @@
               v-loading="loading"
               :data="applications"
               stripe
+              class="!h-[calc(100vh-250px)]"
               table-layout="fixed"
               :empty-text="$t('common.message.noData')"
             >

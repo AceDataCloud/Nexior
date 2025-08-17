@@ -277,15 +277,17 @@ export default defineComponent({
   &[direction='row'] {
     flex-direction: row;
     border-top: 1px solid var(--el-border-color);
+    overflow-x: scroll;
     .brand {
       display: none;
     }
     .top {
+      padding-left: 10px;
       display: flex;
       flex-direction: row;
       align-items: center;
+      gap: 10px;
       justify-content: space-evenly;
-      width: 100%;
       .link {
         text-align: center;
         .description {
@@ -298,7 +300,10 @@ export default defineComponent({
       }
     }
     .bottom {
-      display: none;
+      padding: 0 10px;
+      display: flex;
+      flex: 1;
+      justify-content: flex-end;
     }
   }
   &[direction='column'] {

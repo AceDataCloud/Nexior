@@ -4,12 +4,12 @@
       :icon="audio?.state === 'playing' ? PauseOne : Play"
       size="45"
       theme="filled"
-      class="control"
+      class="text-[var(--el-color-primary)] cursor-pointer"
       @click="togglePlay"
     />
     <el-popover placement="top" width="50px" trigger="click">
       <template #reference>
-        <icon-park :icon="VolumeSmall" size="20" :stroke-width="2" class="hover-text" />
+        <icon-park :icon="VolumeSmall" size="20" :stroke-width="2" class="cursor-pointer" />
       </template>
       <player-volume-slider />
     </el-popover>
@@ -32,9 +32,3 @@ const togglePlay = () =>
   });
 const audio = computed(() => store.state.suno.audio);
 </script>
-
-<style lang="scss">
-.control {
-  color: var(--el-color-primary);
-}
-</style>
