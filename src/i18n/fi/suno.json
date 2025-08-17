@@ -13,7 +13,7 @@
   },
   "button.uploadAudios": {
     "message": "Lataa",
-    "description": "Painikkeen teksti, joka sallii käyttäjän ladata viittauksen"
+    "description": "Painikkeen teksti, joka sallii käyttäjän ladata viittaus"
   },
   "button.video": {
     "message": "Video",
@@ -25,15 +25,15 @@
   },
   "button.get_stems": {
     "message": "Ääniraitojen erottaminen",
-    "description": "Lataa video -painikkeen teksti"
+    "description": "Ääniraitojen erottaminen -painikkeen teksti"
   },
   "button.cover_music": {
     "message": "Musiikin kansiversio",
-    "description": "Lataa video -painikkeen teksti"
+    "description": "Musiikin kansiversio -painikkeen teksti"
   },
   "button.concat_music": {
-    "message": "Musiikin yhdistäminen",
-    "description": "Lataa video -painikkeen teksti"
+    "message": "Yhdistä musiikki",
+    "description": "Yhdistä musiikki -painikkeen teksti"
   },
   "button.download_audio": {
     "message": "Lataa musiikki",
@@ -72,8 +72,8 @@
     "description": "Tehtävän ID"
   },
   "name.type": {
-    "message": "Mukautettu malli",
-    "description": "Mukautetun mallin nimi"
+    "message": "Mukautettu tila",
+    "description": "Mukautetun tilan nimi"
   },
   "name.prompt": {
     "message": "Kappaleen kuvaus",
@@ -89,15 +89,15 @@
   },
   "name.lyrics": {
     "message": "Sanoitusten sisältö",
-    "description": "Sanoitusten sisältösyötteen kehotus"
+    "description": "Sanoitusten sisällön syötteen kehotus"
   },
   "name.style": {
     "message": "Kappaleen tyyli",
-    "description": "Kappaleen tyylin sisältösyötteen kehotus"
+    "description": "Kappaleen tyylin sisällön syötteen kehotus"
   },
   "name.title": {
     "message": "Kappaleen otsikko",
-    "description": "Kappaleen otsikon sisältösyötteen kehotus"
+    "description": "Kappaleen otsikon sisällön syötteen kehotus"
   },
   "name.failureReason": {
     "message": "Epäonnistumisen syy",
@@ -141,19 +141,19 @@
   },
   "placeholder.prompt": {
     "message": "Syötä kappaleen kehotussana...",
-    "description": "Täyttötekstin paikkamerkki"
+    "description": "Täyttöteksti syötteen paikkamerkissä"
   },
   "placeholder.lyrics": {
     "message": "Syötä sanoitukset...",
-    "description": "Täyttötekstin paikkamerkki"
+    "description": "Täyttöteksti tason paikkamerkissä"
   },
   "placeholder.extend.lyrics": {
     "message": "Syötä laajennettavat sanoitukset...",
-    "description": "Täyttötekstin paikkamerkki"
+    "description": "Täyttöteksti tason paikkamerkissä"
   },
   "placeholder.extend.continue_at": {
     "message": "Syötä, mistä sekunnista kappaletta halutaan laajentaa...",
-    "description": "Täyttötekstin paikkamerkki"
+    "description": "Täyttöteksti tason paikkamerkissä"
   },
   "placeholder.style": {
     "message": "Syötä haluamasi kappaleen tyylin kehotussana, esimerkiksi akustinen pop",
@@ -161,15 +161,15 @@
   },
   "placeholder.title": {
     "message": "Syötä haluamasi kappaleen otsikon kehotussana, esimerkiksi lomakappale",
-    "description": "Siemen syötteen paikkamerkki"
+    "description": "Siemenen syötteen paikkamerkki"
   },
   "placeholder.select": {
     "message": "Valitse malli...",
-    "description": "Sijaintisyötteen paikkamerkki"
+    "description": "Sijainnin syötteen paikkamerkki"
   },
   "placeholder.position": {
     "message": "Valitse...",
-    "description": "Sijaintisyötteen paikkamerkki"
+    "description": "Sijainnin syötteen paikkamerkki"
   },
   "button.generate": {
     "message": "Generoi",
@@ -184,8 +184,8 @@
     "description": "Viesti musiikin generointitehtävän alkaessa"
   },
   "message.uploadReferencesExceed": {
-    "message": "Ladattu musiikki ylittää suurimman sallitun määrän",
-    "description": "Virheviesti, kun ladattu musiikki ylittää suurimman sallitun määrän"
+    "message": "Ladattu musiikki ylittää enimmäismäärän",
+    "description": "Virheviesti, kun ladattu musiikki ylittää enimmäismäärän"
   },
   "message.uploadReferencesError": {
     "message": "Musiikin lataaminen epäonnistui",
@@ -201,11 +201,15 @@
   },
   "message.startUploadAudioFailed": {
     "message": "Mukautetun musiikin lataaminen epäonnistui",
-    "description": "Virheviesti musiikkigenerointitehtävän käynnistämisen epäonnistumisesta"
+    "description": "Virheviesti musiikkigenerointitehtävän käynnistämisen epäonnistumisen jälkeen"
   },
   "message.startTaskFailed": {
     "message": "Musiikkigenerointitehtävän käynnistäminen epäonnistui",
-    "description": "Virheviesti musiikkigenerointitehtävän käynnistämisen epäonnistumisesta"
+    "description": "Virheviesti musiikkigenerointitehtävän käynnistämisen epäonnistumisen jälkeen"
+  },
+  "message.getVideoUrlFailed": {
+    "message": "Musiikkivideon saaminen epäonnistui, yritä myöhemmin uudelleen",
+    "description": "Virheviesti musiikkigenerointitehtävän käynnistämisen epäonnistumisen jälkeen"
   },
   "message.generating": {
     "message": "Generoidaan...",
@@ -213,7 +217,7 @@
   },
   "message.generateFailed": {
     "message": "Musiikin generoiminen epäonnistui",
-    "description": "Viesti musiikin generoinnin epäonnistumisesta"
+    "description": "Viesti musiikin generoinnin epäonnistumisen jälkeen"
   },
   "message.noOperations": {
     "message": "Ei käytettävissä olevia toimintoja",

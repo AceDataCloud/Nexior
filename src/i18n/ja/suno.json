@@ -116,7 +116,7 @@
     "description": "Suno生成器の名称"
   },
   "description.prompt": {
-    "message": "生成したい音楽のスタイルとテーマを入力してください。例: アコースティックポップ、ホリデーについて",
+    "message": "生成したい音楽のスタイルとテーマを入力してください。例: ホリデーに関するアコースティックポップ",
     "description": "パラメータ'prompt'の説明"
   },
   "description.lyrics": {
@@ -148,11 +148,11 @@
     "description": "入力フィールドのプレースホルダー"
   },
   "placeholder.extend.lyrics": {
-    "message": "拡張する歌詞を入力してください...",
+    "message": "拡張する必要がある歌詞を入力してください...",
     "description": "入力フィールドのプレースホルダー"
   },
   "placeholder.extend.continue_at": {
-    "message": "どの秒から曲を拡張するかを入力してください...",
+    "message": "曲のどの秒から拡張するかを入力してください...",
     "description": "入力フィールドのプレースホルダー"
   },
   "placeholder.style": {
@@ -165,11 +165,11 @@
   },
   "placeholder.select": {
     "message": "モデルを選択してください...",
-    "description": "選択入力のプレースホルダー"
+    "description": "選択フィールドのプレースホルダー"
   },
   "placeholder.position": {
     "message": "選択してください...",
-    "description": "選択入力のプレースホルダー"
+    "description": "選択フィールドのプレースホルダー"
   },
   "button.generate": {
     "message": "生成",
@@ -192,20 +192,24 @@
     "description": "音楽のアップロードに失敗した時のエラーメッセージ"
   },
   "message.startTaskSuccess": {
-    "message": "音楽生成タスクの起動に成功しました",
-    "description": "音楽生成タスクの起動に成功した時のメッセージ"
+    "message": "音楽生成タスクの開始に成功しました",
+    "description": "音楽生成タスクの開始に成功した時のメッセージ"
   },
   "message.startUploadAudioSuccess": {
     "message": "カスタム音楽のアップロードに成功しました",
-    "description": "カスタム音楽のアップロードに成功した時のメッセージ"
+    "description": "音楽生成タスクの開始に成功した時のメッセージ"
   },
   "message.startUploadAudioFailed": {
     "message": "カスタム音楽のアップロードに失敗しました",
-    "description": "音楽生成タスクの起動に失敗した時のエラーメッセージ"
+    "description": "音楽生成タスクの開始に失敗した時のエラーメッセージ"
   },
   "message.startTaskFailed": {
-    "message": "音楽生成タスクの起動に失敗しました",
-    "description": "音楽生成タスクの起動に失敗した時のエラーメッセージ"
+    "message": "音楽生成タスクの開始に失敗しました",
+    "description": "音楽生成タスクの開始に失敗した時のエラーメッセージ"
+  },
+  "message.getVideoUrlFailed": {
+    "message": "音楽ビデオの取得に失敗しました。後でもう一度お試しください",
+    "description": "音楽生成タスクの開始に失敗した時のエラーメッセージ"
   },
   "message.generating": {
     "message": "生成中...",

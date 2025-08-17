@@ -1,11 +1,27 @@
 {
   "name.taskId": {
-    "message": "ID de la tarea",
+    "message": "ID de tarea",
     "description": "ID de la tarea"
+  },
+  "name.task": {
+    "message": "Tipo de tarea",
+    "description": "Tipo de operación del generador de imágenes Flux"
+  },
+  "name.generate": {
+    "message": "Crear imagen",
+    "description": "Tipo de operación del generador de imágenes Flux"
+  },
+  "name.edits": {
+    "message": "Editar imagen",
+    "description": "Tipo de operación del generador de imágenes Flux"
   },
   "name.type": {
     "message": "Tipo",
-    "description": "El tipo de contenido de la imagen Flux que se va a generar, como 'enlace', 'texto', etc."
+    "description": "Tipo de contenido de la imagen FLux a generar, como 'enlace', 'texto', etc."
+  },
+  "name.imageUrl": {
+    "message": "Imagen de referencia",
+    "description": "Nombre de la imagen de referencia"
   },
   "name.failure": {
     "message": "Fallo",
@@ -13,11 +29,11 @@
   },
   "name.failureReason": {
     "message": "Razón del fallo",
-    "description": "La razón por la cual falló la tarea"
+    "description": "Razón del fallo de la tarea"
   },
   "name.status": {
     "message": "Estado",
-    "description": "El estado de la tarea"
+    "description": "Estado de la tarea"
   },
   "name.traceId": {
     "message": "ID de seguimiento",
@@ -25,19 +41,19 @@
   },
   "name.createdAt": {
     "message": "Fecha de creación",
-    "description": "La fecha y hora en que se generó la imagen Flux"
+    "description": "Fecha y hora en que se generó la imagen Flux"
   },
   "name.numbers": {
     "message": "Cantidad de imágenes",
-    "description": "La cantidad de imágenes que se generarán"
+    "description": "Cantidad de imágenes a generar"
   },
   "name.quality": {
-    "message": "Calidad de imagen",
-    "description": "La calidad de la imagen"
+    "message": "Calidad de la imagen",
+    "description": "Calidad de la imagen"
   },
   "name.prompt": {
-    "message": "Mensaje de imagen",
-    "description": "El mensaje o texto de entrada para generar contenido"
+    "message": "Sugerencia de imagen",
+    "description": "Sugerencia para la entrada de contenido"
   },
   "name.ratio": {
     "message": "Proporción",
@@ -45,167 +61,175 @@
   },
   "name.model": {
     "message": "Versión del modelo",
-    "description": "La versión del modelo que se utilizará para generar la imagen"
+    "description": "Versión del modelo utilizada para generar la imagen"
   },
   "name.fluxBot": {
-    "message": "Bot de Flux",
-    "description": "El nombre del generador de imágenes Flux"
+    "message": "Flux Bot",
+    "description": "Nombre del generador de imágenes Flux"
   },
   "description.numbers": {
-    "message": "Especifica el número de imágenes que se generarán, el rango de valores es: 1-4.",
+    "message": "Especifique la cantidad de imágenes a generar, el rango de valores es: 1-4.",
     "description": "Descripción del parámetro 'numbers'"
   },
   "description.quality": {
-    "message": "Especifica la calidad de la imagen generada, el rango de valores es: 1-100.",
+    "message": "Especifique la calidad de la imagen a generar, el rango de valores es: 1-100.",
     "description": "Descripción del parámetro 'quality'"
   },
   "description.prompt": {
-    "message": "El mensaje o palabras clave para generar una imagen Flux",
+    "message": "Palabras clave para generar imágenes Flux",
     "description": "Descripción del parámetro 'prompt'"
   },
+  "description.imageUrl": {
+    "message": "En la tarea de crear una imagen editada, debe subir una imagen.",
+    "description": "Descripción del parámetro 'imageUrl'"
+  },
   "status.pending": {
-    "message": "Pendiente",
-    "description": "Estado pendiente de la tarea"
+    "message": "En espera",
+    "description": "Estado de espera de la tarea"
   },
   "status.processing": {
-    "message": "Procesando",
-    "description": "Estado de procesamiento de la tarea"
+    "message": "En proceso",
+    "description": "Estado de espera de la tarea"
   },
   "placeholder.paddingNoise": {
-    "message": "Por favor seleccione...",
-    "description": "Texto del marcador de posición para la entrada de ruido de relleno"
+    "message": "Seleccione...",
+    "description": "Marcador de posición para la entrada de ruido de relleno"
   },
   "placeholder.select": {
     "message": "Seleccionar",
     "description": "Texto de marcador de posición en el campo de selección"
   },
   "placeholder.paddingLevel": {
-    "message": "Por favor seleccione...",
-    "description": "Texto del marcador de posición para el nivel de relleno"
+    "message": "Seleccione...",
+    "description": "Marcador de posición para el nivel de relleno"
   },
   "placeholder.prompt": {
-    "message": "Ingrese palabras clave para el estilo de imagen a generar, por ejemplo: a white siamese cat",
-    "description": "Texto del marcador de posición en el campo de entrada de palabras clave"
+    "message": "Ingrese las palabras clave del estilo de imagen a generar, por ejemplo: un gato siamés blanco",
+    "description": "Texto de marcador de posición en el campo de sugerencia"
   },
   "placeholder.position": {
-    "message": "Por favor seleccione...",
-    "description": "Texto del marcador de posición para la entrada de posición"
+    "message": "Seleccione...",
+    "description": "Marcador de posición para la entrada de posición"
   },
   "placeholder.aspectRatio": {
-    "message": "Por favor seleccione...",
-    "description": "Texto del marcador de posición para la entrada de relación de aspecto"
+    "message": "Seleccione...",
+    "description": "Marcador de posición para la entrada de relación de aspecto"
   },
   "placeholder.preset": {
-    "message": "Por favor seleccione...",
-    "description": "Texto del marcador de posición para la entrada predeterminada"
+    "message": "Seleccione...",
+    "description": "Marcador de posición para la entrada de preajuste"
   },
   "placeholder.markerShape": {
-    "message": "Por favor seleccione...",
-    "description": "Texto del marcador de posición para la forma del marcador"
+    "message": "Seleccione...",
+    "description": "Marcador de posición para la entrada de forma de marcador"
   },
   "placeholder.rotate": {
-    "message": "Por favor seleccione...",
-    "description": "Texto del marcador de posición para la entrada de rotación"
+    "message": "Seleccione...",
+    "description": "Marcador de posición para la entrada de rotación"
   },
   "placeholder.subMarker": {
-    "message": "Por favor seleccione...",
-    "description": "Texto del marcador de posición para el marcador secundario"
+    "message": "Seleccione...",
+    "description": "Marcador de posición para la entrada de sub-marcador"
   },
   "button.generate": {
     "message": "Generar",
-    "description": "Texto del botón para generar la imagen Flux"
+    "description": "Texto del botón para generar imágenes Flux"
+  },
+  "button.uploadImageUrl": {
+    "message": "Subir imagen",
+    "description": "Texto del botón para subir imágenes"
   },
   "button.extend": {
-    "message": "Extender imagen",
-    "description": "Texto del botón para extender la imagen"
+    "message": "Ampliar imagen",
+    "description": "Texto del botón para ampliar imágenes"
   },
   "button.viewImage": {
     "message": "Ver imagen original",
-    "description": "Texto del botón para ver la imagen Flux generada"
+    "description": "Texto del botón para ver la imagen generada"
   },
   "button.download": {
     "message": "Descargar imagen",
-    "description": "Texto del botón para descargar la imagen"
+    "description": "Texto del botón para descargar imágenes"
   },
   "message.downloadImage": {
-    "message": "Abrir imagen en una nueva ventana",
-    "description": "Mensaje para abrir la imagen en una nueva ventana"
+    "message": "Abrir imagen en nueva ventana",
+    "description": "Abrir imagen en nueva ventana"
   },
   "message.uploadReferencesExceed": {
-    "message": "Se pueden cargar hasta 5 imágenes como máximo",
-    "description": "Mensaje de error cuando se supera el límite de cantidad de imágenes cargadas"
+    "message": "Se pueden subir hasta 5 imágenes",
+    "description": "Mensaje de error cuando se excede el límite de imágenes subidas"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Imagen cargada exitosamente",
-    "description": "Mensaje de éxito cuando las imágenes se cargan correctamente"
+    "message": "Imagen subida con éxito",
+    "description": "Mensaje de éxito al subir una imagen"
   },
   "message.uploadReferencesError": {
-    "message": "Error al cargar la imagen, por favor intente nuevamente más tarde",
-    "description": "Mensaje de error cuando falla la carga de la imagen"
+    "message": "Error al subir la imagen, por favor intente de nuevo más tarde",
+    "description": "Mensaje de error al fallar la subida de la imagen"
   },
   "message.startingTask": {
     "message": "Iniciando tarea...",
-    "description": "Mensaje cuando comienza una tarea de generación de imágenes"
+    "description": "Mensaje al comenzar la tarea de dibujo"
   },
   "message.startTaskSuccess": {
-    "message": "Tarea de generación iniciada exitosamente",
-    "description": "Mensaje de éxito cuando la tarea comienza correctamente"
+    "message": "Tarea de generación iniciada con éxito",
+    "description": "Mensaje de éxito al iniciar la tarea"
   },
   "message.startTaskFailed": {
     "message": "Error al iniciar la tarea, por favor contacte al administrador",
-    "description": "Mensaje de error cuando falla el inicio de la tarea de generación"
+    "description": "Mensaje de error al fallar el inicio de la tarea de dibujo"
   },
   "message.usedUp": {
-    "message": "Sus créditos se han agotado. Por favor, compre más créditos para continuar usando el servicio",
-    "description": "Mensaje mostrado cuando los créditos se han agotado"
+    "message": "Sus créditos se han agotado, por favor compre más créditos para continuar usando",
+    "description": "Mensaje al agotarse los créditos"
   },
   "message.generating": {
     "message": "Generando...",
-    "description": "Mensaje mostrado mientras se genera la imagen"
+    "description": "Mensaje mientras se genera la imagen"
   },
   "message.downloadVideo": {
     "message": "Descargar esta imagen",
-    "description": "Mensaje mostrado mientras se genera la imagen"
+    "description": "Mensaje mientras se genera la imagen"
   },
   "message.extendVideo": {
     "message": "Continuar generando esta imagen",
-    "description": "Mensaje mostrado mientras se genera la imagen"
+    "description": "Mensaje cuando la imagen está siendo generada"
   },
   "message.generateFailed": {
     "message": "Error al generar la imagen",
-    "description": "Mensaje de error cuando falla la generación de la imagen"
+    "description": "Mensaje cuando la generación de la imagen falla"
   },
   "message.uploadVideoExceed": {
-    "message": "La cantidad de imágenes cargadas supera el límite permitido",
-    "description": "Mensaje de error cuando se supera el límite permitido de imágenes cargadas"
+    "message": "El número de imágenes de la primera trama subidas excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes de la primera trama subidas excede el límite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "El tamaño del archivo cargado no puede superar los 10 MB",
-    "description": "Mensaje de error cuando el tamaño del archivo cargado supera los 10 MB"
+    "message": "¡El tamaño del archivo subido no puede exceder 10 MB!",
+    "description": "Mensaje de error cuando el tamaño del archivo subido excede 10 MB"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "El archivo cargado debe estar en formato MP4",
-    "description": "Mensaje de error cuando el archivo cargado no está en formato MP4"
+    "message": "¡El archivo subido debe estar en formato MP4!",
+    "description": "Mensaje de error cuando el archivo subido no está en formato MP4"
   },
   "message.uploadStartImageExceed": {
-    "message": "El número de imágenes iniciales subidas excede el límite",
-    "description": "Mensaje de error cuando el número de imágenes iniciales subidas excede el límite"
+    "message": "El número de imágenes de referencia subidas excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes de referencia subidas excede el límite"
   },
   "message.uploadEndImageExceed": {
-    "message": "El número de imágenes finales subidas excede el límite",
-    "description": "Mensaje de error cuando el número de imágenes finales subidas excede el límite"
+    "message": "El número de imágenes de la última trama subidas excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes de la última trama subidas excede el límite"
   },
   "message.uploadStartImageError": {
-    "message": "Error al subir la imagen inicial",
-    "description": "Mensaje de error cuando falla la subida de la imagen inicial"
+    "message": "Error al subir la imagen de referencia",
+    "description": "Mensaje de error cuando falla la subida de la imagen de referencia"
   },
   "message.uploadVideoError": {
-    "message": "Error al subir imágenes",
-    "description": "Mensaje de error cuando falla la subida de la imagen inicial"
+    "message": "Error al subir la imagen",
+    "description": "Mensaje de error cuando falla la subida de la imagen de la primera trama"
   },
   "message.uploadEndImageError": {
-    "message": "Error al subir la imagen final",
-    "description": "Mensaje de error cuando falla la subida de la imagen final"
+    "message": "Error al subir la imagen de la última trama",
+    "description": "Mensaje de error cuando falla la subida de la imagen de la última trama"
   },
   "message.uploadDocumentsError": {
     "message": "Error al subir el documento",
@@ -216,7 +240,7 @@
     "description": "Mensaje cuando no hay operaciones disponibles"
   },
   "message.noTasks": {
-    "message": "No hay tareas previas, por favor haga clic a la izquierda para generar una imagen",
+    "message": "No hay tareas históricas, por favor haga clic en la izquierda para generar una imagen",
     "description": "Mensaje cuando no hay tareas"
   }
 }

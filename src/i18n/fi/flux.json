@@ -1,34 +1,50 @@
 {
   "name.taskId": {
-    "message": "Tehtävän ID",
-    "description": "Tehtävän tunniste"
+    "message": "Tehtävä ID",
+    "description": "Tehtävän ID"
+  },
+  "name.task": {
+    "message": "Tehtävätyyppi",
+    "description": "Flux-kuvageneraattorin toimintatyyppi"
+  },
+  "name.generate": {
+    "message": "Luo kuva",
+    "description": "Flux-kuvageneraattorin toimintatyyppi"
+  },
+  "name.edits": {
+    "message": "Muokkaa kuvaa",
+    "description": "Flux-kuvageneraattorin toimintatyyppi"
   },
   "name.type": {
     "message": "Tyyppi",
-    "description": "Flux-kuvan sisältötyyppi, kuten 'linkki', 'teksti' jne."
+    "description": "FLux-kuvan sisältötyyppi, kuten 'linkki', 'teksti' jne."
+  },
+  "name.imageUrl": {
+    "message": "Viittauskuva",
+    "description": "Viittauskuvan nimi"
   },
   "name.failure": {
-    "message": "Epäonnistui",
-    "description": "Tehtävän epäonnistunut tila"
+    "message": "Epätosi",
+    "description": "Tehtävän epäonnistumisen tila"
   },
   "name.failureReason": {
     "message": "Epäonnistumisen syy",
-    "description": "Syy, miksi tehtävä epäonnistui"
+    "description": "Tehtävän epäonnistumisen syy"
   },
   "name.status": {
     "message": "Tila",
     "description": "Tehtävän tila"
   },
   "name.traceId": {
-    "message": "Jäljityksen ID",
-    "description": "Tehtävän jäljityksen tunniste"
+    "message": "Seuranta ID",
+    "description": "Tehtävän seuranta ID"
   },
   "name.createdAt": {
     "message": "Luontiaika",
-    "description": "Flux-kuvan luomisen päivämäärä ja aika"
+    "description": "Flux-kuvan luontipäivämäärä ja -aika"
   },
   "name.numbers": {
-    "message": "Kuvamäärä",
+    "message": "Kuvien määrä",
     "description": "Luotavien kuvien määrä"
   },
   "name.quality": {
@@ -36,44 +52,48 @@
     "description": "Kuvan laatu"
   },
   "name.prompt": {
-    "message": "Kuvavihje",
-    "description": "Sisällön syötteen vihje"
+    "message": "Kuvan vihje",
+    "description": "Sisältösyötteen vihje"
   },
   "name.ratio": {
-    "message": "Kuvasuhde",
-    "description": "Kuvasuhteen parametri"
+    "message": "Suhde",
+    "description": "Suhdeparametrin nimi"
   },
   "name.model": {
     "message": "Malliversio",
-    "description": "Tuotannossa käytettävä malliversio"
+    "description": "Kuvan luomiseen käytettävä malliversio"
   },
   "name.fluxBot": {
     "message": "Flux Bot",
     "description": "Flux-kuvageneraattorin nimi"
   },
   "description.numbers": {
-    "message": "Määritä luotavien kuvien määrä, arvo välillä: 1-4.",
-    "description": "Parameterin 'numbers' kuvaus"
+    "message": "Määritä luotavien kuvien määrä, arvon alue on: 1-4.",
+    "description": "Parametrin 'numbers' kuvaus"
   },
   "description.quality": {
-    "message": "Määritä luotavien kuvien laatu, arvo välillä: 1-100.",
-    "description": "Parameterin 'quality' kuvaus"
+    "message": "Määritä luotavien kuvien laatu, arvon alue on: 1-100.",
+    "description": "Parametrin 'quality' kuvaus"
   },
   "description.prompt": {
-    "message": "Flux-kuvien luomiseen käytettävä vihjeteksti",
-    "description": "Parameterin 'prompt' kuvaus"
+    "message": "Flux-kuvien luomiseen käytettävä vihjesana",
+    "description": "Parametrin 'prompt' kuvaus"
+  },
+  "description.imageUrl": {
+    "message": "Kun luodaan muokkaustehtävää, on ladattava kuva.",
+    "description": "Parametrin 'imageUrl' kuvaus"
   },
   "status.pending": {
-    "message": "Odottamassa",
+    "message": "Odottaa",
     "description": "Tehtävän odotustila"
   },
   "status.processing": {
-    "message": "Käsitellään",
-    "description": "Tehtävän käsittelytila"
+    "message": "Käsittelyssä",
+    "description": "Tehtävän odotustila"
   },
   "placeholder.paddingNoise": {
     "message": "Valitse...",
-    "description": "Täytemelun syöttökentän paikkateksti"
+    "description": "Täyteäänisyys syötteen paikkamerkki"
   },
   "placeholder.select": {
     "message": "Valitse",
@@ -81,39 +101,43 @@
   },
   "placeholder.paddingLevel": {
     "message": "Valitse...",
-    "description": "Täytetason syöttökentän paikkateksti"
+    "description": "Täyteasteen paikkamerkki"
   },
   "placeholder.prompt": {
-    "message": "Syötä vihje, esim. valkoinen siamilaissusi",
-    "description": "Vihjesyötteen paikkateksti"
+    "message": "Syötä luotavan kuvan tyylin vihjesana, esimerkiksi: valkoinen siamilainen kissa",
+    "description": "Vihjekentän paikkateksti"
   },
   "placeholder.position": {
     "message": "Valitse...",
-    "description": "Asemoinnin paikkateksti"
+    "description": "Sijaintisyötteen paikkamerkki"
   },
   "placeholder.aspectRatio": {
     "message": "Valitse...",
-    "description": "Kuvasuhteen syöttökentän paikkateksti"
+    "description": "Leveys-korkeus suhteen syötteen paikkamerkki"
   },
   "placeholder.preset": {
     "message": "Valitse...",
-    "description": "Esiasetusten syöttökentän paikkateksti"
+    "description": "Esiasetuksen syötteen paikkamerkki"
   },
   "placeholder.markerShape": {
     "message": "Valitse...",
-    "description": "Merkinkuvien syöttökentän paikkateksti"
+    "description": "Merkintämuodon syötteen paikkamerkki"
   },
   "placeholder.rotate": {
     "message": "Valitse...",
-    "description": "Kiertämisen syöttökentän paikkateksti"
+    "description": "Kääntösyötteen paikkamerkki"
   },
   "placeholder.subMarker": {
     "message": "Valitse...",
-    "description": "Alamerkkien syöttökentän paikkateksti"
+    "description": "Alamerkin syötteen paikkamerkki"
   },
   "button.generate": {
-    "message": "Luo",
+    "message": "Generoi",
     "description": "Flux-kuvien luomisen painikkeen teksti"
+  },
+  "button.uploadImageUrl": {
+    "message": "Lataa kuva",
+    "description": "Kuvan lataamisen painikkeen teksti"
   },
   "button.extend": {
     "message": "Laajenna kuvaa",
@@ -121,7 +145,7 @@
   },
   "button.viewImage": {
     "message": "Näytä alkuperäinen kuva",
-    "description": "Flux-kuvien katselun painikkeen teksti"
+    "description": "Flux-kuvien luomisen painikkeen teksti"
   },
   "button.download": {
     "message": "Lataa kuva",
@@ -129,94 +153,94 @@
   },
   "message.downloadImage": {
     "message": "Avaa kuva uudessa ikkunassa",
-    "description": "Viesti uuden ikkunan avaamisesta kuvalle"
+    "description": "Avaa kuva uudessa ikkunassa"
   },
   "message.uploadReferencesExceed": {
-    "message": "Voit ladata korkeintaan 5 kuvaa",
-    "description": "Virheviesti, kun ladattujen kuvien määrä ylittää rajan"
+    "message": "Voit ladata enintään 5 kuvaa",
+    "description": "Virheilmoitus, kun ladattujen kuvien määrä ylittää rajan"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Kuvat ladattu onnistuneesti",
-    "description": "Onnistumisviesti, kun kuvat on ladattu onnistuneesti"
+    "message": "Kuvan lataaminen onnistui",
+    "description": "Onnistumisviesti, kun kuva on ladattu onnistuneesti"
   },
   "message.uploadReferencesError": {
-    "message": "Kuvien lataus epäonnistui, yritä myöhemmin uudelleen",
-    "description": "Virheviesti, kun kuvien lataus epäonnistuu"
+    "message": "Kuvan lataaminen epäonnistui, yritä myöhemmin uudelleen",
+    "description": "Virheilmoitus, kun kuvan lataaminen epäonnistuu"
   },
   "message.startingTask": {
     "message": "Tehtävää käynnistetään...",
-    "description": "Viesti, kun piirtotehtävä aloitetaan"
+    "description": "Viesti, kun piirustustehtävä alkaa"
   },
   "message.startTaskSuccess": {
-    "message": "Tehtävä käynnistetty onnistuneesti",
+    "message": "Tehtävän käynnistäminen onnistui",
     "description": "Onnistumisviesti, kun tehtävä on käynnistetty onnistuneesti"
   },
   "message.startTaskFailed": {
-    "message": "Tehtävän käynnistäminen epäonnistui, ota yhteyttä ylläpitäjään",
-    "description": "Virheviesti, kun piirtotehtävän käynnistäminen epäonnistuu"
+    "message": "Tehtävän käynnistäminen epäonnistui, ota yhteyttä ylläpitoon",
+    "description": "Virheilmoitus, kun piirustustehtävän käynnistäminen epäonnistuu"
   },
   "message.usedUp": {
-    "message": "Pisteesi ovat loppuneet, osta lisää käyttääksesi palvelua",
-    "description": "Viesti, kun pisteet ovat loppuneet"
+    "message": "Pisteesi on käytetty loppuun, osta lisää pisteitä jatkaaksesi käyttöä",
+    "description": "Viesti, kun pisteet on käytetty loppuun"
   },
   "message.generating": {
-    "message": "Luodaan...",
-    "description": "Viesti, kun kuvaa luodaan"
+    "message": "Generoidaan...",
+    "description": "Viesti, kun kuvaa generoidaan"
   },
   "message.downloadVideo": {
     "message": "Lataa tämä kuva",
-    "description": "Viesti, kun kuva on ladattavissa"
+    "description": "Viesti, kun kuvaa generoidaan"
   },
   "message.extendVideo": {
     "message": "Jatka tämän kuvan luomista",
-    "description": "Viesti, kun kuva on jatkettavissa"
+    "description": "Viesti, kun kuvaa luodaan"
   },
   "message.generateFailed": {
     "message": "Kuvan luominen epäonnistui",
     "description": "Viesti, kun kuvan luominen epäonnistuu"
   },
   "message.uploadVideoExceed": {
-    "message": "Ladattujen esikatselukuvien määrä on ylittänyt rajan",
-    "description": "Virheviesti, kun ladattujen esikatselukuvien määrä ylittää rajan"
+    "message": "Ladattujen ensimmäisten kuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun ladattujen ensimmäisten kuvien määrä ylittää rajan"
   },
   "message.uploadVideoSizeExceed": {
     "message": "Ladattavan tiedoston koko ei saa ylittää 10MB!",
-    "description": "Virheviesti, kun tiedoston koko ylittää 10MB"
+    "description": "Virheilmoitus, kun ladattavan tiedoston koko ei saa ylittää 10MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Ladattavan tiedoston on oltava MP4-muodossa!",
-    "description": "Virheviesti, kun ladattava tiedosto ei ole MP4-formaatissa"
+    "description": "Virheilmoitus, kun ladattavan tiedoston on oltava MP4-muodossa!"
   },
   "message.uploadStartImageExceed": {
-    "message": "Ladattujen aloituskehyskuvien määrä ylittää rajan",
-    "description": "Virhesanoma, kun ladattujen aloituskehyskuvien määrä ylittää rajan"
+    "message": "Ladattujen viittauskuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun ladattujen viittauskuvien määrä ylittää rajan"
   },
   "message.uploadEndImageExceed": {
-    "message": "Ladattujen loppukehyskuvien määrä ylittää rajan",
-    "description": "Virhesanoma, kun ladattujen loppukehyskuvien määrä ylittää rajan"
+    "message": "Ladattujen viimeisten kuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun ladattujen viimeisten kuvien määrä ylittää rajan"
   },
   "message.uploadStartImageError": {
-    "message": "Aloituskehyskuvan lataus epäonnistui",
-    "description": "Virhesanoma, kun aloituskehyskuvan lataus epäonnistuu"
+    "message": "Viittauskuvan lataaminen epäonnistui",
+    "description": "Virheilmoitus, kun viittauskuvan lataaminen epäonnistuu"
   },
   "message.uploadVideoError": {
-    "message": "Kuvan lataus epäonnistui",
-    "description": "Virhesanoma, kun kuvan lataus epäonnistuu"
+    "message": "Kuvan lataaminen epäonnistui",
+    "description": "Virheilmoitus, kun ensimmäisen kuvan lataaminen epäonnistuu"
   },
   "message.uploadEndImageError": {
-    "message": "Loppukehyskuvan lataus epäonnistui",
-    "description": "Virhesanoma, kun loppukehyskuvan lataus epäonnistuu"
+    "message": "Viimeisen kuvan lataaminen epäonnistui",
+    "description": "Virheilmoitus, kun viimeisen kuvan lataaminen epäonnistuu"
   },
   "message.uploadDocumentsError": {
-    "message": "Asiakirjojen lataus epäonnistui",
-    "description": "Virhesanoma, kun asiakirjojen lataus epäonnistuu"
+    "message": "Asiakirjan lataaminen epäonnistui",
+    "description": "Virheilmoitus, kun asiakirjan lataaminen epäonnistuu"
   },
   "message.noOperations": {
     "message": "Ei käytettävissä olevia toimintoja",
-    "description": "Viesti, kun ei ole käytettävissä olevia toimintoja"
+    "description": "Viesti, kun käytettävissä ei ole toimintoja"
   },
   "message.noTasks": {
-    "message": "Ei ole historiatehtäviä, napsauta vasemmalta luodaksesi kuvan",
-    "description": "Viesti, kun ei ole tehtäviä"
+    "message": "Ei historiallisia tehtäviä, napsauta vasemmalla luodaksesi kuvan",
+    "description": "Viesti, kun tehtäviä ei ole"
   }
 }

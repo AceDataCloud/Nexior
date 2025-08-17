@@ -133,7 +133,6 @@ export default defineComponent({
     async onGenerate() {
       const request = {
         ...this.config,
-        action: this.config?.is_edits ? 'edits' : 'generate',
         callback_url: CALLBACK_URL
       } as IFluxGenerateRequest;
       const token = this.credential?.token;

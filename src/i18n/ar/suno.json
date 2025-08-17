@@ -1,7 +1,7 @@
 {
   "button.extend": {
-    "message": "استمرار في التوليد",
-    "description": "نص زر استمرار في التوليد"
+    "message": "استمر في التوليد",
+    "description": "نص زر الاستمرار في التوليد"
   },
   "button.download": {
     "message": "تحميل",
@@ -13,7 +13,7 @@
   },
   "button.uploadAudios": {
     "message": "رفع",
-    "description": "نص الزر الذي يسمح للمستخدم برفع مرجع"
+    "description": "نص الزر الذي يسمح للمستخدم برفع المراجع"
   },
   "button.video": {
     "message": "فيديو",
@@ -77,27 +77,27 @@
   },
   "name.prompt": {
     "message": "وصف الأغنية",
-    "description": "نص الإدخال للمحتوى"
+    "description": "المطالبة بإدخال المحتوى"
   },
   "name.extend": {
-    "message": "توسيع الأغنية من",
-    "description": "نص الإدخال للمحتوى"
+    "message": "تمديد الأغنية من",
+    "description": "المطالبة بإدخال المحتوى"
   },
   "name.cover": {
     "message": "نسخة الأغنية من",
-    "description": "نص الإدخال للمحتوى"
+    "description": "المطالبة بإدخال المحتوى"
   },
   "name.lyrics": {
     "message": "محتوى الكلمات",
-    "description": "نص الإدخال لمحتوى الكلمات"
+    "description": "المطالبة بإدخال محتوى الكلمات"
   },
   "name.style": {
     "message": "أسلوب الأغنية",
-    "description": "نص الإدخال لمحتوى أسلوب الأغنية"
+    "description": "المطالبة بإدخال محتوى أسلوب الأغنية"
   },
   "name.title": {
     "message": "عنوان الأغنية",
-    "description": "نص الإدخال لمحتوى عنوان الأغنية"
+    "description": "المطالبة بإدخال عنوان الأغنية"
   },
   "name.failureReason": {
     "message": "سبب الفشل",
@@ -133,31 +133,31 @@
   },
   "description.uploadAudios": {
     "message": "رفع الموسيقى كمرجع للتوليد، عملية الرفع تحتاج إلى الانتظار قليلاً، بعد نجاح التوليد يمكنك التوليد بناءً على الموسيقى المرفوعة",
-    "description": "وصف المعامل لرفع المرجع"
+    "description": "وصف معلمة الرفع المرجعي"
   },
   "status.pending": {
     "message": "في الانتظار",
-    "description": "حالة الانتظار للمهمة"
+    "description": "حالة انتظار المهمة"
   },
   "placeholder.prompt": {
     "message": "أدخل كلمات الأغنية...",
-    "description": "نص العنصر النائب لإدخال الكلمات"
+    "description": "نص العنصر النائب لإدخال الضوضاء"
   },
   "placeholder.lyrics": {
     "message": "أدخل الكلمات...",
-    "description": "نص العنصر النائب لمستوى الكلمات"
+    "description": "نص العنصر النائب لمستوى الإدخال"
   },
   "placeholder.extend.lyrics": {
-    "message": "أدخل الكلمات التي تحتاج إلى توسيع...",
-    "description": "نص العنصر النائب لمستوى الكلمات"
+    "message": "أدخل الكلمات التي تحتاج إلى تمديد...",
+    "description": "نص العنصر النائب لمستوى الإدخال"
   },
   "placeholder.extend.continue_at": {
-    "message": "أدخل من أي ثانية تحتاج إلى توسيع الأغنية...",
-    "description": "نص العنصر النائب لمستوى الكلمات"
+    "message": "أدخل من أي ثانية تحتاج إلى التمديد...",
+    "description": "نص العنصر النائب لمستوى الإدخال"
   },
   "placeholder.style": {
     "message": "أدخل كلمات أسلوب الأغنية التي تريد توليدها، مثل البوب الصوتي",
-    "description": "نص العنصر النائب في حقل الإدخال"
+    "description": "نص العنصر النائب في حقل المطالبة"
   },
   "placeholder.title": {
     "message": "أدخل كلمات عنوان الأغنية التي تريد توليدها، مثل أغنية العطلة",
@@ -207,8 +207,12 @@
     "message": "فشل في بدء مهمة توليد الموسيقى",
     "description": "رسالة الخطأ عند فشل بدء مهمة توليد الموسيقى"
   },
+  "message.getVideoUrlFailed": {
+    "message": "فشل في الحصول على فيديو الموسيقى، يرجى المحاولة لاحقًا",
+    "description": "رسالة الخطأ عند فشل بدء مهمة توليد الموسيقى"
+  },
   "message.generating": {
-    "message": "جارٍ التوليد...",
+    "message": "جاري التوليد...",
     "description": "رسالة أثناء توليد الموسيقى"
   },
   "message.generateFailed": {

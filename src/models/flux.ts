@@ -2,7 +2,6 @@ export interface IFluxConfig {
   action?: string;
   count?: number;
   prompt?: string;
-  is_edits?: boolean;
   aspect_ratio?: string;
   model?: string;
   image_url?: string;

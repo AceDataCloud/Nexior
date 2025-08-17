@@ -37,14 +37,6 @@
         <el-button v-if="audio?.audio_url" size="small" round @click="onExtend($event, audio)">{{
           $t('suno.button.extend')
         }}</el-button>
-        <!-- <el-tooltip effect="dark" :content="$t('suno.button.video')" placement="top">
-          <font-awesome-icon
-            v-if="audio?.video_url"
-            icon="fa-solid fa-clapperboard"
-            class="icon icon-preview"
-            @click="onPreview($event, audio?.video_url)"
-          />
-        </el-tooltip> -->
         <el-dropdown>
           <span class="el-dropdown-link">
             <el-tooltip effect="dark" :content="$t('suno.button.download')" placement="top">
@@ -57,12 +49,9 @@
           </span>
           <template #dropdown>
             <el-dropdown-menu>
-              <!-- <el-dropdown-item v-if="audio?.video_url" @click="onDownload($event, audio?.video_url)">
-                {{ $t('suno.button.download_video') }}
-              </el-dropdown-item> -->
               <el-dropdown-item :disabled="isFetchingVideoUrl" @click="handleVideoDownload(audio)">
-                <div style="display: flex; align-items: center; min-width: 120px">
-                  <el-icon v-if="isFetchingVideoUrl" class="is-loading" style="margin-right: 8px">
+                <div class="flex items-center min-w-[120px]">
+                  <el-icon v-if="isFetchingVideoUrl" class="is-loading mr-2">
                     <Loading />
                   </el-icon>
                   <span>{{ $t('suno.button.download_video') }}</span>
@@ -119,7 +108,7 @@ import {
 } from 'element-plus';
 import { Loading } from '@element-plus/icons-vue';
 import { VideoPlay, VideoPause } from '@element-plus/icons-vue';
-import { ISunoAudioRequest, Status } from '@/models';
+import { ISunoMp4Request, ISunoAudioRequest, Status } from '@/models';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { saveAs } from 'file-saver';
 import { sunoOperator } from '@/operators';
@@ -149,7 +138,7 @@ export default defineComponent({
   },
   data() {
     return {
-      isFetchingVideoUrl: false // 用于控制视频下载按钮的加载状态
+      isFetchingVideoUrl: false
     };
   },
   computed: {
@@ -278,7 +267,7 @@ export default defineComponent({
       return new Promise((resolve, reject) => {
         const request = {
           audio_id: audioId
-        } as ISunoAudioRequest;
+        } as ISunoMp4Request;
         const token = this.credential?.token;
         if (!token) {
           console.error('no token specified');

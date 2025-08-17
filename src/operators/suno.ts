@@ -8,6 +8,7 @@ import {
   ISunoTasksResponse,
   ISunoUploadResponse,
   ISunoUploadRequest,
+  ISunoMp4Request,
   ISunoMp4Response
 } from '@/models';
 import { BASE_URL_API } from '@/constants';
@@ -150,7 +151,7 @@ class SunoOperator {
 
   // suno/mp4
   async mp4(
-    data: ISunoAudioRequest,
+    data: ISunoMp4Request,
     options: {
       token: string;
     }

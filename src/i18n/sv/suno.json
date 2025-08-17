@@ -105,11 +105,11 @@
   },
   "name.status": {
     "message": "Status",
-    "description": "Status för uppgiften"
+    "description": "Uppgiftens status"
   },
   "name.traceId": {
     "message": "Spårnings ID",
-    "description": "Spårnings ID för uppgiften"
+    "description": "Uppgiftens spårnings ID"
   },
   "name.sunoBot": {
     "message": "Suno Bot",
@@ -132,7 +132,7 @@
     "description": "Beskrivning av parametern 'title'"
   },
   "description.uploadAudios": {
-    "message": "Ladda upp musik som referens för generering, uppladdningsprocessen kan ta en stund, när genereringen är framgångsrik kan du generera baserat på den uppladdade musiken",
+    "message": "Ladda upp musik som referens för generering, uppladdningsprocessen kan ta en stund, när genereringen lyckas kan du generera baserat på den uppladdade musiken",
     "description": "Beskrivning av parametern för att ladda upp referenser"
   },
   "status.pending": {
@@ -193,11 +193,11 @@
   },
   "message.startTaskSuccess": {
     "message": "Musikgenereringsuppgiften startades framgångsrikt",
-    "description": "Framgångsmeddelande när musikgenereringsuppgiften startas framgångsrikt"
+    "description": "Framgångsmeddelande när musikgenereringsuppgiften har startats framgångsrikt"
   },
   "message.startUploadAudioSuccess": {
     "message": "Anpassad musik har laddats upp framgångsrikt",
-    "description": "Framgångsmeddelande när anpassad musik laddas upp framgångsrikt"
+    "description": "Framgångsmeddelande när anpassad musik har laddats upp framgångsrikt"
   },
   "message.startUploadAudioFailed": {
     "message": "Misslyckades med att ladda upp anpassad musik",
@@ -205,6 +205,10 @@
   },
   "message.startTaskFailed": {
     "message": "Misslyckades med att starta musikgenereringsuppgiften",
+    "description": "Felmeddelande när musikgenereringsuppgiften misslyckas"
+  },
+  "message.getVideoUrlFailed": {
+    "message": "Misslyckades med att hämta musikvideon, vänligen försök igen senare",
     "description": "Felmeddelande när musikgenereringsuppgiften misslyckas"
   },
   "message.generating": {
@@ -216,8 +220,8 @@
     "description": "Meddelande när musikgenereringen misslyckas"
   },
   "message.noOperations": {
-    "message": "Inga tillgängliga åtgärder",
-    "description": "Meddelande när det inte finns några tillgängliga åtgärder"
+    "message": "Inga tillgängliga operationer",
+    "description": "Meddelande när det inte finns några tillgängliga operationer"
   },
   "message.noTasks": {
     "message": "Inga historiska uppgifter, vänligen generera musik i konfigurationspanelen till vänster",

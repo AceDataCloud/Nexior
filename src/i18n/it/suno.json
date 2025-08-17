@@ -9,11 +9,11 @@
   },
   "button.more": {
     "message": "Altre azioni",
-    "description": "Testo del pulsante per scaricare"
+    "description": "Testo del pulsante per altre azioni"
   },
   "button.uploadAudios": {
     "message": "Carica",
-    "description": "Testo del pulsante che consente all'utente di caricare riferimenti"
+    "description": "Testo del pulsante che consente all'utente di caricare un riferimento"
   },
   "button.video": {
     "message": "Video",
@@ -24,7 +24,7 @@
     "description": "Testo del pulsante per scaricare video"
   },
   "button.get_stems": {
-    "message": "Separazione tracce",
+    "message": "Separazione delle tracce",
     "description": "Testo del pulsante per scaricare video"
   },
   "button.cover_music": {
@@ -48,7 +48,7 @@
     "description": "Modello utilizzato per generare musica"
   },
   "name.instrumental": {
-    "message": "Senza parole",
+    "message": "Senza testo",
     "description": "Descrizione del parametro 'instrumental'"
   },
   "name.referenceAudios": {
@@ -140,8 +140,8 @@
     "description": "Stato di attesa dell'attività"
   },
   "placeholder.prompt": {
-    "message": "Inserisci le parole chiave della canzone...",
-    "description": "Segnaposto per l'input delle parole chiave"
+    "message": "Inserisci la parola chiave della canzone...",
+    "description": "Segnaposto per l'input del rumore"
   },
   "placeholder.lyrics": {
     "message": "Inserisci il testo...",
@@ -156,11 +156,11 @@
     "description": "Segnaposto per il livello di riempimento"
   },
   "placeholder.style": {
-    "message": "Inserisci le parole chiave dello stile della canzone da generare, ad esempio pop acustico",
+    "message": "Inserisci la parola chiave dello stile della canzone da generare, ad esempio pop acustico",
     "description": "Testo segnaposto nel campo di suggerimento"
   },
   "placeholder.title": {
-    "message": "Inserisci le parole chiave del titolo della canzone da generare, ad esempio canzone delle vacanze",
+    "message": "Inserisci la parola chiave del titolo della canzone da generare, ad esempio canzone delle vacanze",
     "description": "Segnaposto per l'input del seme"
   },
   "placeholder.select": {
@@ -206,6 +206,10 @@
   "message.startTaskFailed": {
     "message": "Avvio del compito di generazione musicale fallito",
     "description": "Messaggio di errore quando l'avvio del compito di generazione musicale fallisce"
+  },
+  "message.getVideoUrlFailed": {
+    "message": "Impossibile ottenere il video musicale, riprova più tardi",
+    "description": "Messaggio di errore quando si fallisce nell'ottenere l'URL del video musicale"
   },
   "message.generating": {
     "message": "Generazione in corso...",

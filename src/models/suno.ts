@@ -77,6 +77,11 @@ export interface ISunoAudioRequest {
   style?: string;
 }
 
+export interface ISunoMp4Request {
+  callback_url?: string;
+  audio_id?: string;
+}
+
 export interface ISunoLyricRequest {
   prompt?: string;
 }
