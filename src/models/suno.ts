@@ -113,6 +113,10 @@ export interface ISunoUploadAudio {
   audio_id?: string;
 }
 
+export interface ISunoMP4 {
+  video_url?: string;
+}
+
 export interface ISunoAudioResponse {
   success?: boolean;
   task_id: string;
@@ -129,6 +133,12 @@ export interface ISunoUploadResponse {
   success?: boolean;
   task_id: string;
   data: ISunoUploadAudio;
+}
+
+export interface ISunoMp4Response {
+  success?: boolean;
+  task_id: string;
+  data: ISunoMP4;
 }
 
 export interface ISunoTask {

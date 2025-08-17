@@ -2,8 +2,10 @@ export interface IFluxConfig {
   action?: string;
   count?: number;
   prompt?: string;
+  is_edits?: boolean;
   aspect_ratio?: string;
   model?: string;
+  image_url?: string;
   quality?: number;
   callback_url?: string;
 }
@@ -12,6 +14,7 @@ export interface IFluxGenerateRequest {
   action?: string;
   prompt?: string;
   model?: string;
+  image_url?: string;
   callback_url?: string;
   mirror?: boolean;
 }

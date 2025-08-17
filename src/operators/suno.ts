@@ -7,7 +7,8 @@ import {
   ISunoTaskResponse,
   ISunoTasksResponse,
   ISunoUploadResponse,
-  ISunoUploadRequest
+  ISunoUploadRequest,
+  ISunoMp4Response
 } from '@/models';
 import { BASE_URL_API } from '@/constants';
 
@@ -139,6 +140,22 @@ class SunoOperator {
     }
   ): Promise<AxiosResponse<ISunoUploadResponse>> {
     return await axios.post('/suno/upload', data, {
+      headers: {
+        authorization: `Bearer ${options.token}`,
+        'content-type': 'application/json'
+      },
+      baseURL: BASE_URL_API
+    });
+  }
+
+  // suno/mp4
+  async mp4(
+    data: ISunoAudioRequest,
+    options: {
+      token: string;
+    }
+  ): Promise<AxiosResponse<ISunoMp4Response>> {
+    return await axios.post('/suno/mp4', data, {
       headers: {
         authorization: `Bearer ${options.token}`,
         'content-type': 'application/json'
