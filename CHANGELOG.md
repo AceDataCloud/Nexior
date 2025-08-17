@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 16 Aug 2025 17:21:42 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 17 Aug 2025 14:18:47 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.18.1
+
+Sun, 17 Aug 2025 14:18:47 GMT
+
+### Patches
+
+- add suno mp4 and flux (1348977728@qq.com)
 
 ## 3.18.0
 
