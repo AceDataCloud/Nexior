@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 17 Aug 2025 14:18:47 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 17 Aug 2025 17:19:11 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.18.2
+
+Sun, 17 Aug 2025 17:19:11 GMT
+
+### Patches
+
+- fix chat scroll x (cqc@cuiqingcai.com)
 
 ## 3.18.1
 
