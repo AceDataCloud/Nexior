@@ -60,7 +60,7 @@ export default defineComponent({
 
   .chat {
     height: 100%;
-    padding: 45px 0 0 15px;
+    padding: 45px 0 0 0;
     flex: 1;
     width: calc(100% - 250px);
     height: 100%;
