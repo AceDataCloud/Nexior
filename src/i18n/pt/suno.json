@@ -1,15 +1,15 @@
 {
   "button.extend": {
     "message": "Continuar gerando",
-    "description": "Texto do botão para continuar a geração"
+    "description": "Texto do botão para continuar gerando"
   },
   "button.download": {
     "message": "Baixar",
-    "description": "Texto do botão para baixar"
+    "description": "Texto do botão de download"
   },
   "button.more": {
     "message": "Mais ações",
-    "description": "Texto do botão para mais ações"
+    "description": "Texto do botão de download"
   },
   "button.uploadAudios": {
     "message": "Enviar",
@@ -25,15 +25,15 @@
   },
   "button.get_stems": {
     "message": "Separar faixas",
-    "description": "Texto do botão para separar faixas"
+    "description": "Texto do botão para baixar vídeo"
   },
   "button.cover_music": {
     "message": "Capa musical",
-    "description": "Texto do botão para capa musical"
+    "description": "Texto do botão para baixar vídeo"
   },
   "button.concat_music": {
     "message": "Concatenar música",
-    "description": "Texto do botão para concatenar música"
+    "description": "Texto do botão para baixar vídeo"
   },
   "button.download_audio": {
     "message": "Baixar música",
@@ -48,7 +48,7 @@
     "description": "Modelo usado para gerar música"
   },
   "name.instrumental": {
-    "message": "Sem letras",
+    "message": "Sem letra",
     "description": "Descrição do parâmetro 'instrumental'"
   },
   "name.referenceAudios": {
@@ -116,7 +116,7 @@
     "description": "Nome do gerador Suno"
   },
   "description.prompt": {
-    "message": "Preencha o estilo e o tema da música que deseja gerar, por exemplo, pop acústico sobre as férias",
+    "message": "Preencha o estilo e o tema da música que você deseja gerar, por exemplo, pop acústico sobre as férias",
     "description": "Descrição do parâmetro 'prompt'"
   },
   "description.lyrics": {
@@ -132,7 +132,7 @@
     "description": "Descrição do parâmetro 'title'"
   },
   "description.uploadAudios": {
-    "message": "Envie músicas como referência para a geração, o processo de envio pode levar um tempo, após a geração bem-sucedida, você poderá gerar com base na música enviada",
+    "message": "Envie músicas como referência para a geração, o processo de envio pode levar um tempo, após o sucesso da geração, você poderá gerar com base na música enviada",
     "description": "Descrição do parâmetro de referência de upload"
   },
   "status.pending": {
@@ -141,19 +141,19 @@
   },
   "placeholder.prompt": {
     "message": "Digite a palavra-chave da música...",
-    "description": "Placeholder para entrada de texto"
+    "description": "Placeholder para entrada de ruído preenchido"
   },
   "placeholder.lyrics": {
     "message": "Digite a letra...",
-    "description": "Placeholder para entrada de texto da letra"
+    "description": "Placeholder para nível preenchido"
   },
   "placeholder.extend.lyrics": {
     "message": "Digite a letra que precisa ser expandida...",
-    "description": "Placeholder para entrada de texto da letra"
+    "description": "Placeholder para nível preenchido"
   },
   "placeholder.extend.continue_at": {
     "message": "Digite de qual segundo da música você deseja expandir...",
-    "description": "Placeholder para entrada de texto"
+    "description": "Placeholder para nível preenchido"
   },
   "placeholder.style": {
     "message": "Digite a palavra-chave do estilo da música que deseja gerar, por exemplo, pop acústico",
@@ -161,19 +161,19 @@
   },
   "placeholder.title": {
     "message": "Digite a palavra-chave do título da música que deseja gerar, por exemplo, música de férias",
-    "description": "Placeholder para entrada de texto"
+    "description": "Placeholder para entrada de semente"
   },
   "placeholder.select": {
     "message": "Selecione o modelo...",
-    "description": "Placeholder para entrada de texto"
+    "description": "Placeholder para entrada de posição"
   },
   "placeholder.position": {
     "message": "Selecione...",
-    "description": "Placeholder para entrada de texto"
+    "description": "Placeholder para entrada de posição"
   },
   "button.generate": {
     "message": "Gerar",
-    "description": "Texto do botão para gerar"
+    "description": "Texto do botão de gerar"
   },
   "message.startingTask": {
     "message": "Iniciando tarefa...",
@@ -184,8 +184,8 @@
     "description": "Mensagem ao iniciar a tarefa de geração de música"
   },
   "message.uploadReferencesExceed": {
-    "message": "O número de músicas enviadas excedeu o máximo permitido",
-    "description": "Mensagem de erro quando o número de músicas enviadas excede o máximo"
+    "message": "A música enviada excedeu o número máximo",
+    "description": "Mensagem de erro quando a música enviada excede o número máximo"
   },
   "message.uploadReferencesError": {
     "message": "Falha ao enviar música",
@@ -205,6 +205,10 @@
   },
   "message.startTaskFailed": {
     "message": "Falha ao iniciar a tarefa de geração de música",
+    "description": "Mensagem de erro ao falhar ao iniciar a tarefa de geração de música"
+  },
+  "message.getVideoUrlFailed": {
+    "message": "Falha ao obter o vídeo da música, por favor, tente novamente mais tarde",
     "description": "Mensagem de erro ao falhar ao iniciar a tarefa de geração de música"
   },
   "message.generating": {

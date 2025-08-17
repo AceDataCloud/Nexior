@@ -24,7 +24,7 @@
     "description": "비디오 다운로드 버튼 텍스트"
   },
   "button.get_stems": {
-    "message": "음원 분리",
+    "message": "음성 분리",
     "description": "비디오 다운로드 버튼 텍스트"
   },
   "button.cover_music": {
@@ -132,15 +132,15 @@
     "description": "매개변수 'title'의 설명"
   },
   "description.uploadAudios": {
-    "message": "생성의 참조로 음악을 업로드합니다. 업로드 과정에서 잠시 기다려야 하며, 생성이 성공하면 업로드한 음악에 따라 생성됩니다.",
-    "description": "참조 업로드 매개변수의 설명"
+    "message": "생성의 참조로 음악을 업로드합니다. 업로드 과정에서 잠시 기다려야 하며, 생성이 성공한 후 업로드한 음악에 따라 생성할 수 있습니다.",
+    "description": "업로드 참조 매개변수의 설명"
   },
   "status.pending": {
     "message": "대기 중",
     "description": "작업의 대기 상태"
   },
   "placeholder.prompt": {
-    "message": "곡의 프롬프트를 입력하세요...",
+    "message": "곡 프롬프트를 입력하세요...",
     "description": "입력 필드의 자리 표시자"
   },
   "placeholder.lyrics": {
@@ -207,6 +207,10 @@
     "message": "음악 생성 작업 시작에 실패했습니다.",
     "description": "음악 생성 작업 시작에 실패했을 때의 오류 메시지"
   },
+  "message.getVideoUrlFailed": {
+    "message": "음악 비디오를 가져오는 데 실패했습니다. 나중에 다시 시도해 주세요.",
+    "description": "음악 생성 작업 시작에 실패했을 때의 오류 메시지"
+  },
   "message.generating": {
     "message": "생성 중...",
     "description": "음악이 생성되고 있을 때의 메시지"
@@ -220,7 +224,7 @@
     "description": "사용 가능한 작업이 없을 때의 메시지"
   },
   "message.noTasks": {
-    "message": "역사적 작업이 없습니다. 왼쪽 구성 패널에서 음악을 생성하세요.",
+    "message": "이력 작업이 없습니다. 왼쪽 구성 패널에서 음악을 생성해 주세요.",
     "description": "작업이 없을 때의 메시지"
   }
 }

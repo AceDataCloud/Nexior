@@ -1,75 +1,95 @@
 {
   "name.taskId": {
     "message": "Aufgaben-ID",
-    "description": "ID der Aufgabe"
+    "description": "Die ID der Aufgabe"
+  },
+  "name.task": {
+    "message": "Aufgabentyp",
+    "description": "Der Operationstyp des Flux-Bilderzeugers"
+  },
+  "name.generate": {
+    "message": "Bild erstellen",
+    "description": "Der Operationstyp des Flux-Bilderzeugers"
+  },
+  "name.edits": {
+    "message": "Bild bearbeiten",
+    "description": "Der Operationstyp des Flux-Bilderzeugers"
   },
   "name.type": {
     "message": "Typ",
-    "description": "Der Inhaltstyp des zu generierenden Flux-Bildes, z. B. 'Link', 'Text' usw."
+    "description": "Der Inhaltstyp des zu erzeugenden Flux-Bildes, z.B. 'Link', 'Text' usw."
+  },
+  "name.imageUrl": {
+    "message": "Referenzbild",
+    "description": "Der Name des Referenzbildes"
   },
   "name.failure": {
     "message": "Fehler",
-    "description": "Fehlerstatus der Aufgabe"
+    "description": "Der Fehlerstatus der Aufgabe"
   },
   "name.failureReason": {
     "message": "Fehlerursache",
-    "description": "Grund für das Scheitern der Aufgabe"
+    "description": "Der Grund für das Scheitern der Aufgabe"
   },
   "name.status": {
     "message": "Status",
-    "description": "Status der Aufgabe"
+    "description": "Der Status der Aufgabe"
   },
   "name.traceId": {
-    "message": "Verfolgen-ID",
-    "description": "Verfolgungs-ID der Aufgabe"
+    "message": "Verfolgungs-ID",
+    "description": "Die Verfolgungs-ID der Aufgabe"
   },
   "name.createdAt": {
-    "message": "Erstellungsdatum",
-    "description": "Datum und Uhrzeit, an dem das Flux-Bild generiert wurde"
+    "message": "Erstellungszeit",
+    "description": "Das Datum und die Uhrzeit, zu der das Flux-Bild erzeugt wurde"
   },
   "name.numbers": {
-    "message": "Anzahl der Bilder",
-    "description": "Die Anzahl der zu generierenden Bilder"
+    "message": "Bildanzahl",
+    "description": "Die Anzahl der zu erzeugenden Bilder"
   },
   "name.quality": {
     "message": "Bildqualität",
-    "description": "Die Qualität der Bilder"
+    "description": "Die Qualität des Bildes"
   },
   "name.prompt": {
-    "message": "Bildeingabe",
-    "description": "Der Eingabeaufforderungstext für den Inhalt"
+    "message": "Bildhinweis",
+    "description": "Der Hinweis für die Inhaltseingabe"
   },
   "name.ratio": {
-    "message": "Seitenverhältnis",
-    "description": "Der Name des Seitenverhältnisses"
+    "message": "Verhältnis",
+    "description": "Der Name des Verhältnisparameters"
   },
   "name.model": {
     "message": "Modellversion",
-    "description": "Die Modellversion, die verwendet wird, um das Bild zu generieren"
+    "description": "Die Modellversion, die zur Erzeugung des Bildes verwendet wird"
   },
   "name.fluxBot": {
     "message": "Flux Bot",
-    "description": "Name des Flux-Bildgenerators"
+    "description": "Der Name des Flux-Bilderzeugers"
   },
   "description.numbers": {
-    "message": "Legt die Anzahl der generierten Bilder fest. Wertebereich: 1-4.",
-    "description": "Beschreibung des Parameters 'numbers'"
+    "message": "Geben Sie die Anzahl der zu erzeugenden Bilder an, der Wertebereich ist: 1-4.",
+    "description": "Die Beschreibung des Parameters 'numbers'"
   },
   "description.quality": {
-    "message": "Legt die Qualität der generierten Bilder fest. Wertebereich: 1-100.",
-    "description": "Beschreibung des Parameters 'quality'"
+    "message": "Geben Sie die Qualität der zu erzeugenden Bilder an, der Wertebereich ist: 1-100.",
+    "description": "Die Beschreibung des Parameters 'quality'"
   },
   "description.prompt": {
-    "message": "Eingabeaufforderung für die Generierung von Flux-Bildern.",
-    "description": "Beschreibung des Parameters 'prompt'"
+    "message": "Der Hinweis für die Erzeugung von Flux-Bildern",
+    "description": "Die Beschreibung des Parameters 'prompt'"
+  },
+  "description.imageUrl": {
+    "message": "Beim Erstellen einer Aufgabe zum Bearbeiten von Bildern muss ein Bild hochgeladen werden.",
+    "description": "Die Beschreibung des Parameters 'imageUrl'"
   },
   "status.pending": {
-    "message": "Wartend",
-    "description": "Wartestatus der Aufgabe"
+    "message": "Warten",
+    "description": "Der Wartezustand der Aufgabe"
   },
   "status.processing": {
-    "message": "In Bearbeitung",
-    "description": "Bearbeitungsstatus der Aufgabe"
+    "message": "Wird bearbeitet",
+    "description": "Der Bearbeitungszustand der Aufgabe"
   },
   "placeholder.paddingNoise": {
     "message": "Bitte auswählen...",
@@ -81,15 +101,15 @@
   },
   "placeholder.paddingLevel": {
     "message": "Bitte auswählen...",
-    "description": "Platzhalter für den Füllgrad"
+    "description": "Platzhalter für das Füllniveau"
   },
   "placeholder.prompt": {
-    "message": "Geben Sie einen Hinweis für den Stil des zu generierenden Bildes ein, z. B. einen weißen Siamkater.",
-    "description": "Platzhaltertext im Eingabeaufforderungsfeld"
+    "message": "Geben Sie den Hinweis für den Bildstil ein, z.B.: eine weiße Siamkatze",
+    "description": "Platzhaltertext im Hinweisfeld"
   },
   "placeholder.position": {
     "message": "Bitte auswählen...",
-    "description": "Platzhalter für die Eingabe von Positionen"
+    "description": "Platzhalter für die Positionseingabe"
   },
   "placeholder.aspectRatio": {
     "message": "Bitte auswählen...",
@@ -97,7 +117,7 @@
   },
   "placeholder.preset": {
     "message": "Bitte auswählen...",
-    "description": "Platzhalter für Vorgabeeinstellungen"
+    "description": "Platzhalter für die Voreinstellungseingabe"
   },
   "placeholder.markerShape": {
     "message": "Bitte auswählen...",
@@ -105,118 +125,122 @@
   },
   "placeholder.rotate": {
     "message": "Bitte auswählen...",
-    "description": "Platzhalter für die Eingabe von Rotationen"
+    "description": "Platzhalter für die Eingabe der Drehung"
   },
   "placeholder.subMarker": {
     "message": "Bitte auswählen...",
-    "description": "Platzhalter für die Eingabe von Untermarkierungen"
+    "description": "Platzhalter für die Eingabe des Untermarkierungs"
   },
   "button.generate": {
-    "message": "Generieren",
-    "description": "Schaltfläche, um Flux-Bilder zu generieren"
+    "message": "Erzeugen",
+    "description": "Der Text des Buttons zur Erzeugung von Flux-Bildern"
+  },
+  "button.uploadImageUrl": {
+    "message": "Bild hochladen",
+    "description": "Der Text des Buttons zum Hochladen von Bildern"
   },
   "button.extend": {
     "message": "Bild erweitern",
-    "description": "Schaltfläche zum Erweitern des Bildes"
+    "description": "Der Text des Buttons zum Erweitern von Bildern"
   },
   "button.viewImage": {
     "message": "Originalbild anzeigen",
-    "description": "Schaltfläche, um die Flux-Bilder anzuzeigen"
+    "description": "Der Text des Buttons zur Anzeige des Flux-Bildes"
   },
   "button.download": {
     "message": "Bild herunterladen",
-    "description": "Schaltfläche zum Herunterladen des Bildes"
+    "description": "Der Text des Buttons zum Herunterladen von Bildern"
   },
   "message.downloadImage": {
     "message": "Bild in neuem Fenster öffnen",
-    "description": "Bild in neuem Fenster öffnen"
+    "description": "Öffnen Sie das Bild in einem neuen Fenster"
   },
   "message.uploadReferencesExceed": {
-    "message": "Es können maximal 5 Bilder hochgeladen werden",
-    "description": "Fehlermeldung bei Überschreitung der maximalen Anzahl hochgeladener Bilder"
+    "message": "Maximal 5 Bilder können hochgeladen werden",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Bilder das Limit überschreitet"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Bilder erfolgreich hochgeladen",
-    "description": "Erfolgsmeldung nach erfolgreichem Hochladen der Bilder"
+    "message": "Bild erfolgreich hochgeladen",
+    "description": "Erfolgsmeldung, wenn das Bild erfolgreich hochgeladen wurde"
   },
   "message.uploadReferencesError": {
-    "message": "Fehler beim Hochladen der Bilder. Bitte versuchen Sie es später erneut.",
-    "description": "Fehlermeldung bei einem Fehler beim Hochladen der Bilder"
+    "message": "Bild hochladen fehlgeschlagen, bitte später erneut versuchen",
+    "description": "Fehlermeldung, wenn das Hochladen des Bildes fehlschlägt"
   },
   "message.startingTask": {
-    "message": "Aufgabe wird gestartet...",
-    "description": "Nachricht, wenn eine Zeichnungsaufgabe gestartet wird"
+    "message": "Starte Aufgabe...",
+    "description": "Nachricht, wenn die Zeichnungsaufgabe beginnt"
   },
   "message.startTaskSuccess": {
     "message": "Aufgabe erfolgreich gestartet",
-    "description": "Erfolgsmeldung nach dem erfolgreichen Start einer Aufgabe"
+    "description": "Erfolgsmeldung, wenn die Aufgabe erfolgreich gestartet wurde"
   },
   "message.startTaskFailed": {
-    "message": "Fehler beim Starten der Aufgabe. Bitte wenden Sie sich an den Administrator.",
-    "description": "Fehlermeldung bei einem Fehler beim Starten der Zeichnungsaufgabe"
+    "message": "Aufgabenstart fehlgeschlagen, bitte kontaktieren Sie den Administrator",
+    "description": "Fehlermeldung, wenn der Start der Zeichnungsaufgabe fehlschlägt"
   },
   "message.usedUp": {
-    "message": "Ihre Punkte sind aufgebraucht. Bitte kaufen Sie mehr Punkte, um fortzufahren.",
-    "description": "Nachricht, wenn die Punkte aufgebraucht sind"
+    "message": "Ihr Guthaben ist aufgebraucht, bitte kaufen Sie mehr Guthaben, um fortzufahren",
+    "description": "Nachricht, wenn das Guthaben aufgebraucht ist"
   },
   "message.generating": {
-    "message": "Generierung läuft...",
-    "description": "Nachricht während der Bilderzeugung"
+    "message": "Wird erzeugt...",
+    "description": "Nachricht, wenn das Bild erzeugt wird"
   },
   "message.downloadVideo": {
     "message": "Dieses Bild herunterladen",
-    "description": "Nachricht während der Bilderzeugung"
+    "description": "Nachricht, wenn das Bild erzeugt wird"
   },
   "message.extendVideo": {
-    "message": "Dieses Bild weiter generieren",
-    "description": "Nachricht während der Bilderzeugung"
+    "message": "Fahre fort, dieses Bild zu generieren",
+    "description": "Nachricht, während das Bild generiert wird"
   },
   "message.generateFailed": {
-    "message": "Fehler bei der Bilderzeugung",
-    "description": "Nachricht bei einem Fehler während der Bilderzeugung"
+    "message": "Bildgenerierung fehlgeschlagen",
+    "description": "Nachricht, wenn die Bildgenerierung fehlschlägt"
   },
   "message.uploadVideoExceed": {
-    "message": "Die Anzahl der hochgeladenen Standbilder überschreitet das Limit",
-    "description": "Fehlermeldung bei Überschreiten des Limits der hochgeladenen Standbilder"
+    "message": "Die Anzahl der hochgeladenen ersten Bilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen ersten Bilder das Limit überschreitet"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Dateigröße darf 10MB nicht überschreiten!",
-    "description": "Fehlermeldung bei Überschreiten der maximalen Dateigröße von 10MB"
+    "message": "Die hochgeladene Dateigröße darf 10 MB nicht überschreiten!",
+    "description": "Fehlermeldung, wenn die hochgeladene Dateigröße 10 MB überschreitet!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Dateien müssen im MP4-Format vorliegen!",
-    "description": "Fehlermeldung bei falschem Dateiformat (MP4 erforderlich)"
+    "message": "Die hochgeladene Datei muss im MP4-Format sein!",
+    "description": "Fehlermeldung, wenn die hochgeladene Datei nicht im MP4-Format ist!"
   },
   "message.uploadStartImageExceed": {
-    "message": "Die Anzahl der hochgeladenen Startbilder überschreitet das Limit",
-    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Startbilder das Limit überschreitet"
+    "message": "Die Anzahl der hochgeladenen Referenzbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Referenzbilder das Limit überschreitet"
   },
   "message.uploadEndImageExceed": {
     "message": "Die Anzahl der hochgeladenen Endbilder überschreitet das Limit",
     "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Endbilder das Limit überschreitet"
   },
   "message.uploadStartImageError": {
-    "message": "Fehler beim Hochladen des Startbildes",
-    "description": "Fehlermeldung, wenn das Hochladen des Startbildes fehlschlägt"
+    "message": "Hochladen des Referenzbildes fehlgeschlagen",
+    "description": "Fehlermeldung, wenn das Hochladen des Referenzbildes fehlschlägt"
   },
   "message.uploadVideoError": {
-    "message": "Fehler beim Hochladen des Bildes",
-    "description": "Fehlermeldung, wenn das Hochladen des Startbildes fehlschlägt"
+    "message": "Hochladen des Bildes fehlgeschlagen",
+    "description": "Fehlermeldung, wenn das Hochladen des ersten Bildes fehlschlägt"
   },
   "message.uploadEndImageError": {
-    "message": "Fehler beim Hochladen des Endbildes",
+    "message": "Hochladen des Endbildes fehlgeschlagen",
     "description": "Fehlermeldung, wenn das Hochladen des Endbildes fehlschlägt"
   },
   "message.uploadDocumentsError": {
-    "message": "Fehler beim Hochladen des Dokuments",
-    "description": "Fehlermeldung, wenn das Hochladen eines Dokuments fehlschlägt"
+    "message": "Hochladen des Dokuments fehlgeschlagen",
+    "description": "Fehlermeldung, wenn das Hochladen des Dokuments fehlschlägt"
   },
   "message.noOperations": {
-    "message": "Keine verfügbaren Aktionen",
-    "description": "Nachricht, wenn keine verfügbaren Aktionen vorhanden sind"
+    "message": "Keine verfügbaren Operationen",
+    "description": "Nachricht, wenn keine verfügbaren Operationen vorhanden sind"
   },
   "message.noTasks": {
-    "message": "Keine historischen Aufgaben. Klicken Sie links, um ein Bild zu generieren.",
+    "message": "Keine historischen Aufgaben, bitte klicken Sie links, um ein Bild zu generieren",
     "description": "Nachricht, wenn keine Aufgaben vorhanden sind"
   }
 }

@@ -3,9 +3,25 @@
     "message": "任务 ID",
     "description": "任务的 ID"
   },
+  "name.task": {
+    "message": "任务类型",
+    "description": "Flux图片生成器的操作类型"
+  },
+  "name.generate": {
+    "message": "创建图片",
+    "description": "Flux图片生成器的操作类型"
+  },
+  "name.edits": {
+    "message": "编辑图片",
+    "description": "Flux图片生成器的操作类型"
+  },
   "name.type": {
     "message": "类型",
     "description": "要生成的 FLux图片的内容类型，如'链接'、'文本'等"
+  },
+  "name.imageUrl": {
+    "message": "参考图片",
+    "description": "参考图片的名称"
   },
   "name.failure": {
     "message": "失败",
@@ -63,6 +79,10 @@
     "message": "生成Flux图像的提示词",
     "description": "参数'prompt'的描述"
   },
+  "description.imageUrl": {
+    "message": "在创建编辑图片的任务中，它必须上传一张图片。",
+    "description": "参数'imageUrl'的描述"
+  },
   "status.pending": {
     "message": "等待中",
     "description": "任务的等待状态"
@@ -114,6 +134,10 @@
   "button.generate": {
     "message": "生成",
     "description": "生成Flux图像的按钮文本"
+  },
+  "button.uploadImageUrl": {
+    "message": "上传图片",
+    "description": "上传图片的按钮文本"
   },
   "button.extend": {
     "message": "扩展图片",
@@ -188,16 +212,16 @@
     "description": "上传文件必须是 MP4 格式!的错误信息"
   },
   "message.uploadStartImageExceed": {
-    "message": "上传首帧图片数量超过限制",
-    "description": "上传首帧图片数量超过限制时的错误信息"
+    "message": "上传参考图片数量超过限制",
+    "description": "上传参考图片数量超过限制时的错误信息"
   },
   "message.uploadEndImageExceed": {
     "message": "上传尾帧图片数量超过限制",
-    "description": "上传首帧图片数量超过限制时的错误信息"
+    "description": "上传参考图片数量超过限制时的错误信息"
   },
   "message.uploadStartImageError": {
-    "message": "上传首帧图片失败",
-    "description": "上传首帧图片失败时的错误信息"
+    "message": "上传参考图片失败",
+    "description": "上传参考图片失败时的错误信息"
   },
   "message.uploadVideoError": {
     "message": "上传图片失败",

@@ -1,7 +1,9 @@
 <template>
   <div class="flex flex-col h-full">
     <div class="flex-1 overflow-y-auto p-[15px]">
+      <action-selector class="mb-4" />
       <prompt-input class="mb-4" />
+      <image-url-input v-if="config?.action === 'edits'" class="mb-4" />
       <model-selector class="mb-4" />
       <count-selector class="mb-4" />
     </div>
@@ -21,6 +23,8 @@ import { ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ModelSelector from './config/ModelSelector.vue';
 import CountSelector from './config/CountSelector.vue';
+import ActionSelector from './config/ActionSelector.vue';
+import ImageUrlInput from './config/ImageUrlInput.vue';
 import PromptInput from './config/PromptInput.vue';
 import Consumption from '../common/Consumption.vue';
 import { getConsumption } from '@/utils';
@@ -33,7 +37,9 @@ export default defineComponent({
     PromptInput,
     ModelSelector,
     CountSelector,
-    Consumption
+    Consumption,
+    ActionSelector,
+    ImageUrlInput
   },
   emits: ['generate'],
   computed: {

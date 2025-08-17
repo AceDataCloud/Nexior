@@ -3,9 +3,25 @@
     "message": "任務 ID",
     "description": "任務的 ID"
   },
+  "name.task": {
+    "message": "任務類型",
+    "description": "Flux圖片生成器的操作類型"
+  },
+  "name.generate": {
+    "message": "創建圖片",
+    "description": "Flux圖片生成器的操作類型"
+  },
+  "name.edits": {
+    "message": "編輯圖片",
+    "description": "Flux圖片生成器的操作類型"
+  },
   "name.type": {
     "message": "類型",
-    "description": "要生成的 FLux圖片的內容類型，如'連結'、'文字'等"
+    "description": "要生成的 FLux圖片的內容類型，如'鏈接'、'文本'等"
+  },
+  "name.imageUrl": {
+    "message": "參考圖片",
+    "description": "參考圖片的名稱"
   },
   "name.failure": {
     "message": "失敗",
@@ -24,7 +40,7 @@
     "description": "任務的追蹤 ID"
   },
   "name.createdAt": {
-    "message": "建立時間",
+    "message": "創建時間",
     "description": "生成 Flux 圖片的日期和時間"
   },
   "name.numbers": {
@@ -32,8 +48,8 @@
     "description": "要生成的圖片數量"
   },
   "name.quality": {
-    "message": "圖片品質",
-    "description": "圖片品質"
+    "message": "圖片質量",
+    "description": "圖片質量"
   },
   "name.prompt": {
     "message": "圖像提示",
@@ -56,12 +72,16 @@
     "description": "參數'numbers'的描述"
   },
   "description.quality": {
-    "message": "指定生成圖片的品質，值的範圍為：1-100。",
+    "message": "指定生成圖片的質量，值的範圍為：1-100。",
     "description": "參數'quality'的描述"
   },
   "description.prompt": {
     "message": "生成Flux圖像的提示詞",
     "description": "參數'prompt'的描述"
+  },
+  "description.imageUrl": {
+    "message": "在創建編輯圖片的任務中，它必須上傳一張圖片。",
+    "description": "參數'imageUrl'的描述"
   },
   "status.pending": {
     "message": "等待中",
@@ -69,51 +89,55 @@
   },
   "status.processing": {
     "message": "處理中",
-    "description": "任務的處理狀態"
+    "description": "任務的等待狀態"
   },
   "placeholder.paddingNoise": {
     "message": "請選擇...",
-    "description": "填充雜訊輸入的占位符"
+    "description": "填充噪音輸入的佔位符"
   },
   "placeholder.select": {
     "message": "選擇",
-    "description": "選擇字段中的占位文本"
+    "description": "選擇字段中的佔位文本"
   },
   "placeholder.paddingLevel": {
     "message": "請選擇...",
-    "description": "填充級別的占位符"
+    "description": "填充級別的佔位符"
   },
   "placeholder.prompt": {
     "message": "輸入要生成的圖片風格的提示詞，例如：a white siamese cat",
-    "description": "提示字段中的占位文本"
+    "description": "提示字段中的佔位文本"
   },
   "placeholder.position": {
     "message": "請選擇...",
-    "description": "位置輸入的占位符"
+    "description": "位置輸入的佔位符"
   },
   "placeholder.aspectRatio": {
     "message": "請選擇...",
-    "description": "寬高比輸入的占位符"
+    "description": "寬高比輸入的佔位符"
   },
   "placeholder.preset": {
     "message": "請選擇...",
-    "description": "預設輸入的占位符"
+    "description": "預設輸入的佔位符"
   },
   "placeholder.markerShape": {
     "message": "請選擇...",
-    "description": "標記形狀輸入的占位符"
+    "description": "標記形狀輸入的佔位符"
   },
   "placeholder.rotate": {
     "message": "請選擇...",
-    "description": "旋轉輸入的占位符"
+    "description": "旋轉輸入的佔位符"
   },
   "placeholder.subMarker": {
     "message": "請選擇...",
-    "description": "子標記輸入的占位符"
+    "description": "子標記輸入的佔位符"
   },
   "button.generate": {
     "message": "生成",
     "description": "生成Flux圖像的按鈕文本"
+  },
+  "button.uploadImageUrl": {
+    "message": "上傳圖片",
+    "description": "上傳圖片的按鈕文本"
   },
   "button.extend": {
     "message": "擴展圖片",
@@ -121,15 +145,15 @@
   },
   "button.viewImage": {
     "message": "查看原圖",
-    "description": "生成Flux圖片的按鈕文本"
+    "description": "生成Flux圖片 的按鈕文本"
   },
   "button.download": {
     "message": "下載圖片",
     "description": "下載圖片按鈕文本"
   },
   "message.downloadImage": {
-    "message": "開啟圖片新視窗",
-    "description": "開啟圖片新視窗"
+    "message": "打開圖片新窗口",
+    "description": "打開圖片新窗口"
   },
   "message.uploadReferencesExceed": {
     "message": "最多可上傳 5 張圖片",
@@ -157,7 +181,7 @@
   },
   "message.usedUp": {
     "message": "您的積分已用完，請購買更多積分後繼續使用",
-    "description": "用光時的消息"
+    "description": "已用完時的消息"
   },
   "message.generating": {
     "message": "生成中...",
@@ -180,43 +204,43 @@
     "description": "上傳首幀圖片數量超過限制時的錯誤信息"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "上傳檔案大小不能超過 10MB!",
-    "description": "上傳檔案大小不能超過 10MB!時的錯誤信息"
+    "message": "上傳文件大小不能超過 10MB!",
+    "description": "上傳文件大小不能超過 10MB!時的錯誤信息"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "上傳檔案必須是 MP4 格式!",
-    "description": "上傳檔案必須是 MP4 格式!的錯誤信息"
+    "message": "上傳文件必須是 MP4 格式!",
+    "description": "上傳文件必須是 MP4 格式!的錯誤信息"
   },
   "message.uploadStartImageExceed": {
-    "message": "上傳首幀圖片數量超過限制",
-    "description": "當上傳首幀圖片數量超過限制時的錯誤訊息"
+    "message": "上傳參考圖片數量超過限制",
+    "description": "上傳參考圖片數量超過限制時的錯誤信息"
   },
   "message.uploadEndImageExceed": {
     "message": "上傳尾幀圖片數量超過限制",
-    "description": "當上傳尾幀圖片數量超過限制時的錯誤訊息"
+    "description": "上傳尾幀圖片數量超過限制時的錯誤信息"
   },
   "message.uploadStartImageError": {
-    "message": "上傳首幀圖片失敗",
-    "description": "當上傳首幀圖片失敗時的錯誤訊息"
+    "message": "上傳參考圖片失敗",
+    "description": "上傳參考圖片失敗時的錯誤信息"
   },
   "message.uploadVideoError": {
     "message": "上傳圖片失敗",
-    "description": "當上傳圖片失敗時的錯誤訊息"
+    "description": "上傳首幀圖片失敗時的錯誤信息"
   },
   "message.uploadEndImageError": {
     "message": "上傳尾幀圖片失敗",
-    "description": "當上傳尾幀圖片失敗時的錯誤訊息"
+    "description": "上傳尾幀圖片失敗時的錯誤信息"
   },
   "message.uploadDocumentsError": {
-    "message": "上傳文件失敗",
-    "description": "當上傳文件失敗時的錯誤訊息"
+    "message": "上傳文檔失敗",
+    "description": "上傳文檔失敗時的錯誤信息"
   },
   "message.noOperations": {
     "message": "沒有可用操作",
-    "description": "當沒有可用操作時的訊息"
+    "description": "沒有可用操作時的消息"
   },
   "message.noTasks": {
     "message": "沒有歷史任務，請點擊左方生成圖片",
-    "description": "當沒有任務時的訊息"
+    "description": "沒有任務時的消息"
   }
 }

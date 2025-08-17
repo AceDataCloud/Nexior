@@ -25,15 +25,15 @@
   },
   "button.get_stems": {
     "message": "Stem Separation",
-    "description": "Text for the stem separation button"
+    "description": "Text for the button to separate audio stems"
   },
   "button.cover_music": {
     "message": "Cover Music",
-    "description": "Text for the cover music button"
+    "description": "Text for the button to create a music cover"
   },
   "button.concat_music": {
     "message": "Concatenate Music",
-    "description": "Text for the concatenate music button"
+    "description": "Text for the button to concatenate music"
   },
   "button.download_audio": {
     "message": "Download Music",
@@ -80,7 +80,7 @@
     "description": "Prompt for content input"
   },
   "name.extend": {
-    "message": "Extend Song From",
+    "message": "Extended Song From",
     "description": "Prompt for content input"
   },
   "name.cover": {
@@ -132,7 +132,7 @@
     "description": "Description for the 'title' parameter"
   },
   "description.uploadAudios": {
-    "message": "Upload music as a reference for generation; the upload process may take some time, and generation can proceed based on the uploaded music once successful.",
+    "message": "Upload music as a reference for generation; the upload process may take a while, and generation can proceed based on the uploaded music once successful.",
     "description": "Description for the upload reference parameter"
   },
   "status.pending": {
@@ -141,35 +141,35 @@
   },
   "placeholder.prompt": {
     "message": "Please enter song prompt...",
-    "description": "Placeholder text for the prompt input"
+    "description": "Placeholder for noise input"
   },
   "placeholder.lyrics": {
     "message": "Please enter lyrics...",
-    "description": "Placeholder text for the lyrics input"
+    "description": "Placeholder for lyrics input"
   },
   "placeholder.extend.lyrics": {
-    "message": "Please enter the lyrics to be extended...",
-    "description": "Placeholder text for the lyrics extension input"
+    "message": "Please enter lyrics to extend...",
+    "description": "Placeholder for lyrics extension input"
   },
   "placeholder.extend.continue_at": {
     "message": "Please enter the second from which to continue the song...",
-    "description": "Placeholder text for the continuation input"
+    "description": "Placeholder for continuation input"
   },
   "placeholder.style": {
-    "message": "Please enter the prompt for the song style to be generated, e.g., acoustic pop",
+    "message": "Please enter the prompt for the song style to generate, e.g., acoustic pop",
     "description": "Placeholder text in the prompt field"
   },
   "placeholder.title": {
-    "message": "Please enter the prompt for the song title to be generated, e.g., holiday song",
-    "description": "Placeholder text for the seed input"
+    "message": "Please enter the prompt for the song title to generate, e.g., holiday song",
+    "description": "Placeholder for seed input"
   },
   "placeholder.select": {
     "message": "Please select a model...",
-    "description": "Placeholder text for the selection input"
+    "description": "Placeholder for selection input"
   },
   "placeholder.position": {
     "message": "Please select...",
-    "description": "Placeholder text for the position input"
+    "description": "Placeholder for position input"
   },
   "button.generate": {
     "message": "Generate",
@@ -192,7 +192,7 @@
     "description": "Error message when music upload fails"
   },
   "message.startTaskSuccess": {
-    "message": "Successfully started music generation task",
+    "message": "Successfully started the music generation task",
     "description": "Success message when the music generation task is successfully started"
   },
   "message.startUploadAudioSuccess": {
@@ -204,7 +204,11 @@
     "description": "Error message when the music generation task fails to start"
   },
   "message.startTaskFailed": {
-    "message": "Failed to start music generation task",
+    "message": "Failed to start the music generation task",
+    "description": "Error message when the music generation task fails to start"
+  },
+  "message.getVideoUrlFailed": {
+    "message": "Failed to retrieve music video, please try again later",
     "description": "Error message when the music generation task fails to start"
   },
   "message.generating": {

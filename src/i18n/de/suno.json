@@ -1,15 +1,15 @@
 {
   "button.extend": {
-    "message": "Fortfahren mit der Generierung",
-    "description": "Text des Buttons zum Fortfahren mit der Generierung"
+    "message": "Fortfahren",
+    "description": "Text des Fortfahren-Buttons"
   },
   "button.download": {
     "message": "Herunterladen",
-    "description": "Text des Download-Buttons"
+    "description": "Text des Herunterladen-Buttons"
   },
   "button.more": {
     "message": "Weitere Aktionen",
-    "description": "Text des Download-Buttons"
+    "description": "Text des Herunterladen-Buttons"
   },
   "button.uploadAudios": {
     "message": "Hochladen",
@@ -21,31 +21,31 @@
   },
   "button.download_video": {
     "message": "Video herunterladen",
-    "description": "Text des Buttons zum Herunterladen des Videos"
+    "description": "Text des Herunterladen-Buttons für Videos"
   },
   "button.get_stems": {
     "message": "Stimmen trennen",
-    "description": "Text des Buttons zum Herunterladen des Videos"
+    "description": "Text des Herunterladen-Buttons für Videos"
   },
   "button.cover_music": {
     "message": "Musikcover",
-    "description": "Text des Buttons zum Herunterladen des Videos"
+    "description": "Text des Herunterladen-Buttons für Videos"
   },
   "button.concat_music": {
     "message": "Musik zusammenfügen",
-    "description": "Text des Buttons zum Herunterladen des Videos"
+    "description": "Text des Herunterladen-Buttons für Videos"
   },
   "button.download_audio": {
     "message": "Musik herunterladen",
-    "description": "Text des Buttons zum Herunterladen der Musik"
+    "description": "Text des Herunterladen-Buttons für Musik"
   },
   "model.model1": {
     "message": "v2",
-    "description": "Modell zur Generierung von Musik"
+    "description": "Modell zur Musikgenerierung"
   },
   "model.model2": {
     "message": "v3",
-    "description": "Modell zur Generierung von Musik"
+    "description": "Modell zur Musikgenerierung"
   },
   "name.instrumental": {
     "message": "Instrumental",
@@ -57,15 +57,15 @@
   },
   "model.model3": {
     "message": "v3.5",
-    "description": "Modell zur Generierung von Musik"
+    "description": "Modell zur Musikgenerierung"
   },
   "model.model4": {
     "message": "v4.0",
-    "description": "Modell zur Generierung von Musik"
+    "description": "Modell zur Musikgenerierung"
   },
   "model.model45": {
     "message": "v4.5",
-    "description": "Modell zur Generierung von Musik"
+    "description": "Modell zur Musikgenerierung"
   },
   "name.taskId": {
     "message": "Aufgaben-ID",
@@ -156,11 +156,11 @@
     "description": "Platzhalter für die Eingabe"
   },
   "placeholder.style": {
-    "message": "Bitte geben Sie den Hinweis für den Songstil ein, den Sie generieren möchten, z. B. akustischer Pop",
+    "message": "Bitte geben Sie den Hinweis für den zu generierenden Songstil ein, z. B. akustischer Pop",
     "description": "Platzhaltertext im Hinweisfeld"
   },
   "placeholder.title": {
-    "message": "Bitte geben Sie den Hinweis für den Songtitel ein, den Sie generieren möchten, z. B. Feiertagslied",
+    "message": "Bitte geben Sie den Hinweis für den zu generierenden Songtitel ein, z. B. Feiertagslied",
     "description": "Platzhalter für die Eingabe"
   },
   "placeholder.select": {
@@ -173,7 +173,7 @@
   },
   "button.generate": {
     "message": "Generieren",
-    "description": "Text des Generierungs-Buttons"
+    "description": "Text des Generieren-Buttons"
   },
   "message.startingTask": {
     "message": "Starte Aufgabe...",
@@ -207,6 +207,10 @@
     "message": "Starten der Musikgenerierungsaufgabe fehlgeschlagen",
     "description": "Fehlermeldung, wenn das Starten der Musikgenerierungsaufgabe fehlschlägt"
   },
+  "message.getVideoUrlFailed": {
+    "message": "Abrufen des Musikvideos fehlgeschlagen, bitte später erneut versuchen",
+    "description": "Fehlermeldung, wenn das Starten der Musikgenerierungsaufgabe fehlschlägt"
+  },
   "message.generating": {
     "message": "Wird generiert...",
     "description": "Nachricht, wenn die Musik generiert wird"
@@ -220,7 +224,7 @@
     "description": "Nachricht, wenn keine verfügbaren Operationen vorhanden sind"
   },
   "message.noTasks": {
-    "message": "Keine historischen Aufgaben, bitte generieren Sie Musik im Konfigurationsbereich auf der linken Seite",
+    "message": "Keine historischen Aufgaben, bitte Musik im linken Konfigurationsbereich generieren",
     "description": "Nachricht, wenn keine Aufgaben vorhanden sind"
   }
 }

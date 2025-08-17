@@ -37,14 +37,6 @@
         <el-button v-if="audio?.audio_url" size="small" round @click.stop="onExtend($event, audio)">{{
           $t('suno.button.extend')
         }}</el-button>
-        <el-tooltip effect="dark" :content="$t('suno.button.video')" placement="top">
-          <font-awesome-icon
-            v-if="audio?.video_url"
-            icon="fa-solid fa-clapperboard"
-            class="icon icon-preview"
-            @click="onPreview($event, audio?.video_url)"
-          />
-        </el-tooltip>
         <el-dropdown>
           <span class="el-dropdown-link">
             <el-tooltip effect="dark" :content="$t('suno.button.download')" placement="top">
@@ -57,8 +49,13 @@
           </span>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item v-if="audio?.video_url" @click.stop="onDownload($event, audio?.video_url)">
-                {{ $t('suno.button.download_video') }}
+              <el-dropdown-item :disabled="isFetchingVideoUrl" @click="handleVideoDownload(audio)">
+                <div class="flex items-center min-w-[120px]">
+                  <el-icon v-if="isFetchingVideoUrl" class="is-loading mr-2">
+                    <Loading />
+                  </el-icon>
+                  <span>{{ $t('suno.button.download_video') }}</span>
+                </div>
               </el-dropdown-item>
               <el-dropdown-item v-if="audio?.audio_url" @click.stop="onDownload($event, audio?.audio_url)">
                 {{ $t('suno.button.download_audio') }}
@@ -109,8 +106,9 @@ import {
   ElDropdownItem,
   ElMessage
 } from 'element-plus';
+import { Loading } from '@element-plus/icons-vue';
 import { VideoPlay, VideoPause } from '@element-plus/icons-vue';
-import { ISunoAudioRequest, Status } from '@/models';
+import { ISunoMp4Request, ISunoAudioRequest, Status } from '@/models';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { saveAs } from 'file-saver';
 import { sunoOperator } from '@/operators';
@@ -129,7 +127,8 @@ export default defineComponent({
     VideoPause,
     ElDropdown,
     ElDropdownMenu,
-    ElDropdownItem
+    ElDropdownItem,
+    Loading
   },
   props: {
     modelValue: {
@@ -138,7 +137,9 @@ export default defineComponent({
     }
   },
   data() {
-    return {};
+    return {
+      isFetchingVideoUrl: false
+    };
   },
   computed: {
     loading() {
@@ -209,8 +210,10 @@ export default defineComponent({
         continue_at: audio.duration
       });
     },
-    onDownload(event: MouseEvent, audioUrl: string) {
-      event.stopPropagation();
+    onDownload(event: MouseEvent | null, audioUrl: string) {
+      if (event) {
+        event.stopPropagation();
+      }
       console.log('on download', audioUrl);
       const parsedUrl = new URL(audioUrl);
       const pathname = parsedUrl.pathname;
@@ -223,6 +226,54 @@ export default defineComponent({
         });
       // download url here
       // window.open(audioUrl, '_blank');
+    },
+    async handleVideoDownload(audio: ISunoAudio) {
+      if (audio.video_url) {
+        this.onDownload(null, audio.video_url);
+        return;
+      }
+      if (this.isFetchingVideoUrl) {
+        return;
+      }
+      try {
+        this.isFetchingVideoUrl = true;
+        // @ts-ignore
+        const videoUrl = await this.fetchVideoUrlFromApi(audio?.id);
+        console.log(`get videoUrl: ${videoUrl}`);
+        audio.video_url = videoUrl;
+        this.onDownload(null, videoUrl);
+      } catch (error) {
+        console.error('get videoUrl failed:', error);
+        ElMessage.error(this.$t('suno.message.getVideoUrlFailed'));
+      } finally {
+        this.isFetchingVideoUrl = false;
+      }
+    },
+    async fetchVideoUrlFromApi(audioId: string): Promise<string> {
+      return new Promise((resolve, reject) => {
+        const request = {
+          audio_id: audioId
+        } as ISunoMp4Request;
+        const token = this.credential?.token;
+        if (!token) {
+          console.error('no token specified');
+          reject(new Error('No token specified'));
+          return;
+        }
+        sunoOperator
+          .mp4(request, { token })
+          .then((response) => {
+            const videoUrl = response.data?.data?.video_url;
+            if (videoUrl) {
+              resolve(videoUrl);
+            } else {
+              reject(new Error('Video URL not found in response'));
+            }
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
     },
     onPreview(event: MouseEvent, videoUrl: string) {
       event.stopPropagation();
