@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 17 Aug 2025 17:19:11 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 18 Aug 2025 10:37:01 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.18.3
+
+Mon, 18 Aug 2025 10:37:01 GMT
+
+### Patches
+
+- fix mj hover (1348977728@qq.com)
 
 ## 3.18.2
 
