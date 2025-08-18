@@ -62,7 +62,7 @@
             :key="actionKey"
             class="box-item"
             effect="dark"
-            :content="descriptionMapping[action]"
+            :content="getActionDescriptionWithPrice(action, modelValue?.request?.mode)"
             placement="top-start"
           >
             <el-button
@@ -322,6 +322,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import ImageWrapper from '@/components/common/ImageWrapper.vue';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
+import { getConsumption } from '@/utils';
 interface IData {
   midjourneyImagineState: typeof MidjourneyImagineState;
   actionMapping: Record<MidjourneyImagineAction, string>;
@@ -421,9 +422,19 @@ export default defineComponent({
     },
     config() {
       return this.$store.state.midjourney?.config;
+    },
+    service() {
+      return this.$store.state.midjourney?.service;
     }
   },
   methods: {
+    getActionDescriptionWithPrice(action: string, mode?: string): string {
+      // @ts-ignore
+      const baseDescription = this.descriptionMapping[action];
+      const price = getConsumption({ ...this.config, action: action, mode: mode }, this.service?.metadata?.price);
+      const unit = this.$t(`service.unit.${this.service?.unit || 'credits'}`);
+      return `${baseDescription} (${price} ${unit})`;
+    },
     onCustom(action: string) {
       if (this.modelValue?.type === 'imagine') {
         this.$emit('custom', {
