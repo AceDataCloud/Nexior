@@ -5,6 +5,9 @@ export interface IMidjourneyConfig {
   video_id?: string;
   video_url?: string;
   image_url?: string;
+  end_image_url?: string;
+  loop?: boolean;
+  resolution?: string;
   is_videos?: boolean;
   model?: string;
   ratio?: string;
@@ -80,6 +83,9 @@ export interface IMidjourneyVideosRequest {
   prompt?: string;
   video_id?: string;
   image_url?: string;
+  end_image_url?: string;
+  loop?: boolean;
+  resolution?: string;
   callback_url?: string;
   application_id?: string;
 }

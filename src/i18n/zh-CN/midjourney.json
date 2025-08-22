@@ -1547,6 +1547,10 @@
     "message": "选择生成图像的模型，通用适合大多数场景，Niji适合动漫风格",
     "description": "模型参数的描述"
   },
+  "description.loop": {
+    "message": "为生成的视频启用循环。",
+    "description": "参数'loop'的描述"
+  },
   "description.aspect": {
     "message": "--aspect，更改生成图像的宽高比，默认值取决于模型和模式",
     "description": "宽高比参数的描述"
@@ -1618,6 +1622,10 @@
   "description.imageUrl": {
     "message": "在创建视频的任务中，它必须上传一张图片。",
     "description": "参数'imageUrl'的描述"
+  },
+  "description.endImageUrl": {
+    "message": "在创建视频的任务中，你可以指定一张图片作为尾帧生成。",
+    "description": "参数'endImageUrl'的描述"
   },
   "description.imageUrl2": {
     "message": "在创建描述图片的任务中，它必须上传一张图片。",
@@ -1823,9 +1831,17 @@
     "message": "上传首帧图片数量超过限制",
     "description": "上传首帧图片数量超过限制时的错误信息"
   },
+  "message.uploadEndImageExceed": {
+    "message": "上传尾帧图片数量超过限制",
+    "description": "上传尾帧图片数量超过限制时的错误信息"
+  },
   "message.uploadStartImageError": {
     "message": "上传首帧图片失败",
     "description": "上传首帧图片失败时的错误信息"
+  },
+  "message.uploadEndImageError": {
+    "message": "上传尾帧图片失败",
+    "description": "上传尾帧图片失败时的错误信息"
   },
   "message.noOperations": {
     "message": "无可用操作",
@@ -1867,6 +1883,10 @@
     "message": "参考图片",
     "description": "参考图像的名称"
   },
+  "name.resolution": {
+    "message": "视频质量",
+    "description": "要生成的视频的质量"
+  },
   "name.extend": {
     "message": "扩展的视频来自",
     "description": "参考图像的名称"
@@ -1874,6 +1894,10 @@
   "name.imageUrl": {
     "message": "首帧图片",
     "description": "首帧图片的名称"
+  },
+  "name.endImageUrl": {
+    "message": "尾帧图片",
+    "description": "尾帧图片的名称"
   },
   "name.imageUrl2": {
     "message": "图片",
@@ -1978,6 +2002,10 @@
   "name.advanced": {
     "message": "高级",
     "description": "高级模式的名称，用于启用高级模式"
+  },
+  "name.loop": {
+    "message": "视频循环播放",
+    "description": "要生成的 视频 的高级设置"
   },
   "name.niji": {
     "message": "Niji",

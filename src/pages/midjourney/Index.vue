@@ -305,6 +305,9 @@ export default defineComponent({
           image_url: this.config?.image_url,
           action: this.config?.action as MidjourneyVideosAction,
           prompt: this.config?.prompt,
+          end_image_url: this.config?.end_image_url,
+          resolution: this.config?.resolution,
+          loop: this.config?.loop,
           mode: this.config?.mode || MIDJOURNEY_DEFAULT_MODE,
           callback_url: CALLBACK_URL
         };

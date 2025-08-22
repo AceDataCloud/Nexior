@@ -25,6 +25,9 @@
           <div class="pt-2">
             <video-from-input v-show="config?.action === 'extend'" class="mb-4" />
             <image-url-input class="mb-2" />
+            <end-image-url-input class="mb-2" />
+            <loop-selector class="mb-2" />
+            <resolution-selector class="mb-4" />
             <prompt-input class="mb-4" />
           </div>
         </el-tab-pane>
@@ -54,13 +57,16 @@
 import { defineComponent } from 'vue';
 import RatioSelector from './config/RatioSelector.vue';
 import AdvancedSelector from './config/AdvancedSelector.vue';
+import LoopSelector from './config/LoopSelector.vue';
 import VersionSelector from './config/VersionSelector.vue';
 import ImageUrlInput from './config/ImageUrlInput.vue';
+import EndImageUrlInput from './config/EndImageUrlInput.vue';
 import ImageUrlInput2 from './config/ImageUrlInput2.vue';
 import StylizeSelector from './config/StylizeSelector.vue';
 import ChaosSelector from './config/ChaosSelector.vue';
 import ModelSelector from './config/ModelSelector.vue';
 import QualitySelector from './config/QualitySelector.vue';
+import ResolutionSelector from './config/ResolutionSelector.vue';
 import ImageWeightSelector from './config/ImageWeightSelector.vue';
 import WeirdSelector from './config/WeirdSelector.vue';
 import VideoFromInput from './config/VideoFromInput.vue';
@@ -93,6 +99,9 @@ export default defineComponent({
     ImageWeightSelector,
     ReferenceImage,
     ImageUrlInput,
+    EndImageUrlInput,
+    LoopSelector,
+    ResolutionSelector,
     ImageUrlInput2,
     Consumption,
     VideoFromInput,
