@@ -29,7 +29,7 @@ export default defineComponent({
     return {
       options: [
         {
-          value: '480',
+          value: '480p',
           label: '480p'
         },
         {
@@ -45,7 +45,7 @@ export default defineComponent({
         return this.$store.state.midjourney?.config?.resolution;
       },
       set(val: string) {
-        this.$store.commit('pixverse/setConfig', {
+        this.$store.commit('midjourney/setConfig', {
           ...this.$store.state.midjourney.config,
           resolution: val
         });
