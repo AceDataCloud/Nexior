@@ -28,7 +28,11 @@ import {
 
 const main = async () => {
   // async and need to await
-  await initializeRedirect();
+  const isRedirected = await initializeRedirect();
+  if (isRedirected) {
+    // if redirected, stop initialization
+    return;
+  }
   await initializeCookies();
   await initializeToken();
   await initializeUser();
