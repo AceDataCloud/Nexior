@@ -3,6 +3,8 @@
     <div class="flex-1 overflow-y-auto p-[15px]">
       <video-from-input v-show="config?.action === 'get1080p'" class="mb-4" />
       <action-selector class="mb-4" />
+      <translation-selector v-show="config?.action !== 'get1080p'" class="mb-4" />
+      <aspect-ratio-selector v-show="config?.action === 'image2video'" class="mb-4" />
       <prompt-input v-show="config?.action !== 'get1080p'" class="mb-4" />
       <model-selector v-show="config?.action !== 'get1080p'" class="mb-4" />
       <start-end-image v-show="config?.action === 'image2video'" class="mb-2" />
@@ -23,6 +25,8 @@ import { ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ModelSelector from './config/ModelSelector.vue';
 import ActionSelector from './config/ActionSelector.vue';
+import TranslationSelector from './config/TranslationSelector.vue';
+import AspectRatioSelector from './config/AspectRatioSelector.vue';
 import VideoFromInput from './config/VideoFromInput.vue';
 import StartEndImage from './config/StartEndImage.vue';
 import Consumption from '../common/Consumption.vue';
@@ -39,7 +43,9 @@ export default defineComponent({
     ModelSelector,
     StartEndImage,
     ActionSelector,
-    VideoFromInput
+    VideoFromInput,
+    TranslationSelector,
+    AspectRatioSelector
   },
   emits: ['generate'],
   computed: {

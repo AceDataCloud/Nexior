@@ -3,21 +3,17 @@
     "message": "Uppgift ID",
     "description": "Uppgiftens ID"
   },
-  "name.type": {
-    "message": "Typ",
-    "description": "Innehållstypen för den Kling-video som ska genereras, såsom 'länk', 'text' etc."
-  },
-  "name.modeStd": {
-    "message": "Standard",
-    "description": "Kling-videons standardläge"
+  "name.translation": {
+    "message": "Automatisk översättning",
+    "description": "Automatisk översättning av Veo-video"
   },
   "name.modePro": {
     "message": "Hög kvalitet",
-    "description": "Kling-videons högkvalitativa läge"
+    "description": "Högkvalitetsläge för Kling-video"
   },
   "name.failure": {
     "message": "Misslyckande",
-    "description": "Uppgiftens misslyckandestatus"
+    "description": "Uppgiftens misslyckande status"
   },
   "name.failureReason": {
     "message": "Orsak till misslyckande",
@@ -33,11 +29,11 @@
   },
   "name.createdAt": {
     "message": "Skapat den",
-    "description": "Datum och tid för generering av Kling-video"
+    "description": "Datum och tid för när Kling-video genererades"
   },
   "name.startEndImage": {
     "message": "Referensbilder för start och slut",
-    "description": "Referensbilder för den video som ska genereras"
+    "description": "Referensbilder för videon som ska genereras"
   },
   "name.action": {
     "message": "Åtgärd",
@@ -45,7 +41,7 @@
   },
   "name.action3": {
     "message": "Hämta 1080p-video från",
-    "description": "Referensbilder för den video som ska genereras"
+    "description": "Referensbilder för videon som ska genereras"
   },
   "name.prompt": {
     "message": "Videoprompt",
@@ -59,8 +55,16 @@
     "message": "Google Veo Bot",
     "description": "Namn på Veo videogenerator"
   },
+  "name.ratio": {
+    "message": "Förhållande",
+    "description": "Namn på förhållandeparameter"
+  },
+  "description.translation": {
+    "message": "Vid skapande av videouppgifter kan automatisk översättning av promptord aktiveras.",
+    "description": "Beskrivning av parametern 'translation'"
+  },
   "description.imageUrl": {
-    "message": "I uppgiften för att skapa video med flera bilder måste flera bilder laddas upp.",
+    "message": "Vid skapande av videouppgifter med flera bilder måste flera bilder laddas upp.",
     "description": "Beskrivning av parametern 'imageUrl'"
   },
   "description.prompt": {
@@ -129,7 +133,7 @@
   },
   "button.uploadReferences": {
     "message": "Ladda upp",
-    "description": "Knapptext som tillåter användaren att ladda upp referenser"
+    "description": "Knapptext som tillåter användare att ladda upp referenser"
   },
   "message.uploadReferencesExceed": {
     "message": "Maximalt 2 bilder kan laddas upp",
@@ -137,7 +141,7 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Bilderna har laddats upp framgångsrikt",
-    "description": "Framgångsmeddelande när bilder har laddats upp framgångsrikt"
+    "description": "Framgångsmeddelande när bilder har laddats upp"
   },
   "message.uploadReferencesError": {
     "message": "Misslyckades med att ladda upp bilder, försök igen senare",
@@ -169,7 +173,7 @@
   },
   "message.generateFailed": {
     "message": "Misslyckades med att generera video",
-    "description": "Meddelande när bildgenereringen misslyckas"
+    "description": "Meddelande när bildgenerering misslyckas"
   },
   "message.uploadVideoExceed": {
     "message": "Antalet uppladdade startbilder överskrider gränsen",
@@ -177,11 +181,11 @@
   },
   "message.uploadVideoSizeExceed": {
     "message": "Uppladdad filstorlek får inte överstiga 10 MB!",
-    "description": "Felmeddelande när filstorleken överstiger 10 MB!"
+    "description": "Felmeddelande när den uppladdade filstorleken överstiger 10 MB!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Uppladdad fil måste vara i MP4-format!",
-    "description": "Felmeddelande när den uppladdade filen inte är i MP4-format!"
+    "message": "Uppladdningsfilen måste vara i MP4-format!",
+    "description": "Felmeddelande när uppladdningsfilen måste vara i MP4-format!"
   },
   "message.uploadStartEndImageExceed": {
     "message": "Antalet uppladdade startbilder överskrider gränsen",
@@ -208,11 +212,11 @@
     "description": "Felmeddelande när uppladdning av dokument misslyckas"
   },
   "message.noOperations": {
-    "message": "Inga tillgängliga operationer",
-    "description": "Meddelande när inga operationer är tillgängliga"
+    "message": "Inga tillgängliga åtgärder",
+    "description": "Meddelande när inga tillgängliga åtgärder finns"
   },
   "message.noTasks": {
     "message": "Inga historiska uppgifter, vänligen klicka på vänster sida för att generera video",
-    "description": "Meddelande när det inte finns några uppgifter"
+    "description": "Meddelande när inga uppgifter finns"
   }
 }

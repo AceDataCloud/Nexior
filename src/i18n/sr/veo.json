@@ -3,17 +3,13 @@
     "message": "ID zadatka",
     "description": "ID zadatka"
   },
-  "name.type": {
-    "message": "Tip",
-    "description": "Tip sadržaja Kling videa koji treba generisati, kao što su 'link', 'tekst' itd."
-  },
-  "name.modeStd": {
-    "message": "Standard",
-    "description": "Standardni režim Kling videa"
+  "name.translation": {
+    "message": "Automatski prevod",
+    "description": "Automatski prevod za Veo video"
   },
   "name.modePro": {
     "message": "Visok kvalitet",
-    "description": "Visokokvalitetni režim Kling videa"
+    "description": "Visok kvalitet za Kling video"
   },
   "name.failure": {
     "message": "Neuspeh",
@@ -32,7 +28,7 @@
     "description": "ID praćenja zadatka"
   },
   "name.createdAt": {
-    "message": "Datum kreiranja",
+    "message": "Datum i vreme kreiranja",
     "description": "Datum i vreme generisanja Kling videa"
   },
   "name.startEndImage": {
@@ -57,10 +53,18 @@
   },
   "name.veoBot": {
     "message": "Google Veo Bot",
-    "description": "Ime Veo generatora videa"
+    "description": "Ime Veo video generatora"
+  },
+  "name.ratio": {
+    "message": "Proporcija",
+    "description": "Ime parametra proporcije"
+  },
+  "description.translation": {
+    "message": "Tokom kreiranja zadatka za video, automatski prevod može biti uključen za prompt.",
+    "description": "Opis parametra 'translation'"
   },
   "description.imageUrl": {
-    "message": "U zadatku za kreiranje videa sa više slika, potrebno je otpremiti više slika.",
+    "message": "Tokom zadatka za kreiranje videa sa više slika, potrebno je otpremiti više slika.",
     "description": "Opis parametra 'imageUrl'"
   },
   "description.prompt": {
@@ -92,7 +96,7 @@
     "description": "Placeholder za nivo popunjavanja"
   },
   "placeholder.prompt": {
-    "message": "Unesite prompt za stil videa koji želite generisati, na primer: pokretni",
+    "message": "Unesite prompt reči za stil videa koji želite da generišete, na primer: moving",
     "description": "Placeholder tekst u polju za prompt"
   },
   "placeholder.position": {
@@ -104,7 +108,7 @@
     "description": "Tekst dugmeta za generisanje Veo videa"
   },
   "button.action1": {
-    "message": "Generiši video iz teksta",
+    "message": "Generiši video",
     "description": "Tekst dugmeta za generisanje Veo videa"
   },
   "button.action2": {
@@ -133,15 +137,15 @@
   },
   "message.uploadReferencesExceed": {
     "message": "Možete otpremiti najviše 2 slike",
-    "description": "Poruka greške kada je broj otpremljenih slika premašio limit"
+    "description": "Poruka o grešci kada je broj otpremljenih slika premašio limit"
   },
   "message.uploadReferencesSuccess": {
     "message": "Uspešno otpremljena slika",
-    "description": "Poruka uspeha kada je slika uspešno otpremljena"
+    "description": "Poruka o uspehu kada je slika uspešno otpremljena"
   },
   "message.uploadReferencesError": {
-    "message": "Neuspelo otpremanje slike, molimo pokušajte ponovo kasnije",
-    "description": "Poruka greške kada otpremanje slike nije uspelo"
+    "message": "Neuspešno otpremanje slike, molimo pokušajte ponovo kasnije",
+    "description": "Poruka o grešci kada otpremanje slike nije uspelo"
   },
   "message.startingTask": {
     "message": "Pokreće se zadatak...",
@@ -149,11 +153,11 @@
   },
   "message.startTaskSuccess": {
     "message": "Uspešno pokrenut zadatak za generisanje",
-    "description": "Poruka uspeha kada je zadatak uspešno pokrenut"
+    "description": "Poruka o uspehu kada je zadatak uspešno pokrenut"
   },
   "message.startTaskFailed": {
     "message": "Pokretanje zadatka nije uspelo, molimo kontaktirajte administratora",
-    "description": "Poruka greške kada pokretanje zadatka za crtanje nije uspelo"
+    "description": "Poruka o grešci kada pokretanje zadatka za crtanje nije uspelo"
   },
   "message.usedUp": {
     "message": "Vaši bodovi su potrošeni, molimo kupite više bodova da biste nastavili sa korišćenjem",
@@ -172,16 +176,16 @@
     "description": "Poruka kada generisanje slike nije uspelo"
   },
   "message.uploadVideoExceed": {
-    "message": "Broj otpremljenih slika početnog okvira premašuje limit",
-    "description": "Poruka greške kada broj otpremljenih slika početnog okvira premašuje limit"
+    "message": "Broj otpremljenih slika za početni okvir premašuje limit",
+    "description": "Poruka o grešci kada broj otpremljenih slika za početni okvir premašuje limit"
   },
   "message.uploadVideoSizeExceed": {
     "message": "Veličina otpremljenog fajla ne može biti veća od 10MB!",
-    "description": "Poruka greške kada veličina otpremljenog fajla premašuje 10MB!"
+    "description": "Poruka o grešci kada veličina otpremljenog fajla premašuje 10MB!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Otpremani fajl mora biti u MP4 formatu!",
-    "description": "Poruka greške kada otpremani fajl nije u MP4 formatu!"
+    "message": "Fajl mora biti u MP4 formatu!",
+    "description": "Greška kada fajl mora biti u MP4 formatu!"
   },
   "message.uploadStartEndImageExceed": {
     "message": "Broj slika za početni kadar premašuje ograničenje",

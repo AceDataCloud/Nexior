@@ -3,17 +3,13 @@
     "message": "معرف المهمة",
     "description": "معرف المهمة"
   },
-  "name.type": {
-    "message": "النوع",
-    "description": "نوع محتوى الفيديو الذي سيتم إنشاؤه، مثل 'رابط'، 'نص'، إلخ"
-  },
-  "name.modeStd": {
-    "message": "قياسي",
-    "description": "الوضع القياسي لفيديو Kling"
+  "name.translation": {
+    "message": "ترجمة تلقائية",
+    "description": "الترجمة التلقائية لفيديو Veo"
   },
   "name.modePro": {
-    "message": "عالي الجودة",
-    "description": "الوضع عالي الجودة لفيديو Kling"
+    "message": "جودة عالية",
+    "description": "وضع الجودة العالية لفيديو Kling"
   },
   "name.failure": {
     "message": "فشل",
@@ -37,19 +33,19 @@
   },
   "name.startEndImage": {
     "message": "صور الإطار الأول والأخير المرجعية",
-    "description": "صور مرجعية للفيديو الذي سيتم إنشاؤه"
+    "description": "صور مرجعية للفيديو المراد إنشاؤه"
   },
   "name.action": {
-    "message": "الإجراء",
+    "message": "إجراء",
     "description": "قائمة الإجراءات المتاحة"
   },
   "name.action3": {
     "message": "الحصول على فيديو بدقة 1080p من",
-    "description": "صور مرجعية للفيديو الذي سيتم إنشاؤه"
+    "description": "صور مرجعية للفيديو المراد إنشاؤه"
   },
   "name.prompt": {
     "message": "موجه الفيديو",
-    "description": "موجه إدخال المحتوى"
+    "description": "موجه لإدخال المحتوى"
   },
   "name.model": {
     "message": "إصدار النموذج",
@@ -59,17 +55,25 @@
     "message": "روبوت Google Veo",
     "description": "اسم مولد فيديو Veo"
   },
+  "name.ratio": {
+    "message": "نسبة",
+    "description": "اسم معلمة النسبة"
+  },
+  "description.translation": {
+    "message": "يمكن تفعيل الترجمة التلقائية عند إنشاء مهمة الفيديو.",
+    "description": "وصف المعلمة 'translation'"
+  },
   "description.imageUrl": {
     "message": "في مهمة إنشاء فيديو متعدد الصور، يجب تحميل عدة صور.",
-    "description": "وصف المعامل 'imageUrl'"
+    "description": "وصف المعلمة 'imageUrl'"
   },
   "description.prompt": {
-    "message": "الكلمات الموجهة لإنشاء فيديو Veo",
-    "description": "وصف المعامل 'prompt'"
+    "message": "موجه الكلمات لإنشاء فيديو Veo",
+    "description": "وصف المعلمة 'prompt'"
   },
   "description.uploadStartEndImage": {
     "message": "مصفوفة روابط الصور المرجعية، الأولى هي الصورة الأولى، والثانية هي صورة الإطار الأخير",
-    "description": "وصف المعامل 'image_url'"
+    "description": "وصف المعلمة 'image_url'"
   },
   "status.pending": {
     "message": "في الانتظار",
@@ -92,7 +96,7 @@
     "description": "نص العنصر النائب لمستوى التعبئة"
   },
   "placeholder.prompt": {
-    "message": "أدخل الكلمات الموجهة لنمط الفيديو الذي سيتم إنشاؤه، مثل: متحرك",
+    "message": "أدخل موجه الكلمات لنمط الفيديو المراد إنشاؤه، مثل: moving",
     "description": "نص العنصر النائب في حقل الموجه"
   },
   "placeholder.position": {
@@ -132,7 +136,7 @@
     "description": "نص الزر الذي يسمح للمستخدم بتحميل المراجع"
   },
   "message.uploadReferencesExceed": {
-    "message": "يمكن تحميل ما يصل إلى 2 صورة",
+    "message": "يمكن تحميل ما يصل إلى صورتين",
     "description": "رسالة خطأ عند تجاوز عدد الصور المحملة للحد"
   },
   "message.uploadReferencesSuccess": {
@@ -140,7 +144,7 @@
     "description": "رسالة نجاح عند تحميل الصورة بنجاح"
   },
   "message.uploadReferencesError": {
-    "message": "فشل تحميل الصورة، يرجى المحاولة مرة أخرى لاحقًا",
+    "message": "فشل تحميل الصورة، يرجى المحاولة لاحقًا",
     "description": "رسالة خطأ عند فشل تحميل الصورة"
   },
   "message.startingTask": {
@@ -180,28 +184,28 @@
     "description": "رسالة خطأ عند تجاوز حجم الملف المحمل 10 ميجابايت!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "يجب أن يكون الملف المحمل بتنسيق MP4!",
-    "description": "رسالة خطأ عند عدم كون الملف المحمل بتنسيق MP4!"
+    "message": "يجب أن يكون الملف المرفوع بتنسيق MP4!",
+    "description": "رسالة خطأ تفيد بأن الملف المرفوع يجب أن يكون بتنسيق MP4!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "عدد الصور المرفوعة لللقطة الأولى يتجاوز الحد المسموح به",
-    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة لللقطة الأولى الحد المسموح به"
+    "message": "عدد الصور المرفوعة للإطار الأول يتجاوز الحد المسموح به",
+    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة للإطار الأول الحد المسموح به"
   },
   "message.uploadEndImageExceed": {
-    "message": "عدد الصور المرفوعة لللقطة الأخيرة يتجاوز الحد المسموح به",
-    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة لللقطة الأخيرة الحد المسموح به"
+    "message": "عدد الصور المرفوعة للإطار الأخير يتجاوز الحد المسموح به",
+    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة للإطار الأخير الحد المسموح به"
   },
   "message.uploadStartImageError": {
-    "message": "فشل رفع الصورة لللقطة الأولى",
-    "description": "رسالة خطأ عند فشل رفع الصورة لللقطة الأولى"
+    "message": "فشل رفع صورة الإطار الأول",
+    "description": "رسالة خطأ عند فشل رفع صورة الإطار الأول"
   },
   "message.uploadVideoError": {
     "message": "فشل رفع الفيديو",
     "description": "رسالة خطأ عند فشل رفع الفيديو"
   },
   "message.uploadEndImageError": {
-    "message": "فشل رفع الصورة لللقطة الأخيرة",
-    "description": "رسالة خطأ عند فشل رفع الصورة لللقطة الأخيرة"
+    "message": "فشل رفع صورة الإطار الأخير",
+    "description": "رسالة خطأ عند فشل رفع صورة الإطار الأخير"
   },
   "message.uploadDocumentsError": {
     "message": "فشل رفع المستندات",

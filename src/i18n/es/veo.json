@@ -3,17 +3,13 @@
     "message": "ID de tarea",
     "description": "ID de la tarea"
   },
-  "name.type": {
-    "message": "Tipo",
-    "description": "Tipo de contenido del video Kling a generar, como 'enlace', 'texto', etc."
-  },
-  "name.modeStd": {
-    "message": "Estándar",
-    "description": "Modo estándar del video Kling"
+  "name.translation": {
+    "message": "Traducción automática",
+    "description": "Traducción automática de videos de Veo"
   },
   "name.modePro": {
     "message": "Alta calidad",
-    "description": "Modo de alta calidad del video Kling"
+    "description": "Modo de alta calidad para videos de Kling"
   },
   "name.failure": {
     "message": "Fallo",
@@ -21,7 +17,7 @@
   },
   "name.failureReason": {
     "message": "Razón del fallo",
-    "description": "Razón del fallo de la tarea"
+    "description": "Razón por la cual la tarea falló"
   },
   "name.status": {
     "message": "Estado",
@@ -33,7 +29,7 @@
   },
   "name.createdAt": {
     "message": "Fecha de creación",
-    "description": "Fecha y hora en que se generó el video Kling"
+    "description": "Fecha y hora en que se generó el video de Kling"
   },
   "name.startEndImage": {
     "message": "Imágenes de referencia de inicio y fin",
@@ -59,12 +55,20 @@
     "message": "Google Veo Bot",
     "description": "Nombre del generador de videos Veo"
   },
+  "name.ratio": {
+    "message": "Proporción",
+    "description": "Nombre del parámetro de proporción"
+  },
+  "description.translation": {
+    "message": "Al crear la tarea de video, se puede habilitar la traducción automática para las palabras clave.",
+    "description": "Descripción del parámetro 'translation'"
+  },
   "description.imageUrl": {
-    "message": "En la tarea de crear un video con múltiples imágenes, se deben subir varias imágenes.",
+    "message": "En la tarea de creación de video con múltiples imágenes, se deben subir varias imágenes.",
     "description": "Descripción del parámetro 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Palabras clave para generar el video Veo",
+    "message": "Palabras clave para generar videos de Veo",
     "description": "Descripción del parámetro 'prompt'"
   },
   "description.uploadStartEndImage": {
@@ -72,15 +76,15 @@
     "description": "Descripción del parámetro 'image_url'"
   },
   "status.pending": {
-    "message": "Pendiente",
+    "message": "En espera",
     "description": "Estado de espera de la tarea"
   },
   "status.processing": {
-    "message": "Procesando",
-    "description": "Estado de procesamiento de la tarea"
+    "message": "En proceso",
+    "description": "Estado de espera de la tarea"
   },
   "placeholder.paddingNoise": {
-    "message": "Seleccione...",
+    "message": "Por favor seleccione...",
     "description": "Marcador de posición para la entrada de ruido de relleno"
   },
   "placeholder.select": {
@@ -88,32 +92,32 @@
     "description": "Texto de marcador de posición en el campo de selección"
   },
   "placeholder.paddingLevel": {
-    "message": "Seleccione...",
+    "message": "Por favor seleccione...",
     "description": "Marcador de posición para el nivel de relleno"
   },
   "placeholder.prompt": {
-    "message": "Ingrese las palabras clave para el estilo del video a generar, por ejemplo: en movimiento",
+    "message": "Ingrese las palabras clave para el estilo del video a generar, por ejemplo: moving",
     "description": "Texto de marcador de posición en el campo de sugerencia"
   },
   "placeholder.position": {
-    "message": "Seleccione...",
+    "message": "Por favor seleccione...",
     "description": "Marcador de posición para la entrada de posición"
   },
   "button.generate": {
     "message": "Generar",
-    "description": "Texto del botón para generar el video Veo"
+    "description": "Texto del botón para generar videos de Veo"
   },
   "button.action1": {
-    "message": "Generar video de texto",
-    "description": "Texto del botón para generar el video Veo"
+    "message": "Generar video",
+    "description": "Texto del botón para generar videos de Veo"
   },
   "button.action2": {
-    "message": "Generar video de imagen",
-    "description": "Texto del botón para generar el video Veo"
+    "message": "Generar video a partir de imágenes",
+    "description": "Texto del botón para generar videos de Veo"
   },
   "button.action3": {
     "message": "Obtener 1080p",
-    "description": "Texto del botón para generar el video Veo"
+    "description": "Texto del botón para generar videos de Veo"
   },
   "button.download": {
     "message": "Descargar video",
@@ -172,7 +176,7 @@
     "description": "Mensaje cuando la generación de la imagen falla"
   },
   "message.uploadVideoExceed": {
-    "message": "Se ha excedido el límite de imágenes del primer fotograma subidas",
+    "message": "Se ha excedido el límite de imágenes del primer fotograma",
     "description": "Mensaje de error cuando se excede el límite de imágenes del primer fotograma"
   },
   "message.uploadVideoSizeExceed": {
@@ -180,28 +184,28 @@
     "description": "Mensaje de error cuando el tamaño del archivo subido excede los 10 MB"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "¡El archivo subido debe estar en formato MP4!",
-    "description": "Mensaje de error cuando el archivo subido no está en formato MP4"
+    "message": "¡El archivo subido debe ser en formato MP4!",
+    "description": "Mensaje de error cuando el archivo subido debe ser en formato MP4!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "La cantidad de imágenes de inicio excede el límite",
-    "description": "Mensaje de error cuando la cantidad de imágenes de inicio excede el límite"
+    "message": "La cantidad de imágenes de la primera fotograma subidas excede el límite",
+    "description": "Mensaje de error cuando la cantidad de imágenes de la primera fotograma subidas excede el límite"
   },
   "message.uploadEndImageExceed": {
-    "message": "La cantidad de imágenes finales excede el límite",
-    "description": "Mensaje de error cuando la cantidad de imágenes finales excede el límite"
+    "message": "La cantidad de imágenes de la última fotograma subidas excede el límite",
+    "description": "Mensaje de error cuando la cantidad de imágenes de la última fotograma subidas excede el límite"
   },
   "message.uploadStartImageError": {
-    "message": "Error al subir la imagen de inicio",
-    "description": "Mensaje de error cuando falla la subida de la imagen de inicio"
+    "message": "Error al subir la imagen del primer fotograma",
+    "description": "Mensaje de error cuando falla la subida de la imagen del primer fotograma"
   },
   "message.uploadVideoError": {
     "message": "Error al subir el video",
-    "description": "Mensaje de error cuando falla la subida de la imagen de inicio"
+    "description": "Mensaje de error cuando falla la subida de la imagen del primer fotograma"
   },
   "message.uploadEndImageError": {
-    "message": "Error al subir la imagen final",
-    "description": "Mensaje de error cuando falla la subida de la imagen final"
+    "message": "Error al subir la imagen del último fotograma",
+    "description": "Mensaje de error cuando falla la subida de la imagen del último fotograma"
   },
   "message.uploadDocumentsError": {
     "message": "Error al subir el documento",

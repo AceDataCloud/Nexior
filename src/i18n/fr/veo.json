@@ -3,17 +3,13 @@
     "message": "ID de tâche",
     "description": "ID de la tâche"
   },
-  "name.type": {
-    "message": "Type",
-    "description": "Type de contenu du vidéo Kling à générer, comme 'lien', 'texte', etc."
-  },
-  "name.modeStd": {
-    "message": "Standard",
-    "description": "Mode standard du vidéo Kling"
+  "name.translation": {
+    "message": "Traduction automatique",
+    "description": "Traduction automatique des vidéos Veo"
   },
   "name.modePro": {
     "message": "Haute qualité",
-    "description": "Mode haute qualité du vidéo Kling"
+    "description": "Mode haute qualité pour les vidéos Kling"
   },
   "name.failure": {
     "message": "Échec",
@@ -33,19 +29,19 @@
   },
   "name.createdAt": {
     "message": "Date de création",
-    "description": "Date et heure de génération du vidéo Kling"
+    "description": "Date et heure de génération de la vidéo Kling"
   },
   "name.startEndImage": {
     "message": "Images de référence de début et de fin",
-    "description": "Images de référence pour le vidéo à générer"
+    "description": "Images de référence pour la vidéo à générer"
   },
   "name.action": {
-    "message": "Actions",
+    "message": "Action",
     "description": "Liste des actions disponibles"
   },
   "name.action3": {
     "message": "Obtenir la vidéo en 1080p",
-    "description": "Images de référence pour le vidéo à générer"
+    "description": "Images de référence pour la vidéo à générer"
   },
   "name.prompt": {
     "message": "Invite vidéo",
@@ -53,22 +49,30 @@
   },
   "name.model": {
     "message": "Version du modèle",
-    "description": "Version du modèle utilisée pour générer le vidéo"
+    "description": "Version du modèle utilisée pour générer la vidéo"
   },
   "name.veoBot": {
     "message": "Google Veo Bot",
-    "description": "Nom du générateur de vidéo Veo"
+    "description": "Nom du générateur de vidéos Veo"
+  },
+  "name.ratio": {
+    "message": "Ratio",
+    "description": "Nom du paramètre de ratio"
+  },
+  "description.translation": {
+    "message": "Lors de la création d'une tâche vidéo, vous pouvez activer la traduction automatique des invites.",
+    "description": "Description du paramètre 'translation'"
   },
   "description.imageUrl": {
-    "message": "Dans la tâche de création de vidéo avec plusieurs images, il faut télécharger plusieurs images.",
+    "message": "Lors de la création d'une vidéo à partir de plusieurs images, vous devez télécharger plusieurs images.",
     "description": "Description du paramètre 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Mots d'invite pour générer le vidéo Veo",
+    "message": "Mots d'invite pour générer une vidéo Veo",
     "description": "Description du paramètre 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Tableau de liens d'images de référence, le premier est l'image de début, puis l'image de fin",
+    "message": "Tableau de liens d'images de référence, la première est l'image de début, suivie de l'image de fin",
     "description": "Description du paramètre 'image_url'"
   },
   "status.pending": {
@@ -101,19 +105,19 @@
   },
   "button.generate": {
     "message": "Générer",
-    "description": "Texte du bouton pour générer le vidéo Veo"
+    "description": "Texte du bouton pour générer une vidéo Veo"
   },
   "button.action1": {
     "message": "Vidéo générée par texte",
-    "description": "Texte du bouton pour générer le vidéo Veo"
+    "description": "Texte du bouton pour générer une vidéo Veo"
   },
   "button.action2": {
     "message": "Vidéo générée par image",
-    "description": "Texte du bouton pour générer le vidéo Veo"
+    "description": "Texte du bouton pour générer une vidéo Veo"
   },
   "button.action3": {
     "message": "Obtenir en 1080p",
-    "description": "Texte du bouton pour générer le vidéo Veo"
+    "description": "Texte du bouton pour générer une vidéo Veo"
   },
   "button.download": {
     "message": "Télécharger la vidéo",
@@ -121,11 +125,11 @@
   },
   "button.uploadImageUrl": {
     "message": "Télécharger l'image",
-    "description": "Texte du bouton pour télécharger l'image"
+    "description": "Texte du bouton pour télécharger une image"
   },
   "button.uploadVideoUrl": {
     "message": "Télécharger la vidéo",
-    "description": "Texte du bouton pour télécharger la vidéo"
+    "description": "Texte du bouton pour télécharger une vidéo"
   },
   "button.uploadReferences": {
     "message": "Télécharger",
@@ -137,7 +141,7 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Images téléchargées avec succès",
-    "description": "Message de succès lors du téléchargement réussi d'images"
+    "description": "Message de succès lors du téléchargement d'images"
   },
   "message.uploadReferencesError": {
     "message": "Échec du téléchargement des images, veuillez réessayer plus tard",
@@ -149,15 +153,15 @@
   },
   "message.startTaskSuccess": {
     "message": "Tâche de génération lancée avec succès",
-    "description": "Message de succès lors du démarrage réussi de la tâche"
+    "description": "Message de succès lors du démarrage de la tâche"
   },
   "message.startTaskFailed": {
     "message": "Échec du lancement de la tâche, veuillez contacter l'administrateur",
     "description": "Message d'erreur lors de l'échec du démarrage de la tâche de dessin"
   },
   "message.usedUp": {
-    "message": "Vos crédits sont épuisés, veuillez acheter plus de crédits pour continuer",
-    "description": "Message lorsque les crédits sont épuisés"
+    "message": "Votre crédit est épuisé, veuillez acheter plus de crédits pour continuer",
+    "description": "Message lorsque le crédit est épuisé"
   },
   "message.generating": {
     "message": "Génération en cours...",
@@ -176,12 +180,12 @@
     "description": "Message d'erreur lorsque le nombre d'images de première image téléchargées dépasse la limite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "La taille du fichier téléchargé ne doit pas dépasser 10 Mo !",
+    "message": "La taille du fichier téléchargé ne peut pas dépasser 10 Mo !",
     "description": "Message d'erreur lorsque la taille du fichier téléchargé dépasse 10 Mo !"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Le fichier téléchargé doit être au format MP4 !",
-    "description": "Message d'erreur lorsque le fichier téléchargé n'est pas au format MP4 !"
+    "message": "Le fichier téléchargé doit être au format MP4!",
+    "description": "Message d'erreur lorsque le fichier téléchargé doit être au format MP4!"
   },
   "message.uploadStartEndImageExceed": {
     "message": "Le nombre d'images de la première image téléchargées dépasse la limite",
@@ -189,19 +193,19 @@
   },
   "message.uploadEndImageExceed": {
     "message": "Le nombre d'images de la dernière image téléchargées dépasse la limite",
-    "description": "Message d'erreur lorsque le nombre d'images de la première image téléchargées dépasse la limite"
+    "description": "Message d'erreur lorsque le nombre d'images de la dernière image téléchargées dépasse la limite"
   },
   "message.uploadStartImageError": {
-    "message": "Échec du téléchargement de la première image",
-    "description": "Message d'erreur lorsque le téléchargement de la première image échoue"
+    "message": "Échec du téléchargement de l'image de la première image",
+    "description": "Message d'erreur lorsque le téléchargement de l'image de la première image échoue"
   },
   "message.uploadVideoError": {
     "message": "Échec du téléchargement de la vidéo",
-    "description": "Message d'erreur lorsque le téléchargement de la première image échoue"
+    "description": "Message d'erreur lorsque le téléchargement de l'image de la première image échoue"
   },
   "message.uploadEndImageError": {
-    "message": "Échec du téléchargement de la dernière image",
-    "description": "Message d'erreur lorsque le téléchargement de la dernière image échoue"
+    "message": "Échec du téléchargement de l'image de la dernière image",
+    "description": "Message d'erreur lorsque le téléchargement de l'image de la dernière image échoue"
   },
   "message.uploadDocumentsError": {
     "message": "Échec du téléchargement du document",

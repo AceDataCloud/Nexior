@@ -3,17 +3,13 @@
     "message": "Task ID",
     "description": "The ID of the task"
   },
-  "name.type": {
-    "message": "Type",
-    "description": "The content type of the Kling video to be generated, such as 'link', 'text', etc."
-  },
-  "name.modeStd": {
-    "message": "Standard",
-    "description": "The standard mode of the Kling video"
+  "name.translation": {
+    "message": "Automatic Translation",
+    "description": "Automatic translation for Veo videos"
   },
   "name.modePro": {
     "message": "High Quality",
-    "description": "The high-quality mode of the Kling video"
+    "description": "High quality mode for Kling videos"
   },
   "name.failure": {
     "message": "Failure",
@@ -37,19 +33,19 @@
   },
   "name.startEndImage": {
     "message": "Start and End Frame Reference Images",
-    "description": "The reference images for the video to be generated"
+    "description": "Reference images for the video to be generated"
   },
   "name.action": {
-    "message": "Actions",
+    "message": "Action",
     "description": "List of available actions"
   },
   "name.action3": {
     "message": "Get 1080p Video From",
-    "description": "The reference images for the video to be generated"
+    "description": "Reference images for the video to be generated"
   },
   "name.prompt": {
     "message": "Video Prompt",
-    "description": "The prompt for content input"
+    "description": "Prompt for content input"
   },
   "name.model": {
     "message": "Model Version",
@@ -59,12 +55,20 @@
     "message": "Google Veo Bot",
     "description": "The name of the Veo video generator"
   },
+  "name.ratio": {
+    "message": "Ratio",
+    "description": "The name of the ratio parameter"
+  },
+  "description.translation": {
+    "message": "Automatic translation can be enabled for prompts when creating video tasks.",
+    "description": "Description of the 'translation' parameter"
+  },
   "description.imageUrl": {
     "message": "In multi-image video creation tasks, multiple images must be uploaded.",
     "description": "Description of the 'imageUrl' parameter"
   },
   "description.prompt": {
-    "message": "The prompt words for generating Veo videos",
+    "message": "Prompt words for generating Veo videos",
     "description": "Description of the 'prompt' parameter"
   },
   "description.uploadStartEndImage": {
@@ -92,7 +96,7 @@
     "description": "Placeholder for padding level"
   },
   "placeholder.prompt": {
-    "message": "Enter the prompt words for the video style to be generated, e.g., moving",
+    "message": "Enter prompt words for the video style to be generated, e.g., moving",
     "description": "Placeholder text in the prompt field"
   },
   "placeholder.position": {
@@ -149,14 +153,14 @@
   },
   "message.startTaskSuccess": {
     "message": "Task initiated successfully",
-    "description": "Success message when the task is successfully started"
+    "description": "Success message when the task is started successfully"
   },
   "message.startTaskFailed": {
     "message": "Failed to initiate task, please contact the administrator",
     "description": "Error message when starting the drawing task fails"
   },
   "message.usedUp": {
-    "message": "Your credits have been used up, please purchase more credits to continue using",
+    "message": "Your credits are exhausted, please purchase more credits to continue using",
     "description": "Message when credits are exhausted"
   },
   "message.generating": {
@@ -180,31 +184,31 @@
     "description": "Error message when the uploaded file size exceeds 10MB!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Uploaded file must be in MP4 format!",
-    "description": "Error message when the uploaded file must be in MP4 format!"
+    "message": "The uploaded file must be in MP4 format!",
+    "description": "Error message when the uploaded file is not in MP4 format!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "The number of uploaded start frame images exceeds the limit",
-    "description": "Error message when the number of uploaded start frame images exceeds the limit"
+    "message": "The number of uploaded first frame images exceeds the limit",
+    "description": "Error message when the number of uploaded first frame images exceeds the limit"
   },
   "message.uploadEndImageExceed": {
-    "message": "The number of uploaded end frame images exceeds the limit",
-    "description": "Error message when the number of uploaded end frame images exceeds the limit"
+    "message": "The number of uploaded last frame images exceeds the limit",
+    "description": "Error message when the number of uploaded last frame images exceeds the limit"
   },
   "message.uploadStartImageError": {
-    "message": "Failed to upload start frame image",
-    "description": "Error message when the upload of the start frame image fails"
+    "message": "Failed to upload the first frame image",
+    "description": "Error message when the upload of the first frame image fails"
   },
   "message.uploadVideoError": {
-    "message": "Failed to upload video",
+    "message": "Failed to upload the video",
     "description": "Error message when the upload of the video fails"
   },
   "message.uploadEndImageError": {
-    "message": "Failed to upload end frame image",
-    "description": "Error message when the upload of the end frame image fails"
+    "message": "Failed to upload the last frame image",
+    "description": "Error message when the upload of the last frame image fails"
   },
   "message.uploadDocumentsError": {
-    "message": "Failed to upload document",
+    "message": "Failed to upload the document",
     "description": "Error message when the upload of the document fails"
   },
   "message.noOperations": {
@@ -212,7 +216,7 @@
     "description": "Message when there are no available operations"
   },
   "message.noTasks": {
-    "message": "No historical tasks, please click on the left to generate video",
+    "message": "No historical tasks, please click on the left to generate a video",
     "description": "Message when there are no tasks"
   }
 }

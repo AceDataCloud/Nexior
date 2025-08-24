@@ -15,7 +15,7 @@ import { ElSelect, ElOption } from 'element-plus';
 import { VEO_DEFAULT_ACTION } from '@/constants';
 
 export default defineComponent({
-  name: 'ModelSelector',
+  name: 'ActionSelector',
   components: {
     ElSelect,
     ElOption
