@@ -65,6 +65,10 @@ export default defineComponent({
     min-height: 200px;
     min-width: 200px;
     border-radius: 10px;
+    @media (max-width: 767px) {
+      max-width: 100%;
+      height: auto;
+    }
   }
   .btn-raw {
     position: absolute;

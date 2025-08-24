@@ -90,7 +90,7 @@ export default defineComponent({
       Promise.all([
         this.$store.dispatch('getApplications'),
         this.$store.dispatch(`${this.appName}/getApplications`)
-      ]).finally(() => {
+      ]).finally(async () => {
         console.debug('Fetched all applications', this.applications);
         // Check if we need to apply for a global application
         if (this.$store.state.applications?.length === 0) {
@@ -104,8 +104,9 @@ export default defineComponent({
         console.debug('final application', finalApplication);
         if (finalApplication) {
           console.debug('set final application', finalApplication, finalApplication?.type);
-          this.$store.dispatch(`${this.appName}/setApplication`, finalApplication);
+          await this.$store.dispatch(`${this.appName}/setApplication`, finalApplication);
         }
+        console.debug('finished initialization');
         this.initialized = true;
       });
     },

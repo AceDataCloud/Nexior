@@ -319,7 +319,7 @@ export default defineComponent({
   }
   &.user {
     .main {
-      align-items: end;
+      align-items: flex-end;
     }
     .content {
       background-color: var(--el-bg-color-page);
