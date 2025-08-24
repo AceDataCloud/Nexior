@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 22 Aug 2025 05:02:38 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 24 Aug 2025 00:53:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.18.5
+
+Sun, 24 Aug 2025 00:53:28 GMT
+
+### Patches
+
+- fix redirect issue (cqc@cuiqingcai.com)
 
 ## 3.18.4
 
