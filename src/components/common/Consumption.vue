@@ -2,7 +2,7 @@
   <div v-if="value !== null && value !== undefined" class="text-center text-[var(--el-text-color-secondary)] mb-1">
     <font-awesome-icon icon="fa-solid fa-coins" class="text-xs mr-1" />
     <span class="text-xs">
-      {{ value }}
+      {{ value.toFixed(2) }}
       {{ $t(`service.unit.${service?.unit || 'credits'}`) }}
     </span>
   </div>

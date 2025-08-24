@@ -101,4 +101,5 @@ export function getFinalApplication(
     console.debug('application with Usage type', application4);
     return application4;
   }
+  return application1 || application2 || application3 || application4;
 }

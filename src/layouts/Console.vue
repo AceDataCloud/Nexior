@@ -84,7 +84,7 @@ export default defineComponent({
       }
       .panel {
         width: 100%;
-        height: 100%;
+        // height: 100%;
       }
     }
   }
@@ -113,11 +113,11 @@ export default defineComponent({
     width: fit-content;
   }
 
-  @media (max-width: 767px) {
-    .panel {
-      width: 100%;
-      height: 100%;
-    }
-  }
+  // @media (max-width: 767px) {
+  //   .panel {
+  //     width: 100%;
+  //     height: 100%;
+  //   }
+  // }
 }
 </style>

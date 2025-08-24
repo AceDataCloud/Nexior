@@ -10,7 +10,7 @@ import {
 } from '@/operators';
 import { IApplication, IApplicationScope, IApplicationType, ICredential, IToken, IUser, Status } from '@/models';
 import { getSiteOrigin } from '@/utils/site';
-import { loginRedirect } from '@/utils';
+import { getBaseUrlAuth, loginRedirect } from '@/utils';
 import { SURFACE_ANDROID, SURFACE_IOS } from '@/constants';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
 
@@ -222,9 +222,15 @@ export const logout = async ({ dispatch }: ActionContext<IRootState, IRootState>
   await dispatch('kling/resetAll');
   await dispatch('luma/resetAll');
   await dispatch('pika/resetAll');
+  await dispatch('pixverse/resetAll');
   await dispatch('qrart/resetAll');
   await dispatch('suno/resetAll');
-  await dispatch('login');
+  await dispatch('veo/resetAll');
+  const currentUrl = window.location.href;
+  const baseUrlAuth = getBaseUrlAuth();
+  const loginUrl = `${baseUrlAuth}/auth/login?redirect=${currentUrl}`;
+  const redirectUrl = `${baseUrlAuth}/auth/logout?redirect=${loginUrl}`;
+  window.location.href = redirectUrl;
 };
 
 export default {
