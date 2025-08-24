@@ -3,13 +3,9 @@
     "message": "ID da tarefa",
     "description": "ID da tarefa"
   },
-  "name.type": {
-    "message": "Tipo",
-    "description": "Tipo de conteúdo do vídeo Kling a ser gerado, como 'link', 'texto', etc."
-  },
-  "name.modeStd": {
-    "message": "Padrão",
-    "description": "Modo padrão do vídeo Kling"
+  "name.translation": {
+    "message": "Tradução automática",
+    "description": "Tradução automática do vídeo Veo"
   },
   "name.modePro": {
     "message": "Alta qualidade",
@@ -59,8 +55,16 @@
     "message": "Google Veo Bot",
     "description": "Nome do gerador de vídeos Veo"
   },
+  "name.ratio": {
+    "message": "Proporção",
+    "description": "Nome do parâmetro de proporção"
+  },
+  "description.translation": {
+    "message": "Ao criar a tarefa de vídeo, você pode ativar a tradução automática para as palavras-chave.",
+    "description": "Descrição do parâmetro 'translation'"
+  },
   "description.imageUrl": {
-    "message": "Na tarefa de criar vídeos com várias imagens, é necessário fazer o upload de várias imagens.",
+    "message": "Na tarefa de criação de vídeo com várias imagens, é necessário fazer o upload de várias imagens.",
     "description": "Descrição do parâmetro 'imageUrl'"
   },
   "description.prompt": {
@@ -72,7 +76,7 @@
     "description": "Descrição do parâmetro 'image_url'"
   },
   "status.pending": {
-    "message": "Pendente",
+    "message": "Aguardando",
     "description": "Estado de espera da tarefa"
   },
   "status.processing": {
@@ -92,7 +96,7 @@
     "description": "Placeholder para nível de preenchimento"
   },
   "placeholder.prompt": {
-    "message": "Insira as palavras-chave para o estilo do vídeo a ser gerado, por exemplo: moving",
+    "message": "Digite o prompt para o estilo do vídeo a ser gerado, por exemplo: moving",
     "description": "Texto de placeholder no campo de prompt"
   },
   "placeholder.position": {
@@ -104,11 +108,11 @@
     "description": "Texto do botão para gerar vídeos Veo"
   },
   "button.action1": {
-    "message": "Vídeo de texto",
+    "message": "Gerar vídeo",
     "description": "Texto do botão para gerar vídeos Veo"
   },
   "button.action2": {
-    "message": "Vídeo de imagem",
+    "message": "Gerar vídeo a partir de imagem",
     "description": "Texto do botão para gerar vídeos Veo"
   },
   "button.action3": {
@@ -133,14 +137,14 @@
   },
   "message.uploadReferencesExceed": {
     "message": "É possível fazer upload de no máximo 2 imagens",
-    "description": "Mensagem de erro quando o número de imagens carregadas excede o limite"
+    "description": "Mensagem de erro quando o número de imagens enviadas excede o limite"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Imagens carregadas com sucesso",
-    "description": "Mensagem de sucesso ao carregar imagens com sucesso"
+    "message": "Imagens enviadas com sucesso",
+    "description": "Mensagem de sucesso ao enviar imagens com sucesso"
   },
   "message.uploadReferencesError": {
-    "message": "Falha ao carregar imagens, por favor, tente novamente mais tarde",
+    "message": "Falha ao enviar imagens, por favor, tente novamente mais tarde",
     "description": "Mensagem de erro quando o upload de imagens falha"
   },
   "message.startingTask": {
@@ -152,7 +156,7 @@
     "description": "Mensagem de sucesso ao iniciar a tarefa"
   },
   "message.startTaskFailed": {
-    "message": "Falha ao iniciar a tarefa, por favor, entre em contato com o administrador",
+    "message": "Falha ao iniciar a tarefa, por favor, contate o administrador",
     "description": "Mensagem de erro ao falhar ao iniciar a tarefa de desenho"
   },
   "message.usedUp": {
@@ -172,16 +176,16 @@
     "description": "Mensagem quando a geração da imagem falha"
   },
   "message.uploadVideoExceed": {
-    "message": "Número de imagens do quadro inicial carregadas excede o limite",
-    "description": "Mensagem de erro quando o número de imagens do quadro inicial carregadas excede o limite"
+    "message": "Número de imagens do quadro inicial excede o limite",
+    "description": "Mensagem de erro quando o número de imagens do quadro inicial excede o limite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "O tamanho do arquivo carregado não pode exceder 10MB!",
-    "description": "Mensagem de erro quando o tamanho do arquivo carregado excede 10MB!"
+    "message": "O tamanho do arquivo enviado não pode exceder 10MB!",
+    "description": "Mensagem de erro quando o tamanho do arquivo enviado excede 10MB!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "O arquivo carregado deve estar no formato MP4!",
-    "description": "Mensagem de erro quando o arquivo carregado não está no formato MP4!"
+    "message": "O arquivo enviado deve ser no formato MP4!",
+    "description": "Mensagem de erro quando o arquivo enviado não está no formato MP4!"
   },
   "message.uploadStartEndImageExceed": {
     "message": "O número de imagens da primeira frame excede o limite",

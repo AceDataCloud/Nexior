@@ -3,33 +3,29 @@
     "message": "Aufgaben-ID",
     "description": "ID der Aufgabe"
   },
-  "name.type": {
-    "message": "Typ",
-    "description": "Der Inhaltstyp des zu generierenden Kling-Videos, z. B. 'Link', 'Text' usw."
-  },
-  "name.modeStd": {
-    "message": "Standard",
-    "description": "Der Standardmodus des Kling-Videos"
+  "name.translation": {
+    "message": "Automatische Übersetzung",
+    "description": "Automatische Übersetzung von Veo-Videos"
   },
   "name.modePro": {
     "message": "Hohe Qualität",
-    "description": "Der Hochqualitätsmodus des Kling-Videos"
+    "description": "Hochqualitätsmodus von Kling-Videos"
   },
   "name.failure": {
     "message": "Fehler",
-    "description": "Der Fehlerstatus der Aufgabe"
+    "description": "Fehlerstatus der Aufgabe"
   },
   "name.failureReason": {
     "message": "Fehlerursache",
-    "description": "Der Grund für das Scheitern der Aufgabe"
+    "description": "Grund für das Scheitern der Aufgabe"
   },
   "name.status": {
     "message": "Status",
-    "description": "Der Status der Aufgabe"
+    "description": "Status der Aufgabe"
   },
   "name.traceId": {
     "message": "Verfolgungs-ID",
-    "description": "Die Verfolgungs-ID der Aufgabe"
+    "description": "Verfolgungs-ID der Aufgabe"
   },
   "name.createdAt": {
     "message": "Erstellt am",
@@ -44,7 +40,7 @@
     "description": "Liste der verfügbaren Aktionen"
   },
   "name.action3": {
-    "message": "1080p-Video abrufen",
+    "message": "1080p-Video abrufen von",
     "description": "Referenzbilder für das zu generierende Video"
   },
   "name.prompt": {
@@ -53,31 +49,39 @@
   },
   "name.model": {
     "message": "Modellversion",
-    "description": "Die Modellversion, die zur Generierung des Videos verwendet wird"
+    "description": "Modellversion, die zur Generierung des Videos verwendet wird"
   },
   "name.veoBot": {
     "message": "Google Veo Bot",
-    "description": "Der Name des Veo-Videogenerators"
+    "description": "Name des Veo-Videogenerators"
+  },
+  "name.ratio": {
+    "message": "Verhältnis",
+    "description": "Name des Verhältnisparameters"
+  },
+  "description.translation": {
+    "message": "Bei der Erstellung der Videoaufgabe kann die automatische Übersetzung für die Eingabeaufforderungen aktiviert werden.",
+    "description": "Beschreibung des Parameters 'translation'"
   },
   "description.imageUrl": {
-    "message": "Bei der Erstellung eines Videos mit mehreren Bildern muss eine Vielzahl von Bildern hochgeladen werden.",
+    "message": "Bei der Erstellung von Videos mit mehreren Bildern müssen mehrere Bilder hochgeladen werden.",
     "description": "Beschreibung des Parameters 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Aufforderungswörter zur Generierung von Veo-Videos",
+    "message": "Aufforderung zur Generierung von Veo-Videos",
     "description": "Beschreibung des Parameters 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Array von Links zu Referenzbildern, das erste ist das Anfangsbild, das zweite das Endbild",
+    "message": "Array von Referenzbild-Links, das erste ist das Anfangsbild, das zweite das Endbild",
     "description": "Beschreibung des Parameters 'image_url'"
   },
   "status.pending": {
     "message": "Warten",
-    "description": "Der Wartezustand der Aufgabe"
+    "description": "Wartezustand der Aufgabe"
   },
   "status.processing": {
     "message": "Wird bearbeitet",
-    "description": "Der Bearbeitungszustand der Aufgabe"
+    "description": "Wartezustand der Aufgabe"
   },
   "placeholder.paddingNoise": {
     "message": "Bitte auswählen...",
@@ -92,7 +96,7 @@
     "description": "Platzhalter für das Füllniveau"
   },
   "placeholder.prompt": {
-    "message": "Geben Sie die Aufforderungswörter für den Stil des zu generierenden Videos ein, z. B.: bewegend",
+    "message": "Geben Sie die Aufforderung für den Video-Stil ein, z.B.: bewegend",
     "description": "Platzhaltertext im Aufforderungsfeld"
   },
   "placeholder.position": {
@@ -104,11 +108,11 @@
     "description": "Text des Buttons zur Generierung von Veo-Videos"
   },
   "button.action1": {
-    "message": "Text-zu-Video",
+    "message": "Video generieren",
     "description": "Text des Buttons zur Generierung von Veo-Videos"
   },
   "button.action2": {
-    "message": "Bild-zu-Video",
+    "message": "Bild generieren",
     "description": "Text des Buttons zur Generierung von Veo-Videos"
   },
   "button.action3": {
@@ -120,7 +124,7 @@
     "description": "Text des Buttons zum Herunterladen des Videos"
   },
   "button.uploadImageUrl": {
-    "message": "Bilder hochladen",
+    "message": "Bild hochladen",
     "description": "Text des Buttons zum Hochladen von Bildern"
   },
   "button.uploadVideoUrl": {
@@ -145,15 +149,15 @@
   },
   "message.startingTask": {
     "message": "Starte Aufgabe...",
-    "description": "Nachricht, wenn die Zeichnungsaufgabe beginnt"
+    "description": "Nachricht beim Start der Zeichnungsaufgabe"
   },
   "message.startTaskSuccess": {
     "message": "Generierungsaufgabe erfolgreich gestartet",
-    "description": "Erfolgsmeldung, wenn die Aufgabe erfolgreich gestartet wurde"
+    "description": "Erfolgsmeldung beim erfolgreichen Start der Aufgabe"
   },
   "message.startTaskFailed": {
     "message": "Start der Aufgabe fehlgeschlagen, bitte kontaktieren Sie den Administrator",
-    "description": "Fehlermeldung, wenn das Starten der Zeichnungsaufgabe fehlschlägt"
+    "description": "Fehlermeldung beim Fehlschlagen des Starts der Zeichnungsaufgabe"
   },
   "message.usedUp": {
     "message": "Ihr Guthaben ist aufgebraucht, bitte kaufen Sie mehr Guthaben, um fortzufahren",
@@ -161,18 +165,18 @@
   },
   "message.generating": {
     "message": "Wird generiert...",
-    "description": "Nachricht, während das Bild generiert wird"
+    "description": "Nachricht während der Generierung des Bildes"
   },
   "message.downloadVideo": {
     "message": "Dieses Video herunterladen",
-    "description": "Nachricht, während das Bild generiert wird"
+    "description": "Nachricht während der Generierung des Bildes"
   },
   "message.generateFailed": {
     "message": "Generierung des Videos fehlgeschlagen",
     "description": "Nachricht, wenn die Bildgenerierung fehlschlägt"
   },
   "message.uploadVideoExceed": {
-    "message": "Die Anzahl der hochgeladenen Anfangsbildbilder überschreitet das Limit",
+    "message": "Anzahl der hochgeladenen Anfangsbildbilder überschreitet das Limit",
     "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Anfangsbildbilder das Limit überschreitet"
   },
   "message.uploadVideoSizeExceed": {
@@ -180,8 +184,8 @@
     "description": "Fehlermeldung, wenn die hochgeladene Dateigröße 10 MB überschreitet"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Die hochgeladene Datei muss im MP4-Format vorliegen!",
-    "description": "Fehlermeldung, wenn die hochgeladene Datei nicht im MP4-Format vorliegt"
+    "message": "Die hochgeladene Datei muss im MP4-Format sein!",
+    "description": "Fehlermeldung, wenn die hochgeladene Datei nicht im MP4-Format ist!"
   },
   "message.uploadStartEndImageExceed": {
     "message": "Die Anzahl der hochgeladenen Startbildbilder überschreitet das Limit",

@@ -3,6 +3,8 @@ export interface IVeoConfig {
   model?: string;
   video_id?: string;
   video_url?: string;
+  translation?: boolean;
+  aspect_ratio?: string;
   image_urls?: string[];
   prompt?: string;
   callback_url?: string;
@@ -15,6 +17,8 @@ export interface IVeoGenerateRequest {
   video_url?: string;
   image_urls?: string[];
   prompt?: string;
+  translation?: boolean;
+  aspect_ratio?: string;
   callback_url?: string;
   mirror?: boolean;
 }
