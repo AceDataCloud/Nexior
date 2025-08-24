@@ -67,6 +67,7 @@ export default defineComponent({
     }
     .results {
       display: block;
+      width: 100%;
     }
     .menu {
       display: block;

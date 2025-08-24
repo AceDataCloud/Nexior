@@ -261,6 +261,7 @@ export default defineComponent({
   display: flex;
   align-items: center;
   position: relative;
+  background-color: var(--el-bg-color);
 
   .top {
     .avatar {

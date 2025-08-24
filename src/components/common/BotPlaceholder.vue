@@ -1,17 +1,17 @@
 <template>
-  <div v-for="_ in 3" :key="_" class="placeholder">
-    <div class="left">
+  <div v-for="_ in 3" :key="_" class="flex mb-[10px]">
+    <div class="w-[70px] p-[10px]">
       <el-skeleton animated>
         <template #template>
-          <el-skeleton-item variant="image" class="avatar" />
+          <el-skeleton-item variant="image" class="w-[50px] h-[50px] rounded-full" />
         </template>
       </el-skeleton>
     </div>
-    <div class="main">
+    <div class="flex-1 p-[10px]">
       <el-skeleton animated>
         <template #template>
-          <el-skeleton-item variant="p" class="title" />
-          <el-skeleton-item variant="image" class="icon" />
+          <el-skeleton-item variant="p" class="w-[200px] h-[20px] mb-[15px]" />
+          <el-skeleton-item variant="p" class="w-full h-[200px] max-w-[300px]" />
         </template>
       </el-skeleton>
     </div>
@@ -27,46 +27,6 @@ export default defineComponent({
   components: {
     ElSkeleton,
     ElSkeletonItem
-  },
-  data() {
-    return {};
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.placeholder {
-  display: flex;
-  flex-direction: row;
-  .left {
-    width: 70px;
-    padding: 10px;
-
-    .avatar {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-    }
-  }
-
-  .main {
-    width: calc(100% - 70px);
-    flex: 1;
-    padding: 10px;
-    margin-bottom: 10px;
-
-    .icon {
-      display: flex;
-      height: 200px;
-      width: 300px;
-    }
-
-    .title {
-      display: block;
-      width: 200px;
-      height: 20px;
-      margin-bottom: 15px;
-    }
-  }
-}
-</style>
