@@ -214,7 +214,7 @@ export const initializeExchangeRate = async () => {
   await store.dispatch('getExchangeRate', payload);
 };
 
-export const initializeRedirect = async () => {
+export const initializeRedirect = async (): Promise<boolean> => {
   if (isOfficial() && !isSubOfficial() && isWechatBrowser()) {
     console.debug('redirect to sub domain with prefix');
     // redirect from hub.acedata.cloud to dynamic date like 20240802.hub.acedata.cloud
@@ -222,7 +222,9 @@ export const initializeRedirect = async () => {
     const newUrl = window.location.href.replace(BASE_HOST_HUB, `${date}.${BASE_HOST_HUB}`);
     console.debug('redirect to', newUrl);
     window.location.href = newUrl;
+    return true;
   }
+  return false;
 };
 
 export const initializeFingerprint = async () => {
