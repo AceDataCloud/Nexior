@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper console">
+  <div class="console">
     <div class="main">
       <side-panel class="side" />
       <router-view class="panel" />
@@ -33,40 +33,41 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.wrapper {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row-reverse;
-
-  .navigator {
+@media screen and (min-width: 768px) {
+  .console {
+    width: 100%;
     height: 100%;
-    width: 60px;
-    border-right: 1px solid var(--el-border-color);
-  }
-
-  .main {
-    height: 100%;
-    width: calc(100% - 60px);
-    flex: 1;
     display: flex;
-    flex-direction: row;
-    .side {
-      width: 200px;
+    flex-direction: row-reverse;
+
+    .navigator {
       height: 100%;
+      width: 60px;
+      border-right: 1px solid var(--el-border-color);
     }
-    .panel {
-      width: calc(100% - 200px);
+
+    .main {
       height: 100%;
-      padding: 30px;
-      background-color: var(--el-bg-color-page);
-      overflow: hidden;
+      width: calc(100% - 60px);
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      .side {
+        width: 200px;
+        height: 100%;
+      }
+      .panel {
+        width: calc(100% - 200px);
+        height: 100%;
+        padding: 30px;
+        background-color: var(--el-bg-color-page);
+      }
     }
   }
 }
 
 @media screen and (max-width: 767px) {
-  .wrapper {
+  .console {
     width: 100%;
     height: 100%;
     display: flex;
@@ -74,17 +75,26 @@ export default defineComponent({
     .navigator {
       width: 100%;
       height: 60px;
+      position: fixed;
+      bottom: 0;
+      z-index: 10000;
     }
     .main {
       height: calc(100% - 60px);
       width: 100%;
       flex: 1;
-      .side {
-        display: none;
-      }
+      display: flex;
+      flex-direction: column;
       .panel {
         width: 100%;
-        // height: 100%;
+        padding: 30px;
+        background-color: var(--el-bg-color-page);
+        padding-bottom: 80px;
+      }
+      .side {
+        width: 100%;
+        height: fit-content;
+        padding: 20px 0 20px 10px;
       }
     }
   }
@@ -92,7 +102,7 @@ export default defineComponent({
 </style>
 
 <style lang="scss">
-.wrapper.console {
+.console {
   .panel {
     .title {
       font-size: 26px;
@@ -112,12 +122,5 @@ export default defineComponent({
     margin: auto;
     width: fit-content;
   }
-
-  // @media (max-width: 767px) {
-  //   .panel {
-  //     width: 100%;
-  //     height: 100%;
-  //   }
-  // }
 }
 </style>

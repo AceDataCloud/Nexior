@@ -1,6 +1,22 @@
 <template>
   <div v-if="tasks?.items === undefined" class="tasks">
-    <bot-placeholder />
+    <div v-for="_ in 3" :key="_" class="flex">
+      <div class="left w-[70px] p-[10px] flex items-center">
+        <el-skeleton animated>
+          <template #template>
+            <el-skeleton-item variant="image" class="avatar w-[50px] h-[50px]" />
+          </template>
+        </el-skeleton>
+      </div>
+      <div class="main w-[calc(100%-70px)] flex-1 p-[10px]">
+        <el-skeleton animated>
+          <template #template>
+            <el-skeleton-item variant="p" class="w-[200px] h-[15px] mb-[5px] mt-[10px]" />
+            <el-skeleton-item variant="text" />
+          </template>
+        </el-skeleton>
+      </div>
+    </div>
   </div>
   <div
     v-else-if="tasks?.items?.length && tasks?.items?.length > 0"
@@ -22,12 +38,13 @@ import { defineComponent } from 'vue';
 import TaskPreview from './task/Preview.vue';
 import Player from '@/components/suno/player/Player.vue';
 import NoTasks from '@/components/common/NoTasks.vue';
-import BotPlaceholder from '@/components/common/BotPlaceholder.vue';
+import { ElSkeleton, ElSkeletonItem } from 'element-plus';
 
 export default defineComponent({
   name: 'RecentPanel',
   components: {
-    BotPlaceholder,
+    ElSkeletonItem,
+    ElSkeleton,
     TaskPreview,
     Player,
     NoTasks
