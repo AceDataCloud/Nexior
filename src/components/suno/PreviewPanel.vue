@@ -26,7 +26,7 @@
       </div>
     </div>
   </div>
-  <div v-else class="w-full h-full bg-gradient-to-b from-gray-200 to-gray-300"></div>
+  <div v-else class="w-full h-full"></div>
 </template>
 
 <script lang="ts">

@@ -10,8 +10,8 @@
     <div class="flex-1 p-[10px]">
       <el-skeleton animated>
         <template #template>
-          <el-skeleton-item variant="p" class="w-[200px] h-[20px] mb-[15px]" />
-          <el-skeleton-item variant="p" class="w-full h-[200px] max-w-[300px]" />
+          <el-skeleton-item variant="p" class="w-[200px] h-[20px] mb-[15px] block" />
+          <el-skeleton-item variant="p" class="w-full h-[200px] max-w-[300px] block" />
         </template>
       </el-skeleton>
     </div>

@@ -120,6 +120,9 @@ $padding-left: 10px;
   flex-direction: column;
   position: relative;
   gap: 5px;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
   .link {
     $height: 40px;
     height: $height;
