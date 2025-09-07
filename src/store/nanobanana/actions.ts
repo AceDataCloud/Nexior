@@ -182,4 +182,3 @@ export default {
   setTasksActive,
   getTasks
 };
-

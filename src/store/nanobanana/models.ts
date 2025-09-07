@@ -20,4 +20,3 @@ export interface INanobananaState {
     getTasks: Status;
   };
 }
-
