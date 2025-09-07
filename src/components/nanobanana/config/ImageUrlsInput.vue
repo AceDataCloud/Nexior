@@ -2,43 +2,45 @@
   <div class="field">
     <h2 class="title font-bold">{{ $t('nanobanana.name.imageUrls') }}</h2>
     <div class="upload-wrapper">
-      <el-upload
-        v-model:file-list="fileList"
-        accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
-        name="file"
-        class="value upload-wrapper"
-        :limit="5"
-        :multiple="true"
-        list-type="picture"
-        :action="uploadUrl"
-        :on-exceed="onExceed"
-        :on-error="onError"
-        :on-success="onSuccess"
-        :headers="headers"
-      >
-        <template #file="{ file }">
-          <image-preview
-            :url="file.url || (file.response as any)?.file_url"
-            :name="file.name"
-            :percentage="file.percentage"
-            @remove="fileList.splice(fileList.indexOf(file), 1)"
-          />
-        </template>
-        <div class="controls">
+      <div class="controls">
+        <el-upload
+          v-model:file-list="fileList"
+          accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
+          name="file"
+          class="value"
+          :limit="5"
+          :multiple="true"
+          :show-file-list="false"
+          :action="uploadUrl"
+          :on-exceed="onExceed"
+          :on-error="onError"
+          :on-success="onSuccess"
+          :headers="headers"
+        >
           <el-button size="small" type="primary" round>
             <font-awesome-icon icon="fa-solid fa-upload" class="mr-1" />
             {{ $t('nanobanana.button.uploadImageUrls') }}
           </el-button>
-          <info-icon :content="$t('nanobanana.description.imageUrls')" class="ml-2" />
-        </div>
-      </el-upload>
+        </el-upload>
+        <info-icon :content="$t('nanobanana.description.imageUrls')" class="ml-2" />
+      </div>
+      <div class="file-list">
+        <image-preview
+          v-for="(file, idx) in fileList"
+          :key="idx"
+          :url="(file as any).url || (file as any)?.response?.file_url"
+          :name="(file as any).name"
+          :percentage="(file as any).percentage"
+          @remove="fileList.splice(idx, 1)"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton, ElUpload, ElMessage, UploadFiles } from 'element-plus';
+import { ElButton, ElUpload, ElMessage, UploadFiles, UploadFile } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
@@ -139,5 +141,16 @@ export default defineComponent({
   .info {
     margin-left: auto;
   }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+}
+
+.file-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 </style>
