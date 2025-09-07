@@ -14,5 +14,6 @@ export * from './flux';
 export * from './hailuo';
 export * from './headshots';
 export * from './suno';
+export * from './nanobanana';
 export * from './mapping';
 export * from './surface';

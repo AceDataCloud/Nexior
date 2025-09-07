@@ -46,6 +46,8 @@ export const ROUTE_HEADSHOTS_HISTORY = 'headshots-history';
 export const ROUTE_SUNO_INDEX = 'suno-index';
 export const ROUTE_SUNO_HISTORY = 'suno-history';
 
+export const ROUTE_NANOBANANA_INDEX = 'nanobanana-index';
+
 export const ROUTE_PROFILE_INDEX = 'profile-index';
 
 export const ROUTE_CONSOLE_ROOT = 'console-root';

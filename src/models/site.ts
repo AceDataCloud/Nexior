@@ -13,6 +13,7 @@ export interface ISiteFeatures {
   hailuo?: any;
   headshots?: any;
   suno?: any;
+  nanobanana?: any;
   support?: any;
 }
 

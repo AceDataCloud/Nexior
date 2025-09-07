@@ -11,6 +11,7 @@ import { IFluxState } from '../flux/models';
 import { IHailuoState } from '../hailuo/models';
 import { IHeadshotsState } from '../headshots/models';
 import { ISunoState } from '../suno/models';
+import { INanobananaState } from '../nanobanana/models';
 
 export interface ISetting {}
 
@@ -51,6 +52,7 @@ export interface IAppState {
   hailuo: IHailuoState;
   headshots: IHeadshotsState;
   suno: ISunoState;
+  nanobanana: INanobananaState;
 }
 
 export interface IRootState extends ICommonState, IAppState {}
