@@ -1,12 +1,12 @@
 <template>
-  <div class="main">
-    <div class="config">
+  <div class="main flex flex-row flex-1">
+    <div class="config w-[300px] h-full overflow-y-scroll border-r border-[var(--el-border-color)]">
       <slot name="config" />
     </div>
-    <div class="result">
+    <div class="result h-full flex flex-col flex-1 border-r border-[var(--el-border-color)]">
       <slot name="result" />
     </div>
-    <div class="preview">
+    <div class="preview h-full w-[300px] flex flex-col">
       <slot name="preview" />
     </div>
     <el-button circle class="menu" @click="drawer = true">
@@ -41,37 +41,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.main {
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-
-  .config {
-    width: 300px;
-    height: 100%;
-    overflow-y: scroll;
-    border-right: 1px solid var(--el-border-color);
-  }
-
-  .result {
-    height: 100%;
-    flex: 1;
-    width: calc(100% - 600px);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    border-right: 1px solid var(--el-border-color);
-  }
-
-  .preview {
-    height: 100%;
-    width: 300px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-}
-
 .menu {
   display: none;
 }

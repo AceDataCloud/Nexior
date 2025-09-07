@@ -1,17 +1,19 @@
 <template>
   <el-dialog :model-value="visible" :title="$t('application.title.buyService')" width="500px" center>
-    <el-row class="paycodes">
+    <el-row class="paycodes py-[30px] w-[500px] mx-auto">
       <el-col :span="12">
         <div class="paycode wechat">
           <qr-code
             v-if="modelValue?.pay_url"
             :value="modelValue?.pay_url"
             :size="200"
-            class="qrcode m-auto"
+            class="qrcode m-auto w-[200px] h-[200px]"
             type="image/png"
             :color="{ dark: '#000000', light: '#ffffff' }"
           />
-          <p class="help-text">{{ $t('order.message.wechatPayHelp') }}</p>
+          <p class="help-text block bg-[#00c800] text-white text-[14px] h-[35px] w-[240px] text-center leading-[35px] mt-[10px] mx-auto">
+            {{ $t('order.message.wechatPayHelp') }}
+          </p>
         </div>
       </el-col>
       <el-col :span="12">
@@ -97,27 +99,3 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
-.paycodes {
-  padding: 30px 0;
-  width: 500px;
-  margin: auto;
-  .wechat {
-    .qrcode {
-      width: 200px;
-      height: 200px;
-    }
-    .help-text {
-      display: block;
-      background-color: #00c800;
-      color: white;
-      font-size: 14px;
-      height: 35px;
-      width: 240px;
-      text-align: center;
-      line-height: 35px;
-      margin: 10px auto 0 auto;
-    }
-  }
-}
-</style>

@@ -1,40 +1,40 @@
 <template>
-  <div class="preview">
+  <div class="preview w-full h-fit text-left flex flex-row mb-[15px]">
     <div class="left">
-      <el-image src="https://cdn.acedata.cloud/bcml67.png" class="avatar" />
+      <el-image src="https://cdn.acedata.cloud/bcml67.png" class="avatar bg-white p-[2px] w-[50px] h-[50px] m-[10px] rounded-full" />
     </div>
-    <div class="main">
-      <div class="bot">
+    <div class="main flex-1 w-[calc(100%-70px)] pt-[10px] pr-[10px] pb-0 pl-[10px]">
+      <div class="bot text-[16px] font-bold text-[rgb(46,204,113)]">
         {{ $t('qrart.name.qrartBot') }}
-        <span class="datetime">
+        <span class="datetime text-[12px] font-normal text-[var(--el-text-color-secondary)] ml-[10px]">
           {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
         </span>
       </div>
       <div class="info">
-        <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
+        <p v-if="modelValue?.request?.prompt" class="prompt mt-2 text-[14px] font-bold text-[var(--el-text-color-regular)] mb-[10px]">
           {{ modelValue?.request?.prompt }}
           <span v-if="!modelValue?.response"> - ({{ $t('qrart.status.pending') }}) </span>
         </p>
       </div>
       <div v-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">
-        <div class="image-wrapper">
+        <div class="image-wrapper group relative w-fit min-h-[50px] min-w-[100px]">
           <img
             v-if="modelValue?.response?.image_url"
             v-loading="!modelValue?.response?.image_url"
             :src="modelValue?.response?.image_url"
-            class="image mb-3"
+            class="image mb-3 max-h-[400px] max-w-[300px] block w-fit group-hover:brightness-[0.6]"
           />
           <el-button
             v-if="modelValue?.response?.image_url"
             type="info"
             round
-            class="btn-raw"
+            class="btn-raw absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[1000] hidden group-hover:block"
             @click="onOpenUrl(modelValue?.response?.image_url)"
           >
             {{ $t('common.button.seeRawImage') }}
           </el-button>
         </div>
-        <el-alert :closable="false" class="mt-2 success">
+        <el-alert :closable="false" class="mt-2 success border-l-[2px] border-solid border-[var(--el-color-success)]">
           <p class="description">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('qrart.name.taskId') }}:
@@ -74,7 +74,7 @@
         </el-alert>
       </div>
       <div v-if="modelValue?.response?.success === false" :class="{ content: true }">
-        <el-alert :closable="false" class="failure">
+        <el-alert :closable="false" class="failure border-l-[2px] border-solid border-[var(--el-color-danger)]">
           <template #template>
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
             {{ $t('qrart.name.failure') }}
@@ -100,7 +100,7 @@
         </el-alert>
       </div>
       <div v-if="!modelValue?.response" :class="{ content: true }">
-        <el-alert :closable="false" class="info">
+        <el-alert :closable="false" class="info border-l-[2px] border-solid border-[var(--el-color-info)]">
           <template #template>
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
             {{ $t('qrart.name.failure') }}
@@ -184,99 +184,3 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
-$left-width: 70px;
-.preview {
-  width: 100%;
-  height: fit-content;
-  text-align: left;
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 15px;
-  .left {
-    width: $left-width;
-    .avatar {
-      background-color: white;
-      padding: 2px;
-      width: 50px;
-      height: 50px;
-      margin: 10px;
-      border-radius: 50%;
-    }
-  }
-
-  .main {
-    flex: 1;
-    width: calc(100% - $left-width);
-    padding: 10px 10px 0 10px;
-
-    .bot {
-      font-size: 16px;
-      font-weight: bold;
-      color: rgb(46, 204, 113);
-      margin-bottom: 0;
-      margin-top: 0;
-      .datetime {
-        font-size: 12px;
-        font-weight: normal;
-        color: var(--el-text-color-secondary);
-        margin-left: 10px;
-      }
-    }
-
-    .info {
-      .prompt {
-        font-size: 14px;
-        font-weight: bold;
-        color: var(--el-text-color-regular);
-        margin-bottom: 10px;
-      }
-    }
-
-    .content {
-      .el-alert {
-        border-left-width: 2px;
-        border-left-style: solid;
-        &.failure {
-          border-color: var(--el-color-danger);
-        }
-        &.success {
-          border-color: var(--el-color-success);
-        }
-        &.info {
-          border-color: var(--el-color-info);
-        }
-      }
-    }
-
-    .image-wrapper {
-      position: relative;
-      width: fit-content;
-      min-height: 50px;
-      min-width: 100px;
-      .image {
-        max-height: 400px;
-        max-width: 300px;
-        display: block;
-        width: fit-content;
-      }
-      .btn-raw {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 1000;
-        display: none;
-      }
-      &:hover {
-        .image {
-          filter: brightness(0.6);
-        }
-        .btn-raw {
-          display: block;
-        }
-      }
-    }
-  }
-}
-</style>

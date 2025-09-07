@@ -15,7 +15,7 @@
       :value="qrLink"
       :width="230"
       :height="230"
-      class="qrcode"
+      class="qrcode w-[320px] h-[320px] block mx-auto mb-[20px]"
       :type="'image/jpeg'"
       :color="{ dark: '#000000ff', light: '#ffffffff' }"
     />
@@ -101,12 +101,5 @@ export default defineComponent({
 .dialog {
   width: 400px;
   height: 600px;
-}
-
-.qrcode {
-  width: 320px;
-  height: 320px;
-  display: block;
-  margin: 0 auto 20px auto;
 }
 </style>

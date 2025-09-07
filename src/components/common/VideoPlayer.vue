@@ -1,7 +1,7 @@
 <template>
-  <div class="video">
+  <div class="video max-w-[800px] max-h-[450px] rounded-[15px] overflow-hidden">
     <vue-plyr :options="mergedOptions">
-      <video controls crossorigin="anonymous" playsinline>
+      <video controls crossorigin="anonymous" playsinline class="w-full h-full aspect-[16/9]">
         <source size="1080" :src="src" type="video/mp4" />
       </video>
     </vue-plyr>
@@ -53,17 +53,3 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
-.video {
-  max-width: 800px;
-  max-height: 450px;
-  border-radius: 15px;
-  overflow: hidden;
-  .plyr--video,
-  video {
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 16 / 9;
-  }
-}
-</style>

@@ -1,5 +1,5 @@
 <template>
-  <vue-markdown v-highlight :source="content" class="markdown-body" />
+  <vue-markdown v-highlight :source="content" class="markdown-body bg-transparent pt-[3px] text-[inherit]" />
 </template>
 
 <script lang="ts">
@@ -32,9 +32,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .markdown-body {
-  background: none;
-  padding-top: 3px;
-  color: inherit;
   ol {
     list-style: initial;
   }

@@ -1,7 +1,11 @@
 <template>
-  <div class="file">
-    <div class="left">
-      <div class="wrapper">
+  <div
+    class="file cursor-pointer relative rounded-[10px] h-[50px] w-[250px] flex flex-row items-center justify-start bg-[var(--el-bg-color)]"
+  >
+    <div class="left h-[50px] w-[50px] flex items-center justify-center">
+      <div
+        class="wrapper relative w-[35px] h-[35px] flex items-center justify-center rounded-[10px] text-white bg-[#10a37f] m-auto"
+      >
         <font-awesome-icon icon="fa-regular fa-file-alt" />
         <el-progress
           v-show="percentage && percentage < 100"
@@ -9,13 +13,19 @@
           :stroke-width="3"
           :percentage="percentage"
           :width="25"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[25px] h-[25px] z-[10] m-auto"
         />
       </div>
     </div>
-    <div class="right">
+    <div
+      class="right flex-1 h-[50px] flex items-center justify-start pl-[2px] text-[14px] text-[var(--el-text-color-primary)] truncate"
+    >
       <span class="text-xs font-bold truncate">{{ name }}</span>
     </div>
-    <div v-if="closable" class="close">
+    <div
+      v-if="closable"
+      class="close absolute cursor-pointer top-[5px] right-[5px] bg-[rgba(0,0,0,0.7)] text-white w-[15px] rounded-full h-[15px] flex text-[10px] text-center items-center justify-center"
+    >
       <font-awesome-icon icon="fa-solid fa-xmark" class="icon icon-close" @click="$emit('remove')" />
     </div>
   </div>
@@ -55,74 +65,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.file {
-  cursor: pointer;
-  position: relative;
-  border-radius: 10px;
-  height: 50px;
-  width: 250px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: var(--el-bg-color);
-  .el-progress {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 25px;
-    height: 25px;
-    z-index: 10;
-    margin: auto;
-  }
-  .left {
-    height: 50px;
-    width: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .wrapper {
-      position: relative;
-      width: 35px;
-      height: 35px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 10px;
-      color: white;
-      background-color: #10a37f;
-      margin: auto;
-    }
-  }
-  .right {
-    width: calc(100% - 60px);
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding-left: 2px;
-    font-size: 14px;
-    color: var(--el-text-color-primary);
-    text-overflow: ellipsis;
-  }
-  .close {
-    position: absolute;
-    cursor: pointer;
-    top: 5px;
-    right: 5px;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    width: 15px;
-    border-radius: 50%;
-    height: 15px;
-    display: flex;
-    font-size: 10px;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-  }
-}
-</style>

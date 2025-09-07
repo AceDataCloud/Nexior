@@ -1,5 +1,8 @@
 <template>
-  <font-awesome-icon :icon="icon" class="icon" />
+  <font-awesome-icon
+    :icon="icon"
+    class="icon text-[12px] border rounded-full py-[5px] px-[6px] cursor-pointer bg-inherit text-[var(--el-text-color-primary)] border-[var(--el-border-color)]"
+  />
 </template>
 
 <script lang="ts">
@@ -25,14 +28,3 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
-.icon {
-  font-size: 12px;
-  border: 1px solid var(--el-border-color);
-  border-radius: 50%;
-  padding: 5px 6px;
-  cursor: pointer;
-  background-color: inherit;
-  color: var(--el-text-color-primary);
-}
-</style>

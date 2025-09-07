@@ -1,28 +1,28 @@
 <template>
-  <div ref="panel" class="panel recent" @scroll="onHandleScroll">
-    <div v-if="tasks?.items === undefined" class="tasks">
-      <div v-for="_ in 3" :key="_" class="task placeholder">
-        <div class="left">
+  <div ref="panel" class="panel recent flex flex-col items-center justify-center h-full w-full overflow-y-auto" @scroll="onHandleScroll">
+    <div v-if="tasks?.items === undefined" class="tasks w-full">
+      <div v-for="_ in 3" :key="_" class="task placeholder flex flex-row w-full text-left mb-[15px]">
+        <div class="left w-[70px] p-[10px]">
           <el-skeleton animated>
             <template #template>
-              <el-skeleton-item variant="image" class="avatar" />
+              <el-skeleton-item variant="image" class="avatar w-[50px] h-[50px] rounded-full" />
             </template>
           </el-skeleton>
         </div>
-        <div class="main">
+        <div class="main flex-1 p-[10px] mb-[10px]">
           <el-skeleton animated>
             <template #template>
-              <el-skeleton-item variant="p" class="title" />
-              <el-skeleton-item variant="image" class="icon" />
+              <el-skeleton-item variant="p" class="title block w-[200px] h-[20px] mb-[15px]" />
+              <el-skeleton-item variant="image" class="icon flex h-[200px] w-[300px]" />
             </template>
           </el-skeleton>
         </div>
       </div>
     </div>
-    <div v-else-if="tasks?.items?.length && tasks?.items?.length > 0" class="tasks">
-      <task-preview v-for="(task, taskIndex) in tasks?.items" :key="taskIndex" :model-value="task" class="preview" />
+    <div v-else-if="tasks?.items?.length && tasks?.items?.length > 0" class="tasks w-full">
+      <task-preview v-for="(task, taskIndex) in tasks?.items" :key="taskIndex" :model-value="task" class="preview mr-[15px]" />
     </div>
-    <p v-if="tasks?.items?.length === 0" class="description">
+    <p v-if="tasks?.items?.length === 0" class="description text-left text-[14px] text-[var(--el-text-color-secondary)]">
       {{ $t('qrart.message.noTasks') }}
     </p>
   </div>
@@ -67,75 +67,3 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
-.panel {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  &.recent {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    overflow-y: auto;
-    flex-direction: column;
-    .preview {
-      margin-right: 15px;
-    }
-    .description {
-      text-align: left;
-      font-size: 14px;
-      color: var(--el-text-color-secondary);
-    }
-    .tasks {
-      width: 100%;
-      .task {
-        margin-bottom: 15px;
-        width: 100%;
-        height: fit-content;
-        text-align: left;
-
-        &.placeholder {
-          display: flex;
-          flex-direction: row;
-          .left {
-            width: 70px;
-            padding: 10px;
-
-            .avatar {
-              width: 50px;
-              height: 50px;
-              border-radius: 50%;
-            }
-          }
-
-          .main {
-            width: calc(100% - 70px);
-            flex: 1;
-            padding: 10px;
-            margin-bottom: 10px;
-
-            .icon {
-              display: flex;
-              height: 200px;
-              width: 300px;
-            }
-
-            .title {
-              display: block;
-              width: 200px;
-              height: 20px;
-              margin-bottom: 15px;
-            }
-          }
-        }
-
-        .operations {
-          height: fit-content !important;
-        }
-      }
-    }
-  }
-}
-</style>

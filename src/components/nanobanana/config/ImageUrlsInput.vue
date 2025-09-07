@@ -1,8 +1,8 @@
 <template>
-  <div class="field">
-    <h2 class="title font-bold">{{ $t('nanobanana.name.imageUrls') }}</h2>
-    <div class="upload-wrapper">
-      <div class="controls">
+  <div class="field flex items-center justify-between">
+    <h2 class="title font-bold text-[14px] mb-[10px]">{{ $t('nanobanana.name.imageUrls') }}</h2>
+    <div class="upload-wrapper flex flex-col items-start gap-[8px]">
+      <div class="controls flex items-center">
         <el-upload
           v-model:file-list="fileList"
           accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
@@ -26,7 +26,7 @@
       </div>
     </div>
   </div>
-  <div class="file-list">
+  <div class="file-list flex flex-wrap gap-[10px]">
     <image-preview
       v-for="(file, idx) in fileList"
       :key="idx"
@@ -118,36 +118,3 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
-.field {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  .title {
-    font-size: 14px;
-    margin: 0 0 10px 0;
-  }
-  .upload-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-  .info {
-    margin-left: auto;
-  }
-}
-
-.controls {
-  display: flex;
-  align-items: center;
-}
-
-.file-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-</style>
