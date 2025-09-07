@@ -1,14 +1,18 @@
 <template>
-  <div class="image">
-    <img class="size-10" :src="url" :alt="name" />
+  <div class="image w-[50px] h-[50px] relative rounded-[var(--el-border-radius-base)] overflow-hidden">
+    <img class="w-full h-full object-cover" :src="url" :alt="name" />
     <el-progress
       v-show="percentage && percentage < 100"
       type="circle"
       :stroke-width="3"
       :percentage="percentage"
       :width="30"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30px] h-[30px] z-[10] m-auto"
     />
-    <div v-if="closable" class="close">
+    <div
+      v-if="closable"
+      class="close absolute cursor-pointer top-[5px] right-[5px] bg-[rgba(0,0,0,0.7)] text-white w-[15px] h-[15px] rounded-full flex text-[10px] text-center items-center justify-center"
+    >
       <font-awesome-icon icon="fa-solid fa-xmark" class="icon icon-close" @click.stop="$emit('remove')" />
     </div>
   </div>
@@ -48,44 +52,3 @@ export default defineComponent({
   emits: ['remove']
 });
 </script>
-
-<style lang="scss" scoped>
-.image {
-  width: 50px;
-  height: 50px;
-  position: relative;
-  border-radius: var(--el-border-radius-base);
-  overflow: hidden;
-  .close {
-    position: absolute;
-    cursor: pointer;
-    top: 5px;
-    right: 5px;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    width: 15px;
-    border-radius: 50%;
-    height: 15px;
-    display: flex;
-    font-size: 10px;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-  }
-  .el-progress {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 30px;
-    height: 30px;
-    z-index: 10;
-    margin: auto;
-  }
-  img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
-}
-</style>

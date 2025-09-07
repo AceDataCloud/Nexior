@@ -1,11 +1,11 @@
 <template>
-  <div class="main">
-    <div class="side">
+  <div class="main flex flex-row flex-1">
+    <div class="side w-[250px] h-full overflow-y-scroll border-r border-[var(--el-border-color)]">
       <slot name="side">
         <side-panel @change-conversation="onChangeConversation" />
       </slot>
     </div>
-    <div class="chat">
+    <div class="chat h-full pt-[45px] flex-1 flex flex-col relative">
       <slot name="chat" />
     </div>
     <el-button round class="menu" @click="drawer = true">
@@ -47,29 +47,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.main {
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-  .side {
-    width: 250px;
-    height: 100%;
-    overflow-y: scroll;
-    border-right: 1px solid var(--el-border-color);
-  }
-
-  .chat {
-    height: 100%;
-    padding: 45px 0 0 0;
-    flex: 1;
-    width: calc(100% - 250px);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-  }
-}
-
 .menu {
   display: none;
 }

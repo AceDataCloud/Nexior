@@ -1,10 +1,10 @@
 <template>
-  <el-container class="wrapper">
-    <el-header class="header">
+  <el-container class="wrapper min-h-[100vh]">
+    <el-header class="header p-0 h-auto">
       <top-header />
     </el-header>
     <el-main class="main"> <router-view /> </el-main>
-    <el-footer class="footer">
+    <el-footer class="footer p-0 h-auto">
       <bottom-footer />
     </el-footer>
   </el-container>
@@ -28,19 +28,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.wrapper {
-  min-height: 100vh;
-}
-
-.header {
-  padding: 0;
-  height: initial;
-}
-
-.footer {
-  padding: 0;
-  height: initial;
-}
-</style>

@@ -1,6 +1,9 @@
 <template>
   <el-tooltip effect="dark" :content="content" placement="top">
-    <font-awesome-icon icon="fa-solid fa-info" class="icon icon-rotate" />
+    <font-awesome-icon
+      icon="fa-solid fa-info"
+      class="icon icon-rotate inline-block w-[20px] h-[20px] border-[3px] border-solid border-[#aaa] rounded-full text-[10px] p-[5px] scale-[0.4] cursor-pointer text-[#aaa] -mr-[5px]"
+    />
   </el-tooltip>
 </template>
 
@@ -23,19 +26,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.icon {
-  display: inline-block;
-  width: 20px;
-  border: 3px solid #aaa;
-  border-radius: 50%;
-  height: 20px;
-  font-size: 10px;
-  padding: 5px;
-  transform: scale(0.4);
-  cursor: pointer;
-  color: #aaa;
-  margin-right: -5px;
-}
-</style>

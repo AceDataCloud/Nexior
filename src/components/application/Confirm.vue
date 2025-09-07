@@ -6,15 +6,21 @@
     center
     @close="$emit('update:visible', false)"
   >
-    <div class="content">
+    <div class="content py-[10px] px-[40px]">
       <p class="my-4">
         {{ $t('application.message.notApplied') }}
       </p>
       <el-divider class="my-2" />
-      <div class="policy">
-        <el-checkbox v-model="checked" size="large" class="policy-checkbox" />
-        <span class="policy-title"> {{ $t('application.message.readPolicy') }} </span>
-        <a class="policy-title highlight" target="_blank" :href="getBaseUrlPlatform() + '/terms'">
+      <div class="policy mb-[10px]">
+        <el-checkbox v-model="checked" size="large" class="policy-checkbox mr-[10px]" />
+        <span class="policy-title text-[12px] relative -bottom-[3px]">
+          {{ $t('application.message.readPolicy') }}
+        </span>
+        <a
+          class="policy-title text-[12px] relative -bottom-[3px] text-[var(--el-color-primary)] cursor-pointer no-underline"
+          target="_blank"
+          :href="getBaseUrlPlatform() + '/terms'"
+        >
           &nbsp;{{ $t('application.message.policy') }}
         </a>
       </div>
@@ -66,25 +72,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.content {
-  padding: 10px 40px;
-  .policy {
-    margin-bottom: 10px;
-    .policy-checkbox {
-      margin-right: 10px !important;
-    }
-    .policy-title {
-      font-size: 12px;
-      position: relative;
-      bottom: 3px;
-      &.highlight {
-        color: var(--el-color-primary);
-        cursor: pointer;
-        text-decoration: none;
-      }
-    }
-  }
-}
-</style>

@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-main> <router-view /> </el-main>
+    <el-main class="h-[100vh]"> <router-view /> </el-main>
   </el-container>
 </template>
 
@@ -16,9 +16,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.el-main {
-  height: calc(100vh);
-}
-</style>

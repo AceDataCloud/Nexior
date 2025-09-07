@@ -1,9 +1,9 @@
 <template>
-  <div class="main">
-    <div class="config">
+  <div class="main flex flex-row flex-1">
+    <div class="config w-[300px] h-full">
       <slot name="config" />
     </div>
-    <div class="result">
+    <div class="result h-full p-[15px] flex-1 flex flex-col">
       <slot name="result" />
     </div>
     <el-button circle class="menu" @click="drawer = true">
@@ -36,26 +36,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.main {
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-  .config {
-    width: 300px;
-    height: 100%;
-  }
-
-  .result {
-    height: 100%;
-    padding: 15px;
-    flex: 1;
-    width: calc(100% - 300px);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-}
-
 .menu {
   display: none;
 }

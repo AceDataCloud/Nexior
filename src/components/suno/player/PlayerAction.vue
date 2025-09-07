@@ -29,5 +29,3 @@ const duration = computed({
     })
 });
 </script>
-
-<style lang="scss"></style>

@@ -84,11 +84,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.paycodes {
-  padding: 30px 0;
-  width: 500px;
-  margin: auto;
-}
-</style>

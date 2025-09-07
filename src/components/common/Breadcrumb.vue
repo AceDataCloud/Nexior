@@ -1,5 +1,5 @@
 <template>
-  <el-breadcrumb separator="/" class="breadcrumb">
+  <el-breadcrumb separator="/" class="breadcrumb p-[10px]">
     <el-breadcrumb-item :to="{ path: '/' }">{{ $t('common.nav.home') }}</el-breadcrumb-item>
     <el-breadcrumb-item v-for="(item, itemIndex) in items" :key="itemIndex" :to="{ name: item.name }">{{
       item.meta.title
@@ -23,9 +23,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.breadcrumb {
-  padding: 10px;
-}
-</style>

@@ -1,9 +1,9 @@
 <template>
-  <div class="main">
-    <div class="config">
+  <div class="main flex-1 h-full flex flex-row">
+    <div class="config w-[300px] h-full flex flex-col border-r border-[var(--el-border-color)]">
       <slot name="config" />
     </div>
-    <div class="results">
+    <div class="results flex-1 h-full flex flex-col">
       <slot name="results" />
     </div>
     <el-button circle class="menu" @click="drawer = true">
@@ -37,25 +37,8 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .main {
-  flex: 1;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
   .menu {
     display: none;
-  }
-  .config {
-    width: 300px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    border-right: 1px solid var(--el-border-color);
-  }
-  .results {
-    flex: 1;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
   }
 }
 
