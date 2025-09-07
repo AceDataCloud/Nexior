@@ -32,6 +32,7 @@ export const I18N_SCOPES = [
   'veo',
   'pixverse',
   'flux',
+  'nanobanana',
   'hailuo',
   'headshots',
   'suno',

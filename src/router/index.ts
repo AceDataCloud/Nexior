@@ -16,6 +16,7 @@ import flux from './flux';
 import hailuo from './hailuo';
 import headshots from './headshots';
 import suno from './suno';
+import nanobanana from './nanobanana';
 import site from './site';
 import profile from './profile';
 
@@ -44,6 +45,7 @@ const routes = [
   hailuo,
   headshots,
   suno,
+  nanobanana,
   midjourney,
   distribution,
   site,

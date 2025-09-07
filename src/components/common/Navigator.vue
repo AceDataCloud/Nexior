@@ -45,7 +45,8 @@ import {
   ROUTE_PIXVERSE_INDEX,
   ROUTE_PIXVERSE_HISTORY,
   ROUTE_VEO_INDEX,
-  ROUTE_VEO_HISTORY
+  ROUTE_VEO_HISTORY,
+  ROUTE_NANOBANANA_INDEX
 } from '@/router/constants';
 import { CHAT_MODEL_ICON_CHATGPT, CHAT_MODEL_ICON_DEEPSEEK, CHAT_MODEL_ICON_GROK } from '@/constants/chat';
 import Logo from './Logo.vue';
@@ -130,6 +131,17 @@ export default defineComponent({
           displayName: this.$t('common.nav.flux'),
           logo: 'https://cdn.acedata.cloud/ogm2oa.png',
           routes: [ROUTE_FLUX_INDEX]
+        });
+      }
+      // Add nanobanana's leftmost icon
+      if (this.$store?.state?.site?.features?.nanobanana?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_NANOBANANA_INDEX
+          },
+          displayName: this.$t('common.nav.nanobanana'),
+          logo: 'https://cdn.acedata.cloud/859plc.jpg',
+          routes: [ROUTE_NANOBANANA_INDEX]
         });
       }
       // Add qrart's leftmost icon

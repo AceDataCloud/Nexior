@@ -6,17 +6,28 @@
         v-model:file-list="fileList"
         accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
         name="file"
-        class="value"
-        :show-file-list="true"
+        class="value upload-wrapper"
         :limit="2"
         :multiple="true"
+        list-type="picture"
         :action="uploadUrl"
         :on-exceed="onExceed"
         :on-error="onError"
         :on-success="onSuccess"
         :headers="headers"
       >
-        <el-button size="small" type="primary" round>{{ $t('headshots.button.uploadImageUrls') }}</el-button>
+        <template #file="{ file }">
+          <image-preview
+            :url="file.url || (file.response as any)?.file_url"
+            :name="file.name"
+            :percentage="file.percentage"
+            @remove="fileList.splice(fileList.indexOf(file), 1)"
+          />
+        </template>
+        <el-button size="small" type="primary" round>
+          <font-awesome-icon icon="fa-solid fa-upload" class="mr-1" />
+          {{ $t('headshots.button.uploadImageUrls') }}
+        </el-button>
       </el-upload>
     </div>
     <info-icon :content="$t('headshots.description.endImageUrls')" class="info" />
@@ -26,8 +37,10 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElButton, ElUpload, ElMessage, UploadFiles } from 'element-plus';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
+import ImagePreview from '@/components/common/ImagePreview.vue';
 export const DEFAULT_CONTENT = '';
 
 interface IData {
@@ -40,7 +53,9 @@ export default defineComponent({
   components: {
     ElUpload,
     ElButton,
-    InfoIcon
+    InfoIcon,
+    ImagePreview,
+    FontAwesomeIcon
   },
   data(): IData {
     return {
@@ -116,7 +131,10 @@ export default defineComponent({
     margin-left: 60px; // Adjust this value as needed
   }
   .upload-wrapper {
-    transform: translate(-26px, 5px); // Move left and down
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
   .info {
     margin-left: auto; // Pushes the info icon to the right

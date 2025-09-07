@@ -11,6 +11,7 @@ import fluxState from '../flux/state';
 import hailuoState from '../hailuo/state';
 import sunoState from '../suno/state';
 import headshotsState from '../headshots/state';
+import nanobananaState from '../nanobanana/state';
 
 export default (): IRootState => {
   return {
@@ -46,6 +47,7 @@ export default (): IRootState => {
     flux: fluxState(),
     hailuo: hailuoState(),
     suno: sunoState(),
-    headshots: headshotsState()
+    headshots: headshotsState(),
+    nanobanana: nanobananaState()
   };
 };
