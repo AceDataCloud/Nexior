@@ -9,7 +9,7 @@
     <el-button circle class="menu" @click="drawer = true">
       <font-awesome-icon icon="fa-solid fa-magic" />
     </el-button>
-    <el-drawer v-model="drawer" :with-header="false" size="350px">
+    <el-drawer v-model="drawer" direction="ltr" :with-header="false" size="350px">
       <slot name="config" />
     </el-drawer>
   </div>
