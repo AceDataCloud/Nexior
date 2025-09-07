@@ -11,7 +11,9 @@
             type="image/png"
             :color="{ dark: '#000000', light: '#ffffff' }"
           />
-          <p class="help-text block bg-[#00c800] text-white text-[14px] h-[35px] w-[240px] text-center leading-[35px] mt-[10px] mx-auto">
+          <p
+            class="help-text block bg-[#00c800] text-white text-[14px] h-[35px] w-[240px] text-center leading-[35px] mt-[10px] mx-auto"
+          >
             {{ $t('order.message.wechatPayHelp') }}
           </p>
         </div>
@@ -98,4 +100,3 @@ export default defineComponent({
   }
 });
 </script>
-

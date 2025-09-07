@@ -1,7 +1,10 @@
 <template>
   <div class="preview w-full h-fit text-left flex flex-row mb-[15px]">
     <div class="left">
-      <el-image src="https://cdn.acedata.cloud/bcml67.png" class="avatar bg-white p-[2px] w-[50px] h-[50px] m-[10px] rounded-full" />
+      <el-image
+        src="https://cdn.acedata.cloud/bcml67.png"
+        class="avatar bg-white p-[2px] w-[50px] h-[50px] m-[10px] rounded-full"
+      />
     </div>
     <div class="main flex-1 w-[calc(100%-70px)] pt-[10px] pr-[10px] pb-0 pl-[10px]">
       <div class="bot text-[16px] font-bold text-[rgb(46,204,113)]">
@@ -11,7 +14,10 @@
         </span>
       </div>
       <div class="info">
-        <p v-if="modelValue?.request?.prompt" class="prompt mt-2 text-[14px] font-bold text-[var(--el-text-color-regular)] mb-[10px]">
+        <p
+          v-if="modelValue?.request?.prompt"
+          class="prompt mt-2 text-[14px] font-bold text-[var(--el-text-color-regular)] mb-[10px]"
+        >
           {{ modelValue?.request?.prompt }}
           <span v-if="!modelValue?.response"> - ({{ $t('qrart.status.pending') }}) </span>
         </p>
@@ -183,4 +189,3 @@ export default defineComponent({
   }
 });
 </script>
-
