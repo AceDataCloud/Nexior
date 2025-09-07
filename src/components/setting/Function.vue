@@ -15,7 +15,8 @@
         'pixverse',
         'flux',
         'hailuo',
-        'headshots'
+        'headshots',
+        'nanobanana'
       ]"
       :key="featureIndex"
       :label="$t('site.field.features' + feature.charAt(0).toUpperCase() + feature.slice(1))"
