@@ -61,7 +61,7 @@
   },
   "button.alert": {
     "message": "경고",
-    "description": "버튼 텍스트, 특정 내용에 대한 경고를 표시하는 데 사용"
+    "description": "버튼 텍스트, 특정 내용을 경고하는 데 사용"
   },
   "button.info": {
     "message": "정보",
@@ -72,12 +72,12 @@
     "description": "버튼 텍스트, 특정 내용을 게시하는 데 사용"
   },
   "button.watch": {
-    "message": "보기",
-    "description": "버튼 텍스트, 특정 내용을 보는 데 사용"
+    "message": "시청",
+    "description": "버튼 텍스트, 특정 내용을 시청하는 데 사용"
   },
   "button.verify": {
     "message": "실명 인증",
-    "description": "버튼 텍스트, 사용자가 실명 인증을 수행하도록 하는 데 사용"
+    "description": "버튼 텍스트, 사용자가 실명 인증을 하도록 하는 데 사용"
   },
   "button.profile": {
     "message": "프로필",
@@ -85,7 +85,7 @@
   },
   "button.console": {
     "message": "콘솔",
-    "description": "버튼 텍스트, 웹 페이지에서 특정 내용을 제어하기 위한 콘솔 페이지를 표시하는 데 사용"
+    "description": "버튼 텍스트, 웹 페이지의 특정 내용을 제어하기 위해 콘솔 페이지를 표시하는 데 사용"
   },
   "button.learn": {
     "message": "학습",
@@ -125,7 +125,7 @@
   },
   "button.acquire": {
     "message": "획득",
-    "description": "버튼 텍스트, 사용자가 API 서비스의 토큰 또는 키를 획득하도록 하는 데 사용"
+    "description": "버튼 텍스트, 사용자가 API 서비스의 토큰이나 키를 획득하도록 하는 데 사용"
   },
   "button.fillExample": {
     "message": "예제 작성",
@@ -149,7 +149,7 @@
   },
   "button.referralEarnings": {
     "message": "추천 수익",
-    "description": "버튼 텍스트, 추천 수익을 표시하며, 사용자가 다른 사람을 초대하여 서비스를 사용하게 하여 수익을 얻을 수 있음을 나타냄"
+    "description": "버튼 텍스트, 추천 수익을 표시하며, 사용자가 다른 사람을 초대하여 서비스를 이용하게 하여 수익을 얻을 수 있음을 나타냄"
   },
   "button.finish": {
     "message": "완료",
@@ -205,7 +205,7 @@
   },
   "entity.order": {
     "message": "주문",
-    "description": "엔티티의 주문, 주문에는 금액과 서비스 정보가 포함되며, 사용자가 비용을 지불해야 함"
+    "description": "엔티티의 주문, 주문에는 금액과 서비스 정보가 포함되며, 사용자가 지불해야 함"
   },
   "message.noTasks": {
     "message": "이력 작업이 없습니다. 새로운 작업을 시작하세요～",
@@ -245,7 +245,7 @@
   },
   "message.free": {
     "message": "무료",
-    "description": "서비스가 무료임을 표시하는 메시지, 사용자가 비용을 지불할 필요가 없음을 나타냄"
+    "description": "서비스가 무료임을 표시하는 메시지, 사용자가 지불할 필요가 없음을 나타냄"
   },
   "message.startPrice": {
     "message": "시작 가격",
@@ -280,8 +280,8 @@
     "description": "웹사이트 내비게이션 바의 텍스트, 내용 페이지를 표시"
   },
   "nav.category": {
-    "message": "카테고리",
-    "description": "웹사이트 내비게이션 바의 텍스트, 카테고리 페이지를 표시"
+    "message": "분류",
+    "description": "웹사이트 내비게이션 바의 텍스트, 분류 페이지를 표시"
   },
   "nav.service": {
     "message": "서비스",
@@ -350,6 +350,10 @@
   "nav.flux": {
     "message": "Flux",
     "description": "웹사이트 내비게이션 바의 텍스트로, Flux 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 마시고 'Flux'로 유지해야 합니다."
+  },
+  "nav.nanobanana": {
+    "message": "Nano Banana",
+    "description": "웹사이트 내비게이션 바의 텍스트로, Nano Banana 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 마시고 'Nano Banana'로 유지해야 합니다."
   },
   "nav.luma": {
     "message": "Luma",
@@ -465,15 +469,15 @@
   },
   "about.title1": {
     "message": "연락하기",
-    "description": "연락처 정보를 표시하는 부분의 제목입니다."
+    "description": "연락 정보 부분의 제목입니다."
   },
   "about.title2": {
     "message": "자원",
-    "description": "링크를 표시하는 부분의 제목입니다."
+    "description": "링크 부분의 제목입니다."
   },
   "about.title3": {
     "message": "링크",
-    "description": "지원 정보를 표시하는 부분의 제목입니다."
+    "description": "지원 정보 부분의 제목입니다."
   },
   "about.address": {
     "message": "미국 델라웨어주 미들타운 N Broad St, 201호",
@@ -481,11 +485,11 @@
   },
   "about.email": {
     "message": "office@acedata.cloud",
-    "description": "회사의 이메일입니다."
+    "description": "회사의 이메일"
   },
   "about.link1": {
     "message": "서비스",
-    "description": "서비스 페이지의 링크입니다."
+    "description": "서비스 페이지의 링크"
   },
   "about.link2": {
     "message": "문서",
@@ -516,8 +520,8 @@
     "description": "서비스 약관 페이지의 링크"
   },
   "about.link9": {
-    "message": "개인정보 보호정책",
-    "description": "개인정보 보호정책 페이지의 링크"
+    "message": "개인정보 처리방침",
+    "description": "개인정보 처리방침 페이지의 링크"
   },
   "theme.light": {
     "message": "라이트 모드",
@@ -529,7 +533,7 @@
   },
   "theme.system": {
     "message": "시스템",
-    "description": "시스템 테마의 이름, 시스템 설정에 따라 자동으로 테마를 전환함을 나타냄"
+    "description": "시스템 설정에 따라 자동으로 테마를 전환하는 시스템 테마의 이름"
   },
   "settings.general": {
     "message": "일반 설정",

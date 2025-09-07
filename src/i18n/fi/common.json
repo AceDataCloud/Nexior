@@ -76,8 +76,8 @@
     "description": "Painikkeen teksti, jota käytetään joidenkin asioiden katsomiseen"
   },
   "button.verify": {
-    "message": "Tunnistautuminen",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän tunnistautumiseen"
+    "message": "Tunnista itsesi",
+    "description": "Painikkeen teksti, jota käytetään käyttäjän tunnistamiseen"
   },
   "button.profile": {
     "message": "Profiili",
@@ -88,7 +88,7 @@
     "description": "Painikkeen teksti, jota käytetään konsolisivun näyttämiseen verkkosivustolla"
   },
   "button.learn": {
-    "message": "Opi",
+    "message": "Opettele",
     "description": "Painikkeen teksti, jota käytetään käyttäjän opettamiseen"
   },
   "button.buy": {
@@ -133,7 +133,7 @@
   },
   "button.buyMore": {
     "message": "Osta lisää",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän lisäämään ostamiseen"
+    "description": "Painikkeen teksti, jota käytetään käyttäjän lisää ostamiseen"
   },
   "button.update": {
     "message": "Päivitä",
@@ -153,7 +153,7 @@
   },
   "button.finish": {
     "message": "Valmis",
-    "description": "Painikkeen teksti, jota käytetään joidenkin asioiden loppuunsaattamiseen"
+    "description": "Painikkeen teksti, jota käytetään joidenkin asioiden viimeistelemiseen"
   },
   "entity.id": {
     "message": "ID",
@@ -205,7 +205,7 @@
   },
   "entity.order": {
     "message": "Tilaus",
-    "description": "Entiteetin tilaus, joka sisältää summan ja palvelutiedot, joita käyttäjän on maksettava"
+    "description": "Entiteetin tilaus, joka sisältää summan ja palvelutiedot, joista käyttäjän on maksettava"
   },
   "message.noTasks": {
     "message": "Ei historiallisia tehtäviä, aloita uusi tehtävä～",
@@ -232,8 +232,8 @@
     "description": "Viesti, joka vahvistaa, haluaako käyttäjä poistaa jotain"
   },
   "message.expiredAt": {
-    "message": "Erääntymisaika",
-    "description": "Näyttää palvelun erääntymisajan"
+    "message": "Vanhentumisaika",
+    "description": "Näyttää palvelun vanhentumisajan"
   },
   "message.alert": {
     "message": "Varoitus",
@@ -245,11 +245,11 @@
   },
   "message.free": {
     "message": "Ilmainen",
-    "description": "Viesti, joka ilmoittaa, että palvelu on ilmainen, mikä tarkoittaa, että käyttäjän ei tarvitse maksaa"
+    "description": "Viesti, joka ilmoittaa, että palvelu on ilmainen, eikä käyttäjän tarvitse maksaa"
   },
   "message.startPrice": {
     "message": "Alkaen hinta",
-    "description": "Viesti, joka näyttää palvelun vähimmäishinnan"
+    "description": "Viesti, joka näyttää palvelun alhaisimman hinnan"
   },
   "message.joinDiscord": {
     "message": "Liity Discordiin",
@@ -308,8 +308,8 @@
     "description": "Verkkosivuston navigointipalkin teksti, joka näyttää dokumenttisivun"
   },
   "nav.console": {
-    "message": "Ohjauspaneeli",
-    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää ohjauspaneelisivun"
+    "message": "Konsoli",
+    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää konsolisivun"
   },
   "nav.chatgpt": {
     "message": "ChatGPT",
@@ -350,6 +350,10 @@
   "nav.flux": {
     "message": "Flux",
     "description": "网站导航栏中的文本，用于显示Flux页面，请不要翻译此字段，必须保持为'Flux'"
+  },
+  "nav.nanobanana": {
+    "message": "Nano Banana",
+    "description": "网站导航栏中的文本，用于显示Nano Banana页面，请不要翻译此字段，必须保持为'Nano Banana'"
   },
   "nav.luma": {
     "message": "Luma",
@@ -396,7 +400,7 @@
     "description": "网站导航栏中的文本，用于显示设置页面"
   },
   "nav.headshots": {
-    "message": "AI-passikuvat",
+    "message": "AI Passikuvat",
     "description": "网站导航栏中的文本，用于显示站点配置页面"
   },
   "nav.locale": {
@@ -481,15 +485,15 @@
   },
   "about.email": {
     "message": "office@acedata.cloud",
-    "description": "公司的电子邮件"
+    "description": "Yrityksen sähköposti"
   },
   "about.link1": {
     "message": "Palvelut",
-    "description": "服务页面的链接"
+    "description": "Palvelusivun linkki"
   },
   "about.link2": {
-    "message": "Dokumentti",
-    "description": "Dokumenttisivun linkki"
+    "message": "Dokumentaatio",
+    "description": "Dokumentaatiosivun linkki"
   },
   "about.link3": {
     "message": "Konsoli",
@@ -512,12 +516,12 @@
     "description": "Tukisivun linkki"
   },
   "about.link8": {
-    "message": "Käyttöehdot",
-    "description": "Käyttöehdot-sivun linkki"
+    "message": "Palveluehdot",
+    "description": "Palveluehtosivun linkki"
   },
   "about.link9": {
     "message": "Tietosuojakäytäntö",
-    "description": "Tietosuojakäytäntö-sivun linkki"
+    "description": "Tietosuojakäytännön sivun linkki"
   },
   "theme.light": {
     "message": "Vaalea",

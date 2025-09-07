@@ -107,6 +107,10 @@
     "message": "Flux",
     "description": "Affiché comme titre dans la zone d'édition"
   },
+  "field.featuresNanobanana": {
+    "message": "Banane Nano",
+    "description": "Affiché comme titre dans la zone d'édition"
+  },
   "field.featuresSupport": {
     "message": "Support client",
     "description": "Affiché comme titre dans la zone d'édition"
@@ -189,27 +193,27 @@
   },
   "placeholder.description": {
     "message": "Veuillez entrer la description du site",
-    "description": "Affiché comme titre dans la zone d'édition"
+    "description": "Texte affiché comme titre dans la zone d'édition"
   },
   "placeholder.keywords": {
     "message": "Veuillez entrer les mots-clés du site",
-    "description": "Texte affiché dans le titre de la zone d'édition"
+    "description": "Texte affiché comme titre dans la zone d'édition"
   },
   "placeholder.editDistributionDefaultInviterId": {
     "message": "Veuillez entrer l'ID de l'inviteur par défaut",
-    "description": "Texte affiché dans le titre de la zone d'édition"
+    "description": "Texte affiché comme titre dans la zone d'édition"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "Veuillez entrer l'ID de l'inviteur obligatoire",
-    "description": "Texte affiché dans le titre de la zone d'édition"
+    "message": "Veuillez entrer l'ID de l'inviteur forcé",
+    "description": "Texte affiché comme titre dans la zone d'édition"
   },
   "message.uploadImageExceed": {
     "message": "L'image téléchargée dépasse la limite",
     "description": "Alerte lorsque l'image téléchargée dépasse la limite"
   },
   "message.uploadImageError": {
-    "message": "Erreur de téléchargement de l'image",
-    "description": "Alerte en cas d'erreur de téléchargement de l'image"
+    "message": "Erreur lors du téléchargement de l'image",
+    "description": "Alerte en cas d'erreur lors du téléchargement de l'image"
   },
   "message.editLogoTip": {
     "message": "Taille recommandée : 200*60px",
@@ -232,12 +236,12 @@
     "description": "Alerte pour conserver au moins un administrateur"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "ID utilisateur de l'inviteur par défaut. Si le lien de distribution ne contient pas le paramètre inviter_id, cet ID utilisateur sera utilisé par défaut comme invitateur.",
-    "description": "Alerte pour l'ID de l'inviteur par défaut"
+    "message": "ID utilisateur de l'invitateur par défaut. Si le lien de distribution ne contient pas le paramètre inviter_id, cet ID utilisateur sera utilisé par défaut comme invitateur.",
+    "description": "Alerte pour l'ID de l'invitateur par défaut"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID utilisateur de l'inviteur obligatoire. Si cet ID est défini, quel que soit le lien de distribution, cet ID utilisateur sera utilisé comme invitateur.",
-    "description": "Alerte pour l'ID de l'inviteur obligatoire"
+    "message": "ID utilisateur de l'invitateur forcé. Si cet ID est défini, quel que soit le lien de distribution, cet ID utilisateur sera utilisé comme invitateur.",
+    "description": "Alerte pour l'ID de l'invitateur forcé"
   },
   "message.originTip": {
     "message": "Nom de domaine du site. La configuration du site est liée au nom de domaine et ne peut pas être modifiée.",
@@ -248,7 +252,7 @@
     "description": "Alerte pour le titre du site"
   },
   "message.descriptionTip": {
-    "message": "Description du site, située dans les métadonnées du site, utilisée pour l'optimisation SEO du site.",
+    "message": "Description du site, située dans les métadonnées du site, utilisée pour l'optimisation SEO.",
     "description": "Alerte pour la description du site"
   },
   "message.logoTip": {
@@ -268,7 +272,7 @@
     "description": "Alerte pour les administrateurs du site"
   },
   "message.keywordsTip": {
-    "message": "Mots-clés du site, situés dans les métadonnées du site, utilisés pour l'optimisation SEO du site.",
+    "message": "Mots-clés du site, situés dans les métadonnées du site, utilisés pour l'optimisation SEO.",
     "description": "Alerte pour les mots-clés du site"
   },
   "message.keywordsTip2": {
@@ -319,6 +323,10 @@
     "message": "Activer ou désactiver le module de fonction FLux.",
     "description": "Description de la fonction FLux"
   },
+  "message.featuresNanobanana": {
+    "message": "Activer ou désactiver le module de fonction Nano Banana.",
+    "description": "Description de la fonction Nano Banana"
+  },
   "message.featuresLuma": {
     "message": "Activer ou désactiver le module de fonction Luma.",
     "description": "Description de la fonction Luma"
@@ -332,19 +340,19 @@
     "description": "Description de la fonction Kling"
   },
   "message.featuresHailuo": {
-    "message": "Activer ou désactiver le module de fonction Hailuo.",
-    "description": "Description de la fonction Hailuo"
+    "message": "Activer ou désactiver le module de fonctionnalités Hailuo.",
+    "description": "Description de la fonctionnalité Hailuo"
   },
   "message.featuresHeadshots": {
-    "message": "Activer ou désactiver le module de fonction Photo d'identité AI.",
-    "description": "Description de la fonction Photo d'identité AI"
+    "message": "Activer ou désactiver le module de fonctionnalités de photo d'identité AI.",
+    "description": "Description de la fonctionnalité de photo d'identité AI"
   },
   "message.featuresSupport": {
     "message": "Activer ou désactiver le support client",
     "description": "Description de la fonctionnalité de support"
   },
   "message.featuresI18n": {
-    "message": "Activer ou désactiver le support multilingue. Une fois désactivé, l'utilisateur ne pourra utiliser que la langue par défaut.",
+    "message": "Activer ou désactiver le support multilingue. Une fois désactivé, l'utilisateur ne peut utiliser que la langue par défaut.",
     "description": "Description du support multilingue"
   },
   "button.upload": {
@@ -353,10 +361,10 @@
   },
   "button.enabled": {
     "message": "Activé",
-    "description": "Texte du commutateur indiquant que c'est activé"
+    "description": "Texte du bouton indiquant que c'est activé"
   },
   "button.disabled": {
     "message": "Désactivé",
-    "description": "Texte du commutateur indiquant que c'est désactivé"
+    "description": "Texte du bouton indiquant que c'est désactivé"
   }
 }

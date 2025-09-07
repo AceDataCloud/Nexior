@@ -1,32 +1,98 @@
 {
-  "name.taskId": { "message": "Task ID", "description": "The ID of the task" },
-  "name.task": { "message": "Task Type", "description": "Operation type for Nano Banana images" },
-  "name.generate": { "message": "Generate Image", "description": "Operation type: generate images" },
-  "name.edits": { "message": "Edit Image", "description": "Operation type: edit images" },
-  "name.imageUrls": { "message": "Reference Images", "description": "Reference images for editing" },
-  "name.failure": { "message": "Failure", "description": "Failure state of the task" },
-  "name.failureReason": { "message": "Failure Reason", "description": "Reason of failure" },
-  "name.status": { "message": "Status", "description": "The status of the task" },
-  "name.traceId": { "message": "Trace ID", "description": "Trace ID" },
-  "name.prompt": { "message": "Image Prompt", "description": "Prompt for generation or editing" },
-  "name.nanobananaBot": { "message": "Nano Banana Bot", "description": "Name of the Nano Banana generator" },
-
-  "description.prompt": { "message": "Prompt words for generating or editing images", "description": "Prompt description" },
-  "description.imageUrls": { "message": "Upload 1-5 images for edit tasks.", "description": "Description for image_urls" },
-
-  "status.pending": { "message": "Pending", "description": "Pending state" },
-
-  "placeholder.select": { "message": "Select", "description": "Select placeholder" },
-  "placeholder.prompt": { "message": "Enter a prompt, e.g., a white siamese cat", "description": "Prompt placeholder" },
-
-  "button.generate": { "message": "Generate", "description": "Generate button" },
-  "button.uploadImageUrls": { "message": "Upload Images", "description": "Upload reference images button" },
-
-  "message.startingTask": { "message": "Starting task...", "description": "Start task message" },
-  "message.startTaskSuccess": { "message": "Task started successfully", "description": "Success message" },
-  "message.startTaskFailed": { "message": "Failed to start task: ", "description": "Failure message" },
-  "message.usedUp": { "message": "Your credits are used up. Please purchase more.", "description": "Used up message" },
-  "message.uploadImageExceed": { "message": "You can upload up to 5 images", "description": "Exceed message" },
-  "message.uploadImageError": { "message": "Image upload failed. Please try again.", "description": "Upload error message" }
+  "name.taskId": {
+    "message": "Task ID",
+    "description": "The ID of the task"
+  },
+  "name.task": {
+    "message": "Task Type",
+    "description": "Type of Nano Banana image operation"
+  },
+  "name.generate": {
+    "message": "Create Image",
+    "description": "Operation type: Create Image"
+  },
+  "name.edits": {
+    "message": "Edit Image",
+    "description": "Operation type: Edit Image"
+  },
+  "name.imageUrls": {
+    "message": "Reference Images",
+    "description": "Reference images used for editing"
+  },
+  "name.failure": {
+    "message": "Failure",
+    "description": "Task failure"
+  },
+  "name.failureReason": {
+    "message": "Failure Reason",
+    "description": "Reason for task failure"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Task status"
+  },
+  "name.traceId": {
+    "message": "Trace ID",
+    "description": "Trace ID"
+  },
+  "name.prompt": {
+    "message": "Image Prompt",
+    "description": "Prompt for generating/editing"
+  },
+  "name.nanobananaBot": {
+    "message": "Nano Banana Bot",
+    "description": "Name of the Nano Banana image generator"
+  },
+  "description.prompt": {
+    "message": "Prompt for generating or editing an image",
+    "description": "Description of the prompt"
+  },
+  "description.imageUrls": {
+    "message": "You must upload 1-5 images for the editing task.",
+    "description": "Description of the image_urls parameter"
+  },
+  "status.pending": {
+    "message": "Pending",
+    "description": "Task waiting status"
+  },
+  "placeholder.select": {
+    "message": "Select",
+    "description": "Selection placeholder"
+  },
+  "placeholder.prompt": {
+    "message": "Enter prompt, e.g., a white siamese cat",
+    "description": "Prompt placeholder"
+  },
+  "button.generate": {
+    "message": "Generate",
+    "description": "Generate button"
+  },
+  "button.uploadImageUrls": {
+    "message": "Upload Images",
+    "description": "Button to upload reference images"
+  },
+  "message.startingTask": {
+    "message": "Starting task...",
+    "description": "Message indicating the task is starting"
+  },
+  "message.startTaskSuccess": {
+    "message": "Successfully initiated generation task",
+    "description": "Task successfully created"
+  },
+  "message.startTaskFailed": {
+    "message": "Failed to initiate task, please contact the administrator:",
+    "description": "Task creation failed"
+  },
+  "message.usedUp": {
+    "message": "Your credits have been exhausted, please purchase more credits to continue using",
+    "description": "Message indicating credits are used up"
+  },
+  "message.uploadImageExceed": {
+    "message": "You can upload a maximum of 5 images",
+    "description": "Message indicating the image count exceeds the limit"
+  },
+  "message.uploadImageError": {
+    "message": "Failed to upload image, please try again later",
+    "description": "Message indicating upload failure"
+  }
 }
-

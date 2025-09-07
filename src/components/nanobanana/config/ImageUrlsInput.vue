@@ -24,17 +24,17 @@
         </el-upload>
         <info-icon :content="$t('nanobanana.description.imageUrls')" class="ml-2" />
       </div>
-      <div class="file-list">
-        <image-preview
-          v-for="(file, idx) in fileList"
-          :key="idx"
-          :url="(file as any).url || (file as any)?.response?.file_url"
-          :name="(file as any).name"
-          :percentage="(file as any).percentage"
-          @remove="fileList.splice(idx, 1)"
-        />
-      </div>
     </div>
+  </div>
+  <div class="file-list">
+    <image-preview
+      v-for="(file, idx) in fileList"
+      :key="idx"
+      :url="(file as any).url || (file as any)?.response?.file_url"
+      :name="(file as any).name"
+      :percentage="(file as any).percentage"
+      @remove="fileList.splice(idx, 1)"
+    />
   </div>
 </template>
 
@@ -121,16 +121,13 @@ export default defineComponent({
 <style lang="scss" scoped>
 .field {
   display: flex;
-  flex-direction: column;
   align-items: flex-start;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   .title {
     font-size: 14px;
     margin: 0 0 10px 0;
-    width: 100%;
-  }
-  .value {
-    width: 100%;
-    margin: 0;
   }
   .upload-wrapper {
     display: flex;
