@@ -1,6 +1,6 @@
 <template>
-  <div class="panel flex flex-col h-full">
-    <div class="flex-1 overflow-y-scroll p-4">
+  <div class="flex flex-col h-full">
+    <div class="flex-1 overflow-y-auto p-[15px]">
       <type-selector class="mb-4" />
       <content-input class="mb-4" />
       <prompt-input class="mb-4" />
@@ -19,7 +19,8 @@
       <padding-level-selector v-if="config?.advanced" class="mb-4" />
       <padding-noise-selector v-if="config?.advanced" class="mb-4" />
     </div>
-    <div class="h-12 px-4">
+    <div class="flex flex-col items-center justify-center px-[15px] pb-[15px]">
+      <consumption :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round @click="$emit('generate')">
         <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
         {{ $t('qrart.button.generate') }}
@@ -49,12 +50,15 @@ import ContentInput from './config/ContentInput.vue';
 import PromptInput from './config/PromptInput.vue';
 import { ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import Consumption from '../common/Consumption.vue';
+import { getConsumption } from '@/utils';
 
 export default defineComponent({
   name: 'ConfigPanel',
   components: {
     ElButton,
     FontAwesomeIcon,
+    Consumption,
     TypeSelector,
     PositionSelector,
     PixelStyleSelector,
@@ -77,13 +81,13 @@ export default defineComponent({
   computed: {
     config() {
       return this.$store.state.qrart?.config;
+    },
+    consumption() {
+      return getConsumption(this.config, this.service?.metadata?.price);
+    },
+    service() {
+      return this.$store.state.qrart?.service;
     }
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.panel {
-  border-right: 1px solid var(--el-border-color);
-}
-</style>

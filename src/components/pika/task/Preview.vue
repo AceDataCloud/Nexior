@@ -14,7 +14,7 @@
         <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
           {{ modelValue?.request?.prompt }}
           <span v-if="!modelValue?.response"> - ({{ $t('pika.status.pending') }}) </span>
-          <span v-if="video?.state === 'processing' || video?.state === 'pending' || video?.state === 'completed'">
+          <span v-if="video?.state === 'processing' || video?.state === 'pending'">
             - ({{ $t('pika.status.processing') }})
           </span>
         </p>
@@ -38,6 +38,11 @@
           </el-tooltip>
         </div>
         <el-alert :closable="false" class="mt-2 success">
+          <p v-if="modelValue?.request?.model" class="description">
+            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            {{ $t('pika.name.model') }}:
+            {{ modelValue?.request?.model }}
+          </p>
           <p class="description">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('pika.name.taskId') }}:
