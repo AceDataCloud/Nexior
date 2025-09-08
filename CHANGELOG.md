@@ -1,8 +1,23 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 25 Aug 2025 02:50:58 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 08 Sep 2025 15:26:16 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.19.0
+
+Mon, 08 Sep 2025 15:26:16 GMT
+
+### Minor changes
+
+- add nanobanana (cqc@cuiqingcai.com)
+
+### Patches
+
+- migrate tailwind csss (office@acedata.cloud)
+- fix qrart style (office@acedata.cloud)
+- fix build error (office@acedata.cloud)
+- fix build bugs (office@acedata.cloud)
 
 ## 3.18.8
 
