@@ -75,6 +75,7 @@ export default defineComponent({
     urls(): string[] {
       // @ts-ignore
       return this.fileList.map((file: UploadFile) => {
+        // @ts-ignore
         return file?.response?.file_url;
       });
     },
