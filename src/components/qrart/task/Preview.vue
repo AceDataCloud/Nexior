@@ -23,24 +23,12 @@
         </p>
       </div>
       <div v-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">
-        <div class="image-wrapper group relative w-fit min-h-[50px] min-w-[100px]">
-          <img
-            v-if="modelValue?.response?.image_url"
-            v-loading="!modelValue?.response?.image_url"
-            :src="modelValue?.response?.image_url"
-            class="image mb-3 max-h-[400px] max-w-[300px] block w-fit group-hover:brightness-[0.6]"
-          />
-          <el-button
-            v-if="modelValue?.response?.image_url"
-            type="info"
-            round
-            class="btn-raw absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[1000] hidden group-hover:block"
-            @click="onOpenUrl(modelValue?.response?.image_url)"
-          >
-            {{ $t('common.button.seeRawImage') }}
-          </el-button>
-        </div>
-        <el-alert :closable="false" class="mt-2 success border-l-[2px] border-solid border-[var(--el-color-success)]">
+        <image-wrapper
+          v-if="modelValue?.response?.image_url"
+          :src="modelValue?.response?.image_url"
+          :raw-src="modelValue?.response?.image_url"
+        />
+        <el-alert :closable="false" class="mt-2 success">
           <p class="description">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('qrart.name.taskId') }}:
@@ -80,7 +68,7 @@
         </el-alert>
       </div>
       <div v-if="modelValue?.response?.success === false" :class="{ content: true }">
-        <el-alert :closable="false" class="failure border-l-[2px] border-solid border-[var(--el-color-danger)]">
+        <el-alert :closable="false" class="failure">
           <template #template>
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
             {{ $t('qrart.name.failure') }}
@@ -106,7 +94,7 @@
         </el-alert>
       </div>
       <div v-if="!modelValue?.response" :class="{ content: true }">
-        <el-alert :closable="false" class="info border-l-[2px] border-solid border-[var(--el-color-info)]">
+        <el-alert :closable="false" class="info">
           <template #template>
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
             {{ $t('qrart.name.failure') }}
@@ -129,6 +117,7 @@ import { ElImage, ElAlert } from 'element-plus';
 import { IQrartTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import ImageWrapper from '@/components/common/ImageWrapper.vue';
 
 export default defineComponent({
   name: 'TaskPreview',
@@ -137,7 +126,7 @@ export default defineComponent({
     CopyToClipboard,
     FontAwesomeIcon,
     ElAlert,
-    ElButton
+    ImageWrapper
   },
   props: {
     modelValue: {
@@ -189,3 +178,77 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+$left-width: 70px;
+.preview {
+  width: 100%;
+  height: fit-content;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+  .left {
+    width: $left-width;
+    .avatar {
+      background-color: white;
+      padding: 2px;
+      width: 50px;
+      height: 50px;
+      margin: 10px;
+      border-radius: 50%;
+    }
+  }
+
+  .main {
+    flex: 1;
+    width: calc(100% - $left-width);
+    padding: 10px 10px 0 10px;
+
+    .bot {
+      font-size: 16px;
+      font-weight: bold;
+      color: rgb(46, 204, 113);
+      margin-bottom: 0;
+      margin-top: 0;
+      .datetime {
+        font-size: 12px;
+        font-weight: normal;
+        color: var(--el-text-color-secondary);
+        margin-left: 10px;
+      }
+    }
+
+    .info {
+      .prompt {
+        font-size: 14px;
+        font-weight: bold;
+        color: var(--el-text-color-regular);
+        margin-bottom: 10px;
+      }
+    }
+
+    .content {
+      .el-alert {
+        border-left-width: 2px;
+        border-left-style: solid;
+        &.failure {
+          border-color: var(--el-color-danger);
+        }
+        &.success {
+          border-color: var(--el-color-success);
+        }
+        &.info {
+          border-color: var(--el-color-info);
+        }
+      }
+    }
+
+    .description {
+      color: var(--el-text-color-regular);
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+  }
+}
+</style>
