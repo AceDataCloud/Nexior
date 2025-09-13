@@ -5,7 +5,7 @@
         <side-panel @change-conversation="onChangeConversation" />
       </slot>
     </div>
-    <div class="chat h-full pt-[45px] flex-1 flex flex-col relative">
+    <div class="chat h-full w-[calc(100%-250px)] pt-[45px] flex-1 flex flex-col relative">
       <slot name="chat" />
     </div>
     <el-button round class="menu" @click="drawer = true">
