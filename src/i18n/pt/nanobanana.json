@@ -43,16 +43,24 @@
     "message": "Bot Nano Banana",
     "description": "Nome do gerador de imagens Nano Banana"
   },
+  "name.aspectRatio": {
+    "message": "Proporção",
+    "description": "Proporção da imagem gerada"
+  },
   "description.prompt": {
-    "message": "Palavras-chave para gerar ou editar imagens",
+    "message": "Palavras-chave para gerar ou editar a imagem",
     "description": "Descrição das palavras-chave"
   },
   "description.imageUrls": {
     "message": "É necessário enviar de 1 a 5 imagens na tarefa de edição de imagem.",
     "description": "Descrição do parâmetro image_urls"
   },
+  "description.aspectRatio": {
+    "message": "Proporção da imagem gerada. Os valores suportados são `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. O valor padrão é `1:1`. Somente é aplicado quando `action` é `generate`; se `action` for `edit`, a proporção da primeira imagem em `image_urls` será utilizada.",
+    "description": "Descrição do parâmetro aspect_ratio"
+  },
   "status.pending": {
-    "message": "Pendente",
+    "message": "Aguardando",
     "description": "Status de espera da tarefa"
   },
   "placeholder.select": {
@@ -68,7 +76,7 @@
     "description": "Botão de gerar"
   },
   "button.uploadImageUrls": {
-    "message": "Enviar imagens",
+    "message": "Enviar imagem",
     "description": "Botão para enviar imagens de referência"
   },
   "message.startingTask": {
@@ -84,8 +92,8 @@
     "description": "Falha na criação da tarefa"
   },
   "message.usedUp": {
-    "message": "Seus créditos acabaram, por favor, compre mais créditos para continuar usando",
-    "description": "Mensagem de créditos esgotados"
+    "message": "Seus pontos acabaram, por favor, compre mais pontos para continuar usando",
+    "description": "Mensagem de esgotamento"
   },
   "message.uploadImageExceed": {
     "message": "É possível enviar no máximo 5 imagens",

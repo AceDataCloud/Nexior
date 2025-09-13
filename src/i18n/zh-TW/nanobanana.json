@@ -43,6 +43,10 @@
     "message": "Nano Banana Bot",
     "description": "Nano Banana 圖片生成器名稱"
   },
+  "name.aspectRatio": {
+    "message": "寬高比",
+    "description": "生成圖像的寬高比"
+  },
   "description.prompt": {
     "message": "生成或編輯圖像的提示詞",
     "description": "提示詞描述"
@@ -50,6 +54,10 @@
   "description.imageUrls": {
     "message": "在編輯圖片任務中必須上傳 1-5 張圖片。",
     "description": "image_urls 參數說明"
+  },
+  "description.aspectRatio": {
+    "message": "生成圖像的寬高比。支持的取值有 `1:1`、`3:2`、`2:3`、`16:9`、`9:16`、`4:3`、`3:4`。默認值為 `1:1`。僅當 `action` 為 `generate` 時生效；若 `action` 為 `edit`，則以 `image_urls` 中第一張圖片的比例為準。",
+    "description": "aspect_ratio 參數說明"
   },
   "status.pending": {
     "message": "等待中",

@@ -37,19 +37,27 @@
   },
   "name.prompt": {
     "message": "Uputstvo za sliku",
-    "description": "Uputstvo za generisanje/uređivanje"
+    "description": "Reči za generisanje/uređivanje"
   },
   "name.nanobananaBot": {
     "message": "Nano Banana Bot",
-    "description": "Ime generatore slika Nano Banana"
+    "description": "Ime generatora slika Nano Banana"
+  },
+  "name.aspectRatio": {
+    "message": "Odnos širine i visine",
+    "description": "Odnos širine i visine generisane slike"
   },
   "description.prompt": {
-    "message": "Uputstvo za generisanje ili uređivanje slike",
-    "description": "Opis uputstva"
+    "message": "Reči za generisanje ili uređivanje slike",
+    "description": "Opis reči za uputstvo"
   },
   "description.imageUrls": {
     "message": "U zadatku za uređivanje slika potrebno je otpremiti 1-5 slika.",
     "description": "Objašnjenje parametra image_urls"
+  },
+  "description.aspectRatio": {
+    "message": "Odnos širine i visine generisane slike. Podržane vrednosti su `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Podrazumevana vrednost je `1:1`. Važi samo kada je `action` `generate`; ako je `action` `edit`, koristi se odnos prve slike iz `image_urls`.",
+    "description": "Objašnjenje parametra aspect_ratio"
   },
   "status.pending": {
     "message": "Na čekanju",
@@ -60,7 +68,7 @@
     "description": "Placeholder za izbor"
   },
   "placeholder.prompt": {
-    "message": "Unesite uputstvo, na primer: bela sijamska mačka",
+    "message": "Unesite reči za uputstvo, na primer: bela sijamska mačka",
     "description": "Placeholder za uputstvo"
   },
   "button.generate": {
@@ -88,7 +96,7 @@
     "description": "Poruka o potrošenim bodovima"
   },
   "message.uploadImageExceed": {
-    "message": "Možete otpremiti najviše 5 slika",
+    "message": "Maksimalno možete otpremiti 5 slika",
     "description": "Broj slika premašuje ograničenje"
   },
   "message.uploadImageError": {

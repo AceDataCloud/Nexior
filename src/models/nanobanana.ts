@@ -2,6 +2,7 @@ export interface INanobananaConfig {
   action?: 'generate' | 'edit';
   prompt?: string;
   image_urls?: string[];
+  aspect_ratio?: string;
   callback_url?: string;
 }
 
@@ -9,6 +10,7 @@ export interface INanobananaGenerateRequest {
   action?: 'generate' | 'edit';
   prompt?: string;
   image_urls?: string[];
+  aspect_ratio?: string;
   callback_url?: string;
   mirror?: boolean;
 }

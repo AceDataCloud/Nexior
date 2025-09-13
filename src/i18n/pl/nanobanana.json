@@ -37,19 +37,27 @@
   },
   "name.prompt": {
     "message": "Podpowiedź obrazu",
-    "description": "Podpowiedzi do generowania/edycji"
+    "description": "Słowa kluczowe do generowania/edycji"
   },
   "name.nanobananaBot": {
     "message": "Bot Nano Banana",
     "description": "Nazwa generatora obrazów Nano Banana"
   },
+  "name.aspectRatio": {
+    "message": "Proporcje",
+    "description": "Proporcje generowanego obrazu"
+  },
   "description.prompt": {
-    "message": "Podpowiedzi do generowania lub edytowania obrazów",
-    "description": "Opis podpowiedzi"
+    "message": "Słowa kluczowe do generowania lub edytowania obrazu",
+    "description": "Opis słów kluczowych"
   },
   "description.imageUrls": {
     "message": "W zadaniu edycji obrazu należy przesłać od 1 do 5 obrazów.",
     "description": "Opis parametru image_urls"
+  },
+  "description.aspectRatio": {
+    "message": "Proporcje generowanego obrazu. Obsługiwane wartości to `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Wartość domyślna to `1:1`. Działa tylko, gdy `action` to `generate`; jeśli `action` to `edit`, to obowiązuje proporcja pierwszego obrazu w `image_urls`.",
+    "description": "Opis parametru aspect_ratio"
   },
   "status.pending": {
     "message": "Oczekiwanie",
@@ -57,18 +65,18 @@
   },
   "placeholder.select": {
     "message": "Wybierz",
-    "description": "Zajmij miejsce na wybór"
+    "description": "Zajmij miejsce wyboru"
   },
   "placeholder.prompt": {
-    "message": "Wprowadź podpowiedź, na przykład: biały kot syjamski",
-    "description": "Zajmij miejsce na podpowiedź"
+    "message": "Wprowadź słowa kluczowe, na przykład: biały kot syjamski",
+    "description": "Zajmij miejsce podpowiedzi"
   },
   "button.generate": {
     "message": "Generuj",
     "description": "Przycisk generowania"
   },
   "button.uploadImageUrls": {
-    "message": "Prześlij obraz",
+    "message": "Prześlij obrazy",
     "description": "Przycisk przesyłania obrazów referencyjnych"
   },
   "message.startingTask": {
@@ -80,7 +88,7 @@
     "description": "Zadanie zostało pomyślnie utworzone"
   },
   "message.startTaskFailed": {
-    "message": "Uruchomienie zadania nie powiodło się, skontaktuj się z administratorem:",
+    "message": "Nie udało się uruchomić zadania, skontaktuj się z administratorem:",
     "description": "Niepowodzenie w tworzeniu zadania"
   },
   "message.usedUp": {

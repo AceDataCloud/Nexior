@@ -25,7 +25,7 @@
   },
   "name.failureReason": {
     "message": "失敗理由",
-    "description": "タスク失敗の理由"
+    "description": "タスクの失敗理由"
   },
   "name.status": {
     "message": "ステータス",
@@ -41,7 +41,11 @@
   },
   "name.nanobananaBot": {
     "message": "Nano Banana Bot",
-    "description": "Nano Banana 画像生成器の名称"
+    "description": "Nano Banana 画像生成器の名前"
+  },
+  "name.aspectRatio": {
+    "message": "アスペクト比",
+    "description": "生成画像のアスペクト比"
   },
   "description.prompt": {
     "message": "画像を生成または編集するためのプロンプト",
@@ -51,9 +55,13 @@
     "message": "画像編集タスクでは、1〜5枚の画像をアップロードする必要があります。",
     "description": "image_urls パラメータの説明"
   },
+  "description.aspectRatio": {
+    "message": "生成画像のアスペクト比。サポートされている値は `1:1`、`3:2`、`2:3`、`16:9`、`9:16`、`4:3`、`3:4` です。デフォルト値は `1:1` です。`action` が `generate` の場合にのみ有効です；`action` が `edit` の場合は、`image_urls` の最初の画像の比率が適用されます。",
+    "description": "aspect_ratio パラメータの説明"
+  },
   "status.pending": {
-    "message": "保留中",
-    "description": "タスクの保留状態"
+    "message": "待機中",
+    "description": "タスクの待機状態"
   },
   "placeholder.select": {
     "message": "選択",
@@ -84,15 +92,15 @@
     "description": "タスク作成に失敗しました"
   },
   "message.usedUp": {
-    "message": "ポイントが使い切れました。追加のポイントを購入して続行してください",
-    "description": "使い切れたことを示すメッセージ"
+    "message": "ポイントが使い切りました。追加のポイントを購入して続行してください",
+    "description": "使い切ったことを示すメッセージ"
   },
   "message.uploadImageExceed": {
     "message": "最大で5枚の画像をアップロードできます",
-    "description": "画像の数が制限を超えています"
+    "description": "画像の数が制限を超えました"
   },
   "message.uploadImageError": {
-    "message": "画像のアップロードに失敗しました。後でもう一度お試しください",
-    "description": "アップロード失敗"
+    "message": "画像のアップロードに失敗しました。後で再試行してください",
+    "description": "アップロードに失敗しました"
   }
 }

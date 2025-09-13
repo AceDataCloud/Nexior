@@ -25,6 +25,13 @@
             :raw-src="image?.image_url!"
           />
         </div>
+        <div :class="{ operations: true, 'mt-2': true, 'mb-2': true }">
+          <el-tooltip class="box-item" effect="dark" :content="$t('common.button.edit')" placement="top-start">
+            <el-button type="info" size="small" class="btn-action" @click.stop="onEdit(images?.[0]?.image_url)">
+              {{ $t('common.button.edit') }}
+            </el-button>
+          </el-tooltip>
+        </div>
         <el-alert :closable="false" class="mt-2 success">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
@@ -80,7 +87,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElAlert } from 'element-plus';
+import { ElImage, ElAlert, ElButton, ElTooltip } from 'element-plus';
 import { INanobananaTask, INanobananaImage } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -93,7 +100,9 @@ export default defineComponent({
     CopyToClipboard,
     FontAwesomeIcon,
     ElAlert,
-    ImageWrapper
+    ImageWrapper,
+    ElButton,
+    ElTooltip
   },
   props: {
     modelValue: {
@@ -111,6 +120,17 @@ export default defineComponent({
         });
       }
       return result;
+    }
+  },
+  methods: {
+    onEdit(imageUrl?: string) {
+      if (!imageUrl) return;
+      // Switch to edit mode and preload image into uploader list
+      this.$store.commit('nanobanana/setConfig', {
+        ...this.$store.state.nanobanana?.config,
+        action: 'edit',
+        image_urls: [imageUrl]
+      });
     }
   }
 });
@@ -176,6 +196,22 @@ $left-width: 70px;
         &.info {
           border-color: var(--el-color-info);
         }
+      }
+    }
+
+    .operations {
+      display: flex;
+      justify-content: left;
+      flex-direction: row;
+      width: 100%;
+      align-items: baseline;
+      flex-wrap: wrap;
+      overflow: hidden;
+      text-align: center;
+      color: var(--el-text-color-regular);
+      font-size: 14px;
+      .btn-action {
+        margin-bottom: 10px;
       }
     }
   }

@@ -5,7 +5,7 @@
   },
   "name.task": {
     "message": "Tehtävätyyppi",
-    "description": "Nano Banana -kuvaoperaation tyyppi"
+    "description": "Nano Banana -kuvatoimintatyyppi"
   },
   "name.generate": {
     "message": "Luo kuva",
@@ -36,20 +36,28 @@
     "description": "Seuranta ID"
   },
   "name.prompt": {
-    "message": "Kuvan vihje",
-    "description": "Luonnin/muokkauksen vihjesanat"
+    "message": "Kuvan ohjeet",
+    "description": "Luonti/muokkausohjeet"
   },
   "name.nanobananaBot": {
     "message": "Nano Banana Bot",
     "description": "Nano Banana -kuvageneraattorin nimi"
   },
+  "name.aspectRatio": {
+    "message": "Kuvan kuvasuhde",
+    "description": "Luotavan kuvan kuvasuhde"
+  },
   "description.prompt": {
-    "message": "Vihjesanat kuvan luomiseen tai muokkaamiseen",
-    "description": "Vihjesanojen kuvaus"
+    "message": "Luodun tai muokatun kuvan ohjeet",
+    "description": "Ohjeiden kuvaus"
   },
   "description.imageUrls": {
     "message": "Muokkaustehtävässä on ladattava 1-5 kuvaa.",
     "description": "image_urls-parametrin selitys"
+  },
+  "description.aspectRatio": {
+    "message": "Luotavan kuvan kuvasuhde. Tuetut arvot ovat `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Oletusarvo on `1:1`. Vain kun `action` on `generate`, se on voimassa; jos `action` on `edit`, käytetään `image_urls`-parametrin ensimmäisen kuvan suhdetta.",
+    "description": "aspect_ratio-parametrin selitys"
   },
   "status.pending": {
     "message": "Odottaa",
@@ -60,8 +68,8 @@
     "description": "Valintapaikka"
   },
   "placeholder.prompt": {
-    "message": "Syötä vihjesanat, esim: valkoinen siamilainen kissa",
-    "description": "Vihjeen paikka"
+    "message": "Syötä ohjeet, esimerkiksi: valkoinen siamilainen kissa",
+    "description": "Ohjeiden paikka"
   },
   "button.generate": {
     "message": "Generoi",
@@ -84,15 +92,15 @@
     "description": "Tehtävän luonti epäonnistui"
   },
   "message.usedUp": {
-    "message": "Oikeutesi on käytetty loppuun, osta lisää oikeuksia jatkaaksesi käyttöä",
-    "description": "Loppunut ilmoitus"
+    "message": "Pisteesi on käytetty loppuun, osta lisää pisteitä jatkaaksesi käyttöä",
+    "description": "Loppu viesti"
   },
   "message.uploadImageExceed": {
     "message": "Voit ladata enintään 5 kuvaa",
-    "description": "Kuvien määrä ylittää rajan"
+    "description": "Kuvamäärä ylittää rajan"
   },
   "message.uploadImageError": {
-    "message": "Kuvien lataaminen epäonnistui, yritä myöhemmin uudelleen",
+    "message": "Kuvan lataaminen epäonnistui, yritä myöhemmin uudelleen",
     "description": "Lataus epäonnistui"
   }
 }
