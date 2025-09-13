@@ -243,7 +243,14 @@ export default defineComponent({
       &:hover {
         background-color: var(--el-bg-color-page);
         .operations {
-          display: block;
+          display: flex;
+          align-items: center;
+          width: 50px;
+          gap: 8px;
+          .icon {
+            cursor: pointer;
+            font-size: 14px;
+          }
         }
       }
 
@@ -265,13 +272,7 @@ export default defineComponent({
       }
       .operations {
         display: none;
-        width: 40px;
         color: var(--el-text-color-regular);
-        .icon {
-          cursor: pointer;
-          font-size: 14px;
-          margin-right: 6px;
-        }
       }
     }
   }
