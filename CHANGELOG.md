@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 13 Sep 2025 08:46:03 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 13 Sep 2025 17:39:36 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.19.3
+
+Sat, 13 Sep 2025 17:39:36 GMT
+
+### Patches
+
+- add nano functions (office@acedata.cloud)
 
 ## 3.19.2
 
