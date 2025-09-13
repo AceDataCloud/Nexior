@@ -37,19 +37,27 @@
   },
   "name.prompt": {
     "message": "Bildaufforderung",
-    "description": "Aufforderungswörter für die Erstellung/Bearbeitung"
+    "description": "Aufforderungswörter zum Erstellen/Bearbeiten"
   },
   "name.nanobananaBot": {
     "message": "Nano Banana Bot",
     "description": "Name des Nano Banana Bildgenerators"
   },
+  "name.aspectRatio": {
+    "message": "Seitenverhältnis",
+    "description": "Seitenverhältnis des generierten Bildes"
+  },
   "description.prompt": {
-    "message": "Aufforderungswörter zur Erstellung oder Bearbeitung von Bildern",
+    "message": "Aufforderungswörter zum Erstellen oder Bearbeiten von Bildern",
     "description": "Beschreibung der Aufforderungswörter"
   },
   "description.imageUrls": {
     "message": "Es müssen 1-5 Bilder für die Bildbearbeitungsaufgabe hochgeladen werden.",
     "description": "Erläuterung des Parameters image_urls"
+  },
+  "description.aspectRatio": {
+    "message": "Seitenverhältnis des generierten Bildes. Unterstützte Werte sind `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Der Standardwert ist `1:1`. Gilt nur, wenn `action` `generate` ist; wenn `action` `edit` ist, gilt das Verhältnis des ersten Bildes in `image_urls`.",
+    "description": "Erläuterung des Parameters aspect_ratio"
   },
   "status.pending": {
     "message": "Warten",
@@ -80,8 +88,8 @@
     "description": "Aufgabe erfolgreich erstellt"
   },
   "message.startTaskFailed": {
-    "message": "Start der Aufgabe fehlgeschlagen, bitte kontaktieren Sie den Administrator:",
-    "description": "Fehler beim Erstellen der Aufgabe"
+    "message": "Aufgabenstart fehlgeschlagen, bitte kontaktieren Sie den Administrator:",
+    "description": "Aufgabenerstellung fehlgeschlagen"
   },
   "message.usedUp": {
     "message": "Ihr Guthaben ist aufgebraucht, bitte kaufen Sie mehr Guthaben, um fortzufahren",
@@ -93,6 +101,6 @@
   },
   "message.uploadImageError": {
     "message": "Hochladen des Bildes fehlgeschlagen, bitte versuchen Sie es später erneut",
-    "description": "Fehler beim Hochladen"
+    "description": "Hochladen fehlgeschlagen"
   }
 }

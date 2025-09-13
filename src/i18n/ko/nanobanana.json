@@ -43,13 +43,21 @@
     "message": "Nano Banana Bot",
     "description": "Nano Banana 이미지 생성기 이름"
   },
+  "name.aspectRatio": {
+    "message": "가로 세로 비율",
+    "description": "생성된 이미지의 가로 세로 비율"
+  },
   "description.prompt": {
     "message": "이미지를 생성하거나 편집하기 위한 프롬프트",
     "description": "프롬프트 설명"
   },
   "description.imageUrls": {
-    "message": "편집 이미지 작업에서 1-5장의 이미지를 업로드해야 합니다.",
+    "message": "이미지 편집 작업에서는 1-5장의 이미지를 업로드해야 합니다.",
     "description": "image_urls 매개변수 설명"
+  },
+  "description.aspectRatio": {
+    "message": "생성된 이미지의 가로 세로 비율입니다. 지원되는 값은 `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`입니다. 기본값은 `1:1`입니다. `action`이 `generate`일 때만 적용되며, `action`이 `edit`일 경우 `image_urls`의 첫 번째 이미지 비율을 따릅니다.",
+    "description": "aspect_ratio 매개변수 설명"
   },
   "status.pending": {
     "message": "대기 중",
@@ -60,7 +68,7 @@
     "description": "선택 자리 표시자"
   },
   "placeholder.prompt": {
-    "message": "프롬프트 입력, 예: 흰색 샴 고양이",
+    "message": "프롬프트 입력, 예: 하얀 색 샴 고양이",
     "description": "프롬프트 자리 표시자"
   },
   "button.generate": {
@@ -80,11 +88,11 @@
     "description": "작업 성공적으로 생성됨"
   },
   "message.startTaskFailed": {
-    "message": "작업 시작 실패, 관리자에게 문의하십시오:",
+    "message": "작업 시작 실패, 관리자에게 문의하세요:",
     "description": "작업 생성 실패"
   },
   "message.usedUp": {
-    "message": "포인트가 소진되었습니다. 더 많은 포인트를 구매한 후 계속 사용하십시오.",
+    "message": "포인트가 소진되었습니다. 더 많은 포인트를 구매한 후 계속 사용하세요.",
     "description": "소진 알림"
   },
   "message.uploadImageExceed": {
@@ -92,7 +100,7 @@
     "description": "이미지 수 초과 제한"
   },
   "message.uploadImageError": {
-    "message": "이미지 업로드 실패, 나중에 다시 시도하십시오.",
+    "message": "이미지 업로드 실패, 나중에 다시 시도하세요.",
     "description": "업로드 실패"
   }
 }

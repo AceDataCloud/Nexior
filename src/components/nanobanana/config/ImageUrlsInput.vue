@@ -15,6 +15,8 @@
           :on-exceed="onExceed"
           :on-error="onError"
           :on-success="onSuccess"
+          :on-change="onChange"
+          :on-remove="onRemove"
           :headers="headers"
         >
           <el-button size="small" type="primary" round>
@@ -73,11 +75,14 @@ export default defineComponent({
       };
     },
     urls(): string[] {
+      // only persist uploaded remote URLs for request payload
       // @ts-ignore
-      return this.fileList.map((file: UploadFile) => {
-        // @ts-ignore
-        return file?.response?.file_url;
-      });
+      return (
+        this.fileList
+          // @ts-ignore
+          .map((file: UploadFile) => file?.response?.file_url)
+          .filter((u: string | undefined) => !!u) as string[]
+      );
     },
     value: {
       get() {
@@ -92,6 +97,26 @@ export default defineComponent({
       }
     }
   },
+  watch: {
+    value: {
+      handler(val: string[] | undefined) {
+        // sync UI previews when config.image_urls changes (e.g., from Edit button)
+        if (!val || !Array.isArray(val)) {
+          this.fileList = [] as any;
+          return;
+        }
+        const next = val.map((url: string, idx: number) => ({
+          name: url?.split('/')?.pop() || `image_${idx + 1}`,
+          url,
+          status: 'success',
+          percentage: 100
+        })) as any;
+        this.fileList = next;
+      },
+      immediate: true,
+      deep: false
+    }
+  },
   mounted() {
     if (!this.value) {
       this.value = undefined;
@@ -99,6 +124,27 @@ export default defineComponent({
     this.onSetImageUrls();
   },
   methods: {
+    onChange(file: any) {
+      // ensure preview shows while uploading
+      if (!file?.url && file?.raw) {
+        try {
+          // attach object url for preview
+          file.url = URL.createObjectURL(file.raw);
+        } catch (e) {
+          // ignore
+        }
+      }
+    },
+    onRemove(file: any) {
+      // revoke object URL to avoid leaks
+      if (file?.url && typeof file.url === 'string' && file.url.startsWith('blob:')) {
+        try {
+          URL.revokeObjectURL(file.url);
+        } catch (e) {
+          // ignore
+        }
+      }
+    },
     onExceed() {
       ElMessage.warning(this.$t('nanobanana.message.uploadImageExceed'));
     },
@@ -112,7 +158,11 @@ export default defineComponent({
         image_urls: urls
       });
     },
-    async onSuccess() {
+    async onSuccess(response: any, file: any) {
+      // update preview to remote URL when finished
+      if (response?.file_url) {
+        file.url = response.file_url;
+      }
       this.onSetImageUrls();
     }
   }

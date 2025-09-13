@@ -37,19 +37,27 @@
   },
   "name.prompt": {
     "message": "Image Prompt",
-    "description": "Prompt for generating/editing"
+    "description": "Prompt words for generation/editing"
   },
   "name.nanobananaBot": {
     "message": "Nano Banana Bot",
     "description": "Name of the Nano Banana image generator"
   },
+  "name.aspectRatio": {
+    "message": "Aspect Ratio",
+    "description": "Aspect ratio of the generated image"
+  },
   "description.prompt": {
-    "message": "Prompt for generating or editing an image",
-    "description": "Description of the prompt"
+    "message": "Prompt words for generating or editing images",
+    "description": "Description of the prompt words"
   },
   "description.imageUrls": {
-    "message": "You must upload 1-5 images for the editing task.",
+    "message": "You must upload 1-5 images for the edit image task.",
     "description": "Description of the image_urls parameter"
+  },
+  "description.aspectRatio": {
+    "message": "Aspect ratio of the generated image. Supported values are `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. The default value is `1:1`. This only takes effect when `action` is `generate`; if `action` is `edit`, the ratio of the first image in `image_urls` will be used.",
+    "description": "Description of the aspect_ratio parameter"
   },
   "status.pending": {
     "message": "Pending",
@@ -84,12 +92,12 @@
     "description": "Task creation failed"
   },
   "message.usedUp": {
-    "message": "Your credits have been exhausted, please purchase more credits to continue using",
-    "description": "Message indicating credits are used up"
+    "message": "Your credits have been used up, please purchase more credits to continue using",
+    "description": "Message indicating credits are exhausted"
   },
   "message.uploadImageExceed": {
     "message": "You can upload a maximum of 5 images",
-    "description": "Message indicating the image count exceeds the limit"
+    "description": "Message indicating the number of images exceeds the limit"
   },
   "message.uploadImageError": {
     "message": "Failed to upload image, please try again later",

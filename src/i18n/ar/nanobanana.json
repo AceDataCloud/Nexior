@@ -37,19 +37,27 @@
   },
   "name.prompt": {
     "message": "نص الصورة",
-    "description": "الكلمات الدالة لإنشاء/تحرير الصورة"
+    "description": "نص التوليد/التحرير"
   },
   "name.nanobananaBot": {
     "message": "روبوت Nano Banana",
     "description": "اسم مولد صور Nano Banana"
   },
+  "name.aspectRatio": {
+    "message": "نسبة العرض إلى الارتفاع",
+    "description": "نسبة العرض إلى الارتفاع للصورة المولدة"
+  },
   "description.prompt": {
-    "message": "الكلمات الدالة لإنشاء أو تحرير الصورة",
-    "description": "وصف الكلمات الدالة"
+    "message": "نص التوليد أو التحرير للصورة",
+    "description": "وصف نص التلميح"
   },
   "description.imageUrls": {
     "message": "يجب تحميل 1-5 صور في مهمة تحرير الصورة.",
-    "description": "شرح معلمة image_urls"
+    "description": "وصف معلمة image_urls"
+  },
+  "description.aspectRatio": {
+    "message": "نسبة العرض إلى الارتفاع للصورة المولدة. القيم المدعومة هي `1:1`، `3:2`، `2:3`، `16:9`، `9:16`، `4:3`، `3:4`. القيمة الافتراضية هي `1:1`. تعمل فقط عندما تكون `action` هي `generate`؛ إذا كانت `action` هي `edit`، فسيتم اعتبار نسبة الصورة الأولى في `image_urls` كمعيار.",
+    "description": "وصف معلمة aspect_ratio"
   },
   "status.pending": {
     "message": "في الانتظار",
@@ -57,15 +65,15 @@
   },
   "placeholder.select": {
     "message": "اختر",
-    "description": "نص مكان للاختيار"
+    "description": "نص اختيار"
   },
   "placeholder.prompt": {
-    "message": "أدخل الكلمات الدالة، مثل: قطة سيامية بيضاء",
-    "description": "نص مكان للكلمات الدالة"
+    "message": "أدخل نص التلميح، مثل: قطة سيامية بيضاء",
+    "description": "نص تلميح"
   },
   "button.generate": {
-    "message": "إنشاء",
-    "description": "زر الإنشاء"
+    "message": "توليد",
+    "description": "زر التوليد"
   },
   "button.uploadImageUrls": {
     "message": "تحميل الصور",
@@ -76,7 +84,7 @@
     "description": "رسالة بدء المهمة"
   },
   "message.startTaskSuccess": {
-    "message": "تم بدء مهمة الإنشاء بنجاح",
+    "message": "تم بدء مهمة التوليد بنجاح",
     "description": "تم إنشاء المهمة بنجاح"
   },
   "message.startTaskFailed": {

@@ -3,6 +3,7 @@
     <div class="flex-1 overflow-y-auto p-[15px]">
       <action-selector class="mb-4" />
       <prompt-input class="mb-4" />
+      <aspect-ratio-selector v-if="config?.action === 'generate'" class="mb-4" />
       <image-urls-input v-if="config?.action === 'edit'" class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-[15px] pb-[15px]">
@@ -22,6 +23,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ActionSelector from './config/ActionSelector.vue';
 import PromptInput from './config/PromptInput.vue';
 import ImageUrlsInput from './config/ImageUrlsInput.vue';
+import AspectRatioSelector from './config/AspectRatioSelector.vue';
 import Consumption from '../common/Consumption.vue';
 import { getConsumption } from '@/utils';
 
@@ -33,7 +35,8 @@ export default defineComponent({
     PromptInput,
     Consumption,
     ActionSelector,
-    ImageUrlsInput
+    ImageUrlsInput,
+    AspectRatioSelector
   },
   emits: ['generate'],
   computed: {
