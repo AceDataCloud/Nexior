@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 13 Sep 2025 04:45:42 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 13 Sep 2025 08:46:03 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.19.2
+
+Sat, 13 Sep 2025 08:46:03 GMT
+
+### Patches
+
+- fix chat layout (office@acedata.cloud)
 
 ## 3.19.1
 
