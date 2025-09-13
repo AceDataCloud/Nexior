@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 08 Sep 2025 15:26:16 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 13 Sep 2025 04:45:42 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.19.1
+
+Sat, 13 Sep 2025 04:45:42 GMT
+
+### Patches
+
+- auto deploy (office@acedata.cloud)
 
 ## 3.19.0
 
