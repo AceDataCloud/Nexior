@@ -52,7 +52,7 @@ jobs:
       - name: Test Kubectl
         run: |
           kubectl get nodes
-          kubectl get svc -n acedatacloud-test
+          kubectl get svc -n acedatacloud
 
       - name: Build Docker images
         run: docker-compose build
@@ -61,4 +61,4 @@ jobs:
         run: docker-compose push
 
       - name: Deploy
-        run: sh ./deploy/test/scripts/deploy.sh
+        run: sh ./deploy/run.sh
