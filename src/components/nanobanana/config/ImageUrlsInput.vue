@@ -77,10 +77,12 @@ export default defineComponent({
     urls(): string[] {
       // only persist uploaded remote URLs for request payload
       // @ts-ignore
-      return this.fileList
-        // @ts-ignore
-        .map((file: UploadFile) => file?.response?.file_url)
-        .filter((u: string | undefined) => !!u) as string[];
+      return (
+        this.fileList
+          // @ts-ignore
+          .map((file: UploadFile) => file?.response?.file_url)
+          .filter((u: string | undefined) => !!u) as string[]
+      );
     },
     value: {
       get() {
