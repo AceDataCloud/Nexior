@@ -11,6 +11,18 @@
         </span>
       </div>
       <div class="info">
+        <div
+          v-if="modelValue?.request?.image_urls && modelValue?.request?.image_urls.length > 0"
+          class="flex justify-start items-center gap-2 mt-2 w-full overflow-x-auto"
+        >
+          <image-preview
+            v-for="(url, idx) in modelValue?.request?.image_urls"
+            :key="idx"
+            :url="url"
+            :name="`image-${idx + 1}`"
+            :closable="false"
+          />
+        </div>
         <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
           {{ modelValue?.request?.prompt }}
           <span v-if="!modelValue?.response"> - ({{ $t('nanobanana.status.pending') }}) </span>
@@ -92,6 +104,7 @@ import { INanobananaTask, INanobananaImage } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ImageWrapper from '@/components/common/ImageWrapper.vue';
+import ImagePreview from '@/components/common/ImagePreview.vue';
 
 export default defineComponent({
   name: 'TaskPreview',
@@ -102,7 +115,8 @@ export default defineComponent({
     ElAlert,
     ImageWrapper,
     ElButton,
-    ElTooltip
+    ElTooltip,
+    ImagePreview
   },
   props: {
     modelValue: {
@@ -125,6 +139,7 @@ export default defineComponent({
   methods: {
     onEdit(imageUrl?: string) {
       if (!imageUrl) return;
+      console.debug('Edit image:', imageUrl);
       // Switch to edit mode and preload image into uploader list
       this.$store.commit('nanobanana/setConfig', {
         ...this.$store.state.nanobanana?.config,

@@ -31,11 +31,11 @@
   <div class="file-list flex flex-wrap gap-[10px]">
     <image-preview
       v-for="(file, idx) in fileList"
-      :key="idx"
+      :key="(file as any).uid || (file as any)?.response?.file_url || (file as any).url || idx"
       :url="(file as any).url || (file as any)?.response?.file_url"
       :name="(file as any).name"
       :percentage="(file as any).percentage"
-      @remove="fileList.splice(idx, 1)"
+      @remove="onRemovePreview(idx, file)"
     />
   </div>
 </template>
@@ -51,6 +51,7 @@ import ImagePreview from '@/components/common/ImagePreview.vue';
 interface IData {
   fileList: UploadFiles;
   uploadUrl: string;
+  suppressWatch: boolean;
 }
 
 export default defineComponent({
@@ -65,7 +66,10 @@ export default defineComponent({
   data(): IData {
     return {
       fileList: [],
-      uploadUrl: getBaseUrlPlatform() + '/api/v1/files/'
+      uploadUrl: getBaseUrlPlatform() + '/api/v1/files/',
+      // internal flag to prevent feedback loops when syncing store -> fileList
+      // @ts-ignore
+      suppressWatch: false
     };
   },
   computed: {
@@ -84,44 +88,53 @@ export default defineComponent({
           .filter((u: string | undefined) => !!u) as string[]
       );
     },
-    value: {
-      get() {
-        return this.$store.state.nanobanana?.config?.image_urls;
-      },
-      set() {
-        const urls = this.urls;
-        this.$store.commit('nanobanana/setConfig', {
-          ...this.$store.state.nanobanana?.config,
-          image_urls: urls
-        });
-      }
+    value(): string[] | undefined {
+      return this.$store.state.nanobanana?.config?.image_urls;
     }
   },
   watch: {
     value: {
-      handler(val: string[] | undefined) {
-        // sync UI previews when config.image_urls changes (e.g., from Edit button)
-        if (!val || !Array.isArray(val)) {
-          this.fileList = [] as any;
+      immediate: true,
+      handler(newVal?: string[]) {
+        if (this.suppressWatch) return;
+        if (!newVal || newVal.length === 0) {
+          // preserve uploading items even if store is empty
+          const uploading = (this.fileList || []).filter((f: any) => !f?.response?.file_url);
+          this.fileList = uploading.length ? uploading : [];
           return;
         }
-        const next = val.map((url: string, idx: number) => ({
-          name: url?.split('/')?.pop() || `image_${idx + 1}`,
-          url,
-          status: 'success',
-          percentage: 100
-        })) as any;
-        this.fileList = next;
-      },
-      immediate: true,
-      deep: false
+        // sync fileList with value, but keep uploading items
+        const newFiles: UploadFiles = [];
+        newVal.forEach((url: string) => {
+          const existing = this.fileList.find(
+            (file) => (file as any)?.response?.file_url === url || (file as any)?.url === url
+          );
+          if (existing) {
+            newFiles.push(existing);
+          } else {
+            newFiles.push({
+              name: url.split('/').pop() || url,
+              url: url,
+              status: 'success',
+              percentage: 100,
+              response: { file_url: url }
+            } as UploadFile);
+          }
+        });
+        // append currently uploading items not in newFiles
+        const uploading = (this.fileList || []).filter((f: any) => !f?.response?.file_url);
+        uploading.forEach((f: any) => {
+          const exists = newFiles.some(
+            (nf: any) => nf === f || nf?.url === f?.url || nf?.response?.file_url === f?.response?.file_url
+          );
+          if (!exists) newFiles.push(f);
+        });
+        this.fileList = newFiles;
+      }
     }
   },
   mounted() {
-    if (!this.value) {
-      this.value = undefined;
-    }
-    this.onSetImageUrls();
+    // initial sync handled by watcher with immediate: true
   },
   methods: {
     onChange(file: any) {
@@ -144,6 +157,7 @@ export default defineComponent({
           // ignore
         }
       }
+      this.onSetImageUrls();
     },
     onExceed() {
       ElMessage.warning(this.$t('nanobanana.message.uploadImageExceed'));
@@ -153,15 +167,32 @@ export default defineComponent({
     },
     onSetImageUrls() {
       const urls = this.urls;
+      this.suppressWatch = true;
       this.$store.commit('nanobanana/setConfig', {
         ...this.$store.state.nanobanana?.config,
         image_urls: urls
+      });
+      this.$nextTick(() => {
+        this.suppressWatch = false;
       });
     },
     async onSuccess(response: any, file: any) {
       // update preview to remote URL when finished
       if (response?.file_url) {
         file.url = response.file_url;
+        file.response = response;
+      }
+      this.onSetImageUrls();
+    },
+    onRemovePreview(idx: number, file: any) {
+      // remove from our list and update store; also revoke blob url
+      this.fileList.splice(idx, 1);
+      if (file?.url && typeof file.url === 'string' && file.url.startsWith('blob:')) {
+        try {
+          URL.revokeObjectURL(file.url);
+        } catch (e) {
+          // ignore
+        }
       }
       this.onSetImageUrls();
     }
