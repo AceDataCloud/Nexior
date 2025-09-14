@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 13 Sep 2025 17:39:36 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 14 Sep 2025 16:29:31 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.19.4
+
+Sun, 14 Sep 2025 16:29:31 GMT
+
+### Patches
+
+- fix upload bug of nano (office@acedata.cloud)
 
 ## 3.19.3
 
