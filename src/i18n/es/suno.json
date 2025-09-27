@@ -32,8 +32,8 @@
     "description": "Texto del botón para versión musical"
   },
   "button.concat_music": {
-    "message": "Unir música",
-    "description": "Texto del botón para unir música"
+    "message": "Concatenar música",
+    "description": "Texto del botón para concatenar música"
   },
   "button.download_audio": {
     "message": "Descargar música",
@@ -65,6 +65,14 @@
   },
   "model.model45": {
     "message": "v4.5",
+    "description": "Modelo utilizado para generar música"
+  },
+  "model.model5": {
+    "message": "v5",
+    "description": "Modelo utilizado para generar música"
+  },
+  "model.model45plus": {
+    "message": "v4.5-plus",
     "description": "Modelo utilizado para generar música"
   },
   "name.taskId": {
@@ -100,7 +108,7 @@
     "description": "Sugerencia para la entrada de contenido del título"
   },
   "name.failureReason": {
-    "message": "Razón de fallo",
+    "message": "Razón del fallo",
     "description": "Razón del fallo de la tarea"
   },
   "name.status": {
@@ -132,7 +140,7 @@
     "description": "Descripción del parámetro 'title'"
   },
   "description.uploadAudios": {
-    "message": "Sube música como referencia para la generación, el proceso de subida puede tardar un momento, una vez que se genere con éxito, podrás generar según la música subida",
+    "message": "Sube música como referencia para la generación, el proceso de subida puede tardar un momento, una vez que se genere con éxito, se podrá generar según la música subida",
     "description": "Descripción del parámetro de referencia de subida"
   },
   "status.pending": {
@@ -140,7 +148,7 @@
     "description": "Estado de espera de la tarea"
   },
   "placeholder.prompt": {
-    "message": "Introduce la sugerencia de la canción...",
+    "message": "Introduce la palabra clave de la canción...",
     "description": "Marcador de posición para la entrada de ruido"
   },
   "placeholder.lyrics": {
@@ -156,11 +164,11 @@
     "description": "Marcador de posición para el nivel de entrada"
   },
   "placeholder.style": {
-    "message": "Introduce la sugerencia del estilo de la canción que deseas generar, por ejemplo, pop acústico",
+    "message": "Introduce la palabra clave del estilo de la canción que deseas generar, por ejemplo, pop acústico",
     "description": "Texto de marcador de posición en el campo de sugerencia"
   },
   "placeholder.title": {
-    "message": "Introduce la sugerencia del título de la canción que deseas generar, por ejemplo, canción de vacaciones",
+    "message": "Introduce la palabra clave del título de la canción que deseas generar, por ejemplo, canción de vacaciones",
     "description": "Marcador de posición para la entrada de semilla"
   },
   "placeholder.select": {
@@ -177,11 +185,11 @@
   },
   "message.startingTask": {
     "message": "Iniciando tarea...",
-    "description": "Mensaje al comenzar la tarea de generación de música"
+    "description": "Mensaje al iniciar la tarea de generación de música"
   },
   "message.startingUploadAudio": {
     "message": "Subiendo música personalizada...",
-    "description": "Mensaje al comenzar la tarea de generación de música"
+    "description": "Mensaje al iniciar la tarea de generación de música"
   },
   "message.uploadReferencesExceed": {
     "message": "La música subida excede la cantidad máxima",
@@ -189,35 +197,35 @@
   },
   "message.uploadReferencesError": {
     "message": "Error al subir música",
-    "description": "Mensaje de error cuando falla la subida de música"
+    "description": "Mensaje de error cuando falla la carga de música"
   },
   "message.startTaskSuccess": {
     "message": "Tarea de generación de música iniciada con éxito",
-    "description": "Mensaje de éxito al iniciar la tarea de generación de música"
+    "description": "Mensaje de éxito cuando se inicia con éxito la tarea de generación de música"
   },
   "message.startUploadAudioSuccess": {
     "message": "Música personalizada subida con éxito",
-    "description": "Mensaje de éxito al subir música personalizada"
+    "description": "Mensaje de éxito cuando se inicia con éxito la tarea de generación de música"
   },
   "message.startUploadAudioFailed": {
     "message": "Error al subir música personalizada",
-    "description": "Mensaje de error al fallar la subida de música personalizada"
+    "description": "Mensaje de error cuando falla el inicio de la tarea de generación de música"
   },
   "message.startTaskFailed": {
     "message": "Error al iniciar la tarea de generación de música",
-    "description": "Mensaje de error al fallar al iniciar la tarea de generación de música"
+    "description": "Mensaje de error cuando falla el inicio de la tarea de generación de música"
   },
   "message.getVideoUrlFailed": {
     "message": "Error al obtener el video de música, por favor intente de nuevo más tarde",
-    "description": "Mensaje de error al fallar al obtener el video de música"
+    "description": "Mensaje de error cuando falla el inicio de la tarea de generación de música"
   },
   "message.generating": {
     "message": "Generando...",
-    "description": "Mensaje mientras la música está siendo generada"
+    "description": "Mensaje cuando la música está siendo generada"
   },
   "message.generateFailed": {
     "message": "Error al generar música",
-    "description": "Mensaje al fallar la generación de música"
+    "description": "Mensaje cuando la generación de música falla"
   },
   "message.noOperations": {
     "message": "No hay operaciones disponibles",

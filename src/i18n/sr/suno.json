@@ -9,11 +9,11 @@
   },
   "button.more": {
     "message": "Više opcija",
-    "description": "Tekst dugmeta za više opcija"
+    "description": "Tekst dugmeta za preuzimanje"
   },
   "button.uploadAudios": {
     "message": "Otpremi",
-    "description": "Tekst dugmeta koje omogućava korisniku da otpremi referentne materijale"
+    "description": "Tekst dugmeta koje omogućava korisniku da otpremi referencu"
   },
   "button.video": {
     "message": "Video",
@@ -24,16 +24,16 @@
     "description": "Tekst dugmeta za preuzimanje videa"
   },
   "button.get_stems": {
-    "message": "Izvuci zvučne staze",
-    "description": "Tekst dugmeta za preuzimanje zvučnih staza"
+    "message": "Separacija zvuka",
+    "description": "Tekst dugmeta za preuzimanje videa"
   },
   "button.cover_music": {
     "message": "Obrada muzike",
-    "description": "Tekst dugmeta za preuzimanje obrade muzike"
+    "description": "Tekst dugmeta za preuzimanje videa"
   },
   "button.concat_music": {
-    "message": "Spoji muziku",
-    "description": "Tekst dugmeta za preuzimanje spojene muzike"
+    "message": "Spajanje muzike",
+    "description": "Tekst dugmeta za preuzimanje videa"
   },
   "button.download_audio": {
     "message": "Preuzmi muziku",
@@ -67,6 +67,14 @@
     "message": "v4.5",
     "description": "Model za generisanje muzike"
   },
+  "model.model5": {
+    "message": "v5",
+    "description": "Model za generisanje muzike"
+  },
+  "model.model45plus": {
+    "message": "v4.5-plus",
+    "description": "Model za generisanje muzike"
+  },
   "name.taskId": {
     "message": "ID zadatka",
     "description": "ID zadatka"
@@ -93,11 +101,11 @@
   },
   "name.style": {
     "message": "Stil pesme",
-    "description": "Prompt za unos stila pesme"
+    "description": "Prompt za unos sadržaja stila"
   },
   "name.title": {
     "message": "Naslov pesme",
-    "description": "Prompt za unos naslova pesme"
+    "description": "Prompt za unos sadržaja naslova"
   },
   "name.failureReason": {
     "message": "Razlog neuspeha",
@@ -141,35 +149,35 @@
   },
   "placeholder.prompt": {
     "message": "Unesite reči za pesmu...",
-    "description": "Placeholder za unos reči"
+    "description": "Placeholder za unos buke"
   },
   "placeholder.lyrics": {
     "message": "Unesite tekst...",
-    "description": "Placeholder za unos teksta"
+    "description": "Placeholder za nivo unosa"
   },
   "placeholder.extend.lyrics": {
     "message": "Unesite tekst koji treba proširiti...",
-    "description": "Placeholder za unos teksta"
+    "description": "Placeholder za nivo unosa"
   },
   "placeholder.extend.continue_at": {
     "message": "Unesite od koje sekunde pesme treba nastaviti...",
-    "description": "Placeholder za unos sekunde"
+    "description": "Placeholder za nivo unosa"
   },
   "placeholder.style": {
-    "message": "Unesite reči za stil pesme, na primer, akustični pop",
-    "description": "Placeholder za unos stila"
+    "message": "Unesite reči za stil pesme koji želite da generišete, na primer, akustični pop",
+    "description": "Placeholder u polju za unos"
   },
   "placeholder.title": {
-    "message": "Unesite reči za naslov pesme, na primer, pesma o praznicima",
-    "description": "Placeholder za unos naslova"
+    "message": "Unesite reči za naslov pesme koji želite da generišete, na primer, pesma o praznicima",
+    "description": "Placeholder za unos semena"
   },
   "placeholder.select": {
     "message": "Izaberite model...",
-    "description": "Placeholder za izbor modela"
+    "description": "Placeholder za unos pozicije"
   },
   "placeholder.position": {
     "message": "Izaberite...",
-    "description": "Placeholder za izbor pozicije"
+    "description": "Placeholder za unos pozicije"
   },
   "button.generate": {
     "message": "Generiši",
@@ -177,54 +185,54 @@
   },
   "message.startingTask": {
     "message": "Pokreće se zadatak...",
-    "description": "Poruka kada se zadatak za generisanje muzike pokreće"
+    "description": "Poruka kada započinje zadatak generisanja muzike"
   },
   "message.startingUploadAudio": {
     "message": "Otpremanje prilagođene muzike...",
-    "description": "Poruka kada se zadatak za generisanje muzike pokreće"
+    "description": "Poruka kada započinje zadatak generisanja muzike"
   },
   "message.uploadReferencesExceed": {
-    "message": "Otpremanje muzike premašilo je maksimalni broj",
-    "description": "Poruka greške kada otpremljena muzika premaši maksimalni broj"
+    "message": "Otpremana muzika premašila je maksimalni broj",
+    "description": "Poruka greške kada otpremana muzika premaši maksimalni broj"
   },
   "message.uploadReferencesError": {
-    "message": "Otpremanje muzike nije uspelo",
-    "description": "Poruka greške kada otpremanje muzike ne uspe"
+    "message": "Greška prilikom učitavanja muzike",
+    "description": "Greška prilikom učitavanja muzike"
   },
   "message.startTaskSuccess": {
     "message": "Uspešno pokrenut zadatak generisanja muzike",
-    "description": "Uspešna poruka kada je zadatak generisanja muzike uspešno pokrenut"
+    "description": "Uspešno pokrenut zadatak generisanja muzike"
   },
   "message.startUploadAudioSuccess": {
-    "message": "Uspešno otpremljena prilagođena muzika",
-    "description": "Uspešna poruka kada je prilagođena muzika uspešno otpremljena"
+    "message": "Uspešno učitana prilagođena muzika",
+    "description": "Uspešno učitana prilagođena muzika"
   },
   "message.startUploadAudioFailed": {
-    "message": "Otprema prilagođene muzike nije uspela",
-    "description": "Poruka o grešci kada pokretanje zadatka generisanja muzike nije uspelo"
+    "message": "Greška prilikom učitavanja prilagođene muzike",
+    "description": "Greška prilikom učitavanja prilagođene muzike"
   },
   "message.startTaskFailed": {
-    "message": "Pokretanje zadatka generisanja muzike nije uspelo",
-    "description": "Poruka o grešci kada pokretanje zadatka generisanja muzike nije uspelo"
+    "message": "Greška prilikom pokretanja zadatka generisanja muzike",
+    "description": "Greška prilikom pokretanja zadatka generisanja muzike"
   },
   "message.getVideoUrlFailed": {
-    "message": "Nije uspelo dobijanje URL-a za muziku, molimo pokušajte ponovo kasnije",
-    "description": "Poruka o grešci kada pokretanje zadatka generisanja muzike nije uspelo"
+    "message": "Greška prilikom dobijanja URL-a za muziku, molimo pokušajte ponovo kasnije",
+    "description": "Greška prilikom dobijanja URL-a za muziku"
   },
   "message.generating": {
     "message": "Generiše se...",
-    "description": "Poruka kada se muzika generiše"
+    "description": "Poruka dok se muzika generiše"
   },
   "message.generateFailed": {
-    "message": "Generisanje muzike nije uspelo",
-    "description": "Poruka kada generisanje muzike nije uspelo"
+    "message": "Greška prilikom generisanja muzike",
+    "description": "Greška prilikom generisanja muzike"
   },
   "message.noOperations": {
     "message": "Nema dostupnih operacija",
     "description": "Poruka kada nema dostupnih operacija"
   },
   "message.noTasks": {
-    "message": "Nema istorijskih zadataka, molimo generišite muziku u konfiguracionoj traci s leve strane",
+    "message": "Nema istorijskih zadataka, molimo generišite muziku u levom konfiguracionom panelu",
     "description": "Poruka kada nema zadataka"
   }
 }
