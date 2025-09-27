@@ -21,23 +21,23 @@
   },
   "button.download_video": {
     "message": "Video herunterladen",
-    "description": "Text des Herunterladen-Buttons für Videos"
+    "description": "Text des Video herunterladen-Buttons"
   },
   "button.get_stems": {
     "message": "Stimmen trennen",
-    "description": "Text des Herunterladen-Buttons für Videos"
+    "description": "Text des Video herunterladen-Buttons"
   },
   "button.cover_music": {
     "message": "Musikcover",
-    "description": "Text des Herunterladen-Buttons für Videos"
+    "description": "Text des Video herunterladen-Buttons"
   },
   "button.concat_music": {
     "message": "Musik zusammenfügen",
-    "description": "Text des Herunterladen-Buttons für Videos"
+    "description": "Text des Video herunterladen-Buttons"
   },
   "button.download_audio": {
     "message": "Musik herunterladen",
-    "description": "Text des Herunterladen-Buttons für Musik"
+    "description": "Text des Musik herunterladen-Buttons"
   },
   "model.model1": {
     "message": "v2",
@@ -65,6 +65,14 @@
   },
   "model.model45": {
     "message": "v4.5",
+    "description": "Modell zur Musikgenerierung"
+  },
+  "model.model5": {
+    "message": "v5",
+    "description": "Modell zur Musikgenerierung"
+  },
+  "model.model45plus": {
+    "message": "v4.5-plus",
     "description": "Modell zur Musikgenerierung"
   },
   "name.taskId": {
@@ -132,7 +140,7 @@
     "description": "Beschreibung des Parameters 'title'"
   },
   "description.uploadAudios": {
-    "message": "Laden Sie Musik als Referenz für die Generierung hoch. Der Upload-Prozess kann einige Zeit in Anspruch nehmen. Nach erfolgreicher Generierung können Sie basierend auf der hochgeladenen Musik generieren.",
+    "message": "Laden Sie Musik als Referenz für die Generierung hoch. Der Upload-Prozess benötigt etwas Zeit. Nach erfolgreicher Generierung können Sie basierend auf der hochgeladenen Musik generieren.",
     "description": "Beschreibung des Upload-Referenzparameters"
   },
   "status.pending": {
@@ -140,8 +148,8 @@
     "description": "Wartezustand der Aufgabe"
   },
   "placeholder.prompt": {
-    "message": "Bitte geben Sie den Songhinweis ein...",
-    "description": "Platzhalter für die Eingabe des Hinweises"
+    "message": "Bitte geben Sie den Songprompt ein...",
+    "description": "Platzhalter für die Eingabe des Prompts"
   },
   "placeholder.lyrics": {
     "message": "Bitte geben Sie den Text ein...",
@@ -152,15 +160,15 @@
     "description": "Platzhalter für den Textinhalt"
   },
   "placeholder.extend.continue_at": {
-    "message": "Bitte geben Sie an, ab welcher Sekunde des Songs Sie erweitern möchten...",
+    "message": "Bitte geben Sie ein, ab welcher Sekunde des Songs Sie erweitern möchten...",
     "description": "Platzhalter für die Eingabe"
   },
   "placeholder.style": {
-    "message": "Bitte geben Sie den Hinweis für den zu generierenden Songstil ein, z. B. akustischer Pop",
-    "description": "Platzhaltertext im Hinweisfeld"
+    "message": "Bitte geben Sie den Stil des zu generierenden Songs ein, z. B. akustischer Pop",
+    "description": "Platzhaltertext im Eingabefeld"
   },
   "placeholder.title": {
-    "message": "Bitte geben Sie den Hinweis für den zu generierenden Songtitel ein, z. B. Feiertagslied",
+    "message": "Bitte geben Sie den Titel des zu generierenden Songs ein, z. B. Feiertagslied",
     "description": "Platzhalter für die Eingabe"
   },
   "placeholder.select": {
@@ -184,47 +192,47 @@
     "description": "Nachricht beim Start der Musikgenerierungsaufgabe"
   },
   "message.uploadReferencesExceed": {
-    "message": "Die hochgeladene Musik hat die maximale Anzahl überschritten",
+    "message": "Die hochgeladene Musik überschreitet die maximale Anzahl",
     "description": "Fehlermeldung, wenn die hochgeladene Musik die maximale Anzahl überschreitet"
   },
   "message.uploadReferencesError": {
-    "message": "Hochladen der Musik fehlgeschlagen",
+    "message": "Fehler beim Hochladen der Musik",
     "description": "Fehlermeldung, wenn das Hochladen der Musik fehlschlägt"
   },
   "message.startTaskSuccess": {
     "message": "Musikgenerierungsaufgabe erfolgreich gestartet",
-    "description": "Erfolgsnachricht, wenn die Musikgenerierungsaufgabe erfolgreich gestartet wurde"
+    "description": "Erfolgreiche Meldung, wenn die Musikgenerierungsaufgabe gestartet wird"
   },
   "message.startUploadAudioSuccess": {
     "message": "Benutzerdefinierte Musik erfolgreich hochgeladen",
-    "description": "Erfolgsnachricht, wenn die Musikgenerierungsaufgabe erfolgreich gestartet wurde"
+    "description": "Erfolgreiche Meldung, wenn die Musikgenerierungsaufgabe gestartet wird"
   },
   "message.startUploadAudioFailed": {
-    "message": "Hochladen der benutzerdefinierten Musik fehlgeschlagen",
+    "message": "Fehler beim Hochladen der benutzerdefinierten Musik",
     "description": "Fehlermeldung, wenn das Starten der Musikgenerierungsaufgabe fehlschlägt"
   },
   "message.startTaskFailed": {
-    "message": "Starten der Musikgenerierungsaufgabe fehlgeschlagen",
+    "message": "Fehler beim Starten der Musikgenerierungsaufgabe",
     "description": "Fehlermeldung, wenn das Starten der Musikgenerierungsaufgabe fehlschlägt"
   },
   "message.getVideoUrlFailed": {
-    "message": "Abrufen des Musikvideos fehlgeschlagen, bitte später erneut versuchen",
+    "message": "Fehler beim Abrufen des Musikvideos, bitte später erneut versuchen",
     "description": "Fehlermeldung, wenn das Starten der Musikgenerierungsaufgabe fehlschlägt"
   },
   "message.generating": {
     "message": "Wird generiert...",
-    "description": "Nachricht, wenn die Musik generiert wird"
+    "description": "Meldung, wenn die Musik generiert wird"
   },
   "message.generateFailed": {
-    "message": "Musikgenerierung fehlgeschlagen",
-    "description": "Nachricht, wenn die Musikgenerierung fehlschlägt"
+    "message": "Fehler bei der Musikgenerierung",
+    "description": "Meldung, wenn die Musikgenerierung fehlschlägt"
   },
   "message.noOperations": {
     "message": "Keine verfügbaren Operationen",
-    "description": "Nachricht, wenn keine verfügbaren Operationen vorhanden sind"
+    "description": "Meldung, wenn keine verfügbaren Operationen vorhanden sind"
   },
   "message.noTasks": {
     "message": "Keine historischen Aufgaben, bitte Musik im linken Konfigurationsbereich generieren",
-    "description": "Nachricht, wenn keine Aufgaben vorhanden sind"
+    "description": "Meldung, wenn keine Aufgaben vorhanden sind"
   }
 }

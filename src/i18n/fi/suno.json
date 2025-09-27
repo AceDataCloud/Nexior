@@ -9,7 +9,7 @@
   },
   "button.more": {
     "message": "Lisää toimintoja",
-    "description": "Lisää toimintoja -painikkeen teksti"
+    "description": "Lataa -painikkeen teksti"
   },
   "button.uploadAudios": {
     "message": "Lataa",
@@ -25,15 +25,15 @@
   },
   "button.get_stems": {
     "message": "Ääniraitojen erottaminen",
-    "description": "Ääniraitojen erottaminen -painikkeen teksti"
+    "description": "Lataa video -painikkeen teksti"
   },
   "button.cover_music": {
     "message": "Musiikin kansiversio",
-    "description": "Musiikin kansiversio -painikkeen teksti"
+    "description": "Lataa video -painikkeen teksti"
   },
   "button.concat_music": {
-    "message": "Yhdistä musiikki",
-    "description": "Yhdistä musiikki -painikkeen teksti"
+    "message": "Musiikin yhdistäminen",
+    "description": "Lataa video -painikkeen teksti"
   },
   "button.download_audio": {
     "message": "Lataa musiikki",
@@ -67,13 +67,21 @@
     "message": "v4.5",
     "description": "Malli musiikin generointiin"
   },
+  "model.model5": {
+    "message": "v5",
+    "description": "Malli musiikin generointiin"
+  },
+  "model.model45plus": {
+    "message": "v4.5-plus",
+    "description": "Malli musiikin generointiin"
+  },
   "name.taskId": {
     "message": "Tehtävän ID",
     "description": "Tehtävän ID"
   },
   "name.type": {
-    "message": "Mukautettu tila",
-    "description": "Mukautetun tilan nimi"
+    "message": "Mukautettu malli",
+    "description": "Mukautetun mallin nimi"
   },
   "name.prompt": {
     "message": "Kappaleen kuvaus",
@@ -132,7 +140,7 @@
     "description": "Parametrin 'title' kuvaus"
   },
   "description.uploadAudios": {
-    "message": "Lataa musiikkia generoinnin viittaukseksi, latausprosessi vie hetken, onnistuneen generoinnin jälkeen voit luoda musiikkia ladatun musiikin perusteella",
+    "message": "Lataa musiikkia generoinnin viittauksena, latausprosessi vie hetken, onnistuneen generoinnin jälkeen voit luoda musiikkia ladatun musiikin perusteella",
     "description": "Viittausparametrin kuvaus"
   },
   "status.pending": {
@@ -161,15 +169,15 @@
   },
   "placeholder.title": {
     "message": "Syötä haluamasi kappaleen otsikon kehotussana, esimerkiksi lomakappale",
-    "description": "Siemenen syötteen paikkamerkki"
+    "description": "Siemen syötteen paikkamerkki"
   },
   "placeholder.select": {
     "message": "Valitse malli...",
-    "description": "Sijainnin syötteen paikkamerkki"
+    "description": "Sijaintisyötteen paikkamerkki"
   },
   "placeholder.position": {
     "message": "Valitse...",
-    "description": "Sijainnin syötteen paikkamerkki"
+    "description": "Sijaintisyötteen paikkamerkki"
   },
   "button.generate": {
     "message": "Generoi",
@@ -184,47 +192,47 @@
     "description": "Viesti musiikin generointitehtävän alkaessa"
   },
   "message.uploadReferencesExceed": {
-    "message": "Ladattu musiikki ylittää enimmäismäärän",
-    "description": "Virheviesti, kun ladattu musiikki ylittää enimmäismäärän"
+    "message": "Ladattu musiikki ylittää maksimi määrän",
+    "description": "Virheviesti, kun ladattu musiikki ylittää maksimi määrän"
   },
   "message.uploadReferencesError": {
     "message": "Musiikin lataaminen epäonnistui",
-    "description": "Virheviesti, kun musiikin lataaminen epäonnistuu"
+    "description": "Virheilmoitus, kun musiikin lataaminen epäonnistuu"
   },
   "message.startTaskSuccess": {
-    "message": "Musiikkigenerointitehtävä käynnistetty onnistuneesti",
-    "description": "Onnistumisviesti musiikkigenerointitehtävän käynnistämisen jälkeen"
+    "message": "Musiikin generointitehtävä käynnistetty onnistuneesti",
+    "description": "Onnistunut viesti, kun musiikin generointitehtävä käynnistetään"
   },
   "message.startUploadAudioSuccess": {
     "message": "Mukautetun musiikin lataaminen onnistui",
-    "description": "Onnistumisviesti mukautetun musiikin lataamisen jälkeen"
+    "description": "Onnistunut viesti, kun mukautetun musiikin lataaminen onnistuu"
   },
   "message.startUploadAudioFailed": {
     "message": "Mukautetun musiikin lataaminen epäonnistui",
-    "description": "Virheviesti musiikkigenerointitehtävän käynnistämisen epäonnistumisen jälkeen"
+    "description": "Virheilmoitus, kun mukautetun musiikin lataaminen epäonnistuu"
   },
   "message.startTaskFailed": {
-    "message": "Musiikkigenerointitehtävän käynnistäminen epäonnistui",
-    "description": "Virheviesti musiikkigenerointitehtävän käynnistämisen epäonnistumisen jälkeen"
+    "message": "Musiikin generointitehtävän käynnistäminen epäonnistui",
+    "description": "Virheilmoitus, kun musiikin generointitehtävän käynnistäminen epäonnistuu"
   },
   "message.getVideoUrlFailed": {
     "message": "Musiikkivideon saaminen epäonnistui, yritä myöhemmin uudelleen",
-    "description": "Virheviesti musiikkigenerointitehtävän käynnistämisen epäonnistumisen jälkeen"
+    "description": "Virheilmoitus, kun musiikkivideon saaminen epäonnistuu"
   },
   "message.generating": {
     "message": "Generoidaan...",
-    "description": "Viesti musiikin generoimisen aikana"
+    "description": "Viesti, kun musiikkia generoidaan"
   },
   "message.generateFailed": {
     "message": "Musiikin generoiminen epäonnistui",
-    "description": "Viesti musiikin generoinnin epäonnistumisen jälkeen"
+    "description": "Viesti, kun musiikin generoiminen epäonnistuu"
   },
   "message.noOperations": {
-    "message": "Ei käytettävissä olevia toimintoja",
-    "description": "Viesti, kun käytettävissä ei ole toimintoja"
+    "message": "Ei saatavilla olevia toimintoja",
+    "description": "Viesti, kun ei ole saatavilla olevia toimintoja"
   },
   "message.noTasks": {
     "message": "Ei historiallisia tehtäviä, luo musiikkia vasemmalla olevasta asetuspaneelista",
-    "description": "Viesti, kun tehtäviä ei ole"
+    "description": "Viesti, kun ei ole tehtäviä"
   }
 }

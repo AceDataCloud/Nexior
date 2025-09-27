@@ -67,6 +67,14 @@
     "message": "v4.5",
     "description": "Model used for generating music"
   },
+  "model.model5": {
+    "message": "v5",
+    "description": "Model used for generating music"
+  },
+  "model.model45plus": {
+    "message": "v4.5-plus",
+    "description": "Model used for generating music"
+  },
   "name.taskId": {
     "message": "Task ID",
     "description": "ID of the task"
@@ -80,7 +88,7 @@
     "description": "Prompt for content input"
   },
   "name.extend": {
-    "message": "Extended Song From",
+    "message": "Extend Song From",
     "description": "Prompt for content input"
   },
   "name.cover": {
@@ -132,7 +140,7 @@
     "description": "Description for the 'title' parameter"
   },
   "description.uploadAudios": {
-    "message": "Upload music as a reference for generation; the upload process may take a while, and generation can proceed based on the uploaded music once successful.",
+    "message": "Upload music as a reference for generation; the upload process may take some time, and generation can proceed based on the uploaded music once successful.",
     "description": "Description for the upload reference parameter"
   },
   "status.pending": {
@@ -149,7 +157,7 @@
   },
   "placeholder.extend.lyrics": {
     "message": "Please enter lyrics to extend...",
-    "description": "Placeholder for lyrics extension input"
+    "description": "Placeholder for lyrics input"
   },
   "placeholder.extend.continue_at": {
     "message": "Please enter the second from which to continue the song...",
@@ -189,10 +197,10 @@
   },
   "message.uploadReferencesError": {
     "message": "Failed to upload music",
-    "description": "Error message when music upload fails"
+    "description": "Error message when uploading music fails"
   },
   "message.startTaskSuccess": {
-    "message": "Successfully started the music generation task",
+    "message": "Successfully started music generation task",
     "description": "Success message when the music generation task is successfully started"
   },
   "message.startUploadAudioSuccess": {
@@ -201,23 +209,23 @@
   },
   "message.startUploadAudioFailed": {
     "message": "Failed to upload custom music",
-    "description": "Error message when the music generation task fails to start"
+    "description": "Error message when starting the music generation task fails"
   },
   "message.startTaskFailed": {
-    "message": "Failed to start the music generation task",
-    "description": "Error message when the music generation task fails to start"
+    "message": "Failed to start music generation task",
+    "description": "Error message when starting the music generation task fails"
   },
   "message.getVideoUrlFailed": {
-    "message": "Failed to retrieve music video, please try again later",
-    "description": "Error message when the music generation task fails to start"
+    "message": "Failed to get music video, please try again later",
+    "description": "Error message when starting the music generation task fails"
   },
   "message.generating": {
     "message": "Generating...",
-    "description": "Message when the music is being generated"
+    "description": "Message when music is being generated"
   },
   "message.generateFailed": {
     "message": "Failed to generate music",
-    "description": "Message when the music generation fails"
+    "description": "Message when music generation fails"
   },
   "message.noOperations": {
     "message": "No available operations",

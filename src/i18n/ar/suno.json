@@ -29,7 +29,7 @@
   },
   "button.cover_music": {
     "message": "نسخة موسيقية",
-    "description": "نص زر النسخة الموسيقية"
+    "description": "نص زر نسخة موسيقية"
   },
   "button.concat_music": {
     "message": "دمج الموسيقى",
@@ -67,6 +67,14 @@
     "message": "v4.5",
     "description": "النموذج المستخدم لتوليد الموسيقى"
   },
+  "model.model5": {
+    "message": "v5",
+    "description": "النموذج المستخدم لتوليد الموسيقى"
+  },
+  "model.model45plus": {
+    "message": "v4.5-plus",
+    "description": "النموذج المستخدم لتوليد الموسيقى"
+  },
   "name.taskId": {
     "message": "معرف المهمة",
     "description": "معرف المهمة"
@@ -77,27 +85,27 @@
   },
   "name.prompt": {
     "message": "وصف الأغنية",
-    "description": "المطالبة بإدخال المحتوى"
+    "description": "موجه إدخال المحتوى"
   },
   "name.extend": {
     "message": "تمديد الأغنية من",
-    "description": "المطالبة بإدخال المحتوى"
+    "description": "موجه إدخال المحتوى"
   },
   "name.cover": {
     "message": "نسخة الأغنية من",
-    "description": "المطالبة بإدخال المحتوى"
+    "description": "موجه إدخال المحتوى"
   },
   "name.lyrics": {
     "message": "محتوى الكلمات",
-    "description": "المطالبة بإدخال محتوى الكلمات"
+    "description": "موجه إدخال محتوى الكلمات"
   },
   "name.style": {
     "message": "أسلوب الأغنية",
-    "description": "المطالبة بإدخال محتوى أسلوب الأغنية"
+    "description": "موجه إدخال محتوى أسلوب الأغنية"
   },
   "name.title": {
     "message": "عنوان الأغنية",
-    "description": "المطالبة بإدخال عنوان الأغنية"
+    "description": "موجه إدخال محتوى عنوان الأغنية"
   },
   "name.failureReason": {
     "message": "سبب الفشل",
@@ -145,19 +153,19 @@
   },
   "placeholder.lyrics": {
     "message": "أدخل الكلمات...",
-    "description": "نص العنصر النائب لمستوى الإدخال"
+    "description": "نص العنصر النائب لمستوى الكلمات"
   },
   "placeholder.extend.lyrics": {
     "message": "أدخل الكلمات التي تحتاج إلى تمديد...",
-    "description": "نص العنصر النائب لمستوى الإدخال"
+    "description": "نص العنصر النائب لمستوى الكلمات"
   },
   "placeholder.extend.continue_at": {
     "message": "أدخل من أي ثانية تحتاج إلى التمديد...",
-    "description": "نص العنصر النائب لمستوى الإدخال"
+    "description": "نص العنصر النائب لمستوى الكلمات"
   },
   "placeholder.style": {
     "message": "أدخل كلمات أسلوب الأغنية التي تريد توليدها، مثل البوب الصوتي",
-    "description": "نص العنصر النائب في حقل المطالبة"
+    "description": "نص العنصر النائب في حقل الموجه"
   },
   "placeholder.title": {
     "message": "أدخل كلمات عنوان الأغنية التي تريد توليدها، مثل أغنية العطلة",
@@ -188,32 +196,32 @@
     "description": "رسالة خطأ عند تجاوز عدد الموسيقى المرفوعة الحد الأقصى"
   },
   "message.uploadReferencesError": {
-    "message": "فشل رفع الموسيقى",
+    "message": "فشل في رفع الموسيقى",
     "description": "رسالة خطأ عند فشل رفع الموسيقى"
   },
   "message.startTaskSuccess": {
     "message": "تم بدء مهمة توليد الموسيقى بنجاح",
-    "description": "رسالة النجاح عند بدء مهمة توليد الموسيقى بنجاح"
+    "description": "رسالة نجاح عند بدء مهمة توليد الموسيقى بنجاح"
   },
   "message.startUploadAudioSuccess": {
     "message": "تم رفع الموسيقى المخصصة بنجاح",
-    "description": "رسالة النجاح عند رفع الموسيقى المخصصة بنجاح"
+    "description": "رسالة نجاح عند رفع الموسيقى المخصصة بنجاح"
   },
   "message.startUploadAudioFailed": {
     "message": "فشل في رفع الموسيقى المخصصة",
-    "description": "رسالة الخطأ عند فشل بدء مهمة توليد الموسيقى"
+    "description": "رسالة خطأ عند فشل رفع الموسيقى المخصصة"
   },
   "message.startTaskFailed": {
     "message": "فشل في بدء مهمة توليد الموسيقى",
-    "description": "رسالة الخطأ عند فشل بدء مهمة توليد الموسيقى"
+    "description": "رسالة خطأ عند فشل بدء مهمة توليد الموسيقى"
   },
   "message.getVideoUrlFailed": {
     "message": "فشل في الحصول على فيديو الموسيقى، يرجى المحاولة لاحقًا",
-    "description": "رسالة الخطأ عند فشل بدء مهمة توليد الموسيقى"
+    "description": "رسالة خطأ عند فشل الحصول على فيديو الموسيقى"
   },
   "message.generating": {
     "message": "جاري التوليد...",
-    "description": "رسالة أثناء توليد الموسيقى"
+    "description": "رسالة عند توليد الموسيقى"
   },
   "message.generateFailed": {
     "message": "فشل في توليد الموسيقى",

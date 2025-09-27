@@ -1,7 +1,7 @@
 {
   "button.extend": {
     "message": "Continuar gerando",
-    "description": "Texto do botão para continuar gerando"
+    "description": "Texto do botão para continuar a geração"
   },
   "button.download": {
     "message": "Baixar",
@@ -67,6 +67,14 @@
     "message": "v4.5",
     "description": "Modelo usado para gerar música"
   },
+  "model.model5": {
+    "message": "v5",
+    "description": "Modelo usado para gerar música"
+  },
+  "model.model45plus": {
+    "message": "v4.5-plus",
+    "description": "Modelo usado para gerar música"
+  },
   "name.taskId": {
     "message": "ID da tarefa",
     "description": "ID da tarefa"
@@ -93,11 +101,11 @@
   },
   "name.style": {
     "message": "Estilo da música",
-    "description": "Prompt para entrada de conteúdo do estilo da música"
+    "description": "Prompt para entrada de conteúdo do estilo"
   },
   "name.title": {
     "message": "Título da música",
-    "description": "Prompt para entrada de conteúdo do título da música"
+    "description": "Prompt para entrada de conteúdo do título"
   },
   "name.failureReason": {
     "message": "Razão da falha",
@@ -132,7 +140,7 @@
     "description": "Descrição do parâmetro 'title'"
   },
   "description.uploadAudios": {
-    "message": "Envie músicas como referência para a geração, o processo de envio pode levar um tempo, após o sucesso da geração, você poderá gerar com base na música enviada",
+    "message": "Envie músicas como referência para a geração, o processo de envio pode levar um tempo, após a geração bem-sucedida, você poderá gerar com base na música enviada",
     "description": "Descrição do parâmetro de referência de upload"
   },
   "status.pending": {
@@ -141,19 +149,19 @@
   },
   "placeholder.prompt": {
     "message": "Digite a palavra-chave da música...",
-    "description": "Placeholder para entrada de ruído preenchido"
+    "description": "Placeholder para entrada de texto"
   },
   "placeholder.lyrics": {
     "message": "Digite a letra...",
-    "description": "Placeholder para nível preenchido"
+    "description": "Placeholder para entrada de texto"
   },
   "placeholder.extend.lyrics": {
     "message": "Digite a letra que precisa ser expandida...",
-    "description": "Placeholder para nível preenchido"
+    "description": "Placeholder para entrada de texto"
   },
   "placeholder.extend.continue_at": {
     "message": "Digite de qual segundo da música você deseja expandir...",
-    "description": "Placeholder para nível preenchido"
+    "description": "Placeholder para entrada de texto"
   },
   "placeholder.style": {
     "message": "Digite a palavra-chave do estilo da música que deseja gerar, por exemplo, pop acústico",
@@ -161,15 +169,15 @@
   },
   "placeholder.title": {
     "message": "Digite a palavra-chave do título da música que deseja gerar, por exemplo, música de férias",
-    "description": "Placeholder para entrada de semente"
+    "description": "Placeholder para entrada de texto"
   },
   "placeholder.select": {
     "message": "Selecione o modelo...",
-    "description": "Placeholder para entrada de posição"
+    "description": "Placeholder para entrada de texto"
   },
   "placeholder.position": {
     "message": "Selecione...",
-    "description": "Placeholder para entrada de posição"
+    "description": "Placeholder para entrada de texto"
   },
   "button.generate": {
     "message": "Gerar",
@@ -177,47 +185,47 @@
   },
   "message.startingTask": {
     "message": "Iniciando tarefa...",
-    "description": "Mensagem ao iniciar a tarefa de geração de música"
+    "description": "Mensagem quando a tarefa de geração de música começa"
   },
   "message.startingUploadAudio": {
     "message": "Enviando música personalizada...",
-    "description": "Mensagem ao iniciar a tarefa de geração de música"
+    "description": "Mensagem quando a tarefa de geração de música começa"
   },
   "message.uploadReferencesExceed": {
     "message": "A música enviada excedeu o número máximo",
     "description": "Mensagem de erro quando a música enviada excede o número máximo"
   },
   "message.uploadReferencesError": {
-    "message": "Falha ao enviar música",
-    "description": "Mensagem de erro quando falha ao enviar música"
+    "message": "Falha ao fazer upload da música",
+    "description": "Mensagem de erro quando o upload da música falha"
   },
   "message.startTaskSuccess": {
     "message": "Tarefa de geração de música iniciada com sucesso",
-    "description": "Mensagem de sucesso ao iniciar a tarefa de geração de música"
+    "description": "Mensagem de sucesso quando a tarefa de geração de música é iniciada com sucesso"
   },
   "message.startUploadAudioSuccess": {
     "message": "Música personalizada enviada com sucesso",
-    "description": "Mensagem de sucesso ao enviar música personalizada"
+    "description": "Mensagem de sucesso quando a música personalizada é enviada com sucesso"
   },
   "message.startUploadAudioFailed": {
     "message": "Falha ao enviar música personalizada",
-    "description": "Mensagem de erro ao falhar ao iniciar a tarefa de geração de música"
+    "description": "Mensagem de erro quando a tarefa de geração de música falha"
   },
   "message.startTaskFailed": {
     "message": "Falha ao iniciar a tarefa de geração de música",
-    "description": "Mensagem de erro ao falhar ao iniciar a tarefa de geração de música"
+    "description": "Mensagem de erro quando a tarefa de geração de música falha"
   },
   "message.getVideoUrlFailed": {
     "message": "Falha ao obter o vídeo da música, por favor, tente novamente mais tarde",
-    "description": "Mensagem de erro ao falhar ao iniciar a tarefa de geração de música"
+    "description": "Mensagem de erro quando a tarefa de geração de música falha"
   },
   "message.generating": {
     "message": "Gerando...",
-    "description": "Mensagem enquanto a música está sendo gerada"
+    "description": "Mensagem quando a música está sendo gerada"
   },
   "message.generateFailed": {
-    "message": "Falha ao gerar música",
-    "description": "Mensagem ao falhar na geração de música"
+    "message": "Falha ao gerar a música",
+    "description": "Mensagem quando a geração da música falha"
   },
   "message.noOperations": {
     "message": "Nenhuma operação disponível",

@@ -21,23 +21,23 @@
   },
   "button.download_video": {
     "message": "Télécharger la vidéo",
-    "description": "Texte du bouton de téléchargement de la vidéo"
+    "description": "Texte du bouton pour télécharger la vidéo"
   },
   "button.get_stems": {
     "message": "Séparation des pistes",
-    "description": "Texte du bouton de téléchargement de la vidéo"
+    "description": "Texte du bouton pour télécharger la vidéo"
   },
   "button.cover_music": {
     "message": "Couverture musicale",
-    "description": "Texte du bouton de téléchargement de la vidéo"
+    "description": "Texte du bouton pour télécharger la vidéo"
   },
   "button.concat_music": {
     "message": "Concaténer la musique",
-    "description": "Texte du bouton de téléchargement de la vidéo"
+    "description": "Texte du bouton pour télécharger la vidéo"
   },
   "button.download_audio": {
     "message": "Télécharger la musique",
-    "description": "Texte du bouton de téléchargement de la musique"
+    "description": "Texte du bouton pour télécharger la musique"
   },
   "model.model1": {
     "message": "v2",
@@ -65,6 +65,14 @@
   },
   "model.model45": {
     "message": "v4.5",
+    "description": "Modèle utilisé pour générer de la musique"
+  },
+  "model.model5": {
+    "message": "v5",
+    "description": "Modèle utilisé pour générer de la musique"
+  },
+  "model.model45plus": {
+    "message": "v4.5-plus",
     "description": "Modèle utilisé pour générer de la musique"
   },
   "name.taskId": {
@@ -116,7 +124,7 @@
     "description": "Nom du générateur Suno"
   },
   "description.prompt": {
-    "message": "Indiquez le style et le thème de la musique que vous souhaitez générer, par exemple, pop acoustique sur les vacances",
+    "message": "Remplissez le style et le thème de la musique que vous souhaitez générer, par exemple pop acoustique sur les vacances",
     "description": "Description du paramètre 'prompt'"
   },
   "description.lyrics": {
@@ -156,11 +164,11 @@
     "description": "Espace réservé pour le niveau de remplissage"
   },
   "placeholder.style": {
-    "message": "Veuillez entrer les mots d'invite pour le style de la chanson à générer, par exemple, pop acoustique",
+    "message": "Veuillez entrer les mots d'invite pour le style de la chanson à générer, par exemple pop acoustique",
     "description": "Texte d'espace réservé dans le champ d'invite"
   },
   "placeholder.title": {
-    "message": "Veuillez entrer les mots d'invite pour le titre de la chanson à générer, par exemple, chanson de vacances",
+    "message": "Veuillez entrer les mots d'invite pour le titre de la chanson à générer, par exemple chanson de vacances",
     "description": "Espace réservé pour l'entrée de graine"
   },
   "placeholder.select": {
@@ -189,42 +197,42 @@
   },
   "message.uploadReferencesError": {
     "message": "Échec du téléchargement de la musique",
-    "description": "Message d'erreur lors de l'échec du téléchargement de la musique"
+    "description": "Message d'erreur lorsque le téléchargement de la musique échoue"
   },
   "message.startTaskSuccess": {
     "message": "Tâche de génération de musique lancée avec succès",
-    "description": "Message de succès lors du lancement d'une tâche de génération de musique"
+    "description": "Message de succès lorsque la tâche de génération de musique est lancée avec succès"
   },
   "message.startUploadAudioSuccess": {
     "message": "Musique personnalisée téléchargée avec succès",
-    "description": "Message de succès lors du téléchargement d'une musique personnalisée"
+    "description": "Message de succès lorsque la musique personnalisée est téléchargée avec succès"
   },
   "message.startUploadAudioFailed": {
     "message": "Échec du téléchargement de la musique personnalisée",
-    "description": "Message d'erreur lors de l'échec du téléchargement de la musique personnalisée"
+    "description": "Message d'erreur lorsque le téléchargement de la musique personnalisée échoue"
   },
   "message.startTaskFailed": {
     "message": "Échec du lancement de la tâche de génération de musique",
-    "description": "Message d'erreur lors de l'échec du lancement d'une tâche de génération de musique"
+    "description": "Message d'erreur lorsque le lancement de la tâche de génération de musique échoue"
   },
   "message.getVideoUrlFailed": {
     "message": "Échec de l'obtention de l'URL de la vidéo musicale, veuillez réessayer plus tard",
-    "description": "Message d'erreur lors de l'échec de l'obtention de l'URL de la vidéo musicale"
+    "description": "Message d'erreur lorsque l'obtention de l'URL de la vidéo musicale échoue"
   },
   "message.generating": {
     "message": "Génération en cours...",
-    "description": "Message pendant que la musique est en cours de génération"
+    "description": "Message lorsque la musique est en cours de génération"
   },
   "message.generateFailed": {
     "message": "Échec de la génération de la musique",
-    "description": "Message lors de l'échec de la génération de la musique"
+    "description": "Message lorsque la génération de la musique échoue"
   },
   "message.noOperations": {
     "message": "Aucune opération disponible",
-    "description": "Message lorsqu'il n'y a aucune opération disponible"
+    "description": "Message lorsque aucune opération n'est disponible"
   },
   "message.noTasks": {
-    "message": "Aucune tâche historique, veuillez générer de la musique dans le panneau de configuration à gauche",
-    "description": "Message lorsqu'il n'y a aucune tâche"
+    "message": "Aucune tâche historique, veuillez générer de la musique dans la barre de configuration à gauche",
+    "description": "Message lorsque aucune tâche n'est disponible"
   }
 }
