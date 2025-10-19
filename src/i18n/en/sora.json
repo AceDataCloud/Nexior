@@ -1,0 +1,214 @@
+{
+  "name.taskId": {
+    "message": "Task ID",
+    "description": "The ID of the task"
+  },
+  "name.failure": {
+    "message": "Failure",
+    "description": "The failure status of the task"
+  },
+  "name.failureReason": {
+    "message": "Failure Reason",
+    "description": "The reason for the task's failure"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "The status of the task"
+  },
+  "name.traceId": {
+    "message": "Trace ID",
+    "description": "The trace ID of the task"
+  },
+  "name.createdAt": {
+    "message": "Created At",
+    "description": "The date and time the Kling video was generated"
+  },
+  "name.startEndImage": {
+    "message": "Start and End Frame Reference Images",
+    "description": "Reference images for the video to be generated"
+  },
+  "name.action": {
+    "message": "Action",
+    "description": "List of available actions"
+  },
+  "name.prompt": {
+    "message": "Video Prompt",
+    "description": "Prompt for content input"
+  },
+  "name.model": {
+    "message": "Model Version",
+    "description": "The model version used to generate the video"
+  },
+  "name.soraBot": {
+    "message": "OpenAI Sora Bot",
+    "description": "The name of the Sora video generator"
+  },
+  "name.orientation": {
+    "message": "Video Orientation",
+    "description": "The name of the video orientation parameter"
+  },
+  "name.duration": {
+    "message": "Video Duration",
+    "description": "The name of the video duration parameter"
+  },
+  "name.size": {
+    "message": "Video Quality",
+    "description": "The name of the video quality parameter"
+  },
+  "description.imageUrl": {
+    "message": "In multi-image video creation tasks, multiple images must be uploaded.",
+    "description": "Description of the 'imageUrl' parameter"
+  },
+  "description.prompt": {
+    "message": "Prompt words for generating Sora videos",
+    "description": "Description of the 'prompt' parameter"
+  },
+  "description.uploadStartEndImage": {
+    "message": "Array of reference image links, the first is the start frame, followed by the end frame image",
+    "description": "Description of the 'image_url' parameter"
+  },
+  "status.pending": {
+    "message": "Pending",
+    "description": "The waiting status of the task"
+  },
+  "status.processing": {
+    "message": "Processing",
+    "description": "The processing status of the task"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Please select...",
+    "description": "Placeholder for padding noise input"
+  },
+  "placeholder.select": {
+    "message": "Select",
+    "description": "Placeholder text in the selection field"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Please select...",
+    "description": "Placeholder for padding level"
+  },
+  "placeholder.prompt": {
+    "message": "Enter prompt words for the video style to be generated, e.g., moving",
+    "description": "Placeholder text in the prompt field"
+  },
+  "placeholder.position": {
+    "message": "Please select...",
+    "description": "Placeholder for position input"
+  },
+  "tip.proOnly": {
+    "message": "Only the sora-2-pro model supports modifying this parameter",
+    "description": "Tip to inform users that only the professional model supports modifying this parameter"
+  },
+  "button.generate": {
+    "message": "Generate",
+    "description": "Button text for generating Sora videos"
+  },
+  "button.action1": {
+    "message": "Text to Video",
+    "description": "Button text for generating Sora videos"
+  },
+  "button.action2": {
+    "message": "Image to Video",
+    "description": "Button text for generating Sora videos"
+  },
+  "button.download": {
+    "message": "Download Video",
+    "description": "Button text for downloading the video"
+  },
+  "button.uploadImageUrl": {
+    "message": "Upload Image",
+    "description": "Button text for uploading images"
+  },
+  "button.uploadVideoUrl": {
+    "message": "Upload Video",
+    "description": "Button text for uploading videos"
+  },
+  "button.uploadReferences": {
+    "message": "Upload",
+    "description": "Button text that allows users to upload references"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "You can upload a maximum of 2 images",
+    "description": "Error message when the number of uploaded images exceeds the limit"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Images uploaded successfully",
+    "description": "Success message when images are uploaded successfully"
+  },
+  "message.uploadReferencesError": {
+    "message": "Image upload failed, please try again later",
+    "description": "Error message when image upload fails"
+  },
+  "message.startingTask": {
+    "message": "Starting task...",
+    "description": "Message when the drawing task starts"
+  },
+  "message.startTaskSuccess": {
+    "message": "Task initiated successfully",
+    "description": "Success message when the task is successfully started"
+  },
+  "message.startTaskFailed": {
+    "message": "Failed to initiate task, please contact the administrator",
+    "description": "Error message when starting the drawing task fails"
+  },
+  "message.usedUp": {
+    "message": "Your credits are exhausted, please purchase more credits to continue using",
+    "description": "Message when credits are exhausted"
+  },
+  "message.generating": {
+    "message": "Generating...",
+    "description": "Message when the image is being generated"
+  },
+  "message.downloadVideo": {
+    "message": "Download this video",
+    "description": "Message when the image is being generated"
+  },
+  "message.generateFailed": {
+    "message": "Video generation failed",
+    "description": "Message when image generation fails"
+  },
+  "message.uploadVideoExceed": {
+    "message": "The number of uploaded start frame images exceeds the limit",
+    "description": "Error message when the number of uploaded start frame images exceeds the limit"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Uploaded file size cannot exceed 10MB!",
+    "description": "Error message when the uploaded file size exceeds 10MB!"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Uploaded file must be in MP4 format!",
+    "description": "Error message when the uploaded file must be in MP4 format!"
+  },
+  "message.uploadStartEndImageExceed": {
+    "message": "The number of uploaded first frame images exceeds the limit",
+    "description": "Error message when the number of uploaded first frame images exceeds the limit"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "The number of uploaded end frame images exceeds the limit",
+    "description": "Error message when the number of uploaded end frame images exceeds the limit"
+  },
+  "message.uploadStartImageError": {
+    "message": "Failed to upload the start frame image",
+    "description": "Error message when the upload of the start frame image fails"
+  },
+  "message.uploadVideoError": {
+    "message": "Failed to upload the video",
+    "description": "Error message when the upload of the video fails"
+  },
+  "message.uploadEndImageError": {
+    "message": "Failed to upload the end frame image",
+    "description": "Error message when the upload of the end frame image fails"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Failed to upload the document",
+    "description": "Error message when the upload of the document fails"
+  },
+  "message.noOperations": {
+    "message": "No available operations",
+    "description": "Message when there are no available operations"
+  },
+  "message.noTasks": {
+    "message": "No historical tasks, please click on the left to generate a video",
+    "description": "Message when there are no tasks"
+  }
+}

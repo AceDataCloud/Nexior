@@ -1,0 +1,214 @@
+{
+  "name.taskId": {
+    "message": "ID zadania",
+    "description": "ID zadania"
+  },
+  "name.failure": {
+    "message": "Niepowodzenie",
+    "description": "Stan niepowodzenia zadania"
+  },
+  "name.failureReason": {
+    "message": "Powód niepowodzenia",
+    "description": "Powód niepowodzenia zadania"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Status zadania"
+  },
+  "name.traceId": {
+    "message": "ID śledzenia",
+    "description": "ID śledzenia zadania"
+  },
+  "name.createdAt": {
+    "message": "Data utworzenia",
+    "description": "Data i czas utworzenia wideo Kling"
+  },
+  "name.startEndImage": {
+    "message": "Obrazy referencyjne klatki początkowej i końcowej",
+    "description": "Obrazy referencyjne dla generowanego wideo"
+  },
+  "name.action": {
+    "message": "Akcja",
+    "description": "Lista dostępnych akcji"
+  },
+  "name.prompt": {
+    "message": "Podpowiedź wideo",
+    "description": "Podpowiedź dla wprowadzanego tekstu"
+  },
+  "name.model": {
+    "message": "Wersja modelu",
+    "description": "Wersja modelu używana do generowania wideo"
+  },
+  "name.soraBot": {
+    "message": "OpenAI Sora Bot",
+    "description": "Nazwa generatora wideo Sora"
+  },
+  "name.orientation": {
+    "message": "Orientacja wideo",
+    "description": "Nazwa parametru orientacji wideo"
+  },
+  "name.duration": {
+    "message": "Czas trwania wideo",
+    "description": "Nazwa parametru czasu trwania wideo"
+  },
+  "name.size": {
+    "message": "Rozdzielczość wideo",
+    "description": "Nazwa parametru rozdzielczości wideo"
+  },
+  "description.imageUrl": {
+    "message": "W zadaniu tworzenia wideo z wieloma obrazami, należy przesłać wiele obrazów.",
+    "description": "Opis parametru 'imageUrl'"
+  },
+  "description.prompt": {
+    "message": "Podpowiedź do generowania wideo Sora",
+    "description": "Opis parametru 'prompt'"
+  },
+  "description.uploadStartEndImage": {
+    "message": "Tablica linków do obrazów referencyjnych, pierwszy to klatka początkowa, następnie klatka końcowa",
+    "description": "Opis parametru 'image_url'"
+  },
+  "status.pending": {
+    "message": "Oczekiwanie",
+    "description": "Stan oczekiwania zadania"
+  },
+  "status.processing": {
+    "message": "W trakcie przetwarzania",
+    "description": "Stan przetwarzania zadania"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Wybierz...",
+    "description": "Placeholder dla wprowadzenia szumów wypełniających"
+  },
+  "placeholder.select": {
+    "message": "Wybierz",
+    "description": "Placeholder w polu wyboru"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Wybierz...",
+    "description": "Placeholder dla poziomu wypełnienia"
+  },
+  "placeholder.prompt": {
+    "message": "Wprowadź podpowiedź dla stylu generowanego wideo, np.: moving",
+    "description": "Placeholder w polu podpowiedzi"
+  },
+  "placeholder.position": {
+    "message": "Wybierz...",
+    "description": "Placeholder dla wprowadzenia pozycji"
+  },
+  "tip.proOnly": {
+    "message": "Tylko model sora-2-pro obsługuje modyfikację tego parametru",
+    "description": "Podpowiedź dla użytkownika, że tylko profesjonalny model obsługuje modyfikację tego parametru"
+  },
+  "button.generate": {
+    "message": "Generuj",
+    "description": "Tekst przycisku do generowania wideo Sora"
+  },
+  "button.action1": {
+    "message": "Generuj wideo",
+    "description": "Tekst przycisku do generowania wideo Sora"
+  },
+  "button.action2": {
+    "message": "Generuj wideo z obrazów",
+    "description": "Tekst przycisku do generowania wideo Sora"
+  },
+  "button.download": {
+    "message": "Pobierz wideo",
+    "description": "Tekst przycisku do pobierania wideo"
+  },
+  "button.uploadImageUrl": {
+    "message": "Prześlij obraz",
+    "description": "Tekst przycisku do przesyłania obrazów"
+  },
+  "button.uploadVideoUrl": {
+    "message": "Prześlij wideo",
+    "description": "Tekst przycisku do przesyłania wideo"
+  },
+  "button.uploadReferences": {
+    "message": "Prześlij",
+    "description": "Tekst przycisku, który pozwala użytkownikowi przesłać referencje"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Można przesłać maksymalnie 2 obrazy",
+    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazów przekracza limit"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Obrazy przesłane pomyślnie",
+    "description": "Komunikat o sukcesie, gdy obrazy zostały przesłane pomyślnie"
+  },
+  "message.uploadReferencesError": {
+    "message": "Nie udało się przesłać obrazów, spróbuj ponownie później",
+    "description": "Komunikat o błędzie, gdy przesyłanie obrazów nie powiodło się"
+  },
+  "message.startingTask": {
+    "message": "Rozpoczynanie zadania...",
+    "description": "Komunikat na początku zadania rysowania"
+  },
+  "message.startTaskSuccess": {
+    "message": "Zadanie generowania zostało pomyślnie uruchomione",
+    "description": "Komunikat o sukcesie, gdy zadanie zostało pomyślnie uruchomione"
+  },
+  "message.startTaskFailed": {
+    "message": "Nie udało się uruchomić zadania, skontaktuj się z administratorem",
+    "description": "Komunikat o błędzie, gdy uruchomienie zadania rysowania nie powiodło się"
+  },
+  "message.usedUp": {
+    "message": "Twoje punkty zostały wyczerpane, proszę kupić więcej punktów, aby kontynuować korzystanie",
+    "description": "Komunikat, gdy punkty zostały wyczerpane"
+  },
+  "message.generating": {
+    "message": "Generowanie...",
+    "description": "Komunikat podczas generowania obrazu"
+  },
+  "message.downloadVideo": {
+    "message": "Pobierz to wideo",
+    "description": "Komunikat podczas generowania obrazu"
+  },
+  "message.generateFailed": {
+    "message": "Nie udało się wygenerować wideo",
+    "description": "Komunikat, gdy generowanie obrazu nie powiodło się"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Liczba przesyłanych obrazów klatki początkowej przekracza limit",
+    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazów klatki początkowej przekracza limit"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Rozmiar przesyłanego pliku nie może przekraczać 10 MB!",
+    "description": "Komunikat o błędzie, gdy rozmiar przesyłanego pliku przekracza 10 MB!"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Przesyłany plik musi być w formacie MP4!",
+    "description": "Komunikat o błędzie, gdy przesyłany plik nie jest w formacie MP4!"
+  },
+  "message.uploadStartEndImageExceed": {
+    "message": "Liczba przesyłanych obrazów klatki początkowej przekracza limit",
+    "description": "Informacja o błędzie, gdy liczba przesyłanych obrazów klatki początkowej przekracza limit"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Liczba przesyłanych obrazów końcowych przekracza limit",
+    "description": "Błąd informujący o przekroczeniu limitu liczby przesyłanych obrazów początkowych"
+  },
+  "message.uploadStartImageError": {
+    "message": "Nie udało się przesłać obrazu początkowego",
+    "description": "Błąd informujący o niepowodzeniu przesyłania obrazu początkowego"
+  },
+  "message.uploadVideoError": {
+    "message": "Nie udało się przesłać wideo",
+    "description": "Błąd informujący o niepowodzeniu przesyłania obrazu początkowego"
+  },
+  "message.uploadEndImageError": {
+    "message": "Nie udało się przesłać obrazu końcowego",
+    "description": "Błąd informujący o niepowodzeniu przesyłania obrazu końcowego"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Nie udało się przesłać dokumentu",
+    "description": "Błąd informujący o niepowodzeniu przesyłania dokumentu"
+  },
+  "message.noOperations": {
+    "message": "Brak dostępnych operacji",
+    "description": "Wiadomość informująca o braku dostępnych operacji"
+  },
+  "message.noTasks": {
+    "message": "Brak historii zadań, kliknij po lewej, aby wygenerować wideo",
+    "description": "Wiadomość informująca o braku zadań"
+  }
+}

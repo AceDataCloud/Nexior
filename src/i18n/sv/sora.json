@@ -1,0 +1,214 @@
+{
+  "name.taskId": {
+    "message": "Uppgift ID",
+    "description": "Uppgiftens ID"
+  },
+  "name.failure": {
+    "message": "Misslyckande",
+    "description": "Uppgiftens misslyckandestatus"
+  },
+  "name.failureReason": {
+    "message": "Orsak till misslyckande",
+    "description": "Anledningen till att uppgiften misslyckades"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Uppgiftens status"
+  },
+  "name.traceId": {
+    "message": "Spårnings ID",
+    "description": "Uppgiftens spårnings ID"
+  },
+  "name.createdAt": {
+    "message": "Skapat den",
+    "description": "Datum och tid för skapande av Kling-video"
+  },
+  "name.startEndImage": {
+    "message": "Referensbilder för start och slut",
+    "description": "Referensbilder för den video som ska genereras"
+  },
+  "name.action": {
+    "message": "Åtgärd",
+    "description": "Lista över tillgängliga åtgärder"
+  },
+  "name.prompt": {
+    "message": "Videoprompt",
+    "description": "Prompt för innehållsinmatning"
+  },
+  "name.model": {
+    "message": "Modellversion",
+    "description": "Modellversionen som används för att generera videon"
+  },
+  "name.soraBot": {
+    "message": "OpenAI Sora Bot",
+    "description": "Namnet på Sora videogenerator"
+  },
+  "name.orientation": {
+    "message": "Videoriktning",
+    "description": "Namn på videoriktningens parameter"
+  },
+  "name.duration": {
+    "message": "Videolängd",
+    "description": "Namn på videolängdsparametern"
+  },
+  "name.size": {
+    "message": "Videokvalitet",
+    "description": "Namn på videokvalitetsparametern"
+  },
+  "description.imageUrl": {
+    "message": "Vid skapande av video med flera bilder måste flera bilder laddas upp.",
+    "description": "Beskrivning av parametern 'imageUrl'"
+  },
+  "description.prompt": {
+    "message": "Promptord för att generera Sora-video",
+    "description": "Beskrivning av parametern 'prompt'"
+  },
+  "description.uploadStartEndImage": {
+    "message": "Array av referensbildlänkar, den första är startbilden, den andra är slutbilden",
+    "description": "Beskrivning av parametern 'image_url'"
+  },
+  "status.pending": {
+    "message": "Väntar",
+    "description": "Uppgiftens väntande status"
+  },
+  "status.processing": {
+    "message": "Bearbetar",
+    "description": "Uppgiftens bearbetande status"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för inmatning av fyllnadsbrus"
+  },
+  "placeholder.select": {
+    "message": "Välj",
+    "description": "Platshållartext i urvalsfältet"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för fyllnadsnivå"
+  },
+  "placeholder.prompt": {
+    "message": "Ange promptord för den stil av video som ska genereras, till exempel: moving",
+    "description": "Platshållartext i promptfältet"
+  },
+  "placeholder.position": {
+    "message": "Vänligen välj...",
+    "description": "Platshållare för positionsinmatning"
+  },
+  "tip.proOnly": {
+    "message": "Endast sora-2-pro-modellen stöder ändring av denna parameter",
+    "description": "Tipsa användaren att endast professionella modeller stöder ändring av denna parameter"
+  },
+  "button.generate": {
+    "message": "Generera",
+    "description": "Knapptext för att generera Sora-video"
+  },
+  "button.action1": {
+    "message": "Text till video",
+    "description": "Knapptext för att generera Sora-video"
+  },
+  "button.action2": {
+    "message": "Bild till video",
+    "description": "Knapptext för att generera Sora-video"
+  },
+  "button.download": {
+    "message": "Ladda ner video",
+    "description": "Knapptext för att ladda ner video"
+  },
+  "button.uploadImageUrl": {
+    "message": "Ladda upp bild",
+    "description": "Knapptext för att ladda upp bild"
+  },
+  "button.uploadVideoUrl": {
+    "message": "Ladda upp video",
+    "description": "Knapptext för att ladda upp video"
+  },
+  "button.uploadReferences": {
+    "message": "Ladda upp",
+    "description": "Knapptext som tillåter användaren att ladda upp referenser"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Maximalt 2 bilder kan laddas upp",
+    "description": "Felmeddelande när antalet uppladdade bilder överskrider gränsen"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Bilderna har laddats upp framgångsrikt",
+    "description": "Framgångsmeddelande när bilder har laddats upp framgångsrikt"
+  },
+  "message.uploadReferencesError": {
+    "message": "Misslyckades med att ladda upp bilder, försök igen senare",
+    "description": "Felmeddelande när bilduppladdning misslyckas"
+  },
+  "message.startingTask": {
+    "message": "Startar uppgift...",
+    "description": "Meddelande när ritningsuppgiften startar"
+  },
+  "message.startTaskSuccess": {
+    "message": "Uppgift för generering har startats framgångsrikt",
+    "description": "Framgångsmeddelande när uppgiften har startats framgångsrikt"
+  },
+  "message.startTaskFailed": {
+    "message": "Misslyckades med att starta uppgiften, vänligen kontakta administratören",
+    "description": "Felmeddelande när ritningsuppgiften misslyckas"
+  },
+  "message.usedUp": {
+    "message": "Dina poäng är slut, vänligen köp fler poäng för att fortsätta använda",
+    "description": "Meddelande när poängen är slut"
+  },
+  "message.generating": {
+    "message": "Genererar...",
+    "description": "Meddelande när bilden genereras"
+  },
+  "message.downloadVideo": {
+    "message": "Ladda ner denna video",
+    "description": "Meddelande när bilden genereras"
+  },
+  "message.generateFailed": {
+    "message": "Misslyckades med att generera video",
+    "description": "Meddelande när bildgenereringen misslyckas"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Antalet uppladdade startbilder överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade startbilder överskrider gränsen"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Uppladdad filstorlek får inte överstiga 10 MB!",
+    "description": "Felmeddelande när den uppladdade filstorleken överstiger 10 MB!"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Uppladdad fil måste vara i MP4-format!",
+    "description": "Felmeddelande när den uppladdade filen inte är i MP4-format!"
+  },
+  "message.uploadStartEndImageExceed": {
+    "message": "Antalet uppladdade startbilder överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade startbilder överskrider gränsen"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Antalet uppladdade slutbildsbilder överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade startbildsbilder överskrider gränsen"
+  },
+  "message.uploadStartImageError": {
+    "message": "Misslyckades med att ladda upp startbild",
+    "description": "Felmeddelande när uppladdningen av startbilden misslyckas"
+  },
+  "message.uploadVideoError": {
+    "message": "Misslyckades med att ladda upp video",
+    "description": "Felmeddelande när uppladdningen av startbilden misslyckas"
+  },
+  "message.uploadEndImageError": {
+    "message": "Misslyckades med att ladda upp slutbild",
+    "description": "Felmeddelande när uppladdningen av slutbilden misslyckas"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Misslyckades med att ladda upp dokument",
+    "description": "Felmeddelande när uppladdningen av dokument misslyckas"
+  },
+  "message.noOperations": {
+    "message": "Inga tillgängliga operationer",
+    "description": "Meddelande när inga operationer är tillgängliga"
+  },
+  "message.noTasks": {
+    "message": "Inga historiska uppgifter, vänligen klicka på vänster sida för att generera video",
+    "description": "Meddelande när det inte finns några uppgifter"
+  }
+}

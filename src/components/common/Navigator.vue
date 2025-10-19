@@ -46,6 +46,8 @@ import {
   ROUTE_PIXVERSE_HISTORY,
   ROUTE_VEO_INDEX,
   ROUTE_VEO_HISTORY,
+  ROUTE_SORA_INDEX,
+  ROUTE_SORA_HISTORY,
   ROUTE_NANOBANANA_INDEX
 } from '@/router/constants';
 import { CHAT_MODEL_ICON_CHATGPT, CHAT_MODEL_ICON_DEEPSEEK, CHAT_MODEL_ICON_GROK } from '@/constants/chat';
@@ -218,6 +220,17 @@ export default defineComponent({
           displayName: this.$t('common.nav.veo'),
           logo: 'https://cdn.acedata.cloud/8nxyy9.jpg',
           routes: [ROUTE_VEO_INDEX, ROUTE_VEO_HISTORY]
+        });
+      }
+      // Add sora's leftmost icon
+      if (this.$store?.state?.site?.features?.sora?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_SORA_INDEX
+          },
+          displayName: this.$t('common.nav.sora'),
+          logo: 'https://cdn.acedata.cloud/z5id1u.png',
+          routes: [ROUTE_SORA_INDEX, ROUTE_SORA_HISTORY]
         });
       }
       // Add pixverse's leftmost icon

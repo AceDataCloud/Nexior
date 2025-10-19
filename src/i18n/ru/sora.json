@@ -1,0 +1,214 @@
+{
+  "name.taskId": {
+    "message": "Идентификатор задачи",
+    "description": "Идентификатор задачи"
+  },
+  "name.failure": {
+    "message": "Неудача",
+    "description": "Статус неудачи задачи"
+  },
+  "name.failureReason": {
+    "message": "Причина неудачи",
+    "description": "Причина неудачи задачи"
+  },
+  "name.status": {
+    "message": "Статус",
+    "description": "Статус задачи"
+  },
+  "name.traceId": {
+    "message": "Идентификатор трассировки",
+    "description": "Идентификатор трассировки задачи"
+  },
+  "name.createdAt": {
+    "message": "Дата создания",
+    "description": "Дата и время создания видео Kling"
+  },
+  "name.startEndImage": {
+    "message": "Ссылки на изображения начального и конечного кадров",
+    "description": "Ссылки на изображения, используемые для генерации видео"
+  },
+  "name.action": {
+    "message": "Действие",
+    "description": "Список доступных действий"
+  },
+  "name.prompt": {
+    "message": "Подсказка для видео",
+    "description": "Подсказка для ввода содержимого"
+  },
+  "name.model": {
+    "message": "Версия модели",
+    "description": "Версия модели, используемая для генерации видео"
+  },
+  "name.soraBot": {
+    "message": "OpenAI Sora Bot",
+    "description": "Название генератора видео Sora"
+  },
+  "name.orientation": {
+    "message": "Ориентация видео",
+    "description": "Название параметра ориентации видео"
+  },
+  "name.duration": {
+    "message": "Длительность видео",
+    "description": "Название параметра длительности видео"
+  },
+  "name.size": {
+    "message": "Разрешение видео",
+    "description": "Название параметра разрешения видео"
+  },
+  "description.imageUrl": {
+    "message": "Задача по созданию видео из нескольких изображений, необходимо загрузить несколько изображений.",
+    "description": "Описание параметра 'imageUrl'"
+  },
+  "description.prompt": {
+    "message": "Подсказка для генерации видео Sora",
+    "description": "Описание параметра 'prompt'"
+  },
+  "description.uploadStartEndImage": {
+    "message": "Массив ссылок на изображения, первое - начальный кадр, второе - конечный кадр",
+    "description": "Описание параметра 'image_url'"
+  },
+  "status.pending": {
+    "message": "В ожидании",
+    "description": "Статус ожидания задачи"
+  },
+  "status.processing": {
+    "message": "В процессе",
+    "description": "Статус обработки задачи"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода шумов заполнения"
+  },
+  "placeholder.select": {
+    "message": "Выбрать",
+    "description": "Заполнитель для поля выбора"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для уровня заполнения"
+  },
+  "placeholder.prompt": {
+    "message": "Введите подсказку для стиля видео, например: moving",
+    "description": "Заполнитель для поля подсказки"
+  },
+  "placeholder.position": {
+    "message": "Пожалуйста, выберите...",
+    "description": "Заполнитель для ввода позиции"
+  },
+  "tip.proOnly": {
+    "message": "Только модель sora-2-pro поддерживает изменение этого параметра",
+    "description": "Подсказка для пользователей, что только профессиональная модель поддерживает изменение этого параметра"
+  },
+  "button.generate": {
+    "message": "Сгенерировать",
+    "description": "Текст кнопки для генерации видео Sora"
+  },
+  "button.action1": {
+    "message": "Создать видео из текста",
+    "description": "Текст кнопки для генерации видео Sora"
+  },
+  "button.action2": {
+    "message": "Создать видео из изображения",
+    "description": "Текст кнопки для генерации видео Sora"
+  },
+  "button.download": {
+    "message": "Скачать видео",
+    "description": "Текст кнопки для скачивания видео"
+  },
+  "button.uploadImageUrl": {
+    "message": "Загрузить изображение",
+    "description": "Текст кнопки для загрузки изображения"
+  },
+  "button.uploadVideoUrl": {
+    "message": "Загрузить видео",
+    "description": "Текст кнопки для загрузки видео"
+  },
+  "button.uploadReferences": {
+    "message": "Загрузить",
+    "description": "Текст кнопки, позволяющий пользователю загрузить ссылки"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Можно загрузить не более 2 изображений",
+    "description": "Сообщение об ошибке, когда количество загружаемых изображений превышает лимит"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Изображения успешно загружены",
+    "description": "Сообщение об успешной загрузке изображений"
+  },
+  "message.uploadReferencesError": {
+    "message": "Ошибка загрузки изображений, пожалуйста, попробуйте позже",
+    "description": "Сообщение об ошибке при неудачной загрузке изображений"
+  },
+  "message.startingTask": {
+    "message": "Запуск задачи...",
+    "description": "Сообщение при начале задачи рисования"
+  },
+  "message.startTaskSuccess": {
+    "message": "Задача успешно инициирована",
+    "description": "Сообщение об успешном запуске задачи"
+  },
+  "message.startTaskFailed": {
+    "message": "Не удалось инициировать задачу, пожалуйста, свяжитесь с администратором",
+    "description": "Сообщение об ошибке при неудачном запуске задачи рисования"
+  },
+  "message.usedUp": {
+    "message": "Ваши кредиты исчерпаны, пожалуйста, купите больше кредитов для продолжения использования",
+    "description": "Сообщение при исчерпании кредитов"
+  },
+  "message.generating": {
+    "message": "Генерация...",
+    "description": "Сообщение во время генерации изображения"
+  },
+  "message.downloadVideo": {
+    "message": "Скачать это видео",
+    "description": "Сообщение во время генерации изображения"
+  },
+  "message.generateFailed": {
+    "message": "Не удалось сгенерировать видео",
+    "description": "Сообщение об ошибке при неудачной генерации изображения"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Количество загружаемых изображений начального кадра превышает лимит",
+    "description": "Сообщение об ошибке при превышении лимита загружаемых изображений начального кадра"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Размер загружаемого файла не должен превышать 10 МБ!",
+    "description": "Сообщение об ошибке при превышении размера загружаемого файла"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Загружаемый файл должен быть в формате MP4!",
+    "description": "Сообщение об ошибке при неправильном формате загружаемого файла"
+  },
+  "message.uploadStartEndImageExceed": {
+    "message": "Количество загружаемых изображений первой рамки превышает лимит",
+    "description": "Ошибка, возникающая, когда количество загружаемых изображений первой рамки превышает лимит"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Количество загружаемых изображений конечного кадра превышает лимит",
+    "description": "Ошибка, когда количество загружаемых изображений начального кадра превышает лимит"
+  },
+  "message.uploadStartImageError": {
+    "message": "Ошибка загрузки изображения начального кадра",
+    "description": "Ошибка, когда загрузка изображения начального кадра не удалась"
+  },
+  "message.uploadVideoError": {
+    "message": "Ошибка загрузки видео",
+    "description": "Ошибка, когда загрузка изображения начального кадра не удалась"
+  },
+  "message.uploadEndImageError": {
+    "message": "Ошибка загрузки изображения конечного кадра",
+    "description": "Ошибка, когда загрузка изображения конечного кадра не удалась"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Ошибка загрузки документа",
+    "description": "Ошибка, когда загрузка документа не удалась"
+  },
+  "message.noOperations": {
+    "message": "Нет доступных операций",
+    "description": "Сообщение, когда нет доступных операций"
+  },
+  "message.noTasks": {
+    "message": "Нет историй задач, пожалуйста, нажмите слева для генерации видео",
+    "description": "Сообщение, когда нет задач"
+  }
+}

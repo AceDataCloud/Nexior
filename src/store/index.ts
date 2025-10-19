@@ -7,6 +7,7 @@ import luma from './luma';
 import pika from './pika';
 import kling from './kling';
 import veo from './veo';
+import sora from './sora';
 import pixverse from './pixverse';
 import flux from './flux';
 import hailuo from './hailuo';
@@ -21,6 +22,7 @@ import persistLuma from './luma/persist';
 import persistPika from './pika/persist';
 import persistKling from './kling/persist';
 import persistVeo from './veo/persist';
+import persistSora from './sora/persist';
 import persistPixverse from './pixverse/persist';
 import persistFlux from './flux/persist';
 import persistHailuo from './hailuo/persist';
@@ -39,6 +41,7 @@ const store = createStore({
     pika: pika,
     kling: kling,
     veo: veo,
+    sora: sora,
     pixverse: pixverse,
     flux: flux,
     hailuo: hailuo,
@@ -57,6 +60,7 @@ const store = createStore({
         ...persistPika,
         ...persistKling,
         ...persistVeo,
+        ...persistSora,
         ...persistPixverse,
         ...persistFlux,
         ...persistHailuo,

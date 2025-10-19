@@ -16,7 +16,7 @@
     "description": "Knapptext för att indikera att innehållet har kopierats"
   },
   "button.restart": {
-    "message": "Återgenerera",
+    "message": "Återställ",
     "description": "Knapptext för att ställa in vissa saker"
   },
   "button.preview": {
@@ -85,7 +85,7 @@
   },
   "button.console": {
     "message": "Konsol",
-    "description": "Knapptext för att visa konsolsidan för att kontrollera vissa saker på webben"
+    "description": "Knapptext för att visa konsolsidan för att kontrollera vissa saker på webbsidan"
   },
   "button.learn": {
     "message": "Lär dig",
@@ -96,8 +96,8 @@
     "description": "Knapptext för att låta användaren köpa vissa saker"
   },
   "button.try": {
-    "message": "Försök",
-    "description": "Knapptext för att låta användaren försöka med vissa saker"
+    "message": "Prova",
+    "description": "Knapptext för att låta användaren prova vissa saker"
   },
   "button.startForFree": {
     "message": "Börja gratis",
@@ -161,11 +161,11 @@
   },
   "entity.type": {
     "message": "Typ",
-    "description": "Används för att visa typen av en enhet"
+    "description": "Används för att visa typen av enhet"
   },
   "entity.website": {
     "message": "Ace Data Cloud",
-    "description": "Webbplatsnamn, ingen översättning behövs, behåll som 'Ace Data Cloud'"
+    "description": "Webbplatsens namn, behöver inte översättas, håll som 'Ace Data Cloud'"
   },
   "entity.copyright": {
     "message": "Upphovsrätt",
@@ -177,35 +177,35 @@
   },
   "entity.title": {
     "message": "Titel",
-    "description": "Titeln på enheten"
+    "description": "Titeln på entiteten"
   },
   "entity.icon": {
     "message": "Ikon",
-    "description": "Ikonen för enheten"
+    "description": "Ikonen för entiteten"
   },
   "entity.status": {
     "message": "Status",
-    "description": "Status för enheten"
+    "description": "Statusen för entiteten"
   },
   "entity.operation": {
     "message": "Operation",
-    "description": "Operationen för enheten"
+    "description": "Operationen för entiteten"
   },
   "entity.description": {
     "message": "Beskrivning",
-    "description": "Beskrivningen av enheten"
+    "description": "Beskrivningen av entiteten"
   },
   "entity.createdAt": {
     "message": "Skapat den",
-    "description": "Tiden då enheten skapades"
+    "description": "Tiden då entiteten skapades"
   },
   "entity.updatedAt": {
     "message": "Uppdaterad den",
-    "description": "Tiden då enheten uppdaterades"
+    "description": "Tiden då entiteten uppdaterades"
   },
   "entity.order": {
     "message": "Beställning",
-    "description": "Enhetens beställning, som innehåller belopp och tjänsteinformation, som användaren behöver betala för"
+    "description": "Entitetens beställning, som innehåller belopp och tjänsteinformation, som användaren behöver betala för"
   },
   "message.noTasks": {
     "message": "Inga historiska uppgifter, vänligen starta en ny uppgift～",
@@ -224,7 +224,7 @@
     "description": "Används för att visa meddelandet att innehållet har kopierats framgångsrikt"
   },
   "message.restart": {
-    "message": "Återställ",
+    "message": "Återgenerera",
     "description": "Används för att visa meddelandet att innehållet har kopierats framgångsrikt"
   },
   "message.confirmDelete": {
@@ -300,7 +300,7 @@
     "description": "Text i webbplatsens navigeringsfält för att visa rekommendationssidan"
   },
   "nav.apiPlatform": {
-    "message": "API-plattform",
+    "message": "API Plattform",
     "description": "Text i webbplatsens navigeringsfält för att visa API-plattformssidan"
   },
   "nav.document": {
@@ -331,153 +331,157 @@
     "message": "Veo",
     "description": "Text i webbplatsens navigeringsfält för att visa chatt-sidan, vänligen översätt inte detta fält, det måste förbli 'Veo'"
   },
+  "nav.sora": {
+    "message": "Sora",
+    "description": "Text i webbplatsens navigeringsfält för att visa chatt-sidan, vänligen översätt inte detta fält, det måste förbli 'Sora'"
+  },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "Text i webbplatsens navigeringsfält för att visa Midjourney-sidan, vänligen översätt inte detta fält, det måste förbli 'Midjourney'"
+    "description": "Text in website navigation bar to display the Midjourney page, must remain as 'Midjourney'"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Text i navigeringsfältet på webbplatsen för att visa sidan för tvådimensionell konst, vänligen översätt inte detta fält, det måste förbli 'QRArt'"
+    "description": "Text in website navigation bar to display the QRArt page, must remain as 'QRArt'"
   },
   "nav.suno": {
     "message": "Suno",
-    "description": "Text i navigeringsfältet på webbplatsen för att visa Suno-sidan, vänligen översätt inte detta fält, det måste förbli 'Suno'"
+    "description": "Text in website navigation bar to display the Suno page, must remain as 'Suno'"
   },
   "nav.pixverse": {
     "message": "Pixverse",
-    "description": "Text i navigeringsfältet på webbplatsen för att visa Pixverse-sidan, vänligen översätt inte detta fält, det måste förbli 'Pixverse'"
+    "description": "Text in website navigation bar to display the Pixverse page, must remain as 'Pixverse'"
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "Text i navigeringsfältet på webbplatsen för att visa Flux-sidan, vänligen översätt inte detta fält, det måste förbli 'Flux'"
+    "description": "Text in website navigation bar to display the Flux page, must remain as 'Flux'"
   },
   "nav.nanobanana": {
     "message": "Nano Banana",
-    "description": "Text i navigeringsfältet på webbplatsen för att visa Nano Banana-sidan, vänligen översätt inte detta fält, det måste förbli 'Nano Banana'"
+    "description": "Text in website navigation bar to display the Nano Banana page, must remain as 'Nano Banana'"
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "Text i navigeringsfältet på webbplatsen för att visa Luma-sidan, vänligen översätt inte detta fält, det måste förbli 'Luma'"
+    "description": "Text in website navigation bar to display the Luma page, must remain as 'Luma'"
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "Text i navigeringsfältet på webbplatsen för att visa Pika-sidan, vänligen översätt inte detta fält, det måste förbli 'Pika'"
+    "description": "Text in website navigation bar to display the Pika page, must remain as 'Pika'"
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "Text i navigeringsfältet på webbplatsen för att visa Kling-sidan, vänligen översätt inte detta fält, det måste förbli 'Kling'"
+    "description": "Text in website navigation bar to display the Kling page, must remain as 'Kling'"
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "Text i navigeringsfältet på webbplatsen för att visa Hailuo-sidan, vänligen översätt inte detta fält, det måste förbli 'Hailuo'"
+    "description": "Text in website navigation bar to display the Hailuo page, must remain as 'Hailuo'"
   },
   "nav.image": {
-    "message": "Bild",
-    "description": "Text i navigeringsfältet på webbplatsen för att visa bildsidan"
+    "message": "Bilder",
+    "description": "Text in website navigation bar to display the image page"
   },
   "nav.music": {
     "message": "Musik",
-    "description": "Text i navigeringsfältet på webbplatsen för att visa musiksidan"
+    "description": "Text in website navigation bar to display the music page"
   },
   "nav.video": {
     "message": "Video",
-    "description": "Text i navigeringsfältet på webbplatsen för att visa videosidan"
+    "description": "Text in website navigation bar to display the video page"
   },
   "nav.distribution": {
     "message": "Rekommenderad inkomst",
-    "description": "Text i navigeringsfältet på webbplatsen för att visa sidan för rekommenderad inkomst"
+    "description": "Text in website navigation bar to display the recommended income page"
   },
   "nav.logOut": {
     "message": "Logga ut",
-    "description": "Text i navigeringsfältet på webbplatsen för att logga ut"
+    "description": "Text in website navigation bar for logging out"
   },
   "nav.site": {
-    "message": "Webbplatskonfiguration",
-    "description": "Text i navigeringsfältet på webbplatsen för att visa sidan för webbplatskonfiguration"
+    "message": "Webbplatsinställningar",
+    "description": "Text in website navigation bar to display the site configuration page"
   },
   "nav.setting": {
     "message": "Inställningar",
-    "description": "Text i navigeringsfältet på webbplatsen för att visa inställningssidan"
+    "description": "Text in website navigation bar to display the settings page"
   },
   "nav.headshots": {
     "message": "AI ID-foto",
-    "description": "Text i navigeringsfältet på webbplatsen för att visa sidan för webbplatskonfiguration"
+    "description": "Text in website navigation bar to display the site configuration page"
   },
   "nav.locale": {
     "message": "Språkinställningar",
-    "description": "Text i navigeringsfältet på webbplatsen för att ändra språk"
+    "description": "Text in website navigation bar to change the language"
   },
   "nav.support": {
     "message": "Kundsupport",
-    "description": "Text i navigeringsfältet på webbplatsen för att visa supportsidan"
+    "description": "Text in website navigation bar to display the support page"
   },
   "nav.darkMode": {
     "message": "Mörkt läge",
-    "description": "Text i navigeringsfältet på webbplatsen för att växla till mörkt tema"
+    "description": "Text in website navigation bar to switch to dark theme"
   },
   "title.alert": {
     "message": "Varning",
-    "description": "Rubrik för varningsmeddelande"
+    "description": "Title of the alert message"
   },
   "title.placeholderOfSelect": {
     "message": "Vänligen välj",
-    "description": "Platshållare för valinmatningsfält"
+    "description": "Placeholder for the select input box"
   },
   "title.placeholderOfInput": {
     "message": "Vänligen fyll i",
-    "description": "Platshållare för inmatningsfält"
+    "description": "Placeholder for the input box"
   },
   "title.allApplications": {
     "message": "Alla ansökningar",
-    "description": "Rubrik för sidan som visar alla ansökningar"
+    "description": "Title of the page displaying all applications"
   },
   "title.allOrders": {
     "message": "Alla beställningar",
-    "description": "Rubrik för sidan som visar alla beställningar"
+    "description": "Title of the page displaying all orders"
   },
   "title.orderInfo": {
     "message": "Beställningsinformation",
-    "description": "Rubrik för sidan som visar beställningsinformation"
+    "description": "Title of the page displaying order information"
   },
   "title.buyMore": {
     "message": "Köp mer",
-    "description": "Rubrik för sidan som låter användare köpa mer"
+    "description": "Title of the page allowing users to buy more"
   },
   "title.distribution": {
     "message": "Rekommenderad inkomst",
-    "description": "Rubrik för sidan som visar rekommenderad inkomst, vilket innebär att användare kan tjäna pengar genom att bjuda in andra att använda tjänsten"
+    "description": "Title of the page displaying recommended income, indicating that users can earn by inviting others to use the service"
   },
   "title.site": {
-    "message": "Webbplatskonfiguration",
-    "description": "Rubrik för sidan som visar webbplatskonfiguration"
+    "message": "Webbplatsinställningar",
+    "description": "Title of the page displaying site configuration"
   },
   "title.distributionHistory": {
     "message": "Rekommendationshistorik",
-    "description": "Rubrik för sidan som visar rekommendationshistorik"
+    "description": "Title of the page displaying recommendation history"
   },
   "title.invitee": {
     "message": "Inbjuden",
-    "description": "Rubrik för sidan som visar inbjuden"
+    "description": "Title of the page displaying the invitee"
   },
   "title.allUsages": {
     "message": "Användningshistorik",
-    "description": "Rubrik för sidan som visar alla användningsposter för API-tjänsten"
+    "description": "Title of the page displaying all usage records of the API service"
   },
   "title.allCredentials": {
     "message": "Referenser",
-    "description": "Rubrik för sidan som visar alla referenser som används för att få åtkomst till API"
+    "description": "Title of the page displaying all credentials used to access the API"
   },
   "about.title1": {
     "message": "Kontakta oss",
-    "description": "Rubrik för avsnittet som visar kontaktinformation"
+    "description": "Title of the section displaying contact information"
   },
   "about.title2": {
     "message": "Resurser",
-    "description": "Rubrik för avsnittet som visar länkar"
+    "description": "Title of the section displaying links"
   },
   "about.title3": {
     "message": "Länkar",
-    "description": "Rubrik för avsnittet som visar supportinformation"
+    "description": "Visar titeln på avsnittet som innehåller supportinformation"
   },
   "about.address": {
     "message": "USA Delaware Middletown N Broad St, kontor 201",
@@ -485,82 +489,82 @@
   },
   "about.email": {
     "message": "office@acedata.cloud",
-    "description": "Företagets e-postadress"
+    "description": "Företagets e-post"
   },
   "about.link1": {
     "message": "Tjänster",
-    "description": "Länk till tjänstersidan"
+    "description": "Länken till tjänstersidan"
   },
   "about.link2": {
     "message": "Dokumentation",
-    "description": "Länk till dokumentationssidan"
+    "description": "Länken till dokumentationssidan"
   },
   "about.link3": {
     "message": "Konsol",
-    "description": "Länk till konsolsidan"
+    "description": "Länken till konsolsidan"
   },
   "about.link4": {
     "message": "Profil",
-    "description": "Länk till profilsidan"
+    "description": "Länken till profilsidan"
   },
   "about.link5": {
     "message": "Center",
-    "description": "Länk till centersidan"
+    "description": "Länken till centersidan"
   },
   "about.link6": {
     "message": "Rekommenderade intäkter",
-    "description": "Länk till sidan för rekommenderade intäkter"
+    "description": "Länken till sidan för rekommenderade intäkter"
   },
   "about.link7": {
     "message": "Support",
-    "description": "Länk till supportsidan"
+    "description": "Länken till supportsidan"
   },
   "about.link8": {
     "message": "Användarvillkor",
-    "description": "Länk till sidan för användarvillkor"
+    "description": "Länken till sidan för användarvillkor"
   },
   "about.link9": {
     "message": "Integritetspolicy",
-    "description": "Länk till sidan för integritetspolicy"
+    "description": "Länken till sidan för integritetspolicy"
   },
   "theme.light": {
     "message": "Ljust tema",
-    "description": "Namn på det ljusa temat"
+    "description": "Namnet på det ljusa temat"
   },
   "theme.dark": {
     "message": "Mörkt tema",
-    "description": "Namn på det mörka temat"
+    "description": "Namnet på det mörka temat"
   },
   "theme.system": {
     "message": "System",
-    "description": "Namn på systemtemat, vilket innebär att temat automatiskt växlar baserat på systeminställningarna"
+    "description": "Namnet på systemtemat, vilket innebär att temat automatiskt växlar baserat på systeminställningarna"
   },
   "settings.general": {
     "message": "Allmänna inställningar",
-    "description": "Rubrik för avsnittet om allmänna inställningar på inställningssidan"
+    "description": "Titeln på avsnittet för allmänna inställningar på inställningssidan"
   },
   "settings.language": {
     "message": "Språk",
-    "description": "Rubrik för avsnittet om språkinställningar på inställningssidan"
+    "description": "Titeln på avsnittet för språkinställningar på inställningssidan"
   },
   "settings.theme": {
     "message": "Tema",
-    "description": "Rubrik för avsnittet om tema-inställningar på inställningssidan"
+    "description": "Titeln på avsnittet för tema-inställningar på inställningssidan"
   },
   "settings.seo": {
     "message": "SEO-inställningar",
-    "description": "Rubrik för avsnittet om SEO-inställningar på inställningssidan"
+    "description": "Titeln på avsnittet för SEO-inställningar på inställningssidan"
   },
   "settings.site": {
     "message": "Webbplatsinställningar",
-    "description": "Rubrik för avsnittet om webbplatsinställningar på inställningssidan"
+    "description": "Titeln på avsnittet för webbplatsinställningar på inställningssidan"
   },
   "settings.distribution": {
     "message": "Distribueringsinställningar",
-    "description": "Rubrik för avsnittet om distribueringsinställningar på inställningssidan"
+    "description": "Titeln på avsnittet för distribueringsinställningar på inställningssidan"
   },
   "settings.function": {
     "message": "Funktionsinställningar",
-    "description": "Rubrik för avsnittet om funktionsinställningar på inställningssidan"
+    "description": "Titeln på avsnittet för funktionsinställningar på inställningssidan"
   }
 }

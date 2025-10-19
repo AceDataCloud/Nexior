@@ -1,0 +1,214 @@
+{
+  "name.taskId": {
+    "message": "Aufgaben-ID",
+    "description": "ID der Aufgabe"
+  },
+  "name.failure": {
+    "message": "Fehler",
+    "description": "Fehlerstatus der Aufgabe"
+  },
+  "name.failureReason": {
+    "message": "Fehlerursache",
+    "description": "Grund für das Scheitern der Aufgabe"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Status der Aufgabe"
+  },
+  "name.traceId": {
+    "message": "Verfolgungs-ID",
+    "description": "Verfolgungs-ID der Aufgabe"
+  },
+  "name.createdAt": {
+    "message": "Erstellungszeit",
+    "description": "Datum und Uhrzeit der Erstellung des Kling-Videos"
+  },
+  "name.startEndImage": {
+    "message": "Referenzbilder für Anfang und Ende",
+    "description": "Referenzbilder für das zu generierende Video"
+  },
+  "name.action": {
+    "message": "Aktion",
+    "description": "Liste der verfügbaren Aktionen"
+  },
+  "name.prompt": {
+    "message": "Videoaufforderung",
+    "description": "Aufforderung für die Eingabe des Inhalts"
+  },
+  "name.model": {
+    "message": "Modellversion",
+    "description": "Modellversion, die zur Erstellung des Videos verwendet wird"
+  },
+  "name.soraBot": {
+    "message": "OpenAI Sora Bot",
+    "description": "Name des Sora-Videogenerators"
+  },
+  "name.orientation": {
+    "message": "Videoausrichtung",
+    "description": "Name des Parameters für die Videoausrichtung"
+  },
+  "name.duration": {
+    "message": "Videodauer",
+    "description": "Name des Parameters für die Videodauer"
+  },
+  "name.size": {
+    "message": "Videoauflösung",
+    "description": "Name des Parameters für die Videoauflösung"
+  },
+  "description.imageUrl": {
+    "message": "Bei der Erstellung eines Videos mit mehreren Bildern müssen mehrere Bilder hochgeladen werden.",
+    "description": "Beschreibung des Parameters 'imageUrl'"
+  },
+  "description.prompt": {
+    "message": "Aufforderungswörter zur Erstellung von Sora-Videos",
+    "description": "Beschreibung des Parameters 'prompt'"
+  },
+  "description.uploadStartEndImage": {
+    "message": "Array von Links zu Referenzbildern, das erste ist das Anfangsbild, das zweite das Endbild",
+    "description": "Beschreibung des Parameters 'image_url'"
+  },
+  "status.pending": {
+    "message": "Warten",
+    "description": "Wartezustand der Aufgabe"
+  },
+  "status.processing": {
+    "message": "Wird bearbeitet",
+    "description": "Wartezustand der Aufgabe"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Bitte auswählen...",
+    "description": "Platzhalter für die Eingabe von Füllrauschen"
+  },
+  "placeholder.select": {
+    "message": "Auswählen",
+    "description": "Platzhaltertext im Auswahlfeld"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Bitte auswählen...",
+    "description": "Platzhalter für das Füllniveau"
+  },
+  "placeholder.prompt": {
+    "message": "Geben Sie die Aufforderungswörter für den gewünschten Video-Stil ein, z.B.: moving",
+    "description": "Platzhaltertext im Aufforderungsfeld"
+  },
+  "placeholder.position": {
+    "message": "Bitte auswählen...",
+    "description": "Platzhalter für die Positionseingabe"
+  },
+  "tip.proOnly": {
+    "message": "Nur das Sora-2-Pro-Modell unterstützt die Änderung dieses Parameters",
+    "description": "Hinweis für den Benutzer, dass nur das professionelle Modell die Änderung dieses Parameters unterstützt"
+  },
+  "button.generate": {
+    "message": "Generieren",
+    "description": "Text des Buttons zur Erstellung von Sora-Videos"
+  },
+  "button.action1": {
+    "message": "Text-zu-Video",
+    "description": "Text des Buttons zur Erstellung von Sora-Videos"
+  },
+  "button.action2": {
+    "message": "Bild-zu-Video",
+    "description": "Text des Buttons zur Erstellung von Sora-Videos"
+  },
+  "button.download": {
+    "message": "Video herunterladen",
+    "description": "Text des Buttons zum Herunterladen des Videos"
+  },
+  "button.uploadImageUrl": {
+    "message": "Bild hochladen",
+    "description": "Text des Buttons zum Hochladen von Bildern"
+  },
+  "button.uploadVideoUrl": {
+    "message": "Video hochladen",
+    "description": "Text des Buttons zum Hochladen von Videos"
+  },
+  "button.uploadReferences": {
+    "message": "Hochladen",
+    "description": "Text des Buttons, der es dem Benutzer ermöglicht, Referenzen hochzuladen"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Maximal 2 Bilder können hochgeladen werden",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Bilder das Limit überschreitet"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Bilder erfolgreich hochgeladen",
+    "description": "Erfolgsmeldung, wenn Bilder erfolgreich hochgeladen wurden"
+  },
+  "message.uploadReferencesError": {
+    "message": "Hochladen der Bilder fehlgeschlagen, bitte später erneut versuchen",
+    "description": "Fehlermeldung, wenn das Hochladen der Bilder fehlschlägt"
+  },
+  "message.startingTask": {
+    "message": "Starte Aufgabe...",
+    "description": "Nachricht beim Starten der Zeichnungsaufgabe"
+  },
+  "message.startTaskSuccess": {
+    "message": "Generierungsaufgabe erfolgreich gestartet",
+    "description": "Erfolgsmeldung beim erfolgreichen Start der Aufgabe"
+  },
+  "message.startTaskFailed": {
+    "message": "Start der Aufgabe fehlgeschlagen, bitte kontaktieren Sie den Administrator",
+    "description": "Fehlermeldung beim Fehlschlagen des Starts der Zeichnungsaufgabe"
+  },
+  "message.usedUp": {
+    "message": "Ihr Guthaben ist aufgebraucht, bitte kaufen Sie mehr Guthaben, um fortzufahren",
+    "description": "Nachricht, wenn das Guthaben aufgebraucht ist"
+  },
+  "message.generating": {
+    "message": "Wird generiert...",
+    "description": "Nachricht während der Generierung des Bildes"
+  },
+  "message.downloadVideo": {
+    "message": "Dieses Video herunterladen",
+    "description": "Nachricht während der Generierung des Bildes"
+  },
+  "message.generateFailed": {
+    "message": "Generierung des Videos fehlgeschlagen",
+    "description": "Nachricht beim Fehlschlagen der Bildgenerierung"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Anzahl der hochgeladenen Anfangsbildbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Anfangsbildbilder das Limit überschreitet"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Die hochgeladene Dateigröße darf 10 MB nicht überschreiten!",
+    "description": "Fehlermeldung, wenn die hochgeladene Dateigröße 10 MB überschreitet"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Die hochgeladene Datei muss im MP4-Format vorliegen!",
+    "description": "Fehlermeldung, wenn die hochgeladene Datei nicht im MP4-Format vorliegt"
+  },
+  "message.uploadStartEndImageExceed": {
+    "message": "Die Anzahl der hochgeladenen Startbildbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Startbildbilder das Limit überschreitet"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Die Anzahl der hochgeladenen Endbildbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Startbildbilder das Limit überschreitet"
+  },
+  "message.uploadStartImageError": {
+    "message": "Fehler beim Hochladen des Startbildes",
+    "description": "Fehlermeldung, wenn das Hochladen des Startbildes fehlschlägt"
+  },
+  "message.uploadVideoError": {
+    "message": "Fehler beim Hochladen des Videos",
+    "description": "Fehlermeldung, wenn das Hochladen des Videos fehlschlägt"
+  },
+  "message.uploadEndImageError": {
+    "message": "Fehler beim Hochladen des Endbildes",
+    "description": "Fehlermeldung, wenn das Hochladen des Endbildes fehlschlägt"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Fehler beim Hochladen des Dokuments",
+    "description": "Fehlermeldung, wenn das Hochladen des Dokuments fehlschlägt"
+  },
+  "message.noOperations": {
+    "message": "Keine verfügbaren Operationen",
+    "description": "Nachricht, wenn keine verfügbaren Operationen vorhanden sind"
+  },
+  "message.noTasks": {
+    "message": "Keine historischen Aufgaben, bitte klicken Sie links, um ein Video zu generieren",
+    "description": "Nachricht, wenn keine Aufgaben vorhanden sind"
+  }
+}

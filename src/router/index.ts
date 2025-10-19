@@ -11,6 +11,7 @@ import luma from './luma';
 import pika from './pika';
 import kling from './kling';
 import veo from './veo';
+import sora from './sora';
 import pixverse from './pixverse';
 import flux from './flux';
 import hailuo from './hailuo';
@@ -40,6 +41,7 @@ const routes = [
   pika,
   kling,
   veo,
+  sora,
   pixverse,
   flux,
   hailuo,

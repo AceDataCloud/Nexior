@@ -1,0 +1,214 @@
+{
+  "name.taskId": {
+    "message": "ID zadatka",
+    "description": "ID zadatka"
+  },
+  "name.failure": {
+    "message": "Neuspeh",
+    "description": "Status neuspeha zadatka"
+  },
+  "name.failureReason": {
+    "message": "Razlog neuspeha",
+    "description": "Razlog neuspeha zadatka"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Status zadatka"
+  },
+  "name.traceId": {
+    "message": "ID praćenja",
+    "description": "ID praćenja zadatka"
+  },
+  "name.createdAt": {
+    "message": "Vreme kreiranja",
+    "description": "Datum i vreme generisanja Kling videa"
+  },
+  "name.startEndImage": {
+    "message": "Referentne slike početnog i završnog okvira",
+    "description": "Referentne slike za video koji treba generisati"
+  },
+  "name.action": {
+    "message": "Akcija",
+    "description": "Lista dostupnih akcija"
+  },
+  "name.prompt": {
+    "message": "Video prompt",
+    "description": "Prompt za unos sadržaja"
+  },
+  "name.model": {
+    "message": "Verzija modela",
+    "description": "Verzija modela koja se koristi za generisanje videa"
+  },
+  "name.soraBot": {
+    "message": "OpenAI Sora Bot",
+    "description": "Ime Sora generatora videa"
+  },
+  "name.orientation": {
+    "message": "Orijentacija videa",
+    "description": "Ime parametra za orijentaciju videa"
+  },
+  "name.duration": {
+    "message": "Trajanje videa",
+    "description": "Ime parametra za trajanje videa"
+  },
+  "name.size": {
+    "message": "Rezolucija videa",
+    "description": "Ime parametra za rezoluciju videa"
+  },
+  "description.imageUrl": {
+    "message": "U zadatku za kreiranje videa sa više slika, potrebno je otpremiti više slika.",
+    "description": "Opis parametra 'imageUrl'"
+  },
+  "description.prompt": {
+    "message": "Prompt reči za generisanje Sora videa",
+    "description": "Opis parametra 'prompt'"
+  },
+  "description.uploadStartEndImage": {
+    "message": "Niz linkova referentnih slika, prva je slika početnog okvira, a druga slika završnog okvira",
+    "description": "Opis parametra 'image_url'"
+  },
+  "status.pending": {
+    "message": "Na čekanju",
+    "description": "Status čekanja zadatka"
+  },
+  "status.processing": {
+    "message": "Obrada",
+    "description": "Status obrade zadatka"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Molimo izaberite...",
+    "description": "Placeholder za unos šuma popunjavanja"
+  },
+  "placeholder.select": {
+    "message": "Izaberite",
+    "description": "Placeholder za izbor u polju"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Molimo izaberite...",
+    "description": "Placeholder za nivo popunjavanja"
+  },
+  "placeholder.prompt": {
+    "message": "Unesite prompt reči za stil videa koji želite da generišete, na primer: moving",
+    "description": "Placeholder za prompt polje"
+  },
+  "placeholder.position": {
+    "message": "Molimo izaberite...",
+    "description": "Placeholder za unos pozicije"
+  },
+  "tip.proOnly": {
+    "message": "Samo sora-2-pro model podržava izmene ovog parametra",
+    "description": "Obaveštava korisnika da samo profesionalni model podržava izmene ovog parametra"
+  },
+  "button.generate": {
+    "message": "Generiši",
+    "description": "Tekst dugmeta za generisanje Sora videa"
+  },
+  "button.action1": {
+    "message": "Generiši video",
+    "description": "Tekst dugmeta za generisanje Sora videa"
+  },
+  "button.action2": {
+    "message": "Generiši video iz slika",
+    "description": "Tekst dugmeta za generisanje Sora videa"
+  },
+  "button.download": {
+    "message": "Preuzmi video",
+    "description": "Tekst dugmeta za preuzimanje videa"
+  },
+  "button.uploadImageUrl": {
+    "message": "Otpremi sliku",
+    "description": "Tekst dugmeta za otpremanje slike"
+  },
+  "button.uploadVideoUrl": {
+    "message": "Otpremi video",
+    "description": "Tekst dugmeta za otpremanje videa"
+  },
+  "button.uploadReferences": {
+    "message": "Otpremi",
+    "description": "Tekst dugmeta koje omogućava korisniku da otpremi reference"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Možete otpremiti najviše 2 slike",
+    "description": "Poruka o grešci kada je broj otpremljenih slika premašio limit"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Uspešno otpremljena slika",
+    "description": "Poruka o uspehu kada je slika uspešno otpremljena"
+  },
+  "message.uploadReferencesError": {
+    "message": "Neuspešno otpremanje slike, molimo pokušajte ponovo kasnije",
+    "description": "Poruka o grešci kada otpremanje slike nije uspelo"
+  },
+  "message.startingTask": {
+    "message": "Pokreće se zadatak...",
+    "description": "Poruka kada se zadatak za crtanje pokreće"
+  },
+  "message.startTaskSuccess": {
+    "message": "Uspešno pokrenut zadatak za generisanje",
+    "description": "Poruka o uspehu kada je zadatak uspešno pokrenut"
+  },
+  "message.startTaskFailed": {
+    "message": "Pokretanje zadatka nije uspelo, molimo kontaktirajte administratora",
+    "description": "Poruka o grešci kada pokretanje zadatka za crtanje nije uspelo"
+  },
+  "message.usedUp": {
+    "message": "Vaši bodovi su potrošeni, molimo kupite više bodova da biste nastavili sa korišćenjem",
+    "description": "Poruka kada su bodovi potrošeni"
+  },
+  "message.generating": {
+    "message": "Generiše se...",
+    "description": "Poruka kada se slika generiše"
+  },
+  "message.downloadVideo": {
+    "message": "Preuzmi ovaj video",
+    "description": "Poruka kada se slika generiše"
+  },
+  "message.generateFailed": {
+    "message": "Generisanje videa nije uspelo",
+    "description": "Poruka kada generisanje slike nije uspelo"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Broj otpremljenih slika za početni okvir premašuje limit",
+    "description": "Poruka o grešci kada broj otpremljenih slika za početni okvir premašuje limit"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Veličina otpremljenog fajla ne može biti veća od 10MB!",
+    "description": "Poruka o grešci kada veličina otpremljenog fajla premašuje 10MB!"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Otpremani fajl mora biti u MP4 formatu!",
+    "description": "Poruka o grešci kada otpremani fajl nije u MP4 formatu!"
+  },
+  "message.uploadStartEndImageExceed": {
+    "message": "Broj slika prvog okvira premašuje ograničenje",
+    "description": "Poruka o grešci kada broj slika prvog okvira premašuje ograničenje"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Broj slika za završni kadar premašuje ograničenje",
+    "description": "Poruka o grešci kada broj slika za prvi kadar premašuje ograničenje"
+  },
+  "message.uploadStartImageError": {
+    "message": "Greška prilikom učitavanja slike za prvi kadar",
+    "description": "Poruka o grešci kada učitavanje slike za prvi kadar ne uspe"
+  },
+  "message.uploadVideoError": {
+    "message": "Greška prilikom učitavanja videa",
+    "description": "Poruka o grešci kada učitavanje slike za prvi kadar ne uspe"
+  },
+  "message.uploadEndImageError": {
+    "message": "Greška prilikom učitavanja slike za završni kadar",
+    "description": "Poruka o grešci kada učitavanje slike za završni kadar ne uspe"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Greška prilikom učitavanja dokumenata",
+    "description": "Poruka o grešci kada učitavanje dokumenata ne uspe"
+  },
+  "message.noOperations": {
+    "message": "Nema dostupnih operacija",
+    "description": "Poruka kada nema dostupnih operacija"
+  },
+  "message.noTasks": {
+    "message": "Nema istorijskih zadataka, molimo kliknite na generisanje videa s leve strane",
+    "description": "Poruka kada nema zadataka"
+  }
+}
