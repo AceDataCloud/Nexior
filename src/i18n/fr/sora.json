@@ -1,0 +1,214 @@
+{
+  "name.taskId": {
+    "message": "ID de tâche",
+    "description": "L'ID de la tâche"
+  },
+  "name.failure": {
+    "message": "Échec",
+    "description": "L'état d'échec de la tâche"
+  },
+  "name.failureReason": {
+    "message": "Raison de l'échec",
+    "description": "La raison de l'échec de la tâche"
+  },
+  "name.status": {
+    "message": "Statut",
+    "description": "L'état de la tâche"
+  },
+  "name.traceId": {
+    "message": "ID de traçage",
+    "description": "L'ID de traçage de la tâche"
+  },
+  "name.createdAt": {
+    "message": "Date de création",
+    "description": "La date et l'heure de génération de la vidéo Kling"
+  },
+  "name.startEndImage": {
+    "message": "Images de référence de début et de fin",
+    "description": "Les images de référence pour la vidéo à générer"
+  },
+  "name.action": {
+    "message": "Action",
+    "description": "Liste des actions disponibles"
+  },
+  "name.prompt": {
+    "message": "Invite vidéo",
+    "description": "L'invite pour le contenu d'entrée"
+  },
+  "name.model": {
+    "message": "Version du modèle",
+    "description": "La version du modèle utilisée pour générer la vidéo"
+  },
+  "name.soraBot": {
+    "message": "OpenAI Sora Bot",
+    "description": "Le nom du générateur de vidéos Sora"
+  },
+  "name.orientation": {
+    "message": "Orientation vidéo",
+    "description": "Le nom du paramètre d'orientation de la vidéo"
+  },
+  "name.duration": {
+    "message": "Durée de la vidéo",
+    "description": "Le nom du paramètre de durée de la vidéo"
+  },
+  "name.size": {
+    "message": "Clarté de la vidéo",
+    "description": "Le nom du paramètre de clarté de la vidéo"
+  },
+  "description.imageUrl": {
+    "message": "Dans la tâche de création vidéo à partir de plusieurs images, il faut télécharger plusieurs images.",
+    "description": "La description du paramètre 'imageUrl'"
+  },
+  "description.prompt": {
+    "message": "Les mots d'invite pour générer la vidéo Sora",
+    "description": "La description du paramètre 'prompt'"
+  },
+  "description.uploadStartEndImage": {
+    "message": "Tableau de liens d'images de référence, le premier est l'image de début, puis l'image de fin",
+    "description": "La description du paramètre 'image_url'"
+  },
+  "status.pending": {
+    "message": "En attente",
+    "description": "L'état d'attente de la tâche"
+  },
+  "status.processing": {
+    "message": "En cours de traitement",
+    "description": "L'état de traitement de la tâche"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Veuillez sélectionner...",
+    "description": "Le texte de remplacement pour l'entrée de bruit de remplissage"
+  },
+  "placeholder.select": {
+    "message": "Sélectionner",
+    "description": "Le texte de remplacement dans le champ de sélection"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Veuillez sélectionner...",
+    "description": "Le texte de remplacement pour le niveau de remplissage"
+  },
+  "placeholder.prompt": {
+    "message": "Entrez les mots d'invite pour le style de vidéo à générer, par exemple : moving",
+    "description": "Le texte de remplacement dans le champ d'invite"
+  },
+  "placeholder.position": {
+    "message": "Veuillez sélectionner...",
+    "description": "Le texte de remplacement pour l'entrée de position"
+  },
+  "tip.proOnly": {
+    "message": "Seul le modèle sora-2-pro prend en charge la modification de ce paramètre",
+    "description": "Indique à l'utilisateur que seul le modèle professionnel prend en charge la modification de ce paramètre"
+  },
+  "button.generate": {
+    "message": "Générer",
+    "description": "Le texte du bouton pour générer la vidéo Sora"
+  },
+  "button.action1": {
+    "message": "Vidéo générée par texte",
+    "description": "Le texte du bouton pour générer la vidéo Sora"
+  },
+  "button.action2": {
+    "message": "Vidéo générée par image",
+    "description": "Le texte du bouton pour générer la vidéo Sora"
+  },
+  "button.download": {
+    "message": "Télécharger la vidéo",
+    "description": "Le texte du bouton pour télécharger la vidéo"
+  },
+  "button.uploadImageUrl": {
+    "message": "Télécharger l'image",
+    "description": "Le texte du bouton pour télécharger une image"
+  },
+  "button.uploadVideoUrl": {
+    "message": "Télécharger la vidéo",
+    "description": "Le texte du bouton pour télécharger une vidéo"
+  },
+  "button.uploadReferences": {
+    "message": "Télécharger",
+    "description": "Le texte du bouton permettant à l'utilisateur de télécharger des références"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "Vous pouvez télécharger jusqu'à 2 images",
+    "description": "Le message d'erreur lorsque le nombre d'images téléchargées dépasse la limite"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Images téléchargées avec succès",
+    "description": "Le message de succès lorsque les images sont téléchargées avec succès"
+  },
+  "message.uploadReferencesError": {
+    "message": "Échec du téléchargement de l'image, veuillez réessayer plus tard",
+    "description": "Le message d'erreur lorsque le téléchargement de l'image échoue"
+  },
+  "message.startingTask": {
+    "message": "Démarrage de la tâche...",
+    "description": "Le message au début de la tâche de dessin"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tâche de génération lancée avec succès",
+    "description": "Le message de succès lorsque la tâche est lancée avec succès"
+  },
+  "message.startTaskFailed": {
+    "message": "Échec du lancement de la tâche, veuillez contacter l'administrateur",
+    "description": "Le message d'erreur lorsque le lancement de la tâche de dessin échoue"
+  },
+  "message.usedUp": {
+    "message": "Votre crédit est épuisé, veuillez acheter plus de crédits pour continuer",
+    "description": "Le message lorsque le crédit est épuisé"
+  },
+  "message.generating": {
+    "message": "Génération en cours...",
+    "description": "Le message lorsque l'image est en cours de génération"
+  },
+  "message.downloadVideo": {
+    "message": "Télécharger cette vidéo",
+    "description": "Le message lorsque l'image est en cours de génération"
+  },
+  "message.generateFailed": {
+    "message": "Échec de la génération de la vidéo",
+    "description": "Le message lorsque la génération de l'image échoue"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Le nombre d'images de première image téléchargées dépasse la limite",
+    "description": "Le message d'erreur lorsque le nombre d'images de première image téléchargées dépasse la limite"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "La taille du fichier téléchargé ne peut pas dépasser 10 Mo !",
+    "description": "Le message d'erreur lorsque la taille du fichier téléchargé dépasse 10 Mo !"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Le fichier téléchargé doit être au format MP4 !",
+    "description": "Le message d'erreur lorsque le fichier téléchargé n'est pas au format MP4 !"
+  },
+  "message.uploadStartEndImageExceed": {
+    "message": "Le nombre d'images de la première image téléchargée dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de la première image téléchargée dépasse la limite"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "Le nombre d'images de fin téléchargées dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de début téléchargées dépasse la limite"
+  },
+  "message.uploadStartImageError": {
+    "message": "Échec du téléchargement de l'image de début",
+    "description": "Message d'erreur lorsque le téléchargement de l'image de début échoue"
+  },
+  "message.uploadVideoError": {
+    "message": "Échec du téléchargement de la vidéo",
+    "description": "Message d'erreur lorsque le téléchargement de l'image de début échoue"
+  },
+  "message.uploadEndImageError": {
+    "message": "Échec du téléchargement de l'image de fin",
+    "description": "Message d'erreur lorsque le téléchargement de l'image de fin échoue"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Échec du téléchargement du document",
+    "description": "Message d'erreur lorsque le téléchargement du document échoue"
+  },
+  "message.noOperations": {
+    "message": "Aucune opération disponible",
+    "description": "Message lorsque aucune opération n'est disponible"
+  },
+  "message.noTasks": {
+    "message": "Aucune tâche historique, veuillez cliquer sur le bouton de génération de vidéo à gauche",
+    "description": "Message lorsque aucune tâche n'est disponible"
+  }
+}

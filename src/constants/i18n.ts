@@ -30,6 +30,7 @@ export const I18N_SCOPES = [
   'pika',
   'kling',
   'veo',
+  'sora',
   'pixverse',
   'flux',
   'nanobanana',

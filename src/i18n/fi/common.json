@@ -133,7 +133,7 @@
   },
   "button.buyMore": {
     "message": "Osta lisää",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän lisää ostamiseen"
+    "description": "Painikkeen teksti, jota käytetään käyttäjän ostamiseen lisää sisältöä"
   },
   "button.update": {
     "message": "Päivitä",
@@ -153,7 +153,7 @@
   },
   "button.finish": {
     "message": "Valmis",
-    "description": "Painikkeen teksti, jota käytetään joidenkin asioiden viimeistelemiseen"
+    "description": "Painikkeen teksti, jota käytetään joidenkin asioiden loppuunsaattamiseen"
   },
   "entity.id": {
     "message": "ID",
@@ -205,7 +205,7 @@
   },
   "entity.order": {
     "message": "Tilaus",
-    "description": "Entiteetin tilaus, joka sisältää summan ja palvelutiedot, joista käyttäjän on maksettava"
+    "description": "Entiteetin tilaus, joka sisältää summan ja palvelutiedot, käyttäjän on maksettava siitä"
   },
   "message.noTasks": {
     "message": "Ei historiallisia tehtäviä, aloita uusi tehtävä～",
@@ -220,15 +220,15 @@
     "description": "Näyttää jäljellä olevan summan palvelusta"
   },
   "message.copied": {
-    "message": "Kopioitu onnistuneesti",
-    "description": "Viesti, joka ilmoittaa, että sisältö on kopioitu onnistuneesti"
+    "message": "Kopiointi onnistui",
+    "description": "Viesti, joka ilmoittaa, että sisältö on onnistuneesti kopioitu"
   },
   "message.restart": {
     "message": "Uudelleenluonti",
-    "description": "Viesti, joka ilmoittaa, että sisältö on kopioitu onnistuneesti"
+    "description": "Viesti, joka ilmoittaa, että sisältö on onnistuneesti kopioitu"
   },
   "message.confirmDelete": {
-    "message": "Haluatko varmasti poistaa?",
+    "message": "Haluatko varmasti poistaa tämän?",
     "description": "Viesti, joka vahvistaa, haluaako käyttäjä poistaa jotain"
   },
   "message.expiredAt": {
@@ -245,7 +245,7 @@
   },
   "message.free": {
     "message": "Ilmainen",
-    "description": "Viesti, joka ilmoittaa, että palvelu on ilmainen, eikä käyttäjän tarvitse maksaa"
+    "description": "Viesti, joka ilmoittaa, että palvelu on ilmainen, käyttäjän ei tarvitse maksaa"
   },
   "message.startPrice": {
     "message": "Alkaen hinta",
@@ -331,9 +331,13 @@
     "message": "Veo",
     "description": "Verkkosivuston navigointipalkin teksti, joka näyttää chat-sivun, älä käännä tätä kenttää, se on säilytettävä 'Veo'"
   },
+  "nav.sora": {
+    "message": "Sora",
+    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää chat-sivun, älä käännä tätä kenttää, se on säilytettävä 'Sora'"
+  },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää Midjourney-sivun, älä käännä tätä kenttää, se on säilytettävä 'Midjourney'"
+    "description": "网站导航栏中的文本，用于显示中途之旅页面，请不要翻译此字段，必须保持为'Midjourney'"
   },
   "nav.qrart": {
     "message": "QRArt",
@@ -400,7 +404,7 @@
     "description": "网站导航栏中的文本，用于显示设置页面"
   },
   "nav.headshots": {
-    "message": "AI Passikuvat",
+    "message": "AI-profiilikuva",
     "description": "网站导航栏中的文本，用于显示站点配置页面"
   },
   "nav.locale": {
@@ -416,7 +420,7 @@
     "description": "网站导航栏中的文本，用于切换到深色主题"
   },
   "title.alert": {
-    "message": "Ilmoitus",
+    "message": "Hälytys",
     "description": "警报消息的标题"
   },
   "title.placeholderOfSelect": {
@@ -477,11 +481,11 @@
   },
   "about.title3": {
     "message": "Linkit",
-    "description": "显示支持信息的部分的标题"
+    "description": "Näyttää tukitietojen osion otsikon"
   },
   "about.address": {
-    "message": "Yhdysvallat, Delaware, Middletown, N Broad St, Toimisto 201",
-    "description": "公司的地址"
+    "message": "Yhdysvallat, Delaware, Middletown, N Broad St, toimisto 201",
+    "description": "Yrityksen osoite"
   },
   "about.email": {
     "message": "office@acedata.cloud",
@@ -509,19 +513,19 @@
   },
   "about.link6": {
     "message": "Suositustulot",
-    "description": "Suositustulossivun linkki"
+    "description": "Suositustulosivun linkki"
   },
   "about.link7": {
     "message": "Tuki",
     "description": "Tukisivun linkki"
   },
   "about.link8": {
-    "message": "Palveluehdot",
-    "description": "Palveluehtosivun linkki"
+    "message": "Käyttöehdot",
+    "description": "Käyttöehdot-sivun linkki"
   },
   "about.link9": {
     "message": "Tietosuojakäytäntö",
-    "description": "Tietosuojakäytännön sivun linkki"
+    "description": "Tietosuojakäytäntö-sivun linkki"
   },
   "theme.light": {
     "message": "Vaalea",
@@ -537,30 +541,30 @@
   },
   "settings.general": {
     "message": "Yleiset asetukset",
-    "description": "Asetussivun yleiset asetukset -osion otsikko"
+    "description": "Asetussivun yleisten asetusten osion otsikko"
   },
   "settings.language": {
     "message": "Kieli",
-    "description": "Asetussivun kieliasetukset -osion otsikko"
+    "description": "Asetussivun kieliasetusten osion otsikko"
   },
   "settings.theme": {
     "message": "Teema",
-    "description": "Asetussivun teema-asetukset -osion otsikko"
+    "description": "Asetussivun teema-asetusten osion otsikko"
   },
   "settings.seo": {
     "message": "SEO-asetukset",
-    "description": "Asetussivun SEO-asetukset -osion otsikko"
+    "description": "Asetussivun SEO-asetusten osion otsikko"
   },
   "settings.site": {
     "message": "Sivuston asetukset",
-    "description": "Asetussivun sivuston asetukset -osion otsikko"
+    "description": "Asetussivun sivuston asetusten osion otsikko"
   },
   "settings.distribution": {
     "message": "Jakeluasetukset",
-    "description": "Asetussivun jakeluasetukset -osion otsikko"
+    "description": "Asetussivun jakeluasetusten osion otsikko"
   },
   "settings.function": {
     "message": "Toiminta-asetukset",
-    "description": "Asetussivun toiminta-asetukset -osion otsikko"
+    "description": "Asetussivun toiminta-asetusten osion otsikko"
   }
 }

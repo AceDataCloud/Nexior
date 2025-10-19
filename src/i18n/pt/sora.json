@@ -1,0 +1,214 @@
+{
+  "name.taskId": {
+    "message": "ID da tarefa",
+    "description": "ID da tarefa"
+  },
+  "name.failure": {
+    "message": "Falha",
+    "description": "Estado de falha da tarefa"
+  },
+  "name.failureReason": {
+    "message": "Razão da falha",
+    "description": "Razão pela qual a tarefa falhou"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Estado da tarefa"
+  },
+  "name.traceId": {
+    "message": "ID de rastreamento",
+    "description": "ID de rastreamento da tarefa"
+  },
+  "name.createdAt": {
+    "message": "Criado em",
+    "description": "Data e hora em que o vídeo Kling foi gerado"
+  },
+  "name.startEndImage": {
+    "message": "Imagens de referência do início e do fim",
+    "description": "Imagens de referência para o vídeo a ser gerado"
+  },
+  "name.action": {
+    "message": "Ação",
+    "description": "Lista de ações disponíveis"
+  },
+  "name.prompt": {
+    "message": "Prompt do vídeo",
+    "description": "Prompt para entrada de conteúdo"
+  },
+  "name.model": {
+    "message": "Versão do modelo",
+    "description": "Versão do modelo utilizada para gerar o vídeo"
+  },
+  "name.soraBot": {
+    "message": "OpenAI Sora Bot",
+    "description": "Nome do gerador de vídeos Sora"
+  },
+  "name.orientation": {
+    "message": "Orientação do vídeo",
+    "description": "Nome do parâmetro de orientação do vídeo"
+  },
+  "name.duration": {
+    "message": "Duração do vídeo",
+    "description": "Nome do parâmetro de duração do vídeo"
+  },
+  "name.size": {
+    "message": "Qualidade do vídeo",
+    "description": "Nome do parâmetro de qualidade do vídeo"
+  },
+  "description.imageUrl": {
+    "message": "Na tarefa de criação de vídeo com várias imagens, é necessário fazer o upload de várias imagens.",
+    "description": "Descrição do parâmetro 'imageUrl'"
+  },
+  "description.prompt": {
+    "message": "Palavras-chave para gerar o vídeo Sora",
+    "description": "Descrição do parâmetro 'prompt'"
+  },
+  "description.uploadStartEndImage": {
+    "message": "Array de links de imagens de referência, a primeira é a imagem do início e a segunda é a imagem do fim",
+    "description": "Descrição do parâmetro 'image_url'"
+  },
+  "status.pending": {
+    "message": "Pendente",
+    "description": "Estado de espera da tarefa"
+  },
+  "status.processing": {
+    "message": "Processando",
+    "description": "Estado de processamento da tarefa"
+  },
+  "placeholder.paddingNoise": {
+    "message": "Selecione...",
+    "description": "Placeholder para entrada de ruído de preenchimento"
+  },
+  "placeholder.select": {
+    "message": "Selecionar",
+    "description": "Texto de placeholder no campo de seleção"
+  },
+  "placeholder.paddingLevel": {
+    "message": "Selecione...",
+    "description": "Placeholder para nível de preenchimento"
+  },
+  "placeholder.prompt": {
+    "message": "Insira as palavras-chave para o estilo do vídeo a ser gerado, por exemplo: moving",
+    "description": "Texto de placeholder no campo de prompt"
+  },
+  "placeholder.position": {
+    "message": "Selecione...",
+    "description": "Placeholder para entrada de posição"
+  },
+  "tip.proOnly": {
+    "message": "Apenas o modelo sora-2-pro suporta a modificação deste parâmetro",
+    "description": "Dica para o usuário de que apenas o modelo profissional suporta a modificação deste parâmetro"
+  },
+  "button.generate": {
+    "message": "Gerar",
+    "description": "Texto do botão para gerar o vídeo Sora"
+  },
+  "button.action1": {
+    "message": "Vídeo gerado por texto",
+    "description": "Texto do botão para gerar o vídeo Sora"
+  },
+  "button.action2": {
+    "message": "Vídeo gerado por imagem",
+    "description": "Texto do botão para gerar o vídeo Sora"
+  },
+  "button.download": {
+    "message": "Baixar vídeo",
+    "description": "Texto do botão para baixar o vídeo"
+  },
+  "button.uploadImageUrl": {
+    "message": "Fazer upload de imagem",
+    "description": "Texto do botão para fazer upload de imagem"
+  },
+  "button.uploadVideoUrl": {
+    "message": "Fazer upload de vídeo",
+    "description": "Texto do botão para fazer upload de vídeo"
+  },
+  "button.uploadReferences": {
+    "message": "Fazer upload",
+    "description": "Texto do botão que permite ao usuário fazer upload de referências"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "É possível fazer upload de no máximo 2 imagens",
+    "description": "Mensagem de erro quando o número de imagens carregadas excede o limite"
+  },
+  "message.uploadReferencesSuccess": {
+    "message": "Imagens carregadas com sucesso",
+    "description": "Mensagem de sucesso quando as imagens são carregadas com sucesso"
+  },
+  "message.uploadReferencesError": {
+    "message": "Falha ao fazer upload da imagem, por favor, tente novamente mais tarde",
+    "description": "Mensagem de erro quando o upload da imagem falha"
+  },
+  "message.startingTask": {
+    "message": "Iniciando tarefa...",
+    "description": "Mensagem quando a tarefa de desenho começa"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tarefa de geração iniciada com sucesso",
+    "description": "Mensagem de sucesso quando a tarefa é iniciada com sucesso"
+  },
+  "message.startTaskFailed": {
+    "message": "Falha ao iniciar a tarefa, por favor, entre em contato com o administrador",
+    "description": "Mensagem de erro quando a tarefa de desenho falha ao iniciar"
+  },
+  "message.usedUp": {
+    "message": "Seus créditos acabaram, por favor, compre mais créditos para continuar usando",
+    "description": "Mensagem quando os créditos se esgotam"
+  },
+  "message.generating": {
+    "message": "Gerando...",
+    "description": "Mensagem quando a imagem está sendo gerada"
+  },
+  "message.downloadVideo": {
+    "message": "Baixar este vídeo",
+    "description": "Mensagem quando a imagem está sendo gerada"
+  },
+  "message.generateFailed": {
+    "message": "Falha ao gerar vídeo",
+    "description": "Mensagem quando a geração da imagem falha"
+  },
+  "message.uploadVideoExceed": {
+    "message": "Número de imagens do primeiro quadro carregadas excede o limite",
+    "description": "Mensagem de erro quando o número de imagens do primeiro quadro carregadas excede o limite"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "O tamanho do arquivo carregado não pode exceder 10MB!",
+    "description": "Mensagem de erro quando o tamanho do arquivo carregado excede 10MB!"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "O arquivo carregado deve estar no formato MP4!",
+    "description": "Mensagem de erro quando o arquivo carregado não está no formato MP4!"
+  },
+  "message.uploadStartEndImageExceed": {
+    "message": "O número de imagens da primeira frame excede o limite",
+    "description": "Mensagem de erro quando o número de imagens da primeira frame excede o limite"
+  },
+  "message.uploadEndImageExceed": {
+    "message": "O número de imagens de quadro final carregadas excede o limite",
+    "description": "Mensagem de erro quando o número de imagens de quadro inicial carregadas excede o limite"
+  },
+  "message.uploadStartImageError": {
+    "message": "Falha ao carregar a imagem do quadro inicial",
+    "description": "Mensagem de erro quando falha ao carregar a imagem do quadro inicial"
+  },
+  "message.uploadVideoError": {
+    "message": "Falha ao carregar o vídeo",
+    "description": "Mensagem de erro quando falha ao carregar a imagem do quadro inicial"
+  },
+  "message.uploadEndImageError": {
+    "message": "Falha ao carregar a imagem do quadro final",
+    "description": "Mensagem de erro quando falha ao carregar a imagem do quadro final"
+  },
+  "message.uploadDocumentsError": {
+    "message": "Falha ao carregar o documento",
+    "description": "Mensagem de erro quando falha ao carregar o documento"
+  },
+  "message.noOperations": {
+    "message": "Nenhuma operação disponível",
+    "description": "Mensagem quando não há operações disponíveis"
+  },
+  "message.noTasks": {
+    "message": "Nenhuma tarefa histórica, por favor clique à esquerda para gerar vídeo",
+    "description": "Mensagem quando não há tarefas"
+  }
+}

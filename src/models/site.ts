@@ -9,6 +9,7 @@ export interface ISiteFeatures {
   pika?: any;
   kling?: any;
   veo?: any;
+  sora?: any;
   pixverse?: any;
   hailuo?: any;
   headshots?: any;

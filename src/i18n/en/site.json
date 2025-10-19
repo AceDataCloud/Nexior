@@ -32,7 +32,7 @@
     "description": "Displayed as the title in the editing box"
   },
   "field.admins": {
-    "message": "Site Admin ID",
+    "message": "Site Admin IDs",
     "description": "Displayed as the title in the editing box"
   },
   "field.distributionDefaultInviterId": {
@@ -49,6 +49,10 @@
   },
   "field.featuresVeo": {
     "message": "Veo",
+    "description": "Displayed as the title in the editing box"
+  },
+  "field.featuresSora": {
+    "message": "Sora",
     "description": "Displayed as the title in the editing box"
   },
   "field.featuresGrok": {
@@ -209,11 +213,11 @@
   },
   "message.uploadImageExceed": {
     "message": "Uploaded image exceeds limit",
-    "description": "Prompt for exceeding the image upload limit"
+    "description": "Prompt for when the uploaded image exceeds the limit"
   },
   "message.uploadImageError": {
     "message": "Error uploading image",
-    "description": "Prompt for image upload error"
+    "description": "Prompt for when there is an error uploading the image"
   },
   "message.editLogoTip": {
     "message": "Recommended size: 200*60px",
@@ -236,11 +240,11 @@
     "description": "Prompt for retaining at least one admin"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "User ID of the default inviter. If the distribution link does not carry the inviter_id parameter, this user ID will be used as the inviter by default.",
+    "message": "The user ID of the default inviter. If the distribution link does not carry the inviter_id parameter, this user ID will be used as the inviter by default.",
     "description": "Prompt for default inviter ID"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "User ID of the forced inviter. If this ID is set, regardless of whether the distribution link carries the inviter_id parameter, this user ID will be forced to be used as the inviter.",
+    "message": "The user ID of the forced inviter. If this ID is set, regardless of whether the distribution link carries the inviter_id parameter, this user ID will be forced to be used as the inviter.",
     "description": "Prompt for forced inviter ID"
   },
   "message.originTip": {
@@ -311,6 +315,10 @@
     "message": "Enable or disable the Veo feature module.",
     "description": "Description of the Veo feature"
   },
+  "message.featuresSora": {
+    "message": "Enable or disable the Sora feature module.",
+    "description": "Description of the Sora feature"
+  },
   "message.featuresSuno": {
     "message": "Enable or disable the Suno feature module.",
     "description": "Description of the Suno feature"
@@ -336,23 +344,23 @@
     "description": "Description of the Pika feature"
   },
   "message.featuresKling": {
-    "message": "Enable or disable the Kling feature module.",
+    "message": "Turn the Kling feature module on or off.",
     "description": "Description of the Kling feature"
   },
   "message.featuresHailuo": {
-    "message": "Turn on or off the Hailuo feature module.",
+    "message": "Turn the Hailuo feature module on or off.",
     "description": "Description of the Hailuo feature"
   },
   "message.featuresHeadshots": {
-    "message": "Turn on or off the AI ID photo feature module.",
+    "message": "Turn the AI ID photo feature module on or off.",
     "description": "Description of the AI ID photo feature"
   },
   "message.featuresSupport": {
-    "message": "Turn on or off customer support",
+    "message": "Turn customer support on or off.",
     "description": "Description of the Support feature"
   },
   "message.featuresI18n": {
-    "message": "Turn on or off multilingual support. When turned off, users can only use the default language.",
+    "message": "Turn multilingual support on or off. When turned off, users can only use the default language.",
     "description": "Description of multilingual support"
   },
   "button.upload": {

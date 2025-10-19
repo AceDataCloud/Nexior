@@ -72,8 +72,8 @@
     "description": "버튼 텍스트, 특정 내용을 게시하는 데 사용"
   },
   "button.watch": {
-    "message": "시청",
-    "description": "버튼 텍스트, 특정 내용을 시청하는 데 사용"
+    "message": "보기",
+    "description": "버튼 텍스트, 특정 내용을 보는 데 사용"
   },
   "button.verify": {
     "message": "실명 인증",
@@ -85,7 +85,7 @@
   },
   "button.console": {
     "message": "콘솔",
-    "description": "버튼 텍스트, 웹 페이지의 특정 내용을 제어하기 위해 콘솔 페이지를 표시하는 데 사용"
+    "description": "버튼 텍스트, 웹 페이지에서 특정 내용을 제어하기 위한 콘솔 페이지를 표시하는 데 사용"
   },
   "button.learn": {
     "message": "학습",
@@ -149,7 +149,7 @@
   },
   "button.referralEarnings": {
     "message": "추천 수익",
-    "description": "버튼 텍스트, 추천 수익을 표시하며, 사용자가 다른 사람을 초대하여 서비스를 이용하게 하여 수익을 얻을 수 있음을 나타냄"
+    "description": "버튼 텍스트, 추천 수익을 표시하며, 사용자가 다른 사람을 초대하여 서비스를 사용하게 하면 돈을 벌 수 있음을 나타냄"
   },
   "button.finish": {
     "message": "완료",
@@ -205,7 +205,7 @@
   },
   "entity.order": {
     "message": "주문",
-    "description": "엔티티의 주문, 주문에는 금액과 서비스 정보가 포함되며, 사용자가 지불해야 함"
+    "description": "엔티티의 주문, 주문에는 금액과 서비스 정보가 포함되며, 사용자가 비용을 지불해야 함"
   },
   "message.noTasks": {
     "message": "이력 작업이 없습니다. 새로운 작업을 시작하세요～",
@@ -228,7 +228,7 @@
     "description": "내용이 성공적으로 복사되었음을 표시하는 메시지"
   },
   "message.confirmDelete": {
-    "message": "정말로 삭제하시겠습니까?",
+    "message": "정말 삭제하시겠습니까?",
     "description": "사용자가 특정 내용을 삭제할 것인지 확인하는 메시지"
   },
   "message.expiredAt": {
@@ -245,7 +245,7 @@
   },
   "message.free": {
     "message": "무료",
-    "description": "서비스가 무료임을 표시하는 메시지, 사용자가 지불할 필요가 없음을 나타냄"
+    "description": "서비스가 무료임을 표시하는 메시지, 사용자가 비용을 지불할 필요가 없음을 나타냄"
   },
   "message.startPrice": {
     "message": "시작 가격",
@@ -280,8 +280,8 @@
     "description": "웹사이트 내비게이션 바의 텍스트, 내용 페이지를 표시"
   },
   "nav.category": {
-    "message": "분류",
-    "description": "웹사이트 내비게이션 바의 텍스트, 분류 페이지를 표시"
+    "message": "카테고리",
+    "description": "웹사이트 내비게이션 바의 텍스트, 카테고리 페이지를 표시"
   },
   "nav.service": {
     "message": "서비스",
@@ -331,45 +331,49 @@
     "message": "Veo",
     "description": "웹사이트 내비게이션 바의 텍스트, 채팅 페이지를 표시, 이 필드는 번역하지 말고 'Veo'로 유지해야 함"
   },
+  "nav.sora": {
+    "message": "Sora",
+    "description": "웹사이트 내비게이션 바의 텍스트, 채팅 페이지를 표시, 이 필드는 번역하지 말고 'Sora'로 유지해야 함"
+  },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "웹사이트 내비게이션 바의 텍스트, Midjourney 페이지를 표시, 이 필드는 번역하지 말고 'Midjourney'로 유지해야 함"
+    "description": "웹사이트 내비게이션 바의 텍스트로, Midjourney 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 말고 'Midjourney'로 유지해야 합니다."
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "웹사이트 내비게이션 바의 텍스트로, 2D 아트 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 마시고 'QRArt'로 유지해야 합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, QRArt 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 말고 'QRArt'로 유지해야 합니다."
   },
   "nav.suno": {
     "message": "Suno",
-    "description": "웹사이트 내비게이션 바의 텍스트로, Suno 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 마시고 'Suno'로 유지해야 합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, Suno 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 말고 'Suno'로 유지해야 합니다."
   },
   "nav.pixverse": {
     "message": "Pixverse",
-    "description": "웹사이트 내비게이션 바의 텍스트로, Pixverse 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 마시고 'Pixverse'로 유지해야 합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, Pixverse 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 말고 'Pixverse'로 유지해야 합니다."
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "웹사이트 내비게이션 바의 텍스트로, Flux 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 마시고 'Flux'로 유지해야 합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, Flux 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 말고 'Flux'로 유지해야 합니다."
   },
   "nav.nanobanana": {
     "message": "Nano Banana",
-    "description": "웹사이트 내비게이션 바의 텍스트로, Nano Banana 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 마시고 'Nano Banana'로 유지해야 합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, Nano Banana 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 말고 'Nano Banana'로 유지해야 합니다."
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "웹사이트 내비게이션 바의 텍스트로, Luma 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 마시고 'Luma'로 유지해야 합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, Luma 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 말고 'Luma'로 유지해야 합니다."
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "웹사이트 내비게이션 바의 텍스트로, Pika 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 마시고 'Pika'로 유지해야 합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, Pika 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 말고 'Pika'로 유지해야 합니다."
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "웹사이트 내비게이션 바의 텍스트로, Kling 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 마시고 'Kling'로 유지해야 합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, Kling 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 말고 'Kling'로 유지해야 합니다."
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "웹사이트 내비게이션 바의 텍스트로, Hailuo 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 마시고 'Hailuo'로 유지해야 합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, Hailuo 페이지를 표시하는 데 사용됩니다. 이 필드는 번역하지 말고 'Hailuo'로 유지해야 합니다."
   },
   "nav.image": {
     "message": "이미지",
@@ -420,12 +424,12 @@
     "description": "경고 메시지의 제목입니다."
   },
   "title.placeholderOfSelect": {
-    "message": "선택해 주세요",
-    "description": "선택 입력 상자의 자리 표시자입니다."
+    "message": "선택하세요",
+    "description": "선택 입력란의 자리 표시자입니다."
   },
   "title.placeholderOfInput": {
-    "message": "입력해 주세요",
-    "description": "입력 상자의 자리 표시자입니다."
+    "message": "입력하세요",
+    "description": "입력란의 자리 표시자입니다."
   },
   "title.allApplications": {
     "message": "모든 신청",
@@ -468,20 +472,20 @@
     "description": "API에 접근하는 데 사용되는 모든 자격 증명을 표시하는 페이지 제목입니다."
   },
   "about.title1": {
-    "message": "연락하기",
-    "description": "연락 정보 부분의 제목입니다."
+    "message": "연락처",
+    "description": "연락처 정보를 표시하는 부분의 제목입니다."
   },
   "about.title2": {
-    "message": "자원",
-    "description": "링크 부분의 제목입니다."
+    "message": "리소스",
+    "description": "링크를 표시하는 부분의 제목입니다."
   },
   "about.title3": {
     "message": "링크",
-    "description": "지원 정보 부분의 제목입니다."
+    "description": "지원 정보 섹션의 제목"
   },
   "about.address": {
-    "message": "미국 델라웨어주 미들타운 N Broad St, 201호",
-    "description": "회사의 주소입니다."
+    "message": "미국 델라웨어주 미들타운 N 브로드 스트리트 201호 사무실",
+    "description": "회사의 주소"
   },
   "about.email": {
     "message": "office@acedata.cloud",
@@ -520,16 +524,16 @@
     "description": "서비스 약관 페이지의 링크"
   },
   "about.link9": {
-    "message": "개인정보 처리방침",
-    "description": "개인정보 처리방침 페이지의 링크"
+    "message": "개인정보 보호정책",
+    "description": "개인정보 보호정책 페이지의 링크"
   },
   "theme.light": {
-    "message": "라이트 모드",
-    "description": "라이트 테마의 이름"
+    "message": "밝은 색",
+    "description": "밝은 색 테마의 이름"
   },
   "theme.dark": {
-    "message": "다크 모드",
-    "description": "다크 테마의 이름"
+    "message": "어두운 색",
+    "description": "어두운 색 테마의 이름"
   },
   "theme.system": {
     "message": "시스템",
@@ -537,30 +541,30 @@
   },
   "settings.general": {
     "message": "일반 설정",
-    "description": "설정 페이지의 일반 설정 부분의 제목"
+    "description": "설정 페이지의 일반 설정 섹션 제목"
   },
   "settings.language": {
     "message": "언어",
-    "description": "설정 페이지의 언어 설정 부분의 제목"
+    "description": "설정 페이지의 언어 설정 섹션 제목"
   },
   "settings.theme": {
     "message": "테마",
-    "description": "설정 페이지의 테마 설정 부분의 제목"
+    "description": "설정 페이지의 테마 설정 섹션 제목"
   },
   "settings.seo": {
     "message": "SEO 설정",
-    "description": "설정 페이지의 SEO 설정 부분의 제목"
+    "description": "설정 페이지의 SEO 설정 섹션 제목"
   },
   "settings.site": {
     "message": "사이트 설정",
-    "description": "설정 페이지의 사이트 설정 부분의 제목"
+    "description": "설정 페이지의 사이트 설정 섹션 제목"
   },
   "settings.distribution": {
     "message": "배포 설정",
-    "description": "설정 페이지의 배포 설정 부분의 제목"
+    "description": "설정 페이지의 배포 설정 섹션 제목"
   },
   "settings.function": {
     "message": "기능 설정",
-    "description": "설정 페이지의 기능 설정 부분의 제목"
+    "description": "설정 페이지의 기능 설정 섹션 제목"
   }
 }

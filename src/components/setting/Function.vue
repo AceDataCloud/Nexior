@@ -12,6 +12,7 @@
         'pika',
         'kling',
         'veo',
+        'sora',
         'pixverse',
         'flux',
         'hailuo',

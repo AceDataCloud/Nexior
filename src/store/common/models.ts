@@ -6,6 +6,7 @@ import { ILumaState } from '../luma/models';
 import { IPikaState } from '../pika/models';
 import { IKlingState } from '../kling/models';
 import { IVeoState } from '../veo/models';
+import { ISoraState } from '../sora/models';
 import { IPixverseState } from '../pixverse/models';
 import { IFluxState } from '../flux/models';
 import { IHailuoState } from '../hailuo/models';
@@ -47,6 +48,7 @@ export interface IAppState {
   pika: IPikaState;
   kling: IKlingState;
   veo: IVeoState;
+  sora: ISoraState;
   pixverse: IPixverseState;
   flux: IFluxState;
   hailuo: IHailuoState;

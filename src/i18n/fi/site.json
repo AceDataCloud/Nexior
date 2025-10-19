@@ -32,15 +32,15 @@
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.admins": {
-    "message": "Sivuston ylläpitäjätunnus",
+    "message": "Sivuston ylläpitäjän ID",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.distributionDefaultInviterId": {
-    "message": "Oletus kutsujan tunnus",
+    "message": "Oletus kutsuja ID",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.distributionForceInviterId": {
-    "message": "Pakotettu kutsujan tunnus",
+    "message": "Pakotettu kutsuja ID",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.featuresChat": {
@@ -49,6 +49,10 @@
   },
   "field.featuresVeo": {
     "message": "Veo",
+    "description": "Näytetään muokkausruudun otsikkona"
+  },
+  "field.featuresSora": {
+    "message": "Sora",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.featuresGrok": {
@@ -236,11 +240,11 @@
     "description": "Vähintään yksi ylläpitäjä säilyttämisen ilmoitus"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "Oletuskutsujan käyttäjän ID, jos jakelulinkki ei sisällä inviter_id-parametria, käytetään oletuksena tätä käyttäjän ID:tä kutsujana.",
+    "message": "Oletuskutsujan käyttäjän ID, jos jakolinkki ei sisällä inviter_id-parametria, käytetään oletuksena tätä käyttäjän ID:tä kutsujana.",
     "description": "Oletuskutsujan ID:n ohje"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "Pakotetun kutsujan käyttäjän ID, jos tämä ID on asetettu, käytetään pakotetusti tätä käyttäjän ID:tä kutsujana riippumatta siitä, sisältääkö jakelulinkki inviter_id-parametrin.",
+    "message": "Pakotetun kutsujan käyttäjän ID, jos tämä ID on asetettu, käytetään tätä käyttäjän ID:tä kutsujana riippumatta siitä, sisältääkö jakolinkki inviter_id-parametrin.",
     "description": "Pakotetun kutsujan ID:n ohje"
   },
   "message.originTip": {
@@ -256,7 +260,7 @@
     "description": "Sivuston kuvauksen ohje"
   },
   "message.logoTip": {
-    "message": "Sivuston logo, näytetään sivuston valikon yläosassa, kun valikkopalkki on avattu.",
+    "message": "Sivuston logo, näytetään sivuston valikon yläosassa, kun valikko on avattu.",
     "description": "Sivuston logon ohje"
   },
   "message.faviconTip": {
@@ -264,7 +268,7 @@
     "description": "Sivuston faviconin ohje"
   },
   "message.adminsTip": {
-    "message": "Sivuston ylläpitäjän ID, oletuksena ensimmäisenä sivuston luoneesta käyttäjästä tulee ylläpitäjä, vain sivuston ylläpitäjät voivat hallita sivustoa.",
+    "message": "Sivuston ylläpitäjän ID, oletuksena ensimmäisenä sivuston luonut käyttäjä tulee ylläpitäjäksi, vain sivuston ylläpitäjät voivat hallita sivustoa.",
     "description": "Sivuston ylläpitäjän ohje"
   },
   "message.adminsTip2": {
@@ -311,6 +315,10 @@
     "message": "Avaa tai sulje Veo-toimintomoduuli.",
     "description": "Veo-toiminnon kuvaus"
   },
+  "message.featuresSora": {
+    "message": "Avaa tai sulje Sora-toimintomoduuli.",
+    "description": "Sora-toiminnon kuvaus"
+  },
   "message.featuresSuno": {
     "message": "Avaa tai sulje Suno-toimintomoduuli.",
     "description": "Suno-toiminnon kuvaus"
@@ -336,15 +344,15 @@
     "description": "Pika-toiminnon kuvaus"
   },
   "message.featuresKling": {
-    "message": "Avaa tai sulje Kling-toimintomoduuli.",
+    "message": "Ota käyttöön tai poista käytöstä Kling-toimintomoduuli.",
     "description": "Kling-toiminnon kuvaus"
   },
   "message.featuresHailuo": {
     "message": "Ota käyttöön tai poista käytöstä Hailuo-toimintomoduuli.",
-    "description": "Hailuo toiminnon kuvaus"
+    "description": "Hailuo-toiminnon kuvaus"
   },
   "message.featuresHeadshots": {
-    "message": "Ota käyttöön tai poista käytöstä AI-passikuvatoimintomoduuli.",
+    "message": "Ota käyttöön tai poista käytöstä AI-passikuvatoiminto.",
     "description": "AI-passikuvan toiminnon kuvaus"
   },
   "message.featuresSupport": {
@@ -352,7 +360,7 @@
     "description": "Tuen toiminnon kuvaus"
   },
   "message.featuresI18n": {
-    "message": "Ota käyttöön tai poista käytöstä monikielinen tuki, kun se on pois käytöstä, käyttäjä voi käyttää vain oletuskieltä.",
+    "message": "Ota käyttöön tai poista käytöstä monikielinen tuki, kun se on pois päältä, käyttäjä voi käyttää vain oletuskieltä.",
     "description": "Monikielisen tuen kuvaus"
   },
   "button.upload": {
@@ -361,10 +369,10 @@
   },
   "button.enabled": {
     "message": "Otetaan käyttöön",
-    "description": "Kytkimen teksti, joka osoittaa, että se on otettu käyttöön"
+    "description": "Kytkin teksti, joka osoittaa, että se on otettu käyttöön"
   },
   "button.disabled": {
     "message": "Poistettu käytöstä",
-    "description": "Kytkimen teksti, joka osoittaa, että se on poistettu käytöstä"
+    "description": "Kytkin teksti, joka osoittaa, että se on poistettu käytöstä"
   }
 }
