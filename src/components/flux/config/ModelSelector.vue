@@ -29,10 +29,6 @@ export default defineComponent({
     return {
       options: [
         {
-          value: 'flux-schnell',
-          label: 'flux-schnell'
-        },
-        {
           value: 'flux-dev',
           label: 'flux-dev'
         },
