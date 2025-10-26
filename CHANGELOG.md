@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 19 Oct 2025 07:30:39 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 26 Oct 2025 04:10:38 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.20.1
+
+Sun, 26 Oct 2025 04:10:38 GMT
+
+### Patches
+
+- update flux model (1348977728@qq.com)
 
 ## 3.20.0
 
