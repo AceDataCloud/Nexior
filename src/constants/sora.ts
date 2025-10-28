@@ -5,10 +5,14 @@ export const SORA_MODEL_PRO = 'sora-2-pro';
 
 export const SORA_DEFAULT_MODEL = SORA_MODEL_STANDARD;
 export const SORA_DEFAULT_DURATION = 10;
-export const SORA_ALLOWED_DURATIONS = [10, 15];
 export const SORA_DEFAULT_SIZE = 'small';
 export const SORA_ALLOWED_SIZES = ['small', 'large'];
 export const SORA_DEFAULT_ACTION = 'text2video';
 export const SORA_DEFAULT_ORIENTATION = 'landscape';
 export const SORA_DEFAULT_TRANSLATION = false;
 export const SORA_DEFAULT_EXTEND_IMG = false;
+
+export const SORA_ALLOWED_DURATIONS_BY_MODEL: Record<string, number[]> = {
+  [SORA_MODEL_STANDARD]: [10, 15],
+  [SORA_MODEL_PRO]: [10, 15, 25]
+};
