@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 26 Oct 2025 04:10:38 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 28 Oct 2025 04:24:20 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.20.2
+
+Tue, 28 Oct 2025 04:24:20 GMT
+
+### Patches
+
+- change duration limit (cqc@cuiqingcai.com)
 
 ## 3.20.1
 
