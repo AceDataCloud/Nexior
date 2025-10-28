@@ -11,6 +11,7 @@
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
 import {
+  SORA_ALLOWED_DURATIONS_BY_MODEL,
   SORA_DEFAULT_DURATION,
   SORA_DEFAULT_MODEL,
   SORA_DEFAULT_SIZE,
@@ -52,18 +53,19 @@ export default defineComponent({
       },
       set(val: string) {
         const currentConfig = this.$store.state.sora?.config || {};
+        const allowedDurations = SORA_ALLOWED_DURATIONS_BY_MODEL[val] || [SORA_DEFAULT_DURATION];
+        const currentDuration = currentConfig.duration as number | undefined;
+        const resolvedDuration = currentDuration && allowedDurations.includes(currentDuration)
+          ? currentDuration
+          : allowedDurations.includes(SORA_DEFAULT_DURATION)
+          ? SORA_DEFAULT_DURATION
+          : allowedDurations[0];
         const nextConfig = {
           ...currentConfig,
-          model: val
+          model: val,
+          duration: resolvedDuration,
+          size: currentConfig.size || SORA_DEFAULT_SIZE
         } as Record<string, any>;
-
-        if (val === SORA_MODEL_STANDARD) {
-          nextConfig.duration = SORA_DEFAULT_DURATION;
-          nextConfig.size = SORA_DEFAULT_SIZE;
-        } else if (val === SORA_MODEL_PRO) {
-          nextConfig.duration = nextConfig.duration || SORA_DEFAULT_DURATION;
-          nextConfig.size = nextConfig.size || SORA_DEFAULT_SIZE;
-        }
 
         this.$store.commit('sora/setConfig', nextConfig);
       }
