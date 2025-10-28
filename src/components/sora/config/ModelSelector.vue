@@ -55,11 +55,12 @@ export default defineComponent({
         const currentConfig = this.$store.state.sora?.config || {};
         const allowedDurations = SORA_ALLOWED_DURATIONS_BY_MODEL[val] || [SORA_DEFAULT_DURATION];
         const currentDuration = currentConfig.duration as number | undefined;
-        const resolvedDuration = currentDuration && allowedDurations.includes(currentDuration)
-          ? currentDuration
-          : allowedDurations.includes(SORA_DEFAULT_DURATION)
-          ? SORA_DEFAULT_DURATION
-          : allowedDurations[0];
+        const resolvedDuration =
+          currentDuration && allowedDurations.includes(currentDuration)
+            ? currentDuration
+            : allowedDurations.includes(SORA_DEFAULT_DURATION)
+            ? SORA_DEFAULT_DURATION
+            : allowedDurations[0];
         const nextConfig = {
           ...currentConfig,
           model: val,
