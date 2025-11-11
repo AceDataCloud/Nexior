@@ -15,7 +15,7 @@ export const getSiteOrigin = (site?: ISite) => {
   if (host.includes('localhost')) {
     // generate uuid
     const randomId = uuid();
-    return `http://localhost-${randomId}`;
+    return `//localhost-${randomId}`;
   } else {
     return window.location.origin;
   }
