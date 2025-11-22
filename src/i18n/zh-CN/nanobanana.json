@@ -1,34 +1,118 @@
 {
-  "name.taskId": { "message": "任务 ID", "description": "任务的 ID" },
-  "name.task": { "message": "任务类型", "description": "Nano Banana 图片操作类型" },
-  "name.generate": { "message": "创建图片", "description": "操作类型：创建图片" },
-  "name.edits": { "message": "编辑图片", "description": "操作类型：编辑图片" },
-  "name.imageUrls": { "message": "参考图片", "description": "用于编辑的参考图片" },
-  "name.failure": { "message": "失败", "description": "任务失败" },
-  "name.failureReason": { "message": "失败原因", "description": "任务失败原因" },
-  "name.status": { "message": "状态", "description": "任务状态" },
-  "name.traceId": { "message": "追踪 ID", "description": "追踪 ID" },
-  "name.prompt": { "message": "图像提示", "description": "生成/编辑的提示词" },
-  "name.nanobananaBot": { "message": "Nano Banana Bot", "description": "Nano Banana 图片生成器名称" },
-  "name.aspectRatio": { "message": "宽高比", "description": "生成图像的宽高比" },
-  "description.prompt": { "message": "生成或编辑图像的提示词", "description": "提示词描述" },
-  "description.imageUrls": { "message": "在编辑图片任务中必须上传 1-5 张图片。", "description": "image_urls 参数说明" },
+  "name.taskId": {
+    "message": "任务 ID",
+    "description": "任务的 ID"
+  },
+  "name.task": {
+    "message": "任务类型",
+    "description": "Nano Banana 图片操作类型"
+  },
+  "name.generate": {
+    "message": "创建图片",
+    "description": "操作类型：创建图片"
+  },
+  "name.edits": {
+    "message": "编辑图片",
+    "description": "操作类型：编辑图片"
+  },
+  "name.imageUrls": {
+    "message": "参考图片",
+    "description": "用于编辑的参考图片"
+  },
+  "name.failure": {
+    "message": "失败",
+    "description": "任务失败"
+  },
+  "name.failureReason": {
+    "message": "失败原因",
+    "description": "任务失败原因"
+  },
+  "name.status": {
+    "message": "状态",
+    "description": "任务状态"
+  },
+  "name.traceId": {
+    "message": "追踪 ID",
+    "description": "追踪 ID"
+  },
+  "name.prompt": {
+    "message": "图像提示",
+    "description": "生成/编辑的提示词"
+  },
+  "name.nanobananaBot": {
+    "message": "Nano Banana Bot",
+    "description": "Nano Banana 图片生成器名称"
+  },
+  "name.aspectRatio": {
+    "message": "宽高比",
+    "description": "生成图像的宽高比"
+  },
+  "description.prompt": {
+    "message": "生成或编辑图像的提示词",
+    "description": "提示词描述"
+  },
+  "description.imageUrls": {
+    "message": "在编辑图片任务中必须上传 1-5 张图片。",
+    "description": "image_urls 参数说明"
+  },
   "description.aspectRatio": {
     "message": "生成图像的宽高比。支持的取值有 `1:1`、`3:2`、`2:3`、`16:9`、`9:16`、`4:3`、`3:4`。默认值为 `1:1`。仅当 `action` 为 `generate` 时生效；若 `action` 为 `edit`，则以 `image_urls` 中第一张图片的比例为准。",
     "description": "aspect_ratio 参数说明"
   },
-
-  "status.pending": { "message": "等待中", "description": "任务等待状态" },
-
-  "placeholder.select": { "message": "选择", "description": "选择占位" },
-  "placeholder.prompt": { "message": "输入提示词，例如：a white siamese cat", "description": "提示占位" },
-
-  "button.generate": { "message": "生成", "description": "生成按钮" },
-  "button.uploadImageUrls": { "message": "上传图片", "description": "上传参考图片按钮" },
-  "message.startingTask": { "message": "正在启动任务...", "description": "开始任务消息" },
-  "message.startTaskSuccess": { "message": "成功发起生成任务", "description": "任务成功创建" },
-  "message.startTaskFailed": { "message": "发起任务失败，请联系管理员：", "description": "任务创建失败" },
-  "message.usedUp": { "message": "您的积分已用完，请购买更多积分后继续使用", "description": "已用完提示" },
-  "message.uploadImageExceed": { "message": "最多可上传 5 张图片", "description": "图片数量超过限制" },
-  "message.uploadImageError": { "message": "上传图片失败，请稍后重试", "description": "上传失败" }
+  "status.pending": {
+    "message": "等待中",
+    "description": "任务等待状态"
+  },
+  "placeholder.select": {
+    "message": "选择",
+    "description": "选择占位"
+  },
+  "placeholder.prompt": {
+    "message": "输入提示词，例如：a white siamese cat",
+    "description": "提示占位"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "生成按钮"
+  },
+  "button.uploadImageUrls": {
+    "message": "上传图片",
+    "description": "上传参考图片按钮"
+  },
+  "message.startingTask": {
+    "message": "正在启动任务...",
+    "description": "开始任务消息"
+  },
+  "message.startTaskSuccess": {
+    "message": "成功发起生成任务",
+    "description": "任务成功创建"
+  },
+  "message.startTaskFailed": {
+    "message": "发起任务失败，请联系管理员：",
+    "description": "任务创建失败"
+  },
+  "message.usedUp": {
+    "message": "您的积分已用完，请购买更多积分后继续使用",
+    "description": "已用完提示"
+  },
+  "message.uploadImageExceed": {
+    "message": "最多可上传 5 张图片",
+    "description": "图片数量超过限制"
+  },
+  "message.uploadImageError": {
+    "message": "上传图片失败，请稍后重试",
+    "description": "上传失败"
+  },
+  "name.model": {
+    "message": "Model",
+    "description": "Nano Banana model selector label"
+  },
+  "model.nanoBanana": {
+    "message": "nano-banana",
+    "description": "Nano Banana base model option"
+  },
+  "model.nanoBananaPro": {
+    "message": "nano-banana-pro",
+    "description": "Nano Banana pro model option"
+  }
 }
