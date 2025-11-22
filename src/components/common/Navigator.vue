@@ -42,6 +42,8 @@ import {
   ROUTE_GROK_CONVERSATION,
   ROUTE_GEMINI_CONVERSATION_NEW,
   ROUTE_GEMINI_CONVERSATION,
+  ROUTE_CLAUDE_CONVERSATION_NEW,
+  ROUTE_CLAUDE_CONVERSATION,
   ROUTE_KLING_INDEX,
   ROUTE_KLING_HISTORY,
   ROUTE_PIXVERSE_INDEX,
@@ -56,7 +58,8 @@ import {
   CHAT_MODEL_ICON_CHATGPT,
   CHAT_MODEL_ICON_DEEPSEEK,
   CHAT_MODEL_ICON_GROK,
-  CHAT_MODEL_ICON_GEMINI
+  CHAT_MODEL_ICON_GEMINI,
+  CHAT_MODEL_ICON_CLAUDE
 } from '@/constants/chat';
 import Logo from './Logo.vue';
 import UserCenter from '@/components/user/Center.vue';
@@ -129,6 +132,17 @@ export default defineComponent({
           displayName: this.$t('common.nav.gemini'),
           logo: CHAT_MODEL_ICON_GEMINI,
           routes: [ROUTE_GEMINI_CONVERSATION, ROUTE_GEMINI_CONVERSATION_NEW]
+        });
+      }
+      // Add claude's leftmost icon
+      if (this.$store?.state?.site?.features?.claude?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_CLAUDE_CONVERSATION_NEW
+          },
+          displayName: this.$t('common.nav.claude'),
+          logo: CHAT_MODEL_ICON_CLAUDE,
+          routes: [ROUTE_CLAUDE_CONVERSATION, ROUTE_CLAUDE_CONVERSATION_NEW]
         });
       }
       // Add midjourney's leftmost icon

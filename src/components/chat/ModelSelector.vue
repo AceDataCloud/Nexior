@@ -36,7 +36,8 @@ import {
   CHAT_MODEL_GROUP_CHATGPT,
   CHAT_MODEL_GROUP_DEEPSEEK,
   CHAT_MODEL_GROUP_GROK,
-  CHAT_MODEL_GROUP_GEMINI
+  CHAT_MODEL_GROUP_GEMINI,
+  CHAT_MODEL_GROUP_CLAUDE
 } from '@/constants';
 
 interface IData {
@@ -54,7 +55,13 @@ export default defineComponent({
   emits: ['update:modelValue', 'select', 'model-group-changed', 'model-changed'],
   data(): IData {
     return {
-      options: [CHAT_MODEL_GROUP_CHATGPT, CHAT_MODEL_GROUP_DEEPSEEK, CHAT_MODEL_GROUP_GROK, CHAT_MODEL_GROUP_GEMINI]
+      options: [
+        CHAT_MODEL_GROUP_CHATGPT,
+        CHAT_MODEL_GROUP_DEEPSEEK,
+        CHAT_MODEL_GROUP_GROK,
+        CHAT_MODEL_GROUP_GEMINI,
+        CHAT_MODEL_GROUP_CLAUDE
+      ]
     };
   },
   computed: {
@@ -81,7 +88,8 @@ export default defineComponent({
       CHAT_MODEL_GROUP_CHATGPT,
       CHAT_MODEL_GROUP_DEEPSEEK,
       CHAT_MODEL_GROUP_GROK,
-      CHAT_MODEL_GROUP_GEMINI
+      CHAT_MODEL_GROUP_GEMINI,
+      CHAT_MODEL_GROUP_CLAUDE
     ];
     const foundGroup = modelGroups.find((group) => group.name === this.modelGroup.name);
     console.debug('Found model group:', foundGroup);
