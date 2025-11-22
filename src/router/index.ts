@@ -3,6 +3,7 @@ import auth from './auth';
 import console from './console';
 import grok from './grok';
 import gemini from './gemini';
+import claude from './claude';
 import deepseek from './deepseek';
 import chatgpt from './chatgpt';
 import midjourney from './midjourney';
@@ -37,6 +38,7 @@ const routes = [
   chatgpt,
   grok,
   gemini,
+  claude,
   deepseek,
   qrart,
   luma,

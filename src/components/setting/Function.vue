@@ -5,6 +5,7 @@
         'chatgpt',
         'grok',
         'gemini',
+        'claude',
         'deepseek',
         'midjourney',
         'qrart',
