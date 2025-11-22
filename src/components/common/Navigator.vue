@@ -40,6 +40,8 @@ import {
   ROUTE_DEEPSEEK_CONVERSATION,
   ROUTE_GROK_CONVERSATION_NEW,
   ROUTE_GROK_CONVERSATION,
+  ROUTE_GEMINI_CONVERSATION_NEW,
+  ROUTE_GEMINI_CONVERSATION,
   ROUTE_KLING_INDEX,
   ROUTE_KLING_HISTORY,
   ROUTE_PIXVERSE_INDEX,
@@ -50,7 +52,12 @@ import {
   ROUTE_SORA_HISTORY,
   ROUTE_NANOBANANA_INDEX
 } from '@/router/constants';
-import { CHAT_MODEL_ICON_CHATGPT, CHAT_MODEL_ICON_DEEPSEEK, CHAT_MODEL_ICON_GROK } from '@/constants/chat';
+import {
+  CHAT_MODEL_ICON_CHATGPT,
+  CHAT_MODEL_ICON_DEEPSEEK,
+  CHAT_MODEL_ICON_GROK,
+  CHAT_MODEL_ICON_GEMINI
+} from '@/constants/chat';
 import Logo from './Logo.vue';
 import UserCenter from '@/components/user/Center.vue';
 
@@ -111,6 +118,17 @@ export default defineComponent({
           displayName: this.$t('common.nav.grok'),
           logo: CHAT_MODEL_ICON_GROK,
           routes: [ROUTE_GROK_CONVERSATION, ROUTE_GROK_CONVERSATION_NEW]
+        });
+      }
+      // Add gemini's leftmost icon
+      if (this.$store?.state?.site?.features?.gemini?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_GEMINI_CONVERSATION_NEW
+          },
+          displayName: this.$t('common.nav.gemini'),
+          logo: CHAT_MODEL_ICON_GEMINI,
+          routes: [ROUTE_GEMINI_CONVERSATION, ROUTE_GEMINI_CONVERSATION_NEW]
         });
       }
       // Add midjourney's leftmost icon

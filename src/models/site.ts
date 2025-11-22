@@ -2,6 +2,7 @@ export interface ISiteFeatures {
   chatgpt?: any;
   deepseek?: any;
   grok?: any;
+  gemini?: any;
   midjourney?: any;
   flux?: any;
   qrart?: any;
