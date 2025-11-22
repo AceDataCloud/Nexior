@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 28 Oct 2025 04:24:20 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 22 Nov 2025 16:52:52 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.21.0
+
+Sat, 22 Nov 2025 16:52:52 GMT
+
+### Minor changes
+
+- add gemini support (cqc@cuiqingcai.com)
 
 ## 3.20.2
 
