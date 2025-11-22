@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 22 Nov 2025 16:52:52 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 22 Nov 2025 19:11:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.22.0
+
+Sat, 22 Nov 2025 19:11:28 GMT
+
+### Minor changes
+
+- add claude (cqc@cuiqingcai.com)
 
 ## 3.21.0
 
