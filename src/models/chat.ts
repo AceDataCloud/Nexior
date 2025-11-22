@@ -19,7 +19,10 @@ import {
   CHAT_MODEL_NAME_GPT_5_MINI,
   CHAT_MODEL_NAME_GPT_5_ALL,
   CHAT_MODEL_NAME_GPT_4O_ALL,
-  CHAT_MODEL_NAME_GROK_4
+  CHAT_MODEL_NAME_GROK_4,
+  CHAT_MODEL_NAME_GEMINI_2_5_FLASH,
+  CHAT_MODEL_NAME_GEMINI_2_5_PRO,
+  CHAT_MODEL_NAME_GEMINI_3_0_PRO
 } from '@/constants';
 
 export type IChatModelName =
@@ -41,13 +44,16 @@ export type IChatModelName =
   | typeof CHAT_MODEL_NAME_O3
   | typeof CHAT_MODEL_NAME_O4_MINI
   | typeof CHAT_MODEL_NAME_GPT_4O_IMAGE
-  | typeof CHAT_MODEL_NAME_O3;
+  | typeof CHAT_MODEL_NAME_O3
+  | typeof CHAT_MODEL_NAME_GEMINI_3_0_PRO
+  | typeof CHAT_MODEL_NAME_GEMINI_2_5_PRO
+  | typeof CHAT_MODEL_NAME_GEMINI_2_5_FLASH;
 
 export interface IChatModel {
   enabled?: boolean;
   name: IChatModelName;
   icon: string;
-  modelGroup?: 'chatgpt' | 'deepseek' | 'grok';
+  modelGroup?: 'chatgpt' | 'deepseek' | 'grok' | 'gemini';
   getDisplayName: () => string;
   getDescription: () => string;
   isSearchSupported?: boolean;
@@ -58,7 +64,7 @@ export interface IChatModel {
 }
 
 export interface IChatModelGroup {
-  name: 'chatgpt' | 'deepseek' | 'grok';
+  name: 'chatgpt' | 'deepseek' | 'grok' | 'gemini';
   icon: string;
   getDisplayName: () => string;
   getDescription: () => string;

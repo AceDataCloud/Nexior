@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import auth from './auth';
 import console from './console';
 import grok from './grok';
+import gemini from './gemini';
 import deepseek from './deepseek';
 import chatgpt from './chatgpt';
 import midjourney from './midjourney';
@@ -35,6 +36,7 @@ const routes = [
   auth,
   chatgpt,
   grok,
+  gemini,
   deepseek,
   qrart,
   luma,

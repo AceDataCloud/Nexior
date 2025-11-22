@@ -4,6 +4,7 @@
       v-for="(feature, featureIndex) in [
         'chatgpt',
         'grok',
+        'gemini',
         'deepseek',
         'midjourney',
         'qrart',
