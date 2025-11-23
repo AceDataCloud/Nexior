@@ -59,6 +59,10 @@
     "message": "Aufforderungswörter zum Erstellen oder Bearbeiten von Bildern",
     "description": "Beschreibung der Aufforderungswörter"
   },
+  "description.model": {
+    "message": "Das Modell zum Generieren der Bilder. Standard ist nano-banana. nano-banana-pro ist ein Alias für gemini-3-pro-image, nano-banana ist ein Alias für gemini-2.5-flash-image.",
+    "description": "Beschreibung des Modell-Parameters"
+  },
   "description.imageUrls": {
     "message": "Es müssen 1-5 Bilder für die Bildbearbeitungsaufgabe hochgeladen werden.",
     "description": "Erläuterung des Parameters image_urls"
@@ -110,5 +114,17 @@
   "message.uploadImageError": {
     "message": "Hochladen des Bildes fehlgeschlagen, bitte versuchen Sie es später erneut",
     "description": "Hochladen fehlgeschlagen"
+  },
+  "name.model": {
+    "message": "Model",
+    "description": "Nano Banana model selector label"
+  },
+  "model.nanoBanana": {
+    "message": "nano-banana",
+    "description": "Nano Banana base model option"
+  },
+  "model.nanoBananaPro": {
+    "message": "nano-banana-pro",
+    "description": "Nano Banana pro model option"
   }
 }

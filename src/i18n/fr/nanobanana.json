@@ -59,6 +59,10 @@
     "message": "Mots d'invite pour générer ou éditer une image",
     "description": "Description des mots d'invite"
   },
+  "description.model": {
+    "message": "Le modèle utilisé pour générer les images. Par défaut : nano-banana. nano-banana-pro est un alias de gemini-3-pro-image ; nano-banana est un alias de gemini-2.5-flash-image.",
+    "description": "Description du paramètre model"
+  },
   "description.imageUrls": {
     "message": "Vous devez télécharger de 1 à 5 images pour la tâche d'édition d'image.",
     "description": "Description du paramètre image_urls"
@@ -110,5 +114,17 @@
   "message.uploadImageError": {
     "message": "Échec du téléchargement de l'image, veuillez réessayer plus tard",
     "description": "Échec du téléchargement"
+  },
+  "name.model": {
+    "message": "Model",
+    "description": "Nano Banana model selector label"
+  },
+  "model.nanoBanana": {
+    "message": "nano-banana",
+    "description": "Nano Banana base model option"
+  },
+  "model.nanoBananaPro": {
+    "message": "nano-banana-pro",
+    "description": "Nano Banana pro model option"
   }
 }

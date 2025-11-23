@@ -59,6 +59,14 @@
     "message": "Prompt words for generating or editing images",
     "description": "Description of the prompt words"
   },
+  "description.action": {
+    "message": "The action to generate the images. If `generate`, images are generated from the prompt; if `edit`, they are edited based on the prompt and uploaded images.",
+    "description": "Description of the action parameter"
+  },
+  "description.model": {
+    "message": "The model used to generate the images. Default is nano-banana. nano-banana-pro is an alias of gemini-3-pro-image; nano-banana is an alias of gemini-2.5-flash-image.",
+    "description": "Description of the model parameter"
+  },
   "description.imageUrls": {
     "message": "You must upload 1-5 images for the edit image task.",
     "description": "Description of the image_urls parameter"
@@ -110,5 +118,17 @@
   "message.uploadImageError": {
     "message": "Failed to upload image, please try again later",
     "description": "Message indicating upload failure"
+  },
+  "name.model": {
+    "message": "Model",
+    "description": "Nano Banana model selector label"
+  },
+  "model.nanoBanana": {
+    "message": "nano-banana",
+    "description": "Nano Banana base model option"
+  },
+  "model.nanoBananaPro": {
+    "message": "nano-banana-pro",
+    "description": "Nano Banana pro model option"
   }
 }

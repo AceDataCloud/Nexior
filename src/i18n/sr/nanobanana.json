@@ -59,6 +59,10 @@
     "message": "Reči za generisanje ili uređivanje slike",
     "description": "Opis reči za uputstvo"
   },
+  "description.model": {
+    "message": "Model koji se koristi za generisanje slika. Podrazumevano je nano-banana. nano-banana-pro je alias za gemini-3-pro-image, a nano-banana je alias za gemini-2.5-flash-image.",
+    "description": "Opis parametra model"
+  },
   "description.imageUrls": {
     "message": "U zadatku za uređivanje slika potrebno je otpremiti 1-5 slika.",
     "description": "Objašnjenje parametra image_urls"
@@ -110,5 +114,17 @@
   "message.uploadImageError": {
     "message": "Otpremanje slike nije uspelo, molimo pokušajte ponovo kasnije",
     "description": "Neuspeh pri otpremanju"
+  },
+  "name.model": {
+    "message": "Model",
+    "description": "Nano Banana model selector label"
+  },
+  "model.nanoBanana": {
+    "message": "nano-banana",
+    "description": "Nano Banana base model option"
+  },
+  "model.nanoBananaPro": {
+    "message": "nano-banana-pro",
+    "description": "Nano Banana pro model option"
   }
 }

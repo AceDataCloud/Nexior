@@ -59,6 +59,10 @@
     "message": "Palabras clave para generar o editar imágenes",
     "description": "Descripción de las palabras clave"
   },
+  "description.model": {
+    "message": "El modelo usado para generar las imágenes. El valor predeterminado es nano-banana. nano-banana-pro es un alias de gemini-3-pro-image; nano-banana es un alias de gemini-2.5-flash-image.",
+    "description": "Descripción del parámetro model"
+  },
   "description.imageUrls": {
     "message": "Se deben subir de 1 a 5 imágenes en la tarea de edición de imágenes.",
     "description": "Descripción del parámetro image_urls"
@@ -110,5 +114,17 @@
   "message.uploadImageError": {
     "message": "Fallo al subir la imagen, por favor intente de nuevo más tarde",
     "description": "Fallo en la subida"
+  },
+  "name.model": {
+    "message": "Model",
+    "description": "Nano Banana model selector label"
+  },
+  "model.nanoBanana": {
+    "message": "nano-banana",
+    "description": "Nano Banana base model option"
+  },
+  "model.nanoBananaPro": {
+    "message": "nano-banana-pro",
+    "description": "Nano Banana pro model option"
   }
 }

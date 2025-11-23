@@ -59,6 +59,10 @@
     "message": "Luodun tai muokatun kuvan ohjeet",
     "description": "Ohjeiden kuvaus"
   },
+  "description.model": {
+    "message": "Malli, jolla kuvat luodaan. Oletuksena nano-banana. nano-banana-pro on alias gemini-3-pro-image -mallille, nano-banana on alias gemini-2.5-flash-image -mallille.",
+    "description": "Malliparametrin kuvaus"
+  },
   "description.imageUrls": {
     "message": "Muokkaustehtävässä on ladattava 1-5 kuvaa.",
     "description": "image_urls-parametrin selitys"
@@ -110,5 +114,17 @@
   "message.uploadImageError": {
     "message": "Kuvan lataaminen epäonnistui, yritä myöhemmin uudelleen",
     "description": "Lataus epäonnistui"
+  },
+  "name.model": {
+    "message": "Model",
+    "description": "Nano Banana model selector label"
+  },
+  "model.nanoBanana": {
+    "message": "nano-banana",
+    "description": "Nano Banana base model option"
+  },
+  "model.nanoBananaPro": {
+    "message": "nano-banana-pro",
+    "description": "Nano Banana pro model option"
   }
 }

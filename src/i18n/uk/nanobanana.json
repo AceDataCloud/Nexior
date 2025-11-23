@@ -59,6 +59,10 @@
     "message": "Слова підказки для створення або редагування зображення",
     "description": "Опис підказки"
   },
+  "description.model": {
+    "message": "Модель, що використовується для генерації зображень. За замовчуванням nano-banana. nano-banana-pro — псевдонім gemini-3-pro-image, nano-banana — псевдонім gemini-2.5-flash-image.",
+    "description": "Опис параметра model"
+  },
   "description.imageUrls": {
     "message": "У завданні редагування зображення потрібно завантажити 1-5 зображень.",
     "description": "Опис параметра image_urls"
@@ -110,5 +114,17 @@
   "message.uploadImageError": {
     "message": "Не вдалося завантажити зображення, будь ласка, спробуйте ще раз пізніше",
     "description": "Помилка завантаження"
+  },
+  "name.model": {
+    "message": "Model",
+    "description": "Nano Banana model selector label"
+  },
+  "model.nanoBanana": {
+    "message": "nano-banana",
+    "description": "Nano Banana base model option"
+  },
+  "model.nanoBananaPro": {
+    "message": "nano-banana-pro",
+    "description": "Nano Banana pro model option"
   }
 }

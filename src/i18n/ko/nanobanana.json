@@ -59,6 +59,10 @@
     "message": "이미지를 생성하거나 편집하기 위한 프롬프트",
     "description": "프롬프트 설명"
   },
+  "description.model": {
+    "message": "이미지 생성에 사용되는 모델입니다. 기본값은 nano-banana입니다. nano-banana-pro는 gemini-3-pro-image의 별칭이고, nano-banana는 gemini-2.5-flash-image의 별칭입니다.",
+    "description": "model 파라미터 설명"
+  },
   "description.imageUrls": {
     "message": "이미지 편집 작업에서는 1-5장의 이미지를 업로드해야 합니다.",
     "description": "image_urls 매개변수 설명"
@@ -110,5 +114,17 @@
   "message.uploadImageError": {
     "message": "이미지 업로드 실패, 나중에 다시 시도하세요.",
     "description": "업로드 실패"
+  },
+  "name.model": {
+    "message": "Model",
+    "description": "Nano Banana model selector label"
+  },
+  "model.nanoBanana": {
+    "message": "nano-banana",
+    "description": "Nano Banana base model option"
+  },
+  "model.nanoBananaPro": {
+    "message": "nano-banana-pro",
+    "description": "Nano Banana pro model option"
   }
 }

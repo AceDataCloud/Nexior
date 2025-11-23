@@ -1,8 +1,10 @@
 <template>
   <div class="field">
     <div class="label">
-      <h2 class="title font-bold">{{ $t('nanobanana.name.resolution') }}</h2>
-      <span v-if="!isProModel" class="hint">{{ $t('nanobanana.description.resolutionProOnly') }}</span>
+      <div class="box">
+        <h2 class="title font-bold">{{ $t('nanobanana.name.resolution') }}</h2>
+        <info-icon :content="$t('nanobanana.description.resolutionProOnly')" class="info" />
+      </div>
     </div>
     <el-select v-model="value" class="value" :placeholder="$t('nanobanana.placeholder.select')" :disabled="!isProModel">
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
@@ -13,6 +15,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
+import InfoIcon from '@/components/common/InfoIcon.vue';
 import {
   NANOBANANA_DEFAULT_RESOLUTION,
   NANOBANANA_MODEL_NANO_BANANA_PRO,
@@ -25,7 +28,8 @@ export default defineComponent({
   name: 'NanobananaResolutionSelector',
   components: {
     ElSelect,
-    ElOption
+    ElOption,
+    InfoIcon
   },
   data() {
     return {
@@ -108,17 +112,22 @@ export default defineComponent({
 
   .label {
     width: 30%;
+    display: flex;
+    align-items: center;
 
-    .title {
-      font-size: 14px;
-      margin: 0;
-    }
+    .box {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
 
-    .hint {
-      display: block;
-      font-size: 12px;
-      color: var(--el-text-color-placeholder);
-      line-height: 1.2;
+      .title {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .info {
+        margin-left: 6px;
+      }
     }
   }
 

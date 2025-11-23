@@ -59,6 +59,10 @@
     "message": "نص التوليد أو التحرير للصورة",
     "description": "وصف نص التلميح"
   },
+  "description.model": {
+    "message": "النموذج المستخدم لتوليد الصور. الافتراضي هو nano-banana. nano-banana-pro هو اسم مستعار لـ gemini-3-pro-image، و nano-banana هو اسم مستعار لـ gemini-2.5-flash-image.",
+    "description": "وصف حقل النموذج"
+  },
   "description.imageUrls": {
     "message": "يجب تحميل 1-5 صور في مهمة تحرير الصورة.",
     "description": "وصف معلمة image_urls"
@@ -110,5 +114,17 @@
   "message.uploadImageError": {
     "message": "فشل تحميل الصورة، يرجى المحاولة مرة أخرى لاحقًا",
     "description": "فشل التحميل"
+  },
+  "name.model": {
+    "message": "Model",
+    "description": "Nano Banana model selector label"
+  },
+  "model.nanoBanana": {
+    "message": "nano-banana",
+    "description": "Nano Banana base model option"
+  },
+  "model.nanoBananaPro": {
+    "message": "nano-banana-pro",
+    "description": "Nano Banana pro model option"
   }
 }

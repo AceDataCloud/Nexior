@@ -2,8 +2,8 @@
   <div class="field">
     <div class="label">
       <div class="box">
-        <h2 class="title font-bold">{{ $t('nanobanana.name.task') }}</h2>
-        <info-icon :content="actionDescription" class="info" />
+        <h2 class="title font-bold">{{ $t('nanobanana.name.model') }}</h2>
+        <info-icon :content="modelDescription" class="info" />
       </div>
     </div>
     <el-select v-model="value" class="value" :placeholder="$t('nanobanana.placeholder.select')">
@@ -15,33 +15,26 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
-import { NANOBANANA_DEFAULT_ACTION } from '@/constants';
+import { NANOBANANA_DEFAULT_MODEL, NANOBANANA_MODEL_NANO_BANANA, NANOBANANA_MODEL_NANO_BANANA_PRO } from '@/constants';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 
 export default defineComponent({
-  name: 'ActionSelector',
+  name: 'NanobananaModelSelector',
   components: {
     ElSelect,
     ElOption,
     InfoIcon
   },
-  props: {
-    modelValue: {
-      type: String,
-      default: undefined
-    }
-  },
-  emits: ['update:modelValue'],
   data() {
     return {
       options: [
         {
-          value: 'generate',
-          label: this.$t('nanobanana.name.generate')
+          value: NANOBANANA_MODEL_NANO_BANANA,
+          label: this.$t('nanobanana.model.nanoBanana')
         },
         {
-          value: 'edit',
-          label: this.$t('nanobanana.name.edits')
+          value: NANOBANANA_MODEL_NANO_BANANA_PRO,
+          label: this.$t('nanobanana.model.nanoBananaPro')
         }
       ]
     };
@@ -49,26 +42,22 @@ export default defineComponent({
   computed: {
     value: {
       get() {
-        return this.$store.state.nanobanana?.config?.action;
+        return this.$store.state.nanobanana?.config?.model;
       },
       set(val: string) {
         this.$store.commit('nanobanana/setConfig', {
-          ...this.$store.state.nanobanana.config,
-          action: val
+          ...this.$store.state.nanobanana?.config,
+          model: val
         });
       }
     },
-    actionDescription(): string {
-      const fallback =
-        'The action to generate the images. If generate, images are generated from the prompt; if edit, they are edited based on the prompt and uploaded images.';
-      return (this as any).$te('nanobanana.description.action')
-        ? (this.$t('nanobanana.description.action') as string)
-        : fallback;
+    modelDescription(): string {
+      return this.$t('nanobanana.description.model');
     }
   },
   mounted() {
     if (!this.value) {
-      this.value = NANOBANANA_DEFAULT_ACTION;
+      this.value = NANOBANANA_DEFAULT_MODEL;
     }
   }
 });

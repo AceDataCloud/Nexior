@@ -59,6 +59,10 @@
     "message": "画像を生成または編集するためのプロンプト",
     "description": "プロンプトの説明"
   },
+  "description.model": {
+    "message": "画像生成に使用するモデル。デフォルトは nano-banana。nano-banana-pro は gemini-3-pro-image の別名、nano-banana は gemini-2.5-flash-image の別名です。",
+    "description": "model パラメータの説明"
+  },
   "description.imageUrls": {
     "message": "画像編集タスクでは、1〜5枚の画像をアップロードする必要があります。",
     "description": "image_urls パラメータの説明"
@@ -110,5 +114,17 @@
   "message.uploadImageError": {
     "message": "画像のアップロードに失敗しました。後で再試行してください",
     "description": "アップロードに失敗しました"
+  },
+  "name.model": {
+    "message": "Model",
+    "description": "Nano Banana model selector label"
+  },
+  "model.nanoBanana": {
+    "message": "nano-banana",
+    "description": "Nano Banana base model option"
+  },
+  "model.nanoBananaPro": {
+    "message": "nano-banana-pro",
+    "description": "Nano Banana pro model option"
   }
 }

@@ -59,6 +59,14 @@
     "message": "生成或编辑图像的提示词",
     "description": "提示词描述"
   },
+  "description.action": {
+    "message": "生成图片的动作。如果为 `generate`，将根据提示词生成图片；如果为 `edit`，则会基于提示词和上传的图片进行编辑。",
+    "description": "action 参数说明"
+  },
+  "description.model": {
+    "message": "用于生成图片的模型。默认是 nano-banana。nano-banana-pro 是 gemini-3-pro-image 的别名，nano-banana 是 gemini-2.5-flash-image 的别名。",
+    "description": "model 参数说明"
+  },
   "description.imageUrls": {
     "message": "在编辑图片任务中必须上传 1-5 张图片。",
     "description": "image_urls 参数说明"
@@ -67,18 +75,60 @@
     "message": "生成图像的宽高比。支持的取值有 `1:1`、`3:2`、`2:3`、`16:9`、`9:16`、`4:3`、`3:4`。默认值为 `1:1`。仅当 `action` 为 `generate` 时生效；若 `action` 为 `edit`，则以 `image_urls` 中第一张图片的比例为准。",
     "description": "aspect_ratio 参数说明"
   },
-
-  "status.pending": { "message": "等待中", "description": "任务等待状态" },
-
-  "placeholder.select": { "message": "选择", "description": "选择占位" },
-  "placeholder.prompt": { "message": "输入提示词，例如：a white siamese cat", "description": "提示占位" },
-
-  "button.generate": { "message": "生成", "description": "生成按钮" },
-  "button.uploadImageUrls": { "message": "上传图片", "description": "上传参考图片按钮" },
-  "message.startingTask": { "message": "正在启动任务...", "description": "开始任务消息" },
-  "message.startTaskSuccess": { "message": "成功发起生成任务", "description": "任务成功创建" },
-  "message.startTaskFailed": { "message": "发起任务失败，请联系管理员：", "description": "任务创建失败" },
-  "message.usedUp": { "message": "您的积分已用完，请购买更多积分后继续使用", "description": "已用完提示" },
-  "message.uploadImageExceed": { "message": "最多可上传 5 张图片", "description": "图片数量超过限制" },
-  "message.uploadImageError": { "message": "上传图片失败，请稍后重试", "description": "上传失败" }
+  "status.pending": {
+    "message": "等待中",
+    "description": "任务等待状态"
+  },
+  "placeholder.select": {
+    "message": "选择",
+    "description": "选择占位"
+  },
+  "placeholder.prompt": {
+    "message": "输入提示词，例如：一只白色的暹罗猫",
+    "description": "提示占位"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "生成按钮"
+  },
+  "button.uploadImageUrls": {
+    "message": "上传图片",
+    "description": "上传参考图片按钮"
+  },
+  "message.startingTask": {
+    "message": "正在启动任务...",
+    "description": "开始任务消息"
+  },
+  "message.startTaskSuccess": {
+    "message": "成功发起生成任务",
+    "description": "任务成功创建"
+  },
+  "message.startTaskFailed": {
+    "message": "发起任务失败，请联系管理员：",
+    "description": "任务创建失败"
+  },
+  "message.usedUp": {
+    "message": "您的积分已用完，请购买更多积分后继续使用",
+    "description": "已用完提示"
+  },
+  "message.uploadImageExceed": {
+    "message": "最多可上传 5 张图片",
+    "description": "图片数量超过限制"
+  },
+  "message.uploadImageError": {
+    "message": "上传图片失败，请稍后重试",
+    "description": "上传失败"
+  },
+  "name.model": {
+    "message": "模型",
+    "description": "Nano Banana 模型选择标签"
+  },
+  "model.nanoBanana": {
+    "message": "nano-banana",
+    "description": "Nano Banana 基础模型选项"
+  },
+  "model.nanoBananaPro": {
+    "message": "nano-banana-pro",
+    "description": "Nano Banana 专业模型选项"
+  }
 }

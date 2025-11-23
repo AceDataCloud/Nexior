@@ -2,7 +2,7 @@
   <div class="flex flex-col h-full">
     <div class="flex-1 overflow-y-auto p-[15px]">
       <model-selector class="mb-4" />
-      <resolution-selector class="mb-4" />
+      <resolution-selector v-if="config?.action === 'generate'" class="mb-4" />
       <action-selector class="mb-4" />
       <prompt-input class="mb-4" />
       <aspect-ratio-selector v-if="config?.action === 'generate'" class="mb-4" />
