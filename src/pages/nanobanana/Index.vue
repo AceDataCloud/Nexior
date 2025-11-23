@@ -129,7 +129,7 @@ export default defineComponent({
     },
     async onGenerate() {
       const cfg: any = { ...(this.config || {}) };
-      // When action is 'edit', do not send image_urls
+      // When action is 'generate', do not send image_urls
       if (cfg?.action === 'generate' && 'image_urls' in cfg) {
         delete cfg.image_urls;
       }

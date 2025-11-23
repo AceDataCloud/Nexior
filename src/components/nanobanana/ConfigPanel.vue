@@ -2,10 +2,10 @@
   <div class="flex flex-col h-full">
     <div class="flex-1 overflow-y-auto p-[15px]">
       <model-selector class="mb-4" />
-      <resolution-selector v-if="config?.action === 'generate'" class="mb-4" />
+      <resolution-selector class="mb-4" />
       <action-selector class="mb-4" />
       <prompt-input class="mb-4" />
-      <aspect-ratio-selector v-if="config?.action === 'generate'" class="mb-4" />
+      <aspect-ratio-selector class="mb-4" />
       <image-urls-input v-if="config?.action === 'edit'" class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-[15px] pb-[15px]">
