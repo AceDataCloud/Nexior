@@ -3,7 +3,9 @@ export interface INanobananaConfig {
   prompt?: string;
   image_urls?: string[];
   aspect_ratio?: string;
+  resolution?: string;
   callback_url?: string;
+  model?: string;
 }
 
 export interface INanobananaGenerateRequest {
@@ -11,6 +13,7 @@ export interface INanobananaGenerateRequest {
   prompt?: string;
   image_urls?: string[];
   aspect_ratio?: string;
+  resolution?: string;
   callback_url?: string;
   mirror?: boolean;
 }
