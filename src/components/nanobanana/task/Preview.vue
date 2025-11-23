@@ -45,11 +45,34 @@
           </el-tooltip>
         </div>
         <el-alert :closable="false" class="mt-2 success">
-          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
+          <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-cube" class="mr-1" />
+            {{ $t('nanobanana.name.model') }}:
+            {{ modelValue?.request?.model }}
+          </p>
+          <p v-if="modelValue?.request?.resolution" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-image" class="mr-1" />
+            {{ $t('nanobanana.name.resolution') }}:
+            {{ modelValue?.request?.resolution }}
+          </p>
+          <p v-if="modelValue?.request?.action" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-bolt" class="mr-1" />
+            {{ $t('nanobanana.name.task') }}:
+            {{
+              modelValue?.request?.action === 'generate' ? $t('nanobanana.name.generate') : $t('nanobanana.name.edits')
+            }}
+          </p>
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('nanobanana.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy inline-block" />
+          </p>
+          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            {{ $t('nanobanana.name.traceId') }}:
+            {{ modelValue?.response?.trace_id }}
+            <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy inline-block" />
           </p>
         </el-alert>
       </div>
@@ -59,6 +82,23 @@
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
             {{ $t('nanobanana.name.failure') }}
           </template>
+          <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-cube" class="mr-1" />
+            {{ $t('nanobanana.name.model') }}:
+            {{ modelValue?.request?.model }}
+          </p>
+          <p v-if="modelValue?.request?.resolution" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-image" class="mr-1" />
+            {{ $t('nanobanana.name.resolution') }}:
+            {{ modelValue?.request?.resolution }}
+          </p>
+          <p v-if="modelValue?.request?.action" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-bolt" class="mr-1" />
+            {{ $t('nanobanana.name.task') }}:
+            {{
+              modelValue?.request?.action === 'generate' ? $t('nanobanana.name.generate') : $t('nanobanana.name.edits')
+            }}
+          </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('nanobanana.name.taskId') }}:
@@ -85,7 +125,24 @@
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
             {{ $t('nanobanana.name.failure') }}
           </template>
-          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
+          <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-cube" class="mr-1" />
+            {{ $t('nanobanana.name.model') }}:
+            {{ modelValue?.request?.model }}
+          </p>
+          <p v-if="modelValue?.request?.resolution" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-image" class="mr-1" />
+            {{ $t('nanobanana.name.resolution') }}:
+            {{ modelValue?.request?.resolution }}
+          </p>
+          <p v-if="modelValue?.request?.action" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-bolt" class="mr-1" />
+            {{ $t('nanobanana.name.task') }}:
+            {{
+              modelValue?.request?.action === 'generate' ? $t('nanobanana.name.generate') : $t('nanobanana.name.edits')
+            }}
+          </p>
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('nanobanana.name.taskId') }}:
             {{ modelValue?.id }}

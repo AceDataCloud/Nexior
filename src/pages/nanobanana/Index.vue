@@ -16,7 +16,7 @@ import ConfigPanel from '@/components/nanobanana/ConfigPanel.vue';
 import { nanobananaOperator } from '@/operators';
 import { INanobananaGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP } from '@/constants';
+import { ERROR_CODE_USED_UP, NANOBANANA_DEFAULT_RESOLUTION, NANOBANANA_MODEL_NANO_BANANA_PRO } from '@/constants';
 import RecentPanel from '@/components/nanobanana/RecentPanel.vue';
 import { INanobananaTask } from '@/models';
 
@@ -129,9 +129,15 @@ export default defineComponent({
     },
     async onGenerate() {
       const cfg: any = { ...(this.config || {}) };
-      // When action is 'edit', do not send image_urls
+      // When action is 'generate', do not send image_urls
       if (cfg?.action === 'generate' && 'image_urls' in cfg) {
         delete cfg.image_urls;
+      }
+      if (cfg?.model !== NANOBANANA_MODEL_NANO_BANANA_PRO && 'resolution' in cfg) {
+        delete cfg.resolution;
+      }
+      if (cfg?.model === NANOBANANA_MODEL_NANO_BANANA_PRO && !cfg?.resolution) {
+        cfg.resolution = NANOBANANA_DEFAULT_RESOLUTION;
       }
       const request = {
         ...cfg,

@@ -47,9 +47,21 @@
     "message": "アスペクト比",
     "description": "生成画像のアスペクト比"
   },
+  "name.resolution": {
+    "message": "解像度",
+    "description": "生成画像の解像度"
+  },
+  "description.resolutionProOnly": {
+    "message": "解像度の指定は nano-banana-pro モデルでのみ有効です。",
+    "description": "解像度設定はプロモデル専用"
+  },
   "description.prompt": {
     "message": "画像を生成または編集するためのプロンプト",
     "description": "プロンプトの説明"
+  },
+  "description.model": {
+    "message": "画像生成に使用するモデル。デフォルトは nano-banana。nano-banana-pro は gemini-3-pro-image の別名、nano-banana は gemini-2.5-flash-image の別名です。",
+    "description": "model パラメータの説明"
   },
   "description.imageUrls": {
     "message": "画像編集タスクでは、1〜5枚の画像をアップロードする必要があります。",

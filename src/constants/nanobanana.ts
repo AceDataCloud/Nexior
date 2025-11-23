@@ -4,6 +4,11 @@ export const NANOBANANA_DEFAULT_ACTION: 'generate' | 'edit' = 'generate';
 
 export const NANOBANANA_DEFAULT_ASPECT_RATIO = '1:1';
 
+export const NANOBANANA_RESOLUTION_1K = '1K';
+export const NANOBANANA_RESOLUTION_2K = '2K';
+export const NANOBANANA_RESOLUTION_4K = '4K';
+export const NANOBANANA_DEFAULT_RESOLUTION = NANOBANANA_RESOLUTION_1K;
+
 export const NANOBANANA_MODEL_NANO_BANANA = 'nano-banana';
 export const NANOBANANA_MODEL_NANO_BANANA_PRO = 'nano-banana-pro';
 

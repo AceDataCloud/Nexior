@@ -1,6 +1,11 @@
 <template>
   <div class="field">
-    <h2 class="title font-bold">{{ $t('nanobanana.name.model') }}</h2>
+    <div class="label">
+      <div class="box">
+        <h2 class="title font-bold">{{ $t('nanobanana.name.model') }}</h2>
+        <info-icon :content="modelDescription" class="info" />
+      </div>
+    </div>
     <el-select v-model="value" class="value" :placeholder="$t('nanobanana.placeholder.select')">
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </el-select>
@@ -11,12 +16,14 @@
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
 import { NANOBANANA_DEFAULT_MODEL, NANOBANANA_MODEL_NANO_BANANA, NANOBANANA_MODEL_NANO_BANANA_PRO } from '@/constants';
+import InfoIcon from '@/components/common/InfoIcon.vue';
 
 export default defineComponent({
   name: 'NanobananaModelSelector',
   components: {
     ElSelect,
-    ElOption
+    ElOption,
+    InfoIcon
   },
   data() {
     return {
@@ -43,6 +50,9 @@ export default defineComponent({
           model: val
         });
       }
+    },
+    modelDescription(): string {
+      return this.$t('nanobanana.description.model');
     }
   },
   mounted() {
@@ -60,10 +70,25 @@ export default defineComponent({
   align-items: center;
   justify-content: space-between;
 
-  .title {
-    font-size: 14px;
-    margin: 0;
+  .label {
     width: 30%;
+    display: flex;
+    align-items: center;
+
+    .box {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .title {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .info {
+        margin-left: 6px;
+      }
+    }
   }
 
   .value {

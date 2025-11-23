@@ -1,6 +1,11 @@
 <template>
   <div class="field">
-    <h2 class="title font-bold">{{ $t('nanobanana.name.task') }}</h2>
+    <div class="label">
+      <div class="box">
+        <h2 class="title font-bold">{{ $t('nanobanana.name.task') }}</h2>
+        <info-icon :content="actionDescription" class="info" />
+      </div>
+    </div>
     <el-select v-model="value" class="value" :placeholder="$t('nanobanana.placeholder.select')">
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </el-select>
@@ -11,12 +16,14 @@
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
 import { NANOBANANA_DEFAULT_ACTION } from '@/constants';
+import InfoIcon from '@/components/common/InfoIcon.vue';
 
 export default defineComponent({
   name: 'ActionSelector',
   components: {
     ElSelect,
-    ElOption
+    ElOption,
+    InfoIcon
   },
   props: {
     modelValue: {
@@ -50,6 +57,13 @@ export default defineComponent({
           action: val
         });
       }
+    },
+    actionDescription(): string {
+      const fallback =
+        'The action to generate the images. If generate, images are generated from the prompt; if edit, they are edited based on the prompt and uploaded images.';
+      return (this as any).$te('nanobanana.description.action')
+        ? (this.$t('nanobanana.description.action') as string)
+        : fallback;
     }
   },
   mounted() {
@@ -67,10 +81,25 @@ export default defineComponent({
   align-items: center;
   justify-content: space-between;
 
-  .title {
-    font-size: 14px;
-    margin: 0;
+  .label {
     width: 30%;
+    display: flex;
+    align-items: center;
+
+    .box {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .title {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .info {
+        margin-left: 6px;
+      }
+    }
   }
 
   .value {

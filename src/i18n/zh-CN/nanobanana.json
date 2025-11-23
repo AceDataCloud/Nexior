@@ -47,9 +47,25 @@
     "message": "宽高比",
     "description": "生成图像的宽高比"
   },
+  "name.resolution": {
+    "message": "分辨率",
+    "description": "生成图像的分辨率"
+  },
+  "description.resolutionProOnly": {
+    "message": "仅 nano-banana-pro 支持分辨率设置。",
+    "description": "分辨率选项仅对 pro 模型生效"
+  },
   "description.prompt": {
     "message": "生成或编辑图像的提示词",
     "description": "提示词描述"
+  },
+  "description.action": {
+    "message": "生成图片的动作。如果为 `generate`，将根据提示词生成图片；如果为 `edit`，则会基于提示词和上传的图片进行编辑。",
+    "description": "action 参数说明"
+  },
+  "description.model": {
+    "message": "用于生成图片的模型。默认是 nano-banana。nano-banana-pro 是 gemini-3-pro-image 的别名，nano-banana 是 gemini-2.5-flash-image 的别名。",
+    "description": "model 参数说明"
   },
   "description.imageUrls": {
     "message": "在编辑图片任务中必须上传 1-5 张图片。",
@@ -68,7 +84,7 @@
     "description": "选择占位"
   },
   "placeholder.prompt": {
-    "message": "输入提示词，例如：a white siamese cat",
+    "message": "输入提示词，例如：一只白色的暹罗猫",
     "description": "提示占位"
   },
   "button.generate": {
@@ -104,15 +120,15 @@
     "description": "上传失败"
   },
   "name.model": {
-    "message": "Model",
-    "description": "Nano Banana model selector label"
+    "message": "模型",
+    "description": "Nano Banana 模型选择标签"
   },
   "model.nanoBanana": {
     "message": "nano-banana",
-    "description": "Nano Banana base model option"
+    "description": "Nano Banana 基础模型选项"
   },
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
-    "description": "Nano Banana pro model option"
+    "description": "Nano Banana 专业模型选项"
   }
 }

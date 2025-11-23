@@ -47,9 +47,25 @@
     "message": "寬高比",
     "description": "生成圖像的寬高比"
   },
+  "name.resolution": {
+    "message": "解析度",
+    "description": "生成圖像的解析度"
+  },
+  "description.resolutionProOnly": {
+    "message": "僅 nano-banana-pro 支援設定解析度。",
+    "description": "解析度選項僅對 pro 模型生效"
+  },
   "description.prompt": {
     "message": "生成或編輯圖像的提示詞",
     "description": "提示詞描述"
+  },
+  "description.action": {
+    "message": "生成圖片的動作。如果為 `generate`，將根據提示詞生成圖片；如果為 `edit`，則會基於提示詞與上傳的圖片進行編輯。",
+    "description": "action 參數說明"
+  },
+  "description.model": {
+    "message": "用於生成圖片的模型。預設為 nano-banana。nano-banana-pro 是 gemini-3-pro-image 的別名，nano-banana 是 gemini-2.5-flash-image 的別名。",
+    "description": "model 參數說明"
   },
   "description.imageUrls": {
     "message": "在編輯圖片任務中必須上傳 1-5 張圖片。",
