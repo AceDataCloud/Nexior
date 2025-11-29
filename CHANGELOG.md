@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 23 Nov 2025 18:01:55 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 29 Nov 2025 11:03:50 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.24.1
+
+Sat, 29 Nov 2025 11:03:50 GMT
+
+### Patches
+
+- optimize experience of nano (cqc@cuiqingcai.com)
 
 ## 3.24.0
 
