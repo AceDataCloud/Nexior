@@ -39,6 +39,10 @@ class ApplicationOperator {
     return await httpClient.put(`/${this.key}/${id}`, data);
   }
 
+  async updateAllConsumeGlobal(id: string, data: IApplication): Promise<AxiosResponse<IApplicationDetailResponse>> {
+    return await httpClient.post(`/${this.key}/${id}/update-allow-consume-global/`, data);
+  }
+
   async delete(id: string): Promise<AxiosResponse<null>> {
     return await httpClient.delete(`/${this.key}/${id}`);
   }

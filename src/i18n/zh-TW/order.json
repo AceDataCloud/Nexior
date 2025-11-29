@@ -1,67 +1,67 @@
 {
   "button.pay": {
     "message": "支付",
-    "description": "按钮文本，用于支付订单。"
+    "description": "按鈕文本，用於支付訂單。"
   },
   "button.continuePay": {
     "message": "繼續支付",
-    "description": "按钮文本，用于继续支付订单。"
+    "description": "按鈕文本，用於繼續支付訂單。"
   },
   "button.checkDetail": {
     "message": "查看詳情",
-    "description": "按钮文本，用于查看订单详情。"
+    "description": "按鈕文本，用於查看訂單詳情。"
   },
   "button.query": {
     "message": "查詢",
-    "description": "按钮文本，用于查询订单。"
+    "description": "按鈕文本，用於查詢訂單。"
   },
   "button.finish": {
     "message": "手動完成",
-    "description": "按钮文本，用于手动完成订单。"
+    "description": "按鈕文本，用於手動完成訂單。"
   },
   "button.update": {
     "message": "更新",
-    "description": "按钮文本，用于更新订单。"
+    "description": "按鈕文本，用於更新訂單。"
   },
   "field.id": {
     "message": "訂單編號",
-    "description": "订单的编号。"
+    "description": "訂單的編號。"
   },
   "field.amount": {
     "message": "金額",
-    "description": "订单的积分金额。"
+    "description": "訂單的積分金額。"
   },
   "field.price": {
     "message": "金額",
-    "description": "订单的积分金额。"
+    "description": "訂單的積分金額。"
   },
   "field.description": {
     "message": "訂單描述",
-    "description": "订单的描述。"
+    "description": "訂單的描述。"
   },
   "field.state": {
     "message": "狀態",
-    "description": "订单的状态。"
+    "description": "訂單的狀態。"
   },
   "field.createdAt": {
     "message": "創建時間",
-    "description": "订单的创建时间。"
+    "description": "訂單的創建時間。"
   },
   "field.service": {
     "message": "服務名稱",
-    "description": "服务的名称。"
+    "description": "服務的名稱。"
   },
   "field.payWay": {
     "message": "支付方式",
-    "description": "订单的支付方式。"
+    "description": "訂單的支付方式。"
   },
   "field.api": {
     "message": "API",
-    "description": "API是一种在线服务。"
+    "description": "API是一種線上服務。"
   },
   "field.proxy": {
     "message": "代理",
-    "description": "代理是一种在线服务，用于传输数据的HTTP代理。"
+    "description": "代理是一種線上服務，用於傳輸數據的HTTP代理。"
   },
   "message.paidSuccessfully": {
     "message": "支付成功",
@@ -69,27 +69,27 @@
   },
   "message.orderExpired": {
     "message": "訂單已過期，請創建新訂單進行支付。",
-    "description": "订单过期的消息。"
+    "description": "訂單過期的消息。"
   },
   "message.createFailed": {
     "message": "創建失敗",
-    "description": "创建失败的消息。"
+    "description": "創建失敗的消息。"
   },
   "message.wechatPayHelp": {
     "message": "請在手機上打開微信，掃碼完成支付",
-    "description": "微信支付帮助的消息。"
+    "description": "微信支付幫助的消息。"
   },
   "message.free": {
     "message": "免費",
-    "description": "免费订单的消息。"
+    "description": "免費訂單的消息。"
   },
   "message.buyInExternalUrl": {
     "message": "請在外部鏈接完成支付",
-    "description": "外部链接支付的消息。"
+    "description": "外部鏈接支付的消息。"
   },
   "message.updateFailed": {
     "message": "更新失敗",
-    "description": "更新失败的消息。"
+    "description": "更新失敗的消息。"
   },
   "message.updateSuccessfully": {
     "message": "更新成功",
@@ -97,46 +97,210 @@
   },
   "message.confirmFinish": {
     "message": "此操作將手動設置訂單為支付狀態並完成分發處理，無法撤銷。請確認客戶已完成支付，是否繼續？",
-    "description": "确认完成的消息。"
+    "description": "確認完成的消息。"
   },
   "state.pending": {
     "message": "待支付",
-    "description": "订单的状态，表示此订单仍在等待用户支付。"
+    "description": "訂單的狀態，表示此訂單仍在等待用戶支付。"
   },
   "state.paid": {
     "message": "已支付",
-    "description": "订单的状态，表示此订单已经支付。"
+    "description": "訂單的狀態，表示此訂單已經支付。"
   },
   "state.finished": {
     "message": "已完成",
-    "description": "订单的状态，表示此订单已经完成。"
+    "description": "訂單的狀態，表示此訂單已經完成。"
   },
   "state.expired": {
     "message": "支付超時",
-    "description": "订单的状态，表示此订单已经过期。"
+    "description": "訂單的狀態，表示此訂單已經過期。"
   },
   "state.failed": {
     "message": "支付失敗",
-    "description": "订单的状态，表示此订单支付失败。"
+    "description": "訂單的狀態，表示此訂單支付失敗。"
   },
   "title.info": {
     "message": "訂單信息",
-    "description": "用作网站标题的标题，表示订单信息。"
+    "description": "用作網站標題的標題，表示訂單信息。"
   },
   "title.wechatPay": {
     "message": "微信支付",
-    "description": "用作网站标题的标题，表示微信支付。"
+    "description": "用作網站標題的標題，表示微信支付。"
   },
   "title.aliPay": {
     "message": "支付寶",
-    "description": "用作网站标题的标题，表示支付宝支付，支付宝支付是一种在线支付。"
+    "description": "用作網站標題的標題，表示支付寶支付，支付寶支付是一種線上支付。"
   },
   "title.stripe": {
     "message": "Stripe",
-    "description": "用作网站标题的标题，表示Stripe支付，Stripe支付是一种在线支付。"
+    "description": "用作網站標題的標題，表示Stripe支付，Stripe支付是一種線上支付。"
   },
   "title.manageOrder": {
     "message": "管理訂單",
-    "description": "用作网站标题的标题，表示管理订单。"
+    "description": "用作網站標題的標題，表示管理訂單。"
+  },
+  "title.x402": {
+    "message": "加密貨幣",
+    "description": "用於基於 X402 方案的加密支付標題。"
+  },
+  "message.discountTag": {
+    "message": "{percent}% 折扣",
+    "description": "顯示已應用折扣百分比的角標文案。"
+  },
+  "message.discountHint": {
+    "message": "已為會員自動應用 {percent}% OFF。",
+    "description": "提示用戶獲得的會員折扣。"
+  },
+  "message.x402DiscountApplied": {
+    "message": "使用 X402 支付額外節省 {percent}%。",
+    "description": "說明選擇 X402 支付帶來的額外折扣。"
+  },
+  "message.x402DiscountTag": {
+    "message": "{percent}% OFF",
+    "description": "X402 支付折扣角標。"
+  },
+  "message.x402DiscountHint": {
+    "message": "選擇 X402 支付可額外享受 {percent}% OFF。",
+    "description": "鼓勵用戶選擇 X402 支付的提示。"
+  },
+  "message.x402IntroShort": {
+    "message": "可直接連接加密錢包支付，或切換到編程模式獲取集成參數。",
+    "description": "X402 支付對話框的簡短介紹。"
+  },
+  "message.x402TabWallet": {
+    "message": "錢包支付",
+    "description": "錢包支付 Tab 標題。"
+  },
+  "message.x402TabApi": {
+    "message": "程式接入",
+    "description": "程式接入 Tab 標題。"
+  },
+  "message.x402WalletTitle": {
+    "message": "連接錢包並支付",
+    "description": "引導用戶連接錢包的標題。"
+  },
+  "message.x402WalletConnected": {
+    "message": "已連接",
+    "description": "錢包已連接時的標記。"
+  },
+  "message.x402ConnectWallet": {
+    "message": "連接錢包",
+    "description": "連接錢包按鈕文案。"
+  },
+  "message.x402NoWalletDesc": {
+    "message": "未檢測到錢包。請安裝 MetaMask/Phantom，或在錢包內置瀏覽器中打開本頁。",
+    "description": "未檢測到 EVM 錢包時的說明。"
+  },
+  "message.x402SwitchNetwork": {
+    "message": "請將錢包網路切換為 {network}",
+    "description": "提示用戶切換錢包網路。"
+  },
+  "message.x402NeedConnectAccount": {
+    "message": "請先連接至少一個兼容的 EVM 錢包後再支付。",
+    "description": "提醒用戶先連接錢包帳戶。"
+  },
+  "message.x402StepsTitle": {
+    "message": "支付步驟",
+    "description": "支付步驟列表標題。"
+  },
+  "message.x402Step1": {
+    "message": "連接錢包（若未安裝請先安裝後刷新頁面）。",
+    "description": "錢包支付步驟1。"
+  },
+  "message.x402Step2": {
+    "message": "確認錢包網路為 {network}。",
+    "description": "錢包支付步驟2。"
+  },
+  "message.x402Step3": {
+    "message": "點擊支付並在錢包內完成授權簽名。",
+    "description": "錢包支付步驟3。"
+  },
+  "message.x402Step4": {
+    "message": "簽名後我們會自動結算並更新訂單狀態。",
+    "description": "錢包支付步驟4。"
+  },
+  "message.x402IntegrationResourceLabel": {
+    "message": "支付介面地址",
+    "description": "支付介面地址標籤。"
+  },
+  "message.x402IntegrationPayToLabel": {
+    "message": "收款地址",
+    "description": "區塊鏈收款地址標籤。"
+  },
+  "message.x402IntegrationNetworkLabel": {
+    "message": "網路",
+    "description": "區塊鏈網路標籤。"
+  },
+  "message.x402IntegrationAssetLabel": {
+    "message": "資產",
+    "description": "結算資產標籤。"
+  },
+  "message.x402IntegrationFallback": {
+    "message": "未能獲取會話參數，請查看文檔或聯繫支持獲取必要參數。",
+    "description": "缺少集成參數時的兜底提示。"
+  },
+  "message.x402IntegrationDocsCta": {
+    "message": "打開 X402 指南",
+    "description": "打開 X402 集成指南的按鈕文案。"
+  },
+  "message.x402InstallGuideTitle": {
+    "message": "安裝錢包插件",
+    "description": "錢包安裝指引對話框標題。"
+  },
+  "message.x402InstallGuideDesc": {
+    "message": "按照步驟安裝 {wallet} 插件並重新連接。",
+    "description": "錢包安裝指引描述。"
+  },
+  "message.x402InstallGuideStep1": {
+    "message": "下載並安裝 {wallet} 瀏覽器插件（推薦 Chrome/Brave）。",
+    "description": "安裝錢包步驟1。"
+  },
+  "message.x402InstallGuideStep2": {
+    "message": "打開插件，登錄/解鎖並確保已啟用。",
+    "description": "安裝錢包步驟2。"
+  },
+  "message.x402InstallGuideStep3": {
+    "message": "返回此頁，點擊“我已安裝”，再嘗試連接。",
+    "description": "安裝錢包步驟3。"
+  },
+  "message.x402InstallGuideConfirm": {
+    "message": "我已安裝",
+    "description": "完成安裝後的確認按鈕。"
+  },
+  "message.x402NetworkGuideTitle": {
+    "message": "調整網路設置",
+    "description": "網路引導對話框標題。"
+  },
+  "message.x402NetworkGuideDesc": {
+    "message": "請將錢包網路切換為 {network}，完成後刷新再試。",
+    "description": "指導用戶切換網路的說明。"
+  },
+  "message.x402NetworkGuideStep1": {
+    "message": "打開錢包插件設置，查看活動網路。",
+    "description": "網路調整步驟1。"
+  },
+  "message.x402NetworkGuideStep2": {
+    "message": "在列表中啟用 {network}（或所需網路）。",
+    "description": "網路調整步驟2。"
+  },
+  "message.x402NetworkGuideStep3": {
+    "message": "返回此頁並點擊“已完成設置”後再支付。",
+    "description": "網路調整步驟3。"
+  },
+  "message.x402NetworkGuideConfirm": {
+    "message": "已完成設置",
+    "description": "完成網路設置後的確認按鈕。"
+  },
+  "message.x402NetworkSwitchFailed": {
+    "message": "當前錢包不支持自動切換網路，請手動切換後重試。",
+    "description": "自動切網失敗時的提示。"
+  },
+  "message.x402PaymentFailed": {
+    "message": "X402 錢包支付失敗，請稍後再試或聯繫支持。",
+    "description": "X402 支付失敗時的通用錯誤。"
+  },
+  "message.x402WalletPayCta": {
+    "message": "使用錢包支付",
+    "description": "發起 X402 錢包支付的按鈕文案。"
   }
 }

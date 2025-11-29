@@ -49,22 +49,26 @@
   },
   "name.resolution": {
     "message": "Разрешение",
-    "description": "Разрешение сгенерированного изображения"
+    "description": "Разрешение генерируемого изображения"
   },
   "description.resolutionProOnly": {
-    "message": "Выбор разрешения действует только для модели nano-banana-pro.",
-    "description": "Настройка разрешения применяется только к pro-модели"
+    "message": "Только nano-banana-pro поддерживает настройку разрешения.",
+    "description": "Опции разрешения действуют только для pro модели"
   },
   "description.prompt": {
     "message": "Подсказка для генерации или редактирования изображения",
     "description": "Описание подсказки"
   },
+  "description.action": {
+    "message": "Действие для генерации изображения. Если `generate`, изображение будет сгенерировано на основе подсказки; если `edit`, будет выполнено редактирование на основе подсказки и загруженного изображения.",
+    "description": "Описание параметра action"
+  },
   "description.model": {
-    "message": "Модель, используемая для генерации изображений. По умолчанию nano-banana. nano-banana-pro — алиас gemini-3-pro-image, nano-banana — алиас gemini-2.5-flash-image.",
+    "message": "Модель, используемая для генерации изображений. По умолчанию используется nano-banana. nano-banana-pro является псевдонимом для gemini-3-pro-image, nano-banana является псевдонимом для gemini-2.5-flash-image.",
     "description": "Описание параметра model"
   },
   "description.imageUrls": {
-    "message": "В задаче редактирования изображения необходимо загрузить от 1 до 5 изображений.",
+    "message": "Необходимо загрузить от 1 до 5 изображений для задачи редактирования.",
     "description": "Описание параметра image_urls"
   },
   "description.aspectRatio": {
@@ -77,11 +81,11 @@
   },
   "placeholder.select": {
     "message": "Выбрать",
-    "description": "Заполнитель для выбора"
+    "description": "Заполнитель выбора"
   },
   "placeholder.prompt": {
     "message": "Введите подсказку, например: белый сиамский кот",
-    "description": "Заполнитель для подсказки"
+    "description": "Заполнитель подсказки"
   },
   "button.generate": {
     "message": "Сгенерировать",
@@ -104,7 +108,7 @@
     "description": "Не удалось создать задачу"
   },
   "message.usedUp": {
-    "message": "Ваши баллы исчерпаны, пожалуйста, купите больше баллов для продолжения использования",
+    "message": "Ваши кредиты исчерпаны, пожалуйста, купите больше кредитов для продолжения использования",
     "description": "Сообщение об исчерпании"
   },
   "message.uploadImageExceed": {
@@ -116,15 +120,15 @@
     "description": "Ошибка загрузки"
   },
   "name.model": {
-    "message": "Model",
-    "description": "Nano Banana model selector label"
+    "message": "Модель",
+    "description": "Метка выбора модели Nano Banana"
   },
   "model.nanoBanana": {
     "message": "nano-banana",
-    "description": "Nano Banana base model option"
+    "description": "Опция базовой модели Nano Banana"
   },
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
-    "description": "Nano Banana pro model option"
+    "description": "Опция профессиональной модели Nano Banana"
   }
 }

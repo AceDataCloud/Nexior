@@ -9,7 +9,11 @@ export interface IOrderQuery {
   package_ids?: string[];
   offset?: number;
   limit?: number;
-  ordering: string;
+  ordering?: string;
+  pay_way?: string | string[];
+  created_at_from?: string | Date;
+  created_at_to?: string | Date;
+  state?: string | string[];
 }
 
 class OrderService {
@@ -39,6 +43,18 @@ class OrderService {
 
   async pay(id: string, data: IOrder): Promise<AxiosResponse<IOrderDetailResponse>> {
     return await httpClient.post(`/${this.key}/${id}/pay/`, data);
+  }
+
+  async payX402WithHeader(
+    id: string,
+    data: IOrder,
+    xPaymentHeader: string
+  ): Promise<AxiosResponse<IOrderDetailResponse>> {
+    return await httpClient.post(`/${this.key}/${id}/pay/`, data, {
+      headers: {
+        'X-PAYMENT': xPaymentHeader
+      }
+    });
   }
 
   async updatePrice(id: string, data: IOrder): Promise<AxiosResponse<IOrderDetailResponse>> {

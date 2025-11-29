@@ -4,11 +4,11 @@
     "description": "Texto do botão para pagar o pedido."
   },
   "button.continuePay": {
-    "message": "Continuar pagamento",
+    "message": "Continuar Pagamento",
     "description": "Texto do botão para continuar o pagamento do pedido."
   },
   "button.checkDetail": {
-    "message": "Ver detalhes",
+    "message": "Ver Detalhes",
     "description": "Texto do botão para ver os detalhes do pedido."
   },
   "button.query": {
@@ -16,7 +16,7 @@
     "description": "Texto do botão para consultar o pedido."
   },
   "button.finish": {
-    "message": "Concluir manualmente",
+    "message": "Concluir Manualmente",
     "description": "Texto do botão para concluir manualmente o pedido."
   },
   "button.update": {
@@ -24,119 +24,283 @@
     "description": "Texto do botão para atualizar o pedido."
   },
   "field.id": {
-    "message": "Número do pedido",
-    "description": "Número do pedido."
+    "message": "Número do Pedido",
+    "description": "O número do pedido."
   },
   "field.amount": {
     "message": "Valor",
-    "description": "Valor dos pontos do pedido."
+    "description": "O valor em pontos do pedido."
   },
   "field.price": {
     "message": "Valor",
-    "description": "Valor dos pontos do pedido."
+    "description": "O valor em pontos do pedido."
   },
   "field.description": {
-    "message": "Descrição do pedido",
-    "description": "Descrição do pedido."
+    "message": "Descrição do Pedido",
+    "description": "A descrição do pedido."
   },
   "field.state": {
     "message": "Estado",
-    "description": "Estado do pedido."
+    "description": "O estado do pedido."
   },
   "field.createdAt": {
-    "message": "Data de criação",
-    "description": "Data de criação do pedido."
+    "message": "Data de Criação",
+    "description": "A data de criação do pedido."
   },
   "field.service": {
-    "message": "Nome do serviço",
-    "description": "Nome do serviço."
+    "message": "Nome do Serviço",
+    "description": "O nome do serviço."
   },
   "field.payWay": {
-    "message": "Método de pagamento",
-    "description": "Método de pagamento do pedido."
+    "message": "Método de Pagamento",
+    "description": "O método de pagamento do pedido."
   },
   "field.api": {
     "message": "API",
-    "description": "A API é um serviço online."
+    "description": "API é um serviço online."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Proxy é um serviço online usado para transmissão de dados através de um proxy HTTP."
+    "description": "Proxy é um serviço online usado para transmitir dados via HTTP."
   },
   "message.paidSuccessfully": {
-    "message": "Pagamento bem-sucedido",
+    "message": "Pagamento Realizado com Sucesso",
     "description": "Mensagem de pagamento bem-sucedido."
   },
   "message.orderExpired": {
-    "message": "O pedido expirou, por favor crie um novo pedido para efetuar o pagamento.",
+    "message": "O pedido expirou, por favor crie um novo pedido para pagamento.",
     "description": "Mensagem de expiração do pedido."
   },
   "message.createFailed": {
-    "message": "Falha ao criar",
-    "description": "Mensagem de falha ao criar."
+    "message": "Falha na Criação",
+    "description": "Mensagem de falha na criação."
   },
   "message.wechatPayHelp": {
-    "message": "Por favor, abra o WeChat no seu celular e faça o escaneamento para completar o pagamento.",
+    "message": "Por favor, abra o WeChat no celular e escaneie o código para concluir o pagamento.",
     "description": "Mensagem de ajuda para pagamento via WeChat."
   },
   "message.free": {
     "message": "Gratuito",
-    "description": "Mensagem para pedido gratuito."
+    "description": "Mensagem para pedidos gratuitos."
   },
   "message.buyInExternalUrl": {
-    "message": "Por favor, complete o pagamento no link externo.",
+    "message": "Por favor, conclua o pagamento no link externo.",
     "description": "Mensagem para pagamento via link externo."
   },
   "message.updateFailed": {
-    "message": "Falha na atualização",
+    "message": "Falha na Atualização",
     "description": "Mensagem de falha na atualização."
   },
   "message.updateSuccessfully": {
-    "message": "Atualização bem-sucedida",
+    "message": "Atualização Realizada com Sucesso",
     "description": "Mensagem de atualização bem-sucedida."
   },
   "message.confirmFinish": {
-    "message": "Esta operação definirá manualmente o pedido como pago e concluirá o processamento. Não poderá ser revertida. Por favor, confirme se o cliente completou o pagamento, deseja continuar?",
+    "message": "Esta ação definirá manualmente o pedido como pago e concluirá o processamento, não pode ser revertida. Por favor, confirme se o cliente completou o pagamento, deseja continuar?",
     "description": "Mensagem de confirmação de conclusão."
   },
   "state.pending": {
-    "message": "Pendente de pagamento",
-    "description": "Estado do pedido, indicando que este pedido ainda está aguardando o pagamento do usuário."
+    "message": "Aguardando Pagamento",
+    "description": "O estado do pedido, indicando que este pedido ainda está aguardando o pagamento do usuário."
   },
   "state.paid": {
     "message": "Pago",
-    "description": "Estado do pedido, indicando que este pedido foi pago."
+    "description": "O estado do pedido, indicando que este pedido já foi pago."
   },
   "state.finished": {
     "message": "Concluído",
-    "description": "Estado do pedido, indicando que este pedido foi concluído."
+    "description": "O estado do pedido, indicando que este pedido já foi concluído."
   },
   "state.expired": {
-    "message": "Tempo de pagamento esgotado",
-    "description": "Estado do pedido, indicando que este pedido expirou."
+    "message": "Pagamento Expirado",
+    "description": "O estado do pedido, indicando que este pedido já expirou."
   },
   "state.failed": {
-    "message": "Pagamento falhou",
-    "description": "Estado do pedido, indicando que o pagamento deste pedido falhou."
+    "message": "Pagamento Falhou",
+    "description": "O estado do pedido, indicando que o pagamento deste pedido falhou."
   },
   "title.info": {
-    "message": "Informações do pedido",
-    "description": "Título utilizado no site, que indica informações do pedido."
+    "message": "Informações do Pedido",
+    "description": "Título usado no site, indicando informações do pedido."
   },
   "title.wechatPay": {
     "message": "Pagamento WeChat",
-    "description": "Título utilizado no site, que indica pagamento via WeChat."
+    "description": "Título usado no site, indicando pagamento via WeChat."
   },
   "title.aliPay": {
     "message": "Alipay",
-    "description": "Título utilizado no site, que indica pagamento via Alipay, um método de pagamento online."
+    "description": "Título usado no site, indicando pagamento via Alipay, que é um método de pagamento online."
   },
   "title.stripe": {
     "message": "Stripe",
-    "description": "Título utilizado no site, que indica pagamento via Stripe, um método de pagamento online."
+    "description": "Título usado no site, indicando pagamento via Stripe, que é um método de pagamento online."
   },
   "title.manageOrder": {
-    "message": "Gerenciar pedidos",
-    "description": "Título utilizado no site, que indica a gestão de pedidos."
+    "message": "Gerenciar Pedido",
+    "description": "Título usado no site, indicando gerenciamento de pedidos."
+  },
+  "title.x402": {
+    "message": "Criptomoeda",
+    "description": "Título para pagamentos criptográficos baseados no esquema X402."
+  },
+  "message.discountTag": {
+    "message": "{percent}% de Desconto",
+    "description": "Texto do rótulo exibindo a porcentagem de desconto aplicada."
+  },
+  "message.discountHint": {
+    "message": "Desconto de {percent}% aplicado automaticamente para membros.",
+    "description": "Mensagem informando ao usuário sobre o desconto para membros."
+  },
+  "message.x402DiscountApplied": {
+    "message": "Economize um adicional de {percent}% ao usar o pagamento X402.",
+    "description": "Mensagem explicando o desconto adicional ao escolher o pagamento X402."
+  },
+  "message.x402DiscountTag": {
+    "message": "{percent}% OFF",
+    "description": "Rótulo de desconto para pagamento X402."
+  },
+  "message.x402DiscountHint": {
+    "message": "Escolha o pagamento X402 para obter um adicional de {percent}% OFF.",
+    "description": "Mensagem incentivando o usuário a escolher o pagamento X402."
+  },
+  "message.x402IntroShort": {
+    "message": "Conecte-se diretamente à carteira criptográfica para pagamento ou mude para o modo de programação para obter parâmetros de integração.",
+    "description": "Introdução curta para a caixa de diálogo de pagamento X402."
+  },
+  "message.x402TabWallet": {
+    "message": "Pagamento com Carteira",
+    "description": "Título da aba de pagamento com carteira."
+  },
+  "message.x402TabApi": {
+    "message": "Acesso Programático",
+    "description": "Título da aba de acesso programático."
+  },
+  "message.x402WalletTitle": {
+    "message": "Conecte sua carteira e pague",
+    "description": "Título que orienta o usuário a conectar a carteira."
+  },
+  "message.x402WalletConnected": {
+    "message": "Conectado",
+    "description": "Marcador quando a carteira está conectada."
+  },
+  "message.x402ConnectWallet": {
+    "message": "Conectar Carteira",
+    "description": "Texto do botão para conectar a carteira."
+  },
+  "message.x402NoWalletDesc": {
+    "message": "Nenhuma carteira detectada. Por favor, instale o MetaMask/Phantom ou abra esta página no navegador embutido da carteira.",
+    "description": "Descrição quando nenhuma carteira EVM é detectada."
+  },
+  "message.x402SwitchNetwork": {
+    "message": "Por favor, mude a rede da carteira para {network}",
+    "description": "Mensagem para orientar o usuário a mudar a rede da carteira."
+  },
+  "message.x402NeedConnectAccount": {
+    "message": "Por favor, conecte pelo menos uma carteira EVM compatível antes de pagar.",
+    "description": "Lembrete para o usuário conectar a conta da carteira primeiro."
+  },
+  "message.x402StepsTitle": {
+    "message": "Passos de Pagamento",
+    "description": "Título da lista de passos de pagamento."
+  },
+  "message.x402Step1": {
+    "message": "Conecte sua carteira (se não estiver instalada, instale e atualize a página).",
+    "description": "Passo 1 do pagamento com carteira."
+  },
+  "message.x402Step2": {
+    "message": "Confirme que a rede da carteira é {network}.",
+    "description": "Passo 2 do pagamento com carteira."
+  },
+  "message.x402Step3": {
+    "message": "Clique em pagar e complete a assinatura de autorização na carteira.",
+    "description": "Passo 3 do pagamento com carteira."
+  },
+  "message.x402Step4": {
+    "message": "Após a assinatura, nós iremos automaticamente liquidar e atualizar o status do pedido.",
+    "description": "Passo 4 do pagamento com carteira."
+  },
+  "message.x402IntegrationResourceLabel": {
+    "message": "Endereço da API de Pagamento",
+    "description": "Rótulo do endereço da API de pagamento."
+  },
+  "message.x402IntegrationPayToLabel": {
+    "message": "Endereço de Recebimento",
+    "description": "Rótulo do endereço de recebimento na blockchain."
+  },
+  "message.x402IntegrationNetworkLabel": {
+    "message": "Rede",
+    "description": "Rótulo da rede blockchain."
+  },
+  "message.x402IntegrationAssetLabel": {
+    "message": "Ativo",
+    "description": "Rótulo do ativo de liquidação."
+  },
+  "message.x402IntegrationFallback": {
+    "message": "Não foi possível obter os parâmetros da sessão, por favor, consulte a documentação ou entre em contato com o suporte para obter os parâmetros necessários.",
+    "description": "Mensagem de fallback quando faltam parâmetros de integração."
+  },
+  "message.x402IntegrationDocsCta": {
+    "message": "Abrir Guia X402",
+    "description": "Texto do botão para abrir o guia de integração X402."
+  },
+  "message.x402InstallGuideTitle": {
+    "message": "Instalar Plugin da Carteira",
+    "description": "Título da caixa de diálogo de instruções de instalação da carteira."
+  },
+  "message.x402InstallGuideDesc": {
+    "message": "Siga os passos para instalar o plugin {wallet} e reconectar.",
+    "description": "Descrição das instruções de instalação da carteira."
+  },
+  "message.x402InstallGuideStep1": {
+    "message": "Baixe e instale o plugin do navegador {wallet} (recomendado Chrome/Brave).",
+    "description": "Passo 1 da instalação da carteira."
+  },
+  "message.x402InstallGuideStep2": {
+    "message": "Abra o plugin, faça login/desbloqueie e certifique-se de que está ativado.",
+    "description": "Passo 2 da instalação da carteira."
+  },
+  "message.x402InstallGuideStep3": {
+    "message": "Volte a esta página, clique em 'Já instalei' e tente conectar novamente.",
+    "description": "Passo 3 da instalação da carteira."
+  },
+  "message.x402InstallGuideConfirm": {
+    "message": "Já instalei",
+    "description": "Botão de confirmação após a instalação."
+  },
+  "message.x402NetworkGuideTitle": {
+    "message": "Ajustar Configurações de Rede",
+    "description": "Título da caixa de diálogo de guia de rede."
+  },
+  "message.x402NetworkGuideDesc": {
+    "message": "Por favor, mude a rede da carteira para {network}, e após isso, atualize e tente novamente.",
+    "description": "Instruções para orientar o usuário a mudar a rede."
+  },
+  "message.x402NetworkGuideStep1": {
+    "message": "Abra as configurações do plugin da carteira e verifique a rede ativa.",
+    "description": "Passo 1 do ajuste de rede."
+  },
+  "message.x402NetworkGuideStep2": {
+    "message": "Ative {network} (ou a rede desejada) na lista.",
+    "description": "Passo 2 do ajuste de rede."
+  },
+  "message.x402NetworkGuideStep3": {
+    "message": "Volte a esta página e clique em 'Configuração Concluída' antes de pagar.",
+    "description": "Passo 3 do ajuste de rede."
+  },
+  "message.x402NetworkGuideConfirm": {
+    "message": "Configuração Concluída",
+    "description": "Botão de confirmação após a configuração da rede."
+  },
+  "message.x402NetworkSwitchFailed": {
+    "message": "A carteira atual não suporta a troca automática de rede, por favor, troque manualmente e tente novamente.",
+    "description": "Mensagem quando a troca automática de rede falha."
+  },
+  "message.x402PaymentFailed": {
+    "message": "Pagamento com carteira X402 falhou, por favor, tente novamente mais tarde ou entre em contato com o suporte.",
+    "description": "Erro genérico quando o pagamento X402 falha."
+  },
+  "message.x402WalletPayCta": {
+    "message": "Pagar com Carteira",
+    "description": "Texto do botão para iniciar o pagamento com a carteira X402."
   }
 }

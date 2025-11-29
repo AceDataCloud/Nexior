@@ -75,6 +75,10 @@
     "message": "Operazione",
     "description": "Operazione della richiesta."
   },
+  "field.allowConsumeGlobal": {
+    "message": "Utilizza saldo globale",
+    "description": "Se consentire di utilizzare il saldo globale quando il saldo esclusivo è insufficiente."
+  },
   "field.amount": {
     "message": "Quantità",
     "description": "Quantità della richiesta."
@@ -85,7 +89,7 @@
   },
   "field.traceId": {
     "message": "ID di tracciamento",
-    "description": "ID di tracciamento di una chiamata API della richiesta del servizio, non tradurre, mantenere come 'ID di tracciamento'."
+    "description": "ID di tracciamento di una chiamata API della richiesta del servizio API, non tradurre, mantenere come 'ID di tracciamento'."
   },
   "field.shouldPayPrice": {
     "message": "Prezzo finale",
@@ -93,11 +97,11 @@
   },
   "field.api": {
     "message": "API",
-    "description": "Questo è un servizio online che fornisce servizi agli utenti tramite API."
+    "description": "Questo è un servizio online, fornito agli utenti tramite API."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Questo è un servizio online che fornisce servizi agli utenti tramite un proxy HTTP (per il trasferimento dei dati)."
+    "description": "Questo è un servizio online, fornito agli utenti tramite un proxy HTTP (per il trasferimento dei dati)."
   },
   "field.credential": {
     "message": "Credenziali",
@@ -109,7 +113,7 @@
   },
   "field.package": {
     "message": "Pacchetto",
-    "description": "Il pacchetto rappresenta diverse offerte di prezzo, ad esempio 100 dollari per 10.000 punti, 200 dollari per 20.000 punti."
+    "description": "Il pacchetto rappresenta diverse offerte di prezzo, ad esempio 100 dollari per 10000 punti, 200 dollari per 20000 punti."
   },
   "field.type": {
     "message": "Tipo",
@@ -129,15 +133,15 @@
   },
   "message.applySuccessfully": {
     "message": "Richiesta effettuata con successo",
-    "description": "Messaggio mostrato all'utente quando ha effettuato con successo la richiesta di questo servizio."
+    "description": "Messaggio mostrato all'utente quando ha richiesto con successo questo servizio."
   },
   "message.notApplied": {
     "message": "Benvenuto nel nostro servizio, ti offriamo una quota di prova gratuita, clicca il pulsante qui sotto per iniziare subito.",
     "description": "Messaggio mostrato all'utente quando non ha ancora richiesto questo servizio."
   },
   "message.globalBalanceBuyDescription": {
-    "message": "I punti ricaricati sono un saldo universale, utilizzabile per qualsiasi servizio.",
-    "description": "Messaggio mostrato all'utente quando ricarica il saldo universale."
+    "message": "I punti ricaricati in questa transazione sono saldo globale, utilizzabili per qualsiasi servizio.",
+    "description": "Messaggio mostrato all'utente quando ricarica il saldo globale."
   },
   "message.yourApplication": {
     "message": "La tua richiesta",
@@ -145,11 +149,11 @@
   },
   "message.unverified": {
     "message": "Devi completare la verifica dell'identità prima di poter richiedere questo servizio",
-    "description": "Messaggio mostrato all'utente quando non ha ancora completato la verifica dell'identità."
+    "description": "Messaggio mostrato all'utente quando non ha completato la verifica dell'identità."
   },
   "message.goVerify": {
     "message": "Vai alla verifica dell'identità",
-    "description": "Messaggio mostrato all'utente quando non ha ancora completato la verifica dell'identità."
+    "description": "Messaggio mostrato all'utente quando non ha completato la verifica dell'identità."
   },
   "message.requiredParameter": {
     "message": "Parametro obbligatorio",
@@ -160,8 +164,8 @@
     "description": "Messaggio mostrato all'utente quando non ha inserito i parametri obbligatori."
   },
   "message.applicationSelection": {
-    "message": "Di seguito sono elencati i pacchetti che hai attualmente richiesto o acquistato, puoi scegliere uno di essi per continuare a utilizzare il servizio.",
-    "description": "Messaggio mostrato all'utente quando deve selezionare una richiesta."
+    "message": "Di seguito sono riportati i pacchetti che hai attualmente richiesto o acquistato, puoi scegliere uno di essi per continuare a utilizzare il servizio.",
+    "description": "Quando l'utente deve selezionare una richiesta, viene mostrato un messaggio all'utente."
   },
   "message.createCredentialSuccessfully": {
     "message": "Credenziali create con successo",
@@ -203,6 +207,10 @@
     "message": "Reimpostazione della chiave fallita, contattare il supporto",
     "description": "Quando la reimpostazione della chiave fallisce, viene mostrato un messaggio all'utente."
   },
+  "message.fetchFailed": {
+    "message": "Impossibile recuperare l'app, riprova più tardi.",
+    "description": "Messaggio di errore quando il recupero dell'elenco delle app fallisce."
+  },
   "message.updateFailed": {
     "message": "Modifica fallita",
     "description": "Quando la modifica fallisce, viene mostrato un messaggio all'utente."
@@ -217,26 +225,38 @@
   },
   "title.buyService": {
     "message": "Acquista servizio",
-    "description": "Quando l'utente desidera acquistare un servizio, il titolo della pagina."
+    "description": "Titolo della pagina quando l'utente desidera acquistare un servizio."
   },
   "title.globalBuy": {
-    "message": "Ricarica saldo generale",
-    "description": "Quando l'utente desidera ricaricare il saldo generale, il titolo della pagina."
+    "message": "Ricarica saldo globale",
+    "description": "Titolo della pagina quando l'utente desidera ricaricare il saldo globale."
   },
   "title.applicationRemainingCount": {
     "message": "Modifica quantità",
-    "description": "Quando l'utente desidera modificare la quantità della richiesta, il titolo della pagina."
+    "description": "Titolo della pagina quando l'utente desidera modificare la quantità della richiesta."
   },
   "title.manageApplication": {
     "message": "Gestione delle richieste",
-    "description": "Quando l'utente desidera gestire le richieste, il titolo della pagina."
+    "description": "Titolo della pagina quando l'utente desidera gestire le richieste."
   },
   "title.applicationBalance": {
     "message": "Punti esclusivi - {service}",
-    "description": "Quando l'utente visualizza il saldo della richiesta, viene mostrato un messaggio all'utente."
+    "description": "Messaggio mostrato all'utente quando visualizza il saldo della richiesta."
+  },
+  "title.count": {
+    "message": "Numero di applicazioni",
+    "description": "Titolo della scheda di riepilogo del numero di applicazioni."
+  },
+  "message.countDescription": {
+    "message": "Gestisci qui le tue applicazioni esclusive e il saldo globale.",
+    "description": "Descrizione di supporto sotto la scheda del numero di applicazioni."
   },
   "title.globalBalance": {
-    "message": "Saldo generale",
-    "description": "Quando l'utente visualizza il saldo generale, viene mostrato un messaggio all'utente."
+    "message": "Saldo globale",
+    "description": "Messaggio mostrato all'utente quando visualizza il saldo globale."
+  },
+  "message.globalBalanceDescription": {
+    "message": "Il saldo globale è disponibile per le applicazioni idonee.",
+    "description": "Testo descrittivo della scheda del saldo globale."
   }
 }

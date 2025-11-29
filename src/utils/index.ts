@@ -3,6 +3,7 @@ export * from './mode';
 export * from './initializer';
 export * from './highlight';
 export * from './is';
+export * from './surface';
 export * from './login';
 export * from './site';
 export * from './price';

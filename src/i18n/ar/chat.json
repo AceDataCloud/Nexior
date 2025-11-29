@@ -12,8 +12,8 @@
     "description": "زر البحث"
   },
   "button.edit": {
-    "message": "تحرير الرسالة",
-    "description": "تحرير الرسالة المرسلة"
+    "message": "تعديل الرسالة",
+    "description": "تعديل الرسالة المرسلة"
   },
   "modelGroup.chatgpt": {
     "message": "ChatGPT",
@@ -116,7 +116,7 @@
     "description": "اسم النموذج للخدمة، أي استدلال DeepSeek"
   },
   "model.deepseekReasonerDescription": {
-    "message": "مناسب للاستدلال والتفكير العميق في المشكلات",
+    "message": "مناسب للاستدلال والأسئلة العميقة",
     "description": "وصف نموذج استدلال DeepSeek"
   },
   "model.grok4": {
@@ -140,16 +140,16 @@
     "description": "اسم النموذج للخدمة، أي استدلال Grok3"
   },
   "model.grok3ReasonerDescription": {
-    "message": "مناسب للاستدلال والتفكير العميق في المشكلات",
+    "message": "مناسب للاستدلال والأسئلة العميقة",
     "description": "وصف نموذج استدلال Grok3"
   },
   "model.grok3Deepsearch": {
     "message": "grok-3 بحث عميق",
-    "description": "اسم النموذج للخدمة، أي بحث عميق Grok3"
+    "description": "اسم النموذج للخدمة، أي Grok3 بحث عميق"
   },
   "model.grok3DeepsearchDescription": {
-    "message": "مناسب للبحث العميق والمشكلات المعقدة",
-    "description": "وصف نموذج بحث Grok3 العميق"
+    "message": "مناسب للبحث العميق والأسئلة المعقدة",
+    "description": "وصف نموذج Grok3 للبحث العميق"
   },
   "model.o1": {
     "message": "o1",
@@ -160,7 +160,7 @@
     "description": "وصف نموذج O1"
   },
   "model.o1Mini": {
-    "message": "ChatGPT - استدلال o1-mini",
+    "message": "ChatGPT - o1-mini استدلال",
     "description": "اسم النموذج للخدمة، أي O1-Mini"
   },
   "model.o1MiniDescription": {
@@ -236,7 +236,7 @@
     "description": "开始对话的示例问题，要求用户解释虚拟现实对艺术创作产生了什么影响"
   },
   "message.question5": {
-    "message": "أي أكبر 9.8 أم 9.11؟",
+    "message": "من أكبر 9.8 أم 9.11؟",
     "description": "开始对话的示例问题，要求比较两个数字的大小"
   },
   "message.question6": {
@@ -264,7 +264,7 @@
     "description": "网页中的消息，告诉用户对话不存在或已过期，请开始新对话"
   },
   "message.errorContentTooLarge": {
-    "message": "محتوى السؤال طويل جدًا، يرجى تقصيره ثم المحاولة مرة أخرى",
+    "message": "محتوى السؤال طويل جدًا، يرجى تقصيره والمحاولة مرة أخرى",
     "description": "网页中的消息，告诉用户问题内容过长，请缩短后重试"
   },
   "message.errorTooManyRequests": {
@@ -301,110 +301,110 @@
   },
   "title.chat": {
     "message": "دردشة الذكاء الاصطناعي",
-    "description": "عنوان الصفحة، أي دردشة الذكاء الاصطناعي"
+    "description": "网页的标题，即 AI 聊天"
   },
   "title.example": {
     "message": "مثال",
-    "description": "عنوان الصفحة، أي مثال"
+    "description": "网页的标题，即 示例"
   },
   "title.capabilities": {
     "message": "القدرات",
-    "description": "عنوان الصفحة، أي القدرات"
+    "description": "网页的标题，即 功能"
   },
   "title.limitations": {
     "message": "القيود",
-    "description": "عنوان في الصفحة، يشير إلى أن هذا الجزء يتعلق بالقيود التقنية للخدمة"
+    "description": "网页中的标题，指出这部分内容是关于服务的技术限制"
   },
   "title.complexQuestion": {
     "message": "الإجابة على الأسئلة المعقدة",
-    "description": "عنوان في الصفحة، يشير إلى أن هذا الجزء يتعلق بقدرة الخدمة على الإجابة على الأسئلة المعقدة"
+    "description": "网页中的标题，指出这部分内容是关于服务回答复杂问题的能力"
   },
   "title.professionalQuestion": {
     "message": "استشارة الأسئلة المهنية",
-    "description": "عنوان في الصفحة، يشير إلى أن هذا الجزء يتعلق بقدرة الخدمة على استشارة الأسئلة المهنية"
+    "description": "网页中的标题，指出这部分内容是关于服务咨询专业问题的能力"
   },
   "title.getTips": {
     "message": "الحصول على الإلهام والأفكار",
-    "description": "عنوان في الصفحة، يشير إلى أن هذا الجزء يتعلق بقدرة الخدمة على الحصول على الإلهام والأفكار"
+    "description": "网页中的标题，指出这部分内容是关于服务获取灵感和创意的能力"
   },
   "group.today": {
     "message": "اليوم",
-    "description": "اسم المجموعة في الصفحة، أي اليوم"
+    "description": "网页中的分组名称，即 今天"
   },
   "group.yesterday": {
     "message": "أمس",
-    "description": "اسم المجموعة في الصفحة، أي أمس"
+    "description": "网页中的分组名称，即 昨天"
   },
   "group.thisWeek": {
     "message": "هذا الأسبوع",
-    "description": "اسم المجموعة في الصفحة، أي هذا الأسبوع"
+    "description": "网页中的分组名称，即 本周"
   },
   "group.earlier": {
     "message": "في وقت سابق",
-    "description": "اسم المجموعة في الصفحة، أي في وقت سابق"
+    "description": "网页中的分组名称，即 更早"
   },
   "modelGroup.gemini": {
-    "message": "Gemini",
+    "message": "جمني",
     "description": "The name of the service model, i.e., Gemini"
   },
   "modelGroup.geminiDescription": {
-    "message": "AI model developed by Google",
+    "message": "نموذج ذكاء اصطناعي تم تطويره بواسطة جوجل",
     "description": "Description of the Gemini model"
   },
   "model.gemini30Pro": {
-    "message": "gemini-3.0-pro",
+    "message": "جمني-3.0-برو",
     "description": "The name of the service model"
   },
   "model.gemini30ProDescription": {
-    "message": "Suitable for advanced reasoning and multimodal tasks",
+    "message": "مناسب للتفكير المتقدم والمهام متعددة الوسائط",
     "description": "Description of the Gemini 3.0 Pro model"
   },
   "model.gemini25Pro": {
-    "message": "gemini-2.5-pro",
+    "message": "جمني-2.5-برو",
     "description": "The name of the service model"
   },
   "model.gemini25ProDescription": {
-    "message": "Great all-round model",
+    "message": "نموذج شامل رائع",
     "description": "Description of the Gemini 2.5 Pro model"
   },
   "model.gemini25Flash": {
-    "message": "gemini-2.5-flash",
+    "message": "جمني-2.5-فلاش",
     "description": "The name of the service model"
   },
   "model.gemini25FlashDescription": {
-    "message": "Fast and lightweight Gemini model",
+    "message": "نموذج جمني سريع وخفيف الوزن",
     "description": "Description of the Gemini 2.5 Flash model"
   },
   "modelGroup.claude": {
-    "message": "Claude",
+    "message": "كلود",
     "description": "The name of the service model, i.e., Claude"
   },
   "modelGroup.claudeDescription": {
-    "message": "AI model developed by Anthropic",
+    "message": "نموذج ذكاء اصطناعي تم تطويره بواسطة أنثروبيك",
     "description": "Description of the Claude model"
   },
   "model.claudeOpus4": {
-    "message": "claude-opus-4",
+    "message": "كلود-أوبس-4",
     "description": "The name of the service model"
   },
   "model.claudeOpus4Description": {
-    "message": "Top-tier reasoning and complex tasks",
+    "message": "تفكير من الدرجة الأولى والمهام المعقدة",
     "description": "Description of the Claude Opus 4 model"
   },
   "model.claudeSonnet4": {
-    "message": "claude-sonnet-4",
+    "message": "كلود-سونيت-4",
     "description": "The name of the service model"
   },
   "model.claudeSonnet4Description": {
-    "message": "Balanced performance and efficiency",
+    "message": "أداء متوازن وكفاءة",
     "description": "Description of the Claude Sonnet 4 model"
   },
   "model.claude37Sonnet": {
-    "message": "claude-3-7-sonnet",
+    "message": "كلود-3-7-سونيت",
     "description": "The name of the service model"
   },
   "model.claude37SonnetDescription": {
-    "message": "Fast iterative Claude Sonnet 3.7",
+    "message": "كلود سونيت 3.7 سريع ومتكرر",
     "description": "Description of the Claude 3.7 Sonnet model"
   }
 }

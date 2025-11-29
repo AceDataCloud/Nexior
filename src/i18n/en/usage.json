@@ -1,6 +1,6 @@
 {
   "field.createdAt": {
-    "message": "Creation Time",
+    "message": "Usage Time",
     "description": "The time when the usage record was created."
   },
   "field.statusCode": {
@@ -9,30 +9,70 @@
   },
   "field.application": {
     "message": "Application",
-    "description": "The application for the service."
+    "description": "The application program for the service."
   },
   "field.status": {
     "message": "Status",
-    "description": "The status of the application."
+    "description": "The status of the application program."
   },
   "field.api": {
     "message": "API",
-    "description": "The API for the service."
+    "description": "The API of the service."
   },
   "field.usedAmount": {
     "message": "Used Amount",
-    "description": "The amount of resources used."
+    "description": "The amount of resources that have been used."
   },
   "field.deductedAmount": {
     "message": "Deducted Amount",
-    "description": "The amount of resources deducted."
+    "description": "The amount of resources that have been deducted."
   },
   "field.remainingAmount": {
     "message": "Remaining Amount",
-    "description": "The amount of resources remaining."
+    "description": "The amount of resources that remain."
   },
   "field.metadata": {
     "message": "Metadata",
     "description": "The metadata of the usage record."
+  },
+  "title.totalUsed": {
+    "message": "Total Usage",
+    "description": "The title of the usage summary card."
+  },
+  "title.usageTrend": {
+    "message": "Usage Trend",
+    "description": "The title of the usage trend chart."
+  },
+  "shortcuts.today": {
+    "message": "Today",
+    "description": "Shortcut to select today's time range."
+  },
+  "shortcuts.last1Day": {
+    "message": "Last 1 Day",
+    "description": "Shortcut to select the time range for the last 1 day."
+  },
+  "shortcuts.last3Days": {
+    "message": "Last 3 Days",
+    "description": "Shortcut to select the time range for the last 3 days."
+  },
+  "shortcuts.last7Days": {
+    "message": "Last 7 Days",
+    "description": "Shortcut to select the time range for the last 7 days."
+  },
+  "shortcuts.last1Month": {
+    "message": "Last 1 Month",
+    "description": "Shortcut to select the time range for the last 1 month."
+  },
+  "placeholder.startDate": {
+    "message": "Start Date",
+    "description": "Placeholder for the start date in the date range selector."
+  },
+  "placeholder.endDate": {
+    "message": "End Date",
+    "description": "Placeholder for the end date in the date range selector."
+  },
+  "placeholder.to": {
+    "message": "to",
+    "description": "Separator text in the date range selector."
   }
 }
