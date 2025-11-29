@@ -2,8 +2,6 @@ export const NANOBANANA_SERVICE_ID = '';
 
 export const NANOBANANA_DEFAULT_ACTION: 'generate' | 'edit' = 'generate';
 
-export const NANOBANANA_DEFAULT_ASPECT_RATIO = '1:1';
-
 export const NANOBANANA_RESOLUTION_1K = '1K';
 export const NANOBANANA_RESOLUTION_2K = '2K';
 export const NANOBANANA_RESOLUTION_4K = '4K';

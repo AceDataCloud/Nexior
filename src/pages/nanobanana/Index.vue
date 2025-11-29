@@ -129,9 +129,14 @@ export default defineComponent({
     },
     async onGenerate() {
       const cfg: any = { ...(this.config || {}) };
-      // When action is 'generate', do not send image_urls
-      if (cfg?.action === 'generate' && 'image_urls' in cfg) {
+      const hasReferenceImages = Array.isArray(cfg?.image_urls) && cfg.image_urls.length > 0;
+      delete cfg.action;
+      // If creating new images, omit reference images from payload
+      if (!hasReferenceImages && 'image_urls' in cfg) {
         delete cfg.image_urls;
+      }
+      if (!cfg?.aspect_ratio) {
+        delete cfg.aspect_ratio;
       }
       if (cfg?.model !== NANOBANANA_MODEL_NANO_BANANA_PRO && 'resolution' in cfg) {
         delete cfg.resolution;
@@ -141,6 +146,7 @@ export default defineComponent({
       }
       const request = {
         ...cfg,
+        action: hasReferenceImages ? 'edit' : 'generate',
         callback_url: CALLBACK_URL
       } as INanobananaGenerateRequest;
       const token = this.credential?.token;
