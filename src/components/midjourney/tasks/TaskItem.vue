@@ -430,7 +430,7 @@ export default defineComponent({
     getActionDescriptionWithPrice(action: string, mode?: string): string {
       // @ts-ignore
       const baseDescription = this.descriptionMapping[action];
-      const price = getConsumption({ ...this.config, action: action, mode: mode }, this.service?.metadata?.price);
+      const price = getConsumption({ ...this.config, action: action, mode: mode }, this.service?.cost);
       const unit = this.$t(`service.unit.${this.service?.unit || 'credits'}`);
       return `${baseDescription} (${price} ${unit})`;
     },

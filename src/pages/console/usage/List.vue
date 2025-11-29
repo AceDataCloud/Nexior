@@ -418,7 +418,9 @@ export default defineComponent({
     apis() {
       return this.applications
         .filter((application) =>
-          this.applicationIds && this.applicationIds.length ? this.applicationIds.includes(application.id as string) : true
+          this.applicationIds && this.applicationIds.length
+            ? this.applicationIds.includes(application.id as string)
+            : true
         )
         .map((application) => application.service?.apis)
         .flat();
