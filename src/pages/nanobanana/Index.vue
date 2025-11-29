@@ -119,7 +119,7 @@ export default defineComponent({
         return;
       }
       console.debug('start onGetTasks', payload);
-      const { limit = 5, createdAtMin, createdAtMax } = payload || {};
+      const { limit = 20, createdAtMin, createdAtMax } = payload || {};
       console.debug('limit', limit, 'createdAtMin', createdAtMin, 'createdAtMax', createdAtMax);
       await this.$store.dispatch('nanobanana/getTasks', {
         limit,

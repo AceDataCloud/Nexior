@@ -1,11 +1,9 @@
 import { IApplication, IChatConversation, IChatModel, IChatModelGroup, ICredential, IService } from '@/models';
+import initialState from './state';
 import { IChatState } from './models';
 
 export const resetAll = (state: IChatState): void => {
-  state.application = undefined;
-  state.conversations = undefined;
-  state.credential = undefined;
-  state.service = undefined;
+  Object.assign(state, initialState());
 };
 
 export const setModel = (state: IChatState, payload: IChatModel): void => {

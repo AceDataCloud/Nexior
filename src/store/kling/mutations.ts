@@ -1,12 +1,9 @@
 import { IApplication, ICredential, IKlingConfig, IKlingTask, IService } from '@/models';
+import initialState from './state';
 import { IKlingState } from './models';
 
 export const resetAll = (state: IKlingState): void => {
-  state.service = undefined;
-  state.application = undefined;
-  state.config = undefined;
-  state.credential = undefined;
-  state.tasks = undefined;
+  Object.assign(state, initialState());
 };
 
 export const setService = (state: IKlingState, payload: IService): void => {

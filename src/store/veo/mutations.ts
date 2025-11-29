@@ -1,12 +1,9 @@
 import { IApplication, ICredential, IVeoConfig, IVeoTask, IService } from '@/models';
+import initialState from './state';
 import { IVeoState } from './models';
 
 export const resetAll = (state: IVeoState): void => {
-  state.service = undefined;
-  state.application = undefined;
-  state.config = undefined;
-  state.credential = undefined;
-  state.tasks = undefined;
+  Object.assign(state, initialState());
 };
 
 export const setService = (state: IVeoState, payload: IService): void => {

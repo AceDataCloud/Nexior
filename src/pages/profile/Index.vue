@@ -163,18 +163,7 @@ export default defineComponent({
           text: this.$t('common.nav.logOut'),
           icon: 'fa-solid fa-arrow-right-from-bracket',
           callback: async () => {
-            await this.$store.dispatch('resetAll');
-            await this.$store.dispatch('chat/resetAll');
-            await this.$store.dispatch('midjourney/resetAll');
-            await this.$store.dispatch('qrart/resetAll');
-            await this.$store.dispatch('flux/resetAll');
-            await this.$store.dispatch('hailuo/resetAll');
-            await this.$store.dispatch('headshots/resetAll');
-            await this.$store.dispatch('kling/resetAll');
-            await this.$store.dispatch('luma/resetAll');
-            await this.$store.dispatch('pika/resetAll');
-            await this.$store.dispatch('suno/resetAll');
-            await this.$store.dispatch('login');
+            await this.$store.dispatch('logout');
           }
         }
       ];
