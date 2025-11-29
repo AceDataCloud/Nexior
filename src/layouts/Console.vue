@@ -52,6 +52,7 @@ export default defineComponent({
       flex: 1;
       display: flex;
       flex-direction: row;
+      overflow: hidden;
       .side {
         width: 200px;
         height: 100%;
@@ -61,6 +62,10 @@ export default defineComponent({
         height: 100%;
         padding: 30px;
         background-color: var(--el-bg-color-page);
+        min-width: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        box-sizing: border-box;
       }
     }
   }
@@ -90,6 +95,9 @@ export default defineComponent({
         padding: 30px;
         background-color: var(--el-bg-color-page);
         padding-bottom: 80px;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
       }
       .side {
         width: 100%;
@@ -109,12 +117,6 @@ export default defineComponent({
       font-weight: bold;
       margin-bottom: 20px;
       color: var(--el-text-color-primary);
-    }
-
-    .el-table {
-      max-height: calc(100vh - 250px);
-      margin-bottom: 50px;
-      overflow-y: scroll;
     }
   }
 

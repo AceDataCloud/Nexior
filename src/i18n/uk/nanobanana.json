@@ -37,7 +37,7 @@
   },
   "name.prompt": {
     "message": "Підказка для зображення",
-    "description": "Слова підказки для створення/редагування"
+    "description": "Підказка для генерації/редагування"
   },
   "name.nanobananaBot": {
     "message": "Nano Banana Bot",
@@ -45,22 +45,26 @@
   },
   "name.aspectRatio": {
     "message": "Співвідношення сторін",
-    "description": "Співвідношення сторін для створюваного зображення"
+    "description": "Співвідношення сторін для згенерованого зображення"
   },
   "name.resolution": {
     "message": "Роздільна здатність",
     "description": "Роздільна здатність згенерованого зображення"
   },
   "description.resolutionProOnly": {
-    "message": "Вибір роздільної здатності працює лише для моделі nano-banana-pro.",
-    "description": "Налаштування роздільної здатності діє тільки для pro-моделі"
+    "message": "Тільки nano-banana-pro підтримує налаштування роздільної здатності.",
+    "description": "Опції роздільної здатності діють лише для pro моделі"
   },
   "description.prompt": {
-    "message": "Слова підказки для створення або редагування зображення",
+    "message": "Підказка для генерації або редагування зображення",
     "description": "Опис підказки"
   },
+  "description.action": {
+    "message": "Дія для генерації зображення. Якщо `generate`, зображення буде згенеровано на основі підказки; якщо `edit`, зображення буде відредаговано на основі підказки та завантаженого зображення.",
+    "description": "Опис параметра action"
+  },
   "description.model": {
-    "message": "Модель, що використовується для генерації зображень. За замовчуванням nano-banana. nano-banana-pro — псевдонім gemini-3-pro-image, nano-banana — псевдонім gemini-2.5-flash-image.",
+    "message": "Модель, що використовується для генерації зображення. За замовчуванням - nano-banana. nano-banana-pro є псевдонімом для gemini-3-pro-image, nano-banana є псевдонімом для gemini-2.5-flash-image.",
     "description": "Опис параметра model"
   },
   "description.imageUrls": {
@@ -68,7 +72,7 @@
     "description": "Опис параметра image_urls"
   },
   "description.aspectRatio": {
-    "message": "Співвідношення сторін для створюваного зображення. Підтримувані значення: `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Значення за замовчуванням: `1:1`. Діє лише якщо `action` дорівнює `generate`; якщо `action` дорівнює `edit`, то береться співвідношення першого зображення з `image_urls`.",
+    "message": "Співвідношення сторін для згенерованого зображення. Підтримувані значення: `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Значення за замовчуванням - `1:1`. Діє лише коли `action` - `generate`; якщо `action` - `edit`, то береться співвідношення першого зображення з `image_urls`.",
     "description": "Опис параметра aspect_ratio"
   },
   "status.pending": {
@@ -109,22 +113,22 @@
   },
   "message.uploadImageExceed": {
     "message": "Максимум можна завантажити 5 зображень",
-    "description": "Кількість зображень перевищує обмеження"
+    "description": "Кількість зображень перевищує ліміт"
   },
   "message.uploadImageError": {
     "message": "Не вдалося завантажити зображення, будь ласка, спробуйте ще раз пізніше",
     "description": "Помилка завантаження"
   },
   "name.model": {
-    "message": "Model",
-    "description": "Nano Banana model selector label"
+    "message": "Модель",
+    "description": "Мітка вибору моделі Nano Banana"
   },
   "model.nanoBanana": {
     "message": "nano-banana",
-    "description": "Nano Banana base model option"
+    "description": "Опція базової моделі Nano Banana"
   },
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
-    "description": "Nano Banana pro model option"
+    "description": "Опція професійної моделі Nano Banana"
   }
 }

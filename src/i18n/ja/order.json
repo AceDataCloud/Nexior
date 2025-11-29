@@ -12,7 +12,7 @@
     "description": "注文の詳細を確認するためのボタンのテキスト。"
   },
   "button.query": {
-    "message": "クエリ",
+    "message": "照会",
     "description": "注文を照会するためのボタンのテキスト。"
   },
   "button.finish": {
@@ -57,86 +57,250 @@
   },
   "field.api": {
     "message": "API",
-    "description": "APIは一種のオンラインサービスです。"
+    "description": "APIはオンラインサービスの一種です。"
   },
   "field.proxy": {
     "message": "プロキシ",
-    "description": "プロキシはデータ転送のためのHTTPプロキシとしての一種のオンラインサービスです。"
+    "description": "プロキシはデータを転送するためのHTTPプロキシのオンラインサービスです。"
   },
   "message.paidSuccessfully": {
     "message": "支払い成功",
-    "description": "成功した支払いのメッセージ。"
+    "description": "支払いが成功したことを示すメッセージ。"
   },
   "message.orderExpired": {
     "message": "注文が期限切れです。新しい注文を作成して支払いを行ってください。",
-    "description": "注文の期限切れのメッセージ。"
+    "description": "注文が期限切れであることを示すメッセージ。"
   },
   "message.createFailed": {
     "message": "作成失敗",
-    "description": "作成に失敗したメッセージ。"
+    "description": "作成が失敗したことを示すメッセージ。"
   },
   "message.wechatPayHelp": {
-    "message": "携帯電話でWeChatを開いて、QRコードをスキャンして支払いを完了してください。",
+    "message": "携帯電話でWeChatを開き、QRコードをスキャンして支払いを完了してください。",
     "description": "WeChat支払いのヘルプメッセージ。"
   },
   "message.free": {
     "message": "無料",
-    "description": "無料注文のメッセージ。"
+    "description": "無料の注文に関するメッセージ。"
   },
   "message.buyInExternalUrl": {
     "message": "外部リンクで支払いを完了してください。",
-    "description": "外部リンク支払いのメッセージ。"
+    "description": "外部リンクでの支払いに関するメッセージ。"
   },
   "message.updateFailed": {
     "message": "更新失敗",
-    "description": "更新に失敗したメッセージ。"
+    "description": "更新が失敗したことを示すメッセージ。"
   },
   "message.updateSuccessfully": {
     "message": "更新成功",
-    "description": "成功した更新のメッセージ。"
+    "description": "更新が成功したことを示すメッセージ。"
   },
   "message.confirmFinish": {
-    "message": "この操作は、注文を支払い状態に手動で設定し分配処理を完了させます。元に戻すことはできません。顧客が支払いを完了したことを確認してください。続行しますか？",
+    "message": "この操作は手動で注文を支払い状態に設定し、配信処理を完了します。取り消すことはできません。顧客が支払いを完了したことを確認してください。続行しますか？",
     "description": "完了確認のメッセージ。"
   },
   "state.pending": {
-    "message": "支払い待ち",
-    "description": "この注文がユーザーの支払いを待っていることを示す注文の状態。"
+    "message": "未払い",
+    "description": "注文の状態で、ユーザーの支払いを待っていることを示します。"
   },
   "state.paid": {
     "message": "支払い済み",
-    "description": "この注文が支払われていることを示す注文の状態。"
+    "description": "注文の状態で、支払いが完了したことを示します。"
   },
   "state.finished": {
     "message": "完了",
-    "description": "この注文が完了したことを示す注文の状態。"
+    "description": "注文の状態で、すでに完了したことを示します。"
   },
   "state.expired": {
-    "message": "支払いがタイムアウト",
-    "description": "この注文が期限切れであることを示す注文の状態。"
+    "message": "支払いタイムアウト",
+    "description": "注文の状態で、すでに期限切れであることを示します。"
   },
   "state.failed": {
     "message": "支払い失敗",
-    "description": "この注文の支払いが失敗したことを示す注文の状態。"
+    "description": "注文の状態で、支払いが失敗したことを示します。"
   },
   "title.info": {
     "message": "注文情報",
-    "description": "ウェブサイトのタイトルとして使用される、注文情報を示すタイトル。"
+    "description": "ウェブサイトのタイトルとして使用されるタイトルで、注文情報を示します。"
   },
   "title.wechatPay": {
-    "message": "WeChatペイ",
-    "description": "ウェブサイトのタイトルとして使用される、WeChatペイを示すタイトル。"
+    "message": "WeChat支払い",
+    "description": "ウェブサイトのタイトルとして使用されるタイトルで、WeChat支払いを示します。"
   },
   "title.aliPay": {
     "message": "アリペイ",
-    "description": "ウェブサイトのタイトルとして使用される、アリペイを示すタイトルで、アリペイはオンライン決済の一種です。"
+    "description": "ウェブサイトのタイトルとして使用されるタイトルで、アリペイ支払いを示します。アリペイ支払いはオンライン支払いの一種です。"
   },
   "title.stripe": {
     "message": "ストライプ",
-    "description": "ウェブサイトのタイトルとして使用される、ストライプを示すタイトルで、ストライプはオンライン決済の一種です。"
+    "description": "ウェブサイトのタイトルとして使用されるタイトルで、ストライプ支払いを示します。ストライプ支払いはオンライン支払いの一種です。"
   },
   "title.manageOrder": {
     "message": "注文管理",
-    "description": "ウェブサイトのタイトルとして使用される、注文管理を示すタイトル。"
+    "description": "ウェブサイトのタイトルとして使用されるタイトルで、注文管理を示します。"
+  },
+  "title.x402": {
+    "message": "暗号通貨",
+    "description": "X402スキームに基づく暗号支払いのタイトル。"
+  },
+  "message.discountTag": {
+    "message": "{percent}% 割引",
+    "description": "適用された割引パーセンテージを表示するバッジの文言。"
+  },
+  "message.discountHint": {
+    "message": "会員に自動的に {percent}% OFF が適用されました。",
+    "description": "ユーザーが得た会員割引を示すヒント。"
+  },
+  "message.x402DiscountApplied": {
+    "message": "X402支払いを使用して追加で {percent}% 節約できます。",
+    "description": "X402支払いによる追加割引を説明します。"
+  },
+  "message.x402DiscountTag": {
+    "message": "{percent}% OFF",
+    "description": "X402支払いの割引バッジ。"
+  },
+  "message.x402DiscountHint": {
+    "message": "X402支払いを選択すると追加で {percent}% OFF が得られます。",
+    "description": "ユーザーにX402支払いを選択するよう促すヒント。"
+  },
+  "message.x402IntroShort": {
+    "message": "暗号ウォレットに直接接続して支払いを行うか、プログラミングモードに切り替えて統合パラメータを取得できます。",
+    "description": "X402支払いダイアログの簡単な紹介。"
+  },
+  "message.x402TabWallet": {
+    "message": "ウォレット支払い",
+    "description": "ウォレット支払いタブのタイトル。"
+  },
+  "message.x402TabApi": {
+    "message": "プログラミング接続",
+    "description": "プログラミング接続タブのタイトル。"
+  },
+  "message.x402WalletTitle": {
+    "message": "ウォレットを接続して支払う",
+    "description": "ユーザーにウォレットを接続するよう促すタイトル。"
+  },
+  "message.x402WalletConnected": {
+    "message": "接続済み",
+    "description": "ウォレットが接続されているときのマーク。"
+  },
+  "message.x402ConnectWallet": {
+    "message": "ウォレットを接続",
+    "description": "ウォレット接続ボタンの文言。"
+  },
+  "message.x402NoWalletDesc": {
+    "message": "ウォレットが検出されませんでした。MetaMask/Phantomをインストールするか、ウォレット内蔵ブラウザでこのページを開いてください。",
+    "description": "EVMウォレットが検出されないときの説明。"
+  },
+  "message.x402SwitchNetwork": {
+    "message": "ウォレットのネットワークを {network} に切り替えてください",
+    "description": "ユーザーにウォレットのネットワークを切り替えるよう促す。"
+  },
+  "message.x402NeedConnectAccount": {
+    "message": "支払う前に、少なくとも1つの互換性のあるEVMウォレットを接続してください。",
+    "description": "ユーザーにウォレットアカウントを先に接続するよう促す。"
+  },
+  "message.x402StepsTitle": {
+    "message": "支払い手順",
+    "description": "支払い手順リストのタイトル。"
+  },
+  "message.x402Step1": {
+    "message": "ウォレットを接続（未インストールの場合はインストールしてページをリフレッシュしてください）。",
+    "description": "ウォレット支払い手順1。"
+  },
+  "message.x402Step2": {
+    "message": "ウォレットのネットワークが {network} であることを確認してください。",
+    "description": "ウォレット支払い手順2。"
+  },
+  "message.x402Step3": {
+    "message": "支払いをクリックし、ウォレット内で承認サインを完了してください。",
+    "description": "ウォレット支払い手順3。"
+  },
+  "message.x402Step4": {
+    "message": "サイン後、自動的に決済し、注文状況を更新します。",
+    "description": "ウォレット支払い手順4。"
+  },
+  "message.x402IntegrationResourceLabel": {
+    "message": "支払いインターフェースアドレス",
+    "description": "支払いインターフェースアドレスのラベル。"
+  },
+  "message.x402IntegrationPayToLabel": {
+    "message": "受取アドレス",
+    "description": "ブロックチェーン受取アドレスのラベル。"
+  },
+  "message.x402IntegrationNetworkLabel": {
+    "message": "ネットワーク",
+    "description": "ブロックチェーンネットワークのラベル。"
+  },
+  "message.x402IntegrationAssetLabel": {
+    "message": "資産",
+    "description": "決済資産のラベル。"
+  },
+  "message.x402IntegrationFallback": {
+    "message": "セッションパラメータを取得できませんでした。ドキュメントを確認するか、サポートに連絡して必要なパラメータを取得してください。",
+    "description": "統合パラメータが不足しているときのフォールバックメッセージ。"
+  },
+  "message.x402IntegrationDocsCta": {
+    "message": "X402ガイドを開く",
+    "description": "X402統合ガイドを開くボタンの文言。"
+  },
+  "message.x402InstallGuideTitle": {
+    "message": "ウォレットプラグインのインストール",
+    "description": "ウォレットインストールガイドのダイアログタイトル。"
+  },
+  "message.x402InstallGuideDesc": {
+    "message": "{wallet} プラグインを手順に従ってインストールし、再接続してください。",
+    "description": "ウォレットインストールガイドの説明。"
+  },
+  "message.x402InstallGuideStep1": {
+    "message": "{wallet} ブラウザプラグインをダウンロードしてインストールします（Chrome/Braveを推奨）。",
+    "description": "ウォレットインストール手順1。"
+  },
+  "message.x402InstallGuideStep2": {
+    "message": "プラグインを開き、ログイン/ロック解除し、必ず有効にしてください。",
+    "description": "ウォレットインストール手順2。"
+  },
+  "message.x402InstallGuideStep3": {
+    "message": "このページに戻り、「インストール済み」をクリックして再接続を試みてください。",
+    "description": "ウォレットインストール手順3。"
+  },
+  "message.x402InstallGuideConfirm": {
+    "message": "インストール済み",
+    "description": "インストール完了後の確認ボタン。"
+  },
+  "message.x402NetworkGuideTitle": {
+    "message": "ネットワーク設定の調整",
+    "description": "ネットワークガイドのダイアログタイトル。"
+  },
+  "message.x402NetworkGuideDesc": {
+    "message": "ウォレットのネットワークを {network} に切り替え、完了後にリフレッシュして再試行してください。",
+    "description": "ユーザーにネットワークを切り替えるよう指示する説明。"
+  },
+  "message.x402NetworkGuideStep1": {
+    "message": "ウォレットプラグインの設定を開き、アクティブなネットワークを確認します。",
+    "description": "ネットワーク調整手順1。"
+  },
+  "message.x402NetworkGuideStep2": {
+    "message": "リストから {network}（または必要なネットワーク）を有効にします。",
+    "description": "ネットワーク調整手順2。"
+  },
+  "message.x402NetworkGuideStep3": {
+    "message": "このページに戻り、「設定完了」をクリックしてから支払いを行います。",
+    "description": "ネットワーク調整手順3。"
+  },
+  "message.x402NetworkGuideConfirm": {
+    "message": "設定完了",
+    "description": "ネットワーク設定完了後の確認ボタン。"
+  },
+  "message.x402NetworkSwitchFailed": {
+    "message": "現在のウォレットは自動ネットワーク切り替えをサポートしていません。手動で切り替えてから再試行してください。",
+    "description": "自動ネットワーク切り替えに失敗したときのメッセージ。"
+  },
+  "message.x402PaymentFailed": {
+    "message": "X402ウォレット支払いに失敗しました。後でもう一度お試しいただくか、サポートに連絡してください。",
+    "description": "X402支払い失敗時の一般的なエラー。"
+  },
+  "message.x402WalletPayCta": {
+    "message": "ウォレットで支払う",
+    "description": "X402ウォレット支払いを開始するボタンの文言。"
   }
 }

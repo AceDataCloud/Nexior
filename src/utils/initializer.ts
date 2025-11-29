@@ -159,10 +159,30 @@ export const initializeToken = async () => {
   const query = new URLSearchParams(window.location.search);
   const code = query.get('code');
   console.debug('get code', code);
-  if (code) {
-    console.debug('start get token by code', code);
+  // avoid exchanging the same code multiple times (e.g., page re-render)
+  const usedCodeKey = 'oauth_code_used';
+  if (!code) return;
+  if (store.state.token?.access) {
+    console.debug('access token already exists, skip code exchange');
+    return;
+  }
+  const cached = sessionStorage.getItem(usedCodeKey);
+  if (cached === code) {
+    console.debug('code already exchanged in this session, skip');
+    return;
+  }
+  console.debug('start get token by code', code);
+  try {
     const token = await store.dispatch('getToken', code);
+    sessionStorage.setItem(usedCodeKey, code);
+    // strip code from URL to avoid re-trigger on refresh
+    const url = new URL(window.location.href);
+    url.searchParams.delete('code');
+    window.history.replaceState({}, document.title, url.toString());
     console.debug('success get token', token);
+  } catch (err) {
+    sessionStorage.removeItem(usedCodeKey);
+    throw err;
   }
 };
 

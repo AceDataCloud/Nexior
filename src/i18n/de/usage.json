@@ -1,19 +1,19 @@
 {
   "field.createdAt": {
     "message": "Verwendungszeit",
-    "description": "Die Zeit, zu der der Nutzungsdatensatz erstellt wurde."
+    "description": "Die Zeit, zu der der Nutzungseintrag erstellt wurde."
   },
   "field.statusCode": {
     "message": "Statuscode",
-    "description": "Der Statuscode des Nutzungsdatensatzes."
+    "description": "Der Statuscode des Nutzungseintrags."
   },
   "field.application": {
     "message": "Anwendung",
-    "description": "Das Antragsverfahren für den Dienst."
+    "description": "Das Anwendungsprogramm des Dienstes."
   },
   "field.status": {
     "message": "Status",
-    "description": "Der Status des Antragsverfahrens."
+    "description": "Der Status des Anwendungsprogramms."
   },
   "field.api": {
     "message": "API",
@@ -24,8 +24,8 @@
     "description": "Die Menge der verwendeten Ressourcen."
   },
   "field.deductedAmount": {
-    "message": "Einbehaltene Menge",
-    "description": "Die Menge der einbehaltenen Ressourcen."
+    "message": "Abgezogene Menge",
+    "description": "Die Menge der abgezogenen Ressourcen."
   },
   "field.remainingAmount": {
     "message": "Verbleibende Menge",
@@ -33,6 +33,46 @@
   },
   "field.metadata": {
     "message": "Metadaten",
-    "description": "Die Metadaten des Nutzungsdatensatzes."
+    "description": "Die Metadaten des Nutzungseintrags."
+  },
+  "title.totalUsed": {
+    "message": "Kumulierte Nutzung",
+    "description": "Titel der Zusammenfassungs-Karte für die Nutzung."
+  },
+  "title.usageTrend": {
+    "message": "Nutzungstrend",
+    "description": "Titel des Nutzungstrend-Diagramms."
+  },
+  "shortcuts.today": {
+    "message": "Heute",
+    "description": "Schnellauswahl für den heutigen Zeitraum."
+  },
+  "shortcuts.last1Day": {
+    "message": "Letzte 1 Tag",
+    "description": "Schnellauswahl für den Zeitraum der letzten 1 Tag."
+  },
+  "shortcuts.last3Days": {
+    "message": "Letzte 3 Tage",
+    "description": "Schnellauswahl für den Zeitraum der letzten 3 Tage."
+  },
+  "shortcuts.last7Days": {
+    "message": "Letzte 7 Tage",
+    "description": "Schnellauswahl für den Zeitraum der letzten 7 Tage."
+  },
+  "shortcuts.last1Month": {
+    "message": "Letzter 1 Monat",
+    "description": "Schnellauswahl für den Zeitraum des letzten 1 Monats."
+  },
+  "placeholder.startDate": {
+    "message": "Startzeit",
+    "description": "Platzhalter für die Startzeit im Zeitbereichs-Auswähler."
+  },
+  "placeholder.endDate": {
+    "message": "Endzeit",
+    "description": "Platzhalter für die Endzeit im Zeitbereichs-Auswähler."
+  },
+  "placeholder.to": {
+    "message": "bis",
+    "description": "Trenntext im Zeitbereichs-Auswähler."
   }
 }

@@ -75,6 +75,10 @@
     "message": "Operation",
     "description": "The operation of the application."
   },
+  "field.allowConsumeGlobal": {
+    "message": "Use Global Balance",
+    "description": "Whether to allow the consumption of global balance when the exclusive balance is insufficient."
+  },
   "field.amount": {
     "message": "Amount",
     "description": "The amount applied for."
@@ -85,7 +89,7 @@
   },
   "field.traceId": {
     "message": "Trace ID",
-    "description": "The trace ID of an API call for the application, do not translate, keep as 'Trace ID'."
+    "description": "The trace ID of an API call for the application of the API service, do not translate, keep as 'Trace ID'."
   },
   "field.shouldPayPrice": {
     "message": "Final Price",
@@ -121,7 +125,7 @@
   },
   "field.extraPrice": {
     "message": "Price",
-    "description": "The additional price the user should pay for the application."
+    "description": "The additional price that the user should pay for the application."
   },
   "message.alreadyApplied": {
     "message": "You have already applied for this service, please check the console.",
@@ -136,8 +140,8 @@
     "description": "Message displayed to the user when they have not yet applied for this service."
   },
   "message.globalBalanceBuyDescription": {
-    "message": "The points from this recharge are universal balance and can be used for any service.",
-    "description": "Message displayed to the user when they recharge universal balance."
+    "message": "The points from this recharge are global balance and can be used for any service.",
+    "description": "Message displayed to the user when they recharge global balance."
   },
   "message.yourApplication": {
     "message": "Your Application",
@@ -160,7 +164,7 @@
     "description": "Message displayed to the user when they have not entered required parameters."
   },
   "message.applicationSelection": {
-    "message": "The following are the packages you currently applied for or purchased, you can choose any package to continue using the service.",
+    "message": "Here are the packages you are currently applying for or have purchased. You can choose any package to continue using the service.",
     "description": "Message displayed to the user when they need to select an application."
   },
   "message.createCredentialSuccessfully": {
@@ -203,6 +207,10 @@
     "message": "Key reset failed, please contact support",
     "description": "Message displayed to the user when the key reset fails."
   },
+  "message.fetchFailed": {
+    "message": "Failed to fetch applications, please try again later.",
+    "description": "Prompt when fetching the application list fails."
+  },
   "message.updateFailed": {
     "message": "Update failed",
     "description": "Message displayed to the user when the update fails."
@@ -221,7 +229,7 @@
   },
   "title.globalBuy": {
     "message": "Universal Balance Recharge",
-    "description": "Title of the page when the user wants to recharge their universal balance."
+    "description": "Title of the page when the user wants to recharge the universal balance."
   },
   "title.applicationRemainingCount": {
     "message": "Modify Quantity",
@@ -235,8 +243,20 @@
     "message": "Exclusive Points - {service}",
     "description": "Message displayed to the user when they view the application balance."
   },
+  "title.count": {
+    "message": "Application Count",
+    "description": "Title of the summary card for application count."
+  },
+  "message.countDescription": {
+    "message": "Manage your exclusive applications and universal balance here.",
+    "description": "Auxiliary description under the application count card."
+  },
   "title.globalBalance": {
     "message": "Universal Balance",
     "description": "Message displayed to the user when they view the universal balance."
+  },
+  "message.globalBalanceDescription": {
+    "message": "The universal balance is available for consumption by eligible applications.",
+    "description": "Description text for the universal balance card."
   }
 }

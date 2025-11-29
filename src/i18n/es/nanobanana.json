@@ -40,7 +40,7 @@
     "description": "Palabras clave para generar/editar"
   },
   "name.nanobananaBot": {
-    "message": "Nano Banana Bot",
+    "message": "Bot Nano Banana",
     "description": "Nombre del generador de imágenes Nano Banana"
   },
   "name.aspectRatio": {
@@ -52,24 +52,28 @@
     "description": "Resolución de la imagen generada"
   },
   "description.resolutionProOnly": {
-    "message": "Solo el modelo nano-banana-pro admite elegir resolución.",
-    "description": "La configuración de resolución aplica solo al modelo pro"
+    "message": "La configuración de resolución solo es compatible con nano-banana-pro.",
+    "description": "Las opciones de resolución solo son efectivas para el modelo pro"
   },
   "description.prompt": {
-    "message": "Palabras clave para generar o editar imágenes",
+    "message": "Palabras clave para generar o editar la imagen",
     "description": "Descripción de las palabras clave"
   },
+  "description.action": {
+    "message": "Acción para generar la imagen. Si es `generate`, se generará la imagen según las palabras clave; si es `edit`, se editará en base a las palabras clave y la imagen subida.",
+    "description": "Descripción del parámetro de acción"
+  },
   "description.model": {
-    "message": "El modelo usado para generar las imágenes. El valor predeterminado es nano-banana. nano-banana-pro es un alias de gemini-3-pro-image; nano-banana es un alias de gemini-2.5-flash-image.",
-    "description": "Descripción del parámetro model"
+    "message": "Modelo utilizado para generar la imagen. El predeterminado es nano-banana. nano-banana-pro es un alias de gemini-3-pro-image, y nano-banana es un alias de gemini-2.5-flash-image.",
+    "description": "Descripción del parámetro de modelo"
   },
   "description.imageUrls": {
     "message": "Se deben subir de 1 a 5 imágenes en la tarea de edición de imágenes.",
-    "description": "Descripción del parámetro image_urls"
+    "description": "Descripción del parámetro de image_urls"
   },
   "description.aspectRatio": {
-    "message": "Relación de aspecto de la imagen generada. Los valores admitidos son `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. El valor predeterminado es `1:1`. Solo es efectivo cuando `action` es `generate`; si `action` es `edit`, se tomará la proporción de la primera imagen en `image_urls`.",
-    "description": "Descripción del parámetro aspect_ratio"
+    "message": "Relación de aspecto de la imagen generada. Los valores soportados son `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. El valor predeterminado es `1:1`. Solo es efectivo cuando `action` es `generate`; si `action` es `edit`, se tomará la proporción de la primera imagen en `image_urls` como referencia.",
+    "description": "Descripción del parámetro de aspect_ratio"
   },
   "status.pending": {
     "message": "En espera",
@@ -80,7 +84,7 @@
     "description": "Marcador de posición para selección"
   },
   "placeholder.prompt": {
-    "message": "Ingrese las palabras clave, por ejemplo: un gato siamés blanco",
+    "message": "Ingrese las palabras clave, por ejemplo: un gato siames blanco",
     "description": "Marcador de posición para palabras clave"
   },
   "button.generate": {
@@ -88,7 +92,7 @@
     "description": "Botón de generar"
   },
   "button.uploadImageUrls": {
-    "message": "Subir imágenes",
+    "message": "Subir imagen",
     "description": "Botón para subir imágenes de referencia"
   },
   "message.startingTask": {
@@ -104,27 +108,27 @@
     "description": "Fallo en la creación de la tarea"
   },
   "message.usedUp": {
-    "message": "Sus puntos se han agotado, por favor compre más puntos para continuar usando",
+    "message": "Sus créditos se han agotado, por favor compre más créditos para continuar usando",
     "description": "Mensaje de agotamiento"
   },
   "message.uploadImageExceed": {
     "message": "Se pueden subir un máximo de 5 imágenes",
-    "description": "Cantidad de imágenes excede el límite"
+    "description": "Número de imágenes excede el límite"
   },
   "message.uploadImageError": {
     "message": "Fallo al subir la imagen, por favor intente de nuevo más tarde",
     "description": "Fallo en la subida"
   },
   "name.model": {
-    "message": "Model",
-    "description": "Nano Banana model selector label"
+    "message": "Modelo",
+    "description": "Etiqueta de selección de modelo de Nano Banana"
   },
   "model.nanoBanana": {
     "message": "nano-banana",
-    "description": "Nano Banana base model option"
+    "description": "Opción de modelo básico de Nano Banana"
   },
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
-    "description": "Nano Banana pro model option"
+    "description": "Opción de modelo profesional de Nano Banana"
   }
 }

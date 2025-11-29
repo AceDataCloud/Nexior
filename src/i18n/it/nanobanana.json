@@ -52,23 +52,27 @@
     "description": "Risoluzione dell'immagine generata"
   },
   "description.resolutionProOnly": {
-    "message": "Solo il modello nano-banana-pro supporta la scelta della risoluzione.",
-    "description": "L'impostazione della risoluzione vale solo per il modello pro"
+    "message": "Solo nano-banana-pro supporta la configurazione della risoluzione.",
+    "description": "Le opzioni di risoluzione sono valide solo per il modello pro"
   },
   "description.prompt": {
     "message": "Parole chiave per generare o modificare l'immagine",
     "description": "Descrizione delle parole chiave"
   },
+  "description.action": {
+    "message": "Azione per generare l'immagine. Se è `generate`, l'immagine verrà generata in base alle parole chiave; se è `edit`, verrà modificata in base alle parole chiave e all'immagine caricata.",
+    "description": "Descrizione del parametro action"
+  },
   "description.model": {
-    "message": "Il modello usato per generare le immagini. Il predefinito è nano-banana. nano-banana-pro è un alias di gemini-3-pro-image; nano-banana è un alias di gemini-2.5-flash-image.",
+    "message": "Modello utilizzato per generare l'immagine. Il predefinito è nano-banana. nano-banana-pro è un alias per gemini-3-pro-image, nano-banana è un alias per gemini-2.5-flash-image.",
     "description": "Descrizione del parametro model"
   },
   "description.imageUrls": {
-    "message": "È necessario caricare da 1 a 5 immagini per il compito di modifica dell'immagine.",
+    "message": "Nell'attività di modifica dell'immagine è necessario caricare da 1 a 5 immagini.",
     "description": "Descrizione del parametro image_urls"
   },
   "description.aspectRatio": {
-    "message": "Rapporto d'aspetto dell'immagine generata. I valori supportati sono `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Il valore predefinito è `1:1`. Si applica solo quando `action` è `generate`; se `action` è `edit`, si utilizza il rapporto della prima immagine in `image_urls`.",
+    "message": "Rapporto d'aspetto dell'immagine generata. I valori supportati sono `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Il valore predefinito è `1:1`. È valido solo quando `action` è `generate`; se `action` è `edit`, si basa sul rapporto della prima immagine in `image_urls`.",
     "description": "Descrizione del parametro aspect_ratio"
   },
   "status.pending": {
@@ -88,12 +92,12 @@
     "description": "Pulsante di generazione"
   },
   "button.uploadImageUrls": {
-    "message": "Carica immagini",
+    "message": "Carica immagine",
     "description": "Pulsante per caricare immagini di riferimento"
   },
   "message.startingTask": {
     "message": "Avvio dell'attività in corso...",
-    "description": "Messaggio di inizio attività"
+    "description": "Messaggio di avvio dell'attività"
   },
   "message.startTaskSuccess": {
     "message": "Attività di generazione avviata con successo",
@@ -104,7 +108,7 @@
     "description": "Creazione dell'attività fallita"
   },
   "message.usedUp": {
-    "message": "I tuoi punti sono esauriti, acquista più punti per continuare a utilizzare",
+    "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare a utilizzare",
     "description": "Messaggio di esaurimento"
   },
   "message.uploadImageExceed": {
@@ -113,18 +117,18 @@
   },
   "message.uploadImageError": {
     "message": "Caricamento dell'immagine fallito, riprova più tardi",
-    "description": "Caricamento fallito"
+    "description": "Errore di caricamento"
   },
   "name.model": {
-    "message": "Model",
-    "description": "Nano Banana model selector label"
+    "message": "Modello",
+    "description": "Etichetta di selezione del modello Nano Banana"
   },
   "model.nanoBanana": {
     "message": "nano-banana",
-    "description": "Nano Banana base model option"
+    "description": "Opzione del modello di base Nano Banana"
   },
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
-    "description": "Nano Banana pro model option"
+    "description": "Opzione del modello professionale Nano Banana"
   }
 }

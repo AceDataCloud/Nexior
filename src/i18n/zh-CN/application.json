@@ -75,6 +75,10 @@
     "message": "操作",
     "description": "申请的操作。"
   },
+  "field.allowConsumeGlobal": {
+    "message": "使用通用余额",
+    "description": "当专属余额不足时，是否允许消耗通用余额。"
+  },
   "field.amount": {
     "message": "数量",
     "description": "申请的数量。"
@@ -203,6 +207,10 @@
     "message": "密钥重置失败，请联系处理",
     "description": "当密钥重置失败时向用户显示的消息。"
   },
+  "message.fetchFailed": {
+    "message": "获取应用失败，请稍后重试。",
+    "description": "获取应用列表失败时的提示。"
+  },
   "message.updateFailed": {
     "message": "修改失败",
     "description": "当修改失败时向用户显示的消息。"
@@ -235,8 +243,20 @@
     "message": "专属积分 - {service}",
     "description": "当用户查看申请余额时向用户显示的消息。"
   },
+  "title.count": {
+    "message": "应用数量",
+    "description": "应用数量汇总卡片标题。"
+  },
+  "message.countDescription": {
+    "message": "在这里管理你的专属应用与通用余额。",
+    "description": "应用数量卡片下的辅助说明。"
+  },
   "title.globalBalance": {
     "message": "通用余额",
     "description": "当用户查看通用余额时向用户显示的消息。"
+  },
+  "message.globalBalanceDescription": {
+    "message": "通用余额可供符合条件的应用消耗。",
+    "description": "通用余额卡片的说明文本。"
   }
 }

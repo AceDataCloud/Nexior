@@ -111,6 +111,82 @@
     "message": "Κατάλληλο για καθημερινές εργασίες",
     "description": "Περιγραφή του μοντέλου DeepSeek Chat"
   },
+  "model.deepseekReasoner": {
+    "message": "R1 Λογισμός",
+    "description": "Όνομα του μοντέλου υπηρεσίας, δηλαδή DeepSeek Reasoner"
+  },
+  "model.deepseekReasonerDescription": {
+    "message": "Κατάλληλο για λογισμούς και βαθιά σκέψη",
+    "description": "Περιγραφή του μοντέλου DeepSeek Reasoner"
+  },
+  "model.grok4": {
+    "message": "grok-4",
+    "description": "Όνομα του μοντέλου υπηρεσίας"
+  },
+  "model.grok4Description": {
+    "message": "Το πιο προηγμένο μοντέλο",
+    "description": "Περιγραφή του μοντέλου Grok4"
+  },
+  "model.grok3": {
+    "message": "grok-3",
+    "description": "Όνομα του μοντέλου υπηρεσίας"
+  },
+  "model.grok3Description": {
+    "message": "Κατάλληλο για τις περισσότερες εργασίες",
+    "description": "Περιγραφή του μοντέλου Grok3"
+  },
+  "model.grok3Reasoner": {
+    "message": "grok-3 Λογισμός",
+    "description": "Όνομα του μοντέλου υπηρεσίας, δηλαδή Grok3 Reasoner"
+  },
+  "model.grok3ReasonerDescription": {
+    "message": "Κατάλληλο για λογισμούς και βαθιά σκέψη",
+    "description": "Περιγραφή του μοντέλου Grok3 Reasoner"
+  },
+  "model.grok3Deepsearch": {
+    "message": "grok-3 Βαθιά Έρευνα",
+    "description": "Όνομα του μοντέλου υπηρεσίας, δηλαδή Grok3 Deepsearch"
+  },
+  "model.grok3DeepsearchDescription": {
+    "message": "Κατάλληλο για βαθιά έρευνα και σύνθετα προβλήματα",
+    "description": "Περιγραφή του μοντέλου Grok3 Deepsearch"
+  },
+  "model.o1": {
+    "message": "o1",
+    "description": "Όνομα του μοντέλου υπηρεσίας, δηλαδή O1"
+  },
+  "model.o1Description": {
+    "message": "Κατάλληλο για πιο προχωρημένες λογιστικές εργασίες",
+    "description": "Περιγραφή του μοντέλου O1"
+  },
+  "model.o1Mini": {
+    "message": "ChatGPT - o1-mini Λογισμός",
+    "description": "Όνομα του μοντέλου υπηρεσίας, δηλαδή O1-Mini"
+  },
+  "model.o1MiniDescription": {
+    "message": "Πιο γρήγορη εκτέλεση λογιστικών εργασιών.",
+    "description": "Περιγραφή του μοντέλου O1-Mini"
+  },
+  "model.o3": {
+    "message": "o3",
+    "description": "Όνομα του μοντέλου υπηρεσίας, δηλαδή O3"
+  },
+  "model.o3Description": {
+    "message": "Κατάλληλο για πιο προχωρημένες λογιστικές εργασίες",
+    "description": "Περιγραφή του μοντέλου O3"
+  },
+  "model.o4Mini": {
+    "message": "o4-mini",
+    "description": "Όνομα του μοντέλου υπηρεσίας, δηλαδή O4-Mini"
+  },
+  "model.o4MiniDescription": {
+    "message": "Ειδικεύεται σε κωδικοποίηση και οπτική λογιστική",
+    "description": "Περιγραφή του μοντέλου O4"
+  },
+  "message.startNewChat": {
+    "message": "Ξεκινήστε νέα συνομιλία",
+    "description": "Μήνυμα στην ιστοσελίδα που ενημερώνει τον χρήστη να ξεκινήσει νέα συνομιλία"
+  },
   "message.uploadFile": {
     "message": "Ανέβασμα αρχείου",
     "description": "Μήνυμα στην ιστοσελίδα που ενημερώνει τον χρήστη να ανεβάσει ένα αρχείο"
@@ -172,8 +248,8 @@
     "description": "Παράδειγμα ερώτησης για να ξεκινήσει η συνομιλία, ρωτώντας πώς να βελτιώσει κανείς την αποδοτικότητα της μάθησής του"
   },
   "message.question8": {
-    "message": "Πώς να βελτιώσετε την ικανότητα συγκέντρωσης;",
-    "description": "Παράδειγμα ερώτησης για να ξεκινήσει η συνομιλία, ρωτώντας πώς να βελτιώσει κανείς την ικανότητα συγκέντρωσής του"
+    "message": "Πώς να βελτιώσετε την προσοχή σας;",
+    "description": "Παράδειγμα ερώτησης για να ξεκινήσει η συνομιλία, ρωτώντας πώς να βελτιώσει κανείς την προσοχή του"
   },
   "message.errorApiError": {
     "message": "Η απάντηση απέτυχε, παρακαλώ δοκιμάστε ξανά αργότερα",
@@ -199,6 +275,30 @@
     "message": "Ο διακομιστής είναι απασχολημένος, παρακαλώ δοκιμάστε ξανά αργότερα",
     "description": "Μήνυμα στην ιστοσελίδα που ενημερώνει τον χρήστη ότι ο διακομιστής είναι απασχολημένος, παρακαλώ δοκιμάστε ξανά αργότερα"
   },
+  "message.errorUsedUp": {
+    "message": "Έχετε εξαντλήσει τις διαθέσιμες χρήσεις, παρακαλώ αγοράστε περισσότερες για να συνεχίσετε",
+    "description": "Μήνυμα στην ιστοσελίδα που ενημερώνει τον χρήστη ότι έχει εξαντλήσει τις διαθέσιμες χρήσεις, παρακαλώ αγοράστε περισσότερες για να συνεχίσετε"
+  },
+  "message.errorUnknown": {
+    "message": "Συνέβη άγνωστο σφάλμα στον διακομιστή, παρακαλώ δοκιμάστε ξανά αργότερα ή επικοινωνήστε με την υποστήριξη",
+    "description": "Μήνυμα στην ιστοσελίδα που ενημερώνει τον χρήστη ότι συνέβη άγνωστο σφάλμα στον διακομιστή, παρακαλώ δοκιμάστε ξανά αργότερα ή επικοινωνήστε με την υποστήριξη"
+  },
+  "message.errorTimeout": {
+    "message": "Η απάντηση στην ερώτηση υπερέβη το χρόνο, παρακαλώ δοκιμάστε ξανά αργότερα",
+    "description": "Μήνυμα στην ιστοσελίδα που ενημερώνει τον χρήστη ότι η απάντηση στην ερώτηση υπερέβη το χρόνο, παρακαλώ δοκιμάστε ξανά αργότερα"
+  },
+  "message.errorNotApplied": {
+    "message": "Δεν έχετε ζητήσει αυτή την υπηρεσία, παρακαλώ ζητήστε πρώτα πριν συνεχίσετε με την ερώτηση",
+    "description": "Μήνυμα στην ιστοσελίδα που ενημερώνει τον χρήστη ότι δεν έχει ζητήσει αυτή την υπηρεσία, παρακαλώ ζητήστε πρώτα πριν συνεχίσετε με την ερώτηση"
+  },
+  "message.confirmDelete": {
+    "message": "Επιβεβαίωση διαγραφής",
+    "description": "Μήνυμα στην ιστοσελίδα που ενημερώνει τον χρήστη να επιβεβαιώσει τη διαγραφή"
+  },
+  "message.howToUse": {
+    "message": "Η AI μπορεί να κάνει λάθη, παρακαλώ ελέγξτε τις σημαντικές πληροφορίες.",
+    "description": "Μήνυμα στην ιστοσελίδα που ενημερώνει τον χρήστη ότι η AI μπορεί να κάνει λάθη, παρακαλώ ελέγξτε τις σημαντικές πληροφορίες"
+  },
   "title.chat": {
     "message": "AI Συνομιλία",
     "description": "Ο τίτλος της ιστοσελίδας, δηλαδή AI Συνομιλία"
@@ -213,19 +313,19 @@
   },
   "title.limitations": {
     "message": "Περιορισμοί",
-    "description": "Ο τίτλος στην ιστοσελίδα, που υποδεικνύει ότι αυτό το τμήμα περιεχομένου αφορά τους τεχνικούς περιορισμούς της υπηρεσίας"
+    "description": "Ο τίτλος στην ιστοσελίδα, που υποδεικνύει ότι αυτό το τμήμα περιέχει τεχνικούς περιορισμούς της υπηρεσίας"
   },
   "title.complexQuestion": {
     "message": "Απάντηση σε σύνθετες ερωτήσεις",
-    "description": "Ο τίτλος στην ιστοσελίδα, που υποδεικνύει ότι αυτό το τμήμα περιεχομένου αφορά την ικανότητα της υπηρεσίας να απαντά σε σύνθετες ερωτήσεις"
+    "description": "Ο τίτλος στην ιστοσελίδα, που υποδεικνύει ότι αυτό το τμήμα αφορά την ικανότητα της υπηρεσίας να απαντά σε σύνθετες ερωτήσεις"
   },
   "title.professionalQuestion": {
     "message": "Συμβουλές για επαγγελματικά θέματα",
-    "description": "Ο τίτλος στην ιστοσελίδα, που υποδεικνύει ότι αυτό το τμήμα περιεχομένου αφορά την ικανότητα της υπηρεσίας να παρέχει συμβουλές για επαγγελματικά θέματα"
+    "description": "Ο τίτλος στην ιστοσελίδα, που υποδεικνύει ότι αυτό το τμήμα αφορά την ικανότητα της υπηρεσίας να παρέχει συμβουλές για επαγγελματικά θέματα"
   },
   "title.getTips": {
     "message": "Απόκτηση έμπνευσης και ιδεών",
-    "description": "Ο τίτλος στην ιστοσελίδα, που υποδεικνύει ότι αυτό το τμήμα περιεχομένου αφορά την ικανότητα της υπηρεσίας να αποκτά έμπνευση και ιδέες"
+    "description": "Ο τίτλος στην ιστοσελίδα, που υποδεικνύει ότι αυτό το τμήμα αφορά την ικανότητα της υπηρεσίας να παρέχει έμπνευση και ιδέες"
   },
   "group.today": {
     "message": "Σήμερα",
@@ -245,66 +345,66 @@
   },
   "modelGroup.gemini": {
     "message": "Gemini",
-    "description": "The name of the service model, i.e., Gemini"
+    "description": "Το όνομα του μοντέλου υπηρεσίας, δηλαδή Gemini"
   },
   "modelGroup.geminiDescription": {
-    "message": "AI model developed by Google",
-    "description": "Description of the Gemini model"
+    "message": "Μοντέλο AI που αναπτύχθηκε από την Google",
+    "description": "Περιγραφή του μοντέλου Gemini"
   },
   "model.gemini30Pro": {
     "message": "gemini-3.0-pro",
-    "description": "The name of the service model"
+    "description": "Το όνομα του μοντέλου υπηρεσίας"
   },
   "model.gemini30ProDescription": {
-    "message": "Suitable for advanced reasoning and multimodal tasks",
-    "description": "Description of the Gemini 3.0 Pro model"
+    "message": "Κατάλληλο για προχωρημένη λογική και πολυδιάστατες εργασίες",
+    "description": "Περιγραφή του μοντέλου Gemini 3.0 Pro"
   },
   "model.gemini25Pro": {
     "message": "gemini-2.5-pro",
-    "description": "The name of the service model"
+    "description": "Το όνομα του μοντέλου υπηρεσίας"
   },
   "model.gemini25ProDescription": {
-    "message": "Great all-round model",
-    "description": "Description of the Gemini 2.5 Pro model"
+    "message": "Εξαιρετικό γενικό μοντέλο",
+    "description": "Περιγραφή του μοντέλου Gemini 2.5 Pro"
   },
   "model.gemini25Flash": {
     "message": "gemini-2.5-flash",
-    "description": "The name of the service model"
+    "description": "Το όνομα του μοντέλου υπηρεσίας"
   },
   "model.gemini25FlashDescription": {
-    "message": "Fast and lightweight Gemini model",
-    "description": "Description of the Gemini 2.5 Flash model"
+    "message": "Γρήγορο και ελαφρύ μοντέλο Gemini",
+    "description": "Περιγραφή του μοντέλου Gemini 2.5 Flash"
   },
   "modelGroup.claude": {
     "message": "Claude",
-    "description": "The name of the service model, i.e., Claude"
+    "description": "Το όνομα του μοντέλου υπηρεσίας, δηλαδή Claude"
   },
   "modelGroup.claudeDescription": {
-    "message": "AI model developed by Anthropic",
-    "description": "Description of the Claude model"
+    "message": "Μοντέλο AI που αναπτύχθηκε από την Anthropic",
+    "description": "Περιγραφή του μοντέλου Claude"
   },
   "model.claudeOpus4": {
     "message": "claude-opus-4",
-    "description": "The name of the service model"
+    "description": "Το όνομα του μοντέλου υπηρεσίας"
   },
   "model.claudeOpus4Description": {
-    "message": "Top-tier reasoning and complex tasks",
-    "description": "Description of the Claude Opus 4 model"
+    "message": "Κορυφαία λογική και σύνθετες εργασίες",
+    "description": "Περιγραφή του μοντέλου Claude Opus 4"
   },
   "model.claudeSonnet4": {
     "message": "claude-sonnet-4",
-    "description": "The name of the service model"
+    "description": "Το όνομα του μοντέλου υπηρεσίας"
   },
   "model.claudeSonnet4Description": {
-    "message": "Balanced performance and efficiency",
-    "description": "Description of the Claude Sonnet 4 model"
+    "message": "Ισορροπημένη απόδοση και αποδοτικότητα",
+    "description": "Περιγραφή του μοντέλου Claude Sonnet 4"
   },
   "model.claude37Sonnet": {
     "message": "claude-3-7-sonnet",
-    "description": "The name of the service model"
+    "description": "Το όνομα του μοντέλου υπηρεσίας"
   },
   "model.claude37SonnetDescription": {
-    "message": "Fast iterative Claude Sonnet 3.7",
-    "description": "Description of the Claude 3.7 Sonnet model"
+    "message": "Γρήγορη επαναληπτική διαδικασία Claude Sonnet 3.7",
+    "description": "Περιγραφή του μοντέλου Claude 3.7 Sonnet"
   }
 }

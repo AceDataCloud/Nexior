@@ -9,11 +9,11 @@
   },
   "name.generate": {
     "message": "Kreiraj sliku",
-    "description": "Tip operacije: kreiranje slike"
+    "description": "Tip operacije: kreiraj sliku"
   },
   "name.edits": {
     "message": "Uredi sliku",
-    "description": "Tip operacije: uređivanje slike"
+    "description": "Tip operacije: uredi sliku"
   },
   "name.imageUrls": {
     "message": "Referentne slike",
@@ -37,11 +37,11 @@
   },
   "name.prompt": {
     "message": "Uputstvo za sliku",
-    "description": "Reči za generisanje/uređivanje"
+    "description": "Uputstvo za generisanje/uređivanje"
   },
   "name.nanobananaBot": {
     "message": "Nano Banana Bot",
-    "description": "Ime generatora slika Nano Banana"
+    "description": "Ime generatore slika Nano Banana"
   },
   "name.aspectRatio": {
     "message": "Odnos širine i visine",
@@ -52,23 +52,27 @@
     "description": "Rezolucija generisane slike"
   },
   "description.resolutionProOnly": {
-    "message": "Samo model nano-banana-pro podržava izbor rezolucije.",
-    "description": "Podešavanje rezolucije važi samo za pro model"
+    "message": "Samo nano-banana-pro podržava podešavanje rezolucije.",
+    "description": "Opcije rezolucije važe samo za pro modele"
   },
   "description.prompt": {
-    "message": "Reči za generisanje ili uređivanje slike",
-    "description": "Opis reči za uputstvo"
+    "message": "Uputstvo za generisanje ili uređivanje slike",
+    "description": "Opis uputstva"
+  },
+  "description.action": {
+    "message": "Akcija za generisanje slike. Ako je `generate`, slika će biti generisana na osnovu uputstva; ako je `edit`, slika će biti uređena na osnovu uputstva i učitane slike.",
+    "description": "Objašnjenje parametra akcije"
   },
   "description.model": {
     "message": "Model koji se koristi za generisanje slika. Podrazumevano je nano-banana. nano-banana-pro je alias za gemini-3-pro-image, a nano-banana je alias za gemini-2.5-flash-image.",
-    "description": "Opis parametra model"
+    "description": "Objašnjenje parametra modela"
   },
   "description.imageUrls": {
-    "message": "U zadatku za uređivanje slika potrebno je otpremiti 1-5 slika.",
+    "message": "U zadatku za uređivanje slike potrebno je učitati 1-5 slika.",
     "description": "Objašnjenje parametra image_urls"
   },
   "description.aspectRatio": {
-    "message": "Odnos širine i visine generisane slike. Podržane vrednosti su `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Podrazumevana vrednost je `1:1`. Važi samo kada je `action` `generate`; ako je `action` `edit`, koristi se odnos prve slike iz `image_urls`.",
+    "message": "Odnos širine i visine generisane slike. Podržane vrednosti su `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Podrazumevana vrednost je `1:1`. Važi samo kada je `action` `generate`; ako je `action` `edit`, koristiće se odnos prve slike iz `image_urls`.",
     "description": "Objašnjenje parametra aspect_ratio"
   },
   "status.pending": {
@@ -80,7 +84,7 @@
     "description": "Placeholder za izbor"
   },
   "placeholder.prompt": {
-    "message": "Unesite reči za uputstvo, na primer: bela sijamska mačka",
+    "message": "Unesite uputstvo, na primer: bela sijamska mačka",
     "description": "Placeholder za uputstvo"
   },
   "button.generate": {
@@ -88,15 +92,15 @@
     "description": "Dugme za generisanje"
   },
   "button.uploadImageUrls": {
-    "message": "Otpremi slike",
-    "description": "Dugme za otpremanje referentnih slika"
+    "message": "Učitaj slike",
+    "description": "Dugme za učitavanje referentnih slika"
   },
   "message.startingTask": {
     "message": "Pokreće se zadatak...",
     "description": "Poruka za početak zadatka"
   },
   "message.startTaskSuccess": {
-    "message": "Zadatak za generisanje uspešno pokrenut",
+    "message": "Uspešno pokrenut zadatak za generisanje",
     "description": "Zadatak je uspešno kreiran"
   },
   "message.startTaskFailed": {
@@ -108,23 +112,23 @@
     "description": "Poruka o potrošenim bodovima"
   },
   "message.uploadImageExceed": {
-    "message": "Maksimalno možete otpremiti 5 slika",
-    "description": "Broj slika premašuje ograničenje"
+    "message": "Maksimalno možete učitati 5 slika",
+    "description": "Prekoračenje broja slika"
   },
   "message.uploadImageError": {
-    "message": "Otpremanje slike nije uspelo, molimo pokušajte ponovo kasnije",
-    "description": "Neuspeh pri otpremanju"
+    "message": "Učitavanje slike nije uspelo, molimo pokušajte ponovo kasnije",
+    "description": "Greška pri učitavanju"
   },
   "name.model": {
     "message": "Model",
-    "description": "Nano Banana model selector label"
+    "description": "Oznaka za izbor modela Nano Banana"
   },
   "model.nanoBanana": {
     "message": "nano-banana",
-    "description": "Nano Banana base model option"
+    "description": "Opcija osnovnog modela Nano Banana"
   },
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
-    "description": "Nano Banana pro model option"
+    "description": "Opcija profesionalnog modela Nano Banana"
   }
 }

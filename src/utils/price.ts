@@ -57,7 +57,8 @@ export const getConsumption = (payload: any, rules: any): number | undefined => 
   for (const rule of rules) {
     const conditions = rule.conditions;
     if (jsonLogic.apply(conditions, payload)) {
-      return jsonLogic.apply(rule.consumption) as number;
+      // Evaluate the consumption rule with payload so dynamic expressions can use request fields.
+      return jsonLogic.apply(rule.consumption, payload) as number;
     }
   }
   return 0;

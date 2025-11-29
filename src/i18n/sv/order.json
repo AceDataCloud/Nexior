@@ -9,11 +9,11 @@
   },
   "button.checkDetail": {
     "message": "Visa detaljer",
-    "description": "Knapptext för att se beställningsdetaljer."
+    "description": "Knapptext för att visa beställningsdetaljer."
   },
   "button.query": {
     "message": "Fråga",
-    "description": "Knapptext för att fråga om beställningen."
+    "description": "Knapptext för att fråga om en beställning."
   },
   "button.finish": {
     "message": "Avsluta manuellt",
@@ -25,15 +25,15 @@
   },
   "field.id": {
     "message": "Beställningsnummer",
-    "description": "Numret för beställningen."
+    "description": "Numret på beställningen."
   },
   "field.amount": {
     "message": "Belopp",
-    "description": "Beloppet för beställningens poäng."
+    "description": "Beloppet av poängen för beställningen."
   },
   "field.price": {
     "message": "Belopp",
-    "description": "Beloppet för beställningens poäng."
+    "description": "Beloppet av poängen för beställningen."
   },
   "field.description": {
     "message": "Beställningsbeskrivning",
@@ -44,11 +44,11 @@
     "description": "Statusen för beställningen."
   },
   "field.createdAt": {
-    "message": "Skapad tid",
-    "description": "Tidpunkten då beställningen skapades."
+    "message": "Skapat den",
+    "description": "Skapelsedatumet för beställningen."
   },
   "field.service": {
-    "message": "Tjänstens namn",
+    "message": "Tjänstnamn",
     "description": "Namnet på tjänsten."
   },
   "field.payWay": {
@@ -57,86 +57,250 @@
   },
   "field.api": {
     "message": "API",
-    "description": "API är en typ av onlinetjänst."
+    "description": "API är en typ av online-tjänst."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Proxy är en typ av onlinetjänst för att överföra data via HTTP."
+    "description": "Proxy är en typ av online-tjänst för att överföra data via HTTP."
   },
   "message.paidSuccessfully": {
-    "message": "Betalning genomförd",
-    "description": "Meddelandet vid framgångsrik betalning."
+    "message": "Betalning lyckades",
+    "description": "Meddelande om att betalningen har lyckats."
   },
   "message.orderExpired": {
     "message": "Beställningen har gått ut, vänligen skapa en ny beställning för att betala.",
-    "description": "Meddelandet när en beställning har gått ut."
+    "description": "Meddelande om att beställningen har gått ut."
   },
   "message.createFailed": {
     "message": "Skapande misslyckades",
-    "description": "Meddelandet vid misslyckat skapande."
+    "description": "Meddelande om att skapandet har misslyckats."
   },
   "message.wechatPayHelp": {
-    "message": "Öppna WeChat på din telefon och skanna QR-koden för att slutföra betalningen.",
-    "description": "Meddelandet för hjälp med WeChat-betalning."
+    "message": "Öppna WeChat på din telefon och skanna för att slutföra betalningen",
+    "description": "Meddelande om hjälp med WeChat-betalning."
   },
   "message.free": {
     "message": "Gratis",
-    "description": "Meddelandet för gratis beställningar."
+    "description": "Meddelande om gratis beställning."
   },
   "message.buyInExternalUrl": {
-    "message": "Vänligen slutför betalningen via den externa länken.",
-    "description": "Meddelandet för betalning via extern länk."
+    "message": "Vänligen slutför betalningen via den externa länken",
+    "description": "Meddelande om betalning via extern länk."
   },
   "message.updateFailed": {
     "message": "Uppdatering misslyckades",
-    "description": "Meddelandet vid misslyckad uppdatering."
+    "description": "Meddelande om att uppdateringen har misslyckats."
   },
   "message.updateSuccessfully": {
-    "message": "Uppdatering genomförd",
-    "description": "Meddelandet vid framgångsrik uppdatering."
+    "message": "Uppdatering lyckades",
+    "description": "Meddelande om att uppdateringen har lyckats."
   },
   "message.confirmFinish": {
-    "message": "Denna åtgärd kommer att ställa in beställningen på betalt och slutföra bearbetningen, vilket inte kan återkallas. Var vänlig bekräfta att kunden har slutfört betalningen, vill du fortsätta?",
-    "description": "Meddelandet för att bekräfta avslutande."
+    "message": "Denna åtgärd kommer att manuellt ställa in beställningen som betald och slutföra distributionshanteringen, vilket inte kan ångras. Vänligen bekräfta att kunden har slutfört betalningen, vill du fortsätta?",
+    "description": "Meddelande för att bekräfta avslutning."
   },
   "state.pending": {
     "message": "Väntar på betalning",
-    "description": "Status för beställningen som visar att denna beställning fortfarande väntar på att användaren ska betala."
+    "description": "Status för beställningen, vilket indikerar att denna beställning fortfarande väntar på användarens betalning."
   },
   "state.paid": {
     "message": "Betald",
-    "description": "Status för beställningen som visar att denna beställning redan har betalats."
+    "description": "Status för beställningen, vilket indikerar att denna beställning har betalats."
   },
   "state.finished": {
     "message": "Avslutad",
-    "description": "Status för beställningen som visar att denna beställning redan har avslutats."
+    "description": "Status för beställningen, vilket indikerar att denna beställning har avslutats."
   },
   "state.expired": {
     "message": "Betalningstid har gått ut",
-    "description": "Status för beställningen som visar att denna beställning har gått ut."
+    "description": "Status för beställningen, vilket indikerar att denna beställning har gått ut."
   },
   "state.failed": {
     "message": "Betalning misslyckades",
-    "description": "Status för beställningen som visar att betalningen för denna beställning misslyckades."
+    "description": "Status för beställningen, vilket indikerar att denna beställning har misslyckats med betalningen."
   },
   "title.info": {
     "message": "Beställningsinformation",
-    "description": "Används som webbsidetitel, som visar beställningsinformation."
+    "description": "Titel som används som webbplatsens titel, vilket indikerar beställningsinformation."
   },
   "title.wechatPay": {
     "message": "WeChat Betalning",
-    "description": "Används som webbsidetitel, som visar WeChat betalning."
+    "description": "Titel som används som webbplatsens titel, vilket indikerar WeChat-betalning."
   },
   "title.aliPay": {
     "message": "Alipay",
-    "description": "Används som webbsidetitel, som visar Alipay betalning. Alipay är en typ av onlinebetalning."
+    "description": "Titel som används som webbplatsens titel, vilket indikerar Alipay-betalning, Alipay-betalning är en typ av online-betalning."
   },
   "title.stripe": {
     "message": "Stripe",
-    "description": "Används som webbsidetitel, som visar Stripe betalning. Stripe är en typ av onlinebetalning."
+    "description": "Titel som används som webbplatsens titel, vilket indikerar Stripe-betalning, Stripe-betalning är en typ av online-betalning."
   },
   "title.manageOrder": {
     "message": "Hantera beställningar",
-    "description": "Används som webbsidetitel, som visar hantering av beställningar."
+    "description": "Titel som används som webbplatsens titel, vilket indikerar hantering av beställningar."
+  },
+  "title.x402": {
+    "message": "Kryptovaluta",
+    "description": "Titel för kryptovaluta betalning baserat på X402-lösningen."
+  },
+  "message.discountTag": {
+    "message": "{percent}% rabatt",
+    "description": "Text för etikett som visar den tillämpade rabattprocenten."
+  },
+  "message.discountHint": {
+    "message": "Rabatten på {percent}% har automatiskt tillämpats för medlemmar.",
+    "description": "Meddelande som informerar användaren om den medlemsrabatt som erhållits."
+  },
+  "message.x402DiscountApplied": {
+    "message": "Spara ytterligare {percent}% med X402-betalning.",
+    "description": "Förklaring av den extra rabatten som erbjuds vid val av X402-betalning."
+  },
+  "message.x402DiscountTag": {
+    "message": "{percent}% rabatt",
+    "description": "Rabattetikett för X402-betalning."
+  },
+  "message.x402DiscountHint": {
+    "message": "Välj X402-betalning för att få ytterligare {percent}% rabatt.",
+    "description": "Uppmaning till användaren att välja X402-betalning."
+  },
+  "message.x402IntroShort": {
+    "message": "Kan direkt kopplas till kryptovaluta plånbok för betalning, eller växla till programmeringsläge för att få integrationsparametrar.",
+    "description": "Kort introduktion till X402-betalningsdialogen."
+  },
+  "message.x402TabWallet": {
+    "message": "Plånbok betalning",
+    "description": "Plånbok betalning Tab titel."
+  },
+  "message.x402TabApi": {
+    "message": "Programmeringsåtkomst",
+    "description": "Programmeringsåtkomst Tab titel."
+  },
+  "message.x402WalletTitle": {
+    "message": "Anslut plånbok och betala",
+    "description": "Rubrik för att vägleda användaren att ansluta plånboken."
+  },
+  "message.x402WalletConnected": {
+    "message": "Ansluten",
+    "description": "Meddelande när plånboken är ansluten."
+  },
+  "message.x402ConnectWallet": {
+    "message": "Anslut plånbok",
+    "description": "Text på knappen för att ansluta plånboken."
+  },
+  "message.x402NoWalletDesc": {
+    "message": "Ingen plånbok upptäcktes. Vänligen installera MetaMask/Phantom, eller öppna denna sida i plånbokens inbyggda webbläsare.",
+    "description": "Beskrivning när ingen EVM-plånbok upptäcktes."
+  },
+  "message.x402SwitchNetwork": {
+    "message": "Vänligen byt plånboksnätverk till {network}",
+    "description": "Uppmaning till användaren att byta plånboksnätverk."
+  },
+  "message.x402NeedConnectAccount": {
+    "message": "Vänligen anslut minst en kompatibel EVM-plånbok innan du betalar.",
+    "description": "Påminnelse till användaren att först ansluta plånboks kontot."
+  },
+  "message.x402StepsTitle": {
+    "message": "Betalningssteg",
+    "description": "Titel för listan över betalningssteg."
+  },
+  "message.x402Step1": {
+    "message": "Anslut plånbok (om den inte är installerad, vänligen installera och uppdatera sidan).",
+    "description": "Betalningssteg 1."
+  },
+  "message.x402Step2": {
+    "message": "Bekräfta att plånboksnätverket är {network}.",
+    "description": "Betalningssteg 2."
+  },
+  "message.x402Step3": {
+    "message": "Klicka på betala och slutför auktoriseringssignaturen i plånboken.",
+    "description": "Betalningssteg 3."
+  },
+  "message.x402Step4": {
+    "message": "Efter signering kommer vi automatiskt att slutföra och uppdatera orderstatusen.",
+    "description": "Betalningssteg 4."
+  },
+  "message.x402IntegrationResourceLabel": {
+    "message": "Betalningsgränssnittadress",
+    "description": "Etikett för betalningsgränssnittadress."
+  },
+  "message.x402IntegrationPayToLabel": {
+    "message": "Mottagaradress",
+    "description": "Etikett för blockchain mottagaradress."
+  },
+  "message.x402IntegrationNetworkLabel": {
+    "message": "Nätverk",
+    "description": "Etikett för blockchain nätverk."
+  },
+  "message.x402IntegrationAssetLabel": {
+    "message": "Tillgång",
+    "description": "Etikett för avräknings tillgång."
+  },
+  "message.x402IntegrationFallback": {
+    "message": "Kunde inte hämta sessionsparametrar, vänligen se dokumentationen eller kontakta supporten för nödvändiga parametrar.",
+    "description": "Fallback meddelande när integrationsparametrar saknas."
+  },
+  "message.x402IntegrationDocsCta": {
+    "message": "Öppna X402-guiden",
+    "description": "Text på knappen för att öppna X402 integrationsguiden."
+  },
+  "message.x402InstallGuideTitle": {
+    "message": "Installera plånboksplugin",
+    "description": "Titel för dialogrutan för plånboksinstallationsguide."
+  },
+  "message.x402InstallGuideDesc": {
+    "message": "Följ stegen för att installera {wallet} plugin och återansluta.",
+    "description": "Beskrivning för plånboksinstallationsguide."
+  },
+  "message.x402InstallGuideStep1": {
+    "message": "Ladda ner och installera {wallet} webbläsartillägg (rekommenderas Chrome/Brave).",
+    "description": "Installationssteg 1 för plånbok."
+  },
+  "message.x402InstallGuideStep2": {
+    "message": "Öppna tillägget, logga in/olåsa och se till att det är aktiverat.",
+    "description": "Installationssteg 2 för plånbok."
+  },
+  "message.x402InstallGuideStep3": {
+    "message": "Återvänd till denna sida, klicka på 'Jag har installerat' och försök att ansluta igen.",
+    "description": "Installationssteg 3 för plånbok."
+  },
+  "message.x402InstallGuideConfirm": {
+    "message": "Jag har installerat",
+    "description": "Bekräftelseknapp efter installation."
+  },
+  "message.x402NetworkGuideTitle": {
+    "message": "Justera nätverksinställningar",
+    "description": "Titel för nätverksguide dialogruta."
+  },
+  "message.x402NetworkGuideDesc": {
+    "message": "Vänligen byt plånboksnätverk till {network}, uppdatera och försök igen.",
+    "description": "Beskrivning för att vägleda användaren att byta nätverk."
+  },
+  "message.x402NetworkGuideStep1": {
+    "message": "Öppna plånboksplugininställningar och kontrollera aktivt nätverk.",
+    "description": "Nätverksjusteringssteg 1."
+  },
+  "message.x402NetworkGuideStep2": {
+    "message": "Aktivera {network} (eller önskat nätverk) i listan.",
+    "description": "Nätverksjusteringssteg 2."
+  },
+  "message.x402NetworkGuideStep3": {
+    "message": "Återvänd till denna sida och klicka på 'Inställningarna är klara' innan du betalar.",
+    "description": "Nätverksjusteringssteg 3."
+  },
+  "message.x402NetworkGuideConfirm": {
+    "message": "Inställningarna är klara",
+    "description": "Bekräftelseknapp efter nätverksinställningar."
+  },
+  "message.x402NetworkSwitchFailed": {
+    "message": "Den aktuella plånboken stöder inte automatisk nätverksbyte, vänligen byt manuellt och försök igen.",
+    "description": "Meddelande vid misslyckande av automatisk nätverksbyte."
+  },
+  "message.x402PaymentFailed": {
+    "message": "X402 plånbok betalning misslyckades, vänligen försök igen senare eller kontakta support.",
+    "description": "Allmänt felmeddelande vid X402 betalningsmisslyckande."
+  },
+  "message.x402WalletPayCta": {
+    "message": "Betala med plånbok",
+    "description": "Text på knappen för att initiera X402 plånbok betalning."
   }
 }

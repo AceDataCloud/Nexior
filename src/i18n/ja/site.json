@@ -164,7 +164,7 @@
     "description": "編集ボックスに表示されるタイトル"
   },
   "title.distributionConfig": {
-    "message": "流通設定",
+    "message": "配信設定",
     "description": "編集ボックスに表示されるタイトル"
   },
   "title.editDistributionDefaultInviterId": {
@@ -204,16 +204,16 @@
     "description": "編集ボックスに表示されるタイトル"
   },
   "placeholder.editDistributionDefaultInviterId": {
-    "message": "デフォルトの招待者IDを入力してください",
+    "message": "デフォルトの招待者 ID を入力してください",
     "description": "編集ボックスに表示されるタイトル"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "強制招待者IDを入力してください",
+    "message": "強制招待者 ID を入力してください",
     "description": "編集ボックスに表示されるタイトル"
   },
   "message.uploadImageExceed": {
     "message": "アップロード画像が制限を超えました",
-    "description": "アップロード画像が制限を超えた場合のメッセージ"
+    "description": "アップロード画像が制限を超えた際のメッセージ"
   },
   "message.uploadImageError": {
     "message": "画像のアップロードエラー",
@@ -237,15 +237,15 @@
   },
   "message.atLeastOneAdmin": {
     "message": "少なくとも1人の管理者を保持してください",
-    "description": "少なくとも1人の管理者を保持する必要があるというメッセージ"
+    "description": "少なくとも1人の管理者を保持する際のメッセージ"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "デフォルトの招待者のユーザーID。分配リンクがinviter_idパラメータを持たない場合、このユーザーIDが招待者として使用されます。",
-    "description": "デフォルトの招待者IDに関するヒント"
+    "message": "デフォルトの招待者のユーザー ID。分配リンクが inviter_id パラメータを持たない場合、このユーザー ID が招待者として使用されます。",
+    "description": "デフォルトの招待者 ID に関するヒント"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "強制招待者のユーザーID。このIDが設定されている場合、分配リンクがinviter_idパラメータを持っていても、このユーザーIDが招待者として強制的に使用されます。",
-    "description": "強制招待者IDに関するヒント"
+    "message": "強制招待者のユーザー ID。この ID が設定されている場合、分配リンクが inviter_id パラメータを持っていても、このユーザー ID が招待者として強制的に使用されます。",
+    "description": "強制招待者 ID に関するヒント"
   },
   "message.originTip": {
     "message": "サイトのドメイン。サイトの設定はドメインにバインドされており、サイトのドメインは変更できません。",
@@ -256,7 +256,7 @@
     "description": "サイトのタイトルに関するヒント"
   },
   "message.descriptionTip": {
-    "message": "サイトの説明。サイトのメタ情報にあり、サイトのSEO最適化に使用されます。",
+    "message": "サイトの説明。サイトのメタ情報にあり、サイトの SEO 最適化に使用されます。",
     "description": "サイトの説明に関するヒント"
   },
   "message.logoTip": {
@@ -268,19 +268,19 @@
     "description": "サイトのファビコンに関するヒント"
   },
   "message.adminsTip": {
-    "message": "サイトの管理者ID。デフォルトでは、最初にこのサイトを作成したユーザーが管理者になります。サイトの管理者のみがサイトを管理できます。",
+    "message": "サイトの管理者 ID。デフォルトでは、最初にこのサイトを作成したユーザーが管理者になります。サイトの管理者のみがサイトを管理できます。",
     "description": "サイトの管理者に関するヒント"
   },
   "message.adminsTip2": {
-    "message": "ここで管理者IDを追加または削除できます。ユーザーIDは https://auth.acedata.cloud で確認できます。",
+    "message": "ここで管理者 ID を追加または削除できます。ユーザー ID は https://auth.acedata.cloud で確認できます。",
     "description": "サイトの管理者に関するヒント"
   },
   "message.keywordsTip": {
-    "message": "サイトのキーワード。サイトのメタ情報にあり、サイトのSEO最適化に使用されます。",
+    "message": "サイトのキーワード。サイトのメタ情報にあり、サイトの SEO 最適化に使用されます。",
     "description": "サイトのキーワードに関するヒント"
   },
   "message.keywordsTip2": {
-    "message": "ここでサイトのキーワードを追加または削除できます。キーワードが正確であるほど、SEO最適化に有利です。",
+    "message": "ここでサイトのキーワードを追加または削除できます。キーワードが正確であるほど、SEO 最適化に有利です。",
     "description": "サイトのキーワードに関するヒント"
   },
   "message.featuresChat": {
@@ -288,60 +288,60 @@
     "description": "チャット機能の説明"
   },
   "message.featuresGrok": {
-    "message": "Grok機能モジュールをオンまたはオフにします。",
-    "description": "Grok機能の説明"
+    "message": "Grok 機能モジュールをオンまたはオフにします。",
+    "description": "Grok 機能の説明"
   },
   "message.featuresDeepseek": {
-    "message": "Deepseek機能モジュールをオンまたはオフにします。",
-    "description": "Deepseek機能の説明"
+    "message": "Deepseek 機能モジュールをオンまたはオフにします。",
+    "description": "Deepseek 機能の説明"
   },
   "message.featuresChatgpt": {
-    "message": "ChatGPT機能モジュールをオンまたはオフにします。",
-    "description": "ChatGPT機能の説明"
+    "message": "ChatGPT 機能モジュールをオンまたはオフにします。",
+    "description": "ChatGPT 機能の説明"
   },
   "message.featuresMidjourney": {
-    "message": "Midjourney機能モジュールをオンまたはオフにします。",
-    "description": "Midjourney機能の説明"
+    "message": "Midjourney 機能モジュールをオンまたはオフにします。",
+    "description": "Midjourney 機能の説明"
   },
   "message.featuresChatdoc": {
-    "message": "Chatdoc機能モジュールをオンまたはオフにします。",
-    "description": "Chatdoc機能の説明"
+    "message": "Chatdoc 機能モジュールをオンまたはオフにします。",
+    "description": "Chatdoc 機能の説明"
   },
   "message.featuresQrart": {
-    "message": "Qrart機能モジュールをオンまたはオフにします。",
-    "description": "Qrart機能の説明"
+    "message": "Qrart 機能モジュールをオンまたはオフにします。",
+    "description": "Qrart 機能の説明"
   },
   "message.featuresVeo": {
-    "message": "Veo機能モジュールをオンまたはオフにします。",
-    "description": "Veo機能の説明"
+    "message": "Veo 機能モジュールをオンまたはオフにします。",
+    "description": "Veo 機能の説明"
   },
   "message.featuresSora": {
-    "message": "Sora機能モジュールをオンまたはオフにします。",
-    "description": "Sora機能の説明"
+    "message": "Sora 機能モジュールをオンまたはオフにします。",
+    "description": "Sora 機能の説明"
   },
   "message.featuresSuno": {
-    "message": "Suno機能モジュールをオンまたはオフにします。",
-    "description": "Suno機能の説明"
+    "message": "Suno 機能モジュールをオンまたはオフにします。",
+    "description": "Suno 機能の説明"
   },
   "message.featuresPixverse": {
-    "message": "Pixverse機能モジュールをオンまたはオフにします。",
-    "description": "Pixverse機能の説明"
+    "message": "Pixverse 機能モジュールをオンまたはオフにします。",
+    "description": "Pixverse 機能の説明"
   },
   "message.featuresFlux": {
-    "message": "FLux機能モジュールをオンまたはオフにします。",
-    "description": "FLux機能の説明"
+    "message": "FLux 機能モジュールをオンまたはオフにします。",
+    "description": "FLux 機能の説明"
   },
   "message.featuresNanobanana": {
-    "message": "Nano Banana機能モジュールをオンまたはオフにします。",
-    "description": "Nano Banana機能の説明"
+    "message": "Nano Banana 機能モジュールをオンまたはオフにします。",
+    "description": "Nano Banana 機能の説明"
   },
   "message.featuresLuma": {
-    "message": "Luma機能モジュールをオンまたはオフにします。",
-    "description": "Luma機能の説明"
+    "message": "Luma 機能モジュールをオンまたはオフにします。",
+    "description": "Luma 機能の説明"
   },
   "message.featuresPika": {
-    "message": "Pika機能モジュールをオンまたはオフにします。",
-    "description": "Pika機能の説明"
+    "message": "Pika 機能モジュールをオンまたはオフにします。",
+    "description": "Pika 機能の説明"
   },
   "message.featuresKling": {
     "message": "Kling 機能モジュールをオンまたはオフにします。",
@@ -369,26 +369,26 @@
   },
   "button.enabled": {
     "message": "有効",
-    "description": "スイッチのテキスト、有効になっていることを示します"
+    "description": "スイッチのテキスト、すでに有効であることを示します"
   },
   "button.disabled": {
     "message": "無効",
-    "description": "スイッチのテキスト、無効になっていることを示します"
+    "description": "スイッチのテキスト、すでに無効であることを示します"
   },
   "field.featuresGemini": {
     "message": "Gemini",
-    "description": "Displayed as the title in the editing box"
+    "description": "編集ボックスのタイトルとして表示されます"
   },
   "message.featuresGemini": {
-    "message": "Enable or disable the Gemini feature module.",
-    "description": "Description of the Gemini feature"
+    "message": "Gemini 機能モジュールをオンまたはオフにします。",
+    "description": "Gemini 機能の説明"
   },
   "field.featuresClaude": {
     "message": "Claude",
-    "description": "Displayed as the title in the editing box"
+    "description": "編集ボックスのタイトルとして表示されます"
   },
   "message.featuresClaude": {
-    "message": "Enable or disable the Claude feature module.",
-    "description": "Description of the Claude feature"
+    "message": "Claude 機能モジュールをオンまたはオフにします。",
+    "description": "Claude 機能の説明"
   }
 }

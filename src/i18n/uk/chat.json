@@ -116,7 +116,7 @@
     "description": "Назва моделі сервісу, тобто DeepSeek міркування"
   },
   "model.deepseekReasonerDescription": {
-    "message": "Підходить для міркувань та глибокого розуміння питань",
+    "message": "Підходить для міркувань та глибоких роздумів",
     "description": "Опис моделі DeepSeek міркування"
   },
   "model.grok4": {
@@ -140,7 +140,7 @@
     "description": "Назва моделі сервісу, тобто Grok3 міркування"
   },
   "model.grok3ReasonerDescription": {
-    "message": "Підходить для міркувань та глибокого розуміння питань",
+    "message": "Підходить для міркувань та глибоких роздумів",
     "description": "Опис моделі Grok3 міркування"
   },
   "model.grok3Deepsearch": {
@@ -148,7 +148,7 @@
     "description": "Назва моделі сервісу, тобто Grok3 глибоке дослідження"
   },
   "model.grok3DeepsearchDescription": {
-    "message": "Підходить для глибоких досліджень та складних питань",
+    "message": "Підходить для глибоких досліджень та складних завдань",
     "description": "Опис моделі Grok3 глибоке дослідження"
   },
   "model.o1": {
@@ -208,8 +208,8 @@
     "description": "Повідомлення на веб-сторінці, яке повідомляє користувачу, що можна завантажити не більше 1 файлу"
   },
   "message.uploadReferencesError": {
-    "message": "Не вдалося завантажити файл, будь ласка, спробуйте ще раз пізніше",
-    "description": "Повідомлення на веб-сторінці, яке повідомляє користувачу, що не вдалося завантажити файл, будь ласка, спробуйте ще раз пізніше"
+    "message": "Завантаження файлу не вдалося, будь ласка, спробуйте ще раз пізніше",
+    "description": "Повідомлення на веб-сторінці, яке повідомляє користувачу, що завантаження файлу не вдалося, будь ласка, спробуйте ще раз пізніше"
   },
   "message.notApplied": {
     "message": "Ви ще не подали заявку на цю послугу, будь ласка, спочатку подайте заявку",
@@ -217,7 +217,7 @@
   },
   "message.tryForFree": {
     "message": "Спробуйте безкоштовно",
-    "description": "Повідомлення на веб-сторінці, яке повідомляє користувачу про безкоштовну пробу"
+    "description": "Повідомлення на веб-сторінці, яке повідомляє користувачу про безкоштовну пробну версію"
   },
   "message.question1": {
     "message": "Створити навчальний план",
@@ -260,8 +260,8 @@
     "description": "Повідомлення на веб-сторінці, яке повідомляє користувачу, що запит не відповідає стандартам, будь ласка, переформулюйте питання"
   },
   "message.errorNoConversation": {
-    "message": "Розмова не існує або закінчилася, будь ласка, почніть нову розмову",
-    "description": "Повідомлення на веб-сторінці, яке повідомляє користувачу, що розмова не існує або закінчилася, будь ласка, почніть нову розмову"
+    "message": "Розмова не існує або термін її дії закінчився, будь ласка, почніть нову розмову",
+    "description": "Повідомлення на веб-сторінці, яке повідомляє користувачу, що розмова не існує або термін її дії закінчився, будь ласка, почніть нову розмову"
   },
   "message.errorContentTooLarge": {
     "message": "Зміст питання занадто великий, будь ласка, скоротіть його і спробуйте ще раз",
@@ -317,15 +317,15 @@
   },
   "title.complexQuestion": {
     "message": "Відповіді на складні питання",
-    "description": "Заголовок на веб-сторінці, що вказує, що ця частина містить інформацію про здатність сервісу відповідати на складні питання"
+    "description": "Заголовок на веб-сторінці, що вказує, що ця частина містить можливості сервісу відповідати на складні питання"
   },
   "title.professionalQuestion": {
     "message": "Консультації з професійних питань",
-    "description": "Заголовок на веб-сторінці, що вказує, що ця частина містить інформацію про здатність сервісу консультувати з професійних питань"
+    "description": "Заголовок на веб-сторінці, що вказує, що ця частина містить можливості сервісу консультувати з професійних питань"
   },
   "title.getTips": {
     "message": "Отримати натхнення та ідеї",
-    "description": "Заголовок на веб-сторінці, що вказує, що ця частина містить інформацію про здатність сервісу отримувати натхнення та ідеї"
+    "description": "Заголовок на веб-сторінці, що вказує, що ця частина містить можливості сервісу отримувати натхнення та ідеї"
   },
   "group.today": {
     "message": "Сьогодні",
@@ -345,66 +345,66 @@
   },
   "modelGroup.gemini": {
     "message": "Gemini",
-    "description": "The name of the service model, i.e., Gemini"
+    "description": "Назва моделі сервісу, тобто Gemini"
   },
   "modelGroup.geminiDescription": {
-    "message": "AI model developed by Google",
-    "description": "Description of the Gemini model"
+    "message": "AI модель, розроблена Google",
+    "description": "Опис моделі Gemini"
   },
   "model.gemini30Pro": {
     "message": "gemini-3.0-pro",
-    "description": "The name of the service model"
+    "description": "Назва моделі сервісу"
   },
   "model.gemini30ProDescription": {
-    "message": "Suitable for advanced reasoning and multimodal tasks",
-    "description": "Description of the Gemini 3.0 Pro model"
+    "message": "Підходить для складного міркування та мультимодальних завдань",
+    "description": "Опис моделі Gemini 3.0 Pro"
   },
   "model.gemini25Pro": {
     "message": "gemini-2.5-pro",
-    "description": "The name of the service model"
+    "description": "Назва моделі сервісу"
   },
   "model.gemini25ProDescription": {
-    "message": "Great all-round model",
-    "description": "Description of the Gemini 2.5 Pro model"
+    "message": "Чудова універсальна модель",
+    "description": "Опис моделі Gemini 2.5 Pro"
   },
   "model.gemini25Flash": {
     "message": "gemini-2.5-flash",
-    "description": "The name of the service model"
+    "description": "Назва моделі сервісу"
   },
   "model.gemini25FlashDescription": {
-    "message": "Fast and lightweight Gemini model",
-    "description": "Description of the Gemini 2.5 Flash model"
+    "message": "Швидка та легка модель Gemini",
+    "description": "Опис моделі Gemini 2.5 Flash"
   },
   "modelGroup.claude": {
     "message": "Claude",
-    "description": "The name of the service model, i.e., Claude"
+    "description": "Назва моделі сервісу, тобто Claude"
   },
   "modelGroup.claudeDescription": {
-    "message": "AI model developed by Anthropic",
-    "description": "Description of the Claude model"
+    "message": "AI модель, розроблена Anthropic",
+    "description": "Опис моделі Claude"
   },
   "model.claudeOpus4": {
     "message": "claude-opus-4",
-    "description": "The name of the service model"
+    "description": "Назва моделі сервісу"
   },
   "model.claudeOpus4Description": {
-    "message": "Top-tier reasoning and complex tasks",
-    "description": "Description of the Claude Opus 4 model"
+    "message": "Модель вищого рівня для міркувань та складних завдань",
+    "description": "Опис моделі Claude Opus 4"
   },
   "model.claudeSonnet4": {
     "message": "claude-sonnet-4",
-    "description": "The name of the service model"
+    "description": "Назва моделі сервісу"
   },
   "model.claudeSonnet4Description": {
-    "message": "Balanced performance and efficiency",
-    "description": "Description of the Claude Sonnet 4 model"
+    "message": "Збалансована продуктивність та ефективність",
+    "description": "Опис моделі Claude Sonnet 4"
   },
   "model.claude37Sonnet": {
     "message": "claude-3-7-sonnet",
-    "description": "The name of the service model"
+    "description": "Назва моделі сервісу"
   },
   "model.claude37SonnetDescription": {
-    "message": "Fast iterative Claude Sonnet 3.7",
-    "description": "Description of the Claude 3.7 Sonnet model"
+    "message": "Швидка ітеративна модель Claude Sonnet 3.7",
+    "description": "Опис моделі Claude 3.7 Sonnet"
   }
 }

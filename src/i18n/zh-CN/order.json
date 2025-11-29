@@ -138,5 +138,169 @@
   "title.manageOrder": {
     "message": "管理订单",
     "description": "用作网站标题的标题，表示管理订单。"
+  },
+  "title.x402": {
+    "message": "加密货币",
+    "description": "用于基于 X402 方案的加密支付标题。"
+  },
+  "message.discountTag": {
+    "message": "{percent}% 折扣",
+    "description": "显示已应用折扣百分比的角标文案。"
+  },
+  "message.discountHint": {
+    "message": "已为会员自动应用 {percent}% OFF。",
+    "description": "提示用户获得的会员折扣。"
+  },
+  "message.x402DiscountApplied": {
+    "message": "使用 X402 支付额外节省 {percent}%。",
+    "description": "说明选择 X402 支付带来的额外折扣。"
+  },
+  "message.x402DiscountTag": {
+    "message": "{percent}% OFF",
+    "description": "X402 支付折扣角标。"
+  },
+  "message.x402DiscountHint": {
+    "message": "选择 X402 支付可额外享受 {percent}% OFF。",
+    "description": "鼓励用户选择 X402 支付的提示。"
+  },
+  "message.x402IntroShort": {
+    "message": "可直接连接加密钱包支付，或切换到编程模式获取集成参数。",
+    "description": "X402 支付对话框的简短介绍。"
+  },
+  "message.x402TabWallet": {
+    "message": "钱包支付",
+    "description": "钱包支付 Tab 标题。"
+  },
+  "message.x402TabApi": {
+    "message": "编程接入",
+    "description": "编程接入 Tab 标题。"
+  },
+  "message.x402WalletTitle": {
+    "message": "连接钱包并支付",
+    "description": "引导用户连接钱包的标题。"
+  },
+  "message.x402WalletConnected": {
+    "message": "已连接",
+    "description": "钱包已连接时的标记。"
+  },
+  "message.x402ConnectWallet": {
+    "message": "连接钱包",
+    "description": "连接钱包按钮文案。"
+  },
+  "message.x402NoWalletDesc": {
+    "message": "未检测到钱包。请安装 MetaMask/Phantom，或在钱包内置浏览器中打开本页。",
+    "description": "未检测到 EVM 钱包时的说明。"
+  },
+  "message.x402SwitchNetwork": {
+    "message": "请将钱包网络切换为 {network}",
+    "description": "提示用户切换钱包网络。"
+  },
+  "message.x402NeedConnectAccount": {
+    "message": "请先连接至少一个兼容的 EVM 钱包后再支付。",
+    "description": "提醒用户先连接钱包账户。"
+  },
+  "message.x402StepsTitle": {
+    "message": "支付步骤",
+    "description": "支付步骤列表标题。"
+  },
+  "message.x402Step1": {
+    "message": "连接钱包（若未安装请先安装后刷新页面）。",
+    "description": "钱包支付步骤1。"
+  },
+  "message.x402Step2": {
+    "message": "确认钱包网络为 {network}。",
+    "description": "钱包支付步骤2。"
+  },
+  "message.x402Step3": {
+    "message": "点击支付并在钱包内完成授权签名。",
+    "description": "钱包支付步骤3。"
+  },
+  "message.x402Step4": {
+    "message": "签名后我们会自动结算并更新订单状态。",
+    "description": "钱包支付步骤4。"
+  },
+  "message.x402IntegrationResourceLabel": {
+    "message": "支付接口地址",
+    "description": "支付接口地址标签。"
+  },
+  "message.x402IntegrationPayToLabel": {
+    "message": "收款地址",
+    "description": "区块链收款地址标签。"
+  },
+  "message.x402IntegrationNetworkLabel": {
+    "message": "网络",
+    "description": "区块链网络标签。"
+  },
+  "message.x402IntegrationAssetLabel": {
+    "message": "资产",
+    "description": "结算资产标签。"
+  },
+  "message.x402IntegrationFallback": {
+    "message": "未能获取会话参数，请查看文档或联系支持获取必要参数。",
+    "description": "缺少集成参数时的兜底提示。"
+  },
+  "message.x402IntegrationDocsCta": {
+    "message": "打开 X402 指南",
+    "description": "打开 X402 集成指南的按钮文案。"
+  },
+  "message.x402InstallGuideTitle": {
+    "message": "安装钱包插件",
+    "description": "钱包安装指引对话框标题。"
+  },
+  "message.x402InstallGuideDesc": {
+    "message": "按照步骤安装 {wallet} 插件并重新连接。",
+    "description": "钱包安装指引描述。"
+  },
+  "message.x402InstallGuideStep1": {
+    "message": "下载并安装 {wallet} 浏览器插件（推荐 Chrome/Brave）。",
+    "description": "安装钱包步骤1。"
+  },
+  "message.x402InstallGuideStep2": {
+    "message": "打开插件，登录/解锁并确保已启用。",
+    "description": "安装钱包步骤2。"
+  },
+  "message.x402InstallGuideStep3": {
+    "message": "返回此页，点击“我已安装”，再尝试连接。",
+    "description": "安装钱包步骤3。"
+  },
+  "message.x402InstallGuideConfirm": {
+    "message": "我已安装",
+    "description": "完成安装后的确认按钮。"
+  },
+  "message.x402NetworkGuideTitle": {
+    "message": "调整网络设置",
+    "description": "网络引导对话框标题。"
+  },
+  "message.x402NetworkGuideDesc": {
+    "message": "请将钱包网络切换为 {network}，完成后刷新再试。",
+    "description": "指导用户切换网络的说明。"
+  },
+  "message.x402NetworkGuideStep1": {
+    "message": "打开钱包插件设置，查看活动网络。",
+    "description": "网络调整步骤1。"
+  },
+  "message.x402NetworkGuideStep2": {
+    "message": "在列表中启用 {network}（或所需网络）。",
+    "description": "网络调整步骤2。"
+  },
+  "message.x402NetworkGuideStep3": {
+    "message": "返回此页并点击“已完成设置”后再支付。",
+    "description": "网络调整步骤3。"
+  },
+  "message.x402NetworkGuideConfirm": {
+    "message": "已完成设置",
+    "description": "完成网络设置后的确认按钮。"
+  },
+  "message.x402NetworkSwitchFailed": {
+    "message": "当前钱包不支持自动切换网络，请手动切换后重试。",
+    "description": "自动切网失败时的提示。"
+  },
+  "message.x402PaymentFailed": {
+    "message": "X402 钱包支付失败，请稍后再试或联系支持。",
+    "description": "X402 支付失败时的通用错误。"
+  },
+  "message.x402WalletPayCta": {
+    "message": "使用钱包支付",
+    "description": "发起 X402 钱包支付的按钮文案。"
   }
 }
