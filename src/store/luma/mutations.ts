@@ -1,12 +1,9 @@
 import { IApplication, ICredential, ILumaConfig, ILumaTask, IService } from '@/models';
+import initialState from './state';
 import { ILumaState } from './models';
 
 export const resetAll = (state: ILumaState): void => {
-  state.service = undefined;
-  state.application = undefined;
-  state.config = undefined;
-  state.credential = undefined;
-  state.tasks = undefined;
+  Object.assign(state, initialState());
 };
 
 export const setService = (state: ILumaState, payload: IService): void => {

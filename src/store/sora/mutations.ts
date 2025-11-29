@@ -1,12 +1,9 @@
 import { IApplication, ICredential, ISoraConfig, ISoraTask, IService } from '@/models';
+import initialState from './state';
 import { ISoraState } from './models';
 
 export const resetAll = (state: ISoraState): void => {
-  state.service = undefined;
-  state.application = undefined;
-  state.config = undefined;
-  state.credential = undefined;
-  state.tasks = undefined;
+  Object.assign(state, initialState());
 };
 
 export const setService = (state: ISoraState, payload: IService): void => {

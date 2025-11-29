@@ -1,12 +1,9 @@
 import { IApplication, ICredential, IPixverseConfig, IPixverseTask, IService } from '@/models';
+import initialState from './state';
 import { IPixverseState } from './models';
 
 export const resetAll = (state: IPixverseState): void => {
-  state.service = undefined;
-  state.application = undefined;
-  state.config = undefined;
-  state.credential = undefined;
-  state.tasks = undefined;
+  Object.assign(state, initialState());
 };
 
 export const setService = (state: IPixverseState, payload: IService): void => {

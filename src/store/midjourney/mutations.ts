@@ -1,14 +1,9 @@
 import { IApplication, ICredential, IMidjourneyConfig, IService, IMidjourneyTask } from '@/models';
+import initialState from './state';
 import { IMidjourneyState } from './models';
 
 export const resetAll = (state: IMidjourneyState): void => {
-  state.application = undefined;
-  state.applications = undefined;
-  state.config = {};
-  state.tasks = {
-    items: undefined,
-    total: undefined
-  };
+  Object.assign(state, initialState());
 };
 
 export const setTasksItems = (state: IMidjourneyState, payload: IMidjourneyTask[]): void => {

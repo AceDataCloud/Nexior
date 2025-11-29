@@ -224,7 +224,9 @@ export const logout = async ({ dispatch }: ActionContext<IRootState, IRootState>
   await dispatch('pika/resetAll');
   await dispatch('pixverse/resetAll');
   await dispatch('qrart/resetAll');
+  await dispatch('sora/resetAll');
   await dispatch('suno/resetAll');
+  await dispatch('nanobanana/resetAll');
   await dispatch('veo/resetAll');
   const currentUrl = window.location.href;
   const baseUrlAuth = getBaseUrlAuth();

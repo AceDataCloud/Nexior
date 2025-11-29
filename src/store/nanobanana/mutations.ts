@@ -1,12 +1,9 @@
 import { IApplication, ICredential, INanobananaConfig, INanobananaTask, IService } from '@/models';
+import initialState from './state';
 import { INanobananaState } from './models';
 
 export const resetAll = (state: INanobananaState): void => {
-  state.service = undefined;
-  state.application = undefined;
-  state.config = undefined;
-  state.credential = undefined;
-  state.tasks = undefined;
+  Object.assign(state, initialState());
 };
 
 export const setService = (state: INanobananaState, payload: IService): void => {

@@ -1,12 +1,9 @@
 import { IApplication, ICredential, IFluxConfig, IFluxTask, IService } from '@/models';
+import initialState from './state';
 import { IFluxState } from './models';
 
 export const resetAll = (state: IFluxState): void => {
-  state.service = undefined;
-  state.application = undefined;
-  state.config = undefined;
-  state.credential = undefined;
-  state.tasks = undefined;
+  Object.assign(state, initialState());
 };
 
 export const setService = (state: IFluxState, payload: IService): void => {
