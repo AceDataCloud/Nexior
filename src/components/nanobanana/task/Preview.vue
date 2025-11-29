@@ -197,12 +197,11 @@ export default defineComponent({
     onEdit(imageUrl?: string) {
       if (!imageUrl) return;
       console.debug('Edit image:', imageUrl);
-      // Switch to edit mode and preload image into uploader list
-      this.$store.commit('nanobanana/setConfig', {
-        ...this.$store.state.nanobanana?.config,
-        action: 'edit',
-        image_urls: [imageUrl]
-      });
+      // Preload image into uploader list for editing
+      const nextConfig = { ...(this.$store.state.nanobanana?.config || {}) };
+      delete (nextConfig as any).action;
+      (nextConfig as any).image_urls = [imageUrl];
+      this.$store.commit('nanobanana/setConfig', nextConfig);
     }
   }
 });

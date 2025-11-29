@@ -1,7 +1,7 @@
 <template>
   <div class="field">
     <h2 class="title font-bold">{{ $t('nanobanana.name.aspectRatio') }}</h2>
-    <el-select v-model="value" class="value" :placeholder="$t('nanobanana.placeholder.select')">
+    <el-select v-model="value" class="value" clearable :placeholder="$t('nanobanana.placeholder.select')">
       <el-option v-for="opt in options" :key="opt" :label="opt" :value="opt" />
     </el-select>
   </div>
@@ -10,7 +10,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
-import { NANOBANANA_DEFAULT_ASPECT_RATIO } from '@/constants';
 
 export default defineComponent({
   name: 'AspectRatioSelector',
@@ -25,18 +24,16 @@ export default defineComponent({
       get() {
         return this.$store.state.nanobanana?.config?.aspect_ratio;
       },
-      set(val: string) {
+      set(val: string | null | undefined) {
         console.debug('set aspect_ratio', val);
-        this.$store.commit('nanobanana/setConfig', {
-          ...this.$store.state.nanobanana?.config,
-          aspect_ratio: val
-        });
+        const nextConfig = { ...(this.$store.state.nanobanana?.config || {}) };
+        if (!val) {
+          delete (nextConfig as any).aspect_ratio;
+        } else {
+          (nextConfig as any).aspect_ratio = val;
+        }
+        this.$store.commit('nanobanana/setConfig', nextConfig);
       }
-    }
-  },
-  mounted() {
-    if (!this.value) {
-      this.value = NANOBANANA_DEFAULT_ASPECT_RATIO;
     }
   }
 });

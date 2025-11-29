@@ -3,10 +3,9 @@
     <div class="flex-1 overflow-y-auto p-[15px]">
       <model-selector class="mb-4" />
       <resolution-selector class="mb-4" />
-      <action-selector class="mb-4" />
       <prompt-input class="mb-4" />
       <aspect-ratio-selector class="mb-4" />
-      <image-urls-input v-if="config?.action === 'edit'" class="mb-4" />
+      <image-urls-input class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-[15px] pb-[15px]">
       <consumption :value="consumption" :service="service" />
@@ -22,7 +21,6 @@
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import ActionSelector from './config/ActionSelector.vue';
 import PromptInput from './config/PromptInput.vue';
 import ImageUrlsInput from './config/ImageUrlsInput.vue';
 import AspectRatioSelector from './config/AspectRatioSelector.vue';
@@ -38,7 +36,6 @@ export default defineComponent({
     FontAwesomeIcon,
     PromptInput,
     Consumption,
-    ActionSelector,
     ImageUrlsInput,
     AspectRatioSelector,
     ModelSelector,
@@ -50,7 +47,15 @@ export default defineComponent({
       return this.$store.state.nanobanana?.config;
     },
     consumption() {
-      return getConsumption(this.config, this.service?.metadata?.price);
+      const cfg: any = { ...(this.config || {}) };
+      const hasReferenceImages = Array.isArray(cfg?.image_urls) && cfg.image_urls.length > 0;
+      return getConsumption(
+        {
+          ...cfg,
+          action: hasReferenceImages ? 'edit' : 'generate'
+        },
+        this.service?.metadata?.price
+      );
     },
     service() {
       return this.$store.state.nanobanana?.service;
