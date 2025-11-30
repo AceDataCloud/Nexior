@@ -52,19 +52,19 @@
     "description": "Resolution of the generated image"
   },
   "description.resolutionProOnly": {
-    "message": "Only nano-banana-pro supports resolution selection.",
-    "description": "Resolution setting applies to the pro model only"
+    "message": "Resolution settings are only supported for nano-banana-pro.",
+    "description": "Resolution options are only effective for pro models"
   },
   "description.prompt": {
     "message": "Prompt words for generating or editing images",
     "description": "Description of the prompt words"
   },
   "description.action": {
-    "message": "The action to generate the images. If `generate`, images are generated from the prompt; if `edit`, they are edited based on the prompt and uploaded images.",
+    "message": "Action to generate the image. If `generate`, the image will be created based on the prompt; if `edit`, it will be edited based on the prompt and uploaded image.",
     "description": "Description of the action parameter"
   },
   "description.model": {
-    "message": "The model used to generate the images. Default is nano-banana. nano-banana-pro is an alias of gemini-3-pro-image; nano-banana is an alias of gemini-2.5-flash-image.",
+    "message": "Model used to generate images. Default is nano-banana. nano-banana-pro is an alias for gemini-3-pro-image, and nano-banana is an alias for gemini-2.5-flash-image.",
     "description": "Description of the model parameter"
   },
   "description.imageUrls": {
@@ -72,7 +72,7 @@
     "description": "Description of the image_urls parameter"
   },
   "description.aspectRatio": {
-    "message": "Aspect ratio of the generated image. Supported values are `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. The default value is `1:1`. This only takes effect when `action` is `generate`; if `action` is `edit`, the ratio of the first image in `image_urls` will be used.",
+    "message": "Aspect ratio of the generated image. Supported values are `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. The default value is `1:1`. Only effective when `action` is `generate`; if `action` is `edit`, the ratio of the first image in `image_urls` will be used.",
     "description": "Description of the aspect_ratio parameter"
   },
   "status.pending": {
@@ -84,7 +84,7 @@
     "description": "Selection placeholder"
   },
   "placeholder.prompt": {
-    "message": "Enter prompt, e.g., a white siamese cat",
+    "message": "Enter prompt, e.g., a white Siamese cat",
     "description": "Prompt placeholder"
   },
   "button.generate": {
@@ -113,7 +113,7 @@
   },
   "message.uploadImageExceed": {
     "message": "You can upload a maximum of 5 images",
-    "description": "Message indicating the number of images exceeds the limit"
+    "description": "Message indicating image count exceeds limit"
   },
   "message.uploadImageError": {
     "message": "Failed to upload image, please try again later",
@@ -121,14 +121,14 @@
   },
   "name.model": {
     "message": "Model",
-    "description": "Nano Banana model selector label"
+    "description": "Label for selecting Nano Banana model"
   },
   "model.nanoBanana": {
     "message": "nano-banana",
-    "description": "Nano Banana base model option"
+    "description": "Option for the basic Nano Banana model"
   },
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
-    "description": "Nano Banana pro model option"
+    "description": "Option for the professional Nano Banana model"
   }
 }

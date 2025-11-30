@@ -75,6 +75,10 @@
     "message": "Opération",
     "description": "Opération de la demande."
   },
+  "field.allowConsumeGlobal": {
+    "message": "Utiliser le solde global",
+    "description": "Si l'utilisation du solde global est autorisée lorsque le solde dédié est insuffisant."
+  },
   "field.amount": {
     "message": "Quantité",
     "description": "Quantité de la demande."
@@ -133,15 +137,15 @@
   },
   "message.notApplied": {
     "message": "Bienvenue dans notre service, nous vous offrons un quota d'essai gratuit, veuillez cliquer sur le bouton ci-dessous pour commencer immédiatement.",
-    "description": "Message affiché à l'utilisateur lorsque celui-ci n'a pas encore demandé ce service."
+    "description": "Message affiché à l'utilisateur lorsqu'il n'a pas encore demandé ce service."
   },
   "message.globalBalanceBuyDescription": {
-    "message": "Les points de ce rechargement sont un solde universel, pouvant être utilisés pour n'importe quel service.",
-    "description": "Message affiché à l'utilisateur lors du rechargement du solde universel."
+    "message": "Les points de ce rechargement sont un solde global, pouvant être utilisés pour n'importe quel service.",
+    "description": "Message affiché à l'utilisateur lorsqu'il recharge un solde global."
   },
   "message.yourApplication": {
     "message": "Votre demande",
-    "description": "Message affiché à l'utilisateur lors de sa demande."
+    "description": "Message affiché à l'utilisateur concernant sa demande."
   },
   "message.unverified": {
     "message": "Vous devez compléter la vérification d'identité avant de pouvoir demander ce service",
@@ -169,27 +173,27 @@
   },
   "message.readPolicy": {
     "message": "J'ai lu et j'accepte",
-    "description": "Message affiché à l'utilisateur lorsque celui-ci a lu et accepté la politique."
+    "description": "Message affiché à l'utilisateur lorsqu'il a lu et accepté la politique."
   },
   "message.policy": {
     "message": "Accord d'utilisation des services technologiques de données",
-    "description": "Message affiché à l'utilisateur lorsque celui-ci a lu et accepté la politique."
+    "description": "Message affiché à l'utilisateur lorsqu'il a lu et accepté la politique."
   },
   "message.notAgreePolicy": {
     "message": "Vous n'avez pas encore accepté l'accord d'utilisation des services technologiques de données",
-    "description": "Message affiché à l'utilisateur lorsque celui-ci n'a pas encore accepté la politique."
+    "description": "Message affiché à l'utilisateur lorsqu'il n'a pas encore accepté la politique."
   },
   "message.welcome": {
     "message": "Bienvenue",
-    "description": "Message affiché à l'utilisateur lorsque celui-ci confirme la demande de service."
+    "description": "Message affiché à l'utilisateur lorsqu'il confirme la demande de service."
   },
   "message.rotateCredential": {
     "message": "Réinitialiser la clé",
-    "description": "Message affiché à l'utilisateur lorsque celui-ci réinitialise la clé."
+    "description": "Message affiché à l'utilisateur lorsqu'il réinitialise la clé."
   },
   "message.rotateCredentialConfirm": {
     "message": "Êtes-vous sûr de vouloir réinitialiser la clé ? Elle ne pourra pas être récupérée après la réinitialisation.",
-    "description": "Message affiché à l'utilisateur lorsque celui-ci confirme la réinitialisation de la clé."
+    "description": "Message affiché à l'utilisateur lorsqu'il confirme la réinitialisation de la clé."
   },
   "message.idDoesNotExist": {
     "message": "La demande n'existe pas",
@@ -200,8 +204,12 @@
     "description": "Message affiché à l'utilisateur lorsque la réinitialisation de la clé est réussie."
   },
   "message.rotateCredentialFailed": {
-    "message": "Échec de la réinitialisation de la clé, veuillez contacter le support",
+    "message": "Échec de la réinitialisation de la clé, veuillez contacter le support.",
     "description": "Message affiché à l'utilisateur lorsque la réinitialisation de la clé échoue."
+  },
+  "message.fetchFailed": {
+    "message": "Échec de la récupération de l'application, veuillez réessayer plus tard.",
+    "description": "Message d'alerte lorsque la liste des applications échoue à se récupérer."
   },
   "message.updateFailed": {
     "message": "Échec de la modification",
@@ -209,10 +217,10 @@
   },
   "message.updateSuccessfully": {
     "message": "Modification réussie",
-    "description": "Message affiché à l'utilisateur lorsque la modification réussit."
+    "description": "Message affiché à l'utilisateur lorsque la modification est réussie."
   },
   "message.neverExpire": {
-    "message": "Jamais expirer",
+    "message": "Jamais expiré",
     "description": "Message affiché à l'utilisateur lorsque la demande n'expire jamais."
   },
   "title.buyService": {
@@ -221,22 +229,34 @@
   },
   "title.globalBuy": {
     "message": "Recharge de solde général",
-    "description": "Titre de la page lorsque l'utilisateur souhaite recharger le solde général."
+    "description": "Titre de la page lorsque l'utilisateur souhaite recharger son solde général."
   },
   "title.applicationRemainingCount": {
-    "message": "Modifier le nombre",
-    "description": "Titre de la page lorsque l'utilisateur souhaite modifier le nombre de demandes."
+    "message": "Modifier la quantité",
+    "description": "Titre de la page lorsque l'utilisateur souhaite modifier la quantité de la demande."
   },
   "title.manageApplication": {
     "message": "Gestion des demandes",
-    "description": "Titre de la page lorsque l'utilisateur souhaite gérer les demandes."
+    "description": "Titre de la page lorsque l'utilisateur souhaite gérer ses demandes."
   },
   "title.applicationBalance": {
     "message": "Points exclusifs - {service}",
     "description": "Message affiché à l'utilisateur lorsqu'il consulte le solde de la demande."
   },
+  "title.count": {
+    "message": "Nombre d'applications",
+    "description": "Titre de la carte de résumé du nombre d'applications."
+  },
+  "message.countDescription": {
+    "message": "Gérez ici vos applications exclusives et votre solde général.",
+    "description": "Texte d'explication sous la carte du nombre d'applications."
+  },
   "title.globalBalance": {
     "message": "Solde général",
-    "description": "Message affiché à l'utilisateur lorsqu'il consulte le solde général."
+    "description": "Message affiché à l'utilisateur lorsqu'il consulte son solde général."
+  },
+  "message.globalBalanceDescription": {
+    "message": "Le solde général peut être utilisé par les applications éligibles.",
+    "description": "Texte explicatif sur la carte du solde général."
   }
 }

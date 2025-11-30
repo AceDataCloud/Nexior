@@ -49,27 +49,31 @@
   },
   "name.resolution": {
     "message": "Upplösning",
-    "description": "Upplösning för den genererade bilden"
+    "description": "Upplösningen för den genererade bilden"
   },
   "description.resolutionProOnly": {
-    "message": "Endast modellen nano-banana-pro stöder val av upplösning.",
-    "description": "Upplösningsinställningen gäller bara pro-modellen"
+    "message": "Endast nano-banana-pro stöder upplösningsinställningar.",
+    "description": "Upplösningsalternativ gäller endast för pro-modellen"
   },
   "description.prompt": {
     "message": "Promptord för att generera eller redigera bilden",
     "description": "Beskrivning av promptord"
   },
+  "description.action": {
+    "message": "Åtgärden för att generera bilden. Om det är `generate`, kommer bilden att genereras baserat på promptord; om det är `edit`, kommer den att redigeras baserat på promptord och uppladdad bild.",
+    "description": "Beskrivning av action-parametern"
+  },
   "description.model": {
-    "message": "Modellen som används för att generera bilderna. Standard är nano-banana. nano-banana-pro är ett alias för gemini-3-pro-image, nano-banana är ett alias för gemini-2.5-flash-image.",
+    "message": "Modellen som används för att generera bilden. Standard är nano-banana. nano-banana-pro är ett alias för gemini-3-pro-image, nano-banana är ett alias för gemini-2.5-flash-image.",
     "description": "Beskrivning av model-parametern"
   },
   "description.imageUrls": {
-    "message": "Du måste ladda upp 1-5 bilder i redigeringsuppgiften.",
-    "description": "Beskrivning av image_urls parametern"
+    "message": "I redigeringsuppgift måste 1-5 bilder laddas upp.",
+    "description": "Beskrivning av image_urls-parametern"
   },
   "description.aspectRatio": {
     "message": "Bildförhållandet för den genererade bilden. Stödda värden är `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Standardvärdet är `1:1`. Gäller endast när `action` är `generate`; om `action` är `edit`, används förhållandet för den första bilden i `image_urls`.",
-    "description": "Beskrivning av aspect_ratio parametern"
+    "description": "Beskrivning av aspect_ratio-parametern"
   },
   "status.pending": {
     "message": "Väntar",
@@ -92,8 +96,8 @@
     "description": "Ladda upp referensbilder knapp"
   },
   "message.startingTask": {
-    "message": "Startar uppgiften...",
-    "description": "Meddelande om att starta uppgiften"
+    "message": "Startar uppgift...",
+    "description": "Meddelande om att starta uppgift"
   },
   "message.startTaskSuccess": {
     "message": "Uppgiften har framgångsrikt startats",
@@ -101,7 +105,7 @@
   },
   "message.startTaskFailed": {
     "message": "Misslyckades med att starta uppgiften, vänligen kontakta administratören:",
-    "description": "Uppgiftens skapande misslyckades"
+    "description": "Uppgiftsskapande misslyckades"
   },
   "message.usedUp": {
     "message": "Dina poäng är slut, vänligen köp fler poäng för att fortsätta använda",
@@ -113,18 +117,18 @@
   },
   "message.uploadImageError": {
     "message": "Misslyckades med att ladda upp bilden, vänligen försök igen senare",
-    "description": "Misslyckande vid uppladdning"
+    "description": "Misslyckades med uppladdning"
   },
   "name.model": {
-    "message": "Model",
-    "description": "Nano Banana model selector label"
+    "message": "Modell",
+    "description": "Val av Nano Banana-modell"
   },
   "model.nanoBanana": {
     "message": "nano-banana",
-    "description": "Nano Banana base model option"
+    "description": "Alternativ för Nano Banana grundmodell"
   },
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
-    "description": "Nano Banana pro model option"
+    "description": "Alternativ för Nano Banana professionell modell"
   }
 }

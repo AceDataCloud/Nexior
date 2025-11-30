@@ -1,22 +1,22 @@
 {
   "name.taskId": {
-    "message": "ID da tarefa",
+    "message": "ID da Tarefa",
     "description": "ID da tarefa"
   },
   "name.task": {
-    "message": "Tipo de tarefa",
+    "message": "Tipo de Tarefa",
     "description": "Tipo de operação de imagem do Nano Banana"
   },
   "name.generate": {
-    "message": "Criar imagem",
+    "message": "Criar Imagem",
     "description": "Tipo de operação: criar imagem"
   },
   "name.edits": {
-    "message": "Editar imagem",
+    "message": "Editar Imagem",
     "description": "Tipo de operação: editar imagem"
   },
   "name.imageUrls": {
-    "message": "Imagens de referência",
+    "message": "Imagens de Referência",
     "description": "Imagens de referência para edição"
   },
   "name.failure": {
@@ -24,7 +24,7 @@
     "description": "Tarefa falhou"
   },
   "name.failureReason": {
-    "message": "Razão da falha",
+    "message": "Razão da Falha",
     "description": "Razão pela qual a tarefa falhou"
   },
   "name.status": {
@@ -32,11 +32,11 @@
     "description": "Status da tarefa"
   },
   "name.traceId": {
-    "message": "ID de rastreamento",
+    "message": "ID de Rastreamento",
     "description": "ID de rastreamento"
   },
   "name.prompt": {
-    "message": "Prompt de imagem",
+    "message": "Prompt de Imagem",
     "description": "Palavras-chave para gerar/editar"
   },
   "name.nanobananaBot": {
@@ -52,23 +52,27 @@
     "description": "Resolução da imagem gerada"
   },
   "description.resolutionProOnly": {
-    "message": "Apenas o modelo nano-banana-pro suporta escolher a resolução.",
-    "description": "A configuração de resolução vale somente para o modelo pro"
+    "message": "Apenas nano-banana-pro suporta configuração de resolução.",
+    "description": "As opções de resolução são válidas apenas para o modelo pro"
   },
   "description.prompt": {
     "message": "Palavras-chave para gerar ou editar a imagem",
     "description": "Descrição das palavras-chave"
   },
+  "description.action": {
+    "message": "Ação para gerar a imagem. Se for `generate`, a imagem será gerada com base nas palavras-chave; se for `edit`, a imagem será editada com base nas palavras-chave e na imagem carregada.",
+    "description": "Descrição do parâmetro de ação"
+  },
   "description.model": {
-    "message": "O modelo usado para gerar as imagens. Padrão: nano-banana. nano-banana-pro é um alias de gemini-3-pro-image; nano-banana é um alias de gemini-2.5-flash-image.",
-    "description": "Descrição do parâmetro model"
+    "message": "Modelo usado para gerar a imagem. O padrão é nano-banana. nano-banana-pro é um alias para gemini-3-pro-image, e nano-banana é um alias para gemini-2.5-flash-image.",
+    "description": "Descrição do parâmetro de modelo"
   },
   "description.imageUrls": {
-    "message": "É necessário enviar de 1 a 5 imagens na tarefa de edição de imagem.",
+    "message": "É necessário carregar de 1 a 5 imagens na tarefa de edição de imagem.",
     "description": "Descrição do parâmetro image_urls"
   },
   "description.aspectRatio": {
-    "message": "Proporção da imagem gerada. Os valores suportados são `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. O valor padrão é `1:1`. Somente é aplicado quando `action` é `generate`; se `action` for `edit`, a proporção da primeira imagem em `image_urls` será utilizada.",
+    "message": "Proporção da imagem gerada. Os valores suportados são `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. O valor padrão é `1:1`. Somente válido quando `action` é `generate`; se `action` for `edit`, a proporção da primeira imagem em `image_urls` será utilizada.",
     "description": "Descrição do parâmetro aspect_ratio"
   },
   "status.pending": {
@@ -81,15 +85,15 @@
   },
   "placeholder.prompt": {
     "message": "Digite as palavras-chave, por exemplo: um gato siames branco",
-    "description": "Placeholder de prompt"
+    "description": "Placeholder de palavras-chave"
   },
   "button.generate": {
     "message": "Gerar",
     "description": "Botão de gerar"
   },
   "button.uploadImageUrls": {
-    "message": "Enviar imagem",
-    "description": "Botão para enviar imagens de referência"
+    "message": "Carregar Imagens",
+    "description": "Botão para carregar imagens de referência"
   },
   "message.startingTask": {
     "message": "Iniciando tarefa...",
@@ -104,27 +108,27 @@
     "description": "Falha na criação da tarefa"
   },
   "message.usedUp": {
-    "message": "Seus pontos acabaram, por favor, compre mais pontos para continuar usando",
-    "description": "Mensagem de esgotamento"
+    "message": "Seus créditos acabaram, por favor, compre mais créditos para continuar usando",
+    "description": "Mensagem de créditos esgotados"
   },
   "message.uploadImageExceed": {
-    "message": "É possível enviar no máximo 5 imagens",
+    "message": "É possível carregar no máximo 5 imagens",
     "description": "Número de imagens excedeu o limite"
   },
   "message.uploadImageError": {
-    "message": "Falha ao enviar a imagem, por favor, tente novamente mais tarde",
-    "description": "Falha no envio"
+    "message": "Falha ao carregar a imagem, por favor, tente novamente mais tarde",
+    "description": "Falha no upload"
   },
   "name.model": {
-    "message": "Model",
-    "description": "Nano Banana model selector label"
+    "message": "Modelo",
+    "description": "Etiqueta de seleção do modelo Nano Banana"
   },
   "model.nanoBanana": {
     "message": "nano-banana",
-    "description": "Nano Banana base model option"
+    "description": "Opção de modelo básico do Nano Banana"
   },
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
-    "description": "Nano Banana pro model option"
+    "description": "Opção de modelo profissional do Nano Banana"
   }
 }

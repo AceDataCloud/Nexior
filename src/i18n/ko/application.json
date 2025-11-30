@@ -75,6 +75,10 @@
     "message": "작업",
     "description": "신청의 작업."
   },
+  "field.allowConsumeGlobal": {
+    "message": "공용 잔액 사용",
+    "description": "전용 잔액이 부족할 때 공용 잔액을 사용할 수 있는지 여부."
+  },
   "field.amount": {
     "message": "수량",
     "description": "신청의 수량."
@@ -85,7 +89,7 @@
   },
   "field.traceId": {
     "message": "추적 ID",
-    "description": "API 서비스의 신청의 API 호출의 추적 ID, 번역하지 말고 '추적 ID'로 유지합니다."
+    "description": "API 서비스의 신청의 API 호출의 추적 ID, 번역하지 말고 '추적 ID'로 유지하십시오."
   },
   "field.shouldPayPrice": {
     "message": "최종 가격",
@@ -109,7 +113,7 @@
   },
   "field.package": {
     "message": "패키지",
-    "description": "패키지는 서로 다른 가격 패키지를 나타냅니다. 예를 들어, 100달러에 10,000 포인트, 200달러에 20,000 포인트를 받을 수 있습니다."
+    "description": "패키지는 서로 다른 가격 패키지를 나타냅니다. 예를 들어, 100달러에 10,000포인트, 200달러에 20,000포인트를 받을 수 있습니다."
   },
   "field.type": {
     "message": "유형",
@@ -136,8 +140,8 @@
     "description": "사용자가 아직 이 서비스를 신청하지 않았을 때 사용자에게 표시되는 메시지."
   },
   "message.globalBalanceBuyDescription": {
-    "message": "이번 충전된 포인트는 일반 잔액으로, 모든 서비스에 사용할 수 있습니다.",
-    "description": "사용자가 일반 잔액을 충전할 때 사용자에게 표시되는 메시지."
+    "message": "이번 충전의 포인트는 공용 잔액으로, 모든 서비스에 사용할 수 있습니다.",
+    "description": "사용자가 공용 잔액을 충전할 때 사용자에게 표시되는 메시지."
   },
   "message.yourApplication": {
     "message": "귀하의 신청",
@@ -160,15 +164,15 @@
     "description": "사용자가 필수 매개변수를 입력하지 않았을 때 사용자에게 표시되는 메시지."
   },
   "message.applicationSelection": {
-    "message": "다음은 현재 신청하거나 구매한 패키지입니다. 서비스를 계속 사용하려면 원하는 패키지를 선택할 수 있습니다.",
-    "description": "사용자가 신청을 선택해야 할 때 사용자에게 표시되는 메시지."
+    "message": "현재 신청하거나 구매한 패키지가 아래에 있습니다. 서비스를 계속 사용하려면 원하는 패키지를 선택할 수 있습니다.",
+    "description": "사용자가 신청을 선택해야 할 때 사용자에게 표시되는 메시지입니다."
   },
   "message.createCredentialSuccessfully": {
-    "message": "자격 증명이 성공적으로 생성되었습니다.",
+    "message": "자격 증명 생성 성공",
     "description": "사용자가 자격 증명을 성공적으로 생성했을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.readPolicy": {
-    "message": "정책을 읽고 동의합니다.",
+    "message": "정책을 읽고 동의합니다",
     "description": "사용자가 정책을 읽고 동의했을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.policy": {
@@ -176,11 +180,11 @@
     "description": "사용자가 정책을 읽고 동의했을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.notAgreePolicy": {
-    "message": "데이터 기술 서비스 이용 약관에 동의하지 않았습니다.",
+    "message": "데이터 기술 서비스 이용 약관에 동의하지 않았습니다",
     "description": "사용자가 정책에 동의하지 않았을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.welcome": {
-    "message": "환영합니다.",
+    "message": "환영합니다",
     "description": "사용자가 서비스 신청을 확인했을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.rotateCredential": {
@@ -192,28 +196,32 @@
     "description": "사용자가 키 재설정을 확인했을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.idDoesNotExist": {
-    "message": "신청이 존재하지 않습니다.",
+    "message": "신청이 존재하지 않습니다",
     "description": "신청이 존재하지 않을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.rotateCredentialSuccessfully": {
-    "message": "키 재설정이 성공적으로 완료되었습니다.",
-    "description": "키 재설정이 성공적으로 완료되었을 때 사용자에게 표시되는 메시지입니다."
+    "message": "키 재설정 성공",
+    "description": "키가 성공적으로 재설정되었을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.rotateCredentialFailed": {
-    "message": "키 재설정에 실패했습니다. 처리 담당자에게 문의하세요.",
-    "description": "키 재설정에 실패했을 때 사용자에게 표시되는 메시지입니다."
+    "message": "키 재설정 실패, 처리에 문의하십시오",
+    "description": "키 재설정이 실패했을 때 사용자에게 표시되는 메시지입니다."
+  },
+  "message.fetchFailed": {
+    "message": "응용 프로그램을 가져오는 데 실패했습니다. 나중에 다시 시도하십시오.",
+    "description": "응용 프로그램 목록을 가져오는 데 실패했을 때의 알림입니다."
   },
   "message.updateFailed": {
-    "message": "수정에 실패했습니다.",
-    "description": "수정에 실패했을 때 사용자에게 표시되는 메시지입니다."
+    "message": "수정 실패",
+    "description": "수정이 실패했을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.updateSuccessfully": {
-    "message": "수정이 성공적으로 완료되었습니다.",
-    "description": "수정이 성공적으로 완료되었을 때 사용자에게 표시되는 메시지입니다."
+    "message": "수정 성공",
+    "description": "수정이 성공했을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.neverExpire": {
-    "message": "영구 만료되지 않음",
-    "description": "신청이 영구 만료되지 않을 때 사용자에게 표시되는 메시지입니다."
+    "message": "영구 유효",
+    "description": "신청이 영구적으로 유효할 때 사용자에게 표시되는 메시지입니다."
   },
   "title.buyService": {
     "message": "서비스 구매",
@@ -235,8 +243,20 @@
     "message": "전용 포인트 - {service}",
     "description": "사용자가 신청 잔액을 확인할 때 사용자에게 표시되는 메시지입니다."
   },
+  "title.count": {
+    "message": "응용 프로그램 수",
+    "description": "응용 프로그램 수 요약 카드 제목입니다."
+  },
+  "message.countDescription": {
+    "message": "여기에서 전용 응용 프로그램과 일반 잔액을 관리하세요.",
+    "description": "응용 프로그램 수 카드 아래의 보조 설명입니다."
+  },
   "title.globalBalance": {
     "message": "일반 잔액",
     "description": "사용자가 일반 잔액을 확인할 때 사용자에게 표시되는 메시지입니다."
+  },
+  "message.globalBalanceDescription": {
+    "message": "일반 잔액은 조건을 충족하는 응용 프로그램에서 사용할 수 있습니다.",
+    "description": "일반 잔액 카드의 설명 텍스트입니다."
   }
 }

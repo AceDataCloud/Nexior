@@ -52,15 +52,19 @@
     "description": "Rozdzielczość generowanego obrazu"
   },
   "description.resolutionProOnly": {
-    "message": "Tylko model nano-banana-pro obsługuje wybór rozdzielczości.",
-    "description": "Ustawienie rozdzielczości dotyczy tylko modelu pro"
+    "message": "Tylko nano-banana-pro obsługuje ustawienia rozdzielczości.",
+    "description": "Opcje rozdzielczości działają tylko dla modelu pro"
   },
   "description.prompt": {
     "message": "Słowa kluczowe do generowania lub edytowania obrazu",
     "description": "Opis słów kluczowych"
   },
+  "description.action": {
+    "message": "Akcja generująca obraz. Jeśli `generate`, obraz zostanie wygenerowany na podstawie słów kluczowych; jeśli `edit`, obraz zostanie edytowany na podstawie słów kluczowych i przesłanego obrazu.",
+    "description": "Opis parametru action"
+  },
   "description.model": {
-    "message": "Model używany do generowania obrazów. Domyślnie nano-banana. nano-banana-pro to alias gemini-3-pro-image, a nano-banana to alias gemini-2.5-flash-image.",
+    "message": "Model używany do generowania obrazów. Domyślnie jest to nano-banana. nano-banana-pro jest aliasem dla gemini-3-pro-image, a nano-banana jest aliasem dla gemini-2.5-flash-image.",
     "description": "Opis parametru model"
   },
   "description.imageUrls": {
@@ -68,7 +72,7 @@
     "description": "Opis parametru image_urls"
   },
   "description.aspectRatio": {
-    "message": "Proporcje generowanego obrazu. Obsługiwane wartości to `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Wartość domyślna to `1:1`. Działa tylko, gdy `action` to `generate`; jeśli `action` to `edit`, to obowiązuje proporcja pierwszego obrazu w `image_urls`.",
+    "message": "Proporcje generowanego obrazu. Obsługiwane wartości to `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Domyślną wartością jest `1:1`. Działa tylko, gdy `action` to `generate`; jeśli `action` to `edit`, stosuje się proporcje pierwszego obrazu w `image_urls`.",
     "description": "Opis parametru aspect_ratio"
   },
   "status.pending": {
@@ -77,18 +81,18 @@
   },
   "placeholder.select": {
     "message": "Wybierz",
-    "description": "Zajmij miejsce wyboru"
+    "description": "Zajmij miejsce na wybór"
   },
   "placeholder.prompt": {
     "message": "Wprowadź słowa kluczowe, na przykład: biały kot syjamski",
-    "description": "Zajmij miejsce podpowiedzi"
+    "description": "Zajmij miejsce na podpowiedź"
   },
   "button.generate": {
     "message": "Generuj",
     "description": "Przycisk generowania"
   },
   "button.uploadImageUrls": {
-    "message": "Prześlij obrazy",
+    "message": "Prześlij obraz",
     "description": "Przycisk przesyłania obrazów referencyjnych"
   },
   "message.startingTask": {
@@ -113,18 +117,18 @@
   },
   "message.uploadImageError": {
     "message": "Nie udało się przesłać obrazu, spróbuj ponownie później",
-    "description": "Błąd przesyłania"
+    "description": "Niepowodzenie przesyłania"
   },
   "name.model": {
     "message": "Model",
-    "description": "Nano Banana model selector label"
+    "description": "Etykieta wyboru modelu Nano Banana"
   },
   "model.nanoBanana": {
     "message": "nano-banana",
-    "description": "Nano Banana base model option"
+    "description": "Opcja podstawowego modelu Nano Banana"
   },
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
-    "description": "Nano Banana pro model option"
+    "description": "Opcja profesjonalnego modelu Nano Banana"
   }
 }

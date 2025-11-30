@@ -75,6 +75,10 @@
     "message": "操作",
     "description": "申請の操作。"
   },
+  "field.allowConsumeGlobal": {
+    "message": "共通残高を使用",
+    "description": "専用残高が不足している場合、共通残高を消費することを許可するか。"
+  },
   "field.amount": {
     "message": "数量",
     "description": "申請の数量。"
@@ -85,7 +89,7 @@
   },
   "field.traceId": {
     "message": "トレースID",
-    "description": "APIサービスの申請のAPI呼び出しのトレースID、翻訳せずに'トレースID'のままにしてください。"
+    "description": "APIサービスの申請のAPI呼び出しのトレースID。'トレースID'のままにしてください。"
   },
   "field.shouldPayPrice": {
     "message": "最終価格",
@@ -132,7 +136,7 @@
     "description": "ユーザーがこのサービスを成功裏に申請した場合に表示されるメッセージ。"
   },
   "message.notApplied": {
-    "message": "私たちのサービスをご利用いただきありがとうございます。無料の試用クレジットをプレゼントします。下のボタンをクリックして今すぐ始めてください。",
+    "message": "私たちのサービスをご利用いただきありがとうございます。無料の試用枠をプレゼントします。下のボタンをクリックして今すぐ始めましょう。",
     "description": "ユーザーがまだこのサービスを申請していない場合に表示されるメッセージ。"
   },
   "message.globalBalanceBuyDescription": {
@@ -145,11 +149,11 @@
   },
   "message.unverified": {
     "message": "このサービスを申請するには、本人確認を完了する必要があります。",
-    "description": "ユーザーが本人確認をまだ完了していない場合に表示されるメッセージ。"
+    "description": "ユーザーがまだ本人確認を完了していない場合に表示されるメッセージ。"
   },
   "message.goVerify": {
     "message": "本人確認へ進む",
-    "description": "ユーザーが本人確認をまだ完了していない場合に表示されるメッセージ。"
+    "description": "ユーザーがまだ本人確認を完了していない場合に表示されるメッセージ。"
   },
   "message.requiredParameter": {
     "message": "必須パラメータ",
@@ -160,12 +164,12 @@
     "description": "ユーザーが必須パラメータを入力していない場合に表示されるメッセージ。"
   },
   "message.applicationSelection": {
-    "message": "以下は現在申請または購入しているパッケージです。サービスを継続するために、任意のパッケージを選択できます。",
-    "description": "ユーザーが申請を選択する必要がある場合に表示されるメッセージ。"
+    "message": "以下は現在申請または購入しているプランです。サービスを続けるために、任意のプランを選択できます。",
+    "description": "ユーザーが申請を選択する必要があるときに表示されるメッセージ。"
   },
   "message.createCredentialSuccessfully": {
     "message": "資格情報の作成に成功しました",
-    "description": "ユーザーが資格情報を正常に作成したときに表示されるメッセージ。"
+    "description": "ユーザーが資格情報を成功裏に作成したときに表示されるメッセージ。"
   },
   "message.readPolicy": {
     "message": "私はポリシーを読み、同意しました",
@@ -192,7 +196,7 @@
     "description": "ユーザーがキーのリセットを確認したときに表示されるメッセージ。"
   },
   "message.idDoesNotExist": {
-    "message": "申請は存在しません",
+    "message": "申請が存在しません",
     "description": "申請が存在しないときに表示されるメッセージ。"
   },
   "message.rotateCredentialSuccessfully": {
@@ -200,8 +204,12 @@
     "description": "キーのリセットが成功したときに表示されるメッセージ。"
   },
   "message.rotateCredentialFailed": {
-    "message": "キーのリセットに失敗しました。処理に連絡してください",
+    "message": "キーのリセットに失敗しました。サポートに連絡してください",
     "description": "キーのリセットに失敗したときに表示されるメッセージ。"
+  },
+  "message.fetchFailed": {
+    "message": "アプリの取得に失敗しました。後でもう一度お試しください。",
+    "description": "アプリのリスト取得に失敗したときのメッセージ。"
   },
   "message.updateFailed": {
     "message": "更新に失敗しました",
@@ -212,31 +220,43 @@
     "description": "更新が成功したときに表示されるメッセージ。"
   },
   "message.neverExpire": {
-    "message": "永遠に期限切れになりません",
-    "description": "申請が永遠に期限切れにならないときに表示されるメッセージ。"
+    "message": "永遠に有効",
+    "description": "申請が永遠に有効なときに表示されるメッセージ。"
   },
   "title.buyService": {
     "message": "サービスを購入",
-    "description": "ユーザーがサービスを購入したいときのページのタイトル。"
+    "description": "ユーザーがサービスを購入したいときのページタイトル。"
   },
   "title.globalBuy": {
     "message": "共通残高のチャージ",
-    "description": "ユーザーが共通残高をチャージしたいときのページのタイトル。"
+    "description": "ユーザーが共通残高をチャージしたいときのページタイトル。"
   },
   "title.applicationRemainingCount": {
-    "message": "変更数量",
-    "description": "ユーザーが申請数量を変更したいときのページのタイトル。"
+    "message": "申請数の変更",
+    "description": "ユーザーが申請数を変更したいときのページタイトル。"
   },
   "title.manageApplication": {
     "message": "申請管理",
-    "description": "ユーザーが申請を管理したいときのページのタイトル。"
+    "description": "ユーザーが申請を管理したいときのページタイトル。"
   },
   "title.applicationBalance": {
     "message": "専用ポイント - {service}",
-    "description": "ユーザーが申請残高を確認するときに表示されるメッセージ。"
+    "description": "ユーザーが申請残高を確認しているときに表示されるメッセージ。"
+  },
+  "title.count": {
+    "message": "アプリの数",
+    "description": "アプリの数の集計カードのタイトル。"
+  },
+  "message.countDescription": {
+    "message": "ここで専用アプリと共通残高を管理します。",
+    "description": "アプリの数カードの下にある補足説明。"
   },
   "title.globalBalance": {
     "message": "共通残高",
-    "description": "ユーザーが共通残高を確認するときに表示されるメッセージ。"
+    "description": "ユーザーが共通残高を確認しているときに表示されるメッセージ。"
+  },
+  "message.globalBalanceDescription": {
+    "message": "共通残高は条件を満たすアプリで消費できます。",
+    "description": "共通残高カードの説明文。"
   }
 }

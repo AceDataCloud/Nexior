@@ -208,7 +208,7 @@
     "description": "Texte affiché comme titre dans la zone d'édition"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "Veuillez entrer l'ID de l'inviteur obligatoire",
+    "message": "Veuillez entrer l'ID de l'inviteur forcé",
     "description": "Texte affiché comme titre dans la zone d'édition"
   },
   "message.uploadImageExceed": {
@@ -240,12 +240,12 @@
     "description": "Alerte pour conserver au moins un administrateur"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "ID utilisateur de l'inviteur par défaut. Si le lien de distribution ne contient pas le paramètre inviter_id, cet ID utilisateur sera utilisé par défaut comme invitateur.",
-    "description": "Alerte pour l'ID de l'inviteur par défaut"
+    "message": "ID utilisateur de l'invitateur par défaut. Si le lien de distribution ne contient pas le paramètre inviter_id, cet ID utilisateur sera utilisé par défaut comme invitateur.",
+    "description": "Alerte pour l'ID de l'invitateur par défaut"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID utilisateur de l'inviteur obligatoire. Si cet ID est défini, quel que soit le lien de distribution, cet ID utilisateur sera utilisé comme invitateur.",
-    "description": "Alerte pour l'ID de l'inviteur obligatoire"
+    "message": "ID utilisateur de l'invitateur forcé. Si cet ID est défini, il sera utilisé comme invitateur, que le lien de distribution contienne ou non le paramètre inviter_id.",
+    "description": "Alerte pour l'ID de l'invitateur forcé"
   },
   "message.originTip": {
     "message": "Nom de domaine du site. La configuration du site est liée au nom de domaine et ne peut pas être modifiée.",
@@ -345,42 +345,42 @@
   },
   "message.featuresKling": {
     "message": "Activer ou désactiver le module de fonctionnalités Kling.",
-    "description": "Description de la fonctionnalité Kling"
+    "description": "Kling 功能的描述"
   },
   "message.featuresHailuo": {
     "message": "Activer ou désactiver le module de fonctionnalités Hailuo.",
-    "description": "Description de la fonctionnalité Hailuo"
+    "description": "Hailuo 功能的描述"
   },
   "message.featuresHeadshots": {
     "message": "Activer ou désactiver le module de fonctionnalités de photo d'identité AI.",
-    "description": "Description de la fonctionnalité de photo d'identité AI"
+    "description": "AI证件照 功能的描述"
   },
   "message.featuresSupport": {
     "message": "Activer ou désactiver le support client",
-    "description": "Description de la fonctionnalité de support"
+    "description": "Support 功能的描述"
   },
   "message.featuresI18n": {
     "message": "Activer ou désactiver le support multilingue. Une fois désactivé, l'utilisateur ne pourra utiliser que la langue par défaut.",
-    "description": "Description du support multilingue"
+    "description": "多语言支持的描述"
   },
   "button.upload": {
     "message": "Télécharger",
-    "description": "Télécharger"
+    "description": "上传"
   },
   "button.enabled": {
     "message": "Activé",
-    "description": "Texte du commutateur indiquant que c'est activé"
+    "description": "开关文字，表示已经启用"
   },
   "button.disabled": {
     "message": "Désactivé",
-    "description": "Texte du commutateur indiquant que c'est désactivé"
+    "description": "开关文字，表示已经禁用"
   },
   "field.featuresGemini": {
     "message": "Gemini",
     "description": "Displayed as the title in the editing box"
   },
   "message.featuresGemini": {
-    "message": "Enable or disable the Gemini feature module.",
+    "message": "Activer ou désactiver le module de fonctionnalités Gemini.",
     "description": "Description of the Gemini feature"
   },
   "field.featuresClaude": {
@@ -388,7 +388,7 @@
     "description": "Displayed as the title in the editing box"
   },
   "message.featuresClaude": {
-    "message": "Enable or disable the Claude feature module.",
+    "message": "Activer ou désactiver le module de fonctionnalités Claude.",
     "description": "Description of the Claude feature"
   }
 }

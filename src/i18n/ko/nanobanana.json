@@ -52,16 +52,20 @@
     "description": "생성된 이미지의 해상도"
   },
   "description.resolutionProOnly": {
-    "message": "해상도 설정은 nano-banana-pro 모델에서만 적용됩니다.",
-    "description": "해상도 옵션은 프로 모델에만 해당"
+    "message": "nano-banana-pro만 해상도 설정을 지원합니다.",
+    "description": "해상도 옵션은 pro 모델에만 적용됩니다."
   },
   "description.prompt": {
     "message": "이미지를 생성하거나 편집하기 위한 프롬프트",
     "description": "프롬프트 설명"
   },
+  "description.action": {
+    "message": "이미지를 생성하는 동작입니다. `generate`인 경우 프롬프트에 따라 이미지를 생성하고, `edit`인 경우 프롬프트와 업로드된 이미지를 기반으로 편집합니다.",
+    "description": "action 매개변수 설명"
+  },
   "description.model": {
-    "message": "이미지 생성에 사용되는 모델입니다. 기본값은 nano-banana입니다. nano-banana-pro는 gemini-3-pro-image의 별칭이고, nano-banana는 gemini-2.5-flash-image의 별칭입니다.",
-    "description": "model 파라미터 설명"
+    "message": "이미지를 생성하는 데 사용되는 모델입니다. 기본값은 nano-banana입니다. nano-banana-pro는 gemini-3-pro-image의 별칭이며, nano-banana는 gemini-2.5-flash-image의 별칭입니다.",
+    "description": "model 매개변수 설명"
   },
   "description.imageUrls": {
     "message": "이미지 편집 작업에서는 1-5장의 이미지를 업로드해야 합니다.",
@@ -80,7 +84,7 @@
     "description": "선택 자리 표시자"
   },
   "placeholder.prompt": {
-    "message": "프롬프트 입력, 예: 하얀 색 샴 고양이",
+    "message": "프롬프트 입력, 예: 흰색 샴 고양이 한 마리",
     "description": "프롬프트 자리 표시자"
   },
   "button.generate": {
@@ -116,15 +120,15 @@
     "description": "업로드 실패"
   },
   "name.model": {
-    "message": "Model",
-    "description": "Nano Banana model selector label"
+    "message": "모델",
+    "description": "Nano Banana 모델 선택 레이블"
   },
   "model.nanoBanana": {
     "message": "nano-banana",
-    "description": "Nano Banana base model option"
+    "description": "Nano Banana 기본 모델 옵션"
   },
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
-    "description": "Nano Banana pro model option"
+    "description": "Nano Banana 전문 모델 옵션"
   }
 }

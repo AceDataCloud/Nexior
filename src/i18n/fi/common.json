@@ -113,11 +113,11 @@
   },
   "button.pay": {
     "message": "Maksa",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän maksamiseen palvelumaksuista"
+    "description": "Painikkeen teksti, jota käytetään käyttäjän palvelumaksun maksamiseen"
   },
   "button.repay": {
     "message": "Jatka maksamista",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän maksamisen jatkamiseen"
+    "description": "Painikkeen teksti, jota käytetään käyttäjän palvelumaksun jatkamiseen"
   },
   "button.applied": {
     "message": "On haettu",
@@ -133,7 +133,7 @@
   },
   "button.buyMore": {
     "message": "Osta lisää",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän ostamiseen lisää sisältöä"
+    "description": "Painikkeen teksti, jota käytetään käyttäjän lisää sisällön ostamiseen"
   },
   "button.update": {
     "message": "Päivitä",
@@ -205,7 +205,7 @@
   },
   "entity.order": {
     "message": "Tilaus",
-    "description": "Entiteetin tilaus, joka sisältää summan ja palvelutiedot, käyttäjän on maksettava siitä"
+    "description": "Entiteetin tilaus, tilaus sisältää summan, palvelutiedot, käyttäjän on maksettava siitä"
   },
   "message.noTasks": {
     "message": "Ei historiallisia tehtäviä, aloita uusi tehtävä～",
@@ -220,20 +220,20 @@
     "description": "Näyttää jäljellä olevan summan palvelusta"
   },
   "message.copied": {
-    "message": "Kopiointi onnistui",
-    "description": "Viesti, joka ilmoittaa, että sisältö on onnistuneesti kopioitu"
+    "message": "Kopioitu onnistuneesti",
+    "description": "Viesti, joka ilmoittaa, että sisältö on kopioitu onnistuneesti"
   },
   "message.restart": {
     "message": "Uudelleenluonti",
-    "description": "Viesti, joka ilmoittaa, että sisältö on onnistuneesti kopioitu"
+    "description": "Viesti, joka ilmoittaa, että sisältö on kopioitu onnistuneesti"
   },
   "message.confirmDelete": {
-    "message": "Haluatko varmasti poistaa tämän?",
+    "message": "Haluatko varmasti poistaa?",
     "description": "Viesti, joka vahvistaa, haluaako käyttäjä poistaa jotain"
   },
   "message.expiredAt": {
-    "message": "Vanhentumisaika",
-    "description": "Näyttää palvelun vanhentumisajan"
+    "message": "Erääntymisaika",
+    "description": "Näyttää palvelun erääntymisajan"
   },
   "message.alert": {
     "message": "Varoitus",
@@ -249,7 +249,7 @@
   },
   "message.startPrice": {
     "message": "Alkaen hinta",
-    "description": "Viesti, joka näyttää palvelun alhaisimman hinnan"
+    "description": "Viesti, joka näyttää palvelun vähimmäishinnan"
   },
   "message.joinDiscord": {
     "message": "Liity Discordiin",
@@ -308,8 +308,8 @@
     "description": "Verkkosivuston navigointipalkin teksti, joka näyttää dokumenttisivun"
   },
   "nav.console": {
-    "message": "Konsoli",
-    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää konsolisivun"
+    "message": "Ohjauspaneeli",
+    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää ohjauspaneelisivun"
   },
   "nav.chatgpt": {
     "message": "ChatGPT",
@@ -520,12 +520,12 @@
     "description": "Tukisivun linkki"
   },
   "about.link8": {
-    "message": "Käyttöehdot",
-    "description": "Käyttöehdot-sivun linkki"
+    "message": "Palveluehdot",
+    "description": "Palveluehtosivun linkki"
   },
   "about.link9": {
     "message": "Tietosuojakäytäntö",
-    "description": "Tietosuojakäytäntö-sivun linkki"
+    "description": "Tietosuojakäytännön sivun linkki"
   },
   "theme.light": {
     "message": "Vaalea",
@@ -537,7 +537,7 @@
   },
   "theme.system": {
     "message": "Järjestelmä",
-    "description": "Järjestelmäteeman nimi, joka tarkoittaa teeman automaattista vaihtamista järjestelmäasetusten mukaan"
+    "description": "Järjestelmäteeman nimi, joka tarkoittaa automaattista teeman vaihtamista järjestelmäasetusten mukaan"
   },
   "settings.general": {
     "message": "Yleiset asetukset",
@@ -569,10 +569,10 @@
   },
   "nav.gemini": {
     "message": "Gemini",
-    "description": "Text in the website navigation bar to display the Gemini page, must remain as 'Gemini'"
+    "description": "Teksti verkkosivuston navigointipalkissa, joka näyttää Gemini-sivun, on säilytettävä 'Gemini'"
   },
   "nav.claude": {
     "message": "Claude",
-    "description": "Text in the website navigation bar to display the Claude page, must remain as 'Claude'"
+    "description": "Teksti verkkosivuston navigointipalkissa, joka näyttää Claude-sivun, on säilytettävä 'Claude'"
   }
 }

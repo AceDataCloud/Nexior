@@ -44,31 +44,35 @@
     "description": "Nom du générateur d'images Nano Banana"
   },
   "name.aspectRatio": {
-    "message": "Ratio d'aspect",
-    "description": "Ratio d'aspect de l'image générée"
+    "message": "Rapport d'aspect",
+    "description": "Rapport d'aspect de l'image générée"
   },
   "name.resolution": {
     "message": "Résolution",
     "description": "Résolution de l'image générée"
   },
   "description.resolutionProOnly": {
-    "message": "Seul le modèle nano-banana-pro prend en charge le choix de la résolution.",
-    "description": "Le réglage de la résolution s'applique uniquement au modèle pro"
+    "message": "Seul nano-banana-pro prend en charge les paramètres de résolution.",
+    "description": "Les options de résolution ne s'appliquent qu'au modèle pro"
   },
   "description.prompt": {
     "message": "Mots d'invite pour générer ou éditer une image",
     "description": "Description des mots d'invite"
   },
+  "description.action": {
+    "message": "Action pour générer une image. Si c'est `generate`, l'image sera générée selon les mots d'invite ; si c'est `edit`, l'image sera éditée en fonction des mots d'invite et de l'image téléchargée.",
+    "description": "Description du paramètre action"
+  },
   "description.model": {
-    "message": "Le modèle utilisé pour générer les images. Par défaut : nano-banana. nano-banana-pro est un alias de gemini-3-pro-image ; nano-banana est un alias de gemini-2.5-flash-image.",
+    "message": "Modèle utilisé pour générer l'image. Par défaut, c'est nano-banana. nano-banana-pro est un alias pour gemini-3-pro-image, nano-banana est un alias pour gemini-2.5-flash-image.",
     "description": "Description du paramètre model"
   },
   "description.imageUrls": {
-    "message": "Vous devez télécharger de 1 à 5 images pour la tâche d'édition d'image.",
+    "message": "Doit télécharger 1 à 5 images pour la tâche d'édition d'image.",
     "description": "Description du paramètre image_urls"
   },
   "description.aspectRatio": {
-    "message": "Ratio d'aspect de l'image générée. Les valeurs prises en charge sont `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. La valeur par défaut est `1:1`. Ne prend effet que lorsque `action` est `generate`; si `action` est `edit`, le ratio sera basé sur la première image dans `image_urls`.",
+    "message": "Rapport d'aspect de l'image générée. Les valeurs prises en charge sont `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. La valeur par défaut est `1:1`. Ne s'applique que lorsque `action` est `generate` ; si `action` est `edit`, le rapport sera basé sur la première image dans `image_urls`.",
     "description": "Description du paramètre aspect_ratio"
   },
   "status.pending": {
@@ -116,15 +120,15 @@
     "description": "Échec du téléchargement"
   },
   "name.model": {
-    "message": "Model",
-    "description": "Nano Banana model selector label"
+    "message": "Modèle",
+    "description": "Étiquette de sélection du modèle Nano Banana"
   },
   "model.nanoBanana": {
     "message": "nano-banana",
-    "description": "Nano Banana base model option"
+    "description": "Option de modèle de base Nano Banana"
   },
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
-    "description": "Nano Banana pro model option"
+    "description": "Option de modèle professionnel Nano Banana"
   }
 }

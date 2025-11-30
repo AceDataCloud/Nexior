@@ -1,38 +1,78 @@
 {
   "field.createdAt": {
     "message": "Date de création",
-    "description": "Utilisé pour indiquer le temps de création de l'enregistrement d'utilisation."
+    "description": "Utilisé pour indiquer le moment où l'enregistrement a été créé."
   },
   "field.statusCode": {
     "message": "Code d'état",
-    "description": "Le code d'état de l'enregistrement d'utilisation."
+    "description": "Code d'état de l'enregistrement d'utilisation."
   },
   "field.application": {
-    "message": "Demande",
-    "description": "Le programme de demande pour le service."
+    "message": "Application",
+    "description": "Programme de demande de service."
   },
   "field.status": {
-    "message": "État",
-    "description": "L'état du programme de demande."
+    "message": "Statut",
+    "description": "Statut du programme de demande."
   },
   "field.api": {
     "message": "API",
-    "description": "L'API du service."
+    "description": "API du service."
   },
   "field.usedAmount": {
     "message": "Quantité utilisée",
-    "description": "La quantité de ressources utilisées."
+    "description": "Quantité de ressources utilisées."
   },
   "field.deductedAmount": {
     "message": "Quantité déduite",
-    "description": "La quantité de ressources déduites."
+    "description": "Quantité de ressources déduites."
   },
   "field.remainingAmount": {
     "message": "Quantité restante",
-    "description": "La quantité de ressources restantes."
+    "description": "Quantité de ressources restantes."
   },
   "field.metadata": {
     "message": "Métadonnées",
-    "description": "Les métadonnées de l'enregistrement d'utilisation."
+    "description": "Métadonnées de l'enregistrement d'utilisation."
+  },
+  "title.totalUsed": {
+    "message": "Consommation totale",
+    "description": "Titre de la carte de résumé de la consommation."
+  },
+  "title.usageTrend": {
+    "message": "Tendance de consommation",
+    "description": "Titre du graphique de tendance de consommation."
+  },
+  "shortcuts.today": {
+    "message": "Aujourd'hui",
+    "description": "Sélection rapide de la plage de temps d'aujourd'hui."
+  },
+  "shortcuts.last1Day": {
+    "message": "Dernier jour",
+    "description": "Sélection rapide de la plage de temps du dernier jour."
+  },
+  "shortcuts.last3Days": {
+    "message": "Derniers 3 jours",
+    "description": "Sélection rapide de la plage de temps des derniers 3 jours."
+  },
+  "shortcuts.last7Days": {
+    "message": "Derniers 7 jours",
+    "description": "Sélection rapide de la plage de temps des derniers 7 jours."
+  },
+  "shortcuts.last1Month": {
+    "message": "Dernier mois",
+    "description": "Sélection rapide de la plage de temps du dernier mois."
+  },
+  "placeholder.startDate": {
+    "message": "Date de début",
+    "description": "Espace réservé pour la date de début dans le sélecteur de plage de temps."
+  },
+  "placeholder.endDate": {
+    "message": "Date de fin",
+    "description": "Espace réservé pour la date de fin dans le sélecteur de plage de temps."
+  },
+  "placeholder.to": {
+    "message": "à",
+    "description": "Texte de séparation dans le sélecteur de plage de temps."
   }
 }

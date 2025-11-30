@@ -75,6 +75,10 @@
     "message": "Toiminto",
     "description": "Hakemuksen toiminto."
   },
+  "field.allowConsumeGlobal": {
+    "message": "Käytä yleistä saldoa",
+    "description": "Kun erikoissaldo on riittämätön, sallitaanko yleisen saldon käyttö."
+  },
   "field.amount": {
     "message": "Määrä",
     "description": "Hakemuksen määrä."
@@ -84,8 +88,8 @@
     "description": "Hakemuksen laajuus."
   },
   "field.traceId": {
-    "message": "Seuranta-ID",
-    "description": "API-palvelun hakemuksen API-kutsun seuranta-ID, älä käännä, pidä 'Seuranta-ID'."
+    "message": "Seurantatunnus",
+    "description": "API-palvelun hakemuksen API-kutsun seurantatunnus, älä käännä, pidä 'Seurantatunnus'."
   },
   "field.shouldPayPrice": {
     "message": "Lopullinen hinta",
@@ -96,8 +100,8 @@
     "description": "Tämä on verkkopalvelu, joka tarjoaa palveluja käyttäjille API:n kautta."
   },
   "field.proxy": {
-    "message": "Välimuisti",
-    "description": "Tämä on verkkopalvelu, joka tarjoaa palveluja käyttäjille HTTP-välimuistin kautta (tietojen siirtoon)."
+    "message": "Välikäsi",
+    "description": "Tämä on verkkopalvelu, joka tarjoaa palveluja käyttäjille HTTP-välikäden (tietojen siirtoon) kautta."
   },
   "field.credential": {
     "message": "Todistus",
@@ -120,8 +124,8 @@
     "description": "Hakemuksen ilmainen määrä."
   },
   "field.extraPrice": {
-    "message": "Hinta",
-    "description": "Käyttäjän maksettava hakemuksen ylimääräinen hinta."
+    "message": "Lisähinta",
+    "description": "Käyttäjän hakemuksessa maksama lisähinta."
   },
   "message.alreadyApplied": {
     "message": "Olette jo hakenut tätä palvelua, tarkistakaa ohjauspaneeli",
@@ -132,11 +136,11 @@
     "description": "Viesti, joka näytetään käyttäjälle, kun hän on onnistuneesti hakenut tätä palvelua."
   },
   "message.notApplied": {
-    "message": "Tervetuloa käyttämään palveluitamme, tarjoamme teille ilmaisen kokeilukäyttöoikeuden, napsauttakaa alla olevaa painiketta aloittaaksenne heti.",
+    "message": "Tervetuloa käyttämään palvelujamme, tarjoamme teille ilmaisen kokeilukäyttöoikeuden, napsauttakaa alla olevaa painiketta aloittaaksenne heti.",
     "description": "Viesti, joka näytetään käyttäjälle, kun hän ei ole vielä hakenut tätä palvelua."
   },
   "message.globalBalanceBuyDescription": {
-    "message": "Tämän latauksen pisteet ovat yleinen saldo, jota voidaan käyttää mihin tahansa palveluun.",
+    "message": "Tämän latauksen pisteet ovat yleistä saldoa, jota voidaan käyttää mihin tahansa palveluun.",
     "description": "Viesti, joka näytetään käyttäjälle, kun hän lataa yleistä saldoa."
   },
   "message.yourApplication": {
@@ -160,60 +164,64 @@
     "description": "Viesti, joka näytetään käyttäjälle, kun hän ei ole vielä syöttänyt pakollista parametria."
   },
   "message.applicationSelection": {
-    "message": "Alla on nykyiset hakemuksenne tai ostamanne paketit, voitte valita minkä tahansa paketin jatkaaksenne palvelun käyttöä.",
-    "description": "Viesti, joka näytetään käyttäjälle, kun hänen on valittava hakemus."
+    "message": "Seuraavat ovat nykyiset hakemasi tai ostamasi paketit, voit valita minkä tahansa paketin jatkaaksesi palvelun käyttöä.",
+    "description": "Kun käyttäjän on valittava hakemus, näytetään käyttäjälle tämä viesti."
   },
   "message.createCredentialSuccessfully": {
-    "message": "Viaton onnistui luomaan tunnistetiedot",
-    "description": "Kun käyttäjä on onnistuneesti luonut tunnistetiedot, näytetään käyttäjälle viesti."
+    "message": "Todistus luotiin onnistuneesti",
+    "description": "Kun käyttäjä on onnistuneesti luonut todistuksen, näytetään käyttäjälle tämä viesti."
   },
   "message.readPolicy": {
     "message": "Olen lukenut ja hyväksynyt",
-    "description": "Kun käyttäjä on lukenut ja hyväksynyt käytännön, näytetään käyttäjälle viesti."
+    "description": "Kun käyttäjä on lukenut ja hyväksynyt politiikan, näytetään käyttäjälle tämä viesti."
   },
   "message.policy": {
     "message": "Tietotekniikkapalveluiden käyttöehto",
-    "description": "Kun käyttäjä on lukenut ja hyväksynyt käytännön, näytetään käyttäjälle viesti."
+    "description": "Kun käyttäjä on lukenut ja hyväksynyt politiikan, näytetään käyttäjälle tämä viesti."
   },
   "message.notAgreePolicy": {
     "message": "Et ole vielä hyväksynyt tietotekniikkapalveluiden käyttöehtoja",
-    "description": "Kun käyttäjä ei ole vielä hyväksynyt käytäntöä, näytetään käyttäjälle viesti."
+    "description": "Kun käyttäjä ei ole vielä hyväksynyt politiikkaa, näytetään käyttäjälle tämä viesti."
   },
   "message.welcome": {
     "message": "Tervetuloa",
-    "description": "Kun käyttäjä vahvistaa palveluhakemuksen, näytetään käyttäjälle viesti."
+    "description": "Kun käyttäjä vahvistaa palveluhakemuksen, näytetään käyttäjälle tämä viesti."
   },
   "message.rotateCredential": {
     "message": "Nollaa avain",
-    "description": "Kun käyttäjä nollaa avaimen, näytetään käyttäjälle viesti."
+    "description": "Kun käyttäjä nollaa avaimen, näytetään käyttäjälle tämä viesti."
   },
   "message.rotateCredentialConfirm": {
-    "message": "Haluatko varmasti nollata avaimen? Nollauksen jälkeen sitä ei voi palauttaa",
-    "description": "Kun käyttäjä vahvistaa avaimen nollaamisen, näytetään käyttäjälle viesti."
+    "message": "Haluatko varmasti nollata avaimen? Nollauksen jälkeen sitä ei voi palauttaa.",
+    "description": "Kun käyttäjä vahvistaa avaimen nollaamisen, näytetään käyttäjälle tämä viesti."
   },
   "message.idDoesNotExist": {
     "message": "Hakemusta ei ole olemassa",
-    "description": "Kun hakemusta ei ole olemassa, näytetään käyttäjälle viesti."
+    "description": "Kun hakemus ei ole olemassa, näytetään käyttäjälle tämä viesti."
   },
   "message.rotateCredentialSuccessfully": {
     "message": "Avaimen nollaus onnistui",
-    "description": "Kun avaimen nollaus onnistuu, näytetään käyttäjälle viesti."
+    "description": "Kun avaimen nollaus onnistuu, näytetään käyttäjälle tämä viesti."
   },
   "message.rotateCredentialFailed": {
     "message": "Avaimen nollaus epäonnistui, ota yhteyttä tukeen",
-    "description": "Kun avaimen nollaus epäonnistuu, näytetään käyttäjälle viesti."
+    "description": "Kun avaimen nollaus epäonnistuu, näytetään käyttäjälle tämä viesti."
+  },
+  "message.fetchFailed": {
+    "message": "Sovelluksen hakeminen epäonnistui, yritä myöhemmin uudelleen.",
+    "description": "Kun sovellusluettelon hakeminen epäonnistuu, näytetään tämä viesti."
   },
   "message.updateFailed": {
     "message": "Päivitys epäonnistui",
-    "description": "Kun päivitys epäonnistuu, näytetään käyttäjälle viesti."
+    "description": "Kun päivitys epäonnistuu, näytetään käyttäjälle tämä viesti."
   },
   "message.updateSuccessfully": {
     "message": "Päivitys onnistui",
-    "description": "Kun päivitys onnistuu, näytetään käyttäjälle viesti."
+    "description": "Kun päivitys onnistuu, näytetään käyttäjälle tämä viesti."
   },
   "message.neverExpire": {
     "message": "Ei koskaan vanhene",
-    "description": "Kun hakemus ei koskaan vanhene, näytetään käyttäjälle viesti."
+    "description": "Kun hakemus ei koskaan vanhene, näytetään käyttäjälle tämä viesti."
   },
   "title.buyService": {
     "message": "Osta palvelu",
@@ -224,19 +232,31 @@
     "description": "Kun käyttäjä haluaa ladata yleistä saldoa, sivun otsikko."
   },
   "title.applicationRemainingCount": {
-    "message": "Muokkaa määrää",
-    "description": "Kun käyttäjä haluaa muokata hakemuksen määrää, sivun otsikko."
+    "message": "Muutosten määrä",
+    "description": "Kun käyttäjä haluaa muuttaa hakemusten määrää, sivun otsikko."
   },
   "title.manageApplication": {
     "message": "Hakemusten hallinta",
     "description": "Kun käyttäjä haluaa hallita hakemuksia, sivun otsikko."
   },
   "title.applicationBalance": {
-    "message": "Erityiset pisteet - {service}",
-    "description": "Kun käyttäjä tarkastelee hakemuksen saldoa, näytetään käyttäjälle viesti."
+    "message": "Erityinen saldo - {service}",
+    "description": "Kun käyttäjä tarkastelee hakemuksen saldoa, näytetään käyttäjälle tämä viesti."
+  },
+  "title.count": {
+    "message": "Sovellusten määrä",
+    "description": "Sovellusten määrän yhteenvetokortin otsikko."
+  },
+  "message.countDescription": {
+    "message": "Hallinnoi täällä erityisiä sovelluksiasi ja yleistä saldoasi.",
+    "description": "Sovellusten määräkortin alla oleva apukuvaus."
   },
   "title.globalBalance": {
     "message": "Yleinen saldo",
-    "description": "Kun käyttäjä tarkastelee yleistä saldoa, näytetään käyttäjälle viesti."
+    "description": "Kun käyttäjä tarkastelee yleistä saldoa, näytetään käyttäjälle tämä viesti."
+  },
+  "message.globalBalanceDescription": {
+    "message": "Yleinen saldo on käytettävissä kelvollisille sovelluksille.",
+    "description": "Yleisen saldon kortin selitysteksti."
   }
 }

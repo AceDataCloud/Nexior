@@ -22,6 +22,7 @@ export interface IApplication {
   user_id?: string;
   remaining_amount?: number;
   used_amount?: number;
+  allow_consume_global?: boolean;
   credentials?: ICredential[];
   created_at?: string;
   updated_at?: string;

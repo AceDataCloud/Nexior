@@ -49,7 +49,7 @@ export default defineComponent({
       return this.$store.state.pika?.config;
     },
     consumption() {
-      return getConsumption(this.config, this.service?.metadata?.price);
+      return getConsumption(this.config, this.service?.cost);
     },
     service() {
       return this.$store.state.pika?.service;

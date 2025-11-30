@@ -25,7 +25,7 @@
   },
   "name.failureReason": {
     "message": "Fehlerursache",
-    "description": "Ursache für das Scheitern der Aufgabe"
+    "description": "Grund für das Scheitern der Aufgabe"
   },
   "name.status": {
     "message": "Status",
@@ -37,7 +37,7 @@
   },
   "name.prompt": {
     "message": "Bildaufforderung",
-    "description": "Aufforderungswörter zum Erstellen/Bearbeiten"
+    "description": "Aufforderungswörter für die Erstellung/Bearbeitung"
   },
   "name.nanobananaBot": {
     "message": "Nano Banana Bot",
@@ -45,31 +45,35 @@
   },
   "name.aspectRatio": {
     "message": "Seitenverhältnis",
-    "description": "Seitenverhältnis des generierten Bildes"
+    "description": "Seitenverhältnis des zu erstellenden Bildes"
   },
   "name.resolution": {
     "message": "Auflösung",
-    "description": "Auflösung des generierten Bildes"
+    "description": "Auflösung des zu erstellenden Bildes"
   },
   "description.resolutionProOnly": {
-    "message": "Nur das Modell nano-banana-pro unterstützt die Auswahl der Auflösung.",
-    "description": "Die Auflösung gilt nur für das Pro-Modell"
+    "message": "Nur nano-banana-pro unterstützt die Einstellung der Auflösung.",
+    "description": "Die Auflösungsoptionen gelten nur für das Pro-Modell"
   },
   "description.prompt": {
-    "message": "Aufforderungswörter zum Erstellen oder Bearbeiten von Bildern",
+    "message": "Aufforderungswörter zur Erstellung oder Bearbeitung von Bildern",
     "description": "Beschreibung der Aufforderungswörter"
   },
+  "description.action": {
+    "message": "Aktion zum Erstellen von Bildern. Wenn `generate`, wird das Bild basierend auf den Aufforderungswörtern erstellt; wenn `edit`, wird es basierend auf den Aufforderungswörtern und dem hochgeladenen Bild bearbeitet.",
+    "description": "Erläuterung des action-Parameters"
+  },
   "description.model": {
-    "message": "Das Modell zum Generieren der Bilder. Standard ist nano-banana. nano-banana-pro ist ein Alias für gemini-3-pro-image, nano-banana ist ein Alias für gemini-2.5-flash-image.",
-    "description": "Beschreibung des Modell-Parameters"
+    "message": "Modell zur Erstellung von Bildern. Standard ist nano-banana. nano-banana-pro ist ein Alias für gemini-3-pro-image, nano-banana ist ein Alias für gemini-2.5-flash-image.",
+    "description": "Erläuterung des model-Parameters"
   },
   "description.imageUrls": {
     "message": "Es müssen 1-5 Bilder für die Bildbearbeitungsaufgabe hochgeladen werden.",
-    "description": "Erläuterung des Parameters image_urls"
+    "description": "Erläuterung des image_urls-Parameters"
   },
   "description.aspectRatio": {
-    "message": "Seitenverhältnis des generierten Bildes. Unterstützte Werte sind `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Der Standardwert ist `1:1`. Gilt nur, wenn `action` `generate` ist; wenn `action` `edit` ist, gilt das Verhältnis des ersten Bildes in `image_urls`.",
-    "description": "Erläuterung des Parameters aspect_ratio"
+    "message": "Seitenverhältnis des zu erstellenden Bildes. Unterstützte Werte sind `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Der Standardwert ist `1:1`. Gilt nur, wenn `action` `generate` ist; wenn `action` `edit` ist, gilt das Verhältnis des ersten Bildes in `image_urls`.",
+    "description": "Erläuterung des aspect_ratio-Parameters"
   },
   "status.pending": {
     "message": "Warten",
@@ -81,11 +85,11 @@
   },
   "placeholder.prompt": {
     "message": "Geben Sie die Aufforderungswörter ein, z. B.: eine weiße Siamkatze",
-    "description": "Platzhalter für Aufforderung"
+    "description": "Platzhalter für Aufforderungswörter"
   },
   "button.generate": {
-    "message": "Generieren",
-    "description": "Generieren-Button"
+    "message": "Erstellen",
+    "description": "Erstellen-Button"
   },
   "button.uploadImageUrls": {
     "message": "Bilder hochladen",
@@ -96,11 +100,11 @@
     "description": "Nachricht zum Starten der Aufgabe"
   },
   "message.startTaskSuccess": {
-    "message": "Generierungsaufgabe erfolgreich gestartet",
+    "message": "Erfolgreich eine Generierungsaufgabe gestartet",
     "description": "Aufgabe erfolgreich erstellt"
   },
   "message.startTaskFailed": {
-    "message": "Aufgabenstart fehlgeschlagen, bitte kontaktieren Sie den Administrator:",
+    "message": "Fehler beim Starten der Aufgabe, bitte kontaktieren Sie den Administrator:",
     "description": "Aufgabenerstellung fehlgeschlagen"
   },
   "message.usedUp": {
@@ -108,23 +112,23 @@
     "description": "Hinweis, dass das Guthaben aufgebraucht ist"
   },
   "message.uploadImageExceed": {
-    "message": "Es können maximal 5 Bilder hochgeladen werden",
+    "message": "Maximal 5 Bilder können hochgeladen werden",
     "description": "Bildanzahl überschreitet das Limit"
   },
   "message.uploadImageError": {
-    "message": "Hochladen des Bildes fehlgeschlagen, bitte versuchen Sie es später erneut",
-    "description": "Hochladen fehlgeschlagen"
+    "message": "Fehler beim Hochladen des Bildes, bitte versuchen Sie es später erneut",
+    "description": "Fehler beim Hochladen"
   },
   "name.model": {
-    "message": "Model",
-    "description": "Nano Banana model selector label"
+    "message": "Modell",
+    "description": "Label zur Auswahl des Nano Banana Modells"
   },
   "model.nanoBanana": {
     "message": "nano-banana",
-    "description": "Nano Banana base model option"
+    "description": "Option für das Basis-Modell von Nano Banana"
   },
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
-    "description": "Nano Banana pro model option"
+    "description": "Option für das professionelle Modell von Nano Banana"
   }
 }

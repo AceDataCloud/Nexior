@@ -52,23 +52,27 @@
     "description": "دقة الصورة المولدة"
   },
   "description.resolutionProOnly": {
-    "message": "اختيار الدقة متاح فقط لنموذج nano-banana-pro.",
-    "description": "إعداد الدقة يسري على نموذج البرو فقط"
+    "message": "تدعم إعدادات الدقة فقط nano-banana-pro.",
+    "description": "خيارات الدقة تنطبق فقط على نموذج pro"
   },
   "description.prompt": {
     "message": "نص التوليد أو التحرير للصورة",
-    "description": "وصف نص التلميح"
+    "description": "وصف نص التوليد"
+  },
+  "description.action": {
+    "message": "الإجراء لإنشاء الصورة. إذا كانت `generate`، سيتم إنشاء الصورة بناءً على نص التوليد؛ إذا كانت `edit`، سيتم تحرير الصورة بناءً على نص التوليد والصورة المرفوعة.",
+    "description": "وصف معلمة action"
   },
   "description.model": {
-    "message": "النموذج المستخدم لتوليد الصور. الافتراضي هو nano-banana. nano-banana-pro هو اسم مستعار لـ gemini-3-pro-image، و nano-banana هو اسم مستعار لـ gemini-2.5-flash-image.",
-    "description": "وصف حقل النموذج"
+    "message": "النموذج المستخدم لإنشاء الصورة. الافتراضي هو nano-banana. nano-banana-pro هو اسم مستعار لـ gemini-3-pro-image، و nano-banana هو اسم مستعار لـ gemini-2.5-flash-image.",
+    "description": "وصف معلمة model"
   },
   "description.imageUrls": {
-    "message": "يجب تحميل 1-5 صور في مهمة تحرير الصورة.",
+    "message": "يجب رفع 1-5 صور في مهمة تحرير الصورة.",
     "description": "وصف معلمة image_urls"
   },
   "description.aspectRatio": {
-    "message": "نسبة العرض إلى الارتفاع للصورة المولدة. القيم المدعومة هي `1:1`، `3:2`، `2:3`، `16:9`، `9:16`، `4:3`، `3:4`. القيمة الافتراضية هي `1:1`. تعمل فقط عندما تكون `action` هي `generate`؛ إذا كانت `action` هي `edit`، فسيتم اعتبار نسبة الصورة الأولى في `image_urls` كمعيار.",
+    "message": "نسبة العرض إلى الارتفاع للصورة المولدة. القيم المدعومة هي `1:1`، `3:2`، `2:3`، `16:9`، `9:16`، `4:3`، `3:4`. القيمة الافتراضية هي `1:1`. تنطبق فقط عندما تكون `action` هي `generate`؛ إذا كانت `action` هي `edit`، فسيتم اعتبار نسبة الصورة الأولى في `image_urls`.",
     "description": "وصف معلمة aspect_ratio"
   },
   "status.pending": {
@@ -77,19 +81,19 @@
   },
   "placeholder.select": {
     "message": "اختر",
-    "description": "نص اختيار"
+    "description": "نص مكان للاختيار"
   },
   "placeholder.prompt": {
-    "message": "أدخل نص التلميح، مثل: قطة سيامية بيضاء",
-    "description": "نص تلميح"
+    "message": "أدخل نص التوليد، مثل: قطة سيامية بيضاء",
+    "description": "نص مكان لنص التوليد"
   },
   "button.generate": {
     "message": "توليد",
     "description": "زر التوليد"
   },
   "button.uploadImageUrls": {
-    "message": "تحميل الصور",
-    "description": "زر تحميل الصور المرجعية"
+    "message": "رفع الصور",
+    "description": "زر رفع الصور المرجعية"
   },
   "message.startingTask": {
     "message": "جارٍ بدء المهمة...",
@@ -100,7 +104,7 @@
     "description": "تم إنشاء المهمة بنجاح"
   },
   "message.startTaskFailed": {
-    "message": "فشل بدء المهمة، يرجى الاتصال بالمسؤول:",
+    "message": "فشل بدء المهمة، يرجى الاتصال بالمدير:",
     "description": "فشل إنشاء المهمة"
   },
   "message.usedUp": {
@@ -108,23 +112,23 @@
     "description": "رسالة نفاد النقاط"
   },
   "message.uploadImageExceed": {
-    "message": "يمكنك تحميل ما يصل إلى 5 صور كحد أقصى",
+    "message": "يمكنك رفع ما يصل إلى 5 صور",
     "description": "تجاوز عدد الصور الحد المسموح به"
   },
   "message.uploadImageError": {
-    "message": "فشل تحميل الصورة، يرجى المحاولة مرة أخرى لاحقًا",
-    "description": "فشل التحميل"
+    "message": "فشل رفع الصورة، يرجى المحاولة مرة أخرى لاحقًا",
+    "description": "فشل الرفع"
   },
   "name.model": {
-    "message": "Model",
-    "description": "Nano Banana model selector label"
+    "message": "النموذج",
+    "description": "علامة اختيار نموذج Nano Banana"
   },
   "model.nanoBanana": {
     "message": "nano-banana",
-    "description": "Nano Banana base model option"
+    "description": "خيار نموذج Nano Banana الأساسي"
   },
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
-    "description": "Nano Banana pro model option"
+    "description": "خيار نموذج Nano Banana الاحترافي"
   }
 }

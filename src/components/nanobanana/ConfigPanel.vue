@@ -54,7 +54,7 @@ export default defineComponent({
           ...cfg,
           action: hasReferenceImages ? 'edit' : 'generate'
         },
-        this.service?.metadata?.price
+        this.service?.cost
       );
     },
     service() {

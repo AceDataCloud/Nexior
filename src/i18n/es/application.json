@@ -75,6 +75,10 @@
     "message": "Operación",
     "description": "Operación de la solicitud."
   },
+  "field.allowConsumeGlobal": {
+    "message": "Usar saldo global",
+    "description": "Si se permite consumir saldo global cuando el saldo exclusivo es insuficiente."
+  },
   "field.amount": {
     "message": "Cantidad",
     "description": "Cantidad de la solicitud."
@@ -93,11 +97,11 @@
   },
   "field.api": {
     "message": "API",
-    "description": "Este es un servicio en línea que se ofrece a los usuarios a través de una API."
+    "description": "Este es un servicio en línea que proporciona servicios a los usuarios a través de API."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Este es un servicio en línea que se ofrece a los usuarios a través de un proxy HTTP (para la transmisión de datos)."
+    "description": "Este es un servicio en línea que proporciona servicios a los usuarios a través de un proxy HTTP (para la transmisión de datos)."
   },
   "field.credential": {
     "message": "Credencial",
@@ -120,7 +124,7 @@
     "description": "Cantidad gratuita de la solicitud."
   },
   "field.extraPrice": {
-    "message": "Precio",
+    "message": "Precio adicional",
     "description": "Precio adicional que el usuario debe pagar por la solicitud."
   },
   "message.alreadyApplied": {
@@ -132,16 +136,16 @@
     "description": "Mensaje mostrado al usuario cuando ha solicitado este servicio con éxito."
   },
   "message.notApplied": {
-    "message": "Bienvenido a utilizar nuestro servicio, le otorgaremos una cuota de prueba gratuita, haga clic en el botón de abajo para comenzar de inmediato.",
+    "message": "Le damos la bienvenida a utilizar nuestro servicio, le otorgaremos una cuota de prueba gratuita, por favor haga clic en el botón de abajo para comenzar de inmediato.",
     "description": "Mensaje mostrado al usuario cuando aún no ha solicitado este servicio."
   },
   "message.globalBalanceBuyDescription": {
-    "message": "Los puntos de esta recarga son saldo general, que se puede utilizar para cualquier servicio.",
-    "description": "Mensaje mostrado al usuario cuando recarga saldo general."
+    "message": "Los puntos de esta recarga son saldo global, que se puede usar para cualquier servicio.",
+    "description": "Mensaje mostrado al usuario cuando recarga saldo global."
   },
   "message.yourApplication": {
     "message": "Su solicitud",
-    "description": "Mensaje mostrado al usuario cuando está en su solicitud."
+    "description": "Mensaje mostrado al usuario sobre su solicitud."
   },
   "message.unverified": {
     "message": "Necesita completar la verificación de identidad antes de poder solicitar este servicio",
@@ -161,59 +165,63 @@
   },
   "message.applicationSelection": {
     "message": "A continuación se presentan los paquetes que ha solicitado o comprado actualmente, puede elegir uno para continuar utilizando el servicio.",
-    "description": "Mensaje mostrado al usuario cuando necesita seleccionar una solicitud."
+    "description": "Cuando se muestra un mensaje al usuario para que seleccione una solicitud."
   },
   "message.createCredentialSuccessfully": {
-    "message": "Credencial creada con éxito",
-    "description": "Mensaje mostrado al usuario cuando crea una credencial con éxito."
+    "message": "Credenciales creadas con éxito",
+    "description": "Cuando se muestra un mensaje al usuario indicando que ha creado credenciales con éxito."
   },
   "message.readPolicy": {
     "message": "He leído y acepto",
-    "description": "Mensaje mostrado al usuario cuando ha leído y aceptado la política."
+    "description": "Cuando se muestra un mensaje al usuario indicando que ha leído y aceptado la política."
   },
   "message.policy": {
     "message": "Acuerdo de uso de servicios tecnológicos de datos",
-    "description": "Mensaje mostrado al usuario cuando ha leído y aceptado la política."
+    "description": "Cuando se muestra un mensaje al usuario indicando que ha leído y aceptado la política."
   },
   "message.notAgreePolicy": {
     "message": "No ha aceptado el acuerdo de uso de servicios tecnológicos de datos",
-    "description": "Mensaje mostrado al usuario cuando no ha aceptado la política."
+    "description": "Cuando se muestra un mensaje al usuario indicando que no ha aceptado la política."
   },
   "message.welcome": {
     "message": "Bienvenido",
-    "description": "Mensaje mostrado al usuario cuando confirma la solicitud de servicio."
+    "description": "Cuando se muestra un mensaje al usuario al confirmar la solicitud de servicio."
   },
   "message.rotateCredential": {
     "message": "Restablecer clave",
-    "description": "Mensaje mostrado al usuario cuando restablece la clave."
+    "description": "Cuando se muestra un mensaje al usuario al restablecer la clave."
   },
   "message.rotateCredentialConfirm": {
-    "message": "¿Está seguro de que desea restablecer la clave? No se podrá recuperar después del restablecimiento.",
-    "description": "Mensaje mostrado al usuario cuando confirma el restablecimiento de la clave."
+    "message": "¿Está seguro de que desea restablecer la clave? No se podrá recuperar después de restablecer.",
+    "description": "Cuando se muestra un mensaje al usuario al confirmar el restablecimiento de la clave."
   },
   "message.idDoesNotExist": {
     "message": "La solicitud no existe",
-    "description": "Mensaje mostrado al usuario cuando la solicitud no existe."
+    "description": "Cuando se muestra un mensaje al usuario indicando que la solicitud no existe."
   },
   "message.rotateCredentialSuccessfully": {
     "message": "Clave restablecida con éxito",
-    "description": "Mensaje mostrado al usuario cuando la clave se restablece con éxito."
+    "description": "Cuando se muestra un mensaje al usuario indicando que la clave se ha restablecido con éxito."
   },
   "message.rotateCredentialFailed": {
     "message": "Error al restablecer la clave, por favor contacte al soporte",
-    "description": "Mensaje mostrado al usuario cuando el restablecimiento de la clave falla."
+    "description": "Cuando se muestra un mensaje al usuario indicando que el restablecimiento de la clave ha fallado."
+  },
+  "message.fetchFailed": {
+    "message": "Error al obtener la aplicación, por favor intente de nuevo más tarde.",
+    "description": "Mensaje de error al fallar al obtener la lista de aplicaciones."
   },
   "message.updateFailed": {
     "message": "Error al modificar",
-    "description": "Mensaje mostrado al usuario cuando la modificación falla."
+    "description": "Cuando se muestra un mensaje al usuario indicando que la modificación ha fallado."
   },
   "message.updateSuccessfully": {
     "message": "Modificación exitosa",
-    "description": "Mensaje mostrado al usuario cuando la modificación se realiza con éxito."
+    "description": "Cuando se muestra un mensaje al usuario indicando que la modificación ha sido exitosa."
   },
   "message.neverExpire": {
     "message": "Nunca expira",
-    "description": "Mensaje mostrado al usuario cuando la solicitud nunca expira."
+    "description": "Cuando se muestra un mensaje al usuario indicando que la solicitud nunca expira."
   },
   "title.buyService": {
     "message": "Comprar servicio",
@@ -224,7 +232,7 @@
     "description": "Título de la página cuando el usuario desea recargar el saldo general."
   },
   "title.applicationRemainingCount": {
-    "message": "Cantidad de modificaciones",
+    "message": "Modificar cantidad",
     "description": "Título de la página cuando el usuario desea modificar la cantidad de solicitudes."
   },
   "title.manageApplication": {
@@ -233,10 +241,22 @@
   },
   "title.applicationBalance": {
     "message": "Puntos exclusivos - {service}",
-    "description": "Mensaje mostrado al usuario cuando visualiza el saldo de la solicitud."
+    "description": "Mensaje mostrado al usuario al ver el saldo de la solicitud."
+  },
+  "title.count": {
+    "message": "Cantidad de aplicaciones",
+    "description": "Título de la tarjeta de resumen de la cantidad de aplicaciones."
+  },
+  "message.countDescription": {
+    "message": "Administra tus aplicaciones exclusivas y saldo general aquí.",
+    "description": "Descripción auxiliar debajo de la tarjeta de cantidad de aplicaciones."
   },
   "title.globalBalance": {
     "message": "Saldo general",
-    "description": "Mensaje mostrado al usuario cuando visualiza el saldo general."
+    "description": "Mensaje mostrado al usuario al ver el saldo general."
+  },
+  "message.globalBalanceDescription": {
+    "message": "El saldo general está disponible para aplicaciones elegibles.",
+    "description": "Texto descriptivo de la tarjeta de saldo general."
   }
 }
