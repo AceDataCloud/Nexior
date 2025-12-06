@@ -5,11 +5,13 @@
   <div v-else-if="tasks && tasks?.length === 0" class="w-full h-full flex items-center justify-center">
     <no-tasks />
   </div>
-  <div
+  <scroll-list
     v-else-if="tasks.length > 0"
-    ref="panel"
+    ref="scrollList"
     class="p-2 py-3 h-full flex flex-col overflow-y-auto tasks"
-    @scroll="onHandleScroll"
+    :loading="loading"
+    :floating-loader="floatingLoader"
+    @reach-top="$emit('reach-top')"
   >
     <task-item
       v-for="task in tasks"
@@ -18,7 +20,7 @@
       @extend="$emit('extend', $event)"
       @custom="$emit('custom', $event)"
     />
-  </div>
+  </scroll-list>
 </template>
 
 <script lang="ts">
@@ -26,13 +28,25 @@ import { defineComponent } from 'vue';
 import TaskItem from './TaskItem.vue';
 import BotPlaceholder from '@/components/common/BotPlaceholder.vue';
 import NoTasks from '@/components/common/NoTasks.vue';
+import ScrollList from '@/components/common/ScrollList.vue';
 
 export default defineComponent({
   name: 'TaskList',
   components: {
     TaskItem,
     BotPlaceholder,
-    NoTasks
+    NoTasks,
+    ScrollList
+  },
+  props: {
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    floatingLoader: {
+      type: Boolean,
+      default: true
+    }
   },
   emits: ['custom', 'extend', 'reach-top'],
   data() {
@@ -50,12 +64,9 @@ export default defineComponent({
     }
   },
   methods: {
-    onHandleScroll() {
-      const el = this.$refs.panel as HTMLElement;
-      if (el.scrollTop === 0) {
-        console.log('reach-top reach-top');
-        this.$emit('reach-top');
-      }
+    getScrollElement(): HTMLElement | undefined {
+      const list = this.$refs.scrollList as any;
+      return list?.getScrollElement?.();
     }
   }
 });

@@ -1,27 +1,31 @@
 <template>
-  <el-dialog v-model="editing" :title="title" width="400px">
-    <el-tag
-      v-for="(item, itemKey) in value"
-      :key="itemKey"
-      closable
-      round
-      class="mr-2 mb-2"
-      :disable-transitions="false"
-      @close="onClose(item)"
-    >
-      {{ item }}
-    </el-tag>
-    <el-input
-      v-if="inputVisible"
-      ref="input"
-      v-model="inputValue"
-      class="block"
-      size="small"
-      @keyup.enter="onInputConfirm"
-      @blur="onInputConfirm"
-    />
-    <el-button v-else round class="block" size="small" @click="onNewItem"> + </el-button>
-    <span class="block tip">{{ tip }}</span>
+  <el-dialog v-model="editing" :title="title" width="400px" class="edit-dialog">
+    <div class="edit-body">
+      <div class="tags">
+        <el-tag
+          v-for="(item, itemKey) in value"
+          :key="itemKey"
+          closable
+          round
+          class="mr-2 mb-2"
+          :disable-transitions="false"
+          @close="onClose(item)"
+        >
+          {{ item }}
+        </el-tag>
+      </div>
+      <el-input
+        v-if="inputVisible"
+        ref="input"
+        v-model="inputValue"
+        class="block"
+        size="small"
+        @keyup.enter="onInputConfirm"
+        @blur="onInputConfirm"
+      />
+      <el-button v-else round class="block" size="small" @click="onNewItem"> + </el-button>
+      <span class="block tip">{{ tip }}</span>
+    </div>
     <template #footer>
       <span class="dialog-footer">
         <el-button round @click="onCancel">{{ $t('common.button.cancel') }}</el-button>
@@ -133,5 +137,61 @@ export default defineComponent({
 .tip {
   color: var(--el-text-color-secondary);
   font-size: 12px;
+}
+
+.edit-dialog {
+  .el-dialog__header {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding-right: 48px;
+  }
+
+  .el-dialog__title {
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .el-dialog__headerbtn {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .el-dialog__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .edit-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+  }
+
+  .el-input {
+    max-width: 320px;
+  }
+
+  .dialog-footer {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+  }
 }
 </style>

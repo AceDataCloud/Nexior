@@ -1,179 +1,156 @@
 <template>
-  <el-form :model="site" class="form" label-width="auto" style="max-width: 600px">
-    <el-form-item
-      v-for="(feature, featureIndex) in [
-        'chatgpt',
-        'grok',
-        'gemini',
-        'claude',
-        'deepseek',
-        'midjourney',
-        'qrart',
-        'suno',
-        'luma',
-        'pika',
-        'kling',
-        'veo',
-        'sora',
-        'pixverse',
-        'flux',
-        'hailuo',
-        'headshots',
-        'nanobanana'
-      ]"
-      :key="featureIndex"
-      :label="$t('site.field.features' + feature.charAt(0).toUpperCase() + feature.slice(1))"
-    >
-      <div class="w-full">
+  <div class="settings-list">
+    <section v-for="feature in featureKeys" :key="feature" class="settings-item">
+      <div class="settings-label">
+        <p class="settings-title">{{ featureLabel(feature) }}</p>
+        <p class="settings-tip">
+          {{ featureTip(feature) }}
+        </p>
+      </div>
+      <div class="settings-content">
         <el-switch
-          :model-value="site.features[feature]?.enabled || false"
+          :model-value="site.features?.[feature]?.enabled || false"
           inline-prompt
           :active-text="$t('site.button.enabled')"
           :inactive-text="$t('site.button.disabled')"
-          @update:model-value="
-            onSave({
-              features: {
-                ...site.features,
-                [feature]: {
-                  ...site.features[feature],
-                  enabled: $event
-                }
-              }
-            })
-          "
+          @update:model-value="onToggleFeature(feature, $event)"
         />
-      </div>
-      <span class="block tip w-full">
-        {{ $t('site.message.features' + feature.charAt(0).toUpperCase() + feature.slice(1)) }}
-      </span>
-      <div v-if="feature === 'support'" v-show="site.features[feature]?.enabled">
-        <el-form-item label="WeChat">
-          <el-switch
-            :model-value="site.features[feature]?.wechat?.enabled || false"
-            inline-prompt
-            :active-text="$t('site.button.enabled')"
-            :inactive-text="$t('site.button.disabled')"
-            @update:model-value="
-              onSave({
-                features: {
-                  ...site.features,
-                  [feature]: {
-                    ...site.features[feature],
-                    wechat: {
-                      ...site.features[feature]?.wechat,
-                      enabled: $event
-                    }
-                  }
-                }
-              })
-            "
-          ></el-switch>
-        </el-form-item>
-        <el-form-item v-show="site.features[feature]?.wechat?.enabled" :label="$t('site.field.qr')">
-          <span class="block w-full">
-            <el-image :src="site.features[feature]?.wechat?.qr" />
+
+        <div v-if="feature === 'support' && site.features?.[feature]?.enabled" class="settings-nested">
+          <div class="settings-subitem">
+            <span class="settings-sub-label">WeChat</span>
+            <el-switch
+              :model-value="site.features?.[feature]?.wechat?.enabled || false"
+              inline-prompt
+              :active-text="$t('site.button.enabled')"
+              :inactive-text="$t('site.button.disabled')"
+              @update:model-value="onToggleSupportChannel(feature, 'wechat', $event)"
+            />
+          </div>
+
+          <div v-show="site.features?.[feature]?.wechat?.enabled" class="settings-subitem">
+            <el-image :src="site.features?.[feature]?.wechat?.qr" class="settings-media" fit="contain" />
             <edit-image
-              :model-value="site.features[feature]?.wechat?.qr"
+              :model-value="site.features?.[feature]?.wechat?.qr"
               :title="$t('site.title.editQR')"
               :tip="$t('site.message.editQRTip')"
               @confirm="
-                onSave({
-                  features: {
-                    ...site.features,
-                    [feature]: {
-                      ...site.features[feature],
-                      wechat: {
-                        ...site.features[feature]?.wechat,
-                        qr: $event
-                      }
-                    }
+                updateFeature(feature, {
+                  wechat: {
+                    ...(site.features?.[feature]?.wechat || {}),
+                    qr: $event
                   }
                 })
               "
             />
-          </span>
-        </el-form-item>
-        <el-form-item label="Discord">
-          <el-switch
-            :model-value="site.features[feature]?.discord?.enabled || false"
-            inline-prompt
-            :active-text="$t('site.button.enabled')"
-            :inactive-text="$t('site.button.disabled')"
-            @update:model-value="
-              onSave({
-                features: {
-                  ...site.features,
-                  [feature]: {
-                    ...site.features[feature],
-                    discord: {
-                      ...site.features[feature]?.discord,
-                      enabled: $event
-                    }
-                  }
-                }
-              })
-            "
-          ></el-switch>
-        </el-form-item>
-        <el-form-item v-show="site.features[feature]?.discord?.enabled" :label="$t('site.field.url')">
-          <span class="block w-full">
-            {{ site.features[feature]?.discord?.url }}
+          </div>
+
+          <div class="settings-subitem">
+            <span class="settings-sub-label">Discord</span>
+            <el-switch
+              :model-value="site.features?.[feature]?.discord?.enabled || false"
+              inline-prompt
+              :active-text="$t('site.button.enabled')"
+              :inactive-text="$t('site.button.disabled')"
+              @update:model-value="onToggleSupportChannel(feature, 'discord', $event)"
+            />
+          </div>
+
+          <div v-show="site.features?.[feature]?.discord?.enabled" class="settings-subitem">
+            <span class="settings-value">{{ site.features?.[feature]?.discord?.url }}</span>
             <edit-text
-              :model-value="site.features[feature]?.discord?.url"
+              :model-value="site.features?.[feature]?.discord?.url"
               :title="$t('site.title.editUrl')"
               :placeholder="$t('site.placeholder.editUrl')"
               @confirm="
-                onSave({
-                  features: {
-                    ...site.features,
-                    [feature]: {
-                      ...site.features[feature],
-                      discord: {
-                        ...site.features[feature]?.discord,
-                        url: $event
-                      }
-                    }
+                updateFeature(feature, {
+                  discord: {
+                    ...(site.features?.[feature]?.discord || {}),
+                    url: $event
                   }
                 })
               "
             />
-          </span>
-        </el-form-item>
+          </div>
+        </div>
       </div>
-    </el-form-item>
-  </el-form>
+    </section>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElForm, ElFormItem, ElImage, ElSwitch } from 'element-plus';
+import { ElImage, ElSwitch } from 'element-plus';
 import EditText from '@/components/site/EditText.vue';
 import EditImage from '@/components/site/EditImage.vue';
 import { siteOperator } from '@/operators';
 
+const FEATURE_KEYS = [
+  'chatgpt',
+  'grok',
+  'gemini',
+  'claude',
+  'deepseek',
+  'midjourney',
+  'qrart',
+  'suno',
+  'luma',
+  'pika',
+  'kling',
+  'veo',
+  'sora',
+  'pixverse',
+  'flux',
+  'hailuo',
+  'headshots',
+  'nanobanana'
+];
+
 export default defineComponent({
-  name: 'SiteIndex',
+  name: 'FunctionSetting',
   components: {
     EditText,
     EditImage,
     ElImage,
-    ElForm,
-    ElSwitch,
-    ElFormItem
-  },
-  data() {
-    return {
-      editing: {
-        title: false
-      }
-    };
+    ElSwitch
   },
   computed: {
     site() {
-      return this.$store.getters.site;
+      return this.$store.getters.site || { features: {} };
+    },
+    featureKeys() {
+      return FEATURE_KEYS;
     }
   },
   methods: {
+    featureLabel(feature: string) {
+      return this.$t('site.field.features' + feature.charAt(0).toUpperCase() + feature.slice(1));
+    },
+    featureTip(feature: string) {
+      return this.$t('site.message.features' + feature.charAt(0).toUpperCase() + feature.slice(1));
+    },
+    updateFeature(feature: string, updates: Record<string, unknown>) {
+      this.onSave({
+        features: {
+          ...(this.site.features || {}),
+          [feature]: {
+            ...(this.site.features?.[feature] || {}),
+            ...updates
+          }
+        }
+      });
+    },
+    onToggleFeature(feature: string, enabled: boolean) {
+      this.updateFeature(feature, { enabled });
+    },
+    onToggleSupportChannel(feature: string, channel: 'wechat' | 'discord', enabled: boolean) {
+      this.updateFeature(feature, {
+        [channel]: {
+          ...(this.site.features?.[feature]?.[channel] || {}),
+          enabled
+        }
+      });
+    },
     onSave(data: any) {
       const payload = {
         ...this.site,
@@ -189,30 +166,40 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.panel {
-  padding: 30px;
-  background-color: var(--el-bg-color-page);
-  overflow-y: auto;
-  h2.title {
-    font-size: 26px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: var(--el-text-color-primary);
+.settings-nested {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  width: 100%;
+}
+
+.settings-subitem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.settings-sub-label {
+  font-weight: 600;
+  color: var(--el-text-color-primary);
+}
+
+.settings-media {
+  max-width: 120px;
+  border-radius: 8px;
+  background-color: var(--el-fill-color-light);
+}
+
+@media (max-width: 640px) {
+  .settings-nested {
+    align-items: flex-start;
   }
-  h4.title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: var(--el-text-color-primary);
-  }
-  .form {
-    .logo {
-      max-width: 200px;
-    }
-    .tip {
-      color: var(--el-text-color-secondary);
-      font-size: 12px;
-    }
+
+  .settings-subitem {
+    align-items: flex-start;
   }
 }
 </style>

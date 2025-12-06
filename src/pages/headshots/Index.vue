@@ -14,7 +14,7 @@
         @refresh="onGetApplication"
         @select="$store.dispatch('headshots/setApplication', $event)"
       />
-      <recent-panel class="panel recent" @reach-top="onReachTop" />
+      <recent-panel ref="recentPanel" class="panel recent" :loading="loadingMore" @reach-top="onReachTop" />
       <!-- <operation-panel class="panel operation" @generate="onGenerate" /> -->
     </template>
   </layout>
@@ -31,12 +31,15 @@ import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP } from '@/constants';
 import ApplicationStatus from '@/components/application/Status.vue';
 import RecentPanel from '@/components/headshots/RecentPanel.vue';
 import { IHeadshotsTask } from '@/models';
+import { loadPreviousPage } from '@/utils/pagination';
 
 const CALLBACK_URL = 'https://webhook.acedata.cloud/headshots';
 
 interface IData {
   task: IHeadshotsTask | undefined;
   job: number;
+  loadingMore: boolean;
+  fetchingTasks: boolean;
 }
 
 export default defineComponent({
@@ -51,12 +54,17 @@ export default defineComponent({
   data(): IData {
     return {
       task: undefined,
-      job: 0
+      job: 0,
+      loadingMore: false,
+      fetchingTasks: false
     };
   },
   computed: {
-    loading() {
+    applicationsLoading() {
       return this.$store.state.headshots?.status?.getApplications === Status.Request;
+    },
+    tasksLoading() {
+      return this.$store.state.headshots?.status?.getTasks === Status.Request || this.fetchingTasks;
     },
     service() {
       return this.$store.state.headshots.service;
@@ -116,9 +124,17 @@ export default defineComponent({
   },
   methods: {
     async onReachTop() {
-      console.debug('reached top');
-      await this.onGetTasks({
-        createdAtMax: this.tasks?.items?.[0]?.created_at
+      await loadPreviousPage({
+        tasks: this.tasks,
+        getTasks: () => this.tasks,
+        loading: this.loadingMore,
+        setLoading: (v) => (this.loadingMore = v),
+        isBlocked: () => this.tasksLoading || this.applicationsLoading,
+        fetch: (createdAtMax) =>
+          this.onGetTasks({
+            createdAtMax
+          }),
+        getScrollElement: () => this.getTasksScrollElement()
       });
     },
     async onGetService() {
@@ -149,27 +165,30 @@ export default defineComponent({
         });
     },
     async onScrollDown() {
-      setTimeout(() => {
-        // scroll to bottom for `.recent`
-        const el = document.querySelector('.recent');
-        if (el) {
-          el.scrollTop = el.scrollHeight;
-        }
-      }, 500);
+      await this.$nextTick();
+      const el = this.getTasksScrollElement();
+      if (el) {
+        el.scrollTop = el.scrollHeight;
+      }
     },
     async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number }) {
-      if (this.loading) {
+      if (this.applicationsLoading || this.fetchingTasks) {
         console.debug('loading');
         return;
       }
       console.debug('start onGetTasks', payload);
       const { limit = 5, createdAtMin, createdAtMax } = payload || {};
       console.debug('limit', limit, 'createdAtMin', createdAtMin, 'createdAtMax', createdAtMax);
-      await this.$store.dispatch('headshots/getTasks', {
-        limit,
-        createdAtMin,
-        createdAtMax
-      });
+      this.fetchingTasks = true;
+      try {
+        await this.$store.dispatch('headshots/getTasks', {
+          limit,
+          createdAtMin,
+          createdAtMax
+        });
+      } finally {
+        this.fetchingTasks = false;
+      }
     },
     async onGeneratePicture() {
       const request = {
@@ -206,6 +225,10 @@ export default defineComponent({
             await this.onScrollDown();
           }, 1000);
         });
+    },
+    getTasksScrollElement(): HTMLElement | undefined {
+      const panel = this.$refs.recentPanel as any;
+      return panel?.getScrollElement?.();
     }
   }
 });

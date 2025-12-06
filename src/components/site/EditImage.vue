@@ -1,6 +1,6 @@
 <template>
-  <el-dialog v-model="editing" :title="title" width="400px">
-    <div>
+  <el-dialog v-model="editing" :title="title" width="400px" class="edit-dialog">
+    <div class="edit-body">
       <el-upload
         v-model:file-list="fileList"
         name="file"
@@ -114,6 +114,47 @@ export default defineComponent({
   top: 2px;
   .icon {
     font-size: 14px;
+  }
+}
+
+.edit-dialog {
+  .el-dialog__header {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding-right: 48px;
+  }
+
+  .el-dialog__title {
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .el-dialog__headerbtn {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .el-dialog__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .el-upload__tip {
+    text-align: center;
+  }
+
+  .dialog-footer {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
   }
 }
 </style>

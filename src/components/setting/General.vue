@@ -1,11 +1,21 @@
 <template>
-  <div class="flex justify-between items-center mb-4">
-    <label class="block mb-2 text-sm">{{ $t('common.settings.theme') }}</label>
-    <theme-switcher />
-  </div>
-  <div class="flex justify-between items-center mb-4">
-    <label class="block mb-2 text-sm">{{ $t('common.settings.language') }}</label>
-    <locale-switcher />
+  <div class="settings-list">
+    <section class="settings-item">
+      <div class="settings-label">
+        <p class="settings-title">{{ $t('common.settings.theme') }}</p>
+      </div>
+      <div class="settings-content">
+        <theme-switcher />
+      </div>
+    </section>
+    <section class="settings-item">
+      <div class="settings-label">
+        <p class="settings-title">{{ $t('common.settings.language') }}</p>
+      </div>
+      <div class="settings-content">
+        <locale-switcher />
+      </div>
+    </section>
   </div>
 </template>
 

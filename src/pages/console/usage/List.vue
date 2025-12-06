@@ -255,7 +255,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import {
-  IApi,
   IApplication,
   IApplicationListResponse,
   IApplicationType,
@@ -440,7 +439,7 @@ export default defineComponent({
         plugins: {
           legend: {
             position: 'top' as const,
-            onClick: (e: unknown, legendItem: any, legend: any) => {
+            onClick: (_event: unknown, legendItem: any, legend: any) => {
               const chart = legend?.chart;
               if (!chart || legendItem?.datasetIndex === undefined) return;
               const index: number = legendItem.datasetIndex;

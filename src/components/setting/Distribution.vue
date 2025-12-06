@@ -1,69 +1,70 @@
 <template>
-  <el-form :model="site" class="form" label-width="auto" style="max-width: 600px">
-    <el-form-item :label="$t('site.field.distributionDefaultInviterId')">
-      {{ site.distribution?.default_inviter_id }}
-      <edit-text
-        :model-value="site.distribution?.default_inviter_id"
-        :title="$t('site.title.editDistributionDefaultInviterId')"
-        :placeholder="$t('site.placeholder.editDistributionDefaultInviterId')"
-        @confirm="
-          onSave({
-            distribution: {
-              ...site.distribution,
-              default_inviter_id: $event
-            }
-          })
-        "
-      />
-      <span class="block tip">
-        {{ $t('site.message.distributionDefaultInviterIdTip') }}
-      </span>
-    </el-form-item>
-    <el-form-item :label="$t('site.field.distributionForceInviterId')">
-      {{ site.distribution?.force_inviter_id }}
-      <edit-text
-        :model-value="site.distribution?.force_inviter_id"
-        :title="$t('site.title.editDistributionForceInviterId')"
-        :placeholder="$t('site.placeholder.editDistributionForceInviterId')"
-        @confirm="
-          onSave({
-            distribution: {
-              ...site.distribution,
-              force_inviter_id: $event
-            }
-          })
-        "
-      />
-      <span class="block tip">
-        {{ $t('site.message.distributionForceInviterIdTip') }}
-      </span>
-    </el-form-item>
-  </el-form>
+  <div class="settings-list">
+    <section class="settings-item">
+      <div class="settings-label">
+        <p class="settings-title">{{ $t('site.field.distributionDefaultInviterId') }}</p>
+        <p class="settings-tip">
+          {{ $t('site.message.distributionDefaultInviterIdTip') }}
+        </p>
+      </div>
+      <div class="settings-content">
+        <span class="settings-value">{{ site.distribution?.default_inviter_id }}</span>
+        <edit-text
+          :model-value="site.distribution?.default_inviter_id"
+          :title="$t('site.title.editDistributionDefaultInviterId')"
+          :placeholder="$t('site.placeholder.editDistributionDefaultInviterId')"
+          @confirm="
+            onSave({
+              distribution: {
+                ...site.distribution,
+                default_inviter_id: $event
+              }
+            })
+          "
+        />
+      </div>
+    </section>
+
+    <section class="settings-item">
+      <div class="settings-label">
+        <p class="settings-title">{{ $t('site.field.distributionForceInviterId') }}</p>
+        <p class="settings-tip">
+          {{ $t('site.message.distributionForceInviterIdTip') }}
+        </p>
+      </div>
+      <div class="settings-content">
+        <span class="settings-value">{{ site.distribution?.force_inviter_id }}</span>
+        <edit-text
+          :model-value="site.distribution?.force_inviter_id"
+          :title="$t('site.title.editDistributionForceInviterId')"
+          :placeholder="$t('site.placeholder.editDistributionForceInviterId')"
+          @confirm="
+            onSave({
+              distribution: {
+                ...site.distribution,
+                force_inviter_id: $event
+              }
+            })
+          "
+        />
+      </div>
+    </section>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElForm, ElFormItem } from 'element-plus';
 import EditText from '@/components/site/EditText.vue';
 import { siteOperator } from '@/operators';
 
 export default defineComponent({
-  name: 'SiteIndex',
+  name: 'DistributionSetting',
   components: {
-    EditText,
-    ElForm,
-    ElFormItem
-  },
-  data() {
-    return {
-      editing: {
-        title: false
-      }
-    };
+    EditText
   },
   computed: {
     site() {
-      return this.$store.getters.site;
+      return this.$store.getters.site || { distribution: {} };
     }
   },
   methods: {
@@ -80,32 +81,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.panel {
-  padding: 30px;
-  background-color: var(--el-bg-color-page);
-  overflow-y: auto;
-  h2.title {
-    font-size: 26px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: var(--el-text-color-primary);
-  }
-  h4.title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: var(--el-text-color-primary);
-  }
-  .form {
-    .logo {
-      max-width: 200px;
-    }
-    .tip {
-      color: var(--el-text-color-secondary);
-      font-size: 12px;
-    }
-  }
-}
-</style>
