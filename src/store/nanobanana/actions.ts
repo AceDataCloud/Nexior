@@ -129,18 +129,22 @@ export const getTasks = async (
     createdAtMax
   }: { offset?: number; limit?: number; createdAtMin?: number; createdAtMax?: number }
 ): Promise<INanobananaTask[]> => {
+  state.status.getTasks = Status.Request;
   return new Promise((resolve, reject) => {
     console.debug('start to get tasks', offset, limit);
     const credential = state.credential;
     console.debug('current credential', credential);
     const token = credential?.token;
     if (!token) {
+      state.status.getTasks = Status.Error;
       return reject('no token');
     }
     nanobananaOperator
       .tasks(
         {
           userId: rootState?.user?.id,
+          offset,
+          limit,
           createdAtMin,
           createdAtMax,
           type: 'images'
@@ -158,9 +162,11 @@ export const getTasks = async (
         const mergedItems = mergeAndSortLists(existingItems, newItems);
         commit('setTasksItems', mergedItems);
         commit('setTasksTotal', response.data.count);
+        state.status.getTasks = Status.Success;
         resolve(response.data.items);
       })
       .catch((error) => {
+        state.status.getTasks = Status.Error;
         return reject(error);
       });
   });

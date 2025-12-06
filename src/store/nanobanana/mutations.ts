@@ -2,6 +2,12 @@ import { IApplication, ICredential, INanobananaConfig, INanobananaTask, IService
 import initialState from './state';
 import { INanobananaState } from './models';
 
+const defaultTasks = {
+  items: undefined,
+  total: undefined,
+  active: undefined
+};
+
 export const resetAll = (state: INanobananaState): void => {
   Object.assign(state, initialState());
 };
@@ -28,7 +34,7 @@ export const setConfig = (state: INanobananaState, payload: INanobananaConfig): 
 
 export const setTasksItems = (state: INanobananaState, payload: INanobananaTask[]): void => {
   const newPayload = {
-    ...state.tasks,
+    ...(state.tasks || defaultTasks),
     items: payload
   } as typeof state.tasks;
   state.tasks = newPayload;
@@ -36,7 +42,7 @@ export const setTasksItems = (state: INanobananaState, payload: INanobananaTask[
 
 export const setTasksTotal = (state: INanobananaState, payload: number): void => {
   const newPayload = {
-    ...state.tasks,
+    ...(state.tasks || defaultTasks),
     total: payload
   } as typeof state.tasks;
   state.tasks = newPayload;
@@ -44,7 +50,7 @@ export const setTasksTotal = (state: INanobananaState, payload: number): void =>
 
 export const setTasksActive = (state: INanobananaState, payload: INanobananaTask): void => {
   const newPayload = {
-    ...state.tasks,
+    ...(state.tasks || defaultTasks),
     active: payload
   } as typeof state.tasks;
   state.tasks = newPayload;

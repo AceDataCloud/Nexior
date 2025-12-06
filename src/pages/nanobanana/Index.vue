@@ -4,7 +4,7 @@
       <config-panel @generate="onGenerate" />
     </template>
     <template #result>
-      <recent-panel @reach-top="onReachTop" />
+      <recent-panel ref="recentPanel" :loading="loading" @reach-top="onReachTop" />
     </template>
   </layout>
 </template>
@@ -25,6 +25,7 @@ const CALLBACK_URL = 'https://webhook.acedata.cloud/nanobanana';
 interface IData {
   task: INanobananaTask | undefined;
   job: number;
+  loading: boolean;
 }
 
 export default defineComponent({
@@ -38,12 +39,16 @@ export default defineComponent({
   data(): IData {
     return {
       task: undefined,
-      job: 0
+      job: 0,
+      loading: false
     };
   },
   computed: {
-    loading() {
+    applicationsLoading() {
       return this.$store.state.nanobanana?.status?.getApplications === Status.Request;
+    },
+    tasksLoading() {
+      return this.$store.state.nanobanana?.status?.getTasks === Status.Request;
     },
     credential() {
       return this.$store.state.nanobanana?.credential;
@@ -90,9 +95,35 @@ export default defineComponent({
   methods: {
     async onReachTop() {
       console.debug('reached top');
-      await this.onGetTasks({
-        createdAtMax: this.tasks?.items?.[0]?.created_at
-      });
+      if (this.loading || this.tasksLoading) {
+        return;
+      }
+      const total = this.tasks?.total;
+      const currentLength = this.tasks?.items?.length || 0;
+      if (total !== undefined && total <= currentLength) {
+        return;
+      }
+      const oldest = this.tasks?.items?.[0];
+      if (!oldest?.created_at) {
+        return;
+      }
+      const panel = this.$refs.recentPanel as any;
+      const el = panel?.getScrollElement?.() as HTMLElement | undefined;
+      const previousHeight = el?.scrollHeight || 0;
+      const previousScrollTop = el?.scrollTop || 0;
+      this.loading = true;
+      try {
+        await this.onGetTasks({
+          createdAtMax: oldest.created_at
+        });
+        await this.$nextTick();
+        if (el) {
+          const newHeight = el.scrollHeight;
+          el.scrollTop = newHeight - previousHeight + previousScrollTop;
+        }
+      } finally {
+        this.loading = false;
+      }
     },
     async onGetService() {
       console.debug('start onGetService');
@@ -106,15 +137,14 @@ export default defineComponent({
       await this.onGetTasks();
     },
     async onScrollDown() {
-      setTimeout(() => {
-        const el = document.querySelector('.tasks');
-        if (el) {
-          el.scrollTop = el.scrollHeight;
-        }
-      }, 1000);
+      await this.$nextTick();
+      const el = this.getTasksScrollElement();
+      if (el) {
+        el.scrollTop = el.scrollHeight;
+      }
     },
     async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number }) {
-      if (this.loading) {
+      if (this.applicationsLoading || this.tasksLoading) {
         console.debug('loading');
         return;
       }
@@ -176,6 +206,10 @@ export default defineComponent({
             await this.onScrollDown();
           }, 1000);
         });
+    },
+    getTasksScrollElement(): HTMLElement | undefined {
+      const panel = this.$refs.recentPanel as any;
+      return panel?.getScrollElement?.();
     }
   }
 });
