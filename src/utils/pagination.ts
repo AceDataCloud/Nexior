@@ -15,16 +15,7 @@ export async function loadPreviousPage(options: {
   getScrollElement?: () => HTMLElement | undefined;
   reachThreshold?: number;
 }) {
-  const {
-    tasks,
-    getTasks,
-    loading,
-    setLoading,
-    isBlocked,
-    fetch,
-    getScrollElement,
-    reachThreshold = 10
-  } = options;
+  const { tasks, getTasks, loading, setLoading, isBlocked, fetch, getScrollElement, reachThreshold = 10 } = options;
   const currentTasks = getTasks ? getTasks() : tasks;
   if (loading || isBlocked?.()) {
     return;
@@ -59,13 +50,7 @@ export async function loadPreviousPage(options: {
       scrollEl.scrollTop = newHeight - previousHeight + previousScrollTop;
     }
     // If仍在顶部附近且还有更多数据，自动继续拉取，避免需要人为下滑再上滑。
-    if (
-      hasMore &&
-      newLength > previousLength &&
-      scrollEl &&
-      scrollEl.scrollTop <= reachThreshold &&
-      !isBlocked?.()
-    ) {
+    if (hasMore && newLength > previousLength && scrollEl && scrollEl.scrollTop <= reachThreshold && !isBlocked?.()) {
       await loadPreviousPage({
         ...options,
         tasks: latest,
