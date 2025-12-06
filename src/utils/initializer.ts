@@ -25,9 +25,28 @@ export const getDomain = (host: string = window.location.hostname) => {
 // @ts-ignore
 window.getDomain = getDomain;
 
+const ensureElement = <T extends Element>(selector: string, create: () => T) => {
+  let element = document.querySelector(selector) as T | null;
+  if (!element) {
+    element = create();
+    document.head.appendChild(element);
+  }
+  return element;
+};
+
+const updateMetaContent = (name: string, content: string) => {
+  const metaTag = ensureElement<HTMLMetaElement>(`meta[name="${name}"]`, () => {
+    const element = document.createElement('meta');
+    element.setAttribute('name', name);
+    return element;
+  });
+  metaTag.setAttribute('content', content);
+};
+
 export const initializeCookies = async () => {
   // parse the query string and set to cookies
   const query = new URLSearchParams(window.location.search);
+  const domain = getDomain();
 
   // set the inviter id to cookies
   const inviterId = query.get('inviter_id');
@@ -39,7 +58,7 @@ export const initializeCookies = async () => {
     setCookie('INVITER_ID', inviterId, {
       expires: expiration,
       path: '/',
-      domain: getDomain()
+      domain
     });
   }
 
@@ -49,14 +68,14 @@ export const initializeCookies = async () => {
     console.log('set THEME to cookies', theme);
     setCookie('THEME', theme, {
       path: '/',
-      domain: getDomain()
+      domain
     });
   } else if (!getCookie('THEME')) {
     const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     console.debug('set THEME to cookies', isDark ? 'dark' : 'light');
     setCookie('THEME', isDark ? 'dark' : 'light', {
       path: '/',
-      domain: getDomain()
+      domain
     });
   }
 
@@ -72,7 +91,7 @@ export const initializeCookies = async () => {
     console.debug('set LOCALE to cookies', locale);
     setCookie('LOCALE', locale, {
       path: '/',
-      domain: getDomain()
+      domain
     });
   }
 };
@@ -84,12 +103,10 @@ export const initializeTitle = async () => {
   // set the title from store.state.site?.title
   const title = store.state.site?.title || '';
   // find the title element or insert a new one
-  let titleElement = document.querySelector('title');
-  if (!titleElement) {
-    titleElement = document.createElement('title');
-    document.head.appendChild(titleElement);
-  }
-  titleElement.innerHTML = title;
+  const titleElement = ensureElement<HTMLTitleElement>('title', () =>
+    document.createElement('title')
+  );
+  titleElement.textContent = title;
 };
 
 /**
@@ -98,13 +115,7 @@ export const initializeTitle = async () => {
 export const initializeDescription = async () => {
   // set the title from store.state.site?.description
   const description = store.state.site?.description || '';
-  let metaTag = document.querySelector('meta[name="description"]');
-  if (!metaTag) {
-    metaTag = document.createElement('meta');
-    metaTag.setAttribute('name', 'description');
-    document.head.appendChild(metaTag);
-  }
-  metaTag.setAttribute('content', description);
+  updateMetaContent('description', description);
 };
 
 /**
@@ -113,13 +124,7 @@ export const initializeDescription = async () => {
 export const initializeKeywords = async () => {
   // set the title from store.state.site?.keywords
   const keywords = store.state.site?.keywords?.join(',') || '';
-  let metaTag = document.querySelector('meta[name="keywords"]');
-  if (!metaTag) {
-    metaTag = document.createElement('meta');
-    metaTag.setAttribute('name', 'keywords');
-    document.head.appendChild(metaTag);
-  }
-  metaTag.setAttribute('content', keywords);
+  updateMetaContent('keywords', keywords);
 };
 
 /**
@@ -129,12 +134,11 @@ export const initializeFavicon = async () => {
   // by default use favicon which imported
   // if faviconUrl is set, use it instead
   const favIconUrl = store.state.site?.favicon || '';
-  let faviconElement = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
-  if (!faviconElement) {
-    faviconElement = document.createElement('link');
-    faviconElement.rel = 'icon';
-    document.head.appendChild(faviconElement);
-  }
+  const faviconElement = ensureElement<HTMLLinkElement>('link[rel="icon"]', () => {
+    const element = document.createElement('link');
+    element.rel = 'icon';
+    return element;
+  });
   faviconElement.href = favIconUrl || favicon;
 };
 
