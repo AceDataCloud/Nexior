@@ -1,22 +1,32 @@
 <template>
-  <el-form :model="site" class="form" label-width="auto" style="max-width: 600px">
-    <el-form-item :label="$t('site.field.description')">
-      <span class="block w-full">
-        {{ site.description }}
+  <div class="settings-list">
+    <section class="settings-item">
+      <div class="settings-label">
+        <p class="settings-title">{{ $t('site.field.description') }}</p>
+        <p class="settings-tip">
+          {{ $t('site.message.descriptionTip') }}
+        </p>
+      </div>
+      <div class="settings-content">
+        <span class="settings-value">{{ site.description }}</span>
         <edit-text
           :model-value="site.description"
           :title="$t('site.title.editDescription')"
           :placeholder="$t('site.placeholder.description')"
           @confirm="onSave({ description: $event })"
         />
-      </span>
-      <span class="block tip">
-        {{ $t('site.message.descriptionTip') }}
-      </span>
-    </el-form-item>
-    <el-form-item :label="$t('site.field.keywords')">
-      <span class="block w-full">
-        {{ site.keywords?.join(', ') }}
+      </div>
+    </section>
+
+    <section class="settings-item">
+      <div class="settings-label">
+        <p class="settings-title">{{ $t('site.field.keywords') }}</p>
+        <p class="settings-tip">
+          {{ $t('site.message.keywordsTip') }}
+        </p>
+      </div>
+      <div class="settings-content">
+        <span class="settings-value">{{ site.keywords?.join(', ') }}</span>
         <edit-array
           :model-value="site?.keywords || []"
           :title="$t('site.title.editKeywords')"
@@ -24,17 +34,13 @@
           :tip="$t('site.message.keywordsTip2')"
           @confirm="onSave({ keywords: $event })"
         />
-      </span>
-      <span class="block tip">
-        {{ $t('site.message.keywordsTip') }}
-      </span>
-    </el-form-item>
-  </el-form>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElForm, ElFormItem } from 'element-plus';
 import EditText from '@/components/site/EditText.vue';
 import EditArray from '@/components/site/EditArray.vue';
 import { siteOperator } from '@/operators';
@@ -43,20 +49,11 @@ export default defineComponent({
   name: 'SettingSeo',
   components: {
     EditText,
-    EditArray,
-    ElForm,
-    ElFormItem
-  },
-  data() {
-    return {
-      editing: {
-        title: false
-      }
-    };
+    EditArray
   },
   computed: {
     site() {
-      return this.$store.getters.site;
+      return this.$store.getters.site || {};
     }
   },
   methods: {
@@ -73,32 +70,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.panel {
-  padding: 30px;
-  background-color: var(--el-bg-color-page);
-  overflow-y: auto;
-  h2.title {
-    font-size: 26px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: var(--el-text-color-primary);
-  }
-  h4.title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: var(--el-text-color-primary);
-  }
-  .form {
-    .logo {
-      max-width: 200px;
-    }
-    .tip {
-      color: var(--el-text-color-secondary);
-      font-size: 12px;
-    }
-  }
-}
-</style>

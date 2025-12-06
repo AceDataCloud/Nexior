@@ -2,9 +2,15 @@
   <div v-if="tasks?.items === undefined">
     <bot-placeholder />
   </div>
-  <div v-else-if="tasks?.items?.length && tasks?.items?.length > 0" class="h-full w-full overflow-y-auto tasks">
+  <scroll-list
+    v-else-if="tasks?.items?.length && tasks?.items?.length > 0"
+    ref="scrollList"
+    class="h-full w-full overflow-y-auto tasks"
+    :loading="loading"
+    @reach-top="$emit('reach-top')"
+  >
     <task-preview v-for="task in tasks?.items" :key="task.id" :model-value="task" />
-  </div>
+  </scroll-list>
   <div v-if="tasks?.items?.length === 0" class="w-full h-full flex items-center justify-center">
     <no-tasks />
   </div>
@@ -15,13 +21,21 @@ import { defineComponent } from 'vue';
 import TaskPreview from './task/Preview.vue';
 import BotPlaceholder from '@/components/common/BotPlaceholder.vue';
 import NoTasks from '@/components/common/NoTasks.vue';
+import ScrollList from '@/components/common/ScrollList.vue';
 
 export default defineComponent({
   name: 'RecentPanel',
   components: {
     TaskPreview,
     NoTasks,
-    BotPlaceholder
+    BotPlaceholder,
+    ScrollList
+  },
+  props: {
+    loading: {
+      type: Boolean,
+      default: false
+    }
   },
   emits: ['reach-top'],
   data() {
@@ -39,12 +53,9 @@ export default defineComponent({
     }
   },
   methods: {
-    onHandleScroll() {
-      const el = this.$refs.panel as HTMLElement;
-      console.log('reach-top reach-top reach-top');
-      if (el.scrollTop === 0) {
-        this.$emit('reach-top');
-      }
+    getScrollElement(): HTMLElement | undefined {
+      const list = this.$refs.scrollList as any;
+      return list?.getScrollElement?.();
     }
   }
 });

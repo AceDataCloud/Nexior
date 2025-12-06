@@ -1,5 +1,5 @@
 <template>
-  <div ref="panel" class="panel recent" @scroll="onHandleScroll">
+  <scroll-list ref="scrollList" class="panel recent" :loading="loading" @reach-top="$emit('reach-top')">
     <div v-if="tasks?.items === undefined" class="tasks">
       <div v-for="_ in 3" :key="_" class="task placeholder">
         <div class="left">
@@ -25,20 +25,28 @@
     <p v-if="tasks?.items?.length === 0" class="description">
       {{ $t('headshots.message.noTasks') }}
     </p>
-  </div>
+  </scroll-list>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import TaskPreview from './task/Preview.vue';
 import { ElSkeleton, ElSkeletonItem } from 'element-plus';
+import ScrollList from '@/components/common/ScrollList.vue';
 
 export default defineComponent({
   name: 'RecentPanel',
   components: {
     TaskPreview,
     ElSkeleton,
-    ElSkeletonItem
+    ElSkeletonItem,
+    ScrollList
+  },
+  props: {
+    loading: {
+      type: Boolean,
+      default: false
+    }
   },
   emits: ['reach-top'],
   data() {
@@ -56,12 +64,9 @@ export default defineComponent({
     }
   },
   methods: {
-    onHandleScroll() {
-      const el = this.$refs.panel as HTMLElement;
-      console.log('reach-top reach-top reach-top');
-      if (el.scrollTop === 0) {
-        this.$emit('reach-top');
-      }
+    getScrollElement(): HTMLElement | undefined {
+      const list = this.$refs.scrollList as any;
+      return list?.getScrollElement?.();
     }
   }
 });

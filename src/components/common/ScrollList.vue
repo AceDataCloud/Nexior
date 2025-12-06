@@ -26,6 +26,10 @@ export default defineComponent({
     floatingLoader: {
       type: Boolean,
       default: true
+    },
+    reachThreshold: {
+      type: Number,
+      default: 10
     }
   },
   emits: ['reach-top', 'scroll'],
@@ -33,7 +37,7 @@ export default defineComponent({
     onHandleScroll() {
       const el = this.$refs.panel as HTMLElement;
       this.$emit('scroll', el);
-      if (el.scrollTop === 0) {
+      if (el.scrollTop <= this.reachThreshold) {
         this.$emit('reach-top');
       }
     },

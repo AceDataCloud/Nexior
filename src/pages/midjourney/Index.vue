@@ -4,7 +4,7 @@
       <config-panel @generate="onGenerate" />
     </template>
     <template #results>
-      <task-list @custom="onCustom" @reach-top="onReachTop" />
+      <task-list ref="taskList" :loading="loadingMore" @custom="onCustom" @reach-top="onReachTop" />
     </template>
   </layout>
 </template>
@@ -32,10 +32,13 @@ import {
   MIDJOURNEY_DEFAULT_MODE,
   MIDJOURNEY_DEFAULT_QUALITY
 } from '@/constants';
+import { loadPreviousPage } from '@/utils/pagination';
 
 interface IData {
   operating: boolean;
   job: number;
+  loadingMore: boolean;
+  fetchingTasks: boolean;
 }
 
 const CALLBACK_URL = 'https://webhook.acedata.cloud/midjourney';
@@ -51,7 +54,9 @@ export default defineComponent({
   data(): IData {
     return {
       operating: false,
-      job: 0
+      job: 0,
+      loadingMore: false,
+      fetchingTasks: false
     };
   },
   computed: {
@@ -66,6 +71,9 @@ export default defineComponent({
     },
     loading() {
       return this.$store.state.midjourney.status.getApplications === Status.Request;
+    },
+    tasksLoading() {
+      return this.$store.state.midjourney.status.getTasks === Status.Request || this.fetchingTasks;
     },
     application() {
       return this.$store.state.midjourney.application;
@@ -176,8 +184,17 @@ export default defineComponent({
   },
   methods: {
     async onReachTop() {
-      await this.onGetTasks({
-        createdAtMax: this.tasks?.items?.[0]?.created_at
+      await loadPreviousPage({
+        tasks: this.tasks,
+        getTasks: () => this.tasks,
+        loading: this.loadingMore,
+        setLoading: (v) => (this.loadingMore = v),
+        isBlocked: () => this.tasksLoading || this.loading,
+        fetch: (createdAtMax) =>
+          this.onGetTasks({
+            createdAtMax
+          }),
+        getScrollElement: () => this.getTasksScrollElement()
       });
     },
     async onGetService() {
@@ -335,30 +352,37 @@ export default defineComponent({
     },
     async onScrollDown() {
       await this.$nextTick();
-      setTimeout(() => {
-        const el = document.querySelector('.tasks');
-        if (el) {
-          el.scrollTop = el.scrollHeight;
-        }
-      }, 500);
+      const el = this.getTasksScrollElement();
+      if (el) {
+        el.scrollTop = el.scrollHeight;
+      }
     },
     async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number }) {
-      if (this.loading) {
+      if (this.loading || this.fetchingTasks) {
         console.debug('loading');
         return;
       }
       console.debug('start onGetTasks', payload);
       const { limit = 5, createdAtMin, createdAtMax } = payload || {};
       console.debug('limit', limit, 'createdAtMin', createdAtMin, 'createdAtMax', createdAtMax);
-      await this.$store.dispatch('midjourney/getTasks', {
-        limit,
-        createdAtMin,
-        createdAtMax
-      });
+      this.fetchingTasks = true;
+      try {
+        await this.$store.dispatch('midjourney/getTasks', {
+          limit,
+          createdAtMin,
+          createdAtMax
+        });
+      } finally {
+        this.fetchingTasks = false;
+      }
       // await this.$store.dispatch('midjourney/getTasks', {
       //   limit: 30,
       //   offset: 0
       // });
+    },
+    getTasksScrollElement(): HTMLElement | undefined {
+      const list = this.$refs.taskList as any;
+      return list?.getScrollElement?.();
     }
   }
 });

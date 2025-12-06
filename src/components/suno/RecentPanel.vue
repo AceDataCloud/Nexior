@@ -18,13 +18,15 @@
       </div>
     </div>
   </div>
-  <div
+  <scroll-list
     v-else-if="tasks?.items?.length && tasks?.items?.length > 0"
+    ref="scrollList"
     class="flex-1 w-full overflow-y-auto tasks p-2"
-    @scroll="onHandleScroll"
+    :loading="loading"
+    @reach-top="$emit('reach-top')"
   >
     <task-preview v-for="(task, taskId) in tasks?.items" :key="taskId" :model-value="task" class="preview" />
-  </div>
+  </scroll-list>
   <div v-if="tasks?.items?.length === 0" class="w-full flex-1 flex items-center justify-center">
     <no-tasks />
   </div>
@@ -39,6 +41,7 @@ import TaskPreview from './task/Preview.vue';
 import Player from '@/components/suno/player/Player.vue';
 import NoTasks from '@/components/common/NoTasks.vue';
 import { ElSkeleton, ElSkeletonItem } from 'element-plus';
+import ScrollList from '@/components/common/ScrollList.vue';
 
 export default defineComponent({
   name: 'RecentPanel',
@@ -47,7 +50,14 @@ export default defineComponent({
     ElSkeleton,
     TaskPreview,
     Player,
-    NoTasks
+    NoTasks,
+    ScrollList
+  },
+  props: {
+    loading: {
+      type: Boolean,
+      default: false
+    }
   },
   emits: ['reach-top'],
   data() {
@@ -65,12 +75,9 @@ export default defineComponent({
     }
   },
   methods: {
-    onHandleScroll() {
-      const el = this.$refs.panel as HTMLElement;
-      console.log('reach-top');
-      if (el.scrollTop === 0) {
-        this.$emit('reach-top');
-      }
+    getScrollElement(): HTMLElement | undefined {
+      const list = this.$refs.scrollList as any;
+      return list?.getScrollElement?.();
     }
   }
 });

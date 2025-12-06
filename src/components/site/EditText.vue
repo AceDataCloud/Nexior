@@ -1,6 +1,6 @@
 <template>
-  <el-dialog v-model="editing" :title="title" width="400px">
-    <div>
+  <el-dialog v-model="editing" :title="title" width="400px" class="edit-dialog">
+    <div class="edit-body">
       <el-input v-model="value" :placeholder="placeholder" />
     </div>
     <template #footer>
@@ -72,6 +72,53 @@ export default defineComponent({
   top: 2px;
   .icon {
     font-size: 14px;
+  }
+}
+
+.edit-dialog {
+  .el-dialog__header {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding-right: 48px;
+  }
+
+  .el-dialog__title {
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .el-dialog__headerbtn {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .el-dialog__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .edit-body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .el-input {
+    max-width: 320px;
+  }
+
+  .dialog-footer {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
   }
 }
 </style>

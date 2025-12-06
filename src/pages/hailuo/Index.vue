@@ -4,7 +4,7 @@
       <config-panel @generate="onGenerate" />
     </template>
     <template #result>
-      <recent-panel @reach-top="onReachTop" />
+      <recent-panel ref="recentPanel" :loading="loadingMore" @reach-top="onReachTop" />
     </template>
   </layout>
 </template>
@@ -19,12 +19,15 @@ import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
 import RecentPanel from '@/components/hailuo/RecentPanel.vue';
 import { IHailuoTask } from '@/models';
+import { loadPreviousPage } from '@/utils/pagination';
 
 const CALLBACK_URL = 'https://webhook.acedata.cloud/hailuo';
 
 interface IData {
   task: IHailuoTask | undefined;
   job: number;
+  loadingMore: boolean;
+  fetchingTasks: boolean;
 }
 
 export default defineComponent({
@@ -40,12 +43,17 @@ export default defineComponent({
       task: undefined,
       job: 0,
       // @ts-ignore
-      timer: undefined
+      timer: undefined,
+      loadingMore: false,
+      fetchingTasks: false
     };
   },
   computed: {
-    loading() {
+    applicationsLoading() {
       return this.$store.state.hailuo?.status?.getApplications === Status.Request;
+    },
+    tasksLoading() {
+      return this.$store.state.hailuo?.status?.getTasks === Status.Request || this.fetchingTasks;
     },
     credential() {
       return this.$store.state.hailuo.credential;
@@ -93,9 +101,17 @@ export default defineComponent({
   },
   methods: {
     async onReachTop() {
-      console.debug('reached top');
-      await this.onGetTasks({
-        createdAtMax: this.tasks?.items?.[0]?.created_at
+      await loadPreviousPage({
+        tasks: this.tasks,
+        getTasks: () => this.tasks,
+        loading: this.loadingMore,
+        setLoading: (v) => (this.loadingMore = v),
+        isBlocked: () => this.tasksLoading || this.applicationsLoading,
+        fetch: (createdAtMax) =>
+          this.onGetTasks({
+            createdAtMax
+          }),
+        getScrollElement: () => this.getTasksScrollElement()
       });
     },
     async onGetService() {
@@ -110,26 +126,30 @@ export default defineComponent({
       await this.onGetTasks();
     },
     async onScrollDown() {
-      setTimeout(() => {
-        const el = document.querySelector('.tasks');
-        if (el) {
-          el.scrollTop = el.scrollHeight;
-        }
-      }, 500);
+      await this.$nextTick();
+      const el = this.getTasksScrollElement();
+      if (el) {
+        el.scrollTop = el.scrollHeight;
+      }
     },
     async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number }) {
-      if (this.loading) {
+      if (this.applicationsLoading || this.fetchingTasks) {
         console.debug('loading');
         return;
       }
       console.debug('start onGetTasks', payload);
       const { limit = 5, createdAtMin, createdAtMax } = payload || {};
       console.debug('limit', limit, 'createdAtMin', createdAtMin, 'createdAtMax', createdAtMax);
-      await this.$store.dispatch('hailuo/getTasks', {
-        limit,
-        createdAtMin,
-        createdAtMax
-      });
+      this.fetchingTasks = true;
+      try {
+        await this.$store.dispatch('hailuo/getTasks', {
+          limit,
+          createdAtMin,
+          createdAtMax
+        });
+      } finally {
+        this.fetchingTasks = false;
+      }
     },
     async onGenerate() {
       const request = {
@@ -163,6 +183,10 @@ export default defineComponent({
             await this.onScrollDown();
           }, 1000);
         });
+    },
+    getTasksScrollElement(): HTMLElement | undefined {
+      const panel = this.$refs.recentPanel as any;
+      return panel?.getScrollElement?.();
     }
   }
 });
