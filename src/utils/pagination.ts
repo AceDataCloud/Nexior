@@ -9,15 +9,26 @@ export async function loadPreviousPage(options: {
   tasks?: TasksLike;
   getTasks?: () => TasksLike | undefined;
   loading: boolean;
+  ignoreLoadingGuard?: boolean;
   setLoading: (value: boolean) => void;
   isBlocked?: () => boolean;
   fetch: (createdAtMax: number) => Promise<any>;
   getScrollElement?: () => HTMLElement | undefined;
   reachThreshold?: number;
 }) {
-  const { tasks, getTasks, loading, setLoading, isBlocked, fetch, getScrollElement, reachThreshold = 10 } = options;
+  const {
+    tasks,
+    getTasks,
+    loading,
+    ignoreLoadingGuard,
+    setLoading,
+    isBlocked,
+    fetch,
+    getScrollElement,
+    reachThreshold = 40
+  } = options;
   const currentTasks = getTasks ? getTasks() : tasks;
-  if (loading || isBlocked?.()) {
+  if ((loading && !ignoreLoadingGuard) || isBlocked?.()) {
     return;
   }
 
@@ -43,7 +54,7 @@ export async function loadPreviousPage(options: {
     await nextTick();
     const latest = getTasks ? getTasks() : tasks;
     const newLength = latest?.items?.length || 0;
-    const hasMore = latest?.total !== undefined ? newLength < (latest.total || 0) : false;
+    const hasMore = latest?.total !== undefined ? newLength < (latest.total || 0) : newLength > previousLength;
     const scrollEl = getScrollElement?.();
     if (scrollEl) {
       const newHeight = scrollEl.scrollHeight;
@@ -54,7 +65,8 @@ export async function loadPreviousPage(options: {
       await loadPreviousPage({
         ...options,
         tasks: latest,
-        loading: false
+        loading: false,
+        ignoreLoadingGuard: true
       });
     }
   } finally {

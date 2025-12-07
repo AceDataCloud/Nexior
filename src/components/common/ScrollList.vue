@@ -29,7 +29,7 @@ export default defineComponent({
     },
     reachThreshold: {
       type: Number,
-      default: 10
+      default: 40
     }
   },
   emits: ['reach-top', 'scroll'],
