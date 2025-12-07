@@ -104,15 +104,23 @@
     "description": "Opis modelu 4.0 wszechstronnego"
   },
   "model.deepseekChat": {
-    "message": "3.0 standard",
+    "message": "Standard 3.0",
+    "description": "Nazwa modelu usługi, czyli DeepSeek czat"
+  },
+  "model.deepseekChat32": {
+    "message": "Standard 3.2",
     "description": "Nazwa modelu usługi, czyli DeepSeek czat"
   },
   "model.deepseekChatDescription": {
     "message": "Odpowiedni do codziennych zadań",
     "description": "Opis modelu czatu DeepSeek"
   },
+  "model.deepseekChat32Description": {
+    "message": "Odpowiedni do zadań multimodalnych",
+    "description": "Opis modelu czatu DeepSeek"
+  },
   "model.deepseekReasoner": {
-    "message": "R1 wnioskowanie",
+    "message": "R1 Wnioskowanie",
     "description": "Nazwa modelu usługi, czyli DeepSeek wnioskowanie"
   },
   "model.deepseekReasonerDescription": {
@@ -212,8 +220,8 @@
     "description": "Wiadomość na stronie, informująca użytkownika, że przesyłanie pliku nie powiodło się, spróbuj ponownie później"
   },
   "message.notApplied": {
-    "message": "Nie ubiegałeś się jeszcze o tę usługę, proszę najpierw ubiegać się",
-    "description": "Wiadomość na stronie, informująca użytkownika, że nie ubiegał się jeszcze o tę usługę, proszę najpierw ubiegać się"
+    "message": "Nie ubiegałeś się jeszcze o tę usługę, proszę najpierw złożyć wniosek",
+    "description": "Wiadomość na stronie, informująca użytkownika, że nie ubiegał się jeszcze o tę usługę, proszę najpierw złożyć wniosek"
   },
   "message.tryForFree": {
     "message": "Wypróbuj za darmo",
@@ -221,11 +229,11 @@
   },
   "message.question1": {
     "message": "Stwórz plan treningowy",
-    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, proszące użytkownika o napisanie kodu JavaScript, który wyświetli Hello World"
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, proszące użytkownika o napisanie kodu JavaScript, który wyświetli 'Hello World'"
   },
   "message.question2": {
-    "message": "Napisz e-mail do Mike'a",
-    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, proszące użytkownika o napisanie e-maila do Mike'a, informującego go, że właśnie się przeprowadził"
+    "message": "Stwórz osobistą stronę internetową",
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, proszące użytkownika o napisanie e-maila do Mike'a, informującego go, że właśnie się przeprowadziłeś"
   },
   "message.question3": {
     "message": "Zaprojektuj interesującą grę programistyczną",
@@ -276,8 +284,8 @@
     "description": "Wiadomość na stronie, informująca użytkownika, że serwer jest zajęty, spróbuj ponownie później"
   },
   "message.errorUsedUp": {
-    "message": "Wykończyłeś limit, proszę kupić więcej, aby kontynuować korzystanie",
-    "description": "Wiadomość na stronie, informująca użytkownika, że wykończył limit, proszę kupić więcej, aby kontynuować korzystanie"
+    "message": "Wykończyłeś limit pakietu, proszę kupić więcej, aby kontynuować korzystanie",
+    "description": "Wiadomość na stronie, informująca użytkownika, że wykończył limit pakietu, proszę kupić więcej, aby kontynuować korzystanie"
   },
   "message.errorUnknown": {
     "message": "Wystąpił nieznany błąd serwera, spróbuj ponownie później lub skontaktuj się z obsługą klienta",
@@ -288,8 +296,8 @@
     "description": "Wiadomość na stronie, informująca użytkownika, że przekroczono czas oczekiwania na odpowiedź, spróbuj ponownie później"
   },
   "message.errorNotApplied": {
-    "message": "Nie ubiegałeś się jeszcze o tę usługę, proszę najpierw ubiegać się, a następnie kontynuować pytanie",
-    "description": "Wiadomość na stronie, informująca użytkownika, że nie ubiegał się jeszcze o tę usługę, proszę najpierw ubiegać się, a następnie kontynuować pytanie"
+    "message": "Nie ubiegałeś się jeszcze o tę usługę, proszę najpierw złożyć wniosek, a następnie kontynuować pytanie",
+    "description": "Wiadomość na stronie, informująca użytkownika, że nie ubiegał się jeszcze o tę usługę, proszę najpierw złożyć wniosek, a następnie kontynuować pytanie"
   },
   "message.confirmDelete": {
     "message": "Potwierdź usunięcie",
@@ -301,110 +309,110 @@
   },
   "title.chat": {
     "message": "Czat AI",
-    "description": "网页的标题，即 AI 聊天"
+    "description": "Tytuł strony, czyli czat AI"
   },
   "title.example": {
     "message": "Przykład",
-    "description": "网页的标题，即 示例"
+    "description": "Tytuł strony, czyli przykład"
   },
   "title.capabilities": {
     "message": "Funkcje",
-    "description": "网页的标题，即 功能"
+    "description": "Tytuł strony, czyli funkcje"
   },
   "title.limitations": {
     "message": "Ograniczenia",
-    "description": "网页中的标题，指出这部分内容是关于服务的技术限制"
+    "description": "Tytuł na stronie, wskazujący, że ta część dotyczy technicznych ograniczeń usługi"
   },
   "title.complexQuestion": {
     "message": "Odpowiadanie na złożone pytania",
-    "description": "网页中的标题，指出这部分内容是关于服务回答复杂问题的能力"
+    "description": "Tytuł na stronie, wskazujący, że ta część dotyczy zdolności usługi do odpowiadania na złożone pytania"
   },
   "title.professionalQuestion": {
-    "message": "Konsultacja w sprawach profesjonalnych",
-    "description": "网页中的标题，指出这部分内容是关于服务咨询专业问题的能力"
+    "message": "Konsultacja w sprawie pytań profesjonalnych",
+    "description": "Tytuł na stronie, wskazujący, że ta część dotyczy zdolności usługi do konsultacji w sprawie pytań profesjonalnych"
   },
   "title.getTips": {
     "message": "Uzyskaj inspiracje i pomysły",
-    "description": "网页中的标题，指出这部分内容是关于服务获取灵感和创意的能力"
+    "description": "Tytuł na stronie, wskazujący, że ta część dotyczy zdolności usługi do uzyskiwania inspiracji i pomysłów"
   },
   "group.today": {
     "message": "Dziś",
-    "description": "网页中的分组名称，即 今天"
+    "description": "Nazwa grupy na stronie, czyli dziś"
   },
   "group.yesterday": {
     "message": "Wczoraj",
-    "description": "网页中的分组名称，即 昨天"
+    "description": "Nazwa grupy na stronie, czyli wczoraj"
   },
   "group.thisWeek": {
     "message": "W tym tygodniu",
-    "description": "网页中的分组名称，即 本周"
+    "description": "Nazwa grupy na stronie, czyli w tym tygodniu"
   },
   "group.earlier": {
     "message": "Wcześniej",
-    "description": "网页中的分组名称，即 更早"
+    "description": "Nazwa grupy na stronie, czyli wcześniej"
   },
   "modelGroup.gemini": {
     "message": "Gemini",
-    "description": "The name of the service model, i.e., Gemini"
+    "description": "Nazwa modelu usługi, czyli Gemini"
   },
   "modelGroup.geminiDescription": {
     "message": "Model AI opracowany przez Google",
-    "description": "Description of the Gemini model"
+    "description": "Opis modelu Gemini"
   },
   "model.gemini30Pro": {
     "message": "gemini-3.0-pro",
-    "description": "The name of the service model"
+    "description": "Nazwa modelu usługi"
   },
   "model.gemini30ProDescription": {
     "message": "Odpowiedni do zaawansowanego rozumowania i zadań multimodalnych",
-    "description": "Description of the Gemini 3.0 Pro model"
+    "description": "Opis modelu Gemini 3.0 Pro"
   },
   "model.gemini25Pro": {
     "message": "gemini-2.5-pro",
-    "description": "The name of the service model"
+    "description": "Nazwa modelu usługi"
   },
   "model.gemini25ProDescription": {
     "message": "Świetny model uniwersalny",
-    "description": "Description of the Gemini 2.5 Pro model"
+    "description": "Opis modelu Gemini 2.5 Pro"
   },
   "model.gemini25Flash": {
     "message": "gemini-2.5-flash",
-    "description": "The name of the service model"
+    "description": "Nazwa modelu usługi"
   },
   "model.gemini25FlashDescription": {
     "message": "Szybki i lekki model Gemini",
-    "description": "Description of the Gemini 2.5 Flash model"
+    "description": "Opis modelu Gemini 2.5 Flash"
   },
   "modelGroup.claude": {
     "message": "Claude",
-    "description": "The name of the service model, i.e., Claude"
+    "description": "Nazwa modelu usługi, czyli Claude"
   },
   "modelGroup.claudeDescription": {
     "message": "Model AI opracowany przez Anthropic",
-    "description": "Description of the Claude model"
+    "description": "Opis modelu Claude"
   },
   "model.claudeOpus4": {
     "message": "claude-opus-4",
-    "description": "The name of the service model"
+    "description": "Nazwa modelu usługi"
   },
   "model.claudeOpus4Description": {
     "message": "Najwyższej klasy rozumowanie i złożone zadania",
-    "description": "Description of the Claude Opus 4 model"
+    "description": "Opis modelu Claude Opus 4"
   },
   "model.claudeSonnet4": {
     "message": "claude-sonnet-4",
-    "description": "The name of the service model"
+    "description": "Nazwa modelu usługi"
   },
   "model.claudeSonnet4Description": {
     "message": "Zrównoważona wydajność i efektywność",
-    "description": "Description of the Claude Sonnet 4 model"
+    "description": "Opis modelu Claude Sonnet 4"
   },
   "model.claude37Sonnet": {
     "message": "claude-3-7-sonnet",
-    "description": "The name of the service model"
+    "description": "Nazwa modelu usługi"
   },
   "model.claude37SonnetDescription": {
     "message": "Szybkie iteracyjne Claude Sonnet 3.7",
-    "description": "Description of the Claude 3.7 Sonnet model"
+    "description": "Opis modelu Claude 3.7 Sonnet"
   }
 }

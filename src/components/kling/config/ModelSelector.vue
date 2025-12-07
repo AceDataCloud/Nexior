@@ -33,10 +33,6 @@ export default defineComponent({
           label: 'v1'
         },
         {
-          value: 'kling-v1-5',
-          label: 'v1.5'
-        },
-        {
           value: 'kling-v1-6',
           label: 'v1.6'
         },
@@ -45,12 +41,12 @@ export default defineComponent({
           label: 'v2-Master'
         },
         {
-          value: 'kling-v2-1',
-          label: 'v2.1'
-        },
-        {
           value: 'kling-v2-1-master',
           label: 'v2.1-Master'
+        },
+        {
+          value: 'kling-v2-5-turbo',
+          label: 'v2.5-Turbo'
         }
       ]
     };

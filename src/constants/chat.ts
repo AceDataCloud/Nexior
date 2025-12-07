@@ -18,6 +18,7 @@ export const CHAT_MODEL_NAME_O1_MINI = 'o1-mini';
 export const CHAT_MODEL_NAME_O3 = 'o3';
 export const CHAT_MODEL_NAME_O4_MINI = 'o4-mini';
 export const CHAT_MODEL_NAME_DEEPSEEK_CHAT = 'deepseek-v3';
+export const CHAT_MODEL_NAME_DEEPSEEK32_CHAT = 'deepseek-v3.2-exp';
 export const CHAT_MODEL_NAME_DEEPSEEK_REASONER = 'deepseek-r1';
 export const CHAT_MODEL_NAME_GROK_4 = 'grok-4';
 export const CHAT_MODEL_NAME_GROK_3 = 'grok-3';
@@ -170,6 +171,15 @@ export const CHAT_MODEL_DEEPSEEK_CHAT: IChatModel = {
   getDescription: () => i18n.global.t('chat.model.deepseekChatDescription')
 };
 
+export const CHAT_MODEL_DEEPSEEK_CHAT32: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_DEEPSEEK32_CHAT,
+  icon: CHAT_MODEL_ICON_DEEPSEEK,
+  modelGroup: 'deepseek',
+  getDisplayName: () => i18n.global.t('chat.model.deepseekChat32'),
+  getDescription: () => i18n.global.t('chat.model.deepseekChat32Description')
+};
+
 export const CHAT_MODEL_DEEPSEEK_REASONER: IChatModel = {
   enabled: true,
   name: CHAT_MODEL_NAME_DEEPSEEK_REASONER,
@@ -294,7 +304,7 @@ export const CHAT_MODEL_GROUP_DEEPSEEK: IChatModelGroup = {
   name: 'deepseek',
   getDisplayName: () => i18n.global.t('chat.modelGroup.deepseek'),
   getDescription: () => i18n.global.t('chat.modelGroup.deepseekDescription'),
-  models: [CHAT_MODEL_DEEPSEEK_CHAT, CHAT_MODEL_DEEPSEEK_REASONER]
+  models: [CHAT_MODEL_DEEPSEEK_CHAT, CHAT_MODEL_DEEPSEEK_CHAT32, CHAT_MODEL_DEEPSEEK_REASONER]
 };
 
 export const CHAT_MODEL_GROUP_GROK: IChatModelGroup = {

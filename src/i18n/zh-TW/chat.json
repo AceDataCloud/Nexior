@@ -107,8 +107,16 @@
     "message": "3.0 標準",
     "description": "服務的模型名稱，即 DeepSeek 聊天"
   },
+  "model.deepseekChat32": {
+    "message": "3.2 標準",
+    "description": "服務的模型名稱，即 DeepSeek 聊天"
+  },
   "model.deepseekChatDescription": {
     "message": "適用於日常任務",
+    "description": "DeepSeek 聊天模型的描述"
+  },
+  "model.deepseekChat32Description": {
+    "message": "適用於多模態任務",
     "description": "DeepSeek 聊天模型的描述"
   },
   "model.deepseekReasoner": {
@@ -188,8 +196,8 @@
     "description": "網頁中的消息，告訴用戶開始新對話"
   },
   "message.uploadFile": {
-    "message": "上傳檔案",
-    "description": "網頁中的消息，告訴用戶上傳檔案"
+    "message": "上傳文件",
+    "description": "網頁中的消息，告訴用戶上傳文件"
   },
   "message.noToken": {
     "message": "請先申請相應服務",
@@ -204,12 +212,12 @@
     "description": "網頁中的消息，告訴用戶問題不能為空"
   },
   "message.uploadReferencesExceed": {
-    "message": "最多只能上傳 1 個檔案",
-    "description": "網頁中的消息，告訴用戶最多只能上傳 1 個檔案"
+    "message": "最多只能上傳 1 個文件",
+    "description": "網頁中的消息，告訴用戶最多只能上傳 1 個文件"
   },
   "message.uploadReferencesError": {
-    "message": "檔案上傳失敗，請稍後重試",
-    "description": "網頁中的消息，告訴用戶檔案上傳失敗，請稍後重試"
+    "message": "文件上傳失敗，請稍後重試",
+    "description": "網頁中的消息，告訴用戶文件上傳失敗，請稍後重試"
   },
   "message.notApplied": {
     "message": "您尚未申請此服務，請先申請",
@@ -228,7 +236,7 @@
     "description": "開始對話的示例問題，要求用戶給 Mike 寫封電子郵件，告訴他我剛搬家"
   },
   "message.question3": {
-    "message": "設計有趣的程式遊戲",
+    "message": "設計有趣的編程遊戲",
     "description": "開始對話的示例問題，要求用戶用簡單的語言解釋量子計算的基本原理"
   },
   "message.question4": {
@@ -296,8 +304,8 @@
     "description": "網頁中的消息，告訴用戶確認刪除"
   },
   "message.howToUse": {
-    "message": "AI 可能會出錯，請檢查重要信息。",
-    "description": "網頁中的消息，告訴用戶 AI 可能會出錯，請檢查重要信息"
+    "message": "AI 可能會出錯，請檢查重要資訊。",
+    "description": "網頁中的消息，告訴用戶 AI 可能會出錯，請檢查重要資訊"
   },
   "title.chat": {
     "message": "AI 聊天",
@@ -388,7 +396,7 @@
     "description": "服務模型的名稱"
   },
   "model.claudeOpus4Description": {
-    "message": "頂尖的推理和複雜任務",
+    "message": "頂級推理和複雜任務",
     "description": "Claude Opus 4 模型的描述"
   },
   "model.claudeSonnet4": {

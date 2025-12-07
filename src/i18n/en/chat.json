@@ -37,14 +37,14 @@
   },
   "modelGroup.grokDescription": {
     "message": "AI model developed by xAI",
-    "description": "Description of the Grok3 model"
+    "description": "Description of the Grok model"
   },
   "model.5All": {
     "message": "gpt-5",
     "description": "The name of the service model, i.e., GPT 5 All"
   },
   "model.5AllDescription": {
-    "message": "The most advanced model currently available",
+    "message": "Currently the most advanced model",
     "description": "Description of the GPT 5 model"
   },
   "model.5": {
@@ -52,7 +52,7 @@
     "description": "The name of the service model, i.e., GPT 5"
   },
   "model.5Description": {
-    "message": "The most advanced model currently available",
+    "message": "Currently the most advanced model",
     "description": "Description of the GPT 5 model"
   },
   "model.5Mini": {
@@ -60,7 +60,7 @@
     "description": "The name of the service model, i.e., GPT 5 Mini"
   },
   "model.5MiniDescription": {
-    "message": "A faster and lighter version of the GPT 5 model",
+    "message": "Faster and lighter GPT 5 model",
     "description": "Description of the GPT 5 Mini model"
   },
   "model.4O": {
@@ -72,7 +72,7 @@
     "description": "The name of the service model, i.e., GPT 4.0 Mini"
   },
   "model.4OMiniDescription": {
-    "message": "A lighter and faster model",
+    "message": "Lighter and faster model",
     "description": "Description of the 4.0 Mini model"
   },
   "model.4OImage": {
@@ -92,39 +92,47 @@
     "description": "The name of the service model, i.e., GPT 4O All"
   },
   "model.4OAllDescription": {
-    "message": "A versatile model",
-    "description": "Description of the 4O versatile model"
+    "message": "All-purpose model",
+    "description": "Description of the 4O all-purpose model"
   },
   "model.4All": {
     "message": "gpt-4-all",
     "description": "The name of the service model, i.e., GPT 4.0 All"
   },
   "model.4AllDescription": {
-    "message": "A versatile model",
-    "description": "Description of the 4.0 versatile model"
+    "message": "All-purpose model",
+    "description": "Description of the 4.0 all-purpose model"
   },
   "model.deepseekChat": {
     "message": "3.0 Standard",
+    "description": "The name of the service model, i.e., DeepSeek Chat"
+  },
+  "model.deepseekChat32": {
+    "message": "3.2 Standard",
     "description": "The name of the service model, i.e., DeepSeek Chat"
   },
   "model.deepseekChatDescription": {
     "message": "Suitable for everyday tasks",
     "description": "Description of the DeepSeek Chat model"
   },
+  "model.deepseekChat32Description": {
+    "message": "Suitable for multimodal tasks",
+    "description": "Description of the DeepSeek Chat model"
+  },
   "model.deepseekReasoner": {
     "message": "R1 Reasoner",
-    "description": "The name of the service model, i.e., DeepSeek Reasoner"
+    "description": "The name of the service model, i.e., DeepSeek Reasoning"
   },
   "model.deepseekReasonerDescription": {
     "message": "Suitable for reasoning and deep thinking problems",
-    "description": "Description of the DeepSeek Reasoner model"
+    "description": "Description of the DeepSeek Reasoning model"
   },
   "model.grok4": {
     "message": "grok-4",
     "description": "The name of the service model"
   },
   "model.grok4Description": {
-    "message": "The most advanced model",
+    "message": "Most advanced model",
     "description": "Description of the Grok4 model"
   },
   "model.grok3": {
@@ -137,11 +145,11 @@
   },
   "model.grok3Reasoner": {
     "message": "grok-3 Reasoner",
-    "description": "The name of the service model, i.e., Grok3 Reasoner"
+    "description": "The name of the service model, i.e., Grok3 Reasoning"
   },
   "model.grok3ReasonerDescription": {
     "message": "Suitable for reasoning and deep thinking problems",
-    "description": "Description of the Grok3 Reasoner model"
+    "description": "Description of the Grok3 Reasoning model"
   },
   "model.grok3Deepsearch": {
     "message": "grok-3 Deep Research",
@@ -184,40 +192,40 @@
     "description": "Description of the O4 model"
   },
   "message.startNewChat": {
-    "message": "Start New Chat",
-    "description": "Message on the webpage informing the user to start a new chat"
+    "message": "Start a new conversation",
+    "description": "Message in the webpage informing the user to start a new conversation"
   },
   "message.uploadFile": {
-    "message": "Upload File",
-    "description": "Message on the webpage informing the user to upload a file"
+    "message": "Upload file",
+    "description": "Message in the webpage informing the user to upload a file"
   },
   "message.noToken": {
-    "message": "Please apply for the relevant service first",
-    "description": "Message on the webpage informing the user to apply for the relevant service first"
+    "message": "Please apply for the corresponding service first",
+    "description": "Message in the webpage informing the user to apply for the corresponding service first"
   },
   "message.newMessagePlaceholder": {
     "message": "Please enter your question...",
-    "description": "Placeholder on the webpage informing the user to input a question"
+    "description": "Placeholder in the webpage informing the user to input a question"
   },
   "message.noInput": {
-    "message": "The question cannot be empty",
-    "description": "Message on the webpage informing the user that the question cannot be empty"
+    "message": "Question cannot be empty",
+    "description": "Message in the webpage informing the user that the question cannot be empty"
   },
   "message.uploadReferencesExceed": {
-    "message": "You can only upload 1 file at most",
-    "description": "Message on the webpage informing the user that they can only upload 1 file at most"
+    "message": "You can upload a maximum of 1 file",
+    "description": "Message in the webpage informing the user that they can upload a maximum of 1 file"
   },
   "message.uploadReferencesError": {
     "message": "File upload failed, please try again later",
-    "description": "Message on the webpage informing the user that the file upload failed, please try again later"
+    "description": "Message in the webpage informing the user that the file upload failed, please try again later"
   },
   "message.notApplied": {
-    "message": "You have not applied for this service yet, please apply first",
-    "description": "Message on the webpage informing the user that they have not applied for this service yet, please apply first"
+    "message": "You have not applied for this service, please apply first",
+    "description": "Message in the webpage informing the user that they have not applied for this service, please apply first"
   },
   "message.tryForFree": {
-    "message": "Try for Free",
-    "description": "Message on the webpage informing the user about a free trial"
+    "message": "Try for free",
+    "description": "Message in the webpage informing the user about a free trial"
   },
   "message.question1": {
     "message": "Create a training plan",
@@ -225,7 +233,7 @@
   },
   "message.question2": {
     "message": "Make a personal webpage",
-    "description": "Example question to start a conversation, asking the user to write an email to Mike telling him that I just moved"
+    "description": "Example question to start a conversation, asking the user to write an email to Mike informing him that I just moved"
   },
   "message.question3": {
     "message": "Design an interesting programming game",
@@ -236,7 +244,7 @@
     "description": "Example question to start a conversation, asking the user to explain the impact of virtual reality on artistic creation"
   },
   "message.question5": {
-    "message": "Which is larger, 9.8 or 9.11?",
+    "message": "Which is greater, 9.8 or 9.11?",
     "description": "Example question to start a conversation, asking to compare the sizes of two numbers"
   },
   "message.question6": {
@@ -253,158 +261,158 @@
   },
   "message.errorApiError": {
     "message": "Response failed, please try again later",
-    "description": "Message on the webpage informing the user that the response failed, please try again later"
+    "description": "Message in the webpage informing the user that the response failed, please try again later"
   },
   "message.errorBadRequest": {
     "message": "Request content is not valid, please ask again",
-    "description": "Message on the webpage informing the user that the request content is not valid, please ask again"
+    "description": "Message in the webpage informing the user that the request content is not valid, please ask again"
   },
   "message.errorNoConversation": {
-    "message": "The conversation does not exist or has expired, please start a new conversation",
-    "description": "Message on the webpage informing the user that the conversation does not exist or has expired, please start a new conversation"
+    "message": "Conversation does not exist or has expired, please start a new conversation",
+    "description": "Message in the webpage informing the user that the conversation does not exist or has expired, please start a new conversation"
   },
   "message.errorContentTooLarge": {
-    "message": "The question content is too long, please shorten it and try again",
-    "description": "Message on the webpage informing the user that the question content is too long, please shorten it and try again"
+    "message": "Question content is too long, please shorten it and try again",
+    "description": "Message in the webpage informing the user that the question content is too long, please shorten it and try again"
   },
   "message.errorTooManyRequests": {
     "message": "Your actions are too frequent, please try again later",
-    "description": "Message on the webpage informing the user that their actions are too frequent, please try again later"
+    "description": "Message in the webpage informing the user that their actions are too frequent, please try again later"
   },
   "message.errorBusy": {
-    "message": "The server is busy, please try again later",
-    "description": "Message on the webpage informing the user that the server is busy, please try again later"
+    "message": "Server is busy, please try again later",
+    "description": "Message in the webpage informing the user that the server is busy, please try again later"
   },
   "message.errorUsedUp": {
     "message": "You have used up your package quota, please purchase more to continue using",
-    "description": "Message on the webpage informing the user that they have used up their package quota, please purchase more to continue using"
+    "description": "Message in the webpage informing the user that they have used up their package quota, please purchase more to continue using"
   },
   "message.errorUnknown": {
     "message": "An unknown error occurred on the server, please try again later or contact customer service",
-    "description": "Message on the webpage informing the user that an unknown error occurred on the server, please try again later or contact customer service"
+    "description": "Message in the webpage informing the user that an unknown error occurred on the server, please try again later or contact customer service"
   },
   "message.errorTimeout": {
     "message": "Answering the question timed out, please try again later",
-    "description": "Message on the webpage informing the user that answering the question timed out, please try again later"
+    "description": "Message in the webpage informing the user that answering the question timed out, please try again later"
   },
   "message.errorNotApplied": {
-    "message": "You have not applied for this service yet, please apply first before continuing to ask",
-    "description": "Message on the webpage informing the user that they have not applied for this service yet, please apply first before continuing to ask"
+    "message": "You have not applied for this service, please apply first before continuing to ask",
+    "description": "Message in the webpage informing the user that they have not applied for this service, please apply first before continuing to ask"
   },
   "message.confirmDelete": {
-    "message": "Confirm Deletion",
-    "description": "Message on the webpage informing the user to confirm deletion"
+    "message": "Confirm deletion",
+    "description": "Message in the webpage informing the user to confirm deletion"
   },
   "message.howToUse": {
     "message": "AI may make mistakes, please check important information.",
-    "description": "Message on the webpage informing the user that AI may make mistakes, please check important information"
+    "description": "Message on the webpage informing users that AI may make mistakes and they should check important information."
   },
   "title.chat": {
     "message": "AI Chat",
-    "description": "The title of the webpage, i.e., AI Chat"
+    "description": "Title of the webpage, i.e., AI Chat."
   },
   "title.example": {
     "message": "Example",
-    "description": "The title of the webpage, i.e., Example"
+    "description": "Title of the webpage, i.e., Example."
   },
   "title.capabilities": {
     "message": "Capabilities",
-    "description": "The title of the webpage, i.e., Capabilities"
+    "description": "Title of the webpage, i.e., Capabilities."
   },
   "title.limitations": {
     "message": "Limitations",
-    "description": "The title in the webpage indicating that this section is about the technical limitations of the service"
+    "description": "Title on the webpage indicating that this section is about the technical limitations of the service."
   },
   "title.complexQuestion": {
     "message": "Answering Complex Questions",
-    "description": "The title in the webpage indicating that this section is about the service's ability to answer complex questions"
+    "description": "Title on the webpage indicating that this section is about the service's ability to answer complex questions."
   },
   "title.professionalQuestion": {
     "message": "Consulting Professional Questions",
-    "description": "The title in the webpage indicating that this section is about the service's ability to consult on professional questions"
+    "description": "Title on the webpage indicating that this section is about the service's ability to consult on professional questions."
   },
   "title.getTips": {
     "message": "Getting Inspiration and Ideas",
-    "description": "The title in the webpage indicating that this section is about the service's ability to get inspiration and ideas"
+    "description": "Title on the webpage indicating that this section is about the service's ability to get inspiration and ideas."
   },
   "group.today": {
     "message": "Today",
-    "description": "The group name in the webpage, i.e., Today"
+    "description": "Group name on the webpage, i.e., Today."
   },
   "group.yesterday": {
     "message": "Yesterday",
-    "description": "The group name in the webpage, i.e., Yesterday"
+    "description": "Group name on the webpage, i.e., Yesterday."
   },
   "group.thisWeek": {
     "message": "This Week",
-    "description": "The group name in the webpage, i.e., This Week"
+    "description": "Group name on the webpage, i.e., This Week."
   },
   "group.earlier": {
     "message": "Earlier",
-    "description": "The group name in the webpage, i.e., Earlier"
+    "description": "Group name on the webpage, i.e., Earlier."
   },
   "modelGroup.gemini": {
     "message": "Gemini",
-    "description": "The name of the service model, i.e., Gemini"
+    "description": "The name of the service model, i.e., Gemini."
   },
   "modelGroup.geminiDescription": {
-    "message": "AI model developed by Google",
-    "description": "Description of the Gemini model"
+    "message": "AI model developed by Google.",
+    "description": "Description of the Gemini model."
   },
   "model.gemini30Pro": {
     "message": "gemini-3.0-pro",
-    "description": "The name of the service model"
+    "description": "The name of the service model."
   },
   "model.gemini30ProDescription": {
-    "message": "Suitable for advanced reasoning and multimodal tasks",
-    "description": "Description of the Gemini 3.0 Pro model"
+    "message": "Suitable for advanced reasoning and multimodal tasks.",
+    "description": "Description of the Gemini 3.0 Pro model."
   },
   "model.gemini25Pro": {
     "message": "gemini-2.5-pro",
-    "description": "The name of the service model"
+    "description": "The name of the service model."
   },
   "model.gemini25ProDescription": {
-    "message": "Great all-round model",
-    "description": "Description of the Gemini 2.5 Pro model"
+    "message": "Great all-round model.",
+    "description": "Description of the Gemini 2.5 Pro model."
   },
   "model.gemini25Flash": {
     "message": "gemini-2.5-flash",
-    "description": "The name of the service model"
+    "description": "The name of the service model."
   },
   "model.gemini25FlashDescription": {
-    "message": "Fast and lightweight Gemini model",
-    "description": "Description of the Gemini 2.5 Flash model"
+    "message": "Fast and lightweight Gemini model.",
+    "description": "Description of the Gemini 2.5 Flash model."
   },
   "modelGroup.claude": {
     "message": "Claude",
-    "description": "The name of the service model, i.e., Claude"
+    "description": "The name of the service model, i.e., Claude."
   },
   "modelGroup.claudeDescription": {
-    "message": "AI model developed by Anthropic",
-    "description": "Description of the Claude model"
+    "message": "AI model developed by Anthropic.",
+    "description": "Description of the Claude model."
   },
   "model.claudeOpus4": {
     "message": "claude-opus-4",
-    "description": "The name of the service model"
+    "description": "The name of the service model."
   },
   "model.claudeOpus4Description": {
-    "message": "Top-tier reasoning and complex tasks",
-    "description": "Description of the Claude Opus 4 model"
+    "message": "Top-tier reasoning and complex tasks.",
+    "description": "Description of the Claude Opus 4 model."
   },
   "model.claudeSonnet4": {
     "message": "claude-sonnet-4",
-    "description": "The name of the service model"
+    "description": "The name of the service model."
   },
   "model.claudeSonnet4Description": {
-    "message": "Balanced performance and efficiency",
-    "description": "Description of the Claude Sonnet 4 model"
+    "message": "Balanced performance and efficiency.",
+    "description": "Description of the Claude Sonnet 4 model."
   },
   "model.claude37Sonnet": {
     "message": "claude-3-7-sonnet",
-    "description": "The name of the service model"
+    "description": "The name of the service model."
   },
   "model.claude37SonnetDescription": {
-    "message": "Fast iterative Claude Sonnet 3.7",
-    "description": "Description of the Claude 3.7 Sonnet model"
+    "message": "Fast iterative Claude Sonnet 3.7.",
+    "description": "Description of the Claude 3.7 Sonnet model."
   }
 }
