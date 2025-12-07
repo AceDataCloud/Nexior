@@ -189,7 +189,7 @@
   },
   "status.loading": {
     "message": "Ladataan...",
-    "description": "Tilateksti, joka näytetään sisällön latautuessa"
+    "description": "Tila-teksti, joka näytetään sisällön lataamisen aikana"
   },
   "entity.operation": {
     "message": "Toiminto",
@@ -209,7 +209,7 @@
   },
   "entity.order": {
     "message": "Tilaus",
-    "description": "Entiteetin tilaus, tilaus sisältää summan, palvelutiedot, käyttäjän on maksettava siitä"
+    "description": "Entiteetin tilaus, joka sisältää summan ja palvelutiedot, joista käyttäjän on maksettava"
   },
   "message.noTasks": {
     "message": "Ei historiallisia tehtäviä, aloita uusi tehtävä～",
@@ -217,27 +217,27 @@
   },
   "message.usedAmount": {
     "message": "Käytetty summa",
-    "description": "Näyttää käytetyn summan palvelusta"
+    "description": "Näytetään palvelun käytetty summa"
   },
   "message.remainingAmount": {
     "message": "Jäljellä oleva summa",
-    "description": "Näyttää jäljellä olevan summan palvelusta"
+    "description": "Näytetään palvelun jäljellä oleva summa"
   },
   "message.copied": {
     "message": "Kopioitu onnistuneesti",
     "description": "Viesti, joka ilmoittaa, että sisältö on kopioitu onnistuneesti"
   },
   "message.restart": {
-    "message": "Uudelleenluonti",
+    "message": "Uudelleen generoida",
     "description": "Viesti, joka ilmoittaa, että sisältö on kopioitu onnistuneesti"
   },
   "message.confirmDelete": {
     "message": "Haluatko varmasti poistaa?",
-    "description": "Viesti, joka vahvistaa, haluaako käyttäjä poistaa jotain"
+    "description": "Viesti, joka vahvistaa, haluaako käyttäjä poistaa tiettyä sisältöä"
   },
   "message.expiredAt": {
-    "message": "Erääntymisaika",
-    "description": "Näyttää palvelun erääntymisajan"
+    "message": "Vanhentumisaika",
+    "description": "Näytetään palvelun vanhentumisaika"
   },
   "message.alert": {
     "message": "Varoitus",
@@ -249,11 +249,11 @@
   },
   "message.free": {
     "message": "Ilmainen",
-    "description": "Viesti, joka ilmoittaa, että palvelu on ilmainen, käyttäjän ei tarvitse maksaa"
+    "description": "Viesti, joka ilmoittaa, että palvelu on ilmainen, eli käyttäjän ei tarvitse maksaa"
   },
   "message.startPrice": {
     "message": "Alkaen hinta",
-    "description": "Viesti, joka näyttää palvelun vähimmäishinnan"
+    "description": "Viesti, joka näyttää palvelun alhaisimman hinnan"
   },
   "message.joinDiscord": {
     "message": "Liity Discordiin",
@@ -261,7 +261,7 @@
   },
   "message.addWeChat": {
     "message": "Lisää WeChat",
-    "description": "Viesti, joka kehottaa käyttäjää lisäämään WeChatin"
+    "description": "Viesti, joka kehottaa käyttäjää lisäämään WeChat"
   },
   "message.serviceTech": {
     "message": "Tekninen tuki",
@@ -312,8 +312,8 @@
     "description": "Verkkosivuston navigointipalkin teksti, joka näyttää dokumenttisivun"
   },
   "nav.console": {
-    "message": "Ohjauspaneeli",
-    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää ohjauspaneelisivun"
+    "message": "Konsoli",
+    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää konsolisivun"
   },
   "nav.chatgpt": {
     "message": "ChatGPT",
@@ -408,7 +408,7 @@
     "description": "网站导航栏中的文本，用于显示设置页面"
   },
   "nav.headshots": {
-    "message": "AI-profiilikuva",
+    "message": "AI-passikuvat",
     "description": "网站导航栏中的文本，用于显示站点配置页面"
   },
   "nav.locale": {
@@ -424,7 +424,7 @@
     "description": "网站导航栏中的文本，用于切换到深色主题"
   },
   "title.alert": {
-    "message": "Hälytys",
+    "message": "Ilmoitus",
     "description": "警报消息的标题"
   },
   "title.placeholderOfSelect": {
@@ -517,7 +517,7 @@
   },
   "about.link6": {
     "message": "Suositustulot",
-    "description": "Suositustulosivun linkki"
+    "description": "Suositustulot-sivun linkki"
   },
   "about.link7": {
     "message": "Tuki",

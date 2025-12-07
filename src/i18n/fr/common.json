@@ -81,7 +81,7 @@
   },
   "button.profile": {
     "message": "Profil",
-    "description": "Bouton texte, utilisé pour afficher le profil de l'utilisateur"
+    "description": "Bouton texte, utilisé pour afficher le profil"
   },
   "button.console": {
     "message": "Console",
@@ -148,8 +148,8 @@
     "description": "Bouton texte, utilisé pour créer certains éléments"
   },
   "button.referralEarnings": {
-    "message": "Revenus de parrainage",
-    "description": "Bouton texte, utilisé pour afficher les revenus de parrainage, indiquant que l'utilisateur peut gagner de l'argent en invitant d'autres à utiliser le service"
+    "message": "Gains de parrainage",
+    "description": "Bouton texte, utilisé pour afficher les gains de parrainage, indiquant que l'utilisateur peut gagner de l'argent en invitant d'autres à utiliser le service"
   },
   "button.finish": {
     "message": "Terminer",
@@ -169,7 +169,7 @@
   },
   "entity.copyright": {
     "message": "Droits d'auteur",
-    "description": "Texte utilisé pour afficher les informations sur les droits d'auteur"
+    "description": "Utilisé pour afficher le texte des informations sur les droits d'auteur"
   },
   "entity.platform": {
     "message": "Plateforme",
@@ -189,7 +189,7 @@
   },
   "status.loading": {
     "message": "Chargement...",
-    "description": "Texte de statut affiché pendant le chargement du contenu"
+    "description": "Texte d'état affiché lors du chargement du contenu"
   },
   "entity.operation": {
     "message": "Opération",
@@ -201,19 +201,19 @@
   },
   "entity.createdAt": {
     "message": "Date de création",
-    "description": "La date de création de l'entité"
+    "description": "Le moment de la création de l'entité"
   },
   "entity.updatedAt": {
     "message": "Date de mise à jour",
-    "description": "La date de mise à jour de l'entité"
+    "description": "Le moment de la mise à jour de l'entité"
   },
   "entity.order": {
     "message": "Commande",
-    "description": "La commande de l'entité, la commande contient le montant, les informations sur le service, l'utilisateur doit payer pour cela"
+    "description": "La commande de l'entité, qui comprend le montant et les informations sur le service, que l'utilisateur doit payer"
   },
   "message.noTasks": {
     "message": "Aucune tâche historique, veuillez commencer une nouvelle tâche～",
-    "description": "Message lorsque aucune tâche n'est présente"
+    "description": "Message affiché lorsqu'il n'y a pas de tâches"
   },
   "message.usedAmount": {
     "message": "Montant utilisé",
@@ -225,15 +225,15 @@
   },
   "message.copied": {
     "message": "Copié avec succès",
-    "description": "Utilisé pour afficher le message que le contenu a été copié avec succès"
+    "description": "Utilisé pour afficher un message indiquant que le contenu a été copié avec succès"
   },
   "message.restart": {
     "message": "Régénérer",
-    "description": "Utilisé pour afficher le message que le contenu a été copié avec succès"
+    "description": "Utilisé pour afficher un message indiquant que le contenu a été régénéré"
   },
   "message.confirmDelete": {
     "message": "Êtes-vous sûr de vouloir supprimer ?",
-    "description": "Utilisé pour confirmer si l'utilisateur souhaite supprimer quelque chose"
+    "description": "Utilisé pour confirmer si l'utilisateur souhaite supprimer certains contenus"
   },
   "message.expiredAt": {
     "message": "Date d'expiration",
@@ -249,7 +249,7 @@
   },
   "message.free": {
     "message": "Gratuit",
-    "description": "Utilisé pour afficher un message indiquant que le service est gratuit, ce qui signifie que l'utilisateur n'a pas besoin de payer"
+    "description": "Utilisé pour afficher un message indiquant que le service est gratuit, signifiant que l'utilisateur n'a pas besoin de payer"
   },
   "message.startPrice": {
     "message": "Prix de départ",
@@ -265,15 +265,15 @@
   },
   "message.serviceTech": {
     "message": "Support technique",
-    "description": "Utilisé pour afficher le message de support technique du service"
+    "description": "Utilisé pour afficher un message de support technique pour le service"
   },
   "message.businessCooperation": {
     "message": "Coopération commerciale",
-    "description": "Utilisé pour afficher le message de coopération commerciale"
+    "description": "Utilisé pour afficher un message sur la coopération commerciale"
   },
   "message.noData": {
     "message": "Pas de données",
-    "description": "Utilisé pour afficher un message indiquant qu'il n'y a pas de données dans le tableau ou la liste"
+    "description": "Utilisé pour afficher un message indiquant qu'il n'y a pas de données dans un tableau ou une liste"
   },
   "nav.home": {
     "message": "Accueil",
@@ -421,7 +421,7 @@
   },
   "nav.darkMode": {
     "message": "Mode sombre",
-    "description": "Texte dans la barre de navigation du site pour basculer vers le thème sombre"
+    "description": "Texte dans la barre de navigation du site pour basculer en mode sombre"
   },
   "title.alert": {
     "message": "Alerte",
@@ -488,7 +488,7 @@
     "description": "Titre de la section affichant les informations de support"
   },
   "about.address": {
-    "message": "États-Unis, Delaware, Middletown, Bureau 201, N Broad St",
+    "message": "Bureau 201, N Broad St, Middletown, DE, États-Unis",
     "description": "Adresse de l'entreprise"
   },
   "about.email": {
@@ -524,8 +524,8 @@
     "description": "Lien vers la page de support"
   },
   "about.link8": {
-    "message": "Conditions de service",
-    "description": "Lien vers la page des conditions de service"
+    "message": "Conditions d'utilisation",
+    "description": "Lien vers la page des conditions d'utilisation"
   },
   "about.link9": {
     "message": "Politique de confidentialité",
@@ -573,10 +573,10 @@
   },
   "nav.gemini": {
     "message": "Gemini",
-    "description": "Texte dans la barre de navigation du site pour afficher la page Gemini, doit rester 'Gemini'"
+    "description": "Texte dans la barre de navigation du site pour afficher la page Gemini, doit rester comme 'Gemini'"
   },
   "nav.claude": {
     "message": "Claude",
-    "description": "Texte dans la barre de navigation du site pour afficher la page Claude, doit rester 'Claude'"
+    "description": "Texte dans la barre de navigation du site pour afficher la page Claude, doit rester comme 'Claude'"
   }
 }

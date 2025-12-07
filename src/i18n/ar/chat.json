@@ -12,8 +12,8 @@
     "description": "زر البحث"
   },
   "button.edit": {
-    "message": "تعديل الرسالة",
-    "description": "تعديل الرسالة المرسلة"
+    "message": "تحرير الرسالة",
+    "description": "تحرير الرسالة المرسلة"
   },
   "modelGroup.chatgpt": {
     "message": "ChatGPT",
@@ -104,11 +104,19 @@
     "description": "وصف نموذج 4.0 الشامل"
   },
   "model.deepseekChat": {
-    "message": "3.0 قياسي",
+    "message": "المعيار 3.0",
+    "description": "اسم النموذج للخدمة، أي دردشة DeepSeek"
+  },
+  "model.deepseekChat32": {
+    "message": "المعيار 3.2",
     "description": "اسم النموذج للخدمة، أي دردشة DeepSeek"
   },
   "model.deepseekChatDescription": {
     "message": "مناسب للمهام اليومية",
+    "description": "وصف نموذج دردشة DeepSeek"
+  },
+  "model.deepseekChat32Description": {
+    "message": "مناسب للمهام متعددة الوسائط",
     "description": "وصف نموذج دردشة DeepSeek"
   },
   "model.deepseekReasoner": {
@@ -116,7 +124,7 @@
     "description": "اسم النموذج للخدمة، أي استدلال DeepSeek"
   },
   "model.deepseekReasonerDescription": {
-    "message": "مناسب للاستدلال والأسئلة العميقة",
+    "message": "مناسب للاستدلال والتفكير العميق في المشكلات",
     "description": "وصف نموذج استدلال DeepSeek"
   },
   "model.grok4": {
@@ -140,7 +148,7 @@
     "description": "اسم النموذج للخدمة، أي استدلال Grok3"
   },
   "model.grok3ReasonerDescription": {
-    "message": "مناسب للاستدلال والأسئلة العميقة",
+    "message": "مناسب للاستدلال والتفكير العميق في المشكلات",
     "description": "وصف نموذج استدلال Grok3"
   },
   "model.grok3Deepsearch": {
@@ -148,7 +156,7 @@
     "description": "اسم النموذج للخدمة، أي Grok3 بحث عميق"
   },
   "model.grok3DeepsearchDescription": {
-    "message": "مناسب للبحث العميق والأسئلة المعقدة",
+    "message": "مناسب للبحث العميق والمشكلات المعقدة",
     "description": "وصف نموذج Grok3 للبحث العميق"
   },
   "model.o1": {
@@ -160,7 +168,7 @@
     "description": "وصف نموذج O1"
   },
   "model.o1Mini": {
-    "message": "ChatGPT - o1-mini استدلال",
+    "message": "ChatGPT - استدلال o1-mini",
     "description": "اسم النموذج للخدمة، أي O1-Mini"
   },
   "model.o1MiniDescription": {
@@ -180,7 +188,7 @@
     "description": "اسم النموذج للخدمة، أي O4-Mini"
   },
   "model.o4MiniDescription": {
-    "message": "بارع في الاستدلال البرمجي والبصري",
+    "message": "بارع في الترميز والاستدلال البصري",
     "description": "وصف نموذج O4"
   },
   "message.startNewChat": {
@@ -189,114 +197,114 @@
   },
   "message.uploadFile": {
     "message": "رفع ملف",
-    "description": "网页中的消息，告诉用户上传文件"
+    "description": "رسالة في الصفحة تخبر المستخدم برفع ملف"
   },
   "message.noToken": {
-    "message": "يرجى التقدم بطلب للحصول على الخدمة المناسبة أولاً",
-    "description": "网页中的消息，告诉用户先申请相应服务"
+    "message": "يرجى التقدم للحصول على الخدمة المناسبة أولاً",
+    "description": "رسالة في الصفحة تخبر المستخدم بالتقدم للحصول على الخدمة المناسبة أولاً"
   },
   "message.newMessagePlaceholder": {
     "message": "يرجى إدخال سؤالك...",
-    "description": "网页中的占位符，告诉用户输入问题"
+    "description": "نص مكان في الصفحة يخبر المستخدم بإدخال السؤال"
   },
   "message.noInput": {
     "message": "لا يمكن أن يكون السؤال فارغًا",
-    "description": "网页中的消息，告诉用户问题不能为空"
+    "description": "رسالة في الصفحة تخبر المستخدم أن السؤال لا يمكن أن يكون فارغًا"
   },
   "message.uploadReferencesExceed": {
     "message": "يمكنك رفع ملف واحد فقط كحد أقصى",
-    "description": "网页中的消息，告诉用户最多只能上传 1 个文件"
+    "description": "رسالة في الصفحة تخبر المستخدم أنه يمكنه رفع ملف واحد فقط كحد أقصى"
   },
   "message.uploadReferencesError": {
     "message": "فشل رفع الملف، يرجى المحاولة لاحقًا",
-    "description": "网页中的消息，告诉用户文件上传失败，请稍后重试"
+    "description": "رسالة في الصفحة تخبر المستخدم بفشل رفع الملف، يرجى المحاولة لاحقًا"
   },
   "message.notApplied": {
-    "message": "لم تتقدم بطلب للحصول على هذه الخدمة بعد، يرجى التقدم أولاً",
-    "description": "网页中的消息，告诉用户您尚未申请此服务，请先申请"
+    "message": "لم تتقدم بعد لهذه الخدمة، يرجى التقدم أولاً",
+    "description": "رسالة في الصفحة تخبر المستخدم أنه لم يتقدم بعد لهذه الخدمة، يرجى التقدم أولاً"
   },
   "message.tryForFree": {
     "message": "تجربة مجانية",
-    "description": "网页中的消息，告诉用户免费试用"
+    "description": "رسالة في الصفحة تخبر المستخدم بتجربة مجانية"
   },
   "message.question1": {
     "message": "إنشاء خطة تدريب",
-    "description": "开始对话的示例问题，要求用户编写一段输出 Hello World 的 JavaScript 代码"
+    "description": "سؤال مثال لبدء المحادثة، يطلب من المستخدم كتابة كود JavaScript لإخراج Hello World"
   },
   "message.question2": {
     "message": "إنشاء صفحة ويب شخصية",
-    "description": "开始对话的示例问题，要求用户给 Mike 写封电子邮件，告诉他我刚搬家"
+    "description": "سؤال مثال لبدء المحادثة، يطلب من المستخدم كتابة بريد إلكتروني إلى مايك ليخبره أنه انتقل للتو"
   },
   "message.question3": {
     "message": "تصميم ألعاب برمجة ممتعة",
-    "description": "开始对话的示例问题，要求用户用简单的语言解释量子计算的基本原理"
+    "description": "سؤال مثال لبدء المحادثة، يطلب من المستخدم شرح المبادئ الأساسية للحوسبة الكمومية بلغة بسيطة"
   },
   "message.question4": {
     "message": "تجربة سيول كما يفعل السكان المحليون",
-    "description": "开始对话的示例问题，要求用户解释虚拟现实对艺术创作产生了什么影响"
+    "description": "سؤال مثال لبدء المحادثة، يطلب من المستخدم شرح تأثير الواقع الافتراضي على الإبداع الفني"
   },
   "message.question5": {
-    "message": "من أكبر 9.8 أم 9.11؟",
-    "description": "开始对话的示例问题，要求比较两个数字的大小"
+    "message": "أي أكبر 9.8 أم 9.11؟",
+    "description": "سؤال مثال لبدء المحادثة، يطلب مقارنة حجم رقمين"
   },
   "message.question6": {
     "message": "ما تأثير الذكاء الاصطناعي على المستقبل؟",
-    "description": "开始对话的示例问题，AI 对未来有什么影响？"
+    "description": "سؤال مثال لبدء المحادثة، ما تأثير الذكاء الاصطناعي على المستقبل؟"
   },
   "message.question7": {
     "message": "كيف يمكن تحسين كفاءة التعلم؟",
-    "description": "开始对话的示例问题，如何提高自己的学习效率？"
+    "description": "سؤال مثال لبدء المحادثة، كيف يمكن تحسين كفاءة التعلم الخاصة بك؟"
   },
   "message.question8": {
     "message": "كيف يمكن تحسين التركيز؟",
-    "description": "开始对话的示例问题，如何提高自己的专注力？"
+    "description": "سؤال مثال لبدء المحادثة، كيف يمكن تحسين تركيزك؟"
   },
   "message.errorApiError": {
     "message": "فشل الرد، يرجى المحاولة لاحقًا",
-    "description": "网页中的消息，告诉用户回答失败，请稍后重试"
+    "description": "رسالة في الصفحة تخبر المستخدم بفشل الرد، يرجى المحاولة لاحقًا"
   },
   "message.errorBadRequest": {
     "message": "محتوى الطلب غير صحيح، يرجى إعادة طرح السؤال",
-    "description": "网页中的消息，告诉用户请求内容不规范，请重新提问"
+    "description": "رسالة في الصفحة تخبر المستخدم أن محتوى الطلب غير صحيح، يرجى إعادة طرح السؤال"
   },
   "message.errorNoConversation": {
     "message": "المحادثة غير موجودة أو انتهت صلاحيتها، يرجى بدء محادثة جديدة",
-    "description": "网页中的消息，告诉用户对话不存在或已过期，请开始新对话"
+    "description": "رسالة في الصفحة تخبر المستخدم أن المحادثة غير موجودة أو انتهت صلاحيتها، يرجى بدء محادثة جديدة"
   },
   "message.errorContentTooLarge": {
     "message": "محتوى السؤال طويل جدًا، يرجى تقصيره والمحاولة مرة أخرى",
-    "description": "网页中的消息，告诉用户问题内容过长，请缩短后重试"
+    "description": "رسالة في الصفحة تخبر المستخدم أن محتوى السؤال طويل جدًا، يرجى تقصيره والمحاولة مرة أخرى"
   },
   "message.errorTooManyRequests": {
-    "message": "لقد قمت بإجراء عمليات كثيرة جدًا، يرجى المحاولة لاحقًا",
-    "description": "网页中的消息，告诉用户您的操作过于频繁，请稍后重试"
+    "message": "إجراءاتك متكررة جدًا، يرجى المحاولة لاحقًا",
+    "description": "رسالة في الصفحة تخبر المستخدم أن إجراءاته متكررة جدًا، يرجى المحاولة لاحقًا"
   },
   "message.errorBusy": {
     "message": "الخادم مشغول، يرجى المحاولة لاحقًا",
-    "description": "网页中的消息，告诉用户服务器繁忙，请稍后重试"
+    "description": "رسالة في الصفحة تخبر المستخدم أن الخادم مشغول، يرجى المحاولة لاحقًا"
   },
   "message.errorUsedUp": {
     "message": "لقد استنفدت عدد مرات الاشتراك، يرجى شراء المزيد من المرات للاستمرار في الاستخدام",
-    "description": "网页中的消息，告诉用户您已用完套餐次数，请购买更多次数继续使用"
+    "description": "رسالة في الصفحة تخبر المستخدم أنه استنفد عدد مرات الاشتراك، يرجى شراء المزيد من المرات للاستمرار في الاستخدام"
   },
   "message.errorUnknown": {
     "message": "حدث خطأ غير معروف في الخادم، يرجى المحاولة لاحقًا أو الاتصال بخدمة العملاء",
-    "description": "网页中的消息，告诉用户服务器发生未知错误，请稍后重试或联系客服"
+    "description": "رسالة في الصفحة تخبر المستخدم أنه حدث خطأ غير معروف في الخادم، يرجى المحاولة لاحقًا أو الاتصال بخدمة العملاء"
   },
   "message.errorTimeout": {
     "message": "انتهت مهلة الرد على السؤال، يرجى المحاولة لاحقًا",
-    "description": "网页中的消息，告诉用户回答问题超时，请稍后重试"
+    "description": "رسالة في الصفحة تخبر المستخدم أن مهلة الرد على السؤال انتهت، يرجى المحاولة لاحقًا"
   },
   "message.errorNotApplied": {
-    "message": "لم تتقدم بطلب للحصول على هذه الخدمة بعد، يرجى التقدم أولاً ثم متابعة السؤال",
-    "description": "网页中的消息，告诉用户您尚未申请此服务，请先申请再继续提问"
+    "message": "لم تتقدم بعد لهذه الخدمة، يرجى التقدم أولاً ثم متابعة السؤال",
+    "description": "رسالة في الصفحة تخبر المستخدم أنه لم يتقدم بعد لهذه الخدمة، يرجى التقدم أولاً ثم متابعة السؤال"
   },
   "message.confirmDelete": {
     "message": "تأكيد الحذف",
-    "description": "网页中的消息，告诉用户确认删除"
+    "description": "رسالة في الصفحة تخبر المستخدم بتأكيد الحذف"
   },
   "message.howToUse": {
-    "message": "قد يرتكب الذكاء الاصطناعي أخطاء، يرجى التحقق من المعلومات المهمة.",
+    "message": "قد تخطئ الذكاء الاصطناعي، يرجى التحقق من المعلومات المهمة.",
     "description": "网页中的消息，告诉用户 AI 可能会出错，请检查重要信息"
   },
   "title.chat": {
@@ -348,7 +356,7 @@
     "description": "The name of the service model, i.e., Gemini"
   },
   "modelGroup.geminiDescription": {
-    "message": "نموذج ذكاء اصطناعي تم تطويره بواسطة جوجل",
+    "message": "نموذج الذكاء الاصطناعي الذي طورته جوجل",
     "description": "Description of the Gemini model"
   },
   "model.gemini30Pro": {
@@ -380,11 +388,11 @@
     "description": "The name of the service model, i.e., Claude"
   },
   "modelGroup.claudeDescription": {
-    "message": "نموذج ذكاء اصطناعي تم تطويره بواسطة أنثروبيك",
+    "message": "نموذج الذكاء الاصطناعي الذي طورته أنثروبيك",
     "description": "Description of the Claude model"
   },
   "model.claudeOpus4": {
-    "message": "كلود-أوبس-4",
+    "message": "كلود-أوبوس-4",
     "description": "The name of the service model"
   },
   "model.claudeOpus4Description": {
