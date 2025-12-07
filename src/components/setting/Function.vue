@@ -13,7 +13,7 @@
           inline-prompt
           :active-text="$t('site.button.enabled')"
           :inactive-text="$t('site.button.disabled')"
-          @update:model-value="onToggleFeature(feature, $event)"
+          @update:model-value="onToggleFeature(feature, $event as boolean)"
         />
 
         <div v-if="feature === 'support' && site.features?.[feature]?.enabled" class="settings-nested">
@@ -24,7 +24,7 @@
               inline-prompt
               :active-text="$t('site.button.enabled')"
               :inactive-text="$t('site.button.disabled')"
-              @update:model-value="onToggleSupportChannel(feature, 'wechat', $event)"
+              @update:model-value="onToggleSupportChannel(feature, 'wechat', $event as boolean)"
             />
           </div>
 
@@ -52,7 +52,7 @@
               inline-prompt
               :active-text="$t('site.button.enabled')"
               :inactive-text="$t('site.button.disabled')"
-              @update:model-value="onToggleSupportChannel(feature, 'discord', $event)"
+              @update:model-value="onToggleSupportChannel(feature, 'discord', $event as boolean)"
             />
           </div>
 
