@@ -1,7 +1,7 @@
 {
   "button.thinkDeeper": {
     "message": "Pensa più a fondo",
-    "description": "Pulsante per pensare in modo più approfondito"
+    "description": "Pulsante per pensare in profondità"
   },
   "button.deepsearch": {
     "message": "Ricerca approfondita",
@@ -92,23 +92,31 @@
     "description": "Nome del modello del servizio, ovvero GPT 4O All"
   },
   "model.4OAllDescription": {
-    "message": "Modello polivalente",
-    "description": "Descrizione del modello 4O polivalente"
+    "message": "Modello universale",
+    "description": "Descrizione del modello universale 4O"
   },
   "model.4All": {
     "message": "gpt-4-all",
     "description": "Nome del modello del servizio, ovvero GPT 4.0 All"
   },
   "model.4AllDescription": {
-    "message": "Modello polivalente",
-    "description": "Descrizione del modello 4.0 polivalente"
+    "message": "Modello universale",
+    "description": "Descrizione del modello universale 4.0"
   },
   "model.deepseekChat": {
     "message": "Standard 3.0",
     "description": "Nome del modello del servizio, ovvero DeepSeek Chat"
   },
+  "model.deepseekChat32": {
+    "message": "Standard 3.2",
+    "description": "Nome del modello del servizio, ovvero DeepSeek Chat"
+  },
   "model.deepseekChatDescription": {
     "message": "Adatto per compiti quotidiani",
+    "description": "Descrizione del modello DeepSeek Chat"
+  },
+  "model.deepseekChat32Description": {
+    "message": "Adatto per compiti multimodali",
     "description": "Descrizione del modello DeepSeek Chat"
   },
   "model.deepseekReasoner": {
@@ -116,7 +124,7 @@
     "description": "Nome del modello del servizio, ovvero DeepSeek Reasoner"
   },
   "model.deepseekReasonerDescription": {
-    "message": "Adatto per ragionamenti e domande di pensiero profondo",
+    "message": "Adatto per ragionamenti e domande profonde",
     "description": "Descrizione del modello DeepSeek Reasoner"
   },
   "model.grok4": {
@@ -136,11 +144,11 @@
     "description": "Descrizione del modello Grok3"
   },
   "model.grok3Reasoner": {
-    "message": "grok-3 ragionamento",
+    "message": "Ragionamento grok-3",
     "description": "Nome del modello del servizio, ovvero Grok3 Reasoner"
   },
   "model.grok3ReasonerDescription": {
-    "message": "Adatto per ragionamenti e domande di pensiero profondo",
+    "message": "Adatto per ragionamenti e domande profonde",
     "description": "Descrizione del modello Grok3 Reasoner"
   },
   "model.grok3Deepsearch": {
@@ -160,7 +168,7 @@
     "description": "Descrizione del modello O1"
   },
   "model.o1Mini": {
-    "message": "ChatGPT - ragionamento o1-mini",
+    "message": "Ragionamento ChatGPT - o1-mini",
     "description": "Nome del modello del servizio, ovvero O1-Mini"
   },
   "model.o1MiniDescription": {
@@ -192,7 +200,7 @@
     "description": "Messaggio nella pagina web che informa l'utente di caricare un file"
   },
   "message.noToken": {
-    "message": "Si prega di richiedere il servizio corrispondente",
+    "message": "Si prega di richiedere prima il servizio corrispondente",
     "description": "Messaggio nella pagina web che informa l'utente di richiedere prima il servizio corrispondente"
   },
   "message.newMessagePlaceholder": {
@@ -209,7 +217,7 @@
   },
   "message.uploadReferencesError": {
     "message": "Caricamento del file fallito, riprova più tardi",
-    "description": "Messaggio nella pagina web che informa l'utente che il caricamento del file è fallito, riprovare più tardi"
+    "description": "Messaggio nella pagina web che informa l'utente che il caricamento del file è fallito, riprova più tardi"
   },
   "message.notApplied": {
     "message": "Non hai ancora richiesto questo servizio, per favore richiedilo prima",
@@ -253,11 +261,11 @@
   },
   "message.errorApiError": {
     "message": "Risposta fallita, riprova più tardi",
-    "description": "Messaggio nella pagina web che informa l'utente che la risposta è fallita, riprovare più tardi"
+    "description": "Messaggio nella pagina web che informa l'utente che la risposta è fallita, riprova più tardi"
   },
   "message.errorBadRequest": {
     "message": "Contenuto della richiesta non valido, riprova",
-    "description": "Messaggio nella pagina web che informa l'utente che il contenuto della richiesta non è valido, riprovare"
+    "description": "Messaggio nella pagina web che informa l'utente che il contenuto della richiesta non è valido, riprova"
   },
   "message.errorNoConversation": {
     "message": "La conversazione non esiste o è scaduta, inizia una nuova conversazione",
@@ -269,23 +277,23 @@
   },
   "message.errorTooManyRequests": {
     "message": "Le tue operazioni sono troppo frequenti, riprova più tardi",
-    "description": "Messaggio nella pagina web che informa l'utente che le sue operazioni sono troppo frequenti, riprovare più tardi"
+    "description": "Messaggio nella pagina web che informa l'utente che le sue operazioni sono troppo frequenti, riprova più tardi"
   },
   "message.errorBusy": {
     "message": "Server occupato, riprova più tardi",
-    "description": "Messaggio nella pagina web che informa l'utente che il server è occupato, riprovare più tardi"
+    "description": "Messaggio nella pagina web che informa l'utente che il server è occupato, riprova più tardi"
   },
   "message.errorUsedUp": {
     "message": "Hai esaurito il numero di utilizzi del pacchetto, acquista più utilizzi per continuare",
-    "description": "Messaggio nella pagina web che informa l'utente che ha esaurito il numero di utilizzi del pacchetto, acquistare più utilizzi per continuare"
+    "description": "Messaggio nella pagina web che informa l'utente che ha esaurito il numero di utilizzi del pacchetto, acquista più utilizzi per continuare"
   },
   "message.errorUnknown": {
     "message": "Si è verificato un errore sconosciuto sul server, riprova più tardi o contatta il supporto",
-    "description": "Messaggio nella pagina web che informa l'utente che si è verificato un errore sconosciuto sul server, riprovare più tardi o contattare il supporto"
+    "description": "Messaggio nella pagina web che informa l'utente che si è verificato un errore sconosciuto sul server, riprova più tardi o contatta il supporto"
   },
   "message.errorTimeout": {
     "message": "Tempo scaduto per la risposta, riprova più tardi",
-    "description": "Messaggio nella pagina web che informa l'utente che il tempo per la risposta è scaduto, riprovare più tardi"
+    "description": "Messaggio nella pagina web che informa l'utente che il tempo per la risposta è scaduto, riprova più tardi"
   },
   "message.errorNotApplied": {
     "message": "Non hai ancora richiesto questo servizio, richiedilo prima di continuare a fare domande",
@@ -296,115 +304,115 @@
     "description": "Messaggio nella pagina web che informa l'utente di confermare l'eliminazione"
   },
   "message.howToUse": {
-    "message": "L'IA potrebbe commettere errori, controlla le informazioni importanti.",
-    "description": "Messaggio nella pagina web che informa l'utente che l'IA potrebbe commettere errori, controlla le informazioni importanti"
+    "message": "L'IA potrebbe commettere errori, si prega di controllare le informazioni importanti.",
+    "description": "Messaggio nella pagina web che informa gli utenti che l'IA potrebbe commettere errori e che devono controllare le informazioni importanti."
   },
   "title.chat": {
     "message": "Chat AI",
-    "description": "Titolo della pagina web, ovvero Chat AI"
+    "description": "Titolo della pagina web, ovvero Chat AI."
   },
   "title.example": {
     "message": "Esempio",
-    "description": "Titolo della pagina web, ovvero Esempio"
+    "description": "Titolo della pagina web, ovvero Esempio."
   },
   "title.capabilities": {
     "message": "Funzionalità",
-    "description": "Titolo della pagina web, ovvero Funzionalità"
+    "description": "Titolo della pagina web, ovvero Funzionalità."
   },
   "title.limitations": {
     "message": "Limitazioni",
-    "description": "Titolo nella pagina web, indica che questa parte riguarda le limitazioni tecniche del servizio"
+    "description": "Titolo nella pagina web che indica che questa sezione riguarda le limitazioni tecniche del servizio."
   },
   "title.complexQuestion": {
     "message": "Rispondere a domande complesse",
-    "description": "Titolo nella pagina web, indica che questa parte riguarda la capacità del servizio di rispondere a domande complesse"
+    "description": "Titolo nella pagina web che indica che questa sezione riguarda la capacità del servizio di rispondere a domande complesse."
   },
   "title.professionalQuestion": {
     "message": "Consultare domande professionali",
-    "description": "Titolo nella pagina web, indica che questa parte riguarda la capacità del servizio di consultare domande professionali"
+    "description": "Titolo nella pagina web che indica che questa sezione riguarda la capacità del servizio di consultare domande professionali."
   },
   "title.getTips": {
     "message": "Ottenere ispirazione e idee",
-    "description": "Titolo nella pagina web, indica che questa parte riguarda la capacità del servizio di ottenere ispirazione e idee"
+    "description": "Titolo nella pagina web che indica che questa sezione riguarda la capacità del servizio di ottenere ispirazione e idee."
   },
   "group.today": {
     "message": "Oggi",
-    "description": "Nome del gruppo nella pagina web, ovvero Oggi"
+    "description": "Nome del gruppo nella pagina web, ovvero Oggi."
   },
   "group.yesterday": {
     "message": "Ieri",
-    "description": "Nome del gruppo nella pagina web, ovvero Ieri"
+    "description": "Nome del gruppo nella pagina web, ovvero Ieri."
   },
   "group.thisWeek": {
     "message": "Questa settimana",
-    "description": "Nome del gruppo nella pagina web, ovvero Questa settimana"
+    "description": "Nome del gruppo nella pagina web, ovvero Questa settimana."
   },
   "group.earlier": {
     "message": "Prima",
-    "description": "Nome del gruppo nella pagina web, ovvero Prima"
+    "description": "Nome del gruppo nella pagina web, ovvero Prima."
   },
   "modelGroup.gemini": {
     "message": "Gemini",
-    "description": "Il nome del modello di servizio, ovvero Gemini"
+    "description": "Il nome del modello di servizio, ovvero Gemini."
   },
   "modelGroup.geminiDescription": {
     "message": "Modello AI sviluppato da Google",
-    "description": "Descrizione del modello Gemini"
+    "description": "Descrizione del modello Gemini."
   },
   "model.gemini30Pro": {
     "message": "gemini-3.0-pro",
-    "description": "Il nome del modello di servizio"
+    "description": "Il nome del modello di servizio."
   },
   "model.gemini30ProDescription": {
     "message": "Adatto per ragionamenti avanzati e compiti multimodali",
-    "description": "Descrizione del modello Gemini 3.0 Pro"
+    "description": "Descrizione del modello Gemini 3.0 Pro."
   },
   "model.gemini25Pro": {
     "message": "gemini-2.5-pro",
-    "description": "Il nome del modello di servizio"
+    "description": "Il nome del modello di servizio."
   },
   "model.gemini25ProDescription": {
     "message": "Ottimo modello versatile",
-    "description": "Descrizione del modello Gemini 2.5 Pro"
+    "description": "Descrizione del modello Gemini 2.5 Pro."
   },
   "model.gemini25Flash": {
     "message": "gemini-2.5-flash",
-    "description": "Il nome del modello di servizio"
+    "description": "Il nome del modello di servizio."
   },
   "model.gemini25FlashDescription": {
     "message": "Modello Gemini veloce e leggero",
-    "description": "Descrizione del modello Gemini 2.5 Flash"
+    "description": "Descrizione del modello Gemini 2.5 Flash."
   },
   "modelGroup.claude": {
     "message": "Claude",
-    "description": "Il nome del modello di servizio, ovvero Claude"
+    "description": "Il nome del modello di servizio, ovvero Claude."
   },
   "modelGroup.claudeDescription": {
     "message": "Modello AI sviluppato da Anthropic",
-    "description": "Descrizione del modello Claude"
+    "description": "Descrizione del modello Claude."
   },
   "model.claudeOpus4": {
     "message": "claude-opus-4",
-    "description": "Il nome del modello di servizio"
+    "description": "Il nome del modello di servizio."
   },
   "model.claudeOpus4Description": {
     "message": "Ragionamento di alto livello e compiti complessi",
-    "description": "Descrizione del modello Claude Opus 4"
+    "description": "Descrizione del modello Claude Opus 4."
   },
   "model.claudeSonnet4": {
     "message": "claude-sonnet-4",
-    "description": "Il nome del modello di servizio"
+    "description": "Il nome del modello di servizio."
   },
   "model.claudeSonnet4Description": {
     "message": "Prestazioni ed efficienza bilanciate",
-    "description": "Descrizione del modello Claude Sonnet 4"
+    "description": "Descrizione del modello Claude Sonnet 4."
   },
   "model.claude37Sonnet": {
     "message": "claude-3-7-sonnet",
-    "description": "Il nome del modello di servizio"
+    "description": "Il nome del modello di servizio."
   },
   "model.claude37SonnetDescription": {
     "message": "Claude Sonnet 3.7 veloce e iterativo",
-    "description": "Descrizione del modello Claude 3.7 Sonnet"
+    "description": "Descrizione del modello Claude 3.7 Sonnet."
   }
 }

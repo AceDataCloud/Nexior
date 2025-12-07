@@ -72,7 +72,7 @@
     "description": "サービスのモデル名、すなわち GPT 4.0 Mini"
   },
   "model.4OMiniDescription": {
-    "message": "より軽量で高速なモデル",
+    "message": "より軽く、より速いモデル",
     "description": "4.0 Miniモデルの説明"
   },
   "model.4OImage": {
@@ -107,8 +107,16 @@
     "message": "3.0 スタンダード",
     "description": "サービスのモデル名、すなわち DeepSeek チャット"
   },
+  "model.deepseekChat32": {
+    "message": "3.2 スタンダード",
+    "description": "サービスのモデル名、すなわち DeepSeek チャット"
+  },
   "model.deepseekChatDescription": {
     "message": "日常的なタスクに適している",
+    "description": "DeepSeekチャットモデルの説明"
+  },
+  "model.deepseekChat32Description": {
+    "message": "マルチモーダルタスクに適している",
     "description": "DeepSeekチャットモデルの説明"
   },
   "model.deepseekReasoner": {
@@ -116,7 +124,7 @@
     "description": "サービスのモデル名、すなわち DeepSeek 推論"
   },
   "model.deepseekReasonerDescription": {
-    "message": "推論や深い思考の問題に適している",
+    "message": "推論と深い思考の問題に適している",
     "description": "DeepSeek推論モデルの説明"
   },
   "model.grok4": {
@@ -140,7 +148,7 @@
     "description": "サービスのモデル名、すなわち Grok3 推論"
   },
   "model.grok3ReasonerDescription": {
-    "message": "推論や深い思考の問題に適している",
+    "message": "推論と深い思考の問題に適している",
     "description": "Grok3推論モデルの説明"
   },
   "model.grok3Deepsearch": {
@@ -148,7 +156,7 @@
     "description": "サービスのモデル名、すなわち Grok3 深い研究"
   },
   "model.grok3DeepsearchDescription": {
-    "message": "深い研究や複雑な問題に適している",
+    "message": "深い研究と複雑な問題に適している",
     "description": "Grok3深い研究モデルの説明"
   },
   "model.o1": {
@@ -180,20 +188,20 @@
     "description": "サービスのモデル名、すなわち O4-Mini"
   },
   "model.o4MiniDescription": {
-    "message": "コーディングと視覚的推論に優れている",
+    "message": "コーディングと視覚的推論に優れています",
     "description": "O4モデルの説明"
   },
   "message.startNewChat": {
-    "message": "新しい会話を始める",
-    "description": "ウェブページ内のメッセージで、ユーザーに新しい会話を始めるように伝える"
+    "message": "新しいチャットを開始",
+    "description": "ウェブページのメッセージで、ユーザーに新しいチャットを開始するように伝えます"
   },
   "message.uploadFile": {
     "message": "ファイルをアップロード",
     "description": "ウェブページのメッセージで、ユーザーにファイルをアップロードするように伝えます"
   },
   "message.noToken": {
-    "message": "まずは該当するサービスを申請してください",
-    "description": "ウェブページのメッセージで、ユーザーにまず該当するサービスを申請するように伝えます"
+    "message": "まずはサービスを申請してください",
+    "description": "ウェブページのメッセージで、ユーザーにまずサービスを申請するように伝えます"
   },
   "message.newMessagePlaceholder": {
     "message": "質問を入力してください...",
@@ -204,64 +212,64 @@
     "description": "ウェブページのメッセージで、ユーザーに質問は空にできないことを伝えます"
   },
   "message.uploadReferencesExceed": {
-    "message": "最大で1つのファイルしかアップロードできません",
-    "description": "ウェブページのメッセージで、ユーザーに最大で1つのファイルしかアップロードできないことを伝えます"
+    "message": "最大1つのファイルのみアップロードできます",
+    "description": "ウェブページのメッセージで、ユーザーに最大1つのファイルのみアップロードできることを伝えます"
   },
   "message.uploadReferencesError": {
     "message": "ファイルのアップロードに失敗しました。後でもう一度お試しください",
-    "description": "ウェブページのメッセージで、ユーザーにファイルのアップロードに失敗したことを伝え、後でもう一度お試しするように促します"
+    "description": "ウェブページのメッセージで、ユーザーにファイルのアップロードに失敗したことを伝え、後でもう一度お試しください"
   },
   "message.notApplied": {
-    "message": "このサービスをまだ申請していません。まずは申請してください",
-    "description": "ウェブページのメッセージで、ユーザーにこのサービスをまだ申請していないことを伝え、まずは申請するように促します"
+    "message": "このサービスをまだ申請していません。まず申請してください",
+    "description": "ウェブページのメッセージで、ユーザーにこのサービスをまだ申請していないことを伝え、まず申請するように促します"
   },
   "message.tryForFree": {
     "message": "無料トライアル",
     "description": "ウェブページのメッセージで、ユーザーに無料トライアルを提供します"
   },
   "message.question1": {
-    "message": "トレーニングプランを作成する",
-    "description": "対話を開始するための例の質問で、ユーザーにHello Worldを出力するJavaScriptコードを書くように求めます"
+    "message": "トレーニングプランを作成",
+    "description": "会話を開始するためのサンプル質問で、ユーザーにHello Worldを出力するJavaScriptコードを書くように求めます"
   },
   "message.question2": {
-    "message": "個人ウェブページを作成する",
-    "description": "対話を開始するための例の質問で、ユーザーにマイクに電子メールを書いて引っ越したことを伝えるように求めます"
+    "message": "個人ウェブページを作成",
+    "description": "会話を開始するためのサンプル質問で、ユーザーにマイクに電子メールを書いて引っ越したことを伝えるように求めます"
   },
   "message.question3": {
-    "message": "面白いプログラミングゲームを設計する",
-    "description": "対話を開始するための例の質問で、ユーザーに量子計算の基本原理を簡単な言葉で説明するように求めます"
+    "message": "面白いプログラミングゲームを設計",
+    "description": "会話を開始するためのサンプル質問で、ユーザーに量子計算の基本原理を簡単な言葉で説明するように求めます"
   },
   "message.question4": {
-    "message": "現地の人のようにソウルを体験する",
-    "description": "対話を開始するための例の質問で、ユーザーにバーチャルリアリティがアート制作に与える影響を説明するように求めます"
+    "message": "地元の人のようにソウルを体験",
+    "description": "会話を開始するためのサンプル質問で、ユーザーに仮想現実がアート制作に与える影響を説明するように求めます"
   },
   "message.question5": {
     "message": "9.8と9.11はどちらが大きいですか？",
-    "description": "対話を開始するための例の質問で、2つの数字の大きさを比較するように求めます"
+    "description": "会話を開始するためのサンプル質問で、2つの数字の大きさを比較するように求めます"
   },
   "message.question6": {
     "message": "AIは未来にどのような影響を与えますか？",
-    "description": "対話を開始するための例の質問で、AIが未来に与える影響について尋ねます"
+    "description": "会話を開始するためのサンプル質問で、AIが未来に与える影響について尋ねます"
   },
   "message.question7": {
-    "message": "学習効率を向上させるにはどうすればよいですか？",
-    "description": "対話を開始するための例の質問で、自分の学習効率を向上させる方法を尋ねます"
+    "message": "学習効率を向上させるには？",
+    "description": "会話を開始するためのサンプル質問で、自分の学習効率を向上させる方法を尋ねます"
   },
   "message.question8": {
-    "message": "集中力を高めるにはどうすればよいですか？",
-    "description": "対話を開始するための例の質問で、自分の集中力を高める方法を尋ねます"
+    "message": "集中力を高めるには？",
+    "description": "会話を開始するためのサンプル質問で、自分の集中力を高める方法を尋ねます"
   },
   "message.errorApiError": {
     "message": "回答に失敗しました。後でもう一度お試しください",
-    "description": "ウェブページのメッセージで、ユーザーに回答に失敗したことを伝え、後でもう一度お試しするように促します"
+    "description": "ウェブページのメッセージで、ユーザーに回答に失敗したことを伝え、後でもう一度お試しください"
   },
   "message.errorBadRequest": {
     "message": "リクエスト内容が不正です。再度質問してください",
     "description": "ウェブページのメッセージで、ユーザーにリクエスト内容が不正であることを伝え、再度質問するように促します"
   },
   "message.errorNoConversation": {
-    "message": "対話が存在しないか、期限切れです。新しい対話を開始してください",
-    "description": "ウェブページのメッセージで、ユーザーに対話が存在しないか、期限切れであることを伝え、新しい対話を開始するように促します"
+    "message": "会話が存在しないか、期限切れです。新しい会話を開始してください",
+    "description": "ウェブページのメッセージで、ユーザーに会話が存在しないか、期限切れであることを伝え、新しい会話を開始するように促します"
   },
   "message.errorContentTooLarge": {
     "message": "質問内容が長すぎます。短くして再試行してください",
@@ -269,87 +277,87 @@
   },
   "message.errorTooManyRequests": {
     "message": "操作が頻繁すぎます。後でもう一度お試しください",
-    "description": "ウェブページのメッセージで、ユーザーに操作が頻繁すぎることを伝え、後でもう一度お試しするように促します"
+    "description": "ウェブページのメッセージで、ユーザーに操作が頻繁すぎることを伝え、後でもう一度お試しください"
   },
   "message.errorBusy": {
-    "message": "サーバーが混雑しています。後でもう一度お試しください",
-    "description": "ウェブページのメッセージで、ユーザーにサーバーが混雑していることを伝え、後でもう一度お試しするように促します"
+    "message": "サーバーがビジーです。後でもう一度お試しください",
+    "description": "ウェブページのメッセージで、ユーザーにサーバーがビジーであることを伝え、後でもう一度お試しください"
   },
   "message.errorUsedUp": {
-    "message": "プランの回数を使い切りました。追加の回数を購入して続けて使用してください",
-    "description": "ウェブページのメッセージで、ユーザーにプランの回数を使い切ったことを伝え、追加の回数を購入して続けて使用するように促します"
+    "message": "プランの回数を使い切りました。追加の回数を購入して続行してください",
+    "description": "ウェブページのメッセージで、ユーザーにプランの回数を使い切ったことを伝え、追加の回数を購入して続行するように促します"
   },
   "message.errorUnknown": {
-    "message": "サーバーで未知のエラーが発生しました。後でもう一度お試しするか、カスタマーサポートに連絡してください",
-    "description": "ウェブページのメッセージで、ユーザーにサーバーで未知のエラーが発生したことを伝え、後でもう一度お試しするか、カスタマーサポートに連絡するように促します"
+    "message": "サーバーで未知のエラーが発生しました。後でもう一度お試しください、またはカスタマーサポートに連絡してください",
+    "description": "ウェブページのメッセージで、ユーザーにサーバーで未知のエラーが発生したことを伝え、後でもう一度お試しください、またはカスタマーサポートに連絡するように促します"
   },
   "message.errorTimeout": {
     "message": "質問の回答がタイムアウトしました。後でもう一度お試しください",
-    "description": "ウェブページのメッセージで、ユーザーに質問の回答がタイムアウトしたことを伝え、後でもう一度お試しするように促します"
+    "description": "ウェブページのメッセージで、ユーザーに質問の回答がタイムアウトしたことを伝え、後でもう一度お試しください"
   },
   "message.errorNotApplied": {
-    "message": "このサービスをまだ申請していません。まずは申請してから質問を続けてください",
-    "description": "ウェブページのメッセージで、ユーザーにこのサービスをまだ申請していないことを伝え、まずは申請してから質問を続けるように促します"
+    "message": "このサービスをまだ申請していません。まず申請してから質問を続けてください",
+    "description": "ウェブページのメッセージで、ユーザーにこのサービスをまだ申請していないことを伝え、まず申請してから質問を続けるように促します"
   },
   "message.confirmDelete": {
     "message": "削除を確認",
     "description": "ウェブページのメッセージで、ユーザーに削除を確認するように伝えます"
   },
   "message.howToUse": {
-    "message": "AIは間違える可能性があります。重要な情報を確認してください。",
-    "description": "ウェブページのメッセージで、ユーザーにAIが間違える可能性があることを伝え、重要な情報を確認するように促します"
+    "message": "AIは誤りを犯す可能性がありますので、重要な情報を確認してください。",
+    "description": "ウェブページのメッセージで、ユーザーにAIが誤りを犯す可能性があることを伝え、重要な情報を確認するように促します。"
   },
   "title.chat": {
-    "message": "AI チャット",
-    "description": "ウェブページのタイトル、つまり AI チャット"
+    "message": "AIチャット",
+    "description": "ウェブページのタイトル、すなわちAIチャット"
   },
   "title.example": {
     "message": "例",
-    "description": "ウェブページのタイトル、つまり 例"
+    "description": "ウェブページのタイトル、すなわち例"
   },
   "title.capabilities": {
     "message": "機能",
-    "description": "ウェブページのタイトル、つまり 機能"
+    "description": "ウェブページのタイトル、すなわち機能"
   },
   "title.limitations": {
     "message": "制限",
-    "description": "ウェブページのタイトル、サービスの技術的制限に関する内容を示す"
+    "description": "ウェブページのタイトルで、この部分の内容がサービスの技術的制限に関するものであることを示します。"
   },
   "title.complexQuestion": {
     "message": "複雑な質問に回答",
-    "description": "ウェブページのタイトル、サービスが複雑な質問に回答する能力に関する内容を示す"
+    "description": "ウェブページのタイトルで、この部分の内容がサービスが複雑な質問に回答する能力に関するものであることを示します。"
   },
   "title.professionalQuestion": {
     "message": "専門的な質問を相談",
-    "description": "ウェブページのタイトル、サービスが専門的な質問を相談する能力に関する内容を示す"
+    "description": "ウェブページのタイトルで、この部分の内容がサービスが専門的な質問を相談する能力に関するものであることを示します。"
   },
   "title.getTips": {
     "message": "インスピレーションとアイデアを得る",
-    "description": "ウェブページのタイトル、サービスがインスピレーションとアイデアを得る能力に関する内容を示す"
+    "description": "ウェブページのタイトルで、この部分の内容がサービスがインスピレーションとアイデアを得る能力に関するものであることを示します。"
   },
   "group.today": {
     "message": "今日",
-    "description": "ウェブページのグループ名、つまり 今日"
+    "description": "ウェブページのグループ名、すなわち今日"
   },
   "group.yesterday": {
     "message": "昨日",
-    "description": "ウェブページのグループ名、つまり 昨日"
+    "description": "ウェブページのグループ名、すなわち昨日"
   },
   "group.thisWeek": {
     "message": "今週",
-    "description": "ウェブページのグループ名、つまり 今週"
+    "description": "ウェブページのグループ名、すなわち今週"
   },
   "group.earlier": {
     "message": "以前",
-    "description": "ウェブページのグループ名、つまり 以前"
+    "description": "ウェブページのグループ名、すなわち以前"
   },
   "modelGroup.gemini": {
-    "message": "Gemini",
-    "description": "サービスモデルの名前、つまり Gemini"
+    "message": "ジェミニ",
+    "description": "サービスモデルの名前、すなわちジェミニ"
   },
   "modelGroup.geminiDescription": {
-    "message": "Google によって開発された AI モデル",
-    "description": "Gemini モデルの説明"
+    "message": "Googleが開発したAIモデル",
+    "description": "ジェミニモデルの説明"
   },
   "model.gemini30Pro": {
     "message": "gemini-3.0-pro",
@@ -357,7 +365,7 @@
   },
   "model.gemini30ProDescription": {
     "message": "高度な推論とマルチモーダルタスクに適しています",
-    "description": "Gemini 3.0 Pro モデルの説明"
+    "description": "ジェミニ3.0プロモデルの説明"
   },
   "model.gemini25Pro": {
     "message": "gemini-2.5-pro",
@@ -365,23 +373,23 @@
   },
   "model.gemini25ProDescription": {
     "message": "優れたオールラウンドモデル",
-    "description": "Gemini 2.5 Pro モデルの説明"
+    "description": "ジェミニ2.5プロモデルの説明"
   },
   "model.gemini25Flash": {
     "message": "gemini-2.5-flash",
     "description": "サービスモデルの名前"
   },
   "model.gemini25FlashDescription": {
-    "message": "高速で軽量な Gemini モデル",
-    "description": "Gemini 2.5 Flash モデルの説明"
+    "message": "高速で軽量なジェミニモデル",
+    "description": "ジェミニ2.5フラッシュモデルの説明"
   },
   "modelGroup.claude": {
-    "message": "Claude",
-    "description": "サービスモデルの名前、つまり Claude"
+    "message": "クロード",
+    "description": "サービスモデルの名前、すなわちクロード"
   },
   "modelGroup.claudeDescription": {
-    "message": "Anthropic によって開発された AI モデル",
-    "description": "Claude モデルの説明"
+    "message": "Anthropicが開発したAIモデル",
+    "description": "クロードモデルの説明"
   },
   "model.claudeOpus4": {
     "message": "claude-opus-4",
@@ -389,7 +397,7 @@
   },
   "model.claudeOpus4Description": {
     "message": "トップクラスの推論と複雑なタスク",
-    "description": "Claude Opus 4 モデルの説明"
+    "description": "クロードオーパス4モデルの説明"
   },
   "model.claudeSonnet4": {
     "message": "claude-sonnet-4",
@@ -397,14 +405,14 @@
   },
   "model.claudeSonnet4Description": {
     "message": "バランスの取れたパフォーマンスと効率",
-    "description": "Claude Sonnet 4 モデルの説明"
+    "description": "クロードソネット4モデルの説明"
   },
   "model.claude37Sonnet": {
     "message": "claude-3-7-sonnet",
     "description": "サービスモデルの名前"
   },
   "model.claude37SonnetDescription": {
-    "message": "高速な反復型 Claude Sonnet 3.7",
-    "description": "Claude 3.7 Sonnet モデルの説明"
+    "message": "迅速な反復クロードソネット3.7",
+    "description": "クロード3.7ソネットモデルの説明"
   }
 }
