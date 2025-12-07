@@ -1,8 +1,23 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 29 Nov 2025 12:21:23 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 07 Dec 2025 14:54:18 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.25.0
+
+Sun, 07 Dec 2025 14:54:18 GMT
+
+### Minor changes
+
+- update loading more (cqc@cuiqingcai.com)
+
+### Patches
+
+- refine console (cqc@cuiqingcai.com)
+- update model (1348977728@qq.com)
+- update pagination exp (cqc@cuiqingcai.com)
+- update model list (cqc@cuiqingcai.com)
 
 ## 3.24.2
 
