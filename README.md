@@ -60,24 +60,36 @@ This system supports a customer binding mechanism, where registered users of eac
 
 Midjourney:
 
-![](https://cdn.acedata.cloud/8y8kfo.png)
+![](https://cdn.acedata.cloud/0oqva0.png)
 
-<img src="https://cdn.acedata.cloud/bw11q9.png" style="width: 300px">
+<img src="https://cdn.acedata.cloud/5u5tin.png" style="width: 300px">
 
 GPT Chat：
 
-![](https://cdn.acedata.cloud/3ur7e0.png)
+![](https://cdn.acedata.cloud/wqzm9r.png)
 
-<img src="https://cdn.acedata.cloud/k4dxw0.png" style="width: 300px">
+<img src="https://cdn.acedata.cloud/kj42da.png" style="width: 300px">
 
-Artistic QR Code:
+Nano Banana Image:
 
-![](https://cdn.acedata.cloud/q3ivan.png)
+![](https://cdn.acedata.cloud/j0h3l3.png)
 
-<img src="https://cdn.acedata.cloud/l11ebv.png" style="width: 300px">
+<img src="https://cdn.acedata.cloud/dlcazx.png" style="width: 300px">
 
 Suno Music:
 
-![](https://cdn.acedata.cloud/mewx2.png)
+![](https://cdn.acedata.cloud/999o20.png)
 
-<img src="https://cdn.acedata.cloud/4mvwe.png" style="width: 300px">
+<img src="https://cdn.acedata.cloud/ifldt3.png" style="width: 300px">
+
+Veo Videos:
+
+![](https://cdn.acedata.cloud/rkzqx1.png)
+
+<img src="https://cdn.acedata.cloud/ceprm2.png" style="width: 300px">
+
+Sora Videos:
+
+![](https://cdn.acedata.cloud/r1cmvk.png)
+
+<img src="https://cdn.acedata.cloud/i8oqzr.png" style="width: 300px">
