@@ -34,9 +34,9 @@
         <p class="style">{{ audio?.style }}</p>
       </div>
       <div class="right">
-        <el-button v-if="audio?.audio_url" size="small" round @click.stop="onExtend($event, audio)">{{
+        <!-- <el-button v-if="audio?.audio_url" size="small" round @click.stop="onExtend($event, audio)">{{
           $t('suno.button.extend')
-        }}</el-button>
+        }}</el-button> -->
         <el-dropdown>
           <span class="el-dropdown-link">
             <el-tooltip effect="dark" :content="$t('suno.button.download')" placement="top">
@@ -75,6 +75,9 @@
           </span>
           <template #dropdown>
             <el-dropdown-menu>
+              <el-dropdown-item v-if="audio?.audio_url" @click.stop="onExtend($event, audio)">
+                {{ $t('suno.button.extend') }}
+              </el-dropdown-item>
               <el-dropdown-item v-if="audio.id" @click.stop="onGetStems(audio.id)">
                 {{ $t('suno.button.get_stems') }}
               </el-dropdown-item>
@@ -96,16 +99,7 @@
 import { defineComponent } from 'vue';
 import { useFormatDuring } from '@/utils/number';
 import { ISunoAudio, ISunoTask } from '@/models';
-import {
-  ElImage,
-  ElIcon,
-  ElTooltip,
-  ElButton,
-  ElDropdown,
-  ElDropdownMenu,
-  ElDropdownItem,
-  ElMessage
-} from 'element-plus';
+import { ElImage, ElIcon, ElTooltip, ElDropdown, ElDropdownMenu, ElDropdownItem, ElMessage } from 'element-plus';
 import { Loading } from '@element-plus/icons-vue';
 import { VideoPlay, VideoPause } from '@element-plus/icons-vue';
 import { ISunoMp4Request, ISunoAudioRequest, Status } from '@/models';
@@ -121,7 +115,6 @@ export default defineComponent({
     ElImage,
     ElIcon,
     ElTooltip,
-    ElButton,
     FontAwesomeIcon,
     VideoPlay,
     VideoPause,
