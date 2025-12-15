@@ -60,24 +60,78 @@ This system supports a customer binding mechanism, where registered users of eac
 
 Midjourney:
 
-![](https://cdn.acedata.cloud/8y8kfo.png)
+![](https://cdn.acedata.cloud/0oqva0.png)
 
-<img src="https://cdn.acedata.cloud/bw11q9.png" style="width: 300px">
+<img src="https://cdn.acedata.cloud/5u5tin.png" style="width: 300px">
 
 GPT Chat：
 
-![](https://cdn.acedata.cloud/3ur7e0.png)
+![](https://cdn.acedata.cloud/wqzm9r.png)
 
-<img src="https://cdn.acedata.cloud/k4dxw0.png" style="width: 300px">
+<img src="https://cdn.acedata.cloud/kj42da.png" style="width: 300px">
 
-Artistic QR Code:
+DeepSeek Chat：
 
-![](https://cdn.acedata.cloud/q3ivan.png)
+![](https://cdn.acedata.cloud/sqe72j.png)
 
-<img src="https://cdn.acedata.cloud/l11ebv.png" style="width: 300px">
+<img src="https://cdn.acedata.cloud/k7nda7.png" style="width: 300px">
+
+Grok Chat：
+
+![](https://cdn.acedata.cloud/5cl1ea.png)
+
+<img src="https://cdn.acedata.cloud/fioyfh.png" style="width: 300px">
+
+Gemini Chat：
+
+![](https://cdn.acedata.cloud/6l28bw.png)
+
+<img src="https://cdn.acedata.cloud/z2ti1f.png" style="width: 300px">
+
+Nano Banana Image:
+
+![](https://cdn.acedata.cloud/j0h3l3.png)
+
+<img src="https://cdn.acedata.cloud/dlcazx.png" style="width: 300px">
+
+Flux Image:
+
+![](https://cdn.acedata.cloud/b18s04.png)
+
+<img src="https://cdn.acedata.cloud/cqr4ci.png" style="width: 300px">
 
 Suno Music:
 
-![](https://cdn.acedata.cloud/mewx2.png)
+![](https://cdn.acedata.cloud/999o20.png)
 
-<img src="https://cdn.acedata.cloud/4mvwe.png" style="width: 300px">
+<img src="https://cdn.acedata.cloud/lsnf0x.png" style="width: 300px">
+
+Veo Videos:
+
+![](https://cdn.acedata.cloud/rkzqx1.png)
+
+<img src="https://cdn.acedata.cloud/ceprm2.png" style="width: 300px">
+
+Sora Videos:
+
+![](https://cdn.acedata.cloud/r1cmvk.png)
+
+<img src="https://cdn.acedata.cloud/skdbas.png" style="width: 300px">
+
+Kling Videos:
+
+![](https://cdn.acedata.cloud/gt5hv9.png)
+
+<img src="https://cdn.acedata.cloud/8c5utd.png" style="width: 300px">
+
+Hailuo Videos:
+
+![](https://cdn.acedata.cloud/c2jh0d.png)
+
+<img src="https://cdn.acedata.cloud/o5okz3.png" style="width: 300px">
+
+Luma Videos:
+
+![](https://cdn.acedata.cloud/q93b6q.png)
+
+<img src="https://cdn.acedata.cloud/1a7xwx.png" style="width: 300px">
