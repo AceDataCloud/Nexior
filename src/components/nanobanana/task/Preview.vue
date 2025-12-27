@@ -55,6 +55,11 @@
             {{ $t('nanobanana.name.resolution') }}:
             {{ modelValue?.request?.resolution }}
           </p>
+          <p v-if="modelValue?.request?.aspect_ratio" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="mr-1" />
+            {{ $t('nanobanana.name.aspectRatio') }}:
+            {{ modelValue?.request?.aspect_ratio }}
+          </p>
           <p v-if="modelValue?.request?.action" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-bolt" class="mr-1" />
             {{ $t('nanobanana.name.task') }}:
@@ -92,6 +97,11 @@
             {{ $t('nanobanana.name.resolution') }}:
             {{ modelValue?.request?.resolution }}
           </p>
+          <p v-if="modelValue?.request?.aspect_ratio" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="mr-1" />
+            {{ $t('nanobanana.name.aspectRatio') }}:
+            {{ modelValue?.request?.aspect_ratio }}
+          </p>
           <p v-if="modelValue?.request?.action" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-bolt" class="mr-1" />
             {{ $t('nanobanana.name.task') }}:
@@ -119,7 +129,7 @@
           </p>
         </el-alert>
       </div>
-      <div v-if="!modelValue?.response" :class="{ content: true }">
+      <div v-if="!modelValue?.response || !modelValue?.response?.data?.[0]?.image_url" :class="{ content: true }">
         <el-alert :closable="false" class="info">
           <template #template>
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
@@ -134,6 +144,11 @@
             <font-awesome-icon icon="fa-solid fa-image" class="mr-1" />
             {{ $t('nanobanana.name.resolution') }}:
             {{ modelValue?.request?.resolution }}
+          </p>
+          <p v-if="modelValue?.request?.aspect_ratio" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="mr-1" />
+            {{ $t('nanobanana.name.aspectRatio') }}:
+            {{ modelValue?.request?.aspect_ratio }}
           </p>
           <p v-if="modelValue?.request?.action" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-bolt" class="mr-1" />
