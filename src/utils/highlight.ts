@@ -2,7 +2,7 @@ import i18n from '@/i18n';
 import copyToClipboard from 'copy-to-clipboard';
 
 export const highlight = async (el: HTMLElement) => {
-  const hl = (await import('highlight.js')).default;
+  const hl = (await import('highlight.js/lib/common')).default;
   const blocks = el.querySelectorAll<HTMLElement>('pre code');
 
   blocks.forEach((code) => {
