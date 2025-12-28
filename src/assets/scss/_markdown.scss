@@ -4,64 +4,62 @@
   ul {
     list-style: initial;
   }
+
   ol {
     list-style: decimal;
   }
-}
 
-.markdown-body .highlight pre,
-.markdown-body pre {
-  background-color: #253238 !important;
-}
+  .highlight pre,
+  pre {
+    background-color: #253238 !important;
+  }
 
-.markdown-body blockquote {
-  color: var(--el-text-color-regular) !important;
-  font-size: 14px !important;
-}
+  pre {
+    position: relative;
+    color: var(--el-text-color-regular) !important;
 
-.markdown-body a {
-  color: var(--el-color-primary) !important;
-}
+    code {
+      color: white;
 
-.markdown-body pre code {
-  color: white;
-}
+      .hljs-title,
+      .hljs-keyword,
+      .hljs-built_in,
+      .hljs-number,
+      .hljs-comment {
+        font-style: normal !important;
+      }
+    }
+  }
 
-.markdown-body pre code .hljs-title,
-.hljs-keyword,
-.hljs-built_in,
-.hljs-number,
-.hljs-comment {
-  font-style: normal !important;
-}
+  blockquote {
+    color: var(--el-text-color-regular) !important;
+    font-size: 14px !important;
+  }
 
-.markdown-body img {
-  max-width: 400px !important;
-  border-radius: 10px;
-  box-shadow: 0px 0px 3px 0px var(--color-border-muted);
-}
+  a {
+    color: var(--el-color-primary) !important;
+  }
 
-.markdown-body table tr {
-  background-color: var(--el-color-info-light-2) !important;
-}
+  img {
+    max-width: min(100%, 400px) !important;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 3px 0 var(--color-border-muted, var(--el-border-color));
+  }
 
-.markdown-body pre {
-  color: var(--el-text-color-regular) !important;
-}
+  table tr {
+    background-color: var(--el-color-info-light-2) !important;
+  }
 
-pre {
-  position: relative;
-}
+  hr {
+    height: 1px !important;
+  }
 
-.markdown-body hr {
-  height: 1px !important;
-}
-
-.markdown-body .think {
-  line-height: inherit;
-  border-left: 3px solid var(--el-border-color);
-  padding-left: 10px;
-  line-height: 20px;
-  font-size: 12px;
-  color: var(--el-text-color-regular);
+  .think {
+    border-left: 3px solid var(--el-border-color);
+    padding-left: 10px;
+    line-height: 20px;
+    font-size: 12px;
+    color: var(--el-text-color-regular);
+  }
 }
