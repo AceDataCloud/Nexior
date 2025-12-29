@@ -25,3 +25,4 @@ export * from './nanobanana';
 export * from './site';
 export * from './exchange';
 export * from './error';
+export * from './config';

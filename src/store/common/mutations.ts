@@ -45,6 +45,10 @@ export const setSite = (state: IRootState, payload: any): void => {
   };
 };
 
+export const setConfig = (state: IRootState, payload: any): void => {
+  state.config = payload;
+};
+
 export const setExchange = (state: IRootState, payload: any): void => {
   state.exchange = {
     ...state.exchange,
@@ -64,6 +68,7 @@ export const setApplications = (state: IRootState, payload: IApplication[]): voi
 export default {
   setUser,
   setSite,
+  setConfig,
   setAuth,
   setCurrency,
   setExchange,

@@ -195,9 +195,21 @@
     "message": "Por favor, cambia la red de la billetera a {network}",
     "description": "Instrucción para que el usuario cambie la red de la billetera."
   },
+  "message.x402SolanaNotEnabled": {
+    "message": "Solana X402 payment is not enabled for this order. Please switch network or refresh.",
+    "description": "Shown when the selected Solana network is not available in X402 payment requirements."
+  },
   "message.x402NeedConnectAccount": {
     "message": "Por favor, conecta al menos una billetera EVM compatible antes de pagar.",
     "description": "Recordatorio para que el usuario conecte su cuenta de billetera primero."
+  },
+  "message.x402ConfirmTitle": {
+    "message": "Confirm Payment",
+    "description": "Title of the confirmation dialog before signing an X402 payment."
+  },
+  "message.x402ConfirmDesc": {
+    "message": "Confirm USDC payment on {network}?",
+    "description": "Description of the confirmation dialog before signing an X402 payment."
   },
   "message.x402StepsTitle": {
     "message": "Pasos de pago",

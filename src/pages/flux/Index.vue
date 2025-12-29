@@ -83,7 +83,7 @@ export default defineComponent({
           console.debug('layout initialized');
           await this.onGetTasks();
           await this.onScrollDown();
-          this.job = setInterval(() => {
+          this.job = window.setInterval(() => {
             this.onGetTasks();
           }, 5000);
         }
@@ -95,7 +95,7 @@ export default defineComponent({
     await this.onGetService();
   },
   async unmounted() {
-    clearInterval(this.job);
+    window.clearInterval(this.job);
   },
   methods: {
     async onReachTop() {

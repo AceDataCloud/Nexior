@@ -1,247 +1,232 @@
 <template>
   <el-dialog :model-value="visible" :title="$t('order.title.x402')" :width="dialogWidth" top="8vh" class="x402-dialog">
-    <section class="flex flex-col gap-[16px]">
-      <header class="flex items-start gap-[12px]">
-        <el-icon
-          :size="22"
-          class="inline-flex items-center justify-center w-[38px] h-[38px] rounded-[12px] bg-[var(--el-color-primary-light-9)] text-[var(--el-color-primary)]"
-          ><credit-card
-        /></el-icon>
-        <div>
-          <p class="m-0 text-[14px] leading-[1.6]">
-            {{ $t('order.message.x402IntroShort') }}
-          </p>
-        </div>
+    <section class="x402-content">
+      <header class="x402-intro">
+        <el-icon :size="20" class="x402-intro-icon"><credit-card /></el-icon>
+        <p class="x402-intro-text">{{ $t('order.message.x402IntroShort') }}</p>
       </header>
-      <el-tabs v-model="activeTab" type="border-card" class="mt-[8px]">
-        <el-tab-pane :label="$t('order.message.x402TabWallet')" name="wallet">
-          <section class="flex flex-col gap-[10px]">
-            <div class="flex items-center gap-[10px]">
-              <span class="text-[14px] font-semibold text-[var(--el-text-color-primary)]">
-                {{ $t('order.message.x402WalletTitle') }}
-              </span>
+      <section class="x402-wallet">
+        <div class="x402-wallet-head">
+          <div class="x402-network">
+            <span class="x402-network-label">{{ $t('order.message.x402IntegrationNetworkLabel') }}</span>
+            <el-radio-group v-model="selectedNetwork" size="small" class="x402-network-group">
+              <el-radio-button v-for="option in networkOptions" :key="option.network" :label="option.network">
+                {{ option.label }}
+              </el-radio-button>
+            </el-radio-group>
+          </div>
+        </div>
+
+        <el-alert
+          v-if="selectedNetworkResolved === 'solana' && !selectedRequirements && !requirementsLoading"
+          type="info"
+          :closable="false"
+          class="x402-alert"
+          :description="$t('order.message.x402SolanaNotEnabled')"
+        />
+        <div v-if="!selectedRequirements && !requirementsLoading" class="x402-requirements-actions">
+          <el-button link type="primary" size="small" @click="maybeLoadRequirements(true)">
+            {{ $t('common.button.refresh') }}
+          </el-button>
+        </div>
+
+        <template v-if="isSolanaNetwork">
+          <div class="x402-wallet-card">
+            <div class="x402-wallet-card-head">
+              <span class="x402-wallet-card-title">Solana Wallet</span>
+              <el-tag v-if="solanaConnected" class="x402-wallet-card-tag">{{
+                $t('order.message.x402WalletConnected')
+              }}</el-tag>
             </div>
-            <div class="flex flex-col items-center gap-3 sm:grid-cols-2">
-              <template v-for="wallet in walletOptions" :key="wallet.key">
-                <div
-                  :class="[
-                    'flex w-[300px] items-center gap-3 rounded-[10px] border-2 px-4 py-3 min-h-[56px] transition-colors',
-                    walletStates[wallet.key].connected && activeWallet === wallet.key
-                      ? 'border-[color:var(--el-color-primary)] bg-[color:var(--el-color-primary-light-9)] cursor-pointer'
-                      : walletStates[wallet.key].connected
-                      ? 'border-[var(--el-border-color)] bg-[var(--el-fill-color-blank)] cursor-pointer'
-                      : 'border-[var(--el-border-color)] bg-[var(--el-fill-color-blank)] opacity-90 cursor-default'
-                  ]"
-                  @click="selectWallet(wallet.key)"
-                >
-                  <img :src="wallet.icon" :alt="wallet.label" class="w-[20px] h-[20px] rounded-[6px]" />
-                  <span class="text-[14px] text-[var(--el-text-color-primary)]">{{ wallet.label }}</span>
-                  <div class="ml-auto flex items-center gap-2">
-                    <el-tag
-                      v-if="walletStates[wallet.key].connected"
-                      class="text-[12px] text-[var(--el-color-success)] whitespace-nowrap"
-                    >
-                      {{ $t('order.message.x402WalletConnected') }}
-                    </el-tag>
-                    <el-button v-else size="small" type="primary" @click.stop="connectWallet(wallet.key)">
-                      {{ $t('order.message.x402ConnectWallet') }}
-                    </el-button>
-                  </div>
-                </div>
+            <div v-if="solanaConnected && selectedSolanaWalletName" class="x402-wallet-card-sub x402-wallet-name">
+              <img
+                v-if="selectedSolanaWalletIcon"
+                class="wallet-list-icon"
+                :src="selectedSolanaWalletIcon"
+                :alt="selectedSolanaWalletName"
+              />
+              <span>{{ selectedSolanaWalletName }}</span>
+            </div>
+            <div v-if="solanaConnected && solanaAddress" class="x402-wallet-card-sub">
+              {{ solanaAddress.substring(0, 10) }}...{{ solanaAddress.substring(solanaAddress.length - 10) }}
+            </div>
+            <div class="x402-wallet-card-actions">
+              <el-button v-if="!solanaConnected" type="primary" @click="solanaWalletModalVisible = true">
+                {{ $t('order.message.x402ConnectWallet') }}
+              </el-button>
+              <template v-else>
+                <el-button @click="disconnectSolanaWallet">{{ $t('coin.button.disconnect') }}</el-button>
               </template>
             </div>
-            <el-alert
-              v-if="!hasEvmProvider"
-              type="info"
-              :closable="false"
-              class="mt-[8px]"
-              :description="$t('order.message.x402NoWalletDesc')"
-            />
-            <el-alert
-              v-else-if="networkMismatch"
-              type="warning"
-              :closable="false"
-              show-icon
-              class="mt-[8px]"
-              :title="$t('order.message.x402SwitchNetwork', { network: displayNetwork || expectedNetwork })"
-            />
-            <el-alert
-              v-else-if="!hasEvmAccount"
-              type="info"
-              :closable="false"
-              show-icon
-              :title="$t('order.message.x402NeedConnectAccount')"
-            />
-            <div v-if="evmAddress" class="text-center text-[var(--el-text-color-secondary)] text-sm">
-              <p>{{ evmAddress?.substring(0, 12) }}...{{ evmAddress?.substring(evmAddress.length - 12) }}</p>
-            </div>
-            <div class="flex items-center justify-center gap-[12px] flex-wrap mt-[8px]">
-              <template v-if="hasEvmProvider">
-                <el-button
-                  type="primary"
-                  :disabled="!evmAddress || !requirementsAvailable || networkMismatch || !hasEvmAccount"
-                  :loading="signing || paying"
-                  @click="onPayWithWallet"
-                >
-                  {{ $t('order.message.x402WalletPayCta') }}
-                </el-button>
-              </template>
-            </div>
-            <div class="mt-[6px]">
-              <p class="m-0 mb-[6px] text-[14px] font-semibold text-[var(--el-text-color-primary)]">
-                {{ $t('order.message.x402StepsTitle') }}
-              </p>
-              <ul class="m-0 pl-[18px] text-[var(--el-text-color-regular)] text-[13px] leading-[1.6] list-disc">
-                <li>{{ $t('order.message.x402Step1') }}</li>
-                <li>{{ $t('order.message.x402Step2', { network: displayNetwork || expectedNetwork }) }}</li>
-                <li>{{ $t('order.message.x402Step3') }}</li>
-                <li>{{ $t('order.message.x402Step4') }}</li>
-              </ul>
-            </div>
-          </section>
-        </el-tab-pane>
-        <el-tab-pane :label="$t('order.message.x402TabApi')" name="api">
-          <section v-if="hasDetails" class="flex flex-col gap-[12px]">
-            <el-descriptions :column="1" size="small" class="x402-descriptions">
-              <el-descriptions-item v-if="displayResource">
-                <template #label>{{ $t('order.message.x402IntegrationResourceLabel') }}</template>
-                <div class="inline-flex items-center gap-[8px] break-all min-h-[24px]">
-                  <template v-if="isUrl(displayResource)">
-                    <a
-                      :href="displayResource"
-                      target="_blank"
-                      rel="noopener"
-                      class="text-[var(--el-color-primary)] break-all"
-                      >{{ displayResource }}</a
-                    >
-                  </template>
-                  <template v-else>
-                    <span class="font-mono text-[var(--el-text-color-regular)]">{{ displayResource }}</span>
-                  </template>
-                  <copy-to-clipboard :content="displayResource" class="inline-flex" />
-                </div>
-              </el-descriptions-item>
-              <el-descriptions-item v-if="displayPayTo">
-                <template #label>{{ $t('order.message.x402IntegrationPayToLabel') }}</template>
-                <div class="inline-flex items-center gap-[8px] break-all min-h-[24px]">
-                  <span class="font-mono text-[var(--el-text-color-regular)]">{{ displayPayTo }}</span>
-                  <copy-to-clipboard :content="displayPayTo" class="inline-flex" />
-                </div>
-              </el-descriptions-item>
-              <el-descriptions-item v-if="displayNetwork">
-                <template #label>{{ $t('order.message.x402IntegrationNetworkLabel') }}</template>
-                <span>{{ displayNetwork }}</span>
-              </el-descriptions-item>
-              <el-descriptions-item v-if="displayAsset">
-                <template #label>{{ $t('order.message.x402IntegrationAssetLabel') }}</template>
-                <span>{{ displayAsset }}</span>
-              </el-descriptions-item>
-            </el-descriptions>
-          </section>
-          <section
-            v-else
-            class="my-[12px] px-[16px] py-[14px] rounded-[10px] bg-[var(--el-color-primary-light-9)] text-[var(--el-text-color-regular)] text-[13px] leading-[1.6] text-center"
-          >
-            <p>{{ $t('order.message.x402IntegrationFallback') }}</p>
-          </section>
-          <div class="mt-[12px] flex flex-col items-center gap-[8px] text-center">
-            <el-button type="primary" class="inline-flex items-center gap-[6px]" @click="onOpenDocs">
-              <el-icon><document /></el-icon>
-              <span>{{ $t('order.message.x402IntegrationDocsCta') }}</span>
+          </div>
+          <div class="x402-actions">
+            <el-button
+              type="primary"
+              :disabled="!solanaConnected || !solanaAddress || !requirementsAvailable"
+              :loading="signing || paying"
+              @click="onPayWithSolanaWallet"
+            >
+              {{ $t('order.message.x402WalletPayCta') }}
             </el-button>
           </div>
-        </el-tab-pane>
-      </el-tabs>
+        </template>
+
+        <template v-else>
+          <div class="x402-wallet-card">
+            <div class="x402-wallet-card-head">
+              <span class="x402-wallet-card-title">EVM Wallet</span>
+              <el-tag v-if="evmConnected" class="x402-wallet-card-tag">{{
+                $t('order.message.x402WalletConnected')
+              }}</el-tag>
+            </div>
+            <div v-if="evmConnected && selectedEvmWalletName" class="x402-wallet-card-sub x402-wallet-name">
+              <img
+                v-if="selectedEvmWalletIcon"
+                class="wallet-list-icon"
+                :src="selectedEvmWalletIcon"
+                :alt="selectedEvmWalletName"
+              />
+              <span>{{ selectedEvmWalletName }}</span>
+            </div>
+            <div v-if="evmConnected && evmAddress" class="x402-wallet-card-sub">
+              {{ evmAddress.substring(0, 10) }}...{{ evmAddress.substring(evmAddress.length - 10) }}
+            </div>
+            <div class="x402-wallet-card-actions">
+              <el-button v-if="!evmConnected" type="primary" @click="openEvmWalletModal">
+                {{ $t('order.message.x402ConnectWallet') }}
+              </el-button>
+              <template v-else>
+                <el-button @click="disconnectEvmWallet">{{ $t('coin.button.disconnect') }}</el-button>
+              </template>
+            </div>
+          </div>
+          <el-alert
+            v-if="!hasEvmProvider"
+            type="info"
+            :closable="false"
+            class="x402-alert"
+            :description="$t('order.message.x402NoWalletDesc')"
+          />
+          <el-alert
+            v-else-if="networkMismatch"
+            type="warning"
+            :closable="false"
+            show-icon
+            class="x402-alert"
+            :title="$t('order.message.x402SwitchNetwork', { network: expectedNetworkLabel || expectedNetwork })"
+          />
+          <div class="x402-actions">
+            <template v-if="hasEvmProvider">
+              <el-button
+                type="primary"
+                :disabled="!evmConnected || !requirementsAvailable || networkMismatch"
+                :loading="signing || paying"
+                @click="onPayWithWallet"
+              >
+                {{ $t('order.message.x402WalletPayCta') }}
+              </el-button>
+            </template>
+          </div>
+        </template>
+
+        <div class="x402-steps">
+          <div class="x402-steps-title">{{ $t('order.message.x402StepsTitle') }}</div>
+          <ol class="x402-steps-list">
+            <li v-for="(step, index) in paymentSteps" :key="index" class="x402-step">
+              <span class="x402-step-index">{{ index + 1 }}</span>
+              <span class="x402-step-text">{{ step }}</span>
+            </li>
+          </ol>
+        </div>
+      </section>
     </section>
   </el-dialog>
   <el-dialog
-    :model-value="installGuideVisible"
-    class="x402-dialog x402-guide-dialog"
-    width="520px"
-    top="15vh"
-    :title="$t('order.message.x402InstallGuideTitle')"
-    @close="installGuideVisible = false"
+    v-model="solanaWalletModalVisible"
+    :title="$t('order.message.x402ConnectWallet')"
+    width="420px"
+    align-center
   >
-    <div class="flex flex-col gap-[12px]">
-      <p class="m-0 text-[14px] leading-[1.6] text-[var(--el-text-color-regular)]">
-        {{ $t('order.message.x402InstallGuideDesc', { wallet: installGuideWalletLabel }) }}
-      </p>
-      <ol class="m-0 pl-[18px] text-[13px] leading-[1.6] text-[var(--el-text-color-primary)] list-decimal">
-        <li v-for="(step, index) in installGuideSteps" :key="index">{{ step }}</li>
-      </ol>
+    <div class="wallet-list">
+      <button
+        v-for="wallet in solanaWalletsOrdered"
+        :key="wallet.adapter.name"
+        class="wallet-list-item"
+        :disabled="solanaWalletConnecting"
+        @click="onSelectSolanaWallet(wallet)"
+      >
+        <img
+          v-if="wallet.adapter.icon"
+          class="wallet-list-icon"
+          :src="wallet.adapter.icon"
+          :alt="wallet.adapter.name"
+        />
+        <span class="wallet-list-name">{{ wallet.adapter.name }}</span>
+        <span v-if="wallet.readyState === 'Installed'" class="wallet-list-status">Detected</span>
+      </button>
     </div>
-    <template #footer>
-      <div class="w-full flex justify-center">
-        <el-button type="primary" round @click="onInstallGuideConfirm">
-          {{ $t('order.message.x402InstallGuideConfirm') }}
-        </el-button>
-      </div>
-    </template>
   </el-dialog>
-  <el-dialog
-    :model-value="networkGuideVisible"
-    class="x402-dialog x402-guide-dialog"
-    width="520px"
-    top="15vh"
-    :title="$t('order.message.x402NetworkGuideTitle')"
-    @close="networkGuideVisible = false"
-  >
-    <div class="flex flex-col gap-[12px]">
-      <p class="m-0 text-[14px] leading-[1.6] text-[var(--el-text-color-regular)]">
-        {{ $t('order.message.x402NetworkGuideDesc', { network: displayNetwork || expectedNetwork }) }}
-      </p>
-      <ol class="m-0 pl-[18px] text-[13px] leading-[1.6] text-[var(--el-text-color-primary)] list-decimal">
-        <li v-for="(step, index) in networkGuideSteps" :key="index">{{ step }}</li>
-      </ol>
-    </div>
-    <template #footer>
-      <div class="w-full flex justify-center">
-        <el-button type="primary" round @click="onNetworkGuideConfirm">
-          {{ $t('order.message.x402NetworkGuideConfirm') }}
-        </el-button>
+  <el-dialog v-model="evmWalletModalVisible" :title="$t('order.message.x402ConnectWallet')" width="420px" align-center>
+    <div class="wallet-list">
+      <button
+        v-for="wallet in evmWalletsOrdered"
+        :key="wallet.id"
+        class="wallet-list-item"
+        :disabled="evmWalletConnecting"
+        @click="onSelectEvmWallet(wallet)"
+      >
+        <img v-if="wallet.icon" class="wallet-list-icon" :src="wallet.icon" :alt="wallet.name" />
+        <span class="wallet-list-name">{{ wallet.name }}</span>
+        <span class="wallet-list-status">Detected</span>
+      </button>
+      <div v-if="evmWalletsOrdered.length === 0" class="text-center text-[13px] text-[var(--el-text-color-regular)]">
+        {{ $t('order.message.x402NoWalletDesc') }}
       </div>
-    </template>
+    </div>
   </el-dialog>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, nextTick } from 'vue';
 import {
   ElAlert,
   ElButton,
   ElMessage,
+  ElMessageBox,
   ElDialog,
-  ElDescriptions,
-  ElDescriptionsItem,
   ElIcon,
-  ElTabs,
   ElTag,
-  ElTabPane
+  ElRadioGroup,
+  ElRadioButton
 } from 'element-plus';
-import { CreditCard, Document } from '@element-plus/icons-vue';
+import { CreditCard } from '@element-plus/icons-vue';
 import { IOrder } from '@/models';
-import { orderOperator } from '@/operators/order';
-import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
+import { httpClient, orderOperator } from '@/operators';
 import { isMobile } from '@/utils';
+import { buildSolanaX402Header } from '@/utils/x402/solana';
 
-type WalletKey = 'phantom' | 'metamask';
-
-interface IWalletState {
-  connected: boolean;
-  address?: string;
+interface IEvmWalletInfo {
+  id: string;
+  name: string;
+  icon?: string;
+  provider: any;
 }
 
 interface IData {
-  docsUrl: string;
-  walletStates: Record<WalletKey, IWalletState>;
-  activeWallet: WalletKey;
-  connecting: boolean;
   signing: boolean;
   paying: boolean;
   chainId?: string;
-  activeTab: 'wallet' | 'api';
-  installGuideVisible: boolean;
-  installGuideWallet?: WalletKey | null;
+  selectedNetwork?: string;
+  solanaWalletModalVisible: boolean;
+  solanaWalletConnecting: boolean;
+  evmWalletModalVisible: boolean;
+  evmWalletConnecting: boolean;
+  evmWallets: IEvmWalletInfo[];
+  selectedEvmWalletId?: string;
+  evmAddress?: string;
+  requirementsLoading: boolean;
+  runtimeRequirementsByNetwork: Record<string, Record<string, any> | undefined>;
+  requirementsAttemptedByNetwork: Record<string, boolean>;
 }
 
 export default defineComponent({
@@ -250,15 +235,11 @@ export default defineComponent({
     ElDialog,
     ElButton,
     ElAlert,
-    ElDescriptions,
     ElTag,
-    ElDescriptionsItem,
     ElIcon,
-    ElTabs,
-    ElTabPane,
-    CreditCard,
-    Document,
-    CopyToClipboard
+    ElRadioGroup,
+    ElRadioButton,
+    CreditCard
   },
   props: {
     modelValue: { type: Object as () => IOrder, required: true },
@@ -268,42 +249,53 @@ export default defineComponent({
   emits: ['hide', 'update:modelValue'],
   data(): IData {
     return {
-      docsUrl:
-        'https://platform.acedata.cloud/documents/35bf9f88-e972-4c61-a795-b0096d261256#1.%20查看订单并记录收款信息',
-      walletStates: {
-        phantom: { connected: false, address: undefined },
-        metamask: { connected: false, address: undefined }
-      },
-      connecting: false,
       signing: false,
       paying: false,
       chainId: undefined,
-      activeTab: 'wallet',
-      activeWallet: 'phantom',
-      installGuideVisible: false,
-      installGuideWallet: undefined
+      selectedNetwork: undefined,
+      solanaWalletModalVisible: false,
+      solanaWalletConnecting: false,
+      evmWalletModalVisible: false,
+      evmWalletConnecting: false,
+      evmWallets: [],
+      selectedEvmWalletId: undefined,
+      evmAddress: undefined,
+      requirementsLoading: false,
+      runtimeRequirementsByNetwork: {},
+      requirementsAttemptedByNetwork: {}
     };
   },
   computed: {
     dialogWidth(): string {
       return isMobile() ? '100%' : '680px';
     },
-    walletOptions(): Array<{ key: WalletKey; label: string; icon: string }> {
-      return [
-        { key: 'phantom', label: 'Phantom', icon: 'https://cdn.acedata.cloud/42inc8.png' },
-        { key: 'metamask', label: 'MetaMask', icon: 'https://cdn.acedata.cloud/jvb98h.png' }
-      ];
+    acceptsList(): Array<Record<string, any>> {
+      const accepts = this.session?.accepts;
+      if (Array.isArray(accepts) && accepts.length > 0) {
+        return accepts.filter((x): x is Record<string, any> => Boolean(x && typeof x === 'object'));
+      }
+      const req = this.paymentRequirements as any;
+      if (Array.isArray(req) && req.length > 0) {
+        return req.filter((x: any): x is Record<string, any> => Boolean(x && typeof x === 'object'));
+      }
+      if (req && typeof req === 'object') {
+        return [req as Record<string, any>];
+      }
+      return [];
     },
-    currentWalletState(): IWalletState {
-      return this.walletStates[this.activeWallet];
+    selectedNetworkResolved(): string | undefined {
+      return String(this.selectedNetwork || this.acceptsList[0]?.network || 'base').toLowerCase();
     },
-    evmAddress(): string | undefined {
-      return this.currentWalletState.address;
-    },
-    primaryAccept(): Record<string, any> | undefined {
-      if (Array.isArray(this.session?.accepts) && this.session?.accepts.length > 0)
-        return this.session?.accepts[0] as Record<string, any>;
-      return undefined;
+    selectedRequirements(): Record<string, any> | undefined {
+      const selected = String(this.selectedNetworkResolved || '').toLowerCase();
+      if (!selected) return this.acceptsList[0];
+      const runtime = this.runtimeRequirementsByNetwork[selected];
+      if (runtime) return runtime;
+      const matched = this.acceptsList.find((r) => String(r.network || '').toLowerCase() === selected);
+      if (matched) return matched;
+      // If the user explicitly selected a network and it's not available, don't fall back to a different chain.
+      if (this.selectedNetwork) return undefined;
+      return this.acceptsList[0];
     },
     orderMetadata(): Record<string, any> | undefined {
       const metadata = (this.modelValue as Record<string, any> | undefined)?.metadata;
@@ -316,68 +308,18 @@ export default defineComponent({
       if (m && typeof m === 'object') return m as Record<string, any>;
       return undefined;
     },
-    x402Metadata(): Record<string, any> | undefined {
-      const s = this.session?.x402;
-      if (s && typeof s === 'object') return s as Record<string, any>;
-      const m = this.orderMetadata?.x402;
-      if (m && typeof m === 'object') return m as Record<string, any>;
-      return undefined;
-    },
-    displayResource(): string | undefined {
-      return this.ensureHttps(
-        this.pickFirstString([
-          this.primaryAccept?.resource,
-          this.primaryAccept?.resource_url,
-          this.paymentRequirements?.resource,
-          this.paymentRequirements?.resource_url,
-          this.session?.resource,
-          this.session?.resource_url,
-          this.session?.facilitatorUrl,
-          this.session?.facilitator_url,
-          this.x402Metadata?.resource,
-          this.x402Metadata?.facilitator_url,
-          this.orderMetadata?.resource,
-          this.orderMetadata?.resource_url,
-          this.modelValue?.pay_url
-        ])
-      );
-    },
-    displayPayTo(): string | undefined {
-      return this.pickFirstString([
-        this.primaryAccept?.payTo,
-        this.primaryAccept?.pay_to,
-        this.paymentRequirements?.payTo,
-        this.paymentRequirements?.pay_to,
-        this.session?.pay_to,
-        this.session?.payTo,
-        this.x402Metadata?.pay_to,
-        this.orderMetadata?.pay_to
-      ]);
-    },
-    displayNetwork(): string | undefined {
-      return this.pickFirstString([
-        this.primaryAccept?.network,
-        this.paymentRequirements?.network,
-        this.session?.network,
-        this.x402Metadata?.network
-      ]);
-    },
-    displayAsset(): string | undefined {
-      const extraName =
-        this.paymentRequirements?.extra?.name || this.primaryAccept?.extra?.name || this.session?.extra?.name;
-      const asset = this.pickFirstString([
-        this.paymentRequirements?.asset,
-        this.primaryAccept?.asset,
-        this.session?.asset
-      ]);
-      if (extraName && asset) return `${extraName as string} (${asset})`;
-      return extraName || asset;
-    },
-    hasDetails(): boolean {
-      return Boolean(this.displayResource || this.displayPayTo || this.displayNetwork || this.displayAsset);
-    },
     expectedNetwork(): string | undefined {
-      return this.displayNetwork;
+      return this.selectedNetworkResolved;
+    },
+    expectedNetworkLabel(): string | undefined {
+      return this.formatNetworkLabel(this.expectedNetwork);
+    },
+    isSolanaNetwork(): boolean {
+      return Boolean(
+        String(this.selectedNetworkResolved || '')
+          .toLowerCase()
+          .startsWith('solana')
+      );
     },
     expectedChainIdHex(): string | undefined {
       const mapping: Record<string, string> = {
@@ -395,6 +337,7 @@ export default defineComponent({
       return mapping[key];
     },
     networkMismatch(): boolean {
+      if (this.isSolanaNetwork) return false;
       return Boolean(
         this.evmAddress &&
           this.chainId &&
@@ -403,181 +346,356 @@ export default defineComponent({
       );
     },
     hasEvmProvider(): boolean {
-      return this.walletOptions.some((opt) => this.isWalletAvailable(opt.key));
-    },
-    hasEvmAccount(): boolean {
-      return Boolean(this.currentWalletState.address);
+      if (this.isSolanaNetwork) return false;
+      return this.evmWalletsOrdered.length > 0;
     },
     requirementsAvailable(): boolean {
-      return Boolean(this.pickRequirements());
+      return Boolean(this.selectedRequirements);
+    },
+    networkOptions(): Array<{ network: string; label: string }> {
+      const supported = new Set(this.acceptsList.map((a) => String(a.network || '').toLowerCase()).filter(Boolean));
+      if (supported.size === 0) {
+        return [
+          { network: 'base', label: 'Base' },
+          { network: 'solana', label: 'Solana' }
+        ];
+      }
+
+      const weight = (network: string) => {
+        if (network === 'base') return 0;
+        if (network.startsWith('solana')) return 1;
+        return 2;
+      };
+
+      return Array.from(supported)
+        .sort((a, b) => weight(a) - weight(b) || a.localeCompare(b))
+        .map((network) => ({ network, label: this.formatNetworkLabel(network) }));
+    },
+    paymentSteps(): string[] {
+      const network = this.expectedNetworkLabel || this.expectedNetwork || '';
+      return [
+        String(this.$t('order.message.x402Step1')),
+        String(this.$t('order.message.x402Step2', { network })),
+        String(this.$t('order.message.x402Step3')),
+        String(this.$t('order.message.x402Step4'))
+      ];
+    },
+    evmConnected(): boolean {
+      return Boolean(this.selectedEvmWalletId && this.evmAddress);
     },
     evmProvider(): any | undefined {
-      if (!this.currentWalletState.connected) return undefined;
-      return this.getWalletProvider(this.activeWallet);
+      if (!this.selectedEvmWalletId) return undefined;
+      return this.evmWallets.find((w) => w.id === this.selectedEvmWalletId)?.provider;
     },
-    installGuideWalletLabel(): string {
-      const wallet = this.walletOptions.find((opt) => opt.key === this.installGuideWallet);
-      return wallet?.label || this.walletOptions[0]?.label || 'MetaMask';
+    selectedEvmWalletName(): string | undefined {
+      if (!this.selectedEvmWalletId) return undefined;
+      return this.evmWallets.find((w) => w.id === this.selectedEvmWalletId)?.name;
     },
-    installGuideSteps(): string[] {
-      return [
-        String(this.$t('order.message.x402InstallGuideStep1', { wallet: this.installGuideWalletLabel })),
-        String(this.$t('order.message.x402InstallGuideStep2')),
-        String(this.$t('order.message.x402InstallGuideStep3'))
-      ];
+    selectedEvmWalletIcon(): string | undefined {
+      if (!this.selectedEvmWalletId) return undefined;
+      return this.evmWallets.find((w) => w.id === this.selectedEvmWalletId)?.icon;
     },
-    networkGuideSteps(): string[] {
-      const networkName = this.displayNetwork || this.expectedNetwork || 'Base';
-      return [
-        String(this.$t('order.message.x402NetworkGuideStep1', { network: networkName })),
-        String(this.$t('order.message.x402NetworkGuideStep2', { network: networkName })),
-        String(this.$t('order.message.x402NetworkGuideStep3'))
-      ];
+    evmWalletsOrdered(): IEvmWalletInfo[] {
+      return [...this.evmWallets].sort((a, b) => a.name.localeCompare(b.name));
     },
-    networkGuideVisible(): boolean {
-      return this.networkMismatch;
+    solanaConnected(): boolean {
+      return Boolean((this as any).$wallet?.connected?.value);
+    },
+    solanaAddress(): string | undefined {
+      const pk = (this as any).$wallet?.publicKey?.value;
+      if (!pk || typeof pk.toBase58 !== 'function') return undefined;
+      return pk.toBase58();
+    },
+    solanaWalletsOrdered(): any[] {
+      const wallets = (this as any).$wallet?.wallets?.value ?? [];
+      const weight = (readyState: string) => {
+        if (readyState === 'Installed') return 0;
+        if (readyState === 'Loadable') return 1;
+        if (readyState === 'NotDetected') return 2;
+        return 3;
+      };
+      return [...wallets].sort((a, b) => weight(a.readyState) - weight(b.readyState));
+    },
+    selectedSolanaWalletName(): string | undefined {
+      return (this as any).$wallet?.wallet?.value?.adapter?.name;
+    },
+    selectedSolanaWalletIcon(): string | undefined {
+      return (this as any).$wallet?.wallet?.value?.adapter?.icon;
     }
   },
   watch: {
     visible(value: boolean) {
       if (!value) {
-        this.installGuideVisible = false;
-      }
-    }
-  },
-  methods: {
-    getWalletDeepLink(wallet: WalletKey): string | undefined {
-      if (!isMobile()) return undefined;
-      if (typeof window === 'undefined') return undefined;
-      const currentUrl = window.location.href;
-      if (wallet === 'phantom') {
-        return `https://phantom.app/ul/browse/${encodeURIComponent(currentUrl)}`;
-      }
-      if (wallet === 'metamask') {
-        return `https://metamask.app.link/dapp/${encodeURIComponent(currentUrl)}`;
-      }
-      return undefined;
-    },
-    selectWallet(wallet: WalletKey) {
-      if (!this.walletStates[wallet].connected) return;
-      this.activeWallet = wallet;
-    },
-    connectWallet(wallet: WalletKey) {
-      void this.onConnectWallet(wallet);
-    },
-    getPhantomProvider(): any | undefined {
-      const w: any = window as any;
-      const phantomNamespace = w?.phantom;
-      const eth = w?.ethereum;
-      const multi = eth?.providers;
-      if (phantomNamespace?.ethereum) return phantomNamespace.ethereum;
-      if (eth?.isPhantom) return eth;
-      if (Array.isArray(multi) && multi.length > 0) {
-        const p = multi.find((provider: any) => provider && provider.isPhantom);
-        if (p) return p;
-      }
-      return undefined;
-    },
-    getMetamaskProvider(): any | undefined {
-      const w: any = window as any;
-      const eth = w?.ethereum;
-      const multi = eth?.providers;
-      let mm: any;
-      if (Array.isArray(multi) && multi.length > 0) {
-        mm = multi.find((p: any) => p && p.isMetaMask);
-      }
-      if (!mm && eth?.isMetaMask) mm = eth;
-      return mm;
-    },
-    getWalletProvider(wallet: WalletKey) {
-      if (wallet === 'metamask') {
-        return this.getMetamaskProvider();
-      }
-      if (wallet === 'phantom') {
-        return this.getPhantomProvider();
-      }
-    },
-    isWalletAvailable(wallet: WalletKey): boolean {
-      return Boolean(this.getWalletProvider(wallet));
-    },
-    openWalletDownload(wallet: WalletKey) {
-      const deepLink = this.getWalletDeepLink(wallet);
-      if (deepLink) {
-        window.location.href = deepLink;
+        this.solanaWalletModalVisible = false;
+        this.evmWalletModalVisible = false;
         return;
       }
-      let url = '';
-      if (wallet === 'phantom') {
-        url = 'https://phantom.app/download';
-      } else if (wallet === 'metamask') {
-        url = 'https://metamask.io/download.html';
+      if (!this.selectedNetwork) {
+        const first = this.acceptsList[0]?.network;
+        this.selectedNetwork = String(first || 'base').toLowerCase();
       }
-      if (!url) return;
-      window.open(url, '_blank', 'noopener');
-      this.installGuideWallet = wallet;
-      this.installGuideVisible = true;
+      const supported = new Set(this.networkOptions.map((o) => o.network));
+      const selected = String(this.selectedNetwork || '').toLowerCase();
+      if (selected && !supported.has(selected)) {
+        const fallback = this.networkOptions[0]?.network;
+        if (fallback) this.selectedNetwork = fallback;
+      }
+      void this.maybeLoadRequirements();
     },
-    resetWalletState(wallet: WalletKey) {
-      this.walletStates[wallet].connected = false;
-      this.walletStates[wallet].address = undefined;
+    selectedNetwork() {
+      if (!this.visible) return;
+      void this.maybeLoadRequirements();
+    }
+  },
+  mounted() {
+    void this.refreshEvmWallets();
+  },
+  methods: {
+    sleep(ms: number) {
+      return new Promise<void>((resolve) => setTimeout(resolve, ms));
+    },
+    getErrorMessage(error: any): string {
+      if (!error) return '';
+      if (typeof error === 'string') return error;
+      if (typeof error?.message === 'string') return error.message;
+      try {
+        return JSON.stringify(error);
+      } catch {
+        return String(error);
+      }
+    },
+    isRetryableSolanaConnectError(error: any): boolean {
+      const name = String(error?.name || '');
+      if (name === 'WalletNotSelectedError') return true;
+      const message = this.getErrorMessage(error).toLowerCase();
+      return (
+        message.includes('disconnected port object') ||
+        message.includes('failed to send message to service worker') ||
+        message.includes('message port closed') ||
+        message.includes('extension context invalidated')
+      );
+    },
+    async connectSolanaWalletWithRetry(adapterName?: string) {
+      const walletApi: any = (this as any).$wallet;
+      if (!walletApi) throw new Error('Wallet API not available');
+
+      const maxAttempts = 2;
+      let lastError: any;
+
+      for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+        try {
+          if (adapterName) walletApi.select(adapterName);
+          await nextTick();
+          await walletApi.connect();
+          return;
+        } catch (error: any) {
+          lastError = error;
+          if (attempt < maxAttempts && this.isRetryableSolanaConnectError(error)) {
+            const name = String(error?.name || '');
+            const delayMs = name === 'WalletNotSelectedError' ? 0 : 300;
+            if (delayMs) await this.sleep(delayMs);
+            continue;
+          }
+          throw error;
+        }
+      }
+      throw lastError;
+    },
+    formatNetworkLabel(network?: string): string {
+      const lower = String(network || '').toLowerCase();
+      if (lower === 'base') return 'Base';
+      if (lower === 'solana') return 'Solana';
+      if (lower === 'solana-devnet') return 'Solana Devnet';
+      if (lower === 'ethereum') return 'Ethereum';
+      if (lower === 'sepolia') return 'Sepolia';
+      if (lower === 'polygon') return 'Polygon';
+      if (lower === 'arbitrum') return 'Arbitrum';
+      if (lower === 'optimism') return 'Optimism';
+      if (lower === 'bsc') return 'BNB Chain';
+      if (lower === 'avalanche') return 'Avalanche';
+      return network || 'Unknown';
+    },
+    async confirmPay(networkLabel?: string): Promise<boolean> {
+      const network = networkLabel || this.expectedNetworkLabel || this.expectedNetwork || '';
+      const title = String(this.$t?.('order.message.x402ConfirmTitle') || 'Confirm Payment');
+      const message = String(
+        this.$t?.('order.message.x402ConfirmDesc', { network }) || `Confirm USDC payment on ${network}?`
+      );
+      const confirmButtonText = String(this.$t?.('common.button.pay') || 'Pay');
+      const cancelButtonText = String(this.$t?.('common.button.cancel') || 'Cancel');
+      return ElMessageBox.confirm(message, title, {
+        confirmButtonText,
+        cancelButtonText,
+        type: 'warning'
+      })
+        .then(() => true)
+        .catch(() => false);
+    },
+    async onSelectSolanaWallet(wallet: any) {
+      if (this.solanaWalletConnecting) return;
+      if (!wallet?.adapter?.name) {
+        return;
+      }
+      this.solanaWalletConnecting = true;
+      try {
+        await this.connectSolanaWalletWithRetry(wallet.adapter.name);
+        this.solanaWalletModalVisible = false;
+      } catch (error) {
+        console.warn('wallet connect failed', error);
+        ElMessage.error(String(this.$t?.('coin.message.connectError') || 'Wallet connect failed'));
+      } finally {
+        this.solanaWalletConnecting = false;
+      }
+    },
+    async disconnectSolanaWallet() {
+      try {
+        await (this as any).$wallet.disconnect();
+      } catch {}
+    },
+    openEvmWalletModal() {
+      this.evmWalletModalVisible = true;
+      void this.refreshEvmWallets();
+    },
+    async refreshEvmWallets() {
+      if (typeof window === 'undefined') return;
+
+      const collected = new Map<string, IEvmWalletInfo>();
+      const handler = (event: any) => {
+        const detail = event?.detail;
+        const info = detail?.info;
+        const provider = detail?.provider;
+        if (!info || !provider) return;
+        const id = String(info.uuid || info.rdns || info.name || '');
+        if (!id) return;
+        if (!collected.has(id)) {
+          collected.set(id, {
+            id,
+            name: String(info.name || 'Wallet'),
+            icon: typeof info.icon === 'string' ? info.icon : undefined,
+            provider
+          });
+        }
+      };
+
+      try {
+        window.addEventListener('eip6963:announceProvider', handler as any);
+        window.dispatchEvent(new Event('eip6963:requestProvider'));
+        await new Promise((resolve) => window.setTimeout(resolve, 120));
+      } finally {
+        window.removeEventListener('eip6963:announceProvider', handler as any);
+      }
+
+      if (collected.size === 0) {
+        const eth: any = (window as any).ethereum;
+        const providers: any[] = Array.isArray(eth?.providers) ? eth.providers : eth ? [eth] : [];
+        providers.forEach((p: any, index: number) => {
+          if (!p) return;
+          let name = 'Injected';
+          if (p.isMetaMask) name = 'MetaMask';
+          else if (p.isCoinbaseWallet) name = 'Coinbase Wallet';
+          else if (p.isBraveWallet) name = 'Brave Wallet';
+          else if (p.isRabby) name = 'Rabby';
+          else if (p.isPhantom) name = 'Phantom';
+          const id = `injected:${name}:${index}`;
+          collected.set(id, { id, name, icon: undefined, provider: p });
+        });
+      }
+
+      this.evmWallets = Array.from(collected.values());
+    },
+    async onSelectEvmWallet(wallet: IEvmWalletInfo) {
+      if (!wallet?.provider) return;
+      this.evmWalletModalVisible = false;
+      this.evmWalletConnecting = true;
+      try {
+        const accounts: string[] = await wallet.provider.request({ method: 'eth_requestAccounts' });
+        const address = Array.isArray(accounts) ? accounts[0] : undefined;
+        if (!address) {
+          throw new Error('No account returned from wallet');
+        }
+        this.selectedEvmWalletId = wallet.id;
+        this.evmAddress = address;
+        await this.refreshChainId();
+        await this.ensureNetwork();
+      } catch (error) {
+        console.warn('EVM wallet connect failed', error);
+        ElMessage.error(String(this.$t?.('coin.message.connectError') || 'Wallet connect failed'));
+        this.disconnectEvmWallet();
+      } finally {
+        this.evmWalletConnecting = false;
+      }
+    },
+    disconnectEvmWallet() {
+      this.selectedEvmWalletId = undefined;
+      this.evmAddress = undefined;
+      this.chainId = undefined;
     },
     async getFreshRequirements(): Promise<Record<string, any> | undefined> {
-      const existing = this.pickRequirements();
+      // Prefer using the requirements already attached to the order/session
+      // to avoid re-triggering the pay endpoint (which may legitimately
+      // return HTTP 402 as part of the X402 protocol handshake).
+      const existing = this.selectedRequirements;
       if (existing) return existing;
       try {
         const res = await orderOperator.pay(this.modelValue.id as any, { pay_way: 'X402' } as any);
         const data: any = res?.data;
-        if (Array.isArray(data?.accepts) && data.accepts.length) return data.accepts[0];
-        if (data?.payment_requirements) return data.payment_requirements;
+        const accepts = Array.isArray(data?.accepts) ? data.accepts : undefined;
+        const target = String(this.selectedNetworkResolved || '').toLowerCase();
+        if (Array.isArray(accepts) && accepts.length) {
+          const found = accepts.find((r: any) => String(r?.network || '').toLowerCase() === target);
+          if (found) return found as Record<string, any>;
+          if (!this.selectedNetwork) return accepts[0] as Record<string, any>;
+          return undefined;
+        }
+        const pr = data?.payment_requirements;
+        if (Array.isArray(pr) && pr.length) {
+          const found = pr.find((r: any) => String(r?.network || '').toLowerCase() === target);
+          if (found) return found as Record<string, any>;
+          if (!this.selectedNetwork) return pr[0] as Record<string, any>;
+          return undefined;
+        }
+        if (pr && typeof pr === 'object') return pr as Record<string, any>;
         return undefined;
       } catch (err: any) {
         const data = err?.response?.data;
         if (data) {
-          if (Array.isArray(data?.accepts) && data.accepts.length) return data.accepts[0];
-          if (data?.payment_requirements) return data.payment_requirements;
+          const accepts = Array.isArray(data?.accepts) ? data.accepts : undefined;
+          const target = String(this.selectedNetworkResolved || '').toLowerCase();
+          if (Array.isArray(accepts) && accepts.length) {
+            const found = accepts.find((r: any) => String(r?.network || '').toLowerCase() === target);
+            if (found) return found as Record<string, any>;
+            if (!this.selectedNetwork) return accepts[0] as Record<string, any>;
+            return undefined;
+          }
+          const pr = data?.payment_requirements;
+          if (Array.isArray(pr) && pr.length) {
+            const found = pr.find((r: any) => String(r?.network || '').toLowerCase() === target);
+            if (found) return found as Record<string, any>;
+            if (!this.selectedNetwork) return pr[0] as Record<string, any>;
+            return undefined;
+          }
+          if (pr && typeof pr === 'object') return pr as Record<string, any>;
         }
         return undefined;
       }
     },
-    onOpenDocs() {
-      window.open(this.docsUrl, '_blank', 'noopener');
-    },
-    pickFirstString(candidates: Array<unknown>): string | undefined {
-      for (const c of candidates) if (typeof c === 'string' && c.trim()) return c.trim();
-      return undefined;
-    },
-    ensureHttps(value?: string): string | undefined {
-      if (!value) return value;
-      if (/^http:\/\//i.test(value)) return value.replace(/^http:\/\//i, 'https://');
-      return value;
-    },
-    isUrl(value?: string) {
-      return !!value && /^https?:\/\//i.test(value);
-    },
-    async onConnectWallet(wallet: WalletKey) {
-      const provider = this.getWalletProvider(wallet);
-      if (!provider) {
-        this.resetWalletState(wallet);
-        this.openWalletDownload(wallet);
-        return;
-      }
-      this.connecting = true;
+    async maybeLoadRequirements(force = false) {
+      const network = String(this.selectedNetworkResolved || '').toLowerCase();
+      if (!network) return;
+      if (this.runtimeRequirementsByNetwork[network]) return;
+      const alreadyHas = this.acceptsList.some((r) => String(r.network || '').toLowerCase() === network);
+      if (alreadyHas) return;
+      if (!force && this.requirementsAttemptedByNetwork[network]) return;
+
+      this.requirementsAttemptedByNetwork[network] = true;
+      this.requirementsLoading = true;
       try {
-        const accounts: string[] = await provider.request({ method: 'eth_requestAccounts' });
-        const address = Array.isArray(accounts) ? accounts[0] : undefined;
-        if (!address) {
-          this.resetWalletState(wallet);
-          return;
+        const req = await this.getFreshRequirements();
+        if (req) {
+          this.runtimeRequirementsByNetwork[network] = req;
         }
-        this.walletStates[wallet].address = address;
-        this.walletStates[wallet].connected = true;
-        this.activeWallet = wallet;
-        await this.refreshChainId();
-      } catch {
-        this.resetWalletState(wallet);
       } finally {
-        this.connecting = false;
-        await this.ensureNetwork();
+        this.requirementsLoading = false;
       }
     },
     async refreshChainId() {
@@ -603,18 +721,16 @@ export default defineComponent({
             params: [this.getExpectedChainParams()]
           });
         } catch (err: any) {
+          console.error('Failed to add Ethereum chain:', err);
           try {
-            ElMessage.warning(
+            const fallback =
               (this.$t && (this.$t('order.message.x402NetworkSwitchFailed') as string)) ||
-                'Your wallet does not support automatic network switching. Please switch to the required network in the wallet and try again.'
-            );
+              'Your wallet does not support automatic network switching. Please switch to the required network in the wallet and try again.';
+            ElMessage.warning(fallback);
           } catch {}
         }
       }
       await this.refreshChainId();
-    },
-    async onSwitchNetwork() {
-      await this.ensureNetwork();
     },
     getExpectedChainParams() {
       const map: Record<string, any> = {
@@ -675,8 +791,64 @@ export default defineComponent({
           .join('')
       );
     },
-    pickRequirements(): Record<string, any> | undefined {
-      return this.paymentRequirements || this.primaryAccept;
+    async onPayWithSolanaWallet() {
+      if (!this.modelValue?.id) return;
+      const address = this.solanaAddress;
+      if (!address) {
+        ElMessage.error(String(this.$t?.('order.message.x402NeedConnectAccount') || 'Please connect a wallet first.'));
+        return;
+      }
+      if (!this.requirementsAvailable) {
+        ElMessage.error(String(this.$t?.('order.message.x402SolanaNotEnabled') || 'Solana payment is not available.'));
+        return;
+      }
+
+      this.signing = true;
+      try {
+        const ok = await this.confirmPay(this.expectedNetworkLabel);
+        if (!ok) return;
+
+        let requirements = await this.getFreshRequirements();
+        if (!requirements) requirements = this.selectedRequirements;
+        if (!requirements) {
+          ElMessage.error(String(this.$t?.('order.message.x402PaymentFailed') || 'X402 payment failed.'));
+          return;
+        }
+
+        const adapter: any = (this as any).$wallet?.wallet?.value?.adapter;
+        if (!adapter?.signTransaction && !adapter?.signAllTransactions) {
+          throw new Error('Wallet does not support signing transactions');
+        }
+
+        const header = await buildSolanaX402Header({
+          requirements,
+          payerAddress: address,
+          signTransaction: adapter.signTransaction ? adapter.signTransaction.bind(adapter) : undefined,
+          signAllTransactions: adapter.signAllTransactions ? adapter.signAllTransactions.bind(adapter) : undefined,
+          fetchLatestBlockhash: (network) => this.fetchSolanaLatestBlockhash(network)
+        });
+        this.paying = true;
+        const { data } = await orderOperator.payX402WithHeader(this.modelValue.id, { pay_way: 'X402' } as any, header);
+        this.$emit('update:modelValue', data as IOrder);
+        this.$emit('hide');
+      } catch (err: any) {
+        const data = err?.response?.data;
+        const message = (data as any)?.error || (data as any)?.detail || 'X402 wallet payment failed.';
+        ElMessage.error(String(message));
+      } finally {
+        this.signing = false;
+        this.paying = false;
+      }
+    },
+    async fetchSolanaLatestBlockhash(network: string): Promise<string> {
+      const { data } = await httpClient.get('/x402/solana/latest-blockhash/', {
+        params: { network: network || 'solana' }
+      });
+      const blockhash = (data as any)?.blockhash;
+      if (!blockhash || typeof blockhash !== 'string') {
+        throw new Error('Invalid blockhash response');
+      }
+      return blockhash;
     },
     async onPayWithWallet() {
       if (!this.modelValue?.id || !this.evmProvider || !this.evmAddress) {
@@ -689,8 +861,10 @@ export default defineComponent({
 
       this.signing = true;
       try {
+        // Always fetch fresh requirements from backend to avoid stale caps
         let requirements = await this.getFreshRequirements();
-        if (!requirements) requirements = this.pickRequirements();
+
+        if (!requirements) requirements = this.selectedRequirements;
         if (!requirements) {
           const fallback =
             (this.$t && (this.$t('order.message.x402PaymentFailed') as string)) ||
@@ -700,6 +874,18 @@ export default defineComponent({
         }
 
         await this.ensureNetwork();
+        if (this.networkMismatch) {
+          ElMessage.warning(
+            String(
+              this.$t?.('order.message.x402SwitchNetwork', {
+                network: this.expectedNetworkLabel || this.expectedNetwork
+              }) || 'Please switch your wallet network and try again.'
+            )
+          );
+          return;
+        }
+        const ok = await this.confirmPay(this.expectedNetworkLabel);
+        if (!ok) return;
         const now = Math.floor(Date.now() / 1000);
         const maxTimeout = Number(requirements?.maxTimeoutSeconds || requirements?.max_timeout_seconds || 120);
         const valueStr = BigInt(requirements?.maxAmountRequired || requirements?.max_amount_required || 0).toString();
@@ -736,6 +922,7 @@ export default defineComponent({
         this.$emit('update:modelValue', data as IOrder);
         this.$emit('hide');
       } catch (err: any) {
+        // try to surface backend 402 error body to session for UI
         let message: string | undefined;
         const data = err?.response?.data;
         if (data) {
@@ -750,20 +937,11 @@ export default defineComponent({
         try {
           ElMessage.error(message);
         } catch {}
+        // parent page handles order refresh
       } finally {
         this.signing = false;
         this.paying = false;
       }
-    },
-    onInstallGuideConfirm() {
-      this.installGuideVisible = false;
-      this.reloadPage();
-    },
-    onNetworkGuideConfirm() {
-      this.reloadPage();
-    },
-    reloadPage() {
-      window.location.reload();
     }
   }
 });
@@ -779,43 +957,260 @@ export default defineComponent({
   }
 }
 
-.x402-descriptions {
-  :deep(.el-descriptions__table) {
-    border: none;
-  }
-  :deep(.el-descriptions__cell) {
-    padding-bottom: 12px;
-    border-bottom: none;
-  }
-  :deep(.el-descriptions__body tr:last-child .el-descriptions__cell) {
-    padding-bottom: 0;
-  }
-  :deep(.el-descriptions__label) {
-    font-weight: 600;
-    color: var(--el-text-color-secondary);
-  }
-  :deep(.el-descriptions__content) {
-    color: var(--el-text-color-primary);
-  }
-  :deep(.el-descriptions__body) {
-    background: transparent;
-  }
-  :deep(.el-descriptions__cell.is-bordered-label) {
-    width: 150px;
-    font-weight: 600;
-  }
-  :deep(.el-descriptions__cell) {
-    vertical-align: top;
-  }
+.x402-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.x402-network-alert {
-  :deep(.el-alert__content) {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    gap: 12px;
+.x402-intro {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.x402-intro-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: var(--el-color-primary-light-9);
+  color: var(--el-color-primary);
+  flex: none;
+}
+
+.x402-intro-text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--el-text-color-regular);
+}
+
+.x402-wallet {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.x402-wallet-head {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.x402-network {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.x402-network-label {
+  font-size: 13px;
+  color: var(--el-text-color-secondary);
+}
+
+.x402-network-group :deep(.el-radio-button__inner) {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--el-text-color-regular);
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.x402-network-group :deep(.el-radio-button__original-radio:checked + .el-radio-button__inner) {
+  background: var(--el-color-primary);
+  border-color: var(--el-color-primary);
+  color: #fff;
+}
+
+.x402-alert {
+  margin-top: 4px;
+}
+
+.x402-requirements-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -4px;
+}
+
+.x402-wallet-card {
+  width: 100%;
+  max-width: 460px;
+  margin: 6px auto 0;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+.x402-wallet-card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.x402-wallet-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--el-text-color-primary);
+}
+
+.x402-wallet-card-tag {
+  margin-left: auto;
+  font-size: 12px;
+  border: none;
+  background: rgba(103, 194, 58, 0.14);
+  color: var(--el-color-success);
+}
+
+.x402-wallet-card-sub {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--el-text-color-regular);
+  word-break: break-all;
+}
+
+.x402-wallet-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.x402-wallet-card-actions {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.x402-wallet-card-actions :deep(.el-button) {
+  min-width: 170px;
+}
+
+.x402-wallet-card-actions :deep(.el-button + .el-button) {
+  margin-left: 0;
+}
+
+.x402-actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.x402-steps {
+  margin-top: 8px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.x402-steps-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--el-text-color-primary);
+  margin-bottom: 10px;
+}
+
+.x402-steps-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.x402-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.x402-step-index {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--el-text-color-primary);
+  flex: none;
+  margin-top: 1px;
+}
+
+.x402-step-text {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--el-text-color-regular);
+}
+
+.wallet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 420px;
+  overflow: auto;
+}
+
+.wallet-list-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--el-text-color-primary);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.wallet-list-item:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.wallet-list-item:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.wallet-list-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: #fff;
+  object-fit: contain;
+  flex: none;
+}
+
+.wallet-list-name {
+  flex: 1;
+  text-align: left;
+  font-size: 14px;
+  color: var(--el-text-color-primary);
+  min-width: 0;
+}
+
+.wallet-list-status {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--el-text-color-secondary);
+  margin-left: 8px;
+  flex: none;
+}
+
+@media (max-width: 480px) {
+  .x402-wallet-card-actions :deep(.el-button) {
+    min-width: 100%;
   }
 }
 </style>

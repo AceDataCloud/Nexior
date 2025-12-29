@@ -1,1 +1,1 @@
-export default ['user', 'token', 'setting', 'locale', 'dark', 'site', 'currency', 'exchange', 'fingerprint'];
+export default ['user', 'token', 'setting', 'locale', 'dark', 'site', 'config', 'currency', 'exchange', 'fingerprint'];

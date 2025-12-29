@@ -195,9 +195,21 @@
     "message": "Veuillez changer le réseau du portefeuille en {network}",
     "description": "Invite à l'utilisateur de changer le réseau du portefeuille."
   },
+  "message.x402SolanaNotEnabled": {
+    "message": "Solana X402 payment is not enabled for this order. Please switch network or refresh.",
+    "description": "Shown when the selected Solana network is not available in X402 payment requirements."
+  },
   "message.x402NeedConnectAccount": {
     "message": "Veuillez d'abord connecter au moins un portefeuille EVM compatible avant de payer.",
     "description": "Rappel à l'utilisateur de connecter son compte de portefeuille d'abord."
+  },
+  "message.x402ConfirmTitle": {
+    "message": "Confirm Payment",
+    "description": "Title of the confirmation dialog before signing an X402 payment."
+  },
+  "message.x402ConfirmDesc": {
+    "message": "Confirm USDC payment on {network}?",
+    "description": "Description of the confirmation dialog before signing an X402 payment."
   },
   "message.x402StepsTitle": {
     "message": "Étapes de paiement",

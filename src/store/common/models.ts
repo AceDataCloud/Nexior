@@ -1,4 +1,4 @@
-import { IApplication, ISite, IToken, IUser, Status } from '@/models';
+import { IApplication, IConfigResponse, ISite, IToken, IUser, Status } from '@/models';
 import { IMidjourneyState } from '../midjourney/models';
 import { IChatState } from '../chat/models';
 import { IQrartState } from '../qrart/models';
@@ -21,6 +21,7 @@ export interface ICommonState {
   user?: IUser;
   setting?: ISetting;
   site?: ISite;
+  config?: IConfigResponse;
   currency: string;
   fingerprint?: string;
   auth: {
