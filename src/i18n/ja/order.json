@@ -195,9 +195,21 @@
     "message": "ウォレットのネットワークを {network} に切り替えてください",
     "description": "ユーザーにウォレットのネットワークを切り替えるよう促す。"
   },
+  "message.x402SolanaNotEnabled": {
+    "message": "Solana X402 payment is not enabled for this order. Please switch network or refresh.",
+    "description": "Shown when the selected Solana network is not available in X402 payment requirements."
+  },
   "message.x402NeedConnectAccount": {
     "message": "支払う前に、少なくとも1つの互換性のあるEVMウォレットを接続してください。",
     "description": "ユーザーにウォレットアカウントを先に接続するよう促す。"
+  },
+  "message.x402ConfirmTitle": {
+    "message": "Confirm Payment",
+    "description": "Title of the confirmation dialog before signing an X402 payment."
+  },
+  "message.x402ConfirmDesc": {
+    "message": "Confirm USDC payment on {network}?",
+    "description": "Description of the confirmation dialog before signing an X402 payment."
   },
   "message.x402StepsTitle": {
     "message": "支払い手順",

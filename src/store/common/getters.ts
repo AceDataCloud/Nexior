@@ -20,6 +20,10 @@ export const site = (state: IRootState): any => {
   return state.site;
 };
 
+export const config = (state: IRootState): any => {
+  return state.config;
+};
+
 export const fingerprint = (state: IRootState): any => {
   return state.fingerprint;
 };
@@ -29,6 +33,7 @@ export default {
   user,
   token,
   site,
+  config,
   fingerprint,
   setting
 };

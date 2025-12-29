@@ -195,9 +195,21 @@
     "message": "請將錢包網路切換為 {network}",
     "description": "提示用戶切換錢包網路。"
   },
+  "message.x402SolanaNotEnabled": {
+    "message": "此訂單未啟用 Solana 的 X402 付款，請切換網路或重新整理後再試。",
+    "description": "當選擇 Solana 網路但目前訂單的 X402 付款需求不支援 Solana 時顯示。"
+  },
   "message.x402NeedConnectAccount": {
     "message": "請先連接至少一個兼容的 EVM 錢包後再支付。",
     "description": "提醒用戶先連接錢包帳戶。"
+  },
+  "message.x402ConfirmTitle": {
+    "message": "確認付款",
+    "description": "在發起 X402 付款簽名前的確認對話框標題。"
+  },
+  "message.x402ConfirmDesc": {
+    "message": "確認在 {network} 上進行 USDC 付款？",
+    "description": "在發起 X402 付款簽名前的確認對話框描述。"
   },
   "message.x402StepsTitle": {
     "message": "支付步驟",

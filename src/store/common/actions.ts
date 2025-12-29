@@ -4,6 +4,7 @@ import {
   userOperator,
   oauthOperator,
   siteOperator,
+  configOperator,
   exchangeOperator,
   applicationOperator,
   credentialOperator
@@ -145,6 +146,19 @@ export const getSite = async ({ state, commit }: ActionContext<IRootState, IRoot
   }
 };
 
+export const fetchConfig = async ({ commit }: ActionContext<IRootState, IRootState>) => {
+  console.debug('start to fetch config');
+  try {
+    const { data } = await configOperator.get();
+    commit('setConfig', data);
+    return data;
+  } catch (error) {
+    console.error('fetch config failed', error);
+    commit('setConfig', undefined);
+    return undefined;
+  }
+};
+
 export const setApplications = async ({ commit }: any, payload: IApplication[]): Promise<void> => {
   console.debug('set applications', payload);
   commit('setApplications', payload);
@@ -252,6 +266,7 @@ export default {
   getUser,
   initializeSite,
   getSite,
+  fetchConfig,
   setExchange,
   setApplications,
   getApplications,

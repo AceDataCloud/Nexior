@@ -37,6 +37,7 @@ export const I18N_SCOPES = [
   'hailuo',
   'headshots',
   'suno',
+  'coin',
   'common',
   'console',
   'credential',

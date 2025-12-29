@@ -152,6 +152,10 @@ export const initializeSite = async () => {
   }
 };
 
+export const initializeConfig = async () => {
+  await store.dispatch('fetchConfig');
+};
+
 /**
  * Initialize token by code
  */

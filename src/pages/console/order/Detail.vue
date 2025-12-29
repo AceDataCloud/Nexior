@@ -223,7 +223,7 @@ import WechatPayOrder from '@/components/order/WechatPay.vue';
 import StripePayOrder from '@/components/order/StripePay.vue';
 import AlipayPayOrder from '@/components/order/AliPay.vue';
 import X402PayOrder from '@/components/order/X402Pay.vue';
-import { IOrder, IOrderDetailResponse, OrderState } from '@/models';
+import { IConfigResponse, IOrder, IOrderDetailResponse, OrderState } from '@/models';
 import { getPriceString } from '@/utils';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 
@@ -282,6 +282,9 @@ export default defineComponent({
     };
   },
   computed: {
+    config(): IConfigResponse | undefined {
+      return this.$store.getters.config as IConfigResponse | undefined;
+    },
     id() {
       return this.$route.params?.id?.toString();
     },
@@ -407,7 +410,7 @@ export default defineComponent({
       return hints;
     },
     x402DiscountRate(): number {
-      const candidate = this.pricingInfo.discountRateX402;
+      const candidate = this.config?.features?.DISCOUNT_FOR_X402;
       if (typeof candidate === 'number' && Number.isFinite(candidate) && candidate > 0) {
         return candidate;
       }

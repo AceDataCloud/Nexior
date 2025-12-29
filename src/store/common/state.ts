@@ -25,6 +25,7 @@ export default (): IRootState => {
       flow: 'redirect',
       visible: false
     },
+    config: undefined,
     token: {
       access: undefined,
       refresh: undefined,
