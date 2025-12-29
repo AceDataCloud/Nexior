@@ -1,8 +1,32 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 15 Dec 2025 01:25:07 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 28 Dec 2025 12:28:04 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.25.5
+
+Sun, 28 Dec 2025 12:28:04 GMT
+
+### Patches
+
+- fix build options (cqc@cuiqingcai.com)
+
+## 3.25.4
+
+Sat, 27 Dec 2025 10:41:20 GMT
+
+### Patches
+
+- fix (cqc@cuiqingcai.com)
+
+## 3.25.3
+
+Thu, 25 Dec 2025 03:28:40 GMT
+
+### Patches
+
+- show aspect ratio (cqc@cuiqingcai.com)
 
 ## 3.25.2
 
