@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 28 Dec 2025 12:28:04 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 29 Dec 2025 09:55:09 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.26.0
+
+Mon, 29 Dec 2025 09:55:09 GMT
+
+### Minor changes
+
+- support solana payment (cqc@cuiqingcai.com)
 
 ## 3.25.5
 
