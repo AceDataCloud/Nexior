@@ -25,7 +25,9 @@ export async function buildSolanaX402Header(args: {
     throw new Error('Missing feePayer in Solana payment requirements');
   }
   if (feePayerStr === payerAddress) {
-    throw new Error('Invalid Solana payment: payer wallet must not be the fee payer wallet (switch wallet and try again).');
+    throw new Error(
+      'Invalid Solana payment: payer wallet must not be the fee payer wallet (switch wallet and try again).'
+    );
   }
   const feePayer = new PublicKey(feePayerStr);
   const decimals = Number(extra.decimals ?? 6);
@@ -129,4 +131,3 @@ export async function buildSolanaX402Header(args: {
   };
   return btoa(JSON.stringify(payload));
 }
-

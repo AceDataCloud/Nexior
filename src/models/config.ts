@@ -5,4 +5,3 @@ export interface IConfigFeatures {
 export interface IConfigResponse {
   features?: IConfigFeatures;
 }
-
