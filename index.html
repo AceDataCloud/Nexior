@@ -6,9 +6,8 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, max-age=0, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <title>Ace Data Cloud</title>
+    <title>Nexior</title>
     <link rel="icon" href="/src/images/favicon.ico" />
-    <link rel="stylesheet" href="/src/assets/css/loading.css" />
     <script>
       var _hmt = _hmt || [];
       (function () {
@@ -18,14 +17,111 @@
         s.parentNode.insertBefore(hm, s);
       })();
     </script>
+    <style>
+      :root {
+        --boot-bg: #ffffff;
+        --boot-fg: #0b0b0b;
+        --boot-muted: rgba(0, 0, 0, 0.55);
+        --boot-spinner-1: #07eea6;
+        --boot-spinner-2: #29bee4;
+        --boot-spinner-3: #23abff;
+        color-scheme: light;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --boot-bg: #000000;
+          --boot-fg: #ffffff;
+          --boot-muted: rgba(255, 255, 255, 0.65);
+          --boot-spinner-1: #07eea6;
+          --boot-spinner-2: #29bee4;
+          --boot-spinner-3: #23abff;
+          color-scheme: dark;
+        }
+      }
+
+      html,
+      body,
+      #app {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        background: var(--boot-bg);
+        color: var(--boot-fg);
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji',
+          'Segoe UI Emoji';
+      }
+
+      .boot {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background: var(--boot-bg);
+      }
+
+      .boot__content {
+        position: relative;
+        display: grid;
+        justify-items: center;
+        gap: 14px;
+        padding: 24px 18px;
+        z-index: 1;
+      }
+
+      .boot__loader {
+        width: 72px;
+        height: 72px;
+        position: relative;
+        border-radius: 999px;
+      }
+
+      .boot__loader::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: conic-gradient(
+          from 90deg,
+          var(--boot-spinner-1),
+          var(--boot-spinner-2),
+          var(--boot-spinner-3),
+          var(--boot-spinner-1)
+        );
+        -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 10px), #000 calc(100% - 9px));
+        mask: radial-gradient(farthest-side, transparent calc(100% - 10px), #000 calc(100% - 9px));
+        animation: boot-spin 0.9s linear infinite;
+      }
+
+      @keyframes boot-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .boot__subtitle {
+        font-size: 12px;
+        color: var(--boot-muted);
+        user-select: none;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .boot__loader::before,
+        .boot__loader::after {
+          animation: none !important;
+        }
+      }
+    </style>
   </head>
   <body>
     <div id="app">
-      <div class="loading">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+      <div class="boot" aria-label="Loading" role="status">
+        <div class="boot__content">
+          <div class="boot__loader" aria-hidden="true"></div>
+          <div class="boot__subtitle">Loading…</div>
+        </div>
       </div>
     </div>
     <script type="module" src="/src/main.ts"></script>
