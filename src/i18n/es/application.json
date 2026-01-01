@@ -8,8 +8,8 @@
     "description": "Cuota del servicio."
   },
   "field.expiredAt": {
-    "message": "Fecha de expiración",
-    "description": "Fecha de expiración de la solicitud."
+    "message": "Fecha de caducidad",
+    "description": "Fecha de caducidad de la solicitud."
   },
   "button.goDocument": {
     "message": "Documentos",
@@ -24,7 +24,7 @@
     "description": "Texto del botón, al hacer clic en este botón se irá a la página de compra de más. Debe traducirse al inglés como 'Top Up' y al chino como '充值'."
   },
   "button.createOrder": {
-    "message": "Crear Pedido",
+    "message": "Crear pedido",
     "description": "Texto del botón, al hacer clic en este botón se irá a la página de creación de pedidos."
   },
   "button.custom": {
@@ -32,12 +32,12 @@
     "description": "Texto del botón, al hacer clic en este botón se irá a la página de personalización."
   },
   "button.query": {
-    "message": "Consulta",
+    "message": "Consultar",
     "description": "Texto del botón, al hacer clic en este botón se irá a la página de consulta."
   },
   "button.usage": {
     "message": "Uso",
-    "description": "Texto del botón, al hacer clic en este botón se irá a la página de historial de uso. Debe traducirse al inglés como 'Usage' y al chino como '用量'."
+    "description": "Texto del botón, al hacer clic en este botón se irá a la página del historial de uso. Debe traducirse al inglés como 'Usage' y al chino como '用量'."
   },
   "field.serviceName": {
     "message": "Nombre del servicio",
@@ -52,16 +52,16 @@
     "description": "Estado de la solicitud."
   },
   "field.id": {
-    "message": "ID de Solicitud",
+    "message": "ID de solicitud",
     "description": "ID de la solicitud. Debe traducirse al inglés como 'App ID' y al chino como '申请ID'."
   },
   "field.remainingAmount": {
-    "message": "Saldo de Instancia",
-    "description": "El saldo solicitado. Debe traducirse al inglés como 'Balance' y al chino como '实例余额'."
+    "message": "Saldo de instancia",
+    "description": "Saldo de la solicitud. Debe traducirse al inglés como 'Balance' y al chino como '实例余额'."
   },
   "field.usedAmount": {
     "message": "Usado",
-    "description": "La cantidad utilizada en la solicitud. Debe traducirse al inglés como 'Used' y al chino como '已用'."
+    "description": "Monto utilizado de la solicitud. Debe traducirse al inglés como 'Used' y al chino como '已用'."
   },
   "field.apiKey": {
     "message": "Clave API",
@@ -69,31 +69,31 @@
   },
   "field.service": {
     "message": "Servicio",
-    "description": "El servicio solicitado."
+    "description": "Servicio de la solicitud."
   },
   "field.operation": {
     "message": "Operación",
-    "description": "La operación solicitada."
+    "description": "Operación de la solicitud."
   },
   "field.allowConsumeGlobal": {
-    "message": "Permitir Uso de Saldo General",
+    "message": "Permitir uso de saldo general",
     "description": "Interruptor que permite consumir saldo general (General Balance). Debe traducirse al inglés como 'Allow Use General Balance' y al chino como '允许用通用余额'."
   },
   "field.amount": {
-    "message": "Cantidad",
-    "description": "La cantidad solicitada."
+    "message": "Monto",
+    "description": "Monto de la solicitud."
   },
   "field.scope": {
     "message": "Alcance",
-    "description": "El alcance solicitado, puede ser global o de servicio específico."
+    "description": "Alcance de la solicitud, puede ser global o de servicio específico."
   },
   "field.traceId": {
-    "message": "ID de Seguimiento",
+    "message": "ID de seguimiento",
     "description": "ID de seguimiento de la llamada API de la solicitud del servicio API."
   },
   "field.shouldPayPrice": {
-    "message": "Precio Final",
-    "description": "El precio final solicitado."
+    "message": "Precio final",
+    "description": "Precio final de la solicitud."
   },
   "field.api": {
     "message": "API",
@@ -105,11 +105,11 @@
   },
   "field.credential": {
     "message": "Credenciales",
-    "description": "Las credenciales solicitadas."
+    "description": "Credenciales de la solicitud."
   },
   "field.name": {
     "message": "Nombre",
-    "description": "El nombre solicitado."
+    "description": "Nombre de la solicitud."
   },
   "field.package": {
     "message": "Paquete",
@@ -117,15 +117,15 @@
   },
   "field.type": {
     "message": "Tipo",
-    "description": "El tipo solicitado."
+    "description": "Tipo de la solicitud."
   },
   "field.freeAmount": {
-    "message": "Cantidad Gratuita",
-    "description": "La cantidad gratuita solicitada."
+    "message": "Monto gratuito",
+    "description": "Monto gratuito de la solicitud."
   },
   "field.extraPrice": {
     "message": "Precio",
-    "description": "El precio adicional que el usuario debe pagar por la solicitud."
+    "description": "Precio adicional que el usuario debe pagar por la solicitud."
   },
   "message.alreadyApplied": {
     "message": "Ya ha solicitado este servicio, por favor revise la consola",
@@ -136,16 +136,16 @@
     "description": "Mensaje mostrado al usuario cuando ha solicitado este servicio con éxito."
   },
   "message.notApplied": {
-    "message": "No ha solicitado este servicio, por favor solicite el servicio antes de usarlo",
+    "message": "Aún no ha solicitado este servicio, por favor solicite el servicio antes de usarlo",
     "description": "Mensaje mostrado al usuario cuando aún no ha solicitado este servicio."
   },
   "message.globalBalanceBuyDescription": {
-    "message": "Puede elegir recargar el saldo general o recargar individualmente cada instancia de solicitud. Esta recarga irá al saldo general, y cuando el saldo de una instancia de solicitud sea insuficiente, se utilizará automáticamente el saldo general para complementarlo.",
-    "description": "Texto informativo que explica que la recarga va al saldo general y se utiliza automáticamente cuando el saldo de la instancia es insuficiente. Término: saldo general = General Balance (no traducir como Global Balance)."
+    "message": "Puede elegir recargar el saldo general, o recargar por separado para cada instancia de solicitud. Esta recarga irá al saldo general, y cuando el saldo de alguna instancia de solicitud sea insuficiente, se utilizará automáticamente el saldo general para complementar.",
+    "description": "Texto de aviso que explica que la recarga va al saldo general y se complementa automáticamente cuando el saldo de la instancia es insuficiente. Término: saldo general = General Balance (no traducir como Global Balance)."
   },
   "message.yourApplication": {
     "message": "Su solicitud",
-    "description": "Mensaje mostrado al usuario cuando se refiere a su solicitud."
+    "description": "Mensaje mostrado al usuario durante su solicitud."
   },
   "message.unverified": {
     "message": "Necesita completar la verificación de identidad antes de poder solicitar este servicio",
@@ -157,15 +157,15 @@
   },
   "message.requiredParameter": {
     "message": "Parámetro requerido",
-    "description": "Mensaje mostrado al usuario cuando no ha ingresado un parámetro requerido."
+    "description": "Mensaje mostrado al usuario cuando aún no ha ingresado un parámetro requerido."
   },
   "message.example": {
     "message": "Ejemplo",
-    "description": "Mensaje mostrado al usuario cuando no ha ingresado un parámetro requerido."
+    "description": "Mensaje mostrado al usuario cuando aún no ha ingresado un parámetro requerido."
   },
   "message.applicationSelection": {
     "message": "A continuación se presentan los paquetes que ha solicitado o comprado actualmente, puede elegir uno para continuar utilizando el servicio.",
-    "description": "Cuando se muestra un mensaje al usuario para que seleccione una solicitud."
+    "description": "Mensaje mostrado al usuario cuando necesita seleccionar una solicitud."
   },
   "message.createCredentialSuccessfully": {
     "message": "Credenciales creadas con éxito",
@@ -185,7 +185,7 @@
   },
   "message.welcome": {
     "message": "Bienvenido",
-    "description": "Cuando se muestra un mensaje al usuario al confirmar la solicitud de servicio."
+    "description": "Mensaje mostrado al usuario cuando confirma la solicitud de servicio."
   },
   "message.rotateCredential": {
     "message": "Restablecer clave",
@@ -209,75 +209,75 @@
   },
   "message.fetchFailed": {
     "message": "Error al obtener la aplicación, por favor intente de nuevo más tarde.",
-    "description": "Mensaje de error al fallar al obtener la lista de aplicaciones."
+    "description": "Mensaje mostrado cuando falla la obtención de la lista de aplicaciones."
   },
   "message.updateFailed": {
     "message": "Error al modificar",
-    "description": "Mensaje mostrado al usuario cuando falla la modificación."
+    "description": "Mensaje mostrado al usuario cuando la modificación falla."
   },
   "message.updateSuccessfully": {
     "message": "Modificación exitosa",
-    "description": "Mensaje mostrado al usuario cuando la modificación se realiza con éxito."
+    "description": "Mensaje mostrado al usuario cuando la modificación es exitosa."
   },
   "message.neverExpire": {
     "message": "Nunca expira",
-    "description": "Cuando se muestra un mensaje al usuario indicando que la solicitud nunca expira."
+    "description": "Mensaje mostrado al usuario cuando la solicitud nunca expira."
   },
   "title.buyService": {
-    "message": "Comprar Servicio",
-    "description": "El título de la página cuando el usuario desea comprar un servicio."
+    "message": "Comprar servicio",
+    "description": "Título de la página cuando el usuario desea comprar un servicio."
   },
   "title.globalBuy": {
-    "message": "Recarga de Puntos Generales de Ace Data Cloud",
-    "description": "El título de la página cuando el usuario desea comprar servicios generales."
+    "message": "Recarga de puntos generales de Ace Data Cloud",
+    "description": "Título de la página cuando el usuario desea comprar un servicio general."
   },
   "title.applicationRemainingCount": {
-    "message": "Modificar Conteo",
-    "description": "El título de la página cuando el usuario desea modificar el conteo de solicitudes."
+    "message": "Contador de modificaciones",
+    "description": "Título de la página cuando el usuario desea modificar el contador de solicitudes."
   },
   "title.manageApplication": {
-    "message": "Gestión de Solicitudes",
-    "description": "El título de la página cuando el usuario desea gestionar solicitudes."
+    "message": "Gestión de solicitudes",
+    "description": "Título de la página cuando el usuario desea gestionar solicitudes."
   },
   "title.applicationBalance": {
     "message": "Puntos exclusivos - {service}",
-    "description": "Mensaje mostrado al usuario al ver el saldo de la solicitud."
+    "description": "Mensaje mostrado al usuario cuando revisa el saldo de la solicitud."
   },
   "title.count": {
-    "message": "Total de Solicitudes",
-    "description": "El título de la página cuando el usuario ve el conteo de solicitudes."
+    "message": "Total de solicitudes",
+    "description": "Título de la página cuando el usuario revisa el contador de solicitudes."
   },
   "message.countDescription": {
     "message": "Cada servicio corresponde a una instancia de solicitud, puede ver la clave, el uso y otra información en la gestión a continuación.",
-    "description": "Mensaje mostrado al usuario cuando ve la cuenta de solicitudes."
+    "description": "Mensaje mostrado al usuario cuando revisa el contador de solicitudes."
   },
   "title.globalBalance": {
-    "message": "Saldo General",
-    "description": "El título de la página cuando el usuario ve el saldo general. Debe traducirse como 'Saldo General'."
+    "message": "Saldo general",
+    "description": "Título de la página cuando el usuario revisa el saldo general. Debe traducirse como 'Saldo general'."
   },
   "message.globalBalanceDescription": {
-    "message": "Al habilitar 'Permitir saldo general', el saldo de la instancia se complementará automáticamente con el saldo general si es insuficiente.",
-    "description": "Texto informativo que explica que el saldo general se consumirá automáticamente cuando el saldo de la instancia sea insuficiente. Término: saldo general = General Balance (no traducir como Global Balance)."
+    "message": "Al habilitar 'Permitir saldo general', el saldo de la instancia se consumirá automáticamente cuando sea insuficiente.",
+    "description": "Mensaje que indica que el saldo de la instancia se consumirá automáticamente cuando sea insuficiente. Término: saldo general = General Balance (no traducir como Global Balance)."
   },
   "button.service": {
-    "message": "Servicio al Cliente Exclusivo",
-    "description": "Texto del botón, al hacer clic en este botón se irá a la página de servicio al cliente exclusivo."
+    "message": "Servicio al cliente exclusivo",
+    "description": "Texto del botón, al hacer clic en este botón se dirigirá a la página de servicio al cliente exclusivo."
   },
   "button.acquire": {
-    "message": "Agregar Servicio al Cliente",
-    "description": "Texto del botón, al hacer clic en este botón se obtendrá este elemento."
+    "message": "Agregar servicio al cliente",
+    "description": "Texto del botón, al hacer clic en este botón se adquirirá este elemento."
   },
   "button.delete": {
     "message": "Eliminar",
     "description": "Texto del botón, al hacer clic en este botón se eliminará este elemento."
   },
   "field.dataset": {
-    "message": "Conjunto de Datos",
-    "description": "El conjunto de datos solicitado."
+    "message": "Conjunto de datos",
+    "description": "Conjunto de datos de la solicitud."
   },
   "field.disabled": {
     "message": "Deshabilitado",
-    "description": "Si la solicitud está deshabilitada."
+    "description": "Indica si la solicitud está deshabilitada."
   },
   "message.addServiceToAcquire": {
     "message": "Por favor, añada el servicio al cliente para obtener",
@@ -292,20 +292,20 @@
     "description": "Mensaje mostrado al usuario cuando confirma la eliminación de la solicitud."
   },
   "message.placeEnter": {
-    "message": "Por favor, ingrese '$0$' para confirmar",
-    "description": "Mensaje mostrado al usuario cuando necesita ingresar texto para confirmar, no traduzca `$0$`."
+    "message": "Por favor, introduzca '$0$' para confirmar",
+    "description": "Mensaje mostrado al usuario cuando necesita introducir texto para confirmar, no traduzca `'$0$'`."
   },
   "message.invalidInput": {
     "message": "Entrada no válida",
-    "description": "Mensaje mostrado al usuario cuando ingresa datos no válidos."
+    "description": "Mensaje mostrado al usuario cuando introduce datos no válidos."
   },
   "message.deleteFailed": {
-    "message": "Error al eliminar",
-    "description": "Mensaje mostrado al usuario cuando falla la eliminación."
+    "message": "Eliminación fallida",
+    "description": "Mensaje mostrado al usuario cuando la eliminación falla."
   },
   "message.deleteSuccessfully": {
     "message": "Eliminación exitosa",
-    "description": "Mensaje mostrado al usuario cuando la eliminación se realiza con éxito."
+    "description": "Mensaje mostrado al usuario cuando la eliminación es exitosa."
   },
   "title.application": {
     "message": "Solicitud",
@@ -313,6 +313,6 @@
   },
   "title.description": {
     "message": "Descripción",
-    "description": "El título de la página cuando el usuario ve el acuerdo de uso de servicios de tecnología de datos."
+    "description": "Título de la página cuando el usuario visualiza el acuerdo de uso de servicios técnicos de datos."
   }
 }

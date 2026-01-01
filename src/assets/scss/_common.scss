@@ -7,6 +7,10 @@ body {
   overflow: hidden;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html,
 html.dark,
 :root {
@@ -18,16 +22,34 @@ html.dark,
   --el-color-primary-light-9: #e9f1f3;
   --el-color-primary-dark-2: #1f5a6b;
   --el-border-radius-base: 10px;
+  --el-border-radius-small: 8px;
+  --el-border-radius-round: 9999px;
+
+  /* WalletConnect (Reown AppKit/Web3Modal) overlay stacking */
+  --w3m-z-index: 1000000;
+  --apkt-z-index: 1000000;
 }
 
-* {
-  box-sizing: border-box;
+w3m-modal {
+  z-index: 1000000 !important;
 }
 
 #app {
   width: 100%;
   height: 100%;
   overflow: auto;
+
+  .el-table__header {
+    width: 100% !important;
+  }
+
+  .el-table__body {
+    width: 100% !important;
+  }
+
+  .el-table .cell {
+    text-overflow: initial;
+  }
 }
 
 .el-popper {
@@ -41,6 +63,14 @@ html.dark,
 
 .el-main {
   padding: 0 !important;
+}
+
+.el-button {
+  border-radius: var(--el-border-radius-round);
+}
+
+.el-button + .el-button {
+  margin-left: 8px;
 }
 
 .el-dropdown {
@@ -106,11 +136,11 @@ html.dark,
 
 .el-breadcrumb__inner a,
 .el-breadcrumb__inner.is-link {
-  color: var(--el-text-color-primary);
+  color: var(--el-text-color-regular);
 }
 
 .el-radio-group {
-  --el-border-radius-base: 5px;
+  --el-border-radius-base: 15px;
 }
 
 .el-slider {
@@ -133,7 +163,7 @@ html.dark,
 
 .el-input {
   .el-input__wrapper {
-    border-radius: 10px;
+    border-radius: var(--el-border-radius-base);
     width: 100%;
     &.is-focus {
       box-shadow: 0 0 0 1px var(--el-input-border-color, var(--el-border-color)) inset;
@@ -146,14 +176,38 @@ html.dark,
 }
 
 .el-dialog {
-  border-radius: 20px;
+  --el-dialog-border-radius: 1rem;
   .el-dialog__body {
     color: var(--el-text-color-primary);
   }
 }
 
-.el-radio-group {
-  --el-border-radius-base: 10px;
+.el-message-box {
+  --el-messagebox-border-radius: 1rem;
+}
+
+.el-tabs--border-card {
+  border-radius: 1rem;
+  overflow: hidden;
+
+  > .el-tabs__header {
+    border-radius: 1rem 1rem 0 0;
+  }
+
+  > .el-tabs__content {
+    border-radius: 0 0 1rem 1rem;
+  }
+}
+
+.el-select {
+  .el-select__wrapper {
+    border-radius: var(--el-border-radius-base);
+    width: 100%;
+  }
+}
+
+.el-date-editor {
+  border-radius: var(--el-border-radius-base);
 }
 
 .v-codemirror {
@@ -161,12 +215,4 @@ html.dark,
     border-radius: 10px;
     overflow: hidden;
   }
-}
-
-.el-table__header {
-  width: 100% !important;
-}
-
-.el-table__body {
-  width: 100% !important;
 }

@@ -32,7 +32,7 @@
     "description": "El monto de puntos del pedido."
   },
   "field.price": {
-    "message": "Precio",
+    "message": "Monto",
     "description": "El monto de puntos del pedido."
   },
   "field.description": {
@@ -61,10 +61,10 @@
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Proxy es un servicio en línea, que se refiere a un proxy HTTP utilizado para la transmisión de datos."
+    "description": "Proxy es un servicio en línea que se refiere a un proxy HTTP utilizado para la transmisión de datos."
   },
   "message.paidSuccessfully": {
-    "message": "Pago realizado con éxito",
+    "message": "Pago exitoso",
     "description": "Mensaje de pago exitoso."
   },
   "message.orderExpired": {
@@ -72,11 +72,11 @@
     "description": "Mensaje para pedidos expirados."
   },
   "message.createFailed": {
-    "message": "Error al crear",
-    "description": "Mensaje de error al crear."
+    "message": "Creación fallida",
+    "description": "Mensaje de creación fallida."
   },
   "message.wechatPayHelp": {
-    "message": "Por favor abre WeChat en tu teléfono y escanea para completar el pago",
+    "message": "Por favor, abre WeChat en tu teléfono y escanea para completar el pago",
     "description": "Mensaje de ayuda para el pago con WeChat."
   },
   "message.free": {
@@ -84,64 +84,64 @@
     "description": "Mensaje para pedidos gratuitos."
   },
   "message.buyInExternalUrl": {
-    "message": "Por favor completa el pago en el enlace externo",
+    "message": "Por favor, completa el pago en el enlace externo",
     "description": "Mensaje para pagos a través de enlaces externos."
   },
   "message.updateFailed": {
-    "message": "Error al actualizar",
-    "description": "Mensaje de error al actualizar."
+    "message": "Actualización fallida",
+    "description": "Mensaje de actualización fallida."
   },
   "message.updateSuccessfully": {
     "message": "Actualización exitosa",
     "description": "Mensaje de actualización exitosa."
   },
   "message.confirmFinish": {
-    "message": "Esta acción establecerá manualmente el pedido en estado de pago y completará el procesamiento de distribución, no se puede deshacer. Por favor confirma que el cliente ha completado el pago, ¿deseas continuar?",
+    "message": "Esta acción establecerá manualmente el pedido en estado de pago y completará el procesamiento de distribución, no se puede deshacer. ¿Por favor confirma que el cliente ha completado el pago, deseas continuar?",
     "description": "Mensaje de confirmación de finalización."
   },
   "state.pending": {
     "message": "Pendiente de pago",
-    "description": "Estado del pedido, que indica que el pedido aún está esperando el pago del usuario."
+    "description": "El estado del pedido, indica que el pedido aún está esperando el pago del usuario."
   },
   "state.paid": {
     "message": "Pagado",
-    "description": "Estado del pedido, que indica que el pedido ha sido pagado."
+    "description": "El estado del pedido, indica que el pedido ha sido pagado."
   },
   "state.finished": {
     "message": "Completado",
-    "description": "Estado del pedido, que indica que el pedido ha sido completado."
+    "description": "El estado del pedido, indica que el pedido ha sido completado."
   },
   "state.expired": {
     "message": "Pago expirado",
-    "description": "Estado del pedido, que indica que el pedido ha expirado."
+    "description": "El estado del pedido, indica que el pedido ha expirado."
   },
   "state.failed": {
     "message": "Pago fallido",
-    "description": "Estado del pedido, que indica que el pago del pedido ha fallado."
+    "description": "El estado del pedido, indica que el pago del pedido ha fallado."
   },
   "title.info": {
     "message": "Información del pedido",
-    "description": "Título que se muestra en el sitio web, que indica la información del pedido."
+    "description": "Título mostrado en el sitio web, indica información del pedido."
   },
   "title.wechatPay": {
     "message": "Pago WeChat",
-    "description": "Título que se muestra en el sitio web, que indica el pago a través de WeChat."
+    "description": "Título mostrado en el sitio web, indica pago con WeChat."
   },
   "title.aliPay": {
-    "message": "Pago Alipay",
-    "description": "Título que se muestra en el sitio web, que indica el pago a través de Alipay, que es un método de pago en línea."
+    "message": "Alipay",
+    "description": "Título mostrado en el sitio web, indica pago con Alipay, Alipay es un método de pago en línea."
   },
   "title.stripe": {
     "message": "Stripe",
-    "description": "Título que se muestra en el sitio web, que indica el pago a través de Stripe, que es un método de pago en línea."
+    "description": "Título mostrado en el sitio web, indica pago con Stripe, Stripe es un método de pago en línea."
   },
   "title.manageOrder": {
-    "message": "Gestionar pedidos",
-    "description": "Título que se muestra en el sitio web, que indica la gestión de pedidos."
+    "message": "Gestionar pedido",
+    "description": "Título mostrado en el sitio web, indica gestión de pedidos."
   },
   "title.x402": {
     "message": "Criptomonedas",
-    "description": "Título que se muestra en el sitio web, que indica el pago a través de criptomonedas (basado en el esquema de pago X402)."
+    "description": "Título mostrado en el sitio web, indica pago con criptomonedas (basado en el esquema de pago X402)."
   },
   "message.discountTag": {
     "message": "{percent}% de descuento",
@@ -149,23 +149,23 @@
   },
   "message.discountHint": {
     "message": "Eres nuestro cliente VIP exclusivo, puedes disfrutar automáticamente de un {percent}% de descuento.",
-    "description": "Texto que informa al usuario que disfruta de un descuento automáticamente debido a su estatus de VIP."
+    "description": "Texto que informa al usuario sobre el descuento automático debido a su estatus de VIP."
   },
   "message.x402DiscountApplied": {
-    "message": "Al pagar con X402, disfruta de un {percent}% de descuento adicional.",
-    "description": "Texto que explica el descuento adicional que se obtiene al pagar con X402."
+    "message": "Con el pago X402, disfruta de un {percent}% de descuento adicional.",
+    "description": "Texto que explica el descuento adicional proporcionado por el pago X402."
   },
   "message.x402DiscountTag": {
     "message": "{percent}% de descuento",
-    "description": "Texto que destaca el porcentaje de descuento adicional que se puede disfrutar al elegir el pago X402."
+    "description": "Destaca el porcentaje de descuento adicional que se puede disfrutar al elegir el pago X402."
   },
   "message.x402DiscountHint": {
     "message": "Elige el pago X402 y disfruta de un {percent}% de descuento adicional de inmediato.",
-    "description": "Texto que informa al usuario que puede desbloquear un descuento adicional al pagar con X402."
+    "description": "Texto que explica al usuario que puede desbloquear un descuento adicional al pagar con X402."
   },
   "message.x402IntroShort": {
-    "message": "Selecciona la billetera para completar el pago de USDC directamente.",
-    "description": "Texto introductorio breve."
+    "message": "Completa el pago de USDC directamente con la billetera.",
+    "description": "Texto de introducción breve."
   },
   "message.x402TabWallet": {
     "message": "Pago con billetera",
@@ -176,32 +176,32 @@
     "description": "Título de la pestaña programática."
   },
   "message.x402WalletTitle": {
-    "message": "Conectar billetera y pagar USDC",
+    "message": "Conecta tu billetera y paga USDC",
     "description": "Título de pago rápido con billetera X402 (USDC)."
   },
   "message.x402WalletConnected": {
     "message": "Conectado",
-    "description": "Etiqueta mostrada cuando la billetera está conectada."
+    "description": "Etiqueta que se muestra cuando la billetera está conectada."
   },
   "message.x402ConnectWallet": {
     "message": "Conectar billetera",
     "description": "Texto del botón para conectar la billetera EVM."
   },
   "message.x402NoWalletDesc": {
-    "message": "Por favor usa un navegador que soporte billeteras (recomendado Chrome/Brave), o instala la extensión MetaMask/Phantom; también puedes abrir esta página en el navegador integrado de la aplicación de billetera móvil.",
+    "message": "Por favor, utiliza un navegador compatible con billeteras (se recomienda Chrome/Brave) o instala la extensión MetaMask/Phantom; también puedes abrir esta página en el navegador integrado de la aplicación de billetera móvil.",
     "description": "Descripción general sin billetera."
   },
   "message.x402SwitchNetwork": {
-    "message": "Por favor cambia la red de la billetera a {network}",
+    "message": "Por favor, cambia la red de la billetera a {network}",
     "description": "Texto que indica al usuario que cambie a la red de cadena especificada."
   },
   "message.x402SolanaNotEnabled": {
     "message": "El backend de Solana X402 aún no está habilitado.",
-    "description": "Mensaje cuando el pedido no tiene habilitado Solana X402."
+    "description": "Mensaje que se muestra cuando el pedido no tiene habilitado Solana X402."
   },
   "message.x402NeedConnectAccount": {
-    "message": "Por favor conecta primero la billetera.",
-    "description": "Mensaje mostrado cuando no hay billetera conectada."
+    "message": "Por favor, conecta primero tu billetera.",
+    "description": "Recordatorio que se muestra cuando no hay billetera conectada."
   },
   "message.x402ConfirmTitle": {
     "message": "Confirmar pago",
@@ -216,63 +216,63 @@
     "description": "Título de los pasos."
   },
   "message.x402Step1": {
-    "message": "Conectar billetera (si no está instalada, por favor instala la extensión y refresca esta página o abre esta página en la billetera móvil)",
-    "description": "Texto para el paso 1."
+    "message": "Conecta tu billetera (si no está instalada, instala la extensión y actualiza esta página o abre esta página en la billetera móvil)",
+    "description": "Texto del paso 1."
   },
   "message.x402Step2": {
-    "message": "Modificar la configuración de la billetera, confirmar que la red de la billetera sea {network}",
-    "description": "Texto para el paso 2."
+    "message": "Modifica la configuración de la billetera y confirma que la red de la billetera sea {network}",
+    "description": "Texto del paso 2."
   },
   "message.x402Step3": {
-    "message": "Haz clic en 'Pagar con billetera', completa la firma de autorización en la billetera",
-    "description": "Texto para el paso 3."
+    "message": "Haz clic en 'Usar pago con billetera' y completa la firma de autorización en la billetera",
+    "description": "Texto del paso 3."
   },
   "message.x402Step4": {
-    "message": "Después de una firma exitosa, liquidaremos automáticamente, y esta página se actualizará automáticamente a pagado",
-    "description": "Texto para el paso 4."
+    "message": "Una vez que la firma sea exitosa, liquidaremos automáticamente y esta página se actualizará automáticamente a pagado.",
+    "description": "Texto del paso 4."
   },
   "message.x402IntegrationResourceLabel": {
-    "message": "Dirección de la interfaz de pago",
-    "description": "Etiqueta para la dirección de la interfaz de pago."
+    "message": "Dirección de la API de pago",
+    "description": "Etiqueta de la dirección de la API de pago."
   },
   "message.x402IntegrationPayToLabel": {
     "message": "Dirección de liquidación",
-    "description": "Etiqueta que muestra la dirección de liquidación en blockchain."
+    "description": "Etiqueta que muestra la dirección de liquidación en la cadena de bloques."
   },
   "message.x402IntegrationNetworkLabel": {
     "message": "Red",
-    "description": "Etiqueta que muestra el nombre de la red blockchain."
+    "description": "Etiqueta que muestra el nombre de la red de la cadena de bloques."
   },
   "message.x402IntegrationAssetLabel": {
     "message": "Activo de liquidación",
     "description": "Etiqueta que muestra el activo de liquidación."
   },
   "message.x402IntegrationFallback": {
-    "message": "No se pudo obtener los datos de sesión completos, por favor consulta la documentación de desarrollo o contacta al soporte para obtener los parámetros necesarios.",
-    "description": "Mensaje mostrado cuando no se pueden obtener los datos de sesión."
+    "message": "No se pudo obtener los datos de sesión completos, consulta la documentación de desarrollo o contacta al soporte para obtener los parámetros necesarios.",
+    "description": "Mensaje que se muestra cuando no se pueden obtener los datos de sesión."
   },
   "message.x402IntegrationDocsCta": {
-    "message": "Abrir guía de desarrollo de X402",
-    "description": "Texto del botón de acción para abrir la guía del desarrollador."
+    "message": "Abrir la guía de desarrollo de X402",
+    "description": "Texto del botón de acción para abrir la guía para desarrolladores."
   },
   "message.x402InstallGuideTitle": {
-    "message": "Instalar extensión de billetera",
-    "description": "Título del cuadro de diálogo de instrucciones de instalación de billetera."
+    "message": "Instalar la extensión de billetera",
+    "description": "Título del cuadro de instrucciones de instalación de la billetera."
   },
   "message.x402InstallGuideDesc": {
-    "message": "Por favor sigue los siguientes pasos para completar la instalación de la extensión {wallet}, luego usa el botón de abajo para refrescar esta página y volver a detectar la billetera.",
-    "description": "Descripción que guía a los usuarios a completar la instalación de la extensión de billetera."
+    "message": "Por favor, sigue los pasos a continuación para completar la instalación de la extensión {wallet}, luego usa el botón de abajo para actualizar esta página y volver a detectar la billetera.",
+    "description": "Descripción que guía al usuario para completar la instalación de la extensión de la billetera."
   },
   "message.x402InstallGuideStep1": {
-    "message": "En la nueva página abierta, descarga e instala la extensión del navegador {wallet} (recomendado Chrome/Brave).",
+    "message": "En la nueva página abierta, descarga e instala la extensión del navegador {wallet} (se recomienda Chrome/Brave).",
     "description": "Paso 1 de la instalación de la billetera."
   },
   "message.x402InstallGuideStep2": {
-    "message": "Completa la instalación de la extensión, inicia sesión/desbloquea y confirma que está habilitada en el perfil del navegador actual.",
+    "message": "Completa la instalación de la extensión, inicia sesión/desbloquea y confirma que está habilitada en el perfil de navegador actual.",
     "description": "Paso 2 de la instalación de la billetera."
   },
   "message.x402InstallGuideStep3": {
-    "message": "Regresa a esta página, haz clic en 'Ya he instalado' y refresca antes de intentar 'Conectar billetera'.",
+    "message": "Regresa a esta página, haz clic en 'Ya he instalado' y actualiza antes de intentar 'Conectar billetera'.",
     "description": "Paso 3 de la instalación de la billetera."
   },
   "message.x402InstallGuideConfirm": {
@@ -281,91 +281,91 @@
   },
   "message.x402NetworkGuideTitle": {
     "message": "Ajustar configuración de red",
-    "description": "Título del cuadro de diálogo de explicación de incompatibilidad de red."
+    "description": "Título del cuadro de explicación de red no coincidente."
   },
   "message.x402NetworkGuideDesc": {
-    "message": "Por favor sigue los siguientes pasos para cambiar la red de la billetera a {network}, después refresca esta página para volver a detectar.",
-    "description": "Descripción que guía a los usuarios a ajustar la red de la billetera."
+    "message": "Por favor, sigue los pasos a continuación para cambiar la red de la billetera a {network}, y después actualiza esta página para volver a detectar.",
+    "description": "Descripción que guía al usuario para ajustar la red de la billetera."
   },
   "message.x402NetworkGuideStep1": {
     "message": "Abre la extensión de la billetera, ve a Configuración -> Redes Activas.",
     "description": "Paso 1 de la configuración de red."
   },
   "message.x402NetworkGuideStep2": {
-    "message": "En la lista de redes, confirma que {network} (o la otra red especificada) esté habilitada, si ya está habilitada puedes ignorar este paso.",
-    "description": "Segunda instrucción para ajustar la red, no es necesario desactivar Ethereum."
+    "message": "En la lista de redes, confirma que {network} (o la red especificada) esté activada; si ya está activada, puedes ignorar este paso.",
+    "description": "Instrucción para el segundo paso de ajuste de red, no es necesario cerrar Ethereum."
   },
   "message.x402NetworkGuideStep3": {
-    "message": "Regresa a esta página, haz clic en 'Ya he configurado' y refresca antes de intentar pagar.",
-    "description": "Paso 3 de la configuración de red."
+    "message": "Regresa a esta página, haz clic en 'He terminado la configuración' y vuelve a intentar el pago.",
+    "description": "Paso 3 de la configuración de la red."
   },
   "message.x402NetworkGuideConfirm": {
-    "message": "Ya he configurado",
-    "description": "Botón principal después de completar la configuración de red."
+    "message": "He terminado la configuración",
+    "description": "Botón principal después de completar la configuración de la red."
   },
   "message.x402NetworkSwitchFailed": {
-    "message": "La billetera actual no soporta el cambio automático de red, por favor cambia manualmente a la red especificada en la billetera y vuelve a intentarlo.",
-    "description": "Mensaje que indica al usuario que la billetera no soporta el cambio automático de red y que necesita cambiar manualmente."
+    "message": "La billetera actual no admite el cambio automático de red, por favor cambia manualmente a la red especificada en la billetera y vuelve a intentarlo.",
+    "description": "Mensaje que indica al usuario que la billetera no admite el cambio automático de red y que necesita cambiar manualmente."
   },
   "message.x402PaymentFailed": {
-    "message": "El pago con billetera X402 ha fallado, por favor intenta de nuevo más tarde. Si falla varias veces, contacta al soporte y proporciona la información del error.",
-    "description": "Mensaje de error general mostrado cuando el pago con billetera X402 falla."
+    "message": "El pago con la billetera X402 ha fallado, por favor intenta de nuevo más tarde. Si falla varias veces, contacta al soporte y proporciona la información del error.",
+    "description": "Mensaje de error genérico que aparece cuando el pago con la billetera X402 falla."
   },
   "message.x402WalletPayCta": {
     "message": "Pagar con billetera",
-    "description": "Texto del botón para completar el pago con la billetera vinculada."
+    "description": "Texto del botón para completar el pago utilizando la billetera vinculada."
   },
   "button.refund": {
     "message": "Reembolso",
-    "description": "Texto en el botón, utilizado para reembolsar el pedido manualmente."
+    "description": "Texto en el botón para reembolsar manualmente un pedido."
   },
   "field.applicationId": {
     "message": "ID de solicitud",
-    "description": "El ID de la solicitud a la que pertenece el pedido."
+    "description": "ID de la solicitud a la que pertenece el pedido."
   },
   "field.serviceId": {
-    "message": "ID del servicio",
-    "description": "El ID del servicio correspondiente al descuento."
+    "message": "ID de servicio",
+    "description": "ID del servicio correspondiente al descuento."
   },
   "field.generalDiscount": {
     "message": "Descuento general",
     "description": "Etiqueta que se muestra cuando el descuento es aplicable a todos los servicios."
   },
   "field.userId": {
-    "message": "ID del usuario",
-    "description": "El ID del usuario que disfruta del descuento."
+    "message": "ID de usuario",
+    "description": "ID del usuario que recibe el descuento."
   },
   "field.discount": {
     "message": "Descuento",
-    "description": "El porcentaje de descuento aplicado al pedido de este usuario."
+    "description": "Proporción de descuento aplicada al pedido de este usuario."
   },
   "field.actions": {
     "message": "Acciones",
-    "description": "El título de la columna de botones de acción."
+    "description": "Título de la columna de botones de acción."
   },
   "message.confirmRefund": {
-    "message": "Esta acción revocará los derechos de este pedido y lo marcará como reembolsado, no se puede deshacer. Por favor confirma que se ha procesado el reembolso, ¿deseas continuar?",
-    "description": "Mensaje de confirmación de reembolso."
+    "message": "Esta acción revocará los derechos de este pedido y se marcará como reembolsado, no se puede deshacer. ¿Estás seguro de que has procesado el reembolso, deseas continuar?",
+    "description": "Mensaje de confirmación para el reembolso."
   },
   "message.x402IntegrationIntro": {
     "message": "El pedido actual utiliza el protocolo de pago X402, por favor completa la integración en el servidor según los parámetros a continuación y inicia el pago.",
-    "description": "Mensaje introductorio que indica que se necesita usar el protocolo X402."
+    "description": "Mensaje que introduce la necesidad de usar el protocolo X402."
   },
   "message.x402IntegrationProtocol": {
-    "message": "Llama a la interfaz de pago del facilitador y completa la firma y difusión, después de la liquidación exitosa, regresa a esta página para confirmar el estado.",
-    "description": "Instrucciones sobre cómo completar el pago X402."
+    "message": "Llama a la interfaz de pago del facilitador y completa la firma y difusión, después de que la liquidación sea exitosa, regresa a esta página para confirmar el estado.",
+    "description": "Instrucciones sobre los pasos para completar el pago X402."
   },
   "message.x402IntegrationDocsHint": {
     "message": "¿Quieres saber más detalles? Por favor revisa la documentación de desarrollo a continuación.",
-    "description": "Texto que recuerda a los usuarios que pueden obtener más información a través de la documentación de desarrollo."
+    "description": "Mensaje que recuerda al usuario que puede obtener más información a través de la documentación de desarrollo."
   },
   "message.x402WalletTitleEvm": {
     "message": "Billetera EVM",
-    "description": "Título de la tarjeta de conexión de billetera EVM."
+    "description": "Título de la tarjeta de conexión de la billetera EVM."
   },
   "message.x402WalletTitleSolana": {
     "message": "Billetera Solana",
-    "description": "Título de la tarjeta de conexión de billetera Solana."
+    "description": "Título de la tarjeta de conexión de la billetera Solana."
   },
   "message.x402WalletStatusDetected": {
     "message": "Detectado",
@@ -373,27 +373,27 @@
   },
   "message.x402WalletStatusInstall": {
     "message": "Instalar",
-    "description": "Etiqueta de estado/entrada para instalar la billetera."
+    "description": "Etiqueta de estado/entrada de instalación de la billetera."
   },
   "message.x402WalletStatusQr": {
     "message": "Código QR",
-    "description": "Etiqueta de entrada para el código QR de WalletConnect."
+    "description": "Etiqueta de entrada del código QR de WalletConnect."
   },
   "message.x402WalletConnectTitle": {
     "message": "WalletConnect",
-    "description": "Título del cuadro de diálogo de código QR de WalletConnect."
+    "description": "Título de la ventana emergente del código QR de WalletConnect."
   },
   "message.x402WalletConnectPreparing": {
     "message": "Preparando WalletConnect…",
-    "description": "Mensaje mostrado al preparar la conexión de WalletConnect."
+    "description": "Mensaje durante la preparación de la conexión de WalletConnect."
   },
   "message.x402WalletConnectOpenWallet": {
     "message": "Abrir billetera",
-    "description": "Texto del botón para invocar la billetera a través de WalletConnect en el móvil."
+    "description": "Texto del botón para abrir la billetera a través de WalletConnect en el móvil."
   },
   "message.x402WalletConnectScanHint": {
-    "message": "Por favor usa una billetera que soporte WalletConnect para escanear el código QR.",
-    "description": "Texto de indicación debajo del código QR de WalletConnect."
+    "message": "Por favor, utiliza una billetera que soporte WalletConnect para escanear el código QR.",
+    "description": "Texto de aviso debajo del código QR de WalletConnect."
   },
   "message.x402SwitchNetworkCta": {
     "message": "Cambiar a {network}",
@@ -401,11 +401,11 @@
   },
   "message.x402NoWalletTitle": {
     "message": "No se detectó billetera EVM",
-    "description": "Título mostrado cuando el navegador no inyecta una billetera EVM."
+    "description": "Título cuando no se inyecta una billetera EVM en el navegador."
   },
   "message.x402NoWalletSafariDesc": {
     "message": "Safari generalmente no soporta extensiones como MetaMask, se recomienda usar Chrome/Brave, o abrir esta página en el navegador integrado de la aplicación de billetera móvil.",
-    "description": "Descripción sin billetera en el entorno de Safari."
+    "description": "Descripción de la falta de billetera en el entorno de Safari."
   },
   "message.x402InstallMetaMask": {
     "message": "Instalar MetaMask",
@@ -425,59 +425,59 @@
   },
   "message.x402MissingWCProjectId": {
     "message": "No se ha configurado el ID del proyecto WalletConnect (por favor establece la variable de entorno VITE_WALLETCONNECT_PROJECT_ID)",
-    "description": "Mensaje que indica que falta el ID del proyecto WalletConnect."
+    "description": "Mensaje que indica la falta del ID del proyecto WalletConnect."
   },
   "message.x402WalletBound": {
     "message": "Vinculado",
-    "description": "Logotipo mostrado cuando la billetera está vinculada."
+    "description": "Insignia que se muestra cuando la billetera está vinculada."
   },
   "message.userIdRequired": {
-    "message": "Por favor ingresa el ID de usuario.",
-    "description": "Mensaje mostrado cuando el ID de usuario está vacío."
+    "message": "Por favor, introduzca el ID de usuario.",
+    "description": "Mensaje de aviso que se muestra cuando el ID de usuario está vacío."
   },
   "message.serviceIdRequired": {
-    "message": "Por favor selecciona un servicio.",
-    "description": "Mensaje mostrado cuando el ID del servicio está vacío."
+    "message": "Por favor, seleccione un servicio.",
+    "description": "Mensaje de aviso que se muestra cuando el ID del servicio está vacío."
   },
   "message.discountRequired": {
-    "message": "Por favor ingresa un descuento entre 0 y 1.",
-    "description": "Mensaje mostrado cuando el descuento no está en un rango válido."
+    "message": "Por favor, introduzca un descuento entre 0 y 1.",
+    "description": "Mensaje de aviso que se muestra cuando el descuento no está en un rango válido."
   },
   "message.discountCreated": {
     "message": "Descuento guardado con éxito.",
-    "description": "Mensaje mostrado cuando se crea un nuevo descuento con éxito."
+    "description": "Mensaje de aviso que se muestra cuando se crea un nuevo descuento con éxito."
   },
   "message.discountUpdated": {
     "message": "Descuento actualizado con éxito.",
-    "description": "Mensaje mostrado cuando se edita un descuento con éxito."
+    "description": "Mensaje de aviso que se muestra cuando se edita un descuento con éxito."
   },
   "message.discountDeleted": {
     "message": "Descuento eliminado con éxito.",
-    "description": "Mensaje mostrado cuando se elimina un descuento con éxito."
+    "description": "Mensaje de aviso que se muestra cuando se elimina un descuento con éxito."
   },
   "state.refunded": {
     "message": "Reembolsado",
-    "description": "Estado del pedido, que indica que el pedido ha sido reembolsado."
+    "description": "Estado del pedido que indica que el pedido ha sido reembolsado."
   },
   "title.revenueAnalysis": {
     "message": "Análisis de ingresos",
     "description": "Título de la página de análisis de ingresos."
   },
   "title.todayRevenue": {
-    "message": "Ingresos de hoy",
-    "description": "Ingresos de hoy."
+    "message": "Monto de transacciones de hoy",
+    "description": "Monto de transacciones de hoy."
   },
   "title.last7dRevenue": {
-    "message": "Ingresos de la última semana",
-    "description": "Ingresos de la última semana."
+    "message": "Monto de transacciones de la última semana",
+    "description": "Monto de transacciones de la última semana."
   },
   "title.last30dRevenue": {
-    "message": "Ingresos del último mes",
-    "description": "Ingresos de los últimos 30 días."
+    "message": "Monto de transacciones del último mes",
+    "description": "Monto de transacciones de los últimos 30 días."
   },
   "title.last90dRevenue": {
-    "message": "Ingresos del último trimestre",
-    "description": "Ingresos de los últimos 90 días."
+    "message": "Monto de transacciones del último trimestre",
+    "description": "Monto de transacciones de los últimos 90 días."
   },
   "title.revenueTrend": {
     "message": "Tendencia de ingresos",
@@ -492,11 +492,11 @@
     "description": "Título del bloque que muestra los descuentos actuales del usuario."
   },
   "title.createDiscount": {
-    "message": "Agregar descuento",
+    "message": "Crear nuevo descuento",
     "description": "Título del bloque para crear un nuevo descuento."
   },
   "title.updateDiscount": {
     "message": "Actualizar descuento",
-    "description": "Título de la ventana emergente para editar descuentos."
+    "description": "Título del cuadro de diálogo para editar un descuento."
   }
 }
