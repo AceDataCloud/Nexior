@@ -2,20 +2,14 @@
   <div>
     <div class="flex flex-col min-w-0">
       <el-icon class="check"><check /></el-icon>
-      <div v-if="showId" class="flex justify-start items-start gap-2 mb-2 w-full min-w-0">
+      <div v-if="showId" class="app-id-row">
         <div class="icon !mb-0 flex-shrink-0">
           <font-awesome-icon icon="fa-solid fa-wallet" />
         </div>
-        <div class="min-w-0 flex-1">
-          <span class="text-[var(--el-text-color-regular)] text-[12px] leading-[20px]">
-            {{ $t('application.field.id') }}
-          </span>
-          <span class="flex items-center gap-1 min-w-0">
-            <span class="text-[var(--el-text-color-regular)] text-[12px] break-all min-w-0">
-              {{ application.id }}
-            </span>
-            <copy-to-clipboard v-if="application.id" :content="application.id" class="inline-block flex-shrink-0" />
-          </span>
+        <div class="app-id-line">
+          <span class="app-id-label">{{ $t('application.field.id') }}:</span>
+          <span class="app-id-value">{{ application.id }}</span>
+          <copy-to-clipboard v-if="application.id" :content="application.id" class="copy-small" />
         </div>
       </div>
       <div v-else class="icon">
@@ -42,9 +36,11 @@
     </div>
     <div class="actions">
       <el-button size="small" round @click.stop="$emit('usage', application)">
+        <font-awesome-icon icon="fa-solid fa-chart-line" class="mr-1 text-[11px]" />
         {{ $t('application.button.usage') }}
       </el-button>
       <el-button type="primary" round size="small" @click.stop="$emit('buy', application)">
+        <font-awesome-icon icon="fa-solid fa-coins" class="mr-1 text-[11px]" />
         {{ $t('application.button.buyMore') }}
       </el-button>
     </div>
@@ -94,14 +90,61 @@ export default defineComponent({
   background-color: var(--el-bg-color);
   border-radius: 15px;
   border: 1px solid var(--el-border-color-lighter);
+  display: flex;
+  gap: 16px;
   justify-content: space-between;
   align-items: center;
   position: relative;
+  box-sizing: border-box;
   &.active {
     .check {
       visibility: visible;
     }
   }
+}
+
+.app-id-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  width: 100%;
+  min-width: 0;
+}
+
+.app-id-line {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--el-text-color-regular);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.app-id-label {
+  white-space: nowrap;
+}
+
+.app-id-value {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  // text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.copy-small {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+}
+
+.copy-small :deep(.icon-copy),
+.copy-small :deep(.icon-check) {
+  margin-left: 0;
+  font-size: 11px;
 }
 
 .actions {
