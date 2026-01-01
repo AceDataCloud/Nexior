@@ -1,8 +1,24 @@
 <template>
   <div>
-    <div class="flex flex-col">
+    <div class="flex flex-col min-w-0">
       <el-icon class="check"><check /></el-icon>
-      <div class="icon">
+      <div v-if="showId" class="flex justify-start items-start gap-2 mb-2 w-full min-w-0">
+        <div class="icon !mb-0 flex-shrink-0">
+          <font-awesome-icon icon="fa-solid fa-wallet" />
+        </div>
+        <div class="min-w-0 flex-1">
+          <span class="text-[var(--el-text-color-regular)] text-[12px] leading-[20px]">
+            {{ $t('application.field.id') }}
+          </span>
+          <span class="flex items-center gap-1 min-w-0">
+            <span class="text-[var(--el-text-color-regular)] text-[12px] break-all min-w-0">
+              {{ application.id }}
+            </span>
+            <copy-to-clipboard v-if="application.id" :content="application.id" class="inline-block flex-shrink-0" />
+          </span>
+        </div>
+      </div>
+      <div v-else class="icon">
         <font-awesome-icon icon="fa-solid fa-wallet" />
       </div>
       <div class="text-left">
@@ -11,7 +27,7 @@
           <span v-else>{{ $t('application.title.applicationBalance', { service: application.service?.title }) }}</span>
         </p>
         <p class="value">
-          {{ application?.remaining_amount?.toFixed(6) }}
+          {{ application?.remaining_amount?.toFixed(2) }}
           {{ $t(`service.unit.` + (application?.service?.unit || 'credit') + 's') }}
         </p>
         <p class="description2">
@@ -24,17 +40,13 @@
         </p>
       </div>
     </div>
-    <div class="flex flex-col justify-center align-middle gap-2">
-      <div class="flex">
-        <el-button size="small" round @click.stop="$emit('usage', application)">
-          {{ $t('application.button.usage') }}
-        </el-button>
-      </div>
-      <div class="flex">
-        <el-button type="primary" round size="small" @click.stop="$emit('buy', application)">
-          {{ $t('application.button.buyMore') }}
-        </el-button>
-      </div>
+    <div class="actions">
+      <el-button size="small" round @click.stop="$emit('usage', application)">
+        {{ $t('application.button.usage') }}
+      </el-button>
+      <el-button type="primary" round size="small" @click.stop="$emit('buy', application)">
+        {{ $t('application.button.buyMore') }}
+      </el-button>
     </div>
   </div>
 </template>
@@ -45,6 +57,7 @@ import { defineComponent } from 'vue';
 import { ElButton, ElIcon } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Check } from '@element-plus/icons-vue';
+import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 
 export default defineComponent({
   name: 'ApplicationInfo',
@@ -52,7 +65,8 @@ export default defineComponent({
     FontAwesomeIcon,
     ElButton,
     Check,
-    ElIcon
+    ElIcon,
+    CopyToClipboard
   },
   props: {
     application: {
@@ -76,11 +90,10 @@ export default defineComponent({
 .item {
   cursor: pointer;
   padding: 20px;
-  width: 400px;
+  width: 100%;
   background-color: var(--el-bg-color);
   border-radius: 15px;
   border: 1px solid var(--el-border-color-lighter);
-  display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
@@ -89,6 +102,17 @@ export default defineComponent({
       visibility: visible;
     }
   }
+}
+
+.actions {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
 }
 
 .check {

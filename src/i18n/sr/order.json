@@ -32,7 +32,7 @@
     "description": "Iznos bodova za narudžbinu."
   },
   "field.price": {
-    "message": "Cena",
+    "message": "Iznos",
     "description": "Iznos bodova za narudžbinu."
   },
   "field.description": {
@@ -44,8 +44,8 @@
     "description": "Status narudžbine."
   },
   "field.createdAt": {
-    "message": "Datum kreiranja",
-    "description": "Datum kreiranja narudžbine."
+    "message": "Vreme kreiranja",
+    "description": "Vreme kada je narudžbina kreirana."
   },
   "field.service": {
     "message": "Naziv usluge",
@@ -53,7 +53,7 @@
   },
   "field.payWay": {
     "message": "Način plaćanja",
-    "description": "Način plaćanja narudžbine."
+    "description": "Način plaćanja za narudžbinu."
   },
   "field.api": {
     "message": "API",
@@ -64,44 +64,44 @@
     "description": "Proxy je vrsta online usluge, koja se koristi za prenos podataka putem HTTP proxy-a."
   },
   "message.paidSuccessfully": {
-    "message": "Плаћање успешно",
-    "description": "Порука о успешном плаћању."
+    "message": "Plaćanje uspešno",
+    "description": "Poruka o uspešnom plaćanju."
   },
   "message.orderExpired": {
-    "message": "Наредба је истекла, молимо вас да креирате нову наредбу за плаћање.",
-    "description": "Порука о истеклој наредби."
+    "message": "Narudžbina je istekao, molimo kreirajte novu narudžbinu za plaćanje.",
+    "description": "Poruka o isteku narudžbine."
   },
   "message.createFailed": {
-    "message": "Креирање није успело",
-    "description": "Порука о неуспелом креирању."
+    "message": "Kreiranje nije uspelo",
+    "description": "Poruka o neuspešnom kreiranju."
   },
   "message.wechatPayHelp": {
-    "message": "Молимо отворите ВеChat на телефону и скенирајте за завршетак плаћања",
-    "description": "Порука о помоћи за ВеChat плаћање."
+    "message": "Molimo otvorite WeChat na telefonu i skenirajte za završetak plaćanja",
+    "description": "Poruka o pomoći za WeChat plaćanje."
   },
   "message.free": {
-    "message": "Бесплатно",
-    "description": "Порука о бесплатним наредбама."
+    "message": "Besplatno",
+    "description": "Poruka o besplatnoj narudžbini."
   },
   "message.buyInExternalUrl": {
-    "message": "Молимо завршите плаћање на спољном линку",
-    "description": "Порука о плаћању преко спољног линка."
+    "message": "Molimo završite plaćanje putem spoljnog linka",
+    "description": "Poruka o plaćanju putem spoljnog linka."
   },
   "message.updateFailed": {
-    "message": "Ажурирање није успело",
-    "description": "Порука о неуспелом ажурирању."
+    "message": "Ažuriranje nije uspelo",
+    "description": "Poruka o neuspešnom ažuriranju."
   },
   "message.updateSuccessfully": {
-    "message": "Ажурирање успешно",
-    "description": "Порука о успешном ажурирању."
+    "message": "Ažuriranje uspešno",
+    "description": "Poruka o uspešnom ažuriranju."
   },
   "message.confirmFinish": {
-    "message": "Ова операција ће ручно поставити наредбу у статус плаћања и завршити обраду дистрибуције, не може се опозвати. Молимо потврдите да је купац завршио плаћање, да ли желите да наставите?",
-    "description": "Порука о потврди завршетка."
+    "message": "Ova radnja će ručno postaviti narudžbinu u status plaćanja i završiti obradu, što se ne može opozvati. Molimo potvrdite da je kupac završio plaćanje, da li želite da nastavite?",
+    "description": "Poruka za potvrdu završetka."
   },
   "state.pending": {
-    "message": "Na čekanju",
-    "description": "Status narudžbine, koji označava da narudžbina još uvek čeka na uplatu korisnika."
+    "message": "Na čekanju za plaćanje",
+    "description": "Status narudžbine, koji označava da narudžbina čeka na plaćanje od korisnika."
   },
   "state.paid": {
     "message": "Plaćeno",
@@ -112,212 +112,212 @@
     "description": "Status narudžbine, koji označava da je narudžbina završena."
   },
   "state.expired": {
-    "message": "Isteklo",
-    "description": "Status narudžbine, koji označava da je narudžbina istekla."
+    "message": "Plaćanje istekao",
+    "description": "Status narudžbine, koji označava da je narudžbina istekao."
   },
   "state.failed": {
-    "message": "Neuspešna uplata",
-    "description": "Status narudžbine, koji označava da je uplata za narudžbinu neuspešna."
+    "message": "Plaćanje nije uspelo",
+    "description": "Status narudžbine, koji označava da je plaćanje narudžbine neuspešno."
   },
   "title.info": {
     "message": "Informacije o narudžbini",
-    "description": "Naslov koji se prikazuje kao naslov sajta, označava informacije o narudžbini."
+    "description": "Naslov koji se prikazuje kao naslov stranice, označava informacije o narudžbini."
   },
   "title.wechatPay": {
     "message": "WeChat Plaćanje",
-    "description": "Naslov koji se prikazuje kao naslov sajta, označava WeChat plaćanje."
+    "description": "Naslov koji se prikazuje kao naslov stranice, označava WeChat plaćanje."
   },
   "title.aliPay": {
     "message": "Alipay",
-    "description": "Naslov koji se prikazuje kao naslov sajta, označava Alipay plaćanje, Alipay plaćanje je online plaćanje."
+    "description": "Naslov koji se prikazuje kao naslov stranice, označava Alipay plaćanje, Alipay plaćanje je vrsta online plaćanja."
   },
   "title.stripe": {
     "message": "Stripe",
-    "description": "Naslov koji se prikazuje kao naslov sajta, označava Stripe plaćanje, Stripe plaćanje je online plaćanje."
+    "description": "Naslov koji se prikazuje kao naslov stranice, označava Stripe plaćanje, Stripe plaćanje je vrsta online plaćanja."
   },
   "title.manageOrder": {
     "message": "Upravljanje narudžbinama",
-    "description": "Naslov koji se prikazuje kao naslov sajta, označava upravljanje narudžbinama."
+    "description": "Naslov koji se prikazuje kao naslov stranice, označava upravljanje narudžbinama."
   },
   "title.x402": {
     "message": "Kriptovaluta",
-    "description": "Naslov koji se prikazuje kao naslov sajta, označava plaćanje kriptovalutom (na osnovu X402 plaćanja)."
+    "description": "Naslov koji se prikazuje kao naslov stranice, označava plaćanje kriptovalutom (na osnovu X402 plana plaćanja)."
   },
   "message.discountTag": {
-    "message": "{percent}% попуст",
-    "description": "Текст за приказ процента примењеног попуста."
+    "message": "{percent}% popust",
+    "description": "Prikazuje oznaku sa procentom popusta koji je primenjen."
   },
   "message.discountHint": {
-    "message": "Ви сте наш ексклузивни VIP купац, можете аутоматски уживати у попусту од {percent}%.",
-    "description": "Порука која подсећа корисника да аутоматски ужива у попусту због VIP статуса."
+    "message": "Vi ste naš ekskluzivni VIP kupac i automatski uživate u {percent}% popustu.",
+    "description": "Objašnjenje korisnicima da automatski uživaju u popustu zbog VIP statusa."
   },
   "message.x402DiscountApplied": {
-    "message": "Кроз X402 плаћање, додатно уживајте у попусту од {percent}%.",
-    "description": "Објашњење о додатном попусту који доноси X402 плаћање."
+    "message": "Kroz X402 plaćanje, dodatno uživajte u {percent}% popustu.",
+    "description": "Objašnjenje dodatnog popusta koji dolazi sa X402 plaćanjem."
   },
   "message.x402DiscountTag": {
-    "message": "{percent}% попуст",
-    "description": "Истакните проценат попуста који се може добити избором X402 плаћања."
+    "message": "{percent}% popust",
+    "description": "Ističe procenat popusta koji se može dodatno dobiti izborom X402 plaćanja."
   },
   "message.x402DiscountHint": {
-    "message": "Изаберите X402 плаћање и одмах уживајте у попусту од {percent}%.",
-    "description": "Порука која објашњава кориснику да може откључати додатни попуст плаћањем преко X402."
+    "message": "Izaberite X402 plaćanje i odmah uživajte u dodatnom popustu od {percent}%.",
+    "description": "Uputstvo korisniku o tome kako da otključa dodatni popust putem X402 plaćanja."
   },
   "message.x402IntroShort": {
-    "message": "Изаберите новчаник за директно завршетак USDC плаћања.",
-    "description": "Кратка уводна порука."
+    "message": "Izvršite USDC plaćanje direktno putem novčanika.",
+    "description": "Kratak uvodni tekst."
   },
   "message.x402TabWallet": {
-    "message": "Плаћање новчаником",
-    "description": "Наслов таба за плаћање новчаником."
+    "message": "Plaćanje novčanikom",
+    "description": "Naslov taba za plaćanje novčanikom."
   },
   "message.x402TabApi": {
-    "message": "Програмски",
-    "description": "Наслов таба за програмски приступ."
+    "message": "Programski",
+    "description": "Naslov taba za programski pristup."
   },
   "message.x402WalletTitle": {
-    "message": "Повежите новчаник и платите USDC",
-    "description": "Наслов за брзо плаћање новчаником X402 (USDC)."
+    "message": "Povežite novčanik i platite USDC",
+    "description": "Naslov za brzu uplatu putem X402 novčanika (USDC)."
   },
   "message.x402WalletConnected": {
-    "message": "Повезано",
-    "description": "Ознака која се приказује када је новчаник повезан."
+    "message": "Povezano",
+    "description": "Oznaka koja se prikazuje kada je novčanik povezan."
   },
   "message.x402ConnectWallet": {
-    "message": "Повежите новчаник",
-    "description": "Текст дугмета за повезивање EVM новчаника."
+    "message": "Poveži novčanik",
+    "description": "Tekst dugmeta za povezivanje EVM novčanika."
   },
   "message.x402NoWalletDesc": {
-    "message": "Молимо користите прегледач који подржава новчанике (препоручено Chrome/Brave), или инсталирајте MetaMask/Phantom екстензију; такође можете отворити ову страницу у уграђеном прегледачу мобилног новчаника.",
-    "description": "Општи опис без новчаника."
+    "message": "Molimo koristite pretraživač koji podržava novčanike (preporučujemo Chrome/Brave), ili instalirajte MetaMask/Phantom ekstenziju; takođe možete otvoriti ovu stranicu u ugrađenom pretraživaču mobilnog novčanika.",
+    "description": "Opšti opis kada nema novčanika."
   },
   "message.x402SwitchNetwork": {
-    "message": "Молимо прелазите на мрежу {network} у новчанику",
-    "description": "Подсећање кориснику да прелази на одређену мрежу."
+    "message": "Molimo prebacite mrežu novčanika na {network}",
+    "description": "Uputstvo korisniku da pređe na određenu mrežu."
   },
   "message.x402SolanaNotEnabled": {
-    "message": "Solana X402 још није омогућен на серверу.",
-    "description": "Порука када Solana X402 није омогућен за ову поруџбину."
+    "message": "Solana X402 backend još nije omogućen.",
+    "description": "Poruka kada Solana X402 nije omogućena za ovu narudžbinu."
   },
   "message.x402NeedConnectAccount": {
-    "message": "Прво повежите новчаник.",
-    "description": "Подсећање које се приказује када новчаник није повезан."
+    "message": "Molimo prvo povežite novčanik.",
+    "description": "Podsetnik koji se prikazuje kada novčanik nije povezan."
   },
   "message.x402ConfirmTitle": {
-    "message": "Потврда плаћања",
-    "description": "Наслов за потврду X402 плаћања."
+    "message": "Potvrdite plaćanje",
+    "description": "Naslov prozora za potvrdu X402 plaćanja."
   },
   "message.x402ConfirmDesc": {
-    "message": "Потврдити USDC плаћање на мрежи {network}?",
-    "description": "Опис за потврду X402 плаћања."
+    "message": "Da li ste sigurni da želite da platite USDC na {network}?",
+    "description": "Opis prozora za potvrdu X402 plaćanja."
   },
   "message.x402StepsTitle": {
-    "message": "Кораци плаћања",
-    "description": "Наслов корака."
+    "message": "Koraci plaćanja",
+    "description": "Naslov koraka."
   },
   "message.x402Step1": {
-    "message": "Повежите новчаник (ако није инсталиран, прво инсталирајте екстензију и освежите ову страницу или отворите ову страницу у мобилном новчанику)",
-    "description": "Текст за корак 1."
+    "message": "Povežite novčanik (ako nije instalirano, prvo instalirajte ekstenziju, a zatim osvežite ovu stranicu ili otvorite ovu stranicu putem mobilnog novčanika)",
+    "description": "Tekst za korak 1."
   },
   "message.x402Step2": {
-    "message": "Измените подешавања новчаника, потврдите да је мрежа новчаника {network}",
-    "description": "Текст за корак 2."
+    "message": "Izmenite postavke novčanika, potvrdite da je mreža novčanika {network}",
+    "description": "Tekst za korak 2."
   },
   "message.x402Step3": {
-    "message": "Кликните на 'Платите новчаником', завршите ауторизацију потписивања у новчанику",
-    "description": "Текст за корак 3."
+    "message": "Kliknite na 'Plaćanje novčanikom', završite autorizaciju u novčaniku",
+    "description": "Tekst za korak 3."
   },
   "message.x402Step4": {
-    "message": "Након успешног потписивања, аутоматски ћемо обрачунати, а након завршетка ова страница ће се аутоматски обновити на статус плаћања",
-    "description": "Текст за корак 4."
+    "message": "Nakon uspešnog potpisivanja, automatski ćemo izvršiti uplatu, a ova stranica će se automatski osvežiti na status 'plaćeno'",
+    "description": "Tekst za korak 4."
   },
   "message.x402IntegrationResourceLabel": {
-    "message": "Адреса платног интерфејса",
-    "description": "Ознака за адресу платног интерфејса."
+    "message": "Adresa plaćanja",
+    "description": "Oznaka za adresu plaćanja."
   },
   "message.x402IntegrationPayToLabel": {
-    "message": "Адреса за обрачун",
-    "description": "Ознака за приказ адресе за обрачун на блокчейну."
+    "message": "Adresa za obračun",
+    "description": "Oznaka koja prikazuje adresu za obračun na blokčejnu."
   },
   "message.x402IntegrationNetworkLabel": {
-    "message": "Мрежа",
-    "description": "Ознака за приказ имена блокчейн мреже."
+    "message": "Mreža",
+    "description": "Oznaka koja prikazuje naziv mreže na blokčejnu."
   },
   "message.x402IntegrationAssetLabel": {
-    "message": "Обрачунска имовина",
-    "description": "Ознака за приказ обрачунске имовине."
+    "message": "Imovina za obračun",
+    "description": "Oznaka koja prikazuje imovinu za obračun."
   },
   "message.x402IntegrationFallback": {
-    "message": "Није добијен комплетан податак о сесији, молимо погледајте развојну документацију или контактирајте подршку за добијање потребних параметара.",
-    "description": "Порука која се приказује када није могуће добити податке о сесији."
+    "message": "Nije moguće dobiti potpune podatke o sesiji, molimo pogledajte dokumentaciju za programere ili kontaktirajte podršku za potrebne parametre.",
+    "description": "Poruka koja se prikazuje kada nije moguće dobiti podatke o sesiji."
   },
   "message.x402IntegrationDocsCta": {
-    "message": "Отворите X402 упутство за развој",
-    "description": "Текст акционог дугмета за отварање упутства за програмере."
+    "message": "Otvorite X402 uputstvo za programere",
+    "description": "Tekst dugmeta za otvaranje uputstva za programere."
   },
   "message.x402InstallGuideTitle": {
-    "message": "Инсталирајте новчаничку екстензију",
-    "description": "Наслов за упутство о инсталацији новчаника."
+    "message": "Instalirajte ekstenziju novčanika",
+    "description": "Naslov prozora za uputstvo o instalaciji novčanika."
   },
   "message.x402InstallGuideDesc": {
-    "message": "Молимо следите следеће кораке да завршите инсталацију {wallet} екстензије, а затим користите дугме испод да освежите ову страницу и поново детектујете новчаник.",
-    "description": "Упутство за кориснике о завршетку инсталације новчаничке екстензије."
+    "message": "Molimo pratite sledeće korake da završite instalaciju {wallet} ekstenzije, a zatim koristite dugme ispod da osvežite ovu stranicu kako biste ponovo proverili novčanik.",
+    "description": "Uputstvo korisniku za završetak instalacije ekstenzije novčanika."
   },
   "message.x402InstallGuideStep1": {
-    "message": "На новоотвореној страници преузмите и инсталирајте {wallet} прегледачку екстензију (препоручено Chrome/Brave).",
-    "description": "Корак 1 за инсталацију новчаника."
+    "message": "Na novom otvorenom prozoru preuzmite i instalirajte {wallet} ekstenziju za pretraživač (preporučujemo Chrome/Brave).",
+    "description": "Korak 1 za instalaciju novčanika."
   },
   "message.x402InstallGuideStep2": {
-    "message": "Завршите инсталацију екстензије, пријавите се/откључајте и потврдите да је укључена у тренутном профилу прегледача.",
-    "description": "Корак 2 за инсталацију новчаника."
+    "message": "Završite instalaciju ekstenzije, prijavite se/otključajte i potvrdite da je omogućena u trenutnom profilu pretraživača.",
+    "description": "Korak 2 za instalaciju novčanika."
   },
   "message.x402InstallGuideStep3": {
-    "message": "Вратите се на ову страницу, кликните на 'Већ сам инсталирао' и освежите пре него што покушате 'повезати новчаник'.",
-    "description": "Корак 3 за инсталацију новчаника."
+    "message": "Vratite se na ovu stranicu, kliknite na 'Već sam instalirao' i osvežite pre nego što pokušate da 'povežete novčanik'.",
+    "description": "Korak 3 za instalaciju novčanika."
   },
   "message.x402InstallGuideConfirm": {
-    "message": "Већ сам инсталирао",
-    "description": "Главно дугме након завршене инсталације новчаника."
+    "message": "Već sam instalirao",
+    "description": "Glavni dugme nakon završetka instalacije novčanika."
   },
   "message.x402NetworkGuideTitle": {
-    "message": "Прилагодите подешавања мреже",
-    "description": "Наслов за обавештење о неслагању мреже."
+    "message": "Podesite mrežne postavke",
+    "description": "Naslov prozora za objašnjenje o neslaganju mreže."
   },
   "message.x402NetworkGuideDesc": {
-    "message": "Молимо следите следеће кораке да преласте мрежу новчаника на {network}, а затим освежите ову страницу да поново детектујете.",
-    "description": "Упутство за кориснике о прилагођавању мреже новчаника."
+    "message": "Molimo pratite sledeće korake da prebacite mrežu novčanika na {network}, a zatim osvežite ovu stranicu da ponovo proverite.",
+    "description": "Uputstvo korisniku za podešavanje mreže novčanika."
   },
   "message.x402NetworkGuideStep1": {
-    "message": "Отворите новчаничку екстензију, идите на Подешавања -> Активне мреже.",
-    "description": "Корак 1 за подешавање мреже."
+    "message": "Otvorite ekstenziju novčanika, idite na Podešavanja -> Aktivne mreže.",
+    "description": "Korak 1 za podešavanje mreže."
   },
   "message.x402NetworkGuideStep2": {
-    "message": "У списку мрежа, потврдите да је {network} (или друга назначена мрежа) укључена, ако је укључена можете игнорисати овај корак.",
-    "description": "Објашњење другог корака за прилагођавање мреже, није потребно искључити Ethereum."
+    "message": "Na listi mreža, potvrdite da je {network} (ili druga određena mreža) uključena, ako je uključena, možete ignorisati ovaj korak.",
+    "description": "Objašnjenje drugog koraka podešavanja mreže, nije potrebno isključiti Ethereum."
   },
   "message.x402NetworkGuideStep3": {
-    "message": "Вратите се на ову страницу, кликните на 'Већ сам подесио' и освежите пре него што покушате да платите.",
-    "description": "Корак 3 за подешавање мреже."
+    "message": "Vratite se na ovu stranicu, kliknite na 'Završio sam podešavanje' i pokušajte ponovo da platite.",
+    "description": "Korak 3 u podešavanju mreže."
   },
   "message.x402NetworkGuideConfirm": {
-    "message": "Већ сам подесио",
-    "description": "Главно дугме након завршеног подешавања мреже."
+    "message": "Završio sam podešavanje",
+    "description": "Glavni dugme nakon završetka podešavanja mreže."
   },
   "message.x402NetworkSwitchFailed": {
-    "message": "Тренутни новчаник не подржава аутоматско прелазак мреже, молимо ручно прелазите на назначену мрежу пре него што покушате поново.",
-    "description": "Порука која подсећа корисника да новчаник не подржава аутоматско прелазак мреже и да је потребно ручно прелазити."
+    "message": "Trenutni novčanik ne podržava automatsko prebacivanje mreže, molimo ručno prebacite na određenu mrežu u novčaniku i pokušajte ponovo.",
+    "description": "Obaveštenje korisniku da novčanik ne podržava automatsko prebacivanje mreže, potrebno je ručno prebacivanje."
   },
   "message.x402PaymentFailed": {
-    "message": "X402 плаћање новчаником није успело, молимо покушајте поново касније. Ако неколико пута не успе, молимо контактирајте подршку и доставите информације о грешци.",
-    "description": "Општа порука о грешци када X402 плаћање новчаником не успе."
+    "message": "X402 novčanik plaćanje nije uspelo, molimo pokušajte ponovo kasnije. Ako se problem ponavlja, kontaktirajte podršku i dostavite informacije o grešci.",
+    "description": "Opšti obaveštenje o grešci koje se pojavljuje kada plaćanje putem X402 novčanika nije uspelo."
   },
   "message.x402WalletPayCta": {
-    "message": "Платите новчаником",
-    "description": "Текст дугмета за завршетак плаћања помоћу повезаног новчаника."
+    "message": "Plaćanje putem novčanika",
+    "description": "Tekst dugmeta za završavanje plaćanja putem povezanog novčanika."
   },
   "button.refund": {
-    "message": "Povraćaj",
-    "description": "Tekst u dugmetu, koji se koristi za ručni povraćaj narudžbine."
+    "message": "Povrat novca",
+    "description": "Tekst u dugmetu za ručni povrat narudžbine."
   },
   "field.applicationId": {
     "message": "ID zahteva",
@@ -325,7 +325,7 @@
   },
   "field.serviceId": {
     "message": "ID usluge",
-    "description": "ID usluge na koju se popust odnosi."
+    "description": "ID usluge koja odgovara popustu."
   },
   "field.generalDiscount": {
     "message": "Opšti popust",
@@ -341,83 +341,119 @@
   },
   "field.actions": {
     "message": "Akcije",
-    "description": "Naslov kolone dugmadi za akcije."
+    "description": "Naslov kolone sa akcijskim dugmadi."
   },
   "message.confirmRefund": {
-    "message": "Ова операција ће опозвати права на ову наредбу и означити је као враћену, не може се опозвати. Молимо потврдите да је повраћај обрађен, да ли желите да наставите?",
-    "description": "Порука о потврди повраћаја."
+    "message": "Ova akcija će opozvati prava na ovu narudžbinu i označiti je kao vraćenu, što se ne može opozvati. Molimo potvrdite da ste obradili povrat, da li želite da nastavite?",
+    "description": "Poruka za potvrdu povrata novca."
   },
   "message.x402IntegrationIntro": {
-    "message": "Тренутна наредба користи X402 платни протокол, молимо вас да завршите интеграцију на серверу према параметрима испод и иницирате плаћање.",
-    "description": "Уводна порука о потреби коришћења X402 протокола."
+    "message": "Trenutna narudžbina koristi X402 platni protokol, molimo završite integraciju na serverskoj strani prema parametrima ispod i pokrenite plaćanje.",
+    "description": "Uvodna poruka koja objašnjava potrebu za korišćenjem X402 protokola."
   },
   "message.x402IntegrationProtocol": {
-    "message": "Позовите facilitator платни интерфејс и завршите потписивање, након успешног обрачуна вратите се на ову страницу да потврдите статус.",
-    "description": "Објашњење корака за завршетак X402 плаћања."
+    "message": "Pozovite facilitator platni interfejs i završite potpisivanje i emitovanje, nakon uspešnog obračuna vratite se na ovu stranicu da potvrdite status.",
+    "description": "Objašnjenje koraka za završavanje X402 plaćanja."
   },
   "message.x402IntegrationDocsHint": {
-    "message": "Желите да сазнате више детаља? Молимо погледајте развојну документацију испод.",
-    "description": "Подсећање кориснику да може добити више информација преко развојне документације."
+    "message": "Želite da saznate više detalja? Molimo pogledajte donju dokumentaciju za programere.",
+    "description": "Obaveštenje korisniku da može dobiti više informacija putem dokumentacije za programere."
+  },
+  "message.x402WalletTitleEvm": {
+    "message": "EVM novčanik",
+    "description": "Naslov kartice za povezivanje EVM novčanika."
+  },
+  "message.x402WalletTitleSolana": {
+    "message": "Solana novčanik",
+    "description": "Naslov kartice za povezivanje Solana novčanika."
+  },
+  "message.x402WalletStatusDetected": {
+    "message": "Otkriveno",
+    "description": "Oznaka statusa novčanika koji je otkriven/instaliran."
+  },
+  "message.x402WalletStatusInstall": {
+    "message": "Instaliraj",
+    "description": "Oznaka statusa/ulaza za instalaciju novčanika."
+  },
+  "message.x402WalletStatusQr": {
+    "message": "QR kod",
+    "description": "Oznaka za ulaz u QR kod za WalletConnect."
+  },
+  "message.x402WalletConnectTitle": {
+    "message": "WalletConnect",
+    "description": "Naslov prozora za QR kod WalletConnect."
+  },
+  "message.x402WalletConnectPreparing": {
+    "message": "Priprema WalletConnect…",
+    "description": "Obaveštenje prilikom pripreme veze sa WalletConnect."
+  },
+  "message.x402WalletConnectOpenWallet": {
+    "message": "Otvorite novčanik",
+    "description": "Tekst dugmeta za otvaranje novčanika putem WalletConnect na mobilnom uređaju."
+  },
+  "message.x402WalletConnectScanHint": {
+    "message": "Molimo koristite novčanik koji podržava WalletConnect za skeniranje QR koda.",
+    "description": "Obaveštenje ispod QR koda za WalletConnect."
   },
   "message.x402SwitchNetworkCta": {
-    "message": "Пређите на {network}",
-    "description": "Кликните на CTA за прелазак мреже."
+    "message": "Prebaci na {network}",
+    "description": "CTA za prebacivanje mreže."
   },
   "message.x402NoWalletTitle": {
-    "message": "EVM новчаник није детектован",
-    "description": "Наслов када прегледач није инјектирао EVM новчаник."
+    "message": "EVM novčanik nije otkriven",
+    "description": "Naslov kada preglednik nije umetnuo EVM novčanik."
   },
   "message.x402NoWalletSafariDesc": {
-    "message": "Safari обично не подржава MetaMask и сличне екстензије, препоручује се коришћење Chrome/Brave, или отварање ове странице у уграђеном прегледачу мобилног новчаника.",
-    "description": "Опис без новчаника у Safari окружењу."
+    "message": "Safari obično ne podržava ekstenzije kao što je MetaMask, preporučujemo korišćenje Chrome/Brave, ili otvaranje ove stranice u ugrađenom pretraživaču mobilnog novčanika.",
+    "description": "Objašnjenje o nedostatku novčanika u Safari okruženju."
   },
   "message.x402InstallMetaMask": {
-    "message": "Инсталирајте MetaMask",
-    "description": "Текст дугмета за инсталирање MetaMask."
+    "message": "Instalirajte MetaMask",
+    "description": "Tekst dugmeta za instalaciju MetaMask-a."
   },
   "message.x402InstallPhantom": {
-    "message": "Инсталирајте Phantom",
-    "description": "Текст дугмета за инсталирање Phantom."
+    "message": "Instalirajte Phantom",
+    "description": "Tekst dugmeta za instalaciju Phantom-a."
   },
   "message.x402ConnectWC": {
-    "message": "Повежите се са WalletConnect",
-    "description": "Текст дугмета за повезивање са WalletConnect."
+    "message": "Povežite se putem WalletConnect",
+    "description": "Tekst dugmeta za povezivanje putem WalletConnect."
   },
   "message.x402RefreshDetect": {
-    "message": "Поново детектујте",
-    "description": "Текст дугмета за поновно детектовање новчаника."
+    "message": "Ponovo otkrijte",
+    "description": "Tekst dugmeta za ponovo otkrivanje novčanika."
   },
   "message.x402MissingWCProjectId": {
-    "message": "Није конфигурисан WalletConnect Project ID (молимо подесите променљиву окружења VITE_WALLETCONNECT_PROJECT_ID)",
-    "description": "Порука о недостајућем WalletConnect пројектном ID-у."
+    "message": "Nije konfigurisan WalletConnect Project ID (molimo postavite promenljivu okruženja VITE_WALLETCONNECT_PROJECT_ID)",
+    "description": "Obaveštenje o nedostatku WalletConnect projektnog ID-a."
   },
   "message.x402WalletBound": {
-    "message": "Повезано",
-    "description": "Знак који се приказује када је новчаник повезан."
+    "message": "Povezan",
+    "description": "Oznaka koja se prikazuje kada je novčanik povezan."
   },
   "message.userIdRequired": {
-    "message": "Молимо унесите кориснички ID.",
-    "description": "Порука која се приказује када је кориснички ID празан."
+    "message": "Unesite ID korisnika.",
+    "description": "Poruka koja se prikazuje kada je ID korisnika prazan."
   },
   "message.serviceIdRequired": {
-    "message": "Молимо изаберите услугу.",
-    "description": "Порука која се приказује када је ID услуге празан."
+    "message": "Izaberite uslugu.",
+    "description": "Poruka koja se prikazuje kada je ID usluge prazan."
   },
   "message.discountRequired": {
-    "message": "Молимо унесите попуст између 0 и 1.",
-    "description": "Порука која се приказује када попуст није у легалном опсегу."
+    "message": "Unesite popust između 0 i 1.",
+    "description": "Poruka koja se prikazuje kada popust nije u legalnom opsegu."
   },
   "message.discountCreated": {
-    "message": "Попуст је успешно сачуван.",
-    "description": "Порука о успешном додавању попуста."
+    "message": "Popust je uspešno sačuvan.",
+    "description": "Poruka koja se prikazuje kada je novi popust uspešno dodat."
   },
   "message.discountUpdated": {
-    "message": "Попуст је успешно ажуриран.",
-    "description": "Порука о успешном уређивању попуста."
+    "message": "Popust je uspešno ažuriran.",
+    "description": "Poruka koja se prikazuje kada je popust uspešno izmenjen."
   },
   "message.discountDeleted": {
-    "message": "Попуст је успешно обрисан.",
-    "description": "Порука о успешном брисању попуста."
+    "message": "Popust je uspešno obrisan.",
+    "description": "Poruka koja se prikazuje kada je popust uspešno uklonjen."
   },
   "state.refunded": {
     "message": "Vraćeno",
@@ -453,14 +489,14 @@
   },
   "title.discountLookup": {
     "message": "Trenutni popust",
-    "description": "Naslov bloka koji prikazuje trenutni popust korisnika."
+    "description": "Naslov sekcije koja prikazuje trenutni popust korisnika."
   },
   "title.createDiscount": {
-    "message": "Dodaj novi popust",
-    "description": "Naslov bloka za kreiranje novog popusta."
+    "message": "Dodavanje novog popusta",
+    "description": "Naslov sekcije za kreiranje novog popusta."
   },
   "title.updateDiscount": {
-    "message": "Ažuriraj popust",
+    "message": "Ažuriranje popusta",
     "description": "Naslov prozora za uređivanje popusta."
   }
 }
