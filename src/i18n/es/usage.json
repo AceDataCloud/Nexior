@@ -1,15 +1,15 @@
 {
   "field.createdAt": {
-    "message": "Fecha de creación",
-    "description": "Uso del tiempo de creación del registro."
+    "message": "Fecha de uso",
+    "description": "Hora en que se registró el uso."
   },
   "field.statusCode": {
     "message": "Código de estado",
     "description": "Código de estado del registro de uso."
   },
   "field.application": {
-    "message": "Aplicación",
-    "description": "Programa de solicitud del servicio."
+    "message": "Solicitud",
+    "description": "Uso de recursos de la solicitud."
   },
   "field.status": {
     "message": "Estado",
@@ -17,7 +17,7 @@
   },
   "field.api": {
     "message": "API",
-    "description": "API del servicio."
+    "description": "Llamada a la API, no necesita traducción."
   },
   "field.usedAmount": {
     "message": "Cantidad utilizada",
@@ -36,8 +36,8 @@
     "description": "Metadatos del registro de uso."
   },
   "title.totalUsed": {
-    "message": "Uso total",
-    "description": "Título de la tarjeta de resumen de uso."
+    "message": "Total utilizado (puntos)",
+    "description": "Cantidad total de puntos consumidos"
   },
   "title.usageTrend": {
     "message": "Tendencia de uso",
@@ -45,34 +45,38 @@
   },
   "shortcuts.today": {
     "message": "Hoy",
-    "description": "Selección rápida del rango de tiempo de hoy."
+    "description": "Fecha de hoy"
   },
   "shortcuts.last1Day": {
-    "message": "Último día",
-    "description": "Selección rápida del rango de tiempo del último día."
+    "message": "Último 1 día",
+    "description": "Rango de fechas del último 1 día"
   },
   "shortcuts.last3Days": {
     "message": "Últimos 3 días",
-    "description": "Selección rápida del rango de tiempo de los últimos 3 días."
+    "description": "Rango de fechas de los últimos 3 días"
   },
   "shortcuts.last7Days": {
     "message": "Últimos 7 días",
-    "description": "Selección rápida del rango de tiempo de los últimos 7 días."
+    "description": "Rango de fechas de los últimos 7 días"
   },
   "shortcuts.last1Month": {
-    "message": "Último mes",
-    "description": "Selección rápida del rango de tiempo del último mes."
+    "message": "Último 1 mes",
+    "description": "Rango de fechas del último 1 mes"
   },
   "placeholder.startDate": {
     "message": "Fecha de inicio",
-    "description": "Marcador de posición para la fecha de inicio en el selector de rango de tiempo."
+    "description": "Fecha de inicio"
   },
   "placeholder.endDate": {
     "message": "Fecha de finalización",
-    "description": "Marcador de posición para la fecha de finalización en el selector de rango de tiempo."
+    "description": "Fecha de finalización"
   },
   "placeholder.to": {
     "message": "a",
-    "description": "Texto separador en el selector de rango de tiempo."
+    "description": "Fecha de finalización seleccionada del selector de fechas, separador en el medio."
+  },
+  "shortcuts.yesterday": {
+    "message": "Ayer",
+    "description": "Fecha de ayer"
   }
 }

@@ -13,15 +13,15 @@
   },
   "button.goDocument": {
     "message": "Dokument",
-    "description": "Knapptext, klicka på denna knapp för att gå till dokumentationssidan."
+    "description": "Knapptext, klicka på denna knapp för att gå till dokument sidan."
   },
   "button.goCredentials": {
-    "message": "Referenser",
-    "description": "Knapptext, klicka på denna knapp för att gå till referenssidan."
+    "message": "Nycklar",
+    "description": "Knapptext, klicka på denna knapp för att gå till sidan för autentiseringsuppgifter. Engelska måste översättas till 'Keys', kinesiska till '密钥'."
   },
   "button.buyMore": {
-    "message": "Köp mer",
-    "description": "Knapptext, klicka på denna knapp för att gå till sidan för att köpa mer."
+    "message": "Ladda på",
+    "description": "Knapptext, klicka på denna knapp för att gå till sidan för att köpa mer. Engelska måste översättas till 'Top Up', kinesiska till '充值'."
   },
   "button.createOrder": {
     "message": "Skapa beställning",
@@ -36,8 +36,8 @@
     "description": "Knapptext, klicka på denna knapp för att gå till frågesidan."
   },
   "button.usage": {
-    "message": "Användningshistorik",
-    "description": "Knapptext, klicka på denna knapp för att gå till sidan för användningshistorik."
+    "message": "Användning",
+    "description": "Knapptext, klicka på denna knapp för att gå till sidan för användningshistorik. Engelska måste översättas till 'Usage', kinesiska till '用量'."
   },
   "field.serviceName": {
     "message": "Tjänstens namn",
@@ -53,78 +53,78 @@
   },
   "field.id": {
     "message": "Ansöknings-ID",
-    "description": "Ansökans ID."
+    "description": "ID för ansökan. Engelska måste översättas till 'App ID', kinesiska till '申请ID'."
   },
   "field.remainingAmount": {
-    "message": "Återstående belopp",
-    "description": "Det återstående beloppet för ansökan."
+    "message": "Instansbalans",
+    "description": "Den ansökta balansen. Engelska måste översättas till 'Balance', kinesiska till '实例余额'."
   },
   "field.usedAmount": {
-    "message": "Använt belopp",
-    "description": "Det använda beloppet för ansökan."
+    "message": "Använt",
+    "description": "Den ansökta använda summan. Engelska måste översättas till 'Used', kinesiska till '已用'."
   },
   "field.apiKey": {
     "message": "API-nyckel",
-    "description": "API-nyckel."
+    "description": "API-nyckel"
   },
   "field.service": {
     "message": "Tjänst",
-    "description": "Den tjänst som ansökan avser."
+    "description": "Den ansökta tjänsten."
   },
   "field.operation": {
     "message": "Operation",
-    "description": "Den operation som ansökan avser."
+    "description": "Den ansökta operationen."
   },
   "field.allowConsumeGlobal": {
-    "message": "Använd global balans",
-    "description": "Om det är tillåtet att använda global balans när den dedikerade balansen är otillräcklig."
+    "message": "Tillåt användning av allmän balans",
+    "description": "En växel för att tillåta konsumtion av allmän balans (General Balance). Engelska måste översättas till 'Allow Use General Balance', kinesiska till '允许用通用余额'."
   },
   "field.amount": {
     "message": "Belopp",
-    "description": "Det belopp som ansökan avser."
+    "description": "Det ansökta beloppet."
   },
   "field.scope": {
-    "message": "Omfattning",
-    "description": "Den omfattning som ansökan avser."
+    "message": "Omfång",
+    "description": "Det ansökta omfånget, kan vara globalt eller specifik tjänst."
   },
   "field.traceId": {
     "message": "Spårnings-ID",
-    "description": "Ett spårnings-ID för ett API-anrop i ansökan, håll som 'Spårnings-ID'."
+    "description": "Spårnings-ID för API-anropet för den ansökta API-tjänsten."
   },
   "field.shouldPayPrice": {
     "message": "Slutpris",
-    "description": "Det slutliga priset för ansökan."
+    "description": "Det ansökta slutpriset."
   },
   "field.api": {
     "message": "API",
-    "description": "Detta är en online-tjänst som tillhandahåller tjänster till användare via API."
+    "description": "Detta är en online-tjänst där formuläret tillhandahåller tjänster till användaren via API."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Detta är en online-tjänst som tillhandahåller tjänster till användare via HTTP-proxy (för dataöverföring)."
+    "description": "Detta är en online-tjänst där formuläret tillhandahåller tjänster till användaren via HTTP-proxy (för dataöverföring)."
   },
   "field.credential": {
-    "message": "Referens",
-    "description": "Referensen för ansökan."
+    "message": "Autentiseringsuppgifter",
+    "description": "De ansökta autentiseringsuppgifterna."
   },
   "field.name": {
     "message": "Namn",
-    "description": "Namnet på ansökan."
+    "description": "Det ansökta namnet."
   },
   "field.package": {
     "message": "Paket",
-    "description": "Paketet representerar olika prispaket, till exempel 100 dollar ger 10000 poäng, 200 dollar ger 20000 poäng."
+    "description": "Paketet representerar olika prispaket, till exempel 100 dollar kan ge 10 000 poäng, 200 dollar kan ge 20 000 poäng."
   },
   "field.type": {
     "message": "Typ",
-    "description": "Typen av ansökan."
+    "description": "Den ansökta typen."
   },
   "field.freeAmount": {
     "message": "Gratis belopp",
-    "description": "Det gratis beloppet för ansökan."
+    "description": "Det ansökta gratisbeloppet."
   },
   "field.extraPrice": {
-    "message": "Extra pris",
+    "message": "Pris",
     "description": "Det extra pris som användaren ska betala för ansökan."
   },
   "message.alreadyApplied": {
@@ -136,24 +136,24 @@
     "description": "Meddelande som visas för användaren när de framgångsrikt har ansökt om denna tjänst."
   },
   "message.notApplied": {
-    "message": "Välkommen att använda våra tjänster, vi ger dig gratis testbelopp, klicka på knappen nedan för att börja omedelbart.",
+    "message": "Du har inte ansökt om denna tjänst, vänligen ansök om tjänsten innan du använder den",
     "description": "Meddelande som visas för användaren när de ännu inte har ansökt om denna tjänst."
   },
   "message.globalBalanceBuyDescription": {
-    "message": "Denna uppladdning ger poäng som är global balans och kan användas för valfri tjänst.",
-    "description": "Meddelande som visas för användaren när de laddar upp global balans."
+    "message": "Du kan välja att ladda på allmän balans eller ladda på varje ansökningsinstans separat. Denna uppladdning kommer att gå till allmän balans, och när en ansökningsinstans har otillräcklig balans kommer allmän balans att användas automatiskt för att fylla på.",
+    "description": "Meddelande som förklarar att uppladdning går till allmän balans och automatiskt fyller på när instansens balans är otillräcklig. Term: allmän balans = General Balance (notera att det inte ska översättas till Global Balance)."
   },
   "message.yourApplication": {
     "message": "Din ansökan",
-    "description": "Meddelande som visas för användaren när de har en ansökan."
+    "description": "Meddelande som visas för användaren när det gäller deras ansökan."
   },
   "message.unverified": {
-    "message": "Du måste slutföra din verkliga identitetsverifiering innan du kan ansöka om denna tjänst",
-    "description": "Meddelande som visas för användaren när de ännu inte har slutfört sin verkliga identitetsverifiering."
+    "message": "Du behöver slutföra identitetsverifiering innan du kan ansöka om denna tjänst",
+    "description": "Meddelande som visas för användaren när de ännu inte har slutfört identitetsverifiering."
   },
   "message.goVerify": {
-    "message": "Gå till verklig identitetsverifiering",
-    "description": "Meddelande som visas för användaren när de ännu inte har slutfört sin verkliga identitetsverifiering."
+    "message": "Gå till identitetsverifiering",
+    "description": "Meddelande som visas för användaren när de ännu inte har slutfört identitetsverifiering."
   },
   "message.requiredParameter": {
     "message": "Obligatorisk parameter",
@@ -168,20 +168,20 @@
     "description": "När användaren behöver välja en ansökan visas detta meddelande."
   },
   "message.createCredentialSuccessfully": {
-    "message": "Credential skapades framgångsrikt",
-    "description": "När användaren framgångsrikt har skapat en credential visas detta meddelande."
+    "message": "Credential skapad framgångsrikt",
+    "description": "Meddelande som visas för användaren när de framgångsrikt har skapat en credential."
   },
   "message.readPolicy": {
     "message": "Jag har läst och godkänt",
-    "description": "När användaren har läst och godkänt policyn visas detta meddelande."
+    "description": "Meddelande som visas för användaren när de har läst och godkänt policyn."
   },
   "message.policy": {
-    "message": "Användarvillkor för datatekniktjänster",
-    "description": "När användaren har läst och godkänt policyn visas detta meddelande."
+    "message": "Avtal om användning av datatekniktjänster",
+    "description": "Meddelande som visas för användaren när de har läst och godkänt policyn."
   },
   "message.notAgreePolicy": {
-    "message": "Du har inte godkänt användarvillkoren för datatekniktjänster",
-    "description": "När användaren inte har godkänt policyn visas detta meddelande."
+    "message": "Du har inte godkänt avtalet om användning av datatekniktjänster",
+    "description": "Meddelande som visas för användaren när de ännu inte har godkänt policyn."
   },
   "message.welcome": {
     "message": "Välkommen",
@@ -189,74 +189,130 @@
   },
   "message.rotateCredential": {
     "message": "Återställ nyckel",
-    "description": "När användaren återställer nyckeln visas detta meddelande."
+    "description": "Meddelande som visas för användaren när de återställer nyckeln."
   },
   "message.rotateCredentialConfirm": {
-    "message": "Är du säker på att du vill återställa nyckeln? Återställningen kan inte återställas.",
-    "description": "När användaren bekräftar återställningen av nyckeln visas detta meddelande."
+    "message": "Är du säker på att du vill återställa nyckeln? Den kan inte återställas efteråt",
+    "description": "Meddelande som visas för användaren när de bekräftar återställning av nyckeln."
   },
   "message.idDoesNotExist": {
     "message": "Ansökan finns inte",
-    "description": "När ansökan inte finns visas detta meddelande."
+    "description": "Meddelande som visas för användaren när ansökan inte finns."
   },
   "message.rotateCredentialSuccessfully": {
-    "message": "Nyckeln återställdes framgångsrikt",
-    "description": "När nyckeln har återställts framgångsrikt visas detta meddelande."
+    "message": "Nyckel återställd framgångsrikt",
+    "description": "Meddelande som visas för användaren när nyckeln har återställts framgångsrikt."
   },
   "message.rotateCredentialFailed": {
-    "message": "Återställning av nyckel misslyckades, vänligen kontakta support.",
-    "description": "När återställningen av nyckeln misslyckas visas detta meddelande."
+    "message": "Återställning av nyckel misslyckades, vänligen kontakta support",
+    "description": "Meddelande som visas för användaren när återställning av nyckel misslyckas."
   },
   "message.fetchFailed": {
     "message": "Misslyckades med att hämta applikationen, vänligen försök igen senare.",
     "description": "Meddelande vid misslyckande att hämta applikationslistan."
   },
   "message.updateFailed": {
-    "message": "Ändring misslyckades",
-    "description": "När ändringen misslyckas visas detta meddelande."
+    "message": "Uppdatering misslyckades",
+    "description": "Meddelande som visas för användaren när uppdatering misslyckas."
   },
   "message.updateSuccessfully": {
-    "message": "Ändring lyckades",
-    "description": "När ändringen lyckas visas detta meddelande."
+    "message": "Uppdatering lyckades",
+    "description": "Meddelande som visas för användaren när uppdatering lyckas."
   },
   "message.neverExpire": {
     "message": "Aldrig utgången",
     "description": "När ansökan aldrig går ut visas detta meddelande."
   },
   "title.buyService": {
-    "message": "Köp tjänst",
-    "description": "Sidans titel när användaren vill köpa en tjänst."
+    "message": "Köp Tjänst",
+    "description": "Titeln på sidan när användaren vill köpa en tjänst."
   },
   "title.globalBuy": {
-    "message": "Allmän saldo påfyllning",
-    "description": "Sidans titel när användaren vill fylla på allmänt saldo."
+    "message": "Ace Data Cloud Allmänna Poäng Laddning",
+    "description": "Titeln på sidan när användaren vill köpa allmänna tjänster."
   },
   "title.applicationRemainingCount": {
-    "message": "Ändra antal",
-    "description": "Sidans titel när användaren vill ändra antalet ansökningar."
+    "message": "Ändra Räkning",
+    "description": "Titeln på sidan när användaren vill ändra ansökningsräkningen."
   },
   "title.manageApplication": {
     "message": "Ansökningshantering",
-    "description": "Sidans titel när användaren vill hantera ansökningar."
+    "description": "Titeln på sidan när användaren vill hantera ansökningar."
   },
   "title.applicationBalance": {
     "message": "Exklusiv poäng - {service}",
     "description": "Meddelande som visas när användaren ser ansökningsbalansen."
   },
   "title.count": {
-    "message": "Antal applikationer",
-    "description": "Titel på sammanfattningskortet för antalet applikationer."
+    "message": "Totalt antal ansökningar",
+    "description": "Titeln på sidan när användaren ser ansökningsräkningen."
   },
   "message.countDescription": {
-    "message": "Hantera dina exklusiva applikationer och allmänna saldo här.",
-    "description": "Hjälptext under kortet för antalet applikationer."
+    "message": "Varje tjänst motsvarar en ansökningsinstans, du kan se nycklar, användning och annan information i hanteringen nedan.",
+    "description": "Meddelande som visas för användaren när de ser ansökningsantalet."
   },
   "title.globalBalance": {
-    "message": "Allmänt saldo",
-    "description": "Meddelande som visas när användaren ser det allmänna saldot."
+    "message": "Allmänt Saldo",
+    "description": "Titeln på sidan när användaren ser det allmänna saldot. Engelska måste översättas till 'General Balance', kinesiska till '通用余额'."
   },
   "message.globalBalanceDescription": {
-    "message": "Det allmänna saldot kan användas av kvalificerade applikationer.",
-    "description": "Beskrivningstext för kortet med allmänt saldo."
+    "message": "När 'Tillåt allmän balans' är aktiverat kommer instansens balans att använda allmän balans automatiskt om den är otillräcklig.",
+    "description": "Meddelande som förklarar att allmän balans kommer att användas automatiskt när instansens balans är otillräcklig. Term: allmän balans = General Balance (notera att det inte ska översättas till Global Balance)."
+  },
+  "button.service": {
+    "message": "Exklusiv kundtjänst",
+    "description": "Knapptext, klicka på denna knapp för att gå till sidan för exklusiv kundtjänst."
+  },
+  "button.acquire": {
+    "message": "Lägg till kundtjänst",
+    "description": "Knapptext, klicka på denna knapp för att få denna post."
+  },
+  "button.delete": {
+    "message": "Ta bort",
+    "description": "Knapptext, klicka på denna knapp för att ta bort denna post."
+  },
+  "field.dataset": {
+    "message": "Datasats",
+    "description": "Den ansökta datasatsen."
+  },
+  "field.disabled": {
+    "message": "Inaktiverad",
+    "description": "Om ansökan är inaktiverad."
+  },
+  "message.addServiceToAcquire": {
+    "message": "Vänligen lägg till kundtjänst för att få",
+    "description": "Meddelande som visas för användaren när de ännu inte har lagt till kundtjänst för att få."
+  },
+  "message.confirmApplying": {
+    "message": "Bekräfta tjänsteansökan",
+    "description": "Meddelande som visas för användaren när de bekräftar tjänsteansökan."
+  },
+  "message.confirmDelete": {
+    "message": "Är du säker på att du vill ta bort denna ansökan? Alla ansökningsdata kommer att gå förlorade efter borttagning",
+    "description": "Meddelande som visas för användaren när de bekräftar borttagning av ansökan."
+  },
+  "message.placeEnter": {
+    "message": "Vänligen ange '$0$' för att bekräfta",
+    "description": "Meddelande som visas för användaren när de behöver ange text för att bekräfta, vänligen översätt inte `$0$`."
+  },
+  "message.invalidInput": {
+    "message": "Ogiltig inmatning",
+    "description": "Meddelande som visas för användaren när de anger ogiltiga data."
+  },
+  "message.deleteFailed": {
+    "message": "Borttagning misslyckades",
+    "description": "Meddelande som visas för användaren när borttagning misslyckas."
+  },
+  "message.deleteSuccessfully": {
+    "message": "Borttagning lyckades",
+    "description": "Meddelande som visas för användaren när borttagning lyckas."
+  },
+  "title.application": {
+    "message": "Ansökan",
+    "description": "Titeln på sidan när användaren ser ansökan."
+  },
+  "title.description": {
+    "message": "Beskrivning",
+    "description": "Titeln på sidan när användaren ser användarvillkoren för datatekniktjänster."
   }
 }

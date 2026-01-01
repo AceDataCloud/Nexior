@@ -16,12 +16,12 @@
     "description": "버튼 텍스트, 이 버튼을 클릭하면 문서 페이지로 이동합니다."
   },
   "button.goCredentials": {
-    "message": "자격 증명",
-    "description": "버튼 텍스트, 이 버튼을 클릭하면 자격 증명 페이지로 이동합니다."
+    "message": "키",
+    "description": "버튼 텍스트, 이 버튼을 클릭하면 자격 증명 페이지로 이동합니다. 영어는 'Keys'로 번역해야 하며, 중국어는 '密钥'입니다."
   },
   "button.buyMore": {
-    "message": "더 구매하기",
-    "description": "버튼 텍스트, 이 버튼을 클릭하면 더 구매하기 페이지로 이동합니다."
+    "message": "충전",
+    "description": "버튼 텍스트, 이 버튼을 클릭하면 더 구매하는 페이지로 이동합니다. 영어는 'Top Up'으로 번역해야 하며, 중국어는 '充值'입니다."
   },
   "button.createOrder": {
     "message": "주문 생성",
@@ -36,8 +36,8 @@
     "description": "버튼 텍스트, 이 버튼을 클릭하면 조회 페이지로 이동합니다."
   },
   "button.usage": {
-    "message": "사용 기록",
-    "description": "버튼 텍스트, 이 버튼을 클릭하면 사용 기록 페이지로 이동합니다."
+    "message": "사용량",
+    "description": "버튼 텍스트, 이 버튼을 클릭하면 사용 내역 페이지로 이동합니다. 영어는 'Usage'로 번역해야 하며, 중국어는 '用量'입니다."
   },
   "field.serviceName": {
     "message": "서비스 이름",
@@ -53,115 +53,115 @@
   },
   "field.id": {
     "message": "신청 ID",
-    "description": "신청의 ID."
+    "description": "신청한 ID입니다. 영어는 'App ID'로 번역해야 하며, 중국어는 '申请ID'입니다."
   },
   "field.remainingAmount": {
-    "message": "남은 할당량",
-    "description": "신청의 남은 할당량."
+    "message": "인스턴스 잔액",
+    "description": "신청한 잔액입니다. 영어는 'Balance'로 번역해야 하며, 중국어는 '实例余额'입니다."
   },
   "field.usedAmount": {
-    "message": "사용된 할당량",
-    "description": "신청의 사용된 할당량."
+    "message": "사용됨",
+    "description": "신청한 사용된 금액입니다. 영어는 'Used'로 번역해야 하며, 중국어는 '已用'입니다."
   },
   "field.apiKey": {
     "message": "API 키",
-    "description": "API 키."
+    "description": "API 키입니다."
   },
   "field.service": {
     "message": "서비스",
-    "description": "신청의 서비스."
+    "description": "신청한 서비스입니다."
   },
   "field.operation": {
     "message": "작업",
-    "description": "신청의 작업."
+    "description": "신청한 작업입니다."
   },
   "field.allowConsumeGlobal": {
-    "message": "공용 잔액 사용",
-    "description": "전용 잔액이 부족할 때 공용 잔액을 사용할 수 있는지 여부."
+    "message": "일반 잔액 사용 허용",
+    "description": "일반 잔액(General Balance)을 소모할 수 있는 스위치입니다. 영어는 'Allow Use General Balance'로 번역해야 하며, 중국어는 '允许用通用余额'입니다."
   },
   "field.amount": {
-    "message": "수량",
-    "description": "신청의 수량."
+    "message": "금액",
+    "description": "신청한 금액입니다."
   },
   "field.scope": {
     "message": "범위",
-    "description": "신청의 범위."
+    "description": "신청한 범위, 전역 또는 특정 서비스일 수 있습니다."
   },
   "field.traceId": {
     "message": "추적 ID",
-    "description": "API 서비스의 신청의 API 호출의 추적 ID, 번역하지 말고 '추적 ID'로 유지하십시오."
+    "description": "API 서비스의 신청 API 호출의 추적 ID입니다."
   },
   "field.shouldPayPrice": {
     "message": "최종 가격",
-    "description": "신청의 최종 가격."
+    "description": "신청한 최종 가격입니다."
   },
   "field.api": {
     "message": "API",
-    "description": "이것은 온라인 서비스로, API를 통해 사용자에게 서비스를 제공합니다."
+    "description": "이것은 온라인 서비스로, 양식이 API를 통해 사용자에게 서비스를 제공합니다."
   },
   "field.proxy": {
     "message": "프록시",
-    "description": "이것은 온라인 서비스로, HTTP 프록시(데이터 전송에 사용됨)를 통해 사용자에게 서비스를 제공합니다."
+    "description": "이것은 온라인 서비스로, 양식이 HTTP 프록시(데이터 전송에 사용됨)를 통해 사용자에게 서비스를 제공합니다."
   },
   "field.credential": {
     "message": "자격 증명",
-    "description": "신청의 자격 증명."
+    "description": "신청한 자격 증명입니다."
   },
   "field.name": {
     "message": "이름",
-    "description": "신청의 이름."
+    "description": "신청한 이름입니다."
   },
   "field.package": {
     "message": "패키지",
-    "description": "패키지는 서로 다른 가격 패키지를 나타냅니다. 예를 들어, 100달러에 10,000포인트, 200달러에 20,000포인트를 받을 수 있습니다."
+    "description": "패키지는 서로 다른 가격 패키지를 나타내며, 예를 들어 100달러로 10,000포인트를 얻거나 200달러로 20,000포인트를 얻을 수 있습니다."
   },
   "field.type": {
     "message": "유형",
-    "description": "신청의 유형."
+    "description": "신청한 유형입니다."
   },
   "field.freeAmount": {
-    "message": "무료 수량",
-    "description": "신청의 무료 수량."
+    "message": "무료 금액",
+    "description": "신청한 무료 금액입니다."
   },
   "field.extraPrice": {
-    "message": "추가 가격",
-    "description": "사용자가 신청에 대해 지불해야 하는 추가 가격."
+    "message": "가격",
+    "description": "사용자가 신청한 추가 가격을 지불해야 합니다."
   },
   "message.alreadyApplied": {
-    "message": "이미 이 서비스를 신청하셨습니다. 콘솔을 확인하세요.",
-    "description": "사용자가 이미 이 서비스를 신청했을 때 사용자에게 표시되는 메시지."
+    "message": "이미 이 서비스를 신청하셨습니다. 콘솔을 확인하세요",
+    "description": "사용자가 이미 이 서비스를 신청했을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.applySuccessfully": {
     "message": "신청 성공",
-    "description": "사용자가 이 서비스를 성공적으로 신청했을 때 사용자에게 표시되는 메시지."
+    "description": "사용자가 이 서비스를 성공적으로 신청했을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.notApplied": {
-    "message": "우리의 서비스를 이용해 주셔서 감사합니다. 무료 체험 할당량을 드리겠습니다. 아래 버튼을 클릭하여 즉시 시작하세요.",
-    "description": "사용자가 아직 이 서비스를 신청하지 않았을 때 사용자에게 표시되는 메시지."
+    "message": "아직 이 서비스를 신청하지 않았습니다. 사용하기 전에 신청하세요",
+    "description": "사용자가 이 서비스를 신청하지 않았을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.globalBalanceBuyDescription": {
-    "message": "이번 충전의 포인트는 공용 잔액으로, 모든 서비스에 사용할 수 있습니다.",
-    "description": "사용자가 공용 잔액을 충전할 때 사용자에게 표시되는 메시지."
+    "message": "일반 잔액에 충전할 수 있으며, 각 신청 인스턴스에 대해 개별적으로 충전할 수도 있습니다. 이번 충전은 일반 잔액으로 들어가며, 특정 신청 인스턴스의 잔액이 부족할 경우 자동으로 일반 잔액으로 보충됩니다.",
+    "description": "일반 잔액에 충전하고 인스턴스 잔액이 부족할 때 자동으로 보충된다는 설명 문구입니다. 용어: 일반 잔액=General Balance(글로벌 잔액으로 번역하지 마세요)."
   },
   "message.yourApplication": {
     "message": "귀하의 신청",
-    "description": "사용자의 신청 시 사용자에게 표시되는 메시지."
+    "description": "사용자의 신청에 대해 사용자에게 표시되는 메시지입니다."
   },
   "message.unverified": {
-    "message": "이 서비스를 신청하려면 실명 인증을 완료해야 합니다.",
-    "description": "사용자가 아직 실명 인증을 완료하지 않았을 때 사용자에게 표시되는 메시지."
+    "message": "서비스를 신청하기 전에 실명 인증을 완료해야 합니다",
+    "description": "사용자가 실명 인증을 완료하지 않았을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.goVerify": {
-    "message": "실명 인증으로 이동",
-    "description": "사용자가 아직 실명 인증을 완료하지 않았을 때 사용자에게 표시되는 메시지."
+    "message": "실명 인증하러 가기",
+    "description": "사용자가 실명 인증을 완료하지 않았을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.requiredParameter": {
     "message": "필수 매개변수",
-    "description": "사용자가 필수 매개변수를 입력하지 않았을 때 사용자에게 표시되는 메시지."
+    "description": "사용자가 필수 매개변수를 입력하지 않았을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.example": {
     "message": "예시",
-    "description": "사용자가 필수 매개변수를 입력하지 않았을 때 사용자에게 표시되는 메시지."
+    "description": "사용자가 필수 매개변수를 입력하지 않았을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.applicationSelection": {
     "message": "현재 신청하거나 구매한 패키지가 아래에 있습니다. 서비스를 계속 사용하려면 원하는 패키지를 선택할 수 있습니다.",
@@ -176,11 +176,11 @@
     "description": "사용자가 정책을 읽고 동의했을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.policy": {
-    "message": "데이터 기술 서비스 이용 약관",
+    "message": "데이터 기술 서비스 사용 계약",
     "description": "사용자가 정책을 읽고 동의했을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.notAgreePolicy": {
-    "message": "데이터 기술 서비스 이용 약관에 동의하지 않았습니다",
+    "message": "데이터 기술 서비스 사용 계약에 동의하지 않았습니다",
     "description": "사용자가 정책에 동의하지 않았을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.welcome": {
@@ -192,8 +192,8 @@
     "description": "사용자가 키를 재설정할 때 사용자에게 표시되는 메시지입니다."
   },
   "message.rotateCredentialConfirm": {
-    "message": "키를 재설정하시겠습니까? 재설정 후에는 복구할 수 없습니다.",
-    "description": "사용자가 키 재설정을 확인했을 때 사용자에게 표시되는 메시지입니다."
+    "message": "정말로 키를 재설정하시겠습니까? 재설정 후에는 복구할 수 없습니다",
+    "description": "사용자가 키 재설정을 확인할 때 사용자에게 표시되는 메시지입니다."
   },
   "message.idDoesNotExist": {
     "message": "신청이 존재하지 않습니다",
@@ -204,7 +204,7 @@
     "description": "키가 성공적으로 재설정되었을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.rotateCredentialFailed": {
-    "message": "키 재설정 실패, 처리에 문의하십시오",
+    "message": "키 재설정 실패, 처리에 문의하세요",
     "description": "키 재설정이 실패했을 때 사용자에게 표시되는 메시지입니다."
   },
   "message.fetchFailed": {
@@ -228,12 +228,12 @@
     "description": "사용자가 서비스를 구매하고자 할 때 페이지의 제목입니다."
   },
   "title.globalBuy": {
-    "message": "일반 잔액 충전",
-    "description": "사용자가 일반 잔액을 충전하고자 할 때 페이지의 제목입니다."
+    "message": "에이스 데이터 클라우드 일반 포인트 충전",
+    "description": "사용자가 일반 서비스를 구매하고자 할 때 페이지의 제목입니다."
   },
   "title.applicationRemainingCount": {
-    "message": "수정 수량",
-    "description": "사용자가 신청 수량을 수정하고자 할 때 페이지의 제목입니다."
+    "message": "수정 개수",
+    "description": "사용자가 신청 개수를 수정하고자 할 때 페이지의 제목입니다."
   },
   "title.manageApplication": {
     "message": "신청 관리",
@@ -244,19 +244,75 @@
     "description": "사용자가 신청 잔액을 확인할 때 사용자에게 표시되는 메시지입니다."
   },
   "title.count": {
-    "message": "응용 프로그램 수",
-    "description": "응용 프로그램 수 요약 카드 제목입니다."
+    "message": "신청 총 개수",
+    "description": "사용자가 신청 개수를 확인할 때 페이지의 제목입니다."
   },
   "message.countDescription": {
-    "message": "여기에서 전용 응용 프로그램과 일반 잔액을 관리하세요.",
-    "description": "응용 프로그램 수 카드 아래의 보조 설명입니다."
+    "message": "각 서비스는 하나의 신청 인스턴스에 해당하며, 아래 관리에서 키, 사용량 등의 정보를 확인할 수 있습니다.",
+    "description": "사용자가 신청 수를 확인할 때 사용자에게 표시되는 메시지입니다."
   },
   "title.globalBalance": {
     "message": "일반 잔액",
-    "description": "사용자가 일반 잔액을 확인할 때 사용자에게 표시되는 메시지입니다."
+    "description": "사용자가 일반 잔액을 확인할 때 페이지의 제목입니다. 영어는 'General Balance'로 번역해야 하며, 중국어는 '通用余额'입니다."
   },
   "message.globalBalanceDescription": {
-    "message": "일반 잔액은 조건을 충족하는 응용 프로그램에서 사용할 수 있습니다.",
-    "description": "일반 잔액 카드의 설명 텍스트입니다."
+    "message": "‘일반 잔액 허용’이 활성화되면 인스턴스 잔액이 부족할 경우 자동으로 일반 잔액을 사용합니다.",
+    "description": "인스턴스 잔액이 부족할 때 자동으로 일반 잔액을 소모한다는 설명 문구입니다. 용어: 일반 잔액=General Balance(글로벌 잔액으로 번역하지 마세요)."
+  },
+  "button.service": {
+    "message": "전담 고객 서비스",
+    "description": "버튼 텍스트, 이 버튼을 클릭하면 전담 고객 서비스 페이지로 이동합니다."
+  },
+  "button.acquire": {
+    "message": "고객 서비스 추가",
+    "description": "버튼 텍스트, 이 버튼을 클릭하면 해당 항목을 획득합니다."
+  },
+  "button.delete": {
+    "message": "삭제",
+    "description": "버튼 텍스트, 이 버튼을 클릭하면 해당 항목을 삭제합니다."
+  },
+  "field.dataset": {
+    "message": "데이터셋",
+    "description": "신청한 데이터셋입니다."
+  },
+  "field.disabled": {
+    "message": "비활성화",
+    "description": "신청이 비활성화되었는지 여부입니다."
+  },
+  "message.addServiceToAcquire": {
+    "message": "고객 서비스를 추가하여 얻으세요",
+    "description": "사용자가 고객 서비스를 추가하지 않았을 때 사용자에게 표시되는 메시지입니다."
+  },
+  "message.confirmApplying": {
+    "message": "서비스 신청 확인",
+    "description": "사용자가 서비스 신청을 확인할 때 사용자에게 표시되는 메시지입니다."
+  },
+  "message.confirmDelete": {
+    "message": "정말로 이 신청을 삭제하시겠습니까? 삭제 후 모든 신청 데이터가 사라집니다",
+    "description": "사용자가 신청 삭제를 확인할 때 사용자에게 표시되는 메시지입니다."
+  },
+  "message.placeEnter": {
+    "message": "'$0$'를 입력하여 확인하세요",
+    "description": "사용자가 확인을 위해 텍스트를 입력해야 할 때 사용자에게 표시되는 메시지입니다. '$0$'는 번역하지 마세요."
+  },
+  "message.invalidInput": {
+    "message": "유효하지 않은 입력",
+    "description": "사용자가 유효하지 않은 데이터를 입력했을 때 사용자에게 표시되는 메시지입니다."
+  },
+  "message.deleteFailed": {
+    "message": "삭제 실패",
+    "description": "삭제가 실패했을 때 사용자에게 표시되는 메시지입니다."
+  },
+  "message.deleteSuccessfully": {
+    "message": "삭제 성공",
+    "description": "삭제가 성공했을 때 사용자에게 표시되는 메시지입니다."
+  },
+  "title.application": {
+    "message": "신청",
+    "description": ""
+  },
+  "title.description": {
+    "message": "설명",
+    "description": "사용자가 데이터 기술 서비스 사용 계약을 확인할 때 페이지의 제목입니다."
   }
 }

@@ -1,31 +1,31 @@
 {
   "button.pay": {
     "message": "Payer",
-    "description": "Bouton texte pour payer la commande."
+    "description": "Texte dans le bouton, utilisé pour payer la commande."
   },
   "button.continuePay": {
     "message": "Continuer le paiement",
-    "description": "Bouton texte pour continuer à payer la commande."
+    "description": "Texte dans le bouton, utilisé pour continuer le paiement de la commande."
   },
   "button.checkDetail": {
     "message": "Voir les détails",
-    "description": "Bouton texte pour voir les détails de la commande."
+    "description": "Texte dans le bouton, utilisé pour voir les détails de la commande."
   },
   "button.query": {
     "message": "Interroger",
-    "description": "Bouton texte pour interroger la commande."
+    "description": "Texte dans le bouton, utilisé pour interroger la commande."
   },
   "button.finish": {
     "message": "Terminer manuellement",
-    "description": "Bouton texte pour terminer manuellement la commande."
+    "description": "Texte dans le bouton, utilisé pour terminer manuellement la commande."
   },
   "button.update": {
     "message": "Mettre à jour",
-    "description": "Bouton texte pour mettre à jour la commande."
+    "description": "Texte dans le bouton, utilisé pour mettre à jour la commande."
   },
   "field.id": {
-    "message": "Numéro de commande",
-    "description": "Le numéro de la commande."
+    "message": "ID de la commande",
+    "description": "L'ID de la commande."
   },
   "field.amount": {
     "message": "Montant",
@@ -52,8 +52,8 @@
     "description": "Le nom du service."
   },
   "field.payWay": {
-    "message": "Mode de paiement",
-    "description": "Le mode de paiement de la commande."
+    "message": "Méthode de paiement",
+    "description": "La méthode de paiement de la commande."
   },
   "field.api": {
     "message": "API",
@@ -61,258 +61,442 @@
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Le proxy est un service en ligne utilisé pour transmettre des données via HTTP."
+    "description": "Le proxy est un service en ligne, utilisé pour le transfert de données via un proxy HTTP."
   },
   "message.paidSuccessfully": {
     "message": "Paiement réussi",
-    "description": "Message de succès de paiement."
+    "description": "Message pour un paiement réussi."
   },
   "message.orderExpired": {
     "message": "La commande a expiré, veuillez créer une nouvelle commande pour effectuer le paiement.",
-    "description": "Message d'expiration de la commande."
+    "description": "Message pour une commande expirée."
   },
   "message.createFailed": {
     "message": "Échec de la création",
-    "description": "Message d'échec de création."
+    "description": "Message pour un échec de création."
   },
   "message.wechatPayHelp": {
-    "message": "Veuillez ouvrir WeChat sur votre téléphone et scanner le code pour compléter le paiement.",
+    "message": "Veuillez ouvrir WeChat sur votre téléphone et scanner pour finaliser le paiement",
     "description": "Message d'aide pour le paiement WeChat."
   },
   "message.free": {
     "message": "Gratuit",
-    "description": "Message pour les commandes gratuites."
+    "description": "Message pour une commande gratuite."
   },
   "message.buyInExternalUrl": {
-    "message": "Veuillez compléter le paiement via le lien externe.",
+    "message": "Veuillez finaliser le paiement via le lien externe",
     "description": "Message pour le paiement via un lien externe."
   },
   "message.updateFailed": {
     "message": "Échec de la mise à jour",
-    "description": "Message d'échec de mise à jour."
+    "description": "Message pour un échec de mise à jour."
   },
   "message.updateSuccessfully": {
     "message": "Mise à jour réussie",
-    "description": "Message de succès de mise à jour."
+    "description": "Message pour une mise à jour réussie."
   },
   "message.confirmFinish": {
-    "message": "Cette opération définira manuellement la commande comme payée et complétera le traitement de distribution, ce qui ne peut pas être annulé. Veuillez confirmer que le client a terminé le paiement, souhaitez-vous continuer ?",
-    "description": "Message de confirmation de finition."
+    "message": "Cette opération définira manuellement la commande comme étant en état de paiement et complétera le traitement de distribution, ce qui est irréversible. Veuillez confirmer que le client a terminé le paiement, souhaitez-vous continuer ?",
+    "description": "Message de confirmation de fin."
   },
   "state.pending": {
     "message": "En attente de paiement",
-    "description": "L'état de la commande, indiquant que cette commande attend toujours le paiement de l'utilisateur."
+    "description": "État de la commande, indiquant que la commande est toujours en attente de paiement de l'utilisateur."
   },
   "state.paid": {
     "message": "Payé",
-    "description": "L'état de la commande, indiquant que cette commande a été payée."
+    "description": "État de la commande, indiquant que la commande a été payée."
   },
   "state.finished": {
     "message": "Terminé",
-    "description": "L'état de la commande, indiquant que cette commande a été complétée."
+    "description": "État de la commande, indiquant que la commande est terminée."
   },
   "state.expired": {
-    "message": "Délai de paiement dépassé",
-    "description": "L'état de la commande, indiquant que cette commande a expiré."
+    "message": "Temps de paiement dépassé",
+    "description": "État de la commande, indiquant que la commande a expiré."
   },
   "state.failed": {
     "message": "Échec du paiement",
-    "description": "L'état de la commande, indiquant que le paiement de cette commande a échoué."
+    "description": "État de la commande, indiquant que le paiement de la commande a échoué."
   },
   "title.info": {
     "message": "Informations sur la commande",
-    "description": "Titre utilisé comme titre de site Web, indiquant les informations sur la commande."
+    "description": "Titre affiché sur le site, indiquant les informations sur la commande."
   },
   "title.wechatPay": {
     "message": "Paiement WeChat",
-    "description": "Titre utilisé comme titre de site Web, indiquant le paiement WeChat."
+    "description": "Titre affiché sur le site, indiquant le paiement WeChat."
   },
   "title.aliPay": {
-    "message": "Alipay",
-    "description": "Titre utilisé comme titre de site Web, indiquant le paiement Alipay, Alipay est un mode de paiement en ligne."
+    "message": "Paiement Alipay",
+    "description": "Titre affiché sur le site, indiquant le paiement Alipay, qui est un mode de paiement en ligne."
   },
   "title.stripe": {
     "message": "Stripe",
-    "description": "Titre utilisé comme titre de site Web, indiquant le paiement Stripe, Stripe est un mode de paiement en ligne."
+    "description": "Titre affiché sur le site, indiquant le paiement Stripe, qui est un mode de paiement en ligne."
   },
   "title.manageOrder": {
-    "message": "Gérer la commande",
-    "description": "Titre utilisé comme titre de site Web, indiquant la gestion des commandes."
+    "message": "Gérer les commandes",
+    "description": "Titre affiché sur le site, indiquant la gestion des commandes."
   },
   "title.x402": {
     "message": "Cryptomonnaie",
-    "description": "Titre pour le paiement cryptographique basé sur le schéma X402."
+    "description": "Titre affiché sur le site, indiquant le paiement en cryptomonnaie (basé sur le schéma de paiement X402)."
   },
   "message.discountTag": {
     "message": "{percent}% de réduction",
-    "description": "Texte de l'étiquette indiquant le pourcentage de réduction appliqué."
+    "description": "Texte du badge affichant le pourcentage de réduction appliqué."
   },
   "message.discountHint": {
-    "message": "Une réduction de {percent}% a été automatiquement appliquée pour les membres.",
-    "description": "Indication de la réduction pour les membres."
+    "message": "Vous êtes notre client VIP exclusif, vous bénéficiez automatiquement d'une réduction de {percent}%.",
+    "description": "Texte pour informer l'utilisateur qu'il bénéficie d'une réduction en raison de son statut VIP."
   },
   "message.x402DiscountApplied": {
-    "message": "Économisez un supplément de {percent}% en utilisant le paiement X402.",
-    "description": "Indication de la réduction supplémentaire apportée par le choix du paiement X402."
+    "message": "Avec le paiement X402, bénéficiez d'une réduction supplémentaire de {percent}%.",
+    "description": "Texte pour expliquer la réduction supplémentaire apportée par le paiement X402."
   },
   "message.x402DiscountTag": {
     "message": "{percent}% de réduction",
-    "description": "Étiquette de réduction pour le paiement X402."
+    "description": "Mise en avant du pourcentage de réduction supplémentaire disponible avec le paiement X402."
   },
   "message.x402DiscountHint": {
-    "message": "Choisissez le paiement X402 pour bénéficier d'une réduction supplémentaire de {percent}%.",
-    "description": "Indication encourageant les utilisateurs à choisir le paiement X402."
+    "message": "Choisissez le paiement X402 pour bénéficier immédiatement d'une réduction supplémentaire de {percent}%.",
+    "description": "Texte pour informer l'utilisateur qu'il peut débloquer une réduction supplémentaire avec le paiement X402."
   },
   "message.x402IntroShort": {
-    "message": "Connectez-vous directement à votre portefeuille cryptographique pour le paiement, ou passez en mode programmation pour obtenir les paramètres d'intégration.",
-    "description": "Brève introduction à la boîte de dialogue de paiement X402."
+    "message": "Choisissez un portefeuille pour finaliser le paiement USDC.",
+    "description": "Texte d'introduction courte."
   },
   "message.x402TabWallet": {
     "message": "Paiement par portefeuille",
-    "description": "Titre de l'onglet Paiement par portefeuille."
+    "description": "Titre de l'onglet de paiement par portefeuille."
   },
   "message.x402TabApi": {
-    "message": "Accès par programmation",
-    "description": "Titre de l'onglet Accès par programmation."
+    "message": "Programmable",
+    "description": "Titre de l'onglet programmable."
   },
   "message.x402WalletTitle": {
-    "message": "Connectez votre portefeuille et payez",
-    "description": "Titre pour guider l'utilisateur à connecter son portefeuille."
+    "message": "Connecter le portefeuille et payer USDC",
+    "description": "Titre du paiement rapide par portefeuille X402 (USDC)."
   },
   "message.x402WalletConnected": {
     "message": "Connecté",
-    "description": "Indication lorsque le portefeuille est connecté."
+    "description": "Étiquette affichée lorsque le portefeuille est connecté."
   },
   "message.x402ConnectWallet": {
     "message": "Connecter le portefeuille",
-    "description": "Texte du bouton pour connecter le portefeuille."
+    "description": "Texte du bouton pour connecter le portefeuille EVM."
   },
   "message.x402NoWalletDesc": {
-    "message": "Aucun portefeuille détecté. Veuillez installer MetaMask/Phantom ou ouvrir cette page dans le navigateur intégré du portefeuille.",
-    "description": "Description lorsque aucun portefeuille EVM n'est détecté."
+    "message": "Veuillez utiliser un navigateur prenant en charge les portefeuilles (recommandé Chrome/Brave), ou installer l'extension MetaMask/Phantom ; vous pouvez également ouvrir cette page dans le navigateur intégré de l'application de portefeuille mobile.",
+    "description": "Description générale sans portefeuille."
   },
   "message.x402SwitchNetwork": {
     "message": "Veuillez changer le réseau du portefeuille en {network}",
-    "description": "Invite à l'utilisateur de changer le réseau du portefeuille."
+    "description": "Texte pour inviter l'utilisateur à changer vers le réseau spécifié."
   },
   "message.x402SolanaNotEnabled": {
-    "message": "Solana X402 payment is not enabled for this order. Please switch network or refresh.",
-    "description": "Shown when the selected Solana network is not available in X402 payment requirements."
+    "message": "Le backend Solana X402 n'est pas encore activé.",
+    "description": "Message affiché lorsque la commande n'a pas activé Solana X402."
   },
   "message.x402NeedConnectAccount": {
-    "message": "Veuillez d'abord connecter au moins un portefeuille EVM compatible avant de payer.",
-    "description": "Rappel à l'utilisateur de connecter son compte de portefeuille d'abord."
+    "message": "Veuillez d'abord connecter le portefeuille.",
+    "description": "Message affiché lorsque le portefeuille n'est pas connecté."
   },
   "message.x402ConfirmTitle": {
-    "message": "Confirm Payment",
-    "description": "Title of the confirmation dialog before signing an X402 payment."
+    "message": "Confirmer le paiement",
+    "description": "Titre de la fenêtre contextuelle de confirmation de paiement X402."
   },
   "message.x402ConfirmDesc": {
-    "message": "Confirm USDC payment on {network}?",
-    "description": "Description of the confirmation dialog before signing an X402 payment."
+    "message": "Confirmez-vous le paiement de USDC sur {network} ?",
+    "description": "Description de la fenêtre contextuelle de confirmation de paiement X402."
   },
   "message.x402StepsTitle": {
     "message": "Étapes de paiement",
-    "description": "Titre de la liste des étapes de paiement."
+    "description": "Titre des étapes."
   },
   "message.x402Step1": {
-    "message": "Connectez votre portefeuille (si non installé, veuillez l'installer puis rafraîchir la page).",
-    "description": "Étape 1 du paiement par portefeuille."
+    "message": "Connectez le portefeuille (si non installé, veuillez d'abord installer l'extension puis rafraîchir cette page ou ouvrir cette page avec le portefeuille mobile)",
+    "description": "Texte pour l'étape 1."
   },
   "message.x402Step2": {
-    "message": "Confirmez que le réseau du portefeuille est {network}.",
-    "description": "Étape 2 du paiement par portefeuille."
+    "message": "Modifiez les paramètres du portefeuille, assurez-vous que le réseau du portefeuille est {network}",
+    "description": "Texte pour l'étape 2."
   },
   "message.x402Step3": {
-    "message": "Cliquez sur payer et complétez la signature d'autorisation dans le portefeuille.",
-    "description": "Étape 3 du paiement par portefeuille."
+    "message": "Cliquez sur 'Payer avec le portefeuille', terminez la signature d'autorisation dans le portefeuille",
+    "description": "Texte pour l'étape 3."
   },
   "message.x402Step4": {
-    "message": "Après la signature, nous réglerons automatiquement et mettrons à jour l'état de la commande.",
-    "description": "Étape 4 du paiement par portefeuille."
+    "message": "Après une signature réussie, nous procéderons automatiquement au règlement, après quoi cette page se mettra à jour automatiquement pour indiquer qu'elle a été payée",
+    "description": "Texte pour l'étape 4."
   },
   "message.x402IntegrationResourceLabel": {
     "message": "Adresse de l'interface de paiement",
-    "description": "Étiquette de l'adresse de l'interface de paiement."
+    "description": "Étiquette pour l'adresse de l'interface de paiement."
   },
   "message.x402IntegrationPayToLabel": {
-    "message": "Adresse de réception",
-    "description": "Étiquette de l'adresse de réception sur la blockchain."
+    "message": "Adresse de règlement",
+    "description": "Étiquette pour afficher l'adresse de règlement blockchain."
   },
   "message.x402IntegrationNetworkLabel": {
     "message": "Réseau",
-    "description": "Étiquette du réseau blockchain."
+    "description": "Étiquette pour afficher le nom du réseau blockchain."
   },
   "message.x402IntegrationAssetLabel": {
-    "message": "Actif",
-    "description": "Étiquette de l'actif de règlement."
+    "message": "Actif de règlement",
+    "description": "Étiquette pour afficher l'actif de règlement."
   },
   "message.x402IntegrationFallback": {
-    "message": "Impossible d'obtenir les paramètres de session, veuillez consulter la documentation ou contacter le support pour obtenir les paramètres nécessaires.",
-    "description": "Message de secours lorsque les paramètres d'intégration sont manquants."
+    "message": "Aucune donnée de session complète n'a été obtenue, veuillez consulter la documentation de développement ou contacter le support pour obtenir les paramètres nécessaires.",
+    "description": "Message affiché lorsque les données de session ne peuvent pas être obtenues."
   },
   "message.x402IntegrationDocsCta": {
-    "message": "Ouvrir le guide X402",
-    "description": "Texte du bouton pour ouvrir le guide d'intégration X402."
+    "message": "Ouvrir le guide de développement X402",
+    "description": "Texte du bouton d'action pour ouvrir le guide des développeurs."
   },
   "message.x402InstallGuideTitle": {
     "message": "Installer l'extension du portefeuille",
-    "description": "Titre de la boîte de dialogue d'instructions d'installation du portefeuille."
+    "description": "Titre de la fenêtre contextuelle d'instructions d'installation du portefeuille."
   },
   "message.x402InstallGuideDesc": {
-    "message": "Suivez les étapes pour installer l'extension {wallet} et reconnectez-vous.",
-    "description": "Description des instructions d'installation du portefeuille."
+    "message": "Veuillez suivre les étapes ci-dessous pour installer l'extension {wallet}, puis utilisez le bouton ci-dessous pour rafraîchir cette page et redétecter le portefeuille.",
+    "description": "Description pour guider l'utilisateur à installer l'extension du portefeuille."
   },
   "message.x402InstallGuideStep1": {
-    "message": "Téléchargez et installez l'extension de navigateur {wallet} (recommandé Chrome/Brave).",
+    "message": "Ouvrez la page nouvellement ouverte pour télécharger et installer l'extension de navigateur {wallet} (recommandé Chrome/Brave).",
     "description": "Étape 1 de l'installation du portefeuille."
   },
   "message.x402InstallGuideStep2": {
-    "message": "Ouvrez l'extension, connectez-vous/déverrouillez et assurez-vous qu'elle est activée.",
+    "message": "Terminez l'installation de l'extension, connectez-vous/déverrouillez et assurez-vous qu'elle est activée dans le profil de navigateur actuel.",
     "description": "Étape 2 de l'installation du portefeuille."
   },
   "message.x402InstallGuideStep3": {
-    "message": "Retournez à cette page, cliquez sur 'J'ai installé', puis essayez de vous connecter à nouveau.",
+    "message": "Retournez à cette page, cliquez sur 'J'ai installé' puis rafraîchissez pour essayer de 'connecter le portefeuille'.",
     "description": "Étape 3 de l'installation du portefeuille."
   },
   "message.x402InstallGuideConfirm": {
-    "message": "J'ai installé",
-    "description": "Bouton de confirmation après l'installation."
+    "message": "J'ai déjà installé",
+    "description": "Bouton principal après l'installation du portefeuille."
   },
   "message.x402NetworkGuideTitle": {
     "message": "Ajuster les paramètres réseau",
-    "description": "Titre de la boîte de dialogue d'orientation réseau."
+    "description": "Titre de la fenêtre contextuelle pour les instructions de non-correspondance du réseau."
   },
   "message.x402NetworkGuideDesc": {
-    "message": "Veuillez changer le réseau du portefeuille en {network}, puis rafraîchissez et réessayez.",
-    "description": "Instructions pour guider l'utilisateur à changer de réseau."
+    "message": "Veuillez suivre les étapes ci-dessous pour changer le réseau du portefeuille en {network}, puis rafraîchissez cette page pour redétecter.",
+    "description": "Description pour guider l'utilisateur à ajuster le réseau du portefeuille."
   },
   "message.x402NetworkGuideStep1": {
-    "message": "Ouvrez les paramètres de l'extension du portefeuille et vérifiez le réseau actif.",
-    "description": "Étape 1 de l'ajustement du réseau."
+    "message": "Ouvrez l'extension du portefeuille, allez dans Paramètres -> Réseaux actifs.",
+    "description": "Étape 1 des paramètres réseau."
   },
   "message.x402NetworkGuideStep2": {
-    "message": "Activez {network} (ou le réseau requis) dans la liste.",
-    "description": "Étape 2 de l'ajustement du réseau."
+    "message": "Dans la liste des réseaux, assurez-vous que {network} (ou un autre réseau spécifié) est activé, si déjà activé, vous pouvez ignorer cette étape.",
+    "description": "Deuxième étape pour ajuster le réseau, pas besoin de désactiver Ethereum."
   },
   "message.x402NetworkGuideStep3": {
-    "message": "Retournez à cette page et cliquez sur 'Configuration terminée' avant de payer.",
-    "description": "Étape 3 de l'ajustement du réseau."
+    "message": "Retournez à cette page, cliquez sur 'J'ai terminé' puis rafraîchissez pour essayer de payer.",
+    "description": "Étape 3 des paramètres réseau."
   },
   "message.x402NetworkGuideConfirm": {
-    "message": "Configuration terminée",
-    "description": "Bouton de confirmation après la configuration du réseau."
+    "message": "J'ai terminé",
+    "description": "Bouton principal après avoir terminé les paramètres réseau."
   },
   "message.x402NetworkSwitchFailed": {
-    "message": "Le portefeuille actuel ne prend pas en charge le changement automatique de réseau, veuillez changer manuellement et réessayer.",
-    "description": "Message d'erreur lors de l'échec du changement automatique de réseau."
+    "message": "Le portefeuille actuel ne prend pas en charge le changement automatique de réseau, veuillez changer manuellement vers le réseau spécifié dans le portefeuille puis réessayer.",
+    "description": "Message pour informer l'utilisateur que le portefeuille ne prend pas en charge le changement automatique de réseau et qu'il doit le faire manuellement."
   },
   "message.x402PaymentFailed": {
-    "message": "Le paiement par portefeuille X402 a échoué, veuillez réessayer plus tard ou contacter le support.",
-    "description": "Erreur générale lors de l'échec du paiement X402."
+    "message": "Le paiement par portefeuille X402 a échoué, veuillez réessayer plus tard. Si cela échoue plusieurs fois, veuillez contacter le support et fournir les informations d'erreur.",
+    "description": "Message d'erreur générique affiché lors d'un échec de paiement par portefeuille X402."
   },
   "message.x402WalletPayCta": {
     "message": "Payer avec le portefeuille",
-    "description": "Texte du bouton pour initier le paiement par portefeuille X402."
+    "description": "Texte du bouton pour finaliser le paiement avec le portefeuille lié."
+  },
+  "button.refund": {
+    "message": "Rembourser",
+    "description": "Texte dans le bouton, utilisé pour rembourser manuellement la commande."
+  },
+  "field.applicationId": {
+    "message": "ID de la demande",
+    "description": "L'ID de la demande à laquelle appartient la commande."
+  },
+  "field.serviceId": {
+    "message": "ID du service",
+    "description": "L'ID du service correspondant à la remise."
+  },
+  "field.generalDiscount": {
+    "message": "Remise générale",
+    "description": "Étiquette affichée lorsque la remise s'applique à tous les services."
+  },
+  "field.userId": {
+    "message": "ID de l'utilisateur",
+    "description": "L'ID de l'utilisateur bénéficiant de la remise."
+  },
+  "field.discount": {
+    "message": "Remise",
+    "description": "Le taux de remise appliqué à la commande de cet utilisateur."
+  },
+  "field.actions": {
+    "message": "Actions",
+    "description": "Le titre de la colonne des boutons d'action."
+  },
+  "message.confirmRefund": {
+    "message": "Cette opération annulera les droits de cette commande et la marquera comme remboursée, ce qui est irréversible. Veuillez confirmer que le remboursement a été traité, souhaitez-vous continuer ?",
+    "description": "Message de confirmation de remboursement."
+  },
+  "message.x402IntegrationIntro": {
+    "message": "La commande actuelle utilise le protocole de paiement X402, veuillez compléter l'intégration côté serveur et initier le paiement en fonction des paramètres ci-dessous.",
+    "description": "Message d'introduction pour l'utilisation du protocole X402."
+  },
+  "message.x402IntegrationProtocol": {
+    "message": "Appelez l'interface de paiement du facilitateur et complétez la diffusion de signature, après un règlement réussi, revenez à cette page pour confirmer l'état.",
+    "description": "Instructions sur les étapes pour compléter le paiement X402."
+  },
+  "message.x402IntegrationDocsHint": {
+    "message": "Vous souhaitez en savoir plus ? Veuillez consulter la documentation de développement ci-dessous.",
+    "description": "Texte pour rappeler à l'utilisateur qu'il peut obtenir plus d'informations via la documentation de développement."
+  },
+  "message.x402WalletTitleEvm": {
+    "message": "Portefeuille EVM",
+    "description": "Titre de la carte de connexion du portefeuille EVM."
+  },
+  "message.x402WalletTitleSolana": {
+    "message": "Portefeuille Solana",
+    "description": "Titre de la carte de connexion du portefeuille Solana."
+  },
+  "message.x402WalletStatusDetected": {
+    "message": "Détecté",
+    "description": "Étiquette d'état pour un portefeuille détecté/installé."
+  },
+  "message.x402WalletStatusInstall": {
+    "message": "Installer",
+    "description": "Étiquette d'état/entrée pour l'installation du portefeuille."
+  },
+  "message.x402WalletStatusQr": {
+    "message": "QR Code",
+    "description": "Étiquette d'entrée pour le QR Code WalletConnect."
+  },
+  "message.x402WalletConnectTitle": {
+    "message": "WalletConnect",
+    "description": "Titre de la fenêtre contextuelle QR Code WalletConnect."
+  },
+  "message.x402WalletConnectPreparing": {
+    "message": "Préparation de WalletConnect…",
+    "description": "Message lors de la préparation de la connexion WalletConnect."
+  },
+  "message.x402WalletConnectOpenWallet": {
+    "message": "Ouvrir le portefeuille",
+    "description": "Texte du bouton pour ouvrir le portefeuille via WalletConnect sur mobile."
+  },
+  "message.x402WalletConnectScanHint": {
+    "message": "Veuillez utiliser un portefeuille prenant en charge WalletConnect pour scanner le QR Code.",
+    "description": "Texte d'indication sous le QR Code WalletConnect."
+  },
+  "message.x402SwitchNetworkCta": {
+    "message": "Changer vers {network}",
+    "description": "CTA pour changer de réseau."
+  },
+  "message.x402NoWalletTitle": {
+    "message": "Aucun portefeuille EVM détecté",
+    "description": "Titre lorsque le navigateur n'a pas injecté de portefeuille EVM."
+  },
+  "message.x402NoWalletSafariDesc": {
+    "message": "Safari ne prend généralement pas en charge les extensions comme MetaMask, il est recommandé d'utiliser Chrome/Brave, ou d'ouvrir cette page dans le navigateur intégré de l'application de portefeuille mobile.",
+    "description": "Description sans portefeuille dans l'environnement Safari."
+  },
+  "message.x402InstallMetaMask": {
+    "message": "Installer MetaMask",
+    "description": "Texte du bouton pour installer MetaMask."
+  },
+  "message.x402InstallPhantom": {
+    "message": "Installer Phantom",
+    "description": "Texte du bouton pour installer Phantom."
+  },
+  "message.x402ConnectWC": {
+    "message": "Se connecter avec WalletConnect",
+    "description": "Texte du bouton pour se connecter avec WalletConnect."
+  },
+  "message.x402RefreshDetect": {
+    "message": "Redétecter",
+    "description": "Texte du bouton pour redétecter le portefeuille."
+  },
+  "message.x402MissingWCProjectId": {
+    "message": "WalletConnect Project ID non configuré (veuillez définir la variable d'environnement VITE_WALLETCONNECT_PROJECT_ID)",
+    "description": "Message d'alerte pour un ID de projet WalletConnect manquant."
+  },
+  "message.x402WalletBound": {
+    "message": "Lié",
+    "description": "Logo affiché lorsque le portefeuille est lié."
+  },
+  "message.userIdRequired": {
+    "message": "Veuillez entrer l'ID utilisateur.",
+    "description": "Message affiché lorsque l'ID utilisateur est vide."
+  },
+  "message.serviceIdRequired": {
+    "message": "Veuillez sélectionner un service.",
+    "description": "Message affiché lorsque l'ID de service est vide."
+  },
+  "message.discountRequired": {
+    "message": "Veuillez entrer une réduction entre 0 et 1.",
+    "description": "Message affiché lorsque la réduction n'est pas dans la plage légale."
+  },
+  "message.discountCreated": {
+    "message": "Réduction enregistrée avec succès.",
+    "description": "Message affiché lors de la création réussie d'une nouvelle réduction."
+  },
+  "message.discountUpdated": {
+    "message": "Réduction mise à jour avec succès.",
+    "description": "Message affiché lors de la mise à jour réussie d'une réduction."
+  },
+  "message.discountDeleted": {
+    "message": "Réduction supprimée avec succès.",
+    "description": "Message affiché lors de la suppression réussie d'une réduction."
+  },
+  "state.refunded": {
+    "message": "Remboursé",
+    "description": "État de la commande, indiquant que la commande a été remboursée."
+  },
+  "title.revenueAnalysis": {
+    "message": "Analyse des revenus",
+    "description": "Titre de la page d'analyse des revenus."
+  },
+  "title.todayRevenue": {
+    "message": "Montant des transactions d'aujourd'hui",
+    "description": "Montant des transactions d'aujourd'hui."
+  },
+  "title.last7dRevenue": {
+    "message": "Montant des transactions de la semaine dernière",
+    "description": "Montant des transactions de la semaine dernière."
+  },
+  "title.last30dRevenue": {
+    "message": "Montant des transactions du mois dernier",
+    "description": "Montant des transactions des 30 derniers jours."
+  },
+  "title.last90dRevenue": {
+    "message": "Montant des transactions du dernier trimestre",
+    "description": "Montant des transactions des 90 derniers jours."
+  },
+  "title.revenueTrend": {
+    "message": "Tendance des revenus",
+    "description": "Titre du graphique de tendance des revenus."
+  },
+  "title.manageOrderDiscount": {
+    "message": "Gestion des remises",
+    "description": "Titre de la page de gestion des remises sur les commandes."
+  },
+  "title.discountLookup": {
+    "message": "Remise actuelle",
+    "description": "Titre de la section affichant la remise actuelle de l'utilisateur."
+  },
+  "title.createDiscount": {
+    "message": "Ajouter une remise",
+    "description": "Titre de la section pour créer une nouvelle remise."
+  },
+  "title.updateDiscount": {
+    "message": "Mettre à jour la remise",
+    "description": "Titre de la fenêtre contextuelle pour éditer une remise."
   }
 }

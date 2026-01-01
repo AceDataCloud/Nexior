@@ -13,31 +13,31 @@
   },
   "button.goDocument": {
     "message": "Dokumentacija",
-    "description": "Tekst na dugmetu, klikom na ovo dugme korisnik će biti preusmeren na stranicu dokumentacije."
+    "description": "Tekst na dugmetu, klikom na ovo dugme preći će se na stranicu dokumentacije."
   },
   "button.goCredentials": {
-    "message": "Akreditivi",
-    "description": "Tekst na dugmetu, klikom na ovo dugme korisnik će biti preusmeren na stranicu akreditiva."
+    "message": "Ključevi",
+    "description": "Tekst na dugmetu, klikom na ovo dugme preći će se na stranicu sa kredencijalima. Engleski mora biti preveden kao 'Keys', a kineski kao '密钥'."
   },
   "button.buyMore": {
-    "message": "Kupite više",
-    "description": "Tekst na dugmetu, klikom na ovo dugme korisnik će biti preusmeren na stranicu za kupovinu više."
+    "message": "Dopuni",
+    "description": "Tekst na dugmetu, klikom na ovo dugme preći će se na stranicu za kupovinu više. Engleski mora biti preveden kao 'Top Up', a kineski kao '充值'."
   },
   "button.createOrder": {
     "message": "Kreiraj narudžbinu",
-    "description": "Tekst na dugmetu, klikom na ovo dugme korisnik će biti preusmeren na stranicu za kreiranje narudžbine."
+    "description": "Tekst na dugmetu, klikom na ovo dugme preći će se na stranicu za kreiranje narudžbine."
   },
   "button.custom": {
     "message": "Prilagodi",
-    "description": "Tekst na dugmetu, klikom na ovo dugme korisnik će biti preusmeren na stranicu za prilagođavanje."
+    "description": "Tekst na dugmetu, klikom na ovo dugme preći će se na stranicu za prilagođavanje."
   },
   "button.query": {
     "message": "Upit",
-    "description": "Tekst na dugmetu, klikom na ovo dugme korisnik će biti preusmeren na stranicu za upit."
+    "description": "Tekst na dugmetu, klikom na ovo dugme preći će se na stranicu za upit."
   },
   "button.usage": {
-    "message": "Istorija korišćenja",
-    "description": "Tekst na dugmetu, klikom na ovo dugme korisnik će biti preusmeren na stranicu istorije korišćenja."
+    "message": "Korišćenje",
+    "description": "Tekst na dugmetu, klikom na ovo dugme preći će se na stranicu sa istorijom korišćenja. Engleski mora biti preveden kao 'Usage', a kineski kao '用量'."
   },
   "field.serviceName": {
     "message": "Naziv usluge",
@@ -53,43 +53,43 @@
   },
   "field.id": {
     "message": "ID zahteva",
-    "description": "ID zahteva."
+    "description": "ID zahteva. Engleski mora biti preveden kao 'App ID', a kineski kao '申请ID'."
   },
   "field.remainingAmount": {
-    "message": "Preostala količina",
-    "description": "Preostala količina zahteva."
+    "message": "Preostali saldo",
+    "description": "Preostali saldo zahteva. Engleski mora biti preveden kao 'Balance', a kineski kao '实例余额'."
   },
   "field.usedAmount": {
-    "message": "Iskorišćena količina",
-    "description": "Iskorišćena količina zahteva."
+    "message": "Korišćeno",
+    "description": "Iznos koji je korišćen u zahtevu. Engleski mora biti preveden kao 'Used', a kineski kao '已用'."
   },
   "field.apiKey": {
     "message": "API ključ",
-    "description": "API ključ."
+    "description": "API ključ"
   },
   "field.service": {
     "message": "Usluga",
-    "description": "Usluga zahteva."
+    "description": "Usluga koja se zahteva."
   },
   "field.operation": {
     "message": "Operacija",
-    "description": "Operacija zahteva."
+    "description": "Operacija koja se zahteva."
   },
   "field.allowConsumeGlobal": {
-    "message": "Dozvoli korišćenje globalnog salda",
-    "description": "Da li dozvoliti korišćenje globalnog salda kada je specijalni saldo nedovoljan."
+    "message": "Dozvoli korišćenje opšteg salda",
+    "description": "Prekidač za dozvolu potrošnje opšteg salda (General Balance). Engleski mora biti preveden kao 'Allow Use General Balance', a kineski kao '允许用通用余额'."
   },
   "field.amount": {
-    "message": "Količina",
-    "description": "Količina zahteva."
+    "message": "Iznos",
+    "description": "Iznos koji se zahteva."
   },
   "field.scope": {
     "message": "Opseg",
-    "description": "Opseg zahteva."
+    "description": "Opseg zahteva, može biti globalan ili specifičan za uslugu."
   },
   "field.traceId": {
-    "message": "Trace ID",
-    "description": "Trace ID za jedan API poziv zahteva API usluge, ne prevoditi, ostaviti kao 'Trace ID'."
+    "message": "ID praćenja",
+    "description": "ID praćenja API poziva za zahtev API usluge."
   },
   "field.shouldPayPrice": {
     "message": "Konačna cena",
@@ -97,15 +97,15 @@
   },
   "field.api": {
     "message": "API",
-    "description": "Ovo je online usluga koja se pruža korisnicima putem API-ja."
+    "description": "Ovo je online usluga, obrazac pruža uslugu korisnicima putem API-ja."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Ovo je online usluga koja se pruža korisnicima putem HTTP proxy-a (za prenos podataka)."
+    "description": "Ovo je online usluga, obrazac pruža uslugu korisnicima putem HTTP proxy-a (za prenos podataka)."
   },
   "field.credential": {
-    "message": "Akreditiv",
-    "description": "Akreditiv zahteva."
+    "message": "Kredencijal",
+    "description": "Kredencijal koji se zahteva."
   },
   "field.name": {
     "message": "Ime",
@@ -113,62 +113,62 @@
   },
   "field.package": {
     "message": "Paket",
-    "description": "Paket predstavlja različite cenovne pakete, na primer, 100 dolara za 10000 poena, 200 dolara za 20000 poena."
+    "description": "Paket predstavlja različite cenovne pakete, na primer, 100 dolara može doneti 10,000 poena, 200 dolara može doneti 20,000 poena."
   },
   "field.type": {
     "message": "Tip",
     "description": "Tip zahteva."
   },
   "field.freeAmount": {
-    "message": "Besplatna količina",
-    "description": "Besplatna količina zahteva."
+    "message": "Besplatan iznos",
+    "description": "Besplatan iznos koji se zahteva."
   },
   "field.extraPrice": {
     "message": "Dodatna cena",
     "description": "Dodatna cena koju korisnik treba da plati za zahtev."
   },
   "message.alreadyApplied": {
-    "message": "Već ste podneli zahtev za ovu uslugu, molimo proverite kontrolnu tablu.",
-    "description": "Poruka koja se prikazuje korisniku kada je već podneo zahtev za ovu uslugu."
+    "message": "Већ сте се пријавили за ову услугу, молимо проверите конзолу",
+    "description": "Када је корисник већ поднео захтев за ову услугу, приказује се порука кориснику."
   },
   "message.applySuccessfully": {
-    "message": "Zahtev je uspešno podnet",
-    "description": "Poruka koja se prikazuje korisniku kada je uspešno podneo zahtev za ovu uslugu."
+    "message": "Пријава успешна",
+    "description": "Када корисник успешно поднесе захтев за ову услугу, приказује се порука кориснику."
   },
   "message.notApplied": {
-    "message": "Dobrodošli da koristite naše usluge, poklonićemo vam besplatnu probnu količinu, molimo kliknite na dugme ispod da odmah počnete.",
-    "description": "Poruka koja se prikazuje korisniku kada još nije podneo zahtev za ovu uslugu."
+    "message": "Нисте поднели захтев за ову услугу, молимо вас да поднесете захтев пре него што користите",
+    "description": "Када корисник још није поднео захтев за ову услугу, приказује се порука кориснику."
   },
   "message.globalBalanceBuyDescription": {
-    "message": "Poeni za ovu uplatu su globalni saldo i mogu se koristiti za bilo koju uslugu.",
-    "description": "Poruka koja se prikazuje korisniku kada dopunjava globalni saldo."
+    "message": "Можете изабрати да допуните општу равнотежу или да допуните сваку пријаву појединачно. Ова допуна ће ући у општу равнотежу, а када недостатак равнотеже за неку пријаву, аутоматски ће се користити општа равнотежа за допуну.",
+    "description": "Текст обавештења, објашњава да допуна улази у општу равнотежу и аутоматски се допуњује када је равнотежа инстанце недовољна. Термин: општа равнотежа = General Balance (обратите пажњу да не преводите као Global Balance)."
   },
   "message.yourApplication": {
-    "message": "Vaš zahtev",
-    "description": "Poruka koja se prikazuje korisniku kada je u pitanju njegov zahtev."
+    "message": "Ваша пријава",
+    "description": "Када је пријава корисника, приказује се порука кориснику."
   },
   "message.unverified": {
-    "message": "Morate završiti verifikaciju identiteta pre nego što podnesete zahtev za ovu uslugu.",
-    "description": "Poruka koja se prikazuje korisniku kada još nije završio verifikaciju identiteta."
+    "message": "Морате завршити процес верификације идентитета пре него што можете да поднесете захтев за ову услугу",
+    "description": "Када корисник још није завршио верификацију идентитета, приказује се порука кориснику."
   },
   "message.goVerify": {
-    "message": "Idite na verifikaciju identiteta",
-    "description": "Poruka koja se prikazuje korisniku kada još nije završio verifikaciju identiteta."
+    "message": "Идите на верификацију идентитета",
+    "description": "Када корисник још није завршио верификацију идентитета, приказује се порука кориснику."
   },
   "message.requiredParameter": {
-    "message": "Obavezni parametar",
-    "description": "Poruka koja se prikazuje korisniku kada još nije uneo obavezni parametar."
+    "message": "Обавезан параметар",
+    "description": "Када корисник није унео обавезан параметар, приказује се порука кориснику."
   },
   "message.example": {
-    "message": "Primer",
-    "description": "Poruka koja se prikazuje korisniku kada još nije uneo obavezni parametar."
+    "message": "Пример",
+    "description": "Када корисник није унео обавезан параметар, приказује се порука кориснику."
   },
   "message.applicationSelection": {
     "message": "Следећи су пакети које тренутно пријављујете или купујете, можете изабрати било који пакет да бисте наставили са коришћењем услуге.",
     "description": "Када корисник треба да изабере једну пријаву, приказује се порука кориснику."
   },
   "message.createCredentialSuccessfully": {
-    "message": "Успешно сте креирали акредитацију",
+    "message": "Успешно креирана акредитација",
     "description": "Када корисник успешно креира акредитацију, приказује се порука кориснику."
   },
   "message.readPolicy": {
@@ -176,11 +176,11 @@
     "description": "Када корисник прочита и сагласи се са политиком, приказује се порука кориснику."
   },
   "message.policy": {
-    "message": "Споразум о коришћењу података и техничких услуга",
+    "message": "Споразум о коришћењу података и технолошких услуга",
     "description": "Када корисник прочита и сагласи се са политиком, приказује се порука кориснику."
   },
   "message.notAgreePolicy": {
-    "message": "Нисте се сагласили са споразумом о коришћењу података и техничких услуга",
+    "message": "Нисте се сагласили са споразумом о коришћењу података и технолошких услуга",
     "description": "Када корисник није сагласан са политиком, приказује се порука кориснику."
   },
   "message.welcome": {
@@ -192,7 +192,7 @@
     "description": "Када корисник ресетује кључ, приказује се порука кориснику."
   },
   "message.rotateCredentialConfirm": {
-    "message": "Да ли сте сигурни да желите да ресетујете кључ? Након ресетовања неће бити могуће повратити.",
+    "message": "Да ли сте сигурни да желите да ресетујете кључ? Након ресетовања неће бити могуће повратити",
     "description": "Када корисник потврди ресетовање кључа, приказује се порука кориснику."
   },
   "message.idDoesNotExist": {
@@ -200,63 +200,119 @@
     "description": "Када пријава не постоји, приказује се порука кориснику."
   },
   "message.rotateCredentialSuccessfully": {
-    "message": "Кључ је успешно ресетован",
-    "description": "Када је кључ успешно ресетован, приказује се порука кориснику."
+    "message": "Ресетовање кључа успешно",
+    "description": "Када је ресетовање кључа успешно, приказује се порука кориснику."
   },
   "message.rotateCredentialFailed": {
     "message": "Ресетовање кључа није успело, молимо контактирајте подршку",
-    "description": "Када ресетовање кључа не успе, приказује се порука кориснику."
+    "description": "Када ресетовање кључа није успело, приказује се порука кориснику."
   },
   "message.fetchFailed": {
     "message": "Неуспело преузимање апликације, молимо покушајте поново касније.",
     "description": "Када неуспешно преузимање листе апликација."
   },
   "message.updateFailed": {
-    "message": "Измена није успела",
-    "description": "Када измена не успе, приказује се порука кориснику."
+    "message": "Ажурирање није успело",
+    "description": "Када ажурирање није успело, приказује се порука кориснику."
   },
   "message.updateSuccessfully": {
-    "message": "Измена је успешно завршена",
-    "description": "Када је измена успешно завршена, приказује се порука кориснику."
+    "message": "Ажурирање успешно",
+    "description": "Када је ажурирање успешно, приказује се порука кориснику."
   },
   "message.neverExpire": {
     "message": "Никада не истиче",
     "description": "Када пријава никада не истиче, приказује се порука кориснику."
   },
   "title.buyService": {
-    "message": "Купите услугу",
-    "description": "Када корисник жели да купи услугу, заглавље странице."
+    "message": "Kupovina usluge",
+    "description": "Naslov stranice kada korisnik želi da kupi uslugu."
   },
   "title.globalBuy": {
-    "message": "Пуниње општег биланса",
-    "description": "Када корисник жели да напуни општи баланс, заглавље странице."
+    "message": "Ace Data Cloud dopuna opštih bodova",
+    "description": "Naslov stranice kada korisnik želi da kupi opštu uslugu."
   },
   "title.applicationRemainingCount": {
-    "message": "Измените количину",
-    "description": "Када корисник жели да измени количину пријаве, заглавље странице."
+    "message": "Izmena broja",
+    "description": "Naslov stranice kada korisnik želi da izmeni broj prijava."
   },
   "title.manageApplication": {
-    "message": "Управљање пријавом",
-    "description": "Када корисник жели да управља пријавом, заглавље странице."
+    "message": "Upravljanje prijavama",
+    "description": "Naslov stranice kada korisnik želi da upravlja prijavama."
   },
   "title.applicationBalance": {
     "message": "Посебни поени - {service}",
     "description": "Када корисник прегледа баланс пријаве, приказује се порука кориснику."
   },
   "title.count": {
-    "message": "Број апликација",
-    "description": "Заглавље картице за сажетак броја апликација."
+    "message": "Ukupan broj prijava",
+    "description": "Naslov stranice kada korisnik gleda broj prijava."
   },
   "message.countDescription": {
-    "message": "Управљајте својим посебним апликацијама и општим балансом овде.",
-    "description": "Помоћни опис испод картице броја апликација."
+    "message": "Свака услуга одговара једном примеру пријаве, можете управљати кључевима, потрошњом и другим информацијама у доњем делу.",
+    "description": "Када корисник прегледа број пријава, приказује се порука кориснику."
   },
   "title.globalBalance": {
-    "message": "Општи баланс",
-    "description": "Када корисник прегледа општи баланс, приказује се порука кориснику."
+    "message": "Opšti saldo",
+    "description": "Naslov stranice kada korisnik gleda opšti saldo. Engleski mora biti preveden kao 'General Balance', a kineski kao '通用余额'."
   },
   "message.globalBalanceDescription": {
-    "message": "Општи баланс доступан је за потрошњу од стране квалификованих апликација.",
-    "description": "Текст објашњења за картицу општег биланса."
+    "message": "Када је омогућена 'Дозволи општу равнотежу', недостатак равнотеже инстанце ће аутоматски користити општу равнотежу.",
+    "description": "Текст обавештења, објашњава да ће недостатак равнотеже инстанце аутоматски потрошити општу равнотежу. Термин: општа равнотежа = General Balance (обратите пажњу да не преводите као Global Balance)."
+  },
+  "button.service": {
+    "message": "Ekskluzivna podrška",
+    "description": "Tekst na dugmetu, klikom na ovo dugme preći će se na stranicu ekskluzivne podrške."
+  },
+  "button.acquire": {
+    "message": "Dodaj podršku",
+    "description": "Tekst na dugmetu, klikom na ovo dugme će se dobiti stavka."
+  },
+  "button.delete": {
+    "message": "Obriši",
+    "description": "Tekst na dugmetu, klikom na ovo dugme će se obrisati stavka."
+  },
+  "field.dataset": {
+    "message": "Skup podataka",
+    "description": "Skup podataka koji se zahteva."
+  },
+  "field.disabled": {
+    "message": "Onemogućeno",
+    "description": "Da li je zahtev onemogućen."
+  },
+  "message.addServiceToAcquire": {
+    "message": "Молимо вас да додате корисничку службу за добијање",
+    "description": "Када корисник још није додао корисничку службу за добијање, приказује се порука кориснику."
+  },
+  "message.confirmApplying": {
+    "message": "Потврдите захтев за услугу",
+    "description": "Када корисник потврди захтев за услугу, приказује се порука кориснику."
+  },
+  "message.confirmDelete": {
+    "message": "Да ли сте сигурни да желите да обришете ову пријаву? Након брисања, сви подаци о пријави ће бити изгубљени",
+    "description": "Када корисник потврди брисање пријаве, приказује се порука кориснику."
+  },
+  "message.placeEnter": {
+    "message": "Молимо унесите '$0$' да бисте потврдили",
+    "description": "Када корисник треба да унесе текст за потврду, приказује се порука кориснику, не преводите `$0$`"
+  },
+  "message.invalidInput": {
+    "message": "Неважећи унос",
+    "description": "Када корисник унесе неважеће податке, приказује се порука кориснику."
+  },
+  "message.deleteFailed": {
+    "message": "Брисање није успело",
+    "description": "Када брисање није успело, приказује се порука кориснику."
+  },
+  "message.deleteSuccessfully": {
+    "message": "Брисање успешно",
+    "description": "Када је брисање успешно, приказује се порука кориснику."
+  },
+  "title.application": {
+    "message": "Prijava",
+    "description": "Naslov stranice kada korisnik gleda prijavu."
+  },
+  "title.description": {
+    "message": "Opis",
+    "description": "Naslov stranice kada korisnik gleda ugovor o korišćenju podataka i tehničkih usluga."
   }
 }

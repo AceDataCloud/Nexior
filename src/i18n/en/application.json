@@ -13,31 +13,31 @@
   },
   "button.goDocument": {
     "message": "Document",
-    "description": "Button text that takes the user to the document page when clicked."
+    "description": "Button text that redirects to the document page."
   },
   "button.goCredentials": {
-    "message": "Credentials",
-    "description": "Button text that takes the user to the credentials page when clicked."
+    "message": "Keys",
+    "description": "Button text that redirects to the credentials page. Must translate to 'Keys'."
   },
   "button.buyMore": {
-    "message": "Buy More",
-    "description": "Button text that takes the user to the buy more page when clicked."
+    "message": "Top Up",
+    "description": "Button text that redirects to the purchase more page. Must translate to 'Top Up'."
   },
   "button.createOrder": {
     "message": "Create Order",
-    "description": "Button text that takes the user to the create order page when clicked."
+    "description": "Button text that redirects to the create order page."
   },
   "button.custom": {
     "message": "Custom",
-    "description": "Button text that takes the user to the custom page when clicked."
+    "description": "Button text that redirects to the custom page."
   },
   "button.query": {
     "message": "Query",
-    "description": "Button text that takes the user to the query page when clicked."
+    "description": "Button text that redirects to the query page."
   },
   "button.usage": {
-    "message": "Usage Records",
-    "description": "Button text that takes the user to the usage records page when clicked."
+    "message": "Usage",
+    "description": "Button text that redirects to the usage history page. Must translate to 'Usage'."
   },
   "field.serviceName": {
     "message": "Service Name",
@@ -52,48 +52,48 @@
     "description": "The status of the application."
   },
   "field.id": {
-    "message": "Application ID",
+    "message": "App ID",
     "description": "The ID of the application."
   },
   "field.remainingAmount": {
-    "message": "Remaining Quota",
-    "description": "The remaining quota of the application."
+    "message": "Balance",
+    "description": "The balance being applied for."
   },
   "field.usedAmount": {
-    "message": "Used Quota",
-    "description": "The used quota of the application."
+    "message": "Used",
+    "description": "The amount that has been used in the application."
   },
   "field.apiKey": {
     "message": "API Key",
-    "description": "The API key."
+    "description": "API key."
   },
   "field.service": {
     "message": "Service",
-    "description": "The service applied for."
+    "description": "The service being applied for."
   },
   "field.operation": {
     "message": "Operation",
-    "description": "The operation of the application."
+    "description": "The operation being applied for."
   },
   "field.allowConsumeGlobal": {
-    "message": "Use Global Balance",
-    "description": "Whether to allow the consumption of global balance when the exclusive balance is insufficient."
+    "message": "Allow Use General Balance",
+    "description": "Switch to allow consumption of the general balance (General Balance)."
   },
   "field.amount": {
     "message": "Amount",
-    "description": "The amount applied for."
+    "description": "The amount being applied for."
   },
   "field.scope": {
     "message": "Scope",
-    "description": "The scope of the application."
+    "description": "The scope of the application, which may be global or specific to a service."
   },
   "field.traceId": {
     "message": "Trace ID",
-    "description": "The trace ID of an API call for the application of the API service, do not translate, keep as 'Trace ID'."
+    "description": "The trace ID of the API call for the API service application."
   },
   "field.shouldPayPrice": {
     "message": "Final Price",
-    "description": "The final price of the application."
+    "description": "The final price being applied for."
   },
   "field.api": {
     "message": "API",
@@ -105,7 +105,7 @@
   },
   "field.credential": {
     "message": "Credential",
-    "description": "The credential of the application."
+    "description": "The credential being applied for."
   },
   "field.name": {
     "message": "Name",
@@ -121,47 +121,47 @@
   },
   "field.freeAmount": {
     "message": "Free Amount",
-    "description": "The free amount applied for."
+    "description": "The free amount being applied for."
   },
   "field.extraPrice": {
     "message": "Price",
     "description": "The additional price that the user should pay for the application."
   },
   "message.alreadyApplied": {
-    "message": "You have already applied for this service, please check the console.",
+    "message": "You have already applied for this service, please check the console",
     "description": "Message displayed to the user when they have already applied for this service."
   },
   "message.applySuccessfully": {
-    "message": "Application Successful",
-    "description": "Message displayed to the user when they have successfully applied for this service."
+    "message": "Application successful",
+    "description": "Message displayed to the user when they successfully apply for this service."
   },
   "message.notApplied": {
-    "message": "Welcome to use our service, we will give you free trial quota, please click the button below to start immediately.",
+    "message": "You have not applied for this service, please apply for the service before use",
     "description": "Message displayed to the user when they have not yet applied for this service."
   },
   "message.globalBalanceBuyDescription": {
-    "message": "The points from this recharge are global balance and can be used for any service.",
-    "description": "Message displayed to the user when they recharge global balance."
+    "message": "You can choose to recharge to the general balance, or recharge each application instance separately. This recharge will go into the general balance, and when the balance of a certain application instance is insufficient, the general balance will be automatically used to supplement it.",
+    "description": "Prompt text explaining that the recharge goes into the general balance and automatically supplements when the instance balance is insufficient. Term: General Balance (do not translate as Global Balance)."
   },
   "message.yourApplication": {
-    "message": "Your Application",
+    "message": "Your application",
     "description": "Message displayed to the user regarding their application."
   },
   "message.unverified": {
-    "message": "You need to complete real-name authentication before you can apply for this service.",
-    "description": "Message displayed to the user when they have not completed real-name authentication."
+    "message": "You need to complete real-name verification before applying for this service",
+    "description": "Message displayed to the user when they have not completed real-name verification."
   },
   "message.goVerify": {
-    "message": "Go to Real-name Authentication",
-    "description": "Message displayed to the user when they have not completed real-name authentication."
+    "message": "Go to real-name verification",
+    "description": "Message displayed to the user when they have not completed real-name verification."
   },
   "message.requiredParameter": {
-    "message": "Required Parameter",
-    "description": "Message displayed to the user when they have not entered required parameters."
+    "message": "Required parameter",
+    "description": "Message displayed to the user when they have not entered a required parameter."
   },
   "message.example": {
     "message": "Example",
-    "description": "Message displayed to the user when they have not entered required parameters."
+    "description": "Message displayed to the user when they have not entered a required parameter."
   },
   "message.applicationSelection": {
     "message": "Here are the packages you are currently applying for or have purchased. You can choose any package to continue using the service.",
@@ -172,7 +172,7 @@
     "description": "Message displayed to the user when they successfully create a credential."
   },
   "message.readPolicy": {
-    "message": "I have read and agree",
+    "message": "I have read and agree to",
     "description": "Message displayed to the user when they have read and agreed to the policy."
   },
   "message.policy": {
@@ -188,11 +188,11 @@
     "description": "Message displayed to the user when they confirm the service application."
   },
   "message.rotateCredential": {
-    "message": "Reset Key",
+    "message": "Reset key",
     "description": "Message displayed to the user when they reset the key."
   },
   "message.rotateCredentialConfirm": {
-    "message": "Are you sure you want to reset the key? It cannot be recovered after resetting.",
+    "message": "Are you sure you want to reset the key? It cannot be recovered after reset",
     "description": "Message displayed to the user when they confirm the key reset."
   },
   "message.idDoesNotExist": {
@@ -216,7 +216,7 @@
     "description": "Message displayed to the user when the update fails."
   },
   "message.updateSuccessfully": {
-    "message": "Update successful",
+    "message": "Updated successfully",
     "description": "Message displayed to the user when the update is successful."
   },
   "message.neverExpire": {
@@ -225,38 +225,94 @@
   },
   "title.buyService": {
     "message": "Purchase Service",
-    "description": "Title of the page when the user wants to purchase a service."
+    "description": "The title of the page when the user wants to purchase a service."
   },
   "title.globalBuy": {
-    "message": "Universal Balance Recharge",
-    "description": "Title of the page when the user wants to recharge the universal balance."
+    "message": "Ace Data Cloud General Points Recharge",
+    "description": "The title of the page when the user wants to purchase general services."
   },
   "title.applicationRemainingCount": {
-    "message": "Modify Quantity",
-    "description": "Title of the page when the user wants to modify the application quantity."
+    "message": "Modification Count",
+    "description": "The title of the page when the user wants to modify the application count."
   },
   "title.manageApplication": {
     "message": "Application Management",
-    "description": "Title of the page when the user wants to manage applications."
+    "description": "The title of the page when the user wants to manage applications."
   },
   "title.applicationBalance": {
     "message": "Exclusive Points - {service}",
     "description": "Message displayed to the user when they view the application balance."
   },
   "title.count": {
-    "message": "Application Count",
-    "description": "Title of the summary card for application count."
+    "message": "Total Number of Applications",
+    "description": "The title of the page when the user views the application count."
   },
   "message.countDescription": {
-    "message": "Manage your exclusive applications and universal balance here.",
-    "description": "Auxiliary description under the application count card."
+    "message": "Each service corresponds to an application instance, and you can view keys, usage, and other information in the management section below.",
+    "description": "Message displayed to the user when they view the application count."
   },
   "title.globalBalance": {
-    "message": "Universal Balance",
-    "description": "Message displayed to the user when they view the universal balance."
+    "message": "General Balance",
+    "description": "The title of the page when the user views the general balance."
   },
   "message.globalBalanceDescription": {
-    "message": "The universal balance is available for consumption by eligible applications.",
-    "description": "Description text for the universal balance card."
+    "message": "After enabling 'Allow General Balance', insufficient instance balance will automatically use the general balance.",
+    "description": "Prompt text explaining that when the instance balance is insufficient, the general balance will be automatically consumed. Term: General Balance (do not translate as Global Balance)."
+  },
+  "button.service": {
+    "message": "Exclusive Customer Service",
+    "description": "Button text that redirects to the exclusive customer service page."
+  },
+  "button.acquire": {
+    "message": "Get Customer Service",
+    "description": "Button text that allows the user to acquire this item."
+  },
+  "button.delete": {
+    "message": "Delete",
+    "description": "Button text that deletes this item."
+  },
+  "field.dataset": {
+    "message": "Dataset",
+    "description": "The dataset being applied for."
+  },
+  "field.disabled": {
+    "message": "Disabled",
+    "description": "Whether the application is disabled."
+  },
+  "message.addServiceToAcquire": {
+    "message": "Please add customer service to acquire",
+    "description": "Message displayed to the user when they have not yet added customer service to acquire."
+  },
+  "message.confirmApplying": {
+    "message": "Confirm service application",
+    "description": "Message displayed to the user when they confirm the service application."
+  },
+  "message.confirmDelete": {
+    "message": "Are you sure you want to delete this application? All application data will be lost after deletion",
+    "description": "Message displayed to the user when they confirm the deletion of an application."
+  },
+  "message.placeEnter": {
+    "message": "Please enter '$0$' to confirm",
+    "description": "Message displayed to the user when they need to enter text to confirm, do not translate `$0$`."
+  },
+  "message.invalidInput": {
+    "message": "Invalid input",
+    "description": "Message displayed to the user when they input invalid data."
+  },
+  "message.deleteFailed": {
+    "message": "Deletion failed",
+    "description": "Message displayed to the user when the deletion fails."
+  },
+  "message.deleteSuccessfully": {
+    "message": "Deleted successfully",
+    "description": "Message displayed to the user when the deletion is successful."
+  },
+  "title.application": {
+    "message": "Application",
+    "description": "The title of the page when the user is applying."
+  },
+  "title.description": {
+    "message": "Description",
+    "description": "The title of the page when the user views the data technology service usage agreement."
   }
 }

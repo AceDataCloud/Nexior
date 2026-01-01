@@ -1,15 +1,15 @@
 {
   "field.createdAt": {
     "message": "Verwendungszeit",
-    "description": "Die Zeit, zu der der Nutzungseintrag erstellt wurde."
+    "description": "Zeitpunkt der Aufzeichnung der Nutzung."
   },
   "field.statusCode": {
     "message": "Statuscode",
-    "description": "Der Statuscode des Nutzungseintrags."
+    "description": "Statuscode der Nutzungseinträge."
   },
   "field.application": {
-    "message": "Anwendung",
-    "description": "Das Anwendungsprogramm des Dienstes."
+    "message": "Antrag",
+    "description": "Verwendung von Ressourcen beantragen."
   },
   "field.status": {
     "message": "Status",
@@ -17,27 +17,27 @@
   },
   "field.api": {
     "message": "API",
-    "description": "Die API des Dienstes."
+    "description": "Aufgerufene API, keine Übersetzung erforderlich"
   },
   "field.usedAmount": {
     "message": "Verwendete Menge",
-    "description": "Die Menge der verwendeten Ressourcen."
+    "description": "Menge der verwendeten Ressourcen."
   },
   "field.deductedAmount": {
     "message": "Abgezogene Menge",
-    "description": "Die Menge der abgezogenen Ressourcen."
+    "description": "Menge der abgezogenen Ressourcen."
   },
   "field.remainingAmount": {
     "message": "Verbleibende Menge",
-    "description": "Die Menge der verbleibenden Ressourcen."
+    "description": "Menge der verbleibenden Ressourcen."
   },
   "field.metadata": {
     "message": "Metadaten",
-    "description": "Die Metadaten des Nutzungseintrags."
+    "description": "Metadaten der Nutzungseinträge."
   },
   "title.totalUsed": {
-    "message": "Kumulierte Nutzung",
-    "description": "Titel der Zusammenfassungs-Karte für die Nutzung."
+    "message": "Gesamtverbrauch (Punkte)",
+    "description": "Gesamtanzahl der verbrauchten Punkte erfassen"
   },
   "title.usageTrend": {
     "message": "Nutzungstrend",
@@ -45,34 +45,38 @@
   },
   "shortcuts.today": {
     "message": "Heute",
-    "description": "Schnellauswahl für den heutigen Zeitraum."
+    "description": "Datum von heute"
   },
   "shortcuts.last1Day": {
     "message": "Letzte 1 Tag",
-    "description": "Schnellauswahl für den Zeitraum der letzten 1 Tag."
+    "description": "Datumsbereich der letzten 1 Tag"
   },
   "shortcuts.last3Days": {
     "message": "Letzte 3 Tage",
-    "description": "Schnellauswahl für den Zeitraum der letzten 3 Tage."
+    "description": "Datumsbereich der letzten 3 Tage"
   },
   "shortcuts.last7Days": {
     "message": "Letzte 7 Tage",
-    "description": "Schnellauswahl für den Zeitraum der letzten 7 Tage."
+    "description": "Datumsbereich der letzten 7 Tage"
   },
   "shortcuts.last1Month": {
     "message": "Letzter 1 Monat",
-    "description": "Schnellauswahl für den Zeitraum des letzten 1 Monats."
+    "description": "Datumsbereich des letzten 1 Monats"
   },
   "placeholder.startDate": {
     "message": "Startzeit",
-    "description": "Platzhalter für die Startzeit im Zeitbereichs-Auswähler."
+    "description": "Startzeit"
   },
   "placeholder.endDate": {
     "message": "Endzeit",
-    "description": "Platzhalter für die Endzeit im Zeitbereichs-Auswähler."
+    "description": "Endzeit"
   },
   "placeholder.to": {
     "message": "bis",
-    "description": "Trenntext im Zeitbereichs-Auswähler."
+    "description": "Enddatum, das aus dem Datumsauswahlfeld ausgewählt wurde, Trennzeichen dazwischen."
+  },
+  "shortcuts.yesterday": {
+    "message": "Gestern",
+    "description": "Datum von gestern"
   }
 }

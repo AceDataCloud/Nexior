@@ -8,11 +8,17 @@
       </el-row>
       <el-row>
         <el-col :span="24">
-          <el-card shadow="hover">
+          <el-card shadow="hover" class="min-h-[500px]">
             <el-row>
               <el-col :span="16" :offset="4">
                 <el-skeleton v-if="loading" />
                 <el-form v-else-if="application" label-width="100px">
+                  <div v-if="!application?.service">
+                    <p class="text-[var(--el-text-color-secondary)] text-[12px] mb-3">
+                      {{ $t('application.message.globalBalanceBuyDescription') }}
+                    </p>
+                    <el-divider border-style="dashed" />
+                  </div>
                   <el-form-item v-if="application?.service" :label="$t('application.field.service')">
                     {{ application?.service?.title }}
                   </el-form-item>

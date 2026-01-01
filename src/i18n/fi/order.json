@@ -12,27 +12,27 @@
     "description": "Painikkeen teksti, jota käytetään tilauksen tietojen tarkistamiseen."
   },
   "button.query": {
-    "message": "Kysy",
-    "description": "Painikkeen teksti, jota käytetään tilauksen kysymiseen."
+    "message": "Kysely",
+    "description": "Painikkeen teksti, jota käytetään tilauksen kyselyyn."
   },
   "button.finish": {
-    "message": "Manuaalinen valmistuminen",
-    "description": "Painikkeen teksti, jota käytetään tilauksen manuaaliseen valmistumiseen."
+    "message": "Viimeistele manuaalisesti",
+    "description": "Painikkeen teksti, jota käytetään tilauksen manuaaliseen viimeistelyyn."
   },
   "button.update": {
     "message": "Päivitä",
     "description": "Painikkeen teksti, jota käytetään tilauksen päivittämiseen."
   },
   "field.id": {
-    "message": "Tilausnumero",
-    "description": "Tilauksen numero."
+    "message": "Tilaus-ID",
+    "description": "Tilauksen ID."
   },
   "field.amount": {
     "message": "Summa",
     "description": "Tilauksen pisteiden summa."
   },
   "field.price": {
-    "message": "Summa",
+    "message": "Hinta",
     "description": "Tilauksen pisteiden summa."
   },
   "field.description": {
@@ -60,259 +60,407 @@
     "description": "API on verkkopalvelu."
   },
   "field.proxy": {
-    "message": "Välimies",
-    "description": "Välimies on verkkopalvelu, jota käytetään tietojen siirtämiseen HTTP-välimiehenä."
+    "message": "Välikäsi",
+    "description": "Välikäsi on verkkopalvelu, joka tarkoittaa HTTP-välikäsiä tietojen siirtämiseen."
   },
   "message.paidSuccessfully": {
     "message": "Maksu onnistui",
-    "description": "Viesti onnistuneesta maksusta."
+    "description": "Maksun onnistumisen viesti."
   },
   "message.orderExpired": {
-    "message": "Tilaus on vanhentunut, luo uusi tilaus maksamista varten.",
-    "description": "Viesti tilauksen vanhentumisesta."
+    "message": "Tilauksesi on vanhentunut, luo uusi tilaus maksamista varten.",
+    "description": "Vanhentuneen tilauksen viesti."
   },
   "message.createFailed": {
     "message": "Luonti epäonnistui",
-    "description": "Viesti epäonnistuneesta luomisesta."
+    "description": "Luonnin epäonnistumisen viesti."
   },
   "message.wechatPayHelp": {
-    "message": "Avaa WeChat puhelimessasi ja skannaa koodi maksamisen loppuun saattamiseksi",
-    "description": "Viesti WeChat-maksuavusta."
+    "message": "Avaa WeChat puhelimellasi ja skannaa maksun suorittamiseksi",
+    "description": "WeChat-maksuohjeen viesti."
   },
   "message.free": {
     "message": "Ilmainen",
-    "description": "Viesti ilmaisesta tilauksesta."
+    "description": "Ilmaisen tilauksen viesti."
   },
   "message.buyInExternalUrl": {
     "message": "Suorita maksu ulkoisessa linkissä",
-    "description": "Viesti ulkoisessa linkissä maksamisesta."
+    "description": "Ulkoisen linkin maksamisen viesti."
   },
   "message.updateFailed": {
     "message": "Päivitys epäonnistui",
-    "description": "Viesti epäonnistuneesta päivityksestä."
+    "description": "Päivityksen epäonnistumisen viesti."
   },
   "message.updateSuccessfully": {
     "message": "Päivitys onnistui",
-    "description": "Viesti onnistuneesta päivityksestä."
+    "description": "Päivityksen onnistumisen viesti."
   },
   "message.confirmFinish": {
     "message": "Tämä toiminto asettaa tilauksen manuaalisesti maksutilaan ja viimeistelee jakelun, eikä sitä voi peruuttaa. Varmista, että asiakas on suorittanut maksun, haluatko jatkaa?",
-    "description": "Viesti vahvistamisesta."
+    "description": "Vahvistusviesti valmistumisesta."
   },
   "state.pending": {
     "message": "Odottaa maksua",
-    "description": "Tilauksen tila, joka tarkoittaa, että tämä tilaus odottaa edelleen käyttäjän maksua."
+    "description": "Tilauksen tila, joka osoittaa, että tilaus odottaa edelleen käyttäjän maksua."
   },
   "state.paid": {
     "message": "Maksettu",
-    "description": "Tilauksen tila, joka tarkoittaa, että tämä tilaus on jo maksettu."
+    "description": "Tilauksen tila, joka osoittaa, että tilaus on maksettu."
   },
   "state.finished": {
-    "message": "Valmistunut",
-    "description": "Tilauksen tila, joka tarkoittaa, että tämä tilaus on jo valmistunut."
+    "message": "Valmis",
+    "description": "Tilauksen tila, joka osoittaa, että tilaus on valmis."
   },
   "state.expired": {
     "message": "Maksuaika umpeutunut",
-    "description": "Tilauksen tila, joka tarkoittaa, että tämä tilaus on jo vanhentunut."
+    "description": "Tilauksen tila, joka osoittaa, että tilaus on vanhentunut."
   },
   "state.failed": {
     "message": "Maksu epäonnistui",
-    "description": "Tilauksen tila, joka tarkoittaa, että tämän tilauksen maksaminen epäonnistui."
+    "description": "Tilauksen tila, joka osoittaa, että tilauksen maksaminen epäonnistui."
   },
   "title.info": {
-    "message": "Tilaustiedot",
-    "description": "Verkkosivuston otsikkona käytettävä otsikko, joka tarkoittaa tilaustietoja."
+    "message": "Tilauksen tiedot",
+    "description": "Verkkosivuston otsikkona näkyvä otsikko, joka osoittaa tilauksen tiedot."
   },
   "title.wechatPay": {
     "message": "WeChat-maksu",
-    "description": "Verkkosivuston otsikkona käytettävä otsikko, joka tarkoittaa WeChat-maksua."
+    "description": "Verkkosivuston otsikkona näkyvä otsikko, joka osoittaa WeChat-maksua."
   },
   "title.aliPay": {
     "message": "Alipay",
-    "description": "Verkkosivuston otsikkona käytettävä otsikko, joka tarkoittaa Alipay-maksua, Alipay-maksu on verkkopohjainen maksutapa."
+    "description": "Verkkosivuston otsikkona näkyvä otsikko, joka osoittaa Alipay-maksua, Alipay on verkkopankkimaksu."
   },
   "title.stripe": {
     "message": "Stripe",
-    "description": "Verkkosivuston otsikkona käytettävä otsikko, joka tarkoittaa Stripe-maksua, Stripe-maksu on verkkopohjainen maksutapa."
+    "description": "Verkkosivuston otsikkona näkyvä otsikko, joka osoittaa Stripe-maksua, Stripe on verkkopankkimaksu."
   },
   "title.manageOrder": {
     "message": "Hallitse tilausta",
-    "description": "Verkkosivuston otsikkona käytettävä otsikko, joka tarkoittaa tilauksen hallintaa."
+    "description": "Verkkosivuston otsikkona näkyvä otsikko, joka osoittaa tilausten hallintaa."
   },
   "title.x402": {
     "message": "Kryptovaluutta",
-    "description": "Otsikko, joka käytetään X402-ratkaisuun perustuvassa kryptomaksussa."
+    "description": "Verkkosivuston otsikkona näkyvä otsikko, joka osoittaa kryptovaluuttamaksua (perustuu X402-maksusuunnitelmaan)."
   },
   "message.discountTag": {
     "message": "{percent}% alennus",
-    "description": "Kuluttajalle näytettävä merkintä, joka osoittaa sovelletun alennusprosentin."
+    "description": "Näyttää sovelletun alennusprosentin tunnus."
   },
   "message.discountHint": {
-    "message": "Jäsenalennus {percent}% on sovellettu automaattisesti.",
-    "description": "Vihje käyttäjälle saadusta jäsenalennuksesta."
+    "message": "Olet meidän erityinen VIP-asiakas, voit automaattisesti nauttia {percent}% alennuksesta.",
+    "description": "Muistutus käyttäjälle, että VIP-statuksen vuoksi alennus on automaattinen."
   },
   "message.x402DiscountApplied": {
-    "message": "X402-maksua käyttäen säästät lisä {percent}%.",
-    "description": "Selitys X402-maksun tuomasta lisäalennuksesta."
+    "message": "X402-maksun kautta saat lisäalennuksen {percent}%.",
+    "description": "Selittää X402-maksun tuoman lisäalennuksen."
   },
   "message.x402DiscountTag": {
-    "message": "{percent}% ALENNUS",
-    "description": "X402-maksualennuksen merkintä."
+    "message": "{percent}% alennus",
+    "description": "Korostaa X402-maksun kautta saatavaa lisäalennusprosenttia."
   },
   "message.x402DiscountHint": {
-    "message": "Valitsemalla X402-maksun saat lisä {percent}% alennusta.",
-    "description": "Vihje käyttäjälle, joka kannustaa valitsemaan X402-maksun."
+    "message": "Valitse X402-maksu ja nauti heti {percent}% alennuksesta.",
+    "description": "Selittää käyttäjälle, että X402-maksun kautta voi avata lisäalennuksen."
   },
   "message.x402IntroShort": {
-    "message": "Voit maksaa suoraan kryptolompakolla tai vaihtaa ohjelmointitilaan saadaksesi integrointiparametrit.",
-    "description": "Lyhyt esittely X402-maksuikkunasta."
+    "message": "Valitse lompakko ja suorita USDC-maksu suoraan.",
+    "description": "Lyhyt esittelyteksti."
   },
   "message.x402TabWallet": {
     "message": "Lompakkosaldo",
-    "description": "Lompakkosaldo-välilehden otsikko."
+    "description": "Lompakkosaldon välilehden otsikko."
   },
   "message.x402TabApi": {
-    "message": "Ohjelmointiyhteys",
-    "description": "Ohjelmointiyhteys-välilehden otsikko."
+    "message": "Ohjelmallinen",
+    "description": "Ohjelmallisen välilehden otsikko."
   },
   "message.x402WalletTitle": {
-    "message": "Yhdistä lompakko ja maksa",
-    "description": "Otsikko, joka ohjaa käyttäjää yhdistämään lompakon."
+    "message": "Yhdistä lompakko ja maksa USDC",
+    "description": "X402-lompakon nopean maksun otsikko (USDC)."
   },
   "message.x402WalletConnected": {
     "message": "Yhdistetty",
-    "description": "Merkintä, kun lompakko on yhdistetty."
+    "description": "Näytetään, kun lompakko on yhdistetty."
   },
   "message.x402ConnectWallet": {
     "message": "Yhdistä lompakko",
-    "description": "Lompakon yhdistämispainikkeen teksti."
+    "description": "Yhdistä EVM-lompakon painikkeen teksti."
   },
   "message.x402NoWalletDesc": {
-    "message": "Lompakkoa ei havaittu. Asenna MetaMask/Phantom tai avaa tämä sivu lompakon sisäisessä selaimessa.",
-    "description": "Selitys, kun EVM-lompakkoa ei havaita."
+    "message": "Käytä lompakkoa tukevia selaimia (suositellaan Chrome/Brave) tai asenna MetaMask/Phantom-laajennus; voit myös avata tämän sivun puhelimen lompakko-sovelluksen sisäisessä selaimessa.",
+    "description": "Yleinen selitys ilman lompakkoa."
   },
   "message.x402SwitchNetwork": {
-    "message": "Vaihda lompakon verkko {network} -verkkoon",
-    "description": "Kehoitus käyttäjälle vaihtaa lompakon verkko."
+    "message": "Vaihda lompakossa verkko {network} -verkkoon",
+    "description": "Muistutus käyttäjälle vaihtaa määritettyyn lohkoketjuverkkoon."
   },
   "message.x402SolanaNotEnabled": {
-    "message": "Solana X402 payment is not enabled for this order. Please switch network or refresh.",
-    "description": "Shown when the selected Solana network is not available in X402 payment requirements."
+    "message": "Solana X402 ei ole vielä käytössä palvelimella.",
+    "description": "Viesti, kun Solana X402 ei ole käytössä tälle tilaukselle."
   },
   "message.x402NeedConnectAccount": {
-    "message": "Yhdistä ensin vähintään yksi yhteensopiva EVM-lompakko ennen maksamista.",
-    "description": "Muistutus käyttäjälle yhdistää lompakon tili."
+    "message": "Yhdistä ensin lompakko.",
+    "description": "Muistutus, kun lompakkoa ei ole yhdistetty."
   },
   "message.x402ConfirmTitle": {
-    "message": "Confirm Payment",
-    "description": "Title of the confirmation dialog before signing an X402 payment."
+    "message": "Vahvista Maksu",
+    "description": "Otsikko X402-maksun vahvistamiseen."
   },
   "message.x402ConfirmDesc": {
-    "message": "Confirm USDC payment on {network}?",
-    "description": "Description of the confirmation dialog before signing an X402 payment."
+    "message": "Vahvistetaanko USDC-maksu verkossa {network}?",
+    "description": "Kuvaus X402-maksun vahvistamiseen."
   },
   "message.x402StepsTitle": {
     "message": "Maksuvaiheet",
-    "description": "Maksuvaiheiden luettelon otsikko."
+    "description": "Vaiheiden otsikko."
   },
   "message.x402Step1": {
-    "message": "Yhdistä lompakko (asennettuna, päivitä sivu, jos ei ole).",
-    "description": "Lompakon maksuvaihe 1."
+    "message": "Yhdistä lompakko (jos et ole asentanut, asenna ensin laajennus ja päivitä tämä sivu tai avaa tämä sivu puhelimen lompakossa)",
+    "description": "Vaihe 1 -teksti."
   },
   "message.x402Step2": {
-    "message": "Varmista, että lompakon verkko on {network}.",
-    "description": "Lompakon maksuvaihe 2."
+    "message": "Muokkaa lompakan asetuksia, varmista, että lompakan verkko on {network}",
+    "description": "Vaihe 2 -teksti."
   },
   "message.x402Step3": {
-    "message": "Napsauta maksua ja suorita valtuutussignaali lompakossa.",
-    "description": "Lompakon maksuvaihe 3."
+    "message": "Napsauta 'Maksa lompakolla', suorita valtuutus allekirjoitus lompakossa",
+    "description": "Vaihe 3 -teksti."
   },
   "message.x402Step4": {
-    "message": "Kun olet allekirjoittanut, me hoidamme automaattisesti maksun ja päivitämme tilauksen tilan.",
-    "description": "Lompakon maksuvaihe 4."
+    "message": "Kun allekirjoitus on onnistunut, me maksamme automaattisesti, tämän sivun pitäisi päivittyä maksun jälkeen.",
+    "description": "Vaihe 4 -teksti."
   },
   "message.x402IntegrationResourceLabel": {
-    "message": "Maksu-API-osoite",
-    "description": "Maksu-API-osoitteen etiketti."
+    "message": "Maksuliittymän osoite",
+    "description": "Maksuliittymän osoitteen etiketti."
   },
   "message.x402IntegrationPayToLabel": {
-    "message": "Saajan osoite",
-    "description": "Loogisen saajan osoitteen etiketti."
+    "message": "Maksuosoite",
+    "description": "Näyttää lohkoketjun maksuosoitteen etiketti."
   },
   "message.x402IntegrationNetworkLabel": {
     "message": "Verkko",
-    "description": "Loogisen verkon etiketti."
+    "description": "Näyttää lohkoketjuverkon nimen etiketti."
   },
   "message.x402IntegrationAssetLabel": {
-    "message": "Omaisuus",
-    "description": "Maksuomaisuuden etiketti."
+    "message": "Maksuvarat",
+    "description": "Näyttää maksuvälineiden etiketti."
   },
   "message.x402IntegrationFallback": {
-    "message": "Istuntoparametreja ei voitu hankkia, tarkista asiakirjat tai ota yhteyttä tukeen saadaksesi tarvittavat parametrit.",
-    "description": "Varausviesti, kun integrointiparametreja puuttuu."
+    "message": "Täydellisiä istuntotietoja ei saatu, katso kehitysasiakirjat tai ota yhteyttä tukeen saadaksesi tarvittavat parametrit.",
+    "description": "Viesti, joka näytetään, kun istuntotietoja ei voida saada."
   },
   "message.x402IntegrationDocsCta": {
-    "message": "Avaa X402-opas",
-    "description": "Painikkeen teksti, joka avaa X402-integraatio-opaan."
+    "message": "Avaa X402-kehitysohjeet",
+    "description": "Toimintapainikkeen teksti kehittäjän ohjeiden avaamiseen."
   },
   "message.x402InstallGuideTitle": {
     "message": "Asenna lompakkolaajennus",
-    "description": "Lompakon asennusohjeiden dialogin otsikko."
+    "description": "Lompakan asennusohjeen ponnahdusikkunan otsikko."
   },
   "message.x402InstallGuideDesc": {
-    "message": "Asenna {wallet} -laajennus ohjeiden mukaan ja yhdistä uudelleen.",
-    "description": "Lompakon asennusohjeiden kuvaus."
+    "message": "Suorita seuraavat vaiheet {wallet} -laajennuksen asentamiseksi, ja käytä alla olevaa painiketta tämän sivun päivittämiseksi lompakon tarkistamiseksi.",
+    "description": "Ohje käyttäjälle lompakkolaajennuksen asentamiseksi."
   },
   "message.x402InstallGuideStep1": {
-    "message": "Lataa ja asenna {wallet} -selaimen laajennus (suositellaan Chrome/Brave).",
-    "description": "Lompakon asennusvaihe 1."
+    "message": "Avaa uusi sivu ja asenna {wallet} -selaimen laajennus (suositellaan Chrome/Brave).",
+    "description": "Lompakan asennusvaihe 1."
   },
   "message.x402InstallGuideStep2": {
-    "message": "Avaa laajennus, kirjaudu sisään/avaa ja varmista, että se on käytössä.",
-    "description": "Lompakon asennusvaihe 2."
+    "message": "Valmis laajennuksen asennus, kirjaudu sisään/avaa ja varmista, että se on käytössä nykyisessä selaimen profiilissa.",
+    "description": "Lompakan asennusvaihe 2."
   },
   "message.x402InstallGuideStep3": {
-    "message": "Palaa tälle sivulle, napsauta 'Olen asentanut' ja yritä yhdistää uudelleen.",
-    "description": "Lompakon asennusvaihe 3."
+    "message": "Palaa tälle sivulle, napsauta 'Olen asentanut' ja päivitä, yritä sitten 'Yhdistä lompakko'.",
+    "description": "Lompakan asennusvaihe 3."
   },
   "message.x402InstallGuideConfirm": {
     "message": "Olen asentanut",
-    "description": "Vahvistuspainike asennuksen jälkeen."
+    "description": "Pääpainike lompakan asennuksen jälkeen."
   },
   "message.x402NetworkGuideTitle": {
     "message": "Säädä verkkoasetuksia",
-    "description": "Verkko-opastusdialogin otsikko."
+    "description": "Verkon yhteensopimattomuuden selitys ponnahdusikkunan otsikko."
   },
   "message.x402NetworkGuideDesc": {
-    "message": "Vaihda lompakon verkko {network} -verkkoon, ja päivitä sitten sivu ja yritä uudelleen.",
-    "description": "Ohje käyttäjälle verkon vaihtamiseen."
+    "message": "Suorita seuraavat vaiheet lompakan verkon vaihtamiseksi {network} -verkkoon, ja päivitä sitten tämä sivu tarkistaaksesi uudelleen.",
+    "description": "Ohje käyttäjälle lompakan verkon säätämiseksi."
   },
   "message.x402NetworkGuideStep1": {
-    "message": "Avaa lompakon laajennuksen asetukset ja tarkista aktiivinen verkko.",
-    "description": "Verkon säätövaihe 1."
+    "message": "Avaa lompakkolaajennus, siirry Asetukset -> Aktiiviset verkot.",
+    "description": "Verkon asetusten vaihe 1."
   },
   "message.x402NetworkGuideStep2": {
-    "message": "Ota käyttöön {network} (tai haluttu verkko) luettelosta.",
-    "description": "Verkon säätövaihe 2."
+    "message": "Varmista, että {network} (tai muu määritetty verkko) on päällä verkko-listalla, jos se on päällä, voit ohittaa tämän vaiheen.",
+    "description": "Verkon säätämisen toinen vaihe, Ethereumia ei tarvitse sulkea."
   },
   "message.x402NetworkGuideStep3": {
-    "message": "Palaa tälle sivulle ja napsauta 'Asetukset valmiit' ennen maksamista.",
-    "description": "Verkon säätövaihe 3."
+    "message": "Palaa tälle sivulle, napsauta 'Olen säätänyt' ja päivitä, yritä sitten maksua.",
+    "description": "Verkon asetusten vaihe 3."
   },
   "message.x402NetworkGuideConfirm": {
-    "message": "Asetukset valmiit",
-    "description": "Vahvistuspainike verkkoasetusten jälkeen."
+    "message": "Olen säätänyt",
+    "description": "Pääpainike verkkoasetusten jälkeen."
   },
   "message.x402NetworkSwitchFailed": {
-    "message": "Nykyinen lompakko ei tue automaattista verkon vaihtamista, vaihda se manuaalisesti ja yritä uudelleen.",
-    "description": "Kehoitus automaattisen verkon vaihtamisen epäonnistumisen yhteydessä."
+    "message": "Nykyinen lompakko ei tue automaattista verkon vaihtamista, vaihda lompakossa manuaalisesti määritettyyn verkkoon ja yritä sitten uudelleen.",
+    "description": "Muistutus käyttäjälle, että lompakko ei tue automaattista verkon vaihtamista, ja se on vaihdettava manuaalisesti."
   },
   "message.x402PaymentFailed": {
-    "message": "X402-lompakon maksaminen epäonnistui, yritä myöhemmin uudelleen tai ota yhteyttä tukeen.",
-    "description": "Yleinen virhe X402-maksamisen epäonnistumisen yhteydessä."
+    "message": "X402-lompakan maksu epäonnistui, yritä myöhemmin uudelleen. Jos epäonnistuu useita kertoja, ota yhteyttä tukeen ja anna virheviesti.",
+    "description": "Yleinen virheviesti, kun X402-lompakan maksu epäonnistuu."
   },
   "message.x402WalletPayCta": {
     "message": "Maksa lompakolla",
-    "description": "Painikkeen teksti, joka aloittaa X402-lompakon maksamisen."
+    "description": "Maksa liitettyä lompakkoa käyttäen painikkeen teksti."
+  },
+  "button.refund": {
+    "message": "Hyvitys",
+    "description": "Painikkeen teksti, jota käytetään tilauksen manuaiseen hyvittämiseen."
+  },
+  "field.applicationId": {
+    "message": "Hakemus-ID",
+    "description": "Tilauksen liittyvän hakemuksen ID."
+  },
+  "field.serviceId": {
+    "message": "Palvelu-ID",
+    "description": "Alennukseen liittyvä palvelu-ID."
+  },
+  "field.generalDiscount": {
+    "message": "Yleinen alennus",
+    "description": "Kun alennus on voimassa kaikille palveluille, näytettävä etiketti."
+  },
+  "field.userId": {
+    "message": "Käyttäjä-ID",
+    "description": "Alennuksen saavan käyttäjän ID."
+  },
+  "field.discount": {
+    "message": "Alennus",
+    "description": "Suhde, joka sovelletaan tämän käyttäjän tilaukseen."
+  },
+  "field.actions": {
+    "message": "Toiminnot",
+    "description": "Toimintopainikkeiden sarakkeen otsikko."
+  },
+  "message.confirmRefund": {
+    "message": "Tämä toiminto peruuttaa tilauksen oikeudet ja merkitsee sen palautetuksi, eikä sitä voi peruuttaa. Varmista, että palautus on käsitelty, haluatko jatkaa?",
+    "description": "Vahvistusviesti palautuksesta."
+  },
+  "message.x402IntegrationIntro": {
+    "message": "Nykyinen tilaus käyttää X402-maksuprotokollaa, suorita palvelinpuolen integrointi ja aloita maksu alla olevien parametrien mukaan.",
+    "description": "Esittely, joka vaatii X402-protokollan käyttöä."
+  },
+  "message.x402IntegrationProtocol": {
+    "message": "Käytä fasilitaattorin maksuliittymää ja suorita allekirjoituslähetys, vahvista tila tämän sivun jälkeen maksun onnistumisen jälkeen.",
+    "description": "Selitys X402-maksun suorittamisen vaiheista."
+  },
+  "message.x402IntegrationDocsHint": {
+    "message": "Haluatko tietää lisää yksityiskohtia? Katso alla olevat kehitysasiakirjat.",
+    "description": "Muistutus käyttäjälle, että lisätietoja voi saada kehitysasiakirjoista."
+  },
+  "message.x402SwitchNetworkCta": {
+    "message": "Vaihda {network} -verkkoon",
+    "description": "Napsauta verkon vaihtamisen CTA:ta."
+  },
+  "message.x402NoWalletTitle": {
+    "message": "EVM-lompakkoa ei havaittu",
+    "description": "Otsikko, kun selain ei ole injektoinut EVM-lompakkoa."
+  },
+  "message.x402NoWalletSafariDesc": {
+    "message": "Safari ei yleensä tue MetaMaskia tai muita laajennuksia, suosittelemme käyttämään Chromea/Bravea tai avaamaan tämän sivun puhelimen lompakko-sovelluksen sisäisessä selaimessa.",
+    "description": "Selitys ilman lompakkoa Safari-ympäristössä."
+  },
+  "message.x402InstallMetaMask": {
+    "message": "Asenna MetaMask",
+    "description": "Asenna MetaMask -painikkeen teksti."
+  },
+  "message.x402InstallPhantom": {
+    "message": "Asenna Phantom",
+    "description": "Asenna Phantom -painikkeen teksti."
+  },
+  "message.x402ConnectWC": {
+    "message": "Yhdistä WalletConnectilla",
+    "description": "Yhdistä WalletConnect -painikkeen teksti."
+  },
+  "message.x402RefreshDetect": {
+    "message": "Tarkista uudelleen",
+    "description": "Tarkista lompakko -painikkeen teksti."
+  },
+  "message.x402MissingWCProjectId": {
+    "message": "WalletConnect Project ID:tä ei ole määritetty (asetettava ympäristömuuttuja VITE_WALLETCONNECT_PROJECT_ID)",
+    "description": "Viesti, kun WalletConnect-projektin ID puuttuu."
+  },
+  "message.x402WalletBound": {
+    "message": "Sidottu",
+    "description": "Näytetään, kun lompakko on sidottu."
+  },
+  "message.userIdRequired": {
+    "message": "Syötä käyttäjän ID.",
+    "description": "Näytetään, kun käyttäjän ID on tyhjää."
+  },
+  "message.serviceIdRequired": {
+    "message": "Valitse palvelu.",
+    "description": "Näytetään, kun palvelun ID on tyhjää."
+  },
+  "message.discountRequired": {
+    "message": "Syötä alennus 0 ja 1 välillä.",
+    "description": "Näytetään, kun alennus ei ole laillisessa rajoissa."
+  },
+  "message.discountCreated": {
+    "message": "Alennus tallennettu onnistuneesti.",
+    "description": "Viesti, kun uusi alennus on onnistuneesti luotu."
+  },
+  "message.discountUpdated": {
+    "message": "Alennus päivitetty onnistuneesti.",
+    "description": "Viesti, kun alennus on onnistuneesti muokattu."
+  },
+  "message.discountDeleted": {
+    "message": "Alennus poistettu onnistuneesti.",
+    "description": "Viesti, kun alennus on onnistuneesti poistettu."
+  },
+  "state.refunded": {
+    "message": "Hyvitetty",
+    "description": "Tilauksen tila, joka osoittaa, että tilaus on hyvitetty."
+  },
+  "title.revenueAnalysis": {
+    "message": "Tuloanalyysi",
+    "description": "Tuloanalyysin sivun otsikko"
+  },
+  "title.todayRevenue": {
+    "message": "Tänään saatu tulo",
+    "description": "Tänään saatu tulo"
+  },
+  "title.last7dRevenue": {
+    "message": "Viimeisen viikon tulo",
+    "description": "Viimeisen viikon tulo"
+  },
+  "title.last30dRevenue": {
+    "message": "Viimeisen kuukauden tulo",
+    "description": "Viimeisen 30 päivän tulo"
+  },
+  "title.last90dRevenue": {
+    "message": "Viimeisen neljänneksen tulo",
+    "description": "Viimeisen 90 päivän tulo"
+  },
+  "title.revenueTrend": {
+    "message": "Tulotrendi",
+    "description": "Tulotrendin viivakaavion otsikko"
+  },
+  "title.manageOrderDiscount": {
+    "message": "Alennusten hallinta",
+    "description": "Tilauksen alennusten hallintapaneelin otsikko."
+  },
+  "title.discountLookup": {
+    "message": "Nykyinen alennus",
+    "description": "Käyttäjän nykyisen alennuksen näyttämisen osion otsikko."
+  },
+  "title.createDiscount": {
+    "message": "Lisää alennus",
+    "description": "Uuden alennuksen luomisen osion otsikko."
+  },
+  "title.updateDiscount": {
+    "message": "Päivitä alennus",
+    "description": "Alennuksen muokkausikkunan otsikko."
   }
 }

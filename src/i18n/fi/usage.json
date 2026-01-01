@@ -1,15 +1,15 @@
 {
   "field.createdAt": {
     "message": "Käyttöaika",
-    "description": "Käyttörekisterin luomisaika."
+    "description": "Käytön kirjaamisajankohta."
   },
   "field.statusCode": {
     "message": "Tilakoodi",
-    "description": "Käyttörekisterin tilakoodi."
+    "description": "Käyttökirjan tilakoodi."
   },
   "field.application": {
     "message": "Hakemus",
-    "description": "Palvelun hakemusohjelma."
+    "description": "Käytettävien resurssien hakemus."
   },
   "field.status": {
     "message": "Tila",
@@ -17,7 +17,7 @@
   },
   "field.api": {
     "message": "API",
-    "description": "Palvelun API."
+    "description": "Kutsuttu API, ei tarvitse kääntää."
   },
   "field.usedAmount": {
     "message": "Käytetty määrä",
@@ -33,11 +33,11 @@
   },
   "field.metadata": {
     "message": "Metatiedot",
-    "description": "Käyttörekisterin metatiedot."
+    "description": "Käyttökirjan metatiedot."
   },
   "title.totalUsed": {
-    "message": "Kumulatiivinen käyttö",
-    "description": "Käytön yhteenvetokortin otsikko."
+    "message": "Käytön kokonaismäärä (pisteet)",
+    "description": "Tilastoi kulutettujen pisteiden kokonaismäärän."
   },
   "title.usageTrend": {
     "message": "Käyttötrendi",
@@ -45,34 +45,38 @@
   },
   "shortcuts.today": {
     "message": "Tänään",
-    "description": "Pikavalinta tänään olevan aikarajan valitsemiseksi."
+    "description": "Tämän päivän päivämäärä."
   },
   "shortcuts.last1Day": {
     "message": "Viimeinen 1 päivä",
-    "description": "Pikavalinta viimeisen 1 päivän aikarajan valitsemiseksi."
+    "description": "Viimeisen 1 päivän päivämääräalue."
   },
   "shortcuts.last3Days": {
     "message": "Viimeiset 3 päivää",
-    "description": "Pikavalinta viimeisten 3 päivän aikarajan valitsemiseksi."
+    "description": "Viimeisten 3 päivän päivämääräalue."
   },
   "shortcuts.last7Days": {
     "message": "Viimeiset 7 päivää",
-    "description": "Pikavalinta viimeisten 7 päivän aikarajan valitsemiseksi."
+    "description": "Viimeisten 7 päivän päivämääräalue."
   },
   "shortcuts.last1Month": {
     "message": "Viimeinen 1 kuukausi",
-    "description": "Pikavalinta viimeisen 1 kuukauden aikarajan valitsemiseksi."
+    "description": "Viimeisen 1 kuukauden päivämääräalue."
   },
   "placeholder.startDate": {
     "message": "Aloitusaika",
-    "description": "Aikarajavalitsimen aloitusaika-ala."
+    "description": "Aloitusaika."
   },
   "placeholder.endDate": {
-    "message": "Lopetusaika",
-    "description": "Aikarajavalitsimen lopetusaika-ala."
+    "message": "Päättymisaika",
+    "description": "Päättymisaika."
   },
   "placeholder.to": {
-    "message": "asti",
-    "description": "Aikarajavalitsimen erotteluteksti."
+    "message": " asti ",
+    "description": "Päivämäärävalitsimesta valittu päättymispäivämäärä, väliin tuleva erotin."
+  },
+  "shortcuts.yesterday": {
+    "message": "Eilen",
+    "description": "Eilinen päivämäärä."
   }
 }

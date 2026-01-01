@@ -217,7 +217,6 @@
               >
                 <template #default="scope">
                   <span>{{ getDeductedAmount(scope.row) }}</span>
-                  <span>{{ getDeductedAmount(scope.row) }}</span>
                 </template>
               </el-table-column>
               <el-table-column
@@ -242,8 +241,8 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :span="24">
-          <div class="pagination">
+        <el-col :span="10" :offset="14">
+          <div class="float-right">
             <pagination :current-page="page" :page-size="limit" :total="total" @change="onPageChange"> </pagination>
           </div>
         </el-col>

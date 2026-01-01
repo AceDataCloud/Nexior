@@ -1,39 +1,39 @@
 {
   "button.pay": {
-    "message": "الدفع",
-    "description": "نص الزر المستخدم لدفع الطلب."
+    "message": "دفع",
+    "description": "النص الموجود في الزر، المستخدم لدفع الطلب."
   },
   "button.continuePay": {
-    "message": "متابعة الدفع",
-    "description": "نص الزر المستخدم لمتابعة دفع الطلب."
+    "message": "استمرار الدفع",
+    "description": "النص الموجود في الزر، المستخدم لمتابعة دفع الطلب."
   },
   "button.checkDetail": {
     "message": "عرض التفاصيل",
-    "description": "نص الزر المستخدم لعرض تفاصيل الطلب."
+    "description": "النص الموجود في الزر، المستخدم لعرض تفاصيل الطلب."
   },
   "button.query": {
     "message": "استعلام",
-    "description": "نص الزر المستخدم لاستعلام الطلب."
+    "description": "النص الموجود في الزر، المستخدم للاستعلام عن الطلب."
   },
   "button.finish": {
     "message": "إكمال يدوي",
-    "description": "نص الزر المستخدم لإكمال الطلب يدويًا."
+    "description": "النص الموجود في الزر، المستخدم لإكمال الطلب يدويًا."
   },
   "button.update": {
     "message": "تحديث",
-    "description": "نص الزر المستخدم لتحديث الطلب."
+    "description": "النص الموجود في الزر، المستخدم لتحديث الطلب."
   },
   "field.id": {
-    "message": "رقم الطلب",
-    "description": "رقم الطلب."
+    "message": "معرف الطلب",
+    "description": "معرف الطلب."
   },
   "field.amount": {
     "message": "المبلغ",
-    "description": "مبلغ نقاط الطلب."
+    "description": "مبلغ النقاط للطلب."
   },
   "field.price": {
-    "message": "المبلغ",
-    "description": "مبلغ نقاط الطلب."
+    "message": "السعر",
+    "description": "مبلغ النقاط للطلب."
   },
   "field.description": {
     "message": "وصف الطلب",
@@ -61,258 +61,442 @@
   },
   "field.proxy": {
     "message": "وكيل",
-    "description": "الوكيل هو خدمة عبر الإنترنت لنقل البيانات عبر HTTP."
+    "description": "الوكيل هو خدمة عبر الإنترنت، تشير إلى وكيل HTTP المستخدم لنقل البيانات."
   },
   "message.paidSuccessfully": {
     "message": "تم الدفع بنجاح",
-    "description": "رسالة الدفع الناجح."
+    "description": "رسالة حول نجاح الدفع."
   },
   "message.orderExpired": {
     "message": "انتهت صلاحية الطلب، يرجى إنشاء طلب جديد للدفع.",
-    "description": "رسالة انتهاء صلاحية الطلب."
+    "description": "رسالة حول الطلب المنتهي."
   },
   "message.createFailed": {
-    "message": "فشل الإنشاء",
-    "description": "رسالة فشل الإنشاء."
+    "message": "فشل في الإنشاء",
+    "description": "رسالة حول فشل الإنشاء."
   },
   "message.wechatPayHelp": {
     "message": "يرجى فتح WeChat على الهاتف، ومسح الرمز لإكمال الدفع",
-    "description": "رسالة مساعدة الدفع عبر WeChat."
+    "description": "رسالة مساعدة حول الدفع عبر WeChat."
   },
   "message.free": {
     "message": "مجاني",
-    "description": "رسالة الطلب المجاني."
+    "description": "رسالة حول الطلب المجاني."
   },
   "message.buyInExternalUrl": {
-    "message": "يرجى إكمال الدفع عبر الرابط الخارجي",
-    "description": "رسالة الدفع عبر الرابط الخارجي."
+    "message": "يرجى إكمال الدفع في الرابط الخارجي",
+    "description": "رسالة حول الدفع عبر رابط خارجي."
   },
   "message.updateFailed": {
-    "message": "فشل التحديث",
-    "description": "رسالة فشل التحديث."
+    "message": "فشل في التحديث",
+    "description": "رسالة حول فشل التحديث."
   },
   "message.updateSuccessfully": {
     "message": "تم التحديث بنجاح",
-    "description": "رسالة التحديث الناجح."
+    "description": "رسالة حول نجاح التحديث."
   },
   "message.confirmFinish": {
-    "message": "ستقوم هذه العملية بتعيين الطلب يدويًا إلى حالة الدفع وإكمال معالجة التوزيع، ولا يمكن التراجع عنها. يرجى التأكد من أن العميل قد أكمل الدفع، هل تريد المتابعة؟",
-    "description": "رسالة تأكيد الإكمال."
+    "message": "ستقوم هذه العملية يدويًا بتعيين الطلب إلى حالة الدفع وإكمال معالجة التوزيع، ولا يمكن التراجع عنها. يرجى التأكد من أن العميل قد أكمل الدفع، هل تريد المتابعة؟",
+    "description": "رسالة تأكيد الانتهاء."
   },
   "state.pending": {
-    "message": "بانتظار الدفع",
-    "description": "حالة الطلب، تشير إلى أن هذا الطلب لا يزال في انتظار دفع المستخدم."
+    "message": "قيد الانتظار",
+    "description": "حالة الطلب، تشير إلى أن الطلب لا يزال في انتظار دفع المستخدم."
   },
   "state.paid": {
     "message": "مدفوع",
-    "description": "حالة الطلب، تشير إلى أن هذا الطلب قد تم دفعه."
+    "description": "حالة الطلب، تشير إلى أن الطلب قد تم دفعه."
   },
   "state.finished": {
     "message": "مكتمل",
-    "description": "حالة الطلب، تشير إلى أن هذا الطلب قد اكتمل."
+    "description": "حالة الطلب، تشير إلى أن الطلب قد اكتمل."
   },
   "state.expired": {
     "message": "انتهت صلاحية الدفع",
-    "description": "حالة الطلب، تشير إلى أن هذا الطلب قد انتهت صلاحيته."
+    "description": "حالة الطلب، تشير إلى أن الطلب قد انتهت صلاحيته."
   },
   "state.failed": {
     "message": "فشل الدفع",
-    "description": "حالة الطلب، تشير إلى أن هذا الطلب قد فشل في الدفع."
+    "description": "حالة الطلب، تشير إلى أن الدفع قد فشل."
   },
   "title.info": {
     "message": "معلومات الطلب",
-    "description": "عنوان يستخدم كعنوان موقع الويب، يشير إلى معلومات الطلب."
+    "description": "عنوان يظهر كعنوان للموقع، يشير إلى معلومات الطلب."
   },
   "title.wechatPay": {
-    "message": "دفع WeChat",
-    "description": "عنوان يستخدم كعنوان موقع الويب، يشير إلى دفع WeChat."
+    "message": "دفع وي شات",
+    "description": "عنوان يظهر كعنوان للموقع، يشير إلى دفع وي شات."
   },
   "title.aliPay": {
-    "message": "علي باي",
-    "description": "عنوان يستخدم كعنوان موقع الويب، يشير إلى دفع علي باي، وهو نوع من الدفع عبر الإنترنت."
+    "message": "دفع علي باي",
+    "description": "عنوان يظهر كعنوان للموقع، يشير إلى دفع علي باي، وهو نوع من الدفع عبر الإنترنت."
   },
   "title.stripe": {
-    "message": "Stripe",
-    "description": "عنوان يستخدم كعنوان موقع الويب، يشير إلى دفع Stripe، وهو نوع من الدفع عبر الإنترنت."
+    "message": "سترايب",
+    "description": "عنوان يظهر كعنوان للموقع، يشير إلى دفع سترايب، وهو نوع من الدفع عبر الإنترنت."
   },
   "title.manageOrder": {
     "message": "إدارة الطلبات",
-    "description": "عنوان يستخدم كعنوان موقع الويب، يشير إلى إدارة الطلبات."
+    "description": "عنوان يظهر كعنوان للموقع، يشير إلى إدارة الطلبات."
   },
   "title.x402": {
     "message": "العملات المشفرة",
-    "description": "عنوان لعنوان الدفع المشفر بناءً على خطة X402."
+    "description": "عنوان يظهر كعنوان للموقع، يشير إلى دفع العملات المشفرة (استنادًا إلى خطة دفع X402)."
   },
   "message.discountTag": {
     "message": "{percent}% خصم",
-    "description": "نص العلامة التي تعرض نسبة الخصم المطبقة."
+    "description": "نص الشعار الذي يعرض نسبة الخصم المطبقة."
   },
   "message.discountHint": {
-    "message": "تم تطبيق خصم {percent}% تلقائيًا للأعضاء.",
-    "description": "تلميح للمستخدم حول الخصم المطبق على الأعضاء."
+    "message": "أنت عميل VIP خاص بنا، يمكنك الاستمتاع تلقائيًا بخصم قدره {percent}%.",
+    "description": "نص يوضح للمستخدم أنه يمكنه الاستمتاع بالخصم بسبب حالة VIP."
   },
   "message.x402DiscountApplied": {
-    "message": "استخدم X402 للدفع لتوفير {percent}% إضافية.",
-    "description": "توضيح الخصم الإضافي الناتج عن اختيار الدفع عبر X402."
+    "message": "عبر دفع X402، استمتع بخصم إضافي قدره {percent}%.",
+    "description": "يستخدم لشرح الخصم الإضافي الناتج عن الدفع عبر X402."
   },
   "message.x402DiscountTag": {
     "message": "{percent}% خصم",
-    "description": "علامة خصم الدفع عبر X402."
+    "description": "تسليط الضوء على نسبة الخصم الإضافي التي يمكن الاستمتاع بها عند اختيار الدفع عبر X402."
   },
   "message.x402DiscountHint": {
-    "message": "اختيار الدفع عبر X402 يمنحك خصمًا إضافيًا قدره {percent}%.",
-    "description": "تلميح لتشجيع المستخدم على اختيار الدفع عبر X402."
+    "message": "اختر الدفع عبر X402، واستمتع بخصم إضافي قدره {percent}%.",
+    "description": "نص يوضح للمستخدم أنه يمكنه فتح خصم إضافي عبر الدفع عبر X402."
   },
   "message.x402IntroShort": {
-    "message": "يمكنك الاتصال بمحفظة مشفرة للدفع مباشرة، أو التبديل إلى وضع البرمجة للحصول على معلمات التكامل.",
-    "description": "مقدمة قصيرة لواجهة الدفع عبر X402."
+    "message": "اختر المحفظة لإكمال الدفع USDC مباشرة.",
+    "description": "نص تقديم مختصر."
   },
   "message.x402TabWallet": {
     "message": "دفع المحفظة",
     "description": "عنوان علامة تبويب دفع المحفظة."
   },
   "message.x402TabApi": {
-    "message": "الوصول البرمجي",
-    "description": "عنوان علامة تبويب الوصول البرمجي."
+    "message": "برمجي",
+    "description": "عنوان علامة تبويب برمجي."
   },
   "message.x402WalletTitle": {
-    "message": "اتصل بالمحفظة وادفع",
-    "description": "عنوان يوجه المستخدم للاتصال بالمحفظة."
+    "message": "اتصل بالمحفظة وادفع USDC",
+    "description": "عنوان الدفع السريع لمحفظة X402 (USDC)."
   },
   "message.x402WalletConnected": {
     "message": "متصل",
-    "description": "علامة عند اتصال المحفظة."
+    "description": "تسمية تظهر عندما تكون المحفظة متصلة."
   },
   "message.x402ConnectWallet": {
     "message": "اتصل بالمحفظة",
-    "description": "نص زر الاتصال بالمحفظة."
+    "description": "نص زر الاتصال بمحفظة EVM."
   },
   "message.x402NoWalletDesc": {
-    "message": "لم يتم اكتشاف محفظة. يرجى تثبيت MetaMask/Phantom، أو فتح هذه الصفحة في متصفح المحفظة المدمج.",
-    "description": "وصف عند عدم اكتشاف محفظة EVM."
+    "message": "يرجى استخدام متصفح يدعم المحفظة (يوصى بـ Chrome/Brave)، أو تثبيت إضافة MetaMask/Phantom؛ يمكنك أيضًا فتح هذه الصفحة في المتصفح المدمج لتطبيق المحفظة على الهاتف.",
+    "description": "وصف عام لعدم وجود محفظة."
   },
   "message.x402SwitchNetwork": {
     "message": "يرجى تغيير شبكة المحفظة إلى {network}",
-    "description": "توجيه المستخدم لتغيير شبكة المحفظة."
+    "description": "نص يوجه المستخدم لتغيير الشبكة إلى الشبكة المحددة."
   },
   "message.x402SolanaNotEnabled": {
-    "message": "Solana X402 payment is not enabled for this order. Please switch network or refresh.",
-    "description": "Shown when the selected Solana network is not available in X402 payment requirements."
+    "message": "لم يتم تمكين خلفية Solana X402 بعد.",
+    "description": "رسالة تظهر عندما لا يتم تمكين Solana X402 لهذا الطلب."
   },
   "message.x402NeedConnectAccount": {
-    "message": "يرجى الاتصال على الأقل بمحفظة EVM متوافقة قبل الدفع.",
-    "description": "تذكير المستخدم بالاتصال بحساب المحفظة أولاً."
+    "message": "يرجى أولاً الاتصال بالمحفظة.",
+    "description": "رسالة تظهر عندما لا تكون المحفظة متصلة."
   },
   "message.x402ConfirmTitle": {
-    "message": "Confirm Payment",
-    "description": "Title of the confirmation dialog before signing an X402 payment."
+    "message": "تأكيد الدفع",
+    "description": "عنوان نافذة تأكيد الدفع X402."
   },
   "message.x402ConfirmDesc": {
-    "message": "Confirm USDC payment on {network}?",
-    "description": "Description of the confirmation dialog before signing an X402 payment."
+    "message": "هل تؤكد الدفع USDC على {network}؟",
+    "description": "وصف نافذة تأكيد الدفع X402."
   },
   "message.x402StepsTitle": {
     "message": "خطوات الدفع",
-    "description": "عنوان قائمة خطوات الدفع."
+    "description": "عنوان الخطوات."
   },
   "message.x402Step1": {
-    "message": "اتصل بالمحفظة (إذا لم تكن مثبتة، يرجى تثبيتها أولاً ثم تحديث الصفحة).",
-    "description": "خطوة 1 لدفع المحفظة."
+    "message": "اتصل بالمحفظة (إذا لم تكن مثبتة، يرجى تثبيت الإضافة ثم تحديث هذه الصفحة أو فتح هذه الصفحة عبر محفظة الهاتف)",
+    "description": "نص الخطوة 1."
   },
   "message.x402Step2": {
-    "message": "تأكد من أن شبكة المحفظة هي {network}.",
-    "description": "خطوة 2 لدفع المحفظة."
+    "message": "تعديل إعدادات المحفظة، تأكد من أن شبكة المحفظة هي {network}",
+    "description": "نص الخطوة 2."
   },
   "message.x402Step3": {
-    "message": "انقر على الدفع وأكمل توقيع التفويض في المحفظة.",
-    "description": "خطوة 3 لدفع المحفظة."
+    "message": "انقر على \"استخدم المحفظة للدفع\"، وأكمل توقيع التفويض في المحفظة",
+    "description": "نص الخطوة 3."
   },
   "message.x402Step4": {
-    "message": "بعد التوقيع، سنقوم بالتسوية تلقائيًا وتحديث حالة الطلب.",
-    "description": "خطوة 4 لدفع المحفظة."
+    "message": "بعد نجاح التوقيع، سنقوم بالتسوية تلقائيًا، وبعد الانتهاء ستقوم هذه الصفحة بالتحديث تلقائيًا إلى حالة الدفع",
+    "description": "نص الخطوة 4."
   },
   "message.x402IntegrationResourceLabel": {
     "message": "عنوان واجهة الدفع",
-    "description": "علامة عنوان واجهة الدفع."
+    "description": "تسمية عنوان واجهة الدفع."
   },
   "message.x402IntegrationPayToLabel": {
-    "message": "عنوان الاستلام",
-    "description": "علامة عنوان الاستلام على البلوكشين."
+    "message": "عنوان التسوية",
+    "description": "تسمية عرض عنوان التسوية على blockchain."
   },
   "message.x402IntegrationNetworkLabel": {
-    "message": "الشبكة",
-    "description": "علامة شبكة البلوكشين."
+    "message": "شبكة",
+    "description": "تسمية عرض اسم شبكة blockchain."
   },
   "message.x402IntegrationAssetLabel": {
-    "message": "الأصل",
-    "description": "علامة الأصل للتسوية."
+    "message": "أصل التسوية",
+    "description": "تسمية عرض أصل التسوية."
   },
   "message.x402IntegrationFallback": {
-    "message": "فشل في الحصول على معلمات الجلسة، يرجى مراجعة الوثائق أو الاتصال بالدعم للحصول على المعلمات اللازمة.",
-    "description": "تنبيه احتياطي عند فقدان معلمات التكامل."
+    "message": "لم يتم الحصول على بيانات الجلسة الكاملة، يرجى الرجوع إلى الوثائق أو الاتصال بالدعم للحصول على المعلمات اللازمة.",
+    "description": "رسالة تظهر عندما لا يمكن الحصول على بيانات الجلسة."
   },
   "message.x402IntegrationDocsCta": {
-    "message": "فتح دليل X402",
-    "description": "نص زر لفتح دليل تكامل X402."
+    "message": "فتح إرشادات تطوير X402",
+    "description": "نص زر العمل لفتح إرشادات المطورين."
   },
   "message.x402InstallGuideTitle": {
-    "message": "تثبيت ملحق المحفظة",
-    "description": "عنوان مربع حوار إرشادات تثبيت المحفظة."
+    "message": "تثبيت إضافة المحفظة",
+    "description": "عنوان نافذة تعليمات تثبيت المحفظة."
   },
   "message.x402InstallGuideDesc": {
-    "message": "اتبع الخطوات لتثبيت ملحق {wallet} وإعادة الاتصال.",
-    "description": "وصف إرشادات تثبيت المحفظة."
+    "message": "يرجى اتباع الخطوات التالية لإكمال تثبيت إضافة {wallet}، ثم استخدم الزر أدناه لتحديث هذه الصفحة لإعادة الكشف عن المحفظة.",
+    "description": "وصف يوجه المستخدم لإكمال تثبيت إضافة المحفظة."
   },
   "message.x402InstallGuideStep1": {
-    "message": "قم بتنزيل وتثبيت ملحق متصفح {wallet} (يوصى بـ Chrome/Brave).",
-    "description": "خطوة 1 لتثبيت المحفظة."
+    "message": "افتح صفحة جديدة وقم بتنزيل وتثبيت إضافة {wallet} للمتصفح (يوصى بـ Chrome/Brave).",
+    "description": "الخطوة 1 لتثبيت المحفظة."
   },
   "message.x402InstallGuideStep2": {
-    "message": "افتح الملحق، وقم بتسجيل الدخول/فتح القفل وتأكد من أنه مفعل.",
-    "description": "خطوة 2 لتثبيت المحفظة."
+    "message": "أكمل تثبيت الإضافة، وقم بتسجيل الدخول/فتح القفل، وتأكد من تمكينها في ملف تعريف المتصفح الحالي.",
+    "description": "الخطوة 2 لتثبيت المحفظة."
   },
   "message.x402InstallGuideStep3": {
-    "message": "عد إلى هذه الصفحة، انقر على 'لقد قمت بالتثبيت'، ثم حاول الاتصال مرة أخرى.",
-    "description": "خطوة 3 لتثبيت المحفظة."
+    "message": "عد إلى هذه الصفحة، انقر على \"لقد قمت بالتثبيت\" ثم حاول \"الاتصال بالمحفظة\" مرة أخرى بعد التحديث.",
+    "description": "الخطوة 3 لتثبيت المحفظة."
   },
   "message.x402InstallGuideConfirm": {
     "message": "لقد قمت بالتثبيت",
-    "description": "زر التأكيد بعد الانتهاء من التثبيت."
+    "description": "الزر الرئيسي بعد إكمال تثبيت المحفظة."
   },
   "message.x402NetworkGuideTitle": {
     "message": "تعديل إعدادات الشبكة",
-    "description": "عنوان مربع حوار إرشادات الشبكة."
+    "description": "عنوان نافذة توضيحية حول عدم تطابق الشبكة."
   },
   "message.x402NetworkGuideDesc": {
-    "message": "يرجى تغيير شبكة المحفظة إلى {network}، ثم تحديث الصفحة وحاول مرة أخرى.",
-    "description": "وصف لتوجيه المستخدم لتغيير الشبكة."
+    "message": "يرجى اتباع الخطوات التالية لتغيير شبكة المحفظة إلى {network}، وبعد الانتهاء، قم بتحديث هذه الصفحة لإعادة الكشف.",
+    "description": "وصف يوجه المستخدم لتعديل شبكة المحفظة."
   },
   "message.x402NetworkGuideStep1": {
-    "message": "افتح إعدادات ملحق المحفظة، تحقق من الشبكة النشطة.",
-    "description": "خطوة 1 لتعديل الشبكة."
+    "message": "افتح إضافة المحفظة، وانتقل إلى الإعدادات -> الشبكات النشطة.",
+    "description": "الخطوة 1 لإعداد الشبكة."
   },
   "message.x402NetworkGuideStep2": {
-    "message": "قم بتمكين {network} (أو الشبكة المطلوبة) من القائمة.",
-    "description": "خطوة 2 لتعديل الشبكة."
+    "message": "في قائمة الشبكات، تأكد من أن {network} (أو شبكة محددة أخرى) مفعلة، إذا كانت مفعلة يمكنك تجاهل هذه الخطوة.",
+    "description": "الخطوة الثانية لتعديل الشبكة، لا حاجة لإيقاف Ethereum."
   },
   "message.x402NetworkGuideStep3": {
-    "message": "عد إلى هذه الصفحة وانقر على 'تم إعدادها' قبل الدفع.",
-    "description": "خطوة 3 لتعديل الشبكة."
+    "message": "عد إلى هذه الصفحة، انقر على \"لقد قمت بالإعداد\" ثم حاول الدفع مرة أخرى بعد التحديث.",
+    "description": "الخطوة 3 لإعداد الشبكة."
   },
   "message.x402NetworkGuideConfirm": {
-    "message": "تم إعدادها",
-    "description": "زر التأكيد بعد الانتهاء من إعداد الشبكة."
+    "message": "لقد قمت بالإعداد",
+    "description": "الزر الرئيسي بعد إكمال إعداد الشبكة."
   },
   "message.x402NetworkSwitchFailed": {
-    "message": "المحفظة الحالية لا تدعم التبديل التلقائي للشبكة، يرجى التبديل يدويًا ثم حاول مرة أخرى.",
-    "description": "تنبيه عند فشل التبديل التلقائي للشبكة."
+    "message": "المحفظة الحالية لا تدعم التبديل التلقائي للشبكة، يرجى التبديل يدويًا إلى الشبكة المحددة ثم المحاولة مرة أخرى.",
+    "description": "رسالة تذكير للمستخدم بأن المحفظة لا تدعم التبديل التلقائي للشبكة، ويجب التبديل يدويًا."
   },
   "message.x402PaymentFailed": {
-    "message": "فشل دفع محفظة X402، يرجى المحاولة مرة أخرى لاحقًا أو الاتصال بالدعم.",
-    "description": "خطأ عام عند فشل دفع X402."
+    "message": "فشل دفع محفظة X402، يرجى المحاولة مرة أخرى لاحقًا. إذا فشلت عدة مرات، يرجى الاتصال بالدعم وتقديم معلومات الخطأ.",
+    "description": "رسالة خطأ عامة تظهر عند فشل دفع محفظة X402."
   },
   "message.x402WalletPayCta": {
     "message": "استخدم المحفظة للدفع",
-    "description": "نص زر لبدء دفع محفظة X402."
+    "description": "نص زر الدفع باستخدام المحفظة المرتبطة."
+  },
+  "button.refund": {
+    "message": "استرداد",
+    "description": "النص الموجود في الزر، المستخدم لاسترداد الطلب يدويًا."
+  },
+  "field.applicationId": {
+    "message": "معرف الطلب",
+    "description": "معرف الطلب الذي ينتمي إليه الطلب."
+  },
+  "field.serviceId": {
+    "message": "معرف الخدمة",
+    "description": "معرف الخدمة المرتبطة بالخصم."
+  },
+  "field.generalDiscount": {
+    "message": "خصم عام",
+    "description": "التسمية المعروضة عندما يكون الخصم ساريًا على جميع الخدمات."
+  },
+  "field.userId": {
+    "message": "معرف المستخدم",
+    "description": "معرف المستخدم الذي يستفيد من الخصم."
+  },
+  "field.discount": {
+    "message": "خصم",
+    "description": "نسبة الخصم المطبقة على طلب هذا المستخدم."
+  },
+  "field.actions": {
+    "message": "إجراءات",
+    "description": "عنوان عمود أزرار الإجراءات."
+  },
+  "message.confirmRefund": {
+    "message": "ستقوم هذه العملية بإلغاء حقوق هذا الطلب ووضع علامة عليه كمدفوع، ولا يمكن التراجع عنها. يرجى التأكد من معالجة الاسترداد، هل تريد المتابعة؟",
+    "description": "رسالة تأكيد الاسترداد."
+  },
+  "message.x402IntegrationIntro": {
+    "message": "يستخدم الطلب الحالي بروتوكول دفع X402، يرجى إكمال التكامل على الخادم وبدء الدفع بناءً على المعلمات أدناه.",
+    "description": "رسالة توضيحية حول الحاجة لاستخدام بروتوكول X402."
+  },
+  "message.x402IntegrationProtocol": {
+    "message": "استدعاء واجهة دفع facilitator وإكمال توقيع البث، بعد نجاح التسوية، ارجع إلى هذه الصفحة لتأكيد الحالة.",
+    "description": "شرح خطوات إكمال الدفع عبر X402."
+  },
+  "message.x402IntegrationDocsHint": {
+    "message": "هل تريد معرفة المزيد من التفاصيل؟ يرجى مراجعة الوثائق أدناه.",
+    "description": "نص تذكير للمستخدمين للحصول على مزيد من المعلومات من خلال الوثائق."
+  },
+  "message.x402WalletTitleEvm": {
+    "message": "محفظة EVM",
+    "description": "عنوان بطاقة الاتصال بمحفظة EVM."
+  },
+  "message.x402WalletTitleSolana": {
+    "message": "محفظة Solana",
+    "description": "عنوان بطاقة الاتصال بمحفظة Solana."
+  },
+  "message.x402WalletStatusDetected": {
+    "message": "تم الكشف",
+    "description": "تسمية حالة المحفظة المكتشفة/المثبتة."
+  },
+  "message.x402WalletStatusInstall": {
+    "message": "تثبيت",
+    "description": "تسمية حالة/مدخل تثبيت المحفظة."
+  },
+  "message.x402WalletStatusQr": {
+    "message": "رمز الاستجابة السريعة",
+    "description": "تسمية مدخل رمز الاستجابة السريعة WalletConnect."
+  },
+  "message.x402WalletConnectTitle": {
+    "message": "WalletConnect",
+    "description": "عنوان نافذة رمز الاستجابة السريعة WalletConnect."
+  },
+  "message.x402WalletConnectPreparing": {
+    "message": "جارٍ إعداد WalletConnect…",
+    "description": "رسالة تظهر أثناء إعداد اتصال WalletConnect."
+  },
+  "message.x402WalletConnectOpenWallet": {
+    "message": "فتح المحفظة",
+    "description": "نص زر لاستدعاء المحفظة عبر WalletConnect على الهاتف."
+  },
+  "message.x402WalletConnectScanHint": {
+    "message": "يرجى استخدام محفظة تدعم WalletConnect لمسح رمز الاستجابة السريعة.",
+    "description": "نص تذكير أسفل رمز الاستجابة السريعة WalletConnect."
+  },
+  "message.x402SwitchNetworkCta": {
+    "message": "التبديل إلى {network}",
+    "description": "زر CTA لتغيير الشبكة."
+  },
+  "message.x402NoWalletTitle": {
+    "message": "لم يتم الكشف عن محفظة EVM",
+    "description": "عنوان يظهر عندما لا يتم حقن محفظة EVM في المتصفح."
+  },
+  "message.x402NoWalletSafariDesc": {
+    "message": "عادةً ما لا يدعم Safari إضافات مثل MetaMask، يُنصح باستخدام Chrome/Brave، أو فتح هذه الصفحة في المتصفح المدمج لتطبيق المحفظة على الهاتف.",
+    "description": "وصف عدم وجود محفظة في بيئة Safari."
+  },
+  "message.x402InstallMetaMask": {
+    "message": "تثبيت MetaMask",
+    "description": "نص زر لتثبيت MetaMask."
+  },
+  "message.x402InstallPhantom": {
+    "message": "تثبيت Phantom",
+    "description": "نص زر لتثبيت Phantom."
+  },
+  "message.x402ConnectWC": {
+    "message": "الاتصال باستخدام WalletConnect",
+    "description": "نص زر للاتصال باستخدام WalletConnect."
+  },
+  "message.x402RefreshDetect": {
+    "message": "إعادة الكشف",
+    "description": "نص زر لإعادة الكشف عن المحفظة."
+  },
+  "message.x402MissingWCProjectId": {
+    "message": "لم يتم تكوين معرف مشروع WalletConnect (يرجى تعيين متغير البيئة VITE_WALLETCONNECT_PROJECT_ID)",
+    "description": "رسالة حول عدم وجود معرف مشروع WalletConnect."
+  },
+  "message.x402WalletBound": {
+    "message": "مرتبط",
+    "description": "شعار يظهر عندما تكون المحفظة مرتبطة."
+  },
+  "message.userIdRequired": {
+    "message": "يرجى إدخال معرف المستخدم.",
+    "description": "رسالة تظهر عندما يكون معرف المستخدم فارغًا."
+  },
+  "message.serviceIdRequired": {
+    "message": "يرجى اختيار الخدمة.",
+    "description": "رسالة تظهر عندما يكون معرف الخدمة فارغًا."
+  },
+  "message.discountRequired": {
+    "message": "يرجى إدخال خصم بين 0 و 1.",
+    "description": "رسالة تظهر عندما يكون الخصم خارج النطاق القانوني."
+  },
+  "message.discountCreated": {
+    "message": "تم حفظ الخصم بنجاح.",
+    "description": "رسالة تظهر عند نجاح إضافة خصم جديد."
+  },
+  "message.discountUpdated": {
+    "message": "تم تحديث الخصم بنجاح.",
+    "description": "رسالة تظهر عند نجاح تعديل الخصم."
+  },
+  "message.discountDeleted": {
+    "message": "تم حذف الخصم بنجاح.",
+    "description": "رسالة تظهر عند نجاح حذف الخصم."
+  },
+  "state.refunded": {
+    "message": "تم استرداده",
+    "description": "حالة الطلب، تشير إلى أن الطلب قد تم استرداده."
+  },
+  "title.revenueAnalysis": {
+    "message": "تحليل الإيرادات",
+    "description": "عنوان صفحة تحليل الإيرادات"
+  },
+  "title.todayRevenue": {
+    "message": "إجمالي المبيعات اليوم",
+    "description": "إجمالي المبيعات اليوم"
+  },
+  "title.last7dRevenue": {
+    "message": "إجمالي المبيعات في الأسبوع الماضي",
+    "description": "إجمالي المبيعات في الأسبوع الماضي"
+  },
+  "title.last30dRevenue": {
+    "message": "إجمالي المبيعات في الشهر الماضي",
+    "description": "إجمالي المبيعات في آخر 30 يومًا"
+  },
+  "title.last90dRevenue": {
+    "message": "إجمالي المبيعات في الربع الماضي",
+    "description": "إجمالي المبيعات في آخر 90 يومًا"
+  },
+  "title.revenueTrend": {
+    "message": "اتجاه الإيرادات",
+    "description": "عنوان مخطط اتجاه الإيرادات"
+  },
+  "title.manageOrderDiscount": {
+    "message": "إدارة الخصومات",
+    "description": "عنوان صفحة إدارة خصومات الطلبات."
+  },
+  "title.discountLookup": {
+    "message": "الخصم الحالي",
+    "description": "عنوان القسم الذي يعرض الخصم الحالي للمستخدم."
+  },
+  "title.createDiscount": {
+    "message": "إضافة خصم جديد",
+    "description": "عنوان القسم لإنشاء خصم جديد."
+  },
+  "title.updateDiscount": {
+    "message": "تحديث الخصم",
+    "description": "عنوان نافذة تحرير الخصم."
   }
 }

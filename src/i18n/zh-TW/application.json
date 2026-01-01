@@ -16,12 +16,12 @@
     "description": "按鈕文本，點擊此按鈕將轉到文檔頁面。"
   },
   "button.goCredentials": {
-    "message": "憑據",
-    "description": "按鈕文本，點擊此按鈕將轉到憑據頁面。"
+    "message": "密鑰",
+    "description": "按鈕文本，點擊此按鈕將轉到憑據頁面。英文必須翻譯為“Keys”，中文為“密鑰”。"
   },
   "button.buyMore": {
-    "message": "購買更多",
-    "description": "按鈕文本，點擊此按鈕將轉到購買更多頁面。"
+    "message": "充值",
+    "description": "按鈕文本，點擊此按鈕將轉到購買更多頁面。英文必須翻譯為“Top Up”，中文為“充值”。"
   },
   "button.createOrder": {
     "message": "創建訂單",
@@ -36,8 +36,8 @@
     "description": "按鈕文本，點擊此按鈕將轉到查詢頁面。"
   },
   "button.usage": {
-    "message": "使用記錄",
-    "description": "按鈕文本，點擊此按鈕將轉到使用記錄頁面。"
+    "message": "用量",
+    "description": "按鈕文本，點擊此按鈕將轉到使用歷史頁面。英文必須翻譯為“Usage”，中文為“用量”。"
   },
   "field.serviceName": {
     "message": "服務名稱",
@@ -53,19 +53,19 @@
   },
   "field.id": {
     "message": "申請ID",
-    "description": "申請的ID。"
+    "description": "申請的ID。英文必須翻譯為“App ID”，中文為“申請ID”。"
   },
   "field.remainingAmount": {
-    "message": "剩餘額度",
-    "description": "申請的剩餘額度。"
+    "message": "實例餘額",
+    "description": "申請的餘額。英文必須翻譯為“Balance”，中文為“實例餘額”。"
   },
   "field.usedAmount": {
-    "message": "已使用額度",
-    "description": "申請的已使用額度。"
+    "message": "已用",
+    "description": "申請的已使用金額。英文必須翻譯為“Used”，中文為“已用”。"
   },
   "field.apiKey": {
     "message": "API密鑰",
-    "description": "API密鑰。"
+    "description": "API密鑰"
   },
   "field.service": {
     "message": "服務",
@@ -76,20 +76,20 @@
     "description": "申請的操作。"
   },
   "field.allowConsumeGlobal": {
-    "message": "使用通用餘額",
-    "description": "當專屬餘額不足時，是否允許消耗通用餘額。"
+    "message": "允許用通用餘額",
+    "description": "允許消耗通用餘額（General Balance）的開關。英文必須翻譯為“Allow Use General Balance”，中文為“允許用通用餘額”。"
   },
   "field.amount": {
-    "message": "數量",
-    "description": "申請的數量。"
+    "message": "金額",
+    "description": "申請的金額。"
   },
   "field.scope": {
     "message": "範圍",
-    "description": "申請的範圍。"
+    "description": "申請的範圍，可能是全局或特定服務。"
   },
   "field.traceId": {
-    "message": "跟踪ID",
-    "description": "API服務的申請的一个API調用的跟踪ID，不要翻譯，保持為'跟踪ID'。"
+    "message": "跟蹤ID",
+    "description": "API服務的申請的API調用的跟蹤ID"
   },
   "field.shouldPayPrice": {
     "message": "最終價格",
@@ -97,11 +97,11 @@
   },
   "field.api": {
     "message": "API",
-    "description": "這是一種在線服務，形式是通過API向用戶提供服務。"
+    "description": "這是一種在線服務，表單通過API向用戶提供服務。"
   },
   "field.proxy": {
     "message": "代理",
-    "description": "這是一種在線服務，形式是通過HTTP代理（用於傳輸數據）向用戶提供服務。"
+    "description": "這是一種在線服務，表單通過HTTP代理（用於傳輸數據）向用戶提供服務。"
   },
   "field.credential": {
     "message": "憑據",
@@ -113,22 +113,22 @@
   },
   "field.package": {
     "message": "套餐",
-    "description": "套餐表示不同的價格套餐，比如100美元可獲得10000積分，200美元可獲得20000積分。"
+    "description": "套餐表示不同的價格套餐，比如100美元可以獲得10000積分，200美元可以獲得20000積分。"
   },
   "field.type": {
     "message": "類型",
     "description": "申請的類型。"
   },
   "field.freeAmount": {
-    "message": "免費數量",
-    "description": "申請的免費數量。"
+    "message": "免費金額",
+    "description": "申請的免費金額。"
   },
   "field.extraPrice": {
     "message": "價格",
-    "description": "用戶應支付的申請的額外價格。"
+    "description": "用戶應該支付的申請的額外價格。"
   },
   "message.alreadyApplied": {
-    "message": "您已經申請了此服務，請查看控制台",
+    "message": "您已經申請了此服務，請檢查控制台",
     "description": "當用戶已經申請了此服務時向用戶顯示的消息。"
   },
   "message.applySuccessfully": {
@@ -136,12 +136,12 @@
     "description": "當用戶成功申請了此服務時向用戶顯示的消息。"
   },
   "message.notApplied": {
-    "message": "歡迎您使用我們的服務，我們會贈送您免費試用額度，請點擊下方按鈕立即開始。",
+    "message": "您尚未申請此服務，請在使用之前申請該服務",
     "description": "當用戶尚未申請此服務時向用戶顯示的消息。"
   },
   "message.globalBalanceBuyDescription": {
-    "message": "本次充值的積分為通用餘額，可以用於任意服務。",
-    "description": "當用戶充值通用餘額時向用戶顯示的消息。"
+    "message": "您可以選擇充值到通用餘額，也可以為每個申請實例單獨充值。本次充值將進入通用餘額，當某個申請實例的餘額不足時，將會自動使用通用餘額進行補充。",
+    "description": "提示文案，說明充值進入通用餘額並在實例餘額不足時自動補充。術語：通用餘額=General Balance（注意不要翻譯成 Global Balance）。"
   },
   "message.yourApplication": {
     "message": "您的申請",
@@ -228,12 +228,12 @@
     "description": "當用戶想要購買服務時頁面的標題。"
   },
   "title.globalBuy": {
-    "message": "通用餘額充值",
-    "description": "當用戶想要充值通用餘額時頁面的標題。"
+    "message": "Ace Data Cloud 通用積分充值",
+    "description": "當用戶想要購買通用服務時頁面的標題。"
   },
   "title.applicationRemainingCount": {
-    "message": "修改數量",
-    "description": "當用戶想要修改申請數量時頁面的標題。"
+    "message": "修改計數",
+    "description": "當用戶想要修改申請計數時頁面的標題。"
   },
   "title.manageApplication": {
     "message": "申請管理",
@@ -244,19 +244,75 @@
     "description": "當用戶查看申請餘額時向用戶顯示的消息。"
   },
   "title.count": {
-    "message": "應用數量",
-    "description": "應用數量彙總卡片標題。"
+    "message": "申請總個數",
+    "description": "當用戶查看申請計數時頁面的標題。"
   },
   "message.countDescription": {
-    "message": "在這裡管理您的專屬應用與通用餘額。",
-    "description": "應用數量卡片下的輔助說明。"
+    "message": "每個服務對應一個申請實例，可在下方管理中查看密鑰、用量等信息。",
+    "description": "當用戶查看申請計數時向用戶顯示的消息。"
   },
   "title.globalBalance": {
     "message": "通用餘額",
-    "description": "當用戶查看通用餘額時向用戶顯示的消息。"
+    "description": "當用戶查看通用餘額時頁面的標題。英文必須翻譯為“General Balance”，中文為“通用餘額”。"
   },
   "message.globalBalanceDescription": {
-    "message": "通用餘額可供符合條件的應用消耗。",
-    "description": "通用餘額卡片的說明文本。"
+    "message": "啟用「允許通用餘額」後，實例餘額不足將自動使用通用餘額。",
+    "description": "提示文案，說明實例餘額不足時會自動消耗通用餘額。術語：通用餘額=General Balance（注意不要翻譯成 Global Balance）。"
+  },
+  "button.service": {
+    "message": "專屬客服",
+    "description": "按鈕文本，點擊此按鈕將轉到專屬客服頁面。"
+  },
+  "button.acquire": {
+    "message": "添加客服獲取",
+    "description": "按鈕文本，點擊此按鈕將獲取該項。"
+  },
+  "button.delete": {
+    "message": "刪除",
+    "description": "按鈕文本，點擊此按鈕將刪除該項。"
+  },
+  "field.dataset": {
+    "message": "數據集",
+    "description": "申請的數據集。"
+  },
+  "field.disabled": {
+    "message": "禁用",
+    "description": "申請是否被禁用。"
+  },
+  "message.addServiceToAcquire": {
+    "message": "請添加客服以獲取",
+    "description": "當用戶尚未添加客服以獲取時向用戶顯示的消息。"
+  },
+  "message.confirmApplying": {
+    "message": "確認服務申請",
+    "description": "當用戶確認服務申請時向用戶顯示的消息。"
+  },
+  "message.confirmDelete": {
+    "message": "您確定要刪除該申請嗎？刪除後所有申請數據將丟失",
+    "description": "當用戶確認刪除申請時向用戶顯示的消息。"
+  },
+  "message.placeEnter": {
+    "message": "請輸入'$0$'以確認",
+    "description": "當用戶需要輸入文本以確認時向用戶顯示的消息，請不要翻譯`$0$`"
+  },
+  "message.invalidInput": {
+    "message": "無效輸入",
+    "description": "當用戶輸入無效數據時向用戶顯示的消息。"
+  },
+  "message.deleteFailed": {
+    "message": "刪除失敗",
+    "description": "當刪除失敗時向用戶顯示的消息。"
+  },
+  "message.deleteSuccessfully": {
+    "message": "刪除成功",
+    "description": "當刪除成功時向用戶顯示的消息。"
+  },
+  "title.application": {
+    "message": "申請",
+    "description": "當用戶查看申請時頁面的標題。"
+  },
+  "title.description": {
+    "message": "說明",
+    "description": "當用戶查看數據技術服務使用協議時頁面的標題。"
   }
 }

@@ -1,15 +1,15 @@
 {
   "field.createdAt": {
     "message": "Vreme korišćenja",
-    "description": "Vreme kada je kreirana evidencija korišćenja."
+    "description": "Vreme kada je zabeleženo korišćenje."
   },
   "field.statusCode": {
     "message": "Status kod",
-    "description": "Status kod evidencije korišćenja."
+    "description": "Status kod korišćenja."
   },
   "field.application": {
-    "message": "Aplikacija",
-    "description": "Aplikacija za uslugu."
+    "message": "Zahtev",
+    "description": "Korišćenje resursa zahteva."
   },
   "field.status": {
     "message": "Status",
@@ -17,7 +17,7 @@
   },
   "field.api": {
     "message": "API",
-    "description": "API usluge."
+    "description": "Pozvani API, nema potrebe za prevođenjem"
   },
   "field.usedAmount": {
     "message": "Količina korišćena",
@@ -33,46 +33,50 @@
   },
   "field.metadata": {
     "message": "Metapodaci",
-    "description": "Metapodaci evidencije korišćenja."
+    "description": "Metapodaci korišćenja."
   },
   "title.totalUsed": {
-    "message": "Ukupna potrošnja",
-    "description": "Naslov kartice za zbir potrošnje."
+    "message": "Ukupno korišćeno (poeni)",
+    "description": "Statistika ukupno potrošenih poena"
   },
   "title.usageTrend": {
-    "message": "Trend potrošnje",
+    "message": "Trend korišćenja",
     "description": "Naslov grafikona trenda potrošnje."
   },
   "shortcuts.today": {
     "message": "Danas",
-    "description": "Brzi izbor vremenskog okvira za danas."
+    "description": "Datum današnjeg dana"
   },
   "shortcuts.last1Day": {
     "message": "Poslednji 1 dan",
-    "description": "Brzi izbor vremenskog okvira za poslednji 1 dan."
+    "description": "Opseg datuma za poslednji 1 dan"
   },
   "shortcuts.last3Days": {
-    "message": "Poslednjih 3 dana",
-    "description": "Brzi izbor vremenskog okvira za poslednjih 3 dana."
+    "message": "Poslednja 3 dana",
+    "description": "Opseg datuma za poslednja 3 dana"
   },
   "shortcuts.last7Days": {
     "message": "Poslednjih 7 dana",
-    "description": "Brzi izbor vremenskog okvira za poslednjih 7 dana."
+    "description": "Opseg datuma za poslednjih 7 dana"
   },
   "shortcuts.last1Month": {
     "message": "Poslednji 1 mesec",
-    "description": "Brzi izbor vremenskog okvira za poslednji 1 mesec."
+    "description": "Opseg datuma za poslednji 1 mesec"
   },
   "placeholder.startDate": {
-    "message": "Vreme početka",
-    "description": "Zauzeto mesto za vreme početka u selektoru vremenskog okvira."
+    "message": "Datum početka",
+    "description": "Datum početka"
   },
   "placeholder.endDate": {
-    "message": "Vreme završetka",
-    "description": "Zauzeto mesto za vreme završetka u selektoru vremenskog okvira."
+    "message": "Datum završetka",
+    "description": "Datum završetka"
   },
   "placeholder.to": {
     "message": "do",
-    "description": "Tekst razdvajanja u selektoru vremenskog okvira."
+    "description": "Krajnji datum odabran iz kalendara, razdvojni znak."
+  },
+  "shortcuts.yesterday": {
+    "message": "Juče",
+    "description": "Datum jučerašnjeg dana"
   }
 }

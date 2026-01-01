@@ -1,39 +1,39 @@
 {
   "button.pay": {
     "message": "Zahlung",
-    "description": "Button-Text zum Bezahlen der Bestellung."
+    "description": "Text im Button, der zur Zahlung der Bestellung verwendet wird."
   },
   "button.continuePay": {
     "message": "Zahlung fortsetzen",
-    "description": "Button-Text zum Fortsetzen der Zahlung für die Bestellung."
+    "description": "Text im Button, der verwendet wird, um die Zahlung der Bestellung fortzusetzen."
   },
   "button.checkDetail": {
     "message": "Details anzeigen",
-    "description": "Button-Text zum Anzeigen der Bestelldetails."
+    "description": "Text im Button, der verwendet wird, um die Bestelldetails anzuzeigen."
   },
   "button.query": {
-    "message": "Abfragen",
-    "description": "Button-Text zum Abfragen der Bestellung."
+    "message": "Abfrage",
+    "description": "Text im Button, der verwendet wird, um die Bestellung abzufragen."
   },
   "button.finish": {
     "message": "Manuell abschließen",
-    "description": "Button-Text zum manuellen Abschluss der Bestellung."
+    "description": "Text im Button, der verwendet wird, um die Bestellung manuell abzuschließen."
   },
   "button.update": {
     "message": "Aktualisieren",
-    "description": "Button-Text zum Aktualisieren der Bestellung."
+    "description": "Text im Button, der verwendet wird, um die Bestellung zu aktualisieren."
   },
   "field.id": {
-    "message": "Bestellnummer",
-    "description": "Die Nummer der Bestellung."
+    "message": "Bestell-ID",
+    "description": "Die ID der Bestellung."
   },
   "field.amount": {
     "message": "Betrag",
-    "description": "Der Betrag der Punkte für die Bestellung."
+    "description": "Der Punktbetrag der Bestellung."
   },
   "field.price": {
     "message": "Betrag",
-    "description": "Der Betrag der Punkte für die Bestellung."
+    "description": "Der Punktbetrag der Bestellung."
   },
   "field.description": {
     "message": "Bestellbeschreibung",
@@ -61,258 +61,406 @@
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Proxy ist ein Online-Dienst, der als HTTP-Proxy für die Datenübertragung dient."
+    "description": "Proxy ist ein Online-Dienst, der sich auf HTTP-Proxy zur Datenübertragung bezieht."
   },
   "message.paidSuccessfully": {
     "message": "Zahlung erfolgreich",
-    "description": "Nachricht über eine erfolgreiche Zahlung."
+    "description": "Nachricht für erfolgreiche Zahlungen."
   },
   "message.orderExpired": {
     "message": "Die Bestellung ist abgelaufen, bitte erstellen Sie eine neue Bestellung zur Zahlung.",
-    "description": "Nachricht über das Ablaufen der Bestellung."
+    "description": "Nachricht für abgelaufene Bestellungen."
   },
   "message.createFailed": {
     "message": "Erstellung fehlgeschlagen",
-    "description": "Nachricht über eine fehlgeschlagene Erstellung."
+    "description": "Nachricht für fehlgeschlagene Erstellung."
   },
   "message.wechatPayHelp": {
-    "message": "Bitte öffnen Sie WeChat auf Ihrem Handy und scannen Sie den QR-Code, um die Zahlung abzuschließen.",
+    "message": "Bitte öffnen Sie WeChat auf Ihrem Handy und scannen Sie, um die Zahlung abzuschließen.",
     "description": "Nachricht zur Hilfe bei WeChat-Zahlungen."
   },
   "message.free": {
     "message": "Kostenlos",
-    "description": "Nachricht über eine kostenlose Bestellung."
+    "description": "Nachricht für kostenlose Bestellungen."
   },
   "message.buyInExternalUrl": {
     "message": "Bitte schließen Sie die Zahlung über den externen Link ab.",
-    "description": "Nachricht über die Zahlung über einen externen Link."
+    "description": "Nachricht für Zahlungen über externe Links."
   },
   "message.updateFailed": {
     "message": "Aktualisierung fehlgeschlagen",
-    "description": "Nachricht über eine fehlgeschlagene Aktualisierung."
+    "description": "Nachricht für fehlgeschlagene Aktualisierungen."
   },
   "message.updateSuccessfully": {
     "message": "Aktualisierung erfolgreich",
-    "description": "Nachricht über eine erfolgreiche Aktualisierung."
+    "description": "Nachricht für erfolgreiche Aktualisierungen."
   },
   "message.confirmFinish": {
     "message": "Diese Aktion wird die Bestellung manuell auf den Zahlungsstatus setzen und die Verteilung abschließen, was nicht rückgängig gemacht werden kann. Bitte bestätigen Sie, dass der Kunde die Zahlung abgeschlossen hat. Möchten Sie fortfahren?",
     "description": "Nachricht zur Bestätigung des Abschlusses."
   },
   "state.pending": {
-    "message": "Ausstehende Zahlung",
-    "description": "Der Status der Bestellung, der anzeigt, dass diese Bestellung auf die Zahlung des Benutzers wartet."
+    "message": "Ausstehend",
+    "description": "Der Status der Bestellung, der anzeigt, dass die Bestellung noch auf die Zahlung des Benutzers wartet."
   },
   "state.paid": {
     "message": "Bezahlt",
-    "description": "Der Status der Bestellung, der anzeigt, dass diese Bestellung bezahlt wurde."
+    "description": "Der Status der Bestellung, der anzeigt, dass die Bestellung bezahlt wurde."
   },
   "state.finished": {
     "message": "Abgeschlossen",
-    "description": "Der Status der Bestellung, der anzeigt, dass diese Bestellung abgeschlossen ist."
+    "description": "Der Status der Bestellung, der anzeigt, dass die Bestellung abgeschlossen ist."
   },
   "state.expired": {
     "message": "Zahlung abgelaufen",
-    "description": "Der Status der Bestellung, der anzeigt, dass diese Bestellung abgelaufen ist."
+    "description": "Der Status der Bestellung, der anzeigt, dass die Bestellung abgelaufen ist."
   },
   "state.failed": {
     "message": "Zahlung fehlgeschlagen",
-    "description": "Der Status der Bestellung, der anzeigt, dass die Zahlung für diese Bestellung fehlgeschlagen ist."
+    "description": "Der Status der Bestellung, der anzeigt, dass die Zahlung der Bestellung fehlgeschlagen ist."
   },
   "title.info": {
     "message": "Bestellinformationen",
-    "description": "Titel, der als Website-Titel verwendet wird und die Bestellinformationen angibt."
+    "description": "Der Titel, der auf der Website angezeigt wird und die Bestellinformationen darstellt."
   },
   "title.wechatPay": {
-    "message": "WeChat-Zahlung",
-    "description": "Titel, der als Website-Titel verwendet wird und die WeChat-Zahlung angibt."
+    "message": "WeChat Pay",
+    "description": "Der Titel, der auf der Website angezeigt wird und WeChat Pay darstellt."
   },
   "title.aliPay": {
     "message": "Alipay",
-    "description": "Titel, der als Website-Titel verwendet wird und die Alipay-Zahlung angibt, Alipay-Zahlung ist eine Online-Zahlung."
+    "description": "Der Titel, der auf der Website angezeigt wird und Alipay darstellt, eine Form der Online-Zahlung."
   },
   "title.stripe": {
     "message": "Stripe",
-    "description": "Titel, der als Website-Titel verwendet wird und die Stripe-Zahlung angibt, Stripe-Zahlung ist eine Online-Zahlung."
+    "description": "Der Titel, der auf der Website angezeigt wird und Stripe darstellt, eine Form der Online-Zahlung."
   },
   "title.manageOrder": {
     "message": "Bestellung verwalten",
-    "description": "Titel, der als Website-Titel verwendet wird und die Verwaltung von Bestellungen angibt."
+    "description": "Der Titel, der auf der Website angezeigt wird und die Verwaltung von Bestellungen darstellt."
   },
   "title.x402": {
     "message": "Kryptowährung",
-    "description": "Titel für die kryptografische Zahlung basierend auf dem X402-Schema."
+    "description": "Der Titel, der auf der Website angezeigt wird und die Zahlung mit Kryptowährung (basierend auf dem X402-Zahlungsschema) darstellt."
   },
   "message.discountTag": {
     "message": "{percent}% Rabatt",
-    "description": "Text für das Badge, das den angewendeten Rabattprozentsatz anzeigt."
+    "description": "Label, das den angewendeten Rabattprozentsatz anzeigt."
   },
   "message.discountHint": {
-    "message": "Es wurde automatisch ein Rabatt von {percent}% für Mitglieder angewendet.",
-    "description": "Hinweis für den Benutzer über den erhaltenen Mitgliederrabatt."
+    "message": "Sie sind unser exklusiver VIP-Kunde und genießen automatisch {percent}% Rabatt.",
+    "description": "Hinweis, dass der Benutzer aufgrund seines VIP-Status automatisch einen Rabatt erhält."
   },
   "message.x402DiscountApplied": {
-    "message": "Mit der X402-Zahlung zusätzlich {percent}% sparen.",
-    "description": "Erläuterung des zusätzlichen Rabatts, der durch die Auswahl der X402-Zahlung gewährt wird."
+    "message": "Durch die X402-Zahlung erhalten Sie zusätzlich {percent}% Rabatt.",
+    "description": "Hinweis, der erklärt, dass die X402-Zahlung einen zusätzlichen Rabatt bietet."
   },
   "message.x402DiscountTag": {
     "message": "{percent}% Rabatt",
-    "description": "Badge für den Rabatt bei der X402-Zahlung."
+    "description": "Hervorhebung des Rabatts, der durch die Wahl der X402-Zahlung zusätzlich gewährt wird."
   },
   "message.x402DiscountHint": {
-    "message": "Wählen Sie die X402-Zahlung, um zusätzlich {percent}% Rabatt zu erhalten.",
-    "description": "Hinweis, der den Benutzer ermutigt, die X402-Zahlung zu wählen."
+    "message": "Wählen Sie die X402-Zahlung, um sofort zusätzlich {percent}% Rabatt zu erhalten.",
+    "description": "Hinweis, der den Benutzern erklärt, dass sie durch die X402-Zahlung einen zusätzlichen Rabatt freischalten können."
   },
   "message.x402IntroShort": {
-    "message": "Direkte Verbindung zur Zahlung mit einer Kryptowallet oder Wechsel in den Programmiermodus zur Erlangung von Integrationsparametern.",
-    "description": "Kurze Einführung in das X402-Zahlungsdialogfeld."
+    "message": "Wählen Sie eine Wallet, um die USDC-Zahlung direkt abzuschließen.",
+    "description": "Kurze Einführung."
   },
   "message.x402TabWallet": {
     "message": "Wallet-Zahlung",
     "description": "Titel des Wallet-Zahlung Tabs."
   },
   "message.x402TabApi": {
-    "message": "Programmierschnittstelle",
-    "description": "Titel des Programmierzugangs Tabs."
+    "message": "Programmatic",
+    "description": "Titel des Programmatic Tabs."
   },
   "message.x402WalletTitle": {
-    "message": "Wallet verbinden und bezahlen",
-    "description": "Titel, der den Benutzer anleitet, das Wallet zu verbinden."
+    "message": "Wallet verbinden und USDC bezahlen",
+    "description": "Titel für die schnelle X402-Wallet-Zahlung (USDC)."
   },
   "message.x402WalletConnected": {
     "message": "Verbunden",
-    "description": "Markierung, wenn das Wallet verbunden ist."
+    "description": "Label, das angezeigt wird, wenn die Wallet verbunden ist."
   },
   "message.x402ConnectWallet": {
     "message": "Wallet verbinden",
-    "description": "Text für die Schaltfläche zum Verbinden des Wallets."
+    "description": "Text für die Schaltfläche zum Verbinden der EVM-Wallet."
   },
   "message.x402NoWalletDesc": {
-    "message": "Kein Wallet erkannt. Bitte installieren Sie MetaMask/Phantom oder öffnen Sie diese Seite im integrierten Browser des Wallets.",
-    "description": "Hinweis, wenn kein EVM-Wallet erkannt wird."
+    "message": "Bitte verwenden Sie einen Browser, der Wallets unterstützt (empfohlen: Chrome/Brave), oder installieren Sie die MetaMask/Phantom-Erweiterung; Sie können auch diese Seite im integrierten Browser der mobilen Wallet-App öffnen.",
+    "description": "Allgemeine Beschreibung ohne Wallet."
   },
   "message.x402SwitchNetwork": {
     "message": "Bitte wechseln Sie das Wallet-Netzwerk zu {network}",
-    "description": "Hinweis an den Benutzer, das Wallet-Netzwerk zu wechseln."
+    "description": "Hinweis, um den Benutzer aufzufordern, zum angegebenen Chain-Netzwerk zu wechseln."
   },
   "message.x402SolanaNotEnabled": {
-    "message": "Solana X402 payment is not enabled for this order. Please switch network or refresh.",
-    "description": "Shown when the selected Solana network is not available in X402 payment requirements."
+    "message": "Solana X402 ist auf dem Server noch nicht aktiviert.",
+    "description": "Hinweis, wenn Solana X402 für diese Bestellung nicht aktiviert ist."
   },
   "message.x402NeedConnectAccount": {
-    "message": "Bitte verbinden Sie zuerst mindestens ein kompatibles EVM-Wallet, bevor Sie bezahlen.",
-    "description": "Erinnerung an den Benutzer, zuerst das Wallet-Konto zu verbinden."
+    "message": "Bitte verbinden Sie zuerst eine Wallet.",
+    "description": "Hinweis, der angezeigt wird, wenn keine Wallet verbunden ist."
   },
   "message.x402ConfirmTitle": {
-    "message": "Confirm Payment",
-    "description": "Title of the confirmation dialog before signing an X402 payment."
+    "message": "Zahlung bestätigen",
+    "description": "Titel zum Bestätigen einer X402-Zahlung."
   },
   "message.x402ConfirmDesc": {
-    "message": "Confirm USDC payment on {network}?",
-    "description": "Description of the confirmation dialog before signing an X402 payment."
+    "message": "USDC-Zahlung auf {network} bestätigen?",
+    "description": "Beschreibung zum Bestätigen einer X402-Zahlung."
   },
   "message.x402StepsTitle": {
     "message": "Zahlungsschritte",
-    "description": "Titel der Liste der Zahlungsschritte."
+    "description": "Titel der Schritte."
   },
   "message.x402Step1": {
-    "message": "Wallet verbinden (falls nicht installiert, bitte zuerst installieren und die Seite aktualisieren).",
-    "description": "Zahlungsschritt 1."
+    "message": "Wallet verbinden (wenn nicht installiert, bitte zuerst die Erweiterung installieren und diese Seite aktualisieren oder die Seite mit der mobilen Wallet öffnen)",
+    "description": "Text für Schritt 1."
   },
   "message.x402Step2": {
-    "message": "Bestätigen Sie, dass das Wallet-Netzwerk {network} ist.",
-    "description": "Zahlungsschritt 2."
+    "message": "Wallet-Einstellungen ändern, um sicherzustellen, dass das Wallet-Netzwerk {network} ist",
+    "description": "Text für Schritt 2."
   },
   "message.x402Step3": {
-    "message": "Klicken Sie auf Bezahlen und schließen Sie die Autorisierungsunterschrift im Wallet ab.",
-    "description": "Zahlungsschritt 3."
+    "message": "Klicken Sie auf 'Mit Wallet bezahlen', um die Autorisierungssignatur in der Wallet abzuschließen",
+    "description": "Text für Schritt 3."
   },
   "message.x402Step4": {
-    "message": "Nach der Unterschrift werden wir automatisch abrechnen und den Bestellstatus aktualisieren.",
-    "description": "Zahlungsschritt 4."
+    "message": "Nach erfolgreicher Signatur werden wir automatisch abrechnen, und diese Seite wird automatisch auf 'bezahlt' aktualisiert.",
+    "description": "Text für Schritt 4."
   },
   "message.x402IntegrationResourceLabel": {
-    "message": "Zahlungsschnittstellenadresse",
-    "description": "Label für die Zahlungsschnittstellenadresse."
+    "message": "Zahlungs-API-Adresse",
+    "description": "Label für die Zahlungs-API-Adresse."
   },
   "message.x402IntegrationPayToLabel": {
-    "message": "Empfangsadresse",
-    "description": "Label für die Blockchain-Empfangsadresse."
+    "message": "Abrechnungsadresse",
+    "description": "Label zur Anzeige der Blockchain-Abrechnungsadresse."
   },
   "message.x402IntegrationNetworkLabel": {
     "message": "Netzwerk",
-    "description": "Label für das Blockchain-Netzwerk."
+    "description": "Label zur Anzeige des Blockchain-Netzwerknamens."
   },
   "message.x402IntegrationAssetLabel": {
-    "message": "Vermögen",
-    "description": "Label für das Abrechnungsvermögen."
+    "message": "Abrechnungsvermögen",
+    "description": "Label zur Anzeige des Abrechnungsvermögens."
   },
   "message.x402IntegrationFallback": {
-    "message": "Konnte die Sitzungsparameter nicht abrufen, bitte sehen Sie in der Dokumentation nach oder kontaktieren Sie den Support für die erforderlichen Parameter.",
-    "description": "Fallback-Hinweis, wenn Integrationsparameter fehlen."
+    "message": "Es konnten keine vollständigen Sitzungsdaten abgerufen werden. Bitte konsultieren Sie die Entwicklermaterialien oder kontaktieren Sie den Support, um die erforderlichen Parameter zu erhalten.",
+    "description": "Hinweis, der angezeigt wird, wenn die Sitzungsdaten nicht abgerufen werden können."
   },
   "message.x402IntegrationDocsCta": {
-    "message": "X402 Anleitung öffnen",
-    "description": "Text für die Schaltfläche zum Öffnen der X402 Integrationsanleitung."
+    "message": "X402-Entwicklungsanleitung öffnen",
+    "description": "Handlungsaufforderung zum Öffnen der Entwickleranleitung."
   },
   "message.x402InstallGuideTitle": {
-    "message": "Wallet-Plugin installieren",
-    "description": "Titel des Dialogs zur Wallet-Installation."
+    "message": "Wallet-Erweiterung installieren",
+    "description": "Titel des Popups zur Wallet-Installation."
   },
   "message.x402InstallGuideDesc": {
-    "message": "Installieren Sie das {wallet} Plugin gemäß den Schritten und verbinden Sie sich erneut.",
-    "description": "Beschreibung der Wallet-Installationsanleitung."
+    "message": "Bitte folgen Sie den folgenden Schritten, um die {wallet}-Erweiterung zu installieren, und verwenden Sie dann die Schaltfläche unten, um diese Seite zu aktualisieren und die Wallet erneut zu erkennen.",
+    "description": "Beschreibung, die den Benutzer anleitet, die Wallet-Erweiterung zu installieren."
   },
   "message.x402InstallGuideStep1": {
-    "message": "Laden Sie das {wallet} Browser-Plugin herunter und installieren Sie es (empfohlen: Chrome/Brave).",
-    "description": "Schritt 1 der Wallet-Installation."
+    "message": "Laden Sie die {wallet}-Browsererweiterung auf der neu geöffneten Seite herunter und installieren Sie sie (empfohlen: Chrome/Brave).",
+    "description": "Schritt 1 zur Installation der Wallet."
   },
   "message.x402InstallGuideStep2": {
-    "message": "Öffnen Sie das Plugin, melden Sie sich an/entsperren Sie es und stellen Sie sicher, dass es aktiviert ist.",
-    "description": "Schritt 2 der Wallet-Installation."
+    "message": "Schließen Sie die Installation der Erweiterung ab, melden Sie sich an/entsperren Sie und stellen Sie sicher, dass sie im aktuellen Browserprofil aktiviert ist.",
+    "description": "Schritt 2 zur Installation der Wallet."
   },
   "message.x402InstallGuideStep3": {
-    "message": "Kehren Sie zu dieser Seite zurück, klicken Sie auf 'Ich habe installiert' und versuchen Sie erneut, sich zu verbinden.",
-    "description": "Schritt 3 der Wallet-Installation."
+    "message": "Kehren Sie zu dieser Seite zurück, klicken Sie auf 'Ich habe installiert', aktualisieren Sie und versuchen Sie erneut, die Wallet zu verbinden.",
+    "description": "Schritt 3 zur Installation der Wallet."
   },
   "message.x402InstallGuideConfirm": {
     "message": "Ich habe installiert",
-    "description": "Bestätigungsschaltfläche nach der Installation."
+    "description": "Hauptschaltfläche nach der Installation der Wallet."
   },
   "message.x402NetworkGuideTitle": {
     "message": "Netzwerkeinstellungen anpassen",
-    "description": "Titel des Dialogs zur Netzwerkanpassung."
+    "description": "Titel des Popups zur Erklärung der Netzwerkinkompatibilität."
   },
   "message.x402NetworkGuideDesc": {
-    "message": "Bitte wechseln Sie das Wallet-Netzwerk zu {network} und aktualisieren Sie die Seite, um es erneut zu versuchen.",
-    "description": "Hinweis zur Anleitung für den Benutzer, das Netzwerk zu wechseln."
+    "message": "Bitte folgen Sie den folgenden Schritten, um das Wallet-Netzwerk auf {network} zu wechseln, und aktualisieren Sie dann diese Seite, um es erneut zu erkennen.",
+    "description": "Beschreibung, die den Benutzer anleitet, das Wallet-Netzwerk anzupassen."
   },
   "message.x402NetworkGuideStep1": {
-    "message": "Öffnen Sie die Wallet-Plugin-Einstellungen und überprüfen Sie das aktive Netzwerk.",
-    "description": "Schritt 1 der Netzwerkanpassung."
+    "message": "Öffnen Sie die Wallet-Erweiterung und gehen Sie zu Einstellungen -> Aktive Netzwerke.",
+    "description": "Schritt 1 zur Netzwerkeinstellung."
   },
   "message.x402NetworkGuideStep2": {
-    "message": "Aktivieren Sie {network} (oder das benötigte Netzwerk) in der Liste.",
-    "description": "Schritt 2 der Netzwerkanpassung."
+    "message": "Bestätigen Sie in der Netzwerkliste, dass {network} (oder ein anderes angegebenes Netzwerk) aktiviert ist. Wenn es aktiviert ist, können Sie diesen Schritt ignorieren.",
+    "description": "Zweite Schrittbeschreibung zur Anpassung des Netzwerks, Ethereum muss nicht deaktiviert werden."
   },
   "message.x402NetworkGuideStep3": {
-    "message": "Kehren Sie zu dieser Seite zurück und klicken Sie auf 'Einstellungen abgeschlossen', bevor Sie bezahlen.",
-    "description": "Schritt 3 der Netzwerkanpassung."
+    "message": "Kehren Sie zu dieser Seite zurück, klicken Sie auf 'Ich habe alles eingerichtet', aktualisieren Sie und versuchen Sie erneut, die Zahlung durchzuführen.",
+    "description": "Schritt 3 zur Netzwerkeinstellung."
   },
   "message.x402NetworkGuideConfirm": {
-    "message": "Einstellungen abgeschlossen",
-    "description": "Bestätigungsschaltfläche nach Abschluss der Netzwerkanpassung."
+    "message": "Ich habe alles eingerichtet",
+    "description": "Hauptschaltfläche nach der Netzwerkeinstellung."
   },
   "message.x402NetworkSwitchFailed": {
-    "message": "Das aktuelle Wallet unterstützt keinen automatischen Netzwerkwechsel, bitte wechseln Sie manuell und versuchen Sie es erneut.",
-    "description": "Hinweis, wenn der automatische Netzwerkwechsel fehlschlägt."
+    "message": "Die aktuelle Wallet unterstützt kein automatisches Wechseln des Netzwerks. Bitte wechseln Sie manuell zum angegebenen Netzwerk in der Wallet und versuchen Sie es erneut.",
+    "description": "Hinweis, der den Benutzer darauf hinweist, dass die Wallet kein automatisches Wechseln des Netzwerks unterstützt und manuell gewechselt werden muss."
   },
   "message.x402PaymentFailed": {
-    "message": "X402 Wallet-Zahlung fehlgeschlagen, bitte versuchen Sie es später erneut oder kontaktieren Sie den Support.",
-    "description": "Allgemeiner Fehler bei der X402-Zahlung."
+    "message": "X402 Wallet-Zahlung fehlgeschlagen, bitte versuchen Sie es später erneut. Bei mehrfachen Fehlern kontaktieren Sie bitte den Support und geben Sie die Fehlermeldung an.",
+    "description": "Allgemeine Fehlermeldung, die angezeigt wird, wenn die X402 Wallet-Zahlung fehlschlägt."
   },
   "message.x402WalletPayCta": {
     "message": "Mit Wallet bezahlen",
-    "description": "Text für die Schaltfläche zur Einleitung der X402 Wallet-Zahlung."
+    "description": "Text für die Schaltfläche zur Zahlung mit der verbundenen Wallet."
+  },
+  "button.refund": {
+    "message": "Rückerstattung",
+    "description": "Text im Button, der verwendet wird, um die Bestellung manuell zurückzuerstatten."
+  },
+  "field.applicationId": {
+    "message": "Antrags-ID",
+    "description": "Die Antrags-ID, zu der die Bestellung gehört."
+  },
+  "field.serviceId": {
+    "message": "Dienst-ID",
+    "description": "Die Dienst-ID, die dem Rabatt entspricht."
+  },
+  "field.generalDiscount": {
+    "message": "Allgemeiner Rabatt",
+    "description": "Das Label, das angezeigt wird, wenn der Rabatt für alle Dienste gilt."
+  },
+  "field.userId": {
+    "message": "Benutzer-ID",
+    "description": "Die Benutzer-ID, die den Rabatt erhält."
+  },
+  "field.discount": {
+    "message": "Rabatt",
+    "description": "Der Rabattprozentsatz, der auf die Bestellung dieses Benutzers angewendet wird."
+  },
+  "field.actions": {
+    "message": "Aktionen",
+    "description": "Der Titel der Aktionsschaltflächenreihe."
+  },
+  "message.confirmRefund": {
+    "message": "Diese Aktion wird die Ansprüche dieser Bestellung widerrufen und als erstattet markieren, was nicht rückgängig gemacht werden kann. Bitte bestätigen Sie, dass die Rückerstattung bearbeitet wurde. Möchten Sie fortfahren?",
+    "description": "Nachricht zur Bestätigung der Rückerstattung."
+  },
+  "message.x402IntegrationIntro": {
+    "message": "Die aktuelle Bestellung verwendet das X402-Zahlungsprotokoll. Bitte schließen Sie die Integration auf der Serverseite gemäß den untenstehenden Parametern ab und initiieren Sie die Zahlung.",
+    "description": "Einführungstext für die Verwendung des X402-Protokolls."
+  },
+  "message.x402IntegrationProtocol": {
+    "message": "Rufen Sie die Zahlungs-API des Facilitators auf und schließen Sie die Signaturübertragung ab. Nach erfolgreicher Abrechnung kehren Sie zu dieser Seite zurück, um den Status zu bestätigen.",
+    "description": "Anleitung zu den Schritten zur Durchführung einer X402-Zahlung."
+  },
+  "message.x402IntegrationDocsHint": {
+    "message": "Möchten Sie mehr Details erfahren? Bitte sehen Sie sich die untenstehenden Entwicklermaterialien an.",
+    "description": "Hinweis, dass Benutzer weitere Informationen über die Entwicklermaterialien erhalten können."
+  },
+  "message.x402SwitchNetworkCta": {
+    "message": "Wechseln zu {network}",
+    "description": "CTA zum Wechseln des Netzwerks."
+  },
+  "message.x402NoWalletTitle": {
+    "message": "Keine EVM-Wallet erkannt",
+    "description": "Titel, wenn der Browser keine EVM-Wallet injiziert hat."
+  },
+  "message.x402NoWalletSafariDesc": {
+    "message": "Safari unterstützt normalerweise keine Erweiterungen wie MetaMask. Es wird empfohlen, Chrome/Brave zu verwenden oder diese Seite im integrierten Browser der mobilen Wallet-App zu öffnen.",
+    "description": "Beschreibung ohne Wallet im Safari-Umfeld."
+  },
+  "message.x402InstallMetaMask": {
+    "message": "MetaMask installieren",
+    "description": "Text für die Schaltfläche zur Installation von MetaMask."
+  },
+  "message.x402InstallPhantom": {
+    "message": "Phantom installieren",
+    "description": "Text für die Schaltfläche zur Installation von Phantom."
+  },
+  "message.x402ConnectWC": {
+    "message": "Mit WalletConnect verbinden",
+    "description": "Text für die Schaltfläche zur Verbindung mit WalletConnect."
+  },
+  "message.x402RefreshDetect": {
+    "message": "Erneut erkennen",
+    "description": "Text für die Schaltfläche zur erneuten Erkennung der Wallet."
+  },
+  "message.x402MissingWCProjectId": {
+    "message": "WalletConnect-Projekt-ID nicht konfiguriert (bitte Umgebungsvariable VITE_WALLETCONNECT_PROJECT_ID setzen)",
+    "description": "Hinweis, dass die WalletConnect-Projekt-ID fehlt."
+  },
+  "message.x402WalletBound": {
+    "message": "Gebunden",
+    "description": "Label, das angezeigt wird, wenn die Wallet gebunden ist."
+  },
+  "message.userIdRequired": {
+    "message": "Bitte geben Sie die Benutzer-ID ein.",
+    "description": "Hinweis, der angezeigt wird, wenn die Benutzer-ID leer ist."
+  },
+  "message.serviceIdRequired": {
+    "message": "Bitte wählen Sie einen Service aus.",
+    "description": "Hinweis, der angezeigt wird, wenn die Service-ID leer ist."
+  },
+  "message.discountRequired": {
+    "message": "Bitte geben Sie einen Rabatt zwischen 0 und 1 ein.",
+    "description": "Hinweis, der angezeigt wird, wenn der Rabatt nicht im gültigen Bereich liegt."
+  },
+  "message.discountCreated": {
+    "message": "Rabatt erfolgreich gespeichert.",
+    "description": "Hinweis, der angezeigt wird, wenn ein neuer Rabatt erfolgreich erstellt wurde."
+  },
+  "message.discountUpdated": {
+    "message": "Rabatt erfolgreich aktualisiert.",
+    "description": "Hinweis, der angezeigt wird, wenn ein Rabatt erfolgreich bearbeitet wurde."
+  },
+  "message.discountDeleted": {
+    "message": "Rabatt erfolgreich gelöscht.",
+    "description": "Hinweis, der angezeigt wird, wenn ein Rabatt erfolgreich gelöscht wurde."
+  },
+  "state.refunded": {
+    "message": "Erstattet",
+    "description": "Der Status der Bestellung, der anzeigt, dass die Bestellung erstattet wurde."
+  },
+  "title.revenueAnalysis": {
+    "message": "Einnahmenanalyse",
+    "description": "Titel der Seite zur Einnahmenanalyse."
+  },
+  "title.todayRevenue": {
+    "message": "Heutige Einnahmen",
+    "description": "Heutige Einnahmen."
+  },
+  "title.last7dRevenue": {
+    "message": "Einnahmen der letzten 7 Tage",
+    "description": "Einnahmen der letzten 7 Tage."
+  },
+  "title.last30dRevenue": {
+    "message": "Einnahmen der letzten 30 Tage",
+    "description": "Einnahmen der letzten 30 Tage."
+  },
+  "title.last90dRevenue": {
+    "message": "Einnahmen des letzten Quartals",
+    "description": "Einnahmen der letzten 90 Tage."
+  },
+  "title.revenueTrend": {
+    "message": "Einnahmentrend",
+    "description": "Titel des Liniendiagramms zum Einnahmentrend."
+  },
+  "title.manageOrderDiscount": {
+    "message": "Rabattverwaltung",
+    "description": "Titel der Seite zur Verwaltung von Bestellrabatten."
+  },
+  "title.discountLookup": {
+    "message": "Aktueller Rabatt",
+    "description": "Titel des Blocks, der den aktuellen Rabatt des Benutzers anzeigt."
+  },
+  "title.createDiscount": {
+    "message": "Neuen Rabatt erstellen",
+    "description": "Titel des Blocks zur Erstellung eines neuen Rabatts."
+  },
+  "title.updateDiscount": {
+    "message": "Rabatt aktualisieren",
+    "description": "Titel des Popups zur Bearbeitung von Rabatten."
   }
 }
