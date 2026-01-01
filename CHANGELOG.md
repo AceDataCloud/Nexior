@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 29 Dec 2025 09:55:09 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 01 Jan 2026 05:58:16 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.26.1
+
+Thu, 01 Jan 2026 05:58:16 GMT
+
+### Patches
+
+- update loading index effect (cqc@cuiqingcai.com)
 
 ## 3.26.0
 
