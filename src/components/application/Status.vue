@@ -5,7 +5,7 @@
         <p class="text-center mb-4">
           {{ $t('application.message.applicationSelection') }}
         </p>
-        <div class="flex flex-col gap-4 mb-6 justify-center items-center overflow-y-auto">
+        <div class="flex flex-col gap-4 mb-6 overflow-y-auto">
           <application-info
             v-for="(app, index) in applications"
             :key="index"
@@ -14,6 +14,7 @@
               active: application?.id === app.id
             }"
             :application="app"
+            show-id
             @click="onSelectApplication(app)"
             @usage="onGoUsage(app)"
             @buy="onBuyMore(app)"

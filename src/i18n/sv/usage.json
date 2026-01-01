@@ -1,7 +1,7 @@
 {
   "field.createdAt": {
     "message": "Användningstid",
-    "description": "Användningspostens skapelsedatum."
+    "description": "Tid för att registrera användningen."
   },
   "field.statusCode": {
     "message": "Statuskod",
@@ -9,15 +9,15 @@
   },
   "field.application": {
     "message": "Ansökan",
-    "description": "Tjänstens ansökningsprogram."
+    "description": "Ansökan om att använda resurser."
   },
   "field.status": {
     "message": "Status",
-    "description": "Status för ansökningsprogrammet."
+    "description": "Status för ansökningsprocessen."
   },
   "field.api": {
     "message": "API",
-    "description": "Tjänstens API."
+    "description": "Det anropade API:et, ingen översättning behövs."
   },
   "field.usedAmount": {
     "message": "Använd mängd",
@@ -36,43 +36,47 @@
     "description": "Metadata för användningsposten."
   },
   "title.totalUsed": {
-    "message": "Total användning",
-    "description": "Titel på sammanfattningskortet för användning."
+    "message": "Total användning (poäng)",
+    "description": "Statistik över det totala antalet förbrukade poäng."
   },
   "title.usageTrend": {
     "message": "Användningstrend",
-    "description": "Titel på diagrammet för användningstrend."
+    "description": "Titel på diagrammet för användningstrender."
   },
   "shortcuts.today": {
     "message": "Idag",
-    "description": "Snabbval för dagens tidsintervall."
+    "description": "Dagens datum."
   },
   "shortcuts.last1Day": {
     "message": "Senaste 1 dagen",
-    "description": "Snabbval för det senaste 1 dygnets tidsintervall."
+    "description": "Datumintervall för den senaste 1 dagen."
   },
   "shortcuts.last3Days": {
     "message": "Senaste 3 dagarna",
-    "description": "Snabbval för det senaste 3 dagarnas tidsintervall."
+    "description": "Datumintervall för de senaste 3 dagarna."
   },
   "shortcuts.last7Days": {
     "message": "Senaste 7 dagarna",
-    "description": "Snabbval för det senaste 7 dagarnas tidsintervall."
+    "description": "Datumintervall för de senaste 7 dagarna."
   },
   "shortcuts.last1Month": {
     "message": "Senaste 1 månaden",
-    "description": "Snabbval för det senaste 1 månads tidsintervall."
+    "description": "Datumintervall för den senaste 1 månaden."
   },
   "placeholder.startDate": {
     "message": "Starttid",
-    "description": "Platsinnehav för starttid i tidsintervallväljaren."
+    "description": "Starttid."
   },
   "placeholder.endDate": {
     "message": "Sluttid",
-    "description": "Platsinnehav för sluttid i tidsintervallväljaren."
+    "description": "Sluttid."
   },
   "placeholder.to": {
     "message": "till",
-    "description": "Separatortext i tidsintervallväljaren."
+    "description": "Avslutningsdatum valt från datumväljaren, mellanliggande avgränsare."
+  },
+  "shortcuts.yesterday": {
+    "message": "Igår",
+    "description": "Dagens datum."
   }
 }

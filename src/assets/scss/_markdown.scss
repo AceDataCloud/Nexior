@@ -9,6 +9,21 @@
     list-style: decimal;
   }
 
+  h1,
+  h2 {
+    .anchor {
+      display: none;
+      margin-left: 0;
+      margin-right: 5px;
+      color: var(--el-color-primary);
+    }
+    &:hover {
+      .anchor {
+        display: inline-block;
+      }
+    }
+  }
+
   .highlight pre,
   pre {
     background-color: #253238 !important;
@@ -31,9 +46,26 @@
     }
   }
 
+  pre button {
+    color: #adb5bd;
+    box-sizing: border-box;
+    transition: 0.2s ease-out;
+    cursor: pointer;
+    user-select: none;
+    background: rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0);
+    padding: 5px 10px;
+    font-size: 0.8em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 0.15rem;
+  }
+
   blockquote {
     color: var(--el-text-color-regular) !important;
     font-size: 14px !important;
+    border-left: 0.25em solid var(--el-color-primary) !important;
   }
 
   a {

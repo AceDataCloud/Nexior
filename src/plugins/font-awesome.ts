@@ -82,7 +82,8 @@ import {
   faLink as faSolidLink,
   faWandMagic as faSolidWandMagic,
   faAngleDown as faSolidAngleDown,
-  faCubesStacked as faSolidCubesStacked
+  faCubesStacked as faSolidCubesStacked,
+  faChartLine as faSolidChartLine
 } from '@fortawesome/free-solid-svg-icons';
 // add icons
 library.add(faSolidEllipsis);
@@ -164,6 +165,7 @@ library.add(faSolidPercent);
 library.add(faSolidShieldHalved);
 library.add(faSolidCubes);
 library.add(faSolidCubesStacked);
+library.add(faSolidChartLine);
 library.add(faSolidLink);
 library.add(faSolidWandMagic);
 library.add(faBrandsDiscord);

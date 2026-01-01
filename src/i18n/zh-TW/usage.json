@@ -1,7 +1,7 @@
 {
   "field.createdAt": {
     "message": "使用時間",
-    "description": "使用記錄創建的時間。"
+    "description": "記錄使用情況的時間。"
   },
   "field.statusCode": {
     "message": "狀態碼",
@@ -9,7 +9,7 @@
   },
   "field.application": {
     "message": "申請",
-    "description": "服務的申請程序。"
+    "description": "使用資源的申請。"
   },
   "field.status": {
     "message": "狀態",
@@ -17,15 +17,15 @@
   },
   "field.api": {
     "message": "API",
-    "description": "服務的API。"
+    "description": "調用的API，無需翻譯"
   },
   "field.usedAmount": {
     "message": "已使用數量",
-    "description": "已使用的資源數量。"
+    "description": "使用的資源數量。"
   },
   "field.deductedAmount": {
     "message": "已扣除數量",
-    "description": "已扣除的資源數量。"
+    "description": "扣除的資源數量。"
   },
   "field.remainingAmount": {
     "message": "剩餘數量",
@@ -36,43 +36,47 @@
     "description": "使用記錄的元數據。"
   },
   "title.totalUsed": {
-    "message": "累計用量",
-    "description": "用量彙總卡片標題。"
+    "message": "使用總量（積分）",
+    "description": "統計總消耗的積分數量"
   },
   "title.usageTrend": {
-    "message": "用量趨勢",
+    "message": "使用趨勢",
     "description": "用量趨勢圖標題。"
   },
   "shortcuts.today": {
     "message": "今天",
-    "description": "快捷選擇今天的時間範圍。"
+    "description": "今天的日期"
   },
   "shortcuts.last1Day": {
     "message": "最近1天",
-    "description": "快捷選擇最近1天的時間範圍。"
+    "description": "最近1天的日期範圍"
   },
   "shortcuts.last3Days": {
     "message": "最近3天",
-    "description": "快捷選擇最近3天的時間範圍。"
+    "description": "最近3天的日期範圍"
   },
   "shortcuts.last7Days": {
     "message": "最近7天",
-    "description": "快捷選擇最近7天的時間範圍。"
+    "description": "最近7天的日期範圍"
   },
   "shortcuts.last1Month": {
     "message": "最近1個月",
-    "description": "快捷選擇最近1個月的時間範圍。"
+    "description": "最近1個月的日期範圍"
   },
   "placeholder.startDate": {
     "message": "開始時間",
-    "description": "時間範圍選擇器的開始時間佔位。"
+    "description": "開始時間"
   },
   "placeholder.endDate": {
     "message": "結束時間",
-    "description": "時間範圍選擇器的結束時間佔位。"
+    "description": "結束時間"
   },
   "placeholder.to": {
     "message": "至",
-    "description": "時間範圍選擇器的分隔文本。"
+    "description": "從日期選擇器中選擇的結束日期，中間的分隔符。"
+  },
+  "shortcuts.yesterday": {
+    "message": "昨天",
+    "description": "昨天的日期"
   }
 }

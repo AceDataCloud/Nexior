@@ -1,23 +1,23 @@
 {
   "field.createdAt": {
-    "message": "Date de création",
-    "description": "Utilisé pour indiquer le moment où l'enregistrement a été créé."
+    "message": "Date d'utilisation",
+    "description": "Enregistrement du moment d'utilisation."
   },
   "field.statusCode": {
     "message": "Code d'état",
     "description": "Code d'état de l'enregistrement d'utilisation."
   },
   "field.application": {
-    "message": "Application",
-    "description": "Programme de demande de service."
+    "message": "Demande",
+    "description": "Demande pour l'utilisation des ressources."
   },
   "field.status": {
-    "message": "Statut",
-    "description": "Statut du programme de demande."
+    "message": "État",
+    "description": "État de la demande."
   },
   "field.api": {
     "message": "API",
-    "description": "API du service."
+    "description": "API appelée, pas besoin de traduction"
   },
   "field.usedAmount": {
     "message": "Quantité utilisée",
@@ -36,43 +36,47 @@
     "description": "Métadonnées de l'enregistrement d'utilisation."
   },
   "title.totalUsed": {
-    "message": "Consommation totale",
-    "description": "Titre de la carte de résumé de la consommation."
+    "message": "Total utilisé (points)",
+    "description": "Statistiques sur le nombre total de points consommés"
   },
   "title.usageTrend": {
-    "message": "Tendance de consommation",
-    "description": "Titre du graphique de tendance de consommation."
+    "message": "Tendance d'utilisation",
+    "description": "Titre du graphique de tendance d'utilisation."
   },
   "shortcuts.today": {
     "message": "Aujourd'hui",
-    "description": "Sélection rapide de la plage de temps d'aujourd'hui."
+    "description": "Date d'aujourd'hui"
   },
   "shortcuts.last1Day": {
     "message": "Dernier jour",
-    "description": "Sélection rapide de la plage de temps du dernier jour."
+    "description": "Plage de dates du dernier jour"
   },
   "shortcuts.last3Days": {
     "message": "Derniers 3 jours",
-    "description": "Sélection rapide de la plage de temps des derniers 3 jours."
+    "description": "Plage de dates des derniers 3 jours"
   },
   "shortcuts.last7Days": {
     "message": "Derniers 7 jours",
-    "description": "Sélection rapide de la plage de temps des derniers 7 jours."
+    "description": "Plage de dates des derniers 7 jours"
   },
   "shortcuts.last1Month": {
     "message": "Dernier mois",
-    "description": "Sélection rapide de la plage de temps du dernier mois."
+    "description": "Plage de dates du dernier mois"
   },
   "placeholder.startDate": {
     "message": "Date de début",
-    "description": "Espace réservé pour la date de début dans le sélecteur de plage de temps."
+    "description": "Date de début"
   },
   "placeholder.endDate": {
     "message": "Date de fin",
-    "description": "Espace réservé pour la date de fin dans le sélecteur de plage de temps."
+    "description": "Date de fin"
   },
   "placeholder.to": {
     "message": "à",
-    "description": "Texte de séparation dans le sélecteur de plage de temps."
+    "description": "Date de fin sélectionnée dans le sélecteur de dates, séparateur au milieu."
+  },
+  "shortcuts.yesterday": {
+    "message": "Hier",
+    "description": "Date d'hier"
   }
 }

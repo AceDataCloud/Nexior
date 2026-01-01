@@ -1,7 +1,7 @@
 {
   "field.createdAt": {
-    "message": "Data de criação",
-    "description": "Uso do registro criado."
+    "message": "Data de uso",
+    "description": "Registro do tempo de uso."
   },
   "field.statusCode": {
     "message": "Código de status",
@@ -9,15 +9,15 @@
   },
   "field.application": {
     "message": "Aplicação",
-    "description": "Programa de solicitação do serviço."
+    "description": "Solicitação para uso de recursos."
   },
   "field.status": {
     "message": "Status",
-    "description": "Status do programa de solicitação."
+    "description": "Status da aplicação."
   },
   "field.api": {
     "message": "API",
-    "description": "API do serviço."
+    "description": "API chamada, sem necessidade de tradução."
   },
   "field.usedAmount": {
     "message": "Quantidade utilizada",
@@ -36,8 +36,8 @@
     "description": "Metadados do registro de uso."
   },
   "title.totalUsed": {
-    "message": "Uso total",
-    "description": "Título do cartão de resumo de uso."
+    "message": "Total utilizado (pontos)",
+    "description": "Total de pontos consumidos."
   },
   "title.usageTrend": {
     "message": "Tendência de uso",
@@ -45,34 +45,38 @@
   },
   "shortcuts.today": {
     "message": "Hoje",
-    "description": "Seleção rápida para o intervalo de tempo de hoje."
+    "description": "Data de hoje."
   },
   "shortcuts.last1Day": {
     "message": "Último 1 dia",
-    "description": "Seleção rápida para o intervalo de tempo dos últimos 1 dia."
+    "description": "Intervalo de datas do último 1 dia."
   },
   "shortcuts.last3Days": {
     "message": "Últimos 3 dias",
-    "description": "Seleção rápida para o intervalo de tempo dos últimos 3 dias."
+    "description": "Intervalo de datas dos últimos 3 dias."
   },
   "shortcuts.last7Days": {
     "message": "Últimos 7 dias",
-    "description": "Seleção rápida para o intervalo de tempo dos últimos 7 dias."
+    "description": "Intervalo de datas dos últimos 7 dias."
   },
   "shortcuts.last1Month": {
     "message": "Último 1 mês",
-    "description": "Seleção rápida para o intervalo de tempo do último 1 mês."
+    "description": "Intervalo de datas do último 1 mês."
   },
   "placeholder.startDate": {
     "message": "Data de início",
-    "description": "Placeholder para a data de início do seletor de intervalo de tempo."
+    "description": "Data de início."
   },
   "placeholder.endDate": {
     "message": "Data de término",
-    "description": "Placeholder para a data de término do seletor de intervalo de tempo."
+    "description": "Data de término."
   },
   "placeholder.to": {
     "message": "até",
-    "description": "Texto separador do seletor de intervalo de tempo."
+    "description": "Separador entre as datas selecionadas no seletor de datas."
+  },
+  "shortcuts.yesterday": {
+    "message": "Ontem",
+    "description": "Data de ontem."
   }
 }

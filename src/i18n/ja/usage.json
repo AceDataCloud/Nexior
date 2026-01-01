@@ -1,7 +1,7 @@
 {
   "field.createdAt": {
     "message": "使用時間",
-    "description": "使用記録作成の時間。"
+    "description": "記録使用状況の時間。"
   },
   "field.statusCode": {
     "message": "ステータスコード",
@@ -9,15 +9,15 @@
   },
   "field.application": {
     "message": "申請",
-    "description": "サービスの申請プログラム。"
+    "description": "リソースを使用するための申請。"
   },
   "field.status": {
     "message": "ステータス",
-    "description": "申請プログラムのステータス。"
+    "description": "申請プロセスのステータス。"
   },
   "field.api": {
     "message": "API",
-    "description": "サービスのAPI。"
+    "description": "呼び出されたAPI、翻訳不要"
   },
   "field.usedAmount": {
     "message": "使用済み数量",
@@ -36,43 +36,47 @@
     "description": "使用記録のメタデータ。"
   },
   "title.totalUsed": {
-    "message": "累計使用量",
-    "description": "使用量のサマリーカードのタイトル。"
+    "message": "使用総量（ポイント）",
+    "description": "総消費ポイント数を統計する"
   },
   "title.usageTrend": {
-    "message": "使用量のトレンド",
+    "message": "使用トレンド",
     "description": "使用量トレンドグラフのタイトル。"
   },
   "shortcuts.today": {
     "message": "今日",
-    "description": "今日の時間範囲を選択するショートカット。"
+    "description": "今日の日付"
   },
   "shortcuts.last1Day": {
     "message": "最近1日",
-    "description": "最近1日の時間範囲を選択するショートカット。"
+    "description": "最近1日の日時範囲"
   },
   "shortcuts.last3Days": {
     "message": "最近3日",
-    "description": "最近3日の時間範囲を選択するショートカット。"
+    "description": "最近3日の日時範囲"
   },
   "shortcuts.last7Days": {
     "message": "最近7日",
-    "description": "最近7日の時間範囲を選択するショートカット。"
+    "description": "最近7日の日時範囲"
   },
   "shortcuts.last1Month": {
     "message": "最近1ヶ月",
-    "description": "最近1ヶ月の時間範囲を選択するショートカット。"
+    "description": "最近1ヶ月の日時範囲"
   },
   "placeholder.startDate": {
     "message": "開始時間",
-    "description": "時間範囲選択器の開始時間のプレースホルダー。"
+    "description": "開始時間"
   },
   "placeholder.endDate": {
     "message": "終了時間",
-    "description": "時間範囲選択器の終了時間のプレースホルダー。"
+    "description": "終了時間"
   },
   "placeholder.to": {
     "message": "まで",
-    "description": "時間範囲選択器の区切りテキスト。"
+    "description": "日付選択ツールから選択された終了日、中間の区切り文字。"
+  },
+  "shortcuts.yesterday": {
+    "message": "昨日",
+    "description": "昨日の日付"
   }
 }

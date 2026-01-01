@@ -52,10 +52,18 @@
                 </p>
               </div>
               <div class="flex flex-col items-end gap-2">
-                <el-button class="!m-0" size="small" round @click="onGoUsage(globalApplications?.[0])">
+                <el-button class="!m-0 !px-2" size="small" round @click="onGoUsage(globalApplications?.[0])">
+                  <font-awesome-icon icon="fa-solid fa-chart-line" class="mr-1 text-[12px]" />
                   {{ $t('application.button.usage') }}
                 </el-button>
-                <el-button class="!m-0" type="primary" round size="small" @click="onBuyMore(globalApplications?.[0])">
+                <el-button
+                  class="!m-0 !px-2"
+                  type="primary"
+                  round
+                  size="small"
+                  @click="onBuyMore(globalApplications?.[0])"
+                >
+                  <font-awesome-icon icon="fa-solid fa-coins" class="mr-1 text-[12px]" />
                   {{ $t('application.button.buyMore') }}
                 </el-button>
               </div>
@@ -138,13 +146,15 @@
                   <span v-if="scope.row.expired_at" class="expired-at">{{ $dayjs.format(scope.row.expired_at) }}</span>
                 </template>
               </el-table-column>
-              <el-table-column fixed="right" width="240px">
+              <el-table-column fixed="right" width="200px">
                 <template #default="scope">
-                  <div class="flex flex-wrap items-center justify-end gap-2">
-                    <el-button class="!m-0" size="small" round @click="onGoUsage(scope?.row)">
+                  <div class="flex flex-wrap items-center justify-end gap-1">
+                    <el-button class="!m-0 !px-2" size="small" round @click="onGoUsage(scope?.row)">
+                      <font-awesome-icon icon="fa-solid fa-chart-line" class="mr-1 text-[12px]" />
                       {{ $t('application.button.usage') }}
                     </el-button>
-                    <el-button class="!m-0" type="primary" round size="small" @click="onBuyMore(scope?.row)">
+                    <el-button class="!m-0 !px-2" type="primary" round size="small" @click="onBuyMore(scope?.row)">
+                      <font-awesome-icon icon="fa-solid fa-coins" class="mr-1 text-[12px]" />
                       {{ $t('application.button.buyMore') }}
                     </el-button>
                   </div>

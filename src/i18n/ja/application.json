@@ -16,12 +16,12 @@
     "description": "このボタンをクリックすると、ドキュメントページに移動します。"
   },
   "button.goCredentials": {
-    "message": "認証情報",
-    "description": "このボタンをクリックすると、認証情報ページに移動します。"
+    "message": "キー",
+    "description": "このボタンをクリックすると、認証情報ページに移動します。英語は「Keys」と翻訳する必要があります。"
   },
   "button.buyMore": {
-    "message": "もっと購入",
-    "description": "このボタンをクリックすると、もっと購入ページに移動します。"
+    "message": "チャージ",
+    "description": "このボタンをクリックすると、さらに購入するページに移動します。英語は「Top Up」と翻訳する必要があります。"
   },
   "button.createOrder": {
     "message": "注文を作成",
@@ -32,12 +32,12 @@
     "description": "このボタンをクリックすると、カスタマイズページに移動します。"
   },
   "button.query": {
-    "message": "照会",
-    "description": "このボタンをクリックすると、照会ページに移動します。"
+    "message": "クエリ",
+    "description": "このボタンをクリックすると、クエリページに移動します。"
   },
   "button.usage": {
-    "message": "使用記録",
-    "description": "このボタンをクリックすると、使用記録ページに移動します。"
+    "message": "使用量",
+    "description": "このボタンをクリックすると、使用履歴ページに移動します。英語は「Usage」と翻訳する必要があります。"
   },
   "field.serviceName": {
     "message": "サービス名",
@@ -53,19 +53,19 @@
   },
   "field.id": {
     "message": "申請ID",
-    "description": "申請のID。"
+    "description": "申請のID。英語は「App ID」と翻訳する必要があります。"
   },
   "field.remainingAmount": {
-    "message": "残りの使用量",
-    "description": "申請の残りの使用量。"
+    "message": "残高",
+    "description": "申請の残高。英語は「Balance」と翻訳する必要があります。"
   },
   "field.usedAmount": {
-    "message": "使用済み量",
-    "description": "申請の使用済み量。"
+    "message": "使用済み",
+    "description": "申請の使用済み金額。英語は「Used」と翻訳する必要があります。"
   },
   "field.apiKey": {
     "message": "APIキー",
-    "description": "APIキー。"
+    "description": "APIキー"
   },
   "field.service": {
     "message": "サービス",
@@ -76,20 +76,20 @@
     "description": "申請の操作。"
   },
   "field.allowConsumeGlobal": {
-    "message": "共通残高を使用",
-    "description": "専用残高が不足している場合、共通残高を消費することを許可するか。"
+    "message": "一般残高の使用を許可",
+    "description": "一般残高（General Balance）を消費することを許可するスイッチ。英語は「Allow Use General Balance」と翻訳する必要があります。"
   },
   "field.amount": {
-    "message": "数量",
-    "description": "申請の数量。"
+    "message": "金額",
+    "description": "申請の金額。"
   },
   "field.scope": {
     "message": "範囲",
-    "description": "申請の範囲。"
+    "description": "申請の範囲、全体または特定のサービスである可能性があります。"
   },
   "field.traceId": {
     "message": "トレースID",
-    "description": "APIサービスの申請のAPI呼び出しのトレースID。'トレースID'のままにしてください。"
+    "description": "APIサービスの申請のAPI呼び出しのトレースID"
   },
   "field.shouldPayPrice": {
     "message": "最終価格",
@@ -97,11 +97,11 @@
   },
   "field.api": {
     "message": "API",
-    "description": "これはオンラインサービスで、APIを通じてユーザーにサービスを提供します。"
+    "description": "これはオンラインサービスであり、フォームはAPIを通じてユーザーにサービスを提供します。"
   },
   "field.proxy": {
     "message": "プロキシ",
-    "description": "これはオンラインサービスで、HTTPプロキシを通じてユーザーにサービスを提供します。"
+    "description": "これはオンラインサービスであり、フォームはHTTPプロキシ（データ転送用）を通じてユーザーにサービスを提供します。"
   },
   "field.credential": {
     "message": "認証情報",
@@ -120,8 +120,8 @@
     "description": "申請のタイプ。"
   },
   "field.freeAmount": {
-    "message": "無料数量",
-    "description": "申請の無料数量。"
+    "message": "無料金額",
+    "description": "申請の無料金額。"
   },
   "field.extraPrice": {
     "message": "追加価格",
@@ -136,24 +136,24 @@
     "description": "ユーザーがこのサービスを成功裏に申請した場合に表示されるメッセージ。"
   },
   "message.notApplied": {
-    "message": "私たちのサービスをご利用いただきありがとうございます。無料の試用枠をプレゼントします。下のボタンをクリックして今すぐ始めましょう。",
-    "description": "ユーザーがまだこのサービスを申請していない場合に表示されるメッセージ。"
+    "message": "このサービスはまだ申請されていません。使用する前に申請してください。",
+    "description": "ユーザーがこのサービスをまだ申請していない場合に表示されるメッセージ。"
   },
   "message.globalBalanceBuyDescription": {
-    "message": "今回のチャージポイントは共通残高で、任意のサービスに使用できます。",
-    "description": "ユーザーが共通残高をチャージした場合に表示されるメッセージ。"
+    "message": "一般残高にチャージすることも、各申請インスタンスに個別にチャージすることもできます。今回のチャージは一般残高に入ります。特定の申請インスタンスの残高が不足している場合、一般残高が自動的に補充されます。",
+    "description": "一般残高にチャージし、インスタンスの残高が不足している場合に自動的に補充されることを説明するメッセージ。用語：一般残高=General Balance（Global Balanceに翻訳しないでください）。"
   },
   "message.yourApplication": {
     "message": "あなたの申請",
     "description": "ユーザーの申請時に表示されるメッセージ。"
   },
   "message.unverified": {
-    "message": "このサービスを申請するには、本人確認を完了する必要があります。",
-    "description": "ユーザーがまだ本人確認を完了していない場合に表示されるメッセージ。"
+    "message": "サービスを申請するには、本人確認を完了する必要があります。",
+    "description": "ユーザーが本人確認を完了していない場合に表示されるメッセージ。"
   },
   "message.goVerify": {
     "message": "本人確認へ進む",
-    "description": "ユーザーがまだ本人確認を完了していない場合に表示されるメッセージ。"
+    "description": "ユーザーが本人確認を完了していない場合に表示されるメッセージ。"
   },
   "message.requiredParameter": {
     "message": "必須パラメータ",
@@ -164,99 +164,155 @@
     "description": "ユーザーが必須パラメータを入力していない場合に表示されるメッセージ。"
   },
   "message.applicationSelection": {
-    "message": "以下は現在申請または購入しているプランです。サービスを続けるために、任意のプランを選択できます。",
-    "description": "ユーザーが申請を選択する必要があるときに表示されるメッセージ。"
+    "message": "現在申請または購入しているプランは以下の通りです。サービスを続けるために、いずれかのプランを選択できます。",
+    "description": "ユーザーが申請を選択する必要がある場合に表示されるメッセージ。"
   },
   "message.createCredentialSuccessfully": {
     "message": "資格情報の作成に成功しました",
-    "description": "ユーザーが資格情報を成功裏に作成したときに表示されるメッセージ。"
+    "description": "ユーザーが資格情報を成功裏に作成した場合に表示されるメッセージ。"
   },
   "message.readPolicy": {
     "message": "私はポリシーを読み、同意しました",
-    "description": "ユーザーがポリシーを読み、同意したときに表示されるメッセージ。"
+    "description": "ユーザーがポリシーを読み、同意した場合に表示されるメッセージ。"
   },
   "message.policy": {
     "message": "データ技術サービス利用規約",
-    "description": "ユーザーがポリシーを読み、同意したときに表示されるメッセージ。"
+    "description": "ユーザーがポリシーを読み、同意した場合に表示されるメッセージ。"
   },
   "message.notAgreePolicy": {
     "message": "データ技術サービス利用規約に同意していません",
-    "description": "ユーザーがポリシーに同意していないときに表示されるメッセージ。"
+    "description": "ユーザーがポリシーに同意していない場合に表示されるメッセージ。"
   },
   "message.welcome": {
     "message": "ようこそ",
-    "description": "ユーザーがサービス申請を確認したときに表示されるメッセージ。"
+    "description": "ユーザーがサービス申請を確認した場合に表示されるメッセージ。"
   },
   "message.rotateCredential": {
     "message": "キーをリセット",
-    "description": "ユーザーがキーをリセットしたときに表示されるメッセージ。"
+    "description": "ユーザーがキーをリセットする場合に表示されるメッセージ。"
   },
   "message.rotateCredentialConfirm": {
-    "message": "本当にキーをリセットしますか？リセット後は復元できません",
-    "description": "ユーザーがキーのリセットを確認したときに表示されるメッセージ。"
+    "message": "本当にキーをリセットしますか？リセット後は復元できません。",
+    "description": "ユーザーがキーのリセットを確認する場合に表示されるメッセージ。"
   },
   "message.idDoesNotExist": {
     "message": "申請が存在しません",
-    "description": "申請が存在しないときに表示されるメッセージ。"
+    "description": "申請が存在しない場合に表示されるメッセージ。"
   },
   "message.rotateCredentialSuccessfully": {
     "message": "キーのリセットに成功しました",
-    "description": "キーのリセットが成功したときに表示されるメッセージ。"
+    "description": "キーのリセットが成功した場合に表示されるメッセージ。"
   },
   "message.rotateCredentialFailed": {
-    "message": "キーのリセットに失敗しました。サポートに連絡してください",
-    "description": "キーのリセットに失敗したときに表示されるメッセージ。"
+    "message": "キーのリセットに失敗しました。サポートに連絡してください。",
+    "description": "キーのリセットに失敗した場合に表示されるメッセージ。"
   },
   "message.fetchFailed": {
     "message": "アプリの取得に失敗しました。後でもう一度お試しください。",
-    "description": "アプリのリスト取得に失敗したときのメッセージ。"
+    "description": "アプリのリスト取得に失敗した場合のメッセージ。"
   },
   "message.updateFailed": {
     "message": "更新に失敗しました",
-    "description": "更新に失敗したときに表示されるメッセージ。"
+    "description": "更新に失敗した場合に表示されるメッセージ。"
   },
   "message.updateSuccessfully": {
     "message": "更新に成功しました",
-    "description": "更新が成功したときに表示されるメッセージ。"
+    "description": "更新が成功した場合に表示されるメッセージ。"
   },
   "message.neverExpire": {
     "message": "永遠に有効",
-    "description": "申請が永遠に有効なときに表示されるメッセージ。"
+    "description": "申請が永遠に有効な場合に表示されるメッセージ。"
   },
   "title.buyService": {
     "message": "サービスを購入",
-    "description": "ユーザーがサービスを購入したいときのページタイトル。"
+    "description": "ユーザーがサービスを購入したい場合のページタイトル。"
   },
   "title.globalBuy": {
-    "message": "共通残高のチャージ",
-    "description": "ユーザーが共通残高をチャージしたいときのページタイトル。"
+    "message": "Ace Data Cloud 共通ポイントチャージ",
+    "description": "ユーザーが共通サービスを購入したい場合のページタイトル。"
   },
   "title.applicationRemainingCount": {
     "message": "申請数の変更",
-    "description": "ユーザーが申請数を変更したいときのページタイトル。"
+    "description": "ユーザーが申請数を変更したい場合のページタイトル。"
   },
   "title.manageApplication": {
     "message": "申請管理",
-    "description": "ユーザーが申請を管理したいときのページタイトル。"
+    "description": "ユーザーが申請を管理したい場合のページタイトル。"
   },
   "title.applicationBalance": {
     "message": "専用ポイント - {service}",
-    "description": "ユーザーが申請残高を確認しているときに表示されるメッセージ。"
+    "description": "ユーザーが申請残高を確認する場合に表示されるメッセージ。"
   },
   "title.count": {
-    "message": "アプリの数",
-    "description": "アプリの数の集計カードのタイトル。"
+    "message": "申請の総数",
+    "description": "ユーザーが申請数を確認する場合のページタイトル。"
   },
   "message.countDescription": {
-    "message": "ここで専用アプリと共通残高を管理します。",
-    "description": "アプリの数カードの下にある補足説明。"
+    "message": "各サービスに対して1つの申請インスタンスが対応し、下部の管理でキーや使用量などの情報を確認できます。",
+    "description": "ユーザーが申請数を確認する場合に表示されるメッセージ。"
   },
   "title.globalBalance": {
     "message": "共通残高",
-    "description": "ユーザーが共通残高を確認しているときに表示されるメッセージ。"
+    "description": "ユーザーが共通残高を確認する場合のページタイトル。英語は「General Balance」と翻訳する必要があります。"
   },
   "message.globalBalanceDescription": {
-    "message": "共通残高は条件を満たすアプリで消費できます。",
-    "description": "共通残高カードの説明文。"
+    "message": "「共通残高を許可」を有効にすると、インスタンスの残高が不足した場合に自動的に共通残高が使用されます。",
+    "description": "インスタンスの残高が不足した場合に自動的に共通残高が消費されることを説明するメッセージ。用語：共通残高=General Balance（Global Balanceに翻訳しないことに注意）。"
+  },
+  "button.service": {
+    "message": "専用カスタマーサポート",
+    "description": "このボタンをクリックすると専用カスタマーサポートページに移動します。"
+  },
+  "button.acquire": {
+    "message": "カスタマーサポートを追加",
+    "description": "このボタンをクリックするとこの項目を取得します。"
+  },
+  "button.delete": {
+    "message": "削除",
+    "description": "このボタンをクリックするとこの項目を削除します。"
+  },
+  "field.dataset": {
+    "message": "データセット",
+    "description": "申請されたデータセット。"
+  },
+  "field.disabled": {
+    "message": "無効",
+    "description": "申請が無効かどうか。"
+  },
+  "message.addServiceToAcquire": {
+    "message": "カスタマーサービスを追加して取得してください",
+    "description": "ユーザーがまだカスタマーサービスを追加していない場合に表示されるメッセージ。"
+  },
+  "message.confirmApplying": {
+    "message": "サービス申請を確認",
+    "description": "ユーザーがサービス申請を確認する際に表示されるメッセージ。"
+  },
+  "message.confirmDelete": {
+    "message": "本当にこの申請を削除しますか？削除するとすべての申請データが失われます",
+    "description": "ユーザーが申請の削除を確認する際に表示されるメッセージ。"
+  },
+  "message.placeEnter": {
+    "message": "'$0$'を入力して確認してください",
+    "description": "ユーザーが確認のためにテキストを入力する必要がある場合に表示されるメッセージ。`$0$`は翻訳しないでください。"
+  },
+  "message.invalidInput": {
+    "message": "無効な入力",
+    "description": "ユーザーが無効なデータを入力した場合に表示されるメッセージ。"
+  },
+  "message.deleteFailed": {
+    "message": "削除に失敗しました",
+    "description": "削除が失敗した場合に表示されるメッセージ。"
+  },
+  "message.deleteSuccessfully": {
+    "message": "削除に成功しました",
+    "description": "削除が成功した場合に表示されるメッセージ。"
+  },
+  "title.application": {
+    "message": "申請",
+    "description": ""
+  },
+  "title.description": {
+    "message": "説明",
+    "description": "ユーザーがデータ技術サービス利用契約を確認する際のページのタイトル。"
   }
 }

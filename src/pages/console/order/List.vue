@@ -9,12 +9,18 @@
       <el-row>
         <el-col :span="24">
           <el-card shadow="hover">
-            <el-table v-loading="loading" :data="orders" stripe class="!h-[calc(100vh-250px)]">
-              <el-table-column prop="id" :label="$t('order.field.id')" class-name="text-center" width="190px">
+            <el-table
+              v-loading="loading"
+              :data="orders"
+              stripe
+              :empty-text="$t('common.message.noData')"
+              class="min-h-[calc(100vh-300px)] mb-[50px]"
+            >
+              <el-table-column prop="id" :label="$t('order.field.id')" class-name="text-center" width="200px">
                 <template #default="scope">
                   <span class="key">{{ scope.row.id }}</span>
-                  <span class="copy">
-                    <copy-to-clipboard :content="scope.row.id" />
+                  <span class="cursor-pointer">
+                    <copy-to-clipboard :content="scope.row.id" class="inline-block" />
                   </span>
                 </template>
               </el-table-column>
@@ -23,7 +29,17 @@
                   <span class="price">{{ getPriceString({ value: scope.row?.price }) }}</span>
                 </template>
               </el-table-column>
-              <el-table-column prop="state" :label="$t('order.field.state')" class-name="text-center" width="150px">
+              <el-table-column
+                :label="$t('order.field.description')"
+                width="270px"
+                class-name="hidden md:table-cell"
+                label-class-name="hidden md:table-cell"
+              >
+                <template #default="scope">
+                  <span class="description">{{ scope.row.description }}</span>
+                </template>
+              </el-table-column>
+              <el-table-column prop="state" :label="$t('order.field.state')" class-name="text-center" width="160px">
                 <template #default="scope">
                   <span v-if="scope.row.state === OrderState?.PENDING">
                     <el-tag type="info" class="mx-1" effect="dark" round>{{ $t('order.state.pending') }}</el-tag>
@@ -42,28 +58,23 @@
                   </span>
                 </template>
               </el-table-column>
-              <el-table-column :label="$t('order.field.description')" width="300px">
-                <template #default="scope">
-                  <span class="description">{{ scope.row.description }}</span>
-                </template>
-              </el-table-column>
-              <el-table-column :label="$t('order.field.createdAt')" width="180px">
+              <el-table-column :label="$t('order.field.createdAt')" width="250px">
                 <template #default="scope">
                   <span class="created-at">{{ $dayjs.format(scope.row.created_at) }}</span>
                 </template>
               </el-table-column>
-              <el-table-column fixed="right" min-width="120px">
+              <el-table-column min-width="130px" fixed="right">
                 <template #default="scope">
-                  <div class="float-right">
+                  <div class="flex items-center justify-center flex-wrap">
                     <el-button
                       v-if="
                         scope.row.state !== OrderState.PAID &&
                         scope.row.state !== OrderState.FINISHED &&
-                        scope.row.state !== OrderState.EXPIRED
+                        scope.row.state !== OrderState.EXPIRED &&
+                        scope.row.state !== OrderState.FAILED
                       "
                       type="primary"
                       size="small"
-                      round
                       @click="
                         $router.push({
                           name: 'console-order-detail',
@@ -78,7 +89,6 @@
                     <el-button
                       v-else
                       size="small"
-                      round
                       @click="
                         $router.push({
                           name: 'console-order-detail',
@@ -98,8 +108,8 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col>
-          <div class="pagination">
+        <el-col :span="10" :offset="14">
+          <div class="float-right">
             <pagination :current-page="page" :page-size="limit" :total="total" @change="onPageChange"> </pagination>
           </div>
         </el-col>
@@ -144,8 +154,7 @@ export default defineComponent({
       orders: [],
       loading: false,
       total: undefined,
-      // dynamic calculate the limit according to window height
-      limit: Math.floor((window.innerHeight - 300) / 50)
+      limit: 10
     };
   },
   computed: {

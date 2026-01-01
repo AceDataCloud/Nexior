@@ -1,7 +1,7 @@
 {
   "field.createdAt": {
     "message": "Час використання",
-    "description": "Час створення запису використання."
+    "description": "Запис часу використання."
   },
   "field.statusCode": {
     "message": "Код статусу",
@@ -9,7 +9,7 @@
   },
   "field.application": {
     "message": "Заявка",
-    "description": "Програма заявки на послугу."
+    "description": "Заявка на використання ресурсів."
   },
   "field.status": {
     "message": "Статус",
@@ -17,7 +17,7 @@
   },
   "field.api": {
     "message": "API",
-    "description": "API послуги."
+    "description": "Викликаний API, без перекладу"
   },
   "field.usedAmount": {
     "message": "Використана кількість",
@@ -36,43 +36,47 @@
     "description": "Метадані запису використання."
   },
   "title.totalUsed": {
-    "message": "Накопичене використання",
-    "description": "Заголовок картки підсумку використання."
+    "message": "Загальна кількість використання (бали)",
+    "description": "Статистика загальної кількості витрачених балів"
   },
   "title.usageTrend": {
-    "message": "Тренд використання",
-    "description": "Заголовок графіка тренду використання."
+    "message": "Тенденція використання",
+    "description": "Заголовок графіка тенденції використання."
   },
   "shortcuts.today": {
     "message": "Сьогодні",
-    "description": "Швидкий вибір часових рамок на сьогодні."
+    "description": "Дата сьогодні"
   },
   "shortcuts.last1Day": {
     "message": "Останній 1 день",
-    "description": "Швидкий вибір часових рамок за останній 1 день."
+    "description": "Діапазон дат останнього 1 дня"
   },
   "shortcuts.last3Days": {
     "message": "Останні 3 дні",
-    "description": "Швидкий вибір часових рамок за останні 3 дні."
+    "description": "Діапазон дат останніх 3 днів"
   },
   "shortcuts.last7Days": {
     "message": "Останні 7 днів",
-    "description": "Швидкий вибір часових рамок за останні 7 днів."
+    "description": "Діапазон дат останніх 7 днів"
   },
   "shortcuts.last1Month": {
     "message": "Останній 1 місяць",
-    "description": "Швидкий вибір часових рамок за останній 1 місяць."
+    "description": "Діапазон дат останнього 1 місяця"
   },
   "placeholder.startDate": {
     "message": "Час початку",
-    "description": "Плейсхолдер для початкового часу вибору часових рамок."
+    "description": "Час початку"
   },
   "placeholder.endDate": {
     "message": "Час закінчення",
-    "description": "Плейсхолдер для кінцевого часу вибору часових рамок."
+    "description": "Час закінчення"
   },
   "placeholder.to": {
     "message": "до",
-    "description": "Розділовий текст для вибору часових рамок."
+    "description": "Закінчення дати, вибраної з вибірника дат, роздільник посередині."
+  },
+  "shortcuts.yesterday": {
+    "message": "Вчора",
+    "description": "Дата вчора"
   }
 }

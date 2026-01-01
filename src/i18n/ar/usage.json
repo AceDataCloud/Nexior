@@ -1,23 +1,23 @@
 {
   "field.createdAt": {
-    "message": "تاريخ الإنشاء",
-    "description": "استخدام سجل إنشاء الوقت."
+    "message": "وقت الاستخدام",
+    "description": "سجل وقت الاستخدام."
   },
   "field.statusCode": {
     "message": "رمز الحالة",
     "description": "رمز الحالة لسجل الاستخدام."
   },
   "field.application": {
-    "message": "التطبيق",
-    "description": "برنامج طلب الخدمة."
+    "message": "طلب",
+    "description": "طلب استخدام الموارد."
   },
   "field.status": {
     "message": "الحالة",
-    "description": "حالة برنامج الطلب."
+    "description": "حالة طلب البرنامج."
   },
   "field.api": {
-    "message": "واجهة برمجة التطبيقات",
-    "description": "واجهة برمجة التطبيقات للخدمة."
+    "message": "API",
+    "description": "API المستدعاة، لا حاجة للترجمة"
   },
   "field.usedAmount": {
     "message": "الكمية المستخدمة",
@@ -36,8 +36,8 @@
     "description": "البيانات الوصفية لسجل الاستخدام."
   },
   "title.totalUsed": {
-    "message": "الإجمالي المستخدم",
-    "description": "عنوان بطاقة ملخص الاستخدام."
+    "message": "إجمالي الاستخدام (نقاط)",
+    "description": "إحصاء إجمالي عدد النقاط المستهلكة"
   },
   "title.usageTrend": {
     "message": "اتجاه الاستخدام",
@@ -45,34 +45,38 @@
   },
   "shortcuts.today": {
     "message": "اليوم",
-    "description": "اختيار سريع لنطاق الوقت اليوم."
+    "description": "تاريخ اليوم"
   },
   "shortcuts.last1Day": {
-    "message": "آخر يوم",
-    "description": "اختيار سريع لنطاق الوقت لآخر يوم."
+    "message": "آخر يوم واحد",
+    "description": "نطاق تاريخ آخر يوم واحد"
   },
   "shortcuts.last3Days": {
     "message": "آخر 3 أيام",
-    "description": "اختيار سريع لنطاق الوقت لآخر 3 أيام."
+    "description": "نطاق تاريخ آخر 3 أيام"
   },
   "shortcuts.last7Days": {
     "message": "آخر 7 أيام",
-    "description": "اختيار سريع لنطاق الوقت لآخر 7 أيام."
+    "description": "نطاق تاريخ آخر 7 أيام"
   },
   "shortcuts.last1Month": {
-    "message": "آخر شهر",
-    "description": "اختيار سريع لنطاق الوقت لآخر شهر."
+    "message": "آخر شهر واحد",
+    "description": "نطاق تاريخ آخر شهر واحد"
   },
   "placeholder.startDate": {
     "message": "تاريخ البدء",
-    "description": "نص العنصر النائب لتاريخ البدء في محدد نطاق الوقت."
+    "description": "تاريخ البدء"
   },
   "placeholder.endDate": {
     "message": "تاريخ الانتهاء",
-    "description": "نص العنصر النائب لتاريخ الانتهاء في محدد نطاق الوقت."
+    "description": "تاريخ الانتهاء"
   },
   "placeholder.to": {
     "message": "إلى",
-    "description": "نص الفاصل في محدد نطاق الوقت."
+    "description": "تاريخ الانتهاء المختار من محدد التاريخ، الفاصل بينهما."
+  },
+  "shortcuts.yesterday": {
+    "message": "أمس",
+    "description": "تاريخ الأمس"
   }
 }

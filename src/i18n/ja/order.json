@@ -1,59 +1,59 @@
 {
   "button.pay": {
     "message": "支払い",
-    "description": "注文の支払いに使用されるボタンのテキスト。"
+    "description": "ボタン内のテキストで、注文の支払いに使用されます。"
   },
   "button.continuePay": {
     "message": "支払いを続ける",
-    "description": "注文の支払いを続けるためのボタンのテキスト。"
+    "description": "ボタン内のテキストで、注文の支払いを続けるために使用されます。"
   },
   "button.checkDetail": {
     "message": "詳細を確認",
-    "description": "注文の詳細を確認するためのボタンのテキスト。"
+    "description": "ボタン内のテキストで、注文の詳細を確認するために使用されます。"
   },
   "button.query": {
     "message": "照会",
-    "description": "注文を照会するためのボタンのテキスト。"
+    "description": "ボタン内のテキストで、注文を照会するために使用されます。"
   },
   "button.finish": {
     "message": "手動で完了",
-    "description": "注文を手動で完了するためのボタンのテキスト。"
+    "description": "ボタン内のテキストで、注文を手動で完了するために使用されます。"
   },
   "button.update": {
     "message": "更新",
-    "description": "注文を更新するためのボタンのテキスト。"
+    "description": "ボタン内のテキストで、注文を更新するために使用されます。"
   },
   "field.id": {
-    "message": "注文番号",
-    "description": "注文の番号。"
+    "message": "注文ID",
+    "description": "注文のIDです。"
   },
   "field.amount": {
     "message": "金額",
-    "description": "注文のポイント金額。"
+    "description": "注文のポイント金額です。"
   },
   "field.price": {
     "message": "金額",
-    "description": "注文のポイント金額。"
+    "description": "注文のポイント金額です。"
   },
   "field.description": {
     "message": "注文の説明",
-    "description": "注文の説明。"
+    "description": "注文の説明です。"
   },
   "field.state": {
     "message": "状態",
-    "description": "注文の状態。"
+    "description": "注文の状態です。"
   },
   "field.createdAt": {
     "message": "作成日時",
-    "description": "注文の作成日時。"
+    "description": "注文の作成日時です。"
   },
   "field.service": {
     "message": "サービス名",
-    "description": "サービスの名前。"
+    "description": "サービスの名前です。"
   },
   "field.payWay": {
     "message": "支払い方法",
-    "description": "注文の支払い方法。"
+    "description": "注文の支払い方法です。"
   },
   "field.api": {
     "message": "API",
@@ -61,46 +61,46 @@
   },
   "field.proxy": {
     "message": "プロキシ",
-    "description": "プロキシはデータを転送するためのHTTPプロキシのオンラインサービスです。"
+    "description": "プロキシはオンラインサービスの一種で、データを転送するためのHTTPプロキシを指します。"
   },
   "message.paidSuccessfully": {
     "message": "支払い成功",
-    "description": "支払いが成功したことを示すメッセージ。"
+    "description": "支払い成功のメッセージです。"
   },
   "message.orderExpired": {
     "message": "注文が期限切れです。新しい注文を作成して支払いを行ってください。",
-    "description": "注文が期限切れであることを示すメッセージ。"
+    "description": "期限切れの注文のメッセージです。"
   },
   "message.createFailed": {
     "message": "作成失敗",
-    "description": "作成が失敗したことを示すメッセージ。"
+    "description": "作成失敗のメッセージです。"
   },
   "message.wechatPayHelp": {
-    "message": "携帯電話でWeChatを開き、QRコードをスキャンして支払いを完了してください。",
-    "description": "WeChat支払いのヘルプメッセージ。"
+    "message": "携帯電話でWeChatを開き、支払いを完了するためにスキャンしてください。",
+    "description": "WeChat支払いのヘルプメッセージです。"
   },
   "message.free": {
     "message": "無料",
-    "description": "無料の注文に関するメッセージ。"
+    "description": "無料注文のメッセージです。"
   },
   "message.buyInExternalUrl": {
     "message": "外部リンクで支払いを完了してください。",
-    "description": "外部リンクでの支払いに関するメッセージ。"
+    "description": "外部リンクでの支払いのメッセージです。"
   },
   "message.updateFailed": {
     "message": "更新失敗",
-    "description": "更新が失敗したことを示すメッセージ。"
+    "description": "更新失敗のメッセージです。"
   },
   "message.updateSuccessfully": {
     "message": "更新成功",
-    "description": "更新が成功したことを示すメッセージ。"
+    "description": "更新成功のメッセージです。"
   },
   "message.confirmFinish": {
     "message": "この操作は手動で注文を支払い状態に設定し、配信処理を完了します。取り消すことはできません。顧客が支払いを完了したことを確認してください。続行しますか？",
-    "description": "完了確認のメッセージ。"
+    "description": "完了確認のメッセージです。"
   },
   "state.pending": {
-    "message": "未払い",
+    "message": "支払い待ち",
     "description": "注文の状態で、ユーザーの支払いを待っていることを示します。"
   },
   "state.paid": {
@@ -109,11 +109,11 @@
   },
   "state.finished": {
     "message": "完了",
-    "description": "注文の状態で、すでに完了したことを示します。"
+    "description": "注文の状態で、注文が完了したことを示します。"
   },
   "state.expired": {
     "message": "支払いタイムアウト",
-    "description": "注文の状態で、すでに期限切れであることを示します。"
+    "description": "注文の状態で、注文が期限切れであることを示します。"
   },
   "state.failed": {
     "message": "支払い失敗",
@@ -121,198 +121,382 @@
   },
   "title.info": {
     "message": "注文情報",
-    "description": "ウェブサイトのタイトルとして使用されるタイトルで、注文情報を示します。"
+    "description": "ウェブサイトのタイトルとして表示されるタイトルで、注文情報を示します。"
   },
   "title.wechatPay": {
     "message": "WeChat支払い",
-    "description": "ウェブサイトのタイトルとして使用されるタイトルで、WeChat支払いを示します。"
+    "description": "ウェブサイトのタイトルとして表示されるタイトルで、WeChat支払いを示します。"
   },
   "title.aliPay": {
     "message": "アリペイ",
-    "description": "ウェブサイトのタイトルとして使用されるタイトルで、アリペイ支払いを示します。アリペイ支払いはオンライン支払いの一種です。"
+    "description": "ウェブサイトのタイトルとして表示されるタイトルで、アリペイ支払いを示します。アリペイ支払いはオンライン支払いの一種です。"
   },
   "title.stripe": {
     "message": "ストライプ",
-    "description": "ウェブサイトのタイトルとして使用されるタイトルで、ストライプ支払いを示します。ストライプ支払いはオンライン支払いの一種です。"
+    "description": "ウェブサイトのタイトルとして表示されるタイトルで、ストライプ支払いを示します。ストライプ支払いはオンライン支払いの一種です。"
   },
   "title.manageOrder": {
     "message": "注文管理",
-    "description": "ウェブサイトのタイトルとして使用されるタイトルで、注文管理を示します。"
+    "description": "ウェブサイトのタイトルとして表示されるタイトルで、注文管理を示します。"
   },
   "title.x402": {
     "message": "暗号通貨",
-    "description": "X402スキームに基づく暗号支払いのタイトル。"
+    "description": "ウェブサイトのタイトルとして表示されるタイトルで、暗号通貨支払い（X402支払いプランに基づく）を示します。"
   },
   "message.discountTag": {
     "message": "{percent}% 割引",
-    "description": "適用された割引パーセンテージを表示するバッジの文言。"
+    "description": "適用された割引パーセンテージを示すラベル文言です。"
   },
   "message.discountHint": {
-    "message": "会員に自動的に {percent}% OFF が適用されました。",
-    "description": "ユーザーが得た会員割引を示すヒント。"
+    "message": "あなたは私たちの専属VIP顧客です。自動的に{percent}%の割引を受けることができます。",
+    "description": "VIPステータスによる自動割引の説明文です。"
   },
   "message.x402DiscountApplied": {
-    "message": "X402支払いを使用して追加で {percent}% 節約できます。",
-    "description": "X402支払いによる追加割引を説明します。"
+    "message": "X402支払いを通じて、さらに{percent}%OFFの割引を受けられます。",
+    "description": "X402支払いによる追加割引の説明です。"
   },
   "message.x402DiscountTag": {
-    "message": "{percent}% OFF",
-    "description": "X402支払いの割引バッジ。"
+    "message": "{percent}% 割引",
+    "description": "X402支払いを選択することで受けられる追加割引パーセンテージを強調表示します。"
   },
   "message.x402DiscountHint": {
-    "message": "X402支払いを選択すると追加で {percent}% OFF が得られます。",
-    "description": "ユーザーにX402支払いを選択するよう促すヒント。"
+    "message": "X402で支払いを選択すると、{percent}%の割引を即座に受けられます。",
+    "description": "ユーザーにX402での支払いによって追加の割引が解除されることを説明するヒント文。"
   },
   "message.x402IntroShort": {
-    "message": "暗号ウォレットに直接接続して支払いを行うか、プログラミングモードに切り替えて統合パラメータを取得できます。",
-    "description": "X402支払いダイアログの簡単な紹介。"
+    "message": "ウォレットを選択してUSDCの支払いを直接完了します。",
+    "description": "短い紹介文。"
   },
   "message.x402TabWallet": {
     "message": "ウォレット支払い",
     "description": "ウォレット支払いタブのタイトル。"
   },
   "message.x402TabApi": {
-    "message": "プログラミング接続",
-    "description": "プログラミング接続タブのタイトル。"
+    "message": "プログラム式",
+    "description": "プログラム式タブのタイトル。"
   },
   "message.x402WalletTitle": {
-    "message": "ウォレットを接続して支払う",
-    "description": "ユーザーにウォレットを接続するよう促すタイトル。"
+    "message": "ウォレットを接続してUSDCを支払う",
+    "description": "X402ウォレットのクイック支払いタイトル（USDC）。"
   },
   "message.x402WalletConnected": {
     "message": "接続済み",
-    "description": "ウォレットが接続されているときのマーク。"
+    "description": "ウォレットが接続されているときに表示されるラベル。"
   },
   "message.x402ConnectWallet": {
     "message": "ウォレットを接続",
-    "description": "ウォレット接続ボタンの文言。"
+    "description": "EVMウォレット接続ボタンの文。"
   },
   "message.x402NoWalletDesc": {
-    "message": "ウォレットが検出されませんでした。MetaMask/Phantomをインストールするか、ウォレット内蔵ブラウザでこのページを開いてください。",
-    "description": "EVMウォレットが検出されないときの説明。"
+    "message": "ウォレットをサポートするブラウザ（推奨：Chrome/Brave）を使用するか、MetaMask/Phantom拡張機能をインストールしてください。または、モバイルウォレットアプリの内蔵ブラウザでこのページを開いてください。",
+    "description": "一般的なウォレットなしの説明。"
   },
   "message.x402SwitchNetwork": {
-    "message": "ウォレットのネットワークを {network} に切り替えてください",
-    "description": "ユーザーにウォレットのネットワークを切り替えるよう促す。"
+    "message": "ウォレットでネットワークを{network}に切り替えてください。",
+    "description": "指定されたチェーンネットワークに切り替えるようユーザーに促す文。"
   },
   "message.x402SolanaNotEnabled": {
-    "message": "Solana X402 payment is not enabled for this order. Please switch network or refresh.",
-    "description": "Shown when the selected Solana network is not available in X402 payment requirements."
+    "message": "Solana X402バックエンドはまだ有効になっていません。",
+    "description": "この注文がSolana X402を有効にしていない場合の提示。"
   },
   "message.x402NeedConnectAccount": {
-    "message": "支払う前に、少なくとも1つの互換性のあるEVMウォレットを接続してください。",
-    "description": "ユーザーにウォレットアカウントを先に接続するよう促す。"
+    "message": "まずウォレットを接続してください。",
+    "description": "ウォレットが接続されていないときに表示されるリマインダー。"
   },
   "message.x402ConfirmTitle": {
-    "message": "Confirm Payment",
-    "description": "Title of the confirmation dialog before signing an X402 payment."
+    "message": "支払いを確認",
+    "description": "X402支払い確認ポップアップのタイトル。"
   },
   "message.x402ConfirmDesc": {
-    "message": "Confirm USDC payment on {network}?",
-    "description": "Description of the confirmation dialog before signing an X402 payment."
+    "message": "{network}でUSDCを支払うことを確認しますか？",
+    "description": "X402支払い確認ポップアップの説明。"
   },
   "message.x402StepsTitle": {
     "message": "支払い手順",
-    "description": "支払い手順リストのタイトル。"
+    "description": "手順のタイトル。"
   },
   "message.x402Step1": {
-    "message": "ウォレットを接続（未インストールの場合はインストールしてページをリフレッシュしてください）。",
-    "description": "ウォレット支払い手順1。"
+    "message": "ウォレットを接続します（未インストールの場合は、拡張機能をインストールしてからこのページをリフレッシュするか、モバイルウォレットでこのページを開いてください）。",
+    "description": "手順1の文。"
   },
   "message.x402Step2": {
-    "message": "ウォレットのネットワークが {network} であることを確認してください。",
-    "description": "ウォレット支払い手順2。"
+    "message": "ウォレット設定を変更し、ウォレットネットワークが{network}であることを確認します。",
+    "description": "手順2の文。"
   },
   "message.x402Step3": {
-    "message": "支払いをクリックし、ウォレット内で承認サインを完了してください。",
-    "description": "ウォレット支払い手順3。"
+    "message": "「ウォレットで支払う」をクリックし、ウォレットで承認サインを完了します。",
+    "description": "手順3の文。"
   },
   "message.x402Step4": {
-    "message": "サイン後、自動的に決済し、注文状況を更新します。",
-    "description": "ウォレット支払い手順4。"
+    "message": "サインが成功した後、自動的に決済され、このページは支払い完了に自動更新されます。",
+    "description": "手順4の文。"
   },
   "message.x402IntegrationResourceLabel": {
     "message": "支払いインターフェースアドレス",
     "description": "支払いインターフェースアドレスのラベル。"
   },
   "message.x402IntegrationPayToLabel": {
-    "message": "受取アドレス",
-    "description": "ブロックチェーン受取アドレスのラベル。"
+    "message": "決済アドレス",
+    "description": "ブロックチェーン決済アドレスを表示するラベル。"
   },
   "message.x402IntegrationNetworkLabel": {
     "message": "ネットワーク",
-    "description": "ブロックチェーンネットワークのラベル。"
+    "description": "ブロックチェーンネットワーク名を表示するラベル。"
   },
   "message.x402IntegrationAssetLabel": {
-    "message": "資産",
-    "description": "決済資産のラベル。"
+    "message": "決済資産",
+    "description": "決済資産を表示するラベル。"
   },
   "message.x402IntegrationFallback": {
-    "message": "セッションパラメータを取得できませんでした。ドキュメントを確認するか、サポートに連絡して必要なパラメータを取得してください。",
-    "description": "統合パラメータが不足しているときのフォールバックメッセージ。"
+    "message": "完全なセッションデータを取得できませんでした。開発文書を参照するか、必要なパラメータを取得するためにサポートに連絡してください。",
+    "description": "セッションデータを取得できない場合に表示されるヒント情報。"
   },
   "message.x402IntegrationDocsCta": {
-    "message": "X402ガイドを開く",
-    "description": "X402統合ガイドを開くボタンの文言。"
+    "message": "X402開発ガイドを開く",
+    "description": "開発者ガイドを開くためのアクションボタンの文。"
   },
   "message.x402InstallGuideTitle": {
-    "message": "ウォレットプラグインのインストール",
-    "description": "ウォレットインストールガイドのダイアログタイトル。"
+    "message": "ウォレット拡張をインストール",
+    "description": "ウォレットインストール説明ポップアップのタイトル。"
   },
   "message.x402InstallGuideDesc": {
-    "message": "{wallet} プラグインを手順に従ってインストールし、再接続してください。",
-    "description": "ウォレットインストールガイドの説明。"
+    "message": "{wallet}拡張のインストールを完了するために、以下の手順に従ってください。その後、下のボタンを使用してこのページをリフレッシュし、ウォレットを再検出します。",
+    "description": "ユーザーにウォレット拡張のインストールを完了させるための説明。"
   },
   "message.x402InstallGuideStep1": {
-    "message": "{wallet} ブラウザプラグインをダウンロードしてインストールします（Chrome/Braveを推奨）。",
+    "message": "新しく開いたページで{wallet}ブラウザ拡張をダウンロードしてインストールします（推奨：Chrome/Brave）。",
     "description": "ウォレットインストール手順1。"
   },
   "message.x402InstallGuideStep2": {
-    "message": "プラグインを開き、ログイン/ロック解除し、必ず有効にしてください。",
+    "message": "拡張のインストールを完了し、ログイン/ロック解除し、現在のブラウザプロファイルで有効になっていることを確認します。",
     "description": "ウォレットインストール手順2。"
   },
   "message.x402InstallGuideStep3": {
-    "message": "このページに戻り、「インストール済み」をクリックして再接続を試みてください。",
+    "message": "このページに戻り、「私はすでにインストールしました」をクリックしてリフレッシュし、「ウォレットを接続」を再試行します。",
     "description": "ウォレットインストール手順3。"
   },
   "message.x402InstallGuideConfirm": {
-    "message": "インストール済み",
-    "description": "インストール完了後の確認ボタン。"
+    "message": "私はすでにインストールしました",
+    "description": "ウォレットインストール後の主ボタン。"
   },
   "message.x402NetworkGuideTitle": {
-    "message": "ネットワーク設定の調整",
-    "description": "ネットワークガイドのダイアログタイトル。"
+    "message": "ネットワーク設定を調整",
+    "description": "ネットワーク不一致の説明ポップアップのタイトル。"
   },
   "message.x402NetworkGuideDesc": {
-    "message": "ウォレットのネットワークを {network} に切り替え、完了後にリフレッシュして再試行してください。",
-    "description": "ユーザーにネットワークを切り替えるよう指示する説明。"
+    "message": "{network}にウォレットネットワークを切り替えるために、以下の手順に従ってください。完了したら、このページをリフレッシュして再検出します。",
+    "description": "ユーザーにウォレットネットワークを調整させるための説明。"
   },
   "message.x402NetworkGuideStep1": {
-    "message": "ウォレットプラグインの設定を開き、アクティブなネットワークを確認します。",
-    "description": "ネットワーク調整手順1。"
+    "message": "ウォレット拡張を開き、設定 -> アクティブネットワークに入ります。",
+    "description": "ネットワーク設定手順1。"
   },
   "message.x402NetworkGuideStep2": {
-    "message": "リストから {network}（または必要なネットワーク）を有効にします。",
-    "description": "ネットワーク調整手順2。"
+    "message": "{network}（または他の指定されたネットワーク）がオンになっていることをネットワークリストで確認してください。オンになっている場合は、このステップを無視できます。",
+    "description": "ネットワークの第二ステップの説明、Ethereumをオフにする必要はありません。"
   },
   "message.x402NetworkGuideStep3": {
-    "message": "このページに戻り、「設定完了」をクリックしてから支払いを行います。",
-    "description": "ネットワーク調整手順3。"
+    "message": "このページに戻り、「設定が完了しました」をクリックして、リフレッシュ後に再度支払いを試みてください。",
+    "description": "ネットワーク設定ステップ3。"
   },
   "message.x402NetworkGuideConfirm": {
-    "message": "設定完了",
-    "description": "ネットワーク設定完了後の確認ボタン。"
+    "message": "設定が完了しました",
+    "description": "ネットワーク設定後の主ボタン。"
   },
   "message.x402NetworkSwitchFailed": {
-    "message": "現在のウォレットは自動ネットワーク切り替えをサポートしていません。手動で切り替えてから再試行してください。",
-    "description": "自動ネットワーク切り替えに失敗したときのメッセージ。"
+    "message": "現在のウォレットは自動ネットワーク切り替えをサポートしていません。指定されたネットワークに手動で切り替えてから再試行してください。",
+    "description": "ユーザーにウォレットが自動ネットワーク切り替えをサポートしていないことを通知する。"
   },
   "message.x402PaymentFailed": {
-    "message": "X402ウォレット支払いに失敗しました。後でもう一度お試しいただくか、サポートに連絡してください。",
-    "description": "X402支払い失敗時の一般的なエラー。"
+    "message": "X402 ウォレットでの支払いに失敗しました。後でもう一度お試しください。複数回失敗した場合は、サポートに連絡し、エラー情報を提供してください。",
+    "description": "X402 ウォレットでの支払い失敗時に表示される一般的なエラーメッセージ。"
   },
   "message.x402WalletPayCta": {
     "message": "ウォレットで支払う",
-    "description": "X402ウォレット支払いを開始するボタンの文言。"
+    "description": "バインドされたウォレットを使用して支払いを完了するボタンの文言。"
+  },
+  "button.refund": {
+    "message": "返金",
+    "description": "手動で注文を返金するためのボタン内のテキスト。"
+  },
+  "field.applicationId": {
+    "message": "申請ID",
+    "description": "注文に関連する申請ID。"
+  },
+  "field.serviceId": {
+    "message": "サービスID",
+    "description": "割引に対応するサービスID。"
+  },
+  "field.generalDiscount": {
+    "message": "一般割引",
+    "description": "割引がすべてのサービスに適用される場合に表示されるラベル。"
+  },
+  "field.userId": {
+    "message": "ユーザーID",
+    "description": "割引を受けるユーザーのID。"
+  },
+  "field.discount": {
+    "message": "割引",
+    "description": "このユーザーの注文に適用される割引率。"
+  },
+  "field.actions": {
+    "message": "操作",
+    "description": "アクションボタン列のタイトル。"
+  },
+  "message.confirmRefund": {
+    "message": "この操作はこの注文の権利を取り消し、返金済みとしてマークします。取り消しはできません。返金処理が完了していることを確認してください。続行しますか？",
+    "description": "返金を確認するメッセージ。"
+  },
+  "message.x402IntegrationIntro": {
+    "message": "現在の注文は X402 支払いプロトコルを使用しています。下記のパラメータに基づいてサーバー側で統合を完了し、支払いを開始してください。",
+    "description": "X402 プロトコルを使用する必要があることを紹介する文言。"
+  },
+  "message.x402IntegrationProtocol": {
+    "message": "ファシリテーター支払いインターフェースを呼び出し、署名をブロードキャストします。決済が成功した後、このページに戻って状態を確認してください。",
+    "description": "X402 支払いを完了するための操作手順を説明する。"
+  },
+  "message.x402IntegrationDocsHint": {
+    "message": "詳細を知りたいですか？下の開発文書をご覧ください。",
+    "description": "ユーザーが開発文書を通じてさらに情報を得られることを通知する文言。"
+  },
+  "message.x402WalletTitleEvm": {
+    "message": "EVM ウォレット",
+    "description": "EVM ウォレット接続カードのタイトル。"
+  },
+  "message.x402WalletTitleSolana": {
+    "message": "Solana ウォレット",
+    "description": "Solana ウォレット接続カードのタイトル。"
+  },
+  "message.x402WalletStatusDetected": {
+    "message": "検出済み",
+    "description": "検出済み/インストール済みのウォレット状態ラベル。"
+  },
+  "message.x402WalletStatusInstall": {
+    "message": "インストール",
+    "description": "ウォレットインストールエントリ/状態ラベル。"
+  },
+  "message.x402WalletStatusQr": {
+    "message": "QRコード",
+    "description": "WalletConnect QRコードエントリラベル。"
+  },
+  "message.x402WalletConnectTitle": {
+    "message": "WalletConnect",
+    "description": "WalletConnect QRコードポップアップのタイトル。"
+  },
+  "message.x402WalletConnectPreparing": {
+    "message": "WalletConnectを準備中…",
+    "description": "WalletConnect接続を準備しているときのメッセージ。"
+  },
+  "message.x402WalletConnectOpenWallet": {
+    "message": "ウォレットを開く",
+    "description": "モバイル端末でWalletConnectを使用してウォレットを起動するためのボタン文言。"
+  },
+  "message.x402WalletConnectScanHint": {
+    "message": "WalletConnectをサポートするウォレットでQRコードをスキャンしてください。",
+    "description": "WalletConnect QRコードの下に表示されるヒント文言。"
+  },
+  "message.x402SwitchNetworkCta": {
+    "message": "{network}に切り替える",
+    "description": "ネットワークを切り替えるCTA。"
+  },
+  "message.x402NoWalletTitle": {
+    "message": "EVM ウォレットが検出されませんでした",
+    "description": "ブラウザにEVMウォレットが注入されていない場合のタイトル。"
+  },
+  "message.x402NoWalletSafariDesc": {
+    "message": "Safariは通常、MetaMaskなどの拡張機能をサポートしていません。Chrome/Braveを使用するか、モバイルウォレットアプリの内蔵ブラウザでこのページを開くことをお勧めします。",
+    "description": "Safari環境でのウォレット未検出の説明。"
+  },
+  "message.x402InstallMetaMask": {
+    "message": "MetaMaskをインストール",
+    "description": "MetaMaskをインストールするためのボタン文言。"
+  },
+  "message.x402InstallPhantom": {
+    "message": "Phantomをインストール",
+    "description": "Phantomをインストールするためのボタン文言。"
+  },
+  "message.x402ConnectWC": {
+    "message": "WalletConnectで接続",
+    "description": "WalletConnectで接続するためのボタン文言。"
+  },
+  "message.x402RefreshDetect": {
+    "message": "再検出",
+    "description": "ウォレットを再検出するためのボタン文言。"
+  },
+  "message.x402MissingWCProjectId": {
+    "message": "WalletConnectプロジェクトIDが設定されていません（環境変数VITE_WALLETCONNECT_PROJECT_IDを設定してください）",
+    "description": "WalletConnectプロジェクトIDが不足していることを通知する。"
+  },
+  "message.x402WalletBound": {
+    "message": "バインド済み",
+    "description": "バインドされたウォレットが表示されるバッジ。"
+  },
+  "message.userIdRequired": {
+    "message": "ユーザーIDを入力してください。",
+    "description": "ユーザーIDが空のときに表示されるヒントメッセージ。"
+  },
+  "message.serviceIdRequired": {
+    "message": "サービスを選択してください。",
+    "description": "サービスIDが空のときに表示されるヒントメッセージ。"
+  },
+  "message.discountRequired": {
+    "message": "0から1の間の割引を入力してください。",
+    "description": "割引が合法的な範囲にないときに表示されるヒントメッセージ。"
+  },
+  "message.discountCreated": {
+    "message": "割引が正常に保存されました。",
+    "description": "新しい割引が成功したときのヒントメッセージ。"
+  },
+  "message.discountUpdated": {
+    "message": "割引が正常に更新されました。",
+    "description": "割引が成功裏に編集されたときのヒントメッセージ。"
+  },
+  "message.discountDeleted": {
+    "message": "割引が正常に削除されました。",
+    "description": "割引が成功裏に削除されたときのヒントメッセージ。"
+  },
+  "state.refunded": {
+    "message": "返金済み",
+    "description": "注文の状態を示し、この注文が返金されたことを示します。"
+  },
+  "title.revenueAnalysis": {
+    "message": "収益分析",
+    "description": "収益分析ページのタイトル"
+  },
+  "title.todayRevenue": {
+    "message": "今日の取引額",
+    "description": "今日の取引額"
+  },
+  "title.last7dRevenue": {
+    "message": "過去1週間の取引額",
+    "description": "過去1週間の取引額"
+  },
+  "title.last30dRevenue": {
+    "message": "過去1ヶ月の取引額",
+    "description": "過去30日間の取引額"
+  },
+  "title.last90dRevenue": {
+    "message": "過去1四半期の取引額",
+    "description": "過去90日間の取引額"
+  },
+  "title.revenueTrend": {
+    "message": "収入のトレンド",
+    "description": "収入トレンドの折れ線グラフのタイトル"
+  },
+  "title.manageOrderDiscount": {
+    "message": "割引管理",
+    "description": "注文割引管理ページのタイトル。"
+  },
+  "title.discountLookup": {
+    "message": "現在の割引",
+    "description": "ユーザーの現在の割引を表示するブロックのタイトル。"
+  },
+  "title.createDiscount": {
+    "message": "新しい割引を追加",
+    "description": "新しい割引を作成するブロックのタイトル。"
+  },
+  "title.updateDiscount": {
+    "message": "割引を更新",
+    "description": "割引編集ポップアップのタイトル。"
   }
 }

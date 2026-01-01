@@ -1,7 +1,7 @@
 {
   "field.createdAt": {
     "message": "Время использования",
-    "description": "Время создания записи использования."
+    "description": "Запись времени использования."
   },
   "field.statusCode": {
     "message": "Код состояния",
@@ -9,23 +9,23 @@
   },
   "field.application": {
     "message": "Заявка",
-    "description": "Программа заявки на услугу."
+    "description": "Заявка на использование ресурсов."
   },
   "field.status": {
     "message": "Статус",
-    "description": "Статус программы заявки."
+    "description": "Статус заявки."
   },
   "field.api": {
     "message": "API",
-    "description": "API услуги."
+    "description": "Вызванный API, перевод не требуется"
   },
   "field.usedAmount": {
     "message": "Использованное количество",
     "description": "Количество использованных ресурсов."
   },
   "field.deductedAmount": {
-    "message": "Вычтенное количество",
-    "description": "Количество вычтенных ресурсов."
+    "message": "Удержанное количество",
+    "description": "Количество удержанных ресурсов."
   },
   "field.remainingAmount": {
     "message": "Оставшееся количество",
@@ -36,8 +36,8 @@
     "description": "Метаданные записи использования."
   },
   "title.totalUsed": {
-    "message": "Общее использование",
-    "description": "Заголовок карточки сводки использования."
+    "message": "Общее использование (баллы)",
+    "description": "Статистика общего количества потраченных баллов"
   },
   "title.usageTrend": {
     "message": "Тренд использования",
@@ -45,34 +45,38 @@
   },
   "shortcuts.today": {
     "message": "Сегодня",
-    "description": "Быстрый выбор временного диапазона на сегодня."
+    "description": "Дата сегодняшнего дня"
   },
   "shortcuts.last1Day": {
     "message": "Последний 1 день",
-    "description": "Быстрый выбор временного диапазона за последний 1 день."
+    "description": "Диапазон дат за последний 1 день"
   },
   "shortcuts.last3Days": {
     "message": "Последние 3 дня",
-    "description": "Быстрый выбор временного диапазона за последние 3 дня."
+    "description": "Диапазон дат за последние 3 дня"
   },
   "shortcuts.last7Days": {
     "message": "Последние 7 дней",
-    "description": "Быстрый выбор временного диапазона за последние 7 дней."
+    "description": "Диапазон дат за последние 7 дней"
   },
   "shortcuts.last1Month": {
     "message": "Последний 1 месяц",
-    "description": "Быстрый выбор временного диапазона за последний 1 месяц."
+    "description": "Диапазон дат за последний 1 месяц"
   },
   "placeholder.startDate": {
     "message": "Дата начала",
-    "description": "Заполнитель для начала времени в селекторе временного диапазона."
+    "description": "Дата начала"
   },
   "placeholder.endDate": {
     "message": "Дата окончания",
-    "description": "Заполнитель для окончания времени в селекторе временного диапазона."
+    "description": "Дата окончания"
   },
   "placeholder.to": {
     "message": "до",
-    "description": "Текст-разделитель в селекторе временного диапазона."
+    "description": "Выбранная дата окончания из выборщика дат, разделитель между датами."
+  },
+  "shortcuts.yesterday": {
+    "message": "Вчера",
+    "description": "Дата вчерашнего дня"
   }
 }
