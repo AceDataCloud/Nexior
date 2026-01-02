@@ -7,7 +7,12 @@
       </div>
     </div>
     <div class="value">
-      <el-switch v-model="value" inline-prompt :active-text="$t('seedance.button.on')" :inactive-text="$t('seedance.button.off')" />
+      <el-switch
+        v-model="value"
+        inline-prompt
+        :active-text="$t('seedance.button.on')"
+        :inactive-text="$t('seedance.button.off')"
+      />
     </div>
   </div>
 </template>
@@ -80,4 +85,3 @@ export default defineComponent({
   }
 }
 </style>
-

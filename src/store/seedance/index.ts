@@ -12,4 +12,3 @@ export const seedance: Module<ISeedanceState, any> = {
 };
 
 export default seedance;
-

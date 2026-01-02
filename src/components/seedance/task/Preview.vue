@@ -41,7 +41,12 @@
           <image-wrapper :src="video?.last_frame_url" :raw-src="video?.last_frame_url" />
         </div>
         <div v-if="video?.video_url" :class="{ operations: true, 'mt-2': true, 'mb-2': true }">
-          <el-tooltip class="box-item" effect="dark" :content="$t('seedance.message.downloadVideo')" placement="top-start">
+          <el-tooltip
+            class="box-item"
+            effect="dark"
+            :content="$t('seedance.message.downloadVideo')"
+            placement="top-start"
+          >
             <el-button type="info" size="small" class="btn-action" @click.stop="onDownload(video?.video_url)">
               {{ $t('seedance.button.download') }}
             </el-button>
@@ -223,4 +228,3 @@ $left-width: 70px;
   }
 }
 </style>
-
