@@ -10,8 +10,6 @@
       type="textarea"
       class="prompt"
       :placeholder="$t('hailuo.placeholder.prompt')"
-      :maxlength="300"
-      show-word-limit
     />
   </div>
 </template>

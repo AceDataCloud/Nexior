@@ -10,8 +10,6 @@
       type="textarea"
       class="prompt"
       :placeholder="$t('nanobanana.placeholder.prompt')"
-      :maxlength="300"
-      show-word-limit
     />
   </div>
 </template>

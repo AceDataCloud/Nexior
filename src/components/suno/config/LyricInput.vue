@@ -11,8 +11,6 @@
       type="textarea"
       class="lyrics"
       :placeholder="$t('suno.placeholder.lyrics')"
-      :maxlength="3000"
-      show-word-limit
     />
     <el-input
       v-else
@@ -21,8 +19,6 @@
       type="textarea"
       class="lyrics"
       :placeholder="$t('suno.placeholder.extend.lyrics')"
-      :maxlength="3000"
-      show-word-limit
     />
   </div>
 </template>
