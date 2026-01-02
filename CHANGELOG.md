@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 02 Jan 2026 07:09:55 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 02 Jan 2026 11:16:44 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.29.1
+
+Fri, 02 Jan 2026 11:16:44 GMT
+
+### Patches
+
+- fix login auth issue (cqc@cuiqingcai.com)
 
 ## 3.29.0
 
