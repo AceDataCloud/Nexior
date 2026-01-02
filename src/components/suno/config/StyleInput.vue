@@ -4,15 +4,7 @@
       <h2 class="titlefont-bold">{{ $t('suno.name.style') }}</h2>
       <info-icon :content="$t('suno.description.style')" class="info" />
     </div>
-    <el-input
-      v-model="style"
-      :rows="3"
-      type="textarea"
-      class="style"
-      :placeholder="$t('suno.placeholder.style')"
-      :maxlength="200"
-      show-word-limit
-    />
+    <el-input v-model="style" :rows="3" type="textarea" class="style" :placeholder="$t('suno.placeholder.style')" />
   </div>
 </template>
 

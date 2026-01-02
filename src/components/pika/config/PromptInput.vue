@@ -4,15 +4,7 @@
       <h2 class="title font-bold">{{ $t('pika.name.prompt') }}</h2>
       <info-icon :content="$t('pika.description.prompt')" class="info" />
     </div>
-    <el-input
-      v-model="prompt"
-      :rows="3"
-      type="textarea"
-      class="prompt"
-      :placeholder="$t('pika.placeholder.prompt')"
-      :maxlength="300"
-      show-word-limit
-    />
+    <el-input v-model="prompt" :rows="3" type="textarea" class="prompt" :placeholder="$t('pika.placeholder.prompt')" />
   </div>
 </template>
 

@@ -11,15 +11,7 @@
       </div>
     </div>
 
-    <el-input
-      v-model="prompt"
-      :rows="3"
-      type="textarea"
-      class="prompt"
-      :placeholder="$t('suno.placeholder.prompt')"
-      :maxlength="200"
-      show-word-limit
-    />
+    <el-input v-model="prompt" :rows="3" type="textarea" class="prompt" :placeholder="$t('suno.placeholder.prompt')" />
   </div>
 </template>
 

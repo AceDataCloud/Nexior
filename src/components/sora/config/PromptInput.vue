@@ -4,15 +4,7 @@
       <h2 class="title font-bold">{{ $t('sora.name.prompt') }}</h2>
       <info-icon :content="$t('sora.description.prompt')" class="info" />
     </div>
-    <el-input
-      v-model="prompt"
-      :rows="3"
-      type="textarea"
-      class="prompt"
-      :placeholder="$t('sora.placeholder.prompt')"
-      :maxlength="500"
-      show-word-limit
-    />
+    <el-input v-model="prompt" :rows="3" type="textarea" class="prompt" :placeholder="$t('sora.placeholder.prompt')" />
   </div>
 </template>
 

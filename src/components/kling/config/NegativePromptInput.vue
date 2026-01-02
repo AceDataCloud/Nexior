@@ -10,8 +10,6 @@
       type="textarea"
       class="prompt"
       :placeholder="$t('kling.placeholder.negativePrompt')"
-      :maxlength="200"
-      show-word-limit
     />
   </div>
 </template>

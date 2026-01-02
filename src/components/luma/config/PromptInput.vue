@@ -4,15 +4,7 @@
       <h2 class="title font-bold">{{ $t('luma.name.prompt') }}</h2>
       <info-icon :content="$t('luma.description.prompt')" class="info" />
     </div>
-    <el-input
-      v-model="prompt"
-      :rows="3"
-      type="textarea"
-      class="prompt"
-      :placeholder="$t('luma.placeholder.prompt')"
-      :maxlength="2000"
-      show-word-limit
-    />
+    <el-input v-model="prompt" :rows="3" type="textarea" class="prompt" :placeholder="$t('luma.placeholder.prompt')" />
   </div>
 </template>
 
