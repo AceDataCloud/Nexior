@@ -241,6 +241,7 @@ export const logout = async ({ dispatch }: ActionContext<IRootState, IRootState>
   await dispatch('sora/resetAll');
   await dispatch('suno/resetAll');
   await dispatch('nanobanana/resetAll');
+  await dispatch('seedream/resetAll');
   await dispatch('veo/resetAll');
   const currentUrl = window.location.href;
   const baseUrlAuth = getBaseUrlAuth();

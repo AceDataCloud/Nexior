@@ -22,6 +22,7 @@ export * from './hailuo';
 export * from './headshots';
 export * from './suno';
 export * from './nanobanana';
+export * from './seedream';
 export * from './site';
 export * from './exchange';
 export * from './error';

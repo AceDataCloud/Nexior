@@ -103,7 +103,8 @@ const FEATURE_KEYS = [
   'flux',
   'hailuo',
   'headshots',
-  'nanobanana'
+  'nanobanana',
+  'seedream'
 ];
 
 export default defineComponent({

@@ -13,6 +13,7 @@ import { IHailuoState } from '../hailuo/models';
 import { IHeadshotsState } from '../headshots/models';
 import { ISunoState } from '../suno/models';
 import { INanobananaState } from '../nanobanana/models';
+import { ISeedreamState } from '../seedream/models';
 
 export interface ISetting {}
 
@@ -56,6 +57,7 @@ export interface IAppState {
   headshots: IHeadshotsState;
   suno: ISunoState;
   nanobanana: INanobananaState;
+  seedream: ISeedreamState;
 }
 
 export interface IRootState extends ICommonState, IAppState {}

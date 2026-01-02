@@ -52,7 +52,8 @@ import {
   ROUTE_VEO_HISTORY,
   ROUTE_SORA_INDEX,
   ROUTE_SORA_HISTORY,
-  ROUTE_NANOBANANA_INDEX
+  ROUTE_NANOBANANA_INDEX,
+  ROUTE_SEEDREAM_INDEX
 } from '@/router/constants';
 import {
   CHAT_MODEL_ICON_CHATGPT,
@@ -176,6 +177,17 @@ export default defineComponent({
           displayName: this.$t('common.nav.nanobanana'),
           logo: 'https://cdn.acedata.cloud/859plc.jpg',
           routes: [ROUTE_NANOBANANA_INDEX]
+        });
+      }
+      // Add seedream's leftmost icon
+      if (this.$store?.state?.site?.features?.seedream?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_SEEDREAM_INDEX
+          },
+          displayName: this.$t('common.nav.seedream'),
+          logo: 'https://cdn.acedata.cloud/seedream_image.png',
+          routes: [ROUTE_SEEDREAM_INDEX]
         });
       }
       // Add qrart's leftmost icon
