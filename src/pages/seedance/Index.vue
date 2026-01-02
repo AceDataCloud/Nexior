@@ -125,6 +125,20 @@ export default defineComponent({
     },
     async onGenerate() {
       const cfg: any = { ...(this.config || {}) };
+      if (typeof cfg?.prompt === 'string') {
+        cfg.prompt = cfg.prompt.trim();
+        if (!cfg.prompt) delete cfg.prompt;
+      }
+
+      if (Array.isArray(cfg?.images)) {
+        cfg.images = cfg.images.filter((img: any) => !!img?.url);
+        const hasFirstFrame = cfg.images.some((img: any) => img?.role === 'first_frame');
+        const hasLastFrame = cfg.images.some((img: any) => img?.role === 'last_frame');
+        if (!hasFirstFrame && hasLastFrame) {
+          cfg.images = cfg.images.map((img: any) => (img?.role === 'last_frame' ? { ...img, role: 'first_frame' } : img));
+        }
+      }
+
       const hasImages = Array.isArray(cfg?.images) && cfg.images.length > 0;
       if (!hasImages && 'images' in cfg) {
         delete cfg.images;

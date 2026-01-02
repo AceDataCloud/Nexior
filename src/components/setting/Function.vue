@@ -104,7 +104,8 @@ const FEATURE_KEYS = [
   'hailuo',
   'headshots',
   'nanobanana',
-  'seedream'
+  'seedream',
+  'seedance'
 ];
 
 export default defineComponent({
