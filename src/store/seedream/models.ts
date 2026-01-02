@@ -20,4 +20,3 @@ export interface ISeedreamState {
     getTasks: Status;
   };
 }
-

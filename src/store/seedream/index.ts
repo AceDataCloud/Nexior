@@ -12,4 +12,3 @@ export const seedream: Module<ISeedreamState, any> = {
 };
 
 export default seedream;
-

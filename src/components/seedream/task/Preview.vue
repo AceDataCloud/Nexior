@@ -231,4 +231,3 @@ $left-width: 70px;
   }
 }
 </style>
-

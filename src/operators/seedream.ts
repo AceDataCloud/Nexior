@@ -1,5 +1,10 @@
 import axios, { AxiosResponse } from 'axios';
-import { ISeedreamGenerateRequest, ISeedreamGenerateResponse, ISeedreamTaskResponse, ISeedreamTasksResponse } from '@/models';
+import {
+  ISeedreamGenerateRequest,
+  ISeedreamGenerateResponse,
+  ISeedreamTaskResponse,
+  ISeedreamTasksResponse
+} from '@/models';
 import { BASE_URL_API } from '@/constants';
 
 class SeedreamOperator {
@@ -110,4 +115,3 @@ class SeedreamOperator {
 }
 
 export const seedreamOperator = new SeedreamOperator();
-
