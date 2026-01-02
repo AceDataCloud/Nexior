@@ -8,16 +8,15 @@
               <a href="https://platform.acedata.cloud">{{ $t('common.entity.website') }}</a> ©
               {{ new Date().getFullYear() }}
               {{ $t('common.entity.copyright') }}
-            </p>
-            <p class="github-footer">
+              ·
               <a
                 href="https://github.com/AceDataCloud/Nexior"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="github-link"
+                :title="$t('common.nav.github')"
               >
-                <font-awesome-icon :icon="faGithub" class="mr-1" />
-                {{ $t('common.nav.github') }}
+                <font-awesome-icon :icon="faGithub" />
               </a>
             </p>
           </el-col>
@@ -70,17 +69,14 @@ export default defineComponent({
     text-decoration: none;
     color: white;
   }
-  .github-footer {
-    margin-top: 10px;
-    font-size: 14px;
-  }
   .github-link {
     display: inline-flex;
     align-items: center;
-    transition: opacity 0.2s;
+    margin-left: 4px;
+    transition: opacity 0.3s;
 
     &:hover {
-      opacity: 0.8;
+      opacity: 0.7;
     }
   }
 }
