@@ -4,14 +4,16 @@
       <div class="w-full flex justify-center brand">
         <logo v-if="direction === 'column'" @click.stop="onHome" />
       </div>
-      <div
-        v-for="(link, linkIndex) in links"
-        :key="linkIndex"
-        :class="{link: true, active: link.routes.includes($route.name as string)}"
-      >
-        <el-tooltip effect="dark" :content="link.displayName" :placement="direction === 'row' ? 'top' : 'right'">
-          <el-image v-if="link.logo" :src="link.logo" class="avatar" @click="$router.push(link.route)" />
-        </el-tooltip>
+      <div class="links">
+        <div
+          v-for="(link, linkIndex) in links"
+          :key="linkIndex"
+          :class="{link: true, active: link.routes.includes($route.name as string)}"
+        >
+          <el-tooltip effect="dark" :content="link.displayName" :placement="direction === 'row' ? 'top' : 'right'">
+            <el-image v-if="link.logo" :src="link.logo" class="avatar" @click="$router.push(link.route)" />
+          </el-tooltip>
+        </div>
       </div>
     </div>
     <div class="bottom">
@@ -382,14 +384,20 @@ export default defineComponent({
       align-items: center;
       gap: 10px;
       justify-content: space-evenly;
-      .link {
-        text-align: center;
-        .description {
-          font-size: 10px;
-          margin-top: 3px;
-        }
-        &.active {
-          color: var(--el-color-primary);
+      .links {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        .link {
+          text-align: center;
+          .description {
+            font-size: 10px;
+            margin-top: 3px;
+          }
+          &.active {
+            color: var(--el-color-primary);
+          }
         }
       }
     }
@@ -408,9 +416,22 @@ export default defineComponent({
       flex-direction: column;
       padding-top: 10px;
       width: 60px;
-      gap: 15px;
-      overflow-y: auto;
-      overflow-x: hidden;
+      min-height: 0;
+      overflow: hidden;
+      .brand {
+        flex: 0 0 auto;
+        margin-bottom: 15px;
+      }
+      .links {
+        flex: 1;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-bottom: 10px;
+      }
       .logo {
         width: 40px;
         height: 40px;
