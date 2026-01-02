@@ -35,6 +35,7 @@ export const I18N_SCOPES = [
   'flux',
   'nanobanana',
   'seedream',
+  'seedance',
   'hailuo',
   'headshots',
   'suno',

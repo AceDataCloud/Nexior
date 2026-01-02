@@ -17,5 +17,6 @@ export * from './headshots';
 export * from './suno';
 export * from './nanobanana';
 export * from './seedream';
+export * from './seedance';
 export * from './mapping';
 export * from './surface';
