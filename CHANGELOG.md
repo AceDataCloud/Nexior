@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 02 Jan 2026 06:02:24 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 02 Jan 2026 06:35:29 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.28.1
+
+Fri, 02 Jan 2026 06:35:29 GMT
+
+### Patches
+
+- Replace Seedance logo SVG import with CDN URL (198982749+Copilot@users.noreply.github.com)
 
 ## 3.28.0
 
