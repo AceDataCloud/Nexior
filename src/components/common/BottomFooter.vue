@@ -9,6 +9,17 @@
               {{ new Date().getFullYear() }}
               {{ $t('common.entity.copyright') }}
             </p>
+            <p class="github-footer">
+              <a
+                href="https://github.com/AceDataCloud/Nexior"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="github-link"
+              >
+                <font-awesome-icon :icon="faGithub" class="mr-1" />
+                {{ $t('common.nav.github') }}
+              </a>
+            </p>
           </el-col>
         </el-row>
       </el-col>
@@ -19,16 +30,21 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElContainer, ElRow, ElCol } from 'element-plus';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 export default defineComponent({
   name: 'BottomFooter',
   components: {
     ElContainer,
     ElRow,
-    ElCol
+    ElCol,
+    FontAwesomeIcon
   },
   data() {
-    return {};
+    return {
+      faGithub
+    };
   },
   computed: {},
   methods: {}
@@ -53,6 +69,19 @@ export default defineComponent({
   a {
     text-decoration: none;
     color: white;
+  }
+  .github-footer {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .github-link {
+    display: inline-flex;
+    align-items: center;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
 </style>
