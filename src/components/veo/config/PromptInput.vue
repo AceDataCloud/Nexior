@@ -4,13 +4,7 @@
       <h2 class="title font-bold">{{ $t('veo.name.prompt') }}</h2>
       <info-icon :content="$t('veo.description.prompt')" class="info" />
     </div>
-    <el-input
-      v-model="prompt"
-      :rows="3"
-      type="textarea"
-      class="prompt"
-      :placeholder="$t('veo.placeholder.prompt')"
-    />
+    <el-input v-model="prompt" :rows="3" type="textarea" class="prompt" :placeholder="$t('veo.placeholder.prompt')" />
   </div>
 </template>
 

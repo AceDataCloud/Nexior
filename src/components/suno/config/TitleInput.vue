@@ -4,13 +4,7 @@
       <h2 class="title font-bold">{{ $t('suno.name.title') }}</h2>
       <info-icon :content="$t('suno.description.title')" class="info" />
     </div>
-    <el-input
-      v-model="title"
-      :rows="3"
-      type="textarea"
-      class="title"
-      :placeholder="$t('suno.placeholder.title')"
-    />
+    <el-input v-model="title" :rows="3" type="textarea" class="title" :placeholder="$t('suno.placeholder.title')" />
   </div>
 </template>
 

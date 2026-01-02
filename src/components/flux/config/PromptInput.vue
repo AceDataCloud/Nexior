@@ -4,13 +4,7 @@
       <h2 class="title font-bold">{{ $t('flux.name.prompt') }}</h2>
       <info-icon :content="$t('flux.description.prompt')" class="info" />
     </div>
-    <el-input
-      v-model="prompt"
-      :rows="3"
-      type="textarea"
-      class="prompt"
-      :placeholder="$t('flux.placeholder.prompt')"
-    />
+    <el-input v-model="prompt" :rows="3" type="textarea" class="prompt" :placeholder="$t('flux.placeholder.prompt')" />
   </div>
 </template>
 
