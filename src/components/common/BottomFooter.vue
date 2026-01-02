@@ -8,6 +8,16 @@
               <a href="https://platform.acedata.cloud">{{ $t('common.entity.website') }}</a> ©
               {{ new Date().getFullYear() }}
               {{ $t('common.entity.copyright') }}
+              ·
+              <a
+                href="https://github.com/AceDataCloud/Nexior"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="github-link"
+                :title="$t('common.nav.github')"
+              >
+                <font-awesome-icon :icon="faGithub" />
+              </a>
             </p>
           </el-col>
         </el-row>
@@ -19,16 +29,21 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElContainer, ElRow, ElCol } from 'element-plus';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 export default defineComponent({
   name: 'BottomFooter',
   components: {
     ElContainer,
     ElRow,
-    ElCol
+    ElCol,
+    FontAwesomeIcon
   },
   data() {
-    return {};
+    return {
+      faGithub
+    };
   },
   computed: {},
   methods: {}
@@ -53,6 +68,16 @@ export default defineComponent({
   a {
     text-decoration: none;
     color: white;
+  }
+  .github-link {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 4px;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 }
 </style>
