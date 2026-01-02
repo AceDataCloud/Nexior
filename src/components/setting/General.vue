@@ -21,12 +21,7 @@
         <p class="settings-title">{{ $t('common.settings.github') }}</p>
       </div>
       <div class="settings-content">
-        <a
-          href="https://github.com/AceDataCloud/Nexior"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="github-link"
-        >
+        <a href="https://github.com/AceDataCloud/Nexior" target="_blank" rel="noopener noreferrer" class="github-link">
           <font-awesome-icon :icon="faGithub" class="icon" />
         </a>
       </div>
