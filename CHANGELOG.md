@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 02 Jan 2026 12:12:12 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 02 Jan 2026 16:54:16 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.29.3
+
+Fri, 02 Jan 2026 16:54:16 GMT
+
+### Patches
+
+- remove prompt limit (cqc@cuiqingcai.com)
 
 ## 3.29.2
 
