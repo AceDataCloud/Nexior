@@ -1,5 +1,10 @@
 import axios, { AxiosResponse } from 'axios';
-import { ISeedanceGenerateRequest, ISeedanceGenerateResponse, ISeedanceTaskResponse, ISeedanceTasksResponse } from '@/models';
+import {
+  ISeedanceGenerateRequest,
+  ISeedanceGenerateResponse,
+  ISeedanceTaskResponse,
+  ISeedanceTasksResponse
+} from '@/models';
 import { BASE_URL_API } from '@/constants';
 
 class SeedanceOperator {
@@ -110,4 +115,3 @@ class SeedanceOperator {
 }
 
 export const seedanceOperator = new SeedanceOperator();
-

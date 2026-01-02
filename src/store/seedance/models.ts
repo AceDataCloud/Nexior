@@ -19,4 +19,3 @@ export interface ISeedanceState {
     getTasks: Status;
   };
 }
-
