@@ -1,7 +1,7 @@
 <template>
   <div class="preview">
     <div class="left">
-      <el-image src="https://cdn.acedata.cloud/seedream_image.png" class="avatar" />
+      <el-image src="https://cdn.acedata.cloud/9egrbn.png" class="avatar" />
     </div>
     <div class="main">
       <div class="bot">
@@ -28,7 +28,21 @@
           <span v-if="!modelValue?.response"> - ({{ $t('seedream.status.pending') }}) </span>
         </p>
       </div>
-      <div v-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">
+      <div v-if="!modelValue?.response" :class="{ content: true }">
+        <el-alert :closable="false" class="info">
+          <template #template>
+            <font-awesome-icon icon="fa-regular fa-clock" class="mr-1" />
+            {{ $t('seedream.status.pending') }}
+          </template>
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
+            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            {{ $t('seedream.name.taskId') }}:
+            {{ modelValue?.id }}
+            <copy-to-clipboard :content="modelValue?.id!" class="btn-copy inline-block" />
+          </p>
+        </el-alert>
+      </div>
+      <div v-else-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">
         <div class="flex justify-start items-center gap-4 w-full overflow-x-auto">
           <image-wrapper
             v-for="(image, imageIndex) in images"
@@ -74,7 +88,7 @@
           </p>
         </el-alert>
       </div>
-      <div v-if="modelValue?.response?.success === false" :class="{ content: true }">
+      <div v-else-if="modelValue?.response?.success === false" :class="{ content: true }">
         <el-alert :closable="false" class="failure">
           <template #template>
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
@@ -115,17 +129,23 @@
           </p>
         </el-alert>
       </div>
-      <div v-if="!modelValue?.response || !modelValue?.response?.data?.[0]?.image_url" :class="{ content: true }">
+      <div v-else :class="{ content: true }">
         <el-alert :closable="false" class="info">
           <template #template>
-            <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
-            {{ $t('seedream.name.failure') }}
+            <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
+            {{ $t('seedream.name.status') }}
           </template>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('seedream.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
+          </p>
+          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            {{ $t('seedream.name.traceId') }}:
+            {{ modelValue?.response?.trace_id }}
+            <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy" />
           </p>
         </el-alert>
       </div>
@@ -226,6 +246,47 @@ $left-width: 70px;
         font-weight: normal;
         color: var(--el-text-color-secondary);
         margin-left: 10px;
+      }
+    }
+
+    .info {
+      .prompt {
+        font-size: 16px;
+        font-weight: bold;
+        color: var(--el-text-color-regular);
+        margin-bottom: 15px;
+      }
+    }
+
+    .content {
+      .el-alert {
+        border-left-width: 2px;
+        border-left-style: solid;
+        &.failure {
+          border-color: var(--el-color-danger);
+        }
+        &.success {
+          border-color: var(--el-color-success);
+        }
+        &.info {
+          border-color: var(--el-color-info);
+        }
+      }
+    }
+
+    .operations {
+      display: flex;
+      justify-content: left;
+      flex-direction: row;
+      width: 100%;
+      align-items: baseline;
+      flex-wrap: wrap;
+      overflow: hidden;
+      text-align: center;
+      color: var(--el-text-color-regular);
+      font-size: 14px;
+      .btn-action {
+        margin-bottom: 10px;
       }
     }
   }

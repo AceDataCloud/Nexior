@@ -186,7 +186,7 @@ export default defineComponent({
             name: ROUTE_SEEDREAM_INDEX
           },
           displayName: this.$t('common.nav.seedream'),
-          logo: 'https://cdn.acedata.cloud/seedream_image.png',
+          logo: 'https://cdn.acedata.cloud/9egrbn.png',
           routes: [ROUTE_SEEDREAM_INDEX]
         });
       }

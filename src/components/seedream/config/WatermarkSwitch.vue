@@ -1,12 +1,14 @@
 <template>
-  <div class="field flex items-center justify-between">
-    <div class="label flex items-center">
-      <div class="box flex items-center">
-        <h2 class="title font-bold text-[14px] m-0">{{ $t('seedream.name.watermark') }}</h2>
-        <info-icon :content="$t('seedream.description.watermark')" class="ml-2" />
+  <div class="field">
+    <div class="label">
+      <div class="box">
+        <h2 class="title font-bold">{{ $t('seedream.name.watermark') }}</h2>
+        <info-icon :content="$t('seedream.description.watermark')" class="info" />
       </div>
     </div>
-    <el-switch v-model="value" />
+    <div class="value">
+      <el-switch v-model="value" />
+    </div>
   </div>
 </template>
 
@@ -38,3 +40,39 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  .label {
+    width: 30%;
+    display: flex;
+    align-items: center;
+
+    .box {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .title {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .info {
+        margin-left: 6px;
+      }
+    }
+  }
+
+  .value {
+    width: 160px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+</style>

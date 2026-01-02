@@ -4,7 +4,6 @@
       <model-selector class="mb-4" />
       <size-selector class="mb-4" />
       <prompt-input class="mb-4" />
-      <watermark-switch class="mb-4" />
       <image-input class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-[15px] pb-[15px]">
@@ -27,7 +26,6 @@ import Consumption from '../common/Consumption.vue';
 import { getConsumption } from '@/utils';
 import ModelSelector from './config/ModelSelector.vue';
 import SizeSelector from './config/SizeSelector.vue';
-import WatermarkSwitch from './config/WatermarkSwitch.vue';
 import { getSeedreamShortModel } from '@/constants';
 
 export default defineComponent({
@@ -39,8 +37,7 @@ export default defineComponent({
     Consumption,
     ImageInput,
     ModelSelector,
-    SizeSelector,
-    WatermarkSwitch
+    SizeSelector
   },
   emits: ['generate'],
   computed: {

@@ -13,7 +13,7 @@ export const SEEDREAM_SIZE_4K = '4K';
 
 export const SEEDREAM_DEFAULT_SIZE = SEEDREAM_SIZE_2K;
 
-export const SEEDREAM_DEFAULT_WATERMARK = true;
+export const SEEDREAM_DEFAULT_WATERMARK = false;
 
 export const SEEDREAM_MODEL_FULL_TO_SHORT: Record<string, string> = {
   [SEEDREAM_MODEL_4_5]: 'doubao-seedream-4.5',

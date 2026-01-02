@@ -1,34 +1,35 @@
 <template>
-  <div class="field flex items-center justify-between">
-    <h2 class="title font-bold text-[14px] mb-[10px]">{{ $t('seedream.name.imageUrls') }}</h2>
-    <div class="upload-wrapper flex flex-col items-start gap-[8px]">
-      <div class="controls flex items-center">
-        <el-upload
-          v-model:file-list="fileList"
-          accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
-          name="file"
-          class="value"
-          :limit="14"
-          :multiple="true"
-          :show-file-list="false"
-          :action="uploadUrl"
-          :on-exceed="onExceed"
-          :on-error="onError"
-          :on-success="onSuccess"
-          :on-change="onChange"
-          :on-remove="onRemove"
-          :headers="headers"
-        >
-          <el-button size="small" type="primary" round>
-            <font-awesome-icon icon="fa-solid fa-upload" class="mr-1" />
-            {{ $t('seedream.button.uploadImageUrls') }}
-          </el-button>
-        </el-upload>
-        <info-icon :content="$t('seedream.description.imageUrls')" class="ml-2" />
+  <div class="field">
+    <div class="label">
+      <div class="box">
+        <h2 class="title font-bold">{{ $t('seedream.name.imageUrls') }}</h2>
+        <info-icon :content="$t('seedream.description.imageUrls')" class="info" />
       </div>
     </div>
+    <div class="value">
+      <el-upload
+        v-model:file-list="fileList"
+        accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
+        name="file"
+        :limit="14"
+        :multiple="true"
+        :show-file-list="false"
+        :action="uploadUrl"
+        :on-exceed="onExceed"
+        :on-error="onError"
+        :on-success="onSuccess"
+        :on-change="onChange"
+        :on-remove="onRemove"
+        :headers="headers"
+      >
+        <el-button size="small" type="primary" round>
+          <font-awesome-icon icon="fa-solid fa-upload" class="mr-1" />
+          {{ $t('seedream.button.uploadImageUrls') }}
+        </el-button>
+      </el-upload>
+    </div>
   </div>
-  <div class="file-list flex flex-wrap gap-[10px]">
+  <div class="file-list mt-2 flex flex-wrap gap-[10px]">
     <image-preview
       v-for="(file, idx) in fileList"
       :key="(file as any).uid || (file as any)?.response?.file_url || (file as any).url || idx"
@@ -186,3 +187,39 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  .label {
+    width: 30%;
+    display: flex;
+    align-items: center;
+
+    .box {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .title {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .info {
+        margin-left: 6px;
+      }
+    }
+  }
+
+  .value {
+    width: 160px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+</style>
