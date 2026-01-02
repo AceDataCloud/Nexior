@@ -21,72 +21,103 @@
           @click="onClickConversation(conversation.id)"
         >
           <div class="title">
-            <span v-if="conversation?.deleting">
-              {{ `${$t('chat.message.confirmDelete')}?` }}
-            </span>
-            <span v-else-if="conversation?.editing">
-              <el-input v-model="conversation.title" @keydown.enter="onConfirm(conversation)" />
-            </span>
-            <span v-else-if="conversation?.title || conversation?.messages">
-              {{
-                conversation?.title ||
-                conversation?.messages?.[conversation?.messages.length - 1]?.content ||
-                conversation?.messages?.[0]?.content
-              }}
-            </span>
+            {{ getConversationTitle(conversation) }}
           </div>
           <div class="operations">
-            <font-awesome-icon
-              v-if="!conversation?.editing && !conversation.deleting"
-              icon="fa-solid fa-edit"
-              class="icon icon-edit"
-              @click.stop="conversation.editing = true"
-            />
-            <font-awesome-icon
-              v-if="!conversation?.editing && !conversation.deleting"
-              icon="fa-solid fa-trash"
-              class="icon icon-delete"
-              @click.stop="conversation.deleting = true"
-            />
-            <font-awesome-icon
-              v-if="conversation?.editing || conversation.deleting"
-              icon="fa-solid fa-check"
-              class="icon icon-confirm"
-              @click.stop="onConfirm(conversation)"
-            />
-            <font-awesome-icon
-              v-if="conversation?.editing || conversation.deleting"
-              icon="fa-solid fa-xmark"
-              class="icon icon-cancel"
-              @click.stop="
-                conversation.editing = false;
-                conversation.deleting = false;
-              "
-            />
+            <el-dropdown
+              trigger="click"
+              placement="bottom-end"
+              :teleported="true"
+              @command="(command) => onConversationCommand(command, conversation)"
+            >
+              <span class="more" @click.stop>
+                <font-awesome-icon icon="fa-solid fa-ellipsis" />
+              </span>
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item command="rename" @click.stop>
+                    <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-2" />
+                    重命名
+                  </el-dropdown-item>
+                  <el-dropdown-item command="delete" @click.stop>
+                    <font-awesome-icon icon="fa-solid fa-trash" class="mr-2" />
+                    {{ $t('common.button.delete') }}
+                  </el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
           </div>
         </div>
       </div>
     </div>
+
+    <el-dialog v-model="renameDialogVisible" width="420px" title="重命名" :close-on-click-modal="false">
+      <el-input
+        v-model="renameDraft"
+        maxlength="60"
+        show-word-limit
+        autofocus
+        @keydown.enter="onConfirmRename"
+      />
+      <template #footer>
+        <el-button @click="renameDialogVisible = false">{{ $t('common.button.cancel') }}</el-button>
+        <el-button type="primary" :loading="renameSubmitting" @click="onConfirmRename">
+          {{ $t('common.button.confirm') }}
+        </el-button>
+      </template>
+    </el-dialog>
+
+    <el-dialog
+      v-model="deleteDialogVisible"
+      width="420px"
+      :title="$t('chat.message.confirmDelete')"
+      :close-on-click-modal="false"
+    >
+      <div class="delete-tip">确认删除该会话？删除后不可恢复。</div>
+      <template #footer>
+        <el-button @click="deleteDialogVisible = false">{{ $t('common.button.cancel') }}</el-button>
+        <el-button type="danger" :loading="deleteSubmitting" @click="onConfirmDelete">
+          {{ $t('common.button.delete') }}
+        </el-button>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElSkeleton, ElInput } from 'element-plus';
+import { ElSkeleton, ElInput, ElButton, ElDialog, ElDropdown, ElDropdownItem, ElDropdownMenu, ElMessage } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { chatOperator } from '@/operators';
 import { IChatConversation } from '@/models';
 import { Status } from '@/models';
 
+type ConversationCommand = 'rename' | 'delete';
+
 export default defineComponent({
   name: 'SidePanel',
   components: {
     ElInput,
+    ElButton,
+    ElDialog,
+    ElDropdown,
+    ElDropdownItem,
+    ElDropdownMenu,
     FontAwesomeIcon,
     ElSkeleton
   },
   props: {},
   emits: ['change-conversation'],
+  data() {
+    return {
+      renameDialogVisible: false,
+      deleteDialogVisible: false,
+      actingConversation: undefined as IChatConversation | undefined,
+      renameDraft: '',
+      renameSubmitting: false,
+      deleteSubmitting: false
+    };
+  },
   computed: {
     modelGroup() {
       return this.$store.state.chat.modelGroup;
@@ -171,29 +202,95 @@ export default defineComponent({
       console.debug('onNewConversation from side panel');
       this.$emit('change-conversation', undefined);
     },
-    async onConfirm(conversation: IChatConversation) {
-      const token = this.token;
-      if (!token) {
-        console.error('Token is not found');
-        return;
-      }
-      if (conversation?.deleting && conversation.id) {
-        await chatOperator.deleteConversation(conversation.id, {
-          token
-        });
-        await this.$store.dispatch('chat/getConversations');
-      } else if (conversation?.editing) {
-        await chatOperator.updateConversation(conversation, {
-          token
-        });
-        await this.$store.dispatch('chat/getConversations');
-      } else {
-        conversation.editing = true;
-      }
-    },
     onClickConversation(id?: string) {
       console.debug('onClickConversation in side panel', id);
       this.$emit('change-conversation', id);
+    },
+    getConversationTitle(conversation: IChatConversation) {
+      return (
+        conversation?.title ||
+        conversation?.messages?.[conversation?.messages.length - 1]?.content ||
+        conversation?.messages?.[0]?.content ||
+        ''
+      );
+    },
+    onConversationCommand(command: ConversationCommand, conversation: IChatConversation) {
+      if (command === 'rename') {
+        this.openRenameDialog(conversation);
+      } else if (command === 'delete') {
+        this.openDeleteDialog(conversation);
+      }
+    },
+    openRenameDialog(conversation: IChatConversation) {
+      this.actingConversation = conversation;
+      this.renameDraft = (conversation?.title || '').trim();
+      this.renameDialogVisible = true;
+    },
+    openDeleteDialog(conversation: IChatConversation) {
+      this.actingConversation = conversation;
+      this.deleteDialogVisible = true;
+    },
+    async onConfirmRename() {
+      const token = this.token;
+      const conversationId = this.actingConversation?.id;
+      const title = (this.renameDraft || '').trim();
+      if (!token) {
+        ElMessage.error('Token 不存在，请重新登录');
+        return;
+      }
+      if (!conversationId) {
+        ElMessage.error('会话不存在');
+        return;
+      }
+      if (!title) {
+        ElMessage.warning('请输入名称');
+        return;
+      }
+      this.renameSubmitting = true;
+      try {
+        await chatOperator.updateConversation(
+          {
+            id: conversationId,
+            title
+          } as IChatConversation,
+          { token }
+        );
+        await this.$store.dispatch('chat/getConversations');
+        this.renameDialogVisible = false;
+        ElMessage.success('已重命名');
+      } catch (e) {
+        console.error(e);
+        ElMessage.error('重命名失败，请稍后重试');
+      } finally {
+        this.renameSubmitting = false;
+      }
+    },
+    async onConfirmDelete() {
+      const token = this.token;
+      const conversationId = this.actingConversation?.id;
+      if (!token) {
+        ElMessage.error('Token 不存在，请重新登录');
+        return;
+      }
+      if (!conversationId) {
+        ElMessage.error('会话不存在');
+        return;
+      }
+      this.deleteSubmitting = true;
+      try {
+        await chatOperator.deleteConversation(conversationId, { token });
+        await this.$store.dispatch('chat/getConversations');
+        if (conversationId === this.conversationId) {
+          this.$emit('change-conversation', undefined);
+        }
+        this.deleteDialogVisible = false;
+        ElMessage.success('已删除');
+      } catch (e) {
+        console.error(e);
+        ElMessage.error('删除失败，请稍后重试');
+      } finally {
+        this.deleteSubmitting = false;
+      }
     }
   }
 });
@@ -244,13 +341,6 @@ export default defineComponent({
         background-color: var(--el-bg-color-page);
         .operations {
           display: flex;
-          align-items: center;
-          width: 50px;
-          gap: 8px;
-          .icon {
-            cursor: pointer;
-            font-size: 14px;
-          }
         }
       }
 
@@ -272,8 +362,31 @@ export default defineComponent({
       }
       .operations {
         display: none;
-        color: var(--el-text-color-regular);
+        align-items: center;
+        justify-content: flex-end;
+
+        .more {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 26px;
+          height: 26px;
+          border-radius: 10px;
+          color: var(--el-text-color-secondary);
+          cursor: pointer;
+
+          &:hover {
+            background: var(--el-fill-color-light);
+            color: var(--el-text-color-primary);
+          }
+        }
       }
+    }
+
+    .delete-tip {
+      color: var(--el-text-color-regular);
+      font-size: 14px;
+      line-height: 22px;
     }
   }
 }

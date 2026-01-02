@@ -404,6 +404,7 @@ export default defineComponent({
     flex-direction: column;
     .top {
       flex: 1;
+      min-height: 0;
       display: flex;
       flex-direction: column;
       padding-top: 10px;
