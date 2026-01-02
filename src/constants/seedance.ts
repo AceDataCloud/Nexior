@@ -1,5 +1,7 @@
 export const SEEDANCE_SERVICE_ID = '762c5fd0-a81e-4c59-b9fe-16bcffad7d4a';
 
+export const SEEDANCE_LOGO = 'https://cdn.acedata.cloud/9q90dl.png';
+
 export const SEEDANCE_MODEL_1_0_PRO = 'doubao-seedance-1-0-pro-250528';
 export const SEEDANCE_MODEL_1_0_PRO_FAST = 'doubao-seedance-1-0-pro-fast-251015';
 export const SEEDANCE_MODEL_1_5_PRO = 'doubao-seedance-1-5-pro-251215';
