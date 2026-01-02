@@ -12,7 +12,7 @@
           <div class="rect" :style="{ width: option.width + 'px', height: option.height + 'px' }"></div>
         </div>
         <p class="name">
-          {{ option.label }}
+          {{ $t(option.labelKey) }}
         </p>
       </div>
     </div>
@@ -30,13 +30,13 @@ export default defineComponent({
       options: [
         {
           value: 'portrait',
-          label: '竖屏',
+          labelKey: 'sora.option.portrait',
           width: 13,
           height: 25
         },
         {
           value: 'landscape',
-          label: '横屏',
+          labelKey: 'sora.option.landscape',
           width: 25,
           height: 13
         }
@@ -45,7 +45,8 @@ export default defineComponent({
   },
   computed: {
     active() {
-      return this.options.findIndex((option) => option.value === this.value) || 0;
+      const index = this.options.findIndex((option) => option.value === this.value);
+      return index >= 0 ? index : 0;
     },
     value: {
       get() {
