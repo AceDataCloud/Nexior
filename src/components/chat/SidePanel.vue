@@ -52,13 +52,7 @@
     </div>
 
     <el-dialog v-model="renameDialogVisible" width="420px" title="重命名" :close-on-click-modal="false">
-      <el-input
-        v-model="renameDraft"
-        maxlength="60"
-        show-word-limit
-        autofocus
-        @keydown.enter="onConfirmRename"
-      />
+      <el-input v-model="renameDraft" maxlength="60" show-word-limit autofocus @keydown.enter="onConfirmRename" />
       <template #footer>
         <el-button @click="renameDialogVisible = false">{{ $t('common.button.cancel') }}</el-button>
         <el-button type="primary" :loading="renameSubmitting" @click="onConfirmRename">
@@ -86,7 +80,16 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElSkeleton, ElInput, ElButton, ElDialog, ElDropdown, ElDropdownItem, ElDropdownMenu, ElMessage } from 'element-plus';
+import {
+  ElSkeleton,
+  ElInput,
+  ElButton,
+  ElDialog,
+  ElDropdown,
+  ElDropdownItem,
+  ElDropdownMenu,
+  ElMessage
+} from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { chatOperator } from '@/operators';
 import { IChatConversation } from '@/models';
