@@ -22,12 +22,7 @@
         <p class="settings-tip">{{ $t('common.message.viewOnGithub') }}</p>
       </div>
       <div class="settings-content">
-        <a
-          href="https://github.com/AceDataCloud/Nexior"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="github-link"
-        >
+        <a href="https://github.com/AceDataCloud/Nexior" target="_blank" rel="noopener noreferrer" class="github-link">
           <font-awesome-icon :icon="faGithub" class="mr-2" />
           {{ $t('common.nav.github') }}
         </a>
