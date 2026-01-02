@@ -32,7 +32,7 @@
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.admins": {
-    "message": "Sivuston ylläpitäjän ID",
+    "message": "Sivuston ylläpitäjien ID",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.distributionDefaultInviterId": {
@@ -113,6 +113,10 @@
   },
   "field.featuresNanobanana": {
     "message": "Nano Banaani",
+    "description": "Näytetään muokkausruudun otsikkona"
+  },
+  "field.featuresSeedream": {
+    "message": "SeeDream",
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.featuresSupport": {
@@ -233,7 +237,7 @@
   },
   "message.editUrl": {
     "message": "Syötä linkki",
-    "description": "Linkin syöttämisen ohje"
+    "description": "Syötä linkin ohje"
   },
   "message.atLeastOneAdmin": {
     "message": "Vähintään yksi ylläpitäjä on säilytettävä",
@@ -244,7 +248,7 @@
     "description": "Oletuskutsujan ID:n ohje"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "Pakotetun kutsujan käyttäjän ID, jos tämä ID on asetettu, käytetään tätä käyttäjän ID:tä kutsujana riippumatta siitä, sisältääkö jakolinkki inviter_id-parametrin.",
+    "message": "Pakotetun kutsujan käyttäjän ID, jos tämä ID on asetettu, käytetään pakotetusti tätä käyttäjän ID:tä kutsujana riippumatta siitä, sisältääkö jakolinkki inviter_id-parametrin.",
     "description": "Pakotetun kutsujan ID:n ohje"
   },
   "message.originTip": {
@@ -268,19 +272,19 @@
     "description": "Sivuston faviconin ohje"
   },
   "message.adminsTip": {
-    "message": "Sivuston ylläpitäjän ID, oletuksena ensimmäisenä sivuston luonut käyttäjä tulee ylläpitäjäksi, vain sivuston ylläpitäjät voivat hallita sivustoa.",
-    "description": "Sivuston ylläpitäjien ohje"
+    "message": "Sivuston ylläpitäjän ID, oletuksena ensimmäisenä sivuston luonut käyttäjä on ylläpitäjä, vain sivuston ylläpitäjät voivat hallita sivustoa.",
+    "description": "Sivuston ylläpitäjän ohje"
   },
   "message.adminsTip2": {
     "message": "Voit lisätä tai poistaa ylläpitäjän ID:tä täältä, voit tarkistaa käyttäjän ID:n osoitteesta https://auth.acedata.cloud",
-    "description": "Sivuston ylläpitäjien ohje"
+    "description": "Sivuston ylläpitäjän ohje"
   },
   "message.keywordsTip": {
     "message": "Sivuston avainsanat, sijaitsee sivuston metatiedoissa, käytetään sivuston SEO-optimointiin.",
     "description": "Sivuston avainsanojen ohje"
   },
   "message.keywordsTip2": {
-    "message": "Voit lisätä tai poistaa verkkosivuston avainsanoja täältä, mitä tarkempia avainsanoja, sitä parempi SEO-optimointi.",
+    "message": "Voit lisätä tai poistaa sivuston avainsanoja täältä, mitä tarkempia avainsanoja käytetään, sitä parempi SEO-optimointi.",
     "description": "Sivuston avainsanojen ohje"
   },
   "message.featuresChat": {
@@ -335,13 +339,17 @@
     "message": "Avaa tai sulje Nano Banana-toimintomoduuli.",
     "description": "Nano Banana-toiminnon kuvaus"
   },
+  "message.featuresSeedream": {
+    "message": "Avaa tai sulje SeeDream-toimintomoduuli.",
+    "description": "SeeDream-toiminnon kuvaus"
+  },
   "message.featuresLuma": {
-    "message": "Avaa tai sulje Luma-toimintomoduuli.",
-    "description": "Luma-toiminnon kuvaus"
+    "message": "Ota käyttöön tai poista käytöstä Luma-ominaisuusmoduuli.",
+    "description": "Luma-ominaisuuden kuvaus"
   },
   "message.featuresPika": {
-    "message": "Avaa tai sulje Pika-toimintomoduuli.",
-    "description": "Pika-toiminnon kuvaus"
+    "message": "Ota käyttöön tai poista käytöstä Pika-ominaisuusmoduuli.",
+    "description": "Pika-ominaisuuden kuvaus"
   },
   "message.featuresKling": {
     "message": "Ota käyttöön tai poista käytöstä Kling-ominaisuusmoduuli.",

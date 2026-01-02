@@ -1,37 +1,138 @@
 {
-  "name.taskId": { "message": "Task ID", "description": "The ID of the task" },
-  "name.task": { "message": "Task Type", "description": "Type of SeeDream image operation" },
-  "name.generate": { "message": "Create Image", "description": "Operation type: Create Image" },
-  "name.edits": { "message": "Edit Image", "description": "Operation type: Edit Image" },
-  "name.imageUrls": { "message": "Reference Images", "description": "Reference images used for editing" },
-  "name.failure": { "message": "Failure", "description": "Task failure" },
-  "name.failureReason": { "message": "Failure Reason", "description": "Reason for task failure" },
-  "name.status": { "message": "Status", "description": "Task status" },
-  "name.traceId": { "message": "Trace ID", "description": "Trace ID" },
-  "name.prompt": { "message": "Image Prompt", "description": "Prompt words for generation/editing" },
-  "name.seedreamBot": { "message": "SeeDream Bot", "description": "Name of the SeeDream image generator" },
-  "name.size": { "message": "Size", "description": "Output image size" },
-  "name.watermark": { "message": "Watermark", "description": "Whether to add watermark" },
-  "description.prompt": { "message": "Prompt words for generating or editing images", "description": "Description of the prompt words" },
-  "description.model": { "message": "Model used to generate or edit images.", "description": "Description of the model parameter" },
-  "description.size": { "message": "Image size. Supports preset `1K`, `2K`, `4K` or custom `<width>x<height>`.", "description": "Description of the size parameter" },
-  "description.watermark": { "message": "Whether to add AI generated watermark. Default is true.", "description": "Description of the watermark parameter" },
-  "description.imageUrls": { "message": "Upload 1-14 reference images to enable image editing.", "description": "Description of the image parameter" },
-  "status.pending": { "message": "Pending", "description": "Task waiting status" },
-  "placeholder.select": { "message": "Select", "description": "Selection placeholder" },
-  "placeholder.prompt": { "message": "Enter prompt, e.g., a white Siamese cat", "description": "Prompt placeholder" },
-  "button.generate": { "message": "Generate", "description": "Generate button" },
-  "button.uploadImageUrls": { "message": "Upload Images", "description": "Button to upload reference images" },
-  "message.startingTask": { "message": "Starting task...", "description": "Message indicating the task is starting" },
-  "message.startTaskSuccess": { "message": "Successfully initiated generation task", "description": "Task successfully created" },
-  "message.startTaskFailed": { "message": "Failed to initiate task, please contact the administrator:", "description": "Task creation failed" },
-  "message.usedUp": { "message": "Your credits have been used up, please purchase more credits to continue using", "description": "Message indicating credits are exhausted" },
-  "message.uploadImageExceed": { "message": "You can upload a maximum of 14 images", "description": "Message indicating image count exceeds limit" },
-  "message.uploadImageError": { "message": "Failed to upload image, please try again later", "description": "Message indicating upload failure" },
-  "name.model": { "message": "Model", "description": "Label for selecting SeeDream model" },
-  "model.seedream45": { "message": "doubao-seedream-4.5", "description": "Option for SeeDream 4.5" },
-  "model.seedream40": { "message": "doubao-seedream-4.0", "description": "Option for SeeDream 4.0" },
-  "model.seedream30t2i": { "message": "doubao-seedream-3.0-t2i", "description": "Option for SeeDream 3.0 t2i" },
-  "model.seededit30i2i": { "message": "doubao-seededit-3.0-i2i", "description": "Option for SeeEdit 3.0 i2i" }
+  "name.taskId": {
+    "message": "ID attività",
+    "description": "ID dell'attività"
+  },
+  "name.task": {
+    "message": "Tipo di attività",
+    "description": "Tipo di operazione dell'immagine SeeDream"
+  },
+  "name.generate": {
+    "message": "Crea immagine",
+    "description": "Tipo di operazione: crea immagine"
+  },
+  "name.edits": {
+    "message": "Modifica immagine",
+    "description": "Tipo di operazione: modifica immagine"
+  },
+  "name.imageUrls": {
+    "message": "Immagini di riferimento",
+    "description": "Immagini di riferimento utilizzate per la modifica"
+  },
+  "name.failure": {
+    "message": "Fallito",
+    "description": "Attività fallita"
+  },
+  "name.failureReason": {
+    "message": "Motivo del fallimento",
+    "description": "Motivo del fallimento dell'attività"
+  },
+  "name.status": {
+    "message": "Stato",
+    "description": "Stato dell'attività"
+  },
+  "name.traceId": {
+    "message": "ID tracciamento",
+    "description": "ID di tracciamento"
+  },
+  "name.prompt": {
+    "message": "Suggerimento immagine",
+    "description": "Parole chiave per generare/modificare"
+  },
+  "name.seedreamBot": {
+    "message": "SeeDream Bot",
+    "description": "Nome del generatore di immagini SeeDream"
+  },
+  "name.size": {
+    "message": "Dimensione",
+    "description": "Dimensione dell'immagine di output"
+  },
+  "name.watermark": {
+    "message": "Filigrana",
+    "description": "Se aggiungere una filigrana"
+  },
+  "description.prompt": {
+    "message": "Parole chiave per generare o modificare l'immagine",
+    "description": "Descrizione delle parole chiave"
+  },
+  "description.model": {
+    "message": "Modello utilizzato per generare o modificare l'immagine.",
+    "description": "Descrizione del parametro model"
+  },
+  "description.size": {
+    "message": "Dimensione dell'immagine. Supporta le preimpostazioni `1K`, `2K`, `4K` o personalizzate `<larghezza>x<altezza>`.",
+    "description": "Descrizione del parametro size"
+  },
+  "description.watermark": {
+    "message": "Se aggiungere una filigrana AI all'immagine generata. Attivato per impostazione predefinita.",
+    "description": "Descrizione del parametro watermark"
+  },
+  "description.imageUrls": {
+    "message": "Carica da 1 a 14 immagini di riferimento per abilitare la modifica dell'immagine.",
+    "description": "Descrizione del parametro image"
+  },
+  "status.pending": {
+    "message": "In attesa",
+    "description": "Stato di attesa dell'attività"
+  },
+  "placeholder.select": {
+    "message": "Seleziona",
+    "description": "Segnaposto per la selezione"
+  },
+  "placeholder.prompt": {
+    "message": "Inserisci le parole chiave, ad esempio: un gatto siamese bianco",
+    "description": "Segnaposto per le parole chiave"
+  },
+  "button.generate": {
+    "message": "Genera",
+    "description": "Pulsante di generazione"
+  },
+  "button.uploadImageUrls": {
+    "message": "Carica immagine",
+    "description": "Pulsante per caricare immagini di riferimento"
+  },
+  "message.startingTask": {
+    "message": "Avvio dell'attività in corso...",
+    "description": "Messaggio di avvio dell'attività"
+  },
+  "message.startTaskSuccess": {
+    "message": "Attività di generazione avviata con successo",
+    "description": "Attività creata con successo"
+  },
+  "message.startTaskFailed": {
+    "message": "Avvio dell'attività fallito, contattare l'amministratore:",
+    "description": "Creazione dell'attività fallita"
+  },
+  "message.usedUp": {
+    "message": "I tuoi punti sono esauriti, acquista più punti per continuare a utilizzare",
+    "description": "Messaggio di esaurimento"
+  },
+  "message.uploadImageExceed": {
+    "message": "È possibile caricare un massimo di 14 immagini",
+    "description": "Numero di immagini superiore al limite"
+  },
+  "message.uploadImageError": {
+    "message": "Caricamento immagine fallito, riprova più tardi",
+    "description": "Caricamento fallito"
+  },
+  "name.model": {
+    "message": "Modello",
+    "description": "Etichetta di selezione del modello SeeDream"
+  },
+  "model.seedream45": {
+    "message": "doubao-seedream-4.5",
+    "description": "Opzione modello SeeDream 4.5"
+  },
+  "model.seedream40": {
+    "message": "doubao-seedream-4.0",
+    "description": "Opzione modello SeeDream 4.0"
+  },
+  "model.seedream30t2i": {
+    "message": "doubao-seedream-3.0-t2i",
+    "description": "Opzione modello SeeDream 3.0 t2i"
+  },
+  "model.seededit30i2i": {
+    "message": "doubao-seededit-3.0-i2i",
+    "description": "Opzione modello SeeEdit 3.0 i2i"
+  }
 }
-
