@@ -1,5 +1,7 @@
 export const SORA_SERVICE_ID = 'b0761231-74e6-42d3-a095-c1987a61e900';
 
+export const SORA_LOGO = 'https://cdn.acedata.cloud/z5id1u.png';
+
 export const SORA_MODEL_STANDARD = 'sora-2';
 export const SORA_MODEL_PRO = 'sora-2-pro';
 
