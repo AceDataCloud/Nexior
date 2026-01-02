@@ -14,6 +14,7 @@ import sunoState from '../suno/state';
 import headshotsState from '../headshots/state';
 import nanobananaState from '../nanobanana/state';
 import seedreamState from '../seedream/state';
+import seedanceState from '../seedance/state';
 
 export default (): IRootState => {
   return {
@@ -53,6 +54,7 @@ export default (): IRootState => {
     suno: sunoState(),
     headshots: headshotsState(),
     nanobanana: nanobananaState(),
-    seedream: seedreamState()
+    seedream: seedreamState(),
+    seedance: seedanceState()
   };
 };

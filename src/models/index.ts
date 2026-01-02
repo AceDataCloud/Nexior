@@ -23,6 +23,7 @@ export * from './headshots';
 export * from './suno';
 export * from './nanobanana';
 export * from './seedream';
+export * from './seedance';
 export * from './site';
 export * from './exchange';
 export * from './error';

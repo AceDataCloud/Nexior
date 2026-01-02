@@ -25,4 +25,5 @@ export * from './suno';
 export * from './exchange';
 export * from './nanobanana';
 export * from './seedream';
+export * from './seedance';
 export * from './config';

@@ -18,6 +18,7 @@ export interface ISiteFeatures {
   suno?: any;
   nanobanana?: any;
   seedream?: any;
+  seedance?: any;
   support?: any;
 }
 

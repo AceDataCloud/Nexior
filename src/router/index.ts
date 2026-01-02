@@ -21,6 +21,7 @@ import headshots from './headshots';
 import suno from './suno';
 import nanobanana from './nanobanana';
 import seedream from './seedream';
+import seedance from './seedance';
 import site from './site';
 import profile from './profile';
 
@@ -54,6 +55,7 @@ const routes = [
   suno,
   nanobanana,
   seedream,
+  seedance,
   midjourney,
   distribution,
   site,

@@ -53,7 +53,8 @@ import {
   ROUTE_SORA_INDEX,
   ROUTE_SORA_HISTORY,
   ROUTE_NANOBANANA_INDEX,
-  ROUTE_SEEDREAM_INDEX
+  ROUTE_SEEDREAM_INDEX,
+  ROUTE_SEEDANCE_INDEX
 } from '@/router/constants';
 import {
   CHAT_MODEL_ICON_CHATGPT,
@@ -188,6 +189,17 @@ export default defineComponent({
           displayName: this.$t('common.nav.seedream'),
           logo: 'https://cdn.acedata.cloud/9egrbn.png',
           routes: [ROUTE_SEEDREAM_INDEX]
+        });
+      }
+      // Add seedance's leftmost icon
+      if (this.$store?.state?.site?.features?.seedance?.enabled) {
+        result.push({
+          route: {
+            name: ROUTE_SEEDANCE_INDEX
+          },
+          displayName: this.$t('common.nav.seedance'),
+          logo: 'https://cdn.acedata.cloud/z5id1u.png',
+          routes: [ROUTE_SEEDANCE_INDEX]
         });
       }
       // Add qrart's leftmost icon
