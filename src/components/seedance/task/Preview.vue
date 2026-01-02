@@ -1,7 +1,7 @@
 <template>
   <div class="preview">
     <div class="left">
-      <el-image src="https://cdn.acedata.cloud/z5id1u.png" class="avatar" />
+      <el-image :src="seedanceLogo" class="avatar" />
     </div>
     <div class="main">
       <div class="bot">
@@ -130,6 +130,7 @@ import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
 import ImageWrapper from '@/components/common/ImageWrapper.vue';
+import SeedanceLogo from '@/assets/images/seedance.svg';
 
 export default defineComponent({
   name: 'SeedanceTaskPreview',
@@ -148,6 +149,11 @@ export default defineComponent({
       type: Object as () => ISeedanceTask | undefined,
       required: true
     }
+  },
+  data() {
+    return {
+      seedanceLogo: SeedanceLogo
+    };
   },
   computed: {
     video(): ISeedanceVideo | undefined {

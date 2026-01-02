@@ -135,7 +135,9 @@ export default defineComponent({
         const hasFirstFrame = cfg.images.some((img: any) => img?.role === 'first_frame');
         const hasLastFrame = cfg.images.some((img: any) => img?.role === 'last_frame');
         if (!hasFirstFrame && hasLastFrame) {
-          cfg.images = cfg.images.map((img: any) => (img?.role === 'last_frame' ? { ...img, role: 'first_frame' } : img));
+          cfg.images = cfg.images.map((img: any) =>
+            img?.role === 'last_frame' ? { ...img, role: 'first_frame' } : img
+          );
         }
       }
 

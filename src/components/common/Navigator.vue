@@ -65,6 +65,7 @@ import {
 } from '@/constants/chat';
 import Logo from './Logo.vue';
 import UserCenter from '@/components/user/Center.vue';
+import SeedanceLogo from '@/assets/images/seedance.svg';
 
 export default defineComponent({
   name: 'Navigator',
@@ -198,7 +199,7 @@ export default defineComponent({
             name: ROUTE_SEEDANCE_INDEX
           },
           displayName: this.$t('common.nav.seedance'),
-          logo: 'https://cdn.acedata.cloud/z5id1u.png',
+          logo: SeedanceLogo,
           routes: [ROUTE_SEEDANCE_INDEX]
         });
       }
@@ -397,6 +398,8 @@ export default defineComponent({
       padding-top: 10px;
       width: 60px;
       gap: 15px;
+      overflow-y: auto;
+      overflow-x: hidden;
       .logo {
         width: 40px;
         height: 40px;
