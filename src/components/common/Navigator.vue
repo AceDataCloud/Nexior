@@ -61,8 +61,20 @@ import {
   CHAT_MODEL_ICON_DEEPSEEK,
   CHAT_MODEL_ICON_GROK,
   CHAT_MODEL_ICON_GEMINI,
-  CHAT_MODEL_ICON_CLAUDE
-} from '@/constants/chat';
+  CHAT_MODEL_ICON_CLAUDE,
+  MIDJOURNEY_LOGO,
+  FLUX_LOGO,
+  NANOBANANA_LOGO,
+  SEEDREAM_LOGO,
+  SEEDANCE_LOGO,
+  SUNO_LOGO,
+  LUMA_LOGO,
+  HAILUO_LOGO,
+  KLING_LOGO,
+  VEO_LOGO,
+  SORA_LOGO,
+  PIXVERSE_LOGO
+} from '@/constants';
 import Logo from './Logo.vue';
 import UserCenter from '@/components/user/Center.vue';
 
@@ -154,7 +166,7 @@ export default defineComponent({
             name: ROUTE_MIDJOURNEY_INDEX
           },
           displayName: this.$t('common.nav.midjourney'),
-          logo: 'https://cdn.acedata.cloud/wto43b.png',
+          logo: MIDJOURNEY_LOGO,
           routes: [ROUTE_MIDJOURNEY_INDEX]
         });
       }
@@ -165,7 +177,7 @@ export default defineComponent({
             name: ROUTE_FLUX_INDEX
           },
           displayName: this.$t('common.nav.flux'),
-          logo: 'https://cdn.acedata.cloud/ogm2oa.png',
+          logo: FLUX_LOGO,
           routes: [ROUTE_FLUX_INDEX]
         });
       }
@@ -176,7 +188,7 @@ export default defineComponent({
             name: ROUTE_NANOBANANA_INDEX
           },
           displayName: this.$t('common.nav.nanobanana'),
-          logo: 'https://cdn.acedata.cloud/859plc.jpg',
+          logo: NANOBANANA_LOGO,
           routes: [ROUTE_NANOBANANA_INDEX]
         });
       }
@@ -187,7 +199,7 @@ export default defineComponent({
             name: ROUTE_SEEDREAM_INDEX
           },
           displayName: this.$t('common.nav.seedream'),
-          logo: 'https://cdn.acedata.cloud/9egrbn.png',
+          logo: SEEDREAM_LOGO,
           routes: [ROUTE_SEEDREAM_INDEX]
         });
       }
@@ -198,7 +210,7 @@ export default defineComponent({
             name: ROUTE_SEEDANCE_INDEX
           },
           displayName: this.$t('common.nav.seedance'),
-          logo: 'https://cdn.acedata.cloud/9q90dl.png',
+          logo: SEEDANCE_LOGO,
           routes: [ROUTE_SEEDANCE_INDEX]
         });
       }
@@ -219,7 +231,7 @@ export default defineComponent({
             name: ROUTE_SUNO_INDEX
           },
           displayName: this.$t('common.nav.suno'),
-          logo: 'https://cdn.acedata.cloud/l3ffw7.jpg',
+          logo: SUNO_LOGO,
           routes: [ROUTE_SUNO_INDEX, ROUTE_SUNO_HISTORY]
         });
       }
@@ -230,7 +242,7 @@ export default defineComponent({
             name: ROUTE_LUMA_INDEX
           },
           displayName: this.$t('common.nav.luma'),
-          logo: 'https://cdn.acedata.cloud/ahjfwi.png',
+          logo: LUMA_LOGO,
           routes: [ROUTE_LUMA_INDEX, ROUTE_LUMA_HISTORY]
         });
       }
@@ -252,7 +264,7 @@ export default defineComponent({
             name: ROUTE_HAILUO_INDEX
           },
           displayName: this.$t('common.nav.hailuo'),
-          logo: 'https://cdn.acedata.cloud/0qg4gp.png',
+          logo: HAILUO_LOGO,
           routes: [ROUTE_HAILUO_INDEX, ROUTE_HAILUO_HISTORY]
         });
       }
@@ -263,7 +275,7 @@ export default defineComponent({
             name: ROUTE_KLING_INDEX
           },
           displayName: this.$t('common.nav.kling'),
-          logo: 'https://cdn.acedata.cloud/qpbbbb.jpg',
+          logo: KLING_LOGO,
           routes: [ROUTE_KLING_INDEX, ROUTE_KLING_HISTORY]
         });
       }
@@ -274,7 +286,7 @@ export default defineComponent({
             name: ROUTE_VEO_INDEX
           },
           displayName: this.$t('common.nav.veo'),
-          logo: 'https://cdn.acedata.cloud/8nxyy9.jpg',
+          logo: VEO_LOGO,
           routes: [ROUTE_VEO_INDEX, ROUTE_VEO_HISTORY]
         });
       }
@@ -285,7 +297,7 @@ export default defineComponent({
             name: ROUTE_SORA_INDEX
           },
           displayName: this.$t('common.nav.sora'),
-          logo: 'https://cdn.acedata.cloud/z5id1u.png',
+          logo: SORA_LOGO,
           routes: [ROUTE_SORA_INDEX, ROUTE_SORA_HISTORY]
         });
       }
@@ -296,7 +308,7 @@ export default defineComponent({
             name: ROUTE_PIXVERSE_INDEX
           },
           displayName: this.$t('common.nav.pixverse'),
-          logo: 'https://cdn.acedata.cloud/viy61r.jpg',
+          logo: PIXVERSE_LOGO,
           routes: [ROUTE_PIXVERSE_INDEX, ROUTE_PIXVERSE_HISTORY]
         });
       }
