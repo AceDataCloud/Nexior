@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 01 Jan 2026 07:29:23 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 02 Jan 2026 04:50:36 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.27.0
+
+Fri, 02 Jan 2026 04:50:36 GMT
+
+### Minor changes
+
+- add seedream (cqc@cuiqingcai.com)
 
 ## 3.26.2
 
