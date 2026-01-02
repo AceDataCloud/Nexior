@@ -130,7 +130,6 @@ import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
 import ImageWrapper from '@/components/common/ImageWrapper.vue';
-import SeedanceLogo from '@/assets/images/seedance.svg';
 
 export default defineComponent({
   name: 'SeedanceTaskPreview',
@@ -152,7 +151,7 @@ export default defineComponent({
   },
   data() {
     return {
-      seedanceLogo: SeedanceLogo
+      seedanceLogo: 'https://cdn.acedata.cloud/9q90dl.png'
     };
   },
   computed: {
