@@ -32,7 +32,7 @@
     "description": "Displayed as the title in the editing box"
   },
   "field.admins": {
-    "message": "Site Admin IDs",
+    "message": "Site Admin ID",
     "description": "Displayed as the title in the editing box"
   },
   "field.distributionDefaultInviterId": {
@@ -113,6 +113,10 @@
   },
   "field.featuresNanobanana": {
     "message": "Nano Banana",
+    "description": "Displayed as the title in the editing box"
+  },
+  "field.featuresSeedream": {
+    "message": "SeeDream",
     "description": "Displayed as the title in the editing box"
   },
   "field.featuresSupport": {
@@ -213,11 +217,11 @@
   },
   "message.uploadImageExceed": {
     "message": "Uploaded image exceeds the limit",
-    "description": "Prompt for exceeding the image upload limit"
+    "description": "Prompt for when the uploaded image exceeds the limit"
   },
   "message.uploadImageError": {
     "message": "Error uploading image",
-    "description": "Prompt for image upload error"
+    "description": "Prompt for when there is an error uploading the image"
   },
   "message.editLogoTip": {
     "message": "Recommended size: 200*60px",
@@ -241,34 +245,34 @@
   },
   "message.distributionDefaultInviterIdTip": {
     "message": "The user ID of the default inviter. If the distribution link does not carry the inviter_id parameter, this user ID will be used as the inviter by default.",
-    "description": "Prompt for default inviter ID"
+    "description": "Prompt for the default inviter ID"
   },
   "message.distributionForceInviterIdTip": {
     "message": "The user ID of the forced inviter. If this ID is set, regardless of whether the distribution link carries the inviter_id parameter, this user ID will be forced to be used as the inviter.",
-    "description": "Prompt for forced inviter ID"
+    "description": "Prompt for the forced inviter ID"
   },
   "message.originTip": {
     "message": "Site domain name, site configuration is bound to the domain name, and the site domain name cannot be changed.",
-    "description": "Prompt for site domain name"
+    "description": "Prompt for the site domain name"
   },
   "message.titleTip": {
     "message": "Site title, displayed in the browser tab.",
-    "description": "Prompt for site title"
+    "description": "Prompt for the site title"
   },
   "message.descriptionTip": {
     "message": "Site description, located in the site metadata, used for site SEO optimization.",
-    "description": "Prompt for site description"
+    "description": "Prompt for the site description"
   },
   "message.logoTip": {
     "message": "Site logo, displayed at the top of the site menu when the menu bar is expanded.",
-    "description": "Prompt for site logo"
+    "description": "Prompt for the site logo"
   },
   "message.faviconTip": {
     "message": "Site favicon, displayed in the browser tab.",
-    "description": "Prompt for site favicon"
+    "description": "Prompt for the site favicon"
   },
   "message.adminsTip": {
-    "message": "Site administrator ID. By default, the user who first creates the site will become the administrator. Only site administrators can manage the site.",
+    "message": "Site administrator IDs. By default, the user who first creates the site will become an administrator. Only site administrators can manage the site.",
     "description": "Prompt for site administrators"
   },
   "message.adminsTip2": {
@@ -335,33 +339,37 @@
     "message": "Enable or disable the Nano Banana feature module.",
     "description": "Description of the Nano Banana feature"
   },
+  "message.featuresSeedream": {
+    "message": "Enable or disable the SeeDream feature module.",
+    "description": "Description of the SeeDream feature"
+  },
   "message.featuresLuma": {
-    "message": "Enable or disable the Luma feature module.",
+    "message": "Turn on or off the Luma feature module.",
     "description": "Description of the Luma feature"
   },
   "message.featuresPika": {
-    "message": "Enable or disable the Pika feature module.",
+    "message": "Turn on or off the Pika feature module.",
     "description": "Description of the Pika feature"
   },
   "message.featuresKling": {
-    "message": "Enable or disable the Kling feature module.",
+    "message": "Turn on or off the Kling feature module.",
     "description": "Description of the Kling feature"
   },
   "message.featuresHailuo": {
-    "message": "Enable or disable the Hailuo feature module.",
+    "message": "Turn on or off the Hailuo feature module.",
     "description": "Description of the Hailuo feature"
   },
   "message.featuresHeadshots": {
-    "message": "Enable or disable the AI ID photo feature module.",
+    "message": "Turn on or off the AI ID photo feature module.",
     "description": "Description of the AI ID photo feature"
   },
   "message.featuresSupport": {
-    "message": "Enable or disable customer support",
+    "message": "Turn on or off customer support",
     "description": "Description of the Support feature"
   },
   "message.featuresI18n": {
-    "message": "Enable or disable multilingual support; when disabled, users can only use the default language.",
-    "description": "Description of multilingual support"
+    "message": "Turn on or off multilingual support; when turned off, users can only use the default language.",
+    "description": "Description of the multilingual support"
   },
   "button.upload": {
     "message": "Upload",

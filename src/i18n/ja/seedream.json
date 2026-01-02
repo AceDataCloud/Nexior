@@ -1,0 +1,138 @@
+{
+  "name.taskId": {
+    "message": "タスク ID",
+    "description": "タスクの ID"
+  },
+  "name.task": {
+    "message": "タスクタイプ",
+    "description": "SeeDream 画像操作タイプ"
+  },
+  "name.generate": {
+    "message": "画像を作成",
+    "description": "操作タイプ：画像を作成"
+  },
+  "name.edits": {
+    "message": "画像を編集",
+    "description": "操作タイプ：画像を編集"
+  },
+  "name.imageUrls": {
+    "message": "参照画像",
+    "description": "編集用の参照画像"
+  },
+  "name.failure": {
+    "message": "失敗",
+    "description": "タスクが失敗しました"
+  },
+  "name.failureReason": {
+    "message": "失敗理由",
+    "description": "タスク失敗の理由"
+  },
+  "name.status": {
+    "message": "ステータス",
+    "description": "タスクのステータス"
+  },
+  "name.traceId": {
+    "message": "トレース ID",
+    "description": "トレース ID"
+  },
+  "name.prompt": {
+    "message": "画像プロンプト",
+    "description": "生成/編集のプロンプト"
+  },
+  "name.seedreamBot": {
+    "message": "SeeDream ボット",
+    "description": "SeeDream 画像生成器の名前"
+  },
+  "name.size": {
+    "message": "サイズ",
+    "description": "出力画像のサイズ"
+  },
+  "name.watermark": {
+    "message": "透かし",
+    "description": "透かしを追加するかどうか"
+  },
+  "description.prompt": {
+    "message": "画像を生成または編集するためのプロンプト",
+    "description": "プロンプトの説明"
+  },
+  "description.model": {
+    "message": "画像を生成または編集するためのモデル。",
+    "description": "model パラメータの説明"
+  },
+  "description.size": {
+    "message": "画像サイズ。プリセット `1K`、`2K`、`4K` またはカスタム `<幅>x<高さ>` をサポート。",
+    "description": "size パラメータの説明"
+  },
+  "description.watermark": {
+    "message": "生成された画像に AI 透かしを追加するかどうか。デフォルトでオン。",
+    "description": "watermark パラメータの説明"
+  },
+  "description.imageUrls": {
+    "message": "画像編集を有効にするために 1-14 枚の参照画像をアップロードします。",
+    "description": "image パラメータの説明"
+  },
+  "status.pending": {
+    "message": "保留中",
+    "description": "タスクの保留状態"
+  },
+  "placeholder.select": {
+    "message": "選択",
+    "description": "選択のプレースホルダー"
+  },
+  "placeholder.prompt": {
+    "message": "プロンプトを入力してください。例：白いシャム猫",
+    "description": "プロンプトのプレースホルダー"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "生成ボタン"
+  },
+  "button.uploadImageUrls": {
+    "message": "画像をアップロード",
+    "description": "参照画像をアップロードするボタン"
+  },
+  "message.startingTask": {
+    "message": "タスクを開始しています...",
+    "description": "タスク開始メッセージ"
+  },
+  "message.startTaskSuccess": {
+    "message": "生成タスクを正常に開始しました",
+    "description": "タスクが正常に作成されました"
+  },
+  "message.startTaskFailed": {
+    "message": "タスクの開始に失敗しました。管理者に連絡してください：",
+    "description": "タスク作成に失敗しました"
+  },
+  "message.usedUp": {
+    "message": "ポイントが使い切りました。さらにポイントを購入して続行してください",
+    "description": "使い切ったことを示すメッセージ"
+  },
+  "message.uploadImageExceed": {
+    "message": "最大 14 枚の画像をアップロードできます",
+    "description": "画像数が制限を超えています"
+  },
+  "message.uploadImageError": {
+    "message": "画像のアップロードに失敗しました。後でもう一度お試しください",
+    "description": "アップロード失敗"
+  },
+  "name.model": {
+    "message": "モデル",
+    "description": "SeeDream モデル選択ラベル"
+  },
+  "model.seedream45": {
+    "message": "doubao-seedream-4.5",
+    "description": "SeeDream 4.5 モデルオプション"
+  },
+  "model.seedream40": {
+    "message": "doubao-seedream-4.0",
+    "description": "SeeDream 4.0 モデルオプション"
+  },
+  "model.seedream30t2i": {
+    "message": "doubao-seedream-3.0-t2i",
+    "description": "SeeDream 3.0 t2i モデルオプション"
+  },
+  "model.seededit30i2i": {
+    "message": "doubao-seededit-3.0-i2i",
+    "description": "SeeEdit 3.0 i2i モデルオプション"
+  }
+}

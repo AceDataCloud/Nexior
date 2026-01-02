@@ -1,0 +1,138 @@
+{
+  "name.taskId": {
+    "message": "Aufgaben-ID",
+    "description": "ID der Aufgabe"
+  },
+  "name.task": {
+    "message": "Aufgabentyp",
+    "description": "SeeDream Bildoperationstyp"
+  },
+  "name.generate": {
+    "message": "Bild erstellen",
+    "description": "Operationstyp: Bild erstellen"
+  },
+  "name.edits": {
+    "message": "Bild bearbeiten",
+    "description": "Operationstyp: Bild bearbeiten"
+  },
+  "name.imageUrls": {
+    "message": "Referenzbilder",
+    "description": "Referenzbilder zum Bearbeiten"
+  },
+  "name.failure": {
+    "message": "Fehler",
+    "description": "Aufgabe fehlgeschlagen"
+  },
+  "name.failureReason": {
+    "message": "Fehlerursache",
+    "description": "Ursache für das Scheitern der Aufgabe"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Aufgabenstatus"
+  },
+  "name.traceId": {
+    "message": "Verfolgungs-ID",
+    "description": "Verfolgungs-ID"
+  },
+  "name.prompt": {
+    "message": "Bildaufforderung",
+    "description": "Aufforderungswörter für die Erstellung/Bearbeitung"
+  },
+  "name.seedreamBot": {
+    "message": "SeeDream Bot",
+    "description": "Name des SeeDream Bildgenerators"
+  },
+  "name.size": {
+    "message": "Größe",
+    "description": "Ausgabebildgröße"
+  },
+  "name.watermark": {
+    "message": "Wasserzeichen",
+    "description": "Ob ein Wasserzeichen hinzugefügt werden soll"
+  },
+  "description.prompt": {
+    "message": "Aufforderungswörter zur Erstellung oder Bearbeitung von Bildern",
+    "description": "Beschreibung der Aufforderungswörter"
+  },
+  "description.model": {
+    "message": "Modell zur Erstellung oder Bearbeitung von Bildern.",
+    "description": "Beschreibung des Modellparameters"
+  },
+  "description.size": {
+    "message": "Bildgröße. Unterstützt vordefinierte `1K`, `2K`, `4K` oder benutzerdefinierte `<Breite>x<Höhe>`.",
+    "description": "Beschreibung des Größenparameters"
+  },
+  "description.watermark": {
+    "message": "Ob ein KI-Wasserzeichen im generierten Bild hinzugefügt werden soll. Standardmäßig aktiviert.",
+    "description": "Beschreibung des Wasserzeichenparameters"
+  },
+  "description.imageUrls": {
+    "message": "Laden Sie 1-14 Referenzbilder hoch, um die Bildbearbeitung zu aktivieren.",
+    "description": "Beschreibung des Bildparameters"
+  },
+  "status.pending": {
+    "message": "Warten",
+    "description": "Wartezustand der Aufgabe"
+  },
+  "placeholder.select": {
+    "message": "Auswählen",
+    "description": "Platzhalter für Auswahl"
+  },
+  "placeholder.prompt": {
+    "message": "Geben Sie die Aufforderungswörter ein, z. B.: eine weiße Siamkatze",
+    "description": "Platzhalter für Aufforderung"
+  },
+  "button.generate": {
+    "message": "Generieren",
+    "description": "Generieren-Button"
+  },
+  "button.uploadImageUrls": {
+    "message": "Bilder hochladen",
+    "description": "Button zum Hochladen von Referenzbildern"
+  },
+  "message.startingTask": {
+    "message": "Starte Aufgabe...",
+    "description": "Nachricht zum Starten der Aufgabe"
+  },
+  "message.startTaskSuccess": {
+    "message": "Generierungsaufgabe erfolgreich gestartet",
+    "description": "Aufgabe erfolgreich erstellt"
+  },
+  "message.startTaskFailed": {
+    "message": "Aufgabenstart fehlgeschlagen, bitte kontaktieren Sie den Administrator:",
+    "description": "Aufgabenerstellung fehlgeschlagen"
+  },
+  "message.usedUp": {
+    "message": "Ihr Guthaben ist aufgebraucht, bitte kaufen Sie mehr Guthaben, um fortzufahren",
+    "description": "Hinweis, dass das Guthaben aufgebraucht ist"
+  },
+  "message.uploadImageExceed": {
+    "message": "Maximal 14 Bilder können hochgeladen werden",
+    "description": "Bildanzahl überschreitet das Limit"
+  },
+  "message.uploadImageError": {
+    "message": "Hochladen des Bildes fehlgeschlagen, bitte versuchen Sie es später erneut",
+    "description": "Hochladen fehlgeschlagen"
+  },
+  "name.model": {
+    "message": "Modell",
+    "description": "Label zur Auswahl des SeeDream Modells"
+  },
+  "model.seedream45": {
+    "message": "doubao-seedream-4.5",
+    "description": "Option für das SeeDream 4.5 Modell"
+  },
+  "model.seedream40": {
+    "message": "doubao-seedream-4.0",
+    "description": "Option für das SeeDream 4.0 Modell"
+  },
+  "model.seedream30t2i": {
+    "message": "doubao-seedream-3.0-t2i",
+    "description": "Option für das SeeDream 3.0 t2i Modell"
+  },
+  "model.seededit30i2i": {
+    "message": "doubao-seededit-3.0-i2i",
+    "description": "Option für das SeeEdit 3.0 i2i Modell"
+  }
+}

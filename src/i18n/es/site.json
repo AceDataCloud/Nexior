@@ -36,7 +36,7 @@
     "description": "Texto que se muestra en el cuadro de edición"
   },
   "field.distributionDefaultInviterId": {
-    "message": "ID del invitador predeterminado",
+    "message": "ID del invitador por defecto",
     "description": "Texto que se muestra en el cuadro de edición"
   },
   "field.distributionForceInviterId": {
@@ -115,6 +115,10 @@
     "message": "Nano Banana",
     "description": "Texto que se muestra en el cuadro de edición"
   },
+  "field.featuresSeedream": {
+    "message": "SeeDream",
+    "description": "Texto que se muestra en el cuadro de edición"
+  },
   "field.featuresSupport": {
     "message": "Soporte al cliente",
     "description": "Texto que se muestra en el cuadro de edición"
@@ -168,7 +172,7 @@
     "description": "Texto que se muestra en el cuadro de edición"
   },
   "title.editDistributionDefaultInviterId": {
-    "message": "Editar invitador predeterminado",
+    "message": "Editar invitador por defecto",
     "description": "Texto que se muestra en el cuadro de edición"
   },
   "title.editDistributionForceInviterId": {
@@ -192,24 +196,24 @@
     "description": "Texto que se muestra en el cuadro de edición"
   },
   "placeholder.editUrl": {
-    "message": "Por favor ingrese el enlace",
+    "message": "Por favor, ingrese el enlace",
     "description": "Texto que se muestra en el cuadro de edición"
   },
   "placeholder.description": {
-    "message": "Ingrese la descripción del sitio",
-    "description": "Texto que se muestra como título en el cuadro de edición"
+    "message": "Por favor, ingrese la descripción del sitio",
+    "description": "Texto que se muestra en el cuadro de edición"
   },
   "placeholder.keywords": {
-    "message": "Ingrese las palabras clave del sitio",
-    "description": "Texto que se muestra como título en el cuadro de edición"
+    "message": "Por favor, ingrese las palabras clave del sitio",
+    "description": "Texto que se muestra en el cuadro de edición"
   },
   "placeholder.editDistributionDefaultInviterId": {
-    "message": "Ingrese el ID del invitador predeterminado",
-    "description": "Texto que se muestra como título en el cuadro de edición"
+    "message": "Por favor, ingrese el ID del invitador predeterminado",
+    "description": "Texto que se muestra en el cuadro de edición"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "Ingrese el ID del invitador forzado",
-    "description": "Texto que se muestra como título en el cuadro de edición"
+    "message": "Por favor, ingrese el ID del invitador forzado",
+    "description": "Texto que se muestra en el cuadro de edición"
   },
   "message.uploadImageExceed": {
     "message": "La imagen subida excede el límite",
@@ -232,8 +236,8 @@
     "description": "Texto de advertencia para la carga de imágenes"
   },
   "message.editUrl": {
-    "message": "Ingrese el enlace",
-    "description": "Texto de advertencia para ingresar un enlace"
+    "message": "Por favor, ingrese el enlace",
+    "description": "Texto de advertencia para ingresar el enlace"
   },
   "message.atLeastOneAdmin": {
     "message": "Debe haber al menos un administrador",
@@ -256,7 +260,7 @@
     "description": "Texto de advertencia para el título del sitio"
   },
   "message.descriptionTip": {
-    "message": "Descripción del sitio, ubicada en la metainformación del sitio, utilizada para la optimización SEO del sitio.",
+    "message": "Descripción del sitio, que se encuentra en la metainformación del sitio y se utiliza para la optimización SEO del sitio.",
     "description": "Texto de advertencia para la descripción del sitio"
   },
   "message.logoTip": {
@@ -268,7 +272,7 @@
     "description": "Texto de advertencia para el favicon del sitio"
   },
   "message.adminsTip": {
-    "message": "ID de administrador del sitio. Por defecto, el usuario que crea el sitio por primera vez se convierte en administrador. Solo los administradores del sitio pueden gestionar el sitio.",
+    "message": "ID de administrador del sitio. Por defecto, el primer usuario que crea el sitio se convierte en administrador. Solo los administradores del sitio pueden gestionar el sitio.",
     "description": "Texto de advertencia para los administradores del sitio"
   },
   "message.adminsTip2": {
@@ -276,7 +280,7 @@
     "description": "Texto de advertencia para los administradores del sitio"
   },
   "message.keywordsTip": {
-    "message": "Palabras clave del sitio, ubicadas en la metainformación del sitio, utilizadas para la optimización SEO del sitio.",
+    "message": "Palabras clave del sitio, que se encuentran en la metainformación del sitio y se utilizan para la optimización SEO del sitio.",
     "description": "Texto de advertencia para las palabras clave del sitio"
   },
   "message.keywordsTip2": {
@@ -335,60 +339,64 @@
     "message": "Activar o desactivar el módulo de funciones de Nano Banana.",
     "description": "Descripción de la función de Nano Banana"
   },
+  "message.featuresSeedream": {
+    "message": "Activar o desactivar el módulo de funciones de SeeDream.",
+    "description": "Descripción de la función de SeeDream"
+  },
   "message.featuresLuma": {
-    "message": "Activar o desactivar el módulo de funciones de Luma.",
-    "description": "Descripción de la función de Luma"
+    "message": "Activar o desactivar el módulo de funciones Luma.",
+    "description": "Luma 功能的描述"
   },
   "message.featuresPika": {
-    "message": "Activar o desactivar el módulo de funciones de Pika.",
-    "description": "Descripción de la función de Pika"
+    "message": "Activar o desactivar el módulo de funciones Pika.",
+    "description": "Pika 功能的描述"
   },
   "message.featuresKling": {
     "message": "Activar o desactivar el módulo de funciones Kling.",
-    "description": "Descripción de la función Kling"
+    "description": "Kling 功能的描述"
   },
   "message.featuresHailuo": {
     "message": "Activar o desactivar el módulo de funciones Hailuo.",
-    "description": "Descripción de la función Hailuo"
+    "description": "Hailuo 功能的描述"
   },
   "message.featuresHeadshots": {
     "message": "Activar o desactivar el módulo de funciones de fotos de identificación AI.",
-    "description": "Descripción de la función de fotos de identificación AI"
+    "description": "AI证件照 功能的描述"
   },
   "message.featuresSupport": {
     "message": "Activar o desactivar el soporte al cliente",
-    "description": "Descripción de la función de soporte"
+    "description": "Support 功能的描述"
   },
   "message.featuresI18n": {
     "message": "Activar o desactivar el soporte multilingüe; al desactivarlo, los usuarios solo podrán usar el idioma predeterminado.",
-    "description": "Descripción del soporte multilingüe"
+    "description": "多语言支持的描述"
   },
   "button.upload": {
     "message": "Subir",
-    "description": "Subir"
+    "description": "上传"
   },
   "button.enabled": {
     "message": "Habilitado",
-    "description": "Texto del interruptor que indica que está habilitado"
+    "description": "开关文字，表示已经启用"
   },
   "button.disabled": {
     "message": "Deshabilitado",
-    "description": "Texto del interruptor que indica que está deshabilitado"
+    "description": "开关文字，表示已经禁用"
   },
   "field.featuresGemini": {
     "message": "Gemini",
-    "description": "Mostrado como el título en el cuadro de edición"
+    "description": "Displayed as the title in the editing box"
   },
   "message.featuresGemini": {
     "message": "Activar o desactivar el módulo de funciones Gemini.",
-    "description": "Descripción de la función Gemini"
+    "description": "Description of the Gemini feature"
   },
   "field.featuresClaude": {
     "message": "Claude",
-    "description": "Mostrado como el título en el cuadro de edición"
+    "description": "Displayed as the title in the editing box"
   },
   "message.featuresClaude": {
     "message": "Activar o desactivar el módulo de funciones Claude.",
-    "description": "Descripción de la función Claude"
+    "description": "Description of the Claude feature"
   }
 }

@@ -1,0 +1,138 @@
+{
+  "name.taskId": {
+    "message": "Uppgift ID",
+    "description": "Uppgiftens ID"
+  },
+  "name.task": {
+    "message": "Uppgiftstyp",
+    "description": "SeeDream bildoperations typ"
+  },
+  "name.generate": {
+    "message": "Skapa bild",
+    "description": "Operationstyp: Skapa bild"
+  },
+  "name.edits": {
+    "message": "Redigera bild",
+    "description": "Operationstyp: Redigera bild"
+  },
+  "name.imageUrls": {
+    "message": "Referensbilder",
+    "description": "Referensbilder för redigering"
+  },
+  "name.failure": {
+    "message": "Misslyckande",
+    "description": "Uppgiften misslyckades"
+  },
+  "name.failureReason": {
+    "message": "Orsak till misslyckande",
+    "description": "Orsaken till att uppgiften misslyckades"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Uppgiftens status"
+  },
+  "name.traceId": {
+    "message": "Spårnings ID",
+    "description": "Spårnings ID"
+  },
+  "name.prompt": {
+    "message": "Bildprompt",
+    "description": "Promptord för att generera/redigera"
+  },
+  "name.seedreamBot": {
+    "message": "SeeDream Bot",
+    "description": "Namn på SeeDream bildgenerator"
+  },
+  "name.size": {
+    "message": "Storlek",
+    "description": "Utdata bildstorlek"
+  },
+  "name.watermark": {
+    "message": "Vattenstämpel",
+    "description": "Om vattenstämpel ska läggas till"
+  },
+  "description.prompt": {
+    "message": "Promptord för att generera eller redigera bilder",
+    "description": "Beskrivning av promptord"
+  },
+  "description.model": {
+    "message": "Modellen som används för att generera eller redigera bilder.",
+    "description": "Beskrivning av model parameter"
+  },
+  "description.size": {
+    "message": "Bildstorlek. Stöder förinställningar `1K`, `2K`, `4K` eller anpassad `<bredd>x<höjd>`.",
+    "description": "Beskrivning av size parameter"
+  },
+  "description.watermark": {
+    "message": "Om AI-vattenstämpel ska läggas till i den genererade bilden. Som standard aktiverad.",
+    "description": "Beskrivning av watermark parameter"
+  },
+  "description.imageUrls": {
+    "message": "Ladda upp 1-14 referensbilder för att aktivera bildredigering.",
+    "description": "Beskrivning av image parameter"
+  },
+  "status.pending": {
+    "message": "Väntar",
+    "description": "Uppgiftens väntande status"
+  },
+  "placeholder.select": {
+    "message": "Välj",
+    "description": "Välj platshållare"
+  },
+  "placeholder.prompt": {
+    "message": "Ange promptord, till exempel: en vit siamesisk katt",
+    "description": "Prompt platshållare"
+  },
+  "button.generate": {
+    "message": "Generera",
+    "description": "Generera knapp"
+  },
+  "button.uploadImageUrls": {
+    "message": "Ladda upp bilder",
+    "description": "Ladda upp referensbilder knapp"
+  },
+  "message.startingTask": {
+    "message": "Startar uppgiften...",
+    "description": "Meddelande om att starta uppgiften"
+  },
+  "message.startTaskSuccess": {
+    "message": "Uppgift för generering har startats framgångsrikt",
+    "description": "Uppgiften skapades framgångsrikt"
+  },
+  "message.startTaskFailed": {
+    "message": "Misslyckades med att starta uppgiften, vänligen kontakta administratören:",
+    "description": "Uppgiftens skapande misslyckades"
+  },
+  "message.usedUp": {
+    "message": "Dina poäng är slut, vänligen köp fler poäng för att fortsätta använda",
+    "description": "Meddelande om att poängen är slut"
+  },
+  "message.uploadImageExceed": {
+    "message": "Max 14 bilder kan laddas upp",
+    "description": "Antalet bilder överskrider gränsen"
+  },
+  "message.uploadImageError": {
+    "message": "Misslyckades med att ladda upp bilden, vänligen försök igen senare",
+    "description": "Misslyckad uppladdning"
+  },
+  "name.model": {
+    "message": "Modell",
+    "description": "Etikett för val av SeeDream-modell"
+  },
+  "model.seedream45": {
+    "message": "doubao-seedream-4.5",
+    "description": "Val av SeeDream 4.5-modell"
+  },
+  "model.seedream40": {
+    "message": "doubao-seedream-4.0",
+    "description": "Val av SeeDream 4.0-modell"
+  },
+  "model.seedream30t2i": {
+    "message": "doubao-seedream-3.0-t2i",
+    "description": "Val av SeeDream 3.0 t2i-modell"
+  },
+  "model.seededit30i2i": {
+    "message": "doubao-seededit-3.0-i2i",
+    "description": "Val av SeeEdit 3.0 i2i-modell"
+  }
+}

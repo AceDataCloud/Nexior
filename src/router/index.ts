@@ -20,6 +20,7 @@ import hailuo from './hailuo';
 import headshots from './headshots';
 import suno from './suno';
 import nanobanana from './nanobanana';
+import seedream from './seedream';
 import site from './site';
 import profile from './profile';
 
@@ -52,6 +53,7 @@ const routes = [
   headshots,
   suno,
   nanobanana,
+  seedream,
   midjourney,
   distribution,
   site,

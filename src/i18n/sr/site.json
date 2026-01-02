@@ -115,6 +115,10 @@
     "message": "Nano Banana",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
+  "field.featuresSeedream": {
+    "message": "SeeDream",
+    "description": "Prikazuje se kao naslov u okviru za uređivanje"
+  },
   "field.featuresSupport": {
     "message": "Korisnička podrška",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
@@ -220,15 +224,15 @@
     "description": "Poruka o grešci prilikom upload-a slike"
   },
   "message.editLogoTip": {
-    "message": "Preporučena dimenzija: 200*60px",
+    "message": "Preporučena veličina: 200*60px",
     "description": "Jezik uputstva za upload slike"
   },
   "message.editQRTip": {
-    "message": "Preporučena dimenzija: 200*200px",
+    "message": "Preporučena veličina: 200*200px",
     "description": "Jezik uputstva za upload slike"
   },
   "message.editFaviconTip": {
-    "message": "Preporučena dimenzija: 32*32px",
+    "message": "Preporučena veličina: 32*32px",
     "description": "Jezik uputstva za upload slike"
   },
   "message.editUrl": {
@@ -237,7 +241,7 @@
   },
   "message.atLeastOneAdmin": {
     "message": "Morate zadržati barem jednog administratora",
-    "description": "Poruka o potrebi za barem jednim administratorom"
+    "description": "Poruka o potrebi zadržavanja barem jednog administratora"
   },
   "message.distributionDefaultInviterIdTip": {
     "message": "ID korisnika podrazumevanog pozivaoca. Ako distribucioni link ne sadrži parametar inviter_id, koristiće se ovaj ID kao pozivalac.",
@@ -256,7 +260,7 @@
     "description": "Uputstvo za naslov sajta"
   },
   "message.descriptionTip": {
-    "message": "Opis sajta, nalazi se u metapodacima sajta, koristi se za SEO optimizaciju sajta.",
+    "message": "Opis sajta, nalazi se u metapodacima sajta, koristi se za SEO optimizaciju.",
     "description": "Uputstvo za opis sajta"
   },
   "message.logoTip": {
@@ -268,15 +272,15 @@
     "description": "Uputstvo za favicon sajta"
   },
   "message.adminsTip": {
-    "message": "ID administratora sajta, podrazumevano, prvi korisnik koji kreira sajt postaje administrator, samo administratori sajta mogu upravljati sajtom.",
+    "message": "ID administratora sajta, podrazumevano, prvi korisnik koji kreira sajt postaje administrator, samo administratori mogu upravljati sajtom.",
     "description": "Uputstvo za administratore sajta"
   },
   "message.adminsTip2": {
-    "message": "Ovde možete dodavati ili uklanjati ID-ove administratora, možete posetiti https://auth.acedata.cloud da biste videli ID korisnika",
+    "message": "Ovde možete dodavati ili uklanjati ID-ove administratora, ID korisnika možete videti na https://auth.acedata.cloud",
     "description": "Uputstvo za administratore sajta"
   },
   "message.keywordsTip": {
-    "message": "Ključne reči sajta, nalaze se u metapodacima sajta, koriste se za SEO optimizaciju sajta.",
+    "message": "Ključne reči sajta, nalaze se u metapodacima sajta, koriste se za SEO optimizaciju.",
     "description": "Uputstvo za ključne reči sajta"
   },
   "message.keywordsTip2": {
@@ -335,29 +339,33 @@
     "message": "Uključite ili isključite Nano Banana funkcionalnost.",
     "description": "Opis Nano Banana funkcionalnosti"
   },
+  "message.featuresSeedream": {
+    "message": "Uključite ili isključite SeeDream funkcionalnost.",
+    "description": "Opis SeeDream funkcionalnosti"
+  },
   "message.featuresLuma": {
-    "message": "Uključite ili isključite Luma funkcionalnost.",
-    "description": "Opis Luma funkcionalnosti"
+    "message": "Uključite ili isključite Luma funkcionalni modul.",
+    "description": "Luma funkcije opis"
   },
   "message.featuresPika": {
-    "message": "Uključite ili isključite Pika funkcionalnost.",
-    "description": "Opis Pika funkcionalnosti"
+    "message": "Uključite ili isključite Pika funkcionalni modul.",
+    "description": "Pika funkcije opis"
   },
   "message.featuresKling": {
     "message": "Uključite ili isključite Kling funkcionalni modul.",
-    "description": "Opis Kling funkcionalnosti"
+    "description": "Kling funkcije opis"
   },
   "message.featuresHailuo": {
     "message": "Uključite ili isključite Hailuo funkcionalni modul.",
-    "description": "Opis Hailuo funkcionalnosti"
+    "description": "Hailuo funkcije opis"
   },
   "message.featuresHeadshots": {
     "message": "Uključite ili isključite AI identifikacione fotografije funkcionalni modul.",
-    "description": "Opis AI identifikacionih fotografija funkcionalnosti"
+    "description": "AI identifikacione fotografije funkcije opis"
   },
   "message.featuresSupport": {
     "message": "Uključite ili isključite korisničku podršku",
-    "description": "Opis funkcionalnosti podrške"
+    "description": "Opis funkcije podrške"
   },
   "message.featuresI18n": {
     "message": "Uključite ili isključite podršku za više jezika, kada je isključena, korisnici mogu koristiti samo podrazumevani jezik.",
@@ -369,11 +377,11 @@
   },
   "button.enabled": {
     "message": "Omogućeno",
-    "description": "Tekst prekidača koji označava da je omogućeno"
+    "description": "Tekst prekidača, koji označava da je omogućeno"
   },
   "button.disabled": {
     "message": "Onemogućeno",
-    "description": "Tekst prekidača koji označava da je onemogućeno"
+    "description": "Tekst prekidača, koji označava da je onemogućeno"
   },
   "field.featuresGemini": {
     "message": "Gemini",
@@ -381,7 +389,7 @@
   },
   "message.featuresGemini": {
     "message": "Uključite ili isključite Gemini funkcionalni modul.",
-    "description": "Opis Gemini funkcionalnosti"
+    "description": "Opis Gemini funkcije"
   },
   "field.featuresClaude": {
     "message": "Claude",
@@ -389,6 +397,6 @@
   },
   "message.featuresClaude": {
     "message": "Uključite ili isključite Claude funkcionalni modul.",
-    "description": "Opis Claude funkcionalnosti"
+    "description": "Opis Claude funkcije"
   }
 }

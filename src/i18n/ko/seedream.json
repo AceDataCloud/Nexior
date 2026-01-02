@@ -1,0 +1,138 @@
+{
+  "name.taskId": {
+    "message": "작업 ID",
+    "description": "작업의 ID"
+  },
+  "name.task": {
+    "message": "작업 유형",
+    "description": "SeeDream 이미지 작업 유형"
+  },
+  "name.generate": {
+    "message": "이미지 생성",
+    "description": "작업 유형: 이미지 생성"
+  },
+  "name.edits": {
+    "message": "이미지 편집",
+    "description": "작업 유형: 이미지 편집"
+  },
+  "name.imageUrls": {
+    "message": "참조 이미지",
+    "description": "편집에 사용되는 참조 이미지"
+  },
+  "name.failure": {
+    "message": "실패",
+    "description": "작업 실패"
+  },
+  "name.failureReason": {
+    "message": "실패 원인",
+    "description": "작업 실패 원인"
+  },
+  "name.status": {
+    "message": "상태",
+    "description": "작업 상태"
+  },
+  "name.traceId": {
+    "message": "추적 ID",
+    "description": "추적 ID"
+  },
+  "name.prompt": {
+    "message": "이미지 프롬프트",
+    "description": "생성/편집의 프롬프트"
+  },
+  "name.seedreamBot": {
+    "message": "SeeDream 봇",
+    "description": "SeeDream 이미지 생성기 이름"
+  },
+  "name.size": {
+    "message": "크기",
+    "description": "출력 이미지 크기"
+  },
+  "name.watermark": {
+    "message": "워터마크",
+    "description": "워터마크 추가 여부"
+  },
+  "description.prompt": {
+    "message": "이미지를 생성하거나 편집하기 위한 프롬프트",
+    "description": "프롬프트 설명"
+  },
+  "description.model": {
+    "message": "이미지를 생성하거나 편집하는 데 사용되는 모델입니다.",
+    "description": "model 매개변수 설명"
+  },
+  "description.size": {
+    "message": "이미지 크기. 사전 설정된 `1K`, `2K`, `4K` 또는 사용자 정의 `<너비>x<높이>`를 지원합니다.",
+    "description": "size 매개변수 설명"
+  },
+  "description.watermark": {
+    "message": "생성된 이미지에 AI 워터마크를 추가할지 여부. 기본적으로 활성화되어 있습니다.",
+    "description": "watermark 매개변수 설명"
+  },
+  "description.imageUrls": {
+    "message": "이미지 편집을 활성화하기 위해 1-14개의 참조 이미지를 업로드합니다.",
+    "description": "image 매개변수 설명"
+  },
+  "status.pending": {
+    "message": "대기 중",
+    "description": "작업 대기 상태"
+  },
+  "placeholder.select": {
+    "message": "선택",
+    "description": "선택 자리 표시자"
+  },
+  "placeholder.prompt": {
+    "message": "프롬프트 입력, 예: 흰색 샴 고양이 한 마리",
+    "description": "프롬프트 자리 표시자"
+  },
+  "button.generate": {
+    "message": "생성",
+    "description": "생성 버튼"
+  },
+  "button.uploadImageUrls": {
+    "message": "이미지 업로드",
+    "description": "참조 이미지 업로드 버튼"
+  },
+  "message.startingTask": {
+    "message": "작업 시작 중...",
+    "description": "작업 시작 메시지"
+  },
+  "message.startTaskSuccess": {
+    "message": "생성 작업이 성공적으로 시작되었습니다.",
+    "description": "작업 성공적으로 생성됨"
+  },
+  "message.startTaskFailed": {
+    "message": "작업 시작 실패, 관리자에게 문의하십시오:",
+    "description": "작업 생성 실패"
+  },
+  "message.usedUp": {
+    "message": "포인트가 소진되었습니다. 추가 포인트를 구매한 후 계속 사용하십시오.",
+    "description": "소진 알림"
+  },
+  "message.uploadImageExceed": {
+    "message": "최대 14장의 이미지를 업로드할 수 있습니다.",
+    "description": "이미지 수 초과 제한"
+  },
+  "message.uploadImageError": {
+    "message": "이미지 업로드 실패, 나중에 다시 시도하십시오.",
+    "description": "업로드 실패"
+  },
+  "name.model": {
+    "message": "모델",
+    "description": "SeeDream 모델 선택 태그"
+  },
+  "model.seedream45": {
+    "message": "doubao-seedream-4.5",
+    "description": "SeeDream 4.5 모델 옵션"
+  },
+  "model.seedream40": {
+    "message": "doubao-seedream-4.0",
+    "description": "SeeDream 4.0 모델 옵션"
+  },
+  "model.seedream30t2i": {
+    "message": "doubao-seedream-3.0-t2i",
+    "description": "SeeDream 3.0 t2i 모델 옵션"
+  },
+  "model.seededit30i2i": {
+    "message": "doubao-seededit-3.0-i2i",
+    "description": "SeeEdit 3.0 i2i 모델 옵션"
+  }
+}

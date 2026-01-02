@@ -34,6 +34,7 @@ export const I18N_SCOPES = [
   'pixverse',
   'flux',
   'nanobanana',
+  'seedream',
   'hailuo',
   'headshots',
   'suno',

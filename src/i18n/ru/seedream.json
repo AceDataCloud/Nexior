@@ -1,0 +1,138 @@
+{
+  "name.taskId": {
+    "message": "Идентификатор задачи",
+    "description": "Идентификатор задачи"
+  },
+  "name.task": {
+    "message": "Тип задачи",
+    "description": "Тип операции с изображением SeeDream"
+  },
+  "name.generate": {
+    "message": "Создать изображение",
+    "description": "Тип операции: создать изображение"
+  },
+  "name.edits": {
+    "message": "Редактировать изображение",
+    "description": "Тип операции: редактировать изображение"
+  },
+  "name.imageUrls": {
+    "message": "Ссылки на изображения",
+    "description": "Ссылки на изображения для редактирования"
+  },
+  "name.failure": {
+    "message": "Ошибка",
+    "description": "Задача завершилась неудачей"
+  },
+  "name.failureReason": {
+    "message": "Причина ошибки",
+    "description": "Причина неудачи задачи"
+  },
+  "name.status": {
+    "message": "Статус",
+    "description": "Статус задачи"
+  },
+  "name.traceId": {
+    "message": "Идентификатор трассировки",
+    "description": "Идентификатор трассировки"
+  },
+  "name.prompt": {
+    "message": "Подсказка для изображения",
+    "description": "Подсказка для генерации/редактирования"
+  },
+  "name.seedreamBot": {
+    "message": "SeeDream Bot",
+    "description": "Название генератора изображений SeeDream"
+  },
+  "name.size": {
+    "message": "Размер",
+    "description": "Размер выходного изображения"
+  },
+  "name.watermark": {
+    "message": "Водяной знак",
+    "description": "Добавить ли водяной знак"
+  },
+  "description.prompt": {
+    "message": "Подсказка для генерации или редактирования изображения",
+    "description": "Описание подсказки"
+  },
+  "description.model": {
+    "message": "Модель, используемая для генерации или редактирования изображений.",
+    "description": "Описание параметра model"
+  },
+  "description.size": {
+    "message": "Размер изображения. Поддерживаются предустановленные значения `1K`, `2K`, `4K` или пользовательские `<ширина>x<высота>`.",
+    "description": "Описание параметра size"
+  },
+  "description.watermark": {
+    "message": "Добавить ли AI водяной знак на сгенерированное изображение. По умолчанию включено.",
+    "description": "Описание параметра watermark"
+  },
+  "description.imageUrls": {
+    "message": "Загрузите от 1 до 14 ссылок на изображения для включения редактирования изображений.",
+    "description": "Описание параметра image"
+  },
+  "status.pending": {
+    "message": "В ожидании",
+    "description": "Статус ожидания задачи"
+  },
+  "placeholder.select": {
+    "message": "Выбрать",
+    "description": "Заполнитель выбора"
+  },
+  "placeholder.prompt": {
+    "message": "Введите подсказку, например: белый сиамский кот",
+    "description": "Заполнитель подсказки"
+  },
+  "button.generate": {
+    "message": "Сгенерировать",
+    "description": "Кнопка генерации"
+  },
+  "button.uploadImageUrls": {
+    "message": "Загрузить изображения",
+    "description": "Кнопка загрузки ссылок на изображения"
+  },
+  "message.startingTask": {
+    "message": "Запуск задачи...",
+    "description": "Сообщение о начале задачи"
+  },
+  "message.startTaskSuccess": {
+    "message": "Задача на генерацию успешно запущена",
+    "description": "Задача успешно создана"
+  },
+  "message.startTaskFailed": {
+    "message": "Не удалось запустить задачу, пожалуйста, свяжитесь с администратором:",
+    "description": "Не удалось создать задачу"
+  },
+  "message.usedUp": {
+    "message": "Ваши баллы исчерпаны, пожалуйста, купите больше баллов для продолжения использования",
+    "description": "Сообщение об исчерпании"
+  },
+  "message.uploadImageExceed": {
+    "message": "Максимум можно загрузить 14 изображений",
+    "description": "Количество изображений превышает лимит"
+  },
+  "message.uploadImageError": {
+    "message": "Не удалось загрузить изображение, пожалуйста, попробуйте позже",
+    "description": "Ошибка загрузки"
+  },
+  "name.model": {
+    "message": "Модель",
+    "description": "Метка выбора модели SeeDream"
+  },
+  "model.seedream45": {
+    "message": "doubao-seedream-4.5",
+    "description": "Опция модели SeeDream 4.5"
+  },
+  "model.seedream40": {
+    "message": "doubao-seedream-4.0",
+    "description": "Опция модели SeeDream 4.0"
+  },
+  "model.seedream30t2i": {
+    "message": "doubao-seedream-3.0-t2i",
+    "description": "Опция модели SeeDream 3.0 t2i"
+  },
+  "model.seededit30i2i": {
+    "message": "doubao-seededit-3.0-i2i",
+    "description": "Опция модели SeeEdit 3.0 i2i"
+  }
+}
