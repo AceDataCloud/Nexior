@@ -1,62 +1,166 @@
 {
-  "name.seedanceBot": { "message": "SeeDance Bot", "description": "Name of the SeeDance video generator" },
-  "name.prompt": { "message": "Video Prompt", "description": "Text prompt for video generation" },
-  "description.prompt": {
-    "message": "Describe the video you want to generate. You can include SeeDance parameters (e.g. --rs 720p --rt 16:9 --dur 5).",
-    "description": "Help text for prompt input"
+  "name.seedanceBot": {
+    "message": "SeeDance-botti",
+    "description": "SeeDance-video generoijan nimi"
   },
-  "placeholder.prompt": { "message": "Describe your video...", "description": "Placeholder for prompt input" },
-  "name.model": { "message": "Model", "description": "Model selector label" },
-  "description.model": { "message": "Choose the SeeDance model version for generation.", "description": "Help text for model selector" },
-  "placeholder.select": { "message": "Select", "description": "Placeholder for select input" },
-  "model.seedance10pro": { "message": "doubao-seedance-1.0-pro", "description": "SeeDance 1.0 Pro model option" },
+  "name.prompt": {
+    "message": "Kehotus",
+    "description": "Videon generoimiseen käytettävä kehotus"
+  },
+  "description.prompt": {
+    "message": "Kuvaile videota, jonka haluat generoida, voit lisätä SeeDance-parametreja (esim.: --rs 720p --rt 16:9 --dur 5).",
+    "description": "Kehotteen syöttöohje"
+  },
+  "placeholder.prompt": {
+    "message": "Kuvaile videota…",
+    "description": "Kehotteen paikkamerkki"
+  },
+  "name.model": {
+    "message": "Malli",
+    "description": "Mallin valintatunniste"
+  },
+  "description.model": {
+    "message": "Valitse SeeDance-malliversio, jota käytetään generoimiseen.",
+    "description": "Mallin valintaohje"
+  },
+  "placeholder.select": {
+    "message": "Valitse",
+    "description": "Pudotusvalikon paikkamerkki"
+  },
+  "model.seedance10pro": {
+    "message": "doubao-seedance-1.0-pro",
+    "description": "SeeDance 1.0 Pro -malli"
+  },
   "model.seedance10proFast": {
     "message": "doubao-seedance-1.0-pro-fast",
-    "description": "SeeDance 1.0 Pro Fast model option"
+    "description": "SeeDance 1.0 Pro Fast -malli"
   },
-  "model.seedance15pro": { "message": "doubao-seedance-1.5-pro", "description": "SeeDance 1.5 Pro model option" },
+  "model.seedance15pro": {
+    "message": "doubao-seedance-1.5-pro",
+    "description": "SeeDance 1.5 Pro -malli"
+  },
   "model.seedance10liteT2v": {
     "message": "doubao-seedance-1.0-lite-t2v",
-    "description": "SeeDance 1.0 Lite T2V model option"
+    "description": "SeeDance 1.0 Lite T2V -malli"
   },
   "model.seedance10liteI2v": {
     "message": "doubao-seedance-1.0-lite-i2v",
-    "description": "SeeDance 1.0 Lite I2V model option"
+    "description": "SeeDance 1.0 Lite I2V -malli"
   },
-  "name.serviceTier": { "message": "Service Tier", "description": "Service tier selector label" },
-  "description.serviceTier": { "message": "Processing tier: default or flex.", "description": "Help text for service tier" },
-  "serviceTier.default": { "message": "default", "description": "Default service tier" },
-  "serviceTier.flex": { "message": "flex", "description": "Flex service tier" },
-  "name.returnLastFrame": { "message": "Return Last Frame", "description": "Return last frame switch label" },
+  "name.serviceTier": {
+    "message": "Palvelutaso",
+    "description": "Palvelutason tunniste"
+  },
+  "description.serviceTier": {
+    "message": "Käsittelytaso: default tai flex.",
+    "description": "Palvelutason ohje"
+  },
+  "serviceTier.default": {
+    "message": "oletus",
+    "description": "Oletustaso"
+  },
+  "serviceTier.flex": {
+    "message": "joustava",
+    "description": "Joustava taso"
+  },
+  "name.returnLastFrame": {
+    "message": "Palauta viimeinen kehys",
+    "description": "Viimeisen kehyksen palautusvaihtoehto"
+  },
   "description.returnLastFrame": {
-    "message": "If enabled, the API also returns the last frame image.",
-    "description": "Help text for return last frame"
+    "message": "Kun tämä on päällä, palautetaan ylimääräinen viimeinen kehyskuva.",
+    "description": "Viimeisen kehyksen ohje"
   },
-  "name.firstFrame": { "message": "First Frame Image", "description": "First frame image upload label" },
-  "description.firstFrame": { "message": "Optional. Provide a reference/first-frame image.", "description": "Help text for first frame image" },
-  "name.lastFrame": { "message": "Last Frame Image", "description": "Last frame image upload label" },
+  "name.firstFrame": {
+    "message": "Ensimmäinen kehyskuva",
+    "description": "Ensimmäisen kehyksen kuvan lataustunniste"
+  },
+  "description.firstFrame": {
+    "message": "Valinnainen. Lataa viite/ensimmäinen kehyskuva.",
+    "description": "Ensimmäisen kehyksen ohje"
+  },
+  "name.lastFrame": {
+    "message": "Viimeinen kehyskuva",
+    "description": "Viimeisen kehyksen kuvan lataustunniste"
+  },
   "description.lastFrame": {
-    "message": "Optional. Provide a last-frame image (requires first frame).",
-    "description": "Help text for last frame image"
+    "message": "Valinnainen. Lataa viimeinen kehyskuva (vaatii ensimmäisen kehyksen).",
+    "description": "Viimeisen kehyksen ohje"
   },
-  "button.generate": { "message": "Generate", "description": "Generate button text" },
-  "button.upload": { "message": "Upload", "description": "Upload button text" },
-  "button.download": { "message": "Download", "description": "Download button text" },
-  "button.on": { "message": "On", "description": "Switch on label" },
-  "button.off": { "message": "Off", "description": "Switch off label" },
-  "message.startingTask": { "message": "Starting SeeDance task...", "description": "Toast while starting task" },
-  "message.startTaskSuccess": { "message": "Task started successfully", "description": "Toast on successful task start" },
-  "message.startTaskFailed": { "message": "Failed to start task: ", "description": "Toast on failed task start" },
-  "message.usedUp": { "message": "Quota used up", "description": "Toast when quota is used up" },
-  "message.uploadExceed": { "message": "Only 1 image is allowed", "description": "Toast when upload exceeds limit" },
-  "message.uploadError": { "message": "Upload failed", "description": "Toast when upload fails" },
-  "message.downloadVideo": { "message": "Download video", "description": "Tooltip for download button" },
-  "status.pending": { "message": "Pending", "description": "Pending status" },
-  "status.processing": { "message": "Processing", "description": "Processing status" },
-  "name.taskId": { "message": "Task ID", "description": "Task ID label" },
-  "name.traceId": { "message": "Trace ID", "description": "Trace ID label" },
-  "name.failure": { "message": "Failure", "description": "Failure label" },
-  "name.failureReason": { "message": "Failure Reason", "description": "Failure reason label" },
-  "name.status": { "message": "Status", "description": "Status label" }
+  "button.generate": {
+    "message": "Generoi",
+    "description": "Generointipainike"
+  },
+  "button.upload": {
+    "message": "Lataa",
+    "description": "Latauspainike"
+  },
+  "button.download": {
+    "message": "Lataa",
+    "description": "Latauspainike"
+  },
+  "button.on": {
+    "message": "Päällä",
+    "description": "Kytkin päällä -teksti"
+  },
+  "button.off": {
+    "message": "Pois päältä",
+    "description": "Kytkin pois päältä -teksti"
+  },
+  "message.startingTask": {
+    "message": "Käynnistetään SeeDance-tehtävää…",
+    "description": "Tehtävän aloitusviesti"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tehtävä on käynnistetty",
+    "description": "Tehtävän aloitus onnistui"
+  },
+  "message.startTaskFailed": {
+    "message": "Käynnistys epäonnistui:",
+    "description": "Tehtävän aloitus epäonnistui"
+  },
+  "message.usedUp": {
+    "message": "Käyttöoikeus on käytetty loppuun",
+    "description": "Käyttöoikeuden loppuminen"
+  },
+  "message.uploadExceed": {
+    "message": "Voit ladata enintään 1 kuvan",
+    "description": "Latausrajan ylitysviesti"
+  },
+  "message.uploadError": {
+    "message": "Lataus epäonnistui",
+    "description": "Latauksen epäonnistumisviesti"
+  },
+  "message.downloadVideo": {
+    "message": "Lataa video",
+    "description": "Videon latausviesti"
+  },
+  "status.pending": {
+    "message": "Jonossa",
+    "description": "Jonotustila"
+  },
+  "status.processing": {
+    "message": "Generoidaan",
+    "description": "Generointitila"
+  },
+  "name.taskId": {
+    "message": "Tehtävä ID",
+    "description": "Tehtävä ID -tunniste"
+  },
+  "name.traceId": {
+    "message": "Trace ID",
+    "description": "Trace ID -tunniste"
+  },
+  "name.failure": {
+    "message": "Epäonnistuminen",
+    "description": "Epäonnistumistunniste"
+  },
+  "name.failureReason": {
+    "message": "Epäonnistumisen syy",
+    "description": "Epäonnistumisen syytunniste"
+  },
+  "name.status": {
+    "message": "Tila",
+    "description": "Tilatunniste"
+  }
 }
-

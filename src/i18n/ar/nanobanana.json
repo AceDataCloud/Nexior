@@ -17,7 +17,7 @@
   },
   "name.imageUrls": {
     "message": "صور مرجعية",
-    "description": "صور مرجعية للاستخدام في التحرير"
+    "description": "صور مرجعية للتحرير"
   },
   "name.failure": {
     "message": "فشل",
@@ -60,7 +60,7 @@
     "description": "وصف نص التوليد"
   },
   "description.action": {
-    "message": "الإجراء لإنشاء الصورة. إذا كانت `generate`، سيتم إنشاء الصورة بناءً على نص التوليد؛ إذا كانت `edit`، سيتم تحرير الصورة بناءً على نص التوليد والصورة المرفوعة.",
+    "message": "إجراء إنشاء الصورة. إذا كانت `generate`، سيتم إنشاء الصورة بناءً على النص؛ إذا كانت `edit`، سيتم التحرير بناءً على النص والصورة المرفوعة.",
     "description": "وصف معلمة action"
   },
   "description.model": {
@@ -81,42 +81,42 @@
   },
   "placeholder.select": {
     "message": "اختر",
-    "description": "نص مكان للاختيار"
+    "description": "نص العنصر المحدد"
   },
   "placeholder.prompt": {
     "message": "أدخل نص التوليد، مثل: قطة سيامية بيضاء",
-    "description": "نص مكان لنص التوليد"
+    "description": "نص العنصر المحدد"
   },
   "button.generate": {
-    "message": "توليد",
-    "description": "زر التوليد"
+    "message": "إنشاء",
+    "description": "زر الإنشاء"
   },
   "button.uploadImageUrls": {
-    "message": "رفع الصور",
-    "description": "زر رفع الصور المرجعية"
+    "message": "رفع صورة",
+    "description": "زر رفع الصور المرجعية (يرجى تبسيط إلى 'رفع')"
   },
   "message.startingTask": {
     "message": "جارٍ بدء المهمة...",
     "description": "رسالة بدء المهمة"
   },
   "message.startTaskSuccess": {
-    "message": "تم بدء مهمة التوليد بنجاح",
+    "message": "تم بدء مهمة الإنشاء بنجاح",
     "description": "تم إنشاء المهمة بنجاح"
   },
   "message.startTaskFailed": {
-    "message": "فشل بدء المهمة، يرجى الاتصال بالمدير:",
+    "message": "فشل بدء المهمة، يرجى الاتصال بالمسؤول:",
     "description": "فشل إنشاء المهمة"
   },
   "message.usedUp": {
-    "message": "لقد نفدت نقاطك، يرجى شراء المزيد من النقاط للاستمرار في الاستخدام",
+    "message": "لقد نفدت نقاطك، يرجى شراء المزيد من النقاط للاستمرار",
     "description": "رسالة نفاد النقاط"
   },
   "message.uploadImageExceed": {
     "message": "يمكنك رفع ما يصل إلى 5 صور",
-    "description": "تجاوز عدد الصور الحد المسموح به"
+    "description": "عدد الصور يتجاوز الحد"
   },
   "message.uploadImageError": {
-    "message": "فشل رفع الصورة، يرجى المحاولة مرة أخرى لاحقًا",
+    "message": "فشل رفع الصورة، يرجى المحاولة لاحقًا",
     "description": "فشل الرفع"
   },
   "name.model": {
@@ -125,10 +125,10 @@
   },
   "model.nanoBanana": {
     "message": "nano-banana",
-    "description": "خيار نموذج Nano Banana الأساسي"
+    "description": "خيار النموذج الأساسي Nano Banana"
   },
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
-    "description": "خيار نموذج Nano Banana الاحترافي"
+    "description": "خيار النموذج الاحترافي Nano Banana"
   }
 }

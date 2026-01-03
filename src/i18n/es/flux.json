@@ -24,7 +24,7 @@
     "description": "Nombre de la imagen de referencia"
   },
   "name.failure": {
-    "message": "Fallo",
+    "message": "Fallido",
     "description": "Estado de fallo de la tarea"
   },
   "name.failureReason": {
@@ -41,19 +41,19 @@
   },
   "name.createdAt": {
     "message": "Fecha de creación",
-    "description": "Fecha y hora en que se generó la imagen Flux"
+    "description": "Fecha y hora de generación de la imagen Flux"
   },
   "name.numbers": {
     "message": "Cantidad de imágenes",
     "description": "Cantidad de imágenes a generar"
   },
   "name.quality": {
-    "message": "Calidad de la imagen",
+    "message": "Calidad de imagen",
     "description": "Calidad de la imagen"
   },
   "name.prompt": {
     "message": "Sugerencia de imagen",
-    "description": "Sugerencia para la entrada de contenido"
+    "description": "Sugerencia de entrada de contenido"
   },
   "name.ratio": {
     "message": "Proporción",
@@ -68,11 +68,11 @@
     "description": "Nombre del generador de imágenes Flux"
   },
   "description.numbers": {
-    "message": "Especifique la cantidad de imágenes a generar, el rango de valores es: 1-4.",
+    "message": "Especifica la cantidad de imágenes a generar, el rango de valores es: 1-4.",
     "description": "Descripción del parámetro 'numbers'"
   },
   "description.quality": {
-    "message": "Especifique la calidad de la imagen a generar, el rango de valores es: 1-100.",
+    "message": "Especifica la calidad de la imagen a generar, el rango de valores es: 1-100.",
     "description": "Descripción del parámetro 'quality'"
   },
   "description.prompt": {
@@ -84,11 +84,11 @@
     "description": "Descripción del parámetro 'imageUrl'"
   },
   "status.pending": {
-    "message": "En espera",
+    "message": "Pendiente",
     "description": "Estado de espera de la tarea"
   },
   "status.processing": {
-    "message": "En proceso",
+    "message": "Procesando",
     "description": "Estado de espera de la tarea"
   },
   "placeholder.paddingNoise": {
@@ -104,7 +104,7 @@
     "description": "Marcador de posición para el nivel de relleno"
   },
   "placeholder.prompt": {
-    "message": "Ingrese las palabras clave del estilo de imagen a generar, por ejemplo: un gato siamés blanco",
+    "message": "Ingrese las palabras clave para el estilo de imagen a generar, por ejemplo: un gato siamés blanco",
     "description": "Texto de marcador de posición en el campo de sugerencia"
   },
   "placeholder.position": {
@@ -136,12 +136,12 @@
     "description": "Texto del botón para generar imágenes Flux"
   },
   "button.uploadImageUrl": {
-    "message": "Subir imagen",
-    "description": "Texto del botón para subir imágenes"
+    "message": "Subir",
+    "description": "Texto del botón para subir imágenes (simplificado a 'Subir')"
   },
   "button.extend": {
-    "message": "Ampliar imagen",
-    "description": "Texto del botón para ampliar imágenes"
+    "message": "Extender imagen",
+    "description": "Texto del botón para extender la imagen"
   },
   "button.viewImage": {
     "message": "Ver imagen original",
@@ -149,7 +149,7 @@
   },
   "button.download": {
     "message": "Descargar imagen",
-    "description": "Texto del botón para descargar imágenes"
+    "description": "Texto del botón para descargar la imagen"
   },
   "message.downloadImage": {
     "message": "Abrir imagen en nueva ventana",
@@ -161,7 +161,7 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Imagen subida con éxito",
-    "description": "Mensaje de éxito al subir una imagen"
+    "description": "Mensaje de éxito al subir la imagen"
   },
   "message.uploadReferencesError": {
     "message": "Error al subir la imagen, por favor intente de nuevo más tarde",
@@ -180,8 +180,8 @@
     "description": "Mensaje de error al fallar el inicio de la tarea de dibujo"
   },
   "message.usedUp": {
-    "message": "Sus créditos se han agotado, por favor compre más créditos para continuar usando",
-    "description": "Mensaje al agotarse los créditos"
+    "message": "Sus créditos se han agotado, por favor compre más créditos para continuar",
+    "description": "Mensaje cuando se han agotado los créditos"
   },
   "message.generating": {
     "message": "Generando...",
@@ -193,31 +193,31 @@
   },
   "message.extendVideo": {
     "message": "Continuar generando esta imagen",
-    "description": "Mensaje cuando la imagen está siendo generada"
+    "description": "Mensaje cuando la imagen está en proceso de generación"
   },
   "message.generateFailed": {
     "message": "Error al generar la imagen",
     "description": "Mensaje cuando la generación de la imagen falla"
   },
   "message.uploadVideoExceed": {
-    "message": "El número de imágenes de la primera trama subidas excede el límite",
-    "description": "Mensaje de error cuando el número de imágenes de la primera trama subidas excede el límite"
+    "message": "Número de imágenes de la primera fotograma excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes de la primera fotograma excede el límite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "¡El tamaño del archivo subido no puede exceder 10 MB!",
-    "description": "Mensaje de error cuando el tamaño del archivo subido excede 10 MB"
+    "message": "¡El tamaño del archivo no puede exceder 10 MB!",
+    "description": "Mensaje de error cuando el tamaño del archivo excede 10 MB"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "¡El archivo subido debe estar en formato MP4!",
-    "description": "Mensaje de error cuando el archivo subido no está en formato MP4"
+    "message": "¡El archivo debe ser en formato MP4!",
+    "description": "Mensaje de error cuando el archivo no es en formato MP4"
   },
   "message.uploadStartImageExceed": {
-    "message": "El número de imágenes de referencia subidas excede el límite",
-    "description": "Mensaje de error cuando el número de imágenes de referencia subidas excede el límite"
+    "message": "Número de imágenes de referencia excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes de referencia excede el límite"
   },
   "message.uploadEndImageExceed": {
-    "message": "El número de imágenes de la última trama subidas excede el límite",
-    "description": "Mensaje de error cuando el número de imágenes de la última trama subidas excede el límite"
+    "message": "Número de imágenes del fotograma final excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes del fotograma final excede el límite"
   },
   "message.uploadStartImageError": {
     "message": "Error al subir la imagen de referencia",
@@ -225,11 +225,11 @@
   },
   "message.uploadVideoError": {
     "message": "Error al subir la imagen",
-    "description": "Mensaje de error cuando falla la subida de la imagen de la primera trama"
+    "description": "Mensaje de error cuando falla la subida de la imagen de la primera fotograma"
   },
   "message.uploadEndImageError": {
-    "message": "Error al subir la imagen de la última trama",
-    "description": "Mensaje de error cuando falla la subida de la imagen de la última trama"
+    "message": "Error al subir la imagen del fotograma final",
+    "description": "Mensaje de error cuando falla la subida de la imagen del fotograma final"
   },
   "message.uploadDocumentsError": {
     "message": "Error al subir el documento",

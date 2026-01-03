@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "Tip",
-    "description": "Tip sadržaja Hailuo videa koji treba generisati, kao što su 'link', 'tekst' itd."
+    "description": "Tip sadržaja Hailuo videa koji se generiše, kao što su 'link', 'tekst' itd."
   },
   "name.failure": {
     "message": "Neuspeh",
@@ -29,19 +29,19 @@
   },
   "name.imageUrl": {
     "message": "Referentna slika",
-    "description": "Referentna slika za video koji treba generisati"
+    "description": "Referentna slika za video koji se generiše"
   },
   "name.videoUrl": {
     "message": "Prilagođeni video",
     "description": "Prilagođeni video"
   },
   "name.prompt": {
-    "message": "Video prompt",
-    "description": "Prompt za unos sadržaja"
+    "message": "Video uputstvo",
+    "description": "Uputstvo za unos sadržaja"
   },
   "name.ingredients": {
-    "message": "Video sa više slika",
-    "description": "Prilagođeni prošireni video"
+    "message": "Više slika",
+    "description": "Prekidač/oznaka za kreiranje videa sa više slika (preporučeno: Multi-Image, zadržati kratko)"
   },
   "name.model": {
     "message": "Model",
@@ -49,7 +49,7 @@
   },
   "name.startImageUrl": {
     "message": "Prva slika",
-    "description": "Semenski QR kod koji treba generisati"
+    "description": "Semenski QR kod koji se generiše"
   },
   "name.ingredientsModel": {
     "message": "Model sastojaka",
@@ -64,11 +64,11 @@
     "description": "Opis parametra 'ingredients'"
   },
   "description.startImageUrl": {
-    "message": "Prva slika koja će biti prva slika generisanog videa.",
+    "message": "Prva slika koja će biti prva scena generisanog videa.",
     "description": "Opis parametra 'startImageUrl'"
   },
   "description.prompt": {
-    "message": "Prompt reči za generisanje Hailuo videa",
+    "message": "Uputstvo za generisanje Hailuo videa",
     "description": "Opis parametra 'prompt'"
   },
   "status.pending": {
@@ -80,51 +80,51 @@
     "description": "Status obrade zadatka"
   },
   "placeholder.paddingNoise": {
-    "message": "Molimo izaberite...",
+    "message": "Izaberite...",
     "description": "Placeholder za unos šuma popunjavanja"
   },
   "placeholder.select": {
-    "message": "Izaberite",
-    "description": "Placeholder za tekst u polju izbora"
+    "message": "Izaberi",
+    "description": "Placeholder za izbor u polju"
   },
   "placeholder.paddingLevel": {
-    "message": "Molimo izaberite...",
+    "message": "Izaberite...",
     "description": "Placeholder za nivo popunjavanja"
   },
   "placeholder.prompt": {
-    "message": "Unesite prompt reči za stil videa koji želite da generišete, na primer: vatra",
-    "description": "Placeholder za tekst u polju prompt"
+    "message": "Unesite uputstvo za stil videa, na primer: ljutnja",
+    "description": "Placeholder za uputstvo"
   },
   "placeholder.position": {
-    "message": "Molimo izaberite...",
+    "message": "Izaberite...",
     "description": "Placeholder za unos pozicije"
   },
   "placeholder.aspectRatio": {
-    "message": "Molimo izaberite...",
+    "message": "Izaberite...",
     "description": "Placeholder za unos odnosa širine i visine"
   },
   "placeholder.preset": {
-    "message": "Molimo izaberite...",
+    "message": "Izaberite...",
     "description": "Placeholder za unos unapred definisanih postavki"
   },
   "placeholder.markerShape": {
-    "message": "Molimo izaberite...",
+    "message": "Izaberite...",
     "description": "Placeholder za unos oblika oznake"
   },
   "placeholder.rotate": {
-    "message": "Molimo izaberite...",
+    "message": "Izaberite...",
     "description": "Placeholder za unos rotacije"
   },
   "placeholder.subMarker": {
-    "message": "Molimo izaberite...",
+    "message": "Izaberite...",
     "description": "Placeholder za unos podoznake"
   },
   "button.model1": {
-    "message": "Video iz teksta",
+    "message": "Tekst u video",
     "description": "Tekst dugmeta za generisanje Hailuo videa"
   },
   "button.model2": {
-    "message": "Video iz slike",
+    "message": "Slika u video",
     "description": "Tekst dugmeta za generisanje Hailuo videa"
   },
   "button.generate": {
@@ -132,8 +132,8 @@
     "description": "Tekst dugmeta za generisanje Hailuo videa"
   },
   "button.extend": {
-    "message": "Proširi video",
-    "description": "Tekst dugmeta za proširenje videa"
+    "message": "Produži video",
+    "description": "Tekst dugmeta za produženje videa"
   },
   "button.download": {
     "message": "Preuzmi video",
@@ -141,23 +141,23 @@
   },
   "button.uploadStartImageUrl": {
     "message": "Otpremi sliku",
-    "description": "Tekst dugmeta za otpremanje QR koda"
+    "description": "Tekst dugmeta za otpremanje slike (skratiti na 'Otpremi')"
   },
   "message.uploadReferencesExceed": {
     "message": "Možete otpremiti najviše 5 slika",
     "description": "Poruka o grešci kada je broj otpremljenih slika premašio limit"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Uspešno otpremljene slike",
-    "description": "Poruka o uspehu kada su slike uspešno otpremljene"
+    "message": "Uspešno otpremljena slika",
+    "description": "Poruka o uspehu kada je slika uspešno otpremljena"
   },
   "message.uploadReferencesError": {
-    "message": "Neuspešno otpremanje slika, molimo pokušajte ponovo kasnije",
-    "description": "Poruka o grešci kada otpremanje slika nije uspelo"
+    "message": "Neuspešno otpremanje slike, molimo pokušajte ponovo kasnije",
+    "description": "Poruka o grešci kada otpremanje slike nije uspelo"
   },
   "message.startingTask": {
     "message": "Pokreće se zadatak...",
-    "description": "Poruka kada se zadatak za crtanje pokreće"
+    "description": "Poruka kada se zadatak pokreće"
   },
   "message.startTaskSuccess": {
     "message": "Uspešno pokrenut zadatak za generisanje",
@@ -165,7 +165,7 @@
   },
   "message.startTaskFailed": {
     "message": "Pokretanje zadatka nije uspelo, molimo kontaktirajte administratora",
-    "description": "Poruka o grešci kada pokretanje zadatka za crtanje nije uspelo"
+    "description": "Poruka o grešci kada pokretanje zadatka nije uspelo"
   },
   "message.usedUp": {
     "message": "Vaši bodovi su potrošeni, molimo kupite više bodova da biste nastavili sa korišćenjem",
@@ -185,50 +185,50 @@
   },
   "message.generateFailed": {
     "message": "Generisanje slike nije uspelo",
-    "description": "Poruka kada generisanje slike nije uspelo"
+    "description": "Poruka kada generisanje slike ne uspe"
   },
   "message.uploadVideoExceed": {
     "message": "Broj slika prvog okvira premašuje ograničenje",
-    "description": "Greška kada broj slika prvog okvira premašuje ograničenje"
+    "description": "Poruka o grešci kada broj slika prvog okvira premašuje ograničenje"
   },
   "message.uploadVideoSizeExceed": {
     "message": "Veličina datoteke ne može biti veća od 10MB!",
-    "description": "Greška kada veličina datoteke ne može biti veća od 10MB!"
+    "description": "Poruka o grešci kada veličina datoteke premašuje 10MB!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Uploaded file must be in MP4 format!",
-    "description": "Greška kada datoteka mora biti u MP4 formatu!"
+    "message": "Datoteka mora biti u MP4 formatu!",
+    "description": "Poruka o grešci kada datoteka nije u MP4 formatu!"
   },
   "message.uploadStartImageExceed": {
     "message": "Broj slika prvog okvira premašuje ograničenje",
-    "description": "Greška kada broj slika prvog okvira premašuje ograničenje"
+    "description": "Poruka o grešci kada broj slika prvog okvira premašuje ograničenje"
   },
   "message.uploadEndImageExceed": {
     "message": "Broj slika poslednjeg okvira premašuje ograničenje",
-    "description": "Greška kada broj slika poslednjeg okvira premašuje ograničenje"
+    "description": "Poruka o grešci kada broj slika poslednjeg okvira premašuje ograničenje"
   },
   "message.uploadStartImageError": {
     "message": "Greška prilikom učitavanja slike prvog okvira",
-    "description": "Greška kada učitavanje slike prvog okvira ne uspe"
+    "description": "Poruka o grešci kada učitavanje slike prvog okvira ne uspe"
   },
   "message.uploadVideoError": {
     "message": "Greška prilikom učitavanja videa",
-    "description": "Greška kada učitavanje videa ne uspe"
+    "description": "Poruka o grešci kada učitavanje videa ne uspe"
   },
   "message.uploadEndImageError": {
     "message": "Greška prilikom učitavanja slike poslednjeg okvira",
-    "description": "Greška kada učitavanje slike poslednjeg okvira ne uspe"
+    "description": "Poruka o grešci kada učitavanje slike poslednjeg okvira ne uspe"
   },
   "message.uploadDocumentsError": {
     "message": "Greška prilikom učitavanja dokumenata",
-    "description": "Greška kada učitavanje dokumenata ne uspe"
+    "description": "Poruka o grešci kada učitavanje dokumenata ne uspe"
   },
   "message.noOperations": {
     "message": "Nema dostupnih operacija",
     "description": "Poruka kada nema dostupnih operacija"
   },
   "message.noTasks": {
-    "message": "Nema istorijskih zadataka, molimo kliknite na generisanje videa s leve strane",
+    "message": "Nema istorijskih zadataka, molimo kliknite na generisanje videa levo",
     "description": "Poruka kada nema zadataka"
   }
 }

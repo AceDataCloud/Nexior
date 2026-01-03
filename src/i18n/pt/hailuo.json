@@ -1,6 +1,6 @@
 {
   "name.taskId": {
-    "message": "ID da tarefa",
+    "message": "ID da Tarefa",
     "description": "ID da tarefa"
   },
   "name.type": {
@@ -12,7 +12,7 @@
     "description": "Estado de falha da tarefa"
   },
   "name.failureReason": {
-    "message": "Razão da falha",
+    "message": "Razão da Falha",
     "description": "Razão pela qual a tarefa falhou"
   },
   "name.status": {
@@ -20,39 +20,39 @@
     "description": "Estado da tarefa"
   },
   "name.traceId": {
-    "message": "ID de rastreamento",
+    "message": "ID de Rastreamento",
     "description": "ID de rastreamento da tarefa"
   },
   "name.createdAt": {
-    "message": "Criado em",
+    "message": "Criado Em",
     "description": "Data e hora em que o vídeo Hailuo foi gerado"
   },
   "name.imageUrl": {
-    "message": "Imagem de referência",
+    "message": "Imagem de Referência",
     "description": "Imagem de referência para o vídeo a ser gerado"
   },
   "name.videoUrl": {
-    "message": "Vídeo personalizado",
+    "message": "Vídeo Personalizado",
     "description": "Vídeo personalizado"
   },
   "name.prompt": {
-    "message": "Prompt do vídeo",
+    "message": "Prompt do Vídeo",
     "description": "Prompt de entrada de conteúdo"
   },
   "name.ingredients": {
-    "message": "Vídeo criado a partir de várias imagens",
-    "description": "Vídeo personalizado expandido"
+    "message": "Vídeo com Múltiplas Imagens",
+    "description": "Alternância/etiqueta para criar vídeo com múltiplas imagens (sugestão em inglês: Multi-Image, mantenha curto)"
   },
   "name.model": {
     "message": "Modelo",
     "description": "Versão do modelo utilizada para gerar o vídeo"
   },
   "name.startImageUrl": {
-    "message": "Imagem inicial",
+    "message": "Imagem Inicial",
     "description": "Semente para gerar o código QR"
   },
   "name.ingredientsModel": {
-    "message": "Modelo de ingredientes",
+    "message": "Modelo de Ingredientes",
     "description": "Versão do modelo utilizada para gerar o vídeo"
   },
   "name.hailuoBot": {
@@ -60,11 +60,11 @@
     "description": "Nome do gerador de vídeos Hailuo"
   },
   "description.ingredients": {
-    "message": "Se você deseja enviar várias imagens para gerar seu próprio vídeo, ative este botão.",
+    "message": "Ative este botão se desejar enviar várias imagens para gerar seu próprio vídeo.",
     "description": "Descrição do parâmetro 'ingredients'"
   },
   "description.startImageUrl": {
-    "message": "Imagem inicial, que será o primeiro quadro do vídeo gerado.",
+    "message": "Imagem inicial que será o primeiro quadro do vídeo gerado.",
     "description": "Descrição do parâmetro 'startImageUrl'"
   },
   "description.prompt": {
@@ -77,7 +77,7 @@
   },
   "status.processing": {
     "message": "Processando",
-    "description": "Estado de espera da tarefa"
+    "description": "Estado de processamento da tarefa"
   },
   "placeholder.paddingNoise": {
     "message": "Selecione...",
@@ -92,7 +92,7 @@
     "description": "Placeholder para nível de preenchimento"
   },
   "placeholder.prompt": {
-    "message": "Insira as palavras-chave para o estilo do vídeo a ser gerado, por exemplo: raiva",
+    "message": "Insira o prompt para o estilo do vídeo a ser gerado, por exemplo: Fúria",
     "description": "Texto de placeholder no campo de prompt"
   },
   "placeholder.position": {
@@ -120,11 +120,11 @@
     "description": "Placeholder para entrada de sub-marcador"
   },
   "button.model1": {
-    "message": "Vídeo gerado por texto",
+    "message": "Vídeo de Texto",
     "description": "Texto do botão para gerar vídeo Hailuo"
   },
   "button.model2": {
-    "message": "Vídeo gerado por imagem",
+    "message": "Vídeo de Imagem",
     "description": "Texto do botão para gerar vídeo Hailuo"
   },
   "button.generate": {
@@ -132,28 +132,28 @@
     "description": "Texto do botão para gerar vídeo Hailuo"
   },
   "button.extend": {
-    "message": "Expandir vídeo",
+    "message": "Expandir Vídeo",
     "description": "Texto do botão para expandir vídeo"
   },
   "button.download": {
-    "message": "Baixar vídeo",
+    "message": "Baixar Vídeo",
     "description": "Texto do botão para baixar vídeo"
   },
   "button.uploadStartImageUrl": {
-    "message": "Enviar imagem",
-    "description": "Texto do botão para enviar código QR"
+    "message": "Enviar Imagem",
+    "description": "Texto do botão para enviar imagem (simplifique para 'Enviar')"
   },
   "message.uploadReferencesExceed": {
-    "message": "Você pode enviar no máximo 5 imagens",
+    "message": "Máximo de 5 imagens podem ser enviadas",
     "description": "Mensagem de erro quando o número de imagens enviadas excede o limite"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Imagens enviadas com sucesso",
-    "description": "Mensagem de sucesso ao enviar imagens com sucesso"
+    "message": "Imagem enviada com sucesso",
+    "description": "Mensagem de sucesso ao enviar imagem"
   },
   "message.uploadReferencesError": {
-    "message": "Falha ao enviar imagens, por favor, tente novamente mais tarde",
-    "description": "Mensagem de erro quando o envio de imagens falha"
+    "message": "Falha ao enviar imagem, por favor tente novamente mais tarde",
+    "description": "Mensagem de erro ao falhar no envio de imagem"
   },
   "message.startingTask": {
     "message": "Iniciando tarefa...",
@@ -161,14 +161,14 @@
   },
   "message.startTaskSuccess": {
     "message": "Tarefa de geração iniciada com sucesso",
-    "description": "Mensagem de sucesso ao iniciar a tarefa com sucesso"
+    "description": "Mensagem de sucesso ao iniciar a tarefa"
   },
   "message.startTaskFailed": {
-    "message": "Falha ao iniciar a tarefa, por favor, contate o administrador",
+    "message": "Falha ao iniciar a tarefa, por favor contate o administrador",
     "description": "Mensagem de erro ao falhar ao iniciar a tarefa de desenho"
   },
   "message.usedUp": {
-    "message": "Seus créditos acabaram, por favor, compre mais créditos para continuar usando",
+    "message": "Seus créditos acabaram, por favor compre mais créditos para continuar",
     "description": "Mensagem quando os créditos se esgotam"
   },
   "message.generating": {
@@ -184,51 +184,51 @@
     "description": "Mensagem enquanto a imagem está sendo gerada"
   },
   "message.generateFailed": {
-    "message": "Falha ao gerar a imagem",
+    "message": "Falha ao gerar imagem",
     "description": "Mensagem quando a geração da imagem falha"
   },
   "message.uploadVideoExceed": {
-    "message": "O número de imagens da primeira cena carregadas excede o limite",
-    "description": "Mensagem de erro quando o número de imagens da primeira cena carregadas excede o limite"
+    "message": "Número de imagens da primeira frame excede o limite",
+    "description": "Mensagem de erro quando o número de imagens da primeira frame excede o limite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "O tamanho do arquivo carregado não pode exceder 10MB!",
-    "description": "Mensagem de erro quando o tamanho do arquivo carregado não pode exceder 10MB!"
+    "message": "O tamanho do arquivo não pode exceder 10MB!",
+    "description": "Mensagem de erro quando o tamanho do arquivo excede 10MB!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "O arquivo carregado deve estar no formato MP4!",
-    "description": "Mensagem de erro quando o arquivo carregado deve estar no formato MP4!"
+    "message": "O arquivo deve estar no formato MP4!",
+    "description": "Mensagem de erro quando o arquivo não está no formato MP4!"
   },
   "message.uploadStartImageExceed": {
-    "message": "O número de imagens da primeira cena carregadas excede o limite",
-    "description": "Mensagem de erro quando o número de imagens da primeira cena carregadas excede o limite"
+    "message": "Número de imagens da primeira frame excede o limite",
+    "description": "Mensagem de erro quando o número de imagens da primeira frame excede o limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "O número de imagens da última cena carregadas excede o limite",
-    "description": "Mensagem de erro quando o número de imagens da última cena carregadas excede o limite"
+    "message": "Número de imagens da última frame excede o limite",
+    "description": "Mensagem de erro quando o número de imagens da última frame excede o limite"
   },
   "message.uploadStartImageError": {
-    "message": "Falha ao carregar a imagem da primeira cena",
-    "description": "Mensagem de erro quando falha ao carregar a imagem da primeira cena"
+    "message": "Falha ao enviar imagem da primeira frame",
+    "description": "Mensagem de erro quando falha ao enviar imagem da primeira frame"
   },
   "message.uploadVideoError": {
-    "message": "Falha ao carregar o vídeo",
-    "description": "Mensagem de erro quando falha ao carregar a imagem da primeira cena"
+    "message": "Falha ao enviar vídeo",
+    "description": "Mensagem de erro quando falha ao enviar vídeo"
   },
   "message.uploadEndImageError": {
-    "message": "Falha ao carregar a imagem da última cena",
-    "description": "Mensagem de erro quando falha ao carregar a imagem da última cena"
+    "message": "Falha ao enviar imagem da última frame",
+    "description": "Mensagem de erro quando falha ao enviar imagem da última frame"
   },
   "message.uploadDocumentsError": {
-    "message": "Falha ao carregar o documento",
-    "description": "Mensagem de erro quando falha ao carregar o documento"
+    "message": "Falha ao enviar documento",
+    "description": "Mensagem de erro quando falha ao enviar documento"
   },
   "message.noOperations": {
     "message": "Nenhuma operação disponível",
     "description": "Mensagem quando não há operações disponíveis"
   },
   "message.noTasks": {
-    "message": "Nenhuma tarefa histórica, por favor clique à esquerda para gerar vídeo",
+    "message": "Nenhuma tarefa histórica, clique à esquerda para gerar vídeo",
     "description": "Mensagem quando não há tarefas"
   }
 }

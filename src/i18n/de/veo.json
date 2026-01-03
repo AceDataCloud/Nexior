@@ -9,7 +9,7 @@
   },
   "name.modePro": {
     "message": "Hohe Qualität",
-    "description": "Hochqualitätsmodus von Kling-Videos"
+    "description": "Hochqualitätsmodus für Kling-Videos"
   },
   "name.failure": {
     "message": "Fehler",
@@ -29,27 +29,27 @@
   },
   "name.createdAt": {
     "message": "Erstellt am",
-    "description": "Datum und Uhrzeit der Erstellung des Kling-Videos"
+    "description": "Datum und Uhrzeit der Erstellung des Veo-Videos"
   },
   "name.startEndImage": {
-    "message": "Referenzbilder für Anfang und Ende",
-    "description": "Referenzbilder für das zu generierende Video"
+    "message": "Start-/Endbild",
+    "description": "Formularfeldbezeichnung: Start-/Endbildreferenz (kurz und prägnant)"
   },
   "name.action": {
     "message": "Aktion",
     "description": "Liste der verfügbaren Aktionen"
   },
   "name.action3": {
-    "message": "1080p-Video abrufen von",
-    "description": "Referenzbilder für das zu generierende Video"
+    "message": "1080p-Video abrufen",
+    "description": "Referenzbild für das zu generierende Video"
   },
   "name.prompt": {
-    "message": "Videoaufforderung",
-    "description": "Aufforderung für die Eingabe des Inhalts"
+    "message": "Video-Prompt",
+    "description": "Eingabeaufforderung für den Inhalt"
   },
   "name.model": {
     "message": "Modellversion",
-    "description": "Modellversion, die zur Generierung des Videos verwendet wird"
+    "description": "Modellversion, die zur Erstellung des Videos verwendet wird"
   },
   "name.veoBot": {
     "message": "Google Veo Bot",
@@ -60,19 +60,19 @@
     "description": "Name des Verhältnisparameters"
   },
   "description.translation": {
-    "message": "Bei der Erstellung der Videoaufgabe kann die automatische Übersetzung für die Eingabeaufforderungen aktiviert werden.",
+    "message": "Bei der Erstellung von Videoaufgaben kann die automatische Übersetzung für die Eingabeaufforderungen aktiviert werden.",
     "description": "Beschreibung des Parameters 'translation'"
   },
   "description.imageUrl": {
-    "message": "Bei der Erstellung von Videos mit mehreren Bildern müssen mehrere Bilder hochgeladen werden.",
+    "message": "Bei Aufgaben zur Erstellung von Videos mit mehreren Bildern müssen mehrere Bilder hochgeladen werden.",
     "description": "Beschreibung des Parameters 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Aufforderung zur Generierung von Veo-Videos",
+    "message": "Eingabeaufforderungen zur Erstellung von Veo-Videos",
     "description": "Beschreibung des Parameters 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Array von Referenzbild-Links, das erste ist das Anfangsbild, das zweite das Endbild",
+    "message": "Array von Bild-URLs, das erste ist das Startbild, das zweite das Endbild",
     "description": "Beschreibung des Parameters 'image_url'"
   },
   "status.pending": {
@@ -81,7 +81,7 @@
   },
   "status.processing": {
     "message": "Wird bearbeitet",
-    "description": "Wartezustand der Aufgabe"
+    "description": "Bearbeitungszustand der Aufgabe"
   },
   "placeholder.paddingNoise": {
     "message": "Bitte auswählen...",
@@ -96,8 +96,8 @@
     "description": "Platzhalter für das Füllniveau"
   },
   "placeholder.prompt": {
-    "message": "Geben Sie die Aufforderung für den Video-Stil ein, z.B.: bewegend",
-    "description": "Platzhaltertext im Aufforderungsfeld"
+    "message": "Geben Sie den Stil des zu generierenden Videos ein, z. B.: moving",
+    "description": "Platzhaltertext im Eingabefeld"
   },
   "placeholder.position": {
     "message": "Bitte auswählen...",
@@ -105,35 +105,35 @@
   },
   "button.generate": {
     "message": "Generieren",
-    "description": "Text des Buttons zur Generierung von Veo-Videos"
+    "description": "Buttontext zum Generieren von Veo-Videos"
   },
   "button.action1": {
-    "message": "Video generieren",
-    "description": "Text des Buttons zur Generierung von Veo-Videos"
+    "message": "Text-zu-Video",
+    "description": "Buttontext zum Generieren von Veo-Videos"
   },
   "button.action2": {
-    "message": "Bild generieren",
-    "description": "Text des Buttons zur Generierung von Veo-Videos"
+    "message": "Bild-zu-Video",
+    "description": "Buttontext zum Generieren von Veo-Videos"
   },
   "button.action3": {
     "message": "1080p abrufen",
-    "description": "Text des Buttons zur Generierung von Veo-Videos"
+    "description": "Buttontext zum Generieren von Veo-Videos"
   },
   "button.download": {
     "message": "Video herunterladen",
-    "description": "Text des Buttons zum Herunterladen des Videos"
+    "description": "Buttontext zum Herunterladen des Videos"
   },
   "button.uploadImageUrl": {
-    "message": "Bild hochladen",
-    "description": "Text des Buttons zum Hochladen von Bildern"
+    "message": "Hochladen",
+    "description": "Buttontext zum Hochladen von Bildern (bitte auf 'Hochladen' vereinfachen)"
   },
   "button.uploadVideoUrl": {
     "message": "Video hochladen",
-    "description": "Text des Buttons zum Hochladen von Videos"
+    "description": "Buttontext zum Hochladen von Videos"
   },
   "button.uploadReferences": {
     "message": "Hochladen",
-    "description": "Text des Buttons, der es dem Benutzer ermöglicht, Referenzen hochzuladen"
+    "description": "Buttontext, der es dem Benutzer ermöglicht, Referenzen hochzuladen"
   },
   "message.uploadReferencesExceed": {
     "message": "Maximal 2 Bilder können hochgeladen werden",
@@ -141,22 +141,22 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Bilder erfolgreich hochgeladen",
-    "description": "Erfolgsmeldung, wenn Bilder erfolgreich hochgeladen wurden"
+    "description": "Erfolgsmeldung beim erfolgreichen Hochladen von Bildern"
   },
   "message.uploadReferencesError": {
     "message": "Hochladen der Bilder fehlgeschlagen, bitte später erneut versuchen",
-    "description": "Fehlermeldung, wenn das Hochladen der Bilder fehlschlägt"
+    "description": "Fehlermeldung beim Fehlschlagen des Bilduploads"
   },
   "message.startingTask": {
     "message": "Starte Aufgabe...",
-    "description": "Nachricht beim Start der Zeichnungsaufgabe"
+    "description": "Nachricht beim Starten der Zeichnungsaufgabe"
   },
   "message.startTaskSuccess": {
-    "message": "Generierungsaufgabe erfolgreich gestartet",
+    "message": "Aufgabenerstellung erfolgreich",
     "description": "Erfolgsmeldung beim erfolgreichen Start der Aufgabe"
   },
   "message.startTaskFailed": {
-    "message": "Start der Aufgabe fehlgeschlagen, bitte kontaktieren Sie den Administrator",
+    "message": "Aufgabenerstellung fehlgeschlagen, bitte kontaktieren Sie den Administrator",
     "description": "Fehlermeldung beim Fehlschlagen des Starts der Zeichnungsaufgabe"
   },
   "message.usedUp": {
@@ -172,51 +172,51 @@
     "description": "Nachricht während der Generierung des Bildes"
   },
   "message.generateFailed": {
-    "message": "Generierung des Videos fehlgeschlagen",
-    "description": "Nachricht, wenn die Bildgenerierung fehlschlägt"
+    "message": "Videoerstellung fehlgeschlagen",
+    "description": "Nachricht beim Fehlschlagen der Bildgenerierung"
   },
   "message.uploadVideoExceed": {
-    "message": "Anzahl der hochgeladenen Anfangsbildbilder überschreitet das Limit",
-    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Anfangsbildbilder das Limit überschreitet"
+    "message": "Anzahl der hochgeladenen Startbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Startbilder das Limit überschreitet"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Die hochgeladene Dateigröße darf 10 MB nicht überschreiten!",
-    "description": "Fehlermeldung, wenn die hochgeladene Dateigröße 10 MB überschreitet"
+    "message": "Die Dateigröße darf 10 MB nicht überschreiten!",
+    "description": "Fehlermeldung, wenn die Dateigröße 10 MB überschreitet!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Die hochgeladene Datei muss im MP4-Format sein!",
     "description": "Fehlermeldung, wenn die hochgeladene Datei nicht im MP4-Format ist!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "Die Anzahl der hochgeladenen Startbildbilder überschreitet das Limit",
-    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Startbildbilder das Limit überschreitet"
+    "message": "Die Anzahl der hochgeladenen Startbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Startbilder das Limit überschreitet"
   },
   "message.uploadEndImageExceed": {
-    "message": "Die Anzahl der hochgeladenen Endbildbilder überschreitet das Limit",
-    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Endbildbilder das Limit überschreitet"
+    "message": "Die Anzahl der hochgeladenen Endbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Endbilder das Limit überschreitet"
   },
   "message.uploadStartImageError": {
     "message": "Fehler beim Hochladen des Startbildes",
-    "description": "Fehlermeldung, wenn das Hochladen des Startbildes fehlschlägt"
+    "description": "Fehlermeldung, wenn das Startbild nicht hochgeladen werden kann"
   },
   "message.uploadVideoError": {
     "message": "Fehler beim Hochladen des Videos",
-    "description": "Fehlermeldung, wenn das Hochladen des Videos fehlschlägt"
+    "description": "Fehlermeldung, wenn das Video nicht hochgeladen werden kann"
   },
   "message.uploadEndImageError": {
     "message": "Fehler beim Hochladen des Endbildes",
-    "description": "Fehlermeldung, wenn das Hochladen des Endbildes fehlschlägt"
+    "description": "Fehlermeldung, wenn das Endbild nicht hochgeladen werden kann"
   },
   "message.uploadDocumentsError": {
     "message": "Fehler beim Hochladen des Dokuments",
-    "description": "Fehlermeldung, wenn das Hochladen des Dokuments fehlschlägt"
+    "description": "Fehlermeldung, wenn das Dokument nicht hochgeladen werden kann"
   },
   "message.noOperations": {
-    "message": "Keine verfügbaren Operationen",
-    "description": "Nachricht, wenn keine verfügbaren Operationen vorhanden sind"
+    "message": "Keine verfügbaren Aktionen",
+    "description": "Nachricht, wenn keine verfügbaren Aktionen vorhanden sind"
   },
   "message.noTasks": {
-    "message": "Keine historischen Aufgaben, bitte klicken Sie links auf 'Video generieren'",
+    "message": "Keine historischen Aufgaben, bitte klicken Sie links, um ein Video zu generieren",
     "description": "Nachricht, wenn keine Aufgaben vorhanden sind"
   }
 }

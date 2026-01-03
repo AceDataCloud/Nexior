@@ -37,15 +37,15 @@
   },
   "name.prompt": {
     "message": "Suggerimento video",
-    "description": "Suggerimento per l'input del contenuto"
+    "description": "Suggerimento per l'input di contenuto"
   },
   "name.ingredients": {
-    "message": "Video creato con più immagini",
-    "description": "Video esteso personalizzato"
+    "message": "Video da più immagini",
+    "description": "Interruttore/etichetta per la creazione di video da più immagini (consigliato in inglese: Multi-Image, mantenere breve)"
   },
   "name.model": {
     "message": "Modello",
-    "description": "Versione del modello utilizzato per generare il video"
+    "description": "Versione del modello utilizzata per generare il video"
   },
   "name.startImageUrl": {
     "message": "Immagine iniziale",
@@ -53,7 +53,7 @@
   },
   "name.ingredientsModel": {
     "message": "Modello ingredienti",
-    "description": "Versione del modello utilizzato per generare il video"
+    "description": "Versione del modello utilizzata per generare il video"
   },
   "name.hailuoBot": {
     "message": "Hailuo Bot",
@@ -81,7 +81,7 @@
   },
   "placeholder.paddingNoise": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input del rumore di riempimento"
+    "description": "Segnaposto per l'input di rumore di riempimento"
   },
   "placeholder.select": {
     "message": "Seleziona",
@@ -97,7 +97,7 @@
   },
   "placeholder.position": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input della posizione"
+    "description": "Segnaposto per l'input di posizione"
   },
   "placeholder.aspectRatio": {
     "message": "Seleziona...",
@@ -105,7 +105,7 @@
   },
   "placeholder.preset": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input del preset"
+    "description": "Segnaposto per l'input preimpostato"
   },
   "placeholder.markerShape": {
     "message": "Seleziona...",
@@ -113,7 +113,7 @@
   },
   "placeholder.rotate": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input della rotazione"
+    "description": "Segnaposto per l'input di rotazione"
   },
   "placeholder.subMarker": {
     "message": "Seleziona...",
@@ -141,10 +141,10 @@
   },
   "button.uploadStartImageUrl": {
     "message": "Carica immagine",
-    "description": "Testo del pulsante per caricare il codice QR"
+    "description": "Testo del pulsante per caricare l'immagine (semplificare in inglese a 'Upload', non usare 'Upload Image')"
   },
   "message.uploadReferencesExceed": {
-    "message": "È possibile caricare un massimo di 5 immagini",
+    "message": "Puoi caricare al massimo 5 immagini",
     "description": "Messaggio di errore quando il numero di immagini caricate supera il limite"
   },
   "message.uploadReferencesSuccess": {
@@ -152,8 +152,8 @@
     "description": "Messaggio di successo quando le immagini sono state caricate con successo"
   },
   "message.uploadReferencesError": {
-    "message": "Caricamento immagini fallito, riprova più tardi",
-    "description": "Messaggio di errore quando il caricamento delle immagini fallisce"
+    "message": "Caricamento immagine fallito, riprova più tardi",
+    "description": "Messaggio di errore quando il caricamento dell'immagine fallisce"
   },
   "message.startingTask": {
     "message": "Avvio dell'attività in corso...",
@@ -168,8 +168,8 @@
     "description": "Messaggio di errore quando l'attività di disegno non riesce ad avviarsi"
   },
   "message.usedUp": {
-    "message": "I tuoi punti sono esauriti, acquista più punti per continuare a utilizzare",
-    "description": "Messaggio quando i punti sono esauriti"
+    "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare a utilizzare",
+    "description": "Messaggio quando i crediti sono esauriti"
   },
   "message.generating": {
     "message": "Generazione in corso...",
@@ -184,51 +184,51 @@
     "description": "Messaggio durante la generazione dell'immagine"
   },
   "message.generateFailed": {
-    "message": "Generazione dell'immagine fallita",
+    "message": "Generazione immagine fallita",
     "description": "Messaggio quando la generazione dell'immagine fallisce"
   },
   "message.uploadVideoExceed": {
-    "message": "Il numero di immagini del fotogramma iniziale caricate supera il limite",
-    "description": "Messaggio di errore quando il numero di immagini del fotogramma iniziale caricate supera il limite"
+    "message": "Numero di immagini della prima cornice superato",
+    "description": "Messaggio di errore quando il numero di immagini della prima cornice supera il limite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "La dimensione del file caricato non può superare i 10 MB!",
-    "description": "Messaggio di errore quando la dimensione del file caricato non può superare i 10 MB!"
+    "message": "La dimensione del file non può superare i 10MB!",
+    "description": "Messaggio di errore quando la dimensione del file supera i 10MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Il file caricato deve essere in formato MP4!",
-    "description": "Messaggio di errore quando il file caricato deve essere in formato MP4!"
+    "description": "Messaggio di errore quando il file caricato non è in formato MP4!"
   },
   "message.uploadStartImageExceed": {
-    "message": "Il numero di immagini del fotogramma iniziale caricate supera il limite",
-    "description": "Messaggio di errore quando il numero di immagini del fotogramma iniziale caricate supera il limite"
+    "message": "Numero di immagini della prima cornice superato",
+    "description": "Messaggio di errore quando il numero di immagini della prima cornice supera il limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Il numero di immagini del fotogramma finale caricate supera il limite",
-    "description": "Messaggio di errore quando il numero di immagini del fotogramma finale caricate supera il limite"
+    "message": "Numero di immagini dell'ultima cornice superato",
+    "description": "Messaggio di errore quando il numero di immagini dell'ultima cornice supera il limite"
   },
   "message.uploadStartImageError": {
-    "message": "Caricamento dell'immagine del fotogramma iniziale fallito",
-    "description": "Messaggio di errore quando il caricamento dell'immagine del fotogramma iniziale fallisce"
+    "message": "Caricamento dell'immagine della prima cornice fallito",
+    "description": "Messaggio di errore quando il caricamento dell'immagine della prima cornice fallisce"
   },
   "message.uploadVideoError": {
-    "message": "Caricamento del video fallito",
+    "message": "Caricamento video fallito",
     "description": "Messaggio di errore quando il caricamento del video fallisce"
   },
   "message.uploadEndImageError": {
-    "message": "Caricamento dell'immagine del fotogramma finale fallito",
-    "description": "Messaggio di errore quando il caricamento dell'immagine del fotogramma finale fallisce"
+    "message": "Caricamento dell'immagine dell'ultima cornice fallito",
+    "description": "Messaggio di errore quando il caricamento dell'immagine dell'ultima cornice fallisce"
   },
   "message.uploadDocumentsError": {
-    "message": "Caricamento del documento fallito",
-    "description": "Messaggio di errore quando il caricamento del documento fallisce"
+    "message": "Caricamento documenti fallito",
+    "description": "Messaggio di errore quando il caricamento dei documenti fallisce"
   },
   "message.noOperations": {
     "message": "Nessuna operazione disponibile",
     "description": "Messaggio quando non ci sono operazioni disponibili"
   },
   "message.noTasks": {
-    "message": "Nessun compito storico, fai clic su 'Genera video' a sinistra",
+    "message": "Nessun compito storico, fai clic a sinistra per generare un video",
     "description": "Messaggio quando non ci sono compiti"
   }
 }

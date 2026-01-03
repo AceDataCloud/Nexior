@@ -4,11 +4,11 @@
     "description": "ID de la tarea"
   },
   "name.failure": {
-    "message": "Fallo",
+    "message": "Fallido",
     "description": "Estado de fallo de la tarea"
   },
   "name.failureReason": {
-    "message": "Razón del fallo",
+    "message": "Razón de fallo",
     "description": "Razón del fallo de la tarea"
   },
   "name.status": {
@@ -21,11 +21,11 @@
   },
   "name.createdAt": {
     "message": "Fecha de creación",
-    "description": "Fecha y hora en que se generó el video de Kling"
+    "description": "Fecha y hora de generación del video Sora"
   },
   "name.startEndImage": {
-    "message": "Imágenes de referencia de inicio y fin",
-    "description": "Imágenes de referencia para el video a generar"
+    "message": "Imágenes de inicio y fin",
+    "description": "Etiqueta del campo del formulario: imágenes de referencia de inicio/final (se sugiere traducir como 'Start/End Frames', manteniendo la brevedad para evitar obstruir el botón)"
   },
   "name.action": {
     "message": "Acción",
@@ -49,11 +49,11 @@
   },
   "option.portrait": {
     "message": "Vertical",
-    "description": "Etiqueta de opción para orientación vertical"
+    "description": "Texto de opción: orientación vertical (se sugiere traducir como 'Portrait', manteniendo la brevedad)"
   },
   "option.landscape": {
     "message": "Horizontal",
-    "description": "Etiqueta de opción para orientación horizontal"
+    "description": "Texto de opción: orientación horizontal (se sugiere traducir como 'Landscape', manteniendo la brevedad)"
   },
   "name.duration": {
     "message": "Duración del video",
@@ -64,7 +64,7 @@
     "description": "Nombre del parámetro de calidad del video"
   },
   "description.imageUrl": {
-    "message": "En la tarea de crear un video con múltiples imágenes, debe subir varias imágenes.",
+    "message": "En tareas de creación de video con múltiples imágenes, se deben subir varias imágenes.",
     "description": "Descripción del parámetro 'imageUrl'"
   },
   "description.prompt": {
@@ -72,19 +72,19 @@
     "description": "Descripción del parámetro 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Array de enlaces de imágenes de referencia, la primera es la imagen de inicio y la segunda es la imagen de fin",
+    "message": "Array de enlaces de imágenes de referencia, el primero es la imagen de inicio y el segundo es la imagen de fin",
     "description": "Descripción del parámetro 'image_url'"
   },
   "status.pending": {
-    "message": "Pendiente",
+    "message": "En espera",
     "description": "Estado de espera de la tarea"
   },
   "status.processing": {
-    "message": "Procesando",
+    "message": "En proceso",
     "description": "Estado de procesamiento de la tarea"
   },
   "placeholder.paddingNoise": {
-    "message": "Por favor seleccione...",
+    "message": "Seleccione...",
     "description": "Marcador de posición para la entrada de ruido de relleno"
   },
   "placeholder.select": {
@@ -92,7 +92,7 @@
     "description": "Texto de marcador de posición en el campo de selección"
   },
   "placeholder.paddingLevel": {
-    "message": "Por favor seleccione...",
+    "message": "Seleccione...",
     "description": "Marcador de posición para el nivel de relleno"
   },
   "placeholder.prompt": {
@@ -100,7 +100,7 @@
     "description": "Texto de marcador de posición en el campo de sugerencia"
   },
   "placeholder.position": {
-    "message": "Por favor seleccione...",
+    "message": "Seleccione...",
     "description": "Marcador de posición para la entrada de posición"
   },
   "tip.proOnly": {
@@ -112,11 +112,11 @@
     "description": "Texto del botón para generar el video Sora"
   },
   "button.action1": {
-    "message": "Generar video de texto",
+    "message": "Video de texto",
     "description": "Texto del botón para generar el video Sora"
   },
   "button.action2": {
-    "message": "Generar video de imagen",
+    "message": "Video de imagen",
     "description": "Texto del botón para generar el video Sora"
   },
   "button.download": {
@@ -125,7 +125,7 @@
   },
   "button.uploadImageUrl": {
     "message": "Subir imagen",
-    "description": "Texto del botón para subir imágenes"
+    "description": "Texto del botón para subir imágenes (se sugiere simplificar a 'Upload', no usar 'Upload Image')"
   },
   "button.uploadVideoUrl": {
     "message": "Subir video",
@@ -136,16 +136,16 @@
     "description": "Texto del botón que permite al usuario subir referencias"
   },
   "message.uploadReferencesExceed": {
-    "message": "Se pueden subir un máximo de 2 imágenes",
-    "description": "Mensaje de error cuando el número de imágenes subidas excede el límite"
+    "message": "Se pueden subir hasta 2 imágenes",
+    "description": "Mensaje de error cuando se excede el límite de imágenes subidas"
   },
   "message.uploadReferencesSuccess": {
     "message": "Imágenes subidas con éxito",
-    "description": "Mensaje de éxito cuando las imágenes se suben correctamente"
+    "description": "Mensaje de éxito al subir imágenes"
   },
   "message.uploadReferencesError": {
     "message": "Error al subir imágenes, por favor intente de nuevo más tarde",
-    "description": "Mensaje de error cuando la subida de imágenes falla"
+    "description": "Mensaje de error al fallar la subida de imágenes"
   },
   "message.startingTask": {
     "message": "Iniciando tarea...",
@@ -157,10 +157,10 @@
   },
   "message.startTaskFailed": {
     "message": "Error al iniciar la tarea, por favor contacte al administrador",
-    "description": "Mensaje de error al fallar al iniciar la tarea de dibujo"
+    "description": "Mensaje de error al fallar el inicio de la tarea de dibujo"
   },
   "message.usedUp": {
-    "message": "Sus créditos se han agotado, por favor compre más créditos para continuar usando",
+    "message": "Sus créditos se han agotado, por favor compre más créditos para continuar",
     "description": "Mensaje cuando se han agotado los créditos"
   },
   "message.generating": {
@@ -173,43 +173,43 @@
   },
   "message.generateFailed": {
     "message": "Error al generar el video",
-    "description": "Mensaje cuando la generación de la imagen falla"
+    "description": "Mensaje al fallar la generación de la imagen"
   },
   "message.uploadVideoExceed": {
-    "message": "El número de imágenes de la primera imagen subidas excede el límite",
-    "description": "Mensaje de error cuando el número de imágenes de la primera imagen subidas excede el límite"
+    "message": "La cantidad de imágenes de la primera fotograma excede el límite",
+    "description": "Mensaje de error cuando la cantidad de imágenes de la primera fotograma excede el límite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "¡El tamaño del archivo subido no puede exceder los 10 MB!",
-    "description": "Mensaje de error cuando el tamaño del archivo subido excede los 10 MB"
+    "message": "¡El tamaño del archivo no puede exceder 10 MB!",
+    "description": "Mensaje de error cuando el tamaño del archivo excede 10 MB"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "¡El archivo subido debe estar en formato MP4!",
-    "description": "Mensaje de error cuando el archivo subido no está en formato MP4"
+    "message": "¡El archivo debe estar en formato MP4!",
+    "description": "Mensaje de error cuando el archivo no está en formato MP4"
   },
   "message.uploadStartEndImageExceed": {
     "message": "La cantidad de imágenes de la primera fotograma excede el límite",
     "description": "Mensaje de error cuando la cantidad de imágenes de la primera fotograma excede el límite"
   },
   "message.uploadEndImageExceed": {
-    "message": "La cantidad de imágenes de fotograma final subidas excede el límite",
-    "description": "Mensaje de error cuando la cantidad de imágenes de fotograma inicial subidas excede el límite"
+    "message": "La cantidad de imágenes de la última fotograma excede el límite",
+    "description": "Mensaje de error cuando la cantidad de imágenes de la última fotograma excede el límite"
   },
   "message.uploadStartImageError": {
-    "message": "Error al subir la imagen de fotograma inicial",
-    "description": "Mensaje de error cuando falla la subida de la imagen de fotograma inicial"
+    "message": "Error al subir la imagen de la primera fotograma",
+    "description": "Mensaje de error cuando falla la subida de la imagen de la primera fotograma"
   },
   "message.uploadVideoError": {
     "message": "Error al subir el video",
-    "description": "Mensaje de error cuando falla la subida de la imagen de fotograma inicial"
+    "description": "Mensaje de error cuando falla la subida del video"
   },
   "message.uploadEndImageError": {
-    "message": "Error al subir la imagen de fotograma final",
-    "description": "Mensaje de error cuando falla la subida de la imagen de fotograma final"
+    "message": "Error al subir la imagen de la última fotograma",
+    "description": "Mensaje de error cuando falla la subida de la imagen de la última fotograma"
   },
   "message.uploadDocumentsError": {
     "message": "Error al subir el documento",
-    "description": "Mensaje de error cuando falla la subida de documentos"
+    "description": "Mensaje de error cuando falla la subida del documento"
   },
   "message.noOperations": {
     "message": "No hay operaciones disponibles",

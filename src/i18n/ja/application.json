@@ -13,31 +13,31 @@
   },
   "button.goDocument": {
     "message": "ドキュメント",
-    "description": "このボタンをクリックすると、ドキュメントページに移動します。"
+    "description": "ボタンテキスト、クリックするとドキュメントページに移動します。"
   },
   "button.goCredentials": {
     "message": "キー",
-    "description": "このボタンをクリックすると、認証情報ページに移動します。英語は「Keys」と翻訳する必要があります。"
+    "description": "ボタンテキスト、クリックすると認証情報ページに移動します。英語は「Keys」と翻訳する必要があります。"
   },
   "button.buyMore": {
     "message": "チャージ",
-    "description": "このボタンをクリックすると、さらに購入するページに移動します。英語は「Top Up」と翻訳する必要があります。"
+    "description": "ボタンテキスト、クリックすると追加購入ページに移動します。英語は「Top Up」と翻訳する必要があります。"
   },
   "button.createOrder": {
-    "message": "注文を作成",
-    "description": "このボタンをクリックすると、注文作成ページに移動します。"
+    "message": "注文作成",
+    "description": "ボタンテキスト、クリックすると注文作成ページに移動します。"
   },
   "button.custom": {
     "message": "カスタマイズ",
-    "description": "このボタンをクリックすると、カスタマイズページに移動します。"
+    "description": "ボタンテキスト、クリックするとカスタマイズページに移動します。"
   },
   "button.query": {
-    "message": "クエリ",
-    "description": "このボタンをクリックすると、クエリページに移動します。"
+    "message": "照会",
+    "description": "ボタンテキスト、クリックすると照会ページに移動します。"
   },
   "button.usage": {
-    "message": "使用量",
-    "description": "このボタンをクリックすると、使用履歴ページに移動します。英語は「Usage」と翻訳する必要があります。"
+    "message": "使用状況",
+    "description": "ボタンテキスト、クリックすると使用履歴ページに移動します。英語は「Usage」と翻訳する必要があります。"
   },
   "field.serviceName": {
     "message": "サービス名",
@@ -48,8 +48,8 @@
     "description": "サービスの申請。"
   },
   "field.status": {
-    "message": "ステータス",
-    "description": "申請のステータス。"
+    "message": "状態",
+    "description": "申請の状態。"
   },
   "field.id": {
     "message": "申請ID",
@@ -77,7 +77,7 @@
   },
   "field.allowConsumeGlobal": {
     "message": "一般残高の使用を許可",
-    "description": "一般残高（General Balance）を消費することを許可するスイッチ。英語は「Allow Use General Balance」と翻訳する必要があります。"
+    "description": "一般残高（General Balance）の消費を許可するスイッチ。英語は「Allow Use General Balance」と翻訳する必要があります。"
   },
   "field.amount": {
     "message": "金額",
@@ -85,7 +85,7 @@
   },
   "field.scope": {
     "message": "範囲",
-    "description": "申請の範囲、全体または特定のサービスである可能性があります。"
+    "description": "申請の範囲、全体または特定のサービスの可能性があります。"
   },
   "field.traceId": {
     "message": "トレースID",
@@ -97,11 +97,11 @@
   },
   "field.api": {
     "message": "API",
-    "description": "これはオンラインサービスであり、フォームはAPIを通じてユーザーにサービスを提供します。"
+    "description": "これはオンラインサービスで、フォームはAPIを通じてユーザーにサービスを提供します。"
   },
   "field.proxy": {
     "message": "プロキシ",
-    "description": "これはオンラインサービスであり、フォームはHTTPプロキシ（データ転送用）を通じてユーザーにサービスを提供します。"
+    "description": "これはオンラインサービスで、フォームはHTTPプロキシ（データ転送用）を通じてユーザーにサービスを提供します。"
   },
   "field.credential": {
     "message": "認証情報",
@@ -124,8 +124,8 @@
     "description": "申請の無料金額。"
   },
   "field.extraPrice": {
-    "message": "追加価格",
-    "description": "ユーザーが支払うべき申請の追加価格。"
+    "message": "追加料金",
+    "description": "ユーザーが支払うべき申請の追加料金。"
   },
   "message.alreadyApplied": {
     "message": "このサービスはすでに申請されています。コンソールを確認してください。",
@@ -140,15 +140,15 @@
     "description": "ユーザーがこのサービスをまだ申請していない場合に表示されるメッセージ。"
   },
   "message.globalBalanceBuyDescription": {
-    "message": "一般残高にチャージすることも、各申請インスタンスに個別にチャージすることもできます。今回のチャージは一般残高に入ります。特定の申請インスタンスの残高が不足している場合、一般残高が自動的に補充されます。",
-    "description": "一般残高にチャージし、インスタンスの残高が不足している場合に自動的に補充されることを説明するメッセージ。用語：一般残高=General Balance（Global Balanceに翻訳しないでください）。"
+    "message": "一般残高にチャージすることも、各申請インスタンスに個別にチャージすることもできます。今回のチャージは一般残高に入ります。特定の申請インスタンスの残高が不足した場合、自動的に一般残高が補充されます。",
+    "description": "一般残高にチャージし、インスタンスの残高が不足した場合に自動的に補充されることを説明するヒント文。用語：一般残高=General Balance（Global Balanceに翻訳しないでください）。"
   },
   "message.yourApplication": {
     "message": "あなたの申請",
     "description": "ユーザーの申請時に表示されるメッセージ。"
   },
   "message.unverified": {
-    "message": "サービスを申請するには、本人確認を完了する必要があります。",
+    "message": "本人確認を完了する必要があります",
     "description": "ユーザーが本人確認を完了していない場合に表示されるメッセージ。"
   },
   "message.goVerify": {
@@ -164,7 +164,7 @@
     "description": "ユーザーが必須パラメータを入力していない場合に表示されるメッセージ。"
   },
   "message.applicationSelection": {
-    "message": "現在申請または購入しているプランは以下の通りです。サービスを続けるために、いずれかのプランを選択できます。",
+    "message": "現在申請または購入しているプランが以下に表示されます。サービスを続行するために任意のプランを選択できます。",
     "description": "ユーザーが申請を選択する必要がある場合に表示されるメッセージ。"
   },
   "message.createCredentialSuccessfully": {
@@ -172,7 +172,7 @@
     "description": "ユーザーが資格情報を成功裏に作成した場合に表示されるメッセージ。"
   },
   "message.readPolicy": {
-    "message": "私はポリシーを読み、同意しました",
+    "message": "私は読み、同意しました",
     "description": "ユーザーがポリシーを読み、同意した場合に表示されるメッセージ。"
   },
   "message.policy": {
@@ -192,7 +192,7 @@
     "description": "ユーザーがキーをリセットする場合に表示されるメッセージ。"
   },
   "message.rotateCredentialConfirm": {
-    "message": "本当にキーをリセットしますか？リセット後は復元できません。",
+    "message": "本当にキーをリセットしますか？リセット後は復元できません",
     "description": "ユーザーがキーのリセットを確認する場合に表示されるメッセージ。"
   },
   "message.idDoesNotExist": {
@@ -204,11 +204,11 @@
     "description": "キーのリセットが成功した場合に表示されるメッセージ。"
   },
   "message.rotateCredentialFailed": {
-    "message": "キーのリセットに失敗しました。サポートに連絡してください。",
+    "message": "キーのリセットに失敗しました。サポートに連絡してください",
     "description": "キーのリセットに失敗した場合に表示されるメッセージ。"
   },
   "message.fetchFailed": {
-    "message": "アプリの取得に失敗しました。後でもう一度お試しください。",
+    "message": "アプリの取得に失敗しました。後で再試行してください。",
     "description": "アプリのリスト取得に失敗した場合のメッセージ。"
   },
   "message.updateFailed": {
@@ -220,8 +220,8 @@
     "description": "更新が成功した場合に表示されるメッセージ。"
   },
   "message.neverExpire": {
-    "message": "永遠に有効",
-    "description": "申請が永遠に有効な場合に表示されるメッセージ。"
+    "message": "期限なし",
+    "description": "申請が期限なしの場合に表示されるメッセージ。"
   },
   "title.buyService": {
     "message": "サービスを購入",
@@ -244,7 +244,7 @@
     "description": "ユーザーが申請残高を確認する場合に表示されるメッセージ。"
   },
   "title.count": {
-    "message": "申請の総数",
+    "message": "申請総数",
     "description": "ユーザーが申請数を確認する場合のページタイトル。"
   },
   "message.countDescription": {
@@ -253,42 +253,42 @@
   },
   "title.globalBalance": {
     "message": "共通残高",
-    "description": "ユーザーが共通残高を確認する場合のページタイトル。英語は「General Balance」と翻訳する必要があります。"
+    "description": "ユーザーが共通残高を確認する場合のページタイトル。英語は「General Balance」に翻訳する必要があります。"
   },
   "message.globalBalanceDescription": {
     "message": "「共通残高を許可」を有効にすると、インスタンスの残高が不足した場合に自動的に共通残高が使用されます。",
     "description": "インスタンスの残高が不足した場合に自動的に共通残高が消費されることを説明するメッセージ。用語：共通残高=General Balance（Global Balanceに翻訳しないことに注意）。"
   },
   "button.service": {
-    "message": "専用カスタマーサポート",
-    "description": "このボタンをクリックすると専用カスタマーサポートページに移動します。"
+    "message": "専用サポート",
+    "description": "このボタンをクリックすると専用サポートページに移動します（英語の提案：Support、短く保つ）。"
   },
   "button.acquire": {
-    "message": "カスタマーサポートを追加",
-    "description": "このボタンをクリックするとこの項目を取得します。"
+    "message": "サポートを追加",
+    "description": "このボタンをクリックすると専用サポートを追加します（英語の提案：Add Support、短く保つ）。"
   },
   "button.delete": {
     "message": "削除",
-    "description": "このボタンをクリックするとこの項目を削除します。"
+    "description": "このボタンをクリックすると項目が削除されます。"
   },
   "field.dataset": {
     "message": "データセット",
-    "description": "申請されたデータセット。"
+    "description": "申請するデータセット。"
   },
   "field.disabled": {
     "message": "無効",
-    "description": "申請が無効かどうか。"
+    "description": "申請が無効になっているかどうか。"
   },
   "message.addServiceToAcquire": {
-    "message": "カスタマーサービスを追加して取得してください",
-    "description": "ユーザーがまだカスタマーサービスを追加していない場合に表示されるメッセージ。"
+    "message": "サポートを追加して取得してください",
+    "description": "ユーザーがまだサポートを追加していない場合に表示されるメッセージ（英語の提案：Add support to acquire）。"
   },
   "message.confirmApplying": {
     "message": "サービス申請を確認",
     "description": "ユーザーがサービス申請を確認する際に表示されるメッセージ。"
   },
   "message.confirmDelete": {
-    "message": "本当にこの申請を削除しますか？削除するとすべての申請データが失われます",
+    "message": "本当にこの申請を削除しますか？削除後はすべての申請データが失われます",
     "description": "ユーザーが申請の削除を確認する際に表示されるメッセージ。"
   },
   "message.placeEnter": {
@@ -313,6 +313,6 @@
   },
   "title.description": {
     "message": "説明",
-    "description": "ユーザーがデータ技術サービス利用契約を確認する際のページのタイトル。"
+    "description": "ユーザーがデータ技術サービス利用規約を確認する際のページタイトル。"
   }
 }

@@ -8,7 +8,7 @@
     "description": "Tipo de contenido del código QR a generar, como 'enlace', 'texto', etc."
   },
   "name.failure": {
-    "message": "Fallo",
+    "message": "Fallido",
     "description": "Estado de fallo de la tarea"
   },
   "name.failureReason": {
@@ -29,7 +29,7 @@
   },
   "name.createdAt": {
     "message": "Fecha de creación",
-    "description": "Fecha y hora en que se generó el código QR"
+    "description": "Fecha y hora de generación del código QR"
   },
   "name.pixelStyle": {
     "message": "Estilo de píxeles",
@@ -60,8 +60,8 @@
     "description": "Contenido del código QR a generar"
   },
   "name.ecl": {
-    "message": "Nivel de corrección de errores",
-    "description": "Nivel de corrección de errores del código QR a generar"
+    "message": "Nivel de corrección",
+    "description": "Nivel de corrección del código QR a generar"
   },
   "name.position": {
     "message": "Posición",
@@ -81,7 +81,7 @@
   },
   "name.custom": {
     "message": "Subir video personalizado",
-    "description": "Video personalizado para la extensión"
+    "description": "Extensión de video personalizada"
   },
   "name.extend": {
     "message": "Extender video desde",
@@ -96,8 +96,8 @@
     "description": "Relación de aspecto del código QR a generar"
   },
   "name.markerShape": {
-    "message": "Forma del marcador",
-    "description": "Forma del marcador del código QR a generar"
+    "message": "Forma de marcador",
+    "description": "Forma de marcador del código QR a generar"
   },
   "name.subMarker": {
     "message": "Submarcador",
@@ -108,12 +108,12 @@
     "description": "Nombre del generador de códigos QR"
   },
   "name.steps": {
-    "message": "Número de pasos",
+    "message": "Pasos de generación",
     "description": "Número de pasos para generar el código QR"
   },
   "name.preset": {
-    "message": "Estilo preestablecido",
-    "description": "Preestablecido del código QR a generar"
+    "message": "Estilo predefinido",
+    "description": "Preajuste del código QR a generar"
   },
   "name.lumaBot": {
     "message": "Luma Bot",
@@ -148,7 +148,7 @@
     "description": "Descripción del parámetro 'steps'"
   },
   "description.videoUrl": {
-    "message": "URL del video personalizado que se sube, que será el video extendido.",
+    "message": "URL del video personalizado que se subirá, que será el video extendido.",
     "description": "Descripción del parámetro 'steps'"
   },
   "description.endImageUrl": {
@@ -228,16 +228,16 @@
     "description": "Texto del botón para descargar el video"
   },
   "button.uploadStartImageUrl": {
-    "message": "Subir imagen",
-    "description": "Texto del botón para subir el código QR"
+    "message": "Subir",
+    "description": "Texto del botón para subir una imagen (simplificado a 'Subir')"
   },
   "button.uploadVideoUrl": {
     "message": "Subir video",
-    "description": "Texto del botón para subir el código QR"
+    "description": "Texto del botón para subir un video"
   },
   "button.uploadEndImageUrl": {
-    "message": "Subir imagen",
-    "description": "Texto del botón para subir el código QR"
+    "message": "Subir",
+    "description": "Texto del botón para subir una imagen (simplificado a 'Subir')"
   },
   "preset.sunset": {
     "message": "Atardecer",
@@ -288,7 +288,7 @@
     "description": "Estilo preestablecido para generar el código QR"
   },
   "preset.etherealLowPoly": {
-    "message": "Bajo poligonado etéreo",
+    "message": "Bajo poligonaje etéreo",
     "description": "Estilo preestablecido para generar el código QR"
   },
   "preset.goldenVista": {
@@ -336,11 +336,11 @@
     "description": "Estilo preestablecido para generar el código QR"
   },
   "message.uploadQr": {
-    "message": "Suba la imagen del código QR, se generará un código QR artístico que coincide con el contenido del código QR",
-    "description": "Instrucciones para subir el código QR"
+    "message": "Suba una imagen de código QR para generar un código QR artístico que coincida con el contenido del código QR",
+    "description": "Instrucciones para subir un código QR"
   },
   "message.promptPlaceholder": {
-    "message": "Ingrese una frase que describa la imagen a generar, por ejemplo: un gato adorable. Los parámetros adicionales sobrescribirán los parámetros predeterminados",
+    "message": "Ingrese una frase que describa la imagen a generar, por ejemplo: un gato adorable. Los parámetros adicionales sobrescribirán los parámetros preestablecidos por defecto",
     "description": "Texto de marcador de posición en el campo de aviso"
   },
   "message.uploadReferencesExceed": {
@@ -348,12 +348,12 @@
     "description": "Mensaje de error cuando se excede el límite de imágenes subidas"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Imagen subida con éxito",
-    "description": "Mensaje de éxito cuando se sube una imagen con éxito"
+    "message": "Imágenes subidas con éxito",
+    "description": "Mensaje de éxito al subir imágenes"
   },
   "message.uploadReferencesError": {
     "message": "Error al subir la imagen, por favor intente de nuevo más tarde",
-    "description": "Mensaje de error cuando falla la subida de la imagen"
+    "description": "Mensaje de error al fallar la subida de imágenes"
   },
   "message.startingTask": {
     "message": "Iniciando tarea...",
@@ -365,59 +365,59 @@
   },
   "message.startTaskFailed": {
     "message": "Error al iniciar la tarea, por favor contacte al administrador",
-    "description": "Mensaje de error al fallar al iniciar la tarea de dibujo"
+    "description": "Mensaje de error al fallar el inicio de la tarea de dibujo"
   },
   "message.usedUp": {
-    "message": "Sus puntos se han agotado, por favor compre más puntos para continuar usando",
-    "description": "Mensaje cuando se han agotado los puntos"
+    "message": "Se han agotado sus créditos, por favor compre más créditos para continuar",
+    "description": "Mensaje cuando se han agotado los créditos"
   },
   "message.generating": {
     "message": "Generando...",
-    "description": "Mensaje mientras se está generando la imagen"
+    "description": "Mensaje cuando la imagen está siendo generada"
   },
   "message.downloadVideo": {
     "message": "Descargar este video",
-    "description": "Mensaje mientras se está generando la imagen"
+    "description": "Mensaje cuando la imagen está siendo generada"
   },
   "message.extendVideo": {
     "message": "Continuar generando este video",
-    "description": "Mensaje mientras se está generando la imagen"
+    "description": "Mensaje cuando la imagen está siendo generada"
   },
   "message.generateFailed": {
     "message": "Error al generar la imagen",
     "description": "Mensaje cuando la generación de la imagen falla"
   },
   "message.uploadVideoExceed": {
-    "message": "Número de imágenes de la primera fotograma excede el límite",
-    "description": "Mensaje de error cuando el número de imágenes de la primera fotograma excede el límite"
+    "message": "Número de imágenes de fotogramas iniciales excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes de fotogramas iniciales excede el límite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "¡El tamaño del archivo no puede exceder 10MB!",
-    "description": "Mensaje de error cuando el tamaño del archivo excede 10MB"
+    "message": "¡El tamaño del archivo no puede exceder 10 MB!",
+    "description": "Mensaje de error cuando el tamaño del archivo excede 10 MB"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "¡El archivo subido debe ser en formato MP4!",
-    "description": "Mensaje de error cuando el archivo subido no es en formato MP4"
+    "message": "¡El archivo debe ser en formato MP4!",
+    "description": "Mensaje de error cuando el archivo no es en formato MP4"
   },
   "message.uploadStartImageExceed": {
-    "message": "Número de imágenes de la primera fotograma excede el límite",
-    "description": "Mensaje de error cuando el número de imágenes de la primera fotograma excede el límite"
+    "message": "Número de imágenes de fotogramas iniciales excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes de fotogramas iniciales excede el límite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Número de imágenes de la última fotograma excede el límite",
-    "description": "Mensaje de error cuando el número de imágenes de la última fotograma excede el límite"
+    "message": "Número de imágenes de fotogramas finales excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes de fotogramas finales excede el límite"
   },
   "message.uploadStartImageError": {
-    "message": "Error al subir la imagen de la primera fotograma",
-    "description": "Mensaje de error cuando falla la subida de la imagen de la primera fotograma"
+    "message": "Error al subir la imagen de fotograma inicial",
+    "description": "Mensaje de error cuando falla la subida de la imagen de fotograma inicial"
   },
   "message.uploadVideoError": {
     "message": "Error al subir el video",
-    "description": "Mensaje de error cuando falla la subida de la imagen de la primera fotograma"
+    "description": "Mensaje de error cuando falla la subida del video"
   },
   "message.uploadEndImageError": {
-    "message": "Error al subir la imagen de la última fotograma",
-    "description": "Mensaje de error cuando falla la subida de la imagen de la última fotograma"
+    "message": "Error al subir la imagen de fotograma final",
+    "description": "Mensaje de error cuando falla la subida de la imagen de fotograma final"
   },
   "message.uploadDocumentsError": {
     "message": "Error al subir el documento",
@@ -428,135 +428,135 @@
     "description": "Mensaje cuando no hay operaciones disponibles"
   },
   "message.noTasks": {
-    "message": "No hay tareas históricas, por favor haga clic en el video de generación a la izquierda",
+    "message": "No hay tareas históricas, haga clic en el botón de generar video a la izquierda",
     "description": "Mensaje cuando no hay tareas"
   },
   "markerShape.square": {
     "message": "Cuadrado",
-    "description": "Forma de marcador utilizada para generar códigos QR"
+    "description": "Forma del marcador para generar códigos QR"
   },
   "markerShape.circle": {
     "message": "Círculo",
-    "description": "Forma de marcador utilizada para generar códigos QR"
+    "description": "Forma del marcador para generar códigos QR"
   },
   "markerShape.plus": {
     "message": "Más",
-    "description": "Forma de marcador utilizada para generar códigos QR"
+    "description": "Forma del marcador para generar códigos QR"
   },
   "markerShape.box": {
     "message": "Caja",
-    "description": "Forma de marcador utilizada para generar códigos QR"
+    "description": "Forma del marcador para generar códigos QR"
   },
   "markerShape.octagon": {
     "message": "Octágono",
-    "description": "Forma de marcador utilizada para generar códigos QR"
+    "description": "Forma del marcador para generar códigos QR"
   },
   "markerShape.tinyPlus": {
     "message": "Más pequeño",
-    "description": "Forma de marcador utilizada para generar códigos QR"
+    "description": "Forma del marcador para generar códigos QR"
   },
   "markerShape.random": {
     "message": "Aleatorio",
-    "description": "Forma de marcador utilizada para generar códigos QR"
+    "description": "Forma del marcador para generar códigos QR"
   },
   "subMarker.square": {
     "message": "Cuadrado",
-    "description": "Forma de sub-marcador utilizada para generar códigos QR"
+    "description": "Forma del sub-marcador para generar códigos QR"
   },
   "subMarker.circle": {
     "message": "Círculo",
-    "description": "Forma de sub-marcador utilizada para generar códigos QR"
+    "description": "Forma del sub-marcador para generar códigos QR"
   },
   "subMarker.plus": {
     "message": "Más",
-    "description": "Forma de sub-marcador utilizada para generar códigos QR"
+    "description": "Forma del sub-marcador para generar códigos QR"
   },
   "subMarker.box": {
     "message": "Caja",
-    "description": "Forma de sub-marcador utilizada para generar códigos QR"
+    "description": "Forma del sub-marcador para generar códigos QR"
   },
   "subMarker.random": {
     "message": "Aleatorio",
-    "description": "Forma de sub-marcador utilizada para generar códigos QR"
+    "description": "Forma del sub-marcador para generar códigos QR"
   },
   "position.center": {
     "message": "Centro",
-    "description": "Posición utilizada para generar códigos QR"
+    "description": "Posición para generar códigos QR"
   },
   "position.topLeft": {
     "message": "Arriba a la izquierda",
-    "description": "Posición utilizada para generar códigos QR"
+    "description": "Posición para generar códigos QR"
   },
   "position.topRight": {
     "message": "Arriba a la derecha",
-    "description": "Posición utilizada para generar códigos QR"
+    "description": "Posición para generar códigos QR"
   },
   "position.bottomLeft": {
     "message": "Abajo a la izquierda",
-    "description": "Posición utilizada para generar códigos QR"
+    "description": "Posición para generar códigos QR"
   },
   "position.bottomRight": {
     "message": "Abajo a la derecha",
-    "description": "Posición utilizada para generar códigos QR"
+    "description": "Posición para generar códigos QR"
   },
   "position.top": {
-    "message": "Parte superior",
-    "description": "Posición utilizada para generar códigos QR"
+    "message": "Arriba",
+    "description": "Posición para generar códigos QR"
   },
   "position.bottom": {
-    "message": "Parte inferior",
-    "description": "Posición utilizada para generar códigos QR"
+    "message": "Abajo",
+    "description": "Posición para generar códigos QR"
   },
   "position.left": {
     "message": "Izquierda",
-    "description": "Posición utilizada para generar códigos QR"
+    "description": "Posición para generar códigos QR"
   },
   "position.right": {
     "message": "Derecha",
-    "description": "Posición utilizada para generar códigos QR"
+    "description": "Posición para generar códigos QR"
   },
   "pixelStyle.row": {
     "message": "Fila",
-    "description": "Estilo de píxel utilizado para generar códigos QR"
+    "description": "Estilo de píxel para generar códigos QR"
   },
   "pixelStyle.column": {
     "message": "Columna",
-    "description": "Estilo de píxel utilizado para generar códigos QR"
+    "description": "Estilo de píxel para generar códigos QR"
   },
   "pixelStyle.square": {
     "message": "Cuadrado",
-    "description": "Estilo de píxel utilizado para generar códigos QR"
+    "description": "Estilo de píxel para generar códigos QR"
   },
   "pixelStyle.rounded": {
     "message": "Esquinas redondeadas",
-    "description": "Estilo de píxel utilizado para generar códigos QR"
+    "description": "Estilo de píxel para generar códigos QR"
   },
   "pixelStyle.dot": {
     "message": "Punto",
-    "description": "Estilo de píxel utilizado para generar códigos QR"
+    "description": "Estilo de píxel para generar códigos QR"
   },
   "pixelStyle.squircle": {
     "message": "Rectángulo redondeado",
-    "description": "Estilo de píxel utilizado para generar códigos QR"
+    "description": "Estilo de píxel para generar códigos QR"
   },
   "type.text": {
     "message": "Texto",
-    "description": "Tipo de contenido utilizado para generar códigos QR"
+    "description": "Tipo de contenido para generar códigos QR"
   },
   "type.link": {
     "message": "Enlace",
-    "description": "Tipo de contenido utilizado para generar códigos QR"
+    "description": "Tipo de contenido para generar códigos QR"
   },
   "type.email": {
     "message": "Correo electrónico",
-    "description": "Tipo de contenido utilizado para generar códigos QR"
+    "description": "Tipo de contenido para generar códigos QR"
   },
   "type.phone": {
     "message": "Teléfono",
-    "description": "Tipo de contenido utilizado para generar códigos QR"
+    "description": "Tipo de contenido para generar códigos QR"
   },
   "type.sms": {
     "message": "SMS",
-    "description": "Tipo de contenido utilizado para generar códigos QR"
+    "description": "Tipo de contenido para generar códigos QR"
   }
 }

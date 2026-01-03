@@ -21,11 +21,11 @@
   },
   "name.createdAt": {
     "message": "創建時間",
-    "description": "生成 Kling 視頻的日期和時間"
+    "description": "生成 Sora 視頻的日期和時間"
   },
   "name.startEndImage": {
-    "message": "首尾幀參考圖片",
-    "description": "要生成的視頻的參考圖片"
+    "message": "首尾幀參考圖",
+    "description": "表單字段標籤：首/尾幀參考圖（英文建議翻譯為“Start/End Frames”，保持簡短避免遮擋按鈕）"
   },
   "name.action": {
     "message": "操作",
@@ -48,12 +48,12 @@
     "description": "視頻方向參數的名稱"
   },
   "option.portrait": {
-    "message": "直向",
-    "description": "選項文字：直向方向"
+    "message": "豎屏",
+    "description": "選項文本：豎屏方向（英文建議翻譯為“Portrait”，保持簡短）"
   },
   "option.landscape": {
-    "message": "橫向",
-    "description": "選項文字：橫向方向"
+    "message": "橫屏",
+    "description": "選項文本：橫屏方向（英文建議翻譯為“Landscape”，保持簡短）"
   },
   "name.duration": {
     "message": "視頻時長",
@@ -64,7 +64,7 @@
     "description": "視頻清晰度參數的名稱"
   },
   "description.imageUrl": {
-    "message": "在多圖創建視頻的任務中，必須上傳多張圖片。",
+    "message": "在多圖創建視頻的任務中，它必須上傳多張圖片。",
     "description": "參數'imageUrl'的描述"
   },
   "description.prompt": {
@@ -81,7 +81,7 @@
   },
   "status.processing": {
     "message": "處理中",
-    "description": "任務的處理狀態"
+    "description": "任務的等待狀態"
   },
   "placeholder.paddingNoise": {
     "message": "請選擇...",
@@ -125,7 +125,7 @@
   },
   "button.uploadImageUrl": {
     "message": "上傳圖片",
-    "description": "上傳圖片的按鈕文本"
+    "description": "上傳圖片按鈕文本（英文請簡化為“Upload”，不要用“Upload Image”）"
   },
   "button.uploadVideoUrl": {
     "message": "上傳視頻",
@@ -169,54 +169,54 @@
   },
   "message.downloadVideo": {
     "message": "下載此視頻",
-    "description": "下載視頻的消息"
+    "description": "圖像正在生成時的消息"
   },
   "message.generateFailed": {
     "message": "生成視頻失敗",
     "description": "圖像生成失敗時的消息"
   },
   "message.uploadVideoExceed": {
-    "message": "上傳首幀圖片數量超過限制",
-    "description": "上傳首幀圖片數量超過限制時的錯誤信息"
+    "message": "上传首帧图片数量超出限制",
+    "description": "上传首帧图片数量超过限制时的错误信息"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "上傳文件大小不能超過 10MB!",
-    "description": "上傳文件大小不能超過 10MB!時的錯誤信息"
+    "message": "上传文件大小不得超过 10MB！",
+    "description": "上传文件大小不能超过 10MB!时的错误信息"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "上傳文件必須是 MP4 格式!",
-    "description": "上傳文件必須是 MP4 格式!的錯誤信息"
+    "message": "上传文件必须为 MP4 格式！",
+    "description": "上传文件必须是 MP4 格式!的错误信息"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "上傳首幀圖片數量超過限制",
-    "description": "上傳首幀圖片數量超過限制時的錯誤信息"
+    "message": "上传首帧图片数量超出限制",
+    "description": "上传首帧图片数量超过限制时的错误信息"
   },
   "message.uploadEndImageExceed": {
-    "message": "上傳尾幀圖片數量超過限制",
-    "description": "上傳首幀圖片數量超過限制時的錯誤信息"
+    "message": "上传尾帧图片数量超出限制",
+    "description": "上传尾帧图片数量超过限制时的错误信息"
   },
   "message.uploadStartImageError": {
-    "message": "上傳首幀圖片失敗",
-    "description": "上傳首幀圖片失敗時的錯誤信息"
+    "message": "上传首帧图片失败",
+    "description": "上传首帧图片失败时的错误信息"
   },
   "message.uploadVideoError": {
-    "message": "上傳視頻失敗",
-    "description": "上傳首幀圖片失敗時的錯誤信息"
+    "message": "上传视频失败",
+    "description": "上传视频失败时的错误信息"
   },
   "message.uploadEndImageError": {
-    "message": "上傳尾幀圖片失敗",
-    "description": "上傳尾幀圖片失敗時的錯誤信息"
+    "message": "上传尾帧图片失败",
+    "description": "上传尾帧图片失败时的错误信息"
   },
   "message.uploadDocumentsError": {
-    "message": "上傳文檔失敗",
-    "description": "上傳文檔失敗時的錯誤信息"
+    "message": "上传文档失败",
+    "description": "上传文档失败时的错误信息"
   },
   "message.noOperations": {
-    "message": "沒有可用操作",
-    "description": "沒有可用操作時的消息"
+    "message": "没有可用操作",
+    "description": "没有可用操作时的消息"
   },
   "message.noTasks": {
-    "message": "沒有歷史任務，請點擊左方生成視頻",
-    "description": "沒有任務時的消息"
+    "message": "没有历史任务，请点击左侧生成视频",
+    "description": "没有任务时的消息"
   }
 }

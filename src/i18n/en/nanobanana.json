@@ -17,7 +17,7 @@
   },
   "name.imageUrls": {
     "message": "Reference Images",
-    "description": "Reference images used for editing"
+    "description": "Reference images for editing"
   },
   "name.failure": {
     "message": "Failure",
@@ -37,7 +37,7 @@
   },
   "name.prompt": {
     "message": "Image Prompt",
-    "description": "Prompt words for generation/editing"
+    "description": "Prompt for generating/editing"
   },
   "name.nanobananaBot": {
     "message": "Nano Banana Bot",
@@ -56,28 +56,28 @@
     "description": "Resolution options are only effective for pro models"
   },
   "description.prompt": {
-    "message": "Prompt words for generating or editing images",
-    "description": "Description of the prompt words"
+    "message": "Prompt for generating or editing images",
+    "description": "Description of the prompt"
   },
   "description.action": {
-    "message": "Action to generate the image. If `generate`, the image will be created based on the prompt; if `edit`, it will be edited based on the prompt and uploaded image.",
+    "message": "Action to generate the image. If `generate`, it will create an image based on the prompt; if `edit`, it will edit based on the prompt and uploaded image.",
     "description": "Description of the action parameter"
   },
   "description.model": {
-    "message": "Model used to generate images. Default is nano-banana. nano-banana-pro is an alias for gemini-3-pro-image, and nano-banana is an alias for gemini-2.5-flash-image.",
+    "message": "Model used for generating images. Default is nano-banana. nano-banana-pro is an alias for gemini-3-pro-image, and nano-banana is an alias for gemini-2.5-flash-image.",
     "description": "Description of the model parameter"
   },
   "description.imageUrls": {
-    "message": "You must upload 1-5 images for the edit image task.",
+    "message": "Must upload 1-5 images for the edit image task.",
     "description": "Description of the image_urls parameter"
   },
   "description.aspectRatio": {
-    "message": "Aspect ratio of the generated image. Supported values are `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. The default value is `1:1`. Only effective when `action` is `generate`; if `action` is `edit`, the ratio of the first image in `image_urls` will be used.",
+    "message": "Aspect ratio of the generated image. Supported values are `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Default is `1:1`. Only effective when `action` is `generate`; if `action` is `edit`, it will follow the aspect ratio of the first image in `image_urls`.",
     "description": "Description of the aspect_ratio parameter"
   },
   "status.pending": {
     "message": "Pending",
-    "description": "Task waiting status"
+    "description": "Task pending status"
   },
   "placeholder.select": {
     "message": "Select",
@@ -93,11 +93,11 @@
   },
   "button.uploadImageUrls": {
     "message": "Upload",
-    "description": "Button to upload reference images (keep short: Upload)"
+    "description": "Upload reference images button (simplified to 'Upload', do not use 'Upload Images')"
   },
   "message.startingTask": {
     "message": "Starting task...",
-    "description": "Message indicating the task is starting"
+    "description": "Message indicating task start"
   },
   "message.startTaskSuccess": {
     "message": "Successfully initiated generation task",
@@ -108,16 +108,16 @@
     "description": "Task creation failed"
   },
   "message.usedUp": {
-    "message": "Your credits have been used up, please purchase more credits to continue using",
-    "description": "Message indicating credits are exhausted"
+    "message": "Your credits are exhausted, please purchase more credits to continue using",
+    "description": "Exhausted credits message"
   },
   "message.uploadImageExceed": {
     "message": "You can upload a maximum of 5 images",
-    "description": "Message indicating image count exceeds limit"
+    "description": "Image count exceeds limit"
   },
   "message.uploadImageError": {
     "message": "Failed to upload image, please try again later",
-    "description": "Message indicating upload failure"
+    "description": "Upload failed"
   },
   "name.model": {
     "message": "Model",

@@ -25,7 +25,7 @@
   },
   "name.createdAt": {
     "message": "Data utworzenia",
-    "description": "Data i czas wygenerowania wideo Hailuo"
+    "description": "Data i czas utworzenia wideo Hailuo"
   },
   "name.imageUrl": {
     "message": "Obraz referencyjny",
@@ -33,23 +33,23 @@
   },
   "name.videoUrl": {
     "message": "Wideo niestandardowe",
-    "description": "Niestandardowe wideo"
+    "description": "Wideo niestandardowe"
   },
   "name.prompt": {
     "message": "Podpowiedź wideo",
     "description": "Podpowiedź do wprowadzenia treści"
   },
   "name.ingredients": {
-    "message": "Wideo z wieloma obrazami",
-    "description": "Niestandardowe rozszerzone wideo"
+    "message": "Wideo z wielu obrazów",
+    "description": "Przełącznik/etykieta do tworzenia wideo z wielu obrazów (propozycja: Multi-Image, zachowaj krótko)"
   },
   "name.model": {
     "message": "Model",
     "description": "Wersja modelu używana do generowania wideo"
   },
   "name.startImageUrl": {
-    "message": "Obraz pierwszej klatki",
-    "description": "Ziarno kodu QR do wygenerowania"
+    "message": "Obraz początkowy",
+    "description": "Ziarno do wygenerowania kodu QR"
   },
   "name.ingredientsModel": {
     "message": "Model składników",
@@ -64,7 +64,7 @@
     "description": "Opis parametru 'ingredients'"
   },
   "description.startImageUrl": {
-    "message": "Obraz pierwszej klatki, który będzie pierwszą klatką wygenerowanego wideo.",
+    "message": "Obraz początkowy, który będzie pierwszą klatką wygenerowanego wideo.",
     "description": "Opis parametru 'startImageUrl'"
   },
   "description.prompt": {
@@ -81,7 +81,7 @@
   },
   "placeholder.paddingNoise": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wejścia szumów wypełniających"
+    "description": "Placeholder dla wprowadzenia szumów wypełniających"
   },
   "placeholder.select": {
     "message": "Wybierz",
@@ -92,39 +92,39 @@
     "description": "Placeholder dla poziomu wypełnienia"
   },
   "placeholder.prompt": {
-    "message": "Wprowadź podpowiedź stylu wideo, np.: ogień",
+    "message": "Wprowadź podpowiedź stylu wideo, np. ogień",
     "description": "Placeholder dla pola podpowiedzi"
   },
   "placeholder.position": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wejścia pozycji"
+    "description": "Placeholder dla wprowadzenia pozycji"
   },
   "placeholder.aspectRatio": {
     "message": "Wybierz...",
-    "description": "Placeholder dla proporcji obrazu"
+    "description": "Placeholder dla wprowadzenia proporcji"
   },
   "placeholder.preset": {
     "message": "Wybierz...",
-    "description": "Placeholder dla ustawień wstępnych"
+    "description": "Placeholder dla wprowadzenia presetów"
   },
   "placeholder.markerShape": {
     "message": "Wybierz...",
-    "description": "Placeholder dla kształtu znacznika"
+    "description": "Placeholder dla wprowadzenia kształtu znacznika"
   },
   "placeholder.rotate": {
     "message": "Wybierz...",
-    "description": "Placeholder dla obrotu"
+    "description": "Placeholder dla wprowadzenia obrotu"
   },
   "placeholder.subMarker": {
     "message": "Wybierz...",
-    "description": "Placeholder dla podznacznika"
+    "description": "Placeholder dla wprowadzenia podznacznika"
   },
   "button.model1": {
-    "message": "Wideo tekstowe",
+    "message": "Wideo z tekstu",
     "description": "Tekst przycisku do generowania wideo Hailuo"
   },
   "button.model2": {
-    "message": "Wideo obrazowe",
+    "message": "Wideo z obrazu",
     "description": "Tekst przycisku do generowania wideo Hailuo"
   },
   "button.generate": {
@@ -141,7 +141,7 @@
   },
   "button.uploadStartImageUrl": {
     "message": "Prześlij obraz",
-    "description": "Tekst przycisku do przesyłania kodu QR"
+    "description": "Tekst przycisku do przesyłania obrazu (proszę uprościć do 'Prześlij')"
   },
   "message.uploadReferencesExceed": {
     "message": "Można przesłać maksymalnie 5 obrazów",
@@ -149,11 +149,11 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Obraz przesłany pomyślnie",
-    "description": "Komunikat o sukcesie, gdy obraz został przesłany pomyślnie"
+    "description": "Komunikat o sukcesie po pomyślnym przesłaniu obrazu"
   },
   "message.uploadReferencesError": {
     "message": "Nie udało się przesłać obrazu, spróbuj ponownie później",
-    "description": "Komunikat o błędzie, gdy przesyłanie obrazu nie powiodło się"
+    "description": "Komunikat o błędzie, gdy przesyłanie obrazu się nie powiodło"
   },
   "message.startingTask": {
     "message": "Rozpoczynanie zadania...",
@@ -161,14 +161,14 @@
   },
   "message.startTaskSuccess": {
     "message": "Zadanie generowania uruchomione pomyślnie",
-    "description": "Komunikat o sukcesie, gdy zadanie zostało pomyślnie uruchomione"
+    "description": "Komunikat o sukcesie po uruchomieniu zadania"
   },
   "message.startTaskFailed": {
     "message": "Nie udało się uruchomić zadania, skontaktuj się z administratorem",
-    "description": "Komunikat o błędzie, gdy uruchomienie zadania rysowania nie powiodło się"
+    "description": "Komunikat o błędzie, gdy uruchomienie zadania rysowania się nie powiodło"
   },
   "message.usedUp": {
-    "message": "Twoje punkty zostały wyczerpane, proszę kupić więcej punktów, aby kontynuować korzystanie",
+    "message": "Twoje punkty zostały wyczerpane, kup więcej punktów, aby kontynuować",
     "description": "Komunikat, gdy punkty zostały wyczerpane"
   },
   "message.generating": {
@@ -184,44 +184,44 @@
     "description": "Komunikat podczas generowania obrazu"
   },
   "message.generateFailed": {
-    "message": "Nie udało się wygenerować obrazu",
-    "description": "Komunikat, gdy generowanie obrazu nie powiodło się"
+    "message": "Generowanie obrazu nie powiodło się",
+    "description": "Wiadomość, gdy generowanie obrazu się nie powiodło"
   },
   "message.uploadVideoExceed": {
-    "message": "Liczba przesyłanych obrazów pierwszej klatki przekracza limit",
-    "description": "Informacja o błędzie, gdy liczba przesyłanych obrazów pierwszej klatki przekracza limit"
+    "message": "Liczba przesyłanych obrazów klatki początkowej przekracza limit",
+    "description": "Informacja o błędzie, gdy liczba przesyłanych obrazów klatki początkowej przekracza limit"
   },
   "message.uploadVideoSizeExceed": {
     "message": "Rozmiar przesyłanego pliku nie może przekraczać 10 MB!",
-    "description": "Informacja o błędzie, gdy rozmiar przesyłanego pliku nie może przekraczać 10 MB!"
+    "description": "Informacja o błędzie, gdy rozmiar przesyłanego pliku przekracza 10 MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Przesyłany plik musi być w formacie MP4!",
-    "description": "Informacja o błędzie, gdy przesyłany plik musi być w formacie MP4!"
+    "description": "Informacja o błędzie, gdy przesyłany plik nie jest w formacie MP4!"
   },
   "message.uploadStartImageExceed": {
-    "message": "Liczba przesyłanych obrazów pierwszej klatki przekracza limit",
-    "description": "Informacja o błędzie, gdy liczba przesyłanych obrazów pierwszej klatki przekracza limit"
+    "message": "Liczba przesyłanych obrazów klatki początkowej przekracza limit",
+    "description": "Informacja o błędzie, gdy liczba przesyłanych obrazów klatki początkowej przekracza limit"
   },
   "message.uploadEndImageExceed": {
-    "message": "Liczba przesyłanych obrazów ostatniej klatki przekracza limit",
-    "description": "Informacja o błędzie, gdy liczba przesyłanych obrazów ostatniej klatki przekracza limit"
+    "message": "Liczba przesyłanych obrazów klatki końcowej przekracza limit",
+    "description": "Informacja o błędzie, gdy liczba przesyłanych obrazów klatki końcowej przekracza limit"
   },
   "message.uploadStartImageError": {
-    "message": "Nie udało się przesłać obrazu pierwszej klatki",
-    "description": "Informacja o błędzie, gdy nie udało się przesłać obrazu pierwszej klatki"
+    "message": "Przesyłanie obrazu klatki początkowej nie powiodło się",
+    "description": "Informacja o błędzie, gdy przesyłanie obrazu klatki początkowej się nie powiodło"
   },
   "message.uploadVideoError": {
-    "message": "Nie udało się przesłać wideo",
-    "description": "Informacja o błędzie, gdy nie udało się przesłać wideo"
+    "message": "Przesyłanie wideo nie powiodło się",
+    "description": "Informacja o błędzie, gdy przesyłanie wideo się nie powiodło"
   },
   "message.uploadEndImageError": {
-    "message": "Nie udało się przesłać obrazu ostatniej klatki",
-    "description": "Informacja o błędzie, gdy nie udało się przesłać obrazu ostatniej klatki"
+    "message": "Przesyłanie obrazu klatki końcowej nie powiodło się",
+    "description": "Informacja o błędzie, gdy przesyłanie obrazu klatki końcowej się nie powiodło"
   },
   "message.uploadDocumentsError": {
-    "message": "Nie udało się przesłać dokumentu",
-    "description": "Informacja o błędzie, gdy nie udało się przesłać dokumentu"
+    "message": "Przesyłanie dokumentu nie powiodło się",
+    "description": "Informacja o błędzie, gdy przesyłanie dokumentu się nie powiodło"
   },
   "message.noOperations": {
     "message": "Brak dostępnych operacji",

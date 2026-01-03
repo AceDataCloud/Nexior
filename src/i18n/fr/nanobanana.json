@@ -12,8 +12,8 @@
     "description": "Type d'opération : créer une image"
   },
   "name.edits": {
-    "message": "Éditer l'image",
-    "description": "Type d'opération : éditer l'image"
+    "message": "Éditer une image",
+    "description": "Type d'opération : éditer une image"
   },
   "name.imageUrls": {
     "message": "Images de référence",
@@ -37,30 +37,30 @@
   },
   "name.prompt": {
     "message": "Invite d'image",
-    "description": "Mots d'invite pour générer/éditer"
+    "description": "Mots-clés pour générer/éditer"
   },
   "name.nanobananaBot": {
     "message": "Bot Nano Banana",
     "description": "Nom du générateur d'images Nano Banana"
   },
   "name.aspectRatio": {
-    "message": "Rapport d'aspect",
-    "description": "Rapport d'aspect de l'image générée"
+    "message": "Ratio d'aspect",
+    "description": "Ratio d'aspect de l'image générée"
   },
   "name.resolution": {
     "message": "Résolution",
     "description": "Résolution de l'image générée"
   },
   "description.resolutionProOnly": {
-    "message": "Seul nano-banana-pro prend en charge les paramètres de résolution.",
+    "message": "La configuration de la résolution est uniquement prise en charge par nano-banana-pro.",
     "description": "Les options de résolution ne s'appliquent qu'au modèle pro"
   },
   "description.prompt": {
-    "message": "Mots d'invite pour générer ou éditer une image",
-    "description": "Description des mots d'invite"
+    "message": "Mots-clés pour générer ou éditer une image",
+    "description": "Description des mots-clés"
   },
   "description.action": {
-    "message": "Action pour générer une image. Si c'est `generate`, l'image sera générée selon les mots d'invite ; si c'est `edit`, l'image sera éditée en fonction des mots d'invite et de l'image téléchargée.",
+    "message": "Action pour générer une image. Si `generate`, l'image sera générée selon les mots-clés ; si `edit`, l'image sera éditée en fonction des mots-clés et de l'image téléchargée.",
     "description": "Description du paramètre action"
   },
   "description.model": {
@@ -72,7 +72,7 @@
     "description": "Description du paramètre image_urls"
   },
   "description.aspectRatio": {
-    "message": "Rapport d'aspect de l'image générée. Les valeurs prises en charge sont `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. La valeur par défaut est `1:1`. Ne s'applique que lorsque `action` est `generate` ; si `action` est `edit`, le rapport sera basé sur la première image dans `image_urls`.",
+    "message": "Ratio d'aspect de l'image générée. Les valeurs prises en charge sont `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. La valeur par défaut est `1:1`. Ne s'applique que si `action` est `generate` ; si `action` est `edit`, le ratio de la première image dans `image_urls` sera utilisé.",
     "description": "Description du paramètre aspect_ratio"
   },
   "status.pending": {
@@ -84,16 +84,16 @@
     "description": "Espace réservé pour la sélection"
   },
   "placeholder.prompt": {
-    "message": "Entrez les mots d'invite, par exemple : un chat siamois blanc",
-    "description": "Espace réservé pour l'invite"
+    "message": "Entrez les mots-clés, par exemple : un chat siamois blanc",
+    "description": "Espace réservé pour les mots-clés"
   },
   "button.generate": {
     "message": "Générer",
     "description": "Bouton de génération"
   },
   "button.uploadImageUrls": {
-    "message": "Télécharger des images",
-    "description": "Bouton pour télécharger des images de référence"
+    "message": "Télécharger",
+    "description": "Bouton pour télécharger des images de référence (simplifier en anglais à 'Upload', ne pas utiliser 'Upload Images')"
   },
   "message.startingTask": {
     "message": "Démarrage de la tâche...",
@@ -108,7 +108,7 @@
     "description": "Échec de la création de la tâche"
   },
   "message.usedUp": {
-    "message": "Vos crédits sont épuisés, veuillez acheter plus de crédits pour continuer à utiliser",
+    "message": "Vos crédits sont épuisés, veuillez acheter plus de crédits pour continuer",
     "description": "Message d'épuisement"
   },
   "message.uploadImageExceed": {

@@ -1,62 +1,166 @@
 {
-  "name.seedanceBot": { "message": "SeeDance Bot", "description": "Name of the SeeDance video generator" },
-  "name.prompt": { "message": "Video Prompt", "description": "Text prompt for video generation" },
-  "description.prompt": {
-    "message": "Describe the video you want to generate. You can include SeeDance parameters (e.g. --rs 720p --rt 16:9 --dur 5).",
-    "description": "Help text for prompt input"
+  "name.seedanceBot": {
+    "message": "SeeDance Бот",
+    "description": "Назва генератора відео SeeDance"
   },
-  "placeholder.prompt": { "message": "Describe your video...", "description": "Placeholder for prompt input" },
-  "name.model": { "message": "Model", "description": "Model selector label" },
-  "description.model": { "message": "Choose the SeeDance model version for generation.", "description": "Help text for model selector" },
-  "placeholder.select": { "message": "Select", "description": "Placeholder for select input" },
-  "model.seedance10pro": { "message": "doubao-seedance-1.0-pro", "description": "SeeDance 1.0 Pro model option" },
+  "name.prompt": {
+    "message": "Підказка",
+    "description": "Підказка для генерації відео"
+  },
+  "description.prompt": {
+    "message": "Опишіть відео, яке ви хочете згенерувати, можна додати параметри SeeDance (наприклад: --rs 720p --rt 16:9 --dur 5).",
+    "description": "Опис введення підказки"
+  },
+  "placeholder.prompt": {
+    "message": "Опишіть ваше відео…",
+    "description": "Плейсхолдер для підказки"
+  },
+  "name.model": {
+    "message": "Модель",
+    "description": "Мітка вибору моделі"
+  },
+  "description.model": {
+    "message": "Виберіть версію моделі SeeDance для генерації.",
+    "description": "Опис вибору моделі"
+  },
+  "placeholder.select": {
+    "message": "Вибрати",
+    "description": "Плейсхолдер для випадаючого списку"
+  },
+  "model.seedance10pro": {
+    "message": "doubao-seedance-1.0-pro",
+    "description": "Модель SeeDance 1.0 Pro"
+  },
   "model.seedance10proFast": {
     "message": "doubao-seedance-1.0-pro-fast",
-    "description": "SeeDance 1.0 Pro Fast model option"
+    "description": "Модель SeeDance 1.0 Pro Fast"
   },
-  "model.seedance15pro": { "message": "doubao-seedance-1.5-pro", "description": "SeeDance 1.5 Pro model option" },
+  "model.seedance15pro": {
+    "message": "doubao-seedance-1.5-pro",
+    "description": "Модель SeeDance 1.5 Pro"
+  },
   "model.seedance10liteT2v": {
     "message": "doubao-seedance-1.0-lite-t2v",
-    "description": "SeeDance 1.0 Lite T2V model option"
+    "description": "Модель SeeDance 1.0 Lite T2V"
   },
   "model.seedance10liteI2v": {
     "message": "doubao-seedance-1.0-lite-i2v",
-    "description": "SeeDance 1.0 Lite I2V model option"
+    "description": "Модель SeeDance 1.0 Lite I2V"
   },
-  "name.serviceTier": { "message": "Service Tier", "description": "Service tier selector label" },
-  "description.serviceTier": { "message": "Processing tier: default or flex.", "description": "Help text for service tier" },
-  "serviceTier.default": { "message": "default", "description": "Default service tier" },
-  "serviceTier.flex": { "message": "flex", "description": "Flex service tier" },
-  "name.returnLastFrame": { "message": "Return Last Frame", "description": "Return last frame switch label" },
+  "name.serviceTier": {
+    "message": "Рівень послуг",
+    "description": "Мітка рівня послуг"
+  },
+  "description.serviceTier": {
+    "message": "Рівень обробки: default або flex.",
+    "description": "Опис рівня послуг"
+  },
+  "serviceTier.default": {
+    "message": "default",
+    "description": "Стандартний рівень"
+  },
+  "serviceTier.flex": {
+    "message": "flex",
+    "description": "Гнучкий рівень"
+  },
+  "name.returnLastFrame": {
+    "message": "Повернути останній кадр",
+    "description": "Мітка перемикача для повернення останнього кадру"
+  },
   "description.returnLastFrame": {
-    "message": "If enabled, the API also returns the last frame image.",
-    "description": "Help text for return last frame"
+    "message": "При ввімкненні буде додатково повернуто зображення останнього кадру.",
+    "description": "Опис повернення останнього кадру"
   },
-  "name.firstFrame": { "message": "First Frame Image", "description": "First frame image upload label" },
-  "description.firstFrame": { "message": "Optional. Provide a reference/first-frame image.", "description": "Help text for first frame image" },
-  "name.lastFrame": { "message": "Last Frame Image", "description": "Last frame image upload label" },
+  "name.firstFrame": {
+    "message": "Зображення першого кадру",
+    "description": "Мітка завантаження зображення першого кадру"
+  },
+  "description.firstFrame": {
+    "message": "Необов'язково. Завантажте зображення для посилання/першого кадру.",
+    "description": "Опис зображення першого кадру"
+  },
+  "name.lastFrame": {
+    "message": "Зображення останнього кадру",
+    "description": "Мітка завантаження зображення останнього кадру"
+  },
   "description.lastFrame": {
-    "message": "Optional. Provide a last-frame image (requires first frame).",
-    "description": "Help text for last frame image"
+    "message": "Необов'язково. Завантажте зображення останнього кадру (потрібен перший кадр).",
+    "description": "Опис зображення останнього кадру"
   },
-  "button.generate": { "message": "Generate", "description": "Generate button text" },
-  "button.upload": { "message": "Upload", "description": "Upload button text" },
-  "button.download": { "message": "Download", "description": "Download button text" },
-  "button.on": { "message": "On", "description": "Switch on label" },
-  "button.off": { "message": "Off", "description": "Switch off label" },
-  "message.startingTask": { "message": "Starting SeeDance task...", "description": "Toast while starting task" },
-  "message.startTaskSuccess": { "message": "Task started successfully", "description": "Toast on successful task start" },
-  "message.startTaskFailed": { "message": "Failed to start task: ", "description": "Toast on failed task start" },
-  "message.usedUp": { "message": "Quota used up", "description": "Toast when quota is used up" },
-  "message.uploadExceed": { "message": "Only 1 image is allowed", "description": "Toast when upload exceeds limit" },
-  "message.uploadError": { "message": "Upload failed", "description": "Toast when upload fails" },
-  "message.downloadVideo": { "message": "Download video", "description": "Tooltip for download button" },
-  "status.pending": { "message": "Pending", "description": "Pending status" },
-  "status.processing": { "message": "Processing", "description": "Processing status" },
-  "name.taskId": { "message": "Task ID", "description": "Task ID label" },
-  "name.traceId": { "message": "Trace ID", "description": "Trace ID label" },
-  "name.failure": { "message": "Failure", "description": "Failure label" },
-  "name.failureReason": { "message": "Failure Reason", "description": "Failure reason label" },
-  "name.status": { "message": "Status", "description": "Status label" }
+  "button.generate": {
+    "message": "Генерувати",
+    "description": "Кнопка генерації"
+  },
+  "button.upload": {
+    "message": "Завантажити",
+    "description": "Кнопка завантаження"
+  },
+  "button.download": {
+    "message": "Завантажити",
+    "description": "Кнопка завантаження"
+  },
+  "button.on": {
+    "message": "Увімкнено",
+    "description": "Текст для увімкнення перемикача"
+  },
+  "button.off": {
+    "message": "Вимкнено",
+    "description": "Текст для вимкнення перемикача"
+  },
+  "message.startingTask": {
+    "message": "Запуск завдання SeeDance…",
+    "description": "Підказка про початок завдання"
+  },
+  "message.startTaskSuccess": {
+    "message": "Завдання запущено",
+    "description": "Підказка про успішний початок завдання"
+  },
+  "message.startTaskFailed": {
+    "message": "Не вдалося запустити: ",
+    "description": "Підказка про невдалий початок завдання"
+  },
+  "message.usedUp": {
+    "message": "Ліміт вичерпано",
+    "description": "Підказка про вичерпання ліміту"
+  },
+  "message.uploadExceed": {
+    "message": "Можна завантажити не більше 1 зображення",
+    "description": "Підказка про перевищення ліміту завантаження"
+  },
+  "message.uploadError": {
+    "message": "Не вдалося завантажити",
+    "description": "Підказка про невдале завантаження"
+  },
+  "message.downloadVideo": {
+    "message": "Завантажити відео",
+    "description": "Підказка про завантаження відео"
+  },
+  "status.pending": {
+    "message": "У черзі",
+    "description": "Статус у черзі"
+  },
+  "status.processing": {
+    "message": "Генерація",
+    "description": "Статус генерації"
+  },
+  "name.taskId": {
+    "message": "ID завдання",
+    "description": "Мітка ID завдання"
+  },
+  "name.traceId": {
+    "message": "Trace ID",
+    "description": "Мітка Trace ID"
+  },
+  "name.failure": {
+    "message": "Не вдалося",
+    "description": "Мітка невдачі"
+  },
+  "name.failureReason": {
+    "message": "Причина невдачі",
+    "description": "Мітка причини невдачі"
+  },
+  "name.status": {
+    "message": "Статус",
+    "description": "Мітка статусу"
+  }
 }
-

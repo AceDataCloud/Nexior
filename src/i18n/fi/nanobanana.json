@@ -5,7 +5,7 @@
   },
   "name.task": {
     "message": "Tehtävätyyppi",
-    "description": "Nano Banana -kuvatoimintatyyppi"
+    "description": "Nano Banana kuvan käsittelytyyppi"
   },
   "name.generate": {
     "message": "Luo kuva",
@@ -36,15 +36,15 @@
     "description": "Seuranta ID"
   },
   "name.prompt": {
-    "message": "Kuvakehotus",
-    "description": "Luonnin/muokkauksen kehotussanat"
+    "message": "Kuvan ohjeet",
+    "description": "Luonnin/muokkauksen ohjeet"
   },
   "name.nanobananaBot": {
     "message": "Nano Banana Bot",
-    "description": "Nano Banana -kuvageneraattorin nimi"
+    "description": "Nano Banana kuvan generaattorin nimi"
   },
   "name.aspectRatio": {
-    "message": "Kuvan kuvasuhde",
+    "message": "Kuvasuhde",
     "description": "Luotavan kuvan kuvasuhde"
   },
   "name.resolution": {
@@ -56,15 +56,15 @@
     "description": "Resoluutioasetukset ovat voimassa vain pro-mallille"
   },
   "description.prompt": {
-    "message": "Kuvien luomiseen tai muokkaamiseen käytettävät kehotussanat",
-    "description": "Kehotussanojen kuvaus"
+    "message": "Luonnin tai muokkauksen ohjeet",
+    "description": "Ohjeiden kuvaus"
   },
   "description.action": {
-    "message": "Kuvien luomisen toiminto. Jos se on `generate`, kuva luodaan kehotussanojen perusteella; jos se on `edit`, kuvaa muokataan kehotussanojen ja ladatun kuvan perusteella.",
+    "message": "Kuvan luontitoiminto. Jos `generate`, kuva luodaan ohjeiden mukaan; jos `edit`, kuvaa muokataan ohjeiden ja ladatun kuvan perusteella.",
     "description": "action-parametrin selitys"
   },
   "description.model": {
-    "message": "Kuvien luomiseen käytettävä malli. Oletus on nano-banana. nano-banana-pro on gemini-3-pro-image -mallin alias, nano-banana on gemini-2.5-flash-image -mallin alias.",
+    "message": "Kuvan luontiin käytettävä malli. Oletus on nano-banana. nano-banana-pro on gemini-3-pro-image:n alias, nano-banana on gemini-2.5-flash-image:n alias.",
     "description": "model-parametrin selitys"
   },
   "description.imageUrls": {
@@ -72,7 +72,7 @@
     "description": "image_urls-parametrin selitys"
   },
   "description.aspectRatio": {
-    "message": "Luotavan kuvan kuvasuhde. Tuetut arvot ovat `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Oletusarvo on `1:1`. Vain kun `action` on `generate`, se on voimassa; jos `action` on `edit`, se perustuu `image_urls`-parametrin ensimmäisen kuvan kuvasuhteeseen.",
+    "message": "Luotavan kuvan kuvasuhde. Tuetut arvot ovat `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Oletusarvo on `1:1`. Vain kun `action` on `generate`, se on voimassa; jos `action` on `edit`, käytetään `image_urls`-parametrin ensimmäisen kuvan suhdetta.",
     "description": "aspect_ratio-parametrin selitys"
   },
   "status.pending": {
@@ -84,19 +84,19 @@
     "description": "Valintapaikka"
   },
   "placeholder.prompt": {
-    "message": "Syötä kehotussanat, esimerkiksi: valkoinen siamilainen kissa",
-    "description": "Kehotuksen paikka"
+    "message": "Syötä ohjeet, esim: valkoinen siamilainen kissa",
+    "description": "Ohjeiden paikka"
   },
   "button.generate": {
     "message": "Luo",
-    "description": "Luo-painike"
+    "description": "Luontipainike"
   },
   "button.uploadImageUrls": {
     "message": "Lataa kuvat",
-    "description": "Viitekuvien latauspainike"
+    "description": "Viitekuvien latauspainike (yksinkertaista englanniksi 'Upload', älä käytä 'Upload Images')"
   },
   "message.startingTask": {
-    "message": "Tehtävää käynnistetään...",
+    "message": "Aloitetaan tehtävä...",
     "description": "Tehtävän aloitusviesti"
   },
   "message.startTaskSuccess": {
@@ -104,31 +104,31 @@
     "description": "Tehtävä luotiin onnistuneesti"
   },
   "message.startTaskFailed": {
-    "message": "Tehtävän käynnistys epäonnistui, ota yhteyttä ylläpitäjään:",
-    "description": "Tehtävän luonti epäonnistui"
+    "message": "Tehtävän aloittaminen epäonnistui, ota yhteyttä ylläpitäjään:",
+    "description": "Tehtävän luominen epäonnistui"
   },
   "message.usedUp": {
-    "message": "Olet käyttänyt kaikki pisteesi, osta lisää pisteitä jatkaaksesi käyttöä",
-    "description": "Kaikki käytetty ilmoitus"
+    "message": "Pisteesi on käytetty loppuun, osta lisää pisteitä jatkaaksesi käyttöä",
+    "description": "Loppu viesti"
   },
   "message.uploadImageExceed": {
     "message": "Voit ladata enintään 5 kuvaa",
     "description": "Kuvamäärä ylittää rajan"
   },
   "message.uploadImageError": {
-    "message": "Kuvien lataaminen epäonnistui, yritä myöhemmin uudelleen",
+    "message": "Kuvan lataaminen epäonnistui, yritä myöhemmin uudelleen",
     "description": "Lataus epäonnistui"
   },
   "name.model": {
     "message": "Malli",
-    "description": "Nano Banana -mallin valintatunniste"
+    "description": "Nano Banana mallin valintatunnus"
   },
   "model.nanoBanana": {
     "message": "nano-banana",
-    "description": "Nano Banana -perusmallin vaihtoehto"
+    "description": "Nano Banana perusmallin vaihtoehto"
   },
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
-    "description": "Nano Banana -ammattilaismallin vaihtoehto"
+    "description": "Nano Banana ammattilaismallin vaihtoehto"
   }
 }

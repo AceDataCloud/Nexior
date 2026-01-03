@@ -20,12 +20,12 @@
     "description": "Verfolgungs-ID der Aufgabe"
   },
   "name.createdAt": {
-    "message": "Erstellungszeit",
-    "description": "Datum und Uhrzeit der Erstellung des Kling-Videos"
+    "message": "Erstellt am",
+    "description": "Datum und Uhrzeit der Erstellung des Sora-Videos"
   },
   "name.startEndImage": {
-    "message": "Referenzbilder für Anfang und Ende",
-    "description": "Referenzbilder für das zu generierende Video"
+    "message": "Start-/Endbild",
+    "description": "Formularfeldbezeichnung: Start-/Endbild (kurz und prägnant)"
   },
   "name.action": {
     "message": "Aktion",
@@ -49,30 +49,30 @@
   },
   "option.portrait": {
     "message": "Hochformat",
-    "description": "Optionsbeschriftung für Hochformat"
+    "description": "Optionstext: Hochformat (kurz und prägnant)"
   },
   "option.landscape": {
     "message": "Querformat",
-    "description": "Optionsbeschriftung für Querformat"
+    "description": "Optionstext: Querformat (kurz und prägnant)"
   },
   "name.duration": {
     "message": "Videodauer",
     "description": "Name des Parameters für die Videodauer"
   },
   "name.size": {
-    "message": "Videoauflösung",
-    "description": "Name des Parameters für die Videoauflösung"
+    "message": "Videoqualität",
+    "description": "Name des Parameters für die Videoqualität"
   },
   "description.imageUrl": {
-    "message": "Bei der Erstellung eines Videos mit mehreren Bildern müssen mehrere Bilder hochgeladen werden.",
+    "message": "Bei Aufgaben zur Erstellung von Videos aus mehreren Bildern müssen mehrere Bilder hochgeladen werden.",
     "description": "Beschreibung des Parameters 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Aufforderungswörter zur Erstellung von Sora-Videos",
+    "message": "Aufforderungswörter zur Erstellung des Sora-Videos",
     "description": "Beschreibung des Parameters 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Array von Links zu Referenzbildern, das erste ist das Anfangsbild, das zweite das Endbild",
+    "message": "Array von Bild-URLs, das erste ist das Startbild, das zweite das Endbild",
     "description": "Beschreibung des Parameters 'image_url'"
   },
   "status.pending": {
@@ -80,7 +80,7 @@
     "description": "Wartezustand der Aufgabe"
   },
   "status.processing": {
-    "message": "Wird bearbeitet",
+    "message": "Wird verarbeitet",
     "description": "Wartezustand der Aufgabe"
   },
   "placeholder.paddingNoise": {
@@ -96,7 +96,7 @@
     "description": "Platzhalter für das Füllniveau"
   },
   "placeholder.prompt": {
-    "message": "Geben Sie die Aufforderungswörter für den gewünschten Video-Stil ein, z.B.: moving",
+    "message": "Geben Sie die Aufforderungswörter für den Video-Stil ein, z.B.: moving",
     "description": "Platzhaltertext im Aufforderungsfeld"
   },
   "placeholder.position": {
@@ -105,27 +105,27 @@
   },
   "tip.proOnly": {
     "message": "Nur das Sora-2-Pro-Modell unterstützt die Änderung dieses Parameters",
-    "description": "Hinweis für den Benutzer, dass nur das professionelle Modell die Änderung dieses Parameters unterstützt"
+    "description": "Hinweis für Benutzer, dass nur das professionelle Modell die Änderung dieses Parameters unterstützt"
   },
   "button.generate": {
     "message": "Generieren",
-    "description": "Text des Buttons zur Erstellung von Sora-Videos"
+    "description": "Text des Buttons zur Erstellung des Sora-Videos"
   },
   "button.action1": {
-    "message": "Text-zu-Video",
-    "description": "Text des Buttons zur Erstellung von Sora-Videos"
+    "message": "Text zu Video",
+    "description": "Text des Buttons zur Erstellung des Sora-Videos"
   },
   "button.action2": {
-    "message": "Bild-zu-Video",
-    "description": "Text des Buttons zur Erstellung von Sora-Videos"
+    "message": "Bild zu Video",
+    "description": "Text des Buttons zur Erstellung des Sora-Videos"
   },
   "button.download": {
     "message": "Video herunterladen",
     "description": "Text des Buttons zum Herunterladen des Videos"
   },
   "button.uploadImageUrl": {
-    "message": "Bild hochladen",
-    "description": "Text des Buttons zum Hochladen von Bildern"
+    "message": "Hochladen",
+    "description": "Text des Buttons zum Hochladen von Bildern (kurz und prägnant)"
   },
   "button.uploadVideoUrl": {
     "message": "Video hochladen",
@@ -149,14 +149,14 @@
   },
   "message.startingTask": {
     "message": "Starte Aufgabe...",
-    "description": "Nachricht beim Starten der Zeichnungsaufgabe"
+    "description": "Nachricht beim Start der Zeichnungsaufgabe"
   },
   "message.startTaskSuccess": {
-    "message": "Generierungsaufgabe erfolgreich gestartet",
+    "message": "Aufgabenerstellung erfolgreich",
     "description": "Erfolgsmeldung beim erfolgreichen Start der Aufgabe"
   },
   "message.startTaskFailed": {
-    "message": "Start der Aufgabe fehlgeschlagen, bitte kontaktieren Sie den Administrator",
+    "message": "Aufgabenerstellung fehlgeschlagen, bitte kontaktieren Sie den Administrator",
     "description": "Fehlermeldung beim Fehlschlagen des Starts der Zeichnungsaufgabe"
   },
   "message.usedUp": {
@@ -165,39 +165,39 @@
   },
   "message.generating": {
     "message": "Wird generiert...",
-    "description": "Nachricht während der Generierung des Bildes"
+    "description": "Nachricht während der Bildgenerierung"
   },
   "message.downloadVideo": {
     "message": "Dieses Video herunterladen",
-    "description": "Nachricht während der Generierung des Bildes"
+    "description": "Nachricht während der Bildgenerierung"
   },
   "message.generateFailed": {
-    "message": "Generierung des Videos fehlgeschlagen",
+    "message": "Videoerstellung fehlgeschlagen",
     "description": "Nachricht beim Fehlschlagen der Bildgenerierung"
   },
   "message.uploadVideoExceed": {
-    "message": "Anzahl der hochgeladenen Anfangsbildbilder überschreitet das Limit",
-    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Anfangsbildbilder das Limit überschreitet"
+    "message": "Die Anzahl der hochgeladenen Erstbilddateien überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Erstbilddateien das Limit überschreitet"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Die hochgeladene Dateigröße darf 10 MB nicht überschreiten!",
-    "description": "Fehlermeldung, wenn die hochgeladene Dateigröße 10 MB überschreitet"
+    "message": "Die Dateigröße darf 10 MB nicht überschreiten!",
+    "description": "Fehlermeldung, wenn die Dateigröße 10 MB überschreitet!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Die hochgeladene Datei muss im MP4-Format vorliegen!",
-    "description": "Fehlermeldung, wenn die hochgeladene Datei nicht im MP4-Format vorliegt"
+    "message": "Die hochgeladene Datei muss im MP4-Format sein!",
+    "description": "Fehlermeldung, wenn die hochgeladene Datei nicht im MP4-Format ist!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "Die Anzahl der hochgeladenen Startbildbilder überschreitet das Limit",
-    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Startbildbilder das Limit überschreitet"
+    "message": "Die Anzahl der hochgeladenen Erstbilddateien überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Erstbilddateien das Limit überschreitet"
   },
   "message.uploadEndImageExceed": {
-    "message": "Die Anzahl der hochgeladenen Endbildbilder überschreitet das Limit",
-    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Startbildbilder das Limit überschreitet"
+    "message": "Die Anzahl der hochgeladenen Endbilddateien überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Endbilddateien das Limit überschreitet"
   },
   "message.uploadStartImageError": {
-    "message": "Fehler beim Hochladen des Startbildes",
-    "description": "Fehlermeldung, wenn das Hochladen des Startbildes fehlschlägt"
+    "message": "Fehler beim Hochladen des Erstbildes",
+    "description": "Fehlermeldung, wenn das Hochladen des Erstbildes fehlschlägt"
   },
   "message.uploadVideoError": {
     "message": "Fehler beim Hochladen des Videos",
@@ -212,8 +212,8 @@
     "description": "Fehlermeldung, wenn das Hochladen des Dokuments fehlschlägt"
   },
   "message.noOperations": {
-    "message": "Keine verfügbaren Operationen",
-    "description": "Nachricht, wenn keine verfügbaren Operationen vorhanden sind"
+    "message": "Keine verfügbaren Aktionen",
+    "description": "Nachricht, wenn keine verfügbaren Aktionen vorhanden sind"
   },
   "message.noTasks": {
     "message": "Keine historischen Aufgaben, bitte klicken Sie links, um ein Video zu generieren",

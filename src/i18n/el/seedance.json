@@ -1,62 +1,166 @@
 {
-  "name.seedanceBot": { "message": "SeeDance Bot", "description": "Name of the SeeDance video generator" },
-  "name.prompt": { "message": "Video Prompt", "description": "Text prompt for video generation" },
-  "description.prompt": {
-    "message": "Describe the video you want to generate. You can include SeeDance parameters (e.g. --rs 720p --rt 16:9 --dur 5).",
-    "description": "Help text for prompt input"
+  "name.seedanceBot": {
+    "message": "SeeDance Ρομπότ",
+    "description": "SeeDance βίντεο γεννήτρια όνομα"
   },
-  "placeholder.prompt": { "message": "Describe your video...", "description": "Placeholder for prompt input" },
-  "name.model": { "message": "Model", "description": "Model selector label" },
-  "description.model": { "message": "Choose the SeeDance model version for generation.", "description": "Help text for model selector" },
-  "placeholder.select": { "message": "Select", "description": "Placeholder for select input" },
-  "model.seedance10pro": { "message": "doubao-seedance-1.0-pro", "description": "SeeDance 1.0 Pro model option" },
+  "name.prompt": {
+    "message": "Υπόδειξη",
+    "description": "Υπόδειξη για τη δημιουργία βίντεο"
+  },
+  "description.prompt": {
+    "message": "Περιγράψτε το βίντεο που θέλετε να δημιουργήσετε, μπορείτε να προσθέσετε παραμέτρους SeeDance (π.χ.: --rs 720p --rt 16:9 --dur 5).",
+    "description": "Οδηγίες εισόδου υπόδειξης"
+  },
+  "placeholder.prompt": {
+    "message": "Περιγράψτε το βίντεό σας…",
+    "description": "Υπόδειξη χώρου"
+  },
+  "name.model": {
+    "message": "Μοντέλο",
+    "description": "Ετικέτα επιλογής μοντέλου"
+  },
+  "description.model": {
+    "message": "Επιλέξτε την έκδοση μοντέλου SeeDance για τη δημιουργία.",
+    "description": "Οδηγίες επιλογής μοντέλου"
+  },
+  "placeholder.select": {
+    "message": "Επιλέξτε",
+    "description": "Υπόδειξη χώρου για επιλογή"
+  },
+  "model.seedance10pro": {
+    "message": "doubao-seedance-1.0-pro",
+    "description": "SeeDance 1.0 Pro μοντέλο"
+  },
   "model.seedance10proFast": {
     "message": "doubao-seedance-1.0-pro-fast",
-    "description": "SeeDance 1.0 Pro Fast model option"
+    "description": "SeeDance 1.0 Pro Fast μοντέλο"
   },
-  "model.seedance15pro": { "message": "doubao-seedance-1.5-pro", "description": "SeeDance 1.5 Pro model option" },
+  "model.seedance15pro": {
+    "message": "doubao-seedance-1.5-pro",
+    "description": "SeeDance 1.5 Pro μοντέλο"
+  },
   "model.seedance10liteT2v": {
     "message": "doubao-seedance-1.0-lite-t2v",
-    "description": "SeeDance 1.0 Lite T2V model option"
+    "description": "SeeDance 1.0 Lite T2V μοντέλο"
   },
   "model.seedance10liteI2v": {
     "message": "doubao-seedance-1.0-lite-i2v",
-    "description": "SeeDance 1.0 Lite I2V model option"
+    "description": "SeeDance 1.0 Lite I2V μοντέλο"
   },
-  "name.serviceTier": { "message": "Service Tier", "description": "Service tier selector label" },
-  "description.serviceTier": { "message": "Processing tier: default or flex.", "description": "Help text for service tier" },
-  "serviceTier.default": { "message": "default", "description": "Default service tier" },
-  "serviceTier.flex": { "message": "flex", "description": "Flex service tier" },
-  "name.returnLastFrame": { "message": "Return Last Frame", "description": "Return last frame switch label" },
+  "name.serviceTier": {
+    "message": "Επίπεδο Υπηρεσίας",
+    "description": "Ετικέτα επιπέδου υπηρεσίας"
+  },
+  "description.serviceTier": {
+    "message": "Επίπεδο επεξεργασίας: default ή flex.",
+    "description": "Οδηγίες επιπέδου υπηρεσίας"
+  },
+  "serviceTier.default": {
+    "message": "default",
+    "description": "Προεπιλεγμένο επίπεδο"
+  },
+  "serviceTier.flex": {
+    "message": "flex",
+    "description": "Ευέλικτο επίπεδο"
+  },
+  "name.returnLastFrame": {
+    "message": "Επιστροφή τελευταίας καρέ",
+    "description": "Ετικέτα διακόπτη επιστροφής τελευταίας καρέ"
+  },
   "description.returnLastFrame": {
-    "message": "If enabled, the API also returns the last frame image.",
-    "description": "Help text for return last frame"
+    "message": "Εάν ενεργοποιηθεί, θα επιστραφεί επιπλέον η εικόνα της τελευταίας καρέ.",
+    "description": "Οδηγίες επιστροφής τελευταίας καρέ"
   },
-  "name.firstFrame": { "message": "First Frame Image", "description": "First frame image upload label" },
-  "description.firstFrame": { "message": "Optional. Provide a reference/first-frame image.", "description": "Help text for first frame image" },
-  "name.lastFrame": { "message": "Last Frame Image", "description": "Last frame image upload label" },
+  "name.firstFrame": {
+    "message": "Εικόνα πρώτης καρέ",
+    "description": "Ετικέτα ανέβασμα εικόνας πρώτης καρέ"
+  },
+  "description.firstFrame": {
+    "message": "Προαιρετικό. Ανεβάστε την εικόνα αναφοράς/πρώτης καρέ.",
+    "description": "Οδηγίες εικόνας πρώτης καρέ"
+  },
+  "name.lastFrame": {
+    "message": "Εικόνα τελευταίας καρέ",
+    "description": "Ετικέτα ανέβασμα εικόνας τελευταίας καρέ"
+  },
   "description.lastFrame": {
-    "message": "Optional. Provide a last-frame image (requires first frame).",
-    "description": "Help text for last frame image"
+    "message": "Προαιρετικό. Ανεβάστε την εικόνα της τελευταίας καρέ (απαιτείται η πρώτη καρέ).",
+    "description": "Οδηγίες εικόνας τελευταίας καρέ"
   },
-  "button.generate": { "message": "Generate", "description": "Generate button text" },
-  "button.upload": { "message": "Upload", "description": "Upload button text" },
-  "button.download": { "message": "Download", "description": "Download button text" },
-  "button.on": { "message": "On", "description": "Switch on label" },
-  "button.off": { "message": "Off", "description": "Switch off label" },
-  "message.startingTask": { "message": "Starting SeeDance task...", "description": "Toast while starting task" },
-  "message.startTaskSuccess": { "message": "Task started successfully", "description": "Toast on successful task start" },
-  "message.startTaskFailed": { "message": "Failed to start task: ", "description": "Toast on failed task start" },
-  "message.usedUp": { "message": "Quota used up", "description": "Toast when quota is used up" },
-  "message.uploadExceed": { "message": "Only 1 image is allowed", "description": "Toast when upload exceeds limit" },
-  "message.uploadError": { "message": "Upload failed", "description": "Toast when upload fails" },
-  "message.downloadVideo": { "message": "Download video", "description": "Tooltip for download button" },
-  "status.pending": { "message": "Pending", "description": "Pending status" },
-  "status.processing": { "message": "Processing", "description": "Processing status" },
-  "name.taskId": { "message": "Task ID", "description": "Task ID label" },
-  "name.traceId": { "message": "Trace ID", "description": "Trace ID label" },
-  "name.failure": { "message": "Failure", "description": "Failure label" },
-  "name.failureReason": { "message": "Failure Reason", "description": "Failure reason label" },
-  "name.status": { "message": "Status", "description": "Status label" }
+  "button.generate": {
+    "message": "Δημιουργία",
+    "description": "Κουμπί δημιουργίας"
+  },
+  "button.upload": {
+    "message": "Ανέβασμα",
+    "description": "Κουμπί ανεβάσματος"
+  },
+  "button.download": {
+    "message": "Λήψη",
+    "description": "Κουμπί λήψης"
+  },
+  "button.on": {
+    "message": "Ενεργό",
+    "description": "Κείμενο διακόπτη ενεργοποίησης"
+  },
+  "button.off": {
+    "message": "Ανενεργό",
+    "description": "Κείμενο διακόπτη απενεργοποίησης"
+  },
+  "message.startingTask": {
+    "message": "Εκκίνηση εργασίας SeeDance…",
+    "description": "Μήνυμα εκκίνησης εργασίας"
+  },
+  "message.startTaskSuccess": {
+    "message": "Η εργασία έχει ξεκινήσει",
+    "description": "Μήνυμα επιτυχίας εκκίνησης εργασίας"
+  },
+  "message.startTaskFailed": {
+    "message": "Αποτυχία εκκίνησης:",
+    "description": "Μήνυμα αποτυχίας εκκίνησης εργασίας"
+  },
+  "message.usedUp": {
+    "message": "Η ποσόστωση έχει εξαντληθεί",
+    "description": "Μήνυμα εξάντλησης ποσόστωσης"
+  },
+  "message.uploadExceed": {
+    "message": "Μπορείτε να ανεβάσετε το πολύ 1 εικόνα",
+    "description": "Μήνυμα υπέρβασης ανάρτησης"
+  },
+  "message.uploadError": {
+    "message": "Αποτυχία ανάρτησης",
+    "description": "Μήνυμα αποτυχίας ανάρτησης"
+  },
+  "message.downloadVideo": {
+    "message": "Λήψη βίντεο",
+    "description": "Μήνυμα λήψης βίντεο"
+  },
+  "status.pending": {
+    "message": "Σε αναμονή",
+    "description": "Κατάσταση αναμονής"
+  },
+  "status.processing": {
+    "message": "Δημιουργία σε εξέλιξη",
+    "description": "Κατάσταση δημιουργίας"
+  },
+  "name.taskId": {
+    "message": "ID Εργασίας",
+    "description": "Ετικέτα ID εργασίας"
+  },
+  "name.traceId": {
+    "message": "Trace ID",
+    "description": "Ετικέτα Trace ID"
+  },
+  "name.failure": {
+    "message": "Αποτυχία",
+    "description": "Ετικέτα αποτυχίας"
+  },
+  "name.failureReason": {
+    "message": "Λόγος αποτυχίας",
+    "description": "Ετικέτα λόγου αποτυχίας"
+  },
+  "name.status": {
+    "message": "Κατάσταση",
+    "description": "Ετικέτα κατάστασης"
+  }
 }
-

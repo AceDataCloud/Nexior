@@ -17,15 +17,15 @@
   },
   "name.type": {
     "message": "Typ",
-    "description": "Innehållstypen för den FLux bild som ska genereras, såsom 'länk', 'text' etc."
+    "description": "Innehållstypen för den genererade Flux bilden, t.ex. 'länk', 'text' etc."
   },
   "name.imageUrl": {
     "message": "Referensbild",
     "description": "Namnet på referensbilden"
   },
   "name.failure": {
-    "message": "Misslyckande",
-    "description": "Uppgiftens misslyckande status"
+    "message": "Misslyckades",
+    "description": "Uppgiftens misslyckade status"
   },
   "name.failureReason": {
     "message": "Orsak till misslyckande",
@@ -41,7 +41,7 @@
   },
   "name.createdAt": {
     "message": "Skapat den",
-    "description": "Datum och tid för när Flux bild skapades"
+    "description": "Datum och tid för generering av Flux bild"
   },
   "name.numbers": {
     "message": "Antal bilder",
@@ -72,11 +72,11 @@
     "description": "Beskrivning av parametern 'numbers'"
   },
   "description.quality": {
-    "message": "Ange kvaliteten på de genererade bilderna, värdet kan vara mellan: 1-100.",
+    "message": "Ange bildens kvalitet, värdet kan vara mellan: 1-100.",
     "description": "Beskrivning av parametern 'quality'"
   },
   "description.prompt": {
-    "message": "Promptord för att generera Flux bilder",
+    "message": "Promptord för att generera Flux bild",
     "description": "Beskrivning av parametern 'prompt'"
   },
   "description.imageUrl": {
@@ -93,51 +93,51 @@
   },
   "placeholder.paddingNoise": {
     "message": "Vänligen välj...",
-    "description": "Platsinnehåll för inmatning av fyllnadsbrus"
+    "description": "Platshållare för inmatning av fyllnadsbrus"
   },
   "placeholder.select": {
     "message": "Välj",
-    "description": "Platsinnehåll för urvalsfält"
+    "description": "Platshållartext i urvalsfältet"
   },
   "placeholder.paddingLevel": {
     "message": "Vänligen välj...",
-    "description": "Platsinnehåll för fyllnadsnivå"
+    "description": "Platshållare för fyllnadsnivå"
   },
   "placeholder.prompt": {
-    "message": "Ange promptord för den stil av bild som ska genereras, till exempel: en vit siamesisk katt",
-    "description": "Platsinnehåll för promptfält"
+    "message": "Ange promptord för bildstil, t.ex.: en vit siamesisk katt",
+    "description": "Platshållartext i promptfältet"
   },
   "placeholder.position": {
     "message": "Vänligen välj...",
-    "description": "Platsinnehåll för positioninmatning"
+    "description": "Platshållare för positionsinmatning"
   },
   "placeholder.aspectRatio": {
     "message": "Vänligen välj...",
-    "description": "Platsinnehåll för bredd-höjd-förhållandeinmatning"
+    "description": "Platshållare för inmatning av bildförhållande"
   },
   "placeholder.preset": {
     "message": "Vänligen välj...",
-    "description": "Platsinnehåll för förinställning"
+    "description": "Platshållare för förinställning"
   },
   "placeholder.markerShape": {
     "message": "Vänligen välj...",
-    "description": "Platsinnehåll för markörform"
+    "description": "Platshållare för inmatning av markörform"
   },
   "placeholder.rotate": {
     "message": "Vänligen välj...",
-    "description": "Platsinnehåll för rotationsinmatning"
+    "description": "Platshållare för rotationsinmatning"
   },
   "placeholder.subMarker": {
     "message": "Vänligen välj...",
-    "description": "Platsinnehåll för under markörinmatning"
+    "description": "Platshållare för inmatning av undermarkör"
   },
   "button.generate": {
     "message": "Generera",
-    "description": "Knapptext för att generera Flux bilder"
+    "description": "Knapptext för att generera Flux bild"
   },
   "button.uploadImageUrl": {
-    "message": "Ladda upp bild",
-    "description": "Knapptext för att ladda upp bild"
+    "message": "Ladda upp",
+    "description": "Knapptext för att ladda upp bild (förenkla till 'Ladda upp', använd inte 'Ladda upp bild')"
   },
   "button.extend": {
     "message": "Utöka bild",
@@ -145,7 +145,7 @@
   },
   "button.viewImage": {
     "message": "Visa originalbild",
-    "description": "Knapptext för att visa Flux bild"
+    "description": "Knapptext för att visa genererad Flux bild"
   },
   "button.download": {
     "message": "Ladda ner bild",
@@ -164,7 +164,7 @@
     "description": "Framgångsmeddelande när bilder har laddats upp"
   },
   "message.uploadReferencesError": {
-    "message": "Misslyckades med att ladda upp bild, vänligen försök igen senare",
+    "message": "Misslyckades med att ladda upp bild, försök igen senare",
     "description": "Felmeddelande när bilduppladdning misslyckas"
   },
   "message.startingTask": {
@@ -173,10 +173,10 @@
   },
   "message.startTaskSuccess": {
     "message": "Uppgift har startats framgångsrikt",
-    "description": "Framgångsmeddelande när uppgiften har startats"
+    "description": "Framgångsmeddelande när uppgift har startats"
   },
   "message.startTaskFailed": {
-    "message": "Misslyckades med att starta uppgift, vänligen kontakta administratören",
+    "message": "Misslyckades med att starta uppgift, vänligen kontakta administratör",
     "description": "Felmeddelande när ritningsuppgift misslyckas med att starta"
   },
   "message.usedUp": {
@@ -196,16 +196,16 @@
     "description": "Meddelande när bilden genereras"
   },
   "message.generateFailed": {
-    "message": "Misslyckades med att generera bilden",
-    "description": "Meddelande när bildgenereringen misslyckas"
+    "message": "Bildgenerering misslyckades",
+    "description": "Meddelande när bildgenerering misslyckas"
   },
   "message.uploadVideoExceed": {
-    "message": "Antalet uppladdade första bildbilder överskrider gränsen",
-    "description": "Felmeddelande när antalet uppladdade första bildbilder överskrider gränsen"
+    "message": "Antalet uppladdade första bildrutor överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade första bildrutor överskrider gränsen"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Uppladdad filstorlek får inte överstiga 10 MB!",
-    "description": "Felmeddelande när den uppladdade filstorleken överstiger 10 MB!"
+    "message": "Uppladdad fil får inte överstiga 10 MB!",
+    "description": "Felmeddelande när den uppladdade filens storlek överstiger 10 MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Uppladdad fil måste vara i MP4-format!",
@@ -216,31 +216,31 @@
     "description": "Felmeddelande när antalet uppladdade referensbilder överskrider gränsen"
   },
   "message.uploadEndImageExceed": {
-    "message": "Antalet uppladdade sista bildbilder överskrider gränsen",
-    "description": "Felmeddelande när antalet uppladdade sista bildbilder överskrider gränsen"
+    "message": "Antalet uppladdade sista bildrutor överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade sista bildrutor överskrider gränsen"
   },
   "message.uploadStartImageError": {
-    "message": "Misslyckades med att ladda upp referensbilden",
-    "description": "Felmeddelande när uppladdningen av referensbilden misslyckas"
+    "message": "Uppladdning av referensbild misslyckades",
+    "description": "Felmeddelande när uppladdning av referensbild misslyckas"
   },
   "message.uploadVideoError": {
-    "message": "Misslyckades med att ladda upp bilden",
-    "description": "Felmeddelande när uppladdningen av första bildbilden misslyckas"
+    "message": "Uppladdning av bild misslyckades",
+    "description": "Felmeddelande när uppladdning av första bildruta misslyckas"
   },
   "message.uploadEndImageError": {
-    "message": "Misslyckades med att ladda upp sista bilden",
-    "description": "Felmeddelande när uppladdningen av sista bilden misslyckas"
+    "message": "Uppladdning av sista bildruta misslyckades",
+    "description": "Felmeddelande när uppladdning av sista bildruta misslyckas"
   },
   "message.uploadDocumentsError": {
-    "message": "Misslyckades med att ladda upp dokumentet",
-    "description": "Felmeddelande när uppladdningen av dokumentet misslyckas"
+    "message": "Uppladdning av dokument misslyckades",
+    "description": "Felmeddelande när uppladdning av dokument misslyckas"
   },
   "message.noOperations": {
-    "message": "Inga tillgängliga operationer",
-    "description": "Meddelande när inga operationer är tillgängliga"
+    "message": "Inga tillgängliga åtgärder",
+    "description": "Meddelande när inga åtgärder är tillgängliga"
   },
   "message.noTasks": {
-    "message": "Inga historiska uppgifter, vänligen klicka på vänster sida för att generera bilden",
+    "message": "Inga historiska uppgifter, vänligen klicka på vänster sida för att generera bild",
     "description": "Meddelande när det inte finns några uppgifter"
   }
 }

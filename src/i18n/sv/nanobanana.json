@@ -5,7 +5,7 @@
   },
   "name.task": {
     "message": "Uppgiftstyp",
-    "description": "Nano Banana bildoperations typ"
+    "description": "Nano Banana bildoperationstyp"
   },
   "name.generate": {
     "message": "Skapa bild",
@@ -20,12 +20,12 @@
     "description": "Referensbilder för redigering"
   },
   "name.failure": {
-    "message": "Misslyckande",
+    "message": "Misslyckades",
     "description": "Uppgiften misslyckades"
   },
   "name.failureReason": {
     "message": "Orsak till misslyckande",
-    "description": "Orsaken till att uppgiften misslyckades"
+    "description": "Orsak till att uppgiften misslyckades"
   },
   "name.status": {
     "message": "Status",
@@ -37,7 +37,7 @@
   },
   "name.prompt": {
     "message": "Bildprompt",
-    "description": "Promptord för att generera/redigera"
+    "description": "Prompt för att generera/redigera"
   },
   "name.nanobananaBot": {
     "message": "Nano Banana Bot",
@@ -45,22 +45,22 @@
   },
   "name.aspectRatio": {
     "message": "Bildförhållande",
-    "description": "Bildförhållandet för den genererade bilden"
+    "description": "Bildförhållande för den genererade bilden"
   },
   "name.resolution": {
     "message": "Upplösning",
-    "description": "Upplösningen för den genererade bilden"
+    "description": "Upplösning för den genererade bilden"
   },
   "description.resolutionProOnly": {
     "message": "Endast nano-banana-pro stöder upplösningsinställningar.",
     "description": "Upplösningsalternativ gäller endast för pro-modellen"
   },
   "description.prompt": {
-    "message": "Promptord för att generera eller redigera bilden",
-    "description": "Beskrivning av promptord"
+    "message": "Prompt för att generera eller redigera bilden",
+    "description": "Beskrivning av prompt"
   },
   "description.action": {
-    "message": "Åtgärden för att generera bilden. Om det är `generate`, kommer bilden att genereras baserat på promptord; om det är `edit`, kommer den att redigeras baserat på promptord och uppladdad bild.",
+    "message": "Åtgärd för att generera bilden. Om det är `generate`, kommer bilden att genereras baserat på prompten; om det är `edit`, kommer den att redigeras baserat på prompten och de uppladdade bilderna.",
     "description": "Beskrivning av action-parametern"
   },
   "description.model": {
@@ -68,11 +68,11 @@
     "description": "Beskrivning av model-parametern"
   },
   "description.imageUrls": {
-    "message": "I redigeringsuppgift måste 1-5 bilder laddas upp.",
+    "message": "Måste ladda upp 1-5 bilder för redigeringsuppgiften.",
     "description": "Beskrivning av image_urls-parametern"
   },
   "description.aspectRatio": {
-    "message": "Bildförhållandet för den genererade bilden. Stödda värden är `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Standardvärdet är `1:1`. Gäller endast när `action` är `generate`; om `action` är `edit`, används förhållandet för den första bilden i `image_urls`.",
+    "message": "Bildförhållande för den genererade bilden. Stödda värden är `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Standardvärdet är `1:1`. Gäller endast när `action` är `generate`; om `action` är `edit`, används förhållandet för den första bilden i `image_urls`.",
     "description": "Beskrivning av aspect_ratio-parametern"
   },
   "status.pending": {
@@ -84,28 +84,28 @@
     "description": "Välj platshållare"
   },
   "placeholder.prompt": {
-    "message": "Skriv in promptord, till exempel: en vit siamesisk katt",
-    "description": "Promptplatshållare"
+    "message": "Ange prompt, till exempel: en vit siamesisk katt",
+    "description": "Prompt platshållare"
   },
   "button.generate": {
     "message": "Generera",
     "description": "Generera knapp"
   },
   "button.uploadImageUrls": {
-    "message": "Ladda upp bilder",
-    "description": "Ladda upp referensbilder knapp"
+    "message": "Ladda upp",
+    "description": "Ladda upp referensbilder knapp (engelska förenklas till 'Upload', använd inte 'Upload Images')"
   },
   "message.startingTask": {
-    "message": "Startar uppgift...",
-    "description": "Meddelande om att starta uppgift"
+    "message": "Startar uppgiften...",
+    "description": "Meddelande om att starta uppgiften"
   },
   "message.startTaskSuccess": {
-    "message": "Uppgiften har framgångsrikt startats",
+    "message": "Uppgift för generering har startats framgångsrikt",
     "description": "Uppgiften skapades framgångsrikt"
   },
   "message.startTaskFailed": {
     "message": "Misslyckades med att starta uppgiften, vänligen kontakta administratören:",
-    "description": "Uppgiftsskapande misslyckades"
+    "description": "Uppgiftens skapande misslyckades"
   },
   "message.usedUp": {
     "message": "Dina poäng är slut, vänligen köp fler poäng för att fortsätta använda",
@@ -117,11 +117,11 @@
   },
   "message.uploadImageError": {
     "message": "Misslyckades med att ladda upp bilden, vänligen försök igen senare",
-    "description": "Misslyckades med uppladdning"
+    "description": "Misslyckande vid uppladdning"
   },
   "name.model": {
     "message": "Modell",
-    "description": "Val av Nano Banana-modell"
+    "description": "Etikett för val av Nano Banana-modell"
   },
   "model.nanoBanana": {
     "message": "nano-banana",

@@ -1,14 +1,14 @@
 {
   "name.taskId": {
-    "message": "ID da tarefa",
+    "message": "ID da Tarefa",
     "description": "ID da tarefa"
   },
   "name.translation": {
-    "message": "Tradução automática",
+    "message": "Tradução Automática",
     "description": "Tradução automática do vídeo Veo"
   },
   "name.modePro": {
-    "message": "Alta qualidade",
+    "message": "Alta Qualidade",
     "description": "Modo de alta qualidade do vídeo Kling"
   },
   "name.failure": {
@@ -16,7 +16,7 @@
     "description": "Estado de falha da tarefa"
   },
   "name.failureReason": {
-    "message": "Razão da falha",
+    "message": "Razão da Falha",
     "description": "Razão pela qual a tarefa falhou"
   },
   "name.status": {
@@ -24,31 +24,31 @@
     "description": "Status da tarefa"
   },
   "name.traceId": {
-    "message": "ID de rastreamento",
+    "message": "ID de Rastreamento",
     "description": "ID de rastreamento da tarefa"
   },
   "name.createdAt": {
-    "message": "Data de criação",
-    "description": "Data e hora em que o vídeo Kling foi gerado"
+    "message": "Data de Criação",
+    "description": "Data e hora em que o vídeo Veo foi gerado"
   },
   "name.startEndImage": {
-    "message": "Imagens de referência do início e do fim",
-    "description": "Imagens de referência para o vídeo a ser gerado"
+    "message": "Imagens de Referência Início/Fim",
+    "description": "Rótulo do campo do formulário: Imagens de referência do início/fim (sugestão em inglês: 'Start/End Frames', manter curto para evitar obstrução do botão)"
   },
   "name.action": {
     "message": "Ação",
     "description": "Lista de ações disponíveis"
   },
   "name.action3": {
-    "message": "Obter vídeo em 1080p",
-    "description": "Obter vídeo em 1080p"
+    "message": "Obter vídeo em 1080p de",
+    "description": "Imagens de referência para o vídeo a ser gerado"
   },
   "name.prompt": {
-    "message": "Prompt do vídeo",
+    "message": "Prompt do Vídeo",
     "description": "Prompt para entrada de conteúdo"
   },
   "name.model": {
-    "message": "Versão do modelo",
+    "message": "Versão do Modelo",
     "description": "Versão do modelo utilizada para gerar o vídeo"
   },
   "name.veoBot": {
@@ -68,11 +68,11 @@
     "description": "Descrição do parâmetro 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Palavras-chave para gerar vídeos Veo",
+    "message": "Palavras-chave para gerar o vídeo Veo",
     "description": "Descrição do parâmetro 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Array de links de imagens de referência, a primeira é a imagem do início e a segunda é a imagem do fim",
+    "message": "Array de links de imagens de referência, a primeira é a imagem do início, seguida pela imagem do fim",
     "description": "Descrição do parâmetro 'image_url'"
   },
   "status.pending": {
@@ -96,7 +96,7 @@
     "description": "Placeholder para nível de preenchimento"
   },
   "placeholder.prompt": {
-    "message": "Digite o prompt para o estilo do vídeo a ser gerado, por exemplo: moving",
+    "message": "Digite as palavras-chave para o estilo do vídeo a ser gerado, por exemplo: moving",
     "description": "Texto de placeholder no campo de prompt"
   },
   "placeholder.position": {
@@ -105,47 +105,47 @@
   },
   "button.generate": {
     "message": "Gerar",
-    "description": "Texto do botão para gerar vídeos Veo"
+    "description": "Texto do botão para gerar o vídeo Veo"
   },
   "button.action1": {
-    "message": "Gerar vídeo",
-    "description": "Texto do botão para gerar vídeos Veo"
+    "message": "Vídeo de Texto",
+    "description": "Texto do botão para gerar o vídeo Veo"
   },
   "button.action2": {
-    "message": "Gerar vídeo a partir de imagem",
-    "description": "Texto do botão para gerar vídeos Veo"
+    "message": "Vídeo de Imagem",
+    "description": "Texto do botão para gerar o vídeo Veo"
   },
   "button.action3": {
     "message": "Obter 1080p",
-    "description": "Texto do botão para gerar vídeos Veo"
+    "description": "Texto do botão para gerar o vídeo Veo"
   },
   "button.download": {
-    "message": "Baixar vídeo",
-    "description": "Texto do botão para baixar vídeo"
+    "message": "Baixar Vídeo",
+    "description": "Texto do botão para baixar o vídeo"
   },
   "button.uploadImageUrl": {
-    "message": "Fazer upload de imagem",
-    "description": "Texto do botão para fazer upload de imagem"
+    "message": "Fazer Upload",
+    "description": "Texto do botão para fazer upload de imagens (simplificar para 'Upload', não usar 'Upload Image')"
   },
   "button.uploadVideoUrl": {
-    "message": "Fazer upload de vídeo",
-    "description": "Texto do botão para fazer upload de vídeo"
+    "message": "Fazer Upload do Vídeo",
+    "description": "Texto do botão para fazer upload do vídeo"
   },
   "button.uploadReferences": {
-    "message": "Fazer upload",
+    "message": "Fazer Upload",
     "description": "Texto do botão que permite ao usuário fazer upload de referências"
   },
   "message.uploadReferencesExceed": {
-    "message": "É possível fazer upload de no máximo 2 imagens",
+    "message": "Máximo de 2 imagens podem ser enviadas",
     "description": "Mensagem de erro quando o número de imagens enviadas excede o limite"
   },
   "message.uploadReferencesSuccess": {
     "message": "Imagens enviadas com sucesso",
-    "description": "Mensagem de sucesso ao enviar imagens com sucesso"
+    "description": "Mensagem de sucesso quando as imagens são enviadas com sucesso"
   },
   "message.uploadReferencesError": {
     "message": "Falha ao enviar imagens, por favor, tente novamente mais tarde",
-    "description": "Mensagem de erro quando o upload de imagens falha"
+    "description": "Mensagem de erro quando o upload das imagens falha"
   },
   "message.startingTask": {
     "message": "Iniciando tarefa...",
@@ -180,7 +180,7 @@
     "description": "Mensagem de erro quando o número de imagens do quadro inicial excede o limite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "O tamanho do arquivo enviado não pode exceder 10MB!",
+    "message": "O tamanho do arquivo não pode exceder 10MB!",
     "description": "Mensagem de erro quando o tamanho do arquivo enviado excede 10MB!"
   },
   "message.uploadVideoTypeFailed": {
@@ -188,11 +188,11 @@
     "description": "Mensagem de erro quando o arquivo enviado não está no formato MP4!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "O número de imagens da primeira frame excede o limite",
+    "message": "Número de imagens da primeira frame excede o limite",
     "description": "Mensagem de erro quando o número de imagens da primeira frame excede o limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "O número de imagens da última frame excede o limite",
+    "message": "Número de imagens da última frame excede o limite",
     "description": "Mensagem de erro quando o número de imagens da última frame excede o limite"
   },
   "message.uploadStartImageError": {
@@ -216,7 +216,7 @@
     "description": "Mensagem quando não há operações disponíveis"
   },
   "message.noTasks": {
-    "message": "Nenhuma tarefa histórica, por favor clique à esquerda para gerar vídeo",
+    "message": "Nenhuma tarefa histórica, clique à esquerda para gerar vídeo",
     "description": "Mensagem quando não há tarefas"
   }
 }

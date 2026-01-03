@@ -17,11 +17,11 @@
   },
   "name.status": {
     "message": "Statut",
-    "description": "Statut de la tâche"
+    "description": "État de la tâche"
   },
   "name.traceId": {
-    "message": "ID de traçage",
-    "description": "ID de traçage de la tâche"
+    "message": "ID de suivi",
+    "description": "ID de suivi de la tâche"
   },
   "name.size": {
     "message": "Taille",
@@ -32,8 +32,8 @@
     "description": "Date et heure de génération du QR code"
   },
   "name.pixelStyle": {
-    "message": "Style de pixel",
-    "description": "Style de pixel du QR code à générer"
+    "message": "Style pixel",
+    "description": "Style pixel du QR code à générer"
   },
   "name.startImageUrl": {
     "message": "Image de départ",
@@ -80,20 +80,20 @@
     "description": "Paramètres avancés du QR code à générer"
   },
   "name.custom": {
-    "message": "Télécharger une vidéo personnalisée",
+    "message": "Télécharger vidéo personnalisée",
     "description": "Vidéo personnalisée à étendre"
   },
   "name.extend": {
-    "message": "Vidéo d'extension provenant de",
+    "message": "Vidéo étendue de",
     "description": "Invite pour la saisie de contenu"
   },
   "name.loop": {
-    "message": "Lecture en boucle de la vidéo",
+    "message": "Lecture en boucle",
     "description": "Paramètres avancés du QR code à générer"
   },
   "name.aspectRatio": {
-    "message": "Rapport d'aspect",
-    "description": "Rapport d'aspect du QR code à générer"
+    "message": "Ratio d'aspect",
+    "description": "Ratio d'aspect du QR code à générer"
   },
   "name.markerShape": {
     "message": "Forme du marqueur",
@@ -108,7 +108,7 @@
     "description": "Nom du générateur de QR code"
   },
   "name.steps": {
-    "message": "Nombre d'étapes",
+    "message": "Étapes de génération",
     "description": "Nombre d'étapes pour générer le QR code"
   },
   "name.preset": {
@@ -128,7 +128,7 @@
     "description": "Méthode de saisie"
   },
   "inputWay.upload": {
-    "message": "Télécharger le QR code",
+    "message": "Télécharger QR code",
     "description": "Méthode de saisie"
   },
   "description.loop": {
@@ -136,7 +136,7 @@
     "description": "Description du paramètre 'qrw'"
   },
   "description.enhancement": {
-    "message": "Si vous n'êtes pas sûr de la façon d'écrire le texte d'invite, activez la fonction d'amélioration des invites.",
+    "message": "Si vous n'êtes pas sûr de la façon d'écrire les invites, activez l'amélioration des invites.",
     "description": "Description du paramètre 'qrw'"
   },
   "description.custom": {
@@ -148,7 +148,7 @@
     "description": "Description du paramètre 'steps'"
   },
   "description.videoUrl": {
-    "message": "URL de la vidéo personnalisée à étendre, qui sera la vidéo d'extension.",
+    "message": "URL de la vidéo personnalisée à étendre, qui sera la vidéo étendue.",
     "description": "Description du paramètre 'steps'"
   },
   "description.endImageUrl": {
@@ -156,7 +156,7 @@
     "description": "Description du paramètre 'steps'"
   },
   "description.prompt": {
-    "message": "Texte d'invite pour générer la vidéo Luma",
+    "message": "Invites pour générer la vidéo Luma",
     "description": "Description du paramètre 'prompt'"
   },
   "status.pending": {
@@ -169,27 +169,27 @@
   },
   "placeholder.paddingNoise": {
     "message": "Veuillez sélectionner...",
-    "description": "Espace réservé pour l'entrée de bruit de remplissage"
+    "description": "Espace réservé pour le bruit de remplissage"
   },
   "placeholder.paddingLevel": {
     "message": "Veuillez sélectionner...",
     "description": "Espace réservé pour le niveau de remplissage"
   },
   "placeholder.prompt": {
-    "message": "Entrez le texte d'invite pour le style de vidéo à générer, par exemple : Des astronautes se déplacent de l'espace au volcan",
+    "message": "Entrez les invites pour le style de vidéo à générer, par exemple : Astronautes se déplaçant de l'espace au volcan",
     "description": "Texte d'espace réservé dans le champ d'invite"
   },
   "placeholder.startImageUrl": {
     "message": "Lien de l'image de départ",
-    "description": "Espace réservé pour l'entrée de la graine"
+    "description": "Espace réservé pour la saisie de la graine"
   },
   "placeholder.endImageUrl": {
     "message": "Lien de l'image de fin",
-    "description": "Espace réservé pour l'entrée de la graine"
+    "description": "Espace réservé pour la saisie de la graine"
   },
   "placeholder.position": {
     "message": "Veuillez sélectionner...",
-    "description": "Espace réservé pour l'entrée de position"
+    "description": "Espace réservé pour la position"
   },
   "placeholder.content": {
     "message": "Entrez le contenu du QR code à générer, par exemple : https://www.google.com",
@@ -205,7 +205,7 @@
   },
   "placeholder.markerShape": {
     "message": "Veuillez sélectionner...",
-    "description": "Espace réservé pour l'entrée de forme de marqueur"
+    "description": "Espace réservé pour l'entrée de la forme du marqueur"
   },
   "placeholder.rotate": {
     "message": "Veuillez sélectionner...",
@@ -213,7 +213,7 @@
   },
   "placeholder.subMarker": {
     "message": "Veuillez sélectionner...",
-    "description": "Espace réservé pour l'entrée de sous-marqueur"
+    "description": "Espace réservé pour l'entrée du sous-marqueur"
   },
   "button.generate": {
     "message": "Générer",
@@ -228,16 +228,16 @@
     "description": "Texte du bouton pour télécharger la vidéo"
   },
   "button.uploadStartImageUrl": {
-    "message": "Télécharger l'image",
-    "description": "Texte du bouton pour télécharger le code QR"
+    "message": "Télécharger",
+    "description": "Texte du bouton pour télécharger une image (simplifié en 'Télécharger')"
   },
   "button.uploadVideoUrl": {
     "message": "Télécharger la vidéo",
     "description": "Texte du bouton pour télécharger le code QR"
   },
   "button.uploadEndImageUrl": {
-    "message": "Télécharger l'image",
-    "description": "Texte du bouton pour télécharger le code QR"
+    "message": "Télécharger",
+    "description": "Texte du bouton pour télécharger une image (simplifié en 'Télécharger')"
   },
   "preset.sunset": {
     "message": "Coucher de soleil",
@@ -336,11 +336,11 @@
     "description": "Style de préréglage pour générer le code QR"
   },
   "message.uploadQr": {
-    "message": "Téléchargez une image de code QR pour générer un code QR artistique correspondant au contenu du code QR",
+    "message": "Téléchargez une image de code QR pour générer un code QR artistique correspondant au contenu",
     "description": "Instructions pour télécharger le code QR"
   },
   "message.promptPlaceholder": {
-    "message": "Veuillez entrer une phrase décrivant l'image à générer, par exemple : un chat mignon. Les paramètres supplémentaires remplaceront les paramètres par défaut",
+    "message": "Entrez une phrase décrivant l'image à générer, par exemple : un chat mignon. Les paramètres supplémentaires remplaceront les paramètres par défaut",
     "description": "Texte d'espace réservé dans le champ d'invite"
   },
   "message.uploadReferencesExceed": {
@@ -349,7 +349,7 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Image téléchargée avec succès",
-    "description": "Message de succès lors du téléchargement réussi d'une image"
+    "description": "Message de succès lors du téléchargement d'une image"
   },
   "message.uploadReferencesError": {
     "message": "Échec du téléchargement de l'image, veuillez réessayer plus tard",
@@ -361,51 +361,51 @@
   },
   "message.startTaskSuccess": {
     "message": "Tâche de génération lancée avec succès",
-    "description": "Message de succès lors du démarrage réussi d'une tâche"
+    "description": "Message de succès lors du démarrage de la tâche"
   },
   "message.startTaskFailed": {
     "message": "Échec du lancement de la tâche, veuillez contacter l'administrateur",
     "description": "Message d'erreur lors de l'échec du démarrage de la tâche de dessin"
   },
   "message.usedUp": {
-    "message": "Vos crédits sont épuisés, veuillez acheter plus de crédits pour continuer à utiliser",
+    "message": "Vos crédits sont épuisés, veuillez acheter plus de crédits pour continuer",
     "description": "Message lorsque les crédits sont épuisés"
   },
   "message.generating": {
     "message": "Génération en cours...",
-    "description": "Message pendant que l'image est en cours de génération"
+    "description": "Message lorsque l'image est en cours de génération"
   },
   "message.downloadVideo": {
     "message": "Télécharger cette vidéo",
-    "description": "Message affiché pendant que l'image est en cours de génération"
+    "description": "Message lorsque l'image est en cours de génération"
   },
   "message.extendVideo": {
     "message": "Continuer à générer cette vidéo",
-    "description": "Message affiché pendant que l'image est en cours de génération"
+    "description": "Message lorsque l'image est en cours de génération"
   },
   "message.generateFailed": {
     "message": "Échec de la génération de l'image",
-    "description": "Message affiché lorsque la génération de l'image échoue"
+    "description": "Message lorsque la génération de l'image échoue"
   },
   "message.uploadVideoExceed": {
-    "message": "Le nombre d'images de la première image téléchargées dépasse la limite",
-    "description": "Message d'erreur lorsque le nombre d'images de la première image téléchargées dépasse la limite"
+    "message": "Le nombre d'images de la première image dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de la première image dépasse la limite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "La taille du fichier téléchargé ne peut pas dépasser 10 Mo !",
-    "description": "Message d'erreur lorsque la taille du fichier téléchargé ne peut pas dépasser 10 Mo !"
+    "message": "La taille du fichier ne doit pas dépasser 10 Mo !",
+    "description": "Message d'erreur lorsque la taille du fichier dépasse 10 Mo !"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Le fichier téléchargé doit être au format MP4 !",
-    "description": "Message d'erreur lorsque le fichier téléchargé doit être au format MP4 !"
+    "description": "Message d'erreur lorsque le fichier téléchargé n'est pas au format MP4 !"
   },
   "message.uploadStartImageExceed": {
-    "message": "Le nombre d'images de la première image téléchargées dépasse la limite",
-    "description": "Message d'erreur lorsque le nombre d'images de la première image téléchargées dépasse la limite"
+    "message": "Le nombre d'images de la première image dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de la première image dépasse la limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Le nombre d'images de la dernière image téléchargées dépasse la limite",
-    "description": "Message d'erreur lorsque le nombre d'images de la dernière image téléchargées dépasse la limite"
+    "message": "Le nombre d'images de la dernière image dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de la dernière image dépasse la limite"
   },
   "message.uploadStartImageError": {
     "message": "Échec du téléchargement de l'image de la première image",
@@ -425,11 +425,11 @@
   },
   "message.noOperations": {
     "message": "Aucune opération disponible",
-    "description": "Message affiché lorsqu'il n'y a aucune opération disponible"
+    "description": "Message lorsque aucune opération n'est disponible"
   },
   "message.noTasks": {
-    "message": "Aucune tâche historique, veuillez cliquer sur 'Générer une vidéo' à gauche",
-    "description": "Message affiché lorsqu'il n'y a aucune tâche"
+    "message": "Aucune tâche historique, veuillez cliquer à gauche pour générer une vidéo",
+    "description": "Message lorsque aucune tâche n'est disponible"
   },
   "markerShape.square": {
     "message": "Carré",

@@ -1,18 +1,18 @@
 {
   "name.taskId": {
-    "message": "ID da tarefa",
+    "message": "ID da Tarefa",
     "description": "ID da tarefa"
   },
   "name.task": {
-    "message": "Tipo de tarefa",
+    "message": "Tipo de Tarefa",
     "description": "Tipo de operação do gerador de imagens Flux"
   },
   "name.generate": {
-    "message": "Criar imagem",
+    "message": "Criar Imagem",
     "description": "Tipo de operação do gerador de imagens Flux"
   },
   "name.edits": {
-    "message": "Editar imagem",
+    "message": "Editar Imagem",
     "description": "Tipo de operação do gerador de imagens Flux"
   },
   "name.type": {
@@ -20,7 +20,7 @@
     "description": "Tipo de conteúdo da imagem FLux a ser gerada, como 'link', 'texto', etc."
   },
   "name.imageUrl": {
-    "message": "Imagem de referência",
+    "message": "Imagem de Referência",
     "description": "Nome da imagem de referência"
   },
   "name.failure": {
@@ -28,7 +28,7 @@
     "description": "Estado de falha da tarefa"
   },
   "name.failureReason": {
-    "message": "Razão da falha",
+    "message": "Razão da Falha",
     "description": "Razão pela qual a tarefa falhou"
   },
   "name.status": {
@@ -36,23 +36,23 @@
     "description": "Estado da tarefa"
   },
   "name.traceId": {
-    "message": "ID de rastreamento",
+    "message": "ID de Rastreamento",
     "description": "ID de rastreamento da tarefa"
   },
   "name.createdAt": {
-    "message": "Data de criação",
+    "message": "Data de Criação",
     "description": "Data e hora em que a imagem Flux foi gerada"
   },
   "name.numbers": {
-    "message": "Quantidade de imagens",
+    "message": "Quantidade de Imagens",
     "description": "Quantidade de imagens a serem geradas"
   },
   "name.quality": {
-    "message": "Qualidade da imagem",
+    "message": "Qualidade da Imagem",
     "description": "Qualidade da imagem"
   },
   "name.prompt": {
-    "message": "Prompt de imagem",
+    "message": "Prompt da Imagem",
     "description": "Prompt de entrada de conteúdo"
   },
   "name.ratio": {
@@ -60,7 +60,7 @@
     "description": "Nome do parâmetro de proporção"
   },
   "name.model": {
-    "message": "Versão do modelo",
+    "message": "Versão do Modelo",
     "description": "Versão do modelo utilizada para gerar a imagem"
   },
   "name.fluxBot": {
@@ -104,7 +104,7 @@
     "description": "Placeholder para nível de preenchimento"
   },
   "placeholder.prompt": {
-    "message": "Insira as palavras-chave para o estilo da imagem a ser gerada, por exemplo: um gato siames branco",
+    "message": "Digite o prompt para o estilo da imagem a ser gerada, por exemplo: um gato siames branco",
     "description": "Texto de placeholder no campo de prompt"
   },
   "placeholder.position": {
@@ -136,19 +136,19 @@
     "description": "Texto do botão para gerar a imagem Flux"
   },
   "button.uploadImageUrl": {
-    "message": "Fazer upload da imagem",
-    "description": "Texto do botão para fazer upload da imagem"
+    "message": "Fazer Upload",
+    "description": "Texto do botão para fazer upload da imagem (simplificado para 'Upload')"
   },
   "button.extend": {
-    "message": "Expandir imagem",
+    "message": "Expandir Imagem",
     "description": "Texto do botão para expandir a imagem"
   },
   "button.viewImage": {
-    "message": "Ver imagem original",
-    "description": "Texto do botão para ver a imagem Flux"
+    "message": "Ver Imagem Original",
+    "description": "Texto do botão para visualizar a imagem Flux"
   },
   "button.download": {
-    "message": "Baixar imagem",
+    "message": "Baixar Imagem",
     "description": "Texto do botão para baixar a imagem"
   },
   "message.downloadImage": {
@@ -156,7 +156,7 @@
     "description": "Abrir imagem em nova janela"
   },
   "message.uploadReferencesExceed": {
-    "message": "É possível fazer upload de no máximo 5 imagens",
+    "message": "Máximo de 5 imagens podem ser enviadas",
     "description": "Mensagem de erro quando a quantidade de imagens enviadas excede o limite"
   },
   "message.uploadReferencesSuccess": {
@@ -165,7 +165,7 @@
   },
   "message.uploadReferencesError": {
     "message": "Falha ao enviar a imagem, por favor, tente novamente mais tarde",
-    "description": "Mensagem de erro quando o upload da imagem falha"
+    "description": "Mensagem de erro ao falhar o upload da imagem"
   },
   "message.startingTask": {
     "message": "Iniciando tarefa...",
@@ -193,7 +193,7 @@
   },
   "message.extendVideo": {
     "message": "Continuar gerando esta imagem",
-    "description": "Mensagem enquanto a imagem está sendo gerada"
+    "description": "Mensagem quando a imagem está sendo gerada"
   },
   "message.generateFailed": {
     "message": "Falha ao gerar a imagem",
@@ -208,8 +208,8 @@
     "description": "Mensagem de erro quando o tamanho do arquivo excede 10MB!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "O arquivo enviado deve estar no formato MP4!",
-    "description": "Mensagem de erro quando o arquivo enviado não está no formato MP4!"
+    "message": "O arquivo deve estar no formato MP4!",
+    "description": "Mensagem de erro quando o arquivo não está no formato MP4!"
   },
   "message.uploadStartImageExceed": {
     "message": "Número de imagens de referência excede o limite",
@@ -240,7 +240,7 @@
     "description": "Mensagem quando não há operações disponíveis"
   },
   "message.noTasks": {
-    "message": "Nenhuma tarefa histórica, por favor clique à esquerda para gerar a imagem",
+    "message": "Nenhuma tarefa histórica, clique à esquerda para gerar a imagem",
     "description": "Mensagem quando não há tarefas"
   }
 }

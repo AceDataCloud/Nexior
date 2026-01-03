@@ -17,11 +17,11 @@
   },
   "button.goCredentials": {
     "message": "Avaimet",
-    "description": "Painikkeen teksti, napsauttamalla tätä painiketta siirrytään tunnistetietosivulle. Englanniksi on käännettävä 'Keys', suomeksi 'Avaimet'."
+    "description": "Painikkeen teksti, napsauttamalla tätä painiketta siirrytään tunnistetietosivulle."
   },
   "button.buyMore": {
-    "message": "Lataus",
-    "description": "Painikkeen teksti, napsauttamalla tätä painiketta siirrytään lisää ostamisen sivulle. Englanniksi on käännettävä 'Top Up', suomeksi 'Lataus'."
+    "message": "Lataa lisää",
+    "description": "Painikkeen teksti, napsauttamalla tätä painiketta siirrytään lisää ostamaan -sivulle."
   },
   "button.createOrder": {
     "message": "Luo tilaus",
@@ -37,7 +37,7 @@
   },
   "button.usage": {
     "message": "Käyttö",
-    "description": "Painikkeen teksti, napsauttamalla tätä painiketta siirrytään käyttöhistoriasivulle. Englanniksi on käännettävä 'Usage', suomeksi 'Käyttö'."
+    "description": "Painikkeen teksti, napsauttamalla tätä painiketta siirrytään käyttöhistoriasivulle."
   },
   "field.serviceName": {
     "message": "Palvelun nimi",
@@ -53,15 +53,15 @@
   },
   "field.id": {
     "message": "Hakemus ID",
-    "description": "Hakemuksen ID. Englanniksi on käännettävä 'App ID', suomeksi 'Hakemus ID'."
+    "description": "Hakemuksen ID."
   },
   "field.remainingAmount": {
     "message": "Saldo",
-    "description": "Hakemuksen saldo. Englanniksi on käännettävä 'Balance', suomeksi 'Saldo'."
+    "description": "Hakemuksen saldo."
   },
   "field.usedAmount": {
     "message": "Käytetty",
-    "description": "Hakemuksen käytetty määrä. Englanniksi on käännettävä 'Used', suomeksi 'Käytetty'."
+    "description": "Hakemuksen käytetty määrä."
   },
   "field.apiKey": {
     "message": "API-avain",
@@ -77,7 +77,7 @@
   },
   "field.allowConsumeGlobal": {
     "message": "Salli yleisen saldon käyttö",
-    "description": "Yleisen saldon (General Balance) kulutuksen sallimisen kytkin. Englanniksi on käännettävä 'Allow Use General Balance', suomeksi 'Salli yleisen saldon käyttö'."
+    "description": "Yleisen saldon (General Balance) kulutuksen sallimisen kytkin."
   },
   "field.amount": {
     "message": "Määrä",
@@ -89,7 +89,7 @@
   },
   "field.traceId": {
     "message": "Seuranta ID",
-    "description": "API-palvelun hakemuksen API-kutsun seuranta ID"
+    "description": "API-palvelun hakemuksen API-kutsun seuranta ID."
   },
   "field.shouldPayPrice": {
     "message": "Lopullinen hinta",
@@ -97,11 +97,11 @@
   },
   "field.api": {
     "message": "API",
-    "description": "Tämä on verkkopalvelu, joka tarjoaa palvelua käyttäjälle API:n kautta."
+    "description": "Tämä on verkkopalvelu, lomake tarjoaa palvelua käyttäjälle API:n kautta."
   },
   "field.proxy": {
-    "message": "Välikäsi",
-    "description": "Tämä on verkkopalvelu, joka tarjoaa palvelua käyttäjälle HTTP-välikäden (tietojen siirtoon) kautta."
+    "message": "Välimuisti",
+    "description": "Tämä on verkkopalvelu, lomake tarjoaa palvelua käyttäjälle HTTP-välimuistin (datan siirtoon) kautta."
   },
   "field.credential": {
     "message": "Tunnistetiedot",
@@ -124,8 +124,8 @@
     "description": "Hakemuksen ilmainen määrä."
   },
   "field.extraPrice": {
-    "message": "Hinta",
-    "description": "Käyttäjän maksama hakemuksen ylimääräinen hinta."
+    "message": "Lisähinta",
+    "description": "Käyttäjän maksama hakemuksen lisähinta."
   },
   "message.alreadyApplied": {
     "message": "Olette jo hakenut tätä palvelua, tarkistakaa konsoli",
@@ -140,32 +140,32 @@
     "description": "Viesti, joka näytetään käyttäjälle, kun hän ei ole vielä hakenut tätä palvelua."
   },
   "message.globalBalanceBuyDescription": {
-    "message": "Voit valita lataamisen yleiseen saldoon tai ladata jokaiselle hakemukselle erikseen. Tämä lataus menee yleiseen saldoon, ja kun jonkin hakemuksen saldo on riittämätön, yleistä saldoa käytetään automaattisesti täydennykseen.",
-    "description": "Vihje, joka selittää, että lataus menee yleiseen saldoon ja automaattisesti täydennetään, kun instanssin saldo on riittämätön. Termi: yleinen saldo = General Balance (huomaa, ettei käännetä Global Balance)."
+    "message": "Voit valita lataavasi yleiseen saldoon tai ladata erikseen jokaiselle hakemukselle. Tämä lataus menee yleiseen saldoon, ja kun jonkin hakemuksen saldo on riittämätön, yleistä saldoa käytetään automaattisesti täydennykseen.",
+    "description": "Vihje, joka selittää, että lataus menee yleiseen saldoon ja automaattisesti täydentää, kun instanssin saldo on riittämätön."
   },
   "message.yourApplication": {
     "message": "Hakemuksenne",
     "description": "Viesti, joka näytetään käyttäjälle hänen hakemuksensa aikana."
   },
   "message.unverified": {
-    "message": "Sinun on suoritettava henkilöllisyyden vahvistaminen ennen tämän palvelun hakemista.",
-    "description": "Viesti, joka näytetään käyttäjälle, kun hän ei ole vielä suorittanut henkilöllisyyden vahvistamista."
+    "message": "Sinun on suoritettava henkilöllisyyden vahvistus ennen tämän palvelun hakemista.",
+    "description": "Viesti, joka näytetään käyttäjälle, kun hän ei ole vielä suorittanut henkilöllisyyden vahvistusta."
   },
   "message.goVerify": {
-    "message": "Siirry henkilöllisyyden vahvistamiseen",
-    "description": "Viesti, joka näytetään käyttäjälle, kun hän ei ole vielä suorittanut henkilöllisyyden vahvistamista."
+    "message": "Siirry henkilöllisyyden vahvistukseen",
+    "description": "Viesti, joka näytetään käyttäjälle, kun hän ei ole vielä suorittanut henkilöllisyyden vahvistusta."
   },
   "message.requiredParameter": {
-    "message": "Pakollinen parametri",
-    "description": "Viesti, joka näytetään käyttäjälle, kun hän ei ole vielä syöttänyt pakollista parametria."
+    "message": "Pakollinen kenttä",
+    "description": "Viesti, joka näytetään käyttäjälle, kun hän ei ole syöttänyt pakollista kenttää."
   },
   "message.example": {
     "message": "Esimerkki",
-    "description": "Viesti, joka näytetään käyttäjälle, kun hän ei ole vielä syöttänyt pakollista parametria."
+    "description": "Viesti, joka näytetään käyttäjälle, kun hän ei ole syöttänyt pakollista kenttää."
   },
   "message.applicationSelection": {
-    "message": "Alla on nykyiset hakemasi tai ostamasi paketit, voit valita minkä tahansa paketin jatkaaksesi palvelun käyttöä.",
-    "description": "Viesti, joka näytetään käyttäjälle, kun hänen on valittava hakemus."
+    "message": "Alla on nykyiset hakemasi tai ostamasi paketit, voit valita yhden jatkaaksesi palvelun käyttöä.",
+    "description": "Viesti, joka näytetään käyttäjälle, kun hän tarvitsee valita hakemus."
   },
   "message.createCredentialSuccessfully": {
     "message": "Todistus luotu onnistuneesti",
@@ -229,11 +229,11 @@
   },
   "title.globalBuy": {
     "message": "Ace Data Cloud yleinen pisteiden lataus",
-    "description": "Sivun otsikko, kun käyttäjä haluaa ostaa yleisiä palveluja."
+    "description": "Sivun otsikko, kun käyttäjä haluaa ostaa yleispalvelun."
   },
   "title.applicationRemainingCount": {
-    "message": "Muutoslaskuri",
-    "description": "Sivun otsikko, kun käyttäjä haluaa muuttaa hakemusten laskuria."
+    "message": "Muokkaa laskuria",
+    "description": "Sivun otsikko, kun käyttäjä haluaa muokata hakemuksen laskuria."
   },
   "title.manageApplication": {
     "message": "Hakemusten hallinta",
@@ -248,24 +248,24 @@
     "description": "Sivun otsikko, kun käyttäjä tarkastelee hakemusten laskuria."
   },
   "message.countDescription": {
-    "message": "Jokaiselle palvelulle vastaa yksi hakemusinstanssi, avaimet, käyttö ja muut tiedot voidaan tarkastella alla olevassa hallinnassa.",
+    "message": "Jokaiselle palvelulle vastaa yksi hakemus, avaimet, käyttö ja muut tiedot voidaan tarkastella alla olevassa hallinnassa.",
     "description": "Viesti, joka näytetään käyttäjälle, kun hän tarkastelee hakemusten laskuria."
   },
   "title.globalBalance": {
     "message": "Yleinen saldo",
-    "description": "Sivun otsikko, kun käyttäjä tarkastelee yleistä saldoa. Englanniksi on pakko kääntää 'General Balance', kiinaksi '通用余额'."
+    "description": "Sivun otsikko, kun käyttäjä tarkastelee yleistä saldoa."
   },
   "message.globalBalanceDescription": {
     "message": "Kun 'Salli yleinen saldo' on käytössä, instanssin saldoa käytetään automaattisesti, kun se on riittämätön.",
-    "description": "Vihje, joka selittää, että instanssin saldoa käytetään automaattisesti, kun se on riittämätön. Termi: yleinen saldo = General Balance (huomioi, ettei käännetä Global Balanceksi)."
+    "description": "Vihje, joka selittää, että instanssin saldoa käytetään automaattisesti, kun se on riittämätön."
   },
   "button.service": {
-    "message": "Erityinen asiakaspalvelu",
-    "description": "Painikkeen teksti, napsauttamalla tätä painiketta siirrytään erityiseen asiakaspalvelusivuun."
+    "message": "Asiakaspalvelu",
+    "description": "Painikkeen teksti, napsauttamalla tätä painiketta siirryt asiakaspalvelusivulle."
   },
   "button.acquire": {
     "message": "Lisää asiakaspalvelu",
-    "description": "Painikkeen teksti, napsauttamalla tätä painiketta hankitaan tämä kohde."
+    "description": "Painikkeen teksti, napsauttamalla tätä painiketta lisätään asiakaspalvelu."
   },
   "button.delete": {
     "message": "Poista",
@@ -276,36 +276,36 @@
     "description": "Hakemuksessa käytettävä tietojoukko."
   },
   "field.disabled": {
-    "message": "Poissa käytöstä",
-    "description": "Onko hakemus poistettu käytöstä."
+    "message": "Poistettu käytöstä",
+    "description": "Ilmoittaa, onko hakemus poistettu käytöstä."
   },
   "message.addServiceToAcquire": {
-    "message": "Ole hyvä ja lisää asiakaspalvelu saadaksesi",
-    "description": "Kun käyttäjä ei ole vielä lisännyt asiakaspalvelua saadakseen, näytetään käyttäjälle tämä viesti."
+    "message": "Lisää asiakaspalvelu saadaksesi",
+    "description": "Viesti, joka näytetään käyttäjälle, kun asiakaspalvelua ei ole vielä lisätty (englanniksi: Add support to acquire)."
   },
   "message.confirmApplying": {
     "message": "Vahvista palveluhakemus",
-    "description": "Kun käyttäjä vahvistaa palveluhakemuksen, näytetään käyttäjälle tämä viesti."
+    "description": "Viesti, joka näytetään käyttäjälle, kun hän vahvistaa palveluhakemuksen."
   },
   "message.confirmDelete": {
-    "message": "Oletko varma, että haluat poistaa tämän hakemuksen? Poiston jälkeen kaikki hakemustiedot menetetään",
-    "description": "Kun käyttäjä vahvistaa hakemuksen poistamisen, näytetään käyttäjälle tämä viesti."
+    "message": "Oletko varma, että haluat poistaa tämän hakemuksen? Kaikki hakemustiedot menetetään poistamisen jälkeen.",
+    "description": "Viesti, joka näytetään käyttäjälle, kun hän vahvistaa hakemuksen poistamisen."
   },
   "message.placeEnter": {
-    "message": "Ole hyvä ja syötä '$0$' vahvistaaksesi",
-    "description": "Kun käyttäjän on syötettävä teksti vahvistaakseen, näytetään käyttäjälle tämä viesti, älä käännä `'$0$'`."
+    "message": "Syötä '$0$' vahvistaaksesi",
+    "description": "Viesti, joka näytetään käyttäjälle, kun hänen on syötettävä teksti vahvistaakseen, älä käännä `'$0$'`."
   },
   "message.invalidInput": {
     "message": "Virheellinen syöte",
-    "description": "Kun käyttäjä syöttää virheellisiä tietoja, näytetään käyttäjälle tämä viesti."
+    "description": "Viesti, joka näytetään käyttäjälle, kun hän syöttää virheellisiä tietoja."
   },
   "message.deleteFailed": {
     "message": "Poisto epäonnistui",
-    "description": "Kun poisto epäonnistuu, näytetään käyttäjälle tämä viesti."
+    "description": "Viesti, joka näytetään käyttäjälle, kun poisto epäonnistuu."
   },
   "message.deleteSuccessfully": {
     "message": "Poisto onnistui",
-    "description": "Kun poisto onnistuu, näytetään käyttäjälle tämä viesti."
+    "description": "Viesti, joka näytetään käyttäjälle, kun poisto onnistuu."
   },
   "title.application": {
     "message": "Hakemus",
@@ -313,6 +313,6 @@
   },
   "title.description": {
     "message": "Kuvaus",
-    "description": "Kun käyttäjä tarkastelee tietotekniikkapalveluiden käyttöehtoja, sivun otsikko."
+    "description": "Sivun otsikko, kun käyttäjä tarkastelee tietotekniikkapalveluiden käyttöehtoja."
   }
 }

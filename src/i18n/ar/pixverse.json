@@ -72,8 +72,8 @@
     "description": "جودة الفيديو المراد إنشاؤه"
   },
   "name.startImage": {
-    "message": "صورة الإطار الأول المرجعية",
-    "description": "صورة مرجعية للفيديو المراد إنشاؤه"
+    "message": "صورة الإطار الأول",
+    "description": "تسمية حقل النموذج: صورة الإطار الأول (يوصى بترجمتها إلى 'First Frame' للحفاظ على الاختصار وتجنب حجب الزر)"
   },
   "name.aspectRatio": {
     "message": "نسبة العرض إلى الارتفاع",
@@ -84,8 +84,8 @@
     "description": "فيديو مخصص"
   },
   "name.prompt": {
-    "message": "تحفيز الفيديو",
-    "description": "تحفيز إدخال المحتوى"
+    "message": "نص الفيديو",
+    "description": "نص الإدخال للمحتوى"
   },
   "name.duration": {
     "message": "مدة الفيديو",
@@ -105,7 +105,7 @@
   },
   "name.effect": {
     "message": "تأثير الفيديو",
-    "description": "اسم معلمات الأسلوب، المستخدمة للتبديل بين إصدارات أو أنماط مختلفة من النموذج"
+    "description": "اسم معلمة الأسلوب، تستخدم للتبديل بين إصدارات أو أنماط مختلفة من النموذج"
   },
   "name.ingredientsModel": {
     "message": "نموذج المكونات",
@@ -117,43 +117,43 @@
   },
   "description.ingredients": {
     "message": "إذا كنت ترغب في تحميل عدة صور لإنشاء فيديو خاص بك، يرجى تفعيل هذا الزر.",
-    "description": "وصف المعامل 'ingredients'"
+    "description": "وصف المعلمة 'ingredients'"
   },
   "description.imageUrl": {
     "message": "في مهمة إنشاء فيديو متعدد الصور، يجب تحميل عدة صور.",
-    "description": "وصف المعامل 'imageUrl'"
+    "description": "وصف المعلمة 'imageUrl'"
   },
   "description.prompt": {
-    "message": "تحفيز الكلمات لإنشاء فيديو Pixverse",
-    "description": "وصف المعامل 'prompt'"
+    "message": "نص الكلمات لتحفيز إنشاء فيديو Pixverse",
+    "description": "وصف المعلمة 'prompt'"
   },
   "description.negativePrompt": {
     "message": "نص تحفيزي سلبي، اختياري، لا يتجاوز 200 حرف",
-    "description": "وصف المعامل 'prompt'"
+    "description": "وصف المعلمة 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "تحميل صورة الإطار الأول كمرجع، الفيديو النهائي سيعتمد على الإطار الأول في إنشائه",
-    "description": "وصف المعامل لتحميل المرجع"
+    "message": "تحميل صورة الإطار الأول كمرجع للتوليد، الفيديو النهائي سيعتمد على الإطار الأول",
+    "description": "وصف معلمة التحميل المرجعي"
   },
   "description.uploadEndImage": {
-    "message": "تحميل صورة الإطار الأول كمرجع، الفيديو النهائي سيعتمد على الإطار الأول في إنشائه",
-    "description": "وصف المعامل لتحميل المرجع"
+    "message": "تحميل صورة الإطار الأخير كمرجع للتوليد، الفيديو النهائي سيعتمد على الإطار الأخير",
+    "description": "وصف معلمة التحميل المرجعي"
   },
   "description.seed": {
     "message": "قيمة بذور لإنشاء الفيديو. إذا لم يتم تعيينها، سيتم استخدام بذور عشوائية.",
-    "description": "وصف المعامل لتحميل المرجع"
+    "description": "وصف معلمة التحميل المرجعي"
   },
   "status.pending": {
     "message": "في الانتظار",
-    "description": "حالة انتظار المهمة"
+    "description": "حالة الانتظار للمهمة"
   },
   "status.processing": {
-    "message": "قيد المعالجة",
-    "description": "حالة انتظار المهمة"
+    "message": "يتم المعالجة",
+    "description": "حالة الانتظار للمهمة"
   },
   "placeholder.paddingNoise": {
     "message": "يرجى الاختيار...",
-    "description": "نص العنصر النائب لإدخال ضوضاء الحشو"
+    "description": "نص العنصر النائب لإدخال ضوضاء التعبئة"
   },
   "placeholder.select": {
     "message": "اختر",
@@ -161,15 +161,15 @@
   },
   "placeholder.paddingLevel": {
     "message": "يرجى الاختيار...",
-    "description": "نص العنصر النائب لمستوى الحشو"
+    "description": "نص العنصر النائب لمستوى التعبئة"
   },
   "placeholder.prompt": {
-    "message": "أدخل كلمات التحفيز لنمط الفيديو المراد إنشاؤه، مثل: quiver",
-    "description": "نص العنصر النائب في حقل التحفيز"
+    "message": "أدخل نص الكلمات لأسلوب الفيديو المراد إنشاؤه، مثل: quiver",
+    "description": "نص العنصر النائب في حقل النص"
   },
   "placeholder.negativePrompt": {
-    "message": "أدخل كلمات التحفيز السلبية لنمط الفيديو المراد إنشاؤه، لا تتجاوز 200 حرف",
-    "description": "نص العنصر النائب في حقل التحفيز"
+    "message": "أدخل نص الكلمات السلبية لأسلوب الفيديو المراد إنشاؤه، لا يتجاوز 200 حرف",
+    "description": "نص العنصر النائب في حقل النص"
   },
   "placeholder.position": {
     "message": "يرجى الاختيار...",
@@ -185,42 +185,42 @@
   },
   "placeholder.markerShape": {
     "message": "يرجى الاختيار...",
-    "description": "نص العنصر النائب لإدخال شكل العلامة"
+    "description": "نص العنصر النائب لشكل العلامة"
   },
   "placeholder.rotate": {
     "message": "يرجى الاختيار...",
-    "description": "نص العنصر النائب لإدخال التدوير"
+    "description": "نص العنصر النائب لتدوير"
   },
   "placeholder.subMarker": {
     "message": "يرجى الاختيار...",
-    "description": "نص العنصر النائب لإدخال العلامة الفرعية"
+    "description": "نص العنصر النائب للعلامة الفرعية"
   },
   "button.generate": {
     "message": "إنشاء",
-    "description": "نص زر إنشاء فيديو Pixverse"
+    "description": "نص زر لإنشاء فيديو Pixverse"
   },
   "button.extend": {
     "message": "تمديد الفيديو",
-    "description": "نص زر تمديد الفيديو"
+    "description": "نص زر لتمديد الفيديو"
   },
   "button.download": {
-    "message": "تحميل الفيديو",
-    "description": "نص زر تحميل الفيديو"
+    "message": "تنزيل الفيديو",
+    "description": "نص زر لتنزيل الفيديو"
   },
   "button.uploadImageUrl": {
-    "message": "رفع الصورة",
-    "description": "نص زر رفع الصورة"
+    "message": "رفع",
+    "description": "نص زر لرفع الصورة (يرجى تبسيط إلى 'رفع')"
   },
   "button.uploadVideoUrl": {
     "message": "رفع الفيديو",
-    "description": "نص زر رفع الفيديو"
+    "description": "نص زر لرفع الفيديو"
   },
   "button.uploadReferences": {
     "message": "رفع",
     "description": "نص الزر الذي يسمح للمستخدم برفع المراجع"
   },
   "message.uploadReferencesExceed": {
-    "message": "يمكنك رفع صورة واحدة كحد أقصى",
+    "message": "يمكن رفع صورة واحدة كحد أقصى",
     "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة للحد المسموح به"
   },
   "message.uploadReferencesSuccess": {
@@ -228,7 +228,7 @@
     "description": "رسالة نجاح عند رفع الصورة بنجاح"
   },
   "message.uploadReferencesError": {
-    "message": "فشل رفع الصورة، يرجى المحاولة لاحقًا",
+    "message": "فشل في رفع الصورة، يرجى المحاولة لاحقًا",
     "description": "رسالة خطأ عند فشل رفع الصورة"
   },
   "message.startingTask": {
@@ -240,7 +240,7 @@
     "description": "رسالة نجاح عند بدء المهمة بنجاح"
   },
   "message.startTaskFailed": {
-    "message": "فشل بدء المهمة، يرجى الاتصال بالمسؤول",
+    "message": "فشل في بدء المهمة، يرجى الاتصال بالمسؤول",
     "description": "رسالة خطأ عند فشل بدء مهمة الرسم"
   },
   "message.usedUp": {
@@ -252,7 +252,7 @@
     "description": "رسالة عند إنشاء الصورة"
   },
   "message.downloadVideo": {
-    "message": "تحميل هذا الفيديو",
+    "message": "تنزيل هذا الفيديو",
     "description": "رسالة عند إنشاء الصورة"
   },
   "message.extendVideo": {
@@ -260,7 +260,7 @@
     "description": "رسالة عند إنشاء الصورة"
   },
   "message.generateFailed": {
-    "message": "فشل إنشاء الصورة",
+    "message": "فشل في إنشاء الصورة",
     "description": "رسالة عند فشل إنشاء الصورة"
   },
   "message.uploadVideoExceed": {
@@ -284,27 +284,27 @@
     "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة للإطار الأخير للحد المسموح به"
   },
   "message.uploadStartImageError": {
-    "message": "فشل رفع الصورة للإطار الأول",
+    "message": "فشل في رفع الصورة للإطار الأول",
     "description": "رسالة خطأ عند فشل رفع الصورة للإطار الأول"
   },
   "message.uploadVideoError": {
-    "message": "فشل رفع الفيديو",
+    "message": "فشل في رفع الفيديو",
     "description": "رسالة خطأ عند فشل رفع الفيديو"
   },
   "message.uploadEndImageError": {
-    "message": "فشل رفع الصورة للإطار الأخير",
+    "message": "فشل في رفع الصورة للإطار الأخير",
     "description": "رسالة خطأ عند فشل رفع الصورة للإطار الأخير"
   },
   "message.uploadDocumentsError": {
-    "message": "فشل رفع المستندات",
-    "description": "رسالة خطأ عند فشل رفع المستندات"
+    "message": "فشل في رفع الوثائق",
+    "description": "رسالة خطأ عند فشل رفع الوثائق"
   },
   "message.noOperations": {
     "message": "لا توجد عمليات متاحة",
     "description": "رسالة عند عدم وجود عمليات متاحة"
   },
   "message.noTasks": {
-    "message": "لا توجد مهام تاريخية، يرجى النقر على زر إنشاء الفيديو على اليسار",
+    "message": "لا توجد مهام تاريخية، يرجى النقر على الجهة اليسرى لإنشاء الفيديو",
     "description": "رسالة عند عدم وجود مهام"
   }
 }

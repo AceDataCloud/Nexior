@@ -25,7 +25,7 @@
   },
   "name.createdAt": {
     "message": "생성 시간",
-    "description": "Pixverse 비디오가 생성된 날짜와 시간"
+    "description": "Pixverse 비디오 생성 날짜 및 시간"
   },
   "name.style": {
     "message": "스타일",
@@ -73,7 +73,7 @@
   },
   "name.startImage": {
     "message": "첫 프레임 참조 이미지",
-    "description": "생성할 비디오의 참조 이미지"
+    "description": "폼 필드 레이블: 첫 프레임 참조 이미지 (영어로는 'First Frame'으로 번역, 간결하게 유지하여 버튼을 가리지 않도록)"
   },
   "name.aspectRatio": {
     "message": "종횡비",
@@ -105,7 +105,7 @@
   },
   "name.effect": {
     "message": "비디오 효과",
-    "description": "다양한 버전 또는 스타일의 모델 간 전환을 위한 스타일 매개변수의 이름"
+    "description": "스타일 매개변수의 이름, 서로 다른 버전이나 스타일의 모델 간 전환에 사용"
   },
   "name.ingredientsModel": {
     "message": "성분 모델",
@@ -120,7 +120,7 @@
     "description": "매개변수 'ingredients'의 설명"
   },
   "description.imageUrl": {
-    "message": "여러 이미지를 업로드해야 하는 비디오 생성 작업입니다.",
+    "message": "다중 이미지로 비디오를 생성하는 작업에서 여러 이미지를 업로드해야 합니다.",
     "description": "매개변수 'imageUrl'의 설명"
   },
   "description.prompt": {
@@ -128,7 +128,7 @@
     "description": "매개변수 'prompt'의 설명"
   },
   "description.negativePrompt": {
-    "message": "부정적인 텍스트 프롬프트, 선택 사항, 200자 이내",
+    "message": "부정 텍스트 프롬프트, 선택 사항, 200자 이내",
     "description": "매개변수 'negativePrompt'의 설명"
   },
   "description.uploadStartImage": {
@@ -140,7 +140,7 @@
     "description": "업로드 참조 매개변수의 설명"
   },
   "description.seed": {
-    "message": "비디오 생성을 위한 시드 값입니다. 설정하지 않으면 랜덤 시드가 사용됩니다.",
+    "message": "비디오 생성을 위한 시드 값. 설정하지 않으면 랜덤 시드를 사용합니다.",
     "description": "업로드 참조 매개변수의 설명"
   },
   "status.pending": {
@@ -161,14 +161,14 @@
   },
   "placeholder.paddingLevel": {
     "message": "선택하세요...",
-    "description": "패딩 수준의 자리 표시자"
+    "description": "패딩 레벨의 자리 표시자"
   },
   "placeholder.prompt": {
-    "message": "생성할 비디오 스타일의 프롬프트를 입력하세요. 예: quiver",
+    "message": "생성할 비디오 스타일의 프롬프트를 입력하세요, 예: quiver",
     "description": "프롬프트 필드의 자리 표시자 텍스트"
   },
   "placeholder.negativePrompt": {
-    "message": "생성할 비디오 스타일의 부정적인 프롬프트를 입력하세요. 200자 이내",
+    "message": "생성할 비디오 스타일의 부정 프롬프트를 입력하세요, 200자 이내",
     "description": "프롬프트 필드의 자리 표시자 텍스트"
   },
   "placeholder.position": {
@@ -193,11 +193,11 @@
   },
   "placeholder.subMarker": {
     "message": "선택하세요...",
-    "description": "하위 마커 입력의 자리 표시자"
+    "description": "서브 마커 입력의 자리 표시자"
   },
   "button.generate": {
     "message": "생성",
-    "description": "Pixverse 비디오를 생성하는 버튼 텍스트"
+    "description": "Pixverse 비디오 생성을 위한 버튼 텍스트"
   },
   "button.extend": {
     "message": "비디오 확장",
@@ -208,12 +208,12 @@
     "description": "비디오 다운로드 버튼 텍스트"
   },
   "button.uploadImageUrl": {
-    "message": "이미지 업로드",
-    "description": "이미지를 업로드하는 버튼 텍스트"
+    "message": "업로드",
+    "description": "이미지 업로드 버튼 텍스트 (영어는 'Upload'로 간단히 해주세요, 'Upload Image'는 사용하지 마세요)"
   },
   "button.uploadVideoUrl": {
     "message": "비디오 업로드",
-    "description": "비디오를 업로드하는 버튼 텍스트"
+    "description": "비디오 업로드 버튼 텍스트"
   },
   "button.uploadReferences": {
     "message": "업로드",
@@ -264,36 +264,36 @@
     "description": "이미지 생성 실패 시의 메시지"
   },
   "message.uploadVideoExceed": {
-    "message": "첫 번째 프레임 이미지 수가 제한을 초과했습니다",
-    "description": "첫 번째 프레임 이미지 수가 제한을 초과할 때의 오류 메시지"
+    "message": "첫 프레임 이미지 수가 제한을 초과했습니다",
+    "description": "첫 프레임 이미지 수가 제한을 초과할 때의 오류 메시지"
   },
   "message.uploadVideoSizeExceed": {
     "message": "업로드 파일 크기는 10MB를 초과할 수 없습니다!",
-    "description": "업로드 파일 크기가 10MB를 초과할 수 없을 때의 오류 메시지"
+    "description": "업로드 파일 크기가 10MB를 초과할 때의 오류 메시지"
   },
   "message.uploadVideoTypeFailed": {
     "message": "업로드 파일은 MP4 형식이어야 합니다!",
-    "description": "업로드 파일이 MP4 형식이어야 할 때의 오류 메시지"
+    "description": "업로드 파일이 MP4 형식이 아닐 때의 오류 메시지"
   },
   "message.uploadStartImageExceed": {
-    "message": "첫 번째 프레임 이미지 수가 제한을 초과했습니다",
-    "description": "첫 번째 프레임 이미지 수가 제한을 초과할 때의 오류 메시지"
+    "message": "첫 프레임 이미지 수가 제한을 초과했습니다",
+    "description": "첫 프레임 이미지 수가 제한을 초과할 때의 오류 메시지"
   },
   "message.uploadEndImageExceed": {
-    "message": "마지막 프레임 이미지 수가 제한을 초과했습니다",
-    "description": "마지막 프레임 이미지 수가 제한을 초과할 때의 오류 메시지"
+    "message": "끝 프레임 이미지 수가 제한을 초과했습니다",
+    "description": "끝 프레임 이미지 수가 제한을 초과할 때의 오류 메시지"
   },
   "message.uploadStartImageError": {
-    "message": "첫 번째 프레임 이미지 업로드 실패",
-    "description": "첫 번째 프레임 이미지 업로드 실패 시의 오류 메시지"
+    "message": "첫 프레임 이미지 업로드 실패",
+    "description": "첫 프레임 이미지 업로드 실패 시의 오류 메시지"
   },
   "message.uploadVideoError": {
     "message": "비디오 업로드 실패",
     "description": "비디오 업로드 실패 시의 오류 메시지"
   },
   "message.uploadEndImageError": {
-    "message": "마지막 프레임 이미지 업로드 실패",
-    "description": "마지막 프레임 이미지 업로드 실패 시의 오류 메시지"
+    "message": "끝 프레임 이미지 업로드 실패",
+    "description": "끝 프레임 이미지 업로드 실패 시의 오류 메시지"
   },
   "message.uploadDocumentsError": {
     "message": "문서 업로드 실패",

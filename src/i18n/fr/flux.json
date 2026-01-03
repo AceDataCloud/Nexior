@@ -76,7 +76,7 @@
     "description": "Description du paramètre 'quality'"
   },
   "description.prompt": {
-    "message": "Mots d'invite pour générer des images Flux",
+    "message": "Mots d'invite pour générer une image Flux",
     "description": "Description du paramètre 'prompt'"
   },
   "description.imageUrl": {
@@ -113,7 +113,7 @@
   },
   "placeholder.aspectRatio": {
     "message": "Veuillez sélectionner...",
-    "description": "Espace réservé pour l'entrée de ratio d'aspect"
+    "description": "Espace réservé pour l'entrée de ratio"
   },
   "placeholder.preset": {
     "message": "Veuillez sélectionner...",
@@ -133,11 +133,11 @@
   },
   "button.generate": {
     "message": "Générer",
-    "description": "Texte du bouton pour générer des images Flux"
+    "description": "Texte du bouton pour générer une image Flux"
   },
   "button.uploadImageUrl": {
-    "message": "Télécharger l'image",
-    "description": "Texte du bouton pour télécharger une image"
+    "message": "Télécharger",
+    "description": "Texte du bouton pour télécharger une image (simplifié en 'Télécharger')"
   },
   "button.extend": {
     "message": "Étendre l'image",
@@ -145,11 +145,11 @@
   },
   "button.viewImage": {
     "message": "Voir l'image originale",
-    "description": "Texte du bouton pour générer des images Flux"
+    "description": "Texte du bouton pour générer une image Flux"
   },
   "button.download": {
     "message": "Télécharger l'image",
-    "description": "Texte du bouton pour télécharger une image"
+    "description": "Texte du bouton pour télécharger l'image"
   },
   "message.downloadImage": {
     "message": "Ouvrir l'image dans une nouvelle fenêtre",
@@ -161,7 +161,7 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Image téléchargée avec succès",
-    "description": "Message de succès lors du téléchargement d'une image avec succès"
+    "description": "Message de succès lors du téléchargement réussi d'une image"
   },
   "message.uploadReferencesError": {
     "message": "Échec du téléchargement de l'image, veuillez réessayer plus tard",
@@ -173,14 +173,14 @@
   },
   "message.startTaskSuccess": {
     "message": "Tâche de génération lancée avec succès",
-    "description": "Message de succès lors du démarrage de la tâche"
+    "description": "Message de succès lors du démarrage réussi de la tâche"
   },
   "message.startTaskFailed": {
     "message": "Échec du lancement de la tâche, veuillez contacter l'administrateur",
     "description": "Message d'erreur lors de l'échec du démarrage de la tâche de dessin"
   },
   "message.usedUp": {
-    "message": "Vos crédits sont épuisés, veuillez acheter plus de crédits pour continuer à utiliser",
+    "message": "Vos crédits sont épuisés, veuillez acheter plus de crédits pour continuer",
     "description": "Message lorsque les crédits sont épuisés"
   },
   "message.generating": {
@@ -200,11 +200,11 @@
     "description": "Message lorsque la génération de l'image échoue"
   },
   "message.uploadVideoExceed": {
-    "message": "Le nombre d'images de première image téléchargées dépasse la limite",
-    "description": "Message d'erreur lorsque le nombre d'images de première image téléchargées dépasse la limite"
+    "message": "Le nombre d'images de la première image téléchargées dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de la première image téléchargées dépasse la limite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "La taille du fichier téléchargé ne peut pas dépasser 10 Mo !",
+    "message": "La taille du fichier téléchargé ne doit pas dépasser 10 Mo !",
     "description": "Message d'erreur lorsque la taille du fichier téléchargé dépasse 10 Mo !"
   },
   "message.uploadVideoTypeFailed": {
@@ -216,8 +216,8 @@
     "description": "Message d'erreur lorsque le nombre d'images de référence téléchargées dépasse la limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Le nombre d'images de dernière image téléchargées dépasse la limite",
-    "description": "Message d'erreur lorsque le nombre d'images de dernière image téléchargées dépasse la limite"
+    "message": "Le nombre d'images de fin téléchargées dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de fin téléchargées dépasse la limite"
   },
   "message.uploadStartImageError": {
     "message": "Échec du téléchargement de l'image de référence",
@@ -225,11 +225,11 @@
   },
   "message.uploadVideoError": {
     "message": "Échec du téléchargement de l'image",
-    "description": "Message d'erreur lorsque le téléchargement de l'image de première image échoue"
+    "description": "Message d'erreur lorsque le téléchargement de la première image échoue"
   },
   "message.uploadEndImageError": {
-    "message": "Échec du téléchargement de l'image de dernière image",
-    "description": "Message d'erreur lorsque le téléchargement de l'image de dernière image échoue"
+    "message": "Échec du téléchargement de l'image de fin",
+    "description": "Message d'erreur lorsque le téléchargement de l'image de fin échoue"
   },
   "message.uploadDocumentsError": {
     "message": "Échec du téléchargement du document",
@@ -240,7 +240,7 @@
     "description": "Message lorsque aucune opération n'est disponible"
   },
   "message.noTasks": {
-    "message": "Aucune tâche historique, veuillez cliquer sur le bouton de génération d'image à gauche",
+    "message": "Aucune tâche historique, veuillez cliquer à gauche pour générer une image",
     "description": "Message lorsque aucune tâche n'est disponible"
   }
 }

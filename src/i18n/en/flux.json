@@ -5,15 +5,15 @@
   },
   "name.task": {
     "message": "Task Type",
-    "description": "The type of operation for the Flux image generator"
+    "description": "The operation type of the Flux image generator"
   },
   "name.generate": {
     "message": "Create Image",
-    "description": "The type of operation for the Flux image generator"
+    "description": "The operation type of the Flux image generator"
   },
   "name.edits": {
     "message": "Edit Image",
-    "description": "The type of operation for the Flux image generator"
+    "description": "The operation type of the Flux image generator"
   },
   "name.type": {
     "message": "Type",
@@ -41,7 +41,7 @@
   },
   "name.createdAt": {
     "message": "Created At",
-    "description": "The date and time when the Flux image was generated"
+    "description": "The date and time the Flux image was generated"
   },
   "name.numbers": {
     "message": "Image Count",
@@ -68,15 +68,15 @@
     "description": "The name of the Flux image generator"
   },
   "description.numbers": {
-    "message": "Specify the number of images to generate, with a value range of: 1-4.",
+    "message": "Specify the number of images to generate, with a range of values: 1-4.",
     "description": "Description of the 'numbers' parameter"
   },
   "description.quality": {
-    "message": "Specify the quality of the generated images, with a value range of: 1-100.",
+    "message": "Specify the quality of the generated image, with a range of values: 1-100.",
     "description": "Description of the 'quality' parameter"
   },
   "description.prompt": {
-    "message": "The prompt words for generating Flux images",
+    "message": "The prompt for generating Flux images",
     "description": "Description of the 'prompt' parameter"
   },
   "description.imageUrl": {
@@ -85,7 +85,7 @@
   },
   "status.pending": {
     "message": "Pending",
-    "description": "The waiting status of the task"
+    "description": "The pending status of the task"
   },
   "status.processing": {
     "message": "Processing",
@@ -97,7 +97,7 @@
   },
   "placeholder.select": {
     "message": "Select",
-    "description": "Placeholder text in the selection field"
+    "description": "Placeholder text in the select field"
   },
   "placeholder.paddingLevel": {
     "message": "Please select...",
@@ -137,14 +137,14 @@
   },
   "button.uploadImageUrl": {
     "message": "Upload",
-    "description": "Button text for uploading an image (keep short: Upload)"
+    "description": "Button text for uploading an image (simplified to 'Upload')"
   },
   "button.extend": {
     "message": "Extend Image",
     "description": "Button text for extending an image"
   },
   "button.viewImage": {
-    "message": "View Original Image",
+    "message": "View Original",
     "description": "Button text for viewing the generated Flux image"
   },
   "button.download": {
@@ -152,8 +152,8 @@
     "description": "Button text for downloading an image"
   },
   "message.downloadImage": {
-    "message": "Open Image in New Window",
-    "description": "Open image in a new window"
+    "message": "Open image in a new window",
+    "description": "Message for opening the image in a new window"
   },
   "message.uploadReferencesExceed": {
     "message": "You can upload a maximum of 5 images",
@@ -173,15 +173,15 @@
   },
   "message.startTaskSuccess": {
     "message": "Task initiated successfully",
-    "description": "Success message when the task is successfully initiated"
+    "description": "Success message when the task is successfully started"
   },
   "message.startTaskFailed": {
     "message": "Failed to initiate task, please contact the administrator",
-    "description": "Error message when the drawing task fails to start"
+    "description": "Error message when starting the drawing task fails"
   },
   "message.usedUp": {
-    "message": "Your credits have been used up, please purchase more credits to continue using",
-    "description": "Message when credits are exhausted"
+    "message": "Your credits are exhausted, please purchase more credits to continue",
+    "description": "Message when credits are used up"
   },
   "message.generating": {
     "message": "Generating...",
@@ -200,11 +200,11 @@
     "description": "Message when image generation fails"
   },
   "message.uploadVideoExceed": {
-    "message": "The number of uploaded first frame images exceeds the limit",
+    "message": "Uploaded number of first frame images exceeds limit",
     "description": "Error message when the number of uploaded first frame images exceeds the limit"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Uploaded file size cannot exceed 10MB!",
+    "message": "Uploaded file size must not exceed 10MB!",
     "description": "Error message when the uploaded file size exceeds 10MB!"
   },
   "message.uploadVideoTypeFailed": {
@@ -212,16 +212,16 @@
     "description": "Error message when the uploaded file is not in MP4 format!"
   },
   "message.uploadStartImageExceed": {
-    "message": "The number of uploaded reference images exceeds the limit",
+    "message": "Uploaded number of reference images exceeds limit",
     "description": "Error message when the number of uploaded reference images exceeds the limit"
   },
   "message.uploadEndImageExceed": {
-    "message": "The number of uploaded last frame images exceeds the limit",
+    "message": "Uploaded number of last frame images exceeds limit",
     "description": "Error message when the number of uploaded last frame images exceeds the limit"
   },
   "message.uploadStartImageError": {
     "message": "Failed to upload reference image",
-    "description": "Error message when uploading reference images fails"
+    "description": "Error message when uploading a reference image fails"
   },
   "message.uploadVideoError": {
     "message": "Failed to upload image",
@@ -229,18 +229,18 @@
   },
   "message.uploadEndImageError": {
     "message": "Failed to upload last frame image",
-    "description": "Error message when uploading last frame images fails"
+    "description": "Error message when uploading the last frame image fails"
   },
   "message.uploadDocumentsError": {
     "message": "Failed to upload document",
-    "description": "Error message when uploading documents fails"
+    "description": "Error message when uploading a document fails"
   },
   "message.noOperations": {
     "message": "No available operations",
     "description": "Message when there are no available operations"
   },
   "message.noTasks": {
-    "message": "No historical tasks, please click on the left to generate an image",
+    "message": "No historical tasks, please click to generate an image on the left",
     "description": "Message when there are no tasks"
   }
 }

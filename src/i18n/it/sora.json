@@ -9,7 +9,7 @@
   },
   "name.failureReason": {
     "message": "Motivo del fallimento",
-    "description": "Motivo per cui l'attività è fallita"
+    "description": "Motivo del fallimento dell'attività"
   },
   "name.status": {
     "message": "Stato",
@@ -21,11 +21,11 @@
   },
   "name.createdAt": {
     "message": "Data di creazione",
-    "description": "Data e ora di generazione del video Kling"
+    "description": "Data e ora di generazione del video Sora"
   },
   "name.startEndImage": {
-    "message": "Immagini di riferimento per il primo e l'ultimo fotogramma",
-    "description": "Immagini di riferimento per il video da generare"
+    "message": "Immagini di riferimento inizio/fine",
+    "description": "Etichetta del campo del modulo: immagini di riferimento inizio/fine (si consiglia di mantenere breve)"
   },
   "name.action": {
     "message": "Azione",
@@ -36,8 +36,8 @@
     "description": "Suggerimento per l'input del contenuto"
   },
   "name.model": {
-    "message": "Versione del modello",
-    "description": "Versione del modello utilizzata per generare il video"
+    "message": "Versione modello",
+    "description": "Versione del modello utilizzato per generare il video"
   },
   "name.soraBot": {
     "message": "OpenAI Sora Bot",
@@ -49,11 +49,11 @@
   },
   "option.portrait": {
     "message": "Ritratto",
-    "description": "Etichetta opzione per orientamento verticale"
+    "description": "Testo dell'opzione: orientamento ritratto"
   },
   "option.landscape": {
-    "message": "Panorama",
-    "description": "Etichetta opzione per orientamento orizzontale"
+    "message": "Paesaggio",
+    "description": "Testo dell'opzione: orientamento paesaggio"
   },
   "name.duration": {
     "message": "Durata video",
@@ -68,11 +68,11 @@
     "description": "Descrizione del parametro 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Parole chiave per generare video Sora",
+    "message": "Parole chiave per generare il video Sora",
     "description": "Descrizione del parametro 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Array di link alle immagini di riferimento, la prima è l'immagine del primo fotogramma, la seconda è l'immagine dell'ultimo fotogramma",
+    "message": "Array di link delle immagini di riferimento, la prima è l'immagine di inizio, la seconda è l'immagine di fine",
     "description": "Descrizione del parametro 'image_url'"
   },
   "status.pending": {
@@ -105,19 +105,19 @@
   },
   "tip.proOnly": {
     "message": "Solo il modello sora-2-pro supporta la modifica di questo parametro",
-    "description": "Messaggio per informare l'utente che solo il modello professionale supporta la modifica di questo parametro"
+    "description": "Messaggio per informare che solo il modello professionale supporta la modifica di questo parametro"
   },
   "button.generate": {
     "message": "Genera",
-    "description": "Testo del pulsante per generare video Sora"
+    "description": "Testo del pulsante per generare il video Sora"
   },
   "button.action1": {
     "message": "Video da testo",
-    "description": "Testo del pulsante per generare video Sora"
+    "description": "Testo del pulsante per generare il video Sora"
   },
   "button.action2": {
     "message": "Video da immagine",
-    "description": "Testo del pulsante per generare video Sora"
+    "description": "Testo del pulsante per generare il video Sora"
   },
   "button.download": {
     "message": "Scarica video",
@@ -133,7 +133,7 @@
   },
   "button.uploadReferences": {
     "message": "Carica",
-    "description": "Testo del pulsante che consente all'utente di caricare riferimenti"
+    "description": "Testo del pulsante per consentire all'utente di caricare riferimenti"
   },
   "message.uploadReferencesExceed": {
     "message": "È possibile caricare al massimo 2 immagini",
@@ -157,10 +157,10 @@
   },
   "message.startTaskFailed": {
     "message": "Avvio dell'attività fallito, contattare l'amministratore",
-    "description": "Messaggio di errore quando l'avvio dell'attività di disegno fallisce"
+    "description": "Messaggio di errore quando l'attività di disegno non riesce ad avviarsi"
   },
   "message.usedUp": {
-    "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare a utilizzare",
+    "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare",
     "description": "Messaggio quando i crediti sono esauriti"
   },
   "message.generating": {
@@ -176,8 +176,8 @@
     "description": "Messaggio quando la generazione dell'immagine fallisce"
   },
   "message.uploadVideoExceed": {
-    "message": "Numero di immagini del primo fotogramma caricate oltre il limite",
-    "description": "Messaggio di errore quando il numero di immagini del primo fotogramma caricate supera il limite"
+    "message": "Il numero di immagini della prima cornice caricate supera il limite",
+    "description": "Messaggio di errore quando il numero di immagini della prima cornice caricate supera il limite"
   },
   "message.uploadVideoSizeExceed": {
     "message": "La dimensione del file caricato non può superare i 10 MB!",
@@ -192,20 +192,20 @@
     "description": "Messaggio di errore quando il numero di immagini della prima cornice caricate supera il limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Il numero di immagini finali caricate supera il limite",
-    "description": "Messaggio di errore quando il numero di immagini iniziali caricate supera il limite"
+    "message": "Il numero di immagini dell'ultima cornice caricate supera il limite",
+    "description": "Messaggio di errore quando il numero di immagini dell'ultima cornice caricate supera il limite"
   },
   "message.uploadStartImageError": {
-    "message": "Caricamento dell'immagine iniziale fallito",
-    "description": "Messaggio di errore quando il caricamento dell'immagine iniziale fallisce"
+    "message": "Caricamento dell'immagine della prima cornice fallito",
+    "description": "Messaggio di errore quando il caricamento dell'immagine della prima cornice fallisce"
   },
   "message.uploadVideoError": {
     "message": "Caricamento del video fallito",
-    "description": "Messaggio di errore quando il caricamento dell'immagine iniziale fallisce"
+    "description": "Messaggio di errore quando il caricamento del video fallisce"
   },
   "message.uploadEndImageError": {
-    "message": "Caricamento dell'immagine finale fallito",
-    "description": "Messaggio di errore quando il caricamento dell'immagine finale fallisce"
+    "message": "Caricamento dell'immagine dell'ultima cornice fallito",
+    "description": "Messaggio di errore quando il caricamento dell'immagine dell'ultima cornice fallisce"
   },
   "message.uploadDocumentsError": {
     "message": "Caricamento del documento fallito",

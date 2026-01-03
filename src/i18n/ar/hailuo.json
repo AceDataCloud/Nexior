@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "النوع",
-    "description": "نوع محتوى فيديو Hailuo الذي سيتم إنشاؤه، مثل 'رابط'، 'نص'، إلخ"
+    "description": "نوع محتوى فيديو Hailuo المراد إنشاؤه، مثل 'رابط'، 'نص'، إلخ"
   },
   "name.failure": {
     "message": "فشل",
@@ -29,27 +29,27 @@
   },
   "name.imageUrl": {
     "message": "صورة مرجعية",
-    "description": "الصورة المرجعية للفيديو الذي سيتم إنشاؤه"
+    "description": "الصورة المرجعية للفيديو المراد إنشاؤه"
   },
   "name.videoUrl": {
     "message": "فيديو مخصص",
     "description": "فيديو مخصص"
   },
   "name.prompt": {
-    "message": "إشارة الفيديو",
-    "description": "إشارة إدخال المحتوى"
+    "message": "موجه الفيديو",
+    "description": "موجه إدخال المحتوى"
   },
   "name.ingredients": {
     "message": "إنشاء فيديو متعدد الصور",
-    "description": "فيديو موسع مخصص"
+    "description": "زر/علامة لإنشاء فيديو متعدد الصور (اقتراح باللغة الإنجليزية: Multi-Image، حافظ على الاختصار)"
   },
   "name.model": {
-    "message": "نموذج",
+    "message": "النموذج",
     "description": "إصدار النموذج المستخدم لإنشاء الفيديو"
   },
   "name.startImageUrl": {
     "message": "صورة الإطار الأول",
-    "description": "البذور لرمز الاستجابة السريعة الذي سيتم إنشاؤه"
+    "description": "البذور لرمز QR المراد إنشاؤه"
   },
   "name.ingredientsModel": {
     "message": "نموذج المكونات",
@@ -64,11 +64,11 @@
     "description": "وصف المعامل 'ingredients'"
   },
   "description.startImageUrl": {
-    "message": "صورة الإطار الأول، ستكون الإطار الأول للفيديو الذي سيتم إنشاؤه.",
+    "message": "صورة الإطار الأول، ستكون هي الإطار الأول للفيديو الناتج.",
     "description": "وصف المعامل 'startImageUrl'"
   },
   "description.prompt": {
-    "message": "إشارة الكلمات لإنشاء فيديو Hailuo",
+    "message": "الكلمات الموجهة لإنشاء فيديو Hailuo",
     "description": "وصف المعامل 'prompt'"
   },
   "status.pending": {
@@ -76,7 +76,7 @@
     "description": "حالة انتظار المهمة"
   },
   "status.processing": {
-    "message": "يتم المعالجة",
+    "message": "قيد المعالجة",
     "description": "حالة انتظار المهمة"
   },
   "placeholder.paddingNoise": {
@@ -92,8 +92,8 @@
     "description": "نص العنصر النائب لمستوى التعبئة"
   },
   "placeholder.prompt": {
-    "message": "أدخل إشارة الكلمات لنمط الفيديو الذي تريد إنشاؤه، مثل: الغضب",
-    "description": "نص العنصر النائب في حقل الإشارة"
+    "message": "أدخل الكلمات الموجهة لنمط الفيديو المراد إنشاؤه، مثل: الغضب",
+    "description": "نص العنصر النائب في حقل الموجه"
   },
   "placeholder.position": {
     "message": "يرجى الاختيار...",
@@ -141,19 +141,19 @@
   },
   "button.uploadStartImageUrl": {
     "message": "تحميل الصورة",
-    "description": "نص زر لتحميل رمز الاستجابة السريعة"
+    "description": "نص زر لتحميل الصورة (يرجى تبسيط إلى 'تحميل'، لا تستخدم 'تحميل الصورة')"
   },
   "message.uploadReferencesExceed": {
     "message": "يمكنك تحميل ما يصل إلى 5 صور",
     "description": "رسالة خطأ عند تجاوز عدد الصور المحملة للحد"
   },
   "message.uploadReferencesSuccess": {
-    "message": "تم تحميل الصور بنجاح",
-    "description": "رسالة نجاح عند تحميل الصور بنجاح"
+    "message": "تم تحميل الصورة بنجاح",
+    "description": "رسالة نجاح عند تحميل الصورة بنجاح"
   },
   "message.uploadReferencesError": {
-    "message": "فشل تحميل الصور، يرجى المحاولة مرة أخرى لاحقًا",
-    "description": "رسالة خطأ عند فشل تحميل الصور"
+    "message": "فشل تحميل الصورة، يرجى المحاولة لاحقًا",
+    "description": "رسالة خطأ عند فشل تحميل الصورة"
   },
   "message.startingTask": {
     "message": "جارٍ بدء المهمة...",
@@ -173,23 +173,23 @@
   },
   "message.generating": {
     "message": "جارٍ الإنشاء...",
-    "description": "رسالة عند إنشاء الصورة"
+    "description": "رسالة أثناء إنشاء الصورة"
   },
   "message.downloadVideo": {
     "message": "تحميل هذا الفيديو",
-    "description": "رسالة عند إنشاء الصورة"
+    "description": "رسالة أثناء إنشاء الصورة"
   },
   "message.extendVideo": {
-    "message": "استمر في إنشاء هذا الفيديو",
-    "description": "رسالة عند إنشاء الصورة"
+    "message": "استمرار إنشاء هذا الفيديو",
+    "description": "رسالة أثناء إنشاء الصورة"
   },
   "message.generateFailed": {
-    "message": "فشل إنشاء الصورة",
-    "description": "رسالة عند فشل إنشاء الصورة"
+    "message": "فشل في توليد الصورة",
+    "description": "رسالة عند فشل توليد الصورة"
   },
   "message.uploadVideoExceed": {
-    "message": "عدد الصور الأولى المرفوعة يتجاوز الحد المسموح به",
-    "description": "رسالة خطأ عند تجاوز عدد الصور الأولى المرفوعة الحد المسموح به"
+    "message": "عدد الصور المرفوعة لللقطة الأولى يتجاوز الحد المسموح به",
+    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة لللقطة الأولى الحد المسموح به"
   },
   "message.uploadVideoSizeExceed": {
     "message": "لا يمكن أن يتجاوز حجم الملف المرفوع 10 ميجابايت!",
@@ -200,35 +200,35 @@
     "description": "رسالة خطأ عند عدم كون الملف المرفوع بتنسيق MP4!"
   },
   "message.uploadStartImageExceed": {
-    "message": "عدد الصور الأولى المرفوعة يتجاوز الحد المسموح به",
-    "description": "رسالة خطأ عند تجاوز عدد الصور الأولى المرفوعة الحد المسموح به"
+    "message": "عدد الصور المرفوعة لللقطة الأولى يتجاوز الحد المسموح به",
+    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة لللقطة الأولى الحد المسموح به"
   },
   "message.uploadEndImageExceed": {
-    "message": "عدد الصور النهائية المرفوعة يتجاوز الحد المسموح به",
-    "description": "رسالة خطأ عند تجاوز عدد الصور النهائية المرفوعة الحد المسموح به"
+    "message": "عدد الصور المرفوعة لللقطة الأخيرة يتجاوز الحد المسموح به",
+    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة لللقطة الأخيرة الحد المسموح به"
   },
   "message.uploadStartImageError": {
-    "message": "فشل في رفع الصورة الأولى",
-    "description": "رسالة خطأ عند فشل رفع الصورة الأولى"
+    "message": "فشل في رفع الصورة لللقطة الأولى",
+    "description": "رسالة خطأ عند فشل رفع الصورة لللقطة الأولى"
   },
   "message.uploadVideoError": {
     "message": "فشل في رفع الفيديو",
     "description": "رسالة خطأ عند فشل رفع الفيديو"
   },
   "message.uploadEndImageError": {
-    "message": "فشل في رفع الصورة النهائية",
-    "description": "رسالة خطأ عند فشل رفع الصورة النهائية"
+    "message": "فشل في رفع الصورة لللقطة الأخيرة",
+    "description": "رسالة خطأ عند فشل رفع الصورة لللقطة الأخيرة"
   },
   "message.uploadDocumentsError": {
-    "message": "فشل في رفع الوثائق",
-    "description": "رسالة خطأ عند فشل رفع الوثائق"
+    "message": "فشل في رفع المستندات",
+    "description": "رسالة خطأ عند فشل رفع المستندات"
   },
   "message.noOperations": {
     "message": "لا توجد عمليات متاحة",
     "description": "رسالة عند عدم وجود عمليات متاحة"
   },
   "message.noTasks": {
-    "message": "لا توجد مهام تاريخية، يرجى النقر على الجهة اليسرى لإنشاء فيديو",
+    "message": "لا توجد مهام تاريخية، يرجى النقر على زر توليد الفيديو على اليسار",
     "description": "رسالة عند عدم وجود مهام"
   }
 }
