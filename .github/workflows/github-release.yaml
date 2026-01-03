@@ -1,0 +1,65 @@
+name: github-release
+
+"on":
+  push:
+    tags:
+      - '@acedatacloud/nexior_v*'
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build
+        run: yarn build
+
+      - name: Prepare metadata
+        id: meta
+        shell: bash
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          SAFE_TAG="${TAG//\//-}"
+          if [[ "$TAG" == *"_v"* ]]; then
+            VERSION="${TAG##*_v}"
+          else
+            VERSION="${TAG#v}"
+          fi
+          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
+          echo "safe_tag=${SAFE_TAG}" >> "$GITHUB_OUTPUT"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Package dist
+        shell: bash
+        run: |
+          ASSET="nexior-dist-${{ steps.meta.outputs.safe_tag }}.tar.gz"
+          tar -czf "$ASSET" dist
+          sha256sum "$ASSET" > "${ASSET}.sha256"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_PAT || github.token }}
+        with:
+          tag_name: ${{ steps.meta.outputs.tag }}
+          name: v${{ steps.meta.outputs.version }}
+          generate_release_notes: true
+          files: |
+            nexior-dist-${{ steps.meta.outputs.safe_tag }}.tar.gz
+            nexior-dist-${{ steps.meta.outputs.safe_tag }}.tar.gz.sha256
