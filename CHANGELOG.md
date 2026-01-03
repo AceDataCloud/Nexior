@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 02 Jan 2026 16:54:16 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 03 Jan 2026 03:01:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.29.4
+
+Sat, 03 Jan 2026 03:01:58 GMT
+
+### Patches
+
+- optimize translate (cqc@cuiqingcai.com)
 
 ## 3.29.3
 
