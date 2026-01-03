@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 03 Jan 2026 03:01:58 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 03 Jan 2026 15:12:48 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.29.5
+
+Sat, 03 Jan 2026 15:12:48 GMT
+
+### Patches
+
+- update github release change (cqc@cuiqingcai.com)
 
 ## 3.29.4
 
