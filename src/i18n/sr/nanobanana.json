@@ -41,7 +41,7 @@
   },
   "name.nanobananaBot": {
     "message": "Nano Banana Bot",
-    "description": "Ime generatore slika Nano Banana"
+    "description": "Ime generatora slika Nano Banana"
   },
   "name.aspectRatio": {
     "message": "Odnos širine i visine",
@@ -60,7 +60,7 @@
     "description": "Opis uputstva"
   },
   "description.action": {
-    "message": "Akcija za generisanje slike. Ako je `generate`, slika će biti generisana na osnovu uputstva; ako je `edit`, slika će biti uređena na osnovu uputstva i učitane slike.",
+    "message": "Akcija za generisanje slike. Ako je `generate`, slika će biti generisana prema uputstvu; ako je `edit`, slika će biti uređena na osnovu uputstva i učitane slike.",
     "description": "Objašnjenje parametra akcije"
   },
   "description.model": {
@@ -72,7 +72,7 @@
     "description": "Objašnjenje parametra image_urls"
   },
   "description.aspectRatio": {
-    "message": "Odnos širine i visine generisane slike. Podržane vrednosti su `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Podrazumevana vrednost je `1:1`. Važi samo kada je `action` `generate`; ako je `action` `edit`, koristiće se odnos prve slike iz `image_urls`.",
+    "message": "Odnos širine i visine generisane slike. Podržane vrednosti su `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Podrazumevana vrednost je `1:1`. Važi samo kada je `action` `generate`; ako je `action` `edit`, koristi se odnos prve slike iz `image_urls`.",
     "description": "Objašnjenje parametra aspect_ratio"
   },
   "status.pending": {
@@ -93,19 +93,19 @@
   },
   "button.uploadImageUrls": {
     "message": "Učitaj slike",
-    "description": "Dugme za učitavanje referentnih slika"
+    "description": "Dugme za učitavanje referentnih slika (skratiti na 'Učitaj')"
   },
   "message.startingTask": {
     "message": "Pokreće se zadatak...",
     "description": "Poruka za početak zadatka"
   },
   "message.startTaskSuccess": {
-    "message": "Uspešno pokrenut zadatak za generisanje",
+    "message": "Zadatak za generisanje uspešno pokrenut",
     "description": "Zadatak je uspešno kreiran"
   },
   "message.startTaskFailed": {
     "message": "Pokretanje zadatka nije uspelo, molimo kontaktirajte administratora:",
-    "description": "Kreiranje zadatka nije uspelo"
+    "description": "Zadatak nije uspeo"
   },
   "message.usedUp": {
     "message": "Vaši bodovi su potrošeni, molimo kupite više bodova da biste nastavili sa korišćenjem",
@@ -116,7 +116,7 @@
     "description": "Prekoračenje broja slika"
   },
   "message.uploadImageError": {
-    "message": "Učitavanje slike nije uspelo, molimo pokušajte ponovo kasnije",
+    "message": "Učitavanje slika nije uspelo, molimo pokušajte ponovo kasnije",
     "description": "Greška pri učitavanju"
   },
   "name.model": {

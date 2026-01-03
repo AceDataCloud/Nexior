@@ -25,7 +25,7 @@
   },
   "name.createdAt": {
     "message": "Skapat den",
-    "description": "Datum och tid för när Pixverse-videon genererades"
+    "description": "Datum och tid för när Pixverse-video skapades"
   },
   "name.style": {
     "message": "Stil",
@@ -40,7 +40,7 @@
     "description": "Stilen för den video som ska genereras"
   },
   "name.style3": {
-    "message": "Tecknad serie",
+    "message": "Tecknad",
     "description": "Stilen för den video som ska genereras"
   },
   "name.style4": {
@@ -73,7 +73,7 @@
   },
   "name.startImage": {
     "message": "Första bildreferens",
-    "description": "Referensbilden för den video som ska genereras"
+    "description": "Formulärfältets etikett: Första bildreferens (engelska rekommenderas att översättas till 'First Frame', håll det kort för att undvika att dölja knappen)"
   },
   "name.aspectRatio": {
     "message": "Bildförhållande",
@@ -105,7 +105,7 @@
   },
   "name.effect": {
     "message": "Videoeffekt",
-    "description": "Namnet på stilparametern som används för att växla mellan olika versioner eller stilar av modellen"
+    "description": "Namn på stilparametern, används för att växla mellan olika versioner eller stilar av modellen"
   },
   "name.ingredientsModel": {
     "message": "Ingrediensmodell",
@@ -116,11 +116,11 @@
     "description": "Namnet på Pixverse videogenerator"
   },
   "description.ingredients": {
-    "message": "Om du vill ladda upp flera bilder för att generera din egen video, vänligen aktivera denna knapp.",
+    "message": "Om du vill ladda upp flera bilder för att generera din egen video, aktivera denna knapp.",
     "description": "Beskrivning av parametern 'ingredients'"
   },
   "description.imageUrl": {
-    "message": "Vid skapande av video med flera bilder måste flera bilder laddas upp.",
+    "message": "I uppgiften för att skapa video med flera bilder måste flera bilder laddas upp.",
     "description": "Beskrivning av parametern 'imageUrl'"
   },
   "description.prompt": {
@@ -129,14 +129,14 @@
   },
   "description.negativePrompt": {
     "message": "Negativ textprompt, valfri, får inte överstiga 200 tecken",
-    "description": "Beskrivning av parametern 'negativePrompt'"
+    "description": "Beskrivning av parametern 'prompt'"
   },
   "description.uploadStartImage": {
-    "message": "Ladda upp första bild som referens för genereringen, den slutliga videon kommer att referera till den första bilden.",
+    "message": "Ladda upp första bild som referens för genereringen, den slutliga videon kommer att referera till första bilden.",
     "description": "Beskrivning av parametern för att ladda upp referens"
   },
   "description.uploadEndImage": {
-    "message": "Ladda upp sista bild som referens för genereringen, den slutliga videon kommer att referera till den sista bilden.",
+    "message": "Ladda upp sista bild som referens för genereringen, den slutliga videon kommer att referera till sista bilden.",
     "description": "Beskrivning av parametern för att ladda upp referens"
   },
   "description.seed": {
@@ -164,16 +164,16 @@
     "description": "Platshållare för fyllnadsnivå"
   },
   "placeholder.prompt": {
-    "message": "Skriv in promptord för den stil av video som ska genereras, till exempel: quiver",
+    "message": "Ange promptord för den stil av video som ska genereras, till exempel: quiver",
     "description": "Platshållartext i promptfältet"
   },
   "placeholder.negativePrompt": {
-    "message": "Skriv in negativa promptord för den stil av video som ska genereras, högst 200 tecken",
+    "message": "Ange negativ promptord för den stil av video som ska genereras, högst 200 tecken",
     "description": "Platshållartext i promptfältet"
   },
   "placeholder.position": {
     "message": "Vänligen välj...",
-    "description": "Platshållare för positioninmatning"
+    "description": "Platshållare för positionsinmatning"
   },
   "placeholder.aspectRatio": {
     "message": "Vänligen välj...",
@@ -185,15 +185,15 @@
   },
   "placeholder.markerShape": {
     "message": "Vänligen välj...",
-    "description": "Platshållare för markeringsform"
+    "description": "Platsinnehåll för markeringsform"
   },
   "placeholder.rotate": {
     "message": "Vänligen välj...",
-    "description": "Platsinmatning för rotation"
+    "description": "Platsinnehåll för rotationsinmatning"
   },
   "placeholder.subMarker": {
     "message": "Vänligen välj...",
-    "description": "Platsinmatning för underteckning"
+    "description": "Platsinnehåll för undermarkering"
   },
   "button.generate": {
     "message": "Generera",
@@ -208,8 +208,8 @@
     "description": "Knapptext för att ladda ner video"
   },
   "button.uploadImageUrl": {
-    "message": "Ladda upp bild",
-    "description": "Knapptext för att ladda upp bild"
+    "message": "Ladda upp",
+    "description": "Knapptext för att ladda upp bild (förenkla till 'Ladda upp')"
   },
   "button.uploadVideoUrl": {
     "message": "Ladda upp video",
@@ -217,10 +217,10 @@
   },
   "button.uploadReferences": {
     "message": "Ladda upp",
-    "description": "Knapptext som tillåter användare att ladda upp referenser"
+    "description": "Knapptext för att låta användaren ladda upp referenser"
   },
   "message.uploadReferencesExceed": {
-    "message": "Maximalt 1 bild kan laddas upp",
+    "message": "Max 1 bild kan laddas upp",
     "description": "Felmeddelande när antalet uppladdade bilder överskrider gränsen"
   },
   "message.uploadReferencesSuccess": {
@@ -240,11 +240,11 @@
     "description": "Framgångsmeddelande när uppgift har startats"
   },
   "message.startTaskFailed": {
-    "message": "Misslyckades med att starta uppgift, vänligen kontakta administratören",
+    "message": "Misslyckades med att starta uppgift, vänligen kontakta administratör",
     "description": "Felmeddelande när ritningsuppgift misslyckas"
   },
   "message.usedUp": {
-    "message": "Dina poäng är slut, vänligen köp fler poäng för att fortsätta använda",
+    "message": "Dina poäng är slut, vänligen köp fler poäng för att fortsätta",
     "description": "Meddelande när poängen är slut"
   },
   "message.generating": {
@@ -268,12 +268,12 @@
     "description": "Felmeddelande när antalet uppladdade första bildbilder överskrider gränsen"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Uppladdad fil får inte överstiga 10 MB!",
-    "description": "Felmeddelande när uppladdad fil överstiger 10 MB!"
+    "message": "Uppladdad fil får inte överstiga 10MB!",
+    "description": "Felmeddelande när filstorleken överskrider 10MB"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Uppladdad fil måste vara i MP4-format!",
-    "description": "Felmeddelande när uppladdad fil inte är i MP4-format!"
+    "description": "Felmeddelande när filen inte är i MP4-format"
   },
   "message.uploadStartImageExceed": {
     "message": "Antalet uppladdade första bildbilder överskrider gränsen",
@@ -284,16 +284,16 @@
     "description": "Felmeddelande när antalet uppladdade sista bildbilder överskrider gränsen"
   },
   "message.uploadStartImageError": {
-    "message": "Misslyckades med att ladda upp första bild",
-    "description": "Felmeddelande när uppladdning av första bild misslyckas"
+    "message": "Misslyckades med att ladda upp första bildbild",
+    "description": "Felmeddelande när uppladdning av första bildbild misslyckas"
   },
   "message.uploadVideoError": {
     "message": "Misslyckades med att ladda upp video",
     "description": "Felmeddelande när uppladdning av video misslyckas"
   },
   "message.uploadEndImageError": {
-    "message": "Misslyckades med att ladda upp sista bild",
-    "description": "Felmeddelande när uppladdning av sista bild misslyckas"
+    "message": "Misslyckades med att ladda upp sista bildbild",
+    "description": "Felmeddelande när uppladdning av sista bildbild misslyckas"
   },
   "message.uploadDocumentsError": {
     "message": "Misslyckades med att ladda upp dokument",

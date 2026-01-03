@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "Typ",
-    "description": "Typ treści wideo Pixverse, który ma być generowany, np. 'link', 'tekst' itp."
+    "description": "Typ treści Pixverse wideo do wygenerowania, np. 'link', 'tekst' itp."
   },
   "name.failure": {
     "message": "Niepowodzenie",
@@ -25,59 +25,59 @@
   },
   "name.createdAt": {
     "message": "Data utworzenia",
-    "description": "Data i czas utworzenia wideo Pixverse"
+    "description": "Data i czas wygenerowania wideo Pixverse"
   },
   "name.style": {
     "message": "Styl",
-    "description": "Styl wideo, które ma być generowane"
+    "description": "Styl wideo do wygenerowania"
   },
   "name.style1": {
     "message": "Cyberpunk",
-    "description": "Styl wideo, które ma być generowane"
+    "description": "Styl wideo do wygenerowania"
   },
   "name.style2": {
     "message": "Anime",
-    "description": "Styl wideo, które ma być generowane"
+    "description": "Styl wideo do wygenerowania"
   },
   "name.style3": {
     "message": "Komiks",
-    "description": "Styl wideo, które ma być generowane"
+    "description": "Styl wideo do wygenerowania"
   },
   "name.style4": {
     "message": "Glina",
-    "description": "Styl wideo, które ma być generowane"
+    "description": "Styl wideo do wygenerowania"
   },
   "name.style5": {
     "message": "Animacja 3D",
-    "description": "Styl wideo, które ma być generowane"
+    "description": "Styl wideo do wygenerowania"
   },
   "name.style6": {
     "message": "Realistyczny",
-    "description": "Styl wideo, które ma być generowane"
+    "description": "Styl wideo do wygenerowania"
   },
   "name.motion": {
     "message": "Tryb wideo",
-    "description": "Tryb wideo, które ma być generowane"
+    "description": "Tryb wideo do wygenerowania"
   },
   "name.motion1": {
     "message": "Standardowy",
-    "description": "Tryb wideo, które ma być generowane"
+    "description": "Tryb wideo do wygenerowania"
   },
   "name.motion2": {
     "message": "Szybki",
-    "description": "Tryb wideo, które ma być generowane"
+    "description": "Tryb wideo do wygenerowania"
   },
   "name.quality": {
     "message": "Jakość wideo",
-    "description": "Jakość wideo, które ma być generowane"
+    "description": "Jakość wideo do wygenerowania"
   },
   "name.startImage": {
-    "message": "Obraz referencyjny klatki początkowej",
-    "description": "Obraz referencyjny wideo, które ma być generowane"
+    "message": "Obraz referencyjny",
+    "description": "Etykieta pola formularza: obraz referencyjny (w języku angielskim sugeruje się tłumaczenie na 'First Frame', aby zachować krótkość i uniknąć zasłaniania przycisku)"
   },
   "name.aspectRatio": {
     "message": "Proporcje",
-    "description": "Proporcje wideo, które ma być generowane"
+    "description": "Proporcje wideo do wygenerowania"
   },
   "name.videoUrl": {
     "message": "Niestandardowe wideo",
@@ -120,7 +120,7 @@
     "description": "Opis parametru 'ingredients'"
   },
   "description.imageUrl": {
-    "message": "W przypadku zadania tworzenia wideo z wieloma obrazami, musisz przesłać wiele obrazów.",
+    "message": "W przypadku zadań tworzenia wideo z wieloma obrazami, musisz przesłać wiele obrazów.",
     "description": "Opis parametru 'imageUrl'"
   },
   "description.prompt": {
@@ -132,11 +132,11 @@
     "description": "Opis parametru 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Prześlij obraz klatki początkowej jako referencję, ostatnie wideo będzie odnosić się do klatki początkowej",
+    "message": "Prześlij obraz pierwszej klatki jako referencję do generowania, ostatnie wideo będzie odnosić się do pierwszej klatki",
     "description": "Opis parametru przesyłania referencji"
   },
   "description.uploadEndImage": {
-    "message": "Prześlij obraz klatki końcowej jako referencję, ostatnie wideo będzie odnosić się do klatki końcowej",
+    "message": "Prześlij obraz ostatniej klatki jako referencję do generowania, ostatnie wideo będzie odnosić się do ostatniej klatki",
     "description": "Opis parametru przesyłania referencji"
   },
   "description.seed": {
@@ -148,52 +148,52 @@
     "description": "Stan oczekiwania zadania"
   },
   "status.processing": {
-    "message": "W przetwarzaniu",
-    "description": "Stan przetwarzania zadania"
+    "message": "W trakcie przetwarzania",
+    "description": "Stan oczekiwania zadania"
   },
   "placeholder.paddingNoise": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wprowadzenia szumów wypełniających"
+    "description": "Placeholder dla wejścia szumów wypełniających"
   },
   "placeholder.select": {
     "message": "Wybierz",
-    "description": "Placeholder dla pola wyboru"
+    "description": "Placeholder w polu wyboru"
   },
   "placeholder.paddingLevel": {
     "message": "Wybierz...",
     "description": "Placeholder dla poziomu wypełnienia"
   },
   "placeholder.prompt": {
-    "message": "Wprowadź podpowiedź dla stylu wideo, które ma być generowane, np. quiver",
-    "description": "Placeholder dla pola podpowiedzi"
+    "message": "Wprowadź podpowiedź dla stylu wideo, np. quiver",
+    "description": "Placeholder w polu podpowiedzi"
   },
   "placeholder.negativePrompt": {
-    "message": "Wprowadź negatywną podpowiedź dla stylu wideo, nie przekraczając 200 znaków",
-    "description": "Placeholder dla pola podpowiedzi"
+    "message": "Wprowadź negatywną podpowiedź dla stylu wideo, maksymalnie 200 znaków",
+    "description": "Placeholder w polu podpowiedzi"
   },
   "placeholder.position": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wprowadzenia pozycji"
+    "description": "Placeholder dla wejścia pozycji"
   },
   "placeholder.aspectRatio": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wprowadzenia proporcji"
+    "description": "Placeholder dla wejścia proporcji"
   },
   "placeholder.preset": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wprowadzenia presetów"
+    "description": "Placeholder dla wejścia preset"
   },
   "placeholder.markerShape": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wprowadzenia kształtu znacznika"
+    "description": "Placeholder dla kształtu znacznika"
   },
   "placeholder.rotate": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wejścia obrotu"
+    "description": "Placeholder dla rotacji"
   },
   "placeholder.subMarker": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wejścia podznaku"
+    "description": "Placeholder dla podznacznika"
   },
   "button.generate": {
     "message": "Generuj",
@@ -208,8 +208,8 @@
     "description": "Tekst przycisku do pobierania wideo"
   },
   "button.uploadImageUrl": {
-    "message": "Prześlij obraz",
-    "description": "Tekst przycisku do przesyłania obrazu"
+    "message": "Prześlij",
+    "description": "Tekst przycisku do przesyłania obrazu (proszę uprościć do 'Prześlij')"
   },
   "button.uploadVideoUrl": {
     "message": "Prześlij wideo",
@@ -217,34 +217,34 @@
   },
   "button.uploadReferences": {
     "message": "Prześlij",
-    "description": "Tekst przycisku, który pozwala użytkownikowi przesłać odniesienia"
+    "description": "Tekst przycisku, który pozwala użytkownikowi przesłać referencje"
   },
   "message.uploadReferencesExceed": {
-    "message": "Możesz przesłać maksymalnie 1 obraz",
-    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazów przekracza limit"
+    "message": "Można przesłać maksymalnie 1 obrazek",
+    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazków przekracza limit"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Obraz przesłany pomyślnie",
-    "description": "Komunikat o sukcesie, gdy obraz został przesłany pomyślnie"
+    "message": "Obrazek przesłany pomyślnie",
+    "description": "Komunikat o sukcesie, gdy obrazek został przesłany pomyślnie"
   },
   "message.uploadReferencesError": {
-    "message": "Nie udało się przesłać obrazu, spróbuj ponownie później",
-    "description": "Komunikat o błędzie, gdy przesyłanie obrazu nie powiodło się"
+    "message": "Nie udało się przesłać obrazka, spróbuj ponownie później",
+    "description": "Komunikat o błędzie, gdy przesyłanie obrazka nie powiodło się"
   },
   "message.startingTask": {
     "message": "Rozpoczynanie zadania...",
     "description": "Komunikat na początku zadania rysowania"
   },
   "message.startTaskSuccess": {
-    "message": "Zadanie generowania zostało pomyślnie uruchomione",
-    "description": "Komunikat o sukcesie, gdy zadanie zostało pomyślnie uruchomione"
+    "message": "Zadanie generowania uruchomione pomyślnie",
+    "description": "Komunikat o sukcesie, gdy zadanie zostało uruchomione pomyślnie"
   },
   "message.startTaskFailed": {
     "message": "Nie udało się uruchomić zadania, skontaktuj się z administratorem",
     "description": "Komunikat o błędzie, gdy uruchomienie zadania rysowania nie powiodło się"
   },
   "message.usedUp": {
-    "message": "Twoje punkty zostały wyczerpane, proszę kupić więcej punktów, aby kontynuować",
+    "message": "Twoje punkty zostały wyczerpane, kup więcej punktów, aby kontynuować",
     "description": "Komunikat, gdy punkty zostały wyczerpane"
   },
   "message.generating": {
@@ -264,36 +264,36 @@
     "description": "Komunikat, gdy generowanie obrazu nie powiodło się"
   },
   "message.uploadVideoExceed": {
-    "message": "Liczba przesyłanych obrazów klatki początkowej przekracza limit",
-    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazów klatki początkowej przekracza limit"
+    "message": "Liczba przesyłanych obrazków klatki początkowej przekracza limit",
+    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazków klatki początkowej przekracza limit"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Rozmiar przesyłanego pliku nie może przekraczać 10 MB!",
-    "description": "Komunikat o błędzie, gdy rozmiar przesyłanego pliku przekracza 10 MB!"
+    "message": "Rozmiar przesyłanego pliku nie może przekraczać 10MB!",
+    "description": "Komunikat o błędzie, gdy rozmiar przesyłanego pliku przekracza 10MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Przesyłany plik musi być w formacie MP4!",
     "description": "Komunikat o błędzie, gdy przesyłany plik nie jest w formacie MP4!"
   },
   "message.uploadStartImageExceed": {
-    "message": "Liczba przesyłanych obrazów klatki początkowej przekracza limit",
-    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazów klatki początkowej przekracza limit"
+    "message": "Liczba przesyłanych obrazków klatki początkowej przekracza limit",
+    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazków klatki początkowej przekracza limit"
   },
   "message.uploadEndImageExceed": {
-    "message": "Liczba przesyłanych obrazów klatki końcowej przekracza limit",
-    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazów klatki końcowej przekracza limit"
+    "message": "Liczba przesyłanych obrazków klatki końcowej przekracza limit",
+    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazków klatki końcowej przekracza limit"
   },
   "message.uploadStartImageError": {
-    "message": "Nie udało się przesłać obrazu klatki początkowej",
-    "description": "Komunikat o błędzie, gdy przesyłanie obrazu klatki początkowej nie powiodło się"
+    "message": "Nie udało się przesłać obrazka klatki początkowej",
+    "description": "Komunikat o błędzie, gdy przesyłanie obrazka klatki początkowej nie powiodło się"
   },
   "message.uploadVideoError": {
     "message": "Nie udało się przesłać wideo",
     "description": "Komunikat o błędzie, gdy przesyłanie wideo nie powiodło się"
   },
   "message.uploadEndImageError": {
-    "message": "Nie udało się przesłać obrazu klatki końcowej",
-    "description": "Komunikat o błędzie, gdy przesyłanie obrazu klatki końcowej nie powiodło się"
+    "message": "Nie udało się przesłać obrazka klatki końcowej",
+    "description": "Komunikat o błędzie, gdy przesyłanie obrazka klatki końcowej nie powiodło się"
   },
   "message.uploadDocumentsError": {
     "message": "Nie udało się przesłać dokumentu",

@@ -5,14 +5,14 @@
   },
   "name.mode": {
     "message": "Velocità di generazione",
-    "description": "Nome del parametro di velocità per impostare la velocità di generazione delle immagini"
+    "description": "Nome del parametro di velocità per impostare la velocità di generazione dell'immagine"
   },
   "name.type": {
     "message": "Tipo",
-    "description": "Tipo di contenuto del codice QR da generare, come 'link', 'testo', ecc."
+    "description": "Tipo di contenuto del QR code da generare, come 'link', 'testo', ecc."
   },
   "name.failure": {
-    "message": "Fallimento",
+    "message": "Fallito",
     "description": "Stato di fallimento dell'attività"
   },
   "name.failureReason": {
@@ -24,44 +24,44 @@
     "description": "Stato dell'attività"
   },
   "name.traceId": {
-    "message": "ID di tracciamento",
+    "message": "ID tracciamento",
     "description": "ID di tracciamento dell'attività"
   },
   "name.size": {
     "message": "Dimensione",
-    "description": "Dimensione del codice QR da generare"
+    "description": "Dimensione del QR code da generare"
   },
   "name.createdAt": {
     "message": "Data di creazione",
-    "description": "Data e ora di generazione del codice QR"
+    "description": "Data e ora di generazione del QR code"
   },
   "name.endImageUrls": {
     "message": "Immagini del ritratto",
-    "description": "Semi per generare il codice QR"
+    "description": "Semi per generare il QR code"
   },
   "description.endImageUrls": {
-    "message": "Genera una foto tessera corrispondente a questa immagine del ritratto",
-    "description": "Semi per generare il codice QR"
+    "message": "Genera la foto identificativa corrispondente a questa immagine del ritratto",
+    "description": "Semi per generare il QR code"
   },
   "name.content": {
     "message": "Contenuto",
-    "description": "Contenuto del codice QR da generare"
+    "description": "Contenuto del QR code da generare"
   },
   "field.elements": {
-    "message": "Stile foto tessera",
-    "description": "Stile di pittura utilizzato per generare l'immagine"
+    "message": "Stile foto identificativa",
+    "description": "Stile artistico utilizzato per generare l'immagine"
   },
   "name.headshotsBot": {
-    "message": "Headshots Bot",
-    "description": "Nome per la generazione di foto tessera Headshots"
+    "message": "Bot per ritratti",
+    "description": "Nome per la generazione di foto identificative"
   },
   "name.contentImageUrl": {
     "message": "Link immagine contenuto",
-    "description": "URL dell'immagine contenuto per il codice QR da generare"
+    "description": "URL dell'immagine contenuto del QR code da generare"
   },
   "inputWay.input": {
     "message": "Inserisci contenuto",
-    "description": "Metrica di input"
+    "description": "Metodo di input"
   },
   "status.pending": {
     "message": "In attesa",
@@ -69,55 +69,55 @@
   },
   "status.processing": {
     "message": "In elaborazione",
-    "description": "Stato di attesa dell'attività"
+    "description": "Stato di elaborazione dell'attività"
   },
   "placeholder.paddingNoise": {
     "message": "Seleziona...",
-    "description": "Segnaposto per input di rumore di riempimento"
+    "description": "Segnaposto per l'input di rumore di riempimento"
   },
   "placeholder.paddingLevel": {
     "message": "Seleziona...",
-    "description": "Segnaposto per livello di riempimento"
+    "description": "Segnaposto per il livello di riempimento"
   },
   "placeholder.prompt": {
-    "message": "Inserisci prompt dello stile video da generare, ad esempio: Astronauti che transitano dallo spazio a un vulcano",
-    "description": "Testo segnaposto nel campo di prompt"
+    "message": "Inserisci un suggerimento per lo stile video da generare, ad esempio: Astronauti che si spostano dallo spazio a un vulcano",
+    "description": "Testo segnaposto nel campo suggerimenti"
   },
   "button.fast": {
-    "message": "Modalità rapida",
-    "description": "Testo del pulsante, consente all'utente di impostare la modalità 'rapida' per generare l'immagine, deve essere tradotto in 'Modalità rapida'"
+    "message": "Modalità veloce",
+    "description": "Testo del pulsante che consente all'utente di impostare la modalità 'veloce' per generare l'immagine"
   },
   "button.relax": {
     "message": "Modalità lenta",
-    "description": "Testo del pulsante, consente all'utente di impostare la modalità 'lenta' per generare l'immagine, deve essere tradotto in 'Modalità lenta'"
+    "description": "Testo del pulsante che consente all'utente di impostare la modalità 'lenta' per generare l'immagine"
   },
   "button.generate": {
     "message": "Genera",
-    "description": "Testo del pulsante per generare foto tessera Headshots"
+    "description": "Testo del pulsante per generare foto identificative"
   },
   "button.viewImage": {
     "message": "Visualizza immagine originale",
-    "description": "Testo del pulsante per generare foto tessera Headshots"
+    "description": "Testo del pulsante per visualizzare la foto identificativa generata"
   },
   "button.download": {
-    "message": "Scarica video",
-    "description": "Testo del pulsante per scaricare il video"
+    "message": "Scarica immagine",
+    "description": "Testo del pulsante per scaricare l'immagine"
   },
   "button.uploadImageUrls": {
-    "message": "Carica immagine del ritratto",
-    "description": "Testo del pulsante per caricare l'immagine del ritratto"
+    "message": "Carica immagini del ritratto",
+    "description": "Testo del pulsante per caricare immagini del ritratto (semplificare in 'Carica')"
   },
   "message.uploadReferencesExceed": {
-    "message": "Massimo 5 immagini possono essere caricate",
+    "message": "Puoi caricare al massimo 5 immagini",
     "description": "Messaggio di errore quando il numero di immagini caricate supera il limite"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Immagine caricata con successo",
-    "description": "Messaggio di successo quando l'immagine è stata caricata con successo"
+    "message": "Immagini caricate con successo",
+    "description": "Messaggio di successo quando le immagini sono state caricate con successo"
   },
   "message.uploadReferencesError": {
     "message": "Caricamento immagine fallito, riprova più tardi",
-    "description": "Messaggio di errore quando il caricamento dell'immagine è fallito"
+    "description": "Messaggio di errore quando il caricamento dell'immagine fallisce"
   },
   "message.startingTask": {
     "message": "Avvio dell'attività in corso...",
@@ -129,19 +129,19 @@
   },
   "message.startTaskFailed": {
     "message": "Avvio dell'attività fallito, contattare l'amministratore",
-    "description": "Messaggio di errore quando l'attività di disegno non riesce a partire"
+    "description": "Messaggio di errore quando l'attività di disegno non riesce ad avviarsi"
   },
   "message.usedUp": {
-    "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare",
+    "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare a utilizzare",
     "description": "Messaggio quando i crediti sono esauriti"
   },
   "message.generating": {
     "message": "Generazione in corso...",
-    "description": "Messaggio mentre l'immagine è in fase di generazione"
+    "description": "Messaggio durante la generazione dell'immagine"
   },
   "message.downloadVideo": {
     "message": "Scarica questo video",
-    "description": "Messaggio mentre l'immagine è in fase di generazione"
+    "description": "Messaggio durante la generazione dell'immagine"
   },
   "message.generateFailed": {
     "message": "Generazione immagine fallita",
@@ -152,43 +152,43 @@
     "description": "Messaggio quando non ci sono operazioni disponibili"
   },
   "message.noTasks": {
-    "message": "Nessuna attività storica, fai clic a sinistra per generare il video",
+    "message": "Nessuna attività storica, fai clic a sinistra per generare un video",
     "description": "Messaggio quando non ci sono attività"
   },
   "styleCategory.styles": {
-    "message": "Stile foto tessera",
-    "description": "Parola di categoria per descrivere e generare immagini, l'immagine generata dovrebbe includere la categoria di questo tag"
+    "message": "Stile foto identificativa",
+    "description": "Termine di categoria utilizzato per descrivere e generare immagini, le immagini generate dovrebbero includere la categoria di questo tag"
   },
   "styleTag.malePportrait": {
     "message": "Ritratto maschile",
-    "description": "Parola di stile per descrivere e generare immagini, l'immagine generata dovrebbe includere lo stile di questo tag"
+    "description": "Termine di stile utilizzato per descrivere e generare immagini, le immagini generate dovrebbero includere lo stile di questo tag"
   },
   "styleTag.malePportrait2": {
     "message": "Ritratto maschile 2",
-    "description": "Parola di stile per descrivere e generare immagini, l'immagine generata dovrebbe includere lo stile di questo tag"
+    "description": "Termine di stile utilizzato per descrivere e generare immagini, le immagini generate dovrebbero includere lo stile di questo tag"
   },
   "styleTag.kindergarten": {
     "message": "Foto di ingresso all'asilo",
-    "description": "Parola di stile per descrivere e generare immagini, l'immagine generata dovrebbe includere lo stile di questo tag"
+    "description": "Usato per descrivere e generare immagini con questo stile, l'immagine generata deve includere lo stile di questo tag"
   },
   "styleTag.logoTshirt": {
-    "message": "Foto T-shirt con logo aziendale",
-    "description": "Utilizzato per descrivere e generare parole di stile per le immagini, le immagini generate devono includere questo stile"
+    "message": "Foto con logo aziendale su T-shirt",
+    "description": "Usato per descrivere e generare immagini con questo stile, l'immagine generata deve includere lo stile di questo tag"
   },
   "styleTag.wedding": {
     "message": "Foto di registrazione matrimonio",
-    "description": "Utilizzato per descrivere e generare parole di stile per le immagini, le immagini generate devono includere questo stile"
+    "description": "Usato per descrivere e generare immagini con questo stile, l'immagine generata deve includere lo stile di questo tag"
   },
   "styleTag.businessPphoto": {
-    "message": "Ritratti di stile aziendale",
-    "description": "Utilizzato per descrivere e generare parole di stile per le immagini, le immagini generate devono includere questo stile"
+    "message": "Foto professionale",
+    "description": "Usato per descrivere e generare immagini con questo stile, l'immagine generata deve includere lo stile di questo tag"
   },
   "styleTag.bobSuit": {
     "message": "Bob con abito nero",
-    "description": "Utilizzato per descrivere e generare parole di stile per le immagini, le immagini generate devono includere questo stile"
+    "description": "Usato per descrivere e generare immagini con questo stile, l'immagine generata deve includere lo stile di questo tag"
   },
   "styleTag.femalePortrait": {
     "message": "Ritratto femminile",
-    "description": "Utilizzato per descrivere e generare parole di stile per le immagini, le immagini generate devono includere questo stile"
+    "description": "Usato per descrivere e generare immagini con questo stile, l'immagine generata deve includere lo stile di questo tag"
   }
 }

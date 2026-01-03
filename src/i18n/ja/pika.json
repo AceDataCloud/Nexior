@@ -4,15 +4,15 @@
     "description": "Pika的视频效果名称"
   },
   "style.effect2": {
-    "message": "斬首",
+    "message": "首切り",
     "description": "Pika的视频效果名称"
   },
   "style.effect3": {
-    "message": "目玉飛出",
+    "message": "目飛び出し",
     "description": "Pika的视频效果名称"
   },
   "style.effect4": {
-    "message": "タダー",
+    "message": "タダ",
     "description": "Pika的视频效果名称"
   },
   "style.effect5": {
@@ -24,7 +24,7 @@
     "description": "Pika的视频效果名称"
   },
   "style.effect7": {
-    "message": "溶解",
+    "message": "溶ける",
     "description": "Pika的视频效果名称"
   },
   "style.effect8": {
@@ -36,7 +36,7 @@
     "description": "Pika的视频效果名称"
   },
   "style.effect10": {
-    "message": "溶ける",
+    "message": "溶かす",
     "description": "Pika的视频效果名称"
   },
   "style.effect11": {
@@ -44,7 +44,7 @@
     "description": "Pika的视频效果名称"
   },
   "style.effect12": {
-    "message": "粉砕する",
+    "message": "潰す",
     "description": "Pika的视频效果名称"
   },
   "style.effect13": {
@@ -72,7 +72,7 @@
     "description": "任务的状态"
   },
   "name.traceId": {
-    "message": "追跡 ID",
+    "message": "トレース ID",
     "description": "任务的追踪 ID"
   },
   "name.createdAt": {
@@ -92,8 +92,8 @@
     "description": "内容输入的提示"
   },
   "name.ingredients": {
-    "message": "複数画像動画作成",
-    "description": "自定义扩展视频"
+    "message": "複数画像で動画作成",
+    "description": "多图创建视频开关/标签（英文建议：Multi-Image，保持简短）"
   },
   "name.model": {
     "message": "モデルバージョン",
@@ -112,15 +112,15 @@
     "description": "Pika 视频生成器的名称"
   },
   "description.ingredients": {
-    "message": "複数の画像をアップロードして独自の動画を生成したい場合はこちらのボタンをオンにしてください。",
+    "message": "複数の画像をアップロードして自分の動画を生成したい場合は、このボタンをオンにしてください。",
     "description": "参数'ingredients'的描述"
   },
   "description.imageUrl": {
-    "message": "複数画像動画作成のタスクでは、多くの画像をアップロードする必要があります。",
+    "message": "複数画像で動画作成のタスクでは、複数の画像をアップロードする必要があります。",
     "description": "参数'imageUrl'的描述"
   },
   "description.prompt": {
-    "message": "Pika動画を生成するプロンプト",
+    "message": "Pika動画生成のためのプロンプト",
     "description": "参数'prompt'的描述"
   },
   "status.pending": {
@@ -144,12 +144,12 @@
     "description": "填充级别的占位符"
   },
   "placeholder.prompt": {
-    "message": "生成する動画スタイルのヒントワードを入力してください、例：moving",
+    "message": "生成する動画スタイルのプロンプトを入力してください。例：moving",
     "description": "提示字段中的占位文本"
   },
   "placeholder.position": {
     "message": "選択してください...",
-    "description": "位置输入的占位符"
+    "description": "位置入力的占位符"
   },
   "placeholder.aspectRatio": {
     "message": "選択してください...",
@@ -172,15 +172,15 @@
     "description": "子标记输入的占位符"
   },
   "button.precise": {
-    "message": "正確",
+    "message": "精密",
     "description": "生成Pika视频的按钮文本"
   },
   "button.creative": {
-    "message": "創造的",
+    "message": "クリエイティブ",
     "description": "生成Pika视频的按钮文本"
   },
   "button.generate": {
-    "message": "生成する",
+    "message": "生成",
     "description": "生成Pika视频的按钮文本"
   },
   "button.extend": {
@@ -188,87 +188,87 @@
     "description": "扩展视频按钮文本"
   },
   "button.download": {
-    "message": "ダウンロード動画",
+    "message": "動画をダウンロード",
     "description": "下载视频按钮文本"
   },
   "button.uploadImageUrl": {
-    "message": "画像をアップロード",
-    "description": "上传图片的按钮文本"
+    "message": "アップロード",
+    "description": "上传图片按钮文本（英文请简化为“Upload”，不要用“Upload Image”）"
   },
   "button.uploadVideoUrl": {
     "message": "動画をアップロード",
     "description": "上传视频的按钮文本"
   },
   "message.uploadReferencesExceed": {
-    "message": "最大5つの画像をアップロードできます",
-    "description": "上传的图片数量超过限制时的错误消息"
+    "message": "最大5枚の画像をアップロードできます",
+    "description": "アップロードした画像の数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadReferencesSuccess": {
     "message": "画像のアップロードに成功しました",
-    "description": "画像のアップロードに成功したときのメッセージ"
+    "description": "画像のアップロードが成功したときの成功メッセージ"
   },
   "message.uploadReferencesError": {
-    "message": "画像のアップロードに失敗しました。後でもう一度お試しください",
-    "description": "画像のアップロードが失敗したときのエラーメッセージ"
+    "message": "画像のアップロードに失敗しました。後で再試行してください",
+    "description": "画像のアップロードに失敗したときのエラーメッセージ"
   },
   "message.startingTask": {
     "message": "タスクを開始しています...",
-    "description": "描画タスクが開始されたときのメッセージ"
+    "description": "描画タスクが始まるときのメッセージ"
   },
   "message.startTaskSuccess": {
     "message": "生成タスクを正常に開始しました",
-    "description": "タスクが正常に開始されたときのメッセージ"
+    "description": "タスクの開始が成功したときの成功メッセージ"
   },
   "message.startTaskFailed": {
     "message": "タスクの開始に失敗しました。管理者に連絡してください",
     "description": "描画タスクの開始に失敗したときのエラーメッセージ"
   },
   "message.usedUp": {
-    "message": "クレジットを使い果たしました。より多くのクレジットを購入して続行してください",
-    "description": "クレジットが使い果たされたときのメッセージ"
+    "message": "ポイントが使い切れました。追加のポイントを購入して続行してください",
+    "description": "ポイントが使い切れたときのメッセージ"
   },
   "message.generating": {
     "message": "生成中...",
     "description": "画像が生成されているときのメッセージ"
   },
   "message.downloadVideo": {
-    "message": "このビデオをダウンロード",
+    "message": "この動画をダウンロード",
     "description": "画像が生成されているときのメッセージ"
   },
   "message.extendVideo": {
-    "message": "このビデオを続行して生成",
+    "message": "この動画の生成を続ける",
     "description": "画像が生成されているときのメッセージ"
   },
   "message.generateFailed": {
     "message": "画像の生成に失敗しました",
-    "description": "画像の生成が失敗したときのメッセージ"
+    "description": "画像の生成に失敗したときのメッセージ"
   },
   "message.uploadVideoExceed": {
-    "message": "アップロードされた最初のフレーム画像の数が制限を超えています",
-    "description": "アップロードされた最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
+    "message": "最初のフレーム画像のアップロード数が制限を超えました",
+    "description": "最初のフレーム画像のアップロード数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadVideoSizeExceed": {
     "message": "アップロードファイルのサイズは10MBを超えてはいけません！",
-    "description": "アップロードファイルのサイズは10MBを超えてはいけません！ときのエラーメッセージ"
+    "description": "アップロードファイルのサイズが10MBを超えたときのエラーメッセージ"
   },
   "message.uploadVideoTypeFailed": {
     "message": "アップロードファイルはMP4形式でなければなりません！",
-    "description": "アップロードファイルはMP4形式でなければなりません！ときのエラーメッセージ"
+    "description": "アップロードファイルがMP4形式でないときのエラーメッセージ"
   },
   "message.uploadStartImageExceed": {
-    "message": "アップロードされた最初のフレーム画像の数が制限を超えています",
-    "description": "アップロードされた最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
+    "message": "最初のフレーム画像のアップロード数が制限を超えました",
+    "description": "最初のフレーム画像のアップロード数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadEndImageExceed": {
-    "message": "アップロードされた最後のフレーム画像の数が制限を超えています",
-    "description": "アップロードされた最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
+    "message": "最後のフレーム画像のアップロード数が制限を超えました",
+    "description": "最後のフレーム画像のアップロード数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadStartImageError": {
     "message": "最初のフレーム画像のアップロードに失敗しました",
     "description": "最初のフレーム画像のアップロードに失敗したときのエラーメッセージ"
   },
   "message.uploadVideoError": {
-    "message": "ビデオのアップロードに失敗しました",
+    "message": "動画のアップロードに失敗しました",
     "description": "最初のフレーム画像のアップロードに失敗したときのエラーメッセージ"
   },
   "message.uploadEndImageError": {
@@ -276,15 +276,15 @@
     "description": "最後のフレーム画像のアップロードに失敗したときのエラーメッセージ"
   },
   "message.uploadDocumentsError": {
-    "message": "ドキュメントのアップロードに失敗しました",
-    "description": "ドキュメントのアップロードが失敗したときのエラーメッセージ"
+    "message": "文書のアップロードに失敗しました",
+    "description": "文書のアップロードに失敗したときのエラーメッセージ"
   },
   "message.noOperations": {
     "message": "利用可能な操作はありません",
     "description": "利用可能な操作がないときのメッセージ"
   },
   "message.noTasks": {
-    "message": "履歴タスクはありません。左側をクリックしてビデオを生成してください",
+    "message": "履歴タスクはありません。左側のボタンをクリックして動画を生成してください",
     "description": "タスクがないときのメッセージ"
   }
 }

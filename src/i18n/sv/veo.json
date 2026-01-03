@@ -13,7 +13,7 @@
   },
   "name.failure": {
     "message": "Misslyckande",
-    "description": "Uppgiftens misslyckande status"
+    "description": "Uppgiftens misslyckandestatus"
   },
   "name.failureReason": {
     "message": "Orsak till misslyckande",
@@ -29,19 +29,19 @@
   },
   "name.createdAt": {
     "message": "Skapat den",
-    "description": "Datum och tid för när Kling-video genererades"
+    "description": "Datum och tid för att generera Veo-video"
   },
   "name.startEndImage": {
-    "message": "Referensbilder för start och slut",
-    "description": "Referensbilder för videon som ska genereras"
+    "message": "Start/Slut bildreferens",
+    "description": "Formulärfältets etikett: Start/Slut bildreferens"
   },
   "name.action": {
     "message": "Åtgärd",
     "description": "Lista över tillgängliga åtgärder"
   },
   "name.action3": {
-    "message": "Hämta 1080p-video från",
-    "description": "Referensbilder för videon som ska genereras"
+    "message": "Hämta 1080p video från",
+    "description": "Referensbilden för videon som ska genereras"
   },
   "name.prompt": {
     "message": "Videoprompt",
@@ -49,7 +49,7 @@
   },
   "name.model": {
     "message": "Modellversion",
-    "description": "Modellversionen som används för att generera videon"
+    "description": "Modellversionen som används för att generera video"
   },
   "name.veoBot": {
     "message": "Google Veo Bot",
@@ -60,7 +60,7 @@
     "description": "Namn på förhållandeparameter"
   },
   "description.translation": {
-    "message": "Vid skapande av videouppgifter kan automatisk översättning av promptord aktiveras.",
+    "message": "Automatisk översättning kan aktiveras för promptord vid skapande av videouppgifter.",
     "description": "Beskrivning av parametern 'translation'"
   },
   "description.imageUrl": {
@@ -89,15 +89,15 @@
   },
   "placeholder.select": {
     "message": "Välj",
-    "description": "Platshållartext i urvalsfältet"
+    "description": "Platshållartext i urvalsfält"
   },
   "placeholder.paddingLevel": {
     "message": "Vänligen välj...",
     "description": "Platshållare för fyllnadsnivå"
   },
   "placeholder.prompt": {
-    "message": "Ange promptord för den stil av video som ska genereras, till exempel: moving",
-    "description": "Platshållartext i promptfältet"
+    "message": "Ange promptord för den stil av video som ska genereras, t.ex.: moving",
+    "description": "Platshållartext i promptfält"
   },
   "placeholder.position": {
     "message": "Vänligen välj...",
@@ -180,12 +180,12 @@
     "description": "Felmeddelande när antalet uppladdade startbilder överskrider gränsen"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Uppladdad filstorlek får inte överstiga 10 MB!",
-    "description": "Felmeddelande när den uppladdade filstorleken överstiger 10 MB!"
+    "message": "Filstorleken får inte överstiga 10 MB!",
+    "description": "Felmeddelande när filstorleken överstiger 10 MB!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Uppladdningsfilen måste vara i MP4-format!",
-    "description": "Felmeddelande när uppladdningsfilen måste vara i MP4-format!"
+    "message": "Filuppladdningen måste vara i MP4-format!",
+    "description": "Felmeddelande när filuppladdningen inte är i MP4-format!"
   },
   "message.uploadStartEndImageExceed": {
     "message": "Antalet uppladdade startbilder överskrider gränsen",
@@ -196,27 +196,27 @@
     "description": "Felmeddelande när antalet uppladdade slutbilder överskrider gränsen"
   },
   "message.uploadStartImageError": {
-    "message": "Uppladdning av startbild misslyckades",
-    "description": "Felmeddelande när uppladdning av startbild misslyckas"
+    "message": "Misslyckades med att ladda upp startbilden",
+    "description": "Felmeddelande när uppladdningen av startbilden misslyckas"
   },
   "message.uploadVideoError": {
-    "message": "Uppladdning av video misslyckades",
-    "description": "Felmeddelande när uppladdning av video misslyckas"
+    "message": "Misslyckades med att ladda upp videon",
+    "description": "Felmeddelande när uppladdningen av videon misslyckas"
   },
   "message.uploadEndImageError": {
-    "message": "Uppladdning av slutbild misslyckades",
-    "description": "Felmeddelande när uppladdning av slutbild misslyckas"
+    "message": "Misslyckades med att ladda upp slutbilden",
+    "description": "Felmeddelande när uppladdningen av slutbilden misslyckas"
   },
   "message.uploadDocumentsError": {
-    "message": "Uppladdning av dokument misslyckades",
-    "description": "Felmeddelande när uppladdning av dokument misslyckas"
+    "message": "Misslyckades med att ladda upp dokumentet",
+    "description": "Felmeddelande när uppladdningen av dokumentet misslyckas"
   },
   "message.noOperations": {
     "message": "Inga tillgängliga åtgärder",
-    "description": "Meddelande när inga tillgängliga åtgärder finns"
+    "description": "Meddelande när inga åtgärder är tillgängliga"
   },
   "message.noTasks": {
     "message": "Inga historiska uppgifter, vänligen klicka på vänster sida för att generera video",
-    "description": "Meddelande när inga uppgifter finns"
+    "description": "Meddelande när det inte finns några uppgifter"
   }
 }

@@ -20,8 +20,8 @@
     "description": "Statut de la tâche"
   },
   "name.traceId": {
-    "message": "ID de traçage",
-    "description": "ID de traçage de la tâche"
+    "message": "ID de suivi",
+    "description": "ID de suivi de la tâche"
   },
   "name.createdAt": {
     "message": "Date de création",
@@ -72,8 +72,8 @@
     "description": "Qualité de la vidéo à générer"
   },
   "name.startImage": {
-    "message": "Image de référence de la première image",
-    "description": "Image de référence pour la vidéo à générer"
+    "message": "Image de référence",
+    "description": "Étiquette du champ de formulaire : image de référence (en anglais, suggéré de traduire par 'First Frame', garder court pour éviter de masquer le bouton)"
   },
   "name.aspectRatio": {
     "message": "Ratio d'aspect",
@@ -85,7 +85,7 @@
   },
   "name.prompt": {
     "message": "Invite vidéo",
-    "description": "Invite pour l'entrée de contenu"
+    "description": "Invite pour le contenu à entrer"
   },
   "name.duration": {
     "message": "Durée vidéo",
@@ -105,7 +105,7 @@
   },
   "name.effect": {
     "message": "Effet vidéo",
-    "description": "Nom du paramètre de style utilisé pour passer d'une version ou d'un style de modèle à un autre"
+    "description": "Nom du paramètre de style, utilisé pour basculer entre différentes versions ou styles de modèles"
   },
   "name.ingredientsModel": {
     "message": "Modèle d'ingrédients",
@@ -116,32 +116,32 @@
     "description": "Nom du générateur de vidéos Pixverse"
   },
   "description.ingredients": {
-    "message": "Si vous souhaitez télécharger plusieurs images pour générer votre propre vidéo, veuillez activer ce bouton.",
+    "message": "Si vous souhaitez télécharger plusieurs images pour générer votre propre vidéo, activez ce bouton.",
     "description": "Description du paramètre 'ingredients'"
   },
   "description.imageUrl": {
-    "message": "Dans la tâche de création de vidéo à plusieurs images, il doit télécharger plusieurs images.",
+    "message": "Dans la tâche de création de vidéo avec plusieurs images, plusieurs images doivent être téléchargées.",
     "description": "Description du paramètre 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Mots d'invite pour générer une vidéo Pixverse",
+    "message": "Mots d'invite pour générer la vidéo Pixverse",
     "description": "Description du paramètre 'prompt'"
   },
   "description.negativePrompt": {
     "message": "Texte d'invite négatif, optionnel, ne dépassant pas 200 caractères",
-    "description": "Description du paramètre 'negativePrompt'"
+    "description": "Description du paramètre 'prompt'"
   },
   "description.uploadStartImage": {
     "message": "Téléchargez l'image de la première image comme référence pour la génération, la vidéo finale se basera sur la première image.",
-    "description": "Description du paramètre de téléchargement de référence"
+    "description": "Description du paramètre de référence de téléchargement"
   },
   "description.uploadEndImage": {
-    "message": "Téléchargez l'image de la première image comme référence pour la génération, la vidéo finale se basera sur la première image.",
-    "description": "Description du paramètre de téléchargement de référence"
+    "message": "Téléchargez l'image de la dernière image comme référence pour la génération, la vidéo finale se basera sur la dernière image.",
+    "description": "Description du paramètre de référence de téléchargement"
   },
   "description.seed": {
     "message": "Valeur de la graine pour générer la vidéo. Si non définie, une graine aléatoire sera utilisée.",
-    "description": "Description du paramètre de téléchargement de référence"
+    "description": "Description du paramètre de référence de téléchargement"
   },
   "status.pending": {
     "message": "En attente",
@@ -185,7 +185,7 @@
   },
   "placeholder.markerShape": {
     "message": "Veuillez sélectionner...",
-    "description": "Espace réservé pour l'entrée de forme de marqueur"
+    "description": "Placeholder pour l'entrée de forme de marqueur"
   },
   "placeholder.rotate": {
     "message": "Veuillez sélectionner...",
@@ -208,19 +208,19 @@
     "description": "Texte du bouton pour télécharger la vidéo"
   },
   "button.uploadImageUrl": {
-    "message": "Télécharger l'image",
-    "description": "Texte du bouton pour télécharger une image"
+    "message": "Télécharger",
+    "description": "Texte du bouton pour télécharger une image (simplifié en 'Télécharger')"
   },
   "button.uploadVideoUrl": {
     "message": "Télécharger la vidéo",
-    "description": "Texte du bouton pour télécharger une vidéo"
+    "description": "Texte du bouton pour télécharger la vidéo"
   },
   "button.uploadReferences": {
     "message": "Télécharger",
     "description": "Texte du bouton permettant à l'utilisateur de télécharger des références"
   },
   "message.uploadReferencesExceed": {
-    "message": "Vous pouvez télécharger au maximum 1 image",
+    "message": "Vous pouvez télécharger jusqu'à 1 image",
     "description": "Message d'erreur lorsque le nombre d'images téléchargées dépasse la limite"
   },
   "message.uploadReferencesSuccess": {
@@ -249,15 +249,15 @@
   },
   "message.generating": {
     "message": "Génération en cours...",
-    "description": "Message pendant que l'image est en cours de génération"
+    "description": "Message pendant la génération de l'image"
   },
   "message.downloadVideo": {
     "message": "Télécharger cette vidéo",
-    "description": "Message pendant que l'image est en cours de génération"
+    "description": "Message pendant la génération de l'image"
   },
   "message.extendVideo": {
     "message": "Continuer à générer cette vidéo",
-    "description": "Message pendant que l'image est en cours de génération"
+    "description": "Message pendant la génération de l'image"
   },
   "message.generateFailed": {
     "message": "Échec de la génération de l'image",
@@ -268,12 +268,12 @@
     "description": "Message d'erreur lorsque le nombre d'images de la première image téléchargées dépasse la limite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "La taille du fichier téléchargé ne peut pas dépasser 10 Mo !",
-    "description": "Message d'erreur lorsque la taille du fichier téléchargé dépasse 10 Mo !"
+    "message": "La taille du fichier téléchargé ne doit pas dépasser 10 Mo !",
+    "description": "Message d'erreur lorsque la taille du fichier téléchargé dépasse 10 Mo"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Le fichier téléchargé doit être au format MP4 !",
-    "description": "Message d'erreur lorsque le fichier téléchargé n'est pas au format MP4 !"
+    "description": "Message d'erreur lorsque le fichier téléchargé n'est pas au format MP4"
   },
   "message.uploadStartImageExceed": {
     "message": "Le nombre d'images de la première image téléchargées dépasse la limite",

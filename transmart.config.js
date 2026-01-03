@@ -18,6 +18,7 @@ module.exports = {
       `Translate the i18n JSON file to ${languageName} according to the BCP 47 standard` +
       (context ? `\nHere are some contexts to help with better translation.  ---${context}---` : '') +
       `\n Keep the keys the same as the original file and make sure the output remains a valid i18n JSON file.` +
+      `\n UI text should be concise and layout-friendly (especially button labels and form field labels). Avoid redundant words like "Image" in upload buttons when the icon/label already implies it.` +
       `For every key, there will be sub-key named as 'message' and 'description', 'message' is the real value, 'description' is comment for the value. You must translate according to the description.` +
       `For example,` +
       `'''{

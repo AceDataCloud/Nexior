@@ -1,62 +1,166 @@
 {
-  "name.seedanceBot": { "message": "SeeDance Bot", "description": "Name of the SeeDance video generator" },
-  "name.prompt": { "message": "Video Prompt", "description": "Text prompt for video generation" },
-  "description.prompt": {
-    "message": "Describe the video you want to generate. You can include SeeDance parameters (e.g. --rs 720p --rt 16:9 --dur 5).",
-    "description": "Help text for prompt input"
+  "name.seedanceBot": {
+    "message": "SeeDance робот",
+    "description": "SeeDance видео генератор назив"
   },
-  "placeholder.prompt": { "message": "Describe your video...", "description": "Placeholder for prompt input" },
-  "name.model": { "message": "Model", "description": "Model selector label" },
-  "description.model": { "message": "Choose the SeeDance model version for generation.", "description": "Help text for model selector" },
-  "placeholder.select": { "message": "Select", "description": "Placeholder for select input" },
-  "model.seedance10pro": { "message": "doubao-seedance-1.0-pro", "description": "SeeDance 1.0 Pro model option" },
+  "name.prompt": {
+    "message": "Упутство",
+    "description": "Упутство за генерисање видеа"
+  },
+  "description.prompt": {
+    "message": "Описујте видео који желите да генеришете, можете додати SeeDance параметре (нпр: --rs 720p --rt 16:9 --dur 5).",
+    "description": "Упутство за унос упутства"
+  },
+  "placeholder.prompt": {
+    "message": "Описујте ваш видео…",
+    "description": "Упутство за место"
+  },
+  "name.model": {
+    "message": "Модел",
+    "description": "Ознака за избор модела"
+  },
+  "description.model": {
+    "message": "Изаберите верзију SeeDance модела за генерисање.",
+    "description": "Упутство за избор модела"
+  },
+  "placeholder.select": {
+    "message": "Изаберите",
+    "description": "Упутство за избор"
+  },
+  "model.seedance10pro": {
+    "message": "doubao-seedance-1.0-pro",
+    "description": "SeeDance 1.0 Pro модел"
+  },
   "model.seedance10proFast": {
     "message": "doubao-seedance-1.0-pro-fast",
-    "description": "SeeDance 1.0 Pro Fast model option"
+    "description": "SeeDance 1.0 Pro Fast модел"
   },
-  "model.seedance15pro": { "message": "doubao-seedance-1.5-pro", "description": "SeeDance 1.5 Pro model option" },
+  "model.seedance15pro": {
+    "message": "doubao-seedance-1.5-pro",
+    "description": "SeeDance 1.5 Pro модел"
+  },
   "model.seedance10liteT2v": {
     "message": "doubao-seedance-1.0-lite-t2v",
-    "description": "SeeDance 1.0 Lite T2V model option"
+    "description": "SeeDance 1.0 Lite T2V модел"
   },
   "model.seedance10liteI2v": {
     "message": "doubao-seedance-1.0-lite-i2v",
-    "description": "SeeDance 1.0 Lite I2V model option"
+    "description": "SeeDance 1.0 Lite I2V модел"
   },
-  "name.serviceTier": { "message": "Service Tier", "description": "Service tier selector label" },
-  "description.serviceTier": { "message": "Processing tier: default or flex.", "description": "Help text for service tier" },
-  "serviceTier.default": { "message": "default", "description": "Default service tier" },
-  "serviceTier.flex": { "message": "flex", "description": "Flex service tier" },
-  "name.returnLastFrame": { "message": "Return Last Frame", "description": "Return last frame switch label" },
+  "name.serviceTier": {
+    "message": "Ниво услуге",
+    "description": "Ознака за ниво услуге"
+  },
+  "description.serviceTier": {
+    "message": "Ниво обраде: default или flex.",
+    "description": "Упутство за ниво услуге"
+  },
+  "serviceTier.default": {
+    "message": "default",
+    "description": "Подразумевано ниво"
+  },
+  "serviceTier.flex": {
+    "message": "flex",
+    "description": "Флексибилно ниво"
+  },
+  "name.returnLastFrame": {
+    "message": "Врати последњи кадар",
+    "description": "Ознака за прекидач за враћање последњег кадра"
+  },
   "description.returnLastFrame": {
-    "message": "If enabled, the API also returns the last frame image.",
-    "description": "Help text for return last frame"
+    "message": "Када је укључено, враћаће се додатна слика последњег кадра.",
+    "description": "Упутство за враћање последњег кадра"
   },
-  "name.firstFrame": { "message": "First Frame Image", "description": "First frame image upload label" },
-  "description.firstFrame": { "message": "Optional. Provide a reference/first-frame image.", "description": "Help text for first frame image" },
-  "name.lastFrame": { "message": "Last Frame Image", "description": "Last frame image upload label" },
+  "name.firstFrame": {
+    "message": "Прва слика",
+    "description": "Ознака за учитавање прве слике"
+  },
+  "description.firstFrame": {
+    "message": "Опционално. Учитајте референтну/прву слику.",
+    "description": "Упутство за прву слику"
+  },
+  "name.lastFrame": {
+    "message": "Последња слика",
+    "description": "Ознака за учитавање последње слике"
+  },
   "description.lastFrame": {
-    "message": "Optional. Provide a last-frame image (requires first frame).",
-    "description": "Help text for last frame image"
+    "message": "Опционално. Учитајте последњу слику (потребна прва слика).",
+    "description": "Упутство за последњу слику"
   },
-  "button.generate": { "message": "Generate", "description": "Generate button text" },
-  "button.upload": { "message": "Upload", "description": "Upload button text" },
-  "button.download": { "message": "Download", "description": "Download button text" },
-  "button.on": { "message": "On", "description": "Switch on label" },
-  "button.off": { "message": "Off", "description": "Switch off label" },
-  "message.startingTask": { "message": "Starting SeeDance task...", "description": "Toast while starting task" },
-  "message.startTaskSuccess": { "message": "Task started successfully", "description": "Toast on successful task start" },
-  "message.startTaskFailed": { "message": "Failed to start task: ", "description": "Toast on failed task start" },
-  "message.usedUp": { "message": "Quota used up", "description": "Toast when quota is used up" },
-  "message.uploadExceed": { "message": "Only 1 image is allowed", "description": "Toast when upload exceeds limit" },
-  "message.uploadError": { "message": "Upload failed", "description": "Toast when upload fails" },
-  "message.downloadVideo": { "message": "Download video", "description": "Tooltip for download button" },
-  "status.pending": { "message": "Pending", "description": "Pending status" },
-  "status.processing": { "message": "Processing", "description": "Processing status" },
-  "name.taskId": { "message": "Task ID", "description": "Task ID label" },
-  "name.traceId": { "message": "Trace ID", "description": "Trace ID label" },
-  "name.failure": { "message": "Failure", "description": "Failure label" },
-  "name.failureReason": { "message": "Failure Reason", "description": "Failure reason label" },
-  "name.status": { "message": "Status", "description": "Status label" }
+  "button.generate": {
+    "message": "Генериши",
+    "description": "Дугме за генерисање"
+  },
+  "button.upload": {
+    "message": "Учитај",
+    "description": "Дугме за учитавање"
+  },
+  "button.download": {
+    "message": "Преузми",
+    "description": "Дугме за преузимање"
+  },
+  "button.on": {
+    "message": "Укључено",
+    "description": "Текст за укључивање прекидача"
+  },
+  "button.off": {
+    "message": "Искључено",
+    "description": "Текст за искључивање прекидача"
+  },
+  "message.startingTask": {
+    "message": "Покреће SeeDance задатак…",
+    "description": "Порука за почетак задатка"
+  },
+  "message.startTaskSuccess": {
+    "message": "Задатак је покренут",
+    "description": "Порука о успешном покретању задатка"
+  },
+  "message.startTaskFailed": {
+    "message": "Покретање није успело:",
+    "description": "Порука о неуспеху при покретању задатка"
+  },
+  "message.usedUp": {
+    "message": "Квота је исцрпљена",
+    "description": "Порука о исцрпљеној квоти"
+  },
+  "message.uploadExceed": {
+    "message": "Можете учитати највише 1 слику",
+    "description": "Порука о прекорачењу при учитавању"
+  },
+  "message.uploadError": {
+    "message": "Учитавање није успело",
+    "description": "Порука о неуспеху при учитавању"
+  },
+  "message.downloadVideo": {
+    "message": "Преузми видео",
+    "description": "Порука за преузимање видеа"
+  },
+  "status.pending": {
+    "message": "У реду",
+    "description": "Статус у реду"
+  },
+  "status.processing": {
+    "message": "Генерише се",
+    "description": "Статус у процесу генерисања"
+  },
+  "name.taskId": {
+    "message": "ID задатка",
+    "description": "Ознака за ID задатка"
+  },
+  "name.traceId": {
+    "message": "Trace ID",
+    "description": "Ознака за Trace ID"
+  },
+  "name.failure": {
+    "message": "Неуспех",
+    "description": "Ознака за неуспех"
+  },
+  "name.failureReason": {
+    "message": "Разлог неуспеха",
+    "description": "Ознака за разлог неуспеха"
+  },
+  "name.status": {
+    "message": "Статус",
+    "description": "Ознака за статус"
+  }
 }
-

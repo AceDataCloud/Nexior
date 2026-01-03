@@ -36,7 +36,7 @@
     "description": "The pixel style of the QR code to be generated"
   },
   "name.startImageUrl": {
-    "message": "Start Frame Image",
+    "message": "Start Image",
     "description": "The seed for the QR code to be generated"
   },
   "name.videoUrl": {
@@ -44,7 +44,7 @@
     "description": "The seed for the QR code to be generated"
   },
   "name.endImageUrl": {
-    "message": "End Frame Image",
+    "message": "End Image",
     "description": "The seed for the QR code to be generated"
   },
   "name.paddingLevel": {
@@ -77,7 +77,7 @@
   },
   "name.enhancement": {
     "message": "Prompt Enhancement",
-    "description": "The advanced settings for the QR code to be generated"
+    "description": "Advanced settings for the QR code to be generated"
   },
   "name.custom": {
     "message": "Upload Video Extension",
@@ -88,8 +88,8 @@
     "description": "The prompt for content input"
   },
   "name.loop": {
-    "message": "Video Looping",
-    "description": "The advanced settings for the QR code to be generated"
+    "message": "Video Loop",
+    "description": "Advanced settings for the QR code to be generated"
   },
   "name.aspectRatio": {
     "message": "Aspect Ratio",
@@ -136,7 +136,7 @@
     "description": "Description of the 'qrw' parameter"
   },
   "description.enhancement": {
-    "message": "If you are unsure how to write the prompt text, enable the enhancement for input prompts.",
+    "message": "If you're unsure how to write the prompt text, enable the enhancement for input prompts.",
     "description": "Description of the 'qrw' parameter"
   },
   "description.custom": {
@@ -144,15 +144,15 @@
     "description": "Description of the 'qrw' parameter"
   },
   "description.startImageUrl": {
-    "message": "The URL of the start frame image, which will be the first frame of the generated video.",
+    "message": "The URL of the start image, which will be the first frame of the generated video.",
     "description": "Description of the 'steps' parameter"
   },
   "description.videoUrl": {
-    "message": "The URL of the uploaded custom extended video, which will be the video of the extended video.",
+    "message": "The URL of the uploaded custom extended video, which will be the extended video.",
     "description": "Description of the 'steps' parameter"
   },
   "description.endImageUrl": {
-    "message": "The URL of the end frame image, which will be the last frame of the generated video.",
+    "message": "The URL of the end image, which will be the last frame of the generated video.",
     "description": "Description of the 'steps' parameter"
   },
   "description.prompt": {
@@ -176,15 +176,15 @@
     "description": "Placeholder for padding level"
   },
   "placeholder.prompt": {
-    "message": "Enter the prompt for the style of the video to be generated, e.g., Astronauts shuttle from space to volcano",
+    "message": "Enter the prompt for the video style to be generated, e.g., Astronauts shuttle from space to volcano",
     "description": "Placeholder text in the prompt field"
   },
   "placeholder.startImageUrl": {
-    "message": "Start Frame Image URL",
+    "message": "Start Image URL",
     "description": "Placeholder for seed input"
   },
   "placeholder.endImageUrl": {
-    "message": "End Frame Image URL",
+    "message": "End Image URL",
     "description": "Placeholder for seed input"
   },
   "placeholder.position": {
@@ -228,16 +228,16 @@
     "description": "Button text for downloading video"
   },
   "button.uploadStartImageUrl": {
-    "message": "Upload Image",
-    "description": "Button text for uploading QR code image"
+    "message": "Upload",
+    "description": "Button text for uploading an image (simplified to 'Upload')"
   },
   "button.uploadVideoUrl": {
     "message": "Upload Video",
-    "description": "Button text for uploading QR code video"
+    "description": "Button text for uploading a video"
   },
   "button.uploadEndImageUrl": {
-    "message": "Upload Image",
-    "description": "Button text for uploading QR code image"
+    "message": "Upload",
+    "description": "Button text for uploading an image (simplified to 'Upload')"
   },
   "preset.sunset": {
     "message": "Sunset",
@@ -340,7 +340,7 @@
     "description": "Instructions for uploading QR code"
   },
   "message.promptPlaceholder": {
-    "message": "Please enter a sentence describing the image to be generated, e.g., a cute cat. Additional parameters will override the default preset parameters",
+    "message": "Enter a sentence describing the image to generate, e.g., a cute cat. Additional parameters will override default preset parameters",
     "description": "Placeholder text in the prompt field"
   },
   "message.uploadReferencesExceed": {
@@ -364,8 +364,8 @@
     "description": "Success message when the task is successfully initiated"
   },
   "message.startTaskFailed": {
-    "message": "Failed to initiate task, please contact the administrator",
-    "description": "Error message when starting the drawing task fails"
+    "message": "Task initiation failed, please contact the administrator",
+    "description": "Error message when the drawing task fails to start"
   },
   "message.usedUp": {
     "message": "Your credits are exhausted, please purchase more credits to continue using",
@@ -373,7 +373,7 @@
   },
   "message.generating": {
     "message": "Generating...",
-    "description": "Message when the image is being generated"
+    "description": "Message displayed while the image is being generated"
   },
   "message.downloadVideo": {
     "message": "Download this video",
@@ -388,8 +388,8 @@
     "description": "Message displayed when image generation fails"
   },
   "message.uploadVideoExceed": {
-    "message": "The number of uploaded first frame images exceeds the limit",
-    "description": "Error message when the number of uploaded first frame images exceeds the limit"
+    "message": "Exceeded the limit for the number of first frame images",
+    "description": "Error message when the number of first frame images exceeds the limit"
   },
   "message.uploadVideoSizeExceed": {
     "message": "Uploaded file size cannot exceed 10MB!",
@@ -400,35 +400,35 @@
     "description": "Error message when the uploaded file is not in MP4 format!"
   },
   "message.uploadStartImageExceed": {
-    "message": "The number of uploaded first frame images exceeds the limit",
-    "description": "Error message when the number of uploaded first frame images exceeds the limit"
+    "message": "Exceeded the limit for the number of first frame images",
+    "description": "Error message when the number of first frame images exceeds the limit"
   },
   "message.uploadEndImageExceed": {
-    "message": "The number of uploaded last frame images exceeds the limit",
-    "description": "Error message when the number of uploaded last frame images exceeds the limit"
+    "message": "Exceeded the limit for the number of last frame images",
+    "description": "Error message when the number of last frame images exceeds the limit"
   },
   "message.uploadStartImageError": {
     "message": "Failed to upload first frame image",
-    "description": "Error message when the upload of the first frame image fails"
+    "description": "Error message when the first frame image upload fails"
   },
   "message.uploadVideoError": {
     "message": "Failed to upload video",
-    "description": "Error message when the upload of the video fails"
+    "description": "Error message when the video upload fails"
   },
   "message.uploadEndImageError": {
     "message": "Failed to upload last frame image",
-    "description": "Error message when the upload of the last frame image fails"
+    "description": "Error message when the last frame image upload fails"
   },
   "message.uploadDocumentsError": {
     "message": "Failed to upload document",
-    "description": "Error message when the upload of the document fails"
+    "description": "Error message when the document upload fails"
   },
   "message.noOperations": {
     "message": "No available operations",
     "description": "Message displayed when there are no available operations"
   },
   "message.noTasks": {
-    "message": "No historical tasks, please click on the left to generate a video",
+    "message": "No history tasks, please click to generate video on the left",
     "description": "Message displayed when there are no tasks"
   },
   "markerShape.square": {
@@ -536,7 +536,7 @@
     "description": "Pixel style used for generating QR codes"
   },
   "pixelStyle.squircle": {
-    "message": "Rounded Rectangle",
+    "message": "Squircle",
     "description": "Pixel style used for generating QR codes"
   },
   "type.text": {

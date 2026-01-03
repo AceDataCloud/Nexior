@@ -1,6 +1,6 @@
 {
   "name.taskId": {
-    "message": "ID da tarefa",
+    "message": "ID da Tarefa",
     "description": "ID da tarefa"
   },
   "name.failure": {
@@ -8,7 +8,7 @@
     "description": "Estado de falha da tarefa"
   },
   "name.failureReason": {
-    "message": "Razão da falha",
+    "message": "Motivo da Falha",
     "description": "Razão pela qual a tarefa falhou"
   },
   "name.status": {
@@ -16,27 +16,27 @@
     "description": "Estado da tarefa"
   },
   "name.traceId": {
-    "message": "ID de rastreamento",
+    "message": "ID de Rastreamento",
     "description": "ID de rastreamento da tarefa"
   },
   "name.createdAt": {
-    "message": "Criado em",
-    "description": "Data e hora em que o vídeo Kling foi gerado"
+    "message": "Criado Em",
+    "description": "Data e hora em que o vídeo Sora foi gerado"
   },
   "name.startEndImage": {
-    "message": "Imagens de referência do início e do fim",
-    "description": "Imagens de referência para o vídeo a ser gerado"
+    "message": "Imagens de Referência",
+    "description": "Rótulo do campo do formulário: Imagens de referência (sugestão em inglês: 'Start/End Frames', mantenha curto para evitar obstrução do botão)"
   },
   "name.action": {
     "message": "Ação",
     "description": "Lista de ações disponíveis"
   },
   "name.prompt": {
-    "message": "Prompt do vídeo",
+    "message": "Prompt do Vídeo",
     "description": "Prompt para entrada de conteúdo"
   },
   "name.model": {
-    "message": "Versão do modelo",
+    "message": "Versão do Modelo",
     "description": "Versão do modelo utilizada para gerar o vídeo"
   },
   "name.soraBot": {
@@ -44,19 +44,27 @@
     "description": "Nome do gerador de vídeos Sora"
   },
   "name.orientation": {
-    "message": "Orientação do vídeo",
+    "message": "Orientação do Vídeo",
     "description": "Nome do parâmetro de orientação do vídeo"
   },
+  "option.portrait": {
+    "message": "Retrato",
+    "description": "Texto da opção: orientação retrato (sugestão em inglês: 'Portrait', mantenha curto)"
+  },
+  "option.landscape": {
+    "message": "Paisagem",
+    "description": "Texto da opção: orientação paisagem (sugestão em inglês: 'Landscape', mantenha curto)"
+  },
   "name.duration": {
-    "message": "Duração do vídeo",
+    "message": "Duração do Vídeo",
     "description": "Nome do parâmetro de duração do vídeo"
   },
   "name.size": {
-    "message": "Qualidade do vídeo",
+    "message": "Qualidade do Vídeo",
     "description": "Nome do parâmetro de qualidade do vídeo"
   },
   "description.imageUrl": {
-    "message": "Na tarefa de criação de vídeo com várias imagens, é necessário fazer o upload de várias imagens.",
+    "message": "Em tarefas de criação de vídeo com várias imagens, é necessário fazer o upload de várias imagens.",
     "description": "Descrição do parâmetro 'imageUrl'"
   },
   "description.prompt": {
@@ -64,7 +72,7 @@
     "description": "Descrição do parâmetro 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Array de links de imagens de referência, a primeira é a imagem do início e a segunda é a imagem do fim",
+    "message": "Array de links de imagens de referência, a primeira é a imagem inicial, seguida pela imagem final",
     "description": "Descrição do parâmetro 'image_url'"
   },
   "status.pending": {
@@ -88,7 +96,7 @@
     "description": "Placeholder para nível de preenchimento"
   },
   "placeholder.prompt": {
-    "message": "Insira as palavras-chave para o estilo do vídeo a ser gerado, por exemplo: moving",
+    "message": "Insira o prompt para o estilo do vídeo a ser gerado, por exemplo: moving",
     "description": "Texto de placeholder no campo de prompt"
   },
   "placeholder.position": {
@@ -104,52 +112,52 @@
     "description": "Texto do botão para gerar o vídeo Sora"
   },
   "button.action1": {
-    "message": "Vídeo gerado por texto",
+    "message": "Vídeo de Texto",
     "description": "Texto do botão para gerar o vídeo Sora"
   },
   "button.action2": {
-    "message": "Vídeo gerado por imagem",
+    "message": "Vídeo de Imagem",
     "description": "Texto do botão para gerar o vídeo Sora"
   },
   "button.download": {
-    "message": "Baixar vídeo",
+    "message": "Baixar Vídeo",
     "description": "Texto do botão para baixar o vídeo"
   },
   "button.uploadImageUrl": {
-    "message": "Fazer upload de imagem",
-    "description": "Texto do botão para fazer upload de imagem"
+    "message": "Fazer Upload",
+    "description": "Texto do botão para fazer upload de imagem (simplifique para 'Upload', não use 'Upload Image')"
   },
   "button.uploadVideoUrl": {
-    "message": "Fazer upload de vídeo",
-    "description": "Texto do botão para fazer upload de vídeo"
+    "message": "Fazer Upload do Vídeo",
+    "description": "Texto do botão para fazer upload do vídeo"
   },
   "button.uploadReferences": {
-    "message": "Fazer upload",
+    "message": "Fazer Upload",
     "description": "Texto do botão que permite ao usuário fazer upload de referências"
   },
   "message.uploadReferencesExceed": {
-    "message": "É possível fazer upload de no máximo 2 imagens",
+    "message": "É possível fazer upload de até 2 imagens",
     "description": "Mensagem de erro quando o número de imagens carregadas excede o limite"
   },
   "message.uploadReferencesSuccess": {
     "message": "Imagens carregadas com sucesso",
-    "description": "Mensagem de sucesso quando as imagens são carregadas com sucesso"
+    "description": "Mensagem de sucesso ao carregar imagens com sucesso"
   },
   "message.uploadReferencesError": {
-    "message": "Falha ao fazer upload da imagem, por favor, tente novamente mais tarde",
-    "description": "Mensagem de erro quando o upload da imagem falha"
+    "message": "Falha ao carregar imagens, por favor, tente novamente mais tarde",
+    "description": "Mensagem de erro quando o upload de imagens falha"
   },
   "message.startingTask": {
     "message": "Iniciando tarefa...",
-    "description": "Mensagem quando a tarefa de desenho começa"
+    "description": "Mensagem ao iniciar a tarefa de desenho"
   },
   "message.startTaskSuccess": {
     "message": "Tarefa de geração iniciada com sucesso",
-    "description": "Mensagem de sucesso quando a tarefa é iniciada com sucesso"
+    "description": "Mensagem de sucesso ao iniciar a tarefa"
   },
   "message.startTaskFailed": {
-    "message": "Falha ao iniciar a tarefa, por favor, entre em contato com o administrador",
-    "description": "Mensagem de erro quando a tarefa de desenho falha ao iniciar"
+    "message": "Falha ao iniciar a tarefa, por favor, contate o administrador",
+    "description": "Mensagem de erro ao falhar ao iniciar a tarefa de desenho"
   },
   "message.usedUp": {
     "message": "Seus créditos acabaram, por favor, compre mais créditos para continuar usando",
@@ -157,58 +165,58 @@
   },
   "message.generating": {
     "message": "Gerando...",
-    "description": "Mensagem quando a imagem está sendo gerada"
+    "description": "Mensagem enquanto a imagem está sendo gerada"
   },
   "message.downloadVideo": {
     "message": "Baixar este vídeo",
-    "description": "Mensagem quando a imagem está sendo gerada"
+    "description": "Mensagem enquanto a imagem está sendo gerada"
   },
   "message.generateFailed": {
     "message": "Falha ao gerar vídeo",
-    "description": "Mensagem quando a geração da imagem falha"
+    "description": "Mensagem quando a geração de imagem falha"
   },
   "message.uploadVideoExceed": {
-    "message": "Número de imagens do primeiro quadro carregadas excede o limite",
-    "description": "Mensagem de erro quando o número de imagens do primeiro quadro carregadas excede o limite"
+    "message": "Número de imagens da primeira frame excede o limite",
+    "description": "Mensagem de erro quando o número de imagens da primeira frame excede o limite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "O tamanho do arquivo carregado não pode exceder 10MB!",
-    "description": "Mensagem de erro quando o tamanho do arquivo carregado excede 10MB!"
+    "message": "O tamanho do arquivo não pode exceder 10MB!",
+    "description": "Mensagem de erro quando o tamanho do arquivo excede 10MB!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "O arquivo carregado deve estar no formato MP4!",
-    "description": "Mensagem de erro quando o arquivo carregado não está no formato MP4!"
+    "message": "O arquivo deve estar no formato MP4!",
+    "description": "Mensagem de erro quando o arquivo não está no formato MP4!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "O número de imagens da primeira frame excede o limite",
+    "message": "Número de imagens da primeira frame excede o limite",
     "description": "Mensagem de erro quando o número de imagens da primeira frame excede o limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "O número de imagens de quadro final carregadas excede o limite",
-    "description": "Mensagem de erro quando o número de imagens de quadro inicial carregadas excede o limite"
+    "message": "Número de imagens da última frame excede o limite",
+    "description": "Mensagem de erro quando o número de imagens da última frame excede o limite"
   },
   "message.uploadStartImageError": {
-    "message": "Falha ao carregar a imagem do quadro inicial",
-    "description": "Mensagem de erro quando falha ao carregar a imagem do quadro inicial"
+    "message": "Falha ao enviar a imagem da primeira frame",
+    "description": "Mensagem de erro quando falha ao enviar a imagem da primeira frame"
   },
   "message.uploadVideoError": {
-    "message": "Falha ao carregar o vídeo",
-    "description": "Mensagem de erro quando falha ao carregar a imagem do quadro inicial"
+    "message": "Falha ao enviar o vídeo",
+    "description": "Mensagem de erro quando falha ao enviar o vídeo"
   },
   "message.uploadEndImageError": {
-    "message": "Falha ao carregar a imagem do quadro final",
-    "description": "Mensagem de erro quando falha ao carregar a imagem do quadro final"
+    "message": "Falha ao enviar a imagem da última frame",
+    "description": "Mensagem de erro quando falha ao enviar a imagem da última frame"
   },
   "message.uploadDocumentsError": {
-    "message": "Falha ao carregar o documento",
-    "description": "Mensagem de erro quando falha ao carregar o documento"
+    "message": "Falha ao enviar o documento",
+    "description": "Mensagem de erro quando falha ao enviar o documento"
   },
   "message.noOperations": {
     "message": "Nenhuma operação disponível",
     "description": "Mensagem quando não há operações disponíveis"
   },
   "message.noTasks": {
-    "message": "Nenhuma tarefa histórica, por favor clique à esquerda para gerar vídeo",
+    "message": "Nenhuma tarefa histórica, clique à esquerda para gerar vídeo",
     "description": "Mensagem quando não há tarefas"
   }
 }

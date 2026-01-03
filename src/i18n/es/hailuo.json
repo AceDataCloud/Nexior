@@ -8,7 +8,7 @@
     "description": "Tipo de contenido del video Hailuo a generar, como 'enlace', 'texto', etc."
   },
   "name.failure": {
-    "message": "Fallo",
+    "message": "Fallido",
     "description": "Estado de fallo de la tarea"
   },
   "name.failureReason": {
@@ -41,14 +41,14 @@
   },
   "name.ingredients": {
     "message": "Crear video con múltiples imágenes",
-    "description": "Video personalizado extendido"
+    "description": "Etiqueta/interruptor para crear video con múltiples imágenes (sugerencia en inglés: Multi-Image, mantenerlo breve)"
   },
   "name.model": {
     "message": "Modelo",
     "description": "Versión del modelo utilizada para generar el video"
   },
   "name.startImageUrl": {
-    "message": "Imagen de inicio",
+    "message": "Imagen inicial",
     "description": "Semilla para el código QR a generar"
   },
   "name.ingredientsModel": {
@@ -60,11 +60,11 @@
     "description": "Nombre del generador de videos Hailuo"
   },
   "description.ingredients": {
-    "message": "Si desea subir múltiples imágenes para generar su propio video, active este botón.",
+    "message": "Si desea subir varias imágenes para generar su propio video, active este botón.",
     "description": "Descripción del parámetro 'ingredients'"
   },
   "description.startImageUrl": {
-    "message": "Imagen de inicio, que será el primer fotograma del video generado.",
+    "message": "Imagen inicial, que será el primer fotograma del video generado.",
     "description": "Descripción del parámetro 'startImageUrl'"
   },
   "description.prompt": {
@@ -80,7 +80,7 @@
     "description": "Estado de procesamiento de la tarea"
   },
   "placeholder.paddingNoise": {
-    "message": "Por favor seleccione...",
+    "message": "Seleccione...",
     "description": "Marcador de posición para la entrada de ruido de relleno"
   },
   "placeholder.select": {
@@ -88,7 +88,7 @@
     "description": "Texto de marcador de posición en el campo de selección"
   },
   "placeholder.paddingLevel": {
-    "message": "Por favor seleccione...",
+    "message": "Seleccione...",
     "description": "Marcador de posición para el nivel de relleno"
   },
   "placeholder.prompt": {
@@ -96,52 +96,52 @@
     "description": "Texto de marcador de posición en el campo de sugerencia"
   },
   "placeholder.position": {
-    "message": "Por favor seleccione...",
+    "message": "Seleccione...",
     "description": "Marcador de posición para la entrada de posición"
   },
   "placeholder.aspectRatio": {
-    "message": "Por favor seleccione...",
+    "message": "Seleccione...",
     "description": "Marcador de posición para la entrada de relación de aspecto"
   },
   "placeholder.preset": {
-    "message": "Por favor seleccione...",
+    "message": "Seleccione...",
     "description": "Marcador de posición para la entrada de preajuste"
   },
   "placeholder.markerShape": {
-    "message": "Por favor seleccione...",
+    "message": "Seleccione...",
     "description": "Marcador de posición para la entrada de forma de marcador"
   },
   "placeholder.rotate": {
-    "message": "Por favor seleccione...",
+    "message": "Seleccione...",
     "description": "Marcador de posición para la entrada de rotación"
   },
   "placeholder.subMarker": {
-    "message": "Por favor seleccione...",
+    "message": "Seleccione...",
     "description": "Marcador de posición para la entrada de sub-marcador"
   },
   "button.model1": {
     "message": "Video de texto",
-    "description": "Texto del botón para generar video Hailuo"
+    "description": "Texto del botón para generar el video Hailuo"
   },
   "button.model2": {
     "message": "Video de imagen",
-    "description": "Texto del botón para generar video Hailuo"
+    "description": "Texto del botón para generar el video Hailuo"
   },
   "button.generate": {
     "message": "Generar",
-    "description": "Texto del botón para generar video Hailuo"
+    "description": "Texto del botón para generar el video Hailuo"
   },
   "button.extend": {
     "message": "Extender video",
-    "description": "Texto del botón para extender video"
+    "description": "Texto del botón para extender el video"
   },
   "button.download": {
     "message": "Descargar video",
-    "description": "Texto del botón para descargar video"
+    "description": "Texto del botón para descargar el video"
   },
   "button.uploadStartImageUrl": {
     "message": "Subir imagen",
-    "description": "Texto del botón para subir el código QR"
+    "description": "Texto del botón para subir imagen (simplificar en inglés a 'Upload', no usar 'Upload Image')"
   },
   "message.uploadReferencesExceed": {
     "message": "Se pueden subir hasta 5 imágenes",
@@ -149,11 +149,11 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Imágenes subidas con éxito",
-    "description": "Mensaje de éxito cuando las imágenes se suben correctamente"
+    "description": "Mensaje de éxito al subir imágenes"
   },
   "message.uploadReferencesError": {
     "message": "Error al subir imágenes, por favor intente de nuevo más tarde",
-    "description": "Mensaje de error cuando la subida de imágenes falla"
+    "description": "Mensaje de error al fallar la subida de imágenes"
   },
   "message.startingTask": {
     "message": "Iniciando tarea...",
@@ -165,10 +165,10 @@
   },
   "message.startTaskFailed": {
     "message": "Error al iniciar la tarea, por favor contacte al administrador",
-    "description": "Mensaje de error al fallar al iniciar la tarea de dibujo"
+    "description": "Mensaje de error al fallar el inicio de la tarea de dibujo"
   },
   "message.usedUp": {
-    "message": "Sus créditos se han agotado, por favor compre más créditos para continuar usando",
+    "message": "Se han agotado sus créditos, por favor compre más créditos para continuar",
     "description": "Mensaje cuando se han agotado los créditos"
   },
   "message.generating": {
@@ -188,24 +188,24 @@
     "description": "Mensaje cuando la generación de la imagen falla"
   },
   "message.uploadVideoExceed": {
-    "message": "La cantidad de imágenes de la primera fotograma subidas excede el límite",
-    "description": "Mensaje de error cuando la cantidad de imágenes de la primera fotograma subidas excede el límite"
+    "message": "Número de imágenes de la primera fotograma excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes de la primera fotograma excede el límite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "¡El tamaño del archivo subido no puede exceder 10 MB!",
-    "description": "Mensaje de error cuando el tamaño del archivo subido no puede exceder 10 MB!"
+    "message": "¡El tamaño del archivo no puede exceder 10 MB!",
+    "description": "Mensaje de error cuando el tamaño del archivo excede 10 MB"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "¡El archivo subido debe estar en formato MP4!",
-    "description": "Mensaje de error cuando el archivo subido debe estar en formato MP4!"
+    "message": "¡El archivo debe ser en formato MP4!",
+    "description": "Mensaje de error cuando el archivo no es en formato MP4"
   },
   "message.uploadStartImageExceed": {
-    "message": "La cantidad de imágenes de la primera fotograma subidas excede el límite",
-    "description": "Mensaje de error cuando la cantidad de imágenes de la primera fotograma subidas excede el límite"
+    "message": "Número de imágenes de la primera fotograma excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes de la primera fotograma excede el límite"
   },
   "message.uploadEndImageExceed": {
-    "message": "La cantidad de imágenes de la última fotograma subidas excede el límite",
-    "description": "Mensaje de error cuando la cantidad de imágenes de la última fotograma subidas excede el límite"
+    "message": "Número de imágenes de la última fotograma excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes de la última fotograma excede el límite"
   },
   "message.uploadStartImageError": {
     "message": "Error al subir la imagen de la primera fotograma",
@@ -228,7 +228,7 @@
     "description": "Mensaje cuando no hay operaciones disponibles"
   },
   "message.noTasks": {
-    "message": "No hay tareas históricas, por favor haga clic en el botón de generar video a la izquierda",
+    "message": "No hay tareas históricas, por favor haga clic en generar video a la izquierda",
     "description": "Mensaje cuando no hay tareas"
   }
 }

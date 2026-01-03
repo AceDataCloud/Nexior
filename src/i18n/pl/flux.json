@@ -53,7 +53,7 @@
   },
   "name.prompt": {
     "message": "Podpowiedź obrazu",
-    "description": "Podpowiedź dla wprowadzonej treści"
+    "description": "Podpowiedź do wprowadzenia treści"
   },
   "name.ratio": {
     "message": "Proporcja",
@@ -88,8 +88,8 @@
     "description": "Stan oczekiwania zadania"
   },
   "status.processing": {
-    "message": "W trakcie przetwarzania",
-    "description": "Stan oczekiwania zadania"
+    "message": "W przetwarzaniu",
+    "description": "Stan przetwarzania zadania"
   },
   "placeholder.paddingNoise": {
     "message": "Wybierz...",
@@ -104,7 +104,7 @@
     "description": "Placeholder dla poziomu wypełnienia"
   },
   "placeholder.prompt": {
-    "message": "Wprowadź podpowiedź dla stylu obrazu, np.: biały kot syjamski",
+    "message": "Wprowadź podpowiedź stylu obrazu, np.: biały kot syjamski",
     "description": "Placeholder w polu podpowiedzi"
   },
   "placeholder.position": {
@@ -117,7 +117,7 @@
   },
   "placeholder.preset": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wprowadzenia ustawienia wstępnego"
+    "description": "Placeholder dla wprowadzenia presetów"
   },
   "placeholder.markerShape": {
     "message": "Wybierz...",
@@ -136,8 +136,8 @@
     "description": "Tekst przycisku do generowania obrazów Flux"
   },
   "button.uploadImageUrl": {
-    "message": "Prześlij obraz",
-    "description": "Tekst przycisku do przesyłania obrazów"
+    "message": "Prześlij",
+    "description": "Tekst przycisku do przesyłania obrazów (proszę uprościć do 'Prześlij')"
   },
   "button.extend": {
     "message": "Rozszerz obraz",
@@ -145,7 +145,7 @@
   },
   "button.viewImage": {
     "message": "Zobacz oryginał",
-    "description": "Tekst przycisku do generowania obrazów Flux"
+    "description": "Tekst przycisku do wyświetlania obrazów Flux"
   },
   "button.download": {
     "message": "Pobierz obraz",
@@ -161,43 +161,43 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Obraz przesłany pomyślnie",
-    "description": "Komunikat o sukcesie, gdy obraz został pomyślnie przesłany"
+    "description": "Komunikat o sukcesie po pomyślnym przesłaniu obrazu"
   },
   "message.uploadReferencesError": {
     "message": "Nie udało się przesłać obrazu, spróbuj ponownie później",
-    "description": "Komunikat o błędzie, gdy przesyłanie obrazu nie powiodło się"
+    "description": "Komunikat o błędzie, gdy przesyłanie obrazu się nie powiodło"
   },
   "message.startingTask": {
     "message": "Rozpoczynam zadanie...",
     "description": "Komunikat na początku zadania rysowania"
   },
   "message.startTaskSuccess": {
-    "message": "Zadanie generowania zostało pomyślnie uruchomione",
-    "description": "Komunikat o sukcesie, gdy zadanie zostało pomyślnie uruchomione"
+    "message": "Zadanie generowania uruchomione pomyślnie",
+    "description": "Komunikat o sukcesie po uruchomieniu zadania"
   },
   "message.startTaskFailed": {
     "message": "Nie udało się uruchomić zadania, skontaktuj się z administratorem",
-    "description": "Komunikat o błędzie, gdy uruchomienie zadania rysowania nie powiodło się"
+    "description": "Komunikat o błędzie, gdy uruchomienie zadania rysowania się nie powiodło"
   },
   "message.usedUp": {
-    "message": "Twoje punkty zostały wyczerpane, kup więcej punktów, aby kontynuować korzystanie",
+    "message": "Twoje punkty zostały wyczerpane, kup więcej punktów, aby kontynuować",
     "description": "Komunikat, gdy punkty zostały wyczerpane"
   },
   "message.generating": {
     "message": "Generowanie...",
-    "description": "Komunikat, gdy obraz jest w trakcie generowania"
+    "description": "Komunikat podczas generowania obrazu"
   },
   "message.downloadVideo": {
     "message": "Pobierz ten obraz",
-    "description": "Komunikat, gdy obraz jest w trakcie generowania"
+    "description": "Komunikat podczas generowania obrazu"
   },
   "message.extendVideo": {
     "message": "Kontynuuj generowanie tego obrazu",
-    "description": "Wiadomość podczas generowania obrazu"
+    "description": "Wiadomość wyświetlana podczas generowania obrazu"
   },
   "message.generateFailed": {
     "message": "Generowanie obrazu nie powiodło się",
-    "description": "Wiadomość, gdy generowanie obrazu nie powiodło się"
+    "description": "Wiadomość wyświetlana, gdy generowanie obrazu się nie powiedzie"
   },
   "message.uploadVideoExceed": {
     "message": "Liczba przesyłanych obrazów klatki początkowej przekracza limit",
@@ -205,11 +205,11 @@
   },
   "message.uploadVideoSizeExceed": {
     "message": "Rozmiar przesyłanego pliku nie może przekraczać 10 MB!",
-    "description": "Informacja o błędzie, gdy rozmiar przesyłanego pliku nie może przekraczać 10 MB!"
+    "description": "Informacja o błędzie, gdy rozmiar przesyłanego pliku przekracza 10 MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Przesyłany plik musi być w formacie MP4!",
-    "description": "Informacja o błędzie, gdy przesyłany plik musi być w formacie MP4!"
+    "description": "Informacja o błędzie, gdy przesyłany plik nie jest w formacie MP4!"
   },
   "message.uploadStartImageExceed": {
     "message": "Liczba przesyłanych obrazów referencyjnych przekracza limit",
@@ -221,26 +221,26 @@
   },
   "message.uploadStartImageError": {
     "message": "Przesyłanie obrazu referencyjnego nie powiodło się",
-    "description": "Informacja o błędzie, gdy przesyłanie obrazu referencyjnego nie powiodło się"
+    "description": "Informacja o błędzie, gdy przesyłanie obrazu referencyjnego się nie powiedzie"
   },
   "message.uploadVideoError": {
     "message": "Przesyłanie obrazu nie powiodło się",
-    "description": "Informacja o błędzie, gdy przesyłanie obrazu klatki początkowej nie powiodło się"
+    "description": "Informacja o błędzie, gdy przesyłanie obrazu klatki początkowej się nie powiedzie"
   },
   "message.uploadEndImageError": {
     "message": "Przesyłanie obrazu klatki końcowej nie powiodło się",
-    "description": "Informacja o błędzie, gdy przesyłanie obrazu klatki końcowej nie powiodło się"
+    "description": "Informacja o błędzie, gdy przesyłanie obrazu klatki końcowej się nie powiedzie"
   },
   "message.uploadDocumentsError": {
     "message": "Przesyłanie dokumentu nie powiodło się",
-    "description": "Informacja o błędzie, gdy przesyłanie dokumentu nie powiodło się"
+    "description": "Informacja o błędzie, gdy przesyłanie dokumentu się nie powiedzie"
   },
   "message.noOperations": {
     "message": "Brak dostępnych operacji",
-    "description": "Wiadomość, gdy nie ma dostępnych operacji"
+    "description": "Wiadomość wyświetlana, gdy nie ma dostępnych operacji"
   },
   "message.noTasks": {
     "message": "Brak historii zadań, kliknij po lewej, aby wygenerować obraz",
-    "description": "Wiadomość, gdy nie ma zadań"
+    "description": "Wiadomość wyświetlana, gdy nie ma zadań"
   }
 }

@@ -29,11 +29,11 @@
   },
   "name.createdAt": {
     "message": "تاريخ الإنشاء",
-    "description": "تاريخ ووقت إنشاء فيديو Kling"
+    "description": "تاريخ ووقت إنشاء فيديو Veo"
   },
   "name.startEndImage": {
-    "message": "صور الإطار الأول والأخير المرجعية",
-    "description": "صور مرجعية للفيديو المراد إنشاؤه"
+    "message": "صور الإطارين",
+    "description": "تسمية حقل النموذج: صور الإطارين (يُفضل ترجمتها إلى 'Start/End Frames' للحفاظ على الاختصار وتجنب حجب الأزرار)"
   },
   "name.action": {
     "message": "إجراء",
@@ -41,11 +41,11 @@
   },
   "name.action3": {
     "message": "الحصول على فيديو بدقة 1080p من",
-    "description": "صور مرجعية للفيديو المراد إنشاؤه"
+    "description": "صور الإطار المرجعي للفيديو المراد إنشاؤه"
   },
   "name.prompt": {
-    "message": "موجه الفيديو",
-    "description": "موجه لإدخال المحتوى"
+    "message": "إشارة الفيديو",
+    "description": "إشارة إدخال المحتوى"
   },
   "name.model": {
     "message": "إصدار النموذج",
@@ -60,7 +60,7 @@
     "description": "اسم معلمة النسبة"
   },
   "description.translation": {
-    "message": "يمكن تفعيل الترجمة التلقائية عند إنشاء مهمة الفيديو.",
+    "message": "يمكن تفعيل الترجمة التلقائية للكلمات الرئيسية عند إنشاء مهمة الفيديو.",
     "description": "وصف المعلمة 'translation'"
   },
   "description.imageUrl": {
@@ -68,20 +68,20 @@
     "description": "وصف المعلمة 'imageUrl'"
   },
   "description.prompt": {
-    "message": "موجه الكلمات لإنشاء فيديو Veo",
+    "message": "الكلمات الرئيسية لإنشاء فيديو Veo",
     "description": "وصف المعلمة 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "مصفوفة روابط الصور المرجعية، الأولى هي الصورة الأولى، والثانية هي صورة الإطار الأخير",
+    "message": "مصفوفة روابط الصور المرجعية، الأولى هي صورة الإطار الأول، والثانية هي صورة الإطار الأخير",
     "description": "وصف المعلمة 'image_url'"
   },
   "status.pending": {
     "message": "في الانتظار",
-    "description": "حالة انتظار المهمة"
+    "description": "حالة الانتظار للمهمة"
   },
   "status.processing": {
-    "message": "يتم المعالجة",
-    "description": "حالة انتظار المهمة"
+    "message": "جارٍ المعالجة",
+    "description": "حالة الانتظار للمهمة"
   },
   "placeholder.paddingNoise": {
     "message": "يرجى الاختيار...",
@@ -96,8 +96,8 @@
     "description": "نص العنصر النائب لمستوى التعبئة"
   },
   "placeholder.prompt": {
-    "message": "أدخل موجه الكلمات لنمط الفيديو المراد إنشاؤه، مثل: moving",
-    "description": "نص العنصر النائب في حقل الموجه"
+    "message": "أدخل الكلمات الرئيسية لنمط الفيديو المراد إنشاؤه، مثل: moving",
+    "description": "نص العنصر النائب في حقل الإشارة"
   },
   "placeholder.position": {
     "message": "يرجى الاختيار...",
@@ -112,7 +112,7 @@
     "description": "نص زر إنشاء فيديو Veo"
   },
   "button.action2": {
-    "message": "إنشاء فيديو بالصورة",
+    "message": "إنشاء فيديو صوري",
     "description": "نص زر إنشاء فيديو Veo"
   },
   "button.action3": {
@@ -124,28 +124,28 @@
     "description": "نص زر تحميل الفيديو"
   },
   "button.uploadImageUrl": {
-    "message": "تحميل الصورة",
-    "description": "نص زر تحميل الصورة"
+    "message": "رفع صورة",
+    "description": "نص زر رفع الصورة (يرجى تبسيط إلى 'رفع')"
   },
   "button.uploadVideoUrl": {
-    "message": "تحميل الفيديو",
-    "description": "نص زر تحميل الفيديو"
+    "message": "رفع فيديو",
+    "description": "نص زر رفع الفيديو"
   },
   "button.uploadReferences": {
-    "message": "تحميل",
-    "description": "نص الزر الذي يسمح للمستخدم بتحميل المراجع"
+    "message": "رفع",
+    "description": "نص الزر الذي يسمح للمستخدم برفع المراجع"
   },
   "message.uploadReferencesExceed": {
-    "message": "يمكن تحميل ما يصل إلى صورتين",
-    "description": "رسالة خطأ عند تجاوز عدد الصور المحملة للحد"
+    "message": "يمكن رفع ما يصل إلى صورتين",
+    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة للحد المسموح به"
   },
   "message.uploadReferencesSuccess": {
-    "message": "تم تحميل الصورة بنجاح",
-    "description": "رسالة نجاح عند تحميل الصورة بنجاح"
+    "message": "تم رفع الصورة بنجاح",
+    "description": "رسالة نجاح عند رفع الصورة بنجاح"
   },
   "message.uploadReferencesError": {
-    "message": "فشل تحميل الصورة، يرجى المحاولة لاحقًا",
-    "description": "رسالة خطأ عند فشل تحميل الصورة"
+    "message": "فشل رفع الصورة، يرجى المحاولة لاحقًا",
+    "description": "رسالة خطأ عند فشل رفع الصورة"
   },
   "message.startingTask": {
     "message": "جارٍ بدء المهمة...",
@@ -176,16 +176,16 @@
     "description": "رسالة عند فشل إنشاء الصورة"
   },
   "message.uploadVideoExceed": {
-    "message": "عدد الصور المحملة للإطار الأول تجاوز الحد",
-    "description": "رسالة خطأ عند تجاوز عدد الصور المحملة للإطار الأول للحد"
+    "message": "عدد صور الإطار الأول المرفوعة تجاوز الحد المسموح به",
+    "description": "رسالة خطأ عند تجاوز عدد صور الإطار الأول المرفوعة للحد المسموح به"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "لا يمكن أن يتجاوز حجم الملف المحمل 10 ميجابايت!",
-    "description": "رسالة خطأ عند تجاوز حجم الملف المحمل 10 ميجابايت!"
+    "message": "حجم الملف المرفوع لا يمكن أن يتجاوز 10 ميغابايت!",
+    "description": "رسالة خطأ عند تجاوز حجم الملف المرفوع 10 ميغابايت!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "يجب أن يكون الملف المرفوع بتنسيق MP4!",
-    "description": "رسالة خطأ تفيد بأن الملف المرفوع يجب أن يكون بتنسيق MP4!"
+    "description": "رسالة خطأ عند عدم كون الملف المرفوع بتنسيق MP4!"
   },
   "message.uploadStartEndImageExceed": {
     "message": "عدد الصور المرفوعة للإطار الأول يتجاوز الحد المسموح به",
@@ -196,19 +196,19 @@
     "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة للإطار الأخير الحد المسموح به"
   },
   "message.uploadStartImageError": {
-    "message": "فشل رفع صورة الإطار الأول",
+    "message": "فشل في رفع صورة الإطار الأول",
     "description": "رسالة خطأ عند فشل رفع صورة الإطار الأول"
   },
   "message.uploadVideoError": {
-    "message": "فشل رفع الفيديو",
+    "message": "فشل في رفع الفيديو",
     "description": "رسالة خطأ عند فشل رفع الفيديو"
   },
   "message.uploadEndImageError": {
-    "message": "فشل رفع صورة الإطار الأخير",
+    "message": "فشل في رفع صورة الإطار الأخير",
     "description": "رسالة خطأ عند فشل رفع صورة الإطار الأخير"
   },
   "message.uploadDocumentsError": {
-    "message": "فشل رفع المستندات",
+    "message": "فشل في رفع المستندات",
     "description": "رسالة خطأ عند فشل رفع المستندات"
   },
   "message.noOperations": {

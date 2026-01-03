@@ -1,62 +1,166 @@
 {
-  "name.seedanceBot": { "message": "SeeDance Bot", "description": "Name of the SeeDance video generator" },
-  "name.prompt": { "message": "Video Prompt", "description": "Text prompt for video generation" },
-  "description.prompt": {
-    "message": "Describe the video you want to generate. You can include SeeDance parameters (e.g. --rs 720p --rt 16:9 --dur 5).",
-    "description": "Help text for prompt input"
+  "name.seedanceBot": {
+    "message": "SeeDance Bot",
+    "description": "Nome del generatore di video SeeDance"
   },
-  "placeholder.prompt": { "message": "Describe your video...", "description": "Placeholder for prompt input" },
-  "name.model": { "message": "Model", "description": "Model selector label" },
-  "description.model": { "message": "Choose the SeeDance model version for generation.", "description": "Help text for model selector" },
-  "placeholder.select": { "message": "Select", "description": "Placeholder for select input" },
-  "model.seedance10pro": { "message": "doubao-seedance-1.0-pro", "description": "SeeDance 1.0 Pro model option" },
+  "name.prompt": {
+    "message": "Parole chiave",
+    "description": "Parole chiave per generare il video"
+  },
+  "description.prompt": {
+    "message": "Descrivi il video che vuoi generare, puoi aggiungere parametri SeeDance (esempio: --rs 720p --rt 16:9 --dur 5).",
+    "description": "Istruzioni per l'input delle parole chiave"
+  },
+  "placeholder.prompt": {
+    "message": "Descrivi il tuo video…",
+    "description": "Segnaposto per le parole chiave"
+  },
+  "name.model": {
+    "message": "Modello",
+    "description": "Etichetta di selezione del modello"
+  },
+  "description.model": {
+    "message": "Seleziona la versione del modello SeeDance da utilizzare per la generazione.",
+    "description": "Istruzioni per la selezione del modello"
+  },
+  "placeholder.select": {
+    "message": "Seleziona",
+    "description": "Segnaposto per la selezione a discesa"
+  },
+  "model.seedance10pro": {
+    "message": "doubao-seedance-1.0-pro",
+    "description": "Modello SeeDance 1.0 Pro"
+  },
   "model.seedance10proFast": {
     "message": "doubao-seedance-1.0-pro-fast",
-    "description": "SeeDance 1.0 Pro Fast model option"
+    "description": "Modello SeeDance 1.0 Pro Fast"
   },
-  "model.seedance15pro": { "message": "doubao-seedance-1.5-pro", "description": "SeeDance 1.5 Pro model option" },
+  "model.seedance15pro": {
+    "message": "doubao-seedance-1.5-pro",
+    "description": "Modello SeeDance 1.5 Pro"
+  },
   "model.seedance10liteT2v": {
     "message": "doubao-seedance-1.0-lite-t2v",
-    "description": "SeeDance 1.0 Lite T2V model option"
+    "description": "Modello SeeDance 1.0 Lite T2V"
   },
   "model.seedance10liteI2v": {
     "message": "doubao-seedance-1.0-lite-i2v",
-    "description": "SeeDance 1.0 Lite I2V model option"
+    "description": "Modello SeeDance 1.0 Lite I2V"
   },
-  "name.serviceTier": { "message": "Service Tier", "description": "Service tier selector label" },
-  "description.serviceTier": { "message": "Processing tier: default or flex.", "description": "Help text for service tier" },
-  "serviceTier.default": { "message": "default", "description": "Default service tier" },
-  "serviceTier.flex": { "message": "flex", "description": "Flex service tier" },
-  "name.returnLastFrame": { "message": "Return Last Frame", "description": "Return last frame switch label" },
+  "name.serviceTier": {
+    "message": "Livello di servizio",
+    "description": "Etichetta del livello di servizio"
+  },
+  "description.serviceTier": {
+    "message": "Livello di elaborazione: default o flex.",
+    "description": "Istruzioni per il livello di servizio"
+  },
+  "serviceTier.default": {
+    "message": "default",
+    "description": "Livello predefinito"
+  },
+  "serviceTier.flex": {
+    "message": "flex",
+    "description": "Livello flessibile"
+  },
+  "name.returnLastFrame": {
+    "message": "Restituisci ultimo fotogramma",
+    "description": "Etichetta dell'interruttore per restituire l'ultimo fotogramma"
+  },
   "description.returnLastFrame": {
-    "message": "If enabled, the API also returns the last frame image.",
-    "description": "Help text for return last frame"
+    "message": "Se attivato, restituirà un'immagine dell'ultimo fotogramma.",
+    "description": "Istruzioni per restituire l'ultimo fotogramma"
   },
-  "name.firstFrame": { "message": "First Frame Image", "description": "First frame image upload label" },
-  "description.firstFrame": { "message": "Optional. Provide a reference/first-frame image.", "description": "Help text for first frame image" },
-  "name.lastFrame": { "message": "Last Frame Image", "description": "Last frame image upload label" },
+  "name.firstFrame": {
+    "message": "Immagine del primo fotogramma",
+    "description": "Etichetta per il caricamento dell'immagine del primo fotogramma"
+  },
+  "description.firstFrame": {
+    "message": "Facoltativo. Carica un'immagine di riferimento/primo fotogramma.",
+    "description": "Istruzioni per l'immagine del primo fotogramma"
+  },
+  "name.lastFrame": {
+    "message": "Immagine dell'ultimo fotogramma",
+    "description": "Etichetta per il caricamento dell'immagine dell'ultimo fotogramma"
+  },
   "description.lastFrame": {
-    "message": "Optional. Provide a last-frame image (requires first frame).",
-    "description": "Help text for last frame image"
+    "message": "Facoltativo. Carica un'immagine dell'ultimo fotogramma (richiede il primo fotogramma).",
+    "description": "Istruzioni per l'immagine dell'ultimo fotogramma"
   },
-  "button.generate": { "message": "Generate", "description": "Generate button text" },
-  "button.upload": { "message": "Upload", "description": "Upload button text" },
-  "button.download": { "message": "Download", "description": "Download button text" },
-  "button.on": { "message": "On", "description": "Switch on label" },
-  "button.off": { "message": "Off", "description": "Switch off label" },
-  "message.startingTask": { "message": "Starting SeeDance task...", "description": "Toast while starting task" },
-  "message.startTaskSuccess": { "message": "Task started successfully", "description": "Toast on successful task start" },
-  "message.startTaskFailed": { "message": "Failed to start task: ", "description": "Toast on failed task start" },
-  "message.usedUp": { "message": "Quota used up", "description": "Toast when quota is used up" },
-  "message.uploadExceed": { "message": "Only 1 image is allowed", "description": "Toast when upload exceeds limit" },
-  "message.uploadError": { "message": "Upload failed", "description": "Toast when upload fails" },
-  "message.downloadVideo": { "message": "Download video", "description": "Tooltip for download button" },
-  "status.pending": { "message": "Pending", "description": "Pending status" },
-  "status.processing": { "message": "Processing", "description": "Processing status" },
-  "name.taskId": { "message": "Task ID", "description": "Task ID label" },
-  "name.traceId": { "message": "Trace ID", "description": "Trace ID label" },
-  "name.failure": { "message": "Failure", "description": "Failure label" },
-  "name.failureReason": { "message": "Failure Reason", "description": "Failure reason label" },
-  "name.status": { "message": "Status", "description": "Status label" }
+  "button.generate": {
+    "message": "Genera",
+    "description": "Pulsante di generazione"
+  },
+  "button.upload": {
+    "message": "Carica",
+    "description": "Pulsante di caricamento"
+  },
+  "button.download": {
+    "message": "Scarica",
+    "description": "Pulsante di download"
+  },
+  "button.on": {
+    "message": "Acceso",
+    "description": "Testo per l'interruttore acceso"
+  },
+  "button.off": {
+    "message": "Spento",
+    "description": "Testo per l'interruttore spento"
+  },
+  "message.startingTask": {
+    "message": "Avvio del compito SeeDance…",
+    "description": "Messaggio di avvio del compito"
+  },
+  "message.startTaskSuccess": {
+    "message": "Compito avviato",
+    "description": "Messaggio di successo per l'avvio del compito"
+  },
+  "message.startTaskFailed": {
+    "message": "Avvio fallito:",
+    "description": "Messaggio di errore per l'avvio del compito"
+  },
+  "message.usedUp": {
+    "message": "Quota esaurita",
+    "description": "Messaggio di quota esaurita"
+  },
+  "message.uploadExceed": {
+    "message": "Puoi caricare solo 1 immagine",
+    "description": "Messaggio di superamento del limite di caricamento"
+  },
+  "message.uploadError": {
+    "message": "Caricamento fallito",
+    "description": "Messaggio di errore di caricamento"
+  },
+  "message.downloadVideo": {
+    "message": "Scarica video",
+    "description": "Messaggio per il download del video"
+  },
+  "status.pending": {
+    "message": "In coda",
+    "description": "Stato in coda"
+  },
+  "status.processing": {
+    "message": "In elaborazione",
+    "description": "Stato in elaborazione"
+  },
+  "name.taskId": {
+    "message": "ID compito",
+    "description": "Etichetta per l'ID del compito"
+  },
+  "name.traceId": {
+    "message": "ID traccia",
+    "description": "Etichetta per l'ID di traccia"
+  },
+  "name.failure": {
+    "message": "Fallito",
+    "description": "Etichetta di errore"
+  },
+  "name.failureReason": {
+    "message": "Motivo del fallimento",
+    "description": "Etichetta per il motivo del fallimento"
+  },
+  "name.status": {
+    "message": "Stato",
+    "description": "Etichetta per lo stato"
+  }
 }
-

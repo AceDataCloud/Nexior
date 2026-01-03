@@ -5,15 +5,15 @@
   },
   "name.type": {
     "message": "Typ",
-    "description": "Typ treści Kling wideo, który ma być generowany, np. 'link', 'tekst' itp."
+    "description": "Typ treści Kling wideo do wygenerowania, np. 'link', 'tekst' itp."
   },
   "name.modeStd": {
-    "message": "Standardowy",
+    "message": "Standard",
     "description": "Standardowy tryb Kling wideo"
   },
   "name.modePro": {
     "message": "Wysoka jakość",
-    "description": "Wysokiej jakości tryb Kling wideo"
+    "description": "Tryb wysokiej jakości Kling wideo"
   },
   "name.failure": {
     "message": "Niepowodzenie",
@@ -33,23 +33,23 @@
   },
   "name.createdAt": {
     "message": "Data utworzenia",
-    "description": "Data i czas generowania Kling wideo"
+    "description": "Data i czas wygenerowania Kling wideo"
   },
   "name.cfgScale": {
-    "message": "Swoboda",
-    "description": "Obrazek referencyjny dla generowanego wideo"
+    "message": "Poziom swobody",
+    "description": "Parametr swobody do generowania wideo (0-1), im wyższa wartość, tym bliżej odniesienia"
   },
   "name.startImage": {
-    "message": "Obrazek referencyjny pierwszej klatki",
-    "description": "Obrazek referencyjny dla generowanego wideo"
+    "message": "Obraz referencyjny (pierwsza klatka)",
+    "description": "Etykieta pola formularza: obraz referencyjny pierwszej klatki"
   },
   "name.negativePrompt": {
     "message": "Negatywne wskazówki",
-    "description": "Negatywny tekstowy prompt do generowania wideo"
+    "description": "Negatywne tekstowe wskazówki do generowania wideo"
   },
   "name.endImage": {
-    "message": "Obrazek referencyjny ostatniej klatki",
-    "description": "Obrazek referencyjny dla generowanego wideo"
+    "message": "Obraz referencyjny (ostatnia klatka)",
+    "description": "Etykieta pola formularza: obraz referencyjny ostatniej klatki"
   },
   "name.videoUrl": {
     "message": "Niestandardowe wideo",
@@ -64,8 +64,8 @@
     "description": "Czas trwania wideo"
   },
   "name.ingredients": {
-    "message": "Wideo z wieloma obrazkami",
-    "description": "Niestandardowe rozszerzone wideo"
+    "message": "Wideo z wielu obrazów",
+    "description": "Przełącznik/etykieta do tworzenia wideo z wielu obrazów"
   },
   "name.model": {
     "message": "Wersja modelu",
@@ -81,7 +81,7 @@
   },
   "name.effect": {
     "message": "Efekt wideo",
-    "description": "Nazwa parametru stylu, używana do przełączania między różnymi wersjami lub stylami modelu"
+    "description": "Nazwa parametru stylu do przełączania między różnymi wersjami lub stylami modelu"
   },
   "name.ingredientsModel": {
     "message": "Model składników",
@@ -92,11 +92,11 @@
     "description": "Nazwa generatora Kling wideo"
   },
   "description.ingredients": {
-    "message": "Jeśli chcesz przesłać wiele obrazków, aby wygenerować swoje wideo, włącz ten przycisk.",
+    "message": "Aby przesłać wiele obrazów do wygenerowania własnego wideo, włącz ten przycisk.",
     "description": "Opis parametru 'ingredients'"
   },
   "description.imageUrl": {
-    "message": "W zadaniu tworzenia wideo z wieloma obrazkami musisz przesłać wiele obrazków.",
+    "message": "W przypadku zadania tworzenia wideo z wielu obrazów, należy przesłać wiele obrazów.",
     "description": "Opis parametru 'imageUrl'"
   },
   "description.prompt": {
@@ -104,20 +104,20 @@
     "description": "Opis parametru 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "Negatywne tekstowe wskazówki, opcjonalne, nie mogą przekraczać 200 znaków",
+    "message": "Negatywne tekstowe wskazówki, opcjonalne, maksymalnie 200 znaków",
     "description": "Opis parametru 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Prześlij obrazek pierwszej klatki jako referencję, ostatnie wideo będzie odnosić się do pierwszej klatki.",
-    "description": "Opis parametru przesyłania referencji"
+    "message": "Prześlij obraz pierwszej klatki jako odniesienie do generacji, ostatnie wideo będzie odnosić się do pierwszej klatki",
+    "description": "Opis parametru przesyłania odniesienia"
   },
   "description.uploadEndImage": {
-    "message": "Prześlij obrazek ostatniej klatki jako referencję, ostatnie wideo będzie odnosić się do ostatniej klatki.",
-    "description": "Opis parametru przesyłania referencji"
+    "message": "Prześlij obraz ostatniej klatki jako odniesienie do generacji, ostatnie wideo będzie odnosić się do ostatniej klatki",
+    "description": "Opis parametru przesyłania odniesienia"
   },
   "description.cfgScale": {
-    "message": "Swoboda generowania wideo, opcjonalne [0,1]. Im większa wartość, tym silniejsza korelacja.",
-    "description": "Opis parametru przesyłania referencji"
+    "message": "Swoboda generowania wideo, opcjonalne [0,1]. Im wyższa wartość, tym silniejsza korelacja.",
+    "description": "Opis parametru przesyłania odniesienia"
   },
   "status.pending": {
     "message": "Oczekiwanie",
@@ -129,7 +129,7 @@
   },
   "placeholder.paddingNoise": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wejścia szumów wypełniających"
+    "description": "Placeholder dla wprowadzenia szumów wypełniających"
   },
   "placeholder.select": {
     "message": "Wybierz",
@@ -144,80 +144,80 @@
     "description": "Placeholder dla pola wskazówek"
   },
   "placeholder.negativePrompt": {
-    "message": "Wprowadź negatywne wskazówki dotyczące stylu wideo, nie przekraczające 200 znaków",
+    "message": "Wprowadź negatywne wskazówki dotyczące stylu wideo, maksymalnie 200 znaków",
     "description": "Placeholder dla pola wskazówek"
   },
   "placeholder.position": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wejścia pozycji"
+    "description": "Placeholder dla wprowadzenia pozycji"
   },
   "placeholder.aspectRatio": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wejścia proporcji"
+    "description": "Placeholder dla wprowadzenia proporcji"
   },
   "placeholder.preset": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wejścia preset"
+    "description": "Placeholder dla wprowadzenia presetów"
   },
   "placeholder.markerShape": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wejścia kształtu znacznika"
+    "description": "Placeholder dla wprowadzenia kształtu znacznika"
   },
   "placeholder.rotate": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wejścia obrotu"
+    "description": "Placeholder dla wprowadzenia obrotu"
   },
   "placeholder.subMarker": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wejścia podznacznika"
+    "description": "Placeholder dla pola wejściowego submarkera"
   },
   "button.precise": {
     "message": "Precyzyjny",
-    "description": "Tekst przycisku do generowania Kling wideo"
+    "description": "Tekst przycisku do generowania wideo Kling"
   },
   "button.creative": {
     "message": "Kreatywny",
-    "description": "Tekst przycisku do generowania Kling wideo"
+    "description": "Tekst przycisku do generowania wideo Kling"
   },
   "button.generate": {
     "message": "Generuj",
-    "description": "Tekst przycisku do generowania Kling wideo"
+    "description": "Tekst przycisku do generowania wideo Kling"
   },
   "button.extend": {
     "message": "Rozszerz wideo",
-    "description": "Tekst przycisku rozszerzania wideo"
+    "description": "Tekst przycisku do rozszerzania wideo"
   },
   "button.download": {
     "message": "Pobierz wideo",
-    "description": "Tekst przycisku pobierania wideo"
+    "description": "Tekst przycisku do pobierania wideo"
   },
   "button.uploadImageUrl": {
-    "message": "Prześlij obraz",
-    "description": "Tekst przycisku przesyłania obrazu"
+    "message": "Prześlij",
+    "description": "Tekst przycisku do przesyłania obrazu (proszę uprościć do 'Prześlij')"
   },
   "button.uploadVideoUrl": {
     "message": "Prześlij wideo",
-    "description": "Tekst przycisku przesyłania wideo"
+    "description": "Tekst przycisku do przesyłania wideo"
   },
   "button.uploadReferences": {
     "message": "Prześlij",
-    "description": "Tekst przycisku, który pozwala użytkownikowi przesłać odniesienia"
+    "description": "Tekst przycisku, który pozwala użytkownikowi przesłać referencje"
   },
   "message.uploadReferencesExceed": {
-    "message": "Można przesłać maksymalnie 1 obraz",
-    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazów przekracza limit"
+    "message": "Można przesłać maksymalnie 1 obrazek",
+    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazków przekracza limit"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Obraz przesłany pomyślnie",
-    "description": "Komunikat o sukcesie, gdy obraz został pomyślnie przesłany"
+    "message": "Obrazek przesłany pomyślnie",
+    "description": "Komunikat o sukcesie, gdy obrazek został pomyślnie przesłany"
   },
   "message.uploadReferencesError": {
-    "message": "Nie udało się przesłać obrazu, spróbuj ponownie później",
-    "description": "Komunikat o błędzie, gdy przesyłanie obrazu nie powiodło się"
+    "message": "Nie udało się przesłać obrazka, spróbuj ponownie później",
+    "description": "Komunikat o błędzie, gdy przesyłanie obrazka nie powiodło się"
   },
   "message.startingTask": {
     "message": "Rozpoczynanie zadania...",
-    "description": "Komunikat, gdy zadanie rysowania się rozpoczyna"
+    "description": "Komunikat na początku zadania rysowania"
   },
   "message.startTaskSuccess": {
     "message": "Zadanie generowania uruchomione pomyślnie",
@@ -233,23 +233,23 @@
   },
   "message.generating": {
     "message": "Generowanie...",
-    "description": "Komunikat, gdy obraz jest w trakcie generowania"
+    "description": "Komunikat podczas generowania obrazu"
   },
   "message.downloadVideo": {
     "message": "Pobierz to wideo",
-    "description": "Komunikat, gdy obraz jest w trakcie generowania"
+    "description": "Komunikat podczas generowania obrazu"
   },
   "message.extendVideo": {
     "message": "Kontynuuj generowanie tego wideo",
-    "description": "Komunikat, gdy obraz jest w trakcie generowania"
+    "description": "Komunikat podczas generowania obrazu"
   },
   "message.generateFailed": {
     "message": "Nie udało się wygenerować obrazu",
     "description": "Komunikat, gdy generowanie obrazu nie powiodło się"
   },
   "message.uploadVideoExceed": {
-    "message": "Liczba przesyłanych obrazów klatki początkowej przekracza limit",
-    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazów klatki początkowej przekracza limit"
+    "message": "Liczba przesyłanych obrazków klatki początkowej przekracza limit",
+    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazków klatki początkowej przekracza limit"
   },
   "message.uploadVideoSizeExceed": {
     "message": "Rozmiar przesyłanego pliku nie może przekraczać 10 MB!",
@@ -260,24 +260,24 @@
     "description": "Komunikat o błędzie, gdy przesyłany plik nie jest w formacie MP4!"
   },
   "message.uploadStartImageExceed": {
-    "message": "Liczba przesyłanych obrazów klatki początkowej przekracza limit",
-    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazów klatki początkowej przekracza limit"
+    "message": "Liczba przesyłanych obrazków klatki początkowej przekracza limit",
+    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazków klatki początkowej przekracza limit"
   },
   "message.uploadEndImageExceed": {
-    "message": "Liczba przesyłanych obrazów klatki końcowej przekracza limit",
-    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazów klatki końcowej przekracza limit"
+    "message": "Liczba przesyłanych obrazków klatki końcowej przekracza limit",
+    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazków klatki końcowej przekracza limit"
   },
   "message.uploadStartImageError": {
-    "message": "Nie udało się przesłać obrazu klatki początkowej",
-    "description": "Komunikat o błędzie, gdy przesyłanie obrazu klatki początkowej nie powiodło się"
+    "message": "Nie udało się przesłać obrazka klatki początkowej",
+    "description": "Komunikat o błędzie, gdy przesyłanie obrazka klatki początkowej nie powiodło się"
   },
   "message.uploadVideoError": {
     "message": "Nie udało się przesłać wideo",
     "description": "Komunikat o błędzie, gdy przesyłanie wideo nie powiodło się"
   },
   "message.uploadEndImageError": {
-    "message": "Nie udało się przesłać obrazu klatki końcowej",
-    "description": "Komunikat o błędzie, gdy przesyłanie obrazu klatki końcowej nie powiodło się"
+    "message": "Nie udało się przesłać obrazka klatki końcowej",
+    "description": "Komunikat o błędzie, gdy przesyłanie obrazka klatki końcowej nie powiodło się"
   },
   "message.uploadDocumentsError": {
     "message": "Nie udało się przesłać dokumentu",

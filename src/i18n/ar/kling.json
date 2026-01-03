@@ -1,30 +1,210 @@
 {
   "name.taskId": {
     "message": "معرف المهمة",
-    "description": "رف المهمة"
+    "description": "معرف المهمة"
+  },
+  "name.type": {
+    "message": "النوع",
+    "description": "نوع محتوى فيديو Kling المراد إنشاؤه، مثل 'رابط'، 'نص'، إلخ"
+  },
+  "name.modeStd": {
+    "message": "قياسي",
+    "description": "الوضع القياسي لفيديو Kling"
+  },
+  "name.modePro": {
+    "message": "عالي الجودة",
+    "description": "الوضع عالي الجودة لفيديو Kling"
+  },
+  "name.failure": {
+    "message": "فشل",
+    "description": "حالة فشل المهمة"
+  },
+  "name.failureReason": {
+    "message": "سبب الفشل",
+    "description": "سبب فشل المهمة"
+  },
+  "name.status": {
+    "message": "الحالة",
+    "description": "حالة المهمة"
+  },
+  "name.traceId": {
+    "message": "معرف التتبع",
+    "description": "معرف التتبع للمهمة"
+  },
+  "name.createdAt": {
+    "message": "تاريخ الإنشاء",
+    "description": "تاريخ ووقت إنشاء فيديو Kling"
+  },
+  "name.cfgScale": {
+    "message": "مستوى الحرية",
+    "description": "معامل مستوى الحرية لإنشاء الفيديو (0-1)، كلما زادت القيمة، زادت المطابقة"
+  },
+  "name.startImage": {
+    "message": "صورة الإطار الأول",
+    "description": "تسمية حقل النموذج: صورة الإطار الأول (يجب أن تبقى مختصرة لتجنب حجب الزر)"
+  },
+  "name.negativePrompt": {
+    "message": "نص التلميح السلبي",
+    "description": "نص التلميح السلبي لإنشاء الفيديو"
+  },
+  "name.endImage": {
+    "message": "صورة الإطار الأخير",
+    "description": "تسمية حقل النموذج: صورة الإطار الأخير (يجب أن تبقى مختصرة لتجنب حجب الزر)"
+  },
+  "name.videoUrl": {
+    "message": "فيديو مخصص",
+    "description": "فيديو مخصص"
+  },
+  "name.prompt": {
+    "message": "تلميح الفيديو",
+    "description": "تلميح لإدخال المحتوى"
+  },
+  "name.duration": {
+    "message": "مدة الفيديو",
+    "description": "مدة الفيديو"
+  },
+  "name.ingredients": {
+    "message": "إنشاء فيديو متعدد الصور",
+    "description": "زر/تسمية لإنشاء فيديو متعدد الصور (يجب أن تبقى مختصرة)"
+  },
+  "name.model": {
+    "message": "إصدار النموذج",
+    "description": "إصدار النموذج المستخدم لإنشاء الفيديو"
+  },
+  "name.ratio": {
+    "message": "نسبة الفيديو",
+    "description": "نسبة الفيديو المستخدمة لإنشاء الفيديو"
+  },
+  "name.mode": {
+    "message": "وضع الفيديو",
+    "description": "الوضع المستخدم لإنشاء الفيديو"
+  },
+  "name.effect": {
+    "message": "تأثير الفيديو",
+    "description": "اسم معامل النمط، يستخدم للتبديل بين إصدارات أو أنماط مختلفة من النموذج"
+  },
+  "name.ingredientsModel": {
+    "message": "نموذج المكونات",
+    "description": "إصدار النموذج المستخدم لإنشاء الفيديو"
+  },
+  "name.klingBot": {
+    "message": "Kling Bot",
+    "description": "اسم مولد فيديو Kling"
+  },
+  "description.ingredients": {
+    "message": "إذا كنت ترغب في تحميل صور متعددة لإنشاء فيديو خاص بك، يرجى تفعيل هذا الزر.",
+    "description": "وصف المعامل 'ingredients'"
+  },
+  "description.imageUrl": {
+    "message": "في مهمة إنشاء فيديو متعدد الصور، يجب تحميل صور متعددة.",
+    "description": "وصف المعامل 'imageUrl'"
+  },
+  "description.prompt": {
+    "message": "تلميحات لإنشاء فيديو Kling",
+    "description": "وصف المعامل 'prompt'"
+  },
+  "description.negativePrompt": {
+    "message": "نص تلميح سلبي، اختياري، لا يتجاوز 200 حرف",
+    "description": "وصف المعامل 'negativePrompt'"
+  },
+  "description.uploadStartImage": {
+    "message": "قم بتحميل صورة الإطار الأول كمرجع للتوليد، الفيديو النهائي سيعتمد على الإطار الأول",
+    "description": "وصف المعامل لتحميل المرجع"
+  },
+  "description.uploadEndImage": {
+    "message": "قم بتحميل صورة الإطار الأخير كمرجع للتوليد، الفيديو النهائي سيعتمد على الإطار الأخير",
+    "description": "وصف المعامل لتحميل المرجع"
+  },
+  "description.cfgScale": {
+    "message": "مستوى الحرية لإنشاء الفيديو، اختياري [0,1]. كلما زادت القيمة، زادت العلاقة.",
+    "description": "وصف المعامل لتحميل المرجع"
+  },
+  "status.pending": {
+    "message": "في الانتظار",
+    "description": "حالة الانتظار للمهمة"
+  },
+  "status.processing": {
+    "message": "قيد المعالجة",
+    "description": "حالة المعالجة للمهمة"
+  },
+  "placeholder.paddingNoise": {
+    "message": "يرجى الاختيار...",
+    "description": "نص العنصر النائب لإدخال ضوضاء التعبئة"
+  },
+  "placeholder.select": {
+    "message": "اختر",
+    "description": "نص العنصر النائب في حقل الاختيار"
+  },
+  "placeholder.paddingLevel": {
+    "message": "يرجى الاختيار...",
+    "description": "نص العنصر النائب لمستوى التعبئة"
+  },
+  "placeholder.prompt": {
+    "message": "أدخل تلميحات نمط الفيديو المراد إنشاؤه، مثل: متحرك",
+    "description": "نص العنصر النائب في حقل التلميح"
+  },
+  "placeholder.negativePrompt": {
+    "message": "أدخل نص التلميح السلبي لنمط الفيديو المراد إنشاؤه، لا يتجاوز 200 حرف",
+    "description": "نص العنصر النائب في حقل التلميح"
+  },
+  "placeholder.position": {
+    "message": "يرجى الاختيار...",
+    "description": "نص العنصر النائب لإدخال الموقع"
+  },
+  "placeholder.aspectRatio": {
+    "message": "يرجى الاختيار...",
+    "description": "نص العنصر النائب لإدخال نسبة العرض إلى الارتفاع"
+  },
+  "placeholder.preset": {
+    "message": "يرجى الاختيار...",
+    "description": "نص العنصر النائب لإدخال الإعدادات المسبقة"
+  },
+  "placeholder.markerShape": {
+    "message": "يرجى الاختيار...",
+    "description": "نص العنصر النائب لإدخال شكل العلامة"
+  },
+  "placeholder.rotate": {
+    "message": "يرجى الاختيار...",
+    "description": "نص العنصر النائب لإدخال التدوير"
+  },
+  "placeholder.subMarker": {
+    "message": "يرجى الاختيار...",
+    "description": "نص العنصر النائب لإدخال العلامة الفرعية"
+  },
+  "button.precise": {
+    "message": "دقيق",
+    "description": "نص زر لإنشاء فيديو Kling"
+  },
+  "button.creative": {
+    "message": "إبداعي",
+    "description": "نص زر لإنشاء فيديو Kling"
+  },
+  "button.generate": {
+    "message": "إنشاء",
+    "description": "نص زر لإنشاء فيديو Kling"
   },
   "button.extend": {
-    "message": "توسيع الفيديو",
-    "description": "نص زر توسيع الفيديو"
+    "message": "تمديد الفيديو",
+    "description": "نص زر لتمديد الفيديو"
   },
   "button.download": {
-    "message": "تحميل الفيديو",
-    "description": "نص زر تحميل الفيديو"
+    "message": "تنزيل الفيديو",
+    "description": "نص زر لتنزيل الفيديو"
   },
   "button.uploadImageUrl": {
-    "message": "رفع الصورة",
-    "description": "نص زر رفع الصورة"
+    "message": "رفع",
+    "description": "نص زر لرفع الصورة (يرجى تبسيط إلى 'رفع'، لا تستخدم 'رفع صورة')"
   },
   "button.uploadVideoUrl": {
     "message": "رفع الفيديو",
-    "description": "نص زر رفع الفيديو"
+    "description": "نص زر لرفع الفيديو"
   },
   "button.uploadReferences": {
     "message": "رفع",
     "description": "نص الزر الذي يسمح للمستخدم برفع المراجع"
   },
   "message.uploadReferencesExceed": {
-    "message": "يمكنك رفع صورة واحدة كحد أقصى",
+    "message": "يمكن رفع صورة واحدة فقط",
     "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة للحد المسموح به"
   },
   "message.uploadReferencesSuccess": {
@@ -32,7 +212,7 @@
     "description": "رسالة نجاح عند رفع الصورة بنجاح"
   },
   "message.uploadReferencesError": {
-    "message": "فشل رفع الصورة، يرجى المحاولة لاحقًا",
+    "message": "فشل في رفع الصورة، يرجى المحاولة لاحقًا",
     "description": "رسالة خطأ عند فشل رفع الصورة"
   },
   "message.startingTask": {
@@ -40,11 +220,11 @@
     "description": "رسالة عند بدء مهمة الرسم"
   },
   "message.startTaskSuccess": {
-    "message": "تم بدء مهمة التوليد بنجاح",
+    "message": "تم بدء مهمة الإنشاء بنجاح",
     "description": "رسالة نجاح عند بدء المهمة بنجاح"
   },
   "message.startTaskFailed": {
-    "message": "فشل بدء المهمة، يرجى الاتصال بالمدير",
+    "message": "فشل في بدء المهمة، يرجى الاتصال بالمسؤول",
     "description": "رسالة خطأ عند فشل بدء مهمة الرسم"
   },
   "message.usedUp": {
@@ -52,20 +232,20 @@
     "description": "رسالة عند نفاد النقاط"
   },
   "message.generating": {
-    "message": "جارٍ التوليد...",
-    "description": "رسالة عند توليد الصورة"
+    "message": "جارٍ الإنشاء...",
+    "description": "رسالة عند إنشاء الصورة"
   },
   "message.downloadVideo": {
-    "message": "تحميل هذا الفيديو",
-    "description": "رسالة عند توليد الصورة"
+    "message": "تنزيل هذا الفيديو",
+    "description": "رسالة عند إنشاء الصورة"
   },
   "message.extendVideo": {
-    "message": "استمرار توليد هذا الفيديو",
-    "description": "رسالة عند توليد الصورة"
+    "message": "استمرار إنشاء هذا الفيديو",
+    "description": "رسالة عند إنشاء الصورة"
   },
   "message.generateFailed": {
-    "message": "فشل توليد الصورة",
-    "description": "رسالة عند فشل توليد الصورة"
+    "message": "فشل في إنشاء الصورة",
+    "description": "رسالة عند فشل إنشاء الصورة"
   },
   "message.uploadVideoExceed": {
     "message": "عدد الصور المرفوعة للإطار الأول تجاوز الحد المسموح به",
@@ -88,19 +268,19 @@
     "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة للإطار الأخير للحد المسموح به"
   },
   "message.uploadStartImageError": {
-    "message": "فشل رفع الصورة للإطار الأول",
+    "message": "فشل في رفع الصورة للإطار الأول",
     "description": "رسالة خطأ عند فشل رفع الصورة للإطار الأول"
   },
   "message.uploadVideoError": {
-    "message": "فشل رفع الفيديو",
-    "description": "رسالة خطأ عند فشل رفع الفيديو"
+    "message": "فشل في رفع الفيديو",
+    "description": "رسالة خطأ عند فشل رفع الصورة للإطار الأول"
   },
   "message.uploadEndImageError": {
-    "message": "فشل رفع الصورة للإطار الأخير",
+    "message": "فشل في رفع الصورة للإطار الأخير",
     "description": "رسالة خطأ عند فشل رفع الصورة للإطار الأخير"
   },
   "message.uploadDocumentsError": {
-    "message": "فشل رفع المستندات",
+    "message": "فشل في رفع المستندات",
     "description": "رسالة خطأ عند فشل رفع المستندات"
   },
   "message.noOperations": {
@@ -108,7 +288,7 @@
     "description": "رسالة عند عدم وجود عمليات متاحة"
   },
   "message.noTasks": {
-    "message": "لا توجد مهام تاريخية، يرجى النقر على زر توليد الفيديو على اليسار",
+    "message": "لا توجد مهام تاريخية، يرجى النقر على الجهة اليسرى لإنشاء فيديو",
     "description": "رسالة عند عدم وجود مهام"
   }
 }

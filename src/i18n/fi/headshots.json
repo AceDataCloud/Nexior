@@ -1,19 +1,19 @@
 {
   "name.taskId": {
-    "message": "Tehtävän ID",
+    "message": "Tehtävä ID",
     "description": "Tehtävän ID"
   },
   "name.mode": {
     "message": "Generointinopeus",
-    "description": "Nopeusparametrin nimi, joka asetetaan kuvan generointia varten"
+    "description": "Nopeusparametrin nimi, jota käytetään kuvan generoinnin nopeuden asettamiseen"
   },
   "name.type": {
     "message": "Tyyppi",
-    "description": "QR-koodin sisällön tyyppi, kuten 'linkki', 'teksti' jne."
+    "description": "QR-koodin sisältötyyppi, kuten 'linkki', 'teksti' jne."
   },
   "name.failure": {
-    "message": "Epäonnistunut",
-    "description": "Tehtävän epäonnistumisen tila"
+    "message": "Epäonnistuminen",
+    "description": "Tehtävän epäonnistumistila"
   },
   "name.failureReason": {
     "message": "Epäonnistumisen syy",
@@ -29,18 +29,18 @@
   },
   "name.size": {
     "message": "Koko",
-    "description": "QR-koodin koko, joka tullaan generoimaan"
+    "description": "QR-koodin koko"
   },
   "name.createdAt": {
     "message": "Luontiaika",
-    "description": "QR-koodin generointipäivämäärä ja -aika"
+    "description": "QR-koodin luontipäivämäärä ja -aika"
   },
   "name.endImageUrls": {
-    "message": "Henkilökuva",
+    "message": "Kuvapohjat",
     "description": "QR-koodin siemen"
   },
   "description.endImageUrls": {
-    "message": "Generoi vastaava henkilökorttikuva tämän henkilökuvan perusteella",
+    "message": "Generoi vastaava henkilökorttikuva tämän kuvapohjan perusteella",
     "description": "QR-koodin siemen"
   },
   "name.content": {
@@ -48,12 +48,12 @@
     "description": "QR-koodin sisältö"
   },
   "field.elements": {
-    "message": "Henkilökorttikuvatyylit",
-    "description": "Kuvien generoinnissa käytettävä taidetyyli"
+    "message": "Henkilökorttityyli",
+    "description": "Kuvien generointiin käytettävä taidetyyli"
   },
   "name.headshotsBot": {
     "message": "Headshots Bot",
-    "description": "Headshots henkilökorttikuvien generointinimi"
+    "description": "Headshots- henkilökorttikuvien generoinnin nimi"
   },
   "name.contentImageUrl": {
     "message": "Sisältökuvan linkki",
@@ -61,79 +61,79 @@
   },
   "inputWay.input": {
     "message": "Syötä sisältö",
-    "description": "Syötteen tapa"
+    "description": "Syöttötapa"
   },
   "status.pending": {
     "message": "Odottaa",
-    "description": "Tehtävän odottava tila"
+    "description": "Tehtävän odotustila"
   },
   "status.processing": {
-    "message": "Käsitellään",
+    "message": "Käsittelyssä",
     "description": "Tehtävän käsittelytila"
   },
   "placeholder.paddingNoise": {
     "message": "Valitse...",
-    "description": "Täytehälyn syötteen paikka"
+    "description": "Täytehälyn syötteen paikkamerkki"
   },
   "placeholder.paddingLevel": {
     "message": "Valitse...",
-    "description": "Täyttötason paikka"
+    "description": "Täyteasteen paikkamerkki"
   },
   "placeholder.prompt": {
-    "message": "Syötä videon generoinnin tyylin avainsanat, esim: Astronautit kulkevat avaruudesta tulivuorelle",
-    "description": "Paikka tekstiä tarkkuussarakkeessa"
+    "message": "Syötä videotyylin generointiin liittyvä ohje, esim.: Astronautit kulkevat avaruudesta tulivuorelle",
+    "description": "Ohjekentän paikkamerkki"
   },
   "button.fast": {
-    "message": "Nopeasti",
-    "description": "Painikkeen teksti, joka sallii käyttäjälle 'nopean tilan' asettamisen kuvan generoimiseksi, on käännettävä 'Nopea tila'"
+    "message": "Nopea",
+    "description": "Painikkeen teksti, joka sallii käyttäjän asettaa 'nopean tilan' kuvan generointiin, on käännettävä 'Nopea tila'"
   },
   "button.relax": {
-    "message": "Hitaasti",
-    "description": "Painikkeen teksti, joka sallii käyttäjälle 'hitaan tilan' asettamisen kuvan generoimiseksi, on käännettävä 'Hidas tila'"
+    "message": "Hidas",
+    "description": "Painikkeen teksti, joka sallii käyttäjän asettaa 'hitaan tilan' rentoutumiseen kuvan generoinnissa, on käännettävä 'Hidas tila'"
   },
   "button.generate": {
     "message": "Generoi",
-    "description": "Painikkeen teksti Headshots henkilökorttikuvien generointiin"
+    "description": "Painikkeen teksti Headshots- henkilökorttikuvien generointiin"
   },
   "button.viewImage": {
     "message": "Näytä alkuperäinen kuva",
-    "description": "Painikkeen teksti Headshots henkilökorttikuvien generointiin"
+    "description": "Painikkeen teksti Headshots- henkilökorttikuvien generointiin"
   },
   "button.download": {
-    "message": "Lataa video",
-    "description": "Videon latauspainikkeen teksti"
+    "message": "Lataa kuva",
+    "description": "Kuvan latauspainikkeen teksti"
   },
   "button.uploadImageUrls": {
-    "message": "Lataa henkilökuvat",
-    "description": "Henkilökuvien latauspainikkeen teksti"
+    "message": "Lataa kuvapohjat",
+    "description": "Kuvapohjien latauspainikkeen teksti (yksinkertaista englanniksi 'Upload', vältä liian pitkää tekstiä)"
   },
   "message.uploadReferencesExceed": {
     "message": "Voit ladata enintään 5 kuvaa",
-    "description": "Virhesanoma, kun ladattujen kuvien määrä ylittää rajan"
+    "description": "Virheilmoitus, kun ladattujen kuvien määrä ylittää rajan"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Kuvien lataaminen onnistui",
-    "description": "Menestysviesti, kun kuvat on ladattu onnistuneesti"
+    "message": "Kuvien lataus onnistui",
+    "description": "Onnistumisviesti, kun kuvat on ladattu onnistuneesti"
   },
   "message.uploadReferencesError": {
-    "message": "Kuvien lataaminen epäonnistui, yritä uudelleen myöhemmin",
-    "description": "Virhesanoma, kun kuvien lataaminen epäonnistuu"
+    "message": "Kuvien lataus epäonnistui, yritä myöhemmin uudelleen",
+    "description": "Virheilmoitus, kun kuvien lataus epäonnistuu"
   },
   "message.startingTask": {
-    "message": "Käynnistetään tehtävää...",
+    "message": "Tehtävää käynnistetään...",
     "description": "Viesti, kun piirustustehtävä alkaa"
   },
   "message.startTaskSuccess": {
-    "message": "Tehtävän aloitus onnistui",
-    "description": "Menestysviesti, kun tehtävä on käynnistetty onnistuneesti"
+    "message": "Generointitehtävä käynnistetty onnistuneesti",
+    "description": "Onnistumisviesti, kun tehtävä on käynnistetty onnistuneesti"
   },
   "message.startTaskFailed": {
-    "message": "Tehtävän aloitus epäonnistui, ota yhteyttä järjestelmänvalvojaan",
-    "description": "Virhesanoma, kun piirustustehtävän käynnistys epäonnistuu"
+    "message": "Tehtävän käynnistys epäonnistui, ota yhteyttä ylläpitoon",
+    "description": "Virheilmoitus, kun piirustustehtävän käynnistys epäonnistuu"
   },
   "message.usedUp": {
-    "message": "Osoitteesi on loppu, osta lisää osoitteita jatkaaksesi käyttöä",
-    "description": "Viesti, kun osoitteet on käytetty loppuun"
+    "message": "Pisteesi on käytetty loppuun, osta lisää pisteitä jatkaaksesi käyttöä",
+    "description": "Viesti, kun pisteet on käytetty loppuun"
   },
   "message.generating": {
     "message": "Generoidaan...",
@@ -149,46 +149,46 @@
   },
   "message.noOperations": {
     "message": "Ei käytettävissä olevia toimintoja",
-    "description": "Viesti, kun ei ole käytettävissä olevia toimintoja"
+    "description": "Viesti, kun käytettävissä ei ole toimintoja"
   },
   "message.noTasks": {
-    "message": "Ei historiallisia tehtäviä, napsauta vasemmalla generoidaksesi video",
+    "message": "Ei historiallisia tehtäviä, napsauta vasemmalla generoidaksesi videon",
     "description": "Viesti, kun tehtäviä ei ole"
   },
   "styleCategory.styles": {
-    "message": "Henkilökorttikuvatyylit",
-    "description": "Luokkasana, jota käytetään kuvien kuvaamiseen ja generoimiseen, generoitujen kuvien on sisällettävä tämä etiketti"
+    "message": "Henkilökorttityyli",
+    "description": "Kuvien kuvaamiseen ja generointiin käytettävä kategoria, generoitujen kuvien tulisi sisältää tämän tunnisteen kategoria"
   },
   "styleTag.malePportrait": {
-    "message": "Miespotretti",
-    "description": "Tyylisanoja, jota käytetään kuvien kuvaamiseen ja generoimiseen; generoitujen kuvien on sisällettävä tämä etiketti"
+    "message": "Mieskuva",
+    "description": "Kuvien kuvaamiseen ja generointiin käytettävä tyylitunniste, generoitujen kuvien tulisi sisältää tämän tunnisteen tyyli"
   },
   "styleTag.malePportrait2": {
-    "message": "Miespotretti 2",
-    "description": "Tyylisanoja, jota käytetään kuvien kuvaamiseen ja generoimiseen; generoitujen kuvien on sisällettävä tämä etiketti"
+    "message": "Mieskuva 2",
+    "description": "Kuvien kuvaamiseen ja generointiin käytettävä tyylitunniste, generoitujen kuvien tulisi sisältää tämän tunnisteen tyyli"
   },
   "styleTag.kindergarten": {
     "message": "Lastentarhan sisäänkäyntikuva",
-    "description": "Tyylisanoja, jota käytetään kuvien kuvaamiseen ja generoimiseen; generoitujen kuvien on sisällettävä tämä etiketti"
+    "description": "Käytetään tyylisanana kuvien kuvaamiseen ja luomiseen, luotujen kuvien tulisi sisältää tämän tunnisteen tyyli"
   },
   "styleTag.logoTshirt": {
-    "message": "Yrityksen logoT-paita kuva",
-    "description": "Käytetään tyylisanojen kuvaamiseen ja kuvien generoimiseen, generoitu kuva tulisi sisältää tämän tunnisteen tyyli"
+    "message": "Yrityksen logo T-paitakuva",
+    "description": "Käytetään tyylisanana kuvien kuvaamiseen ja luomiseen, luotujen kuvien tulisi sisältää tämän tunnisteen tyyli"
   },
   "styleTag.wedding": {
     "message": "Häiden rekisteröintikuva",
-    "description": "Käytetään tyylisanojen kuvaamiseen ja kuvien generoimiseen, generoitu kuva tulisi sisältää tämän tunnisteen tyyli"
+    "description": "Käytetään tyylisanana kuvien kuvaamiseen ja luomiseen, luotujen kuvien tulisi sisältää tämän tunnisteen tyyli"
   },
   "styleTag.businessPphoto": {
-    "message": "Liiketoimintatyylinen valokuva",
-    "description": "Käytetään tyylisanojen kuvaamiseen ja kuvien generoimiseen, generoitu kuva tulisi sisältää tämän tunnisteen tyyli"
+    "message": "Liiketoimintatyylinen muotokuva",
+    "description": "Käytetään tyylisanana kuvien kuvaamiseen ja luomiseen, luotujen kuvien tulisi sisältää tämän tunnisteen tyyli"
   },
   "styleTag.bobSuit": {
     "message": "Musta puku ja bob-leikkaus",
-    "description": "Käytetään tyylisanojen kuvaamiseen ja kuvien generoimiseen, generoitu kuva tulisi sisältää tämän tunnisteen tyyli"
+    "description": "Käytetään tyylisanana kuvien kuvaamiseen ja luomiseen, luotujen kuvien tulisi sisältää tämän tunnisteen tyyli"
   },
   "styleTag.femalePortrait": {
-    "message": "Naisportretti",
-    "description": "Käytetään tyylisanojen kuvaamiseen ja kuvien generoimiseen, generoitu kuva tulisi sisältää tämän tunnisteen tyyli"
+    "message": "Naiskuva",
+    "description": "Käytetään tyylisanana kuvien kuvaamiseen ja luomiseen, luotujen kuvien tulisi sisältää tämän tunnisteen tyyli"
   }
 }

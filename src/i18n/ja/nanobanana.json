@@ -8,24 +8,24 @@
     "description": "Nano Banana 画像操作タイプ"
   },
   "name.generate": {
-    "message": "画像を作成",
-    "description": "操作タイプ：画像を作成"
+    "message": "画像生成",
+    "description": "操作タイプ：画像生成"
   },
   "name.edits": {
-    "message": "画像を編集",
-    "description": "操作タイプ：画像を編集"
+    "message": "画像編集",
+    "description": "操作タイプ：画像編集"
   },
   "name.imageUrls": {
-    "message": "参照画像",
-    "description": "編集用の参照画像"
+    "message": "参考画像",
+    "description": "編集用の参考画像"
   },
   "name.failure": {
     "message": "失敗",
-    "description": "タスクが失敗しました"
+    "description": "タスクの失敗"
   },
   "name.failureReason": {
     "message": "失敗理由",
-    "description": "タスク失敗の理由"
+    "description": "タスクの失敗理由"
   },
   "name.status": {
     "message": "ステータス",
@@ -52,32 +52,32 @@
     "description": "生成画像の解像度"
   },
   "description.resolutionProOnly": {
-    "message": "nano-banana-pro のみ解像度設定をサポートしています。",
+    "message": "nano-banana-pro のみ解像度設定をサポートします。",
     "description": "解像度オプションは pro モデルにのみ適用されます"
   },
   "description.prompt": {
-    "message": "画像を生成または編集するためのプロンプト",
+    "message": "画像生成または編集のためのプロンプト",
     "description": "プロンプトの説明"
   },
   "description.action": {
-    "message": "画像を生成するアクション。`generate` の場合、プロンプトに基づいて画像を生成します；`edit` の場合、プロンプトとアップロードされた画像に基づいて編集します。",
+    "message": "画像生成のアクション。`generate` の場合、プロンプトに基づいて画像を生成します；`edit` の場合、プロンプトとアップロードされた画像に基づいて編集します。",
     "description": "action パラメータの説明"
   },
   "description.model": {
-    "message": "画像を生成するためのモデル。デフォルトは nano-banana。nano-banana-pro は gemini-3-pro-image のエイリアスで、nano-banana は gemini-2.5-flash-image のエイリアスです。",
+    "message": "画像生成に使用するモデル。デフォルトは nano-banana。nano-banana-pro は gemini-3-pro-image のエイリアスで、nano-banana は gemini-2.5-flash-image のエイリアスです。",
     "description": "model パラメータの説明"
   },
   "description.imageUrls": {
-    "message": "画像編集タスクでは、1-5 枚の画像をアップロードする必要があります。",
+    "message": "画像編集タスクでは 1-5 枚の画像をアップロードする必要があります。",
     "description": "image_urls パラメータの説明"
   },
   "description.aspectRatio": {
-    "message": "生成画像のアスペクト比。サポートされている値は `1:1`、`3:2`、`2:3`、`16:9`、`9:16`、`4:3`、`3:4` です。デフォルト値は `1:1` です。`action` が `generate` の場合にのみ有効；`action` が `edit` の場合は、`image_urls` の最初の画像の比率が適用されます。",
+    "message": "生成画像のアスペクト比。サポートされる値は `1:1`、`3:2`、`2:3`、`16:9`、`9:16`、`4:3`、`3:4` です。デフォルト値は `1:1` です。`action` が `generate` の場合にのみ有効；`action` が `edit` の場合は `image_urls` の最初の画像の比率が適用されます。",
     "description": "aspect_ratio パラメータの説明"
   },
   "status.pending": {
-    "message": "保留中",
-    "description": "タスクの保留状態"
+    "message": "待機中",
+    "description": "タスクの待機状態"
   },
   "placeholder.select": {
     "message": "選択",
@@ -92,8 +92,8 @@
     "description": "生成ボタン"
   },
   "button.uploadImageUrls": {
-    "message": "画像をアップロード",
-    "description": "参照画像をアップロードするボタン"
+    "message": "アップロード",
+    "description": "参考画像をアップロードするボタン（英語は「Upload」に簡略化し、「Upload Images」は使用しない）"
   },
   "message.startingTask": {
     "message": "タスクを開始しています...",
@@ -108,15 +108,15 @@
     "description": "タスク作成に失敗しました"
   },
   "message.usedUp": {
-    "message": "ポイントが使い切りました。続行するには、さらにポイントを購入してください",
+    "message": "ポイントが使い切りました。続行するには追加のポイントを購入してください",
     "description": "使い切りのメッセージ"
   },
   "message.uploadImageExceed": {
-    "message": "最大で 5 枚の画像をアップロードできます",
-    "description": "画像数が制限を超えました"
+    "message": "最大 5 枚の画像をアップロードできます",
+    "description": "画像数が制限を超えています"
   },
   "message.uploadImageError": {
-    "message": "画像のアップロードに失敗しました。後でもう一度お試しください",
+    "message": "画像のアップロードに失敗しました。後で再試行してください",
     "description": "アップロード失敗"
   },
   "name.model": {

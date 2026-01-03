@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "Typ",
-    "description": "Innehållstypen för den Hailuo-video som ska genereras, såsom 'länk', 'text' etc."
+    "description": "Innehållstypen för den Hailuo-video som ska genereras, t.ex. 'länk', 'text' etc."
   },
   "name.failure": {
     "message": "Misslyckande",
@@ -29,7 +29,7 @@
   },
   "name.imageUrl": {
     "message": "Referensbild",
-    "description": "Referensbilden för videon som ska genereras"
+    "description": "Referensbild för videon som ska genereras"
   },
   "name.videoUrl": {
     "message": "Anpassad video",
@@ -40,8 +40,8 @@
     "description": "Prompt för innehållsinmatning"
   },
   "name.ingredients": {
-    "message": "Flera bilder för att skapa video",
-    "description": "Anpassad utvidgad video"
+    "message": "Flera bilder",
+    "description": "Växeln/etiketten för att skapa video med flera bilder (engelska förslag: Multi-Image, håll det kort)"
   },
   "name.model": {
     "message": "Modell",
@@ -60,11 +60,11 @@
     "description": "Namnet på Hailuo videogenerator"
   },
   "description.ingredients": {
-    "message": "Om du vill ladda upp flera bilder för att skapa din egen video, vänligen aktivera denna knapp.",
+    "message": "Om du vill ladda upp flera bilder för att skapa din egen video, aktivera denna knapp.",
     "description": "Beskrivning av parametern 'ingredients'"
   },
   "description.startImageUrl": {
-    "message": "Första bild, som kommer att vara den första ramen i den genererade videon.",
+    "message": "Första bilden, som kommer att vara den första ramen i den genererade videon.",
     "description": "Beskrivning av parametern 'startImageUrl'"
   },
   "description.prompt": {
@@ -92,7 +92,7 @@
     "description": "Platshållare för fyllnadsnivå"
   },
   "placeholder.prompt": {
-    "message": "Ange promptord för den stil av video som ska genereras, till exempel: ilska",
+    "message": "Ange promptord för den stil av video som ska genereras, t.ex.: ilska",
     "description": "Platshållartext i promptfältet"
   },
   "placeholder.position": {
@@ -132,8 +132,8 @@
     "description": "Knapptext för att generera Hailuo-video"
   },
   "button.extend": {
-    "message": "Utöka video",
-    "description": "Knapptext för att utöka video"
+    "message": "Förläng video",
+    "description": "Knapptext för att förlänga video"
   },
   "button.download": {
     "message": "Ladda ner video",
@@ -141,18 +141,18 @@
   },
   "button.uploadStartImageUrl": {
     "message": "Ladda upp bild",
-    "description": "Knapptext för att ladda upp QR-kod"
+    "description": "Knapptext för att ladda upp bild (engelska, förenkla till 'Upload', använd inte 'Upload Image')"
   },
   "message.uploadReferencesExceed": {
     "message": "Maximalt 5 bilder kan laddas upp",
     "description": "Felmeddelande när antalet uppladdade bilder överskrider gränsen"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Bilderna har laddats upp framgångsrikt",
-    "description": "Framgångsmeddelande när bilder har laddats upp framgångsrikt"
+    "message": "Bilder uppladdade framgångsrikt",
+    "description": "Framgångsmeddelande när bilder har laddats upp"
   },
   "message.uploadReferencesError": {
-    "message": "Misslyckades med att ladda upp bilder, vänligen försök igen senare",
+    "message": "Misslyckades med att ladda upp bilder, försök igen senare",
     "description": "Felmeddelande när bilduppladdning misslyckas"
   },
   "message.startingTask": {
@@ -160,8 +160,8 @@
     "description": "Meddelande när ritningsuppgiften startar"
   },
   "message.startTaskSuccess": {
-    "message": "Uppgift för generering har startats framgångsrikt",
-    "description": "Framgångsmeddelande när uppgiften har startats"
+    "message": "Uppgift för generering startad framgångsrikt",
+    "description": "Framgångsmeddelande när uppgiften startas"
   },
   "message.startTaskFailed": {
     "message": "Misslyckades med att starta uppgiften, vänligen kontakta administratören",
@@ -184,7 +184,7 @@
     "description": "Meddelande när bilden genereras"
   },
   "message.generateFailed": {
-    "message": "Misslyckades med att generera bilden",
+    "message": "Bildgenerering misslyckades",
     "description": "Meddelande när bildgenerering misslyckas"
   },
   "message.uploadVideoExceed": {
@@ -193,11 +193,11 @@
   },
   "message.uploadVideoSizeExceed": {
     "message": "Uppladdad fil får inte överstiga 10 MB!",
-    "description": "Felmeddelande när den uppladdade filens storlek överstiger 10 MB!"
+    "description": "Felmeddelande när uppladdad fil överstiger 10 MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Uppladdad fil måste vara i MP4-format!",
-    "description": "Felmeddelande när den uppladdade filen inte är i MP4-format!"
+    "description": "Felmeddelande när uppladdad fil inte är i MP4-format!"
   },
   "message.uploadStartImageExceed": {
     "message": "Antalet uppladdade första bildrutor överskrider gränsen",
@@ -209,26 +209,26 @@
   },
   "message.uploadStartImageError": {
     "message": "Uppladdning av första bildruta misslyckades",
-    "description": "Felmeddelande när uppladdningen av första bildruta misslyckas"
+    "description": "Felmeddelande när uppladdning av första bildruta misslyckas"
   },
   "message.uploadVideoError": {
     "message": "Uppladdning av video misslyckades",
-    "description": "Felmeddelande när uppladdningen av video misslyckas"
+    "description": "Felmeddelande när uppladdning av video misslyckas"
   },
   "message.uploadEndImageError": {
     "message": "Uppladdning av sista bildruta misslyckades",
-    "description": "Felmeddelande när uppladdningen av sista bildruta misslyckas"
+    "description": "Felmeddelande när uppladdning av sista bildruta misslyckas"
   },
   "message.uploadDocumentsError": {
     "message": "Uppladdning av dokument misslyckades",
-    "description": "Felmeddelande när uppladdningen av dokument misslyckas"
+    "description": "Felmeddelande när uppladdning av dokument misslyckas"
   },
   "message.noOperations": {
     "message": "Inga tillgängliga åtgärder",
-    "description": "Meddelande när inga åtgärder är tillgängliga"
+    "description": "Meddelande när inga tillgängliga åtgärder finns"
   },
   "message.noTasks": {
     "message": "Inga historiska uppgifter, vänligen klicka på vänster sida för att generera video",
-    "description": "Meddelande när det inte finns några uppgifter"
+    "description": "Meddelande när inga uppgifter finns"
   }
 }

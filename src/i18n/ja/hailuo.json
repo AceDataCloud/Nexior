@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "タイプ",
-    "description": "生成する Hailuo ビデオの内容タイプ、例えば 'リンク'、'テキスト' など"
+    "description": "生成する Hailuo ビデオの内容タイプ、例：'リンク'、'テキスト' など"
   },
   "name.failure": {
     "message": "失敗",
@@ -28,8 +28,8 @@
     "description": "Hailuo ビデオ生成の日付と時間"
   },
   "name.imageUrl": {
-    "message": "参照画像",
-    "description": "生成するビデオの参照画像"
+    "message": "参考画像",
+    "description": "生成するビデオの参考画像"
   },
   "name.videoUrl": {
     "message": "カスタムビデオ",
@@ -37,15 +37,15 @@
   },
   "name.prompt": {
     "message": "ビデオプロンプト",
-    "description": "コンテンツ入力のプロンプト"
+    "description": "内容入力のプロンプト"
   },
   "name.ingredients": {
     "message": "複数画像でビデオ作成",
-    "description": "カスタム拡張ビデオ"
+    "description": "複数画像でビデオ作成のスイッチ/ラベル（英語の提案：Multi-Image、短く保つ）"
   },
   "name.model": {
     "message": "モデル",
-    "description": "ビデオ生成に使用されるモデルのバージョン"
+    "description": "生成ビデオに使用するモデルのバージョン"
   },
   "name.startImageUrl": {
     "message": "初フレーム画像",
@@ -53,7 +53,7 @@
   },
   "name.ingredientsModel": {
     "message": "成分モデル",
-    "description": "ビデオ生成に使用されるモデルのバージョン"
+    "description": "生成ビデオに使用するモデルのバージョン"
   },
   "name.hailuoBot": {
     "message": "Hailuo Bot",
@@ -64,7 +64,7 @@
     "description": "パラメータ 'ingredients' の説明"
   },
   "description.startImageUrl": {
-    "message": "初フレーム画像で、生成されるビデオの最初のフレームになります。",
+    "message": "初フレーム画像で、生成ビデオの最初のフレームになります。",
     "description": "パラメータ 'startImageUrl' の説明"
   },
   "description.prompt": {
@@ -120,7 +120,7 @@
     "description": "サブマーカー入力のプレースホルダー"
   },
   "button.model1": {
-    "message": "テキストからビデオ生成",
+    "message": "文からビデオ生成",
     "description": "Hailuo ビデオ生成のボタンテキスト"
   },
   "button.model2": {
@@ -141,11 +141,11 @@
   },
   "button.uploadStartImageUrl": {
     "message": "画像をアップロード",
-    "description": "QR コードをアップロードするボタンテキスト"
+    "description": "画像アップロードボタンテキスト（英語は「Upload」に簡略化、'Upload Image'は使用しない）"
   },
   "message.uploadReferencesExceed": {
     "message": "最大 5 枚の画像をアップロードできます",
-    "description": "アップロードされた画像の数が制限を超えたときのエラーメッセージ"
+    "description": "アップロードした画像の数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadReferencesSuccess": {
     "message": "画像のアップロードに成功しました",
@@ -185,27 +185,27 @@
   },
   "message.generateFailed": {
     "message": "画像生成に失敗しました",
-    "description": "画像生成に失敗したときのメッセージ"
+    "description": "画像生成失敗時のメッセージ"
   },
   "message.uploadVideoExceed": {
-    "message": "アップロードする最初のフレーム画像の数が制限を超えています",
-    "description": "アップロードする最初のフレーム画像の数が制限を超えています時のエラーメッセージ"
+    "message": "最初のフレーム画像のアップロード数が制限を超えました",
+    "description": "最初のフレーム画像のアップロード数が制限を超えた時のエラーメッセージ"
   },
   "message.uploadVideoSizeExceed": {
     "message": "アップロードファイルのサイズは10MBを超えてはいけません！",
-    "description": "アップロードファイルのサイズは10MBを超えてはいけません！時のエラーメッセージ"
+    "description": "アップロードファイルのサイズが10MBを超えた時のエラーメッセージ"
   },
   "message.uploadVideoTypeFailed": {
     "message": "アップロードファイルはMP4形式でなければなりません！",
-    "description": "アップロードファイルはMP4形式でなければなりません！のエラーメッセージ"
+    "description": "アップロードファイルがMP4形式でない時のエラーメッセージ"
   },
   "message.uploadStartImageExceed": {
-    "message": "アップロードする最初のフレーム画像の数が制限を超えています",
-    "description": "アップロードする最初のフレーム画像の数が制限を超えています時のエラーメッセージ"
+    "message": "最初のフレーム画像のアップロード数が制限を超えました",
+    "description": "最初のフレーム画像のアップロード数が制限を超えた時のエラーメッセージ"
   },
   "message.uploadEndImageExceed": {
-    "message": "アップロードする最後のフレーム画像の数が制限を超えています",
-    "description": "アップロードする最後のフレーム画像の数が制限を超えています時のエラーメッセージ"
+    "message": "最後のフレーム画像のアップロード数が制限を超えました",
+    "description": "最後のフレーム画像のアップロード数が制限を超えた時のエラーメッセージ"
   },
   "message.uploadStartImageError": {
     "message": "最初のフレーム画像のアップロードに失敗しました",
@@ -228,7 +228,7 @@
     "description": "利用可能な操作がない時のメッセージ"
   },
   "message.noTasks": {
-    "message": "履歴タスクはありません。左側をクリックして動画を生成してください",
+    "message": "履歴タスクはありません。左側のボタンをクリックして動画を生成してください",
     "description": "タスクがない時のメッセージ"
   }
 }

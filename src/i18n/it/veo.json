@@ -5,19 +5,19 @@
   },
   "name.translation": {
     "message": "Traduzione automatica",
-    "description": "Traduzione automatica dei video Veo"
+    "description": "Traduzione automatica per i video Veo"
   },
   "name.modePro": {
     "message": "Alta qualità",
     "description": "Modalità alta qualità per i video Kling"
   },
   "name.failure": {
-    "message": "Fallimento",
+    "message": "Fallito",
     "description": "Stato di fallimento dell'attività"
   },
   "name.failureReason": {
     "message": "Motivo del fallimento",
-    "description": "Motivo del fallimento dell'attività"
+    "description": "Motivo per cui l'attività è fallita"
   },
   "name.status": {
     "message": "Stato",
@@ -29,26 +29,26 @@
   },
   "name.createdAt": {
     "message": "Data di creazione",
-    "description": "Data e ora di generazione del video Kling"
+    "description": "Data e ora di generazione del video Veo"
   },
   "name.startEndImage": {
-    "message": "Immagini di riferimento di inizio e fine",
-    "description": "Immagini di riferimento per il video da generare"
+    "message": "Immagini di riferimento inizio/fine",
+    "description": "Etichetta del campo del modulo: immagini di riferimento inizio/fine (si consiglia di tradurre in modo conciso come 'Inizio/Fine')"
   },
   "name.action": {
     "message": "Azione",
     "description": "Elenco delle azioni disponibili"
   },
   "name.action3": {
-    "message": "Ottieni video in 1080p da",
-    "description": "Immagini di riferimento per il video da generare"
+    "message": "Ottieni video 1080p da",
+    "description": "Immagine di riferimento per il video da generare"
   },
   "name.prompt": {
     "message": "Suggerimento video",
     "description": "Suggerimento per l'input del contenuto"
   },
   "name.model": {
-    "message": "Versione del modello",
+    "message": "Versione modello",
     "description": "Versione del modello utilizzata per generare il video"
   },
   "name.veoBot": {
@@ -57,14 +57,14 @@
   },
   "name.ratio": {
     "message": "Rapporto",
-    "description": "Nome del parametro di rapporto"
+    "description": "Nome del parametro del rapporto"
   },
   "description.translation": {
-    "message": "Durante la creazione dell'attività video, è possibile attivare la traduzione automatica per le parole chiave.",
-    "description": "Descrizione del parametro 'translation'"
+    "message": "È possibile attivare la traduzione automatica per le parole chiave durante la creazione del video.",
+    "description": "Descrizione del parametro 'traduzione'"
   },
   "description.imageUrl": {
-    "message": "Nell'attività di creazione video con più immagini, è necessario caricare più immagini.",
+    "message": "Durante la creazione di video con più immagini, è necessario caricare più immagini.",
     "description": "Descrizione del parametro 'imageUrl'"
   },
   "description.prompt": {
@@ -97,7 +97,7 @@
   },
   "placeholder.prompt": {
     "message": "Inserisci le parole chiave per lo stile del video da generare, ad esempio: moving",
-    "description": "Testo segnaposto nel campo di suggerimento"
+    "description": "Testo segnaposto nel campo del suggerimento"
   },
   "placeholder.position": {
     "message": "Seleziona...",
@@ -108,11 +108,11 @@
     "description": "Testo del pulsante per generare video Veo"
   },
   "button.action1": {
-    "message": "Genera video",
+    "message": "Video da testo",
     "description": "Testo del pulsante per generare video Veo"
   },
   "button.action2": {
-    "message": "Genera video da immagine",
+    "message": "Video da immagine",
     "description": "Testo del pulsante per generare video Veo"
   },
   "button.action3": {
@@ -121,15 +121,15 @@
   },
   "button.download": {
     "message": "Scarica video",
-    "description": "Testo del pulsante per scaricare video"
+    "description": "Testo del pulsante per scaricare il video"
   },
   "button.uploadImageUrl": {
     "message": "Carica immagine",
-    "description": "Testo del pulsante per caricare immagini"
+    "description": "Testo del pulsante per caricare un'immagine (semplificare in 'Carica')"
   },
   "button.uploadVideoUrl": {
     "message": "Carica video",
-    "description": "Testo del pulsante per caricare video"
+    "description": "Testo del pulsante per caricare un video"
   },
   "button.uploadReferences": {
     "message": "Carica",
@@ -144,8 +144,8 @@
     "description": "Messaggio di successo quando le immagini sono state caricate con successo"
   },
   "message.uploadReferencesError": {
-    "message": "Caricamento immagini fallito, riprova più tardi",
-    "description": "Messaggio di errore quando il caricamento delle immagini fallisce"
+    "message": "Caricamento immagine fallito, riprova più tardi",
+    "description": "Messaggio di errore quando il caricamento dell'immagine fallisce"
   },
   "message.startingTask": {
     "message": "Avvio dell'attività in corso...",
@@ -157,10 +157,10 @@
   },
   "message.startTaskFailed": {
     "message": "Avvio dell'attività fallito, contattare l'amministratore",
-    "description": "Messaggio di errore quando l'avvio dell'attività di disegno fallisce"
+    "description": "Messaggio di errore quando l'attività di disegno non riesce a partire"
   },
   "message.usedUp": {
-    "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare a utilizzare",
+    "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare",
     "description": "Messaggio quando i crediti sono esauriti"
   },
   "message.generating": {
@@ -180,20 +180,20 @@
     "description": "Messaggio di errore quando il numero di immagini di inizio caricate supera il limite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "La dimensione del file caricato non può superare i 10 MB!",
-    "description": "Messaggio di errore quando la dimensione del file caricato supera i 10 MB!"
+    "message": "La dimensione del file non può superare i 10 MB!",
+    "description": "Messaggio di errore quando la dimensione del file supera i 10 MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Il file caricato deve essere in formato MP4!",
-    "description": "Messaggio di errore quando il file caricato deve essere in formato MP4!"
+    "description": "Messaggio di errore quando il file caricato non è in formato MP4!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "Il numero di immagini della prima cornice caricate supera il limite",
-    "description": "Messaggio di errore quando il numero di immagini della prima cornice caricate supera il limite"
+    "message": "Il numero di immagini della prima cornice supera il limite",
+    "description": "Messaggio di errore quando il numero di immagini della prima cornice supera il limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Il numero di immagini dell'ultima cornice caricate supera il limite",
-    "description": "Messaggio di errore quando il numero di immagini dell'ultima cornice caricate supera il limite"
+    "message": "Il numero di immagini dell'ultima cornice supera il limite",
+    "description": "Messaggio di errore quando il numero di immagini dell'ultima cornice supera il limite"
   },
   "message.uploadStartImageError": {
     "message": "Caricamento dell'immagine della prima cornice fallito",

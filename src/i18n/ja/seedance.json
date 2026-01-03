@@ -1,62 +1,166 @@
 {
-  "name.seedanceBot": { "message": "SeeDance Bot", "description": "Name of the SeeDance video generator" },
-  "name.prompt": { "message": "Video Prompt", "description": "Text prompt for video generation" },
-  "description.prompt": {
-    "message": "Describe the video you want to generate. You can include SeeDance parameters (e.g. --rs 720p --rt 16:9 --dur 5).",
-    "description": "Help text for prompt input"
+  "name.seedanceBot": {
+    "message": "SeeDance ボット",
+    "description": "SeeDance 動画生成器の名称"
   },
-  "placeholder.prompt": { "message": "Describe your video...", "description": "Placeholder for prompt input" },
-  "name.model": { "message": "Model", "description": "Model selector label" },
-  "description.model": { "message": "Choose the SeeDance model version for generation.", "description": "Help text for model selector" },
-  "placeholder.select": { "message": "Select", "description": "Placeholder for select input" },
-  "model.seedance10pro": { "message": "doubao-seedance-1.0-pro", "description": "SeeDance 1.0 Pro model option" },
+  "name.prompt": {
+    "message": "プロンプト",
+    "description": "動画生成のためのプロンプト"
+  },
+  "description.prompt": {
+    "message": "生成したい動画を説明し、SeeDance パラメータを追加できます（例：--rs 720p --rt 16:9 --dur 5）。",
+    "description": "プロンプト入力の説明"
+  },
+  "placeholder.prompt": {
+    "message": "あなたの動画を説明…",
+    "description": "プロンプトのプレースホルダー"
+  },
+  "name.model": {
+    "message": "モデル",
+    "description": "モデル選択ラベル"
+  },
+  "description.model": {
+    "message": "生成に使用する SeeDance モデルのバージョンを選択します。",
+    "description": "モデル選択の説明"
+  },
+  "placeholder.select": {
+    "message": "選択",
+    "description": "ドロップダウン選択のプレースホルダー"
+  },
+  "model.seedance10pro": {
+    "message": "doubao-seedance-1.0-pro",
+    "description": "SeeDance 1.0 Pro モデル"
+  },
   "model.seedance10proFast": {
     "message": "doubao-seedance-1.0-pro-fast",
-    "description": "SeeDance 1.0 Pro Fast model option"
+    "description": "SeeDance 1.0 Pro Fast モデル"
   },
-  "model.seedance15pro": { "message": "doubao-seedance-1.5-pro", "description": "SeeDance 1.5 Pro model option" },
+  "model.seedance15pro": {
+    "message": "doubao-seedance-1.5-pro",
+    "description": "SeeDance 1.5 Pro モデル"
+  },
   "model.seedance10liteT2v": {
     "message": "doubao-seedance-1.0-lite-t2v",
-    "description": "SeeDance 1.0 Lite T2V model option"
+    "description": "SeeDance 1.0 Lite T2V モデル"
   },
   "model.seedance10liteI2v": {
     "message": "doubao-seedance-1.0-lite-i2v",
-    "description": "SeeDance 1.0 Lite I2V model option"
+    "description": "SeeDance 1.0 Lite I2V モデル"
   },
-  "name.serviceTier": { "message": "Service Tier", "description": "Service tier selector label" },
-  "description.serviceTier": { "message": "Processing tier: default or flex.", "description": "Help text for service tier" },
-  "serviceTier.default": { "message": "default", "description": "Default service tier" },
-  "serviceTier.flex": { "message": "flex", "description": "Flex service tier" },
-  "name.returnLastFrame": { "message": "Return Last Frame", "description": "Return last frame switch label" },
+  "name.serviceTier": {
+    "message": "サービス階層",
+    "description": "サービス階層ラベル"
+  },
+  "description.serviceTier": {
+    "message": "処理階層：default または flex。",
+    "description": "サービス階層の説明"
+  },
+  "serviceTier.default": {
+    "message": "default",
+    "description": "デフォルト階層"
+  },
+  "serviceTier.flex": {
+    "message": "flex",
+    "description": "フレキシブル階層"
+  },
+  "name.returnLastFrame": {
+    "message": "最後のフレームを返す",
+    "description": "最後のフレームを返すスイッチラベル"
+  },
   "description.returnLastFrame": {
-    "message": "If enabled, the API also returns the last frame image.",
-    "description": "Help text for return last frame"
+    "message": "有効にすると、最後のフレーム画像が追加で返されます。",
+    "description": "最後のフレームの説明"
   },
-  "name.firstFrame": { "message": "First Frame Image", "description": "First frame image upload label" },
-  "description.firstFrame": { "message": "Optional. Provide a reference/first-frame image.", "description": "Help text for first frame image" },
-  "name.lastFrame": { "message": "Last Frame Image", "description": "Last frame image upload label" },
+  "name.firstFrame": {
+    "message": "最初のフレーム画像",
+    "description": "最初のフレーム画像のアップロードラベル"
+  },
+  "description.firstFrame": {
+    "message": "オプション。参照用/最初のフレーム画像をアップロードします。",
+    "description": "最初のフレーム画像の説明"
+  },
+  "name.lastFrame": {
+    "message": "最後のフレーム画像",
+    "description": "最後のフレーム画像のアップロードラベル"
+  },
   "description.lastFrame": {
-    "message": "Optional. Provide a last-frame image (requires first frame).",
-    "description": "Help text for last frame image"
+    "message": "オプション。最後のフレーム画像をアップロードします（最初のフレームが必要です）。",
+    "description": "最後のフレーム画像の説明"
   },
-  "button.generate": { "message": "Generate", "description": "Generate button text" },
-  "button.upload": { "message": "Upload", "description": "Upload button text" },
-  "button.download": { "message": "Download", "description": "Download button text" },
-  "button.on": { "message": "On", "description": "Switch on label" },
-  "button.off": { "message": "Off", "description": "Switch off label" },
-  "message.startingTask": { "message": "Starting SeeDance task...", "description": "Toast while starting task" },
-  "message.startTaskSuccess": { "message": "Task started successfully", "description": "Toast on successful task start" },
-  "message.startTaskFailed": { "message": "Failed to start task: ", "description": "Toast on failed task start" },
-  "message.usedUp": { "message": "Quota used up", "description": "Toast when quota is used up" },
-  "message.uploadExceed": { "message": "Only 1 image is allowed", "description": "Toast when upload exceeds limit" },
-  "message.uploadError": { "message": "Upload failed", "description": "Toast when upload fails" },
-  "message.downloadVideo": { "message": "Download video", "description": "Tooltip for download button" },
-  "status.pending": { "message": "Pending", "description": "Pending status" },
-  "status.processing": { "message": "Processing", "description": "Processing status" },
-  "name.taskId": { "message": "Task ID", "description": "Task ID label" },
-  "name.traceId": { "message": "Trace ID", "description": "Trace ID label" },
-  "name.failure": { "message": "Failure", "description": "Failure label" },
-  "name.failureReason": { "message": "Failure Reason", "description": "Failure reason label" },
-  "name.status": { "message": "Status", "description": "Status label" }
+  "button.generate": {
+    "message": "生成",
+    "description": "生成ボタン"
+  },
+  "button.upload": {
+    "message": "アップロード",
+    "description": "アップロードボタン"
+  },
+  "button.download": {
+    "message": "ダウンロード",
+    "description": "ダウンロードボタン"
+  },
+  "button.on": {
+    "message": "オン",
+    "description": "スイッチのオン文言"
+  },
+  "button.off": {
+    "message": "オフ",
+    "description": "スイッチのオフ文言"
+  },
+  "message.startingTask": {
+    "message": "SeeDance タスクを開始しています…",
+    "description": "タスク開始の提示"
+  },
+  "message.startTaskSuccess": {
+    "message": "タスクが開始されました",
+    "description": "タスク開始成功の提示"
+  },
+  "message.startTaskFailed": {
+    "message": "開始失敗：",
+    "description": "タスク開始失敗の提示"
+  },
+  "message.usedUp": {
+    "message": "利用可能なクレジットがなくなりました",
+    "description": "クレジットが尽きた提示"
+  },
+  "message.uploadExceed": {
+    "message": "最大で 1 枚の画像しかアップロードできません",
+    "description": "アップロード超過の提示"
+  },
+  "message.uploadError": {
+    "message": "アップロード失敗",
+    "description": "アップロード失敗の提示"
+  },
+  "message.downloadVideo": {
+    "message": "動画をダウンロード",
+    "description": "動画ダウンロードの提示"
+  },
+  "status.pending": {
+    "message": "待機中",
+    "description": "待機状態"
+  },
+  "status.processing": {
+    "message": "生成中",
+    "description": "生成中の状態"
+  },
+  "name.taskId": {
+    "message": "タスク ID",
+    "description": "タスク ID ラベル"
+  },
+  "name.traceId": {
+    "message": "トレース ID",
+    "description": "トレース ID ラベル"
+  },
+  "name.failure": {
+    "message": "失敗",
+    "description": "失敗ラベル"
+  },
+  "name.failureReason": {
+    "message": "失敗理由",
+    "description": "失敗理由ラベル"
+  },
+  "name.status": {
+    "message": "状態",
+    "description": "状態ラベル"
+  }
 }
-

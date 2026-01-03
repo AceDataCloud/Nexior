@@ -8,16 +8,16 @@
     "description": "Flux画像生成器の操作タイプ"
   },
   "name.generate": {
-    "message": "画像を作成",
+    "message": "画像作成",
     "description": "Flux画像生成器の操作タイプ"
   },
   "name.edits": {
-    "message": "画像を編集",
+    "message": "画像編集",
     "description": "Flux画像生成器の操作タイプ"
   },
   "name.type": {
     "message": "タイプ",
-    "description": "生成するFLux画像の内容タイプ、例えば「リンク」や「テキスト」など"
+    "description": "生成するFLux画像の内容タイプ、例：'リンク'、'テキスト'など"
   },
   "name.imageUrl": {
     "message": "参照画像",
@@ -41,7 +41,7 @@
   },
   "name.createdAt": {
     "message": "作成日時",
-    "description": "生成されたFlux画像の日付と時間"
+    "description": "生成したFlux画像の日付と時間"
   },
   "name.numbers": {
     "message": "画像数",
@@ -61,7 +61,7 @@
   },
   "name.model": {
     "message": "モデルバージョン",
-    "description": "生成する画像に使用されるモデルバージョン"
+    "description": "生成する画像に使用するモデルバージョン"
   },
   "name.fluxBot": {
     "message": "Flux Bot",
@@ -80,7 +80,7 @@
     "description": "パラメータ'prompt'の説明"
   },
   "description.imageUrl": {
-    "message": "画像を編集するタスクを作成する際には、画像をアップロードする必要があります。",
+    "message": "画像編集タスクを作成する際には、画像をアップロードする必要があります。",
     "description": "パラメータ'imageUrl'の説明"
   },
   "status.pending": {
@@ -97,7 +97,7 @@
   },
   "placeholder.select": {
     "message": "選択",
-    "description": "選択フィールドのプレーステキスト"
+    "description": "選択フィールドのプレースホルダーテキスト"
   },
   "placeholder.paddingLevel": {
     "message": "選択してください...",
@@ -105,7 +105,7 @@
   },
   "placeholder.prompt": {
     "message": "生成する画像スタイルのプロンプトを入力してください。例：白いシャム猫",
-    "description": "プロンプトフィールドのプレーステキスト"
+    "description": "プロンプトフィールドのプレースホルダーテキスト"
   },
   "placeholder.position": {
     "message": "選択してください...",
@@ -136,20 +136,20 @@
     "description": "Flux画像生成のボタンテキスト"
   },
   "button.uploadImageUrl": {
-    "message": "画像をアップロード",
-    "description": "画像をアップロードするボタンテキスト"
+    "message": "アップロード",
+    "description": "画像アップロードボタンのテキスト（英語は「Upload」に簡略化し、「Upload Image」は使用しない）"
   },
   "button.extend": {
     "message": "画像を拡張",
-    "description": "画像を拡張するボタンテキスト"
+    "description": "画像拡張ボタンのテキスト"
   },
   "button.viewImage": {
-    "message": "元の画像を表示",
+    "message": "元画像を表示",
     "description": "Flux画像生成のボタンテキスト"
   },
   "button.download": {
     "message": "画像をダウンロード",
-    "description": "画像をダウンロードするボタンテキスト"
+    "description": "画像ダウンロードボタンのテキスト"
   },
   "message.downloadImage": {
     "message": "画像の新しいウィンドウを開く",
@@ -157,27 +157,27 @@
   },
   "message.uploadReferencesExceed": {
     "message": "最大5枚の画像をアップロードできます",
-    "description": "アップロードされた画像の数が制限を超えたときのエラーメッセージ"
+    "description": "アップロードした画像の数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadReferencesSuccess": {
     "message": "画像のアップロードに成功しました",
     "description": "画像のアップロードに成功したときの成功メッセージ"
   },
   "message.uploadReferencesError": {
-    "message": "画像のアップロードに失敗しました。後でもう一度お試しください",
-    "description": "画像のアップロードに失敗したときのエラーメッセージ"
+    "message": "画像のアップロードに失敗しました。後で再試行してください",
+    "description": "画像アップロードに失敗したときのエラーメッセージ"
   },
   "message.startingTask": {
     "message": "タスクを開始しています...",
     "description": "描画タスク開始時のメッセージ"
   },
   "message.startTaskSuccess": {
-    "message": "生成タスクの発行に成功しました",
-    "description": "タスクの発行に成功したときの成功メッセージ"
+    "message": "生成タスクを正常に開始しました",
+    "description": "タスクを正常に開始したときの成功メッセージ"
   },
   "message.startTaskFailed": {
-    "message": "タスクの発行に失敗しました。管理者に連絡してください",
-    "description": "描画タスクの発行に失敗したときのエラーメッセージ"
+    "message": "タスクの開始に失敗しました。管理者に連絡してください",
+    "description": "描画タスクの開始に失敗したときのエラーメッセージ"
   },
   "message.usedUp": {
     "message": "ポイントが使い切れました。追加のポイントを購入して続行してください",
@@ -185,11 +185,11 @@
   },
   "message.generating": {
     "message": "生成中...",
-    "description": "画像が生成されているときのメッセージ"
+    "description": "画像が生成中のときのメッセージ"
   },
   "message.downloadVideo": {
     "message": "この画像をダウンロード",
-    "description": "画像が生成されているときのメッセージ"
+    "description": "画像が生成中のときのメッセージ"
   },
   "message.extendVideo": {
     "message": "この画像の生成を続ける",
@@ -200,8 +200,8 @@
     "description": "画像生成に失敗したときのメッセージ"
   },
   "message.uploadVideoExceed": {
-    "message": "アップロードする最初のフレーム画像の数が制限を超えています",
-    "description": "アップロードする最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
+    "message": "最初のフレーム画像のアップロード数が制限を超えました",
+    "description": "最初のフレーム画像のアップロード数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadVideoSizeExceed": {
     "message": "アップロードファイルのサイズは10MBを超えてはいけません！",
@@ -212,16 +212,16 @@
     "description": "アップロードファイルがMP4形式でないときのエラーメッセージ"
   },
   "message.uploadStartImageExceed": {
-    "message": "アップロードする参考画像の数が制限を超えています",
-    "description": "アップロードする参考画像の数が制限を超えたときのエラーメッセージ"
+    "message": "参照画像のアップロード数が制限を超えました",
+    "description": "参照画像のアップロード数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadEndImageExceed": {
-    "message": "アップロードする最終フレーム画像の数が制限を超えています",
-    "description": "アップロードする最終フレーム画像の数が制限を超えたときのエラーメッセージ"
+    "message": "最終フレーム画像のアップロード数が制限を超えました",
+    "description": "最終フレーム画像のアップロード数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadStartImageError": {
-    "message": "参考画像のアップロードに失敗しました",
-    "description": "参考画像のアップロードに失敗したときのエラーメッセージ"
+    "message": "参照画像のアップロードに失敗しました",
+    "description": "参照画像のアップロードに失敗したときのエラーメッセージ"
   },
   "message.uploadVideoError": {
     "message": "画像のアップロードに失敗しました",

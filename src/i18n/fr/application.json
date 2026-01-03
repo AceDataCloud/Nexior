@@ -13,31 +13,31 @@
   },
   "button.goDocument": {
     "message": "Documentation",
-    "description": "Texte du bouton, cliquer sur ce bouton vous amènera à la page de documentation."
+    "description": "Bouton pour accéder à la page de documentation."
   },
   "button.goCredentials": {
     "message": "Clés",
-    "description": "Texte du bouton, cliquer sur ce bouton vous amènera à la page des clés."
+    "description": "Bouton pour accéder à la page des clés."
   },
   "button.buyMore": {
     "message": "Recharger",
-    "description": "Texte du bouton, cliquer sur ce bouton vous amènera à la page d'achat supplémentaire."
+    "description": "Bouton pour accéder à la page de rechargement."
   },
   "button.createOrder": {
     "message": "Créer une commande",
-    "description": "Texte du bouton, cliquer sur ce bouton vous amènera à la page de création de commande."
+    "description": "Bouton pour accéder à la page de création de commande."
   },
   "button.custom": {
     "message": "Personnaliser",
-    "description": "Texte du bouton, cliquer sur ce bouton vous amènera à la page de personnalisation."
+    "description": "Bouton pour accéder à la page de personnalisation."
   },
   "button.query": {
     "message": "Interroger",
-    "description": "Texte du bouton, cliquer sur ce bouton vous amènera à la page d'interrogation."
+    "description": "Bouton pour accéder à la page d'interrogation."
   },
   "button.usage": {
     "message": "Utilisation",
-    "description": "Texte du bouton, cliquer sur ce bouton vous amènera à la page de l'historique d'utilisation."
+    "description": "Bouton pour accéder à la page de l'historique d'utilisation."
   },
   "field.serviceName": {
     "message": "Nom du service",
@@ -56,7 +56,7 @@
     "description": "ID de la demande."
   },
   "field.remainingAmount": {
-    "message": "Solde d'instance",
+    "message": "Solde",
     "description": "Solde de la demande."
   },
   "field.usedAmount": {
@@ -89,7 +89,7 @@
   },
   "field.traceId": {
     "message": "ID de suivi",
-    "description": "ID de suivi de l'appel API de la demande de service API."
+    "description": "ID de suivi de l'appel API de la demande."
   },
   "field.shouldPayPrice": {
     "message": "Prix final",
@@ -113,7 +113,7 @@
   },
   "field.package": {
     "message": "Forfait",
-    "description": "Le forfait représente différents forfaits de prix, par exemple, 100 dollars peuvent obtenir 10 000 points, 200 dollars peuvent obtenir 20 000 points."
+    "description": "Le forfait représente différents forfaits de prix, par exemple, 100 dollars pour 10 000 points, 200 dollars pour 20 000 points."
   },
   "field.type": {
     "message": "Type",
@@ -129,26 +129,26 @@
   },
   "message.alreadyApplied": {
     "message": "Vous avez déjà demandé ce service, veuillez vérifier la console.",
-    "description": "Message affiché à l'utilisateur lorsque celui-ci a déjà demandé ce service."
+    "description": "Message affiché lorsque l'utilisateur a déjà demandé ce service."
   },
   "message.applySuccessfully": {
     "message": "Demande réussie",
-    "description": "Message affiché à l'utilisateur lorsque celui-ci a réussi à demander ce service."
+    "description": "Message affiché lorsque l'utilisateur a réussi à demander ce service."
   },
   "message.notApplied": {
     "message": "Vous n'avez pas encore demandé ce service, veuillez le demander avant de l'utiliser.",
-    "description": "Message affiché à l'utilisateur lorsqu'il n'a pas encore demandé ce service."
+    "description": "Message affiché lorsque l'utilisateur n'a pas encore demandé ce service."
   },
   "message.globalBalanceBuyDescription": {
-    "message": "Vous pouvez choisir de recharger le solde général ou de recharger séparément pour chaque instance de demande. Ce rechargement ira au solde général, et lorsque le solde d'une instance de demande est insuffisant, le solde général sera automatiquement utilisé pour le compléter.",
-    "description": "Texte d'instructions, expliquant que le rechargement va au solde général et qu'il sera utilisé automatiquement lorsque le solde de l'instance est insuffisant."
+    "message": "Vous pouvez choisir de recharger le solde général ou de recharger chaque instance de demande séparément. Ce rechargement ira au solde général, et lorsque le solde d'une instance de demande est insuffisant, le solde général sera automatiquement utilisé pour le compléter.",
+    "description": "Texte d'invite expliquant que le rechargement va au solde général et qu'il sera utilisé automatiquement lorsque le solde de l'instance est insuffisant."
   },
   "message.yourApplication": {
     "message": "Votre demande",
-    "description": "Message affiché à l'utilisateur lors de sa demande."
+    "description": "Message affiché lors de la demande de l'utilisateur."
   },
   "message.unverified": {
-    "message": "Vous devez compléter la vérification d'identité avant de pouvoir demander ce service",
+    "message": "Vous devez compléter la vérification d'identité pour demander ce service.",
     "description": "Message affiché à l'utilisateur lorsque la vérification d'identité n'est pas encore complétée."
   },
   "message.goVerify": {
@@ -157,19 +157,19 @@
   },
   "message.requiredParameter": {
     "message": "Paramètre requis",
-    "description": "Message affiché à l'utilisateur lorsque les paramètres requis ne sont pas encore saisis."
+    "description": "Message affiché à l'utilisateur lorsque les paramètres requis ne sont pas saisis."
   },
   "message.example": {
     "message": "Exemple",
-    "description": "Message affiché à l'utilisateur lorsque les paramètres requis ne sont pas encore saisis."
+    "description": "Message affiché à l'utilisateur lorsque les paramètres requis ne sont pas saisis."
   },
   "message.applicationSelection": {
     "message": "Voici les forfaits que vous avez actuellement demandés ou achetés, vous pouvez en choisir un pour continuer à utiliser le service.",
     "description": "Message affiché à l'utilisateur lorsqu'il doit choisir une demande."
   },
   "message.createCredentialSuccessfully": {
-    "message": "Création de l'identifiant réussie",
-    "description": "Message affiché à l'utilisateur lorsque l'identifiant est créé avec succès."
+    "message": "Création de la crédential réussie",
+    "description": "Message affiché à l'utilisateur lorsque la crédential est créée avec succès."
   },
   "message.readPolicy": {
     "message": "J'ai lu et j'accepte",
@@ -180,7 +180,7 @@
     "description": "Message affiché à l'utilisateur lorsqu'il a lu et accepté la politique."
   },
   "message.notAgreePolicy": {
-    "message": "Vous n'avez pas encore accepté l'accord d'utilisation des services techniques de données",
+    "message": "Vous n'avez pas encore accepté l'accord d'utilisation des services techniques de données.",
     "description": "Message affiché à l'utilisateur lorsqu'il n'a pas encore accepté la politique."
   },
   "message.welcome": {
@@ -192,7 +192,7 @@
     "description": "Message affiché à l'utilisateur lorsqu'il réinitialise la clé."
   },
   "message.rotateCredentialConfirm": {
-    "message": "Êtes-vous sûr de vouloir réinitialiser la clé ? La réinitialisation ne pourra pas être récupérée",
+    "message": "Êtes-vous sûr de vouloir réinitialiser la clé ? La réinitialisation est irréversible.",
     "description": "Message affiché à l'utilisateur lorsqu'il confirme la réinitialisation de la clé."
   },
   "message.idDoesNotExist": {
@@ -201,15 +201,15 @@
   },
   "message.rotateCredentialSuccessfully": {
     "message": "Réinitialisation de la clé réussie",
-    "description": "Message affiché à l'utilisateur lorsque la réinitialisation de la clé est réussie."
+    "description": "Message affiché à l'utilisateur lorsque la clé est réinitialisée avec succès."
   },
   "message.rotateCredentialFailed": {
-    "message": "Échec de la réinitialisation de la clé, veuillez contacter le support",
+    "message": "Échec de la réinitialisation de la clé, veuillez contacter le support.",
     "description": "Message affiché à l'utilisateur lorsque la réinitialisation de la clé échoue."
   },
   "message.fetchFailed": {
     "message": "Échec de la récupération de l'application, veuillez réessayer plus tard.",
-    "description": "Message d'alerte lorsque la liste des applications échoue à être récupérée."
+    "description": "Message affiché lorsque la récupération de la liste des applications échoue."
   },
   "message.updateFailed": {
     "message": "Échec de la modification",
@@ -248,7 +248,7 @@
     "description": "Titre de la page lorsque l'utilisateur consulte le nombre de demandes."
   },
   "message.countDescription": {
-    "message": "Chaque service correspond à une instance de demande, vous pouvez voir les clés, l'utilisation et d'autres informations ci-dessous.",
+    "message": "Chaque service correspond à une instance de demande, vous pouvez voir les clés, l'utilisation, etc. ci-dessous.",
     "description": "Message affiché à l'utilisateur lorsqu'il consulte le nombre de demandes."
   },
   "title.globalBalance": {
@@ -257,19 +257,19 @@
   },
   "message.globalBalanceDescription": {
     "message": "En activant « Autoriser le solde général », le solde de l'instance sera automatiquement utilisé lorsque le solde est insuffisant.",
-    "description": "Message d'alerte expliquant que le solde général sera consommé automatiquement lorsque le solde de l'instance est insuffisant."
+    "description": "Message d'information indiquant que le solde général sera utilisé lorsque le solde de l'instance est insuffisant."
   },
   "button.service": {
     "message": "Service client exclusif",
-    "description": "Texte du bouton, en cliquant sur ce bouton, vous serez redirigé vers la page du service client exclusif."
+    "description": "Texte du bouton, en cliquant sur ce bouton, l'utilisateur sera redirigé vers la page du service client exclusif."
   },
   "button.acquire": {
-    "message": "Ajouter le service client",
-    "description": "Texte du bouton, en cliquant sur ce bouton, vous obtiendrez cet élément."
+    "message": "Ajouter un support",
+    "description": "Texte du bouton, en cliquant sur ce bouton, l'utilisateur ajoutera un support exclusif."
   },
   "button.delete": {
     "message": "Supprimer",
-    "description": "Texte du bouton, en cliquant sur ce bouton, vous supprimerez cet élément."
+    "description": "Texte du bouton, en cliquant sur ce bouton, l'élément sera supprimé."
   },
   "field.dataset": {
     "message": "Jeu de données",
@@ -280,24 +280,24 @@
     "description": "Indique si la demande est désactivée."
   },
   "message.addServiceToAcquire": {
-    "message": "Veuillez ajouter un service client pour acquérir",
-    "description": "Message affiché à l'utilisateur lorsque celui-ci n'a pas encore ajouté de service client pour acquérir."
+    "message": "Veuillez ajouter un support pour acquérir",
+    "description": "Message affiché à l'utilisateur lorsque le support n'a pas encore été ajouté pour acquérir."
   },
   "message.confirmApplying": {
     "message": "Confirmer la demande de service",
-    "description": "Message affiché à l'utilisateur lorsque celui-ci confirme une demande de service."
+    "description": "Message affiché à l'utilisateur lorsqu'il confirme la demande de service."
   },
   "message.confirmDelete": {
-    "message": "Êtes-vous sûr de vouloir supprimer cette demande ? Toutes les données de la demande seront perdues après la suppression.",
-    "description": "Message affiché à l'utilisateur lorsque celui-ci confirme la suppression d'une demande."
+    "message": "Êtes-vous sûr de vouloir supprimer cette demande ? Toutes les données de la demande seront perdues.",
+    "description": "Message affiché à l'utilisateur lorsqu'il confirme la suppression de la demande."
   },
   "message.placeEnter": {
     "message": "Veuillez entrer '$0$' pour confirmer",
-    "description": "Message affiché à l'utilisateur lorsque celui-ci doit entrer du texte pour confirmer, ne pas traduire `$0$`."
+    "description": "Message affiché à l'utilisateur lorsqu'il doit entrer du texte pour confirmer, ne pas traduire `$0$`."
   },
   "message.invalidInput": {
     "message": "Entrée invalide",
-    "description": "Message affiché à l'utilisateur lorsque celui-ci saisit des données invalides."
+    "description": "Message affiché à l'utilisateur lorsqu'il saisit des données invalides."
   },
   "message.deleteFailed": {
     "message": "Échec de la suppression",

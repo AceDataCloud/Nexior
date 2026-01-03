@@ -9,14 +9,14 @@
   },
   "name.modeStd": {
     "message": "Standard",
-    "description": "The standard mode of the Kling video"
+    "description": "The standard mode for Kling videos"
   },
   "name.modePro": {
     "message": "High Quality",
-    "description": "The high-quality mode of the Kling video"
+    "description": "The high-quality mode for Kling videos"
   },
   "name.failure": {
-    "message": "Failure",
+    "message": "Failed",
     "description": "The failure status of the task"
   },
   "name.failureReason": {
@@ -37,19 +37,19 @@
   },
   "name.cfgScale": {
     "message": "Freedom Level",
-    "description": "The reference image for the video to be generated"
+    "description": "The freedom parameter for generating the video (0-1), larger values are closer to the reference"
   },
   "name.startImage": {
-    "message": "First Frame Reference Image",
-    "description": "The reference image for the video to be generated"
+    "message": "First Frame",
+    "description": "Form field label: first frame reference image"
   },
   "name.negativePrompt": {
     "message": "Negative Prompt",
     "description": "The negative text prompt for generating the video"
   },
   "name.endImage": {
-    "message": "Last Frame Reference Image",
-    "description": "The reference image for the video to be generated"
+    "message": "Last Frame",
+    "description": "Form field label: last frame reference image"
   },
   "name.videoUrl": {
     "message": "Custom Video",
@@ -64,8 +64,8 @@
     "description": "The duration of the video"
   },
   "name.ingredients": {
-    "message": "Multi-Image Video Creation",
-    "description": "Custom extended video"
+    "message": "Multi-Image",
+    "description": "Switch/label for creating videos with multiple images"
   },
   "name.model": {
     "message": "Model Version",
@@ -92,36 +92,36 @@
     "description": "The name of the Kling video generator"
   },
   "description.ingredients": {
-    "message": "If you want to upload multiple images to generate your own video, please turn on this button.",
-    "description": "Description of the 'ingredients' parameter"
+    "message": "If you want to upload multiple images to generate your video, please enable this button.",
+    "description": "Description for the 'ingredients' parameter"
   },
   "description.imageUrl": {
-    "message": "In the multi-image video creation task, it must upload multiple images.",
-    "description": "Description of the 'imageUrl' parameter"
+    "message": "In tasks for creating videos with multiple images, multiple images must be uploaded.",
+    "description": "Description for the 'imageUrl' parameter"
   },
   "description.prompt": {
     "message": "The prompt for generating Kling videos",
-    "description": "Description of the 'prompt' parameter"
+    "description": "Description for the 'prompt' parameter"
   },
   "description.negativePrompt": {
-    "message": "Negative text prompt, optional, cannot exceed 200 characters",
-    "description": "Description of the 'negativePrompt' parameter"
+    "message": "Negative text prompt, optional, must not exceed 200 characters",
+    "description": "Description for the 'negativePrompt' parameter"
   },
   "description.uploadStartImage": {
-    "message": "Upload the first frame image as a reference for generation; the final video will reference the first frame for generation.",
-    "description": "Description of the upload reference parameter"
+    "message": "Upload the first frame image as a reference for generation; the final video will reference the first frame.",
+    "description": "Description for the upload reference parameter"
   },
   "description.uploadEndImage": {
-    "message": "Upload the last frame image as a reference for generation; the final video will reference the last frame for generation.",
-    "description": "Description of the upload reference parameter"
+    "message": "Upload the last frame image as a reference for generation; the final video will reference the last frame.",
+    "description": "Description for the upload reference parameter"
   },
   "description.cfgScale": {
-    "message": "The freedom level for generating the video, optional [0,1]. The larger the value, the stronger the correlation.",
-    "description": "Description of the upload reference parameter"
+    "message": "The freedom level for generating the video, optional [0,1]. Larger values indicate stronger relevance.",
+    "description": "Description for the upload reference parameter"
   },
   "status.pending": {
     "message": "Pending",
-    "description": "The waiting status of the task"
+    "description": "The pending status of the task"
   },
   "status.processing": {
     "message": "Processing",
@@ -140,11 +140,11 @@
     "description": "Placeholder for padding level"
   },
   "placeholder.prompt": {
-    "message": "Enter the prompt for the video style to be generated, e.g., moving",
+    "message": "Enter the prompt for the video style, e.g., moving",
     "description": "Placeholder text in the prompt field"
   },
   "placeholder.negativePrompt": {
-    "message": "Enter the negative prompt for the video style to be generated, no more than 200 characters",
+    "message": "Enter the negative prompt for the video style, up to 200 characters",
     "description": "Placeholder text in the negative prompt field"
   },
   "placeholder.position": {
@@ -173,35 +173,35 @@
   },
   "button.precise": {
     "message": "Precise",
-    "description": "Button text for generating Kling videos"
+    "description": "Button text for generating Kling video"
   },
   "button.creative": {
     "message": "Creative",
-    "description": "Button text for generating Kling videos"
+    "description": "Button text for generating Kling video"
   },
   "button.generate": {
     "message": "Generate",
-    "description": "Button text for generating Kling videos"
+    "description": "Button text for generating Kling video"
   },
   "button.extend": {
     "message": "Extend Video",
-    "description": "Text for the extend video button"
+    "description": "Button text for extending video"
   },
   "button.download": {
     "message": "Download Video",
-    "description": "Text for the download video button"
+    "description": "Button text for downloading video"
   },
   "button.uploadImageUrl": {
-    "message": "Upload Image",
-    "description": "Text for the upload image button"
+    "message": "Upload",
+    "description": "Button text for uploading an image (simplified to 'Upload', do not use 'Upload Image')"
   },
   "button.uploadVideoUrl": {
     "message": "Upload Video",
-    "description": "Text for the upload video button"
+    "description": "Button text for uploading video"
   },
   "button.uploadReferences": {
     "message": "Upload",
-    "description": "Text for the button that allows users to upload references"
+    "description": "Button text allowing users to upload references"
   },
   "message.uploadReferencesExceed": {
     "message": "You can upload a maximum of 1 image",
@@ -212,7 +212,7 @@
     "description": "Success message when an image is uploaded successfully"
   },
   "message.uploadReferencesError": {
-    "message": "Failed to upload image, please try again later",
+    "message": "Image upload failed, please try again later",
     "description": "Error message when image upload fails"
   },
   "message.startingTask": {
@@ -221,67 +221,67 @@
   },
   "message.startTaskSuccess": {
     "message": "Task initiated successfully",
-    "description": "Success message when a task is successfully started"
+    "description": "Success message when the task is successfully started"
   },
   "message.startTaskFailed": {
     "message": "Failed to initiate task, please contact the administrator",
     "description": "Error message when starting the drawing task fails"
   },
   "message.usedUp": {
-    "message": "Your credits are exhausted, please purchase more credits to continue",
+    "message": "Your credits are exhausted, please purchase more to continue",
     "description": "Message when credits are used up"
   },
   "message.generating": {
     "message": "Generating...",
-    "description": "Message when the image is being generated"
+    "description": "Message while the image is being generated"
   },
   "message.downloadVideo": {
     "message": "Download this video",
-    "description": "Message when the image is being generated"
+    "description": "Message while the image is being generated"
   },
   "message.extendVideo": {
     "message": "Continue generating this video",
-    "description": "Message when the image is being generated"
+    "description": "Message while the image is being generated"
   },
   "message.generateFailed": {
-    "message": "Failed to generate image",
+    "message": "Image generation failed",
     "description": "Message when image generation fails"
   },
   "message.uploadVideoExceed": {
-    "message": "The number of uploaded first frame images exceeds the limit",
+    "message": "Number of uploaded first frame images exceeds the limit",
     "description": "Error message when the number of uploaded first frame images exceeds the limit"
   },
   "message.uploadVideoSizeExceed": {
     "message": "Uploaded file size cannot exceed 10MB!",
-    "description": "Error message when the uploaded file size exceeds 10MB!"
+    "description": "Error message when uploaded file size exceeds 10MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Uploaded file must be in MP4 format!",
-    "description": "Error message when the uploaded file is not in MP4 format!"
+    "description": "Error message when uploaded file is not in MP4 format!"
   },
   "message.uploadStartImageExceed": {
-    "message": "The number of uploaded first frame images exceeds the limit",
+    "message": "Number of uploaded first frame images exceeds the limit",
     "description": "Error message when the number of uploaded first frame images exceeds the limit"
   },
   "message.uploadEndImageExceed": {
-    "message": "The number of uploaded last frame images exceeds the limit",
+    "message": "Number of uploaded last frame images exceeds the limit",
     "description": "Error message when the number of uploaded last frame images exceeds the limit"
   },
   "message.uploadStartImageError": {
     "message": "Failed to upload first frame image",
-    "description": "Error message when the first frame image upload fails"
+    "description": "Error message when uploading the first frame image fails"
   },
   "message.uploadVideoError": {
     "message": "Failed to upload video",
-    "description": "Error message when the first frame image upload fails"
+    "description": "Error message when uploading the first frame image fails"
   },
   "message.uploadEndImageError": {
     "message": "Failed to upload last frame image",
-    "description": "Error message when the last frame image upload fails"
+    "description": "Error message when uploading the last frame image fails"
   },
   "message.uploadDocumentsError": {
     "message": "Failed to upload document",
-    "description": "Error message when document upload fails"
+    "description": "Error message when uploading document fails"
   },
   "message.noOperations": {
     "message": "No available operations",

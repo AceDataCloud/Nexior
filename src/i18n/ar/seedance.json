@@ -1,62 +1,166 @@
 {
-  "name.seedanceBot": { "message": "SeeDance Bot", "description": "Name of the SeeDance video generator" },
-  "name.prompt": { "message": "Video Prompt", "description": "Text prompt for video generation" },
-  "description.prompt": {
-    "message": "Describe the video you want to generate. You can include SeeDance parameters (e.g. --rs 720p --rt 16:9 --dur 5).",
-    "description": "Help text for prompt input"
+  "name.seedanceBot": {
+    "message": "روبوت SeeDance",
+    "description": "اسم مولد فيديو SeeDance"
   },
-  "placeholder.prompt": { "message": "Describe your video...", "description": "Placeholder for prompt input" },
-  "name.model": { "message": "Model", "description": "Model selector label" },
-  "description.model": { "message": "Choose the SeeDance model version for generation.", "description": "Help text for model selector" },
-  "placeholder.select": { "message": "Select", "description": "Placeholder for select input" },
-  "model.seedance10pro": { "message": "doubao-seedance-1.0-pro", "description": "SeeDance 1.0 Pro model option" },
+  "name.prompt": {
+    "message": "الكلمات الدالة",
+    "description": "الكلمات الدالة لتوليد الفيديو"
+  },
+  "description.prompt": {
+    "message": "صف الفيديو الذي تريد توليده، يمكنك إضافة معلمات SeeDance (مثل: --rs 720p --rt 16:9 --dur 5).",
+    "description": "شرح إدخال الكلمات الدالة"
+  },
+  "placeholder.prompt": {
+    "message": "صف فيديوك...",
+    "description": "نص العنصر النائب للكلمات الدالة"
+  },
+  "name.model": {
+    "message": "النموذج",
+    "description": "علامة اختيار النموذج"
+  },
+  "description.model": {
+    "message": "اختر إصدار نموذج SeeDance المستخدم في التوليد.",
+    "description": "شرح اختيار النموذج"
+  },
+  "placeholder.select": {
+    "message": "اختر",
+    "description": "نص العنصر النائب للاختيار المنسدل"
+  },
+  "model.seedance10pro": {
+    "message": "doubao-seedance-1.0-pro",
+    "description": "نموذج SeeDance 1.0 Pro"
+  },
   "model.seedance10proFast": {
     "message": "doubao-seedance-1.0-pro-fast",
-    "description": "SeeDance 1.0 Pro Fast model option"
+    "description": "نموذج SeeDance 1.0 Pro Fast"
   },
-  "model.seedance15pro": { "message": "doubao-seedance-1.5-pro", "description": "SeeDance 1.5 Pro model option" },
+  "model.seedance15pro": {
+    "message": "doubao-seedance-1.5-pro",
+    "description": "نموذج SeeDance 1.5 Pro"
+  },
   "model.seedance10liteT2v": {
     "message": "doubao-seedance-1.0-lite-t2v",
-    "description": "SeeDance 1.0 Lite T2V model option"
+    "description": "نموذج SeeDance 1.0 Lite T2V"
   },
   "model.seedance10liteI2v": {
     "message": "doubao-seedance-1.0-lite-i2v",
-    "description": "SeeDance 1.0 Lite I2V model option"
+    "description": "نموذج SeeDance 1.0 Lite I2V"
   },
-  "name.serviceTier": { "message": "Service Tier", "description": "Service tier selector label" },
-  "description.serviceTier": { "message": "Processing tier: default or flex.", "description": "Help text for service tier" },
-  "serviceTier.default": { "message": "default", "description": "Default service tier" },
-  "serviceTier.flex": { "message": "flex", "description": "Flex service tier" },
-  "name.returnLastFrame": { "message": "Return Last Frame", "description": "Return last frame switch label" },
+  "name.serviceTier": {
+    "message": "فئة الخدمة",
+    "description": "علامة فئة الخدمة"
+  },
+  "description.serviceTier": {
+    "message": "فئة المعالجة: default أو flex.",
+    "description": "شرح فئة الخدمة"
+  },
+  "serviceTier.default": {
+    "message": "افتراضي",
+    "description": "الفئة الافتراضية"
+  },
+  "serviceTier.flex": {
+    "message": "مرن",
+    "description": "فئة مرنة"
+  },
+  "name.returnLastFrame": {
+    "message": "إرجاع الإطار الأخير",
+    "description": "علامة مفتاح إرجاع الإطار الأخير"
+  },
   "description.returnLastFrame": {
-    "message": "If enabled, the API also returns the last frame image.",
-    "description": "Help text for return last frame"
+    "message": "عند التفعيل، سيتم إرجاع صورة الإطار الأخير إضافيًا.",
+    "description": "شرح إرجاع الإطار الأخير"
   },
-  "name.firstFrame": { "message": "First Frame Image", "description": "First frame image upload label" },
-  "description.firstFrame": { "message": "Optional. Provide a reference/first-frame image.", "description": "Help text for first frame image" },
-  "name.lastFrame": { "message": "Last Frame Image", "description": "Last frame image upload label" },
+  "name.firstFrame": {
+    "message": "صورة الإطار الأول",
+    "description": "علامة تحميل صورة الإطار الأول"
+  },
+  "description.firstFrame": {
+    "message": "اختياري. قم بتحميل صورة مرجعية/صورة الإطار الأول.",
+    "description": "شرح صورة الإطار الأول"
+  },
+  "name.lastFrame": {
+    "message": "صورة الإطار الأخير",
+    "description": "علامة تحميل صورة الإطار الأخير"
+  },
   "description.lastFrame": {
-    "message": "Optional. Provide a last-frame image (requires first frame).",
-    "description": "Help text for last frame image"
+    "message": "اختياري. قم بتحميل صورة الإطار الأخير (تحتاج إلى الإطار الأول).",
+    "description": "شرح صورة الإطار الأخير"
   },
-  "button.generate": { "message": "Generate", "description": "Generate button text" },
-  "button.upload": { "message": "Upload", "description": "Upload button text" },
-  "button.download": { "message": "Download", "description": "Download button text" },
-  "button.on": { "message": "On", "description": "Switch on label" },
-  "button.off": { "message": "Off", "description": "Switch off label" },
-  "message.startingTask": { "message": "Starting SeeDance task...", "description": "Toast while starting task" },
-  "message.startTaskSuccess": { "message": "Task started successfully", "description": "Toast on successful task start" },
-  "message.startTaskFailed": { "message": "Failed to start task: ", "description": "Toast on failed task start" },
-  "message.usedUp": { "message": "Quota used up", "description": "Toast when quota is used up" },
-  "message.uploadExceed": { "message": "Only 1 image is allowed", "description": "Toast when upload exceeds limit" },
-  "message.uploadError": { "message": "Upload failed", "description": "Toast when upload fails" },
-  "message.downloadVideo": { "message": "Download video", "description": "Tooltip for download button" },
-  "status.pending": { "message": "Pending", "description": "Pending status" },
-  "status.processing": { "message": "Processing", "description": "Processing status" },
-  "name.taskId": { "message": "Task ID", "description": "Task ID label" },
-  "name.traceId": { "message": "Trace ID", "description": "Trace ID label" },
-  "name.failure": { "message": "Failure", "description": "Failure label" },
-  "name.failureReason": { "message": "Failure Reason", "description": "Failure reason label" },
-  "name.status": { "message": "Status", "description": "Status label" }
+  "button.generate": {
+    "message": "توليد",
+    "description": "زر التوليد"
+  },
+  "button.upload": {
+    "message": "تحميل",
+    "description": "زر التحميل"
+  },
+  "button.download": {
+    "message": "تنزيل",
+    "description": "زر التنزيل"
+  },
+  "button.on": {
+    "message": "تشغيل",
+    "description": "نص مفتاح التشغيل"
+  },
+  "button.off": {
+    "message": "إيقاف",
+    "description": "نص مفتاح الإيقاف"
+  },
+  "message.startingTask": {
+    "message": "جارٍ بدء مهمة SeeDance...",
+    "description": "رسالة بدء المهمة"
+  },
+  "message.startTaskSuccess": {
+    "message": "تم بدء المهمة",
+    "description": "رسالة نجاح بدء المهمة"
+  },
+  "message.startTaskFailed": {
+    "message": "فشل البدء:",
+    "description": "رسالة فشل بدء المهمة"
+  },
+  "message.usedUp": {
+    "message": "تم استنفاد الحصة",
+    "description": "رسالة استنفاد الحصة"
+  },
+  "message.uploadExceed": {
+    "message": "يمكنك تحميل صورة واحدة فقط",
+    "description": "رسالة تجاوز الحد الأقصى للتحميل"
+  },
+  "message.uploadError": {
+    "message": "فشل التحميل",
+    "description": "رسالة فشل التحميل"
+  },
+  "message.downloadVideo": {
+    "message": "تنزيل الفيديو",
+    "description": "رسالة تنزيل الفيديو"
+  },
+  "status.pending": {
+    "message": "قيد الانتظار",
+    "description": "حالة الانتظار"
+  },
+  "status.processing": {
+    "message": "جارٍ التوليد",
+    "description": "حالة التوليد"
+  },
+  "name.taskId": {
+    "message": "معرف المهمة",
+    "description": "علامة معرف المهمة"
+  },
+  "name.traceId": {
+    "message": "معرف التتبع",
+    "description": "علامة معرف التتبع"
+  },
+  "name.failure": {
+    "message": "فشل",
+    "description": "علامة الفشل"
+  },
+  "name.failureReason": {
+    "message": "سبب الفشل",
+    "description": "علامة سبب الفشل"
+  },
+  "name.status": {
+    "message": "الحالة",
+    "description": "علامة الحالة"
+  }
 }
-

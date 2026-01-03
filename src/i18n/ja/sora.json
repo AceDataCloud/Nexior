@@ -21,11 +21,11 @@
   },
   "name.createdAt": {
     "message": "作成日時",
-    "description": "Kling ビデオ生成の日付と時間"
+    "description": "Sora ビデオ生成の日付と時間"
   },
   "name.startEndImage": {
-    "message": "開始・終了フレーム参照画像",
-    "description": "生成するビデオの参照画像"
+    "message": "開始/終了フレーム",
+    "description": "フォームフィールドラベル：開始/終了フレーム参照画像（英語では「Start/End Frames」と翻訳し、簡潔に保つ）"
   },
   "name.action": {
     "message": "アクション",
@@ -47,6 +47,14 @@
     "message": "ビデオ方向",
     "description": "ビデオ方向パラメータの名称"
   },
+  "option.portrait": {
+    "message": "縦向き",
+    "description": "オプションテキスト：縦向き方向（英語では「Portrait」と翻訳し、簡潔に保つ）"
+  },
+  "option.landscape": {
+    "message": "横向き",
+    "description": "オプションテキスト：横向き方向（英語では「Landscape」と翻訳し、簡潔に保つ）"
+  },
   "name.duration": {
     "message": "ビデオの長さ",
     "description": "ビデオの長さパラメータの名称"
@@ -56,16 +64,16 @@
     "description": "ビデオ解像度パラメータの名称"
   },
   "description.imageUrl": {
-    "message": "複数の画像を使用してビデオを作成するタスクで、複数の画像をアップロードする必要があります。",
-    "description": "パラメータ'imageUrl'の説明"
+    "message": "複数画像でビデオを作成するタスクでは、複数の画像をアップロードする必要があります。",
+    "description": "パラメータ 'imageUrl' の説明"
   },
   "description.prompt": {
     "message": "Sora ビデオ生成のためのプロンプト",
-    "description": "パラメータ'prompt'の説明"
+    "description": "パラメータ 'prompt' の説明"
   },
   "description.uploadStartEndImage": {
     "message": "参照画像リンクの配列、最初が開始フレーム、次が終了フレーム画像",
-    "description": "パラメータ'image_url'の説明"
+    "description": "パラメータ 'image_url' の説明"
   },
   "status.pending": {
     "message": "保留中",
@@ -97,18 +105,18 @@
   },
   "tip.proOnly": {
     "message": "sora-2-pro モデルのみがこのパラメータの変更をサポートしています",
-    "description": "ユーザーに専門モデルのみがこのパラメータの変更をサポートしていることを伝える"
+    "description": "ユーザーに専門モデルのみがこのパラメータの変更をサポートしていることを示すヒント"
   },
   "button.generate": {
     "message": "生成",
     "description": "Sora ビデオ生成のボタンテキスト"
   },
   "button.action1": {
-    "message": "文生ビデオ",
+    "message": "文からビデオ生成",
     "description": "Sora ビデオ生成のボタンテキスト"
   },
   "button.action2": {
-    "message": "画像生成ビデオ",
+    "message": "画像からビデオ生成",
     "description": "Sora ビデオ生成のボタンテキスト"
   },
   "button.download": {
@@ -117,7 +125,7 @@
   },
   "button.uploadImageUrl": {
     "message": "画像をアップロード",
-    "description": "画像アップロードボタンのテキスト"
+    "description": "画像アップロードボタンのテキスト（英語では「Upload」と簡略化）"
   },
   "button.uploadVideoUrl": {
     "message": "ビデオをアップロード",
@@ -129,15 +137,15 @@
   },
   "message.uploadReferencesExceed": {
     "message": "最大 2 枚の画像をアップロードできます",
-    "description": "アップロードされた画像の数が制限を超えたときのエラーメッセージ"
+    "description": "アップロードされた画像数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadReferencesSuccess": {
     "message": "画像のアップロードに成功しました",
     "description": "画像のアップロードが成功したときの成功メッセージ"
   },
   "message.uploadReferencesError": {
-    "message": "画像のアップロードに失敗しました。後でもう一度お試しください",
-    "description": "画像アップロードに失敗したときのエラーメッセージ"
+    "message": "画像のアップロードに失敗しました。後で再試行してください",
+    "description": "画像アップロードが失敗したときのエラーメッセージ"
   },
   "message.startingTask": {
     "message": "タスクを開始しています...",
@@ -152,7 +160,7 @@
     "description": "描画タスクの開始に失敗したときのエラーメッセージ"
   },
   "message.usedUp": {
-    "message": "ポイントが使い切れました。さらにポイントを購入して続行してください",
+    "message": "ポイントが使い切れました。追加のポイントを購入して続行してください",
     "description": "使い切ったときのメッセージ"
   },
   "message.generating": {
@@ -165,50 +173,50 @@
   },
   "message.generateFailed": {
     "message": "ビデオ生成に失敗しました",
-    "description": "画像生成に失敗したときのメッセージ"
+    "description": "画像生成が失敗したときのメッセージ"
   },
   "message.uploadVideoExceed": {
-    "message": "開始フレーム画像のアップロード数が制限を超えています",
-    "description": "開始フレーム画像のアップロード数が制限を超えたときのエラーメッセージ"
+    "message": "アップロードする最初のフレーム画像の数が制限を超えています",
+    "description": "アップロードする最初のフレーム画像の数が制限を超えた時のエラーメッセージ"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "アップロードファイルのサイズは 10MB を超えてはいけません！",
-    "description": "アップロードファイルのサイズが 10MB を超えたときのエラーメッセージ"
+    "message": "アップロードファイルのサイズは10MBを超えてはいけません！",
+    "description": "アップロードファイルのサイズが10MBを超えた時のエラーメッセージ"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "アップロードファイルは MP4 形式でなければなりません！",
-    "description": "アップロードファイルが MP4 形式でないときのエラーメッセージ"
+    "message": "アップロードファイルはMP4形式でなければなりません！",
+    "description": "アップロードファイルがMP4形式でない時のエラーメッセージ"
   },
   "message.uploadStartEndImageExceed": {
     "message": "アップロードする最初のフレーム画像の数が制限を超えています",
-    "description": "最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
+    "description": "アップロードする最初のフレーム画像の数が制限を超えた時のエラーメッセージ"
   },
   "message.uploadEndImageExceed": {
-    "message": "アップロードされた尾フレーム画像の数が制限を超えています",
-    "description": "アップロードされた首フレーム画像の数が制限を超えたときのエラーメッセージ"
+    "message": "アップロードする最後のフレーム画像の数が制限を超えています",
+    "description": "アップロードする最後のフレーム画像の数が制限を超えた時のエラーメッセージ"
   },
   "message.uploadStartImageError": {
-    "message": "首フレーム画像のアップロードに失敗しました",
-    "description": "首フレーム画像のアップロードに失敗したときのエラーメッセージ"
+    "message": "最初のフレーム画像のアップロードに失敗しました",
+    "description": "最初のフレーム画像のアップロードに失敗した時のエラーメッセージ"
   },
   "message.uploadVideoError": {
     "message": "動画のアップロードに失敗しました",
-    "description": "首フレーム画像のアップロードに失敗したときのエラーメッセージ"
+    "description": "動画のアップロードに失敗した時のエラーメッセージ"
   },
   "message.uploadEndImageError": {
-    "message": "尾フレーム画像のアップロードに失敗しました",
-    "description": "尾フレーム画像のアップロードに失敗したときのエラーメッセージ"
+    "message": "最後のフレーム画像のアップロードに失敗しました",
+    "description": "最後のフレーム画像のアップロードに失敗した時のエラーメッセージ"
   },
   "message.uploadDocumentsError": {
     "message": "文書のアップロードに失敗しました",
-    "description": "文書のアップロードに失敗したときのエラーメッセージ"
+    "description": "文書のアップロードに失敗した時のエラーメッセージ"
   },
   "message.noOperations": {
     "message": "利用可能な操作はありません",
-    "description": "利用可能な操作がないときのメッセージ"
+    "description": "利用可能な操作がない時のメッセージ"
   },
   "message.noTasks": {
     "message": "履歴タスクはありません。左側のボタンをクリックして動画を生成してください",
-    "description": "タスクがないときのメッセージ"
+    "description": "タスクがない時のメッセージ"
   }
 }

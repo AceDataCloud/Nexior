@@ -41,7 +41,7 @@
   },
   "name.createdAt": {
     "message": "Data di creazione",
-    "description": "Data e ora in cui è stata generata l'immagine Flux"
+    "description": "Data e ora di generazione dell'immagine Flux"
   },
   "name.numbers": {
     "message": "Numero di immagini",
@@ -68,19 +68,19 @@
     "description": "Nome del generatore di immagini Flux"
   },
   "description.numbers": {
-    "message": "Specifica il numero di immagini da generare, l'intervallo dei valori è: 1-4.",
+    "message": "Specifica il numero di immagini da generare, il valore deve essere compreso tra: 1-4.",
     "description": "Descrizione del parametro 'numbers'"
   },
   "description.quality": {
-    "message": "Specifica la qualità dell'immagine da generare, l'intervallo dei valori è: 1-100.",
+    "message": "Specifica la qualità dell'immagine da generare, il valore deve essere compreso tra: 1-100.",
     "description": "Descrizione del parametro 'quality'"
   },
   "description.prompt": {
-    "message": "Parole chiave per generare immagini Flux",
+    "message": "Parole chiave per generare l'immagine Flux",
     "description": "Descrizione del parametro 'prompt'"
   },
   "description.imageUrl": {
-    "message": "Nella creazione di un'attività di modifica dell'immagine, è necessario caricare un'immagine.",
+    "message": "Durante la creazione di un'attività di modifica dell'immagine, è necessario caricare un'immagine.",
     "description": "Descrizione del parametro 'imageUrl'"
   },
   "status.pending": {
@@ -89,7 +89,7 @@
   },
   "status.processing": {
     "message": "In elaborazione",
-    "description": "Stato di attesa dell'attività"
+    "description": "Stato di elaborazione dell'attività"
   },
   "placeholder.paddingNoise": {
     "message": "Seleziona...",
@@ -129,15 +129,15 @@
   },
   "placeholder.subMarker": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input del sottomarker"
+    "description": "Segnaposto per l'input del sottomark"
   },
   "button.generate": {
     "message": "Genera",
-    "description": "Testo del pulsante per generare immagini Flux"
+    "description": "Testo del pulsante per generare l'immagine Flux"
   },
   "button.uploadImageUrl": {
-    "message": "Carica immagine",
-    "description": "Testo del pulsante per caricare un'immagine"
+    "message": "Carica",
+    "description": "Testo del pulsante per caricare l'immagine (semplificato in 'Carica')"
   },
   "button.extend": {
     "message": "Estendi immagine",
@@ -145,7 +145,7 @@
   },
   "button.viewImage": {
     "message": "Visualizza immagine originale",
-    "description": "Testo del pulsante per visualizzare l'immagine generata"
+    "description": "Testo del pulsante per visualizzare l'immagine Flux"
   },
   "button.download": {
     "message": "Scarica immagine",
@@ -177,7 +177,7 @@
   },
   "message.startTaskFailed": {
     "message": "Avvio dell'attività fallito, contattare l'amministratore",
-    "description": "Messaggio di errore quando l'avvio dell'attività di disegno fallisce"
+    "description": "Messaggio di errore quando l'attività di disegno non riesce ad avviarsi"
   },
   "message.usedUp": {
     "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare a utilizzare",
@@ -196,12 +196,12 @@
     "description": "Messaggio mentre l'immagine è in fase di generazione"
   },
   "message.generateFailed": {
-    "message": "Generazione dell'immagine fallita",
+    "message": "Generazione immagine fallita",
     "description": "Messaggio quando la generazione dell'immagine fallisce"
   },
   "message.uploadVideoExceed": {
-    "message": "Numero di immagini del primo fotogramma caricate oltre il limite",
-    "description": "Messaggio di errore quando il numero di immagini del primo fotogramma caricate supera il limite"
+    "message": "Numero di immagini della prima cornice caricate oltre il limite",
+    "description": "Messaggio di errore quando il numero di immagini della prima cornice caricate supera il limite"
   },
   "message.uploadVideoSizeExceed": {
     "message": "La dimensione del file caricato non può superare i 10 MB!",
@@ -216,23 +216,23 @@
     "description": "Messaggio di errore quando il numero di immagini di riferimento caricate supera il limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Numero di immagini dell'ultimo fotogramma caricate oltre il limite",
-    "description": "Messaggio di errore quando il numero di immagini dell'ultimo fotogramma caricate supera il limite"
+    "message": "Numero di immagini dell'ultima cornice caricate oltre il limite",
+    "description": "Messaggio di errore quando il numero di immagini dell'ultima cornice caricate supera il limite"
   },
   "message.uploadStartImageError": {
-    "message": "Caricamento dell'immagine di riferimento fallito",
+    "message": "Caricamento immagine di riferimento fallito",
     "description": "Messaggio di errore quando il caricamento dell'immagine di riferimento fallisce"
   },
   "message.uploadVideoError": {
-    "message": "Caricamento dell'immagine fallito",
-    "description": "Messaggio di errore quando il caricamento dell'immagine del primo fotogramma fallisce"
+    "message": "Caricamento immagine fallito",
+    "description": "Messaggio di errore quando il caricamento dell'immagine della prima cornice fallisce"
   },
   "message.uploadEndImageError": {
-    "message": "Caricamento dell'immagine dell'ultimo fotogramma fallito",
-    "description": "Messaggio di errore quando il caricamento dell'immagine dell'ultimo fotogramma fallisce"
+    "message": "Caricamento immagine dell'ultima cornice fallito",
+    "description": "Messaggio di errore quando il caricamento dell'immagine dell'ultima cornice fallisce"
   },
   "message.uploadDocumentsError": {
-    "message": "Caricamento del documento fallito",
+    "message": "Caricamento documento fallito",
     "description": "Messaggio di errore quando il caricamento del documento fallisce"
   },
   "message.noOperations": {

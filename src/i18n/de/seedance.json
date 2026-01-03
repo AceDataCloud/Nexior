@@ -1,62 +1,166 @@
 {
-  "name.seedanceBot": { "message": "SeeDance Bot", "description": "Name of the SeeDance video generator" },
-  "name.prompt": { "message": "Video Prompt", "description": "Text prompt for video generation" },
-  "description.prompt": {
-    "message": "Describe the video you want to generate. You can include SeeDance parameters (e.g. --rs 720p --rt 16:9 --dur 5).",
-    "description": "Help text for prompt input"
+  "name.seedanceBot": {
+    "message": "SeeDance Bot",
+    "description": "SeeDance Video-Generator Name"
   },
-  "placeholder.prompt": { "message": "Describe your video...", "description": "Placeholder for prompt input" },
-  "name.model": { "message": "Model", "description": "Model selector label" },
-  "description.model": { "message": "Choose the SeeDance model version for generation.", "description": "Help text for model selector" },
-  "placeholder.select": { "message": "Select", "description": "Placeholder for select input" },
-  "model.seedance10pro": { "message": "doubao-seedance-1.0-pro", "description": "SeeDance 1.0 Pro model option" },
+  "name.prompt": {
+    "message": "Eingabeaufforderung",
+    "description": "Eingabeaufforderung für die Videoerstellung"
+  },
+  "description.prompt": {
+    "message": "Beschreibe das Video, das du generieren möchtest, und füge SeeDance-Parameter hinzu (z. B.: --rs 720p --rt 16:9 --dur 5).",
+    "description": "Erläuterung zur Eingabeaufforderung"
+  },
+  "placeholder.prompt": {
+    "message": "Beschreibe dein Video…",
+    "description": "Platzhalter für die Eingabeaufforderung"
+  },
+  "name.model": {
+    "message": "Modell",
+    "description": "Modellauswahl-Label"
+  },
+  "description.model": {
+    "message": "Wähle die SeeDance-Modellversion für die Generierung aus.",
+    "description": "Erläuterung zur Modellauswahl"
+  },
+  "placeholder.select": {
+    "message": "Auswählen",
+    "description": "Platzhalter für die Dropdown-Auswahl"
+  },
+  "model.seedance10pro": {
+    "message": "doubao-seedance-1.0-pro",
+    "description": "SeeDance 1.0 Pro Modell"
+  },
   "model.seedance10proFast": {
     "message": "doubao-seedance-1.0-pro-fast",
-    "description": "SeeDance 1.0 Pro Fast model option"
+    "description": "SeeDance 1.0 Pro Fast Modell"
   },
-  "model.seedance15pro": { "message": "doubao-seedance-1.5-pro", "description": "SeeDance 1.5 Pro model option" },
+  "model.seedance15pro": {
+    "message": "doubao-seedance-1.5-pro",
+    "description": "SeeDance 1.5 Pro Modell"
+  },
   "model.seedance10liteT2v": {
     "message": "doubao-seedance-1.0-lite-t2v",
-    "description": "SeeDance 1.0 Lite T2V model option"
+    "description": "SeeDance 1.0 Lite T2V Modell"
   },
   "model.seedance10liteI2v": {
     "message": "doubao-seedance-1.0-lite-i2v",
-    "description": "SeeDance 1.0 Lite I2V model option"
+    "description": "SeeDance 1.0 Lite I2V Modell"
   },
-  "name.serviceTier": { "message": "Service Tier", "description": "Service tier selector label" },
-  "description.serviceTier": { "message": "Processing tier: default or flex.", "description": "Help text for service tier" },
-  "serviceTier.default": { "message": "default", "description": "Default service tier" },
-  "serviceTier.flex": { "message": "flex", "description": "Flex service tier" },
-  "name.returnLastFrame": { "message": "Return Last Frame", "description": "Return last frame switch label" },
+  "name.serviceTier": {
+    "message": "Service-Stufe",
+    "description": "Label für die Service-Stufe"
+  },
+  "description.serviceTier": {
+    "message": "Verarbeitungsstufen: default oder flex.",
+    "description": "Erläuterung zur Service-Stufe"
+  },
+  "serviceTier.default": {
+    "message": "default",
+    "description": "Standardstufe"
+  },
+  "serviceTier.flex": {
+    "message": "flex",
+    "description": "Flexible Stufe"
+  },
+  "name.returnLastFrame": {
+    "message": "Letztes Bild zurückgeben",
+    "description": "Label für den Schalter zum Zurückgeben des letzten Bildes"
+  },
   "description.returnLastFrame": {
-    "message": "If enabled, the API also returns the last frame image.",
-    "description": "Help text for return last frame"
+    "message": "Wenn aktiviert, wird das letzte Bild zusätzlich zurückgegeben.",
+    "description": "Erläuterung zur Rückgabe des letzten Bildes"
   },
-  "name.firstFrame": { "message": "First Frame Image", "description": "First frame image upload label" },
-  "description.firstFrame": { "message": "Optional. Provide a reference/first-frame image.", "description": "Help text for first frame image" },
-  "name.lastFrame": { "message": "Last Frame Image", "description": "Last frame image upload label" },
+  "name.firstFrame": {
+    "message": "Erstes Bild",
+    "description": "Label für den Upload des ersten Bildes"
+  },
+  "description.firstFrame": {
+    "message": "Optional. Lade ein Referenz-/Erstes Bild hoch.",
+    "description": "Erläuterung zum ersten Bild"
+  },
+  "name.lastFrame": {
+    "message": "Letztes Bild",
+    "description": "Label für den Upload des letzten Bildes"
+  },
   "description.lastFrame": {
-    "message": "Optional. Provide a last-frame image (requires first frame).",
-    "description": "Help text for last frame image"
+    "message": "Optional. Lade das letzte Bild hoch (erstes Bild erforderlich).",
+    "description": "Erläuterung zum letzten Bild"
   },
-  "button.generate": { "message": "Generate", "description": "Generate button text" },
-  "button.upload": { "message": "Upload", "description": "Upload button text" },
-  "button.download": { "message": "Download", "description": "Download button text" },
-  "button.on": { "message": "On", "description": "Switch on label" },
-  "button.off": { "message": "Off", "description": "Switch off label" },
-  "message.startingTask": { "message": "Starting SeeDance task...", "description": "Toast while starting task" },
-  "message.startTaskSuccess": { "message": "Task started successfully", "description": "Toast on successful task start" },
-  "message.startTaskFailed": { "message": "Failed to start task: ", "description": "Toast on failed task start" },
-  "message.usedUp": { "message": "Quota used up", "description": "Toast when quota is used up" },
-  "message.uploadExceed": { "message": "Only 1 image is allowed", "description": "Toast when upload exceeds limit" },
-  "message.uploadError": { "message": "Upload failed", "description": "Toast when upload fails" },
-  "message.downloadVideo": { "message": "Download video", "description": "Tooltip for download button" },
-  "status.pending": { "message": "Pending", "description": "Pending status" },
-  "status.processing": { "message": "Processing", "description": "Processing status" },
-  "name.taskId": { "message": "Task ID", "description": "Task ID label" },
-  "name.traceId": { "message": "Trace ID", "description": "Trace ID label" },
-  "name.failure": { "message": "Failure", "description": "Failure label" },
-  "name.failureReason": { "message": "Failure Reason", "description": "Failure reason label" },
-  "name.status": { "message": "Status", "description": "Status label" }
+  "button.generate": {
+    "message": "Generieren",
+    "description": "Button zum Generieren"
+  },
+  "button.upload": {
+    "message": "Hochladen",
+    "description": "Button zum Hochladen"
+  },
+  "button.download": {
+    "message": "Herunterladen",
+    "description": "Button zum Herunterladen"
+  },
+  "button.on": {
+    "message": "Ein",
+    "description": "Text für den Schalter, wenn er aktiviert ist"
+  },
+  "button.off": {
+    "message": "Aus",
+    "description": "Text für den Schalter, wenn er deaktiviert ist"
+  },
+  "message.startingTask": {
+    "message": "Starte SeeDance-Aufgabe…",
+    "description": "Hinweis zum Starten der Aufgabe"
+  },
+  "message.startTaskSuccess": {
+    "message": "Aufgabe gestartet",
+    "description": "Hinweis für den erfolgreichen Start der Aufgabe"
+  },
+  "message.startTaskFailed": {
+    "message": "Start fehlgeschlagen:",
+    "description": "Hinweis für den fehlgeschlagenen Start der Aufgabe"
+  },
+  "message.usedUp": {
+    "message": "Kontingent aufgebraucht",
+    "description": "Hinweis, dass das Kontingent erschöpft ist"
+  },
+  "message.uploadExceed": {
+    "message": "Es kann maximal 1 Bild hochgeladen werden",
+    "description": "Hinweis bei Überschreitung des Upload-Limits"
+  },
+  "message.uploadError": {
+    "message": "Upload fehlgeschlagen",
+    "description": "Hinweis bei fehlgeschlagenem Upload"
+  },
+  "message.downloadVideo": {
+    "message": "Video herunterladen",
+    "description": "Hinweis zum Herunterladen des Videos"
+  },
+  "status.pending": {
+    "message": "In der Warteschlange",
+    "description": "Warteschlangenstatus"
+  },
+  "status.processing": {
+    "message": "Wird generiert",
+    "description": "Status während der Generierung"
+  },
+  "name.taskId": {
+    "message": "Aufgaben-ID",
+    "description": "Label für die Aufgaben-ID"
+  },
+  "name.traceId": {
+    "message": "Trace-ID",
+    "description": "Label für die Trace-ID"
+  },
+  "name.failure": {
+    "message": "Fehler",
+    "description": "Label für Fehler"
+  },
+  "name.failureReason": {
+    "message": "Fehlerursache",
+    "description": "Label für die Fehlerursache"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Label für den Status"
+  }
 }
-

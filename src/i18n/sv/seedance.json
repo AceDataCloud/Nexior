@@ -1,62 +1,166 @@
 {
-  "name.seedanceBot": { "message": "SeeDance Bot", "description": "Name of the SeeDance video generator" },
-  "name.prompt": { "message": "Video Prompt", "description": "Text prompt for video generation" },
-  "description.prompt": {
-    "message": "Describe the video you want to generate. You can include SeeDance parameters (e.g. --rs 720p --rt 16:9 --dur 5).",
-    "description": "Help text for prompt input"
+  "name.seedanceBot": {
+    "message": "SeeDance Bot",
+    "description": "SeeDance video generator name"
   },
-  "placeholder.prompt": { "message": "Describe your video...", "description": "Placeholder for prompt input" },
-  "name.model": { "message": "Model", "description": "Model selector label" },
-  "description.model": { "message": "Choose the SeeDance model version for generation.", "description": "Help text for model selector" },
-  "placeholder.select": { "message": "Select", "description": "Placeholder for select input" },
-  "model.seedance10pro": { "message": "doubao-seedance-1.0-pro", "description": "SeeDance 1.0 Pro model option" },
+  "name.prompt": {
+    "message": "Prompt",
+    "description": "Prompt for generating video"
+  },
+  "description.prompt": {
+    "message": "Beskriv videon du vill generera, kan inkludera SeeDance-parametrar (t.ex.: --rs 720p --rt 16:9 --dur 5).",
+    "description": "Prompt input description"
+  },
+  "placeholder.prompt": {
+    "message": "Beskriv din video…",
+    "description": "Prompt placeholder"
+  },
+  "name.model": {
+    "message": "Modell",
+    "description": "Model selection label"
+  },
+  "description.model": {
+    "message": "Välj version av SeeDance-modellen för generering.",
+    "description": "Model selection description"
+  },
+  "placeholder.select": {
+    "message": "Välj",
+    "description": "Dropdown selection placeholder"
+  },
+  "model.seedance10pro": {
+    "message": "doubao-seedance-1.0-pro",
+    "description": "SeeDance 1.0 Pro model"
+  },
   "model.seedance10proFast": {
     "message": "doubao-seedance-1.0-pro-fast",
-    "description": "SeeDance 1.0 Pro Fast model option"
+    "description": "SeeDance 1.0 Pro Fast model"
   },
-  "model.seedance15pro": { "message": "doubao-seedance-1.5-pro", "description": "SeeDance 1.5 Pro model option" },
+  "model.seedance15pro": {
+    "message": "doubao-seedance-1.5-pro",
+    "description": "SeeDance 1.5 Pro model"
+  },
   "model.seedance10liteT2v": {
     "message": "doubao-seedance-1.0-lite-t2v",
-    "description": "SeeDance 1.0 Lite T2V model option"
+    "description": "SeeDance 1.0 Lite T2V model"
   },
   "model.seedance10liteI2v": {
     "message": "doubao-seedance-1.0-lite-i2v",
-    "description": "SeeDance 1.0 Lite I2V model option"
+    "description": "SeeDance 1.0 Lite I2V model"
   },
-  "name.serviceTier": { "message": "Service Tier", "description": "Service tier selector label" },
-  "description.serviceTier": { "message": "Processing tier: default or flex.", "description": "Help text for service tier" },
-  "serviceTier.default": { "message": "default", "description": "Default service tier" },
-  "serviceTier.flex": { "message": "flex", "description": "Flex service tier" },
-  "name.returnLastFrame": { "message": "Return Last Frame", "description": "Return last frame switch label" },
+  "name.serviceTier": {
+    "message": "Tjänstenivå",
+    "description": "Service tier label"
+  },
+  "description.serviceTier": {
+    "message": "Behandlingsnivå: default eller flex.",
+    "description": "Service tier description"
+  },
+  "serviceTier.default": {
+    "message": "default",
+    "description": "Default tier"
+  },
+  "serviceTier.flex": {
+    "message": "flex",
+    "description": "Flex tier"
+  },
+  "name.returnLastFrame": {
+    "message": "Återvänd till sista bild",
+    "description": "Return last frame toggle label"
+  },
   "description.returnLastFrame": {
-    "message": "If enabled, the API also returns the last frame image.",
-    "description": "Help text for return last frame"
+    "message": "Aktivera för att få sista bildens bild.",
+    "description": "Return last frame description"
   },
-  "name.firstFrame": { "message": "First Frame Image", "description": "First frame image upload label" },
-  "description.firstFrame": { "message": "Optional. Provide a reference/first-frame image.", "description": "Help text for first frame image" },
-  "name.lastFrame": { "message": "Last Frame Image", "description": "Last frame image upload label" },
+  "name.firstFrame": {
+    "message": "Första bild",
+    "description": "First frame image upload label"
+  },
+  "description.firstFrame": {
+    "message": "Valfritt. Ladda upp referens/första bild.",
+    "description": "First frame image description"
+  },
+  "name.lastFrame": {
+    "message": "Sista bild",
+    "description": "Last frame image upload label"
+  },
   "description.lastFrame": {
-    "message": "Optional. Provide a last-frame image (requires first frame).",
-    "description": "Help text for last frame image"
+    "message": "Valfritt. Ladda upp sista bild (kräver första bild).",
+    "description": "Last frame image description"
   },
-  "button.generate": { "message": "Generate", "description": "Generate button text" },
-  "button.upload": { "message": "Upload", "description": "Upload button text" },
-  "button.download": { "message": "Download", "description": "Download button text" },
-  "button.on": { "message": "On", "description": "Switch on label" },
-  "button.off": { "message": "Off", "description": "Switch off label" },
-  "message.startingTask": { "message": "Starting SeeDance task...", "description": "Toast while starting task" },
-  "message.startTaskSuccess": { "message": "Task started successfully", "description": "Toast on successful task start" },
-  "message.startTaskFailed": { "message": "Failed to start task: ", "description": "Toast on failed task start" },
-  "message.usedUp": { "message": "Quota used up", "description": "Toast when quota is used up" },
-  "message.uploadExceed": { "message": "Only 1 image is allowed", "description": "Toast when upload exceeds limit" },
-  "message.uploadError": { "message": "Upload failed", "description": "Toast when upload fails" },
-  "message.downloadVideo": { "message": "Download video", "description": "Tooltip for download button" },
-  "status.pending": { "message": "Pending", "description": "Pending status" },
-  "status.processing": { "message": "Processing", "description": "Processing status" },
-  "name.taskId": { "message": "Task ID", "description": "Task ID label" },
-  "name.traceId": { "message": "Trace ID", "description": "Trace ID label" },
-  "name.failure": { "message": "Failure", "description": "Failure label" },
-  "name.failureReason": { "message": "Failure Reason", "description": "Failure reason label" },
-  "name.status": { "message": "Status", "description": "Status label" }
+  "button.generate": {
+    "message": "Generera",
+    "description": "Generate button"
+  },
+  "button.upload": {
+    "message": "Ladda upp",
+    "description": "Upload button"
+  },
+  "button.download": {
+    "message": "Ladda ner",
+    "description": "Download button"
+  },
+  "button.on": {
+    "message": "På",
+    "description": "Toggle on text"
+  },
+  "button.off": {
+    "message": "Av",
+    "description": "Toggle off text"
+  },
+  "message.startingTask": {
+    "message": "Startar SeeDance-uppgift…",
+    "description": "Start task prompt"
+  },
+  "message.startTaskSuccess": {
+    "message": "Uppgift har startat",
+    "description": "Start task success prompt"
+  },
+  "message.startTaskFailed": {
+    "message": "Startning misslyckades:",
+    "description": "Start task failed prompt"
+  },
+  "message.usedUp": {
+    "message": "Krediten är slut",
+    "description": "Credit exhausted prompt"
+  },
+  "message.uploadExceed": {
+    "message": "Maximalt 1 bild kan laddas upp",
+    "description": "Upload limit exceeded prompt"
+  },
+  "message.uploadError": {
+    "message": "Uppladdning misslyckades",
+    "description": "Upload failed prompt"
+  },
+  "message.downloadVideo": {
+    "message": "Ladda ner video",
+    "description": "Download video prompt"
+  },
+  "status.pending": {
+    "message": "I kö",
+    "description": "Queue status"
+  },
+  "status.processing": {
+    "message": "Genererar",
+    "description": "Processing status"
+  },
+  "name.taskId": {
+    "message": "Uppgift ID",
+    "description": "Task ID label"
+  },
+  "name.traceId": {
+    "message": "Trace ID",
+    "description": "Trace ID label"
+  },
+  "name.failure": {
+    "message": "Misslyckande",
+    "description": "Failure label"
+  },
+  "name.failureReason": {
+    "message": "Orsak till misslyckande",
+    "description": "Failure reason label"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Status label"
+  }
 }
-

@@ -1,15 +1,15 @@
 {
   "type.period": {
     "message": "Zeitraum",
-    "description": "Der Zeitraum des Dienstes."
+    "description": "Dienstzeitraum."
   },
   "type.usage": {
     "message": "Kontingent",
-    "description": "Das Kontingent des Dienstes."
+    "description": "Dienstkontingent."
   },
   "field.expiredAt": {
     "message": "Ablaufdatum",
-    "description": "Das Ablaufdatum der Anfrage."
+    "description": "Ablaufdatum der Anfrage."
   },
   "button.goDocument": {
     "message": "Dokument",
@@ -17,11 +17,11 @@
   },
   "button.goCredentials": {
     "message": "Schlüssel",
-    "description": "Button-Text, der beim Klicken auf diesen Button zur Seite mit den Anmeldeinformationen führt. Englisch muss als 'Keys' übersetzt werden, Chinesisch als '密钥'."
+    "description": "Button-Text, der beim Klicken auf diesen Button zur Seite mit den Anmeldeinformationen führt."
   },
   "button.buyMore": {
     "message": "Aufladen",
-    "description": "Button-Text, der beim Klicken auf diesen Button zur Seite für den Kauf von mehr führt. Englisch muss als 'Top Up' übersetzt werden, Chinesisch als '充值'."
+    "description": "Button-Text, der beim Klicken auf diesen Button zur Seite für den Kauf von mehr führt."
   },
   "button.createOrder": {
     "message": "Bestellung erstellen",
@@ -37,31 +37,31 @@
   },
   "button.usage": {
     "message": "Nutzung",
-    "description": "Button-Text, der beim Klicken auf diesen Button zur Seite mit der Nutzungshistorie führt. Englisch muss als 'Usage' übersetzt werden, Chinesisch als '用量'."
+    "description": "Button-Text, der beim Klicken auf diesen Button zur Seite mit der Nutzungshistorie führt."
   },
   "field.serviceName": {
     "message": "Dienstname",
-    "description": "Der Name des Dienstes."
+    "description": "Name des Dienstes."
   },
   "field.application": {
     "message": "Antrag",
-    "description": "Der Antrag auf den Dienst."
+    "description": "Antrag auf den Dienst."
   },
   "field.status": {
     "message": "Status",
-    "description": "Der Status des Antrags."
+    "description": "Status des Antrags."
   },
   "field.id": {
     "message": "Antrags-ID",
-    "description": "Die ID des Antrags. Englisch muss als 'App ID' übersetzt werden, Chinesisch als '申请ID'."
+    "description": "ID des Antrags."
   },
   "field.remainingAmount": {
-    "message": "Restbetrag",
-    "description": "Der Restbetrag des Antrags. Englisch muss als 'Balance' übersetzt werden, Chinesisch als '实例余额'."
+    "message": "Guthaben",
+    "description": "Verfügbares Guthaben des Antrags."
   },
   "field.usedAmount": {
     "message": "Verwendet",
-    "description": "Der bereits verwendete Betrag des Antrags. Englisch muss als 'Used' übersetzt werden, Chinesisch als '已用'."
+    "description": "Betrag, der im Antrag verwendet wurde."
   },
   "field.apiKey": {
     "message": "API-Schlüssel",
@@ -69,159 +69,159 @@
   },
   "field.service": {
     "message": "Dienst",
-    "description": "Der Dienst des Antrags."
+    "description": "Dienst des Antrags."
   },
   "field.operation": {
     "message": "Operation",
-    "description": "Die Operation des Antrags."
+    "description": "Operation des Antrags."
   },
   "field.allowConsumeGlobal": {
-    "message": "Erlauben Sie die Verwendung des allgemeinen Guthabens",
-    "description": "Schalter, der die Verwendung des allgemeinen Guthabens (General Balance) erlaubt. Englisch muss als 'Allow Use General Balance' übersetzt werden, Chinesisch als '允许用通用余额'."
+    "message": "Allgemeines Guthaben verwenden",
+    "description": "Schalter, um die Verwendung des allgemeinen Guthabens zu erlauben."
   },
   "field.amount": {
     "message": "Betrag",
-    "description": "Der Betrag des Antrags."
+    "description": "Betrag des Antrags."
   },
   "field.scope": {
     "message": "Bereich",
-    "description": "Der Bereich des Antrags, der global oder spezifisch für einen Dienst sein kann."
+    "description": "Bereich des Antrags, kann global oder spezifisch sein."
   },
   "field.traceId": {
     "message": "Verfolgungs-ID",
-    "description": "Die Verfolgungs-ID des API-Aufrufs des Antrags im API-Dienst."
+    "description": "Verfolgungs-ID des API-Aufrufs des Antrags."
   },
   "field.shouldPayPrice": {
     "message": "Endpreis",
-    "description": "Der Endpreis des Antrags."
+    "description": "Endpreis des Antrags."
   },
   "field.api": {
     "message": "API",
-    "description": "Dies ist ein Online-Dienst, der über ein Formular über die API bereitgestellt wird."
+    "description": "Dies ist ein Online-Dienst, der über die API bereitgestellt wird."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Dies ist ein Online-Dienst, der über ein HTTP-Proxy (zum Übertragen von Daten) bereitgestellt wird."
+    "description": "Dies ist ein Online-Dienst, der über einen HTTP-Proxy bereitgestellt wird."
   },
   "field.credential": {
     "message": "Anmeldeinformationen",
-    "description": "Die Anmeldeinformationen des Antrags."
+    "description": "Anmeldeinformationen des Antrags."
   },
   "field.name": {
     "message": "Name",
-    "description": "Der Name des Antrags."
+    "description": "Name des Antrags."
   },
   "field.package": {
     "message": "Paket",
-    "description": "Das Paket stellt verschiedene Preispakete dar, z.B. 100 Dollar für 10.000 Punkte, 200 Dollar für 20.000 Punkte."
+    "description": "Paket, das verschiedene Preisoptionen darstellt."
   },
   "field.type": {
     "message": "Typ",
-    "description": "Der Typ des Antrags."
+    "description": "Typ des Antrags."
   },
   "field.freeAmount": {
     "message": "Kostenloser Betrag",
-    "description": "Der kostenlose Betrag des Antrags."
+    "description": "Kostenloser Betrag des Antrags."
   },
   "field.extraPrice": {
     "message": "Zusätzlicher Preis",
-    "description": "Der zusätzliche Preis, den der Benutzer für den Antrag zahlen sollte."
+    "description": "Zusätzlicher Preis, den der Benutzer zahlen sollte."
   },
   "message.alreadyApplied": {
     "message": "Sie haben diesen Dienst bereits beantragt, bitte überprüfen Sie die Konsole.",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er diesen Dienst bereits beantragt hat."
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer diesen Dienst bereits beantragt hat."
   },
   "message.applySuccessfully": {
     "message": "Antrag erfolgreich",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er diesen Dienst erfolgreich beantragt hat."
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer diesen Dienst erfolgreich beantragt hat."
   },
   "message.notApplied": {
-    "message": "Sie haben diesen Dienst noch nicht beantragt, bitte beantragen Sie den Dienst vor der Nutzung.",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er diesen Dienst noch nicht beantragt hat."
+    "message": "Sie haben diesen Dienst noch nicht beantragt, bitte beantragen Sie ihn vor der Nutzung.",
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer diesen Dienst noch nicht beantragt hat."
   },
   "message.globalBalanceBuyDescription": {
-    "message": "Sie können wählen, ob Sie in das allgemeine Guthaben aufladen oder für jede Anwendungsinstanz separat aufladen möchten. Diese Aufladung wird in das allgemeine Guthaben eingehen, und wenn das Guthaben einer bestimmten Anwendungsinstanz nicht ausreicht, wird automatisch das allgemeine Guthaben verwendet, um es aufzufüllen.",
-    "description": "Hinweistext, der erklärt, dass die Aufladung in das allgemeine Guthaben eingeht und bei unzureichendem Guthaben der Instanz automatisch aufgefüllt wird. Begriff: allgemeines Guthaben = General Balance (nicht als Global Balance übersetzen)."
+    "message": "Sie können Guthaben auf das allgemeine Guthaben aufladen oder für jede Antraginstanz separat aufladen. Diese Aufladung wird in das allgemeine Guthaben eingehen und wird automatisch verwendet, wenn das Guthaben einer Antraginstanz nicht ausreicht.",
+    "description": "Hinweis, der erklärt, dass die Aufladung in das allgemeine Guthaben eingeht und bei unzureichendem Guthaben automatisch verwendet wird."
   },
   "message.yourApplication": {
     "message": "Ihr Antrag",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er einen Antrag stellt."
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer seinen Antrag sieht."
   },
   "message.unverified": {
     "message": "Sie müssen die Identitätsprüfung abschließen, um diesen Dienst zu beantragen.",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn die Identitätsprüfung noch nicht abgeschlossen ist."
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer die Identitätsprüfung noch nicht abgeschlossen hat."
   },
   "message.goVerify": {
-    "message": "Zur Identitätsprüfung gehen",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn die Identitätsprüfung noch nicht abgeschlossen ist."
+    "message": "Zur Identitätsprüfung",
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer die Identitätsprüfung noch nicht abgeschlossen hat."
   },
   "message.requiredParameter": {
     "message": "Pflichtfeld",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er das Pflichtfeld nicht ausgefüllt hat."
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer ein Pflichtfeld nicht ausgefüllt hat."
   },
   "message.example": {
     "message": "Beispiel",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er das Pflichtfeld nicht ausgefüllt hat."
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer ein Pflichtfeld nicht ausgefüllt hat."
   },
   "message.applicationSelection": {
-    "message": "Hier sind die Pakete, die Sie derzeit beantragt oder gekauft haben. Sie können eines der Pakete auswählen, um den Dienst weiterhin zu nutzen.",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er ein Paket auswählen muss."
+    "message": "Hier sind die Pakete, die Sie derzeit beantragt oder gekauft haben. Sie können eines auswählen, um den Dienst fortzusetzen.",
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer ein Paket auswählen muss."
   },
   "message.createCredentialSuccessfully": {
     "message": "Anmeldeinformationen erfolgreich erstellt",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn die Anmeldeinformationen erfolgreich erstellt wurden."
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer Anmeldeinformationen erfolgreich erstellt hat."
   },
   "message.readPolicy": {
     "message": "Ich habe die Bedingungen gelesen und stimme zu",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er die Bedingungen gelesen und zugestimmt hat."
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer die Bedingungen gelesen und zugestimmt hat."
   },
   "message.policy": {
-    "message": "Nutzungsvereinbarung für Datentechnologiedienste",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er die Bedingungen gelesen und zugestimmt hat."
+    "message": "Nutzungsbedingungen für Daten- und Technologiedienste",
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer die Bedingungen gelesen und zugestimmt hat."
   },
   "message.notAgreePolicy": {
-    "message": "Sie haben der Nutzungsvereinbarung für Datentechnologiedienste noch nicht zugestimmt.",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er den Bedingungen nicht zugestimmt hat."
+    "message": "Sie haben den Nutzungsbedingungen für Daten- und Technologiedienste nicht zugestimmt.",
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer den Bedingungen nicht zugestimmt hat."
   },
   "message.welcome": {
     "message": "Willkommen",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er den Dienstantrag bestätigt."
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer den Dienstantrag bestätigt."
   },
   "message.rotateCredential": {
     "message": "Schlüssel zurücksetzen",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er den Schlüssel zurücksetzt."
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer den Schlüssel zurücksetzt."
   },
   "message.rotateCredentialConfirm": {
     "message": "Sind Sie sicher, dass Sie den Schlüssel zurücksetzen möchten? Nach dem Zurücksetzen kann er nicht wiederhergestellt werden.",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er den Schlüssel zurücksetzen möchte."
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer den Schlüssel zurücksetzen möchte."
   },
   "message.idDoesNotExist": {
     "message": "Antrag existiert nicht",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn der Antrag nicht existiert."
+    "description": "Nachricht, die angezeigt wird, wenn der Antrag nicht existiert."
   },
   "message.rotateCredentialSuccessfully": {
     "message": "Schlüssel erfolgreich zurückgesetzt",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn der Schlüssel erfolgreich zurückgesetzt wurde."
+    "description": "Nachricht, die angezeigt wird, wenn der Schlüssel erfolgreich zurückgesetzt wurde."
   },
   "message.rotateCredentialFailed": {
     "message": "Schlüssel zurücksetzen fehlgeschlagen, bitte kontaktieren Sie den Support.",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn das Zurücksetzen des Schlüssels fehlgeschlagen ist."
+    "description": "Nachricht, die angezeigt wird, wenn das Zurücksetzen des Schlüssels fehlgeschlagen ist."
   },
   "message.fetchFailed": {
-    "message": "Abruf der Anwendung fehlgeschlagen, bitte versuchen Sie es später erneut.",
+    "message": "Abruf der Anwendung fehlgeschlagen, bitte später erneut versuchen.",
     "description": "Hinweis, wenn der Abruf der Anwendungslisten fehlgeschlagen ist."
   },
   "message.updateFailed": {
     "message": "Änderung fehlgeschlagen",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn die Änderung fehlgeschlagen ist."
+    "description": "Nachricht, die angezeigt wird, wenn die Änderung fehlgeschlagen ist."
   },
   "message.updateSuccessfully": {
     "message": "Änderung erfolgreich",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn die Änderung erfolgreich war."
+    "description": "Nachricht, die angezeigt wird, wenn die Änderung erfolgreich war."
   },
   "message.neverExpire": {
     "message": "Nie ablaufen",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn der Antrag nie abläuft."
+    "description": "Nachricht, die angezeigt wird, wenn der Antrag nie abläuft."
   },
   "title.buyService": {
     "message": "Dienst kaufen",
@@ -241,7 +241,7 @@
   },
   "title.applicationBalance": {
     "message": "Exklusive Punkte - {service}",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er den Antragssaldo einsehen möchte."
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer den Antragssaldo einsehen möchte."
   },
   "title.count": {
     "message": "Gesamtanzahl der Anträge",
@@ -249,46 +249,46 @@
   },
   "message.countDescription": {
     "message": "Jeder Dienst entspricht einer Antragsinstanz, die Sie unten verwalten können, um Schlüssel, Nutzung usw. anzuzeigen.",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er die Antragsanzahl einsehen möchte."
+    "description": "Nachricht, die angezeigt wird, wenn der Benutzer die Antragsanzahl einsehen möchte."
   },
   "title.globalBalance": {
     "message": "Allgemeines Guthaben",
-    "description": "Titel der Seite, wenn der Benutzer das allgemeine Guthaben einsehen möchte. Englisch muss als 'General Balance' übersetzt werden, Chinesisch als '通用余额'."
+    "description": "Titel der Seite, wenn der Benutzer das allgemeine Guthaben einsehen möchte."
   },
   "message.globalBalanceDescription": {
     "message": "Wenn 'Allgemeines Guthaben erlauben' aktiviert ist, wird bei unzureichendem Instanzguthaben automatisch das allgemeine Guthaben verwendet.",
-    "description": "Hinweistext, der erklärt, dass bei unzureichendem Instanzguthaben automatisch das allgemeine Guthaben verbraucht wird. Terminologie: Allgemeines Guthaben = General Balance (nicht als Global Balance übersetzen)."
+    "description": "Hinweis, dass bei unzureichendem Instanzguthaben automatisch das allgemeine Guthaben verbraucht wird."
   },
   "button.service": {
-    "message": "Exklusiver Kundenservice",
-    "description": "Button-Text, der beim Klicken auf diesen Button zur Seite des exklusiven Kundenservices führt."
+    "message": "Exklusiver Support",
+    "description": "Button-Text, der den Benutzer zur Seite für exklusiven Support weiterleitet."
   },
   "button.acquire": {
-    "message": "Kundenservice hinzufügen",
-    "description": "Button-Text, der beim Klicken auf diesen Button diesen Punkt erwirbt."
+    "message": "Support hinzufügen",
+    "description": "Button-Text, der den Benutzer dazu auffordert, exklusiven Support hinzuzufügen."
   },
   "button.delete": {
     "message": "Löschen",
-    "description": "Button-Text, der beim Klicken auf diesen Button diesen Punkt löscht."
+    "description": "Button-Text, der den Benutzer auffordert, den Eintrag zu löschen."
   },
   "field.dataset": {
     "message": "Datensatz",
-    "description": "Der Datensatz, der beantragt wird."
+    "description": "Der Datensatz, der für den Antrag verwendet wird."
   },
   "field.disabled": {
     "message": "Deaktiviert",
-    "description": "Ob der Antrag deaktiviert ist."
+    "description": "Ob die Anwendung deaktiviert ist."
   },
   "message.addServiceToAcquire": {
-    "message": "Bitte fügen Sie den Kundenservice hinzu, um zu erhalten",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er den Kundenservice noch nicht hinzugefügt hat, um zu erhalten."
+    "message": "Bitte fügen Sie den Support hinzu, um zu erhalten",
+    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er noch keinen Support hinzugefügt hat (englischer Vorschlag: Add support to acquire)."
   },
   "message.confirmApplying": {
-    "message": "Dienstantrag bestätigen",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er den Dienstantrag bestätigt."
+    "message": "Antrag auf Dienst bestätigen",
+    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er den Antrag auf Dienst bestätigt."
   },
   "message.confirmDelete": {
-    "message": "Sind Sie sicher, dass Sie diesen Antrag löschen möchten? Nach dem Löschen gehen alle Antragsdaten verloren.",
+    "message": "Sind Sie sicher, dass Sie diesen Antrag löschen möchten? Nach der Löschung gehen alle Antragsdaten verloren.",
     "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er die Löschung des Antrags bestätigt."
   },
   "message.placeEnter": {
@@ -300,12 +300,12 @@
     "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er ungültige Daten eingibt."
   },
   "message.deleteFailed": {
-    "message": "Löschen fehlgeschlagen",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn das Löschen fehlgeschlagen ist."
+    "message": "Löschung fehlgeschlagen",
+    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn die Löschung fehlschlägt."
   },
   "message.deleteSuccessfully": {
-    "message": "Löschen erfolgreich",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn das Löschen erfolgreich war."
+    "message": "Löschung erfolgreich",
+    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn die Löschung erfolgreich war."
   },
   "title.application": {
     "message": "Antrag",

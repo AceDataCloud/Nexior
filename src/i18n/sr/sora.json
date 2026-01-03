@@ -20,12 +20,12 @@
     "description": "ID praćenja zadatka"
   },
   "name.createdAt": {
-    "message": "Vreme kreiranja",
-    "description": "Datum i vreme generisanja Kling videa"
+    "message": "Datum kreiranja",
+    "description": "Datum i vreme generisanja Sora videa"
   },
   "name.startEndImage": {
-    "message": "Referentne slike početnog i završnog okvira",
-    "description": "Referentne slike za video koji treba generisati"
+    "message": "Referentne slike",
+    "description": "Oznaka polja forme: referentne slike (preporučuje se da se prevodi kao 'Start/End Frames', zadržati kratak oblik kako bi se izbeglo preklapanje dugmadi)"
   },
   "name.action": {
     "message": "Akcija",
@@ -45,15 +45,23 @@
   },
   "name.orientation": {
     "message": "Orijentacija videa",
-    "description": "Ime parametra za orijentaciju videa"
+    "description": "Ime parametra orijentacije videa"
+  },
+  "option.portrait": {
+    "message": "Portret",
+    "description": "Tekst opcije: portretna orijentacija (preporučuje se da se prevodi kao 'Portrait', zadržati kratak oblik)"
+  },
+  "option.landscape": {
+    "message": "Pejzaž",
+    "description": "Tekst opcije: pejzažna orijentacija (preporučuje se da se prevodi kao 'Landscape', zadržati kratak oblik)"
   },
   "name.duration": {
     "message": "Trajanje videa",
-    "description": "Ime parametra za trajanje videa"
+    "description": "Ime parametra trajanja videa"
   },
   "name.size": {
     "message": "Rezolucija videa",
-    "description": "Ime parametra za rezoluciju videa"
+    "description": "Ime parametra rezolucije videa"
   },
   "description.imageUrl": {
     "message": "U zadatku za kreiranje videa sa više slika, potrebno je otpremiti više slika.",
@@ -76,23 +84,23 @@
     "description": "Status obrade zadatka"
   },
   "placeholder.paddingNoise": {
-    "message": "Molimo izaberite...",
+    "message": "Izaberite...",
     "description": "Placeholder za unos šuma popunjavanja"
   },
   "placeholder.select": {
-    "message": "Izaberite",
+    "message": "Izaberi",
     "description": "Placeholder za izbor u polju"
   },
   "placeholder.paddingLevel": {
-    "message": "Molimo izaberite...",
+    "message": "Izaberite...",
     "description": "Placeholder za nivo popunjavanja"
   },
   "placeholder.prompt": {
-    "message": "Unesite prompt reči za stil videa koji želite da generišete, na primer: moving",
-    "description": "Placeholder za prompt polje"
+    "message": "Unesite prompt za stil videa, na primer: moving",
+    "description": "Placeholder u polju za prompt"
   },
   "placeholder.position": {
-    "message": "Molimo izaberite...",
+    "message": "Izaberite...",
     "description": "Placeholder za unos pozicije"
   },
   "tip.proOnly": {
@@ -104,11 +112,11 @@
     "description": "Tekst dugmeta za generisanje Sora videa"
   },
   "button.action1": {
-    "message": "Generiši video",
+    "message": "Tekst u video",
     "description": "Tekst dugmeta za generisanje Sora videa"
   },
   "button.action2": {
-    "message": "Generiši video iz slika",
+    "message": "Slika u video",
     "description": "Tekst dugmeta za generisanje Sora videa"
   },
   "button.download": {
@@ -117,7 +125,7 @@
   },
   "button.uploadImageUrl": {
     "message": "Otpremi sliku",
-    "description": "Tekst dugmeta za otpremanje slike"
+    "description": "Tekst dugmeta za otpremanje slike (preporučuje se pojednostaviti na 'Upload', ne koristiti 'Upload Image')"
   },
   "button.uploadVideoUrl": {
     "message": "Otpremi video",
@@ -128,28 +136,28 @@
     "description": "Tekst dugmeta koje omogućava korisniku da otpremi reference"
   },
   "message.uploadReferencesExceed": {
-    "message": "Možete otpremiti najviše 2 slike",
+    "message": "Maksimalno možete otpremiti 2 slike",
     "description": "Poruka o grešci kada je broj otpremljenih slika premašio limit"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Uspešno otpremljena slika",
-    "description": "Poruka o uspehu kada je slika uspešno otpremljena"
+    "message": "Uspešno otpremanje slika",
+    "description": "Poruka o uspehu kada su slike uspešno otpremljene"
   },
   "message.uploadReferencesError": {
-    "message": "Neuspešno otpremanje slike, molimo pokušajte ponovo kasnije",
-    "description": "Poruka o grešci kada otpremanje slike nije uspelo"
+    "message": "Neuspešno otpremanje slika, molimo pokušajte ponovo kasnije",
+    "description": "Poruka o grešci kada otpremanje slika nije uspelo"
   },
   "message.startingTask": {
     "message": "Pokreće se zadatak...",
-    "description": "Poruka kada se zadatak za crtanje pokreće"
+    "description": "Poruka kada započinje zadatak crtanja"
   },
   "message.startTaskSuccess": {
-    "message": "Uspešno pokrenut zadatak za generisanje",
+    "message": "Uspešno pokrenut zadatak generisanja",
     "description": "Poruka o uspehu kada je zadatak uspešno pokrenut"
   },
   "message.startTaskFailed": {
     "message": "Pokretanje zadatka nije uspelo, molimo kontaktirajte administratora",
-    "description": "Poruka o grešci kada pokretanje zadatka za crtanje nije uspelo"
+    "description": "Poruka o grešci kada pokretanje zadatka crtanja nije uspelo"
   },
   "message.usedUp": {
     "message": "Vaši bodovi su potrošeni, molimo kupite više bodova da biste nastavili sa korišćenjem",
@@ -168,40 +176,40 @@
     "description": "Poruka kada generisanje slike nije uspelo"
   },
   "message.uploadVideoExceed": {
-    "message": "Broj otpremljenih slika za početni okvir premašuje limit",
-    "description": "Poruka o grešci kada broj otpremljenih slika za početni okvir premašuje limit"
+    "message": "Broj slika prvog okvira premašuje ograničenje",
+    "description": "Greška kada broj slika prvog okvira premašuje ograničenje"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Veličina otpremljenog fajla ne može biti veća od 10MB!",
-    "description": "Poruka o grešci kada veličina otpremljenog fajla premašuje 10MB!"
+    "message": "Veličina datoteke ne može biti veća od 10MB!",
+    "description": "Greška kada veličina datoteke ne može biti veća od 10MB!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Otpremani fajl mora biti u MP4 formatu!",
-    "description": "Poruka o grešci kada otpremani fajl nije u MP4 formatu!"
+    "message": "Datoteka mora biti u MP4 formatu!",
+    "description": "Greška kada datoteka mora biti u MP4 formatu!"
   },
   "message.uploadStartEndImageExceed": {
     "message": "Broj slika prvog okvira premašuje ograničenje",
-    "description": "Poruka o grešci kada broj slika prvog okvira premašuje ograničenje"
+    "description": "Greška kada broj slika prvog okvira premašuje ograničenje"
   },
   "message.uploadEndImageExceed": {
-    "message": "Broj slika za završni kadar premašuje ograničenje",
-    "description": "Poruka o grešci kada broj slika za prvi kadar premašuje ograničenje"
+    "message": "Broj slika poslednjeg okvira premašuje ograničenje",
+    "description": "Greška kada broj slika poslednjeg okvira premašuje ograničenje"
   },
   "message.uploadStartImageError": {
-    "message": "Greška prilikom učitavanja slike za prvi kadar",
-    "description": "Poruka o grešci kada učitavanje slike za prvi kadar ne uspe"
+    "message": "Greška prilikom učitavanja slike prvog okvira",
+    "description": "Greška kada dođe do problema prilikom učitavanja slike prvog okvira"
   },
   "message.uploadVideoError": {
     "message": "Greška prilikom učitavanja videa",
-    "description": "Poruka o grešci kada učitavanje slike za prvi kadar ne uspe"
+    "description": "Greška kada dođe do problema prilikom učitavanja videa"
   },
   "message.uploadEndImageError": {
-    "message": "Greška prilikom učitavanja slike za završni kadar",
-    "description": "Poruka o grešci kada učitavanje slike za završni kadar ne uspe"
+    "message": "Greška prilikom učitavanja slike poslednjeg okvira",
+    "description": "Greška kada dođe do problema prilikom učitavanja slike poslednjeg okvira"
   },
   "message.uploadDocumentsError": {
     "message": "Greška prilikom učitavanja dokumenata",
-    "description": "Poruka o grešci kada učitavanje dokumenata ne uspe"
+    "description": "Greška kada dođe do problema prilikom učitavanja dokumenata"
   },
   "message.noOperations": {
     "message": "Nema dostupnih operacija",

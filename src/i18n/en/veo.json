@@ -4,7 +4,7 @@
     "description": "The ID of the task"
   },
   "name.translation": {
-    "message": "Automatic Translation",
+    "message": "Auto Translation",
     "description": "Automatic translation for Veo videos"
   },
   "name.modePro": {
@@ -12,12 +12,12 @@
     "description": "High quality mode for Kling videos"
   },
   "name.failure": {
-    "message": "Failure",
+    "message": "Failed",
     "description": "The failure status of the task"
   },
   "name.failureReason": {
     "message": "Failure Reason",
-    "description": "The reason for the task failure"
+    "description": "The reason for task failure"
   },
   "name.status": {
     "message": "Status",
@@ -29,19 +29,19 @@
   },
   "name.createdAt": {
     "message": "Created At",
-    "description": "The date and time when the Kling video was generated"
+    "description": "The date and time the Veo video was generated"
   },
   "name.startEndImage": {
-    "message": "Start and End Frame Reference Images",
-    "description": "Reference images for the video to be generated"
+    "message": "Start/End Frames",
+    "description": "Form field label: Start/End frame reference images"
   },
   "name.action": {
-    "message": "Action",
+    "message": "Actions",
     "description": "List of available actions"
   },
   "name.action3": {
     "message": "Get 1080p Video From",
-    "description": "Reference images for the video to be generated"
+    "description": "Reference image for the video to be generated"
   },
   "name.prompt": {
     "message": "Video Prompt",
@@ -53,14 +53,14 @@
   },
   "name.veoBot": {
     "message": "Google Veo Bot",
-    "description": "The name of the Veo video generator"
+    "description": "Name of the Veo video generator"
   },
   "name.ratio": {
     "message": "Ratio",
-    "description": "The name of the ratio parameter"
+    "description": "Name of the ratio parameter"
   },
   "description.translation": {
-    "message": "Automatic translation can be enabled for prompts when creating video tasks.",
+    "message": "You can enable auto-translation for prompts when creating video tasks.",
     "description": "Description of the 'translation' parameter"
   },
   "description.imageUrl": {
@@ -77,7 +77,7 @@
   },
   "status.pending": {
     "message": "Pending",
-    "description": "The waiting status of the task"
+    "description": "The pending status of the task"
   },
   "status.processing": {
     "message": "Processing",
@@ -96,7 +96,7 @@
     "description": "Placeholder for padding level"
   },
   "placeholder.prompt": {
-    "message": "Enter prompt words for the video style to be generated, e.g., moving",
+    "message": "Enter prompt for video style, e.g., moving",
     "description": "Placeholder text in the prompt field"
   },
   "placeholder.position": {
@@ -105,35 +105,35 @@
   },
   "button.generate": {
     "message": "Generate",
-    "description": "Button text for generating Veo videos"
+    "description": "Button text to generate Veo video"
   },
   "button.action1": {
     "message": "Text to Video",
-    "description": "Button text for generating Veo videos"
+    "description": "Button text to generate Veo video"
   },
   "button.action2": {
     "message": "Image to Video",
-    "description": "Button text for generating Veo videos"
+    "description": "Button text to generate Veo video"
   },
   "button.action3": {
     "message": "Get 1080p",
-    "description": "Button text for generating Veo videos"
+    "description": "Button text to generate Veo video"
   },
   "button.download": {
     "message": "Download Video",
-    "description": "Button text for downloading the video"
+    "description": "Button text to download video"
   },
   "button.uploadImageUrl": {
-    "message": "Upload Image",
-    "description": "Button text for uploading images"
+    "message": "Upload",
+    "description": "Button text to upload image"
   },
   "button.uploadVideoUrl": {
     "message": "Upload Video",
-    "description": "Button text for uploading videos"
+    "description": "Button text to upload video"
   },
   "button.uploadReferences": {
     "message": "Upload",
-    "description": "Button text that allows users to upload references"
+    "description": "Button text allowing users to upload references"
   },
   "message.uploadReferencesExceed": {
     "message": "You can upload a maximum of 2 images",
@@ -153,23 +153,23 @@
   },
   "message.startTaskSuccess": {
     "message": "Task initiated successfully",
-    "description": "Success message when the task is started successfully"
+    "description": "Success message when the task is successfully started"
   },
   "message.startTaskFailed": {
     "message": "Failed to initiate task, please contact the administrator",
     "description": "Error message when starting the drawing task fails"
   },
   "message.usedUp": {
-    "message": "Your credits are exhausted, please purchase more credits to continue using",
-    "description": "Message when credits are exhausted"
+    "message": "Your credits are exhausted, please purchase more to continue",
+    "description": "Message when credits are used up"
   },
   "message.generating": {
     "message": "Generating...",
-    "description": "Message when the image is being generated"
+    "description": "Message while the image is being generated"
   },
   "message.downloadVideo": {
     "message": "Download this video",
-    "description": "Message when the image is being generated"
+    "description": "Message while the image is being generated"
   },
   "message.generateFailed": {
     "message": "Video generation failed",
@@ -180,35 +180,35 @@
     "description": "Error message when the number of uploaded start frame images exceeds the limit"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Uploaded file size cannot exceed 10MB!",
+    "message": "File size must not exceed 10MB!",
     "description": "Error message when the uploaded file size exceeds 10MB!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "The uploaded file must be in MP4 format!",
+    "message": "Uploaded file must be in MP4 format!",
     "description": "Error message when the uploaded file is not in MP4 format!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "The number of uploaded first frame images exceeds the limit",
-    "description": "Error message when the number of uploaded first frame images exceeds the limit"
+    "message": "Number of uploaded start frame images exceeds limit",
+    "description": "Error message when the number of uploaded start frame images exceeds the limit"
   },
   "message.uploadEndImageExceed": {
-    "message": "The number of uploaded last frame images exceeds the limit",
-    "description": "Error message when the number of uploaded last frame images exceeds the limit"
+    "message": "Number of uploaded end frame images exceeds limit",
+    "description": "Error message when the number of uploaded end frame images exceeds the limit"
   },
   "message.uploadStartImageError": {
-    "message": "Failed to upload the first frame image",
-    "description": "Error message when the upload of the first frame image fails"
+    "message": "Failed to upload start frame image",
+    "description": "Error message when the upload of the start frame image fails"
   },
   "message.uploadVideoError": {
-    "message": "Failed to upload the video",
+    "message": "Failed to upload video",
     "description": "Error message when the upload of the video fails"
   },
   "message.uploadEndImageError": {
-    "message": "Failed to upload the last frame image",
-    "description": "Error message when the upload of the last frame image fails"
+    "message": "Failed to upload end frame image",
+    "description": "Error message when the upload of the end frame image fails"
   },
   "message.uploadDocumentsError": {
-    "message": "Failed to upload the document",
+    "message": "Failed to upload document",
     "description": "Error message when the upload of the document fails"
   },
   "message.noOperations": {

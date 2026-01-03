@@ -41,11 +41,11 @@
   },
   "name.createdAt": {
     "message": "생성 시간",
-    "description": "Flux 이미지 생성의 날짜와 시간"
+    "description": "Flux 이미지 생성 날짜 및 시간"
   },
   "name.numbers": {
     "message": "이미지 수",
-    "description": "생성할 이미지의 수"
+    "description": "생성할 이미지 수"
   },
   "name.quality": {
     "message": "이미지 품질",
@@ -61,18 +61,18 @@
   },
   "name.model": {
     "message": "모델 버전",
-    "description": "이미지를 생성하는 데 사용되는 모델 버전"
+    "description": "이미지 생성을 위한 모델 버전"
   },
   "name.fluxBot": {
     "message": "Flux 봇",
     "description": "Flux 이미지 생성기의 이름"
   },
   "description.numbers": {
-    "message": "생성할 이미지의 수를 지정합니다. 값의 범위는: 1-4입니다.",
+    "message": "생성할 이미지 수를 지정합니다. 값의 범위: 1-4.",
     "description": "매개변수 'numbers'의 설명"
   },
   "description.quality": {
-    "message": "생성할 이미지의 품질을 지정합니다. 값의 범위는: 1-100입니다.",
+    "message": "생성할 이미지의 품질을 지정합니다. 값의 범위: 1-100.",
     "description": "매개변수 'quality'의 설명"
   },
   "description.prompt": {
@@ -80,7 +80,7 @@
     "description": "매개변수 'prompt'의 설명"
   },
   "description.imageUrl": {
-    "message": "편집 이미지를 생성하는 작업에서 이미지를 업로드해야 합니다.",
+    "message": "이미지 편집 작업을 생성할 때 이미지를 업로드해야 합니다.",
     "description": "매개변수 'imageUrl'의 설명"
   },
   "status.pending": {
@@ -89,7 +89,7 @@
   },
   "status.processing": {
     "message": "처리 중",
-    "description": "작업의 대기 상태"
+    "description": "작업의 처리 상태"
   },
   "placeholder.paddingNoise": {
     "message": "선택하세요...",
@@ -97,7 +97,7 @@
   },
   "placeholder.select": {
     "message": "선택",
-    "description": "선택 필드의 자리 표시기 텍스트"
+    "description": "선택 필드의 자리 표시자 텍스트"
   },
   "placeholder.paddingLevel": {
     "message": "선택하세요...",
@@ -105,7 +105,7 @@
   },
   "placeholder.prompt": {
     "message": "생성할 이미지 스타일의 프롬프트를 입력하세요. 예: 흰색 샴 고양이",
-    "description": "프롬프트 필드의 자리 표시기 텍스트"
+    "description": "프롬프트 필드의 자리 표시자 텍스트"
   },
   "placeholder.position": {
     "message": "선택하세요...",
@@ -136,24 +136,24 @@
     "description": "Flux 이미지를 생성하는 버튼 텍스트"
   },
   "button.uploadImageUrl": {
-    "message": "이미지 업로드",
-    "description": "이미지를 업로드하는 버튼 텍스트"
+    "message": "업로드",
+    "description": "이미지 업로드 버튼 텍스트 (영어는 'Upload'로 간단히 하세요, 'Upload Image' 사용 금지)"
   },
   "button.extend": {
     "message": "이미지 확장",
-    "description": "이미지를 확장하는 버튼 텍스트"
+    "description": "이미지 확장 버튼 텍스트"
   },
   "button.viewImage": {
-    "message": "원본 이미지 보기",
-    "description": "Flux 이미지를 생성하는 버튼 텍스트"
+    "message": "원본 보기",
+    "description": "Flux 이미지 생성 버튼 텍스트"
   },
   "button.download": {
     "message": "이미지 다운로드",
-    "description": "이미지를 다운로드하는 버튼 텍스트"
+    "description": "이미지 다운로드 버튼 텍스트"
   },
   "message.downloadImage": {
     "message": "이미지 새 창 열기",
-    "description": "이미지를 새 창에서 여는 메시지"
+    "description": "이미지 새 창 열기"
   },
   "message.uploadReferencesExceed": {
     "message": "최대 5장의 이미지를 업로드할 수 있습니다.",
@@ -161,27 +161,27 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "이미지 업로드 성공",
-    "description": "이미지 업로드가 성공했을 때의 성공 메시지"
+    "description": "이미지 업로드 성공 시의 성공 메시지"
   },
   "message.uploadReferencesError": {
-    "message": "이미지 업로드 실패, 나중에 다시 시도하세요.",
+    "message": "이미지 업로드 실패, 나중에 다시 시도하세요",
     "description": "이미지 업로드 실패 시의 오류 메시지"
   },
   "message.startingTask": {
     "message": "작업 시작 중...",
-    "description": "그림 작업이 시작될 때의 메시지"
+    "description": "그림 작업 시작 시의 메시지"
   },
   "message.startTaskSuccess": {
-    "message": "생성 작업이 성공적으로 시작되었습니다.",
-    "description": "작업이 성공적으로 시작되었을 때의 성공 메시지"
+    "message": "생성 작업 시작 성공",
+    "description": "작업 시작 성공 시의 성공 메시지"
   },
   "message.startTaskFailed": {
-    "message": "작업 시작 실패, 관리자에게 문의하세요.",
+    "message": "작업 시작 실패, 관리자에게 문의하세요",
     "description": "그림 작업 시작 실패 시의 오류 메시지"
   },
   "message.usedUp": {
     "message": "포인트가 소진되었습니다. 더 많은 포인트를 구매한 후 계속 사용하세요.",
-    "description": "소진되었을 때의 메시지"
+    "description": "소진 시의 메시지"
   },
   "message.generating": {
     "message": "생성 중...",
@@ -193,7 +193,7 @@
   },
   "message.extendVideo": {
     "message": "이 이미지를 계속 생성합니다",
-    "description": "이미지가 생성되는 동안의 메시지"
+    "description": "이미지가 생성 중일 때의 메시지"
   },
   "message.generateFailed": {
     "message": "이미지 생성 실패",
@@ -201,39 +201,39 @@
   },
   "message.uploadVideoExceed": {
     "message": "첫 번째 프레임 이미지 수가 제한을 초과했습니다",
-    "description": "첫 번째 프레임 이미지 수가 제한을 초과했을 때의 오류 정보"
+    "description": "첫 번째 프레임 이미지 수가 제한을 초과했을 때의 오류 메시지"
   },
   "message.uploadVideoSizeExceed": {
     "message": "업로드 파일 크기는 10MB를 초과할 수 없습니다!",
-    "description": "업로드 파일 크기가 10MB를 초과할 수 없을 때의 오류 정보"
+    "description": "업로드 파일 크기가 10MB를 초과했을 때의 오류 메시지"
   },
   "message.uploadVideoTypeFailed": {
     "message": "업로드 파일은 MP4 형식이어야 합니다!",
-    "description": "업로드 파일이 MP4 형식이어야 할 때의 오류 정보"
+    "description": "업로드 파일이 MP4 형식이 아닐 때의 오류 메시지"
   },
   "message.uploadStartImageExceed": {
     "message": "참조 이미지 수가 제한을 초과했습니다",
-    "description": "참조 이미지 수가 제한을 초과했을 때의 오류 정보"
+    "description": "참조 이미지 수가 제한을 초과했을 때의 오류 메시지"
   },
   "message.uploadEndImageExceed": {
     "message": "마지막 프레임 이미지 수가 제한을 초과했습니다",
-    "description": "마지막 프레임 이미지 수가 제한을 초과했을 때의 오류 정보"
+    "description": "마지막 프레임 이미지 수가 제한을 초과했을 때의 오류 메시지"
   },
   "message.uploadStartImageError": {
     "message": "참조 이미지 업로드 실패",
-    "description": "참조 이미지 업로드 실패 시의 오류 정보"
+    "description": "참조 이미지 업로드 실패 시의 오류 메시지"
   },
   "message.uploadVideoError": {
     "message": "이미지 업로드 실패",
-    "description": "첫 번째 프레임 이미지 업로드 실패 시의 오류 정보"
+    "description": "첫 번째 프레임 이미지 업로드 실패 시의 오류 메시지"
   },
   "message.uploadEndImageError": {
     "message": "마지막 프레임 이미지 업로드 실패",
-    "description": "마지막 프레임 이미지 업로드 실패 시의 오류 정보"
+    "description": "마지막 프레임 이미지 업로드 실패 시의 오류 메시지"
   },
   "message.uploadDocumentsError": {
     "message": "문서 업로드 실패",
-    "description": "문서 업로드 실패 시의 오류 정보"
+    "description": "문서 업로드 실패 시의 오류 메시지"
   },
   "message.noOperations": {
     "message": "사용 가능한 작업이 없습니다",

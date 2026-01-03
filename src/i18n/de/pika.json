@@ -12,15 +12,15 @@
     "description": "Pika的视频效果名称"
   },
   "style.effect4": {
-    "message": "Tada",
+    "message": "Ta-da",
     "description": "Pika的视频效果名称"
   },
   "style.effect5": {
-    "message": "Entleeren",
+    "message": "Luft ablassen",
     "description": "Pika的视频效果名称"
   },
   "style.effect6": {
-    "message": "Zerbröckeln",
+    "message": "Zerbröseln",
     "description": "Pika的视频效果名称"
   },
   "style.effect7": {
@@ -32,7 +32,7 @@
     "description": "Pika的视频效果名称"
   },
   "style.effect9": {
-    "message": "Aufblasen",
+    "message": "Aufpumpen",
     "description": "Pika的视频效果名称"
   },
   "style.effect10": {
@@ -40,11 +40,11 @@
     "description": "Pika的视频效果名称"
   },
   "style.effect11": {
-    "message": "Kuchenhaft",
+    "message": "Kuchen-ify",
     "description": "Pika的视频效果名称"
   },
   "style.effect12": {
-    "message": "Zerquetschen",
+    "message": "Zerdrücken",
     "description": "Pika的视频效果名称"
   },
   "style.effect13": {
@@ -64,7 +64,7 @@
     "description": "任务的失败状态"
   },
   "name.failureReason": {
-    "message": "Fehlergrund",
+    "message": "Fehlerursache",
     "description": "任务失败的原因"
   },
   "name.status": {
@@ -72,11 +72,11 @@
     "description": "任务的状态"
   },
   "name.traceId": {
-    "message": "Trace-ID",
+    "message": "Verfolgungs-ID",
     "description": "任务的追踪 ID"
   },
   "name.createdAt": {
-    "message": "Erstellungsdatum",
+    "message": "Erstellt am",
     "description": "生成 Pika 视频的日期和时间"
   },
   "name.imageUrl": {
@@ -88,12 +88,12 @@
     "description": "自定义视频"
   },
   "name.prompt": {
-    "message": "Videohinweis",
+    "message": "Video-Eingabe",
     "description": "内容输入的提示"
   },
   "name.ingredients": {
-    "message": "Mehrbilder-Video erstellen",
-    "description": "自定义扩展视频"
+    "message": "Mehrere Bilder",
+    "description": "多图创建视频开关/标签（英文建议：Multi-Image，保持简短）"
   },
   "name.model": {
     "message": "Modellversion",
@@ -112,23 +112,23 @@
     "description": "Pika 视频生成器的名称"
   },
   "description.ingredients": {
-    "message": "Wenn Sie mehrere Bilder hochladen möchten, um Ihr eigenes Video zu erstellen, aktivieren Sie diese Option.",
+    "message": "Wenn Sie mehrere Bilder hochladen möchten, um Ihr eigenes Video zu erstellen, aktivieren Sie diesen Schalter.",
     "description": "参数'ingredients'的描述"
   },
   "description.imageUrl": {
-    "message": "In Mehrbilder-Videoerstellungsaufgaben müssen mehrere Bilder hochgeladen werden.",
+    "message": "Bei der Erstellung eines Videos mit mehreren Bildern müssen mehrere Bilder hochgeladen werden.",
     "description": "参数'imageUrl'的描述"
   },
   "description.prompt": {
-    "message": "Stichwörter für die Erstellung eines Pika-Videos",
+    "message": "Eingabeaufforderung für die Erstellung von Pika-Videos",
     "description": "参数'prompt'的描述"
   },
   "status.pending": {
-    "message": "Ausstehend",
+    "message": "Warten",
     "description": "任务的等待状态"
   },
   "status.processing": {
-    "message": "In Bearbeitung",
+    "message": "Wird bearbeitet",
     "description": "任务的等待状态"
   },
   "placeholder.paddingNoise": {
@@ -144,7 +144,7 @@
     "description": "填充级别的占位符"
   },
   "placeholder.prompt": {
-    "message": "Geben Sie ein Stichwort für den Stil des zu erstellenden Videos ein, z.B.: moving",
+    "message": "Geben Sie die Eingabeaufforderung für den Video-Stil ein, z.B.: bewegend",
     "description": "提示字段中的占位文本"
   },
   "placeholder.position": {
@@ -180,7 +180,7 @@
     "description": "生成Pika视频的按钮文本"
   },
   "button.generate": {
-    "message": "Erstellen",
+    "message": "Generieren",
     "description": "生成Pika视频的按钮文本"
   },
   "button.extend": {
@@ -192,99 +192,99 @@
     "description": "下载视频按钮文本"
   },
   "button.uploadImageUrl": {
-    "message": "Bild hochladen",
-    "description": "上传图片的按钮文本"
+    "message": "Hochladen",
+    "description": "上传图片按钮文本（英文请简化为“Upload”，不要用“Upload Image”）"
   },
   "button.uploadVideoUrl": {
     "message": "Video hochladen",
     "description": "上传视频的按钮文本"
   },
   "message.uploadReferencesExceed": {
-    "message": "Es können maximal 5 Bilder hochgeladen werden",
-    "description": "上传的图片数量超过限制时的错误消息"
+    "message": "Maximal 5 Bilder hochladen",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Bilder das Limit überschreitet"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Bild erfolgreich hochgeladen",
-    "description": "Erfolgsmeldung beim erfolgreichen Hochladen eines Bildes"
+    "message": "Bilder erfolgreich hochgeladen",
+    "description": "Erfolgsmeldung, wenn Bilder erfolgreich hochgeladen wurden"
   },
   "message.uploadReferencesError": {
-    "message": "Bild konnte nicht hochgeladen werden, bitte versuchen Sie es später erneut",
-    "description": "Fehlermeldung, wenn das Hochladen von Bildern fehlschlägt"
+    "message": "Hochladen der Bilder fehlgeschlagen, bitte später erneut versuchen",
+    "description": "Fehlermeldung, wenn das Hochladen der Bilder fehlschlägt"
   },
   "message.startingTask": {
-    "message": "Aufgabe wird gestartet...",
-    "description": "Nachricht, wenn die Zeichnungsaufgabe beginnt"
+    "message": "Starte Aufgabe...",
+    "description": "Meldung, wenn die Zeichnungsaufgabe beginnt"
   },
   "message.startTaskSuccess": {
     "message": "Generierungsaufgabe erfolgreich gestartet",
-    "description": "Erfolgsmeldung, wenn das Starten der Aufgabe erfolgreich war"
+    "description": "Erfolgsmeldung, wenn die Aufgabe erfolgreich gestartet wurde"
   },
   "message.startTaskFailed": {
-    "message": "Aufgabe konnte nicht gestartet werden, bitte wenden Sie sich an den Administrator",
+    "message": "Aufgabenstart fehlgeschlagen, bitte kontaktieren Sie den Administrator",
     "description": "Fehlermeldung, wenn das Starten der Zeichnungsaufgabe fehlschlägt"
   },
   "message.usedUp": {
-    "message": "Ihre Punkte sind aufgebraucht, bitte kaufen Sie mehr Punkte, um fortzufahren",
-    "description": "Nachricht bei aufgebrauchten Punkten"
+    "message": "Ihr Guthaben ist aufgebraucht, bitte kaufen Sie mehr Punkte",
+    "description": "Meldung, wenn das Guthaben aufgebraucht ist"
   },
   "message.generating": {
     "message": "Wird generiert...",
-    "description": "Nachricht, wenn das Bild generiert wird"
+    "description": "Meldung, wenn das Bild generiert wird"
   },
   "message.downloadVideo": {
     "message": "Dieses Video herunterladen",
-    "description": "Nachricht, wenn das Bild generiert wird"
+    "description": "Meldung, wenn das Bild generiert wird"
   },
   "message.extendVideo": {
-    "message": "Dieses Video weiter generieren",
-    "description": "Nachricht, wenn das Bild generiert wird"
+    "message": "Fortfahren mit der Generierung dieses Videos",
+    "description": "Meldung, wenn das Bild generiert wird"
   },
   "message.generateFailed": {
     "message": "Bildgenerierung fehlgeschlagen",
-    "description": "Nachricht, wenn die Bildgenerierung fehlschlägt"
+    "description": "Meldung, wenn die Bildgenerierung fehlschlägt"
   },
   "message.uploadVideoExceed": {
-    "message": "Die Anzahl der hochgeladenen Startbilder überschreitet das Limit",
-    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Startbilder das Limit überschreitet"
+    "message": "Anzahl der hochgeladenen Erstbildbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Erstbildbilder das Limit überschreitet"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Die Dateigröße darf 10MB nicht überschreiten!",
-    "description": "Fehlermeldung, wenn die Dateigröße 10MB überschreitet"
+    "message": "Die hochgeladene Datei darf 10 MB nicht überschreiten!",
+    "description": "Fehlermeldung, wenn die hochgeladene Datei 10 MB überschreitet"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Die Datei muss im MP4-Format sein!",
-    "description": "Fehlermeldung, wenn die Datei nicht im MP4-Format ist"
+    "message": "Die hochgeladene Datei muss im MP4-Format sein!",
+    "description": "Fehlermeldung, wenn die hochgeladene Datei nicht im MP4-Format ist"
   },
   "message.uploadStartImageExceed": {
-    "message": "Die Anzahl der hochgeladenen Startbilder überschreitet das Limit",
-    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Startbilder das Limit überschreitet"
+    "message": "Anzahl der hochgeladenen Erstbildbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Erstbildbilder das Limit überschreitet"
   },
   "message.uploadEndImageExceed": {
-    "message": "Die Anzahl der hochgeladenen Endbilder überschreitet das Limit",
-    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Endbilder das Limit überschreitet"
+    "message": "Anzahl der hochgeladenen Endbildbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Endbildbilder das Limit überschreitet"
   },
   "message.uploadStartImageError": {
-    "message": "Fehler beim Hochladen des Startbildes",
-    "description": "Fehlermeldung, wenn das Hochladen des Startbildes fehlschlägt"
+    "message": "Hochladen des Erstbildes fehlgeschlagen",
+    "description": "Fehlermeldung, wenn das Hochladen des Erstbildes fehlschlägt"
   },
   "message.uploadVideoError": {
-    "message": "Fehler beim Hochladen des Videos",
+    "message": "Hochladen des Videos fehlgeschlagen",
     "description": "Fehlermeldung, wenn das Hochladen des Videos fehlschlägt"
   },
   "message.uploadEndImageError": {
-    "message": "Fehler beim Hochladen des Endbildes",
+    "message": "Hochladen des Endbildes fehlgeschlagen",
     "description": "Fehlermeldung, wenn das Hochladen des Endbildes fehlschlägt"
   },
   "message.uploadDocumentsError": {
-    "message": "Fehler beim Hochladen des Dokuments",
+    "message": "Hochladen des Dokuments fehlgeschlagen",
     "description": "Fehlermeldung, wenn das Hochladen des Dokuments fehlschlägt"
   },
   "message.noOperations": {
-    "message": "Keine verfügbaren Operationen",
-    "description": "Nachricht, wenn keine Operationen verfügbar sind"
+    "message": "Keine verfügbaren Aktionen",
+    "description": "Meldung, wenn keine verfügbaren Aktionen vorhanden sind"
   },
   "message.noTasks": {
-    "message": "Keine historischen Aufgaben, bitte klicken Sie links, um Videos zu generieren",
-    "description": "Nachricht, wenn keine Aufgaben vorhanden sind"
+    "message": "Keine historischen Aufgaben, bitte klicken Sie links, um ein Video zu generieren",
+    "description": "Meldung, wenn keine Aufgaben vorhanden sind"
   }
 }

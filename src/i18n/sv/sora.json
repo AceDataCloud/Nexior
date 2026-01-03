@@ -21,11 +21,11 @@
   },
   "name.createdAt": {
     "message": "Skapat den",
-    "description": "Datum och tid för skapande av Kling-video"
+    "description": "Datum och tid för skapande av Sora-video"
   },
   "name.startEndImage": {
-    "message": "Referensbilder för start och slut",
-    "description": "Referensbilder för den video som ska genereras"
+    "message": "Start/Slut bild",
+    "description": "Formulärfältets etikett: Start/Slut bildreferens (håll det kort för att undvika att dölja knappen)"
   },
   "name.action": {
     "message": "Åtgärd",
@@ -41,11 +41,19 @@
   },
   "name.soraBot": {
     "message": "OpenAI Sora Bot",
-    "description": "Namnet på Sora videogenerator"
+    "description": "Namn på Sora videogenerator"
   },
   "name.orientation": {
     "message": "Videoriktning",
     "description": "Namn på videoriktningens parameter"
+  },
+  "option.portrait": {
+    "message": "Porträtt",
+    "description": "Alternativstext: Porträttläge (håll det kort)"
+  },
+  "option.landscape": {
+    "message": "Landskap",
+    "description": "Alternativstext: Landskapsläge (håll det kort)"
   },
   "name.duration": {
     "message": "Videolängd",
@@ -64,7 +72,7 @@
     "description": "Beskrivning av parametern 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Array av referensbildlänkar, den första är startbilden, den andra är slutbilden",
+    "message": "Array av bildreferenslänkar, den första är startbilden, den andra är slutbilden",
     "description": "Beskrivning av parametern 'image_url'"
   },
   "status.pending": {
@@ -88,7 +96,7 @@
     "description": "Platshållare för fyllnadsnivå"
   },
   "placeholder.prompt": {
-    "message": "Ange promptord för den stil av video som ska genereras, till exempel: moving",
+    "message": "Ange promptord för den stil av video som ska genereras, t.ex.: moving",
     "description": "Platshållartext i promptfältet"
   },
   "placeholder.position": {
@@ -97,7 +105,7 @@
   },
   "tip.proOnly": {
     "message": "Endast sora-2-pro-modellen stöder ändring av denna parameter",
-    "description": "Tipsa användaren att endast professionella modeller stöder ändring av denna parameter"
+    "description": "Tips till användaren att endast professionella modeller stöder ändring av denna parameter"
   },
   "button.generate": {
     "message": "Generera",
@@ -117,7 +125,7 @@
   },
   "button.uploadImageUrl": {
     "message": "Ladda upp bild",
-    "description": "Knapptext för att ladda upp bild"
+    "description": "Knapptext för att ladda upp bild (förenkla till 'Ladda upp')"
   },
   "button.uploadVideoUrl": {
     "message": "Ladda upp video",
@@ -133,7 +141,7 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Bilderna har laddats upp framgångsrikt",
-    "description": "Framgångsmeddelande när bilder har laddats upp framgångsrikt"
+    "description": "Framgångsmeddelande när bilder har laddats upp"
   },
   "message.uploadReferencesError": {
     "message": "Misslyckades med att ladda upp bilder, försök igen senare",
@@ -144,8 +152,8 @@
     "description": "Meddelande när ritningsuppgiften startar"
   },
   "message.startTaskSuccess": {
-    "message": "Uppgift för generering har startats framgångsrikt",
-    "description": "Framgångsmeddelande när uppgiften har startats framgångsrikt"
+    "message": "Uppgiften har startats framgångsrikt",
+    "description": "Framgångsmeddelande när uppgiften har startats"
   },
   "message.startTaskFailed": {
     "message": "Misslyckades med att starta uppgiften, vänligen kontakta administratören",
@@ -168,44 +176,44 @@
     "description": "Meddelande när bildgenereringen misslyckas"
   },
   "message.uploadVideoExceed": {
-    "message": "Antalet uppladdade startbilder överskrider gränsen",
-    "description": "Felmeddelande när antalet uppladdade startbilder överskrider gränsen"
+    "message": "Antalet uppladdade första bildrutor överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade första bildrutor överskrider gränsen"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Uppladdad filstorlek får inte överstiga 10 MB!",
-    "description": "Felmeddelande när den uppladdade filstorleken överstiger 10 MB!"
+    "message": "Uppladdad fil får inte överstiga 10 MB!",
+    "description": "Felmeddelande när den uppladdade filens storlek överstiger 10 MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Uppladdad fil måste vara i MP4-format!",
     "description": "Felmeddelande när den uppladdade filen inte är i MP4-format!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "Antalet uppladdade startbilder överskrider gränsen",
-    "description": "Felmeddelande när antalet uppladdade startbilder överskrider gränsen"
+    "message": "Antalet uppladdade första bildrutor överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade första bildrutor överskrider gränsen"
   },
   "message.uploadEndImageExceed": {
-    "message": "Antalet uppladdade slutbildsbilder överskrider gränsen",
-    "description": "Felmeddelande när antalet uppladdade startbildsbilder överskrider gränsen"
+    "message": "Antalet uppladdade sista bildrutor överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade sista bildrutor överskrider gränsen"
   },
   "message.uploadStartImageError": {
-    "message": "Misslyckades med att ladda upp startbild",
-    "description": "Felmeddelande när uppladdningen av startbilden misslyckas"
+    "message": "Uppladdning av första bildruta misslyckades",
+    "description": "Felmeddelande när uppladdningen av första bildruta misslyckas"
   },
   "message.uploadVideoError": {
-    "message": "Misslyckades med att ladda upp video",
-    "description": "Felmeddelande när uppladdningen av startbilden misslyckas"
+    "message": "Uppladdning av video misslyckades",
+    "description": "Felmeddelande när uppladdningen av video misslyckas"
   },
   "message.uploadEndImageError": {
-    "message": "Misslyckades med att ladda upp slutbild",
-    "description": "Felmeddelande när uppladdningen av slutbilden misslyckas"
+    "message": "Uppladdning av sista bildruta misslyckades",
+    "description": "Felmeddelande när uppladdningen av sista bildruta misslyckas"
   },
   "message.uploadDocumentsError": {
-    "message": "Misslyckades med att ladda upp dokument",
+    "message": "Uppladdning av dokument misslyckades",
     "description": "Felmeddelande när uppladdningen av dokument misslyckas"
   },
   "message.noOperations": {
-    "message": "Inga tillgängliga operationer",
-    "description": "Meddelande när inga operationer är tillgängliga"
+    "message": "Inga tillgängliga åtgärder",
+    "description": "Meddelande när inga åtgärder är tillgängliga"
   },
   "message.noTasks": {
     "message": "Inga historiska uppgifter, vänligen klicka på vänster sida för att generera video",

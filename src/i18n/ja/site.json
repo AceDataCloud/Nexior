@@ -121,7 +121,7 @@
   },
   "field.featuresSeedance": {
     "message": "SeeDance",
-    "description": "Displayed as the title in the editing box"
+    "description": "編集ボックスに表示されるタイトル"
   },
   "field.featuresSupport": {
     "message": "カスタマーサポート",
@@ -172,7 +172,7 @@
     "description": "編集ボックスに表示されるタイトル"
   },
   "title.distributionConfig": {
-    "message": "流通設定",
+    "message": "配信設定",
     "description": "編集ボックスに表示されるタイトル"
   },
   "title.editDistributionDefaultInviterId": {
@@ -196,7 +196,7 @@
     "description": "編集ボックスに表示されるタイトル"
   },
   "placeholder.origin": {
-    "message": "サイトドメインを入力してください",
+    "message": "サイトのドメインを入力してください",
     "description": "編集ボックスに表示されるタイトル"
   },
   "placeholder.editUrl": {
@@ -212,16 +212,16 @@
     "description": "編集ボックスに表示されるタイトル"
   },
   "placeholder.editDistributionDefaultInviterId": {
-    "message": "デフォルトの招待者 ID を入力してください",
+    "message": "デフォルトの招待者IDを入力してください",
     "description": "編集ボックスに表示されるタイトル"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "強制招待者 ID を入力してください",
+    "message": "強制招待者IDを入力してください",
     "description": "編集ボックスに表示されるタイトル"
   },
   "message.uploadImageExceed": {
-    "message": "アップロード画像が制限を超えました",
-    "description": "アップロード画像が制限を超えたときのメッセージ"
+    "message": "画像のアップロードが制限を超えました",
+    "description": "画像のアップロードが制限を超えた場合のメッセージ"
   },
   "message.uploadImageError": {
     "message": "画像のアップロードエラー",
@@ -229,34 +229,34 @@
   },
   "message.editLogoTip": {
     "message": "推奨サイズ：200*60px",
-    "description": "画像をアップロードする際のヒント"
+    "description": "画像アップロードのヒント"
   },
   "message.editQRTip": {
     "message": "推奨サイズ：200*200px",
-    "description": "画像をアップロードする際のヒント"
+    "description": "画像アップロードのヒント"
   },
   "message.editFaviconTip": {
     "message": "推奨サイズ：32*32px",
-    "description": "画像をアップロードする際のヒント"
+    "description": "画像アップロードのヒント"
   },
   "message.editUrl": {
     "message": "リンクを入力してください",
-    "description": "リンクを入力する際のヒント"
+    "description": "リンクを入力するためのヒント"
   },
   "message.atLeastOneAdmin": {
     "message": "少なくとも1人の管理者を保持してください",
-    "description": "少なくとも1人の管理者を保持する必要があるというメッセージ"
+    "description": "少なくとも1人の管理者を保持するためのヒント"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "デフォルトの招待者のユーザー ID。分配リンクが inviter_id パラメータを持たない場合、このユーザー ID が招待者として使用されます。",
-    "description": "デフォルトの招待者 ID に関するヒント"
+    "message": "デフォルトの招待者のユーザーID。分配リンクにinviter_idパラメータが含まれていない場合、このユーザーIDが招待者として使用されます。",
+    "description": "デフォルトの招待者IDのヒント"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "強制招待者のユーザー ID。この ID を設定すると、分配リンクが inviter_id パラメータを持っていても、このユーザー ID が招待者として強制的に使用されます。",
-    "description": "強制招待者 ID に関するヒント"
+    "message": "強制招待者のユーザーID。このIDが設定されている場合、分配リンクにinviter_idパラメータが含まれていても、このユーザーIDが招待者として強制的に使用されます。",
+    "description": "強制招待者IDのヒント"
   },
   "message.originTip": {
-    "message": "サイトのドメイン。サイトの設定はドメインにバインドされており、サイトのドメインは変更できません。",
+    "message": "サイトのドメイン。サイトの設定はドメインにバインドされ、サイトのドメインは変更できません。",
     "description": "サイトのドメインに関するヒント"
   },
   "message.titleTip": {
@@ -264,7 +264,7 @@
     "description": "サイトのタイトルに関するヒント"
   },
   "message.descriptionTip": {
-    "message": "サイトの説明。サイトのメタ情報にあり、サイトの SEO 最適化に使用されます。",
+    "message": "サイトの説明。サイトのメタ情報にあり、SEO最適化に使用されます。",
     "description": "サイトの説明に関するヒント"
   },
   "message.logoTip": {
@@ -276,19 +276,19 @@
     "description": "サイトのファビコンに関するヒント"
   },
   "message.adminsTip": {
-    "message": "サイトの管理者 ID。デフォルトでは、最初にこのサイトを作成したユーザーが管理者になります。サイトの管理者のみがサイトを管理できます。",
+    "message": "サイトの管理者ID。デフォルトでは、最初にこのサイトを作成したユーザーが管理者になります。サイトの管理者のみがサイトを管理できます。",
     "description": "サイトの管理者に関するヒント"
   },
   "message.adminsTip2": {
-    "message": "ここで管理者 ID を追加または削除できます。ユーザー ID は https://auth.acedata.cloud で確認できます。",
+    "message": "ここで管理者IDを追加または削除できます。ユーザーIDは https://auth.acedata.cloud で確認できます。",
     "description": "サイトの管理者に関するヒント"
   },
   "message.keywordsTip": {
-    "message": "サイトのキーワード。サイトのメタ情報にあり、サイトの SEO 最適化に使用されます。",
+    "message": "サイトのキーワード。サイトのメタ情報にあり、SEO最適化に使用されます。",
     "description": "サイトのキーワードに関するヒント"
   },
   "message.keywordsTip2": {
-    "message": "ここでサイトのキーワードを追加または削除できます。キーワードが正確であるほど、SEO 最適化に有利です。",
+    "message": "ここでサイトのキーワードを追加または削除できます。キーワードが正確であるほど、SEO最適化に有利です。",
     "description": "サイトのキーワードに関するヒント"
   },
   "message.featuresChat": {
@@ -296,87 +296,87 @@
     "description": "チャット機能の説明"
   },
   "message.featuresGrok": {
-    "message": "Grok 機能モジュールをオンまたはオフにします。",
-    "description": "Grok 機能の説明"
+    "message": "Grok機能モジュールをオンまたはオフにします。",
+    "description": "Grok機能の説明"
   },
   "message.featuresDeepseek": {
-    "message": "Deepseek 機能モジュールをオンまたはオフにします。",
-    "description": "Deepseek 機能の説明"
+    "message": "Deepseek機能モジュールをオンまたはオフにします。",
+    "description": "Deepseek機能の説明"
   },
   "message.featuresChatgpt": {
-    "message": "ChatGPT 機能モジュールをオンまたはオフにします。",
-    "description": "ChatGPT 機能の説明"
+    "message": "ChatGPT機能モジュールをオンまたはオフにします。",
+    "description": "ChatGPT機能の説明"
   },
   "message.featuresMidjourney": {
-    "message": "Midjourney 機能モジュールをオンまたはオフにします。",
-    "description": "Midjourney 機能の説明"
+    "message": "Midjourney機能モジュールをオンまたはオフにします。",
+    "description": "Midjourney機能の説明"
   },
   "message.featuresChatdoc": {
-    "message": "Chatdoc 機能モジュールをオンまたはオフにします。",
-    "description": "Chatdoc 機能の説明"
+    "message": "Chatdoc機能モジュールをオンまたはオフにします。",
+    "description": "Chatdoc機能の説明"
   },
   "message.featuresQrart": {
-    "message": "Qrart 機能モジュールをオンまたはオフにします。",
-    "description": "Qrart 機能の説明"
+    "message": "Qrart機能モジュールをオンまたはオフにします。",
+    "description": "Qrart機能の説明"
   },
   "message.featuresVeo": {
-    "message": "Veo 機能モジュールをオンまたはオフにします。",
-    "description": "Veo 機能の説明"
+    "message": "Veo機能モジュールをオンまたはオフにします。",
+    "description": "Veo機能の説明"
   },
   "message.featuresSora": {
-    "message": "Sora 機能モジュールをオンまたはオフにします。",
-    "description": "Sora 機能の説明"
+    "message": "Sora機能モジュールをオンまたはオフにします。",
+    "description": "Sora機能の説明"
   },
   "message.featuresSuno": {
-    "message": "Suno 機能モジュールをオンまたはオフにします。",
-    "description": "Suno 機能の説明"
+    "message": "Suno機能モジュールをオンまたはオフにします。",
+    "description": "Suno機能の説明"
   },
   "message.featuresPixverse": {
-    "message": "Pixverse 機能モジュールをオンまたはオフにします。",
-    "description": "Pixverse 機能の説明"
+    "message": "Pixverse機能モジュールをオンまたはオフにします。",
+    "description": "Pixverse機能の説明"
   },
   "message.featuresFlux": {
-    "message": "FLux 機能モジュールをオンまたはオフにします。",
-    "description": "FLux 機能の説明"
+    "message": "FLux機能モジュールをオンまたはオフにします。",
+    "description": "FLux機能の説明"
   },
   "message.featuresNanobanana": {
-    "message": "Nano Banana 機能モジュールをオンまたはオフにします。",
-    "description": "Nano Banana 機能の説明"
+    "message": "Nano Banana機能モジュールをオンまたはオフにします。",
+    "description": "Nano Banana機能の説明"
   },
   "message.featuresSeedream": {
-    "message": "SeeDream 機能モジュールをオンまたはオフにします。",
+    "message": "SeeDream 機能モジュールを有効または無効にします。",
     "description": "SeeDream 機能の説明"
   },
   "message.featuresSeedance": {
-    "message": "Enable or disable the SeeDance feature module.",
-    "description": "Description of the SeeDance feature"
+    "message": "SeeDance 機能モジュールを有効または無効にします。",
+    "description": "SeeDance 機能の説明"
   },
   "message.featuresLuma": {
-    "message": "Luma 機能モジュールをオンまたはオフにします。",
+    "message": "Luma 機能モジュールを有効または無効にします。",
     "description": "Luma 機能の説明"
   },
   "message.featuresPika": {
-    "message": "Pika 機能モジュールをオンまたはオフにします。",
+    "message": "Pika 機能モジュールを有効または無効にします。",
     "description": "Pika 機能の説明"
   },
   "message.featuresKling": {
-    "message": "Kling 機能モジュールをオンまたはオフにします。",
+    "message": "Kling 機能モジュールを有効または無効にします。",
     "description": "Kling 機能の説明"
   },
   "message.featuresHailuo": {
-    "message": "Hailuo 機能モジュールをオンまたはオフにします。",
+    "message": "Hailuo 機能モジュールを有効または無効にします。",
     "description": "Hailuo 機能の説明"
   },
   "message.featuresHeadshots": {
-    "message": "AI 証明写真機能モジュールをオンまたはオフにします。",
+    "message": "AI 証明写真機能モジュールを有効または無効にします。",
     "description": "AI 証明写真機能の説明"
   },
   "message.featuresSupport": {
-    "message": "カスタマーサポートをオンまたはオフにします。",
+    "message": "カスタマーサポートを有効または無効にします。",
     "description": "Support 機能の説明"
   },
   "message.featuresI18n": {
-    "message": "多言語サポートをオンまたはオフにします。オフにすると、ユーザーはデフォルト言語のみを使用できます。",
+    "message": "多言語サポートを有効または無効にします。無効にすると、ユーザーはデフォルト言語のみ使用できます。",
     "description": "多言語サポートの説明"
   },
   "button.upload": {
@@ -385,18 +385,18 @@
   },
   "button.enabled": {
     "message": "有効",
-    "description": "スイッチのテキスト、有効になっていることを示します"
+    "description": "スイッチのテキスト、有効であることを示します"
   },
   "button.disabled": {
     "message": "無効",
-    "description": "スイッチのテキスト、無効になっていることを示します"
+    "description": "スイッチのテキスト、無効であることを示します"
   },
   "field.featuresGemini": {
     "message": "Gemini",
     "description": "編集ボックスのタイトルとして表示されます"
   },
   "message.featuresGemini": {
-    "message": "Gemini 機能モジュールをオンまたはオフにします。",
+    "message": "Gemini 機能モジュールを有効または無効にします。",
     "description": "Gemini 機能の説明"
   },
   "field.featuresClaude": {
@@ -404,7 +404,7 @@
     "description": "編集ボックスのタイトルとして表示されます"
   },
   "message.featuresClaude": {
-    "message": "Claude 機能モジュールをオンまたはオフにします。",
+    "message": "Claude 機能モジュールを有効または無効にします。",
     "description": "Claude 機能の説明"
   }
 }

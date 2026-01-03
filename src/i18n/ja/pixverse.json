@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "タイプ",
-    "description": "生成する Pixverse ビデオのコンテンツタイプ、例えば 'リンク'、'テキスト' など"
+    "description": "生成する Pixverse ビデオの内容タイプ、例：'リンク'、'テキスト' など"
   },
   "name.failure": {
     "message": "失敗",
@@ -17,7 +17,7 @@
   },
   "name.status": {
     "message": "ステータス",
-    "description": "タスクのステータス"
+    "description": "タスクの状態"
   },
   "name.traceId": {
     "message": "トレース ID",
@@ -73,7 +73,7 @@
   },
   "name.startImage": {
     "message": "初フレーム参照画像",
-    "description": "生成するビデオの参照画像"
+    "description": "フォームフィールドラベル：初フレーム参照画像（英語では'First Frame'と翻訳し、短くしてボタンを遮らないように）"
   },
   "name.aspectRatio": {
     "message": "アスペクト比",
@@ -85,7 +85,7 @@
   },
   "name.prompt": {
     "message": "ビデオプロンプト",
-    "description": "コンテンツ入力のプロンプト"
+    "description": "内容入力のプロンプト"
   },
   "name.duration": {
     "message": "ビデオの長さ",
@@ -93,7 +93,7 @@
   },
   "name.model": {
     "message": "モデルバージョン",
-    "description": "生成ビデオに使用されるモデルバージョン"
+    "description": "生成ビデオに使用するモデルバージョン"
   },
   "name.seed": {
     "message": "シード",
@@ -101,7 +101,7 @@
   },
   "name.mode": {
     "message": "ビデオモード",
-    "description": "生成ビデオに使用されるモード"
+    "description": "生成ビデオに使用するモード"
   },
   "name.effect": {
     "message": "ビデオ効果",
@@ -109,7 +109,7 @@
   },
   "name.ingredientsModel": {
     "message": "成分モデル",
-    "description": "生成ビデオに使用されるモデルバージョン"
+    "description": "生成ビデオに使用するモデルバージョン"
   },
   "name.pixverseBot": {
     "message": "Pixverse Bot",
@@ -136,7 +136,7 @@
     "description": "アップロード参照パラメータの説明"
   },
   "description.uploadEndImage": {
-    "message": "生成の参考として初フレーム画像をアップロードします。最終的なビデオは初フレームを参考に生成されます。",
+    "message": "生成の参考として終フレーム画像をアップロードします。最終的なビデオは終フレームを参考に生成されます。",
     "description": "アップロード参照パラメータの説明"
   },
   "description.seed": {
@@ -197,27 +197,27 @@
   },
   "button.generate": {
     "message": "生成",
-    "description": "Pixverseビデオを生成するためのボタンテキスト"
+    "description": "Pixverseビデオを生成するボタンのテキスト"
   },
   "button.extend": {
     "message": "ビデオを拡張",
-    "description": "ビデオを拡張するためのボタンテキスト"
+    "description": "ビデオ拡張ボタンのテキスト"
   },
   "button.download": {
     "message": "ビデオをダウンロード",
-    "description": "ビデオをダウンロードするためのボタンテキスト"
+    "description": "ビデオダウンロードボタンのテキスト"
   },
   "button.uploadImageUrl": {
-    "message": "画像をアップロード",
-    "description": "画像をアップロードするためのボタンテキスト"
+    "message": "アップロード",
+    "description": "画像をアップロードするボタンのテキスト（英語は「Upload」に簡略化し、「Upload Image」は使用しない）"
   },
   "button.uploadVideoUrl": {
     "message": "ビデオをアップロード",
-    "description": "ビデオをアップロードするためのボタンテキスト"
+    "description": "ビデオアップロードボタンのテキスト"
   },
   "button.uploadReferences": {
     "message": "アップロード",
-    "description": "ユーザーが参考をアップロードできるボタンテキスト"
+    "description": "ユーザーが参考をアップロードできるボタンのテキスト"
   },
   "message.uploadReferencesExceed": {
     "message": "最大1枚の画像をアップロードできます",
@@ -228,7 +228,7 @@
     "description": "画像のアップロードが成功したときの成功メッセージ"
   },
   "message.uploadReferencesError": {
-    "message": "画像のアップロードに失敗しました。後でもう一度お試しください",
+    "message": "画像のアップロードに失敗しました。後で再試行してください",
     "description": "画像のアップロードに失敗したときのエラーメッセージ"
   },
   "message.startingTask": {
@@ -236,15 +236,15 @@
     "description": "描画タスクが開始されるときのメッセージ"
   },
   "message.startTaskSuccess": {
-    "message": "生成タスクの発起に成功しました",
-    "description": "タスクの起動に成功したときの成功メッセージ"
+    "message": "生成タスクを正常に開始しました",
+    "description": "タスクが正常に開始されたときの成功メッセージ"
   },
   "message.startTaskFailed": {
-    "message": "タスクの発起に失敗しました。管理者に連絡してください",
-    "description": "描画タスクの起動に失敗したときのエラーメッセージ"
+    "message": "タスクの開始に失敗しました。管理者に連絡してください",
+    "description": "描画タスクの開始に失敗したときのエラーメッセージ"
   },
   "message.usedUp": {
-    "message": "ポイントが使い切れました。さらにポイントを購入して続行してください",
+    "message": "ポイントが使い切れました。追加のポイントを購入して続行してください",
     "description": "使い切ったときのメッセージ"
   },
   "message.generating": {
@@ -265,7 +265,7 @@
   },
   "message.uploadVideoExceed": {
     "message": "アップロードする最初のフレーム画像の数が制限を超えています",
-    "description": "最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
+    "description": "最初のフレーム画像のアップロード数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadVideoSizeExceed": {
     "message": "アップロードファイルのサイズは10MBを超えてはいけません！",
@@ -277,11 +277,11 @@
   },
   "message.uploadStartImageExceed": {
     "message": "アップロードする最初のフレーム画像の数が制限を超えています",
-    "description": "最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
+    "description": "最初のフレーム画像のアップロード数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadEndImageExceed": {
     "message": "アップロードする最後のフレーム画像の数が制限を超えています",
-    "description": "最後のフレーム画像の数が制限を超えたときのエラーメッセージ"
+    "description": "最後のフレーム画像のアップロード数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadStartImageError": {
     "message": "最初のフレーム画像のアップロードに失敗しました",

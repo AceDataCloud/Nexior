@@ -52,8 +52,8 @@
     "description": "Kuvan laatu"
   },
   "name.prompt": {
-    "message": "Kuvan vihje",
-    "description": "Sisältösyötteen vihje"
+    "message": "Kuvaprompt",
+    "description": "Sisältösyötteen prompt"
   },
   "name.ratio": {
     "message": "Suhde",
@@ -68,19 +68,19 @@
     "description": "Flux-kuvageneraattorin nimi"
   },
   "description.numbers": {
-    "message": "Määritä luotavien kuvien määrä, arvon alue on: 1-4.",
+    "message": "Määritä luotavien kuvien määrä, arvot: 1-4.",
     "description": "Parametrin 'numbers' kuvaus"
   },
   "description.quality": {
-    "message": "Määritä luotavien kuvien laatu, arvon alue on: 1-100.",
+    "message": "Määritä luotavien kuvien laatu, arvot: 1-100.",
     "description": "Parametrin 'quality' kuvaus"
   },
   "description.prompt": {
-    "message": "Flux-kuvien luomiseen käytettävä vihjesana",
+    "message": "Flux-kuvien luomiseen käytettävä prompt",
     "description": "Parametrin 'prompt' kuvaus"
   },
   "description.imageUrl": {
-    "message": "Kun luodaan muokkaustehtävää, on ladattava kuva.",
+    "message": "Muokkaustehtävän luomisessa on ladattava kuva.",
     "description": "Parametrin 'imageUrl' kuvaus"
   },
   "status.pending": {
@@ -97,15 +97,15 @@
   },
   "placeholder.select": {
     "message": "Valitse",
-    "description": "Valintakentän paikkateksti"
+    "description": "Valintakentän paikkamerkki"
   },
   "placeholder.paddingLevel": {
     "message": "Valitse...",
     "description": "Täyteasteen paikkamerkki"
   },
   "placeholder.prompt": {
-    "message": "Syötä luotavan kuvan tyylin vihjesana, esimerkiksi: valkoinen siamilainen kissa",
-    "description": "Vihjekentän paikkateksti"
+    "message": "Syötä kuvastylin prompt, esim: valkoinen siamilainen kissa",
+    "description": "Prompt-kentän paikkamerkki"
   },
   "placeholder.position": {
     "message": "Valitse...",
@@ -137,7 +137,7 @@
   },
   "button.uploadImageUrl": {
     "message": "Lataa kuva",
-    "description": "Kuvan lataamisen painikkeen teksti"
+    "description": "Kuvan lataamisen painikkeen teksti (yksinkertaista englanniksi 'Upload', älä käytä 'Upload Image')"
   },
   "button.extend": {
     "message": "Laajenna kuvaa",
@@ -145,7 +145,7 @@
   },
   "button.viewImage": {
     "message": "Näytä alkuperäinen kuva",
-    "description": "Flux-kuvien luomisen painikkeen teksti"
+    "description": "Flux-kuvan näyttämisen painikkeen teksti"
   },
   "button.download": {
     "message": "Lataa kuva",
@@ -200,36 +200,36 @@
     "description": "Viesti, kun kuvan luominen epäonnistuu"
   },
   "message.uploadVideoExceed": {
-    "message": "Ladattujen ensimmäisten kuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun ladattujen ensimmäisten kuvien määrä ylittää rajan"
+    "message": "Ladattujen ensimmäisten kehysten määrä ylittää rajan",
+    "description": "Virheilmoitus, kun ladattujen ensimmäisten kehysten määrä ylittää rajan"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Ladattavan tiedoston koko ei saa ylittää 10MB!",
-    "description": "Virheilmoitus, kun ladattavan tiedoston koko ei saa ylittää 10MB!"
+    "message": "Ladattavan tiedoston koko ei voi ylittää 10MB!",
+    "description": "Virheilmoitus, kun ladattavan tiedoston koko ei voi ylittää 10MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Ladattavan tiedoston on oltava MP4-muodossa!",
     "description": "Virheilmoitus, kun ladattavan tiedoston on oltava MP4-muodossa!"
   },
   "message.uploadStartImageExceed": {
-    "message": "Ladattujen viittauskuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun ladattujen viittauskuvien määrä ylittää rajan"
+    "message": "Ladattujen viitekuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun ladattujen viitekuvien määrä ylittää rajan"
   },
   "message.uploadEndImageExceed": {
-    "message": "Ladattujen viimeisten kuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun ladattujen viimeisten kuvien määrä ylittää rajan"
+    "message": "Ladattujen viimeisten kehysten määrä ylittää rajan",
+    "description": "Virheilmoitus, kun ladattujen viimeisten kehysten määrä ylittää rajan"
   },
   "message.uploadStartImageError": {
-    "message": "Viittauskuvan lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun viittauskuvan lataaminen epäonnistuu"
+    "message": "Viitekuvan lataaminen epäonnistui",
+    "description": "Virheilmoitus, kun viitekuvan lataaminen epäonnistuu"
   },
   "message.uploadVideoError": {
     "message": "Kuvan lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun ensimmäisen kuvan lataaminen epäonnistuu"
+    "description": "Virheilmoitus, kun ensimmäisen kehyskuvan lataaminen epäonnistuu"
   },
   "message.uploadEndImageError": {
-    "message": "Viimeisen kuvan lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun viimeisen kuvan lataaminen epäonnistuu"
+    "message": "Viimeisen kehyskuvan lataaminen epäonnistui",
+    "description": "Virheilmoitus, kun viimeisen kehyskuvan lataaminen epäonnistuu"
   },
   "message.uploadDocumentsError": {
     "message": "Asiakirjan lataaminen epäonnistui",
@@ -237,10 +237,10 @@
   },
   "message.noOperations": {
     "message": "Ei käytettävissä olevia toimintoja",
-    "description": "Viesti, kun käytettävissä ei ole toimintoja"
+    "description": "Viesti, kun ei ole käytettävissä olevia toimintoja"
   },
   "message.noTasks": {
     "message": "Ei historiallisia tehtäviä, napsauta vasemmalla luodaksesi kuvan",
-    "description": "Viesti, kun tehtäviä ei ole"
+    "description": "Viesti, kun ei ole tehtäviä"
   }
 }

@@ -21,11 +21,11 @@
   },
   "name.createdAt": {
     "message": "생성 시간",
-    "description": "Kling 비디오 생성 날짜 및 시간"
+    "description": "Sora 비디오 생성 날짜 및 시간"
   },
   "name.startEndImage": {
-    "message": "시작 및 종료 프레임 참조 이미지",
-    "description": "생성할 비디오의 참조 이미지"
+    "message": "시작/종료 프레임",
+    "description": "폼 필드 레이블: 시작/종료 프레임 참조 이미지"
   },
   "name.action": {
     "message": "작업",
@@ -37,7 +37,7 @@
   },
   "name.model": {
     "message": "모델 버전",
-    "description": "비디오 생성을 위해 사용되는 모델 버전"
+    "description": "비디오 생성을 위한 모델 버전"
   },
   "name.soraBot": {
     "message": "OpenAI Sora Bot",
@@ -46,6 +46,14 @@
   "name.orientation": {
     "message": "비디오 방향",
     "description": "비디오 방향 매개변수의 이름"
+  },
+  "option.portrait": {
+    "message": "세로",
+    "description": "옵션 텍스트: 세로 방향"
+  },
+  "option.landscape": {
+    "message": "가로",
+    "description": "옵션 텍스트: 가로 방향"
   },
   "name.duration": {
     "message": "비디오 길이",
@@ -88,7 +96,7 @@
     "description": "패딩 수준의 자리 표시자"
   },
   "placeholder.prompt": {
-    "message": "생성할 비디오 스타일의 프롬프트를 입력하세요. 예: moving",
+    "message": "생성할 비디오 스타일의 프롬프트를 입력하세요, 예: moving",
     "description": "프롬프트 필드의 자리 표시자 텍스트"
   },
   "placeholder.position": {
@@ -96,8 +104,8 @@
     "description": "위치 입력의 자리 표시자"
   },
   "tip.proOnly": {
-    "message": "오직 sora-2-pro 모델만 이 매개변수를 수정할 수 있습니다.",
-    "description": "전문 모델만 이 매개변수를 수정할 수 있음을 사용자에게 알리는 팁"
+    "message": "sora-2-pro 모델만 이 매개변수를 수정할 수 있습니다.",
+    "description": "전문 모델만 이 매개변수를 수정할 수 있음을 사용자에게 알림"
   },
   "button.generate": {
     "message": "생성",
@@ -125,7 +133,7 @@
   },
   "button.uploadReferences": {
     "message": "업로드",
-    "description": "사용자가 참조를 업로드할 수 있도록 허용하는 버튼 텍스트"
+    "description": "사용자가 참조를 업로드할 수 있도록 하는 버튼 텍스트"
   },
   "message.uploadReferencesExceed": {
     "message": "최대 2장의 이미지를 업로드할 수 있습니다.",
@@ -152,7 +160,7 @@
     "description": "그림 작업 시작 실패 시의 오류 메시지"
   },
   "message.usedUp": {
-    "message": "포인트가 소진되었습니다. 더 많은 포인트를 구매한 후 계속 사용하세요.",
+    "message": "포인트가 소진되었습니다. 추가 포인트를 구매한 후 계속 사용하세요.",
     "description": "소진되었을 때의 메시지"
   },
   "message.generating": {
@@ -168,47 +176,47 @@
     "description": "이미지 생성 실패 시의 메시지"
   },
   "message.uploadVideoExceed": {
-    "message": "첫 프레임 이미지 수가 제한을 초과했습니다.",
-    "description": "첫 프레임 이미지 수가 제한을 초과할 때의 오류 메시지"
+    "message": "첫 번째 프레임 이미지 수가 제한을 초과했습니다.",
+    "description": "첫 번째 프레임 이미지 수가 제한을 초과했을 때의 오류 정보"
   },
   "message.uploadVideoSizeExceed": {
     "message": "업로드 파일 크기는 10MB를 초과할 수 없습니다!",
-    "description": "업로드 파일 크기가 10MB를 초과할 때의 오류 메시지"
+    "description": "업로드 파일 크기가 10MB를 초과했을 때의 오류 정보"
   },
   "message.uploadVideoTypeFailed": {
     "message": "업로드 파일은 MP4 형식이어야 합니다!",
-    "description": "업로드 파일이 MP4 형식이 아닐 때의 오류 메시지"
+    "description": "업로드 파일이 MP4 형식이 아닐 때의 오류 정보"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "업로드할 첫 번째 프레임 이미지 수가 제한을 초과했습니다.",
-    "description": "첫 번째 프레임 이미지 수가 제한을 초과할 때의 오류 메시지"
+    "message": "첫 번째 프레임 이미지 수가 제한을 초과했습니다.",
+    "description": "첫 번째 프레임 이미지 수가 제한을 초과했을 때의 오류 정보"
   },
   "message.uploadEndImageExceed": {
-    "message": "업로드한 마지막 프레임 이미지 수가 제한을 초과했습니다.",
-    "description": "업로드한 첫 프레임 이미지 수가 제한을 초과했을 때의 오류 정보"
+    "message": "마지막 프레임 이미지 수가 제한을 초과했습니다.",
+    "description": "마지막 프레임 이미지 수가 제한을 초과했을 때의 오류 정보"
   },
   "message.uploadStartImageError": {
-    "message": "첫 프레임 이미지 업로드 실패",
-    "description": "첫 프레임 이미지 업로드 실패 시의 오류 정보"
+    "message": "첫 번째 프레임 이미지 업로드 실패",
+    "description": "첫 번째 프레임 이미지 업로드에 실패했을 때의 오류 정보"
   },
   "message.uploadVideoError": {
     "message": "비디오 업로드 실패",
-    "description": "비디오 업로드 실패 시의 오류 정보"
+    "description": "비디오 업로드에 실패했을 때의 오류 정보"
   },
   "message.uploadEndImageError": {
     "message": "마지막 프레임 이미지 업로드 실패",
-    "description": "마지막 프레임 이미지 업로드 실패 시의 오류 정보"
+    "description": "마지막 프레임 이미지 업로드에 실패했을 때의 오류 정보"
   },
   "message.uploadDocumentsError": {
     "message": "문서 업로드 실패",
-    "description": "문서 업로드 실패 시의 오류 정보"
+    "description": "문서 업로드에 실패했을 때의 오류 정보"
   },
   "message.noOperations": {
     "message": "사용 가능한 작업이 없습니다.",
     "description": "사용 가능한 작업이 없을 때의 메시지"
   },
   "message.noTasks": {
-    "message": "역사적 작업이 없습니다. 왼쪽에서 비디오 생성을 클릭하세요.",
+    "message": "역사적 작업이 없습니다. 왼쪽에서 비디오 생성 버튼을 클릭하세요.",
     "description": "작업이 없을 때의 메시지"
   }
 }

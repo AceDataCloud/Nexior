@@ -73,7 +73,7 @@
   },
   "name.startImage": {
     "message": "Immagine di riferimento iniziale",
-    "description": "Immagine di riferimento per il video da generare"
+    "description": "Etichetta del campo del modulo: immagine di riferimento iniziale (tradotto in modo conciso per evitare di coprire il pulsante)"
   },
   "name.aspectRatio": {
     "message": "Rapporto d'aspetto",
@@ -97,7 +97,7 @@
   },
   "name.seed": {
     "message": "Seed",
-    "description": "Seed casuale per la generazione del video"
+    "description": "Seed casuale per generare il video"
   },
   "name.mode": {
     "message": "Modalità video",
@@ -105,7 +105,7 @@
   },
   "name.effect": {
     "message": "Effetto video",
-    "description": "Nome del parametro di stile, utilizzato per passare tra diverse versioni o stili di modello"
+    "description": "Nome del parametro di stile per passare tra diverse versioni o stili del modello"
   },
   "name.ingredientsModel": {
     "message": "Modello ingredienti",
@@ -128,20 +128,20 @@
     "description": "Descrizione del parametro 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "Suggerimento di testo negativo, facoltativo, non deve superare i 200 caratteri",
+    "message": "Testo di suggerimento negativo, facoltativo, non oltre 200 caratteri",
     "description": "Descrizione del parametro 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Carica l'immagine di riferimento iniziale per la generazione, il video finale farà riferimento all'immagine iniziale.",
-    "description": "Descrizione del parametro di riferimento per il caricamento"
+    "message": "Carica l'immagine di riferimento iniziale per la generazione, il video finale si baserà sull'immagine iniziale",
+    "description": "Descrizione del parametro di caricamento di riferimento"
   },
   "description.uploadEndImage": {
-    "message": "Carica l'immagine di riferimento finale per la generazione, il video finale farà riferimento all'immagine finale.",
-    "description": "Descrizione del parametro di riferimento per il caricamento"
+    "message": "Carica l'immagine di riferimento finale per la generazione, il video finale si baserà sull'immagine finale",
+    "description": "Descrizione del parametro di caricamento di riferimento"
   },
   "description.seed": {
-    "message": "Valore del seed per la generazione del video. Se non impostato, verrà utilizzato un seed casuale.",
-    "description": "Descrizione del parametro di riferimento per il caricamento"
+    "message": "Valore del seed per generare il video. Se non impostato, verrà utilizzato un seed casuale.",
+    "description": "Descrizione del parametro di caricamento di riferimento"
   },
   "status.pending": {
     "message": "In attesa",
@@ -193,7 +193,7 @@
   },
   "placeholder.subMarker": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input di sottomarker"
+    "description": "Segnaposto per l'input del sottomarcatori"
   },
   "button.generate": {
     "message": "Genera",
@@ -208,8 +208,8 @@
     "description": "Testo del pulsante per scaricare il video"
   },
   "button.uploadImageUrl": {
-    "message": "Carica immagine",
-    "description": "Testo del pulsante per caricare un'immagine"
+    "message": "Carica",
+    "description": "Testo del pulsante per caricare un'immagine (semplificare in 'Carica', non usare 'Carica immagine')"
   },
   "button.uploadVideoUrl": {
     "message": "Carica video",
@@ -244,8 +244,8 @@
     "description": "Messaggio di errore quando l'avvio del compito di disegno fallisce"
   },
   "message.usedUp": {
-    "message": "I tuoi punti sono esauriti, acquista più punti per continuare a utilizzare",
-    "description": "Messaggio quando i punti sono esauriti"
+    "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare",
+    "description": "Messaggio quando i crediti sono esauriti"
   },
   "message.generating": {
     "message": "Generazione in corso...",
@@ -260,7 +260,7 @@
     "description": "Messaggio durante la generazione dell'immagine"
   },
   "message.generateFailed": {
-    "message": "Generazione dell'immagine fallita",
+    "message": "Generazione immagine fallita",
     "description": "Messaggio quando la generazione dell'immagine fallisce"
   },
   "message.uploadVideoExceed": {
@@ -284,7 +284,7 @@
     "description": "Messaggio di errore quando il numero di immagini dell'ultima cornice caricate supera il limite"
   },
   "message.uploadStartImageError": {
-    "message": "Caricamento dell'immagine della prima cornice fallito",
+    "message": "Caricamento immagine della prima cornice fallito",
     "description": "Messaggio di errore quando il caricamento dell'immagine della prima cornice fallisce"
   },
   "message.uploadVideoError": {
@@ -292,7 +292,7 @@
     "description": "Messaggio di errore quando il caricamento dell'immagine della prima cornice fallisce"
   },
   "message.uploadEndImageError": {
-    "message": "Caricamento dell'immagine dell'ultima cornice fallito",
+    "message": "Caricamento immagine dell'ultima cornice fallito",
     "description": "Messaggio di errore quando il caricamento dell'immagine dell'ultima cornice fallisce"
   },
   "message.uploadDocumentsError": {
@@ -304,7 +304,7 @@
     "description": "Messaggio quando non ci sono operazioni disponibili"
   },
   "message.noTasks": {
-    "message": "Nessun compito storico, fai clic a sinistra per generare video",
+    "message": "Nessun compito storico, fai clic a sinistra per generare un video",
     "description": "Messaggio quando non ci sono compiti"
   }
 }
