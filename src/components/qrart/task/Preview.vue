@@ -3,7 +3,7 @@
     <div class="left">
       <el-image
         src="https://cdn.acedata.cloud/bcml67.png"
-        class="avatar bg-white p-[2px] w-[50px] h-[50px] m-[10px] rounded-full"
+        class="avatar bg-[var(--el-bg-color)] p-[2px] w-[50px] h-[50px] m-[10px] rounded-full"
       />
     </div>
     <div class="main flex-1 w-[calc(100%-70px)] pt-[10px] pr-[10px] pb-0 pl-[10px]">
@@ -191,7 +191,7 @@ $left-width: 70px;
   .left {
     width: $left-width;
     .avatar {
-      background-color: white;
+      background-color: var(--el-bg-color);
       padding: 2px;
       width: 50px;
       height: 50px;

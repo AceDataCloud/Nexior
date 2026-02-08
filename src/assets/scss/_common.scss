@@ -5,6 +5,14 @@ body {
   height: 100%;
   width: 100%;
   overflow: hidden;
+  background-color: var(--el-bg-color);
+  color: var(--el-text-color-primary);
+  color-scheme: light;
+}
+
+html.dark,
+html.dark body {
+  color-scheme: dark;
 }
 
 * {
@@ -28,6 +36,22 @@ html.dark,
   /* WalletConnect (Reown AppKit/Web3Modal) overlay stacking */
   --w3m-z-index: 1000000;
   --apkt-z-index: 1000000;
+
+  /* Custom dark-mode aware variables */
+  --app-bg-surface: #ffffff;
+  --app-bg-section: #f5f7fa;
+  --app-border-subtle: #ddd;
+  --app-badge-bg: #ffe8d5;
+  --app-badge-border: #ff7200;
+}
+
+html.dark {
+  --el-color-primary-light-9: #1a3a42;
+  --app-bg-surface: #1e1e1e;
+  --app-bg-section: #1e1e1e;
+  --app-border-subtle: #3a3a3a;
+  --app-badge-bg: #3d2a1a;
+  --app-badge-border: #ff7200;
 }
 
 w3m-modal {

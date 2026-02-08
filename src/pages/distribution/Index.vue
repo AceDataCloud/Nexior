@@ -153,7 +153,7 @@
                   :margin="2"
                   class="block mb-2 ml-auto mr-auto"
                   type="image/png"
-                  :color="{ dark: '#000000', light: '#ffffff' }"
+                  :color="qrColor"
                 />
                 <p class="mt-0">
                   {{ $t('distribution.message.distributionQrDescription') }}
@@ -244,6 +244,10 @@ export default defineComponent({
     },
     page() {
       return parseInt(this.$route.query.page?.toString() || '1');
+    },
+    qrColor() {
+      const isDark = document.documentElement.classList.contains('dark');
+      return { dark: isDark ? '#ffffff' : '#000000', light: isDark ? '#1e1e1e' : '#ffffff' };
     },
     distributionLevelMap() {
       let result: {
