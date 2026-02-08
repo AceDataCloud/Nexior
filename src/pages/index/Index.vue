@@ -407,7 +407,7 @@ export default defineComponent({
     .image {
       border-radius: 10px;
       padding: 5px;
-      background-color: white;
+      background-color: var(--app-bg-surface);
       box-shadow: var(--el-box-shadow-light);
       &.desktop {
         max-width: 100%;
@@ -527,15 +527,7 @@ export default defineComponent({
 #introduction,
 #midjourney,
 #suno {
-  background: #f5f7fa;
-}
-
-.dark {
-  #introduction,
-  #midjourney,
-  #suno {
-    background: #1e1e1e;
-  }
+  background: var(--app-bg-section);
 }
 
 #comments {

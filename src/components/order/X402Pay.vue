@@ -1014,8 +1014,8 @@ export default defineComponent({
 }
 
 .x402-network-group :deep(.el-radio-button__inner) {
-  border-color: rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--el-border-color-lighter);
+  background: var(--el-fill-color-light);
   color: var(--el-text-color-regular);
   transition: background 0.15s ease, border-color 0.15s ease;
 }
@@ -1042,7 +1042,7 @@ export default defineComponent({
   margin: 6px auto 0;
   padding: 14px 16px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--el-fill-color-lighter);
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
 }
 
@@ -1105,7 +1105,7 @@ export default defineComponent({
   margin-top: 8px;
   padding: 12px 14px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--el-fill-color-lighter);
 }
 
 .x402-steps-title {
@@ -1139,7 +1139,7 @@ export default defineComponent({
   justify-content: center;
   font-size: 12px;
   font-weight: 600;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--el-fill-color);
   color: var(--el-text-color-primary);
   flex: none;
   margin-top: 1px;
@@ -1166,8 +1166,8 @@ export default defineComponent({
   gap: 10px;
   padding: 10px 12px;
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--el-border-color-lighter);
+  background: var(--el-fill-color-lighter);
   color: var(--el-text-color-primary);
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease;
@@ -1179,15 +1179,15 @@ export default defineComponent({
 }
 
 .wallet-list-item:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.18);
+  background: var(--el-fill-color);
+  border-color: var(--el-border-color);
 }
 
 .wallet-list-icon {
   width: 22px;
   height: 22px;
   border-radius: 6px;
-  background: #fff;
+  background: var(--el-bg-color);
   object-fit: contain;
   flex: none;
 }

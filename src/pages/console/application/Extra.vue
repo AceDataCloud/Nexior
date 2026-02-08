@@ -284,9 +284,9 @@ export default defineComponent({
         top: -13px;
         right: 0px;
         font-size: 12px;
-        border: 1px solid #ff7200;
+        border: 1px solid var(--app-badge-border);
         color: #ff7200;
-        background-color: #ffe8d5;
+        background-color: var(--app-badge-bg);
         border-radius: 3px;
         padding: 2px 5px;
         z-index: 1000;
