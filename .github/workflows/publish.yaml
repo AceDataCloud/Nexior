@@ -42,4 +42,5 @@ jobs:
       - name: Publish
         run: yarn release
         env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           HUSKY: '0'
