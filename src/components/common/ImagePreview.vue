@@ -3,7 +3,10 @@
     class="image w-[50px] h-[50px] relative rounded-[var(--el-border-radius-base)] overflow-hidden border border-[var(--el-border-color)] bg-[var(--el-fill-color-lighter)]"
   >
     <img class="w-full h-full object-cover" :src="url" :alt="name" />
-    <div v-show="percentage && percentage < 100" class="overlay absolute inset-0 bg-[var(--el-mask-color)] backdrop-blur-[1px]"></div>
+    <div
+      v-show="percentage && percentage < 100"
+      class="overlay absolute inset-0 bg-[var(--el-mask-color)] backdrop-blur-[1px]"
+    ></div>
     <el-progress
       v-show="percentage && percentage < 100"
       type="circle"

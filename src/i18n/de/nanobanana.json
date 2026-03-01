@@ -45,14 +45,14 @@
   },
   "name.aspectRatio": {
     "message": "Seitenverhältnis",
-    "description": "Seitenverhältnis des generierten Bildes"
+    "description": "Seitenverhältnis des zu generierenden Bildes"
   },
   "name.resolution": {
     "message": "Auflösung",
-    "description": "Auflösung des generierten Bildes"
+    "description": "Auflösung des zu generierenden Bildes"
   },
   "description.resolutionProOnly": {
-    "message": "Nur nano-banana-pro unterstützt die Auflösungsanpassung.",
+    "message": "Nur nano-banana-pro unterstützt die Einstellung der Auflösung.",
     "description": "Die Auflösungsoptionen gelten nur für das Pro-Modell"
   },
   "description.prompt": {
@@ -72,7 +72,7 @@
     "description": "Erläuterung des image_urls-Parameters"
   },
   "description.aspectRatio": {
-    "message": "Seitenverhältnis des generierten Bildes. Unterstützte Werte sind `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Standardwert ist `1:1`. Gilt nur, wenn `action` `generate` ist; wenn `action` `edit` ist, gilt das Verhältnis des ersten Bildes in `image_urls`.",
+    "message": "Seitenverhältnis des zu generierenden Bildes. Unterstützte Werte sind `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Standardwert ist `1:1`. Gilt nur, wenn `action` `generate` ist; wenn `action` `edit` ist, gilt das Verhältnis des ersten Bildes in `image_urls`.",
     "description": "Erläuterung des aspect_ratio-Parameters"
   },
   "status.pending": {
@@ -93,7 +93,7 @@
   },
   "button.uploadImageUrls": {
     "message": "Hochladen",
-    "description": "Button zum Hochladen von Referenzbildern (bitte auf Englisch vereinfachen zu 'Upload', nicht 'Upload Images')"
+    "description": "Button zum Hochladen von Referenzbildern (bitte auf Englisch auf 'Upload' vereinfachen, nicht 'Upload Images')"
   },
   "message.startingTask": {
     "message": "Starte Aufgabe...",
@@ -130,5 +130,9 @@
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
     "description": "Option für das professionelle Modell von Nano Banana"
+  },
+  "model.nanoBanana2": {
+    "message": "nano-banana-2",
+    "description": "Option für das Modell Nano Banana 2"
   }
 }

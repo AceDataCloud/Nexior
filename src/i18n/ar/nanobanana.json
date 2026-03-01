@@ -12,8 +12,8 @@
     "description": "نوع العملية: إنشاء صورة"
   },
   "name.edits": {
-    "message": "تحرير الصورة",
-    "description": "نوع العملية: تحرير الصورة"
+    "message": "تحرير صورة",
+    "description": "نوع العملية: تحرير صورة"
   },
   "name.imageUrls": {
     "message": "صور مرجعية",
@@ -52,8 +52,8 @@
     "description": "دقة الصورة المولدة"
   },
   "description.resolutionProOnly": {
-    "message": "تدعم إعدادات الدقة فقط nano-banana-pro.",
-    "description": "خيارات الدقة تنطبق فقط على نموذج pro"
+    "message": "تعيين الدقة مدعوم فقط في nano-banana-pro.",
+    "description": "خيارات الدقة تنطبق فقط على النموذج المحترف"
   },
   "description.prompt": {
     "message": "نص التوليد أو التحرير للصورة",
@@ -61,11 +61,11 @@
   },
   "description.action": {
     "message": "إجراء إنشاء الصورة. إذا كانت `generate`، سيتم إنشاء الصورة بناءً على النص؛ إذا كانت `edit`، سيتم التحرير بناءً على النص والصورة المرفوعة.",
-    "description": "وصف معلمة action"
+    "description": "وصف معلمة الإجراء"
   },
   "description.model": {
     "message": "النموذج المستخدم لإنشاء الصورة. الافتراضي هو nano-banana. nano-banana-pro هو اسم مستعار لـ gemini-3-pro-image، و nano-banana هو اسم مستعار لـ gemini-2.5-flash-image.",
-    "description": "وصف معلمة model"
+    "description": "وصف معلمة النموذج"
   },
   "description.imageUrls": {
     "message": "يجب رفع 1-5 صور في مهمة تحرير الصورة.",
@@ -104,16 +104,16 @@
     "description": "تم إنشاء المهمة بنجاح"
   },
   "message.startTaskFailed": {
-    "message": "فشل بدء المهمة، يرجى الاتصال بالمسؤول:",
+    "message": "فشل بدء المهمة، يرجى الاتصال بالمدير:",
     "description": "فشل إنشاء المهمة"
   },
   "message.usedUp": {
-    "message": "لقد نفدت نقاطك، يرجى شراء المزيد من النقاط للاستمرار",
+    "message": "لقد نفدت نقاطك، يرجى شراء المزيد من النقاط للاستمرار في الاستخدام",
     "description": "رسالة نفاد النقاط"
   },
   "message.uploadImageExceed": {
-    "message": "يمكنك رفع ما يصل إلى 5 صور",
-    "description": "عدد الصور يتجاوز الحد"
+    "message": "يمكن رفع ما يصل إلى 5 صور",
+    "description": "تجاوز عدد الصور الحد المسموح به"
   },
   "message.uploadImageError": {
     "message": "فشل رفع الصورة، يرجى المحاولة لاحقًا",
@@ -125,10 +125,14 @@
   },
   "model.nanoBanana": {
     "message": "nano-banana",
-    "description": "خيار النموذج الأساسي Nano Banana"
+    "description": "خيار نموذج Nano Banana الأساسي"
   },
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
-    "description": "خيار النموذج الاحترافي Nano Banana"
+    "description": "خيار نموذج Nano Banana المحترف"
+  },
+  "model.nanoBanana2": {
+    "message": "nano-banana-2",
+    "description": "خيار نموذج Nano Banana 2"
   }
 }

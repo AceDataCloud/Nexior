@@ -1,22 +1,22 @@
 {
   "name.taskId": {
-    "message": "ID Εργασίας",
-    "description": "Το ID της εργασίας"
+    "message": "Ταυτότητα εργασίας",
+    "description": "Ταυτότητα της εργασίας"
   },
   "name.task": {
-    "message": "Τύπος Εργασίας",
+    "message": "Τύπος εργασίας",
     "description": "Τύπος λειτουργίας εικόνας Nano Banana"
   },
   "name.generate": {
-    "message": "Δημιουργία Εικόνας",
+    "message": "Δημιουργία εικόνας",
     "description": "Τύπος λειτουργίας: Δημιουργία εικόνας"
   },
   "name.edits": {
-    "message": "Επεξεργασία Εικόνας",
+    "message": "Επεξεργασία εικόνας",
     "description": "Τύπος λειτουργίας: Επεξεργασία εικόνας"
   },
   "name.imageUrls": {
-    "message": "Αναφορές Εικόνας",
+    "message": "Αναφορές εικόνας",
     "description": "Αναφορές εικόνας για επεξεργασία"
   },
   "name.failure": {
@@ -24,7 +24,7 @@
     "description": "Η εργασία απέτυχε"
   },
   "name.failureReason": {
-    "message": "Λόγος Αποτυχίας",
+    "message": "Λόγος αποτυχίας",
     "description": "Λόγος αποτυχίας της εργασίας"
   },
   "name.status": {
@@ -32,19 +32,19 @@
     "description": "Κατάσταση της εργασίας"
   },
   "name.traceId": {
-    "message": "ID Ιχνηλάτη",
-    "description": "ID ιχνηλάτη"
+    "message": "Ταυτότητα παρακολούθησης",
+    "description": "Ταυτότητα παρακολούθησης"
   },
   "name.prompt": {
-    "message": "Υπόδειξη Εικόνας",
+    "message": "Υπόδειξη εικόνας",
     "description": "Λέξεις-κλειδιά για δημιουργία/επεξεργασία"
   },
   "name.nanobananaBot": {
     "message": "Nano Banana Bot",
-    "description": "Όνομα γεννήτριας εικόνας Nano Banana"
+    "description": "Όνομα του δημιουργού εικόνας Nano Banana"
   },
   "name.aspectRatio": {
-    "message": "Αναλογία Διαστάσεων",
+    "message": "Αναλογία διαστάσεων",
     "description": "Αναλογία διαστάσεων της παραγόμενης εικόνας"
   },
   "name.resolution": {
@@ -68,15 +68,15 @@
     "description": "Περιγραφή παραμέτρου model"
   },
   "description.imageUrls": {
-    "message": "Πρέπει να ανεβάσετε 1-5 εικόνες για την εργασία επεξεργασίας εικόνας.",
+    "message": "Πρέπει να ανεβάσετε 1-5 εικόνες στην εργασία επεξεργασίας εικόνας.",
     "description": "Περιγραφή παραμέτρου image_urls"
   },
   "description.aspectRatio": {
-    "message": "Αναλογία διαστάσεων της παραγόμενης εικόνας. Υποστηριζόμενες τιμές: `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Προεπιλογή είναι `1:1`. Ισχύει μόνο όταν το `action` είναι `generate`; αν το `action` είναι `edit`, θα ισχύει η αναλογία της πρώτης εικόνας στο `image_urls`.",
+    "message": "Αναλογία διαστάσεων της παραγόμενης εικόνας. Υποστηριζόμενες τιμές είναι `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Προεπιλογή είναι `1:1`. Ισχύει μόνο όταν το `action` είναι `generate`; αν το `action` είναι `edit`, θα ισχύει η αναλογία της πρώτης εικόνας στο `image_urls`.",
     "description": "Περιγραφή παραμέτρου aspect_ratio"
   },
   "status.pending": {
-    "message": "Σε Αναμονή",
+    "message": "Σε αναμονή",
     "description": "Κατάσταση αναμονής της εργασίας"
   },
   "placeholder.select": {
@@ -108,7 +108,7 @@
     "description": "Αποτυχία δημιουργίας εργασίας"
   },
   "message.usedUp": {
-    "message": "Τα πόντοι σας έχουν εξαντληθεί, παρακαλώ αγοράστε περισσότερους πόντους για να συνεχίσετε",
+    "message": "Τα σημεία σας έχουν εξαντληθεί, παρακαλώ αγοράστε περισσότερα σημεία για να συνεχίσετε",
     "description": "Μήνυμα εξάντλησης"
   },
   "message.uploadImageExceed": {
@@ -130,5 +130,9 @@
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
     "description": "Επιλογή επαγγελματικού μοντέλου Nano Banana"
+  },
+  "model.nanoBanana2": {
+    "message": "nano-banana-2",
+    "description": "Επιλογή μοντέλου Nano Banana 2"
   }
 }

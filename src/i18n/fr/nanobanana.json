@@ -12,8 +12,8 @@
     "description": "Type d'opération : créer une image"
   },
   "name.edits": {
-    "message": "Éditer une image",
-    "description": "Type d'opération : éditer une image"
+    "message": "Éditer l'image",
+    "description": "Type d'opération : éditer l'image"
   },
   "name.imageUrls": {
     "message": "Images de référence",
@@ -37,7 +37,7 @@
   },
   "name.prompt": {
     "message": "Invite d'image",
-    "description": "Mots-clés pour générer/éditer"
+    "description": "Mots d'invite pour générer/éditer"
   },
   "name.nanobananaBot": {
     "message": "Bot Nano Banana",
@@ -56,11 +56,11 @@
     "description": "Les options de résolution ne s'appliquent qu'au modèle pro"
   },
   "description.prompt": {
-    "message": "Mots-clés pour générer ou éditer une image",
-    "description": "Description des mots-clés"
+    "message": "Mots d'invite pour générer ou éditer une image",
+    "description": "Description des mots d'invite"
   },
   "description.action": {
-    "message": "Action pour générer une image. Si `generate`, l'image sera générée selon les mots-clés ; si `edit`, l'image sera éditée en fonction des mots-clés et de l'image téléchargée.",
+    "message": "Action pour générer l'image. Si `generate`, l'image sera générée selon les mots d'invite ; si `edit`, l'image sera éditée en fonction des mots d'invite et de l'image téléchargée.",
     "description": "Description du paramètre action"
   },
   "description.model": {
@@ -68,7 +68,7 @@
     "description": "Description du paramètre model"
   },
   "description.imageUrls": {
-    "message": "Doit télécharger 1 à 5 images pour la tâche d'édition d'image.",
+    "message": "Doit télécharger de 1 à 5 images pour la tâche d'édition d'image.",
     "description": "Description du paramètre image_urls"
   },
   "description.aspectRatio": {
@@ -84,8 +84,8 @@
     "description": "Espace réservé pour la sélection"
   },
   "placeholder.prompt": {
-    "message": "Entrez les mots-clés, par exemple : un chat siamois blanc",
-    "description": "Espace réservé pour les mots-clés"
+    "message": "Entrez les mots d'invite, par exemple : un chat siamois blanc",
+    "description": "Espace réservé pour les mots d'invite"
   },
   "button.generate": {
     "message": "Générer",
@@ -130,5 +130,9 @@
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
     "description": "Option de modèle professionnel Nano Banana"
+  },
+  "model.nanoBanana2": {
+    "message": "nano-banana-2",
+    "description": "Option de modèle Nano Banana 2"
   }
 }
