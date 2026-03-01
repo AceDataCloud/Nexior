@@ -15,7 +15,12 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
-import { NANOBANANA_DEFAULT_MODEL, NANOBANANA_MODEL_NANO_BANANA, NANOBANANA_MODEL_NANO_BANANA_PRO } from '@/constants';
+import {
+  NANOBANANA_DEFAULT_MODEL,
+  NANOBANANA_MODEL_NANO_BANANA,
+  NANOBANANA_MODEL_NANO_BANANA_PRO,
+  NANOBANANA_MODEL_NANO_BANANA_2
+} from '@/constants';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 
 export default defineComponent({
@@ -35,6 +40,10 @@ export default defineComponent({
         {
           value: NANOBANANA_MODEL_NANO_BANANA_PRO,
           label: this.$t('nanobanana.model.nanoBananaPro')
+        },
+        {
+          value: NANOBANANA_MODEL_NANO_BANANA_2,
+          label: this.$t('nanobanana.model.nanoBanana2')
         }
       ]
     };

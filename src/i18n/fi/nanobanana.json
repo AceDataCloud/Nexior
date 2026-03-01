@@ -16,8 +16,8 @@
     "description": "Toimintatyyppi: Muokkaa kuvaa"
   },
   "name.imageUrls": {
-    "message": "Viitekuvat",
-    "description": "Muokkaukseen käytettävät viitekuvat"
+    "message": "Viittauskuvat",
+    "description": "Viittauskuvat muokkaukseen"
   },
   "name.failure": {
     "message": "Epätosi",
@@ -37,7 +37,7 @@
   },
   "name.prompt": {
     "message": "Kuvan ohjeet",
-    "description": "Luonnin/muokkauksen ohjeet"
+    "description": "Luomisen/muokkauksen ohjeet"
   },
   "name.nanobananaBot": {
     "message": "Nano Banana Bot",
@@ -52,28 +52,28 @@
     "description": "Luotavan kuvan resoluutio"
   },
   "description.resolutionProOnly": {
-    "message": "Vain nano-banana-pro tukee resoluutiomäärityksiä.",
-    "description": "Resoluutioasetukset ovat voimassa vain pro-mallille"
+    "message": "Vain nano-banana-pro tukee resoluution asetuksia.",
+    "description": "Resoluutio vaihtoehdot ovat vain pro-mallille voimassa"
   },
   "description.prompt": {
-    "message": "Luonnin tai muokkauksen ohjeet",
+    "message": "Luomisen tai muokkauksen ohjeet",
     "description": "Ohjeiden kuvaus"
   },
   "description.action": {
-    "message": "Kuvan luontitoiminto. Jos `generate`, kuva luodaan ohjeiden mukaan; jos `edit`, kuvaa muokataan ohjeiden ja ladatun kuvan perusteella.",
-    "description": "action-parametrin selitys"
+    "message": "Kuvan luomisen toiminto. Jos `generate`, kuva luodaan ohjeiden mukaan; jos `edit`, kuvaa muokataan ohjeiden ja ladatun kuvan perusteella.",
+    "description": "action parametrin selitys"
   },
   "description.model": {
-    "message": "Kuvan luontiin käytettävä malli. Oletus on nano-banana. nano-banana-pro on gemini-3-pro-image:n alias, nano-banana on gemini-2.5-flash-image:n alias.",
-    "description": "model-parametrin selitys"
+    "message": "Kuvan luomiseen käytettävä malli. Oletus on nano-banana. nano-banana-pro on gemini-3-pro-image:n alias, nano-banana on gemini-2.5-flash-image:n alias.",
+    "description": "model parametrin selitys"
   },
   "description.imageUrls": {
     "message": "Muokkaustehtävässä on ladattava 1-5 kuvaa.",
-    "description": "image_urls-parametrin selitys"
+    "description": "image_urls parametrin selitys"
   },
   "description.aspectRatio": {
-    "message": "Luotavan kuvan kuvasuhde. Tuetut arvot ovat `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Oletusarvo on `1:1`. Vain kun `action` on `generate`, se on voimassa; jos `action` on `edit`, käytetään `image_urls`-parametrin ensimmäisen kuvan suhdetta.",
-    "description": "aspect_ratio-parametrin selitys"
+    "message": "Luotavan kuvan kuvasuhde. Tuetut arvot ovat `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Oletusarvo on `1:1`. Vain kun `action` on `generate`, se on voimassa; jos `action` on `edit`, se perustuu `image_urls` ensimmäisen kuvan suhteeseen.",
+    "description": "aspect_ratio parametrin selitys"
   },
   "status.pending": {
     "message": "Odottaa",
@@ -89,14 +89,14 @@
   },
   "button.generate": {
     "message": "Luo",
-    "description": "Luontipainike"
+    "description": "Luo-painike"
   },
   "button.uploadImageUrls": {
     "message": "Lataa kuvat",
-    "description": "Viitekuvien latauspainike (yksinkertaista englanniksi 'Upload', älä käytä 'Upload Images')"
+    "description": "Viittauskuvien latauspainike (yksinkertaista englanniksi 'Upload', älä käytä 'Upload Images')"
   },
   "message.startingTask": {
-    "message": "Aloitetaan tehtävä...",
+    "message": "Aloitetaan tehtävää...",
     "description": "Tehtävän aloitusviesti"
   },
   "message.startTaskSuccess": {
@@ -109,11 +109,11 @@
   },
   "message.usedUp": {
     "message": "Pisteesi on käytetty loppuun, osta lisää pisteitä jatkaaksesi käyttöä",
-    "description": "Loppu viesti"
+    "description": "Loppunut ilmoitus"
   },
   "message.uploadImageExceed": {
     "message": "Voit ladata enintään 5 kuvaa",
-    "description": "Kuvamäärä ylittää rajan"
+    "description": "Kuvien määrä ylittää rajan"
   },
   "message.uploadImageError": {
     "message": "Kuvan lataaminen epäonnistui, yritä myöhemmin uudelleen",
@@ -130,5 +130,9 @@
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
     "description": "Nano Banana ammattilaismallin vaihtoehto"
+  },
+  "model.nanoBanana2": {
+    "message": "nano-banana-2",
+    "description": "Nano Banana 2 mallin vaihtoehto"
   }
 }

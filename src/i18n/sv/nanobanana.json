@@ -45,7 +45,7 @@
   },
   "name.aspectRatio": {
     "message": "Bildförhållande",
-    "description": "Bildförhållande för den genererade bilden"
+    "description": "Bildens bredd-höjd-förhållande"
   },
   "name.resolution": {
     "message": "Upplösning",
@@ -72,7 +72,7 @@
     "description": "Beskrivning av image_urls-parametern"
   },
   "description.aspectRatio": {
-    "message": "Bildförhållande för den genererade bilden. Stödda värden är `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Standardvärdet är `1:1`. Gäller endast när `action` är `generate`; om `action` är `edit`, används förhållandet för den första bilden i `image_urls`.",
+    "message": "Bildens bredd-höjd-förhållande. Stödda värden är `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Standardvärdet är `1:1`. Gäller endast när `action` är `generate`; om `action` är `edit`, används förhållandet för den första bilden i `image_urls`.",
     "description": "Beskrivning av aspect_ratio-parametern"
   },
   "status.pending": {
@@ -93,14 +93,14 @@
   },
   "button.uploadImageUrls": {
     "message": "Ladda upp",
-    "description": "Ladda upp referensbilder knapp (engelska förenklas till 'Upload', använd inte 'Upload Images')"
+    "description": "Ladda upp referensbilder knapp (engelska bör förenklas till 'Upload', använd inte 'Upload Images')"
   },
   "message.startingTask": {
-    "message": "Startar uppgiften...",
-    "description": "Meddelande om att starta uppgiften"
+    "message": "Startar uppgift...",
+    "description": "Meddelande om att starta uppgift"
   },
   "message.startTaskSuccess": {
-    "message": "Uppgift för generering har startats framgångsrikt",
+    "message": "Uppgiften har framgångsrikt startats",
     "description": "Uppgiften skapades framgångsrikt"
   },
   "message.startTaskFailed": {
@@ -121,7 +121,7 @@
   },
   "name.model": {
     "message": "Modell",
-    "description": "Etikett för val av Nano Banana-modell"
+    "description": "Val av Nano Banana-modell"
   },
   "model.nanoBanana": {
     "message": "nano-banana",
@@ -130,5 +130,9 @@
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
     "description": "Alternativ för Nano Banana professionell modell"
+  },
+  "model.nanoBanana2": {
+    "message": "nano-banana-2",
+    "description": "Alternativ för Nano Banana 2-modell"
   }
 }

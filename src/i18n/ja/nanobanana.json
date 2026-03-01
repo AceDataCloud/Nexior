@@ -60,7 +60,7 @@
     "description": "プロンプトの説明"
   },
   "description.action": {
-    "message": "画像生成のアクション。`generate` の場合、プロンプトに基づいて画像を生成します；`edit` の場合、プロンプトとアップロードされた画像に基づいて編集します。",
+    "message": "画像を生成するアクション。`generate` の場合、プロンプトに基づいて画像を生成します；`edit` の場合、プロンプトとアップロードされた画像に基づいて編集します。",
     "description": "action パラメータの説明"
   },
   "description.model": {
@@ -81,11 +81,11 @@
   },
   "placeholder.select": {
     "message": "選択",
-    "description": "選択のプレースホルダー"
+    "description": "選択プレースホルダー"
   },
   "placeholder.prompt": {
     "message": "プロンプトを入力してください。例：白いシャム猫",
-    "description": "プロンプトのプレースホルダー"
+    "description": "プロンプトプレースホルダー"
   },
   "button.generate": {
     "message": "生成",
@@ -108,7 +108,7 @@
     "description": "タスク作成に失敗しました"
   },
   "message.usedUp": {
-    "message": "ポイントが使い切りました。続行するには追加のポイントを購入してください",
+    "message": "ポイントが使い切れました。追加のポイントを購入して続行してください",
     "description": "使い切りのメッセージ"
   },
   "message.uploadImageExceed": {
@@ -116,7 +116,7 @@
     "description": "画像数が制限を超えています"
   },
   "message.uploadImageError": {
-    "message": "画像のアップロードに失敗しました。後で再試行してください",
+    "message": "画像のアップロードに失敗しました。後でもう一度お試しください",
     "description": "アップロード失敗"
   },
   "name.model": {
@@ -130,5 +130,9 @@
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
     "description": "Nano Banana プロモデルオプション"
+  },
+  "model.nanoBanana2": {
+    "message": "nano-banana-2",
+    "description": "Nano Banana 2 モデルオプション"
   }
 }

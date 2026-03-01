@@ -25,7 +25,9 @@
         </div>
         <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
           {{ modelValue?.request?.prompt }}
-          <span v-if="!modelValue?.response"> - ({{ $t('nanobanana.status.pending') }}) </span>
+          <span v-if="!modelValue?.response || !modelValue?.response?.data?.[0]?.image_url">
+            - ({{ $t('nanobanana.status.pending') }})
+          </span>
         </p>
       </div>
       <div v-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">
@@ -81,7 +83,7 @@
           </p>
         </el-alert>
       </div>
-      <div v-if="modelValue?.response?.success === false" :class="{ content: true }">
+      <div v-else-if="modelValue?.response?.success === false" :class="{ content: true }">
         <el-alert :closable="false" class="failure">
           <template #template>
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
@@ -129,7 +131,7 @@
           </p>
         </el-alert>
       </div>
-      <div v-if="!modelValue?.response || !modelValue?.response?.data?.[0]?.image_url" :class="{ content: true }">
+      <div v-else :class="{ content: true }">
         <el-alert :closable="false" class="info">
           <template #template>
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
