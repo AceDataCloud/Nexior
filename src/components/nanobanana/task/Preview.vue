@@ -25,9 +25,7 @@
         </div>
         <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
           {{ modelValue?.request?.prompt }}
-          <span v-if="!modelValue?.response || !modelValue?.response?.data?.[0]?.image_url">
-            - ({{ $t('nanobanana.status.pending') }})
-          </span>
+          <span v-if="!modelValue?.response"> - ({{ $t('nanobanana.status.pending') }}) </span>
         </p>
       </div>
       <div v-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">

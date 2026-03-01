@@ -18,7 +18,7 @@ import { ElSelect, ElOption } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import {
   NANOBANANA_DEFAULT_RESOLUTION,
-  NANOBANANA_MODEL_NANO_BANANA_PRO,
+  NANOBANANA_MODEL_NANO_BANANA,
   NANOBANANA_RESOLUTION_1K,
   NANOBANANA_RESOLUTION_2K,
   NANOBANANA_RESOLUTION_4K
@@ -63,7 +63,7 @@ export default defineComponent({
       }
     },
     isProModel(): boolean {
-      return this.$store.state.nanobanana?.config?.model === NANOBANANA_MODEL_NANO_BANANA_PRO;
+      return this.$store.state.nanobanana?.config?.model !== NANOBANANA_MODEL_NANO_BANANA;
     }
   },
   watch: {
