@@ -8,7 +8,7 @@
         <div
           v-for="(link, linkIndex) in links"
           :key="linkIndex"
-          :class="{link: true, active: link.routes.includes($route.name as string)}"
+          :class="{ link: true, active: link.routes.includes($route.name as string) }"
         >
           <el-tooltip effect="dark" :content="link.displayName" :placement="direction === 'row' ? 'top' : 'right'">
             <el-image v-if="link.logo" :src="link.logo" class="avatar" @click="$router.push(link.route)" />

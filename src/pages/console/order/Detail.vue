@@ -433,7 +433,7 @@ export default defineComponent({
     },
     x402BadgePercent(): string {
       const rate = this.hasX402Applied
-        ? this.pricingInfo.discountRateX402 ?? this.x402DiscountRate
+        ? (this.pricingInfo.discountRateX402 ?? this.x402DiscountRate)
         : this.x402DiscountRate;
       const percent = rate * 100;
       if (!Number.isFinite(percent) || percent <= 0) {
