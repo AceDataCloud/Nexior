@@ -340,9 +340,9 @@ export default defineComponent({
       if (this.isSolanaNetwork) return false;
       return Boolean(
         this.evmAddress &&
-          this.chainId &&
-          this.expectedChainIdHex &&
-          this.chainId.toLowerCase() !== this.expectedChainIdHex.toLowerCase()
+        this.chainId &&
+        this.expectedChainIdHex &&
+        this.chainId.toLowerCase() !== this.expectedChainIdHex.toLowerCase()
       );
     },
     hasEvmProvider(): boolean {
@@ -1017,7 +1017,9 @@ export default defineComponent({
   border-color: var(--el-border-color-lighter);
   background: var(--el-fill-color-light);
   color: var(--el-text-color-regular);
-  transition: background 0.15s ease, border-color 0.15s ease;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
 }
 
 .x402-network-group :deep(.el-radio-button__original-radio:checked + .el-radio-button__inner) {
@@ -1170,7 +1172,9 @@ export default defineComponent({
   background: var(--el-fill-color-lighter);
   color: var(--el-text-color-primary);
   cursor: pointer;
-  transition: background 0.15s ease, border-color 0.15s ease;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
 }
 
 .wallet-list-item:disabled {

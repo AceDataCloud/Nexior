@@ -206,7 +206,7 @@ export default defineComponent({
         return [];
       }
       const services = [this.service];
-      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+
       const sortedServices = services.sort((a, b) => this.serviceIds.indexOf(a.id) - this.serviceIds.indexOf(b.id));
       for (const service of sortedServices) {
         const packages = service.packages;

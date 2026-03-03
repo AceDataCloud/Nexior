@@ -59,8 +59,8 @@ export default defineComponent({
           currentDuration && allowedDurations.includes(currentDuration)
             ? currentDuration
             : allowedDurations.includes(SORA_DEFAULT_DURATION)
-            ? SORA_DEFAULT_DURATION
-            : allowedDurations[0];
+              ? SORA_DEFAULT_DURATION
+              : allowedDurations[0];
         const nextConfig = {
           ...currentConfig,
           model: val,

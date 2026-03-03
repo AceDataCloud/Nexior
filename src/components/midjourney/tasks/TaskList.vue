@@ -56,7 +56,6 @@ export default defineComponent({
   },
   computed: {
     tasks() {
-      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       return this.$store.state.midjourney.tasks?.items;
     },
     application() {
