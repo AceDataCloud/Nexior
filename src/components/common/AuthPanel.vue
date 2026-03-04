@@ -1,5 +1,9 @@
 <template>
+  <div v-if="isNative" class="auth-native">
+    <iframe class="auth-native__iframe" :src="iframeUrl" frameborder="0" />
+  </div>
   <el-dialog
+    v-else
     :model-value="!authenticated"
     modal-class="dialog"
     width="400px"
@@ -43,6 +47,9 @@ export default defineComponent({
     };
   },
   computed: {
+    isNative() {
+      return import.meta.env.VITE_SURFACE === 'ios' || import.meta.env.VITE_SURFACE === 'android';
+    },
     iframeUrl() {
       return `${getBaseUrlAuth()}/auth/login?inviter_id=${this.inviterId}`;
     },
@@ -89,7 +96,15 @@ export default defineComponent({
             });
           }
         }
-        window.location.reload();
+        if (import.meta.env.VITE_SURFACE === 'ios' || import.meta.env.VITE_SURFACE === 'android') {
+          // On native platforms, hide the auth panel and navigate home instead
+          // of reloading — window.location.reload() in Capacitor WKWebView can
+          // fail to re-trigger the auth check, leaving users on a blank screen.
+          this.$store.commit('setAuth', { visible: false });
+          await this.$router.push('/');
+        } else {
+          window.location.reload();
+        }
       }
       if (event.data.name === 'show_qr') {
         const data = event.data.data;
@@ -105,5 +120,27 @@ export default defineComponent({
 .dialog {
   width: 400px;
   height: 600px;
+}
+
+.auth-native {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .auth-native {
+    background: #1a1a1a;
+  }
 }
 </style>
