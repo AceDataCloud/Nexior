@@ -80,10 +80,14 @@ export default defineComponent({
         // if the site is not initialized, initialize it
         if (!this.$store.state.site?.origin) {
           await this.$store.dispatch('initializeSite');
-          // after initialization, navigate to the site config page
-          await this.$router.push({
-            name: ROUTE_SITE_INDEX
-          });
+          // navigate to site config page for white-label site owners,
+          // but skip on native platforms (Android/iOS) where users are
+          // always on the official site
+          if (import.meta.env.VITE_SURFACE !== 'android' && import.meta.env.VITE_SURFACE !== 'ios') {
+            await this.$router.push({
+              name: ROUTE_SITE_INDEX
+            });
+          }
         }
         window.location.reload();
       }
