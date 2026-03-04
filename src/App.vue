@@ -69,8 +69,16 @@ export default defineComponent({
     const authenticated = !!this.$store.state.token.access && !!this.$store.state.user?.id;
     console.debug('App mounted, authenticated:', authenticated);
     if (!authenticated) {
-      this.$store.dispatch('logout');
-      this.$store.dispatch('login');
+      if (import.meta.env.VITE_SURFACE === 'android' || import.meta.env.VITE_SURFACE === 'ios') {
+        // On native platforms, just reset state and show login popup.
+        // Don't dispatch 'logout' which would navigate the WebView to an
+        // external auth URL, opening Chrome and landing on localhost.
+        this.$store.dispatch('resetAll');
+        this.$store.dispatch('login');
+      } else {
+        this.$store.dispatch('logout');
+        this.$store.dispatch('login');
+      }
     }
   },
   methods: {
