@@ -226,7 +226,7 @@ export const login = async ({ state, commit }: ActionContext<IRootState, IRootSt
   }
 };
 
-export const logout = async ({ dispatch }: ActionContext<IRootState, IRootState>) => {
+export const logout = async ({ dispatch, commit }: ActionContext<IRootState, IRootState>) => {
   await dispatch('resetAll');
   await dispatch('chat/resetAll');
   await dispatch('midjourney/resetAll');
@@ -244,11 +244,20 @@ export const logout = async ({ dispatch }: ActionContext<IRootState, IRootState>
   await dispatch('seedream/resetAll');
   await dispatch('seedance/resetAll');
   await dispatch('veo/resetAll');
-  const currentUrl = window.location.href;
-  const baseUrlAuth = getBaseUrlAuth();
-  const loginUrl = `${baseUrlAuth}/auth/login?redirect=${currentUrl}`;
-  const redirectUrl = `${baseUrlAuth}/auth/logout?redirect=${loginUrl}`;
-  window.location.href = redirectUrl;
+  if (import.meta.env.VITE_SURFACE === SURFACE_IOS || import.meta.env.VITE_SURFACE === SURFACE_ANDROID) {
+    // On native platforms, show in-app login popup instead of navigating to
+    // external auth URL (which would open Chrome and redirect to localhost)
+    commit('setAuth', {
+      flow: 'popup',
+      visible: true
+    });
+  } else {
+    const currentUrl = window.location.href;
+    const baseUrlAuth = getBaseUrlAuth();
+    const loginUrl = `${baseUrlAuth}/auth/login?redirect=${currentUrl}`;
+    const redirectUrl = `${baseUrlAuth}/auth/logout?redirect=${loginUrl}`;
+    window.location.href = redirectUrl;
+  }
 };
 
 export default {
