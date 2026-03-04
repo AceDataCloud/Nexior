@@ -7,6 +7,11 @@ export const getSiteOrigin = (site?: ISite) => {
   if (site?.origin) {
     return site?.origin;
   }
+  // On native platforms (Capacitor), window.location.host is "localhost"
+  // which is not the real origin — use the official hub URL
+  if (import.meta.env.VITE_SURFACE === 'android' || import.meta.env.VITE_SURFACE === 'ios') {
+    return BASE_URL_HUB;
+  }
   if (isOfficial()) {
     return BASE_URL_HUB;
   }
