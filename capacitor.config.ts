@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.acedatacloud.nexior',
-  appName: 'Nexior',
+  appName: 'AceData',
   webDir: 'dist'
 };
 

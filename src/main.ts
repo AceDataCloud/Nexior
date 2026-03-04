@@ -48,8 +48,8 @@ const walletOptions = {
       options: {
         projectId: walletConnectProjectId,
         metadata: {
-          name: 'Nexior',
-          description: 'Nexior WalletConnect',
+          name: 'AceData',
+          description: 'AceData WalletConnect',
           url: window.location.origin,
           icons: ['https://cdn.acedata.cloud/acedata.jpg']
         }
