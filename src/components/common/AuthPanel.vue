@@ -1,6 +1,11 @@
 <template>
-  <div v-if="isNative" class="auth-native">
+  <div v-if="isNative && !useBrowser" class="auth-native">
     <iframe class="auth-native__iframe" :src="iframeUrl" frameborder="0" />
+  </div>
+  <div v-else-if="isNative && useBrowser" class="auth-native">
+    <div class="auth-native__loading">
+      <p>{{ $t('common.message.loading') }}</p>
+    </div>
   </div>
   <el-dialog
     v-else
@@ -33,6 +38,7 @@ import { getBaseUrlAuth } from '@/utils';
 import { getCookie } from 'typescript-cookie';
 import QrCode from 'vue-qrcode';
 import { ROUTE_SITE_INDEX } from '@/router';
+import { Browser } from '@capacitor/browser';
 
 export default defineComponent({
   name: 'AuthPanel',
@@ -43,7 +49,8 @@ export default defineComponent({
   data() {
     return {
       showQR: false,
-      qrLink: ''
+      qrLink: '',
+      useBrowser: false
     };
   },
   computed: {
@@ -70,6 +77,17 @@ export default defineComponent({
     }
   },
   mounted() {
+    if (this.isNative) {
+      // On native platforms, open the auth page in the Capacitor in-app browser
+      // (SFSafariViewController on iOS, Chrome Custom Tab on Android).
+      // This allows Google/GitHub OAuth to work properly since the in-app browser
+      // supports full page navigation. The native_redirect param tells AuthFrontend
+      // to redirect back to the app via deep link after login completes.
+      this.useBrowser = true;
+      const authUrl = `${getBaseUrlAuth()}/auth/login?inviter_id=${this.inviterId}&native_redirect=com.acedatacloud.nexior`;
+      Browser.open({ url: authUrl });
+      return;
+    }
     window.addEventListener('message', async (event: MessageEvent) => {
       if (event.origin !== getBaseUrlAuth()) {
         return;
@@ -135,6 +153,12 @@ export default defineComponent({
     width: 100%;
     height: 100%;
     border: none;
+  }
+
+  &__loading {
+    text-align: center;
+    color: #666;
+    font-size: 16px;
   }
 }
 
