@@ -96,6 +96,9 @@ export default defineComponent({
               await this.$router.push('/');
             } catch (e) {
               console.error('token exchange failed after deep link', e);
+              // Hide auth panel and re-trigger login so user isn't stuck on loading screen
+              this.$store.commit('setAuth', { visible: false });
+              this.$store.dispatch('login');
             }
           }
         }

@@ -1,7 +1,7 @@
 <template>
   <div v-if="isNative" class="auth-native">
     <div v-if="useBrowser" class="auth-native__loading">
-      <p>{{ $t('common.message.loading') }}</p>
+      <p>{{ $t('common.status.loading') }}</p>
     </div>
     <iframe v-else class="auth-native__iframe" :src="iframeUrl" frameborder="0" />
   </div>
@@ -79,6 +79,14 @@ export default defineComponent({
     }
   },
   mounted() {
+    if (this.isNative) {
+      // When the user closes the in-app browser without completing login,
+      // fall back to the iframe login screen instead of being stuck on loading.
+      Browser.addListener('browserFinished', () => {
+        console.debug('browser closed by user');
+        this.useBrowser = false;
+      });
+    }
     // On native platforms, keep the iframe for regular login (email/password).
     // When the user clicks Google/GitHub, the iframe (AuthFrontend) sends a
     // postMessage asking us to open the OAuth flow in the in-app browser.
