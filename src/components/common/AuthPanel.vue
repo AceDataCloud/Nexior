@@ -1,11 +1,9 @@
 <template>
-  <div v-if="isNative && !useBrowser" class="auth-native">
-    <iframe class="auth-native__iframe" :src="iframeUrl" frameborder="0" />
-  </div>
-  <div v-else-if="isNative && useBrowser" class="auth-native">
-    <div class="auth-native__loading">
+  <div v-if="isNative" class="auth-native">
+    <div v-if="useBrowser" class="auth-native__loading">
       <p>{{ $t('common.message.loading') }}</p>
     </div>
+    <iframe v-else class="auth-native__iframe" :src="iframeUrl" frameborder="0" />
   </div>
   <el-dialog
     v-else
@@ -58,7 +56,11 @@ export default defineComponent({
       return import.meta.env.VITE_SURFACE === 'ios' || import.meta.env.VITE_SURFACE === 'android';
     },
     iframeUrl() {
-      return `${getBaseUrlAuth()}/auth/login?inviter_id=${this.inviterId}`;
+      let url = `${getBaseUrlAuth()}/auth/login?inviter_id=${this.inviterId}`;
+      if (this.isNative) {
+        url += '&native_redirect=com.acedatacloud.nexior';
+      }
+      return url;
     },
     inviterId() {
       // if forceInviterId is set, then use forceInviterId
@@ -77,22 +79,23 @@ export default defineComponent({
     }
   },
   mounted() {
-    if (this.isNative) {
-      // On native platforms, open the auth page in the Capacitor in-app browser
-      // (SFSafariViewController on iOS, Chrome Custom Tab on Android).
-      // This allows Google/GitHub OAuth to work properly since the in-app browser
-      // supports full page navigation. The native_redirect param tells AuthFrontend
-      // to redirect back to the app via deep link after login completes.
-      this.useBrowser = true;
-      const authUrl = `${getBaseUrlAuth()}/auth/login?inviter_id=${this.inviterId}&native_redirect=com.acedatacloud.nexior`;
-      Browser.open({ url: authUrl });
-      return;
-    }
+    // On native platforms, keep the iframe for regular login (email/password).
+    // When the user clicks Google/GitHub, the iframe (AuthFrontend) sends a
+    // postMessage asking us to open the OAuth flow in the in-app browser.
     window.addEventListener('message', async (event: MessageEvent) => {
       if (event.origin !== getBaseUrlAuth()) {
         return;
       }
       console.debug('received from child page', event);
+      if (event.data.name === 'nativeOAuth' && this.isNative) {
+        // AuthFrontend in iframe can't do OAuth popups/redirects (X-Frame-Options).
+        // Open the auth page in an in-app browser with the provider pre-selected.
+        const provider = event.data.data?.provider;
+        this.useBrowser = true;
+        const authUrl = `${getBaseUrlAuth()}/auth/login?inviter_id=${this.inviterId}&native_redirect=com.acedatacloud.nexior&provider=${provider}`;
+        Browser.open({ url: authUrl });
+        return;
+      }
       if (event.data.name === 'login') {
         const data = event.data.data;
         const token = {
