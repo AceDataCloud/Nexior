@@ -96,6 +96,8 @@ export default defineComponent({
               await this.$router.push('/');
             } catch (e) {
               console.error('token exchange failed after deep link', e);
+              this.$store.commit('setAuth', { visible: false });
+              await this.$store.dispatch('login');
             }
           }
         }
