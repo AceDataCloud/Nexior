@@ -1,14 +1,14 @@
 <template>
-  <div class="main flex flex-row flex-1">
-    <div class="side w-[250px] h-full overflow-y-scroll border-r border-[var(--el-border-color)]">
+  <div class="main">
+    <div class="side">
       <slot name="side">
         <side-panel @change-conversation="onChangeConversation" />
       </slot>
     </div>
-    <div class="chat h-full w-[calc(100%-250px)] pt-[45px] flex-1 flex flex-col relative">
+    <div class="chat">
       <slot name="chat" />
     </div>
-    <el-button round class="menu" @click="drawer = true">
+    <el-button circle class="menu" @click="drawer = true">
       <font-awesome-icon icon="fa-solid fa-bars" />
     </el-button>
     <el-drawer v-model="drawer" direction="ltr" :with-header="false" size="290px">
@@ -47,26 +47,54 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.main {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  background: linear-gradient(180deg, var(--el-fill-color-lighter) 0%, transparent 18%);
+}
+
+.side {
+  width: 250px;
+  height: 100%;
+  overflow-y: auto;
+  flex-shrink: 0;
+  border-right: 1px solid var(--el-border-color-lighter);
+  background-color: color-mix(in srgb, var(--el-bg-color) 92%, var(--el-color-primary-light-9) 8%);
+}
+
+.chat {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+  padding-top: 45px;
+}
+
 .menu {
   display: none;
 }
 
 @media (max-width: 767px) {
-  .main {
-    .side {
-      display: none;
-    }
-    .chat {
-      width: 100%;
-      padding: 50px 15px 0 10px;
-    }
-    .menu {
-      display: block;
-      position: fixed;
-      left: 20px;
-      top: 50px;
-      z-index: 2000;
-    }
+  .side {
+    display: none;
+  }
+
+  .chat {
+    width: 100%;
+    padding: 52px 10px 0;
+  }
+
+  .menu {
+    display: block;
+    position: fixed;
+    left: 12px;
+    top: 48px;
+    z-index: 2000;
+    border: 1px solid var(--el-border-color-lighter);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
   }
 }
 </style>
