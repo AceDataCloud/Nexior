@@ -492,9 +492,14 @@ export default defineComponent({
   width: max-content;
   margin-bottom: 10px;
   position: absolute;
-  left: 10px;
+  left: max(12px, calc(50% - 400px));
   top: 10px;
   z-index: 100;
+  padding: 4px;
+  border-radius: 14px;
+  border: 1px solid var(--el-border-color-lighter);
+  background-color: color-mix(in srgb, var(--el-bg-color) 88%, var(--el-color-primary-light-9) 12%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 .setting {
   position: absolute;
@@ -515,30 +520,43 @@ export default defineComponent({
   height: 100%;
   overflow-y: auto;
   position: relative;
+  background:
+    radial-gradient(
+      circle at 88% 8%,
+      color-mix(in srgb, var(--el-color-primary-light-9) 75%, transparent) 0%,
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 8% 94%,
+      color-mix(in srgb, var(--el-color-primary-light-9) 65%, transparent) 0%,
+      transparent 24%
+    );
   .disclaimer {
     width: 100%;
     text-align: center;
     font-size: 12px;
-    margin: 5px 0;
+    margin: 10px 0 8px;
+    color: var(--el-text-color-secondary);
   }
   &.empty {
     position: relative;
     .starter {
       position: absolute;
       width: 100%;
-      top: 50%;
+      max-width: 920px;
+      top: 52%;
       left: 50%;
       transform: translate(-50%, -50%);
+      padding: 0 16px;
     }
   }
   .messages {
-    padding-top: 10px;
-    padding: 0 calc(50% - 400px);
+    padding: 56px calc(50% - 400px) 0;
     flex: 1;
-    overflow-y: scroll;
+    overflow-y: auto;
     @media (max-width: 1159px) {
       width: 100%;
-      padding: 0 15px;
+      padding: 56px 12px 0;
     }
     .setting {
       display: none;
@@ -550,14 +568,27 @@ export default defineComponent({
   .starter {
     height: fit-content;
     overflow: hidden;
+    padding: 0 calc(50% - 400px) 8px;
     @media (max-width: 1159px) {
       width: 100%;
-      padding: 0 15px;
+      padding: 0 12px 8px;
     }
   }
 }
 
 .bottom {
   width: 100%;
+}
+
+@media (max-width: 767px) {
+  .selector {
+    top: 8px;
+    left: 54px;
+    border-radius: 12px;
+  }
+
+  .dialogue.empty .starter {
+    top: 55%;
+  }
 }
 </style>

@@ -105,10 +105,15 @@
         />
       </div>
     </div>
-    <el-alert v-else class="error" :title="errorText" type="error" :closable="false" />
-    <el-button v-if="showBuyMore" round type="primary" class="btn btn-buy" size="small" @click="onBuyMore">
-      {{ $t('common.button.buyMore') }}
-    </el-button>
+    <div v-else class="error-card">
+      <div class="error-content">
+        <font-awesome-icon icon="fa-solid fa-circle-exclamation" class="error-icon" />
+        <span class="error-text">{{ errorText }}</span>
+      </div>
+      <el-button v-if="showBuyMore" round type="primary" class="btn-topup" size="small" @click="onBuyMore">
+        {{ $t('common.button.buyMore') }}
+      </el-button>
+    </div>
   </div>
 </template>
 
@@ -116,7 +121,8 @@
 import { defineComponent } from 'vue';
 import AnsweringMark from './AnsweringMark.vue';
 import copy from 'copy-to-clipboard';
-import { ElAlert, ElButton, ElImage, ElInput } from 'element-plus';
+import { ElButton, ElImage, ElInput } from 'element-plus';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { IApplication, IChatMessage, IChatMessageState } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
@@ -153,11 +159,11 @@ export default defineComponent({
     RestartToGenerate,
     AnsweringMark,
     MarkdownRenderer,
-    ElAlert,
     FilePreview,
     ElButton,
     ElImage,
-    ElInput
+    ElInput,
+    FontAwesomeIcon
   },
   props: {
     messages: {
@@ -265,21 +271,46 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.error {
+.error-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background-color: var(--el-color-danger-light-9);
+  border: 1px solid var(--el-color-danger-light-7);
   width: fit-content;
-  padding: 10px 10px 8px 10px;
-  height: 45px;
-  border-radius: 15px;
+  max-width: 100%;
+  .error-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    .error-icon {
+      color: var(--el-color-danger);
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .error-text {
+      font-size: 14px;
+      color: var(--el-color-danger);
+      line-height: 1.5;
+    }
+  }
+  .btn-topup {
+    flex-shrink: 0;
+    border-radius: 20px;
+    font-size: 13px;
+    --el-button-bg-color: var(--el-color-primary);
+    --el-button-border-color: var(--el-color-primary);
+    --el-button-hover-bg-color: var(--el-color-primary-dark-2);
+    --el-button-hover-border-color: var(--el-color-primary-dark-2);
+  }
 }
 
-.btn-buy {
-  margin: 10px auto;
-  border-radius: 20px;
-}
 .message {
   display: flex;
   flex-direction: row;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 
   &[role='system'] {
     display: none;
@@ -290,21 +321,24 @@ export default defineComponent({
   }
 
   .author {
-    width: 50px;
-    padding: 10px;
+    width: 44px;
+    padding: 4px 8px 4px 0;
+    flex-shrink: 0;
     .avatar {
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
-      border: 1px solid var(--el-border-color);
+      border: 1px solid var(--el-border-color-lighter);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
     }
   }
 
   .main {
     flex: 1;
-    width: calc(100% - 50px);
+    width: calc(100% - 44px);
     display: flex;
     flex-direction: column;
+    min-width: 0;
   }
 
   &.assistant {
@@ -312,56 +346,56 @@ export default defineComponent({
     .content {
       color: var(--el-text-color-primary);
     }
-    .btn-buy {
-      display: inline-block;
-      margin-left: 5px;
-    }
   }
   &.user {
     .main {
       align-items: flex-end;
     }
     .content {
-      background-color: var(--el-bg-color-page);
+      background-color: var(--el-color-primary-light-9);
       color: var(--el-text-color-primary);
       position: relative;
       width: fit-content;
-      max-width: 90%;
+      max-width: 85%;
+      border: 1px solid var(--el-color-primary-light-7);
       .edits {
-        background-color: var(--el-bg-color-page);
+        background-color: transparent;
         padding: 0;
         min-width: 500px;
         width: 100%;
         height: 100%;
-        font-size: 16px;
+        font-size: 15px;
         .btn-confirm {
-          background-color: var(--el-color-black);
-          border-color: var(--el-color-black);
+          background-color: var(--el-color-primary);
+          border-color: var(--el-color-primary);
+          color: #fff;
         }
       }
       @media (max-width: 767px) {
+        max-width: 90%;
         .edits {
-          min-width: 350px;
+          min-width: 280px;
         }
       }
     }
   }
   .content {
-    border-radius: 15px;
-    padding: 8px 15px;
+    border-radius: 16px;
+    padding: 10px 16px;
     width: 100%;
     max-width: 800px;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
+    line-height: 1.6;
     .image {
       max-width: 100%;
       max-height: 300px;
       margin: 5px 0;
-      border-radius: 10px;
+      border-radius: 12px;
     }
     .edit-area {
       width: 100%;
       min-height: 100px;
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 8px;
       margin-bottom: 10px;
     }
@@ -374,9 +408,10 @@ export default defineComponent({
 
   .operations {
     display: flex;
-    gap: 10px;
-    margin-left: 5px;
-    color: var(--el-text-color-regular);
+    gap: 8px;
+    margin-left: 4px;
+    margin-top: 2px;
+    color: var(--el-text-color-placeholder);
     .btn-edit {
       visibility: hidden;
     }
@@ -390,6 +425,7 @@ export default defineComponent({
 
   &:hover {
     .operations {
+      color: var(--el-text-color-regular);
       .btn-edit {
         visibility: visible;
       }
