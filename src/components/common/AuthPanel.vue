@@ -1,6 +1,9 @@
 <template>
   <div v-if="isNative" class="auth-native">
-    <iframe class="auth-native__iframe" :src="iframeUrl" frameborder="0" />
+    <div v-if="useBrowser" class="auth-native__loading">
+      <p>{{ $t('common.message.loading') }}</p>
+    </div>
+    <iframe v-else class="auth-native__iframe" :src="iframeUrl" frameborder="0" />
   </div>
   <el-dialog
     v-else
@@ -33,6 +36,7 @@ import { getBaseUrlAuth } from '@/utils';
 import { getCookie } from 'typescript-cookie';
 import QrCode from 'vue-qrcode';
 import { ROUTE_SITE_INDEX } from '@/router';
+import { Browser } from '@capacitor/browser';
 
 export default defineComponent({
   name: 'AuthPanel',
@@ -43,7 +47,8 @@ export default defineComponent({
   data() {
     return {
       showQR: false,
-      qrLink: ''
+      qrLink: '',
+      useBrowser: false
     };
   },
   computed: {
@@ -51,7 +56,11 @@ export default defineComponent({
       return import.meta.env.VITE_SURFACE === 'ios' || import.meta.env.VITE_SURFACE === 'android';
     },
     iframeUrl() {
-      return `${getBaseUrlAuth()}/auth/login?inviter_id=${this.inviterId}`;
+      let url = `${getBaseUrlAuth()}/auth/login?inviter_id=${this.inviterId}`;
+      if (this.isNative) {
+        url += '&native_redirect=com.acedatacloud.nexior';
+      }
+      return url;
     },
     inviterId() {
       // if forceInviterId is set, then use forceInviterId
@@ -70,11 +79,23 @@ export default defineComponent({
     }
   },
   mounted() {
+    // On native platforms, keep the iframe for regular login (email/password).
+    // When the user clicks Google/GitHub, the iframe (AuthFrontend) sends a
+    // postMessage asking us to open the OAuth flow in the in-app browser.
     window.addEventListener('message', async (event: MessageEvent) => {
       if (event.origin !== getBaseUrlAuth()) {
         return;
       }
       console.debug('received from child page', event);
+      if (event.data.name === 'nativeOAuth' && this.isNative) {
+        // AuthFrontend in iframe can't do OAuth popups/redirects (X-Frame-Options).
+        // Open the auth page in an in-app browser with the provider pre-selected.
+        const provider = event.data.data?.provider;
+        this.useBrowser = true;
+        const authUrl = `${getBaseUrlAuth()}/auth/login?inviter_id=${this.inviterId}&native_redirect=com.acedatacloud.nexior&provider=${provider}`;
+        Browser.open({ url: authUrl });
+        return;
+      }
       if (event.data.name === 'login') {
         const data = event.data.data;
         const token = {
@@ -135,6 +156,12 @@ export default defineComponent({
     width: 100%;
     height: 100%;
     border: none;
+  }
+
+  &__loading {
+    text-align: center;
+    color: #666;
+    font-size: 16px;
   }
 }
 

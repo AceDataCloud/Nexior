@@ -14,6 +14,9 @@ import { ElConfigProvider, ElTag } from 'element-plus';
 import AuthPanel from './components/common/AuthPanel.vue';
 import { isTest } from '@/constants/endpoint';
 import { getLocale } from './i18n';
+import { App as CapApp } from '@capacitor/app';
+import { Browser } from '@capacitor/browser';
+import { oauthOperator } from '@/operators';
 
 const elementPlusLocaleMap: Record<string, () => Promise<any>> = {
   en: () => import('element-plus/es/locale/lang/en'),
@@ -66,6 +69,39 @@ export default defineComponent({
     }
   },
   mounted() {
+    // Listen for deep link callbacks from native OAuth flow
+    if (import.meta.env.VITE_SURFACE === 'android' || import.meta.env.VITE_SURFACE === 'ios') {
+      CapApp.addListener('appUrlOpen', async ({ url }) => {
+        console.debug('deep link received:', url);
+        // Expected format: com.acedatacloud.nexior://auth/callback?code=XXX
+        if (url.includes('auth/callback')) {
+          const params = new URL(url).searchParams;
+          const code = params.get('code');
+          if (code) {
+            try {
+              await Browser.close();
+            } catch (e) {
+              console.debug('browser close failed (may already be closed)', e);
+            }
+            try {
+              const { data } = await oauthOperator.token({ code });
+              const token = {
+                access: data.access_token,
+                refresh: data.refresh_token,
+                expiration: data.expires_in
+              };
+              await this.$store.dispatch('setToken', token);
+              await this.$store.dispatch('getUser');
+              this.$store.commit('setAuth', { visible: false });
+              await this.$router.push('/');
+            } catch (e) {
+              console.error('token exchange failed after deep link', e);
+            }
+          }
+        }
+      });
+    }
+
     const authenticated = !!this.$store.state.token.access && !!this.$store.state.user?.id;
     console.debug('App mounted, authenticated:', authenticated);
     if (!authenticated) {
