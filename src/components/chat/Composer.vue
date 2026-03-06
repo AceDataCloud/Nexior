@@ -288,9 +288,11 @@ textarea.input:focus {
   max-width: 800px;
   margin: auto;
   position: relative;
-  border-radius: 20px;
-  border: 1px solid var(--el-border-color-lighter);
-  padding: 5px;
+  border-radius: 22px;
+  border: 1px solid color-mix(in srgb, var(--el-border-color-lighter) 75%, var(--el-color-primary-light-7) 25%);
+  background-color: color-mix(in srgb, var(--el-bg-color) 94%, var(--el-color-primary-light-9) 6%);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+  padding: 6px;
   .upload {
     display: inline-block;
     &.disabled {
@@ -334,6 +336,7 @@ textarea.input:focus {
         width: 36px;
         text-align: center;
         color: var(--el-text-color-secondary);
+        background-color: var(--el-bg-color);
         .icon-attachment {
           font-size: 16px;
           color: var(--el-text-color-primary);
@@ -367,6 +370,27 @@ textarea.input:focus {
     // background-color: var(--el-color-black);
     // color: var(--el-color-white);
     font-size: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .composer {
+    border-radius: 18px;
+    .input {
+      margin-bottom: 46px;
+      font-size: 15px;
+    }
+
+    .tools {
+      left: 12px;
+      bottom: 12px;
+    }
+
+    .btn-send,
+    .btn-stop {
+      right: 12px;
+      bottom: 12px;
+    }
   }
 }
 </style>
