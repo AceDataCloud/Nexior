@@ -62,3 +62,11 @@ jobs:
 
       - name: Deploy
         run: sh ./deploy/run.sh
+      - name: Verify Deployment
+        if: success()
+        run: |
+          if ! kubectl rollout status deployment/hub-frontend -n acedatacloud --timeout=120s; then
+            echo "Deployment failed, rolling back..."
+            kubectl rollout undo deployment/hub-frontend -n acedatacloud
+            exit 1
+          fi
