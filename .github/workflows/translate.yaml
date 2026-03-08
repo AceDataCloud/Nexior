@@ -1,0 +1,48 @@
+name: Translate i18n
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/i18n/zh-CN/**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  translate:
+    name: Auto-translate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Run translation
+        env:
+          VITE_OPENAI_API_KEY: ${{ secrets.VITE_OPENAI_API_KEY }}
+        run: yarn translate
+
+      - name: Commit and push translations
+        run: |
+          git config user.name "Ace Data Cloud Dev"
+          git config user.email "dev@acedata.cloud"
+          git add src/i18n/
+          if git diff --cached --quiet; then
+            echo "No translation changes to commit"
+          else
+            git commit -m "ci: auto-translate i18n from zh-CN"
+            git push
+          fi
