@@ -17,7 +17,7 @@
   },
   "name.model": {
     "message": "Modell",
-    "description": "Modellauswahl-Label"
+    "description": "Label zur Modellauswahl"
   },
   "description.model": {
     "message": "Wähle die SeeDance-Modellversion für die Generierung aus.",
@@ -26,6 +26,26 @@
   "placeholder.select": {
     "message": "Auswählen",
     "description": "Platzhalter für die Dropdown-Auswahl"
+  },
+  "name.duration": {
+    "message": "Dauer",
+    "description": "Label zur Auswahl der Videodauer"
+  },
+  "description.duration": {
+    "message": "Videodauer (Sekunden), Bereich 2-12 Sekunden.",
+    "description": "Erläuterung zur Videodauer"
+  },
+  "name.generateAudio": {
+    "message": "Audio generieren",
+    "description": "Label zur Audioerzeugung"
+  },
+  "description.generateAudio": {
+    "message": "Aktiviert, wird das Video mit Audio geliefert. Nur das Modell seedance-1.5-pro unterstützt dies, Kosten ca. 2-fach.",
+    "description": "Erläuterung zur Audioerzeugung"
+  },
+  "name.resolution": {
+    "message": "Auflösung",
+    "description": "Label zur Videoauflösung"
   },
   "model.seedance10pro": {
     "message": "doubao-seedance-1.0-pro",
@@ -49,7 +69,7 @@
   },
   "name.serviceTier": {
     "message": "Service-Stufe",
-    "description": "Label für die Service-Stufe"
+    "description": "Label zur Service-Stufe"
   },
   "description.serviceTier": {
     "message": "Verarbeitungsstufen: default oder flex.",
@@ -68,12 +88,12 @@
     "description": "Label für den Schalter zum Zurückgeben des letzten Bildes"
   },
   "description.returnLastFrame": {
-    "message": "Wenn aktiviert, wird das letzte Bild zusätzlich zurückgegeben.",
+    "message": "Aktiviert, wird das letzte Bild zusätzlich zurückgegeben.",
     "description": "Erläuterung zur Rückgabe des letzten Bildes"
   },
   "name.firstFrame": {
     "message": "Erstes Bild",
-    "description": "Label für den Upload des ersten Bildes"
+    "description": "Label zum Hochladen des ersten Bildes"
   },
   "description.firstFrame": {
     "message": "Optional. Lade ein Referenz-/Erstes Bild hoch.",
@@ -81,7 +101,7 @@
   },
   "name.lastFrame": {
     "message": "Letztes Bild",
-    "description": "Label für den Upload des letzten Bildes"
+    "description": "Label zum Hochladen des letzten Bildes"
   },
   "description.lastFrame": {
     "message": "Optional. Lade das letzte Bild hoch (erstes Bild erforderlich).",
@@ -101,11 +121,11 @@
   },
   "button.on": {
     "message": "Ein",
-    "description": "Text für den Schalter, wenn er aktiviert ist"
+    "description": "Text für den Schalter ein"
   },
   "button.off": {
     "message": "Aus",
-    "description": "Text für den Schalter, wenn er deaktiviert ist"
+    "description": "Text für den Schalter aus"
   },
   "message.startingTask": {
     "message": "Starte SeeDance-Aufgabe…",
@@ -113,23 +133,23 @@
   },
   "message.startTaskSuccess": {
     "message": "Aufgabe gestartet",
-    "description": "Hinweis für den erfolgreichen Start der Aufgabe"
+    "description": "Hinweis zum erfolgreichen Start der Aufgabe"
   },
   "message.startTaskFailed": {
     "message": "Start fehlgeschlagen:",
-    "description": "Hinweis für den fehlgeschlagenen Start der Aufgabe"
+    "description": "Hinweis zum fehlgeschlagenen Start der Aufgabe"
   },
   "message.usedUp": {
     "message": "Kontingent aufgebraucht",
-    "description": "Hinweis, dass das Kontingent erschöpft ist"
+    "description": "Hinweis, dass das Kontingent aufgebraucht ist"
   },
   "message.uploadExceed": {
     "message": "Es kann maximal 1 Bild hochgeladen werden",
-    "description": "Hinweis bei Überschreitung des Upload-Limits"
+    "description": "Hinweis zur Überschreitung des Upload-Limits"
   },
   "message.uploadError": {
-    "message": "Upload fehlgeschlagen",
-    "description": "Hinweis bei fehlgeschlagenem Upload"
+    "message": "Hochladen fehlgeschlagen",
+    "description": "Hinweis zum fehlgeschlagenen Hochladen"
   },
   "message.downloadVideo": {
     "message": "Video herunterladen",
@@ -141,15 +161,15 @@
   },
   "status.processing": {
     "message": "Wird generiert",
-    "description": "Status während der Generierung"
+    "description": "Status der Generierung"
   },
   "name.taskId": {
     "message": "Aufgaben-ID",
-    "description": "Label für die Aufgaben-ID"
+    "description": "Label zur Aufgaben-ID"
   },
   "name.traceId": {
     "message": "Trace-ID",
-    "description": "Label für die Trace-ID"
+    "description": "Label zur Trace-ID"
   },
   "name.failure": {
     "message": "Fehler",

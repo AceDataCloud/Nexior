@@ -5,10 +5,10 @@
   },
   "name.prompt": {
     "message": "Prompt",
-    "description": "Prompt para gerar o vídeo"
+    "description": "Prompt para gerar vídeo"
   },
   "description.prompt": {
-    "message": "Descreva o vídeo que deseja gerar, podendo adicionar parâmetros do SeeDance (ex: --rs 720p --rt 16:9 --dur 5).",
+    "message": "Descreva o vídeo que deseja gerar, podendo adicionar parâmetros SeeDance (ex: --rs 720p --rt 16:9 --dur 5).",
     "description": "Instruções para entrada de prompt"
   },
   "placeholder.prompt": {
@@ -26,6 +26,26 @@
   "placeholder.select": {
     "message": "Selecione",
     "description": "Placeholder para seleção suspensa"
+  },
+  "name.duration": {
+    "message": "Duração",
+    "description": "Rótulo de seleção de duração do vídeo"
+  },
+  "description.duration": {
+    "message": "Duração do vídeo (segundos), entre 2 e 12 segundos.",
+    "description": "Instruções sobre a duração do vídeo"
+  },
+  "name.generateAudio": {
+    "message": "Gerar áudio",
+    "description": "Rótulo para geração de áudio"
+  },
+  "description.generateAudio": {
+    "message": "Ativado, o vídeo incluirá áudio. Suportado apenas pelo modelo seedance-1.5-pro, com custo cerca de 2 vezes maior.",
+    "description": "Instruções sobre geração de áudio"
+  },
+  "name.resolution": {
+    "message": "Resolução",
+    "description": "Rótulo de resolução do vídeo"
   },
   "model.seedance10pro": {
     "message": "doubao-seedance-1.0-pro",
@@ -48,12 +68,12 @@
     "description": "Modelo SeeDance 1.0 Lite I2V"
   },
   "name.serviceTier": {
-    "message": "Nível de Serviço",
+    "message": "Nível de serviço",
     "description": "Rótulo de nível de serviço"
   },
   "description.serviceTier": {
-    "message": "Níveis de processamento: default ou flex.",
-    "description": "Instruções para nível de serviço"
+    "message": "Nível de processamento: default ou flex.",
+    "description": "Instruções sobre nível de serviço"
   },
   "serviceTier.default": {
     "message": "default",
@@ -64,35 +84,35 @@
     "description": "Nível flexível"
   },
   "name.returnLastFrame": {
-    "message": "Retornar Último Quadro",
-    "description": "Rótulo do botão para retornar o último quadro"
+    "message": "Retornar última imagem",
+    "description": "Rótulo para alternar retorno da última imagem"
   },
   "description.returnLastFrame": {
-    "message": "Se ativado, retornará a imagem do último quadro.",
-    "description": "Instruções para retornar o último quadro"
+    "message": "Ativado, retornará a imagem da última frame.",
+    "description": "Instruções sobre retorno da última imagem"
   },
   "name.firstFrame": {
-    "message": "Imagem do Primeiro Quadro",
-    "description": "Rótulo para upload da imagem do primeiro quadro"
+    "message": "Imagem inicial",
+    "description": "Rótulo para upload da imagem inicial"
   },
   "description.firstFrame": {
-    "message": "Opcional. Faça upload da imagem de referência/primeiro quadro.",
-    "description": "Instruções para a imagem do primeiro quadro"
+    "message": "Opcional. Faça upload da imagem de referência/inicial.",
+    "description": "Instruções sobre a imagem inicial"
   },
   "name.lastFrame": {
-    "message": "Imagem do Último Quadro",
-    "description": "Rótulo para upload da imagem do último quadro"
+    "message": "Imagem final",
+    "description": "Rótulo para upload da imagem final"
   },
   "description.lastFrame": {
-    "message": "Opcional. Faça upload da imagem do último quadro (necessita do primeiro quadro).",
-    "description": "Instruções para a imagem do último quadro"
+    "message": "Opcional. Faça upload da imagem final (necessita da imagem inicial).",
+    "description": "Instruções sobre a imagem final"
   },
   "button.generate": {
     "message": "Gerar",
     "description": "Botão de gerar"
   },
   "button.upload": {
-    "message": "Enviar",
+    "message": "Fazer upload",
     "description": "Botão de upload"
   },
   "button.download": {
@@ -101,11 +121,11 @@
   },
   "button.on": {
     "message": "Ligado",
-    "description": "Texto para o botão de ligar"
+    "description": "Texto para alternar ligado"
   },
   "button.off": {
     "message": "Desligado",
-    "description": "Texto para o botão de desligar"
+    "description": "Texto para alternar desligado"
   },
   "message.startingTask": {
     "message": "Iniciando tarefa SeeDance…",
@@ -113,15 +133,15 @@
   },
   "message.startTaskSuccess": {
     "message": "Tarefa iniciada",
-    "description": "Mensagem de sucesso ao iniciar a tarefa"
+    "description": "Mensagem de sucesso ao iniciar tarefa"
   },
   "message.startTaskFailed": {
     "message": "Falha ao iniciar: ",
-    "description": "Mensagem de falha ao iniciar a tarefa"
+    "description": "Mensagem de falha ao iniciar tarefa"
   },
   "message.usedUp": {
-    "message": "Quota esgotada",
-    "description": "Mensagem de quota esgotada"
+    "message": "Limite esgotado",
+    "description": "Mensagem de limite esgotado"
   },
   "message.uploadExceed": {
     "message": "Somente 1 imagem pode ser enviada",
@@ -133,7 +153,7 @@
   },
   "message.downloadVideo": {
     "message": "Baixar vídeo",
-    "description": "Mensagem para download de vídeo"
+    "description": "Mensagem para baixar vídeo"
   },
   "status.pending": {
     "message": "Em fila",
@@ -144,19 +164,19 @@
     "description": "Status de geração"
   },
   "name.taskId": {
-    "message": "ID da Tarefa",
+    "message": "ID da tarefa",
     "description": "Rótulo do ID da tarefa"
   },
   "name.traceId": {
-    "message": "ID de Rastreio",
-    "description": "Rótulo do ID de rastreio"
+    "message": "ID de rastreamento",
+    "description": "Rótulo do ID de rastreamento"
   },
   "name.failure": {
     "message": "Falha",
     "description": "Rótulo de falha"
   },
   "name.failureReason": {
-    "message": "Razão da Falha",
+    "message": "Razão da falha",
     "description": "Rótulo da razão da falha"
   },
   "name.status": {

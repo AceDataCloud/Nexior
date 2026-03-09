@@ -3,6 +3,8 @@
     <div class="flex-1 overflow-y-auto p-[15px]">
       <prompt-input class="mb-4" />
       <model-selector class="mb-4" />
+      <duration-selector class="mb-4" />
+      <generate-audio-switch class="mb-4" />
       <service-tier-selector class="mb-4" />
       <return-last-frame-switch class="mb-4" />
       <first-frame-image class="mb-2" />
@@ -24,6 +26,8 @@ import { ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import PromptInput from './config/PromptInput.vue';
 import ModelSelector from './config/ModelSelector.vue';
+import DurationSelector from './config/DurationSelector.vue';
+import GenerateAudioSwitch from './config/GenerateAudioSwitch.vue';
 import FirstFrameImage from './config/FirstFrameImage.vue';
 import LastFrameImage from './config/LastFrameImage.vue';
 import ServiceTierSelector from './config/ServiceTierSelector.vue';
@@ -38,6 +42,8 @@ export default defineComponent({
     FontAwesomeIcon,
     PromptInput,
     ModelSelector,
+    DurationSelector,
+    GenerateAudioSwitch,
     ServiceTierSelector,
     ReturnLastFrameSwitch,
     FirstFrameImage,

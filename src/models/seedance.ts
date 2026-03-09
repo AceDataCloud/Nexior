@@ -9,6 +9,8 @@ export interface ISeedanceConfig {
   model?: string;
   prompt?: string;
   images?: ISeedanceImageInput[];
+  duration?: number;
+  generate_audio?: boolean;
   service_tier?: 'default' | 'flex';
   return_last_frame?: boolean;
   execution_expires_after?: number;
@@ -20,6 +22,8 @@ export interface ISeedanceGenerateRequest {
   model?: string;
   prompt?: string;
   images?: ISeedanceImageInput[];
+  duration?: number;
+  generate_audio?: boolean;
   service_tier?: 'default' | 'flex';
   return_last_frame?: boolean;
   execution_expires_after?: number;
@@ -34,6 +38,10 @@ export interface ISeedanceVideo {
   last_frame_url?: string;
   model?: string;
   prompt?: string;
+  duration?: number;
+  resolution?: string;
+  ratio?: string;
+  framespersecond?: number;
 }
 
 export interface ISeedanceGenerateResponse {

@@ -27,6 +27,26 @@
     "message": "Выбрать",
     "description": "Заполнитель для выпадающего списка"
   },
+  "name.duration": {
+    "message": "Длительность",
+    "description": "Метка выбора длительности видео"
+  },
+  "description.duration": {
+    "message": "Длительность видео (в секундах), от 2 до 12 секунд.",
+    "description": "Описание длительности видео"
+  },
+  "name.generateAudio": {
+    "message": "Сгенерировать аудио",
+    "description": "Метка для генерации аудио"
+  },
+  "description.generateAudio": {
+    "message": "При включении видео будет сопровождаться аудио. Поддерживается только модель seedance-1.5-pro, стоимость примерно в 2 раза выше.",
+    "description": "Описание генерации аудио"
+  },
+  "name.resolution": {
+    "message": "Разрешение",
+    "description": "Метка разрешения видео"
+  },
   "model.seedance10pro": {
     "message": "doubao-seedance-1.0-pro",
     "description": "Модель SeeDance 1.0 Pro"
@@ -68,7 +88,7 @@
     "description": "Метка переключателя для возврата последнего кадра"
   },
   "description.returnLastFrame": {
-    "message": "Если включено, будет возвращено изображение последнего кадра.",
+    "message": "При включении будет возвращено дополнительное изображение последнего кадра.",
     "description": "Описание возврата последнего кадра"
   },
   "name.firstFrame": {
@@ -109,31 +129,31 @@
   },
   "message.startingTask": {
     "message": "Запуск задачи SeeDance…",
-    "description": "Сообщение о начале задачи"
+    "description": "Подсказка о начале задачи"
   },
   "message.startTaskSuccess": {
     "message": "Задача запущена",
-    "description": "Сообщение об успешном начале задачи"
+    "description": "Подсказка о успешном начале задачи"
   },
   "message.startTaskFailed": {
     "message": "Не удалось запустить: ",
-    "description": "Сообщение о неудачном начале задачи"
+    "description": "Подсказка о неудачном начале задачи"
   },
   "message.usedUp": {
     "message": "Лимит исчерпан",
-    "description": "Сообщение о исчерпании лимита"
+    "description": "Подсказка о исчерпании лимита"
   },
   "message.uploadExceed": {
     "message": "Можно загрузить не более 1 изображения",
-    "description": "Сообщение о превышении лимита загрузки"
+    "description": "Подсказка о превышении лимита загрузки"
   },
   "message.uploadError": {
     "message": "Ошибка загрузки",
-    "description": "Сообщение об ошибке загрузки"
+    "description": "Подсказка об ошибке загрузки"
   },
   "message.downloadVideo": {
     "message": "Скачать видео",
-    "description": "Сообщение о скачивании видео"
+    "description": "Подсказка о скачивании видео"
   },
   "status.pending": {
     "message": "В очереди",

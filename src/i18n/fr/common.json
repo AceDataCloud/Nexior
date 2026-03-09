@@ -105,7 +105,7 @@
   },
   "button.apply": {
     "message": "Postuler",
-    "description": "Texte dans le bouton, utilisé pour permettre à l'utilisateur de postuler pour un service API"
+    "description": "Texte dans le bouton, utilisé pour permettre à l'utilisateur de demander un service API"
   },
   "button.refresh": {
     "message": "Rafraîchir",
@@ -120,8 +120,8 @@
     "description": "Texte dans le bouton, utilisé pour permettre à l'utilisateur de continuer le paiement des frais de service"
   },
   "button.applied": {
-    "message": "Déjà postulé",
-    "description": "Texte dans le bouton, utilisé pour indiquer que l'utilisateur a déjà postulé pour ce service"
+    "message": "Demandé",
+    "description": "Texte dans le bouton, utilisé pour indiquer que l'utilisateur a demandé ce service"
   },
   "button.acquire": {
     "message": "Obtenir",
@@ -133,7 +133,7 @@
   },
   "button.buyMore": {
     "message": "Recharger",
-    "description": "Texte dans le bouton, utilisé pour permettre à l'utilisateur de recharger. En anglais, cela doit être traduit par 'Top Up', en chinois par '充值'."
+    "description": "Texte dans le bouton, utilisé pour permettre à l'utilisateur de recharger. Doit être traduit par 'Recharger'."
   },
   "button.update": {
     "message": "Mettre à jour",
@@ -217,23 +217,23 @@
   },
   "message.usedAmount": {
     "message": "Montant utilisé",
-    "description": "Utilisé pour afficher le montant utilisé pour le service"
+    "description": "Utilisé pour afficher le montant utilisé du service"
   },
   "message.remainingAmount": {
     "message": "Montant restant",
-    "description": "Utilisé pour afficher le montant restant pour le service"
+    "description": "Utilisé pour afficher le montant restant du service"
   },
   "message.copied": {
     "message": "Copié avec succès",
-    "description": "Message affichant que le contenu a été copié avec succès"
+    "description": "Message affiché lorsque le contenu a été copié avec succès"
   },
   "message.restart": {
     "message": "Régénérer",
-    "description": "Utilisé pour afficher que le contenu a été copié avec succès"
+    "description": "Utilisé pour afficher le message de régénération"
   },
   "message.confirmDelete": {
     "message": "Êtes-vous sûr de vouloir supprimer ?",
-    "description": "Message confirmant que l'utilisateur souhaite supprimer un élément"
+    "description": "Message de confirmation pour la suppression d'un élément"
   },
   "message.expiredAt": {
     "message": "Date d'expiration",
@@ -241,7 +241,7 @@
   },
   "message.alert": {
     "message": "Alerte",
-    "description": "Message avertissant l'utilisateur"
+    "description": "Message d'alerte pour l'utilisateur"
   },
   "message.info": {
     "message": "Information",
@@ -249,11 +249,11 @@
   },
   "message.free": {
     "message": "Gratuit",
-    "description": "Message indiquant que ce service est gratuit, ce qui signifie que l'utilisateur n'a pas à payer"
+    "description": "Message indiquant que ce service est gratuit, signifiant que l'utilisateur n'a pas à payer"
   },
   "message.startPrice": {
     "message": "Prix de départ",
-    "description": "Message affichant le prix le plus bas du service"
+    "description": "Message affichant le prix minimum du service"
   },
   "message.joinDiscord": {
     "message": "Rejoindre Discord",
@@ -277,63 +277,63 @@
   },
   "nav.home": {
     "message": "Accueil",
-    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page d'accueil"
+    "description": "Texte dans la barre de navigation du site pour afficher la page d'accueil"
   },
   "nav.content": {
     "message": "Contenu",
-    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page de contenu"
+    "description": "Texte dans la barre de navigation du site pour afficher la page de contenu"
   },
   "nav.category": {
     "message": "Catégorie",
-    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page de catégorie"
+    "description": "Texte dans la barre de navigation du site pour afficher la page de catégorie"
   },
   "nav.service": {
     "message": "Tous les services",
-    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page des services"
+    "description": "Texte dans la barre de navigation du site pour afficher la page des services"
   },
   "nav.profile": {
     "message": "Moi",
-    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page de profil"
+    "description": "Texte dans la barre de navigation du site pour afficher la page de profil"
   },
   "nav.products": {
     "message": "Produits",
-    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page des produits"
+    "description": "Texte dans la barre de navigation du site pour afficher la page des produits"
   },
   "nav.referral": {
     "message": "Alliance de revenus",
-    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page de recommandation"
+    "description": "Texte dans la barre de navigation du site pour afficher la page de recommandation"
   },
   "nav.apiPlatform": {
     "message": "Plateforme API",
-    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page de la plateforme API"
+    "description": "Texte dans la barre de navigation du site pour afficher la page de la plateforme API"
   },
   "nav.document": {
     "message": "Documentation de développement",
-    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page de documentation"
+    "description": "Texte dans la barre de navigation du site pour afficher la page de documentation"
   },
   "nav.console": {
     "message": "Console",
-    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page de la console"
+    "description": "Texte dans la barre de navigation du site pour afficher la page de la console"
   },
   "nav.chatgpt": {
     "message": "ChatGPT",
-    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page ChatGPT, ne pas traduire ce champ, doit rester 'ChatGPT'"
+    "description": "Texte dans la barre de navigation du site pour afficher la page ChatGPT, ne pas traduire ce champ, doit rester 'ChatGPT'"
   },
   "nav.deepseek": {
     "message": "DeepSeek",
-    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page DeepSeek, ne pas traduire ce champ, doit rester 'DeepSeek'"
+    "description": "Texte dans la barre de navigation du site pour afficher la page DeepSeek, ne pas traduire ce champ, doit rester 'DeepSeek'"
   },
   "nav.grok": {
     "message": "Grok",
-    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page Grok, ne pas traduire ce champ, doit rester 'Grok'"
+    "description": "Texte dans la barre de navigation du site pour afficher la page Grok, ne pas traduire ce champ, doit rester 'Grok'"
   },
   "nav.chat": {
     "message": "Chat",
-    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page de chat, ne pas traduire ce champ, doit rester 'Chat'"
+    "description": "Texte dans la barre de navigation du site pour afficher la page de chat, ne pas traduire ce champ, doit rester 'Chat'"
   },
   "nav.veo": {
     "message": "Veo",
-    "description": "Texte dans la barre de navigation du site, utilisé pour afficher la page de chat, ne pas traduire ce champ, doit rester 'Veo'"
+    "description": "Texte dans la barre de navigation du site pour afficher la page de chat, ne pas traduire ce champ, doit rester 'Veo'"
   },
   "nav.sora": {
     "message": "Sora",
@@ -419,6 +419,10 @@
     "message": "Photo d'identité AI",
     "description": "网站导航栏中的文本，用于显示站点配置页面"
   },
+  "nav.more": {
+    "message": "Plus",
+    "description": "网站导航栏中的文本，用于展开更多服务"
+  },
   "nav.locale": {
     "message": "Paramètres de langue",
     "description": "网站导航栏中的文本，用于更改语言"
@@ -469,34 +473,34 @@
   },
   "title.distributionHistory": {
     "message": "Historique des recommandations",
-    "description": "显示推荐历史的页面标题"
+    "description": "Titre de la page affichant l'historique des recommandations"
   },
   "title.invitee": {
     "message": "Invité",
-    "description": "Affiche le titre de la page pour l'invité"
+    "description": "Titre de la page affichant l'invité"
   },
   "title.allUsages": {
     "message": "Historique d'utilisation",
-    "description": "Affiche le titre de la page pour tous les usages du service API"
+    "description": "Titre de la page affichant toutes les utilisations du service API"
   },
   "title.allCredentials": {
     "message": "Clés",
-    "description": "Affiche le titre de la page pour tous les identifiants utilisés pour accéder à l'API"
+    "description": "Titre de la page affichant toutes les informations d'identification utilisées pour accéder à l'API"
   },
   "about.title1": {
     "message": "Contactez-nous",
-    "description": "Affiche le titre de la section des informations de contact"
+    "description": "Titre de la section affichant les informations de contact"
   },
   "about.title2": {
     "message": "Ressources",
-    "description": "Affiche le titre de la section des liens"
+    "description": "Titre de la section affichant les liens"
   },
   "about.title3": {
     "message": "Liens",
-    "description": "Affiche le titre de la section des informations de support"
+    "description": "Titre de la section affichant les informations de support"
   },
   "about.address": {
-    "message": "201 N Broad St, Middletown, DE, États-Unis",
+    "message": "201 North Broad St, Middletown, DE, USA",
     "description": "Adresse de l'entreprise"
   },
   "about.email": {
@@ -524,8 +528,8 @@
     "description": "Lien vers la page centrale"
   },
   "about.link6": {
-    "message": "Revenus de parrainage",
-    "description": "Lien vers la page des revenus de parrainage"
+    "message": "Revenus de recommandation",
+    "description": "Lien vers la page des revenus de recommandation"
   },
   "about.link7": {
     "message": "Support",
@@ -537,19 +541,19 @@
   },
   "about.link9": {
     "message": "Politique de confidentialité",
-    "description": "Lien vers la page de la politique de confidentialité"
+    "description": "Lien vers la page de politique de confidentialité"
   },
   "theme.light": {
-    "message": "Thème clair",
+    "message": "Clair",
     "description": "Nom du thème clair"
   },
   "theme.dark": {
-    "message": "Thème sombre",
+    "message": "Sombre",
     "description": "Nom du thème sombre"
   },
   "theme.system": {
     "message": "Système",
-    "description": "Nom du thème système, indiquant un changement automatique selon les paramètres du système"
+    "description": "Nom du thème système, indiquant un changement automatique de thème selon les paramètres du système"
   },
   "settings.general": {
     "message": "Paramètres généraux",
@@ -597,11 +601,11 @@
   },
   "button.upload": {
     "message": "Télécharger",
-    "description": "Texte dans le bouton pour télécharger des fichiers ou du contenu"
+    "description": "Texte dans le bouton pour télécharger un fichier ou un contenu"
   },
   "message.cnbeian": {
     "message": "Enregistrement en Chine",
-    "description": "Informations sur l'enregistrement en Chine"
+    "description": "Informations d'enregistrement en Chine"
   },
   "message.copyFailed": {
     "message": "Échec de la copie",
@@ -613,18 +617,18 @@
   },
   "title.coin": {
     "message": "Cryptomonnaie",
-    "description": "Affiche le titre de la page pour la cryptomonnaie"
+    "description": "Titre de la page affichant les cryptomonnaies"
   },
   "title.distributionRank": {
-    "message": "Classement des parrainages",
-    "description": "Affiche le titre de la page pour le classement des parrainages"
+    "message": "Classement des recommandations",
+    "description": "Titre de la page affichant le classement des recommandations"
   },
   "title.distributionPlatformRank": {
     "message": "Classement des plateformes",
-    "description": "Affiche le titre de la page pour le classement des plateformes"
+    "description": "Titre de la page affichant le classement des plateformes"
   },
   "customers.name1": {
-    "message": "Mark Du",
+    "message": "Marc Du",
     "description": "Nom du client"
   },
   "customers.job1": {
@@ -644,7 +648,7 @@
     "description": "Profession du client"
   },
   "customers.comment2": {
-    "message": "Ace Data Cloud est une excellente plateforme d'intégration, avec un service de qualité.",
+    "message": "Ace Data Cloud est une excellente plateforme d'intégration, avec un service de qualité supérieure.",
     "description": "Évaluation du client"
   },
   "customers.name3": {

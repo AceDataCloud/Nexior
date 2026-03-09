@@ -8,7 +8,7 @@
     "description": "Videon generoimiseen käytettävä kehotus"
   },
   "description.prompt": {
-    "message": "Kuvaile videota, jonka haluat generoida, voit lisätä SeeDance-parametreja (esim.: --rs 720p --rt 16:9 --dur 5).",
+    "message": "Kuvaile videota, jonka haluat generoida, voit liittää SeeDance-parametreja (esim.: --rs 720p --rt 16:9 --dur 5).",
     "description": "Kehotteen syöttöohje"
   },
   "placeholder.prompt": {
@@ -26,6 +26,26 @@
   "placeholder.select": {
     "message": "Valitse",
     "description": "Pudotusvalikon paikkamerkki"
+  },
+  "name.duration": {
+    "message": "Kesto",
+    "description": "Videon keston valintatunniste"
+  },
+  "description.duration": {
+    "message": "Videon kesto (sekunteina), alue 2-12 sekuntia.",
+    "description": "Videon kesto-ohje"
+  },
+  "name.generateAudio": {
+    "message": "Generoi ääni",
+    "description": "Äänen generoimisen valintatunniste"
+  },
+  "description.generateAudio": {
+    "message": "Kun tämä on päällä, videoon liitetään ääni. Vain seedance-1.5-pro-malli tukee tätä, kustannus noin 2-kertainen.",
+    "description": "Äänen generoimisen ohje"
+  },
+  "name.resolution": {
+    "message": "Resoluutio",
+    "description": "Videon resoluutiotunniste"
   },
   "model.seedance10pro": {
     "message": "doubao-seedance-1.0-pro",
@@ -49,27 +69,27 @@
   },
   "name.serviceTier": {
     "message": "Palvelutaso",
-    "description": "Palvelutason tunniste"
+    "description": "Palvelutason valintatunniste"
   },
   "description.serviceTier": {
     "message": "Käsittelytaso: default tai flex.",
     "description": "Palvelutason ohje"
   },
   "serviceTier.default": {
-    "message": "oletus",
+    "message": "default",
     "description": "Oletustaso"
   },
   "serviceTier.flex": {
-    "message": "joustava",
+    "message": "flex",
     "description": "Joustava taso"
   },
   "name.returnLastFrame": {
     "message": "Palauta viimeinen kehys",
-    "description": "Viimeisen kehyksen palautusvaihtoehto"
+    "description": "Viimeisen kehyksen palautuksen kytkin"
   },
   "description.returnLastFrame": {
     "message": "Kun tämä on päällä, palautetaan ylimääräinen viimeinen kehyskuva.",
-    "description": "Viimeisen kehyksen ohje"
+    "description": "Viimeisen kehyksen palautuksen ohje"
   },
   "name.firstFrame": {
     "message": "Ensimmäinen kehyskuva",
@@ -77,7 +97,7 @@
   },
   "description.firstFrame": {
     "message": "Valinnainen. Lataa viite/ensimmäinen kehyskuva.",
-    "description": "Ensimmäisen kehyksen ohje"
+    "description": "Ensimmäisen kehyksen kuvan ohje"
   },
   "name.lastFrame": {
     "message": "Viimeinen kehyskuva",
@@ -85,7 +105,7 @@
   },
   "description.lastFrame": {
     "message": "Valinnainen. Lataa viimeinen kehyskuva (vaatii ensimmäisen kehyksen).",
-    "description": "Viimeisen kehyksen ohje"
+    "description": "Viimeisen kehyksen kuvan ohje"
   },
   "button.generate": {
     "message": "Generoi",
@@ -101,11 +121,11 @@
   },
   "button.on": {
     "message": "Päällä",
-    "description": "Kytkin päällä -teksti"
+    "description": "Kytkimen päällä-teksti"
   },
   "button.off": {
     "message": "Pois päältä",
-    "description": "Kytkin pois päältä -teksti"
+    "description": "Kytkimen pois päältä-teksti"
   },
   "message.startingTask": {
     "message": "Käynnistetään SeeDance-tehtävää…",
@@ -153,11 +173,11 @@
   },
   "name.failure": {
     "message": "Epäonnistuminen",
-    "description": "Epäonnistumistunniste"
+    "description": "Epäonnistumisen tunniste"
   },
   "name.failureReason": {
     "message": "Epäonnistumisen syy",
-    "description": "Epäonnistumisen syytunniste"
+    "description": "Epäonnistumisen syyn tunniste"
   },
   "name.status": {
     "message": "Tila",

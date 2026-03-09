@@ -4,16 +4,16 @@
     "description": "Nombre del generador de videos SeeDance"
   },
   "name.prompt": {
-    "message": "Palabra clave",
-    "description": "Palabra clave para generar el video"
+    "message": "Palabras clave",
+    "description": "Palabras clave para generar el video"
   },
   "description.prompt": {
-    "message": "Describe el video que deseas generar, puedes añadir parámetros de SeeDance (por ejemplo: --rs 720p --rt 16:9 --dur 5).",
+    "message": "Describe el video que deseas generar, puedes agregar parámetros de SeeDance (por ejemplo: --rs 720p --rt 16:9 --dur 5).",
     "description": "Instrucciones para la entrada de palabras clave"
   },
   "placeholder.prompt": {
     "message": "Describe tu video…",
-    "description": "Marcador de posición para la palabra clave"
+    "description": "Marcador de posición para palabras clave"
   },
   "name.model": {
     "message": "Modelo",
@@ -26,6 +26,26 @@
   "placeholder.select": {
     "message": "Seleccionar",
     "description": "Marcador de posición para selección desplegable"
+  },
+  "name.duration": {
+    "message": "Duración",
+    "description": "Etiqueta de selección de duración del video"
+  },
+  "description.duration": {
+    "message": "Duración del video (segundos), rango de 2 a 12 segundos.",
+    "description": "Instrucciones sobre la duración del video"
+  },
+  "name.generateAudio": {
+    "message": "Generar audio",
+    "description": "Etiqueta para la opción de generar audio"
+  },
+  "description.generateAudio": {
+    "message": "Al activarlo, el video incluirá audio. Solo es compatible con el modelo seedance-1.5-pro, el costo es aproximadamente el doble.",
+    "description": "Instrucciones sobre la generación de audio"
+  },
+  "name.resolution": {
+    "message": "Resolución",
+    "description": "Etiqueta de resolución del video"
   },
   "model.seedance10pro": {
     "message": "doubao-seedance-1.0-pro",
@@ -53,7 +73,7 @@
   },
   "description.serviceTier": {
     "message": "Niveles de procesamiento: default o flex.",
-    "description": "Instrucciones para el nivel de servicio"
+    "description": "Instrucciones sobre el nivel de servicio"
   },
   "serviceTier.default": {
     "message": "default",
@@ -68,24 +88,24 @@
     "description": "Etiqueta del interruptor para devolver el último fotograma"
   },
   "description.returnLastFrame": {
-    "message": "Si se activa, se devolverá una imagen del último fotograma adicionalmente.",
-    "description": "Instrucciones para devolver el último fotograma"
+    "message": "Al activarlo, se devolverá una imagen adicional del último fotograma.",
+    "description": "Instrucciones sobre la devolución del último fotograma"
   },
   "name.firstFrame": {
     "message": "Imagen del primer fotograma",
-    "description": "Etiqueta de carga de imagen del primer fotograma"
+    "description": "Etiqueta para subir la imagen del primer fotograma"
   },
   "description.firstFrame": {
-    "message": "Opcional. Carga de imagen de referencia/primer fotograma.",
-    "description": "Instrucciones para la imagen del primer fotograma"
+    "message": "Opcional. Sube una imagen de referencia/primer fotograma.",
+    "description": "Instrucciones sobre la imagen del primer fotograma"
   },
   "name.lastFrame": {
     "message": "Imagen del último fotograma",
-    "description": "Etiqueta de carga de imagen del último fotograma"
+    "description": "Etiqueta para subir la imagen del último fotograma"
   },
   "description.lastFrame": {
-    "message": "Opcional. Carga de imagen del último fotograma (se requiere el primer fotograma).",
-    "description": "Instrucciones para la imagen del último fotograma"
+    "message": "Opcional. Sube una imagen del último fotograma (se requiere el primer fotograma).",
+    "description": "Instrucciones sobre la imagen del último fotograma"
   },
   "button.generate": {
     "message": "Generar",
@@ -101,11 +121,11 @@
   },
   "button.on": {
     "message": "Encendido",
-    "description": "Texto del interruptor para encender"
+    "description": "Texto para el interruptor encendido"
   },
   "button.off": {
     "message": "Apagar",
-    "description": "Texto del interruptor para apagar"
+    "description": "Texto para el interruptor apagado"
   },
   "message.startingTask": {
     "message": "Iniciando tarea SeeDance…",
@@ -117,23 +137,23 @@
   },
   "message.startTaskFailed": {
     "message": "Error al iniciar: ",
-    "description": "Mensaje de fallo al iniciar la tarea"
+    "description": "Mensaje de error al iniciar la tarea"
   },
   "message.usedUp": {
     "message": "Límite agotado",
-    "description": "Mensaje de límite alcanzado"
+    "description": "Mensaje de límite agotado"
   },
   "message.uploadExceed": {
     "message": "Solo se puede subir 1 imagen como máximo",
-    "description": "Mensaje de límite de carga excedido"
+    "description": "Mensaje de límite de subida excedido"
   },
   "message.uploadError": {
-    "message": "Error de carga",
-    "description": "Mensaje de fallo en la carga"
+    "message": "Error al subir",
+    "description": "Mensaje de error al subir"
   },
   "message.downloadVideo": {
     "message": "Descargar video",
-    "description": "Mensaje para descargar video"
+    "description": "Mensaje para descargar el video"
   },
   "status.pending": {
     "message": "En cola",

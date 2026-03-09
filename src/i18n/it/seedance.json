@@ -8,7 +8,7 @@
     "description": "Parole chiave per generare il video"
   },
   "description.prompt": {
-    "message": "Descrivi il video che vuoi generare, puoi aggiungere parametri SeeDance (esempio: --rs 720p --rt 16:9 --dur 5).",
+    "message": "Descrivi il video che vuoi generare, puoi aggiungere parametri SeeDance (es: --rs 720p --rt 16:9 --dur 5).",
     "description": "Istruzioni per l'input delle parole chiave"
   },
   "placeholder.prompt": {
@@ -17,7 +17,7 @@
   },
   "name.model": {
     "message": "Modello",
-    "description": "Etichetta di selezione del modello"
+    "description": "Etichetta per la selezione del modello"
   },
   "description.model": {
     "message": "Seleziona la versione del modello SeeDance da utilizzare per la generazione.",
@@ -26,6 +26,26 @@
   "placeholder.select": {
     "message": "Seleziona",
     "description": "Segnaposto per la selezione a discesa"
+  },
+  "name.duration": {
+    "message": "Durata",
+    "description": "Etichetta per la selezione della durata del video"
+  },
+  "description.duration": {
+    "message": "Durata del video (secondi), da 2 a 12 secondi.",
+    "description": "Istruzioni sulla durata del video"
+  },
+  "name.generateAudio": {
+    "message": "Genera audio",
+    "description": "Etichetta per la generazione dell'audio"
+  },
+  "description.generateAudio": {
+    "message": "Se attivato, il video includerà audio. Supportato solo dal modello seedance-1.5-pro, costo circa 2 volte superiore.",
+    "description": "Istruzioni per la generazione dell'audio"
+  },
+  "name.resolution": {
+    "message": "Risoluzione",
+    "description": "Etichetta per la risoluzione del video"
   },
   "model.seedance10pro": {
     "message": "doubao-seedance-1.0-pro",
@@ -49,11 +69,11 @@
   },
   "name.serviceTier": {
     "message": "Livello di servizio",
-    "description": "Etichetta del livello di servizio"
+    "description": "Etichetta per il livello di servizio"
   },
   "description.serviceTier": {
     "message": "Livello di elaborazione: default o flex.",
-    "description": "Istruzioni per il livello di servizio"
+    "description": "Istruzioni sul livello di servizio"
   },
   "serviceTier.default": {
     "message": "default",
@@ -65,11 +85,11 @@
   },
   "name.returnLastFrame": {
     "message": "Restituisci ultimo fotogramma",
-    "description": "Etichetta dell'interruttore per restituire l'ultimo fotogramma"
+    "description": "Etichetta per l'interruttore di restituzione dell'ultimo fotogramma"
   },
   "description.returnLastFrame": {
-    "message": "Se attivato, restituirà un'immagine dell'ultimo fotogramma.",
-    "description": "Istruzioni per restituire l'ultimo fotogramma"
+    "message": "Se attivato, verrà restituita un'immagine dell'ultimo fotogramma.",
+    "description": "Istruzioni sulla restituzione dell'ultimo fotogramma"
   },
   "name.firstFrame": {
     "message": "Immagine del primo fotogramma",
@@ -77,7 +97,7 @@
   },
   "description.firstFrame": {
     "message": "Facoltativo. Carica un'immagine di riferimento/primo fotogramma.",
-    "description": "Istruzioni per l'immagine del primo fotogramma"
+    "description": "Istruzioni sull'immagine del primo fotogramma"
   },
   "name.lastFrame": {
     "message": "Immagine dell'ultimo fotogramma",
@@ -85,7 +105,7 @@
   },
   "description.lastFrame": {
     "message": "Facoltativo. Carica un'immagine dell'ultimo fotogramma (richiede il primo fotogramma).",
-    "description": "Istruzioni per l'immagine dell'ultimo fotogramma"
+    "description": "Istruzioni sull'immagine dell'ultimo fotogramma"
   },
   "button.generate": {
     "message": "Genera",
@@ -120,8 +140,8 @@
     "description": "Messaggio di errore per l'avvio del compito"
   },
   "message.usedUp": {
-    "message": "Quota esaurita",
-    "description": "Messaggio di quota esaurita"
+    "message": "Credito esaurito",
+    "description": "Messaggio di credito esaurito"
   },
   "message.uploadExceed": {
     "message": "Puoi caricare solo 1 immagine",
@@ -149,7 +169,7 @@
   },
   "name.traceId": {
     "message": "ID traccia",
-    "description": "Etichetta per l'ID di traccia"
+    "description": "Etichetta per l'ID traccia"
   },
   "name.failure": {
     "message": "Fallito",

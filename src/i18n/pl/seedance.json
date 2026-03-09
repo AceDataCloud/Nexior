@@ -4,16 +4,16 @@
     "description": "Nazwa generatora wideo SeeDance"
   },
   "name.prompt": {
-    "message": "Słowo kluczowe",
-    "description": "Słowo kluczowe do generowania wideo"
+    "message": "Podpowiedź",
+    "description": "Podpowiedź do generowania wideo"
   },
   "description.prompt": {
     "message": "Opisz wideo, które chcesz wygenerować, możesz dodać parametry SeeDance (np.: --rs 720p --rt 16:9 --dur 5).",
-    "description": "Opis wprowadzenia słowa kluczowego"
+    "description": "Opis wprowadzenia podpowiedzi"
   },
   "placeholder.prompt": {
     "message": "Opisz swoje wideo…",
-    "description": "Placeholder dla słowa kluczowego"
+    "description": "Placeholder dla podpowiedzi"
   },
   "name.model": {
     "message": "Model",
@@ -26,6 +26,26 @@
   "placeholder.select": {
     "message": "Wybierz",
     "description": "Placeholder dla rozwijanego wyboru"
+  },
+  "name.duration": {
+    "message": "Czas trwania",
+    "description": "Etykieta wyboru czasu trwania wideo"
+  },
+  "description.duration": {
+    "message": "Czas trwania wideo (sekundy), w zakresie 2-12 sekund.",
+    "description": "Opis czasu trwania wideo"
+  },
+  "name.generateAudio": {
+    "message": "Generuj dźwięk",
+    "description": "Etykieta dotycząca generowania dźwięku"
+  },
+  "description.generateAudio": {
+    "message": "Po włączeniu wideo będzie miało dźwięk. Obsługiwane tylko przez model seedance-1.5-pro, koszt około 2 razy więcej.",
+    "description": "Opis generowania dźwięku"
+  },
+  "name.resolution": {
+    "message": "Rozdzielczość",
+    "description": "Etykieta rozdzielczości wideo"
   },
   "model.seedance10pro": {
     "message": "doubao-seedance-1.0-pro",
@@ -124,7 +144,7 @@
     "description": "Powiadomienie o wyczerpaniu limitu"
   },
   "message.uploadExceed": {
-    "message": "Można przesłać maksymalnie 1 obraz",
+    "message": "Można przesłać maksymalnie 1 obrazek",
     "description": "Powiadomienie o przekroczeniu limitu przesyłania"
   },
   "message.uploadError": {
