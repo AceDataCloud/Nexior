@@ -24,24 +24,17 @@
             popper-class="navigator-overflow-popover"
           >
             <template #reference>
-              <el-tooltip
-                effect="dark"
-                :content="$t('common.nav.more')"
-                :placement="direction === 'row' ? 'top' : 'right'"
-                :disabled="showOverflow"
-              >
-                <div class="more-button" :class="{ active: isOverflowActive }">
-                  <div class="folder-preview">
-                    <el-image
-                      v-for="(link, i) in overflowPreviewLinks"
-                      :key="i"
-                      :src="link.logo"
-                      class="folder-icon"
-                      fit="cover"
-                    />
-                  </div>
+              <div class="more-button" :class="{ active: isOverflowActive }" :title="$t('common.nav.more')">
+                <div class="folder-preview">
+                  <el-image
+                    v-for="(link, i) in overflowPreviewLinks"
+                    :key="i"
+                    :src="link.logo"
+                    class="folder-icon"
+                    fit="cover"
+                  />
                 </div>
-              </el-tooltip>
+              </div>
             </template>
             <div class="overflow-menu">
               <div
