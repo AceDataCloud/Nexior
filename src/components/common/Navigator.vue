@@ -4,15 +4,57 @@
       <div class="w-full flex justify-center brand">
         <logo v-if="direction === 'column'" @click.stop="onHome" />
       </div>
-      <div class="links">
+      <div ref="linksContainer" class="links">
         <div
-          v-for="(link, linkIndex) in links"
+          v-for="(link, linkIndex) in visibleLinks"
           :key="linkIndex"
           :class="{ link: true, active: link.routes.includes($route.name as string) }"
         >
           <el-tooltip effect="dark" :content="link.displayName" :placement="direction === 'row' ? 'top' : 'right'">
             <el-image v-if="link.logo" :src="link.logo" class="avatar" @click="$router.push(link.route)" />
           </el-tooltip>
+        </div>
+        <div v-if="overflowLinks.length > 0" :class="{ link: true, active: isOverflowActive }">
+          <el-popover
+            v-model:visible="showOverflow"
+            :placement="direction === 'row' ? 'top' : 'right-start'"
+            :width="180"
+            trigger="click"
+            :show-arrow="false"
+            popper-class="navigator-overflow-popover"
+          >
+            <template #reference>
+              <el-tooltip
+                effect="dark"
+                :content="$t('common.nav.more')"
+                :placement="direction === 'row' ? 'top' : 'right'"
+                :disabled="showOverflow"
+              >
+                <div class="more-button" :class="{ active: isOverflowActive }">
+                  <div class="folder-preview">
+                    <el-image
+                      v-for="(link, i) in overflowPreviewLinks"
+                      :key="i"
+                      :src="link.logo"
+                      class="folder-icon"
+                      fit="cover"
+                    />
+                  </div>
+                </div>
+              </el-tooltip>
+            </template>
+            <div class="overflow-menu">
+              <div
+                v-for="(link, linkIndex) in overflowLinks"
+                :key="linkIndex"
+                :class="{ 'overflow-item': true, active: link.routes.includes($route.name as string) }"
+                @click="onOverflowItemClick(link)"
+              >
+                <el-image v-if="link.logo" :src="link.logo" class="overflow-avatar" fit="cover" />
+                <span class="overflow-name">{{ link.displayName }}</span>
+              </div>
+            </div>
+          </el-popover>
         </div>
       </div>
     </div>
@@ -24,7 +66,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElTooltip, ElImage } from 'element-plus';
+import { ElTooltip, ElImage, ElPopover } from 'element-plus';
 import {
   ROUTE_PROFILE_INDEX,
   ROUTE_INDEX,
@@ -84,6 +126,7 @@ export default defineComponent({
   name: 'Navigator',
   components: {
     ElImage,
+    ElPopover,
     Logo,
     ElTooltip,
     UserCenter
@@ -100,7 +143,10 @@ export default defineComponent({
         dark: false,
         locale: false
       },
-      activeIndex: this.$route.name as string
+      activeIndex: this.$route.name as string,
+      containerHeight: 0,
+      showOverflow: false,
+      resizeObserver: null as ResizeObserver | null
     };
   },
   computed: {
@@ -339,6 +385,50 @@ export default defineComponent({
     },
     authenticated() {
       return !!this.$store.state.token.access;
+    },
+    maxVisibleItems(): number {
+      if (this.direction === 'row') return this.links.length;
+      const itemHeight = 50; // 35px avatar + 15px gap
+      const maxItems = Math.floor((this.containerHeight + 15) / itemHeight);
+      return Math.max(maxItems, 3);
+    },
+    visibleLinks() {
+      if (this.links.length <= this.maxVisibleItems) return this.links;
+      return this.links.slice(0, this.maxVisibleItems - 1);
+    },
+    overflowLinks() {
+      if (this.links.length <= this.maxVisibleItems) return [];
+      return this.links.slice(this.maxVisibleItems - 1);
+    },
+    overflowPreviewLinks() {
+      return this.overflowLinks.slice(0, 4);
+    },
+    isOverflowActive(): boolean {
+      const routeName = this.$route.name as string;
+      return this.overflowLinks.some((link: { routes: string[] }) => link.routes.includes(routeName));
+    }
+  },
+  watch: {
+    $route() {
+      this.showOverflow = false;
+    }
+  },
+  mounted() {
+    if (this.$refs.linksContainer) {
+      const el = this.$refs.linksContainer as HTMLElement;
+      this.containerHeight = el.clientHeight;
+      this.resizeObserver = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          this.containerHeight = entry.contentRect.height;
+        }
+      });
+      this.resizeObserver.observe(el);
+    }
+  },
+  beforeUnmount() {
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+      this.resizeObserver = null;
     }
   },
   methods: {
@@ -346,6 +436,10 @@ export default defineComponent({
       this.$router.push({
         name: ROUTE_INDEX
       });
+    },
+    onOverflowItemClick(link: { route: { name: string } }) {
+      this.showOverflow = false;
+      this.$router.push(link.route);
     }
   }
 });
@@ -356,7 +450,7 @@ export default defineComponent({
   display: flex;
   align-items: center;
   position: relative;
-  background-color: var(--el-bg-color);
+  background-color: var(--app-nav-bg);
 
   .top {
     .avatar {
@@ -366,13 +460,11 @@ export default defineComponent({
       height: 35px;
       border-radius: 50%;
       cursor: pointer;
-      border: 1px solid var(--el-border-color-lighter);
     }
   }
 
   &[direction='row'] {
     flex-direction: row;
-    border-top: 1px solid var(--el-border-color);
     overflow-x: scroll;
     .brand {
       display: none;
@@ -428,8 +520,7 @@ export default defineComponent({
         display: flex;
         flex-direction: column;
         gap: 15px;
-        overflow-y: auto;
-        overflow-x: hidden;
+        overflow: hidden;
         padding-bottom: 10px;
       }
       .logo {
@@ -439,6 +530,45 @@ export default defineComponent({
       }
       .link {
         width: 100%;
+      }
+      .more-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: var(--el-fill-color-light);
+        cursor: pointer;
+        margin: auto;
+        border: 1px solid var(--el-border-color-lighter);
+        transition:
+          border-radius 0.2s,
+          background-color 0.2s;
+
+        &:hover {
+          border-radius: 35%;
+          background: var(--el-fill-color);
+        }
+
+        &.active {
+          border: 2px solid var(--el-color-primary);
+        }
+
+        .folder-preview {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 1fr 1fr;
+          gap: 1px;
+          width: 22px;
+          height: 22px;
+
+          .folder-icon {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+          }
+        }
       }
     }
 
@@ -450,6 +580,51 @@ export default defineComponent({
       justify-content: flex-end;
       align-items: center;
       padding-bottom: 10px;
+    }
+  }
+}
+</style>
+
+<style lang="scss">
+.navigator-overflow-popover {
+  padding: 6px !important;
+  border-radius: 8px !important;
+
+  .overflow-menu {
+    max-height: 400px;
+    overflow-y: auto;
+
+    .overflow-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.15s;
+
+      &:hover {
+        background: var(--el-fill-color-light);
+      }
+
+      &.active {
+        background: var(--el-fill-color);
+      }
+
+      .overflow-avatar {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      .overflow-name {
+        font-size: 13px;
+        color: var(--el-text-color-primary);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
   }
 }
