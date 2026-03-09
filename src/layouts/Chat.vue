@@ -58,8 +58,7 @@ export default defineComponent({
   height: 100%;
   overflow-y: auto;
   flex-shrink: 0;
-  border-right: 1px solid var(--el-border-color-lighter);
-  background-color: color-mix(in srgb, var(--el-bg-color) 92%, var(--el-color-primary-light-9) 8%);
+  background-color: var(--app-sidebar-bg);
 }
 
 .chat {

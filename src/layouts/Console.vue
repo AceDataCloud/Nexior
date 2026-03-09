@@ -43,7 +43,6 @@ export default defineComponent({
     .navigator {
       height: 100%;
       width: 60px;
-      border-right: 1px solid var(--el-border-color);
     }
 
     .main {
@@ -56,6 +55,7 @@ export default defineComponent({
       .side {
         width: 200px;
         height: 100%;
+        background-color: var(--app-sidebar-bg);
       }
       .panel {
         width: calc(100% - 200px);
