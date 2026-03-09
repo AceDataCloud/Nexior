@@ -164,7 +164,7 @@ $left-width: 70px;
       height: 50px;
       margin: 10px;
       border-radius: 50%;
-      border: 1px solid var(--el-border-color);
+      box-shadow: var(--app-shadow-xs);
     }
   }
 

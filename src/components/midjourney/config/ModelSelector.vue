@@ -85,7 +85,8 @@ export default defineComponent({
   .item {
     width: 130px;
     height: 60px;
-    border: 1px solid var(--el-border-color);
+    border: 1px solid transparent;
+    background-color: var(--el-fill-color-lighter);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -93,6 +94,7 @@ export default defineComponent({
     overflow: hidden;
     border-radius: var(--el-border-radius-base);
     position: relative;
+    transition: border-color 0.2s ease;
 
     .image {
       width: 100%;

@@ -143,7 +143,7 @@ export default defineComponent({
   padding: 5px 0;
   .main {
     padding: 15px;
-    border: 1px solid var(--el-border-color);
+    box-shadow: var(--app-shadow-sm);
     border-radius: 15px;
   }
 

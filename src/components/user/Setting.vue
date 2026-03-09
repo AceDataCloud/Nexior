@@ -147,7 +147,7 @@ export default defineComponent({
   justify-content: space-between;
   gap: 16px;
   padding-bottom: 14px;
-  border-bottom: 1px solid var(--el-border-color-lighter);
+  border-bottom: 1px solid color-mix(in srgb, var(--el-border-color-lighter) 40%, transparent);
 }
 
 :deep(.settings-item:last-child) {

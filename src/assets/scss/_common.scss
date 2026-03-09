@@ -208,6 +208,11 @@ w3m-modal {
   .el-textarea__inner {
     border-radius: 10px;
     resize: none;
+    box-shadow: var(--app-shadow-xs);
+    transition: box-shadow 0.2s ease;
+    &:focus {
+      box-shadow: 0 0 0 1px var(--el-color-primary) inset, 0 0 0 3px var(--el-color-primary-light-8);
+    }
   }
 }
 
@@ -215,6 +220,8 @@ w3m-modal {
   .el-input__wrapper {
     border-radius: var(--el-border-radius-base);
     width: 100%;
+    box-shadow: var(--app-shadow-xs);
+    transition: box-shadow 0.2s ease;
     &.is-focus {
       box-shadow: 0 0 0 1px var(--el-color-primary) inset, 0 0 0 3px var(--el-color-primary-light-8);
     }
@@ -253,6 +260,11 @@ w3m-modal {
   .el-select__wrapper {
     border-radius: var(--el-border-radius-base);
     width: 100%;
+    box-shadow: var(--app-shadow-xs);
+    transition: box-shadow 0.2s ease;
+    &.is-focused {
+      box-shadow: 0 0 0 1px var(--el-color-primary) inset, 0 0 0 3px var(--el-color-primary-light-8);
+    }
   }
 }
 

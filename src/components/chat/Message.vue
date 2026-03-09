@@ -328,8 +328,7 @@ export default defineComponent({
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      border: 1px solid var(--el-border-color-lighter);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      box-shadow: var(--app-shadow-xs);
     }
   }
 
@@ -357,7 +356,6 @@ export default defineComponent({
       position: relative;
       width: fit-content;
       max-width: 85%;
-      border: 1px solid var(--el-color-primary-light-7);
       .edits {
         background-color: transparent;
         padding: 0;
