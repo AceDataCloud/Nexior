@@ -246,6 +246,8 @@ $left-width: 70px;
     }
 
     .content {
+      word-break: break-word;
+      overflow-wrap: anywhere;
       .el-alert {
         border-left-width: 2px;
         border-left-style: solid;
