@@ -64,7 +64,7 @@
     "description": "Texte dans le bouton, utilisé pour émettre une alerte"
   },
   "button.info": {
-    "message": "Informations",
+    "message": "Information",
     "description": "Texte dans le bouton, utilisé pour afficher des informations"
   },
   "button.publish": {
@@ -81,11 +81,11 @@
   },
   "button.profile": {
     "message": "Profil",
-    "description": "Texte dans le bouton, utilisé pour afficher le profil de l'utilisateur"
+    "description": "Texte dans le bouton, utilisé pour afficher le profil"
   },
   "button.console": {
     "message": "Console",
-    "description": "Texte dans le bouton, utilisé pour afficher la page de la console pour contrôler un contenu sur la page web"
+    "description": "Texte dans le bouton, utilisé pour afficher la page de la console, afin de contrôler un contenu sur la page web"
   },
   "button.learn": {
     "message": "Apprendre",
@@ -105,7 +105,7 @@
   },
   "button.apply": {
     "message": "Postuler",
-    "description": "Texte dans le bouton, utilisé pour permettre à l'utilisateur de demander un service API"
+    "description": "Texte dans le bouton, utilisé pour permettre à l'utilisateur de postuler pour un service API"
   },
   "button.refresh": {
     "message": "Rafraîchir",
@@ -120,8 +120,8 @@
     "description": "Texte dans le bouton, utilisé pour permettre à l'utilisateur de continuer le paiement des frais de service"
   },
   "button.applied": {
-    "message": "Demandé",
-    "description": "Texte dans le bouton, utilisé pour indiquer que l'utilisateur a demandé ce service"
+    "message": "Déjà postulé",
+    "description": "Texte dans le bouton, utilisé pour indiquer que l'utilisateur a déjà postulé pour ce service"
   },
   "button.acquire": {
     "message": "Obtenir",
@@ -161,7 +161,7 @@
   },
   "entity.type": {
     "message": "Type",
-    "description": "Utilisé pour afficher le type d'entité"
+    "description": "Utilisé pour afficher le type de l'entité"
   },
   "entity.website": {
     "message": "Ace Data Cloud",
@@ -217,11 +217,11 @@
   },
   "message.usedAmount": {
     "message": "Montant utilisé",
-    "description": "Utilisé pour afficher le montant utilisé du service"
+    "description": "Utilisé pour afficher le montant utilisé pour le service"
   },
   "message.remainingAmount": {
     "message": "Montant restant",
-    "description": "Utilisé pour afficher le montant restant du service"
+    "description": "Utilisé pour afficher le montant restant pour le service"
   },
   "message.copied": {
     "message": "Copié avec succès",
@@ -253,7 +253,7 @@
   },
   "message.startPrice": {
     "message": "Prix de départ",
-    "description": "Message affichant le prix minimum du service"
+    "description": "Message affichant le prix le plus bas du service"
   },
   "message.joinDiscord": {
     "message": "Rejoindre Discord",
@@ -300,8 +300,8 @@
     "description": "Texte dans la barre de navigation du site pour afficher la page des produits"
   },
   "nav.referral": {
-    "message": "Alliance de revenus",
-    "description": "Texte dans la barre de navigation du site pour afficher la page de recommandation"
+    "message": "Programme de parrainage",
+    "description": "Texte dans la barre de navigation du site pour afficher la page de parrainage"
   },
   "nav.apiPlatform": {
     "message": "Plateforme API",
@@ -513,7 +513,7 @@
   },
   "about.link2": {
     "message": "Documentation de développement",
-    "description": "Lien vers la page des services"
+    "description": "Lien vers la page de services"
   },
   "about.link3": {
     "message": "Console",
@@ -553,7 +553,7 @@
   },
   "theme.system": {
     "message": "Système",
-    "description": "Nom du thème système, indiquant un changement automatique de thème selon les paramètres du système"
+    "description": "Nom du thème système, indiquant un changement automatique selon les paramètres du système"
   },
   "settings.general": {
     "message": "Paramètres généraux",
@@ -660,7 +660,7 @@
     "description": "Profession du client"
   },
   "customers.comment3": {
-    "message": "J'aime les services d'Ace Data Cloud, faciles à utiliser et à prix raisonnable, j'espère qu'ils s'amélioreront de plus en plus !",
+    "message": "J'aime les services d'Ace Data Cloud, faciles à utiliser et à prix raisonnable. J'espère qu'ils s'amélioreront de plus en plus !",
     "description": "Évaluation du client"
   },
   "nav.github": {
@@ -670,6 +670,38 @@
   "settings.github": {
     "message": "Code source",
     "description": "Lien pour voir le code source sur GitHub"
+  },
+  "settings.about": {
+    "message": "À propos",
+    "description": "Titre de la section à propos dans la page des paramètres"
+  },
+  "settings.poweredBy": {
+    "message": "Projet open source",
+    "description": "Titre indiquant sur quel projet open source ce site est basé dans la page à propos"
+  },
+  "settings.poweredByTip": {
+    "message": "Ce site est construit sur le projet open source Nexior, le code est entièrement open source.",
+    "description": "Explication sur le projet open source sur lequel ce site est basé dans la page à propos"
+  },
+  "settings.apiService": {
+    "message": "Service API",
+    "description": "Titre indiquant le fournisseur de service API dans la page à propos"
+  },
+  "settings.apiServiceTip": {
+    "message": "Le service API de ce site est fourni par Ace Data Cloud.",
+    "description": "Explication sur le fournisseur de service API dans la page à propos"
+  },
+  "settings.buildYourOwn": {
+    "message": "Construisez le vôtre",
+    "description": "Titre indiquant aux utilisateurs qu'ils peuvent construire un site similaire dans la page à propos"
+  },
+  "settings.buildYourOwnTip": {
+    "message": "Vous souhaitez construire un site AI similaire ? Contactez-nous pour obtenir un support de déploiement.",
+    "description": "Explication sur la construction d'un site similaire dans la page à propos"
+  },
+  "settings.contactUs": {
+    "message": "Contacter le support",
+    "description": "Texte du bouton pour contacter le support"
   },
   "message.viewOnGithub": {
     "message": "Voir sur GitHub",

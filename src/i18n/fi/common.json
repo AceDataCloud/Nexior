@@ -81,7 +81,7 @@
   },
   "button.profile": {
     "message": "Profiili",
-    "description": "Painikkeen teksti, jota käytetään henkilökohtaisen profiilin näyttämiseen"
+    "description": "Painikkeen teksti, jota käytetään käyttäjäprofiilin näyttämiseen"
   },
   "button.console": {
     "message": "Konsoli",
@@ -93,19 +93,19 @@
   },
   "button.buy": {
     "message": "Osta",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän ostamiseen jostakin asiasta"
+    "description": "Painikkeen teksti, jota käytetään käyttäjän ohjaamiseen ostamaan jotakin"
   },
   "button.try": {
     "message": "Kokeile",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän kokeilemaan jotakin"
+    "description": "Painikkeen teksti, jota käytetään käyttäjän ohjaamiseen kokeilemaan jotakin"
   },
   "button.startForFree": {
     "message": "Aloita ilmaiseksi",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän aloittamiseen ilmaiseksi"
+    "description": "Painikkeen teksti, jota käytetään käyttäjän ohjaamiseen aloittamaan ilmaiseksi"
   },
   "button.apply": {
     "message": "Hae",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän API-palvelun hakemiseen"
+    "description": "Painikkeen teksti, jota käytetään käyttäjän ohjaamiseen API-palvelun hakemiseen"
   },
   "button.refresh": {
     "message": "Päivitä",
@@ -113,11 +113,11 @@
   },
   "button.pay": {
     "message": "Maksa",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän maksamiseen palvelumaksuista"
+    "description": "Painikkeen teksti, jota käytetään käyttäjän ohjaamiseen maksamaan palvelumaksu"
   },
   "button.repay": {
     "message": "Jatka maksamista",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän maksamisen jatkamiseen palvelumaksuista"
+    "description": "Painikkeen teksti, jota käytetään käyttäjän ohjaamiseen maksamaan palvelumaksu"
   },
   "button.applied": {
     "message": "Hakemus lähetetty",
@@ -125,15 +125,15 @@
   },
   "button.acquire": {
     "message": "Hanki",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän API-palvelun tokenin tai avaimen hankkimiseen"
+    "description": "Painikkeen teksti, jota käytetään käyttäjän ohjaamiseen API-palvelun tokenin tai avaimen hankkimiseen"
   },
   "button.fillExample": {
     "message": "Täytä esimerkki",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän esimerkkidatan täyttämiseen"
+    "description": "Painikkeen teksti, jota käytetään käyttäjän ohjaamiseen täyttämään esimerkkitiedot"
   },
   "button.buyMore": {
     "message": "Lataa lisää",
-    "description": "Painikkeen teksti, jota käytetään käyttäjän lataamiseen. Englanniksi on käännettävä 'Top Up', suomeksi 'Lataa lisää'."
+    "description": "Painikkeen teksti, jota käytetään käyttäjän ohjaamiseen lataamaan lisää. Englanniksi on käännettävä 'Top Up', suomeksi 'Lataa lisää'."
   },
   "button.update": {
     "message": "Päivitä",
@@ -149,7 +149,7 @@
   },
   "button.referralEarnings": {
     "message": "Suositustulot",
-    "description": "Painikkeen teksti, jota käytetään suositustulojen näyttämiseen, mikä tarkoittaa, että käyttäjä voi ansaita rahaa kutsumalla muita käyttämään palvelua"
+    "description": "Painikkeen teksti, jota käytetään suositustulojen näyttämiseen, mikä tarkoittaa, että käyttäjä voi ansaita kutsumalla muita käyttämään palvelua"
   },
   "button.finish": {
     "message": "Valmis",
@@ -213,7 +213,7 @@
   },
   "message.noTasks": {
     "message": "Ei historiallisia tehtäviä, aloita uusi tehtävä～",
-    "description": "Viesti, kun ei ole tehtäviä"
+    "description": "Viesti, kun tehtäviä ei ole"
   },
   "message.usedAmount": {
     "message": "Käytetty määrä",
@@ -225,19 +225,19 @@
   },
   "message.copied": {
     "message": "Kopiointi onnistui",
-    "description": "Näyttää viestin, että sisältö on onnistuneesti kopioitu"
+    "description": "Viesti, joka ilmoittaa, että sisältö on onnistuneesti kopioitu"
   },
   "message.restart": {
-    "message": "Uudelleenluonti",
-    "description": "Näyttää viestin, että sisältö on onnistuneesti kopioitu"
+    "message": "Uudelleenluo",
+    "description": "Näyttää viestin, joka ilmoittaa, että sisältö on onnistuneesti kopioitu"
   },
   "message.confirmDelete": {
     "message": "Oletko varma, että haluat poistaa tämän?",
     "description": "Vahvistaa käyttäjän haluavan poistaa jonkin sisällön"
   },
   "message.expiredAt": {
-    "message": "Vanhentumisaika",
-    "description": "Näyttää palvelun vanhentumisajan"
+    "message": "Erääntymisaika",
+    "description": "Näyttää palvelun erääntymisajan"
   },
   "message.alert": {
     "message": "Varoitus",
@@ -245,7 +245,7 @@
   },
   "message.info": {
     "message": "Tieto",
-    "description": "Näyttää tiedon viestin"
+    "description": "Näyttää tietoviestin"
   },
   "message.free": {
     "message": "Ilmainen",
@@ -309,7 +309,7 @@
   },
   "nav.document": {
     "message": "Kehittäjädokumentaatio",
-    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää dokumentaatiosivun"
+    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää dokumenttisivun"
   },
   "nav.console": {
     "message": "Ohjauspaneeli",
@@ -337,139 +337,143 @@
   },
   "nav.sora": {
     "message": "Sora",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää chat-sivun, älä käännä tätä kenttää, se on säilytettävä 'Sora'"
+    "description": "网站导航栏中的文本，用于显示聊天页面，请不要翻译此字段，必须保持为'Sora'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää Midjourney-sivun, älä käännä tätä kenttää, se on säilytettävä 'Midjourney'"
+    "description": "网站导航栏中的文本，用于显示中途之旅页面，请不要翻译此字段，必须保持为'Midjourney'"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää QRArt-sivun, älä käännä tätä kenttää, se on säilytettävä 'QRArt'"
+    "description": "网站导航栏中的文本，用于显示二维艺术页面，请不要翻译此字段，必须保持为'QRArt'"
   },
   "nav.suno": {
     "message": "Suno",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää Suno-sivun, älä käännä tätä kenttää, se on säilytettävä 'Suno'"
+    "description": "网站导航栏中的文本，用于显示Suno页面，请不要翻译此字段，必须保持为'Suno'"
   },
   "nav.pixverse": {
     "message": "Pixverse",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää Pixverse-sivun, älä käännä tätä kenttää, se on säilytettävä 'Pixverse'"
+    "description": "网站导航栏中的文本，用于显示Pixverse页面，请不要翻译此字段，必须保持为'Pixverse'"
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää Flux-sivun, älä käännä tätä kenttää, se on säilytettävä 'Flux'"
+    "description": "网站导航栏中的文本，用于显示Flux页面，请不要翻译此字段，必须保持为'Flux'"
   },
   "nav.nanobanana": {
     "message": "Nano Banana",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää Nano Banana -sivun, älä käännä tätä kenttää, se on säilytettävä 'Nano Banana'"
+    "description": "网站导航栏中的文本，用于显示Nano Banana页面，请不要翻译此字段，必须保持为'Nano Banana'"
   },
   "nav.seedream": {
     "message": "SeeDream",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää SeeDream-sivun, älä käännä tätä kenttää, se on säilytettävä 'SeeDream'"
+    "description": "网站导航栏中的文本，用于显示SeeDream页面，请不要翻译此字段，必须保持为'SeeDream'"
   },
   "nav.seedance": {
     "message": "SeeDance",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää SeeDance-sivun, älä käännä tätä kenttää, se on säilytettävä 'SeeDance'"
+    "description": "网站导航栏中的文本，用于显示SeeDance页面，请不要翻译此字段，必须保持为'SeeDance'"
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää Luma-sivun, älä käännä tätä kenttää, se on säilytettävä 'Luma'"
+    "description": "网站导航栏中的文本，用于显示Luma页面，请不要翻译此字段，必须保持为'Luma'"
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää Pika-sivun, älä käännä tätä kenttää, se on säilytettävä 'Pika'"
+    "description": "网站导航栏中的文本，用于显示Pika页面，请不要翻译此字段，必须保持为'Pika'"
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää Kling-sivun, älä käännä tätä kenttää, se on säilytettävä 'Kling'"
+    "description": "网站导航栏中的文本，用于显示Kling页面，请不要翻译此字段，必须保持为'Kling'"
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää Hailuo-sivun, älä käännä tätä kenttää, se on säilytettävä 'Hailuo'"
+    "description": "网站导航栏中的文本，用于显示Hailuo页面，请不要翻译此字段，必须保持为'Hailuo'"
   },
   "nav.image": {
     "message": "Kuva",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää kuva-sivun"
+    "description": "网站导航栏中的文本，用于显示图片页面"
   },
   "nav.music": {
     "message": "Musiikki",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää musiikki-sivun"
+    "description": "网站导航栏中的文本，用于显示音乐页面"
   },
   "nav.video": {
     "message": "Video",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää video-sivun"
+    "description": "网站导航栏中的文本，用于显示视频页面"
   },
   "nav.distribution": {
     "message": "Suositustulot",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää suositustulot-sivun"
+    "description": "网站导航栏中的文本，用于显示推荐收益页面"
   },
   "nav.logOut": {
     "message": "Kirjaudu ulos",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka käytetään uloskirjautumiseen"
+    "description": "网站导航栏中的文本，用于退出登录"
   },
   "nav.site": {
     "message": "Sivuston asetukset",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää sivuston asetukset -sivun"
+    "description": "网站导航栏中的文本，用于显示站点配置页面"
   },
   "nav.setting": {
     "message": "Asetukset",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää asetukset-sivun"
+    "description": "网站导航栏中的文本，用于显示设置页面"
   },
   "nav.headshots": {
     "message": "AI-profiilikuva",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää sivuston asetukset -sivun"
+    "description": "网站导航栏中的文本，用于显示站点配置页面"
+  },
+  "nav.more": {
+    "message": "Lisää",
+    "description": "网站导航栏中的文本，用于展开更多服务"
   },
   "nav.locale": {
     "message": "Kieliasetukset",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka käytetään kielen vaihtamiseen"
+    "description": "网站导航栏中的文本，用于更改语言"
   },
   "nav.support": {
     "message": "Asiakastuki",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka näyttää yhteystiedot-sivun"
+    "description": "网站导航栏中的文本，用于显示联系页面"
   },
   "nav.darkMode": {
     "message": "Tumma tila",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka käytetään siirtymiseen tummaan teeman"
+    "description": "网站导航栏中的文本，用于切换到深色主题"
   },
   "title.alert": {
     "message": "Varoitus",
-    "description": "Varoitusviestin otsikko"
+    "description": "警告消息的标题"
   },
   "title.placeholderOfSelect": {
     "message": "Valitse",
-    "description": "Valintakentän paikkamerkki"
+    "description": "选择输入的占位符"
   },
   "title.placeholderOfInput": {
     "message": "Täytä",
-    "description": "Syöttökentän paikkamerkki"
+    "description": "输入的占位符"
   },
   "title.allApplications": {
     "message": "Kaikki hakemukset",
-    "description": "Sivun otsikko, joka näyttää kaikki hakemukset"
+    "description": "显示所有申请的页面标题"
   },
   "title.allOrders": {
     "message": "Kaikki tilaukset",
-    "description": "Sivun otsikko, joka näyttää kaikki tilaukset"
+    "description": "显示所有订单的页面标题"
   },
   "title.orderInfo": {
     "message": "Tilaustiedot",
-    "description": "Sivun otsikko, joka näyttää tilaustiedot"
+    "description": "显示订单信息的页面标题"
   },
   "title.buyMore": {
     "message": "Lataa lisää",
-    "description": "Sivun otsikko, joka käytetään lataamiseen. Englanniksi on käännettävä 'Top Up', kiinaksi '充值'."
+    "description": "页面标题，用于充值。英文必须翻译为“Top Up”，中文为“充值”。"
   },
   "title.distribution": {
     "message": "Suositustulot",
-    "description": "Sivun otsikko, joka näyttää suositustulot, tarkoittaa, että käyttäjä voi ansaita kutsumalla muita käyttämään palvelua"
+    "description": "显示推荐收入的页面标题，意味着用户可以通过邀请他人使用该服务来赚钱"
   },
   "title.site": {
     "message": "Sivuston asetukset",
-    "description": "Sivun otsikko, joka näyttää sivuston asetukset"
+    "description": "显示站点配置的页面标题"
   },
   "title.distributionHistory": {
     "message": "Suositushistoria",
-    "description": "Sivun otsikko, joka näyttää suositushistorian"
+    "description": "Näyttää suositushistorian sivun otsikon"
   },
   "title.invitee": {
     "message": "Kutsuja",
@@ -481,7 +485,7 @@
   },
   "title.allCredentials": {
     "message": "Avaimet",
-    "description": "Näyttää kaikkien todennustietojen sivun otsikon, todennustiedot käytetään API:in pääsyyn"
+    "description": "Näyttää kaikkien todistusten sivun otsikon, todistukset käytetään API:in pääsyyn"
   },
   "about.title1": {
     "message": "Ota yhteyttä",
@@ -504,7 +508,7 @@
     "description": "Yrityksen sähköposti"
   },
   "about.link1": {
-    "message": "Palvelut",
+    "message": "Palvelu",
     "description": "Linkki dokumenttisivulle"
   },
   "about.link2": {
@@ -581,14 +585,14 @@
   },
   "nav.gemini": {
     "message": "Gemini",
-    "description": "Teksti verkkosivuston navigaatiopalkissa, joka näyttää Gemini-sivun, on säilytettävä 'Gemini'"
+    "description": "Teksti verkkosivuston navigointipalkissa, joka näyttää Gemini-sivun, on säilytettävä 'Gemini'"
   },
   "nav.claude": {
     "message": "Claude",
-    "description": "Teksti verkkosivuston navigaatiopalkissa, joka näyttää Claude-sivun, on säilytettävä 'Claude'"
+    "description": "Teksti verkkosivuston navigointipalkissa, joka näyttää Claude-sivun, on säilytettävä 'Claude'"
   },
   "button.detail": {
-    "message": "Näytä tiedot",
+    "message": "Näytä yksityiskohdat",
     "description": ""
   },
   "button.testEnv": {
@@ -605,11 +609,11 @@
   },
   "message.copyFailed": {
     "message": "Kopiointi epäonnistui",
-    "description": "Näyttää viestin, että sisällön kopiointi epäonnistui"
+    "description": "Näyttää viestin, kun sisällön kopiointi epäonnistuu"
   },
   "nav.tryNow": {
     "message": "Kokeile nyt",
-    "description": "Verkkosivuston navigaatiopalkissa oleva teksti, joka kannustaa käyttäjää kokeilemaan palvelua"
+    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka kehottaa käyttäjää kokeilemaan palvelua"
   },
   "title.coin": {
     "message": "Kryptovaluutta",

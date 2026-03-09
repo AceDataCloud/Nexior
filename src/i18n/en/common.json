@@ -5,7 +5,7 @@
   },
   "button.start": {
     "message": "Start",
-    "description": "Button text for initiating certain actions"
+    "description": "Button text for starting an operation"
   },
   "button.copy": {
     "message": "Copy",
@@ -17,7 +17,7 @@
   },
   "button.restart": {
     "message": "Regenerate",
-    "description": "Button text for regenerating certain content"
+    "description": "Button text for regenerating content"
   },
   "button.preview": {
     "message": "Preview",
@@ -77,7 +77,7 @@
   },
   "button.verify": {
     "message": "Real Name Verification",
-    "description": "Text in button for allowing users to verify their identity"
+    "description": "Text in button for user real name verification"
   },
   "button.profile": {
     "message": "Profile",
@@ -85,11 +85,11 @@
   },
   "button.console": {
     "message": "Console",
-    "description": "Text in button for displaying the console page to control certain content on the webpage"
+    "description": "Text in button for displaying the console page to control content"
   },
   "button.learn": {
     "message": "Learn",
-    "description": "Text in button for allowing users to learn about something"
+    "description": "Text in button for allowing users to learn something"
   },
   "button.buy": {
     "message": "Buy",
@@ -117,7 +117,7 @@
   },
   "button.repay": {
     "message": "Continue Payment",
-    "description": "Text in button for allowing users to continue payment for services"
+    "description": "Text in button for allowing users to continue payment"
   },
   "button.applied": {
     "message": "Applied",
@@ -125,7 +125,7 @@
   },
   "button.acquire": {
     "message": "Acquire",
-    "description": "Text in button for allowing users to obtain API service tokens or keys"
+    "description": "Text in button for allowing users to acquire API service tokens or keys"
   },
   "button.fillExample": {
     "message": "Fill Example",
@@ -133,7 +133,7 @@
   },
   "button.buyMore": {
     "message": "Top Up",
-    "description": "Text in button for allowing users to recharge"
+    "description": "Text in button for allowing users to top up their account"
   },
   "button.update": {
     "message": "Update",
@@ -157,11 +157,11 @@
   },
   "entity.id": {
     "message": "ID",
-    "description": "Used to display the unique identifier of an entity"
+    "description": "Unique identifier for displaying the entity"
   },
   "entity.type": {
     "message": "Type",
-    "description": "Used to display the type of an entity"
+    "description": "Text for displaying the type of the entity"
   },
   "entity.website": {
     "message": "Ace Data Cloud",
@@ -300,7 +300,7 @@
     "description": "Text in the website navigation bar to display the products page"
   },
   "nav.referral": {
-    "message": "Revenue Alliance",
+    "message": "Referral Program",
     "description": "Text in the website navigation bar to display the referral page"
   },
   "nav.apiPlatform": {
@@ -449,15 +449,15 @@
   },
   "title.allApplications": {
     "message": "All Applications",
-    "description": "Page title for displaying all applications"
+    "description": "Title for the page displaying all applications"
   },
   "title.allOrders": {
     "message": "All Orders",
-    "description": "Page title for displaying all orders"
+    "description": "Title for the page displaying all orders"
   },
   "title.orderInfo": {
     "message": "Order Information",
-    "description": "Page title for displaying order information"
+    "description": "Title for the page displaying order information"
   },
   "title.buyMore": {
     "message": "Top Up",
@@ -465,11 +465,11 @@
   },
   "title.distribution": {
     "message": "Referral Earnings",
-    "description": "Page title for displaying referral income, meaning users can earn by inviting others to use the service"
+    "description": "Title for the page displaying referral income, meaning users can earn by inviting others to use the service"
   },
   "title.site": {
     "message": "Site Configuration",
-    "description": "Page title for displaying site configuration"
+    "description": "Title for the page displaying site configuration"
   },
   "title.distributionHistory": {
     "message": "Recommendation History",
@@ -500,7 +500,7 @@
     "description": "Section title displaying support information"
   },
   "about.address": {
-    "message": "201 North Broad St, Middletown, DE, USA",
+    "message": "201 North Broad Street, Middletown, DE, USA",
     "description": "Company address"
   },
   "about.email": {
@@ -553,7 +553,7 @@
   },
   "theme.system": {
     "message": "System",
-    "description": "Name of the system theme, indicating automatic theme switching based on system settings"
+    "description": "Name of the system theme, indicating automatic switching based on system settings"
   },
   "settings.general": {
     "message": "General Settings",
@@ -613,7 +613,7 @@
   },
   "nav.tryNow": {
     "message": "Try Now",
-    "description": "Text in the website navigation bar to encourage users to try the service"
+    "description": "Text in the website navigation bar to let users try the service"
   },
   "title.coin": {
     "message": "Cryptocurrency",
@@ -661,7 +661,7 @@
   },
   "customers.comment3": {
     "message": "I love the services of Ace Data Cloud, easy to use and reasonably priced. I hope it gets better and better!",
-    "description": "Customer's review"
+    "description": "Customer review"
   },
   "nav.github": {
     "message": "GitHub",
@@ -671,8 +671,40 @@
     "message": "Source Code",
     "description": "Link to view the source code on GitHub"
   },
+  "settings.about": {
+    "message": "About",
+    "description": "Title for the about section in the settings page"
+  },
+  "settings.poweredBy": {
+    "message": "Open Source Project",
+    "description": "Title displaying which open source project this site is based on in the about page"
+  },
+  "settings.poweredByTip": {
+    "message": "This site is built on the Nexior open source project, and the code is fully open source.",
+    "description": "Description of the open source project this site is based on in the about page"
+  },
+  "settings.apiService": {
+    "message": "API Service",
+    "description": "Title displaying the API service provider in the about page"
+  },
+  "settings.apiServiceTip": {
+    "message": "The API service is provided by Ace Data Cloud.",
+    "description": "Description of the API service provider in the about page"
+  },
+  "settings.buildYourOwn": {
+    "message": "Build Your Own",
+    "description": "Title prompting users that they can build a similar site in the about page"
+  },
+  "settings.buildYourOwnTip": {
+    "message": "Want to build a similar AI site? Contact us for deployment support.",
+    "description": "Description for building a similar site in the about page"
+  },
+  "settings.contactUs": {
+    "message": "Contact Support",
+    "description": "Text for the contact support button"
+  },
   "message.viewOnGithub": {
     "message": "View on GitHub",
-    "description": "Link text to view the project on GitHub"
+    "description": "Text for the link to view the project on GitHub"
   }
 }

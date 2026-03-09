@@ -209,7 +209,7 @@
   },
   "entity.order": {
     "message": "Orden",
-    "description": "Orden de la entidad, que incluye información sobre dinero y servicios, que el usuario debe pagar"
+    "description": "Orden de la entidad, que incluye información sobre dinero y servicios que el usuario debe pagar"
   },
   "message.noTasks": {
     "message": "No hay tareas históricas, ¡comienza una nueva tarea!～",
@@ -229,11 +229,11 @@
   },
   "message.restart": {
     "message": "Regenerar",
-    "description": "Para mostrar que el contenido se ha copiado con éxito"
+    "description": "Para mostrar el mensaje de que el contenido se ha copiado con éxito"
   },
   "message.confirmDelete": {
     "message": "¿Está seguro de que desea eliminarlo?",
-    "description": "Mensaje para confirmar que el usuario desea eliminar un contenido"
+    "description": "Mensaje que confirma que el usuario desea eliminar un contenido"
   },
   "message.expiredAt": {
     "message": "Fecha de expiración",
@@ -268,7 +268,7 @@
     "description": "Mensaje que muestra soporte técnico"
   },
   "message.businessCooperation": {
-    "message": "Datos & Cooperación comercial",
+    "message": "Datos y cooperación comercial",
     "description": "Mensaje que muestra cooperación comercial"
   },
   "message.noData": {
@@ -400,8 +400,8 @@
     "description": "Texto en la barra de navegación del sitio para mostrar la página de vídeo"
   },
   "nav.distribution": {
-    "message": "Ingresos por recomendación",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de ingresos por recomendación"
+    "message": "Recompensas por Referidos",
+    "description": "Texto en la barra de navegación del sitio para mostrar la página de recompensas por referidos"
   },
   "nav.logOut": {
     "message": "Cerrar sesión",
@@ -416,7 +416,7 @@
     "description": "Texto en la barra de navegación del sitio para mostrar la página de configuración"
   },
   "nav.headshots": {
-    "message": "Foto de identificación AI",
+    "message": "Foto de Identidad AI",
     "description": "Texto en la barra de navegación del sitio para mostrar la página de configuración del sitio"
   },
   "nav.more": {
@@ -424,15 +424,15 @@
     "description": "Texto en la barra de navegación del sitio para expandir más servicios"
   },
   "nav.locale": {
-    "message": "Configuración de idioma",
+    "message": "Configuración de Idioma",
     "description": "Texto en la barra de navegación del sitio para cambiar el idioma"
   },
   "nav.support": {
-    "message": "Soporte al cliente",
+    "message": "Soporte al Cliente",
     "description": "Texto en la barra de navegación del sitio para mostrar la página de contacto"
   },
   "nav.darkMode": {
-    "message": "Modo oscuro",
+    "message": "Modo Oscuro",
     "description": "Texto en la barra de navegación del sitio para cambiar a un tema oscuro"
   },
   "title.alert": {
@@ -441,22 +441,22 @@
   },
   "title.placeholderOfSelect": {
     "message": "Por favor seleccione",
-    "description": "Marcador de posición para la entrada de selección"
+    "description": "Placeholder para la entrada de selección"
   },
   "title.placeholderOfInput": {
     "message": "Por favor complete",
-    "description": "Marcador de posición para la entrada"
+    "description": "Placeholder para la entrada"
   },
   "title.allApplications": {
-    "message": "Todas las solicitudes",
+    "message": "Todas las Solicitudes",
     "description": "Título de la página que muestra todas las solicitudes"
   },
   "title.allOrders": {
-    "message": "Todos los pedidos",
+    "message": "Todos los Pedidos",
     "description": "Título de la página que muestra todos los pedidos"
   },
   "title.orderInfo": {
-    "message": "Información del pedido",
+    "message": "Información del Pedido",
     "description": "Título de la página que muestra la información del pedido"
   },
   "title.buyMore": {
@@ -464,11 +464,11 @@
     "description": "Título de la página para recargar. Debe traducirse como 'Recargar'."
   },
   "title.distribution": {
-    "message": "Ingresos por recomendación",
-    "description": "Título de la página que muestra los ingresos por recomendación, significa que los usuarios pueden ganar dinero invitando a otros a usar el servicio"
+    "message": "Recompensas por Referidos",
+    "description": "Título de la página que muestra los ingresos por referidos, significa que los usuarios pueden ganar dinero invitando a otros a usar el servicio"
   },
   "title.site": {
-    "message": "Configuración del sitio",
+    "message": "Configuración del Sitio",
     "description": "Título de la página que muestra la configuración del sitio"
   },
   "title.distributionHistory": {
@@ -636,7 +636,7 @@
     "description": "Profesión del cliente"
   },
   "customers.comment1": {
-    "message": "Ace Data Cloud ha proporcionado un excelente servicio a nuestro equipo, ayudándonos a aumentar la productividad. ¡Me encanta!",
+    "message": "Ace Data Cloud ha brindado un excelente servicio a nuestro equipo, ayudándonos a aumentar la productividad. ¡Me encanta!",
     "description": "Comentario del cliente"
   },
   "customers.name2": {
@@ -670,6 +670,38 @@
   "settings.github": {
     "message": "Código fuente",
     "description": "Enlace para ver el código fuente en GitHub"
+  },
+  "settings.about": {
+    "message": "Acerca de",
+    "description": "Título de la sección 'Acerca de' en la página de configuración"
+  },
+  "settings.poweredBy": {
+    "message": "Proyecto de código abierto",
+    "description": "Título que muestra en qué proyecto de código abierto se basa el sitio"
+  },
+  "settings.poweredByTip": {
+    "message": "Este sitio se basa en el proyecto de código abierto Nexior, el código es completamente abierto.",
+    "description": "Descripción que muestra en qué proyecto de código abierto se basa el sitio"
+  },
+  "settings.apiService": {
+    "message": "Servicio API",
+    "description": "Título que muestra el proveedor del servicio API en la página 'Acerca de'"
+  },
+  "settings.apiServiceTip": {
+    "message": "El servicio API de este sitio es proporcionado por Ace Data Cloud.",
+    "description": "Descripción que muestra el proveedor del servicio API en la página 'Acerca de'"
+  },
+  "settings.buildYourOwn": {
+    "message": "Crea el tuyo",
+    "description": "Título que indica a los usuarios que pueden crear un sitio similar en la página 'Acerca de'"
+  },
+  "settings.buildYourOwnTip": {
+    "message": "¿Quieres crear un sitio de IA similar? Contáctanos para obtener soporte de implementación.",
+    "description": "Descripción sobre cómo crear un sitio similar en la página 'Acerca de'"
+  },
+  "settings.contactUs": {
+    "message": "Contactar soporte",
+    "description": "Texto del botón para contactar soporte"
   },
   "message.viewOnGithub": {
     "message": "Ver en GitHub",
