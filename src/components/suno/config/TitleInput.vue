@@ -1,10 +1,10 @@
 <template>
   <div class="field">
-    <div class="title-container">
-      <h2 class="title font-bold">{{ $t('suno.name.title') }}</h2>
-      <info-icon :content="$t('suno.description.title')" class="info" />
+    <div class="flex items-center mb-1">
+      <span class="text-sm font-bold">{{ $t('suno.name.title') }}</span>
+      <info-icon :content="$t('suno.description.title')" />
     </div>
-    <el-input v-model="title" :rows="3" type="textarea" class="title" :placeholder="$t('suno.placeholder.title')" />
+    <el-input v-model="title" :placeholder="$t('suno.placeholder.title')" />
   </div>
 </template>
 
@@ -13,16 +13,11 @@ import { defineComponent } from 'vue';
 import { ElInput } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 
-export const DEFAULT_PROMPT = '';
-
 export default defineComponent({
   name: 'TitleInput',
   components: {
     ElInput,
     InfoIcon
-  },
-  data() {
-    return {};
   },
   computed: {
     title: {
@@ -30,42 +25,12 @@ export default defineComponent({
         return this.$store.state.suno?.config?.title;
       },
       set(val: string) {
-        console.debug('set title', val);
         this.$store.commit('suno/setConfig', {
           ...this.$store.state.suno?.config,
           title: val
-        });
-      }
-    },
-    instrumental: {
-      get() {
-        return this.$store.state.suno?.config?.instrumental;
-      },
-      set(val: boolean) {
-        console.debug('set instrumental', val);
-        this.$store.commit('suno/setConfig', {
-          ...this.$store.state.suno?.config,
-          instrumental: val
         });
       }
     }
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.field {
-  .title-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    .title {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-    .right-aligned-switch {
-      float: left;
-    }
-  }
-}
-</style>

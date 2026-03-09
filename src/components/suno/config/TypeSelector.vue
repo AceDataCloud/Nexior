@@ -1,10 +1,31 @@
 <template>
-  <div class="field">
-    <h2 class="title font-bold">{{ $t('suno.name.type') }}</h2>
-    <el-switch v-model="custom" class="value" />
-    <el-select v-model="model" class="value" :placeholder="$t('suno.placeholder.select')">
-      <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
-    </el-select>
+  <div>
+    <!-- Custom Mode Toggle -->
+    <div class="flex items-center justify-between mb-3">
+      <span class="text-sm font-bold">{{ $t('suno.name.type') }}</span>
+      <el-switch v-model="custom" size="small" />
+    </div>
+
+    <!-- Model Selection -->
+    <div class="mb-3">
+      <div class="flex items-center mb-1">
+        <span class="text-sm font-bold">{{ $t('suno.name.model') }}</span>
+      </div>
+      <el-select v-model="model" class="w-full" size="default" :placeholder="$t('suno.placeholder.select')">
+        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+          <div class="flex items-center justify-between w-full">
+            <span>{{ item.label }}</span>
+            <span class="text-xs text-[var(--el-text-color-placeholder)]">{{ item.info }}</span>
+          </div>
+        </el-option>
+      </el-select>
+    </div>
+
+    <!-- Song Description / Instrumental Toggle -->
+    <div v-if="custom" class="flex items-center justify-between mb-3">
+      <span class="text-sm font-bold">{{ $t('suno.name.instrumental') }}</span>
+      <el-switch v-model="instrumental" size="small" />
+    </div>
   </div>
 </template>
 
@@ -14,49 +35,44 @@ import { ElSelect, ElOption, ElSwitch } from 'element-plus';
 import { SUNO_DEFAULT_MODEL } from '@/constants';
 
 export default defineComponent({
-  name: 'VersionSelector',
+  name: 'TypeSelector',
   components: {
     ElSelect,
     ElOption,
     ElSwitch
   },
-  props: {
-    modelValue: {
-      type: String,
-      default: undefined
-    }
-  },
-  emits: ['update:modelValue'],
   data() {
     return {
       options: [
         {
-          label: this.$t('suno.model.model1'),
-          value: 'chirp-v2-xxl-alpha'
+          label: 'Suno v5',
+          value: 'chirp-v5',
+          info: '8 min'
         },
         {
-          label: this.$t('suno.model.model2'),
-          value: 'chirp-v3-0'
+          label: 'Suno v4.5+',
+          value: 'chirp-v4-5-plus',
+          info: '8 min'
         },
         {
-          label: this.$t('suno.model.model3'),
-          value: 'chirp-v3-5'
+          label: 'Suno v4.5',
+          value: 'chirp-v4-5',
+          info: '4 min'
         },
         {
-          label: this.$t('suno.model.model4'),
-          value: 'chirp-v4'
+          label: 'Suno v4',
+          value: 'chirp-v4',
+          info: '2.5 min'
         },
         {
-          label: this.$t('suno.model.model45'),
-          value: 'chirp-v4-5'
+          label: 'Suno v3.5',
+          value: 'chirp-v3-5',
+          info: '2 min'
         },
         {
-          label: this.$t('suno.model.model45plus'),
-          value: 'chirp-v4-5-plus'
-        },
-        {
-          label: this.$t('suno.model.model5'),
-          value: 'chirp-v5'
+          label: 'Suno v3',
+          value: 'chirp-v3-0',
+          info: '2 min'
         }
       ]
     };
@@ -64,13 +80,23 @@ export default defineComponent({
   computed: {
     custom: {
       get() {
-        return this.$store.state.suno?.config?.custom;
+        return this.$store.state.suno?.config?.custom || false;
       },
-      set(val: string) {
-        console.debug('set custom', val);
+      set(val: boolean) {
         this.$store.commit('suno/setConfig', {
           ...this.$store.state.suno?.config,
           custom: val
+        });
+      }
+    },
+    instrumental: {
+      get() {
+        return this.$store.state.suno?.config?.instrumental || false;
+      },
+      set(val: boolean) {
+        this.$store.commit('suno/setConfig', {
+          ...this.$store.state.suno?.config,
+          instrumental: val
         });
       }
     },
@@ -79,7 +105,6 @@ export default defineComponent({
         return this.$store.state.suno?.config?.model;
       },
       set(val: string) {
-        console.debug('set model', val);
         this.$store.commit('suno/setConfig', {
           ...this.$store.state.suno?.config,
           model: val
@@ -89,27 +114,8 @@ export default defineComponent({
   },
   mounted() {
     if (!this.model) {
-      console.debug('set default type', SUNO_DEFAULT_MODEL);
       this.model = SUNO_DEFAULT_MODEL;
     }
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.field {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  .title {
-    font-size: 14px;
-    margin: 0;
-    width: 30%;
-  }
-
-  .value {
-    flex: 1;
-  }
-}
-</style>

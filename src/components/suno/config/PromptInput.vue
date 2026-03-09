@@ -1,23 +1,16 @@
 <template>
   <div class="field">
-    <div class="box">
-      <div class="title-info">
-        <h2 class="title font-bold">{{ $t('suno.name.prompt') }}</h2>
-        <info-icon :content="$t('suno.description.prompt')" class="info" />
-      </div>
-      <div class="instrumental">
-        <el-switch v-model="instrumental" class="value mr-2" />
-        <h2 class="title inline-block">{{ $t('suno.name.instrumental') }}</h2>
-      </div>
+    <div class="flex items-center mb-1">
+      <span class="text-sm font-bold">{{ $t('suno.name.songDescription') }}</span>
+      <info-icon :content="$t('suno.description.prompt')" />
     </div>
-
-    <el-input v-model="prompt" :rows="3" type="textarea" class="prompt" :placeholder="$t('suno.placeholder.prompt')" />
+    <el-input v-model="prompt" :rows="4" type="textarea" :placeholder="$t('suno.placeholder.prompt')" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElInput, ElSwitch } from 'element-plus';
+import { ElInput } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 
 export const DEFAULT_PROMPT = '';
@@ -26,11 +19,7 @@ export default defineComponent({
   name: 'PromptInput',
   components: {
     ElInput,
-    ElSwitch,
     InfoIcon
-  },
-  data() {
-    return {};
   },
   computed: {
     prompt: {
@@ -38,22 +27,9 @@ export default defineComponent({
         return this.$store.state.suno?.config?.prompt;
       },
       set(val: string) {
-        console.debug('set prompt', val);
         this.$store.commit('suno/setConfig', {
           ...this.$store.state.suno?.config,
           prompt: val
-        });
-      }
-    },
-    instrumental: {
-      get() {
-        return this.$store.state.suno?.config?.instrumental;
-      },
-      set(val: boolean) {
-        console.debug('set instrumental', val);
-        this.$store.commit('suno/setConfig', {
-          ...this.$store.state.suno?.config,
-          instrumental: val
         });
       }
     }
@@ -65,27 +41,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.field {
-  .box {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    .title-info {
-      display: flex;
-      align-items: center;
-    }
-    .instrumental {
-      right: 10px;
-      z-index: 1000;
-    }
-    .title {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-  }
-}
-</style>
