@@ -541,18 +541,20 @@ export default defineComponent({
         background: var(--el-fill-color-light);
         cursor: pointer;
         margin: auto;
-        border: 1px solid var(--el-border-color-lighter);
+        box-shadow: var(--app-shadow-xs);
         transition:
           border-radius 0.2s,
-          background-color 0.2s;
+          background-color 0.2s,
+          box-shadow 0.2s;
 
         &:hover {
           border-radius: 35%;
           background: var(--el-fill-color);
+          box-shadow: var(--app-shadow-sm);
         }
 
         &.active {
-          border: 2px solid var(--el-color-primary);
+          box-shadow: 0 0 0 2px var(--el-color-primary);
         }
 
         .folder-preview {

@@ -44,9 +44,15 @@ html.dark,
   --app-badge-bg: #ffe8d5;
   --app-badge-border: #ff7200;
 
-  /* Discord-style surface levels (no borders, background separation) */
-  --app-nav-bg: #f0f2f5;
-  --app-sidebar-bg: #f5f7fa;
+  /* Elevation / shadow system */
+  --app-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --app-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --app-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --app-shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.06);
+
+  /* Surface levels (wider contrast for depth) */
+  --app-nav-bg: #eaecf0;
+  --app-sidebar-bg: #f2f4f7;
   --app-content-bg: #ffffff;
 }
 
@@ -60,9 +66,15 @@ html.dark {
   --app-badge-bg: #3d2a1a;
   --app-badge-border: #ff7200;
 
-  /* Discord-style surface levels */
-  --app-nav-bg: #111214;
-  --app-sidebar-bg: #18191c;
+  /* Elevation / shadow system (dark) */
+  --app-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --app-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --app-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+  --app-shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.25);
+
+  /* Surface levels (dark) */
+  --app-nav-bg: #0e0f11;
+  --app-sidebar-bg: #17181b;
   --app-content-bg: #1e1f22;
 }
 
@@ -167,7 +179,9 @@ w3m-modal {
   word-wrap: break-word;
   border-radius: 1rem;
   border: none;
-  --el-card-padding: 10px;
+  --el-card-padding: 16px;
+  box-shadow: var(--app-shadow-sm);
+  transition: box-shadow 0.2s ease;
 }
 
 .el-breadcrumb__inner a,
@@ -202,7 +216,7 @@ w3m-modal {
     border-radius: var(--el-border-radius-base);
     width: 100%;
     &.is-focus {
-      box-shadow: 0 0 0 1px var(--el-input-border-color, var(--el-border-color)) inset;
+      box-shadow: 0 0 0 1px var(--el-color-primary) inset, 0 0 0 3px var(--el-color-primary-light-8);
     }
     textarea:focus,
     input:focus {
