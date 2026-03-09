@@ -531,6 +531,10 @@ export default defineComponent({
       color-mix(in srgb, var(--el-color-primary-light-9) 65%, transparent) 0%,
       transparent 24%
     );
+
+  html.dark & {
+    background: none;
+  }
   .disclaimer {
     width: 100%;
     text-align: center;
