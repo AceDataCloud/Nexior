@@ -168,6 +168,10 @@ w3m-modal {
   --el-card-padding: 10px;
 }
 
+html.dark .el-card {
+  border: 1px solid var(--app-border-subtle);
+}
+
 .el-breadcrumb__inner a,
 .el-breadcrumb__inner.is-link {
   color: var(--el-text-color-regular);
