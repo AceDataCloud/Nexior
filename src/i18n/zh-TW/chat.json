@@ -1,18 +1,18 @@
 {
   "button.thinkDeeper": {
     "message": "深度思考",
-    "description": "深入思考按钮"
+    "description": "深入思考按鈕"
   },
   "button.deepsearch": {
     "message": "深度搜索",
-    "description": "深度搜索按钮"
+    "description": "深度搜索按鈕"
   },
   "button.search": {
     "message": "搜索",
-    "description": "搜索按钮"
+    "description": "搜索按鈕"
   },
   "button.edit": {
-    "message": "編輯消息",
+    "message": "編輯",
     "description": "編輯發送的消息"
   },
   "modelGroup.chatgpt": {
@@ -20,7 +20,7 @@
     "description": "服務的模型名稱，即 GPT"
   },
   "modelGroup.chatgptDescription": {
-    "message": "OpenAI 公司開發的 AI 模型",
+    "message": "OpenAI 開發的 AI 模型",
     "description": "ChatGPT 模型的描述"
   },
   "modelGroup.deepseek": {
@@ -28,7 +28,7 @@
     "description": "服務的模型名稱，即 DeepSeek"
   },
   "modelGroup.deepseekDescription": {
-    "message": "深度求索公司開發的 AI 模型",
+    "message": "深度求索開發的 AI 模型",
     "description": "DeepSeek 模型的描述"
   },
   "modelGroup.grok": {
@@ -36,8 +36,24 @@
     "description": "服務的模型名稱，即 Grok"
   },
   "modelGroup.grokDescription": {
-    "message": "xAI 公司開發的 AI 模型",
+    "message": "xAI 開發的 AI 模型",
     "description": "Grok3 模型的描述"
+  },
+  "modelGroup.gemini": {
+    "message": "Gemini",
+    "description": "服務的模型名稱，即 Gemini"
+  },
+  "modelGroup.geminiDescription": {
+    "message": "Google 開發的 AI 模型",
+    "description": "Gemini 模型組的描述"
+  },
+  "modelGroup.claude": {
+    "message": "Claude",
+    "description": "服務的模型名稱，即 Claude"
+  },
+  "modelGroup.claudeDescription": {
+    "message": "Anthropic 開發的 AI 模型",
+    "description": "Claude 模型組的描述"
   },
   "model.5All": {
     "message": "gpt-5-all",
@@ -119,6 +135,22 @@
     "message": "適用於推理和深度思考問題",
     "description": "DeepSeek 推理模型的描述"
   },
+  "model.deepseekChat32": {
+    "message": "V3.2 實驗版",
+    "description": "服務的模型名稱，即 DeepSeek V3.2 Exp"
+  },
+  "model.deepseekChat32Description": {
+    "message": "最新實驗版本",
+    "description": "DeepSeek V3.2 實驗模型的描述"
+  },
+  "model.grok4": {
+    "message": "grok-4",
+    "description": "服務的模型名稱，即 Grok 4"
+  },
+  "model.grok4Description": {
+    "message": "目前最先進的模型",
+    "description": "Grok 4 模型的描述"
+  },
   "model.grok3": {
     "message": "grok-3",
     "description": "服務的模型名稱"
@@ -142,6 +174,54 @@
   "model.grok3DeepsearchDescription": {
     "message": "適用於深度研究和複雜問題",
     "description": "Grok3 深度研究模型的描述"
+  },
+  "model.gemini30Pro": {
+    "message": "gemini-3.0-pro",
+    "description": "服務的模型名稱，即 Gemini 3.0 Pro"
+  },
+  "model.gemini30ProDescription": {
+    "message": "目前最先進的模型",
+    "description": "Gemini 3.0 Pro 模型的描述"
+  },
+  "model.gemini25Pro": {
+    "message": "gemini-2.5-pro",
+    "description": "服務的模型名稱，即 Gemini 2.5 Pro"
+  },
+  "model.gemini25ProDescription": {
+    "message": "適用於複雜推理任務",
+    "description": "Gemini 2.5 Pro 模型的描述"
+  },
+  "model.gemini25Flash": {
+    "message": "gemini-2.5-flash",
+    "description": "服務的模型名稱，即 Gemini 2.5 Flash"
+  },
+  "model.gemini25FlashDescription": {
+    "message": "更快更輕量的模型",
+    "description": "Gemini 2.5 Flash 模型的描述"
+  },
+  "model.claudeOpus4": {
+    "message": "claude-opus-4",
+    "description": "服務的模型名稱，即 Claude Opus 4"
+  },
+  "model.claudeOpus4Description": {
+    "message": "目前最先進的模型",
+    "description": "Claude Opus 4 模型的描述"
+  },
+  "model.claudeSonnet4": {
+    "message": "claude-sonnet-4",
+    "description": "服務的模型名稱，即 Claude Sonnet 4"
+  },
+  "model.claudeSonnet4Description": {
+    "message": "適用於大多數任務",
+    "description": "Claude Sonnet 4 模型的描述"
+  },
+  "model.claude37Sonnet": {
+    "message": "claude-3.7-sonnet",
+    "description": "服務的模型名稱，即 Claude 3.7 Sonnet"
+  },
+  "model.claude37SonnetDescription": {
+    "message": "均衡的性能和速度",
+    "description": "Claude 3.7 Sonnet 模型的描述"
   },
   "model.o1": {
     "message": "o1",
@@ -196,12 +276,12 @@
     "description": "網頁中的消息，告訴用戶問題不能為空"
   },
   "message.uploadReferencesExceed": {
-    "message": "最多只能上傳 1 個檔案",
-    "description": "網頁中的消息，告訴用戶最多只能上傳 1 個檔案"
+    "message": "最多只能上傳 1 個文件",
+    "description": "網頁中的消息，告訴用戶最多只能上傳 1 個文件"
   },
   "message.uploadReferencesError": {
-    "message": "檔案上傳失敗，請稍後重試",
-    "description": "網頁中的消息，告訴用戶檔案上傳失敗，請稍後重試"
+    "message": "文件上傳失敗，請稍後重試",
+    "description": "網頁中的消息，告訴用戶文件上傳失敗，請稍後重試"
   },
   "message.notApplied": {
     "message": "您尚未申請此服務，請先申請",
@@ -220,7 +300,7 @@
     "description": "開始對話的示例問題，要求用戶給 Mike 寫封電子郵件，告訴他我剛搬家"
   },
   "message.question3": {
-    "message": "設計有趣的程式遊戲",
+    "message": "設計有趣的編程遊戲",
     "description": "開始對話的示例問題，要求用戶用簡單的語言解釋量子計算的基本原理"
   },
   "message.question4": {
