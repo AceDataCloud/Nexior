@@ -27,6 +27,26 @@
     "message": "Вибрати",
     "description": "Плейсхолдер для випадаючого списку"
   },
+  "name.duration": {
+    "message": "Тривалість",
+    "description": "Мітка вибору тривалості відео"
+  },
+  "description.duration": {
+    "message": "Тривалість відео (секунди), від 2 до 12 секунд.",
+    "description": "Опис тривалості відео"
+  },
+  "name.generateAudio": {
+    "message": "Генерувати аудіо",
+    "description": "Мітка для генерації аудіо"
+  },
+  "description.generateAudio": {
+    "message": "При ввімкненні відео буде супроводжуватися аудіо. Підтримується лише моделлю seedance-1.5-pro, вартість приблизно в 2 рази вища.",
+    "description": "Опис генерації аудіо"
+  },
+  "name.resolution": {
+    "message": "Роздільна здатність",
+    "description": "Мітка роздільної здатності відео"
+  },
   "model.seedance10pro": {
     "message": "doubao-seedance-1.0-pro",
     "description": "Модель SeeDance 1.0 Pro"
@@ -57,11 +77,11 @@
   },
   "serviceTier.default": {
     "message": "default",
-    "description": "Стандартний рівень"
+    "description": "За замовчуванням"
   },
   "serviceTier.flex": {
     "message": "flex",
-    "description": "Гнучкий рівень"
+    "description": "Гнучкий"
   },
   "name.returnLastFrame": {
     "message": "Повернути останній кадр",
@@ -73,7 +93,7 @@
   },
   "name.firstFrame": {
     "message": "Зображення першого кадру",
-    "description": "Мітка завантаження зображення першого кадру"
+    "description": "Мітка для завантаження зображення першого кадру"
   },
   "description.firstFrame": {
     "message": "Необов'язково. Завантажте зображення для посилання/першого кадру.",
@@ -81,7 +101,7 @@
   },
   "name.lastFrame": {
     "message": "Зображення останнього кадру",
-    "description": "Мітка завантаження зображення останнього кадру"
+    "description": "Мітка для завантаження зображення останнього кадру"
   },
   "description.lastFrame": {
     "message": "Необов'язково. Завантажте зображення останнього кадру (потрібен перший кадр).",
@@ -101,15 +121,15 @@
   },
   "button.on": {
     "message": "Увімкнено",
-    "description": "Текст для увімкнення перемикача"
+    "description": "Текст для перемикача увімкнення"
   },
   "button.off": {
     "message": "Вимкнено",
-    "description": "Текст для вимкнення перемикача"
+    "description": "Текст для перемикача вимкнення"
   },
   "message.startingTask": {
     "message": "Запуск завдання SeeDance…",
-    "description": "Підказка про початок завдання"
+    "description": "Підказка для початку завдання"
   },
   "message.startTaskSuccess": {
     "message": "Завдання запущено",
@@ -133,14 +153,14 @@
   },
   "message.downloadVideo": {
     "message": "Завантажити відео",
-    "description": "Підказка про завантаження відео"
+    "description": "Підказка для завантаження відео"
   },
   "status.pending": {
     "message": "У черзі",
-    "description": "Статус у черзі"
+    "description": "Статус черги"
   },
   "status.processing": {
-    "message": "Генерація",
+    "message": "Генерується",
     "description": "Статус генерації"
   },
   "name.taskId": {

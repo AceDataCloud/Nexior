@@ -20,12 +20,32 @@
     "description": "Model selection label"
   },
   "description.model": {
-    "message": "Välj version av SeeDance-modellen för generering.",
+    "message": "Välj SeeDance-modellversion för generering.",
     "description": "Model selection description"
   },
   "placeholder.select": {
     "message": "Välj",
-    "description": "Dropdown selection placeholder"
+    "description": "Dropdown select placeholder"
+  },
+  "name.duration": {
+    "message": "Längd",
+    "description": "Video duration selection label"
+  },
+  "description.duration": {
+    "message": "Videolängd (sekunder), intervall 2-12 sekunder.",
+    "description": "Video duration description"
+  },
+  "name.generateAudio": {
+    "message": "Generera ljud",
+    "description": "Label for generating audio"
+  },
+  "description.generateAudio": {
+    "message": "Aktivera för att inkludera ljud i videon. Endast seedance-1.5-pro-modellen stöder detta, kostar cirka 2 gånger mer.",
+    "description": "Generate audio description"
+  },
+  "name.resolution": {
+    "message": "Upplösning",
+    "description": "Video resolution label"
   },
   "model.seedance10pro": {
     "message": "doubao-seedance-1.0-pro",
@@ -64,11 +84,11 @@
     "description": "Flex tier"
   },
   "name.returnLastFrame": {
-    "message": "Återvänd till sista bild",
+    "message": "Returnera sista bild",
     "description": "Return last frame toggle label"
   },
   "description.returnLastFrame": {
-    "message": "Aktivera för att få sista bildens bild.",
+    "message": "Aktivera för att returnera sista bild.",
     "description": "Return last frame description"
   },
   "name.firstFrame": {
@@ -117,7 +137,7 @@
   },
   "message.startTaskFailed": {
     "message": "Startning misslyckades:",
-    "description": "Start task failed prompt"
+    "description": "Start task failure prompt"
   },
   "message.usedUp": {
     "message": "Krediten är slut",
@@ -129,7 +149,7 @@
   },
   "message.uploadError": {
     "message": "Uppladdning misslyckades",
-    "description": "Upload failed prompt"
+    "description": "Upload failure prompt"
   },
   "message.downloadVideo": {
     "message": "Ladda ner video",
