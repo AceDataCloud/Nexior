@@ -1,9 +1,9 @@
 <template>
   <div class="main flex flex-row flex-1">
-    <div class="config w-[300px] h-full overflow-y-scroll border-r border-[var(--el-border-color)]">
+    <div class="config w-[300px] h-full overflow-y-scroll bg-[var(--app-sidebar-bg)]">
       <slot name="config" />
     </div>
-    <div class="result h-full flex flex-col flex-1 border-r border-[var(--el-border-color)]">
+    <div class="result h-full flex flex-col flex-1">
       <slot name="result" />
     </div>
     <div class="preview h-full w-[300px] flex flex-col">
