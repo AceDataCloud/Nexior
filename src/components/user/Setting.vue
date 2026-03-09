@@ -35,6 +35,9 @@
         <div v-else-if="activeTab === 'function' && isSiteAdmin">
           <function-setting />
         </div>
+        <div v-else-if="activeTab === 'about'">
+          <about-setting />
+        </div>
       </main>
     </div>
   </el-dialog>
@@ -44,12 +47,13 @@
 import { defineComponent } from 'vue';
 import { ElDialog, ElMenu, ElMenuItem } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faCog, faBell, faUserShield, faMagic, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faBell, faUserShield, faMagic, faMoneyBill, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import GeneralSetting from '@/components/setting/General.vue';
 import SiteSetting from '@/components/setting/Site.vue';
 import SeoSetting from '@/components/setting/Seo.vue';
 import DistributionSetting from '@/components/setting/Distribution.vue';
 import FunctionSetting from '@/components/setting/Function.vue';
+import AboutSetting from '@/components/setting/About.vue';
 
 export default defineComponent({
   name: 'UserSetting',
@@ -62,7 +66,8 @@ export default defineComponent({
     SiteSetting,
     SeoSetting,
     DistributionSetting,
-    FunctionSetting
+    FunctionSetting,
+    AboutSetting
   },
   props: {
     visible: {
@@ -89,7 +94,8 @@ export default defineComponent({
           icon: faMoneyBill,
           visible: this.isSiteAdmin
         },
-        { key: 'function', label: this.$t('common.settings.function'), icon: faMagic, visible: this.isSiteAdmin }
+        { key: 'function', label: this.$t('common.settings.function'), icon: faMagic, visible: this.isSiteAdmin },
+        { key: 'about', label: this.$t('common.settings.about'), icon: faInfoCircle, visible: true }
       ];
     },
     currentTabTitle() {
