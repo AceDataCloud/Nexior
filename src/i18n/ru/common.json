@@ -121,7 +121,7 @@
   },
   "button.applied": {
     "message": "Заявка подана",
-    "description": "Текст на кнопке для отображения статуса заявки пользователя"
+    "description": "Текст на кнопке для отображения информации о поданной заявке"
   },
   "button.acquire": {
     "message": "Получить",
@@ -133,7 +133,7 @@
   },
   "button.buyMore": {
     "message": "Пополнить",
-    "description": "Текст на кнопке для пополнения счета. Должен переводиться как 'Пополнить'."
+    "description": "Текст на кнопке для пополнения счета. Перевод на английский должен быть 'Top Up', на русский 'Пополнить'."
   },
   "button.update": {
     "message": "Обновить",
@@ -165,7 +165,7 @@
   },
   "entity.website": {
     "message": "Ace Data Cloud",
-    "description": "Название сайта, не требует перевода, оставьте как 'Ace Data Cloud'"
+    "description": "Название сайта, не требует перевода, оставить как 'Ace Data Cloud'"
   },
   "entity.copyright": {
     "message": "Авторские права",
@@ -292,7 +292,7 @@
     "description": "Текст в навигационной панели сайта для отображения страницы услуг"
   },
   "nav.profile": {
-    "message": "Профиль",
+    "message": "Я",
     "description": "Текст в навигационной панели сайта для отображения страницы профиля"
   },
   "nav.products": {
@@ -416,7 +416,7 @@
     "description": "网站导航栏中的文本，用于显示设置页面"
   },
   "nav.headshots": {
-    "message": "AI Портреты",
+    "message": "AI Фото",
     "description": "网站导航栏中的文本，用于显示站点配置页面"
   },
   "nav.more": {
@@ -500,7 +500,7 @@
     "description": "Отображение заголовка раздела информации о поддержке"
   },
   "about.address": {
-    "message": "Сuite 201, 651 N Broad St, Middletown, DE, USA",
+    "message": "201, 651 N Broad St, Middletown, DE, USA",
     "description": "Адрес компании"
   },
   "about.email": {
@@ -508,12 +508,12 @@
     "description": "Электронная почта компании"
   },
   "about.link1": {
-    "message": "Услуги",
+    "message": "Документация",
     "description": "Ссылка на страницу документации"
   },
   "about.link2": {
-    "message": "Документация для разработчиков",
-    "description": "Ссылка на страницу услуг"
+    "message": "Документы для разработчиков",
+    "description": "Ссылка на страницу сервиса"
   },
   "about.link3": {
     "message": "Консоль",
@@ -528,7 +528,7 @@
     "description": "Ссылка на центральную страницу"
   },
   "about.link6": {
-    "message": "Доходы от рекомендаций",
+    "message": "Рекомендации",
     "description": "Ссылка на страницу доходов от рекомендаций"
   },
   "about.link7": {
@@ -544,15 +544,15 @@
     "description": "Ссылка на страницу политики конфиденциальности"
   },
   "theme.light": {
-    "message": "Светлая",
+    "message": "Светлая тема",
     "description": "Название светлой темы"
   },
   "theme.dark": {
-    "message": "Темная",
+    "message": "Темная тема",
     "description": "Название темной темы"
   },
   "theme.system": {
-    "message": "Системная",
+    "message": "Системная тема",
     "description": "Название системной темы, указывающее на автоматическое переключение темы в зависимости от настроек системы"
   },
   "settings.general": {
@@ -568,8 +568,8 @@
     "description": "Заголовок раздела настроек темы на странице настроек"
   },
   "settings.seo": {
-    "message": "SEO настройки",
-    "description": "Заголовок раздела SEO настроек на странице настроек"
+    "message": "Настройки SEO",
+    "description": "Заголовок раздела настроек SEO на странице настроек"
   },
   "settings.site": {
     "message": "Настройки сайта",
@@ -601,7 +601,7 @@
   },
   "button.upload": {
     "message": "Загрузить",
-    "description": "Текст в кнопке для загрузки файла или содержимого"
+    "description": "Текст в кнопке для загрузки файлов или содержимого"
   },
   "message.cnbeian": {
     "message": "Регистрация в Китае",
@@ -609,11 +609,11 @@
   },
   "message.copyFailed": {
     "message": "Ошибка копирования",
-    "description": "Сообщение о неудаче при копировании содержимого"
+    "description": "Сообщение об ошибке копирования содержимого"
   },
   "nav.tryNow": {
-    "message": "Попробовать сейчас",
-    "description": "Текст в навигационной панели сайта, позволяющий пользователю попробовать услугу"
+    "message": "Попробуйте сейчас",
+    "description": "Текст в навигационной панели сайта, позволяющий пользователю попробовать сервис"
   },
   "title.coin": {
     "message": "Криптовалюта",
@@ -640,7 +640,7 @@
     "description": "Отзыв клиента"
   },
   "customers.name2": {
-    "message": "Якоб Уильямс",
+    "message": "Яков Уильямс",
     "description": "Имя клиента"
   },
   "customers.job2": {
@@ -660,7 +660,7 @@
     "description": "Профессия клиента"
   },
   "customers.comment3": {
-    "message": "Мне нравится сервис Ace Data Cloud, он удобен в использовании и по разумной цене, надеюсь, что он будет становиться все лучше!",
+    "message": "Мне нравится сервис Ace Data Cloud, он удобен в использовании и имеет разумные цены. Надеюсь, он будет становиться все лучше!",
     "description": "客户的评价"
   },
   "nav.github": {
@@ -670,6 +670,38 @@
   "settings.github": {
     "message": "Исходный код",
     "description": "在GitHub上查看源代码的链接"
+  },
+  "settings.about": {
+    "message": "О нас",
+    "description": "设置页面中的关于部分的标题"
+  },
+  "settings.poweredBy": {
+    "message": "Проект с открытым исходным кодом",
+    "description": "关于页面中展示本站基于哪个开源项目搭建的标题"
+  },
+  "settings.poweredByTip": {
+    "message": "Наш сайт основан на проекте Nexior с открытым исходным кодом, код полностью открыт.",
+    "description": "关于页面中展示本站基于哪个开源项目的说明"
+  },
+  "settings.apiService": {
+    "message": "API Сервис",
+    "description": "关于页面中展示API服务提供方的标题"
+  },
+  "settings.apiServiceTip": {
+    "message": "API сервис предоставляется Ace Data Cloud.",
+    "description": "关于页面中展示API服务提供方的说明"
+  },
+  "settings.buildYourOwn": {
+    "message": "Создайте свой собственный",
+    "description": "关于页面中提示用户可以搭建同款站点的标题"
+  },
+  "settings.buildYourOwnTip": {
+    "message": "Хотите создать такой же AI сайт? Свяжитесь с нами для получения поддержки по развертыванию.",
+    "description": "关于页面中搭建同款的说明"
+  },
+  "settings.contactUs": {
+    "message": "Связаться с поддержкой",
+    "description": "联系客服按钮的文本"
   },
   "message.viewOnGithub": {
     "message": "Посмотреть на GitHub",
