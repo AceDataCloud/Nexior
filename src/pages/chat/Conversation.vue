@@ -495,11 +495,6 @@ export default defineComponent({
   left: max(12px, calc(50% - 400px));
   top: 10px;
   z-index: 100;
-  padding: 4px;
-  border-radius: 14px;
-  border: 1px solid var(--el-border-color-lighter);
-  background-color: color-mix(in srgb, var(--el-bg-color) 88%, var(--el-color-primary-light-9) 12%);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 .setting {
   position: absolute;
@@ -588,7 +583,6 @@ export default defineComponent({
   .selector {
     top: 8px;
     left: 54px;
-    border-radius: 12px;
   }
 
   .dialogue.empty .starter {

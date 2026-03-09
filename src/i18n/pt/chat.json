@@ -1,7 +1,7 @@
 {
   "button.thinkDeeper": {
-    "message": "Pense Mais Profundamente",
-    "description": "Botão para pensar mais profundamente"
+    "message": "Pensar Profundamente",
+    "description": "Botão para pensar profundamente"
   },
   "button.deepsearch": {
     "message": "Busca Profunda",
@@ -12,7 +12,7 @@
     "description": "Botão de busca"
   },
   "button.edit": {
-    "message": "Editar Mensagem",
+    "message": "Editar",
     "description": "Editar a mensagem enviada"
   },
   "modelGroup.chatgpt": {
@@ -37,7 +37,23 @@
   },
   "modelGroup.grokDescription": {
     "message": "Modelo de IA desenvolvido pela xAI",
-    "description": "Descrição do modelo Grok3"
+    "description": "Descrição do modelo Grok"
+  },
+  "modelGroup.gemini": {
+    "message": "Gemini",
+    "description": "Nome do modelo do serviço, ou seja, Gemini"
+  },
+  "modelGroup.geminiDescription": {
+    "message": "Modelo de IA desenvolvido pelo Google",
+    "description": "Descrição do grupo de modelos Gemini"
+  },
+  "modelGroup.claude": {
+    "message": "Claude",
+    "description": "Nome do modelo do serviço, ou seja, Claude"
+  },
+  "modelGroup.claudeDescription": {
+    "message": "Modelo de IA desenvolvido pela Anthropic",
+    "description": "Descrição do grupo de modelos Claude"
   },
   "model.5All": {
     "message": "gpt-5-all",
@@ -112,12 +128,28 @@
     "description": "Descrição do modelo DeepSeek Chat"
   },
   "model.deepseekReasoner": {
-    "message": "R1 Inferência",
-    "description": "Nome do modelo do serviço, ou seja, DeepSeek Reasoner"
+    "message": "R1 Raciocínio",
+    "description": "Nome do modelo do serviço, ou seja, DeepSeek Raciocínio"
   },
   "model.deepseekReasonerDescription": {
-    "message": "Adequado para inferência e questões profundas",
-    "description": "Descrição do modelo DeepSeek Reasoner"
+    "message": "Adequado para raciocínio e questões profundas",
+    "description": "Descrição do modelo DeepSeek Raciocínio"
+  },
+  "model.deepseekChat32": {
+    "message": "Versão Experimental V3.2",
+    "description": "Nome do modelo do serviço, ou seja, DeepSeek V3.2 Exp"
+  },
+  "model.deepseekChat32Description": {
+    "message": "Última versão experimental",
+    "description": "Descrição do modelo DeepSeek V3.2 Experimental"
+  },
+  "model.grok4": {
+    "message": "grok-4",
+    "description": "Nome do modelo do serviço, ou seja, Grok 4"
+  },
+  "model.grok4Description": {
+    "message": "Modelo mais avançado atualmente",
+    "description": "Descrição do modelo Grok 4"
   },
   "model.grok3": {
     "message": "grok-3",
@@ -128,35 +160,83 @@
     "description": "Descrição do modelo Grok3"
   },
   "model.grok3Reasoner": {
-    "message": "grok-3 Inferência",
-    "description": "Nome do modelo do serviço, ou seja, Grok3 Reasoner"
+    "message": "grok-3 Raciocínio",
+    "description": "Nome do modelo do serviço, ou seja, Grok3 Raciocínio"
   },
   "model.grok3ReasonerDescription": {
-    "message": "Adequado para inferência e questões profundas",
-    "description": "Descrição do modelo Grok3 Reasoner"
+    "message": "Adequado para raciocínio e questões profundas",
+    "description": "Descrição do modelo Grok3 Raciocínio"
   },
   "model.grok3Deepsearch": {
     "message": "grok-3 Pesquisa Profunda",
-    "description": "Nome do modelo do serviço, ou seja, Grok3 Deepsearch"
+    "description": "Nome do modelo do serviço, ou seja, Grok3 Pesquisa Profunda"
   },
   "model.grok3DeepsearchDescription": {
     "message": "Adequado para pesquisa profunda e questões complexas",
-    "description": "Descrição do modelo Grok3 Deepsearch"
+    "description": "Descrição do modelo Grok3 Pesquisa Profunda"
+  },
+  "model.gemini30Pro": {
+    "message": "gemini-3.0-pro",
+    "description": "Nome do modelo do serviço, ou seja, Gemini 3.0 Pro"
+  },
+  "model.gemini30ProDescription": {
+    "message": "Modelo mais avançado atualmente",
+    "description": "Descrição do modelo Gemini 3.0 Pro"
+  },
+  "model.gemini25Pro": {
+    "message": "gemini-2.5-pro",
+    "description": "Nome do modelo do serviço, ou seja, Gemini 2.5 Pro"
+  },
+  "model.gemini25ProDescription": {
+    "message": "Para tarefas de raciocínio complexo",
+    "description": "Descrição do modelo Gemini 2.5 Pro"
+  },
+  "model.gemini25Flash": {
+    "message": "gemini-2.5-flash",
+    "description": "Nome do modelo do serviço, ou seja, Gemini 2.5 Flash"
+  },
+  "model.gemini25FlashDescription": {
+    "message": "Modelo mais rápido e leve",
+    "description": "Descrição do modelo Gemini 2.5 Flash"
+  },
+  "model.claudeOpus4": {
+    "message": "claude-opus-4",
+    "description": "Nome do modelo do serviço, ou seja, Claude Opus 4"
+  },
+  "model.claudeOpus4Description": {
+    "message": "Modelo mais avançado atualmente",
+    "description": "Descrição do modelo Claude Opus 4"
+  },
+  "model.claudeSonnet4": {
+    "message": "claude-sonnet-4",
+    "description": "Nome do modelo do serviço, ou seja, Claude Sonnet 4"
+  },
+  "model.claudeSonnet4Description": {
+    "message": "Para a maioria das tarefas",
+    "description": "Descrição do modelo Claude Sonnet 4"
+  },
+  "model.claude37Sonnet": {
+    "message": "claude-3.7-sonnet",
+    "description": "Nome do modelo do serviço, ou seja, Claude 3.7 Sonnet"
+  },
+  "model.claude37SonnetDescription": {
+    "message": "Desempenho e velocidade equilibrados",
+    "description": "Descrição do modelo Claude 3.7 Sonnet"
   },
   "model.o1": {
     "message": "o1",
     "description": "Nome do modelo do serviço, ou seja, O1"
   },
   "model.o1Description": {
-    "message": "Adequado para tarefas de inferência mais avançadas",
+    "message": "Para tarefas de raciocínio mais avançadas",
     "description": "Descrição do modelo O1"
   },
   "model.o1Mini": {
-    "message": "ChatGPT - o1-mini Inferência",
+    "message": "ChatGPT - o1-mini",
     "description": "Nome do modelo do serviço, ou seja, O1-Mini"
   },
   "model.o1MiniDescription": {
-    "message": "Realiza tarefas de inferência mais rapidamente.",
+    "message": "Realiza tarefas de raciocínio mais rapidamente.",
     "description": "Descrição do modelo O1-Mini"
   },
   "model.o3": {
@@ -164,7 +244,7 @@
     "description": "Nome do modelo do serviço, ou seja, O3"
   },
   "model.o3Description": {
-    "message": "Adequado para tarefas de inferência mais avançadas",
+    "message": "Para tarefas de raciocínio mais avançadas",
     "description": "Descrição do modelo O3"
   },
   "model.o4Mini": {
@@ -172,44 +252,44 @@
     "description": "Nome do modelo do serviço, ou seja, O4-Mini"
   },
   "model.o4MiniDescription": {
-    "message": "Especializado em codificação e inferência visual",
+    "message": "Especializado em raciocínio de codificação e visual",
     "description": "Descrição do modelo O4"
   },
   "message.startNewChat": {
-    "message": "Iniciar Nova Conversa",
+    "message": "Iniciar nova conversa",
     "description": "Mensagem na página informando ao usuário para iniciar uma nova conversa"
   },
   "message.uploadFile": {
-    "message": "Carregar Arquivo",
-    "description": "Mensagem na página informando ao usuário para carregar um arquivo"
+    "message": "Enviar arquivo",
+    "description": "Mensagem na página informando ao usuário para enviar um arquivo"
   },
   "message.noToken": {
     "message": "Por favor, solicite o serviço correspondente primeiro",
-    "description": "Mensagem na página que informa ao usuário para solicitar o serviço correspondente primeiro"
+    "description": "Mensagem na página informando ao usuário para solicitar o serviço correspondente primeiro"
   },
   "message.newMessagePlaceholder": {
     "message": "Digite sua pergunta...",
-    "description": "Placeholder na página que informa ao usuário para digitar a pergunta"
+    "description": "Placeholder na página informando ao usuário para digitar uma pergunta"
   },
   "message.noInput": {
     "message": "A pergunta não pode estar vazia",
-    "description": "Mensagem na página que informa ao usuário que a pergunta não pode estar vazia"
+    "description": "Mensagem na página informando ao usuário que a pergunta não pode estar vazia"
   },
   "message.uploadReferencesExceed": {
     "message": "Você pode enviar no máximo 1 arquivo",
-    "description": "Mensagem na página que informa ao usuário que pode enviar no máximo 1 arquivo"
+    "description": "Mensagem na página informando ao usuário que pode enviar no máximo 1 arquivo"
   },
   "message.uploadReferencesError": {
     "message": "Falha ao enviar o arquivo, por favor, tente novamente mais tarde",
-    "description": "Mensagem na página que informa ao usuário que a falha ao enviar o arquivo, por favor, tente novamente mais tarde"
+    "description": "Mensagem na página informando ao usuário que a falha ao enviar o arquivo, por favor, tente novamente mais tarde"
   },
   "message.notApplied": {
     "message": "Você ainda não solicitou este serviço, por favor, faça isso primeiro",
-    "description": "Mensagem na página que informa ao usuário que ele ainda não solicitou este serviço, por favor, faça isso primeiro"
+    "description": "Mensagem na página informando ao usuário que ainda não solicitou este serviço, por favor, faça isso primeiro"
   },
   "message.tryForFree": {
     "message": "Teste grátis",
-    "description": "Mensagem na página que informa ao usuário sobre o teste grátis"
+    "description": "Mensagem na página informando ao usuário sobre o teste grátis"
   },
   "message.question1": {
     "message": "Criar plano de treino",
@@ -220,11 +300,11 @@
     "description": "Exemplo de pergunta para iniciar a conversa, pedindo ao usuário para escrever um e-mail para o Mike informando que ele acabou de se mudar"
   },
   "message.question3": {
-    "message": "Projetar jogos de programação interessantes",
+    "message": "Projetar um jogo de programação interessante",
     "description": "Exemplo de pergunta para iniciar a conversa, pedindo ao usuário para explicar os princípios básicos da computação quântica em linguagem simples"
   },
   "message.question4": {
-    "message": "Viver como um local em Seul",
+    "message": "Viver Seul como um local",
     "description": "Exemplo de pergunta para iniciar a conversa, pedindo ao usuário para explicar o impacto da realidade virtual na criação artística"
   },
   "message.question5": {
@@ -245,11 +325,11 @@
   },
   "message.errorApiError": {
     "message": "Falha na resposta, por favor, tente novamente mais tarde",
-    "description": "Mensagem na página que informa ao usuário que houve uma falha na resposta, por favor, tente novamente mais tarde"
+    "description": "Mensagem na página informando ao usuário que houve uma falha na resposta, por favor, tente novamente mais tarde"
   },
   "message.errorBadRequest": {
-    "message": "Conteúdo da solicitação inválido, por favor, reformule sua pergunta",
-    "description": "Mensagem na página que informa ao usuário que o conteúdo da solicitação é inválido, por favor, reformule sua pergunta"
+    "message": "Conteúdo da solicitação inválido, por favor, tente novamente",
+    "description": "Mensagem na página que informa ao usuário que o conteúdo da solicitação é inválido, por favor, tente novamente"
   },
   "message.errorNoConversation": {
     "message": "A conversa não existe ou expirou, por favor, inicie uma nova conversa",
@@ -276,12 +356,12 @@
     "description": "Mensagem na página que informa ao usuário que ocorreu um erro desconhecido no servidor, por favor, tente novamente mais tarde ou entre em contato com o suporte"
   },
   "message.errorTimeout": {
-    "message": "Tempo limite ao responder a pergunta, por favor, tente novamente mais tarde",
-    "description": "Mensagem na página que informa ao usuário que houve um tempo limite ao responder a pergunta, por favor, tente novamente mais tarde"
+    "message": "Tempo de resposta excedido, por favor, tente novamente mais tarde",
+    "description": "Mensagem na página que informa ao usuário que o tempo de resposta foi excedido, por favor, tente novamente mais tarde"
   },
   "message.errorNotApplied": {
-    "message": "Você ainda não solicitou este serviço, por favor, solicite antes de continuar a perguntar",
-    "description": "Mensagem na página que informa ao usuário que ele ainda não solicitou este serviço, por favor, solicite antes de continuar a perguntar"
+    "message": "Você ainda não solicitou este serviço, por favor, solicite antes de continuar",
+    "description": "Mensagem na página que informa ao usuário que ele ainda não solicitou este serviço, por favor, solicite antes de continuar"
   },
   "message.confirmDelete": {
     "message": "Confirmar exclusão",
@@ -308,8 +388,8 @@
     "description": "Título na página que indica que esta parte é sobre as limitações técnicas do serviço"
   },
   "title.complexQuestion": {
-    "message": "Responder a perguntas complexas",
-    "description": "Título na página que indica que esta parte é sobre a capacidade do serviço de responder a perguntas complexas"
+    "message": "Responder perguntas complexas",
+    "description": "Título na página que indica que esta parte é sobre a capacidade do serviço de responder perguntas complexas"
   },
   "title.professionalQuestion": {
     "message": "Consultar questões profissionais",

@@ -1,7 +1,7 @@
 {
   "button.thinkDeeper": {
     "message": "Syvennä ajattelua",
-    "description": "Syvällinen ajattelu -painike"
+    "description": "Syvennä ajattelua -painike"
   },
   "button.deepsearch": {
     "message": "Syvä haku",
@@ -39,8 +39,24 @@
     "message": "xAI:n kehittämä AI-malli",
     "description": "Grok3-mallin kuvaus"
   },
+  "modelGroup.gemini": {
+    "message": "Gemini",
+    "description": "Palvelun mallin nimi, eli Gemini"
+  },
+  "modelGroup.geminiDescription": {
+    "message": "Google:n kehittämä AI-malli",
+    "description": "Gemini-malliryhmän kuvaus"
+  },
+  "modelGroup.claude": {
+    "message": "Claude",
+    "description": "Palvelun mallin nimi, eli Claude"
+  },
+  "modelGroup.claudeDescription": {
+    "message": "Anthropic-yhtiön kehittämä AI-malli",
+    "description": "Claude-malliryhmän kuvaus"
+  },
   "model.5All": {
-    "message": "gpt-5",
+    "message": "gpt-5-all",
     "description": "Palvelun mallin nimi, eli GPT 5 All"
   },
   "model.5AllDescription": {
@@ -88,7 +104,7 @@
     "description": "4.0 visuaalisen mallin kuvaus"
   },
   "model.4OAll": {
-    "message": "gpt-4o",
+    "message": "gpt-4o-all",
     "description": "Palvelun mallin nimi, eli GPT 4O All"
   },
   "model.4OAllDescription": {
@@ -105,19 +121,11 @@
   },
   "model.deepseekChat": {
     "message": "3.0 standardi",
-    "description": "Palvelun mallin nimi, eli DeepSeek keskustelu"
-  },
-  "model.deepseekChat32": {
-    "message": "3.2 standardi",
-    "description": "Palvelun mallin nimi, eli DeepSeek keskustelu"
+    "description": "Palvelun mallin nimi, eli DeepSeek chat"
   },
   "model.deepseekChatDescription": {
     "message": "Soveltuu päivittäisiin tehtäviin",
-    "description": "DeepSeek keskustelu -mallin kuvaus"
-  },
-  "model.deepseekChat32Description": {
-    "message": "Soveltuu monimuotoisiin tehtäviin",
-    "description": "DeepSeek keskustelu -mallin kuvaus"
+    "description": "DeepSeek chat -mallin kuvaus"
   },
   "model.deepseekReasoner": {
     "message": "R1 päättely",
@@ -125,15 +133,23 @@
   },
   "model.deepseekReasonerDescription": {
     "message": "Soveltuu päättelyyn ja syvälliseen ajatteluun",
-    "description": "DeepSeek päättely -mallin kuvaus"
+    "description": "DeepSeek päättelymallin kuvaus"
+  },
+  "model.deepseekChat32": {
+    "message": "V3.2 kokeiluversio",
+    "description": "Palvelun mallin nimi, eli DeepSeek V3.2 Exp"
+  },
+  "model.deepseekChat32Description": {
+    "message": "Uusin kokeiluversio",
+    "description": "DeepSeek V3.2 kokeilumallin kuvaus"
   },
   "model.grok4": {
     "message": "grok-4",
-    "description": "Palvelun mallin nimi"
+    "description": "Palvelun mallin nimi, eli Grok 4"
   },
   "model.grok4Description": {
-    "message": "Edistynein malli",
-    "description": "Grok4-mallin kuvaus"
+    "message": "Tällä hetkellä edistynein malli",
+    "description": "Grok 4 -mallin kuvaus"
   },
   "model.grok3": {
     "message": "grok-3",
@@ -149,7 +165,7 @@
   },
   "model.grok3ReasonerDescription": {
     "message": "Soveltuu päättelyyn ja syvälliseen ajatteluun",
-    "description": "Grok3 päättely -mallin kuvaus"
+    "description": "Grok3 päättelymallin kuvaus"
   },
   "model.grok3Deepsearch": {
     "message": "grok-3 syvä tutkimus",
@@ -157,103 +173,151 @@
   },
   "model.grok3DeepsearchDescription": {
     "message": "Soveltuu syvään tutkimukseen ja monimutkaisiin kysymyksiin",
-    "description": "Grok3 syvä tutkimus -mallin kuvaus"
+    "description": "Grok3 syvä tutkimusmallin kuvaus"
+  },
+  "model.gemini30Pro": {
+    "message": "gemini-3.0-pro",
+    "description": "Palvelun mallin nimi, eli Gemini 3.0 Pro"
+  },
+  "model.gemini30ProDescription": {
+    "message": "Tällä hetkellä edistynein malli",
+    "description": "Gemini 3.0 Pro -mallin kuvaus"
+  },
+  "model.gemini25Pro": {
+    "message": "gemini-2.5-pro",
+    "description": "Palvelun mallin nimi, eli Gemini 2.5 Pro"
+  },
+  "model.gemini25ProDescription": {
+    "message": "Sopii monimutkaisiin päättelytehtäviin",
+    "description": "Gemini 2.5 Pro mallin kuvaus"
+  },
+  "model.gemini25Flash": {
+    "message": "gemini-2.5-flash",
+    "description": "Palvelun mallin nimi, eli Gemini 2.5 Flash"
+  },
+  "model.gemini25FlashDescription": {
+    "message": "Nopeampi ja kevyempi malli",
+    "description": "Gemini 2.5 Flash mallin kuvaus"
+  },
+  "model.claudeOpus4": {
+    "message": "claude-opus-4",
+    "description": "Palvelun mallin nimi, eli Claude Opus 4"
+  },
+  "model.claudeOpus4Description": {
+    "message": "Tällä hetkellä edistynein malli",
+    "description": "Claude Opus 4 mallin kuvaus"
+  },
+  "model.claudeSonnet4": {
+    "message": "claude-sonnet-4",
+    "description": "Palvelun mallin nimi, eli Claude Sonnet 4"
+  },
+  "model.claudeSonnet4Description": {
+    "message": "Sopii useimpiin tehtäviin",
+    "description": "Claude Sonnet 4 mallin kuvaus"
+  },
+  "model.claude37Sonnet": {
+    "message": "claude-3.7-sonnet",
+    "description": "Palvelun mallin nimi, eli Claude 3.7 Sonnet"
+  },
+  "model.claude37SonnetDescription": {
+    "message": "Tasapainoinen suorituskyky ja nopeus",
+    "description": "Claude 3.7 Sonnet mallin kuvaus"
   },
   "model.o1": {
     "message": "o1",
     "description": "Palvelun mallin nimi, eli O1"
   },
   "model.o1Description": {
-    "message": "Soveltuu edistyneempiin päättelytehtäviin",
-    "description": "O1-mallin kuvaus"
+    "message": "Sopii edistyneempiin päättelytehtäviin",
+    "description": "O1 mallin kuvaus"
   },
   "model.o1Mini": {
     "message": "ChatGPT - o1-mini päättely",
     "description": "Palvelun mallin nimi, eli O1-Mini"
   },
   "model.o1MiniDescription": {
-    "message": "Nopeampi päättelytehtävien suorittamiseen.",
-    "description": "O1-Mini-mallin kuvaus"
+    "message": "Nopeampi päättelytehtäviin.",
+    "description": "O1-Mini mallin kuvaus"
   },
   "model.o3": {
     "message": "o3",
     "description": "Palvelun mallin nimi, eli O3"
   },
   "model.o3Description": {
-    "message": "Soveltuu edistyneempiin päättelytehtäviin",
-    "description": "O3-mallin kuvaus"
+    "message": "Sopii edistyneempiin päättelytehtäviin",
+    "description": "O3 mallin kuvaus"
   },
   "model.o4Mini": {
     "message": "o4-mini",
     "description": "Palvelun mallin nimi, eli O4-Mini"
   },
   "model.o4MiniDescription": {
-    "message": "Erityisesti koodauksessa ja visuaalisessa päättelyssä",
+    "message": "Erikoistunut koodaukseen ja visuaaliseen päättelyyn",
     "description": "O4 mallin kuvaus"
   },
   "message.startNewChat": {
     "message": "Aloita uusi keskustelu",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle aloittaa uusi keskustelu"
+    "description": "Verkkosivun viesti, joka kertoo käyttäjälle aloittaa uusi keskustelu"
   },
   "message.uploadFile": {
     "message": "Lataa tiedosto",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle ladata tiedosto"
+    "description": "Verkkosivun viesti, joka kertoo käyttäjälle ladata tiedosto"
   },
   "message.noToken": {
     "message": "Hae ensin tarvittava palvelu",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle hakea ensin tarvittava palvelu"
+    "description": "Verkkosivun viesti, joka kertoo käyttäjälle hakea ensin tarvittava palvelu"
   },
   "message.newMessagePlaceholder": {
     "message": "Syötä kysymyksesi...",
-    "description": "Verkkosivulla oleva paikkamerkki, joka kertoo käyttäjälle syöttää kysymys"
+    "description": "Verkkosivun paikkamerkki, joka kertoo käyttäjälle syöttää kysymys"
   },
   "message.noInput": {
     "message": "Kysymys ei voi olla tyhjää",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle kysymyksen ei voi olla tyhjää"
+    "description": "Verkkosivun viesti, joka kertoo käyttäjälle kysymyksen ei voi olla tyhjää"
   },
   "message.uploadReferencesExceed": {
     "message": "Voit ladata enintään 1 tiedoston",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle voit ladata enintään 1 tiedoston"
+    "description": "Verkkosivun viesti, joka kertoo käyttäjälle voi ladata enintään 1 tiedoston"
   },
   "message.uploadReferencesError": {
-    "message": "Tiedoston lataaminen epäonnistui, yritä myöhemmin uudelleen",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle tiedoston lataaminen epäonnistui, yritä myöhemmin uudelleen"
+    "message": "Tiedoston lataus epäonnistui, yritä myöhemmin uudelleen",
+    "description": "Verkkosivun viesti, joka kertoo käyttäjälle tiedoston lataus epäonnistui, yritä myöhemmin uudelleen"
   },
   "message.notApplied": {
     "message": "Et ole vielä hakenut tätä palvelua, hae ensin",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle et ole vielä hakenut tätä palvelua, hae ensin"
+    "description": "Verkkosivun viesti, joka kertoo käyttäjälle et ole vielä hakenut tätä palvelua, hae ensin"
   },
   "message.tryForFree": {
     "message": "Kokeile ilmaiseksi",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle kokeile ilmaiseksi"
+    "description": "Verkkosivun viesti, joka kertoo käyttäjälle kokeile ilmaiseksi"
   },
   "message.question1": {
     "message": "Luo harjoitusohjelma",
-    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyytää käyttäjää kirjoittamaan JavaScript-koodi, joka tulostaa 'Hello World'"
+    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyydä käyttäjää kirjoittamaan Hello World -koodia JavaScriptissä"
   },
   "message.question2": {
     "message": "Tee henkilökohtainen verkkosivusto",
-    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyytää käyttäjää kirjoittamaan Mike:lle sähköpostia, jossa kerrotaan, että hän on juuri muuttanut"
+    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyydä käyttäjää kirjoittamaan Mike:lle sähköposti, jossa kerrotaan, että on juuri muuttanut"
   },
   "message.question3": {
-    "message": "Suunnittele mielenkiintoisia ohjelmointipelejä",
-    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyytää käyttäjää selittämään kvanttilaskennan perusperiaatteet yksinkertaisella kielellä"
+    "message": "Suunnittele mielenkiintoinen ohjelmointipeli",
+    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyydä käyttäjää selittämään kvanttilaskennan perusperiaatteet yksinkertaisella kielellä"
   },
   "message.question4": {
     "message": "Koe Soul kuin paikallinen",
-    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyytää käyttäjää selittämään, miten virtuaalitodellisuus on vaikuttanut taiteen luomiseen"
+    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyydä käyttäjää selittämään, miten virtuaalitodellisuus on vaikuttanut taiteen luomiseen"
   },
   "message.question5": {
     "message": "Kumpi on suurempi, 9.8 vai 9.11?",
-    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyytää vertaamaan kahta numeroa"
+    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyydä vertaamaan kahta numeroa"
   },
   "message.question6": {
     "message": "Miten AI vaikuttaa tulevaisuuteen?",
     "description": "Esimerkkikysymys keskustelun aloittamiseksi, miten AI vaikuttaa tulevaisuuteen?"
   },
   "message.question7": {
-    "message": "Miten parantaa oppimis tehokkuutta?",
-    "description": "Esimerkkikysymys keskustelun aloittamiseksi, miten parantaa omaa oppimis tehokkuutta?"
+    "message": "Miten parantaa oppimisnopeutta?",
+    "description": "Esimerkkikysymys keskustelun aloittamiseksi, miten parantaa omaa oppimisnopeutta?"
   },
   "message.question8": {
     "message": "Miten parantaa keskittymiskykyä?",
@@ -261,51 +325,51 @@
   },
   "message.errorApiError": {
     "message": "Vastaus epäonnistui, yritä myöhemmin uudelleen",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle vastaus epäonnistui, yritä myöhemmin uudelleen"
+    "description": "Verkkosivun viesti, joka kertoo käyttäjälle vastaus epäonnistui, yritä myöhemmin uudelleen"
   },
   "message.errorBadRequest": {
-    "message": "Pyyntö ei ole voimassa, esitä kysymys uudelleen",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle pyyntö ei ole voimassa, esitä kysymys uudelleen"
+    "message": "Pyyntö on virheellinen, yritä uudelleen",
+    "description": "Verkkosivulla näkyvä viesti, joka kertoo käyttäjälle, että pyyntö on virheellinen, yritä uudelleen"
   },
   "message.errorNoConversation": {
     "message": "Keskustelua ei ole tai se on vanhentunut, aloita uusi keskustelu",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle keskustelua ei ole tai se on vanhentunut, aloita uusi keskustelu"
+    "description": "Verkkosivulla näkyvä viesti, joka kertoo käyttäjälle, että keskustelua ei ole tai se on vanhentunut, aloita uusi keskustelu"
   },
   "message.errorContentTooLarge": {
-    "message": "Kysymyksen sisältö on liian pitkä, lyhennä ja yritä uudelleen",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle kysymyksen sisältö on liian pitkä, lyhennä ja yritä uudelleen"
+    "message": "Kysymys on liian pitkä, lyhennä ja yritä uudelleen",
+    "description": "Verkkosivulla näkyvä viesti, joka kertoo käyttäjälle, että kysymys on liian pitkä, lyhennä ja yritä uudelleen"
   },
   "message.errorTooManyRequests": {
     "message": "Toimintosi ovat liian tiheitä, yritä myöhemmin uudelleen",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle toimintosi ovat liian tiheitä, yritä myöhemmin uudelleen"
+    "description": "Verkkosivulla näkyvä viesti, joka kertoo käyttäjälle, että toiminnot ovat liian tiheitä, yritä myöhemmin uudelleen"
   },
   "message.errorBusy": {
     "message": "Palvelin on kiireinen, yritä myöhemmin uudelleen",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle palvelin on kiireinen, yritä myöhemmin uudelleen"
+    "description": "Verkkosivulla näkyvä viesti, joka kertoo käyttäjälle, että palvelin on kiireinen, yritä myöhemmin uudelleen"
   },
   "message.errorUsedUp": {
-    "message": "Olet käyttänyt kaikki pakettisi, osta lisää jatkaaksesi käyttöä",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle olet käyttänyt kaikki pakettisi, osta lisää jatkaaksesi käyttöä"
+    "message": "Olet käyttänyt kaikki paketit, osta lisää jatkaaksesi käyttöä",
+    "description": "Verkkosivulla näkyvä viesti, joka kertoo käyttäjälle, että kaikki paketit on käytetty, osta lisää jatkaaksesi käyttöä"
   },
   "message.errorUnknown": {
     "message": "Palvelimella tapahtui tuntematon virhe, yritä myöhemmin uudelleen tai ota yhteyttä asiakaspalveluun",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle palvelimella tapahtui tuntematon virhe, yritä myöhemmin uudelleen tai ota yhteyttä asiakaspalveluun"
+    "description": "Verkkosivulla näkyvä viesti, joka kertoo käyttäjälle, että palvelimella tapahtui tuntematon virhe, yritä myöhemmin uudelleen tai ota yhteyttä asiakaspalveluun"
   },
   "message.errorTimeout": {
-    "message": "Kysymykseen vastaaminen aikakatkaistiin, yritä myöhemmin uudelleen",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle kysymykseen vastaaminen aikakatkaistiin, yritä myöhemmin uudelleen"
+    "message": "Vastausaika ylitetty, yritä myöhemmin uudelleen",
+    "description": "Verkkosivulla näkyvä viesti, joka kertoo käyttäjälle, että vastausaika ylitetty, yritä myöhemmin uudelleen"
   },
   "message.errorNotApplied": {
-    "message": "Et ole vielä hakenut tätä palvelua, hae ensin ja jatka kysymistä",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle et ole vielä hakenut tätä palvelua, hae ensin ja jatka kysymistä"
+    "message": "Et ole hakenut tätä palvelua, hae ensin ja jatka kysymistä",
+    "description": "Verkkosivulla näkyvä viesti, joka kertoo käyttäjälle, että hän ei ole hakenut tätä palvelua, hae ensin ja jatka kysymistä"
   },
   "message.confirmDelete": {
     "message": "Vahvista poisto",
-    "description": "Verkkosivulla oleva viesti, joka kertoo käyttäjälle vahvistaa poisto"
+    "description": "Verkkosivulla näkyvä viesti, joka kertoo käyttäjälle vahvistamaan poiston"
   },
   "message.howToUse": {
-    "message": "AI saattaa tehdä virheitä, tarkista tärkeät tiedot.",
-    "description": "Verkkosivun viesti, joka kertoo käyttäjälle, että AI saattaa tehdä virheitä, tarkista tärkeät tiedot"
+    "message": "AI voi tehdä virheitä, tarkista tärkeät tiedot.",
+    "description": "Verkkosivulla näkyvä viesti, joka kertoo käyttäjälle, että AI voi tehdä virheitä, tarkista tärkeät tiedot"
   },
   "title.chat": {
     "message": "AI Keskustelu",
@@ -321,19 +385,19 @@
   },
   "title.limitations": {
     "message": "Rajoitukset",
-    "description": "Verkkosivun otsikko, joka osoittaa, että tämä osa sisältöä käsittelee palvelun teknisiä rajoituksia"
+    "description": "Verkkosivun otsikko, joka osoittaa, että tämä osa sisältää palvelun tekniset rajoitukset"
   },
   "title.complexQuestion": {
     "message": "Vastaaminen monimutkaisiin kysymyksiin",
-    "description": "Verkkosivun otsikko, joka osoittaa, että tämä osa sisältöä käsittelee palvelun kykyä vastata monimutkaisiin kysymyksiin"
+    "description": "Verkkosivun otsikko, joka osoittaa, että tämä osa käsittelee palvelun kykyä vastata monimutkaisiin kysymyksiin"
   },
   "title.professionalQuestion": {
-    "message": "Konsultointi ammatillisissa kysymyksissä",
-    "description": "Verkkosivun otsikko, joka osoittaa, että tämä osa sisältöä käsittelee palvelun kykyä konsultoida ammatillisissa kysymyksissä"
+    "message": "Konsultoi ammatillisia kysymyksiä",
+    "description": "Verkkosivun otsikko, joka osoittaa, että tämä osa käsittelee palvelun kykyä konsultoida ammatillisia kysymyksiä"
   },
   "title.getTips": {
-    "message": "Inspiraation ja ideoiden saaminen",
-    "description": "Verkkosivun otsikko, joka osoittaa, että tämä osa sisältöä käsittelee palvelun kykyä saada inspiraatiota ja ideoita"
+    "message": "Hanki inspiraatiota ja ideoita",
+    "description": "Verkkosivun otsikko, joka osoittaa, että tämä osa käsittelee palvelun kykyä hankkia inspiraatiota ja ideoita"
   },
   "group.today": {
     "message": "Tänään",
@@ -350,69 +414,5 @@
   "group.earlier": {
     "message": "Aikaisemmin",
     "description": "Verkkosivun ryhmän nimi, eli Aikaisemmin"
-  },
-  "modelGroup.gemini": {
-    "message": "Gemini",
-    "description": "Palvelumallin nimi, eli Gemini"
-  },
-  "modelGroup.geminiDescription": {
-    "message": "Google kehittämä AI-malli",
-    "description": "Gemini-mallin kuvaus"
-  },
-  "model.gemini30Pro": {
-    "message": "gemini-3.0-pro",
-    "description": "Palvelumallin nimi"
-  },
-  "model.gemini30ProDescription": {
-    "message": "Sopii edistyneeseen päättelyyn ja multimodaalisiin tehtäviin",
-    "description": "Gemini 3.0 Pro -mallin kuvaus"
-  },
-  "model.gemini25Pro": {
-    "message": "gemini-2.5-pro",
-    "description": "Palvelumallin nimi"
-  },
-  "model.gemini25ProDescription": {
-    "message": "Erinomainen monipuolinen malli",
-    "description": "Gemini 2.5 Pro -mallin kuvaus"
-  },
-  "model.gemini25Flash": {
-    "message": "gemini-2.5-flash",
-    "description": "Palvelumallin nimi"
-  },
-  "model.gemini25FlashDescription": {
-    "message": "Nopea ja kevyt Gemini-malli",
-    "description": "Gemini 2.5 Flash -mallin kuvaus"
-  },
-  "modelGroup.claude": {
-    "message": "Claude",
-    "description": "Palvelumallin nimi, eli Claude"
-  },
-  "modelGroup.claudeDescription": {
-    "message": "Anthropic kehittämä AI-malli",
-    "description": "Claude-mallin kuvaus"
-  },
-  "model.claudeOpus4": {
-    "message": "claude-opus-4",
-    "description": "Palvelumallin nimi"
-  },
-  "model.claudeOpus4Description": {
-    "message": "Huipputason päättely ja monimutkaiset tehtävät",
-    "description": "Claude Opus 4 -mallin kuvaus"
-  },
-  "model.claudeSonnet4": {
-    "message": "claude-sonnet-4",
-    "description": "Palvelumallin nimi"
-  },
-  "model.claudeSonnet4Description": {
-    "message": "Tasapainoinen suorituskyky ja tehokkuus",
-    "description": "Claude Sonnet 4 -mallin kuvaus"
-  },
-  "model.claude37Sonnet": {
-    "message": "claude-3-7-sonnet",
-    "description": "Palvelumallin nimi"
-  },
-  "model.claude37SonnetDescription": {
-    "message": "Nopea iteratiivinen Claude Sonnet 3.7",
-    "description": "Claude 3.7 Sonnet -mallin kuvaus"
   }
 }

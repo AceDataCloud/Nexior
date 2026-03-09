@@ -5,7 +5,7 @@
   },
   "button.deepsearch": {
     "message": "Recherche approfondie",
-    "description": "Bouton pour la recherche approfondie"
+    "description": "Bouton pour une recherche approfondie"
   },
   "button.search": {
     "message": "Rechercher",
@@ -38,6 +38,22 @@
   "modelGroup.grokDescription": {
     "message": "Modèle d'IA développé par xAI",
     "description": "Description du modèle Grok3"
+  },
+  "modelGroup.gemini": {
+    "message": "Gemini",
+    "description": "Nom du modèle de service, c'est-à-dire Gemini"
+  },
+  "modelGroup.geminiDescription": {
+    "message": "Modèle d'IA développé par Google",
+    "description": "Description du groupe de modèles Gemini"
+  },
+  "modelGroup.claude": {
+    "message": "Claude",
+    "description": "Nom du modèle de service, c'est-à-dire Claude"
+  },
+  "modelGroup.claudeDescription": {
+    "message": "Modèle d'IA développé par Anthropic",
+    "description": "Description du groupe de modèles Claude"
   },
   "model.5All": {
     "message": "gpt-5-all",
@@ -80,12 +96,12 @@
     "description": "Nom du modèle de service, c'est-à-dire GPT 4.0 visuel"
   },
   "model.4OImageDescription": {
-    "message": "Prend en charge la génération d'images",
-    "description": "Description du modèle 4.0 visuel"
+    "message": "Prise en charge de la génération d'images",
+    "description": "Description du modèle visuel 4.0"
   },
   "model.4ODescription": {
     "message": "Convient à la plupart des tâches",
-    "description": "Description du modèle 4.0 visuel"
+    "description": "Description du modèle visuel 4.0"
   },
   "model.4OAll": {
     "message": "gpt-4o-all",
@@ -93,7 +109,7 @@
   },
   "model.4OAllDescription": {
     "message": "Modèle polyvalent",
-    "description": "Description du modèle 4O polyvalent"
+    "description": "Description du modèle polyvalent 4O"
   },
   "model.4All": {
     "message": "gpt-4-all",
@@ -101,7 +117,7 @@
   },
   "model.4AllDescription": {
     "message": "Modèle polyvalent",
-    "description": "Description du modèle 4.0 polyvalent"
+    "description": "Description du modèle polyvalent 4.0"
   },
   "model.deepseekChat": {
     "message": "Standard 3.0",
@@ -118,6 +134,22 @@
   "model.deepseekReasonerDescription": {
     "message": "Convient pour le raisonnement et les questions de réflexion approfondie",
     "description": "Description du modèle DeepSeek Raisonneur"
+  },
+  "model.deepseekChat32": {
+    "message": "Version expérimentale V3.2",
+    "description": "Nom du modèle de service, c'est-à-dire DeepSeek V3.2 Exp"
+  },
+  "model.deepseekChat32Description": {
+    "message": "Dernière version expérimentale",
+    "description": "Description du modèle expérimental DeepSeek V3.2"
+  },
+  "model.grok4": {
+    "message": "grok-4",
+    "description": "Nom du modèle de service, c'est-à-dire Grok 4"
+  },
+  "model.grok4Description": {
+    "message": "Modèle le plus avancé actuellement",
+    "description": "Description du modèle Grok 4"
   },
   "model.grok3": {
     "message": "grok-3",
@@ -143,33 +175,81 @@
     "message": "Convient pour la recherche approfondie et les problèmes complexes",
     "description": "Description du modèle Grok3 Recherche approfondie"
   },
+  "model.gemini30Pro": {
+    "message": "gemini-3.0-pro",
+    "description": "Nom du modèle de service, c'est-à-dire Gemini 3.0 Pro"
+  },
+  "model.gemini30ProDescription": {
+    "message": "Modèle le plus avancé actuellement",
+    "description": "Description du modèle Gemini 3.0 Pro"
+  },
+  "model.gemini25Pro": {
+    "message": "gemini-2.5-pro",
+    "description": "Nom du modèle du service, c'est-à-dire Gemini 2.5 Pro"
+  },
+  "model.gemini25ProDescription": {
+    "message": "Pour des tâches de raisonnement complexes",
+    "description": "Description du modèle Gemini 2.5 Pro"
+  },
+  "model.gemini25Flash": {
+    "message": "gemini-2.5-flash",
+    "description": "Nom du modèle du service, c'est-à-dire Gemini 2.5 Flash"
+  },
+  "model.gemini25FlashDescription": {
+    "message": "Modèle plus rapide et léger",
+    "description": "Description du modèle Gemini 2.5 Flash"
+  },
+  "model.claudeOpus4": {
+    "message": "claude-opus-4",
+    "description": "Nom du modèle du service, c'est-à-dire Claude Opus 4"
+  },
+  "model.claudeOpus4Description": {
+    "message": "Modèle le plus avancé actuellement",
+    "description": "Description du modèle Claude Opus 4"
+  },
+  "model.claudeSonnet4": {
+    "message": "claude-sonnet-4",
+    "description": "Nom du modèle du service, c'est-à-dire Claude Sonnet 4"
+  },
+  "model.claudeSonnet4Description": {
+    "message": "Pour la plupart des tâches",
+    "description": "Description du modèle Claude Sonnet 4"
+  },
+  "model.claude37Sonnet": {
+    "message": "claude-3.7-sonnet",
+    "description": "Nom du modèle du service, c'est-à-dire Claude 3.7 Sonnet"
+  },
+  "model.claude37SonnetDescription": {
+    "message": "Équilibre entre performance et vitesse",
+    "description": "Description du modèle Claude 3.7 Sonnet"
+  },
   "model.o1": {
     "message": "o1",
-    "description": "Nom du modèle de service, c'est-à-dire O1"
+    "description": "Nom du modèle du service, c'est-à-dire O1"
   },
   "model.o1Description": {
-    "message": "Convient pour des tâches de raisonnement avancées",
+    "message": "Pour des tâches de raisonnement avancées",
     "description": "Description du modèle O1"
   },
   "model.o1Mini": {
-    "message": "ChatGPT - Raisonneur o1-mini",
-    "description": "Nom du modèle de service, c'est-à-dire O1-Mini"
+    "message": "ChatGPT - o1-mini raisonnement",
+    "description": "Nom du modèle du service, c'est-à-dire O1-Mini"
   },
   "model.o1MiniDescription": {
-    "message": "Réalise des tâches de raisonnement plus rapidement.",
+    "message": "Raisonnement plus rapide.",
     "description": "Description du modèle O1-Mini"
   },
   "model.o3": {
     "message": "o3",
-    "description": "Nom du modèle de service, c'est-à-dire O3"
+    "description": "Nom du modèle du service, c'est-à-dire O3"
   },
   "model.o3Description": {
-    "message": "Convient pour des tâches de raisonnement avancées",
+    "message": "Pour des tâches de raisonnement avancées",
     "description": "Description du modèle O3"
   },
   "model.o4Mini": {
     "message": "o4-mini",
-    "description": "Nom du modèle de service, c'est-à-dire O4-Mini"
+    "description": "Nom du modèle du service, c'est-à-dire O4-Mini"
   },
   "model.o4MiniDescription": {
     "message": "Expert en raisonnement codé et visuel",
@@ -177,47 +257,47 @@
   },
   "message.startNewChat": {
     "message": "Démarrer une nouvelle conversation",
-    "description": "Message sur la page web pour informer l'utilisateur de commencer une nouvelle conversation"
+    "description": "Message sur la page web, informant l'utilisateur de commencer une nouvelle conversation"
   },
   "message.uploadFile": {
     "message": "Télécharger un fichier",
-    "description": "Message sur la page web pour informer l'utilisateur de télécharger un fichier"
+    "description": "Message sur la page web, informant l'utilisateur de télécharger un fichier"
   },
   "message.noToken": {
     "message": "Veuillez d'abord demander le service correspondant",
-    "description": "Message sur la page web informant l'utilisateur de demander d'abord le service correspondant"
+    "description": "Message sur la page web, informant l'utilisateur de demander d'abord le service correspondant"
   },
   "message.newMessagePlaceholder": {
-    "message": "Veuillez entrer votre question...",
-    "description": "Placeholder sur la page web informant l'utilisateur d'entrer une question"
+    "message": "Entrez votre question...",
+    "description": "Placeholder sur la page web, informant l'utilisateur d'entrer une question"
   },
   "message.noInput": {
     "message": "La question ne peut pas être vide",
-    "description": "Message sur la page web informant l'utilisateur que la question ne peut pas être vide"
+    "description": "Message sur la page web, informant l'utilisateur que la question ne peut pas être vide"
   },
   "message.uploadReferencesExceed": {
     "message": "Vous ne pouvez télécharger qu'un seul fichier",
-    "description": "Message sur la page web informant l'utilisateur qu'il ne peut télécharger qu'un seul fichier"
+    "description": "Message sur la page web, informant l'utilisateur qu'il ne peut télécharger qu'un seul fichier"
   },
   "message.uploadReferencesError": {
     "message": "Échec du téléchargement du fichier, veuillez réessayer plus tard",
-    "description": "Message sur la page web informant l'utilisateur que le téléchargement du fichier a échoué, veuillez réessayer plus tard"
+    "description": "Message sur la page web, informant l'utilisateur que le téléchargement du fichier a échoué, veuillez réessayer plus tard"
   },
   "message.notApplied": {
     "message": "Vous n'avez pas encore demandé ce service, veuillez le faire d'abord",
-    "description": "Message sur la page web informant l'utilisateur qu'il n'a pas encore demandé ce service, veuillez le faire d'abord"
+    "description": "Message sur la page web, informant l'utilisateur qu'il n'a pas encore demandé ce service, veuillez le faire d'abord"
   },
   "message.tryForFree": {
     "message": "Essai gratuit",
-    "description": "Message sur la page web informant l'utilisateur de l'essai gratuit"
+    "description": "Message sur la page web, informant l'utilisateur de l'essai gratuit"
   },
   "message.question1": {
     "message": "Créer un plan d'entraînement",
-    "description": "Exemple de question pour commencer la conversation, demandant à l'utilisateur d'écrire un code JavaScript qui affiche 'Hello World'"
+    "description": "Exemple de question pour commencer la conversation, demandant à l'utilisateur d'écrire un code JavaScript qui affiche Hello World"
   },
   "message.question2": {
     "message": "Créer une page personnelle",
-    "description": "Exemple de question pour commencer la conversation, demandant à l'utilisateur d'écrire un e-mail à Mike pour lui dire qu'il vient de déménager"
+    "description": "Exemple de question pour commencer la conversation, demandant à l'utilisateur d'écrire un e-mail à Mike pour lui dire que je viens de déménager"
   },
   "message.question3": {
     "message": "Concevoir un jeu de programmation amusant",
@@ -240,60 +320,60 @@
     "description": "Exemple de question pour commencer la conversation, demandant comment améliorer son efficacité d'apprentissage"
   },
   "message.question8": {
-    "message": "Comment améliorer sa concentration ?",
+    "message": "Comment améliorer la concentration ?",
     "description": "Exemple de question pour commencer la conversation, demandant comment améliorer sa concentration"
   },
   "message.errorApiError": {
     "message": "Échec de la réponse, veuillez réessayer plus tard",
-    "description": "Message sur la page web informant l'utilisateur que la réponse a échoué, veuillez réessayer plus tard"
+    "description": "Message sur la page web, informant l'utilisateur que la réponse a échoué, veuillez réessayer plus tard"
   },
   "message.errorBadRequest": {
-    "message": "Le contenu de la demande n'est pas valide, veuillez reformuler votre question",
-    "description": "Message sur la page web informant l'utilisateur que le contenu de la demande n'est pas valide, veuillez reformuler votre question"
+    "message": "Le contenu de la demande est incorrect, veuillez reformuler votre question",
+    "description": "Message sur la page web, informant l'utilisateur que le contenu de la demande est incorrect, veuillez reformuler votre question"
   },
   "message.errorNoConversation": {
     "message": "La conversation n'existe pas ou a expiré, veuillez commencer une nouvelle conversation",
-    "description": "Message sur la page web informant l'utilisateur que la conversation n'existe pas ou a expiré, veuillez commencer une nouvelle conversation"
+    "description": "Message sur la page web, informant l'utilisateur que la conversation n'existe pas ou a expiré, veuillez commencer une nouvelle conversation"
   },
   "message.errorContentTooLarge": {
     "message": "Le contenu de la question est trop long, veuillez le raccourcir et réessayer",
-    "description": "Message sur la page web informant l'utilisateur que le contenu de la question est trop long, veuillez le raccourcir et réessayer"
+    "description": "Message sur la page web, informant l'utilisateur que le contenu de la question est trop long, veuillez le raccourcir et réessayer"
   },
   "message.errorTooManyRequests": {
-    "message": "Vos actions sont trop fréquentes, veuillez réessayer plus tard",
-    "description": "Message sur la page web informant l'utilisateur que ses actions sont trop fréquentes, veuillez réessayer plus tard"
+    "message": "Votre action est trop fréquente, veuillez réessayer plus tard",
+    "description": "Message sur la page web, informant l'utilisateur que son action est trop fréquente, veuillez réessayer plus tard"
   },
   "message.errorBusy": {
     "message": "Le serveur est occupé, veuillez réessayer plus tard",
-    "description": "Message sur la page web informant l'utilisateur que le serveur est occupé, veuillez réessayer plus tard"
+    "description": "Message sur la page web, informant l'utilisateur que le serveur est occupé, veuillez réessayer plus tard"
   },
   "message.errorUsedUp": {
     "message": "Vous avez épuisé votre quota, veuillez acheter plus de crédits pour continuer",
-    "description": "Message sur la page web informant l'utilisateur qu'il a épuisé son quota, veuillez acheter plus de crédits pour continuer"
+    "description": "Message sur la page web, informant l'utilisateur qu'il a épuisé son quota, veuillez acheter plus de crédits pour continuer"
   },
   "message.errorUnknown": {
     "message": "Une erreur inconnue s'est produite sur le serveur, veuillez réessayer plus tard ou contacter le support",
-    "description": "Message sur la page web informant l'utilisateur qu'une erreur inconnue s'est produite sur le serveur, veuillez réessayer plus tard ou contacter le support"
+    "description": "Message sur la page web, informant l'utilisateur qu'une erreur inconnue s'est produite sur le serveur, veuillez réessayer plus tard ou contacter le support"
   },
   "message.errorTimeout": {
     "message": "Le temps de réponse a expiré, veuillez réessayer plus tard",
-    "description": "Message sur la page web informant l'utilisateur que le temps de réponse a expiré, veuillez réessayer plus tard"
+    "description": "Message sur la page web, informant l'utilisateur que le temps de réponse a expiré, veuillez réessayer plus tard"
   },
   "message.errorNotApplied": {
-    "message": "Vous n'avez pas encore demandé ce service, veuillez le faire avant de continuer à poser des questions",
-    "description": "Message sur la page web informant l'utilisateur qu'il n'a pas encore demandé ce service, veuillez le faire avant de continuer à poser des questions"
+    "message": "Vous n'avez pas encore demandé ce service, veuillez d'abord faire une demande avant de continuer",
+    "description": "Message sur la page web, informant l'utilisateur qu'il n'a pas encore demandé ce service, veuillez d'abord faire une demande avant de continuer"
   },
   "message.confirmDelete": {
     "message": "Confirmer la suppression",
-    "description": "Message sur la page web informant l'utilisateur de confirmer la suppression"
+    "description": "Message sur la page web, informant l'utilisateur de confirmer la suppression"
   },
   "message.howToUse": {
     "message": "L'IA peut se tromper, veuillez vérifier les informations importantes.",
-    "description": "Message sur la page web informant l'utilisateur que l'IA peut se tromper, veuillez vérifier les informations importantes"
+    "description": "Message sur la page web, informant l'utilisateur que l'IA peut se tromper, veuillez vérifier les informations importantes"
   },
   "title.chat": {
     "message": "Chat IA",
-    "description": "Titre de la page web, c'est-à-dire le chat IA"
+    "description": "Titre de la page web, c'est-à-dire Chat IA"
   },
   "title.example": {
     "message": "Exemple",
@@ -305,34 +385,34 @@
   },
   "title.limitations": {
     "message": "Limitations",
-    "description": "Titre dans la page, indiquant que cette section concerne les limitations techniques du service"
+    "description": "Titre sur la page web, indiquant que cette section concerne les limitations techniques du service"
   },
   "title.complexQuestion": {
     "message": "Répondre à des questions complexes",
-    "description": "Titre dans la page, indiquant que cette section concerne la capacité du service à répondre à des questions complexes"
+    "description": "Titre sur la page web, indiquant que cette section concerne la capacité du service à répondre à des questions complexes"
   },
   "title.professionalQuestion": {
     "message": "Consulter des questions professionnelles",
-    "description": "Titre dans la page, indiquant que cette section concerne la capacité du service à consulter des questions professionnelles"
+    "description": "Titre sur la page web, indiquant que cette section concerne la capacité du service à consulter des questions professionnelles"
   },
   "title.getTips": {
     "message": "Obtenir des idées et de l'inspiration",
-    "description": "Titre dans la page, indiquant que cette section concerne la capacité du service à obtenir des idées et de l'inspiration"
+    "description": "Titre sur la page web, indiquant que cette section concerne la capacité du service à obtenir des idées et de l'inspiration"
   },
   "group.today": {
     "message": "Aujourd'hui",
-    "description": "Nom du groupe dans la page, c'est-à-dire Aujourd'hui"
+    "description": "Nom du groupe sur la page web, c'est-à-dire Aujourd'hui"
   },
   "group.yesterday": {
     "message": "Hier",
-    "description": "Nom du groupe dans la page, c'est-à-dire Hier"
+    "description": "Nom du groupe sur la page web, c'est-à-dire Hier"
   },
   "group.thisWeek": {
     "message": "Cette semaine",
-    "description": "Nom du groupe dans la page, c'est-à-dire Cette semaine"
+    "description": "Nom du groupe sur la page web, c'est-à-dire Cette semaine"
   },
   "group.earlier": {
     "message": "Plus tôt",
-    "description": "Nom du groupe dans la page, c'est-à-dire Plus tôt"
+    "description": "Nom du groupe sur la page web, c'est-à-dire Plus tôt"
   }
 }

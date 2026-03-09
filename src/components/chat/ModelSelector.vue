@@ -1,24 +1,26 @@
 <template>
   <div class="selector">
-    <el-dropdown trigger="click" popper-class="popper">
-      <div class="flex justify-center">
-        <span class="name">{{ model?.getDisplayName() }}</span>
-        <span class="angle">
-          <font-awesome-icon icon="fa-solid fa-angle-down" />
-        </span>
+    <el-dropdown trigger="click" popper-class="model-selector-popper">
+      <div class="trigger">
+        <img v-if="model?.icon" :src="model.icon" class="trigger-icon" />
+        <span class="trigger-name">{{ model?.getDisplayName() }}</span>
+        <font-awesome-icon icon="fa-solid fa-chevron-down" class="trigger-arrow" />
       </div>
       <template #dropdown>
         <el-dropdown-menu v-if="modelGroup && modelGroup?.models">
           <el-dropdown-item
             v-for="(option, optionKey) in modelGroup?.models?.filter((m) => m.enabled)"
             :key="optionKey"
+            :class="{ active: model?.name === option?.name }"
             @click="onModelChange(option)"
           >
             <div class="item">
-              <div class="info">
-                <p v-if="option?.getDisplayName" class="name">{{ option?.getDisplayName() }}</p>
-                <p v-if="option?.getDescription" class="description">{{ option?.getDescription() }}</p>
+              <img v-if="option?.icon" :src="option.icon" class="item-icon" />
+              <div class="item-info">
+                <p v-if="option?.getDisplayName" class="item-name">{{ option?.getDisplayName() }}</p>
+                <p v-if="option?.getDescription" class="item-desc">{{ option?.getDescription() }}</p>
               </div>
+              <font-awesome-icon v-if="model?.name === option?.name" icon="fa-solid fa-check" class="item-check" />
             </div>
           </el-dropdown-item>
         </el-dropdown-menu>
@@ -114,58 +116,118 @@ export default defineComponent({
 <style lang="scss" scoped>
 .selector {
   cursor: pointer;
-  padding: 7px 6px;
-  border-radius: 15px;
-  margin-bottom: 10px;
-  .name {
-    font-size: 16px;
-    font-weight: bold;
-    display: inline-block;
-    margin-right: 5px;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 10px;
+  transition: background-color 0.15s ease;
+  outline: none;
+  box-shadow: none;
+
+  &:hover {
+    background-color: var(--el-fill-color-light);
   }
-  .angle {
-    display: inline-block;
-    width: 15px;
+
+  &:active {
+    background-color: var(--el-fill-color);
   }
 }
 
-.icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 5px;
-  img {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-  }
+.trigger-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.trigger-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--el-text-color-primary);
+  white-space: nowrap;
+}
+
+.trigger-arrow {
+  font-size: 10px;
+  color: var(--el-text-color-secondary);
+  transition: transform 0.2s ease;
 }
 
 .item {
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0;
+  width: 100%;
+}
 
-  .icon {
-    img {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-    }
+.item-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.item-info {
+  flex: 1;
+  min-width: 0;
+
+  .item-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--el-text-color-primary);
+    margin: 0;
+    line-height: 1.4;
   }
 
-  .info {
-    width: calc(100% - 15px);
-    .name {
-      font-size: 14px;
-      font-weight: bold;
-      color: var(--el-text-color-primary);
-      margin: 0;
+  .item-desc {
+    font-size: 12px;
+    color: var(--el-text-color-secondary);
+    margin: 0;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.item-check {
+  font-size: 12px;
+  color: var(--el-color-primary);
+  flex-shrink: 0;
+  margin-left: auto;
+}
+</style>
+
+<style lang="scss">
+.model-selector-popper {
+  .el-dropdown-menu__item {
+    padding: 6px 14px;
+    min-width: 240px;
+
+    &.active {
+      background-color: var(--el-fill-color-light);
     }
-    .description {
-      font-size: 12px;
-      color: var(--el-text-color-secondary);
-      margin: 0;
-    }
+  }
+}
+
+.selector .el-dropdown {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  &:focus-visible,
+  &:focus {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
   }
 }
 </style>
